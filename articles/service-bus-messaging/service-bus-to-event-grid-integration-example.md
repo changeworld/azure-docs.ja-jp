@@ -4,20 +4,20 @@ description: この記事では、Service Bus のイベントを Event Grid 経�
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 10/16/2020
+ms.date: 07/26/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93375f6047fbe4eda2132e024dab0e067e83ccf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36690973f441c80f71c1941c63cd40d91c1efd08
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95999027"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719871"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>チュートリアル:Azure Event Grid 経由で受信した Azure Service Bus のイベントに Azure Logic Apps を使用して応答する
 このチュートリアルでは、Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 
 
-[!INCLUDE [service-bus-event-grid-prerequisites](../../includes/service-bus-event-grid-prerequisites.md)]
+[!INCLUDE [service-bus-event-grid-prerequisites](./includes/service-bus-event-grid-prerequisites.md)]
 
 ## <a name="receive-messages-by-using-logic-apps"></a>Logic Apps を使用してメッセージを受信する
 この手順では、Service Bus イベントを Azure Event Grid 経由で受信する Azure ロジック アプリを作成します。 
@@ -31,6 +31,8 @@ ms.locfileid: "95999027"
     6. **[確認および作成]** を選択します。 
     1. **[確認および作成]** ページで **[作成]** を選択してロジック アプリを作成します。 
 1. **[Logic Apps デザイナー]** ページの **[テンプレート]** で、 **[空のロジック アプリ]** を選択します。 
+
+### <a name="add-a-step-receive-messages-from-service-bus-via-event-grid"></a>Event Grid 経由で Service Bus からメッセージを受信するステップを追加する
 1. デザイナーで、次の手順を実行します。
     1. **Event Grid** を検索します。 
     2. **[リソース イベントが発生したとき - Azure Event Grid]** を選択します。 
@@ -60,8 +62,44 @@ ms.locfileid: "95999027"
     8. **トピック** と **サブスクリプション** を選択します。 
     
         ![トピックとサブスクリプションを選択する場所を示すスクリーンショット。](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
-7. **[+ 新しいステップ]** を選択し、次の手順を実行します。 
-    1. **[Service Bus]** を選びます。
+
+### <a name="add-a-step-to-process-and-complete-received-messages"></a>受信したメッセージを処理して完了するステップを追加する
+このステップでは、受信したメッセージをメールで送信し、メッセージを完了するステップを追加します。 実際のシナリオでは、メッセージを完了する前にロジック アプリでメッセージを処理します。
+
+#### <a name="add-a-foreach-loop"></a>foreach ループを追加する
+1. **[+ New step (+ 新しいステップ)]** を選択します。
+1. **[コントロール]** を選択して選択します。  
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/select-control.png" alt-text="コントロール カテゴリの選択を示す画像":::
+1. **[アクション]** の一覧で **[For each]** を選択します。
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/select-for-each.png" alt-text="[For each] コントロールの選択を示す画像":::    
+1. **[以前の手順から出力を選択]** (必要に応じてテキスト ボックス内をクリック)では、 **[Get messages from a topic subscription (peek-lock)]\(トピック サブスクリプションからメッセージを取得 (peek-lock)\)** の下の **[本文]** を選択します。 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/select-input-for-each.png" alt-text="For each への入力の選択を示す画像":::    
+
+#### <a name="add-a-step-inside-the-foreach-loop-to-send-an-email-with-the-message-body"></a>メッセージ本文を含む電子メールを送信するステップを For each ループ内に追加する
+
+1. **For each** ループ内で、 **[アクションの追加]** を選択します。 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/select-add-action.png" alt-text="For each ループ内の [アクションの追加] ボタンの選択を示す画像":::        
+1. **[コネクタとアクションを検索する]** ボックスで、「**Office 365**」と入力します。 
+1. 検索結果で、「**Office 365 Outlook**」を選択します。 
+1. アクションの一覧で、 **[メールの送信 (V2)]** を選択します。 
+1. **[本文]** のテキスト ボックス内を選択し、次の手順に従います。
+    1. **[式]** に切り替えます。
+    1. 「`base64ToString(items('For_each')?['ContentData'])`」と入力します。 
+    1. **[OK]** を選択します。 
+    
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/specify-expression-email.png" alt-text="電子メールの送信アクティビティの本文の式を示す画像":::
+1. **[件名]** には、「**Message received from Service Bus topic's subscription**」と入力します。  
+1. **[宛先]** にはメール アドレスを入力します。 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/send-email-configured.png" alt-text="[電子メールの送信] アクティビティが構成されていることを示す画像":::
+
+#### <a name="add-another-action-in-the-foreach-loop-to-complete-the-message"></a>For each ループに別のアクションを追加してメッセージを完了する         
+1. **For each** ループ内で、 **[アクションの追加]** を選択します。 
+    1. **[最近使った項目]** 一覧から **[Service Bus]** を選択します。
     2. アクションの一覧から **[トピック サブスクリプション内のメッセージを完了する]** を選択します。 
     3. Service Bus **トピック** を選択します。
     4. トピックに対する 2 つ目の **サブスクリプション** を選択します。
@@ -71,13 +109,16 @@ ms.locfileid: "95999027"
 8. Logic Apps デザイナーのツールバーの **[保存]** を選択して、ロジック アプリを保存します。 
 
     :::image type="content" source="./media/service-bus-to-event-grid-integration-example/save-logic-app.png" alt-text="ロジック アプリを保存する":::
+
+## <a name="test-the-app"></a>アプリをテストする
 1. まだテスト メッセージをトピックに送信していない場合は、「[Service Bus トピックにメッセージを送信する](#send-messages-to-the-service-bus-topic)」セクションの手順に従って、トピックにメッセージを送信します。 
 1. お使いのロジック アプリの **[概要]** ページに切り替えます。 送信されたメッセージの **[実行の履歴]** に、ロジック アプリの実行が表示されます。 ロジック アプリの実行が確認できるまでに数分かかる場合があります。 ツール バーの **[Refresh]\(最新の情報に更新\)** を選択して、ページを最新の情報に更新してください。 
 
     ![Logic Apps デザイナー - ロジック アプリの実行](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 1. ロジック アプリの実行を選択して詳細を確認します。 for ループで 5 つのメッセージが処理されていることに注目してください。 
     
-    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-run-details.png" alt-text="ロジック アプリの実行の詳細":::    
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/logic-app-run-details.png" alt-text="ロジック アプリの実行の詳細"::: 
+2. ロジック アプリによって受信された各メッセージの電子メールを受け取ります。    
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 しばらく待って最新の情報に更新しても呼び出しが表示されない場合は、次の手順に従います。 

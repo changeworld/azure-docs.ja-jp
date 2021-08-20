@@ -2,20 +2,20 @@
 title: クイックスタート - Teams の会議に参加する
 author: askaur
 ms.author: askaur
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 2fb04acd75d607772b6582882b98f9ed222f070c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 04ee9f19f23d16af9070d3366981b0690ba9ef27
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430053"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113114"
 ---
 このクイックスタートでは、JavaScript 用 Azure Communication Services Chat SDK を使用して Teams 会議でチャットする方法について説明します。
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting) にあります
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting) にあります。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -325,6 +325,12 @@ sendMessageButton.addEventListener("click", async () =>
     });
 ```
 
+チャット スレッドの参加者の表示名は、Teams クライアントによって設定されません。 これらの名前は、`participantsAdded` イベントと `participantsRemoved` イベントの、参加者を一覧表示する API では null として返されます。 チャット参加者の表示名は、`call` オブジェクトの `remoteParticipants` フィールドから取得できます。 名簿の変更に関する通知を受信するときに、このコードを使用して、追加または削除されたユーザーの名前を取得できます。
+
+```
+var displayName = call.remoteParticipants.find(p => p.identifier.communicationUserId == '<REMOTE_USER_ID>').displayName;
+```
+
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>Communication Services ユーザーの Teams 会議チャット スレッドを取得する
 
 Teams 会議のリンクとチャットは Graph API を使用して取得できます。詳細については、[Graphのドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)を参照してください。 Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは `onlineMeeting` リソースの一部として返され、[Graph API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) 使用して [`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)の下でアクセスできます。また、`threadId` を取得することもできます。 応答には、`threadID` を含む `chatInfo` オブジェクトがあります。 
@@ -348,4 +354,4 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 Teams 会議のリンクとスレッド ID を各テキスト ボックスに挿入します。 Teams 会議に参加するには、 *[Join Teams Meeting]\(Teams の会議に参加\)* を押します。 Communication Services ユーザーが会議への参加を許可されたら、Communication Services アプリケーション内からチャットを行うことができます。 チャットを開始するには、ページの下部にあるボックスに移動します。
 
 > [!NOTE] 
-> 現在、Teams との相互運用性のシナリオでは、メッセージの送受信と編集のみがサポートされています。 入力インジケーターや、Communication Services ユーザーが Teams 会議に他のユーザーを追加または削除するなどの機能は、まだサポートされていません。
+> 現在、Teams との相互運用性のシナリオでは、メッセージの送受信と編集、および入力通知の送信のみがサポートされています。 開封確認メッセージや、Communication Services ユーザーが Teams 会議に他のユーザーを追加または削除するなどの機能は、まだサポートされていません。

@@ -2,18 +2,18 @@
 title: Azure CLI - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 description: Azure CLI を使用して、マネージド ディスクのプライベート リンクを有効にします。 対象の仮想ネットワーク内でのみディスクを安全にエクスポートおよびインポートできます。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: e1b1852521164b264376f10ce8ade85f415a0a91
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 05cff1385ee4e606a3d5ecae3f04139a67be699a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026599"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289244"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 
@@ -154,5 +154,7 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [プライベート リンクに関する FAQ](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
+- VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - [Azure CLI](disks-upload-vhd-to-managed-disk-cli.md) または [Azure PowerShell モジュール](../windows/disks-upload-vhd-to-managed-disk-powershell.md)
+- VHD をダウンロードする - [Windows](../windows/download-vhd.md) または [Linux](download-vhd.md)
+- [プライベート リンクに関する FAQ](/azure/virtual-machines//faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [CLI を使用して別のリージョンのストレージ アカウントに管理スナップショットを VHD としてエクスポート/コピーする](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)

@@ -3,23 +3,21 @@ title: Azure Defender for SQL - 利点と機能
 description: Azure Defender for SQL の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 12/13/2020
+ms.date: 05/27/2021
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 532c46c50d0b422946af649801e43904b4b6ed7d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 86be3b4fd072179d3ac8b584788ce8988e6b297c
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096872"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486501"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
-Azure Defender for SQL には、Azure Security Center の[データ セキュリティ パッケージ](../azure-sql/database/azure-defender-for-sql.md)を拡張して、データベースの場所を問わず、データベースとそのデータをセキュリティで保護する 2 つの Azure Defender プランが含まれています。 
-
-> [!VIDEO https://www.youtube.com/embed/V7RdB6RSVpc]
+Azure Defender for SQL には、Azure Security Center の[データ セキュリティ パッケージ](../azure-sql/database/azure-defender-for-sql.md)を拡張して、データベースの場所を問わず、データベースとそのデータをセキュリティで保護する 2 つの Azure Defender プランが含まれています。 Azure Defender for SQL には、データベースの潜在的な脆弱性を検出し、軽減する機能や、データベースに対する脅威を示す異常な行動を検出する機能が含まれています。
 
 ## <a name="availability"></a>可用性
 
@@ -28,7 +26,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 |リリース状態:|**Azure Defender for Azure SQL database servers** - 一般提供 (GA)<br>**マシン上の SQL サーバー向け Azure Defender** - 一般提供 (GA) |
 |価格:|**Azure Defender for SQL** を構成する 2 つのプランの課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |保護される SQL のバージョン:|[Azure 仮想マシン上の SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc 対応 SQL サーバー](/sql/sql-server/azure-arc/overview)<br>Windows マシン上のオンプレミス SQL サーバー (Azure Arc なし)<br>Azure SQL [単一データベース](../azure-sql/database/single-database-overview.md)および[エラスティック プール](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (旧称 SQL DW) 専用 SQL プール](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
-|クラウド:|![はい](./media/icons/yes-icon.png) 商用クラウド<br>![はい](./media/icons/yes-icon.png) US Gov<br>![はい](./media/icons/yes-icon.png) China Gov (**一部のみ**: SQL サーバーの脆弱性評価とアラートのサブセット。 Behavioral Threat Protection は利用できません。)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China (**部分的**: SQL サーバーのアラートと脆弱性評価のサブセット。 Behavioral Threat Protection は利用できません。)|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Azure Defender for SQL の保護対象
@@ -51,11 +49,29 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 
 この 2 つのプランには、データベースの潜在的な脆弱性を特定して軽減する機能や、データベースに対する脅威を示している可能性がある異常なアクティビティを検出する機能が含まれています。
 
-- [脆弱性評価](../azure-sql/database/sql-vulnerability-assessment.md) - データベースの潜在的な脆弱性を検出、追跡し、修復を支援するスキャン サービス。 評価スキャンでは、SQL マシンのセキュリティ状態の概要と、セキュリティ調査結果の詳細が示されます。
+脆弱性評価サービスは、データベースの潜在的な脆弱性を検出、追跡、修復するのに役立ちます。 評価スキャンでは、SQL マシンのセキュリティ状態の概要と、セキュリティ調査結果の詳細が示されます。
 
-- [Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md) - SQL インジェクション、ブルートフォース攻撃、特権の悪用などの脅威について、SQL サーバーを継続的に監視する検出サービス。 このサービスでは、不審なアクティビティの詳細、脅威を軽減する方法に関するガイダンス、Azure Sentinel で調査を続行するためのオプションについて、Azure Security Center のアクション指向のセキュリティ アラートが提供されます。 
-    > [!TIP]
-    > SQL サーバーのセキュリティ アラートの一覧については、[アラートのリファレンス ページ](alerts-reference.md#alerts-sql-db-and-warehouse)を参照してください。
+- Azure SQL Database の脆弱性評価については[こちら](../azure-sql/database/sql-vulnerability-assessment.md)でご確認ください。
+- マシン上の Azure SQL サーバーの脆弱性評価については[こちら](defender-for-sql-on-machines-vulnerability-assessment.md)でご確認ください。
+
+SQL インジェクション、ブルートフォース攻撃、特権の悪用などの脅威を対象に、高度な脅威防止サービスが SQL サーバーを継続的に監視します。 このサービスでは、不審なアクティビティの詳細、脅威を軽減する方法に関するガイダンス、Azure Sentinel で調査を続行するためのオプションについて、Azure Security Center のアクション指向のセキュリティ アラートが提供されます。 高度な脅威防止については[こちら](../azure-sql/database/threat-detection-overview.md)でご確認ください。
+
+ > [!TIP]
+ > SQL サーバーのセキュリティ アラートの一覧については、[アラートのリファレンス ページ](alerts-reference.md#alerts-sql-db-and-warehouse)を参照してください。
+
+
+## <a name="is-there-a-performance-impact-from-deploying-azure-defender-for-sql-on-machines"></a>マシンに Azure Defender for SQL をデプロイするとパフォーマンスに影響が出ますか。
+
+**マシン上の Azure Defender for SQL** の焦点は明らかにセキュリティです。 しかしながら、Microsoft にとってはお客様の事業も大切であり、お使いの SQL サーバーに対する影響を最小限に抑えるべく、パフォーマンスを優先させています。 
+
+このサービスのアーキテクチャは、データのアップロードならびにスピードとパフォーマンスのバランスを維持するよう、分割されています。 
+
+- 一部の検出機能はマシン上で実行することで、リアルタイムのスピードというアドバンテージが与えられます。
+- クラウドで実行することで、重い計算負荷からマシンが解放される場合もあります。
+
+ソリューションを研究室でテストし、ベンチマークの負荷に対して比較したところ、ピーク スライスに対して CPU の使用率平均が 3% でした。 現行ユーザーを対象にテレメトリを分析すると、CPU とメモリの使用率に対する影響は無視できるものです。
+
+当然ですが、パフォーマンスは環境、マシン、負荷によって常に変化します。 上記の発言と数値は一般的なガイドラインとして提供されるものであり、個々のデプロイに対する保証ではありません。
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Azure Defender for SQL で提供されるアラートの種類
@@ -75,3 +91,4 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 この記事では、Azure Defender for SQL について説明しました。 説明したサービスを使用するために、次の作業を行います。
 
 - Azure Defender for SQL servers on machines を使用して [SQL Server の脆弱性をスキャン](defender-for-sql-usage.md)する
+- Azure Defender for SQL のプレゼンテーションについては、「[あらゆる場所にある SQL サーバーを Azure Defender for SQL で保護する方法](https://www.youtube.com/watch?v=V7RdB6RSVpc)」をご覧ください。

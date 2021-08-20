@@ -2,21 +2,21 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニングに対応するように Oracle Cloud Infrastructure Console を構成する | Microsoft Docs
 description: Azure AD から Oracle Cloud Infrastructure Console に対してユーザー アカウントを自動的にプロビジョニングまたはプロビジョニング解除する方法を説明します。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/16/2021
-ms.author: Zhchia
-ms.openlocfilehash: 84024ad57af3ca650c69bfda0eda672aee313793
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.author: thwimmer
+ms.openlocfilehash: 748e32a929e9681bb75a8d627eb9de11807c7c41
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814660"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709968"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Oracle Cloud Infrastructure Console を構成する
 > [!NOTE]
@@ -71,7 +71,7 @@ ms.locfileid: "109814660"
 
     ![Oracle でのトークン生成](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. シークレット トークンを生成するには、クライアント ID とクライアント シークレットを **<クライアント ID>:<クライアント シークレット>** の形式で Base64 にエンコードします。 シークレット トークンを保存します。 この値を、Azure portal で Oracle Cloud Infrastructure Console アプリケーションのプロビジョニング タブの **[Secret Token]\(シークレット トークン\)** フィールドに入力します。
+6. シークレット トークンを生成するには、クライアント ID とクライアント シークレットを **<クライアント ID>:<クライアント シークレット>** の形式で Base64 としてエンコードします。 注 - この値は、行の折り返しを無効にして生成する必要があります (base64 -w 0)。 シークレット トークンを保存します。 この値を、Azure portal で Oracle Cloud Infrastructure Console アプリケーションのプロビジョニング タブの **[Secret Token]\(シークレット トークン\)** フィールドに入力します。
 
 ## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Oracle Cloud Infrastructure Console を追加する
 

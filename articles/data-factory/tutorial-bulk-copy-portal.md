@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 73162ebdb28f8b8fa743ea4bb310b92b64f27557
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/06/2021
+ms.openlocfilehash: 4d3e767b14ad60f703cde59ab69cfea3f60b3759
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076756"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436894"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -83,7 +83,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 1. **Create** をクリックしてください。
 1. 作成後、 **[リソースに移動]** を選択して、 **[Data factory]** ページに移動します。 
    
-1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory UI アプリケーションを起動します。
+1. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Data Factory UI アプリケーションを起動します。
 
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
@@ -254,7 +254,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     1. **[Pre-copy Script]\(コピー前スクリプト\)** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、以下の式をスクリプトとして入力し、 **[完了]** を選択します。 
 
         ```sql
-        IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
+        IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
         ![コピー シンクの設定](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)

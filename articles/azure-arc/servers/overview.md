@@ -2,18 +2,18 @@
 title: Azure Arc 対応サーバーの概要
 description: Azure Arc 対応サーバーを使用して、Azure の外部でホストされているサーバーを Azure リソースと同じように管理する方法について説明します。
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
-ms.date: 05/26/2021
+ms.date: 07/16/2021
 ms.topic: overview
-ms.openlocfilehash: 2cf70cbf20d024d92a3a2025ca6b659ffdd8bffa
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: ed764b3eb743f29c3df033fa36893e8b3eebbc43
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294681"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457507"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
-Azure Arc 対応サーバーを使用すると、Azure の "*外部*" で、企業ネットワーク上で、または他のクラウド プロバイダー上でホストされている Windows または Linux の物理サーバーと仮想マシンを管理できます。 この管理エクスペリエンスは、ネイティブ Azure 仮想マシンの管理方法と一致するように設計されています。 ハイブリッド マシンは、Azure に接続されると接続済みマシンになり、Azure 内のリソースとして扱われます。 接続された各マシンは、リソース ID を持ち、リソース グループに含まれ、Azure Policy やタグの適用などの標準的な Azure のコンストラクトを利用できます。 顧客のオンプレミスのインフラストラクチャを管理するサービス プロバイダーは、[Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) と Azure Arc を使用して、ネイティブの Azure リソースで現在行っているのと同じように、複数のお客様の環境で各自のハイブリッド マシンを管理できます。
+Azure Arc 対応サーバーを使用すると、Azure の "*外部*"、企業ネットワーク上、または他のクラウド プロバイダーでホストされている Windows および Linux の物理サーバーと仮想マシンを管理できます。 この管理エクスペリエンスは、ネイティブ Azure 仮想マシンの管理方法と一致するように設計されています。 ハイブリッド マシンは、Azure に接続されると接続済みマシンになり、Azure 内のリソースとして扱われます。 接続された各マシンは、リソース ID を持ち、リソース グループに含まれ、Azure Policy やタグの適用などの標準的な Azure のコンストラクトを利用できます。 顧客のオンプレミスのインフラストラクチャを管理するサービス プロバイダーは、[Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) と Azure Arc を使用して、ネイティブの Azure リソースで現在行っているのと同じように、複数のお客様の環境で各自のハイブリッド マシンを管理できます。
 
 Azure の外部でホストされているハイブリッド マシンでこのエクスペリエンスを実現するには、Azure への接続を予定している各マシンに Azure Connected Machine エージェントがインストールされている必要があります。 このエージェントは他の機能をまったく持たず、Azure [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)に代わるものでもありません。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook やソリューション (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-introduction.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
 
@@ -29,7 +29,7 @@ Azure の外部でホストされているハイブリッド マシンでこの�
 
 - [VM insights](../../azure-monitor/vm/vminsights-overview.md) を使用して、接続されているマシンのゲスト オペレーティング システムのパフォーマンスを監視します。また、アプリケーション コンポーネントを検出して、そのプロセスや、アプリケーションが通信する他のリソースとの依存関係を監視します。
 
-- Azure 以外の Windows または Linux マシンでサポートされている [Azure VM 拡張機能](manage-vm-extensions.md)を使用して、Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) や Azure Monitor Log Analytics ワークスペースなどの他の Azure サービスを使用してデプロイを簡略化します。 これには、カスタム スクリプト拡張機能を使用した、デプロイ後の構成またはソフトウェアのインストールの実行が含まれます。
+- Azure 以外の Windows または Linux マシンでサポートされている [Azure VM 拡張機能](manage-vm-extensions.md)を使用して、Azure Monitor Log Analytics ワークスペースなどの他の Azure サービスを使用してデプロイを簡略化します。 これには、カスタム スクリプト拡張機能を使用した、デプロイ後の構成またはソフトウェアのインストールの実行が含まれます。
 
 - Azure Automation で [Update Management](../../automation/update-management/overview.md) を使用して、Windows と Linux サーバーのオペレーティング システムの更新プログラムを管理します
 
@@ -72,4 +72,6 @@ Connected Machine エージェントは、5 分間隔でハートビート メ�
 
 ## <a name="next-steps"></a>次のステップ
 
-複数のハイブリッド マシン間で Arc 対応サーバーを評価または有効化する前に、[Connected Machine エージェントの概要](agent-overview.md)を確認し、要件、エージェントに関する技術的な詳細、およびデプロイ方法を把握してください。
+* 複数のハイブリッド マシンにまたがって Arc 対応サーバーを評価するか、または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)を確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
+
+* [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。

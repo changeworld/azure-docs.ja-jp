@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: c0b90279b4c3c65fdc96867f5d9fff9648320294
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 62efd6215dfb83eade0e4ee4e9cfa230d1dd7971
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111429784"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659547"
 ---
 > [!NOTE]
 > このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/access-token-quickstart) にあります
@@ -111,7 +111,7 @@ CommunicationIdentityClient communicationIdentityClient = new CommunicationIdent
     .buildClient();
 ```
 
-マネージド ID をセットアップしている場合は、[マネージド ID の使用](../managed-identity.md)に関する記事を参考に、マネージド ID で認証することもできます。
+Azure Active Directory (AD) アプリケーションを設定している場合は、AD で認証することもできます。[サービス プリンシパルの使用](../identity/service-principal.md)に関するページを参照してください。
 ```java
 String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 TokenCredential credential = new DefaultAzureCredentialBuilder().build();

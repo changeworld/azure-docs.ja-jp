@@ -8,19 +8,19 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 03/23/2021
-ms.openlocfilehash: 551b6901b60e55e9496cf5c4483aa3a05dfd72a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: feb9a43b68d668e19e1fcb4b2a978f113d9ef436
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382274"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255314"
 ---
 [リファレンス ドキュメント](/javascript/api/@azure/cognitiveservices-personalizer/) | [マルチスロットの概念](..\concept-multi-slot-personalization.md) | [サンプル](https://aka.ms/personalizer/ms-nodejs)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
-* 最新バージョンの [Node.js](https://nodejs.org) および NPM。
+* [Node.js](https://nodejs.org) と NPM をインストールします (Node.js v 14.16.0 と NPM 6.14.11 で検証されています)。
 * Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title="Personalizer リソースを作成"  target="_blank">Personalizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * アプリケーションを Personalizer API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -30,6 +30,8 @@ ms.locfileid: "110382274"
 [!INCLUDE [Upgrade Personalizer instance to Multi-Slot](upgrade-personalizer-multi-slot.md)]
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
+
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
@@ -55,7 +57,7 @@ const { v4: uuidv4 } = require('uuid');
 const readline = require('readline-sync');
 // The endpoint specific to your personalization service instance; 
 // e.g. https://<your-resource-name>.cognitiveservices.azure.com
-const PersonalizationBaseUrl = 'https://<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>.cognitiveservices.azure.com';
+const PersonalizationBaseUrl = '<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>';
 // The key specific to your personalization service instance; e.g. "0123456789abcdef0123456789ABCDEF"
 const ResourceKey = '<REPLACE-WITH-YOUR-PERSONALIZER-KEY>';
 ```
@@ -63,14 +65,14 @@ const ResourceKey = '<REPLACE-WITH-YOUR-PERSONALIZER-KEY>';
 ### <a name="install-the-npm-packages-for-quickstart"></a>クイックスタート用の NPM パッケージをインストールする
 
 ```console
-npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid axios --save
+npm install readline-sync uuid axios --save
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-各スロットに対してコンテンツの 1 つの最適な項目を要求するには、[rankRequest] を作成し、[multislot/rank] エンドポイント (https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Rank) ) に POST 要求を送信します。 その後、応答が [rankResponse] に解析されます。
+各スロットに対してコンテンツの 1 つの最適な項目を要求するには、 **[rankRequest]** を作成してから、POST 要求を [multislot/rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Rank) に送信します。 その後、応答は **[rankResponse]** に解析されます。
 
-報酬スコアを Personalizer に送信するには、[rewards] を作成してから、POST 要求を [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Events_Reward) に送信します。
+報酬スコアを Personalizer に送信するには、 **[rewards]** を作成してから、POST 要求を [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Events_Reward) に送信します。
 
 このクイックスタートでは、報酬スコアの決定は重要ではありません。 実稼働システムでは、何がどの程度まで[報酬スコア](../concept-rewards.md)に影響を及ぼすかを特定するのは複雑なプロセスとなる場合があり、そのプロセスはやがて変更することになる場合もあります。 実際の Personalizer アーキテクチャでは、この設計上の意思決定を主要な意思決定に含めるようにしてください。
 
@@ -85,11 +87,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid axios -
 
 ## <a name="create-base-urls"></a>ベース URL を作成する
 
-このセクションでは、次の 2 つのことを行います。
-* ランクと報酬の URL を作成する
-* ランクと報酬の要求ヘッダーを作成する
-
-ベース URL を使用してランクと報酬の URL を作成し、リソース キーを使用して要求ヘッダーを作成します。
+このセクションでは、ベース URL を使用してランクと報酬の URL を作成し、リソース キーを使用して要求ヘッダーを作成します。
 
 ```javascript
 const MultiSlotRankUrl = PersonalizationBaseUrl.concat('personalizer/v1.1-preview.1/multislot/rank');
@@ -221,7 +219,7 @@ function getSlots() {
 
 ## <a name="make-http-requests"></a>HTTP 要求を行う
 
-マルチスロットのランクと報酬の呼び出しの場合は、POST 要求を Personalizer のエンドポイントに送信します。
+マルチスロットの Rank 呼び出しと Reward 呼び出しの場合は、これらの関数を追加して POST 要求を Personalizer のエンドポイントに送信します。
 
 ```javascript
 async function sendMultiSlotRank(rankRequest) {
@@ -230,7 +228,12 @@ async function sendMultiSlotRank(rankRequest) {
         return response.data;
     }
     catch (err) {
-        console.log(err);
+        if(err.response)
+        {
+            throw err.response.data
+        }
+        console.log(err)
+        throw err;
     }
 }
 ```
@@ -243,6 +246,7 @@ async function sendMultiSlotReward(rewardRequest, eventId) {
     }
     catch (err) {
         console.log(err);
+        throw err;
     }
 }
 ```
@@ -275,7 +279,7 @@ Personalizer の学習ループとは、[Rank](#request-the-best-action) 呼び�
 次のコードでは、コマンド ラインでユーザーに好みをたずね、その情報を Personalizer に送信して各スロットに最適なアクションを選択し、その選択をリストから選択できるようユーザーに提示した後、その選択にサービスがどの程度寄与したかを示す報酬スコアを Personalizer に送る形でサイクルをループで処理しています。
 
 ```javascript
-runLoop = true;
+let runLoop = true;
 
 (async () => {
     do {
@@ -296,39 +300,36 @@ runLoop = true;
 
         multiSlotRankRequest.deferActivation = false;
 
-        //Rank the actions for each slot
         try {
-            var multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
-        }
-        catch (err) {
-            console.log(err);
-        }
-
-        let multiSlotrewards = {};
-        multiSlotrewards.reward = [];
-
-        for (i = 0; i < multiSlotRankResponse.slots.length; i++) {
-            console.log('\nPersonalizer service decided you should display: '.concat(multiSlotRankResponse.slots[i].rewardActionId, ' in slot ', multiSlotRankResponse.slots[i].id, '\n'));
-
-            let slotReward = {};
-            slotReward.slotId = multiSlotRankResponse.slots[i].id;
-            // User agrees or disagrees with Personalizer decision for slot
-            slotReward.value = getRewardForSlot();
-            multiSlotrewards.reward.push(slotReward);
-        }
-
-        // Send the rewards for the event
-        try {
+            //Rank the actions for each slot
+            let multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
+            let multiSlotrewards = {};
+            multiSlotrewards.reward = [];
+    
+            for (let i = 0; i < multiSlotRankResponse.slots.length; i++) {
+                console.log('\nPersonalizer service decided you should display: '.concat(multiSlotRankResponse.slots[i].rewardActionId, ' in slot ', multiSlotRankResponse.slots[i].id, '\n'));
+    
+                let slotReward = {};
+                slotReward.slotId = multiSlotRankResponse.slots[i].id;
+                // User agrees or disagrees with Personalizer decision for slot
+                slotReward.value = getRewardForSlot();
+                multiSlotrewards.reward.push(slotReward);
+            }
+    
+            // Send the rewards for the event
             await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
+    
+            let answer = readline.question('\nPress q to break, any other key to continue:\n').toUpperCase();
+            if (answer === 'Q') {
+                runLoop = false;
+            }
         }
         catch (err) {
             console.log(err);
+            throw err;
         }
 
-        let answer = readline.question('\nPress q to break, any other key to continue:\n').toUpperCase();
-        if (answer === 'Q') {
-            runLoop = false;
-        }
+
 
     } while (runLoop);
 })()
@@ -347,7 +348,7 @@ rank 呼び出しと reward 呼び出しについて、以降の各セクショ�
 
 ## <a name="request-the-best-action"></a>最適なアクションを要求する
 
-Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢を作成します。 要求の本文には、応答を受け取るためのコンテキストのフィーチャー、アクションとそのフィーチャー、スロットとそのフィーチャー、一意のイベント ID が含まれます。 `sendMultiSlotRank` メソッドには、マルチスロットのランク要求を送信するための rankRequest が必要です。
+Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢を作成します。 要求本文には、コンテキスト、アクション、スロットと、それぞれの機能が含まれています。 `sendMultiSlotRank` メソッドは、rankRequest を受け取り、マルチスロットのランク要求を実行します。
 
 このクイックスタートのコンテキストのフィーチャーは、時間帯とユーザーのデバイスという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concepts-features.md)を決定し、[評価](../concept-feature-evaluation.md)することが、決して簡単ではない場合もあります。
 
@@ -370,16 +371,17 @@ multiSlotRankRequest.deferActivation = false;
 
 //Rank the actions for each slot
 try {
-    var multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
+    let multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
 }
 catch (err) {
     console.log(err);
+    throw err;
 }
 ```
 
 ## <a name="send-a-reward"></a>報酬を送信する
 
-Reward 要求で送信する報酬スコアを取得するめに、このプログラムでは、各スロットのユーザーの選択をコマンド ラインから取得し、選択に数値を割り当てた後、一意のイベント ID、スロット ID、各スロットのと報酬スコア (数値) を `sendMultiSlotReward` メソッドに送信します。 スロットごとに報酬を定義する必要はありません。
+Reward 要求用の報酬スコアを取得するために、プログラムでは各スロットのユーザーの選択をコマンド ラインから取得し、選択に数値 (報酬スコア) を割り当てた後、一意のイベント ID、スロット ID、各スロットの報酬スコアを `sendMultiSlotReward` メソッドに送信します。 スロットごとに報酬を定義する必要はありません。
 
 このクイックスタートでは、0 または 1 という単純な数値を報酬スコアとして割り当てます。 実際のニーズにもよりますが、実稼働システムでは、いつ何を [Reward](../concept-rewards.md) 呼び出しに送信するかが決して簡単な決定事項ではない場合もあります。
 
@@ -398,12 +400,7 @@ for (i = 0; i < multiSlotRankResponse.slots.length; i++) {
 }
 
 // Send the rewards for the event
-try {
-    await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
-}
-catch (err) {
-    console.log(err);
-}
+await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
 ```
 
 ## <a name="run-the-program"></a>プログラムの実行
@@ -417,4 +414,4 @@ node sample.js
 ![クイック スタート プログラムは、フィーチャーと呼ばれるユーザー設定を収集するためにいくつかの質問をしてから、最上位のアクションを提供します。](../media/csharp-quickstart-commandline-feedback-loop/multislot-quickstart-program-feedback-loop-example-1.png)
 
 
-[こちらでこのクイックスタート用のソース コード](https://aka.ms/personalizer/ms-nodejs)を入手できます。
+[こちらでこのクイックスタート用のソース コード](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer/multislot-quickstart)を入手できます。

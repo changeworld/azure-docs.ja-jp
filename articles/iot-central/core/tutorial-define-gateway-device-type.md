@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 55cd7c86ae4f0110618745459cea48abe5e144d0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 75b818382102642ecc8380b257c9c31382b8283d
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084576"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588419"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>チュートリアル - Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
 
@@ -30,8 +30,14 @@ ms.locfileid: "110084576"
 * オペレーターによって行われた書き込み可能なプロパティの更新に応答する。 (たとえば、オペレーターはテレメトリの送信間隔を変更できます)。
 * コマンド (デバイスの再起動など) に応答する。
 
+このチュートリアルでは、次の作業を行う方法について説明します。
+
 > [!div class="checklist"]
-> ダウンストリーム デバイス テンプレートを作成する ゲートウェイ デバイス テンプレートを作成する デバイス テンプレートを公開する シミュレートされたデバイスを作成する
+>
+> * ダウンストリーム デバイス テンプレートを作成する
+> * ゲートウェイ デバイス テンプレートの作成
+> * デバイス テンプレートを公開する
+> * シミュレートされたデバイスを作成する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -92,7 +98,6 @@ ms.locfileid: "110084576"
 
 1. **[保存]** を選択します。
 
-
 ### <a name="add-relationships"></a>リレーションシップの追加
 
 次に、ダウンストリーム デバイス テンプレートにリレーションシップを追加します。
@@ -129,7 +134,7 @@ ms.locfileid: "110084576"
 作成者は、環境センサー デバイスの関連情報がオペレーターに表示されるよう、アプリケーションをカスタマイズできます。 カスタマイズを行うことで、オペレーターがアプリケーションに接続された環境センサー デバイスを管理できるようになります。 オペレーター向けのデバイス操作用のビューを 2 種類作成できます。
 
 * デバイス プロパティとクラウド プロパティを表示および編集するためのフォーム。
-* デバイスを視覚化するためのダッシュボード。
+* デバイスを視覚化するためのビュー。
 
 **スマート ビルディング ゲートウェイ デバイス** テンプレートの既定のビューを生成するには、次の手順を実行します。
 
@@ -207,12 +212,39 @@ ms.locfileid: "110084576"
 
 ![ダウンストリーム デバイス ビュー](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
 
+## <a name="connect-real-downstream-devices"></a>実際のダウンストリーム デバイスを接続する
+
+「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」チュートリアルのサンプル コードでは、デバイスによって送信されるプロビジョニング ペイロードにデバイス テンプレートのモデル ID を含める方法が示されています。 モデル ID により、IoT Central でデバイスを正しいデバイス テンプレートと関連付けることができます。 次に例を示します。
+
+```python
+async def provision_device(provisioning_host, id_scope, registration_id, symmetric_key, model_id):
+  provisioning_device_client = ProvisioningDeviceClient.create_from_symmetric_key(
+    provisioning_host=provisioning_host,
+    registration_id=registration_id,
+    id_scope=id_scope,
+    symmetric_key=symmetric_key,
+  )
+
+  provisioning_device_client.provisioning_payload = {"modelId": model_id}
+  return await provisioning_device_client.register()
+```
+
+ダウンストリーム デバイスを接続するときに、プロビジョニング ペイロードを変更して、ゲートウェイ デバイスの ID を含めることができます。 モデル ID により、IoT Central でデバイスを正しいダウンストリーム デバイス テンプレートと関連付けることができます。 ゲートウェイ ID により、IoT Central でダウンストリーム デバイスとそのゲートウェイの間の関係を確立できます。 この場合、デバイスによって送信されるプロビジョニング ペイロードは、次の JSON のようになります。
+
+```json
+{
+  "modelId": "dtmi:rigado:S1Sensor;2",
+  "iotcGateway":{
+    "iotcGatewayId": "gateway-device-001"
+  }
+}
+```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

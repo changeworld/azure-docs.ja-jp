@@ -7,12 +7,12 @@ ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 42aa07ccf8d886dc7eb7109bc405c730331b2c3b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: c2c2dd5f2e51cba0951d0d60c9fbf144d16ad599
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095631"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486447"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Azure Defender for Storage の概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "102095631"
 |リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for Storage** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |保護されるストレージの種類:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure China|
 |||
 
 
@@ -39,7 +39,7 @@ Azure Defender for Storage の利点は次のとおりです。
 - **豊富な検出スイート** - Microsoft の脅威インテリジェンスを利用した Defender for Storage の検出機能は、匿名アクセス、資格情報の漏洩、ソーシャル エンジニアリング、特権の乱用、悪意のあるコンテンツなど、ストレージに関する代表的な脅威をカバーしています。
 - **包括的な対応** - 特定された脅威は、Security Center のオートメーション ツールによって簡単に防止、対応できます。 詳細については、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
 
-:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Azure Defender for Storage の機能概要":::
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Azure Defender for Storage の機能概要。":::
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>Azure Defender for Storage で提供されるアラートの種類
@@ -74,7 +74,7 @@ Azure Defender for Storage の利点は次のとおりです。
 1. Azure Defender for Storage が有効になっているストレージ アカウントを開きます。
 1. サイドバーから [コンテナー] を選択し、既存のコンテナーを開くか、新しいコンテナーを作成します。
 
-    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="Azure Storage アカウントから BLOB コンテナーを開く" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
+    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="Azure Storage アカウントから BLOB コンテナーを開く。" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
 
 1. ファイルをそのコンテナーにアップロードします。
 
@@ -83,7 +83,7 @@ Azure Defender for Storage の利点は次のとおりです。
 
 1. アップロードしたファイルのコンテキスト メニューを使用して、[SAS の生成] を選択します。
 
-    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="BLOB コンテナー内のファイルの [SAS の生成] オプション":::
+    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="BLOB コンテナー内のファイルの [SAS の生成] オプション。":::
 
 1. 既定のオプションをそのまま使用し、 **[SAS トークンおよび URL を生成]** を選択します。
 
@@ -100,7 +100,7 @@ Azure Defender for Storage の利点は次のとおりです。
 
     2 時間以内に、Security Center に次のセキュリティ アラートが表示されます。
 
-    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="Tor 出口ノードからのアクセスに関するセキュリティ アラート":::
+    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="Tor 出口ノードからのアクセスに関するセキュリティ アラート。":::
 
 ## <a name="next-steps"></a>次の手順
 

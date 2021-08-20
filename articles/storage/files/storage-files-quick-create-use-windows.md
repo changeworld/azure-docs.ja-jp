@@ -1,24 +1,31 @@
 ---
-title: Windows VM で Azure Files 共有を作成して使用する
-description: Azure portal で Azure Files 共有を作成して使用します。 それを Windows VM に接続し、Files 共有に接続して、Files 共有にファイルをアップロードします。
+title: Windows VM で Azure のファイル共有を作成して使用する
+description: Azure portal で Azure のファイル共有を作成して使用します。 それを Windows VM に接続し、Files 共有に接続して、Files 共有にファイルをアップロードします。
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/15/2021
+ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a3c664f6c6c0532ef915357cfbcbc8228202502
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 3cb97d40008a103d9de6d76018f7881764813e3c
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718239"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727188"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>クイック スタート:Windows Virtual Machines で Azure Files 共有を作成して管理する
+# <a name="quickstart-create-and-manage-azure-file-shares-with-windows-virtual-machines"></a>クイックスタート: Windows Virtual Machines で Azure のファイル共有を作成して管理する
 
 この記事では、Azure Files 共有を作成して使用する基本的な手順について説明します。 このクイック スタートでは、Azure Files 共有サービスを体験できるよう、Azure ファイル共有をすばやく設定することに重点を置いています。 ご利用の環境に Azure ファイル共有を作成して使用するさらに詳しい手順については、「[Windows で Azure ファイル共有を使用する](storage-how-to-use-files-windows.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -63,13 +70,14 @@ Azure ファイル共有を使用するためには、あらかじめ Azure ス�
 ### <a name="deploy-a-vm"></a>VM をデプロイする
 
 1. 次に、ポータルの左側にあるメニューを展開して、Azure portal の左上隅にある **[リソースの作成]** を選択します。
-1. **Azure Marketplace** リソースの一覧の上にある検索ボックスで **Windows Server 2016 Datacenter** を検索して選択します。
+1. **[人気のあるサービス]** で、 **[仮想マシン]** を選択します。
 1. **[基本]** タブの **[プロジェクトの詳細]** で、このクイック スタートのために作成したリソース グループを選択します。
 
    ![ポータルのブレードで VM に関する基本情報を入力します。](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
 1. **[インスタンスの詳細]** で、VM に *qsVM* という名前を付けます。
-1. **[リージョン]**、**[可用性オプション]**、**[イメージ]**、**[サイズ]** は、既定の設定のままにしておきます。
+1. **[イメージ]** に **[Windows Server 2016 Datacenter - Gen2]** を選択します。
+1. **[リージョン]** 、 **[可用性オプション]** 、 **[サイズ]** は、既定の設定のままにしておきます。
 1. **[管理者アカウント]** で、**ユーザー名** を追加し、VM の **パスワード** を入力します。
 1. **[受信ポートの規則]** で、**[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[RDP (3389)]** と **[HTTP]** を選択します。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。

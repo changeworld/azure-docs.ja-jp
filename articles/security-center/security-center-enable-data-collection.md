@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: f7b09c47d94443edc81a66028fa687aa48e843e7
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 3f7663c62b514cb002b4de3df59d2185cfa815d3
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002344"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284224"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Azure Security Center からのエージェントと拡張機能の自動プロビジョニングを構成する
 
@@ -27,8 +27,8 @@ Azure Security Center では、リソースに関連するエージェントま�
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | リリース状態:          | **機能**:自動プロビジョニングが一般提供 (GA)<br>**エージェントと拡張機能**: Azure VM 用の Log Analytics エージェントは GA です。Microsoft Dependency エージェントはプレビュー段階です。Kubernetes 用のポリシー アドオンは GA です                |
 | 価格:                | Free                                                                                                                                                                                                                         |
-| サポートされる宛先: | ![はい](./media/icons/yes-icon.png) Azure マシン<br>![いいえ](./media/icons/no-icon.png) Azure Arc マシン<br>![いいえ](./media/icons/no-icon.png) Kubernetes ノード<br>![いいえ](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| クラウド:                 | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov、Azure China                                                                                                      |
+| サポートされる宛先: | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure マシン<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure Arc マシン<br>:::image type="icon" source="./media/icons/no-icon.png"::: Kubernetes ノード<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtual Machine Scale Sets |
+| クラウド:                 | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov、Azure China                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 ## <a name="how-does-security-center-collect-data"></a>Security Center でのデータの収集方法
@@ -86,9 +86,9 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
         > [!TIP]
         > 既定のワークスペースに関する質問については、以下をご覧ください。
         >
-        > - [Security Center で作成されたワークスペース上の Azure Monitor ログには課金されますか?](/azure/security-center/faq-data-collection-agents#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center-)
-        > - [既定の Log Analytics ワークスペースはどこに作成されますか?](/azure/security-center/faq-data-collection-agents#where-is-the-default-log-analytics-workspace-created-)
-        > - [Security Center で作成された既定のワークスペースは削除できますか?](/azure/security-center/faq-data-collection-agents#can-i-delete-the-default-workspaces-created-by-security-center-)
+        > - [Security Center で作成されたワークスペース上の Azure Monitor ログには課金されますか?](./faq-data-collection-agents.yml#am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center-)
+        > - [既定の Log Analytics ワークスペースはどこに作成されますか?](./faq-data-collection-agents.yml#where-is-the-default-log-analytics-workspace-created-)
+        > - [Security Center で作成された既定のワークスペースは削除できますか?](./faq-data-collection-agents.yml#can-i-delete-the-default-workspaces-created-by-security-center-)
 
     - **[Connect Azure VMs to a different workspace]\(Azure VM を別のワークスペースに接続する\)** - ドロップダウン リストから、収集したデータを保存するワークスペースを選択します。 ドロップダウン リストには、自分の全サブスクリプション内のワークスペースがすべて含まれています。 このオプションを使用して、さまざまなサブスクリプションで稼働している仮想マシンからデータを収集し、自分が選択したワークスペースにすべて保存できます。  
 
@@ -181,7 +181,7 @@ Microsoft では、**共通** および **最小** オプションのイベン�
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - グループ ポリシー オブジェクト (GPO) を使用している場合は、プロセス作成イベント 4688 の監査ポリシーと、イベント 4688 内の *CommandLine* フィールドを有効にすることをお勧めします。 プロセス作成イベント 4688 の詳細については、Security Center の [FAQ](/azure/security-center/faq-data-collection-agents#what-happens-when-data-collection-is-enabled-) を参照してください。 これらの監査ポリシーの詳細については、「[Audit Policy Recommendations](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)」(監査ポリシーの推奨事項) を参照してください。
+> - グループ ポリシー オブジェクト (GPO) を使用している場合は、プロセス作成イベント 4688 の監査ポリシーと、イベント 4688 内の *CommandLine* フィールドを有効にすることをお勧めします。 プロセス作成イベント 4688 の詳細については、Security Center の [FAQ](./faq-data-collection-agents.yml#what-happens-when-data-collection-is-enabled-) を参照してください。 これらの監査ポリシーの詳細については、「[Audit Policy Recommendations](/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)」(監査ポリシーの推奨事項) を参照してください。
 > -  [適応型アプリケーション制御](security-center-adaptive-application.md)のデータ収集を有効にするために、Security Center は、ローカル AppLocker ポリシーを監査モードで構成して、すべてのアプリケーションを許可します。 これをきっかけとして AppLocker がイベントを生成するようになり、そのイベントが Security Center によって収集されて活用されます。 ただし、既に AppLocker ポリシーが構成されているマシンでは、このポリシーが構成されないので注意してください。 
 > - Windows フィルタリング プラットフォーム イベント ([イベント ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)) を収集するには、[[フィルタリング プラットフォームの接続の監査]](/windows/security/threat-protection/auditing/audit-filtering-platform-connection) を有効にする必要があります (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)。
 >
@@ -271,7 +271,7 @@ Log Analytics エージェントを手動でインストールするには:
 
 
 > [!NOTE]
->  自動プロビジョニングを無効にしても、Log Analytics エージェントがプロビジョニングされている Azure VM からそのエージェントは削除されません。 OMS 拡張機能の削除については、「[Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか](/azure/security-center/faq-data-collection-agents#how-do-i-remove-oms-extensions-installed-by-security-center-)」をご覧ください。
+>  自動プロビジョニングを無効にしても、Log Analytics エージェントがプロビジョニングされている Azure VM からそのエージェントは削除されません。 OMS 拡張機能の削除については、「[Security Center にインストールされている OMS 拡張機能を削除するにはどうすればよいですか](./faq-data-collection-agents.yml#how-do-i-remove-oms-extensions-installed-by-security-center-)」をご覧ください。
 >
 
 

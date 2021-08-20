@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 7dc004de8b4c01fca8eebf54332a9fa5c177ae13
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4c0ec200fa3506dd0b251903954240eff5132dd4
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038810"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982512"
 ---
 # <a name="russian-open-speech-to-text"></a>Russian Open Speech To Text (ロシア語の公開音声テキスト変換)
 
@@ -97,7 +97,7 @@ store_path = Path(root_folder,
 データセットは、次の 2 つの形式で提供されます。
 
 - Azure Blob Storage や直接リンクを介して利用できるアーカイブ。
-- Azure Blob Storage を介して利用できる元のファイル。すべてのものが https://azureopendatastorage.blob.core.windows.net/openstt/ に保存されています。
+- Azure Blob Storage を介して利用できる元のファイル。すべてのものが 'https://azureopendatastorage.blob.core.windows.net/openstt/ ' に保存されています
 
 フォルダー構造:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 509e31919dd974da253cd0478a70f889cc060fae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 369195e8dfce2440c2e34151e7de6b2d23edbad1
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831792"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963259"
 ---
 # <a name="tutorial-create-and-explore-the-solar-panel-monitoring-app-template"></a>チュートリアル:ソーラー パネル監視アプリ テンプレートの作成と確認 
 
@@ -64,7 +64,7 @@ ms.locfileid: "99831792"
 アプリ テンプレートのデプロイに成功したら、アプリについてもう少し詳しく調べてみましょう。 サンプルのスマート メーター デバイス、デバイス モデル、ダッシュボードが付属していることに注目してください。
 
 Adatum は、ソーラー パネルを監視および管理する架空のエネルギー会社です。 ソーラー パネル監視ダッシュボードには、ソーラー パネルのプロパティ、データ、およびサンプル コマンドが表示されます。 このダッシュボードでは、お客様またはそのサポート チームが次のアクティビティを行って、問題に追加のサポートが必要となる前にプロアクティブに対応できます。
-* マップ上の最新のパネル情報とその設置場所を確認する。
+* マップ上の最新のパネル情報とその設置[場所](../core/howto-use-location-data.md)を確認する。
 * パネルの状態と接続の状態を確認する。
 * エネルギー生成と温度の傾向を確認して異常なパターンをキャッチする。
 * 計画と課金のためにエネルギー生成の合計を追跡する。

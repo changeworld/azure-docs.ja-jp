@@ -6,13 +6,13 @@ author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: c79d96e016459732ce71019511fa429d62d91f9d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 07/05/2021
+ms.openlocfilehash: 9dbeeaa10fc755b978a1819a0af181da47149921
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740139"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436840"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Azure portal を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -179,11 +179,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-   ![データ ファクトリのホーム ページ](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
-10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
-11. **開始** ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\) タイルを含む、Azure Data Factory のホーム ページ。":::
 
-    ![[Create pipeline]\(パイプラインの作成\) ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
+10. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
+11. ホーム ページで、次の図に示すように、左パネルの **[管理]** タブに切り替えます。
+
+    ![[管理] ボタンを示すスクリーンショット。](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、Azure ストレージ アカウントと Azure SQL Database のデータベースに対するリンクされたサービスを作成します。
@@ -414,7 +415,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. **[Import parameter]\(インポート パラメーター\)** を選択します。
     3. **[ストアド プロシージャのパラメーター]** セクションで、各パラメーターに次の値を指定します。
 
-        | 名前 | 種類 | 値 |
+        | 名前 | Type | 値 |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

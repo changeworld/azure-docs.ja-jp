@@ -9,24 +9,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 057a69881b8b407e5d75fa3510ca1c3eb1830bc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c2123b84aa6e3da362df9ce47d1e7780e8a856
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446492"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441762"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>サーバーレス SQL プールで Apache Spark for Azure Synapse の外部テーブル定義を同期する
 
 サーバーレス SQL プールにより、Apache Spark からメタデータを自動的に同期することができます。 サーバーレス Apache Spark プール内にあるデータベースごとに、サーバーレス SQL プール データベースが作成されます。 
 
-Parquet に基づく、Azure Storage に配置された各 Spark 外部テーブルに対して、サーバーレス SQL プール データベースに外部テーブルが作成されます。 そのため、Spark プールをシャットダウンしても、サーバーレス SQL プールから Spark 外部テーブルに対するクエリを引き続き実行できます。
+Parquet または CSV に基づく、Azure Storage に配置された各 Spark 外部テーブルに対して、サーバーレス SQL プール データベースに外部テーブルが作成されます。 そのため、Spark プールをシャットダウンしても、サーバーレス SQL プールから Spark 外部テーブルに対するクエリを引き続き実行できます。
 
 テーブルが Spark でパーティション分割されている場合、ストレージ内のファイルはフォルダーごとに整理されます。 サーバーレス SQL プールでは、パーティション メタデータが使用され、クエリに関連するフォルダーとファイルのみが対象になります。
 
 メタデータの同期は、Azure Synapse ワークスペースにプロビジョニングされた各サーバーレス Apache Spark プールに対して自動的に構成されます。 Spark 外部テーブルに対するクエリをすぐに開始できます。
 
-Spark の Azure Storage に配置された各 Parquet 外部テーブルは、サーバーレス SQL プール データベースに対応する dbo スキーマの外部テーブルで表されます。 
+Spark の Azure Storage に配置された各 Parquet または CSV 外部テーブルは、サーバーレス SQL プール データベースに対応する dbo スキーマの外部テーブルで表されます。 
 
 Spark 外部テーブルのクエリの場合は、外部 [spark_table] を対象とするクエリを実行します。 次の例を実行する前に、ファイルが配置されている[ストレージ アカウントへの適切なアクセス許可](develop-storage-files-storage-access-control.md)を持っていることを確認してください。
 

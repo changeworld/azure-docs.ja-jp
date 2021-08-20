@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 06/22/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 11c0a621375cfa57c8b25f0bdd5ed4651dffa853
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f634cb35590a428613858a88a71db1d0792ceb06
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949413"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112967504"
 ---
 # <a name="tutorial-create-your-project"></a>チュートリアル: プロジェクトを作成する
 
@@ -26,7 +26,6 @@ Azure Certified Device プログラムによるデバイスの認定に興味を
 > * プロジェクトの基本的なデバイスの詳細を指定する
 
 ## <a name="prerequisites"></a>前提条件
-
 
 - 職場または学校の有効な [Azure Active Directory アカウント](../active-directory/fundamentals/active-directory-whatis.md)。
 - 検証済みの Microsoft Partner Network (MPN) アカウント。 MPN アカウントをお持ちでない場合は、最初に[パートナー ネットワークに参加](https://partner.microsoft.com/)してください。 
@@ -65,6 +64,10 @@ Azure Certified Device プログラムによるデバイスの認定に興味を
     | デバイスの種類            | Finished Product または Solution-Ready Developer Kit の指定。     用語の詳細については、「[認定の用語集](./resources-glossary.md)」を参照してください。                                                                     |
     | デバイス クラス           | ゲートウェイ、センサーなど。  用語の詳細については、「[認定の用語集](./resources-glossary.md)」を参照してください。                                                                    |
     | デバイス ソース コード URL | Solution-Ready Dev Kit を認定する場合は必須。それ以外の場合は省略可能です。 URL は、GitHub におけるデバイスコードの場所にする必要があります。 |
+
+    > [!Note]
+    > Microsoft サービス (Azure Sphere など) を販売している場合は、デバイス名が Microsoft の[ブランド化ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks)に準拠していることを確認してください。
+
 1. [`Next`]\(次へ\) ボタンを選択して [`Certifications`]\(認定\) タブに進みます。
 
     ![[Create new project]\(新しいプロジェクトの作成\) フォームの [Certifications]\(認定\) タブの画像](./media/images/create-new-project-certificationswindow.png)

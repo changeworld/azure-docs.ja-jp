@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 1d846a282eba516a69460e020cd22c80f845e2f5
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 70e49ef548515e842b3838c892570622c8fe950f
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430705"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659556"
 ---
 > [!NOTE]
 > このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/AccessTokensQuickstart) にあります
@@ -102,7 +102,7 @@ string accessKey = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_AC
 var client = new CommunicationIdentityClient(new Uri(endpoint), new AzureKeyCredential(accessKey));
 ```
 
-マネージド ID をセットアップしている場合は、[マネージド ID の使用](../managed-identity.md)に関する記事を参考に、マネージド ID で認証することもできます。
+Azure Active Directory (AD) アプリケーションを設定している場合は、AD で認証することもできます。[サービス プリンシパルの使用](../identity/service-principal.md)に関するページを参照してください。
 ```csharp
 TokenCredential tokenCredential = new DefaultAzureCredential();
 var client = new CommunicationIdentityClient(new Uri(endpoint), tokenCredential);

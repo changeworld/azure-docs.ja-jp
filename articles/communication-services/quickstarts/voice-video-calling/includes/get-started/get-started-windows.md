@@ -4,17 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 7589190f29e7d85bfb49a868dde9b261882d28b0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: a85246e9c60af6363ddd59066f55941da04cfe1c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593404"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536130"
 ---
 このクイックスタートでは、Windows 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/VoiceCalling) にあります
+## <a name="sample-code"></a>サンプル コード
+
+サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/VoiceCalling) からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -123,7 +124,11 @@ Azure Communication Services Calling SDK の主な機能のいくつかは、次
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-ユーザー アクセス トークンを使用して `CallAgent` インスタンスを初期化します。これにより、電話をかけたり受けたりすることができるようになります。 次のコードを `InitCallAgent` 関数に追加します。 
+ユーザー アクセス トークンを使用して `CallAgent` インスタンスを初期化します。これにより、電話をかけたり受けたりすることができるようになります。 
+
+次のコードで、`<USER_ACCESS_TOKEN>` をユーザー アクセス トークンに置き換えます。 まだトークンを入手していない場合は、[ユーザー アクセス トークン](../../../access-tokens.md)に関するドキュメントを参照してください。
+
+次のコードを `InitCallAgent` 関数に追加します。 
 
 ```C#
 CommunicationTokenCredential token_credential = new CommunicationTokenCredential("<USER_ACCESS_TOKEN>");
@@ -167,7 +172,3 @@ private async void HangupButton_Click(object sender, RoutedEventArgs e)
 発信通話を行うには、テキスト フィールドにユーザー ID を指定し、[`Start Call`]\(通話を開始\) ボタンをクリックします。 `8:echo123` を呼び出すとエコー ボットに接続されます。これは、オーディオ デバイスを起動し、デバイスが機能していることを確認する場合に役立ちます。
 
 :::image type="content" source="../../media/windows/run-the-app.png" alt-text="クイックスタート アプリの実行を示すスクリーンショット":::
-
-## <a name="sample-code"></a>サンプル コード
-
-サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/VoiceCalling) からダウンロードできます

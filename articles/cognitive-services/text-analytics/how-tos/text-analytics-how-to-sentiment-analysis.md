@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 06/10/2021
+ms.date: 07/07/2021
 ms.author: aahi
-ms.openlocfilehash: a8645552cba0bb687b5d9a9dc93bc917d7ee38af
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 00ffe7d9911e10dad26976b36954be5fe61c3474
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969330"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113549690"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニング
 
@@ -25,7 +25,7 @@ API で使用される AI モデルはサービスによって提供されるた
 
 ## <a name="sentiment-analysis-versions-and-features"></a>感情分析のバージョンと機能
 
-| 機能                                   | 感情分析 v3 | Sentiment Analysis v3.1 (プレビュー) |
+| 機能                                   | 感情分析 v3.0 | 感情分析 v3.1 |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | 単一要求およびバッチ要求のメソッド    | X                     | X                                 |
 | 感情分析のスコアとラベル付け             | X                     | X                                 |
@@ -49,7 +49,7 @@ API で使用される AI モデルはサービスによって提供されるた
 
 ## <a name="opinion-mining"></a>オピニオン マイニング
 
-オピニオン マイニングは、バージョン 3.1 のプレビュー以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれる製品やサービスの属性に関連した意見について、より粒度の細かい情報が得られます。 API は、ターゲット (名詞または動詞) と評価 (形容詞) として意見をクローズアップします。
+オピニオン マイニングは、バージョン 3.1 以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれる製品やサービスの属性に関連した意見について、より粒度の細かい情報が得られます。 API は、ターゲット (名詞または動詞) と評価 (形容詞) として意見をクローズアップします。
 
 たとえば、あるホテルについて "The room was great, but the staff was unfriendly (部屋はすばらしいのですが、スタッフが無愛想でした)" のようなフィードバックを利用者が残した場合、そのテキストに含まれるターゲット (アスペクト) と、それに関連する評価 (意見) と感情がオピニオン マイニングによって特定されます。 感情分析では、否定的な感情のみが報告される可能性があります。
 
@@ -64,7 +64,7 @@ API で使用される AI モデルはサービスによって提供されるた
 
 感情分析では、作業するテキストの分量が小さいほど、高い品質の結果が得られます。 これは、テキスト ブロックが大きい方がパフォーマンスが向上するキー フレーズ抽出とは反対です。 両方の操作から最善の結果を得るには、両方の操作に応じて入力を再構成することを検討してください。
 
-JSON ドキュメントは、次の形式である必要があります: ID、テキスト、および言語。 感情分析はさまざまな言語をサポートしており、さらにプレビューで追加されます。 詳細については、[サポートされている言語](../language-support.md)に関するページを参照してください。
+JSON ドキュメントは、次の形式である必要があります: ID、テキスト、および言語。 感情分析は幅広い言語をサポートしています。 詳細については、[サポートされている言語](../language-support.md)に関するページを参照してください。
 
 ドキュメントのサイズは、ドキュメントごとに 5120 文字未満でなければなりません。 1 つのコレクションで許可されるドキュメントの最大数については、概念の下にある[データ制限](../concepts/data-limits.md?tabs=version-3)に関する記事を参照してください。 コレクションは、要求の本文で送信されます。
 
@@ -72,9 +72,9 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 POST 要求を作成します。 次のリファレンス リンクにある [Postman](text-analytics-how-to-call-api.md) または **API テスト コンソール** を使用して、簡単に要求を構造化し、送信することができます。 
 
-#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+#### <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-[感情分析 v3.1 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Sentiment)
+[感情分析 v3.1 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Sentiment)
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -89,17 +89,17 @@ Azure 上の Text Analytics リソースまたはインスタンス化された 
 > [!NOTE]
 > Azure portal で Text Analytics リソースのキーとエンドポイントを確認できます。 それらは、リソースの **クイック スタート** ページの **リソース管理** の下にあります。 
 
-#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+#### <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 **感情分析**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/sentiment`
 
 **オピニオン マイニング**
 
 オピニオン マイニングの結果を得るには、`opinionMining=true` パラメーターを含める必要があります。 次に例を示します。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/sentiment?opinionMining=true`
 
 既定では、このパラメーターが `false` に設定されています。 
 
@@ -117,7 +117,7 @@ v3.0 では、使用できるエンドポイントは、感情分析用のみに
 
 ### <a name="example-request-for-sentiment-analysis-and-opinion-mining"></a>感情分析とオピニオン マイニングの要求の例  
 
-感情分析のために送信するコンテンツの例を次に示します。 要求の形式は、`v3.0` と `v3.1-preview` のどちらでも同じです。
+感情分析のために送信するコンテンツの例を次に示します。 要求の形式は、`v3.0` と `v3.1` のどちらでも同じです。
     
 ```json
 {
@@ -142,7 +142,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。 多言語と絵文字のサポートにより、応答にはテキスト オフセットが含まれる場合があります。 詳細については[オフセットの処理方法](../concepts/text-offsets.md)に関するページを参照してください。
 
-#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+#### <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>感情分析とオピニオン マイニングの応答の例
 

@@ -5,15 +5,15 @@ author: ProbablePrime
 manager: chpalm
 services: azure-communication-services
 ms.author: rifox
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e403fb8bcd25d1274eda287bc62465bacdb9b613
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84a0722a85e08de34841fef752ac8bb36c32f8b9
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045469"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357066"
 ---
 # <a name="help-and-support-options-for-azure-communication-services"></a>Azure Communication Services のヘルプとサポートのオプション
 
@@ -31,3 +31,15 @@ Azure Communication Services の製品または技術について質問がある
 ## <a name="post-a-question-on-stack-overflow"></a>Stack Overflow に質問を投稿する
 
 開発者の大規模なコミュニティとエコシステムがある Stack Overflow で質問することもできます。 Azure Communication Services にも[専用のタグ](https://stackoverflow.com/questions/tagged/azure-communication-services)があります。
+
+## <a name="provide-feedback"></a>フィードバックの提供
+
+Azure portal で Azure Communication Services によって提供される特定の機能に関するフィードバックを提供するには、このアイコン :::image type="content" source="./media/give-feedback-icon.png" alt-text="[フィードバックを送る] アイコン の画像"::: が付いたボタンまたはリンクを使用してフィードバックを送信します。 
+
+次に例をいくつか示します。 
+- 電話番号に関するフィードバックを提供するには、[電話番号] ブレードのコマンド バーにある [フィードバックを送る] ボタンをクリックします。
+:::image type="content" source="./media/give-feedback-in-command-bar.png" alt-text="[電話番号] ブレードのコマンド バーにある [フィードバックを送る] ボタンの画像。":::
+- 通知ハブへの接続エクスペリエンスに関するフィードバックを提供するには、以下に示すように次のリンクをクリックします。  
+:::image type="content" source="./media/give-feedback-in-page.png" alt-text="[通知ハブ] ブレードの [フィードバックを送る] リンクの画像。":::
+
+サービスの改善に役立つフィードバックに感謝します。 こちらの[アンケート](https://aka.ms/ACS_CAT_Survey)で Azure Communication Services に満足しているかどうかをお知らせください。 

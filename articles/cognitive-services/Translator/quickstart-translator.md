@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 07/06/2021
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, Translator サービス, テキストの翻訳, テキストの表記変換, 言語の検出
-ms.openlocfilehash: 6d10b954bbb5663d5e63f4b38fc49d8a3953f10a
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 10e879df320d527ab6c853a03e9eb49d1b4d50de
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537555"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355906"
 ---
 # <a name="quickstart-get-started-with-translator"></a>クイックスタート: Translator を使ってみる
 
@@ -33,8 +33,11 @@ ms.locfileid: "111537555"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * Azure サブスクリプションを用意したら、Azure portal で [Translator リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
-  * 自分のアプリケーションを Translator サービスに接続するには、リソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
-  * Free 価格レベル (F0) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+  * 自分のアプリケーションを Translator サービスに接続するには、リソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。 これらの値は Azure portal の **[キーとエンドポイント]** ページで確認できます。
+
+    :::image type="content" source="media/keys-and-endpoint-portal.png" alt-text="スクリーンショット: Azure portal の [キーとエンドポイント] ページ。":::
+
+* Free 価格レベル (F0) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="platform-setup"></a>プラットフォームの設定
 
@@ -2820,9 +2823,19 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
+### <a name="common-http-status-codes"></a>一般的な HTTP 状態コード
+
+| HTTP 状態コード | 説明 | 考えられる理由 |
+|------------------|-------------|-----------------|
+| 200 | [OK] | 要求は成功しました。 |
+| 400 | 正しくない要求 | 必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。 |
+| 401 | 権限がありません | 要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。 *「[認証](reference/v3-0-reference.md#authentication)」も参照してください*。|
+| 429 | 要求が多すぎます | 使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。 |
+| 502 | 無効なゲートウェイ    | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
+
 ### <a name="java-users"></a>Java ユーザー
 
-接続の問題が発生した場合、SSL 証明書の有効期限が切れている可能性があります。 この問題を解決するには、[DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) をプライベート ストアにインストールします。 
+接続の問題が発生した場合、SSL 証明書の有効期限が切れている可能性があります。 この問題を解決するには、[DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) をプライベート ストアにインストールします。
 
 ## <a name="next-steps"></a>次の手順
 

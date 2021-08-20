@@ -6,23 +6,19 @@ author: nmurav
 manager: jken
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 3/23/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2fa9cbba571fa5603607c5efea7f49a5822726e9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3a4f842f096f6f8c283934b67808bb33b20f8fc1
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089418"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360201"
 ---
-# <a name="ensure-high-quality-media-in-azure-communication-services"></a>Azure Communication Services で高品質なメディアを確保する
+# <a name="network-recommendations"></a>ネットワークの推奨事項
 
-このドキュメントでは、Azure Communication Services を使用して高品質なマルチメディア コミュニケーション エクスペリエンスを構築する際に考慮すべき要素とベスト プラクティスについて、概要を説明します。
-
-## <a name="factors-that-affect-media-quality-and-reliability"></a>メディアの品質と信頼性に影響する要素
-
-Azure Communication Services のリアルタイム メディア (音声、ビデオ、アプリケーション共有) の品質には、さまざまな多数の要素が影響を及ぼします。 それらには、ネットワークの品質、帯域幅、ファイアウォール、ホスト、デバイス構成などがあります。
+このドキュメントでは、ネットワーク環境が音声およびビデオ通話の品質にどのような影響を与えるかをまとめます。 Azure Communication Services のリアルタイム メディア (音声、ビデオ、アプリケーション共有) の品質には、さまざまな多数の要素が影響を及ぼします。 それらには、ネットワークの品質、帯域幅、ファイアウォール、ホスト、デバイス構成などがあります。
 
 
 ### <a name="network-quality"></a>ネットワークの品質

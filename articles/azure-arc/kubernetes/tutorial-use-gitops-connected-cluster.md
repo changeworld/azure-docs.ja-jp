@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: 9f6fe063faa9abfa59d7999da17940aae9ccd264
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1c639c323fcd0dd0ed9f417070d679defeb4cf1e
+ms.sourcegitcommit: 20abee54e48f9b40b83d39c5b970bd0193812cb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463182"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113632432"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>チュートリアル: GitOps を使用して Azure Arc 対応 Kubernetes クラスターに構成をデプロイする 
 
@@ -39,15 +39,17 @@ ms.locfileid: "110463182"
     >[!TIP]
     > `k8s-configuration` 拡張機能が既にインストールされている場合は、次のコマンドを使用して最新バージョンに更新できます - `az extension update --name k8s-configuration`
 
+- Git リポジトリがファイアウォールの外側にあり、git プロトコルが構成リポジトリ パラメーターと共に使用されている場合は、ファイアウォールでのエグレス アクセス用にポート 9418 (`git://:9418`) で TCP を有効にする必要があります。
+
 ## <a name="create-a-configuration"></a>構成を作成する
 
 この記事で使用される[リポジトリの例](https://github.com/Azure/arc-k8s-demo)は、クラスター オペレーターのペルソナに基づいて構成されています。 このリポジトリのマニフェストでは、いくつかの名前空間をプロビジョニングし、ワークロードをデプロイして、チーム固有の構成を指定します。 このリポジトリを GitOps と共に使用すると、クラスターに次のリソースが作成されます。
 
 * 名前空間: `cluster-config`、`team-a`、`team-b`
-* デプロイ: `cluster-config/azure-vote`
+* デプロイ: `arc-k8s-demo`
 * ConfigMap: `team-a/endpoints`
 
-`config-agent` を使用すると、新規または更新された構成について、Azure に対してポーリングが行われます。 このタスクには最大 30 秒かかります。
+`config-agent` を使用すると、新規または更新された構成について、Azure に対してポーリングが行われます。 このタスクには最大 5 分かかります。
 
 プライベート リポジトリを構成と関連付ける場合は、後の「[プライベート Git リポジトリから構成を適用する](#apply-configuration-from-a-private-git-repository)」に示されている手順を実行してください。
 

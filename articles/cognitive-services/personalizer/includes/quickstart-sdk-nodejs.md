@@ -8,19 +8,19 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/27/2020
-ms.openlocfilehash: 14c1ddca63ebb9928a86c7a56be016e58eae8d40
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d084625994312c111e90c8da4d74dd8a00e5085e
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110487581"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255840"
 ---
 [リファレンスのドキュメント](/javascript/api/@azure/cognitiveservices-personalizer) |[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
-* 最新バージョンの [Node.js](https://nodejs.org) および NPM。
+* [Node.js](https://nodejs.org) と NPM をインストールします (Node.js v 14.16.0 と NPM 6.14.11 で検証されています)。
 * Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title="Personalizer リソースを作成"  target="_blank">Personalizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * アプリケーションを Personalizer API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -28,6 +28,8 @@ ms.locfileid: "110487581"
 ## <a name="setting-up"></a>設定
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
+
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 

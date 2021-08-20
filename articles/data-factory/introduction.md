@@ -5,13 +5,13 @@ author: dcstwh
 ms.author: weetok
 ms.service: data-factory
 ms.topic: overview
-ms.date: 09/30/2019
-ms.openlocfilehash: f5259294734b3b0c33835759beadb2ad4e1089a9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/08/2021
+ms.openlocfilehash: 0a11f8954637fe93aa8d0dc5ee8266347d822ded
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744721"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362471"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 
@@ -41,7 +41,7 @@ Data Factory には、包括的なエンド ツー エンドのプラットフ�
 
 :::image type="content" source="media\introduction\data-factory-visual-guide-small.png" alt-text="Azure Data Factory の完全なシステム アーキテクチャを 1 つの高解像度画像で示した詳細なビジュアル ガイド。" lightbox="media\introduction\data-factory-visual-guide.png":::
 
-詳細を表示するには、前の画像をクリックして拡大するか、[高解像度画像](/azure/data-factory/media/introduction/data-factory-visual-guide.png#lightbox)を参照してください。 
+詳細を表示するには、前の画像をクリックして拡大するか、[高解像度画像](/azure/data-factory/media/introduction/data-factory-visual-guide.png)を参照してください。 
 
 ### <a name="connect-and-collect"></a>接続と収集
 
@@ -96,6 +96,9 @@ Data Factory ではリンクされたサービスは 2 つの目的に使用さ�
 - SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の **データ ストア** を表すため。 サポートされるデータ ストアの一覧については、「[コピー アクティビティ](copy-activity-overview.md)」を参照してください。
 
 - アクティビティの実行をホストできる **コンピューティング リソース** を表すため。 たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[データの変換](transform-data.md)」を参照してください。
+
+### <a name="integration-runtime"></a>統合ランタイム
+Data Factory で、アクティビティは、実行されるアクションを定義します。 リンクされたサービスは、ターゲットのデータ ストアやコンピューティング サービスを定義します。 統合ランタイムは、アクティビティとリンクされたサービスとを橋渡しします。  リンクされたサービスまたはアクティビティによって参照され、アクティビティが実行されたりディスパッチされたりするコンピューティング環境を提供します。 これにより、できるだけターゲットのデータ ストアやコンピューティング サービスに近いリージョンでアクティビティを実行して効率を最大化できる一方、セキュリティとコンプライアンスの必要も満たせます。
 
 ### <a name="triggers"></a>トリガー
 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 さまざまな種類のイベントに合わせて、さまざまな種類のトリガーがあります。

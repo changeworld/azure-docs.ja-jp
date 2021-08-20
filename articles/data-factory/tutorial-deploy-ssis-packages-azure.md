@@ -4,15 +4,15 @@ description: Azure 上で SSIS パッケージをデプロイして実行でき�
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/02/2021
+ms.date: 07/19/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 6007ce4b4c54d795ff2cc3188504db11c29219cc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6b2f1f796c7a3c41aa28040e023be6cc86bc21f8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256366"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447803"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする
 
@@ -53,7 +53,7 @@ Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概
 
   - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、データベース サーバーのファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)」を参照してください。
 
-  - サーバー管理者の資格情報による SQL 認証またはデータ ファクトリのマネージド ID による Azure AD 認証を使用して、データベース サーバーに接続できます。 後者の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
+  - SQL 認証とサーバー管理者の資格情報を使用して、または Azure Active Directory (Azure AD) 認証とデータ ファクトリの指定のシステム/ユーザー割り当てマネージド ID を使用して、データベース サーバーに接続できます。 後者の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリの指定のシステム/ユーザー割り当てマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
 
   - データベース サーバーに SSISDB インスタンスがまだないことを確認します。 Azure-SSIS IR のプロビジョニングでは、既存の SSISDB インスタンスの使用はサポートされていません。
 
@@ -70,9 +70,9 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 ### <a name="from-the-data-factory-overview"></a>Data Factory の概要から
 
-1. **[Let's get started]\(始めましょう\)** ページで、 **[Configure SSIS Integration]\(SSIS 統合の構成\)** タイルをクリックします。 
+1. ホーム ページで、 **[Configure SSIS]\(SSIS の構成\)** タイルを選択します。 
 
-   ![[Configure SSIS Integration Runtime]\(SSIS 統合ランタイムの構成\) タイル](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
+   ![Azure Data Factory ホーム ページのスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. Azure-SSIS IR を設定する残りの手順については、「[Azure SSIS 統合ランタイムをプロビジョニングする](#provision-an-azure-ssis-integration-runtime)」セクションを参照してください。 
 
@@ -142,10 +142,10 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
       IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスを選択して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミスのデータへのアクセスを必要としている場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 詳細については、[仮想ネットワークへの Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
 
-   1. **[Use Azure AD authentication with the managed identity for your ADF]\(ADF のマネージド ID で Azure AD 認証を使用する\)** チェック ボックスをオンにして、SSISDB をホストするためのデータベース サーバーの認証方法を選択します。 SQL 認証を選択するか、またはデータ ファクトリのマネージド ID を使用した Azure AD 認証を選択することになります。
+   1. **[Use AAD authentication with the system managed identity for Data Factory]\(AAD 認証をデータ ファクトリのシステム マネージド ID と共に使用する\)** または **[Use AAD authentication with a user-assigned managed identity for Data Factory]\(AAD 認証をデータ ファクトリのユーザー割り当てマネージド ID と共に使用する\)** のチェック ボックスをオンにして、SSISDB をホストするデータベース サーバーにアクセスするための Azure-SSIS IR の Azure AD 認証方法を選択します。 SQL 認証方法を代わりに選択する場合、これらのチェック ボックスをオンにしないでください。
 
-      このチェック ボックスをオンにした場合は、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
-   
+      このいずれかのチェック ボックスをオンにする場合は、データベース サーバーへのアクセス許可を持つ Azure AD グループに、データ ファクトリの指定のシステム/ユーザー割り当てマネージド ID を追加する必要があります。 **[Use AAD authentication with a user-assigned managed identity for Data Factory]\(AAD 認証をデータ ファクトリのユーザー割り当てマネージド ID と共に使用する\)** チェック ボックスをオンにした場合は、指定のユーザー割り当てマネージド ID を使用して作成された既存の資格情報を選択するか、新たに作成できます。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
+
    1. **[管理者ユーザー名]** に、SSISDB をホストするデータベース サーバーの SQL 認証ユーザー名を入力します。 
 
    1. **[管理者パスワード]** に、SSISDB をホストするデータベース サーバーの SQL 認証パスワードを入力します。 
@@ -207,13 +207,15 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
                 1. **[データベース名]** に「`msdb`」と入力します。
                
-            1. **[認証の種類]** で、 **[SQL 認証]** 、 **[マネージド ID]** 、 **[サービス プリンシパル]** のいずれかを選択します。
+            1. **[認証の種類]** で、 **[SQL 認証]** 、 **[マネージド ID]** 、 **[サービス プリンシパル]** 、 **[ユーザー割り当てマネージド ID]** のいずれかを選択します。
 
                 - **[SQL 認証]** を選択した場合は、適切な **ユーザー名** と **パスワード** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-                -  **[マネージド ID]** を選択した場合は、ご利用の ADF マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
+                -  **[マネージド ID]** を選択した場合は、ADF のシステム マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
 
                 - **[サービス プリンシパル]** を選択した場合は、適切な **サービス プリンシパル ID** と **サービス プリンシパル キー** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+                
+                -  **[ユーザー割り当てマネージド ID]** を選択した場合は、ADF の指定のユーザー割り当てマネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。 これで、指定のユーザー割り当てマネージド ID を使用して作成された既存の資格情報を選択するか、新たに作成できます。
 
       1. **[ファイル システム]** を選択した場合は、パッケージのデプロイ先フォルダーの UNC パスを **[ホスト]** に入力すると共に、適切な **ユーザー名** と **パスワード** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 

@@ -3,22 +3,22 @@ title: コンテナー レジストリ用 Azure Defender - 利点と機能
 description: コンテナー レジストリ用 Azure Defender の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 04/07/2021
+ms.date: 07/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f11a9391b0a4f467cba41724b1d15493f1393201
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: d448d0b0a67987ced1caec04557773c2f8ab33d7
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992137"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651819"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
 Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イメージを中央のレジストリに格納して管理する、プライベートなマネージド Docker レジストリ サービスです。 これは、オープンソースの Docker Registry 2.0 を基にしています。
 
-サブスクリプション内のすべての Azure Resource Manager ベースのレジストリを保護するには、サブスクリプション レベルで **コンテナー レジストリ用 Azure Defender** を有効にします。 その後、Security Center では、レジストリにプッシュされたイメージ、レジストリにインポートされたイメージ、または過去 30 日以内にプルされたイメージがスキャンされます。 この機能では、イメージごとに課金されます。
+サブスクリプション内の Azure Resource Manager ベースのレジストリを保護するには、サブスクリプション レベルで **コンテナー レジストリ用 Azure Defender** を有効にします。 その後、Azure Defender では、レジストリにプッシュされたイメージ、レジストリにインポートされたすべてのイメージ、または過去 30 日以内にプルされたすべてのイメージがスキャンされます。 スキャンされたすべてのイメージについて、イメージごとに 1 回の料金が発生します。
 
 [!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 

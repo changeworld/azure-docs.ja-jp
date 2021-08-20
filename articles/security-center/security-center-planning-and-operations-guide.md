@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 57390f57366959cecc82782254099532d832d303
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 058a60758e20a36d3490e40ea96a35c21b3db563
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558640"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237218"
 ---
 # <a name="planning-and-operations-guide"></a>計画と運用のガイド
 このガイドは、Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -38,7 +38,7 @@ ms.locfileid: "111558640"
 ## <a name="security-roles-and-access-controls"></a>セキュリティ ロールとアクセス制御
 組織の規模と構造によっては、複数の個人やチームが Security Center を使用して、セキュリティ関連のさまざまなタスクを実行する場合があります。 次の図には、架空の人物のほか、それぞれの役割とセキュリティ責任が例として挙げられています。
 
-![ロール](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
+![役割。](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
 Security Center を使用すると、上記のようなさまざまな責任を果たすことができます。 次に例を示します。
 
@@ -170,7 +170,7 @@ Security Center の初期構成と推奨事項の適用を完了したら、次�
 
 Security Center の [概要] では、Azure リソースと接続済みの Azure 以外のリソースすべてのセキュリティが統合された 1 つのビューが表示されます。 以下の例は、対処すべき多くの問題を含む環境を示しています。
 
-![dashboard](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig11.png)
+![。](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig11.png)
 
 > [!NOTE]
 > Security Center は、通常の運用上の手順には干渉しません。デプロイを受動的に監視し、有効にされたセキュリティ ポリシーに基づいて推奨事項を提供します。
@@ -199,7 +199,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 この記事は実際のインシデント対応プランの作成支援を目的としていないため、インシデント対応の段階のベースとして、クラウド ライフサイクルにおける Microsoft Azure のセキュリティ レスポンスを使用します。 段階は次の図のとおりです。
 
-![クラウド ライフサイクルにおけるインシデント対応の段階](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![クラウド ライフサイクルにおけるインシデント対応の段階。](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > 計画の作成については、米国国立標準技術研究所 (NIST) の『 [Computer Security Incident Handling Guide (コンピューター セキュリティ インシデント対応ガイド)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) 』が参考資料としてご利用いただけます。
@@ -215,7 +215,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 次の例は、疑わしい RDP アクティビティの発生を示しています。
 
-![Suspicious activity](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
+![疑わしいアクティビティ。](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
 このページには、攻撃が発生した時刻、ソース ホスト名、標的となった VM に関する詳細情報のほか、推奨される手順も表示されます。 状況によっては、攻撃元の情報が空白になっていることもあります。 このような動作の詳細については、「 [Missing Source Information in Azure Security Center Alerts (Azure Security Center アラートに表示されないソース情報)](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts) 」を参照してください。
 

@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 3eb0c54fda14711e45af3974638d53807994df91
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f3f4af97309326fe761ea58a7927df19522e4f60
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459607"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486753"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -407,6 +407,9 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
     ::: zone-end
     
     *deployment-container-image-name* パラメーターでは、関数アプリに使用するイメージを指定します。 デプロイに使用されているイメージに関する情報は、[az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) コマンドを使用して表示できます。 [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) コマンドを使用して、別のイメージからデプロイすることもできます。
+    
+    > [!TIP]  
+    > host.json ファイルで [`DisableColor` の設定](functions-host-json.md#console)を使用して、ANSI 制御文字がコンテナー ログに書き込まれないようにすることができます。 
 
 1. 作成したストレージ アカウントの接続文字列を [az storage account show-connection-string](/cli/azure/storage/account) コマンドで表示します。 `<storage-name>` を、上で作成したストレージ アカウントの名前に置き換えます。
 

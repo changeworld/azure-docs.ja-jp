@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/15/2020
+ms.date: 07/13/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fdaa61e7b02121dcafaba758be2734eabf0e09d
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 1412b0ff7703d5bcc9950c80d5ab59b4c33cc7ae
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295419"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732226"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する
 
@@ -83,49 +83,8 @@ VM でシステム割り当てマネージド ID を有効にするには、お�
 
 ### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>VM のシステム割り当てマネージド ID にロールを割り当てる
 
-VM でシステム割り当てマネージド ID を有効にしたら、作成先となったリソース グループへの **閲覧者** アクセス権などのロールを付与することができます。
+VM でシステム割り当てマネージド ID を有効にしたら、作成先となったリソース グループへの **閲覧者** アクセス権などのロールを付与することができます。 この手順の詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](../../role-based-access-control/role-assignments-template.md)」という記事を参照してください。
 
-VM のシステム割り当て ID にロールを割り当てるには、お使いのアカウントに[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールの割り当てが必要です。
-
-1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
-
-2. テンプレートを [エディター](#azure-resource-manager-templates)に読み込み、以下の情報を追加して、それが作成されたリソース グループへの **閲覧者** アクセス許可をご利用の VM に付与します。  テンプレートの構造は、選択したデプロイ モデルとエディターに応じて異なる場合があります。
-
-   `parameters` セクションの下に、以下を追加します。
-
-    ```json
-    "builtInRoleType": {
-        "type": "string",
-        "defaultValue": "Reader"
-    },
-    "rbacGuid": {
-        "type": "string"
-    }
-    ```
-
-    `variables` セクションの下に、以下を追加します。
-
-    ```json
-    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
-    ```
-
-    `resources` セクションの下に、以下を追加します。
-
-    ```json
-    {
-        "apiVersion": "2017-09-01",
-        "type": "Microsoft.Authorization/roleAssignments",
-        "name": "[parameters('rbacGuid')]",
-        "properties": {
-            "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-            "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
-            "scope": "[resourceGroup().id]"
-        },
-         "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-        ]
-    }
-    ```
 
 ### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Azure VM でシステム割り当てマネージド ID を無効にする
 

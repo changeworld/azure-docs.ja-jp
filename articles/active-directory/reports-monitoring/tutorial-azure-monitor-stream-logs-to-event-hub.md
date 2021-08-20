@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f7a35faa75af5a6205609e7afd40225d960d132
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cff544e3d9ba2851db02e0e4440ba9f97b240e68
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964615"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580838"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>チュートリアル:Azure Active Directory ログを Azure イベント ハブにストリーム配信する
 
@@ -59,13 +59,19 @@ ms.locfileid: "111964615"
 
 7. **[OK]** を選択してイベント ハブの構成を終了します。
 
-8. 次のいずれかまたは両方を実行します。
-    * 監査ログをイベント ハブに送信するには、 **[AuditLogs]** チェック ボックスをオンにします。 
-    * サインイン ログをイベント ハブに送信するには、 **[SignInLogs]** チェック ボックスをオンにします。
+8. 次の操作を任意の組み合わせで実行します。
+    - 監査ログをイベント ハブに送信するには、 **[AuditLogs]** チェック ボックスをオンにします。 
+    - 対話型ユーザー サインイン ログをイベント ハブに送信するには、 **[SignInLogs]** チェック ボックスをオンにします。
+    - 非対話型ユーザー サインイン ログをイベント ハブに送信するには、 **[NonInteractiveUserSignInLogs]** チェック ボックスをオンにします。 
+    - サービス プリンシパルのサインイン ログをイベント ハブに送信するには、 **[ServicePrincipalSignInLogs]** チェック ボックスをオンにします。
+    - マネージド ID のサインイン ログをイベント ハブに送信するには、 **[ManagedIdentitySignInLogs]** チェック ボックスをオンにします。
+    - プロビジョニング ログをイベント ハブに送信するには、 **[ProvisioningLogs]** チェック ボックスをオンにします。
+    - AD FS Connect Health エージェントが Azure AD に送信したサインインを送信するには、 **[ADFSSignInLogs]** チェック ボックスをオンにします。
+
+    >[!Note]
+    >一部のサインイン カテゴリには、テナントの構成に応じて大量のログ データが含まれています。 一般的に、非対話型のユーザー サインインとサービス プリンシパルのサインインは、対話型のユーザー サインインの 5 倍から 10 倍の大きさになることがあります。
 
 9. **[保存]** を選択して設定を保存します。
-
-    ![診断設定](./media/quickstart-azure-monitor-stream-logs-to-event-hub/DiagnosticSettings.png)
 
 10. 約 15 分後にイベントがイベント ハブに表示されることを確認します。 これを行うには、ポータルからイベント ハブに移動し、**受信メッセージ** の数がゼロより大きい値になっていることを確認します。 
 

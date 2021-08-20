@@ -12,18 +12,18 @@ ms.date: 04/14/2021
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 66b5918b945c8f098e52b115f2fc74c75d953ff5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bf148645ebdd762b65d59c86e5453b83423201e9
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072354"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550608"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
 Text Analytics API は、テキスト マイニングとテキスト分析のための自然言語処理 (NLP) 機能を提供するクラウドベースのサービスであり、感情分析、オピニオン マイニング、キー フレーズ抽出、言語検出、名前付きエンティティの認識などを備えています。
 
-この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](../index.yml) に含まれます。 これらの機能は、REST API [バージョン 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) または[バージョン 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/)、あるいは[クライアント ライブラリ](quickstarts/client-libraries-rest-api.md)で使用できます。
+この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](../index.yml) に含まれます。 これらの機能は、REST API [バージョン 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) または[バージョン 3.1](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1)、あるいは[クライアント ライブラリ](quickstarts/client-libraries-rest-api.md)で使用できます。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -35,15 +35,15 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 
-[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md)を使用して、テキストのマイニングにより肯定的または否定的な感情の手がかりを探すことで、ブランドまたはトピックに対して人々がどのように考えているかを突き止めます。 
+[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md) (SA) を使用して、テキストのマイニングにより肯定的または否定的な感情の手がかりを探すことで、ブランドまたはトピックに対して人々がどのように考えているかを突き止めます。 
 
 この機能は、文章とドキュメントレベルでサービスによって検出された最も高い信頼度スコアに基づいて、センチメント ラベル ("negative"、"neutral"、"positive" など) を提供します。 また、この機能は、positive、neutral、negative (肯定的、中立的、否定的) のセンチメントに関し、各ドキュメントとその中の文章に対して 0 と 1 の間の信頼度スコアを返します。 また、[コンテナーを使用して](how-tos/text-analytics-how-to-install-containers.md)オンプレミスでサービスを実行することもできます。
 
-バージョン 3.1 プレビュー以降では、オピニオン マイニングは感情分析の 1 つの機能となっています。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれる単語 (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
+バージョン 3.1 以降では、オピニオン マイニング (OM) は感情分析の 1 つの機能となっています。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれる単語 (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
 
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 
-[キー フレーズ抽出](how-tos/text-analytics-how-to-keyword-extraction.md)を使用して、テキスト内の主要な概念をすばやく特定します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストでは、キー フレーズ抽出は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
+[キー フレーズ抽出](how-tos/text-analytics-how-to-keyword-extraction.md) (KPE) を使用して、テキスト内の主要な概念をすばやく特定します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストでは、キー フレーズ抽出は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
 
 ## <a name="language-detection"></a>言語検出
 
@@ -53,6 +53,10 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 
 名前付きエンティティの認識 (NER) は、テキスト内のエンティティを、人、場所、組織、数量として[識別して分類](how-tos/text-analytics-how-to-entity-linking.md)できます。既知のエンティティも認識され、Web 上の詳細情報にリンクされます。
 
+## <a name="text-analytics-for-health"></a>Text Analytics for Health
+
+Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストからの、関連する医療情報の抽出とラベル付けが行われる、Text Analytics API サービスの機能です。 
+
 ## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
 
 [Text Analytics コンテナーを使用](how-tos/text-analytics-how-to-install-containers.md)して、API 機能をオンプレミスにデプロイします。 これらの Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。 Text Analytics には、次のコンテナーが用意されています。
@@ -60,11 +64,11 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 * 感情分析
 * キー フレーズ抽出 (プレビュー)
 * 言語検出 (プレビュー)
-* Text Analytics for Health (プレビュー)
+* Text Analytics for Health
 
 ## <a name="asynchronous-operations"></a>非同期操作
 
-`/analyze` エンドポイントを使用すると、NER やキー フレーズ抽出などの Text Analytics API の選択した機能を[非同期に](how-tos/text-analytics-how-to-call-api.md)使用できます。
+`/analyze` エンドポイントを使用すると、Text Analytics API の多くの機能を[非同期に](how-tos/text-analytics-how-to-call-api.md)使用できます。 固有表現認識 (NER)、キー フレーズ抽出 (KPE)、感情分析 (SA)、オピニオン マイニング (OM) は、`/analyze` エンドポイントの一部として使用できます。 これにより、1 回の呼び出しでこれらの機能をまとめて使用できます。 ドキュメントごとに最大 125,000 文字を送信できます。 価格は通常の Text Analytics と同じです。
 
 ## <a name="typical-workflow"></a>一般的なワークフロー
 

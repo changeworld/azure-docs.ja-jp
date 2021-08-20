@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: b56b79c29838c00fd79a0ed91a1c3ff0686c56ce
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a307fd2e2504e3c11c96fb56c7ab4f55db9508ff
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737980"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221266"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU 搭載の Azure Stack Edge Pro とは
 
@@ -51,6 +51,7 @@ Azure Stack Edge Pro GPU には、次の機能があります。
 |データ更新     | ローカル ファイルをクラウドから最新の情報に更新する機能。|
 |暗号化    | ローカルでデータを暗号化し、クラウドへのデータ転送を *https* 経由で保護する BitLocker のサポート。|
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
+|特殊なネットワーク機能|Azure Network Function Manager の Azure Marketplace エクスペリエンスを利用することで、モバイル パケット コア、SD-WAN エッジ、VPN サービスなどのネットワーク機能を、オンプレミス環境で実行されている Azure Stack Edge デバイスに迅速にデプロイします。 詳細については、[Azure Network Function Manager とは (プレビュー)](../network-function-manager/overview.md) に関するページを参照してください。|
 
 <!--|ExpressRoute | Added security through ExpressRoute. Use peering configuration where traffic from local devices to the cloud storage endpoints travels over the ExpressRoute. For more information, see [ExpressRoute overview](../expressroute/expressroute-introduction.md).|-->
 
@@ -87,4 +88,5 @@ Azure Stack Edge サービスは、非リージョン サービスです。 詳�
 - [Azure Stack Edge Pro GPU のシステム必要条件](azure-stack-edge-gpu-system-requirements.md)を確認します。
 
 - [Azure Stack Edge Pro GPU の制限](azure-stack-edge-limits.md)を理解します。
+
 - Azure portal で [Azure Stack Edge Pro GPU](azure-stack-edge-gpu-deploy-prep.md) をデプロイします。

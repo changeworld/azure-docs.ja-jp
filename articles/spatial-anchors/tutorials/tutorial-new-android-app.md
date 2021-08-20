@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: af0d01a20728d2332d4a8d71819f73baf68a65a4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 5875416b129305f95d0337278caf0af3bab2d488
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95998390"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221564"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい Android アプリを作成する手順
 
@@ -123,15 +123,27 @@ dependencies {
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>ローカル Azure Spatial Anchor のアタッチ
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に Azure Spatial Anchors バージョン 2.2.0 を対象とするようになります。 ただし、Azure Spatial Anchors の任意の最新バージョンの参照が機能します。 [こちら](https://github.com/Azure/azure-spatial-anchors-samples/releases)でリリース ノートを確認できます。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このサンプル コード スニペットは、Azure Spatial Anchors SDK バージョン 2.10.0 を対象としています。 現在、SDK バージョン 2.7.0 がサポートされる最小バージョンであり、それより新しいバージョンの Azure Spatial Anchors の参照も同様に機能するはずです。 最新バージョンの Azure Spatial Anchors SDK を使用することをお勧めします。 SDK のリリース ノートは[こちら](https://github.com/Azure/azure-spatial-anchors-samples/releases)で確認できます。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.10.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.10.0]"
     ...
 }
+```
+
+Azure Spatial Anchors SDK 2.10.0 以降を対象としている場合は、プロジェクトの build.gradle ファイルの repositories セクションに次のエントリを追加します。 これには、SDK 2.10.0 以降用の Azure Spatial Anchors Android パッケージがホストされている Maven パッケージ フィードの URL が含まれます。 
+```
+repositories {
+    ...
+    maven {
+        url 'https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Maven-packages/maven/v1'
+    }
+    ...
+}
+
 ```
 
 `app\java\<PackageName>`-> **[新規]** -> **[Java Class]\(Java クラス\)** を右クリックします。 **[名前]** を _MyFirstApp_ に設定し、 **[スーパークラス]** を _android.app.Application_ に設定します。 他のオプションはそのままにします。 **[OK]** をクリックします。 `MyFirstApp.java` というファイルが作成されます。 そこに次の import を追加します。

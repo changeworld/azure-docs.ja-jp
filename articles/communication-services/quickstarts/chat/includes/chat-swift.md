@@ -6,21 +6,21 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 2aa1d6c474544a12154a59fa1fe12cffd1478b4f
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 1676ed849c025fc0f41aac933268e80276feeee2
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111429688"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114723702"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/add-chat) にあります
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/add-chat) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
@@ -49,8 +49,8 @@ CocoaPods を使用して、必要な Communication Services の依存関係を�
 そのポッドファイルを開き、`ChatQuickstart` ターゲットに次の依存関係を追加します。
 
 ```
-pod 'AzureCommunication', '~> 1.0.0-beta.11'
-pod 'AzureCommunicationChat', '~> 1.0.0-beta.11'
+pod 'AzureCommunicationCommon', '~> 1.0'
+pod 'AzureCommunicationChat', '~> 1.0.1'
 ```
 
 `pod install` コマンドを使用して、依存関係をインストールします。 これにより、Xcode ワークスペースも作成されることに注意してください。
@@ -66,7 +66,7 @@ Xcode でワークスペース `ChatQuickstart.xcworkspace` を開いてから�
 `viewController.swift` の先頭で、`AzureCommunication` および `AzureCommunicatonChat` ライブラリをインポートします。
 
 ```
-import AzureCommunication
+import AzureCommunicationCommon
 import AzureCommunicationChat
 ```
 
@@ -138,8 +138,8 @@ JavaScript 用 Azure Communication Services Chat SDK が備える主な機能の
 
 | 名前                                   | 説明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ChatClient` | このクラスはチャットの機能に必要です。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
-| `ChatThreadClient` | このクラスはチャット スレッド機能に必要です。 `ChatClient` を介してインスタンスを取得し、それを使用して、メッセージの送信、受信、更新、および削除を行います。 また、これを使用して、ユーザーの追加、削除、取得、入力通知と開封確認メッセージの送信、およびチャット イベントのサブスクライブを行うこともできます。 |
+| `ChatClient` | このクラスはチャットの機能に必要です。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除し、チャット イベントにサブスクライブします。 |
+| `ChatThreadClient` | このクラスはチャット スレッド機能に必要です。 `ChatClient` を介してインスタンスを取得し、それを使用して、メッセージの送信、受信、更新、および削除を行います。 また、これを使用して、ユーザーの追加、削除、取得、および入力通知と開封確認メッセージの送信を行うこともできます。 |
 
 ## <a name="start-a-chat-thread"></a>チャット スレッドを開始する
 
@@ -183,11 +183,15 @@ semaphore.wait()
 ```
 chatClient.listThreads { result, _ in
     switch result {
-    case let .success(chatThreadItems):
-        var iterator = chatThreadItems.syncIterator
-            while let chatThreadItem = iterator.next() {
-                print("Thread id: \(chatThreadItem.id)")
-            }
+    case let .success(threads):
+        guard let chatThreadItems = threads.pageItems else {
+            print("No threads returned.")
+            return
+        }
+
+        for chatThreadItem in chatThreadItems {
+            print("Thread id: \(chatThreadItem.id)")
+        }
     case .failure:
         print("Failed to list threads")
     }
@@ -264,10 +268,14 @@ if let id = messageId {
 ```
 chatThreadClient.listMessages { result, _ in
     switch result {
-    case let .success(messages):
-        var iterator = messages.syncIterator
-        while let message = iterator.next() {
-            print("Received message of type \(message.type)")
+    case let .success(messagesResult):
+        guard let messages = messagesResult.pageItems else {
+            print("No messages returned.")
+            return
+        }
+
+        for message in messages {
+            print("Received message with id: \(message.id)")
         }
 
     case .failure:
@@ -311,9 +319,13 @@ semaphore.wait()
 ```
 chatThreadClient.listParticipants { result, _ in
     switch result {
-    case let .success(participants):
-        var iterator = participants.syncIterator
-        while let participant = iterator.next() {
+    case let .success(participantsResult):
+        guard let participants = participantsResult.pageItems else {
+            print("No participants returned.")
+            return
+        }
+
+        for participant in participants {
             let user = participant.id as! CommunicationUserIdentifier
             print("User with id: \(user.identifier)")
         }
@@ -328,3 +340,5 @@ semaphore.wait()
 ## <a name="run-the-code"></a>コードの実行
 
 Xcode で [Run]\(実行\) ボタンをクリックし、プロジェクトをビルドして実行します。 コンソールには、そのコードからの出力と ChatClient からのロガー出力が表示されます。
+
+**注:** `Build Settings > Build Options > Enable Bitcode` を `No` に設定します。 現時点では、AzureCommunicationChat SDK for iOS では bitcode の有効化がサポートされていません。次の [Github の Issue](https://github.com/Azure/azure-sdk-for-ios/issues/787) によって追跡されています。

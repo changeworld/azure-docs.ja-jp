@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: e9c1299c0847aa30e1e3e198d2165e2674164458
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3ed74340c4e234ae1ea4781d8b91451be6e366c4
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960841"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515612"
 ---
 # <a name="tutorial-use-azure-log-analytics-to-collect-and-visualize-metrics-and-logs-preview"></a>チュートリアル: Azure Log Analytics を使用してメトリックとログを収集して視覚化する (プレビュー)
 
@@ -117,11 +117,11 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 | spark.synapse.logAnalytics.keyVault.name            | -                            | Azure Log Analytics ID およびキー用の Azure キー コンテナー名                                                                                                                                                |
 | spark.synapse.logAnalytics.keyVault.key.workspaceId | SparkLogAnalyticsWorkspaceId | Azure Log Analytics ワークスペース ID 用の Azure キー コンテナー シークレット名                                                                                                                                       |
 | spark.synapse.logAnalytics.keyVault.key.secret      | SparkLogAnalyticsSecret      | Azure Log Analytics ワークスペース キー用の Azure キー コンテナー シークレット名                                                                                                                                      |
-| spark.synapse.logAnalytics.keyVault.uriSuffix       | ods.opinsights.azure.com     | 対象の Azure Log Analytics ワークスペースの [URI サフィックス][uri_suffix]。 自分の Azure Log Analytics ワークスペースが Azure グローバルに存在しない場合は、それぞれのクラウドに従って URI サフィックスを更新する必要があります。 |
+| spark.synapse.logAnalytics.uriSuffix       | ods.opinsights.azure.com     | 対象の Azure Log Analytics ワークスペースの [URI サフィックス][uri_suffix]。 自分の Azure Log Analytics ワークスペースが Azure グローバルに存在しない場合は、それぞれのクラウドに従って URI サフィックスを更新する必要があります。 |
 
 > [!NOTE]  
-> - Azure China クラウドの場合は、"spark.synapse.logAnalytics.keyVault.uriSuffix" パラメーターを "ods.opinsights.azure.cn" にする必要があります。 
-> - Azure Gov クラウドの場合は、"spark.synapse.logAnalytics.keyVault.uriSuffix" パラメーターを "ods.opinsights.azure.us" にする必要があります。 
+> - Azure China クラウドの場合は、"spark.synapse.logAnalytics.uriSuffix" パラメーターを "ods.opinsights.azure.cn" にする必要があります。 
+> - Azure Gov クラウドの場合は、"spark.synapse.logAnalytics.uriSuffix" パラメーターを "ods.opinsights.azure.us" にする必要があります。 
 
 [uri_suffix]: ../../azure-monitor/logs/data-collector-api.md#request-uri
 
@@ -205,6 +205,30 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
    | summarize max(value_d) by bin(TimeGenerated, 30s), executorId_s
    | order by TimeGenerated asc
    ```
+
+## <a name="write-custom-application-logs"></a>カスタム アプリケーション ログを書き込む
+
+Apache Log4j ライブラリを使用して、カスタム ログを書き込むことができます。
+
+Scala の例:
+
+```scala
+%%spark
+val logger = org.apache.log4j.LogManager.getLogger("com.contoso.LoggerExample")
+logger.info("info message")
+logger.warn("warn message")
+logger.error("error message")
+```
+
+PySpark の例:
+
+```python
+%%pyspark
+logger = sc._jvm.org.apache.log4j.LogManager.getLogger("com.contoso.PythonLoggerExample")
+logger.info("info message")
+logger.warn("warn message")
+logger.error("error message")
+```
 
 ## <a name="create-and-manage-alerts-using-azure-log-analytics"></a>Azure Log Analytics を使用してアラートを作成および管理する
 

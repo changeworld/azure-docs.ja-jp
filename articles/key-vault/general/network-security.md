@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8513faa74959b679eedcf95710c7915364504ca
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b3e9332706c3bcc9d4f4cabd20d10fa099271d69
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962710"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285327"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "111962710"
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault ファイアウォールを無効にする (既定値)
 
-既定では、新しいキー コンテナーを作成するとき、Azure Key Vault ファイアウォールは無効になります。 すべてのアプリケーションおよび Azure サービスから、キー コンテナーにアクセスし、キー コンテナーに要求を送信することができます。 なお、この構成は、お客様のキー コンテナー上で任意のユーザーが操作を行えるということを意味するものではありません。 キー コンテナーは、Azure Active Directory 認証およびアクセス ポリシーのアクセス許可を必要とすることで、キー コンテナーに格納されているシークレット、キー、および証明書に引き続き制限されます キー コンテナー認証の詳細については、[こちら](/azure/key-vault/general/authentication.md)のキー コンテナー認証の基礎に関するドキュメントを参照してください。 詳細については、「[ファイアウォールの向こう側にある Azure Key Vault へのアクセス](./access-behind-firewall.md)」を参照してください。
+既定では、新しいキー コンテナーを作成するとき、Azure Key Vault ファイアウォールは無効になります。 すべてのアプリケーションおよび Azure サービスから、キー コンテナーにアクセスし、キー コンテナーに要求を送信することができます。 なお、この構成は、お客様のキー コンテナー上で任意のユーザーが操作を行えるということを意味するものではありません。 キー コンテナーは、Azure Active Directory 認証およびアクセス ポリシーのアクセス許可を必要とすることで、キー コンテナーに格納されているシークレット、キー、および証明書に引き続き制限されます キー コンテナー認証の詳細については、[こちら](./authentication.md)のキー コンテナー認証の基礎に関するドキュメントを参照してください。 詳細については、「[ファイアウォールの向こう側にある Azure Key Vault へのアクセス](./access-behind-firewall.md)」を参照してください。
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault ファイアウォールを有効にする (信頼されたサービスのみ)
 
@@ -72,7 +72,7 @@ Key Vault ファイアウォールを介して Azure サービス全体を許可
 
 > [!NOTE]
 > 構成に関する次の制限事項に注意してください。
-> * 最大で 127 個の仮想ネットワーク規則と 127 個の IPv4 ルールを指定できます。 
+> * 最大で 200 個の仮想ネットワーク規則と 1000 個の IPv4 ルールを指定できます。 
 > * IP ネットワーク ルールは、パブリック IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、**10.** 、**172.16-31**、および **192.168.** で始まるアドレスが含まれます。 
 > * 現時点でサポートされているのは、IPv4 アドレスのみです。
 

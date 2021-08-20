@@ -3,15 +3,15 @@ title: Azure Virtual Desktop ポータルのアプリ グループを管理す�
 description: Azure portal を使用して Azure Virtual Desktop アプリ グループを管理する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 05/28/2021
+ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 3c28654f70599a67060a94b8bb93397fc51c527e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 80a066aab79e3ca6ca541a82fe6b7fe023653a81
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753343"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448792"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
@@ -19,6 +19,9 @@ ms.locfileid: "111753343"
 >この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
 
 Azure Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自のスタート メニュー アプリを公開することができます。
+
+>[!NOTE]
+>MISX アプリをユーザー セッションに動的にアタッチすることや、アプリ パッケージをカスタム仮想マシン (VM) イメージに追加して、組織のアプリを発行することができます。 詳細については、「[Azure Virtual Desktop を使用してカスタム アプリをホストする方法](./remote-app-streaming/custom-apps.md)」を参照してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -34,6 +37,8 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
    
     >[!NOTE]
     > US Gov ポータルにサインインする場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
+    >
+    >Azure China ポータルにアクセスする場合は、[https://portal.azure.cn/](https://portal.azure.cn/) に移動します。
 
 2.  **[Azure Virtual Desktop]** を検索して選択します。
 

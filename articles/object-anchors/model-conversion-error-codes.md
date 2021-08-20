@@ -7,12 +7,12 @@ ms.author: jastenze
 ms.date: 04/20/2021
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 747551dcc400f399e5c36e6a851fdb0f25aaf65b
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: e47e4e9f784e51c646da22063ee954d9b60a4e11
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109755095"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202673"
 ---
 # <a name="model-conversion-error-codes"></a>モデル変換のエラー コード
 
@@ -34,3 +34,10 @@ ms.locfileid: "109755095"
 | ASSET_CANNOT_BE_CONVERTED | 指定されたアセットが破損しているか、その形式に誤りがあるか、その指定の形式では変換できませんでした。 | アセットは、指定されたタイプの正しく構築されたファイルであることが必要です。変換対象のアセットを送信する際は、あらかじめアセット サイズのガイドラインを参照し、それらを遵守してください (aka.ms/aoa/faq)。 |
 
 実際のアセット変換ジョブの外で発生するエラーは、例外としてスローされます。 中でも、サービス呼び出しで不成功の HTTP 応答コード (4xx または 5xx) や予期しない HTTP 応答コードが返された場合にスローされることのある `Azure.RequestFailedException` が代表的です。 これらの例外の詳細については、その例外の `Status`、`ErrorCode`、`Message` フィールドを調査してください。
+
+| 例外                  | 原因                       |
+| ---                      | ---                               |
+| ArgumentException |  <ul><li>無効な構成、またはすべてゼロのアカウント ID を使用して ObjectAnchorsConversionClient で要求を構築したときに発生します。</li><li>無効な空白のアカウント ドメインを使用して ObjectAnchorsConversionClient を初期化しようとしたときに発生します。</li><li>サポートされていないサービス バージョンが ObjectAnchorsConversionClientOptions を通じて ObjectAnchorsConversionClient に提供されたときに発生します。</li></ul> |
+| ArgumentNullException | <ul><li>無効な null 値のアカウント ドメインを使用して ObjectAnchorsConversionClient を初期化しようとしたときに発生します。</li><li>無効な null 値の資格情報を使用して ObjectAnchorsConversionClient を初期化しようとしたときに発生します。</li></ul> |
+| RequestFailedException | <ul><li>無効な HTTP 状態コード (実行予定/実行中/実行済みジョブの状態とは関係がない) によって発生したその他すべての問題 (アカウントが見つからない、フロントエンドで無効なアップロード URI が検出された、フロントエンド サービスのエラーなど) に対して発生します。</li></ul> |
+| UnsupportedAssetFileTypeException | <ul><li>Azure Object Anchors 変換サービスによってサポートされない拡張機能または特定のファイルタイプを含むアセットを使用してジョブを送信しようとしたときに発生します。</li></ul> |

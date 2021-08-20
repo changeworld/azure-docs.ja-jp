@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 766dd13f58268c044435a22fb30c1de816d4d151
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b173a5fe639ff21cc8a475edd16d0e3885dacef
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97531919"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113279853"
 ---
 サンプル コードを実行するには、これらの手順に従います。
 
@@ -26,6 +26,14 @@ ms.locfileid: "97531919"
     `"topologyName" : "MotionDetection"`
     
 1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウに、いくつかのメッセージが表示されます。
+
+    F5 キーを使用してデバッグ セッションを開始すると、最初に環境の種類とプロジェクトの入力を求められます。 これにより、フォルダー内に launch.json ファイルが作成されて構成されます。 このデモでは以下を使用します。
+    * 環境 - .Net Core
+    * プロジェクト - c2d-console-app
+    
+    作成された後で、launch.json ファイルを編集します。 コンソール構成を "integratedTeminal" に変更します。
+    
+    `"console": "integratedTerminal"`
 1. *operations.json* ファイルは、`GraphTopologyList` および `GraphInstanceList` の呼び出しから始まります。 前回のクイックスタートを終了した後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されてから、一時停止します。 続行するには、Enter キーを押します。
 
     ```

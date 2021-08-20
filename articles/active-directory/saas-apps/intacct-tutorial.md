@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5a216e39ca32b16de405c7924d08da52c6eae4c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 652126519dc5f9b30c9ff94a28b3e6ee78e95f64
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736979"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463713"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
 
@@ -75,7 +75,12 @@ Sage Intacct に対する Azure AD SSO を構成してテストするには、�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    **[応答 URL]** ボックスに、`https://www.intacct.com/ia/acct/sso_response.phtml` という URL を入力します。
+    **[応答 URL]** テキスト ボックスに、次の URL を追加します。  
+    `https://www.intacct.com/ia/acct/sso_response.phtml` (既定値として選択します)。  
+    `https://www.p-02.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-03.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-04.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-05.intacct.com/ia/acct/sso_response.phtml`  
 
 1. Sage Intacct アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性 の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 

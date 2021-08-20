@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 5c68453f7f7d638877683920a17022cf3d29bdc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9bba6c33dafb04be0cec0eb74be3b7211bc1b0ed
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597812"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466476"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>チュートリアル: Expensify と Azure Active Directory の統合
 
@@ -78,11 +78,11 @@ Expensify に対して Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://www.expensify.com/authentication/saml/login`」と入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに `https://www.expensify.com` という URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに `https://www.expensify.com` という URL を入力します。
-
-    c. b. **[応答 URL]** ボックスに、`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>` のパターンを使用して URL を入力します
+    
+    c. **[サインオン URL]** ボックスに、URL として「`https://www.expensify.com/authentication/saml/login`」と入力します。
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -127,7 +127,7 @@ Expensify で SSO を有効にするには、まず、アプリケーション�
 
 1. Expensify アプリケーションにサインオンします。
 
-2. 左側のパネルで **[設定]** をクリックし、**[SAML]** に移動します。
+2. 左側のパネルで、[設定] にマウス ポインターを合わせてから [ドメイン] をクリックして、 **[SAML]** に移動します。
 
 3. **[SAML ログイン]** オプションを **[有効]** に切り替えます。
 
@@ -135,7 +135,7 @@ Expensify で SSO を有効にするには、まず、アプリケーション�
 
 ### <a name="create-expensify-test-user"></a>Expensify のテスト ユーザーの作成
 
-このセクションでは、Expensify で B.Simon というユーザーを作成します。 [Expensify クライアント サポート チーム](mailto:help@expensify.com)と協力して、Expensify プラットフォームにユーザーを追加します。
+このセクションでは、Expensify で B.Simon (例: B.Simon@contoso.com) という同じユーザーを作成します。 [こちら](https://community.expensify.com/discussion/4869/how-to-manage-domain-members)でメンバーの招待に関する Expensify のガイドを確認するか、[Expensify クライアント サポート チーム](mailto:help@expensify.com)と協力して、Expensify プラットフォームにユーザーを追加します。
 
 ## <a name="test-sso"></a>SSO のテスト
 

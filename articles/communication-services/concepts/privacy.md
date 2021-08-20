@@ -5,15 +5,15 @@ author: chpalm
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9ccc192bb5cf4c5e183e21add8e73d9e096d281c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 870000e49e77475e8f8c7dcac84d470a853c8a76
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136015"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762872"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
 
@@ -21,7 +21,11 @@ Azure Communication Services は、お客様が自身のプライバシーおよ
 
 ## <a name="data-residency"></a>データの保存場所
 
-Communication Services リソースを作成する際は、(Azure データ センターではなく) **地域** を指定します。 Communication Services によって格納されたすべての保存データは、Communication Services によって内部で選択されたデータ センター内のその地域で保持されます。 データは他の地域で転送または処理される可能性はあります。 これらのグローバル エンドポイントは、高パフォーマンスかつ低遅延のエクスペリエンスを場所に関係なくエンドユーザーに提供するために必要です。
+Communication Services リソースを作成する際は、(Azure データ センターではなく) **地域** を指定します。 Communication Services によって格納されたすべてのチャット メッセージとリソース データは、Communication Services によって内部で選択されたデータ センター内のその地域で保持されます。 データは他の地域で転送または処理される可能性はあります。 これらのグローバル エンドポイントは、高パフォーマンスかつ低遅延のエクスペリエンスを場所に関係なくエンドユーザーに提供するために必要です。
+
+## <a name="data-collection"></a>データ コレクション
+
+Azure Communication Services では、サービスの配信に必要な診断データのみを収集します。 
 
 ## <a name="data-residency-and-events"></a>データ所在地とイベント
 
@@ -76,6 +80,10 @@ Azure Communication Services では、Communication Services リソースに関�
 ### <a name="internet-voice-and-video-calling"></a>インターネットによる音声およびビデオ通話
 
 音声およびビデオによる通信はサービスによって短時間で処理され、データは Azure Monitor ログ以外のリソースに保持されません。
+
+### <a name="call-recording"></a>通話レコーディング
+
+通話レコーディングは、リソースの作成時に 48 時間選択された ```Data Location``` と同じ地域に一時的に格納されます。 この後、記録は削除され、ユーザーは安全で法令準拠した場所に記録を格納する責任があります。
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor とログ分析
 

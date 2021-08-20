@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/04/2021
+ms.date: 07/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 406e31320e8f7d0d95bfef44f620505989b3ae9f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 488b6d791afe477bb1aecacd0ecb15d54dcb43da
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746701"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221320"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro を設置する
 
@@ -228,6 +228,7 @@ Azure Stack Edge Pro デバイスとは:
 
     - ポート 2 を接続する場合は、1-GbE RJ-45 ネットワーク ケーブルを使用します。
     - 10/25 GbE ネットワーク インターフェイスの場合は、SFP+ 銅線ケーブルまたはファイバーを使用します。 ファイバーを使用する場合は、SFP アダプターへの光ファイバーを使用します。
+    - ネットワーク機能マネージャーのデプロイ用に、ポート 5 とポート 6 が接続されていることを確認します。 詳細については、「[チュートリアル: Azure Stack Edge にネットワーク機能をデプロイする (プレビュー)](../network-function-manager/deploy-functions.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,36 +7,34 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/26/2021
+ms.date: 07/21/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: b08fe34e7ac5eede8d1435e3de3817224fafdbc6
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 803916184fb79c1db249b195dde0ed0b95c5c547
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560171"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459645"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 
-Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) は、Web、モバイル、エンタープライズ アプリケーションに、プライベートで異種のコンテンツに対するリッチな検索エクスペリエンスを組み込むためのアーキテクチャ、API、およびツールを開発者に提供するクラウド検索サービスです。 
+Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) は、Web、モバイル、エンタープライズ アプリケーションに、プライベートで異種のコンテンツに対するリッチな検索エクスペリエンスを組み込むためのインフラストラクチャ、API、およびツールを開発者に提供するクラウド検索サービスです。
 
-検索は、ユーザーにコンテンツを表示するすべてのアプリの基本となるものです。一般的なシナリオには、カタログやドキュメントの検索、e コマース サイトの検索、データ サイエンスのための知識マイニングなどがあります。
+検索は、ユーザーにテキスト コンテンツを表示するすべてのアプリの基本となるものです。一般的なシナリオには、カタログやドキュメントの検索、小売商品の検索、データ サイエンスのための知識マイニングなどがあります。
 
 検索サービスを作成するときは、次の機能を使用して作業します。
 
-+ フルテキスト検索用の検索エンジン
-+ 検索インデックス内のユーザー所有コンテンツの永続的ストレージ
-+ テキスト分析、およびコンテンツ抽出と変換に関するオプションの [AI エンリッチメント](cognitive-search-concept-intro.md)を含むリッチ インデックス作成機能
++ 検索インデックスにユーザーが所有するコンテンツを格納するフル テキスト検索用の検索エンジン
++ テキスト分析、および高度なコンテンツ抽出と変換に関するオプションの [AI エンリッチメント](cognitive-search-concept-intro.md)を含むリッチ インデックス作成機能
 + 単純な構文、完全な Lucene 構文、先行入力検索を含むリッチなクエリ機能
 + .NET、Python、Java、JavaScript 用の Azure SDK の REST API とクライアント ライブラリを使用したプログラミング
 + データ レイヤー、機械学習レイヤー、AI (Cognitive Services) での Azure 統合
-+ [セマンティック検索 (プレビュー)](semantic-search-overview.md) を使用した最先端のランク付けアルゴリズム
 
 アーキテクチャ上、検索サービスは、インデックスが設定されていないデータを含む外部データ ストアと、検索インデックスにクエリ要求を送信して応答を処理するクライアント アプリとの間に配置されます。
 
 ![Azure Cognitive Search のアーキテクチャ](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Cognitive Search のアーキテクチャ")
 
-検索は、対外的に他の Azure サービスと統合できます。これには、Azure データ ソースからのデータのインジェストと取得を自動化する "*インデクサー*" という形式があるほか、Cognitive Services で提供されている AI (画像やテキストの分析など) や、Azure Machine Learning 内で作成したり Azure Functions 内にラップしたりするカスタム AI を組み込んだ "*スキルセット*" という形式があります。
+Cognitive Search は、他の Azure サービスと統合できます。これには、Azure データ ソースからのデータのインジェストと取得を自動化する "*インデクサー*" という形式があるほか、Cognitive Services で提供されている AI (画像やテキストの分析など) や、Azure Machine Learning 内で作成したり Azure Functions 内にラップしたりするカスタム AI を組み込んだ "*スキルセット*" という形式があります。
 
 ## <a name="inside-a-search-service"></a>検索サービスの内部
 
@@ -56,7 +54,7 @@ Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) �
 
 Azure Cognitive Search は、次のアプリケーション シナリオに適しています。
 
-+ ユーザー定義のプライベートな検索インデックスへの異種コンテンツの統合。
++ ユーザー定義のプライベートな検索インデックスへの異種コンテンツの統合。 インデックス作成とクエリワークロードを専用の検索サービスにオフロードします。
 
 + 関連性のチューニング、ファセット ナビゲーション、フィルター (地理空間検索)、同意語マッピング、オートコンプリートなど、検索に関連した機能を容易に実装。
 
@@ -108,6 +106,6 @@ Microsoft のお客様は、オンライン カタログ、基幹業務プログ
 
 ## <a name="watch-this-video"></a>次の動画をご覧ください
 
-この 15 分間のビデオでは、プログラム マネージャー Luis Cabrera が Azure Cognitive Search を紹介しています。
+この 15 分間のビデオで、Azure Cognitive Search の主な機能を確認します。
 
 >[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

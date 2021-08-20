@@ -2,14 +2,14 @@
 author: yulin-li
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/17/2021
+ms.date: 07/02/2021
 ms.author: yulili
-ms.openlocfilehash: 759fca1d323c72fe5e336a3211a9fb68fc1804b9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 54647867ab0a0d2c1333f80121aeab49a2efc959
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085508"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113279881"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "110085508"
 ## <a name="text-to-speech-to-speaker"></a>スピーカーへのテキスト読み上げ
 
 音声合成を既定のオーディオ出力デバイスに対して実行するには、次のコード サンプルを使用します。
-`subscription` 変数と `region` 変数は、ご利用のサブスクリプション キーとリージョン キーに置き換えてください。
+変数 `subscription` と `region` を、音声キーと場所またはリージョンに置き換えます。
 スクリプトを実行すると、入力テキストが既定のスピーカーで読み上げられます。
 
 ```go
@@ -68,8 +68,8 @@ func cancelledHandler(event speech.SpeechSynthesisEventArgs) {
 }
 
 func main() {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription := "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
 
     audioConfig, err := audio.NewAudioConfigFromDefaultSpeakerOutput()
     if err != nil {
@@ -167,7 +167,7 @@ go run quickstart
 `AudioData` プロパティは、出力データの `[]byte` を返します。 この `[]byte` を手動で操作することも、[`AudioDataStream`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go/speech#AudioDataStream) クラスを使用してインメモリ ストリームを管理することもできます。
 この例では、`NewAudioDataStreamFromSpeechSynthesisResult()` 静的関数を使用して、結果からストリームを取得します。
 
-`subscription` 変数と `region` 変数は、ご利用のサブスクリプション キーとリージョン キーに置き換えてください。
+変数 `subscription` と `region` を、音声キーと場所またはリージョンに置き換えます。
 
 ```go
 package main
@@ -184,8 +184,8 @@ import (
 )
 
 func main(subscription string, region string) {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription := "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
 
     config, err := speech.NewSpeechConfigFromSubscription(subscription, region)
     if err != nil {

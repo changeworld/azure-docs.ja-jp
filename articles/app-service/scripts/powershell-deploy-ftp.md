@@ -4,18 +4,18 @@ description: Azure PowerShell を使用して App Service のデプロイと管�
 tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
-ms.date: 03/20/2017
+ms.date: 06/23/2021
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 90c4a30243569c07e1a70ad46c8b2f7e70d493b2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 83ec2fad8d4f3ec6efb1b88e1e765ebcfa0d260d
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97005581"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575264"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>FTP を使用して Web アプリにファイルをアップロードする
 
-このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、FTP ([WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile) 経由) を使用して Web アプリのコードをデプロイします。
+このサンプル スクリプトは、App Service で Web アプリを関連リソースと合わせて作成し、そこに FTP を使用してファイルをデプロイします ([System.Net.FtpWebRequest](/dotnet/api/system.net.ftpwebrequest) を使用)。
 
 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 

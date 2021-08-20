@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8562acbf0b7dc6cac0ef03e6d0ca41691f752cdf
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97862406"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729798"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions の概要
 
@@ -46,7 +46,7 @@ Azure Functions は、記述するコードと管理するインフラストラ�
 | **ファイルのアップロードを処理する** | [Blob Storage](./functions-bindings-storage-blob.md) のファイルがアップロードされたり変更されたりしたときにコードを実行します |
 | **サーバーレス ワークフローを作成する** | [Durable Functions](./durable/durable-functions-overview.md) を使用して一連の関数のチェーンを作成します。 |
 | **データベースの変更に対処する** | [Cosmos DB](./functions-bindings-cosmosdb-v2.md) でドキュメントが作成または更新されたときにカスタム ロジックを実行します |
-| **スケジュールされたタスクを実行する** | [設定した時刻](./functions-bindings-timer.md)にコードを実行します |
+| **スケジュールされたタスクを実行する** | 定義済みの[時間間隔でコードを実行する](./functions-bindings-timer.md) |
 | **信頼性の高いメッセージ キュー システムを作成する** | [Queue Storage](./functions-bindings-storage-queue.md)、[Service Bus](./functions-bindings-service-bus.md)、[Event Hubs](./functions-bindings-event-hubs.md) のいずれかを使用してメッセージ キューを処理します |
 | **IoT データ ストリームを分析する** | [IoT デバイスからデータ](./functions-bindings-event-iot.md)を収集して処理します |
 | **データをリアルタイムで処理する** | [Functions と SignalR](./functions-bindings-signalr-service.md) を使用して、その時点のデータに対応します |

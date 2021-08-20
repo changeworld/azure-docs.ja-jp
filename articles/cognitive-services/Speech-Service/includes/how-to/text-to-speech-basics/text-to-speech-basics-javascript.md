@@ -2,15 +2,15 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/10/2021
+ms.date: 07/02/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d228388d951314b03ecd950052f76a20b6e4166
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 69c4d1fa56c6ff98989b4f9a5ae54209eb76be13
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108913"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659410"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -68,23 +68,23 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、認証トークンなど、ご利用のリソースに関する情報が含まれます。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成する必要があります。 このクラスには、音声キーとそれに関連付けられた場所/リージョン、エンドポイント、ホスト、認証トークンなど、リソースに関する情報が含まれています。
 
 > [!NOTE]
 > 音声認識、音声合成、翻訳、またはインテント認識のどれを実行するのかに関係なく、必ず構成を作成します。
 
 [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を初期化するには、次に示すようないくつかの方法があります。
 
-* リソースの場合: キーと、それに関連付けられたリージョンを渡します。
-* エンドポイントの場合: Speech Service エンドポイントを渡します。 キーまたは認証トークンは省略可能です。
-* ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
-* 認証トークンの場合: 認証トークンと、それに関連付けられたリージョンを渡します。
+* リソースの場合: 音声キーと、それに関連付けられた場所/リージョンを渡します。
+* エンドポイントの場合: Speech Service エンドポイントを渡します。 音声キーまたは認証トークンは省略可能です。
+* ホストの場合: ホスト アドレスを渡します。 音声キーまたは認証トークンは省略可能です。
+* 認証トークンの場合: 認証トークンと、それに関連付けられた場所またはリージョンを渡します。
 
-この例では、リソース キーとリージョンを使用して [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
+この例では、音声キーと場所/リージョンを使用して [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
 }
 
 synthesizeSpeech();
@@ -98,8 +98,8 @@ synthesizeSpeech();
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
-    const audioConfig = AudioConfig.fromAudioFileOutput("path/to/file.wav");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    const audioConfig = sdk.AudioConfig.fromAudioFileOutput("path/to/file.wav");
 }
 ```
 
@@ -107,8 +107,8 @@ function synthesizeSpeech() {
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
-    const audioConfig = AudioConfig.fromAudioFileOutput("path-to-file.wav");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    const audioConfig = sdk.AudioConfig.fromAudioFileOutput("path-to-file.wav");
 
     const synthesizer = new SpeechSynthesizer(speechConfig, audioConfig);
     synthesizer.speakTextAsync(
@@ -135,8 +135,8 @@ function synthesizeSpeech() {
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
-    const audioConfig = AudioConfig.fromDefaultSpeakerOutput();
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    const audioConfig = sdk.AudioConfig.fromDefaultSpeakerOutput();
 
     const synthesizer = new SpeechSynthesizer(speechConfig, audioConfig);
     synthesizer.speakTextAsync(
@@ -173,7 +173,7 @@ function synthesizeSpeech() {
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
 
     synthesizer.speakTextAsync(
@@ -195,7 +195,7 @@ function synthesizeSpeech() {
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
 
     synthesizer.speakTextAsync(
@@ -234,7 +234,7 @@ function synthesizeSpeech() {
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
 
     // Set the output format
     speechConfig.speechSynthesisOutputFormat = SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm;
@@ -263,7 +263,7 @@ function synthesizeSpeech() {
 音声合成マークアップ言語 (SSML) を使用すると、XML スキーマから要求を送信して、テキスト読み上げ出力のピッチ、発音、読み上げ速度、ボリュームなどを微調整することができます。 このセクションでは音声を変更する例を紹介しますが、より詳細なガイドについては、[SSML の操作方法に関する記事](../../../speech-synthesis-markup.md)を参照してください。 
 
 SSML を使用したカスタマイズを開始するには、音声を切り替える単純な変更を加えます。
-まず、ルート プロジェクト ディレクトリに SSML 構成用の新しい XML ファイルを作成します (この例では `ssml.xml`)。 ルート要素は常に `<speak>` であり、テキストを `<voice>` 要素でラップすることで、`name` パラメーターを使用して音声を変更できます。 サポートされている **ニューラル** 音声の[全一覧](../../../language-support.md#neural-voices)を参照してください。 
+まず、ルート プロジェクト ディレクトリに SSML 構成用の新しい XML ファイルを作成します (この例では `ssml.xml`)。 ルート要素は常に `<speak>` であり、テキストを `<voice>` 要素でラップすることで、`name` パラメーターを使用して音声を変更できます。 サポートされている **ニューラル** 音声の [全一覧](../../../language-support.md#neural-voices)を参照してください。 
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -286,7 +286,7 @@ function xmlToString(filePath) {
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     const synthesizer = new sdk.SpeechSynthesizer(speechConfig, undefined);
 
     const ssml = xmlToString("ssml.xml");

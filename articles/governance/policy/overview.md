@@ -1,14 +1,14 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-ms.date: 05/01/2021
+ms.date: 07/27/2021
 ms.topic: overview
-ms.openlocfilehash: b9cd2becc0c1241c34b7cd887a274088296150ba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 387c52eb1337f6d3aa7046b122fa66ff93be5e64
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733491"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114726687"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -61,7 +61,7 @@ Azure Policy では、[効果](./concepts/effects.md)を適用して、これら
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Policy と Azure RBAC
 
-Azure Policy と Azure ロールベースのアクセス制御 (Azure RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
+Azure Policy と Azure ロールベースのアクセス制御 (Azure RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。 [ポリシー定義](#policy-definition)、[イニシアチブ定義](#initiative-definition)、[割り当て](#assignments)などの一部の Azure Policy リソースは、すべてのユーザーに表示されます。 この設計により、すべてのユーザーとサービスに対して、その環境でどのようなポリシー ルールが設定されているかの透明性が実現されます。
 
 Azure RBAC の焦点は、さまざまなスコープでのユーザー[操作](../../role-based-access-control/resource-provider-operations.md)の管理にあります。 アクションの制御が必要な場合は、Azure RBAC が使用に適したツールになります。 あるユーザーがアクションを実行するためのアクセス権を持っていても、結果としてリソースが準拠していない場合、その作成や更新は Azure Policy によってブロックされます。
 

@@ -7,12 +7,12 @@ ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8721b9d25ce8d512dae31352db343af6385dadda
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 6450907ca888a01acaed90abeb6c3cdd02e32834
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113005530"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486933"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -42,7 +42,7 @@ AWS アカウントを Security Center にオンボードすると、AWS Securit
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者**<br>所有者がサービス プリンシパルの詳細を提供する場合は、**共同作成者** も AWS アカウントに接続できます|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) National/Sovereign (US Gov、Azure China)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (US Gov, Azure China)|
 |||
 
 

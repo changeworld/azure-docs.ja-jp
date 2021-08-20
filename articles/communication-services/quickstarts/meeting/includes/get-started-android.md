@@ -3,17 +3,21 @@ title: クイックスタート - Azure Communication Services を使用して T
 description: このクイックスタートでは、Android 用の Azure Communication Services Teams Embed ライブラリを使用する方法について説明します。
 author: palatter
 ms.author: palatter
-ms.date: 01/25/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: cbf56f6567c3c7857afcd71ed9f6dc67be48f9d1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0340135bf17f31ccc1dd00507a1c57426a3c641d
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108792960"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218154"
 ---
 このクイックスタートでは、Android 用の Azure Communication Services Teams Embed ライブラリを使用して Microsoft Teams 会議に参加する方法について説明します。
+
+## <a name="sample-code"></a>サンプル コード
+
+サンプル アプリは [GitHub](https://github.com/Azure-Samples/teams-embed-android-getting-started) からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +59,7 @@ android {
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-common:1.0.0-beta.8'
+    implementation 'com.azure.android:azure-communication-common:1.0.0'
     ...
 }
 ```
@@ -76,7 +80,7 @@ dependencies {
 
 ### <a name="install-the-teams-embed-package"></a>Teams Embed パッケージをインストールする
 
-[`MicrosoftTeamsSDK` パッケージ](https://github.com/Azure/communication)をダウンロードします。
+`MicrosoftTeamsSDK` パッケージをダウンロードします。
 
 次に、`MicrosoftTeamsSDK` フォルダーをプロジェクトの app フォルダーに解凍します。 例: `TeamsEmbedAndroidGettingStarted/app/MicrosoftTeamsSDK`.
 
@@ -86,7 +90,7 @@ dependencies {
 
 ```groovy
 apply from: 'MicrosoftTeamsSDK/MicrosoftTeamsSDK.gradle'
-```
+ ```
 
 プロジェクトを Gradle のファイルと同期する
 
@@ -158,7 +162,7 @@ public class TeamsEmbedAndroidGettingStarted extends TeamsSDKApplication {
 
 ### <a name="set-up-the-layout-for-the-app"></a>アプリのレイアウトを設定する
 
-`join_meeting` という ID でボタンを作成します。 レイアウト ファイル (`app/src/main/res/layout/activity_main.xml`) に移動して、ファイルの内容を以下に置き換えます。
+`join_meeting` という ID でボタンを作成します。 レイアウト ファイル (`app/src/main/res/layout/activity_main.xml`) に移動して、ファイルの内容を次のコードに置き換えます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -185,7 +189,7 @@ public class TeamsEmbedAndroidGettingStarted extends TeamsSDKApplication {
 
 レイアウトを作成したら、アクティビティの基本的なスキャフォールディングを、必要なバインディングと共に追加できます。 ボタンが押されたとき、このアクティビティによって実行時のアクセス許可の要求、会議クライアントの作成、会議への参加が行われます。 それぞれについては、その独自のセクションに説明があります。 
 
-`onCreate` メソッドが、`getAllPermissions` と `createAgent` を呼び出し、`Join Meeting` ボタンのバインドを追加するようにオーバーライドされます。 これは、アクティビティの作成時に 1 回だけ行われます。 `onCreate` の詳細については、ガイド「[アクティビティのライフサイクルについて](https://developer.android.com/guide/components/activities/activity-lifecycle)」を参照してください。
+`onCreate` メソッドが、`Join Meeting` ボタンのバインドを追加するようにオーバーライドされます。 これは、アクティビティの作成時に 1 回だけ行われます。 `onCreate` の詳細については、ガイド「[アクティビティのライフサイクルについて](https://developer.android.com/guide/components/activities/activity-lifecycle)」を参照してください。
 
 **MainActivity.java** に移動し、内容を次のコードに置き換えます。
 
@@ -214,29 +218,21 @@ public class MainActivity extends AppCompatActivity {
 
     private final String displayName = "John Smith";
 
-    private MeetingUIClient meetingUIClient;
-    private MeetingUIClientJoinOptions meetingJoinOptions;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        meetingJoinOptions = new MeetingUIClientJoinOptions(displayName, false);
         
-        getAllPermissions();
-        createMeetingClient();
-
-        Button joinMeeting = findViewById(R.id.join_meeting);
-        joinMeeting.setOnClickListener(l -> joinMeeting());
+        Button joinMeetingButton = findViewById(R.id.join_meeting);
+        joinMeetingButton.setOnClickListener(l -> joinMeeting());
     }
-
-    private void createMeetingClient() {
-        // See section on creating meeting client
-    }
-
+    
     private void joinMeeting() {
-        // See section on joining a meeting
+    // See section on joining a meeting
+    }
+
+    private MeetingUIClient createMeetingUIClient() {
+        // See section on creating meeting ui client
     }
 
     private void getAllPermissions() {
@@ -247,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
 
 ### <a name="request-permissions-at-runtime"></a>実行時にアクセス許可を要求する
 
-Android 6.0 以上 (API レベル 23) と `targetSdkVersion` 23 以上では、アプリのインストール時ではなく、実行時にアクセス許可が付与されます。 これをサポートするために、`getAllPermissions` を実装して、必要なアクセス許可ごとに `ActivityCompat.checkSelfPermission` と `ActivityCompat.requestPermissions` を呼び出すことができます。
+Android 6.0 以上 (API レベル 23) と `targetSdkVersion` 23 以上では、アプリのインストール時ではなく、実行時にアクセス許可が付与されます。 アクセス許可を要求するには、必要なアクセス許可ごとに `ActivityCompat.checkSelfPermission` と `ActivityCompat.requestPermissions` を呼び出すように `getAllPermissions` を実装することができます。
 
 ```java
 /**
@@ -274,34 +270,39 @@ private void getAllPermissions() {
 
 Azure Communication Services Teams Embed ライブラリが備える主な機能のいくつかは、次のクラスとインターフェイスにより処理されます。
 
-| 名前                                  | 説明                                                  |
-| ------------------------------------- | ------------------------------------------------------------ |
-| MeetingUIClient| MeetingUIClient は、Teams Embed ライブラリへのメイン エントリ ポイントです。 |
-| MeetingUIClientJoinOptions | MeetingUIClientJoinOptions は、表示名など、構成可能なオプションに使用されます。 |
-| MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator は、会議に参加するための会議 URL を設定するために使用されます。 |
-| MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator は、参加するグループ ID を設定するために使用されます。 |
-| MeetingUIClientCallState | MeetingUIClientCallState は、呼び出し状態の変化をレポートする目的で使用されます。 `connecting`、`waitingInLobby`、`connected`、`ended` の各オプションがあります。 |
-| MeetingUIClientEventListener | MeetingUIClientEventListener は、呼び出し状態の変化など、イベントを受け取る目的で使用されます。 |
-| MeetingUIClientIdentityProvider | MeetingUIClientIdentityProvider は、ユーザーの詳細を会議内のユーザーにマップするために使用されます。 |
-| MeetingUIClientUserEventListener | MeetingUIClientUserEventListener は、UI でのユーザー操作に関する情報を提供するために使用されます。 |
+| 名前                                    | 説明                                                                                                                                                       |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MeetingUIClient                         | MeetingUIClient は、Teams Embed ライブラリへのメイン エントリ ポイントです。                                                                                           |
+| MeetingUIClientJoinOptions              | MeetingUIClientJoinOptions は、表示名など、構成可能なオプションに使用されます。                                                                                |
+| MeetingUIClientTeamsMeetingLinkLocator  | MeetingUIClientTeamsMeetingLinkLocator は、会議に参加するための会議 URL を設定するために使用されます。                                                                      |
+| MeetingUIClientGroupCallLocator         | MeetingUIClientGroupCallLocator は、参加するグループ ID を設定するために使用されます。                                                                                         |
+| MeetingUIClientIconType                 | MeetingUIClientIconType は、アプリ固有のアイコンに置き換えることができるアイコンを指定するために使用されます。                                                                  |
+| MeetingUIClientCall                     | MeetingUIClientCall では通話について記述されており、それを制御するための API が提供されます。                                                                                           |
+| MeetingUIClientCallState                | MeetingUIClientCallState は、呼び出し状態の変化をレポートする目的で使用されます。 `CONNECTING`、`WAITING_IN_LOBBY`、`CONNECTED`、`ENDED` の各オプションがあります。 |
+| MeetingUIClientAudioRoute               | MeetingUIClientAudioRoute は、`Earpiece` や `SpeakerOn` などのローカル オーディオ ルートに使用されます。                                                                          |
+| MeetingUIClientLayoutMode               | MeetingUIClientLayoutMode は、通話の UI モードで異なるものを選択できるようにするために使用されます。                                                                              |
+| MeetingUIClientAvatarSize               | MeetingUIClientAvatarSize は、MeetingUIClientCallIdentityProvider によって要求できるさまざまなアバター サイズを示す列挙型です                                |
+| MeetingUIClientCallEventListener        | MeetingUIClientCallEventListener は、通話状態の変化など、イベントを受け取るために使用されます。                                                                    |
+| MeetingUIClientCallIdentityProvider     | MeetingUIClientCallIdentityProvider は、ユーザーの詳細を会議内のユーザーにマップするために使用されます。                                                                    |
+| MeetingUIClientCallUserEventListener    | MeetingUIClientCallUserEventListener では、UI でのユーザー操作に関する情報が提供されます。                                                                       |
 
 ## <a name="create-a-meetingclient-from-the-user-access-token"></a>ユーザー アクセス トークンから MeetingClient を作成する
 
 認証済みの会議クライアントは、ユーザー アクセス トークンを使用してインスタンス化することができます。 このトークンは、サービスがアプリケーションに固有の認証を使用して生成します。 ユーザー アクセス トークンの詳細については、[ユーザー アクセス トークン](../../access-tokens.md)に関するガイドを参照してください。 クイック スタートでは、`<USER_ACCESS_TOKEN>` を Azure Communication Service リソース用に生成されたユーザー アクセス トークンに置き換えます。
 
 ```java
-private void createMeetingClient() { 
+private MeetingUIClient createMeetingUIClient() { 
     try {
         CommunicationTokenRefreshOptions refreshOptions = new CommunicationTokenRefreshOptions(tokenRefresher, true, "<USER_ACCESS_TOKEN>");
         CommunicationTokenCredential credential = new CommunicationTokenCredential(refreshOptions);
-        meetingUIClient = new MeetingUIClient(credential);
+        return new MeetingUIClient(credential);
     } catch (Exception ex) {
-        Toast.makeText(getApplicationContext(), "Failed to create meeting client: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Failed to create meeting ui client: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }
 ```
 
-## <a name="setup-token-refreshing"></a>セットアップ トークンを更新する
+### <a name="setup-token-refreshing"></a>セットアップ トークンを更新する
 
 Callable `tokenRefresher` メソッドを作成します。 次に、ユーザー トークンを取得する `fetchToken` メソッドを作成します。 [その手順は、こちらでご覧いただけます](../../access-tokens.md?pivots=programming-language-java)。
 
@@ -316,28 +317,35 @@ public String fetchToken() {
 }
 ```
 
-## <a name="get-the-teams-meeting-link"></a>Teams 会議のリンクを取得する
-
-Teams 会議のリンクは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)で詳しく説明されています。
-Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
-
 ## <a name="start-a-meeting-using-the-meeting-client"></a>会議クライアントを使用して会議を開始する
 
-会議には、`MeetingUIClient` を使用して参加できます。その際に必要なのは、`MeetingUIClientTeamsMeetingLinkLocator` と `MeetingUIClientJoinOptions` だけです。 `<MEETING_URL>` は、Teams 会議の URL に置き換えてください。
+`joinMeeting` メソッドは、 *[Join Meeting]\(会議に参加する\)* ボタンをタップしたときに実行されるアクションとして設定されます。 会議には、`MeetingUIClient` を使用して参加できます。その際に必要なのは、`MeetingUIClientTeamsMeetingLinkLocator` と `MeetingUIClientJoinOptions` だけです。
+`<MEETING_URL>` を Microsoft Teams 会議のリンクに置き換えることに注意してください。
 
 ```java
 /**
  * Join a meeting with a meetingURL.
  */
 private void joinMeeting() {
+    getAllPermissions();
+    MeetingUIClient meetingUIClient = createMeetingUIClient();
+    
+    MeetingUIClientTeamsMeetingLinkLocator meetingUIClientTeamsMeetingLinkLocator = new MeetingUIClientTeamsMeetingLinkLocator(<MEETING_URL>);
+    
+    MeetingUIClientJoinOptions meetingJoinOptions = new MeetingUIClientJoinOptions(displayName, false);
+    
     try {
-        MeetingUIClientTeamsMeetingLinkLocator meetingUIClientTeamsMeetingLinkLocator = new MeetingUIClientTeamsMeetingLinkLocator(<MEETING_URL>);
         meetingUIClient.join(meetingUIClientTeamsMeetingLinkLocator, meetingJoinOptions);
     } catch (Exception ex) {
         Toast.makeText(getApplicationContext(), "Failed to join meeting: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }
 ```
+
+### <a name="get-a-microsoft-teams-meeting-link"></a>Microsoft Teams 会議のリンクを取得する
+
+Microsoft Teams 会議のリンクは、Graph API を使用して取得できます。 会議のリンクを取得する手順については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)を参照してください。
+Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
 
 ## <a name="launch-the-app-and-join-a-meeting"></a>アプリを起動して会議に参加する
 
@@ -347,6 +355,12 @@ private void joinMeeting() {
 
 :::image type="content" source="../media/android/quickstart-android-joined-meeting.png" alt-text="完成したアプリケーションを示すスクリーンショット (会議への参加後)。":::
 
-## <a name="sample-code"></a>サンプル コード
+## <a name="add-localization-support-based-on-your-app"></a>アプリに基づいてローカライズ サポートを追加する
 
-サンプル アプリは [GitHub](https://github.com/Azure-Samples/teams-embed-android-getting-started) からダウンロードできます
+Microsoft Teams SDK では、50 を超える言語で 100 より多くの文字列がサポートされています。 既定では、英語のみが有効になっています。 残りのものは、gradle ファイルで有効にすることができます。
+
+#### <a name="add-localizations-to-the-sdk-based-on-what-your-app-supports"></a>アプリのサポート対象に基づいてローカライズを SDK に追加する
+
+1. アプリでサポートする言語の一覧を決定します
+2. MicrosoftTeamsSDK.gradle ファイルを開きます
+3. defaultConfig ブロックで、resConfigs プロパティは既定で "en" に設定されています。 アプリで必要な言語を追加します。 参照: [Android ドキュメント](https://developer.android.com/studio/build/shrink-code#unused-alt-resources)

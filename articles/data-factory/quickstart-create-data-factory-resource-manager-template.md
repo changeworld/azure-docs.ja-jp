@@ -8,13 +8,13 @@ ms.author: susabat
 ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.date: 05/10/2021
-ms.openlocfilehash: 1fa01b628bb8c630716d2051a644d1e2225530f9
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/05/2021
+ms.openlocfilehash: 1979e5c832225483aa5309c84d3c2ce491e77f3c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372075"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436922"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Data Factory を作成する
 
@@ -132,9 +132,9 @@ Jane, Doe
 
 1. **[データ ファクトリ]** ページに移動し、作成したデータ ファクトリを選択します。
 
-2. **[作成と監視]** タイルを選択します。
+2. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択します。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="作成と監視":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-open-tile.png" alt-text="作成と監視":::
 
 2. **[作成]** タブ:::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false":::を選択します。
 

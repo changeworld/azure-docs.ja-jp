@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18, devx-track-azurecli
-ms.openlocfilehash: 4c617c9bb5e45df1ebf3f6274ed88e05f28cfe4c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 8317db1b7c4e71f05694ab902738dca87925a4d6
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751961"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992191"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
@@ -170,6 +170,9 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 
 > [!NOTE]
 > Cookie や認証トークンなどの資格情報をアプリで送信する必要がある場合、ブラウザーは、応答に `ACCESS-CONTROL-ALLOW-CREDENTIALS` ヘッダーを必要とします。 App Service でこれを有効にする場合は、CORS の構成で `properties.cors.supportCredentials` を `true` に設定してください。`allowedOrigins` に `'*'` が含まれているときに、これを有効にすることはできません。
+
+> [!NOTE]
+> `AllowAnyOrigin` と `AllowCredentials` を指定する構成は安全ではなく、クロスサイト リクエスト フォージェリが発生する可能性があります。 アプリが両方の方法で構成されている場合、CORS サービスは無効な CORS 応答を返します。
 
 ### <a name="test-cors-again"></a>CORS をもう一度テストする
 

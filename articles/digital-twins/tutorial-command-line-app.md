@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 1cee1a33f74b11793d9b12db0b8bc6f65fda29a3
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 1d4faa9ad8bce084fdd011fb9a79fd867f02aa27
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787697"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446909"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>チュートリアル: サンプル クライアント アプリを使用して Azure Digital Twins グラフを作成する
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-このチュートリアルでは、モデル、ツイン、およびリレーションシップを使用して、Azure Digital Twins でグラフを作成します。 このチュートリアルのツールは、Azure Digital Twins インスタンスを操作するための **サンプル コマンドライン クライアント アプリケーション** です。 このクライアント アプリは、[クライアント アプリのコーディングに関するチュートリアル](tutorial-code.md)で作成したアプリに似ています。
+このチュートリアルでは、モデル、ツイン、およびリレーションシップを使用して、Azure Digital Twins でグラフを作成します。 このチュートリアルのツールは、Azure Digital Twins インスタンスを操作するための **サンプル コマンドライン クライアント アプリケーション** です。 このクライアント アプリは、[クライアント アプリのコーディング](tutorial-code.md)に関する記事で作成したアプリに似ています。
 
 このサンプルを使用して、モデルのアップロード、ツインの作成と変更、リレーションシップの作成など、基本的な Azure Digital Twins アクションを実行することができます。 [サンプルのコード](https://github.com/Azure-Samples/digital-twins-samples/tree/master/)を見て、Azure Digital Twins の API について学んだり、サンプル プロジェクトに自由に変更を加えながら、独自のコマンドを実装する練習をしたりすることもできます。
 
@@ -40,7 +40,6 @@ ms.locfileid: "109787697"
 :::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Visual Studio のスタート ボタン (SampleClientApp プロジェクト) のスクリーンショット。" lightbox="media/tutorial-command-line/app/start-button-sample.png":::
 
 コンソール ウィンドウが表示されて認証が行われ、コマンドを待つ状態となります。 
-* 認証はブラウザーを通じて処理されます。つまり既定の Web ブラウザーが開いて、認証プロンプトが表示されます。 このプロンプトから Azure の資格情報を使用してサインインしてください。 その後は、ブラウザーのタブまたはウィンドウを閉じてかまいません。
 
 次に示したのは、プロジェクト コンソールの画面例を示すスクリーンショットです。
 
@@ -49,7 +48,7 @@ ms.locfileid: "109787697"
 > [!TIP]
 > このプロジェクトで使用できる全コマンドの一覧を確認するには、プロジェクト コンソールで「`help`」と入力し、Return キーを押します。
 
-以降このチュートリアルの手順に取り組む間、プロジェクト コンソールは実行したままにしてください。
+アプリが正常に実行されていることを確認したら、コンソール ウィンドウを閉じて、アプリの実行をひとまず停止します。 この記事の後の方で、再び実行します。
 
 ## <a name="model-a-physical-environment-with-dtdl"></a>DTDL を使用して物理環境をモデル化する
 
@@ -71,6 +70,8 @@ _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウ�
 ### <a name="upload-models-to-azure-digital-twins"></a>Azure Digital Twins にモデルをアップロードする
 
 モデルを設計したら、Azure Digital Twins インスタンスにアップロードする必要があります。 そうすることで、カスタム ドメインの独自のボキャブラリを使用して、Azure Digital Twins サービス インスタンスが構成されます。 モデルをアップロードしたら、そのモデルを使用するツイン インスタンスを作成できます。
+
+1. 前のセクションで Room.json ファイルを編集した後、コンソール アプリの実行をもう一度開始します。
 
 1. プロジェクト コンソール ウィンドウで、次のコマンドを実行して、更新済みの Room モデルと、次のセクションで異なるタイプのツインを作成するために使用する Floor モデルをアップロードします。
 
@@ -95,7 +96,7 @@ CreateModels Room
 ```
 
 モデルを上書きすることはできないので、今度はサービス エラーが返されます。
-既存のモデルを削除する方法について詳しくは、[方法: DTDL モデルの管理](how-to-manage-model.md)に関する記事を参照してください。
+既存のモデルを削除する方法について詳しくは、[DTDL モデルの管理](how-to-manage-model.md)に関する記事を参照してください。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -219,7 +220,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
     :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="ツイン クエリの部分的な結果 (room0 と floor1 を含む) を示すスクリーンショット。":::
 
     >[!NOTE]
-    >サンプル プロジェクトでは、引数が追加されていない `Query` コマンドは、`Query SELECT * FROM DIGITALTWINS` に相当します。 [クエリ API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](concepts-cli.md)を使用して、インスタンス内のすべてのツインに対してクエリを実行するには、より長い (完全な) クエリを使用します。
+    >サンプル プロジェクトでは、引数が追加されていない `Query` コマンドは、`Query SELECT * FROM DIGITALTWINS` に相当します。 [クエリ API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)を使用して、インスタンス内のすべてのツインに対してクエリを実行するには、より長い (完全な) クエリを使用します。
 
 1. **環境内に存在する部屋をすべて知りたい** (モデルで照会)
 
@@ -279,4 +280,4 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 次のチュートリアルに進み、Azure Digital Twins を他の Azure サービスと組み合わせて、データ ドリブンのエンド ツー エンドのシナリオを完了してください。
 > [!div class="nextstepaction"]
-> [チュートリアル:エンド ツー エンドのソリューションを接続する](tutorial-end-to-end.md)
+> [エンドツーエンドのソリューションを接続する](tutorial-end-to-end.md)

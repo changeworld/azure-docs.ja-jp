@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: jrasnick, garye
-ms.date: 11/20/2020
+ms.date: 7/9/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: aaf0aab2ef600b269b9b47182aeb096ca13c7a87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1472336e5244103175ec2ad837d4b503a1e5348
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943520"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721600"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>チュートリアル:コードなしで機械学習モデルをトレーニングする
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - [Azure Synapse Analytics ワークスペース](../get-started-create-workspace.md)。 Azure Data Lake Storage Gen2 ストレージ アカウントが既定のストレージとして構成されていることを確認します。 必ず、Data Lake Storage Gen2 ファイル システムの *Storage Blob データ共同作成者* として作業してください。
-- Azure Synapse Analytics ワークスペースの Apache Spark プール。 詳細については、「[クイック スタート:Synapse Studio を使用して専用 SQL プールを作成する](../quickstart-create-sql-pool-studio.md)」をご覧ください。
+- Azure Synapse Analytics ワークスペースの Apache Spark プール (バージョン 2.4)。 詳細については、[クイックスタート: Synapse Studio を使用したサーバーレス Apache Spark プールの作成](../quickstart-create-apache-spark-pool-studio.md)に関するページを参照してください。
 - Azure Synapse Analytics ワークスペースの Azure Machine Learning のリンクされたサービス。 詳細については、「[クイック スタート:Azure Synapse Analytics での Azure Machine Learning のリンクされたサービスの新規作成](quickstart-integrate-azure-machine-learning.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
@@ -55,8 +55,8 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ウィザードを開くには、次の手順を実行します。
 
-1. 前の手順で作成した Spark テーブルを右クリックします。 **[Machine Learning]**  >  **[Enrich with new model]\(新しいモデルを使用してエンリッチ\)** の順に選択します。
-![Spark テーブルのスクリーンショット。[Machine Learning] と [Enrich with new model]\(新しいモデルを使用してエンリッチ\) が強調表示されています。](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
+1. 前の手順で作成した Spark テーブルを右クリックします。 **[機械学習]**  >  **[新しいモデルのトレーニング]** の順に選択します。
+![Spark テーブルのスクリーンショット。[機械学習] と [新しいモデルのトレーニング] が強調表示されています。](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
 
 1. Azure Machine Learning での自動機械学習の実験実行を作成するための構成の詳細を指定します。 この実行により、複数のモデルがトレーニングされます。 実行が成功すると、最適なモデルが Azure Machine Learning モデル レジストリに登録されます。
 
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 答えようとしている質問に基づいて、実験の機械学習モデルの種類を選択します。 `fareAmount` がターゲット列であり、これは数値であるため、ここでは **[回帰]** を選択することをお勧めします。 その後 **[続行]** を選択します。
 
-![[Enrich with new model]\(新しいモデルを使用してエンリッチ\) のスクリーンショット。[回帰] が強調表示されています。](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00b.png)
+![[新しいモデルのトレーニング] のスクリーンショット。[回帰] が強調表示されています。](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00b.png)
 
 ## <a name="additional-configurations"></a>追加の構成
 

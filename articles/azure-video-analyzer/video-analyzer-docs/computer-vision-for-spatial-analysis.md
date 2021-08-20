@@ -5,13 +5,13 @@ author: Juliako
 ms.author: juliako
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 04/01/2021
-ms.openlocfilehash: 82edf5b282f7b68a7d4d1d7909cfe653a65c175b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/01/2021
+ms.openlocfilehash: 0f0ee0a7288a3ef07f0aa8fa3c04660cac1ad0b5
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746567"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604180"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>チュートリアル: 空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
 
@@ -49,7 +49,7 @@ spatial-analysis モジュールを Azure Video Analyzer モジュールに接�
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
-1. 空間分析コンテナーを実行するには、[NVIDIA Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/) を搭載したコンピューティング デバイスが必要です。 GPU アクセラレーションを備えた [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) を使用することをお勧めしますが、コンテナーは、ホスト コンピューターに [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) がインストールされている他のすべてのデスクトップ マシンで実行できます。
+1. 空間分析コンテナーを実行するには、[NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/) を搭載したコンピューティング デバイスが必要です。 GPU アクセラレーションを備えた [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) を使用することをお勧めしますが、コンテナーは、ホスト コンピューターに [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) がインストールされている他のすべてのデスクトップ マシンで実行できます。
 
    #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge デバイス](#tab/azure-stack-edge)
 
@@ -125,7 +125,7 @@ spatial-analysis モジュールを Azure Video Analyzer モジュールに接�
 
 ## <a name="create-the-computer-vision-resource"></a>Computer Vision リソースを作成する
 
-[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または Azure CLI を使用して、Computer Vision という種類の Azure リソースを作成する必要があります。 コンテナーへのアクセス要求が承認され、Azure サブスクリプション ID が登録されると、リソースを作成できるようになります。  https://aka.ms/csgate にアクセスして、ユース ケースと Azure のサブスクリプション ID を送信します。 アクセス要求フォームに記載されているものと同じ Azure サブスクリプションを使用して、Azure リソースを作成する必要があります。
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または Azure CLI を使用して、Computer Vision という種類の Azure リソースを作成する必要があります。 
 
 ### <a name="gathering-required-parameters"></a>必須パラメーターの収集
 
@@ -434,7 +434,7 @@ pipelineTopology のインスタンスが作成されると、"MediaSessionEstab
 
 #### <a name="parameters"></a>パラメーター:
 
-| 名前                      | 種類    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| 名前                      | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ゾーン                     | list    | ゾーンのリスト。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | name                      | string  | このゾーンのフレンドリ名。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -492,15 +492,22 @@ pipelineTopology のインスタンスが作成されると、"MediaSessionEstab
 ```
 
 ### <a name="more-operations"></a>その他の操作:
+`spatialAnalysis` モジュールで提供されるさまざまな操作があります。
 
+- **personCount**
+- **personDistance**
+- **personCrossingLine**
+- **personZoneCrossing**
+- **customOperation**
+<br></br>
 <details>
-  <summary>展開するにはクリック</summary>
+  <summary>各操作のさまざまな構成オプションを表示するには、クリックして展開します。</summary>
 
 ### <a name="person-line-crossing"></a>Person Line Crossing
 
 #### <a name="parameters"></a>パラメーター:
 
-| 名前                      | 種類    | Description                                                                                                                                                                                                                                                                   |
+| 名前                      | Type    | Description                                                                                                                                                                                                                                                                   |
 | ------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | lines                     | list    | ラインのリスト。                                                                                                                                                                                                                                                                |
 | name                      | string  | このラインのフレンドリ名。                                                                                                                                                                                                                                                  |
@@ -561,7 +568,7 @@ pipelineTopology のインスタンスが作成されると、"MediaSessionEstab
 
 #### <a name="parameters"></a>パラメーター:
 
-| 名前                      | 種類    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| 名前                      | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ゾーン                     | list    | ゾーンのリスト。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | name                      | string  | このゾーンのフレンドリ名。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -606,7 +613,7 @@ pipelineTopology のインスタンスが作成されると、"MediaSessionEstab
 
 #### <a name="parameters"></a>パラメーター:
 
-| 名前                      | 種類    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| 名前                      | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ゾーン                     | list    | ゾーンのリスト。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | name                      | string  | このゾーンのフレンドリ名。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -666,7 +673,7 @@ pipelineTopology のインスタンスが作成されると、"MediaSessionEstab
 
 #### <a name="parameters"></a>パラメーター:
 
-| 名前                   | 種類   | Description                           |
+| 名前                   | Type   | Description                           |
 | ---------------------- | ------ | ------------------------------------- |
 | extensionConfiguration | string | 操作の JSON 表現。 |
 
@@ -734,8 +741,7 @@ pipelineTopology のインスタンスが作成されると、"MediaSessionEstab
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/bounding-box.png" alt-text="境界ボックス アイコン":::
 
-> [!NOTE]
-> ビデオのソースはカメラ フィードをシミュレートするコンテナーだったので、ビデオのタイム スタンプは、ライブ パイプラインをアクティブにした時点と、非アクティブ化した時点に関連しています。
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -819,7 +825,7 @@ spatialanalysis は大きなコンテナーであり、起動時間は最大で 
 `spatialAnalysis` モジュールが提供するさまざまな操作を試してください。次の pipelineTopology を参照してください。
 
 - [personCount](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-count-operation-topology.json)
-- [personDistance](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-distance-pperation-topology.json)
+- [personDistance](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-distance-operation-topology.json)
 - [personCrossingLine](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-line-crossing-operation-topology.json)
 - [personZoneCrossing](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-zone-crossing-operation-topology.json)
 - [customOperation](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/custom-operation-topology.json)

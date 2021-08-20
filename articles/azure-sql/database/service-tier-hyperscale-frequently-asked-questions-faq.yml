@@ -12,12 +12,12 @@ metadata:
   ms.author: dfurman
   ms.reviewer: mathoma
   ms.date: 03/31/2021
-  ms.openlocfilehash: 993254f838af70c62292844991ba72c6977dfd99
-  ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+  ms.openlocfilehash: b173b2ce8de29a4a605e7223bc46130155b81b3d
+  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/24/2021
-  ms.locfileid: "112574794"
+  ms.lasthandoff: 07/24/2021
+  ms.locfileid: "114668764"
 title: Azure SQL Database ハイパースケールに関する FAQ
 summary: >
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -126,10 +126,10 @@ sections:
   - question: >
       Hyperscale はどのような種類のワークロードを対象に設計されていますか?
     answer: >
-      ハイパースケールはすべての SQL Server ワークロードをサポートしますが、主に OLTP 用に最適化されています。 ハイブリッド (HTAP) および分析 (データ マート) のワークロードにも対応できます。
+      Hyperscale では、OLTP、ハイブリッド (HTAP)、分析 (データ マート) ワークロードなど、すべてのワークロードの種類をサポートしています。
   - question: >
       Azure Synapse Analytics と Azure SQL Database Hyperscale は、どのようにして選択すればよいですか?
-    answer: "現在、SQL Server をデータ ウェアハウスとして使用して対話型分析クエリを実行している場合、ハイパースケールがオプションとして優れています。小規模および中規模データ ウェアハウス (数 TB から最大 100 TB) をホスティングするコストを抑えることができ、最小限の T-SQL コードの変更で SQL Server データ ウェアハウス ワークロードをハイパースケールに移行できます。\n\n複雑なクエリおよび 100 MB/s を超える持続的なインジェスト速度で大規模に Data Analytics を実行しているか、Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列処理 (MPP) データ ウェアハウスを使用している場合は、Azure Synapse Analytics が最適な選択肢である可能性があります。\n  \n"
+    answer: "現在、SQL Server をデータ ウェアハウスとして使用して対話型分析クエリを実行している場合、ハイパースケールがオプションとして優れています。小規模および中規模データ ウェアハウス (数 TB から最大 100 TB) をホスティングするコストを抑えることができ、最小限の T-SQL コードの変更で SQL Server データ ウェアハウス ワークロードをハイパースケールに移行できます。\n\n複雑なクエリを使用し、100 MB/s を超える持続的なインジェスト速度で大規模に Data Analytics を実行しているか、Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列処理 (MPP) データ ウェアハウスを使用している場合は、Azure Synapse Analytics が最適な選択肢である可能性があります。\n  \n"
 - name: ハイパースケールのコンピューティングに関する質問
   questions:
   - question: >
@@ -143,11 +143,11 @@ sections:
   - question: >
       サイズが違う複数の計算レプリカをプロビジョニングできますか?
     answer: >
-      いいえ。
+      はい。 これは[名前付きレプリカ](service-tier-hyperscale-replicas.md#named-replica-in-preview)を使用して実現できます。
   - question: >
       サポートされている読み取りスケールアウト レプリカの数はいくつですか?
     answer: >
-      ハイパースケール データベースは、既定で 1 つの読み取りスケールアウト レプリカを含むように作成されます (プライマリを含めて 2 つのレプリカ)。 [Azure portal](https://portal.azure.com) または [REST API](/rest/api/sql/databases/createorupdate) を使用して、読み取り専用レプリカの数を 0 から 4 の間でスケールすることができます。
+      ハイパースケール データベースは、既定で 1 つの読み取りスケールアウト レプリカを含むように作成されます (プライマリを含めて 2 つのレプリカ)。 [Azure portal](https://portal.azure.com) または [REST API](/rest/api/sql/databases/createorupdate) を使用して、読み取り専用レプリカの数を 0 から 4 の間でスケールすることができます。 さらに、[名前付きレプリカ](service-tier-hyperscale-replicas.md#named-replica-in-preview)を使用して、多くの読み取りスケールアウト シナリオも有効にできます。
   - question: >
       高可用性のために追加の計算レプリカをプロビジョニングする必要がありますか?
     answer: >
@@ -170,7 +170,7 @@ sections:
   - question: >
       データベースが拡大すると `tempdb` はスケーリングされますか?
     answer: >
-      `tempdb` データベースはローカル SSD ストレージに配置され、プロビジョニングするコンピューティング サイズに比例してサイズが調整されます。 `tempdb` は、最大のパフォーマンス メリットを得られるように最適化されています。 `tempdb` サイズを構成することはできません。これは自動的に管理されます。
+      `tempdb` データベースはローカル SSD ストレージに配置され、プロビジョニングするコンピューティング サイズに比例してサイズが調整されます。 `tempdb` は、最大のパフォーマンス メリットを得られるように最適化されています。 `tempdb` サイズを構成することはできません。これは自動的に管理されます。 データベースの最大 `tempdb` サイズを決定するには、[Hyperscale のストレージとコンピューティング サイズ](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)に関するセクションを参照してください。
   - question: >
       データベースのサイズは自動的に拡張されますか、それともデータ ファイルのサイズを自分で管理する必要がありますか?
     answer: >
@@ -222,7 +222,7 @@ sections:
   - question: >
       Hyperscale サービス レベルに移行した後で使えなくなる機能がありますか?
     answer: >
-      はい。 長期的なバックアップ リテンション期間を始めとする Azure SQL Database の一部の機能は、まだハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。  これらの制限は一時的なものであると想定しています。
+      はい。 長期的なバックアップ リテンション期間を始めとする Azure SQL Database の一部の機能は、まだハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。  これらの制限は一時的なものであると想定しています。 詳細については、「[既知の制限事項](service-tier-hyperscale.md#known-limitations)」を参照してください。
   - question: >
       オンプレミスの SQL Server データベース、またはクラウドの仮想マシンにある SQL Server データベースースを、Hyperscale に移行できますか?
     answer: >
@@ -272,7 +272,7 @@ sections:
   - question: >
       データベース バックアップの実行頻度はどれくらいですか?
     answer: >
-      ハイパースケール データベースでは、従来の完全バックアップ、差分バックアップ、およびログ バックアップは存在しません。 代わりに、データ ファイルの定期ストレージ スナップショットがあります。 生成されたログは、構成された保持期間中はそのまま単純に保存され、その保持期間内の任意の時点への復元が可能です。
+      ハイパースケール データベースでは、従来の完全バックアップ、差分バックアップ、およびログ バックアップは存在しません。 代わりに、データ ファイルの定期ストレージ スナップショットがあります。 生成されたログは、構成された保持期間中はそのまま保存され、その保持期間内の任意の時点への復元が可能です。
   - question: >
       Hyperscale ではポイントインタイム リストアがサポートされますか?
     answer: >
@@ -280,7 +280,7 @@ sections:
   - question: >
       Hyperscale でのデータベースの復元に対する回復ポイントの目標 (RPO) と目標復旧時間 (RTO) はどれくらいですか?
     answer: >
-      RPO は 0 分です。ほとんどの復元操作は、データベース サイズにかかわらず、60 分以内に完了します。 大規模なデータベースの場合、および復元ポイントの前とそこに至るまでの時間に大量の書き込みアクティビティが発生した場合は、復元時間が長くなる可能性があります。
+      ポイントインタイム リストアの RPO は 0 分です。ほとんどのポイントインタイム リストア操作は、データベース サイズにかかわらず、60 分以内に完了します。 大規模なデータベースの場合、および復元ポイントの前とそこに至るまでの時間に大量の書き込みアクティビティが発生した場合は、復元時間が長くなる可能性があります。
   - question: >
       データベースのバックアップは、プライマリ レプリカまたはセカンダリ レプリカでのコンピューティング パフォーマンスに影響しますか?
     answer: >
@@ -292,7 +292,7 @@ sections:
   - question: >
       Hyperscale データベースでは geo レプリケーションを設定できますか?
     answer: >
-      Hyperscale データベースの [geo レプリケーション](active-geo-replication-overview.md)は、パブリック プレビュー段階です。
+      はい。 Hyperscale データベースの [geo レプリケーション](active-geo-replication-overview.md)は、パブリック プレビュー段階です。
   - question: >
       Hyperscale データベースのバックアップを取得し、それをオンプレミス サーバーまたは VM の SQL Server に復元できますか?
     answer: >
@@ -302,7 +302,7 @@ sections:
   - question: >
       Hyperscale サービス レベルに移行した後で使えなくなる機能がありますか?
     answer: >
-      はい。 長期的なバックアップ リテンション期間を始めとする Azure SQL Database の一部の機能は、ハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。
+      はい。 長期的なバックアップ リテンション期間を始めとする Azure SQL Database の一部の機能は、ハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。 詳細については、「[既知の制限事項](service-tier-hyperscale.md#known-limitations)」を参照してください。
   - question: >
       PolyBase は Hyperscale で動作しますか?
     answer: >
@@ -324,7 +324,7 @@ sections:
   - question: >
       最大のコンピューティングで得られる IOPS はどれくらいですか?
     answer: >
-      IOPS と IO 待ち時間は、ワークロードのパターンによって異なります。 アクセス対象のデータが計算レプリカでキャッシュされている場合、IO パフォーマンスはローカル SSD と似ています。
+      IOPS と IO 待ち時間は、ワークロードのパターンによって異なります。 アクセスされているデータが、コンピューティング レプリカの RBPEX にキャッシュされている場合、Business Critical または Premium サービス レベルの場合と同様の IO パフォーマンスになります。
   - question: >
       スループットはバックアップの影響を受けますか?
     answer: >
@@ -350,14 +350,14 @@ sections:
   - question: >
       スケーリング操作の進行中に、接続が切断されることを予期する必要がありますか?
     answer: >
-      スケールアップまたはスケールダウンによって既存の接続が切断されるのは、スケーリング操作の終了時にフェールオーバーが発生したときです。 セカンダリ レプリカの追加では接続は切断されません。
+      スケールアップまたはスケールダウンによって既存の接続が切断されるのは、スケーリング操作の終了時にフェールオーバーが発生したときです。 セカンダリ レプリカを追加または削除しても、プライマリの接続は切断されません。
   - question: >
       計算レプリカのスケールアップとスケールダウンは、自動的に行われますか、それともエンド ユーザーが開始する操作ですか?
     answer: "エンドユーザー。 自動ではありません。  \n"
   - question: >
       コンピューティングがスケールアップされると、`tempdb` データベースと RBPEX キャッシュのサイズも増えますか?
     answer: >
-      はい。 コンピューティング ノードの `tempdb` データベースと [RBPEX キャッシュ](service-tier-hyperscale.md#distributed-functions-architecture)のサイズは、コア数の増加に応じて自動的にスケールアップされます。
+      はい。 コンピューティング ノードの `tempdb` データベースと [RBPEX キャッシュ](service-tier-hyperscale.md#distributed-functions-architecture)のサイズは、コア数の増加に応じて自動的にスケールアップされます。 詳細については、[Hyperscale のストレージとコンピューティング サイズ](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)に関するセクションを参照してください。
   - question: >
       複数のプライマリ コンピューティング ヘッドでより高レベルの同時実行を推進できる、複数のプライマリ計算レプリカ (マルチマスター システムなど) をプロビジョニングできますか?
     answer: >

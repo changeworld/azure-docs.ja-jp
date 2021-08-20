@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: e58473f5c3bc4bc6314fb0dc5c532e24daa225d6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 81c11665db1ee1f7c73e8abee95f01b8ea62d2fe
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065703"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504893"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro の配置を準備する 
 
@@ -154,11 +154,11 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
     ![リソースを作成する 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
-    また、リソースの作成時に、クラウド サービスに対して認証できるようにするマネージド サービス ID (MSI) が有効になっていることも通知されます。 この ID は、リソースが存在する限り存在します。
+    また、リソースの作成時に、クラウド サービスに対して認証できるようにするマネージド ID が有効になっていることも通知されます。 この ID は、リソースが存在する限り存在します。
 
 11. **［作成］** を選択します
 
-    リソースの作成には数分かかります。 また、Azure Stack Edge デバイスが Azure のリソースプロバイダーと通信できるようにする MSI も作成されます。
+    リソースの作成には数分かかります。 また、Azure Stack Edge デバイスが Azure のリソースプロバイダーと通信できるようにするマネージド ID も作成されます。
 
     リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
 

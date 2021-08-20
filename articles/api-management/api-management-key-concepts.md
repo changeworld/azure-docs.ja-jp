@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3258bc59146d6e5fbdb3532005d9b9da5334af5c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86254658"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468537"
 ---
 # <a name="about-api-management"></a>API Management について
 
@@ -105,7 +105,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](./api-management-advanced-policies.md#choose) ポリシーや[変数の設定](./api-management-advanced-policies.md#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](./api-management-advanced-policies.md#AdvancedPolicies)」と「[ポリシーの式](./api-management-policy-expressions.md)」をご覧ください。
 
 
-API Management の全ポリシー一覧については、「 [Policy reference (ポリシー リファレンス)][Policy reference]」をご覧ください。 ポリシーの使用と構成の詳細については、[API Management のポリシー][API Management policies]に関するページを参照してください。 レート制限ポリシーとクォータ ポリシーを持つ成果物の作成に関するチュートリアルについては、[成果物の詳細設定を作成して構成する方法][How create and configure advanced product settings]に関するページを参照してください。
+API Management の全ポリシー一覧については、「 [Policy reference (ポリシー リファレンス)][Policy reference]」をご覧ください。 ポリシーの使用と構成の詳細については、[API Management のポリシー][API Management policies]に関するページを参照してください。 レート制限ポリシーとクォータ ポリシーを持つ成果物の作成に関するチュートリアルについては、[成果物の詳細設定を作成して構成する方法][How to create and configure advanced product settings]に関するページを参照してください。
 
 
 ## <a name="developer-portal"></a><a name="developer-portal"> </a> 開発者ポータル
@@ -140,7 +140,7 @@ API Management の詳細については、Microsoft Ignite 2017 カンファレ�
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
-[How create and configure advanced product settings]: transform-api.md
+[How to create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
 [Policy reference]: ./api-management-policies.md
 [API Management policies]: api-management-howto-policies.md

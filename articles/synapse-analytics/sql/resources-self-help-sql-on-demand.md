@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 848f5f13218fde513bf48575c2f9bb298521d3ad
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: f6f653478dea84ecb3951b4c313f0f7604733b88
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113214751"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292909"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -42,7 +42,7 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 ### <a name="query-fails-because-file-cannot-be-opened"></a>ファイルを開くことができないため、クエリが失敗する
 
 "File cannot be opened because it does not exist or it is used by another process" (ファイルが存在しないか、別のプロセスで使用されているため、開くことができません) というエラーでクエリが失敗したときに、ファイルが存在し、かつ別のプロセスで使用されていないことが確認されている場合は、サーバーレス SQL プールがファイルにアクセスできないことを意味します。 この問題が発生するのは、通常、Azure Active Directory ID にファイルへのアクセス権がないか、ファイアウォールによってファイルへのアクセスがブロックされているためです。 サーバーレス SQL プールでは、既定で、Azure Active Directory ID を使用してファイルへのアクセスを試みます。 この問題を解決するには、ファイルにアクセスするための適切な権限を持っている必要があります。 最も簡単な方法は、クエリの対象となるストレージ アカウントに対する "ストレージ BLOB データ共同作成者" ロールを自分に付与することです。 
-- [詳細については、ストレージの Azure Active Directory アクセス制御に関する完全なガイドを参照してください](../../storage/common/storage-auth-aad-rbac-portal.md)。 
+- [詳細については、ストレージの Azure Active Directory アクセス制御に関する完全なガイドを参照してください](../../storage/blobs/assign-azure-role-data-access.md)。 
 - [「Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する」を参照してください](develop-storage-files-storage-access-control.md)。
 
 #### <a name="alternative-to-storage-blob-data-contributor-role"></a>ストレージ BLOB データ共同作成者ロールに代わるもの
@@ -86,6 +86,12 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 - 対象のクエリが CSV ファイルをターゲットとしている場合は、[統計を作成する](develop-tables-statistics.md#statistics-in-serverless-sql-pool)ことを検討してください。 
 
 - クエリを最適化するには、[サーバーレス SQL プールのパフォーマンスのベスト プラクティス](./best-practices-serverless-sql-pool.md)に関するページを参照してください。  
+
+### <a name="could-not-allocate-tempdb-space-while-transferring-data-from-one-distribution-to-another"></a>あるディストリビューションから別のディストリビューションにデータを転送しているときに、tempdb 領域を割り当てられなかった
+
+このエラーは、[現在のリソース制約エラーによりクエリを実行できないため、汎用クエリが失敗する](#query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints)特殊なケースです。 このエラーは、`tempdb` データベースに割り当てられたリソースがクエリを実行するには不十分な場合に返されます。 
+
+サポート チケットを提出する前に、同じ軽減策とベスト プラクティスを適用してください。
 
 ### <a name="query-fails-with-error-while-handling-an-external-file"></a>外部ファイルの処理中に、クエリがエラーで失敗する 
 
@@ -446,6 +452,25 @@ WITH ( FORMAT_TYPE = PARQUET)
 
 ## <a name="cosmos-db"></a>Cosmos DB
 
+次の表に、考えられるエラーとトラブルシューティングの操作を示します。
+
+| エラー | 根本原因 |
+| --- | --- |
+| 構文エラー:<br/> - `Openrowset` 付近に不適切な構文があります。<br/> - `...` は、`BULK OPENROWSET` プロバイダー オプションとして認識されません。<br/> - `...` 付近に不適切な構文があります。 | 考えられる根本原因:<br/> - 最初のパラメーターとして CosmosDB を使用していません。<br/> - 3 番目のパラメーターで識別子の代わりに文字列リテラルを使用しています。<br/> - 3 番目のパラメーター (コンテナー名) が指定されていません。 |
+| CosmosDB 接続文字列でエラーが発生しました。 | - アカウント、データベース、またはキーが指定されていません。 <br/> - 接続文字列に認識されないオプションがいくつかあります。<br/> - 接続文字列の末尾にセミコロン `;` が記述されています。 |
+| CosmosDB パスを解決できませんでした。エラー: "アカウント名が正しくありません" または "データベース名が正しくありません"。 | 指定されたアカウント名、データベース名、またはコンテナーが見つからないか、指定されたコレクションで分析ストレージが有効になっていません。|
+| CosmosDB パスを解決できませんでした。エラー: "シークレット値が正しくありません" または "シークレットが null または空です"。 | アカウント キーが無効であるか、存在しません。 |
+| 型 `type name` の列 `column name` は外部データ型 `type name` と互換性がありません。 | `WITH` 句に指定された列の型が Azure Cosmos DB コンテナーの型と一致しません。 セクション「[Azure Cosmos DB から SQL 型へのマッピング](query-cosmos-db-analytical-store.md#azure-cosmos-db-to-sql-type-mappings)」で説明されているように列の型を変更するか、または `VARCHAR` 型を使用してください。 |
+| すべてのセルで、この列には `NULL` 値が含まれます。 | `WITH` 句の列名またはパス式が間違っている可能性があります。 `WITH` 句の列名 (または列の型の後のパス式) は、Azure Cosmos DB コレクションの一部のプロパティ名と一致する必要があります。 比較では、"*大文字と小文字が区別されます*"。 たとえば、`productCode` と `ProductCode` は異なるプロパティです。 |
+
+[Azure Synapse Analytics のフィードバック ページ](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)で、提案や問題を報告できます。
+
+### <a name="utf-8-collation-warning-is-returned-while-reading-cosmosdb-string-types"></a>CosmosDB の文字列型の読み取り中に UTF-8 照合順序の警告が返される
+
+`OPENROWSET` 列の照合順序のエンコードが UTF-8 でない場合、サーバーレス SQL プールからコンパイル時警告が返されます。 現在のデータベースで実行されるすべての `OPENROWSET` 関数の既定の照合順序は、`alter database current collate Latin1_General_100_CI_AS_SC_UTF8` という T-SQL ステートメントを使用して簡単に変更できます。
+
+文字列述語を使ってデータをフィルター処理するときに、[Latin1_General_100_BIN2_UTF8 照合順序](best-practices-serverless-sql-pool.md#use-proper-collation-to-utilize-predicate-pushdown-for-character-columns)を使用すると最適なパフォーマンスが得られます。
+
 ### <a name="some-rows-are-not-returned"></a>一部の行が返されない
 
 - トランザクション ストアと分析ストアの間には同期遅延があります。 Cosmos DB のトランザクション ストアに入力したドキュメントは、分析ストアに表示されるまでに 2 から 3 分かかる場合があります。
@@ -464,7 +489,7 @@ Synapse SQL では、次の場合、トランザクション ストアにある�
 
 `WITH` 句で指定されている値が分析ストレージ内の基になる Cosmos DB の型と一致せず、暗黙的に変換できません。 スキーマで `VARCHAR` 型を使用してください。
 
-### <a name="performance-issues"></a>パフォーマンスの問題
+### <a name="cosmosdb-performance-issues"></a>Cosmos DB のパフォーマンスの問題
 
 予期しないパフォーマンスの問題が発生している場合は、次のようなベスト プラクティスを適用していることを確認してください。
 - クライアント アプリケーション、サーバーレス プール、および Cosmos DB 分析ストレージを[同じリージョン](best-practices-serverless-sql-pool.md#colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool)に配置したことを確認する。
@@ -480,8 +505,8 @@ Delta Lake のサポートは、現在、サーバーレス SQL プールでの�
   - パーティション スキーマを記述するためにワイルドカードを指定しないでください。 Delta Lake パーティションは、Delta Lake クエリによって自動的に識別されます。 
 - Apache Spark プールで作成された Delta Lake テーブルは、サーバーレス SQL プールでは同期されません。 T-SQL 言語を使用して、Apache Spark プールの Delta Lake テーブルのクエリを実行することはできません。
 - 外部テーブルでは、パーティション分割はサポートされていません。 パーティションの除去を利用するには、Delta Lake フォルダーの[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)を使用します。 以下の既知の問題と回避策を参照してください。
-- サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)でこの機能に投票することができます
-- サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)または[履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
+- サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)でこの機能に投票することができます。 [履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
+- サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)には、Azure Synapse Analytics で Apache Spark プールを使用します。
 - Delta Lake のサポートは、専用 SQL プールでは使用できません。 Delta Lake ファイルのクエリにはサーバーレス プールを使用していることを確認してください。
 
 [Azure Synapse フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=171048)でアイデアや機能強化を提案できます。
@@ -509,14 +534,34 @@ FORMAT='csv', FIELDQUOTE = '0x0b', FIELDTERMINATOR ='0x0b', ROWTERMINATOR = '0x0
 このクエリが失敗した場合、呼び出し元には、基になるストレージ ファイルを読み取るためのアクセス許可がありません。 
 
 最も簡単な方法は、クエリの対象となるストレージ アカウントに対する "ストレージ BLOB データ共同作成者" ロールを自分に付与することです。 
-- [詳細については、ストレージの Azure Active Directory アクセス制御に関する完全なガイドを参照してください](../../storage/common/storage-auth-aad-rbac-portal.md)。 
+- [詳細については、ストレージの Azure Active Directory アクセス制御に関する完全なガイドを参照してください](../../storage/blobs/assign-azure-role-data-access.md)。 
 - [「Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する」を参照してください](develop-storage-files-storage-access-control.md)。
 
 ### <a name="partitioning-column-returns-null-values"></a>パーティション分割列から NULL 値が返される
 
-パーティション分割された Delta Lake フォルダーを読み取る `OPENROWSET` 関数でビューを使用している場合は、パーティション分割列の実際の列値の代わりに `NULL` 値を取得することがあります。 既知の問題により、`WITH` 句を持つ `OPENROWSET` 関数ではパーティション分割列を読み取ることができません。 Delta Lake の[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)には、`WITH` 句を含む `OPENROWSET` 関数があってはなりません。 スキーマを明示的に指定しない `OPENROWSET` 関数を使用する必要があります。
+パーティション分割された Delta Lake フォルダーを読み取る `OPENROWSET` 関数でビューを使用している場合は、パーティション分割列の実際の列値の代わりに `NULL` 値を取得することがあります。 `Year` と `Month` のパーティション分割列を参照するビューの例を次に示します。
 
-**回避策:** ビューで使用される `OPENROWSET` 関数から `WITH` 句を削除します。
+```sql
+create or alter view test as
+select top 10 * 
+from openrowset(bulk 'https://storageaccount.blob.core.windows.net/path/to/delta/lake/folder',
+                format = 'delta') 
+     with (ID int, Year int, Month int, Temperature float) 
+                as rows
+```
+
+既知の問題により、`WITH` 句を持つ `OPENROWSET` 関数ではパーティション分割列から値を読み取ることができません。 Delta Lake の[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)には、`WITH` 句を含む `OPENROWSET` 関数があってはなりません。 スキーマを明示的に指定しない `OPENROWSET` 関数を使用する必要があります。
+
+**回避策:** ビューで使用される `OPENROWSET` 関数から `WITH` 句を削除します。例:
+
+```sql
+create or alter view test as
+select top 10 * 
+from openrowset(bulk 'https://storageaccount.blob.core.windows.net/path/to/delta/lake/folder',
+                format = 'delta') 
+   --with (ID int, Year int, Month int, Temperature float) 
+                as rows
+```
 
 ### <a name="query-failed-because-of-a-topology-change-or-compute-container-failure"></a>トポロジの変更またはコンピューティング コンテナーの障害が原因でクエリが失敗する
 
@@ -527,7 +572,7 @@ CREATE DATABASE mydb
     COLLATE Latin1_General_100_BIN2_UTF8;
 ```
 
-master データベースを介して実行されるクエリは、この問題の影響を受けます。
+master データベースを介して実行されるクエリは、この問題の影響を受けます。 これは、パーティション分割されたデータを読み取るすべてのクエリに該当するわけではありません。 文字列型の列でパーティション分割されたデータセットは、この問題の影響を受けます。
 
 **回避策:** `Latin1_General_100_BIN2_UTF8` データベース照合順序を持つカスタム データベースに対してクエリを実行します。
 
@@ -535,7 +580,7 @@ master データベースを介して実行されるクエリは、この問題�
 
 WITH 句を指定せずに (自動スキーマ推論を使用)、入れ子になった型の列が含まれる Delta Lake ファイルを読み取ろうとしています。 スキーマの自動推論は、Delta Lake の入れ子になった列では機能しません。
 
-**回避策**: `WITH` 句を使用し、入れ子になった列に `VARCHAR` 型を明示的に割り当てます。
+**回避策**: `WITH` 句を使用し、入れ子になった列に `VARCHAR` 型を明示的に割り当てます。 これは、`WITH` 句がパーティション列に対して `NULL` を返すという別の既知の問題があるため、データセットがパーティション分割されている場合には機能しないことに注意してください。 複合型の列を含むパーティション分割されたデータセットは、現在サポートされていません。
 
 ### <a name="cannot-find-value-of-partitioning-column-in-file"></a>ファイルのパーティション分割列の値が見つからない 
 
@@ -548,6 +593,31 @@ Cannot find value of partitioning column '<column name>' in file
 ```
 
 **回避策:** Apache Spark プールを使用して Delta Lake データ セットを更新し、パーティション分割列の `"null"` ではなく、何らかの値 (空の文字列または `null`) を使用してみてください。
+
+### <a name="json-text-is-not-properly-formatted"></a>JSON テキストの形式が正しくない
+
+このエラーは、サーバーレス SQL プールが Delta Lake トランザクション ログを読み取ることができないことを示します。 次のようなエラーが表示されることがあります。
+
+```
+Msg 13609, Level 16, State 4, Line 1
+JSON text is not properly formatted. Unexpected character '{' is found at position 263934.
+Msg 16513, Level 16, State 0, Line 1
+Error reading external metadata.
+```
+まず、Delta Lake データ セットが破損していないことを確認します。
+- Synapse または Databricks クラスターの Apache Spark プールを使用して、Delta Lake フォルダーの内容を読み取ることができることを確認します。 これにより、`_delta_log` ファイルが破損していないことを確認します。
+- `FORMAT='PARQUET'` を指定し、URI パスの末尾に再帰的なワイルドカード `/**` を使用して、データファイルの内容を読み取ることができることを確認します。 すべての Parquet ファイルを読み取ることができる場合、問題は `_delta_log` トランザクション ログ フォルダーにあります。
+
+**回避策:** この問題は、`_UTF8` データベース照合順序を使用している場合に発生する可能性があります。 `master` データベースまたは UTF8 以外の照合順序を持つその他のデータベースに対してクエリを実行してください。 この回避策で問題が解決された場合は、`_UTF8` 照合順序でないデータベースを使用します。
+
+データセットが有効であり、回避策が役に立たない場合は、サポート チケットを報告し、Azure サポートに再現手順を提供してください。
+- 列の追加または削除やテーブルの最適化などの変更を行わないでください。これにより、Delta Lake トランザクション ログ ファイルの状態が変わる可能性があります。
+- `_delta_log` フォルダーの内容を新しい空のフォルダーにコピーします。 `.parquet data` ファイルはコピー **しない** でください。
+- 新しいフォルダーにコピーしたコンテンツを読み取り、同じエラーが発生していることを確認してください。
+- これで、引き続き Spark プールで Delta Lake フォルダーを使用できるようになりました。 これの共有が許可されている場合は、Microsoft サポートにコピーしたデータを提供します。
+- コピーした `_delta_log` ファイルの内容を Azure サポートに送信します。
+
+Azure チームは、`delta_log` ファイルの内容を調査し、考えられるエラーとその回避策に関する詳細情報を提供します。
 
 ## <a name="constraints"></a>制約
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: 393b8857b3602d914143787cc9ea46074ff59c05
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 17a41bd64f1bba4a5ae4d6d9d497c03afae037e7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813904"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444228"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>チュートリアル: Azure DevOps を使用して Azure Static Web Apps を発行する
 
@@ -21,20 +21,21 @@ ms.locfileid: "109813904"
 このチュートリアルで学習する内容は次のとおりです。
 
 - Azure Static Web Apps サイトをセットアップする
-- 静的 Web アプリをビルドして発行するための Azure DevOps パイプラインを作成する
+- 静的 Web アプリをビルドして発行するための Azure パイプラインを作成する
 
 ## <a name="prerequisites"></a>前提条件
 
 - **アクティブな Azure アカウント:** お持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/free/)できます。
-- **Azure DevOps Projects:** お持ちでない場合は、[無料でプロジェクトを作成](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)できます。
-- **Azure DevOps パイプライン:** ご不明な点がある場合は、まず「[最初のパイプラインの作成](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)」を参照してください。
+- **Azure DevOps プロジェクト:** お持ちでない場合は、[無料でプロジェクトを作成](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)できます。
+  - Azure DevOps には、**Azure Pipelines** が含まれます。 Azure Pipelines の作業の開始に支援が必要な場合は、「[最初のパイプラインの作成](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)」を参照してください。
+  - 現在、静的な Web アプリ パイプライン タスクは **Linux** マシンでのみ機能します。 以下に記載されているパイプラインを実行する場合は、Linux VM で実行されていることを確認してください。
 
-## <a name="create-a-static-web-app-in-an-azure-devops-repository"></a>Azure DevOps リポジトリに静的 Web アプリを作成する
+## <a name="create-a-static-web-app-in-an-azure-devops"></a>Azure DevOps に静的 Web アプリを作成する
 
   > [!NOTE]
   > リポジトリに既存のアプリがある場合は、このセクションをスキップして次のセクションにお進みください。
 
-1. Azure DevOps リポジトリに移動します。
+1. Azure Repos でリポジトリに移動します。
 
 1. **[インポート]** を選択して、サンプル アプリケーションのインポートを開始します。
   
@@ -56,7 +57,7 @@ ms.locfileid: "109813904"
 
 1. **［作成］** を選択します
 
-1. _[デプロイの詳細]_ で、 **[その他]** が選択されていることを確認します。 これで、Azure DevOps リポジトリ内のコードを使用できるようになります。
+1. _[デプロイの詳細]_ で、 **[その他]** が選択されていることを確認します。 これで、Azure Repos 内のコードを使用できるようになります。
 
     :::image type="content" source="media/publish-devops/create-resource.png" alt-text="[デプロイの詳細] - [その他]":::
 
@@ -73,7 +74,7 @@ ms.locfileid: "109813904"
 
 ## <a name="create-the-pipeline-task-in-azure-devops"></a>Azure DevOps でパイプライン タスクを作成する
 
-1. 先ほど作成した Azure DevOps リポジトリに移動します。
+1. 先ほど作成した Azure Repos リポジトリに移動します。
 
 1. **[ビルドのセットアップ]** を選択します。
 
@@ -87,7 +88,7 @@ ms.locfileid: "109813904"
 
     ```yaml
     trigger:
-    - main
+      - main
 
     pool:
       vmImage: ubuntu-latest
@@ -100,7 +101,6 @@ ms.locfileid: "109813904"
           app_location: '/'
           api_location: 'api'
           output_location: ''
-        env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
 

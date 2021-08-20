@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: f756e738989775bf9c06b44a03f002c14f42e3ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85c59b42532b56d2f61cbd3a7f7e2f9e7aeb557a
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182345"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988127"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sonarqube の統合
 
@@ -37,12 +37,12 @@ ms.locfileid: "96182345"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Sonarqube では、**SP** Initiated SSO がサポートされます
+* Sonarqube では、**SP** Initiated SSO がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-sonarqube-from-the-gallery"></a>ギャラリーからの Sonarqube の追加
+## <a name="add-sonarqube-from-the-gallery"></a>ギャラリーからの Sonarqube の追加
 
 Azure AD への Sonarqube の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Sonarqube を追加する必要があります。
 
@@ -72,13 +72,15 @@ Sonarqube に対して Azure AD SSO を構成してテストするには、次�
 
 1. Azure portal の **Sonarqube** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、次の URL を入力します:
+    a. **[応答 URL]** ボックスに、`https://servicessonar.<YOUR_ORGANIZATION>.com` のパターンを使用して URL を入力します
+
+    b. **[サインオン URL]** ボックスに、次のいずれかの URL を入力します。
 
     * **運用環境の場合**
 
@@ -87,6 +89,9 @@ Sonarqube に対して Azure AD SSO を構成してテストするには、次�
     * **開発環境の場合**
 
         `https://servicescode-dev.westus.cloudapp.azure.com`
+
+    > [!NOTE]
+    > これは実際の値ではありません。 後で説明する、実際の応答 URL に値を置き換えます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -118,7 +123,6 @@ Sonarqube に対して Azure AD SSO を構成してテストするには、次�
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
-
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-sonarqube-sso"></a>Sonarqube の SSO 構成
@@ -131,12 +135,14 @@ Sonarqube に対して Azure AD SSO を構成してテストするには、次�
     1. IdP エンティティ ID
     2. ログイン URL
     3. X.509 証明書 
+
 1. すべての詳細を保存します。
-    ![SAML プラグイン IDP](./media/sonarqube-tutorial/sso-idp-metadata.png)
+
+    ![SAML プラグイン IDP](./media/sonarqube-tutorial/metadata.png)
 
 1. **[SAML]** ページで、次の手順を実行します。
 
-    ![Sonarqube の構成](./media/sonarqube-tutorial/config01.png)
+    ![Sonarqube の構成](./media/sonarqube-tutorial/configuration.png)
 
     a. **[Enabled]\(有効化\)** オプションを **[yes]\(はい\)** に切り替えます。
 
@@ -166,11 +172,11 @@ Sonarqube に対して Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Sonarqube のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Sonarqube のサインオン URL にリダイレクトされます。 
 
-2. Sonarqube のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Sonarqube のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Sonarqube] タイルをクリックすると、Sonarqube サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Sonarqube] タイルをクリックすると、Sonarqube のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

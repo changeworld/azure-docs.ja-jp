@@ -3,12 +3,12 @@ title: ExpressRoute を仮想ネットワーク ゲートウェイに接続す�
 description: ExpressRoute を仮想ネットワーク ゲートウェイに接続する手順。
 ms.topic: include
 ms.date: 12/08/2020
-ms.openlocfilehash: 115e8829723c25fb1644f3f5652fbace529a05cb
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a3e759c12496613848f6f0bc8de596a5099b904b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945687"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438215"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
@@ -30,8 +30,8 @@ ms.locfileid: "107945687"
    | **承認キー**  | 前にコピーした承認キーを貼り付けます。 |
    | **ピア回線の URI**  | 前にコピーした ExpressRoute ID を貼り付けます。  |
 
-   :::image type="content" source="../media/expressroute-global-reach/expressroute-add-connection.png" alt-text="ExpressRoute を仮想ネットワークゲートウェイに接続するための [接続の追加] ページのスクリーンショット。":::
+   :::image type="content" source="../media/tutorial-configure-networking/add-connection.png" alt-text="ExpressRoute を仮想ネットワークゲートウェイに接続するための [接続の追加] ページを示すスクリーンショット。":::
 
 ExpressRoute 回線と仮想ネットワークの間の接続が作成されます。
 
-:::image type="content" source="../media/expressroute-global-reach/virtual-network-gateway-connections.png" alt-text="仮想ネットワーク ゲートウェイ接続のスクリーンショット。":::
+:::image type="content" source="../media/expressroute-global-reach/virtual-network-gateway-connections.png" alt-text="仮想ネットワークゲートウェイ接続が成功したことを示すスクリーンショット。":::

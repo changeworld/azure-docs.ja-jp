@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 0759a3fce2d056bbe5d9234e25b45525874faf4e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c67dfe6295a62a464d1a7a5eeb7a9ba7afd88ced
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670566"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128770"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -129,7 +129,7 @@ ms.locfileid: "110670566"
 
 既定では、どなたでも引き続き HTTP を使用してアプリにアクセスできます。 すべての HTTP 要求を HTTPS ポートにリダイレクトできます。
 
-アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 その後、 **[HTTPS のみ]** で、 **[On]** を選択します。
+アプリ ページの左側のナビゲーションで、 **[TLS/SSL の設定]** を選択します。 その後、 **[HTTPS のみ]** で、 **[On]** を選択します。
 
 ![HTTPS の適用](./media/configure-ssl-bindings/enforce-https.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "110670566"
 
 アプリでは既定で [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2 が有効です。これは、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準で推奨されている TLS レベルです。 異なる TLS バージョンを適用するには、次の手順を実行します。
 
-アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 次に、 **[TLS version]\(TLS バージョン\)** で、必要な最低限の TLS バージョンを選択します。 この設定により、受信呼び出しのみが制御されます。 
+アプリ ページの左側のナビゲーションで、 **[TLS/SSL の設定]** を選択します。 次に、 **[TLS version]\(TLS バージョン\)** で、必要な最低限の TLS バージョンを選択します。 この設定により、受信呼び出しのみが制御されます。 
 
 ![TLS 1.1/1.2 の適用](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
@@ -168,4 +168,4 @@ App Service では、[TLS 終了](https://wikipedia.org/wiki/TLS_termination_pro
 ## <a name="more-resources"></a>その他のリソース
 
 * [Azure App Service のご自分のコードから TLS/SSL 証明書を使用する](configure-ssl-certificate-in-code.md)
-* [FAQ:App Service 証明書](./faq-configuration-and-management.md)
+* [FAQ:App Service 証明書](./faq-configuration-and-management.yml)

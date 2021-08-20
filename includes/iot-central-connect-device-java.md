@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: b198e64ccec82647d5b49b4b8c51e64f889e983a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 86329b17a437846c3a5c4a29dd901ac1b1ca5902
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486749"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114407917"
 ---
 [![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
 
@@ -19,7 +19,7 @@ ms.locfileid: "110486749"
 
 [!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
 
-- Java SE Development Kit 8 以降がインストールされた開発マシン。 複数のプラットフォーム用の Java 8 (LTS) JDK は、「[OpenJDK の Zulu ビルドのダウンロード](https://www.azul.com/downloads/zulu-community/)」からダウンロードできます。
+- Java SE Development Kit 8 以降がインストールされた開発マシン。 詳細については、[JDK のインストール](/azure/developer/java/fundamentals/java-jdk-install)に関するページを参照してください。
 
 - [Apache Maven 3](https://maven.apache.org/download.cgi)。
 

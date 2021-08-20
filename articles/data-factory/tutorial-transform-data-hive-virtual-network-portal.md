@@ -6,13 +6,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/04/2018
-ms.openlocfilehash: 4c8ae67720cf6ac9d577286898b95cdd10f38152
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: 90166f1a6716d9ed6b30ca002836d03d26c1ee3b
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377960"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215903"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Azure portal から Azure Data Factory 内の Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 
@@ -99,9 +99,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
     ![データ ファクトリのホーム ページ](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. **[Author & Monitor]\(作成と監視\)** をクリックして、別のタブで Data Factory ユーザー インターフェイス (UI) を起動します。
-11. **開始** ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。 
+11. ホーム ページで、次の図に示すように、左パネルの **[管理]** タブに切り替えます。 
 
-    ![[編集] タブ](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
+    ![[管理] タブを示すスクリーンショット。](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成する
 Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮想ネットワークにセルフホステッド統合ランタイム (IR) をインストールする必要があります。 このセクションでは、新しい VM を作成し、それを同じ仮想ネットワークに参加させた後、セルフホステッド IR をインストールします。 セルフホステッド IR により、Data Factory サービスは、仮想ネットワーク内の HDInsight などのコンピューティング サービスに処理要求をディスパッチできます。 また、仮想ネットワーク内のデータ ストアと Azure との間でデータを移動することもできます。 セルフホステッド IR は、データ ストアまたはコンピューティングがオンプレミス環境にある場合にも使用します。 

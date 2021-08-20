@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: a9ecec2456354c2d766d528d2c29ceb1833a7ad9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d43e9c784a24e6a751d97eb4deeaffec381d124e
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481775"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112423130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-standard-for-success-accreditation"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Standard for Success Accreditation の統合
 
@@ -24,7 +24,6 @@ ms.locfileid: "110481775"
 
 * Standard for Success Accreditation にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Standard for Success Accreditation に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,10 +38,7 @@ ms.locfileid: "110481775"
 
 * Standard for Success Accreditation では **SP および IDP** の Initiated SSO がサポートされています。
 
-> [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
-
-## <a name="adding-standard-for-success-accreditation-from-the-gallery"></a>ギャラリーから Standard for Success Accreditation を追加する
+## <a name="add-standard-for-success-accreditation-from-the-gallery"></a>ギャラリーから Standard for Success Accreditation を追加する
 
 Standard for Success Accreditation の Azure AD への統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Standard for Success Accreditation を追加する必要があります。
 
@@ -51,8 +47,7 @@ Standard for Success Accreditation の Azure AD への統合を構成するに�
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Standard for Success Accreditation**」と入力します。
-1. 結果パネルから **[Standard for Success Accreditation]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
+1. 結果パネルから **Standard for Success Accreditation** を選択して、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-standard-for-success-accreditation"></a>Standard for Success Accreditation の Azure AD SSO の構成とテスト
 
@@ -77,18 +72,20 @@ Standard for Success Accreditation に Azure AD SSO を構成してテストす�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    **[応答 URL]** ボックスに、`https://edu.sfsed.com/access/saml_consume?did=<INSTITUTIONID>` のパターンを使用して URL を入力します
+    a. **[識別子]** ボックスに、`api://<ApplicationId>` の形式で値を入力します。
+
+    b. **[応答 URL]** ボックスに、`https://edu.sfsed.com/access/saml_consume?did=<INSTITUTION-ID>` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、`https://edu.sfsed.com/access/saml_int?did=<INSTITUTIONID>` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://edu.sfsed.com/access/saml_int?did=<INSTITUTION-ID>` という形式で URL を入力します。
 
-    b. **[リレー状態]** ボックスに、`https://edu.sfsed.com/access/saml_consume?did=<INSTITUTIONID>` のパターンで URL を入力します。
+    b. **[リレー状態]** ボックスに、`https://edu.sfsed.com/access/saml_consume?did=<INSTITUTION-ID>` のパターンで URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際の応答 URL、サインオン URL、リレー状態で更新します。 これらの値を取得するには、[Standard for Success Accreditation クライアント サポート チーム](mailto:help_he@standardforsuccess.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL、リレー状態でこれらの値を更新します。 これらの値を取得するには、[Standard for Success Accreditation クライアント サポート チーム](mailto:help_he@standardforsuccess.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
 
@@ -101,6 +98,7 @@ Standard for Success Accreditation に Azure AD SSO を構成してテストす�
 1. **[Standard for Success Accreditation のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -109,7 +107,7 @@ Standard for Success Accreditation に Azure AD SSO を構成してテストす�
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[ユーザー名]** フィールドに「username@institutiondomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
@@ -133,15 +131,15 @@ Standard for Success Accreditation に Azure AD SSO を構成してテストす�
 
 1. **[シングル サインオンの設定]** まで下にスクロールし、 **[Microsoft Azure シングル サインオン]** リンクをクリックして、次の手順を実行します。
 
-    ![[Microsoft Azure シングル サインオン] ページ。](./media/standard-for-success-accreditation-tutorial/configuration.png)
+    :::image type="content" source="./media/standard-for-success-accreditation-tutorial/configuration.png" alt-text="Standard for Success Accreditation で Azure シングル サインオンを有効にする方法を示すスクリーンショット。":::
 
-    a. **[Enable Azure Single Sign On]\(Azure シングル サインオンを有効にする\)** チェック ボックスをオンにします。
+    a。 **[Enable Azure Single Sign On]\(Azure シングル サインオンを有効にする\)** チェック ボックスをオンにします。
 
-    b. **[Azure テナント ID]** テキスト ボックスに、Azure portal からテナント ID 値を入力します。
+    b. URL と識別子のフィールドに、Azure portal の SAML の設定からコピーした適切な URL を入力します。
 
-    c. **[アプリケーション ID]** テキスト ボックスに アプリケーション ID を入力します。
+    c. **[Application ID]\(アプリケーション ID\)** テキスト ボックスに、アプリケーション ID を入力します。
 
-    d. **[証明書の拇印]** テキスト ボックスに、Azure portal からコピーした **拇印の値** を貼り付けます。
+    d. **[Certificate Thumbprint]\(証明書の拇印\)** テキスト ボックスに、Azure portal からコピーした **拇印の値** を貼り付けます。
 
     e. **[保存]** をクリックします。 
 
@@ -149,7 +147,7 @@ Standard for Success Accreditation に Azure AD SSO を構成してテストす�
 
 1.  スーパーユーザー特権を持つ管理者として Standard for Success Accreditation にサインインします。
 
-1. メニューから **[管理ポータル] -> [新しい評価の作成]** をクリックし、次の手順を実行します。
+1. メニューから **[Admin Portal]\(管理ポータル\)**  >  **[Create New Evaluatee]\(新しい評価者の作成\)** をクリックして、次の手順のようにします。
 
     ![テスト ユーザーの作成。](./media/standard-for-success-accreditation-tutorial/new-user.png)
 
@@ -157,10 +155,9 @@ Standard for Success Accreditation に Azure AD SSO を構成してテストす�
 
     b. **[姓]** テキスト ボックスに「Simon」と入力します。
 
-    c. **[University Email]\(大学の電子メール\)** テキスト ボックスに、組織の電子メール アドレスを入力します。
+    c. **[University Email]\(大学のメール\)** テキスト ボックスに、Azure で B.Simon に追加したメール アドレスを入力します。
 
     d. 一番下までスクロールし、 **[ユーザーの作成]** をクリックします。
-
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -178,9 +175,6 @@ Standard for Success Accreditation に Azure AD SSO を構成してテストす�
 
 また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Standard for Success Accreditation] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Standard for Success Accreditation に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-
 ## <a name="next-steps"></a>次のステップ
 
 Standard for Success Accreditation を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-

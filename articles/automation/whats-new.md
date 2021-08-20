@@ -4,14 +4,14 @@ description: 毎月更新される Azure Automation に対する重要な更新�
 services: automation
 ms.subservice: ''
 ms.topic: overview
-ms.date: 06/09/2021
+ms.date: 07/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: bd2bd39839645aa0511a00cc7a6c87c711e33e2b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6b91b9bb4e1bc871ecd8cb7909718329f5c5c014
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294753"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729570"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure Automation の新着情報
 
@@ -22,6 +22,22 @@ Azure Automation には継続的に改善が施されています。 常に最�
 - バグの修正
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="preview-support-for-user-assigned-managed-identities"></a>システム割り当てのマネージド ID のプレビュー サポート
+
+**種類:** 新機能
+
+Azure Automation で、Azure パブリック、Gov、中国リージョンのクラウドジョブに対して、[システム割り当てのマネージド ID](automation-secure-asset-encryption.md) がサポートされるようになりました。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-user-assigned-identities/)を参照してください。
+
+### <a name="general-availability-of-customer-managed-keys-for-azure-automation"></a>Azure Automation のカスタマー マネージド キーの一般提供
+
+**種類:** 新機能
+
+Azure Automation 資産の暗号化を、お客様が各自のマネージド キーを使用して管理および保護することができます。 カスタマー マネージド キーの導入により、Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この追加の暗号化は、組織の規制またはコンプライアンスのニーズを満たすのに役立ちます。
+
+詳細については、[カスタマー マネージド キーの使用](automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)に関するセクションを参照してください。
 
 ## <a name="june-2021"></a>2021 年 6 月
 
@@ -111,7 +127,7 @@ Windows または Linux マシンで Hybrid Runbook Worker を設定する Azure
 
 **種類:** 新機能
 
-詳細については、「[ARM テンプレートから Webhook を使用する](./automation-webhooks.md#use-a-webhook-from-an-arm-template)」を参照してください。
+詳細については、「[ARM テンプレートから Webhook を使用する](./automation-webhooks.md#create-runbook-and-webhook-with-arm-template)」を参照してください。
 
 ### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure Update Management で、Centos 8.x、Red Hat Enterprise Linux Server 8.x、および SUSE Linux Enterprise Server 15 がサポートされるようになりました
 

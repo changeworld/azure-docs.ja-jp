@@ -9,12 +9,12 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: aeb0e84400ae4a4d48bd070e9c9902c5b005ac9e
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: 8a4c5892e5b7b542177376fcd0adae76527957a8
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109664872"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578092"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>チュートリアル: Microsoft Machine Learning for Apache Spark を使用して機械学習アプリケーションを構築する (プレビュー)
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 ## <a name="prerequisites"></a>前提条件 
 
 - Azure Data Lake Storage Gen2 ストレージ アカウントが既定のストレージとして構成されている [Azure Synapse Analytics ワークスペース](../get-started-create-workspace.md)。 使用する Data Lake Storage Gen2 ファイル システムの "*Storage Blob データ共同作成者*" である必要があります。
-- Azure Synapse Analytics ワークスペースの Spark プール。 詳細については、[Azure Synapse での Spark プールの作成](../quickstart-create-sql-pool-studio.md)に関する記事を参照してください。
+- Azure Synapse Analytics ワークスペースの Spark プール。 詳細については、[Azure Synapse での Spark プールの作成](../get-started-analyze-spark.md)に関する記事を参照してください。
 - [Azure Synapse での Cognitive Services の構成](./tutorial-configure-cognitive-services-synapse.md)に関するチュートリアルで説明されている事前構成手順。
 
 
@@ -81,7 +81,7 @@ df_sentences = spark.createDataFrame([
 # Run the Text Analytics service with options
 sentiment = (TextSentiment()
     .setTextCol("text")
-    .setLocation("eastasia")
+    .setLocation("eastasia") # Set the location of your cognitive service
     .setSubscriptionKey(cognitive_service_key)
     .setOutputCol("sentiment")
     .setErrorCol("error")
@@ -114,7 +114,7 @@ df_images = spark.createDataFrame([
 
 # Run the Computer Vision service. Analyze Image extracts information from/about the images.
 analysis = (AnalyzeImage()
-    .setLocation("eastasia")
+    .setLocation("eastasia") # Set the location of your cognitive service
     .setSubscriptionKey(cognitive_service_key)
     .setVisualFeatures(["Categories","Color","Description","Faces","Objects","Tags"])
     .setOutputCol("analysis_results")
@@ -240,6 +240,39 @@ display(anamoly_detector.transform(df_timeseriesdata).select("timestamp", "value
 |1973-01-01T00:00:00Z|881.0|false|
 |1973-02-01T00:00:00Z|837.0|false|
 |1973-03-01T00:00:00Z|9000.0|true|
+
+
+## <a name="speech-to-text-sample"></a>音声テキスト変換の例
+
+[音声テキスト変換](../../cognitive-services/speech-service/index-text-to-speech.yml)サービスでは、音声のストリームまたはファイルをテキストに変換します。 この例では、1 つのオーディオ ファイルをテキストに変換します。 
+
+```python
+# Create a dataframe with our audio URLs, tied to the column called "url"
+df = spark.createDataFrame([("https://mmlspark.blob.core.windows.net/datasets/Speech/audio2.wav",)
+                           ], ["url"])
+
+# Run the Speech-to-text service to translate the audio into text
+speech_to_text = (SpeechToTextSDK()
+    .setSubscriptionKey(service_key)
+    .setLocation("northeurope") # Set the location of your cognitive service
+    .setOutputCol("text")
+    .setAudioDataCol("url")
+    .setLanguage("en-US")
+    .setProfanity("Masked"))
+
+# Show the results of the translation
+display(speech_to_text.transform(df).select("url", "text.DisplayText"))
+```
+### <a name="expected-results"></a>予想される結果
+
+|url | DisplayText |
+|--|--|
+| `https://mmlspark.blob.core.windows.net/datasets/Speech/audio2.wav` | Custom Speech には、オーディオ データを Custom Speech ポータルから得られた認識結果と比較することによって、モデルの認識品質を視覚的に検査するツールがあります。 You can playback uploaded audio and determine if the provided recognition result is correct. This tool allows you to quickly inspect quality of Microsoft's baseline speech to text model or a trained custom model without having to transcribe any audio data.|
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+Spark インスタンスがシャットダウンされるようにするには、接続されているセッション (ノートブック) を終了します。 プールは、Apache Spark プールに指定されている **アイドル時間** に達したときにシャットダウンされます。 また、ノートブックの右上にあるステータス バーから **[セッションの停止]** を選択することもできます。
+
+![セッションの停止を示すスクリーンショット](./media/tutorial-build-applications-use-mmlspark/stop-session.png)
 
 ## <a name="next-steps"></a>次のステップ
 

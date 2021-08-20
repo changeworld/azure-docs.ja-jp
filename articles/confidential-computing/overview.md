@@ -8,12 +8,12 @@ ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: c3ef6a764123f52583f081a3b152651b9bb8b8b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef92a0f8c560dd20edf8711fba36cdf005ef15be
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554192"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443696"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure におけるコンフィデンシャル コンピューティング
 
@@ -85,7 +85,7 @@ Azure のコンフィデンシャル コンピューティング IaaS サービ�
 ### <a name="azure-security"></a>Azure Security 
 複数の検証方法とハードウェアバインド キー管理によってワークロードがセキュリティで保護されていることを確認します。 
 - 構成証明: [Microsoft Azure Attestation (プレビュー)](../attestation/overview.md)
-- キー管理: Managed-HSM (プレビュー)
+- キー管理: Managed-HSM
 
 ### <a name="develop"></a>開発
 エンクレーブ対応アプリケーションの開発を開始し、機密推論フレームワークを使用する機密アルゴリズムをデプロイします。

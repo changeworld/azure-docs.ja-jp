@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d11384a3a1cab1ef5145a8e29a64e26552862da
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453446"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236879"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>チュートリアル:セキュリティ アラートのトリアージ、調査、対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、クラウド リソースでの潜在的な悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合することもできます。 アラートが発生したら、潜在的なセキュリティの問題の調査と修復を行うために、迅速なアクションが必要になります。 
@@ -60,7 +60,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 1. アラートの概要ページから、最初に調査するリソースを選択します。
 1. セキュリティ アラートの概要が表示される左ペインから調査を開始します。
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="概要情報が強調表示されている、アラートの詳細ページの左ペイン":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="概要情報が強調表示されている、アラートの詳細ページの左側のウィンドウ。":::
 
     このペインには、次の情報が表示されます。
     - アラートの重要度、状態、アクティビティの時刻
@@ -80,7 +80,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 
 1.  **[アクションの実行]** タブを開いて推奨される対応を確認します。
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="セキュリティ アラートの [アクションの実行] タブ" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="セキュリティ アラートの [アクションの実行] タブ。" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  **[Mitigate the threat]\(脅威の軽減\)** セクションで、問題の軽減に必要な手作業による調査手順を確認します。
 1.  リソースのセキュリティを強化し、今後、この種の攻撃を防止するには、 **[Prevent future attacks]\(将来の攻撃防止\)** セクションで、セキュリティに関する推奨事項を修正します。
@@ -97,7 +97,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
     1. アラートが **役に立った** か **役に立たなかった** かを選択します。
     1. 理由を選択し、コメントを追加します。
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="アラートが役に立ったかどうかに関するフィードバックの Microsoft への提供":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="アラートが役に立ったかどうかに関するフィードバックの Microsoft への提供。":::
 
     > [!TIP]
     > Microsoft は、お客様からのフィードバックを確認してアルゴリズムを改良し、セキュリティ アラートの向上に努めています。

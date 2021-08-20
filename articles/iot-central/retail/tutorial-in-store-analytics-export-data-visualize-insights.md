@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d94b3e56b3b8f70a03b6a3872b085e450043ab70
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831690"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585953"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
 
@@ -33,7 +33,7 @@ ms.locfileid: "99831690"
 
 このチュートリアルを完了するには、次のものが必要です。
 
-* 前の 2 つのチュートリアル「[Azure IoT Central でストア内分析アプリケーションを作成する](./tutorial-in-store-analytics-create-app.md)」と「[Azure IoT Central でのオペレーター ダッシュボードのカスタマイズと、デバイスの管理](./tutorial-in-store-analytics-customize-dashboard.md)」を完了していること。
+* 前の 2 つのチュートリアル「[Azure IoT Central でストア内分析アプリケーションを作成する](./tutorial-in-store-analytics-create-app.md)」と「[Azure IoT Central でのダッシュボードのカスタマイズと、デバイスの管理](./tutorial-in-store-analytics-customize-dashboard.md)」を完了していること。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * Power BI アカウント Power BI アカウントを持っていない場合は、始める前に[無料の Power BI Pro 試用版](https://app.powerbi.com/signupredirect?pbi_source=web)にサインアップしてください。
 

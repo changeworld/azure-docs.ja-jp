@@ -6,12 +6,12 @@ metadata:
   ms.topic: article
   ms.date: 03/15/2021
   ms.author: sajaya
-  ms.openlocfilehash: 4220d2e2bd1163703cbc071a4584299c6f3d2ecb
-  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+  ms.openlocfilehash: ef541e23c2ad3142c4e5b50ccc5351a569727905
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/15/2021
-  ms.locfileid: "114342405"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114438896"
 title: よく寄せられる質問 - Azure Container Registry
 summary: >
   この記事では、Azure Container Registry に関するよく寄せられる質問および既知の問題について説明します。
@@ -380,6 +380,8 @@ sections:
       * ネットワーク接続の不備
 
       * ファイアウォール
+
+      * プライベート アクセスのみを許可するレジストリに対する、公衆ネットワークからのポータルの使用
 
       * 広告ブロッカー
 

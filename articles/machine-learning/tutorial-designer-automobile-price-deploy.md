@@ -1,26 +1,28 @@
 ---
-title: チュートリアル:デザイナーを使用して ML モデルをデプロイする
+title: 'チュートリアル: デザイナー - コードのないモデルをデプロイする'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナーで予測分析ソリューションを構築します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、デプロイを行います。
+description: 機械学習モデルをデプロイし、Azure Machine Learning デザイナーを使用して自動車の価格を予測します。
 author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/25/2021
-ms.custom: designer
-ms.openlocfilehash: 73cc893815cf591812c95c8d8b092a4b58697917
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/11/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: a9fe604673ee53aa6772e6f382a4a3e3a53fb903
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457650"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115011"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>チュートリアル:デザイナーで機械学習モデルをデプロイする
+# <a name="tutorial-designer---deploy-a-machine-learning-model"></a>チュートリアル: デザイナー - 機械学習モデルをデプロイする
+
+デザイナーを使用して、機械学習モデルをデプロイし、自動車の価格を予測します。 このチュートリアルは、2 部構成のシリーズのパート 2 です。
 
 
-[チュートリアルのパート 1](tutorial-designer-automobile-price-train-score.md) で作成した予測モデルを、他のユーザーが使用できるようデプロイしてみましょう。 パート 1 では、モデルをトレーニングしました。 ここでは、ユーザー入力に基づいて予測を生成しましょう。 チュートリアルのこのパートでは、次のことを行います。
+[チュートリアルのパート 1](tutorial-designer-automobile-price-train-score.md) では、自動車価格の線形回帰モデルをトレーニングしました。 パート 2 では、そのモデルをデプロイして、他のユーザーがそれを使用できるようにします。 このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
 > * リアルタイム推論パイプラインを作成する。

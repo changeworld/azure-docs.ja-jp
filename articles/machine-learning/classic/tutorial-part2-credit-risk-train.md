@@ -1,6 +1,6 @@
 ---
 title: 'Machine Learning Studio (classic) チュートリアル 2: 信用リスク モデルをトレーニングする - Azure'
-description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズのパート 2 です。 モデルをトレーニングして評価する方法について説明します。
+description: このチュートリアルは、Machine Learning Studio (クラシック) 用の 3 部構成のチュートリアル シリーズの第 2 部です。 モデルをトレーニングして評価する方法について説明します。
 keywords: 信用リスク, 予測分析ソリューション,リスク評価
 author: sdgilley
 ms.author: sgilley
@@ -9,22 +9,22 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 677c5b791f475468fbcf15c81fbabdcdbb1972de
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0d0cdab6529f95de2936b32dda590f1f0f75e53c
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517452"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580748"
 ---
-# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>チュートリアル 2:信用リスク モデルをトレーニングする - Azure Machine Learning Studio (クラシック)
+# <a name="tutorial-2-train-credit-risk-models---machine-learning-studio-classic"></a>チュートリアル 2: 信用リスク モデルをトレーニングする - Machine Learning Studio (クラシック)
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズのパート 2** です。
+このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズのパート 2** です。
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
-信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Azure Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。  
+信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。  
 
 この 3 部構成のチュートリアルでは、まず、公表されている信用リスク データを使用します。  その後、予測モデルを開発してトレーニングします。  最後にそのモデルを Web サービスとしてデプロイします。
 
@@ -45,16 +45,12 @@ ms.locfileid: "100517452"
 
 ## <a name="train-multiple-models"></a><a name="train"></a>複数のモデルをトレーニングする
 
-Azure Machine Learning Studio (クラシック) を使用して機械学習モデルを作成することの利点の 1 つは、1 つの実験で複数種類のモデルを同時に試してそれらの結果を比較できることです。 このような実験は、問題の最善の解決策を見つけるのに役立ちます。
+Machine Learning Studio (クラシック) を使用して機械学習モデルを作成することの利点の 1 つは、1 つの実験で複数種類のモデルを同時に試してそれらの結果を比較できることです。 このような実験は、問題の最善の解決策を見つけるのに役立ちます。
 
 このチュートリアルで開発している実験では、2 種類の異なるモデルを作成し、それらのスコア結果を比較することで、最終的な実験で使用するアルゴリズムを決定します。  
 
 選択できるモデルは数多くあります。 これらのモデルを表示するには、モジュール パレットの **[機械学習]** ノードを展開して、 **[モデルの初期化]** とその下にあるノードを展開します。 実験の目的に合わせて、[2 クラス サポート ベクター マシン][two-class-support-vector-machine] (SVM) モジュールと [2 クラス ブースト デシジョン ツリー][two-class-boosted-decision-tree] モジュールを選択します。
 
-> [!TIP]
-> 解決しようとしている特定の問題に最適な機械学習アルゴリズムを決定するには、[Microsoft Azure Machine Learning Studio (クラシック) のアルゴリズムの選択方法](../how-to-select-algorithms.md)に関する記事をご覧ください。
-> 
-> 
 
 [2 クラス ブースト デシジョン ツリー][two-class-boosted-decision-tree] モジュールと [2 クラス サポート ベクター マシン][two-class-support-vector-machine] モジュールの両方を実験に追加します。
 
@@ -189,9 +185,9 @@ SVM モデルを設定するには、次の操作を行います。
 これらの値を検証することで、求めている結果に最も近い結果が得られるモデルを判断することができます。 モデルとパラメーター値を変えて実験を再度実行することもできます。 
 
 結果の解釈とモデルのパフォーマンスの調整に関するサイエンスとアートは、このチュートリアルの範囲外です。 詳細については、次の記事を参照してください。
-- [Azure Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する方法](evaluate-model-performance.md)
-- [Azure Machine Learning Studio (クラシック) でアルゴリズムを最適化するためにパラメーターを選択する](algorithm-parameters-optimize.md)
-- [Azure Machine Learning Studio (クラシック) でモデル結果を解釈する](interpret-model-results.md)
+- [Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する方法](evaluate-model-performance.md)
+- [Machine Learning Studio (classic) でアルゴリズムを最適化するためにパラメーターを選択する](algorithm-parameters-optimize.md)
+- [Machine Learning Studio (クラシック) でモデルの結果を解釈する](interpret-model-results.md)
 
 > [!TIP]
 > 実験を実行するたびに、イテレーションの記録が実行履歴に保存されます。 キャンバスの下にある **[実行履歴を表示]** をクリックすると、これらのイテレーションをいつでも表示し、いつでも実験に戻ることができます。 また、 **[プロパティ]** ウィンドウの **[前回の実行]** をクリックすると、現在開いているイテレーションの前のイテレーションがすぐに表示されます。
@@ -199,7 +195,7 @@ SVM モデルを設定するには、次の操作を行います。
 > キャンバスの下にある **[名前を付けて保存]** をクリックすることで、実験のイテレーションのコピーを作成できます。 
 > 実験の **[概要]** と **[説明]** のプロパティを使用して、実験のイテレーションで行った内容を記録します。
 > 
-> 詳細については、[Azure Machine Learning Studio (クラシック) での実験イテレーションの管理](manage-experiment-iterations.md)に関するページを参照してください。  
+> 詳細については、[Machine Learning Studio (クラシック) での実験イテレーションの管理](manage-experiment-iterations.md)に関するページを参照してください。  
 > 
 > 
 

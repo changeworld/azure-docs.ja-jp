@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: c5ef3415d22b41096317b0024829584236b24d3f
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 60de092a25350add4dc5b216bb7d079b866cc1fd
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430461"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659601"
 ---
 > [!NOTE]
 > このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/access-tokens-quickstart) にあります
@@ -107,7 +107,7 @@ const tokenCredential = new AzureKeyCredential(accessKey);
 const identityClient = new CommunicationIdentityClient(endpoint, tokenCredential)
 ```
 
-マネージド ID をセットアップしている場合は、[マネージド ID の使用](../managed-identity.md)に関する記事を参考に、マネージド ID で認証することもできます。
+Azure Active Directory アプリケーションを設定している場合は、AD で認証することもできます。[サービス プリンシパルの使用](../identity/service-principal.md)に関するページを参照してください。
 ```javascript
 const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
 const tokenCredential = new DefaultAzureCredential();

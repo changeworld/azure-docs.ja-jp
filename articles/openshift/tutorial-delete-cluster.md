@@ -7,12 +7,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 04/24/2020
-ms.openlocfilehash: 9367113e04db7f41037c8d2f137b72f0d2382f85
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e53c8caed2cf3c72bf416b1416183eb0c654582e
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887686"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541124"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを削除する
 

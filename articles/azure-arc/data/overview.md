@@ -8,14 +8,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/31/2021
+ms.date: 07/13/2021
 ms.topic: overview
-ms.openlocfilehash: 2d866dcb5b2a0be9e6468b3d40258e37ac93834e
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: cb905bd3e8ceb7012415a65bda1928b25da3037b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107716099"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760995"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Azure Arc 対応データ サービス (プレビュー) とは
 
@@ -42,7 +42,7 @@ Azure Arc には、高速デプロイや大規模な自動化など、クラウ�
 
 ## <a name="unified-management"></a>統合された管理
 
-Azure portal、Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] などの使い慣れたツールを使用して、Azure Arc によってデプロイされたすべてのデータ資産の統合ビューを取得できるようになりました。お使いの環境と Azure でさまざまなリレーショナル データベースを表示および管理できるだけでなく、Kubernetes API からログとテレメトリを取得して、基盤となるインフラストラクチャの容量と正常性を分析することもできます。 ローカライズされたログ分析とパフォーマンスの監視に加えて、Azure Monitor を利用して、資産全体にわたる総合的なオペレーション インサイトを実現できるようになりました。
+Azure portal、Azure Data Studio、`arcdata` 拡張子が付いた Azure CLI (`az`) などの使い慣れたツールを使用して、Azure Arc によってデプロイされたすべてのデータ資産の統合ビューを取得できるようになりました。お使いの環境と Azure でさまざまなリレーショナル データベースを表示および管理できるだけでなく、Kubernetes API からログとテレメトリを取得して、基盤となるインフラストラクチャの容量と正常性を分析することもできます。 ローカライズされたログ分析とパフォーマンスの監視に加えて、Azure Monitor を利用して、資産全体にわたる総合的なオペレーション インサイトを実現できるようになりました。
 
 ## <a name="disconnected-scenario-support"></a>切断されたシナリオのサポート
 
@@ -55,17 +55,30 @@ Arc 対応データ サービスで現在サポートされているシナリオ
 |Azure リージョン  |直接接続モード  |間接接続モード  |
 |---------|---------|---------|
 |米国東部|利用可能|利用可能
+|米国東部 2|利用可能|利用可能
+|米国西部 2|利用可能|利用可能
+|米国中部|使用不可|利用可能
+|米国中南部|利用可能|利用可能
+|英国南部|利用可能|利用可能
+|フランス中部|利用可能|利用可能
 |西ヨーロッパ |利用可能 |利用可能
 |北ヨーロッパ|利用可能|利用可能
+|東日本|使用不可|利用可能
+|韓国中部|使用不可|利用可能
+|東アジア|使用不可|利用可能
+|東南アジア|利用可能|利用可能
+|オーストラリア東部|利用可能|利用可能
 
 ## <a name="next-steps"></a>次のステップ
 
 > **試してみたい場合**  
 > Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
+>
+>さらに、Azure Arc のすべてのもののための簡単にデプロイできるサンドボックスである [Jumpstart ArcBox](https://azurearcjumpstart.io/azure_jumpstart_arcbox/) をデプロイします。ArcBox は、単一の Azure サブスクリプションとリソース グループ内で完全に自己完結するように設計されており、使用可能な Azure サブスクリプションだけで使用可能なすべての Azure Arc 対応テクノロジを簡単に使用できます。
 
 [クライアント ツールをインストールする](install-client-tools.md)
 
-[Azure Arc データ コントローラーを作成する](create-data-controller.md) (先にクライアント ツールをインストールする必要があります)
+[Azure Arc データ サービスのデプロイを計画する](plan-azure-arc-data-services.md) (最初にクライアント ツールをインストールする必要があります)
 
 [Azure Arc で Azure SQL マネージド インスタンスを作成する](create-sql-managed-instance.md) (先に Azure Arc データ コントローラーを作成する必要があります)
 

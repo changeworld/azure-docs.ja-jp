@@ -1,25 +1,26 @@
 ---
-title: クイック スタート:Azure Active Directory (Azure AD) テナントを使用して ID 管理を行っているアプリケーションの一覧を表示する
+title: 'クイックスタート: テナント内のアプリケーションの一覧を表示する'
+titleSuffix: Azure AD
 description: このクイックスタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントを ID 管理に使用するように登録されているアプリケーションの一覧を表示します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 04/09/2019
-ms.author: mtillman
-ms.reviewer: arvinh
+ms.date: 07/22/2021
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.custom: it-pro
-ms.openlocfilehash: c1022ddae7fdd00731f17a1e62e024a6ebfaebcb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: b5b9c84a5cbadd7d3661a2109223c43dbff7da7a
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080599"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605709"
 ---
-# <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>クイック スタート:Azure Active Directory (Azure AD) テナントを使用して ID 管理を行っているアプリケーションの一覧を表示する
+# <a name="quickstart-view-the-list-of-applications-in-your-tenant"></a>クイックスタート: テナント内のアプリケーションの一覧を表示する
 
 Azure AD を、ご自分の組織で使用するアプリケーションの Identity and Access Management (IAM) システムとして使用開始する方法を説明します。 このクイックスタートでは、ご自身の Azure AD テナントを ID プロバイダー (IdP) として使用するように既に設定されているアプリケーション (アプリとも呼ばれます) を表示します。
 
@@ -34,7 +35,7 @@ Azure AD テナントに登録されているアプリケーションを表示�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.4 以降を実行してください。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.4 以降を実行してください。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="find-the-list-of-applications-in-your-tenant"></a>テナント内のアプリケーションの一覧を検索する
 
@@ -45,10 +46,9 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 Azure AD テナントに登録されたアプリケーションは、Azure portal の **[エンタープライズ アプリ]** セクションで確認できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
-3. **[Azure Active Directory]** ウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。
-4. **[アプリケーションの種類]** ドロップダウン メニューの **[すべてのアプリケーション]** を選択し、 **[適用]** を選択します。 テナント アプリケーションのランダム サンプルが表示されます。
-5. 他のアプリケーションを表示するには、一覧の一番下にある **[さらに読み込む]** を選択します。 テナント内に多数のアプリケーションがある場合は、一覧をスクロールするよりも特定のアプリケーションを検索する方が簡単な場合があります。 特定のアプリケーションの検索については、このクイックスタートで後ほど説明します。
+2. **Azure サービス** ペインで **エンタープライズ アプリケーション** を選択します。
+3. **[アプリケーションの種類]** ドロップダウン メニューの **[すべてのアプリケーション]** を選択し、 **[適用]** を選択します。 テナント アプリケーションのランダム サンプルが表示されます。
+4. 他のアプリケーションを表示するには、一覧の一番下にある **[さらに読み込む]** を選択します。 テナント内に多数のアプリケーションがある場合は、一覧をスクロールするよりも特定のアプリケーションを検索する方が簡単な場合があります。 特定のアプリケーションの検索については、このクイックスタートで後ほど説明します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -94,7 +94,7 @@ az ad app list --filter "displayname eq 'test' and servicePrincipalType eq 'Appl
 1. **[アプリケーションの種類]** メニューの **[すべてのアプリケーション]** を選択し、 **[適用]** を選択します。
 2. 検索するアプリケーションの名前を入力します。 アプリケーションが Azure AD テナントに追加されている場合は、それが検索結果に表示されます。 この例は、GitHub がテナント アプリケーションに追加されていないことを示しています。
     ![テナントにアプリが追加されていないことを表示する例](media/view-applications-portal/search-for-tenant-application.png)
-3. アプリケーション名の最初の数文字を入力してください。 この例は、**Sales** で始まるすべてのアプリケーションを示しています。
+3. アプリケーション名の最初の数文字を入力してください。 この例は、**Office** で始まるすべてのアプリケーションを示しています。
     ![Sales で始まるすべてのアプリを表示する例](media/view-applications-portal/search-by-prefix.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

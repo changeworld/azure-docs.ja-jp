@@ -3,16 +3,16 @@ title: Azure Defender for Resource Manager - 利点と機能
 description: Azure Defender for Resource Manager の利点と機能について学習します。
 author: memildin
 ms.author: memildin
-ms.date: 05/12/2021
+ms.date: 07/14/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a7292d08d2505b63e97c76ca3f40ad573690c173
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 1acf785021f83605db2f8bfe3188e0e2ac874d4e
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846415"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761881"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "109846415"
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for Resource Manager** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の利点
@@ -39,7 +39,7 @@ Azure Defender for Resource Manager は、次のような問題からの保護�
 - **悪用ツールキット**: Microburst、PowerZure など
 - **侵入拡大**: Azure 管理レイヤーから Azure リソースのデータ プレーンへの侵入
 
-:::image type="content" source="media/defender-for-resource-manager-introduction/consistent-management-layer-with-defender.png" alt-text="Azure Resource Manager の概要図":::
+:::image type="content" source="media/defender-for-resource-manager-introduction/consistent-management-layer-with-defender.png" alt-text="Azure Resource Manager の概要図。":::
 
 Azure Defender for Resource Manager によって提供されるアラートの全一覧は、[アラートのリファレンス ページ](alerts-reference.md#alerts-resourcemanager)に掲載されています。
 
@@ -54,7 +54,7 @@ Azure Defender for Resource Manager からのセキュリティ アラートを�
 
 1. Azure のアクティビティ ログを開きます。
 
-    :::image type="content" source="media/defender-for-resource-manager-introduction/opening-azure-activity-log.png" alt-text="Azure のアクティビティ ログを開く方法":::
+    :::image type="content" source="media/defender-for-resource-manager-introduction/opening-azure-activity-log.png" alt-text="Azure のアクティビティ ログを開く方法。":::
 
 1. イベントに次のフィルターを適用します。
     - アラート内で言及されているサブスクリプション

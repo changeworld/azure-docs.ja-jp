@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/08/2021
-ms.openlocfilehash: ee3c74e9b1bf1edcfa039703de92e899562ab927
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 9611f80c6895387e71cd6387736cb1445e6b1542
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903224"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575312"
 ---
 # <a name="quickstart-connect-a-microchip-atsame54-xpro-evaluation-kit-to-iot-central"></a>クイックスタート: Microchip ATSAME54-XPro Evaluation kit を IoT Central に接続する
 
@@ -44,7 +44,7 @@ ms.locfileid: "111903224"
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
-開発環境を設定するには、まず、このクイックスタートに必要なすべての資産を含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
+開発環境を設定するには、まず、このクイックスタートに必要なすべてのアセットを含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>クイックスタート用のリポジトリのクローン
 
@@ -58,7 +58,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>ツールのインストール
 
-複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 組み込みデバイスの別のクイックスタートでこれらのツールをインストールした場合は、もう一度行う必要はありません。
+複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 別の組み込みデバイスのクイックスタートでこれらのツールをインストールしてある場合は、もう一度行う必要はありません。
 
 > [!NOTE]
 > 設定スクリプトでは、次のツールがインストールされます。
@@ -106,7 +106,9 @@ Microchip E54 を Azure に接続するには、Azure IoT の設定の構成フ�
 
 ### <a name="connect-the-device"></a>デバイスを接続する
 
-1. Microchip E54 で、**リセット** ボタン、**イーサネット** ポート、**Debug USB (デバッグ USB)** というラベルの付いたマイクロ USB ポートを見つけます。
+1. Microchip E54 で、**リセット** ボタン、**イーサネット** ポート、**Debug USB (デバッグ USB)** というラベルの付いたマイクロ USB ポートを見つけます。 次の図で各コンポーネントが強調表示されています。
+
+    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/microchip-xpro-board.png" alt-text="Microchip E54 評価キット ボードで主要なコンポーネントを見つける":::
 
 1. マイクロ USB ケーブルを Microchip E54 の **Debug USB (デバッグ USB)** ポートに接続し、それからコンピューターに接続します。
     > [!NOTE]
@@ -118,7 +120,10 @@ Microchip E54 を Azure に接続するには、Azure IoT の設定の構成フ�
 
 Weather Click センサーと mikroBUS Xplained Pro アダプターがある場合は、このセクションの手順に従います。それ以外の場合は、[イメージのビルド](#build-the-image)に進みます。 センサーをお持ちでない場合でも、このクイックスタートを実行できます。 実際のセンサーが存在しない場合、デバイスのサンプル コードを実行するとシミュレートされたデータが返されます。
 
-1. Weather Click センサーと mikroBUS Xplained Pro アダプターがある場合は、Microchip E54 にインストールします。
+1. Weather Click センサーと mikroBUS Xplained Pro アダプターがある場合は、次の写真で示されているように Microchip E54 にインストールします。
+
+    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/sam-e54-sensor.png" alt-text="Microchip ES4 に Weather Click センサーと mikroBUS Xplained Pro アダプターをインストールする":::
+
 1. 前に編集した構成ファイルを再度開きます。
 
     *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
@@ -167,7 +172,7 @@ Weather Click センサーと mikroBUS Xplained Pro アダプターがある場�
 
 1. **Termite** を開始します。    
     > [!TIP]
-    > フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、追加の手順に関する[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)の記事を参照してください。
+    > フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、追加の手順に関する[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)の記事を参照してください。
 1. **[設定]** を選択します。
 1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
     * **Baud rate\(ボー レート\)** : 115,200
@@ -262,7 +267,7 @@ IoT Central からデバイス情報を表示できます。
 
 ## <a name="troubleshoot-and-debug"></a>トラブルシューティングとデバッグ
 
-デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)に関する記事を参照してください。
+デバイス コードのビルド、デバイスのフラッシュ、または接続で問題が発生した場合は、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 
 アプリケーションのデバッグについては、「[Visual Studio Code を使用したデバッグ](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)」を参照してください。
 

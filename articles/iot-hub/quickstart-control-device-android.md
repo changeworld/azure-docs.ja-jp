@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Azure IoT Hub からのデバイスの制御に関するクイックスタート (Android) | Microsoft Docs
+title: Azure IoT Hub (Android) からデバイスを制御する | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル Java アプリケーションを実行します。 1 つは、ハブに接続されたデバイスをリモートで制御できるサービス アプリケーションです。 もう 1 つのアプリケーションは、リモートで制御可能な、ハブに接続された物理デバイスまたはシミュレートされたデバイス上で実行されます。
 author: wesmc7777
 manager: philmea
@@ -14,16 +14,14 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 5946220a688206a35d0d68cd4efd4c356d27d7ee
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 9225c53d4271622b0276dadb1d0a526199602d62
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868544"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727941"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート:IoT Hub に接続されたデバイスを制御する (Android)
-
-[!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
+# <a name="control-a-device-connected-to-an-iot-hub-android"></a>IoT ハブに接続されたデバイスを制御する (Android)
 
 このクイックスタートでは、ダイレクト メソッドを使って、Azure IoT Hub に接続されているシミュレートされたデバイスを制御します。 IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバイス テレメトリを格納または処理のためにクラウドに取り込むことができるようにする Azure サービスです。 ダイレクト メソッドを使うと、IoT ハブに接続されたデバイスの動作をリモートで変更できます。 このクイックスタートでは、2 つのアプリケーションを使用します。バックエンド サービス アプリケーションから呼び出されたダイレクト メソッドに応答するシミュレートされたデバイスのアプリケーションと、Android デバイスのダイレクト メソッドを呼び出すサービス アプリケーションです。
 
@@ -47,13 +45,13 @@ ms.locfileid: "107868544"
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-前出の[デバイスから IoT Hub への利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-android.md)を完了した場合は、この手順を省略して、既に作成した IoT Hub を使用できます。
+前出の[デバイスから IoT Hub への利用統計情報の送信に関するクイック スタート](../iot-develop/quickstart-send-telemetry-iot-hub.md)を完了した場合は、この手順を省略して、既に作成した IoT Hub を使用できます。
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-前出の[デバイスから IoT Hub への利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-android.md)を完了した場合は、この手順を省略して、前のクイック スタートで登録したものと同じデバイスを使用します。
+前出の[デバイスから IoT Hub への利用統計情報の送信に関するクイック スタート](../iot-develop/quickstart-send-telemetry-iot-hub.md)を完了した場合は、この手順を省略して、前のクイック スタートで登録したものと同じデバイスを使用します。
 
 デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 

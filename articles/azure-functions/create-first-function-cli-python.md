@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: b006f006c9fb45c9a7d80e815f95bec812e5ec3f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: f08a035b9d095035fb108140af7c010bc9f049ea
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831836"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573960"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -191,6 +191,18 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットで Azure アカウントにサインインします。
 
     ---
+    
+1. このオプションを Azure CLI、作成したリソースの名前を自動的に追跡する `param-persist` オプションを有効にできます。 詳細については、「[Azure CLI の永続化されたパラメーター](/cli/azure/param-persist-howto)」を参照してください。  
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    ```azurecli
+    az config param-persist on
+    ```
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    
+    この機能は、Azure PowerShell では使用できません。
+    
+    ---
 
 1. `westeurope` リージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。 
 
@@ -220,7 +232,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli
-    az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
+    az storage account create --name <STORAGE_NAME> --sku Standard_LRS
     ```
 
     [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドでストレージ アカウントを作成します。 
@@ -244,7 +256,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
         
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME> --os-type linux
+    az functionapp create --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --os-type linux
     ```
     
     [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドで Azure に関数アプリを作成します。 Python 3.7 または 3.6 を使用している場合は、`--runtime-version` をそれぞれ `3.7` または `3.6` に変更します。
@@ -259,7 +271,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
 
     ---
     
-    前の例では、`<STORAGE_NAME>` を前の手順で使用したアカウントの名前に、`<APP_NAME>` を適宜グローバルに一意の名前に置き換えてください。  `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
+    前の例の `<APP_NAME>` は適宜、グローバルに一意の名前に置き換えてください。  `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
     
     このコマンドでは、[Azure Functions 従量課金プラン](consumption-plan.md) (ここで発生する使用量に関しては無料) で、指定された言語ランタイムで実行される関数アプリを作成します。 また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
 

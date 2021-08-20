@@ -4,19 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 2bbff7c68b76b82bb834528124271eff69b8ad87
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: e8a00161e9619a27b371ed80a61d7b3ea5d3e9c6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111896653"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535835"
 ---
 Communication Services Calling SDK を使用して 1 対 1 のビデオ通話をアプリに追加することによって、Azure Communication Services の使用を開始します。 このクイックスタートでは、JavaScript 用の Azure Communication Services Calling SDK を使用して、ビデオ通話を開始および応答する方法について説明します。
 
+## <a name="sample-code"></a>サンプル コード
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) にあります
-
+最後までスキップしたい場合は、[GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) のサンプルとしてこのクイックスタートをダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 - アクティブなサブスクリプションが含まれる Azure アカウントを取得します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -135,7 +134,11 @@ Azure Communication Services Calling SDK の主な機能のいくつかは、次
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>クライアントを認証し、DeviceManager にアクセスする
 
-<[USER_ACCESS_TOKEN](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/access-tokens-quickstart)> は、リソースの有効なユーザー アクセス トークンに置き換える必要があります。 まだトークンを入手していない場合は、ユーザー アクセス トークンに関するドキュメントを参照してください。 `CallClient` を使用して、`CallAgent` インスタンスを `CommunicationUserCredential` で初期化します。これにより、電話をかりたり受けたりすることができるようになります。 `DeviceManager` にアクセスするには、先に callAgent インスタンスを作成する必要があります。 その後、`CallClient` インスタンスで `getDeviceManager` メソッドを使用すると、`DeviceManager` を取得できます。
+自分のリソースの **有効なユーザー アクセス トークンに <USER_ACCESS_TOKEN> を置き換える必要があります**。 まだトークンを入手していない場合は、[ユーザー アクセス トークンに関するドキュメント](../../../access-tokens.md)を参照してください。 
+
+`CallClient` を使用して、`CallAgent` インスタンスを `CommunicationUserCredential` で初期化します。これにより、電話をかりたり受けたりすることができるようになります。 
+
+`DeviceManager` にアクセスするには、先に callAgent インスタンスを作成する必要があります。 その後、`CallClient` インスタンスで `getDeviceManager` メソッドを使用すると、`DeviceManager` を取得できます。
 
 `client.js` に次のコードを追加します。
 
@@ -294,7 +297,7 @@ hangUpButton.addEventListener("click", async () => {
 
 ## <a name="start-and-end-video-during-the-call"></a>通話中にビデオを開始および終了する
 [stop video]\(ビデオの停止\) ボタンを対象とするイベント リスナーを追加し、`localVideoStream` のレンダラーを破棄することによって、通話中にビデオを停止できます。 
- ```JavaScript       
+ ```JavaScript
 stopVideoButton.addEventListener("click", async () => {
     await call.stopVideo(localVideoStream);
     rendererLocal.dispose();
@@ -321,7 +324,4 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 :::image type="content" source="../../media/javascript/1-on-1-video-calling.png" alt-text="1 対 1 のビデオ通話のページ":::
 
-1 対 1 のビデオ通話を発信するときは、テキスト フィールドにユーザー ID を指定し、[start call]\(通話の開始\) ボタンをクリックします。 
-
-## <a name="sample-code"></a>サンプル コード
-サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) からダウンロードできます。
+1 対 1 のビデオ通話を発信するときは、テキスト フィールドにユーザー ID を指定し、[start call]\(通話の開始\) ボタンをクリックします。

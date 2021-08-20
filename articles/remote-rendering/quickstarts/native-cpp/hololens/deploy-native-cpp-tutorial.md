@@ -1,20 +1,20 @@
 ---
-title: ネイティブ C++ チュートリアルを HoloLens にデプロイする
-description: ネイティブ C++ チュートリアルを HoloLens で実行する方法を示すクイックスタート
+title: ネイティブ C++ WMR チュートリアルを HoloLens にデプロイする
+description: ネイティブ C++ HolographicApp チュートリアルを HoloLens で実行する方法を示すクイックスタート
 author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: b340a180927b3df9ad51295383b09b03dbbb2d98
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: eabade94b06d8689026548d6e09d6098e8da9f59
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530588"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666809"
 ---
-# <a name="quickstart-deploy-native-c-sample-to-hololens"></a>クイック スタート:ネイティブ C++ サンプルを HoloLens にデプロイする
+# <a name="quickstart-deploy-native-c-wmr-sample-to-hololens"></a>クイックスタート: ネイティブ C++ WMR サンプルを HoloLens にデプロイする
 
-このクイックスタートでは、ネイティブ C++ チュートリアル アプリケーションを HoloLens 2 にデプロイして実行する方法について取り上げます。
+このクイックスタートでは、ネイティブ C++ WMR (Windows Mixed Reality) チュートリアル アプリケーションを HoloLens 2 にデプロイして実行する方法について説明します。
 
 このクイックスタートでは、次の方法について説明します。
 
@@ -51,11 +51,11 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 最後のコマンドでは、Azure Remote Rendering 用のさまざまなサンプル プロジェクトを含む ARR ディレクトリにサブディレクトリを作成します。
 
-C++ HoloLens チュートリアルは、*NativeCpp/HoloLens* サブディレクトリにあります。
+C++ HoloLens チュートリアルは、*NativeCpp/HoloLens-Wmr* サブディレクトリにあります。
 
-## <a name="build-the-project"></a>プロジェクトのビルド
+## <a name="build-the-project"></a>プロジェクトをビルドする
 
-*NativeCpp/HoloLens* サブディレクトリに格納されているソリューション ファイル *HolographicApp.sln* を Visual Studio 2019 で開きます。
+*NativeCpp/HoloLens-Wmr* サブディレクトリに格納されているソリューション ファイル *HolographicApp.sln* を Visual Studio 2019 で開きます。
 
 ビルド構成は、"*デバッグ*" (または "*リリース*") と *ARM64* に切り替えます。 また、デバッガー モードが "*リモート マシン*" ではなく "*デバイス*" に設定されていることを確認してください。
 
@@ -80,7 +80,7 @@ C++ HoloLens チュートリアルは、*NativeCpp/HoloLens* サブディレク�
 
 具体的には、次の値を変更します。
 * `init.AccountId`、`init.AccountKey`、`init.AccountDomain` に使用するアカウント データを実際の値に変更します。 [アカウント情報の取得](../../../how-tos/create-an-account.md#retrieve-the-account-information)方法についての段落を参照してください。
-* 実際のリージョンが `westus2` 以外である場合は、`init.RemoteRenderingDomain` 文字列のリージョン部分を変更して、リモート レンダリング セッションを作成する場所を指定します (例: `"westeurope.mixedreality.azure.com"`)。
+* [リージョン](../../../reference/regions.md)が `westus2` 以外である場合は、`init.RemoteRenderingDomain` 文字列のリージョン部分を変更して、リモート レンダリング セッションを作成する場所を指定します (例: `"westeurope.mixedreality.azure.com"`)。
 * 加えて、`m_sessionOverride` を既存のセッション ID に変更することができます。 セッションは、このサンプルの外部で作成できます。たとえば、[PowerShell スクリプト](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)を使用するか、[セッションの REST API](../../../how-tos/session-rest-api.md) を使用して直接作成できます。
 サンプルを複数回実行する必要がある場合は、サンプルの外部でセッションを作成するようお勧めします。 セッションを渡さなかった場合、起動のたびに新しいセッションが作成されます。起動には数分かかる場合があります。
 

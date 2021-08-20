@@ -1,23 +1,25 @@
 ---
-title: 'クイックスタート: Azure Active Directory (Azure AD) テナント内のアプリケーションへの OIDC ベースのシングル サインオン (SSO) を設定する'
+title: 'クイック スタート: アプリケーションの OIDC ベースのシングル サインオンを設定する'
+titleSuffix: Azure AD
 description: このクイックスタートでは、Azure Active Directory (Azure AD) テナント内のアプリケーションへの OIDC ベースのシングル サインオン (SSO) を設定するプロセスについて説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
-ms.author: mtillman
-ms.openlocfilehash: 853ae1bf9bb230a28ad4e1e8509ddbeeb9dc34d8
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2020
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 0e1c253211cfef2d9bf55b4d0a615ccb9563036b
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077503"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669441"
 ---
-# <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイックスタート: Azure Active Directory (Azure AD) テナント内のアプリケーションへの OIDC ベースのシングル サインオン (SSO) を設定する
+# <a name="quickstart-set-up-oidc-based-single-sign-on-for-an-application"></a>クイック スタート: アプリケーションの OIDC ベースのシングル サインオンを設定する
 
 Azure Active Directory (Azure AD) テナントに追加したアプリケーションへのシングル サインオン (SSO) を設定することで、簡略化されたユーザー ログインの利用を開始します。 SSO を設定すると、ユーザーが自分の Azure AD の資格情報を使用してアプリケーションにサインインできるようになります。 SSO は Azure AD の Free Edition に含まれています。
 
@@ -40,16 +42,15 @@ Azure AD テナントに追加したアプリケーションへの SSO を設定
 
 ## <a name="enable-single-sign-on-for-an-app"></a>アプリへのシングル サインオンを有効にする
 
-SSO に OIDC 標準を使用するアプリを追加すると、セットアップ ボタンが表示されます。 このボタンを選択すると、アプリケーションのサイトに移動するので、アプリに対するサインアップ プロセスを完了させます。 アプリを追加するプロセスについては、このシリーズで前に説明したアプリの追加に関するクイックスタートを参照してください。 既に追加されているアプリケーションを構成する場合は、最初のクイックスタートを参照してください。 テナント内に既に存在するアプリケーションを表示する手順が説明されています。 
+SSO に OIDC 標準を使用するアプリを追加すると、セットアップ ボタンが表示されます。 このボタンを選択すると、アプリケーションのサイトに移動するので、アプリに対するサインアップ プロセスを完了させます。 アプリを追加するプロセスについては、このシリーズで前に説明したアプリの追加に関するクイックスタートを参照してください。 既に追加されているアプリケーションを構成する場合は、最初のクイックスタートを参照してください。 テナント内に既に存在するアプリケーションを表示する手順が説明されています。
 
 アプリケーションへのシングル サインオンを設定するには、次を行います。
 
-1. このシリーズの前のクイックスタートでは、ID 管理に Azure AD テナントを使用するアプリを追加する方法を学習しました。 アプリ開発者が OIDC 標準を使用して SSO を実装してある場合は、アプリを追加するときにサインアップ ボタンが表示されます。 
+1. このシリーズの前のクイックスタートでは、ID 管理に Azure AD テナントを使用するアプリを追加する方法を学習しました。 アプリ開発者が OIDC 標準を使用して SSO を実装してある場合は、アプリを追加するときにサインアップ ボタンが表示されます。
 
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="[シングルサインオン] オプションと [サインアップ] ボタンが表示されているスクリーンショット。" lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
 
-
-2. **[サインアップ]** を選択すると、アプリ開発者のサインオン ページが表示されます。 Azure Active Directory サインイン資格情報を使用してサインインします。 
+2. **[サインアップ]** を選択すると、アプリ開発者のサインオン ページが表示されます。 Azure Active Directory サインイン資格情報を使用してサインインします。
 
    > [!IMPORTANT]
     > アプリケーションのサブスクリプションを既に持っている場合は、ユーザーの詳細およびテナントまたはディレクトリ情報の検証が行われます。 アプリケーションがユーザーを確認できない場合は、アプリケーション サービスへのサインアップまたはエラー ページにリダイレクトされます。
@@ -59,7 +60,6 @@ SSO に OIDC 標準を使用するアプリを追加すると、セットアッ�
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="アプリの同意画面が表示されているスクリーンショット。" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. アプリケーションがテナントに追加され、アプリケーションのホーム ページが表示されます。
-
 
 > [!TIP]
 > Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](/graph/application-saml-sso-configure-api)に関するページを参照してください。

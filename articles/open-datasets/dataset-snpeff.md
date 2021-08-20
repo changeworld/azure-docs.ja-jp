@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 3cc23edff82dce0c14a795e1b3b0a29975cb96e4
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 8072d3a48e0bcc0fea040a964aac579dc2061deb
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038719"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982386"
 ---
 # <a name="snpeff-genomic-variant-annotations-and-functional-effect-prediction-toolbox"></a>SnpEff: ゲノム バリアントのアノテーションと機能効果予測のツールボックス
 
@@ -36,14 +36,14 @@ ms.locfileid: "112038719"
 
 ## <a name="data-access"></a>データ アクセス
 
-米国西部 2: https://datasetsnpeff.blob.core.windows.net/dataset
+米国西部 2: 'https://datasetsnpeff.blob.core.windows.net/dataset '
 
-米国中西部: https://datasetsnpeff-secondary.blob.core.windows.net/dataset
+米国中西部: 'https://datasetsnpeff-secondary.blob.core.windows.net/dataset '
 
 [SAS Token](../storage/common/storage-sas-overview.md): sv=2019-10-10&st=2020-09-01T00%3A00%3A00Z&se=2050-09-01T00%3A00%3A00Z&si=prod&sr=c&sig=isafOa9tGnYBAvsXFUMDGMTbsG2z%2FShaihzp7JE5dHw%3D
 
 ## <a name="use-terms"></a>使用条件
-データは制限なく使用できます。 詳細および引用の詳細については、「[Accessing and using data in ClinVar](https://pcingola.github.io/SnpEff/SnpEff_manual.html#intro)」を参照してください。
+データは制限なく使用できます。 詳細および引用の詳細については、「[Accessing and using data in ClinVar](https://pcingola.github.io/SnpEff/se_introduction/)」を参照してください。
 
 ## <a name="contact"></a>Contact
 

@@ -1,27 +1,27 @@
 ---
-title: クイックスタート - ネットワーク リレー トークンを取得する
+title: クイックスタート - TURN リレーにアクセスする
 description: Azure Communication Services を使用して STUN/TURN トークンを取得する方法について説明します
 author: shahen
 manager: anvalent
 services: azure-communication-services
 ms.author: shahen
-ms.date: 05/21/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 2fc0bfeaef1d3e0e49d1597f41582b6d79d9a3db
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 88bdfe85dbd2905ff060498003b23909abe7a855
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026929"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471469"
 ---
-# <a name="quickstart-get-a-network-relay-token"></a>クイックスタート: ネットワーク リレー トークンを取得する
+# <a name="quickstart-access-turn-relays"></a>クイックスタート: TURN リレーにアクセスする
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-このクイックスタートでは、ネットワーク リレー トークンを取得して Azure Communication Services TURN サーバーにアクセスする方法を示します
+このクイックスタートでは、ネットワーク リレー トークンを取得して Azure Communication Services TURN サーバーにアクセスする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 

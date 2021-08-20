@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9c9780a51954978935dad164c9d8c5b5a1535826
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460504"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447333"
 ---
 # <a name="getting-started"></a>作業の開始
 

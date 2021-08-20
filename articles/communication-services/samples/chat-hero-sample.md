@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02246f02226aaac1b7d9dbfd035a0479908f52cc
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ef518b5dd3ee0e3657be1bf01873763eafdd221b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111548"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471840"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include-chat.md)]
 
 > [!IMPORTANT]
 > [このサンプルは **GitHub** で入手できます。](https://github.com/Azure-Samples/communication-services-web-chat-hero)
@@ -59,7 +57,7 @@ Azure Communication Services の **グループ チャットのヒーロー サ�
 - [Node.js (8.11.2 以上)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 以上)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (使用する Visual Studio インスタンス (32 または 64 ビット) に対応するバージョンを必ずインストールしてください)
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
 
 ## <a name="locally-deploying-the-service--client-app"></a>サービスおよびクライアント アプリをローカルにデプロイする
 
@@ -73,7 +71,7 @@ chat.csproj で Visual Studio を開き、デバッグ モードで実行しま�
 
 1. PowerShell、Windows ターミナル、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
 2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
-3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。
+3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication Services リソースの作成](../quickstarts/create-communication-resource.md)に関するページをご覧ください
 4. `Connection String` を取得したら、Chat フォルダーにある **Chat/appsettings.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。
 
 ### <a name="local-run"></a>ローカルの実行

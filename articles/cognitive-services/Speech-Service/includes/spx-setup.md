@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 32f28a6fa056819081804a3ccb919436c3f50bae
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 268f248c879d1a6872713159bfb1aa44879d21ad
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112041190"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730388"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -44,7 +44,7 @@ Speech CLI を使用する x64 アーキテクチャでは、次の Linux ディ
 * CentOS 7/8
 * Debian 9/10 
 * Red Hat Enterprise Linux (RHEL) 7/8
-* Ubuntu 16.04/18.04/20.04
+* Ubuntu 16.04 (9 月まで)、Ubuntu 18.04/20.04
 
 > [!NOTE]
 > 追加のアーキテクチャが Speech SDK (Speech CLI ではない) によってサポートされています。 詳細については、「[Speech SDK について](../speech-sdk.md)」を参照してください。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 0ab04c21cb904baf7ede72fd69f6d6b8375b07cc
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110327"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289881"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ ms.locfileid: "106110327"
     | パブリック IP アドレス名 | パブリック IP アドレスの名前を指定します。 |
 
     > [!IMPORTANT]
-    > ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、**SKU** に対して AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を選択してください。
+    > ExpressRoute で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、標準の静的な種類のパブリック IP アドレスを使用してゲートウェイを作成する方法について [PowerShell のドキュメント](./expressroute-howto-add-gateway-resource-manager.md)を参照してください。
     > 
     > 
 

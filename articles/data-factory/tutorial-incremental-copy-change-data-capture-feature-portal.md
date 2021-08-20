@@ -5,13 +5,13 @@ ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/18/2021
-ms.openlocfilehash: 6c7bfaf6bd6ca11593a986ca8d929faf063be720
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 07/05/2021
+ms.openlocfilehash: 927d913122203383b4279d68059040b6bf4be5e7
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905776"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436768"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>変更データ キャプチャ (CDC) を使用して Azure SQL Managed Instance から Azure Storage へのデータの増分読み込みを行う
 
@@ -127,11 +127,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![スクリーンショットは、デプロイが完了したというメッセージと、リソースに移動するオプションを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-   ![スクリーンショットは、デプロイしたデータ ファクトリを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
-10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
-11. **開始** ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。
+      :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\) タイルを含む、Azure Data Factory のホーム ページ。":::
 
-    ![[Create pipeline]\(パイプラインの作成\) ボタン](./media/tutorial-incremental-copy-change-data-capture-feature-portal/get-started-page.png)
+10. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
+11. ホーム ページで、次の図に示すように、左パネルの **[管理]** タブに切り替えます。
+
+    ![[管理] ボタンを示すスクリーンショット。](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、Azure ストレージ アカウントと Azure SQL MI に対するリンクされたサービスを作成します。

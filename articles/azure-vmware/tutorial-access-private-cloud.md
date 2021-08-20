@@ -3,12 +3,12 @@ title: チュートリアル - プライベート クラウドにアクセスす
 description: Azure VMware Solution プライベート クラウドにアクセスする方法を学習する
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: d2046acaf483022f977559fe74254ca58b8c42ea
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 81927e9ad0362ba340bb704d2d7e8b9c0927efbe
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945649"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605398"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution プライベート クラウドにアクセスする
 
@@ -26,7 +26,7 @@ Azure VMware Solution では、オンプレミスの vCenter でプライベー�
 
 1. リソース グループで、 **[+ 追加]** を選択します。次に、**Microsoft Windows 10** を検索して選択し、 **[作成]** を選択します。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="ジャンプ ボックス用に新しい Windows 10 VM を追加する方法を示すスクリーンショット。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="ジャンプ ボックス用に新しい Windows 10 VM を追加する方法を示すスクリーンショット。":::
 
 1. フィールドに必要な情報を入力し、 **[確認および作成]** を選択します。 
 
@@ -58,7 +58,7 @@ Azure VMware Solution では、オンプレミスの vCenter でプライベー�
 
    プライベート クラウドの vCenter および NSX-T Manager の URL とユーザーの資格情報が表示されます。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="プライベート クラウドの vCenter および NSX Manager の URL と資格情報を表示する。" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="プライベート クラウドの vCenter および NSX Manager の URL と資格情報を示すスクリーンショット。" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 1. 前の手順で作成した VM に移動し、仮想マシンに接続します。 
 
@@ -68,13 +68,13 @@ Azure VMware Solution では、オンプレミスの vCenter でプライベー�
 
 1. vCenter タブで、前の手順の `cloudadmin@vmcp.local` ユーザー資格情報を入力します。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="プライベート クラウドの vCenter にサインインする。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="VMware vSphere サインイン ページを示すスクリーンショット。" border="true":::
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vCenter ポータル。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vSphere クライアントの Cluster-1 の概要を示すスクリーンショット。" border="true":::
 
 1. ブラウザーの 2 番目のタブで、NSX-T Manager にサインインします。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="ブラウザーの 2 番目のタブで、NSX-T Manager にサインインします。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="NSX-T Manager の概要のスクリーンショット。" border="true":::
 
 
 
@@ -90,5 +90,4 @@ Azure VMware Solution では、オンプレミスの vCenter でプライベー�
 
 > [!div class="nextstepaction"]
 > [仮想ネットワークの作成](tutorial-configure-networking.md)
-
 

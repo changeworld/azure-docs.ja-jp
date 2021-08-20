@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/01/2021
+ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 643ab787e07cdb1f3a61d1028838a2fc68a169f2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3342198600c3549a7ce5e1e52111233d4fa920d8
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108148018"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110183"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Envoy の統合
 
@@ -78,7 +78,7 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>` という形式で URL を入力します。
 
@@ -127,27 +127,19 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、**[Envoy のセットアップ]** をクリックすると、Envoy アプリケーションに移動します。 そこから、管理者の資格情報を入力して Envoy にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 7 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、**[Envoy のセットアップ]** をクリックすると、Envoy アプリケーションに移動します。 そこから、管理者の資格情報を入力して Envoy にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 
 3. Envoy を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Envoy 企業サイトにサインインして、次の手順を実行します。
 
-4. 上部のツールバーで **[設定]** をクリックします。
+4. **[Integrations]\(統合\)**  >  **[All integrations]\(すべての統合\)** に移動し、 **[Single sign-on]\(シングル サインオン\)** の SAML の **[Install]\(インストール\)** をクリックします。
 
-    ![Envoy](./media/envoy-tutorial/envoy-1.png "Envoy")
+    ![SAML 認証](./media/envoy-tutorial/integrations.png "[SAML 認証]")
 
-5. **[会社]** をクリックします。
+5. **[Enabled integrations]\(有効な組み込み\)** セクションに移動し、次の手順を実行します。
 
-    ![Company](./media/envoy-tutorial/envoy-2.png "[会社]")
-
-6. **[SAML]** をクリックします。
-
-    ![SAML](./media/envoy-tutorial/envoy-3.png "SAML")
-
-7. [**SAML Authentication**] 構成セクションで、以下の手順を実行します。
-
-    ![SAML 認証](./media/envoy-tutorial/envoy-4.png "SAML 認証")
+    ![シングル サインオン](./media/envoy-tutorial/configuration.png "シングル サインオン")
     
     >[!NOTE]
     >[HQ 場所 ID] の値は、アプリケーションによって自動的に生成されます。
@@ -156,7 +148,7 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
     
     b. Azure portal からコピーした **ログイン URL** を **[IDENTITY PROVIDER HTTP SAML URL]\(ID プロバイダーの HTTP SAML URL\)** ボックスに貼り付けます。
     
-    c. **[変更を保存]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-envoy-test-user"></a>Envoy テスト ユーザーの作成
 

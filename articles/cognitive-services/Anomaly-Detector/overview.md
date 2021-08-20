@@ -12,14 +12,14 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 52ed294146edbd70f21af4f706ad68f3aa6662dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 30764913ae92670a9034f709f9bb3f50a309374f
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076818"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296885"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
+# <a name="what-is-the-anomaly-detector-univariate-api"></a>Anomaly Detector 一変量 API とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
@@ -99,7 +99,6 @@ Microsoft によって開発された SR-CNN アルゴリズムの詳細につ�
 ## <a name="join-the-anomaly-detector-community"></a>Anomaly Detector コミュニティに参加する
 
 * [Microsoft Teams 上の Anomaly Detector Advisors グループ](https://aka.ms/AdAdvisorsJoin)に参加する
-* [ユーザーが生成した厳選されたコンテンツ](user-generated-content.md)を見る
 
 ## <a name="next-steps"></a>次のステップ
 

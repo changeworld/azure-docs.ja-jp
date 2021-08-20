@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6241f6156b01c3c90f00578ae5416e4e77270930
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2263b27cd2f505bc76f02f24e17d54ec5f6475b2
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386800"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578849"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>チュートリアル:Google マップから Azure Maps に移行する
 
@@ -34,7 +34,7 @@ ms.locfileid: "100386800"
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps プラットフォームの概要
 
-Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 それらの機能には、Web およびモバイル アプリケーションに地理的コンテキストを提供するために、定期的に更新されるマップ データが搭載されています。 Azure Maps は、Azure One API に準拠した REST API のセットです。 REST API は、Maps のレンダリング、検索、ルート指定、トラフィック、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、天気、モビリティ、空間演算を提供します。 演算は、Web と Android の両方の SDK によって実現されているため、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
+Azure Maps は、あらゆる業界の開発者に強力な地理空間機能を提供します。 それらの機能には、Web およびモバイル アプリケーションに地理的コンテキストを提供するために、定期的に更新されるマップ データが搭載されています。 Azure Maps は、Azure One API に準拠した REST API のセットです。 REST API は、Maps のレンダリング、検索、ルート指定、トラフィック、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、天気、空間の演算を提供します。 演算は、Web と Android の両方の SDK によって実現されているため、開発が簡単になり、柔軟性が高く、複数のプラットフォーム間で移植性が確保されます。
 
 ## <a name="high-level-platform-comparison"></a>プラットフォームのおおまかな比較
 

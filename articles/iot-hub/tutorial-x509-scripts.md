@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 02/26/2021
+ms.date: 06/26/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: ff4b63f49a87dd9ca6b0ef458bdcf1c285a34a18
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 8170b6529ca38c54d3030514a79948678861f3bd
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378212"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214908"
 ---
 # <a name="tutorial-using-microsoft-supplied-scripts-to-create-test-certificates"></a>チュートリアル: Microsoft 提供のスクリプトを使用してテスト証明書を作成する
 
@@ -61,13 +61,15 @@ OpenSSL for Windows を入手します。 <https://www.openssl.org/docs/faq.html
 
 1. CA 証明書の表示名を入力します。
 
+1. 所有証明をスキップするには、 **[証明書の状態をアップロード時に確認済みに設定する]** の横にあるチェック ボックスをオンにします。
+
 1. CA 証明書をアップロードします。
 
 1. **[保存]** を選択します。
 
-### <a name="step-3---prove-possession"></a>手順 3 - 所有証明
+### <a name="optional-step-3---prove-possession"></a>(省略可能)  手順 3 - 所有証明
 
-CA 証明書を IoT ハブにアップロードしたので、その所有者が自分であることを証明する必要があります。
+アップロード中に証明書を自動検証する選択をしなかった場合は、手動で所有を証明します。
 
 1. 新しいルート CA 証明書を選択します。
 

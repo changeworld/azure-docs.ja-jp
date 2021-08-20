@@ -6,16 +6,16 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: d852cc082640c676b06efc4799f9a3b7211dcf2e
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: c4a8a58cde2e8fabe1dda374c8942607992c216c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591514"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762377"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>クイック スタート:Communication Services のリソースを作成して管理する
 
@@ -23,8 +23,7 @@ ms.locfileid: "111591514"
 
 
 > [!WARNING]
-> Communication Services は複数の地域で利用できますが、電話番号を取得するには、リソースのデータ一が 'US' に設定されている必要があります。 また、リソースの移動は現在サポートされていませんが、まもなく利用可能になることに注意してください。
-> Azure Communication Services のリソースと同時にリソース グループを作成できないことにも注意してください。 リソースを作成するときは、既に作成されているリソース グループを使用する必要があります。
+> Communication Services は複数の地域で利用できますが、電話番号を取得するには、リソースのデータ一が 'US' に設定されている必要があります。 Azure Communication Services のリソースと同時にリソース グループを作成できないことにも注意してください。 リソースを作成するときは、既に作成されているリソース グループを使用する必要があります。
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]

@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 05/05/2021
 ms.author: faneerde
-ms.openlocfilehash: edf0e4b8ddb3ca4361296856672fd92c92c40254
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9544a69da1c8ba0e3c2fd248a0bbbc7cbc13206f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387552"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593769"
 ---
 サンプル コードを実行するには、これらの手順に従います。
 
@@ -28,14 +28,16 @@ ms.locfileid: "110387552"
 1. `pipelineTopologySet` ノードで、次の値が表示されていることを確認します。
 
    ```
-   "topologyUrl" : "https://raw.githubusercontent.com/azure/azure-video-analyzer/main/pipelines/live/topologies/motion-detection/topology.json"
+   "pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/motion-detection/topology.json"
    ```
 
 1. `livePipelineSet` および `livePipelineDelete` のノードで、**topologyName** の値が、パイプライン トポロジの **name** プロパティの値と一致していることを確認します。
 
    `"topologyName" : "MotionDetection"`
 
-1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウに、いくつかのメッセージが表示されます。
+1. * VS Code で、`TERMINAL` ウィンドウに移動する
+   * cd コマンドを使用して /video-analyzer-iot-edge-python-main/src/cloud-to-device-console-app ディレクトリに移動します。
+   * "Python main.py" を実行すると、`TERMINAL` ウィンドウにメッセージが出力されます
 1. _operations.json_ ファイルは、`pipelineTopologyList` および `livePipelineList` の呼び出しから始まります。 前回のクイックスタートを終了した後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されます。
 
    ```

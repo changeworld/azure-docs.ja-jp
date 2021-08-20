@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - Azure IoT Central でオペレーター ダッシュボードをカスタマイズする
-description: このチュートリアルでは、IoT Central アプリケーションでオペレーター ダッシュボードをカスタマイズし、デバイスを管理する方法について説明します。
+title: チュートリアル - Azure IoT Central でダッシュボードをカスタマイズする
+description: このチュートリアルでは、IoT Central アプリケーションでダッシュボードをカスタマイズし、デバイスを管理する方法について説明します。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: cea5ed5d75bbba4e2e6cdc8793bf5ce7503a5912
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d8655251d22f82b6ff6171514cdd48506c5cc895
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755353"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585978"
 ---
-# <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でのオペレーター ダッシュボードのカスタマイズと、デバイスの管理
+# <a name="tutorial-customize-the-dashboard-and-manage-devices-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でのダッシュボードのカスタマイズと、デバイスの管理
 
 
-このチュートリアルでは、Azure IoT Central のストア内分析アプリケーションでオペレーター ダッシュボードをカスタマイズする方法について説明します。 アプリケーションのオペレーターは、カスタマイズされたダッシュボードを使用して、アプリケーションを実行し、接続されているデバイスを管理できます。
+このチュートリアルでは、Azure IoT Central のストア内分析アプリケーションでダッシュボードをカスタマイズする方法について説明します。 アプリケーションのオペレーターは、カスタマイズされたダッシュボードを使用して、アプリケーションを実行し、接続されているデバイスを管理できます。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -39,7 +39,7 @@ ms.locfileid: "108755353"
 * [Azure IoT Central でストア内分析アプリケーションを作成する](./tutorial-in-store-analytics-create-app.md) (必須)
 
 ## <a name="change-the-dashboard-name"></a>ダッシュボード名を変更する
-オペレーター ダッシュボードをカスタマイズするには、アプリケーションの既定のダッシュボードを編集する必要があります。 また、新しい追加のダッシュボードを作成することもできます。 アプリケーションでダッシュボードをカスタマイズするための最初の手順は、名前を変更することです。
+ダッシュボードをカスタマイズするには、アプリケーションの既定のダッシュボードを編集する必要があります。 また、新しい追加のダッシュボードを作成することもできます。 アプリケーションでダッシュボードをカスタマイズするための最初の手順は、名前を変更することです。
 
 1. [Azure IoT Central のアプリケーション マネージャー](https://aka.ms/iotcentral) Web サイトに移動します。
 
@@ -250,7 +250,7 @@ RuuviTag センサーの環境データを表示するためのタイルを追�
 
 [!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

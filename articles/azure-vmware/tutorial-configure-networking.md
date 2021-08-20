@@ -2,18 +2,20 @@
 title: チュートリアル - Azure で VMware プライベート クラウド用のネットワークを構成する
 description: Azure にプライベート クラウドをデプロイするために必要なネットワークを作成して構成する方法について説明します
 ms.topic: tutorial
-ms.custom: contperf-fy21q4
+ms.custom: contperf-fy22q1
 ms.date: 04/23/2021
-ms.openlocfilehash: 13f74c6120bd78127a2989218b3d535989bb7861
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 10326a07e5838dd5fe2264029c857f5ad49f5811
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945688"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442022"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>チュートリアル:Azure で VMware プライベート クラウド用のネットワークを構成する
 
 Azure VMware Solution プライベート クラウドには、Azure Virtual Network が必要です。 Azure VMware Solution ではオンプレミスの vCenter はサポートされていないため、オンプレミス環境と統合するための追加の手順が必要になります。 また、ExpressRoute 回線と仮想ネットワーク ゲートウェイの設定も必要です。
+
+[!INCLUDE [disk-pool-planning-note](includes/disk-pool-planning-note.md)]
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -46,7 +48,7 @@ Azure VMware Solution プライベート クラウドには、Azure Virtual Netw
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="[確認と作成] を選択します。" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="新しい仮想ネットワークの設定を示すスクリーンショット。" border="true":::
 
 1. 情報を確認し、 **[作成]** を選択します。 デプロイが完了すると、リソース グループに仮想ネットワークが表示されます。
 
@@ -74,7 +76,7 @@ Azure VMware Solution プライベート クラウドには、Azure Virtual Netw
    | **ゲートウェイ サブネットのアドレス範囲** | この値は、仮想ネットワークを選択したときに設定されます。 既定値を変更しないでください。 |
    | **パブリック IP アドレス** | **[新規作成]** を選択します。 |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="各フィールドに値を入力し、[確認と作成] を選択します。" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="仮想ネットワーク ゲートウェイの詳細を示すスクリーンショット。" border="true":::
 
 1. 詳細が正しいことを確認し、 **[作成]** を選択して仮想ネットワーク ゲートウェイのデプロイを開始します。 
 1. デプロイが完了したら、次のセクションに進み、ExpressRoute 回線を Azure VMware Solution プライベート クラウドを含む仮想ネットワーク ゲートウェイに接続します。
@@ -99,4 +101,4 @@ Azure VMware Solution プライベート クラウドには、Azure Virtual Netw
 次のチュートリアルに進み、vCenter の VM に使用される NSX-T ネットワーク セグメントを作成する方法を学習します。
 
 > [!div class="nextstepaction"]
-> [NSX-T ネットワーク セグメントの作成](tutorial-nsx-t-network-segment.md)
+> [NSX-T ネットワーク セグメントの作成](./tutorial-nsx-t-network-segment.md)

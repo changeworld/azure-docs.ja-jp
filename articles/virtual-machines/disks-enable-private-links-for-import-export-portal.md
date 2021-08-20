@@ -2,18 +2,18 @@
 title: Azure portal - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 description: Azure portal を使用して、マネージド ディスクのプライベート リンクを有効にします。 これにより、仮想ネットワーク内でディスクを安全にエクスポートおよびインポートできます。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b686eac137a0531befea6fe42c31112c46b18cc9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: af8b44cbd229fc2bdf28d2885356e219b3a8198a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028651"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114288320"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal からプライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 
@@ -60,13 +60,13 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="プライベート エンドポイント作成ワークフローの最初のブレードのスクリーンショット。適切なリージョンを選択しないと、後で問題が発生する可能性があります。":::
 
-1. **[リソース]** ブレードで、 **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。
+1. **[リソース]** ペインで、 **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。
 1. **[リソースの種類]** で、 **[Microsoft.Compute/diskAccesses]** を選択します
 1. **[リソース]** で、前の手順で作成したディスク アクセス リソースを選択します
 1. **[対象サブリソース]** は **[ディスク]** のままにします
 1. **次へ :構成 >** をクリックします。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 2 番目のブレードのスクリーンショット。すべての値が強調表示されています ([リソースの種類]、[リソース]、[対象サブリソース])":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 2 番目のペインのスクリーンショット。すべての値が強調表示されています ([リソースの種類]、[リソース]、[対象サブリソース])":::
 
 1. ディスクのエクスポートを制限する仮想ネットワークを選択します。他の仮想ネットワークではディスクをエクスポートできなくなります。
 
@@ -76,7 +76,7 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 1. 適切なサブネットを選択します
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 3 番目のブレードのスクリーンショット。仮想ネットワークとサブネットが強調されています。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 3 番目のペインのスクリーンショット。仮想ネットワークとサブネットが強調されています。":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>ディスク上でプライベート エンドポイントを有効にする
 
@@ -85,11 +85,13 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 1. **[Private endpoint (through disk access)]\(プライベート エンドポイント (ディスク アクセス経由)\)** を選択し、前の手順で作成したディスク アクセスを選択します。
 1. **[保存]** を選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="マネージド ディスクの [ネットワーク] ブレードのスクリーンショット。プライベート エンドポイントの選択と、選択したディスク アクセスが強調表示されています。これを保存すると、このアクセス用にディスクが構成されます。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="マネージド ディスクの [ネットワーク] ペインのスクリーンショット。プライベート エンドポイントの選択と、選択したディスク アクセスが強調表示されています。これを保存すると、このアクセス用にディスクが構成されます。":::
 
 これで、マネージド ディスクをインポートまたはエクスポートするときに使用できるプライベート リンクの構成が完了しました。
 
 ## <a name="next-steps"></a>次のステップ
 
+- VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - [Azure CLI](linux/disks-upload-vhd-to-managed-disk-cli.md) または [Azure PowerShell モジュール](windows/disks-upload-vhd-to-managed-disk-powershell.md)
+- VHD をダウンロードする- [Windows](windows/download-vhd.md) または [Linux](linux/download-vhd.md)
 - [プライベート リンクに関する FAQ](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

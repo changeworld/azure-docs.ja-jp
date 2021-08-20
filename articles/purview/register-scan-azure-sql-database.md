@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/08/2021
-ms.openlocfilehash: da265e1be47a7ee1a98f6e8169f2531110b5c772
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f4fa21c99a17111b1045b66713490b86592e04bf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756601"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467118"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -120,7 +120,14 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 
 ### <a name="firewall-settings"></a>ファイアウォールの設定
 
-データベース サーバーで Azure 接続の有効化を許可する必要があります。 これにより、Azure Purview はサーバーにアクセスして接続できるようになります。 [Azure 内からの接続](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)については、ハウツー ガイドに従ってください。
+データベース サーバーでファイアウォールを有効にしている場合は、次に示す 2 つの方法のいずれかでアクセスを許可するようにファイアウォールを更新する必要があります。
+
+1. ファイアウォールを介した Azure 接続を許可します。
+1. セルフホステッド統合ランタイムをインストールし、ファイアウォールを介したアクセスを許可します。
+
+#### <a name="allow-azure-connections"></a>Azure 接続を許可する
+
+Azure 接続を有効にすると、ファイアウォール自体を更新することなく、Azure Purview がサーバーに到達して接続できるようになります。 [Azure 内からの接続](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)については、ハウツー ガイドに従ってください。
 
 1. データベース アカウントに移動します
 1. **[概要]** ページでサーバー名を選択します
@@ -128,9 +135,14 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で **[はい]** を選択します
 
     :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="Azure サービスおよびリソースにこのサーバーへのアクセスを許可します。" border="true":::
-    
-> [!Note]
-> 現在、Azure Purview では VNET 構成はサポートされていません。 そのため、IP ベースのファイアウォール設定を行うことはできません。
+
+#### <a name="self-hosted-integration-runtime"></a>セルフホステッド統合ランタイム
+
+セルフホステッド統合ランタイム (SHIR) をマシンにインストールすると、プライベート ネットワーク内のリソースと接続できるようになります。
+
+1. 個人用マシンまたはデータベース サーバーと同じ VNet 内のマシンに[セルフホステッド統合ランタイムを作成してインストールします](/azure/purview/manage-integration-runtimes)。
+1. データベース サーバーのファイアウォールを確認し、SHIR マシンからファイアウォールを介してアクセスできることを確認します。 まだアクセスできない場合は、マシンの IP を追加します。
+1. Azure SQL Server がプライベート エンドポイントの背後にある場合や VNet 内にある場合は、[インジェスト プライベート エンドポイント](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources)を使用して、エンドツーエンドのネットワーク分離を確保することができます。
 
 ## <a name="register-an-azure-sql-database-data-source"></a>Azure SQL Database データ ソースの登録
 

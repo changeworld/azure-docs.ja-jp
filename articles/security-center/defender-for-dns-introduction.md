@@ -3,16 +3,16 @@ title: Azure Defender for DNS - 利点と機能
 description: Azure Defender for DNS の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 05/12/2021
+ms.date: 07/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 321488297c4307260e96b047a3dbe44a0b8399bc
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 48306c8ec46274bc123ada4f7c8f748a230edf30
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846502"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690836"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>Azure Defender for DNS の概要
 
@@ -29,7 +29,7 @@ Azure Defender for DNS により、次の方法によって Azure DNS に接続�
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for DNS** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure Government|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>Azure Defender for DNS の利点

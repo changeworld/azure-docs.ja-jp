@@ -4,53 +4,78 @@ description: この記事では、Azure Arc に接続されている Kubernetes 
 author: jfggdl
 ms.subservice: kubernetes
 ms.author: jafernan
-ms.date: 05/25/2021
+ms.date: 06/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: d29583cecb1498c10320a844923067a48693480a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 5060d8e3022d98c31d11ea570555b7c5bba3d062
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030307"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415644"
 ---
 # <a name="route-cloud-events-to-webhooks-with-azure-event-grid-on-kubernetes"></a>Kubernetes 上の Azure Event Grid でクラウド イベントを Webhook にルーティングする
 このクイックスタートでは、Kubernetes 上の Event Grid でトピックを作成し、トピックのサブスクリプションを作成し、サンプル イベントをトピックに送信してシナリオをテストします。 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="prerequisites"></a>前提条件
 
 1. [Kubernetes クラスターを Azure Arc に接続する](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。
 1. [Kubernetes クラスターに Event Grid 拡張機能をインストールする](install-k8s-extension.md)。 この拡張機能によって、Event Grid を Kubernetes クラスターにデプロイします。 
-1. [カスタムの場所を作成する](../../azure-arc/kubernetes/custom-locations.md)。 カスタムの場所はクラスター内の名前空間を表し、トピックとイベント サブスクリプションをデプロイする場所となります。
+
+
+## <a name="create-a-custom-location"></a>カスタムの場所を作成する
+Azure の場所の拡張としてカスタムの場所を使用すると、Event Grid トピックのようなリソースをデプロイするターゲットの場所として、Azure Arc 対応 Kubernetes クラスターを使用できます。 カスタムの場所はクラスター内の名前空間を表し、トピックとイベント サブスクリプションをデプロイする場所となります。 このセクションでは、カスタムの場所を作成します。 
+
+1. Azure Arc クラスター、リソース グループ、カスタムの場所の名前の値を保持するため、次の変数を宣言します。 これらのステートメントをエディターにコピーし、値を置き換え、コピーして bash ウィンドウに貼り付けます。  
+
+    ```azurecli-interactive
+    resourcegroupname="<AZURE RESOURCE GROUP NAME>"
+    arcclustername="<AZURE ARC CLUSTER NAME>"
+    customlocationname="<CUSTOM LOCATION NAME>"
+    ```
+1. Azure Arc に接続されたクラスターのリソース ID を取得します。 コマンドを実行する前に、Azure Arc クラスターの名前とリソース グループ パラメーターの値を更新します。 
+
+    ```azurecli-interactive
+    hostresourceid=$(az connectedk8s show -n $arcclustername -g $resourcegroupname --query id -o tsv)    
+    ```
+1. Event Grid 拡張機能のリソース ID を取得します。 このステップでは、Event Grid 拡張機能に指定した名前が **eventgrid-ext** であるものとします。Azure Arc クラスターとリソース グループの名前を更新してから、コマンドを実行します。 
+
+    ```azurecli-interactive
+    clusterextensionid=$(az k8s-extension show --name eventgrid-ext --cluster-type connectedClusters -c $arcclustername -g $resourcegroupname  --query id -o tsv)    
+    ```
+1. 上の 2 つの値を使用して、カスタムの場所を作成します。 コマンドを実行する前に、カスタムの場所とリソース グループの名前を更新します。 
+
+    ```azurecli-interactive
+    az customlocation create -n $customlocationname -g $resourcegroupname --namespace arc --host-resource-id $hostresourceid --cluster-extension-ids $clusterextensionid    
+    ```
+1. カスタムの場所のリソース ID を取得します。 コマンドを実行する前に、カスタムの場所の名前を更新します。 
+
+    ```azurecli-interactive
+    customlocationid=$(az customlocation show -n $customlocationname -g $resourcegroupname --query id -o tsv)    
+    ```
+
+    カスタムの場所の作成の詳細については、「[Azure Arc 対応 Kubernetes にカスタムの場所を作成および管理する](../../azure-arc/kubernetes/custom-locations.md)」を参照してください。 
 
 ## <a name="create-a-topic"></a>トピックを作成する
+このセクションでは、前のステップで作成したカスタムの場所にトピックを作成します。 リソース グループとイベント グリッド トピックの名前を更新してから、コマンドを実行します。 米国東部以外の場所を使用している場合は、場所を更新します。 
 
-### <a name="azure-cli"></a>Azure CLI
-次の Azure CLI コマンドを実行して、トピックを作成します。
+1. トピック名を保持するための変数を宣言します。 
 
-```azurecli-interactive
-az eventgrid topic create --name <EVENT GRID TOPIC NAME> \
-                        --resource-group <RESOURCE GROUP NAME> \
-                        --location <REGION> \
-                        --kind azurearc \
-                        --extended-location-name /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.ExtendedLocation/customLocations/<CUSTOM LOCATION NAME> \
-                        --extended-location-type customlocation \
-                        --input-schema CloudEventSchemaV1_0
-```
-コマンドを実行する前に、プレースホルダーの値を指定します。
-- Event Grid トピックを作成する必要がある Azure リソース グループの名前。 
-- トピックの名前。 
-- トピックのリージョン。
-- カスタムの場所のリソース ID で、次の値を指定します。
-    - カスタムの場所が存在する Azure サブスクリプションの ID。
-    - カスタムの場所が含まれているリソース グループの名前。
-    - カスタムの場所の名前
+    ```azurecli-interactive
+    topicname="<TOPIC NAME>"
+    ```
+4. 次のコマンドを実行して、トピックを作成します。 
 
-CLI コマンドの詳細については、「[`az eventgrid topic create`](/cli/azure/eventgrid/topic#az_eventgrid_topic_create)」を参照してください。
+    ```azurecli-interactive
+    az eventgrid topic create -g $resourcegroupname --name $topicname --kind azurearc --extended-location-name $customlocationid --extended-location-type customlocation --input-schema CloudEventSchemaV1_0 --location $region    
+    ```
+
+    CLI コマンドの詳細については、「[`az eventgrid topic create`](/cli/azure/eventgrid/topic#az_eventgrid_topic_create)」を参照してください。
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
+
 カスタム トピックのサブスクリプションを作成する前に、イベント メッセージのエンドポイントを作成します。 通常、エンドポイントは、イベント データに基づくアクションを実行します。 このクイック スタートを簡素化するために、イベント メッセージを表示する[構築済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をデプロしします。 デプロイされたソリューションには、App Service プラン、App Service Web アプリ、および GitHub からのソース コードが含まれています。
 
 1. この記事ページで **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションを自分のサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
@@ -66,38 +91,26 @@ CLI コマンドの詳細については、「[`az eventgrid topic create`](/cli
 ## <a name="create-a-subscription"></a>サブスクリプションの作成
 サブスクライバーは、トピックに発行されたイベントの受信登録ができます。 イベントを受信するには、関心のあるトピックの Event Grid サブスクリプションを作成する必要があります。 イベント サブスクリプションでは、これらのイベントが送信される宛先を定義します。 サポートされているすべての宛先またはハンドラーの詳細については、「[イベント ハンドラー](event-handlers.md)」を参照してください。
 
-
-### <a name="azure-cli"></a>Azure CLI
-WebHook (HTTPS エンドポイント) の宛先を持つイベント サブスクリプションを作成するには、次の Azure CLI コマンドを実行します。
+WebHook (HTTPS エンドポイント) の宛先を使用してイベント サブスクリプションを作成するには、イベント サブスクリプションの名前を入力し、Web サイトの名前を更新して、次のコマンドを実行します。
 
 ```azurecli-interactive
-az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> \
-                                    --source-resource-id /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<TOPIC'S RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<TOPIC NAme> \
-                                    --endpoint https://<SITE NAME>.azurewebsites.net/api/updates
+topicid=$(az eventgrid topic show --name $topicname --resource-group $resourcegroupname --query id -o tsv)
+az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> --source-resource-id $topicid --endpoint https://<SITE NAME>.azurewebsites.net/api/updates
 ```
 
-コマンドを実行する前に、プレースホルダーの値を指定します。
-- 作成されるイベント サブスクリプションの名前。 
 
-- **トピックのリソース ID** で、次の値を指定します。
-    - サブスクリプションを作成する Azure サブスクリプションの ID。 
-    - トピックが含まれているリソース グループの名前。
-    - トピックの名前。 
-- エンドポイントには、Event Grid ビューアーの Web サイトの名前を指定します。
-    
 CLI コマンドの詳細については、「[`az eventgrid event-subscription create`](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create)」を参照してください。
-
 
 ## <a name="send-events-to-the-topic"></a>トピックにイベントを送信する
 1. 次のコマンドを実行して、トピックの **エンドポイント** を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に **トピック名** と **リソース グループ名** を更新してください。 このトピック エンドポイントにサンプル イベントを発行します。 
 
     ```azurecli
-    az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv
+    az eventgrid topic show --name $topicname -g $resourcegroupname --query "endpoint" --output tsv
     ```
 2. 次のコマンドを実行して、カスタム トピックの **キー** を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に **トピック名** と **リソース グループ** 名を更新してください。 これはトピックの主キーです。 このキーを Azure portal から取得するには、 **[Event Grid トピック]** ページの **[アクセス キー]** タブに切り替えます。 カスタム トピックにイベントを投稿できるようにするには、アクセス キーが必要です。 
 
     ```azurecli
-    az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv
+    az eventgrid topic key list --name $topicname -g $resourcegroupname --query "key1" --output tsv
     ```
 1. 次の **Curl** コマンドを実行して、イベントを送信します。 コマンドを実行する前に、手順 1 および 2 で指定したエンドポイントの URL とキーを指定します。 
 
@@ -125,24 +138,15 @@ CLI コマンドの詳細については、「[`az eventgrid event-subscription 
     
         ```yml
         apiVersion: v1
-        dnsPolicy: ClusterFirstWithHostNet
-        hostNetwork: true
         kind: Pod
-        metadata: 
-          name: test-pod
-        spec: 
-          containers: 
-            - 
-              name: nginx
-          emptyDir: {}
-          image: nginx
-          volumeMounts: 
-            - 
-              mountPath: /usr/share/nginx/html
-              name: shared-data
-          volumes: 
-            - 
-              name: shared-data  
+        metadata:
+            name: test-pod2
+        spec:
+            containers:
+              - name: nginx
+                image: nginx
+            hostNetwork: true
+            dnsPolicy: ClusterFirstWithHostNet       
         ```
     1. ポッドを作成します。
         ```bash

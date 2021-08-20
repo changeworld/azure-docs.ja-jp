@@ -1,18 +1,18 @@
 ---
 title: Azure Migrate の検出および評価を使用して VMware 環境で実行されているサーバーを検出する
 description: Azure Migrate の検出および評価ツールを使用して、VMware 環境のオンプレミス サーバー、アプリケーション、依存関係を検出する方法について説明します。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 42140e61146d8682d193f89b2a691b8a13260533
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: d2b71b227500644a63eb116493abeba7576eb7eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803699"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464945"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate の検出および評価を使用して VMware 環境で実行されているサーバーを検出する
 
@@ -302,22 +302,20 @@ OVA ファイルをデプロイする前に、ファイルが安全であるこ�
 
 ### <a name="start-discovery"></a>検出を開始する
 
-vCenter Server の検出を開始するには、 **[Step 3: Provide server credentials to perform software inventory, agentless dependency analysis and discovery of SQL Server instances and databases]\(手順 3: サーバーの資格情報を指定して、ソフトウェア インベントリ、エージェントレスの依存関係分析、SQL Server インスタンスおよびデータベースの検出を実行する\)** で、 **[検出の開始]** を選択します。 検出が正常に開始されると、ソース テーブルの vCenter Server IP アドレスまたは FQDN を見て、検出状態を確認できます。
-
-> [!NOTE]
-> [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) プロパティが `true` に設定されていると、Azure Migrate アプライアンスとソース SQL Server インスタンスの間の通信が Azure Migrate によって暗号化されます。 トランスポート層で SSL を使用してチャネルを暗号化し、証明書チェーンによる信頼性の検証をバイパスします。 アプライアンス サーバーは、[証明書のルート証明機関を信頼](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)するように設定する必要があります。
->
-> 起動時に証明書がサーバーにプロビジョニングされていない場合は、ログイン パケットを暗号化するために使用される自己署名証明書が SQL Server によって生成されます。 [詳細については、こちらを参照してください](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
->
+vCenter Server の検出を開始するには、 **[検出の開始]** を選択します。 検出が正常に開始された後、ソース テーブルで vCenter Server の IP アドレスまたは FQDN を見て検出状態を確認できます。
 
 ## <a name="how-discovery-works"></a>検出のしくみ
 
 * 検出されたサーバーのインベントリが Azure portal に表示されるには、約 15 分かかります。
 * サーバーの資格情報を指定してある場合、vCenter Server を実行しているサーバーの検出が完了したときに、ソフトウェア インベントリ (インストールされているアプリケーションの検出) は自動的に開始されます。 ソフトウェア インベントリは、12 時間ごとに実行されます。
 * [ソフトウェア インベントリ](how-to-discover-applications.md)では、サーバー上で実行されている SQL Server インスタンスを特定します。 そこで収集された情報を使用し、アプライアンスで指定された Windows 認証資格情報または SQL Server 認証資格情報を介して、アプライアンスから SQL Server インスタンスへの接続が試行されます。 次に、SQL Server データベースとそのプロパティに関するデータが収集されます。 SQL Server の検出は 24 時間ごとに実行されます。
+* アプライアンスは、ネットワークの見通しがある SQL Server インスタンスのみに接続できますが、ソフトウェア インベントリ単体ではネットワークの見通しが必要ない場合があります。
 * インストールされているアプリケーションの検出には、15 分以上かかることがあります。 期間は検出されたサーバーの数によって異なります。 500 台のサーバーでは、検出されたインベントリがポータルの Azure Migrate プロジェクトに表示されるまで約 1 時間かかります。
-* ソフトウェア インベントリの間、エージェントレスの依存関係分析のために、追加されたサーバー資格情報がサーバーに対して繰り返され、検証されます。 サーバーの検出が完了すると、ポータルでサーバーに対するエージェントレスの依存関係分析を有効にできます。 エージェントレスの依存関係分析を有効にするよう選択できるのは、検証が成功したサーバーだけです。
+* ソフトウェア インベントリの間、エージェントレスの依存関係分析のために、追加されたサーバー資格情報がサーバーに対して繰り返され、検証されます。 サーバーの検出が完了すると、ポータルでサーバーに対するエージェントレスの依存関係分析を有効にできます。 [エージェントレスの依存関係分析](how-to-create-group-machine-dependencies-agentless.md)を有効にするように選択できるのは、検証が成功したサーバーだけです。
 * 検出の開始後 24 時間以内に、SQL Server インスタンスおよびデータベースのデータがポータルに表示され始めます。
+* Azure Migrate の既定では、SQL インスタンスに接続する最も安全な方法が使用されます。つまり、Azure Migrate により、TrustServerCertificate プロパティが `true` に設定され、Azure Migrate アプライアンスとソース SQL Server インスタンス間の通信が暗号化されます。 さらに、トランスポート層で SSL を使用してチャネルが暗号化され、証明書チェーンによる信頼性の検証がバイパスされます。 そのため、証明書のルート証明機関を信頼するようにアプライアンス サーバーを設定する必要があります。 ただし、アプライアンス上で **[Edit SQL Server connection properties]\(SQL Server の接続プロパティの編集\)** を選択して、接続設定を変更することができます。何を選択すべきかについては、[詳細](https://go.microsoft.com/fwlink/?linkid=2158046)のページを参照してください。
+
+    :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="SQL Server の接続プロパティを編集する方法を示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次の手順
 

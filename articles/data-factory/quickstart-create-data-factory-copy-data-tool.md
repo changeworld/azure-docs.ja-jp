@@ -5,13 +5,13 @@ author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 06/04/2021
-ms.openlocfilehash: d78b915fc9efffd52f31b75edcb35d91fb529e4a
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.date: 07/05/2021
+ms.openlocfilehash: 75b33003a62bd9a686ab8e0f2a8934333a4430ff
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113219791"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436984"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>クイック スタート:データのコピー ツールを使用してデータをコピーする
 
@@ -55,9 +55,9 @@ ms.locfileid: "113219791"
 
 1. **［作成］** を選択します
 
-1. 作成が完了すると、 **[Data Factory]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
+1. 作成が完了すると、 **[Data Factory]** ページが表示されます。 **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
     
 ## <a name="start-the-copy-data-tool"></a>データのコピー ツールの起動
 

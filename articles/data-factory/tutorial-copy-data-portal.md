@@ -5,14 +5,14 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: aa8ccdde19dadeb1864037ed13082e42a27b8f59
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 766572462c2596856258f2f154845b940c6b5c1c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483319"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436804"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から Azure SQL Database のデータベースにデータをコピーする
 
@@ -96,7 +96,7 @@ ms.locfileid: "109483319"
 8. 上部にある **[Git configuration]\(Git 構成\)** タブを選択し、 **[Configure Git later]\(後で Git を構成する\)** チェック ボックスをオンにします。
 9. **[確認と作成]** を選択し、検証に成功したら **[作成]** を選択します。
 10. 作成が完了すると、その旨が通知センターに表示されます。 **[リソースに移動]** を選択して、Data factory ページに移動します。
-11. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Azure Data Factory (UI) を起動します。
+11. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Azure Data Factory UI を起動します。
 
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
@@ -108,9 +108,9 @@ ms.locfileid: "109483319"
 
 このチュートリアルでは、最初にパイプラインを作成します。 その後、パイプラインの構成に必要な場合にリンクされたサービスとデータセットを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. ホーム ページで **[Orchestrate]\(調整\)** を選択します。
 
-   ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
+   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. [全般] パネルの **[プロパティ]** の下で、 **[名前]** に **CopyPipeline** を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 

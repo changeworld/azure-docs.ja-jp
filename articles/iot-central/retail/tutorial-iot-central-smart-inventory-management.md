@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 3dbb6ca64451cb60d5a8ec67ecdc528865a4438c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff3486ae1ff34485dbae47d33d089367515664f8
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719085"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964304"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>チュートリアル:スマート インベントリの管理アプリケーション テンプレートをデプロイして調べる
 
@@ -57,7 +57,7 @@ ms.locfileid: "101719085"
 ダッシュボードは、2 つの異なるゲートウェイ デバイス管理操作に論理的に分割されています。 
    * 倉庫については、大きな施設のインベントリを追跡およびトレースするために、固定の BLE ゲートウェイと BLE タグがパレットにデプロイされています
    * 小売店については、店舗の在庫を追跡およびトレースするために、個々のアイテム レベルで固定の RFID ゲートウェイと RFID タグが実装されています
-   * ゲートウェイの場所、状態、関連する詳細を表示します 
+   * ゲートウェイの[場所](../core/howto-use-location-data.md)、状態、関連する詳細を表示します 
 
 > [!div class="mx-imgBorder"]
 > ![スマート インベントリの管理ダッシュボード (上半分) のスクリーンショット](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)

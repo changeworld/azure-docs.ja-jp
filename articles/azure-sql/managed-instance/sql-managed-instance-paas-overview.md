@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: mathoma, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: c0d199678aefbf2aa08f8fcbcb27376762dd39b5
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6f47e9d43008f004bc529b0a3251bf252e0039b9
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707272"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690794"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL Managed Instance とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -155,7 +155,7 @@ Azure SQL Managed Instance は、データを保護するために使用でき�
 - [行レベルセキュリティ](/sql/relational-databases/security/row-level-security) (RLS) を使用して、クエリを実行しているユーザーの特性 (グループのメンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 RLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 RLS を使用すると、データ行のアクセスに対して制限を実装できます。 たとえば、ワーカーが自分の部署に関連するデータ行にのみアクセスできるようにしたり、データ アクセスを関連するデータにのみ制限したりできます。
 - [透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) では、SQL Managed Instance のデータ ファイルが暗号化されます。これは、保存データの暗号化として知られています。 TDE は、データとログ ファイルの I/O 暗号化と複合化をリアルタイムで実行します。 暗号化は、復旧中に、可用性のためのデータベース ブート レコードに格納されるデータベース暗号化キー (DEK) を使用します。 透過的なデータ暗号化でマネージド インスタンス内のすべてのデータベースを保護することができます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で要求されている、SQL Server での実証済みの保存データ暗号化テクノロジです。
 
-暗号化されたデータベースの SQL Managed Instance への移行は、Azure Database Migration Service またはネイティブの復元によってサポートされています。 暗号化されたデータベースをネイティブの復元を使用して移行する予定がある場合は、既存の TDE 証明書を SQL Server インスタンスから SQL Managed Instance に移行する手順が必要です。 移行オプションについて詳しくは、[SQL Managed Instance への SQL Server の移行](migrate-to-instance-from-sql-server.md)に関する記事をご覧ください。
+暗号化されたデータベースの SQL Managed Instance への移行は、Azure Database Migration Service またはネイティブの復元によってサポートされています。 暗号化されたデータベースをネイティブの復元を使用して移行する予定がある場合は、既存の TDE 証明書を SQL Server インスタンスから SQL Managed Instance に移行する手順が必要です。 移行オプションの詳細については、[SQL Server から SQL Managed Instance へのガイド](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)に関する記事を参照してください。
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory の統合
 

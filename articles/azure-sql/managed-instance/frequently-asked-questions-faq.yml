@@ -13,12 +13,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: urmilano, danil, nnikolic
   ms.date: 09/21/2020
-  ms.openlocfilehash: 92aa04c2df2b23165afdef39ae39ee95922f19d2
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: 9e908764ce860c045403048623d0a50b7b5d738b
+  ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114295111"
+  ms.lasthandoff: 07/26/2021
+  ms.locfileid: "114690280"
 title: Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 summary: >
   [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ sections:
     answer: "### <a name=\"can-a-managed-instance-have-the-same-name-as-a-sql-server-on-premises-instance\"></a>マネージド インスタンスに SQL Server のオンプレミス インスタンスと同じ名前を付けることはできますか?\n\nマネージド インスタンス名の変更はサポートされていません。\n\n### <a name=\"can-i-change-dns-zone-prefix\"></a>DNS ゾーンのプレフィックスは変更できますか?\n\nはい。Managed Instance の既定の DNS ゾーン *.database.windows.net* は変更できます。 \n\n既定値の代わりに別の DNS ゾーン、たとえば *.contoso.com* などを使用するには、次のようにします。 \n- CliConfig を使用して別名を定義する。 このツールは単なるレジストリ設定ラッパーなので、グループ ポリシーやスクリプトを使用して行うことも可能です。\n- *TrustServerCertificate=true* オプションを指定した *CNAME* を使用する。\n"
   - question: >
       移行オプション
-    answer: "### <a name=\"how-can-i-migrate-from-azure-sql-database-single-or-elastic-pool-to-sql-managed-instance\"></a>Azure SQL Database の単体またはエラスティック プールから SQL Managed Instance に移行するには、どうすればよいですか?\n\nマネージド インスタンスで提供されるコンピューティングおよびストレージ サイズあたりのパフォーマンス レベルは、Azure SQL Database の他のデプロイ オプションと同じです。 単一インスタンスでデータを統合する場合または単にマネージド インスタンスでのみサポートされている機能が必要な場合は、エクスポートおよびインポート (BACPAC) 機能を使用してデータを移行できます。 SQL Database の SQL Managed Instance への移行に関して検討可能な他の方法を、次に示します。 \n- [Data Source External](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210) を使用する\n- [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) を使用する\n- [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) を使用する\n\n### <a name=\"how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database\"></a>インスタンス データベースを単一の Azure SQL データベースに移行するには、どうすればよいですか?\n\n1 つの方法として、[データベースを BACPAC にエクスポート](../database/database-export.md)し、その [BACPAC ファイルをインポート](../database/database-import.md)します。 データベースが 100 GB 未満の場合は、これが推奨される方法です。\n\nデータベース内のすべてのテーブルに *主* キーがあり、データベース内にインメモリ OLTP オブジェクトが一切ない場合は、[トランザクション レプリケーション](replication-two-instances-and-sql-server-configure-tutorial.md)を使用できます。\n\nマネージド インスタンスから取得したネイティブの COPY_ONLY バックアップを SQL Server に復元することはできません。マネージド インスタンスには、SQL Server と比較して新しいバージョンのデータベースがあるためです。 詳細については、「[コピーのみのバックアップ](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)」を参照してください。\n\n### <a name=\"how-can-i-migrate-my-sql-server-instance-to-sql-managed-instance\"></a>自分の SQL Server インスタンスを SQL Managed Instance に移行するには、どうすればよいですか?\n\nSQL Server インスタンスを移行するには、「[Azure SQL Managed Instance への SQL Server インスタンスの移行](migrate-to-instance-from-sql-server.md)」を参照してください。\n\n### <a name=\"how-can-i-migrate-from-other-platforms-to-sql-managed-instance\"></a>他のプラットフォームから SQL Managed Instance に移行するには、どうすればよいですか?\n\n他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。\n"
+    answer: "### <a name=\"how-can-i-migrate-from-azure-sql-database-single-or-elastic-pool-to-sql-managed-instance\"></a>Azure SQL Database の単体またはエラスティック プールから SQL Managed Instance に移行するには、どうすればよいですか?\n\nマネージド インスタンスで提供されるコンピューティングおよびストレージ サイズあたりのパフォーマンス レベルは、Azure SQL Database の他のデプロイ オプションと同じです。 単一インスタンスでデータを統合する場合または単にマネージド インスタンスでのみサポートされている機能が必要な場合は、エクスポートおよびインポート (BACPAC) 機能を使用してデータを移行できます。 SQL Database の SQL Managed Instance への移行に関して検討可能な他の方法を、次に示します。 \n- [Data Source External](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210) を使用する\n- [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) を使用する\n- [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) を使用する\n\n### <a name=\"how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database\"></a>インスタンス データベースを単一の Azure SQL データベースに移行するには、どうすればよいですか?\n\n1 つの方法として、[データベースを BACPAC にエクスポート](../database/database-export.md)し、その [BACPAC ファイルをインポート](../database/database-import.md)します。 データベースが 100 GB 未満の場合は、これが推奨される方法です。\n\nデータベース内のすべてのテーブルに *主* キーがあり、データベース内にインメモリ OLTP オブジェクトが一切ない場合は、[トランザクション レプリケーション](replication-two-instances-and-sql-server-configure-tutorial.md)を使用できます。\n\nマネージド インスタンスから取得したネイティブの COPY_ONLY バックアップを SQL Server に復元することはできません。マネージド インスタンスには、SQL Server と比較して新しいバージョンのデータベースがあるためです。 詳細については、「[コピーのみのバックアップ](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)」を参照してください。\n\n### <a name=\"how-can-i-migrate-my-sql-server-instance-to-sql-managed-instance\"></a>自分の SQL Server インスタンスを SQL Managed Instance に移行するには、どうすればよいですか?\n\nSQL Server インスタンスを移行するには、[SQL Server から Azure SQL Managed Instance へのガイド](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)に関する記事を参照してください。\n\n### <a name=\"how-can-i-migrate-from-other-platforms-to-sql-managed-instance\"></a>他のプラットフォームから SQL Managed Instance に移行するには、どうすればよいですか?\n\n他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。\n"
   - question: "ハードウェアの世代の切り替え \n"
     answer: >
       ### <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>マネージド インスタンスのハードウェアの世代 Gen 4 と Gen 5 をオンラインで切り替えることはできますか?
@@ -176,7 +176,7 @@ sections:
       ### <a name="is-native-restore-from-bak-files-to-managed-instance-supported"></a>Managed Instance への (.bak ファイルからの) ネイティブ復元はサポートされていますか?
 
 
-      はい。SQL Server 2005 以降のバージョンでサポートされており、使用可能です。  ネイティブ復元を使用するには、.bak ファイルを Azure Blob Storage にアップロードし、T-SQL コマンドを実行します。 詳細については、「[URL からのネイティブ復元](./migrate-to-instance-from-sql-server.md#native-restore-from-url)」を参照してください。
+      はい。SQL Server 2005 以降のバージョンでサポートされており、使用可能です。  ネイティブ復元を使用するには、.bak ファイルを Azure Blob Storage にアップロードし、T-SQL コマンドを実行します。 詳細については、「[URL からのネイティブ復元](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)」を参照してください。
   - question: >
       ビジネス継続性
     answer: >

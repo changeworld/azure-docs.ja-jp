@@ -6,15 +6,15 @@ author: nmurav
 manager: nmurav
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 038b4df78ca7f10b0ec0e9dfe224f6aca2430e82
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: ba47fd528882e1d7de45470f00316c57b966ddb5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986302"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762875"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
@@ -26,7 +26,7 @@ Azure Communication Services を使用すると、音声またはビデオによ
 
 ### <a name="pricing"></a>価格
 
-通話および画面共有のサービスは、グループ通話に対して参加者あたり $0.004/分で、参加者ごとに分単位で課金されます。 可能な各種の呼び出しフローを理解するには、[こちらのページ](./call-flows.md)を参照してください。
+通話および画面共有のサービスは、グループ通話に対して参加者あたり $0.004/分で、参加者ごとに分単位で課金されます。 Azure Communication Services では、データ エグレスに対して課金されません。 可能な各種の呼び出しフローを理解するには、[こちらのページ](./call-flows.md)を参照してください。
 
 通話の各参加者は、通話に接続されている 1 分ごとに課金されます。 これは、ユーザーがビデオ通話、音声通話、画面共有のいずれを行っているかに関係なく当てはまります。
 
@@ -58,12 +58,31 @@ Alice は、Bob の `+1-425` で始まる米国の電話番号に対し、アプ
 - アプリから Communication Services サーバーへの VoIP レッグの参加者 1 名 (Alice) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04
 - Communication Services サーバーから米国の電話番号への PSTN 発信レッグの参加者 1 名 (Bob) x 10 分 x $0.013 (1 参加者レッグ、1 分あたり) = $0.13
 
-注: `+1-425` に対する米国の混合料金は $0.013 です。 詳細については、 https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) のリンクを参照してください。
+> [!Note]
+> `+1-425` に対する米国の混合料金は $0.013 です。 詳細については、 https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) のリンクを参照してください。
+
 
 **通話の総コスト**: $0.04 + $0.13 = $0.17
 
+### <a name="pricing-example-outbound-call-from-app-using-js-sdk-via-azure-communication-services-direct-routing"></a>価格の例: Azure Communication Services のダイレクト ルーティングを使用したアプリからの送信呼び出し (JS SDK)
 
-### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>価格の例: JS SDK と 1 PSTN レッグを使用してグループ音声通話を行う
+Alice は、Azure Communication Services のダイレクト ルーティングを使用して、Azure Communication Services アプリから電話番号 (Bob) への送信呼び出しを行います。
+- Alice は JS SDK を使用してアプリを作成しました。
+- 呼び出しは、Communication Services のダイレクト ルーティングを介して接続されたセッション境界コントローラー (SBC) に移動します。
+- この通話は合計 10 分間続きます。 
+
+**コストの計算**
+
+- アプリから Communication Services サーバーへの VoIP レッグの参加者 1 名 (Alice) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04
+- Communication Services サーバーから SBC への Communication Services ダイレクト ルーティング発信レッグの参加者 1 名 (Bob) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04。
+
+**通話の総コスト**: $0.04 + $0.04 = $0.08
+
+> [!Note]
+> Azure Communication Services のダイレクト ルーティング区間は、2021 年 8 月 1 日まで課金されません。
+
+
+### <a name="pricing-example-group-audio-call-using-js-sdk-and-one-pstn-leg"></a>価格の例: JS SDK と 1 PSTN レッグを使用してグループ音声通話を行う
 
 Alice と Bob は VOIP 通話を行っています。 Bob は、Charlie の PSTN 番号 (`+1-425` で始まる米国の電話番号) で、通話を Charlie にエスカレートしました。
 

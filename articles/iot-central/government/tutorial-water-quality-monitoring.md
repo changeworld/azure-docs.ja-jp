@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: bdebe0d29f6ef781cc4b4747ff80010eeac9ff7e
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: fdab861cc122fe738cce4da049154ecb4039ca65
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684255"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588977"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central で水質のモニタリング アプリケーションを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "109684255"
 
 > [!div class="checklist"]
 > * **水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションを作成します。
-> * オペレーター ダッシュボードを探索およびカスタマイズします。
+> * ダッシュボードを調べてカスタマイズします。
 > * 水質のモニタリング デバイス テンプレートを探索します。
 > * シミュレートされたデバイスを探索します。
 > * ルールを探索して構成します。
@@ -48,7 +48,7 @@ ms.locfileid: "109684255"
 
     ![政府機関のアプリケーション テンプレート](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
-1. **[Water quality monitoring]\(水質のモニタリング\)** アプリケーション テンプレートを選択します。 このアプリケーション テンプレートには、水質モニタリング デバイス テンプレート、シミュレートされたデバイス、オペレーター ダッシュボード、事前構成済みのモニタリング ルールが含まれています。
+1. **[Water quality monitoring]\(水質のモニタリング\)** アプリケーション テンプレートを選択します。 このアプリケーション テンプレートには、水質モニタリング デバイス テンプレート、シミュレートされたデバイス、ダッシュボード、事前構成済みのモニタリング ルールが含まれています。
 
 1. **[Create app]\(アプリの作成\)** を選択します。 **[新規アプリケーション]** ペインが開き、次の要素が表示されます。
 
@@ -66,7 +66,7 @@ ms.locfileid: "109684255"
 
 新しいアプリケーションには、次の構成済みコンポーネントが用意されています。
 
-* オペレーター ダッシュボード
+* ダッシュボード
 * 水質のモニタリング デバイス テンプレート
 * シミュレートされた水質のモニタリング デバイス
 * ルールおよびジョブ
@@ -76,7 +76,7 @@ ms.locfileid: "109684255"
 
 次に、アプリケーションを探索して、いくつかのカスタマイズを行います。
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>オペレーター ダッシュボードの探索とカスタマイズ
+## <a name="explore-and-customize-the-dashboard"></a>ダッシュボードを調べてカスタマイズする
 
 アプリケーションを作成した後、 **[Wide World water quality dashboard]\(Wide World の水質ダッシュボード\)** ペインが開きます。
 
@@ -92,7 +92,7 @@ ms.locfileid: "109684255"
 
 * **平均 pH KPI タイル**:**過去 30 分間の平均 pH** などの KPI タイルがダッシュボード ペインの上部に表示されます。 KPI タイルをカスタマイズし、別の種類や時間の範囲に設定できます。
 
-* **[Water monitoring area map]\(水質モニタリング エリア マップ\)** :Azure IoT Central では Azure Maps が使用されています。これをアプリケーション内で直接設定して、デバイスの場所を表示できます。 また、アプリケーションからの位置情報をデバイスにマップし、Azure Maps を使用して、その情報をマップに表示することもできます。 マップの上にカーソルを移動し、コントロールを試してみてください。
+* **[Water monitoring area map]\(水質モニタリング エリア マップ\)** : Azure IoT Central では Azure Maps が使用されています。これをアプリケーション内で直接設定して、デバイスの[場所](../core/howto-use-location-data.md)を表示できます。 また、アプリケーションからの位置情報をデバイスにマップし、Azure Maps を使用して、その情報をマップに表示することもできます。 マップの上にカーソルを移動し、コントロールを試してみてください。
 
 * **平均 pH 分布のヒートマップ グラフ**:さまざまな視覚化グラフを選択して、アプリケーションに最適な方法でデバイス テレメトリを表示できます。
 

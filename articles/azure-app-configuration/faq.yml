@@ -9,12 +9,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: alkemper
   ms.custom: references_regions
-  ms.openlocfilehash: c5871704dd2b999bbb9033abc20f41099b53d000
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 2c7df8ee7ea6947165157e43f79ecca7afd8a118
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "111907659"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114447539"
 title: Azure App Configuration の FAQ
 summary: この記事では、Azure App Configuration についてよく寄せられる質問に回答します。
 sections:
@@ -142,6 +142,12 @@ sections:
 
 
       要求が失敗した具体的な理由について、429 応答の本文を確認します。
+  - question: 削除したものと同じ名前の App Configuration ストアを作成できないのはなぜですか。
+    answer: >
+      Standard レベルの App Configuration ストアが削除された場合、名前は削除後 3 日間予約されます。 予約期間が経過する前に同じ名前のストアを再作成することはできますが、元のストアと同じサブスクリプション、リソース グループ、およびリージョンに存在する必要があります。 ストアを含むリソース グループが削除されている場合は、その中にストアを再作成する前に、最初に同じサブスクリプションで再作成する必要があります。
+  - question: 誤って削除した App Configuration ストアを復元する方法はありますか。
+    answer: >
+      Standard レベルの App Configuration ストアは、削除された後 3 日以内は復旧できます。 誤って削除された App Configuration ストアを回復するには、Microsoft サポートに問い合わせてください。
   - question: App Configuration に関する新しいリリースやその他の情報についてのお知らせを受け取るにはどうすればよいですか?
     answer: >
       [GitHub のお知らせ用のリポジトリ](https://github.com/Azure/AppConfiguration-Announcements)にサブスクライブしてください。

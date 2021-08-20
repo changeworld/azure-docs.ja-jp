@@ -9,28 +9,28 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 06/11/2021
-ms.custom: automl
-ms.openlocfilehash: e088184cadea64b769faf75c6455b720f45d91cc
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/01/2021
+ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 69cbb3923f3a29085b0999bdce44efe99245b3eb
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028723"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491373"
 ---
 # <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする
 
 Azure Machine Learning スタジオで Azure Machine Learning 自動 ML を使用して、コードなし AutoML により分類モデルをトレーニングする方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
 
-自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
+自動 ML を使用すると、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
 
 このチュートリアルではコードを一切記述しません。スタジオのインターフェイスを使用してトレーニングを実行します。  次のタスクを実行する方法について説明します。
 
 > [!div class="checklist"]
 > * Azure Machine Learning ワークスペースを作成します。
 > * 自動機械学習の実験を実行します。
-> * 実験の詳細を表示します。
-> * モデルをデプロイします。
+> * モデルの詳細を調べる。
+> * 推奨モデルをデプロイする。
 
 他のタイプのモデルについても、自動機械学習を試してみましょう。
 
@@ -39,7 +39,7 @@ Azure Machine Learning スタジオで Azure Machine Learning 自動 ML を使�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://aka.ms/AMLFree)を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 * [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) データ ファイルをダウンロードします。 **[y]** 列では、このチュートリアルの予測対象列として後で識別される定期預金に顧客が申し込んだかどうかが示されます。 
 
@@ -92,7 +92,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 
     1. 左下の **[次へ]** を選択して、ワークスペースの作成時に自動的に設定された既定のコンテナーにアップロードします。  
     
-       アップロードが完了すると、ファイルの種類に基づいて [Settings and preview]\(設定とプレビュー\) フォームが事前設定されます。 
+       アップロードが完了すると、ファイルの種類に基づいて **[Settings and preview]\(設定とプレビュー\)** フォームが事前設定されます。 
        
     1. **[Settings and preview]\(設定とプレビュー\)** フォームが次のように設定されていることを確認し、 **[次へ]** を選択します。
         
@@ -142,7 +142,7 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
             ----|---|---
             コンピューティング名 |  コンピューティング コンテキストを識別する一意名。 | automl-compute
             最小/最大ノード| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
-            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|120 (既定値)
+            スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|1800 (既定値)
             詳細設定 | 実験用の仮想ネットワークを構成および承認するための設定。| なし               
 
         1. **[作成]** を選択してコンピューティング先を作成します。 

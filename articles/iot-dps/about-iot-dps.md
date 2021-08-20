@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e58028495da409df00db8e25adf68945a008bc9e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 1c5fd2416c37743dc48544da4bcfd23fc6928cdd
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228301"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539011"
 ---
 # <a name="what-is-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service とは
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サービスです。適切な IoT Hub へのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに行うことができます。 DPS を使用すると、膨大な数のデバイスを、安全かつスケーラブルな方法でプロビジョニングすることができます。
@@ -110,13 +110,13 @@ DPS は多数のリージョンで利用できます。 すべてのサービス
 ## <a name="availability"></a>可用性
 DPS では、99.9% のサービス レベル アグリーメントが維持されています。[SLA を参照](https://azure.microsoft.com/support/legal/sla/iot-hub/)してください。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/) では、全体としての Azure の可用性の確保について説明します。
 
-## <a name="quotas"></a>Quotas (クォータ)
+## <a name="quotas-and-limits"></a>クォータと制限
 各 Azure サブスクリプションには既定のクォータ制限が設けられており、IoT ソリューションの範囲に影響する可能性があります。 サブスクリプションごとの現在の上限は、サブスクリプションあたり 10 個の Device Provisioning Service です。
+
+クォータ制限に関連する制限については、「[Azure サブスクリプション サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
 
 [!INCLUDE [azure-iotdps-limits](../../includes/iot-dps-limits.md)]
 
-クォータ制限の詳細については、次を参照してください。
-* [Azure サブスクリプション サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>関連する Azure のコンポーネント
 DPS は Azure IoT Hub を使用してデバイス プロビジョニングを自動化しています。 詳細については、「[IoT Hub のドキュメント](../iot-hub/index.yml)」を参照してください。

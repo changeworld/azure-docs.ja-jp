@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 61648bc0eab3aba4806cf4594e6fe222ac77f93f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d07614d79410c388c5b93d635564e2720de7e11e
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111993222"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659551"
 ---
 > [!NOTE]
 > このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/phone-numbers-quickstart) にあります
@@ -57,7 +57,7 @@ pip install azure-identity
 
 `DefaultAzureCredential` オブジェクトを作成するためには、あらかじめ `AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET`、`AZURE_TENANT_ID` を環境変数とし、登録済みの Azure AD アプリケーションから対応する値を取得して設定しておく必要があります。
 
-これらの環境変数を取得する方法については、[CLI からのマネージド ID の設定に関するクイックスタート](../../managed-identity-from-cli.md)に従ってください。
+これらの環境変数を取得する方法については、[CLI からのサービス プリンシパル の設定に関するクイックスタート](../../identity/service-principal-from-cli.md)に従ってください。
 
 `azure-identity` ライブラリのインストール後、クライアントの認証に進むことができます。
 

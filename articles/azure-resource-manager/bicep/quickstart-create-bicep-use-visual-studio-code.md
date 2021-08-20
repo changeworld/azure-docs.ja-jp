@@ -1,15 +1,15 @@
 ---
 title: Bicep ファイルを作成する - Visual Studio Code
 description: Visual Studio Code と Bicep 拡張機能を使用して、Azure リソースをデプロイするための Bicepファイルを作成します
-ms.date: 06/01/2021
+ms.date: 06/25/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8369d0185977ae85e561b809200f1e7d733ea556
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8167516a41943ea17fdeb47bce84767178593e85
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027264"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112970105"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する
 
@@ -154,7 +154,7 @@ resource exampleStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 
 完了までもう少しです。 これらのプロパティに値を指定するだけです。
 
-ここでも IntelliSense が役立ちます。 `name` の場合は、ストレージ アカウントの名前を含むパラメーターを指定します。 `location` の場合は、`eastus` に設定します。 SKU の名前と種類を追加すると、IntelliSense によって有効なオプションが表示されます。 
+ここでも IntelliSense が役立ちます。 `name` の場合は、ストレージ アカウントの名前を含むパラメーターを指定します。 `location` の場合は、`eastus` に設定します。 SKU の名前と種類を追加すると、IntelliSense によって有効なオプションが表示されます。
 
 完了すると、次のようになります。
 
@@ -232,6 +232,9 @@ New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.
 ```
 
 ---
+
+> [!NOTE]
+> **{your-unique-name}** (中かっこを含む) は、一意のストレージ アカウント名に置き換えてください。
 
 デプロイが完了すると、デプロイが成功したことを示すメッセージが表示されます。 ストレージ アカウントが既に取得されていることを示すエラー メッセージが表示された場合は、指定したストレージ名が使用されています。 一意である可能性が高い名前を指定してください。
 

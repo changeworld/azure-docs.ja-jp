@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe025fad4955095ef16b546b7d326d80b4aea15c
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618000"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112427578"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -34,6 +34,11 @@ Azure Attestation は、複数の環境と特徴的なユース ケースに対�
 SGX とは、特定の Intel CPU モデルでサポートされているハードウェアグレードの分離を指します。 SGX を使用すると、SGX エンクレーブと呼ばれるサニタイズされたコンパートメントでコードを実行できます。 その後、アクセスとメモリのアクセス許可はハードウェアによって管理され、攻撃対象領域は適切に分離された最小限のものになります。
 
 クライアント アプリケーションは、機密性の高いタスクがそれらのエンクレーブ内で実行されるように委任することで、SGX エンクレーブを利用するように設計できます。 このようなアプリケーションでは、Azure Attestation を利用して定期的にエンクレーブ内で信頼を確立し、その機能を使用して機密データにアクセスすることができます。
+
+Intel® Xeon® スケーラブル プロセッサでは、SGX エンクレーブのリモート構成証明に対して、[ECDSA ベースの構成証明ソリューション](https://software.intel.com/content/www/us/en/develop/topics/software-guard-extensions/attestation-services.html#Elliptic%20Curve%20Digital%20Signature%20Algorithm%20(ECDSA)%20Attestation)のみがサポートされています。 Azure Attestation により、ECDSA ベースの構成証明モデルを利用して、Intel® Xeon® E3 プロセッサおよび Intel® Xeon® スケーラブル プロセッサ ベースのサーバー プラットフォームの検証がサポートされています。 
+
+> [!NOTE]
+> Azure Attestation を使用して Intel® Xeon® スケーラブル プロセッサ ベースのサーバー プラットフォームの構成証明を実行するには、ユーザーは [Azure DCAP バージョン 1.10.0](https://github.com/microsoft/Azure-DCAP-Client) 以降をインストールする必要があります。
 
 ### <a name="open-enclave"></a>Open Enclave
 [Open Enclave](https://openenclave.io/sdk/) (OE) は、開発者が TEE ベースのアプリケーションの構築に利用する、単一の統合エンクレーブ抽象化の作成を目的としたライブラリのコレクションです。 これは、プラットフォームの特異性を最小限に抑える、セキュリティ保護されたユニバーサルなアプリ モデルを提供します。 Microsoft では、これを、SGX などのハードウェアベースのエンクレーブ テクノロジをだれもが使えるようにし、Azure での利用を拡大するための重要な手段と考えています。
@@ -66,7 +71,7 @@ Azure Attestation のお客様は、Microsoft が信頼できるコンピュー�
 Azure Attestation には以下のベネフィットがあるため、TEE を証明するうえで推奨される選択肢となっています。 
 
 - TPM、SGX エンクレーブ、VBS エンクレーブなどの複数の環境を証明するための統合フレームワーク 
-- カスタム構成証明プロバイダーとポリシーを構成してトークンの生成を制限できるマルチテナント サービス
+- カスタム構成証明プロバイダーを作成し、トークンの生成を制限するようにポリシーを構成することができます
 - ユーザーによる構成なしで証明できる、リージョンの共有プロバイダーを提供
 - SGX エンクレーブ内での実装により、使用中のデータを保護
 - 高可用性サービス 

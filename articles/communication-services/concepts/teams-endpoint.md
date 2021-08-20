@@ -1,7 +1,7 @@
 ---
-title: カスタム Teams エンドポイント
+title: カスタム Teams エンドポイントを構築する
 titleSuffix: An Azure Communication Services concept document
-description: カスタム Teams エンドポイントを構築する
+description: この記事では、カスタム Teams エンドポイントを構築する方法について説明します。
 author: tomaschladek
 manager: nmurav
 services: azure-communication-services
@@ -9,40 +9,55 @@ ms.author: tchladek
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: acbd6a332d74a9b244f34230ac4b4eb591a1ab2d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3b0c1a7bbd2069ce828c0db4b80f047c1cc9faf7
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108065"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709190"
 ---
-# <a name="custom-teams-endpoint"></a>カスタム Teams エンドポイント
+# <a name="build-a-custom-teams-endpoint"></a>カスタム Teams エンドポイントを構築する
 
 > [!IMPORTANT]
-> カスタム Teams エンドポイント エクスペリエンスを有効または無効にするには、[このフォーム](https://forms.office.com/r/B8p5KqCH19)に入力します。
+> カスタム Teams エンドポイント エクスペリエンスを有効または無効にするには、[このフォームを完成させて送信してください](https://forms.office.com/r/B8p5KqCH19)。
 
 Azure Communication Services を使用してカスタム Teams エンドポイントを構築し、Microsoft Teams クライアントやその他のカスタム Teams エンドポイントと通信できます。 カスタム Teams エンドポイントを利用し、Teams ユーザーのために音声、動画、会話、画面共有の機能をカスタマイズできます。
 
-Azure Communication Services Identity SDK を使用し、AAD ユーザー トークンを Teams のアクセス トークンに交換できます。 次の図はマルチテナントのユース ケースを示したものです。Fabrikam は Contoso という企業の顧客になります。
+Azure Communication Services Identity SDK を使用し、Azure Active Directory (Azure AD) ユーザー トークンを Teams のアクセス トークンに交換できます。 次のセクションの図は、架空の会社 Fabrikam が架空の会社 Contoso の顧客であるマルチテナントのユース ケースを示しています。
 
 ## <a name="calling"></a>呼び出し 
 
 音声、動画、画面共有の機能は Azure Communication Services Calling SDK から提供されます。 次の図は、呼び出し機能をカスタム Teams エンドポイントに統合するときに従うプロセスの概要を示しています。
 
-![カスタム Teams エンドポイント エクスペリエンスのために呼び出し機能を有効にするプロセス](./media/teams-identities/teams-identity-calling-overview.png)
+![カスタム Teams エンドポイント エクスペリエンスのために呼び出し機能を有効にするプロセスの図。](./media/teams-identities/teams-identity-calling-overview.png)
 
 ## <a name="chat"></a>チャット
 
-Graph API を利用してチャット機能を任意で統合する目的でも、カスタム Teams エンドポイントを利用できます。 Graph API の詳細は[こちらのドキュメント](https://docs.microsoft.com/graph/api/channel-post-messages)でご覧ください。 
+Graph API を利用してチャット機能を任意で統合する目的でも、カスタム Teams エンドポイントを利用できます。 Graph API の詳細については、[チャットのリソースの種類](/graph/api/channel-post-messages)に関するドキュメントを参照してください。 
 
+![カスタム Teams エンドポイント エクスペリエンスでチャット機能を有効にするプロセスの図。](./media/teams-identities/teams-identity-chat-overview.png)
 
-![カスタム Teams エンドポイント エクスペリエンスのためにチャット機能を有効にするプロセス](./media/teams-identities/teams-identity-chat-overview.png)
+## <a name="azure-communication-services-permissions"></a>Azure Communication Services のアクセス許可
+
+### <a name="delegated-permissions"></a>デリゲートされたアクセス許可
+
+|   アクセス許可    |  表示文字列   |  説明 | 管理者の同意が必要 | Microsoft アカウントがサポートされている |
+|:--- |:--- |:--- |:--- |:--- |
+| _`https://auth.msft.communication.azure.com/VoIP`_ | Teams での呼び出しを管理する | Teams の呼び出しの開始、参加、転送、または終了を行い、呼び出しのプロパティの更新します。 | いいえ | いいえ |
+
+### <a name="application-permissions"></a>アプリケーションのアクセス許可
+
+なし。
+
+### <a name="roles-for-granting-consent-on-behalf-of-a-company"></a>会社に代わって同意を付与するロール
+
+- 全体管理者
+- アプリケーション管理者 (プライベート プレビューのみ)
+- クラウド アプリケーション管理者 (プライベート プレビューのみ)
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Teams アクセス トークンを発行する](../quickstarts/manage-teams-identity.md)
 
-次のドキュメントもご覧ください。
-
-- Teams の相互運用性の詳細については、[こちら](./teams-interop.md)を参照してください
+Teams の相互運用性の詳細については、[こちら](./teams-interop.md)を参照してください。

@@ -1,7 +1,6 @@
 ---
-title: チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted の使用を Azure SQL Database で開始する
+title: 'チュートリアル: セキュア エンクレーブを使用する Always Encrypted の概要'
 description: このチュートリアルでは、セキュリティで保護されたエンクレーブが設定された Always Encrypted の基本的な環境を Azure SQL Database で作成する方法と、SQL Server Management Studio (SSMS) を使用して、データのインプレース暗号化を行い、暗号化された列に対して高度な機密クエリを実行する方法について説明します。
-keywords: データの暗号化, sql 暗号化, データベース暗号化, 機密データ, Always Encrypted, セキュリティで保護されたエンクレーブ, SGX, 構成証明
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,20 +9,17 @@ ms.topic: tutorial
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 05/01/2021
-ms.openlocfilehash: 71e90e0afc3bc976ed65eb0ef59c76781490bdc1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 07/14/2021
+ms.openlocfilehash: dd8fc18b8f24a6164830dda6044c1b03151eb180
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457188"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727354"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted の使用を Azure SQL Database で開始する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
-
-> [!NOTE]
-> Azure SQL Database のセキュリティで保護されたエンクレーブが設定された Always Encrypted は、現在、**パブリック プレビュー** 段階にあります。
 
 このチュートリアルでは、[セキュリティで保護されたエンクレーブが設定された Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) の使用を Azure SQL Database で開始する方法について説明します。 次のことを示します。
 
@@ -71,7 +67,7 @@ PowerShell ギャラリーの操作を続行するには、Install-Module コマ
 
 ## <a name="step-1-create-and-configure-a-server-and-a-dc-series-database"></a>手順 1: サーバーと DC シリーズ データベースを作成、構成する
 
-この手順では、セキュア エンクレーブによる Always Encrypted に必要な DC シリーズのハードウェア世代を使用して、新しい Azure SQL Database 論理サーバーと新しいデータベースを作成します。 詳細については、「[DC シリーズ](service-tiers-vcore.md#dc-series)」を参照してください。
+この手順では、セキュア エンクレーブによる Always Encrypted に必要な DC シリーズのハードウェア世代を使用して、新しい Azure SQL Database 論理サーバーと新しいデータベースを作成します。 詳細については、「[DC シリーズ](service-tiers-sql-database-vcore.md#dc-series)」を参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -90,7 +86,7 @@ PowerShell ギャラリーの操作を続行するには、Install-Module コマ
    - **パスワード**:要件を満たすパスワードを入力し、 **[パスワードの確認入力]** フィールドにもう一度入力します。
    - **[場所]** :ドロップダウン リストから場所を選択します。
       > [!IMPORTANT]
-      > DC シリーズのハードウェア世代と Microsoft Azure Attestation の両方をサポートする場所 (Azure リージョン) を選択する必要があります。 DC シリーズをサポートするリージョンの一覧については、[DC シリーズの提供リージョン](service-tiers-vcore.md#dc-series-1)に関する記述を参照してください。 Microsoft Azure Attestation が提供されるリージョンは、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)でご覧いただけます。
+      > DC シリーズのハードウェア世代と Microsoft Azure Attestation の両方をサポートする場所 (Azure リージョン) を選択する必要があります。 DC シリーズをサポートするリージョンの一覧については、[DC シリーズの提供リージョン](service-tiers-sql-database-vcore.md#dc-series)に関する記述を参照してください。 Microsoft Azure Attestation が提供されるリージョンは、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)でご覧いただけます。
 
    **[OK]** を選択します。
 1. **[SQL エラスティック プールを使用しますか?]** を **[いいえ]** に設定したままにします。
@@ -135,7 +131,7 @@ PowerShell ギャラリーの操作を続行するには、Install-Module コマ
 1. 新しいリソース グループを作成する。
 
    > [!IMPORTANT]
-   > リソース グループは、DC シリーズのハードウェア世代と Microsoft Azure Attestation の両方をサポートするリージョン (場所) に作成する必要があります。 DC シリーズをサポートするリージョンの一覧については、[DC シリーズの提供リージョン](service-tiers-vcore.md#dc-series-1)に関する記述を参照してください。 Microsoft Azure Attestation が提供されるリージョンは、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)でご覧いただけます。
+   > リソース グループは、DC シリーズのハードウェア世代と Microsoft Azure Attestation の両方をサポートするリージョン (場所) に作成する必要があります。 DC シリーズをサポートするリージョンの一覧については、[DC シリーズの提供リージョン](service-tiers-sql-database-vcore.md#dc-series)に関する記述を参照してください。 Microsoft Azure Attestation が提供されるリージョンは、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)でご覧いただけます。
 
    ```powershell
    $resourceGroupName = "<your new resource group name>"
@@ -436,6 +432,6 @@ PowerShell ギャラリーの操作を続行するには、Install-Module コマ
 - [チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted を使用する .NET Framework アプリケーションの開発](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
 - [チュートリアル:ランダム化された暗号化を使用してエンクレーブ対応の列でインデックスを作成して使用する](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [セキュリティで保護されたエンクレーブが設定された Always Encrypted を構成して使用する](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

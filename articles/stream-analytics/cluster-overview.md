@@ -6,13 +6,13 @@ ms.author: sidram
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/20/2021
-ms.openlocfilehash: e14c900d8acdd88191fde268fe832034f8dad2cf
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/22/2021
+ms.openlocfilehash: 7223d497a6bd1f91bcf5f313d793184026b9fe0c
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454263"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540494"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster"></a>Azure Stream Analytics クラスターの概要
 
@@ -68,7 +68,7 @@ Stream Analytics クラスターは、選択した SU 容量に基づいて課�
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>Stream Analytics クラスターから、どの入力と出力をプライベートに接続できますか?
 
-Stream Analytics では、さまざまな種類の入力と出力がサポートされます。 クラスター内に、ジョブが入力および出力リソースにアクセスできるようにする[プライベート エンドポイントを作成](private-endpoints.md)できます。 現在、Azure SQL Database、Azure Synapse Analytics、Azure Cosmos DB、Azure Storage、Azure Data Lake Storage Gen2、Azure Event Hub、Azure IoT Hub、Azure Functions、および Azure Service Bus は、マネージド プライベート エンドポイントを作成できるサービスです。 
+Stream Analytics では、さまざまな種類の入力と出力がサポートされます。 クラスター内に、ジョブが入力および出力リソースにアクセスできるようにする[プライベート エンドポイントを作成](private-endpoints.md)できます。 現在、マネージド プライベート エンドポイントを作成できるサービスは、Azure SQL Database、Azure Cosmos DB、Azure Storage、Azure Data Lake Storage Gen2、Azure Event Hub、Azure IoT Hub、Azure Functions、Azure Service Bus です。 
 
 ## <a name="next-steps"></a>次のステップ
 

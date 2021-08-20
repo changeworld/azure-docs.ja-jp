@@ -8,12 +8,12 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 03/23/2021
-ms.openlocfilehash: 17c4114214bcff79ced57da4fb58d4de8bc05107
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e21dab310c41cf6aae0e201d7d1b8e78a8540a30
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382263"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255640"
 ---
 [リファレンス ドキュメント](/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer) | [マルチスロットの概念](..\concept-multi-slot-personalization.md) | [サンプル](https://aka.ms/personalizer/ms-dotnet)
 
@@ -30,6 +30,8 @@ ms.locfileid: "110382263"
 [!INCLUDE [Upgrade Personalizer instance to multi-slot](upgrade-personalizer-multi-slot.md)]
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
+
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -72,9 +74,9 @@ using System.Threading.Tasks;
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-各スロットに対してコンテンツの 1 つの最適な項目を要求するには、[MultiSlotRankRequest] を作成し、[multislot/rank] エンドポイント (https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Rank) ) に POST 要求を送信します。 その後、応答は [MultiSlotRankResponse] に解析されます。
+各スロットに対してコンテンツの 1 つの最適な項目を要求するには、**MultiSlotRankRequest** を作成し、[multislot/rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Rank) に POST 要求を送信します。 その後、応答は **MultiSlotRankResponse** に解析されます。
 
-報酬スコアを Personalizer に送信するには、[MultiSlotReward] を作成してから、POST 要求を [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Events_Reward) に送信します。
+報酬スコアを Personalizer に送信するには、**MultiSlotReward** を作成してから、POST 要求を [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Events_Reward) に送信します。
 
 このクイックスタートでは、報酬スコアの決定は重要ではありません。 実稼働システムでは、何がどの程度まで[報酬スコア](../concept-rewards.md)に影響を及ぼすかを特定するのは複雑なプロセスとなる場合があり、そのプロセスはやがて変更することになる場合もあります。 実際の Personalizer アーキテクチャでは、この設計上の意思決定を主要な意思決定に含めるようにしてください。
 
@@ -98,8 +100,9 @@ using System.Threading.Tasks;
 [!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
 
 ```csharp
-private static readonly string ResourceKey = "REPLACE-WITH-YOUR-PERSONALIZER-KEY";
-private static readonly string PersonalizationBaseUrl = "https://REPLACE-WITH-YOUR-PERSONALIZER-RESOURCE-NAME.cognitiveservices.azure.com";
+//Replace 'PersonalizationBaseUrl' and 'ResourceKey' with your valid endpoint values.
+private const string PersonalizationBaseUrl = "<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>";
+private const string ResourceKey = "<REPLACE-WITH-YOUR-PERSONALIZER-KEY>";
 ```
 
 次に、ランクと報酬の URL を作成します。
@@ -177,95 +180,6 @@ private static IList<Slot> GetSlots()
     };
 
     return slots;
-}
-```
-
-## <a name="get-user-preferences-for-context"></a>コンテキストに対するユーザーの好みを取得する
-
-Program クラスに次のメソッドを追加し、時間帯とユーザーが使用しているデバイスの種類に関するユーザーの入力をコマンド ラインから取得します。 これらはコンテキストのフィーチャーとして使用されます。
-
-```csharp
-static string GetTimeOfDayForContext()
-{
-    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
-
-    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
-    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
-    {
-        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
-        timeIndex = 1;
-    }
-
-    return timeOfDayFeatures[timeIndex - 1];
-}
-```
-
-```csharp
-static string GetDeviceForContext()
-{
-    string[] deviceFeatures = new string[] { "mobile", "tablet", "desktop" };
-
-    Console.WriteLine("\nWhat is the device type (enter number)? 1. Mobile 2. Tablet 3. Desktop");
-    if (!int.TryParse(GetKey(), out int deviceIndex) || deviceIndex < 1 || deviceIndex > deviceFeatures.Length)
-    {
-        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + deviceFeatures[0] + ".");
-        deviceIndex = 1;
-    }
-
-    return deviceFeatures[deviceIndex - 1];
-}
-```
-
-どちらのメソッドも、`GetKey` メソッドを使用して、ユーザーの選択内容をコマンド ラインから読み取ります。
-
-```csharp
-private static string GetKey()
-{
-    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
-}
-```
-
-```csharp
-private static IList<Context> GetContext(string time, string device)
-{
-    IList<Context> context = new List<Context>
-    {
-        new Context
-        {
-            Features = new {timeOfDay = time, device = device }
-        }
-    };
-
-    return context;
-}
-```
-
-## <a name="make-http-requests"></a>HTTP 要求を行う
-
-マルチスロットのランクと報酬の呼び出しの場合は、POST 要求を Personalizer のエンドポイントに送信します。
-
-```csharp
-private static async Task<MultiSlotRankResponse> SendMultiSlotRank(HttpClient client, string rankRequestBody, string rankUrl)
-{
-    var rankBuilder = new UriBuilder(new Uri(rankUrl));
-    HttpRequestMessage rankRequest = new HttpRequestMessage(HttpMethod.Post, rankBuilder.Uri);
-    rankRequest.Content = new StringContent(rankRequestBody, Encoding.UTF8, "application/json");
-
-    HttpResponseMessage response = await client.SendAsync(rankRequest);
-    MultiSlotRankResponse rankResponse = JsonSerializer.Deserialize<MultiSlotRankResponse>(await response.Content.ReadAsByteArrayAsync());
-    return rankResponse;
-}
-```
-
-```csharp
-private static async Task SendMultiSlotReward(HttpClient client, string rewardRequestBody, string rewardUrlBase, string eventId)
-{
-    string rewardUrl = String.Concat(rewardUrlBase, eventId, "/reward");
-    var rewardBuilder = new UriBuilder(new Uri(rewardUrl));
-    HttpRequestMessage rewardRequest = new HttpRequestMessage(HttpMethod.Post, rewardBuilder.Uri);
-    rewardRequest.Content = new StringContent(rewardRequestBody, Encoding.UTF8, "application/json");
-
-    await client.SendAsync(rewardRequest);
 }
 ```
 
@@ -367,6 +281,104 @@ private class SlotReward
 
     [JsonPropertyName("value")]
     public float Value { get; set; }
+}
+```
+
+## <a name="get-user-preferences-for-context"></a>コンテキストに対するユーザーの好みを取得する
+
+Program クラスに次のメソッドを追加し、時間帯とユーザーが使用しているデバイスの種類に関するユーザーの入力をコマンド ラインから取得します。 これらはコンテキストのフィーチャーとして使用されます。
+
+```csharp
+static string GetTimeOfDayForContext()
+{
+    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
+
+    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
+    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
+        timeIndex = 1;
+    }
+
+    return timeOfDayFeatures[timeIndex - 1];
+}
+```
+
+```csharp
+static string GetDeviceForContext()
+{
+    string[] deviceFeatures = new string[] { "mobile", "tablet", "desktop" };
+
+    Console.WriteLine("\nWhat is the device type (enter number)? 1. Mobile 2. Tablet 3. Desktop");
+    if (!int.TryParse(GetKey(), out int deviceIndex) || deviceIndex < 1 || deviceIndex > deviceFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + deviceFeatures[0] + ".");
+        deviceIndex = 1;
+    }
+
+    return deviceFeatures[deviceIndex - 1];
+}
+```
+
+どちらのメソッドも、`GetKey` メソッドを使用して、ユーザーの選択内容をコマンド ラインから読み取ります。
+
+```csharp
+private static string GetKey()
+{
+    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
+}
+```
+
+```csharp
+private static IList<Context> GetContext(string time, string device)
+{
+    IList<Context> context = new List<Context>
+    {
+        new Context
+        {
+            Features = new {timeOfDay = time, device = device }
+        }
+    };
+
+    return context;
+}
+```
+
+## <a name="make-http-requests"></a>HTTP 要求を行う
+
+マルチスロットの Rank 呼び出しと Reward 呼び出しの場合は、これらの関数を追加して POST 要求を Personalizer のエンドポイントに送信します。
+
+```csharp
+private static async Task<MultiSlotRankResponse> SendMultiSlotRank(HttpClient client, string rankRequestBody, string rankUrl)
+{
+    try
+    {
+    var rankBuilder = new UriBuilder(new Uri(rankUrl));
+    HttpRequestMessage rankRequest = new HttpRequestMessage(HttpMethod.Post, rankBuilder.Uri);
+    rankRequest.Content = new StringContent(rankRequestBody, Encoding.UTF8, "application/json");
+    HttpResponseMessage response = await client.SendAsync(rankRequest);
+    response.EnsureSuccessStatusCode();
+    MultiSlotRankResponse rankResponse = JsonSerializer.Deserialize<MultiSlotRankResponse>(await response.Content.ReadAsByteArrayAsync());
+    return rankResponse;
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("\n" + e.Message);
+        Console.WriteLine("Please make sure multi-slot feature is enabled. To do so, follow multi-slot Personalizer documentation to update your loop settings to enable multi-slot functionality.");
+        throw;
+    }
+}
+```
+
+```csharp
+private static async Task SendMultiSlotReward(HttpClient client, string rewardRequestBody, string rewardUrlBase, string eventId)
+{
+    string rewardUrl = String.Concat(rewardUrlBase, eventId, "/reward");
+    var rewardBuilder = new UriBuilder(new Uri(rewardUrl));
+    HttpRequestMessage rewardRequest = new HttpRequestMessage(HttpMethod.Post, rewardBuilder.Uri);
+    rewardRequest.Content = new StringContent(rewardRequestBody, Encoding.UTF8, "application/json");
+
+    await client.SendAsync(rewardRequest);
 }
 ```
 
@@ -485,7 +497,7 @@ rank 呼び出しと reward 呼び出しについて、以降の各セクショ�
 
 ## <a name="request-the-best-action"></a>最適なアクションを要求する
 
-Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢の `context` を作成します。 要求の本文には、応答を受け取るためのコンテキストのフィーチャー、アクションとそのフィーチャー、一意のイベント ID が含まれます。 `SendMultiSlotRank` メソッドには、要求を送信するための HTTP クライアント、要求本文、URL が必要です。
+Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢の `context` を作成します。 要求本文には、コンテキスト、アクション、スロットと、それぞれの機能が含まれています。 `SendMultiSlotRank` メソッドは、要求を送信するための HTTP クライアント、要求本文、URL を解釈します。
 
 このクイックスタートのコンテキストのフィーチャーは、時間帯とユーザーのデバイスという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concepts-features.md)を決定し、[評価](../concept-feature-evaluation.md)することが、決して簡単ではない場合もあります。
 
@@ -512,7 +524,7 @@ MultiSlotRankResponse multiSlotRankResponse = await SendMultiSlotRank(client, ra
 
 ## <a name="send-a-reward"></a>報酬を送信する
 
-Reward 要求で送信する報酬スコアを取得するめに、このプログラムでは、各スロットのユーザーの選択をコマンド ラインから取得し、選択に数値を割り当てた後、一意のイベント ID、スロット ID、各スロットのと報酬スコア (数値) を Reward API に送信します。 スロットごとに報酬を定義する必要はありません。
+Reward 要求の報酬スコアを取得するめに、このプログラムでは、各スロットのユーザーの選択をコマンド ラインから取得し、選択に数値を割り当てた後、一意のイベント ID、スロット ID、各スロットの数値 (報酬スコア) を Reward API に送信します。 スロットごとに報酬を定義する必要はありません。
 
 このクイックスタートでは、0 または 1 という単純な数値を報酬スコアとして割り当てます。 実際のニーズにもよりますが、実稼働システムでは、いつ何を [Reward](../concept-rewards.md) 呼び出しに送信するかが決して簡単な決定事項ではない場合もあります。
 
@@ -567,4 +579,4 @@ dotnet run
 ![クイック スタート プログラムは、フィーチャーと呼ばれるユーザー設定を収集するためにいくつかの質問をしてから、最上位のアクションを提供します。](../media/csharp-quickstart-commandline-feedback-loop/multislot-quickstart-program-feedback-loop-example-1.png)
 
 
-[こちらでこのクイックスタート用のソース コード](https://aka.ms/personalizer/ms-dotnet)を入手できます。
+[こちらでこのクイックスタート用のソース コード](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer/multislot-quickstart)を入手できます。

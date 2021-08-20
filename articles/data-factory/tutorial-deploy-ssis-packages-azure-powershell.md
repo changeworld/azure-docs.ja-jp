@@ -5,15 +5,15 @@ ms.service: data-factory
 ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 10/13/2020
+ms.date: 07/19/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: a0a6e115d2b76ab3f060ee1bcb197da58f2c8fa6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b8352581786cc6d9927f38fef786374072bd233
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391288"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447740"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell を使用して Azure Data Factory で Azure-SSIS IR を設定する
 
@@ -59,7 +59,7 @@ Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概
 
   - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、データベース サーバーのファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)」を参照してください。
 
-  - サーバー管理者の資格情報による SQL 認証またはデータ ファクトリのマネージド ID による Azure AD 認証を使用して、データベース サーバーに接続できます。 後者の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
+  - SQL 認証とサーバー管理者の資格情報を使用して、または Azure AD 認証とデータ ファクトリの指定のシステム/ユーザー割り当てマネージド ID を使用して、データベース サーバーに接続できます。 後者の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリの指定のシステム/ユーザー割り当てマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](./create-azure-ssis-integration-runtime.md)に関するページを参照してください。
 
   - データベース サーバーに SSISDB インスタンスがまだないことを確認します。 Azure-SSIS IR のプロビジョニングでは、既存の SSISDB インスタンスの使用はサポートされていません。
 

@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 04/20/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: 077de420397f3b8feab60a9f555fc26e66a5b5ff
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 0b5812b5a562b20d1e0224a038e3572767130333
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539775"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441221"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -27,14 +27,14 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 
 Azure Firewall の機能の詳細については、「[Azure Firewall の機能](features.md)」を参照してください。
 
-## <a name="azure-firewall-premium-preview"></a>Azure Firewall Premium プレビュー
+## <a name="azure-firewall-premium"></a>Azure Firewall Premium
 
-Azure Firewall Premium プレビューは、機密度が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。 そうした機能として、TLS 検査、IDPS、URL フィルタリング、Web カテゴリなどがあります。
+Azure Firewall Premium は、機密度が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。 そうした機能として、TLS 検査、IDPS、URL フィルタリング、Web カテゴリなどがあります。
 
-Azure Firewall Premium プレビューの機能については、[Azure Firewall Premium プレビューの機能](premium-features.md)に関するページを参照してください。
+Azure Firewall Premium の機能については、[Azure Firewall Premium の機能](premium-features.md)に関するページを参照してください。
 
 
-Azure portal で Firewall Premium プレビューを構成する方法については、「[Azure portal での Azure Firewall Premium プレビュー](premium-portal.md)」を参照してください。
+Azure portal で Firewall Premium を構成する方法については、「[Azure portal での Azure Firewall Premium](premium-portal.md)」を参照してください。
 
 
 ## <a name="pricing-and-sla"></a>料金と SLA
@@ -79,10 +79,13 @@ Azure Firewall には、次の既知の問題があります。
 |IPv6 は現在、サポートされていない|IPv6 アドレスをルールに追加した場合、ファイアウォールのエラーが発生します。|IPv4 アドレスのみを使用してください。 IPv6 のサポートは調査中です|
 |複数の IP グループを更新すると、競合エラーが発生して失敗します。|同じファイアウォールにアタッチされている複数の IP グループを更新すると、いずれかのリソースがエラー状態になります。|これは既知の問題および制限です。 <br><br>IP グループを更新すると、IP グループがアタッチされているすべてのファイアウォールで更新がトリガーされます。 ファイアウォールがまだ "*更新中*" の状態であるときに 2 番目の IP グループへの更新が開始された場合、IP グループの更新は失敗します。<br><br>この失敗を回避するには、同じファイアウォールにアタッチされている IP グループを一度に 1 つずつ更新する必要があります。 各更新の間に十分な時間を確保して、ファイアウォールが "*更新中*" の状態を終了できるようにします。|
 |ARM テンプレートを使用した RuleCollectionGroups の削除はサポートされていません。|ARM テンプレートを使用した RuleCollectionGroup の削除はサポートされていないため、エラーが発生します。|これはサポートされている操作ではありません。|
-
+|*any* (*) を許可する DNAT ルールではトラフィックが SNAT (送信元ネットワーク アドレス変換) されます。|DNAT ルールによって送信元 IP アドレスとして *any* (*) が許可される場合、暗黙的なネットワーク ルールによって VNet-VNet トラフィックが照合され、トラフィックが常に SNAT されます。|これは現在の制限です。|
+|セキュリティ プロバイダーを使用してセキュリティ保護付き仮想ハブに DNAT ルールを追加することはできません。|これは結果的に、返される DNAT トラフィックの非同期ルートになり、これがセキュリティ プロバイダーに送信されます。|サポートされていません。|
+| 2000 個を超えるルール コレクションを作成するときにエラーが発生しました。 | NAT/アプリケーションまたはネットワークのルール コレクションの最大数は、2000 個です (リソース マネージャーの制限)。 | これは現在の制限です。 |
 
 ## <a name="next-steps"></a>次のステップ
 
 - [クイックスタート: Azure ファイアウォールとファイアウォール ポリシーを作成する - ARM テンプレート](../firewall-manager/quick-firewall-policy.md)
 - [クイック スタート:可用性ゾーンを使用して Azure Firewall をデプロイする - ARM テンプレート](deploy-template.md)
 - [チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する](tutorial-firewall-deploy-portal.md)
+- [Learn モジュール: Azure Firewall の概要](/learn/modules/introduction-azure-firewall/)

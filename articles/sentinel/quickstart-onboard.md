@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: b30fee5d269a633173b8524ed6c902517063b2a2
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: d4139ddc0d0befce228e18a65ecfb83065c740dc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985996"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443161"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
@@ -26,7 +26,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 データ ソースを接続した後、優れた設計のブックのギャラリーから選択し、データに基づいて分析情報を表示できます。 これらのブックは、ニーズに合わせて簡単にカスタマイズできます。
 
 >[!IMPORTANT] 
-> Azure Sentinel の使用に伴う料金については、「[Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)」を参照してください。
+> Azure Sentinel の使用に伴う料金については、「[Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)」および「[Azure Sentinel のコストと課金](azure-sentinel-billing.md)」を参照してください。
 
 ## <a name="global-prerequisites"></a>グローバルな前提条件
 
@@ -47,13 +47,20 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
     | ワークスペースの地理的な場所またはリージョン | Azure Sentinel で生成されたデータの地理的な場所またはリージョン |
     | --- | --- |
-    | United States<br>インド<br>ブラジル<br>アフリカ<br>韓国<br>アラブ首長国連邦 | United States |
-    | ヨーロッパ<br>フランス<br>スイス | ヨーロッパ |
+    | United States<br>インド<br>Africa | United States |
+    | ヨーロッパ<br>フランス | ヨーロッパ |
     | オーストラリア | オーストラリア |
     | イギリス | イギリス |
     | Canada | Canada |
     | 日本 | 日本 |
     | 東南アジア (シンガポール) | 東南アジア (シンガポール)* |
+    | ブラジル | ブラジル |
+    | ノルウェー | ノルウェー |
+    | 南アフリカ | 南アフリカ |
+    | 韓国 | 韓国 |
+    | ドイツ | ドイツ |
+    | アラブ首長国連邦 | アラブ首長国連邦 |
+    | スイス | スイス |
     |
     
     \* 東南アジアにはペアのリージョンはありません。
@@ -103,7 +110,17 @@ Azure Sentinel でサービスとアプリからのデータを取り込むに�
 データ ソースが接続されると、データは Azure Sentinel にストリーミングされ、操作を開始できます。 [組み込みのブック](quickstart-get-visibility.md)でログを表示したり、Log Analytics でクエリを作成して[データを調査](tutorial-investigate-cases.md)したりできます。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure Sentinel をオンボードし、データ ソースを接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [一般的なイベント形式のアプライアンス](connect-common-event-format.md)から Azure Sentinel へのデータのストリーム配信。
+
+詳細については、次を参照してください。
+
+- **代替のデプロイ オプション**:
+
+    - [API を介して Azure Sentinel をデプロイする](/rest/api/securityinsights/)
+    - [PowerShell を介して Azure Sentinel をデプロイする](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0)
+    - [ARM テンプレートを介して Azure Sentinel をデプロイする](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-all-in-one-accelerator/ba-p/1807933)
+
+- **作業開始**:
+    - [Azure Sentinel の概要](quickstart-get-visibility.md)
+    - [脅威を検出するためのカスタム分析規則を作成する](tutorial-detect-threats-custom.md)
+    - [共通イベント形式を使用して外部ソリューションを接続する](connect-common-event-format.md)
+

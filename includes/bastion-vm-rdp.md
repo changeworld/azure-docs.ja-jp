@@ -5,17 +5,17 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/21/2020
+ms.date: 06/21/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 083ab61d5a20bfb8e38747ae0694b1176c0a0fd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 026e505e1ce5fe4d561289b2a98c8c0324136cbc
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521537"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108263"
 ---
-1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** を選択します。 ドロップダウンから **[Bastion]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、接続先の仮想マシンに移動します。 **[概要]** ページで **[接続]** を選択し、ドロップダウンから **[要塞]** を選択します。
 
    :::image type="content" source="./media/bastion-vm-rdp/connect-vm.png" alt-text="[Bastion] を選択する":::
 
@@ -27,6 +27,9 @@ ms.locfileid: "92521537"
 
    :::image type="content" source="./media/bastion-vm-rdp/connect-vm-host.png" alt-text="のインスタンスに接続するときには、":::
 
-1. Bastion を使用したこの仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。
+1. Bastion を使用したこの仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。 
+
+   * 接続したとき、VM のデスクトップの外観は、サンプルのスクリーンショットとは違うものになることがあります。 
+   * VM に接続しているとき、キーボード ショートカット キーを使用すると、ローカル コンピューターのショートカット キーとは同じ動作にならないことがあります。 たとえば、Windows クライアントから Windows VM に接続しているとき、CTRL + ALT + END は、ローカル コンピューターで CTRL + ALT + Delete のキーボード ショートカットになります。 Windows VM に接続しているとき、Mac からこれを行うには、キーボード ショートカットは Fn + CTRL + ALT + Backspace になります。
 
    :::image type="content" source="./media/bastion-vm-rdp/connection.png" alt-text="ポート 443 を使用して接続する":::

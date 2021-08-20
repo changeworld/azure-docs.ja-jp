@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 573e4c9d8db3f07f223826ab648f2ef57e1d9c58
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5a73b98f31fb7c2f8979f977138ca7f836fe5a34
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766319"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221806"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 > [!IMPORTANT]
@@ -66,7 +66,7 @@ az login
 Azure CLI の [az role assignment create](/cli/azure/role/assignment) コマンドを使用して、ストレージ アカウントへのアクセスを Key Vault に付与します。 コマンドで次のパラメーター値を設定します。
 
 - `--role`:"Storage Account Key Operator Service Role" の Azure ロールを渡します。 このロールは、アクセス スコープをお使いのストレージ アカウントに制限します。 従来のストレージ アカウントには、"従来のストレージ アカウント キー オペレーターのサービス ロール" を渡します。
-- `--assignee`:値 "https://vault.azure.net" を渡します。これは Azure パブリック クラウドのキー コンテナーの URL です。 (Azure Goverment クラウドの場合、"--asingee-object-id" を代わりに使用します。「[サービス プリンシパルのアプリケーション ID](#service-principal-application-id)」を参照してください)
+- `--assignee`:値 "https://vault.azure.net" を渡します。これは Azure パブリック クラウドのキー コンテナーの URL です。 (Azure Goverment クラウドの場合、"--assignee-object-id" を代わりに使用します。「[サービス プリンシパルのアプリケーション ID](#service-principal-application-id)」を参照してください。)
 - `--scope`:ストレージ アカウントのリソース ID を渡します。これは `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` という形式で指定します。 サブスクリプション ID を検索するには、Azure CLI の [az account list](/cli/azure/account?#az_account_list) コマンドを使用します。ストレージ アカウント名とストレージ アカウント リソース グループを検索するには、Azure CLI の [az storage account list](/cli/azure/storage/account?#az_storage_account_list) コマンドを使用します。
 
 ```azurecli-interactive

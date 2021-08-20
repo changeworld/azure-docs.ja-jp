@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 07/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e2b01da1b47a51309a9e26500514aea396190b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 79f001ef1483ccdc8b9a4f2e2bfde9ca87db705f
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783011"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113507074"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -151,15 +151,14 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
 
 これらの手順は、SCIM 対応アプリケーションにのみ適用されます。 ServiceNow や Salesforce などのアプリケーションは、SCIM を使用する Azure AD と統合されていないため、カスタム属性を追加するときにこの特定の名前空間は必要ありません。
 
-カスタム属性は、参照属性、複数値の属性、または複合型の属性にすることはできません。 現在、カスタムの複数値または複合型の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。  
+カスタム属性は、参照属性、複数値の属性、または複合型の属性にすることはできません。 現在、カスタムの複数値または複合型の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。 カスタム拡張スキーマ ヘッダーは、Azure AD SCIM クライアントからの要求で送信されないため、次の例では省略されています。 この問題は今後修正される予定であり、ヘッダーは要求で送信されるようになります。  
  
 **拡張属性を持つユーザーの表記を次に示します。**
 
 ```json
    {
      "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
      "userName":"bjensen",
      "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",

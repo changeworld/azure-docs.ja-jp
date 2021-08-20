@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 966f6fb48053743995163bb608c13d52f98d33c7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 81553d1a16b00ab165eb2c5dc41f57f9c088c630
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486896"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400134"
 ---
 このチュートリアルでは、複数コンポーネントの IoT プラグ アンド プレイ デバイス アプリケーションのサンプルをビルドし、それをご利用の IoT ハブに接続し、送信されるテレメトリを Azure CLI を使用して表示する方法を示します。 このサンプル アプリケーションは Java で記述されており、Java 用 Azure IoT device SDK に含まれています。 ソリューション ビルダーは Azure CLI を使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
 
@@ -36,7 +36,7 @@ Windows でこのチュートリアルを完了するには、ご利用のロー
 
 ## <a name="download-the-code"></a>コードのダウンロード
 
-「[クイックスタート: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (Java)](../articles/iot-pnp/quickstart-connect-device.md)」を完了している場合は、リポジトリを既にクローンしています。
+「[チュートリアル: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (Java)](../articles/iot-develop/tutorial-connect-device.md)」を完了している場合、リポジトリは既にクローンされています。
 
 任意のディレクトリでコマンド プロンプトを開きます。 次のコマンドを実行して、[Azure IoT Java SDK およびライブラリ](https://github.com/Azure/azure-iot-sdk-java)の GitHub リポジトリをこの場所にクローンします。
 
@@ -74,7 +74,7 @@ mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.Tempe
 
 ## <a name="review-the-code"></a>コードの確認
 
-このサンプルにより、IoT プラグ アンド プレイの温度コントローラー デバイスが実装されます。 このサンプルによって実装されるモデルにより、[複数のコンポーネント](../articles/iot-pnp/concepts-modeling-guide.md)が使用されます。 [温度デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
+このサンプルにより、IoT プラグ アンド プレイの温度コントローラー デバイスが実装されます。 このサンプルによって実装されるモデルにより、[複数のコンポーネント](../articles/iot-develop/concepts-modeling-guide.md)が使用されます。 [温度デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
 
 デバイス コードによって、IoT ハブに接続するために標準の `DeviceClient` クラスが使用されます。 デバイスにより、接続要求で実装される DTDL モデルのモデル ID が送信されます。 モデル ID を送信するデバイスは、IoT プラグ アンド プレイ デバイスです。
 

@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と iProva の統合 | Microsoft Docs'
-description: Azure Active Directory と iProva の間でシングル サインオンを構成する方法について説明します。
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Zenya の統合 | Microsoft Docs'
+description: Azure Active Directory と Zenya の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/17/2021
+ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 8a59e7be93481b8e5da9cc46e473e4a68e8f8e97
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 71a2ad9d9a9b3c4f8c2be23859782cdb7a38e13f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464023"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112464883"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と iProva の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zenya"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zenya の統合
 
-このチュートリアルでは、iProva と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と iProva を統合すると、次のことができます。
+このチュートリアルでは、Zenya と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Zenya を統合すると、次のことが可能になります。
 
-* iProva にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して iProva に自動的にサインインできるように設定できます。
+* Zenya にアクセスできるユーザーを Azure AD で制御する。
+* ユーザーが自分の Azure AD アカウントを使用して Zenya に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -31,47 +31,50 @@ ms.locfileid: "110464023"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* iProva でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Zenya でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* iProva では、**SP** Initiated SSO がサポートされます。
+* Zenya では、**SP** Initiated SSO がサポートされます
 
-## <a name="add-iprova-from-the-gallery"></a>ギャラリーからの iProva の追加
+## <a name="add-zenya-from-the-gallery"></a>ギャラリーから Zenya を追加する
 
-Azure AD への iProva の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に iProva を追加する必要があります。
+Azure AD への Zenya の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Zenya を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**iProva**」と入力します。
-1. 結果のパネルから **[iProva]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zenya**」と入力します。
+1. 結果のパネルから **[Zenya]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso-for-iprova"></a>iProva の Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-zenya"></a>Zenya の Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、iProva に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと iProva の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Zenya に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Zenya の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-iProva に対して Azure AD SSO を構成してテストするには、次の手順を行います。
+Zenya に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[iProva の SSO の構成](#configure-iprova-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[iProva のテスト ユーザーの作成](#create-iprova-test-user)** - iProva で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[Zenya の SSO の構成](#configure-zenya-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Zenya のテスト ユーザーの作成](#create-zenya-test-user)** - Zenya で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-## <a name="retrieve-configuration-information-from-iprova"></a>iProva からの構成情報の取得
+## <a name="retrieve-configuration-information-from-zenya"></a>Zenya からの構成情報の取得
 
-このセクションでは、Azure AD のシングル サインオンを構成するための情報を iProva から取得します。
+このセクションでは、Azure AD のシングル サインオンを構成するための情報を Zenya から取得します。
 
-1. Web ブラウザーを開き、次の URL パターンを使用して iProva の **[SAML2 info]\(SAML2 の情報\)** ページに移動します。
+1. Web ブラウザーを開き、次の URL パターンを使用して Zenya の **[SAML2 info]\(SAML2 の情報\)** ページに移動します。
     
-     `https://<SUBDOMAIN>.iprova.nl/saml2info` `https://<SUBDOMAIN>.iprova.be/saml2info` 
+     `https://<SUBDOMAIN>.zenya.work/saml2info`   
+     `https://<SUBDOMAIN>.iprova.nl/saml2info`  
+     `https://<SUBDOMAIN>.iprova.be/saml2info`  
+     `https://<SUBDOMAIN>.iprova.eu/saml2info` 
 
-    ![iProva の [SAML2 info]\(SAML2 の情報\) ページを表示する](media/iprova-tutorial/information.png)
+    ![Zenya SAML2 情報ページを表示する](media/iprova-tutorial/information.png)
 
 1. そのブラウザー タブを開いたまま、別のブラウザー タブで次の手順に進みます。
 
@@ -79,7 +82,7 @@ iProva に対して Azure AD SSO を構成してテストするには、次の�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. Azure portal の **iProva** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Zenya** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
@@ -87,17 +90,17 @@ iProva に対して Azure AD SSO を構成してテストするには、次の�
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、**[Sign-on URL]\(サインオン URL\)** というラベルの後にある **[Sign-on URL]\(サインオン URL\)** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
+    a. **Zenya の [SAML2 info]\(SAML2 の情報\)** ページで、 **[Sign-on URL]\(サインオン URL\)** というラベルの後にある **[Sign-on URL]\(サインオン URL\)** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
 
-    b. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、**[EntityID]** というラベルの後にある **[Identifier]\(識別子\)** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
+    b. Zenya の **[SAML2 info]\(SAML2 の情報\)** ページで、 **[EntityID]** というラベルの後にある **[Identifier]\(識別子\)** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
 
-    c. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、**[Reply URL]\(応答 URL\)** というラベルの後にある **[Reply-URL]** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
+    c. Zenya の **[SAML2 info]\(SAML2 の情報\)** ページで、 **[Reply URL]\(応答 URL\)** というラベルの後にある **[Reply-URL]** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
 
-1. iProva アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. Zenya アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/default-attributes.png)
 
-1. その他に、iProva アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. その他に、Zenya アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
     | 名前 | ソース属性| 名前空間  |
     | ---------------| -------- | -----|
@@ -121,19 +124,19 @@ iProva に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に iProva へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Zenya へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[iProva]** を選択します。
+1. アプリケーションの一覧で **[Zenya]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-iprova-sso"></a>iProva の SSO の構成
+## <a name="configure-zenya-sso"></a>Zenya SSO の構成
 
-1. **Administrator** アカウントを使用して iProva にサインインします。
+1. **Administrator** アカウントを使用して Zenya にサインインします。
 
 2. **[Go to]\(移動\)** メニューを開きます。
 
@@ -145,7 +148,7 @@ iProva に対して Azure AD SSO を構成してテストするには、次の�
 
 6. **[Access control]\(アクセス制御\)** まで下にスクロールします。
 
-    ![iProva のアクセス制御設定](media/iprova-tutorial/access-control.png)
+    ![Zenya のアクセス制御設定](media/iprova-tutorial/access-control.png)
 
 7. **[Users are automatically logged on with their network accounts]\(ユーザーのネットワーク アカウントを使用して自動的にログオンする\)** 設定を探し、**[Yes, authentication via SAML]\(はい、SAML 経由で認証します\)** に変更します。 これで、追加のオプションが表示されます。
 
@@ -153,7 +156,7 @@ iProva に対して Azure AD SSO を構成してテストするには、次の�
 
 9. **[次へ]** を選択します。
 
-10. iProva によって、URL からフェデレーション データをダウンロードするか、それともファイルからアップロードするかを問われます。 **[from URL]\(URL から\)** オプションを選択します。
+10. Zenya によって、URL からフェデレーション データをダウンロードするか、それともファイルからアップロードするかを問われます。 **[from URL]\(URL から\)** オプションを選択します。
 
     ![Azure AD メタデータをダウンロードする](media/iprova-tutorial/metadata.png)
 
@@ -173,9 +176,9 @@ iProva に対して Azure AD SSO を構成してテストするには、次の�
 
 18. これで、**[Edit general settings]\(全般設定の編集\)** 画面に戻ります。 ページの下部までスクロールし、**[OK]** を選択して自分の構成を保存します。
 
-## <a name="create-iprova-test-user"></a>iProva テスト ユーザーの作成
+## <a name="create-zenya-test-user"></a>Zenya テスト ユーザーの作成
 
-1. **Administrator** アカウントを使用して iProva にサインインします。
+1. **Administrator** アカウントを使用して Zenya にサインインします。
 
 2. **[Go to]\(移動\)** メニューを開きます。
 
@@ -199,12 +202,12 @@ iProva に対して Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる iProva のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zenya のサインオン URL にリダイレクトされます。 
 
-* iProva のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Zenya のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [iProva] タイルをクリックすると、iProva のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zenya] タイルをクリックすると、Zenya のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-iProva を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Zenya を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

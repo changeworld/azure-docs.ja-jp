@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: jrasnick, garye
-ms.date: 11/20/2020
+ms.date: 07/01/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: c54300bf37f6f4526c525b1502d902e5f4336ed7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed86453b76d7f7afa0ba7fcccd2e4d7519621fb8
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943504"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362074"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>チュートリアル:Cognitive Services を使用した異常検出 (プレビュー)
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="open-the-cognitive-services-wizard"></a>Cognitive Services ウィザードを開く
 
-1. 前の手順で作成した Spark テーブルを右クリックします。 **[Machine Learning]**  >  **[Enrich with existing model]\(既存のモデルを使用して強化\)** を選択してウィザードを開きます。
+1. 前の手順で作成した Spark テーブルを右クリックします。 **[機械学習]**  >  **[モデルを使用した予測]** を選択し、ウィザードを開きます。
 
    ![スコアリング ウィザードを開くための選択を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00g.png)
 

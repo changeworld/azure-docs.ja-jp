@@ -1,16 +1,19 @@
 ---
 title: Azure Blueprint の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
-ms.date: 05/01/2021
+ms.date: 06/21/2021
 ms.topic: overview
-ms.openlocfilehash: 00fd2732f1a1176bd231675361e65ad451fd6de9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 445ecce12c9900dbae2eb4d7a3c1278c979d6cd9
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761293"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112427866"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
+
+> [!IMPORTANT]
+> Azure Blueprints は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
 設計図によってエンジニアやアーキテクトがプロジェクト設計パラメーターの概略を示すのと同じように、Azure Blueprints によってクラウド アーキテクトや中央の情報技術部門は、組織の標準、パターン、要件を実装および順守した反復可能な一連の Azure リソースを定義できます。 Azure Blueprints を使用すると、開発チームは新しい環境を迅速に構築して立ち上げることができます。新しい環境は組織のコンプライアンスに従って構築され、ネットワークなどの一連の組み込みコンポーネントを含んでいるという確信が得られるため、開発とデリバリーにかかる時間を短縮できます。
 

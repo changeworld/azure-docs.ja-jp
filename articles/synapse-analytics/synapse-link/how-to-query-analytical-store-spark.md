@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 5e2458ebcdcc1b2dba598b5d443b8eab12312e7d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: e9e211fe3039b85e2807fec159537d32380e9799
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788964"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664991"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する
 
@@ -28,7 +28,7 @@ Azure Cosmos DB との対話中に、次の機能がサポートされます。
 * Synapse Apache Spark を使用すると、Azure Cosmos DB にデータを取り込むこともできます。 データは常にトランザクション ストアを介して Azure Cosmos DB コンテナーに取り込まれることに注意してください。 Synapse Link が有効になっていると、新しい挿入、更新、および削除が分析ストアに自動的に同期されます。
 * また、Synapse Apache Spark では、ソースおよびシンクとしての Azure Cosmos DB を使用した Spark の構造化ストリーミングもサポートされています。 
 
-次のセクションで、上の機能の構文について説明します。 Azure Synapse Analytics ワークスペースのジェスチャは、すぐに使い始めることができるように設計されています。 ジェスチャは、Synapse ワークスペースの **[データ]** タブで Azure Cosmos DB コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
+次のセクションで、上の機能の構文について説明します。 また、[Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストアのクエリを実行する](/learn/modules/query-azure-cosmos-db-with-apache-spark-for-azure-synapse-analytics/)方法に関する Learn モジュールも確認できます。 Azure Synapse Analytics ワークスペースのジェスチャは、すぐに使い始めることができるように設計されています。 ジェスチャは、Synapse ワークスペースの **[データ]** タブで Azure Cosmos DB コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
 
 > [!IMPORTANT]
 > 分析スキーマには、データの読み込み操作での予期しない動作につながる可能性のある、いくつかの制約があることに注意してください。
@@ -213,3 +213,4 @@ query.awaitTermination()
 * [Azure Synapse Link の使用を開始するための GitHub 上のサンプル](https://aka.ms/cosmosdb-synapselink-samples)
 * [Azure Synapse Link for Azure Cosmos DB でサポートされている機能を確認する](./concept-synapse-link-cosmos-db-support.md)
 * [Azure Cosmos DB 用の Synapse Link に接続する](../quickstart-connect-synapse-link-cosmos-db.md)
+* [Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB のクエリを実行する](/learn/modules/query-azure-cosmos-db-with-apache-spark-for-azure-synapse-analytics/)方法に関する Learn モジュールを確認する。

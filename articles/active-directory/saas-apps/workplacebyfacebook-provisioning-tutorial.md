@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/28/2020
+ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 4ad66b5a5116e650983dd72ffe4875d89c390ced
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5e4091138f51fdd5af4052895cdb75c2390f7ce5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110540525"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459733"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -167,10 +167,13 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 *  ユーザーが作成に失敗し、コード "1789003" の監査ログイ ベントがあることが確認された場合は、ユーザーが未検証のドメインに由来していることを意味します。
+*  次のようなエラーが表示される場合があります。「エラー: 電子メール フィールドがありません: 電子メールを提供する必要があります Facebook からエラーが返されました: HTTP 要求の処理中に例外が発生しました。 詳細については、この例外の 'Response' プロパティによって返される HTTP 応答を参照してください。 この操作は 0 回再試行されました。 この日より後に再試行されます」。 このエラーの原因は、メールを userPrincipalName ではなく Facebook の電子メールにマップしているが、一部のユーザーにメール属性がないためです。 このエラーを回避して、エラーが発生したユーザーを Workplace from Facebook に正常にプロビジョニングするには、Workplace from Facebook の電子メール属性への属性マッピングを結合 ([mail]、[userPrincipalName]) に変更するか、Workplace from Facebook からユーザーの割り当てを解除するか、ユーザーの電子メール アドレスをプロビジョニングします。  
+
 
 ## <a name="change-log"></a>ログの変更
 
 * 2020 年 9 月 10日 - "division"、"organization"、"costCenter"、"employeeNumber" のエンタープライズ属性のサポートを追加しました。 "startDate"、"auth_method"、"frontline" のカスタム属性のサポートを追加しました
+* 2021 年 7 月 22 日 - 電子メールが Facebook の電子メールにマッピングされているが一部のユーザーにメール属性がないお客様のためのトラブルシューティングのヒントを更新しました
 
 ## <a name="additional-resources"></a>その他のリソース
 

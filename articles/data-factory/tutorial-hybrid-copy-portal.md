@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 4bfbd83f3f3910e1231bcce4043d9b59ccc512db
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/05/2021
+ms.openlocfilehash: 2b9f37d6f45591a43849c8d61787513702982e5b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606652"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436420"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>SQL Server データベースから Azure Blob Storage にデータをコピーする
 
@@ -130,15 +130,16 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
-1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory (UI) を起動します。
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\) タイルを含む、Azure Data Factory のホーム ページ。":::
+
+1. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Data Factory UI を起動します。
 
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。 パイプラインが自動的に作成されます。 ツリー ビューのパイプラインとそのエディターが開かれるのがわかります。
+1. Azure Data Factory のホーム ページで、 **[Orchestrate]\(調整\)** を選択します。 パイプラインが自動的に作成されます。 ツリー ビューのパイプラインとそのエディターが開かれるのがわかります。
 
-   ![[Let's get started]\(始めましょう\) ページ](./media/doc-common-process/get-started-page.png)
+   ![Azure Data Factory ホーム ページのスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**SQLServerToBlobPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 

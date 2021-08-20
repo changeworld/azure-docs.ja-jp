@@ -4,14 +4,14 @@ description: Azure Blob Storage 内のある場所から別の場所へデータ
 author: jianleishen
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 12/14/2020
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 888350dacd2437f585c6571b991ae06eed2d32ab
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9d8bf0d62518c94458a5b989c040f8eaefea11cd
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482167"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437002"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する 
 
@@ -65,9 +65,9 @@ ms.locfileid: "109482167"
 
 1. **[確認と作成]** を選択し、検証に成功したら **[作成]** を選択します。 作成後、 **[リソースに移動]** を選択して、 **[Data factory]** ページに移動します。 
 
-1. **[作成と監視]** タイルを選択して、別のブラウザー タブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
+1. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のブラウザー タブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
    
    > [!NOTE]
    > Web ブラウザーが "承認中" でスタックしていることがわかったら、 **[サードバーティの Cookie とサイト データをブロックする]** チェック ボックスをオフにします。 または、オンにしたまま、**login.microsoftonline.com** の例外を作成してから、アプリを再度開いてみてください。

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/18/2021
-ms.openlocfilehash: 6f101d31e7268eb8f58d236bc214f322c71336df
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e63e45026be6bb315a9bc520680eb40253654975
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075018"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539927"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -38,6 +38,8 @@ ms.locfileid: "110075018"
 [Benchmark timings (ベンチマークのタイミング)](http://youtu.be/6CSbWm4lRhw?hd=1)
 
 [データ フローのワークフローのデバッグ](https://youtu.be/y3suL7UsWVw)
+
+[更新された監視ビュー](https://www.youtube.com/watch?v=FWCBslsk6KE)
 
 ## <a name="transformation-overviews"></a>変換の概要
 

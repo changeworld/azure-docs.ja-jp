@@ -6,17 +6,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 27d1271450715babeb94bfe929e54500c59aa664
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: de2e9fd9cb44b855dbc1db8d1d355be092d6c83e
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560826"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535793"
 ---
 このクイックスタートでは、iOS 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling) にあります
+## <a name="sample-code"></a>サンプル コード
+
+サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling) からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -128,7 +129,11 @@ Azure Communication Services Calling SDK の主な機能のいくつかは、次
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-ユーザー アクセス トークンを使用して `CallAgent` インスタンスを初期化します。これにより、電話をかけたり受けたりすることができるようになります。 **ContentView.swift** で `onAppear` コールバックに次のコードを追加します。
+ユーザー アクセス トークンを使用して `CallAgent` インスタンスを初期化します。これにより、電話をかけたり受けたりすることができるようになります。 
+
+次のコードでは、`<USER ACCESS TOKEN>` をリソース用の有効なユーザー アクセス トークンに置き換える必要があります。 まだトークンを入手していない場合は、[ユーザー アクセス トークン](../../../access-tokens.md)に関するドキュメントを参照してください。
+
+**ContentView.swift** で `onAppear` コールバックに次のコードを追加します。
 
 ```swift
 var userCredential: CommunicationTokenCredential?
@@ -154,7 +159,7 @@ self.callClient?.createCallAgent(userCredential: userCredential!) { (agent, erro
 }
 ```
 
-`<USER ACCESS TOKEN>` を、リソース用の有効なユーザー アクセス トークンで置き換える必要があります。 まだトークンを入手していない場合は、[ユーザー アクセス トークン](../../../access-tokens.md)に関するドキュメントを参照してください。
+
 
 ## <a name="start-a-call"></a>通話を開始する
 
@@ -207,7 +212,3 @@ iOS シミュレーターでアプリをビルドして実行するには、 **[
 
 > [!NOTE]
 > 初めて通話を行うときに、マイクへのアクセスを求めるメッセージが表示されます。 運用環境のアプリケーションでは、`AVAudioSession` API を使用して[アクセス許可の状態を確認し](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)、アクセス許可が付与されていない場合はアプリケーションの動作を適切に更新する必要があります。
-
-## <a name="sample-code"></a>サンプル コード
-
-サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling) からダウンロードできます

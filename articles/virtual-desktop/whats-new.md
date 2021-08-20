@@ -3,17 +3,17 @@ title: Azure Virtual Desktop の最新情報 - Azure
 description: Azure Virtual Desktop の新機能と製品の更新情報。
 author: Heidilohr
 ms.topic: overview
-ms.date: 06/02/2021
+ms.date: 07/07/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: bd8af603e8e9d9b7a6c59004092ba2a8c59bc4e2
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d597e4c33652cb5a7106943ebd9f4e8b23b496ef
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753829"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730228"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Azure Virtual Desktop の最新情報
 
@@ -42,24 +42,60 @@ Azure Virtual Desktop エージェントは、少なくとも 1 か月に 1 回�
 
 Azure Virtual Desktop エージェントの変更内容は次のとおりです。
 
-- バージョン 1.0.2944.1400 (本番環境) およびバージョン 1.0.2990.800 (すべての検証ホスト プール): この更新プログラムは 2021 年 4 月 27 日にリリースされました。
-- バージョン 1.0.2990.800: この更新プログラムは 2021 年 4 月 13 日にリリースされ、次の変更が加えられました。
+- バージョン 1.0.3130.1200: この更新プログラムは検証プールで 2021 年 5 月にリリースされ、次の変更が加えられました。
+    - 一般的な機能強化とバグの修正。
+    - Intune 登録のホスト プール パスを取得する際の問題を修正します。
+    - エージェントの問題をより適切に診断するためにログ記録を追加しました。
+- バージョン 1.0.3050.1200: この更新プログラムは検証プールで 2021 年 5 月にリリースされ、次の変更が加えられました。
+    - エージェントの正常性の内部モニターを更新しました。
+    - スタックの正常性の再試行ロジックが更新されました。
+- バージョン 1.0.2990.1500: この更新プログラムは 2021 年 4 月にリリースされ、次の変更が加えられました。
     - エージェントのエラー メッセージが更新されました。
     - Windows 7 VM に Windows 7 以外のエージェントをインストールできないようにする例外が追加されました。
     - ハートビート サービス ロジックが更新されました。
-- バージョン 1.0.2944.1400: この更新プログラムは 2021 年 4 月 7 日にリリースされ、次の変更が加えられました。
+- バージョン 1.0.2944.1400: この更新プログラムは 2021 年 4 月にリリースされ、次の変更が加えられました。
     - エージェント エラーのイベント ビューアー ログに、Azure Virtual Desktop エージェントのトラブルシューティング ガイドへのリンクが配置されました。
     - エラー処理を改善するための例外が追加されました。
     - アクセスできる必要な URL を顧客自身で確認できるようにする WVDAgentUrlTool.exe が追加されました。
-- バージョン 1.0.2866.1500: この更新プログラムは 2021 年 3 月 26 日にリリースされ、スタック正常性チェックに関する問題が修正されました。
-- バージョン 1.0.2800.2802: この更新プログラムは 2021 年 3 月 10 日にリリースされ、全般的な機能強化とバグ修正が行われました。
-- バージョン 1.0.2800.2800: この更新プログラムは 2021 年 3 月 2 日にリリースされ、逆接続の問題が修正されました。
-- バージョン 1.0.2800.2700: この更新プログラムは 2021 年 2 月 10 日にリリースされ、全般的な機能強化とバグ修正が行われました。
-- バージョン 1.0.2800.2700: この更新プログラムは 2021 年 2 月 4 日にリリースされ、アクセス拒否されるオーケストレーションの問題が修正されました。
+-   バージョン 1.0.2866.1500: この更新プログラムは 2021 年 3 月にリリースされ、スタック正常性チェックに関する問題が修正されました。
+-   バージョン 1.0.2800.2802: この更新プログラムは 2021 年 3 月にリリースされ、全般的な機能強化とバグ修正が行われました。
+-   バージョン 1.0.2800.2800: この更新プログラムは 2021 年 3 月にリリースされ、逆接続の問題が修正されました。
+-   バージョン 1.0.2800.2700: この更新プログラムは 2021 年 2 月にリリースされ、アクセス拒否されるオーケストレーションの問題が修正されました。
 
 ## <a name="fslogix-updates"></a>FSLogix の更新
 
 FSLogix に対して行われた最新の更新については、 [FSLogix の最新情報](/fslogix/whats-new)に関するページを参照してください。
+
+## <a name="june-2021"></a>2021 年 6 月
+
+2021 年 6 月における変更点は次のとおりです。
+
+### <a name="windows-virtual-desktop-is-now-azure-virtual-desktop"></a>Windows Virtual Desktop が Azure Virtual Desktop になりました
+
+柔軟なクラウド デスクトップとリモート アプリケーション プラットフォームの構想との連携を強化するために、Windows Virtual Desktop を Azure Virtual Desktop に変更しました。 詳細については、[ブログのお知らせの投稿をご覧ください](https://azure.microsoft.com/blog/azure-virtual-desktop-the-desktop-and-app-virtualization-platform-for-the-hybrid-workplace/)。
+
+### <a name="eu-uk-and-canada-geographies-are-now-generally-available"></a>ヨーロッパ、英国、およびカナダの地域が一般公開されました
+
+欧州連合、英国、およびカナダのメタデータ サービスが一般公開されました。 これらの新しい場所は、米国外のデータ主権にとって非常に重要です。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-public-preview-of-azure-virtual-desktop-service/m-p/2478401#M7314)を参照してください。
+
+### <a name="the-getting-started-tool-is-now-in-public-preview"></a>Getting Started ツールがパブリック プレビュー中になりました
+
+初めてのユーザーがデプロイ プロセスを簡単にできるように Azure Virtual Desktop Getting Started ツールを作成しました。 デプロイ プロセスを簡略化および自動化することで、このツールによって Azure Virtual Desktop をより迅速に導入できるようになり、さまざまなユーザーがより簡単にアクセスできるようになることを願っています。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/getting-started-wizard-in-azure-virtual-desktop/m-p/2451385)を参照してください。
+
+### <a name="azure-virtual-desktop-pricing-calculator-updates"></a>Azure Virtual Desktop の価格計算ツールの更新
+
+Azure Virtual Desktop の価格エクスペリエンスを向上させるために、Azure 価格計算ツールに次のような重要な更新を行いました。  
+  
+- サービス名が Azure Virtual Desktop に更新されました  
+- また、次の新しい項目を使用してレイアウトを更新しました。  
+   - マネージド ディスクとファイル ストレージの両方の帯域幅を含むストレージ セクション  
+   - ユーザーごとのコストを示すカスタム セクション
+
+[このページ](https://azure.microsoft.com/pricing/calculator/)で価格計算ツールにアクセスできます。
+
+### <a name="single-sign-on-sso-using-active-directory-federation-services-ad-fs"></a>Active Directory フェデレーション サービス (AD FS) を使用したシングル サインオン (SSO)
+
+AD FS のシングル サインオン機能が一般公開されました。 この機能により、お客様は AD FS を使用して、Windows と Web クライアントのシングル サインオン エクスペリエンスをユーザーに提供できます。 詳細については、「[Azure Virtual Desktop 用に AD FS シングル サインオンを構成する](configure-adfs-sso.md)」を参照してください。
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -453,7 +489,7 @@ Log Analytics ワークスペース向けに、あらかじめ構築されたい
 
 ### <a name="teams-update"></a>Teams の更新
 
-Azure Virtual Desktop 用の Microsoft Teams に対して機能強化が行われました。 最も重要なのは、Azure Virtual Desktop で Windows デスクトップ クライアントのオーディオとビデオの最適化がサポートされるようになったことです。 ユーザーが通話や会議でオーディオまたはビデオを使用する際にユーザー間に直接パスを作成することで、転送による待ち時間が短縮されます。 距離が短いほどホップ数が少なくなるため、通話時の表示と音が滑らかになります。 詳細については、[Azure Virtual Desktop での Teams の使用](teams-on-wvd.md)に関する記事を参照してください。
+Azure Virtual Desktop 用の Microsoft Teams に対して機能強化が行われました。 最も重要なのは、Azure Virtual Desktop で Windows デスクトップ クライアントのオーディオとビデオの最適化がサポートされるようになったことです。 ユーザーが通話や会議でオーディオまたはビデオを使用する際にユーザー間に直接パスを作成することで、転送による待ち時間が短縮されます。 距離が短いほどホップ数が少なくなるため、通話時の表示と音が滑らかになります。 詳細については、[Azure Virtual Desktop での Teams の使用](./teams-on-avd.md)に関する記事を参照してください。
 
 ## <a name="june-2020"></a>2020 年 6 月
 

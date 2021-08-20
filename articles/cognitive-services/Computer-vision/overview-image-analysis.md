@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 03/30/2021
+ms.date: 06/21/2021
 ms.author: pafarley
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: 6e4be05d6b1c930c66c775d7b3c893e5bad4da7e
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: eb7aba4367b7f8ce54141613e0d1f52ded1c26bb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714532"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284786"
 ---
 # <a name="what-is-image-analysis"></a>画像分析とは
 
@@ -25,6 +25,9 @@ ms.locfileid: "109714532"
 Computer Vision Image Analysis サービスでは、画像からさまざまな視覚的特徴を抽出できます。 たとえば、成人向けコンテンツが画像に含まれているかどうかを判断したり、特定のブランドや物体、人の顔を検出したりすることができます。
 
 画像分析は、クライアント ライブラリ SDK を通じて、または [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) を直接呼び出すことで使用できます。 使用を開始するには、[クイックスタート](quickstarts-sdk/image-analysis-client-library.md)に従ってください。
+
+> [!div class="nextstepaction"]
+> [開始するには](quickstarts-sdk/image-analysis-client-library.md)
 
 このドキュメントには、次のような記事が記載されています。
 * [クイックスタート](./quickstarts-sdk/image-analysis-client-library.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
@@ -41,9 +44,15 @@ Computer Vision Image Analysis サービスでは、画像からさまざまな�
 
 数千個の認識可能なオブジェクト、生物、風景、および動作のセットから、画像内の視覚的な特徴を識別してタグ付けします。 タグが不明確な場合や、常識的でない場合は、API 応答により、タグのコンテキストを明確にするためのヒントが示されます。 タグ付けの対象は、前景の人物などの被写体に限らず、背景 (屋内または屋外)、家具、道具、植物、動物、アクセサリ、ガジェットなども含まれます。 [視覚的特徴のタグ付け](concept-tagging-images.md)
 
+:::image type="content" source="Images/tagging.png" alt-text="右側にタグの一覧が表示されているスケートボーダーの画像":::
+
+
 ### <a name="detect-objects"></a>物体を検出する
 
 オブジェクトの検出はタグ付けに似ていますが、API で返されるのは、各タグが適用された境界ボックスの座標です。 たとえば犬や猫、人物が画像に含まれている場合、検出操作によって、それらのオブジェクトが、画像における対応する座標と共に一覧表示されます。 この機能を使用して、画像内のオブジェクト間のリレーションシップをさらに処理できます。 画像内に同じタグの複数のインスタンスが存在する場合はそれも知ることができます。 [物体を検出する](concept-object-detection.md)
+
+:::image type="content" source="Images/detect-objects.png" alt-text="ラップトップの周りに四角形が描画されたオフィスの画像":::
+
 
 ### <a name="detect-brands"></a>ブランドを検出する
 
@@ -56,6 +65,8 @@ Computer Vision Image Analysis サービスでは、画像からさまざまな�
 ### <a name="describe-an-image"></a>イメージの説明
 
 完全な文を使用して、人間が判読できる言語でイメージ全体の説明を生成します。 Computer Vision のアルゴリズムでは、イメージ内の識別されるオブジェクトに基づいて、さまざまな説明が生成されます。 説明はそれぞれ評価され、信頼度スコアが生成されます。 その後、信頼度スコアが最も高いものから最も低いものの順に並べられたリストが返されます。 [イメージの説明](concept-describing-images.md)
+
+:::image type="content" source="Images/description.png" alt-text="右側に簡単な説明が表示されている牛の画像":::
 
 ### <a name="detect-faces"></a>顔を検出する
 
@@ -73,15 +84,20 @@ Computer Vision Image Analysis サービスでは、画像からさまざまな�
 
 イメージ内にある色の使用状況を分析します。 Computer Vision では、イメージが白黒かカラーかを特定すると共に、カラーのイメージの場合、主要な色やアクセントになる色を識別できます。 [配色の検出](concept-detecting-color-schemes.md)
 
+
+
 ### <a name="generate-a-thumbnail"></a>サムネイルの生成
 
 イメージのコンテンツを分析して、そのイメージの適切なサムネイルを生成します。 Computer Vision では、最初に高品質のサムネイルを生成した後、画像内のオブジェクトを分析して "*関心領域*" を特定します。 Computer Vision では、その後、関心領域の要件に合わせて、画像がトリミングされます。 ユーザーのニーズに応じて、元のイメージの縦横比とは異なる縦横比を使用して、生成されたサムネイルを表示することができます。 [サムネイルの生成](concept-generating-thumbnails.md)
+
+:::image type="content" source="Images/thumbnail-demo.png" alt-text="右側にトリミングされたバージョンがある山上の人の画像":::
+
 
 ### <a name="get-the-area-of-interest"></a>関心領域を取得する
 
 画像の内容が分析され、"*関心領域*" の座標が返されます。 画像をクロップしたり、サムネイルを生成したりする代わりに、Computer Vision では領域の境界ボックスの座標が返されるため、呼び出し元のアプリケーションで必要に応じて元の画像を変更できます。 [関心領域を取得する](concept-generating-thumbnails.md#area-of-interest)
 
-## <a name="moderate-content-in-images"></a>画像内のコンテンツを調整する
+### <a name="moderate-content-in-images"></a>画像内のコンテンツを調整する
 
 Computer Vision を使用すると、画像内の[成人向けコンテンツを検出](concept-detecting-adult-content.md)し、さまざまな分類の信頼度スコアを返すことができます。 コンテンツをフラグ設定するためのしきい値は、自分の都合に合わせて、スライディング スケールで設定することができます。
 

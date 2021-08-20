@@ -1,18 +1,25 @@
 ---
-title: クイック スタート:カスタム イベントを Web エンドポイントに送信する - Event Grid、Azure portal
+title: カスタム イベントを Web エンドポイントに送信する - Event Grid、Azure portal
 description: クイック スタート:Azure Event Grid と Azure portal を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。
-ms.date: 04/22/2021
+ms.date: 07/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 91ac5cfd65910a6297f78f34943331d5b911559b
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: a2d259707e6bfbcc5216b345107507413da71523
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895745"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232450"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>クイック スタート:Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
+# <a name="route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
+Event Grid は、Azure のさまざまなサービスおよびアプリケーション全体でイベントの管理を簡単にするフル マネージド サービスです。 イベント駆動型でサーバーレスのアプリケーションの作成を簡単にします。 サービスの概要については、[Event Grid の概要](overview.md)に関するページを参照してください。
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure portal を使用し、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
+この記事では、Azure portal を使用して次のタスクを行います。 
+
+1. カスタム トピックを作成します。
+1. カスタム トピックをサブスクライブします。
+1. イベントをトリガーします。
+1. 結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
+
 
 ## <a name="prerequisites"></a>前提条件
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
@@ -20,16 +27,13 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
 ## <a name="create-a-custom-topic"></a>カスタム トピックの作成
-
 Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. トピックの検索バーに「**Event Grid トピック**」と入力し、ドロップ ダウン リストから **[Event Grid トピック]** を選択します。 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="&quot;Event Grid トピック&quot; を検索して選択する":::
-3. **[Event Grid トピック]** ページで、ツール バーの **[+ 追加]** を選択します。 
-
-    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="Event Grid トピックの追加ボタン":::
+3. **[Event Grid トピック]** ページで、ツール バーの **[+ 作成]** を選択します。 
 4. **[トピックの作成]** ページで、次の手順に従います。
     1. Azure **サブスクリプション** を選択します。
     2. 既存のリソース グループを選択するか、 **[新規作成]** を選択し、**リソース グループ** の **名前** を入力します。
@@ -41,14 +45,9 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     6. **[トピックの作成]** ページの **[確認と作成]** タブで、 **[作成]** を選択します。 
     
         :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="設定を確認して作成する":::
-5. デプロイが成功したら、もう一度検索バーに「**Event Grid トピック**」と入力し、前と同じようにドロップダウン リストから **[Event Grid トピック]** を選択します。 
-6. 一覧から作成したトピックを選択します。 
+5. デプロイが正常に完了したら、 **[リソースに移動]** を選択して、トピックの **[Event Grid トピック]** ページに移動します。 このページは開いたままにしておきます。 後ほど、このクイック スタートで使用します。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="一覧からトピックを選択する":::
-
-7. 自分のトピックの **[Event Grid トピック]** ページが表示されます。 このページは開いたままにしておきます。 後ほど、このクイック スタートで使用します。 
-
-    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Event Grid トピックのホーム ページ":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="[Event Grid トピック] ホーム ページを示すスクリーンショット":::
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 カスタム トピックのサブスクリプションを作成する前に、イベント メッセージのエンドポイントを作成します。 通常、エンドポイントは、イベント データに基づくアクションを実行します。 このクイック スタートを簡素化するために、イベント メッセージを表示する[構築済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をデプロしします。 デプロイされたソリューションには、App Service プラン、App Service Web アプリ、および GitHub からのソース コードが含まれています。
@@ -56,12 +55,27 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 1. この記事ページで **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションを自分のサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
-1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
+2. **[カスタム デプロイ]** ページで、次の手順を実行します。 
+    1. **[リソース グループ]** で、ストレージ アカウントの作成時に作成したリソース グループを選択します。 チュートリアルの完了後は、リソース グループを削除して容易にクリーンアップすることができます。  
+    2. **[サイト名]** に、Web アプリの名前を入力します。
+    3. Web アプリのホストに使用する App Service プランの名前を **[ホスティング プラン名]** に入力します。
+    5. **[Review + create]\(レビュー + 作成\)** を選択します。 
 
-    デプロイが失敗した場合は、エラー メッセージを確認してください。 Web サイト名が既に取得されていることが原因である可能性があります。 テンプレートを再度デプロイし、サイトに別の名前を選択します。 
-1. サイトは表示されますが、イベントはまだ送信されていません。
+        :::image type="content" source="./media/blob-event-quickstart-portal/template-deploy-parameters.png" alt-text="[カスタム デプロイ] ページのスクリーンショット。":::
+1. **[確認および作成]** ページで、 **[作成]** を選択します。 
+1. デプロイが完了するまでに数分かかる場合があります。 ポータルでアラート (ベルのアイコン) を選択し、 **[リソース グループに移動]** を選択します。 
 
-   ![新しいサイトを表示する](./media/custom-event-quickstart-portal/view-site.png)
+    ![アラート - リソース グループに移動する。](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. **[リソース グループ]** ページのリソースの一覧で、作成した Web アプリを選択します。 この一覧には、App Service プランとストレージ アカウントも表示されます。 
+
+    ![Web サイトを選択する。](./media/blob-event-quickstart-portal/resource-group-resources.png)
+5. Web アプリの **[App Service]** ページで、Web サイトに移動するための URL を選択します。 この URL は、`https://<your-site-name>.azurewebsites.net` 形式になっている必要があります。
+    
+    ![Web サイトに移動する。](./media/blob-event-quickstart-portal/web-site.png)
+
+6. サイトは表示されますが、イベントはまだ送信されていないことを確認します。
+
+   ![新しいサイトを表示する。](./media/blob-event-quickstart-portal/view-site.png)
 
 ## <a name="subscribe-to-custom-topic"></a>カスタム トピックのサブスクライブ
 

@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 6e389cf58b5761d4069cf8a8b1e336d58db7a787
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ff65a473391f8a2435b20b88cacb6a0e18b90ba3
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459298"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360741"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 
@@ -89,7 +89,7 @@ SecurityEvent
 | top 10 by TimeGenerated
 ```
 
-降順が既定の並べ替え順です。そのため、通常は **desc** の引数を省略します。出力は次のようになります。
+降順が既定の並べ替え順です。そのため、通常は **desc** の引数を省略します。 出力は次のようになります。
 
 ![top 10](media/get-started-queries/top10.png)
 

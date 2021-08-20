@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5e32c5f02191e4bd60ad4334884df34ce0bc0537
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 74c43f9c912892370da81bf1ce37a4fb5d40a3df
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537455"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486915"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続
 
@@ -39,7 +39,7 @@ GCP アカウントを Security Center にオンボードすると、GCP Securit
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者** または **共同作成者**|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (US Gov、Azure China)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP アカウントを接続する
@@ -95,7 +95,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
     1. **[追加]** を選択します。
     1. **[新しいメンバー]** フィールドに、先ほどコピーした **[メール] の値** を貼り付けます。
     1. ロールとして **[Security Center Admin Viewer]\(Security Center 管理閲覧者\)** を指定し、 **[保存]** を選択します。
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="関連する GCP のアクセス許可の設定":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="関連する GCP のアクセス許可の設定。":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>手順 4. 専用サービス アカウントの秘密キーを作成する

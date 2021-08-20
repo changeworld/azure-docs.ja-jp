@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/29/2021
 ms.custom: tracking-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: dbbd71a40419ee3472b01be11c101567e6945634
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4d4c7fcb824d57b46df1353f30d3136e129af293
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028219"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765799"
 ---
 # <a name="tutorial-upload-data-and-train-a-model-part-3-of-3"></a>チュートリアル: データをアップロードしてモデルをトレーニングする (3/3)
 
@@ -161,9 +161,6 @@ optimizer = optim.SGD(
 )
 ```
 
-> [!div class="nextstepaction"]
-> [トレーニング スクリプトを調整しました](?success=adjust-training-script#upload) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
-
 
 ## <a name="upload-the-data-to-azure"></a><a name="upload"></a> データを Azure にアップロードする
 
@@ -203,9 +200,6 @@ optimizer = optim.SGD(
     Uploaded ./data\cifar-10-batches-py\data_batch_5, 9 files out of an estimated total of 9
     Uploaded 9 files
     ```
-
-> [!div class="nextstepaction"]
-> [データをアップロードしました](?success=upload-data#control-script) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=upload-data)
 
 ## <a name="create-a-control-script"></a><a name="control-script"></a> コントロール スクリプトを作成する
 
@@ -271,17 +265,12 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [コントロール スクリプトを作成しました](?success=control-script#submit-to-cloud) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=control-script)
-
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-to-cloud"></a> Azure Machine Learning に実行を送信する
 
 **[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択して *run-pytorch-data.py* スクリプトを実行します。  この実行では、コンピューティング クラスターで、アップロードしたデータを使用してモデルをトレーニングします。
 
 このコードにより Azure Machine Learning スタジオの実験に URL が出力されます。 そのリンクに移動すると、実行中の自分のコードを確認できます。
 
-> [!div class="nextstepaction"]
-> [実行を再送信しました](?success=submit-to-cloud#inspect-log) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=submit-to-cloud)
 
 ### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> ログ ファイルの確認
 
@@ -324,8 +313,6 @@ LIST FILES IN DATA PATH...
 - Azure Machine Learning によって Blob Storage が自動的にコンピューティング クラスターにマウントされました。
 - コントロール スクリプトで使用されている ``dataset.as_named_input('input').as_mount()`` は、マウント ポイントに解決されます。
 
-> [!div class="nextstepaction"]
-> [ログ ファイルを確認しました](?success=inspect-log#clean-up-resources) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=inspect-log)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -355,4 +342,5 @@ LIST FILES IN DATA PATH...
 
 モデルを用意できましたので、今度は次のことを学習します。
 
-* [Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)方法。
+> [!div class="nextstepaction"]
+> [Azure Machine Learning を使用してモデルをデプロイする方法](how-to-deploy-and-where.md)。

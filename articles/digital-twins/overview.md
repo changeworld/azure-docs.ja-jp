@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 8213bd8e819e3a6c4a84a95f7c996912ac28ec2b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 519a64ac9e921624f4e8c03fc91f842eacd2672c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539429"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472957"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
@@ -40,7 +40,7 @@ Azure Digital Twins では、[モデル](concepts-models.md)と呼ばれるカ�
 * モデルは、エンティティ間のセマンティック **リレーションシップ** を定義して、それらのやり取りを反映するグラフにツインを接続できるようにします。 モデルは自分の環境を説明する名詞で、リレーションシップは動詞として考えることができます。
 * モデルの継承を使用してツインを特殊化することもできます。 一方のモデルがもう一方のモデルから継承できます。
 
-DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) および [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) などの他の Azure IoT サービス全体でデータ モデルに使用されます。 これにより、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持することができます。
+DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-develop/overview-iot-plug-and-play.md) および [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) などの他の Azure IoT サービス全体でデータ モデルに使用されます。 これにより、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持することができます。
 
 ### <a name="live-execution-environment"></a>ライブ実行環境
 
@@ -101,6 +101,6 @@ Azure Digital Twins の **サービスの制限** については、「[Azure Di
 
 ## <a name="next-steps"></a>次のステップ
 
-* クイック スタート「[クイック スタート: Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)」で、Azure Digital Twins の使用方法について学習します。
+* 「[Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)」に関するページで、Azure Digital Twins の使用方法について学習します。
 
-* または、Azure Digital Twins の概念についての[概念: カスタム モデル](concepts-models.md)に関するページを参照してください。
+* または、[カスタム モデル](concepts-models.md)によって Azure Digital Twins の概念について学びます。

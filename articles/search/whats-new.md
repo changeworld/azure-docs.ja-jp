@@ -6,18 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/28/2021
+ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 57776654087e6e07b8515d76c955cb82ce1e07bf
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 3c44db5c17d1179df03985515acc9133feca198e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787768"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711053"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
 サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。 まだ一般提供されていない機能の包括的な一覧を確認するには、[プレビュー段階の機能の一覧](search-api-preview.md)に関するページを参照してください。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+|機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
+|------------------------------------|--------------|---------------|
+| [Search REST API 2021-04-30-Preview](/rest/api/searchservice/index-preview) | [マネージド ID](search-howto-managed-identities-data-sources.md) と Azure Active Directory (Azure AD) 認証を使用して行われるインデクサー接続の REST API サポートを追加します。 | パブリック プレビュー |
+| [ロールベースの承認 (プレビュー)](search-security-rbac.md) | データ プレーンからインデックスとインデックス作成へのアクセスのために Azure Active Directory と新しい組み込みのロールを使用して認証することで、API キーへの依存を解消または軽減します。 | パブリック プレビュー ([要求による](https://aka.ms/azure-cognitive-search/rbac-preview))。 サブスクリプションのオンボード化後、Azure portal または管理 REST API バージョン 2021-04-01- プレビューを使用して、データ プレーン認証用に検索サービスを構成します。|
+| [管理 REST API 2021-04-01-Preview](/rest/api/searchmanagement/) | 新しい [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) をサポートするために [[サービスの作成または更新]](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を変更します。 | パブリック プレビュー |
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -33,16 +41,16 @@ ms.locfileid: "110787768"
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
 |------------------------------|---------------|---------------|
-| [Gremlin API のサポート](search-howto-index-cosmosdb-gremlin.md) | インデクサーベースのインデックス作成で、Gremlin API を介してアクセスされる Cosmos DB からコンテンツを取得するデータ ソースを作成できるようになりました。 | api-version=2020-06-30-Preview を使用したパブリック プレビュー ([リクエストによる](https://aka.ms/azure-cognitive-search/indexer-preview))。 |
+| [Gremlin API サポート (プレビュー)](search-howto-index-cosmosdb-gremlin.md) | インデクサーベースのインデックス作成で、Gremlin API を介してアクセスされる Cosmos DB からコンテンツを取得するデータ ソースを作成できるようになりました。 | api-version=2020-06-30-Preview を使用したパブリック プレビュー ([リクエストによる](https://aka.ms/azure-cognitive-search/indexer-preview))。 |
 
 ## <a name="march-2021"></a>2021 年 3 月
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
 |------------------------------|---------------|---------------|
-| [セマンティック検索](semantic-search-overview.md) | クエリ要求の最小限の調整で検索結果の関連性を大幅に向上させる、クエリ関連の機能のコレクション。 </br></br>[セマンティックの順位付け](semantic-ranking.md)は、単語と内容の裏にあるセマンティックな意味を使用して関連性スコアを計算します。 </br></br>[セマンティック キャプション](semantic-how-to-query-request.md)は、当該ドキュメントを最も的確に要約している、関連性の高い一節を、最も重要な用語や語句を強調してドキュメントから返します。 </br></br>[セマンティック回答](semantic-answers.md)は、検索ドキュメントから抽出された重要な一節を返します。これは、クエリ (質問のような形式) に対する直接回答の形式で作成されます。 | パブリック プレビュー ([要求による](https://aka.ms/SemanticSearchPreviewSignup))。 </br></br>Azure portal で、[Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) api-version = 2020-06-30-Preview または[検索エクスプローラー](search-explorer.md)を使用してください。 </br></br>リージョンとレベルの制限が適用されます。 |
-| [クエリ用語のスペル チェック](speller-how-to-add.md) | クエリの用語が検索エンジンに到達する前に、スペル ミスをチェックすることができます。 `speller` オプションは、任意の種類のクエリ (単純、フル、またはセマンティック) で動作します。 |  パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview|
-| [SharePoint Online インデクサー](search-howto-index-sharepoint-online.md) | ドキュメント ライブラリのコンテンツにインデックスを付けることができるように、このインデクサーによって SharePoint Online サイトに接続されます。 | パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview |
-| [ノーマライザー](search-normalizers.md) | ノーマライザーでは、完全なテキスト分析チェーンを呼び出さずに、一貫した大文字と小文字の区別、アクセントの削除、ASCII フォールディングなど、単純なテキストの事前処理が提供されます。| パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview |
+| [セマンティック検索 (プレビュー)](semantic-search-overview.md) | クエリ要求の最小限の調整で検索結果の関連性を大幅に向上させる、クエリ関連の機能のコレクション。 </br></br>[セマンティックの順位付け](semantic-ranking.md)は、単語と内容の裏にあるセマンティックな意味を使用して関連性スコアを計算します。 </br></br>[セマンティック キャプション](semantic-how-to-query-request.md)は、当該ドキュメントを最も的確に要約している、関連性の高い一節を、最も重要な用語や語句を強調してドキュメントから返します。 </br></br>[セマンティック回答](semantic-answers.md)は、検索ドキュメントから抽出された重要な一節を返します。これは、クエリ (質問のような形式) に対する直接回答の形式で作成されます。 | パブリック プレビュー ([要求による](https://aka.ms/SemanticSearchPreviewSignup))。 </br></br>Azure portal で、[Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) api-version = 2020-06-30-Preview または[検索エクスプローラー](search-explorer.md)を使用してください。 </br></br>リージョンとレベルの制限が適用されます。 |
+| [クエリ用語のスペル チェック (プレビュー)](speller-how-to-add.md) | クエリの用語が検索エンジンに到達する前に、スペル ミスをチェックすることができます。 `speller` オプションは、任意の種類のクエリ (単純、フル、またはセマンティック) で動作します。 |  パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview|
+| [SharePoint Online インデクサー (プレビュー)](search-howto-index-sharepoint-online.md) | ドキュメント ライブラリのコンテンツにインデックスを付けることができるように、このインデクサーによって SharePoint Online サイトに接続されます。 | パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview |
+| [ノーマライザー (プレビュー)](search-normalizers.md) | ノーマライザーでは、完全なテキスト分析チェーンを呼び出さずに、一貫した大文字と小文字の区別、アクセントの削除、ASCII フォールディングなど、単純なテキストの事前処理が提供されます。| パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview |
 | [カスタム エンティティの参照スキル](cognitive-search-skill-custom-entity-lookup.md ) |  ユーザーが定義したカスタムの単語と語句のリストからテキストを検索するコグニティブ スキル。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。 | 一般提供されています。 |
 
 ## <a name="february-2021"></a>2021 年 2 月
@@ -91,14 +99,14 @@ ms.locfileid: "110787768"
 |Ferbruary | [PII 検出スキル (プレビュー)](cognitive-search-skill-pii-detection.md)  | 個人情報を抽出してマスクするコグニティブ スキル。 |
 |Ferbruary | [カスタム エンティティの参照スキル (プレビュー)](cognitive-search-skill-custom-entity-lookup.md) | リストから単語や語句を検索し、一致するエンティティを含むすべてのドキュメントにラベルを付けるコグニティブ スキル。  |
 |January | [カスタマー マネージド キー暗号化](search-security-manage-encryption-keys.md) | 一般公開  |
-|January | [インバウンド ファイアウォールをサポートするための IP 規則 (プレビュー)](service-configure-firewall.md) | [CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) の新しい **IpRule** および **NetworkRuleSet** プロパティ。  |
+|January | [インバウンド ファイアウォールをサポートするための IP 規則 (プレビュー)](service-configure-firewall.md) | [CreateOrUpdate API](/rest/api/searchmanagement/2020-08-01/services/create-or-update) の新しい **IpRule** および **NetworkRuleSet** プロパティ。  |
 |January | [プライベート エンドポイントを作成する (プレビュー)](service-create-private-endpoint.md) | 検索サービスへの接続をセキュリティで保護するために Private Link を設定します。 このプレビュー機能には、ソリューションの一部として、[Azure Private Link](../private-link/private-link-overview.md) と [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) の依存関係があります。 |
 
 ## <a name="2019-archive"></a>2019 年アーカイブ
 
 | 月 | 機能 | 説明 |
 |-------|---------|-------------|
-|12 月 | [デモ アプリの作成 (プレビュー)](search-create-app-portal.md) | インデックスへのクエリ (読み取り専用) アクセスを使用してダウンロード可能な HTML ファイルを生成するウィザード。完全なクライアント アプリへの近道ではなく、検証およびテスト ツールとして使用することを目的としています。|
+|12 月 | [デモ アプリを作成する](search-create-app-portal.md) | インデックスへのクエリ (読み取り専用) アクセスを使用してダウンロード可能な HTML ファイルを生成するウィザード。完全なクライアント アプリへの近道ではなく、検証およびテスト ツールとして使用することを目的としています。|
 |November | [インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) | 今後、再利用するために、スキルセット処理をキャッシュします。  |
 |November | [ドキュメント抽出スキル (プレビュー)](cognitive-search-skill-document-extraction.md) | スキルセット内からファイルの内容を抽出するコグニティブ スキル。|
 |November | [テキスト翻訳スキル](cognitive-search-skill-text-translation.md) | テキストを評価し、翻訳するコグニティブ スキル。インデックス作成中に使用されます。 一般提供されています。|

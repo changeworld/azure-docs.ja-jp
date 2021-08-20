@@ -1,17 +1,17 @@
 ---
 title: クイック スタート:初めての Python クエリ
 description: このクイックスタートでは、手順に従って、Python 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: ffb58b301e850c3887b0a554788b243f2cf262f6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aa64fb646e45c950dcade38ee7cec189b3501f9e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751663"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457416"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>クイック スタート:Python を使用して初めての Resource Graph クエリを実行する
 
@@ -67,7 +67,7 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-選択した環境に Python ライブラリを追加したので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
+ご自分の選択した環境に Python ライブラリが追加されたので、簡単なサブスクリプション ベースの Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。 [管理グループ](../management-groups/overview.md)でクエリを実行する場合、`QueryRequest` とともに `management_groups` パラメーターを使用します。
 
 1. インストールしたライブラリと `resources` メソッドを使用して、初めての Azure Resource Graph を実行します。
 

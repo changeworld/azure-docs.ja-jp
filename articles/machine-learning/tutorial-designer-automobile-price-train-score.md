@@ -1,28 +1,29 @@
 ---
-title: チュートリアル:デザイナーを使用して自動車の価格を予測する
+title: 'チュートリアル: デザイナー - コードなし回帰モデルをトレーニングする'
 titleSuffix: Azure Machine Learning
-description: 線形回帰を使用して自動車の価格を予測する機械学習モデルをトレーニングします。 このチュートリアルは、2 部構成のシリーズのパート 1 です。
+description: Azure Machine Learning デザイナーを使用して自動車の価格を予測する回帰モデルをトレーニングします。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.custom: designer
-ms.openlocfilehash: 7f602f82063e2a8092eecf533a75449231c1e900
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 06/11/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: f8e544681f940e649e1d04d148caafb875c69952
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660986"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472922"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する
+# <a name="tutorial-designer---train-a-no-code-regression-model"></a>チュートリアル: デザイナー - コードなし回帰モデルをトレーニングする
 
+Azure Machine Learning デザイナーを使用して自動車の価格を予測する線形回帰モデルをトレーニングします。 このチュートリアルは、2 部構成のシリーズのパート 1 です。
 
-この 2 部構成のチュートリアルでは、Azure Machine Learning のデザイナーを使用して、自動車の価格を予測する機械学習モデルをトレーニングおよびデプロイする方法について説明します。 このデザイナーはドラッグ アンド ドロップ式のツールであり、コードを 1 行も書くことなく機械学習モデルを作成できます。
+このチュートリアルでは、Azure Machine Learning デザイナーを使用します。詳細については、「[Azure Machine Learning デザイナーとは](concept-designer.md)」を参照してください。
 
-チュートリアルのパート 1 で学習する内容は次のとおりです。
+このチュートリアルのパート 1 では、次の方法について学習します。
 
 > [!div class="checklist"]
 > * 新しいパイプラインを作成する。

@@ -3,18 +3,18 @@ title: チュートリアル - Azure Cost Management からデータをエクス
 description: この記事では、外部システムで使用できるように Azure Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/06/2021
+ms.date: 07/26/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9f9afe0b7c27fb2199f9bdcd1fa5edbe4da01602
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 592ef54b359c84309da350bf53da6bb0a4152374
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517642"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708640"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -247,7 +247,7 @@ Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-00
 
 #### <a name="create-an-export-for-multiple-subscriptions"></a>複数のサブスクリプションのエクスポートを作成する
 
-マイクロソフト エンタープライズ契約をご利用の場合は、管理グループを使用して、サブスクリプションのコスト情報を 1 つのコンテナーに集約できます。 そのうえで、管理グループのコスト管理データをエクスポートできます。
+マイクロソフト エンタープライズ契約をご利用の場合は、管理グループを使用して、サブスクリプションのコスト情報を 1 つのコンテナーに集約できます。 そのうえで、管理グループのコスト管理データをエクスポートできます。 管理グループのエクスポートでは、実際のコストのみがサポートされます。
 
 他の種類のサブスクリプションでは、管理グループのエクスポートはサポートされません。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 82c24a38d8b693bb931be75b3be5d3bfaaa2d38f
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 641a2f902cd0cf0540cd4cd217f720beaa70a7d2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615663"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460990"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -117,24 +117,85 @@ _**AdtE2ESample**_ プロジェクトが開かれた状態の Visual Studio ウ�
 
 ### <a name="publish-the-app"></a>アプリの発行
 
-_**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィンドウに戻り、 "*ソリューション エクスプローラー*" ペインで _**SampleFunctionsApp**_ プロジェクトを見つけます。
+関数アプリを Azure に発行するには、まずストレージ アカウントを作成し、次に Azure に関数アプリを作成し、最後に関数を Azure 関数アプリに発行する必要があります。 このセクションでは、Azure CLI を使用してこれらのアクションを完了します。
 
-[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+1. 次のコマンドを使用して、**Azure ストレージ アカウント** を作成します。
 
-関数アプリから Azure Digital Twins にアクセスできるようにするには、Azure Digital Twins インスタンスとインスタンスのホスト名にアクセスするためのアクセス許可を付与する必要があります。 これは次のように構成します。
+    ```azurecli-interactive
+    az storage account create --name <name-for-new-storage-account> --location <location> --resource-group <resource-group> --sku Standard_LRS
+    ```
+
+1. 次のコマンドを実行して **Azure 関数アプリ** を作成します。
+
+    ```azurecli-interactive
+    az functionapp create --name <name-for-new-function-app> --storage-account <name-of-storage-account-from-previous-step> --consumption-plan-location <location> --runtime dotnet --resource-group <resource-group>
+    ```
+
+1. 次に、関数を **zip** で圧縮し、新しい Azure 関数アプリに **発行** します。
+
+    1. ローカル コンピューター上で PowerShell などのターミナルを開き、チュートリアルで前にダウンロードした [Digital Twins サンプル リポジトリ](https://github.com/azure-samples/digital-twins-samples/tree/master/)に移動します。 ダウンロードしたリポジトリ フォルダー内の *digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp* に移動します。
+    
+    1. ターミナルで次のコマンドを実行し、プロジェクトを発行します。
+
+        ```powershell
+        dotnet publish -c Release
+        ```
+
+        このコマンドにより、プロジェクトは *digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp\bin\Release\netcoreapp3.1\publish* ディレクトリに発行されます。
+
+    1. *digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp\bin\Release\netcoreapp3.1\publish* ディレクトリにある、発行されたファイルの zip を作成します。 
+        
+        PowerShell を使用している場合、これを実行するには、その *\publish* ディレクトリの完全なパスをコピーし、次のコマンドに貼り付けます。
+    
+        ```powershell
+        Compress-Archive -Path <full-path-to-publish-directory>\* -DestinationPath .\publish.zip
+        ```
+
+        このコマンドレットにより、ターミナルのディレクトリの位置に **publish.zip** ファイルが作成されます。この中には *host.json* ファイルと、*bin*、*ProcessDTRoutedData*、および *ProcessHubToDTEvents* の各ディレクトリが含まれています。
+
+        PowerShell を使用しておらず、`Compress-Archive` コマンドレットにアクセスできない場合は、エクスプローラーまたは他の方法を使用してファイルを zip で圧縮する必要があります。
+
+1. Azure CLI で次のコマンドを実行し、発行され zip で圧縮された関数を Azure 関数アプリにデプロイします。
+
+    ```azurecli-interactive
+    az functionapp deployment source config-zip --resource-group <resource-group> --name <name-of-your-function-app> --src "<full-path-to-publish.zip>"
+    ```
+
+    > [!NOTE]
+    > Azure CLI をローカルで使用している場合、お使いのマシン上でパスを使用して、コンピューター上の ZIP ファイルに直接アクセスできます。
+    > 
+    >Azure Cloud Shell を使用している場合は、コマンドを実行する前に、このボタンを使用して ZIP ファイルを Cloud Shell にアップロードします。
+    >
+    > :::image type="content" source="media/tutorial-end-to-end/azure-cloud-shell-upload.png" alt-text="ファイルをアップロードする方法が強調表示された Azure Cloud Shell のスクリーンショット。":::
+    >
+    > この場合、ファイルは Cloud Shell ストレージのルート ディレクトリにアップロードされるので、コマンドの `--src` パラメーターにファイル名を指定して (`--src publish.zip` のように) 直接参照することができます。
+
+    デプロイが成功すると、状態コード 202 で応答され、新しい関数の詳細を含む JSON オブジェクトが出力されます。 結果にこのフィールドがあることで、デプロイの成功を確認できます。
+
+    ```json
+    {
+      ...
+      "provisioningState": "Succeeded",
+      ...
+    }
+    ```
+
+これで、Azure 関数アプリに関数が発行されました。
+
+次に、関数アプリから Azure Digital Twins にアクセスできるようにするには、Azure Digital Twins インスタンスにアクセスするためのアクセス許可を付与する必要があります。 このアクセスを次のセクションで構成します。
 
 ### <a name="configure-permissions-for-the-function-app"></a>関数アプリのアクセス許可を構成する
 
-関数アプリから Azure Digital Twins インスタンスにアクセスできるようにするには、次の 2 つの設定を構成する必要があります。 これらはどちらも、[Azure Cloud Shell](https://shell.azure.com) のコマンドを使用して実行できます。 
+関数アプリから Azure Digital Twins インスタンスにアクセスできるようにするには、次の 2 つの設定を構成する必要があります。 これらはどちらも Azure CLI を使用して実行できます。 
 
 #### <a name="assign-access-role"></a>アクセス ロールの割り当て
 
-最初の設定によって、関数アプリに Azure Digital Twins インスタンスの **Azure Digital Twins データ所有者** ロールが付与されます。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[概念: Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)に関するページを参照してください。 
+最初の設定によって、関数アプリに Azure Digital Twins インスタンスの **Azure Digital Twins データ所有者** ロールが付与されます。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当てについては、「[Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)」を参照してください。 
 
 1. 次のコマンドを使用して、関数のシステム マネージド ID の詳細を確認します。 出力の **principalId** フィールドを書き留めてください。
 
     ```azurecli-interactive 
-    az functionapp identity show -g <your-resource-group> -n <your-App-Service-function-app-name>   
+    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-function-app-name> 
     ```
 
     >[!NOTE]
@@ -439,4 +500,4 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 今度は、次のチュートリアルの概念ドキュメントを参照し、ここで扱った要素についてさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
-> [概念:カスタム モデル](concepts-models.md)
+> [カスタム モデル](concepts-models.md)

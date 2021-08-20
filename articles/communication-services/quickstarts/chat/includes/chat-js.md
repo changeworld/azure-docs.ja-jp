@@ -6,26 +6,26 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: b6f53a7c67ac9eeaf103541c471741f24f0302ce
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 63653bb72c278a330101503dbaf2959b7e0eb39f
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593849"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201498"
 ---
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat) にあります
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Node.js](https://nodejs.org/en/download/) のアクティブ LTS バージョンおよびメンテナンス LTS バージョンをインストールします。
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
 - "*3 人*" の ACS ユーザーを作成し、それに対して [ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモ** してください。 完全なデモでは、最初の 2 名の参加者でスレッドを作成し、3 人目の参加者をスレッドに追加します。
 
 ## <a name="setting-up"></a>設定
@@ -129,7 +129,7 @@ let userAccessToken = '<USER_ACCESS_TOKEN>';
 let chatClient = new ChatClient(endpointUrl, new AzureCommunicationTokenCredential(userAccessToken));
 console.log('Azure Communication Chat client created!');
 ```
-- **endpointUrl** は、Communication Services リソースのエンドポイントに置き換えます。まだご覧になっていない場合は、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。
+- **endpointUrl** は、Communication Services リソースのエンドポイントに置き換えます。まだご覧になっていない場合は、[Azure Communication Services リソースの作成](../../create-communication-resource.md)に関するページを参照してください。
 - **userAccessToken** は、発行したトークンに置き換えます。
 
 
@@ -151,8 +151,8 @@ JavaScript 用 Azure Communication Services Chat SDK が備える主な機能の
 
 | 名前                                   | 説明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | このクラスは、チャット機能に必要となります。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
-| ChatThreadClient | このクラスはチャット スレッド機能に必要です。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信、受信、更新、削除、ユーザーの追加、削除、取得、入力通知の送信、開封確認、チャット イベントのサブスクライブを行います。 |
+| ChatClient | このクラスは、チャット機能に必要となります。 自分のサブスクリプション情報を使用してインスタンスを生成し、それを使用してスレッドを作成、取得、削除し、チャット イベントにサブスクライブします。 |
+| ChatThreadClient | このクラスはチャット スレッド機能に必要です。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信/受信/更新/削除、ユーザーの追加/削除/取得、入力通知の送信、開封確認を行います。 |
 
 
 ## <a name="start-a-chat-thread"></a>チャット スレッドを開始する

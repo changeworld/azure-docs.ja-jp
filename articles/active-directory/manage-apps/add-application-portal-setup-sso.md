@@ -1,23 +1,25 @@
 ---
-title: クイックスタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定する
+title: 'クイック スタート: アプリケーションの SAML ベースのシングル サインオンを設定する'
+titleSuffix: Azure AD
 description: このクイックスタートでは、Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定するプロセスについて説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
-ms.author: mtillman
-ms.openlocfilehash: 81a1d2eeeb1b82c488598bc081453193e360d6d5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2020
+ms.author: davidmu
+ms.reviewer: ergleenl
+ms.openlocfilehash: cded1a874c48cab43e24a19acc6707aa8de7d1e7
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077521"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669405"
 ---
-# <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイックスタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定する
+# <a name="quickstart-set-up-saml-based-single-sign-on-for-an-application"></a>クイック スタート: アプリケーションの SAML ベースのシングル サインオンを設定する
 
 Azure Active Directory (Azure AD) テナントに追加したアプリケーションへのシングル サインオン (SSO) を設定することで、簡略化されたユーザー ログインの利用を開始します。 SSO を設定すると、ユーザーが自分の Azure AD の資格情報を使用してアプリケーションにサインインできるようになります。 SSO は Azure AD の Free Edition に含まれています。
 
@@ -32,7 +34,6 @@ Azure AD テナントに追加したアプリケーションへの SSO を設定
 - 省略可能:[アプリの追加](add-application-portal.md)の完了。
 - 省略可能:[アプリの構成](add-application-portal-configure.md)の完了。
 - 省略可能:[アプリへのユーザーの割り当て](add-application-portal-assign-users.md)の完了。
-
 
 >[!IMPORTANT]
 >このクイックスタートの手順をテストする場合は、非運用環境を使用してください。
@@ -49,8 +50,6 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
     > [!IMPORTANT]
     > アプリで SSO に OpenID Connect (OIDC) が使用される場合、ナビゲーションにシングル サインオン オプションが表示されません。 OIDC ベース SSO に関するクイックスタートを参照し、設定方法を習得してください。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="Azure AD ポータル上のシングル サインオンの構成ページを示すスクリーンショット。":::
-
 1. **[SAML]** を選択して SSO の構成ページを開きます。 この例では、SSO 用に構成しているアプリケーションは GitHub です。 GitHub が設定されると、ユーザーは自分の Azure AD テナントの資格情報を使用して GitHub にサインインできるようになります。
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="GitHub 上のシングル サインオンの構成ページを示すスクリーンショット。":::
@@ -60,11 +59,8 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
     > [!TIP]
     > SAML 構成オプションの詳細については、「[SAML ベースのシングル サインオンの構成](configure-saml-single-sign-on.md)」を参照してください。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="GitHub の価格設定ページの Enterprise サブスクリプション内に表示されたシングル サインオン オプションを示すスクリーンショット。":::
-
 > [!TIP]
 > Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](/graph/application-saml-sso-configure-api)に関するページを参照してください。
-
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

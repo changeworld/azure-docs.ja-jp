@@ -3,17 +3,21 @@ title: クイックスタート - Azure Communication Services を使用して M
 description: このクイックスタートでは、iOS 用の Azure Communication Services Teams Embed ライブラリを使用する方法について説明します。
 author: palatter
 ms.author: palatter
-ms.date: 01/25/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5c2f53138d6f716d2917cff831e9b86c40b77a00
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: b960357782ef7bac6d5c3425dbf3f93aa5600640
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111545836"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218145"
 ---
 このクイックスタートでは、iOS 用の Azure Communication Services Teams Embed ライブラリを使用して Microsoft Teams 会議に参加する方法について説明します。
+
+## <a name="sample-code"></a>サンプル コード
+
+サンプル アプリは [GitHub](https://github.com/Azure-Samples/teams-embed-ios-getting-started) からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -88,10 +92,11 @@ end
 
 ### <a name="add-the-teams-embed-framework"></a>Teams Embed フレームワークを追加する
 
-1. `MicrosoftTeamsSDK` iOS パッケージをダウンロードします。
+1. `Teams Embed iOS SDK Bundle` をダウンロードして、圧縮を解除します。
 2. プロジェクト ルートに `Frameworks` フォルダーを作成します。 例: `\TeamsEmbedGettingStarted\Frameworks\`
-3. ダウンロードした `TeamsAppSDK.framework`、`MeetingUIClient.framework`、およびリリース バンドルで提供されているその他のフレームワークを、このフォルダーにコピーします。
-4. フレームワークを全般タブのプロジェクト ターゲットに追加します。[`Add Other`]\(その他のものを追加\) -> [`Add Files...`]\(ファイルを追加\) を使用してフレームワーク ファイルに移動し、それらを追加します。
+3. ダウンロードした `AzureMeetingUIClient.xcframework`、`TeamsAppSDK.xcframework`、およびリリース バンドルで提供されているその他のフレームワークを、上記のフォルダーにコピーします。
+4. フレームワークを全般タブのプロジェクト ターゲットに追加します。[`Add Other`]\(その他のものを追加\) -> [`Add Files...`]\(ファイルを追加\) を使用してフレームワーク ファイルに移動し、それらを追加します。 
+5. 追加されたすべてのフレームワークに対して、[`Embed & Sign`]\(埋め込みとサイン\) を選択します。 
 
 :::image type="content" source="../media/ios/xcode-add-frameworks.png" alt-text="Xcode で追加されたフレームワークを示すスクリーンショット。":::
 
@@ -143,6 +148,7 @@ override func viewDidLoad() {
     self.view.addSubview(button)
     button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+}
 ```
 
 **ViewController.swift** でボタンのアウトレットを作成します。
@@ -160,7 +166,7 @@ override func viewDidLoad() {
 ```swift
 import UIKit
 import AzureCommunicationCommon
-import MeetingUIClient
+import AzureMeetingUIClient
 ```
 
 `ViewController` クラスの実装を、ユーザーが会議に参加するためのシンプルなボタンに置き換えます。 このクイックスタートでは、このボタンにビジネス ロジックをアタッチします。
@@ -195,22 +201,19 @@ Azure Communication Services Teams Embed ライブラリが備える主な機能
 | ------------------------------------- | ------------------------------------------------------------ |
 | MeetingUIClient | MeetingUIClient は、Teams Embed ライブラリへのメイン エントリ ポイントです。 |
 | MeetingUIClientMeetingJoinOptions | MeetingUIClientMeetingJoinOptions は、表示名など、構成可能なオプションに使用されます。 |
-| MeetingUIClientGroupCallJoinOptions | MeetingUIClientMeetingJoinOptions は、表示名など、構成可能なオプションに使用されます。 |
+| MeetingUIClientGroupCallJoinOptions | MeetingUIClientGroupCallJoinOptions は、表示名など、構成可能なオプションに使用されます。 |
 | MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator は、会議に参加するための会議 URL を設定するために使用されます。 |
 | MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator は、参加するグループ ID を設定するために使用されます。 |
-| MeetingUIClientInCallScreenDelegate | MeetingUIClientInCallScreenDelegate は、UI のメイン通話画面のカスタマイズを行うために使用されます。 |
-| MeetingUIClientStagingScreenDelegate | MeetingUIClientStagingScreenDelegate は、UI のステージング通話画面のカスタマイズを行うために使用されます。 |
-| MeetingUIClientConnectingScreenDelegate | MeetingUIClientConnectingScreenDelegate は、UI の通話の接続画面のカスタマイズを行うために使用されます。 |
 | MeetingUIClientIconType | MeetingUIClientIconType は、アプリ固有のアイコンに置き換えることができるアイコンを指定するために使用されます。 |
-| MeetingUIClientCall | MeetingUIClientCall により、通話について説明します。また、それを制御する API が用意されています。 |
+| MeetingUIClientCall | MeetingUIClientCall は、通話について記述します。また、それを制御する API が用意されています。 |
 | MeetingUIClientCallState | MeetingUIClientCallState は、呼び出し状態の変化をレポートする目的で使用されます。 `connecting`、`waitingInLobby`、`connected`、`ended` の各オプションがあります。 |
-| MeetingUIClientUserRole | MeetingUIClientUserRole は、グループ通話におけるユーザーのロールを設定するために使用されます。 |
 | MeetingUIClientAudioRoute | MeetingUIClientAudioRoute は、`Earpiece` や `SpeakerOn` などのローカル オーディオ ルートに使用されます。 |
 | MeetingUIClientLayoutMode | MeetingUIClientLayoutMode は、通話の UI モードで異なるものを選択できるようにするために使用されます。 |
-| MeetingUIClientAvatarSize | MeetingUIClientAvatarSize は、デリゲートからどのようなサイズのアバターが要求されているかを通知するために使用されます。 |
+| MeetingUIClientAvatarSize | MeetingUIClientAvatarSize は、MeetingUIClientCallIdentityProvider が要求できるさまざまなアバター サイズを示す列挙型です。 |
 | MeetingUIClientCallDelegate | MeetingUIClientDelegate は、呼び出し状態の変化など、イベントを受け取る目的で使用されます。 |
 | MeetingUIClientCallIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate は、ユーザーの詳細を会議内のユーザーにマップするために使用されます。 |
 | MeetingUIClientCallUserEventDelegate | MeetingUIClientUserEventDelegate は、UI でのユーザー操作に関する情報を提供します。 |
+| MeetingUIClientCallRosterDelegate | MeetingUIClientCallRosterDelegate は、通話名簿に関する情報を提供します。 |
 
 ## <a name="create-and-authenticate-the-client"></a>クライアントを作成して認証する
 
@@ -252,7 +255,7 @@ private func fetchTokenAsync(completionHandler: @escaping TokenRefreshHandler) {
 
 ```swift
 private func joinMeeting() {
-    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
+    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: false, enableNamePlateOptionsClickDelegate: false, enableCallStagingScreen: false, enableCallRosterDelegate: false)
     let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: "<MEETING_URL>")
     meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (meetingUIClientCall: MeetingUIClientCall?, error: Error?) in
         if (error != nil) {
@@ -272,7 +275,7 @@ private func joinMeeting() {
 
 ### <a name="get-a-microsoft-teams-meeting-link"></a>Microsoft Teams 会議のリンクを取得する
 
-Microsoft Teams 会議のリンクは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)で詳しく説明されています。
+Microsoft Teams 会議のリンクは、Graph API を使用して取得できます。 このプロセスについては、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)で詳しく説明されています。
 Communication Services 通話 SDK は、Microsoft Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
 
 ## <a name="run-the-code"></a>コードの実行
@@ -295,8 +298,3 @@ Microsoft Teams SDK では、100 を超える文字列とリソースがサポ�
 1. アプリの Xcode プロジェクトの [Info]\(情報\) > [Localizations]\(ローカライズ\) リストから、アプリケーションでサポートするローカライズの種類を指定します
 2. パッケージに含まれている Localizations.zip を解凍します
 3. 解凍したフォルダーから、アプリのサポート対象に基づいてローカライズ フォルダーを TeamsAppSDK.framework のルートにコピーします
-
-
-## <a name="sample-code"></a>サンプル コード
-
-サンプル アプリは [GitHub](https://github.com/Azure-Samples/teams-embed-ios-getting-started) からダウンロードできます

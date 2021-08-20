@@ -1,26 +1,28 @@
 ---
-title: クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する
+title: 'クイック スタート: アプリケーションのプロパティを構成する'
+titleSuffix: Azure AD
 description: このクイック スタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントに登録されているアプリケーションを構成します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/29/2019
-ms.author: mtillman
-ms.openlocfilehash: b6c122d4c59a319753bed0a070ab7aef5157906d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2021
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: b043867dad8e9571421fe67a83844f8d13a04212
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077575"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669423"
 ---
-# <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する
+# <a name="quickstart-configure-properties-for-an-application"></a>クイック スタート: アプリケーションのプロパティを構成する
 
 前のクイックスタートでは、Azure Active Directory (Azure AD) テナントにアプリケーションを追加しました。 アプリケーションを追加すると、Azure AD テナントにアプリの ID プロバイダーであることを認識させることになります。 次に、アプリのプロパティをいくつか構成します。
- 
+
 ## <a name="prerequisites"></a>前提条件
 
 Azure AD テナントのアプリケーションのプロパティを構成するには、次のものが必要です。
@@ -35,7 +37,7 @@ Azure AD テナントのアプリケーションのプロパティを構成す�
 
 ## <a name="configure-app-properties"></a>アプリのプロパティを構成する
 
-Azure AD テナントへのアプリケーションの追加が完了すると、概要ページが表示されます。 既に追加されているアプリケーションを構成する場合は、最初のクイックスタートを参照してください。 テナントに追加されているアプリケーションを表示する手順が説明されています。 
+Azure AD テナントへのアプリケーションの追加が完了すると、概要ページが表示されます。 既に追加されているアプリケーションを構成する場合は、最初のクイックスタートを参照してください。 テナントに追加されているアプリケーションを表示する手順が説明されています。
 
 アプリケーションのプロパティを編集するには:
 
@@ -45,12 +47,12 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
     - **[ユーザーのサインインが有効になっていますか?]** は、アプリケーションに割り当てられているユーザーがサインインできるかどうかを決定します。
     - **[ユーザーの割り当てが必要ですか?]** は、アプリケーションに割り当てられていないユーザーがサインインできるかどうかを決定します。
     - **[ユーザーに表示しますか?]** は、アプリに割り当てられているユーザーが、[マイ アプリ](https://myapps.microsoft.com)と Microsoft 365 アプリ起動ツールにアプリを表示できるかどうかを決定します (Microsoft 365 Web サイトの左上隅にあるワッフル メニューを参照してください)。
-    
+
     > [!TIP]
     > ユーザーの割り当ては、ナビゲーションの **[ユーザーとグループ]** セクションで行われます。
 
     3 つのオプションは互いに独立して切り替えることができ、結果の動作が常に明らかであるとは限りません。 次の表を参考にしてください。
-    
+
     | ユーザーのサインインが有効になっていますか? | ユーザーの割り当てが必要ですか? | ユーザーに表示しますか? | アプリに割り当てられているまたは割り当てられていないユーザーの動作 |
     |---|---|---|---|
     | はい | はい | はい | 割り当てられているユーザーはアプリを表示し、サインインできます。<br>割り当てられていないユーザーはアプリを表示できず、サインインすることもできません。 |
@@ -70,15 +72,14 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
 
 1. 215 x 215 ピクセルのロゴを作成し、.png 形式で保存します。
 2. Azure AD portal で、 **[エンタープライズ アプリケーション]** を選択します。 次に、構成するアプリケーションを探して選択します。
-3. **[管理]** セクションで、 **[プロパティ]** を選択して編集用の **[プロパティ]** ペインを開きます。 
+3. **[管理]** セクションで、 **[プロパティ]** を選択して編集用の **[プロパティ]** ペインを開きます。
 4. アイコンを選択してロゴをアップロードします。
 5. 完了したら、 **[保存]** をクリックします。
 
-    ![ロゴの変更方法を示す [プロパティ] 画面のスクリーンショット。](media/add-application-portal/change-logo.png)
+    :::image type="content" source="media/add-application-portal/change-logo.png" alt-text="ロゴの変更方法を示す [プロパティ] 画面のスクリーンショット。":::
 
    > [!NOTE]
    > この **[プロパティ]** ペインに表示されるサムネイルは、すぐには更新されません。 **[プロパティ]** ペインを閉じて再度開くと、更新されたアイコンが表示されます。
-
 
 > [!TIP]
 > Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](/graph/application-saml-sso-configure-api)に関するページを参照してください。
@@ -91,9 +92,6 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
 2. **[管理]** セクションで、 **[プロパティ]** を選択して編集用の **[プロパティ]** ペインを開きます。
 3. [メモ] フィールドを更新し、 **[保存]** を選択します。
 
-    ![メモの変更方法を示す [プロパティ] 画面のスクリーンショット](media/add-application-portal/notes-application.png)
-
-    
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 クイックスタート シリーズを続行しない場合は、アプリを削除してテスト テナントをクリーンアップすることを検討してください。 アプリの削除については、このシリーズの最後のクイックスタートである[アプリの削除](delete-application-portal.md)に関する記事で説明されています。

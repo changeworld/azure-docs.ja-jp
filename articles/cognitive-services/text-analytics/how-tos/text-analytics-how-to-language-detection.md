@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 06/10/2021
+ms.date: 07/02/2021
 ms.author: aahi
-ms.openlocfilehash: c9ff3bdc7e7076846ffb44239bf5654512f88eea
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 33dbcfb3faa046eeeec2dc19a45ece9bcf270b76
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967974"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113549780"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>例:Text Analytics を使用して言語を検出する
 
-Azure Text Analytics REST API の[言語検出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)機能では、各ドキュメントのテキスト入力が評価され、言語識別子と、分析の強度を示すスコアが返されます。
+Azure Text Analytics REST API の[言語検出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages)機能では、各ドキュメントのテキスト入力が評価され、言語識別子と、分析の強度を示すスコアが返されます。
 
 この機能は、言語が不明な任意のテキストを取集するコンテンツ ストアに役立ちます。 この分析の結果を解析して、入力ドキュメントでいずれの言語が使用されるかを特定できます。 応答では、モデルの信頼度が反映されたスコアも返されます。 スコアの値は 0 から 1 の間です。
 
@@ -67,16 +67,16 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 要求定義の詳細については、[Text Analytics API の呼び出し](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ POST 要求を作成します。 この要求の API ドキュメントを確認するには、[言語検出 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) に関するページを参照してください。
++ POST 要求を作成します。 この要求の API ドキュメントを確認するには、[言語検出 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages) に関するページを参照してください。
 
-+ 言語検出のための HTTP エンドポイントを設定します。 Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)のいずれかを使用します。 URL に `/text/analytics/v3.0/languages` を含める必要があります (例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`)。
++ 言語検出のための HTTP エンドポイントを設定します。 Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)のいずれかを使用します。 URL に `/text/analytics/v3.1/languages` を含める必要があります (例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/languages`)。
 
 + Text Analytics 操作用の[アクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)が含まれるように要求ヘッダーを設定します。
 
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)に記載されている **API テスト コンソール** を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages)に記載されている **API テスト コンソール** を開き、要求を構造化して POST でサービスに投稿します。
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
@@ -91,73 +91,61 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。
 
-要求の例の結果は、次の JSON ドキュメントのようになります。 複数の項目を含む 1 つのドキュメントになっていて、それぞれの項目が、送信された各ドキュメントの検出結果を表していることに注意してください。 出力は英語です。 
+要求の例の結果は、次の JSON ドキュメントのようになります。 複数の項目が含まれる 1 つの JSON ドキュメントになっていて、それぞれの項目が、送信した各ドキュメントの検出結果を表していることに注意してください。 出力は英語です。 
 
 言語検出からは、1 つのドキュメントに対して主要な言語が 1 つ、その [ISO 639-1](https://www.iso.org/standard/22109.html) 名、フレンドリ名、信頼度スコアと共に返されます。 正のスコア 1.0 は、分析の可能な最も高い信頼レベルを表します。
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.99,
-                "iso6391Name":"en",
-                "name":"English"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 0.99
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"es",
-                "name":"Spanish"
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 0.91
             },
-            "id":"2",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"fr",
-                "name":"French"
+            "id": "3",
+            "detectedLanguage": {
+                "name": "French",
+                "iso6391Name": "fr",
+                "confidenceScore": 0.78
             },
-            "id":"3",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"zh_chs",
-                "name":"Chinese_Simplified"
+            "id": "4",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
             },
-            "id":"4",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"ru",
-                "name":"Russian"
+            "id": "5",
+            "detectedLanguage": {
+                "name": "Russian",
+                "iso6391Name": "ru",
+                "confidenceScore": 1.0
             },
-            "id":"5",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -226,23 +214,19 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.0,
-                "iso6391Name":"(Unknown)",
-                "name":"(Unknown)"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "(Unknown)",
+                "iso6391Name": "(Unknown)",
+                "confidenceScore": 0.0
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -269,23 +253,19 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.94,
-                "iso6391Name":"es",
-                "name":"Spanish"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 0.88
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -293,7 +273,7 @@ JSON ドキュメントは、次の形式である必要があります: ID と�
 
 この記事では、Azure Cognitive Services の Text Analytics を使用した言語検出の概念とワークフローについて説明しました。 以下の点について説明し、例を示しました。
 
-+ [言語検出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)は、さまざまな言語、異形、方言、および一部の地方言語や文化言語でも使用できます。
++ [言語検出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages)は、さまざまな言語、異形、方言、および一部の地方言語や文化言語でも使用できます。
 + 要求本文内の JSON ドキュメントには、ID とテキストが含まれます。
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)を使用して `/languages` エンドポイントに対して行われます。
 + 応答出力は、各ドキュメント ID の言語識別子で構成されます。 出力は、JSON を受け入れる任意のアプリにストリーミングできます。 アプリの例としては、Excel や Power BI などがあります。

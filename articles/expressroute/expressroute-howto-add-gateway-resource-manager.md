@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c49409472c8ce9c5b9dab25cbb66df8e1b30f410
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e8bc2d0ed29cbac171e1d03bc9a6806b1ef64f1f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695154"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465314"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>チュートリアル:PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -102,6 +102,12 @@ ms.locfileid: "110695154"
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
+      
+   ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、IP SKU を Standard に設定し、AllocationMethod を Static に設定してください。
+   ```azurepowershell-interactive
+   $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Static -SKU Standard
+   ```
+   
 1. ゲートウェイの構成を作成します。 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 この手順では、ゲートウェイを作成するときに使用する構成を指定します。 次のサンプルを使用して、ゲートウェイの構成を作成します。
 
    ```azurepowershell-interactive
@@ -113,7 +119,7 @@ ms.locfileid: "110695154"
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
 > [!IMPORTANT]
-> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、 **-GatewaySku** に対して AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を選択してください。
+> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、 **-GatewaySku** に対して AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を選択するか、Standard および Static のパブリック IP で -GatewaySKU に非 AZ SKU (Standard、HighPerformance、UltraPerformance) を使用します。
 > 
 > 
 

@@ -1,32 +1,32 @@
 ---
-title: Azure Communication Services における PSTN テレフォニー統合の概念
+title: Azure Communication Services における公衆交換電話網 (PSTN) の統合の概念
 description: Azure Communication Services アプリケーションに PSTN 通話機能を統合する方法について説明します。
 author: boris-bazilevskiy
 manager: nmurav
 services: azure-communication-services
 ms.author: bobazile
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5fba53125e22eed6797db7ada6b99e679e136ea8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ef77648a87a22eda950704a6d86b2e699dc61ebe
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092406"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762741"
 ---
 # <a name="telephony-concepts"></a>テレフォニーの概念
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Azure Communication Services の Calling SDK を使用すると、アプリケーションにテレフォニーと PSTN を追加することができます。 このページには、テレフォニーの主な概念と機能がまとめられています。 具体的な SDK の言語と機能の詳細については、[通話ライブラリ](../../quickstarts/voice-video-calling/calling-client-samples.md)に関するページを参照してください。
+Azure Communication Services の Calling SDK を使用すると、アプリケーションにテレフォニーと公衆交換電話網のアクセスを追加することができます。 このページには、テレフォニーの主な概念と機能がまとめられています。 具体的な SDK の言語と機能の詳細については、[通話ライブラリ](../../quickstarts/voice-video-calling/calling-client-samples.md)に関するページを参照してください。
 
 ## <a name="overview-of-telephony"></a>テレフォニーの概要
 ユーザーが従来の電話番号を使用して対話すると、通話は常に PSTN (公衆交換電話網) 音声通話によって行われます。 PSTN 通話を発信および受信するには、Azure Communication Services リソースにテレフォニー機能を追加する必要があります。 この場合、信号とメディアでは、ユーザーを接続するために、IP ベースおよび PSTN ベースのテクノロジが組み合わされて使用されます。 Communication Services には、PSTN ネットワークに接続するための 2 つの異なる方法として、音声通話 (PSTN) と Azure 直接ルーティングが用意されています。
 
 ### <a name="voice-calling-pstn"></a>音声通話 (PSTN)
 
-アプリまたはサービスに PSTN 接続を追加する簡単な方法として、この場合は、Microsoft が電気通信プロバイダーになります。 番号は Microsoft から直接購入できます。 Azure Cloud Calling は、Communication Services のためのオールインクラウドのテレフォニー ソリューションです。 きわめてシンプルな方法で、公衆交換電話網 (PSTN) に ACS を接続して世界中の固定電話や携帯電話への通話を実現することができます。 この方法では、次の図に示すように Microsoft が PSTN 通信事業者としての役割を果たします。
+アプリまたはサービスに PSTN 接続を追加する簡単な方法として、この場合は、Microsoft が電気通信プロバイダーになります。 番号は Microsoft から直接購入できます。 Azure Cloud Calling は、Communication Services のためのオールインクラウドのテレフォニー ソリューションです。 きわめてシンプルな方法で、公衆交換電話網 (PSTN) に Communication Services を接続して世界中の固定電話や携帯電話への通話を実現することができます。 次の図に示すように Microsoft が PSTN 通信事業者としての役割を果たします。
 
 ![音声通話 (PSTN) の図。](../media/telephony-concept/azure-calling-diagram.png)
 
@@ -46,15 +46,15 @@ Azure Communication Services の Calling SDK を使用すると、アプリケ�
 
 ### <a name="azure-direct-routing"></a>Azure 直接ルーティング
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
-この方法を選択すると、従来のオンプレミス テレフォニーと任意の通信事業者を Azure Communication Services に接続することができます。 お客様の国またはリージョンで音声通話 (PSTN) が提供されていなくても、これにより、ACS アプリケーションから PSTN 通話機能を利用することができます。 
+この方法を選択すると、従来のオンプレミス テレフォニーと任意の通信事業者を Azure Communication Services に接続することができます。 お客様の国またはリージョンで音声通話 (PSTN) が提供されていなくても、これにより、Communication Services アプリケーションから PSTN 通話機能を利用することができます。 
 
 ![Azure 直接ルーティングの図。](../media/telephony-concept/sip-interface-diagram.png)
 
 次の項目に 1 つでも該当すれば、Azure 直接ルーティングが適切なソリューションです。
 
-- ACS を PSTN 通話機能と共に使用したい。
+- Communication Services を PSTN 通話機能と共に使用したい。
 - 現在の PSTN 通信事業者を引き続き使用する必要がある。
 - ルーティングを混在させて、音声通話 (PSTN) を経由する通話と通信事業者を経由する通話を使い分けたい。
 - サードパーティの PBX や装置 (コール システムやアナログ デバイスなど) との相互運用性を確保する必要がある。
@@ -62,11 +62,11 @@ Azure Communication Services の Calling SDK を使用すると、アプリケ�
 このオプションでは、
 
 - オンプレミスのソフトウェアを追加しなくても、自分が所有するサポート対象の SBC を Azure Communication Services に接続することができます。
-- 事実上すべてのテレフォニー通信事業者を ACS で使用することができます。
+- 事実上すべてのテレフォニー通信事業者を Communication Services で使用することができます。
 - この方法の構成と管理は、ご自身で行うことができるほか、通信事業者やパートナーが行うこともできます (対応の可否については、通信事業者またはパートナーにお問い合わせください)。
-- テレフォニー機器 (サードパーティの PBX、アナログ デバイスなど) と ACS の相互運用性をご自身で構成できます。
+- テレフォニー機器 (サードパーティの PBX、アナログ デバイスなど) と Communication Services の相互運用性をご自身で構成できます。
 
-この方法を選択する場合は、次のことが必要になります。
+このオプションには以下が必要です。
 
 - Azure との中断のない接続。
 - サポートされている SBC のデプロイとメンテナンス。
@@ -78,6 +78,7 @@ Azure Communication Services の Calling SDK を使用すると、アプリケ�
 
 - [Azure Communication Services での電話番号の種類](./plan-solution.md)
 - [Azure 直接ルーティングを計画する](./sip-interface-infrastructure.md)
+- [Azure Communication Services のダイレクト ルーティングに対して認定されたセッション ボーダー コントローラー](./certified-session-border-controllers.md)
 - [料金](../pricing.md)
 
 ### <a name="quickstarts"></a>クイックスタート

@@ -3,19 +3,19 @@ title: 音声サービスとは
 titleSuffix: Azure Cognitive Services
 description: Speech Service は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 Speech SDK、Speech Devices SDK、または REST API を使用して、アプリケーション、ツール、デバイスに音声を追加します。
 services: cognitive-services
-author: trevorbye
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
-ms.author: trbye
-ms.openlocfilehash: af76ba2a4ee8610a0f64265889c009416f477543
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.author: nitinme
+ms.openlocfilehash: 8e173f8f11f45fc61ee412c7241a5f9297c807bb
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109665070"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708230"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
@@ -32,7 +32,8 @@ ms.locfileid: "109665070"
 | | [一括音声テキスト変換](batch-transcription.md) | 一括音声テキスト変換では、Azure Blob Storage に格納された大量の音声データを対象に、音声からテキストへの文字起こしを非同期で行うことができます。 音声からテキストへの変換に加え、一括音声テキスト変換は、ダイアライゼーションや感情分析にも対応します。 | いいえ | [はい](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | | [マルチデバイスの会話](multi-device-conversation.md) | 会話の中で複数のデバイスまたはクライアントを接続して、音声ベースまたはテキストベースのメッセージを送信し、文字起こしや翻訳を容易に実現します。| はい | いいえ |
 | | [会話の文字起こし](./conversation-transcription.md) | リアルタイムの音声認識、話者識別、およびダイアライゼーションが有効になります。 話者を区別することができるため、対面会議の文字起こしに最適です。 | はい | いいえ |
-| | [カスタム音声モデルの作成](#customize-your-speech-experience) | 独自環境での認識と文字起こしに音声テキスト変換を使用している場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 | いいえ | [はい](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
+| | [カスタム音声モデルの作成](#customize-your-speech-experience) | 独自環境での認識と文字起こしに音声テキスト変換を使用している場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 | いいえ | [あり](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
+| | [発音評価](./how-to-pronunciation-assessment.md) | 発音評価ではスピーチの発音を評価し、話された音声の正確性と流暢性に関するフィードバックを話者に提供します。 言語学習者は、発音評価を使用して練習を行い、即座にフィードバックを得て、発音を改善することができます。そのため、自信を持って話し、発表することができます。 | [あり](./how-to-pronunciation-assessment.md) | [はい](./rest-speech-to-text.md#pronunciation-assessment-parameters) |
 | [音声合成](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) が使用され、入力テキストが人間のような合成音声に変換されます。 ディープ ニューラル ネットワークを利用した、人間に似た音声であるニューラル音声を使用します。 [言語のサポート](language-support.md)に関するページを参照してください。 | [あり](./speech-sdk.md) | [はい](#reference-docs) |
 | | [Custom Voice の作成](#customize-your-speech-experience) | ブランドや製品に固有のカスタム音声フォントを作成します。 | いいえ | [はい](#reference-docs) |
 | [音声翻訳](speech-translation.md) | 音声翻訳 | 音声翻訳を使用すると、音声のリアルタイムの多言語翻訳がアプリケーション、ツール、デバイスで可能になります。 音声間翻訳や音声テキスト翻訳にはこのサービスを使用します。 | [はい](./speech-sdk.md) | いいえ |
@@ -81,9 +82,9 @@ Speech Service リソース (無料または有料レベル) を Azure アカウ
 -->
 新しい音声リソースを展開するまでに少し時間がかかります。 
 
-### <a name="find-keys-and-region"></a>キーとリージョンを見つける
+### <a name="find-keys-and-locationregion"></a>キーと場所/リージョンを見つける
 
-完成したデプロイのキーとリージョンを見つけるには、次の手順に従います。
+完成したデプロイのキーと場所/リージョンを見つけるには、次の手順に従います。
 
 1. お使いの Microsoft アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -131,7 +132,7 @@ Speech Service は組み込みのモデルで問題なく動作しますが、�
 
 | Speech Service | プラットフォーム | 説明 |
 | -------------- | -------- | ----------- |
-| 音声テキスト変換 | [カスタム音声](https://aka.ms/customspeech) | 音声認識モデルをニーズと使用可能なデータに合わせてカスタマイズします。 話し方、ボキャブラリ、背景ノイズといった音声認識の障壁を克服可能です。 |
+| 音声テキスト変換 | [カスタム音声](./custom-speech-overview.md) | 音声認識モデルをニーズと使用可能なデータに合わせてカスタマイズします。 話し方、ボキャブラリ、背景ノイズといった音声認識の障壁を克服可能です。 |
 | テキスト読み上げ | [Custom Voice](https://aka.ms/customvoice) | お客様のスピーチ データを使用して、テキスト読み上げアプリ用の認識可能な独自の音声を作成します。 音声パラメーターのセットを調整することで、音声出力をさらに細かく調整できます。 |
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
@@ -143,7 +144,7 @@ Speech Service は組み込みのモデルで問題なく動作しますが、�
 * 標準テキスト読み上げ
 * ニューラル テキスト読み上げ
 * カスタム テキスト読み上げ (プレビュー)
-* 音声言語検出 (プレビュー)
+* 音声言語識別 (プレビュー)
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 

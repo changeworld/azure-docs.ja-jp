@@ -7,14 +7,17 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: be936bf8799d3e16679cf337e2425543163fe8f3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 331a91f645c64f0b70ff6c4de922b455eb344ce2
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063300"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433258"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です。
+> 
 
 Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内のサブネットに Azure App Service をデプロイしたものです。 App Service Environment (ASE) をデプロイするには、次の 2 つの方法があります。 
 
@@ -40,7 +43,7 @@ ILB ASE を使用すると、次のようなことができます。
 
 ILB ASE を使用する際に実行できないことがいくつかあります。
 
--   IP ベース SSL の使用。
+-   IP ベースの TLS/SSL バインドを使用します。
 -   特定のアプリへの IP アドレスの割り当て。
 -   Azure Portal からのアプリの証明書の購入と使用。 証明書は、証明機関から直接入手して、アプリで使用できます。 Azure Portal では入手できません。
 
@@ -119,7 +122,7 @@ Azure DNS プライベート ゾーンで DNS を構成するには、次の操�
 
 ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、contoso.net という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは、&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net でのみ使用できます。
 
-.&lt;asename&gt;.appserviceenvironment.net という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで .contoso.com を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
+.&lt;asename&gt;.appserviceenvironment.net という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで .contoso.com を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の TLS/SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE で発行する
 

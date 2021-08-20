@@ -8,20 +8,21 @@ ms.topic: quickstart
 author: JasonMAnderson
 ms.author: janders
 ms.reviewer: vanto
-ms.date: 05/25/2021
-ms.openlocfilehash: d000ec621dcf840c9f18269a2046b682b6d11b56
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 07/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: ffde0d192888aea852eb4de73e24ce678c4a677a
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292953"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666676"
 ---
 # <a name="quickstart-create-a-database-in-azure-sql-database-with-ledger-enabled"></a>クイックスタート: Azure SQL Database で台帳が有効化されたデータベースを作成する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリックプ レビュー段階であり、米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
 
 このクイックスタートでは、Azure portal を使用して、Azure SQL Database で[台帳データベース](ledger-overview.md#ledger-database)を作成し、さらに [Azure Blob Storage を使用した自動ダイジェスト ストレージ](ledger-digest-management-and-database-verification.md#automatic-generation-and-storage-of-database-digests)を構成します。 台帳の詳細については、[Azure SQL Database 台帳](ledger-overview.md)に関する記事を参照してください。
 

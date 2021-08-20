@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: fb11033e0f4fcff171825d579e62e071f66b1cea
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e389992b04556107d5c22c56fa39a5912b949b38
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745891"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459004"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) でデータをスキャンする
 
@@ -147,6 +147,9 @@ Azure Purview アカウントをご自身で作成した場合は、アクセス
    ```
 
    このコマンドを実行すると、Azure Active Directory の資格情報を使用してサインインするためのポップアップ ウィンドウが表示されることがあります。
+
+    > [!TIP]
+    > テナント全体で MFA が有効になっている場合は、この手順で MFA エラーが発生する可能性があります。 その場合、このスクリプトを実行しているアカウントの MFA を一時的に無効にします。 その後、もう一度実行してください。
 
 
 1. 次のコマンドを使用してスタート キットを実行します。 `CatalogName`、`TenantID`、`SubscriptionID`、`NewResourceGroupName`、`CatalogResourceGroupName` の各プレースホルダーを置き換えてください。 `NewResourceGroupName` には、データ資産の追加先となるリソース グループの一意の名前 (小文字の英数字のみ) を使用します。

@@ -6,13 +6,13 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 310182a3b46f0682efe420387bba0da311707e8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/05/2021
+ms.openlocfilehash: a7730a12f6e017c23e5007b030cb4b6b05be4761
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606601"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436275"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -170,15 +170,16 @@ END
 8. **Create** をクリックしてください。      
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
-10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\) タイルを含む、Azure Data Factory のホーム ページ。":::
+
+10. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 このチュートリアルでは、2 つのルックアップ アクティビティ、1 つのコピー アクティビティ、そして 1 つのストアド プロシージャ アクティビティを 1 つに連結したパイプラインを作成します。
 
-1. Data Factory UI の **開始** ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックします。
+1. Data Factory UI のホーム ページで、 **[Orchestrate]\(調整\)** タイルをクリックします。
 
-   ![Data Factory UI の開始ページ](./media/doc-common-process/get-started-page.png)    
+   ![Data Factory UI のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)    
 3. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**IncrementalCopyPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 4. 古い基準値を取得するための最初の検索アクティビティを追加します。 **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を **LookupOldWaterMarkActivity** に変更します。
@@ -269,7 +270,7 @@ END
     1. **[ストアド プロシージャ名]** に **[usp_write_watermark]** を選択します。
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。
 
-        | 名前 | 種類 | 値 |
+        | 名前 | Type | 値 |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

@@ -1,6 +1,6 @@
 ---
 title: ML Studio (classic) チュートリアル:信用リスクの予測 - Azure
-description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズの第 1 部です。  ワークスペースの作成方法、データのアップロード方法、実験の作成方法について説明しています。
+description: Machine Learning Studio (クラシック) で信用リスク評価のための予測分析ソリューションを作成する方法を、詳しく紹介したチュートリアルです。
 keywords: 信用リスク, 予測分析ソリューション,リスク評価
 author: sdgilley
 ms.author: sgilley
@@ -9,24 +9,24 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 571925586bf3b70c38260392bae49c5352f10194
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: f6d336ae1f31ad0e62d56fa4dd24bf38eb9eab7f
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517520"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579740"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio (クラシック)
+# <a name="tutorial-1-predict-credit-risk---machine-learning-studio-classic"></a>チュートリアル 1: 信用リスクの予測 - Machine Learning Studio (クラシック)
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズの第 1 部** です。
+このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズの第 1 部** です。
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
-信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Azure Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。  
+信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。  
 
 この 3 部構成のチュートリアルでは、まず、公表されている信用リスク データを使用します。  その後、予測モデルを開発してトレーニングします。  最後にそのモデルを Web サービスとしてデプロイします。
 
@@ -43,7 +43,7 @@ ms.locfileid: "100517520"
 
 このチュートリアルでは、これまでに少なくとも 1 回は Machine Learning Studio (クラシック) を使用したことがあり、機械学習の概念をある程度理解していることを前提としています。 いずれにしても専門家ではないことを想定しています。
 
-**Azure Machine Learning Studio (クラシック)** をまだ使用したことがない場合は、[Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を作成する](create-experiment.md)クイック スタートから始めることをお勧めします。 そのクイック スタートでは、Machine Learning Studio (クラシック) を初めて使用する場合の手順を示しながら、 実験にモジュールをドラッグ アンド ドロップして互いに結び付け、実験を実行して結果を確認する方法の基本について説明します。
+**Machine Learning Studio (クラシック)** をまだ使用したことがない場合は、クイックスタート: 「[ Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を作成する](create-experiment.md)」から始めることをお勧めします。 そのクイック スタートでは、Machine Learning Studio (クラシック) を初めて使用する場合の手順を示しながら、 実験にモジュールをドラッグ アンド ドロップして互いに結び付け、実験を実行して結果を確認する方法の基本について説明します。
 
 
 > [!TIP] 
@@ -53,9 +53,9 @@ ms.locfileid: "100517520"
 
 ## <a name="create-a-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (クラシック) ワークスペースを作成する
 
-Machine Learning Studio (クラシック) を使用するには、Microsoft Azure Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。  
+Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。  
 
-ワークスペースを作成するには、「[Azure Machine Learning Studio (クラシック) ワークスペースの作成と共有](create-workspace.md)」を参照してください。
+ワークスペースを作成するには、「[Machine Learning Studio (クラシック) ワークスペースを作成して共有する](create-workspace.md)」を参照してください。
 
 ワークスペースが作成された後、Machine Learning Studio (クラシック) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)) を開きます。 ワークスペースが複数ある場合は、ウィンドウの右上隅のツールバーでワークスペースを選択できます。
 
@@ -146,7 +146,7 @@ Studio (クラシック) にアップロードしたデータセットは、Stud
 
 ![データセットの管理](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-その他の種類のデータの実験へのインポートの詳細については、[Azure Machine Learning Studio (クラシック) へのトレーニング データのインポート](import-data.md)に関するページを参照してください。
+その他の種類のデータの実験へのインポートの詳細については、[Machine Learning Studio (クラシック) へのトレーニング データのインポート](import-data.md)に関するページを参照してください。
 
 ## <a name="create-an-experiment"></a>実験の作成
 

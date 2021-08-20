@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 4b7251be220c012ca51970863ac2eed55d46d711
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: cb00337446df3062fe640127a37adfb522e45345
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751150"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300990"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
@@ -65,8 +65,14 @@ ms.locfileid: "107751150"
 
 Azure Synapse ワークスペースが作成された後、Synapse Studio を開く方法は 2 つあります。
 
-* [Azure portal](https://portal.azure.com) で Synapse ワークスペースを開き、Synapse ワークスペースの **[概要]** セクションで、[Synapse Studio の起動] ボックスの **[開く]** を選択します。
-* `https://web.azuresynapse.net` にアクセスし、ワークスペースにサインインします。
+1. [Azure portal](https://portal.azure.com) で Synapse ワークスペースを開き、Synapse ワークスペースの **[概要]** セクションで、[Synapse Studio の起動] ボックスの **[開く]** を選択します。
+1. `https://web.azuresynapse.net` にアクセスし、ワークスペースにサインインします。
+
+    ![ワークスペースへのログイン](./security/media/common/login-workspace.png)
+
+> [!NOTE]
+> ワークスペースにサインインするには、2 つの **アカウント選択方法** があります。 1 つは **Azure サブスクリプション** からの方法、もう 1 つは **手動による入力** です。 Synapse Azure ロール以上のレベルの Azure ロールがある場合は、両方の方法を使用してワークスペースにログインできます。 関連する Azure ロールがなく、Synapse RBAC ロールとして許可されている場合、ワークスペースにログインする唯一の方法は **手動の入力** しかありません。 Synapse RBAC の詳細については、「[Synapse ロールベースのアクセス制御 (RBAC) とは](./security/synapse-workspace-synapse-rbac.md)」を参照してください。
+
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>プライマリ ストレージ アカウントにサンプル データを配置する
 このファースト ステップ ガイドの多くの例では、ニューヨーク市のタクシー データから成る 100,000 行の小さなサンプル データセットを使用します。 まず、ワークスペース用に作成したプライマリ ストレージ アカウントにこれを配置します。

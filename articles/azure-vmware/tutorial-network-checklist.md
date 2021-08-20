@@ -2,13 +2,13 @@
 title: チュートリアル - ネットワーク計画のチェックリスト
 description: Azure VMware Solution のネットワーク接続とネットワーク ポートのネットワーク要件について説明します。
 ms.topic: tutorial
-ms.date: 06/08/2021
-ms.openlocfilehash: 5719ec1a2495c6a225c35ec46cdf19506a10ba6f
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 07/01/2021
+ms.openlocfilehash: 42400011d1dab9b1e5d869a5d96255cf67ea632c
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017273"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113640575"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware Solution のネットワーク計画のチェックリスト 
 
@@ -34,6 +34,9 @@ ExpressRoute プロバイダーのサービスを含め、すべてのゲート�
 プライベート クラウドをデプロイすると、vCenter および NSX-T Manager の IP アドレスが提供されます。 これらの管理インターフェイスにアクセスするには、ご使用のサブスクリプションの仮想ネットワークにさらに多くのリソースを作成する必要があります。 これらのリソースを作成し、[ExpressRoute プライベート ピアリング](tutorial-expressroute-global-reach-private-cloud.md)を確立する手順については、チュートリアルを参照してください。
 
 プライベート クラウドの論理ネットワークには、事前にプロビジョニングされた NSX-T が付属しています。 Tier-0 ゲートウェイと Tier-1 ゲートウェイが事前にプロビジョニングされています。 セグメントを作成し、それを既存の Tier-1 ゲートウェイにアタッチすることも、自分が定義する新しい Tier-1 ゲートウェイにアタッチすることもできます。 NSX-T 論理ネットワーク コンポーネントは、ワークロード間の East-West 接続を提供し、インターネットおよび Azure サービスへの North-South 接続を提供します。
+
+>[!IMPORTANT]
+>[!INCLUDE [disk-pool-planning-note](includes/disk-pool-planning-note.md)] 
 
 ## <a name="routing-and-subnet-considerations"></a>ルーティングとサブネットに関する考慮事項
 Azure VMware Solution プライベート クラウドは、Azure ExpressRoute 接続を使用して Azure 仮想ネットワークに接続されます。 この高い帯域幅と短い待ち時間の接続によって、ご自分のプライベート クラウド環境から、ご自分の Azure サブスクリプションで実行されているサービスにアクセスできます。 ルーティングは Border Gateway Protocol (BGP) ベースであり、プライベート クラウドのデプロイごとに既定で自動的にプロビジョニングされ、有効になります。 

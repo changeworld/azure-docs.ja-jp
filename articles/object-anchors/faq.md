@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 31b46475af345ec4eed3a8d5787bf859918048ef
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: cb64f2be26abc1d3ccaf80b90a85f279c7930c94
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985852"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710726"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Azure Object Anchors についてよく寄せられる質問
 
@@ -99,7 +99,7 @@ Azure Object Anchors を使用すると、アプリケーションで 3D モデ�
 
 **Q: Object Anchors で動くオブジェクトを扱うことはできますか?**
 
-**A:** **継続的に動く**、または **動的な** オブジェクトはサポートされていません。
+**A:** **継続的に動く**、または **動的な** オブジェクトはサポートされていません。 オブジェクトを物理的に移動すると、空間内のまったく新しい位置でオブジェクトがサポートされますが、移動中は追跡できません。
 
 **Q: Object Anchors で変形や関節を扱うことはできますか?**
 

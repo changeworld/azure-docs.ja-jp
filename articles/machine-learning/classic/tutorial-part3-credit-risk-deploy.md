@@ -1,6 +1,6 @@
 ---
 title: 'Machine Learning Studio (classic) チュートリアル 3: 信用リスク モデルをデプロイする - Azure'
-description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズのパート 3 です。 モデルを Web サービスとしてデプロイする方法を示します。
+description: このチュートリアルは、Machine Learning Studio (クラシック) 用の 3 部構成のチュートリアル シリーズの第 3 部です。 モデルを Web サービスとしてデプロイする方法を示します。
 keywords: 信用リスク, 予測分析ソリューション, リスク評価, デプロイ, Web サービス
 author: likebupt
 ms.author: keli19
@@ -9,22 +9,22 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: c60c511840d6591009064ba6b3f27cd6cdb89856
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517384"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580712"
 ---
-# <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>チュートリアル 3:信用リスク モデルをデプロイする - Azure Machine Learning Studio (クラシック)
+# <a name="tutorial-3-deploy-credit-risk-model---machine-learning-studio-classic"></a>チュートリアル 3: 信用リスク モデルをデプロイする - Machine Learning Studio (クラシック)
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは x 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:**  ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Azure Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズのパート 3** です。
+このチュートリアルでは、予測分析ソリューションを開発するプロセスについて詳しく説明します。 Machine Learning Studio (クラシック) で単純なモデルを開発します。  その後、そのモデルを Machine Learning Web サービスとしてデプロイします。  このデプロイ モデルは、新しいデータを使用して予測を行うことができます。 このチュートリアルは、**3 部構成のチュートリアル シリーズのパート 3** です。
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
-信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Azure Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。 
+信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。 
 
 この 3 部構成のチュートリアルでは、まず、公表されている信用リスク データを使用します。  その後、予測モデルを開発してトレーニングします。  最後にそのモデルを Web サービスとしてデプロイします。
 
@@ -90,7 +90,7 @@ ms.locfileid: "100517384"
 この 3 つの手順は手動でも実行できますが、幸いにも、実験キャンバスの下部にある **[Set Up Web Service]\(Web サービスの設定\)** をクリックすることですべての手順を完了できます ( **[Predictive Web Service]\(予測 Web サービス\)** オプションを選択します)。
 
 > [!TIP]
-> トレーニング実験を予測実験に変換するときの動作の詳細については、「[Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](deploy-a-machine-learning-web-service.md)」を参照してください。
+> トレーニング実験を予測実験に変換するときの動作の詳細については、[Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](deploy-a-machine-learning-web-service.md)に関するページを参照してください。
 
 **[Web サービスの設定]** をクリックすると、次の動作が行われます。
 
@@ -142,11 +142,11 @@ Machine Learning Studio (クラシック) によって、[分割][split]モジ�
 ### <a name="deploy-as-a-new-web-service"></a>新しい Web サービスとしてデプロイする
 
 > [!NOTE] 
-> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳細については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」を参照してください。 
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳細については、[Machine Learning Web サービス ポータルを使用した Web サービスの管理](manage-new-webservice.md)に関するページを参照してください。 
 
 実験から派生した新しい Web サービスをデプロイするには:
 
-1. キャンバスの下部の **[Web サービスのデプロイ]** をクリックし、 **[Deploy Web Service (New) (Web サービスのデプロイ (新規))]** を選択します。 Machine Learning Studio (クラシック) によって、Azure Machine Learning Web サービスの **[実験のデプロイ]** ページに移動します。
+1. キャンバスの下部の **[Web サービスのデプロイ]** をクリックし、 **[Deploy Web Service (New) (Web サービスのデプロイ (新規))]** を選択します。 Machine Learning Studio (クラシック) から、Machine Learning Web サービスの **[Deploy Experiment]\(実験のデプロイ\)** ページに移動します。
 
 1. Web サービスの名前を入力します。 
 
@@ -179,7 +179,7 @@ Web サービスがアクセスされると、ユーザーのデータが **Web 
 新しい Web サービスは、**Machine Learning Web サービス** ポータルでのみテストできます。
 
 > [!TIP]
-> Azure Machine Learning Web サービス ポータルでテストするとき、要求 - 応答型のサービスをテストするために使用できるサンプル データをポータルに作成させることができます。 **[構成]** ページで、 **[Sample Data Enabled? (サンプル データを有効にしますか?)]** で [はい] を選択します。 **[テスト]** ページの [要求 - 応答] タブを開くと、ポータルによって元の信用リスクデータセットから取得されたサンプル データが入力されます。
+> Machine Learning Web サービス ポータルでテストするとき、要求応答サービスのテストに使用できるサンプル データをポータルで作成することができます。 **[構成]** ページで、 **[Sample Data Enabled? (サンプル データを有効にしますか?)]** で [はい] を選択します。 **[テスト]** ページの [要求 - 応答] タブを開くと、ポータルによって元の信用リスクデータセットから取得されたサンプル データが入力されます。
 
 ### <a name="test-a-classic-web-service"></a>従来の Web サービスをテストする
 
@@ -193,7 +193,7 @@ Web サービスがアクセスされると、ユーザーのデータが **Web 
 
 #### <a name="test-in-the-machine-learning-web-services-portal"></a>Machine Learning Web サービス ポータルでテストする
 
-1. Web サービスの **[ダッシュボード]** ページで、 **[既定のエンドポイント]** の **[Test preview (プレビューのテスト)]** リンクをクリックします。 Azure Machine Learning Web サービス ポータルで、Web サービス エンドポイント用のテスト ページが開き、サービスの入力データが求められます。 これらは、元の信用リスク データセットに含まれるのと同じ列です。
+1. Web サービスの **[ダッシュボード]** ページで、 **[既定のエンドポイント]** の **[Test preview (プレビューのテスト)]** リンクをクリックします。 Machine Learning Web サービス ポータルで、Web サービス エンドポイント用のテスト ページが開き、サービスの入力データが求められます。 これらは、元の信用リスク データセットに含まれるのと同じ列です。
 
 2. **[Test Request-Response (要求応答のテスト)]** をクリックします。 
 
@@ -201,7 +201,7 @@ Web サービスがアクセスされると、ユーザーのデータが **Web 
 
 新しい Web サービスは、Machine Learning Web サービス ポータルでのみテストできます。
 
-1. [Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルで、ページ上部の **[テスト]** をクリックします。 **[テスト]** ページが開かれ、サービスのデータを入力することができます。 表示される入力フィールドは、元の信用リスク データセットに含まれる列に対応しています。 
+1. [Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルで、ページ上部の **[テスト]** をクリックします。 **[テスト]** ページが開かれ、サービスのデータを入力することができます。 表示される入力フィールドは、元の信用リスク データセットに含まれる列に対応しています。 
 
 1. データのセットを入力し、 **[Test Request-Response (要求応答のテスト)]** をクリックします。
 
@@ -210,11 +210,11 @@ Web サービスがアクセスされると、ユーザーのデータが **Web 
 
 ## <a name="manage-the-web-service"></a>Web サービスを管理する
 
-デプロイした Web サービスは、従来の Web サービスでも新しい Web サービスでも、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルから管理できます。
+デプロイした Web サービスは、従来の Web サービスでも新規 Web サービスでも、[Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルから管理できます。
 
 Web サービスのパフォーマンスを監視するには:
 
-1. [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします
+1. [Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
 1. **[Web サービス]** をクリックします。
 1. Web サービスをクリックします
 1. **[ダッシュボード]** をクリックします。
@@ -231,7 +231,7 @@ Web サービスは、次の 2 つの方法のいずれかで、REST API を使�
 > [!NOTE]
 > Studio (classic) の特徴の列名では、**大文字と小文字が区別されます**。 Web サービスを呼び出すための入力データの列名が、トレーニング データセットのものと同じであることを確認します。
 
-Web サービスのアクセスと利用について詳しくは、[Web アプリ テンプレートで Azure Machine Learning Web サービスを使用する方法](./consume-web-services.md)に関するページを参照してください。
+Web サービスへのアクセスと利用の詳細については、[Web アプリ テンプレートで Machine Learning Web サービスを使用する方法](./consume-web-services.md)に関するページを参照してください。
 
 
 
@@ -253,7 +253,7 @@ Web サービスのアクセスと利用について詳しくは、[Web アプ�
 R、C#、Python プログラミング言語で提供されるスターター コードを使用して、Web サービスにアクセスするカスタム アプリケーションを開発することもできます。
 
 > [!div class="nextstepaction"]
-> [Azure Machine Learning Web サービスを使用する](consume-web-services.md)
+> [Machine Learning Web サービスを使用する](consume-web-services.md)
 
 <!-- Module References -->
 [evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model

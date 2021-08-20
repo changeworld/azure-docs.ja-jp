@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a37b189ae98332b2d6c557b6bdfad98266002e9e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
+ms.openlocfilehash: b6d04053d4b63552c2329a675c2557e6f1cd8fee
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833906"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290026"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>チュートリアル:Web アプリから Azure Storage にアクセスする
 
@@ -172,11 +172,9 @@ BLOB の作成、読み取り、または削除を行う前に、ストレージ
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-[Azure portal](https://portal.azure.com) で、Web アプリにアクセスを許可するストレージ アカウントに移動します。 左ペインで **[アクセス制御 (IAM)]** を選択し、 **[ロールの割り当て]** を選択します。 ストレージ アカウントへのアクセス権を持つユーザーのリストが表示されます。 ここで、ストレージ アカウントへのアクセスを必要とするアプリ サービスであるロボットに、ロールの割り当てを追加します。 **[追加]**  >  **[ロール割り当ての追加]** の順に選択します。
+[Azure portal](https://portal.azure.com) で、Web アプリにアクセスを許可するストレージ アカウントに移動します。 左ペインで **[アクセス制御 (IAM)]** を選択し、 **[ロールの割り当て]** を選択します。 ストレージ アカウントへのアクセス権を持つユーザーのリストが表示されます。 ここで、ストレージ アカウントへのアクセスを必要とするアプリ サービスであるロボットに、ロールの割り当てを追加します。 **[追加]**  >  **[ロールの割り当ての追加]** を選択して、 **[ロールの割り当ての追加]** ページを開きます。
 
-**[ロール]** で、 **[ストレージ BLOB データ共同作成者]** を選択して、対象の Web アプリにストレージ BLOB の読み取りアクセス権を付与します。 **[アクセスの割り当て先]** で、 **[App Service]** を選択します。 **[サブスクリプション]** で、対象のサブスクリプションを選択します。 次に、アクセスを提供する App Service を選択します。 **[保存]** を選択します。
-
-:::image type="content" alt-text="[ロールの割り当ての追加] 画面を示すスクリーンショット。" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
+**ストレージ BLOB データ共同作成者** ロールを、サブスクリプション スコープで **App Service** に割り当てます。  詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 これで、Web アプリからストレージ アカウントにアクセスできるようになりました。
 
@@ -292,7 +290,7 @@ static public async Task UploadBlob(string accountName, string containerName, st
 
 このチュートリアルを完了し、Web アプリや関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の作業を行う方法を学びました。
 
