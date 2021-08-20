@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e133de6b4f7f67439734254686d388b9abe71ea0
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: a08516a1cdf968cb5bcfa76228cab88ecacec167
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412027"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112970075"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護
 
@@ -178,16 +178,16 @@ AAD 認証を使用すると、ARR を使用している個人またはグルー
 
 **RemoteRenderingCoordinator** スクリプトには、**ARRCredentialGetter** という名前のデリゲートがあり、**SessionConfiguration** オブジェクトを返すメソッドを保持しています。これは、リモート セッション管理の構成に使用されます。 **ARRCredentialGetter** に別のメソッドを割り当て、Azure サインイン フローを使用できるようにすることで、Azure アクセス トークンを含んだ **SessionConfiguration** オブジェクトを生成できます。 このアクセス トークンは、サインインするユーザーに固有の情報です。
 
-1. [認証の構成方法に関するページの「デプロイされたアプリケーションの認証」](../../../how-tos/authentication.md#authentication-for-deployed-applications)に従います。具体的には、Azure Spatial Anchors のドキュメント「[Azure AD ユーザー認証](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)」に記載された手順に従うことになります。 これには、新しい Azure Active Directory アプリケーションの登録や、ARR インスタンスへのアクセスの構成が含まれます。
+1. [「認証の構成方法: デプロイされたアプリケーションの認証」](../../../how-tos/authentication.md#authentication-for-deployed-applications)に従って、新しい Azure Active Directory アプリケーションを登録し、ARR インスタンスへのアクセスを構成します。
 1. 新しい AAD アプリケーションを構成したら、AAD アプリケーションが次の画像のようになっていることを確認します。
 
-    **[AAD アプリケーション] -> [認証]** ![アプリの認証](./media/app-authentication-public.png)
+    **[AAD アプリケーション] -> [認証]** :::image type="content" source="./../../../how-tos/media/azure-active-directory-app-setup.png" alt-text="アプリの認証":::
 
-    **[AAD アプリケーション] -> [API のアクセス許可]** ![アプリ API](./media/request-api-permissions-step-five.png)
+    **[AAD アプリケーション] -> [API のアクセス許可]** :::image type="content" source="./media/azure-active-directory-api-permissions-granted.png" alt-text="アプリ API":::    
 
 1. Remote Rendering アカウントを構成したら、その構成が次の画像のようになっていることを確認します。
 
-    **[AAR] -> [アクセス制御 (IAM)]** ![ARR ロール](./media/azure-remote-rendering-role-assignment-complete.png)
+    **[AAR] -> [アクセス制御 (IAM)]** :::image type="content" source="./../../../how-tos/media/azure-remote-rendering-role-assignments.png" alt-text="ARR ロール":::       
 
     >[!NOTE]
     > クライアント アプリケーションを介してセッションを管理する場合、"*所有者*" ロールでは不十分です。 セッションの管理権限を付与したい各ユーザーに対して、**Remote Rendering クライアント** ロールを指定する必要があります。 セッションの管理とモデルの変換を行う各ユーザーに対して、**Remote Rendering 管理者** ロールを指定する必要があります。
@@ -255,9 +255,9 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
         string authority => "https://login.microsoftonline.com/" + AzureTenantID;
     
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
-    
-        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountDomain + "/mixedreality.signin" };
-    
+
+        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+
         public void OnEnable()
         {
             RemoteRenderingCoordinator.ARRCredentialGetter = GetAARCredentials;
@@ -379,6 +379,9 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
 
     ![AAD 認証コンポーネント](./media/azure-active-directory-auth-component.png)
 
+> [!NOTE]
+> [ARR サンプル レポジトリ](https://github.com/Azure/azure-remote-rendering)から完了したプロジェクトを使用している場合、タイトル横のチェックボックスをクリックして **AAD Authentication** コンポーネントを有効にしてください。
+
 1. クライアント ID とテナント ID の値を入力します。 これらの値は、[アプリの登録] の [概要] ページで確認できます。
 
     * **[Active Directory Application Client ID]\(Active Directory アプリケーション クライアント ID\)** は、AAD アプリの登録にある *[アプリケーション (クライアント) ID]* です (下図参照)。
@@ -387,10 +390,10 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
     * **[Azure Remote Rendering Account ID]\(Azure Remote Rendering アカウント ID\)** は、**RemoteRenderingCoordinator** に使用しているものと同じ **アカウント ID** です。
     * **[Azure Remote Rendering Account Domain]\(Azure Remote Rendering アカウント ドメイン\)** は、**RemoteRenderingCoordinator** で使用しているものと同じ **アカウント ドメイン** です。
 
-    ![アプリケーション (クライアント) ID とディレクトリ (テナント) ID が強調表示されているスクリーンショット。](./media/app-overview-data.png)
+    :::image type="content" source="./media/azure-active-directory-app-overview.png" alt-text="アプリケーション (クライアント) ID とディレクトリ (テナント) ID が強調表示されているスクリーンショット。":::
 
 1. Unity エディターの [Play]\(再生\) を押し、セッションの実行に同意します。
-    **AADAuthentication** コンポーネントはビュー コントローラーを備えているため、セッション承認のモーダル パネルの後にプロンプトを表示するように自動的にフックアップされます。
+    **AAD Authentication** コンポーネントはビュー コントローラーを備えているため、セッション承認のモーダル パネルの後にプロンプトを表示するように自動的にフックアップされます。
 1. **AppMenu** の右側のパネルに表示される手順に従います。
     次のように表示されます。![AppMenu の右側に表示されるインストラクション パネルを示す図。](./media/device-flow-instructions.png)
     

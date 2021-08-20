@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 5/17/2021
-ms.openlocfilehash: b259ef022d2fca8f6531a35eca619ef890019ff3
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: c289ab60973c0e907deb97c0e8520f8b608099eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072799"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467083"
 ---
 # <a name="register-and-scan-hive-metastore-database"></a>Hive メタストア データベースを登録してスキャンする
 
@@ -85,79 +85,81 @@ Hive メタストア データベース用にサポートされている認証�
 
 5.  次の詳細を指定します。
 
-    a.  **[名前]** : スキャンの名前
+    1. **[名前]** : スキャンの名前
 
-    b.  **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します。
+    1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** : 構成済みのセルフホステッド統合ランタイムを選択します。
 
-    c.  **[資格情報]** : 対象のデータ ソースに接続するための資格情報を選択します。 次のことを確認します。
+    1. **[資格情報]** : 対象のデータ ソースに接続するための資格情報を選択します。 次のことを確認します。
 
-    -   資格情報を作成するときに [基本認証] を選択します。
-    -   [ユーザー名] 入力フィールドに Metastore のユーザー名を入力します
-    -   秘密鍵にメタストアのパスワードを格納します。
+       - 資格情報を作成するときに [基本認証] を選択します。
+       - [ユーザー名] 入力フィールドに Metastore のユーザー名を入力します
+       - 秘密鍵にメタストアのパスワードを格納します。
 
-    資格情報の詳細については、[こちら](manage-credentials.md)のリンクを参照してください。 
+       資格情報の詳細については、[こちら](manage-credentials.md)のリンクを参照してください。 
 
-    **[Databricks usage]\(Databricks の使用状況\)** : [Databricks cluster]\(Databricks クラスター\) -> [アプリ] -> [Launch Web Terminal]\(Web ターミナルの起動\) に移動します。 コマンドレット **cat /databricks/hive/conf/hive-site.xml** を実行します
+       **[Databricks usage]\(Databricks の使用状況\)** : [Databricks cluster]\(Databricks クラスター\) -> [アプリ] -> [Launch Web Terminal]\(Web ターミナルの起動\) に移動します。 コマンドレット **cat /databricks/hive/conf/hive-site.xml** を実行します
 
-    次に示すように、ユーザー名とパスワードには 2 つのプロパティからアクセスできます
+       次に示すように、ユーザー名とパスワードには 2 つのプロパティからアクセスできます
 
-    :::image type="content" source="media/register-scan-hive-metastore-source/databricks-credentials.png" alt-text="databricks-username-password-details" border="true":::
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-credentials.png" alt-text="databricks-username-password-details" border="true":::
 
-    d. **[Metastore JDBC Driver Location]\(メタストア JDBC ドライバーの場所\)** : セルフホステッド統合ランタイムが実行されている VM 内の JDBC ドライバーの場所へのパスを指定します。 これは、有効な JAR フォルダーの場所へのパスである必要があります。
+    1. **[Metastore JDBC Driver Location]\(メタストア JDBC ドライバーの場所\)** : セルフホステッド統合ランタイムが実行されている VM 内の JDBC ドライバーの場所へのパスを指定します。 これは、有効な JAR フォルダーの場所へのパスである必要があります。
 
-    Databricks をスキャンする場合は、後の Databricks に関するセクションを参照してください。
+       Databricks をスキャンする場合は、後の Databricks に関するセクションを参照してください。
 
-    > [!Note]
-    > このドライバーは、VM 内のすべてのアカウントからアクセスできる必要があります。 これをユーザー アカウントにインストールしないようにしてください。
+       > [!Note]
+       > このドライバーは、VM 内のすべてのアカウントからアクセスできる必要があります。 これをユーザー アカウントにインストールしないようにしてください。
 
-    e.  **[Metastore JDBC Driver Class]\(メタストア JDBC ドライバー クラス\)** : 接続ドライバーのクラス名を指定します。 例: \com.microsoft.sqlserver.jdbc.SQLServerDriver。
+    1. **[Metastore JDBC Driver Class]\(メタストア JDBC ドライバー クラス\)** : 接続ドライバーのクラス名を指定します。 例: \com.microsoft.sqlserver.jdbc.SQLServerDriver。
     
-    **[Databricks usage]\(Databricks の使用状況\)** : [Databricks cluster]\(Databricks クラスター\) -> [アプリ] -> [Launch Web Terminal]\(Web ターミナルの起動\) に移動します。 コマンドレット **cat /databricks/hive/conf/hive-site.xml** を実行します
+       **[Databricks usage]\(Databricks の使用状況\)** : [Databricks cluster]\(Databricks クラスター\) -> [アプリ] -> [Launch Web Terminal]\(Web ターミナルの起動\) に移動します。 コマンドレット **cat /databricks/hive/conf/hive-site.xml** を実行します
     
-    ドライバー クラスには、次に示すようにプロパティからアクセスできます。
+       ドライバー クラスには、次に示すようにプロパティからアクセスできます。
     :::image type="content" source="media/register-scan-hive-metastore-source/databricks-driver-class-name.png" alt-text="databricks-driver-class-details" border="true":::
 
-    f.  **[Metastore JDBC URL]\(メタストア JDBC URL\)** : 接続 URL の値を指定し、メタストア DB サーバーの URL への接続を定義します。 例: jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300
+    1. **[Metastore JDBC URL]\(メタストア JDBC URL\)** : 接続 URL の値を指定し、メタストア DB サーバーの URL への接続を定義します。 例: `jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300`。
 
-    **[Databricks usage]\(Databricks の使用状況\)** : [Databricks cluster]\(Databricks クラスター\) -> [アプリ] -> [Launch Web Terminal]\(Web ターミナルの起動\) に移動します。 コマンドレット **cat /databricks/hive/conf/hive-site.xml** を実行します
+       **[Databricks usage]\(Databricks の使用状況\)** : [Databricks cluster]\(Databricks クラスター\) -> [アプリ] -> [Launch Web Terminal]\(Web ターミナルの起動\) に移動します。 コマンドレット **cat /databricks/hive/conf/hive-site.xml** を実行します
     
-    JDBC の URL には、次に示すように接続 URL プロパティからアクセスできます。
-    :::image type="content" source="media/register-scan-hive-metastore-source/databricks-jdbc-connection.png" alt-text="databricks-jdbc-url-details" border="true":::
-
-    この URL に、SSL 証明書が配置されている VM 上の場所へのパスを追加します。 SSL 証明書は、[こちら](../mysql/howto-configure-ssl.md)からダウンロードできます。
-
-    そのため、メタストア JDBC の URL は次のようになります。
+       JDBC の URL には、次に示すように接続 URL プロパティからアクセスできます。
+       
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-jdbc-connection.png" alt-text="databricks-jdbc-url-details" border="true":::
     
-    jdbc:mariadb://consolidated-westus2-prod-metastore-addl-1.mysql.database.azure.com:3306/organization1829255636414785?trustServerCertificate=true&amp;useSSL=true&sslCA=D:\Drivers\SSLCert\BaltimoreCyberTrustRoot.crt.pem
+       > [!NOTE]
+       > *hive-site.xml* から URL をコピーする場合は、文字列から `amp;` を削除してください。削除しないとスキャンに失敗します。
 
-    g.  **[Metastore database name]\(メタストア データベース名\)** : Hive メタストア データベースの名前を指定します
+       この URL に、SSL 証明書が配置されている VM 上の場所へのパスを追加します。 SSL 証明書は、[こちら](../mysql/howto-configure-ssl.md)からダウンロードできます。
+
+       メタストア JDBC の URL は次のようになります。
     
-    Databricks をスキャンする場合は、後の Databricks に関するセクションを参照してください。
+       `jdbc:mariadb://consolidated-westus2-prod-metastore-addl-1.mysql.database.azure.com:3306/organization1829255636414785?trustServerCertificate=true&amp;useSSL=true&sslCA=D:\Drivers\SSLCert\BaltimoreCyberTrustRoot.crt.pem`
 
-    **[Databricks usage]\(Databricks の使用状況\)** : [Databricks cluster]\(Databricks クラスター\) -> [アプリ] -> [Launch Web Terminal]\(Web ターミナルの起動\) に移動します。 コマンドレット **cat /databricks/hive/conf/hive-site.xml** を実行します
-
-    データベースの名前には、次に示すように JDBC URL プロパティからアクセスできます。 例: organization1829255636414785 :::image type="content" source="media/register-scan-hive-metastore-source/databricks-data-base-name.png" alt-text="databricks-database-name-details" border="true":::
-
-    h.  **[スキーマ]** : インポートする Hive スキーマのリストを指定します。 たとえば、schema1; schema2 のようにします。 
+    1. **メタストア データベース名**: Hive メタストア データベースの名前を指定します。
     
-    リストが空の場合は、すべてのユーザー スキーマがインポートされます。 既定では、すべてのシステム スキーマ (SysAdmin など) とオブジェクトが無視されます。 
+       Databricks をスキャンする場合は、後の Databricks に関するセクションを参照してください。
 
-    リストが空の場合は、使用可能なすべてのスキーマがインポートされます。
-    SQL LIKE 式の構文を使用したスキーマ名のパターンとして、% の使用も許容されます (例: A%; %B; %C%; D)
+       **[Databricks usage]\(Databricks の使用状況\)** : [Databricks cluster]\(Databricks クラスター\) -> [アプリ] -> [Launch Web Terminal]\(Web ターミナルの起動\) に移動します。 コマンドレット **cat /databricks/hive/conf/hive-site.xml** を実行します
 
-    -   A で始まる、または    
-    -   B で終わる、または    
-    -   C を含む、または    
-    -   D と等しい
+       データベースの名前には、次に示すように JDBC URL プロパティからアクセスできます。 例: organization1829255636414785
+       
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-data-base-name.png" alt-text="databricks-database-name-details" border="true":::
 
-    NOT および特殊文字の使用は許容されません。
+    1. **[スキーマ]** : インポートする Hive スキーマのリストを指定します。 たとえば、schema1; schema2 のようにします。 
+    
+        リストが空の場合は、すべてのユーザー スキーマがインポートされます。 既定では、すべてのシステム スキーマ (SysAdmin など) とオブジェクトが無視されます。 
 
-    i.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする Hive メタストア データベースのサイズによって異なります。
-    > [!Note]
-    > **Databricks メタストアをスキャンする場合**
-    >
+        リストが空の場合は、使用可能なすべてのスキーマがインポートされます。 SQL LIKE 式の構文を使用したスキーマ名のパターンとして、% の使用も許容されます (例: A%; %B; %C%; D)
 
-    :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="Hive ソースをスキャンします" border="true":::
+        - A で始まる、または    
+        - B で終わる、または    
+        - C を含む、または    
+        - D と等しい
+
+        NOT および特殊文字の使用は許容されません。
+
+     1. **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする Hive メタストア データベースのサイズによって異なります。
+
+        :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="Hive ソースをスキャンします" border="true":::
 
 6.  **[続行]** をクリックします。
 

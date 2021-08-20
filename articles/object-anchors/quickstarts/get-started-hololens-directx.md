@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 05c131abf23ac060db24b19b6affbeb5e632468b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: eee130b0736c87b118b38f19e7523c07a431e5c9
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004765"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202888"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>クイック スタート: Azure Object Anchors を使用する HoloLens アプリを C++/WinRT と DirectX で作成する
 
@@ -37,13 +37,29 @@ ms.locfileid: "112004765"
 * [開発者モード](/windows/mixed-reality/using-visual-studio#enabling-developer-mode)が有効になっている最新の HoloLens 2 デバイス。
   * HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** を選択します。
 
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
 ## <a name="open-the-sample-project"></a>サンプル プロジェクトを開く
 
 [!INCLUDE [Clone Sample Repo](../../../includes/object-anchors-clone-sample-repository.md)]
 
 Visual Studio で `quickstarts/apps/directx/DirectXAoaSampleApp.sln` を開きます。
 
-**ソリューション構成** を **[リリース]** に変更し、**ソリューション プラットフォーム** を **[ARM64]** に変更し、配置先オプションから **[デバイス]** を選択します。 次に、**AoaSampleApp** プロジェクトを右クリックし、 **[ビルド]** を選択して、プロジェクトをビルドします。
+**ソリューション構成** を **[リリース]** に変更し、**ソリューション プラットフォーム** を **[ARM64]** に変更し、配置先オプションから **[デバイス]** を選択します。
+
+## <a name="configure-the-account-information"></a>アカウント情報を構成する
+
+次のステップは、自分のアカウントの情報を使用するようにアプリを構成することです。 [[Object Anchors アカウントの作成]](#create-an-object-anchors-account) セクションの **アカウント キー**、**アカウント ID** および **アカウント ドメイン** 値をメモします。
+
+`Assets\ObjectAnchorsConfig.json`を開きます。
+
+`AccountId` フィールドを見つけ、`Set me` をアカウント ID に置き換えます。
+
+`AccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
+
+`AccountDomain` フィールドを見つけ、`Set me` をアカウント ドメインに置き換えます。
+
+次に、**AoaSampleApp** プロジェクトを右クリックし、 **[ビルド]** を選択して、プロジェクトをビルドします。
 
 :::image type="content" source="./media/vs-deploy-to-device.png" alt-text="配置する Visual Studio プロジェクトを構成する":::
 

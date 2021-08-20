@@ -3,16 +3,16 @@ title: Azure Defender for Kubernetes - 利点と機能
 description: Azure Defender for Kubernetes の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 04/07/2021
+ms.date: 07/20/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6eec2fed58d9c4fa3b0a05dc6ed03d9c5bf9d840
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 85a47bc3f676dc57d3e8cf6107a8acc8b9c6f793
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002542"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466678"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の概要
 
@@ -26,7 +26,7 @@ Azure Defender for Kubernetes は、Kubernetes クラスターの保護を、そ
 
 Azure Security Center と AKS は、「[Security Center のコンテナーのセキュリティ](container-security.md)」で概説する環境のセキュリティ強化、ワークロード保護、実行時保護を提供する、クラウドネイティブな Kubernetes セキュリティ オファリングを形成します。
 
-[Azure Defender for servers](defender-for-servers-introduction.md) と Log Analytics エージェントを有効にすると、Linux AKS ノードのホストレベルの脅威検出を使用できます。 ただし、クラスターが仮想マシン スケール セットにデプロイされている場合、Log Analytics エージェントは現在サポートされていません。
+[Azure Defender for servers](defender-for-servers-introduction.md) と Log Analytics エージェントを有効にすると、Linux AKS ノードのホストレベルの脅威検出を使用できます。 ただし、クラスターが Azure Kubernetes Service 仮想マシン スケール セット (VMSS) にデプロイされている場合、Log Analytics エージェントは現在サポートされていません。
 
 
 
@@ -37,7 +37,7 @@ Azure Security Center と AKS は、「[Security Center のコンテナーのセ
 |リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for Kubernetes** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |必要なロールとアクセス許可:|**セキュリティ管理者** はアラートを無視できます。<br>**セキュリティ閲覧者** は、結果を表示できます。|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) National/Sovereign (US Gov、Azure China)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国/ソブリン (米国政府機関および Azure China)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の利点
@@ -59,6 +59,11 @@ Azure Defender for Kubernetes によって監視されるセキュリティ イ�
 
 ## <a name="faq---azure-defender-for-kubernetes"></a>FAQ - Azure Defender for Kubernetes
 
+- [Log Analytics エージェントを使用しなくてもクラスターの保護を利用できますか。](#can-i-still-get-cluster-protections-without-the-log-analytics-agent)
+- [AKS を使用すると、AKS ノードにカスタム VM 拡張機能をインストールできますか。](#does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes)
+- [クラスターでコンテナー エージェントに対して Azure Monitor が既に実行されている場合、Log Analytics エージェントも必要ですか。](#if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too)
+- [VMSS Azure Defender for Kubernetes は VMSS ノードで AKS をサポートしていますか?](#does-azure-defender-for-kubernetes-support-aks-with-vmss-nodes)
+
 ### <a name="can-i-still-get-cluster-protections-without-the-log-analytics-agent"></a>Log Analytics エージェントを使用しなくてもクラスターの保護を利用できますか。
 
 **Azure Defender for Kubernetes** プランでは、クラスター レベルで保護を提供します。 **Azure Defender for servers** の Log Analytics エージェントもデプロイすると、そのプランで提供されているノードの脅威の防止を利用できます。 詳細については、「[Azure Defender for servers の概要](defender-for-servers-introduction.md)」をご覧ください。
@@ -68,7 +73,7 @@ Azure Defender for Kubernetes によって監視されるセキュリティ イ�
 ホストにエージェントをインストールしないことを選択した場合、脅威の防止の利点とセキュリティ アラートの一部だけが提供されます。 その場合でも、ネットワーク分析や悪意のあるサーバーとの通信に関連したアラートは通知されます。
 
 ### <a name="does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes"></a>AKS を使用すると、AKS ノードにカスタム VM 拡張機能をインストールできますか。
-Azure Defender で AKS ノードを監視するには、それらのノードで Log Analytics エージェントが実行されている必要があります。 
+Azure Defender で AKS ノードを監視するには、それらのノードで Log Analytics エージェントが実行されている必要があります。
 
 AKS は管理サービスであり、Log Analytics エージェントは Microsoft マネージド拡張機能であるため、AKS クラスターでもサポートされています。
 
@@ -78,6 +83,11 @@ Azure Defender でノードを監視するには、それらのノードで Log 
 クラスターでコンテナー エージェントに対して Azure Monitor が既に実行されている場合は、Log Analytics エージェントもインストールできます。この 2 つのエージェントは、問題なく一緒に動作できます。
 
 [コンテナー エージェントに対する Azure Monitor の詳細を学習](../azure-monitor/containers/container-insights-manage-agent.md)します。
+
+
+### <a name="does-azure-defender-for-kubernetes-support-aks-with-vmss-nodes"></a>VMSS Azure Defender for Kubernetes は VMSS ノードで AKS をサポートしていますか?
+クラスターが Azure Kubernetes Service 仮想マシン スケール セット (VMSS) にデプロイされている場合、Log Analytics エージェントは現在サポートされていません。
+
 
 
 ## <a name="next-steps"></a>次のステップ

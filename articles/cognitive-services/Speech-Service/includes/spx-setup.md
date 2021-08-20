@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 268f248c879d1a6872713159bfb1aa44879d21ad
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 364ceacaea122e7ffda58ef0c7d4db072c8fee13
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730388"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122263135"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -68,8 +68,11 @@ Linux の x64 CPU で Speech CLI をインストールするには、次の手�
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker のインストール (Windows、Linux、macOS)](#tab/dockerinstall)
 
-> [!WARNING]
+> [!IMPORTANT]
 > Docker コンテナー内で Speech CLI を実行するときは、コンピューターのマイクを使用することはできません。 ただし、ローカルにマウントされたディレクトリ内のオーディオ ファイルを読み取って保存することができます。 
+
+> [!NOTE]
+> 次の例では、パブリック コンテナー イメージを Docker Hub からプルします。 匿名の pull request を行うのではなく、最初に Docker Hub アカウント (`docker login`) で認証を行うことをお勧めします。 パブリック コンテンツを使用するときの信頼性を向上させるには、プライベートの Azure Container Registry にイメージをインポートして管理します。 [パブリック イメージの操作に関する詳細を参照してください](../../../container-registry/buffer-gate-public-content.md)。
 
 Docker コンテナー内に Speech CLI をインストールするには、次の手順に従います。
 

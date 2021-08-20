@@ -15,12 +15,12 @@ metadata:
   ms.workload: iaas-sql-server
   ms.date: 08/05/2019
   ms.author: mathoma
-  ms.openlocfilehash: 426a1e7fa481f31d279870368ff5616c6ead0c4b
-  ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+  ms.openlocfilehash: afc126a44fec520f4451787c0e8b350a292c2fca
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112082835"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114440693"
 title: Azure VM における SQL Server についてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -117,22 +117,6 @@ sections:
   - question: >
       ディザスター リカバリー (DR) 特典はどのサブスクリプションでサポートされていますか?
     answer: "ソフトウェア アシュアランスと同等のサブスクリプション権限を固定した特典として提供する包括的なプログラムでは、DR 特典がサポートされます。 これには、 オープン バリュー (OV)、オープン バリュー サブスクリプション (OVS)、Enterprise Agreement (EA)、エンタープライズ契約サブスクリプション (EAS)、およびサーバーおよびクラウド加入契約 (SCE) が含まれますが、これに限定されるものではありません。 詳細については、[製品の使用条件](https://www.microsoft.com/licensing/product-licensing/products)を参照し、ライセンスの担当者またはアカウント マネージャーにお問い合わせください。 \n"
-- name: 拡張機能
-  questions:
-  - question: >
-      新しい SQL IaaS Agent 拡張機能への VM の登録には、追加のコストがかかりますか。
-    answer: いいえ。 SQL IaaS Agent 拡張機能は、Azure VM 上で SQL Server 用の追加の管理機能を有効にするだけのものなので、追加料金は発生しません。
-  - question: >
-      SQL IaaS Agent 拡張機能はすべての顧客が利用できますか。
-    answer: "はい。SQL Server VM がクラシック モデルではなく Resource Manager モデルを使用してパブリック クラウドにデプロイされた場合に限ります。 他の顧客はすべて、新しい SQL IaaS Agent 拡張機能に登録できます。 ただし、SQL Server VM で [Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) をアクティブ化し、独自のライセンスを使用できるのは、[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)の特典をお持ちのお客様だけです。 \n"
-  - question: "VM リソースが移動または破棄されると、拡張機能 (\"Microsoft.SqlVirtualMachine\") リソースはどうなりますか? \n"
-    answer: Microsoft.Compute/VirtualMachine リソースが破棄または移動されると、関連付けられた Microsoft.SqlVirtualMachine リソースに、操作が非同期的にレプリケートされることが通知されます。
-  - question: >
-      拡張機能 ("Microsoft.SqlVirtualMachine") リソースが破棄されると、VM はどうなりますか?
-    answer: Microsoft.SqlVirtualMachine リソースが破棄されても、Microsoft.Compute/VirtualMachine リソースには影響しません。 ただし、ライセンスの変更により、元の既定のイメージ ソースに戻ります。
-  - question: >
-      SQL IaaS Agent 拡張機能に自己デプロイ済みの SQL Server VM を登録することはできますか。
-    answer: "はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、拡張機能に SQL Server VM を登録できます。    \n"
 - name: 管理
   questions:
   - question: >
@@ -259,4 +243,20 @@ sections:
   - question: >
       拡張機能を削除する方法
     answer: "拡張機能を削除するには、SQL IaaS Agent 拡張機能から SQL Server VM の[登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)します。 \n"
+  - question: >
+      新しい SQL IaaS Agent 拡張機能への VM の登録には、追加のコストがかかりますか。
+    answer: いいえ。 SQL IaaS Agent 拡張機能は、Azure VM 上で SQL Server 用の追加の管理機能を有効にするだけのものなので、追加料金は発生しません。
+  - question: >
+      SQL IaaS Agent 拡張機能はすべての顧客が利用できますか。
+    answer: "はい。SQL Server VM がクラシック モデルではなく Resource Manager モデルを使用してパブリック クラウドにデプロイされた場合に限ります。 他の顧客はすべて、新しい SQL IaaS Agent 拡張機能に登録できます。 ただし、SQL Server VM で [Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) をアクティブ化し、独自のライセンスを使用できるのは、[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)の特典をお持ちのお客様だけです。 \n"
+  - question: "VM リソースが移動または破棄されると、拡張機能 (\"Microsoft.SqlVirtualMachine\") リソースはどうなりますか? \n"
+    answer: Microsoft.Compute/VirtualMachine リソースが破棄または移動されると、関連付けられた Microsoft.SqlVirtualMachine リソースに、操作が非同期的にレプリケートされることが通知されます。
+  - question: >
+      拡張機能 ("Microsoft.SqlVirtualMachine") リソースが破棄されると、VM はどうなりますか?
+    answer: Microsoft.SqlVirtualMachine リソースが破棄されても、Microsoft.Compute/VirtualMachine リソースには影響しません。 ただし、ライセンスの変更により、元の既定のイメージ ソースに戻ります。
+  - question: >
+      SQL IaaS Agent 拡張機能に自己デプロイ済みの SQL Server VM を登録することはできますか。
+    answer: "はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、拡張機能に SQL Server VM を登録できます。    \n"
+  - question: "SQL IaaS エージェント拡張機能を修復することはできますか? \n"
+    answer: "はい。 SQL Server VM の **SQL 仮想マシン** リソースに移動し、**[サポート & トラブルシューティング]** で **[修復]** を選択して [[修復](sql-agent-extension-manually-register-single-vm.md#repair-extension)] ページを開き、拡張機能を修復します。 \n"
 additionalContent: "\n## <a name=\"resources\"></a>リソース\n\n**Windows VM**:\n\n* [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)\n* [Windows VM での SQL Server のプロビジョニング](create-sql-vm-portal.md)\n* [Azure VM の SQL Server へのデータベースの移行](migrate-to-vm-from-sql-server.md)\n* [Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](business-continuity-high-availability-disaster-recovery-hadr-overview.md)\n* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)\n* [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](application-patterns-development-strategies.md)\n\n**Linux VM**:\n\n* [Linux VM における SQL Server の概要](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)\n* [Linux VM での SQL Server のプロビジョニング](../linux/sql-vm-create-portal-quickstart.md)\n* [よく寄せられる質問 (Linux)](../linux/frequently-asked-questions-faq.yml)\n* [SQL Server on Linux のドキュメント](/sql/linux/sql-server-linux-overview)"

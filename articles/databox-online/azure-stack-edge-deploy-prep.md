@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/16/2021
+ms.date: 07/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 1cab6f6f9db0650cee51b3863d521089b500bee9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: eecdead171e68915430aefe9aebeb24833485789
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461311"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688977"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-fpga"></a>チュートリアル: Azure Stack Edge Pro FPGA の配置を準備する  
 
@@ -54,16 +55,32 @@ Azure Stack Edge Pro FPGA を配置するには、次の順序どおりにチュ
 
 * ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制サブスクリプションはサポートされていません。
 
-* Azure Stack Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
+* RBAC ロール: Azure ロールベースのアクセス制御 (RBAC) には、次のロールの割り当てがあります。
 
-  * 共同作成者アクセス権を付与するには、サブスクリプション レベルで **所有者** である必要があります。 他のユーザーに共同作成者アクセス権を付与するには、Azure portal で、 **[すべてのサービス]**  >  **[サブスクリプション]**  >  **[アクセス制御 (IAM)]**  >  **[+ 追加]**  >  **[ロールの割り当ての追加]** に移動します。 詳細については、[Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](../role-based-access-control/quickstart-assign-role-user-portal.md)」を参照してください。
+  * リソース、Azure Stack Edge、IoT Hub および Azure ストレージ リソースを作成するには、ユーザーがリソース グループ スコープで共同作成者ロールまたは所有者ロールを持っている必要があります。
 
-  * Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` リソースプロバイダーが登録されていることを確認する必要もあります。 リソースプロバイダーの登録方法については、「[リソースプロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」を参照してください。
-  * IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
-  * Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
+  * リソース グループ スコープのユーザーに共同作成者ロールを割り当てるには、サブスクリプション スコープで所有者ロールが必要です。
+
+  詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+
+* リソース プロバイダー: 次のリソース プロバイダーが登録されます。 
+
+  * Azure Stack Edge/Data Box Gateway リソースを作成するには、`Microsoft.DataBoxEdge` プロバイダーが登録 されている必要があります。
+
+  * IoT Hub リソースを作成するには、`Microsoft.Devices` プロバイダーが登録されていることを確認します。
+
+  * Azure Storage リソースを作成するには、Azure Storage が登録されていることを確認します。 Azure Storage リソース プロバイダー (SRP) は既定で登録済みのリソース プロバイダーですが、場合によっては登録が必要になる場合があります。
+
+  **リソース プロバイダーを登録するには、上記の関連 RBAC ロールが割り当てられている必要があります。**
+
+  登録する方法については、[「リソース プロバイダーを登録する」](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)を参照してください。
+
 * Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
+
 * アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
+
 * システム管理者が設定した Azure ポリシーによってブロックされていない。 ポリシーの詳細については、「[クイックスタート: 準拠していないリソースを識別するためのポリシー割り当てを作成する](../governance/policy/assign-policy-portal.md)」を参照してください。
+
 
 ### <a name="for-the-azure-stack-edge-pro-fpga-device"></a>Azure Stack Edge Pro FPGA デバイスの場合
 

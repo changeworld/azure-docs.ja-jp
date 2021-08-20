@@ -1,31 +1,33 @@
 ---
-title: プライベート エンドポイントを使用して Data Factory マネージド VNET からオンプレミスの SQL Server にアクセスする
-description: このチュートリアルでは、Azure portal を使用して Private Link サービスを設定し、プライベート エンドポイントを使用してマネージド VNET からオンプレミスの SQL Server にアクセスする手順について説明します。
+title: プライベート エンドポイントを使用して Data Factory マネージド VNet からオンプレミスの SQL Server にアクセスする
+description: このチュートリアルでは、Azure portal を使用して Private Link サービスを設定し、プライベート エンドポイントを使用してマネージド VNet からオンプレミスの SQL Server にアクセスする手順について説明します。
 author: lrtoyou1223
 ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: c389eab986fa317174db08a3e33d54d595c50c4c
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: bb29c7712bdbe629ff3aa8704c0c4654404f0da3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657466"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971832"
 ---
-# <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>チュートリアル: プライベート エンドポイントを使用して Data Factory マネージド VNET からオンプレミスの SQL Server にアクセスする方法
+# <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>チュートリアル: プライベート エンドポイントを使用して Data Factory マネージド VNet からオンプレミスの SQL Server にアクセスする方法
 
-このチュートリアルでは、Azure portal を使用して Private Link サービスを設定し、プライベート エンドポイントを使用してマネージド VNET からオンプレミスの SQL Server にアクセスする手順について説明します。
+このチュートリアルでは、Azure portal を使用して Private Link サービスを設定し、プライベート エンドポイントを使用してマネージド VNet からオンプレミスの SQL Server にアクセスする手順について説明します。
+
+> [!NOTE]
+> この記事に記載されているソリューションでは SQL Server 接続について説明しますが、同様の方法を使用して、Azure Data Factory でサポートされている他の使用可能な[オンプレミスコネクタ](connector-overview.md)に接続し、クエリを実行することができます。
 
 :::image type="content" source="./media/tutorial-managed-virtual-network/sql-server-access-model.png" alt-text="SQL Server のアクセス モデルを示すスクリーンショット。" lightbox="./media/tutorial-managed-virtual-network/sql-server-access-model-expanded.png":::
-
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* **Virtual Network**。 仮想ネットワークがない場合は、[仮想ネットワークの作成](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)に関する記事に従って作成します。
-* **オンプレミス ネットワークへの仮想ネットワーク**。 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager?toc=/azure/virtual-network/toc.json) と [VPN](https://docs.microsoft.com/azure/vpn-gateway/tutorial-site-to-site-portal?toc=/azure/virtual-network/toc.json) のいずれかを使用して、仮想ネットワークとオンプレミス ネットワークの間の接続を作成します。
-* **マネージド VNET が有効なデータ ファクトリ**。 データ ファクトリがない、またはマネージド VNET が有効でない場合は、[データ ファクトリとマネージド VNET の作成](https://docs.microsoft.com/azure/data-factory/tutorial-copy-data-portal-private)に関する記事に従って作成します。
+* **Virtual Network**。 仮想ネットワークがない場合は、[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事に従って作成します。
+* **オンプレミス ネットワークへの仮想ネットワーク**。 [ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=/azure/virtual-network/toc.json) と [VPN](../vpn-gateway/tutorial-site-to-site-portal.md?toc=/azure/virtual-network/toc.json) のいずれかを使用して、仮想ネットワークとオンプレミス ネットワークの間の接続を作成します。
+* **マネージド VNet が有効なデータ ファクトリ**。 データ ファクトリがない、またはマネージド VNet が有効でない場合は、[データ ファクトリとマネージド VNet の作成](tutorial-copy-data-portal-private.md)に関する記事に従って作成します。
 
 ## <a name="create-subnets-for-resources"></a>リソース用のサブネットの作成
 
@@ -212,8 +214,10 @@ ms.locfileid: "109657466"
 2. 次のオプションを使用してスクリプトを実行します。<br/>
     **sudo ./ip_fwd.sh -i eth0 -f 1433 -a <FQDN/IP> -b 1433**<br/>
     <FQDN/IP> はターゲットの SQL Server IP です。<br/>
-    >[!Note] 
-    >Azure DNS ゾーンにレコードを追加しない限り、オンプレミスの SQL Server では FQDN が機能しません。
+    
+    > [!Note] 
+    > Azure DNS ゾーンにレコードを追加しない限り、オンプレミスの SQL Server では FQDN が機能しません。
+    
 3. 以下のコマンドを実行し、バックエンド サーバー VM の iptables をチェックします。 自分のターゲット IP と一緒に iptables のレコードを 1 つ確認できます。<br/>
     **sudo iptables -t nat -v -L PREROUTING -n --line-number**
 
@@ -235,7 +239,7 @@ ms.locfileid: "109657466"
 4. **[Managed private endpoints]\(マネージド プライベート エンドポイント\)** で、 **[+ 新規]** を選択します。
 5. 一覧から **[Private Link サービス]** タイルを選択し、 **[続行]** を選択します。
 6. プライベート エンドポイントの名前を入力して、Private Link サービスの一覧で **myPrivateLinkService** を選択します。
-7. ターゲットのオンプレミス SQL Server の FQDN と、Private Link サービスの NAT IP を追加します。
+7. ターゲットのオンプレミス SQL Server の FQDN と、プライベート リンク サービスの NAT IP を追加します。
     
     :::image type="content" source="./media/tutorial-managed-virtual-network/link-service-nat-ip.png" alt-text="リンク サービスの NAT IP を示すスクリーンショット。" lightbox="./media/tutorial-managed-virtual-network/link-service-nat-ip-expanded.png":::
 
@@ -266,7 +270,7 @@ ms.locfileid: "109657466"
 
 ## <a name="next-steps"></a>次の手順
 
-次のチュートリアルに進み、プライベート エンドポイントを使用して Data Factory マネージド VNET から Microsoft Azure SQL Managed Instance にアクセスする方法について確認します。
+次のチュートリアルに進み、プライベート エンドポイントを使用して Data Factory マネージド VNet から Microsoft Azure SQL Managed Instance にアクセスする方法について確認します。
 
 > [!div class="nextstepaction"]
-> [Data Factory マネージド VNET から SQL Managed Instance にアクセスする](tutorial-managed-virtual-network-sql-managed-instance.md)
+> [Data Factory マネージド VNet から SQL Managed Instance にアクセスする](tutorial-managed-virtual-network-sql-managed-instance.md)

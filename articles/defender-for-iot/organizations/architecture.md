@@ -2,20 +2,19 @@
 title: エージェントレス ソリューション アーキテクチャとは
 description: Azure Defender for IoT のエージェントレス アーキテクチャと情報フローについて説明します。
 ms.topic: overview
-ms.date: 1/25/2021
-ms.author: shhazam
-ms.openlocfilehash: bd639ca2656b901bd87fccf36fb4a5d90d3bf918
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 07/19/2021
+ms.openlocfilehash: cec373f3848e264b7c9f4b9753315189da77bc0b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011457"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455230"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT のアーキテクチャ
 
 この記事では、Defender for IoT エージェントレス ソリューションの機能的なシステム アーキテクチャについて説明します。 Azure Defender for IoT には、ご使用環境のニーズに適合するように、組織向けのエージェントレス ソリューションとデバイス ビルダー向けのエージェントベースのソリューションという 2 つの機能セットが用意されています。
 
-## <a name="agentless-solution-for-organizations"></a>組織向けのエージェントレス ソリューション
+## <a name="agentless-solution-architecture-for-organizations"></a>組織向けのエージェントレス ソリューション アーキテクチャ
 ### <a name="defender-for-iot-components"></a>Defender for IoT のコンポーネント
 
 Defender for IoT は、Azure クラウドとオンプレミスのコンポーネントの両方に接続します。 このソリューションは、複数のリモートの場所を持つ大規模で地理的に分散した環境でのスケーラビリティを考慮して設計されています。 このソリューションを使用すると、国、地域、事業単位、またはゾーンごとの多層分散アーキテクチャを実現できます。 

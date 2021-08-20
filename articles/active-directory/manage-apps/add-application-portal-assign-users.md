@@ -1,23 +1,25 @@
 ---
-title: クイック スタート:Azure Active Directory を ID プロバイダーとして使用するアプリにユーザーを割り当てる
+title: 'クイックスタート: アプリへのユーザーの割り当て'
+titleSuffix: Azure AD
 description: このクイックスタートでは、ID プロバイダーとして Azure AD を使用するように設定したアプリをユーザーが使用できるようにする手順を説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 09/01/2020
-ms.author: mtillman
-ms.openlocfilehash: a6f320c83d2baf179f4aaf4358f13ad4af2f4953
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2021
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 5c8b4ec030f60b940d8d6c36bd31e10932151dd5
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081823"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667171"
 ---
-# <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>クイック スタート:Azure AD を ID プロバイダーとして使用しているアプリにユーザーを割り当てる
+# <a name="quickstart-assign-users-to-an-application"></a>クイックスタート: アプリへのユーザーの割り当て
 
 前のクイックスタートでは、アプリのプロパティを構成しました。 プロパティを設定するときに、割り当てられるユーザーと割り当てられないユーザーの両方に対するエクスペリエンスを構成しました。 このクイックスタートでは、ユーザーをアプリに割り当てる手順について説明します。
 
@@ -35,27 +37,28 @@ Azure AD テナントに追加したアプリにユーザーを割り当てる�
 >このクイックスタートの手順をテストする場合は、非運用環境を使用してください。
 
 ## <a name="assign-users-to-an-app"></a>アプリにユーザーを割り当てる
+
 1. Azure AD portal で、 **[エンタープライズ アプリケーション]** を選択します。 次に、構成するアプリケーションを探して選択します。
 2. 左側のナビゲーション メニューで **[ユーザーとグループ]** を選択します。
    > [!NOTE]
-   > 一部の Microsoft 365 アプリでは、PowerShell を使用する必要があります。 
-3. **[ユーザーの追加]** ボタンを選択します。
+   > 一部の Microsoft 365 アプリでは、PowerShell を使用する必要があります。
+3. **[ユーザー/グループの追加]** ボタンを選択します。
 4. **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 5. アプリケーションに割り当てるユーザーまたはグループを選択します。 検索ボックスで、ユーザーまたはグループの名前の入力を開始することもできます。 複数のユーザーとグループを選択でき、選択した項目が **[選択されたアイテム]** に表示されます。
     > [!IMPORTANT]
     > グループをアプリケーションに割り当てると、そのグループ内のユーザーのみがアクセスできるようになります。 割り当ては、入れ子になったグループにはカスケードされません。
 
     > [!NOTE]
-    > グループベースの割り当てには、Azure Active Directory Premium P1 または P2 エディションが必要です。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと Microsoft 365 グループは、現在サポートされていません。 この記事で説明されている機能に必要なライセンスの詳細については、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。 
+    > グループベースの割り当てには、Azure Active Directory Premium P1 または P2 エディションが必要です。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと Microsoft 365 グループは、現在サポートされていません。 この記事で説明されている機能に必要なライセンスの詳細については、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。
 6. 完了したら、 **[選択]** を選択します。
-   ![アプリケーションにユーザーまたはグループを割り当てる](./media/assign-user-or-group-access-portal/assign-users.png)
+   :::image type="content" source="./media/assign-user-or-group-access-portal/assign-users.png" alt-text="アプリケーションにユーザーまたはグループを割り当てる":::
 7. **[ユーザーとグループ]** ウィンドウで、リストから 1 つまたは複数のユーザーまたはグループを選択し、ウィンドウの下部にある **[選択]** ボタンを選びます。
-8. アプリケーションでサポートされている場合は、ユーザーまたはグループにロールを割り当てることができます。 **[割り当ての追加]** ウィンドウで、 **[ロールの選択]** を選択します。 次に、 **[ロールの選択]** ウィンドウで、選択したユーザーまたはグループに適用するロールを選択して、ウィンドウの下部にある **[OK]** を選びます。 
+8. アプリケーションでサポートされている場合は、ユーザーまたはグループにロールを割り当てることができます。 **[割り当ての追加]** ウィンドウで、 **[ロールの選択]** を選択します。 次に、 **[ロールの選択]** ウィンドウで、選択したユーザーまたはグループに適用するロールを選択して、ウィンドウの下部にある **[OK]** を選びます。
     > [!NOTE]
     > アプリケーションでロールの選択がサポートされていない場合は、既定のアクセス ロールが割り当てられます。 この場合、アプリケーションでユーザーのアクセス レベルを管理します。
 9. **[割り当ての追加]** ウィンドウで、ウィンドウの下部にある **[割り当て]** ボタンを選択します。
 
-同じ手順を使用して、ユーザーまたはグループの割り当てを解除できます。 割り当てを解除するユーザーまたはグループを選択してから、 **[削除]** を選択します。 一部の Microsoft 365 アプリと Office 365 アプリでは、PowerShell を使用する必要があります。 
+同じ手順を使用して、ユーザーまたはグループの割り当てを解除できます。 割り当てを解除するユーザーまたはグループを選択してから、 **[削除]** を選択します。 一部の Microsoft 365 アプリと Office 365 アプリでは、PowerShell を使用する必要があります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
