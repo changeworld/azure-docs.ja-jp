@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - アプリをビルドして Azure Spring Cloud にデプロイする
 description: Azure Spring Cloud へのアプリのデプロイについて説明します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: fc005e8d94a0c6ddb7f21de05872f12bdb7f2177
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b82e36b798611aad20044592cd3bec60cdf2e871
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965122"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469259"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -213,7 +213,6 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
 
     ```azurecli
     az configure --defaults group=<resource group name> spring-cloud=<service name>  
-    az spring-cloud config-server git set -n <service instance name> --uri https://github.com/azure-samples/spring-petclinic-microservices-config
     ```
 
 1. PetClinic の 2 つのコア マイクロサービス (API ゲートウェイと顧客サービス) を作成します。
@@ -245,7 +244,7 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
 
 ## <a name="verify-the-services"></a>サービスを確認する
 
-上記の **パブリック URL** ("https://<service name>-api-gateway.azuremicroservices.io" の形式) を使用して、ブラウザーからアプリ ゲートウェイと顧客サービスにアクセスします。
+上記の **パブリック URL** (`https://<service name>-api-gateway.azuremicroservices.io` の形式) を使用して、ブラウザーからアプリ ゲートウェイと顧客サービスにアクセスします。
 
 ![PetClinic の顧客サービスにアクセスする](media/build-and-deploy/access-customers-service.png)
 
@@ -282,7 +281,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 1. 親 POM を含む PetClinic のルート フォルダー内で次のコマンドを実行して、構成を生成します。 既に Azure CLI でサインインしている場合、コマンドは資格情報を自動的に取得します。 そうでない場合は、プロンプトの指示に従ってサインインします。 詳細については、[wiki ページ](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)を参照してください。
 
     ```azurecli
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.5.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.6.0:config
     ```
     
     選択を求めるメッセージが表示されます。
@@ -298,7 +297,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
             <plugin>
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-spring-cloud-maven-plugin</artifactId>
-                <version>1.5.0</version>
+                <version>1.6.0</version>
                 <configuration>
                     <subscriptionId>xxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx</subscriptionId>
                     <clusterName>v-spr-cld</clusterName>
@@ -317,7 +316,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     
 ## <a name="verify-the-services"></a>サービスを確認する
 
-デプロイ コマンドが成功すると、"https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io" の形式の URL が返されます。 これを使用して、実行中のサービスに移動します。
+デプロイ コマンドが成功すると、`https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io` の形式で URL が返されます。 これを使用して、実行中のサービスに移動します。
 
 ![PetClinic にアクセスする](media/build-and-deploy/access-customers-service.png)
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd215f0c10f8aebd2a7494ecb5894484ce7bedb9
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: e0558be2ea1defb2a09e6461ba838e328cb293d6
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714046"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201718"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -108,13 +108,13 @@ Identity Governance で管理タスクを実行するには、最小特権ロー
 
 | 機能 | 最小特権ロール |
 | ------- | --------------------- |
-| エンタイトルメント管理 | ユーザー管理者 (グローバル管理者が必要な、カタログへの SharePoint Online サイトの追加を除きます) |
+| エンタイトルメント管理 | Identity Governance 管理者 |
 | アクセス レビュー | ユーザー管理者 (特権ロール管理者が必要な、Azure ロールまたは Azure AD ロールのアクセス レビューを除きます) |
 |Privileged Identity Management | 特権ロール管理者 |
 | 使用条件 | セキュリティ管理者または条件付きアクセス管理者 |
 
 >[!NOTE]
->エンタイトルメント管理の最小特権ロールは、ユーザー管理者ロールから Identity Governance 管理者ロールに変更になります。
+>エンタイトルメント管理の最小特権ロールは、ユーザー管理者ロールから Identity Governance 管理者ロールに変更されています。
 
 ## <a name="next-steps"></a>次のステップ
 

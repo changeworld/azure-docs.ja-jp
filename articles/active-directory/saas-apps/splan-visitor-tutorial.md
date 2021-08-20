@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/14/2020
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de00b869aef2d1429740d75829da9a5c3e79de15
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644699"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465945"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Splan Visitor を統合する
 
@@ -33,11 +33,14 @@ ms.locfileid: "101644699"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Splan Visitor でのシングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-Splan Visitor では、IdP Initiated SSO がサポートされます。
+* Splan Visitor では、IdP Initiated SSO がサポートされます。
 
 ## <a name="add-splan-visitor-from-the-gallery"></a>ギャラリーからの Splan Visitor の追加
 
@@ -69,7 +72,7 @@ Splan Visitor に対して Azure AD SSO を構成してテストするには、�
 
 1. Azure portal の **Splan Visitor** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の **編集 (ペン)** アイコンを選択して設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の **鉛筆アイコン** を選択して設定を編集します。
 
    ![[基本的な SAML 構成] の編集 (ペン) アイコンが強調表示されたスクリーンショット。](common/edit-urls.png)
 

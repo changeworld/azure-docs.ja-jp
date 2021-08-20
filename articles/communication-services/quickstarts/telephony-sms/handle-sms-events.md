@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 04b0ee4feb74553fc3b24910da338ba02864ec28
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3d40705b5dc2b1fb3649c9acea33fc500add1c91
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109164"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768817"
 ---
 # <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>クイックスタート: 配信レポートと受信メッセージの SMS イベントを処理する
 
@@ -28,7 +28,7 @@ Azure Event Grid を使用して Communication Services の SMS イベントを�
 
 ## <a name="prerequisites"></a>前提条件
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- Azure Communication Services リソース。 詳細については、[Azure Communication リソースの作成](../create-communication-resource.md)のクイックスタートに関するページを参照してください。
+- Azure Communication Services リソース。 詳細については、[Azure Communication Services リソースの作成](../create-communication-resource.md)のクイックスタートに関するページを参照してください。
 - SMS が有効になっている電話番号。 [電話番号を取得します](./get-phone-number.md)。
 
 ## <a name="setting-up"></a>設定

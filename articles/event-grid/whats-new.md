@@ -1,26 +1,20 @@
 ---
-title: 新機能 リリース ノート - Azure Event Grid
+title: 新機能 Azure Event Grid
 description: 最新のリリース ノート、既知の問題、バグの修正、非推奨の機能、予定されている変更点など、Azure Event Grid の新着情報について説明します。
 ms.topic: overview
 ms.date: 04/27/2021
-ms.openlocfilehash: ccb8df774838a1b71ddec08394d7487bf3176039
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a8c39338b43dfb1ddde173c3560faeb977b0148f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135925"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466668"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure Event Grid の新機能
 
 >URL `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Event+Grid%22&locale=en-us` をコピーして、お使いの ![RSS フィード リーダー アイコン](./media/whats-new/feed-icon-16x16.png) フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
-Azure Event Grid は随時改善されています。 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
-
-- 最新のリリース
-- 既知の問題
-- バグの修正
-- 非推奨の機能
-- 変更の計画
+Azure Event Grid は随時改善されています。 最近の開発について常に最新の情報を提供するため、この記事では、リリースで追加または更新された機能に関する情報を提供します。 
 
 ## <a name="610-preview-2020-10"></a>6.1.0-preview (2020-10)
 - [システム トピックのマネージド ID](enable-identity-system-topics.md)

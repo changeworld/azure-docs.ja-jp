@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82f747f9bc484c0d113b579579bf13c98590e37c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96341650"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766725"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>チュートリアル:データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -68,7 +68,7 @@ ms.locfileid: "96341650"
 
 ## <a name="installation"></a><a id="Install"></a>インストール
 
-移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ソリューションをローカルにダウンロードしてコンパイルするか、[プリコンパイル済みのバイナリをダウンロード](https://aka.ms/csdmtool)してから、次のいずれかを実行できます。
+移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ダウンロードして、そのソリューションをローカルでコンパイルし、次のいずれかを実行します。
 
 * **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
 * **Dt.exe**: コマンド ライン バージョンのツール

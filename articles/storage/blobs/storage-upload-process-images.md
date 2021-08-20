@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a2a73c081a24d0efc8197a2d6808f4dfee94481a
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 9aa776b52d3303d7721d900476f606c3ab38d7a5
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591676"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378711"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル:Azure Storage を使用してクラウドに画像データをアップロードする
 
@@ -51,26 +51,48 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。  
-
 次の例では、`myResourceGroup` という名前のリソース グループを作成します。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+
+```powershell
+New-AzResourceGroup -Name myResourceGroup -Location southeastasia
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 ```azurecli
 az group create --name myResourceGroup --location southeastasia
 ```
 
-```powershell
-az group create --name myResourceGroup --location southeastasia
-```
+---
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-サンプルでは、Azure ストレージ アカウント内の BLOB コンテナーに画像をアップロードします。 ストレージ アカウントは、Azure Storage データ オブジェクトを格納してアクセスするための一意の名前空間を用意します。 [az storage account create](/cli/azure/storage/account) コマンドを使用して作成したリソース グループ内にストレージ アカウントを作成します。
+サンプルでは、Azure ストレージ アカウント内の BLOB コンテナーに画像をアップロードします。 ストレージ アカウントは、Azure Storage データ オブジェクトを格納してアクセスするための一意の名前空間を用意します。
 
 > [!IMPORTANT]
 > このチュートリアルの第 2 部では、BLOB ストレージで Azure Event Grid を使用します。 Event Grid がサポートされている Azure リージョンにストレージ アカウントを作成してください。 サポートされているリージョンの一覧は、[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)に関するページをご覧ください。
 
 次のコマンドの `<blob_storage_account>` プレースホルダーを、BLOB ストレージ アカウントのグローバルな一意の名前に置き換えます。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドを使用して作成されたリソース グループ内に、ストレージ アカウントを作成します。
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+New-AzStorageAccount -ResourceGroupName myResourceGroup -Name $blobStorageAccount -SkuName Standard_LRS -Location southeastasia -Kind StorageV2 -AccessTier Hot
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az storage account create](/cli/azure/storage/account) コマンドを使用して作成したリソース グループ内にストレージ アカウントを作成します。
 
 ```azurecli
 blobStorageAccount="<blob_storage_account>"
@@ -79,22 +101,31 @@ az storage account create --name $blobStorageAccount --location southeastasia \
   --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
 ```
 
-```powershell
-$blobStorageAccount="<blob_storage_account>"
-
-az storage account create --name $blobStorageAccount --location southeastasia `
-  --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
-```
+---
 
 ## <a name="create-blob-storage-containers"></a>BLOB ストレージ コンテナーを作成する
 
-アプリでは、BLOB ストレージ アカウント内の 2 つのコンテナーを使用します。 コンテナーはフォルダーに似ており、BLOB を格納します。 "*images*" コンテナーは、アプリが高解像度のイメージをアップロードする場所です。 このシリーズの後半で、Azure 関数アプリで、サイズ変更した画像を *thumbnails* コンテナーにアップロードします。
-
-[az storage account keys list](/cli/azure/storage/account/keys) コマンドを使用して、ストレージ アカウント キーを取得します。 次に、このキーを使用して、[az storage container create](/cli/azure/storage/container) コマンドで 2 つのコンテナーを作成します。
+アプリでは、BLOB ストレージ アカウント内の 2 つのコンテナーを使用します。 コンテナーはフォルダーに似ており、BLOB を格納します。 "*images*" コンテナーは、アプリが高解像度のイメージをアップロードする場所です。 このシリーズの後半では、サイズ変更した画像を *thumbnails に Azure 関数アプリでアップロードします
 
 *images* コンテナーのパブリック アクセスは、`off` に設定されています。 *thumbnails* コンテナーのパブリック アクセスは、`container` に設定されています。 `container` パブリック アクセスに設定すると、Web ページにアクセスしたユーザーはサムネイルを表示できます。
 
-```bash
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) コマンドを使用してストレージ アカウント キーを取得します。 次に、このキーを使用し、[New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) コマンドで 2 つのコンテナーを作成します。
+
+```powershell
+$blobStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName myResourceGroup -Name $blobStorageAccount).Key1
+$blobStorageContext = New-AzStorageContext -StorageAccountName $blobStorageAccount -StorageAccountKey $blobStorageAccountKey
+
+New-AzStorageContainer -Name images -Context $blobStorageContext
+New-AzStorageContainer -Name thumbnails -Permission Container -Context $blobStorageContext
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az storage account keys list](/cli/azure/storage/account/keys) コマンドを使用して、ストレージ アカウント キーを取得します。 次に、このキーを使用して、[az storage container create](/cli/azure/storage/container) コマンドで 2 つのコンテナーを作成します。
+
+```azurecli
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
@@ -107,18 +138,7 @@ az storage container create --name thumbnails \
   --account-key $blobStorageAccountKey --public-access container
 ```
 
-```powershell
-$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
-  -n $blobStorageAccount --query "[0].value" --output tsv)
-
-az storage container create --name images `
-  --account-name $blobStorageAccount `
-  --account-key $blobStorageAccountKey
-
-az storage container create --name thumbnails `
-  --account-name $blobStorageAccount `
-  --account-key $blobStorageAccountKey --public-access container
-```
+---
 
 BLOB ストレージ アカウント名とキーをメモしておきます。 サンプル アプリでは、これらの設定を使用して、画像をアップロードするストレージ アカウントに接続します。 
 
@@ -126,23 +146,45 @@ BLOB ストレージ アカウント名とキーをメモしておきます。 �
 
 [App Service プラン](../../app-service/overview-hosting-plans.md)は、アプリのホストとなる Web サーバー ファームの場所、サイズ、機能を規定します。
 
-[az appservice plan create](/cli/azure/appservice/plan) コマンドで、App Service プランを作成します。
-
 次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) コマンドで App Service プランを作成します。
+
+```powershell
+New-AzAppServicePlan -ResourceGroupName myResourceGroup -Name myAppServicePlan -Tier "Free"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az appservice plan create](/cli/azure/appservice/plan) コマンドで、App Service プランを作成します。
 
 ```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
-```powershell
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
-```
+---
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。 [az webapp create](/cli/azure/webapp) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。  
+Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。
 
 次のコマンドで、`<web_app>` を一意の名前に置き換えます。 有効な文字は、`a-z`、`0-9`、および `-` です。 `<web_app>` が一意でない場合は、"*指定された名前 `<web_app>` の Web サイトは既に存在します*" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。  
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[New-AzWebApp](/powershell/module/az.websites/new-azwebapp) コマンドで `myAppServicePlan` App Service プラン内に [Web アプリ](../../app-service/overview.md)を作成します。  
+
+```powershell
+$webapp="<web_app>"
+
+New-AzWebApp -ResourceGroupName myResourceGroup -Name $webapp -AppServicePlan myAppServicePlan
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az webapp create](/cli/azure/webapp) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。  
 
 ```azurecli
 webapp="<web_app>"
@@ -150,11 +192,7 @@ webapp="<web_app>"
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-```powershell
-$webapp="<web_app>"
-
-az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
-```
+---
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>GitHub リポジトリからサンプル アプリをデプロイする
 
@@ -198,7 +236,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-このサンプル Web アプリでは、[.NET 用 Azure Storage API](/dotnet/api/overview/azure/storage) シリーズを使用して、画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
+このサンプル Web アプリでは、[.NET 用 Azure Storage API](/dotnet/api/overview/azure/storage) シリーズを使用して、画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) または [New-AzStaticWebAppSetting](/powershell/module/az.websites/new-azstaticwebappsetting) コマンドを使用し、デプロイされるアプリにアプリ設定を追加します。
 
 ```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -218,7 +256,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 # <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
-このサンプル Web アプリでは、[JavaScript 用の Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)を使用して画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
+このサンプル Web アプリでは、[JavaScript 用の Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)を使用して画像をアップロードします。 ストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) または [New-AzStaticWebAppSetting](/powershell/module/az.websites/new-azstaticwebappsetting) コマンドを使用し、デプロイされるアプリにアプリ設定を追加します。
 
 ```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \

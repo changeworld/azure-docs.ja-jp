@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7173c625ef56ea9e4d4d43d90adc18ba4fe167ab
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 320ef1b523615894910d277fcc155104b4b297bc
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109289"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766540"
 ---
 # <a name="calling-sdk-overview"></a>Calling SDK の概要
 
@@ -111,7 +111,7 @@ Communication Services Calling SDK では、次のタイムアウトが適用さ
 | プラットフォーム     | Chrome | Safari | Edge (Chromium) | メモ                                                                                                                                                                                                       |
 | ------------ | ------ | ------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Android      | ✔️      | ❌      | ❌               | 送信画面の共有はサポートされません。                                                                                                                                                                   |
-| iOS          | ❌      | ✔️      | ❌               | Safari 上の iOS アプリでは、マイクおよびスピーカー デバイス (Bluetooth など) を列挙または選択できません。これは OS の制限であり、常に 1 つのデバイスのみが存在します。 送信画面の共有はサポートされません。 |
+| iOS          | ❌      | ✔️      | ❌               | [Safari 上の iOS アプリでは、マイクおよびスピーカー デバイス (Bluetooth など) を列挙または選択できません](https://docs.microsoft.com/azure/communication-services/concepts/known-issues#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados)。これはこの OS の制限であり、デバイスは常に 1 つのみで、選択された既定のデバイスは OS によって制御されています。 送信画面の共有はサポートされません。 |
 | macOS        | ✔️      | ✔️      | ❌               | 送信ビデオのサポートには Safari 14 以降または macOS 11 以降が必要です。                                                                                                                                                     |
 | Windows      | ✔️      | ❌      | ✔️               |                                                                                                                                                                                                             |
 | Ubuntu、Linux | ✔️      | ❌      | ❌               |                                                                                                                                                                                                             |

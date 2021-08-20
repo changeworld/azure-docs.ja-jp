@@ -6,17 +6,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dadc8bd00e87b149b32515551886b2a8129b78d4
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 18ac7ba882f82e1c5de29367e3cd27f0f5a260c0
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560824"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339772"
 ---
 このクイックスタートでは、Android 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
 
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) にあります
+## <a name="sample-code"></a>サンプル コード
+
+サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -175,9 +176,10 @@ package com.contoso.acsquickstart;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
+import android.media.AudioManager;
 import android.Manifest;
 import android.content.pm.PackageManager;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -207,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
         // Bind call button to call `startCall`
         Button callButton = findViewById(R.id.call_button);
         callButton.setOnClickListener(l -> startCall());
+        
+        setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
     }
 
     /**
@@ -271,7 +275,9 @@ Azure Communication Services Calling SDK の主な機能のいくつかは、次
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>ユーザー アクセス トークンからエージェントを作成する
 
-認証された通話エージェントは、ユーザー トークンを使用してインスタンス化できます。 通常このトークンは、アプリケーション固有の認証を使用してサービスから生成されます。 ユーザー アクセス トークンの詳細については、[ユーザー アクセス トークン](../../../access-tokens.md)のガイドを参照してください。 クイック スタートでは、`<User_Access_Token>` を Azure Communication Service リソース用に生成されたユーザー アクセス トークンに置き換えます。
+認証された通話エージェントは、ユーザー トークンを使用してインスタンス化できます。 通常このトークンは、アプリケーション固有の認証を使用してサービスから生成されます。 ユーザー アクセス トークンの詳細については、[ユーザー アクセス トークン](../../../access-tokens.md)のガイドを参照してください。 
+
+クイック スタートでは、`<User_Access_Token>` を Azure Communication Service リソース用に生成されたユーザー アクセス トークンに置き換えます。
 
 ```java
 
@@ -318,7 +324,3 @@ private void startCall() {
 ツール バーの [Run App]\(アプリの実行\) ボタン (Shift + F10) を使用してアプリを起動できるようになりました。 `8:echo123` を呼び出して電話を発信できることを確認してください。 事前に録音したメッセージが再生された後、そのメッセージがもう一度繰り返されます。
 
 :::image type="content" source="../../media/android/quickstart-android-call-echobot.png" alt-text="完成したアプリケーションを示すスクリーンショット。":::
-
-## <a name="sample-code"></a>サンプル コード
-
-サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) からダウンロードできます

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c087533958665eb71e046d3bab1f03265adbd3ba
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 011461b1ecba9c5ce8cf636980a97d26f2228a98
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111853570"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128842"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -341,6 +341,9 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 ### <a name="renew-certificate"></a>証明書の更新
 
+> [!NOTE]
+> 更新プロセスでは、[App Service の既知のサービスプリンシパルが key vault に対して必要なアクセス許可を持っている](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault)必要があります。 このアクセス許可はポータルから App Service 証明書をインポートするときに構成されます。キー コンテナーから削除することはできません。
+
 任意の時点で証明書の自動更新をオンにするには、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションで **[自動更新の設定]** をクリックします。 既定では、App Service 証明書の有効期間は 1 年です。
 
 **[オン]** を選択して、 **[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 30 日前に自動更新を開始できます。
@@ -389,11 +392,11 @@ App Service 証明書の削除は最終的なものであり、元に戻すこ�
 
 これで、App Service 証明書を削除できるようになりました。 左側のナビゲーションから **[概要]**  >  **[削除]** を選択します。 確認ダイアログで、証明書の名前を入力し、 **[OK]** を選択します。
 
-## <a name="automate-with-scripts"></a>スクリプトで自動化する
+## <a name="automate-with-scripts&quot;></a>スクリプトで自動化する
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name=&quot;azure-cli&quot;></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 &quot;Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
@@ -405,4 +408,4 @@ App Service 証明書の削除は最終的なものであり、元に戻すこ�
 * [HTTPS の適用](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 の適用](configure-ssl-bindings.md#enforce-tls-versions)
 * [Azure App Service のご自分のコードから TLS/SSL 証明書を使用する](configure-ssl-certificate-in-code.md)
-* [FAQ:App Service 証明書](./faq-configuration-and-management.md)
+* [FAQ:App Service 証明書](./faq-configuration-and-management.yml)

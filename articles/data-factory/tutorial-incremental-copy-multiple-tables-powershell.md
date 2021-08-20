@@ -7,13 +7,13 @@ ms.reviewer: douglasl, jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
-ms.date: 02/18/2021
-ms.openlocfilehash: 182d9d08041b2d32253b935a5171be6d399c80a6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 07/05/2021
+ms.openlocfilehash: ae7f83e397822eb52a9fdfca7011d4228cb3b625
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679066"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436345"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
@@ -815,10 +815,11 @@ END
 
 3. データ ファクトリの一覧から **目的のデータ ファクトリ** を探して選択し、[データ ファクトリ] ページを開きます。 
 
-4. **[データ ファクトリ]** ページの **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Azure Data Factory を起動します。
+4. **[データ ファクトリ]** ページの **[Open Azure Data Factory Studio]** タイルで **[開く]** を選択して、別のタブで Azure Data Factory を起動します。
 
-5. **[始めましょう]** ページで、左側の **[監視]** を選択します。 
-![Azure Data Factory の [始めましょう] ページを示すスクリーンショット。](media/doc-common-process/get-started-page-monitor-button.png)    
+5. Azure Data Factory のホームページの左側で **[モニター]** を選択します。 
+
+    ![Azure Data Factory のホーム ページのスクリーンショット。](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、**成功** 状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、 **[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。
 

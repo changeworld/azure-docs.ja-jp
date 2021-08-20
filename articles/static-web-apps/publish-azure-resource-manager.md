@@ -5,14 +5,14 @@ services: static-web-apps
 author: petender
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/10/2021
+ms.date: 07/13/2021
 ms.author: petender
-ms.openlocfilehash: 95b2bd71b59a8ef14274928428624fe52e923fe1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b7b75fcf6f7ef1d6f2444a8fe59421bdb64c1890
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968905"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765860"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-using-an-arm-template"></a>チュートリアル: ARM テンプレートを使用して Azure 静的 Web アプリを発行する
 
@@ -38,7 +38,7 @@ ms.locfileid: "111968905"
 
 ## <a name="create-a-github-personal-access-token"></a>GitHub 個人用アクセス トークンを作成する
 
-`repositoryToken` は ARM テンプレートに必要なパラメーターの 1 つです。これによって ARM デプロイ プロセスは、静的サイトのソース コードを保持している GitHub リポジトリと対話できるようになります。 
+`repositoryToken` は ARM テンプレートのパラメーターの 1 つで、これにより ARM デプロイ プロセスが、静的サイトのソース コードを保持している GitHub リポジトリとやりとりできるようになります。 
 
 1. GitHub アカウント プロファイル (右上隅) で、 **[Settings]\(設定\)** を選択します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "111968905"
 1. 後で使用するために、トークンの値をコピーしてテキスト エディターに貼り付けます。
 
 > [!IMPORTANT]
-> このトークンは必ずコピーし、安全な場所に格納してください。 このトークンは、[Azure Key Vault](../azure-resource-manager/templates/template-tutorial-use-key-vault.md) に格納して ARM テンプレートでアクセスすることを検討してください。
+> このトークンは必ずコピーし、安全な場所に格納してください。 このトークンを [Azure Key Vault](../azure-resource-manager/templates/template-tutorial-use-key-vault.md) に格納し、自分の ARM テンプレートからアクセスすることを検討してください。
 
 ## <a name="create-a-github-repo"></a>GitHub リポジトリを作成する
 
@@ -122,11 +122,14 @@ ms.locfileid: "111968905"
                 },
                 "resourceTags": {
                     "type": "object"
+                },
+                "appSettings": {
+                    "type": "object"
                 }
             },
             "resources": [
                 {
-                    "apiVersion": "2019-12-01-preview",
+                    "apiVersion": "2021-01-15",
                     "name": "[parameters('name')]",
                     "type": "Microsoft.Web/staticSites",
                     "location": "[parameters('location')]",
@@ -144,7 +147,19 @@ ms.locfileid: "111968905"
                     "sku": {
                         "Tier": "[parameters('sku')]",
                         "Name": "[parameters('skuCode')]"
-                    }
+                    },
+                    "resources":[
+                        {
+                            "apiVersion": "2021-01-15",
+                            "name": "appsettings",
+                            "type": "config",
+                            "location": "[parameters('location')]",
+                            "properties": "[parameters('appSettings')]",
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Web/staticSites', parameters('name'))]"
+                            ]
+                        }
+                    ]
                 }
             ]
         }
@@ -163,9 +178,8 @@ ms.locfileid: "111968905"
                 "name": {
                     "value": "myfirstswadeployment"
                 },
-                "location": {
-                "type": "string",
-                "defaultValue": "Central US"
+                "location": { 
+                    "value": "Central US"
                 },   
                 "sku": {
                     "value": "Free"
@@ -196,6 +210,12 @@ ms.locfileid: "111968905"
                         "Environment": "Development",
                         "Project": "Testing SWA with ARM",
                         "ApplicationName": "myfirstswadeployment"
+                    }
+                },
+                "appSettings": {
+                    "value": {
+                        "MY_APP_SETTING1": "value 1",
+                        "MY_APP_SETTING2": "value 2"
                     }
                 }
             }

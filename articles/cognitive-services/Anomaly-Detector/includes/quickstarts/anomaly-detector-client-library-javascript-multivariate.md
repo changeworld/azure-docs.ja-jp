@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 087640433d592c7e2885e68240e98e7283bf3407
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e55b4329105230f023d890983c79aa6c5244009d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165783"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339499"
 ---
 JavaScript 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 これらの手順に従ってパッケージをインストールすれば、サービスによって提供されるアルゴリズムが使用できるようになります。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -23,7 +23,7 @@ JavaScript 用 Anomaly Detector (多変量) クライアント ライブラリ�
 * 個々の時系列では得られる情報が少なく、すべての信号に着目して問題を検出する必要がある。
 * システム正常性をさまざまな側面から測定する数十個から数百個にのぼる各種センサーを使用して高価な物理資産の予測メンテナンスを行う。
 
-[ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/ai-anomaly-detector) | [サンプル コード](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js)
+[ライブラリのリファレンス ドキュメント](/javascript/api/overview/azure/ai-anomaly-detector-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/ai-anomaly-detector) | [サンプル コード](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -220,4 +220,4 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 ## <a name="next-steps"></a>次のステップ
 
 * [Anomaly Detector API とは](../../overview-multivariate.md)
-* [Anomaly Detector API を使用する場合のベスト プラクティス](../../concepts/best-practices-multivariate.md) 
+* [Anomaly Detector API を使用する場合のベスト プラクティス](../../concepts/best-practices-multivariate.md)

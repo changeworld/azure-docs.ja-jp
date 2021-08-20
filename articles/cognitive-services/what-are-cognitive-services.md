@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 09279e476f2d130c4938937e2c9e60df863c688d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4badad1f7e22fcb82e122a56e219fc61973634a2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450608"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451266"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -66,7 +66,7 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Anomaly Detector](./anomaly-detector/index.yml "Anomaly Detector") |Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。 開始するには、[Anomaly Detector のクイックスタート](./anomaly-detector/quickstarts/client-libraries.md)に関する記事をご覧ください。|
+|[Anomaly Detector](./anomaly-detector/index.yml "Anomaly Detector") |Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。 サービスを開始するには、[Anomaly Detector のクイックスタート](./anomaly-detector/quickstarts/client-libraries.md)に関する記事をご覧ください。|
 |[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。 開始するには、[Content Moderator のクイックスタート](./content-moderator/client-libraries.md)に関する記事をご覧ください。|
 |[Personalizer](./personalizer/index.yml "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。 開始するには、[Personalizer のクイックスタート](./personalizer/quickstart-personalizer-sdk.md)に関する記事をご覧ください。|
 
@@ -84,7 +84,7 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |[Bing Custom Search](/azure/cognitive-services/bing-custom-search "Bing Custom Search")|Bing Custom Search は、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。|
 |[Bing Entity Search](/azure/cognitive-services/bing-entities-search/ "Bing Entity Search")|Bing Web Search では、ユーザーのクエリに関連があると Bing が判断したエンティティに関する情報が返されます。|
 |[Bing Image Search](/azure/cognitive-services/bing-image-search "Bing Image Search")|Bing Image Search は、ユーザーのクエリに関連すると判断されたイメージの表示を返します。|
-|[Bing Visual Search](/azure/cognitive-services/bing-visual-search "Bing Visual Search")|Bing Visual Search は、画像 (見た目が似ている画像、画像内にある製品のショッピング ソース、関連検索) に関する分析情報を返します。|
+|[Bing Visual Search](/azure/cognitive-services/bing-visual-search "Bing Visual Search")|Bing Visual Search は、画像 (見た目が似ている画像、画像で示している製品を購入できる場所および関連検索) に関する分析情報を返します。|
 |[Bing Local Business Search](/azure/cognitive-services/bing-local-business-search/ "Bing Local Business Search")| Bing Local Business Search API を使用すると、アプリケーションでは検索クエリに基づいて地元企業に関する連絡先や場所の情報を検索できます。|
 |[Bing Spell Check](/azure/cognitive-services/bing-spell-check/ "Bing Spell Check")|Bing Spell Check を使用して、コンテキストに応じた文法およびスペル チェックを実行できます。|
 

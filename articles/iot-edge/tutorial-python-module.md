@@ -10,12 +10,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d6a95dae91ef3e6aa7d39cf8af51c355a87ea73a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4f1b9c225d0f28e7e7c6c222fcca475c05dd26fd
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462730"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438078"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>チュートリアル: Linux コンテナーを使用して Python IoT Edge モジュールを開発してデプロイする
 
@@ -99,6 +99,9 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 1. VS Code エクスプローラーで、 **.env** ファイルを開きます。
 2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. .env ファイルを保存します。
+
+>[!NOTE]
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 

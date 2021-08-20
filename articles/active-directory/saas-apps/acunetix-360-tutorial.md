@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 480d68205c1f49397fa33bee3155be318f2e7c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec616d035ac7942fd97a2cb7bcedae943b8e5565
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607162"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112553578"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acunetix-360"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Acunetix 360 の統合
 
@@ -32,6 +32,9 @@ ms.locfileid: "104607162"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Acunetix 360 でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -53,7 +56,6 @@ Azure AD への Acunetix 360 の統合を構成するには、ギャラリーか
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Acunetix 360**」と入力します。
 1. 結果のパネルから **[Acunetix 360]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-acunetix-360"></a>Acunetix 360 の Azure AD SSO の構成とテスト
 
@@ -78,7 +80,7 @@ Acunetix 360 に対する Azure AD SSO を構成してテストするには、�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     **[応答 URL]** ボックスに、`https://online.acunetix360.com/account/assertionconsumerservice/?spId=<SPID>` のパターンを使用して URL を入力します
 
@@ -152,10 +154,9 @@ Acunetix 360 に対する Azure AD SSO を構成してテストするには、�
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Acunetix 360 に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Acunetix 360 に自動的にサインインされます。 
 
 また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Acunetix 360] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Acunetix 360 に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
 
 ## <a name="next-steps"></a>次のステップ
 

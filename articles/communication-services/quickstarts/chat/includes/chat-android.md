@@ -6,21 +6,19 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 04f97e121317635ceeda764da8c75834c972ace8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 41a25c5b92bfc91379ecf9c869a6c1dbbb7c9680
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112039858"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114200972"
 ---
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
-
-> [!NOTE]
-> このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add-chat) にあります
+## <a name="sample-code"></a>サンプル コード
+このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add-chat) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +26,7 @@ ms.locfileid: "112039858"
 
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Android Studio](https://developer.android.com/studio) をインストールします。Android Studio は、依存関係をインストールするためのクイックスタート用の Android アプリケーションを作成するために使用します。
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
 - **2 人** の Communication Services ユーザーを作成し、これらのユーザーに対して [ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモしてください**。 このクイックスタートでは、最初の参加者でスレッドを作成した後、そのスレッドに 2 人目の参加者を追加します。
 
 ## <a name="setting-up"></a>設定
@@ -45,9 +43,8 @@ ms.locfileid: "112039858"
 Gradle を使用して、必要な Communication Services の依存関係をインストールします。 コマンド ラインから、`ChatQuickstart` プロジェクトのルート ディレクトリ内に移動します。 アプリの build.gradle ファイルを開き、`ChatQuickstart` ターゲットに次の依存関係を追加します。
 
 ```
-implementation 'com.azure.android:azure-communication-common:1.0.0-beta.8'
-implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.8'
-implementation 'com.azure.android:azure-core-http-okhttp:1.0.0-beta.5'
+implementation 'com.azure.android:azure-communication-common:1.0.1'
+implementation 'com.azure.android:azure-communication-chat:1.0.0'
 implementation 'org.slf4j:slf4j-log4j12:1.7.29'
 ```
 
@@ -76,7 +73,7 @@ android {
 <dependency>
   <groupId>com.azure.android</groupId>
   <artifactId>azure-communication-chat</artifactId>
-  <version>1.0.0-beta.8</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
@@ -95,7 +92,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
-import org.threeten.bp.OffsetDateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,7 +106,7 @@ import java.util.List;
     private String firstUserAccessToken = "<first_user_access_token>";
     private String threadId = "<thread_id>";
     private String chatMessageId = "<chat_message_id>";
-    private final String sdkVersion = "1.0.0-beta.8";
+    private final String sdkVersion = "1.0.0";
     private static final String APPLICATION_ID = "Chat Quickstart App";
     private static final String SDK_NAME = "azure-communication-com.azure.android.communication.chat";
     private static final String TAG = "Chat Quickstart App";
@@ -165,17 +161,12 @@ import java.util.List;
 コメント `<CREATE A CHAT CLIENT>` を次のコードに置き換えます (import ステートメントはファイルの先頭に 配置します)。
 
 ```java
-import com.azure.android.core.credential.AccessToken;
-import com.azure.android.core.http.okhttp.OkHttpAsyncClientProvider;
-import com.azure.android.core.http.policy.BearerTokenAuthenticationPolicy;
 import com.azure.android.core.http.policy.UserAgentPolicy;
 
 ChatAsyncClient chatAsyncClient = new ChatClientBuilder()
     .endpoint(endpoint)
-    .credentialPolicy(new BearerTokenAuthenticationPolicy((request, callback) ->
-        callback.onSuccess(new AccessToken(firstUserAccessToken, OffsetDateTime.now().plusDays(1))), "chat"))
+    .credential(new CommunicationTokenCredential(firstUserAccessToken))
     .addPolicy(new UserAgentPolicy(APPLICATION_ID, SDK_NAME, sdkVersion))
-    .httpClient(new OkHttpAsyncClientProvider().createInstance())
     .buildAsyncClient();
 
 ```
@@ -185,8 +176,8 @@ JavaScript 用 Azure Communication Services Chat SDK が備える主な機能の
 
 | 名前                                   | 説明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient/ChatAsyncClient | このクラスは、チャット機能に必要となります。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
-| ChatThreadClient/ChatThreadAsyncClient | このクラスはチャット スレッド機能に必要です。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信、受信、更新、削除、ユーザーの追加、削除、取得、入力通知の送信、開封確認、チャット イベントのサブスクライブを行います。 |
+| ChatClient/ChatAsyncClient | このクラスは、チャット機能に必要となります。 自分のサブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除し、チャット イベントにサブスクライブします。 |
+| ChatThreadClient/ChatThreadAsyncClient | このクラスはチャット スレッド機能に必要です。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信/受信/更新/削除、ユーザーの追加/削除/取得、入力通知の送信、開封確認を行います。 |
 
 ## <a name="start-a-chat-thread"></a>チャット スレッドを開始する
 
@@ -227,10 +218,8 @@ threadId = chatThreadProperties.getId();
 ```
 ChatThreadAsyncClient chatThreadAsyncClient = new ChatThreadClientBuilder()
     .endpoint(endpoint)
-    .credentialPolicy(new BearerTokenAuthenticationPolicy((request, callback) ->
-        callback.onSuccess(new AccessToken(firstUserAccessToken, OffsetDateTime.now().plusDays(1))), "chat"))
+    .credential(new CommunicationTokenCredential(firstUserAccessToken))
     .addPolicy(new UserAgentPolicy(APPLICATION_ID, SDK_NAME, sdkVersion))
-    .httpClient(new OkHttpAsyncClientProvider().createInstance())
     .chatThreadId(threadId)
     .buildAsyncClient();
 
@@ -260,32 +249,15 @@ chatMessageId = chatThreadAsyncClient.sendMessage(chatMessageOptions).get().getI
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>チャット スレッドからチャット メッセージを受信する
 リアルタイム シグナリングを使用すると、新しい受信メッセージをサブスクライブし、それに応じてメモリ内の現在のメッセージを更新することができます。 Azure Communication Services は、[サブスクライブ可能な一連のイベント](../../../concepts/chat/concepts.md#real-time-notifications)をサポートしています。
 
-`realtimeNotificationParams` を追加するようにチャット クライアント コードを更新します。
-
-```java
-ChatAsyncClient chatAsyncClient = new ChatClientBuilder()
-    .endpoint(endpoint)
-    .credentialPolicy(new BearerTokenAuthenticationPolicy((request, callback) ->
-        callback.onSuccess(new AccessToken(firstUserAccessToken, OffsetDateTime.now().plusDays(1))), "chat"))
-    .addPolicy(new UserAgentPolicy(APPLICATION_ID, SDK_NAME, sdkVersion))
-    .httpClient(new OkHttpAsyncClientProvider().createInstance())
-    .realtimeNotificationParams(getApplicationContext(), firstUserAccessToken)
-    .buildAsyncClient();
-
-```
-
 コメント `<RECEIVE CHAT MESSAGES>` を次のコードに置き換えます (import ステートメントはファイルの先頭に 配置します)。
 
 ```java
-import com.azure.android.communication.chat.signaling.chatevents.BaseEvent;
-import com.azure.android.communication.chat.signaling.chatevents.ChatMessageReceivedEvent;
-import com.azure.android.communication.chat.signaling.properties.ChatEventId;
 
 // Start real time notification
-chatAsyncClient.startRealtimeNotifications();
+chatAsyncClient.startRealtimeNotifications(firstUserAccessToken, getApplicationContext());
 
 // Register a listener for chatMessageReceived event
-chatAsyncClient.on(ChatEventId.chatMessageReceived, "chatMessageReceived", (BaseEvent payload) -> {
+chatAsyncClient.addEventHandler(ChatEventType.CHAT_MESSAGE_RECEIVED, (ChatEvent payload) -> {
     ChatMessageReceivedEvent chatMessageReceivedEvent = (ChatMessageReceivedEvent) payload;
     // You code to handle chatMessageReceived event
     
@@ -298,13 +270,13 @@ chatAsyncClient.on(ChatEventId.chatMessageReceived, "chatMessageReceived", (Base
 > Microsoft がこの問題の解決に向けて取り組んでいる間、アプリの build.gradle ファイルに次の依存関係情報を追加し、代わりに GetMessages API をポーリングして受信メッセージをユーザーに表示することで、リアルタイム通知機能を無効にできます。 
 > 
 > ```
-> implementation ("com.azure.android:azure-communication-chat:1.0.0-beta.8") {
+> implementation ("com.azure.android:azure-communication-chat:1.0.0") {
 >     exclude group: 'com.microsoft', module: 'trouter-client-android'
 > }
-> implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.9'
+> implementation 'com.azure.android:azure-communication-calling:1.0.0'
 > ```
 > 
-> 上記の更新では、アプリケーションが `chatAsyncClient.startRealtimeNotifications()` や `chatAsyncClient.on()` のような通知 API にアクセスしようとすると、ランタイム エラーが発生することに注意してください。
+> 上記の更新では、アプリケーションが `chatAsyncClient.startRealtimeNotifications()` や `chatAsyncClient.addEventHandler()` のような通知 API にアクセスしようとすると、ランタイム エラーが発生することに注意してください。
 
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>チャット スレッドに参加者としてユーザーを追加する
@@ -328,8 +300,8 @@ chatThreadAsyncClient.addParticipant(participant);
 コメント `<LIST USERS>` を次のコードに置き換えます (import ステートメントはファイルの先頭に配置します)。
 
 ```java
-import com.azure.android.core.rest.PagedResponse;
-import com.azure.android.core.util.Context;
+import com.azure.android.core.rest.util.paging.PagedAsyncStream;
+import com.azure.android.core.util.RequestContext;
 
 // The maximum number of participants to be returned per page, optional.
 int maxPageSize = 10;
@@ -342,34 +314,12 @@ ListParticipantsOptions listParticipantsOptions = new ListParticipantsOptions()
     .setMaxPageSize(maxPageSize)
     .setSkip(skip);
 
-PagedResponse<ChatParticipant> getParticipantsFirstPageWithResponse =
-    chatThreadAsyncClient.getParticipantsFirstPageWithResponse(listParticipantsOptions, Context.NONE).get();
+PagedAsyncStream<ChatParticipant> participantsPagedAsyncStream =
+      chatThreadAsyncClient.listParticipants(listParticipantsOptions, RequestContext.NONE);
 
-for (ChatParticipant chatParticipant : getParticipantsFirstPageWithResponse.getValue()) {
+participantsPagedAsyncStream.forEach(chatParticipant -> {
     // You code to handle participant
-}
-
-listParticipantsNextPage(chatThreadAsyncClient, getParticipantsFirstPageWithResponse.getContinuationToken(), 2);
-
-```
-
-次のヘルパー メソッドを `MainActivity` クラスに配置します。
-
-```java
-void listParticipantsNextPage(ChatThreadAsyncClient chatThreadAsyncClient, String continuationToken, int pageNumber) {
-    if (continuationToken != null) {
-        try {
-            PagedResponse<ChatParticipant> nextPageWithResponse = chatThreadAsyncClient.getParticipantsNextPageWithResponse(continuationToken, Context.NONE).get();
-            for (ChatParticipant chatParticipant : nextPageWithResponse.getValue()) {
-                // You code to handle participant
-            }
-
-            listParticipantsNextPage(chatThreadAsyncClient, nextPageWithResponse.getContinuationToken(), ++pageNumber);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
+});
 
 ```
 
@@ -418,38 +368,14 @@ ListReadReceiptOptions listReadReceiptOptions = new ListReadReceiptOptions()
     .setMaxPageSize(maxPageSize)
     .setSkip(skip);
 
-PagedResponse<ChatMessageReadReceipt> listReadReceiptsFirstPageWithResponse =
-    chatThreadAsyncClient.getReadReceiptsFirstPageWithResponse(listReadReceiptOptions, Context.NONE).get();
+PagedAsyncStream<ChatMessageReadReceipt> readReceiptsPagedAsyncStream =
+      chatThreadAsyncClient.listReadReceipts(listReadReceiptOptions, RequestContext.NONE);
 
-for (ChatMessageReadReceipt readReceipt : listReadReceiptsFirstPageWithResponse.getValue()) {
+readReceiptsPagedAsyncStream.forEach(readReceipt -> {
     // You code to handle readReceipt
-}
-
-listReadReceiptsNextPage(chatThreadAsyncClient, listReadReceiptsFirstPageWithResponse.getContinuationToken(), 2);
+});
 
 ```
-
-以下のヘルパー メソッドをクラスに配置します。
-```java
-void listReadReceiptsNextPage(ChatThreadAsyncClient chatThreadAsyncClient, String continuationToken, int pageNumber) {
-    if (continuationToken != null) {
-        try {
-            PagedResponse<ChatMessageReadReceipt> nextPageWithResponse =
-                    chatThreadAsyncClient.getReadReceiptsNextPageWithResponse(continuationToken, Context.NONE).get();
-                    
-            for (ChatMessageReadReceipt readReceipt : nextPageWithResponse.getValue()) {
-                // You code to handle readReceipt
-            }
-            
-            listParticipantsNextPage(chatThreadAsyncClient, nextPageWithResponse.getContinuationToken(), ++pageNumber);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-```
-
 
 ## <a name="run-the-code"></a>コードの実行
 

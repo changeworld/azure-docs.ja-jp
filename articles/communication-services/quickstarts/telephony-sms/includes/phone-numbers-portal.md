@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 82e475c97aa2c68a33a48b04fe3e45fb13728b88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fc175bdad79bbb01bd0686dcdbf314d8d6ee47fb
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629361"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201251"
 ---
 
 ## <a name="prerequisites"></a>前提条件
@@ -77,7 +77,7 @@ ms.locfileid: "105629361"
 
 ## <a name="find-your-phone-numbers-on-the-azure-portal"></a>Azure portal で電話番号を検索する
 
-[Azure portal](https://portal.azure.com) で、Azure Communication リソースに移動します。
+[Azure portal](https://portal.azure.com) で、Azure Communication Services リソースに移動します。
 
 :::image type="content" source="../../media/manage-phone-azure-portal-start.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 

@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 2e8afede19a948af1863b6b24f277ab934861f22
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 1e1b1fa785d4ab91329216983c5b694cc484860a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038828"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297726"
 ---
 # <a name="human-reference-genomes"></a>Human Reference Genomes
 
@@ -46,11 +46,11 @@ BLOB 名には、"vertebrate_mammalian" で始まる URI セグメントのプ�
 
 ## <a name="data-access"></a>データ アクセス
 
-米国西部 2: https://datasetreferencegenomes.blob.core.windows.net/dataset
+米国西部 2: 'https://datasetreferencegenomes.blob.core.windows.net/dataset '
 
-米国中西部: https://datasetreferencegenomes-secondary.blob.core.windows.net/dataset
+米国中西部: 'https://datasetreferencegenomes-secondary.blob.core.windows.net/dataset '
 
-[SAS トークン](/azure/storage/common/storage-sas-overview): sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=JtQoPFqiC24GiEB7v9zHLi4RrA2Kd1r%2F3iFt2l9%2FlV8%3D
+[SAS トークン](../storage/common/storage-sas-overview.md): sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=JtQoPFqiC24GiEB7v9zHLi4RrA2Kd1r%2F3iFt2l9%2FlV8%3D
 
 ## <a name="use-terms"></a>使用条件
 
@@ -75,7 +75,7 @@ BLOB 名には、"vertebrate_mammalian" で始まる URI セグメントのプ�
 
 いくつかの公開ゲノミクス データが Azure Open Dataset として[こちら](https://azure.microsoft.com/services/open-datasets/catalog/)にアップロードされています。 このオープン データセットにリンクされている Blob service を作成します。 `Reference Genomes` データセット用のデータを Azure Open Datasets から呼び出す手順の例を以下に示します。
 
-ユーザーは、このノートブックを使用して次のパスを呼び出してダウンロードできます。 https://datasetreferencegenomes.blob.core.windows.net/dataset/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.39_GRCh38.p13/GCF_000001405.39_GRCh38.p13_assembly_structure/genomic_regions_definitions.txt
+ユーザーは、このノートブックを使用して次のパスを呼び出してダウンロードできます。'https://datasetreferencegenomes.blob.core.windows.net/dataset/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.39_GRCh38.p13/GCF_000001405.39_GRCh38.p13_assembly_structure/genomic_regions_definitions.txt '
 
 **重要な注意事項:** Azure ML SDK を使用してデータを表示するには、ユーザーは Azure CLI を使用して自分の Azure アカウントにログインする必要があります。 一方、データをダウンロードするためのアクションは必要ありません。
 

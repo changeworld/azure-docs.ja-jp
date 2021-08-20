@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: da026012c4084783d30f548cbdffc8951d74bcd6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d1b7f941fbd7d9c6a6b654992e86ab0379e11e28
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751219"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303816"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してビューを作成および使用する
 
@@ -81,6 +81,8 @@ from openrowset(
            ) as rows
 ```
 
+Delta Lake はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
+
 ## <a name="partitioned-views"></a>パーティション ビュー
 
 階層フォルダー構造内にパーティション分割された一連のファイルがある場合は、ファイル パスのワイルドカードを使用してパーティション パターンを記述できます。 `FILEPATH` 関数を使用して、フォルダー パスの一部をパーティション分割列として公開します。
@@ -120,7 +122,9 @@ FROM
 > [!div class="mx-imgBorder"]
 >![Yellow Taxi Delta Lake フォルダー](./media/shared/yellow-taxi-delta-lake.png)
 
-パーティション分割された Delta Lake データのクエリを実行する場合は、`OPENROWSET` 関数内で `WITH` 句を使用しないでください。 プレビューの既知の問題により、`WITH` 句では基になるパーティション分割列の値が正しく返されません。 (ビューなしで) `WITH` 句と共に `OPENROWSET` 関数を直接使用すると、パーティションの削除が正常に機能します。  
+パーティション分割された Delta Lake データのクエリを実行する場合は、`OPENROWSET` 関数内で `WITH` 句を使用しないでください。 プレビュー段階の既知の問題により、`WITH` 句において[基になるパーティション分割列の値が正しく返されません](resources-self-help-sql-on-demand.md#partitioning-column-returns-null-values)。 (ビューなしで) `WITH` 句と共に `OPENROWSET` 関数を直接使用すると、パーティションの削除が正常に機能します。  
+
+Delta Lake はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
 
 ## <a name="use-a-view"></a>ビューの使用
 

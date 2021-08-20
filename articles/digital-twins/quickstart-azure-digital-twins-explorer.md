@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d4315ff04235e4b555a201e9da7287339b0de125
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 26063c9d0c02079b2c40eb85330be499b4bb624e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450738"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462008"
 ---
 # <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>クイックスタート - Azure Digital Twins Explorer でサンプル シナリオを使用して作業を始める
 
@@ -43,23 +43,36 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 
     :::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png" alt-text="GitHub の digital-twins-explorer/client/examples/buildingScenario.xlsx ファイルのスクリーンショット。[ダウンロード] ボタンが強調されています。" lightbox="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png":::
 
-## <a name="set-up-azure-digital-twins-and-azure-digital-twins-explorer"></a>Azure Digital Twins と Azure Digital Twins Explorer を設定する
+## <a name="set-up-azure-digital-twins"></a>Azure Digital Twins を設定する
 
-Azure Digital Twins を操作する際の最初の手順は、Azure Digital Twins インスタンスを設定することです。 サービスのインスタンスを作成した後、Azure Digital Twins Explorer でインスタンスに接続し、このクイックスタートで後ほどサンプル データを設定できます。
+Azure Digital Twins を操作する際の最初の手順は、Azure Digital Twins インスタンスを作成することです。 サービスのインスタンスを作成した後、Azure Digital Twins Explorer でそのインスタンスに接続できます。これは、クイックスタート全体でインスタンスを操作するために使用します。
 
 このセクションの残りの部分では、これらの手順について説明します。
 
-### <a name="set-up-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを設定する
+### <a name="create-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを作成する
 
-この記事で Azure Digital Twins を操作するには、まず *Azure Digital Twins インスタンスを設定* する必要があります。 また、それを使用するために必要なアクセス許可も必要です。
+[!INCLUDE [digital-twins-setup-portal.md](../../includes/digital-twins-setup-portal.md)]
 
-「[インスタンスと認証を設定する](how-to-set-up-instance-portal.md)」の手順に従います。 手順には、各ステップを正常に完了したことを確認するために役立つ情報が含まれています。
+3. セットアップの **[基本]** タブにある、新しいインスタンスのサブスクリプション、リソース グループ、場所、リソース名などのフィールドに入力します。 インスタンス内のデータを管理するためのアクセス許可を自分に付与するには、 **[Assign Azure Digital Twins Data Owner Role]\(Azure Digital Twins データ所有者ロールの割り当て\)** ボックスをオンにします。
+
+    >[!NOTE]
+    > [Assign Azure Digital Twins Data Owner Role]\(Azure Digital Twins データ所有者ロールの割り当て\) ボックスが淡色表示になっている場合、リソースへのユーザー アクセスを管理するためのアクセス許可がお使いの Azure サブスクリプションに含まれていません。 このセクションでインスタンスの作成を続行できます。その後、このクイックスタートの残りの部分を完了する前に、必要なアクセス許可を持つユーザーに依頼し、[インスタンスでこのロールを自分に割り当ててもらう](how-to-set-up-instance-portal.md#assign-the-role-using-azure-identity-management-iam)必要があります。
+    >
+    > この要件を満たす一般的なロールは、**所有者**、**アカウント管理者**、**ユーザー アクセス管理者** と **共同作成者** の組み合わせです。  
+
+4. **[確認と作成]** を選択し、インスタンスの作成を完了します。
+
+    :::image type="content" source= "media/quickstart-azure-digital-twins-explorer/create-azure-digital-twins-basics.png" alt-text="Azure portal の Azure Digital Twins の [リソースの作成] プロセスのスクリーンショット。記述された値が入力されます。":::
+    
+5. 入力した詳細を示す概要ページが表示されます。 **[作成]** を選択して確定し、インスタンスを作成します。
+
+インスタンスのデプロイ状態を追跡する概要ページが表示されます。
 
 ### <a name="open-instance-in-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer でインスタンスを開く
 
-次に、[Azure portal](https://portal.azure.com) でインスタンスの Azure Digital Twins Explorer を開きます。 
+インスタンスのデプロイが完了したら、 **[リソースに移動]** ボタンを使用してポータルのインスタンスの [概要] ページに移動します。
 
-それには、Azure portal にアクセスし、ポータルの検索バーで名前を検索することによって、新しい Azure Digital Twins インスタンスに移動します。
+:::image type="content" source= "media/quickstart-azure-digital-twins-explorer/deployment-complete.png" alt-text="Azure portal の Azure Digital Twins の [デプロイ] ページのスクリーンショット。デプロイが完了したことがページに示されています。":::
 
 次に、 **[Azure Digital Twins Explorer を開く (プレビュー)]** ボタンを選択します。
 
@@ -288,4 +301,4 @@ Room0 の温度が 70 度から 76 度に変更されたので、今度は、両
 引き続き Azure Digital Twins のチュートリアルに進んで、独自の Azure Digital Twins シナリオとインタラクション ツールを作成しましょう。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:クライアント アプリをコーディングする](tutorial-code.md)
+> [クライアント アプリをコーディングする](tutorial-code.md)

@@ -3,16 +3,16 @@ title: Azure Video Analyzer とは
 description: このトピックでは、Azure Video Analyzer の概要を示します。
 ms.service: azure-video-analyzer
 ms.topic: overview
-ms.date: 03/11/2021
-ms.openlocfilehash: c1d556662794de6127b0c455ac812b94b5a05742
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 35f13e8cd87e7e633b6836105f2d4c16911be663
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387935"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604804"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Azure Video Analyzer とは (プレビュー)
-
+ 
 Azure Video Analyzer は、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築するためのプラットフォームを提供します。 このプラットフォームは、IoT Edge モジュールと、関連付けられた Azure サービスで構成されます。 ライブ ビデオをキャプチャ、記録、および分析し、結果 (ビデオやビデオ分析) を発行する機能を提供します。 ビデオは、エッジまたは Video Analyzer クラウド サービスに発行できます。一方、ビデオ分析は、(クラウドまたはエッジ内の) Azure サービスに発行できます。 このプラットフォームは、ビデオ分析を使用して IoT ソリューションを強化するために使用できます。 Video Analyzer 機能は、他の Azure IoT Edge モジュール (Stream Analytics on IoT Edge、Cognitive Services on IoT Edge など)、およびクラウドの Azure サービス (イベント ハブ、Cognitive Services など) と組み合わせて、強力なハイブリッド (たとえばエッジ + クラウド) アプリケーションを構築できます。
 
 Video Analyzer エッジ モジュールは、拡張可能なプラットフォームとして設計されており、さまざまなビデオ分析エッジ モジュール (Cognitive Services コンテナーや、オープンソースの機械学習モデルまたは独自のデータでトレーニングしたカスタム モデルを使用して自分で構築したカスタム エッジ モジュールなど) を接続できます。それらを使用して、ライブ ビデオ パイプラインを構築および実行する複雑さを気にすることなく、ライブ ビデオを分析できます。 Video Analyzer クラウド サービスを使用すると、このようなワークフローからビデオおよびビデオ分析を再生できます。
@@ -43,5 +43,5 @@ Video Analyzer のコンプライアンス、プライバシー、およびセ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Video Analyzer での作業の開始のクイックスタート](get-started-detect-motion-emit-events.md)の記事に従って、ライブ ビデオ フィードでモーション検出を実行する方法を確認してください。
+* 「[クイックスタート: Azure Video Analyzer で作業を開始する](get-started-detect-motion-emit-events.md)」の記事に従って、ライブ ビデオ フィードでモーション検出を実行する方法を確認してください。
 * [用語](terminology.md)を確認します

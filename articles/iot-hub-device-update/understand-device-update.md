@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 994dc02b0d61eff715b1368e8ea7bd592cc79d70
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 69bc44fcffd760b0c98264c43c02f8dfffd8b853
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133639"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448462"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub (プレビュー) の概要
 
@@ -52,7 +52,7 @@ Device Update for IoT Hub の機能により、次のような強力で柔軟な
 * 更新のコンプライアンスとステータスを異種デバイス フリート全体にわたって一目で把握できるビュー
 * 回復性があるデバイス更新 (A/B) のサポートによってシームレスなロールバックを実現
 * Azure.com ポータルから利用可能なサブスクリプションおよびロールベースのアクセス制御
-* オンプレミス コンテンツ キャッシュと Nested Edge のサポートによってクラウドから切断されたデバイスの更新を可能に
+* オンプレミス コンテンツ キャッシュと入れ子になったエッジのサポートによってクラウドから切断されたデバイスの更新が可能に
 * 詳細な更新管理およびレポート ツール 
 
 Device Update for IoT Hub の管理およびデプロイ制御によって、ユーザーは生産性を最大化し、貴重な時間を節約することができます。 Device Update for IoT Hub には、デバイスをグループ化したり、更新をデプロイするデバイスを指定したりする機能が含まれています。 ユーザーは、更新のデプロイのステータスを表示し、各デバイスで更新が正常に適用されていることを確認することもできます。

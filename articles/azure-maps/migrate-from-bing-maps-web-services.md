@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Bing 地図から Web サービスを移行する | Microsoft Azure Maps
+title: 'チュートリアル: Bing 地図から Microsoft Azure Maps に Web サービスを移行する'
 description: Bing 地図から Microsoft Azure Maps に Web サービスを移行する方法に関するチュートリアルです。
 author: rbrundritt
 ms.author: richbrun
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 07fbe0cff104c25eca6db2750c2db692429ada65
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 605d30a6e209b8da9e772a95f6318a4aa679c704
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786516"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578939"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>チュートリアル:Bing 地図から Web サービスを移行する
 
@@ -199,7 +199,6 @@ Azure Maps のルート指定サービスでは、ルート計算用に次の AP
 
 -   [ルート計算](/rest/api/maps/route/getroutedirections): ルートが計算されます。要求はただちに処理されます。 この API では、GET 要求と POST 要求の両方がサポートされます。 大量のウェイポイントを指定する場合、または多くのルート オプションを使用する場合は、URL 要求が長くなりすぎて問題が発生することがないように POST 要求が推奨されます。
 -   [ルートのバッチ処理](/rest/api/maps/route/postroutedirectionsbatchpreview): 最大 1,000 個のルート要求を含む要求が作成されます。これらの座標は一定期間内に処理されます。 すべてのデータはサーバーで並行して処理され、完了すると、完全な結果セットをダウンロードすることができます。
--   [Mobility Service (プレビュー)](/rest/api/maps/mobility): 公共輸送を使用するルートと道順が計算されます。
 
 次の表では、Bing 地図 API パラメーターと、それに相当する Azure Maps 内の API パラメーターを相互参照で示しています。
 
@@ -281,8 +280,8 @@ Azure Maps では、[ルートの道順](/rest/api/maps/route/postroutedirection
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints` - Post 要求の本文にこれらのポイントを渡します  |
 | `interpolate`              | N/A                                                                 |
-| `includeSpeedLimit`        | N/A                                                                 |
-| `includeTruckSpeedLimit`   | N/A                                                                 |
+| `includeSpeedLimit`        | 該当なし                                                                 |
+| `includeTruckSpeedLimit`   | 該当なし                                                                 |
 | `speedUnit`                | N/A                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` - ドキュメント「[Azure Maps による認証](./azure-maps-authentication.md)」も参照してください。 |
@@ -343,7 +342,7 @@ Azure Maps には、静的マップ イメージにデータを重ねてレン�
 | `mapLayer` (`ml`)        | N/A                                            |
 | `mapSize` (`ms`)         | `width` および `height` - 最大 8192 x 8192 のサイズを指定できます。 |
 | `declutterPins` (`dcl`)  | N/A                                            |
-| `dpi`                    | N/A                                            |
+| `dpi`                    | 該当なし                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | N/A                                            |
 | `pitch`                  | 該当なし - ストリート ビューはサポートされていません。                |
@@ -451,7 +450,7 @@ Azure Maps では、URL で *path* パラメーターを指定することによ
 
 > `&path=pathStyles||pathLocation1|pathLocation2|...`
 
-経路の位置について、Azure Maps では座標を `longitude latitude` 形式にする必要がありますが、Bing 地図では `latitude,longitude` 形式が使用されます。 さらに、Azure Maps では、経度と緯度を **コンマではなくスペース** で区切ることにも注意してください。 現在、Azure Maps では、エンコードされた経路はサポートされません。 大きなデータ セットを GeoJSON 塗りつぶしとして Azure Maps データ ストレージ API に読み込むことができます。[こちら](./how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)を参照してください。
+経路の位置について、Azure Maps では座標を `longitude latitude` 形式にする必要がありますが、Bing 地図では `latitude,longitude` 形式が使用されます。 さらに、Azure Maps では、経度と緯度を **コンマではなくスペース** で区切ることにも注意してください。 現在、Azure Maps では、エンコードされた経路はサポートされません。 大きなデータ セットを GeoJSON 塗りつぶしとして Azure Maps データ ストレージ API に読み込むことができます。[こちら](./how-to-render-custom-data.md#upload-pins-and-path-data)を参照してください。
 
 Azure Maps で経路のスタイルを追加するには、形式 `optionNameValue` を使用します。複数のスタイルを指定する場合は、`optionName1Value1|optionName2Value2` のようにパイプ (`|`) 文字で区切ります。 オプションの名前と値は区切らないことに注意してください。 Azure Maps で経路のスタイルを設定するには、次のスタイル オプション名を使用します。
 

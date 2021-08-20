@@ -9,12 +9,12 @@ ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: overview
-ms.openlocfilehash: 60ffd6b836278bbb6a5742fbff10c2ad4072808c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 91501d89a7fe286dc12311f7d1f6d423b58e2505
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755516"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729868"
 ---
 # <a name="azure-arc-enabled-sql-managed-instance-overview"></a>Azure Arc 対応 SQL Managed Instance の概要
 
@@ -24,7 +24,10 @@ Azure Arc 対応 SQL Managed Instance は、選択したインフラストラク
 
 ## <a name="description"></a>説明
 
-Azure Arc 対応 SQL Managed Instance は最新の SQL Server データベース エンジンとの 100% の互換性があり、SQL Server の既存のお客様は、データの主権を維持したまま、アプリケーションとデータベースの変更を最小限に抑えて Azure Arc データ サービスにアプリケーションをリフト アンド シフトすることができます。 同時に、SQL Managed Instance には、管理オーバーヘッドを大幅に削減する組み込みの管理機能が含まれています。 
+Azure Arc 対応 SQL Managed Instance は、最新のほぼすべての SQL Server データベース エンジンと互換性があり、SQL Server の既存のお客様が、データ主権を維持したまま、アプリケーションとデータベースの変更を最小限に抑えつつ Azure Arc データ サービスにアプリケーションをリフト アンド シフトすることを可能にします。 同時に、SQL Managed Instance には、管理オーバーヘッドを大幅に削減する組み込みの管理機能が含まれています。 
+
+これらの機能の詳細については、この Data Exposed エピソードを参照することもできます。
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-Arc-Enabled-SQL-Managed-Instance--Data-Exposed/player?format=ny]
 
 ## <a name="next-steps"></a>次のステップ
 

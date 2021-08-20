@@ -1,18 +1,18 @@
 ---
 title: Azure Migrate Discovery and Assessment を使用して物理サーバーを検出する
 description: Azure Migrate Discovery and Assessment を使用して、オンプレミスの物理サーバーを検出する方法について説明します。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 7ff8a7739c0018d415ad503e888d63d04e641153
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0878911bdd3caa2202ef993142aa89e4eabfe33c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751205"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464844"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate: Discovery and Assessment を使用して物理サーバーを検出する
 
@@ -79,11 +79,42 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 アプライアンスが物理サーバーへのアクセスに使用できるアカウントを設定します。
 
-- **Windows サーバー** の場合、ドメイン参加済みのサーバーにはドメイン アカウントを、ドメインに参加していないサーバーにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
-    > [!Note]
-    > Windows Server 2008 および 2008 R2 の場合は、サーバーに WMF 3.0 がインストールされていることと、サーバーにアクセスするために使用されるドメインおよびローカル アカウントが、Performance Monitor Users、Performance Log Users、および WinRMRemoteWMIUsers グループに追加されていることを確認してください。
+**Windows サーバー**
 
-- **Linux サーバー** の場合、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
+- Windows サーバーの場合、ドメイン参加済みのサーバーにはドメイン アカウントを、ドメインに参加していないサーバーにはローカル アカウントを使用します。 
+- 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。 
+- リモート管理ユーザー グループが存在しない場合は、ユーザー アカウントを次のグループに追加します: **WinRMRemoteWMIUsers_** 。
+- このアカウントには、サーバーとの CIM 接続を作成し、ここに示されている WMI クラスから必要な構成とパフォーマンス メタデータをプルするために、アプライアンスにこれらのアクセス許可が必要です。
+- 場合によっては、これらのグループにアカウントを追加しても、WMI クラスから必要なデータが返されないことがあります。それは、[UAC](/windows/win32/wmisdk/user-account-control-and-wmi) によって、アカウントがフィルター処理される可能性があるためです。 この UAC フィルター処理を克服するには、ターゲット サーバー上の CIMV2 名前空間およびサブ名前空間に対する必要なアクセス許可をユーザー アカウントが持っている必要があります。 [こちら](troubleshoot-appliance.md)の手順に従って、必要なアクセス許可を有効にすることができます。
+
+    > [!Note]
+    > Windows Server 2008 および 2008 R2 の場合は、サーバー上に WMF 3.0 がインストールされていることを確認してください。
+
+**Linux サーバー**
+
+- 検出するサーバーのルート アカウントが必要です。 または、sudo アクセス許可を持つユーザー アカウントを指定することもできます。
+- 2021 年 7 月 20 日以降にポータルからダウンロードされた新しいアプライアンス インストーラー スクリプトでは、sudo アクセス権を持つユーザー アカウントの追加が既定でサポートされています。
+- 以前のアプライアンスについては、次の手順に従って機能を有効にすることができます。
+    1. アプライアンスを実行しているサーバーで、レジストリ エディターを開きます。
+    1. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance に移動します。
+    1. DWORD 値を 1 にしてレジストリ キー 'isSudo' を作成します。
+
+    :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="sudo サポートを有効にする方法を示すスクリーンショット":::
+
+- ターゲット サーバーからの構成およびパフォーマンスのメタデータを検出するには、[こちら](migrate-appliance.md#linux-server-metadata)の一覧にあるコマンドに対する sudo アクセスを有効にする必要があります。 sudo コマンドが呼び出されるたびにパスワードを要求することなく、必要なコマンドを実行するために、アカウントに対して ' NOPASSWD' を有効にしていることを確認してください。
+- 次の Linux OS ディストリビューションは、sudo アクセス権を持つアカウントを使用した Azure Migrate による検出においてサポートされています。
+
+    オペレーティング システム | バージョン 
+    --- | ---
+    Red Hat Enterprise Linux | 6、7、8
+    Cent OS | 6.6、8.2
+    Ubuntu | 14.04、16.04、18.04
+    SUSE Linux | 11.4、12.4
+    Debian | 7、10
+    Amazon Linux | 2.0.2021
+    CoreOS Container | 2345.3.0
+
+- ルート アカウントまたは sudo アクセス権を持つユーザー アカウントを指定できない場合は、以下のコマンドを使用することで、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance レジストリで 'isSudo' レジストリ キーの値を '0' に設定し、非ルート アカウントに必要な機能を提供することができます。
 
 **コマンド** | **目的**
 --- | --- |
@@ -91,7 +122,6 @@ setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEA
 setcap "cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_setuid,<br>cap_setpcap,cap_net_bind_service,cap_net_admin,cap_sys_chroot,cap_sys_admin,<br>cap_sys_resource,cap_audit_control,cap_setfcap=+eip" /sbin/lvm | ディスクのパフォーマンス データを収集するため
 setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode | BIOS のシリアル番号を収集するため
 chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
-
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
 
@@ -122,7 +152,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 1. ポータルで、アプライアンス名を指定してプロジェクト キーを生成します。
 2. Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
 3. ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
-4. PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
+4. PowerShell スクリプトを実行して、アプライアンス構成マネージャーを起動します。
 5. 初回のアプライアンス構成を行い、プロジェクト キーを使用してプロジェクトに登録します。
 
 ### <a name="1-generate-the-project-key"></a>1.プロジェクト キーを生成する
@@ -133,6 +163,8 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [Discover Servers]\(サーバーの検出\) ページを閉じないでください。
 1. Azure リソースが正常に作成されると、**プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
+
+  [ ![[キーの生成] の選択。](./media/tutorial-assess-physical/generate-key-physical-inline-1.png)](./media/tutorial-assess-physical/generate-key-physical-expanded-1.png#lightbox)
 
 ### <a name="2-download-the-installer-script"></a>2. インストーラー スクリプトをダウンロードする
 
@@ -145,50 +177,45 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
-    - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
+    - 使用例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
 3.  最新のアプライアンス バージョンとハッシュ値を確認します。
-    - パブリック クラウドの場合:
 
-        **シナリオ** | **ダウンロード** _ | _ *ハッシュ値**
-        --- | --- | ---
-        物理 (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
+    **ダウンロード** | **ハッシュ値**
+    --- | ---
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
 
-    - Azure Government の場合:
+> [!NOTE]
+> 同じスクリプトを使用して、パブリックまたはプライベート エンドポイント接続性を備えた Azure パブリックまたは Azure Government クラウドに対して物理アプライアンスを設定できます。
 
-        **シナリオ** | **ダウンロード** _ | _ *ハッシュ値**
-        --- | --- | ---
-        物理 (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
- 
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure Migrate インストーラー スクリプトを実行する
-インストーラー スクリプトでは以下が実行されます。
-
-- エージェントと、物理サーバーの検出と評価のための Web アプリケーションをインストールする。
-- Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
-- IIS 書き込み可能モジュールをダウンロードしてインストールする。
-- Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
-- パスに次のファイルを作成する。
-    - **構成ファイル**: %Programdata%\Microsoft Azure\Config
-    - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
-
-次のようにスクリプトを実行します。
 
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    - パブリック クラウドの場合: 
     
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
-    - Azure Government の場合: 
-    
-        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-    スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。
+5. シナリオ、クラウド、接続性からそれぞれオプションを選択して、必要な構成でアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合は、**Azure パブリック クラウド** 上の **既定の _(パブリック エンドポイント)_ 接続性** を使用して、**物理サーバー** _(または AWS、GCP、Xen などの他のクラウドで実行されているサーバー)_ を検出し、Azure Migrate プロジェクトに評価するようにアプライアンスが設定されます。
 
-問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
+    :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="必要な構成でアプライアンスを設定する方法を示すスクリーンショット" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
+
+6. インストーラー スクリプトでは以下が実行されます。
+
+ - エージェントと Web アプリケーションをインストールします。
+ - Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
+ - IIS 書き込み可能モジュールをダウンロードしてインストールする。
+ - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
+ - パスに次のファイルを作成する。
+    - **構成ファイル**: %Programdata%\Microsoft Azure\Config
+    - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
+
+スクリプトが正常に実行されると、アプライアンス構成マネージャーが自動的に起動します。
+
+> [!NOTE]
+> 問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 

@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: tutorial
 author: nabhishek
 ms.author: abnarain
-ms.date: 01/10/2018
-ms.openlocfilehash: 2e2a50a96402f01fe914c79d5257fc5bb4dc57a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: 7e4ad47f933757c4ebce66acd7ddc5e0033b601e
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377790"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215805"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 
@@ -118,9 +118,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-an-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 
-1. **[Let's get started]\(始めましょう\)** ページで、左側のパネルで **[編集]** タブに切り替えます。 
+1. ホーム ページの左パネルで **[管理]** タブに切り替えます。 
 
-   ![[Let's get started]\(始めましょう\) ページ](./media/tutorial-transform-data-spark-portal/get-started-page.png)
+   ![[管理] タブを示すスクリーンショット。](media/doc-common-process/get-started-page-manage-button.png)
 
 1. ウィンドウの下部にある **[接続]** を選択して、 **[+ 新規]** を選択します。 
 

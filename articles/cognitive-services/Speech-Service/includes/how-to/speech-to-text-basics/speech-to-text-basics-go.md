@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: 618074d696804171ee5e05655c1e15557789fac9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3c624a9dcdf61796dc4ce4396a0b309f84ceddaf
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110166298"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280237"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -27,7 +27,7 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="speech-to-text-from-microphone"></a>マイクからの音声テキスト変換
 
-既定のデバイスのマイクから音声認識を実行するには、以下のコード サンプルを使用します。 `subscription` 変数と `region` 変数は、ご利用のサブスクリプション キーとリージョン キーに置き換えてください。 スクリプトを実行すると、既定のマイクで認識セッションが開始されてテキストが出力されます。
+既定のデバイスのマイクから音声認識を実行するには、以下のコード サンプルを使用します。 変数 `subscription` と `region` を音声キーと場所またはリージョンに置き換えます。 キーと場所またはリージョンのペアを見つけるには、「[キーとリージョンを見つける](../../../overview.md#find-keys-and-locationregion)」セクションを参照してください。 スクリプトを実行すると、既定のマイクで認識セッションが開始されてテキストが出力されます。
 
 ```go
 package main
@@ -67,8 +67,8 @@ func cancelledHandler(event speech.SpeechRecognitionCanceledEventArgs) {
 }
 
 func main() {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription :=  "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
 
     audioConfig, err := audio.NewAudioConfigFromDefaultMicrophoneInput()
     if err != nil {
@@ -117,7 +117,7 @@ go run quickstart
 
 ## <a name="speech-to-text-from-audio-file"></a>オーディオ ファイルからの音声テキスト変換
 
-オーディオ ファイルから音声認識を実行するには、以下のサンプルを使用します。 `subscription` 変数と `region` 変数は、ご利用のサブスクリプション キーとリージョン キーに置き換えてください。 加えて、変数 `file` を .wav ファイルのパスに置き換えます。 スクリプトを実行すると、ファイルからの音声が認識され、結果がテキストとして出力されます。
+オーディオ ファイルから音声認識を実行するには、以下のサンプルを使用します。 変数 `subscription` と `region` を音声キーと場所またはリージョンに置き換えます。 キーと場所またはリージョンのペアを見つけるには、「[キーとリージョンを見つける](../../../overview.md#find-keys-and-locationregion)」セクションを参照してください。 加えて、変数 `file` を .wav ファイルのパスに置き換えます。 スクリプトを実行すると、ファイルからの音声が認識され、結果がテキストとして出力されます。
 
 ```go
 package main
@@ -131,8 +131,8 @@ import (
 )
 
 func main() {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription :=  "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
     file := "path/to/file.wav"
 
     audioConfig, err := audio.NewAudioConfigFromWavFileInput(file)

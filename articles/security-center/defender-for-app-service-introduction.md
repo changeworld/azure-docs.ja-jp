@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 75d9c649b245878e1f10c1aca9b9dd9956741fca
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 4ab8f3eb36e254a9b98444ecf85904fc574bcc65
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002635"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487383"
 ---
 # <a name="protect-your-web-apps-and-apis"></a>Web アプリと API の保護
 
@@ -36,7 +36,7 @@ Azure Defender for App Service を使用して Azure App Service プランを保
 | リリース状態:               | 一般提供 (GA)                                                                                                                                                                      |
 | 価格:                     | [Azure Defender for App Service](azure-defender.md) の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください<br>課金は、すべてのプランのコンピューティング インスタンスの合計に基づいて行われます。       |
 | サポートされている App Service プラン: | [従量課金プランの Azure Functions](../azure-functions/functions-scale.md) を除き、[すべての App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)がサポートされています。 |
-| クラウド:                      | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) National/Sovereign (US Gov、Azure China)                                                     |
+| クラウド:                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png":::National/Sovereign (US Gov、Azure China)                                                     |
 |                              |                                                                                                                                                                                                |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Azure Defender for App Service の利点

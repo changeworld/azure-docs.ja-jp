@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 0ba34b298fad21656a63c813057ed0c69db6c7f1
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 11e01d9d61a3a446be1135a212ae6cadcd1eea42
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064887"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595275"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 
@@ -75,5 +75,6 @@ RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.c
 
 ## <a name="next-steps"></a>次のステップ
 
-- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [クイックスタート: Front Door を作成する](quickstart-create-front-door.md)。
+- [Learn モジュール: Azure Front Door の概要](/learn/modules/intro-to-azure-front-door/)。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

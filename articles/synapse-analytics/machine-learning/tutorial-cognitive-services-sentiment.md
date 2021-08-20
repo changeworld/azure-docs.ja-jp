@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 4199e82ee5b32fe3e34df421a9ca54136b8cbfb7
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: c9f738f95e11ab29fc5163b69812037410e79e8a
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846394"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361107"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>チュートリアル:Cognitive Services を使用した感情分析 (プレビュー)
 
@@ -69,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="open-the-cognitive-services-wizard"></a>Cognitive Services ウィザードを開く
 
-1. 前の手順で作成した Spark テーブルを右クリックします。 **[Machine Learning]**  >  **[Enrich with existing model]\(既存のモデルを使用して強化\)** を選択してウィザードを開きます。
+1. 前の手順で作成した Spark テーブルを右クリックします。 **[機械学習]** 、 **[モデルを使用した予測]** の順に選択し、ウィザードを開きます。
 
    ![スコアリング ウィザードを開くための選択を示すスクリーンショット。](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00d.png)
 

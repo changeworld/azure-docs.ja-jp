@@ -3,12 +3,12 @@ title: 'クイック スタート: Azure Arc で Web アプリを作成する'
 description: Azure Arc 上の App Service の使用を開始して最初の Web アプリをデプロイします。
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: b9292af90c50712ef99496ce6078c4c34b5e5d01
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 4002ef3d66eaae05881da0dd8d95cc82ffeb916d
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984880"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112377010"
 ---
 # <a name="create-an-app-service-app-on-azure-arc-preview"></a>Azure Arc で App Service アプリを作成する (プレビュー)
 
@@ -49,7 +49,7 @@ az appservice plan create -g myResourceGroup -n myPlan \
 
 ```azurecli-interactive
  az webapp create \
-    --plan myPlan
+    --plan myPlan \
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \
@@ -75,7 +75,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 > [!NOTE]
 > Log Analytics を使用するには、[App Service 拡張機能 をインストールする](manage-create-arc-environment.md#install-the-app-service-extension)ときに有効にしておく必要があります。 Log Analytics なしで拡張機能をインストールした場合は、この手順をスキップします。
 
-[App Service 拡張機能で構成されている Log Analytics ワークスペース](manage-create-arc-environment.md#install-the-app-service-extension)に移動し、左側のナビゲーションで [ログ] をクリックします。 次のサンプル クエリを実行して、過去 72 時間のログを表示します。 `<app-name>` は、Web アプリの名前に置き換えます。 
+[App Service 拡張機能で構成されている Log Analytics ワークスペース](manage-create-arc-environment.md#install-the-app-service-extension)に移動し、左側のナビゲーションで [ログ] をクリックします。 次のサンプル クエリを実行して、過去 72 時間のログを表示します。 `<app-name>` は、Web アプリの名前に置き換えます。 クエリの実行中にエラーが発生した場合は、10 分から 15 分後に再試行してください (Log Analytics がアプリケーションからログを受信し始めるまでの間に待ち時間が生じることがあります)。 
 
 ```kusto
 let StartTime = ago(72h);
@@ -98,7 +98,8 @@ Kubernetes クラスターでホストされているすべてのアプリのア
 たとえば、次の操作を試してください。
 
 ```azurecli-interactive
-az webapp create 
+az webapp create \
+    --plan myPlan \
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \

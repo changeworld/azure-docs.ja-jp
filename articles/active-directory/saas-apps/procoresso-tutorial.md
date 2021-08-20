@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/11/2021
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 9200c669df4e9ca756a037f7dd05823e9caf21df
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 56918491f2fad1357f565ed5c07942d0c65c4114
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062702"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>チュートリアル: Azure Active Directory と Procore SSO の統合
 
@@ -32,6 +32,9 @@ Procore SSO と Azure AD の統合を構成するには、次のものが必要�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Procore SSO シングル サインオン対応のサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -139,7 +142,7 @@ Procore SSO を使用した Azure AD SSO を構成してテストするには、
 
     ![ツールボックスから [Directory]\(ディレクトリ\) が選択された Procore の企業サイトを示すスクリーンショット。](./media/procoresso-tutorial/directory.png)
 
-3. **[Add a Person] \(ユーザーの追加)** オプションをクリックしてフォームを開き、次の手順を実行します。
+3. **[Add a Person] \(ユーザーの追加)** オプションをクリックしてフォームを開き、次の手順を行います。
 
     ![ユーザー情報を入力できる [Add a person to Boylan Construction]\(Boylan Construction にユーザーを追加する\) を示すスクリーンショット。](./media/procoresso-tutorial/user.png)
 

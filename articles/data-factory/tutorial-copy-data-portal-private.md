@@ -5,14 +5,14 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 555316ddf722e857914d5e99d7fadcd6539e1b8b
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0159226abb904d73262011e16fbc52fe760be123
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482581"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436822"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure Blob Storage から SQL データベースに安全にデータをコピーする
 
@@ -94,7 +94,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 作成が完了すると、その旨が通知センターに表示されます。 **[リソースに移動]** を選択して、 **[Data Factory]** ページに移動します。
 
-1. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Data Factory (UI) を起動します。
+1. **[開く]** を **[Open Azure Data Factory Studio]** タイルで選択して、別のタブで Azure Data Factory UI を起動します。
 
 ## <a name="create-an-azure-integration-runtime-in-data-factory-managed-virtual-network"></a>Data Factory マネージド仮想ネットワークに Azure 統合ランタイムを作成する
 この手順では、Azure 統合ランタイムを作成し、Data Factory マネージド仮想ネットワークを有効にします。
@@ -120,9 +120,9 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 このチュートリアルでは、最初にパイプラインを作成します。 その後、パイプラインの構成に必要な場合にリンクされたサービスとデータセットを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. ホーム ページで **[調整]** を選択します。
 
-   ![パイプラインの作成を示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
+   ![ADF ホームページのスクリーンショット。](./media/doc-common-process/get-started-page.png)
 1. パイプラインの [プロパティ] ペインで、パイプライン名として「**CopyPipeline**」と入力します。
 
 1. **[アクティビティ]** ツール ボックスで **[Move and Transform]\(移動と変換\)** カテゴリを展開し、ツール ボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグします。 名前に「**CopyFromBlobToSql**」と入力します。

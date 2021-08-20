@@ -7,14 +7,17 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d05b4f8e69023e1ecec7002f394141fff008f0d
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97510500"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432970"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です。
+> 
 
 App Service Environment (ASE) は、ユーザーの Azure 仮想ネットワーク内に Azure App Service をデプロイしたものです。 多くのユーザーは、VPN または Azure ExpressRoute 接続を使用して、Azure 仮想ネットワークをオンプレミス ネットワークの拡張網として構成しています。 このとき、インターネットに向かうトラフィックを VPN や仮想アプライアンスにリダイレクトすることを強制トンネリングといいます。 アウトバウンド ネットワーク トラフィックの調査と監査には、よく仮想アプライアンスが使用されます。 
 

@@ -10,20 +10,16 @@ ms.date: 06/30/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 292210c12589bed6075378ba4fd38153c4fe10f1
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 898346d69b656656c93889002109bae0f15b2dbc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105347"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464339"
 ---
 # <a name="calling-recording-overview"></a>通話録音の概要
 
-> [!NOTE]
-> 多くの国や州には、PSTN、音声、およびビデオ通話の録音に適用される法律と規制があり、多くの場合は、ユーザーが通信の録音に同意する必要があります。 法令に従って通話録音機能を使用することは、お客様の責任です。 各参加者に適用される法律を遵守した方法で、録音対象の通信の当事者から同意を得る必要があります。
-
-> [!NOTE]
-> 個人データの管理に関する規制では、ユーザー データをエクスポートできることが求められます。 これらの要件をサポートするために、録音メタデータ ファイルでは、`participants` 配列に各通話参加者の participantId が格納されています。 `participants` 配列内の MRI を内部ユーザー ID と相互参照して、通話の参加者を識別することができます。 録音メタデータ ファイルの例は、参照用に以下に示します。
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
 > [!NOTE]
 > 通話録音機能は現在のところ、米国リージョンで作成された Communication Services リソースにのみ利用できます。
@@ -86,6 +82,11 @@ Event Grid の通知 `Microsoft.Communication.RecordingFileStatusUpdated` は、
     "eventTime": string // ISO 8601 date time for when the event was created
 }
 ```
+## <a name="regulatory-and-privacy-concerns"></a>規制とプライバシーに関する考慮事項
+
+多くの国や州には、PSTN、音声、およびビデオ通話の録音に適用される法律と規制があり、多くの場合は、ユーザーが通信の録音に同意する必要があります。 法令に従って通話録音機能を使用することは、お客様の責任です。 各参加者に適用される法律を遵守した方法で、録音対象の通信の当事者から同意を得る必要があります。
+
+個人データの管理に関する規制では、ユーザー データをエクスポートできることが求められます。 これらの要件をサポートするために、録音メタデータ ファイルでは、`participants` 配列に各通話参加者の participantId が格納されています。 `participants` 配列内の MRI を内部ユーザー ID と相互参照して、通話の参加者を識別することができます。 録音メタデータ ファイルの例は、参照用に以下に示します。
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、[通話録音機能のクイックスタート サンプル](../../quickstarts/voice-video-calling/call-recording-sample.md) ページを参照してください。

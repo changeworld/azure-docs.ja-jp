@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) とは
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: この記事では、Azure Video Analyzer for Media (旧称 Video Indexer) サービスの概要について説明します。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
-ms.topic: article
-ms.date: 02/05/2021
+ms.topic: overview
+ms.subservice: azure-video-analyzer-media
+ms.date: 07/15/2021
 ms.author: juliako
-ms.openlocfilehash: acaed6bedcbfeb4ccafd61f0a907f1ccfb7e8bcb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 79c6dc98bd214594b938cf74ce9176a64867fe3e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388000"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711848"
 ---
 # <a name="what-is-video-analyzer-for-media"></a>Video Analyzer for Media とは
 
@@ -69,7 +70,7 @@ Video Analyzer for Media の分析情報は、次のような多くのシナリ�
 * **ローリング クレジット**: テレビ番組や映画の終わりにあるローリング クレジットの始まりと終わりを識別します。
 * **アニメーション キャラクターの検出** (プレビュー): [Cognitive Services の Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) との統合によって、アニメ化されたコンテンツのキャラクターの検出、グループ化、および認識を行います。 詳細については、「[アニメーション キャラクターの検出](animated-characters-recognition.md)」を参照してください。
 * **編集ショット タイプの検出**: タイプに基づくショットのタグ付け (ワイド ショット、ミディアム ショット、クローズアップ、エクストリーム クローズアップ、2 ショット、複数の人物、屋外、室内など)。 詳細については、「[編集ショット タイプの検出](scenes-shots-keyframes.md#editorial-shot-type-detection)」を参照してください。
-* **観測されたユーザーのトレース**: ビデオで観察されたユーザーを検出し、ビデオフレーム内のユーザーの場所 (境界ボックスを使用) や、正確なタイムスタンプ (開始、終了)、およびユーザーが表示されたときの信頼度などの情報を提供します。 詳細については、「[Trace observed people in a video](observed-people-tracing.md)」\(ビデオ内で確認されたユーザーを追跡する\)を参照してください。
+* **観測されたユーザーのトレース**: ビデオで観察されたユーザーを検出し、ビデオ フレーム内のユーザーの場所 (境界ボックスを使用) や、正確なタイムスタンプ (開始、終了)、ユーザーが表示されたときの信頼度などの情報を提供します。 詳細については、「[Trace observed people in a video](observed-people-tracing.md)」\(ビデオ内で確認されたユーザーを追跡する\)を参照してください。
 
 ### <a name="audio-insights"></a>オーディオの分析情報
 

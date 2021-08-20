@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a39b963fa88866e02e9813c68d1b6504d3e98c7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c8a93ce59927144ce02edb8c1193406a29b18530
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956522"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913781"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -189,7 +189,10 @@ ROWTERMINATOR ='row_terminator'`
 
 使用する行ターミネータを指定します。 行ターミネータが指定されていない場合は、既定のターミネータの 1 つが使用されます。 PARSER_VERSION = '1.0' の既定のターミネータは、\r\n、\n、および \r です。 PARSER_VERSION = '2.0' の既定のターミネータは、\r\n および \n です。
 
-ESCAPECHAR = 'char'
+> [!NOTE]
+> PARSER_VERSION='1.0' を使用し、\n (改行) を行ターミネータとして指定すると、自動的に \r (キャリッジ リターン) 文字が前に付加され、結果的には行ターミネータが \r\n になります。
+
+ESCAPE_CHAR = 'char'
 
 ファイル内でそれ自体とすべての区切り記号の値をエスケープするために使用するファイル内の文字を指定します。 エスケープ文字の後にそれ自体以外の値、またはいずれかの区切り記号の値が続く場合は、その値を読み取るときにエスケープ文字が削除されます。 
 
@@ -221,6 +224,8 @@ CSV パーサー バージョン 1.0 が既定であり、機能が豊富です�
 CSV パーサー バージョン 1.0 の詳細:
 
 - 次のオプションはサポートされていません。HEADER_ROW。
+- 既定のターミネータは \r\n、\n、\r です。 
+- \n (改行) を行ターミネータとして指定すると、自動的に \r (キャリッジ リターン) 文字が前に付加され、結果的には行ターミネータが \r\n になります。
 
 CSV パーサー バージョン 2.0 の詳細:
 
@@ -233,6 +238,7 @@ CSV パーサー バージョン 2.0 の詳細:
 - DATE データ型でサポートされている形式: YYYY-MM-DD
 - TIME データ型でサポートされている形式: HH:MM:SS[.秒の小数部]
 - DATETIME2 データ型でサポートされている形式: YYYY-MM-DD HH:MM:SS[.秒の小数部]
+- 既定のターミネータは \r\n と \n です。
 
 HEADER_ROW = { TRUE | FALSE }
 

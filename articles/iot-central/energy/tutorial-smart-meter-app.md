@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42e88d322bd4d2b174d7a52e4892970caf5b1a5e
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833305"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963241"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>チュートリアル:スマート メーター監視アプリ テンプレートを作成して操作する 
 
@@ -63,7 +63,7 @@ ms.locfileid: "99833305"
 正常にデプロイされたアプリ テンプレートには、サンプルのスマート メーター デバイス、デバイス モデル、およびダッシュボードが付属しています。 
 
 Adatum は、スマート メーターを監視および管理する架空のエネルギー会社です。 スマート メーター監視ダッシュボードには、スマート メーターのプロパティ、データ、サンプル コマンドが表示されます。 これにより、オペレーターおよびサポート チームは、サポート インシデントに備えて、事前に次のアクティビティを実行できます。 
-* マップ上の最新のメーター情報とその設置場所を確認する
+* マップ上の最新のメーター情報とその設置[場所](../core/howto-use-location-data.md)を確認する
 * メーター ネットワークと接続の状態を事前に確認する 
 * ネットワークの正常性の最小および最大の電圧の測定値を監視する 
 * エネルギー、電力、および電圧の傾向を確認して、異常なパターンを把握する 

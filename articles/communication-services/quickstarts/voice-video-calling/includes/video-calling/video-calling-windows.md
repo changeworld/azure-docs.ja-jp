@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 05d7ac0fc46ddbe279208e9d60fb9f039985ad06
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5fa934ea2dc29004057ffbd3bad7c5f7b5afe935
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560707"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114594585"
 ---
 このクイックスタートでは、Windows 用の Azure Communication Services Calling SDK を使用して、1:1 のビデオ通話を開始する方法について説明します。
 
@@ -27,15 +27,15 @@ Visual Studio の **[空白のアプリ (ユニバーサル Windows)]** テン�
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
-プロジェクトを右クリックし、[`Manage Nuget Packages`]\(NuGet パッケージの管理\) に移動して `Azure.Communication.Calling` をインストールします。 
+プロジェクトを右クリックし、[`Manage Nuget Packages`]\(NuGet パッケージの管理\) に移動して `[Azure.Communication.Calling](https://www.nuget.org/packages/Azure.Communication.Calling)` をインストールします。 [Include Preleased]\(事前リースを含める\) チェックボックスがオンになっており、パッケージソースが https://www.nuget.org/api/v2/ からのものであることを確認します。 
 
 ### <a name="request-access"></a>アクセスの要求
 
 [`Package.appxmanifest`] に移動し、[`Capabilities`]\(機能\) をクリックします。
 インターネットへのインバウンド アクセスとアウトバウンド アクセスを取得するには、[`Internet (Client & Server)`]\(インターネット (クライアント & サーバー)\) チェック ボックスをオンにします。 マイクの音声フィードにアクセスするには、[`Microphone`]\(マイク\) チェック ボックスをオンにします。 デバイスのカメラにアクセスするには、[`WebCam`]\(Web カメラ\) チェック ボックスをオンにします。 
 
-次のコードを `Package.appxmanifest` に追加します。 
-```
+右クリックして [コードの表示] を選択し、`Package.appxmanifest` に次のコードを追加します。 
+```XML
 <Extensions>
 <Extension Category="windows.activatableClass.inProcessServer">
 <InProcessServer>
@@ -63,25 +63,35 @@ Visual Studio の **[空白のアプリ (ユニバーサル Windows)]** テン�
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <StackPanel>
-        <TextBox Text="Who would you like to call?" TextWrapping="Wrap" x:Name="CalleeTextBox" Margin="10,10,10,10"></TextBox>
-        <Button Content="Start Call" Click="CallButton_ClickAsync" x:Name="CallButton" Margin="10,10,10,10"></Button>
-        <Button Content="Hang Up" Click="HangupButton_Click" x:Name="HangupButton" Margin="10,10,10,10"></Button>
+        <StackPanel>
+            <TextBox Text="Who would you like to call?" TextWrapping="Wrap" x:Name="CalleeTextBox" Margin="10,10,10,10"></TextBox>
+            <Button Content="Start Call" Click="CallButton_ClickAsync" x:Name="CallButton" Margin="10,10,10,10"></Button>
+            <Button Content="Hang Up" Click="HangupButton_Click" x:Name="HangupButton" Margin="10,10,10,10"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <MediaElement x:Name="RemoteVideo" AutoPlay="True" Stretch="UniformToFill"/>
+            <MediaElement x:Name="LocalVideo" AutoPlay="True"  Stretch="UniformToFill" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
+        </StackPanel>
     </StackPanel>
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-        <MediaElement x:Name="RemoteVideo" AutoPlay="True" Stretch="UniformToFill"/>
-        <MediaElement x:Name="LocalVideo" AutoPlay="True"  Stretch="UniformToFill" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
-    </StackPanel>   
 </Page>
 ```
 
-`MainPage.xaml.cs` を開き、その内容を次の実装に置き換えます。 
+`App.xaml.cs` を開き (右クリックして [コードの表示] を選択)、次の行を先頭に追加します。
+```C#
+using CallingQuickstart;
+```
+
+`MainPage.xaml.cs` を開き (右クリックして [コードの表示] を選択)、内容を次の実装に置き換えます。 
 ```C#
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-using Azure.Communication;
+using Azure.WinRT.Communication;
 using Azure.Communication.Calling;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace CallingQuickstart
 {
@@ -138,7 +148,11 @@ Azure Communication Services Calling SDK の主な機能のいくつかは、次
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-ユーザー アクセス トークンを使用して `CallAgent` インスタンスを初期化します。これにより、電話をかけたり受けたりすることができるようになります。 また、デバイス上のカメラにアクセスするためには、デバイス マネージャーのインスタンスを取得する必要があります。 
+`CallAgent` を初期化するには、ユーザー アクセス トークンが必要になります。 通常このトークンは、アプリケーション固有の認証を使用してサービスから生成されます。 ユーザー アクセス トークンの詳細については、[ユーザー アクセス トークン](../../../access-tokens.md)のガイドを参照してください。 
+
+クイック スタートでは、`<USER_ACCESS_TOKEN>` を Azure Communication Service リソース用に生成されたユーザー アクセス トークンに置き換えます。
+
+トークンが与えられたら、それで `CallAgent` インスタンスを初期化します。これにより、通話を開始したり、受信したりできるようになります。 また、デバイス上のカメラにアクセスするためには、デバイス マネージャーのインスタンスを取得する必要があります。 
 
 ```C#
 private async void InitCallAgentAndDeviceManager()
@@ -226,7 +240,7 @@ private async void Agent_OnIncomingCall(object sender, IncomingCall incomingcall
     AcceptCallOptions acceptCallOptions = new AcceptCallOptions();
     acceptCallOptions.VideoOptions = new VideoOptions(localVideoStream);
 
-    call = await incomingcall.Accept(acceptCallOptions);
+    call = await incomingcall.AcceptAsync(acceptCallOptions);
 }
 ```
 
@@ -297,7 +311,7 @@ private async void Call_OnStateChanged(object sender, PropertyChangedEventArgs a
             });
             break;
         default:
-            System.Console.WriteLine(((Call)sender).State);
+            Debug.WriteLine(((Call)sender).State);
             break;
     }
 }
@@ -311,7 +325,7 @@ private async void Call_OnStateChanged(object sender, PropertyChangedEventArgs a
 private async void HangupButton_Click(object sender, RoutedEventArgs e)
 {
     var hangUpOptions = new HangUpOptions();
-    await call.HangUp(hangUpOptions);
+    await call.HangUpAsync(hangUpOptions);
 }
 ```
 
@@ -320,3 +334,5 @@ private async void HangupButton_Click(object sender, RoutedEventArgs e)
 コードは、Visual Studio でビルドして実行できます。 ソリューションのプラットフォームに関しては、`ARM64`、`x64`、`x86` がサポートされる点に注意してください。 
 
 発信ビデオ通話を行うには、テキスト フィールドにユーザー ID を指定し、[`Start Call`]\(通話を開始\) ボタンをクリックします。 
+
+ユーザー ID の詳細については、[ユーザー アクセス トークン](../../../access-tokens.md)のガイドを参照してください。 

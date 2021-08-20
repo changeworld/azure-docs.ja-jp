@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/03/2021
+ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 58e2a19f2d57eafc7d2967141d584dc7a22fe76c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c086440cce663f6c22b05b9a52c33b526106355
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955671"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559718"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合
 
@@ -41,6 +41,9 @@ ms.locfileid: "104955671"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
 * Zscaler Private Access (ZPA) では **SP** Initiated SSO がサポートされます。
+* Zscaler Private Access (ZPA) では、[**自動化** されたユーザー プロビジョニング](zscaler-private-access-provisioning-tutorial.md)がサポートされます。
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="add-zscaler-private-access-zpa-from-the-gallery"></a>ギャラリーから Zscaler Private Access (ZPA) を追加する
 
@@ -53,7 +56,7 @@ Azure AD への Zscaler Private Access (ZPA) の統合を構成するには、�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zscaler Private Access (ZPA)** 」と入力します。
 1. 結果のパネルから **[Zscaler Private Access (ZPA)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-zscaler-private-access-zpa"></a>Zscaler Private Access (ZPA) の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Zscaler Private Access (ZPA) に対する Azure AD SSO を構成し、テストします。 SSO が機能するために、Azure AD ユーザーと Zscaler Private Access (ZPA) の関連ユーザーの間で、リンク関係を確立する必要があります。
 
@@ -76,11 +79,11 @@ Zscaler Private Access (ZPA) に対する Azure AD SSO を構成してテスト�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** ページで、次のフィールドの値を入力します。
-
-    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+1. **[基本的な SAML 構成]** ページで、次の手順を実行します。
 
     1. **[識別子 (エンティティ ID)]** ボックスに `https://samlsp.private.zscaler.com/auth/metadata` という URL を入力します。
+
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://samlsp.private.zscaler.com/auth/login?domain=<DOMAIN_NAME>`
 
     > [!NOTE]
     > **サインオン URL** は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 値を取得するには、[Zscaler Private Access (ZPA) サポート チーム](https://help.zscaler.com/zpa-submit-ticket)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -154,6 +157,8 @@ Zscaler Private Access (ZPA) に対する Azure AD SSO を構成してテスト�
 ### <a name="create-zscaler-private-access-zpa-test-user"></a>Zscaler Private Access (ZPA) テスト ユーザーの作成
 
 このセクションでは、Zscaler Private Access (ZPA) で Britta Simon というユーザーを作成します。 [Zscaler Private Access (ZPA) のサポート チーム](https://help.zscaler.com/zpa-submit-ticket)に問い合わせて、Zscaler Private Access (ZPA) プラットフォームでユーザーを追加します。
+
+Zscaler Private Access (ZPA) は、自動ユーザー プロビジョニングもまた、サポートしています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](zscaler-private-access-provisioning-tutorial.md)を参照してください。
 
 ## <a name="test-sso"></a>SSO のテスト
 

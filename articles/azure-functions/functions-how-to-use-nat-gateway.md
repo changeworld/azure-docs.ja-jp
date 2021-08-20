@@ -4,16 +4,16 @@ description: Azure 仮想ネットワークに接続されている関数の NAT
 ms.topic: tutorial
 ms.author: kyburns
 ms.date: 2/26/2021
-ms.openlocfilehash: 5bb491e367ed813f09197a193745c231261c88c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9b91ccd725fbd6ae1e3a974ecb70b4c01201adb4
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104658159"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432268"
 ---
 # <a name="tutorial-control-azure-functions-outbound-ip-with-an-azure-virtual-network-nat-gateway"></a>チュートリアル: Azure 仮想ネットワーク NAT ゲートウェイを使用して Azure Functions の送信 IP を制御する
 
-仮想ネットワーク アドレス変換 (NAT) を使用すると、仮想ネットワークで送信のみのインターネット接続が簡単になります。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 NAT は、セキュリティ対策として IP アドレスの許可リストが使われるサードパーティのサービスを使用する必要がある Azure Functions または Web Apps で役に立つ場合があります。 詳細については、「[Virtual Network NAT とは](../virtual-network/nat-overview.md)」を参照してください。
+仮想ネットワーク アドレス変換 (NAT) を使用すると、仮想ネットワークで送信のみのインターネット接続が簡単になります。 これをサブネットに対して構成した場合、指定した静的パブリック IP アドレスがすべてのアウトバウンド接続で使用されます。 NAT は、セキュリティ対策として IP アドレスの許可リストが使われるサードパーティのサービスを使用する必要がある Azure Functions または Web Apps で役に立つ場合があります。 詳細については、「[Virtual Network NAT とは](../virtual-network/nat-gateway/nat-overview.md)」を参照してください。
 
 このチュートリアルでは、仮想ネットワーク NAT を使用して、HTTP によってトリガーされる関数からの送信トラフィックをルーティングする方法について説明します。 この関数を使用すると、それ自体の送信 IP アドレスを確認できます。 このチュートリアルでは、以下のことを行います。
 
@@ -66,6 +66,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 次に、[Premium プラン](functions-premium-plan.md)で関数アプリを作成します。 このプランはサーバーレス スケールを提供しながら、仮想ネットワーク統合をサポートします。
 
 ## <a name="create-a-function-app-in-a-premium-plan"></a>Premium プランの Function App を作成する
+
+このチュートリアルでは、[Premium プラン](functions-premium-plan.md)で関数アプリを作成する方法を紹介します。 [専用 (App Service) プラン](dedicated-plan.md)を使用する場合も、同じ機能を使用できます。
 
 > [!NOTE]  
 > このチュートリアルに最適なエクスペリエンスを実現するには、ランタイム スタックに .NET を選択し、オペレーティング システムに Windows を選択します。 また、仮想ネットワークと同じリージョンに関数アプリを作成します。

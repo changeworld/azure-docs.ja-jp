@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 69b900d8695b9fa9f237411d75f0c77856f6d0eb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cfce86e74a5e32f266dd0bbad84a179d8158a687
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378062"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303690"
 ---
 # <a name="create-and-use-native-external-tables-using-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL プールを使用してネイティブの外部テーブルを作成および使用する
 
-このセクションでは、Synapse SQL プールで[ネイティブの外部テーブル](develop-tables-external-tables.md)を作成および使用する方法を学習します。 ネイティブの外部テーブルは、外部データ ソースの定義に `TYPE=HADOOP` が含まれている外部テーブルと比較して、パフォーマンス高くなっています。 これは、ネイティブの外部テーブルでは、ネイティブ コードを使用して外部データにアクセスするためです。 
+このセクションでは、Synapse SQL プールで[ネイティブの外部テーブル](develop-tables-external-tables.md)を作成および使用する方法を学習します。 ネイティブの外部テーブルは、外部データ ソースの定義に `TYPE=HADOOP` が含まれている外部テーブルと比較して、パフォーマンスが高くなっています。 これは、ネイティブの外部テーブルでは、ネイティブ コードを使用して外部データにアクセスするためです。 
 
 外部テーブルは、Synapse SQL プールの外部データへのアクセスを制御する場合に便利です。 外部テーブルは、Power BI などのツールを Synapse SQL プールと組み合わせて使用する場合にも便利です。 外部テーブルは、次の 2 種類のストレージにアクセスできます。
 - パブリック ストレージ。ユーザーは、パブリック ストレージ ファイルにアクセスします。
@@ -148,6 +148,8 @@ CREATE EXTERNAL TABLE Covid (
         FILE_FORMAT = DeltaLakeFormat
 );
 ```
+
+Delta Lake はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
 
 ## <a name="use-an-external-table"></a>外部テーブルを使用する
 

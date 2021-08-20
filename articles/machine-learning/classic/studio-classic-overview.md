@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: ad0550dc20edfbc10fb8877ad049c27fc2edf086
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 8b9c03395f77bc33fd03cf2b14b2fb1d27bfc0f0
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517537"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579488"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>Machine Learning Studio (classic) でできること
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは x 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:**  ![これはチェック マークです。つまり、この記事は Machine Learning スタジオ (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning スタジオ (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -84,7 +84,7 @@ Machine Learning Studio (classic) に含まれているサンプル データセ
 大規模な機械学習アルゴリズムのライブラリを利用する際のヒントについては、[Microsoft Machine Learning Studio (classic) のアルゴリズムの選択方法](../how-to-select-algorithms.md)に関するページを参照してください。
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>予測分析 Web サービスのデプロイ
-予測分析モデルの準備が整ったら、それを Machine Learning Studio (クラシック) から Web サービスとしてデプロイすることができます。 このプロセスの詳細については、「[Azure Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)」を参照してください。
+予測分析モデルの準備が整ったら、それを Machine Learning Studio (クラシック) から Web サービスとしてデプロイすることができます。 このプロセスの詳細については、[Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)方法に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 [ステップ バイ ステップ クイック スタート](create-experiment.md)を使用し、[サンプル上に構築](sample-experiments.md)することによって、予測分析と機械学習の基礎について学習できます。

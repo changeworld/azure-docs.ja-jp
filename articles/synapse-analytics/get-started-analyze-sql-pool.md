@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 0def1f957842417c3936e3f1c7bb5bc023109818
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 56115e977603e1f2148f84569373dcf4d351e0c4
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536323"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113038212"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>専用の SQL プールを使用してデータを分析する
 
@@ -94,7 +94,7 @@ ms.locfileid: "107536323"
     )
     ```
 1. [実行] ボタンをクリックして、スクリプトを実行します。
-1. このスクリプトは 60 秒以内に終了します。 200 万行の NYC タクシー データを **dbo.Trip** というテーブルに読み込みます。
+1. このスクリプトは 60 秒以内に終了します。 200 万行の NYC タクシー データを **dbo.NYCTaxiTripSmall** というテーブルに読み込みます。
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>専用 SQL プール内の NYC タクシーのデータを探索する
 

@@ -6,22 +6,24 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 02/26/2021
+ms.date: 06/25/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: b7740fa1f6a54dcfcc1181dddedcdd5fdb50402c
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 0140166ac173e51f9b9d4e9617de3b70d24e1474
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378229"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215067"
 ---
 # <a name="tutorial-proving-possession-of-a-ca-certificate"></a>チュートリアル: CA 証明書の所有を証明する
 
-ルート証明機関 (CA) 証明書または下位 CA 証明書を IoT ハブにアップロードした後で、証明書を所有していることを証明する必要があります。
+ルート証明機関 (CA) 証明書または下位 CA 証明書を IoT ハブにアップロードするとき、有効性が自動的に検証されるように設定するか、証明書を所有していることを手動で証明する必要があります。
+
+## <a name="verify-certificate-automatically"></a>証明書の有効性を自動的に検証する 
 
 1. Azure portal で自分の IoT ハブに移動し、 **[設定] > [証明書]** の順に選択します。
 
@@ -29,17 +31,25 @@ ms.locfileid: "107378229"
 
 3. **[証明書名]** フィールドに表示名を入力し、追加する PEM 証明書を選択します。
 
-4. **[保存]** を選択します。 証明書が、証明書の一覧に **[未確認]** の状態で表示されます。 この検証プロセスで、証明書を所有していることが証明されます。
+4. 証明書を自動的に検証するには、 **[証明書の状態をアップロード時に確認済みに設定する]** の横にあるチェック ボックスをオンにします。
 
-5. 証明書を選択して、 **[証明書の詳細]** ダイアログを表示します。
+  :::image type="content" source="media/tutorial-x509-prove-possession/skip-pop.png" alt-text="所有証明をスキップするチェックボックスの場所を示すスクリーンショット":::
 
-6. ダイアログ ボックスの **[確認コードを生成します]** を選択します。
+5. **[保存]** を選択します。  証明書が証明書の一覧に **[確認済み]** の状態で表示されます。
+
+## <a name="verify-certificate-manually-after-upload"></a>アップロード後に証明書の有効性を手動で確認する
+
+1. アップロード中に証明書を自動的に検証しなかった場合は、証明書の一覧に **[未確認]** の状態で証明書が表示されます。 
+
+2. 証明書を選択して、 **[証明書の詳細]** ダイアログを表示します。
+
+3. ダイアログ ボックスの **[確認コードを生成します]** を選択します。
 
   :::image type="content" source="media/tutorial-x509-prove-possession/certificate-details.png" alt-text="{[証明書の詳細] ダイアログ}":::
 
-7. 確認コードをクリップボードにコピーします。 証明書のサブジェクトとして確認コードを設定する必要があります。 たとえば、確認コードが 75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3 の場合は、次の手順で示すように、証明書のサブジェクトとしてそれを追加します。
+4. 確認コードをクリップボードにコピーします。 証明書のサブジェクトとして確認コードを設定する必要があります。 たとえば、確認コードが 75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3 の場合は、次の手順で示すように、証明書のサブジェクトとしてそれを追加します。
 
-8. 検証証明書を生成するには、次の 3 つの方法があります。
+5. 検証証明書を生成するには、次の 3 つの方法があります。
 
     * Microsoft によって提供された PowerShell スクリプトを使用している場合は、`New-CACertsVerificationCert "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` を実行して、`VerifyCert4.cer` という名前の証明書を作成します。 詳細については、[Microsoft 提供のスクリプトの使用](tutorial-x509-scripts.md)に関するページを参照してください。
 
@@ -77,6 +87,6 @@ ms.locfileid: "107378229"
 
     詳細については、[OpenSSL を使用したテスト証明書の作成](tutorial-x509-openssl.md)に関するページを参照してください。
 
-10. **[証明書の詳細]** ビューで、新しい証明書を選択します。
+6. **[証明書の詳細]** ビューで、新しい証明書を選択します。
 
-11. 証明書をアップロードしたら、 **[確認]** を選択します。 CA 証明書の状態が **[確認済み]** に変わるはずです。
+7. 証明書をアップロードしたら、 **[確認]** を選択します。 CA 証明書の状態が **[確認済み]** に変わるはずです。

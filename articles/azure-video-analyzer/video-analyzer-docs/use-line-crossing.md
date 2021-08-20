@@ -2,13 +2,13 @@
 title: Azure Video Analyzer を使用してライブ ビデオでオブジェクトが仮想線を越えたことを検出する
 description: このクイックスタートでは、Azure Video Analyzer 使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードでオブジェクトが線を越えたことを検出する方法を示します。
 ms.topic: tutorial
-ms.date: 05/18/2021
-ms.openlocfilehash: 8cca0aca44f2cb2ebdbee7869d189b0cd2b2451f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/01/2021
+ms.openlocfilehash: 0b87d80c5dcc7a72bf940cac3573ee5e68964022
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465662"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604663"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>チュートリアル: ライブ ビデオでオブジェクトが仮想線を越えたことを検出する
 
@@ -98,11 +98,11 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
 1. operations.json ファイルを編集します。
     
     * パイプライン トポロジへのリンクを変更します。
-    * "pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/line-crossing/topology.json"
-    * livePipelineSet で、前のリンクの値と一致するようにトポロジの名前を編集します。
-    * "topologyName" : "LineCrossingWithHttpExtension"
+    * `"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/line-crossing/topology.json"`
+    * `livePipelineSet` で、前のリンクの値と一致するようにトポロジの名前を編集します。
+    * `"topologyName" : "LineCrossingWithHttpExtension"`
     * `pipelineTopologyDelete` で、名前を編集します。
-    * "name" : "LineCrossingWithHttpExtension"
+    * `"name" : "LineCrossingWithHttpExtension"`
     
 ブラウザーでパイプライン トポロジの URL を開き、HTTP 拡張ノードの設定を確認します。
 
@@ -113,7 +113,7 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
    }
 ```
 
-ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 ライブ ビデオのフレーム レートが 30 フレーム/秒の場合は、推論のために毎秒少なくとも 2 個のフレームを HTTP サーバーに送信する必要があることを意味します。したがって、`maximumSamplesPerSecond` は 2 に設定されます。 これは、実質的に 15 フレーム/秒になります。
+ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 ライブ ビデオのフレーム レートが 30 フレーム/秒の場合は、推論のために毎秒少なくとも 2 個のフレームを HTTP サーバーに送信する必要があることを意味します。 AI モデルには、処理用の最大 FPS があります。これは、`maximumSamplesPerSecond` に設定する必要がある最も高い値です。
 
 また、ライン クロッシング ノードのパラメーター プレースホルダー `linecrossingName` と `lineCoordinates` も確認してください。 これらのパラメーターには既定値が用意されていますが、operations.json ファイルを使用してこれらを上書きします。 operations.json ファイルの他のパラメーターをトポロジに渡す方法 (rtsp url) を確認してください。  
 

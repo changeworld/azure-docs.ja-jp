@@ -4,12 +4,12 @@ description: ライブ Web アプリケーションのアプリケーション �
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 1da89ea574c34e457b18c39cdad32061c85f1a14
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: a22bbad35fad5c5c4b231636fa2ac434b186a660
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289407"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616489"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は [Azure Monitor](../overview.md) の機能であり、開発者や DevOps プロフェッショナル向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中のアプリケーションを監視することができます。 パフォーマンスの異常を自動的に検出し、組み込まれている強力な分析ツールを使用して、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java、Python などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -95,7 +95,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 * **実行時: サーバー上の Web アプリをインストルメント化します。** 既にデプロイ済みのアプリケーションに最適です。 コードを更新しなくて済みます。
   * [**Azure Web Apps でホストされる ASP.NET または ASP.NET Core アプリケーション**](./azure-web-apps.md)
   * [**Azure VM または Azure 仮想マシン スケール セット上の IIS でホストされる ASP.NET アプリケーション**](./azure-vm-vmss-apps.md)
-  * [**IIS のオンプレミス VM でホストされる ASP.NET アプリケーション**](./monitor-performance-live-website-now.md)
+  * [**IIS のオンプレミス サーバーでホストされる ASP.NET アプリケーション**](./status-monitor-v2-overview.md)
 * **開発時: コードに Application Insights を追加します。** テレメトリの収集をカスタマイズし、追加のテレメトリを送信できます。
   * [ASP.NET アプリケーション](./asp-net.md)
   * [ASP.NET Core アプリケーション](./asp-net-core.md)
@@ -112,7 +112,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 実行時に開始する:
 
 * [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](./azure-vm-vmss-apps.md)
-* [IIS サーバー](./monitor-performance-live-website-now.md)
+* [IIS サーバー](./status-monitor-v2-overview.md)
 * [Azure Web Apps](./azure-web-apps.md)
 
 開発時に開始する:
@@ -148,5 +148,5 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 [platforms]: ./platforms.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.yml
-[redfield]: ./monitor-performance-live-website-now.md
+[redfield]: ./status-monitor-v2-overview.md
 

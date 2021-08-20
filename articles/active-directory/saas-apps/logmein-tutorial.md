@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 09c46efab8eea797b10b2724c3c19c7b1b34c87f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 907b627a260bf552555dca63936af6495fb987c6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467705"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453756"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logmein"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と LogMeIn の統合
 
@@ -50,7 +50,6 @@ Azure AD への LogMeIn の統合を構成するには、ギャラリーから�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**LogMeIn**」と入力します。
 1. 結果パネルから **[LogMeIn]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-logmein"></a>LogMeIn の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、LogMeIn に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと LogMeIn の関連ユーザーとの間にリンク関係を確立する必要があります。
@@ -70,7 +69,7 @@ LogMeIn に対する Azure AD SSO を構成してテストするには、次の�
 
 1. Azure portal の **LogMeIn** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -91,7 +90,6 @@ LogMeIn に対する Azure AD SSO を構成してテストするには、次の�
 6. **[LogMeIn のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -119,7 +117,15 @@ LogMeIn に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-logmein-sso"></a>LogMeIn の SSO の構成
 
-1. 別のブラウザー ウィンドウで、LogMeIn Web サイトに管理者としてログインします。
+1. LogMeIn 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、**My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[LogMeIn のセットアップ]** をクリックすると、LogMeIn アプリケーションに移動します。 そこから、管理者の資格情報を入力して LogMeIn にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. LogMeIn を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、LogMeIn 企業サイトに管理者としてサインインします。
 
 1. **[Identity provider]\(ID プロバイダー\)** タブに移動し、 **[Metadata url]\(メタデータ URL\)** ボックスに、Azure portal からコピーした **フェデレーション メタデータ URL** を貼り付けます。
 

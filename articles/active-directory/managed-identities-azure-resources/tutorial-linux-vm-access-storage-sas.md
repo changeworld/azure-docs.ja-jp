@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25426605b0fe5ced21d373f255e3872d2d0d280e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 47278f47d3f66e79ed980d752fb7a383bd995c07
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079141"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087344"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
@@ -71,12 +71,12 @@ Service SAS は、アカウント アクセス キーを公開することなく
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>VM のシステム割り当てマネージド ID にストレージ SAS を使用するためのアクセス権を付与する
 
-Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、VM のシステム割り当てマネージド ID を使用して Resource Manager からストレージ SAS を取得し、その SAS を使用してストレージにアクセスできます。  この手順では、ストレージ アカウントの SAS へのアクセス権を VM のシステム割り当てマネージド ID に付与します。 お使いのストレージ アカウントを含むリソース グループのスコープで、マネージド ID に [[ストレージ アカウント共同作成者]](../../role-based-access-control/built-in-roles.md#storage-account-contributor) ロールを割り当てることによってアクセス権を付与します。
+Azure Storage は Azure AD 認証をネイティブでサポートします。そのため、VM のシステム割り当てマネージド ID を使用して Resource Manager からストレージ SAS を取得し、その SAS を使用してストレージにアクセスできます。  この手順では、ストレージ アカウントの SAS へのアクセス権を VM のシステム割り当てマネージド ID に付与します。 お使いのストレージ アカウントを含むリソース グループのスコープで、マネージド ID に [[ストレージ アカウント共同作成者]](../../role-based-access-control/built-in-roles.md#storage-account-contributor) ロールを割り当てることによってアクセス権を付与します。
  
 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 >[!NOTE]
-> ストレージのレビューにアクセス許可を付与するために使用できるさまざまなロールの詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」を参照してください。
+> ストレージの確認にアクセス許可を付与するために使用できるさまざまなロールの詳細については、[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)に関するページを参照してください。
 
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>VM ID を使用してアクセス トークンを取得し、そのアクセス トークンを使用して Azure Resource Manager を呼び出す

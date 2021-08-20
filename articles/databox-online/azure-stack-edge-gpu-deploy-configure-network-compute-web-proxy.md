@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 07/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 38259febaed159217379ba131fb2bffb808e65e7
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 3c3b2bc20481da45bd9345f7668382521642a074
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838152"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221284"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する
 
@@ -67,12 +67,13 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
     ネットワーク設定を構成するときは、次のことに注意してください。
 
-   * ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
-   * DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
-   * 使用するネットワーク インターフェイスは、IPv4 として構成できます。
-   * 25 Gbps インターフェイスでは、RDMA (Remote Direct Access Memory) モードを iWarp または RoCE (RDMA over Converged Ethernet) に設定できます。 低待機時間が主な要件であり、スケーラビリティが問題にならない場合は、RoCE を使用します。 待機時間が重要な要件であり、使いやすさとスケーラビリティも優先度が高い場合は、iWARP が最適な候補です。
-   * ネットワーク インターフェイス カード (NIC) のチーミングまたはリンク アグリゲーションは、Azure Stack Edge ではサポートされていません。 
-   * ポートのシリアル番号は、ノードのシリアル番号に対応しています。
+    * ネットワーク機能マネージャーのデプロイ用に、ポート 5 とポート 6 が接続されていることを確認します。 詳細については、[チュートリアル: Azure Stack Edge にネットワーク機能をデプロイする (プレビュー)](../network-function-manager/deploy-functions.md) に関するページを参照してください。
+    * ご利用の環境内で DHCP が有効になっている場合は、ネットワーク インターフェイスが自動的に構成されます。 IP アドレス、サブネット、ゲートウェイ、DNS は自動的に割り当てられます。
+    * DHCP が有効になっていない場合は、必要に応じて、静的 IP アドレスを割り当てることができます。
+    * 使用するネットワーク インターフェイスは、IPv4 として構成できます。
+    * 25 Gbps インターフェイスでは、RDMA (Remote Direct Access Memory) モードを iWarp または RoCE (RDMA over Converged Ethernet) に設定できます。 低待機時間が主な要件であり、スケーラビリティが問題にならない場合は、RoCE を使用します。 待機時間が重要な要件であり、使いやすさとスケーラビリティも優先度が高い場合は、iWARP が最適な候補です。
+    * ネットワーク インターフェイス カード (NIC) のチーミングまたはリンク アグリゲーションは、Azure Stack Edge ではサポートされていません。 
+    * ポートのシリアル番号は、ノードのシリアル番号に対応しています。
 
     デバイス ネットワークが構成されると、ページは以下のように更新されます。
 
@@ -110,7 +111,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 1. **Kubernetes 外部サービス IP** を割り当てます。 これらは、負荷分散 IP アドレスでもあります。 これらの連続した IP アドレスは、Kubernetes クラスターの外部に公開するサービス用であり、公開するサービスの数に応じて静的 IP 範囲を指定します。 
     
     > [!IMPORTANT]
-    > Azure Stack Edge Pro Hub サービスからコンピューティング モジュールにアクセスするには、最低 1 つの IP アドレスを指定することを強くお勧めします。 必要に応じて、クラスターの外部からアクセスする必要がある他のサービスまたは IoT Edge モジュールに追加の IP アドレス (サービスやモジュールごとに 1 つ) を指定することもできます。 サービス IP アドレスは後で更新できます。 
+    > Azure Stack Edge Hub サービスからコンピューティング モジュールにアクセスするには、最低 1 つの IP アドレスを指定することを強くお勧めします。 必要に応じて、クラスターの外部からアクセスする必要がある他のサービスまたは IoT Edge モジュールに追加の IP アドレス (サービスやモジュールごとに 1 つ) を指定することもできます。 サービス IP アドレスは後で更新できます。 
     
 1. **[適用]** を選択します。
 

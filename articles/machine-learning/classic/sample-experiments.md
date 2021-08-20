@@ -1,6 +1,6 @@
 ---
 title: 'Machine Learning Studio (classic): 例から実験を開始する - Azure'
-description: Azure AI Gallery と Azure Machine Learning Studio (クラシック) を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
+description: Azure AI Gallery と Machine Learning スタジオ (クラシック) を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,14 +9,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 40306973dde989862f8dfe9df5c9d873ac18fdd0
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: fbb9787ce6641e379c3f43f0725d28dbd51fc962
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517503"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579560"
 ---
-# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Azure Machine Learning Studio (クラシック) の実験を作成する
+# <a name="create-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Machine Learning スタジオ (クラシック) の実験を作成する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
@@ -25,7 +25,7 @@ ms.locfileid: "100517503"
 
 機械学習実験を一から作成する代わりに、[Azure AI ギャラリー](https://gallery.azure.ai/)にあるサンプル実験をベースとして使う方法について説明します。 サンプルを使って独自の機械学習ソリューションを構築することができます。
 
-ギャラリーには、Microsoft Azure Machine Learning Studio (クラシック) チームによるサンプル実験だけでなく、Machine Learning コミュニティで共有されているサンプルもあります。 また、実験について質問したり、コメントを投稿したりすることができます。
+ギャラリーには、Machine Learning スタジオ (クラシック) チームによるサンプル実験だけでなく、Machine Learning コミュニティで共有されているサンプルもあります。 また、実験について質問したり、コメントを投稿したりすることができます。
 
 ギャラリーの使用方法については、[初心者向けデータ サイエンス](data-science-for-beginners-the-5-questions-data-science-answers.md) シリーズの 3 分間のビデオ「[他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)」をご覧ください。
 

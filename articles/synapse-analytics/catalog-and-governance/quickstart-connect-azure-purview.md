@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f0af3b571b1a6d793668c33d0c76e19a3d0c9e62
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 827f1a4cd518d33ea67749482349cad9d4540c82
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716062"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117370"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>クイック スタート:  Azure Purview アカウントを Synapse ワークスペースに接続する 
 
@@ -22,7 +22,7 @@ ms.locfileid: "109716062"
 
 Synapse では、次のタスクを実行できます。 
 - 上部にある検索ボックスを使用して、キーワードに基づいて Purview の資産を検索する 
-- メタデータ、系列、注釈に基づいてデータを理解する 
+- メタデータ、[系列](../../purview/catalog-lineage-user-guide.md)、注釈に基づいてデータを理解する 
 - リンクされたサービスまたは統合データセットを使用してこれらのデータをワークスペースに接続する 
 - Synapse Apache Spark、Synapse SQL、および Data Flow を使用してこれらのデータセットを分析する 
 
@@ -50,3 +50,9 @@ Synapse では、次のタスクを実行できます。
 [Azure Purview での Azure Synapse 資産の登録とスキャン](../../purview/register-scan-azure-synapse-analytics.md)
 
 [Azure Purview を使用した Synapse でのデータの検出、接続、調査](how-to-discover-connect-analyze-azure-purview.md)   
+
+[Azure Data Factory と Azure Purview を接続する](../../purview/how-to-link-azure-data-factory.md)
+
+[Azure Data Share と Azure Purview を接続する](../../purview/how-to-link-azure-data-share.md)
+
+[Power BI から Azure Purview に系列を取得する](../../purview/how-to-lineage-powerbi.md)

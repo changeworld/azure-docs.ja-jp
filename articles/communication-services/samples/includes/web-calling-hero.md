@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a015ba06be6a10985a4771e842a6d910dd4cd9ab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a6fc7a8419c3c4b6173771c898a1a4331d3c5874
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157579"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201444"
 ---
 Azure Communication Services の **グループ通話のヒーロー サンプル** は、Communication Services Calling Web SDK を使用して、グループ通話エクスペリエンスを構築する方法を示しています。
 
@@ -23,7 +23,7 @@ Azure Communication Services の **グループ通話のヒーロー サンプ�
 
 ## <a name="download-code"></a>コードをダウンロードする
 
-[GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero) でこのサンプルのプロジェクトを見つけてください。 [Teams の相互運用機能](../../concepts/teams-interop.md)を使用したサンプルのバージョンは、別の[ブランチ](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop)にあります。
+[GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero) でこのサンプルのプロジェクトを見つけてください。 [Teams の相互運用機能](../../concepts/teams-interop.md)および[通話レコーディング](../../concepts/voice-video-calling/call-recording.md)など、現在パブリック プレビュー中の機能を含むサンプルのバージョンは、別の[ブランチ](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/public-preview)にあります。
 
 ## <a name="overview"></a>概要
 
@@ -58,7 +58,7 @@ Azure Communication Services の **グループ通話のヒーロー サンプ�
 - [Node.js (12.18.4 以上)](https://nodejs.org/en/download/)
 - [Visual Studio (2019 以上)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (使用する Visual Studio インスタンス (32 または 64 ビット) に対応するバージョンを必ずインストールしてください)
-- Azure Communication Services リソース。 詳細については、[Azure Communication リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
+- Azure Communication Services リソース。 詳細については、[Azure Communication Services リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
 
 ## <a name="locally-deploy-the-service--client-applications"></a>サービスおよびクライアント アプリケーションをローカルにデプロイする
 
@@ -72,7 +72,7 @@ Azure Communication Services の **グループ通話のヒーロー サンプ�
 
 1. PowerShell、Windows ターミナル、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
 2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`
-3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../../quickstarts/create-communication-resource.md)に関するページをご覧ください。
+3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication Services リソースの作成](../../quickstarts/create-communication-resource.md)に関するページをご覧ください。
 4. `Connection String` を取得したら、Service .NET フォルダーの下で **Calling/appsetting.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。
 
 ### <a name="local-run"></a>ローカルの実行

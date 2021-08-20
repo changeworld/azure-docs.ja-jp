@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 06/29/2021
 ms.author: jeedes
-ms.openlocfilehash: b503697972bfe7fbd8fc18b77d6e0206dc055b67
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ae73974a65ca13c76fc374bf0544d67fa2a524c3
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206135"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107318"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SolarWinds Orion の統合
 
@@ -98,6 +98,17 @@ SolarWinds Orion に対して Azure AD SSO を構成してテストするには�
     | FirstName | User.givenname |
     | LastName | User.surname |
     | Email |User.mail |
+
+1. **[ユーザー属性とクレーム]** セクションで、編集のために鉛筆アイコンをクリックし、 **[グループ要求を追加する]** をクリックします。
+
+    ![[ユーザー属性とクレーム] のスクリーンショット。](./media/solarwinds-orion-tutorial/group-claim.png)
+
+1. **[セキュリティ グループ]** を選択します。
+1. Azure AD をオンプレミスの AD と同期している場合は、 **[Source attribute]\(ソース属性\)** を **[sAMAccountName]** に変更します。 それ以外の場合は、[グループ ID] のままにします。
+
+1. **[Advanced options]\(詳細オプション\)** で、 **[グループ要求の名前をカスタマイズする]** をオンにし、名前として OrionGroups を指定します。
+
+1. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

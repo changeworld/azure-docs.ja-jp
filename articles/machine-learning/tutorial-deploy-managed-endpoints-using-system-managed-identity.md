@@ -1,7 +1,6 @@
 ---
-title: マネージド オンライン エンドポイントを使用して Azure リソースにアクセスする
-titleSuffix: Azure Machine Learning
-description: 機械学習モデルのデプロイを目的とした Azure リソースに対し、マネージド オンライン エンドポイントとシステム割り当てマネージド ID を使用して安全にアクセスします。
+title: 'チュートリアル: リソースにアクセスするためのマネージド オンライン エンドポイント'
+description: 自分の機械学習モデルをデプロイするための Azure リソースに、マネージド オンライン エンドポイントとシステム割り当てマネージド ID を使用して安全にアクセスする方法を説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +9,17 @@ ms.reviewer: laobri
 author: rsethur
 ms.date: 05/25/2021
 ms.topic: tutorial
-ms.custom: tutorial
-ms.openlocfilehash: 731d9a64c9ef144e8e51e9bce319a031056958ae
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.custom: tutorial, devplatv2
+ms.openlocfilehash: 78cbec0c8f4805794062b6fd525567f8aebcb2b6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071553"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448838"
 ---
-# <a name="tutorial-access-azure-resources-with-a-managed-online-endpoint-and-system-managed-identity-preview"></a>チュートリアル: マネージド オンライン エンドポイントとシステム マネージド ID (プレビュー) を使用して Azure リソースにアクセスする
+# <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>チュートリアル: マネージド オンライン エンドポイントと ID を使用してリソースにアクセスする (プレビュー)
 
-このチュートリアルでは、スコアリング スクリプトから、マネージド オンライン エンドポイントとシステム割り当てマネージド ID を使用して Azure リソースに安全にアクセスする方法について説明します。
+このチュートリアルでは、自分のスコアリング スクリプトから、マネージド オンライン エンドポイントとシステム割り当てマネージド ID を使用して Azure リソースに安全にアクセスする方法について説明します。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 このチュートリアルでは、Azure CLI とその ML 拡張機能を使用して次のアクションを実行する方法について説明します。
@@ -36,7 +35,7 @@ ms.locfileid: "112071553"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning を使用するためには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure Machine Learning を使用するためには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 * Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[2.0 CLI (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
 
@@ -73,6 +72,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
+YAML のリファレンスについては、[マネージド オンライン エンドポイント (プレビュー) YAML リファレンス](reference-online-endpoint-yaml.md)に関するページを参照してください。
 
 ## <a name="configure-variables-for-your-deployment"></a>デプロイ用の変数を構成する
 
@@ -120,6 +120,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 ::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
+問題が発生した場合は、「[マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md)」を参照してください。
 
 ## <a name="give-storage-permission-to-system-assigned-managed-identity"></a>システム割り当てマネージド ID にストレージへのアクセス許可を与える
 
@@ -193,3 +194,8 @@ init メソッドの出力をチェックするには、次のコードでデプ
 * CLI の使用について詳しくは、「[Azure Machine Learning 用の CLI 拡張機能を使用する](reference-azure-machine-learning-cli.md)」を参照してください。
 * 特定のデータのみを返すように JSON クエリを調整する方法については、[Azure CLI コマンドの出力の照会](/cli/azure/query-azure-cli)に関するページを参照してください。
 * YAML スキーマの詳細については、[オンライン エンドポイント YAML リファレンス](reference-online-endpoint-yaml.md)に関するドキュメントを参照してください。
+* 使用できるコンピューティング リソースを確認するには、「[マネージド オンライン エンドポイント SKU の一覧 (プレビュー)](reference-managed-online-endpoints-vm-sku-list.md)」を参照してください。
+* コストの詳細については、「[Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する](how-to-view-online-endpoints-costs.md)」を参照してください。
+* デプロイの詳細については、[オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md) に関するページを参照してください。
+* エンドポイントの監視については、「[マネージド オンライン エンドポイント (プレビュー) を監視する](how-to-monitor-online-endpoints.md)」を参照してください。
+* マネージド エンドポイントの制限の詳細については、「[Azure Machine Learning のリソースのクォータの管理と引き上げ](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)」を参照してください。

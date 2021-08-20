@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 18d944cd2b3bfde1a0ee5fc53e83e4016b11b01f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1501d682de61b52a3933f6f849b4eac6d9f33b87
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379218"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766851"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバー
 
@@ -26,7 +26,7 @@ PostgreSQL コミュニティ エディションを搭載した [Azure Database 
 
 ## <a name="overview"></a>概要
 
-単一サーバーは、最小限の要件でデータベースをカスタマイズできる、完全に管理されたデータベースサービスです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、最小限のユーザー構成と制御によるセキュリティなど、データベース管理機能のほとんどを処理するよう設計されています。 このアーキテクチャは、1 つの可用性ゾーンで 99.99% の可用性を提供するように最適化されています。 PostgreSQL 9.5、9.6、10、11 のコミュニティ バージョンがサポートされています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
+単一サーバーは、最小限の要件でデータベースをカスタマイズできる、完全に管理されたデータベースサービスです。 単一サーバー プラットフォームは、修正プログラムの適用、バックアップ、高可用性、最小限のユーザー構成と制御によるセキュリティなど、データベース管理機能のほとんどを処理するよう設計されています。 このアーキテクチャは、1 つの可用性ゾーンで 99.99% の可用性を提供するように最適化されています。 これは、PostgreSQL 9.6、10、11 のコミュニティ バージョンをサポートしています。 このサービスは現時点で一般提供されており、さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
 
 単一サーバーは、修正プログラムの適用スケジュールや PostgreSQL のカスタム構成の設定を細かく制御する必要がない、自動化された修正プログラムの適用を処理するように設計された、クラウド ネイティブ アプリケーションに最適です。
 

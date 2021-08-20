@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 524770186c9bb391b9beb63620b13c99bf6dc4d0
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 0d531515252a6f629d6bab0282061a90aae5bdf1
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430836"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659603"
 ---
 > [!NOTE]
 > このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/access-tokens-quickstart) にあります
@@ -73,7 +73,7 @@ connection_string = os.environ["COMMUNICATION_SERVICES_CONNECTION_STRING"]
 client = CommunicationIdentityClient.from_connection_string(connection_string)
 ```
 
-または、マネージド ID をセットアップしている場合は、[マネージド ID の使用](../managed-identity.md)に関する記事を参考に、マネージド ID で認証することもできます。
+または、Azure Active Directory (AD) アプリケーションを設定している場合は、AD で認証することもできます。[サービス プリンシパルの使用](../identity/service-principal.md)に関するページを参照してください。
 ```python
 endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"]
 client = CommunicationIdentityClient(endpoint, DefaultAzureCredential())

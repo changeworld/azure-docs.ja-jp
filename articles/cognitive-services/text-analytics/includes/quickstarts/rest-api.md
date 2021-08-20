@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/05/2021
+ms.date: 06/08/2021
 ms.author: aahi
-ms.openlocfilehash: 547bcfd7a602a37af2ecb52b5bfb1698b7172827
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f932630fe4f31026ffd7efce04b32b876ad8ab94
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110166222"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550676"
 ---
-# <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-[v3.1 リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/)
+[v3.1 リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/)
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -54,13 +54,13 @@ Text Analytics API を呼び出すには、次の情報が必要です。
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[バージョン 3.1-プレビュー](#tab/version-3-1)
+#### <a name="version-31"></a>[バージョン 3.1](#tab/version-3-1)
 
 > [!NOTE]
 > 下の例には、`opinionMining=true` パラメーターを使用した感情分析のオピニオン マイニング機能に対する要求が含まれています。これにより、テキスト内の対象 (名詞) に関連した評価 (形容詞) に関する詳細な情報が提供されます。
 
 ```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.5/sentiment?opinionMining=true \
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/sentiment?opinionMining=true \
 -H "Content-Type: application/json" \
 -H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
 -d '{ documents: [{ id: "1", text: "The customer service here is really good."}]}'
@@ -184,10 +184,10 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/sen
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[バージョン 3.1-プレビュー](#tab/version-3-1)
+#### <a name="version-31"></a>[バージョン 3.1](#tab/version-3-1)
 
 ```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.5/languages/ \
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/languages/ \
 -H "Content-Type: application/json" \
 -H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
 -d '{ documents: [{ id: "1", text: "This is a document written in English."}]}'
@@ -257,10 +257,10 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/lan
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[バージョン 3.1-プレビュー](#tab/version-3-1)
+#### <a name="version-31"></a>[バージョン 3.1](#tab/version-3-1)
 
 ```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.5/entities/recognition/general \
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/entities/recognition/general \
 -H "Content-Type: application/json" \
 -H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
 -d '{ documents: [{ id: "1", language:"en", text: "I had a wonderful trip to Seattle last week."}]}'
@@ -310,7 +310,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
 ```bash
-curl -X POST https://your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.5/entities/recognition/pii \
+curl -X POST https://your-text-analytics-endpoint-here>/text/analytics/v3.1/entities/recognition/pii \
 -H "Content-Type: application/json" \
 -H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
 -d '{ documents: [{ id: "1", language:"en", text: "Call our office at 312-555-1234, or send an email to support@contoso.com"}]}'
@@ -412,10 +412,10 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/ent
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[バージョン 3.1-プレビュー](#tab/version-3-1)
+#### <a name="version-31"></a>[バージョン 3.1](#tab/version-3-1)
 
 ```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.5/entities/linking \
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/entities/linking \
 -H "Content-Type: application/json" \
 -H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
 -d '{ documents: [{ id: "1", language:"en", text: "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975."}]}'
@@ -606,10 +606,10 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/ent
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
 
-#### <a name="version-31-preview"></a>[バージョン 3.1-プレビュー](#tab/version-3-1)
+#### <a name="version-31"></a>[バージョン 3.1](#tab/version-3-1)
 
 ```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.5/keyPhrases \
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/keyPhrases \
 -H "Content-Type: application/json" \
 -H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
 -d '{ documents: [{ id: "1", language:"en", text: "I had a wonderful trip to Seattle last week."}]}'
@@ -622,8 +622,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
          "id":"1",
          "keyPhrases":[
             "wonderful trip",
-            "Seattle",
-            "week"
+            "Seattle"
          ],
          "warnings":[
             
@@ -633,7 +632,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
    "errors":[
       
    ],
-   "modelVersion":"2020-07-01"
+   "modelVersion":"2021-06-01"
 }
 ```
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 63740e6d3f6df757cc7cc8847ed10a03b8831fd5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: dfb71802b0aa0fae1bb853823b054ae49d700edf
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060186"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438280"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>チュートリアル: Linux コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -157,13 +157,16 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
 コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでは、コンテナー イメージを IoT Edge デバイスにプルするためにこれらの資格情報が必要です。
 
 >[!NOTE]
->「[**プロジェクト テンプレートを作成する**](#create-a-project-template)」手順で、**localhost: 5000** の値を Azure コンテナー レジストリのログイン サーバーの値で置き換えていない場合は、 **.env** ファイルと、配置マニフェストの registryCredentials セクションは見つかりません。 
+>「[**プロジェクト テンプレートを作成する**](#create-a-project-template)」手順で、**localhost: 5000** の値を Azure コンテナー レジストリのログイン サーバーの値で置き換えていない場合は、 **.env** ファイルと、配置マニフェストの registryCredentials セクションは見つかりません。
 
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. モジュール ソリューション内の **.env** ファイルを開きます。
 2. Azure コンテナー レジストリからコピーした **username** と **password** の値を追加します。
 3. 変更内容を .env ファイルに保存します。
+
+>[!NOTE]
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 

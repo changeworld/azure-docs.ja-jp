@@ -1,19 +1,19 @@
 ---
 title: Azure Spring Cloud の概要
 description: Azure で Java Spring アプリケーションをデプロイして管理するための、Azure Spring Cloud の機能とメリットついて説明します。
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: overview
-ms.date: 12/02/2020
-ms.author: brendm
+ms.date: 03/09/2021
+ms.author: karler
 ms.custom: devx-track-java, contperf-fy21q2
 customer intent: As an Azure Cloud user, I want to deploy, run, and monitor Spring Boot microservices.
-ms.openlocfilehash: 119128fcc2b2f08ba101c5c44768281cf7e6e600
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dd6ade0e3cd1ff442ec6f5f46a28b35a6b6cb108
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132811"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473560"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud とは
 
@@ -28,7 +28,7 @@ Azure Spring Cloud へのアプリケーションのデプロイには多くの�
 * コンテナー化の依存関係なしで迅速に開発およびデプロイする。
 * 運用ワークロードを効率的かつ簡単に監視する。
 
-Azure Spring Cloud では、Java [Spring Boot](https://spring.io/projects/spring-boot) と ASP.NET Core [Steeltoe](https://steeltoe.io/) の両方のアプリがサポートされています。 Steeltoe に対するサポートは、現在、パブリック プレビューとして提供されています。 パブリック プレビューの提供では、公式リリースの前に新機能をお試しいただけます。 パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。 詳細については、[FAQ](https://azure.microsoft.com/support/faq/) をご覧ください。または、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
+Azure Spring Cloud では、Java [Spring Boot](https://spring.io/projects/spring-boot) と ASP.NET Core [Steeltoe](https://steeltoe.io/) の両方のアプリがサポートされています。 Steeltoe に対するサポートは、現在、パブリック プレビューとして提供されています。 パブリック プレビューの提供では、公式リリースの前に新機能をお試しいただけます。
 
 ## <a name="service-overview"></a>サービスの概要
 
@@ -38,7 +38,7 @@ Azure エコシステムの一部として、Azure Spring Cloud は、ストレ�
 
 * Azure Spring Cloud は、Spring Boot アプリ向けのフル マネージド サービスです。ユーザーはインフラストラクチャの管理に煩わされることなく、アプリの構築と実行に集中できます。
 
-* JAR またはコードをデプロイするだけで、Azure Spring Cloud によって、Spring サービス ランタイムと組み込みのアプリ ライフサイクルにアプリが自動的に接続されます。
+* Spring Boot アプリまたは Zip for your Steeltoe アプリに JAR またはコードをデプロイするだけで、Azure Spring Cloud によって、Spring サービス ランタイムと組み込みのアプリ ライフサイクルにアプリが自動的に接続されます。
 
 * 監視は簡単です。 デプロイ後、アプリのパフォーマンスを監視し、エラーを修正して、アプリケーションを迅速に改善できます。 
 

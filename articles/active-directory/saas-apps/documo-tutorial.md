@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/05/2021
 ms.author: jeedes
-ms.openlocfilehash: a7536cd637339cd7a73541ddee89e8d2e11df3e6
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: b73c760185e8b5d97ab03fbbee75fd399e0b0c16
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889142"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466522"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-documo"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Documo の統合
 
@@ -78,11 +78,12 @@ Documo に対して Azure AD SSO を構成してテストするには、次の�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
+1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。 Documo アカウントのドメインがカスタム ドメインである場合、SSO が機能するためにはカスタム API ドメインも必要です。 既定値をカスタム API ドメインに置き換えてください (`https://mycustomapidomain.com`、`https://mycustomapidomain.com/assert` など)。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** テキスト ボックスに、URL として「`https://app.documo.com/sso`」と入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「」と入力します。  
+    `https://app.documo.com/sso`
 
 1. **[保存]** をクリックします。
 
@@ -142,7 +143,7 @@ Documo に対して Azure AD SSO を構成してテストするには、次の�
 
     d. **[Field Name in SAML Token containing Identity email]\(ID 電子メールを含む SAML トークンのフィールド名\)** ボックスに値を入力します。
 
-    e. Azure portal からダウンロードした **フェデレーション メタデータ XML** をメモ帳で開き、その内容を **[Signer Certificate]\(署名者証明書\)** ボックスに貼り付けます。
+    e. Azure portal からダウンロードした **フェデレーション メタデータ XML** をメモ帳で開きます。 `<X509Certificate>` タグを見つけて、その内容を **[Signer Certificate]\(署名者の証明書\)** ボックスに貼り付けます。
 
     f. **[送信]** をクリックします。
 

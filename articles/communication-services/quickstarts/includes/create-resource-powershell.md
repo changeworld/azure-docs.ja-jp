@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 340635f273c20c9d8b42fde0c07a7aa97d9f348a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a04d7dde8b6f2a492538d2012de5222686fd7fcf
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293247"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762379"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/dotnet/)。
 - [Azure Az PowerShell モジュール](/powershell/azure/)をインストールする
 
-## <a name="create-azure-communication-resource"></a>Azure Communication のリソースを作成する
+## <a name="create-azure-communication-services-resource"></a>Azure Communication Services のリソースを作成する
 
 Azure Communication Services のリソースを作成するには、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)します。 そのためにはターミナルから ```Connect-AzAccount``` コマンドを使用し、資格情報を入力します。 リソースを作成するには、次のコマンドを実行します。
 

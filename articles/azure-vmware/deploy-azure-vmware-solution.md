@@ -2,14 +2,14 @@
 title: Azure VMware Solution をデプロイして構成する
 description: 計画ステージで収集した情報を使用して、Azure VMware Solution プライベート クラウドをデプロイして構成する方法について説明します。
 ms.topic: tutorial
-ms.custom: contperf-fy21q4, devx-track-azurecli
-ms.date: 05/19/2021
-ms.openlocfilehash: 824ab46b81a913bc7b1768e56e05025ee8208d17
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: contperf-fy22q1, devx-track-azurecli
+ms.date: 07/09/2021
+ms.openlocfilehash: 30c6360e49da2574edd87c639811aac4b66d5e9e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473770"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438203"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
@@ -33,7 +33,12 @@ ms.locfileid: "110473770"
 
 ## <a name="step-3-connect-to-azure-virtual-network-with-expressroute"></a>手順 3. ExpressRoute を使用して Azure Virtual Network に接続する
 
-計画フェーズでは、"*既存*" の ExpressRoute 仮想ネットワーク ゲートウェイを使用するか、"*新しい*" ExpressRoute 仮想ネットワーク ゲートウェイを使用するかを決めました。  
+計画フェーズでは、"*既存*" または "*新しい*" ExpressRoute 仮想ネットワーク ゲートウェイを使用するかを決めました。  
+
+:::image type="content" source="media/connect-expressroute-vnet-workflow.png" alt-text="Azure VMware Solution で Azure Virtual Network を ExpressRoute に接続するワークフローを示す図。" border="false":::
+
+>[!IMPORTANT]
+>[!INCLUDE [disk-pool-planning-note](includes/disk-pool-planning-note.md)] 
 
 ### <a name="use-a-new-expressroute-virtual-network-gateway"></a>新しい ExpressRoute 仮想ネットワーク ゲートウェイを使用する
 
@@ -42,9 +47,9 @@ ms.locfileid: "110473770"
 
 | 状況 | THEN  |
 | --- | --- |
-| まだ仮想ネットワークがない     |  次のものを作成します。<ul><li><a href="tutorial-configure-networking.md#create-a-virtual-network">仮想ネットワーク</a></li><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">仮想ネットワーク ゲートウェイ</a></li></ul>        |
-| ゲートウェイ サブネットを **含まない** 仮想ネットワークが既に存在する   | 次のものを作成します。 <ul><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">仮想ネットワーク ゲートウェイ</a></li></ul>          |
-| ゲートウェイ サブネットを **含んだ** 仮想ネットワークが既に存在する | [仮想ネットワーク ゲートウェイの作成](tutorial-configure-networking.md#create-a-virtual-network-gateway)   |
+| まだ仮想ネットワークがない     |  次のものを作成します。<ol><li><a href="tutorial-configure-networking.md#create-a-virtual-network">仮想ネットワーク</a></li><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">仮想ネットワーク ゲートウェイ</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">ExpressRoute をゲートウェイに接続する</a></li></ol>        |
+| ゲートウェイ サブネットを **含まない** 仮想ネットワークが既に存在する   | 次のものを作成します。 <ol><li><a href="../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet">GatewaySubnet</a></li><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">仮想ネットワーク ゲートウェイ</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">ExpressRoute をゲートウェイに接続する</a></li></ol>          |
+| ゲートウェイ サブネットを **含んだ** 仮想ネットワークが既に存在する | 次のものを作成します。 <ol><li><a href="tutorial-configure-networking.md#create-a-virtual-network-gateway">仮想ネットワーク ゲートウェイ</a></li><li><a href="tutorial-configure-networking.md#connect-expressroute-to-the-virtual-network-gateway">ExpressRoute をゲートウェイに接続する</a></li></ol>    |
 
 
 ### <a name="use-an-existing-virtual-network-gateway"></a>既存の仮想ネットワーク ゲートウェイを使用する
@@ -59,15 +64,18 @@ ExpressRoute の終点となる Azure Virtual Network と Azure VMware Solution 
 1. Azure VMware Solution の ExpressRoute の終点となる Azure Virtual Network 内にある[仮想マシン](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)を使用します (「[手順 3. ExpressRoute を使用して Azure Virtual Network に接続する](#step-3-connect-to-azure-virtual-network-with-expressroute)」を参照)。  
 
    1. Azure [portal](https://portal.azure.com) にログインします。
-   2. 実行状態の VM に移動し、 **[設定]** の **[ネットワーク]** を選択して、ネットワーク インターフェイス リソースを選択します。
-      ![ネットワーク インターフェイスを表示する](../virtual-network/media/diagnose-network-routing-problem/view-nics.png)
-   4. 左側で、**[Effective routes]\(有効なルート\)** を選択します。 デプロイ フェーズで入力した `/22` CIDR ブロックの範囲内に含まれるアドレス プレフィックスが一覧表示されます。
+
+   1. 実行状態の VM に移動し、 **[設定]** の **[ネットワーク]** を選択して、ネットワーク インターフェイス リソースを選択します。
+
+      :::image type="content" source="../virtual-network/media/diagnose-network-routing-problem/view-nics.png" alt-text="仮想ネットワークのインターフェイス設定を示すスクリーンショット。":::
+
+   1. 左側で、**[Effective routes]\(有効なルート\)** を選択します。 デプロイ フェーズで入力した `/22` CIDR ブロックの範囲内に含まれるアドレス プレフィックスが一覧表示されます。
 
 1. vCenter と NSX-T Manager の両方にログインしたい場合は、Web ブラウザーを開いて、ネットワーク ルートの検証に使用したものと同じ仮想マシンにログインします。  
 
    Azure portal で、vCenter および NSX-T Manager コンソールの IP アドレスと資格情報を識別できます。  プライベート クラウドを選択し、 **[管理]**  >  **[ID]** を選択します。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="プライベート クラウドの vCenter および NSX Manager の URL と資格情報のスクリーンショット。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="プライベート クラウドの vCenter および NSX Manager の URL と資格情報を示すスクリーンショット。" border="true":::
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -2,14 +2,14 @@
 title: チュートリアル - コンテナー イメージのクイック ビルド
 description: このチュートリアルでは、Azure Container Registry Task (ACR Task) 使用して Azure で Docker コンテナー イメージをビルドして、Azure Container Instances にデプロイする方法を説明します。
 ms.topic: tutorial
-ms.date: 11/24/2020
+ms.date: 07/20/2021
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 282e6ea56835fba679510a29af936c1fbcb3ead2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be722812c5d3991da6bbc2458770798ded2039d4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775351"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448917"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする
 
@@ -84,6 +84,8 @@ az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --loca
 ```
 
 レジストリができたので、ACR Task を使用して、サンプル コードからコンテナー イメージをビルドします。 [az acr build][az-acr-build] コマンドを実行して、*クイック タスク* を実行します。
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -184,7 +186,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 今度は、サービス プリンシパルを作成し、その資格情報をキー コンテナーに格納する必要があります。
 
-[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドを使用してサービス プリンシパルを作成し、[az keyvault secret set][az-keyvault-secret-set] を使用して資格情報コンテナーにサービス プリンシパルの **パスワード** を格納します。
+[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドを使用してサービス プリンシパルを作成し、[az keyvault secret set][az-keyvault-secret-set] を使用して資格情報コンテナーにサービス プリンシパルの **パスワード** を格納します。 これらのコマンドには、Azure CLI バージョン **2.25.0** 以降を使用します。
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -208,7 +210,7 @@ az keyvault secret set \
 az keyvault secret set \
     --vault-name $AKV_NAME \
     --name $ACR_NAME-pull-usr \
-    --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
+    --value $(az ad sp list --display-name $ACR_NAME-pull --query [].appId --output tsv)
 ```
 
 Azure キー コンテナーを作成してに 2 つのシークレットを格納します。

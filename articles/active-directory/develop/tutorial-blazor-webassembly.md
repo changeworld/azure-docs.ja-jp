@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7a095cee6b2af93358b0e76c39cfc0c04ad454fa
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ae8016251926e8afab10f1bccee8f53e204c7a7a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408049"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461110"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
@@ -44,12 +44,14 @@ ms.locfileid: "111408049"
 
 登録されたら、 **[管理]** で、 **[認証]**  >  **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** を選択します。 **[アクセス トークン]** と **[ID トークン]** を選択し、 **[保存]** を選択します。
 
+> 注: .NET 6 以降を使用している場合、暗黙的な許可を使用する必要はありません。 最新のテンプレートでは、MSAL Browser 2.0 を使用し、PKCE で Auth Code Flow をサポートしています。
+
 ## <a name="create-the-app-using-the-net-core-cli"></a>.NET Core CLI を使用してアプリを作成する
 
 アプリを作成するには、最新の Blazor テンプレートが必要です。 .NET Core CLI の場合、これらは次のコマンドを使用してインストールできます。
 
 ```dotnetcli
-dotnet new -i Microsoft.Identity.Web.ProjectTemplates::1.6.0
+dotnet new -i Microsoft.Identity.Web.ProjectTemplates::1.9.1
 ```
 
 それから、次のコマンドを実行してアプリケーションを作成します。 コマンドのプレースホルダーをアプリの [概要] ページの適切な情報に置き換え、コマンド シェルでコマンドを実行します。 `-o|--output` オプションで指定した出力場所にプロジェクト フォルダーが存在しない場合は作成されて、アプリの名前の一部になります。

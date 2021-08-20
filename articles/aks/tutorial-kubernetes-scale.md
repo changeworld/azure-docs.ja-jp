@@ -3,14 +3,14 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Kubernetes のノードとポッドをスケーリングする方法のほか、ポッドの水平自動スケーリングを導入する方法について説明します。
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
-ms.custom: mvc
-ms.openlocfilehash: a268d39ec514fc7b88b555221ece7dc044ca49ba
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/24/2021
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 0c577a316e5034e4a21599b0806be534c5f6888a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767513"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697789"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -27,7 +27,15 @@ ms.locfileid: "107767513"
 
 これまでのチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化しました。 このイメージを Azure Container Registry にアップロードし、AKS クラスターを作成しました。 その後、AKS クラスターにアプリケーションをデプロイしました。 これらの手順を完了しておらず、順番に進めたい場合は、[チュートリアル 1 - コンテナー イメージを作成する][aks-tutorial-prepare-app]に関するページから開始してください。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 このチュートリアルでは、Azure CLI バージョン 2.0.53 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+このチュートリアルでは、Azure PowerShell バージョン 5.9.0 以降を実行している必要があります。 バージョンを確認するには、`Get-InstalledModule -Name Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell ][azure-powershell-install]のインストールに関するページをご覧ください。
+
+---
 
 ## <a name="manually-scale-pods"></a>ポッドを手動でスケーリングする
 
@@ -67,15 +75,27 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>ポッドを自動スケールする
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Kubernetes は[ポッドの水平自動スケーリング][kubernetes-hpa]をサポートしており、CPU 使用率などの選ばれたメトリックに応じて、デプロイのポッドの数を調整します。 [Metrics Server][metrics-server] は、Kubernetes にリソース使用率を提供するために使用され、AKS クラスター バージョン 1.10 以降に自動的にデプロイされます。 AKS クラスターのバージョンを確認するには、次の例に示すように、[az aks show][az-aks-show] コマンドを使用します。
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Kubernetes は[ポッドの水平自動スケーリング][kubernetes-hpa]をサポートしており、CPU 使用率などの選ばれたメトリックに応じて、デプロイのポッドの数を調整します。 [Metrics Server][metrics-server] は、Kubernetes にリソース使用率を提供するために使用され、AKS クラスター バージョン 1.10 以降に自動的にデプロイされます。 AKS クラスターのバージョンを確認するには、次の例に示すように、[Get-AzAksCluster][get-azakscluster] コマンドレットを使用します。
+
+```azurepowershell
+(Get-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster).KubernetesVersion
+```
+
+---
+
 > [!NOTE]
 > AKS クラスターが *1.10* 未満の場合、Metrics Server は自動的にインストールされません。 Metrics Server のインストール マニフェストは、Metrics Server リリースの `components.yaml` 資産として入手できます。つまり、URL を使用してインストールすることが可能です。 これらの YAML 定義の詳細については、Readme の「[デプロイ][metrics-server-github]」セクションを参照してください。
-> 
+>
 > インストール例: 
 > ```console
 > kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
@@ -152,6 +172,8 @@ Azure Vote アプリの負荷が最低になって数分が経過すると、ポ
 
 次の例では、*myAKSCluster* という名前の Kubernetes クラスターのノードの数を 3 に増やしています。 コマンドが完了するまでに数分かかります。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
@@ -173,6 +195,43 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
     "vnetSubnetId": null
   }
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Get-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster | Set-AzAksCluster -NodeCount 3
+```
+
+クラスターが正常にスケーリングされると、出力は次の例のようになります。
+
+```output
+ProvisioningState       : Succeeded
+MaxAgentPools           : 100
+KubernetesVersion       : 1.19.9
+DnsPrefix               : myAKSCluster
+Fqdn                    : myakscluster-000a0aa0.hcp.eastus.azmk8s.io
+PrivateFQDN             :
+AgentPoolProfiles       : {default}
+WindowsProfile          : Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile
+AddonProfiles           : {}
+NodeResourceGroup       : MC_myresourcegroup_myAKSCluster_eastus
+EnableRBAC              : True
+EnablePodSecurityPolicy :
+NetworkProfile          : Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile
+AadProfile              :
+ApiServerAccessProfile  :
+Identity                :
+LinuxProfile            : Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile
+ServicePrincipalProfile : Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Micros
+                          oft.ContainerService/managedClusters/myAKSCluster
+Name                    : myAKSCluster
+Type                    : Microsoft.ContainerService/ManagedClusters
+Location                : eastus
+Tags                    : {}
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -202,3 +261,5 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 [az-aks-scale]: /cli/azure/aks#az_aks_scale
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az_aks_show
+[azure-powershell-install]: /powershell/azure/install-az-ps
+[get-azakscluster]: /powershell/module/az.aks/get-azakscluster

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: fec8e3c9c0922b0b6137bbf93502663890b8bc8c
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: b62f531c355852dd8a66f8186d4bd73a875e6948
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112991543"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371621"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
@@ -121,7 +121,7 @@ Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機�
 
 ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用する場合は、以下を考慮してください。
 
-* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、新しいルート テーブルを作成する必要があります (Azure portal のハブの [ルート テーブル] セクションにあります)。 Virtual WAN 内のすべてのハブに対して削除手順を実行することを強くお勧めします。
+* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**: Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、新しいルート テーブルを作成する必要があります (Azure portal のハブの [ルート テーブル] セクションにあります)。 Virtual WAN 内のすべてのハブに対して削除手順を実行することを強くお勧めします。
 
 * **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に **アップグレード** します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。 Virtual WAN 内のすべてのハブに対して削除手順を実行することを強くお勧めします。
 
@@ -135,4 +135,6 @@ RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/
 
 ## <a name="next-steps"></a>次のステップ
 
-[Virtual WAN を使用してサイト間接続を作成する](virtual-wan-site-to-site-portal.md)
+- [チュートリアル: Virtual WAN を使用してサイト間接続を作成する](virtual-wan-site-to-site-portal.md)
+- [Learn モジュール: Azure Virtual WAN の概要](/learn/modules/introduction-azure-virtual-wan/)
+

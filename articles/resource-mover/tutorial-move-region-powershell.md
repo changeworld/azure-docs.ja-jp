@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2021
 ms.author: raynew
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3489d7359b7557f0a2305a30ff3d28f05863504d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 865b4e7f93d70b9ba77e773dd3a599e8eed01376
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702255"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467016"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>PowerShell でリソースをリージョン間で移動する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 リソースの移動操作は、Azure portal と PowerShell のいずれを使用しても、ほとんどの場合同じですが、いくつかの例外があります。
 
-**操作** | **PowerShell** | **ポータル**
+**操作** | **ポータル** | **PowerShell**
 --- | --- | ---
 **移動コレクションを作成する** | 移動コレクション (移動しようとしているすべてのリソースの一覧) は、自動的に作成されます。 必要な ID のアクセス許可は、ポータルによってバックエンドで割り当てられます。 | 以下を実行するには、PowerShell コマンドレットを使用します。<br/><br/> - 移動コレクションのリソース グループを作成し、その場所を指定する。<br/><br/> - マネージド ID をコレクションに割り当てる。<br/><br/> - リソースをコレクションに追加する。
 **移動コレクションを削除する** | ポータルでは、移動コレクションを直接削除することはできません。 | 移動コレクションを削除するには、PowerShell コマンドレットを使用します。

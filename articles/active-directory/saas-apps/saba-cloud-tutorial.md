@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 7622b3bb50139ddfdce53bb7e765db5aac90eff3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 79f0f24d1328181557b2fec1e867c36ebcde57f0
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766063"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-cloud"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Saba Cloud の統合
 
@@ -51,7 +51,6 @@ Azure AD への Saba Cloud の統合を構成するには、ギャラリーか�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Saba Cloud**」と入力します。
 1. 結果のパネルから **[Saba Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-saba-cloud"></a>Saba Cloud の Azure AD SSO の構成とテスト
 
@@ -135,7 +134,16 @@ Saba Cloud に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-saba-cloud-sso"></a>Saba Cloud の SSO の構成
 
-1. Saba Cloud 企業サイトに管理者としてサインインします。
+1. Saba Cloud 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Saba Cloud のセットアップ]** をクリックすると、Saba Cloud アプリケーションに移動します。 そこから、管理者の資格情報を入力して Saba Cloud にサインインします。 ブラウザー拡張機能によって、アプリケーションが自動的に構成され、手順 3. から 9. が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. Saba Cloud を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Saba Cloud 企業サイトに管理者としてサインインします。
+
 1. **メニュー** アイコンをクリックし、 **[Admin]\(管理\)** をクリックして、 **[System Admin]\(システム管理\)** タブを選択します。
 
     ![システム管理のスクリーンショット](./media/saba-cloud-tutorial/system.png)

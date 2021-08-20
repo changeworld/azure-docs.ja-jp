@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:Event Grid と Azure CLI を使用してカスタム イベントを送信する
 description: クイック スタート Azure Event Grid と Azure CLI を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。
-ms.date: 04/22/2021
+ms.date: 07/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2790cead3455a24a3ec75c677138e6e3eeb4efa2
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 0217887821d6fe905db92bfdd5e999d46f77839d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897939"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457542"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>クイック スタート:Azure CLI と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
@@ -43,7 +43,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>カスタム トピックの作成
 
-Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 次の例では、リソース グループにカスタム トピックを作成します。 `<your-topic-name>` は、トピックの一意の名前に置き換えてください。 カスタム トピック名は、DNS エントリの一部であるため、一意である必要があります。 さらに、必ず 3 - 50 文字以内で、a - z、A - Z、0 - 9、および "-" のみを含めます。
+Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 次の例では、Azure Cloud Shell の Bash を利用し、リソース グループにカスタム トピックが作成されます。 `<your-topic-name>` は、トピックの一意の名前に置き換えてください。 カスタム トピック名は、DNS エントリの一部であるため、一意である必要があります。 さらに、必ず 3 - 50 文字以内で、a - z、A - Z、0 - 9、および "-" のみを含めます。
 
 ```azurecli-interactive
 topicname=<your-topic-name>

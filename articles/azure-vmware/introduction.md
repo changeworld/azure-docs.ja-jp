@@ -3,12 +3,12 @@ title: はじめに
 description: Azure で VMware ベースのワークロードをデプロイして管理するための、Azure VMware Solution の機能とメリットについて学習します。 Azure VMware Solution SLA では、Azure VMware 管理ツール (vCenter Server および NSX Manager) が 99.9% 以上の時間において使用可能となることを保証します。
 ms.topic: overview
 ms.date: 04/20/2021
-ms.openlocfilehash: 8a75038d9552e62b1bc67265ff2965fea9d8b8d6
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 79739f230b057b030da7a90501e9fb3fb2630eba
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950876"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433582"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Solution とは
 
@@ -18,7 +18,7 @@ Azure VMware Solution は、VMware によって検証されたソリューショ
 
 次の図は、Azure、Azure サービス、オンプレミス環境におけるプライベート クラウドと VNet の隣接関係を示しています。 プライベート クラウドから Azure サービスまたは VNet へのネットワーク アクセスにより、SLA に基づく Azure サービス エンドポイントの統合が提供されます。 ExpressRoute Global Reach では、オンプレミス環境を Azure VMware Solution のプライベート クラウドに接続します。 
 
-![Azure とオンプレミスへの Azure VMware Solution プライベート クラウドの隣接性の画像](./media/adjacency-overview-drawing-final.png)
+:::image type="content" source="media/adjacency-overview-drawing-final.png" alt-text="Azure とオンプレミスへの Azure VMware Solution プライベート クラウドの隣接性の図。" border="false":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>ホスト、クラスター、およびプライベート クラウド
 
@@ -66,5 +66,4 @@ Azure VMware Solution における監視パターンは、IaaS プラットフ�
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
-
 

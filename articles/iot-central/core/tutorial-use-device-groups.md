@@ -7,12 +7,12 @@ ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ce02c86fff5ccece1528e0d08413acb5c0a7f9c6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: da7c1c0268f04b183ba48491bd5f0d0b01e15b41
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743383"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224111"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>チュートリアル:デバイス グループを使用してデバイス テレメトリを分析する
 
@@ -28,12 +28,50 @@ ms.locfileid: "108743383"
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」と「[IoT Central アプリケーションにシミュレートされたデバイスを追加する](./quick-create-simulated-device.md)」の各クイックスタートを完了して、作業に使用する **Sensor Controller** デバイス テンプレートを作成しておく必要があります。
+このチュートリアルを完了するには、以下が必要になります。
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+## <a name="add-and-customize-a-device-template"></a>デバイス テンプレートを追加およびカスタマイズする
+
+デバイス カタログからデバイス テンプレートを追加します。 このチュートリアルでは、**ESP32-Azure IoT Kit** デバイス テンプレートを使用します。
+
+1. 新しいデバイス テンプレートを追加するには、 **[デバイス テンプレート]** ページで **[+ 新規]** を選択します。
+
+1. **[種類の選択]** ページの **[Use a preconfigured device template]\(構成済みのデバイス テンプレートを使用する\)** セクションで、 **[ESP32-Azure IoT Kit]** タイルが表示されるまで下にスクロールします。
+
+1. **[ESP32-Azure IoT Kit]** タイルを選択し、 **[Next: Review]\(次へ: 確認\)** をクリックします。
+
+1. **[Review]\(レビュー\)** ページで、 **[Create]\(作成\)** を選択します。
+
+作成したテンプレートの名前は **Sensor Controller** です。 このモデルには、**Sensor Controller**、**SensorTemp**、**Device Information interface** などのコンポーネントが含まれています。 コンポーネントによって、ESP32 デバイスの機能が定義されます。 機能には、テレメトリ、プロパティ、コマンドが含まれます。
+
+**Sensor Controller** デバイス テンプレートに 2 つのクラウド プロパティを追加します。
+
+1. **[クラウド プロパティ]** 、 **[+ クラウド プロパティの追加]** の順に選択します。 下表の情報に従って、デバイス テンプレートに 2 つのクラウド プロパティを追加します。
+
+    | 表示名      | セマンティックの種類 | スキーマ |
+    | ----------------- | ------------- | ------ |
+    | Last Service Date | なし          | Date   |
+    | Customer Name     | なし          | String |
+
+1. **[保存]** を選択して変更を保存します。
+
+デバイスを管理するためにデバイス テンプレートに新しいフォームを追加します。
+
+1. **[ビュー]** ノードを選択し、 **[デバイスとクラウドのデータの編集]** タイルを選択して新しいビューを追加します。
+
+1. フォーム名を「**デバイスの管理**」に変更します。
+
+1. **[顧客名]** および **[Last Service Date]\(前回点検日\)** クラウド プロパティと、 **[Target Temperature]\(目標温度\)** プロパティを選択します。 次に、 **[セクションの追加]** を選択します。
+
+1. **[保存]** を選択して新しいフォームを保存します。
+
+次にデバイス テンプレートを発行します。
 
 ## <a name="create-simulated-devices"></a>シミュレートされたデバイスを作成する
 
 デバイス グループを作成する前に、このチュートリアルで使用する **Sensor Controller** デバイス テンプレートに基づいてシミュレートされたデバイスを少なくとも 5 つ追加します。
-
 
 :::image type="content" source="media/tutorial-use-device-groups/simulated-devices.png" alt-text="5 つのシミュレートされたセンサー コントローラー デバイスを示すスクリーンショット":::
 
@@ -73,13 +111,17 @@ ms.locfileid: "108743383"
 
     :::image type="content" source="media/tutorial-use-device-groups/create-analysis.png" alt-text="分析用に選択されたテレメトリの種類を示すスクリーンショット":::
 
-    テレメトリの種類の横にある歯車アイコンを使用して、集計の種類を選択します。 既定値は、 **[平均]** です。 **[グループ化]** を使用して、集計データの表示方法を変更します。 たとえば、デバイス ID で分割する場合、 **[分析]** を選択するとデバイスごとにプロットが表示されます。
+    テレメトリの種類の横にある省略記号アイコンを使用して、集計の種類を選択します。 既定値は、 **[平均]** です。 **[グループ化]** を使用して、集計データの表示方法を変更します。 たとえば、デバイス ID で分割する場合、 **[分析]** を選択するとデバイスごとにプロットが表示されます。
 
 1. 平均テレメトリ値を表示するには、 **[分析]** を選択します。
 
     :::image type="content" source="media/tutorial-use-device-groups/view-analysis.png" alt-text="すべての Contoso デバイスの平均値を示すスクリーンショット":::
 
-    ビューをカスタマイズしたり、表示される期間を変更したり、データをエクスポートしたりすることができます。
+    ビューをカスタマイズしたり、表示される期間を変更したり、CSV としてデータをエクスポートしたり、テーブルとしてデータを表示したりできます。
+
+    :::image type="content" source="media/tutorial-use-device-groups/export-data.png" alt-text="Contoso デバイスのデータをエクスポートする方法を示すスクリーンショット":::
+
+分析に関する詳細については、「[分析を使用してデバイス データを分析する方法](howto-create-analytics.md)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

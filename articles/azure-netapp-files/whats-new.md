@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/14/2021
+ms.date: 07/12/2021
 ms.author: b-juche
-ms.openlocfilehash: 768b2f4a9b993e4824fbcebe7a96d7f62a90c934
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: a50b8eee5a45fdd496aa0e063272c1c32cf0e5a7
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078314"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664451"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
@@ -29,15 +29,13 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
 * [Azure NetApp Files ストレージ サービス アドオン](storage-service-add-ons.md)
 
-    新しい Azure NetApp Files の **[Storage service add-ons]\(ストレージ サービス アドオン\)** メニュー オプションは、Azure NetApp Files ストレージ サービスでサポートされているサードパーティ製エコシステム アドオンのための Azure portal の "起動パッド" となるものです。 この新しいポータル メニュー オプションを使用すると、アドオン タイルをクリックしてランディング ページを開き、アドオンにすばやくアクセスすることができます。  
+    新しい Azure NetApp Files の **[Storage service add-ons]\(ストレージ サービス アドオン\)** メニュー オプションは、Azure NetApp Files ストレージ サービスで利用できるサードパーティ製エコシステム アドオンのための Azure portal の "起動パッド" となるものです。 この新しいポータル メニュー オプションを使用すると、アドオン タイルをクリックしてランディング ページを開き、アドオンにすばやくアクセスすることができます。  
 
     **NetApp アドオン** は、 **[Storage service add-ons]\(ストレージ サービス アドオン\)** に導入されたアドオンの最初のカテゴリです。 ここから **[NetApp Cloud Compliance]** にアクセスできます。 **[NetApp Cloud Compliance]** タイルをクリックすると、新しいブラウザーが開き、アドオンのインストール ページに移動します。 
 
-* 機能は一般提供 (GA) になりました   
+* [手動 QoS 容量プール](manual-qos-capacity-pool-introduction.md)が一般提供 (GA) になりました   
 
-    次の Azure NetApp Files 機能が一般提供になりました。 この機能を使用する前に登録する必要はなくなりました。
-    * [スナップショット ポリシー](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
-    * [手動 QoS 容量プール](manual-qos-capacity-pool-introduction.md)
+    手動 QoS 容量プール機能が一般提供になりました。 この機能を使用する前に登録する必要がなくなりました。 
 
 * [1 つのサブスクリプションあたり、リージョンごとに 1 つの Active Directory に対する複数アカウントの共有 AD サポート](create-active-directory-connections.md#shared_ad) (プレビュー)   
 

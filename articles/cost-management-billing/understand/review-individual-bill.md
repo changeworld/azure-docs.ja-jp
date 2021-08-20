@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 013a59c703d5275278e905314357f32acc211f93
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a8eb9ec2b71495011dfa7ebe9dbf1dcf8cd5d19e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067764"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449419"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>チュートリアル:個々の Azure サブスクリプションの課金書を確認する
 
@@ -103,6 +103,8 @@ Azure portal で、検索ボックスに「*サブスクリプション*」と�
 ![請求書の使用料金](./media/review-individual-bill/invoice-usage-charges.png)
 
 CSV 使用状況ファイルで、請求書に示されている対応リソースの *MeterName* によるフィルター処理を行います。 次に、列の項目の "*コスト*" の値を合計します。 次の例では、請求書の同じ品目に対応する測定名 (P10 ディスク) に焦点を当てています。
+
+自分の予約購入料金を調整するには、自分の CSV 使用状況ファイルで、*ChargeType* を使用して購入としてフィルター処理すると、その月のすべての予約購入料金が表示されます。 これらの料金は、使用状況ファイルの *MeterName* と *MeterSubCategory* を自分の請求書の Resource と Type とそれぞれ比較することで比較できます。
 
 ![MeterName の値が合計された使用状況ファイル](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 

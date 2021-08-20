@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a2d8a215dfc34073783a5d8a6233ec8dbae4ec17
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 4f5cd479d69a14974f032b7ec047881826bfd79b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218874"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438226"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>チュートリアル: Windows コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -180,6 +180,9 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 1. Azure コンテナー レジストリからコピーした **Username** と **Password** の値を追加します。
 
 1. 変更内容を .env ファイルに保存します。
+
+>[!NOTE]
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
 
 ### <a name="review-the-sample-code"></a>サンプル コードを確認する
 

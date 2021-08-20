@@ -2,24 +2,22 @@
 title: クイックスタート - Azure portal で Azure Confidential Computing 仮想マシンを作成する
 description: Azure portal でコンフィデンシャル コンピューティング仮想マシンをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
 author: JBCook
-ms.author: JenCook
-ms.date: 04/23/2020
-ms.topic: quickstart
 ms.service: virtual-machines
-ms.subservice: confidential-computing
+ms.subservice: workloads
 ms.workload: infrastructure
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 1ae6631c3f6ee71d7a09832956c7e687ceca22b6
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.topic: quickstart
+ms.date: 06/13/2021
+ms.author: JenCook
+ms.openlocfilehash: 8fb93b7697e2dd9077995572fc91b6e82a7d8512
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819054"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107220"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Confidential Computing VM をデプロイする
 
-Intel SGX を使用した仮想マシン (VM) を Azure portal から作成して、Azure Confidential Computing を体験してみましょう。 さらに、Open Enclave Software Development Kit (SDK) をインストールして開発環境をセットアップします。 
+Intel SGX を使用した仮想マシン (VM) を Azure portal から作成して、Azure Confidential Computing を体験してみましょう。 これで、エンクレーブ アプリケーションを実行できるようになります。
 
 このチュートリアルは、カスタム構成でのコンフィデンシャル コンピューティング仮想マシンのデプロイに関心がある読者にお勧めします。 それ以外の方は、[Microsoft コマーシャル マーケットプレース向けコンフィデンシャル コンピューティング仮想マシンのデプロイ手順](quick-create-marketplace.md)に従うことをお勧めします。
 
@@ -62,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 1. 仮想マシンに使用するオペレーティング システム イメージを構成します。
 
-    * **イメージを選択する**: このチュートリアルでは、Ubuntu 18.04 LTS を選択します。 Windows Server 2019、Windows Server 2016、Ubuntu 20.04 LTS を選択することもできます。 そのように選択した場合は、このチュートリアルの中で適宜、対応する指示に従ってください。
+    * **イメージを選択する**: このチュートリアルでは、Ubuntu 18.04 LTS を選択します。 Windows Server 2019、Windows Server 2016、Ubuntu 16.04 LTS を選択することもできます。 そのように選択した場合は、このチュートリアルの中で適宜、対応する指示に従ってください。
     
     * **Gen 2 のイメージに切り替える**: コンフィデンシャル コンピューティング仮想マシンを実行できるのは、[Generation 2](../virtual-machines/generation-2.md) のイメージのみです。 選択したイメージが Gen 2 イメージであることを確認してください。 上の **[Advanced]\(詳細\)** タブをクリックして、仮想マシンを構成します。 下へスクロールして、"VM Generation (VM の世代)" と書かれたセクションに移動します。 [Gen 2] を選択したら、 **[基本]** タブに戻ります。
     
@@ -79,7 +77,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     ![DCsv2 シリーズ VM](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > **DC1s_v2**、**DC2s_v2**、**DC4s_V2**、**DC8_v2** の各サイズが表示されます。 現在、Intel SGX コンフィデンシャル コンピューティングがサポートされているのは、これらの仮想マシン サイズのみです。 [詳細については、こちらを参照してください](virtual-machine-solutions.md)。
+    > **DC1s_v2**、**DC2s_v2**、**DC4s_V2**、**DC8_v2** の各サイズが表示されます。 現在、コンフィデンシャル コンピューティングがサポートされているのは、これらの仮想マシン サイズのみです。 [詳細については、こちらを参照してください](virtual-machine-solutions.md)。
 
 1. 次の情報を入力します。
 
@@ -94,7 +92,10 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     
     * **パスワード**:該当する場合は、認証のパスワードを入力します。
 
-    * **[パブリック受信ポート]** : **[選択したポートを許可する]** を選択し、 **[パブリック受信ポートを選択]** ボックスの一覧で **[SSH (22)]** と **[HTTP (80)]** を選択します。 Windows VM をデプロイしている場合は、 **[HTTP (80)]** と **[RDP (3389)]** を選択してください。 このクイックスタートでは、VM に接続し、Open Enclave SDK の構成を行うために、この手順が必要となります。 
+    * **[パブリック受信ポート]** : **[選択したポートを許可する]** を選択し、 **[パブリック受信ポートを選択]** ボックスの一覧で **[SSH (22)]** と **[HTTP (80)]** を選択します。 Windows VM をデプロイしている場合は、 **[HTTP (80)]** と **[RDP (3389)]** を選択してください。  
+
+    >[!Note]
+    > 運用環境のデプロイでは、RDP または SSH ポートの許可は推奨されません。  
 
      ![受信ポート](media/quick-create-portal/inbound-port-virtual-machine.png)
 
@@ -146,58 +147,16 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
 > [!NOTE]
 > サーバーのホストキーがレジストリにキャッシュされていないことを示す PuTTY のセキュリティ アラートが表示された場合は、次のオプションから選択します。 このホストを信頼する場合は、 **[Yes]\(はい\)** を選択して PuTTy のキャッシュにキーを追加し、接続を続行します。 キーをキャッシュに追加せずに接続を 1 回だけ実行する場合は、 **[No]\(いいえ\)** を選択します。 このホストを信頼しない場合は、 **[Cancel]\(キャンセル\)** を選択して接続を破棄します。
 
-## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Open Enclave SDK (OE SDK) をインストールする <a id="Install"></a>
+## <a name="intel-sgx-drivers"></a>Intel SGX ドライバー
+
+> [!NOTE]
+> Intel SGX ドライバーは、既に Ubuntu & Windows ギャラリー イメージの一部として含まれています。 ドライバーを特別にインストールする必要はありません。 オプションで、[Intel SGX DCAP ドライバーの一覧](https://01.org/intel-software-guard-extensions/downloads)にアクセスして、イメージに含まれている既存のドライバーを更新することもできます。
+
+## <a name="optional-testing-enclave-apps-built-with-open-enclave-sdk-oe-sdk"></a>オプション: Open Enclave SDK (OE SDK) を使用して構築されたエンクレーブ アプリのテスト <a id="Install"></a>
 
 Ubuntu 18.04 LTS Gen 2 イメージが実行されている DCsv2 シリーズ仮想マシンに対し、手順に従って [OE SDK](https://github.com/openenclave/openenclave) をインストールします。 
 
 仮想マシンが Ubuntu 18.04 LTS Gen 2 で実行されている場合は、[Ubuntu 18.04 のインストール手順](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)に従う必要があります。
-
-#### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1.Intel と Microsoft APT のリポジトリを構成する
-
-```bash
-echo 'deb [arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/intel-sgx.list
-wget -qO - https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo apt-key add -
-
-echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | sudo tee /etc/apt/sources.list.d/llvm-toolchain-bionic-7.list
-wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-
-echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main" | sudo tee /etc/apt/sources.list.d/msprod.list
-wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-```
-
-#### <a name="2-install-the-intel-sgx-dcap-driver"></a>2.Intel SGX DCAP ドライバーをインストールする
-Ubuntu のバージョンによっては、既に Intel SGX ドライバーがインストールされている場合があります。 次のコマンドを使用して確認します。 
-
-```bash
-dmesg | grep -i sgx
-[  106.775199] sgx: intel_sgx: Intel SGX DCAP Driver {version}
-``` 
-出力が空白の場合は、ドライバーをインストールします。 
-
-```bash
-sudo apt update
-sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.7/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.35.bin -O sgx_linux_x64_driver.bin
-chmod +x sgx_linux_x64_driver.bin
-sudo ./sgx_linux_x64_driver.bin
-```
-
-> [!WARNING]
-> [Intel の SGX サイト](https://01.org/intel-software-guard-extensions/downloads)から入手できる最新の Intel SGX DCAP ドライバーを使用してください。
-
-#### <a name="3-install-the-intel-and-open-enclave-packages-and-dependencies"></a>3.Intel と Open Enclave のパッケージと依存関係をインストールする
-
-
-```bash
-sudo apt -y install clang-8 libssl-dev gdb libsgx-enclave-common libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
-```
-
-> [!NOTE] 
-> Azure でリモート構成証明を実行するために必要な [az-dcap-client](https://github.com/microsoft/azure-dcap-client) パッケージも、この手順でインストールします。
-
-#### <a name="4-verify-the-open-enclave-sdk-install"></a>4.**Open Enclave SDK のインストールを確認する**
-
-インストールした SDK の確認と使用については、GitHub で [Open Enclave SDK の使用](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/Linux_using_oe_sdk.md)に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 05/19/2021
 ms.author: aahi
-ms.openlocfilehash: e8ce559b180169468a5c53e5aa1d742dd4cdfc83
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a1c093f1933da96ec866280cf3583162891d5068
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450877"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550266"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 
@@ -45,7 +45,7 @@ Microsoft Power BI Desktop は、データへの接続、データの変換、�
 開始するには、Power BI Desktop を開き、[前提条件](#Prerequisites)でダウンロードしたコンマ区切り (CSV) ファイルの `FabrikamComments.csv` を読み込みます。 このファイルは、架空の小規模な会社のサポート フォーラムの 1 日分の仮想的なアクティビティを表しています。
 
 > [!NOTE]
-> Power BI では、Facebook や SQL Database など、さまざまなソースのデータを使用できます。 [Facebook と Power BI の統合](https://powerbi.microsoft.com/integrations/facebook/)と [SQL Server と Power BI の統合](https://powerbi.microsoft.com/integrations/sql-server/)に関するページを参照してください。
+> Power BI では、SQL Database など、さまざまな Web ベース ソースのデータを使用できます。 詳細については [Power Query ドキュメント](/power-query/connectors/)を参照してください。
 
 Power BI Desktop のメイン ウィンドウで、 **[ホーム]** リボンを選択します。 リボンの **[外部データ]** グループで、 **[データの取得]** ドロップダウン メニューを開き、 **[テキスト/CSV]** を選択します。
 
@@ -89,7 +89,7 @@ Power BI Desktop で、 **[ホーム]** リボンを選択します。 **[外部
 ## <a name="understand-the-api"></a>API を理解する
 <a name="UnderstandingAPI"></a>
 
-Text Analytics サービスの [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/operations/KeyPhrases) は、HTTP 要求ごとに最大 1,000 個のテキスト ドキュメントを処理できます。 Power BI では一度に 1 レコードずつ処理する方が好まれるため、このチュートリアルでは、API の各呼び出しには 1 つのドキュメントのみが含まれます。 Key Phrases API では、処理されるドキュメントごとに次のフィールドが必要です。
+Text Analytics サービスの [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-1/operations/KeyPhrases) は、HTTP 要求ごとに最大 1,000 個のテキスト ドキュメントを処理できます。 Power BI では一度に 1 レコードずつ処理する方が好まれるため、このチュートリアルでは、API の各呼び出しには 1 つのドキュメントのみが含まれます。 Key Phrases API では、処理されるドキュメントごとに次のフィールドが必要です。
 
 | フィールド | 説明 |
 | - | - |
@@ -225,7 +225,7 @@ Microsoft Azure で提供されている Cognitive Services の 1 つである T
 // Returns the sentiment label of the text, for example, positive, negative or mixed.
 (text) => let
     apikey = "YOUR_API_KEY_HERE",
-    endpoint = "<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.1-preview.5/sentiment",
+    endpoint = "<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.1/sentiment",
     jsontext = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody = Text.ToBinary(jsonbody),
@@ -242,7 +242,7 @@ Microsoft Azure で提供されている Cognitive Services の 1 つである T
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -255,7 +255,7 @@ Microsoft Azure で提供されている Cognitive Services の 1 つである T
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -274,7 +274,7 @@ Microsoft Azure で提供されている Cognitive Services の 1 つである T
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.0/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v3.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -291,7 +291,7 @@ in  keyphrases
 Text Analytics サービス、Power Query M 式言語、または Power BI の詳細について学習します。
 
 > [!div class="nextstepaction"]
-> [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
+> [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1)
 
 > [!div class="nextstepaction"]
 > [Power Query M リファレンス](/powerquery-m/power-query-m-reference)
