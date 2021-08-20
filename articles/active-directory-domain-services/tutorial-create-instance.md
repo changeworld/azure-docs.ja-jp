@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/01/2021
 ms.author: justinha
-ms.openlocfilehash: d0386368b0e6e65f35ad408efc2c420aaf8f1986
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 3ff8ffe39a84f9a1eeddd7de01ad8db44f73d52c
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438488"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199180"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを作成して構成する
 
@@ -158,7 +158,7 @@ Azure AD DS でマネージド ドメインのユーザーを認証するため�
 >
 > マネージド ドメインを後から作成した場合、Azure AD にある同期済みの資格情報は再利用できません。パスワード ハッシュを再度保存するには、パスワード ハッシュ同期を再構成する必要があります。 既にドメイン参加済みの VM またはユーザーがすぐに認証を行うことはできません。Azure AD が、新しいマネージド ドメインにパスワード ハッシュを生成して保存する必要があります。
 >
-> 詳細については、[Azure AD DS と Azure AD Connect のパスワード ハッシュ同期プロセス][password-hash-sync-process]に関するセクションを参照してください。
+> [Azure AD Connect クラウド同期は Azure AD DS ではサポートされていません][/azure/active-directory/cloud-sync/what-is-cloud-sync#comparison-between-azure-ad-connect-and-cloud-sync]。 オンプレミスのユーザーがドメインに参加している VM にアクセスできるようにするには、Azure AD Connect を使用して同期されている必要があります。 詳細については、[Azure AD DS と Azure AD Connect のパスワード ハッシュ同期プロセス][password-hash-sync-process]に関するセクションを参照してください。
 
 Azure AD に作成されたユーザー アカウントがクラウド専用のアカウントであるか、オンプレミス ディレクトリとの間で Azure AD Connect を使って同期されたアカウントであるかによって、パスワード ハッシュの生成と保存の手順は異なります。
 

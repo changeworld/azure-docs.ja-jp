@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 4848f698490f6a79f9f1664b0011e5aec465ed81
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f4f5d64dc68644fa29d687992017180050ed4c07
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110163548"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280211"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -31,13 +31,13 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。 キーとリージョンを使用して [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) を作成します。 キーとリージョンのペアを見つけるには、「[キーとリージョンを見つける](../../../overview.md#find-keys-and-region)」ページを参照してください。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) を作成する必要があります。 このクラスには、キーとそれに関連付けられた場所またはリージョン、エンドポイント、ホスト、認証トークンなど、サブスクリプションに関する情報が含まれています。 キーとリージョンを使用して [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) を作成します。 キーと場所またはリージョンのペアを見つけるには、「[キーと場所/リージョンを見つける](../../../overview.md#find-keys-and-locationregion)」ページを参照してください。
 
 ```cpp
 using namespace std;
 using namespace Microsoft::CognitiveServices::Speech;
 
-auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
 ```
 
 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) を初期化するには、他にも次に示すようないくつかの方法があります。
@@ -115,7 +115,7 @@ switch (result->Reason)
             if (cancellation->Reason == CancellationReason::Error) {
                 cout << "CANCELED: ErrorCode= " << (int)cancellation->ErrorCode << std::endl;
                 cout << "CANCELED: ErrorDetails=" << cancellation->ErrorDetails << std::endl;
-                cout << "CANCELED: Did you update the subscription info?" << std::endl;
+                cout << "CANCELED: Did you update the speech key and location/region info?" << std::endl;
             }
         }
         break;
@@ -174,7 +174,7 @@ recognizer->Canceled.Connect([&recognitionEnd](const SpeechRecognitionCanceledEv
         {
             cout << "CANCELED: ErrorCode=" << (int)e.ErrorCode << "\n"
                  << "CANCELED: ErrorDetails=" << e.ErrorDetails << "\n"
-                 << "CANCELED: Did you update the subscription info?" << std::endl;
+                 << "CANCELED: Did you update the speech key and location/region info?" << std::endl;
 
             recognitionEnd.set_value(); // Notify to stop recognition.
         }
@@ -231,7 +231,7 @@ config->SetSpeechRecognitionLanguage("de-DE");
 > [!IMPORTANT]
 > フレーズ リスト機能は、en-US、de-DE、en-AU、en-CA、en-GB、en-IN、es-ES、fr-FR、it-IT、ja-JP、pt-BR、zh-CN の言語で使用できます。
 >
-> 他のロケールの場合や、フレーズの数が多い場合は、精度を向上させるために[カスタム モデルをトレーニングする](../../../custom-speech-overview.md)方が適している可能性があります。
+> フレーズ リスト機能は、数百個以下のフレーズで使用する必要があります。 リストが大きい場合、または現在サポートされていない言語の場合は、精度を向上させるために[カスタム モデルをトレーニングする](../../../custom-speech-overview.md)方が適している可能性があります。
 >
 > カスタム エンドポイントでフレーズ リスト機能を使用しないでください。 代わりに、フレーズを含むカスタム モデルをトレーニングします。
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 25a308f3a162e675b4d0ae3f7a706f6b85a5ce57
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: fbe5fc8d11763f036a9991d3e2fefcd183feadbb
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165814"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280181"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -45,10 +45,10 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。 キーとリージョンを使用して [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成します。 キーとリージョンのペアを見つけるには、「[キーとリージョンを見つける](../../../overview.md#find-keys-and-region)」ページを参照してください。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成する必要があります。 このクラスには、キーとそれに関連付けられた場所またはリージョン、エンドポイント、ホスト、認証トークンなど、サブスクリプションに関する情報が含まれています。 キーと場所またはリージョンを使用して [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成します。 キーと場所またはリージョンのペアを見つけるには、「[キーと場所/リージョンを見つける](../../../overview.md#find-keys-and-locationregion)」ページを参照してください。
 
 ```Python
-speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-key>", region="<paste-your-region>")
+speech_config = speechsdk.SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
 ```
 
 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を初期化するには、他にも次に示すようないくつかの方法があります。
@@ -68,7 +68,7 @@ speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-ke
 import azure.cognitiveservices.speech as speechsdk
 
 def from_mic():
-    speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-key>", region="<paste-your-region>")
+    speech_config = speechsdk.SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
     
     print("Speak into your microphone.")
@@ -88,7 +88,7 @@ from_mic()
 import azure.cognitiveservices.speech as speechsdk
 
 def from_file():
-    speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-key>", region="<paste-your-region>")
+    speech_config = speechsdk.SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
     audio_input = speechsdk.AudioConfig(filename="your_file_name.wav")
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
     
@@ -103,7 +103,7 @@ from_file()
 これまでの例では単に、認識されたテキストを `result.text` から取得していましたが、エラーやその他の応答を処理するためには、結果を処理するなんらかのコードを記述する必要があります。 以下のコードでは、[`result.reason`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason) プロパティを評価したうえで、次の処理を行っています。
 
 * 認識結果を出力します: `speechsdk.ResultReason.RecognizedSpeech`
-* 認識が一致しない場合は、ユーザーに通知します: `speechsdk.ResultReason.NoMatch `
+* 認識が一致しない場合は、ユーザーに通知します: `speechsdk.ResultReason.NoMatch`
 * エラーが検出された場合は、エラー メッセージを出力します: `speechsdk.ResultReason.Canceled`
 
 ```Python
@@ -209,7 +209,7 @@ speech_config.speech_recognition_language="de-DE"
 > [!IMPORTANT]
 > フレーズ リスト機能は、en-US、de-DE、en-AU、en-CA、en-GB、en-IN、es-ES、fr-FR、it-IT、ja-JP、pt-BR、zh-CN の言語で使用できます。
 >
-> 他のロケールの場合や、フレーズの数が多い場合は、精度を向上させるために[カスタム モデルをトレーニングする](../../../custom-speech-overview.md)方が適している可能性があります。
+> フレーズ リスト機能は、数百個以下のフレーズで使用する必要があります。 リストが大きい場合、または現在サポートされていない言語の場合は、精度を向上させるために[カスタム モデルをトレーニングする](../../../custom-speech-overview.md)方が適している可能性があります。
 >
 > カスタム エンドポイントでフレーズ リスト機能を使用しないでください。 代わりに、フレーズを含むカスタム モデルをトレーニングします。
 
