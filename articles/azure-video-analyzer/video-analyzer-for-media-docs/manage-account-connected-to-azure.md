@@ -1,20 +1,19 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) アカウントの管理
-titleSuffix: Azure Video Analyzer for Media
+titleSuffix: Azure Media Services
 description: Azure に接続された Azure Video Analyzer for Media (旧 Video Indexer) アカウントを管理する方法について説明します。
-services: azure-video-analyzer
+services: media-services
 author: Juliako
 manager: femila
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 25d4b5a918fbb307698910f0184231689cb84a75
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: c5acccbb4d7314a6ba462284674ffd1e1fd21ca0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119388"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110386713"
 ---
 # <a name="manage-a-video-analyzer-for-media-account-connected-to-azure"></a>Azure に接続されている Video Analyzer for Media アカウントを管理します。
 

@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5c8ccbb385a72a34107f0ad3f10066c641d7fb46
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 26515528a809b36be8d13d19f7baf99b5b2f897f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112296265"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783305"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Azure App Service でのカスタム コンテナーを使用した継続的配置
 
@@ -24,7 +24,7 @@ ms.locfileid: "112296265"
 
 [Azure portal](https://portal.azure.com)で、App Service アプリの管理ページに移動します。
 
-左側のメニューで、 **[デプロイ センター]**  >  **[設定]** の順にクリックします。 
+左側のメニューで、 **[デプロイ センター]** 、 **[設定]** の順にクリックします。 
 
 ::: zone pivot="container-linux"
 ## <a name="2-choose-deployment-source"></a>2. デプロイ ソースを選択する
@@ -264,6 +264,6 @@ az acr webhook create --name <webhook-name> --registry <registry-name> --resourc
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 * [App Service on Linux での .NET Core Web アプリの作成](quickstart-dotnetcore.md)
 * [クイック スタート: App Service でカスタム コンテナーを実行する](quickstart-custom-container.md)
-* [App Service on Linux の FAQ](faq-app-service-linux.yml)
+* [App Service on Linux の FAQ](faq-app-service-linux.md)
 * [カスタム コンテナーを構成する](configure-custom-container.md)
 * [Azure にデプロイするためのアクション ワークフロー](https://github.com/Azure/actions-workflow-samples)

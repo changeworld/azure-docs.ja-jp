@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24c93d189dd4c11ff5c8c08ad75bd62085dc225a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9f344b0f4dd93b921abc0c1c95c18c54e4486716
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766099"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951895"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -127,14 +127,14 @@ Azure AD パスワード保護 プロキシ サービスには、次の要件が
     * .NET 4.7.2 がまだインストールされていない場合は、[Windows 用の .NET Framework 4.7.2 オフライン インストーラー](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)に関するページにあるインストーラーをダウンロードして実行してください。
 * Azure AD パスワード保護プロキシ サービスがホストされているすべてのマシンを、このプロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 この機能は、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
 * Azure AD パスワード保護プロキシ サービスがホストされているすべてのマシンを、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
-* Azure AD に Azure AD パスワード保護プロキシ サービスとフォレストを登録する "*グローバル管理者*" または "*セキュリティ管理者*" アカウント。
-* [アプリケーション プロキシ環境の設定手順](../app-proxy/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)で指定されている一連のポートと URL に対して、ネットワーク アクセスを有効にする必要があります。
+* 特定のテナントで Azure AD パスワード保護プロキシ サービスを初めて登録する際には、"*全体管理者*" アカウントが必要です。 Azure AD へのプロキシとフォレストの以降の登録では、"*全体管理者*" または "*セキュリティ管理者*" の資格情報があるアカウントを使用できます。
+* [アプリケーション プロキシ環境の設定手順](../app-proxy/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)で指定されている一連のポートと URL に対して、ネットワーク アクセスを有効にする必要があります。 これは、上記の 2 つのエンドポイントに加えて必要となります。
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Microsoft Azure AD Connect エージェント アップデーターの前提条件
 
 Microsoft Azure AD Connect エージェント アップデーター サービスは、Azure AD パスワード保護プロキシ サービスとサイド バイ サイドでインストールされます。 Microsoft Azure AD Connect エージェント アップデーター サービスを機能させるには、追加の構成が必要です。
 
-* お使いの環境で HTTP プロキシ サーバーを使用している場合は、「[既存のオンプレミス プロキシ サーバーと連携する](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)」に明記されているガイドラインに従ってください。
+* お使いの環境で HTTP プロキシ サーバーを使用している場合は、「[既存のオンプレミス プロキシ サーバーと連携する](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md)」に明記されているガイドラインに従ってください。
 * Microsoft Azure AD Connect Agent Updater サービスでは、[TLS 要件](../app-proxy/application-proxy-add-on-premises-application.md#tls-requirements)で指定されている TLS 1.2 の手順も必要です。
 
 > [!WARNING]
@@ -199,7 +199,7 @@ Azure AD パスワード保護プロキシ サービスをインストールす�
 
 1. プロキシ サービスはマシンで実行されていますが、Azure AD と通信するための資格情報を保持していません。 `Register-AzureADPasswordProtectionProxy` コマンドレットを使用して、Azure AD に Azure AD パスワード保護プロキシ サーバーを登録します。
 
-    このコマンドレットを使用するには、Azure テナントの "*グローバル管理者*" または "*セキュリティ管理者*" の資格情報が必要です。 また、このコマンドレットは、ローカル管理者特権を持つアカウントを使って実行する必要があります。
+    特定のテナントでプロキシを初めて登録するときは、このコマンドレットでは "*全体管理者*" の資格情報が必要です。 同じプロキシでも別のプロキシでも、そのテナントでのプロキシの以降の登録では、"*グローバル管理者*" または "*セキュリティ管理者*" の資格情報を使用できます。
 
     このコマンドが 1 回成功すると、次回以降の呼び出しも成功しますが、これ以上は必要はありません。
 

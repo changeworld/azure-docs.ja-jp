@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: b2c6ee6e1bc494f0bef4a04b07115c400c8ce1ec
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 7019a1cde8548083834d467031a09ae0072ee478
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112914051"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460533"
 ---
-# <a name="azure-stack-edge-security-and-data-protection"></a>Azure Stack Edge のセキュリティとデータ保護
+# <a name="azure-stack-edge-pro-fpga-security-and-data-protection"></a>Azure Stack Edge Pro FPGA のセキュリティとデータ保護
 
-セキュリティは、新しいテクノロジを導入している場合、特にそのテクノロジが機密データや独自のデータに対して使用される場合の大きな関心事です。 Azure Stack Edge は、承認されたエンティティのみがデータを表示、変更、または削除できるようにするために役立ちます。
+セキュリティは、新しいテクノロジを導入している場合、特にそのテクノロジが機密データや独自のデータに対して使用される場合の大きな関心事です。 Azure Stack Edge Pro FPGA は、承認されたエンティティのみがデータを表示、変更、または削除できるようにするために役立ちます。
 
-この記事では、各ソリューション コンポーネントや、そこに格納されているデータを保護するのに役立つ Azure Stack Edge のセキュリティ機能について説明します。
+この記事では、ソリューション コンポーネントとそこに格納されているデータを保護するのに役立つ Azure Stack Edge Pro FPGA のセキュリティ機能について説明します。
 
-Azure Stack Edge は、互いに連携する次の 4 つの主なコンポーネントで構成されています。
+Azure Stack Edge Pro FPGA は、互いに連携する次の 4 つの主なコンポーネントで構成されています。
 
 - **Azure でホストされている Azure Stack Edge サービス**。 デバイスの注文を作成し、そのデバイスを構成した後、その注文を完了まで追跡するために使用する管理リソース。
 - **Azure Stack Edge Pro FPGA デバイス**。 ユーザーがオンプレミスのデータを Azure にインポートできるように、ユーザーに発送される転送デバイス。
@@ -34,9 +34,9 @@ Azure Stack Edge サービスは、Azure でホストされる管理サービス
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="azure-stack-edge-device-protection"></a>Azure Stack Edge デバイスの保護
+## <a name="azure-stack-edge-pro-fpga-device-protection"></a>Azure Stack Edge Pro FPGA デバイスの保護
 
-Azure Stack Edge デバイスは、データをローカルで処理し、それを Azure に送信することによってデータを変換するのに役立つオンプレミスのデバイスです。 お客様のデバイスは...
+Azure Stack Edge Pro FPGA デバイスは、データをローカルで処理し、それを Azure に送信することによってデータを変換するのに役立つオンプレミスのデバイスです。 お客様のデバイスは...
 
 - Azure Stack Edge サービスにアクセスするには、アクティブ化キーが必要です。
 - デバイスのパスワードで常に保護されます。
@@ -46,7 +46,7 @@ Azure Stack Edge デバイスは、データをローカルで処理し、それ
 
 ### <a name="protect-the-device-via-activation-key"></a>アクティブ化キーでデバイスを保護する
 
-Azure サブスクリプションで作成した Azure Stack Edge サービスに参加できるのは、承認された Azure Stack Edge デバイスのみです。 デバイスを承認するには、アクティブ化キーを使用して Azure Stack Edge サービスでデバイスをアクティブ化する必要があります。
+Azure サブスクリプションで作成した Azure Stack Edge サービスに参加できるのは、承認された Azure Stack Edge Pro FPGA デバイスのみです。 デバイスを承認するには、アクティブ化キーを使用して Azure Stack Edge サービスでデバイスをアクティブ化する必要があります。
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-activation-key.md)]
 
@@ -54,7 +54,7 @@ Azure サブスクリプションで作成した Azure Stack Edge サービス�
 
 ### <a name="protect-the-device-via-password"></a>パスワードでデバイスを保護する
 
-パスワードにより、承認されたユーザーのみがデータにアクセスできるようになります。 Azure Stack Edge デバイスはロック状態で起動します。
+パスワードにより、承認されたユーザーのみがデータにアクセスできるようになります。 Azure Stack Edge Pro FPGA デバイスはロックされた状態で起動します。
 
 次のようにすることができます。
 

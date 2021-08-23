@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.service: applied-ai-services
   ms.date: 05/28/2021
-  ms.openlocfilehash: fbb8d236f106e318ef0689d787e5f8401f8f6808
-  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+  ms.openlocfilehash: e424501e4b5ce6f6731f093394a6536c332b3cbc
+  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113231050"
+  ms.lasthandoff: 06/02/2021
+  ms.locfileid: "111907768"
 title: Azure Applied AI Services についてよく寄せられる質問
 summary: >
   Azure Applied AI Services の使用に関する一般的な質問への回答を次に示します。
@@ -28,7 +28,7 @@ sections:
 
       - [Form Recognizer による保存データの暗号化](../cognitive-services/form-recognizer/encrypt-data-at-rest.md)
 
-      - [Metrics Advisor による保存データの暗号化](../cognitive-services/metrics-advisor/encryption.md)
+      - [Metrics Advisor による保存データの暗号化](../cognitive-services/metrics-advisor/encryption.md#customer-managed-keys-with-azure-key-vault)
 
       - [Video Analyzer による保存データの暗号化](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
 additionalContent: >-

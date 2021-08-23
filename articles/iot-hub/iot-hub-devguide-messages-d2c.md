@@ -11,12 +11,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: b460c906806cc9c9beb9c9e037d1096feea098a3
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: d7f6030e8d4d2807084d212713df8630f2d7a17a
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114404404"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191725"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -24,7 +24,7 @@ ms.locfileid: "114404404"
 
 メッセージ ルーティングを使用すると、自動化された、スケーラブルで信頼性の高い方法で、デバイスからクラウド サービスにメッセージを送信することができます。 メッセージ ルーティングは、次の目的で使用できます。 
 
-* **デバイスのテレメトリ メッセージだけでなくイベント** (デバイス ライフサイクル イベント、デバイス ツイン変更イベント、デジタル ツイン変更イベント、およびデバイス接続状態イベント) を組み込みのエンドポイントとカスタム エンドポイントに送信する。 [ルーティング エンドポイント](#routing-endpoints)について確認してください。 IoT プラグ アンド プレイ デバイスから送信されるイベントの詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](../iot-develop/concepts-digital-twin.md)」を参照してください。
+* **デバイスのテレメトリ メッセージだけでなくイベント** (デバイス ライフサイクル イベント、デバイス ツイン変更イベント、デジタル ツイン変更イベント、およびデバイス接続状態イベント) を組み込みのエンドポイントとカスタム エンドポイントに送信する。 [ルーティング エンドポイント](#routing-endpoints)について確認してください。 IoT プラグ アンド プレイ デバイスから送信されるイベントの詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](../iot-pnp/concepts-digital-twin.md)」を参照してください。
 
 * リッチ クエリを適用して、**さまざまなエンドポイントにルーティングする前にデータをフィルター処理** する。 メッセージ ルーティングでは、メッセージ プロパティとメッセージ本文に基づいてクエリを実行できるほか、デバイス ツインのタグとプロパティに基づいてクエリを実行することもできます。 [メッセージ ルーティングでクエリ](iot-hub-devguide-routing-query-syntax.md)を使用する方法の詳細について確認してください。
 
@@ -107,7 +107,7 @@ IoT Hub エンドポイントとして使用される Service Bus のキュー�
 
 エンドポイントからメッセージを読み取る方法については、以下のチュートリアルを参照してください。
 
-* [組み込みのエンドポイント](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)からの読み取り
+* [組み込みのエンドポイント](quickstart-send-telemetry-node.md)からの読み取り
 
 * [BLOB ストレージ](../storage/blobs/storage-blob-event-quickstart.md)からの読み取り
 
@@ -126,7 +126,7 @@ Azure portal の [メッセージ ルーティング] ブレードで、フォ�
 
 ## <a name="non-telemetry-events"></a>非テレメトリ イベント
 
-メッセージ ルーティングでは、デバイス テレメトリの他に、デバイス ツイン変更イベント、デバイス ライフサイクル イベント、デバイス ツイン変更イベント、およびデバイス接続状態イベントの送信を有効にすることもできます。 たとえば、データ ソースを **デバイス ツイン変更イベント** に設定してルートを作成した場合、IoT Hub は、デバイス ツインの変更が含まれているメッセージをエンドポイントに送信します。 同様に、データ ソースを **デバイス ライフサイクル イベント** に設定してルートを作成した場合、IoT Hub は、デバイスが削除または作成されたかどうかを示すメッセージを送信します。 [Azure IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)の一部として、開発者は、データ ソースを **デジタル ツイン変更イベント** に設定したルートを作成できます。IoT Hub では、デジタル ツインのプロパティが設定または変更されたとき、デジタル ツインが置き換えられたとき、または基になるデバイス ツインで変更イベントが発生したときに、メッセージを送信します。 最後に、データ ソースを **デバイス接続状態イベント** に設定してルートを作成した場合、IoT Hub は、デバイスが接続または接続解除されたかどうかを示すメッセージを送信します。
+メッセージ ルーティングでは、デバイス テレメトリの他に、デバイス ツイン変更イベント、デバイス ライフサイクル イベント、デバイス ツイン変更イベント、およびデバイス接続状態イベントの送信を有効にすることもできます。 たとえば、データ ソースを **デバイス ツイン変更イベント** に設定してルートを作成した場合、IoT Hub は、デバイス ツインの変更が含まれているメッセージをエンドポイントに送信します。 同様に、データ ソースを **デバイス ライフサイクル イベント** に設定してルートを作成した場合、IoT Hub は、デバイスが削除または作成されたかどうかを示すメッセージを送信します。 [Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)の一部として、開発者は、データ ソースを **デジタル ツイン変更イベント** に設定したルートを作成できます。IoT Hub では、デジタル ツインのプロパティが設定または変更されたとき、デジタル ツインが置き換えられたとき、または基になるデバイス ツインで変更イベントが発生したときに、メッセージを送信します。 最後に、データ ソースを **デバイス接続状態イベント** に設定してルートを作成した場合、IoT Hub は、デバイスが接続または接続解除されたかどうかを示すメッセージを送信します。
 
 
 [IoT Hub は Azure Event Grid とも統合](iot-hub-event-grid.md)されているため、デバイス イベントを発行して、それらのイベントに基づくワークフローのリアルタイムの統合と自動化をサポートできます。 ご自分のシナリオにどれが最適かについては、[メッセージ ルーティングと Event Grid の主な違い](iot-hub-event-grid-routing-comparison.md)に関するページを参照してください。
@@ -167,6 +167,6 @@ REST API の [GetEndpointHealth](/rest/api/iothub/iothubresource/getendpointheal
 
 * メッセージ ルートの作成方法については、[ルートを使用した IoT Hub の device-to-cloud メッセージの処理](tutorial-routing.md)に関するページをご覧ください。
 
-* [device-to-cloud メッセージを送信する方法](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
+* [device-to-cloud メッセージを送信する方法](quickstart-send-telemetry-node.md)
 
 * device-to-cloud メッセージの送信に使用できる SDK については、[Azure IoT SDK](iot-hub-devguide-sdks.md) に関するページを参照してください。

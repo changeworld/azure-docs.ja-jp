@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 9cb46ef11ab7cc86efa0842fe5952b92170aa648
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 966b471efc7fcadbb4207fe94bb11e5333bfb0a0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737404"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095448"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
 Azure Machine Learning コンピューティング インスタンスは、データ サイエンティスト向けのマネージド クラウドベース ワークステーションです。
 
-コンピューティング インスタンスを使用すると、Azure Machine Learning の開発を簡単に開始できると共に、IT 管理者向けの管理機能とエンタープライズ対応機能が提供されます。  
+コンピューティング インスタンスを使用すると、Azure Machine Learning の開発を簡単に開始できると共に、IT 管理者向けの管理機能とエンタープライズ対応機能が提供されます。
 
-コンピューティング インスタンスは、機械学習のためにクラウド内で完全に構成され管理される自分の開発環境として使用します。 また、開発やテストのためのトレーニングや推論のコンピューティング ターゲットとして使用することもできます。  
+コンピューティング インスタンスは、機械学習のためにクラウド内で完全に構成され管理される自分の開発環境として使用します。 また、開発やテストのためのトレーニングや推論のコンピューティング ターゲットとして使用することもできます。
 
 実稼働レベルのモデルのトレーニングの場合は、マルチノード スケーリング機能を備える [Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)を使用してください。 実稼働レベルのモデル デプロイの場合は [Azure Kubernetes Service クラスター](how-to-deploy-azure-kubernetes-service.md)を使用してください。
 
@@ -47,15 +47,16 @@ Azure Machine Learning コンピューティング インスタンスは、デ�
 
 > [!IMPORTANT]
 > この記事で "(プレビュー)" と付記されている項目は、現在、パブリック プレビュー段階です。
-> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure Machine Learning コンピューティング インスタンスを使用すると、ワークスペース内の完全統合型ノートブックでモデルを作成し、トレーニングし、デプロイすることができます。
 
 SSH を必要としないリモート サーバーとしてコンピューティング インスタンスを使用して、[VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) で Jupyter Notebook を実行できます。 [リモート SSH 拡張機能](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/)を使用して、VS Code 統合を有効にすることもできます。
 
-[パッケージをインストール](how-to-access-terminal.md#install-packages)して、コンピューティング インスタンスに[カーネルを追加](how-to-access-terminal.md#add-new-kernels)することができます。  
+[パッケージをインストール](how-to-access-terminal.md#install-packages)して、コンピューティング インスタンスに[カーネルを追加](how-to-access-terminal.md#add-new-kernels)することができます。
 
-コンピューティング インスタンスには、次のツールと環境が既にインストールされています。 
+コンピューティング インスタンスには、次のツールと環境が既にインストールされています。
 
 |一般的なツールと環境|詳細|
 |----|:----:|
@@ -66,7 +67,7 @@ SSH を必要としないリモート サーバーとしてコンピューティ
 |Docker||
 |Nginx||
 |NCCL 2.0 ||
-|Protobuf|| 
+|Protobuf||
 
 |**R** ツールと環境|詳細|
 |----|:----:|
@@ -98,9 +99,9 @@ Python パッケージはすべて、**Python 3.8 - AzureML** 環境にインス
 
 また、最新の Azure Machine Learning サンプルを、ワークスペース ファイル共有の user files ディレクトリの下にある自分のフォルダーに複製することもできます。
 
-小さいファイルの書き込みをネットワーク ドライブに対して行うと、コンピューティング インスタンス自体のローカル ディスクに書き込む場合よりも遅くなる可能性があります。  小さなファイルを多数作成する場合は、コンピューティング インスタンス上に直接配置されているディレクトリ (`/tmp` ディレクトリなど) を使用するようにしてください。 なお、これらのファイルには、他のコンピューティング インスタンスからはアクセスできなくなることにご注意ください。 
+小さいファイルの書き込みをネットワーク ドライブに対して行うと、コンピューティング インスタンス自体のローカル ディスクに書き込む場合よりも遅くなる可能性があります。  小さなファイルを多数作成する場合は、コンピューティング インスタンス上に直接配置されているディレクトリ (`/tmp` ディレクトリなど) を使用するようにしてください。 なお、これらのファイルには、他のコンピューティング インスタンスからはアクセスできなくなることにご注意ください。
 
-ノートブック ファイル共有にトレーニング データを格納しないでください。 一時データにはコンピューティング インスタンスの `/tmp` ディレクトリを使用できます。  ただし、コンピューティング インスタンスの OS ディスクに非常に大きなデータ ファイルを書き込むことは避けてください。 コンピューティング インスタンス上の OS ディスクには 128 GB の容量があります。 また、/mnt にマウントされた一時ディスクに一時的なトレーニング データを格納することもできます。 一時ディスクのサイズは、選択した VM サイズに基づいて構成可能であり、より大きなサイズの VM が選択されている場合は、より大量のデータを格納できます。 また、[データストアとデータセット](concept-azure-machine-learning-architecture.md#datasets-and-datastores)をマウントすることもできます。 
+ノートブック ファイル共有にトレーニング データを格納しないでください。 一時データにはコンピューティング インスタンスの `/tmp` ディレクトリを使用できます。  ただし、コンピューティング インスタンスの OS ディスクに非常に大きなデータ ファイルを書き込むことは避けてください。 コンピューティング インスタンス上の OS ディスクには 128 GB の容量があります。 また、/mnt にマウントされた一時ディスクに一時的なトレーニング データを格納することもできます。 一時ディスクのサイズは、選択した VM サイズに基づいて構成可能であり、より大きなサイズの VM が選択されている場合は、より大量のデータを格納できます。 また、[データストアとデータセット](concept-azure-machine-learning-architecture.md#datasets-and-datastores)をマウントすることもできます。
 
 ## <a name="managing-a-compute-instance"></a>コンピューティング インスタンスの管理
 
@@ -112,27 +113,27 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>コンピューティング インスタンスを作成する
 
-管理者は、 **[ワークスペース内で他のユーザーに代わってコンピューティング インスタンスを作成できます (プレビュー)](how-to-create-manage-compute-instance.md#on-behalf)** 。  
+管理者は、 **[ワークスペース内で他のユーザーに代わってコンピューティング インスタンスを作成できます (プレビュー)](how-to-create-manage-compute-instance.md#on-behalf)** 。
 
 また、コンピューティング インスタンスを自動的にカスタマイズして構成する方法として、 **[セットアップ スクリプト (プレビュー)](how-to-create-manage-compute-instance.md#setup-script)** を使用することもできます。
 
-自分でコンピューティング インスタンスを作成するには、Azure Machine Learning スタジオのワークスペースを使用して、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから[新しいコンピューティング インスタンスを作成](how-to-create-attach-compute-studio.md#compute-instance)します。 
+自分でコンピューティング インスタンスを作成するには、Azure Machine Learning スタジオのワークスペースを使用して、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから [新しいコンピューティング インスタンスを作成](how-to-create-attach-compute-studio.md#compute-instance)します。
 
 インスタンスを作成することもできます
 * [統合ノートブックのエクスペリエンス](tutorial-train-models-with-aml.md#azure)から直接
 * Azure Portal
-* Azure Resource Manager テンプレートから。 テンプレートの例については、[Azure Machine Learning コンピューティング インスタンス テンプレートの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)に関する記事を参照してください。
+* Azure Resource Manager テンプレートから。 テンプレートの例については、[Azure Machine Learning コンピューティング インスタンス テンプレートの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)に関する記事を参照してください。
 * [Azure Machine Learning SDK](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-compute-instance.md) を使用して
 * [Azure Machine Learning 用の CLI 拡張機能](reference-azure-machine-learning-cli.md#computeinstance)から
 
-コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、VM ファミリ クォータ別およびリージョン合計クォータ別に、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。 コンピューティング インスタンスを停止しても、コンピューティング インスタンスを再起動できるように、クォータは解放されません。
+コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、VM ファミリ クォータ別およびリージョン合計クォータ別に、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。 コンピューティング インスタンスを停止しても、コンピューティング インスタンスを再起動できるように、クォータは解放されません。 Sudo シャットダウンを実行し、OS ターミナルを介してコンピューティング インスタンスを停止しないでください。
 
 コンピューティング インスタンスには P10 OS ディスクが付属しています。 一時ディスクの種類は、選択された VM サイズによって異なります。 現在、OS ディスクの種類を変更することはできません。
 
 
 ## <a name="compute-target"></a>コンピューティング ターゲット
 
-コンピューティング インスタンスは、Azure Machine Learning コンピューティング トレーニング クラスターのように、[トレーニング コンピューティング ターゲット](concept-compute-target.md#train)として使用できます。 
+コンピューティング インスタンスは、Azure Machine Learning コンピューティング トレーニング クラスターのように、[トレーニング コンピューティング ターゲット](concept-compute-target.md#train)として使用できます。
 
 コンピューティング インスタンスは、
 * ジョブ キューがあります。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 51908deb8e24ce7106b937450683309046440ae7
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: fdedffff216368857d485c22a0f1afe8861ffc42
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487311"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003568"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Azure Defender for Key Vault の概要
 
@@ -27,7 +27,7 @@ Azure ネイティブの場合は、**Azure Defender for Key Vault** を有効�
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for Key Vault** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
-|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (US Gov、Azure China)|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) National/Sovereign (US Gov、Azure China)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Azure Defender for Key Vault の利点は何ですか?

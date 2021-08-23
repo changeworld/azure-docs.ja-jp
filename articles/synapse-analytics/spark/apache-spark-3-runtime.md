@@ -8,12 +8,12 @@ ms.topic: reference
 ms.subservice: spark
 ms.date: 05/26/2021
 ms.author: midesa
-ms.openlocfilehash: e4071196e1d638e8cadf2ddbd5b45068447bd53a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1a129b7db413f7b4104f2d3f21e11f638ef6ee23
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445421"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579414"
 ---
 # <a name="azure-synapse-runtime-for-apache-spark-30-preview"></a>Azure Synapse Runtime for Apache Spark 3.0 (プレビュー)
 
@@ -1277,5 +1277,5 @@ zipp=0.6.0
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Apache Spark ドキュメント](https://spark.apache.org/docs/3.0.2/)
+- [Apache Spark ドキュメント](https://spark.apache.org/docs/2.4.4/)
 - [Apache Spark の概念](apache-spark-concepts.md)

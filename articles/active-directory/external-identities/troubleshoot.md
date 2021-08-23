@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 04/12/2021
+ms.date: 05/27/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc9424af07125977bc74a62a6bca97b8c10b8da3
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: c971c93d873bb8326b986cfd771ef96b615f2131
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317399"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110612768"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションのトラブルシューティング
 
@@ -27,7 +27,7 @@ ms.locfileid: "108317399"
 
    > [!IMPORTANT]
    > - **2021 年の下半期以降**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
-   > - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   > - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 その準備として、[メールによるワンタイム パスコード認証](one-time-passcode.md)を使用することをお勧めしています。この認証機能は現在一般利用できます。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>外部ユーザーを追加しましたが、グローバル アドレス帳またはユーザー選択ウィンドウに表示されません
 
@@ -39,6 +39,9 @@ SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲス�
 
 この機能は、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この機能は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SPO サイトには影響しません。
 
+## <a name="my-guest-invite-settings-and-domain-restrictions-arent-being-respected-by-sharepoint-onlineonedrive"></a>ゲスト招待の設定とドメインの制限が SharePoint Online/OneDrive に反映されていない
+
+既定では、SharePoint Online と OneDrive には独自の外部ユーザー オプションのセットがあり、Azure AD の設定は使用されません。  これらのアプリケーション間で [Azure AD B2B との SharePoint および OneDrive の統合](/sharepoint/sharepoint-azureb2b-integration-preview)を有効にして、オプションが一貫していることを確認する必要があります。
 ## <a name="invitations-have-been-disabled-for-directory"></a>ディレクトリに対して招待が無効になっています
 
 ユーザーを招待するアクセス許可がないことを通知された場合は、[Azure Active Directory] > [ユーザー設定] > [外部ユーザー] > [Manage external collaboration settings]\(外部コラボレーションの設定の管理\) の順に選択して、自分のユーザー アカウントが外部ユーザーの招待を承認されていることを確認します。
@@ -62,6 +65,14 @@ Azure Active Directory を使用している組織のユーザーを招待して
 フェデレーション認証を使用しているときに、ユーザーが Azure Active Directory に既に存在しない場合は、そのユーザーを招待することはできません。
 
 この問題を解決するには、外部ユーザーの管理者がユーザーのアカウントを Azure Active Directory に同期する必要があります。
+
+## <a name="i-cant-invite-an-email-address-because-of-a-conflict-in-proxyaddresses"></a>proxyAddresses の競合のため、電子メール アドレスを招待できない
+
+これは、ディレクトリ内の別のオブジェクトが proxyAddresses の 1 つと同じ招待された電子メール アドレスを持つ場合に発生します。 この競合を解決するには、[ユーザー](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true) オブジェクトから電子メールを削除し、関連する[連絡先](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)オブジェクトも削除してから、この電子メールを再度招待します。
+
+## <a name="the-guest-user-object-doesnt-have-a-proxyaddress"></a>ゲスト ユーザー オブジェクトに proxyAddress が存在しない
+
+外部ゲスト ユーザーを招待すると、既存の[連絡先オブジェクト](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)と競合する場合があります。 この場合、ゲスト ユーザーは proxyAddress なしで作成されます。 つまり、ユーザーは [Just-In-Time 引き換え](redemption-experience.md#redemption-through-a-direct-link)または[電子メール ワンタイム パスコード認証](one-time-passcode.md#user-experience-for-one-time-passcode-guest-users)を使用して、このアカウントを引き換えに使用することはできません。
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>通常は無効な文字である "\#" は、どのように Azure AD と同期しますか。
 

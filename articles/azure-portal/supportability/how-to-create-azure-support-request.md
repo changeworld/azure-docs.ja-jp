@@ -3,14 +3,13 @@ title: Azure サポート要求を作成する方法
 description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.custom: support-help-page
 ms.date: 05/25/2021
-ms.openlocfilehash: 4e3f54712830406f04f6c0eec5097d693723db1c
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3b38a010fa23605019f1969a80e9f9a3cda467c8
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458775"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496580"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 

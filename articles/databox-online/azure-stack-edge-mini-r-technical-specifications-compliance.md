@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 05/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8f48a007069c243442888f47ed75deb75b271df6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1f57e7f25a9e34a88c9ae279083a2cf1d9be2ff1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759835"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099426"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R の技術仕様
 
@@ -54,7 +54,7 @@ Azure Stack Edge Mini R デバイスには、1 つのデータ ディスクと (
 |    合計容量 (データのみ)              |    1 TB (テラバイト)                                                |
 |    合計の使用可能な容量*                  |    最大 750 GB                                            |
 
-**容量の一部は内部仕様のために予約されています。*
+*容量の一部は内部仕様のために予約されています。*
 
 ## <a name="network"></a>ネットワーク
 
@@ -62,15 +62,11 @@ Azure Stack Edge Mini R デバイスのネットワークに関する仕様は�
 
 |仕様         |値                                                               |
 |----------------------|--------------------------------------------------------------------|
-|ネットワーク インターフェイス    |2 x 10 Gbps SFP+ <br> ローカル UI にはポート 3 とポート 4 として表示されます。     |
-|ネットワーク インターフェイス    |2 x 1 Gbps RJ45 <br> ローカル UI にはポート 1 とポート 2 として表示されます。      |
+|ネットワーク インターフェイス    |2 x 10 Gbps SFP+ <br> ローカル UI にはポート 3 とポート 4 として表示されます。    |
+|ネットワーク インターフェイス    |2 x 1 Gbps RJ45 <br> ローカル UI にはポート 1 とポート 2 として表示されます。     |
 |Wi-Fi                 |802.11ac                                                            |
 
-|仕様  |値  |
-|---------|---------|
-|ネットワーク インターフェイス    |10 Gbe SFP+ x 2 個 <br> ローカル UI にはポート 3 とポート 4 として表示されます。           |
-|ネットワーク インターフェイス    |2 x 1 GbE RJ45 <br> ローカル UI にはポート 1 とポート 2 として表示されます。          |
-|Wi-Fi   |802.11ac         |
+## <a name="routers-and-switches"></a>ルーターとスイッチ
 
 次のルーターとスイッチは、Azure Stack Edge Mini R デバイスで 10 Gbps SPF+ ネットワーク インターフェイス (ポート 3 およびポート 4) と互換性があります。
 
@@ -85,7 +81,7 @@ Azure Stack Edge Mini R デバイスのネットワークに関する仕様は�
 
 ## <a name="transceivers-cables"></a>トランシーバー、ケーブル
 
-Azure Stack Edge Mini R デバイスでは、次の銅線 SFP+ (10 Gbps) トランシーバーとケーブルを使用することを強くお勧めします。 互換性のある光ファイバー ケーブルは SFP+ ネットワーク インターフェイス (ポート 3 およびポート 4) で使用できますが、テストは行われていません。 
+Azure Stack Edge Mini R デバイスでは、次の銅線 SFP+ (10 Gbps) トランシーバーとケーブルを使用することを強くお勧めします。 互換性のある光ファイバー ケーブルは SFP+ ネットワーク インターフェイス (ポート 3 およびポート 4) で使用できますが、テストは行われていません。
 
 |SFP+ トランシーバー タイプ |サポートされているケーブル    | メモ |
 |----------------------|--------------------|-------|
@@ -108,7 +104,6 @@ Azure Stack Edge Mini R デバイスには、電源を供給し、オンボー�
 Azure Stack Edge Mini R デバイスには、電源装置によって充電されるオンボード バッテリも搭載されています。
 
 追加の [2590 型バッテリ](https://www.bren-tronics.com/bt-70791ck.html)をオンボード バッテリと組み合わせて使用すると、充電までのデバイスの使用時間を延ばすことができます。 このバッテリは、使用する国で適用される安全性、輸送、および環境のすべての規制に準拠している必要があります。
-
 
 | 仕様            | 値      |
 |--------------------------|------------|

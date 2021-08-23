@@ -3,12 +3,12 @@ title: Azure Arc の概要
 description: Azure Arc とは何か、そしてお客様が Azure の他のサービスや機能を使用してハイブリッド リソースの管理とガバナンスを実現するうえでどのように役立つかについて説明します。
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: ddab135ffe98675a498c4a364bc9e04ce57b92fe
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: b67c01f666916508946b49b0ad45d7151ed179ef
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732046"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287301"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc の概要
 
@@ -48,7 +48,7 @@ Azure Arc の主な機能は次のとおりです。
 
 * あたかも Azure で実行しているかのように、Kubernetes 環境で [Azure データ サービス](../azure-arc/kubernetes/custom-locations.md) (具体的には Azure SQL Managed Instance と Azure Database for PostgreSQL Hyperscale) を実行し、アップグレードと更新、セキュリティ、監視などのメリットを活かす。 エラスティック スケールを使用し、Azure への継続的な接続が得られなくても、アプリケーションのダウンタイムを発生させずに更新プログラムを適用する。
 
-* [Azure Arc 対応 Kubernetes](./kubernetes/overview.md) クラスターの上に[カスタムの場所](./kubernetes/custom-locations.md)を作成し、Azure サービス インスタンスをデプロイするためのターゲットの場所として使用する。 [Azure Arc 対応 Data Services](./data/create-data-controller-direct-azure-portal.md)、[Azure Arc 上の App Services](../app-service/overview-arc-integration.md) (Web、関数、ロジック アプリを含む) および [Kubernetes 上の Event Grid](../event-grid/kubernetes/overview.md) の Azure サービス クラスター拡張機能をデプロイする。
+* [Azure Arc 対応 Kubernetes](./kubernetes/overview.md) クラスターの上に[カスタムの場所](./kubernetes/custom-locations.md)を作成し、Azure サービス インスタンスをデプロイするためのターゲットの場所として使用する。 [Azure Arc 対応 Data Services](./data/deploy-data-controller-direct-mode.md)、[Azure Arc 上の App Services](../app-service/overview-arc-integration.md) (Web、関数、ロジック アプリを含む) および [Kubernetes 上の Event Grid](../event-grid/kubernetes/overview.md) の Azure サービス クラスター拡張機能をデプロイする。
 
 * Azure portal、Azure CLI、Azure PowerShell、Azure REST API のどれを使用していても、統合されたエクスペリエンスで Azure Arc 対応リソースを表示する。
 

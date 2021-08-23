@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7b9de22a3209a75cec680ae3ea04d2e1f54c956c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566028"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110453269"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する
 
@@ -35,18 +35,18 @@ Windows Virtual Desktop 環境の詳細については、「[Windows Virtual Des
 
 Windows Virtual Desktop 用に作成する Azure 仮想マシンが正常に機能するためには、いくつかの完全修飾ドメイン名 (FQDN) へのアクセス権が必要です。 Azure Firewall には、この構成を簡略化するための Windows Virtual Desktop FQDN タグが用意されています。 Windows Virtual Desktop プラットフォームの送信トラフィックを許可するには、次の手順に従います。
 
-- Azure Firewall 経由ですべてのトラフィックをルーティングするように、Azure Firewall をデプロイし、Windows Virtual Desktop ホスト プールのサブネットユーザー定義ルート (UDR) を構成します。 これで、既定のルートがファイアウォールを指すようになりました。
+- Azure Firewall をデプロイし、Windows Virtual Desktop ホスト プールのサブネット ユーザー定義ルート (UDR) を、Azure Firewall 経由の既定のトラフィック (0.0.0.0/0) をルーティングするように構成します。 これで、既定のルートがファイアウォールを指すようになりました。
 - アプリケーション ルール コレクションを作成し、*WindowsVirtualDesktop* FQDN タグを有効にするルールを追加します。 発信元 IP アドレスの範囲はホスト プールの仮想ネットワークで、プロトコルは **https**、宛先は **WindowsVirtualDesktop** です。
 
 - Windows Virtual Desktop ホスト プールに必要な一連のストレージ アカウントと Service Bus アカウントはデプロイ固有であるため、WindowsVirtualDesktop の FQDN タグにはまだキャプチャされていません。 これは、次の方法のいずれかの方法で対処できます。
 
-   - ホスト プールサブネットから *xt.blob.core.windows.net、*eh.servicebus.windows.net、および *xt.table.core.windows.net への https アクセスを許可します。 これらのワイルドカード FQDN によって必要なアクセスが有効になりますが、制限は緩くなります。
-   - 次の Log Analytics クエリを使用して、必要な FQDN を正確に一覧表示してから、ファイアウォール アプリケーション ルールでそれらを明示的に許可します。
+   - ホスト プール サブネットから *xt.blob.core.windows.net と *eh.servicebus.windows.net への https アクセスを許可します。 これらのワイルドカード FQDN によって必要なアクセスが有効になりますが、制限は緩くなります。
+   - 次の Log Analytics クエリを使用して、WVD ホストプールのデプロイ後に必要な FQDN を正確に一覧表示してから、ファイアウォール アプリケーション ルールでそれらを明示的に許可します。
    ```
    AzureDiagnostics
    | where Category == "AzureFirewallApplicationRule"
    | search "Deny"
-   | search "gsm*eh.servicebus.windows.net" or "gsm*xt.blob.core.windows.net" or "gsm*xt.table.core.windows.net"
+   | search "gsm*eh.servicebus.windows.net" or "gsm*xt.blob.core.windows.net"
    | parse msg_s with Protocol " request from " SourceIP ":" SourcePort:int " to " FQDN ":" *
    | project TimeGenerated,Protocol,FQDN
    ```
