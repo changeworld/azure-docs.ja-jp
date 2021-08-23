@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: da0826a349131d9d5716932abfc603be8103b788
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 3453d1a0d06fd9918f3f1ae49a519d676ab26785
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903544"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468441"
 ---
 # <a name="review-your-security-recommendations"></a>セキュリティの推奨事項を確認する
 
@@ -39,6 +39,7 @@ Security Center はリソースのセキュリティの状態を分析して、�
     1. サポートされている推奨事項については、上部のツールバーに次のボタンのいずれか、またはすべてが表示されます。
         - **適用** および **拒否** (「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照)
         - 基になるポリシーの Azure Policy エントリに直接アクセスするための **ポリシー定義の表示**
+        - **クエリを開く** - すべての推奨事項には、Azure Resource Graph Explorer を使用して、影響を受けるリソースの詳細情報を表示するオプションがあります
     1. **重大度インジケーター**
     1. **更新間隔** (該当する場合)
     1. この推奨事項に対して除外が存在する場合は、除外されたリソースの数を示す **除外されたリソースの数**
@@ -51,6 +52,24 @@ Security Center はリソースのセキュリティの状態を分析して、�
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="理由が表示されている [適用されないリソース] タブ。":::
     1. 推奨事項を修復するか、ロジック アプリをトリガーするアクション ボタン。
+
+
+## <a name="review-recommendation-data-in-azure-resource-graph-explorer-arg"></a>Azure Resource Graph Explorer (ARG) で推奨事項データを確認する
+
+推奨事項の詳細ページのツール バーには、 **[クエリを開く]** ボタンが表示され、[Azure Resource Graph (ARG)](../governance/resource-graph/index.yml) で詳細を確認できます。これは、複数のサブスクリプションにまたがって Security Center のセキュリティ態勢データのクエリを実行できる Azure サービスです。
+
+ARG は、堅牢なフィルター処理、グループ化、並べ替え機能を使用して、クラウド環境全体で大規模にクエリを実行する機能を備え、効率的なリソース探索ができるように設計されています。 これは、Azure サブスクリプション全体の情報を、プログラムから、または Azure portal 内ですばやく効率的に照会する方法です。
+
+[Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) を使用すると、ASC データを他のリソース プロパティと相互参照できます。
+
+たとえば、この推奨事項の詳細ページには、影響を受ける 15 のリソースが表示されます。
+
+:::image type="content" source="./media/security-center-recommendations/open-query.png" alt-text="推奨事項の詳細ページの **[クエリを開く]** ボタン。":::
+
+基になるクエリを開いて実行すると、Azure Resource Graph Explorer で、この推奨事項に対して同じ 15 のリソースとその正常性状態が表示されます。 
+
+:::image type="content" source="./media/security-center-recommendations/run-query.png" alt-text="前のスクリーンショットで示された推奨事項の結果を表示する Azure Resource Graph Explorer。":::
+
 
 ## <a name="preview-recommendations"></a>推奨事項のプレビュー
 

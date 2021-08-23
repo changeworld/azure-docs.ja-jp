@@ -4,12 +4,12 @@ metadata:
   description: この記事では、Azure Backup サービスを使用した Azure VM のバックアップに関する一般的な質問への回答を示します。
   ms.topic: conceptual
   ms.date: 06/02/2021
-  ms.openlocfilehash: fc7d9ff7770cdd60ac1a30ccbcb2758b67ec2a35
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.openlocfilehash: b829855ad97e702f4a005375a1e70bd0869289ad
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111968652"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112467335"
 title: よく寄せられる質問 - Azure VM のバックアップ
 summary: >
   この記事では、[Azure Backup](./backup-overview.md) サービスによる Azure VM のバックアップについてよくある質問にお答えします。
@@ -215,7 +215,7 @@ sections:
     answer: Azure VM バックアップでは、[転送中の暗号化に HTTPS 通信](guidance-best-practices.md#encryption-of-data-in-transit-and-at-rest)を使用します。 データ転送では、VM のバックアップにインターネット アクセスを必要としない Azure ファブリック (パブリック エンドポイントではなく) を使用します。
   - question: ファイルの回復オプションを無効にする方法はありますか?
     answer: >-
-      [この API](/rest/api/backup/itemlevelrecoveryconnections/provision) は、Azure Backup からファイルを回復するために **iSCSI 接続** を呼び出すスクリプトをプロビジョニングします。
+      [この API](/rest/api/backup/2021-02-10/item-level-recovery-connections/provision) は、Azure Backup からファイルを回復するために **iSCSI 接続** を呼び出すスクリプトをプロビジョニングします。
 
       - このオプションは、API アクションを除外することにより、**カスタム ロール定義** を使用して無効にすることができます。
 

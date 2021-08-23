@@ -5,19 +5,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 2a6cff1aa93c4f3ac4f95fd176e1b1e42736d8f4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 460176dd8c86abc59d2f82948a6a35655b9eef84
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763355"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530528"
 ---
 ### <a name="functional-limits"></a>機能制限
 
 次の表に、Azure Digital Twins の機能制限の一覧を示します。 
 
 > [!TIP]
-> これらの機能制限内で運用するためのモデリングの推奨事項については、「[モデルの設計に関するベスト プラクティス](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models)」を参照してください。
+> これらの機能制限内で運用するためのモデリングの推奨事項については、「[モデリングのベスト プラクティス](../articles/digital-twins/concepts-models.md#modeling-best-practices)」を参照してください。
 
 | 領域 | 機能 | 既定の制限 | 調整可能? |
 | --- | --- | --- | --- |

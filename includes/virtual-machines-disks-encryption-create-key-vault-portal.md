@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/23/2020
+ms.date: 05/17/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6cf40e7b384c9b0e88db679f9de8ac9bbba1607
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "88815472"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "112078774"
 ---
 ディスクにカスタマー マネージド キーを設定する作業を初めて実行するときは、特定の順序でリソースを作成する必要があります。 最初に、Azure キー コンテナーの作成と設定を行う必要があります。
 
@@ -49,6 +49,13 @@ ms.locfileid: "88815472"
 
     ![[生成/インポート] ボタンを選択すると表示される [Create a key]\(キーを作成します\) ブレードのスクリーンショット](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
 
+### <a name="add-an-azure-rbac-role"></a>Azure RBAC ロールを追加する
+
+Azure キー コンテナーとキーを作成したら、Azure RBAC ロールを追加して、ディスク暗号化セットで Azure キー コンテナーを使用できるようにする必要があります。
+
+1. **[アクセス制御 (IAM)]** を選択し、ロールを追加します。
+1. **Key Vault Administrator\(キー コンテナー管理者\)** 、**所有者**、または **共同作成者** のいずれかのロールを追加します。
+
 ## <a name="set-up-your-disk-encryption-set"></a>ディスク暗号化セットを設定する
 
 1. **ディスク暗号化セット** を検索して選択します。
@@ -63,16 +70,8 @@ ms.locfileid: "88815472"
     > 特定の種類の暗号化を使用してディスク暗号化セットを作成すると、そのセットを変更することはできません。 別の種類の暗号化を使用したい場合は、新しいディスク暗号化セットを作成する必要があります。
 
 1. **[クリックしてキーを選択します]** を選択します。
-1. 以前に作成したキー コンテナーとキーのほか、バージョンを選択します。
+1. 以前に作成したキー コンテナーとキー、およびバージョンを選択します。
 1. **[選択]** を選択します。
 1. **[確認および作成]** 、 **[作成]** の順に選択します。
 
     ![ディスク暗号化作成ブレードのスクリーンショット。 サブスクリプション、リソース グループ、ディスク暗号化セット名、リージョン、キー コンテナーとキーのセレクターが表示されています。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
-
-1. 作成が完了したら、ディスク暗号化セットを開き、ポップアップ表示されるアラートを選択します。
-
-    ![アラート ポップアップ "このディスク暗号化セットにディスク、イメージ、またはスナップショットを関連付けるには、キー コンテナーにアクセス許可を付与する必要があります。" のスクリーンショット。 このアラートを選択して続行します](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
-
-    2 つの通知がポップアップ表示され、成功します。 これにより、キー コンテナーでディスク暗号化セットを使用できるようになります。
-
-    ![キー コンテナーに対するアクセス許可の付与とロールの割り当てが成功したことを示すスクリーンショット。](./media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)

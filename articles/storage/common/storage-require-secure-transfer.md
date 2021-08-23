@@ -6,27 +6,27 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 06/01/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b62265d75aa7c7c09f1f6e55632dcbe98efc411
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1b45af43c9a5c76169deaef08c91ea7a9e8670c1
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128941"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371707"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>セキュリティで保護された接続を確保するために安全な転送を要求する
 
 ストレージ アカウントに **[安全な転送が必須]** プロパティを設定すると、セキュリティで保護された接続からの要求のみを受け入れるようにストレージ アカウントを構成できます。 安全な転送を要求すると、セキュリティで保護されていない接続から送信される要求はすべて拒否されます。 Microsoft では、すべてのストレージ アカウントに対して常に、セキュリティで保護された転送を要求することをお勧めしています。
 
-安全な転送が必要な場合、Azure Storage REST API 操作の呼び出しは HTTPS を介して行う必要があります。 HTTP を介して行われた要求はすべて拒否されます。
+安全な転送が必要な場合、Azure Storage REST API 操作の呼び出しは HTTPS を介して行う必要があります。 HTTP を介して行われた要求はすべて拒否されます。 既定では、ストレージ アカウントを作成すると、 **[安全な転送が必須]** プロパティが有効になります。
 
-ストレージ アカウントに対して安全な転送が求められている場合、暗号化なしの SMB 経由で Azure ファイル共有に接続しても失敗します。 セキュリティで保護されていない接続の例としては、SMB 2.1、SMB 3.0 (暗号化なし)、または一部のバージョンの Linux SMB クライアントがあります。
+Azure Policy には、ストレージ アカウントに対して安全な転送が要求されることを保証する組み込みのポリシーが用意されています。 詳細については、「[Azure Policy の組み込みのポリシー定義](../../governance/policy/samples/built-in-policies.md#storage)」の「**ストレージ**」セクションを参照してください。
 
-既定では、ストレージ アカウントを作成すると、 **[安全な転送が必須]** プロパティが有効になります。
+ストレージ アカウントに対して安全な転送が求められている場合、暗号化なしの SMB 経由で Azure ファイル共有に接続しても失敗します。 セキュリティで保護されていない接続の例としては、暗号化なしの SMB 2.1 または SMB 3.x 経由の接続を挙げることができます。
 
 > [!NOTE]
 > Azure Storage ではカスタム ドメイン名の HTTPS はサポートされないため、カスタム ドメイン名を使用している場合、このオプションは適用されません。 また、クラシック ストレージ アカウントはサポートされていません。

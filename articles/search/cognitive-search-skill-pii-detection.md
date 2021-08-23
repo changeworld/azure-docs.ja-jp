@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 448784987f3304303a1bd47c2038440db5cdd194
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91540525"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063236"
 ---
 # <a name="pii-detection-cognitive-skill"></a>PII 検出コグニティブ スキル
 
@@ -41,16 +41,17 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| `defaultLanguageCode` |    入力テキストの言語コード。 現時点では、`en` のみがサポートされています。 |
+| `defaultLanguageCode` | (省略可能) 言語を明示的に指定しないドキュメントに適用する言語コード。  既定の言語コードが指定されていない場合、既定の言語コードとして英語 (en) が使用されます。 <br/> [サポートされる言語の完全な一覧](../cognitive-services/text-analytics/language-support.md)を参照してください。 |
 | `minimumPrecision` | 0\.0 から 1.0 の値。 (`piiEntities` 出力の) 信頼度スコアが `minimumPrecision` の設定値よりも小さい場合は、エンティティは返されず、マスクもされません。 既定では、0.0 です。 |
-| `maskingMode` | 入力テキスト内で検出された個人情報をマスクするためのさまざまな方法を提供するパラメーター。 次のオプションがサポートされています。 <ul><li>`none` (既定値): マスクは行われず、`maskedText` の出力は返されません。 </li><li> `redact`:検出されたエンティティを入力テキストから削除し、削除された値は置き換えません。 この場合、`piiEntities` の出力のオフセットは、マスクされたテキストではなく元のテキストに関連します。 </li><li> `replace`:検出されたエンティティを `maskingCharacter` パラメーターで指定された文字に置き換えます。 文字は検出されたエンティティの長さに繰り返されます。これにより、オフセットが入力テキストと出力 `maskedText` の両方に正しく対応するようになります。</li></ul> |
-| `maskingCharacter` | `maskingMode` パラメーターが `replace` に設定されている場合に、テキストをマスクするために使用される文字。 `*` (規定値)、`#`、`X` のオプションがサポートされています。 このパラメーターは、`maskingMode` が `replace` に設定されていない場合にのみ `null` できます。 |
+| `maskingMode` | 入力テキスト内で検出された個人情報をマスクするためのさまざまな方法を提供するパラメーター。 次のオプションがサポートされています。 <ul><li>`none` (既定値): マスクは行われず、`maskedText` の出力は返されません。 </li><li> `replace`:検出されたエンティティを `maskingCharacter` パラメーターで指定された文字に置き換えます。 文字は検出されたエンティティの長さに繰り返されます。これにより、オフセットが入力テキストと出力 `maskedText` の両方に正しく対応するようになります。</li></ul> <br/> PIIDetectionSkill がプレビューの間は、`maskingMode` のオプション `redact` もサポートされており、これにより置換なしで検出されたエンティティを完全に削除できました。 `redact` オプションは非推奨になり、今後のスキルではサポートされなくなります。 |
+| `maskingCharacter` | `maskingMode` パラメーターが `replace` に設定されている場合に、テキストをマスクするために使用される文字。 次のオプションがサポートされています: `*` (既定値)。 このパラメーターは、`maskingMode` が `replace` に設定されていない場合にのみ `null` できます。 <br/><br/> PIIDetectionSkill がプレビューの間は、`maskingCharacter` の追加のオプション `X` と `#` がサポートされていました。 `X` および `#` オプションはその後で非推奨になっており、今後のスキルではサポートされなくなります。 |
+| `modelVersion`   | (省略可能) Text Analytics サービスを呼び出すときに使用するモデルのバージョン。 指定しない場合、既定では直近のバージョンになります。 絶対に必要な場合以外は、この値を指定しないことをお勧めします。 詳細については、「[Text Analytics API でのモデルのバージョン管理](../cognitive-services/text-analytics/concepts/model-versioning.md)」を参照してください。 |
 
 ## <a name="skill-inputs"></a>スキルの入力
 
 | 入力名      | 説明                   |
 |---------------|-------------------------------|
-| `languageCode`    | 省略可能。 既定値は `en` です。  |
+| `languageCode`    | レコードの言語を示す文字列。 このパラメーターが指定されていない場合、既定の言語コードがレコードを分析するために使用されます。 <br/>[サポートされる言語の完全な一覧](../cognitive-services/text-analytics/language-support.md)を参照  |
 | `text`          | 分析するテキスト。          |
 
 ## <a name="skill-outputs"></a>スキルの出力

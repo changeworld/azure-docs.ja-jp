@@ -1,20 +1,19 @@
 ---
 title: Azure Video Analyzer for Media (旧 Video Indexer) のシーン、ショット、キーフレーム
-titleSuffix: Azure Video Analyzer for Media
+titleSuffix: Azure Media Services
 description: このトピックでは、Azure Video Analyzer for Media (旧 Video Indexer) のシーン、ショット、キーフレームの概要について説明します。
-services: azure-video-analyzer
+services: media-services
 author: Juliako
 manager: femila
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 80494f98d789e5d04454065ff5cbf8ba97fd62f1
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a3408ea644e5a2ac8ccc9bde808c232a705fd57e
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119202"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110386914"
 ---
 # <a name="scenes-shots-and-keyframes"></a>シーン、ショット、キーフレーム
 

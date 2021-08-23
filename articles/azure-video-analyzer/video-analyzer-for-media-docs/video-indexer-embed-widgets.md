@@ -1,21 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) のウィジェットをアプリに埋め込む
-titleSuffix: Azure Video Analyzer for Media
+titleSuffix: Azure Media Services
 description: Azure Video Analyzer for Media (旧称 Video Indexer) のウィジェットをアプリに埋め込む方法について説明します。
-services: azure-video-analyzer
+services: media-services
 author: Juliako
 manager: femila
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 3be899a7be2d007f52eb895bd26befcbb12e316d
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 737efbd67ab0dc89178136c0d792aaf622f886d0
+ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115233"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110386853"
 ---
 # <a name="embed-video-analyzer-for-media-widgets-in-your-apps"></a>Video Analyzer for Media のウィジェットをアプリに埋め込む
 

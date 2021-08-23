@@ -2,18 +2,18 @@
 title: Azure portal を利用して Azure マネージド ディスクのパフォーマンスを変更する
 description: Azure portal を利用し、新規と既存のマネージド ディスクのパフォーマンス レベルを変更する方法について説明します。
 author: roygara
-ms.service: storage
+ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 06/29/2021
+ms.date: 05/13/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 37069bb17e0ce6a104ae3c1b79714da160737fe8
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: a82865930a5ed770b742c3d5e8906d4e69be3f64
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356277"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079410"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Azure portal を利用してパフォーマンス レベルを変更する
 

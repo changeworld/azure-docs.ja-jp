@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 49704de9eb4a392b552429180da98568cafa210f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 669304159a525248dbd4f9d1c3f7b34660274b74
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157536"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110486416"
 ---
 Azure Instance Metadata Service (IMDS) によって、現在実行中の仮想マシン インスタンスに関する情報が提供されます。 これを使用して、仮想マシンの管理と構成を行うことができます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、[エンドポイント カテゴリの概要](#endpoint-categories)に関するページを参照してください。
@@ -40,13 +40,13 @@ IMDS にアクセスするには、[Azure Resource Manager](/rest/api/resources/
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | jq
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | jq
 ```
 
 ---
@@ -99,14 +99,14 @@ IMDS をプロキシの背後で使用することは **想定されておらず
 IMDS エンドポイントでは、HTTP クエリ文字列パラメーターがサポートされています。 次に例を示します。 
 
 ```
-http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=json
+http://169.254.169.254/metadata/instance/compute?api-version=2021-01-01&format=json
 ```
 
 パラメーターを指定します。
 
 | 名前 | 値 |
 |------|-------|
-| `api-version` | `2019-06-04`
+| `api-version` | `2021-01-01`
 | `format` | `json`
 
 クエリ パラメーター名が重複している要求は拒否されます。
@@ -248,6 +248,7 @@ IMDS はバージョン管理されており、HTTP 要求での API バージ�
 - 2020-10-01
 - 2020-12-01
 - 2021-01-01
+- 2021-02-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -370,7 +371,7 @@ GET /metadata/instance
 
 **ストレージ プロファイル**
 
-VM のストレージ プロファイルは、イメージ参照、OS ディスク、データ ディスクの 3 つのカテゴリに分類されます。
+VM のストレージ プロファイルは、イメージ参照、OS ディスク、データ ディスクの 3 つのカテゴリに分けられ、さらにローカル一時ディスク用の追加オブジェクトがあります。
 
 イメージ参照オブジェクトには、OS イメージに関する次の情報が含まれています。
 
@@ -413,6 +414,13 @@ Data | 説明 |
 | `vhd` | 仮想ハード ディスク
 | `writeAcceleratorEnabled` | ディスクで writeAccelerator が有効になっているかどうか
 
+リソース ディスク オブジェクトには、VM に接続されている[ローカル一時ディスク](../articles/virtual-machines/managed-disks-overview.md#temporary-disk) (ある場合) のサイズ (KB 単位) が格納されます。
+[VM のローカル一時ディスクがない](../articles/virtual-machines/azure-vms-no-temp-disk.md)場合、この値は 0 です。 
+
+| Data | 説明 | 導入されたバージョン |
+|------|-------------|--------------------|
+| `resourceDisk.size` | VM のローカル一時ディスクのサイズ (KB 単位) | 2021-02-01
+
 **Network**
 
 | Data | 説明 | 導入されたバージョン |
@@ -438,7 +446,8 @@ Data | 説明 |
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+$userData = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text"
+[System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($userData))
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -709,6 +718,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "uri": ""
             },
             "writeAcceleratorEnabled": "false"
+        },
+        "resourceDisk": {
+            "size": "4096"
         }
     },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
@@ -810,6 +822,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "uri": ""
             },
             "writeAcceleratorEnabled": "false"
+        },
+        "resourceDisk": {
+            "size": "4096"
         }
     },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",

@@ -3,12 +3,12 @@ title: Azure VMware Solution の予約インスタンス
 description: Azure VMware Solution の予約インスタンスを購入する方法について説明します。 予約インスタンスでは、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストが含まれます。
 ms.topic: how-to
 ms.date: 05/13/2021
-ms.openlocfilehash: 2ec43374561db9b0de39f4d1c571b85a75df13ba
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8407d4e85718660bfcf17b3597710ed5237b41e1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063102"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745819"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware Solution でコストを節約する
 
@@ -138,6 +138,6 @@ CSP は、一定の制限付きで、顧客に代わって購入する予約の�
 Azure VMware Solution の予約インスタンスについて確認したので、次の事項の学習に進むことができます。
 
 - [Azure VMware Solution 評価の作成](../migrate/how-to-create-azure-vmware-solution-assessment.md)。
-- [Azure VMware Solution 用の DHCP の管理](configure-dhcp-azure-vmware-solution.md)。
-- [Azure VMware ソリューション VM の監視と管理](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [Azure VMware Solution 用の DHCP を構成します](configure-dhcp-azure-vmware-solution.md)。
+- [Azure ネイティブのサービスを Azure VMware Solution と連携させます](integrate-azure-native-services.md)。
  

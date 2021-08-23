@@ -1,6 +1,6 @@
 ---
 title: Windows で Azure ファイル共有を使用する | Microsoft Docs
-description: Windows と Windows Server での Azure ファイル共有の使用方法について説明します。 オンプレミスまたは Azure VM で実行されている Windows インストールで、SMB 3.0 を使用して Azure ファイル共有を利用します。
+description: Windows と Windows Server での Azure ファイル共有の使用方法について説明します。 オンプレミスまたは Azure VM で実行されている Windows インストールで、SMB 3.x を使用して Azure ファイル共有を利用します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,34 +8,35 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 31df90823591298a13dba725b7215031cad4bf8d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789791"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064812"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
 
-Azure ファイル共有がホストされている Azure リージョンの外の Azure ファイル共有 (オンプレミスの共有、他の Azure リージョン内の共有など) を使用するために、OS は SMB 3.0 をサポートする必要があります。 
+Azure ファイル共有がホストされている Azure リージョンの外の Azure ファイル共有 (オンプレミスの共有、他の Azure リージョン内の共有など) を使用するために、OS は SMB 3.x をサポートする必要があります。 
 
 Azure ファイル共有は、Azure VM とオンプレミスのどちらかで実行されている Windows インストール済み環境で使用できます。 次の表は、ファイル共有へのアクセスがサポートされる環境を OS バージョンごとに示したものです。
 
 | Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | はい | はい |
-| Windows 10<sup>1</sup> | SMB 3.0 | はい | はい |
-| Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | はい | はい |
-| Windows Server 2016 | SMB 3.0 | はい | はい |
+| Windows Server 2019 | SMB 3.1.1 | Yes | はい |
+| Windows 10<sup>1</sup> | SMB 3.1.1 | Yes | はい |
+| Windows Server 半期チャネル<sup>2</sup> | SMB 3.1.1 | Yes | はい |
+| Windows Server 2016 | SMB 3.1.1 | Yes | Yes |
+| Windows 10 バージョン 1507 | SMB 3.0 | はい | はい |
 | Windows 8.1 | SMB 3.0 | はい | はい |
 | Windows Server 2012 R2 | SMB 3.0 | はい | はい |
 | Windows Server 2012 | SMB 3.0 | はい | はい |
 | Windows 7<sup>3</sup> | SMB 2.1 | はい | いいえ |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | はい | いいえ |
 
-<sup>1</sup>Windows 10、バージョン 1507、1607、1803、1809、1903、1909、および 2004。  
-<sup>2</sup>Windows Server、バージョン 1809、1903、1909、2004。  
+<sup>1</sup>Windows 10、バージョン 1607、1809、1909、2004、20H2  
+<sup>2</sup>Windows Server、バージョン 2004 および 20H2。  
 <sup>3</sup>Windows 7 および Windows Server 2008 R2 に対する Microsoft の通常のサポートは終了しました。 [拡張セキュリティ更新 (ESU) プログラム](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)を介してのみ、セキュリティ更新プログラムの追加サポートを購入できます。 これらのオペレーティング システムから移行することを強くお勧めします。
 
 > [!Note]  

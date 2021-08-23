@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 0cb5c9cebc97f7afa0156550f70cd78c07b7b410
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 7e29bd82f9f72651ca0383c680c0b05860fe29b4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906226"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062238"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされているシステム変数
 
@@ -33,6 +33,9 @@ ms.locfileid: "107906226"
 | @pipeline（）.TriggerId|パイプラインを呼び出したトリガーの ID |
 | @pipeline（）.TriggerName|パイプラインを呼び出したトリガーの名前 |
 | @pipeline（）.TriggerTime|パイプラインを呼び出したトリガーの実行時刻。 これは、トリガーがパイプライン実行を呼び出すために **実際に** 起動した時刻であり、トリガーのスケジュールされた時刻とはやや異なる場合があります。  |
+| @pipeline().GroupId | パイプラインの実行が属するグループの ID。 |
+| @pipeline() __?__ .TriggeredByPipelineName | パイプラインの実行をトリガーするパイプラインの名前。 ExecutePipeline アクティビティによってパイプラインの実行がトリガーされる場合に関係します。 その他の状況で使用された場合は、_Null_ に評価されます。 @pipeline() の後の疑問符に注意してください。 |
+| @pipeline() __?__ .TriggeredByPipelineRunId | パイプラインの実行をトリガーするパイプラインの実行 ID。 ExecutePipeline アクティビティによってパイプラインの実行がトリガーされる場合に関係します。 その他の状況で使用された場合は、_Null_ に評価されます。 @pipeline() の後の疑問符に注意してください。 |
 
 >[!NOTE]
 >トリガー関連の日付/時刻のシステム変数 (パイプラインとトリガーの両方のスコープ) は、ISO 8601 形式で UTC 日付を返します (例: `2017-06-01T22:20:00.4061448Z`)。

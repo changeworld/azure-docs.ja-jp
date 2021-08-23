@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 05/06/2021
+ms.date: 05/20/2021
 ms.custom: generated
-ms.openlocfilehash: e8683b3348dab0c01ed797525b497ced3c2737bb
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 989724452f57b5b44954f739eae6bff1da61263f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634223"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470132"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -78,6 +78,11 @@ ms.locfileid: "109634223"
 > | [Azure Maps データ共同作成者](#azure-maps-data-contributor) | Azure Maps アカウントからのマップ関連データへの読み取り、書き込み、削除のアクセスを付与します。 | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps データ閲覧者](#azure-maps-data-reader) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Azure Spring Cloud データ閲覧者](#azure-spring-cloud-data-reader) | Azure Spring Cloud データへの読み取りアクセスを許可します | b5537268-8956-4941-a8f0-646150406f0c |
+> | [Media Services アカウント管理者](#media-services-account-administrator) | Media Services アカウントを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | 054126f8-9a2b-4f1c-a9ad-eca461f08466 |
+> | [Media Services ライブ イベント管理者](#media-services-live-events-administrator) | ライブ イベント、アセット、アセット フィルター、およびストリーミング ロケーターを作成、読み取り、および変更します。他の Media Services リソースへの読み取り専用アクセスができます。 | 532bc159-b25e-42c0-969e-a1d439f60d77 |
+> | [Media Services メディア オペレーター](#media-services-media-operator) | アセット、アセット フィルター、ストリーミング ロケーター、およびジョブを作成、読み取り、変更および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | e4395492-1534-4db2-bedf-88c14621589c |
+> | [Media Services ポリシー管理者](#media-services-policy-administrator) | アカウント フィルター、ストリーミング ポリシー、コンテンツ キー ポリシー、および変換を作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 ジョブ、アセット、またはストリーミング リソースは作成できません。 | c4bba371-dacd-4a26-b320-7250bca963ae |
+> | [Media Services ストリーミング エンドポイント管理者](#media-services-streaming-endpoints-administrator) | ストリーミング エンドポイントを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | 99dba123-b5fe-44d5-874c-ced7199a5804 |
 > | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR AccessKey 閲覧者](#signalr-accesskey-reader) | SignalR サービス アクセス キーを読み取ります | 04165923-9d83-45d5-8227-78b77b0a687e |
 > | [SignalR アプリ サーバー (プレビュー)](#signalr-app-server-preview) | AAD の認証オプションを使用して、アプリ サーバーが SignalR Service にアクセスできるようにします。 | 420fcaa2-552c-430f-98ca-3264be4806c7 |
@@ -90,7 +95,7 @@ ms.locfileid: "109634223"
 > | **Containers** |  |  |
 > | [AcrDelete](#acrdelete) | コンテナー レジストリからリポジトリ、タグ、またはマニフェストを削除します。 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | コンテンツの信頼が有効になっているコンテナー レジストリに信頼済みのイメージをプッシュしたり、信頼済みのイメージをプルしたりします。 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
-> | [AcrPull](#acrpull) | コンテナー レジストリから成果物をプルします。  | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
+> | [AcrPull](#acrpull) | コンテナー レジストリから成果物をプルします。 | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
 > | [AcrPush](#acrpush) | コンテナー レジストリに成果物をプッシュしたり、成果物をプルしたりします。 | 8311e382-0749-4cb8-b61a-304f252e45ec |
 > | [AcrQuarantineReader](#acrquarantinereader) | コンテナー レジストリから検疫済みのイメージをプルします。 | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | [AcrQuarantineWriter](#acrquarantinewriter) | 検疫済みのイメージをコンテナー レジストリにプッシュしたり、検疫済みイメージをプルしたりします。 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
@@ -2783,6 +2788,327 @@ Azure Spring Cloud データへの読み取りアクセスを許可します。[
 }
 ```
 
+### <a name="media-services-account-administrator"></a>Media Services アカウント管理者
+
+Media Services アカウントを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | メトリックを読み取ります。 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | メトリック定義を読み取ります。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/listStreamingLocators/action | 資産のストリーミング ロケーターの一覧を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listPaths/action | パスの一覧を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/write | Media Services アカウントを作成または更新します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/delete | Media Services アカウントを削除します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/privateEndpointConnectionsApproval/action | プライベート エンドポイント接続を承認します |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/privateEndpointConnections/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read, modify and delete Media Services accounts; read-only access to other Media Services resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/054126f8-9a2b-4f1c-a9ad-eca461f08466",
+  "name": "054126f8-9a2b-4f1c-a9ad-eca461f08466",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/listStreamingLocators/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listPaths/action",
+        "Microsoft.Media/mediaservices/write",
+        "Microsoft.Media/mediaservices/delete",
+        "Microsoft.Media/mediaservices/privateEndpointConnectionsApproval/action",
+        "Microsoft.Media/mediaservices/privateEndpointConnections/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Account Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="media-services-live-events-administrator"></a>Media Services ライブ イベント管理者
+
+ライブ イベント、アセット、アセット フィルター、およびストリーミング ロケーターを作成、読み取り、および変更します。他の Media Services リソースへの読み取り専用アクセスができます。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | メトリックを読み取ります。 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | メトリック定義を読み取ります。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/assetfilters/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/liveEvents/* |  |
+> | **NotActions** |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/getEncryptionKey/action | 資産暗号化キーを取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listContentKeys/action | コンテンツ キーの一覧を取得します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read and modify Live Events, Assets, Asset Filters and Streaming Locators; read-only access to other Media Services resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/532bc159-b25e-42c0-969e-a1d439f60d77",
+  "name": "532bc159-b25e-42c0-969e-a1d439f60d77",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/*",
+        "Microsoft.Media/mediaservices/assets/assetfilters/*",
+        "Microsoft.Media/mediaservices/streamingLocators/*",
+        "Microsoft.Media/mediaservices/liveEvents/*"
+      ],
+      "notActions": [
+        "Microsoft.Media/mediaservices/assets/getEncryptionKey/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listContentKeys/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Live Events Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="media-services-media-operator"></a>Media Services メディア オペレーター
+
+アセット、アセット フィルター、ストリーミング ロケーター、およびジョブを作成、読み取り、変更および削除します。他の Media Services リソースへの読み取り専用アクセスができます。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | メトリックを読み取ります。 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | メトリック定義を読み取ります。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/assetfilters/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/transforms/jobs/* |  |
+> | **NotActions** |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/getEncryptionKey/action | 資産暗号化キーを取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listContentKeys/action | コンテンツ キーの一覧を取得します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read, modify, and delete of Assets, Asset Filters, Streaming Locators and Jobs; read-only access to other Media Services resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e4395492-1534-4db2-bedf-88c14621589c",
+  "name": "e4395492-1534-4db2-bedf-88c14621589c",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/*",
+        "Microsoft.Media/mediaservices/assets/assetfilters/*",
+        "Microsoft.Media/mediaservices/streamingLocators/*",
+        "Microsoft.Media/mediaservices/transforms/jobs/*"
+      ],
+      "notActions": [
+        "Microsoft.Media/mediaservices/assets/getEncryptionKey/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listContentKeys/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Media Operator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="media-services-policy-administrator"></a>Media Services ポリシー管理者
+
+アカウント フィルター、ストリーミング ポリシー、コンテンツ キー ポリシー、および変換を作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 ジョブ、アセット、またはストリーミング リソースは作成できません。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | メトリックを読み取ります。 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | メトリック定義を読み取ります。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/listStreamingLocators/action | 資産のストリーミング ロケーターの一覧を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listPaths/action | パスの一覧を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/accountFilters/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingPolicies/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/contentKeyPolicies/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/transforms/* |  |
+> | **NotActions** |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/contentKeyPolicies/getPolicyPropertiesWithSecrets/action | ポリシーのプロパティとシークレットを取得します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read, modify, and delete Account Filters, Streaming Policies, Content Key Policies and Transforms; read-only access to other Media Services resources. Cannot create Jobs, Assets or Streaming resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/c4bba371-dacd-4a26-b320-7250bca963ae",
+  "name": "c4bba371-dacd-4a26-b320-7250bca963ae",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/listStreamingLocators/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listPaths/action",
+        "Microsoft.Media/mediaservices/accountFilters/*",
+        "Microsoft.Media/mediaservices/streamingPolicies/*",
+        "Microsoft.Media/mediaservices/contentKeyPolicies/*",
+        "Microsoft.Media/mediaservices/transforms/*"
+      ],
+      "notActions": [
+        "Microsoft.Media/mediaservices/contentKeyPolicies/getPolicyPropertiesWithSecrets/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Policy Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="media-services-streaming-endpoints-administrator"></a>Media Services ストリーミング エンドポイント管理者
+
+ストリーミング エンドポイントを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | メトリックを読み取ります。 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | メトリック定義を読み取ります。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/listStreamingLocators/action | 資産のストリーミング ロケーターの一覧を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listPaths/action | パスの一覧を取得します。 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingEndpoints/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read, modify and delete Streaming Endpoints; read-only access to other Media Services resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/99dba123-b5fe-44d5-874c-ced7199a5804",
+  "name": "99dba123-b5fe-44d5-874c-ced7199a5804",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/listStreamingLocators/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listPaths/action",
+        "Microsoft.Media/mediaservices/streamingEndpoints/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Streaming Endpoints Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="search-service-contributor"></a>Search Service Contributor
 
 Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 [詳細情報](../search/search-security-rbac.md)
@@ -3350,7 +3676,7 @@ Web サイト (Web プランではない) を管理できます。ただし、�
 
 ### <a name="acrpush"></a>AcrPush
 
-acr のプッシュ [詳細](../container-registry/container-registry-roles.md)
+コンテナー レジストリに成果物をプッシュしたり、成果物をプルしたりします。 [詳細情報](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -7185,7 +7511,7 @@ Azure Stack の登録を管理できます。
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | Azure Stack Edge のサブスクリプションのプロパティを取得します。 |
+> | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | Azure Stack Marketplace の製品のプロパティを取得します |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | Azure Stack の登録のプロパティを取得します |
@@ -10286,7 +10612,9 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Azure Arc マシンを読み取ります |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Azure Arc マシンが書き込まれます |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | Azure Arc マシンが削除されます |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/read | Azure Arc 拡張機能が読み取られます |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | Azure Arc 拡張機能をインストールまたは更新されます |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/delete | Azure Arc 拡張機能が削除されます |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/privateLinkScopes/* |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/read |  |
 > | **NotActions** |  |
@@ -10310,7 +10638,9 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
         "Microsoft.HybridCompute/machines/read",
         "Microsoft.HybridCompute/machines/write",
         "Microsoft.HybridCompute/machines/delete",
+        "Microsoft.HybridCompute/machines/extensions/read",
         "Microsoft.HybridCompute/machines/extensions/write",
+        "Microsoft.HybridCompute/machines/extensions/delete",
         "Microsoft.HybridCompute/privateLinkScopes/*",
         "Microsoft.HybridCompute/*/read"
       ],

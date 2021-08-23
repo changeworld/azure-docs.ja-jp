@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 74c43f9c912892370da81bf1ce37a4fb5d40a3df
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: c4a49b3db5fe87f006a1bcd6d13a81b47c8d6abb
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486915"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006232"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続
 
@@ -39,7 +39,7 @@ GCP アカウントを Security Center にオンボードすると、GCP Securit
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者** または **共同作成者**|
-|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (US Gov、Azure China)|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) National/Sovereign (US Gov、Azure China)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP アカウントを接続する

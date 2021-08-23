@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e95f770a3335d66eae0a690e148c4d6ddc22d5c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e283ff2de003146c8228d36843f00ca8e4faced9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555331"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748573"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption
 
@@ -64,6 +64,9 @@ Azure Disk Encryption を有効にするには、VM が次のネットワーク 
 Azure Disk Encryption では、Windows VM に対して BitLocker 外部キー保護機能が使用されます。 ドメインに参加している VM の場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。 "互換性のある TPM が装備されていない BitLocker を許可する" のグループ ポリシーについては、[BitLocker グループ ポリシー リファレンス](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)に関するページをご覧ください。
 
 ドメインに参加済みであり、カスタム グループ ポリシーを使用する仮想マシンでの BitLocker ポリシーには、次の設定を含める必要があります。[[BitLocker 回復情報のユーザー記憶域を構成する] -> [256 ビットの回復キーを許可する]](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 BitLocker のカスタム グループ ポリシー設定に互換性がない場合、Azure Disk Encryption は失敗します。 正しいポリシー設定がないマシンでは、新しいポリシーを適用し、新しいポリシーを強制的に更新して (gpupdate.exe /force)、再起動する処理が必要になる可能性があります。
+
+> [!WARNING]
+> Azure Disk Encryption では、**回復キーは保存されません**。 [[対話型ログオン: コンピューター アカウントのロックアウトのしきい値]](/windows/security/threat-protection/security-policy-settings/interactive-logon-machine-account-lockout-threshold) セキュリティ設定が有効になっている場合、マシンを回復するには、シリアル コンソールから回復キーを指定する必要があります。 適切な回復ポリシーが有効になっていることを確認する手順については、[Bitlocker 回復ガイドの計画](/windows/security/information-protection/bitlocker/bitlocker-recovery-guide-plan)に関する記事を参照してください。
 
 BitLocker によって使用される AES-CBC アルゴリズムがドメイン レベル グループ ポリシーでブロックされると、Azure Disk Encryption は失敗します。
 

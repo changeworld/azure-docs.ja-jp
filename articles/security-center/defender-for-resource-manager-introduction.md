@@ -3,16 +3,16 @@ title: Azure Defender for Resource Manager - 利点と機能
 description: Azure Defender for Resource Manager の利点と機能について学習します。
 author: memildin
 ms.author: memildin
-ms.date: 07/14/2021
+ms.date: 05/12/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1acf785021f83605db2f8bfe3188e0e2ac874d4e
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7d564d3d3a27d4ddba50ab05644d612e9bb63645
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113761881"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002578"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "113761881"
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for Resource Manager** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
-|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov、その他の Gov<br>![いいえ](./media/icons/no-icon.png) Azure 中国|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の利点

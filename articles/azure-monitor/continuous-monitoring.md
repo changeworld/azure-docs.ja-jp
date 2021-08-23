@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6c181b456dd4fe5ea49a3888dce7efbc22981167
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 550e3bf40a8b1ebb65fc351c4f3a049638b4ebfd
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289237"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080468"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -26,7 +26,7 @@ ms.locfileid: "114289237"
 
 - [Azure DevOps Projects](../devops-project/overview.md) により、お客様の既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 - [お客様の DevOps リリース パイプラインに継続的監視](./app/continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
-- [Status Monitor](./app/status-monitor-v2-overview.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
+- [Status Monitor](./app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
 - お客様のアプリケーションのコードにアクセスできる場合は、[.NET](./app/asp-net.md) 向け、[.NET Core](./app/asp-net-core.md) 向け、[Java](./app/java-in-process-agent.md) 向け、[Node.js](./app/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](./app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](./app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
 
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 22923742e5389ac2bd6e5268e6dcd9055c23a703
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 61f10707231e88130cffbfffa1c06f33084bfbbd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656078"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792146"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview でのソース認証用の資格情報
 
@@ -25,6 +25,17 @@ ms.locfileid: "109656078"
 ## <a name="introduction"></a>はじめに
 
 資格情報は、Azure Purview で、登録済みのデータ ソースに対する認証に使用できる認証情報です。 資格情報オブジェクトは、さまざまな種類の認証シナリオ (ユーザー名とパスワードを必要とする基本認証など) のために作成できます。 資格情報では、選択した認証方法の種類に基づいて、認証に必要な特定の情報がキャプチャされます。 資格情報の作成プロセス中は、機密性の高い認証情報を取得するために Azure Key Vault の既存のシークレットが使用されます。
+
+Azure Purview では、次のオプションのようなデータ ソースをスキャンするための認証方法として使用するオプションはほとんどありません。
+
+- Azure Purview マネージド ID
+- アカウントキー (キー コンテナーを使用)
+- SQL 認証 (キー コンテナーを使用)
+- サービス プリンシパル (キー コンテナーを使用)
+
+資格情報を作成する前に、データソースの種類とネットワークの要件を考慮して、シナリオに必要な認証方法を決定してください。 次のデシジョン ツリーを確認して、最も適切な資格情報を見つけます。
+
+   :::image type="content" source="media/manage-credentials/manage-credentials-decision-tree-small.png" alt-text="資格情報デシジョンツリーの管理" lightbox="media/manage-credentials/manage-credentials-decision-tree.png":::
 
 ## <a name="use-purview-managed-identity-to-set-up-scans"></a>Purview マネージド ID を使用したスキャンの設定
 
@@ -76,7 +87,7 @@ Purview マネージド ID へのアクセス権の割り当てを行う前に�
 
 3. **[アクセス ポリシーの追加]** を選択します。
 
-   :::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="AKV への Purview MSI の追加":::
+   :::image type="content" source="media/manage-credentials/add-msi-to-akv-2.png" alt-text="AKV への Purview MSI の追加":::
 
 4. **[シークレットのアクセス許可]** ドロップダウンで、 **[取得]** および **[一覧]** のアクセス許可を選択します。
 

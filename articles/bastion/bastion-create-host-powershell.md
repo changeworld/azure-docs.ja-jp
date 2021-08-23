@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell を使用して Bastion ホストを作成する | Microsoft Docs
-description: この記事では、Azure Bastion ホストを作成する方法について学習します
+description: PowerShell を使用して Azure Bastion ホストを作成する方法を説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8abd4c417181b46fbf4d5c139c157044b329ea2a
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: f08ffdafdbca4e406e0bf7d6e23fa3218ccccfe4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580159"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538032"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure PowerShell を使用して Azure Bastion ホストを作成する
 

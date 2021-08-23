@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f71084e9c13bd1a30f5d5f01a04172671074db03
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721022"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525212"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
@@ -52,7 +52,7 @@ MySQL サービスでは、基になるファイル システムに直接アク�
 次のものはサポートされていません。
 - DBA ロール:制限付き。 または、管理者ユーザー (新しいサーバーの作成時に作成されます) を使用して、ほとんどの DDL ステートメントと DML ステートメントを実行できます。 
 - SUPER 権限:同様に、[SUPER 権限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)は制限されています。
-- DEFINER: 作成するには SUPER 権限が必要であり、制限されています。 バックアップを使用してデータをインポートする場合、mysqldump の実行時に `CREATE DEFINER` コマンドを手動で、または `--skip-definer` コマンドを使用して削除します。
+- DEFINER: 作成するには SUPER 権限が必要であり、制限されています。 バックアップを使用してデータをインポートする場合、[mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html) の実行時に、`CREATE DEFINER` コマンドを手動で削除するか、`--skip-definer` コマンドを使用して削除します。
 - システム データベース:[mysql システム データベース](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)は読み取り専用であり、さまざまな PaaS 機能をサポートするために使用されます。 `mysql` システム データベースを変更することはできません。
 - `SELECT ... INTO OUTFILE`:サービスではサポートされていません。
 - `LOAD_FILE(file_name)`:サービスではサポートされていません。

@@ -1,32 +1,32 @@
 ---
-title: Windows Virtual Desktop の診断の問題 - Azure
-description: Windows Virtual Desktop の診断機能を使用して問題を診断する方法。
+title: Azure Virtual Desktop の診断の問題 - Azure
+description: Azure Virtual Desktop の診断機能を使用して問題を診断する方法。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cf654f07cbbd729fac8feb9e2f8f7ceff471ae6a
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: de140f83c4f00d92379b1ff0b70f627234480295
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446997"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757879"
 ---
-# <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Windows Virtual Desktop 問題を特定し、診断する
+# <a name="identify-and-diagnose-azure-virtual-desktop-issues"></a>Azure Virtual Desktop の問題を特定し診断する
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)を参照してください。
+>この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)を参照してください。
 
-Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Windows Virtual Desktop の診断機能の詳細については、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics.md)」を参照してください。
+Azure Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Azure Virtual Desktop の診断機能の詳細については、[「診断機能にログ分析を使用する」](diagnostics-log-analytics.md)を参照してください。
 
-診断ロール サービス自体が Windows Virtual Desktop の一部であるため、Windows Virtual Desktop に到達しない接続は診断結果に表示されません。 Windows Virtual Desktop 接続の問題は、エンドユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
+診断ロール サービス自体が Azure Virtual Desktop の一部であるため、Azure Virtual Desktop に到達しない接続は診断結果に表示されません。 Azure Virtual Desktop 接続の問題は、エンドユーザーにネットワーク接続の問題が発生しているときに発生する可能性があります。
 
 ## <a name="common-error-scenarios"></a>一般的なエラー シナリオ
 
 WVDErrors テーブルでは、あらゆる種類のアクティビティを対象にエラーが追跡記録されます。 "ServiceError" という名前の列には、"True" または "False" という印の付いた追加フラグがあります。 このフラグにより、エラーがサービスに関連しているのかどうかがわかります。
 
-* 値が "True" の場合、サービス チームはこの問題を既に調査している可能性があります。 これがユーザー エクスペリエンスに影響を与え、高い頻度で現れる場合、Windows Virtual Desktop のサポート チケットを送信することをお勧めします。
+* 値が "True" の場合、サービス チームはこの問題を既に調査している可能性があります。 これがユーザー エクスペリエンスに影響を与え、高い頻度で現れる場合、Azure Virtual Desktop のサポート チケットを送信することをお勧めします。
 * 値が "False" の場合、構成に誤りがある可能性があり、自分で修正できます。 エラー メッセージを見れば、どこから始めたら良いかヒントが与えられます。
 
 次の表では、管理者が経験する可能性のある一般的なエラーの一覧を示します。
@@ -71,6 +71,6 @@ WVDErrors テーブルでは、あらゆる種類のアクティビティを対�
 
 ## <a name="next-steps"></a>次のステップ
 
-Windows Virtual Desktop 内のロールについて詳しくは、「[Windows Virtual Desktop 環境](environment-setup.md)」をご覧ください。
+Azure Virtual Desktop 内のロールについて詳しくは、[「Azure Virtual Desktop 環境」](environment-setup.md)をご覧ください。
 
-Windows Virtual Desktop に使用可能な PowerShell コマンドレットの一覧を表示するには、[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)に関する記事をご覧ください。
+Azure Virtual Desktop に使用可能な PowerShell コマンドレットの一覧を表示するには、[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)に関する記事をご覧ください。

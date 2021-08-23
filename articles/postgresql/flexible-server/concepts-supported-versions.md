@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/23/2021
-ms.openlocfilehash: 7f779d3856187cb6ce5db55b3a974fdd3818d8dc
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.date: 05/19/2021
+ms.openlocfilehash: 07663ac14dcfb3e323a2edeadf886a715ecac3a0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112894943"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463726"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでサポートされる Postgres のメジャー バージョン
 
@@ -22,15 +22,15 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、現在�
 
 ## <a name="postgresql-version-13"></a>PostgreSQL バージョン 13
 
-現在のマイナー リリースは **13.3** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/13/static/release-13-3.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 
+現在のマイナー リリースは **13.2** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-13-2.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 
 
 ## <a name="postgresql-version-12"></a>PostgreSQL バージョン 12
 
-現在のマイナー リリースは **12.7** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-7.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 既存のサーバーは、今後予定されているメンテナンス期間中に、サポートされている最新のマイナー バージョンに自動的にアップグレードされます。
+現在のマイナー リリースは **12.6** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-6.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 既存のサーバーは、今後予定されているメンテナンス期間中に、サポートされている最新のマイナー バージョンに自動的にアップグレードされます。
 
 ## <a name="postgresql-version-11"></a>PostgreSQL バージョン 11
 
-現在のマイナー リリースは **11.12** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-12.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 既存のサーバーは、今後予定されているメンテナンス期間中に、サポートされている最新のマイナー バージョンに自動的にアップグレードされます。
+現在のマイナー リリースは **11.11** です。 このリリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-11.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 既存のサーバーは、今後予定されているメンテナンス期間中に、サポートされている最新のマイナー バージョンに自動的にアップグレードされます。
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL バージョン 10 以前
 

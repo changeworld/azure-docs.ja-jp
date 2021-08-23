@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: a1f7d8584aada19e565aa4eff40c44f94b1bbaba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6025451779ba04b3a20307d35ca8a939c7762d64
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752977"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474372"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -508,7 +508,7 @@ Modify では次の操作がサポートされています。
 これらのチェックのいずれかが失敗した場合、ポリシー評価は指定された **conflictEffect** にフォールバックします。
 
 > [!IMPORTANT]
-> マップされたプロパティが 'Modifiable' でない API バージョンを使用した要求の失敗を回避するために、エイリアスを含む Modify の定義には _audit_ **conflict effect** を使用することを推奨します。 API バージョン間で同じエイリアスの動作が異なる場合は、条件付き変更操作を使用して、各 API バージョンで使用される変更操作を決定できます。
+> エイリアスを含む Modify の定義では、_audit_ **conflict 効果** を使用して、マッピングされたプロパティが Modifiable でないバージョンの API を使用して要求を送信した場合に、その要求が失敗する事態を避けることをお勧めします。 API バージョン間で同じエイリアスの動作が異なる場合は、条件付き変更操作を使用し
 
 Modify 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
 
@@ -571,7 +571,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|Operation |説明 |
+|操作 |説明 |
 |-|-|
 |addOrReplace |プロパティまたはタグが別の値で既に存在する場合でも、定義されたプロパティまたはタグと値をリソースに追加します。 |
 |追加 |定義されたプロパティまたはタグと値をリソースに追加します。 |

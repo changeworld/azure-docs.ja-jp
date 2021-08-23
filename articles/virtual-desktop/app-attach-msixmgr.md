@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f7c0af3ef2992fdd2c337ff6d1172f6da6db5f56
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 7b997f817e8e430d6f2985f73e4005da86dcda10
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708772"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745531"
 ---
 # <a name="using-the-msixmgr-tool"></a>MSIXMGR ツールの使用
 
@@ -84,4 +84,4 @@ MSIX アプリのアタッチの詳細については、「[MSIX アプリのア
 - [Azure Virtual Desktop 用の MSIX イメージを準備する](app-attach-image-prep.md)
 - [MSIX アプリのアタッチ用にファイル共有を設定する](app-attach-file-share.md)
 
-MSIX アプリのアタッチについて不明な点がある場合は、[アプリのアタッチのよくあるご質問](app-attach-faq.yml)および[アプリのアタッチの用語集](app-attach-glossary.md)に関する記事を参照してください。
+MSIX アプリのアタッチについて不明な点がある場合は、[アプリのアタッチのよくあるご質問](app-attach-faq.md)および[アプリのアタッチの用語集](app-attach-glossary.md)に関する記事を参照してください。

@@ -1,5 +1,5 @@
 ---
-title: Windows VM のイメージ ギャラリーで Azure Image Builder を使用する (プレビュー)
+title: Windows VM のイメージ ギャラリーで Azure Image Builder を使用する
 description: Azure Image Builder と Azure PowerShell を使用し、Azure Shared Gallery イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: e8caf9f742217161c60ce90351989999f18adabb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dd821ac9f5722047ec5c233feaaf2a48d4de3b41
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694089"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031153"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Windows イメージを作成して共有イメージ ギャラリーに配布する 
+# <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Windows イメージを作成して共有イメージ ギャラリーに配布する 
 
 この記事では、Azure Image Builder と Azure PowerShell を使用して [Shared Image Gallery](../shared-image-galleries.md) にイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は [Azure CLI](../linux/image-builder-gallery.md) で実行することもできます。
 
@@ -27,24 +28,9 @@ Azure Image Builder では、sysprep が自動的に実行され、イメージ�
 
 カスタマイズを層にする回数にご注意ください。 Sysprep コマンドは、1 つの Windows イメージで最大 8 回実行できます。 Sysprep を 8 回実行した後、Windows イメージを再作成する必要があります。 詳細は、[Sysprep の実行回数制限](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)に関するページを参照してください。 
 
-> [!IMPORTANT]
-> 現在、Azure Image Builder はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="register-the-features"></a>機能の登録
-プレビュー中に Azure Image Builder を使用するには、新しい機能を登録する必要があります。
-
-```powershell
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-```
-
-機能の登録の状態を確認します。
-
-```powershell
-Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-```
-
-`RegistrationState` が `Registered` になってから次の手順に移ります。
+Azure Image Builder を使用するには、機能を登録する必要があります。
 
 プロバイダー登録を確認してください。 いずれからも `Registered` が返されることを確認します。
 

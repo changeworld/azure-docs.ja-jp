@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c2a687dc1165b2eca52213811721b35e998a6d9
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644937"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033286"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -122,7 +122,7 @@ TPM を使用してこれらのキーをセキュリティで保護すること�
 * **WAM 対話型サインイン中の MFA**: WAM を通じたトークン要求中に、ユーザーがアプリにアクセスするために MFA を実行する必要がある場合、この対話中に更新される PRT には MFA 要求が刻印されます。
    * この場合、MFA 要求は継続的に更新されないため、MFA 期間はディレクトリで設定された有効期間に基づきます。
    * 以前の既存の PRT と RT がアプリへのアクセスに使用されている場合、PRT と RT は最初の認証の証明と見なされます。 2 番目の証明と刻印された MFA 要求で、新しい AT が必要になります。 これにより、新しい PRT と RT も発行されます。
-* **デバイス登録中の MFA**: [デバイスの登録を MFA に要求する](device-management-azure-portal.md#configure-device-settings)ように管理者が Azure AD でデバイス設定を構成した場合、ユーザーは登録を完了するために MFA を実行する必要があります。 このプロセスの間、ユーザーに発行される PRT は、登録中に取得された MFA 要求を持ちます。 この機能は、参加操作を行ったユーザーにのみ適用され、そのデバイスにサインインしている他のユーザーには適用されません。
+* **デバイス登録中の MFA**: [デバイスの登録を MFA に要求する](device-management-azure-portal.md#configure-device-settings)ように管理者が Azure AD でデバイス設定を構成した場合、ユーザーは登録を完了するために MFA を実行する必要があります。 このプロセスの間、ユーザーに発行される PRT は、登録中に取得された MFA 要求を持ちます。 この機能は、デバイスの登録済み所有者にのみ適用され、そのデバイスにサインインしている他のユーザーには適用されません。
    * WAM の対話型サインインと同様、MFA 要求は継続的に更新されないため、MFA の期間はディレクトリで設定された有効期間に基づきます。
 
 Windows 10 では、PRT のパーティション分割されたリストを資格情報ごとに保持します。 したがって、Windows Hello for Business、パスワード、またはスマート カードのそれぞれに PRT があります。 このパーティション分割により、使用する資格情報に基づいて MFA 要求が分離され、トークン要求中に混同されないことが保証されます。

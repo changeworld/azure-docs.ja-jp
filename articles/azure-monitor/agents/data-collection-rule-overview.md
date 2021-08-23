@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: references_region
+ms.openlocfilehash: e7da31ec80153fe2d2bd6923850a4342886fa9be
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586337"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495572"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor のデータ収集ルール (プレビュー)
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータを送信または格納する場所を指定します。 この記事では、データ収集ルールの概要 (その内容と構造、それらを作成して使用する方法など) について説明します。
@@ -50,6 +51,10 @@ ms.locfileid: "104586337"
 ## <a name="limits"></a>制限
 各データ収集ルールに適用される制限については、「[Azure Monitor サービスの制限](../service-limits.md#data-collection-rules)」を参照してください。
 
+## <a name="data-residency"></a>データの保存場所 
+サービスとしてのデータ収集ルールは、伴いにデプロイされます。 ルールは、指定したリージョンに作成されて格納され、同じ Geo 内の [ペアリージョン](../../best-practices-availability-paired-regions.md#azure-regional-pairs) にバックアップされます。  
+
+**単一リージョン データ保存場所**: 現在、顧客データを 1 つのリージョンに格納できるようにするプレビュー機能は、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 単一リージョン保存場所は、これらのリージョンでは既定で有効になっています。
 
 ## <a name="create-a-dcr"></a>DCR を作成する
 現在、次の方法のいずれかを使用して DCR を作成できます。

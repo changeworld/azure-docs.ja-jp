@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 1/28/2020
+ms.date: 5/12/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17dd8ec7a7fcd14d9f72a016a2208e7e37be2f36
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018158"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949987"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 
@@ -223,7 +223,7 @@ Stream Analytics のすべての入力には、**シリアル化形式** があ�
 
 ## <a name="region-support"></a>リージョンのサポート
 
-この機能は、次のリージョンで使用できます。
+Standard SKU を使用する場合、この機能は次のリージョンで利用できます。
 
 * 米国中西部
 * 北ヨーロッパ
@@ -232,7 +232,7 @@ Stream Analytics のすべての入力には、**シリアル化形式** があ�
 * 米国東部 2
 * 西ヨーロッパ
 
-追加リージョンの[サポートを要求する](https://aka.ms/ccodereqregion)ことができます。
+追加リージョンの[サポートを要求する](https://aka.ms/ccodereqregion)ことができます。 ただし、[Stream Analytics クラスター](./cluster-overview.md)を使用する場合、このようなリージョンの制限はありません。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

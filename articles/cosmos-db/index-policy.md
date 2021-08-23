@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: bd77d8fe2e934ebfe9d4fad994e8aa9c6644ef8e
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 20798fc438f037ca7372822ea8bd54117b8936ee
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165661"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456585"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -97,7 +97,7 @@ Azure Cosmos DB の合計使用ストレージは、データ サイズとイン
 
 - `dataType` には、`String` または `Number` のいずれかを指定できます。 これは、インデックスが作成される JSON プロパティの種類を示します。
 
-指定しない場合、これらのプロパティには次の既定値が設定されます。
+これらのプロパティを設定する必要はなくなりました。 指定しない場合、これらのプロパティには次の既定値が設定されます。
 
 | **プロパティ名**     | **既定値** |
 | ----------------------- | -------------------------------- |

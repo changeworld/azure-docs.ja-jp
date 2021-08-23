@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 05/20/2021
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1f997ff34703e95c498a0f3c1646bf3acb0129e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557541"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469993"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -42,7 +42,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 1. **[従来の管理者]** タブをクリックします。
 
-    ![[従来の管理者] が開かれているスクリーンショット](./media/classic-administrators/classic-administrators.png)
+    ![[従来の管理者] が開かれているスクリーンショット](./media/shared/classic-administrators.png)
 
 1. **[追加]**  >  **[共同管理者の追加]** をクリックして、[共同管理者の追加] ウィンドウを開きます。
 
@@ -97,7 +97,9 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 ## <a name="change-the-service-administrator"></a>サービス管理者を変更する
 
-サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 既定の設定では、Azure サブスクリプションにサインアップした時点では、サービス管理者とアカウント管理者は同じです。 アカウント管理者ロールのユーザーには、Azure portal へのアクセス権が与えられません。 サービス管理者ロールのユーザーには、Azure portal へのフル アクセス権が与えられます。 アカウント管理者とサービス管理者が同じユーザーの場合、サービス管理者を別のユーザーに変更すると、アカウント管理者は Azure portal にアクセスできなくなります。 ただし、アカウント管理者はいつでもアカウント センターを使用して、サービス管理者を自身に戻すことができます。
+サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 既定の設定では、Azure サブスクリプションにサインアップした時点では、サービス管理者とアカウント管理者は同じです。
+
+アカウント管理者ロールのユーザーは、Azure portal にアクセスして課金を管理できますが、サブスクリプションを取り消すことはできません。 サービス管理者ロールのユーザーは、Azure portal へのフル アクセスが与えられ、サブスクリプションを取り消すことができます。 アカウント管理者は、自身をサービス管理者にすることができます。
 
 Azure portal でサービス管理者を変更するには、次の手順に従います。
 
@@ -109,7 +111,7 @@ Azure portal でサービス管理者を変更するには、次の手順に従�
 
 1. 次に、左側のナビゲーションで、 **[プロパティ]** をクリックします。
 
-1. **[サービス管理者]** をクリックします。
+1. **[サービス管理者の変更]** をクリックします。
 
     ![Azure portal でサブスクリプションの [プロパティ] を示すスクリーンショット](./media/classic-administrators/service-admin.png)
 

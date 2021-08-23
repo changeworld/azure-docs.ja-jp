@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.author: helohr
 ms.reviewer: denisgun
 manager: femila
-ms.openlocfilehash: 41ee917602ed67af40f3244ad7215cae4d3a93c8
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: c8df5cbcc241877e5637abd89804071b4dcbf938
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113032457"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753091"
 ---
 # <a name="proxy-server-guidelines-for-azure-virtual-desktop"></a>Azure Virtual Desktop のプロキシ サーバーのガイドライン
 
@@ -115,7 +115,7 @@ Windows 7 で実行されているクライアントは、リバース接続 RDP
 | macOS | はい |
 | Windows ストア | はい |
 
-Linux ベースのシン クライアントでのプロキシ サポートの詳細については、「[シン クライアントのサポート](./user-documentation/linux-overview.md)」を参照してください。
+Linux ベースのシン クライアントでのプロキシ サポートの詳細については、「[シン クライアントのサポート](linux-overview.md)」を参照してください。
 
 ## <a name="support-limitations"></a>サポートの制限
 

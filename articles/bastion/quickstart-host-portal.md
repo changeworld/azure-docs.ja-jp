@@ -1,23 +1,23 @@
 ---
-title: 'クイックスタート: VM 設定から Bastion を構成する'
+title: 'クイックスタート: Azure Bastion を構成し、プライベート IP アドレスとブラウザーを使用して VM に接続する'
 titleSuffix: Azure Bastion
-description: 仮想マシン設定から Azure Bastion ホストを作成し、ブラウザーを使用してプライベート IP アドレスで VM に安全に接続する方法について説明します。
+description: 仮想マシンから Azure Bastion ホストを作成し、ブラウザーを使用してプライベート IP アドレスで VM に安全に接続する方法について説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 07/13/2021
+ms.date: 06/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7598b2908365061ae789ce2ffafb6088dc5c2a68
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 67211215b3dac9ad8774dc4e3c67a869bd031646
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733360"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111269"
 ---
-# <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>クイックスタート: VM 設定から Azure Bastion を構成する
+# <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>クイックスタート: ブラウザーを使用してプライベート IP アドレスで VM に安全に接続する
 
-このクイックスタートの記事では、Azure portal で VM の設定に基づいて Azure Bastion を構成し、プライベート IP アドレスを使用して VM に接続する方法について説明します。 サービスがプロビジョニングされると、同じ仮想ネットワーク内のすべての仮想マシンで RDP/SSH エクスペリエンスを使用できるようになります。 この VM には、パブリック IP アドレスやクライアント ソフトウェア、エージェント、特殊な構成は必要ありません。 VM ではパブリック IP アドレスを他のことで必要としない場合、削除してかまいません。 次に、プライベート IP アドレスを利用してポータルから VM に接続します。 Azure Bastion の詳細については、「[Azure Bastion とは](bastion-overview.md)」を参照してください。
+Azure portal と Azure Bastion を使用してブラウザーで仮想マシン (VM) に接続することができます。 このクイックスタート記事では、ご利用の VM の設定に基づいて Azure Bastion を構成する方法について説明します。 サービスがプロビジョニングされると、同じ仮想ネットワーク内のすべての仮想マシンで RDP/SSH エクスペリエンスを使用できるようになります。 この VM には、パブリック IP アドレスやクライアント ソフトウェア、エージェント、特殊な構成は必要ありません。 VM ではパブリック IP アドレスを他のことで必要としない場合、削除してかまいません。 次に、プライベート IP アドレスを利用してポータルから VM に接続します。 Azure Bastion の詳細については、「[Azure Bastion とは](bastion-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a><a name="prereq"></a>前提条件
 
@@ -62,8 +62,7 @@ ms.locfileid: "113733360"
 | --- | --- |
 | 名前 | VNet1-bastion |
 | + サブネット名 | AzureBastionSubnet |
-| AzureBastionSubnet アドレス | サブネット マスクが /27 以上の VNet アドレス空間内のサブネット。<br> 例: 10.1.1.0/26。  |
-| 価格レベルまたは SKU | Standard |
+| AzureBastionSubnet アドレス | VNet アドレス空間内のサブネット。サブネット マスクは /27 とします 例: 10.1.1.0/27。  |
 | パブリック IP アドレス |  新規作成 |
 | パブリック IP アドレス名 | VNet1-ip  |
 | パブリック IP アドレスの SKU |  Standard  |
@@ -73,9 +72,7 @@ ms.locfileid: "113733360"
 
 bastion ホストは、いくつかの方法で構成できます。 以降の手順では、Azure portal で VM から bastion ホストを直接作成します。 VM からホストを作成すると、実際の仮想マシンや仮想ネットワークに応じて、さまざまな設定が自動的に読み込まれます。
 
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
-1. Azure portal にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 接続先の VM に移動し、 **[接続]** を選択します。
 
    :::image type="content" source="./media/quickstart-host-portal/vm-connect.png" alt-text="仮想マシンの設定のスクリーンショット。" lightbox="./media/quickstart-host-portal/vm-connect.png":::
@@ -86,26 +83,25 @@ bastion ホストは、いくつかの方法で構成できます。 以降の�
 
    :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="[Bastion を使用する] のスクリーンショット。":::
 
-1. **[Azure Bastion を使用して接続する]** ページの **手順 1** では、VM から直接 bastion ホストを作成しているため、値が事前に設定されています。
+1. **[Azure Bastion を使用して接続する]** ページで、値を構成します。
 
-   :::image type="content" source="./media/quickstart-host-portal/create-step-1.png" alt-text="手順 1 で事前設定した設定のスクリーンショット。" lightbox="./media/quickstart-host-portal/create-step-1.png":::
+   * **手順 1:** VM から直接 bastion ホストを作成しているため、値は事前に設定されています。
 
-1. **[Azure Bastion を使用して接続する]** ページの **手順 2** で、値を構成します。 AzureBastionSubnet アドレス空間には、推奨されるアドレス空間があらかじめ設定されています。 AzureBastionSubnet には、/27 以上 (/26、/25 など) のアドレス空間を指定する必要があります。 ホストのスケーリングが制限されないように、/26 を使用することをお勧めします。 この設定の構成が完了したら、 **[サブネットの作成]** をクリックして AzureBastionSubnet を作成します。
+   * **手順 2:** アドレス空間には、推奨されるアドレス空間があらかじめ設定されています。 AzureBastionSubnet には、/27 以上 (/26、/25 など) のアドレス空間を指定する必要があります。
 
-     :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Bastion サブネットの作成のスクリーンショット。":::
+   :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Bastion サブネットの作成のスクリーンショット。":::
 
+1. **[サブネットの作成]** をクリックして、AzureBastionSubnet を作成します。
 1. サブネットが作成されたら、ページは自動的に **手順 3** に進みます。 手順 3 では、次の値を使用します。
 
    * **[名前]** : bastion ホストに名前を付けます。
-   * **価格レベル:** 価格レベルは SKU です。 この演習では、ドロップダウンから **Standard** を選択します。 Standard SKU を選択すると、ホスト スケーリングのインスタンス数を構成できます。 Basic SKU では、ホストのスケーリングはサポートされていません。 詳細については、[構成設定 - SKU](configuration-settings.md#skus) に関するページを参照してください。 Standard SKU は、プレビュー段階にあります。
-   * **インスタンス数:** これは、ホスト スケーリングの設定です。 スライダーを使用して構成します。 Basic レベルの SKU を指定した場合、インスタンスは 2 つに制限され、この設定を構成することはできません。 詳細については、[構成設定 - ホスト スケーリング](configuration-settings.md#instance)に関するページを参照してください。 インスタンス数はプレビュー段階であり、Standard SKU に依存しています。 このクイックスタートでは、スケール ユニットの [価格](https://azure.microsoft.com/pricing/details/azure-bastion) に関する考慮事項に留意しながら、希望するインスタンス数を選択できます。
    * **[パブリック IP アドレス]**: **[新規作成]** を選択します｡
    * **[パブリック IP アドレス名]** : パブリック IP アドレス リソースの名前です。
-   * **[パブリック IP アドレスの SKU]** : **[Standard]** に事前構成されています。
+   * **[パブリック IP アドレスの SKU]** : **[Standard]** に事前構成されています
    * **[割り当て]** : **[静的]** に事前構成されています。 動的割り当ては Azure Bastion に使用できません。
    * **[リソース グループ]** : VM と同じリソース グループ。
 
-   :::image type="content" source="./media/quickstart-host-portal/create-step-3.png" alt-text="手順 3 のスクリーンショット。":::
+   :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="手順 3 のスクリーンショット。":::
 1. 値の入力が完了したら、 **[Create Azure Bastion using defaults]\(既定値を使用して Azure Bastion を作成する\)** を選択します。 Azure によって設定が検証され、ホストが作成されます。 ホストとそのリソースの作成およびデプロイには、約 5 分かかります。
 
 ## <a name="remove-vm-public-ip-address"></a><a name="remove"></a>VM のパブリック IP アドレスを削除する
@@ -119,7 +115,7 @@ Bastion が仮想ネットワークにデプロイされると、画面が [接�
 1. 仮想マシン用のユーザー名とパスワードを入力します。 次に、 **[接続]** を選択します。
 
    :::image type="content" source="./media/quickstart-host-portal/connect.png" alt-text="スクリーンショットは、[Azure Bastion を使用して接続する] ダイアログを示しています。":::
-1. Bastion を使用したこの仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。 クリップボードへのアクセス許可を求めるメッセージが表示された場合は、 **[許可]** をクリックします。 これにより、画面の左側にあるリモート クリップボードの矢印を使用できます。
+1. Bastion を使用したこの仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。 
 
    * 接続したとき、VM のデスクトップの外観は、サンプルのスクリーンショットとは違うものになることがあります。 
    * VM に接続しているとき、キーボード ショートカット キーを使用すると、ローカル コンピューターのショートカット キーとは同じ動作にならないことがあります。 たとえば、Windows クライアントから Windows VM に接続しているとき、CTRL + ALT + END は、ローカル コンピューターで CTRL + ALT + Delete のキーボード ショートカットになります。 Windows VM に接続しているとき、Mac からこれを行うには、キーボード ショートカットは Fn + CTRL + ALT + Backspace になります。

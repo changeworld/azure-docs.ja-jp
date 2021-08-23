@@ -4,16 +4,16 @@ description: Azure に高可用性で回復力のあるアプリケーション�
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 04/21/2021
+ms.date: 05/27/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 94de23463c99960a6c58ef5d4aa964abf828dd22
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 07f0e87b77d359d9bc1009ccc7e5176795e12cd5
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123863"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029011"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
 
@@ -84,6 +84,7 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     [Azure Backup](../backup/backup-create-rs-vault.md#set-storage-redundancy)                                                | :large_blue_diamond:  |
 |     [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)                                           | :large_blue_diamond:  |
 |     [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)                             | :large_blue_diamond:  |
+|     [Azure DNS: Azure DNS Private Zones](../dns/private-dns-getstarted-portal.md)                   | :large_blue_diamond:  |
 |     [Azure Express Route](../expressroute/designing-for-high-availability-with-expressroute.md)                                       | :large_blue_diamond:  |
 |     [Azure パブリック IP](../virtual-network/public-ip-addresses.md)                                           | :large_blue_diamond:  |
 |     Azure SQL Database ([General Purpose レベル](../azure-sql/database/high-availability-sla.md))                 | :large_blue_diamond:  |
@@ -127,6 +128,7 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     [Azure Cognitive Search](../search/search-performance-optimization.md#availability-zones)               | :large_blue_diamond:  |
 |     Azure Cognitive Services: [Text Analytics](../cognitive-services/text-analytics/index.yml)                    | :large_blue_diamond:  |
 |     [Azure Data Explorer](/azure/data-explorer/create-cluster-database-portal)                               | :large_blue_diamond:  |
+|     [Azure Data Factory](../data-factory/index.yml)                               | :large_blue_diamond:  |
 |     Azure Database for MySQL – [フレキシブル サーバー](../mysql/flexible-server/concepts-high-availability.md)                  | :large_blue_diamond:  |
 |     Azure Database for PostgreSQL – [フレキシブル サーバー](../postgresql/flexible-server/overview.md)             | :large_blue_diamond:  |
 |     [Azure DDoS Protection](../ddos-protection/ddos-faq.md)                                       | :large_blue_diamond:  |
@@ -140,8 +142,8 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     [Azure Web アプリケーション ファイアウォール](../firewall/deploy-availability-zone-powershell.md)                              | :large_blue_diamond:  |
 |     [Container Registry](../container-registry/zone-redundancy.md)                                          | :large_blue_diamond:  |
 |     [Event Grid](../event-grid/overview.md)                                                  | :large_blue_diamond:  |
-|     [Network Watcher](../network-watcher/frequently-asked-questions.md#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
-|     Network Watcher: [Traffic Analytics](../network-watcher/frequently-asked-questions.md#service-availability-and-redundancy)                          | :large_blue_diamond:  |
+|     [Network Watcher](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
+|     Network Watcher: [Traffic Analytics](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | :large_blue_diamond:  |
 |     [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)                                           | :large_blue_diamond:  |
 |     [Premium Blob Storage](../storage/blobs/storage-blob-performance-tiers.md)                                        | :large_blue_diamond:  |
 |     ストレージ: [Azure Premium Files](../storage/files/storage-files-planning.md)                                | :large_blue_diamond:  |
@@ -156,8 +158,8 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     Virtual Machines: [Ev4 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)                                | :large_blue_diamond:  |
 |     Virtual Machines: [Fsv2 シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
 |     Virtual Machines: [M シリーズ](../virtual-machines/windows/create-powershell-availability-zone.md)                                  | :large_blue_diamond:  |
-|     [Virtual WAN](../virtual-wan/virtual-wan-about.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | :large_blue_diamond:  |
-|     Virtual WAN: [ExpressRoute](../virtual-wan/virtual-wan-about.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | :large_blue_diamond:  |
+|     [Virtual WAN](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | :large_blue_diamond:  |
+|     Virtual WAN: [ExpressRoute](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | :large_blue_diamond:  |
 |     Virtual WAN: [ポイント対サイト VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                      | :large_blue_diamond:  |
 |     Virtual WAN: [サイト間 VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                       | :large_blue_diamond:  |
 

@@ -3,17 +3,17 @@ title: Azure 以外のマシンを Azure Security Center に接続する
 description: Azure 以外のマシンを Azure Security Center に接続する方法について説明します
 author: memildin
 ms.author: memildin
-ms.date: 07/12/2021
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 3bda35f3973a5125a3e780448b651425bc054cce
-ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
+ms.openlocfilehash: 8ca3f7c9104fa655536762ac38f50c78cb96ad3a
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113641451"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237938"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
 
@@ -30,17 +30,11 @@ Azure 以外のコンピューターは、次のいずれかの方法で接続�
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc を使用して Azure 以外のマシンを追加する
 
-[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)は、Azure 以外のマシンを Azure Security Center に追加する方法として推奨されます。
+Azure Arc 対応サーバーは、Azure 以外のマシンを Azure Security Center に追加する方法として推奨されます。
 
-Azure Arc 対応サーバーがあるマシンは Azure リソースになり、その上に Log Analytics エージェントをインストールすると、他の Azure リソースのような推奨事項と共に、Security Center に表示されます。
+Azure Arc 対応サーバーがあるマシンは Azure リソースになり、他の Azure リソースのような推奨事項と共に、Security Center に表示されます。
 
-さらに、Azure Arc 対応サーバーには、マシンでゲスト構成ポリシーを有効にするオプション、他の Azure サービスを使用してデプロイを簡素化するオプションなど、強化された機能が用意されています。 利点の概要については、「[サポートされるシナリオ](../azure-arc/servers/overview.md#supported-scenarios)」を参照してください。
-
-> [!NOTE]
-> Security Center の Log Analytics エージェント自動デプロイツールでは、Azure Arc を実行するマシンがサポートされません。Azure Arc を利用してマシンを接続した後、関連する Security Center 推奨事項を利用してエージェントをデプロイし、Security Center により提供される保護機能のベネフィットを得ることができます。
->
-> - [Log Analytics エージェントを Linux ベースの Azure Arc マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/720a3e77-0b9a-4fa9-98b6-ddf0fd7e32c1)
-> - [Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/27ac71b1-75c5-41c2-adc2-858f5db45b08)
+さらに、Azure Arc 対応サーバーには、マシンでゲスト構成ポリシーを有効にするオプション、Log Analytics エージェントを拡張機能としてデプロイするオプション、他の Azure サービスを使用してデプロイを簡素化するオプションなど、強化された機能が用意されています。 利点の概要については、「[サポートされるシナリオ](../azure-arc/servers/overview.md#supported-scenarios)」を参照してください。
 
 [Azure Arc 対応サーバー](../azure-arc/servers/overview.md)についての詳細を参照してください。
 
@@ -50,7 +44,7 @@ Azure Arc 対応サーバーがあるマシンは Azure リソースになり、
 - 複数のマシンを大規模に Arc 対応サーバーに接続するには、「[ハイブリッド マシンを大規模に Azure に接続する](../azure-arc/servers/onboard-service-principal.md)」を参照してください
 
 > [!TIP]
-> Amazon Web Services (AWS) で実行されているマシンをオンボードしようとしている場合、Security Center の AWS 用コネクタにより、Azure Arc のデプロイは自動的かつ透過的に処理されます。 詳細については、「[Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)」を参照してください。
+> AWS で実行されているマシンをオンボードしようとしている場合、Security Center の AWS 用コネクタにより、Azure Arc のデプロイは自動的かつ透過的に処理されます。 詳細については、「[Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)」を参照してください。
 
 ::: zone-end
 

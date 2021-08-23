@@ -6,14 +6,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 06/04/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1dbfc83a24b1c4db09625a73cf0684acedfb2355
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 97c8f1111f84b36ead123dcad9f8d9faeb157336
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228120"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558856"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
@@ -35,9 +36,9 @@ P2S VPN 接続は、Windows デバイスと Mac デバイスから開始され�
 
 * SSTP は、Windows クライアント プラットフォームでのみサポートされる TLS ベースの VPN トンネルです。 ファイアウォールを通過できるため、接続元の場所を問わず Azure に接続する際の理想的なオプションとなっています。 サーバー側でのサポート対象の SSTP バージョンは、1.0、1.1、1.2 です。 使用するバージョンはクライアントによって決まります。 Windows 8.1 以降の場合、SSTP では既定で 1.2 が使用されます。
 
-* SSL/TLS ベースの VPN プロトコルである OpenVPN® プロトコル。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
+* SSL/TLS ベースの VPN プロトコルである OpenVPN® プロトコル。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (macOS バージョン 10.13 以上) から接続する際に使用できます。
 
-* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
+* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (macOS バージョン 10.11 以上) から接続する際に使用できます。
 
 P2S 接続には、以下のものが必要です。
 

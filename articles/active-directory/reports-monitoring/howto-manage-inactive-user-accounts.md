@@ -17,12 +17,12 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c15bc161874d9c09423fe4070958538ec2148ca
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: cce8adf65eba2586440d490860f13a6c5aa1f626
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795098"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088176"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 
@@ -75,7 +75,7 @@ ms.locfileid: "108795098"
 このプロパティを読み取るには、次の権限を付与する必要があります。 
 
 - AuditLogs.Read.All
-- Organisation.Read.All  
+- Organization.Read.All  
 
 
 ### <a name="when-does-azure-ad-update-the-property"></a>このプロパティが Azure AD で更新されるのはいつですか?
@@ -95,3 +95,4 @@ LastSignInDateTime タイムスタンプを生成するには、サインイン�
 * [Azure Active Directory レポート API と証明書を使用してデータを取得します](tutorial-access-api-with-certificates.md)
 * [監査 API リファレンス](/graph/api/resources/directoryaudit) 
 * [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin)
+

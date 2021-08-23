@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 4d7123aa22d95e3e4c3850be775ddad96f28d280
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ff5d891b4374a61c8806666a48505a2ee4682a67
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785309"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094476"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -31,7 +31,7 @@ ms.locfileid: "107785309"
 
 * <a id="file-access-options"></a>
   **Azure Files でファイルにアクセスするさまざまな方法を挙げてください。**  
-    SMB ファイル共有は、SMB 3.0 プロトコルを使用してローカル マシンにマウントできます。また、[Storage Explorer](https://storageexplorer.com/) などのツールを使用してファイル共有内のファイルにアクセスすることもできます。 NFS ファイル共有は、Azure portal によって提供されるスクリプトをコピーおよび貼り付けすることで、ローカル マシンにマウントできます。 アプリケーションから、ストレージ クライアント ライブラリ、REST API、PowerShell、または Azure CLI を使用して、Azure ファイル共有内のファイルにアクセスできます。
+    SMB ファイル共有は、SMB 3.x プロトコルを使用してローカル マシンにマウントできます。また、[Storage Explorer](https://storageexplorer.com/) などのツールを使用してファイル共有内のファイルにアクセスすることもできます。 NFS ファイル共有は、Azure portal によって提供されるスクリプトをコピーおよび貼り付けすることで、ローカル マシンにマウントできます。 アプリケーションから、ストレージ クライアント ライブラリ、REST API、PowerShell、または Azure CLI を使用して、Azure ファイル共有内のファイルにアクセスできます。
 
 * <a id="what-is-afs"></a>
   **Azure File Sync とは何ですか。**  
@@ -335,7 +335,7 @@ ms.locfileid: "107785309"
 * <a id="backup-nfs-data"></a>
 **NFS 共有に格納されているデータをバックアップする方法は?**
 
-    NFS 共有上のデータのバックアップは、rsync などの使い慣れたツールや、サードパーティのバックアップ パートナーの製品などを使用するように計画できます。 初期プレビューの一部には、[Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、[Veeam](https://www.veeam.com/blog/?p=123438)、[Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) などの複数のバックアップ パートナーが含まれています。これらのソリューションは、Azure Files の SMB 3.0 と NFS 4.1 の両方で動作するように拡張されました。
+    NFS 共有上のデータのバックアップは、rsync などの使い慣れたツールや、サードパーティのバックアップ パートナーの製品などを使用するように計画できます。 初期プレビューの一部には、[Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、[Veeam](https://www.veeam.com/blog/?p=123438)、[Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001) などの複数のバックアップ パートナーが含まれています。これらのソリューションは、Azure Files の SMB 3.x と NFS 4.1 の両方で動作するように拡張されました。
 
 * <a id="migrate-nfs-data"></a>
 **既存のデータを NFS 共有に移行することはできますか?**
@@ -347,7 +347,7 @@ ms.locfileid: "107785309"
 * <a id="port-445-blocked"></a>
 **Azure Files のマウントに失敗している My ISP または IT blocks Port 445 です。どうすればよいですか。**
 
-    [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)確認できます。 Azure ファイルは、リージョンやデータセンターの外側からは SMB 3.0 (暗号化サポートあり) を使用した接続のみを許可します。 SMB 3.0 プロトコルには、インターネット経由で使用する場合に非常に安全となる、チャネル暗号化などのさまざまなセキュリティ機能が導入されています。 ただし、より古い SMB バージョンで確認された脆弱性の履歴的理由から、ポート 445 がブロックされている可能性もあります。 理想としては、ポートは SMB 1.0 トラフィックに対してのみブロックされ、SMB 1.0 はすべてのクライアントでオフにされる必要があります。
+    [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)確認できます。 Azure Files は、リージョンやデータセンターの外側からは SMB 3.x (暗号化サポートあり) を使用した接続のみを許可します。 SMB 3.x プロトコルには、インターネット経由で使用する場合に非常に安全となる、チャネル暗号化などのさまざまなセキュリティ機能が導入されています。 ただし、より古い SMB バージョンで確認された脆弱性の履歴的理由から、ポート 445 がブロックされている可能性もあります。 理想としては、ポートは SMB 1.0 トラフィックに対してのみブロックされ、SMB 1.0 はすべてのクライアントでオフにされる必要があります。
 
 * <a id="expressroute-not-required"></a>
 **Azure Files に接続するためや、Azure File Sync をオンプレミスで使用するために、Azure ExpressRoute を使用する必要はありますか。**  
@@ -357,7 +357,7 @@ ms.locfileid: "107785309"
 * <a id="mount-locally"></a>
 **ローカル マシンに Azure ファイル共有をマウントするにはどうすればよいですか。**  
 
-    ポート 445 (TCP 送信) が開放されており、クライアントが SMB 3.0 プロトコルをサポートしている (たとえば、Windows 10 や Windows Server 2016 を使用している) 場合は、SMB プロトコル経由でファイル共有をマウントできます。 ポート 445 が組織のポリシーまたはお使いの ISP によってブロックされている場合は、Azure File Sync を使用して Azure ファイル共有にアクセスできます。
+    ポート 445 (TCP 送信) が開放されており、クライアントが SMB 3.x プロトコルをサポートしている (たとえば、Windows 10 や Windows Server 2016 を使用している) 場合は、SMB プロトコル経由でファイル共有をマウントできます。 ポート 445 が組織のポリシーまたはお使いの ISP によってブロックされている場合は、Azure File Sync を使用して Azure ファイル共有にアクセスできます。
 
 ## <a name="backup"></a>バックアップ
 * <a id="backup-share"></a>

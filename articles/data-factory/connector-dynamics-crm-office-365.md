@@ -1,23 +1,22 @@
 ---
-title: Dynamics でデータをコピーする (Common Data Service)
-description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service (Microsoft Dataverse)) からサポート対象のシンク データ ストアに、またはサポート対象のソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
+title: Dynamics でデータをコピーする (Microsoft Dataverse)
+description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Microsoft Dataverse) からサポート対象のシンク データ ストアに、またはサポート対象のソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: c949ed8d0ecb35df0a2c31bb90514c18cf3a3755
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 5b09872ccdf28a6343fdbaa2f7e9e6fbafbd9410
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484327"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950847"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service (Microsoft Dataverse)) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
+# <a name="copy-data-from-and-to-dynamics-365-microsoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Microsoft Dataverse) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Microsoft Dynamics 365 および Microsoft Dynamics CRM をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
@@ -27,30 +26,32 @@ ms.locfileid: "109484327"
 - [サポートされるソースとシンクのマトリックス](copy-activity-overview.md)に従う[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-Dynamics 365 (Common Data Service (Microsoft Dataverse)) または Dynamics CRM から、サポート対象の任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。
+Dynamics 365 (Microsoft Dataverse) または Dynamics CRM から、サポート対象の任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Microsoft Dataverse) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。
+
+>[!NOTE]
+>2020 年 11 月に Common Data Service は [Microsoft Dataverse](/powerapps/maker/data-platform/data-platform-intro) に名前が変更されました。 この記事は、最新の用語を反映して更新されています。 
 
 この Dynamics コネクタでは、オンラインとオンプレミスの両方で Dynamics バージョン 7 から 9 がサポートされます。 具体的には次のとおりです。
-
 - バージョン 7 は、Dynamics CRM 2015 にマップされます。
 - バージョン 8 は、Dynamics CRM 2016 および初期バージョンの Dynamics 365 にマップされます。
 - バージョン 9 は、以降のバージョンの Dynamics 365 にマップされます。
+
 
 Dynamics のバージョンおよび製品でサポートされている認証の種類と構成については、次の表を参照してください。
 
 | Dynamics のバージョン | 認証の種類 | リンクされたサービスの例 |
 |:--- |:--- |:--- |
-| Common Data Service <br/><br/> Dynamics 365 Online <br/><br/> Dynamics CRM Online | Azure Active Directory (Azure AD) サービス プリンシパル <br/><br/> Office 365 | [オンライン Dynamics と Azure AD サービス プリンシパルまたは Office 365 認証](#dynamics-365-and-dynamics-crm-online) |
+| Dataverse <br/><br/> Dynamics 365 Online <br/><br/> Dynamics CRM Online | Azure Active Directory (Azure AD) サービス プリンシパル <br/><br/> Office 365 | [オンライン Dynamics と Azure AD サービス プリンシパルまたは Office 365 認証](#dynamics-365-and-dynamics-crm-online) |
 | インターネットに接続する展開 (IFD) に対応したオンプレミス Dynamics 365 <br/><br/> IFD 対応オンプレミス Dynamics CRM 2016 <br/><br/> IFD 対応オンプレミス Dynamics CRM 2015 | IFD | [IFD と IFD 認証に対応したオンプレミス Dynamics](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+> [!IMPORTANT]
+>テナントとユーザーが Azure Active Directory で[条件付きアクセス](../active-directory/conditional-access/overview.md)に関して構成されている場合、または多要素認証が必要な場合、およびその両方の場合は、Office 365 認証の種類を使用できません。 このような状況では、Azure Active Directory (Azure AD) サービス プリンシパル認証を使用する必要があります。
 
 具体的には、Dynamics 365 では、次のアプリケーションの種類がサポートされます。
-
 - Dynamics 365 for Sales
 - Dynamics 365 for Customer Service
 - Dynamics 365 for Field Service
 - Dynamics 365 for Project Service Automation
-- Dynamics 365 for Marketing
-
-このコネクタでは、Finance、Operations、Talent など、上記以外のアプリケーションの種類はサポートされていません。
+- Dynamics 365 for Marketing このコネクタでは、Finance、Operations、Talent など、その他のアプリケーションの種類はサポートされていません。
 
 >[!TIP]
 >Dynamics 365 Finance and Operations からデータをコピーするには、[Dynamics AX コネクタ](connector-dynamics-ax.md)を使用できます。
@@ -58,8 +59,8 @@ Dynamics のバージョンおよび製品でサポートされている認証�
 この Dynamics コネクタは [Dynamics XRM ツール](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)に基づいて構築されています。
 
 ## <a name="prerequisites"></a>前提条件
+このコネクタを Azure AD サービス プリンシパル認証で使用するには、Dataverse または Dynamics でサーバー間 (S2S) 認証を設定する必要があります。 最初に、アプリケーション ユーザー (サービス プリンシパル) を Azure Active Directory に登録します。 これを行う方法については、[こちら](../active-directory/develop/howto-create-service-principal-portal.md)を参照してください。 アプリケーションの登録時に、Dataverse または Dynamics でそのユーザーを作成し、アクセス許可を付与する必要があります。 これらのアクセス許可は直接付与することも、Dataverse または Dynamics でアクセス許可が付与されているチームにアプリケーション ユーザーを追加して間接的に付与することもできます。 Dataverse で認証するアプリケーション ユーザーを設定する方法の詳細については、[こちら](/powerapps/developer/data-platform/use-single-tenant-server-server-authentication)を参照してください。 
 
-このコネクタを Azure AD サービス プリンシパル認証で使用するには、Common Data Service または Dynamics でサーバー間 (S2S) 認証を設定する必要があります。 詳細な手順については、[この記事](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication)を参照してください。
 
 ## <a name="get-started"></a>はじめに
 
@@ -111,6 +112,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
     }  
 }  
 ```
+
 #### <a name="example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication"></a>例:Azure AD サービス プリンシパルと証明書認証を使用したオンライン Dynamics
 
 ```json
@@ -140,7 +142,6 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
     } 
 } 
 ```
-
 #### <a name="example-dynamics-online-using-office-365-authentication"></a>例:Office 365 認証を使用したオンライン Dynamics
 
 ```json
@@ -457,4 +458,5 @@ Customer や Owner のように、複数のターゲットがあるルックア�
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 Data Factory のコピー アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。

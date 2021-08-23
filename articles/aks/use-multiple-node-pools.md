@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: af2766d5692f232970c3c7c735d4c34abebe9c3c
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ef6b23cf7564cff57f398c76162f9c25efac7075
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070391"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081282"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -611,6 +611,109 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+## <a name="add-a-fips-enabled-node-pool-preview"></a>FIPS 対応ノード プール (プレビュー) を追加する
+
+Federal Information Processing Standards (FIPS) 140-2 は、情報技術の製品やシステムに含まれる暗号モジュールに関して最低限のセキュリティ要件を規定する米国政府の標準です。 AKS を使用すると、FIPS 140-2 に対応した Linux ベースのノードプールを作成できます。 FIPS 対応ノード プール上で実行されるデプロイは、そうした暗号モジュールを使用してセキュリティを高め、FedRAMP 準拠の一環としてセキュリティ規制への準拠を促進することができます。 FIPS 140-2 の詳細については、[Federal Information Processing Standards (FIPS) 140-2][fips] に関するページを参照してください。
+
+FIPS 対応ノード プールは現在プレビュー段階です。
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+*aks-preview* Azure CLI 拡張機能バージョン *0.5.11* 以降が必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 または、[az extension update][az-extension-update] コマンドを使用すると、使用可能な更新プログラムをインストールできます。
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+この機能を使用するには、サブスクリプションで `FIPSPreview` 機能フラグも有効にする必要があります。
+
+`FIPSPreview` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "FIPSPreview"
+```
+
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/FIPSPreview')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+FIPS 対応ノード プールには、次の制限があります。
+
+* FIPS に対応した Linux ベースのノード プールの実行環境として使用できるのは、現在 Ubuntu 18.04 だけです。
+* FIPS 対応ノードプールには、Kubernetes バージョン 1.19 以降が必要です。
+* FIPS に使用される基になるパッケージまたはモジュールを更新するには、[ノードイメージのアップグレード][node-image-upgrade]を使用する必要があります。
+
+> [!IMPORTANT]
+> FIPS 対応の Linux イメージは、Linux ベースのノード プールに使用される既定の Linux イメージとは異なります。 ノード プールで FIPS を有効にするには、新しく Linux ベースのノード プールを作成する必要があります。 既存のノードプールで FIPS を有効にすることはできません。
+> 
+> FIPS 対応のノード イメージには、FIPS 非対応のイメージとは異なるバージョン番号 (カーネル バージョンなど) が割り当てられていることがあります。 また、FIPS 対応ノード プールおよびノード イメージは、FIPS 非対応のノード プールおよびイメージとは更新サイクルが異なります。
+
+FIPS 対応ノード プールを作成するには、ノード プールの作成時に、[az aks nodepool add][az-aks-nodepool-add] と *--enable-fips-image* パラメーターを使用します。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name fipsnp \
+    --enable-fips-image
+```
+
+> [!NOTE]
+> クラスターの作成時に [az aks create][az-aks-create] と *--enable-fips-image* パラメーターを使用して、既定のノード プールを対象に FIPS を有効にすることもできます。 このようにして作成したクラスターにノード プールを追加する場合でも、FIPS 対応ノード プールを作成するためには、ノード プールを追加する際に、 *--enable-fips-image* パラメーターを使用する必要があります。
+
+ノード プールが FIPS に対応していることを確認するには、[az aks show][az-aks-show] を使用して、*agentPoolProfiles* 内の *enableFIPS* 値をチェックします。
+
+```azurecli-interactive
+az aks show --resource-group myResourceGroup --cluster-name myAKSCluster --query="agentPoolProfiles[].{Name:name enableFips:enableFips}" -o table
+```
+
+次の出力例を見ると、*fipsnp* ノード プールは FIPS に対応していますが、*nodepool1* は FIPS に対応していないことがわかります。
+
+```output
+Name       enableFips
+---------  ------------
+fipsnp     True
+nodepool1  False  
+```
+
+FIPS 暗号ライブラリにデプロイからアクセスできることは、FIPS 対応ノード プール内のノードで `kubectl debug` を使用して確認することもできます。 ノードを一覧表示するには `kubectl get nodes` を使用します。
+
+```output
+$ kubectl get nodes
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-fipsnp-12345678-vmss000000      Ready    agent   6m4s    v1.19.9
+aks-fipsnp-12345678-vmss000001      Ready    agent   5m21s   v1.19.9
+aks-fipsnp-12345678-vmss000002      Ready    agent   6m8s    v1.19.9
+aks-nodepool1-12345678-vmss000000   Ready    agent   34m     v1.19.9
+```
+
+上の例では、`aks-fipsnp` で始まるノードが FIPS 対応ノード プールに属しています。 FIPS 対応ノード プールに属しているそのいずれかのノードから `kubectl debug` を使用し、対話型セッションでデプロイを実行します。
+
+```azurecli-interactive
+kubectl debug node/aks-fipsnp-12345678-vmss000000 -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
+```
+
+対話型セッションから、FIPS 暗号ライブラリが有効であることを確認できます。
+
+```output
+root@aks-fipsnp-12345678-vmss000000:/# cat /proc/sys/crypto/fips_enabled
+1
+```
+
+また、FIPS 対応ノード プールには、*kubernetes.azure.com/fips_enabled=true* というラベルが割り当てられます。デプロイではこのラベルを使用して、該当するノード プールをターゲットにすることができます。
+
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用したノード プールの管理
 
 作成する Azure Resource Manager テンプレートと管理対象リソースを使用する場合、通常、テンプレート内の設定を更新し、再デプロイしてリソースを更新できます。 AKS 内のノード プールでは、AKS クラスターが作成されると、初期ノード プール プロファイルは更新できません。 この動作は、既存の Resource Manager テンプレートの更新、ノード プールへの変更、再デプロイが行えないことを意味します。 代わりに、既存の AKS クラスターのノード プールのみを更新する別の Resource Manager テンプレートを作成する必要があります。
@@ -833,8 +936,12 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
 [az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
 [az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
 [az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
 [az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
 [az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
@@ -854,3 +961,5 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [reduce-latency-ppg]: reduce-latency-ppg.md
 [public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
 [az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create
+[node-image-upgrade]: node-image-upgrade.md
+[fips]: /azure/compliance/offerings/offering-fips-140-2
