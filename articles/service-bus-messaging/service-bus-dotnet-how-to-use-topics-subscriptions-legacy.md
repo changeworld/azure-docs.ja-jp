@@ -1,29 +1,29 @@
 ---
-title: Azure Service Bus のトピックとサブスクリプションの概要 | Microsoft Docs
+title: .NET (古いバージョン) で Azure Service Bus のトピックとサブスクリプションを使用する
 description: Service Bus メッセージングのトピックとサブスクリプションを使った C# .NET Core コンソール アプリケーションを作成します。
-ms.topic: quickstart
+ms.topic: how-to
 ms.tgt_pltfrm: dotnet
-ms.date: 09/02/2020
+ms.date: 07/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a64ccec49248f48a85782cfe9537513a97b2bdfc
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4644cc6ed4c3f668c7a53ad963e7779740f0b771
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868161"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736270"
 ---
-# <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
-このチュートリアルに含まれる手順は次のとおりです。
+# <a name="use-service-bus-topics-and-subscriptions-with-net-old-package"></a>.NET (古いパッケージ) で Service Bus のトピックとサブスクリプションを使用する
+この記事では、次の手順について説明します。
 
 1. トピックに一連のメッセージを送信するための .NET Core コンソール アプリケーションを作成する。
 2. それらのメッセージをサブスクリプションから受信する .NET Core コンソール アプリケーションを作成する。
 
 > [!WARNING]
-> このクイックスタートでは、以前の Microsoft.Azure.ServiceBus パッケージを使用します。 最新の Azure.Messaging.ServiceBus パッケージを使用するクイックスタートについては、[Azure.Messaging.ServiceBus パッケージを使用したメッセージの送受信](service-bus-dotnet-how-to-use-topics-subscriptions.md)に関するページを参照してください。 古いライブラリから新しいものを使用するようにアプリケーションを移行するには、[Microsoft.Azure.ServiceBus から Azure.Messaging.ServiceBus への移行のガイド](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md)を参照してください。 
+> この記事では、古い Microsoft.Azure.ServiceBus パッケージを使用します。 最新の Azure.Messaging.ServiceBus パッケージを使用する記事については、[Azure.Messaging.ServiceBus パッケージを使用したメッセージの送受信](service-bus-dotnet-how-to-use-topics-subscriptions.md)に関するページを参照してください。 古いライブラリから新しいものを使用するようにアプリケーションを移行するには、[Microsoft.Azure.ServiceBus から Azure.Messaging.ServiceBus への移行のガイド](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+1. Azure サブスクリプション。 この記事の手順を完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
     1. Service Bus **名前空間** を作成します。
     2. **接続文字列** を取得します。

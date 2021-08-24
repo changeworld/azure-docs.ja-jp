@@ -1,14 +1,14 @@
 ---
 title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
-ms.topic: article
-ms.date: 03/15/2021
-ms.openlocfilehash: e75e8fe3b405652e245119cafa828e752436095b
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.topic: overview
+ms.date: 08/03/2021
+ms.openlocfilehash: 79773db042aacc6805bb2c4081815248bc6cb076
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733907"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -25,7 +25,9 @@ Azure Event Hubs は、大量のイベントやデータを取り込んで処理
 
 
 ## <a name="namespace"></a>名前空間
-Event Hubs 名前空間は、DNS 統合ネットワーク エンドポイントと、アクセス制御およびネットワーク統合管理機能 ([IP フィルタリング](event-hubs-ip-filtering.md)、[仮想ネットワーク サービス エンドポイント](event-hubs-service-endpoints.md)、[Private Link](private-link-service.md) など) を提供します。また、複数のイベント ハブ インスタンス (または Kafka 用語ではトピック) の管理コンテナーです。
+Event Hubs 名前空間は、イベント ハブ (Kafka 用語ではトピック) の管理コンテナーです。 これにより、DNS 統合ネットワーク エンドポイントと、一連のアクセス制御およびネットワーク統合管理の機能 ([IP フィルタリング](event-hubs-ip-filtering.md)、[仮想ネットワーク サービス エンドポイント](event-hubs-service-endpoints.md)、[Private Link](private-link-service.md) など) が提供されます。 
+
+:::image type="content" source="./media/event-hubs-features/namespace.png" alt-text="Event Hubs 名前空間を示す図":::
 
 ## <a name="event-publishers"></a>イベント発行元
 
@@ -85,8 +87,14 @@ Event Hubs では、 *発行元ポリシー* を介してイベント プロデ�
 
 [Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントまたは Azure Data Lake Service アカウントのいずれかに保存することができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナーまたは Azure Data Lake Service アカウントを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
 
+:::image type="content" source="./media/event-hubs-features/capture.png" alt-text="Event Hub のデータの Azure Storage または Azure Data Lake Storage へのキャプチャを示す図":::
+
+Event Hubs Capture によって生成されたファイルには、次の Avro スキーマがあります。
+
+:::image type="content" source="./media/event-hubs-capture-overview/event-hubs-capture3.png" alt-text="キャプチャされたデータの構造を示す図":::
+
 ## <a name="partitions"></a>メジャー グループ
-[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
+[!INCLUDE [event-hubs-partitions](./includes/event-hubs-partitions.md)]
 
 
 ## <a name="sas-tokens"></a>SAS トークン
@@ -137,7 +145,7 @@ Azure SDK によって提供される一部のクライアントはインテリ�
 > Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/) 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) または [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/javascript) または [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ### <a name="common-consumer-tasks"></a>一般的なコンシューマー タスク

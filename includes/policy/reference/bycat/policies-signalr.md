@@ -2,19 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/13/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8f13e768d1265faeb5cf758f74a56ffc96dcb7d6
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: c345fc0a4c0ecce0273263b0c86ab04a0789a854
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388693"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181017"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure SignalR Service では公衆ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a9766a-82a5-4747-abb5-650b6dbba6d0) |Azure SignalR Service リソースのセキュリティを強化するには、これがパブリック インターネットに公開されておらず、プライベート エンドポイントからのみアクセスできるようにします。 [https://aka.ms/asrs/networkacls](../../../../articles/azure-signalr/howto-network-access-control.md) の説明に従って、公衆ネットワーク アクセス プロパティを無効にします。 このオプションにより、Azure IP 範囲外のパブリック アドレス空間からのアクセスが無効になり、IP または仮想ネットワークベースのファイアウォール規則に一致するすべてのログインが拒否されます。 これにより、データ漏洩のリスクが軽減されます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_AuditDeny.json) |
+|[Azure SignalR Service では、ローカル認証方法を無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff70eecba-335d-4bbc-81d5-5b17b03d498f) |ローカル認証方法を無効にすると、Azure SignalR Service の認証で Azure Active Directory ID のみを要求することにより、セキュリティが向上します。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_DisableLocalAuth_AuditDeny.json) |
 |[Azure SignalR Service では Private Link 対応の SKU を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Azure Private Link を使用すると、ソースやターゲットでパブリック IP アドレスを指定せずに、仮想ネットワークを Azure サービスに接続できます。これにより、データがパブリックに漏洩するリスクからリソースを保護できます。 このポリシーにより、Azure SignalR Service の利用が Private Link 対応の SKU に限定されます。 プライベート リンクの詳細については、[https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |
 |[Azure SignalR Service ではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53503636-bcc9-4748-9663-5348217f160f) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート リンク プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 サービス全体ではなく、Azure SignalR Service リソースにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクが減ります。 プライベート リンクの詳細については、[https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md) を参照してください。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_Audit.json) |
 |[Azure SignalR Service に対してプライベート エンドポイントを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef45854f-b33f-49a3-8041-9057e915d88f) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークが Azure サービスに接続されます。 Azure SignalR Service リソースにプライベート エンドポイントをマッピングすると、データ漏洩のリスクを軽減できます。 詳細については、[https://aka.ms/asrs/privatelink](../../../../articles/azure-signalr/howto-private-endpoints.md) をご覧ください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_DeployIfNotExists.json) |

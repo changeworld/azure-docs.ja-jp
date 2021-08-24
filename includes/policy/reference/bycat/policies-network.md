@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/13/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3a0022ee4a91a12cca8b831c5e78a09285ceb8ec
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 8bd5b0b42c2ca952631db7dab224f84e0571a655
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388657"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180993"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -40,6 +40,7 @@ ms.locfileid: "114388657"
 |[仮想マシンは、承認された仮想ネットワークに接続する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd416745a-506c-48b6-8ab1-83cb814bcaa3) |このポリシーは、承認されていない仮想ネットワークに接続されているすべての仮想マシンを監査します。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ApprovedVirtualNetwork_Audit.json) |
 |[仮想ネットワークを Azure DDoS Protection Standard によって保護する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d) |Azure DDoS Protection Standard を使用して、仮想ネットワークを帯域幅消費およびプロトコル攻撃から保護します。 詳細については、[https://aka.ms/ddosprotectiondocs](../../../../articles/ddos-protection/ddos-protection-overview.md) を参照してください。 |Modify、Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json) |
 |[仮想ネットワークは、指定された仮想ネットワーク ゲートウェイを使用する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff1776c76-f58c-4245-a8d0-2b207198dc8b) |このポリシーは、指定された仮想ネットワーク ゲートウェイを既定のルートが指していない場合に、仮想ネットワークを監査します。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetwork_ApprovedVirtualNetworkGateway_AuditIfNotExists.json) |
+|[VPN ゲートウェイでは、ポイント対サイト ユーザーに対して Azure Active Directory (Azure AD) 認証のみを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a6bc25-125e-4d13-b82d-2e19b7208ab7) |ローカル認証方法を無効にすると、VPN ゲートウェイで Azure Active Directory ID のみが認証に利用されることになり、セキュリティが向上します。 Azure AD 認証の詳細は [https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant](../../../../articles/vpn-gateway/openvpn-azure-ad-tenant.md) で確認してください |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPN-AzureAD-audit-deny-disable-policy.json) |
 |[Application Gateway に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |受信トラフィックをさらに検査するために、公開されている Web アプリケーションの前に Azure Web Application Firewall (WAF) をデプロイします。 Web Application Firewall (WAF) を使用すると、SQL インジェクション、クロスサイト スクリプティング、ローカルおよびリモートのファイル実行などの一般的な悪用や脆弱性から Web アプリケーションが一元的に保護されます。 また、カスタム ルールを使用して、国、IP アドレス範囲、およびその他の HTTP(S) パラメーターによって Web アプリケーションへのアクセスを制限することもできます。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
 |[Azure Front Door Service サービスに対して Web Application Firewall (WAF) を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |受信トラフィックをさらに検査するために、公開されている Web アプリケーションの前に Azure Web Application Firewall (WAF) をデプロイします。 Web Application Firewall (WAF) を使用すると、SQL インジェクション、クロスサイト スクリプティング、ローカルおよびリモートのファイル実行などの一般的な悪用や脆弱性から Web アプリケーションが一元的に保護されます。 また、カスタム ルールを使用して、国、IP アドレス範囲、およびその他の HTTP(S) パラメーターによって Web アプリケーションへのアクセスを制限することもできます。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
 |[Web アプリケーション ファイアウォール (WAF) で Application Gateway に対して指定されたモードを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096) |Application Gateway のすべての Web アプリケーション ファイアウォール ポリシーで、[検出] または [防止] モードの使用をアクティブにするように義務付けます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayMode_Audit.json) |

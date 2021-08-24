@@ -1,26 +1,26 @@
 ---
-title: クイック スタート:Automation アカウントを作成する - Azure テンプレート
+title: Automation アカウントを作成する - Azure テンプレート
 titleSuffix: Azure Automation
-description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して Automation アカウントを作成する方法について説明します。
+description: この記事では、Azure Resource Manager テンプレートを使用して Automation アカウントを作成する方法について説明します。
 services: automation
 ms.author: magoedte
 ms.date: 07/20/2021
-ms.topic: quickstart
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.custom:
 - mvc
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 17183bffcfe9607a774d1205180c284d49cd7503
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: b17bb61230fa06acc988129bd593ab5c25332e84
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652012"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727378"
 ---
-# <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する
+# <a name="create-an-automation-account-by-using-arm-template"></a>ARM テンプレートを使用して Automation アカウントを作成する
 
-Azure Automation は、Azure 環境と非 Azure 環境を一貫性をもって管理するクラウドベースのオートメーションと構成サービスを提供します。 このクイックスタートでは、Automation アカウントを作成する Azure Resource Manager テンプレート (ARM テンプレート) をデプロイする方法について説明します。 ARM テンプレートを使用すると、他のデプロイ方法より手順が減ります。
+Azure Automation は、Azure 環境と非 Azure 環境を一貫性をもって管理するクラウドベースのオートメーションと構成サービスを提供します。 この記事では、Automation アカウントを作成する Azure Resource Manager テンプレート (ARM テンプレート) をデプロイする方法について説明します。 ARM テンプレートを使用すると、他のデプロイ方法より手順が減ります。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 これらの手順を完了したら、Runbook ジョブの状態とジョブ ストリームを、リンクされた Log Analytics ワークスペースに送信するために、Automation アカウントの[診断設定を構成する](automation-manage-send-joblogs-log-analytics.md)必要があります。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-automation/)からのものです。
+この記事で使用されているテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-automation/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.automation/101-automation/azuredeploy.json":::
 
@@ -132,7 +132,7 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Automation アカウントと Log Analytics ワークスペースを作成し、それらをリンクしました。
+この記事では、Automation アカウントと Log Analytics ワークスペースを作成し、それらをリンクしました。
 
 さらに学習するには、Azure Automation のチュートリアルに進みます。
 
