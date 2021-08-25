@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 5f4a40e5b4e0dbced10f9d4a19609d9a0a49a1db
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f6818d0f937cc58a6884a36195c0d77db7366d2b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058767"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747377"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU を使用して共有経由でデータを転送する
 
@@ -65,7 +65,7 @@ ms.locfileid: "106058767"
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
 
    > [!IMPORTANT]
-   > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、その Azure Storage アカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
+   > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、その Azure Storage アカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/immutable-policy-configure-version-scope.md)」を参照してください。
 
     e. 新しい BLOB コンテナーを作成するか、ドロップダウン リストから既存の BLOB コンテナーを選択します。 BLOB コンテナーを作成する場合は、コンテナー名を入力します。 コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。
    

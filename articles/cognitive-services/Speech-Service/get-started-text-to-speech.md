@@ -3,22 +3,22 @@ title: テキスト読み上げクイックスタート - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用してテキストを音声に変換する方法について説明します。 このクイックスタートでは、オブジェクトの構築と設計パターン、サポートされているオーディオ出力形式、Speech CLI、音声合成でのカスタム構成オプションについて説明します。
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/17/2021
-ms.author: nitinme
+ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: テキスト読み上げ
-ms.openlocfilehash: be6080e90fedb28d5c579fbec8abb19164236ac1
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 9e03772526263f1a8b8c91163eb2a0a0f73f66cc
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114709798"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069113"
 ---
 # <a name="get-started-with-text-to-speech"></a>テキスト読み上げの概要
 

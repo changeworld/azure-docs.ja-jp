@@ -3,17 +3,18 @@ title: .NET SDK を使用して Azure データ ファクトリを作成する
 description: .NET SDK を使用して Azure データ ファクトリおよびパイプラインを作成し、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: data-movement
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/27/2021
 ms.author: jingwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2741347a9f2c5a50e46cbc1d9a144d66d51f9563
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 4cce29b6c3603dd8c44f1c415a56640510fb9be3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670654"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750975"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 
@@ -23,7 +24,7 @@ ms.locfileid: "110670654"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure Blob Storage 内のあるフォルダーから別のフォルダーに **コピー** します。 Azure Data Factory を使用してデータを **変換** する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](tutorial-transform-data-spark-portal.md)を参照してください。
+このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに **コピー** します。 Azure Data Factory を使用してデータを **変換** する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](tutorial-transform-data-spark-portal.md)を参照してください。
 
 > [!NOTE]
 > この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。

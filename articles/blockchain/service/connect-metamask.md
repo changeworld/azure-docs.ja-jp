@@ -4,16 +4,18 @@ description: MetaMask を使用して Azure Blockchain Service ネットワー�
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01eeb187d1d1dd314d008c92559453e1edb67b27
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90530439"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643295"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>MetaMask を使用してスマート コントラクトを接続およびデプロイする
 
 このクイックスタートでは、MetaMask を使用して Azure Blockchain Service ネットワークに接続し、Remix を使用してスマート コントラクトをデプロイします。 Metamask は、Ether ウォレットを管理し、スマート コントラクト アクションを実行するブラウザー拡張機能です。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,18 +70,18 @@ Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と
 
     ```solidity
     pragma solidity ^0.5.0;
-             
+
     contract simple {
         uint balance;
-                 
+
         constructor() public{
             balance = 0;
         }
-                 
+
         function add(uint _num) public {
             balance += _num;
         }
-                 
+
         function get() public view returns (uint){
             return balance;
         }

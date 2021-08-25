@@ -7,13 +7,12 @@ ms.date: 11/26/2018
 ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
-manager: philmea
-ms.openlocfilehash: 3df10c9d7630e9db76994e8e508f30adb986e0d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d99d9d07ae13f38d05d297111401f4760b2a9d82
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645931"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748378"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Industrial IoT (IIoT) とは
 
@@ -52,4 +51,4 @@ OPC Vault は、OPC UA サーバーとクライアント アプリケーショ�
 
 ここでは、Industrial IoT とそのコンポーネントについて説明しました。次に以下の記事を読むことをお勧めします。
 
-[OPC Twin とは](overview-opc-twin.md)
+[OPC Twin とは](/previous-versions/azure/iot-accelerators/overview-opc-twin)

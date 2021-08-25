@@ -7,14 +7,13 @@ ms.date: 06/07/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0830bb35befbd2c841eb10c4e94a8ef64f2bf019
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d75c6d6274cadc6c523c1c7c94f6d8357ab8c6dd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757435"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743819"
 ---
 # <a name="tutorial-use-azure-maps-to-create-a-store-locator"></a>チュートリアル: Azure Maps を使用してストア ロケーターを作成する
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 39b21a849f13af39731c31590cf92f8ffc12cd7d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 2c37f49478e5c762e72fd8569828853e29ba07f5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783605"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737569"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel とは
 
@@ -57,7 +57,7 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら
 
 ## <a name="analytics"></a>Analytics
 
-ノイズを減らし、確認および調査する必要があるアラートの数を最小限に抑えるために、Azure Sentinel は[分析を使用してアラートをインシデントに関連付けます](tutorial-detect-threats-built-in.md)。 **インシデント** は、調査して解決できる対応可能な脅威をまとめた、関連するアラートのグループです。 組み込みの相関関係ルールをそのまま使用するか、独自のルールを作成する際の出発点として使用します。 Azure Sentinel には、ネットワークの動作をマップし、リソース全体の異常を探すための機械学習ルールも用意されています。 これらの分析では、さまざまなエンティティに関する信頼度の低いアラートを組み合わせて信頼度の高いセキュリティ インシデントにすることで、点を結び付けます。
+ノイズを減らし、確認および調査する必要があるアラートの数を最小限に抑えるために、Azure Sentinel は[分析を使用してアラートをインシデントに関連付けます](detect-threats-built-in.md)。 **インシデント** は、調査して解決できる対応可能な脅威をまとめた、関連するアラートのグループです。 組み込みの相関関係ルールをそのまま使用するか、独自のルールを作成する際の出発点として使用します。 Azure Sentinel には、ネットワークの動作をマップし、リソース全体の異常を探すための機械学習ルールも用意されています。 これらの分析では、さまざまなエンティティに関する信頼度の低いアラートを組み合わせて信頼度の高いセキュリティ インシデントにすることで、点を結び付けます。
 
 ![インシデント](./media/tutorial-investigate-cases/incident-severity.png)
 
@@ -73,7 +73,7 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら
 
 ## <a name="investigation"></a>調査
 
-現在プレビュー段階にある Azure Sentinel の[詳細調査](tutorial-investigate-cases.md)ツールを使用して、潜在的なセキュリティの脅威の範囲を把握し、根本的な原因を見つけるために役立てることができます。 対話型グラフ上のエンティティを選択し、特定のエンティティについて興味がある質問をして、そのエンティティとその関連性を掘り下げて脅威の根本的な原因を突き止めることができます。 
+現在プレビュー段階にある Azure Sentinel の[詳細調査](investigate-cases.md)ツールを使用して、潜在的なセキュリティの脅威の範囲を把握し、根本的な原因を見つけるために役立てることができます。 対話型グラフ上のエンティティを選択し、特定のエンティティについて興味がある質問をして、そのエンティティとその関連性を掘り下げて脅威の根本的な原因を突き止めることができます。 
 
 ![調査](./media/tutorial-investigate-cases/map-timeline.png)
 
@@ -93,4 +93,4 @@ Azure Sentinel コミュニティは、脅威の検出とオートメーショ�
 ## <a name="next-steps"></a>次のステップ
 
 - Azure Sentinel を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
-- [データを Azure Sentinel にオンボード](quickstart-onboard.md)し、[データや潜在的な脅威を視覚化する](quickstart-get-visibility.md)方法を確認します。
+- [データを Azure Sentinel にオンボード](quickstart-onboard.md)し、[データや潜在的な脅威を視覚化する](get-visibility.md)方法を確認します。

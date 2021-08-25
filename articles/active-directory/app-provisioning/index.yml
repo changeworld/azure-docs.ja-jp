@@ -8,16 +8,16 @@ metadata:
   ms.subservice: app-provisioning
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 02/06/2020
-  author: msmimart
-  ms.author: mimart
-  manager: celested
-  ms.openlocfilehash: 788555f808ccc56672b0ea0be24e680c4844a6ae
-  ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+  ms.date: 08/12/2021
+  author: kenwith
+  ms.author: kenwith
+  manager: mtillman
+  ms.openlocfilehash: e55de6ce1310b508ad7d865b62902e905cc71b19
+  ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94985486"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121860511"
 landingContent:
 - title: ユーザーとグループをクラウド アプリにプロビジョニングする
   linkLists:

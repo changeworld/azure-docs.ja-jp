@@ -1,15 +1,15 @@
 ---
 title: Azure Policy 用の Azure Resource Graph サンプル クエリ
 description: Azure Policy のサンプル Azure Resource Graph クエリでは、リソースの種類とテーブルを使用して Azure Policy 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 30908c9e4fef6ee5bdd33c8f5a59eb0c22e30634
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c1757d475fde691bf3938298d70535cce491be52
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460730"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860638"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-policy"></a>Azure Policy 用の Azure Resource Graph サンプル クエリ
 

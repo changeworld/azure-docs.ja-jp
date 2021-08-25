@@ -4,15 +4,15 @@ description: このチュートリアルでは、SQL Server データベース�
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 07/05/2021
-ms.openlocfilehash: b003a6efba93e35d39601a33449cadb212f17c28
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 75ddd0ebf1a4d796cf59f087399ea94957916349
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436449"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638407"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Server にある複数のテーブルから Azure SQL Database のデータベースにデータを増分読み込みする
 
