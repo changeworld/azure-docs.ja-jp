@@ -3,19 +3,18 @@ title: 'クイックスタート: JavaScript で検索インデックスを作�
 titleSuffix: Azure Cognitive Search
 description: この JavaScript クイックスタートでは、JavaScript を使用して、Azure Cognitive Search でインデックスの作成、データの読み込み、クエリの実行を行う方法について説明します。
 author: dereklegenzoff
-manager: luisca
 ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/08/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 8b4de14a55c46b9be66e54d96d9285b336cdc638
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 38a901535f044e98fb274871accd779d0118eec9
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551580"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179417"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>クイックスタート: JavaScript SDK を使用して Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]

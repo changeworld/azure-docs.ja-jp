@@ -3,22 +3,22 @@ title: 音声テキスト変換クイックスタート - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用して音声テキスト変換を実行する方法について説明します。 このクイックスタートでは、オブジェクトの構築、サポートされているオーディオ入力形式、および音声認識の構成オプションについて説明します。
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/15/2020
-ms.author: nitinme
+ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-three
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: 70e19a375fcf20c0d50a4ce2d324391bd60a0807
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 5a283f18b494adaa60fb8b9530f9ed1a1ff41376
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711568"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071175"
 ---
 # <a name="get-started-with-speech-to-text"></a>音声変換の概要
 

@@ -4,14 +4,15 @@ description: データの移動と変換を調整、自動化するクラウド 
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: overview
 ms.date: 06/08/2021
-ms.openlocfilehash: 0a11f8954637fe93aa8d0dc5ee8266347d822ded
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 745a0b67bf2ac225f62b0e18cadc009a16007ab6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362471"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740947"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 

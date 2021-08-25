@@ -10,13 +10,13 @@ ms.topic: overview
 ms.workload: identity
 ms.date: 01/22/2021
 ms.author: davidmu
-ms.reviewer: ''
-ms.openlocfilehash: e483efc2beae5ddf76c135aaa785b32732aa2f62
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.reviewer: sureshja, napuri
+ms.openlocfilehash: a02dc16f95a736015e19be8d662e99c2aaa92aec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566410"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738741"
 ---
 # <a name="what-is-application-management"></a>アプリケーション管理とは
 

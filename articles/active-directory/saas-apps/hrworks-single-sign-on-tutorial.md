@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/26/2021
+ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 5de617feb34db1ada91423d8f3cb3ed235f15151
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 28127068210199985a280c26a34ce3aa49520a8b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570096"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746990"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と HRworks Single Sign-On の統合
 
@@ -81,7 +81,7 @@ HRworks Single Sign-on で Azure AD SSO を構成してテストするには、�
     **[サインオン URL]** ボックスに、`https://login.hrworks.de/?companyId=<COMPANY_ID>&directssologin=true` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[HRworks Single Sign-On クライアント サポート チーム](mailto:nadja.sommerfeld@hrworks.de)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[HRworks Single Sign-On クライアント サポート チーム](https://www.hrworks.de/dienstleistungen/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

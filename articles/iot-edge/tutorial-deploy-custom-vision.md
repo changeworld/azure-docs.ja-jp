@@ -3,18 +3,17 @@ title: 'チュートリアル: Azure IoT Edge を使用してデバイスに Cus
 description: このチュートリアルでは、Custom Vision と IoT Edge を使用して、コンピューター ビジョン モデルをコンテナーとして実行する方法について説明します。
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fbddd48e0e8007aa08619a3861dafe780f3b6be6
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e407b430d73e43454a71f897184b29e5c12fee44
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438352"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740571"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル:Custom Vision Service を使用してエッジで画像の分類を実行する
 

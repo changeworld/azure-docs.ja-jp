@@ -7,16 +7,16 @@ ms.subservice: deployment-configuration
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: danimir
-ms.author: danil
+author: urosmil
+ms.author: urmilano
 ms.reviewer: mathoma
 ms.date: 03/25/2019
-ms.openlocfilehash: 25ddb88cfe4fa96f60c2b9ffe556a200aaae3c2b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 479eb8f343011748aa3f89b6416c9f4b8cfe9b38
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698122"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747111"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>CLI を使用して Azure SQL Managed Instance を作成する
 

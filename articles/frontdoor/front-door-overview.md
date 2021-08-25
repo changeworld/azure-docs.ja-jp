@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 11e01d9d61a3a446be1135a212ae6cadcd1eea42
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 708112634c6c6d25c506e5866f7f3588298991c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113595275"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738021"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 
@@ -67,7 +67,7 @@ Front Door に含まれる主な機能は次のとおりです。
 
 ## <a name="pricing"></a>価格
 
-料金情報については、[Front Door の価格](https://azure.microsoft.com/pricing/details/frontdoor/)に関するページを参照してください。 「[Azure Front Door の SLA](https://azure.microsoft.com/en-us/support/legal/sla/frontdoor/v1_0/)」を参照してください。
+料金情報については、[Front Door の価格](https://azure.microsoft.com/pricing/details/frontdoor/)に関するページを参照してください。 「[Azure Front Door の SLA](https://azure.microsoft.com/support/legal/sla/frontdoor/v1_0/)」を参照してください。
 
 ## <a name="whats-new"></a>新機能
 

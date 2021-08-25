@@ -3,12 +3,12 @@ title: 新機能 Azure Event Grid
 description: 最新のリリース ノート、既知の問題、バグの修正、非推奨の機能、予定されている変更点など、Azure Event Grid の新着情報について説明します。
 ms.topic: overview
 ms.date: 04/27/2021
-ms.openlocfilehash: a8c39338b43dfb1ddde173c3560faeb977b0148f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: f516a9896f98c96e6f9cd2c651d9edac86474d14
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112466668"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068204"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure Event Grid の新機能
 
@@ -85,14 +85,14 @@ Azure Event Grid は随時改善されています。 最近の開発につい�
 - このリリースは、`2019-06-01` API バージョンに対応します。
 - 次の新機能に対するサポートが追加されました。
     * [ドメイン](event-domains.md)
-    * リソース リスト操作に対する改ページ位置の自動修正と検索フィルター。 例については、「[トピック - サブスクリプション別の一覧表示](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription)」を参照してください。
+    * リソース リスト操作に対する改ページ位置の自動修正と検索フィルター。 例については、「[トピック - サブスクリプション別の一覧表示](/rest/api/eventgrid/version2021-06-01-preview/partner-namespaces/list-by-subscription)」を参照してください。
     * [宛先としての Service Bus キュー](handler-service-bus.md)
     * [高度なフィルター処理](event-filtering.md#advanced-filtering)
 
 ## <a name="410-preview-2019-03"></a>4.1.0-preview (2019-03)
 - このリリースは 2019-02-01-preview API バージョンに対応します。
 - 次の新機能に対するサポートが追加されました。
-    * リソース リスト操作に対する改ページ位置の自動修正と検索フィルター。 例については、「[トピック - サブスクリプション別の一覧表示](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription)」を参照してください。
+    * リソース リスト操作に対する改ページ位置の自動修正と検索フィルター。 例については、「[トピック - サブスクリプション別の一覧表示](/rest/api/eventgrid/version2021-06-01-preview/partner-namespaces/list-by-subscription)」を参照してください。
     * [ドメイン トピックの手動での作成/削除](how-to-event-domains.md)
     * [宛先としての Service Bus キュー](handler-service-bus.md)
 

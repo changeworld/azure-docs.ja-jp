@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/15/2021
+ms.date: 07/01/2021
 ms.author: alkohli
-ms.openlocfilehash: f19973979cda0fba54b2f03792e8f3ea31b4d15c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 47fab96220a3a2bc63864c86bdff210673c01aa0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099372"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738110"
 ---
 # <a name="what-is-azure-stack-edge-pro-fpga"></a>Azure Stack Edge Pro FPGA とは
 
