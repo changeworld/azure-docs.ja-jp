@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 534790f7a63f8fbf11e80c71c00cf1b98ec4b5da
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6c42c7df67baeba56213000175e0f5c2a50054d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063944"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638485"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで RDS PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -109,19 +109,7 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
   > [!NOTE]
    > 移行サービスにより、外部キーの有効化/無効化が内部的に処理され、信頼性のある堅牢なデータ移行が確保されるようトリガーされます。 そのため、ターゲット データベース スキーマの変更は検討する必要はありません。
 
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
-
-1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
-
-   ![ポータルのサブスクリプションの表示](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-select-subscription1.png)
-
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
-
-    ![リソース プロバイダーの表示](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-select-resource-provider.png)
-
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
-
-    ![リソース プロバイダーの登録](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure Database Migration Service のインスタンスを作成する
 

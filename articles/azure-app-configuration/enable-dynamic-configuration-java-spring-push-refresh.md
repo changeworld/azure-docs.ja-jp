@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: mametcal
-ms.openlocfilehash: 9f9f5bff0cc0c1e70178cab1e1b0e29ffbd8fc90
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1b4dbe38c1b70bb44eb1c280e56954c150a5a23a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114479707"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739898"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-java-spring-app"></a>チュートリアル: Java Spring アプリでプッシュ更新による動的な構成を使用する
 
@@ -27,7 +27,7 @@ App Configuration Java Spring クライアント ライブラリでは、アプ�
 
 - ポーリング モデル: ポーリングを使用して構成の変更を検出する既定の動作です。 キャッシュされた設定値の有効期限が切れた後、次に `AppConfigurationRefresh` の `refreshConfigurations` を呼び出すと、構成が変更されているかどうかをチェックするための要求がサーバーに送信され、必要に応じて、更新された構成がプルされます。
 
-- プッシュ モデル: [App Configuration のイベント](./concept-app-configuration-event.md)を使用して構成の変更を検出します。 キー値の変更イベントを [Webhook](/azure/event-grid/handler-event-hubs) を使用して Event Grid で送信するように App Configuration を設定すると、アプリケーションでは、それらのイベントを使用して、構成を最新の状態に保つために必要な要求の総数を最適化できます。
+- プッシュ モデル: [App Configuration のイベント](./concept-app-configuration-event.md)を使用して構成の変更を検出します。 キー値の変更イベントを [Webhook](../event-grid/handler-event-hubs.md) を使用して Event Grid で送信するように App Configuration を設定すると、アプリケーションでは、それらのイベントを使用して、構成を最新の状態に保つために必要な要求の総数を最適化できます。
 
 このチュートリアルでは、自分が作成するコードに、プッシュ更新を使用して構成の動的更新を実装する方法について説明します。 これは、クイック スタートで紹介されているアプリに基づいています。 先に進む前に、まず「[App Configuration を使用して Java Spring アプリを作成する](./quickstart-java-spring-app.md)」を完了しておいてください。
 
@@ -68,7 +68,7 @@ App Configuration Java Spring クライアント ライブラリでは、アプ�
            </dependency>
    ```
 
-1. [Maven App Service のデプロイ](/azure/app-service/quickstart-java?tabs=javase)をセットアップして、アプリケーションを Maven 経由で Azure App Service にデプロイできるようにします。
+1. [Maven App Service のデプロイ](../app-service/quickstart-java.md?tabs=javase)をセットアップして、アプリケーションを Maven 経由で Azure App Service にデプロイできるようにします。
 
    ```console
    mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
@@ -95,7 +95,7 @@ App Configuration Java Spring クライアント ライブラリでは、アプ�
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-Event Grid Webhook は、作成時に検証する必要があります。 検証するには、この[ガイド](/azure/event-grid/webhook-event-delivery)に従います。または、既に構成されている Azure App Configuration Spring Web ライブラリを使用してアプリケーションを起動すると、アプリケーションが登録されます。 イベント サブスクリプションを使用するには、次の 2 つのセクションの手順に従います。
+Event Grid Webhook は、作成時に検証する必要があります。 検証するには、この[ガイド](../event-grid/webhook-event-delivery.md)に従います。または、既に構成されている Azure App Configuration Spring Web ライブラリを使用してアプリケーションを起動すると、アプリケーションが登録されます。 イベント サブスクリプションを使用するには、次の 2 つのセクションの手順に従います。
 
 1. 環境変数に App Configuration インスタンスの接続文字列を設定します。
 
@@ -152,7 +152,7 @@ Event Grid Webhook は、作成時に検証する必要があります。 検証
     :::image type="content" source="./media/event-subscription-view-webhook.png" alt-text="Webhook が、ページの下部にあるテーブルに表示されます。" :::
 
 > [!NOTE]
-> 構成の変更をサブスクライブするとき、1 つまたは複数のフィルターを使用することで、アプリケーションに送信されるイベントの数を減らすことができます。 これらは、[Event Grid サブスクリプション フィルター](/azure/event-grid/event-filtering.md)または [Service Bus サブスクリプション フィルター](/azure/service-bus-messaging/topic-filters.md)として構成できます。 たとえばサブスクリプション フィルターを使用すると、特定の文字列で始まるキーの変更イベントだけをサブスクライブすることができます。
+> 構成の変更をサブスクライブするとき、1 つまたは複数のフィルターを使用することで、アプリケーションに送信されるイベントの数を減らすことができます。 これらは、[Event Grid サブスクリプション フィルター](../event-grid/event-filtering.md)または [Service Bus サブスクリプション フィルター](../service-bus-messaging/topic-filters.md)として構成できます。 たとえばサブスクリプション フィルターを使用すると、特定の文字列で始まるキーの変更イベントだけをサブスクライブすることができます。
 
 ## <a name="verify-and-test-application"></a>アプリケーションの検証とテスト
 

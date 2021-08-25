@@ -4,15 +4,16 @@ description: Azure Data Factory とコピー アクティビティを使用し�
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: ca96b47d4af4e3b5d80e736ac33d767efa85f970
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a521e6f21346898a7a9af17b2cd6e66cc4029c1e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481448"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638311"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>PowerShell を使用し、Azure Data Factory を使用して複数のテーブルを一括コピーする
 

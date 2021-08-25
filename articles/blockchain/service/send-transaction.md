@@ -4,16 +4,18 @@ description: Visual Studio Code の Ethereum 用 Azure Blockchain 開発キッ�
 ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9a38314b9dbc54750da7dfa81ece487c87b73884
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628647"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643280"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>チュートリアル:スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ
 
 このチュートリアルでは、Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して、Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイします。 また、開発キットを使用し、トランザクションを介してスマート コントラクト関数を実行します。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 Azure Blockchain Development Kit for Ethereum を使用して、以下のことを行います。
 
@@ -88,7 +90,7 @@ Azure Blockchain Development Kit では、Truffle を使用して移行スクリ
 
     ```javascript
     var HelloBlockchain = artifacts.require(&quot;HelloBlockchain");
-        
+
     module.exports = function(done) {
       console.log("Getting the deployed version of the HelloBlockchain smart contract")
       HelloBlockchain.deployed().then(function(instance) {
@@ -144,7 +146,7 @@ Truffle によってブロックチェーン ネットワーク上でスクリ�
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
-    
+
     module.exports = function(done) {
       console.log("Getting the deployed version of the HelloBlockchain smart contract")
       HelloBlockchain.deployed().then(function(instance) {

@@ -2,7 +2,6 @@
 title: Azure IoT Hub (Android) からデバイスを制御する | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル Java アプリケーションを実行します。 1 つは、ハブに接続されたデバイスをリモートで制御できるサービス アプリケーションです。 もう 1 つのアプリケーションは、リモートで制御可能な、ハブに接続された物理デバイスまたはシミュレートされたデバイス上で実行されます。
 author: wesmc7777
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
@@ -14,12 +13,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 9225c53d4271622b0276dadb1d0a526199602d62
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 929f402a2beb9de7e9537647542199ff68f0d32f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114727941"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747287"
 ---
 # <a name="control-a-device-connected-to-an-iot-hub-android"></a>IoT ハブに接続されたデバイスを制御する (Android)
 

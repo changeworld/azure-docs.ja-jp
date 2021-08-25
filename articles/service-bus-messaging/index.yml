@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/23/2020
-  ms.openlocfilehash: 5bddcdf8761682180508b7195c5f86b7aaaebdda
-  ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+  ms.openlocfilehash: cfa0386b0e1130841a15c8bb261d985076035a55
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110191777"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121747134"
 landingContent:
 - title: Service Bus メッセージングについて
   linkLists:
@@ -71,8 +71,6 @@ landingContent:
       url: service-bus-python-how-to-use-queues.md
     - text: PHP
       url: service-bus-php-how-to-use-queues.md
-    - text: Ruby
-      url: service-bus-ruby-how-to-use-queues.md
 - title: メッセージの発行とサブスクライブ
   linkLists:
   - linkListType: quickstart
@@ -87,8 +85,6 @@ landingContent:
       url: service-bus-python-how-to-use-topics-subscriptions.md
     - text: PHP
       url: service-bus-php-how-to-use-topics-subscriptions.md
-    - text: Ruby
-      url: service-bus-ruby-how-to-use-topics-subscriptions.md
 - title: 監視と管理
   linkLists:
   - linkListType: how-to-guide
@@ -97,8 +93,6 @@ landingContent:
       url: service-bus-manage-with-ps.md
     - text: Azure Monitor を使用した Service Bus の監視
       url: monitor-service-bus-reference.md
-    - text: 診断ログの設定
-      url: service-bus-diagnostic-logs.md
     - text: メッセージ エンティティの一時停止と再アクティブ化
       url: entity-suspend.md
     - text: Azure リソース マネージャー テンプレートの使用

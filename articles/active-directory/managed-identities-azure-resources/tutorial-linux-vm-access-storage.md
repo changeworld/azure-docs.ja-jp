@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77b41a73ca092f36f38d35f525bc381e29848396
-ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
+ms.openlocfilehash: 9b52bf79589040a585d50700b4369145c7fd98c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113037960"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737278"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする 
 
@@ -82,7 +82,7 @@ VM のマネージド ID を使用して、Azure Storage Blob のデータを取
 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 >[!NOTE]
-> ストレージのレビューにアクセス許可を付与するために使用できるさまざまなロールの詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」を参照してください。
+> ストレージのレビューにアクセス許可を付与するために使用できるさまざまなロールの詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights)」を参照してください。
 ## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>アクセス トークン取得し、それを使用して Azure Storage を呼び出す
 
 Azure Storage は Azure AD 認証をネイティブにサポートするため、マネージド ID を使用して取得したアクセス トークンを直接受け入れることができます。 これは Azure Storage の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。

@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 12/03/2019
 ms.author: davidmu
-ms.reviewer: arvindh, japere
+ms.reviewer: ergreenl
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c446ef5cc64ab981839e932fd77614847c4d435b
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 1e822037e03f6301a14bf478b28276c55cf70de9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566338"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738728"
 ---
 # <a name="what-is-single-sign-on-sso"></a>シングル サインオン (SSO) とは
 

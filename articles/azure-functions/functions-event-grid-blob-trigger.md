@@ -28,7 +28,7 @@ ms.locfileid: "108124997"
 
 ## <a name="create-a-new-function"></a>新しい関数を作成する
 
-1. Visual Studio コードで関数アプリを開いてください。
+1. Visual Studio Code で関数アプリを開いてください。
 
 1. **F1 キーを押して** 、新しい BLOB トリガー関数を作成します。 ストレージ アカウントに接続文字列を使うようにします。
 

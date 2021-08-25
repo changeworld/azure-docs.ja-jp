@@ -2,19 +2,18 @@
 title: チュートリアル - Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: チュートリアル - Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
 author: robinsh
-manager: philmeagit st
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 202ee16088e1f3b80751443d6ba5c39074e5589c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 1d96bb01cde5edbe4bff06de43d66b785da9cd98
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689510"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748401"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure Resource Manager テンプレートを使用して IoT Hub のメッセージ ルーティングを構成する
 

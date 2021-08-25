@@ -1,15 +1,15 @@
 ---
 title: Azure Resource Manager 用の Azure Resource Graph サンプル クエリ
 description: Azure Resource Manager 用のサンプル Azure Resource Graph クエリによって、リソースの種類とテーブルを使用し、Azure Resource Manager 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 1c409e62dd32500b972b45fab94eaa516126daab
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6fe86b1c3d0aef2ce9666ce88af455e82185f5eb
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114479608"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860667"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-resource-manager"></a>Azure Resource Manager 用の Azure Resource Graph サンプル クエリ
 
@@ -23,5 +23,5 @@ ms.locfileid: "114479608"
 
 - [クエリ言語](../../governance/resource-graph/concepts/query-language.md)の詳細について学習します。
 - [リソースを探索する](../../governance/resource-graph/concepts/explore-resources.md)方法について詳しく確認します。
-- [初歩的な言語クエリ](../../governance/resource-graph/samples/starter.md)のサンプルを参照してください。
-- [高度な言語クエリ](../../governance/resource-graph/samples/advanced.md)のサンプルを参照してください。
+- [初歩的な言語クエリ](../../governance/resource-graph/samples/starter.md)のサンプルを参照します。
+- [高度な言語クエリ](../../governance/resource-graph/samples/advanced.md)のサンプルを参照します。

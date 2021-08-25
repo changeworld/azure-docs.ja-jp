@@ -4,16 +4,18 @@ description: Azure Blockchain Service のトランザクション ノード上�
 ms.date: 05/26/2020
 ms.topic: quickstart
 ms.reviewer: maheshna
-ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01cd813a9efd814837783343cef6a7fefd906e7f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83994785"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643272"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>クイック スタート:Geth を使用して Azure Blockchain Service のトランザクション ノードに接続する
 
 このクイックスタートでは、Geth クライアントを使用して Azure Blockchain Service トランザクション ノード上の Geth インスタンスに接続します。 接続したら、Geth コンソールを使用して Ethereum JavaScript API を呼び出します。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 06/15/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77305f9f2216adba8fb46cf2d4ee6b0da8c10e5f
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: d7c48b156b8f25d40f88be74287c9955a4012107
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739974"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
@@ -85,7 +85,7 @@ Identity Protection の情報と Azure Sentinel の統合に関する情報に�
 
 Identity Protection にユーザーがにアクセスするためには、セキュリティ閲覧者、セキュリティ オペレーター、セキュリティ管理者、グローバル閲覧者、またはグローバル管理者である必要があります。
 
-| ロール | できること | できないこと |
+| Role | できること | できないこと |
 | --- | --- | --- |
 | 全体管理者 | Identity Protection へのフル アクセス |   |
 | セキュリティ管理者 | Identity Protection へのフル アクセス | ユーザーのパスワードをリセットする |

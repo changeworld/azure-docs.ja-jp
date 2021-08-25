@@ -4,12 +4,12 @@ description: コマンド ラインから JavaScript 関数を作成し、ロー
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: eb162bcff647e9e1dbced19ddea33a8f3c54b58e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 64f01af6f14bb34aac93fd1aa805e4aceb564608
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831944"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751501"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に JavaScript 関数を作成する
 
@@ -76,7 +76,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     cd LocalFunctionProj
     ```
 
-    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 
 1. 次のコマンドを使用して、関数をプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前 (HttpExample) で、`--template` 引数は関数のトリガー (HTTP) を指定します。
 

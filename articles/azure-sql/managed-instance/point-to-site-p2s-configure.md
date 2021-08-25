@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, jovanpop
+ms.reviewer: mathoma, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 791c8a754a83762b03290e98b2e05cd2626ad672
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e99dbfdf482abfe0b7ccab3b7b5c805ba186419b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694025"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752201"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

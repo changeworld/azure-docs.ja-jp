@@ -2,19 +2,18 @@
 title: チュートリアル - Azure IoT Hub のメッセージ ルーティングの結果を表示する (.NET) | Microsoft Docs
 description: チュートリアル - このチュートリアルのパート 1 を使用してすべてのリソースを設定した後、Azure Stream Analytics にメッセージをルーティングする機能を追加して、Power BI で結果を表示します。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: d8d7d42b7c459b1414fbce6e0fa70a1577d55327
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0ba5032d13e41702064aa1502bc9f7930624fc11
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689599"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742236"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>チュートリアル:パート 2 - ルーティングされたメッセージを表示する
 

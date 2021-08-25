@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: bd013bc6e0c41865f0c2f47559f024a42c3f7462
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f1b3e1b0b2734e54bdf8f63981a80848662cda64
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461258"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747388"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro-fpga"></a>チュートリアル: Azure Stack Edge Pro FPGA を使用してデータを転送する
 
@@ -61,7 +61,7 @@ ms.locfileid: "110461258"
     c. 共有を配置するストレージ アカウントを指定します。 
 
     > [!IMPORTANT]
-    > Azure Stack Edge Pro FPGA または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、それに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
+    > Azure Stack Edge Pro FPGA または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、それに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/immutable-policy-configure-version-scope.md)」を参照してください。
     
     d. **[ストレージ サービス]** ドロップダウン リストで、 **[ブロック BLOB]** 、 **[ページ BLOB]** 、 **[ファイル]** のいずれかを選択します。  
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。

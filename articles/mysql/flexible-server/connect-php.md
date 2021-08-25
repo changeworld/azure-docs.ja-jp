@@ -7,14 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: baba4d373d4a79ab0c339aac00bb9ab48de9262b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b207091a3c38fb2842a53a9c7c4627fd5c0b790
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109609"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643407"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>クイック スタート:PHP を使用して Azure Database for MySQL - フレキシブル サーバーに接続し、データのクエリを実行する
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
@@ -22,6 +24,7 @@ ms.locfileid: "105109609"
 このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL フレキシブル サーバーに接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、PHP を使用した開発には慣れているものの、Azure Database for MySQL フレキシブル サーバーの使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
 
 - [Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを作成する](./quickstart-create-server-portal.md)

@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/12/2021
   ms.author: mbullwin
-  ms.openlocfilehash: 24d5b356a8d546eaec575efec224bb675b91a8ab
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: 7711aad94cab4255285b2c3ace267457d8bdc330
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114286447"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121737076"
 landingContent:
 - title: Anomaly Detector API について
   linkLists:
@@ -123,7 +123,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: REST API (一変量)
-      url: https://aka.ms/anomaly-detector-rest-api-ref
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect
     - text: .NET SDK (一変量)
       url: https://aka.ms/anomaly-detector-dotnet-ref
     - text: .Python SDK (一変量)

@@ -8,19 +8,19 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 15e6c2383539a1b7c119346ea0624a01964f2364
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 27b1b08196ef76bba92bf1f2ff518585c896178a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762756"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743535"
 ---
 # <a name="session-border-controllers-and-voice-routing"></a>セッション ボーダー コントローラーと音声ルーティング
 Azure Communication Services のダイレクト ルーティングを使用すると、既存のテレフォニー インフラストラクチャを Azure に接続できます。 この記事では、サポートされているセッション ボーダー コントローラー (SBC) をダイレクト ルーティングに接続するために必要な手順の概要と、対応する通信リソースで音声ルーティングがどのように機能するかについて説明します。 
 
 [!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
  
-Azure Communication Services のダイレクト ルーティングが実際の組織に適したソリューションであるかどうかについては、[Azure のテレフォニーの概念](./telephony-concept.md)に関する記事を参照してください。 デプロイの前提条件と計画の詳細については、[Communication Services のダイレクト ルーティング インフラストラクチャの要件](./sip-interface-infrastructure.md)に関する記事を参照してください。
+Azure Communication Services のダイレクト ルーティングが実際の組織に適したソリューションであるかどうかについては、[Azure のテレフォニーの概念](./telephony-concept.md)に関する記事を参照してください。 デプロイの前提条件と計画の詳細については、[Communication Services のダイレクト ルーティング インフラストラクチャの要件](./direct-routing-infrastructure.md)に関する記事を参照してください。
 
 ## <a name="connect-the-sbc-with-azure-communication-services"></a>SBC を Azure Communication Services に接続する
 
@@ -32,7 +32,7 @@ Office 365 を使用する場合は、SBC の FQDN のドメイン部分が、Of
 - たとえば、`contoso.com` が O365 での登録済みドメインである場合、Communication Services には `sbc.contoso.com` を使用できません。 ただし、上位レベルのドメインは、それが O365 に存在しなければ使用できます。`acs.contoso.com` ドメインを作成し、SBC 名として FQDN `sbc.acs.contoso.com` を使用することができます。
 - SBC の証明書は、その名前と一致している必要があります。ワイルドカードの証明書はサポートされています。
 - *.onmicrosoft.com ドメインは、SBC のFQDN には使用できません。
-すべての要件の一覧については、「[Azure ダイレクト ルーティング インフラストラクチャの要件](./sip-interface-infrastructure.md)」を参照してください。
+すべての要件の一覧については、「[Azure ダイレクト ルーティング インフラストラクチャの要件](./direct-routing-infrastructure.md)」を参照してください。
 
    :::image type="content" source="../media/direct-routing-provisioning/add-session-border-controller.png" alt-text="セッション ボーダー コントローラーの追加。":::
 - 終了したら [次へ] をクリックします。
