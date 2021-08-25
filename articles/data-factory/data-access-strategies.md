@@ -4,14 +4,15 @@ description: Azure Data Factory で、静的 IP アドレス範囲がサポー�
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 904b1506bfc8d975cad101329e1fcd15844aa284
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: dd52d74ab4b5be261e6c170d897e15f14a332d9c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481627"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638966"
 ---
 # <a name="data-access-strategies"></a>データ アクセス戦略
 

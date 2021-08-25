@@ -1,18 +1,21 @@
 ---
 title: Azure Data Factory を使用して Azure Machine Learning Studio (classic) モデルを更新する
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory と Azure Machine Learning Studio (classic) を使用して予測パイプラインを作成する方法について説明します。
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 5eac6f939ffcc39961f508a993ca17757221503f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0afbd758022805735231b415e0e06643722488cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783100"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637950"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使用して Azure Machine Learning Studio (classic) モデルを更新する
 

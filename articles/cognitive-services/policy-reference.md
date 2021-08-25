@@ -1,18 +1,18 @@
 ---
 title: Azure Cognitive Services 用の組み込みポリシー定義
 description: Azure Cognitive Services 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 08/13/2021
+ms.date: 08/20/2021
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a2ceb5aa7f50d3824f579440b1a7d4fccfb0d35d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 73b8833869adf5fa6727887d5de7bbad0dba8877
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178181"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607518"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>Azure Cognitive Services 用の Azure Policy 組み込みポリシー定義
 

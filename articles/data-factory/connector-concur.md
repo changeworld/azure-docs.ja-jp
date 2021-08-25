@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Concur のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jianleishen
-ms.openlocfilehash: 3de92c047a23e132ddcd474fa29d36186af56108
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 7bb4452d6cf7b140401a70562a13c9673a9169f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487351"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638106"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 

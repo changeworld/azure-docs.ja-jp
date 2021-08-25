@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ef77648a87a22eda950704a6d86b2e699dc61ebe
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c2d6f3ebe3d11c304efe57141db3d8935611bf72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762741"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743539"
 ---
 # <a name="telephony-concepts"></a>テレフォニーの概念
 
@@ -77,7 +77,7 @@ Azure Communication Services の Calling SDK を使用すると、アプリケ�
 ### <a name="conceptual-documentation"></a>概念説明のドキュメント
 
 - [Azure Communication Services での電話番号の種類](./plan-solution.md)
-- [Azure 直接ルーティングを計画する](./sip-interface-infrastructure.md)
+- [Azure 直接ルーティングを計画する](./direct-routing-infrastructure.md)
 - [Azure Communication Services のダイレクト ルーティングに対して認定されたセッション ボーダー コントローラー](./certified-session-border-controllers.md)
 - [料金](../pricing.md)
 

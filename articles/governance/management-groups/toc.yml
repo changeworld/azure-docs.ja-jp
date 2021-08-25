@@ -38,7 +38,11 @@
   items:
     - name: '次のことを学びます:サブスクリプション ガバナンス戦略を作成する'
       displayName: 'governance, module'
-      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-create-subscription-governance-strategy
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 操作方法ガイド
   expanded: true
   items:

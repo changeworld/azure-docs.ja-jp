@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: b76d9cf86a1bb00ea73c396ce1e563374a834f89
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9b5d5d85d8df58a8e8c3e2626abaed75377e6025
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459466"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "122643303"
 ---
 # <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>クイック スタート: Visual Studio を使用して Azure で初めての C# 関数を作成する
 
@@ -52,7 +52,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 1. コードで、Function1 クラスの名前を `HttpExample` に変更します。
 
-1. `Run` という名前の `HttpTrigger` メソッドで、`FunctionName` メソッド属性の名前を `HttpExample` に変更します。
+1. `Run` という名前の `HttpTrigger` メソッドで、`FunctionName` メソッド属性の名前を `HttpExample` に変更します。 
 
 関数の定義は次のコードのようになります。
 
@@ -74,7 +74,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
+## <a name="verify-your-function-in-azure"></a>Azure 内で関数を確認する
 
 1. Cloud Explorer では、新しい関数アプリが選択されているはずです。 そうでない場合は、自分のサブスクリプション > **[App Services]** の順に展開して、新しい関数アプリを選択します。
 
@@ -88,7 +88,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
     `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. この URL に移動し、関数によって返されたリモート GET 要求に対する応答がブラウザーに表示されます。次の例のような内容です。
+1. この URL に移動し、関数によって返されたリモート GET 要求に対する応答がブラウザーに表示されます。次の例のような内容です。
 
     :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="ブラウザーでの関数の応答":::
 
@@ -98,19 +98,9 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 Azure の "*リソース*" とは、関数アプリ、関数、ストレージ アカウントなどのことを指します。 これらは "*リソース グループ*" に分類されており、グループを削除することでグループ内のすべてのものを削除できます。 
 
-これらのクイックスタートを完了するためにリソースを作成しました。 これらのリソースには、[アカウントの状態](https://azure.microsoft.com/account/)と[サービスの価格](https://azure.microsoft.com/pricing/)に応じて課金される場合があります。 リソースの必要がなくなった場合にそれらを削除する方法を、次に示します。
+これらのクイックスタートを完了するためにリソースを作成しました。 これらのリソースには、[アカウントの状態](https://azure.microsoft.com/account/)と[サービスの価格](https://azure.microsoft.com/pricing/)に応じて課金される場合があります。 
 
-1. Cloud Explorer で、自分のサブスクリプション > **[App Services]** の順に展開し、関数アプリを右クリックして、 **[ポータルで開く]** を選択します。 
-
-1. 関数アプリのページで、 **[概要]** タブを選択してから、 **[リソース グループ]** の下にあるリンクを選択します。
-
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="関数アプリのページで削除するリソース グループを選択する":::
-
-2. **[リソース グループ]** ページで、含まれているリソースの一覧を確認し、削除するものであることを確認します。
- 
-3. **[リソース グループの削除]** を選択し、指示に従います。
-
-   削除には数分かかることがあります。 実行されると、通知が数秒間表示されます。 ページの上部にあるベルのアイコンを選択して、通知を表示することもできます。
+[!INCLUDE [functions-vstools-cleanup](../../includes/functions-vstools-cleanup.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

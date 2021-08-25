@@ -3,18 +3,17 @@ title: 'チュートリアル: Azure IoT Edge と SQL モジュールを使用�
 description: このチュートリアルでは、SQL Server モジュールを使用して IoT Edge デバイスのローカルにデータを格納する方法について説明します
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 50a2555bfd86e074da16daf4866d79f506ecd964
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 4a45cb97d4565eac279f054bcd862329311f4d8c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438046"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726343"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
@@ -88,7 +87,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 3. このファイルを保存します。
 
 >[!NOTE]
->このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、[[コンテナー レジストリへのアクセスを管理する]](production-checklist.md#manage-access-to-your-container-registry) を参照してください。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 

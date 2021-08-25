@@ -4,16 +4,18 @@ description: Visual Studio Code で Azure Blockchain Development Kit for Ethereu
 ms.date: 12/04/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 6e94d93d91f25c15743c4c467e31de49fd9da41d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 157aaab52c64bcbbf2ae6e378cbb354df56e2464
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96763317"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643288"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>クイック スタート:Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する
 
 このクイックスタートでは、Azure Blockchain Development Kit for Ethereum Visual Studio Code (VS Code) 拡張機能をインストールして使用し、Azure Blockchain Service 上のコンソーシアムに接続します。 Azure Blockchain 開発キットを使用すると、Ethereum ブロックチェーン台帳上のスマート コントラクトの作成、接続、ビルド、デプロイを簡単に行うことができます。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

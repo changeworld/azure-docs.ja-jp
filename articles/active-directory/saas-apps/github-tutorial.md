@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: c87f66e48aa7b39a7f3fc5f9b8572dd6925abbc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12d80ee98ceef33221b7713703e8106bada6470c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732159"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750433"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Cloud Organization の統合
 
@@ -77,11 +77,11 @@ GitHub に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-   a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>/sso`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>`
+    b. **[応答 URL]** ボックスに、`https://github.com/orgs/<Organization ID>/saml/consume` のパターンを使用して URL を入力します
 
-    c. **[応答 URL]** ボックスに、`https://github.com/orgs/<Organization ID>/saml/consume` のパターンを使用して URL を入力します
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<Organization ID>/sso`
 
 
     > [!NOTE]

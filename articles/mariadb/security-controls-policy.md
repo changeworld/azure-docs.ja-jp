@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MariaDB 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Database for MariaDB に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.topic: sample
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ff2bc9d6957cdf44a9f2d722f7ab6e5d408c5e5f
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 995f584a4691fdcbb93090a4abd5bcb3b91665ed
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403997"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607086"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Azure Policy 規制コンプライアンス コントロール
 

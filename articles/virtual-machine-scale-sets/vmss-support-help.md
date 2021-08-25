@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 7c064a460be8bf3f15eba404a208c0cad15a282a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e6330abbe05c161672c30c3555249d37eb74060d
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956489"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634411"
 ---
 # <a name="support-and-troubleshooting-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのサポートとトラブルシューティング
 
@@ -87,19 +87,6 @@ Azure 仮想マシン スケール セットの開発と管理に使用される
 | Terraform | https://github.com/Azure/terraform/issues | 
 | Ansible | https://github.com/Azure/Ansible/issues | 
 
-
-
-## <a name="submit-feature-requests-on-azure-feedback"></a>Azure フィードバックで機能のリクエストを送信する
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-新機能を要求するには、Azure フィードバックに投稿します。 Azure 仮想マシン スケール セットを改善するためのアイデアを共有してください。
-
-| サービス                       | Azure フィードバックの URL |
-|-------------------------------|---------------|
-| Azure Virtual Machines  | https://feedback.azure.com/forums/216843-virtual-machines 
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>更新プログラムと新しいリリースに関する最新情報を入手する
 

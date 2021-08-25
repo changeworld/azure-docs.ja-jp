@@ -3,11 +3,9 @@
     - name: Azure の回復性の機能に関するページ
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: 回復性に優れた Azure 用アプリケーションの設計
-      href: /azure/architecture/resiliency/
+      href: /azure/architecture/framework/resiliency/app-design
 - name: 高可用性
   items:
-    - name: Azure アプリケーションの高可用性
-      href: /azure/architecture/resiliency/high-availability-azure-applications
     - name: リージョンと Availability Zones
       href: az-overview.md
     - name: 可用性ゾーンのドキュメント

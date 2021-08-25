@@ -98,7 +98,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
     - name: フィードバック
       href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
     - name: 価格

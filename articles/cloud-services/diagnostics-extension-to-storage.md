@@ -8,19 +8,18 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: application-insights
-ms.openlocfilehash: b58249dac5b98bb86c35fae9ac574b6100fa9fd5
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 74dcfa8aa2ff062f6b021643dca539233c681cd4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383101"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822366"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Storage への診断データの保存と表示
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
-診断データは、Microsoft Azure Storage Emulator または Azure ストレージに転送しない限り、永続的に保存されません。 診断データは、いったんストレージに保存されると、用意されているいくつかのツールの 1 つを使用して確認することができます。
+診断データは、Microsoft Azure ストレージ エミュレーターまたは Azure ストレージに転送しない限り、永続的に保存されません。 診断データは、いったんストレージに保存されると、用意されているいくつかのツールの 1 つを使用して確認することができます。
 
 ## <a name="specify-a-storage-account"></a>ストレージ アカウントの指定
 ServiceConfiguration.cscfg ファイル内で使用するストレージ アカウントを指定します。 アカウント情報は、構成設定で接続文字列として定義されます。 次の例では、Visual Studio で新しい Cloud Service プロジェクト用に作成された既定の接続文字列を示します。

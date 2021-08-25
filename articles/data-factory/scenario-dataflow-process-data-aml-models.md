@@ -5,17 +5,18 @@ services: data-factory
 author: amberz
 co-author: ATLArcht
 ms.service: data-factory
+ms.subservice: tutorials
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/31/2021
 ms.author: amberz
 ms.co-author: Donnana
-ms.openlocfilehash: 45cd44cc0678b7f3a006a88bf66be2bca091af76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a652ac797739323530dee169987a135c8abdf0f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595381"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638960"
 ---
 # <a name="process-data-from-automated-machine-learning-models-by-using-data-flows"></a>データ フローを使用して自動機械学習モデルのデータを処理する
 

@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 257055110bffac10c92d87820bcfadff2b208b3b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 1e66e8a3358bdcbca3d5dea247e1e6af2000393f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538038"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735059"
 ---
 # <a name="quickstart-deploy-a-managed-apache-spark-cluster-preview-with-azure-databricks"></a>クイックスタート - Azure Databricks でマネージド Apache Spark クラスター (プレビュー) をデプロイする
 
@@ -82,7 +82,7 @@ Azure Managed Instance for Apache Cassandra がある仮想ネットワークに
    * **[クラスター名]** - クラスターの名前を入力します。
    * **[Databricks Runtime のバージョン]** - Spark 3.x をサポートするには、Databricks Runtime バージョン 7.5 以降を選択することをお勧めします。 
 
-    :::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks Runtime のバージョンと Spark クラスターを選択する。" border="true":::
+    :::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Databricks Runtime のバージョンと Spark クラスターを選択する。" border="true":::
 
 1. **[Advanced Options]\(詳細オプション\)** を展開し、次の構成を追加します。 ノードの IP と資格情報は、必ず置き換えてください。
 
@@ -96,7 +96,7 @@ Azure Managed Instance for Apache Cassandra がある仮想ネットワークに
 
 1. Apache Spark Cassandra コネクタ ライブラリをクラスターに追加して、ネイティブと Azure Cosmos DB Cassandra 両方のエンドポイントに接続します。 自分のクラスターで、 **[ライブラリ]**  >  **[新規インストール]**  >  **[Maven]** の順に選択し、Maven 座標に `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` を追加します。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Databricks で Maven パッケージを検索する方法を示すスクリーンショット。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-search-packages.png" alt-text="Databricks で Maven パッケージを検索する方法を示すスクリーンショット。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
