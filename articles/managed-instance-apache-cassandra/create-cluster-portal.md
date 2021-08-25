@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 65f4bb6f50b6c09bc570b2832aa6d3aee3ac703f
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 67f317594b257776a3a8ac8c257281352516bfee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111981748"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749475"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
  
@@ -100,7 +100,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="connecting-to-your-cluster"></a>クラスターに接続する
 
-Azure Managed Instance for Apache Cassandra では、パブリック IP アドレスを持つノードが作成されないため、新しく作成された Cassandra クラスターに接続するには、VNet 内に別のリソースを作成する必要があります。 これは、アプリケーション、または Apache のオープンソース クエリ ツール [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) がインストールされている仮想マシンにすることができます。 [テンプレート](https://azure.microsoft.com/resources/templates/vm-simple-linux/)を使用して、Ubuntu 仮想マシンをデプロイできます。 デプロイされたら、SSH を使用してマシンに接続し、次のコマンドを使用して CQLSH をインストールします。
+Azure Managed Instance for Apache Cassandra では、パブリック IP アドレスを持つノードが作成されないため、新しく作成された Cassandra クラスターに接続するには、VNet 内に別のリソースを作成する必要があります。 これは、アプリケーション、または Apache のオープンソース クエリ ツール [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) がインストールされている仮想マシンにすることができます。 [テンプレート](https://azure.microsoft.com/resources/templates/vm-simple-linux/)を使用して、Ubuntu 仮想マシンをデプロイできます。 デプロイされたら、SSH を使用してマシンに接続し、次のコマンドを使用して CQLSH をインストールします。
 
 ```bash
 # Install default-jre and default-jdk

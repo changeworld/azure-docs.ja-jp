@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: eaee16d865a0d208dbf0c41665d590e7ecb14e89
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 309d2cfb47c61d516be19d110cb7ade1f3c63e18
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253592"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695174"
 ---
 # <a name="connect-your-citrix-waf-to-azure-sentinel"></a>Citrix WAF を Azure Sentinel に接続する
 
@@ -42,7 +42,7 @@ Citrix WAF を使用すると、CEF 形式の Syslog メッセージが、Log An
 
 1. Citrix から提供されている指示に従って [WAF を構成](https://support.citrix.com/article/CTX234174)し、[CEF ログ記録を構成](https://support.citrix.com/article/CTX136146)し、[ログをログ フォワーダーに送信するように構成](https://docs.citrix.com/en-us/citrix-adc/13/system/audit-logging/configuring-audit-logging.html)します。 ログがログ フォワーダー マシンの IP アドレスの TCP ポート 514 に送信されるようにします。
 
-1. 接続を検証し、[こちらの手順](connect-cef-verify.md)を使用してデータ インジェストを確認します。 ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。
+1. 接続を検証し、[こちらの手順](troubleshooting-cef-syslog.md#validate-cef-connectivity)を使用してデータ インジェストを確認します。 ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。
 
 ## <a name="find-your-data"></a>データの検索
 

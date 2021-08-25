@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory を使用して OData ソースからデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 91d1206bcaf80d054c6adde1ee5a23456083b97b
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: bab8c4b27103ad1cd8ca057942add558d907d73f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485191"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638726"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -357,7 +360,7 @@ Project Online からデータをコピーするには、OData コネクタと�
     - **Authentication type**: **[Anonymous]** を選択します。
     - **Auth headers**:
         - **Property name**: **[Authorization]** を選択します。
-        - **Value**: 手順 1 でコピーした **アクセス トークン** を入力します。
+        - **値**:「`Bearer <access token from step 1>`」と入力します。
     - リンクされたサービスをテストします。
 
     ![OData のリンクされたサービスを作成する](./media/connector-odata/odata-project-online-linked-service.png)

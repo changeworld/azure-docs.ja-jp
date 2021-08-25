@@ -7,16 +7,16 @@ ms.subservice: backup-restore
 ms.custom: load & move data, sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: rothja
-ms.author: jroth
+author: SQLSourabh
+ms.author: sourabha
 ms.reviewer: mathoma
 ms.date: 05/24/2019
-ms.openlocfilehash: cbcaa35441d375a6ba12282ee56428d54bd54217
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5b9c050082693e0026819d4fe817e353df62208b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462438"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735609"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>PowerShell を使用して BACPAC ファイルを SQL Database のデータベースにインポートする
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

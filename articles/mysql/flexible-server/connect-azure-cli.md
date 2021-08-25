@@ -7,19 +7,21 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: 3d24c6443dfa4c2e4eab1f247e075b34e891c1b6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f75b933769e94986b1c140fb8bcbadca44b96cf1
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470254"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643375"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>クイックスタート: Azure CLI から Azure Database for MySQL - フレキシブル サーバーに接続してクエリを実行する
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
-このクイックスタートでは、Azure CLI で ```az mysql flexible-server connect``` を使用して Azure Database for MySQL フレキシブル サーバーに接続し、```az mysql flexible-server execute``` コマンドで単一のクエリまたは SQL ファイルを実行する方法を示します。 このコマンドを使用すると、データベース サーバーとの接続をテストしたり、クエリを実行したりすることができます。 対話モードを使用して、複数のクエリを実行することもできます。 
+このクイックスタートでは、Azure CLI で ```az mysql flexible-server connect``` を使用して Azure Database for MySQL フレキシブル サーバーに接続し、```az mysql flexible-server execute``` コマンドで単一のクエリまたは SQL ファイルを実行する方法を示します。 このコマンドを使用すると、データベース サーバーとの接続をテストしたり、クエリを実行したりすることができます。 対話モードを使用して、複数のクエリを実行することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 

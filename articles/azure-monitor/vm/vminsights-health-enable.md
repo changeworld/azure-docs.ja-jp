@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 04/05/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: f38172e82b61ce07863614857ab7ef096683f34a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3855cc3dff2d29c659c6613e1321529745239c7c
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729292"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634109"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー) を有効にする
 VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
@@ -39,7 +39,6 @@ VM insights のゲストの正常性には、パブリック プレビュー段�
 - オーストラリア東部
 - オーストラリア南東部
 - ブラジル南部
-- ブラジル南東部
 - カナダ中部
 - インド中部
 - 米国中部
@@ -59,7 +58,6 @@ VM insights のゲストの正常性には、パブリック プレビュー段�
 - 南アフリカ北部
 - 東南アジア
 - スイス北部
-- スイス西部
 - アラブ首長国連邦北部
 - 英国南部
 - 英国西部
@@ -74,6 +72,8 @@ Log Analytics ワークスペースは、次のいずれかのリージョンに
 - オーストラリア中部
 - オーストラリア東部
 - オーストラリア南東部
+- ブラジル南部
+- ブラジル南東部
 - カナダ中部
 - カナダ インド
 - 米国中部
@@ -83,11 +83,15 @@ Log Analytics ワークスペースは、次のいずれかのリージョンに
 - 米国東部 2 EUAP
 - フランス中部
 - 東日本
+- 西日本
 - 米国中北部
 - 北ヨーロッパ
+- ノルウェー東部
 - 米国中南部
 - 東南アジア
 - スイス北部
+- スイス西部
+- アラブ首長国連邦北部
 - 英国南部
 - 西ヨーロッパ リージョン
 - 米国西部

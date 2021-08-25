@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 47d8acd26d1cfa9c41c2cc8770f7c7f81a3e2930
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: f74c751f5b725270cfefcf4bab7353df4c498f01
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592108"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638375"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー
 
@@ -116,7 +116,7 @@ JavaScript コードを次に示します。
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    if (myTimer.IsPastDue)
+    if (myTimer.isPastDue)
     {
         context.log('Node is running late!');
     }

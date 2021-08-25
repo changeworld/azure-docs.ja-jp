@@ -10,13 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
-ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 5c57b5574df3da9d581aafb49e9ba69b1b032509
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 86b663bb245b31ea89c9d523ea4df6e27bbc32b7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653510"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772044"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -188,7 +188,7 @@ MSAL は、次のものを初めとする多くのアプリケーション シ�
 
 | 省略可能なクエリパラメーター | 説明 | Version |
 | --- |  --- | --- |
-| `timeout=<timeout>` | HTTP 要求実行のサーバー側のタイムアウト。 [環境イベントの取得](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) API と[環境集計の取得](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。 | Gen1 |
+| `timeout=<timeout>` | HTTP 要求実行のサーバー側のタイムアウト。 [環境イベントの取得](/rest/api/time-series-insights/dataaccessgen2/query/get-availability) API と[環境集計の取得](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。 | Gen1 |
 | `storeType=<storeType>` | ウォーム ストアが有効になっている Gen2 環境では、`WarmStore` または `ColdStore` のいずれかでクエリを実行できます。 クエリ内のこのパラメーターは、クエリを実行する必要があるストアを定義します。 定義されていない場合は、コールドストアでクエリが実行されます。 ウォームストアに対してクエリを実行するには、**storeType** を `WarmStore`に設定する必要があります。 定義されていない場合は、コールドストアに対してクエリが実行されます。 | Gen2 |
 
 ## <a name="next-steps"></a>次の手順

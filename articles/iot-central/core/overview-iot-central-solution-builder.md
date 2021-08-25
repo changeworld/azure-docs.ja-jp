@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 5c8ef9fae7e0fa26de6a0d568e88a80a9a8cf989
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5ceb6950cb5ed581d2efea9a375fee0bf4008952
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459155"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597855"
 ---
 # <a name="iot-central-solution-builder-guide"></a>IoT Central ソリューション ビルダーのガイド
 
@@ -52,7 +52,6 @@ IoT Central には、オペレーターが、接続されているデバイス�
 - [ワークフローを使用して Azure IoT Central アプリケーションを他のクラウド サービスと統合する](howto-configure-rules-advanced.md)
 - [Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する](howto-create-custom-rules.md)
 - [Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する](howto-create-custom-analytics.md)
-- [Azure IoT Central データを Power BI ダッシュボードに視覚化する](howto-connect-powerbi.md)
 
 ## <a name="apis"></a>API
 

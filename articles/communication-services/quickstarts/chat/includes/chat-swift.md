@@ -10,15 +10,13 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 1676ed849c025fc0f41aac933268e80276feeee2
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 50c040b7c958d0398dba8026f6086b6f392870db
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114723702"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122262760"
 ---
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
-
 ## <a name="sample-code"></a>サンプル コード
 このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/add-chat) にあります。
 

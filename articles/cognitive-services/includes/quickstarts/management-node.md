@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 2fd0ce34d79ac168acc87ae5b425527c256816de
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 37081904104befe18ed4f072b8fe474aabaa688b
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593623"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442289"
 ---
 [リファレンスのドキュメント](/javascript/api/@azure/arm-cognitiveservices/) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -21,6 +21,7 @@ ms.locfileid: "111593623"
 
 * 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)。
 * 最新バージョンの [Node.js](https://nodejs.org/)
+* [!INCLUDE [contributor-requirement](./contributor-requirement.md)]
 * [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 [!INCLUDE [Create a service principal](./create-service-principal.md)]

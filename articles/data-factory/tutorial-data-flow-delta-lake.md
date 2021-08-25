@@ -4,15 +4,16 @@ description: このチュートリアルでは、データ フローを使用し
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 04/16/2021
-ms.openlocfilehash: 4a88ed2df74d3eebb96c42e2cdc87b14153419cd
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 06/04/2021
+ms.openlocfilehash: dff3972bfc9da83312a1fdf4fc7c6169f932c410
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565374"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638536"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>マッピング データ フローを使用して Delta Lake のデータを変換する
 
@@ -53,9 +54,9 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 この手順では、データ フロー アクティビティが含まれるパイプラインを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. ホーム ページで **[調整]** を選択します。
 
-   ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
+   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**DeltaLake**」と入力します。
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** アコーディオンを展開します。 ウィンドウから **Data Flow** アクティビティをパイプライン キャンバスにドラッグ アンド ドロップします。
@@ -68,11 +69,11 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
     ![[データ フローのデバッグ] のスライダーを示すスクリーンショット。](media/tutorial-data-flow/dataflow1.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>データ フロー キャンバスでの変換ロジックの作成
+## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>データ フロー キャンバスでの変換ロジックの作成
 
 このチュートリアルでは、2 つのデータ フローを生成します。 最初のデータ フローは、上記のムービーの CSV ファイルから新しい Delta Lake を生成するためにシンクする単純なソースです。 最後に、以下のフロー デザインを作成して、Delta Lake のデータを更新します。
 
-![最終的なフロー](media/data-flow/data-flow-tutorial-6.png &quot;最終的なフロー")
+![最終的なフロー](media/data-flow/data-flow-tutorial-6.png "最終的なフロー")
 
 ### <a name="tutorial-objectives"></a>チュートリアルの目標
 

@@ -2,19 +2,18 @@
 title: チュートリアル:Azure Functions をモジュールとして展開する - Azure IoT Edge
 description: このチュートリアルでは、Azure Functions を IoT Edge モジュールとして開発した後、エッジ デバイスに展開します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: ee3825a7c93396eca4ba6fd6a65b90eddb5b4c8c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: a98d50b1c06397db5de928f39ebff34c1fe9ddb0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438298"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726499"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル:Azure Functions を IoT Edge モジュールとして展開する
 
@@ -88,7 +87,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 3. このファイルを保存します。
 
 >[!NOTE]
->このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、[[コンテナー レジストリへのアクセスを管理する]](production-checklist.md#manage-access-to-your-container-registry) を参照してください。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
