@@ -9,17 +9,16 @@ ms.service: cloud-services
 ms.topic: troubleshooting
 ms.workload: ''
 ms.date: 03/16/2020
-ms.openlocfilehash: d1228e8258984c7c20e02cb9f8c805cac0fec927
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 8c7a79d791e62fe1173b945d0d2d360c595e31a6
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093627"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822519"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1.2 をサポートしていないアプリケーションのトラブルシューティング
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 この記事では、古い TLS プロトコル (TLS 1.0 および 1.1) を有効にする方法と、Windows Server 2019 クラウド サービスの Web ロールと worker ロールで追加のプロトコルをサポートするためのレガシの暗号スイートの適用方法について説明します。
 

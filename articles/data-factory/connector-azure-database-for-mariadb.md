@@ -1,18 +1,20 @@
 ---
 title: Azure Database for MariaDB からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Database for MariaDB からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 09/04/2019
-ms.openlocfilehash: 9cdc6432f2eb6f4d39de4df3a8a424991cb80453
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 91285b6cf9982635536df6752ba1d9651b57f2ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480241"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637943"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for MariaDB からデータをコピーする 
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: e9820f22e92bfc6f4743b205fc4cf36a1baa580d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4997666c2dee5b9d71c31579682d3016df5f2738
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375913"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195635"
 ---
 # <a name="durable-orchestrations"></a>持続的オーケストレーション
 
@@ -142,8 +142,8 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript/Pytho
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2021-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2021-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | TaskScheduled         | 2021-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2021-05-05T18:45:32.670Z |       |                  |                                                           |                     |
+| eaee885b | TaskScheduled         | 2021-05-05T18:45:32.67Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2021-05-05T18:45:32.67Z |       |                  |                                                           |                     |
 | eaee885b | TaskCompleted         | 2021-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     |
 | eaee885b | OrchestratorStarted   | 2021-05-05T18:45:34.232Z |       |                  |                                                           |                     |
 | eaee885b | TaskScheduled         | 2021-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
@@ -259,7 +259,7 @@ public static async Task CheckSiteAvailable(
     DurableHttpResponse response = 
         await context.CallHttpAsync(HttpMethod.Get, url);
 
-    if (response.StatusCode >= 400)
+    if ((int)response.StatusCode == 400)
     {
         // handling of error codes goes here
     }

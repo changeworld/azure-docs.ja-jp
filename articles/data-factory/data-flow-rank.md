@@ -1,19 +1,21 @@
 ---
 title: マッピング データ フローでの順位変換
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory のマッピング データ フロー順位変換を使用して順位付け列を生成する方法
 author: kromerm
 ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 10/05/2020
-ms.openlocfilehash: bc0a4d8701f8d53f0acff362713054269378a88a
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 6577425827668f0eaddb19b276e940fff7dafa1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903742"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638890"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>マッピング データ フローでの順位変換 
 

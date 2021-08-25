@@ -3,14 +3,15 @@ metadata:
   title: 監視アラートとレポートに関する FAQ
   description: この記事では、Azure Backup の監視アラートと Azure Backup のレポートに関する一般的な質問への回答を示します。
   ms.reviewer: srinathv
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: backup
   ms.date: 07/08/2019
-  ms.openlocfilehash: 3117220c9202a458e2fdf377abf11cf068e53201
-  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.openlocfilehash: ee64b5e2499af2e65a869535d56465c95df06c96
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/15/2021
-  ms.locfileid: "111907431"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253425"
 title: Azure Backup の監視アラート - FAQ
 summary: この記事では Azure Backup の監視とレポートに関してよく寄せられる質問への回答を示します。
 sections:

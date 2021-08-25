@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 43997810798322a628490aa72db74944f2fc38c7
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: b618396edb60e1a2092ecd4aa6ce134227220df5
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589813"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429168"
 ---
 # <a name="create-a-media-services-and-storage-account-with-a-private-link"></a>プライベート リンクを使用して Media Services とストレージ アカウントを作成する
 
@@ -24,7 +24,7 @@ VNet へのプライベート リンクを使用して、Media Services アカ�
 
 ## <a name="prerequisites"></a>前提条件
 
-[クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)を確認する。
+[クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)を確認する。
 
 ## <a name="limitations"></a>制限事項
 
@@ -42,6 +42,8 @@ VNet へのプライベート リンクを使用して、Media Services アカ�
   - リンク間のリンク (プライベート DNS ゾーンを VNet に接続するため)
   - プライベート DNS ゾーン グループ (プライベート DNS ゾーンで DNS レコードの自動作成をトリガーするため)
 - VM (パブリック IP アドレスとネットワーク インターフェイスが関連付けられている)
+
+[!INCLUDE [Azure Policy Media Services](includes/security-azure-policy-private-links.md)]
 
 ## <a name="azure-resource-manager-arm-template-for-private-link"></a>プライベート リンク用の Azure Resource Manager (ARM) テンプレート
 

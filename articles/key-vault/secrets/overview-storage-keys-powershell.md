@@ -8,16 +8,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aa4daf7c8d951a7b42479533a3a5a50c06c5c144
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 180d367e6175a6f637cd5598e0b1af9a89d0ec30
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748486"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724328"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 > [!IMPORTANT]
-> Azure Storage と Azure Active Directory (Azure AD) の統合 (Microsoft のクラウドベースの ID およびアクセス管理サービス) を使用することをお勧めします。 Azure AD 統合は [Azure BLOB およびキュー](../../storage/common/storage-auth-aad.md)で利用できます。また、Azure Key Vault と同様に、Azure Storage へのトークンベースの OAuth2 アクセスが提供されます。
+> Azure Storage と Azure Active Directory (Azure AD) の統合 (Microsoft のクラウドベースの ID およびアクセス管理サービス) を使用することをお勧めします。 Azure AD 統合は [Azure BLOB およびキュー](../../storage/blobs/authorize-access-azure-active-directory.md)で利用できます。また、Azure Key Vault と同様に、Azure Storage へのトークンベースの OAuth2 アクセスが提供されます。
 > Azure AD では、ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証することができます。 Azure で実行するときは、[Azure AD マネージド ID](../../active-directory/managed-identities-azure-resources/index.yml) を使用できます。 マネージド ID を使用すると、クライアント認証やアプリケーションでの資格情報の保存が不要になります。 Azure AD 認証が不可能な場合にのみ、以下のソリューションを使用してください。
 
 Azure ストレージ アカウントでは、アカウント名とキーで構成された資格情報が使用されます。 キーは自動生成され、暗号キーではなくパスワードとして機能します。 Key Vault では、ストレージ アカウントでストレージ アカウント キーを定期的に再生成することでそのようなキーの管理が行われることに加え、ストレージ アカウント内のリソースへの委任アクセス用の Shared Access Signature トークンが提供されます。

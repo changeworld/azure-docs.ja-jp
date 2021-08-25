@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス
 ms.topic: quickstart
-ms.date: 3/22/2021
+ms.date: 06/04/2021
 ms.author: aahi
-ms.openlocfilehash: 26e3b264b7268f7a9ffdb592beef7d76844646f5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1c838a9b805eed20fec9f9feabf4aa24c58b1cd5
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789143"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429942"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>クイックスタート: Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
@@ -33,6 +33,8 @@ Cognitive Services は、ご利用の Azure サブスクリプションに作成
 
 * 有効な Azure サブスクリプション - 無料[アカウントを作成](https://azure.microsoft.com/free/cognitive-services)します。
 * [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli)
+* [!INCLUDE [contributor-requirement](./includes/quickstarts/contributor-requirement.md)]
+* [!INCLUDE [terms-azure-portal](./includes/quickstarts/terms-azure-portal.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Azure CLI をインストールしてサインインする
 
@@ -78,51 +80,10 @@ az group create \
 
 新しいリソースを作成するときには、必要な [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/) (つまり sku) と共に、使用するサービスの "種類" を把握する必要があります。 リソースを作成するときは、この情報と他の情報をパラメーターとして使用します。
 
-### <a name="multi-service"></a>マルチサービス
-
-| サービス                    | 種類                      |
-|----------------------------|---------------------------|
-| 複数のサービス。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/)に関するページを参照してください。            | `CognitiveServices`     |
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 
-> [!NOTE]
-> 以下の Cognitive サービスの多くには、サービスを試すために使用できる無料レベルがあります。 無料レベルを使用するには、リソースの sku として `F0` を使用します。
-
-### <a name="vision"></a>視覚
-
-| サービス                    | 種類                      |
-|----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
-| Custom Vision - Prediction | `CustomVision.Prediction` |
-| Custom Vision - Training   | `CustomVision.Training`   |
-| Face                       | `Face`                    |
-| Form Recognizer            | `FormRecognizer`          |
-| Ink Recognizer             | `InkRecognizer`           |
-
-### <a name="speech"></a>音声
-
-| サービス            | 種類                 |
-|--------------------|----------------------|
-| Speech Services    | `SpeechServices`     |
-| 音声認識 | `SpeakerRecognition` |
-
-### <a name="language"></a>言語
-
-| サービス            | 種類                |
-|--------------------|---------------------|
-| Form Understanding | `FormUnderstanding` |
-| LUIS               | `LUIS`              |
-| QnA Maker          | `QnAMaker`          |
-| Text Analytics     | `TextAnalytics`     |
-| Text Translation   | `TextTranslation`   |
-
-### <a name="decision"></a>決定
-
-| サービス           | 種類               |
-|-------------------|--------------------|
-| Anomaly Detector  | `AnomalyDetector`  |
-| Content Moderator | `ContentModerator` |
-| Personalizer      | `Personalizer`     |
+[!INCLUDE [SKUs and pricing](./includes/quickstarts/sku-pricing.md)]
 
 使用できる Cognitive Services の "種類" の一覧を確認するには、[az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_list_kinds) コマンドを使用します。
 
@@ -194,7 +155,9 @@ Cognitive Services リソースをクリーンアップして削除したい場�
 az group delete --name cognitive-services-resource-group
 ```
 
-## <a name="see-also"></a>参照
+削除されたリソースを復旧する必要がある場合は、[削除された Cognitive Services リソースの復旧](manage-resources.md)に関するページを参照してください。
+
+## <a name="see-also"></a>関連項目
 
 * Cognitive Services を安全に使用する方法については、「 **[Azure Cognitive Services に対する要求の認証](authentication.md)** 」をご覧ください。
 * Cognitive Services 内のさまざまなカテゴリの一覧を入手するには、「 **[Azure Cognitive Services とは](./what-are-cognitive-services.md)** 」をご覧ください。

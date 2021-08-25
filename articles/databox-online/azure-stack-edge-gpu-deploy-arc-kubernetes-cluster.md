@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 9eef9a99dbf27100fdb6e1fd731ace380f7ba4fb
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 1f3ecf919337c17514af7d9e0d3d83b2dc75bf1d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072849"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769257"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
 
@@ -145,7 +145,7 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
     Azure パブリック以外のクラウドを使用している場合は、`CloudEnvironment` パラメーターを追加します。 このパラメーターは、`AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、`AZUREGERMANCLOUD`、および `AZUREUSGOVERNMENTCLOUD` に設定できます。
 
     > [!NOTE]
-    > - お使いのデバイスに Azure Arc を展開するには、[Azure Arc でサポートされているリージョン](../azure-arc/kubernetes/overview.md#supported-regions)を使用していることを確認してください。 
+    > - お使いのデバイスに Azure Arc を展開するには、[Azure Arc でサポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)を使用していることを確認してください。 
     > - `az account list-locations` コマンドを使用して、`Set-HcsKubernetesAzureArcAgent` コマンドレットで渡す正確な場所の名前を確認します。 場所の名前は通常、スペースなしの形式が使用されます。
     > - `ClientId` と `ClientSecret` は必須パラメーターです。 `ClientSecret` は、セキュリティで保護された文字列です。
     

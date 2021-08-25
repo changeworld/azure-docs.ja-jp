@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics 用の組み込みポリシー定義
 description: Azure Stream Analytics 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 08/13/2021
+ms.date: 08/20/2021
 ms.topic: reference
 author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d98b90db4de977bd976354384d4481be5fb455e5
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 598da2a011625cd8547376a71ea0050b32de2b07
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178543"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605240"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Azure Policy 組み込み定義
 

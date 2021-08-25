@@ -12,15 +12,15 @@ ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
+ms.date: 06/01/2021
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d91d6e528127740039e1e21ca0b4cb8635e7e10
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: d26a95a5db616be89eac89e140e20bd371088716
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569640"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580910"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,7 +60,7 @@ DNN を使用すると、ほとんどの SQL Server 機能は可用性グルー�
 
 - **フェールオーバー時間**: DNN リスナーを使用すると、ネットワーク ロード バランサーによって障害イベントが検出され、ルーティングが変更されるまで待つ必要がないため、フェールオーバー時間が短縮されます。 
 - **既存の接続**: フェールオーバー可用性グループ内の *特定のデータベース* に対する接続は閉じられますが、フェールオーバー処理中も DNN によってオンライン状態が維持されるため、プライマリ レプリカへの他の接続は開いたままになります。 これは、可用性グループがフェールオーバーすると通常はプライマリ レプリカへのすべての接続が閉じられ、リスナーはオフラインになり、プライマリ レプリカはセカンダリの役割に移行するという従来の VNN 環境とは異なります。 DNN リスナーを使用する場合は、フェールオーバー時に接続が新しいプライマリ レプリカにリダイレクトされるように、必要に応じてアプリケーションの接続文字列を調整します。
-- **開いているトランザクション**: フェールオーバー可用性グループ内のデータベースに対して開かれているトランザクションは、閉じられ、ロールバックされるので、"*手動*" で再接続する必要があります。 たとえば、SQL Server Management Studio で、クエリ ウィンドウを閉じて、新しいウィンドウを開きます。 
+- **開いているトランザクション**: フェールオーバー可用性グループ内のデータベースに対して開かれているトランザクションは、閉じられ、ロールバックされるので、*手動* で再接続する必要があります。 たとえば、SQL Server Management Studio で、クエリ ウィンドウを閉じて、新しいウィンドウを開きます。 
 
 Azure で VNN リスナーを設定するには、ロード バランサーが必要です。 Azure のロード バランサーには、主に外部 (パブリック) と内部の 2 つのオプションがあります。 外部 (パブリック) ロード バランサーは、インターネットに面しており、インターネット経由でアクセスできるパブリック仮想 IP に関連付けられています。 内部ロード バランサーは、同じ仮想ネットワーク内のクライアントのみをサポートします。 どちらのタイプのロード バランサーの場合でも、[Direct Server Return](../../../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip) を有効にする必要があります。 
 

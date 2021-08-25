@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 3e092d5e704667f3db16eb4a862269dc42b835fe
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 1d3247140bd99d2f3ea500a9eaeb0bab6e7640ee
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091611"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821502"
 ---
 # <a name="install-net-on-azure-cloud-services-classic-roles"></a>Azure Cloud Services (クラシック) のロールに .NET をインストールする
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。
 

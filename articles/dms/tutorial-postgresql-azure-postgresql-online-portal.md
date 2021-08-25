@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 16493cf44ba3666b900b34e18acd90f5ac73baca
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 9d0f1fbe81c8d221b1dd83b1f15b3ea099769043
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112282765"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638495"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -113,20 +113,7 @@ Azure Database Migration Service を使用して、アプリケーションへ�
    > [!NOTE]
    > 移行サービスにより、外部キーの有効化/無効化が内部的に処理され、信頼性のある堅牢なデータ移行が確保されるようトリガーされます。 そのため、ターゲット データベース スキーマの変更は検討する必要はありません。
 
-
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
-
-1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
-
-   ![ポータルのサブスクリプションの表示](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-select-subscriptions.png)
-
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
-
-    ![リソース プロバイダーの表示](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-select-resource-provider.png)
-
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
-
-    ![リソース プロバイダーの登録](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-a-dms-instance"></a>DMS インスタンスを作成する
 

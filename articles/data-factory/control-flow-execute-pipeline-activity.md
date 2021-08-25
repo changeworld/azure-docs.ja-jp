@@ -1,18 +1,21 @@
 ---
 title: Azure Data Factory でのパイプラインの実行アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
 description: パイプラインの実行アクティビティを使用して、ある Data Factory パイプラインを別の Data Factory パイプラインから呼び出す方法について説明します。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c2f3d601e991fab77281351116624fa55a3b4dce
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b46fbddb2a6446eaa711a8ba2c548fff634eee48
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904084"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638924"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行アクティビティ
 
@@ -65,7 +68,7 @@ ms.locfileid: "107904084"
 name | パイプラインの実行アクティビティの名前。 | String | はい
 type | **ExecutePipeline** に設定する必要があります。 | String | はい
 pipeline | このパイプラインが呼び出す依存パイプラインへのパイプライン参照。 パイプライン参照オブジェクトには、**referenceName** と **type** の 2 つのプロパティがあります。 ReferenceName プロパティは、参照パイプラインの名前を指定します。 type プロパティを PipelineReference に設定する必要があります。 | PipelineReference | はい
-parameters | 呼び出されたパイプラインに渡されるパラメーター | パラメーター名を引数値にマップする JSON オブジェクト | ×
+parameters | 呼び出されたパイプラインに渡されるパラメーター | パラメーター名を引数値にマップする JSON オブジェクト | いいえ
 waitOnCompletion | 依存パイプラインの実行が終了するまでアクティビティの実行を待機するかどうかを定義します。 既定値は false です。 | ブール型 | いいえ
 
 ## <a name="sample"></a>サンプル
