@@ -1,17 +1,17 @@
 ---
 title: PHP で Azure Service Bus トピックを使用する方法
-description: このチュートリアルでは、PHP アプリケーションから Azure Service Bus のトピックとサブスクリプションを使用する方法について説明します。
+description: この記事では、PHP アプリケーションから Azure Service Bus のトピックとサブスクリプションを使用する方法について説明します。
 ms.devlang: PHP
-ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 7cdb6ca30b2c9abf2c2525057a90888b2c5d1c78
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.topic: how-to
+ms.date: 07/27/2021
+ms.openlocfilehash: 0265b138b2f6f44961d085ca8492ba125b9a36b2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302538"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725116"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>クイックスタート: PHP で Service Bus のトピックとサブスクリプションを使用する方法
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
 この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) を利用しています。 紹介するシナリオは次のとおりです。
 
@@ -26,11 +26,11 @@ ms.locfileid: "113302538"
  
 
 ## <a name="prerequisites"></a>前提条件
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+1. Azure サブスクリプション。 この記事の手順を完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の **名前空間** を作成し、**接続文字列** を取得します。
 
     > [!NOTE]
-    > このクイック スタートでは、**PHP** を使用して **トピック** とその中に含まれる **サブスクリプション** を作成します。 
+    > この記事では、**PHP** を使用して **トピック** およびそのトピックへの **サブスクリプション** を作成します。 
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
 Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。

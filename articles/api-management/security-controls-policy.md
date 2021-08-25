@@ -1,18 +1,18 @@
 ---
 title: Azure API Management 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure API Management に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.topic: sample
 author: dlepow
 ms.author: apimpm
 ms.service: api-management
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: db1e019e1d61f70e37caab6815e9c0e8068752c6
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 1c504f9a0b6f70db6abd867a1f15a3645315039e
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403352"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608941"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-management"></a>Azure API Management 用の Azure Policy 規制コンプライアンス コントロール
 

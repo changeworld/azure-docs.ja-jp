@@ -1,23 +1,23 @@
 ---
-title: SAP 環境用の Azure Sentinel ソリューションをデプロイする | Microsoft Docs
+title: SAP の継続的な脅威監視をデプロイする | Microsoft Docs
 description: SAP 環境用の Azure Sentinel ソリューションをデプロイする方法について説明します。
 author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: mvc
-ms.date: 05/13/2021
+ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: cf7a9fb700bba135663e0684d8ba25c7ebcf92f0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7bddb61bbbab008fad4e538400bbe4396ac744b4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466532"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723461"
 ---
-# <a name="tutorial-deploy-the-azure-sentinel-solution-for-sap-public-preview"></a>チュートリアル: SAP 用 Azure Sentinel ソリューションをデプロイする (パブリック プレビュー)
+#  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>SAP の継続的な脅威監視をデプロイする (パブリック プレビュー)
 
-このチュートリアルでは、SAP 用 Azure Sentinel ソリューションをデプロイするプロセスを段階的に説明します。
+この記事では、Azure Sentinel の継続的な脅威監視を SAP にデプロイするプロセスについて、順を追って説明します。
 
 > [!IMPORTANT]
 > Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
@@ -29,10 +29,9 @@ ms.locfileid: "110466532"
 
 Azure Sentinel SAP データ コネクタを使用すると、ビジネスおよびアプリケーションの層内の高度な脅威について SAP システムを監視できます。
 
-SAP データ コネクタは、SAP システム ランドスケープ全体から 14 もの多くのアプリケーション ログをストリーミングし、NetWeaver RFC 呼び出しを介して Advanced Business Application Programming (ABAP)、OSSAP 制御インターフェイスを介してファイル ストレージ データの両方からログを収集します。 SAP データ コネクタによって、基になる SAP インフラストラクチャを監視する Azure Sentinels 機能が追加されます。
+SAP データ コネクタは、SAP システム ランドスケープ全体から 14 もの多くのアプリケーション ログをストリーミングし、NetWeaver RFC 呼び出しを介して Advanced Business Application Programming (ABAP)、OSSAP 制御インターフェイスを介してファイル ストレージ データの両方からログを収集します。 SAP データ コネクタによって、基になる SAP インフラストラクチャを監視する機能が Azure Sentinels に追加されます。
 
-SAP ログを Azure Sentinel に取り込むには、お使いの SAP 環境に Azure Sentinel SAP データ コネクタがインストールされている必要があります。
-このチュートリアルで説明されているように、デプロイには Azure VM で Docker コンテナーを使用することをお勧めします。
+SAP ログを Azure Sentinel に取り込むには、お使いの SAP 環境に Azure Sentinel SAP データ コネクタがインストールされている必要があります。 このチュートリアルで説明されているように、デプロイには Azure VM で Docker コンテナーを使用することをお勧めします。
 
 SAP データ コネクタをデプロイしたら、SAP ソリューションのセキュリティ コンテンツをデプロイし、組織の SAP 環境に関する分析情報をスムーズに取得して、関連するセキュリティ運用機能を向上させます。
 
@@ -49,9 +48,9 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
 
 |領域  |説明  |
 |---------|---------|
-|**Azure の前提条件**     |  **Azure Sentinel へのアクセス**。 [SAP データ コネクタをデプロイ](#deploy-your-sap-data-connector)するときに、このチュートリアルで使用する Azure Sentinel ワークスペース ID とキーをメモしておきます。 <br>Azure Sentinel からこれらの詳細を表示するには、 **[設定]**  >  **[ワークスペース設定]**  >  **[エージェント管理]** の順に移動します。 <br><br>**Azure リソースを作成する機能**。 詳細については、[Azure Resource Manager のドキュメント](/azure/azure-resource-manager/management/manage-resources-portal)を参照してください。 <br><br>**Azure Key Vault へのアクセス**。 このチュートリアルでは、Azure Key Vault を使用して資格情報を格納するための推奨手順について説明します。 詳しくは、[Azure Key Vault のドキュメント](/azure/key-vault/)をご覧ください。       |
-|**システムの前提条件**     |   **ソフトウェア**。 SAP データ コネクタのデプロイ スクリプトによって、ソフトウェアの前提条件が自動的にインストールされます。 詳細については、「[自動的にインストールされるソフトウェア](#automatically-installed-software)」を参照してください。 <br><br> **システム接続**。 SAP データ コネクタ ホストとして機能している VM が次にアクセスできることを確認します。 <br>- Azure Sentinel <br>- Azure Key Vault <br>- SAP 環境ホスト。*32xx*、*5xx13*、および *33xx* (*xx* は SAP インスタンス番号) の TCP ポートを介してアクセス。 <br><br>SAP ソフトウェアのダウンロード ページにアクセスするために、SAP ユーザー アカウントも持っていることを確認します。<br><br>**システム アーキテクチャ**。 SAP ソリューションは Docker コンテナーとして VM にデプロイされます。各 SAP クライアントには独自のコンテナー インスタンスが必要です。 <br>VM と Azure Sentinel ワークスペースは、異なる Azure サブスクリプション、さらには異なる Azure AD テナントに含めることもできます。|
-|**SAP 前提条件**     |   **サポートされている SAP バージョン**。 [SAP_BASIS バージョン 750 SP13](https://support.sap.com/en/my-support/software-downloads/support-package-stacks/product-versions.html#:~:text=SAP%20NetWeaver%20%20%20%20SAP%20Product%20Version,%20%20SAPKB710%3Cxx%3E%20%207%20more%20rows) 以降を使用することをお勧めします。 <br>SAP バージョン [SAP_BASIS 740](https://support.sap.com/en/my-support/software-downloads/support-package-stacks/product-versions.html#:~:text=SAP%20NetWeaver%20%20%20%20SAP%20Product%20Version,%20%20SAPKB710%3Cxx%3E%20%207%20more%20rows) で作業している場合は、このチュートリアルの別の手順を選択します。<br><br> **SAP システムの詳細**。 このチュートリアルで使用するために、次の SAP システムの詳細をメモしておきます。<br>    - SAP システムの IP アドレス<br>- SAP システム番号 (`00` など)<br>    - SAP NetWeaver システムからの SAP システム ID。 たとえば、「 `NPL` 」のように入力します。 <br>- SAP クライアント ID (`001` など)。<br><br>**SAP NetWeaver インスタンスへのアクセス**。 SAP インスタンスへのアクセスには、次のいずれかのオプションを使用する必要があります。 <br>- [SAP ABAP ユーザー/パスワード](#configure-your-sap-system)。 <br>- SAP CRYPTOLIB PSE を使用する X509 証明書を持つユーザー。 このオプションには、専門家による手動の手順が必要な場合があります。<br><br>**SAP チームからのサポート**。  SAP システムがソリューションのデプロイ用に[正しく構成](#configure-your-sap-system)されるようにするには、SAP チームのサポートが必要です。   |
+|**Azure の前提条件**     |  **Azure Sentinel へのアクセス**。 [SAP データ コネクタをデプロイ](#deploy-your-sap-data-connector)するときに、このチュートリアルで使用する Azure Sentinel ワークスペース ID とキーをメモしておきます。 <br>Azure Sentinel からこれらの詳細を表示するには、 **[設定]**  >  **[ワークスペース設定]**  >  **[エージェント管理]** の順に移動します。 <br><br>**Azure リソースを作成する機能**。 詳細については、[Azure Resource Manager のドキュメント](../azure-resource-manager/management/manage-resources-portal.md)を参照してください。 <br><br>**Azure Key Vault へのアクセス**。 このチュートリアルでは、Azure Key Vault を使用して資格情報を格納するための推奨手順について説明します。 詳しくは、[Azure Key Vault のドキュメント](../key-vault/index.yml)をご覧ください。       |
+|**システムの前提条件**     |   **ソフトウェア**。 SAP データ コネクタのデプロイ スクリプトによって、ソフトウェアの前提条件が自動的にインストールされます。 詳細については、「[自動的にインストールされるソフトウェア](#automatically-installed-software)」を参照してください。 <br><br> **システム接続**。 SAP データ コネクタ ホストとして機能している VM が次にアクセスできることを確認します。 <br>- Azure Sentinel <br>- Azure Key Vault <br>- SAP 環境ホスト。*32xx*、*5xx13*、および *33xx* (*xx* は SAP インスタンス番号) の TCP ポートを介してアクセス。 <br><br>SAP ソフトウェアのダウンロード ページにアクセスするために、SAP ユーザー アカウントも持っていることを確認します。<br><br>**システム アーキテクチャ**。 SAP ソリューションは Docker コンテナーとして VM にデプロイされます。各 SAP クライアントには独自のコンテナー インスタンスが必要です。 推奨されるサイズ変更については、「[仮想マシンの推奨されるサイズ設定](sap-solution-detailed-requirements.md#recommended-virtual-machine-sizing)」を参照してください。 <br>VM と Azure Sentinel ワークスペースは、異なる Azure サブスクリプション、さらには異なる Azure AD テナントに含めることもできます。|
+|**SAP 前提条件**     |   **サポートされている SAP バージョン**。 [SAP_BASIS バージョン 750 SP13](https://support.sap.com/en/my-support/software-downloads/support-package-stacks/product-versions.html#:~:text=SAP%20NetWeaver%20%20%20%20SAP%20Product%20Version,%20%20SAPKB710%3Cxx%3E%20%207%20more%20rows) 以降を使用することをお勧めします。 <br>以前の SAP バージョン [SAP_BASIS 740](https://support.sap.com/en/my-support/software-downloads/support-package-stacks/product-versions.html#:~:text=SAP%20NetWeaver%20%20%20%20SAP%20Product%20Version,%20%20SAPKB710%3Cxx%3E%20%207%20more%20rows) で作業している場合は、このチュートリアルの別の手順を選択します。<br><br> **SAP システムの詳細**。 このチュートリアルで使用するために、次の SAP システムの詳細をメモしておきます。<br>    - SAP システムの IP アドレス<br>- SAP システム番号 (`00` など)<br>    - SAP NetWeaver システムからの SAP システム ID。 たとえば、「 `NPL` 」のように入力します。 <br>- SAP クライアント ID (`001` など)。<br><br>**SAP NetWeaver インスタンスへのアクセス**。 SAP インスタンスへのアクセスには、次のいずれかのオプションを使用する必要があります。 <br>- [SAP ABAP ユーザー/パスワード](#configure-your-sap-system)。 <br>- SAP CRYPTOLIB PSE を使用する X509 証明書を持つユーザー。 このオプションには、専門家による手動の手順が必要な場合があります。<br><br>**SAP チームからのサポート**。  SAP システムがソリューションのデプロイ用に[正しく構成](#configure-your-sap-system)されるようにするには、SAP チームのサポートが必要です。   |
 |     |         |
 
 
@@ -75,26 +74,29 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
 
 **SAP データ コネクタ用に SAP システムを構成するには**:
 
-1. 750 より前のバージョンの SAP を使用している場合は、次の SAP ノートがシステムにデプロイされていることを確認してください。
+1. お使いのバージョンに応じて、次の SAP ノートがシステムにデプロイされていることを確認してください。
 
-    - **SPS12641084**。 SAP BASIS 750 SPS13 より前の SAP バージョンを実行しているシステムの場合
-    - **2502336**。SAP BASIS 750 SPS1 より前の SAP バージョンを実行しているシステムの場合
-    - **2173545**。SAP BASIS 750 より前の SAP バージョンを実行しているシステムの場合
+    |SAP Basis のバージョン  |必要なノート |
+    |---------|---------|
+    |- 750 SP01 から SP12<br>- 751 SP01 から SP06<br>- 752 SP01 から SP03     |  2641084: セキュリティ監査ログ データのための標準化された読み取りアクセス       |
+    |- 700 から 702<br>- 710 から 711、730、731、740、750     | 2173545: CD: CHANGEDOCUMENT_READ_ALL        |
+    |- 700 から 702<br>- 710 から 711、730、731、740<br>- 750 から 752     | 2502336: CD (ドキュメントの変更): RSSCD100 - データベースからではなく、アーカイブからのみ読み取る        |
+    |     |         |
 
-    SAP ユーザー アカウントを使用して、[SAP サポートのスタート パッド サイト](https://support.sap.com/en/index.html)でこれらの SAP ノートにアクセスします。
+    新しいバージョンでは、追加のノートは必要ありません。 詳細については、SAP ユーザー アカウントでログインして、[SAP サポートの Launchpad サイト](https://support.sap.com/en/index.html)を参照してください。
 
 1. Azure Sentinel GitHub リポジトリ (https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/CR: ) から、次の SAP 変更要求のいずれかをダウンロードしてインストールします。
 
-    - **SAP バージョン 750 以降**: SAP 変更要求 *131 (NPLK900131)* をインストールします。
-    - **SAP バージョン 740**: SAP 変更要求 *132 (NPLK900132)* をインストールします。
+    - **SAP バージョン 750 以降**: SAP 変更要求 *144 (NPLK900144)* をインストールします。
+    - **SAP バージョン 740**: SAP 変更要求 *146 (NPLK900146)* をインストールします。
 
-    この手順を実行する場合は、**STMS_IMPORT** SAP トランザクション コードを使用します。
+    この手順を実行するときは、必ずバイナリ モードを使用してファイルを SAP システムに転送し、**STMS_IMPORT** SAP トランザクション コードを使用してください。
 
     > [!NOTE]
     > SAP の **[Import Options]\(インポート オプション\)** 領域に、 **[Ignore Invalid Component Version]\(無効なコンポーネント バージョンを無視する\)** オプションが表示される場合があります。 表示されたら、続行する前にこのオプションを選択します。
     >
 
-1. SAP 変更要求 *14 (NPLK900114)* をインポートして、 **/MSFTSEN/SENTINEL_CONNECTOR** という名前の新しい SAP ロールを作成します。 **STMS_IMPORT** SAP トランザクション コードを使用します。
+1. SAP 変更要求 *14 (NPLK900140)* をインポートして、 **/MSFTSEN/SENTINEL_CONNECTOR** という名前の新しい SAP ロールを作成します。 **STMS_IMPORT** SAP トランザクション コードを使用します。
 
     次のような必要なアクセス許可を使用してロールが作成されていることを確認します。
 
@@ -120,7 +122,7 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
 
 ## <a name="deploy-a-linux-vm-for-your-sap-data-connector"></a>SAP データ コネクタ用の Linux VM をデプロイする
 
-この手順では、Azure CLI を使用して Ubuntu サーバー 18.04 LTS VM をデプロイし、[システム マネージド ID ](/azure/active-directory/managed-identities-azure-resources/)を割り当てる方法について説明します。
+この手順では、Azure CLI を使用して Ubuntu サーバー 18.04 LTS VM をデプロイし、[システム マネージド ID ](../active-directory/managed-identities-azure-resources/index.yml)を割り当てる方法について説明します。
 
 > [!TIP]
 > データ コネクタは、RHEL バージョン 7.7 以降または SUSE バージョン 15 以降にもデプロイできます。 OS とパッチのレベルは完全に最新である必要があることに注意してください。
@@ -143,11 +145,11 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
 > 他の VM と同様に、組織のセキュリティのベスト プラクティスを適用するようにしてください。
 >
 
-詳細については、「[クイック スタート: Azure CLI を使用して Linux 仮想マシンを作成する](/azure/virtual-machines/linux/quick-create-cli)」を参照してください。
+詳細については、「[クイック スタート: Azure CLI を使用して Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-cli.md)」を参照してください。
 
 ## <a name="create-key-vault-for-your-sap-credentials"></a>SAP 資格情報のキー コンテナーを作成する
 
-このチュートリアルでは、新しく作成した、または専用の [Azure Key Vault](/azure/key-vault/) を使用して、SAP データ コネクタの資格情報を格納します。
+このチュートリアルでは、新しく作成した、または専用の [Azure Key Vault](../key-vault/index.yml) を使用して、SAP データ コネクタの資格情報を格納します。
 
 **Azure Key Vault を作成または専用化するには**:
 
@@ -170,12 +172,12 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
 
     Azure Key Vault で、 **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加 - シークレットのアクセス許可: Get、List、Set]**  >  **[プリンシパルの選択]** の順に選択します。 自分の [VM の名前](#deploy-a-linux-vm-for-your-sap-data-connector)を入力し、 **[追加]**  >  **[保存]** の順に選択します。
 
-    詳細については、[Key Vault](/azure/key-vault/general/assign-access-policy-portal) のドキュメントを参照してください。
+    詳細については、[Key Vault](../key-vault/general/assign-access-policy-portal.md) のドキュメントを参照してください。
 
 1. 次のコマンドを実行して、[VM のプリンシパル ID](#deploy-a-linux-vm-for-your-sap-data-connector) を取得し、Azure リソース グループの名前を入力します。
 
     ```azurecli
-    az vm show -g [resource group] -n [Virtual Machine] --query identity.principal– --out tsv
+    VMPrincipalID=$(az vm show -g [resource group] -n [Virtual Machine] --query identity.principalId -o tsv)
     ```
 
     次の手順で使用するプリンシパル ID が表示されます。
@@ -183,14 +185,14 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
 1. VM のアクセス許可を Key Vault に割り当てるには、リソース グループの名前と、前の手順で返されたプリンシパル ID 値を入力して、次のコマンドを実行します。
 
     ```azurecli
-    az keyvault set-policy  --name $kv  --resource-group [resource group]  --object-id [Principal ID]  --secret-permissions get set
+    az keyvault set-policy -n [key vault] -g [resource group] --object-id $VMPrincipalID --secret-permissions get list set
     ```
 
 ## <a name="deploy-your-sap-data-connector"></a>SAP データ コネクタをデプロイする
 
 Azure Sentinel SAP データ コネクタのデプロイ スクリプトを使用すると、[必要なソフトウェア](#automatically-installed-software)がインストールされ、次にコネクタが[新しく作成された VM](#deploy-a-linux-vm-for-your-sap-data-connector) にインストールされます。資格情報は[専用のキー コンテナー](#create-key-vault-for-your-sap-credentials)に格納されます。
 
-SAP データ コネクタのデプロイ スクリプトは、[Azure Sentinel GitHub リポジトリ > DataConnectors > SAP](https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/SAP/) ディレクトリに格納されています。
+SAP データ コネクタのデプロイ スクリプトは、[Azure Sentinel GitHub リポジトリ > DataConnectors > SAP](https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-sentinel-kickstart.sh) に格納されています。
 
 SAP データ コネクタのデプロイ スクリプトを実行するには、次の詳細が必要です。
 
@@ -199,7 +201,6 @@ SAP データ コネクタのデプロイ スクリプトを実行するには�
 - SUDO 特権を持つ VM ユーザーへのアクセス。
 - 「[SAP システムを構成する](#configure-your-sap-system)」で作成した、 **/MSFTSEN/SENTINEL_CONNECTOR** ロールが適用された SAP ユーザー。
 - SAP チームの支援。
-
 
 **SAP ソリューションのデプロイ スクリプトを実行するには**:
 
@@ -258,7 +259,7 @@ SAP 関連のウォッチリストを Azure Sentinel ワークスペースに手
 
     新しくデプロイされたコンテンツを表示するには:
 
-    - **[脅威の管理]**  >  **[ブック]** の順に選択し、[SAP - System Applications and Products - Preview](sap-solution-security-content.md#sap---system-applications-and-products-workbook) ブックを見つけます。
+    - **脅威の管理** > **ブック** > [組み込みの SAP ブック](sap-solution-security-content.md#built-in-workbooks)を検索する **ブック**。
     - **[構成]**  >  **[分析]** の順に選択し、一連の [SAP 関連の分析ルール](sap-solution-security-content.md#built-in-analytics-rules)を見つけます。
 
 1. 検索、検出規則、脅威ハンティング、および応答プレイブックで使用する、SAP 関連のウォッチリストを追加します。 これらのウォッチリストにより、Azure Sentinel SAP Continuous Threat Monitoring ソリューションの構成が提供されます。
@@ -281,95 +282,6 @@ SAP 関連のウォッチリストを Azure Sentinel ワークスペースに手
 
     詳細については、「[Azure Sentinel SAP ソリューション ログ リファレンス (パブリック プレビュー)](sap-solution-log-reference.md)」を参照してください。
 
-## <a name="sap-solution-deployment-troubleshooting"></a>SAP ソリューションのデプロイのトラブルシューティング
-
-SAP データ コネクタとセキュリティ コンテンツの両方をデプロイすると、次のエラーまたは問題が発生する可能性があります。
-
-|問題  |回避策  |
-|---------|---------|
-|SAP 環境または Azure Sentinel へのネットワーク接続に関する問題     |  必要に応じて、ネットワーク接続を確認してください。       |
-|SAP ABAP ユーザーの資格情報が正しくない     |資格情報を確認し、Azure Key Vault の **ABAPUSER** と **ABAPPASS** の値に正しい値を適用して修正します。         |
-|**/MSFTSEN/SENTINEL_CONNECTOR** ロールが必要に応じて SAP ユーザーに割り当てられない、または非アクティブであるなど、アクセス許可がない     |ロールを割り当て、SAP システムでそれがアクティブになっていることを確認することで、このエラーを修正します。         |
-|SAP 変更要求が見つからない     | 「[SAP システムを構成する](#configure-your-sap-system)」の説明に従って、正しい SAP 変更要求をインポートしていることを確認します。        |
-|デプロイ スクリプトに入力された Azure Sentinel ワークスペース ID またはキーが正しくない     |  このエラーを解決するには、Azure Key Vault に正しい資格情報を入力します。       |
-|SAP SDK ファイルが破損しているか、見つからない     | このエラーを修正するには、SAP SDK を再インストールし、正しい Linux 64 ビット バージョンを使用していることを確認します。        |
-|ブックまたはアラートにデータが見つからない     |    **Auditlog** ポリシーが SAP 側で正しく有効になっていて、ログ ファイルにエラーがないことを確認します。 この手順には、**RSAU_CONFIG_LOG** トランザクションを使用します。     |
-|     |         |
-
-> [!TIP]
-> データ コネクタをインストールした後に、システム ログを確認することを強くお勧めします。 次を実行します。
->
-> ```bash
-> docker logs -f sapcon-[SID]
-> ```
->
-詳細については、次を参照してください。
-
-- [すべての Docker 実行ログを表示する](#view-all-docker-execution-logs)
-- [SAP データ コネクタの構成を確認して更新する](#review-and-update-the-sap-data-connector-configuration)
-- [便利な Docker コマンド](#useful-docker-commands)
-
-### <a name="view-all-docker-execution-logs"></a>すべての Docker 実行ログを表示する
-
-Azure Sentinel SAP データ コネクタのデプロイのすべての Docker 実行ログを表示するには、次のいずれかのコマンドを実行します。
-
-```bash
-docker exec -it sapcon-[SID] bash && cd /sapcon-app/sapcon/logs
-```
-
-または
-
-```bash
-docker exec –it sapcon-[SID] cat /sapcon-app/sapcon/logs/[FILE_LOGNAME]
-```
-
-次のような出力が表示されます。
-
-```bash
-Logs directory:
-root@644c46cd82a9:/sapcon-app# ls sapcon/logs/ -l
-total 508
--rwxr-xr-x 1 root root      0 Mar 12 09:22 ' __init__.py'
--rw-r--r-- 1 root root    282 Mar 12 16:01  ABAPAppLog.log
--rw-r--r-- 1 root root   1056 Mar 12 16:01  ABAPAuditLog.log
--rw-r--r-- 1 root root    465 Mar 12 16:01  ABAPCRLog.log
--rw-r--r-- 1 root root    515 Mar 12 16:01  ABAPChangeDocsLog.log
--rw-r--r-- 1 root root    282 Mar 12 16:01  ABAPJobLog.log
--rw-r--r-- 1 root root    480 Mar 12 16:01  ABAPSpoolLog.log
--rw-r--r-- 1 root root    525 Mar 12 16:01  ABAPSpoolOutputLog.log
--rw-r--r-- 1 root root      0 Mar 12 15:51  ABAPTableDataLog.log
--rw-r--r-- 1 root root    495 Mar 12 16:01  ABAPWorkflowLog.log
--rw-r--r-- 1 root root 465311 Mar 14 06:54  API.log # view this log to see submits of data into Azure Sentinel
--rw-r--r-- 1 root root      0 Mar 12 15:51  LogsDeltaManager.log
--rw-r--r-- 1 root root      0 Mar 12 15:51  PersistenceManager.log
--rw-r--r-- 1 root root   4830 Mar 12 16:01  RFC.log
--rw-r--r-- 1 root root   5595 Mar 12 16:03  SystemAdmin.log
-```
-
-### <a name="review-and-update-the-sap-data-connector-configuration"></a>SAP データ コネクタの構成を確認して更新する
-
-SAP データ コネクタの構成ファイルを確認し、手動で更新する場合は、次の手順を実行します。
-
-1. VM のユーザーのホーム ディレクトリで **~/sapcon/[SID]/systemconfig.ini** ファイルを開きます。
-1. 必要に応じて構成を更新し、コンテナーを再起動します。
-
-    ```bash
-    docker restart sapcon-[SID]
-    ```
-
-### <a name="useful-docker-commands"></a>便利な Docker コマンド
-
-SAP データ コネクタのトラブルシューティングを行うときに、次のコマンドが役に立つ場合があります。
-
-|機能  |コマンド  |
-|---------|---------|
-|**Docker コンテナーを停止する**     |  `docker stop sapcon-[SID]`       |
-|**Docker コンテナーを起動する**     |`docker start sapcon-[SID]`         |
-|**Docker システム ログを表示する**     |  `docker logs -f sapcon-[SID]`       |
-|**Docker コンテナーを入力する**     |   `docker exec -it sapcon-[SID] bash`      |
-|     |         |
-
-詳細については、[Docker CLI のドキュメント](https://docs.docker.com/engine/reference/commandline/docker/)をご覧ください。
 
 ## <a name="update-your-sap-data-connector"></a>SAP データ コネクタを更新する
 
@@ -378,7 +290,7 @@ SAP データ コネクタのトラブルシューティングを行うときに
 1. Azure Sentinel GitHub リポジトリから、関連するデプロイ スクリプトの最新バージョンがインストールされていることを確認します。 次を実行します。
 
     ```azurecli
-    - wget -O sapcon-sentinel-kickstart.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-sentinel-kickstart.sh && bash ./sapcon-sentinel-update.sh
+    wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
     ```
 
 1. お使いの SAP データ コネクタ マシンで次のコマンドを実行します。
@@ -389,13 +301,45 @@ SAP データ コネクタのトラブルシューティングを行うときに
 
 マシン上の SAP データ コネクタ Docker コンテナーが更新されます。
 
+## <a name="collect-sap-hana-audit-logs"></a>SAP HANA の監査ログを収集する
+
+SAP HANA データベースの監査ログを Syslog で構成している場合は、Syslog ファイルを収集するように Log Analytics エージェントも構成する必要があります。
+
+1. [SAP Launchpad サポート サイト](https://launchpad.support.sap.com/#/notes/0002624117)からアクセスできる *SAP ノート 0002624117* の説明に従って、Syslog を使用するように SAP HANA 監査ログ証跡が構成されていることを確認します。 詳細については、次を参照してください。
+
+    - [SAP HANA の監査証跡 - ベスト プラクティス](https://archive.sap.com/documents/docs/DOC-51098)
+    - [監査に関する推奨事項](https://help.sap.com/viewer/742945a940f240f4a2a0e39f93d3e2d4/2.0.05/en-US/5c34ecd355e44aa9af3b3e6de4bbf5c1.html)
+
+1. オペレーティング システムの Syslog ファイルに、関連する HANA データベース イベントがないか確認します。
+
+1. マシンに Log Analytics エージェントをインストールして構成します。
+
+    1. HANA データベース オペレーティング システムに sudo 特権を持つユーザーとしてサインインします。
+    1. Azure portal で、Log Analytics ワークスペースに移動します。 左側の **[設定]** で、 **[Agents management]\(エージェント管理\) > [Linux サーバー]** を選択します。
+    1. **[Linux 用エージェントのダウンロードとオンボード]** のボックスに表示されているコードをターミナルにコピーし、スクリプトを実行します。
+
+    Log Analytics エージェントがマシンにインストールされ、ワークスペースに接続されます。 詳細については、「[Linux コンピューターに Log Analytics エージェントをインストールする](../azure-monitor/agents/agent-linux.md)」と Microsoft GitHub リポジトリの [OMS エージェント for Linux](https://github.com/microsoft/OMS-Agent-for-Linux) を参照してください。
+
+1. **[Agents management]\(エージェント管理\) > [Linux サーバー]** タブを更新し、**1 台の Linux コンピューターが接続されている** ことを確認します。
+
+1. 左側の **[設定]** で、 **[Agents configuration]\(エージェントの構成\)** を選択し、 **[Syslog]** タブを選択します。
+
+1. **[Add facility]\(ファシリティの追加\)** を選択して、収集するファシリティを追加します。 
+
+    > [!TIP]
+    > HANA データベース イベントが保存されるファシリティは、ディストリビューションごとに変わる可能性があるため、すべてのファシリティを追加し、Syslog ログと照合して、関係のないものを削除することをお勧めします。
+    >
+
+1. Azure Sentinel で、取り込んだログに HANA データベース イベントが表示されることを確認します。
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure Sentinel SAP ソリューションについてさらに詳しく説明します。
 
-- [代替デプロイを使用して Azure Sentinel SAP ソリューションをデプロイする](sap-solution-deploy-alternate.md)
+- [エキスパートの構成オプション、オンプレミスのデプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
 - [Azure Sentinel SAP ソリューション: 組み込みのセキュリティ コンテンツ](sap-solution-security-content.md)
+- [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)
 
 詳細については、[Azure Sentinel ソリューション](sentinel-solutions.md)に関するページを参照してください。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 35fff49a53f5a0a9532fd0dff841356c5deaf3ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52e9ba6dcf0a8f6f987206cac2881ada098a8bcc
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97724784"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635186"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage を使用した SQL Server のバックアップと復元
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +50,7 @@ Azure Blob Storage にバックアップする際に、次の Azure コンポー
 
 | コンポーネント | 説明 |
 | --- | --- |
-| **ストレージ アカウント** |ストレージ アカウントは、すべてのストレージ サービスの開始点となります。 Azure Blob Storage にアクセスするには、まず Azure Storage アカウントを作成します。 Azure Blob Storage の詳細については、[Azure Blob Storage の使用方法](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/)に関するページを参照してください。 |
+| **ストレージ アカウント** |ストレージ アカウントは、すべてのストレージ サービスの開始点となります。 Azure Blob Storage にアクセスするには、まず Azure Storage アカウントを作成します。 SQL Server は、使用されるストレージの冗長性の種類に依存しません。 ページ BLOB とブロック BLOB へのバックアップは、すべてのストレージ冗長性 (LRS\ZRS\GRS\RA-GRS\RA-GZRS\etc.) でサポートされています。 Azure Blob Storage の詳細については、[Azure Blob Storage の使用方法](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/)に関するページを参照してください。 |
 | **コンテナー** |コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。 SQL Server のバックアップを Azure Blob Storage に書き込むには、少なくとも root コンテナーが作成されている必要があります。 |
 | **BLOB** |任意の種類とサイズのファイルです。 BLOB は、次の URL 形式を使用してアドレス指定できます: `https://<storageaccount>.blob.core.windows.net/<container>/<blob>`。 ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)」をご覧ください。 |
 
