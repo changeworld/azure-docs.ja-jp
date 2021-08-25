@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4d6ba600c5ab4df2be74f02a3922fae4fd96535f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f740b26e37761c152d7c19d57df07d8340c7a15f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457166"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860930"
 ---
 ### <a name="get-cost-savings-summary-from-azure-advisor"></a>Azure Advisor からコスト削減の概要を取得する
 

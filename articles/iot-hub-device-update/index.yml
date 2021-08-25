@@ -7,16 +7,15 @@ metadata:
   services: iot-hub
   ms.service: iot-hub
   ms.topic: landing-page
-  author: philmea
-  ms.author: philmea
-  manager: philmea
+  author: vimeht
+  ms.author: vimeht
   ms.date: 2/17/2021
-  ms.openlocfilehash: 9427d361e3ce8e972efb1ce8924502bc0b45bd78
-  ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+  ms.openlocfilehash: bd4a5e0053499f38e1c119bccff4ab50bfad2abd
+  ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/11/2021
-  ms.locfileid: "113600714"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121860453"
 landingContent:
 - title: Device Update について
   linkLists:

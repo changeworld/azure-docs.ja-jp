@@ -3,12 +3,12 @@ title: 'クイックスタート: Defender for IoT マイクロ エージェン�
 description: このクイックスタートでは、Defender マイクロ エージェントをインストールして認証する方法について説明します。
 ms.date: 06/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 040fb547baf201d9d699cfac21c1407c707fb8f9
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: e77ebaf3ab99fc88d3d0138edf3c815b63507e6c
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011281"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195552"
 ---
 # <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>クイックスタート: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
 
@@ -173,4 +173,4 @@ sudo apt-get install defender-iot-micro-agent=<version>
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ソース コードから Defender マイクロ エージェントをビルドする](quickstart-building-the-defender-micro-agent-from-source.md)
+> [クイックスタート: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)](quickstart-create-micro-agent-module-twin.md)

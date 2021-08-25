@@ -2,17 +2,18 @@
 title: Azure Virtual Network で Hive を使用してデータを変換する
 description: Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換する Data Factory パイプラインを Azure PowerShell を使用して作成します。
 ms.service: data-factory
+ms.subservice: tutorials
 author: nabhishek
 ms.author: abnarain
 ms.topic: tutorial
-ms.custom: seo-dt-2019, devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 48d3ae3089a59e9d89ea57b5720981483344dae0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3382cb1cf42b86b7dbd37b3f006c19e4822800ba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672557"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722362"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 

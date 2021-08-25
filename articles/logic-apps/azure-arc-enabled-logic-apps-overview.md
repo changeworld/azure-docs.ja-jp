@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: overview
 ms.date: 05/25/2021
-ms.openlocfilehash: dcaa0e9fe10d26bb6b1e7d014e0b6e50f09a81f2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 880e194fefdf49b05f2b531699a83d1f0e3e70cc
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387176"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429479"
 ---
 # <a name="what-is-azure-arc-enabled-logic-apps-preview"></a>Azure Arc 対応 Logic Apps とは (プレビュー)
 
 > [!NOTE]
 > この機能はプレビュー段階にあり、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」が適用されます。
 
-Azure Arc 対応 Logic Apps を使用すると、Kubernetes が実行できるすべての場所で、シングルテナントベースのロジック アプリを開発して実行できます。 たとえば、Azure、Azure Kubernetes Service、オンプレミス、さらにその他のクラウド プロバイダーでもロジック アプリ ワークフローを実行できます。 このオファリングでは、次の機能のために、Azure Arc および Azure portal を通じた 1 つのウィンドウからの一元的な管理プラットフォームを提供します。 
+Azure Arc 対応 Logic Apps を使用すると、Kubernetes が実行できるすべての場所で、シングルテナントベースのロジック アプリを開発して実行できます。 たとえば、Azure、Azure Kubernetes Service、オンプレミス、さらにその他のクラウド プロバイダーでもロジック アプリ ワークフローを実行できます。 このオファリングでは、次の機能のために、Azure Arc および Azure portal を通じた 1 つのウィンドウからの一元的な管理プラットフォームを提供します。
 
 - 統合プラットフォームとして Azure Logic Apps を使用します。
 - ホストされている場所に関係なく、ワークフローをすべてのサービスに接続します。

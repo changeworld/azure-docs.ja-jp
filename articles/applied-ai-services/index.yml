@@ -32,7 +32,7 @@ productDirectory:
     - title: Azure Form Recognizer
       imageSrc: ./media/form-recognizer.svg
       summary: わずかな時間とコストでドキュメントを使用可能なデータに変換します
-      url: ../cognitive-services/form-recognizer/index.yml
+      url: ./form-recognizer/index.yml
     - title: Azure Cognitive Search
       imageSrc: ./media/cognitive-search.svg
       summary: AI を利用したクラウド検索をモバイル アプリと Web アプリで使用できるようにします
@@ -48,7 +48,7 @@ productDirectory:
     - title: Azure Immersive Reader
       imageSrc: ./media/immersive-reader.svg
       summary: ユーザーがテキストを読み、理解するのを支援します
-      url: ../cognitive-services/immersive-reader/index.yml
+      url: ./immersive-reader/index.yml
 additionalContent:
   sections:
     - title: その他の技術情報
@@ -64,11 +64,11 @@ additionalContent:
         - title: クイック スタートを使用してコードを記述する
           links:
             - text: Azure Form Recognizer
-              url: ../cognitive-services/form-recognizer/quickstarts/get-started-with-form-recognizer.md
+              url: ./form-recognizer/quickstarts/get-started-with-form-recognizer.md
             - text: Azure Metrics Advisor
               url: ./metrics-advisor/quickstarts/web-portal.md
             - text: Azure Immersive Reader
-              url: ../cognitive-services/immersive-reader/quickstarts/client-libraries.md
+              url: ./immersive-reader/quickstarts/client-libraries.md
             - text: Azure Cognitive Search
               url: ../search/search-get-started-portal.md
             - text: Azure Video Analyzer

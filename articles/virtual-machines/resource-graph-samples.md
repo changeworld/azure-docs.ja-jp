@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual Machines 用の Azure Resource Graph サンプル クエリ
 description: Azure 仮想マシンのサンプル Azure Resource Graph クエリによって、リソースの種類とテーブルを使用し、Azure 仮想マシン関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 2c7dad9ad62479dba3b3329b00a07ed0ec55c795
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 0c8e0a8b9663380dc68f82ba5dda8b28f0ebb4cb
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669977"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860378"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-virtual-machines"></a>Azure Virtual Machines 用の Azure Resource Graph サンプル クエリ
 
@@ -26,5 +26,5 @@ ms.locfileid: "114669977"
 
 - [クエリ言語](../governance/resource-graph/concepts/query-language.md)の詳細について学習します。
 - [リソースを探索する](../governance/resource-graph/concepts/explore-resources.md)方法について詳しく確認します。
-- [初歩的な言語クエリ](../governance/resource-graph/samples/starter.md)のサンプルを参照してください。
-- [高度な言語クエリ](../governance/resource-graph/samples/advanced.md)のサンプルを参照してください。
+- [初歩的な言語クエリ](../governance/resource-graph/samples/starter.md)のサンプルを参照します。
+- [高度な言語クエリ](../governance/resource-graph/samples/advanced.md)のサンプルを参照します。

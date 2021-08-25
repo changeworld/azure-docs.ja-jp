@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 07/26/2021
-ms.openlocfilehash: 79e308605a0d6262e95dc6ff673d74a5a1eaaec7
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 489ae3e9593ed5fa0865fb6f3fbe2eb617113d71
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114732160"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181495"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーのセキュリティ
 
@@ -43,7 +43,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 Azure Virtual Network にフレキシブル サーバーを展開できます。 Azure の仮想ネットワークでは、非公開の、セキュリティで保護されたネットワーク通信が提供されます。 詳細については、[フレキシブル サーバー](concepts-networking.md)に関するページをご覧ください
 
 ### <a name="network-security-groups-nsg"></a>ネットワーク セキュリティ グループ (NSG)
-ネットワーク セキュリティ グループのセキュリティ規則を使用して、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理できます。  詳細については、[ネットワーク セキュリティ グループの概要](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)に関するページをご覧ください
+ネットワーク セキュリティ グループのセキュリティ規則を使用して、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理できます。  詳細については、[ネットワーク セキュリティ グループの概要](../../virtual-network/network-security-groups-overview.md)に関するページをご覧ください
 
 ## <a name="access-management"></a>アクセス管理
 
@@ -54,7 +54,7 @@ Azure Database for PostgreSQL サーバーを作成するときに、管理者�
 
 ### <a name="azure-defender-protection"></a>Azure Defender の保護
 
- 現在、Azure Database for PostgreSQL - フレキシブルでは、[Azure Defender の保護](https://docs.microsoft.com/azure/security-center/azure-defender)をサポートしていません。 
+ 現在、Azure Database for PostgreSQL - フレキシブルでは、[Azure Defender の保護](../../security-center/azure-defender.md)をサポートしていません。 
 
 
 [監査ログ](../concepts-audit.md)を使うと、データベースのアクティビティを追跡できます。 

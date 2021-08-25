@@ -91,8 +91,6 @@
               href: ../virtual-machines/workloads/sap/os-upgrade-hana-large-instance.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: SUSE Linux 用 SMT サーバーの設定
               href: ../virtual-machines/workloads/sap/hana-setup-smt.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-            - name: HLI から Azure VM への移行
-              href: ../virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: SAP HANA Large Instances の予約の購入
               href: ../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md
     - name: Oracle

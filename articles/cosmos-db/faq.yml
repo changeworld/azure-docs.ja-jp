@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/01/2019
   ms.author: sngun
   ms.custom: seodec18
-  ms.openlocfilehash: 098f113b45f54ed0f74a30731a68708b06ee5663
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 8ded857f617ab61f6914635f41642b86c1848861
+  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "111907606"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122321787"
 title: Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,9 +84,6 @@ sections:
       * [Microsoft Q&A 質問ページ](/answers/topics/azure-cosmos-db.html)
 
       * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow は、プログラミングに関する質問に最適です。 質問が[的を得ており](https://stackoverflow.com/help/on-topic)、かつ[その質問を明確で回答可能なものにするようにできるだけ多くの詳細情報が含まれている](https://stackoverflow.com/help/how-to-ask)ことを確認してください。
-
-
-      新機能を要求するには、[User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db) で新しい要求を作成します。
 
 
       アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
@@ -249,4 +246,4 @@ sections:
       [azure-portal]: https://portal.azure.com
 
       [query]: ./sql-query-getting-started.md
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n他の API に関してよく寄せられる質問については、以下を参照してください。\n\n* [Azure Cosmos DB の MongoDB 用 API](mongodb-api-faq.yml) についてよく寄せられる質問\n* [Azure Cosmos DB での Gremlin API](gremlin-api-faq.yml) についてよく寄せられる質問\n* [Azure Cosmos DB での Cassandra API](cassandra-faq.yml) についてよく寄せられる質問\n* [Azure Cosmos DB での Table API](table-api-faq.yml) についてよく寄せられる質問"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n他の API に関してよく寄せられる質問については、以下を参照してください。\n\n* [Azure Cosmos DB の MongoDB 用 API](mongodb/mongodb-faq.yml) についてよく寄せられる質問\n* [Azure Cosmos DB での Gremlin API](gremlin-api-faq.yml) についてよく寄せられる質問\n* [Azure Cosmos DB での Cassandra API](cassandra/cassandra-faq.yml) についてよく寄せられる質問\n* [Azure Cosmos DB での Table API](table/table-api-faq.yml) についてよく寄せられる質問"

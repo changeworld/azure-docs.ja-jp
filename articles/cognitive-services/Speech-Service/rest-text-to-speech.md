@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
 ms.custom: references_regions
-ms.openlocfilehash: 31d03ee9cc230412ef6fdbdcc351b7a6b5e296a6
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 7acde9107787715ffd2e88bf55833dd759083cd9
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066283"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418906"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -109,11 +109,11 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 [
 
     {
-    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
-    "DisplayName": "Aria",
-    "LocalName": "Aria",
-    "ShortName": "en-US-AriaNeural",
-    "Gender": "Female",
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)",
+    "DisplayName": "Christopher",
+    "LocalName": "Christopher",
+    "ShortName": "en-US-ChristopherNeural",
+    "Gender": "Male",
     "Locale": "en-US",
     "StyleList": [
       "chat",
@@ -293,8 +293,8 @@ Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-AriaNeural'>
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Male'
+    name='en-US-ChristopherNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```

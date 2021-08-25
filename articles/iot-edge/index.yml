@@ -9,15 +9,14 @@ metadata:
   ms.topic: landing-page
   author: kgremban
   ms.author: kgremban
-  manager: philmea
   ms.date: 08/05/2019
   ms.custom: e2e-hybrid
-  ms.openlocfilehash: c853bcaff78fadd00305d55ddb60c2fa2b482bc4
-  ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+  ms.openlocfilehash: 069fe408fc4b4dac10484a9780c70cdfc722abc2
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/28/2021
-  ms.locfileid: "105641469"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121722003"
 landingContent:
 - title: Linux デバイス向けの開発
   linkLists:

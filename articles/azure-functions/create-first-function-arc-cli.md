@@ -3,12 +3,12 @@ title: 'クイックスタート: Azure Arc で関数アプリを作成する'
 description: 最初の関数アプリをデプロイすることによって、Azure Arc で Azure Functions の使用を開始します。
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: da00cc070e14490bcd3f4661d30b65bd97553c2e
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 3a9c92e500e79b68688ec526baa2a77b8df2ccef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528470"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723010"
 ---
 # <a name="create-your-first-function-on-azure-arc-preview"></a>Azure Arc で初めての関数を作成する (プレビュー)
 
@@ -96,7 +96,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     cd LocalFunctionProj
     ```
 
-    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 既定では、*local.settings.json* ファイルは *.gitignore* ファイルのソース管理から除外されます。 この除外は、Azure からダウンロードされたシークレットがファイルに含まれている可能性があるためです。
+    このフォルダーにはプロジェクト用の各種ファイルが格納されています。たとえば、[local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 既定では、*local.settings.json* ファイルは *.gitignore* ファイルのソース管理から除外されます。 この除外は、Azure からダウンロードされたシークレットがファイルに含まれている可能性があるためです。
 
 1. 次のコマンドを使用して、関数をプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前 (HttpExample) で、`--template` 引数は関数のトリガー (HTTP) を指定します。
 

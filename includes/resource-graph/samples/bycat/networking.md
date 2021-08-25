@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 47184f90bade6fd7178ba2a66a151429e260a623
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 642743a6ac3f6c450f3a851c1ebb09e72d70d51b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457305"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861706"
 ---
 ### <a name="count-resources-that-have-ip-addresses-configured-by-subscription"></a>サブスクリプションで構成されている IP アドレスを持つリソースの数
 
@@ -46,7 +46,7 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 ### <a name="get-virtual-networks-and-subnets-of-network-interfaces"></a>ネットワーク インターフェイスの仮想ネットワークとサブネットを取得する
 
-リソース ID プロパティから仮想ネットワークとサブネットの名前を取得するには、正規表現 `parse` を使用します。 `parse` を使用すると、複合フィールドからデータを取得できますが、プロパティが存在する場合は、`parse` を使用せずにそれらに直接アクセスすることをお勧めします。
+リソース ID プロパティから仮想ネットワークとサブネットの名前を取得するには、正規表現 `parse` を使用します。 `parse` を使用すると、複雑なフィールドからデータを取得することができますが、プロパティが存在する場合は、`parse` を使用せずに直接アクセスすることをお勧めします。
 
 ```kusto
 Resources

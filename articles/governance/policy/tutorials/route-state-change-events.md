@@ -1,15 +1,15 @@
 ---
 title: 'チュートリアル: Azure CLI を使用してポリシー状態変更イベントを Event Grid にルーティングする'
 description: このチュートリアルでは、ポリシー状態変更イベントをリッスンして Webhook を呼び出すように Event Grid を構成します。
-ms.date: 03/29/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d2017b4e85c4d064fc206d9b908be126559032bd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bbbc1468c1a50835ea79efcd11e468c70002769c
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752041"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322326"
 ---
 # <a name="tutorial-route-policy-state-change-events-to-event-grid-with-azure-cli"></a>チュートリアル: Azure CLI を使用してポリシー状態変更イベントを Event Grid にルーティングする
 

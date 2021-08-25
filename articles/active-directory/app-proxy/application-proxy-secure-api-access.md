@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 05/06/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6c7d617473f684317e5bb954c8ac82db24d4e4eb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7f4404e3e9b09bcabfc97f0419c230e932a31815
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481249"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419228"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用してオンプレミス API に安全にアクセスする
 

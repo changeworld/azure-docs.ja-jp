@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: dd8a214e060f9f4ace9f310fec3ebca33d4619c0
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: fe009eec23e940377e737938ea1986f515546138
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109235"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862134"
 ---
 # <a name="quickstart-connect-an-stmicroelectronics-b-l475e-iot01a-or-b-l4s5i-iot01a-discovery-kit-to-iot-central"></a>クイックスタート: STMicroelectronics B-L475E-IOT01A または B-L4S5I-IOT01A Discovery kit を IoT Central に接続する
 
@@ -145,7 +145,7 @@ STM DevKit を Azure に接続するには、Wi-Fi と Azure IoT の設定の構
 
 1. **Termite** を開始します。
     > [!TIP]
-    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
+    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://www.st.com/en/development-tools/stsw-link009.html)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 1. **[設定]** を選択します。
 1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
     * **Baud rate\(ボー レート\)** : 115,200

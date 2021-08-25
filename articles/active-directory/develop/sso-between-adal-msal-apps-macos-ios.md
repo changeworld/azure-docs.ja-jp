@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
-ms.custom: aaddev
-ms.openlocfilehash: 396e9cfeace8791a59dec4a9c9c7203212f57304
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 548a6ff767b6dd11428b8c1a147534da26c05b61
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584249"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428967"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>方法: macOS および iOS 上の ADAL アプリと MSAL アプリの間での SSO
 

@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/03/2020
 ms.author: marsma
-ms.custom: aaddev
+ms.custom: aaddev, has-adal-ref
 ms.reviewer: celested
-ms.openlocfilehash: d3af0d360ec15ae793f9487693d8b94be686a783
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9fac943ee19334eb241a6e0ee8601a8a0fc797c
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516109"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419066"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft ID プラットフォームのビデオ
 

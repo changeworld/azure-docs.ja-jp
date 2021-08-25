@@ -1,14 +1,14 @@
 ---
 title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
-ms.date: 05/04/2021
+ms.date: 08/17/2021
 ms.topic: sample
-ms.openlocfilehash: a4e94e3f5a274fc30cb4d64d5c31846a4ddac03b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 22c6e1382fdfbd7cafb423e99239fe2480d3b088
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108757171"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322133"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 

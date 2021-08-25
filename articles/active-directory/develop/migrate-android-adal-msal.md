@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
-ms.custom: aaddev
-ms.openlocfilehash: ba639bc023affc7c2e6b2b675cdedc1229636893
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 5a85afc8a7566c36068eb07da9bb8de23462aa28
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581042"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418798"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android 用の ADAL から MSAL への移行に関するガイド
 

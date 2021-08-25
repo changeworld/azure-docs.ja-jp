@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/26/2019
 ms.author: shoatman
-ms.custom: aaddev
+ms.custom: aaddev, has-adal-ref
 ms.reviewer: shoatman
-ms.openlocfilehash: 5bea1753c87c11094e78f95a1bbadb02fb0b95e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d8b45746702e8dcb9da0d9816f2a0e564854cf4
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98752982"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428973"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>単一および複数アカウントのパブリック クライアント アプリ
 

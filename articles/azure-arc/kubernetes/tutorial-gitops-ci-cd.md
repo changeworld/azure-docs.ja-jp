@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 9a1c0494d14c6bc5dad43e73fbf9a55cc8985445
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8b62437fc8bcad406750101eb72b1ef8d48c102f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112290019"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322207"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>チュートリアル: Azure Arc 対応 Kubernetes クラスターを使用して GitOps で CI/CD を実装する
 
@@ -47,13 +47,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8sconfiguration
+  az extension add --name k8s-configuration
   ```
   * これらの拡張機能を最新バージョンに更新するには、次のコマンドを実行します。
 
     ```azurecli
     az extension update --name connectedk8s
-    az extension update --name k8sconfiguration
+    az extension update --name k8s-configuration
     ```
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>アプリケーションおよび GitOps リポジトリを Azure Repos にインポートする
@@ -89,13 +89,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Azure Repos で、新しくインポートした **arc-cicd-demo-gitops** リポジトリに対する [新しい GitOps 接続を作成](./tutorial-use-gitops-connected-cluster.md)します。
 
    ```azurecli
-   az k8sconfiguration create \
+   az k8s-configuration create \
       --name cluster-config \
       --cluster-name arc-cicd-cluster \
       --resource-group myResourceGroup \
       --operator-instance-name cluster-config \
       --operator-namespace cluster-config \
-      --repository-url https://dev.azure.com/<Your organization>/arc-cicd-demo-gitops \
+      --repository-url https://dev.azure.com/<Your organization>/<Your project>/_git/arc-cicd-demo-gitops \
       --https-user <Azure Repos username> \
       --https-key <Azure Repos PAT token> \
       --scope cluster \
@@ -108,7 +108,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    `--git-path=arc-cicd-cluster/manifests`
 
    > [!NOTE]
-   > HTTPS 接続文字列を使用していて、接続の問題が発生した場合は、URL でユーザー名のプレフィックスを省略してください。 たとえば、`https://alice@dev.azure.com/contoso/arc-cicd-demo-gitops` では、`alice@` を削除してください。 その代わり、`--https-user` ではユーザーを指定します (例: `--https-user alice`)。
+   > HTTPS 接続文字列を使用していて、接続の問題が発生した場合は、URL でユーザー名のプレフィックスを省略してください。 たとえば、`https://alice@dev.azure.com/contoso/project/_git/arc-cicd-demo-gitops` では、`alice@` を削除してください。 その代わり、`--https-user` ではユーザーを指定します (例: `--https-user alice`)。
 
 1. Azure portal でデプロイの状態を確認します。
    * 成功した場合は、`dev` と `stage` 両方の名前空間がクラスター内に作成されます。
@@ -181,7 +181,7 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_FOLDER | `azure-vote-manifests` |
-| MANIFESTS_REPO | `azure-cicd-demo-gitops` |
+| MANIFESTS_REPO | `arc-cicd-demo-gitops` |
 | ORGANIZATION_NAME | Azure DevOps 組織の名前 |
 | PROJECT_NAME | Azure DevOps の GitOps プロジェクトの名前 |
 | REPO_URL | GitOps リポジトリの完全な URL |
@@ -333,7 +333,7 @@ CI パイプラインの実行が成功すると、デプロイ プロセスを�
 
 1. Azure Arc GitOps 構成の接続を削除します。
    ```azurecli
-   az k8sconfiguration delete \
+   az k8s-configuration delete \
    --name cluster-config \
    --cluster-name arc-cicd-cluster \
    --resource-group myResourceGroup \

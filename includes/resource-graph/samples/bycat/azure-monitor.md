@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b742e43d45517f36e6f43207afd0c77364a50d6c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0f0a010ab9b3d3a3e0fce7a1fa08cf390cf5be16
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438980"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861242"
 ---
 ### <a name="list-all-azure-arc-enabled-kubernetes-clusters-with-azure-monitor-extension"></a>Azure Monitor 拡張機能のあるすべての Azure Arc 対応 Kubernetes クラスターを一覧表示する
 
-Azure Monitor 拡張機能がインストールされている各 Azure Arc 対応 Kubernetes クラスターの接続されたクラスター ID 返します。
+Azure Monitor 拡張機能がインストールされている各 Azure Arc 対応 Kubernetes クラスターの接続されたクラスター ID を返します。
 
 ```kusto
 KubernetesConfigurationResources
@@ -46,7 +46,7 @@ Search-AzGraph -Query "KubernetesConfigurationResources | where type == 'microso
 
 ---
 
-### <a name="list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension"></a>Azure Monitor 拡張機能がないすべての Azure Arc 対応 Kubernetes クラスターを一覧表示する
+### <a name="list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension"></a>Azure Monitor 拡張機能のないすべての Azure Arc 対応 Kubernetes クラスターを一覧表示する
 
 Azure Monitor 拡張機能がない各 Azure Arc 対応 Kubernetes クラスターの接続されたクラスター ID をします。
 

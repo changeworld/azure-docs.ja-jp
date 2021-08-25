@@ -12,18 +12,24 @@ ms.date: 05/24/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像識別子、画像認識アプリ、Custom Vision
-ms.openlocfilehash: e245c4882a06d5053e8781a48469d104bcaced23
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ff90aedd43622c3f6fb696c15b3034b2a133322d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454788"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322286"
 ---
 # <a name="what-is-custom-vision"></a>Custom Vision とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure Custom Vision は、独自の画像識別子を構築、デプロイ、改良できるようにする画像認識サービスです。 画像識別子は、視覚特性に従って画像に (クラスまたはオブジェクトを表す) ラベルを適用します。 [Computer Vision](../computer-vision/overview.md) サービスとは異なり、Custom Vision ではユーザーがラベルを指定し、それらを検出するためのカスタム モデルをトレーニングできます。
+
+このドキュメントには、次のような記事が記載されています。
+* [クイックスタート](./getting-started-build-a-classifier.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。
+* [攻略ガイド](./test-your-model.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
+* [チュートリアル](./iot-visual-alerts-tutorial.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
+<!--* The [conceptual articles](Vision-API-How-to-Topics/call-read-api.md) provide in-depth explanations of the service's functionality and features.-->
 
 ## <a name="what-it-does"></a>実行内容
 

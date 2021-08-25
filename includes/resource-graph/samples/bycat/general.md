@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d0a1f53941c5e082c4ff29f9cc7ff632f311e683
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 691baccca77d67523d4ee14f495830352d04b22a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457290"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861912"
 ---
 ### <a name="count-azure-resources"></a>Azure リソースの数
 

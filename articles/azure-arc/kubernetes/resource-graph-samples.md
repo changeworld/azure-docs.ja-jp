@@ -1,18 +1,18 @@
 ---
 title: Azure Arc 対応 Kubernetes 用の Azure Resource Graph サンプル クエリ
 description: Azure Arc 対応 Kubernetes のサンプル Azure Resource Graph クエリによって、リソースの種類とテーブルを使用し、Azure Arc 対応 Kubernetes 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 ms.service: azure-arc
 author: mgoedtel
 ms.author: magoedte
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 73d8b473dc499f9c280d2cf86942e42eacb9517b
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 44ea2994088d34e71547ca8c813adeccced8868e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669998"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861427"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の Azure Resource Graph サンプル クエリ
 

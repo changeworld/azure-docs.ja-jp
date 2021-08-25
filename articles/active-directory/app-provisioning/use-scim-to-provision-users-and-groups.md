@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 11cb3ada0449559eda080cad3e9c528d60a02660
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 0d7a139588ac2ab507e4b4d4ef2061e42de41e35
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707907"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180588"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint-in-azure-active-directory"></a>チュートリアル: Azure Active Directory の SCIM エンドポイントのプロビジョニングを開発および計画する
 
@@ -901,7 +901,7 @@ TLS 1.2 暗号スイートの最低条件:
 ### <a name="ip-ranges"></a>IP 範囲
 Azure AD プロビジョニング サービスは、現在、[こちら](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)に記載されている AzureActiveDirectory の IP 範囲で動作します。 AzureActiveDirectory タグの下に一覧表示されている IP 範囲を追加し、Azure AD プロビジョニング サービスからアプリケーションへのトラフィックを許可できます。 計算されたアドレスについて、IP 範囲の一覧を注意深く確認する必要があることにご注意ください。 '40.126.25.32 ' などのアドレスは、IP 範囲の一覧では '40.126.0.0/18' として表されることがあります。 次の [API](/rest/api/virtualnetwork/servicetags/list) を使用して、プログラムによって IP 範囲の一覧を取得することもできます。
 
-また、Microsoft Azure Active Directory は、プライベート ネットワーク (オンプレミス、Azure でホストされている、AWS でホストされているなど) 内のアプリケーションへの接続を提供するエージェント ベースのソリューションもサポートします。 お客様は、プライベート ネットワーク内のサーバーで、受信ポートを開くことなく Microsoft Azure Active Directory への接続を提供する軽量のエージェントをデプロイできます。 [こちら](/app-provisioning/on-premises-scim-provisioning)をご覧ください。
+また、Microsoft Azure Active Directory は、プライベート ネットワーク (オンプレミス、Azure でホストされている、AWS でホストされているなど) 内のアプリケーションへの接続を提供するエージェント ベースのソリューションもサポートします。 お客様は、プライベート ネットワーク内のサーバーで、受信ポートを開くことなく Microsoft Azure Active Directory への接続を提供する軽量のエージェントをデプロイできます。 [こちら](./on-premises-scim-provisioning.md)をご覧ください。
 
 ## <a name="build-a-scim-endpoint"></a>SCIM エンドポイントを構築する
 

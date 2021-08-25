@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 038646d4d6245398f5385e2a6a1595ce2909ee39
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99580940"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418781"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
