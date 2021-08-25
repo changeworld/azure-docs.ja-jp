@@ -1,18 +1,20 @@
 ---
 title: MongoDB のデータをコピーする、または MongoDB にデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから MongoDB にデータをコピーする方法について説明します。
-author: jianleishen
-ms.author: jianleishen
+ms.author: chez
+author: chez-charlie
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019; seo-dt-2019
+ms.custom: synapse
 ms.date: 06/01/2021
-ms.openlocfilehash: c566b3d13a58b1ad6095f9e2443e10d6db33dedb
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 3a555f92fb210516ce7fa010e39df339c3823bf0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749538"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638437"
 ---
 # <a name="copy-data-from-or-to-mongodb-by-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする、または MongoDB にデータをコピーする
 

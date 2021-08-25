@@ -2,15 +2,16 @@
 metadata:
   title: Azure Functions のネットワークについてよく寄せられる質問
   description: Azure Functions のネットワークについてよく寄せられる質問とシナリオ。
-  ms.topic: troubleshooting
+  ms.topic: article
+  ms.service: azure-functions
   ms.date: 4/11/2019
   ms.reviewer: glenga
-  ms.openlocfilehash: f08e9865fdfd315a27083fec0bb01fe478d10d63
-  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+  ms.openlocfilehash: 2fd3a00ef0ee01c5d7f535fcdb5021f831ff20d3
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/16/2021
-  ms.locfileid: "112204801"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253828"
 title: Azure Functions のネットワークについてよく寄せられる質問
 summary: >
   この記事では、Azure Functions のネットワークについてよく寄せられる質問をまとめています。 より包括的な概要については、[Functions のネットワーク オプション](functions-networking-options.md)に関する記事を参照してください。

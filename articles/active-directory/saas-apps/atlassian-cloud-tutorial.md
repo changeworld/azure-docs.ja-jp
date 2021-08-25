@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/20/2021
+ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 06df04167cd39b8909528b600319be810e549730
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a6f647e7aed23766e62546497a6065efd7bd3985
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449195"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730780"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
 
@@ -96,10 +96,6 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
 1. **ATLASSIAN Admin** portal の **[Security]\(セキュリティ\)** タブに移動し、 **[SAML single sign on]\(SAML シングル サインオン\)** を選択し、 **[Add SAML configuration]\(SAML 構成の追加\)** をクリックします。
 
    ![セキュリティ](./media/atlassian-cloud-tutorial/admin.png)
-
-1. **[Add SAML configuration]\(SAML 構成の追加\)** セクションで、Azure portal からコピーした必須フィールドに入力し、 **[Save configuration]\(構成の保存\)** をクリックします。
-
-   ![SAML 構成の追加](./media/atlassian-cloud-tutorial/configuration.png)
 
 1. Azure portal の **Atlassian Cloud** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[Set up single sign-on]\(シングル サインオンの設定\)** を選択します。
 

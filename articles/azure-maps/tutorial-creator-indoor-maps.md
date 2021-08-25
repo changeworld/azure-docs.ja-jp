@@ -7,13 +7,12 @@ ms.date: 5/19/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 73e7073b67916983ea7bd37cd6adad4ced5633c2
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 7f3fbec3fd393bb354f7ea5df1614cf1c53bfbe2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730630"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733427"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>チュートリアル:Creator を使用して屋内マップを作成する
 

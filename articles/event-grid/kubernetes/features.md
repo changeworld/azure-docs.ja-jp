@@ -6,15 +6,15 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2eea263517d718effc03382e3d8209a9a11f17e7
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 3e8d2259c4ae41f5f0433151cef8c6f447e49418
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112415860"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768105"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-features"></a>Azure Arc を使用した Kubernetes 上の Event Grid の機能
-Kubernetes 上の Event Grid には、Kubernetes ワークロードの統合とハイブリッド アーキテクチャの実現に役立つ豊富な機能セットが用意されています。 同じ [REST API](/rest/api/eventgrid/version2020-10-15-preview/topics) (バージョン 2020-10-15-preview 以降)、[Event Grid CLI](/cli/azure/eventgrid)、Azure portal エクスペリエンス、[管理 SDK](../sdk-overview.md#management-sdks)、[データ プレーン SDK](../sdk-overview.md#data-plane-sdks) が、Azure Event Grid (同じサービスの他のエディション) と共有されます。 イベントを発行する準備ができたら、[各種言語で提供されているデータ プレーン SDK のサンプル](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/)を使用できます。これは、Event Grid の両方のエディションで動作します。
+Kubernetes 上の Event Grid には、Kubernetes ワークロードの統合とハイブリッド アーキテクチャの実現に役立つ豊富な機能セットが用意されています。 同じ [REST API](/rest/api/eventgrid/version2021-06-01-preview/topics) (バージョン 2020-10-15-preview 以降)、[Event Grid CLI](/cli/azure/eventgrid)、Azure portal エクスペリエンス、[管理 SDK](../sdk-overview.md#management-sdks)、[データ プレーン SDK](../sdk-overview.md#data-plane-sdks) が、Azure Event Grid (同じサービスの他のエディション) と共有されます。 イベントを発行する準備ができたら、[各種言語で提供されているデータ プレーン SDK のサンプル](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/)を使用できます。これは、Event Grid の両方のエディションで動作します。
 
 Kubernetes 上の Event Grid と Azure Event Grid は多くの機能を共有しており、目標は同じユーザー エクスペリエンスを提供することですが、それらが満たそうとする固有の要件と、それらが置かれているソフトウェア ライフサイクルの段階にいくつか違いがあります。 たとえば、Kubernetes 上の Event Grid で使用できるトピックの種類は Event Grid トピックのみです。これはカスタム トピックと呼ばれる場合もあります。 その他の種類のトピック (下記参照) は適用できないか、それらのサポートがまだ利用できません。 下の表に、Event Grid の 2 つのエディションの主な相違点を示します。
 
@@ -25,7 +25,7 @@ Kubernetes 上の Event Grid と Azure Event Grid は多くの機能を共有し
 
 | 機能 | Kubernetes 上の Event Grid | Azure Event Grid |
 |:--|:-:|:-:|
-| [Event Grid トピック](/rest/api/eventgrid/version2020-10-15-preview/topics) | ✔ | ✔ |
+| [Event Grid トピック](/rest/api/eventgrid/version2021-06-01-preview/topics) | ✔ | ✔ |
 | [CNCF Cloud Events スキーマ](https://github.com/cloudevents/spec/blob/master/spec.md) | ✔ | ✔ |
 | Event Grid とカスタム スキーマ | ✘* | ✔ |
 | 信頼性の高い配信 | ✔ | ✔ |
@@ -41,7 +41,7 @@ Kubernetes 上の Event Grid と Azure Event Grid は多くの機能を共有し
 | 宛先としての Azure Relay のハイブリッド接続 | ✘ | ✔ |
 | [高度なフィルター処理](filter-events.md) | ✔*** | ✔ |
 | [AAD での Webhook AuthN/AuthZ](../secure-webhook-delivery.md) | ✘ | ✔ |
-| [リソース ID を使用したイベント配信](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#deliverywithresourceidentity) | ✘ | ✔ |
+| [リソース ID を使用したイベント配信](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update) | ✘ | ✔ |
 | データ プレーン SDK の同じセット | ✔ | ✔ |
 | 管理 SDK の同じセット | ✔ | ✔ |
 | 同じ Event Grid CLI | ✔ | ✔ |

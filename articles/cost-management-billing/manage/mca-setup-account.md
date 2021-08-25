@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/12/2021
+ms.date: 08/19/2021
 ms.author: banders
-ms.openlocfilehash: af9a56dd52a0ee70a457e4e53fd37962dca9c90d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9b586d453f9ac49dd7bd2894c0003fef521167da
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739916"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514947"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 

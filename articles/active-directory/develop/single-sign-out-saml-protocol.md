@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 08/24/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 040e49ee870704107e1d4118f1484119d98a9ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71384446b37841513bbd362b6398e0cd892167ab
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781213"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778016"
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
 

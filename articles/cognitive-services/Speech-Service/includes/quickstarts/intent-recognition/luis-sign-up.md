@@ -1,18 +1,18 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/04/2021
-ms.author: trbye
-ms.openlocfilehash: 2ffcb79bb2bb192566e7f6b7e0f933cacce84a77
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: lajanuar
+ms.openlocfilehash: da985c405dde8b66e8562abd8689acaba405b60f
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114593309"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071839"
 ---
-意図認識を実行するには、LUIS プレビュー ポータルを使用して、LUIS アカウントとプロジェクトを作成する必要があります。 このクイックスタートでは、[インテント認識が使用可能なリージョンに](/azure/cognitive-services/speech-service/regions#intent-recognition) LUIS サブスクリプションが必要です。 音声サービスのサブスクリプションは "*不要*" です。
+意図認識を実行するには、LUIS プレビュー ポータルを使用して、LUIS アカウントとプロジェクトを作成する必要があります。 このクイックスタートでは、[インテント認識が使用可能なリージョンに](../../../regions.md#intent-recognition) LUIS サブスクリプションが必要です。 音声サービスのサブスクリプションは "*不要*" です。
 
 まず、LUIS プレビュー ポータルを使用して LUIS アカウントとアプリを作成する必要があります。 作成した LUIS アプリでは、意図、エンティティ、および発話例を提供する、ホーム オートメーション用のあらかじめ構築されたドメインを使用します。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。これは、Speech SDK を使用して呼び出すことができます。 
 

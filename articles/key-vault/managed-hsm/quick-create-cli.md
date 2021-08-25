@@ -2,19 +2,19 @@
 title: クイックスタート - Azure Managed HSM をプロビジョニングしてアクティブにする
 description: Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする方法を紹介するクイックスタート。
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 06/21/2021
 ms.author: mbaldwin
-ms.openlocfilehash: be8c28f736e58ebcbe95d4b8a4042b79fa1cf9f7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f47ce2ea3d805bfc5e5cdd4fd328195c12fe516d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114443593"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821588"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする
 
@@ -28,7 +28,6 @@ Azure Key Vault Managed HSM は、フル マネージド、高可用性、シン
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
 * Azure CLI バージョン 2.25.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
-* お使いのサブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

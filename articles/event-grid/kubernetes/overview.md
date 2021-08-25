@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: fdc8c60f2c2cae7368a2e35317de2cfb8274a060
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 807d337988993c8be0fee76b9c12e1fc6dc75c7d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112414955"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770570"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>Azure Arc を使用した Kubernetes 上の Event Grid (プレビュー) - 概要
 この記事では、Kubernetes 上の Event Grid の概要、使用方法のユース ケース、提供されている機能、および Azure Event Grid との違いについて説明します。
@@ -36,7 +36,7 @@ Kubernetes 上の Event Grid では、さまざまなイベント駆動型の統
 
 「Kubernetes クラスターにデプロイしたシステムの所有者として、イベントを発行し、そのイベントのルーティングを構成することで、システムの状態変化を伝達したいと考えています。これは、私の管理下にあるか否かに関わらず、イベント ハンドラーでシステムのイベントを適切な方法で処理できるようにするためです。」
 
-上記の要件を満たすために役立つ **機能** が、[Event Grid トピック](/rest/api/eventgrid/version2020-10-15-preview/topics)です。
+上記の要件を満たすために役立つ **機能** が、[Event Grid トピック](/rest/api/eventgrid/version2021-06-01-preview/topics)です。
 
 ### <a name="event-grid-on-kubernetes-at-a-glance"></a>Kubernetes 上の Event Grid の概要
 ユーザーの視点から見ると、Kubernetes 上の Event Grid は、青字で記載されている以下のリソースで構成されています。
@@ -69,7 +69,7 @@ Kubernetes で Event Grid を使用すると、処理、保管、または視覚
 イベント ハンドラーの送信先には、パブリックまたはプライベートのネットワークを介して Event Grid からアクセスでき、アクセス権があれば (認証メカニズムによって保護されていない)、任意の HTTPS または HTTP のエンドポイントを指定できます。 イベントの送信先は、イベント サブスクリプションを作成するときに定義します。 詳細は、[イベント ハンドラー](event-handlers.md)に関する記事を参照してください｡ 
 
 ## <a name="features"></a>機能
-Kubernetes 上の Event Grid では、[Azure Event Grid](../custom-topics.md) で提供されている機能である [Event Grid トピック](/rest/api/eventgrid/version2020-10-15-preview/topics)もサポートされています。 Event Grid トピックは、ユーザーのシステムと、ユーザーが所有する、またはそのシステムからアクセス可能な別のワークロードとの統合が必要になる、[主要な統合ユース ケース](#use-case)の実現をサポートします。
+Kubernetes 上の Event Grid では、[Azure Event Grid](../custom-topics.md) で提供されている機能である [Event Grid トピック](/rest/api/eventgrid/version2021-06-01-preview/topics)もサポートされています。 Event Grid トピックは、ユーザーのシステムと、ユーザーが所有する、またはそのシステムからアクセス可能な別のワークロードとの統合が必要になる、[主要な統合ユース ケース](#use-case)の実現をサポートします。
 
 Kubernetes 上の Azure Event Grid で利用できる機能の一部は次のとおりです。
 

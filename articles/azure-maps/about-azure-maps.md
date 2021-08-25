@@ -7,14 +7,13 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 970223c0514651ddcdf373aa6638abf17b06d01c
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: e4c9ff1585be0545e93a23772ebd0d05156e1351
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669108"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728000"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 

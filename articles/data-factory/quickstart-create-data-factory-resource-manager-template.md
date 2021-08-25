@@ -2,6 +2,7 @@
 title: Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Data Factory を作成する
 description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、サンプルの Azure Data Factory パイプラインを作成します。
 ms.service: data-factory
+ms.subservice: tutorials
 tags: azure-resource-manager
 author: ssabat
 ms.author: susabat
@@ -9,12 +10,12 @@ ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 07/05/2021
-ms.openlocfilehash: 1979e5c832225483aa5309c84d3c2ce491e77f3c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: b6489f692dc8fabf63daab0cf13f1036e944e77e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436922"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731527"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Data Factory を作成する
 

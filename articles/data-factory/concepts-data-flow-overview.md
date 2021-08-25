@@ -4,15 +4,16 @@ description: Azure Data Factory のマッピング データ フローの概要
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 05/20/2021
-ms.openlocfilehash: ef0639637736b0a8b4f41d6fd038de81a8e94a69
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8e10ede945f60ee693738ab7230a2c50b5bcb972
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454962"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638639"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory のマッピング データ フロー
 
@@ -32,11 +33,11 @@ ms.locfileid: "110454962"
 
 このアクションにより、変換ロジックを作成できるデータ フロー キャンバスに移動します。 **[ソースの追加]** を選択すると、ソース変換の構成が開始します。 詳細については、[ソース変換](data-flow-source.md)に関するページを参照してください。
 
-## <a name="authoring-data-flows&quot;></a>データ フローの作成
+## <a name="authoring-data-flows"></a>データ フローの作成
 
 マッピング データ フローには、変換ロジックを簡単に構築するために設計された独自の作成キャンバスがあります。 データ フロー キャンバスは、上部バー、グラフ、および構成パネルの 3 つの部分に分かれています。 
 
-![スクリーンショットには、上部バー、グラフ、および構成パネルにラベルが付いたデータ フロー キャンバスが示されています。](media/data-flow/canvas-1.png &quot;キャンバス")
+![スクリーンショットには、上部バー、グラフ、および構成パネルにラベルが付いたデータ フロー キャンバスが示されています。](media/data-flow/canvas-1.png "キャンバス")
 
 ### <a name="graph"></a>グラフ
 

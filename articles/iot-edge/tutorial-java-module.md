@@ -3,7 +3,6 @@ title: チュートリアル - Azure IoT Edge を使用したカスタム Java �
 description: このチュートリアルでは、Java コードで IoT Edge モジュールを作成し、Edge デバイスに展開する方法について説明します。
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 3c3dae7cb64dd6c2e13c77c061c770bd787e2f06
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 437cb7c751b5cbc4c7f85dc3c20da3de28f29d1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438136"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726440"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>チュートリアル: Linux コンテナーを使用して Java の IoT Edge モジュールを開発する
 
@@ -108,7 +107,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 3. このファイルを保存します。
 
 >[!NOTE]
->このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
+>このチュートリアルでは、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、[[コンテナー レジストリへのアクセスを管理する]](production-checklist.md#manage-access-to-your-container-registry) を参照してください。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 

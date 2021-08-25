@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
-ms.author: erhopf
-ms.openlocfilehash: d5780c6ad924e8a6517837dff23e3a4e7ae4d0e1
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.author: lajanuar
+ms.openlocfilehash: 3ae4b6cd241e798305f2e8d1ce3acd61a32d337a
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111546516"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070129"
 ---
 このガイドでは、64 ビット Java 8 JRE 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合、Java SDK は Maven Central Repository で使用できません。 Gradle または `pom.xml` 依存関係ファイルを使用しているかどうかに関係なく、`https://csspeechstorage.blob.core.windows.net/maven/` を指すカスタム リポジトリを追加する必要があります (パッケージ名については以下を参照してください)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "111546516"
 
 ## <a name="gradle-config"></a>Gradle の構成
 
-Gradle の構成には、カスタム リポジトリと、依存関係拡張子 `.jar` への明示的な参照の両方が必要です。 
+Gradle の構成には、カスタム リポジトリと、依存関係拡張子 `.jar` への明示的な参照の両方が必要です。
 
 ```groovy
 // build.gradle
@@ -56,7 +56,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: "1.17.0", ext: "jar"
+    implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: "1.18.0", ext: "jar"
 }
 ```
 
