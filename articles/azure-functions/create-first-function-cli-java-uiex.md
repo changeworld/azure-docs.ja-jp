@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4923ba6ead6b13f6b919c72304d4f389bac41386
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 1605bcc3a596276e8de99c45f290368691703c4f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287818"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752342"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Java 関数を作成する
 
@@ -112,7 +112,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 <details>
 <summary><strong>LocalFunctionProj フォルダーには何が作成されますか?</strong></summary>
 
-このフォルダーには、*Function.java*、*FunctionTest.java*、*pom.xml* など、プロジェクトに関するさまざまなファイルが格納されています。 [local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) という名前の構成ファイルも存在します。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+このフォルダーには、*Function.java*、*FunctionTest.java*、*pom.xml* など、プロジェクトに関するさまざまなファイルが格納されています。 [local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) という名前の構成ファイルも存在します。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 </details>
 
 <br/>

@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e31fd58887dfa179bc01f89ec7e56dc93fa3b6b8
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: c135b0e1e1e5c1b8c57b4b8ba7af06d165f00ac8
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540278"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862340"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL のリソースの使用
 
@@ -54,7 +54,7 @@ DWU の数を増やすと、次のメリットが得られます。
 サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 専用 SQL プールのサービス レベルは、DW2000c など、Data Warehouse ユニット (DWU) で測定されます。
 
 > [!NOTE]
-> Azure Synapse Analytics Gen2 には、最近になって、最低 100 cDWU のコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用していて小さいコンピューティング レベルを必要とする既存のデータ ウェアハウスでは、現在追加コストなしで利用可能なリージョンで Gen2 にアップグレードできます。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+> Azure Synapse Analytics Gen2 には、最近になって、最低 100 cDWU のコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用していて小さいコンピューティング レベルを必要とする既存のデータ ウェアハウスでは、現在追加コストなしで利用可能なリージョンで Gen2 にアップグレードできます。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](../sql-data-warehouse/upgrade-to-latest-generation.md?context=/azure/synapse-analytics/context/context)に関するページを参照してください。
 
 T-SQL では、SERVICE_OBJECTIVE 設定によって専用 SQL プールのサービス レベルとパフォーマンス レベルが決まります。
 
@@ -79,7 +79,7 @@ DWU と cDWU はいずれも、コンピューティングのスケール アッ
 
 #### <a name="capacity-limits"></a>容量制限
 
-各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../azure-sql/database/service-tiers-dtu.md) クォータがあります。 詳細については、[ワークロード管理の容量制限](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)に関する記事を参照してください。
+各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../../azure-sql/database/service-tiers-dtu.md) クォータがあります。 詳細については、[ワークロード管理の容量制限](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?context=/azure/synapse-analytics/context/context#workload-management)に関する記事を参照してください。
 
 ### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>必要な Data Warehouse ユニットの数を評価する
 
@@ -216,4 +216,4 @@ AND       major_resource_id = 'MySQLDW'
 
 ## <a name="next-steps"></a>次のステップ
 
-パフォーマンスの管理の詳細については、[ワークロード管理用のリソース クラス](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)と、[メモリとコンカレンシーの制限](../sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+パフォーマンスの管理の詳細については、[ワークロード管理用のリソース クラス](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context)と、[メモリとコンカレンシーの制限](../sql-data-warehouse/memory-concurrency-limits.md?context=/azure/synapse-analytics/context/context)に関するページを参照してください。

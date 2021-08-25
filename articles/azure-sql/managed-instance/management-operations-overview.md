@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: overview
 author: urosmil
 ms.author: urmilano
-ms.reviewer: sstein, MashaMSFT
+ms.reviewer: mathoma, MashaMSFT
 ms.date: 06/08/2021
-ms.openlocfilehash: 9a4df35d102b3304a65ad7c9a5c750bd70d3d64c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 8e33e8271f8b877f20fb3f27885aa518a52ed90e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745855"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751144"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

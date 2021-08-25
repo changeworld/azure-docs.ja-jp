@@ -7,14 +7,13 @@ ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 8ab3458003366416e10588d3f2edb29b51619ecf
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: d961b7051fa469304b4e8cce3f53e09813a10c02
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257638"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743796"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 

@@ -5,16 +5,18 @@ ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: da099aa75168e52d0024f4a4381c77b3e9ce67ab
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e8959fcfa8c7074e59c825695440f09dcab64d1d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876654"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643296"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する
 
 このクイックスタートでは、Azure CLI を使用して Azure Blockchain Service 内にブロックチェーンの新しいメンバーとコンソーシアムをデプロイします。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

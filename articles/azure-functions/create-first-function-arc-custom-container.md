@@ -3,12 +3,12 @@ title: 'クイック スタート: カスタム コンテナー内で Azure Arc 
 description: カスタムの Linux コンテナー内に最初の関数アプリをデプロイすることによって、Azure Arc で Azure Functions の使用を開始します。
 ms.topic: quickstart
 ms.date: 05/11/2021
-ms.openlocfilehash: 28079b9a7821350736647d49815c541f6a79d119
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 48940e70e1678e4426efb34e40b3b16b742e4f5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746746"
 ---
 # <a name="create-your-first-function-on-azure-arc-using-a-custom-container-preview"></a>カスタム コンテナーを使用して Azure Arc に最初の関数を作成する (プレビュー)
 
@@ -101,7 +101,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     cd LocalFunctionProj
     ```
 
-    このフォルダーには、プロジェクト用の Dockerfile の他のファイルが含まれています。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 既定では、*local.settings.json* ファイルは *.gitignore* ファイルのソース管理から除外されます。 この除外は、Azure からダウンロードされたシークレットがファイルに含まれている可能性があるためです。
+    このフォルダーには、プロジェクト用の Dockerfile の他のファイルが含まれています。たとえば、[local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 既定では、*local.settings.json* ファイルは *.gitignore* ファイルのソース管理から除外されます。 この除外は、Azure からダウンロードされたシークレットがファイルに含まれている可能性があるためです。
 
 1. 生成された `Dockerfile` を開き、基本イメージの `3.0` タグを見つけます。 `3.0` タグがある場合は、`3.0.15885` タグに置き換えます。 たとえば、JavaScript アプリケーションでは、`FROM mcr.microsoft.com/azure-functions/node:3.0.15885` を持つように Docker ファイルを変更する必要があります。 このバージョンの基本イメージでは、Azure Arc 対応の Kubernetes クラスターへのデプロイがサポートされています。 
 

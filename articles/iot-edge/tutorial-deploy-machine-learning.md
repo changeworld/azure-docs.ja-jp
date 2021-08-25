@@ -2,19 +2,18 @@
 title: チュートリアル - Azure IoT Edge を使用して Azure Machine Learning をデバイスにデプロイする
 description: このチュートリアルでは、Azure Machine Learning モデルを作成してから、それをモジュールとしてエッジ デバイスにデプロイします
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4fffb279ff9d2d0560dc722b9fa8de3bccb6cf19
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 83f2322942e865ad60dd91332499fb7c0555b382
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969298"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740546"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル:Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 

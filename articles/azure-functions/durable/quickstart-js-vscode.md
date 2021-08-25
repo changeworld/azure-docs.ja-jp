@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
 ms.custom: devx-track-js
-ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f158064b68de37c68dc0c01d3c6539f8c95736a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91335451"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752329"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -56,7 +56,7 @@ ms.locfileid: "91335451"
     | Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください) | 今はしない | |
     | Select how you would like to open your project (プロジェクトを開く方法を選択してください) | 現在のウィンドウで開く | 選択したフォルダーで VS Code を開き直します。 |
 
-Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトがフォルダーに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-run-local.md#local-settings-file) 構成ファイルが含まれています。
+Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトがフォルダーに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-develop-local.md#local-settings-file) 構成ファイルが含まれています。
 
 また、ルート フォルダーには、package.json ファイルが作成されます。
 

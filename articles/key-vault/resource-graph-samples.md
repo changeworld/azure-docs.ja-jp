@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault 用の Azure Resource Graph サンプル クエリ
 description: Azure Key Vault 用のサンプル Azure Resource Graph クエリでは、リソースの種類とテーブルを使用して Azure Key Vault 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 937ab0f6b09c7d3f3a7237ff785d4c5586826728
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 1dacb151b21b605cce2b33604bd43ddd917620c0
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669961"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860472"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-key-vault"></a>Azure Key Vault 用の Azure Resource Graph サンプル クエリ
 

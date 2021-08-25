@@ -1,18 +1,18 @@
 ---
 title: Azure Security Center 用の Azure Resource Graph サンプル クエリ
 description: Azure Security Center 用のサンプル Azure Resource Graph クエリによって、リソースの種類とテーブルを使用し、Azure Security Center 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 07/21/2021
+ms.date: 08/13/2021
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: c4789913012fb1b2da90f8bfb20a782c48760946
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 637a91641a73fb9eebf6838eb51fa86aefb0fdd7
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114670009"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122072351"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-security-center"></a>Azure Security Center 用の Azure Resource Graph サンプル クエリ
 
