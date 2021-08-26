@@ -3,13 +3,14 @@ metadata:
   title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
   description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
   ms.topic: article
+  ms.service: service-bus
   ms.date: 01/20/2021
-  ms.openlocfilehash: 759e9307ff25a8449dd245a2ddaa64dc86b67942
-  ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+  ms.openlocfilehash: 8502e0b908133432ebffbb27108e45a8a605cc17
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/21/2021
-  ms.locfileid: "112415680"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122254234"
 title: Azure Service Bus - よく寄せられる質問 (FAQ)
 summary: >
   この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。

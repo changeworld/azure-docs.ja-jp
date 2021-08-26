@@ -3,14 +3,15 @@ metadata:
   title: Azure DevTest Labs に関する FAQ | Microsoft Docs
   description: この記事では、Azure DevTest Labs に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
   ms.topic: article
+  ms.service: azure
   ms.date: 07/17/2020
   ms.custom: devx-track-azurepowershell, references_regions
-  ms.openlocfilehash: ac4e230e3869903d77177eecd31b00d14d5f7d18
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: c1ad54ee9c95590cf25aacadf0fd549d460e2d8c
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112306056"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253136"
 title: Azure DevTest Labs に関する FAQ
 summary: "\nAzure DevTest Labs について特に多く寄せられる質問にお答えします。\n\n## <a name=\"blog-post\"></a>ブログ記事\nDevTest Labs チームのブログは 2019 年 3 月 20 日時点で廃止されました。 \n\n### <a name=\"where-can-i-track-feature-updates-from-now-on\"></a>今後の機能更新はどこで追跡できるのでしょうか。\n今後、Azure ブログと Azure の更新情報で、機能更新や情報ブログ記事を投稿していきます。 これらのブログ記事は、必要に応じて、Microsoft のドキュメントにもリンクされます。\n        \n[DevTest Labs Azure ブログ](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)と [DevTest Labs Azure の更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)をご覧になり、DevTest Labs の新機能に関する情報を入手するようにしてください。\n        \n### <a name=\"what-happens-to-the-existing-blog-posts\"></a>既存のブログ記事はどうなりますか。\n現在、既存のブログ記事 (障害更新情報を除く) の [DevTest Labs ドキュメント](devtest-lab-overview.md)への移行を進めています。 MSDN ブログが非推奨になると、DevTest Labs のドキュメントの概要にリダイレクトされます。 リダイレクトされたら、タイトルの 'フィルター条件' で探している記事を検索できます。 まだすべての記事を移行していませんが、今月末までに完了するはずです。 \n        \n### <a name=\"where-do-i-see-outage-updates\"></a>障害更新情報はどこで確認できますか。\n今後、Twitter ハンドルを使用して、障害更新情報を投稿する予定です。 Twitter でフォローして、障害と既知のバグに関する最新の更新情報を取得してください。\n\n### <a name=\"twitter\"></a>Twitter\nTwitter ハンドル: [@azlabservices](https://twitter.com/azlabservices)\n"
 sections:
