@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: 8795007a5a38d21985d8b31884c66342b3dda7ed
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0b920df34358c83fa69274f0d7b52f889cd15010
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792410"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724828"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するアプリへの同意のアクセス許可
 
@@ -34,7 +34,7 @@ ms.locfileid: "110792410"
 > [!NOTE]
 > 現在、この記事に記載されているアクセス許可を、Azure AD 管理ポータルからカスタム ディレクトリ ロールの定義に追加することはできません。 この記事に記載されているアクセス許可を有する[カスタム ディレクトリ ロールは、Azure AD PowerShell を使用して作成](custom-create.md#create-a-role-using-powershell)する必要があります。
 
-### <a name="granting-delegated-permissions-to-apps-on-behalf-of-self-user-consent"></a>自己の代理となるアプリに、委任されたアクセス許可を付与する (ユーザーの同意)
+#### <a name="granting-delegated-permissions-to-apps-on-behalf-of-self-user-consent"></a>自己の代理となるアプリに、委任されたアクセス許可を付与する (ユーザーの同意)
 
 アプリへの同意ポリシーの適用を条件に、自己の代理となることへの同意 (ユーザーの同意) をユーザーがアプリケーションに与えられるようにします。
 
@@ -44,7 +44,7 @@ ms.locfileid: "110792410"
 
 たとえば、`microsoft-user-default-low` という ID を持つ、組み込みのアプリへの同意ポリシーが適用されることを条件に、アプリが自己の代理となることへの同意をユーザーが与えられるようにするには、`...managePermissionGrantsForSelf.microsoft-user-default-low` というアクセス許可を使用することになります。
 
-### <a name="granting-permissions-to-apps-on-behalf-of-all-admin-consent"></a>すべてのユーザーの代理となるアプリにアクセス許可を付与する (管理者の同意)
+#### <a name="granting-permissions-to-apps-on-behalf-of-all-admin-consent"></a>すべてのユーザーの代理となるアプリにアクセス許可を付与する (管理者の同意)
 
 委任されたアクセス許可とアプリケーションのアクセス許可 (アプリ ロール) の両方について、テナント全体の管理者の同意をアプリに委任します。
 
@@ -54,7 +54,7 @@ ms.locfileid: "110792410"
 
 たとえば、`low-risk-any-app` という ID を持つ、カスタムの[アプリへの同意ポリシー](../manage-apps/manage-app-consent-policies.md)が適用されることを条件に、ロールを割り当てられたユーザーが、テナント全体の管理者の同意をアプリに付与できるようにするには、`microsoft.directory/servicePrincipals/managePermissionGrantsForAll.low-risk-any-app` というアクセス許可を使用することになります。
 
-### <a name="managing-app-consent-policies"></a>アプリへの同意ポリシーを管理する
+#### <a name="managing-app-consent-policies"></a>アプリへの同意ポリシーを管理する
 
 [アプリへの同意ポリシー](../manage-apps/manage-app-consent-policies.md)の作成、更新、削除を委任します。
 

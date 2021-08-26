@@ -2,18 +2,17 @@
 title: チュートリアル:Azure IoT Edge での Machine Learning の詳細なチュートリアル
 description: エッジのシナリオでエンド ツー エンドの機械学習を作成するために必要なさまざまなタスクについて説明している高レベルのチュートリアル。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 67cc470b4f7f119b7f5b86bcb82ea284ab662dfe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e2c6b7f2fbeae4ebeacca3772c22c5eeddeceb2f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463240"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726412"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>チュートリアル:Azure Machine Learning と IoT Edge を使用したエンド ツー エンド ソリューション
 

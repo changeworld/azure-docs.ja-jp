@@ -2,7 +2,6 @@
 title: チュートリアル - Azure IoT Hub の暗号化と X.509 証明書について理解する | Microsoft Docs
 description: チュートリアル - Azure IoT Hub の暗号化と X.509 PKI について理解する
 author: v-gpettibone
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 2c375a02f534572826e1ebd6b8549e59f6e83640
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 096d7bb1ca05f3d49c0b5c93751238f41e724ec6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378382"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724392"
 ---
 # <a name="tutorial-understanding-public-key-cryptography-and-x509-public-key-infrastructure"></a>チュートリアル: 公開キー暗号化と X.509 公開キー基盤について理解する
 

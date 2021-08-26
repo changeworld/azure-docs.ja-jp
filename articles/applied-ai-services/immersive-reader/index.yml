@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Azure イマーシブ リーダーのドキュメント
+summary: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
+metadata:
+  title: Azure イマーシブ リーダーのドキュメント
+  description: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
+  services: service
+  ms.service: applied-ai-services
+  ms.subservice: immersive-reader
+  ms.topic: landing-page
+  ms.collection: collection
+  author: IEvangelist
+  ms.author: dapine
+  ms.date: 01/23/2020
+  ms.openlocfilehash: 9e18f2754fe67ac7f4d087d63d72451eec8f7ede
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121777651"
+landingContent:
+- title: Immersive Reader の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Immersive Reader とは
+      url: overview.md
+    - text: Azure Applied AI Services とは?
+      url: ../../applied-ai-services/what-are-applied-ai-services.md
+  - linkListType: video
+    links:
+    - text: 作業の開始 - 短いエンジニアリング ビデオ
+      url: https://aka.ms/ImmersiveReaderSDKVideos
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# (ASP.NET Core) の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: Node.js の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-nodejs
+    - text: Java の使用 (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-java-android
+    - text: Kotlin の使用 (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
+    - text: Swift (iOS) の使用
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
+- title: Immersive Reader を試す
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Immersive Reader のリソースを作成する
+      url: how-to-create-immersive-reader.md
+    - text: 複数のイマーシブ リーダー リソースの使用
+      url: how-to-multiple-resources.md
+    - text: イマーシブ リーダーの起動
+      url: how-to-launch-immersive-reader.md
+    - text: Cookie のポリシーを設定する
+      url: how-to/set-cookie-policy.md
+    - text: 数式を表示する
+      url: how-to/display-math.md
+    - text: Immersive Reader のボタンをカスタマイズする
+      url: how-to-customize-launch-button.md
+    - text: 認証トークンをキャッシュする
+      url: how-to-cache-token.md
+    - text: 音声読み上げを構成する
+      url: how-to-configure-read-aloud.md
+    - text: 翻訳を構成する
+      url: how-to-configure-translation.md
+    - text: ユーザー設定を格納する
+      url: how-to-store-user-preferences.md
+  - linkListType: reference
+    links:
+    - text: JavaScript SDK
+      url: reference.md
+    - text: リリース ノート
+      url: release-notes.md
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/applied-ai-services/immersive-reader/context/context

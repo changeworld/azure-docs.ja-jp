@@ -6,18 +6,18 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 08/19/2021
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: b1f95ab34e8bfccdd4be017b2fa5ca49d93fc0b6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1d44af132207a4f8b50ad48f50064a8a44698793
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750742"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514873"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>IoT Hub に対するその他のプロトコルのサポート
 
@@ -35,7 +35,7 @@ MQTT アダプターは、その他のプロトコルのプロトコル アダ�
 
 柔軟性を高めるために、Azure IoT プロトコル ゲートウェイと MQTT の実装はオープン ソース ソフトウェア プロジェクトで提供されます。 オープンソース プロジェクトを使用して、さまざまなプロトコルやプロトコル バージョンのサポートを追加したり、シナリオに合わせて実装をカスタマイズしたりできます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure IoT プロトコル ゲートウェイについて、およびそれを IoT ソリューションの一部として使用およびデプロイする方法については、以下をご覧ください。
 

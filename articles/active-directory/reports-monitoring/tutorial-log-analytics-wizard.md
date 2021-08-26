@@ -3,7 +3,7 @@ title: Azure AD でログ分析ウィザードを構成する | Microsoft Docs
 description: ログ分析の構成方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: devices
+ms.subservice: report-monitor
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: markvi
@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca84fa57cb3a26337038275d1b7491154915c90e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47df90a3f4948e69206a34dbeac187c2a67074f1
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574371"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514626"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>チュートリアル:ログ分析ウィザードを構成する
 
@@ -226,7 +226,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 8. **[アラート ルールの作成]** ページで、スコープが正しいことを確認します。
 
-9. **[条件]** で、 **[Whenever the average custom log search is greater than <logic undefined> count]\(平均カスタム ログ検索が &lt;logic undefined&gt; の数より大きい場合\)** をクリックします。
+9. **[条件]** で、 **[Whenever the average custom log search is greater than `logic undefined` count]\(平均カスタム ログ検索が &lt;logic undefined&gt; の数より大きい場合\)** をクリックします。
 
     ![既定の条件](./media/tutorial-log-analytics-wizard/default-condition.png)
 

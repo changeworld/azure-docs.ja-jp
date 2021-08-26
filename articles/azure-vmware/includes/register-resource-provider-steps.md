@@ -3,12 +3,15 @@ title: Azure VMware Solution リソース プロバイダーの登録
 description: Azure VMware Solution リソース プロバイダーを登録する手順。
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: d2363ca2672f7f668d8f9b3816447f316d8b7347
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 8f1074a0fa703afb6878b708861a67b4bc6d4454
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555835"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729039"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
