@@ -12,12 +12,12 @@ ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d65daffab7522c1ececb3383d1cf5184f906d8f9
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 54a609cb73dcbf70afa5e20c41fa734080b89cc1
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111893014"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770691"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
@@ -85,7 +85,7 @@ ms.locfileid: "111893014"
 
 - **Google Chrome** - Chrome Web ストアから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)機能に移動して、 **[Chrome に追加]** を選択します。
 
-- **Mozilla Firefox** - **[Firefox アドオン]** ページから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://addons.mozilla.org/firefox/addon/access-panel-extension/)機能に移動して、 **[Firefox に追加]** を選択します。
+- **Mozilla Firefox** - **[Firefox アドオン]** ページから、マイ アプリによるセキュリティで保護されたサインイン拡張機能に移動して、 **[Firefox に追加]** を選択します。
 
 アイコンは **アドレス** バーの右側に追加され、サインインして拡張機能をカスタマイズできます。
 

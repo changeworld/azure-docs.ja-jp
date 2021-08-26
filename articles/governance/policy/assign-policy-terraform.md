@@ -1,14 +1,14 @@
 ---
 title: 'クイックスタート: Terraform を使用した新しいポリシーの割り当て'
 description: このクイックスタートでは、Terraform と HCL 構文を使用して、ポリシー割り当てを作成し、非準拠リソースを特定します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: c9e33fc8070adc2685e26272565d95716c0df8db
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 09e36e8b73fd224d7ab9c94dceaa7e02b34c9b8b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094764"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323451"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>クイックスタート: Terraform を使用してポリシー割り当てを作成し、非準拠リソースを特定する
 

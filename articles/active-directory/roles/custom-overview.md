@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d7c0c7c5a0fe5ff3100e754c99b476676cab222
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: f376a8e5d61b9bb3fda39184f4ff0873c48c8b43
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733378"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732336"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory のロールベースのアクセス制御の概要
 
@@ -45,7 +45,7 @@ Azure AD では、2 種類のロールの定義がサポートされています
 1. ユーザー (またはサービス プリンシパル) が、Microsoft Graph または Azure AD Graph エンドポイントへのトークンを取得します。
 1. ユーザーは、発行されたトークンを使用して Microsoft Graph または Azure AD Graph 経由で Azure Active Directory (Azure AD) に対する API 呼び出しを行います。
 1. 状況に応じて、Azure AD は次のいずれかのアクションを実行します。
-   - ユーザーのアクセス トークン内の [wids 要求](../../active-directory-b2c/access-tokens.md)に基づいて、ユーザーのロール メンバーシップを評価します。
+   - ユーザーのアクセス トークン内の [wids 要求](../develop/access-tokens.md)に基づいて、ユーザーのロール メンバーシップを評価します。
    - アクションが実行されるリソースに対して直接またはグループ メンバーシップを介してユーザーに適用されるすべてのロールの割り当てを取得します。
 1. Azure AD は、API 呼び出しでのアクションが、このリソースに対してユーザーが持っているロールに含まれるかどうかを判別します。
 1. 要求されたスコープでのアクションを含むロールをユーザーが持っていない場合、アクセスは許可されません。 それ以外の場合、アクセスは許可されます。

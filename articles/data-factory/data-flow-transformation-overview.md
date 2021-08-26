@@ -1,17 +1,20 @@
 ---
 title: マッピング データ フロー変換の概要
+titleSuffix: Azure Data Factory & Azure Synapse
 description: データ フローのマッピングで使用できる、さまざまな変換の概要
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: ebcb3298419fe53fe44418ce5f8147ed619becee
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: f16c323f861c5d105cb7761c33f6457df54c355c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903640"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638642"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>マッピング データ フロー変換の概要
 

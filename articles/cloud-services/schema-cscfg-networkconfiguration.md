@@ -10,17 +10,16 @@ ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
 '---thor': tagore
-ms.openlocfilehash: 10ccbe04b115bef5a9ad802050bf60d89742e813
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 009e1c19cc3f4349651c5b17d99c8b94e7dfbecf
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088240"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822663"
 ---
 # <a name="azure-cloud-services-classic-config-networkconfiguration-schema"></a>Azure Cloud Services (クラシック) 構成 NetworkConfiguration スキーマ
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 サービス構成ファイルの `NetworkConfiguration` 要素は、仮想ネットワークと DNS の値を指定します。 これらの設定は、クラウド サービスのオプションです。
 
@@ -69,7 +68,7 @@ ms.locfileid: "113088240"
 | 要素       | 説明 |
 | ------------- | ----------- |
 | AccessControl | 省略可能。 クラウド サービス内のエンドポイントにアクセスするためのルールを指定します。 アクセス制御の名前は、`name` 属性の文字列で定義されます。 `AccessControl` 要素には、1 つ以上の `Rule` 要素が含まれています。 複数の `AccessControl` 要素を定義できます。|
-| ルール | 省略可能。 IP アドレスの指定されたサブネット範囲に対して実行されるアクションを指定します。 ルールの順序は `order` 属性の文字列値で定義されます。 ルール番号が小さいほど、優先度は高くなります。 たとえば、ルールは、100、200、および 300 の順序番号で指定できます。 100 の順序番号のルールは、200 の順序であるルールよりも優先されます。<br /><br /> ルールのアクションは `action` 属性の文字列で定義されます。 指定できる値は次のとおりです。<br /><br /> -   `permit`– 指定されたサブネット範囲からのパケットのみがエンドポイントと通信できることを指定します。<br />-   `deny`– 指定されたサブネット範囲内のエンドポイントへのアクセスが拒否されることを指定します。<br /><br /> ルールによって影響を受ける IP アドレスのサブネット範囲は、`remoteSubnet` 属性の文字列で定義されます。 ルールの説明は `description` 属性の文字列で定義されます。|
+| ルール | 省略可能。 IP アドレスの指定されたサブネット範囲に対して実行されるアクションを指定します。 ルールの順序は `order` 属性の文字列値で定義されます。 ルール番号が小さいほど、優先度は高くなります。 たとえば、ルールは、100、200、および 300 の順序番号で指定できます。 100 の順序番号のルールは、200 の順序であるルールよりも優先されます。<br /><br /> ルールのアクションは `action` 属性の文字列で定義されます。 次のいずれかの値になります。<br /><br /> -   `permit`– 指定されたサブネット範囲からのパケットのみがエンドポイントと通信できることを指定します。<br />-   `deny`– 指定されたサブネット範囲内のエンドポイントへのアクセスが拒否されることを指定します。<br /><br /> ルールによって影響を受ける IP アドレスのサブネット範囲は、`remoteSubnet` 属性の文字列で定義されます。 ルールの説明は `description` 属性の文字列で定義されます。|
 | EndpointAcl | 省略可能。 アクセス制御ルールのエンドポイントへの割り当てを指定します。 エンドポイントを含むロールの名前は、`role` 属性の文字列で定義されます。 エンドポイントの名前は、`endpoint` 属性の文字列で定義されます。 エンドポイントに適用される `AccessControl` ルールのセットの名前は、`accessControl` 属性の文字列で定義されます。 複数の `EndpointAcl` 要素を定義することができます。|
 | DnsServer | 省略可能。 DNS サーバーの設定を指定します。 仮想ネットワークを使用しない DNS サーバーの設定を指定できます。 DNS サーバーの名前は、`name` 属性の文字列で定義されます。 DNS サーバーの IP アドレスは、`IPAddress` 属性の文字列で定義されます。 IP アドレスは、有効な IPv4 アドレスである必要があります。|
 | VirtualNetworkSite | 省略可能。 クラウド サービスをデプロイする仮想ネットワーク サイトの名前を指定します。 この設定では、仮想ネットワーク サイトは作成されません。 お使いの仮想ネットワークのネットワーク ファイルに既に定義されているサイトを参照します。 クラウド サービスは 1 つの仮想ネットワークの 1 メンバーにのみなることができます。 この設定を指定しないと、クラウド サービスは仮想ネットワークにデプロイされません。 仮想ネットワークの名前は、`name` 属性の文字列で定義されます。|

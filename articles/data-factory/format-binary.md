@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory でのバイナリ形式
+titleSuffix: Azure Data Factory & Azure Synapse
 description: このトピックでは、Azure Data Factory でバイナリ形式を処理する方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jianleishen
-ms.openlocfilehash: 1fcc84f5f72bda1aa132ee054c71ad4e1cffbbd4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 32a1f7f9cc84adc3142bd7f03b399c759b01f824
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090213"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638019"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure Data Factory でのバイナリ形式
 

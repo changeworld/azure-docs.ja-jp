@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory を使用して Hive からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Hive のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: jianleishen
-ms.openlocfilehash: 88f91ca27bad44f0b9d6235d257b141ce277b191
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: e9117ce75c17a1d45d5479520372de5bbcb47074
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485065"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637937"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Azure Data Factory を使用して Hive からデータをコピーおよび変換する 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

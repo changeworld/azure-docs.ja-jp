@@ -1,18 +1,20 @@
 ---
 title: MongoDB Atlas のデータをコピーする、または MongoDB Atlas にデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB Atlas からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから MongoDB Atlas にデータをコピーする方法について説明します。
-author: jianleishen
-ms.author: jianleishen
+ms.author: chez
+author: chez-charlie
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019; seo-dt-2019
+ms.custom: synapse
 ms.date: 06/01/2021
-ms.openlocfilehash: 07e3d801f1f8d6cfebd6c31daf00d92ccc7b8444
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9e42ff971f2ea0a374fe40815ac8cf7fddb29189
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747493"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638719"
 ---
 # <a name="copy-data-from-or-to-mongodb-atlas-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB Atlas のデータをコピーする、または MongoDB Atlas にデータをコピーする
 
