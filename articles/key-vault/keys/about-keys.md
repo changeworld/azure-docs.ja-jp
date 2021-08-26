@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 602c146b014d2c129deb7a6cb4539e2cf9260d0c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 74d08095b8ea1df0ffb34264c2f0ca3af64b5dd8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471737"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772697"
 ---
 # <a name="about-keys"></a>キーについて
 
@@ -36,8 +36,8 @@ Azure Key Vault には、暗号化キーを格納および管理するための 
 Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして表されます。 JavaScript Object Notation (JSON) および JavaScript Object Signing and Encryption (JOSE) の仕様は、次のとおりです。
 
 -   [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
--   [JSON Web Encryption (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
--   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON Web Encryption (JWE)](https://datatracker.ietf.org/doc/html/draft-jones-json-web-encryption)  
+-   [JSON Web Algorithms (JWA)](https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
 基本の JWK および JWA の仕様は、Azure Key Vault および Managed HSM の実装に固有のキーの種類も有効にするように拡張されます。 

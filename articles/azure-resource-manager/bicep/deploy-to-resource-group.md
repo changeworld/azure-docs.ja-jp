@@ -3,12 +3,12 @@ title: Bicep を使用してリソースをリソース グループにデプロ
 description: Bicep ファイルでリソースをデプロイする方法について説明します。 複数のリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: f32ee9ce08b447a776ae74d19c0edabba233f345
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 4d68d0d28763c21574a3fd4f2f4c57561759e51e
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026817"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634478"
 ---
 # <a name="resource-group-deployments-with-bicep-files"></a>Bicep ファイルを使用したリソース グループへのデプロイ
 
@@ -87,16 +87,16 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 // resource deployed to target resource group
 resource exampleResource 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   ...
-} 
+}
 ```
 
 テンプレートの例については、「[ターゲット リソース グループにデプロイする](#deploy-to-target-resource-group)」を参照してください。
 
 ### <a name="scope-to-different-resource-group"></a>異なるリソース グループにスコープを設定する
 
-ターゲット リソース グループではないリソース グループにリソースをデプロイするには、[モジュール](modules.md)を追加します。 [resourceGroup 関数](bicep-functions-scope.md#resourcegroup)を使用して、そのモジュールに対して `scope` プロパティを設定します。 
+ターゲット リソース グループではないリソース グループにリソースをデプロイするには、[モジュール](modules.md)を追加します。 [resourceGroup 関数](bicep-functions-scope.md#resourcegroup)を使用して、そのモジュールに対して `scope` プロパティを設定します。
 
-リソース グループが別のサブスクリプションにある場合は、サブスクリプション ID とリソース グループの名前を指定します。 リソース グループが現在のデプロイと同じサブスクリプション内にある場合は、リソース グループの名前のみを指定します。 [resourceGroup 関数](bicep-functions-scope.md#resourcegroup)でサブスクリプションを指定しない場合は、現在のサブスクリプションが使用されます。 
+リソース グループが別のサブスクリプションにある場合は、サブスクリプション ID とリソース グループの名前を指定します。 リソース グループが現在のデプロイと同じサブスクリプション内にある場合は、リソース グループの名前のみを指定します。 [resourceGroup 関数](bicep-functions-scope.md#resourcegroup)でサブスクリプションを指定しない場合は、現在のサブスクリプションが使用されます。
 
 次の例には、別のサブスクリプション内のリソース グループを対象とするモジュールが示されています。
 
@@ -127,9 +127,9 @@ module exampleModule 'module.bicep' = {
 
 ### <a name="scope-to-subscription"></a>サブスクリプションへのスコープ
 
-サブスクリプションにリソースをデプロイするには、モジュールを追加します。 [subscription 関数](bicep-functions-scope.md#subscription)を使用して、`scope` プロパティを設定します。 
+サブスクリプションにリソースをデプロイするには、モジュールを追加します。 [subscription 関数](bicep-functions-scope.md#subscription)を使用して、`scope` プロパティを設定します。
 
-現在のサブスクリプションにデプロイするには、パラメーターを指定せずに subscription 関数を使用します。 
+現在のサブスクリプションにデプロイするには、パラメーターを指定せずに subscription 関数を使用します。
 
 ```bicep
 
@@ -191,7 +191,7 @@ output output string = mgName
 
 リソースをターゲット リソース グループにデプロイするには、テンプレートの`resources` セクションにそれらのリソースを定義します。 次のテンプレートでは、デプロイ操作で指定されているリソース グループにストレージ アカウントが作成されます。
 
-:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/get-started-with-bicep-files/add-output/azuredeploy.bicep":::
 
 ## <a name="deploy-to-multiple-resource-groups"></a>複数のリソース グループにデプロイする
 
@@ -305,5 +305,5 @@ resource newRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
 他のスコープについて確認するには、以下を参照してください。
 
 * [サブスクリプションへのデプロイ](deploy-to-subscription.md)
-* [管理グループへのデプロイ](deploy-to-management-group.md)
+* [管理グループのデプロイ](deploy-to-management-group.md)
 * [テナントへのデプロイ](deploy-to-tenant.md)

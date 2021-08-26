@@ -6,16 +6,17 @@ metadata:
   description: Azure Portal の Web ベース コンソールを使用して自分の Azure サブスクリプションとリソースを管理する方法について説明します。 Azure Portal は、コマンドライン ツールの代わりに使用できます。
   services: Azure portal
   ms.topic: landing-page
+  ms.service: azure
   ms.collection: collection
   ms.date: 03/15/2021
-  ms.openlocfilehash: 7b7727d1fdf550b3ab3341bd0dc852f343b00791
-  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+  ms.openlocfilehash: 05adb8aa5c131b59340ddf30a0907b1871f92af1
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/16/2021
-  ms.locfileid: "103563914"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253850"
 landingContent:
-- title: Azure Portal について
+- title: Azure portal について
   linkLists:
   - linkListType: overview
     links:
@@ -63,7 +64,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Portal の URL をセーフリストに追加する
+    - text: Azure portal の URL をセーフリストに追加する
       url: azure-portal-safelist-urls.md
     - text: ダッシュボードの Azure ロールベースのアクセス制御
       url: azure-portal-dashboard-share-access.md

@@ -13,17 +13,21 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e5e687b172b49fec5f77615e332d0a2204162c43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f6733545701cd46bc950f3a856a0f7ef032336e
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95545783"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822411"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure Table ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス プロジェクト)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>概要
+
+[!INCLUDE [Cloud Services (classic) deprecation announcement](../cloud-services/includes/deprecation-announcement.md)]
+
+
 この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用してクラウド サービス プロジェクトで Azure ストレージ アカウントを作成または参照した後に、Visual Studio で Azure Table Storage の使用を開始する方法について説明します。 **接続済みサービスの追加** 操作によって、プロジェクト内の Azure Storage にアクセスする適切な NuGet パッケージがインストールされ、プロジェクトの構成ファイルに、ストレージ アカウントの接続文字列が追加されます。
 
 Azure Table Storage サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。

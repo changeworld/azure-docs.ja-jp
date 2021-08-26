@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/31/2021
+ms.date: 08/24/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2cc6c3ec2b58a64491b0741658db325e808f0fa5
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 12679b5e8affe7691cc3bf40d2e4f2f9860d074f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784649"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822546"
 ---
 # <a name="syncing-extension-attributes-for-azure-active-directory-application-provisioning"></a>Azure Active Directory アプリケーション プロビジョニングの拡張属性を同期する
 

@@ -3,15 +3,15 @@ title: Azure Virtual Desktop (クラシック) のアプリ グループを管�
 description: Azure Virtual Desktop (クラシック) のテナントを Azure Active Directory (AD) に設定する方法を学習します。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 08/16/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b4c0f4733ec1d80db4b2181ed292f702926e0e75
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6fe87fb7fc0cbe9e727fe1539d8424d9ee1fe1b1
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754009"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253264"
 ---
 # <a name="tutorial-manage-app-groups-for-azure-virtual-desktop-classic"></a>チュートリアル: Azure Virtual Desktop (クラシック) のアプリ グループを管理する
 
@@ -37,44 +37,44 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 1. 次の PowerShell コマンドレットを実行して、新しい空の RemoteApp アプリ グループを作成します。
 
    ```powershell
-   New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
+   New-RdsAppGroup -TenantName <tenantname> -HostPoolName <hostpoolname> -Name <appgroupname> -ResourceType "RemoteApp"
    ```
 
 2. (省略可) アプリ グループが作成されたことを確認したければ、次のコマンドレットを実行すると、ホスト プールのすべてのアプリ グループが一覧表示されます。
 
    ```powershell
-   Get-RdsAppGroup <tenantname> <hostpoolname>
+   Get-RdsAppGroup -TenantName <tenantname> -HostPoolName <hostpoolname>
    ```
 
 3. 次のコマンドレットを実行して、ホスト プールの仮想マシン イメージにある **[スタート]** メニュー アプリの一覧を取得します。 **FilePath**、**IconPath**、**IconIndex** など、公開したいアプリケーションの重要な情報の値を書き留めます。
 
    ```powershell
-   Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
+   Get-RdsStartMenuApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
    ```
 
 4. 次のコマンドレットを実行して、`AppAlias` に基づくアプリケーションをインストールします。 `AppAlias` は、手順 3. の出力を実行すると利用できるようになります。
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
+   New-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
 5. (省略可) 次のコマンドレットを実行して、手順 1. で作成したアプリケーション グループに新しい RemoteApp プログラムを発行します。
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
+    New-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
 6. アプリが公開されたことを確認するために、次のコマンドレットを実行します。
 
    ```powershell
-   Get-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname>
+    Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
    ```
 
 7. このアプリ グループに発行するアプリケーションごとに手順 1. から手順 5. を繰り返します。
 8. 次のコマンドレットを実行して、アプリ グループ内の RemoteApp プログラムへのアクセスをユーザーに許可します。
 
    ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
+   Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -UserPrincipalName <userupn>
    ```
 
 ## <a name="next-steps"></a>次のステップ

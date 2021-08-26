@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: 5a4b3a574d41221718ab4b7e6c9c3424d808dc98
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 4bf732c8a22239cf37e3ab7737cec8765bd3ef19
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206355"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770331"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Azure Cosmos DB での JSON の使用
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -118,13 +118,13 @@ WHERE f.children[0].givenName = "Jesse"
       },
       {
         "checkingAccount": -10,
-        "savingsAccount": 5000,
+        "savingsAccount": 5000
       },
       {
         "checkingAccount": 5000,
-        "savingsAccount": 5000,
+        "savingsAccount": 5000
       }
-         ...
+        
   ]
 }
 ```

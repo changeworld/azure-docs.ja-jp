@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory を使用して HubSpot からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、HubSpot のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jianleishen
-ms.openlocfilehash: ff50962baf4337f977406739da16876ab878a2d7
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: e0c5ad1ce0f17c6dd2ce7126d0c853d4d2dfd773
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484939"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637967"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Azure Data Factory を使用して HubSpot からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

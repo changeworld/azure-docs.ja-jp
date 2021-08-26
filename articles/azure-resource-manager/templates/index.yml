@@ -12,12 +12,12 @@ metadata:
   author: mumian
   ms.author: jgao
   ms.date: 03/03/2021
-  ms.openlocfilehash: 0f25783d39adb290b372ac87edcb69559143c1a5
-  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+  ms.openlocfilehash: daaf465642994eb0dbbfe00e69d297d3912f9db5
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/16/2021
-  ms.locfileid: "112202816"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121724581"
 landingContent:
 - title: ARM テンプレートについて
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: ベスト プラクティス
       url: ./best-practices.md
     - text: よく寄せられる質問
-      url: frequently-asked-questions.yml
+      url: ./frequently-asked-questions.yml
     - text: テンプレート スペック
       url: template-specs.md
     - text: デプロイ モード

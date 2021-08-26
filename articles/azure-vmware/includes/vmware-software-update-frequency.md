@@ -3,16 +3,19 @@ title: VMware ソフトウェアの更新頻度
 description: Azure VMware Solution でサポートされている VMware ソフトウェアの更新頻度。
 ms.topic: include
 ms.date: 04/23/2021
-ms.openlocfilehash: 5adf381e3c27197b6791dbd389d3b7359fa30248
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 3295ab9da93b1e1ec1cace62653670de366c880d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951004"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324318"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
-ホストのメンテナンスとライフサイクル管理は、プライベート クラウド クラスターの容量やパフォーマンスに影響しません。  プライベート クラウド ソフトウェアは、VMware からのソフトウェア バンドルのリリースに合わせたスケジュールでアップグレードされます。 プライベート クラウドでは、アップグレードのためのダウンタイムは必要ありません。
+ホストのメンテナンスとライフサイクル管理は、プライベート クラウド クラスターの容量やパフォーマンスに影響しません。 プライベート クラウド ソフトウェアは、VMware からのソフトウェア バンドルのリリースに合わせたスケジュールでアップグレードされます。  このため、プライベート クラウドでは、アップグレードのためのダウンタイムは必要ありません。
 
 プライベート クラウド ソフトウェア バンドルのアップグレードは、VMware のソフトウェア バンドルの最新リリースの単一バージョン内でソフトウェアを保持します。 プライベート クラウド ソフトウェアのバージョンは、個々のソフトウェア コンポーネント (ESXi、NSX-T、vCenter、vSAN) の最新バージョンとは異なる場合があります。 更新プログラムには、ドライバー、ネットワーク スイッチのソフトウェア、ベアメタル ノードのファームウェアも含まれます。
 

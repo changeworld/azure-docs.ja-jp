@@ -6,12 +6,12 @@ ms.author: v-hhunter
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
-ms.openlocfilehash: 71abc9acdcf8796591e7241a7fcfeded1cd3139a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: aad3015ed129b438e9f359d7cb3fc89b6658e5c9
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283125"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768321"
 ---
 # <a name="deploy-an-azure-api-management-gateway-on-azure-arc-preview"></a>Azure API Management ゲートウェイを Azure Arc にデプロイする (プレビュー)
 
@@ -26,7 +26,7 @@ API Management ゲートウェイを Arc 対応 Kubernetes クラスターにデ
 
 ## <a name="prerequisites"></a>前提条件
 
-* [サポートされている Azure Arc リージョン](../azure-arc/kubernetes/overview.md#supported-regions)内で [Kubernetes クラスターを接続する](../azure-arc/kubernetes/quickstart-connect-cluster.md)。
+* [サポートされている Azure Arc リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)内で [Kubernetes クラスターを接続する](../azure-arc/kubernetes/quickstart-connect-cluster.md)。
 * `k8s-extension` Azure CLI 拡張機能をインストールする。
 
     ```azurecli

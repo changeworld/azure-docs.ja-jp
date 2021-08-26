@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: クラスター接続を使用して Azure Arc 対応 Kubernetes クラスターに安全に接続する
-ms.openlocfilehash: 54a462164e4b992451cc66f8a0ec229aff27f2e1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 65070f8850bb18be5c142c658190ebe9da41f7a0
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145593"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767907"
 ---
 # <a name="use-cluster-connect-to-connect-to-azure-arc-enabled-kubernetes-clusters"></a>クラスター接続を使用して Azure Arc 対応 Kubernetes クラスターに接続する
 
@@ -41,7 +41,7 @@ ms.locfileid: "108145593"
     ```
 
 - Azure Arc 対応 Kubernetes に接続された既存のクラスター。
-    - クラスターをまだ接続していない場合は、[クイックスタート](quickstart-connect-cluster.md)を使用します。
+    - クラスターをまだ接続していない場合は[クイックスタート](quickstart-connect-cluster.md)を使用します。
     - バージョン 1.1.0 以降に[お使いのエージェントをアップグレードします](agent-upgrade.md#manually-upgrade-agents)。
 
 - `kubeconfig` ファイルが問題のクラスターを指している状態で、マシン上で次のコマンドを実行して、任意の Azure Arc 対応 Kubernetes クラスターに対してクラスター接続を有効にします。
@@ -55,7 +55,7 @@ ms.locfileid: "108145593"
     | エンドポイント | Port |
     |----------------|-------|
     |`*.servicebus.windows.net` | 443 |
-    |`*.guestnotificationservice.azure.com` | 443 |
+    |`guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com` | 443 |
 
 ## <a name="usage"></a>使用
 

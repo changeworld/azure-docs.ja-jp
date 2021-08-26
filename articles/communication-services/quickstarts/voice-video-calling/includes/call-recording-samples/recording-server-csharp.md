@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: 17363ba1c41c7c5046b769c7a03b3e05b97a08e6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: f025f33a041dd40970b3ea34ff723e1270d16ea6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339478"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801138"
 ---
 ## <a name="sample-code"></a>サンプル コード
 このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/ServerRecording) にあります。
@@ -26,9 +26,9 @@ ms.locfileid: "114339478"
 - [Node.js (12.18.4 以上)](https://nodejs.org/en/download/)。
 - [Visual Studio (2019 以上)](https://visualstudio.microsoft.com/vs/)。
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (使用する Visual Studio インスタンス (32 または 64 ビット) に対応するバージョンを必ずインストールしてください)。
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
-- Azure ストレージ アカウントとコンテナーの詳細については、「[ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)」を参照してください。 ご利用のストレージ **接続文字列** と **コンテナー名** は、このクイックスタートで使用するので、記録しておく必要があります。
-- [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) Web hook。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](../../../create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
+- Azure ストレージ アカウントとコンテナーの詳細については、「[ストレージ アカウントを作成する](../../../../../storage/common/storage-account-create.md?tabs=azure-portal)」を参照してください。 ご利用のストレージ **接続文字列** と **コンテナー名** は、このクイックスタートで使用するので、記録しておく必要があります。
+- [Azure Event Grid](../../../../../event-grid/overview.md) Web hook。
 
 ## <a name="object-model"></a>オブジェクト モデル
 

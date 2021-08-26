@@ -1,21 +1,24 @@
 ---
 title: PHP で Azure Service Bus キューを使用する方法
-description: このチュートリアルでは、PHP アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。
+description: この記事では、PHP アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法について説明します。
 services: service-bus-messaging
 ms.devlang: PHP
-ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: a7e0d1fa321f1b7c1295b5a640fe78b46adf1c72
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.topic: how-to
+ms.date: 07/23/2021
+ms.openlocfilehash: d0909c4e2ea5ef53a1438ce05f5ddad485c80248
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85341128"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725124"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>クイックスタート: PHP で Service Bus キューを使用する方法
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
+# <a name="how-to-use-service-bus-queues-with-php"></a>PHP で Service Bus キューを使用する方法
+[!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
 
-このチュートリアルでは、PHP アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。 
+この記事では、PHP アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法について説明します。 
+
+> [!IMPORTANT]
+> 2021 年 2 月の時点で、Azure SDK for PHP は廃止フェーズに入っており、Microsoft による公式なサポートの対象でなくなりました。 詳細については、GitHub の[こちらのお知らせ](https://github.com/Azure/azure-sdk-for-php#important-annoucement)を参照してください。 この記事は間もなく廃止されます。 
 
 ## <a name="prerequisites"></a>前提条件
 1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
@@ -25,7 +28,7 @@ ms.locfileid: "85341128"
     3. **接続文字列** を取得します。 
 
         > [!NOTE]
-        > このチュートリアルでは、PHP を使用して Service Bus 名前空間で **キュー** を作成します。 
+        > この記事では、PHP を使用して Service Bus 名前空間で **キュー** を作成します。 
 3. [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成

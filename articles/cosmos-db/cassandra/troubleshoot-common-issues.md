@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 03/02/2021
 ms.author: thvankra
-ms.openlocfilehash: 55434b56d249a7fb314098e4a53d3c3782bcfe95
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: feeb3e7eb0522b515b0fd23591dd7966d80cec73
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779074"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633537"
 ---
 # <a name="troubleshoot-common-issues-in-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API の一般的な問題をトラブルシューティングする
 
@@ -93,7 +93,7 @@ cluster = Cluster.builder()
 
 `withLocalDc()` の値がコンタクト ポイントのデータセンターと一致しない場合、断続的なエラーが発生することがあります: `com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (no host was tried)`。
 
-[CosmosLoadBalancingPolicy](https://github.com/Azure/azure-cosmos-cassandra-extensions/blob/master/package/src/main/java/com/microsoft/azure/cosmos/cassandra/CosmosLoadBalancingPolicy.java) を実装してください。 これを機能させるには、次のコードを使用して DataStax をアップグレードする必要が生じる可能性があります。
+[CosmosLoadBalancingPolicy](https://github.com/Azure/azure-cosmos-cassandra-extensions/blob/master/driver-3/src/main/java/com/azure/cosmos/cassandra/CosmosLoadBalancingPolicy.java) を実装してください。 これを機能させるには、次のコードを使用して DataStax をアップグレードする必要が生じる可能性があります。
 
 ```java
 LoadBalancingPolicy loadBalancingPolicy = new CosmosLoadBalancingPolicy.Builder().withWriteDC("West US").withReadDC("West US").build();
