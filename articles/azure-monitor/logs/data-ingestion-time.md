@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: dea5a005815e551edfe5fbea8f65c7b3a23171e8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a6e63a1c5bbcf8c44f46cd87463fecb5d8b82f62
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735807"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515022"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -80,7 +80,7 @@ Azure Monitor の最優先事項は、顧客データが失われることがな
 
 | 手順 | プロパティまたは関数 | 説明 |
 |:---|:---|:---|
-| データ ソースで作成されるレコード | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>データ ソースがこの値を設定しない場合は、_TimeReceived と同じ時間に設定されます。 |
+| データ ソースで作成されるレコード | [TimeGenerated](./log-standard-columns.md#timegenerated) <br>データ ソースがこの値を設定しない場合は、_TimeReceived と同じ時間に設定されます。 |
 | Azure Monitor のインジェスト エンドポイントによって受信されるレコード | [_TimeReceived](./log-standard-columns.md#_timereceived) | このフィールドは、大量の処理向けに最適化されていないため、大きなデータセットをフィルター処理するためには使用しないでください。 |
 | ワークスペースに保存され、クエリに使用できるレコード | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | 特定の時間枠で取り込まれたレコードのみをフィルター処理する必要がある場合は、ingestion_time () を使用することをお勧めします。 このような場合は、より大きな範囲を使用する TimeGenerated フィルターを追加することもお勧めします。 |
 

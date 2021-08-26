@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 006f0a51da933336a354b275bb882e5538832741
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587794"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444310"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -96,7 +96,7 @@ Azure Site Recovery のトランザクションは大量にあるため、通常
 レプリケートする各 VM で、次の複数の方法のいずれかでサービスをインストールします。
 
 - [プッシュ インストール](vmware-physical-mobility-service-overview.md#push-installation)
-- UI または PowerShell からの[手動インストール](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui)
+- UI または PowerShell からの[手動インストール](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui-classic)
 - [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) などのデプロイ ツールを使用したデプロイ
 
 ## <a name="managed-disks"></a>マネージド ディスク

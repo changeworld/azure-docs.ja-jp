@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: troubleshooting
 ms.date: 6/4/2021
 ms.custom: support-help-page
-ms.openlocfilehash: b6b32861fd5f99edc55b2992dd825836aa9f5c6b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d8b3829b76e31d066ccab3054613128412dfd10e
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961660"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634451"
 ---
 # <a name="support-and-troubleshooting-for-azure-container-instances"></a>Azure Container Instances のサポートとトラブルシューティング
 
@@ -75,19 +75,6 @@ Azure Container Instances の開発と管理に使用される言語とツール
 | Terraform | https://github.com/Azure/terraform/issues | 
 | Ansible | https://github.com/Azure/Ansible/issues | 
 
-
-
-## <a name="submit-feature-requests-on-azure-feedback"></a>Azure フィードバックで機能のリクエストを送信する
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-新機能を要求するには、Azure フィードバックに投稿します。 Azure Container Instances を改善するアイデアを共有してください。
-
-| サービス                       | Azure フィードバックの URL |
-|-------------------------------|---------------|
-| Azure Container Instances  | https://feedback.azure.com/forums/602224-azure-container-instances 
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>更新プログラムと新しいリリースに関する最新情報を入手する
 

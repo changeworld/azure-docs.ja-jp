@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 06/02/2021
-ms.openlocfilehash: b49e1c42b3b81a548a1860a4e4e4ee1ea97a7f4c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e85d95dcd455ea2c9f4d9a14d9b68bebf06d3df6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955983"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731223"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>Apache Spark を使用して Azure Managed Instance for Apache Cassandra に移行する
 
@@ -37,13 +37,13 @@ ms.locfileid: "111955983"
 
 Spark 3.0 をサポートする Databricks ランタイム バージョン 7.5 を選択することをお勧めします。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks ランタイムのバージョンを見つける方法を示すスクリーンショット。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Databricks ランタイムのバージョンを見つける方法を示すスクリーンショット。":::
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
 Apache Spark Cassandra コネクタ ライブラリをクラスターに追加して、ネイティブと Azure Cosmos DB Cassandra 両方のエンドポイントに接続します。 自分のクラスターで、 **[ライブラリ]**  >  **[新規インストール]**  >  **[Maven]** の順に選択し、Maven 座標に `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` を追加します。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Databricks で Maven パッケージを検索する方法を示すスクリーンショット。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-search-packages.png" alt-text="Databricks で Maven パッケージを検索する方法を示すスクリーンショット。":::
 
 **[インストール]** を選択し、インストールが完了したらクラスターを再起動します。
 

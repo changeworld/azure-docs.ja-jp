@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
-ms.author: erhopf
-ms.openlocfilehash: 530e33b7b8932ccf1968304140dfc773aa750e82
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 5e10d8d929d267b0b4ba5db3d7ec4905c5df2275
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070077"
 ---
 このガイドでは、Android 上の Java 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 この設定は、Speech SDK Maven パッケージと Android Studio 3.3 が基になっています。
 

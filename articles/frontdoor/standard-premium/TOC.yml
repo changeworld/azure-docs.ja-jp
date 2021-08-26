@@ -89,6 +89,8 @@
           href: troubleshoot-compression.md
         - name: クロス オリジン リソース共有
           href: troubleshoot-cross-origin-resources.md
+        - name: サブスクリプション オファーと帯域幅調整
+          href: subscription-offers.md
         - name: 許可された証明機関
           href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: リファレンス

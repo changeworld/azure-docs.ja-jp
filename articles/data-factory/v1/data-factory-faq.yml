@@ -8,12 +8,12 @@ metadata:
   ms.service: data-factory
   ms.topic: conceptual
   ms.date: 01/10/2018
-  ms.openlocfilehash: 2d5e67f4a3035d152db65760ee09a218f0c8688f
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.openlocfilehash: e5876374cbf50ff4236a46f9889358b92b8f8de8
+  ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112063694"
+  ms.lasthandoff: 08/18/2021
+  ms.locfileid: "122396563"
 title: Azure Data Factory - よく寄せられる質問
 summary: >
   > [!NOTE]
@@ -87,7 +87,7 @@ sections:
 
       | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 
-      | [Azure Machine Learning Studio (クラシック)](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[スタジオ (クラシック) アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
+      | [ML Studio (クラシック)](data-factory-compute-linked-services.md#ml-studio-classic-linked-service) |[スタジオ (クラシック) アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
 
       | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 

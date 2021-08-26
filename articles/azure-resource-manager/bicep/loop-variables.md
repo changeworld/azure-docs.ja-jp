@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: be97b88156600121deb1b870940a1a40af84fbfc
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 429a15c222e47bab29b314b0d11f7e077281b635
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026744"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635004"
 ---
 # <a name="variable-iteration-in-bicep"></a>Bicep での変数の反復処理
 
@@ -127,8 +127,8 @@ output arrayResult array = objectArray
 
 |Template  |説明  |
 |---------|---------|
-|[ループ変数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/loopvariables.bicep) | 変数を反復する方法を示します。 |
-|[Multiple security rules](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.bicep) |ネットワーク セキュリティ グループに複数のセキュリティ規則をデプロイします。 セキュリティ規則はパラメーターから構築されます。 パラメーターについては、[複数の NSG パラメーター ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)に関するページを参照してください。 |
+|[ループ変数](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopvariables.bicep) | 変数を反復する方法を示します。 |
+|[Multiple security rules](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/multiplesecurityrules.bicep) |ネットワーク セキュリティ グループに複数のセキュリティ規則をデプロイします。 セキュリティ規則はパラメーターから構築されます。 パラメーターについては、[複数の NSG パラメーター ファイル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/multiplesecurityrules.parameters.json)に関するページを参照してください。 |
 
 ## <a name="next-steps"></a>次のステップ
 

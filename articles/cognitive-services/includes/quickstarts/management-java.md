@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: dc9b5b3fae714319e48bcdfe1b2ce8a684a03854
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: b60fccd8fc03145b4646c31ec209626a22440502
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593503"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442359"
 ---
 [リファレンス ドキュメント](/java/api/com.microsoft.azure.management.cognitiveservices) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
@@ -22,6 +22,7 @@ ms.locfileid: "111593503"
 * 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)。
 * 最新バージョンの [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle ビルド ツール](https://gradle.org/install/)、または別の依存関係マネージャー。
+* [!INCLUDE [contributor-requirement](./contributor-requirement.md)]
 * [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 

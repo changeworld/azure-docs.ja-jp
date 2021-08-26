@@ -1,23 +1,23 @@
 ---
 title: 'チュートリアル: Azure IoT Central を使用して健康データ トリアージ ダッシュボードを作成する | Microsoft Docs'
 description: 'チュートリアル: Azure IoT Central アプリケーション テンプレートを使用して、健康データ トリアージ ダッシュボードを構築する方法について学習します。'
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: d227d934eedd31342ce419576fffe7cea17efb1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8fee85dfab72594f7a00f985d7d095b96d693e6
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101742913"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597241"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>チュートリアル:Power BI プロバイダー ダッシュボードを構築する
 
-患者の継続的な監視ソリューションを構築するときは、病院看護チームが患者のデータを視覚化するためのダッシュボードも作成できます。 このチュートリアルでは、IoT Central の患者の継続的なモニタリング アプリケーション テンプレートから Power BI のリアルタイム ストリーミング ダッシュボードを作成する方法を説明します。 リアルタイム データへのアクセスが不要なユースケースでは、デプロイ プロセスが簡略化された [IoT Central Power BI ダッシュボード](../core/howto-connect-powerbi.md)を使用できます。 
+患者の継続的な監視ソリューションを構築するときは、病院看護チームが患者のデータを視覚化するためのダッシュボードも作成できます。 このチュートリアルでは、IoT Central の患者の継続的なモニタリング アプリケーション テンプレートから Power BI のリアルタイム ストリーミング ダッシュボードを作成する方法を説明します。
 
 :::image type="content" source="media/dashboard-gif-3.gif" alt-text="ダッシュボードの GIF":::
 
@@ -27,12 +27,11 @@ ms.locfileid: "101742913"
 
 このチュートリアルでは、以下の内容を学習します。
 
-> [!div class="checklist"]
-> * Azure IoT Central から Azure Event Hubs にデータをエクスポートする
-> * Power BI ストリーミング データセットをセットアップする
-> * ロジック アプリを Azure Event Hubs に接続する
-> * ロジック アプリから Power BI にデータをストリーミングする
-> * 患者のバイタル値用のリアルタイム ダッシュボードを作成する
+- Azure IoT Central から Azure Event Hubs にデータをエクスポートする
+- Power BI ストリーミング データセットをセットアップする
+- ロジック アプリを Azure Event Hubs に接続する
+- ロジック アプリから Power BI にデータをストリーミングする
+- 患者のバイタル値用のリアルタイム ダッシュボードを作成する
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -49,6 +48,7 @@ ms.locfileid: "101742913"
 
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Event Hubs への継続的データ エクスポートをセットアップする
+
 最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure Event Hub への継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](../core/howto-export-data.md)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
 
 
@@ -206,8 +206,3 @@ Power BI でのデータセットのストリーミングについて詳しく�
 
 1. お使いの IoT Central アプリケーションで、[管理] タブに移動し、 **[削除]** を選択します。
 
-
-## <a name="next-steps"></a>次のステップ
-
-> [!div class="nextstepaction"]
-> [患者の継続的なモニタリングのアーキテクチャのガイダンス](concept-continuous-patient-monitoring-architecture.md)

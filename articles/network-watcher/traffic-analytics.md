@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
-ms.custom: references_regions
-ms.openlocfilehash: fab2adb932d9c74b30b1775d8fa7ab257a4f00b0
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 146c1f78ffe0b8a4061417086cf66d96d2317890
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887920"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285372"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -197,7 +197,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 - "Microsoft.Network/virtualNetworks/read"
 - "Microsoft.Network/expressRouteCircuits/read"
 
-ユーザーのアクセス許可を確認する方法については、「[トラフィック分析についてよく寄せられる質問](traffic-analytics-faq.md)」を参照してください。
+ユーザーのアクセス許可を確認する方法については、「[トラフィック分析についてよく寄せられる質問](traffic-analytics-faq.yml)」を参照してください。
 
 ### <a name="enable-network-watcher"></a>Network Watcher を有効にする
 
@@ -271,8 +271,8 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
 
 **調査項目**
 
-- どのホスト、サブネット、および仮想ネットワークがほとんどのトラフィックを送受信し、最も悪意のあるトラフィックを走査し、重大なフローをブロックしているか。
-    - ホスト、サブネット、および仮想ネットワークの比較グラフを確認してください。 送受信するトラフィックの量が多いホスト、サブネット、およびネットワークを把握すると、ほとんどのトラフィックを処理しているホストの特定と、トラフィック分布が適切に行われているかどうかの特定が可能です。
+- どのホスト、サブネット、仮想ネットワーク、仮想マシン スケール セットが、ほとんどのトラフィックを送受信し、最も悪意のあるトラフィックを走査し、重大なフローをブロックしているか。
+    - ホスト、サブネット、仮想ネットワーク、仮想マシン スケール セットの比較グラフを確認してください。 送受信するトラフィックの量が多いホスト、サブネット、仮想ネットワーク、仮想マシン スケール セットを把握すると、ほとんどのトラフィックを処理しているホストの特定と、トラフィック分布が適切に行われているかどうかの特定に役立ちます。
     - トラフィックの量がホストに適しているかどうかを評価できます。 トラフィックの量は通常の動作ですか。あるいは、さらに調査するだけの価値がありますか。
 - どれくらいの量の受信/送信トラフィックがあるか。
     -   ホストでは、送信トラフィックよりも受信トラフィックの方が多いと予想されますか。それともその逆ですか。
@@ -281,13 +281,16 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
 - 許可/ブロックされた悪意のあるトラフィックの統計
   - ホストは悪意のあるトラフィックをなぜ受信しているのですか、また、悪意のあるソースからのフローがなぜ許可されているのですか。 この動作には、より詳細な調査を行い、構成を適切に最適化することが必要になります。
 
-    次の図に示すように、 **[ホスト]** にある **[See all]\(すべて表示\)** を選択します。
+    次の図に示すように、 **[IP]** の下の **[すべて表示]** を選択します。
 
     ![トラフィックが多いホストの詳細を示すダッシュボード](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
-- 次の図は、トラフィックが多い上位 5 個のホストの時間的傾向と、ホスト のフロー関連の詳細 (許可された受信/送信フローと、拒否された受信/送信フロー) を示しています。
+    次の図は、トラフィックが多い上位 5 個のホストの時間的傾向と、ホスト のフロー関連の詳細 (許可された受信/送信フローと、拒否された受信/送信フロー) を示しています。
+
+    次の図に示すように、 **[Details of top 5 talking IPs]\(トラフィックが多い上位 5 個の IP の詳細\)** の下の **[See more]\(詳細を表示\)** を選択すると、すべてのホストに関する分析情報を取得できます。
 
     ![トラフィックが多い上位 5 個のホストの傾向](media/traffic-analytics/top-five-most-talking-host-trend.png)
+    
 
 **調査項目**
 
@@ -354,6 +357,10 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
     ![国/リージョンや大陸へのトラフィック分布を示す geo マップ ビュー](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![ログ検索におけるトラフィック分布のフローの詳細](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
+    
+- また、Azure リージョンの **[More Insight]\(追加の分析情報\)** ブレードには、そのリージョン内に残っている合計トラフィック (つまり、同じリージョン内の送信元と送信先) が表示されます。 さらに、データセンターの可用性ゾーン間で交換されるトラフィックの分析情報が提供されます 
+
+    ![ゾーン間およびリージョン内のトラフィック](./media/traffic-analytics/inter-zone-and-intra-region-traffic.png)
 
 ### <a name="visualize-traffic-distribution-by-virtual-networks"></a>仮想ネットワークごとのトラフィック分布を視覚化する
 
@@ -413,6 +420,22 @@ Application Gateway および Load Balancer ごとのトラフィック分布、
 
 ![ログ検索における悪意のあるトラフィック フローの詳細](./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png)
 
+### <a name="view-information-about-public-ips-interacting-with-your-deployment"></a>お使いのデプロイと対話するパブリック IP に関する情報を表示する
+
+**調査項目**
+
+- どのパブリック IP が自分のネットワークと通信しているか。 すべてのパブリック IP の WHOIS データおよび地理的な場所とは何か。
+- どの悪意のある IP がトラフィックを自分のデプロイに送信しているか。 悪意のある IP の脅威の種類と脅威の説明。
+    - パブリック IP 情報セクションには、ご自身のネットワーク トラフィック内に提示される、すべての種類のパブリック IP の概要が提供されます。 
+      詳細を表示するには、目的のパブリック IP の種類を選択します。 表示されるデータ フィールドは、この[スキーマ ドキュメント](./traffic-analytics-schema.md#public-ip-details-schema)により定義されます。
+      
+      :::image type="content" source="./media/traffic-analytics/public-ip-information.png" alt-text="パブリック IP 情報" lightbox="./media/traffic-analytics/public-ip-information.png":::
+      
+    - トラフィック分析ダッシュボード上で、任意の IP をクリックすると、その情報が表示されます   
+    
+      :::image type="content" source="./media/traffic-analytics/external-public-ip-details.png" alt-text="ツール ヒント内の外部 IP 情報" lightbox="./media/traffic-analytics/external-public-ip-details.png":::
+      
+      :::image type="content" source="./media/traffic-analytics/malicious-ip-details.png" alt-text="ツール ヒント内の悪意のある IP の情報" lightbox="./media/traffic-analytics/malicious-ip-details.png":::
 
 ### <a name="visualize-the-trends-in-nsgnsg-rules-hits"></a>NSG/NSG ルール ヒット数の傾向を視覚化する
 
@@ -435,7 +458,7 @@ Application Gateway および Load Balancer ごとのトラフィック分布、
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-よく寄せられる質問とその回答については、[トラフィック分析に関する FAQ](traffic-analytics-faq.md) のページをご覧ください。
+よく寄せられる質問とその回答については、[トラフィック分析に関する FAQ](traffic-analytics-faq.yml) のページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

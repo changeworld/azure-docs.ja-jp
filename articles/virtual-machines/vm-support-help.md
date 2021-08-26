@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 75b2dd041e4c693258c39fbf0f32f76c1085a966
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3729651cc3a97a13435b0891e135e550dc48a255
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949880"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634514"
 ---
 # <a name="support-and-troubleshooting-for-azure-vms"></a>Azure VM のサポートとトラブルシューティング
 
@@ -86,19 +86,6 @@ Azure Virtual Machines の開発と管理に使用される言語とツールに
 | Terraform | https://github.com/Azure/terraform/issues | 
 | Ansible | https://github.com/Azure/Ansible/issues | 
 
-
-
-## <a name="submit-feature-requests-on-azure-feedback"></a>Azure フィードバックで機能のリクエストを送信する
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-新機能を要求するには、Azure フィードバックに投稿します。 Azure Virtual Machines を改善するアイデアをぜひ共有してください。
-
-| サービス                       | Azure フィードバックの URL |
-|-------------------------------|---------------|
-| Azure Virtual Machines  | https://feedback.azure.com/forums/216843-virtual-machines 
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>更新プログラムと新しいリリースに関する最新情報を入手する
 

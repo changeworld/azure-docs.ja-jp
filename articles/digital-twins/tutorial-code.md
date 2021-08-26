@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: .NET (C#) SDK を使用してクライアント アプリの最小限のコードを記述するチュートリアル。
 author: baanders
 ms.author: baanders
-ms.date: 11/02/2020
+ms.date: 04/28/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: be0502f61105b88e5a751dde88e4828722c866af
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 48d1fd6797dee7f73c2af6b7455b9d58de04f237
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446822"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429592"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -147,7 +147,7 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
 
 前の手順で追加した承認コードの下に、次のコードを貼り付けます。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs" id="ClientExcerptModel":::
 
 コマンド ウィンドウで、次のコマンドを使用してプログラムを実行します。 
 

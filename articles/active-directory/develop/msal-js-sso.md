@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: c8da247219a2228ef4effdf94485fef990e2bcaa
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 6ff627b09c6bc1d1b88a106c18fa4bdf9d241120
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359535"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418517"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js でのシングル サインオン
 
