@@ -3,15 +3,16 @@ title: インクルード ファイル
 description: インクルード ファイル
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: lle
-ms.openlocfilehash: 24a541080b580eab967987fa7c92cea64b99d65c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09f61060f9a76036f5e2d58512ddde9248402bbd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389505"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638979"
 ---
 | ドメイン名                                          | 送信ポート | 説明                |
 | ----------------------------------------------------- | -------------- | ---------------------------|

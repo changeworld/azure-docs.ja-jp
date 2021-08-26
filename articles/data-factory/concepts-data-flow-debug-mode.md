@@ -1,18 +1,20 @@
 ---
 title: マッピング データ フローのデバッグ モード
+titleSuffix: Azure Data Factory & Azure Synapse
 description: データ フローの構築時に対話型デバッグ セッションを開始する
 ms.author: makromer
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 04/16/2021
-ms.openlocfilehash: 681a3643c04472cc42c1f672f4c9433da30e3955
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 51711cbbd66e52ccf0b47c4e1db5ecc5883ff959
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565503"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637832"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>マッピング データ フローのデバッグ モード
 

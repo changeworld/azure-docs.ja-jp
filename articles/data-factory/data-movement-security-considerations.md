@@ -1,18 +1,19 @@
 ---
 title: セキュリティに関する考慮事項
 description: Azure Data Factory のデータ移動サービスがデータの保護を容易にするために使用する基本的なセキュリティ インフラストラクチャについて説明します。
-ms.author: abnarain
-author: nabhishek
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: security
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/03/2021
-ms.openlocfilehash: 54c96aced03853b8a3f78ff0f348eeb6459afccc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ab31c1629140a1e0f3f5a6dcbe409b6803805e34
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760298"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638892"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 
@@ -21,7 +22,7 @@ ms.locfileid: "108760298"
 > * [Version 1](v1/data-factory-data-movement-security-considerations.md)
 > * [現在のバージョン](data-movement-security-considerations.md)
 
- [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+ [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のデータ移動サービスがデータの保護を容易にするために使用する基本的なセキュリティ インフラストラクチャについて説明します。 Data Factory 管理リソースは、Azure のセキュリティ インフラストラクチャ上に構築されており、Azure が提供する利用可能なすべてのセキュリティ対策を使用します。
 

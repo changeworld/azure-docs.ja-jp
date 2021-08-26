@@ -4,15 +4,15 @@ description: Azure Data Factory 内のセルフホステッド統合ランタイ
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 07/05/2021
-ms.openlocfilehash: 2b9f37d6f45591a43849c8d61787513702982e5b
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 55b0d4246616dd862cfcf9fb15069f13f130e857
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436420"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638301"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>SQL Server データベースから Azure Blob Storage にデータをコピーする
 

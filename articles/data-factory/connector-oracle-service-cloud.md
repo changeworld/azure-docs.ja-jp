@@ -1,18 +1,20 @@
 ---
 title: Oracle Service Cloud からデータをコピーする (プレビュー)
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Oracle Service Cloud からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 08/01/2019
-ms.openlocfilehash: 10d3c856f4d6fb9ea9ed861a05a2f0d40b692911
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 2572183801d90b77a4999ec29d5dc38e91bde8db
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482923"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638741"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Oracle Service Cloud からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

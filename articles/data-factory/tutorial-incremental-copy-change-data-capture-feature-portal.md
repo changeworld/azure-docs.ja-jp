@@ -4,14 +4,15 @@ description: このチュートリアルでは、Azure SQL Managed Instance デ�
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 927d913122203383b4279d68059040b6bf4be5e7
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: b8029f8eb78539cb49bc3d13fefe9e2bf11b9f76
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436768"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638907"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>変更データ キャプチャ (CDC) を使用して Azure SQL Managed Instance から Azure Storage へのデータの増分読み込みを行う
 
@@ -127,7 +128,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![スクリーンショットは、デプロイが完了したというメッセージと、リソースに移動するオプションを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-      :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\) タイルを含む、Azure Data Factory のホーム ページ。":::
+      :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
 
 10. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
 11. ホーム ページで、次の図に示すように、左パネルの **[管理]** タブに切り替えます。

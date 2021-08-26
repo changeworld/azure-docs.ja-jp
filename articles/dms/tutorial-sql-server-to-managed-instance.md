@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: b77b242d34986e423bf87d6be0eda2074cd7df36
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 5200f9548c16dc0dc0341db84601242e84e3dcc3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689066"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638446"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>チュートリアル:DMS を使用してオフラインで SQL Server を Azure SQL Managed Instance に移行する
 
@@ -79,19 +79,7 @@ Azure Database Migration Service を使用して、SQL Server インスタンス
     > [!NOTE]
     > Azure Database Migration Service では、[移行の設定の構成](#configure-migration-settings)ステップでストレージ アカウント設定を構成するときに、アカウント レベルの SAS トークンの使用がサポートされていません。
     
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
-
-1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
-
-    ![ポータルのサブスクリプションの表示](media/tutorial-sql-server-to-managed-instance/portal-select-subscriptions.png)
-
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
-
-    ![リソース プロバイダーの表示](media/tutorial-sql-server-to-managed-instance/portal-select-resource-provider.png)
-
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
-
-    ![リソース プロバイダーの登録](media/tutorial-sql-server-to-managed-instance/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Azure Database Migration Service インスタンスを作成する
 

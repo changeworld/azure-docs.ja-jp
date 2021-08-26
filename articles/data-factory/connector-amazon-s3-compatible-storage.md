@@ -1,18 +1,19 @@
 ---
 title: Amazon Simple Storage Service (S3) 対応ストレージからデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory を使用して、Amazon S3 対応ストレージのデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 05/11/2021
-ms.openlocfilehash: 96b8ac29fadc03ca6e5b374acc269d5e19210b03
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 12d7080a9f000df1f2e7469defef820cd4231e1b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110104488"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638181"
 ---
 # <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon S3 対応ストレージからのデータのコピー
 

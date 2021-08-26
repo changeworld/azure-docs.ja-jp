@@ -1,18 +1,21 @@
 ---
 title: Azure Data Factory の変数追加アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 変数追加アクティビティを設定して、Data Factory パイプラインで定義されている既存の配列変数に値を追加する方法について説明します
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.date: 10/09/2018
-ms.openlocfilehash: 5739be457f824fd523e26171de59439da314dd31
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 4157ad2fc1cf3619b1fa4c55709f8828415f0dca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906748"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638836"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Azure Data Factory の変数追加アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

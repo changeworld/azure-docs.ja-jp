@@ -4,14 +4,15 @@ description: Azure 仮想ネットワークに参加する目的で Azure-SSIS �
 author: chugugrace
 ms.author: chugu
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 3dbbce4adc44696fdd12f6ce948b48b34caaed75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b303802d4186f8a7fe42f30f014dc4d06e73146
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391237"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638011"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する
 
