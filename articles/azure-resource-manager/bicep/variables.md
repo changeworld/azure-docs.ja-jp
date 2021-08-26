@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 99c7d945f251319bf1b655ecd02730b62e3ed2e4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b2f696adbad88cd424f2292b333069a7b80a13b2
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026937"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634957"
 ---
 # <a name="variables-in-bicep"></a>Bicep の変数
 
@@ -73,13 +73,13 @@ output stgOutput string = storageName
 
 次のテンプレートでは、リソースはデプロイされません。 さまざまな型の変数を宣言するいくつかの方法を示します。
 
-:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/variables.bicep":::
 
 ## <a name="configuration-variables"></a>構成変数
 
 環境を構成するための関連する値を保持する変数を定義できます。 変数は、値を持つオブジェクトとして定義します。 次の例は、**test** と **prod** という 2 つの環境の値を保持するオブジェクトを示しています。デプロイ中に、これらの値のいずれかを渡します。
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/variablesconfigurations.bicep":::
 
 ## <a name="next-steps"></a>次の手順
 
