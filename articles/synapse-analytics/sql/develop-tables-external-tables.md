@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: fad0da60ab19a8614e25a56701c5ee2d1a80548c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 4f56571fb96f6d9baf28a119a978f2658de5616c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410515"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860536"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -49,7 +49,7 @@ Hadoop 外部テーブルとネイティブ外部テーブルの主な違いを�
 - Azure Blob Storage や Azure Data Lake Storage からデータをインポートして、専用 SQL プールに格納する (専用プールでは Hadoop テーブルのみ)。
 
 > [!NOTE]
-> [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが **専用** SQL プール内のテーブルにインポートされます。 [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)に加えて、外部テーブルはデータの読み込みにも便利です。 
+> [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context) ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが **専用** SQL プール内のテーブルにインポートされます。 [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)に加えて、外部テーブルはデータの読み込みにも便利です。 
 > 
 > 読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage からのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関するページを参照してください。
 

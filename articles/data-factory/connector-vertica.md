@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory を使用して Vertica からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Vertica のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jianleishen
-ms.openlocfilehash: f8b9cba39005c7c6a69789ee29a03be4ab56bae8
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: dd501dc5ae791aacf7a4e636eae742aa03f449dc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484741"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638166"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>Azure Data Factory を使用して Vertica からデータをコピーする 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

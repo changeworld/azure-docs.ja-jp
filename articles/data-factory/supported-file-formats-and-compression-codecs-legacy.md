@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory でサポートされるファイル形式 (レガシ)
+titleSuffix: Azure Data Factory & Azure Synapse
 description: このトピックでは、Azure Data Factory 内のファイルベースのコネクタでサポートされている圧縮コードやファイル形式について説明します。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 960c2a995a6e68b2f15e553121bc860f9ac29890
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 12b3b1dddfa7ff37d8d8fa80562699cf9242148e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488521"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638871"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック (レガシ)
 

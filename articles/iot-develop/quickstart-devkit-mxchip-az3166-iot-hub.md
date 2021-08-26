@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/09/2021
-ms.openlocfilehash: 21e7e54e346d24758711990bfa5f71d387ba4956
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: aea20a9f8a6f0725220a60e425b48e22c6aa8794
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403918"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862123"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-hub"></a>クイックスタート: MXCHIP AZ3166 Devkit を IoT Hub に接続する
 
@@ -243,7 +243,7 @@ MXCHIP DevKit を Azure に接続するには、Wi-Fi と Azure IoT の設定の
 
 1. **Termite** を開始します。
     > [!TIP]
-    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
+    > Termite を Devkit に接続できない場合は、[ST-LINK ドライバー](https://www.st.com/en/development-tools/stsw-link009.html)をインストールして、もう一度やり直してください。 追加の手順については、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)に関する記事を参照してください。
 1. **[設定]** を選択します。
 1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
     * **Baud rate\(ボー レート\)** : 115,200

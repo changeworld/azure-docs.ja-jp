@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
-ms.author: erhopf
+ms.author: lajanuar
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 1a9faf24c5a82b815b40afe15769480b69074dc9
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 16d6114551d01705e0db6038978e1867036037e0
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552915"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070097"
 ---
 このガイドでは、.NET Framework (Windows) 用の [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、NuGet コンソールで `Install-Package Microsoft.CognitiveServices.Speech` を実行します。
 

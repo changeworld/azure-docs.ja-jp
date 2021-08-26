@@ -2,18 +2,17 @@
 title: チュートリアル:環境を設定する - Azure IoT Edge での Machine Learning
 description: チュートリアル:エッジでの機械学習用のモジュールの開発とデプロイに使用する環境を準備します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 71ef55d720ca768bfa45ea13ba7ec481b908d915
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b97634c1f7014cd0d1687e4fb523ce366bbca5f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133801"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726395"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>チュートリアル:IoT Edge 上に機械学習用の環境を設定する
 

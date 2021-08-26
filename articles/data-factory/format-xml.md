@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory での XML 形式
+titleSuffix: Azure Data Factory & Azure Synapse
 description: このトピックでは、Azure Data Factory で XML 形式を処理する方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: jianleishen
-ms.openlocfilehash: c054c789dd7c26e57a4f393863711d34665854ee
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 593947e0bd7562172413d254d78eaa31b61b182f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638707"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory での XML 形式
 

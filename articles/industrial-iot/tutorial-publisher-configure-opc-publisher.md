@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: a889f0b740d506bd546f1fb67f050317146c31e8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3667a201e293a844fbcd60b4f00c43aee03ca550
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677893"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015651"
 ---
 # <a name="tutorial-configure-the-opc-publisher"></a>チュートリアル: OPC Publisher の構成
 
@@ -44,7 +44,7 @@ OPC UA 対応の資産にアクセスする場合は、X.509 証明書とそれ�
 
 ## <a name="configuration-via-configuration-file"></a>構成ファイルを使用した構成
 
-OPC Publisher を構成する最も簡単な方法は、構成ファイルの使用です。 構成ファイルの例とその形式に関するドキュメントは、このリポジトリの [`publishednodes.json`](https://raw.githubusercontent.com/Azure/iot-edge-opc-publisher/master/opcpublisher/publishednodes.json) ファイルで提供されています。
+OPC Publisher を構成する最も簡単な方法は、構成ファイルの使用です。 構成ファイルの例とその形式に関するドキュメントは、このリポジトリの [`publishednodes.json`](https://raw.githubusercontent.com/Azure/Industrial-IoT/main/components/opc-ua/src/Microsoft.Azure.IIoT.OpcUa.Edge.Publisher/tests/Engine/publishednodes.json) ファイルで提供されています。
 構成ファイルの構文は時間の経過と共に変更されています。OPC Publisher は、引き続き古い形式を読み取ることはできますが、構成を保持する際に最新の形式に変換します。これは、定期的に自動で行われます。
 
 基本的な構成ファイルは次のようになります。

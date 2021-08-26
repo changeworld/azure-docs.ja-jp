@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 2261bf9f52747bee8617b4393c207703a252a1ad
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 7e168c650361bf0579b5e718a71243ee485ba9dd
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113005998"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824688"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -24,6 +24,7 @@ ms.locfileid: "113005998"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
+* [!INCLUDE [contributor-requirement](../includes/quickstarts/contributor-requirement.md)]
 * Azure サブスクリプションを入手したら、Azure portal で Standard S1 レベルの <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 空間分析コンテナーを実行するには、作成したリソースのキーとエンドポイントが必要です。 後でキーとエンドポイントを使用します。
 
@@ -108,39 +109,54 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Azure Stack Edge での MPS を有効にする 
 
-1. Windows PowerShell セッションを管理者として実行します。 
+Windows クライアントからリモートで接続するには、次の手順に従います。
 
-2. Windows リモート管理サービスがクライアントで実行されていることを確認します。 PowerShell ターミナルで、次のコマンドを使用します。 
-    
+1. Windows PowerShell セッションを管理者として実行します。
+2. Windows リモート管理サービスがクライアントで実行されていることを確認します。 コマンド プロンプトに、次のコマンドを入力します。
+
     ```powershell
     winrm quickconfig
     ```
-    
-    ファイアウォールの例外に関する警告が表示された場合は、ネットワーク接続の種類を確認し、[Windows リモート管理](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)のドキュメントを参照してください。
 
-3. デバイスの IP アドレスに変数を割り当てます。 
-    
-    ```powershell
-    $ip = "<device-IP-address>" 
-    ```
-    
-4. デバイスの IP アドレスをクライアントの信頼できるホスト一覧に追加するには、次のコマンドを使用します。 
-    
-    ```powershell
-    Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force 
-    ```
+    詳細については、「[Windows リモート管理のためのインストールと構成](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration)」をご覧ください。
 
-5. デバイスの Windows PowerShell セッションを開始します。 
+3. `hosts` ファイルで使用される接続文字列に変数を割り当てます。
 
     ```powershell
-    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell 
+    $Name = "<Node serial number>.<DNS domain of the device>"
+    ``` 
+
+    `<Node serial number>` と `<DNS domain of the device>` は、デバイスのノードのシリアル番号と DNS ドメインに置き換えます。 ノードのシリアル番号の値は、デバイスのローカル Web UI の **[証明書]** ページから、そして DNS ドメインは **[デバイス]** ページから取得できます。
+
+4. デバイスの接続文字列をクライアントの信頼されたホスト一覧に追加するために、次のコマンドを入力します。
+
+    ```powershell
+    Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
     ```
 
-6. パスワードの入力を求められたら、入力します。 ローカル Web UI へのサインインに使用するパスワードと同じものを使用してください。 既定のローカル Web UI パスワードは `Password1` です。
+5. デバイスの Windows PowerShell セッションを開始します。
 
-「`Start-HcsGpuMPS`」と入力して、デバイス上で MPS サービスを開始します。 
+    ```powershell
+    Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
+    ```
 
-Azure Stack Edge デバイスのトラブルシューティングについては、[Azure Stack Edge デバイスのトラブルシューティング](spatial-analysis-logging.md#troubleshooting-the-azure-stack-edge-device)に関するページを参照してください。 
+    信頼関係に関連するエラーが表示された場合は、デバイスにアップロードされたノード証明書の署名チェーンが、デバイスにアクセスしているクライアントにもインストールされているかどうかを確認します。
+
+6. パスワードの入力を求められたら、入力します。 ローカル Web UI へのサインインに使用するパスワードと同じものを使用してください。 既定のローカル Web UI パスワードは *Password1* です。 リモート PowerShell を使用してデバイスに正常に接続すると、次のサンプル出力が表示されます。  
+
+    ```
+    Windows PowerShell
+    Copyright (C) Microsoft Corporation. All rights reserved.
+    
+    PS C:\WINDOWS\system32> winrm quickconfig
+    WinRM service is already running on this machine.
+    PS C:\WINDOWS\system32> $Name = "1HXQG13.wdshcsso.com"
+    PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
+    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
+
+    WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing. Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
+    [1HXQG13.wdshcsso.com]: PS>
+    ```
 
 #### <a name="desktop-machine"></a>[デスクトップ コンピューター](#tab/desktop-machine)
 
