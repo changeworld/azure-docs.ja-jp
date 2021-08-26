@@ -11,17 +11,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: 98d692c304c4d25412dcaf26fd0779b1b446e252
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: baf181c90b4bc899f682cbfea28d1998f7b2117a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113218063"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722884"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
 このクイックスタートでは、Azure portal、PowerShell スクリプト、または Azure CLI スクリプトを使用して、Azure SQL Database に[単一データベース](single-database-overview.md)を作成します。 次に、Azure portal で **クエリ エディター** を使用して、データベースに対してクエリを実行します。
-
 
 
 ## <a name="prerequisite"></a>前提条件

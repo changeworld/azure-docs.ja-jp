@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Video Analyzer を使用して、イベントベースのビデオ録画をクラウドに記録し、それをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.openlocfilehash: 9b5935b9b06a1e48ac106c7736390e39612b0af4
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 018e01e781e67ebe58d1337443813e1ca973a9e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602175"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733303"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>チュートリアル: イベントベースのビデオ記録と再生
 
@@ -61,9 +61,9 @@ ms.locfileid: "114602175"
 図は、目的のシナリオを実現する[パイプライン](pipeline.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
 
 * IoT Edge モジュール上の Video Analyzer。
-* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLOv3](https://github.com/Azure/video-analyzer/tree/main/edge-modules/extensions/yolo/yolov3) モデルを使用します。
 * オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
-* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555)。
     
 図に示すように、パイプライン内の [RTSP ソース](pipeline.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
 
@@ -164,7 +164,7 @@ Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-d
     
 1. 次に、**livePipelineSet** と **pipelineTopologyDelete** の各ノードで、**topologyName** の値が、上記パイプライン トポロジ内の **name** プロパティの値と一致していることを確認します。
 
-    `"pipelineTopologyName" : "EVRtoVideosOnObjDetect"`
+    `"pipelineTopologyName" : "EVRtoVideoSinkOnObjDetect"`
 1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json)を開き、videoName を確認します。これは `sample-evr-video` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。
 1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウにいくつかのメッセージが出力されます。
 1. operations.json ファイルは、pipelineTopologyList および livePipelineList の呼び出しで開始されます。 前回のクイックスタートまたはチュートリアルの後に、リソースをクリーンアップした場合は、このアクションによって空のリストが返された後、一時停止して、以下のように **Enter** キーの入力待ち状態になります。
@@ -192,7 +192,7 @@ Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-d
           "@apiVersion": "1.0",
           "name": "Sample-Pipeline-1",
           "properties": {
-            "topologyName": "EVRtoVideosOnObjDetect",
+            "topologyName": "EVRtoVideoSinkOnObjDetect",
             "description": "Sample topology description",
             "parameters": [
               {

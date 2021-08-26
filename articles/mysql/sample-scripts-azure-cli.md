@@ -8,14 +8,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 1150b9e6f39f14cdfa3aa5c57d1cbacca0351b64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca1ab660323d6e47775d752b4801f3d74839a457
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94537596"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643344"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Azure Database for MySQL 用 Azure CLI サンプル 
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 次の表には、Azure Database for MySQL の Azure CLI スクリプトのサンプルへのリンクが含まれています。
 
 | サンプル リンク | 説明  |

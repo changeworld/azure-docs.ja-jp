@@ -2,17 +2,18 @@
 title: アクティビティを使用して Databricks Notebook を実行する
 description: Azure Data Factory で Databricks Notebook アクティビティを使用して、Databricks ジョブ クラスターに対して Databricks Notebook を実行する方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.author: abnarain
 author: nabhishek
 ms.custom: seo-lt-2019
 ms.date: 06/07/2021
-ms.openlocfilehash: e9b4d075832fde6aec81a7f8440756b4d6f32834
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 57ad017decff68ff1ce561a2863313571933489b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113215993"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730117"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks Notebook を実行する
 

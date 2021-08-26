@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 06/02/2021
-ms.openlocfilehash: e5e202d12beb93bc6970593f327400917a4b7ef5
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: c2529f355e7d39c22bf5f3d703cb33c59101a5f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113516723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749462"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>デュアル書き込みプロキシを使用した Azure Managed Instance for Apache Cassandra へのライブ マイグレーション
 
@@ -45,13 +45,13 @@ ms.locfileid: "113516723"
 
 Spark 3.0 をサポートする Azure Databricks ランタイム バージョン 7.5 を選択することをお勧めします。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Azure Databricks ランタイムのバージョンを見つける方法を示すスクリーンショット。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Azure Databricks ランタイムのバージョンを見つける方法を示すスクリーンショット。":::
 
 ## <a name="add-spark-dependencies"></a>Spark の依存関係を追加する
 
 Apache Spark Cassandra コネクタ ライブラリをクラスターに追加して、ネイティブと Azure Cosmos DB Cassandra 両方のエンドポイントに接続する必要があります。 自分のクラスターで、 **[ライブラリ]**  >  **[新規インストール]**  >  **[Maven]** の順に選択し、Maven 座標に `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` を追加します。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Azure Databricks で Maven パッケージを検索する方法を示すスクリーンショット。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-search-packages.png" alt-text="Azure Databricks で Maven パッケージを検索する方法を示すスクリーンショット。":::
 
 **[インストール]** を選択し、インストールが完了したらクラスターを再起動します。
 
@@ -148,7 +148,7 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar source-server destination-
 ```
 
 > [!NOTE]
-> クラスター ノードにプロキシをインストールした場合、ノードを再起動する必要はありません。 ただし、多数のアプリケーション クライアントがあり、アプリケーション レベルのコード変更を不要にするために、プロキシを Cassandra の標準ポート 9042 で実行したい場合は、[Apache Cassandra の既定のポート](https://cassandra.apache.org/doc/latest/faq/#what-ports-does-cassandra-use)を変更する必要があります。 その後、クラスター内のノードを再起動し、ソース Cassandra クラスターに対して定義した新しいポートに、ソース ポートを構成する必要があります。 
+> クラスター ノードにプロキシをインストールした場合、ノードを再起動する必要はありません。 ただし、多数のアプリケーション クライアントがあり、アプリケーション レベルのコード変更を不要にするために、プロキシを Cassandra の標準ポート 9042 で実行したい場合は、[Apache Cassandra の既定のポート](https://cassandra.apache.org/doc/latest/cassandra/faq/#what-ports-does-cassandra-use)を変更する必要があります。 その後、クラスター内のノードを再起動し、ソース Cassandra クラスターに対して定義した新しいポートに、ソース ポートを構成する必要があります。 
 >
 > 次の例では、ポート 3074 で実行するようにソース Cassandra クラスターを変更し、ポート 9042 でクラスターを起動します。
 >

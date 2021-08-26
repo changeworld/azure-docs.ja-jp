@@ -4,19 +4,18 @@ summary: Azure Managed Instance for Apache Cassandra では、マネージド �
 metadata:
   title: Azure Managed Instance for Apache Cassandra
   description: Azure Managed Instance for Apache Cassandra では、マネージド オープンソースの Apache Cassandra データセンターに対して、デプロイとスケーリングの自動化された操作を提供します。 ハイブリッド シナリオが高速化され、継続的なメンテナンスが削減されます。
-  services: service
   ms.service: managed-instance-apache-cassandra
   ms.topic: landing-page
   ms.collection: collection
   author: TheovanKraay
   ms.author: thvankra
   ms.date: 01/18/2021
-  ms.openlocfilehash: 6767a4f2a423b70fdfc3611ce188dcc33122c80e
-  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+  ms.openlocfilehash: 39bc78471ea363372aef1d6fad2eee3a8acbf5d6
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "109517120"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121749444"
 landingContent:
 - title: Azure Managed Instance for Apache Cassandra について
   linkLists:

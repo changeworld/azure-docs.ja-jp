@@ -2,14 +2,15 @@
 metadata:
   title: よく寄せられる質問に対する回答
   description: 一般的な質問への回答
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: backup
   ms.date: 06/10/2021
-  ms.openlocfilehash: 994e23fae780ecc3bf046d834810fbbf983473ed
-  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.openlocfilehash: cf4539afef4df4f09da7eacdf3c195cb08a70e44
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111907896"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122254251"
 title: Azure Backup - よく寄せられる質問
 summary: この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
 sections:

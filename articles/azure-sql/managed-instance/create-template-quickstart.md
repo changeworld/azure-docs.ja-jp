@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma
 ms.date: 06/22/2020
-ms.openlocfilehash: b4b19be4215f8a5bfa0b1f4eb42607c51bfe1d16
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 882613ef5b27b7021c61cabfabe3f37c3c842bd6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889034"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722817"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure SQL Managed Instance を作成する
 
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 次の PowerShell コード ブロックから **[使ってみる]** を選択して Azure Cloud Shell を開きます。
 
 > [!IMPORTANT]
-> マネージト インスタンスのデプロイは、実行時間の長い操作です。 サブネットへの最初のインスタンスのデプロイは、通常、既存のマネージド インスタンスが含まれるサブネットへのデプロイよりもはるかに長い時間がかかります。 平均的なプロビジョニング時間については、[SQL Managed Instance の管理操作](sql-managed-instance-paas-overview.md#management-operations)に関するセクションを参照してください。
+> マネージト インスタンスのデプロイは、実行時間の長い操作です。 サブネットへの最初のインスタンスのデプロイは、通常、既存のマネージド インスタンスが含まれるサブネットへのデプロイよりもはるかに長い時間がかかります。 平均的なプロビジョニング時間については、[SQL Managed Instance の管理操作](management-operations-overview.md#duration)に関するセクションを参照してください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

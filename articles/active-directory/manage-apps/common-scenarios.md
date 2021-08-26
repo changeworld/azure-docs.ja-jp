@@ -9,14 +9,14 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 03/02/2019
 ms.author: davidmu
-ms.reviewer: arvinh
+ms.reviewer: napuri
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac71272cd878e5413de799acb0fde70380bbc18f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 254320fffd1377b08a908727079bae2ca050183d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467048"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738845"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD を使用したアプリケーション管理の一元化
 

@@ -2,14 +2,14 @@
 title: Azure Site Recovery を使用して Azure VM のディザスター リカバリーを設定するためのチュートリアル
 description: このチュートリアルでは、Site Recovery サービスを使用して別の Azure リージョンへの Azure VM のディザスター リカバリーを設定します。
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 07/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 473a264ef497cab4bd4f88372600161b33178099
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67dcbaf555de14c445f041b200ead48c4deac5ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656871"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742986"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>チュートリアル:Azure VM のディザスター リカバリーを設定する
 
@@ -32,7 +32,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このチュートリアルを始める前に:
 
-- [サポート対象リージョンを確認](azure-to-azure-support-matrix.md#region-support)します。 Azure VM のディザスター リカバリーは、同じ地理クラスターにある 2 つのリージョン間で設定できます。
+- [サポート対象リージョンを確認](azure-to-azure-support-matrix.md#region-support)します。 
 - 少なくとも 1 つの Azure VM が必要です。 [Windows](azure-to-azure-support-matrix.md#windows) VM または [Linux](azure-to-azure-support-matrix.md#replicated-machines---linux-file-systemguest-storage) VM がサポートされていることを確認してください。
 - VM の[コンピューティング](azure-to-azure-support-matrix.md#replicated-machines---compute-settings)、[ストレージ](azure-to-azure-support-matrix.md#replicated-machines---storage)、[ネットワーク](azure-to-azure-support-matrix.md#replicated-machines---networking)の要件を確認します。
 - このチュートリアルでは、VM が暗号化されていないことを前提としています。 暗号化された VM のディザスター リカバリーを設定したい場合は、[こちらの記事に従ってください](azure-to-azure-how-to-enable-replication-ade-vms.md)。
@@ -47,7 +47,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 - 無料の Azure サブスクリプションを作成したばかりであれば、ご自身がアカウントの管理者になっているため、それ以上のアクションは不要です。
 - 管理者でなければ、必要なアクセス許可の割り当てを管理者に依頼します。
-    - **コンテナーを作成する**: サブスクリプションの管理者または所有者のアクセス許可。 
+    - **コンテナーを作成する**: サブスクリプションの管理者または所有者のアクセス許可。
     - **コンテナー内の Site Recovery の操作を管理する**: "*Site Recovery 共同作成者*" 組み込み Azure ロール。
     - **ターゲット リージョンに Azure VM を作成する**: 組み込みの "*仮想マシン共同作成者*" ロール。または次の作業を行うための個別のアクセス許可。
         - 選択した仮想ネットワーク内に VM を作成する。
@@ -56,14 +56,14 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="verify-target-settings"></a>ターゲットの設定を確認する
 
-ディザスター リカバリー中は、ソース リージョンからフェールオーバーしたときに、ターゲット リージョンに VM が作成されます。 
+ディザスター リカバリー中は、ソース リージョンからフェールオーバーしたときに、ターゲット リージョンに VM が作成されます。
 
 ご利用のサブスクリプションに、ターゲット リージョンに十分なリソースが存在することを確認します。 ソース リージョン内の VM と同じサイズの VM を作成できることが必要です。 ディザスター リカバリーを設定すると、Site Recovery によって、ターゲット VM に対して同じサイズまたは最も近いサイズが選択されます。
 
 
 ## <a name="prepare-vms"></a>VM を準備する
 
-VM にアウトバウンド接続と最新のルート証明書があることを確認します。 
+VM にアウトバウンド接続と最新のルート証明書があることを確認します。
 
 
 ### <a name="set-up-vm-connectivity"></a>VM の接続を設定する
@@ -88,12 +88,12 @@ VM にアウトバウンド接続と最新のルート証明書があること�
 
 ネットワーク セキュリティ グループ (NSG) を使用して接続を制御している場合は、ポート 443 への HTTPS アウトバウンドを許可するサービスタグ ベースの NSG ルールを作成します。対象となる[サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags) (IP アドレスのグループ) は次のとおりです。
 
-**Tag** | **許可** 
+**Tag** | **許可**
 --- | ---
-Storage タグ  |VM からキャッシュ ストレージ アカウントへのデータの書き込みを許可します。   
-Azure AD タグ | Azure AD に対応するすべての IP アドレスへのアクセスを許可します。   
-EventsHub タグ | Site Recovery 監視へのアクセスを許可します。  
-AzureSiteRecovery タグ | 任意のリージョンの Site Recovery Service へのアクセスを許可します。   
+Storage タグ  |VM からキャッシュ ストレージ アカウントへのデータの書き込みを許可します。
+Azure AD タグ | Azure AD に対応するすべての IP アドレスへのアクセスを許可します。
+EventsHub タグ | Site Recovery 監視へのアクセスを許可します。
+AzureSiteRecovery タグ | 任意のリージョンの Site Recovery Service へのアクセスを許可します。
 GuestAndHybridManagement タグ | レプリケーションが有効な VM 上で稼働している Site Recovery モビリティ エージェントを自動的にアップグレードしたい場合に使用します。
 
 必要なタグとタグ付けの例については、[詳しい情報](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)をご覧ください。
@@ -126,8 +126,8 @@ VM のレプリケート元のソース リージョンを除く任意のリー�
 9. **[確認および作成]** で、 **[作成]** を選択します。
 
 10. コンテナーのデプロイが開始されます。 [通知] で進行状況を把握してください。
-11. コンテナーがデプロイされたら、すぐに参照できるよう、 **[ダッシュボードにピン留めする]** を選択して保存します。 **[リソースに移動]** を選択して新しいコンテナーを開きます。 
-    
+11. コンテナーがデプロイされたら、すぐに参照できるよう、 **[ダッシュボードにピン留めする]** を選択して保存します。 **[リソースに移動]** を選択して新しいコンテナーを開きます。
+
     ![デプロイ後にコンテナーを開くためのボタンとダッシュボードにピン留めするためのボタン](./media/azure-to-azure-tutorial-enable-replication/vault-deploy.png)
 
 ### <a name="enable-site-recovery"></a>Site Recovery を有効にする
@@ -138,7 +138,7 @@ VM のレプリケート元のソース リージョンを除く任意のリー�
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
-ソースの設定を選択して、VM のレプリケーションを有効にします。 
+ソースの設定を選択して、VM のレプリケーションを有効にします。
 
 ### <a name="select-source-settings"></a>ソースの設定を選択する
 

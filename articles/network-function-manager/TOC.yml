@@ -19,8 +19,13 @@
       href: partners.md
     - name: よく寄せられる質問
       href: faq.md
+- name: リファレンス
+  items:
+    - name: SDK for Java
+      href: 'https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/hybridnetwork/azure-resourcemanager-hybridnetwork'
+    - name: Python 用 SDK
+      href: 'https://pypi.org/project/azure-mgmt-hybridnetwork/1.0.0/'
 - name: リソース
-  expanded: true
   items:
     - name: Network Function Manager の製品ページ
       href: 'https://go.microsoft.com/fwlink/?linkid=2166098'

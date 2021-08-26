@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: e19240a8050a7076a73c17f7e8ff3a9ab0d59591
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 879c325ee64307e7c548efa4ef7ba34eb68cc896
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026888"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444199"
 ---
 # <a name="set-name-and-type-for-child-resources-in-bicep"></a>Bicep での子リソースの名前と種類の設定
 
@@ -80,7 +80,7 @@ resource <parent-resource-symbolic-name> '<resource-type>@<api-version>' = {
 }
 
 resource <child-resource-symbolic-name> '<child-resource-type>@<api-version>' = {
-  parent: 'myParent'
+  parent: <parent-resource-symbolic-name>
   name: 'myChild'
   <child-resource-properties>
 }

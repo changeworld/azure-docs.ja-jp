@@ -100,7 +100,7 @@ items:
           - name: 電話番号の種類
             href: concepts/telephony-sms/plan-solution.md
           - name: Azure 直接ルーティングのインフラストラクチャ要件
-            href: concepts/telephony-sms/sip-interface-infrastructure.md
+            href: concepts/telephony-sms/direct-routing-infrastructure.md
           - name: Azure ダイレクト ルーティング認定のセッション ボーダー コントローラー
             href: concepts/telephony-sms/certified-session-border-controllers.md
           - name: セッション ボーダー コントローラーをペアリングし、音声ルーティングを構成する

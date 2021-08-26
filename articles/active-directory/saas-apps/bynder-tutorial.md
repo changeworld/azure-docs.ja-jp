@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 9e233e30521e5c1fa05509fa6dc42a567f6ac4e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d89a197e21185c345fe166d0e5890b125f5797dd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653101"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743996"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>チュートリアル:Bynder と Azure Active Directory の統合
 
@@ -79,23 +79,23 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
     
-    既定のドメインの場合:  `https://<company name>.getbynder.com`
+    既定のドメインの場合:  `https://<COMPANY_NAME>.bynder.com`
     
-    カスタム ドメインの場合:  `https://<subdomain>.<domain>.com`
+    カスタム ドメインの場合:  `https://<SUBDOMAIN>.<DOMAIN>.com`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-     既定のドメインの場合:  `https://<company name>.getbynder.com/sso/SAML/authenticate/`
+     既定のドメインの場合:  `https://<COMPANY_NAME>.bynder.com/sso/SAML/authenticate/`
     
-    カスタム ドメインの場合:  `https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
+    カスタム ドメインの場合:  `https://<SUBDOMAIN>.<DOMAIN>.com/sso/SAML/authenticate/`
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-     既定のドメインの場合:  `https://<company name>.getbynder.com/login/`
+     既定のドメインの場合:  `https://<COMPANY_NAME>.bynder.com/login/`
     
-     カスタム ドメインの場合:  ` https://<subdomain>.<domain>.com/login/`
+     カスタム ドメインの場合:  ` https://<SUBDOMAIN>.<DOMAIN>.com/login/`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Bynder クライアント サポート チーム](https://www.bynder.com/en/support/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
