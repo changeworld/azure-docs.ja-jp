@@ -7,17 +7,18 @@ metadata:
   author: MashaMSFT
   tags: azure-service-management
   ms.service: virtual-machines-sql
+  ms.subservice: service-overview
   ms.topic: troubleshooting
   ms.workload: iaas-sql-server
   ms.date: 12/13/2017
   ms.author: mathoma
   ms.reviewer: jroth
-  ms.openlocfilehash: e8a84772b97988dbd54d23d65bf100d3f258ee9b
-  ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+  ms.openlocfilehash: b854cdabf025b67976678595ba03fd07ed209973
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112082843"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121731991"
 title: SQL Server on Linux 仮想マシンについてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,60 +39,60 @@ sections:
 - name: 画像
   questions:
   - question: >
-      どのような SQL Server 仮想マシン ギャラリーのイメージを使用できますか?
+      What SQL Server virtual machine gallery images are available?
     answer: >
-      Azure では、Linux と Windows の両方のすべてのエディションで、SQL Server のサポートされているすべてのメジャー リリース用の仮想マシン (VM) イメージを保持します。 詳細については、[Linux VM イメージ](sql-server-on-linux-vm-what-is-iaas-overview.md#create)と [Windows VM イメージ](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)の完全な一覧を参照してください。
+      Azure maintains virtual machine (VM) images for all supported major releases of SQL Server on all editions for both Linux and Windows. For more details, see the complete list of [Linux VM images](sql-server-on-linux-vm-what-is-iaas-overview.md#create) and [Windows VM images](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
   - question: >
-      既存の SQL Server 仮想マシン ギャラリー イメージは更新されますか?
-    answer: 仮想マシン ギャラリー内の SQL Server イメージは、2 か月ごとに最新の Linux と Windows の更新プログラムによって更新されます。 Linux イメージの場合は、システムの最新の更新プログラムが含まれます。 Windows イメージの場合は、重要な SQL Server のセキュリティ更新プログラムや Service Pack など、Windows Update で重要とマークされている更新プログラムが含まれます。 SQL Server の累積更新プログラムは、Linux と Windows では異なる方法で処理されます。 Linux では、SQL Server の累積更新プログラムも更新に含まれます。 ただし、現時点では、Windows VM は、SQL Server または Windows Server の累積更新プログラムでは更新されません。
+      Are existing SQL Server virtual machine gallery images updated?
+    answer: Every two months, SQL Server images in the virtual machine gallery are updated with the latest Linux and Windows updates. For Linux images, this includes the latest system updates. For Windows images, this includes any updates that are marked as important in Windows Update, including important SQL Server security updates and service packs. SQL Server cumulative updates are handled differently for Linux and Windows. For Linux, SQL Server cumulative updates are also included in the refresh. But at this time, Windows VMs are not updated with SQL Server or Windows Server cumulative updates.
   - question: >
-      どのような関連 SQL Server パッケージがインストールされますか?
+      What related SQL Server packages are also installed?
     answer: >
-      SQL Server on Linux VM に既定でインストールされる SQL Server パッケージを確認するには、「[インストール済みパッケージ](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)」を参照してください。
+      To see the SQL Server packages that are installed by default on SQL Server on Linux VMs, see [Installed packages](sql-server-on-linux-vm-what-is-iaas-overview.md#packages).
   - question: >
-      SQL Server 仮想マシン イメージはギャラリーから削除される可能性がありますか?
-    answer: はい。 Azure では、メジャー バージョンとエディションごとに 1 つのイメージのみを保持します。 たとえば、新しい SQL Server Service Pack がリリースされると、Azure はその Service Pack 用の新しいイメージをギャラリーに追加します。 前の Service Pack 用の SQL Server イメージは、Azure ポータルからただちに削除されます。 ただし、PowerShell からプロビジョニングする場合は、次の 3 か月間は引き続き使用できます。 3 か月が経過すると、前の Service Pack イメージは使用できなくします。 この削除ポリシーは、SQL Server のバージョンがそのライフサイクルの終わりに達した時点でサポートされなくなった場合にも適用されます。
+      Can SQL Server virtual machine images get removed from the gallery?
+    answer: Yes. Azure only maintains one image per major version and edition. For example, when a new SQL Server service pack is released, Azure adds a new image to the gallery for that service pack. The SQL Server image for the previous service pack is immediately removed from the Azure portal. However, it is still available for provisioning from PowerShell for the next three months. After three months, the previous service pack image is no longer available. This removal policy would also apply if a SQL Server version becomes unsupported when it reaches the end of its lifecycle.
 - name: 作成
   questions:
   - question: >
-      SQL Server で Linux 仮想マシンを作成するにはどうすればよいですか?
+      How do I create a Linux virtual machine with SQL Server?
     answer: >
-      最も簡単な解決方法は、SQL Server を含む Linux 仮想マシンを作成することです。 Azure にサインアップして、ポータルから SQL Server VM を作成するチュートリアルについては、[Azure portal で SQL Server を実行する Linux 仮想マシンをプロビジョニングする方法](sql-vm-create-portal-quickstart.md)に関するページを参照してください。 無料ライセンス版 (Developer または Express) を利用するかオンプレミスのライセンスを再利用して、SQL Server を VM に手動でインストールすることもできます。 現在所有しているライセンスを使用する場合は、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility)が必要です。
+      The easiest solution is to create a Linux virtual machine that includes SQL Server. For a tutorial on signing up for Azure and creating a SQL Server VM from the portal, see [Provision a Linux virtual machine running SQL Server in the Azure portal](sql-vm-create-portal-quickstart.md). You also have the option of manually installing SQL Server on a VM with either a freely licensed edition (Developer or Express) or by reusing an on-premises license. If you bring your own license, you must have [License Mobility through Software Assurance on Azure](https://azure.microsoft.com/pricing/license-mobility).
   - question: >
-      RHEL または SLES SQL Server VM を使用制限のある Azure サブスクリプションでプロビジョニングできないのはなぜですか?
+      Why can’t I provision an RHEL or SLES SQL Server VM with an Azure subscription that has a spending limit?
     answer: >
-      RHEL および SLES 仮想マシンでは、使用制限のないサブスクリプションと、サブスクリプションに関連付けられている検証済みの支払い方法 (通常はクレジット カード) が必要です。 使用制限を削除せずに RHEL または SLES VM をプロビジョニングした場合、サブスクリプションは無効になり、すべての VM/サービスが停止します。 この状態になった場合、サブスクリプションをもう一度有効にするには、[使用制限を削除](https://account.windowsazure.com/subscriptions)します。 現在の請求サイクルの残りのクレジットは復元されますが、再起動して実行を続けることを選択した場合、クレジット カードに対して RHEL または SLES VM イメージの追加料金が請求されます。
+      RHEL and SLES virtual machines require a subscription with no spending limit and a verified payment method (usually a credit card) associated with the subscription. If you provision an RHEL or SLES VM without removing the spending limit, your subscription will get disabled and all VMs/services stopped. If you do run into this state, to re-enable the subscription [remove the spending limit](https://account.windowsazure.com/subscriptions). Your remaining credits will be restored for the current billing cycle but an RHEL or SLES VM image surcharge will go against your credit card if you choose to re-start and continue running it.
 - name: ライセンス
   questions:
   - question: >
-      Azure VM に SQL Server のライセンス版をインストールするにはどうすればよいですか?
+      How can I install my licensed copy of SQL Server on an Azure VM?
     answer: >
-      まず、Linux OS 専用の仮想マシンを作成します。 次に、Linux ディストリビューション用の [SQL Server のインストール手順](/sql/linux/sql-server-linux-setup#platforms)を実行します。 SQL Server の無料ライセンス版のいずれかをインストールしていない限り、SQL Server ライセンスと [Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)も必要です。
+      First, create a Linux OS-only virtual machine. Then run the [SQL Server installation steps](/sql/linux/sql-server-linux-setup#platforms) for your Linux distribution. Unless you are installing one of the freely licensed editions of SQL Server, you must also have a SQL Server license and [License Mobility through Software Assurance on Azure](https://azure.microsoft.com/pricing/license-mobility/).
   - question: >
-      SQL Server のライセンス持ち込み (BYOL) Linux 仮想マシンのイメージはありますか?
-    answer: 現時点では、SQL Server 用 BYOL Linux 仮想マシンのイメージはありません。 ただし、前の質問で説明したように、SQL Server を Linux 専用の VM に手動でインストールできます。
+      Are there Bring-Your-Own-License (BYOL) Linux virtual machine images for SQL Server?
+    answer: At this time, there are no BYOL Linux virtual machine images for SQL Server. However, you can manually install SQL Server on a Linux-only VM as discussed in the previous questions.
   - question: >
-      従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。
-    answer: いいえ。 秒単位のライセンスから独自のライセンスの使用に切り替えることはできません。 新しい Linux VM を作成し、SQL Server をインストールし、データを移行する必要があります。 ライセンス持ち込みについて詳しくは、前の質問をご覧ください。
+      Can I change a VM to use my own SQL Server license if it was created from one of the pay-as-you-go gallery images?
+    answer: No. You cannot switch from pay-per-second licensing to using your own license. You must create a new Linux VM, install SQL Server, and migrate your data. See the previous question for more details about bringing your own license.
 - name: 管理
   questions:
   - question: >
-      SQL Server を実行している Linux 仮想マシンを SQL Server Management Studio (SSMS) で管理できますか?
+      Can I manage a Linux virtual machine running SQL Server with SQL Server Management Studio (SSMS)?
     answer: >
-      はい。ただし、SSMS は現時点では Windows 限定のツールです。 SQL Server を実行している Linux VM で SSMS を使用するには、Windows マシンからリモートで接続する必要があります。 Linux では、新しい[mssql-conf](/sql/linux/sql-server-linux-configure-mssql-conf)ツールでさまざまな管理タスクをローカルに実行できます。 クロスプラットフォームのデータベース管理ツールについては、[Azure Data Studio](/sql/azure-data-studio/what-is) を参照してください。
+      Yes, but SSMS is currently a Windows-only tool. You must connect remotely from a Windows machine to use SSMS with Linux VMs running SQL Server. Locally on Linux, the new [mssql-conf](/sql/linux/sql-server-linux-configure-mssql-conf) tool can perform many administrative tasks. For a cross-platform database management tool, see [Azure Data Studio](/sql/azure-data-studio/what-is).
   - question: >
-      SQL Server VM から SQL Server を完全に削除できますか?
+      Can I remove SQL Server completely from a SQL Server VM?
     answer: >
-      はい。ただし、[SQL Server Azure VM の価格に関するガイダンス](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)のページで説明されているように、SQL Server VM に対して引き続き課金されます。 SQL Server が不要になった場合は、新しい仮想マシンをデプロイし、データとアプリケーションを新しい仮想マシンに移行してから、 SQL Server 仮想マシンを削除してください。
+      Yes, but you will continue to be charged for your SQL Server VM as described in [Pricing guidance for SQL Server Azure VMs](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). If you no longer need SQL Server, you can deploy a new virtual machine and migrate the data and applications to the new virtual machine. Then you can remove the SQL Server virtual machine.
 - name: 更新プログラムと修正プログラムの適用
   questions:
   - question: >
-      Azure VM で SQL Server の新しいバージョン/エディションにアップグレードするにはどうすればよいですか?
+      How do I upgrade to a new version/edition of the SQL Server in an Azure VM?
     answer: >
-      現在、Azure VM で実行している SQL Server のインプレース アップグレードはありません。 目的の SQL Server バージョン/エディションで新しい Azure 仮想マシンを作成し、[標準のデータ移行方法](/sql/linux/sql-server-linux-migrate-overview)を使用して、データベースを新しいサーバーに移行します。
+      Currently, there is no in-place upgrade for SQL Server running in an Azure VM. Create a new Azure virtual machine with the desired SQL Server version/edition, and then migrate your databases to the new server using [standard data migration techniques](/sql/linux/sql-server-linux-migrate-overview).
 - name: 全般
   questions:
   - question: >
-      Azure VM で SQL Server 高可用性ソリューションはサポートされますか?
-    answer: 現時点ではありません。 Always On 可用性グループとフェールオーバー クラスタリングの両方で、Pacemaker などの Linux のクラスタリング ソリューションが必要です。 SQL Server でサポートされている Linux ディストリビューションは、クラウドの高可用性アドオンをサポートしていません。
-additionalContent: "\n## <a name=\"resources\"></a>リソース\n\n**Linux VM**:\n\n* [Linux VM における SQL Server の概要](sql-server-on-linux-vm-what-is-iaas-overview.md)\n* [Linux VM での SQL Server のプロビジョニング](sql-vm-create-portal-quickstart.md)\n* [SQL Server on Linux のドキュメント](/sql/linux/sql-server-linux-overview)\n\n**Windows VM**:\n\n* [Windows VM における SQL Server の概要](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)\n* [Windows VM での SQL Server のプロビジョニング](../windows/sql-vm-create-portal-quickstart.md)\n* [FAQ (Windows)](../windows/frequently-asked-questions-faq.yml)"
+      Are SQL Server high-availability solutions supported on Azure VMs?
+    answer: Not at this time. Always On availability groups and Failover Clustering both require a clustering solution in Linux, such as Pacemaker. The supported Linux distributions for SQL Server do not support their high availability add-ons in the cloud.
+additionalContent: "\n## Resources\n\n**Linux VMs**:\n\n* [Overview of SQL Server on a Linux VM](sql-server-on-linux-vm-what-is-iaas-overview.md)\n* [Provision SQL Server on a Linux VM](sql-vm-create-portal-quickstart.md)\n* [SQL Server on Linux documentation](/sql/linux/sql-server-linux-overview)\n\n**Windows VMs**:\n\n* [Overview of SQL Server on a Windows VM](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)\n* [Provision SQL Server on a Windows VM](../windows/sql-vm-create-portal-quickstart.md)\n* [FAQ (Windows)](../windows/frequently-asked-questions-faq.yml)"

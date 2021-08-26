@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4677ec09994b9dcafbf3600c3c3cae48d71f1477
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93422843"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750186"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>チュートリアル: PyTorch を使用して事前トレーニング済みの画像分類モデルを Azure Functions にデプロイする
 
@@ -104,7 +104,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     func init --worker-runtime python
     ```
 
-    初期化後、*start* フォルダーにはプロジェクト用の各種ファイルが格納されます。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+    初期化後、*start* フォルダーにはプロジェクト用の各種ファイルが格納されます。たとえば、[local.settings.json](functions-develop-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 
     > [!TIP]
     > 関数プロジェクトは特定のランタイムに関連付けられているので、プロジェクト内の関数はすべて同じ言語で記述する必要があります。

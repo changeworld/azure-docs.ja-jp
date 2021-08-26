@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory を使用して Drill からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Drill のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jianleishen
-ms.openlocfilehash: 3b61916bb5c9d10e16a39c250fd9b94323633569
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: e3e8217c1a19058f16e5ab1ad105bc1ec8ee59f3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487207"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638098"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Azure Data Factory を使用して Drill からデータをコピーする
 

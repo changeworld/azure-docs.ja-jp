@@ -1,14 +1,14 @@
 ---
 title: パターン:ポリシー定義内のパラメーター
 description: この Azure Policy パターンの場合、ポリシー定義で文字列と配列のパラメーターを使用する方法の例と、効果をパラメーター化する方法が提供されます。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: sample
-ms.openlocfilehash: 07e5f05a556c30e6a9e464509006140a02a1dcc7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d2cddd0d86a5ecc44ef39bec989db2a7700c878a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752293"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324129"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy パターン: パラメーター
 

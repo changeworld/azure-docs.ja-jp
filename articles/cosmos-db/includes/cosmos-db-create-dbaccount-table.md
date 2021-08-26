@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 6daf668960e667b52559e4b94e97f4c6ae367a91
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: ffc9f653541acd74d1b3fb9b9106c9647f626b65
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113224767"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735428"
 ---
 1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -32,7 +32,7 @@ ms.locfileid: "113224767"
     サブスクリプション|該当するサブスクリプション|この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。 
     リソース グループ|**[新規作成]** 、アカウント名|**[新規作成]** を選択します。 その後、自分のアカウントの新しいリソース グループの名前を入力します。 簡略化のため、Azure Cosmos DB アカウント名と同じ名前を使用します。 
     アカウント名|一意の名前|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。<br><br>アカウント名に使用できるのは、小文字、数字、ハイフン (-) のみで、長さは 3 文字から 44 文字の範囲にする必要があります。
-    API|テーブル|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB には、5 種類の API が用意されています。ドキュメント データベース用の Core (SQL)、グラフ データベース用の Gremlin、ドキュメント データベース用の MongoDB、Azure Table、Cassandra です。 API ごとに別のアカウントを作成する必要があります。 <br><br>このクイックスタートでは Table API で動作するテーブルを作成するので、**Azure Table** を選択します。 <br><br>[Table API の詳細](../table-introduction.md)|
+    API|テーブル|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB には、5 種類の API が用意されています。ドキュメント データベース用の Core (SQL)、グラフ データベース用の Gremlin、ドキュメント データベース用の MongoDB、Azure Table、Cassandra です。 API ごとに別のアカウントを作成する必要があります。 <br><br>このクイックスタートでは Table API で動作するテーブルを作成するので、**Azure Table** を選択します。 <br><br>[Table API の詳細](../table/introduction.md)|
     場所|ユーザーに最も近いリージョン|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできる、ユーザーに最も近い場所を使用します。
     容量モード|プロビジョニング スループットまたはサーバーレス|[プロビジョニング スループット](../set-throughput.md) モードでアカウントを作成するには、 **[Provisioned throughput]\(プロビジョニング スループット\)** を選択します。 [サーバーレス](../serverless.md) モードでアカウントを作成するには、 **[サーバーレス]** を選択します。
 

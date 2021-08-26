@@ -2,17 +2,18 @@
 title: Azure-SSIS 統合ランタイムをプロビジョニングする
 description: Azure 上で SSIS パッケージをデプロイして実行できるように、Azure-SSIS 統合ランタイムを Azure Data Factory にプロビジョニングする方法について説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/19/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 6b2f1f796c7a3c41aa28040e023be6cc86bc21f8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2eff29e1260198c6d5031403e9dfb9fcbd2da4e5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447803"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730098"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする
 

@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 35f368b11d627c8c418a04953c054d43fe5d013b
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 509c44f83940ad1a79f5c30c0bb37084dae699b4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092511"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823869"
 ---
 # <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>起動できない Azure クラウド サービス (クラシック) ロールをトラブルシューティングする
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
 

@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: 8c737a21848055819f8e81625f66605107152fa4
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 267a90fadb43e61ad55c39ce78bd199487d5b71c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662920"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730439"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database の単一データベースを監視およびスケーリングする
 
@@ -51,7 +51,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| コマンド | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースまたはエラスティック プールをホストするサーバーを作成します。 |

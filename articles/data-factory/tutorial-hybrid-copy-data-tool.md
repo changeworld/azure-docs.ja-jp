@@ -4,15 +4,16 @@ description: Azure データ ファクトリを作成し、データのコピー
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/08/2021
-ms.openlocfilehash: 143fa6c8d6d0d09d48de03b6d627c996268b5260
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 3adb1c084276bed35ec7a2f542ee7f9d319f7b2b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113665903"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638327"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

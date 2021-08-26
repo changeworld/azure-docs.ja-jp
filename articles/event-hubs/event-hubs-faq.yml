@@ -3,13 +3,14 @@ metadata:
   title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
   description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
   ms.topic: article
+  ms.service: event-hubs
   ms.date: 01/20/2021
-  ms.openlocfilehash: 75179e8ab3b418de773ceac5dbd35c446421a790
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: 57f2f7c6cbb1cb502339d7fa87509672cef69e41
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114286132"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252638"
 title: Event Hubs のよく寄せられる質問
 summary: ''
 sections:
@@ -225,7 +226,7 @@ sections:
   - question: >
       診断ログ
     answer: >
-      Event Hubs では、Capture エラー ログと運用ログの 2 種類の[診断ログ](event-hubs-diagnostic-logs.md)がサポートされており、両方とも JSON で表されます。この診断ログは Azure Portal で有効にできます。
+      Event Hubs では、Capture エラー ログと運用ログの 2 種類の[診断ログ](monitor-event-hubs-reference.md#resource-logs)がサポートされており、両方とも JSON で表されます。この診断ログは Azure Portal で有効にできます。
   - question: >
       サポートと SLA
     answer: >

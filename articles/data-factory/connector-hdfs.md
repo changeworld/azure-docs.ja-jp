@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory を使用して HDFS からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HDFS ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jianleishen
-ms.openlocfilehash: 9495ffded4230dbffc62ba4f1e8aa405e448bf19
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: e1ccdb5841d6c4e126072d0132862676ef686e97
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485083"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637979"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS サーバーからデータをコピーする
 

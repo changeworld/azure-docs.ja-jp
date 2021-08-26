@@ -8,18 +8,21 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7addfc3a0d91b85c4d63afa4ee6a55b5202c3855
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0e5b5a2fb64c803c76f663d506dec8d750a4af29
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770239"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643391"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーを作成する
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+
 このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL フレキシブル サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
@@ -218,7 +221,7 @@ wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 > [!IMPORTANT]
-> Azure Cloud Shell を使用してフレキシブル サーバーに接続している間は、--ssl-mode=REQUIRED ではなく --ssl = true パラメーターを使用する必要があります。
+>Azure Cloud Shell を使用してフレキシブル サーバーに接続している間は、--ssl-mode=REQUIRED ではなく --ssl = true パラメーターを使用する必要があります。
 > その主な理由は、Azure Cloud Shell に付属する MariaDB ディストリビューションに含まれるインストール済み mysql.exe クライアントには --ssl パラメーターが必要ですが、Oracle のディストリビューションに含まれる mysql クライアントには --ssl-mode パラメーターが必要であるためです。
 
 上のコマンドの実行後、フレキシブル サーバーに接続しているときに次のエラー メッセージが表示された場合、ファイアウォール規則の設定に不備があります。前述の [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) の設定が済んでいないか、オプションが保存されていません。 ファイアウォールの設定を再試行して、もう一度やり直してください。

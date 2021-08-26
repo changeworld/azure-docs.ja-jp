@@ -1,15 +1,15 @@
 ---
 title: 組み込みのポリシー イニシアチブの一覧
 description: Azure Policy の組み込みのポリシー　イニシアチブの一覧を示します。 カテゴリには、規制コンプライアンス、ゲスト構成などが含まれます。
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 64782c9b6d597dd0a285f67fd83b647f179e081d
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 36fe2923155e92d08224ef10a17366296236082d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114387799"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605171"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy の組み込みイニシアチブの定義
 
