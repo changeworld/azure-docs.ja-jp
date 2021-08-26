@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2021
+ms.date: 08/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 56649e47333ef95955b1afb88546be356c08991e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4fdc2c9c683376369de284035ad08ffd8bea39bf
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461471"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769910"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-draup-inc"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Draup, Inc の統合
 
@@ -74,11 +74,9 @@ Draup, Inc に対する Azure AD SSO を構成してテストするには、次�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
+1. **[基本的な SAML 構成]** ページで、次のフィールドの値を入力します。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    a. **[サインオン URL]** テキスト ボックスに、URL として「`https://platform.draup.com/saml2/login/`」と入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://platform.draup.com/saml2/login/`」と入力します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

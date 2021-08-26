@@ -1,19 +1,21 @@
 ---
 title: マッピング データ フロー グラフの管理
+titleSuffix: Azure Data Factory & Azure Synapse
 description: マッピング データ フロー グラフを効率的に管理および編集する方法
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 09/02/2020
-ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf274ce49a2b83fca49bc039c1ba3c7980531979
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97590462"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638187"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>マッピング データ フロー グラフの管理
 
@@ -21,7 +23,7 @@ ms.locfileid: "97590462"
 
 マッピング データ フローは、データ フロー グラフと呼ばれるデザイン サーフェスを使用して作成されます。 グラフでは、変換ロジックが左から右に構築され、追加のデータ ストリームが上から下に追加されます。 新しい変換を追加するには、既存の変換の右下にあるプラス記号を選択します。
 
-![Canvas](media/data-flow/canvas-2.png)
+![キャンバス](media/data-flow/canvas-2.png)
 
 データ フローの複雑性に伴い、次のメカニズムを使用して、データ フロー グラフを効率的に移動および管理できます。 
 

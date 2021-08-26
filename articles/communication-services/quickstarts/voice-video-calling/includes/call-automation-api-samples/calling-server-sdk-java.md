@@ -10,20 +10,20 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: dc674a7e013ed39bd04161cb7e96dc969eaf47eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7253be0e9d7723bdb018b53e3ee655188bb3d679
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114473217"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802762"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/)に関するページを参照してください。
 - [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-install) バージョン 11 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource)に関するページを参照してください。 このサンプルで使用するリソースの **接続文字列** を記録する必要があります。
-- 新しい Azure Communication Services リソースの電話番号を取得します。 詳細については、[電話番号の取得](https://docs.microsoft.com/azure/communication-services/quickstarts/telephony-sms/get-phone-number?pivots=platform-azp)に関するページを参照してください。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](../../../create-communication-resource.md)に関するページを参照してください。 このサンプルで使用するリソースの **接続文字列** を記録する必要があります。
+- 新しい Azure Communication Services リソースの電話番号を取得します。 詳細については、[電話番号の取得](../../../telephony-sms/get-phone-number.md?pivots=platform-azp)に関するページを参照してください。
 - [ngrok](https://www.ngrok.com/download) をダウンロードしてインストールします。 サンプルはローカルで実行されるため、ngrok によってすべてのイベントの受信が有効にされます。
 - (省略可能) アプリケーションで再生されるカスタム メッセージを生成するための Azure Speech リソースを作成します。 [こちらのガイダンス](../../../../../cognitive-services/speech-service/overview.md#try-the-speech-service-for-free)に従ってリソースを作成します。
 

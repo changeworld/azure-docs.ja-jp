@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 05/19/2021
-ms.openlocfilehash: 31f3dc8adcd17c7795351877c856fa854582007b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 937fcc60e8be144fce10748345b71cc05703c04f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456560"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638518"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-api-for-mongodb-offline"></a>チュートリアル: MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "110456560"
 
 この MongoDB 移行ガイドは、MongoDB の移行に関するシリーズの一部です。 MongoDB 移行の重要な手順は、次に示すように、[移行前](../cosmos-db/mongodb-pre-migration.md)、移行、そして[移行後](../cosmos-db/mongodb-post-migration.md)です。
 
-![移行手順の図。](../cosmos-db/media/mongodb-pre-migration/overall-migration-steps.png)
+![移行手順の図。](../cosmos-db/mongodb/media/pre-migration-steps/overall-migration-steps.png)
 
 ## <a name="overview-of-offline-data-migration-from-mongodb-to-azure-cosmos-db-using-dms"></a>DMS を使用した MongoDB から Azure Cosmos DB へのオフライン データ移行の概要
 
@@ -81,19 +81,7 @@ Azure Cosmos DB のサーバー側の再試行機能を使用すると、サー�
 
 ![サーバー側の再試行を有効にする方法を示すスクリーンショット。](media/tutorial-mongodb-to-cosmosdb/mongo-server-side-retry-enable.png)
 
-## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
-
-1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
-
-   ![ポータルのサブスクリプションを示すスクリーンショット。](media/tutorial-mongodb-to-cosmosdb/portal-select-subscription1.png)
-
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
-
-    ![リソース プロバイダーを示すスクリーンショット。](media/tutorial-mongodb-to-cosmosdb/portal-select-resource-provider.png)
-
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
-
-    ![リソース プロバイダーの登録方法を示すスクリーンショット。](media/tutorial-mongodb-to-cosmosdb/portal-register-resource-provider.png)    
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]  
 
 ## <a name="create-an-instance"></a>インスタンスを作成する
 

@@ -3,15 +3,16 @@ title: Azure Data Factory のマッピング データ フローを使用して�
 description: Azure Data Factory のマッピング データ フローを使用して SQL の切り捨てエラーを処理する方法について説明します。
 author: kromerm
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: a7a03ff1a58f50f16ebefce48b9e2772a16a011a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4f4c1c334bb3720118b050947da6345116ef22f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386341"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638574"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローで SQL の切り捨てエラー行を処理する
 
