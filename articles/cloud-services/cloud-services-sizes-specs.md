@@ -9,17 +9,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 395a1f320ac46d56f8de06e81f7d7721000895c4
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 2bc22de351a6d8e1bcd417b6b27bfba751273238
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092367"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822996"
 ---
 # <a name="sizes-for-cloud-services-classic"></a>Cloud Services (クラシック) のサイズ
 
-> [!IMPORTANT]
-> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。 それぞれのサイズには、[サービス定義ファイル](cloud-services-model-and-package.md#csdef)に配置する ID があります。 サイズごとの価格は「[Cloud Services の価格](https://azure.microsoft.com/pricing/details/cloud-services/)」ページで表示されています。
 
