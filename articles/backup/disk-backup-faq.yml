@@ -2,14 +2,15 @@
 metadata:
   title: Azure ディスク バックアップに関してよく寄せられる質問
   description: Azure ディスク バックアップに関してよく寄せられる質問への回答を紹介します
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: backup
   ms.date: 05/27/2021
-  ms.openlocfilehash: 4c676d412799838193122399f50e984fbad833b2
-  ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+  ms.openlocfilehash: d53eda8e8b0f168da69dba1334feca0d4cb39524
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/28/2021
-  ms.locfileid: "111907736"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252510"
 title: Azure ディスク バックアップに関してよく寄せられる質問
 summary: >
   この記事では、Azure ディスク バックアップに関してよく寄せられる質問に回答します。 [Azure ディスク バックアップ](disk-backup-overview.md)の利用可能なリージョン、サポートされるシナリオ、制限事項の詳細については、[サポート マトリックス](disk-backup-support-matrix.md)に関するページをご覧ください。

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 441bbfcbb4f864ab8f82bb1216b9860dcfbf254c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 35e98fcbd1be87e471152d0760ca375e46770a81
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451898"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747638"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
@@ -197,7 +197,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }
     ```
 
-    新しい **Index** メソッドでは、`"photos"` コンテナー内の BLOB を列挙し、ASP.NET MVC の **ViewBag** プロパティを使用して、これらの BLOB を表す **BlobInfo** オブジェクトの配列をビューに渡します。 後で、ビューを変更してこれらのオブジェクトを列挙し、写真のサムネイルのコレクションを表示します。 ストレージ アカウントにアクセスし、BLOB を列挙するために使用するクラス &mdash; **[CloudStorageAccount](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount?WT.mc_id=academiccontent-github-cxa)** 、 **[CloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient?WT.mc_id=academiccontent-github-cxa)** 、および **[CloudBlobContainer](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?WT.mc_id=academiccontent-github-cxa)** &mdash; は、NuGet を通じてインストールした **WindowsAzure.Storage** パッケージから取得されます。
+    新しい **Index** メソッドでは、`"photos"` コンテナー内の BLOB を列挙し、ASP.NET MVC の **ViewBag** プロパティを使用して、これらの BLOB を表す **BlobInfo** オブジェクトの配列をビューに渡します。 後で、ビューを変更してこれらのオブジェクトを列挙し、写真のサムネイルのコレクションを表示します。 ストレージ アカウントにアクセスし、BLOB を列挙するために使用するクラス &mdash; **[CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet)** 、 **[CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient?view=azure-dotnet-legacy)** 、および **[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer?view=azure-dotnet-legacy)** &mdash; は、NuGet を通じてインストールした **WindowsAzure.Storage** パッケージから取得されます。
 
 1. *HomeController.cs* の **HomeController** クラスに次のメソッドを追加します。
 

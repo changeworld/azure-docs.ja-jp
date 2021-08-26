@@ -2,16 +2,17 @@
 metadata:
   title: VM Insights (GA) についてよく寄せられる質問 | Microsoft Docs
   description: VM Insights は、Azure VM オペレーティング システムの正常性およびパフォーマンスの監視と、アプリケーション コンポーネントおよび他のリソースとの依存関係の自動検出を組み合わせ、それらの間の通信をマップする Azure のソリューションです。 この記事では、GA リリースに関する一般的な質問への回答を示します。
-  ms.topic: conceptual
+  ms.topic: article
   author: bwren
   ms.author: bwren
   ms.date: 01/31/2020
-  ms.openlocfilehash: 930a51c83767a14c1547e2ed6330fbd134afbaae
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.service: azure-monitor
+  ms.openlocfilehash: 230bac590e4506593cc0cb6cce0aba89ed289ad3
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112306255"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253867"
 title: VM Insights の一般提供 (GA) についてよく寄せられる質問
 summary: この一般提供に関する FAQ では、GA に向けた準備の過程で 2019 年第 4 四半期から 2020 年第 1 四半期までの間に行われた変更について説明しています。
 sections:

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 06/04/2021
-ms.openlocfilehash: 3681164f1b7415679ed599a70faf6453ab0a5c87
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6c55b2e5fbaadec239c1818d1bbe47443e797ddf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725462"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -79,10 +79,10 @@ Azure サブスクリプション、課金、契約がなくても [Azure Cosmos
 
 - Azure Cosmos DB で API を選択する方法を[こちら](choose-api.md)でご確認ください
 - [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
-- [Azure Cosmos DB の MongoDB 用 API の概要](create-mongodb-nodejs.md)
-- [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
+- [Azure Cosmos DB の MongoDB 用 API の概要](mongodb/create-mongodb-nodejs.md)
+- [Azure Cosmos DB Cassandra API を使ってみる](cassandra/manage-data-dotnet.md)
 - [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
-- [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
+- [Azure Cosmos DB Table API を使ってみる](table/create-table-dotnet.md)
 - [Azure Cosmos DB を使用した次世代のアプリ開発に関するホワイトペーパー](https://azure.microsoft.com/resources/microsoft-azure-cosmos-db-flexible-reliable-cloud-nosql-at-any-scale/)
 
 > [!div class="nextstepaction"]

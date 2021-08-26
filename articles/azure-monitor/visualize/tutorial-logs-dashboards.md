@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: e4a76367b65556c0f6b030eba79355382e8db0c6
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: fc8c1db006ddd8b1ca455d7e47be0d8fa8381f1c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754517"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181398"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -23,7 +23,7 @@ Log Analytics ダッシュボードは、保存されているすべてのログ
 > * ログ クエリを共有ダッシュボードに追加する 
 > * 共有ダッシュボードのタイルをカスタマイズする
 
-このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](../vm/quick-collect-azurevm.md)既存の仮想マシンが必要です。  
+このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](../vm/monitor-virtual-machine.md)既存の仮想マシンが必要です。  
  
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。 

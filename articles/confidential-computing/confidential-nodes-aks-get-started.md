@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: 950f6fa47de273534a4636796351dd3640628dda
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: e7ff59c3c6ba75321c63db81d34ea4c7d46a841a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551238"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748626"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>クイックスタート: コンフィデンシャル コンピューティング ノードを含む AKS クラスターを Azure CLI を使用してデプロイする
 
@@ -61,7 +61,7 @@ az group create --name myResourceGroup --location westus2
 次に、[az aks create][az-aks-create] コマンドを使用して、コンフィデンシャル コンピューティング アドオンが有効になっている AKS クラスターを作成します。
 
 ```azurecli-interactive
-az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addons confcom
 ```
 
 ### <a name="add-a-user-node-pool-with-confidential-computing-capabilities-to-the-aks-cluster"></a>コンフィデンシャル コンピューティング機能を備えたユーザー ノード プールを AKS クラスターに追加する 

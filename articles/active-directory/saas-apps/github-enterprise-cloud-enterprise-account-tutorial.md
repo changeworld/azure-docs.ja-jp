@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 0ccd7886007177e32506ce0c3db489826a8a708d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4fdaad6d828ec83f40b6fb632d3d9738a7b72dc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479948"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750407"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Cloud - Enterprise Account の統合
 
@@ -76,13 +76,13 @@ GitHub Enterprise Cloud - Enterprise Account に対して Azure AD SSO を構成
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<ENTERPRISE-SLUG>`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/enterprises/<ENTERPRISE-SLUG>`
 
-    b. **[応答 URL]** ボックスに、`https://github.com/orgs/<ENTERPRISE-SLUG>/saml/consume` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://github.com/enterprises/<ENTERPRISE-SLUG>/saml/consume` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-     **[サインオン URL]** ボックスに、`https://github.com/orgs/<ENTERPRISE-SLUG>/sso` の形式で URL を入力します。
+     **[サインオン URL]** ボックスに、`https://github.com/enterprises/<ENTERPRISE-SLUG>/sso` の形式で URL を入力します。
 
     > [!NOTE]
     > `<ENTERPRISE-SLUG>` は、GitHub Enterprise Account の実際の名前に置き換えます。
@@ -138,7 +138,7 @@ GitHub Enterprise Account に対して SAML SSO を有効にすると、その E
 
 ## <a name="test-sso-with-another-enterprise-account-owner-or-organization-member-account"></a>別の Enterprise Account オーナーまたは組織メンバー アカウントを使用した SSO のテスト
 
-GitHub Enterprise Account に対して SAML 統合を設定すると (Enterprise Account 内の GitHub 組織にも適用され)、Azure AD 内でアプリに割り当てられている他の Enterprise Account オーナーは、GitHub Enterprise Account の URL (`https://github.com/orgs/<enterprise account>`) に移動し、SAML を介して認証し、GitHub Enterprise Account のポリシーと設定にアクセスできます。 
+GitHub Enterprise Account に対して SAML 統合を設定すると (Enterprise Account 内の GitHub 組織にも適用され)、Azure AD 内でアプリに割り当てられている他の Enterprise Account オーナーは、GitHub Enterprise Account の URL (`https://github.com/enterprises/<enterprise account>`) に移動し、SAML を介して認証し、GitHub Enterprise Account のポリシーと設定にアクセスできます。 
 
 Enterprise Account 内の組織の組織所有者は、[GitHub 組織に参加するようユーザーを招待する](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-organizations-and-teams/inviting-users-to-join-your-organization)ことができます。 組織所有者アカウントを使用して GitHub.com にサインインし、記事内の手順に従って `B.Simon` を組織に招待します。 `B.Simon` の GitHub ユーザー アカウントがまだ存在しない場合は作成する必要があります。 
 

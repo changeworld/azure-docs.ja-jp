@@ -2,7 +2,6 @@
 title: Azure IoT Edge とは | Microsoft Docs
 description: Azure IoT Edge サービスの概要
 author: kgremban
-manager: philmea
 ms.reviewer: chipalost
 ms.service: iot-edge
 services: iot-edge
@@ -10,12 +9,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: b9b768d7af276b8bff0db2acd00d27eca03023c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2ec1be20c7453d64b3255f9756676d06b023d38
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026736"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747310"
 ---
 # <a name="what-is-azure-iot-edge"></a>Azure IoT Edge とは
 
