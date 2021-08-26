@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 5cb11117483ae7a70496700c94069704a9ea1a9c
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: b6c5371baba93470f76a99e0e37cd61870ee108f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230657"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733587"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -124,7 +124,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
 * Redis インスタンス。 
 
 次の 2 つの [Kubernetes サービス][kubernetes-service]も作成されます。
-* Redis インスタンスの内部サービス。
+* Redis インスタンス用の内部サービス。
 * インターネットから Azure Vote アプリケーションにアクセスするための外部サービス。
 
 1. `azure-vote.yaml` という名前でファイルを作成します。
@@ -147,7 +147,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
             app: azure-vote-back
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-back
             image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
@@ -190,7 +190,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
             app: azure-vote-front
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-front
             image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
@@ -244,7 +244,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
 kubectl get service azure-vote-front --watch
 ```
 
-`azure-vote-front` サービスの **EXTERNAL-IP** の出力は、最初は *pending* として表示されます。
+`azure-vote-front` サービスの **[EXTERNAL-IP]** の出力は、最初は *pending* と表示されます。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

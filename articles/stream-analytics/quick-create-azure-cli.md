@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 09b7cf5fcab057dd5f5a98590ed11787df202a00
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e9f1818f85351213d5a7594161d52729d595ce82
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286012"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749307"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する
 
@@ -41,7 +41,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
 
 次の Azure CLI コード ブロックは、ジョブに必要な入力データを準備するコマンドです。 コードを理解するためにセクションを確認してください。
 
-1. [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) コマンドを使用して、IoT ハブを作成します。 この例では、**MyASAIoTHub** という名前の IoT ハブを作成します。 IoT ハブの名前は一意であるため、独自の IoT ハブ名を考案する必要があります。 サブスクリプションで Free レベルを使用できる場合は、SKU を F1 に設定して Free レベルを使用します。 そうでない場合は、次に低いレベルを選択します。
+1. [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドを使用して、IoT ハブを作成します。 この例では、**MyASAIoTHub** という名前の IoT ハブを作成します。 IoT ハブの名前は一意であるため、独自の IoT ハブ名を考案する必要があります。 サブスクリプションで Free レベルを使用できる場合は、SKU を F1 に設定して Free レベルを使用します。 そうでない場合は、次に低いレベルを選択します。
 
     ```azurecli
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
@@ -53,7 +53,7 @@ Stream Analytics ジョブを定義する前に、ジョブの入力に使用さ
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-2. [az iothub device-identity create](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c#create-a-simulated-device) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、**MyASAIoTDevice** という名前のデバイスを作成します。
+2. [az iothub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) コマンドを使用して、デバイスを IoT ハブに追加します。 この例では、**MyASAIoTDevice** という名前のデバイスを作成します。
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"

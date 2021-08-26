@@ -6,17 +6,18 @@ documentationcenter: ''
 author: MashaMSFT
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: service-overview
 ms.topic: overview
 ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 19bcd34dd8de094656993e79306f6ae369e99acd
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4ba3c22d28bba80e41d3f0cae1b6f22b368f80d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079051"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733321"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 仮想マシン (Linux) における SQL Server の概要
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

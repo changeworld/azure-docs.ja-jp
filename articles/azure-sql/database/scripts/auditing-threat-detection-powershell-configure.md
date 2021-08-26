@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: DavidTrigano
 ms.author: datrigan
-ms.reviewer: sstein, vanto
+ms.reviewer: mathoma, vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 709cded3fe595d84b53dcfa8e8061642adf1d2c1
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2f5791b96b0b921175c0b6c2c7db7c8cdabf825c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667785"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735592"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>PowerShell を使用して SQL Database の監査と Advanced Threat Protection を構成する
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

@@ -4,14 +4,14 @@ description: 1 日に 1 TB を超える監視データを取り込むお客様�
 ms.topic: conceptual
 author: rboucher
 ms.author: robb
-ms.date: 09/16/2020
+ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3b4a98e37c16feeb2ad8203caaeb5bc231761379
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: a0b33fb243c69dc86d2c14c34f45499bef47a730
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004225"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735773"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -20,8 +20,9 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 専用クラスターを必要とする機能は次のとおりです。
 
 - **[カスタマー マネージド キー](../logs/customer-managed-keys.md)** - お客様によって指定、管理されるキーを利用してクラスター データを暗号化します。
-- **[Lockbox](../logs/customer-managed-keys.md#customer-lockbox-preview)** - お客様は、Microsoft サポート エンジニアのデータ アクセス要求を制御できます。
+- **[Lockbox](../logs/customer-managed-keys.md#customer-lockbox-preview)** - Microsoft サポート エンジニアのデータ アクセス要求を制御します。
 - **[二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。
+- **[可用性ゾーン](../../availability-zones/az-overview.md)** - 専用クラスター上の可用性ゾーンを使用してデータセンターの障害からデータを保護します。最初は米国東部 2 リージョンと米国西部 2 リージョンに制限されています。 可用性ゾーンで作成されたクラスターは `isAvailabilityZonesEnabled`: `true` で示され、データは ZRS ストレージの種類で保護された状態で格納されます。 可用性ゾーンは作成時にクラスターで定義され、この設定は変更できません。 可用性ゾーンにクラスターを配置するには、サポートされているリージョンに新しいクラスターを作成する必要があります。
 - **[マルチワークスペース](../logs/cross-workspace-query.md)** - お客様が運用に複数のワークスペースを使用している場合、専用クラスターの使用をお勧めします。 すべてのワークスペースが同じクラスター上にある場合は、クロスワークスペース クエリの実行速度が速くなります。 割り当てられたコミットメント レベルですべてのクラスターのインジェストが考慮されるため、専用クラスターを使用する方がコスト効率が高くなる可能性もあります。その一部が小さく、コミットメント レベル割引の対象になっていない場合でも、すべてのワークスペースに適用されます。
 
 専用クラスターでは、1 日あたり少なくとも 1 TB のデータ インジェストの容量を使用してコミットを行う必要があります。 専用クラスターへの移行は簡単です。 データの損失やサービスの中断はありません。 
@@ -39,32 +40,32 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 
 ## <a name="cluster-pricing-model"></a>クラスターの価格モデル
 
-Log Analytics 専用クラスターには、1,000 GB/日以上のコミットメント レベル価格モデルを使用します。 そのレベルを超える使用量は、有効な 1 GB あたりのコミットメント レベル料金で課金されます。  コミットメント レベル価格情報については、[Azure Monitor の価格ページ]( https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。  
+Log Analytics 専用クラスターには、500 GB/日以上のコミットメント レベル価格モデルを使用します。 そのレベルを超える使用量は、有効な 1 GB あたりのコミットメント レベル料金で課金されます。  コミットメント レベル価格情報については、[Azure Monitor の価格ページ]( https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。  
 
-クラスター コミットメント レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成されます。 `Capacity` は GB 単位で指定し、1 日あたり 1,000 GB、2,000 GB、5,000 GB のいずれかの値を設定できます。
+クラスターのコミットメント レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成されます。 `Capacity` は GB 単位で指定され、1 日あたり 500 GB、1,000 GB、2,000 GB、5,000 GB の値を設定できます。
 
 クラスターでの使用については、2 つの課金モードがあります。 これらは、ご自分のクラスターを構成するときに、`billingType` パラメーターで指定できます。 
 
 1. **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 
 
-2. **ワークスペース**: ご使用のクラスターのコミットメント レベル コストは、各ワークスペースのデータ インジェスト量に応じて、クラスター内のワークスペースに比例的に帰属します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。この価格モデルの詳細については、[こちら]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)をご覧ください。 
+2. **ワークスペース**: ご使用のクラスターのコミットメント レベル コストは、各ワークスペースのデータ インジェスト量に応じて、クラスター内のワークスペースに比例的に帰属します (各ワークスペースに対する [Azure Security Center](../../security-center/index.yml) からのノードごとの割り当てを考慮した後)。この価格モデルの詳細については、[こちら](./manage-cost-storage.md#log-analytics-dedicated-clusters)をご覧ください。 
 
 ワークスペースで従来のノードごとの価格レベルが使用されている場合、クラスターにリンクされると、クラスターのコミットメント レベルに対するデータ インジェストに基づいて課金され、ノードごとには課金されなくなります。 Azure Security Center からのノードごとのデータ割り当ては引き続き適用されます。
 
-Log Analytics 専用クラスターの課金の詳細については、[こちら]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)をご覧ください。
+Log Analytics 専用クラスターの課金の詳細については、[こちら](./manage-cost-storage.md#log-analytics-dedicated-clusters)をご覧ください。
 
 ## <a name="asynchronous-operations-and-status-check"></a>非同期操作と状態のチェック
 
 構成手順の一部はすぐに完了できないため、非同期的に実行されます。 応答の状態には、次のいずれかが含まれます。'InProgress'、'Updating'、'Deleting'、'Succeeded、'Failed' (エラー コードを伴う)。 REST を使用している場合、応答では最初に HTTP 状態コード 202 (承認済み) と Azure-AsyncOperation プロパティを持つヘッダーが返されます。
 
 ```JSON
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2021-06-01"
 ```
 
 Azure-AsyncOperation ヘッダー値に GET 要求を送信することにより、非同期操作の状態を確認できます。
 
 ```rst
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2021-06-01
 Authorization: Bearer <token>
 ```
 
@@ -77,7 +78,7 @@ Authorization: Bearer <token>
 - **ClusterName**:管理目的で使用されます。 この名前はユーザーには公開されません。
 - **ResourceGroupName**:すべての Azure リソースと同様に、クラスターはリソース グループに属します。 クラスターは通常、組織内の多くのチームによって共有されるため、中央の IT リソース グループを使用することをお勧めします。 設計に関するその他の考慮事項については、「[Azure Monitor ログのデプロイの設計](../logs/design-logs-deployment.md)」を参照してください。
 - **[場所]** :クラスターは特定の Azure リージョンにあります。 このクラスターにリンクできるのは、このリージョンにあるワークスペースだけです。
-- **SkuCapacity**: クラスター リソースを作成するとき、コミットメント レベル (SKU) を指定する必要があります。 コミットメント レベルは、1 日あたり 1,000 GB、2,000 GB、5,000 GB のいずれかに設定できます。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページをご覧ください。 コミットメント レベルは、以前は容量予約と呼ばれていたことに注意してください。 
+- **SkuCapacity**: クラスター リソースを作成するとき、コミットメント レベル (SKU) を指定する必要があります。 コミットメント レベルは、1 日あたり 500 GB、1,000 GB、2,000 GB、5,000 GB のいずれかに設定できます。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページをご覧ください。 コミットメント レベルは、以前は容量予約と呼ばれていたことに注意してください。 
 
 "*クラスター*" リソースを作成した後、*sku*、*keyVaultProperties、*billingType* などの追加のプロパティを編集できます。 詳細については、以下を参照してください。
 
@@ -103,7 +104,7 @@ Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 
 *Call* 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -113,12 +114,12 @@ Content-type: application/json
     },
   "sku": {
     "name": "capacityReservation",
-    "Capacity": 1000
+    "Capacity": 500
     },
   "properties": {
-    "billingType": "cluster",
+    "billingType": "Cluster",
     },
-  "location": "<region-name>",
+  "location": "<region>",
 }
 ```
 
@@ -139,44 +140,51 @@ Log Analytics クラスターのプロビジョニングは、完了するまで
 
 - *クラスター* リソースに GET 要求を送信し、*provisioningState* 値を確認します。 この値は、プロビジョニング中は *ProvisioningAccount*、完了時は *Succeeded* になります。
 
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-   Authorization: Bearer <token>
-   ```
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
+  Authorization: Bearer <token>
+  ```
 
-   **Response**
+  **Response**
 
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-id"
-       },
-     "sku": {
-       "name": "capacityReservation",
-       "capacity": 1000,
-       "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-       },
-     "properties": {
-       "provisioningState": "ProvisioningAccount",
-       "billingType": "cluster",
-       "clusterId": "cluster-id"
-       },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned",
+      "tenantId": "tenant-id",
+      "principalId": "principal-id"
+    },
+    "sku": {
+      "name": "capacityreservation",
+      "capacity": 500
+    },
+    "properties": {
+      "provisioningState": "ProvisioningAccount",
+      "clusterId": "cluster-id",
+      "billingType": "Cluster",
+      "lastModifiedDate": "last-modified-date",
+      "createdDate": "created-date",
+      "isDoubleEncryptionEnabled": false,
+      "isAvailabilityZonesEnabled": false,
+      "capacityReservationProperties": {
+        "lastSkuUpdate": "last-sku-modified-date",
+        "minCapacity": 500
+      }
+    },
+    "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+    "name": "cluster-name",
+    "type": "Microsoft.OperationalInsights/clusters",
+    "location": "cluster-region"
+  }
+  ```
 
-*principalId* GUID は、"*クラスター*" リソースのマネージド ID サービスによって生成されます。
+*principalId* GUID は、*クラスター* 作成時にマネージド ID サービスによって生成されます。
 
 ## <a name="link-a-workspace-to-cluster"></a>ワークスペースをクラスターにリンクする
 
 ワークスペースが専用クラスターにリンクされている場合、ワークスペースに取り込まれた新しいデータは新しいクラスターにルーティングされ、既存のデータは既存のクラスターに残ります。 専用クラスターがカスタマー マネージド キー (CMK) を使用して暗号化されている場合は、新しいデータのみがキーで暗号化されます。 この違いはユーザーから分離されています。ユーザーは、システムがバックエンドでクラスター間クエリを実行している間、通常どおりにワークスペースを照会するだけです。
 
-クラスターは最大 100 のワークスペースにリンクできます。 リンクされたワークスペースは、クラスターと同じリージョンにあります。 システムのバックエンドを保護し、データの断片化を避けるために、ワークスペースを 1 か月に 3 回以上クラスターにリンクすることはできません。
+クラスターは最大 1,000 のワークスペースにリンクできます。 リンクされたワークスペースは、クラスターと同じリージョンにあります。 システムのバックエンドを保護し、データの断片化を避けるために、ワークスペースを 1 か月に 3 回以上クラスターにリンクすることはできません。
 
 リンク操作を実行するには、ワークスペースと "*クラスター*" リソースの両方に対する次の "書き込み" アクセス許可を持っている必要があります。
 
@@ -215,7 +223,7 @@ Get-Job -Command "Set-AzOperationalInsightsLinkedService" | Format-List -Propert
 *Send*
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2021-06-01 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -232,9 +240,7 @@ Content-type: application/json
 
 ### <a name="check-workspace-link-status"></a>ワークスペースのリンク状態を確認する
   
-カスタマー マネージド キーを使用する場合、取り込まれたデータは、関連付け操作の後、マネージド キーで暗号化された状態で格納されます。これが完了するには最大 90 分かかることがあります。 
-
-ワークスペースの関連付けの状態は、次の 2 つの方法で確認できます。
+カスタマー マネージド キーを使用してクラスターが構成されている場合、リンク操作の完了後にワークスペースに取り込まれたデータは、マネージド キーで暗号化された状態で格納されます。 ワークスペースのリンク操作が完了するには最大 90 分かかる場合があります。また、状態は次の 2 つの方法で確認できます。
 
 - 応答から Azure-AsyncOperation URL 値をコピーし、非同期操作と状態のチェックに従います。
 
@@ -243,7 +249,7 @@ Content-type: application/json
 **CLI**
 
 ```azurecli
-az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
+az monitor log-analytics workspace show --resource-group "resource-group-name" --workspace-name "workspace-name"
 ```
 
 **PowerShell**
@@ -257,7 +263,7 @@ Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Nam
 *Call*
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2021-06-01
 Authorization: Bearer <token>
 ```
 
@@ -289,7 +295,7 @@ Authorization: Bearer <token>
   "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
   "name": "workspace-name",
   "type": "Microsoft.OperationalInsights/workspaces",
-  "location": "region-name"
+  "location": "region"
 }
 ```
 
@@ -301,7 +307,7 @@ Authorization: Bearer <token>
 - **billingType** - *billingType* プロパティによって、"*クラスター*" リソースとそのデータの課金の帰属が決まります。
   - **クラスター** (既定) - クラスターのコストは、"*クラスター*" リソースに帰属します。
   - **ワークスペース** - クラスターのコストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データがコミットメント レベルを下回る場合に使用量の一部が "*クラスター*" リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
-  - **Identity** - キー コンテナーへの認証に使用する ID。 System-assigned (システム割り当て) または User-assigned (ユーザー割り当て) のいずれかです。
+  - **Identity** - Key Vault への認証に使用する ID。 System-assigned (システム割り当て) または User-assigned (ユーザー割り当て) のいずれかです。
 
 >[!IMPORTANT]
 >クラスターの更新では、同じ操作に ID とキー識別子の詳細の両方を含めることをしないでください。 両方の更新が必要な場合、更新は 2 つの連続する操作で行ってください。
@@ -327,45 +333,47 @@ Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
 
 *Call*
 
-  ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2021-06-01
+Authorization: Bearer <token>
+```
 
 *Response*
   
-  ```json
-  {
-    "value": [
-      {
-        "identity": {
-          "type": "SystemAssigned",
-          "tenantId": "tenant-id",
-          "principalId": "principal-Id"
-        },
-        "sku": {
-          "name": "capacityReservation",
-          "capacity": 1000,
-          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-          },
-        "properties": {
-           "keyVaultProperties": {
-              "keyVaultUri": "https://key-vault-name.vault.azure.net",
-              "keyName": "key-name",
-              "keyVersion": "current-version"
-              },
-          "provisioningState": "Succeeded",
-          "billingType": "cluster",
-          "clusterId": "cluster-id"
-        },
-        "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
-        "name": "cluster-name",
-        "type": "Microsoft.OperationalInsights/clusters",
-        "location": "region-name"
-      }
-    ]
-  }
-  ```
+```json
+{
+  "value": [
+    {
+      "identity": {
+        "type": "SystemAssigned",
+        "tenantId": "tenant-id",
+        "principalId": "principal-id"
+      },
+      "sku": {
+        "name": "capacityreservation",
+        "capacity": 500
+      },
+      "properties": {
+        "provisioningState": "Succeeded",
+        "clusterId": "cluster-id",
+        "billingType": "Cluster",
+        "lastModifiedDate": "last-modified-date",
+        "createdDate": "created-date",
+        "isDoubleEncryptionEnabled": false,
+        "isAvailabilityZonesEnabled": false,
+        "capacityReservationProperties": {
+          "lastSkuUpdate": "last-sku-modified-date",
+          "minCapacity": 500
+        }
+      },
+      "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+      "name": "cluster-name",
+      "type": "Microsoft.OperationalInsights/clusters",
+      "location": "cluster-region"
+    }
+  ]
+}
+```
 
 ### <a name="get-all-clusters-in-subscription"></a>サブスクリプション内のすべてのクラスターを取得する
 
@@ -386,7 +394,7 @@ Get-AzOperationalInsightsCluster
 *Call*
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
+GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2021-06-01
 Authorization: Bearer <token>
 ```
     
@@ -394,62 +402,60 @@ Authorization: Bearer <token>
     
 "リソース グループ内のクラスター" に対するものと同じですが、サブスクリプション スコープです。
 
-
-
 ### <a name="update-commitment-tier-in-cluster"></a>クラスター内のコミットメント レベルを更新する
 
-リンクされたワークスペースへのデータ量が時間の経過と共に変化し、コミットメント レベルを適切に更新する必要があります。 このレベルは GB 単位で指定し、1 日あたり 1,000 GB、2,000 GB、5,000 GB のいずれかの値を設定できます。 完全な REST 要求本文を指定する必要はなく、SKU を含める必要があることに注意してください。
+リンクされたワークスペースへのデータ量が時間の経過と共に変化し、コミットメント レベルを適切に更新する必要があります。 このレベルは GB 単位で指定し、1 日あたり 500 GB、1,000 GB、2,000 GB、5,000 GB のいずれかの値を設定できます。 完全な REST 要求本文を指定する必要はなく、SKU を含める必要があることに注意してください。
 
 **CLI**
 
 ```azurecli
-az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity 1000
+az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity 500
 ```
 
 **PowerShell**
 
 ```powershell
-Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 1000
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 500
 ```
 
 **REST**
 
 *Call*
 
-  ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  Content-type: application/json
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
+Authorization: Bearer <token>
+Content-type: application/json
 
-  {
-    "sku": {
-      "name": "capacityReservation",
-      "Capacity": 2000
-    }
+{
+  "sku": {
+    "name": "capacityReservation",
+    "Capacity": 2000
   }
-  ```
+}
+```
 
 ### <a name="update-billingtype-in-cluster"></a>クラスターの billingType を更新する
 
 *billingType* プロパティによって、クラスターとそのデータの課金の属性が決まります。
-- *cluster* (既定) - 課金は、クラスター リソースをホストするサブスクリプションに帰属します
-- *workspaces* - 課金は、ワークスペースをホストするサブスクリプションに比例的に帰属します
+- *Cluster* (既定) - 課金は、クラスター リソースに帰属します
+- *Workspaces* - 課金は、リンクされたワークスペースに比例的に帰属します。 すべてのワークスペースのデータ ボリュームがコミットメント レベルを下回っている場合、残りのボリュームはクラスターに帰属します
 
 **REST**
 
 *Call*
 
-  ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  Content-type: application/json
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
+Authorization: Bearer <token>
+Content-type: application/json
 
-  {
-    "properties": {
-      "billingType": "cluster",
-      }  
-  }
-  ```
+{
+  "properties": {
+    "billingType": "Workspaces",
+    }  
+}
+```
 
 ### <a name="unlink-a-workspace-from-cluster"></a>クラスターからワークスペースのリンクを解除する
 
@@ -461,7 +467,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -Cl
 **CLI**
 
 ```azurecli
-az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "MyWorkspace" --name cluster
+az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "workspace-name" --name cluster
 ```
 
 **PowerShell**
@@ -490,18 +496,18 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 次の PowerShell コマンドを使用して、クラスターを削除します。
 
-  ```powershell
-  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
-  ```
+```powershell
+Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+```
 
 **REST**
 
 次の REST 呼び出しを使用して、クラスターを削除します。
 
-  ```rst
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
+```rst
+DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
+Authorization: Bearer <token>
+```
 
   **Response**
 
@@ -524,7 +530,7 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 - ロックボックスは、現在、中国では使用できません。 
 
 - [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、サポートされているリージョンで 2020 年 10 月以降に作成されたクラスターに対して自動的に構成されます。 クラスターが二重暗号化されるように構成されているかどうかを確認するには、クラスターに対して GET 要求を送信し、二重暗号化が有効になっているクラスターの `isDoubleEncryptionEnabled` の値が `true` かどうかを検査します。 
-  - クラスターを作成したときに、「<リージョン名> ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加すると、二重暗号化なしでクラスターを作成できます。
+  - クラスターを作成したときに、「"リージョン名" ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加すると、二重暗号化なしでクラスターを作成できます。
   - クラスターの作成後に、二重暗号化の設定を変更することはできません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -546,10 +552,9 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
   -  400 -- The body of the request is null or in bad format. (400 -- 要求の本文が null であるか無効な形式です。)
   -  400 -- SKU name is invalid. (400 -- SKU 名が無効です。) SKU 名を capacityReservation に設定してください。
   -  400 -- Capacity was provided but SKU is not capacityReservation. (400 -- 容量が指定されましたが、SKU は capacityReservation ではありません。) SKU 名を capacityReservation に設定してください。
-  -  400 -- Missing Capacity in SKU. (400 -- SKU に容量がありません。) 容量の値を 1000 以上に指定してください。100 (GB) 刻みで指定できます。
-  -  400 -- Capacity in SKU is not in range. (400 -- SKU の容量が範囲内ではありません。) 最小 1000 から、ワークスペースの [使用量と推定コスト] で設定可能な許容される最大容量までにする必要があります。
+  -  400 -- Missing Capacity in SKU. (400 -- SKU に容量がありません。) 容量の値を 1 日あたり 500 GB、1,000 GB、2,000 GB、または 5,000 GB に設定してください。
   -  400 -- Capacity is locked for 30 days. (400 -- 容量は 30 日間ロックされます。) 容量の減少は更新の 30 日後に許可されます。
-  -  400 -- No SKU was set. (400 -- SKU が設定されていませんでした。) SKU 名を capacityReservation にし、容量の値を 100 (GB) 刻みで 1000 以上に設定してください。
+  -  400 -- No SKU was set. (400 -- SKU が設定されていませんでした。) SKU 名を capacityReservation にし、容量の値を 1 日あたり 500 GB、1,000 GB、2,000 GB、または 5,000 GB に設定してください。
   -  400 -- Identity is null or empty. (400 -- ID が null または空です。) systemAssigned の種類の ID を設定してください。
   -  400 -- KeyVaultProperties are set on creation. (400 -- 作成時に KeyVaultProperties が設定されます。) クラスターの作成後に KeyVaultProperties を更新してください。
   -  400 -- Operation cannot be executed now. (400 -- 現在、操作を実行できません。) 非同期操作は成功以外の状態になっています。 更新操作を実行する前に、クラスターでの操作が完了している必要があります。

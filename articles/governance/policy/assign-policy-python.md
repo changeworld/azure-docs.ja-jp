@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:Python を使用した新しいポリシー割り当て
 description: このクイックスタートでは、Python を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 03/02/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: f68e114571ea241f2051125862f89a7dc77dfce3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 59f61e05afd9e3abb0aa6bb6a76f632187940412
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747613"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323496"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>クイック スタート:Python を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
