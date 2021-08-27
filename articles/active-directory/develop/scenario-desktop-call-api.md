@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b5b52b679506a5c8b4d183c9ad5925c20238621c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9cfd26b8cca62c106cd389e4e9e33d058a46c842
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798920"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681276"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出すデスクトップ アプリ:Web API を呼び出す
 
@@ -34,8 +34,16 @@ ms.locfileid: "104798920"
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
+PublicClientApplication pca = PublicClientApplication.builder(clientId)
+        .authority(authority)
+        .build();
+
+// Acquire a token, acquireTokenHelper would call publicClientApplication's acquireTokenSilently then acquireToken
+// see https://github.com/Azure-Samples/ms-identity-java-desktop for a full example
+IAuthenticationResult authenticationResult = acquireTokenHelper(pca);
+
 // Set the appropriate header fields in the request header.
-conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+conn.setRequestProperty("Authorization", "Bearer " + authenticationResult.accessToken);
 conn.setRequestProperty("Accept", "application/json");
 
 String response = HttpClientHelper.getResponseStringFromConn(conn);
