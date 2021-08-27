@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory を使用して Teradata Vantage からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Data Factory サービスの Teradata コネクタを使用すると、Teradata Vantage から、Data Factory によってサポートされているデータ ストアに、シンクとしてデータをコピーすることができます。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: jianleishen
-ms.openlocfilehash: 9ebf320dc92ef8a39bc8b7569272ce2d0e2b2a68
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 2c8665217aa1f6bcf73caa59e6b7e35ffe193699
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486757"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638967"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 

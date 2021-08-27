@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 815b43e88118a67f4e1c0f86ab0e7a10dcc70407
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 2aa1d42e1fed1bfc9c6eb495bf0f143592e3ad53
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583488"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689590"
 ---
 # <a name="use-the-sample-datasets-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) におけるサンプル データセットの使用
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 [top]: #machine-learning-sample-datasets
 

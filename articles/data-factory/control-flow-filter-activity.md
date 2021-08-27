@@ -1,18 +1,21 @@
 ---
 title: Azure Data Factory のフィルター アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
 description: フィルター アクティビティは、入力をフィルター処理します。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 6a488fff5e5c5f75697e787cdcede4de080a04ba
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 2ec871aeb6fb7146e66c3d3124ed8bba3400d4c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906275"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638896"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
 パイプラインでフィルター アクティビティを使用して、入力配列にフィルター式を適用することができます。 
