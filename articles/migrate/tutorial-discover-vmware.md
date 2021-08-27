@@ -5,20 +5,20 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: d2b71b227500644a63eb116493abeba7576eb7eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 324e30df7f63f5ca0abf7abd50ab890495e4e7cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464945"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721969"
 ---
-# <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate の検出および評価を使用して VMware 環境で実行されているサーバーを検出する
+# <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>チュートリアル: Azure Migrate を使用して VMware 環境で実行されているサーバーを検出する
 
 Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。
 
-このチュートリアルでは、Azure Migrate の検出および評価ツール、軽量の Azure Migrate アプライアンスを使用して、VMware 環境で実行されているサーバーを検出する方法について説明します。 このアプライアンスを vCenter Server インスタンスで実行されるサーバーとしてデプロイして、サーバーとそのパフォーマンス メタデータ、サーバー上で実行されているアプリケーション、サーバーの依存関係、SQL Server インスタンスおよびデータベースを継続的に検出します。
+このチュートリアルでは、Azure Migrate の検出および評価ツール、軽量の Azure Migrate アプライアンスを使用して、VMware 環境で実行されているサーバーを検出する方法について説明します。 このアプライアンスを vCenter Server インスタンスで実行されるサーバーとしてデプロイして、サーバーとそのパフォーマンス メタデータ、サーバー上で実行されているアプリケーション、サーバーの依存関係、ASP.NET Web アプリ、SQL Server インスタンスおよびデータベースを継続的に検出します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 --- | ---
 **vCenter Server/ESXi ホスト** | vCenter Server バージョン 6.7、6.5、6.0 または 5.5 を実行しているサーバーが必要です。<br /><br /> サーバーは、バージョン 5.5 以降が実行されている ESXi ホストでホストされている必要があります。<br /><br /> vCenter Server で、TCP ポート 443 での受信接続を許可して、アプライアンスが構成とパフォーマンスのメタデータを収集できるようにします。<br /><br /> 既定では、アプライアンスはポート 443 で vCenter Server に接続します。 vCenter Server を実行するサーバーが別のポートでリッスンする場合は、アプライアンス構成マネージャーで vCenter Server の詳細を指定するときにポートを変更できます。<br /><br /> ESXi ホストでは、インストールされているアプリケーションの検出とエージェントレスの依存関係分析をサーバーで実行するために、TCP ポート 443 で受信アクセスが許可されていることを確認します。
 **Azure Migrate アプライアンス** | vCenter Server では、Azure Migrate アプライアンスをホストするサーバーにこれらのリソースを割り当てる必要があります。<br /><br /> - 32 GB の RAM、8 vCPU、約 80 GB のディスク ストレージ。<br /><br /> - 外部仮想スイッチと、アプライアンス サーバー上のインターネット アクセス (直接またはプロキシ経由)。
-**サーバー** | 構成とパフォーマンス メタデータの検出では、Windows および Linux OS のすべてのバージョンがサポートされています。 <br /><br /> サーバー上でアプリケーションを検出するために、Windows および Linux OS のすべてのバージョンがサポートされています。 [エージェントレスの依存関係分析でサポートされている OS バージョン](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)をご確認ください。<br /><br /> インストールされているアプリケーションを検出してエージェントレスの依存関係を分析するには、VMware Tools (バージョン 10.2.1 以降) がサーバーにインストールされ、実行されている必要があります。 Windows サーバーには、PowerShell バージョン 2.0 以降がインストールされている必要があります。<br /><br /> SQL Server インスタンスおよびデータベースを検出するには、[サポート対象の SQL Server および Windows OS のバージョンとエディション](migrate-support-matrix-vmware.md#sql-server-instance-and-database-discovery-requirements)のほか、Windows の認証メカニズムを確認してください。
+**サーバー** | 構成とパフォーマンス メタデータの検出では、Windows および Linux OS のすべてのバージョンがサポートされています。 <br /><br /> サーバー上でアプリケーションを検出するために、Windows および Linux OS のすべてのバージョンがサポートされています。 [エージェントレスの依存関係分析でサポートされている OS バージョン](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)をご確認ください。<br /><br /> インストールされているアプリケーションを検出してエージェントレスの依存関係を分析するには、VMware Tools (バージョン 10.2.1 以降) がサーバーにインストールされ、実行されている必要があります。 Windows サーバーには、PowerShell バージョン 2.0 以降がインストールされている必要があります。<br /><br /> SQL Server インスタンスおよびデータベースを検出するには、[サポート対象の SQL Server および Windows OS のバージョンとエディション](migrate-support-matrix-vmware.md#sql-server-instance-and-database-discovery-requirements)のほか、Windows の認証メカニズムを確認してください。<br /><br /> IIS Web サーバーで実行されている ASP.NET Web アプリを検出するには、[サポートされている Windows OS と IIS バージョン](migrate-support-matrix-vmware.md#aspnet-web-apps-discovery-requirements)を確認してください。
 
 ## <a name="prepare-an-azure-user-account"></a>Azure ユーザー アカウントを準備する
 
@@ -105,13 +105,13 @@ VMware vSphere Web Client で、vCenter Server に使用する読み取り専用
 
 ### <a name="create-an-account-to-access-servers"></a>サーバーにアクセスするためのアカウントを作成する
 
-サーバー上の自分のユーザー アカウントには、インストールされているアプリケーションの検出、エージェントレスの依存関係分析、SQL Server インスタンスおよびデータベースの検出を開始するために必要なアクセス許可が付与されていなければなりません。 このユーザー アカウント情報は、アプライアンス構成マネージャーで指定できます。 アプライアンスは、サーバーにエージェントをインストールしません。
+サーバー上の自分のユーザー アカウントには、インストールされているアプリケーションの検出、エージェントレスの依存関係分析、Web アプリと SQL Server インスタンスおよびデータベースの検出を開始するために必要なアクセス許可が付与されていなければなりません。 このユーザー アカウント情報は、アプライアンス構成マネージャーで指定できます。 アプライアンスは、サーバーにエージェントをインストールしません。
 
-* Windows サーバーの場合は、サーバーに対する管理者アクセス許可が付与されたアカウント (ローカルまたはドメイン) を作成します。 SQL Server インスタンスおよびデータベースを検出するには、Windows または SQL Server アカウントが sysadmin サーバー ロールのメンバーである必要があります。 [必要なロールをユーザー アカウントに割り当てる](/sql/relational-databases/security/authentication-access/server-level-roles)方法をご確認ください。
+* Windows サーバーおよび Web アプリの検出の場合は、サーバーに対する管理者アクセス許可が付与されたアカウント (ローカルまたはドメイン) を作成します。 SQL Server インスタンスおよびデータベースを検出するには、Windows または SQL Server アカウントが sysadmin サーバー ロールのメンバーである必要があります。 [必要なロールをユーザー アカウントに割り当てる](/sql/relational-databases/security/authentication-access/server-level-roles)方法をご確認ください。
 * Linux サーバーの場合は、ルート権限が付与されたアカウントを作成します。 または、/bin/netstat および /bin/ls ファイルに CAP_DAC_READ_SEARCH および CAP_SYS_PTRACE アクセス許可があるアカウントを作成できます。
 
 > [!NOTE]
-> Azure Migrate アプライアンス構成マネージャーに複数のサーバー資格情報を追加して、インストールされているアプリケーションの検出、エージェントレスの依存関係分析、および SQL Server インスタンスおよびデータベースの検出を実行できます。 複数のドメイン、Windows (ドメイン以外)、Linux (ドメイン以外)、または SQL Server の認証資格情報を追加できます。 [サーバーの資格情報を追加する](add-server-credentials.md)方法をご確認ください。
+> Azure Migrate アプライアンス構成マネージャーに複数のサーバー資格情報を追加して、インストールされているアプリケーションの検出、エージェントレスの依存関係分析、Web アプリと SQL Server インスタンスおよびデータベースの検出を実行できます。 複数のドメイン、Windows (ドメイン以外)、Linux (ドメイン以外)、または SQL Server の認証資格情報を追加できます。 [サーバーの資格情報を追加する](add-server-credentials.md)方法をご確認ください。
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
 
@@ -119,7 +119,7 @@ VMware vSphere Web Client で、vCenter Server に使用する読み取り専用
 
 1. Azure portal で、 **[すべてのサービス]** を選択し、**Azure Migrate** を探します。
 1. **[サービス]** で **[Azure Migrate]** を選択します。
-1. **[概要]** で、移行先に応じて次のいずれかのオプションを選択します: **[Windows, Linux and SQL Server]\(Windows、Linux、SQL Server\)** 、 **[SQL Server (only)]\(SQL Server (のみ)\)** 、または **[その他のシナリオを探索する]** 。 
+1. **[概要]** で、移行の目標に応じて次のいずれかのオプションを選択します: **[Servers, databases and web apps]\(サーバー、データベース、および Web アプリ\)** 、 **[SQL Server (only)]\(SQL Server (のみ)\)** 、または **[その他のシナリオを探索する]** 。
 1. **[プロジェクトの作成]** を選択します。
 1. **[プロジェクトの作成]** で、Azure サブスクリプションとリソース グループを選択します。 リソース グループがない場合は作成します。
 1. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成する地理的な場所を指定します。 [パブリック クラウドのサポート対象地域](migrate-support-matrix.md#supported-geographies-public-cloud)と[政府機関向けクラウドのサポート対象地域](migrate-support-matrix.md#supported-geographies-azure-government)をご確認ください。
@@ -151,7 +151,7 @@ OVA テンプレートを使用してアプライアンスを設定するには�
 
 #### <a name="generate-the-project-key"></a>プロジェクト キーを生成する
 
-1. **[移行の目標]** で、 **[Windows, Linux and SQL Servers]\(Windows、Linux、SQL Server\)**  >  **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\)**  >  **[検出]** の順に選択します。
+1. **[移行の目標]** で、 **[Servers, databases and web apps]\(サーバー、データベース、および Web アプリ\)**  >  **[Azure Migrate: Discovery and Assessment]**  >  **[検出]** の順に選択します。
 1. **[Discover servers]\(サーバーの検出\)** で、 **[お使いのサーバーは仮想化されていますか?]** >  **[はい。VMware vSphere Hypervisor を使用します]** の順に選択します。
 1. **[1: プロジェクト キーを生成します]** で、VMware 環境内のサーバーを検出するために設定する Azure Migrate アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
 1. 必要な Azure リソースの作成を開始するには、 **[キーの生成]** を選択します。 リソースの作成中は、 **[検出]** ペインを閉じないようにしてください。
@@ -269,7 +269,7 @@ OVA ファイルをデプロイする前に、ファイルが安全であるこ�
 
 ### <a name="provide-server-credentials"></a>サーバーの資格情報を指定する
 
-**[Step 3: Provide server credentials to perform software inventory, agentless dependency analysis and discovery of SQL Server instances and databases]\(手順 3: サーバーの資格情報を指定して、ソフトウェア インベントリ、エージェントレスの依存関係分析、SQL Server インスタンスおよびデータベースの検出を実行する\)** で、複数のサーバー資格情報を指定できます。 これらのアプライアンス機能を使用しない場合は、この手順をスキップして、vCenter Server の検出に進むことができます。 このオプションはいつでも変更できます。
+**[Step 3: Provide server credentials to perform software inventory, agentless dependency analysis, discovery of SQL Server instances and databases and discovery of ASP.NET web apps in your VMware environment.]\(手順 3: サーバーの資格情報を指定して、ソフトウェア インベントリ、エージェントレスの依存関係分析、SQL Server インスタンスおよびデータベースの検出、VMware 環境での ASP.NET Web アプリの検出を実行する\)** で、複数のサーバー資格情報を指定できます。 これらのアプライアンス機能を使用しない場合は、この手順をスキップして、vCenter Server の検出に進むことができます。 このオプションはいつでも変更できます。
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="ソフトウェア インベントリ、依存関係分析、S Q L サーバー検出を行うための資格情報を指定する方法を示すスクリーンショット。":::
 
@@ -288,7 +288,7 @@ OVA ファイルをデプロイする前に、ファイルが安全であるこ�
     **[保存]** を選択します。
 
     ドメイン資格情報を使用することにした場合は、ドメインの FQDN の入力も必要です。 FQDN は、そのドメイン内の Active Directory インスタンスと共に資格情報の信頼性を検証するために必要です。
-1. インストールされているアプリケーションの検出、エージェントレスの依存関係分析、SQL Server インスタンスおよびデータベースの検出のために、アカウントで[必要なアクセス許可](add-server-credentials.md#required-permissions)を確認します。
+1. インストールされているアプリケーションの検出、エージェントレスの依存関係分析、Web アプリと SQL Server インスタンスおよびデータベースの検出のために、アカウントで[必要なアクセス許可](add-server-credentials.md#required-permissions)を確認します。
 1. 一度に複数の資格情報を追加するには、 **[さらに追加]** を選択して資格情報を保存し、さらに資格情報を追加します。
     **[保存]** または **[さらに追加]** を選択すると、アプライアンスによって、認証のためにドメインの Active Directory インスタンスと共にドメイン資格情報が検証されます。 検証は、アカウントのロックアウトを避けるため、追加が行われるたびに実行されます。これは、各サーバーへの資格情報のマップがアプライアンスによって繰り返されるためです。
 
@@ -311,14 +311,24 @@ vCenter Server の検出を開始するには、 **[検出の開始]** を選択
 * [ソフトウェア インベントリ](how-to-discover-applications.md)では、サーバー上で実行されている SQL Server インスタンスを特定します。 そこで収集された情報を使用し、アプライアンスで指定された Windows 認証資格情報または SQL Server 認証資格情報を介して、アプライアンスから SQL Server インスタンスへの接続が試行されます。 次に、SQL Server データベースとそのプロパティに関するデータが収集されます。 SQL Server の検出は 24 時間ごとに実行されます。
 * アプライアンスは、ネットワークの見通しがある SQL Server インスタンスのみに接続できますが、ソフトウェア インベントリ単体ではネットワークの見通しが必要ない場合があります。
 * インストールされているアプリケーションの検出には、15 分以上かかることがあります。 期間は検出されたサーバーの数によって異なります。 500 台のサーバーでは、検出されたインベントリがポータルの Azure Migrate プロジェクトに表示されるまで約 1 時間かかります。
+* [ソフトウェア インベントリ](how-to-discover-applications.md)は、検出されたサーバーに存在する Web サーバーの役割を識別します。 サーバーで Web サーバーの役割が有効になっている場合、Azure Migrate により、サーバーで Web アプリの検出が実行されます。 Web アプリ構成データは 24 時間に 1 回更新されます。
 * ソフトウェア インベントリの間、エージェントレスの依存関係分析のために、追加されたサーバー資格情報がサーバーに対して繰り返され、検証されます。 サーバーの検出が完了すると、ポータルでサーバーに対するエージェントレスの依存関係分析を有効にできます。 [エージェントレスの依存関係分析](how-to-create-group-machine-dependencies-agentless.md)を有効にするように選択できるのは、検証が成功したサーバーだけです。
-* 検出の開始後 24 時間以内に、SQL Server インスタンスおよびデータベースのデータがポータルに表示され始めます。
+* 検出を開始してから 24 時間以内に、ASP.NET Web アプリと、SQL Server インスタンスおよびデータベースのデータがポータルに表示され始めます。
 * Azure Migrate の既定では、SQL インスタンスに接続する最も安全な方法が使用されます。つまり、Azure Migrate により、TrustServerCertificate プロパティが `true` に設定され、Azure Migrate アプライアンスとソース SQL Server インスタンス間の通信が暗号化されます。 さらに、トランスポート層で SSL を使用してチャネルが暗号化され、証明書チェーンによる信頼性の検証がバイパスされます。 そのため、証明書のルート証明機関を信頼するようにアプライアンス サーバーを設定する必要があります。 ただし、アプライアンス上で **[Edit SQL Server connection properties]\(SQL Server の接続プロパティの編集\)** を選択して、接続設定を変更することができます。何を選択すべきかについては、[詳細](https://go.microsoft.com/fwlink/?linkid=2158046)のページを参照してください。
 
     :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="SQL Server の接続プロパティを編集する方法を示すスクリーンショット。":::
+
+vCenter Server の検出を開始するには、 **[検出の開始]** を選択します。 検出が正常に開始された後、ソース テーブルで vCenter Server の IP アドレスまたは FQDN を見て検出状態を確認できます。
+
+### <a name="view-discovered-data"></a>検出されたデータを表示する
+
+1. Azure Migrate ポータルに戻ります。
+1. 下のスクリーンショットに示されているように [最新の情報に更新] をクリックして、検出されたデータを表示します。
+    :::image type="content" source="./media/tutorial-discover-vmware/discovery-assessment-tile.png" alt-text="検出および評価タイルでの更新方法を示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次の手順
 
 - [Azure VM に移行するためにサーバーを評価](./tutorial-assess-vmware-azure-vm.md)する方法について学習します。
 - [Azure SQL に移行するために、SQL Server を実行しているサーバーを評価](./tutorial-assess-sql.md)する方法について学習します。
+- [Azure App Service に移行するために Web アプリを評価](./tutorial-assess-webapps.md)する方法について学習します。
 - 検出中に [Azure Migrate アプライアンスによって収集されるデータ](migrate-appliance.md#collected-data---vmware)を確認します。
