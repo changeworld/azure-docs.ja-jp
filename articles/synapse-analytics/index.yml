@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 12/01/2020
-  ms.openlocfilehash: 3f0b7b778aa92661130fc132af33b7aa88550e97
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.openlocfilehash: 92caeb92dbe5d162ba4e590a0a9847abb1224863
+  ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112452568"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121861834"
 landingContent:
 - title: Azure Synapse Analytics について
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: Azure Synapse Link for Azure Cosmos DB
-      url: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      url: ../cosmos-db/synapse-link.md?context=/azure/synapse-analytics/context/context
   - linkListType: quickstart
     links:
     - text: Azure Cosmos DB 用の Azure Synapse Link に接続する
@@ -104,7 +104,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: パイプラインとアクティビティ
-      url: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      url: ../data-factory/concepts-pipelines-activities.md?context=/azure/synapse-analytics/context/context
   - linkListType: quickstart
     links:
     - text: データを変換する

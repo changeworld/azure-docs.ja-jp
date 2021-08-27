@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 824916f3e9de2007e683ae572ccfad9401f0f50d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: eb76af4eb2721390832dd2f26d4220ddba7618c2
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457233"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861426"
 ---
 ### <a name="list-all-azure-arc-enabled-kubernetes-clusters-with-azure-monitor-extension"></a>Azure Monitor 拡張機能のあるすべての Azure Arc 対応 Kubernetes クラスターを一覧表示する
 

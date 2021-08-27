@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: trbye
-ms.openlocfilehash: 4725a1a9cf2cb74655a37ac27a0a86f10d7f4bb9
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.author: lajanuar
+ms.openlocfilehash: 6d00bf01bcbcc344e4f066f3dab7d140af042a94
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052930"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071768"
 ---
 このクイックスタートでは、[Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) と Language Understanding (LUIS) サービスを使用して、マイクによってキャプチャされたオーディオ データから意図を認識します。 具体的には、Speech SDK を使用して音声をキャプチャし、LUIS のあらかじめ構築されたドメインを使用してホーム オートメーションに対する意図 (照明のオン/オフなど) を特定します。 
 

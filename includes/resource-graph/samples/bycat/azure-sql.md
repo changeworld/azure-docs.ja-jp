@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8f44ee8ef31f8fd649edfa0aa332dbaf16ee4de1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7042200d62337aeaa3de28189758bc3bb8f48ba6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457269"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861915"
 ---
 ### <a name="list-sql-databases-and-their-elastic-pools"></a>SQL データベースとそのエラスティック プールを一覧表示する
 

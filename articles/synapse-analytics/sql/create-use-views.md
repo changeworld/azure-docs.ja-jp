@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d1b7f941fbd7d9c6a6b654992e86ab0379e11e28
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 01a48da50391c6d3e826b81c4174936c95f64462
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303816"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597218"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してビューを作成および使用する
 
@@ -121,8 +121,6 @@ FROM
 
 > [!div class="mx-imgBorder"]
 >![Yellow Taxi Delta Lake フォルダー](./media/shared/yellow-taxi-delta-lake.png)
-
-パーティション分割された Delta Lake データのクエリを実行する場合は、`OPENROWSET` 関数内で `WITH` 句を使用しないでください。 プレビュー段階の既知の問題により、`WITH` 句において[基になるパーティション分割列の値が正しく返されません](resources-self-help-sql-on-demand.md#partitioning-column-returns-null-values)。 (ビューなしで) `WITH` 句と共に `OPENROWSET` 関数を直接使用すると、パーティションの削除が正常に機能します。  
 
 Delta Lake はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
 

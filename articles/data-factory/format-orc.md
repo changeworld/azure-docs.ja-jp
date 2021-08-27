@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory での ORC 形式
+titleSuffix: Azure Data Factory & Azure Synapse
 description: このトピックでは、Azure Data Factory で ORC 形式を処理する方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jianleishen
-ms.openlocfilehash: 5e6ae001e626df52896f1e3289c7217e83cabb6f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2f4cf0464dd63510208bc29b87b1f131b1e3cc56
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090120"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637898"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory での ORC 形式
 

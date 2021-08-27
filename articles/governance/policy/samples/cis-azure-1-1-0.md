@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark 1.1.0 の規制コンプライアンスの詳細
 description: CIS Microsoft Azure Foundations Benchmark 1.1.0 規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: a0fd7ea4b015c04bf2bd108a13cb06dc5b4d0dde
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 16ac3cd8724645e440e1758d1e08d237cbcfc42d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114401857"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122604783"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure Foundations Benchmark 1.1.0 規制コンプライアンスの組み込みイニシアチブの詳細
 
@@ -174,7 +174,7 @@ ms.locfileid: "114401857"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
+|[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 
 ### <a name="ensure-that-security-contact-emails-is-set"></a>[セキュリティ連絡先の電子メール] が設定されていることを確認する
 
@@ -283,7 +283,7 @@ ms.locfileid: "114401857"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
+|[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 
 ### <a name="ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>SQL Server の TDE 保護機能が BYOK (自分のキーの使用) で暗号化されていることを確認する
 
@@ -672,9 +672,6 @@ ms.locfileid: "114401857"
 |[API アプリの実行に使用される "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
 |[関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
 |[Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |セキュリティ上の欠陥のため、または追加機能を組み込むために、HTTP の新しいバージョンが定期的にリリースされます。 新しいバージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用するために、最新の HTTP バージョンを Web アプリに使用します。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
-
-> [!NOTE]
-> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 
