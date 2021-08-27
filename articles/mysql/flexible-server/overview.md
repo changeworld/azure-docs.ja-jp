@@ -2,17 +2,17 @@
 title: 概要 - Azure Database for MySQL - フレキシブル サーバー
 description: MySQL Community Edition をベースとした、Microsoft クラウドのリレーショナル データベース サービスである Azure Database for MySQL フレキシブル サーバーについて説明します。
 author: savjani
-ms.service: mysql
 ms.author: pariks
+ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
-ms.date: 6/19/2021
-ms.openlocfilehash: b13dd8cb1965399d0d8ab19891a986fe2b585d4b
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.date: 08/10/2021
+ms.openlocfilehash: a215100ebc858d2f6f7e154ea81ed5e006d3d9a4
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403043"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252236"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -160,7 +160,7 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | 米国中部 | :heavy_check_mark: | :x: |
 | 米国東部 | :heavy_check_mark: | :heavy_check_mark: |
 | 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| フランス中部 | :heavy_check_mark: | :x:|
+| フランス中部 | :heavy_check_mark: | :heavy_check_mark:|
 | ドイツ中西部 | :heavy_check_mark: | :x: |
 | Japan East | :heavy_check_mark: | :heavy_check_mark: |
 | 韓国中部 | :heavy_check_mark: | :x: |
@@ -171,6 +171,11 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | 米国西部 | :heavy_check_mark: | :x: |
 | 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| オーストラリア南東部 | :heavy_check_mark: | :x: |
+| 南アフリカ北部 | :heavy_check_mark: | :x: |
+| 東アジア (香港) | :heavy_check_mark: | :x: |
+| インド中部 | :heavy_check_mark: | :x: |
+
 ## <a name="contacts"></a>連絡先
 
 Azure Database for MySQL フレキシブル サーバーについてのご質問やご提案については、Azure Database for MySQL チームまでメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。
@@ -192,4 +197,4 @@ Azure Database for MySQL - シングル サーバー デプロイ モードの�
 
 - 次の任意の言語を使って最初のアプリを作成します。
   - [Python](connect-python.md)
-  - [Php](connect-php.md)
+  - [PHP](connect-php.md)

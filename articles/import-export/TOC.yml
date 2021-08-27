@@ -26,7 +26,7 @@
       href: storage-import-export-encryption-key-portal.md
     - name: モニター
       items:
-        - name: ドライブの状態を表示する
+        - name: ジョブとドライブの状態を表示する
           href: storage-import-export-view-drive-status.md
         - name: ジョブの状態を表示する
           href: storage-import-export-tool-reviewing-job-status-v1.md
