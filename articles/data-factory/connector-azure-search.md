@@ -1,18 +1,20 @@
 ---
 title: 検索インデックスにデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Search インデックスにデータをコピーまたはプッシュする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: 7820232bc5f91d85ce24c9df8ebaa0a0bbc52342
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9ff0cdf1e54bb1ae943408eacfd92ed9f49f2be2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480216"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638752"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをコピーする
 

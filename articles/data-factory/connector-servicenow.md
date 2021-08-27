@@ -1,18 +1,20 @@
 ---
 title: ServiceNow からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ServiceNow からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 08/01/2019
-ms.openlocfilehash: 95d4fe599aa36c6f3057492014afd53f063c4537
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: df7f1a37ac5b6779220595609a81b76b01952097
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482869"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637957"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Data Factory を使用して ServiceNow からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -163,7 +165,7 @@ ServiceNow には 2 つの異なるスキーマがあります。1 つは **"Act
 
 ### <a name="index"></a>インデックス
 
-ServiceNow のテーブル インデックスは、クエリのパフォーマンスの向上に役立ちます。「[Create a table index](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html)」(テーブル インデックスを作成する) をご覧ください。
+ServiceNow のテーブル インデックスは、クエリのパフォーマンスの向上に役立ちます。「[Create a table index](https://docs.servicenow.com/bundle/quebec-platform-administration/page/administer/table-administration/task/t_CreateCustomIndex.html)」(テーブル インデックスを作成する) をご覧ください。
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

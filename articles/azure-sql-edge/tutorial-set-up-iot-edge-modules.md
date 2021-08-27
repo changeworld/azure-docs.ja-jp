@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 5d768fdc2540496769883d839cfbb4f009a2000c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: dab213cf240dd955f1aea2a545b5c25efcdef349
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077637"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751329"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge のモジュールと接続を設定する
 
@@ -45,15 +45,15 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
    | _フィールド_   | _Value_       |
    | -------   | -------       |
    | 名前      | レジストリ名 |
-   | Address   | ログイン サーバー  | 
-   | [ユーザー名] | ユーザー名      | 
-   | Password  | Password      | 
-  
+   | Address   | ログイン サーバー  |
+   | [ユーザー名] | ユーザー名      |
+   | Password  | Password      |
+
 ## <a name="build-push-and-deploy-the-data-generator-module"></a>データ ジェネレーター モジュールのビルド、プッシュ、およびデプロイ
 
 1. [プロジェクト ファイル](https://github.com/microsoft/sqlsourabh/tree/main/SQLEdgeSamples/IoTEdgeSamples/IronOreSilica)をお使いのマシンにクローンします。
 2. Visual Studio 2019 を使用して、ファイル **IronOre_Silica_Predict.sln** を開きます
-3. **deployment.template.json** 内のコンテナー レジストリの詳細を更新します 
+3. **deployment.template.json** 内のコンテナー レジストリの詳細を更新します
    ```json
    "registryCredentials":{
         "RegistryName":{
@@ -70,15 +70,15 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
         "tag":
     }
    ```
-5. デバッグ モードまたはリリース モードでプロジェクトを実行し、プロジェクトが問題なく実行できることを確認します 
+5. デバッグ モードまたはリリース モードでプロジェクトを実行し、プロジェクトが問題なく実行できることを確認します
 6. プロジェクト名を右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、プロジェクトをコンテナー レジストリにプッシュします。
-7. データ ジェネレーター モジュールを IoT Edge モジュールとしてエッジ デバイスにデプロイします。 
+7. データ ジェネレーター モジュールを IoT Edge モジュールとしてエッジ デバイスにデプロイします。
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge モジュールのデプロイ
 
-1. **[+ 追加]** 、 **[Marketplace モジュール]** の順にクリックして、Azure SQL Edge モジュールをデプロイします。 
+1. **[+ 追加]** 、 **[Marketplace モジュール]** の順にクリックして、Azure SQL Edge モジュールをデプロイします。
 
-2. **[IoT Edge モジュールの Marketplace]** ブレードで、*Azure SQL Edge* を検索して *[Azure SQL Edge Developer]* を選択します。 
+2. **[IoT Edge モジュールの Marketplace]** ブレードで、*Azure SQL Edge* を検索して *[Azure SQL Edge Developer]* を選択します。
 
 3. **[IoT Edge モジュール]** に新しく追加された *Azure SQL Edge* モジュールをクリックして、Azure SQL Edge モジュールを構成します。 構成オプションの詳細については、「[Azure SQL Edge のデプロイ](./deploy-portal.md)」を参照してください。
 
@@ -90,14 +90,14 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
 7. **[デバイスのモジュールを設定してください]** ページのルート ペインで、IoT Edge ハブ通信へのモジュールのルートを次のように指定します。 下記のルート定義でモジュール名を忘れずに更新してください。
 
-   ```
+   ```syntax
    FROM /messages/modules/<your_data_generator_module>/outputs/IronOreMeasures INTO
    BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
    次に例を示します。
 
-   ```
+   ```syntax
    FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")
    ```
 
@@ -126,15 +126,15 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
 4. **[ファイル]** メニュー タブで新しいノートブックを開くか、キーボード ショートカット Ctrl + N を使用します。
 
-5. [新しいクエリ] ウィンドウで、T-SQL ストリーミング ジョブを作成する次のスクリプトを実行します。 スクリプトを実行する前に、次の変数を変更してください。 
-   - *SQL_SA_Password:* Azure SQL Edge モジュールのデプロイ時に指定した MSSQL_SA_PASSWORD 値。 
-   
+5. [新しいクエリ] ウィンドウで、T-SQL ストリーミング ジョブを作成する次のスクリプトを実行します。 スクリプトを実行する前に、次の変数を変更してください。
+   - *SQL_SA_Password:* Azure SQL Edge モジュールのデプロイ時に指定した MSSQL_SA_PASSWORD 値。
+
    ```sql
    Use IronOreSilicaPrediction
    Go
 
    Declare @SQL_SA_Password varchar(200) = '<SQL_SA_Password>'
-   declare @query varchar(max) 
+   declare @query varchar(max)
 
    /*
    Create Objects Required for Streaming
@@ -144,22 +144,22 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
    If NOT Exists (select name from sys.external_file_formats where name = 'JSONFormat')
    Begin
-      CREATE EXTERNAL FILE FORMAT [JSONFormat]  
+      CREATE EXTERNAL FILE FORMAT [JSONFormat]
       WITH ( FORMAT_TYPE = JSON)
-   End 
+   End
 
 
    If NOT Exists (select name from sys.external_data_sources where name = 'EdgeHub')
    Begin
-      Create EXTERNAL DATA SOURCE [EdgeHub] 
+      Create EXTERNAL DATA SOURCE [EdgeHub]
       With(
          LOCATION = N'edgehub://'
       )
-   End 
+   End
 
    If NOT Exists (select name from sys.external_streams where name = 'IronOreInput')
    Begin
-      CREATE EXTERNAL STREAM IronOreInput WITH 
+      CREATE EXTERNAL STREAM IronOreInput WITH
       (
          DATA_SOURCE = EdgeHub,
          FILE_FORMAT = JSONFormat,
@@ -173,7 +173,7 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
        set @query = 'CREATE DATABASE SCOPED CREDENTIAL SQLCredential
                  WITH IDENTITY = ''sa'', SECRET = ''' + @SQL_SA_Password + ''''
        Execute(@query)
-   End 
+   End
 
    If NOT Exists (select name from sys.external_data_sources where name = 'LocalSQLOutput')
    Begin
@@ -183,7 +183,7 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
    If NOT Exists (select name from sys.external_streams where name = 'IronOreOutput')
    Begin
-      CREATE EXTERNAL STREAM IronOreOutput WITH 
+      CREATE EXTERNAL STREAM IronOreOutput WITH
       (
          DATA_SOURCE = LocalSQLOutput,
          LOCATION = N'IronOreSilicaPrediction.dbo.IronOreMeasurements'
@@ -196,7 +196,7 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
    exec sys.sp_start_streaming_job @name=N'IronOreData'
    ```
 
-6. 次のクエリを使用して、データ生成モジュールからデータベースにデータがストリーム配信されていることを確認します。 
+6. 次のクエリを使用して、データ生成モジュールからデータベースにデータがストリーム配信されていることを確認します。
 
    ```sql
    Select Top 10 * from dbo.IronOreMeasurements
@@ -204,7 +204,7 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
    ```
 
 
-このチュートリアルでは、データ ジェネレーター モジュールと SQL Edge モジュールをデプロイしました。 その後、データ生成モジュールによって生成されたデータを SQL にストリーム配信するストリーミング ジョブを作成しました。 
+このチュートリアルでは、データ ジェネレーター モジュールと SQL Edge モジュールをデプロイしました。 その後、データ生成モジュールによって生成されたデータを SQL にストリーム配信するストリーミング ジョブを作成しました。
 
 ## <a name="next-steps"></a>次の手順
 

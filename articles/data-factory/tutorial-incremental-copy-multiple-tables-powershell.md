@@ -5,15 +5,16 @@ ms.author: yexu
 author: dearandyxu
 ms.reviewer: douglasl, jburchel
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell
 ms.date: 07/05/2021
-ms.openlocfilehash: ae7f83e397822eb52a9fdfca7011d4228cb3b625
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 16feecb1560c114520b10ed2adaef578534052f4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436345"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638398"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
