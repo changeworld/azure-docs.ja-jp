@@ -3,15 +3,16 @@ title: Azure Data Factory のマッピング データ フローを使用して�
 description: Azure Data Factory のマッピング データ フローを使用して固定長テキスト ファイルを処理する方法について説明します。
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 0f8c1cf8535d35d5141a589670a8281ddba75385
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 689a9d34dc796516aa281964552e11d70c74c1de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906118"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637883"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローを使用して固定長テキスト ファイルを処理する
 

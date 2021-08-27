@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: 7208519302ea9c12a9a0db7c3cee7032eab85d64
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e29973b55d3f74942f6d85fa28209b73773ad717
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339844"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802640"
 ---
 ## <a name="sample-code"></a>サンプル コード
 このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/ServerRecording) にあります。
@@ -27,9 +27,9 @@ ms.locfileid: "114339844"
 - [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-install) バージョン 11 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - [Spring Boot Framework バージョン 2.5.0](https://spring.io/projects/spring-boot)
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
-- Azure ストレージ アカウントとコンテナーの詳細については、「[ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)」を参照してください。 ご利用の **接続文字列** と **コンテナー名** は、このクイックスタートで使用するので、記録しておく必要があります。
-- [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) Web hook。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication Services リソースの作成](../../../create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの **接続文字列** を記録する必要があります。
+- Azure ストレージ アカウントとコンテナーの詳細については、「[ストレージ アカウントを作成する](../../../../../storage/common/storage-account-create.md?tabs=azure-portal)」を参照してください。 ご利用の **接続文字列** と **コンテナー名** は、このクイックスタートで使用するので、記録しておく必要があります。
+- [Azure Event Grid](../../../../../event-grid/overview.md) Web hook。
 
 ## <a name="object-model"></a>オブジェクト モデル
 

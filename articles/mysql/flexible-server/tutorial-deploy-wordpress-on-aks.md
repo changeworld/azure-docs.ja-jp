@@ -7,19 +7,22 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: vc, devx-track-azurecli
-ms.openlocfilehash: 0c6211f4cd647addd6f1d18a153695d16a9d9952
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5f5b3da3c42ff4a6e7e5f66c0c93cf04d9446bb9
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770167"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643384"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>チュートリアル:Azure Database for MySQL - フレキシブル サーバーを使用して WordPress アプリを AKS にデプロイする
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 このクイックスタートでは、Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバー (プレビュー) で Azure Kubernetes Service (AKS) クラスターに WordPress アプリケーションをデプロイします。 
 **[AKS](../../aks/intro-kubernetes.md)** は、クラスターをすばやくデプロイして管理できるマネージド Kubernetes サービスです。 **[Azure Database for MySQL - フレキシブル サーバー (プレビュー)](overview.md)** は、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 フレキシブル サーバーは、現在プレビュー段階にあります。
 
 > [!NOTE]
+>
 > - Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
 > - このクイックスタートは、Kubernetes の概念、WordPress、MySQL.に関する基礎知識があることを前提としています。
 
@@ -102,6 +105,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーを作成する
+
 [az mysql flexible-server create](/cli/azure/mysql/flexible-server) コマンドを使用して、フレキシブル サーバーを作成します。 次のコマンドでは、サービスの既定値と Azure CLI のローカル コンテキストからの値を使用してサーバーを作成します。
 
 ```azurecli-interactive
@@ -109,18 +113,18 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 ```
 
 作成されたサーバーには、次の属性があります。
+
 - サーバーが最初にプロビジョニングされたときに、新しい空のデータベース ```flexibleserverdb``` が作成されます。 このクイックスタートでは、このデータベースを使用します。
 - 自動生成されたサーバー名、管理者ユーザー名、管理者パスワード、リソース グループ名 (ローカル コンテキストでまだ指定されていない場合)、およびリソース グループと同じ場所
 - 残りのサーバー構成のサービスの既定値: コンピューティング レベル (バースト可能)、コンピューティング サイズ/SKU (B1MS)、バックアップの保持期間 (7 日間)、および MySQL のバージョン (5.7)
 - public-access 引数を使用すると、パブリック アクセスがファイアウォール規則で保護されたサーバーを作成できます。 IP アドレスを指定して、クライアント マシンからのアクセスを許可するファイアウォール規則を追加します。
 - このコマンドはローカル コンテキストを使用しているため、```eastus``` リージョンの ```wordpress-project``` リソース グループにサーバーが作成されます。
 
-
 ### <a name="build-your-wordpress-docker-image"></a>WordPress Docker イメージを作成する
 
 [最新の WordPress](https://wordpress.org/download/) バージョンをダウンロードします。 プロジェクトの新しいディレクトリ ```my-wordpress-app``` を作成し、次の単純なフォルダー構造を使用します。
 
-```
+```wordpress
 └───my-wordpress-app
     └───public
         ├───wp-admin
@@ -137,7 +141,6 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
     └─── Dockerfile
 
 ```
-
 
 ```wp-config-sample.php``` の名前を ```wp-config.php``` に変更し、21 から 32 行目をこのコード スニペットに置き換えます。 次のコード スニペットは、Kubernetes マニフェスト ファイルからデータベース ホスト、ユーザー名、パスワードを読み取ります。
 
@@ -175,6 +178,7 @@ define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
 ### <a name="create-a-dockerfile"></a>Dockerfile を作成する
+
 新しい Dockerfile を作成し、次のコード スニペットをコピーします。 この Dockerfile では、PHP を使用して Apache Web サーバーをセットアップし、mysqli 拡張機能を有効にします。
 
 ```docker
@@ -185,6 +189,7 @@ RUN docker-php-ext-enable mysqli
 ```
 
 ### <a name="build-your-docker-image"></a>Docker イメージをビルドする
+
 ```cd``` コマンドを使用して、ターミナルの ```my-wordpress-app``` ディレクトリにいることを確認します。 次のコマンドを実行して、イメージをビルドします。
 
 ``` bash
@@ -196,18 +201,18 @@ docker build --tag myblog:latest .
 [Docker Hub](https://docs.docker.com/get-started/part3/#create-a-docker-hub-repository-and-push-your-image) または [Azure Container Registry](../../container-registry/container-registry-get-started-azure-cli.md) にイメージをデプロイします。
 
 > [!IMPORTANT]
->Azure Container Registry (ACR) を使用している場合は、```az aks update``` コマンドを実行して ACR アカウントを AKS クラスターに接続します。
+> Azure Container Registry (ACR) を使用している場合は、```az aks update``` コマンドを実行して ACR アカウントを AKS クラスターに接続します。
 >
->```azurecli-interactive
->az aks update -n myAKSCluster -g wordpress-project --attach-acr <your-acr-name>
+> ```azurecli-interactive
+> az aks update -n myAKSCluster -g wordpress-project --attach-acr <your-acr-name>
 > ```
->
 
 ## <a name="create-kubernetes-manifest-file"></a>Kubernetes マニフェスト ファイルを作成する
 
 Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 `mywordpress.yaml` という名前のマニフェスト ファイルを作成し、次の YAML 定義をコピーしましょう。
 
->[!IMPORTANT]
+> [!IMPORTANT]
+>
 > - ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` を、実際の WordPress Docker イメージ名とタグに置き換えます (例: ```docker-hub-user/myblog:latest```)。
 > - MySQL フレキシブル サーバーの ```SERVERNAME```、```YOUR-DATABASE-USERNAME```、```YOUR-DATABASE-PASSWORD``` で下記の ```env``` セクションを更新します。
 
@@ -264,6 +269,7 @@ spec:
 ```
 
 ## <a name="deploy-wordpress-to-aks-cluster"></a>WordPress を AKS クラスターにデプロイする
+
 [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) コマンドを使用してアプリケーションをデプロイし、ご利用の YAML マニフェストの名前を指定します。
 
 ```console
@@ -306,7 +312,8 @@ Web ブラウザーを開いてサービスの外部 IP アドレスにアクセ
 
    :::image type="content" source="./media/tutorial-deploy-wordpress-on-aks/wordpress-aks-installed-success.png" alt-text="AKS および MySQL フレキシブル サーバーでの WordPress のインストールの成功":::
 
->[!NOTE]
+> [!NOTE]
+>
 > - 現在、WordPress サイトでは HTTPS は使用されていません。 [独自の証明書を使用して TLS を有効にする](../../aks/ingress-own-tls.md)ことをお勧めします。
 > - クラスターの [HTTP ルーティング](../../aks/http-application-routing.md)を有効にすることができます。
 

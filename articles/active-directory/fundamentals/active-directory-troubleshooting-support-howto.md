@@ -2,10 +2,8 @@
 title: ヘルプを検索してサポート チケットを開く - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory のヘルプを取得してサポート チケットを開く方法について説明します。
 services: active-directory
-documentationcenter: na
 author: ajburnle
 manager: daveba
-editor: ''
 ms.service: active-directory
 ms.topic: troubleshooting
 ms.subservice: fundamentals
@@ -15,15 +13,16 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e339e88bb62e81b1f873e8cf7e855f4dff8daade
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 057265ca91bdfe0e3b73eea012736e65920e62c2
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257408"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768933"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Azure Active Directory のヘルプを検索してサポート チケットを開く
-Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前、課金、サブスクリプションの各サポートを幅広く提供しています。 サポートは、Microsoft Azure の有料版および試用版サブスクリプションについて、オンラインと電話の両方で利用できます。 また、電話サポートとオンライン課金サポートは追加の言語で利用できます。 
+
+Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前、課金、サブスクリプションの各サポートを幅広く提供しています。 サポートは、Microsoft Azure の有料版および試用版サブスクリプションについて、オンラインと電話の両方で利用できます。 また、電話サポートとオンライン課金サポートは追加の言語で利用できます。
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>サポート チケットを開かずにヘルプを見つける
 
@@ -32,7 +31,6 @@ Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前
 * 操作方法に関する情報や、IT プロフェッショナルおよび開発者向けのサンプル コードなどのコンテンツについては、[docs.microsoft.com の技術ドキュメント](../index.yml)を参照してください。
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/) は、IT プロフェッショナル パートナーとお客様が共同作業、共有、学習を行うための場所です。 [Microsoft Tech Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) は、お知らせ、ブログの投稿、専門家との質疑応答 (AMA: ask-me-anything) などのために使用されます。 [コミュニティに参加して、自分のアイデアを提出する](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)こともできます。
-
 
 ## <a name="open-a-support-ticket"></a>サポート チケットを開く
 
