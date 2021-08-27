@@ -8,12 +8,12 @@ author: minhe-msft
 ms.author: hemin
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b634f3866432c9cba3ae35f18fe9d146dabea585
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3ae53df3827349e208f0097e084c38b2ab4314b
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741019"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681258"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 

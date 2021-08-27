@@ -4,15 +4,15 @@ description: このチュートリアルでは、Azure SQL Database のソース
 ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 07/05/2021
-ms.openlocfilehash: 9dbeeaa10fc755b978a1819a0af181da47149921
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 7d2f32b4bb730d0c698950ecdf82283d1bf88274
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436840"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638920"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Azure portal を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -179,7 +179,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\) タイルを含む、Azure Data Factory のホーム ページ。":::
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
 
 10. **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
 11. ホーム ページで、次の図に示すように、左パネルの **[管理]** タブに切り替えます。

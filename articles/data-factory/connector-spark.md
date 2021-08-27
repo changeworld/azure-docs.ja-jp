@@ -1,18 +1,20 @@
 ---
 title: Spark からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Spark のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 09/04/2019
-ms.openlocfilehash: bebe3e9cff6d974da217bc9126ffcf47b50bdebb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 8cf248d5ffa7a05d4561213b6c9bbd96d59ff79a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482779"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638712"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Azure Data Factory を使用して Spark からデータをコピーする 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

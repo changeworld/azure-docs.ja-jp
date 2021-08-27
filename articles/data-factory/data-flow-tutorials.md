@@ -4,14 +4,15 @@ description: マッピング データ フローの概念を説明するビデ�
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: tutorial
 ms.date: 05/18/2021
-ms.openlocfilehash: e63e45026be6bb315a9bc520680eb40253654975
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: d70100acae25913a3cbee5bf688c954c2bb072d3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539927"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638947"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
