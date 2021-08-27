@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2021
-ms.openlocfilehash: 073095d590e61d9e7e561339c17501f0ccee844d
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 6bc5a504f1716ff10b56fd30b8991f6d9e4009c7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018659"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770214"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の JavaScript コード サンプル
 
@@ -34,21 +34,21 @@ Azure SDK 開発チームのコード サンプルは、API の使用方法を�
 
 | サンプル | 説明 |
 |---------|-------------|
-| [インデックス](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | [検索インデックス](search-what-is-an-index.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 このサンプル カテゴリには、サービス統計のサンプルも含まれます。 |
-| [dataSourceConnections (インデクサー用)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | [サポートされている Azure データ ソース](search-indexer-overview.md#supported-data-sources)のインデクサーベースのインデックス作成に必要なインデクサー データ ソースを作成、更新、取得、一覧表示、削除する方法が示されています。 |
-| [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法を示します。|
-| [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   アタッチされたインデクサーであり、インデックス作成中に AI ベースの強化を実行する[スキルセット](cognitive-search-working-with-skillsets.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 |
-| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | [シノニム マップ](search-synonyms.md)を作成、更新、取得、一覧表示、削除する方法が示されています。  |
+| [インデックス](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) | [検索インデックス](search-what-is-an-index.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 このサンプル カテゴリには、サービス統計のサンプルも含まれます。 |
+| [dataSourceConnections (インデクサー用)](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/search/search-documents/samples/v11/javascript/dataSourceConnectionOperations.js) | [サポートされている Azure データ ソース](search-indexer-overview.md#supported-data-sources)のインデクサーベースのインデックス作成に必要なインデクサー データ ソースを作成、更新、取得、一覧表示、削除する方法が示されています。 |
+| [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法を示します。|
+| [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |   アタッチされたインデクサーであり、インデックス作成中に AI ベースの強化を実行する[スキルセット](cognitive-search-working-with-skillsets.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 |
+| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) | [シノニム マップ](search-synonyms.md)を作成、更新、取得、一覧表示、削除する方法が示されています。  |
 
 ### <a name="typescript-samples"></a>TypeScript のサンプル
 
 | サンプル | 説明 |
 |---------|-------------|
-| [インデックス](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | [検索インデックス](search-what-is-an-index.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 このサンプル カテゴリには、サービス統計のサンプルも含まれます。 |
-| [dataSourceConnections (インデクサー用)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | [サポートされている Azure データ ソース](search-indexer-overview.md#supported-data-sources)のインデクサーベースのインデックス作成に必要なインデクサー データ ソースを作成、更新、取得、一覧表示、削除する方法が示されています。 |
-| [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法を示します。|
-| [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   アタッチされたインデクサーであり、インデックス作成中に AI ベースの強化を実行する[スキルセット](cognitive-search-working-with-skillsets.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 |
-| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | [シノニム マップ](search-synonyms.md)を作成、更新、取得、一覧表示、削除する方法が示されています。  |
+| [インデックス](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/typescript/src) | [検索インデックス](search-what-is-an-index.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 このサンプル カテゴリには、サービス統計のサンプルも含まれます。 |
+| [dataSourceConnections (インデクサー用)](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/search/search-documents/samples/v11/typescript/src/dataSourceConnectionOperations.ts) | [サポートされている Azure データ ソース](search-indexer-overview.md#supported-data-sources)のインデクサーベースのインデックス作成に必要なインデクサー データ ソースを作成、更新、取得、一覧表示、削除する方法が示されています。 |
+| [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/typescript/src) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法を示します。|
+| [skillSet](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/search/search-documents/samples/v11/typescript/src/skillSetOperations.ts) |   アタッチされたインデクサーであり、インデックス作成中に AI ベースの強化を実行する[スキルセット](cognitive-search-working-with-skillsets.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 |
+| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/search/search-documents/samples/v11/typescript/src/synonymMapOperations.ts) | [シノニム マップ](search-synonyms.md)を作成、更新、取得、一覧表示、削除する方法が示されています。  |
 
 ## <a name="doc-samples"></a>ドキュメントのサンプル
 
