@@ -10,12 +10,12 @@ metadata:
   ms.author: azfundocs
   ms.date: 05/18/2021
   ms.custom: contperf-fy21q4
-  ms.openlocfilehash: 4d8ffa41ede2f675ee838ecc4f4d98784d3fe128
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: c6a50643c238fb4f94d85cb18798f80aa5f24d82
+  ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "110069348"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122830826"
 landingContent:
 - title: Azure Functions について
   linkLists:
@@ -43,10 +43,8 @@ landingContent:
       url: functions-get-started.md
   - linkListType: quickstart
     links:
-    - text: C# (.NET Core 3.1)
+    - text: C#
       url: create-first-function-vs-code-csharp.md
-    - text: C# (.NET 5.0)
-      url: dotnet-isolated-process-developer-howtos.md
     - text: Java (Maven)
       url: create-first-function-cli-java.md
     - text: JavaScript
