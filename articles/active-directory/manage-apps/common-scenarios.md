@@ -4,19 +4,19 @@ description: Azure AD を使用したアプリケーション管理の一元化
 author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-provisioning
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: overview
 ms.date: 03/02/2019
 ms.author: davidmu
 ms.reviewer: napuri
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254320fffd1377b08a908727079bae2ca050183d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fa4856b95de671cf74905db9c5503def1c36b360
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738845"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824297"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD を使用したアプリケーション管理の一元化
 
