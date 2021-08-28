@@ -4,8 +4,6 @@
   items:
     - name: DevTest ラボについて
       href: devtest-lab-overview.md
-    - name: Azure DevTest Labs と Lab Services
-      href: lab-services-overview.md
 - name: クイック スタート
   items:
     - name: ラボの作成 - Resource Manager テンプレート
