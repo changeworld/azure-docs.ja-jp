@@ -2,14 +2,15 @@
 metadata:
   title: Azure Site Recovery サービスに関する一般的な質問
   description: この記事では、Azure Site Recovery に関してよく寄せられる一般的な質問について説明します。
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: azure
   ms.date: 05/27/2021
-  ms.openlocfilehash: e652f3f293d793cdf1d10d7f3b9ceee84f60f4c7
-  ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+  ms.openlocfilehash: 82d4003e13cf68d9777e2bcdfd57551d9ef478f4
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2021
-  ms.locfileid: "111907711"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122254122"
 title: Azure Site Recovery に関する一般的な質問
 summary: >
   この記事では、Azure Site Recovery に関してよく寄せられる質問をまとめています。 特定のシナリオについては、次の記事をご覧ください
@@ -342,7 +343,7 @@ sections:
       Site Recovery で復旧ポイントを生成する方法を理解するため、レプリケーション ポリシーの例を見てみましょう。 このレプリケーション ポリシーの復旧ポイントには 24 時間の保持期間が設定されており、アプリ整合性スナップショットは 1 時間おきに作成されます。
 
 
-      Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。 この頻度は変更できません。 最後の 1 時間については、12 のクラッシュ整合性ポイントと 1 つのアプリ整合性ポイントから選択できます。 時間が経過すると、最後の 1 時間を超えた復旧ポイントは Site Recovery によってすべて取り除かれ、1 時間につき 1 つの復旧ポイントのみが保存されます。
+      Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。 この頻度は変更できません。 最後の 1 時間については、12 のクラッシュ整合性ポイントと 1 つのアプリ整合性ポイントから選択できます。 時間が経過すると、最後の 1 時間を超えた復旧ポイントは Site Recovery によってすべて取り除かれ、最大 24 時間に対して 1 時間につき 1 つの復旧ポイントのみが保存され、最大 72 時間に対して 2 時間ごとに 1 つの復旧ポイントのみが保存されます。
 
 
       次のスクリーンショットはこの例を示したものです。 スクリーンショットでは次のようになっています。

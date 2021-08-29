@@ -13,16 +13,17 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 0b02662658b2199a13f117ad95c6402f9b2974f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23e87c1b91de60f300adf7aa027ba1bd9704251f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95519848"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823707"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP Web ロールと worker ロールの作成
-
 ## <a name="overview"></a>概要
+
+[!INCLUDE [Cloud Services (classic) deprecation announcement](cloud-services/includes/deprecation-announcement.md)]
 
 このガイドでは、Windows 開発環境で PHP Web ロールまたは worker ロールを作成し、使用可能な "ビルトイン" バージョンから特定バージョンの PHP を選択して、PHP 構成を変更し、拡張機能を有効にして、最後に Azure にデプロイする方法を示します。 また、指定した PHP ランタイムを (カスタムの構成および拡張機能と共に) 使用できるように Web ロールまたは worker ロールを構成する方法についても説明します。
 

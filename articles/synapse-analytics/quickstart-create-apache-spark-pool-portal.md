@@ -6,15 +6,15 @@ author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 08/19/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df9df0db6c93241d47baae9b33927f9a96a66eda
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461605"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597368"
 ---
 # <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して新しいサーバーレス Apache Spark プールを作成する
 
@@ -38,9 +38,11 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Synapse ワークスペースに移動する 
 1. Synapse ワークスペースに移動します。ここでは、検索バーにサービス名 (またはリソース名を直接) 入力して、Apache Spark プールを作成します。
-![「Synapse ワークスペース」と入力されている Azure portal の検索バー。](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、**contosoanalytics** という名前のワークスペースを使用します。
-![名前に Contoso を含むワークスペースを表示するためにフィルター処理された Synapse ワークスペースの一覧。](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
+
+    ![「Synapse ワークスペース」と入力されている Azure portal の検索バー。](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
+
+2. ワークスペースの一覧で、開くワークスペースの名前 (または名前の一部) を入力します。 この例では、**contosoanalytics** という名前のワークスペースを使用します。
+    ![名前に Contoso を含むワークスペースを表示するためにフィルター処理された Synapse ワークスペースの一覧。](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 
 ## <a name="create-new-apache-spark-pool"></a>新しい Apache Spark プールを作成する
@@ -58,6 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 
     ![Apache Spark プール作成のフロー - [基本] タブ。](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-02.png)
+
     > [!IMPORTANT]
     > Apache Spark プールで使用できる名前には、特定の制限があることに注意してください。 名前は、文字または数字のみを含み、15 文字以下である必要があります。さらに、文字で始まり、予約語を含まず、ワークスペース内で一意である必要があります。
 

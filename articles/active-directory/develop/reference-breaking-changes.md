@@ -11,13 +11,13 @@ ms.topic: reference
 ms.date: 6/4/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
-ms.openlocfilehash: 8efc5f44c1383ebcde397b810ba69c547afd692f
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: cf7821b8227b21efb063850b02222f2675a245b7
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555452"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429025"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 

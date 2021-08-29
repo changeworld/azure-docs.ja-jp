@@ -290,8 +290,6 @@
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
                   href: ./create-first-function-vs-code-csharp.md
-                - name: C# 分離 (.NET 5)
-                  href: dotnet-isolated-process-developer-howtos.md
                 - name: Gradle を使用した Java
                   href: functions-create-first-java-gradle.md
                 - name: Eclipse を使用した Java
@@ -517,6 +515,8 @@
           href: /python/api/azure-functions/azure.functions
     - name: アプリ設定のリファレンス
       href: functions-app-settings.md
+    - name: Azure Functions Core Tools
+      href: functions-core-tools-reference.md
     - name: トリガーとバインド
       items:
         - name: BLOB ストレージ
