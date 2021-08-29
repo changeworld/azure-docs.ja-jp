@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/14/2021
+ms.date: 08/24/2021
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 25b2788591c44cb4b75c89ca020825d16884224b
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: ae7ef0d0ff3cb946bc8c900517a8975bb618ad3c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112116165"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768146"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -100,19 +100,26 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | オーストラリア南東部 | :heavy_check_mark: | :x: | 
 | Brazil South | :heavy_check_mark: | :x: |
 | カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| インド中部 | :heavy_check_mark: | :x: |
 | 米国中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 東アジア | :heavy_check_mark: | :x: |
 | 米国東部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | フランス中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| ドイツ中西部 | :heavy_check_mark: | :heavy_check_mark: |
 | Japan East | :heavy_check_mark: | :heavy_check_mark: | 
+| 西日本 | :heavy_check_mark: | :x: |
 | 韓国中部 | :heavy_check_mark: | :x: | 
+| 韓国南部 | :heavy_check_mark: | :x: | 
 | 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
 | ノルウェー東部 | :heavy_check_mark: | :x: |
 | 南アフリカ北部 | :heavy_check_mark: | :x: |
+| 米国中南部 | :heavy_check_mark: | :heavy_check_mark: | 
 | Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
 | スイス北部 | :heavy_check_mark: | :x: |
 | アラブ首長国連邦北部 | :heavy_check_mark: | :x: |
 | 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 英国西部 | :heavy_check_mark: | :x: | 
 | 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
 | 米国西部 | :heavy_check_mark: | :x: |
 | 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |

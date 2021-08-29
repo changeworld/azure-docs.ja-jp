@@ -7,14 +7,13 @@ ms.date: 01/14/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7df7c9ab6bfbc8a39050b78a76114ae2a0a9d9b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1de50e1e069305c13a521a27462ea786c6a3e49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746507"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748387"
 ---
 # <a name="quickstart-provision-a-device-with-symmetric-keys"></a>クイックスタート: 対称キーを使用してデバイスをプロビジョニングする
 

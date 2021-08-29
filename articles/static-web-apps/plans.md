@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/14/2021
 ms.author: cshoe
-ms.openlocfilehash: 2fcb9805b752273cb5320114342108ed1f844a5b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 489f714c9900c0b759a5ecf7bc9a5ffc12cae884
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110104888"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746220"
 ---
 # <a name="azure-static-web-apps-hosting-plans"></a>Azure Static Web Apps ホスティング プラン
 
@@ -32,6 +32,7 @@ Azure Static Web Apps は、Free と Standard の 2 種類のプランで利用�
 | カスタム ドメイン | アプリあたり 2 | アプリあたり 5 |
 | Azure Functions による API | マネージド | マネージドまたは<br>[独自の関数アプリの持ち込み](functions-bring-your-own.md) |
 | 認証プロバイダーの統合 | [事前構成済み](authentication-authorization.md)<br>(サービスで定義済み) | [カスタム登録](authentication-custom.md) |
+| プライベート エンドポイント | - | ✔ |
 | [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/app-service-static/v1_0/) | なし  | ✔ |
 
 ## <a name="selecting-a-plan"></a>プランの選択

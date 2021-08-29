@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 100da2e8b259c31daa6b0e72c8d2c4c2b0cb1d51
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 73f1eaebb60d02e27be5585a0287a702abf6df2a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569712"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860965"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -31,18 +31,18 @@ Synapse SQL の消費モデルでは、さまざまなデータベース オブ�
 | **テーブル** | [はい](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | いいえ。サーバーレス モデルでは、[Azure Storage](#storage-options) に配置された外部データに対してのみクエリを実行できます |
 | **ビュー** | [はい](/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest&preserve-view=true)。 ビューでは、専用モデルで使用可能な[クエリ言語要素](#query-language)を使用できます。 | [はい](/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest&preserve-view=true)。 ビューでは、サーバーレス モデルで使用可能な[クエリ言語要素](#query-language)を使用できます。 |
 | **スキーマ** | [はい](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) | [はい](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) |
-| **一時テーブル** | [はい](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
+| **一時テーブル** | [はい](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?context=/azure/synapse-analytics/context/context) | いいえ |
 | **手順** | [はい](/sql/t-sql/statements/create-procedure-transact-sql?view=azure-sqldw-latest&preserve-view=true) | はい |
 | **関数** | [はい](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | はい。インライン テーブル値関数のみです。 |
 | **トリガー** | いいえ | いいえ |
 | **外部テーブル** | [はい](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)。 サポートされる[データ形式](#data-formats)をご確認ください。 | [はい](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)。 サポートされる[データ形式](#data-formats)をご確認ください。 |
 | **クエリのキャッシュ** | はい。複数の形式 (SSD ベースのキャッシュ、インメモリ、結果セットのキャッシュ)。 さらに、マテリアライズドビューがサポートされます | いいえ |
 | **テーブル変数** | [いいえ](/sql/t-sql/data-types/table-transact-sql?view=azure-sqldw-latest&preserve-view=true)。一時テーブルを使用します | いいえ |
-| **[テーブルの分散](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | はい | いいえ |
-| **[テーブルのインデックス](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | はい | いいえ |
-| **[テーブルのパーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | はい | いいえ |
+| **[テーブルの分散](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)**               | はい | いいえ |
+| **[テーブルのインデックス](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)**                           | はい | いいえ |
+| **[テーブルのパーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)**                     | はい | いいえ |
 | **[統計](develop-tables-statistics.md)**            | はい | はい |
-| **[ワークロード管理、リソース クラス、コンカレンシー制御](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい    | いいえ |
+| **[ワークロード管理、リソース クラス、コンカレンシー制御](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context)** | はい    | いいえ |
 | **コスト管理** | はい。スケールアップおよびスケールダウン アクションを使用。 | はい。[Azure portal または T-SQL プロシージャ](./data-processed.md#cost-control)を使用。 |
 
 ## <a name="query-language"></a>クエリ言語
