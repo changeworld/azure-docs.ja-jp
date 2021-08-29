@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 1a15a8d343398dce7a049622b53ca5e2b2c217eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e3c19b6e3821b31bef547453813353b8c5c88a2
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931886"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122643311"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python サンプル
 
@@ -43,6 +43,6 @@ ms.locfileid: "98931886"
 
 これらの Python サンプルは、[hdinsight-python-sdk-samples](https://github.com/Azure-Samples/hdinsight-python-sdk-samples) GitHub リポジトリを複製することで入手できます。
 
-[!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
+[!INCLUDE [hdinsight-sdk-additional-functionality](includes/hdinsight-sdk-additional-functionality.md)]
 
 ここに示した追加的な SDK 機能に関するコード スニペットは、[HDInsight SDK for Python のリファレンス ドキュメント](/python/api/overview/azure/hdinsight)でご覧いただけます。

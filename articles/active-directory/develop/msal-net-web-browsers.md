@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4121d4b9ac73ed18da7dce0e397fe919589ac6f0
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 9a431a2088ac01b3e0bec21b951fa4af0c5347e0
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478762"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419042"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web ブラウザーを使用する (MSAL.NET)
 
