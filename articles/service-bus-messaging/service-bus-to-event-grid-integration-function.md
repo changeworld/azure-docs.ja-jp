@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: afc0a5bf9b83363d1f4baab955b55148fe3a8498
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb18eb5df675690a6bb5b796349c140a61949df1
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95818482"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "122207429"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>チュートリアル:Azure Functions を使用して、Azure Event Grid 経由で受信した Azure Service Bus のイベントに応答する
 このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 
@@ -27,7 +27,7 @@ ms.locfileid: "95818482"
 > * Event Grid による関数と名前空間の接続
 > * Azure Functions を使用してメッセージを受信する
 
-[!INCLUDE [service-bus-event-grid-prerequisites](../../includes/service-bus-event-grid-prerequisites.md)]
+[!INCLUDE [service-bus-event-grid-prerequisites](./includes/service-bus-event-grid-prerequisites.md)]
 
 ## <a name="additional-prerequisites"></a>追加の前提条件
 [Visual Studio 2019](https://www.visualstudio.com/vs) をインストールし、**Azure の開発** ワークロードを追加します。 このワークロードには、Visual Studio での Azure Functions プロジェクトの作成、ビルド、デプロイに必要な **Azure Function Tools** が含まれています。 

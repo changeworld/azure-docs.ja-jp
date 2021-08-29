@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: fa434d28b064d69f9c1f81759f6289eae0291f01
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 14f44504e48279d0a8bd8f8e95e98113a4647023
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814876"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515253"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps"></a>Azure Static Web Apps でのユーザー情報へのアクセス
 
@@ -104,43 +104,51 @@ console.log(await getUser());
 C# 関数では、`ClaimsPrincipal` オブジェクトまたは独自のカスタム型に逆シリアル化できる `x-ms-client-principal` ヘッダーにあるユーザー情報を使用できます。 次のコードは、ヘッダーを中間の型、`ClientPrincipal` にアンパックする方法を示します。これは、その後、`ClaimsPrincipal` インスタンスになります。
 
 ```csharp
-  public static class StaticWebAppsAuth
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+using Microsoft.AspNetCore.Http;
+
+public static class StaticWebAppsAuth
+{
+  private class ClientPrincipal
   {
-    private class ClientPrincipal
-    {
-        public string IdentityProvider { get; set; }
-        public string UserId { get; set; }
-        public string UserDetails { get; set; }
-        public IEnumerable<string> UserRoles { get; set; }
-    }
-
-    public static ClaimsPrincipal Parse(HttpRequest req)
-    {
-        var principal = new ClientPrincipal();
-
-        if (req.Headers.TryGetValue("x-ms-client-principal", out var header))
-        {
-            var data = header[0];
-            var decoded = Convert.FromBase64String(data);
-            var json = Encoding.ASCII.GetString(decoded);
-            principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        }
-
-        principal.UserRoles = principal.UserRoles?.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase);
-
-        if (!principal.UserRoles?.Any() ?? true)
-        {
-            return new ClaimsPrincipal();
-        }
-
-        var identity = new ClaimsIdentity(principal.IdentityProvider);
-        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId));
-        identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails));
-        identity.AddClaims(principal.UserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
-
-        return new ClaimsPrincipal(identity);
-    }
+      public string IdentityProvider { get; set; }
+      public string UserId { get; set; }
+      public string UserDetails { get; set; }
+      public IEnumerable<string> UserRoles { get; set; }
   }
+
+  public static ClaimsPrincipal Parse(HttpRequest req)
+  {
+      var principal = new ClientPrincipal();
+
+      if (req.Headers.TryGetValue("x-ms-client-principal", out var header))
+      {
+          var data = header[0];
+          var decoded = Convert.FromBase64String(data);
+          var json = Encoding.UTF8.GetString(decoded);
+          principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+      }
+
+      principal.UserRoles = principal.UserRoles?.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase);
+
+      if (!principal.UserRoles?.Any() ?? true)
+      {
+          return new ClaimsPrincipal();
+      }
+
+      var identity = new ClaimsIdentity(principal.IdentityProvider);
+      identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId));
+      identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails));
+      identity.AddClaims(principal.UserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
+
+      return new ClaimsPrincipal(identity);
+  }
+}
 ```
 
 ---
