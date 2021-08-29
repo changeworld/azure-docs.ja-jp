@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: trbye
-ms.openlocfilehash: 7a20d1098fad72b57155fa81c2a48f9fa13d12d0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: lajanuar
+ms.openlocfilehash: 75bd24c5942af6fd7881fd165dffa2b5d46ee8c9
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135487"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071761"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で C# サンプルを探索する](https://aka.ms/speech/github-csharp)
