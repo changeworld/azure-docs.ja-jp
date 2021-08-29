@@ -8,18 +8,18 @@ ms.reviewer: jukullam
 ms.service: azure
 ms.date: 05/20/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: 984bf8f225c34f34910bc57cb019a75301778360
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: c7782349fb467ef34169f46843b3c91d182c0995
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288952"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741088"
 ---
 # <a name="scan-container-images-using-github-actions"></a>GitHub Actions を使用してコンテナー イメージをスキャンする
 
 コンテナー イメージをビルドおよびスキャンするためのワークフローを作成することによって、[GitHub Actions](https://docs.github.com/en/actions/learn-github-actions) の使用を開始します。
 
-GitHub Actions を使用すると、ワークフローからイメージをビルドおよびスキャンし、パブリックまたはプライベート [Container Registry](https://azure.microsoft.com/en-in/services/container-registry/) にプッシュすることで、CI/CD プロセスを高速化できます。
+GitHub Actions を使用すると、ワークフローからイメージをビルドおよびスキャンし、パブリックまたはプライベート [Container Registry](https://azure.microsoft.com/services/container-registry/) にプッシュすることで、CI/CD プロセスを高速化できます。
 
 この記事では、[GitHub Marketplace](https://github.com/marketplace) の[コンテナー イメージ スキャン](https://github.com/marketplace/actions/container-image-scan)を利用します。
 

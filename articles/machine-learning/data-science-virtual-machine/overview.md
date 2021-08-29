@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: bd2333d89e4d1789b3464606b49f624609ef67d5
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 489ddfb7a4c7344215950370d2e87f37fd24c14a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518761"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745316"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure Data Science Virtual Machine とは
 
@@ -27,7 +27,7 @@ DSVM を利用できる OS:
 
 ## <a name="comparison-with-azure-machine-learning"></a>Azure Machine Learning との比較
 
-DSVM がデータ サイエンス向けにカスタマイズされた VM イメージであるのに対し、[Azure Machine Learning](../overview-what-is-azure-ml.md) (AzureML) は、次の機能を含んだエンド ツー エンドのプラットフォームです。
+DSVM がデータ サイエンス向けにカスタマイズされた VM イメージであるのに対し、[Azure Machine Learning](../overview-what-is-azure-machine-learning.md) (AzureML) は、次の機能を含んだエンド ツー エンドのプラットフォームです。
 
 + フル マネージドのコンピューティング
   + コンピューティング インスタンス

@@ -3,12 +3,12 @@ title: Azure Video Analyzer を使用してライブ ビデオでオブジェク
 description: このクイックスタートでは、Azure Video Analyzer エッジ モジュールを使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードでオブジェクトを追跡する方法を示します。 コンピューター ビジョン モデルを適用して、ライブ ビデオ フィードのフレームのサブセット内でオブジェクトを検出する方法を示します。 その後、オブジェクト トラッカー ノードを使用して、他のフレーム内でそれらのオブジェクトを追跡できます。
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: 211b51660be74d2b2b3b024ead72c93b3a0d8449
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 7ea51dbb59cba95825afb059e6a1845b4bbdcb95
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603919"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745700"
 ---
 # <a name="quickstart-track-objects-in-a-live-video"></a>クイックスタート: ライブ ビデオでオブジェクトを追跡する
 
@@ -105,7 +105,7 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
    }
 ```
 
-ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 ライブ ビデオのフレーム レートが 30 フレーム/秒の場合は、推論のために毎秒少なくとも 2 個のフレームを HTTP サーバーに送信する必要があることを意味します。 AI モデルには、処理用の最大 FPS があります。これは、`maximumSamplesPerSecond` に設定する必要がある最高の値です。
+ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 AI モデルには、処理用の最大 FPS があります。これは、`maximumSamplesPerSecond` に設定する必要がある最高の値です。
     
 ## <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 

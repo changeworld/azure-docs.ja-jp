@@ -7,14 +7,13 @@ ms.date: 7/06/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 89988d6cac66e347dc131f67003a69e5a91eb220
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: f9b2c74f25d5f27385b604d53530edbdb57a91fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113358230"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750201"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -158,7 +157,7 @@ ms.locfileid: "113358230"
 
 9. **[Send]** を選択します。
 
-10. 応答ウィンドウで、 **[ヘッダー]** タブを選択します。
+10. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。
 
 11. **Operation-Location** キーの値である `status URL` をコピーします。 `status URL` を使用して、GeoJSON データのアップロード状態を確認します。
 
@@ -174,7 +173,7 @@ GeoJSON データの状態を確認し、その一意の ID (`udid`) を取得�
 
 2. **[新規作成]** ウィンドウで **[HTTP 要求]** を選択します。
 
-3. 要求の **[要求名]** を入力します (*GET Data Upload Status* など)。
+3. 要求の **[Request name]\(要求名\)** を入力します (「*GET Data Upload Status*」など)。
 
 4. **GET** HTTP メソッドを選択します。
 
@@ -186,7 +185,7 @@ GeoJSON データの状態を確認し、その一意の ID (`udid`) を取得�
 
 6. **[Send]** を選択します。
 
-7. 応答ウィンドウで、 **[ヘッダー]** タブを選択します。
+7. 応答ウィンドウで、 **[Headers]\(ヘッダー\)** タブを選択します。
 
 8. **Resource-Location** キーの値である `resource location URL` をコピーします。 `resource location URL` には、アップロードされたデータの一意の識別子 (`udid`) が含まれています。 このチュートリアルの最後のセクションで Get Geofence API に対するクエリを実行できるように、`udid` を保存します。
 

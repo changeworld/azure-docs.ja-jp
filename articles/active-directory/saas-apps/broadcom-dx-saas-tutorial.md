@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 35ab4d335560689a7e55bf1a8dff9fcb0bcc7d7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa197f7cd538bc82741863717044e7cd4321a37
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601518"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744991"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-broadcom-dx-saas"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Broadcom DX SaaS の統合
 
@@ -32,6 +32,9 @@ ms.locfileid: "104601518"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * シングル サインオン (SSO) が有効な Broadcom DX SaaS サブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -75,13 +78,13 @@ Broadcom DX SaaS に対する Azure AD SSO を構成してテストするには�
 
 1. Azure portal の **Broadcom DX SaaS** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`DXI_<TENANT_NAME>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`DXI_<TENANT_NAME>` の形式で値を入力します。
 
     b. **[応答 URL]** ボックスに、`https://axa.dxi-na1.saas.broadcom.com/ess/authn/<TENANT_NAME>` のパターンを使用して URL を入力します
 

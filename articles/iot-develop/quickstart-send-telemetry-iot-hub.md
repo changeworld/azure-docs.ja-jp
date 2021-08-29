@@ -5,15 +5,15 @@ author: timlt
 ms.author: timlt
 ms.service: iot-develop
 ms.topic: quickstart
-ms.date: 05/04/2021
+ms.date: 08/03/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 04d7883088a4f8f9c12e384b3dcc3b4c0dfa6edf
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 0ac38398f31c2256761c0f1b75d03f2fafeb65f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730804"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744356"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>クイックスタート: デバイスから Azure IoT Hub にテレメトリを送信する
 
@@ -48,18 +48,6 @@ ms.locfileid: "114730804"
 [!INCLUDE [iot-develop-send-telemetry-iot-hub-python](../../includes/iot-develop-send-telemetry-iot-hub-python.md)]
 
 :::zone-end
-
-## <a name="view-telemetry"></a>利用統計情報データを表示する
-シミュレートされたデバイスは、IoT Hub に接続した後、テレメトリの送信を開始します。 Azure portal では、お使いの IoT ハブとデバイスに関するテレメトリ メトリックとその他の詳細を表示できます。
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-
-1. お使いの IoT ハブをクリックして開きます。  お使いの IoT ハブは **[最近のリソース]** の下、または左側のナビゲーションの **[すべてのリソース]** で見つけることができます。
-
-1. **[概要]** ページで、スクロールして、お使いのハブの概要メトリックを表示します。
-    :::image type="content" source="media/quickstart-send-telemetry-iot-hub/iot-hub-metrics.png" alt-text="IoT ハブのデバイス メトリックの概要":::
-
-1. 必要に応じて、その他のメトリックを確認してカスタム ビューを作成するために、 **[Monitoring]\(監視中\)** の左側のナビゲーションで **[メトリック]** を選択します。
     
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このクイックスタートで作成した Azure リソースが不要になった場合は、Azure CLI を使用して削除できます。

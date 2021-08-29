@@ -10,12 +10,12 @@ metadata:
   author: Ajayan1008
   ms.author: v-hborys
   ms.date: 04/14/2021
-  ms.openlocfilehash: 5304146a0cf427003e971f794f7a68690c524085
-  ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+  ms.openlocfilehash: 4d4c91a48e6310a54482e28dd9c6022c2fb9f6c3
+  ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113225428"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121862643"
 landingContent:
 - title: BareMetal インフラストラクチャについて
   linkLists:
@@ -143,7 +143,5 @@ landingContent:
       url: ../virtual-machines/workloads/sap/os-upgrade-hana-large-instance.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: SUSE Linux 用 SMT サーバーの設定
       url: ../virtual-machines/workloads/sap/hana-setup-smt.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-    - text: HLI から Azure VM への移行
-      url: ../virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: SAP HANA Large Instances の予約の購入
       url: /azure/cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity
