@@ -11,17 +11,18 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: c5a457a673500c542dd6130d5cfadd73ab677f7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b02e47bea875c538875c9616607e030b650183e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518353"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691429"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (クラシック) REST API のエラー コード
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Azure Machine Learning Studio (クラシック) の Web サービスの操作で、次のエラー コードが返されることがあります。
  

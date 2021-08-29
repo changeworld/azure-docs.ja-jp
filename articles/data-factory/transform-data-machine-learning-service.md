@@ -1,17 +1,20 @@
 ---
 title: Azure Machine Learning パイプラインを実行する
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Machine Learning パイプラインを Azure Data Factory パイプラインで実行する方法を説明します。
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
 ms.date: 07/16/2020
-ms.openlocfilehash: d5013bf12647ababb7aa0765a13751e749dae9d8
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 19456f33e13a9a472b5c42afc0a3cb3c5041efd2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904732"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638126"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning パイプラインを Azure Data Factory で実行する
 

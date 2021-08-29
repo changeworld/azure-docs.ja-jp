@@ -84,7 +84,7 @@ conceptualContent:
         - url: /azure/architecture/best-practices/
           itemType: reference
           text: クラウド ベスト プラクティス
-        - url: /azure/architecture/framework/resiliency/overview
+        - url: /azure/architecture/framework/resiliency/app-design
           itemType: reference
           text: 信頼性の高い Azure アプリケーションの設計
         - url: /azure/architecture/patterns/

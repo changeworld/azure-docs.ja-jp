@@ -1,17 +1,20 @@
 ---
 title: ビジュアルの作成
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory でビジュアルの作成機能を使用する方法について説明します
 ms.service: data-factory
+ms.subservice: authoring
+ms.custom: synapse
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 09/08/2020
-ms.openlocfilehash: 3c5bbe128b03e1d4bfe562132656fee0df51423e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 183aa606a6f6dab0c5f6bc5e3b7594fc28bb52ed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905385"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638195"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 

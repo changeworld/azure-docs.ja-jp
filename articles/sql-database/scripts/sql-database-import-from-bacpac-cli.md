@@ -7,16 +7,16 @@ ms.subservice: backup-restore
 ms.custom: load & move data, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: rothja
-ms.author: jroth
+author: SQLSourabh
+ms.author: sourabha
 ms.reviewer: mathoma
 ms.date: 05/24/2019
-ms.openlocfilehash: 7c529143a9f6855f46f27a752dfd049ae2dcd2c4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3a43ef2527248a533a7511a34661e058e876c9c5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730943"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>CLI を使用して BACPAC ファイルを SQL Database のデータベースにインポートする
 

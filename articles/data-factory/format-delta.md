@@ -3,15 +3,16 @@ title: Azure Data Factory での差分形式
 description: 差分形式を使用して Delta Lake のデータを変換したり、移動したりする
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: makromer
-ms.openlocfilehash: 38138be8ddd6babd9740a81ffcbedb9088a412f4
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b5f344d97813e5f8bc7099631b56760ca2115f1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906172"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637789"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory での差分形式
 

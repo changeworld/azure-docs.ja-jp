@@ -4,16 +4,20 @@ description: Azure Blockchain Service の概要です
 ms.date: 03/15/2021
 ms.topic: overview
 ms.reviewer: patricka
-ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cef30858b23f4c5e87f756e830defa3b2522add
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573627"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643279"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
-Azure Blockchain Service はフル マネージド台帳サービスであり、ユーザーは Azure でブロックチェーン ネットワークの拡張や操作を大規模に行うことができます。 インフラストラクチャの管理とブロックチェーン ネットワークのガバナンスの両方の制御が統一された Azure Blockchain Service では、次のような機能が提供されます。
+Azure Blockchain Service はフル マネージド台帳サービスであり、ユーザーは Azure でブロックチェーン ネットワークの拡張や操作を大規模に行うことができます。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+インフラストラクチャの管理とブロックチェーン ネットワークのガバナンスの両方の制御が統一された Azure Blockchain Service では、次のような機能が提供されます。
 
 * ネットワークの簡単なデプロイと運用
 * 組み込みのコンソーシアム管理
@@ -29,7 +33,7 @@ Azure Blockchain Service のデプロイは、Azure portal、Azure CLI、また�
 
 ### <a name="performance-and-service-tiers"></a>パフォーマンス レベルとサービス レベル
 
-Azure Blockchain Service には、次の 2 つのサービス レベルが用意されています:*Basic* と *Standard*。 各レベルでは、軽量の開発をサポートし、大規模な運用ブロックチェーンのデプロイまでワークロードをテストするための、異なるパフォーマンスと機能が提供されています。 開発、テスト、概念実証には、*Basic* レベルを使用します。 運用グレードのデプロイには、*Standard* レベルを使用します。 どちらのレベルにも、少なくとも 1 つのトランザクション ノードと、1 つの検証ノード (Basic) または 2 つの検証ノード (Standard) が含まれます。 
+Azure Blockchain Service には、次の 2 つのサービス レベルが用意されています:*Basic* と *Standard*。 各レベルでは、軽量の開発をサポートし、大規模な運用ブロックチェーンのデプロイまでワークロードをテストするための、異なるパフォーマンスと機能が提供されています。 開発、テスト、概念実証には、*Basic* レベルを使用します。 運用グレードのデプロイには、*Standard* レベルを使用します。 どちらのレベルにも、少なくとも 1 つのトランザクション ノードと、1 つの検証ノード (Basic) または 2 つの検証ノード (Standard) が含まれます。
 
 ![価格レベル](./media/overview/pricing-tiers.png)
 

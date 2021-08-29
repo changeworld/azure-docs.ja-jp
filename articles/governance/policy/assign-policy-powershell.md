@@ -1,14 +1,14 @@
 ---
 title: 'クイック スタート: PowerShell を使用した新しいポリシー割り当て'
 description: このクイックスタートでは、Azure PowerShell を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 69455742082930fdb436fee1c33bbdd372c7e4e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 24d9f9b55fab81dd3fc7dde9ad77d333b5312ca5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753127"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323543"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して準拠していないリソースを識別するためのポリシー割り当てを作成する
 

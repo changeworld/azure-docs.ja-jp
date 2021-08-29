@@ -1,16 +1,16 @@
 ---
 title: クイック スタート:初めてのポータル クエリ
 description: このクイックスタートでは、手順に従って、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行します。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: b01bc4ceefd1d0c645ed584648a34851d741aed1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 51d92d32ef3e879e1844581a399588293fd63b76
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751771"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324291"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. このクエリを更新して `order by` に **Name** プロパティを指定します (`Resources | project name, type | limit 5 | order by name asc`)。 その後、 **[クエリの実行]** を選択します。
 
    > [!NOTE]
-   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを生成する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
+   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
 1. このクエリを更新して、最初に `order by` に **Name** プロパティを指定してから `limit` に上位 5 件の結果を指定します (`Resources | project name, type | order by name asc | limit 5`)。 その後、 **[クエリの実行]** を選択します。
 

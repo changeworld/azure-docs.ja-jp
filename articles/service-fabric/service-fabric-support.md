@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 5/17/2021
 ms.author: edoyle
 ms.custom: support-help-page
-ms.openlocfilehash: a4f83d6ddf09ca449da74f163a82baf2b12adc91
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3b84f85a01ebaff9c3901672d31a135586280e13
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950073"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633543"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -81,20 +81,6 @@ Azure Service Fabric の問題は、[Service Fabric GitHub](https://github.com/m
 </div>
 
 [StackOverflow][stackoverflow] の `azure-service-fabric` タグは、プラットフォームのしくみや、それを使用して特定のタスクを実現する方法について一般的な質問をする場合に使用します。
-
-## <a name="submit-feedback-on-azure-feedback"></a>Azure フィードバックでフィードバックを送信する
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-[Service Fabric の Azure フィードバック フォーラム][uservoice-forum]は、製品の機能に関する重要なアイデアを出すのに最適な場所です。 最も人気のある要求を確認し、それらを考慮して長期的な計画を立てる Microsoft の手段となっています。 Microsoft では、コミュニティ内で自身の提案への支持を集めることをお勧めしています。
-
-
-> [!Note]
-> **Service Fabric プレビュー バージョンは、運用環境での使用はサポートされていません。** Microsoft では、場合によって、重要な機能の変更を含む特別なプレビュー リリースを作成します。それについて、早期のフィードバックを調査するためです。 プレビュー バージョンは、運用環境のワークロードを処理しない分離されたテスト環境でのみ使用してください。 運用環境のクラスターは常に、サポートされていて、安定した Service Fabric のバージョンを実行する必要があります。 これらのプレビュー リリースについては、Microsoft は有償のサポート オプションを提供していません。
->
-> プレビュー バージョンのメジャーおよびマイナーのバージョン番号は常に 255 で始まります。 たとえば、Service Fabric のバージョンが 255.255.5703.949 であれば、このリリースはプレビュー段階にあり、テスト クラスターでの使用だけが想定されています。 これらのプレビュー リリースは、[Service Fabric チームのブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)でも発表され、含まれる機能の詳細情報があります。 上記のいずれかのオプションを使用してフィードバックをお送りください。
-
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>更新プログラムと新しいリリースに関する最新情報を入手する
 

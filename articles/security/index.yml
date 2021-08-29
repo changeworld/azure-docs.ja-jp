@@ -147,7 +147,7 @@ conceptualContent:
         - url: ../sentinel/quickstart-onboard.md
           itemType: quickstart
           text: Azure Sentinel のオンボード
-        - url: ../sentinel/quickstart-get-visibility.md
+        - url: /azure/sentinel/get-visibility
           itemType: quickstart
           text: Azure Sentinel の概要
       footerLink:

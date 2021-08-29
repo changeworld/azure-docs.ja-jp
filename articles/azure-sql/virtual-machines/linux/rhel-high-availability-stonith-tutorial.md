@@ -2,17 +2,18 @@
 title: Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する - Linux 仮想マシン | Microsoft Docs
 description: RHEL クラスター環境における高可用性の設定について学習し、STONITH を設定します
 ms.service: virtual-machines-sql
+ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 095e746e3cb40767fe1afb9c6fbd75cd2c1450d4
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 392b9e92b391b2289b415ef4ca636ec47889bc54
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736801"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733344"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
