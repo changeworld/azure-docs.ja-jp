@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/28/2021
-ms.author: alzam
-ms.openlocfilehash: ba3733f16353ad1e921430ca7699212a60d5ff2f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 08/20/2021
+ms.author: cherylmc
+ms.openlocfilehash: a004e8d7fd87cc7abdf881b355b40b59ac874ba1
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754957"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779738"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 認証: P2S OpenVPN プロトコル接続用に VPN クライアントを構成する
 
@@ -27,13 +27,7 @@ VPN クライアント経由で VNet に接続するすべてのコンピュー�
 
 ### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
 
-1. [Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)をコンピューターにダウンロードします。
-1. Azure VPN クライアントにバックグラウンドで実行するためのアクセス許可があることを確認してください。 アクセス許可を確認して有効にするには、 **[スタート] -> [設定] -> [プライバシー] -> [バックグラウンド アプリ]** に移動します。
-
-   * **[バックグラウンド アプリ]** で、 **[アプリのバックグラウンド実行を許可する]** が **[オン]** になっていることを確認します。
-   * **[バックグラウンドでの実行を許可するアプリを選んでください]** で、 **[Azure VPN クライアント]** の設定を **[オン]** にします。
-
-     ![アクセス許可のスクリーンショット。](./media/openvpn-azure-ad-client/backgroundpermission.png)
+[!INCLUDE [Download Azure VPN client](../../includes/vpn-gateway-download-vpn-client.md)]
 
 ### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>証明書ベースのクライアント プロファイルを作成するには
 

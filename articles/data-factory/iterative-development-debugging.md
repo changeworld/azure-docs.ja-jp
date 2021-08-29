@@ -1,20 +1,23 @@
 ---
 title: Azure Data Factory での反復開発とデバッグ
+titleSuffix: Azure Data Factory & Azure Synapse
 description: ADF UX で Data Factory パイプラインの開発とデバッグを反復して実行する方法について説明します
 ms.date: 04/21/2021
 ms.topic: conceptual
 ms.service: data-factory
+ms.subservice: authoring
+ms.custom: synapse
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 author: kromerm
 ms.author: makromer
-ms.openlocfilehash: 8f233609bb6c25aaea158420ea92c67db0a2db90
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 39cce38b9b00201ae6fc3e24eff9d5816b69ed69
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896734"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637749"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

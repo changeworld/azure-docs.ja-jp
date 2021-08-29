@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 07/13/2021
 ms.author: petender
-ms.openlocfilehash: b7b75fcf6f7ef1d6f2444a8fe59421bdb64c1890
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 06f415492157a52b3a258fa2191e1a88e211bccd
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765860"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608840"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-using-an-arm-template"></a>チュートリアル: ARM テンプレートを使用して Azure 静的 Web アプリを発行する
 
@@ -203,7 +203,7 @@ ms.locfileid: "113765860"
                     "value": ""
                 },
                 "appArtifactLocation": {
-                    "value": "public"
+                    "value": "src"
                 },
                 "resourceTags": {
                     "value": {

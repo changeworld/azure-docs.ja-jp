@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Cosmos DB に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.topic: sample
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 3583a42b12b26653856ac98ca594112fe5c8d1ac
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 3c4fae5e6a592f58e94546d28ce06ed26dd49aec
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114401939"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608708"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Policy 規制コンプライアンス コントロール
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

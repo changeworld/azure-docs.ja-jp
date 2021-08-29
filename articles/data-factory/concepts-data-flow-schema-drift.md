@@ -1,19 +1,21 @@
 ---
 title: マッピング データ フローのスキーマの誤差
+titleSuffix: Azure Data Factory & Azure Synapse
 description: スキーマの誤差がある Azure Data Factory 内での回復力のあるデータ フローの作成
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 04/15/2020
-ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4af9a815b2107126cdda1f15d37a9718e50fa3fa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027484"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638677"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
 
