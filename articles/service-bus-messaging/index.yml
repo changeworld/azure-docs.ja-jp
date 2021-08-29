@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 06/23/2020
-  ms.openlocfilehash: cfa0386b0e1130841a15c8bb261d985076035a55
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.date: 08/27/2021
+  ms.openlocfilehash: 30615824c5aa8b47af5ccdf89b1b56835d9e9ae2
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121747134"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123106288"
 landingContent:
 - title: Service Bus メッセージングについて
   linkLists:
