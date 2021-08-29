@@ -7,14 +7,16 @@ ms.author: hirshah
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 2b491560af61bc0afc8696d45c32ed91b846a9e4
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 6c277fb073776a7cdbc31cd4ccc9183f8024ce1d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090027"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823536"
 ---
 # <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>Azure にクラウド サービス (クラシック) をデプロイするときの ConstrainedAllocationFailed のトラブルシューティング
+
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 この記事では、割り当ての制約のために Azure クラウド サービス (クラシック) をデプロイできない割り当てエラーのトラブルシューティングを行います。
 

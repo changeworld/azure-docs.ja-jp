@@ -8,12 +8,13 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
 ms.date: 05/19/2020
-ms.openlocfilehash: 82518e6c8f4901ffe6c5503d902359a79c12e0b0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: has-adal-ref
+ms.openlocfilehash: da64e27b5ae4675b313007c9b185db9194607f2c
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081678"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428831"
 ---
 # <a name="azure-sql-database-and-sql-server-connector-for-apache-spark"></a>Apache Spark の Azure SQL Database および SQL Server 用コネクタ
 Azure SQL Database と SQL Server 用の Apache Spark コネクタを使用すると、これらのデータベースを Apache Spark ジョブの入力データ ソースおよび出力データ シンクとして機能させることができます。 ビッグ データ分析の中でリアルタイム トランザクション データを利用でき、アドホック クエリの結果やレポートを保持できます。
