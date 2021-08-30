@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: 00c3cd6f6a4e5878a3a426aa5622cc53487f2bdd
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 82ea26a5522d44bb39adc30f388f996688cb1ad5
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131406"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180055"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>自動機械学習の実験でデータの分割とクロス検証を構成する
 
@@ -44,6 +44,8 @@ Azure Machine Learning では、自動 ML を使用して複数の ML モデル�
     * [機械学習におけるトレーニング、検証、およびテスト データについて](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
     * [機械学習でのクロス検証について](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
+
+[!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>機械学習での既定のデータ分割とクロス検証
 
@@ -74,7 +76,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 この場合は、1 つのデータ ファイルから始めて、トレーニング データと検証データ セットに分割するか、検証セット用に個別のデータ ファイルを指定することができます。 どちらの方法でも、`AutoMLConfig` オブジェクトの `validation_data` パラメーターによって、検証セットとして使用するデータが割り当てられます。 このパラメーターは、[Azure Machine Learning データセット](how-to-create-register-datasets.md)または Pandas データフレームの形式のデータセットのみを受け入れます。   
 
 > [!NOTE]
-> `validation_size` パラメーターは予測のシナリオではサポートされていません。
+> `validation_data` パラメーターを使用する場合、`training_data` および `label_column_name` パラメーターも設定する必要があります。 検証パラメーターは 1 つだけ設定できます。つまり、`validation_data` または `n_cross_validations` のどちらか一方のみ (両方ではなく) を設定できます。
 
 次のコード例では、トレーニングと検証に使用する `dataset` 内の指定されたデータの一部を明示的に定義します。
 

@@ -20,6 +20,8 @@
       href: multi-factor-authentication-end-user-signin.md
     - name: ヘルプの参照
       href: multi-factor-authentication-end-user-troubleshoot.md
+    - name: コードの受信に関するエラー
+      href: multi-factor-authentication-change-sms-phone.md
 - name: パスワードのリセットのヘルプ
   items:
     - name: パスワードをリセットするためのサインアップ

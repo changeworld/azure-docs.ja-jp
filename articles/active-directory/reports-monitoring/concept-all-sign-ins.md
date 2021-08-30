@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 06/11/2021
+ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf000169c993290dc45ef6ec9ed4591f87d1def
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 9fbd65204534e978446109c99ca7286c0af00d68
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030644"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580388"
 ---
 # <a name="sign-in-logs-in-azure-active-directory---preview"></a>Azure Active Directory のサインイン ログ - プレビュー
 
@@ -312,8 +312,6 @@ Azure リソース サインイン ログのマネージド ID のデータを�
 
 - Status
 
-- IP アドレス
-
 - リソース名または ID
 
 1 つのノードの下にグループ化されているすべてのサインインを表示するには、リスト ビューで項目を選択します。
@@ -435,7 +433,27 @@ Azure portal のサインイン アクティビティ レポートには、プ�
 ![ファイルのダウンロード](./media/concept-all-sign-ins/download-files.png "ファイルのダウンロード")
 
 
+## <a name="return-log-data-with-microsoft-graph"></a>Microsoft Graph でログ データを取得する
 
+サインイン ログは、Azure portal に加え、Microsoft Graph API から照会して、さまざまなサインイン情報を取得することができます。 パフォーマンスに問題が生じる可能性があるので、それを避けるため、クエリのスコープは、関心のあるデータに限定してください。 
+
+次の例では、レコード数、特定の期間、サインイン イベントの種類でクエリのスコープを制限しています。
+
+```msgraph-interactive
+GET https://graph.microsoft.com/beta/auditLogs/signIns?$top=100&$filter=createdDateTime ge 2020-09-10T06:00:00Z and createdDateTime le 2020-09-17T06:00:00Z and signInEventTypes/any(t: t eq 'nonInteractiveUser')
+```
+
+この例のクエリ パラメーターでは、次の結果が得られます。
+
+- [$top](/graph/query-parameters#top-parameter) パラメーターによって上位 100 件の結果が返されます。
+- [$filter](/graph/query-parameters#filter-parameter) パラメーターによって、返される結果の期間が制限されます。また、signInEventTypes プロパティが使用されているため、対話ユーザー以外のサインインのみが返されます。
+
+さまざまなサインインの種類に基づくフィルタリングには、次の値を利用できます。 
+
+- interactiveUser
+- nonInteractiveUser
+- servicePrincipal 
+- managedIdentity
 
 ## <a name="next-steps"></a>次のステップ
 

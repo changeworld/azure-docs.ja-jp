@@ -12,12 +12,12 @@ metadata:
   author: yelevin
   ms.author: yelevin
   ms.date: 06/25/2020
-  ms.openlocfilehash: 53ebfd52d2e55aa8f30f7638cd9998e83c257439
-  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+  ms.openlocfilehash: 32935f55897e54836ce60ddae69c4f708053c9e0
+  ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/16/2021
-  ms.locfileid: "112199432"
+  ms.lasthandoff: 08/23/2021
+  ms.locfileid: "122662444"
 landingContent:
 - title: Azure Sentinel について
   linkLists:
@@ -31,20 +31,30 @@ landingContent:
     links:
     - text: Azure Sentinel の新着情報
       url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: ベスト プラクティス
+      url: best-practices.md
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
     - text: Azure Sentinel のオンボード
       url: quickstart-onboard.md
+  - linkListType: concept
+    links:
+    - text: 前提条件
+      url: prerequisites.md
   - linkListType: how-to-guide
     links:
     - text: Azure Sentinel へのデータ接続
       url: connect-data-sources.md
-  - linkListType: tutorial
-    links:
-    - text: インシデントの調査
-      url: tutorial-investigate-cases.md
+    - text: 収集されたデータを視覚化する
+      url: get-visibility.md
+    - text: インシデントを調査する
+      url: investigate-cases.md
+    - text: Microsoft 365 Defender と Azure Sentinel の統合
+      url: microsoft-365-defender-sentinel-integration.md
   - linkListType: learn
     links:
     - text: Azure Sentinel に対する KQL クエリを作成する
@@ -53,6 +63,8 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
+    - text: データ収集のベスト プラクティス
+      url: best-practices-data.md
     - text: データの正規化と解析
       url: normalization.md
   - linkListType: how-to-guide
@@ -61,8 +73,6 @@ landingContent:
       url: connect-microsoft-365-defender.md
     - text: カスタム コネクタを作成する
       url: create-custom-connector.md
-    - text: 脅威インテリジェンスの接続
-      url: connect-threat-intelligence.md
     - text: コネクタの正常性を監視する
       url: monitor-data-connector-health.md
     - text: Azure Data Explorer を統合する
@@ -79,24 +89,18 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 脅威インテリジェンスの Azure Sentinel へのインポート
-      url: import-threat-intelligence.md
+    - text: Azure Sentinel の脅威インテリジェンスについて
+      url: understand-threat-intelligence.md
     - text: 脅威インテリジェンスの統合
       url: threat-intelligence-integration.md
-  - linkListType: tutorial
-    links:
-    - text: 組み込みの分析を使用した脅威の検出
-      url: tutorial-detect-threats-built-in.md
-    - text: カスタム検出ルールの作成
-      url: tutorial-detect-threats-custom.md
   - linkListType: how-to-guide
     links:
-    - text: 脅威インテリジェンスの接続
-      url: connect-threat-intelligence.md
-  - linkListType: reference
-    links:
-    - text: エンティティのリファレンス
-      url: entities-reference.md
+    - text: Azure Sentinel に脅威インテリジェンス プラットフォームを接続する
+      url: connect-threat-intelligence-tip.md
+    - text: Azure Sentinel を STIX/TAXII フィードに接続する
+      url: connect-threat-intelligence-taxii.md
+    - text: 脅威インジケーターの操作
+      url: work-with-threat-indicators.md
 - title: 脅威の検出
   linkLists:
   - linkListType: concept
@@ -105,8 +109,16 @@ landingContent:
       url: identify-threats-with-entity-behavior-analytics.md
     - text: SOC-ML 異常検知
       url: soc-ml-anomalies.md
+  - linkListType: how-to-guide
+    links:
+    - text: 組み込みの分析を使用した脅威の検出
+      url: detect-threats-built-in.md
+    - text: カスタム検出ルールの作成
+      url: detect-threats-custom.md
   - linkListType: reference
     links:
+    - text: エンティティのリファレンス
+      url: entities-reference.md
     - text: UEBA エンリッチメント
       url: ueba-enrichments.md
 - title: 脅威の捜索
@@ -127,12 +139,14 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: データを監視する
-      url: tutorial-monitor-your-data.md
-  - linkListType: how-to-guide
-    links:
     - text: UEBA を使用して調査する
       url: investigate-with-ueba.md
+  - linkListType: how-to-guide
+    links:
+    - text: インシデントを調査する
+      url: investigate-cases.md
+    - text: データを監視する
+      url: monitor-your-data.md
   - linkListType: reference
     links:
     - text: 一般的に使用される Azure Sentinel ブック
@@ -151,10 +165,16 @@ landingContent:
       url: automate-incident-handling-with-automation-rules.md
     - text: プレイブック
       url: automate-responses-with-playbooks.md
-- title: 複数のテナントの操作
+- title: Azure Sentinel を管理する
   linkLists:
+  - linkListType: concept
+    links:
+    - text: ワークスペース アーキテクチャのベスト プラクティス
+      url: best-practices-workspace-architecture.md
   - linkListType: how-to-guide
     links:
+    - text: ワークスペース アーキテクチャを設計する
+      url: design-your-workspace-architecture.md
     - text: 複数のテナントの管理
       url: multiple-tenants-service-providers.md
     - text: 複数のワークスペースでインシデントを操作する

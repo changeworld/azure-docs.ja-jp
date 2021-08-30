@@ -4,22 +4,22 @@ description: Azure Monitor エージェントを使用して、仮想マシン�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/16/2021
-ms.openlocfilehash: c1c0c7c2bf312b636c5ed16223a6bf8865d44fd1
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.date: 07/16/2021
+ms.openlocfilehash: 749caf37ee09f9dc794dee60c6d4a5b93da43c6e
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112070973"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114386319"
 ---
-# <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
+# <a name="configure-data-collection-for-the-azure-monitor-agent"></a>Azure Monitor エージェント用のデータ収集の構成
 
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータの送信先を指定します。 この記事では、Azure Monitor エージェントを使用して、仮想マシンからデータを収集するデータ収集ルールを作成する方法について説明します。
 
-データ収集ルールの詳細については、「[Azure Monitor のデータ収集ルール (プレビュー)](data-collection-rule-overview.md)」を参照してください。
+データ収集ルールの詳細については、「[Azure Monitor のデータ収集ルール](data-collection-rule-overview.md)」を参照してください。
 
 > [!NOTE]
-> この記事では、現在プレビューの段階にある Azure Monitor エージェントで仮想マシンのデータを構成する方法について説明します。 一般公開されているエージェントの説明と、それらを使用してデータを収集する方法については、「[Azure Monitor エージェントの概要](agents-overview.md)」を参照してください。
+> この記事では、Azure Monitor エージェントのみで仮想マシンのデータを構成する方法について説明します。
 
 ## <a name="data-collection-rule-associations"></a>データ収集ルールの関連付け
 
@@ -36,7 +36,9 @@ DCR を仮想マシンに適用するには、仮想マシンの関連付けを�
 Azure portal を使用してデータ収集ルールを作成し、サブスクリプション内の仮想マシンをそのルールに関連付けることができます。 Azure Monitor エージェントは自動的にインストールされ、まだそれがインストールされていないすべての仮想マシンに対して、マネージド ID が作成されます。
 
 > [!IMPORTANT]
-> 現在、既知の問題があります。既にユーザーが割り当てたマネージド ID が設定されている仮想マシンで、データ収集ルールによってマネージド ID が作成された場合、ユーザーが割り当てた ID が無効になります。
+> ポータルを使用してデータ収集ルールを作成すると、既存のユーザー割り当て ID (存在する場合) に加えて、ターゲット リソースのシステム割り当てマネージド ID も有効になります。 既存のアプリケーションでは、ユーザー割り当て ID を要求で指定しない限り、マシンでは既定でシステム割り当て ID が代わりに使用されます。 [詳細情報](../../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)
+
+                    
 
 > [!NOTE]
 > Log Analytics にデータを送信する場合は、Log Analytics ワークスペースが存在するのと **同じリージョン** にデータ収集ルールを作成する必要があります。 ルールは、サポートされている他のリージョンのマシンに関連付けることができます。
@@ -115,12 +117,12 @@ Windows イベント ログでサポートされている XPath の制限事項�
 3. [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples) を使用して、データ収集ルールと各仮想マシンの関連付けを作成します。
 
 
-## <a name="create-association-using-resource-manager-template"></a>Resource Manager テンプレートを使用して関連付けを作成する
+## <a name="create-rule-and-association-using-resource-manager-template"></a>Resource Manager テンプレートを使用してルールと関連付けを作成する
 
 > [!NOTE]
 > Log Analytics にデータを送信する場合は、Log Analytics ワークスペースが存在するのと **同じリージョン** にデータ収集ルールを作成する必要があります。 ルールは、サポートされている他のリージョンのマシンに関連付けることができます。
 
-Resource Manager テンプレートを使用して Azure 仮想マシンまたは Azure Arc 対応サーバー間の関連付けを作成することができます。 サンプル テンプレートについては、「[Azure Monitor のデータ収集ルールの Resource Manager テンプレート サンプル](./resource-manager-data-collection-rules.md)」を参照してください。
+Resource Manager テンプレートを使用して Azure 仮想マシンまたは Azure Arc 対応サーバーのルールと関連付けを作成することができます。 サンプル テンプレートについては、「[Azure Monitor のデータ収集ルールの Resource Manager テンプレート サンプル](./resource-manager-data-collection-rules.md)」を参照してください。
 
 
 ## <a name="manage-rules-and-association-using-powershell"></a>PowerShell を使用してルールと関連付けを管理する

@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 08/18/2021
 ms.author: justinha
 author: justinha
 manager: daveba
-ms.reviewer: rateller
+ms.reviewer: anjusingh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ee91482ac17ac5e91715f5dfe6191c6ed4007a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 284a1c9d8b79a0d4e9c479afea9713a09c8c0fa4
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982706"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429610"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Azure Active Directory を使用して SMS ベース認証用にユーザーを構成して有効にする 
 
 アプリケーションやサービスへのサインインを簡素化してセキュリティで保護するために、Azure Active Directory (Azure AD) には複数の認証オプションが用意されています。 SMS ベースの認証を使用すると、サインイン時にユーザーは自分のユーザー名とパスワードを指定する必要がなく、覚えておく必要すらありません。 ユーザーは、ID 管理者によってアカウントが作成された後、サインイン プロンプトで電話番号を入力できます。 ユーザーは、テキスト メッセージを介して、サインインを完了するために指定できる認証コードを受け取ります。 この認証方法を使用すると、特に第一線で働くユーザーにとっては、アプリケーションやサービスへのアクセスが簡単になります。
 
-この記事では、Azure AD で選択されたユーザーまたはグループに対して SMS ベースの認証を有効にする方法について説明します。
+この記事では、Azure AD で選択されたユーザーまたはグループに対して SMS ベースの認証を有効にする方法について説明します。 SMS ベースのサインインを使用できるアプリの一覧については、「[アプリの SMS ベース認証のサポート](how-to-authentication-sms-supported-apps.md)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -34,8 +34,9 @@ ms.locfileid: "111982706"
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * SMS ベース認証を有効にするには、Azure AD テナントでの "*全体管理者*" 特権が必要です。
 * テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD、EMS、または Microsoft 365 ライセンスのいずれかを保持している必要があります。
-    * [Microsoft 365 (M365) F1 または F3][m365-firstline-workers-licensing]
-    * [Enterprise Mobility + Security (EMS) E3 または E5][ems-licensing] または [Microsoft 365 (M365) E3 または E5][m365-licensing]
+    * [Microsoft 365 F1 または F3][m365-firstline-workers-licensing]
+    * [Azure Active Directory Premium P1 または P2][azure-ad-pricing]
+    * [Enterprise Mobility + Security (EMS) E3 または E5][ems-licensing] または [Microsoft 365 E3 または E5][m365-licensing]
     * [Office 365 F3][o365-f3]
 
 ## <a name="known-issues"></a>既知の問題
@@ -124,9 +125,11 @@ SMS ベースのサインインが有効になったユーザー アカウント
 
 1. これでユーザーは、ユーザー名やパスワードを入力しなくてもサインインできるようになりました。
 
+
 ## <a name="troubleshoot-sms-based-sign-in"></a>SMS ベースのサインインをトラブルシューティングする
 
-次のシナリオとトラブルシューティングの手順は、SMS ベースのサインインの有効化と使用に関する問題が発生した場合に、利用できます。
+次のシナリオとトラブルシューティングの手順は、SMS ベースのサインインの有効化と使用に関する問題が発生した場合に、利用できます。 SMS ベースのサインインを使用できるアプリの一覧については、「[アプリの SMS ベース認証のサポート](how-to-authentication-sms-supported-apps.md)」を参照してください。
+
 
 ### <a name="phone-number-already-set-for-a-user-account"></a>ユーザー アカウントに既に電話番号が設定されている
 
@@ -148,9 +151,10 @@ Azure portal でユーザーのアカウントに電話番号を設定しよう�
 
 ## <a name="next-steps"></a>次のステップ
 
-Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パスワードを使用せずに Azure AD にサインインするその他の方法については、「[Azure AD のパスワードレス認証オプション][concepts-passwordless]」を参照してください。
+- SMS ベースのサインインを使用できるアプリの一覧については、「[アプリの SMS ベース認証のサポート](how-to-authentication-sms-supported-apps.md)」を参照してください。
+- Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パスワードを使用せずに Azure AD にサインインするその他の方法については、「[Azure AD のパスワードレス認証オプション][concepts-passwordless]」を参照してください。
+- また、Microsoft Graph REST API を使用して、SMS ベースのサインインを、[有効][rest-enable]または[無効][rest-disable]にすることもできます。
 
-また、Microsoft Graph REST API を使用して、SMS ベースのサインインを、[有効][rest-enable]または[無効][rest-disable]にすることもできます。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
@@ -170,3 +174,4 @@ Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パ
 [m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans
 [o365-f1]: https://www.microsoft.com/microsoft-365/business/office-365-f1?market=af
 [o365-f3]: https://www.microsoft.com/microsoft-365/business/office-365-f3?activetab=pivot%3aoverviewtab
+[azure-ad-pricing]: https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing

@@ -13,25 +13,25 @@
       href: quickstart-onboard.md
 - name: チュートリアル
   items:
-    - name: インシデントの調査
-      href: tutorial-investigate-cases.md
+    - name: UEBA を使用して調査する
+      href: investigate-with-ueba.md
     - name: オートメーションを使用して脅威に対応する
       href: tutorial-respond-threats-playbook.md
-    - name: Microsoft 365 Defender と統合する
-      href: microsoft-365-defender-sentinel-integration.md
     - name: Azure Sentinel に対する KQL クエリを作成する (Learn モジュール)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
     - name: Azure Sentinel から Power BI レポートを作成する
       href: powerbi.md
 - name: 概念
   items:
+    - name: Azure Sentinel の前提条件
+      href: prerequisites.md
     - name: ベスト プラクティス
       items:
-        - name: デプロイ前のベスト プラクティス
-          href: prerequisites.md
-        - name: 全般的なベスト プラクティス
+        - name: 概要
           href: best-practices.md
-        - name: データ収集のベスト プラクティス
+        - name: ワークスペース アーキテクチャ
+          href: best-practices-workspace-architecture.md
+        - name: データ コレクション
           href: best-practices-data.md
     - name: Architecture
       items:
@@ -39,12 +39,22 @@
           href: roles.md
         - name: コストと課金
           href: azure-sentinel-billing.md
+        - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
+          href: extend-sentinel-across-workspaces-tenants.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=%2fazure%2fsentinel%2fTOC.json
     - name: データの収集と分析
       items:
         - name: 正規化と Azure Sentinel 情報モデル (ASIM)
-          href: normalization.md
+          items:
+            - name: ASIM の概要
+              href: normalization.md
+            - name: ASIM スキーマ
+              href: normalization-about-schemas.md
+            - name: ASIM パーサー
+              href: normalization-about-parsers.md
+            - name: ASIM コンテンツ
+              href: normalization-content.md
         - name: エンティティを使用したデータの分類
           href: entities-in-azure-sentinel.md
     - name: Azure Sentinel ソリューション
@@ -79,8 +89,20 @@
           href: automate-responses-with-playbooks.md
         - name: 独自の機械学習を使用する
           href: bring-your-own-ml.md
+    - name: Microsoft 365 Defender の統合
+      href: microsoft-365-defender-sentinel-integration.md
 - name: 方法
   items:
+    - name: ワークスペース アーキテクチャを設計する
+      items:
+        - name: 概要
+          href: design-your-workspace-architecture.md
+        - name: サンプル ワークスペースの設計
+          href: sample-workspace-designs.md
+        - name: コストの計画と管理
+          href: azure-sentinel-billing.md
+        - name: ワークスペース アクセスの管理
+          href: resource-context-rbac.md
     - name: Azure Sentinel に移行する
       href: migration.md
     - name: データを収集する
@@ -273,8 +295,8 @@
                       href: connect-wirex-systems.md
                     - name: Zscaler
                       href: connect-zscaler.md
-                - name: 手順 3 接続を検証する
-                  href: connect-cef-verify.md
+            - name: CEF と Syslog のトラブルシューティング
+              href: troubleshooting-cef-syslog.md
         - name: カスタム コネクタを作成する
           href: create-custom-connector.md
         - name: Azure Stack VM の接続
@@ -285,28 +307,28 @@
           href: store-logs-in-azure-data-explorer.md
     - name: ソリューションの検出とデプロイ
       href: sentinel-solutions-deploy.md
-    - name: 脅威インテリジェンスの接続
+    - name: 脅威インテリジェンスの使用
       items:
         - name: 脅威インテリジェンス プラットフォームの接続
           href: connect-threat-intelligence-tip.md
         - name: STIX/TAXII フィードへの接続
           href: connect-threat-intelligence-taxii.md
-    - name: 脅威インジケーターの操作
-      href: work-with-threat-indicators.md
+        - name: 脅威インジケーターの操作
+          href: work-with-threat-indicators.md
     - name: データの監視と視覚化
       items:
         - name: 収集されたデータを視覚化する
-          href: quickstart-get-visibility.md
+          href: get-visibility.md
         - name: Azure Monitor ブックを使用する
-          href: tutorial-monitor-your-data.md
+          href: /azure/sentinel/monitor-your-data
     - name: 脅威の検出とデータの分析
       items:
         - name: 組み込み規則を使用する
-          href: tutorial-detect-threats-built-in.md
+          href: detect-threats-built-in.md
         - name: カスタム規則の作成
           items:
             - name: 規則を作成する
-              href: tutorial-detect-threats-custom.md
+              href: detect-threats-custom.md
             - name: データ フィールドをエンティティにマップする
               href: map-data-fields-to-entities.md
             - name: アラートのカスタム詳細を表示する
@@ -337,10 +359,10 @@
           href: livestream.md
     - name: 調査と対応
       items:
+        - name: インシデントを調査する
+          href: investigate-cases.md
         - name: カスタム エンティティ アクティビティを作成する
           href: customize-entity-activities.md
-        - name: 一般的な UEBA 調査方法
-          href: investigate-with-ueba.md
         - name: Microsoft Teams で共同作業する
           href: collaborate-in-microsoft-teams.md
         - name: Azure Sentinel に対してプレイブックを認証する
@@ -349,10 +371,6 @@
           href: playbook-triggers-actions.md
     - name: Azure Sentinel を管理する
       items:
-        - name: ワークスペース アクセスの管理
-          href: resource-context-rbac.md
-        - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
-          href: extend-sentinel-across-workspaces-tenants.md
         - name: MSSP 用 Azure Sentinel
           items:
             - name: 複数のテナントの管理 (MSSP)
@@ -379,8 +397,12 @@
       href: sap-solution-log-reference.md
     - name: SAP ブック、ルール、およびウォッチリスト
       href: sap-solution-security-content.md
-    - name: SAP データ コネクタをオンプレミスにデプロイする
+    - name: SNC 接続を使用して SAP データ コネクタをデプロイする
+      href: sap-solution-deploy-snc.md
+    - name: エキスパートの構成オプション
       href: sap-solution-deploy-alternate.md
+    - name: SAP ソリューションのデプロイのトラブルシューティング
+      href: sap-deploy-troubleshoot.md
 - name: リファレンス
   items:
     - name: Azure Sentinel REST-API
@@ -411,6 +433,8 @@
               href: authentication-normalization-schema.md
             - name: DNS 正規化スキーマ
               href: dns-normalization-schema.md
+            - name: ファイル イベント正規化スキーマ
+              href: file-event-normalization-schema.md
             - name: ネットワーク正規化スキーマ
               href: normalization-schema.md
             - name: プロセス イベント正規化スキーマ
@@ -425,6 +449,8 @@
           href: entities-reference.md
         - name: UEBA エンリッチメント
           href: ueba-enrichments.md
+        - name: ウォッチリスト テンプレートのスキーマ
+          href: watchlist-schemas.md
         - name: Kusto クエリ言語
           items:
             - name: Kusto クエリの概要
@@ -447,6 +473,8 @@
   items:
     - name: 有用なリソース
       href: resources.md
+    - name: サンプル ワークスペース アーキテクチャ
+      href: sample-workspace-designs.md
     - name: Azure Sentinel ブログ
       href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: リージョン別の提供状況

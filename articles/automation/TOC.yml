@@ -10,15 +10,12 @@
       href: whats-new.md
 - name: クイックスタート
   items:
-    - name: Automation アカウントを作成する
+    - name: Automation アカウントを作成する - ポータル
       href: automation-quickstart-create-account.md
     - name: PowerShell Runbook を作成する
       href: automation-quickstart-create-runbook.md
     - name: マシンの Desired State Configuration を有効にする
       href: automation-quickstart-dsc-configuration.md
-    - name: Automation アカウントを作成する - ARM テンプレート
-      displayName: Resource Manager
-      href: quickstart-create-automation-account-template.md
 - name: チュートリアル
   items:
     - name: グラフィカル Runbook を作成する
@@ -31,6 +28,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
     - name: Python 3 Runbook を作成する
       href: learn/automation-tutorial-runbook-textual-python-3.md
+    - name: PowerShell Runbook でマネージド ID を使用する
+      href: learn/powershell-runbook-managed-identity.md
 - name: 概念
   items:
     - name: Automation アカウントの認証の概要

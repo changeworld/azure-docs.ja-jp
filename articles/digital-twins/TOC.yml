@@ -103,8 +103,8 @@
           href: how-to-manage-twin.md
         - name: ツイン グラフとリレーションシップを管理する
           href: how-to-manage-graph.md
-        - name: データを処理するための Azure 関数を設定する
-          href: how-to-create-azure-function.md
+        - name: ツインからツインへのイベント処理を設定する
+          href: how-to-send-twin-to-twin-events.md
         - name: ツイン グラフにクエリを実行する
           href: how-to-query-graph.md
     - name: クライアント アプリの開発

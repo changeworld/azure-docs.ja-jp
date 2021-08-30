@@ -4,15 +4,15 @@ description: この記事では、Azure ロールベースのアクセス制御 
 keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2020
+ms.date: 06/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 943fa65f114e46c80c8c1ef576f784f9117c9f79
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4af5a6d105867df7d5c7a00f6fc47bd0032f4336
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083802"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597413"
 ---
 # <a name="manage-role-permissions-and-security"></a>ロールのアクセス許可とセキュリティの管理
 
@@ -258,13 +258,92 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write           | ワークスペース        |
 |スコープ構成を作成および編集する  | Microsoft.OperationalInsights/workspaces/write   | ワークスペース|
 
-## <a name="update-management-permissions"></a>更新管理のアクセス許可
+## <a name="custom-azure-automation-contributor-role"></a>カスタム Azure Automation 共同作成者ロール
 
-更新管理は、複数のサービスにまたがってサービスを提供します。 更新管理デプロイを管理するために必要なアクセス許可を次の表に示します。
+Microsoft は、Log Analytics 共同作成者ロールから Automation アカウントの権限を削除する予定です。 現在、前述した組み込みの [Log Analytics 共同作成者](#log-analytics-contributor)ロールは特権をサブスクリプションの [Contributor](./../role-based-access-control/built-in-roles.md#contributor) ロールに昇格させることができます。 Automation アカウントの実行アカウントは最初、サブスクリプションの共同作成者権限で構成されるため、攻撃者がそれを利用し、サブスクリプションの共同作成者として新しい Runbook を作成し、コードを実行できます。
+
+このセキュリティ リスクの結果として、Log Analytics 共同作成者ロールを利用して Automation ジョブを実行しないことをお勧めします。 代わりに、Azure Automation 共同作成者カスタム ロールを作成し、Automation アカウント関連のアクションに利用してください。 このカスタム ロールは、次の手順に従って作成します。
+
+### <a name="create-using-the-azure-portal"></a>Azure Portal を使用した作成
+
+以下の手順に従って、Azure portal で Azure Automation カスタム ロールを作成します。 詳細については、「[Azure カスタム ロール](./../role-based-access-control/custom-roles.md)」を参照してください。
+
+1. 以下の JSON 構文をコピーして、ファイルに貼り付けます。 ローカル コンピューターまたは Azure ストレージ アカウントにファイルを保存します。 JSON ファイルで、**assignableScopes** プロパティの値をサブスクリプションの GUID に置き換えます。
+
+   ```json
+   {
+    "properties": {
+        "roleName": "Automation Account Contributor (Custom)",
+        "description": "Allows access to manage Azure Automation and its resources",
+        "assignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Insights/alertRules/*",
+                    "Microsoft.Insights/metrics/read",
+                    "Microsoft.Insights/diagnosticSettings/*",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read",
+                    "Microsoft.Automation/automationAccounts/*",
+                    "Microsoft.Support/*"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+      }
+   }
+   ```
+
+1. 「[Azure portal を使用して Azure カスタム ロールを作成または更新する](../role-based-access-control/custom-roles-portal.md#start-from-json)」の説明に従って、残りの手順を完了します。 「[手順 3: 基本](../role-based-access-control/custom-roles-portal.md#step-3-basics)」では、次の点に注意してください。
+
+    -  **[カスタム ロール名]** フィールドに「**Automation account Contributor (custom)** 」と入力するか、ご利用の名前付け規則に合った名前を入力します。
+    - **[ベースラインのアクセス許可]** で **[Start from JSON]\(JSON から始める\)** を選択します。 次に、前に保存したカスタム JSON ファイルを選択します。
+
+1. 残りの手順を完了し、カスタム ロールを確認して作成します。 カスタム ロールがすべての場所に表示されるまで、数分かかることがあります。
+
+### <a name="create-using-powershell"></a>PowerShell を使用して作成する
+
+以下の手順に従って、PowerShell で Azure Automation カスタム ロールを作成します。 詳細については、「[Azure カスタム ロール](./../role-based-access-control/custom-roles.md)」を参照してください。
+
+1. 以下の JSON 構文をコピーして、ファイルに貼り付けます。 ローカル コンピューターまたは Azure ストレージ アカウントにファイルを保存します。 JSON ファイルで、**AssignableScopes** プロパティの値をサブスクリプションの GUID に置き換えます。
+
+    ```json
+    { 
+        "Name": "Automation account Contributor (custom)",
+        "Id": "",
+        "IsCustom": true,
+        "Description": "Allows access to manage Azure Automation and its resources",
+        "Actions": [
+            "Microsoft.Authorization/*/read",
+            "Microsoft.Insights/alertRules/*",
+            "Microsoft.Insights/metrics/read",
+            "Microsoft.Insights/diagnosticSettings/*",
+            "Microsoft.Resources/deployments/*",
+            "Microsoft.Resources/subscriptions/resourceGroups/read",
+            "Microsoft.Automation/automationAccounts/*",
+            "Microsoft.Support/*"
+        ],
+        "NotActions": [],
+        "AssignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ] 
+    } 
+    ```
+
+1. 「[Azure PowerShell を使用して Azure カスタム ロールを作成または更新する](./../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template)」の説明に従って、残りの手順を完了します。 カスタム ロールがすべての場所に表示されるまで、数分かかることがあります。
+
+## <a name="update-management-permissions"></a>Update Management のアクセス許可
+
+Update Management を使用して、同じ Azure Active Directory (Azure AD) テナントの複数のサブスクリプションのマシンまたは Azure Lighthouse を使用している複数のテナントに対する更新プログラムのデプロイの評価とスケジュールを実行できます。 次の表は、更新プログラムのデプロイを管理するために必要なアクセス許可の一覧です。
 
 |**リソース** |**ロール** |**スコープ** |
 |---------|---------|---------|
-|Automation アカウント |Log Analytics 共同作成者 |Automation アカウント |
+|Automation アカウント |[カスタム Azure Automation 共同作成者ロール](#custom-azure-automation-contributor-role) |Automation アカウント |
 |Automation アカウント |Virtual Machine Contributor  |アカウントのリソース グループ  |
 |Log Analytics ワークスペース  Log Analytics 共同作成者|Log Analytics ワークスペース |
 |Log Analytics ワークスペース |Log Analytics 閲覧者|サブスクリプション|
@@ -400,7 +479,7 @@ Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -R
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>Automation オペレーター ロールのユーザー エクスペリエンス - Automation アカウント
 
-Automation アカウント スコープ ビューで Automation オペレーター ロールに割り当てられているユーザーが、自分が割り当てられている Automation アカウントを表示した場合、そのユーザーに表示されるのはその Automation アカウントで作成された Runbook、Runbook ジョブ、およびスケジュールの一覧のみです。 このユーザーは、それらの項目の定義を表示することはできません。 このユーザーは、Runbook ジョブの開始、停止、一時停止、再開、スケジュール設定を行うことができます。 ただし、構成、ハイブリッド worker グループ、DSC ノードなど、Automation の他のリソースにアクセスすることはできません。
+Automation アカウント スコープ ビューで Automation オペレーター ロールに割り当てられているユーザーが、自分が割り当てられている Automation アカウントを表示した場合、そのユーザーに表示されるのはその Automation アカウントで作成された Runbook、Runbook ジョブ、およびスケジュールの一覧のみです。 このユーザーは、それらの項目の定義を表示することはできません。 このユーザーは、Runbook ジョブの開始、停止、一時停止、再開、スケジュール設定を行うことができます。 ただし、構成、Hybrid Runbook Worker グループ、DSC ノードなど、Automation の他のリソースにアクセスすることはできません。
 
 ![リソースへのアクセス権がない](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 

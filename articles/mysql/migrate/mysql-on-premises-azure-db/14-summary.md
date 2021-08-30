@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 概要'
+title: 'オンプレミスの MySQL を Azure Database for MySQL に移行する: サマリー'
 description: このドキュメントでは、オンプレミスの MySQL から Azure Database for MySQL へのアプリケーションの移行に関連するいくつかのトピックについて説明します。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 06885636d299fa406550f9bd332724e2e01d775f
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: b06b7700bb1781f400bae11633bb0d9bff00202a
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112083011"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084506"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-summary"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 概要
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-summary"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する: サマリー
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

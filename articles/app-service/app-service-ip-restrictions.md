@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 27bb3f163dc8f1a2f50e39ca5bbb5708419cb171
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: afadabb0503cde997858fce1ff9d1e82ac6d2f89
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073902"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679522"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限を設定する
 
@@ -95,7 +95,7 @@ App Service Environment で実行されているアプリへのアクセスを�
 サービス エンドポイントにより、Application Gateway やその他の Web アプリケーション ファイアウォール (WAF) デバイスを使用してアプリを構成することができます。 また、セキュリティで保護されたバックエンドを使用して多層アプリケーションを構成することもできます。 詳細については、[ネットワーク機能と App Service](networking-features.md) に関する記事と、「[サービス エンドポイントと Application Gateway の統合](networking/app-gateway-with-service-endpoints.md)」を参照してください。
 
 > [!NOTE]
-> - 現在、IP Secure Sockets Layer (SSL) 仮想 IP (VIP) を使用する Web アプリに対しては、サービス エンドポイントがサポートされていません。
+> - 現在、IP ベースの TLS/SSL バインディングと仮想 IP (VIP) を使用する Web アプリに対しては、サービス エンドポイントがサポートされていません。
 >
 #### <a name="set-a-service-tag-based-rule"></a>サービス タグベースの規則を設定する
 

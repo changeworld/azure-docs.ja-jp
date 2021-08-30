@@ -2,13 +2,13 @@
 title: Azure VM で SQL Server DB を管理および監視する
 description: この記事では、Azure VM 上で実行されている SQL Server データベースを管理し、監視する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 3938e26e134f7d823d8a6f6fac631ebf4442e6ab
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 07/27/2021
+ms.openlocfilehash: e768eae283aaf113d68f425cb306860411a9bcd9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519138"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738428"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -123,6 +123,9 @@ SQL Database の保護を再開するには:
   ![バックアップ ポリシーの変更](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
 ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する **保護の構成** ジョブをトリガーします。
+
+>[!Note]
+>ポリシーの変更は、既存の復旧ポイントにも影響します。 <br><br> アーカイブ層で 180 日間経過していないアーカイブ内の復旧ポイントの場合は、これらの復旧ポイントを削除すると早期削除コストが発生します。 [詳細については、こちらを参照してください](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)。
 
 ### <a name="inconsistent-policy"></a>不整合なポリシー
 

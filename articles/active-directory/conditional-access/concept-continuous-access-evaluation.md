@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c615c3b57d0c4ebfdbffdc1461f2289d4b8c4256
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 6b1aac64400c3c75aa48ac62e2edcc1656400e3f
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438272"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893278"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -57,7 +57,7 @@ CAE を使用するようにアプリケーションを準備する方法につ�
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>条件付きアクセス ポリシーの評価 (プレビュー)
 
-Exchange と SharePoint は、重要な条件付きアクセス ポリシーを同期できます。これにより、これらのポリシーをサービス自体内で評価できます。
+Exchange Online、SharePoint Online、Teams、MS Graph は、重要な条件付きアクセス ポリシーを同期できます。これにより、これらのポリシーをサービス自体内で評価できます。
 
 このプロセスにより、ネットワークの場所が変更された場合はただちに、Microsoft 365 クライアント アプリまたは SharePoint Online から組織のファイル、電子メール、予定表、タスクにアクセスできなくなるというシナリオが可能になります。
 
@@ -77,6 +77,12 @@ Exchange と SharePoint は、重要な条件付きアクセス ポリシーを�
 | | OneDrive Web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **SharePoint Online** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
+
+| | Teams Web | Teams Win32 | Teams iOS | Teams Android | Teams Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Teams サービス** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
+| **SharePoint Online** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
+| **Exchange Online** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
 
 ### <a name="client-side-claim-challenge"></a>クライアント側の要求チャレンジ
 

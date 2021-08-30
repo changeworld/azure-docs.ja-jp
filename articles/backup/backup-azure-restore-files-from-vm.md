@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 76d81aa92643002bc5cd2b8859941af8e7440c87
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: dd1a5ff9fbf85fbce4c4ae7a79b745589b3596e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421870"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728933"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -133,13 +133,13 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 アクセスが制限されたコンピューターでスクリプトを実行する場合は、次にアクセスできることを確認してください。
 
-- `download.microsoft.com` または NSG の `AzureFrontDoor.FirstParty` サービス タグ
-- Recovery Service の URL (GEO-NAME は Recovery Services コンテナーが存在するリージョンを表します)
+- ポート 443 (送信) の NSG の `download.microsoft.com` または `AzureFrontDoor.FirstParty` サービス タグ
+- ポート 3260 (送信) の Recovery Service の URL (GEO-NAME は Recovery Services コンテナーが存在するリージョンを表します)
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Azure パブリック リージョンの場合) または NSG の `AzureBackup` サービス タグ
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Azure China 21Vianet の場合) または NSG の `AzureBackup` サービス タグ
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure US Government の場合) または NSG の `AzureBackup` サービス タグ
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Azure Germany の場合) または NSG の `AzureBackup` サービス タグ
-- 送信ポート 53 (DNS)、443、3260
+- ポート 53 (送信) のパブリック DNS 解決
 
 > [!NOTE]
 >
@@ -159,6 +159,12 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 また、[ILR スクリプトを実行するための適切なマシン](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があり、[OS の要件](#step-3-os-requirements-to-successfully-run-the-script)を満たしていることを確認します。
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>手順 5:スクリプトを実行してボリュームを識別する
+
+> [!NOTE]
+>
+> スクリプトは英語でのみ生成され、ローカライズされません。 そのため、スクリプトを正しく実行するには、システム ロケールが英語である必要がある場合があります
+> 
+
 
 ### <a name="for-windows"></a>Windows の場合
 

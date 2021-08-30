@@ -1,23 +1,28 @@
 ---
 title: 参考資料 - Azure Policy ゲスト構成の Linux 向けベースライン
 description: Azure Policy ゲスト構成で実装する Azure の Linux 向けベースラインの詳細。
-ms.date: 06/11/2021
+ms.date: 08/03/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 692157fe7c17e013e08f74713a8c896ec29c5204
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4fe3e374b39c880940fa61b84342d2d8cbf94d12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033016"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731350"
 ---
-# <a name="azure-policy-guest-configuration-baseline-for-linux"></a>Azure Policy ゲスト構成の Linux 向けベースライン
+# <a name="linux-security-baseline"></a>Linux セキュリティ ベースライン
 
-次の記事では、 **\[プレビュー版\] Linux マシンが Azure セキュリティ基準のゲスト構成ポリシー定義の監査の要件を満たす必要がある** ことについて詳しく説明します。 詳しくは [Azure Policy ゲスト構成](../concepts/guest-configuration.md)に関するページ、および「[Azure Security Benchmark (V2) の概要](../../../security/benchmarks/overview.md)」をご覧ください。
+この記事では、次の実装で適用できる Linux ゲストの構成設定について詳しく説明します。
+
+- **\[プレビュー\] Linux マシンは Azure のコンピューティング セキュリティ ベースラインの要件を満たしている必要がある** Azure Policy ゲスト構成定義
+- **マシンのセキュリティ構成の脆弱性が修復されている必要がある** (Azure Security Center で)
+
+詳しくは [Azure Policy ゲスト構成](../concepts/guest-configuration.md)に関するページ、および「[Azure Security Benchmark (V2) の概要](../../../security/benchmarks/overview.md)」をご覧ください。
 
 ## <a name="general-security-controls"></a>一般的なセキュリティ コントロール
 
-|名前<br /><sub>(ID)</sub> |詳細 |修復チェック |
+|名前<br /><sub>(CCEID)</sub> |詳細 |修復チェック |
 |---|---|---|
 |/home パーティションに対して nodev オプションが設定されていることを確認する。<br /><sub>(1.1.4)</sub> |説明: 攻撃者により、特殊なデバイス (ブロック デバイスやキャラクター デバイスなど) が /home パーティションにマウントされる可能性があります。 |/etc/fstab ファイルを編集して、nodev を /home パーティションの 4 番目のフィールド (マウント オプション) に追加します。 詳細については、fstab(5) のマニュアル ページを参照してください。 |
 |/tmp パーティションに対して nodev オプションが設定されていることを確認する。<br /><sub>(1.1.5)</sub> |説明: 攻撃者により、特殊なデバイス (ブロック デバイスやキャラクター デバイスなど) が /tmp パーティションにマウントされる可能性があります。 |/etc/fstab ファイルを編集して、nodev を /tmp パーティションの 4 番目のフィールド (マウント オプション) に追加します。 詳細については、fstab(5) のマニュアル ページを参照してください。 |
@@ -41,6 +46,7 @@ ms.locfileid: "112033016"
 |/etc/hosts.deny に対するアクセス許可が構成されていることを確認する。<br /><sub>(3.4.5)</sub> |説明: 認可されていない書き込みアクセスから `/etc/hosts.deny` ファイルを確実に保護することは重要です。 これは既定で保護されますが、ファイルのアクセス許可が誤って、または悪意のある操作によって変更される可能性があります。 |/etc/hosts.deny の所有者およびグループを root に、アクセス許可を 0644 に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r file-permissions' を実行します |
 |既定の拒否ファイアウォール ポリシーを確認する<br /><sub>(3.6.2)</sub> |説明: 既定の受け入れポリシーでは、ファイアウォールは、拒否するように構成されていないすべてのパケットを受け入れます。 既定の ALLOW ポリシーを使用するよりも、既定の DROP ポリシーを使用した方が、セキュリティで保護されたファイアウォールの管理が容易です。 |ファイアウォール ソフトウェアを使用して、着信、発信、ルーティングの各トラフィックについて既定のポリシーを `deny` または `reject` の適切な方に設定します |
 |すべての NFS マウントに対して nodev/nosuid オプションを有効にする必要がある。<br /><sub>(5)</sub> |説明: 昇格したセキュリティ コンテキストまたは特殊なデバイスで実行されるファイルを、攻撃者がリモート ファイル システムから読み込む可能性があります |/etc/fstab で nosuid および nodev オプションを 4 番目のフィールド (マウント オプション) に追加します。 詳細については、fstab(5) のマニュアル ページを参照してください。 |
+|/etc/ssh/sshd_config に対するアクセス許可が構成されていることを確認します。<br /><sub>(5.2.1)</sub> |説明: `/etc/ssh/sshd_config` ファイルは、特権のないユーザーが不正な変更をできないようにする必要があります。 |/etc/ssh/sshd_config の所有者およびグループを root に設定し、アクセス許可を 0600 に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r sshd-config-file-permissions' を実行します |
 |パスワード作成要件が構成されていることを確認する。<br /><sub>(5.3.1)</sub> |説明: 強力なパスワードを使用すると、ブルートフォース方式によってシステムがハッキングされるのを防ぐことができます。 |使用しているディストリビューションの適切な PAM で、次のキーと値のペアを設定します: minlen=14, minclass = 4, dcredit = -1, ucredit = -1, ocredit = -1, lcredit = -1。または、'/opt/microsoft/omsagent/plugin/omsremediate -r enable-password-requirements' を実行します |
 |失敗したパスワード試行に対するロックアウトが構成されていることを確認する。<br /><sub>(5.3.2)</sub> |説明: `n` 回連続でログイン試行に失敗したユーザー ID をロックアウトすると、システムに対するブルートフォース パスワード攻撃の抑止につながります。 |Ubuntu および Debian の場合、必要に応じて pam_tally および pam_deny モジュールを追加します。 その他のすべてのディストリビューションについては、使用しているディストリビューションのドキュメントを参照してください。 |
 |不要なファイル システム (cramfs) のインストールと使用を無効にする<br /><sub>(6.1)</sub> |説明: 攻撃者が cramfs の脆弱性を使用して特権を昇格させる可能性があります |cramfs を無効にするファイルを /etc/modprob.d ディレクトリに追加するか、'/opt/microsoft/omsagent/plugin/omsremediate -r disable-unnecessary-kernel-mods' を実行します |
@@ -84,8 +90,10 @@ ms.locfileid: "112033016"
 |パケット リダイレクト送信が無効になっていることを確認する。<br /><sub>(38.3)</sub> |説明: 攻撃者は、侵害されたホストを使用して、無効な ICMP リダイレクトを他のルーター デバイスに送信する可能性があります。その目的は、ルーティングを書き換えて、正当なシステムではなく攻撃者がセットアップしたシステムにユーザーをアクセスさせることです。 |/etc/sysctl.conf で次のパラメーターを設定します: 'net.ipv4.conf.all.send_redirects = 0'、'net.ipv4.conf.default.send_redirects = 0'。または、'/opt/microsoft/omsagent/plugin/omsremediate -r disable-send-redirects' を実行します。 |
 |すべてのインターフェイスで ICMP リダイレクトの送信を無効にする必要がある。 (net.ipv4.conf.default.accept_redirects = 0)<br /><sub>(38.4)</sub> |説明: 攻撃者がこのシステムのルーティング テーブルを変更し、トラフィックを別の送信先にリダイレクトする可能性があります。 |`sysctl -w key=value` を実行して準拠値に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r disable-accept-redirects' を実行します。 |
 |すべてのインターフェイスで ICMP リダイレクトの送信を無効にする必要がある。 (net.ipv4.conf.default.secure_redirects = 0)<br /><sub>(38.5)</sub> |説明: 攻撃者がこのシステムのルーティング テーブルを変更し、トラフィックを別の送信先にリダイレクトする可能性があります。 |`sysctl -w key=value` を実行して準拠値に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r disable-secure-redirects' を実行します |
-|すべてのインターフェイスでソース ルーティング パケットの受け入れを無効にする必要がある。 (net.ipv4.conf.all.accept_source_route = 0)<br /><sub>(40.1)</sub> |説明: 攻撃者が、悪意のある目的でトラフィックをリダイレクトする可能性があります。 |`sysctl -w key=value` を実行して準拠値に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r disable-accept-source-route' を実行します。 |
-|すべてのインターフェイスでソース ルーティング パケットの受け入れを無効にする必要がある。 (net.ipv6.conf.all.accept_source_route = 0) または '/opt/microsoft/omsagent/plugin/omsremediate -r disable-accept-source-route' を実行します。<br /><sub>(40.2)</sub> |説明: 攻撃者が、悪意のある目的でトラフィックをリダイレクトする可能性があります。 |`sysctl -w key=value` を実行して準拠値に設定します。 |
+|すべてのインターフェイスでソース ルーティング パケットの受け入れを無効にする必要がある。 (net.ipv4.conf.all.accept_source_route = 0)<br /><sub>(40.1)</sub> |説明: 攻撃者が、悪意のある目的でトラフィックをリダイレクトする可能性があります。 |`sysctl -w key=value` を実行して準拠値に設定します。 |
+|すべてのインターフェイスでソース ルーティング パケットの受け入れを無効にする必要がある。 (net.ipv6.conf.all.accept_source_route = 0)<br /><sub>(40.2)</sub> |説明: 攻撃者が、悪意のある目的でトラフィックをリダイレクトする可能性があります。 |`sysctl -w key=value` を実行して準拠値に設定します。 |
+|ソース ルーティング パケットを受け入れるための既定の設定を、ネットワーク インターフェイスで無効にする必要があります。 (net.ipv4.conf.default.accept_source_route = 0)<br /><sub>(42.1)</sub> |説明: 攻撃者が、悪意のある目的でトラフィックをリダイレクトする可能性があります。 |`sysctl -w key=value` を実行して準拠値に設定します。 |
+|ソース ルーティング パケットを受け入れるための既定の設定を、ネットワーク インターフェイスで無効にする必要があります。 (net.ipv6.conf.default.accept_source_route = 0)<br /><sub>(42.2)</sub> |説明: 攻撃者が、悪意のある目的でトラフィックをリダイレクトする可能性があります。 |`sysctl -w key=value` を実行して準拠値に設定します。 |
 |ブロードキャストに対する偽の ICMP 応答の無視を有効にする必要がある。 (net.ipv4.icmp_ignore_bogus_error_responses = 1)<br /><sub>(43)</sub> |説明: 攻撃者が ICMP 攻撃を実行し、結果として DoS が発生する可能性があります |`sysctl -w key=value` を実行して準拠値に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r enable-icmp-ignore-bogus-error-responses' を実行します |
 |ブロードキャスト/マルチキャスト アドレスに送信される ICMP エコー要求 (ping) の無視が有効になっている必要がある。 (net.ipv4.icmp_echo_ignore_broadcasts = 1)<br /><sub>(44)</sub> |説明: 攻撃者が ICMP 攻撃を実行し、結果として DoS が発生する可能性があります |`sysctl -w key=value` を実行して準拠値に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r enable-icmp-echo-ignore-broadcasts' を実行します |
 |(不可能なアドレスを持つ) martian パケットのログ記録がすべてのインターフェイスで有効になっている必要がある。 (net.ipv4.conf.all.log_martians = 1)<br /><sub>(45.1)</sub> |説明: 攻撃者がなりすましアドレスから、検知されることなくトラフィックを送信する可能性があります |`sysctl -w key=value` を実行して準拠値に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r enable-log-martians' を実行します |
@@ -101,6 +109,7 @@ ms.locfileid: "112033016"
 |TIPC が無効になっていることを確認する<br /><sub>(57)</sub> |説明: 潜在的な攻撃面を減らすために、プロトコルが不要な場合はドライバーをインストールしないことをお勧めします。 |`/etc/modprobe.d/` ディレクトリ内の拡張子 .conf のファイルを編集 (ない場合は作成) し、`install tipc /bin/true` を追加してから、tipc モジュールをアンロードするか、'/opt/microsoft/omsagent/plugin/omsremediate -r disable-unnecessary-kernel-mods' を実行します |
 |ログ記録が構成されていることを確認する<br /><sub>(60)</sub> |説明: 重要なセキュリティ関連情報の多くは `rsyslog` 経由で送信されます (su 試行の成功と失敗、ログイン試行の失敗、root ログイン試行など)。 |必要に応じて syslog、rsyslog、または syslog-ng を構成します |
 |syslog、rsyslog、または syslog-ng パッケージがインストールされている必要がある。<br /><sub>(61)</sub> |説明: 信頼性とセキュリティの問題がログに記録されず、適切な診断ができなくなります。 |rsyslog パッケージをインストールするか、'/opt/microsoft/omsagent/plugin/omsremediate -r install-rsyslog' を実行します |
+|systemd-journald サービスは、ログ メッセージを保持するように構成する必要があります<br /><sub>(61.1)</sub> |説明: 信頼性とセキュリティの問題がログに記録されず、適切な診断ができなくなります。 |/var/log/journal を作成し、journald.conf の中の Storage が auto または persistent であることを確認します |
 |ログ サービスが有効になっていることを確認する<br /><sub>(62)</sub> |説明: ノードでのイベントをログに記録できることは不可欠です。 |rsyslog パッケージを有効にするか、'/opt/microsoft/omsagent/plugin/omsremediate -r enable-rsyslog' を実行します |
 |すべての rsyslog ログ ファイルのアクセス許可を 640 または 600 に設定する必要がある。<br /><sub>(63)</sub> |説明: 攻撃者がログを操作してアクティビティを隠蔽する可能性があります |行 '$FileCreateMode 0640' をファイル '/etc/rsyslog.conf' に追加します |
 |ロガー構成ファイルが制限されていることを確認する。<br /><sub>(63.1)</sub> |説明: 機密性が高い syslog データのアーカイブと保護を確実にするために、ログ ファイルが存在しておりアクセス許可が正しく設定されていることを確認するのは重要です。 |ロガーの構成ファイルを 0640 に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r logger-config-file-permissions' を実行します |
@@ -135,8 +144,23 @@ ms.locfileid: "112033016"
 |/etc/cron.monthly に対するアクセス許可が構成されていることを確認する。<br /><sub>(96)</sub> |説明: 特権のないユーザーのためにこのディレクトリへの書き込みアクセス権を付与すると、認可されていない昇格された特権を取得する手段を提供する可能性があります。 このディレクトリの読み取りアクセス権を付与すると、昇格された特権を取得したり、監査コントロールを回避したりする方法についての情報が、認可されていないユーザーに与えられる可能性があります。 |/etc/cron.monthly の所有者およびグループを root に設定して、アクセス許可を 0700 に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r fix-cron-file-perms' を実行します |
 |/etc/cron.weekly に対するアクセス許可が構成されていることを確認する。<br /><sub>(97)</sub> |説明: 特権のないユーザーのためにこのディレクトリへの書き込みアクセス権を付与すると、認可されていない昇格された特権を取得する手段を提供する可能性があります。 このディレクトリの読み取りアクセス権を付与すると、昇格された特権を取得したり、監査コントロールを回避したりする方法についての情報が、認可されていないユーザーに与えられる可能性があります。 |/etc/cron.weekly の所有者およびグループを root に設定して、アクセス許可を 0700 に設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r fix-cron-file-perms' を実行します |
 |at/cron が認可されたユーザーに制限されていることを確認する<br /><sub>(98)</sub> |説明: 多くのシステムで、`cron` ジョブをスケジュールする権限があるのはシステム管理者だけです。 `cron.allow` ファイルを使用して、`cron` ジョブを実行できるユーザーを制御すると、このポリシーが適用されます。 許可リストの方が拒否リストよりも管理が容易です。 拒否リストの場合、システムに追加したユーザー ID を拒否ファイルに追加するのを忘れてしまう可能性があります。 |/etc/cron.deny および /etc/at.deny を、それぞれの `allow` ファイルで置き換えます |
+|ベスト プラクティスを満たすように SSH を構成して管理する必要があります。 - '/etc/ssh/sshd_config Protocol = 2'<br /><sub>(106.1)</sub> |説明: 攻撃者が以前のバージョンの SSH プロトコルの欠陥を利用してアクセスする可能性があります |コマンド '/opt/microsoft/omsagent/plugin/omsremediate -r configure-ssh-protocol' を実行します。 これにより 'Protocol 2' がファイル '/etc/ssh/sshd_config' に設定されます |
+|ベスト プラクティスを満たすように SSH を構成して管理する必要があります。 - '/etc/ssh/sshd_config IgnoreRhosts = yes'<br /><sub>(106.3)</sub> |説明: 攻撃者が Rhosts プロトコルの欠陥を利用してアクセスする可能性があります |コマンド '/usr/local/bin/azsecd remediate (/opt/microsoft/omsagent/plugin/omsremediate) -r enable-ssh-ignore-rhosts' を実行します。 これにより、'IgnoreRhosts yes' という行がファイル '/etc/ssh/sshd_config' に追加されます |
+|SSH LogLevel が INFO に設定されていることを確認します<br /><sub>(106.5)</sub> |説明: SSH では、さまざまな詳細度が設定された複数のログ レベルが提供されます。 `DEBUG ` は、重要なセキュリティ情報を識別するのが困難なほど多くのデータを提供するので、SSH 通信を厳密にデバッグする場合以外は特に推奨 "_されません_"。 `INFO ` レベルは、SSH ユーザーのログイン アクティビティのみを記録する基本レベルです。 インシデント対応など多くの状況では、特定のユーザーがいつシステムでアクティブだったのか調べることが重要です。 ログアウト レコードを使用すると、切断されたユーザーを除外できるので、フィールドを絞り込むのに役立ちます。 |`/etc/ssh/sshd_config` ファイルを編集して、 パラメーターを次のように設定します。         ```         LogLevel INFO         ``` |
+|SSH の MaxAuthTries が 6 以下に設定されていることを確認します<br /><sub>(106.7)</sub> |説明: `MaxAuthTries ` パラメーターを低い数値に設定すると、SSH サーバーに対するブルート フォース攻撃が成功するリスクが最小限に抑えられます。 推奨される設定は 4 ですが、この数値はサイト ポリシーに基づいて設定してください。 |SSH MaxAuthTries が 6 以下に設定されているのを確認します。         `/etc/ssh/sshd_config` ファイルを編集してパラメーターを次のように設定します。         ```         MaxAuthTries 6         ``` |
+|SSH アクセスが制限されていることを確認します<br /><sub>(106.11)</sub> |説明: システムに SSH 経由でリモートにアクセスできるユーザーを制限すると、許可されているユーザーだけがシステムにアクセスできるようになります。 |SSH アクセスが制限されていることを確認します          `/etc/ssh/sshd_config` ファイルを編集して、1 つ以上のパラメーターを次のように設定します。         ```         AllowUsers          AllowGroups          DenyUsers          DenyGroups          ``` |
+|ssh サーバーを介した rsh コマンドのエミュレーションを無効にする必要があります。 - '/etc/ssh/sshd_config RhostsRSAAuthentication = no'<br /><sub>(107)</sub> |説明: 攻撃者が RHosts プロトコルの欠陥を利用してアクセスする可能性があります |コマンド '/opt/microsoft/omsagent/plugin/omsremediate -r disable-ssh-rhost-rsa-auth' を実行します。 これにより、'RhostsRSAAuthentication no' という行がファイル '/etc/ssh/sshd_config' に追加されます |
+|SSH ホストベースの認証を無効にする必要があります。 - '/etc/ssh/sshd_config HostbasedAuthentication = no'<br /><sub>(108)</sub> |説明: 攻撃者がホストベースの認証を使って、侵害されたホストからアクセスする可能性があります |コマンド '/opt/microsoft/omsagent/plugin/omsremediate -r disable-ssh-host-based-auth' を実行します。 これにより、'HostbasedAuthentication no' という行がファイル '/etc/ssh/sshd_config' に追加されます |
+|SSH 経由のルート ログインを無効にする必要があります。 - '/etc/ssh/sshd_config PermitRootLogin = no'<br /><sub>(109)</sub> |説明: 攻撃者がルート パスワードをブルート フォースしたり、root として直接ログインしてコマンド履歴を隠したりする可能性があります |コマンド '/usr/local/bin/azsecd remediate -r disable-ssh-root-login' を実行します。 これにより、'PermitRootLogin no' という行がファイル '/etc/ssh/sshd_config' に追加されます |
+|パスワードが空のアカウントからのリモート接続を無効にする必要があります。 - '/etc/ssh/sshd_config PermitEmptyPasswords = no'<br /><sub>(110)</sub> |説明: 攻撃者がパスワード推測によってアクセスする可能性があります |コマンド '/usr/local/bin/azsecd remediate (/opt/microsoft/omsagent/plugin/omsremediate) -r disable-ssh-empty-passwords' を実行します。 これにより、'PermitEmptyPasswords no' という行がファイル '/etc/ssh/sshd_config' に追加されます |
+|SSH のアイドル タイムアウト間隔が構成されていることを確認します。<br /><sub>(110.1)</sub> |説明: 接続に関連するタイムアウト値がないと、許可されていないユーザーが別のユーザーの ssh セッションにアクセスできる可能性があります。 タイムアウト値を設定すると、少なくともこのようなことが発生するリスクが減ります。 推奨設定値は 300 秒 (5 分) ですが、このタイムアウト値はサイト ポリシーに基づいて設定してください。 `ClientAliveCountMax` の推奨設定値は 0 です。 この場合、クライアント セッションは 5 分間のアイドル時間後に終了し、キープアライブ メッセージは送信されません。 |/etc/ssh/sshd_config ファイルを編集して、パラメーターをポリシーに従って設定してください |
+|SSH の LoginGraceTime が 1 分以下に設定されていることを確認します。<br /><sub>(110.2)</sub> |説明: `LoginGraceTime` パラメーターを低い数値に設定すると、SSH サーバーに対するブルート フォース攻撃が成功するリスクが最小限に抑えられます。 また、認証されていない同時接続数も制限されます。推奨される設定は 60 秒 (1 分) ですが、この数値はサイト ポリシーに基づいて設定してください。 |/etc/ssh/sshd_config ファイルを編集してパラメーターをポリシーに従って設定するか、'/opt/microsoft/omsagent/plugin/omsremediate -r configure-login-grace-time' を実行します |
+|承認された MAC アルゴリズムのみが使用されていることを確認します<br /><sub>(110.3)</sub> |説明: MD5 および 96 ビットの MAC アルゴリズムは脆弱と見なされており、SSH ダウングレード攻撃における悪用性が高まることが示されています。 脆弱なアルゴリズムは、計算能力の拡大に伴い、悪用される可能性のある弱点として、引き続き大きな注目を集めています。 アルゴリズムを破った攻撃者は、MiTM の位置を利用して SSH トンネルを解読し、資格情報や情報を取得する可能性があります |/etc/sshd_config ファイルを編集し、MAC 行を追加または変更して、承認された MAC のコンマ区切りリストを含めるか、'/opt/microsoft/omsagent/plugin/omsremediate -r configure-macs' を実行します |
 |リモート ログイン警告バナーが正しく構成されていることを確認する。<br /><sub>(111)</sub> |説明: 警告メッセージでは、システムにログインしようとしているユーザーに、システムに関するユーザーの法的地位を通知します。このメッセージには、システムを所有している組織の名称、また、施行されている監視ポリシーがある場合はそのポリシーを含める必要があります。 OS およびパッチ レベルの情報をログイン バナーに表示することには、詳細なシステム情報が、システムの特定の悪用を標的にしようとしている攻撃者に提供されるという副作用もあります。 認可されたユーザーは、ログインした後に `uname -a` コマンドを実行すると、この情報を容易に取得できます。 |\m \r \s および \v のインスタンスを /etc/issue.net ファイルからすべて削除します |
 |ローカル ログイン警告バナーが正しく構成されていることを確認する。<br /><sub>(111.1)</sub> |説明: 警告メッセージでは、システムにログインしようとしているユーザーに、システムに関するユーザーの法的地位を通知します。このメッセージには、システムを所有している組織の名称、また、施行されている監視ポリシーがある場合はそのポリシーを含める必要があります。 OS およびパッチ レベルの情報をログイン バナーに表示することには、詳細なシステム情報が、システムの特定の悪用を標的にしようとしている攻撃者に提供されるという副作用もあります。 認可されたユーザーは、ログインした後に `uname -a` コマンドを実行すると、この情報を容易に取得できます。 |\m \r \s および \v のインスタンスを /etc/issue ファイルからすべて削除します |
+|SSH 警告バナーを有効にする必要があります。 - '/etc/ssh/sshd_config Banner = /etc/issue.net'<br /><sub>(111.2)</sub> |説明: ユーザーは、システム上での自分のアクションが監視されていることは警告されません |コマンド '/usr/local/bin/azsecd remediate -r configure-ssh-banner' を実行します。 これにより、'Banner /etc/azsec/banner.txt' という行がファイル '/etc/ssh/sshd_config' に追加されます |
+|ユーザーは SSH の環境オプションを設定することができません。<br /><sub>(112)</sub> |説明: 攻撃者が SSH を介して一部のアクセス制限を回避できる可能性があります |'PermitUserEnvironment yes' という行をファイル '/etc/ssh/sshd_config' から削除します |
+|適切な暗号を SSH に使用する必要があります。 (Ciphers aes128-ctr,aes192-ctr,aes256-ctr)<br /><sub>(113)</sub> |説明: 攻撃者が、セキュリティが脆弱な SSH 接続を侵害する可能性があります |コマンド '/usr/local/bin/azsecd remediate -r configure-ssh-ciphers' を実行します。 これにより、'Ciphers aes128-ctr,aes192-ctr,aes256-ctr' という行がファイル '/etc/ssh/sshd_config' に追加されます |
 |avahi-daemon サービスが無効になっている必要があります。<br /><sub>(114)</sub> |説明: 攻撃者が avahi デーモンの脆弱性を使用してアクセス権を取得する可能性があります |avahi-daemon サービスを無効にするか、'/opt/microsoft/omsagent/plugin/omsremediate -r disable-avahi-daemon' を実行します |
 |cups サービスが無効になっている必要がある。<br /><sub>(115)</sub> |説明: 攻撃者が cups サービスの欠陥を使用して特権を昇格させる可能性があります |cups サービスを無効にするか、'/opt/microsoft/omsagent/plugin/omsremediate -r disable-cups' を実行します |
 |isc-dhcpd サービスが無効になっている必要があります。<br /><sub>(116)</sub> |説明: 攻撃者が dhcpd を使用して、誤った情報をクライアントに提供し、通常の運用を妨げる可能性があります。 |isc-dhcp-server パッケージを削除します (apt-get remove isc-dhcp-server) |

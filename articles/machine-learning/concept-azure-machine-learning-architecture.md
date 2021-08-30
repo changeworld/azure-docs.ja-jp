@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 08/20/2020
+ms.date: 07/27/2021
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f1eb7a5b4697801775d23091c610ab594b0b27ec
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 065a06955adc9c157134e138a25aaee9f54f5bea
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813382"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862114"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
-[Azure Machine Learning](overview-what-is-azure-ml.md) のアーキテクチャおよび概念について説明します。  この記事では、コンポーネントについて概説し、これらが連携することにより、どのように機械学習モデルの構築、デプロイ、保守のプロセスに役立つかについて説明します。
+[Azure Machine Learning](overview-what-is-azure-machine-learning.md) のアーキテクチャおよび概念について説明します。  この記事では、コンポーネントについて概説し、これらが連携することにより、どのように機械学習モデルの構築、デプロイ、保守のプロセスに役立つかについて説明します。
 
 ## <a name="workspace"></a><a name="workspace"></a> ワークスペース
 
@@ -197,7 +197,7 @@ Scikit-learn を使用したモデルのトレーニングの例については�
 
 [ワークスペース](#workspace) > **エンドポイント**
 
-エンドポイントは、クラウドでホストできる Web サービスまたは統合デバイス デプロイ用 IoT モジュールへのモデルのインスタンス化です。
+エンドポイントは、クラウドでホストできる Web サービスへのモデルのインスタンス化です。
 
 #### <a name="web-service-endpoint"></a>Web サービス エンドポイント
 
@@ -232,13 +232,7 @@ Web サービスとしてのモデルのデプロイ例については、[Azure 
 パイプライン エンドポイントは、発行されたパイプラインのコレクションです。 この論理的な組織では、同じエンドポイントを使用して複数のパイプラインを管理し、呼び出すことができます。 パイプライン エンドポイントで公開されている各パイプラインは、バージョン管理されます。 エンドポイントの既定のパイプラインを選択するか、REST 呼び出しでバージョンを指定できます。
  
 
-#### <a name="iot-module-endpoints"></a>IoT モジュール エンドポイント
 
-デプロイされる IoT モジュール エンドポイントは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 エッジ デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
-
-監視を有効にしてある場合、Azure では Azure IoT Edge モジュール内のモデルから利用統計情報を収集します。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーのストレージ アカウント インスタンスに格納されます。
-
-Azure IoT Edge ではモジュールが実行されるのを保証し、モジュールをホストしているデバイスを監視します。 
 ## <a name="automation"></a>オートメーション
 
 ### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLI 
@@ -261,7 +255,7 @@ Azure Machine Learning で提供される監視およびログ記録機能は次
    * [MLflow を使用して実験を追跡する](how-to-use-mlflow.md)
    * [TensorBoard を使用して実行を視覚化する](how-to-monitor-tensorboard.md)
 * "__管理者__" の場合、Azure Monitor を使用して、ワークスペース、関連する Azure リソース、およびリソースの作成や削除などのイベントに関する情報を監視できます。 詳細については、[Azure Machine Learning を監視する方法](monitor-azure-machine-learning.md)に関する記事を参照してください。
-* __DevOps__ または __MLOps__ の場合、Web サービスまたは IoT Edge モジュールとしてデプロイされたモデルによって生成された情報を監視して、デプロイに関する問題を特定し、サービスに送信されたデータを収集できます。 詳細については、[モデル データの収集](how-to-enable-data-collection.md)および [Application Insights での監視](how-to-enable-app-insights.md)に関する記事を参照してください。
+* __DevOps__ または __MLOps__ の場合、Web サービスとしてデプロイされたモデルによって生成された情報を監視して、デプロイに関する問題を特定し、サービスに送信されたデータを収集できます。 詳細については、[モデル データの収集](how-to-enable-data-collection.md)および [Application Insights での監視](how-to-enable-app-insights.md)に関する記事を参照してください。
 
 ## <a name="interacting-with-your-workspace"></a>ワークスペースの操作
 
@@ -283,15 +277,13 @@ Azure Machine Learning で提供される監視およびログ記録機能は次
 > プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 +  [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro) を使用して、Python 環境でサービスを操作します。
-+ [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します (プレビュー)。
 + [Azure Machine Learning デザイナー](concept-designer.md)を使用して、コードを記述せずにワークフローの手順を行います。 
 + [Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md) を自動化に使用します。
-+ [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning の利用を開始するには、以下を参照してください。
 
-* [Azure Machine Learning とは](overview-what-is-azure-ml.md)
+* [Azure Machine Learning とは](overview-what-is-azure-machine-learning.md)
 * [Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)
 * [チュートリアル (パート 1): モデルをトレーニングする](tutorial-train-models-with-aml.md)

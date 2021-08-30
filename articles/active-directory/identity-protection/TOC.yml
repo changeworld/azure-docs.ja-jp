@@ -36,6 +36,8 @@
           href: howto-identity-protection-investigate-risk.md
         - name: リスク検出の修正とブロック解除
           href: howto-identity-protection-remediate-unblock.md
+        - name: リスク データのエクスポート
+          href: howto-export-risk-data.md
         - name: Microsoft Graph API を使用する
           href: howto-identity-protection-graph-api.md
     - name: リスク検出に関するフィードバックの提供

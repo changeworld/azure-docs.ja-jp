@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -142,6 +142,8 @@
       href: dbms_guide_sapase.md
     - name: Azure での SAP MaxDB、liveCache、コンテンツ サーバー
       href: dbms_guide_maxdb.md
+    - name: Azure VM での SAP IQ
+      href: sap-iq-deployment-guide.md
     - name: HANA
       items:
         - name: Azure VM での SAP HANA のインストール
@@ -270,8 +272,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
 - name: SAP ソリューション向け Azure Monitor
   items:
-    - name: AMS の概要
-      href: azure-monitor-overview.md
+    - name: SAP on Azure の監視
+      href: monitor-sap-on-azure.md
     - name: AMS プロバイダー
       href: azure-monitor-providers.md
     - name: AMS の構成 - ポータル
@@ -280,6 +282,8 @@
       href: azure-monitor-alerts-portal.md
     - name: AMS の構成 - Azure PowerShell
       href: azure-monitor-sap-quickstart-powershell.md
+    - name: データ参照を監視する
+      href: monitor-sap-on-azure-reference.md
     - name: AMS に関する FAQ
       href: azure-monitor-faq.yml
 - name: リファレンス

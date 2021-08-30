@@ -263,6 +263,8 @@
       href: ../enterprise-users/directory-service-limits-restrictions.md
     - name: FIDO2 互換性
       href: fido2-compatibility.md
+    - name: FIDO2 プロバイダーになる
+      href: concept-fido2-hardware-vendor.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

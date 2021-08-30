@@ -4,13 +4,13 @@ description: App Service または Azure Functions アプリの ID プロバイ�
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
-ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: 2404d8af682f119b68c78d6dc5cacc3d30201c17
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078317"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397096"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
@@ -149,7 +149,7 @@ Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure A
 1. **[アプリケーションのアクセス許可]** で、前に作成したアプリ ロールを選択し、 **[アクセス許可の追加]** を選択します。
 1. クライアント アプリケーションがアクセス許可を要求することを承認するために、必ず **[管理者の同意を与える]** をクリックしてください。
 1. (ロールを追加する前の) 前述のシナリオと同様に、これで、同じターゲット `resource` の[アクセス トークンを要求](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)できます。アクセス トークンには、クライアント アプリケーションのために承認されたアプリ ロールを含む `roles` 要求が含まれます。
-1. これで、ターゲット App Service または関数アプリのコード内で、必要なロールがトークンに存在しているか検証できます (これは App Service 認証/承認では実行されません)。 詳しくは、「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください。
+1. これで、ターゲット App Service または関数アプリのコード内で、必要なロールがトークンに存在しているか検証できます (これは App Service 認証/承認では実行されません)。 詳しくは、「[ユーザー要求へのアクセス](configure-authentication-user-identities.md#access-user-claims-in-app-code)」をご覧ください。
 
 これで、独自の ID を使用して App Service アプリにアクセスできるデーモン クライアント アプリケーションが構成されました。
 

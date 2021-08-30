@@ -6,6 +6,8 @@
       href: overview.md
     - name: リリース ノート
       href: release-notes.md
+    - name: Azure Arc 検証済みパートナー
+      href: validation-program.md
     - name: データ収集とレポート
       href: privacy-data-collection-and-reporting.md
 - name: クイックスタート
@@ -38,7 +40,7 @@
               href: create-data-controller-indirect-azure-data-studio.md
             - name: Azure portal
               href: create-data-controller-indirect-azure-portal.md
-            - name: azdata CLI
+            - name: Azure (az) CLI
               href: create-data-controller-indirect-cli.md
             - name: Kubernetes のツール
               href: create-data-controller-using-kubernetes-native-tools.md
@@ -118,24 +120,6 @@
           href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
     - name: 方法
       items:
-        - name: ツールをインストールする
-          items:
-            - name: Azure Data CLI (azdata)
-              items: null
-            - name: インストール
-              href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: macOS
-              href: /sql/azdata/install/deploy-install-azdata-macos?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Windows
-              href: /sql/azdata/install/deploy-install-azdata-installer?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux (apt を使用)
-              href: /sql/azdata/install/deploy-install-azdata-linux-package?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux (yum を使用)
-              href: /sql/azdata/install/deploy-install-azdata-yum?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux (zypper を使用)
-              href: /sql/azdata/install/deploy-install-azdata-zypper?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-            - name: Linux (pip を使用)
-              href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: 管理する
           items:
             - name: バックアップと復元
@@ -172,7 +156,7 @@
               href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
         - name: トラブルシューティング
           href: troubleshoot-postgresql-hyperscale-server-group.md
-- name: Azure Arc 対応 SQL Managed Instance (プレビュー)
+- name: Azure Arc 対応 SQL Managed Instance
   items:
     - name: 概要
       items:
@@ -180,6 +164,8 @@
           href: managed-instance-overview.md
         - name: 特徴
           href: managed-instance-features.md
+        - name: サービス階層
+          href: service-tiers.md
     - name: クイックスタート
       items:
         - name: SQL マネージド インスタンスの作成
@@ -212,30 +198,34 @@
               href: restore-adventureworks-sample-db.md
 - name: 関連項目
   items:
-    - name: azdata
+    - name: リリース バージョン ログ
+      href: version-log.md
+    - name: az arcdata 拡張機能
       items:
-        - name: azdata
-          href: /sql/azdata/reference/reference-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: ノートブック
-          href: /sql/azdata/reference/reference-azdata-notebook?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: postgres
-          href: /sql/azdata/reference/reference-azdata-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres
-          href: /sql/azdata/reference/reference-azdata-arc-postgres?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-backup
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-endpoint
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-server
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-server?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-server-backup
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-backup?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-postgres-server-config
-          href: /sql/azdata/reference/reference-azdata-arc-postgres-server-config?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-resource
-          href: /sql/azdata/reference/reference-azdata-arc-resource?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
-        - name: arc-resource-kind
-          href: /sql/azdata/reference/reference-azdata-arc-resource-kind?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: 概要
+          href: ./reference/overview.md
+        - name: arcdata dc
+          href: ./reference/reference-az-arcdata-dc.md
+        - name: arcdata dc config
+          href: ./reference/reference-az-arcdata-dc-config.md
+        - name: arcdata dc endpoint
+          href: ./reference/reference-az-arcdata-dc-endpoint.md
+        - name: arcdata dc status
+          href: ./reference/reference-az-arcdata-dc-status.md
+        - name: arcdata resource-kind
+          href: ./reference/reference-az-arcdata-resource-kind.md
+        - name: postgres arc-server
+          href: ./reference/reference-az-postgres-arc-server.md
+        - name: postgres arc-server endpoint
+          href: ./reference/reference-az-postgres-arc-server-endpoint.md
+        - name: sql mi-arc
+          href: ./reference/reference-az-sql-mi-arc.md
+        - name: sql mi-arc endpoint
+          href: ./reference/reference-az-sql-mi-arc-endpoint.md
+        - name: sql mi-arc config
+          href: ./reference/reference-az-sql-mi-arc-config.md
+        - name: sql mi-arc dag
+          href: ./reference/reference-az-sql-mi-arc-dag.md
 - name: リソース
   items:
     - name: 展開を計画する

@@ -4,15 +4,15 @@ description: Azure Marketplace での仮想マシン オファーに対するプ
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: mingshen-ms
-ms.author: mingshen
-ms.date: 05/20/2021
-ms.openlocfilehash: f0e05f06258cc30253fefdc7113fce045009f500
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 07/26/2021
+ms.openlocfilehash: a974bf12873d46b7835d861b8c4d7007fb7e72ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527624"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747246"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーに対するプランを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "111527624"
 このウィンドウで使用可能なアクションは、プランの現在の状態によって異なります。
 
 - プランの状態がドラフトの場合は、 **[ドラフトの削除]** を選択します。
-- プランの状態が発行済みの場合は、 **[Stop sell plan]\(プランの販売の停止\)** または **[Sync private audience]\(プライベート対象ユーザーの同期\)** を選択します。
+- プランの状態がライブで公開されている場合は、 **[Deprecate plan]\(プランの廃止\)** または **[Sync private audience]\(プライベート対象ユーザーの同期)** を選択します。
 
 ## <a name="create-a-new-plan"></a>新しいプランを作成する
 
@@ -149,7 +149,7 @@ Microsoft がパートナーに代わって消費税および使用税を送金�
 
 すべての Azure のお客様は、PowerShell または CLI を使用してオファーをデプロイできます。  限定された一連の顧客がこのオファーを利用できるようにする場合は、プランを **[プライベート]** に設定します。 
 
-非表示のプランでは、プレビュー リンクは生成されません。 ただし、[こちらの手順に従って](azure-vm-create-faq.md#how-do-i-test-a-hidden-preview-image)それらをテストすることはできます。 
+非表示のプランでは、プレビュー リンクは生成されません。 ただし、[こちらの手順に従って](azure-vm-create-faq.yml#how-do-i-test-a-hidden-preview-image-)それらをテストすることはできます。 
 
 左側のナビゲーション プラン メニューの次のタブである **[技術的な構成]** に進む前に、 **[下書きの保存]** を選択してください。
 
@@ -179,7 +179,23 @@ Azure Marketplace で表示する、最大 6 個の推奨される仮想マシ�
 
 ### <a name="properties"></a>Properties
 
-VM が **高速ネットワークをサポートしている** かどうかを選択します。 詳細については、[高速ネットワーク](https://go.microsoft.com/fwlink/?linkid=2124513)に関するページを参照してください。
+VM に対して選択できるプロパティの一覧を次に示します。
+
+- **Supports backup (バックアップをサポート)** : お使いのイメージで Azure VM バックアップがサポートされている場合は、このプロパティを有効にします。 [Azure VM バックアップ](../backup/backup-azure-vms-introduction.md)についてご確認ください。
+
+- **Supports accelerated networking (高速ネットワークをサポート)** : このプランの VM イメージで VM へのシングル ルート I/O 仮想化 (SR-IOV) がサポートされている場合は、このプロパティを有効にします。これにより、ネットワーク インターフェイスでの低遅延と高スループットが実現します。 [高速ネットワーク](https://go.microsoft.com/fwlink/?linkid=2124513)についてご確認ください。
+
+- **Supports cloud-init configuration (cloud-init 構成をサポート)** : このプランのイメージで cloud-init デプロイ後スクリプトがサポートされている場合は、このプロパティを有効にします。 [cloud-init 構成](../virtual-machines/linux/using-cloud-init.md)についてご確認ください。
+
+- **Supports hotpatch (ホットパッチをサポート)** : Windows Server Azure Edition はホットパッチをサポートしています。 [ホットパッチ](../automanage/automanage-hotpatch.md)についてご確認ください。
+
+- **Supports extensions (拡張機能をサポート)** : このプランのイメージで拡張機能がサポートされている場合は、このプロパティを有効にします。 拡張機能は、Azure VM でのデプロイ後の構成と自動化を提供する小さなアプリケーションです。 [Azure 仮想マシン拡張機能](./azure-vm-create-certification-faq.yml#vm-extensions)についてご確認ください。
+
+- **Is a network virtual appliance (ネットワーク仮想アプライアンスです)** : この製品がネットワーク仮想アプライアンスの場合は、このプロパティを有効にします。 ネットワーク仮想アプライアンスは、ロード バランサー、VPN ゲートウェイ、ファイアウォール、アプリケーション ゲートウェイなど、1 つまたは複数のネットワーク機能を実行する製品です。 [ネットワーク仮想アプライアンス](https://go.microsoft.com/fwlink/?linkid=2155373)についてご確認ください。
+
+- **Remote desktop or SSH disabled (リモート デスクトップまたは SSH を無効)** : これらのイメージを使用してデプロイされた仮想マシンが、顧客にリモート デスクトップまたは SSH を使用したアクセスを許可しない場合は、このプロパティを有効にします。 [ロックされた VM イメージ](./azure-vm-create-certification-faq.yml#locked-down-or-ssh-disabled-offer)についてご確認ください。
+
+- **Requires custom ARM template for deployment (デプロイにはカスタム ARM テンプレートが必要)** : このプラン内のイメージが、カスタム ARM テンプレートを使用してのみデプロイできる場合は、このプロパティを有効にします。 詳細については、[「仮想マシンの認定に関するトラブルシューティング」の「カスタム テンプレート」セクション](./azure-vm-create-certification-faq.yml#custom-templates)を参照してください。
 
 ### <a name="generations"></a>ジェネレーション
 

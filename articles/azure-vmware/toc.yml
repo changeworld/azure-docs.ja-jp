@@ -6,36 +6,36 @@
       href: introduction.md
     - name: プラットフォームの更新
       href: azure-vmware-solution-platform-updates.md
-- name: クイック スタート
+- name: はじめに
   items:
     - name: 1 - デプロイを計画する
-      href: production-ready-deployment-steps.md
+      href: plan-private-cloud-deployment.md
     - name: 2 - Azure VMware Solution をデプロイする
       href: deploy-azure-vmware-solution.md
-    - name: 3 - オンプレミスに接続する
+    - name: 3 - オンプレミス環境に接続する
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 4 - VMware HCX をデプロイして構成する
-      href: tutorial-deploy-vmware-hcx.md
+    - name: 4 - VMware HCX コネクタをインストールする
+      href: install-vmware-hcx.md
+    - name: 5 - オンプレミスの VMware HCX コネクタを構成する
+      href: configure-vmware-hcx.md
 - name: チュートリアル
   items:
-    - name: プライベート クラウドへのアクセス
-      href: tutorial-access-private-cloud.md
-    - name: ネットワークを構成する
-      href: tutorial-configure-networking.md
-    - name: プライベート クラウドを作成する
-      href: tutorial-create-private-cloud.md
-    - name: ネットワーク セグメントを作成する
-      href: tutorial-nsx-t-network-segment.md
-    - name: プライベート クラウドを削除する
-      href: tutorial-delete-private-cloud.md
-    - name: VMware HCX をデプロイして構成する
-      href: tutorial-deploy-vmware-hcx.md
-    - name: プライベート クラウドでクラスターを拡大または縮小する
-      href: tutorial-scale-private-cloud.md
-    - name: ネットワーク計画のチェックリスト
+    - name: 1 - ネットワーク計画のチェックリスト
       href: tutorial-network-checklist.md
-    - name: オンプレミスからプライベート クラウドへのピアリング
+    - name: 2 - プライベート クラウドを作成する
+      href: tutorial-create-private-cloud.md
+    - name: 3 - プライベート クラウドへのアクセス
+      href: tutorial-access-private-cloud.md
+    - name: 4 - ネットワークを構成する
+      href: tutorial-configure-networking.md
+    - name: 5 - NSX-T ネットワーク セグメントの作成
+      href: tutorial-nsx-t-network-segment.md
+    - name: 6 - オンプレミスからプライベート クラウドへのピアリング
       href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 7 - プライベート クラウドのスケールイン
+      href: tutorial-scale-private-cloud.md
+    - name: 8 - プライベート クラウドを削除する
+      href: tutorial-delete-private-cloud.md
 - name: 概念
   items:
     - name: アクセスと ID
@@ -44,8 +44,6 @@
       href: concepts-api-management.md
     - name: ハブ アンド スポーク
       href: concepts-hub-and-spoke.md
-    - name: 監視と保護
-      href: concepts-monitor-protection.md
     - name: ネットワークと相互接続
       href: concepts-networking.md
     - name: プライベート クラウドとクラスター
@@ -60,6 +58,8 @@
       href: request-host-quota-azure-vmware-solution.md
     - name: 予約インスタンスを使用してコストを削減する
       href: reserved-instance.md
+    - name: 配置ポリシーを作成する
+      href: create-placement-policy.md
     - name: ネットワークを構成する
       items:
         - name: DHCP サーバーまたはリレーを構成する
@@ -70,18 +70,18 @@
           href: configure-dns-azure-vmware-solution.md
         - name: ポート ミラーリングの構成
           href: configure-port-mirroring-azure-vmware-solution.md
-        - name: GitHub Enterprise Server を構成する
-          href: ./configure-github-enterprise-server.md
         - name: パブリック インターネット アクセスを有効にする
           href: enable-public-internet-access.md
         - name: vWAN でサイト間 VPN を構成する
           href: configure-site-to-site-vpn-gateway.md
+    - name: 同じリージョン内の複数のプライベート クラウドを接続する
+      href: connect-multiple-private-clouds-same-region.md
+    - name: GitHub Enterprise Server を構成する
+      href: configure-github-enterprise-server.md
     - name: Windows Server フェールオーバー クラスターの構成
       href: configure-windows-server-failover-cluster.md
     - name: cloudadmin 資格情報のローテーション
       href: rotate-cloudadmin-credentials.md
-    - name: 同じリージョン内の複数のプライベート クラウドを接続する
-      href: connect-multiple-private-clouds-same-region.md
     - name: リソースの移動
       items:
         - name: Azure VMware Solution のサブスクリプションを移動する
@@ -163,7 +163,7 @@
     - name: よく寄せられる質問
       items:
         - name: 全般
-          href: /azure/azure-vmware/faq
+          href: ./faq.yml
         - name: 顧客とのコミュニケーション
           href: /azure/azure-vmware/faq#customer-communication
         - name: 構成とセットアップ

@@ -8,6 +8,10 @@
   items:
     - name: ライセンスの要件
       href: subscription-requirements.md
+    - name: 特権アクセス グループ
+      href: groups-features.md
+    - name: ロールを割り当て可能なグループと特権アクセス グループ
+      href: concept-privileged-access-versus-role-assignable.md
     - name: PIM で管理できないロール
       href: pim-roles.md
     - name: Azure AD で特権アクセスをセキュリティで保護する
@@ -41,6 +45,8 @@
           href: pim-how-to-activate-role.md
         - name: Azure ロール
           href: pim-resource-roles-activate-your-roles.md
+        - name: 特権アクセス グループ
+          href: groups-activate-roles.md
     - name: 承認
       items:
         - name: Azure AD ロール
@@ -57,11 +63,13 @@
           href: groups-discover-groups.md
     - name: 拡張または更新する
       items:
+        - name: Azure AD ロール
+          href: pim-how-to-renew-extend.md
         - name: Azure ロール
           href: pim-resource-roles-renew-extend.md
         - name: 特権アクセス グループ
           href: groups-renew-extend.md
-    - name: 設定
+    - name: ロールの既定値を設定する
       items:
         - name: Azure AD ロール
           href: pim-how-to-change-default-settings.md
@@ -69,13 +77,13 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: 特権アクセス グループ
           href: groups-role-settings.md
-    - name: 警告
+    - name: アラートを設定する
       items:
         - name: Azure AD ロール
           href: pim-how-to-configure-security-alerts.md
         - name: Azure ロール
           href: pim-resource-roles-configure-alerts.md
-    - name: 監査ログ
+    - name: 監査
       items:
         - name: Azure AD ロール
           href: pim-how-to-use-audit-log.md
@@ -83,7 +91,7 @@
           href: azure-pim-resource-rbac.md
         - name: 特権アクセス グループ
           href: groups-audit.md
-    - name: アクセス レビュー
+    - name: アクセスのレビュー
       items:
         - name: Azure AD ロール
           items:

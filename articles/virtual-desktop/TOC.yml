@@ -70,12 +70,16 @@
           href: create-host-pools-user-profile.md
         - name: Azure NetApp Files を使用する
           href: create-fslogix-profile-container.md
+        - name: Azure NetApp Files と MSIX アプリのアタッチを使用する
+          href: create-netapp-files.md
         - name: Azure Files と Azure AD DS を使用する
           href: create-profile-container-adds.md
         - name: Azure Files と AD DS を使用する
           href: create-file-share.md
         - name: FSLogix アプリ コンテナーを使用して Office をインストールする
           href: fslogix-office-app-rule-editor.md
+        - name: アカウントの Azure Files の使用を承認する
+          href: azure-files-authorization.md
     - name: ホスト プール設定を構成する
       items:
         - name: RDP のプロパティ
@@ -118,12 +122,14 @@
           href: app-attach-msixmgr.md
     - name: Microsoft Teams の使用
       href: teams-on-avd.md
-    - name: Azure AD の Multi-Factor Authentication を設定する
+    - name: Azure AD 多要素認証を設定する
       href: set-up-mfa.md
     - name: AD FS シングル サインオンを構成する
       href: configure-adfs-sso.md
     - name: 自動更新を構成する
       href: configure-automatic-updates.md
+    - name: マルチメディア リダイレクトを設定する (プレビュー)
+      href: multimedia-redirection.md
     - name: 言語パックをインストールする
       href: language-packs.md
     - name: Azure Advisor を使用する
@@ -206,6 +212,8 @@
       href: troubleshoot-set-up-overview.md
     - name: 問題の特定と診断
       href: diagnostics-role-service.md
+    - name: 作業の開始機能
+      href: troubleshoot-getting-started.md
     - name: ホスト プールの作成
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
@@ -226,6 +234,8 @@
       href: troubleshoot-azure-ad-connections.md
     - name: Azure Monitor
       href: troubleshoot-azure-monitor.md
+    - name: Azure Files の認証
+      href: troubleshoot-authorization.md
 - name: リファレンス
   items:
     - name: セキュリティの運用方法

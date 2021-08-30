@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/10/2021
+ms.date: 08/18/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3f185f24c824008a6488ab2e9401dd05439daafb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: ff085c32c7aeb63fea04f04558c1bccd5814b29b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984970"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418547"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -25,6 +25,9 @@ Azure Storage では、計画されたイベントや計画外のイベント (�
 - プライマリ リージョンでのデータのレプリケート方法
 - 地域災害から保護するため、プライマリ リージョンから地理的に離れている 2 番目のリージョンにデータをレプリケートするかどうか
 - プライマリ リージョンが何らかの理由で使用できなくなった場合に、アプリケーションがセカンダリ リージョンのレプリケートされたデータへの読み取りアクセスを必要とするかどうか
+
+> [!NOTE]
+> この記事で説明する機能とリージョン別の提供状況は、階層型名前空間を持つアカウントでも利用できます。
 
 ## <a name="redundancy-in-the-primary-region"></a>プライマリ リージョンでの冗長性
 
@@ -127,24 +130,24 @@ GZRS と RA-GZRS は、汎用 v2 ストレージ アカウントでのみサポ�
 
 GZRS と RA-GZRS は、次のリージョンでサポートされています。
 
-- (アフリカ) 南アフリカ北部
+- (アジア太平洋) 東アジア
 - (アジア太平洋) 東南アジア
 - (アジア太平洋) オーストラリア東部
-- (アジア太平洋) インド中部
 - (アジア太平洋) 東日本
-- (アジア太平洋) 韓国中部
 - (カナダ) カナダ中部
 - (ヨーロッパ) 北ヨーロッパ
 - (ヨーロッパ) 西ヨーロッパ
 - (ヨーロッパ) フランス中部
-- (ヨーロッパ) ドイツ中西部
+- (ヨーロッパ) ノルウェー東部
 - (ヨーロッパ) 英国南部
 - (南アメリカ) ブラジル南部
 - (米国) 米国中部
 - (米国) 米国東部
 - (米国) 米国東部 2
+- (米国) 米国政府東部
 - (米国) 米国中南部
 - (米国) 米国西部 2
+- (米国) 米国西部 3
 
 価格については、[BLOB](https://azure.microsoft.com/pricing/details/storage/blobs)、[Files](https://azure.microsoft.com/pricing/details/storage/files/)、[Queues](https://azure.microsoft.com/pricing/details/storage/queues/)、[Tables](https://azure.microsoft.com/pricing/details/storage/tables/) の価格の詳細を参照してください。
 
@@ -203,9 +206,12 @@ RA-GRS または RA-GZRS を有効にした後はセカンダリ リージョン
 
 次の表は、Azure Storage サービスごとにサポートされる冗長性オプションを示しています。
 
-| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
-|:-|:-|:-|:-|
-| BLOB ストレージ<br />ストレージ<br />Table ストレージ<br />Azure Files<br />Azure Managed Disks | BLOB ストレージ<br />ストレージ<br />Table ストレージ<br />Azure Files | BLOB ストレージ<br />ストレージ<br />Table ストレージ<br />Azure Files<br /> | BLOB ストレージ<br />ストレージ<br />Table ストレージ<br />Azure Files<br /> |
+| LRS | ZRS | GRS | RA-GRS | GZRS | RA-GZRS |
+|---|---|---|---|---|---|
+| BLOB ストレージ <br />ストレージ <br />テーブル ストレージ <br />Azure Files<sup>1、</sup><sup>2</sup> <br />Azure Managed Disks | BLOB ストレージ <br />ストレージ <br />テーブル ストレージ <br />Azure Files<sup>1、</sup><sup>2</sup> | BLOB ストレージ <br />ストレージ <br />テーブル ストレージ <br />Azure Files<sup>1</sup> | BLOB ストレージ <br />ストレージ <br />テーブル ストレージ <br /> | BLOB ストレージ <br />ストレージ <br />テーブル ストレージ <br />Azure Files<sup>1</sup> | BLOB ストレージ <br />ストレージ <br />テーブル ストレージ <br /> |
+
+<sup>1</sup> 標準ファイル共有は LRS と ZRS でサポートされます。 標準ファイル共有は、サイズが 5 TiB 以下である場合に限り、GRS と GZRS でサポートされます。<br />
+<sup>2</sup> Premium ファイル共有は LRS と ZRS でサポートされます。<br />
 
 ### <a name="supported-storage-account-types"></a>サポートされるストレージ アカウントの種類
 

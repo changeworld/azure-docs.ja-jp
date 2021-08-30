@@ -1,6 +1,6 @@
 ---
 title: ML Studio (classic):PowerShell モジュール - Azure
-description: Azure Machine Learning Studio (クラシック) のワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
+description: PowerShell を使用して、Machine Learning スタジオ (クラシック) のワークスペース、実験、Web サービスなどの作成と管理を行います。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -8,17 +8,18 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 684299d61ba6e9e27e16a162c9f226a7ea3b5f58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 662a550145ece8821a8cdbed0533696b265f7952
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518013"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690012"
 ---
-# <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用 PowerShell モジュール
+# <a name="powershell-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) 用 PowerShell モジュール
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio (クラシック) のリソースと資産をプログラムで管理できます。
 
@@ -26,7 +27,7 @@ PowerShell モジュールを使用すると、ワークスペース、データ
 
 * 2018 年にリリースされた [Azure PowerShell Az](#az-rm)。AzureRM のすべての機能が含まれていますが、コマンドレット名は異なります
 * 2016 年にリリースされた [AzureRM](#az-rm)。PowerShell Az に置き換えられます
-* 2016 年にリリースされた [Azure Machine Learning PowerShell クラシック](#classic)
+* 2016 年にリリースされた [Machine Learning PowerShell クラシック](#classic)
 
 これらの PowerShell モジュールにはいくつかの類似点もありますが、それぞれが特定のシナリオ向けに設計されています。 この記事では、PowerShell のモジュールの相違点について説明し、どれを選択すればよいかを把握しやすくします。  
 

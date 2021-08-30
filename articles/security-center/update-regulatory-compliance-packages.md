@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 08/05/2021
 ms.author: memildin
-ms.openlocfilehash: f1fe1f15d2a2a2a3da7a7978b2d7645db65beae1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 523375ff69d6139a1e910b9253a6816235bfecc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146691"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741971"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする
 
@@ -65,7 +65,7 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
     > [!TIP]
     > 入れ子になったすべてのリソースのコンプライアンス データが集計され、追跡されるように、標準の適用対象として最上位のスコープを選択することをお勧めします。 
 
-1. 組織に関連する標準を追加するには、 **[標準をさらに追加]** をクリックします。 
+1. 組織に関連する標準を追加するには、 **[業界および規制の基準]** セクションを展開し、 **[標準をさらに追加]** を選択します。
 
 1. **[規制コンプライアンス標準の追加]** ページで、以下を含む使用可能な標準を検索できます。
 
@@ -79,7 +79,7 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
     - **CMMC レベル 3**
     - **New Zealand ISM Restricted**
     
-    ![Azure Security Center の規制コンプライアンス ダッシュボードへの規制基準の追加](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Azure Security Center の規制コンプライアンス ダッシュボードへの規制基準の追加。](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
 1. **[追加]** を選択し、スコープ、パラメーター、修復など、特定のイニシアチブに関して必要な詳細をすべて入力します。
 
@@ -90,7 +90,7 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
     > [!NOTE]
     > 新しく追加された標準がコンプライアンス ダッシュボードに表示されるまでに数時間かかることがあります。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード。" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="remove-a-standard-from-your-dashboard"></a>ダッシュボードから標準を削除する
 
@@ -107,11 +107,11 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
     [セキュリティ ポリシー] ページが開きます。 選択したサブスクリプションの、既定のポリシー、業界標準と規制基準、および作成したカスタム イニシアチブが表示されます。
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Azure Security Center の規制へのコンプライアンス ダッシュボードから規制基準を削除する":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Azure Security Center の規制コンプライアンス ダッシュボードから規制基準を削除する。":::
 
 1. 削除する標準に対応する **[無効]** を選択します。 確認ウィンドウが表示されます。
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="選択した規制基準を本当に削除するかどうかを確認します":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="選択した規制基準を本当に削除することを確認します。":::
 
 1. **[はい]** を選択します。 標準が削除されます。 
 

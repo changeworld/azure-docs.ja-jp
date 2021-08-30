@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 03ed6d53908b1daf8e027ee0143cc06d803a24cd
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2efd5fdc49f5ae6724b9d1dc3b45d54329f17a61
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257825"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113223952"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Trusona と Azure Active Directory B2C の統合
 
@@ -146,17 +146,19 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 1. **[OK]** を選択します。  
 
-### <a name="test-the-policy"></a>ポリシーのテスト
+### <a name="test-the-policy"></a>ポリシーをテストする
 
-1. 新しく作成されたポリシーを選択します。
+1. 作成したポリシーを選択します。
 
-2. **[ユーザー フローを実行します]** を選択します。
+1. **[ユーザー フローを実行します]** を選択し、設定を選択します。
 
-3. フォームに返信 URL を入力します。
+   1. **[アプリケーション]** : 登録済みのアプリを選択します。
+ 
+   1. **[応答 URL]** : リダイレクト URL を選択します。
+   
+1. **[ユーザー フローを実行します]** を選択します。 Trusona OIDC ゲートウェイにリダイレクトされるはずです。 Trusona ゲートウェイで、Trusona アプリで、または Trusona モバイル SDK を使用してカスタム アプリで、表示されているセキュア QR コードをスキャンします。
 
-4. **[ユーザー フローを実行します]** を選択します。 Trusona OIDC ゲートウェイにリダイレクトされるはずです。 Trusona ゲートウェイで、Trusona アプリで、または Trusona モバイル SDK を使用してカスタム アプリで、表示されているセキュア QR コードをスキャンします。
-
-5. セキュア QR コードをスキャンすると、手順 3. で定義した応答 URL にリダイレクトされるはずです。
+1. セキュア QR コードをスキャンすると、定義した応答 URL にリダイレクトされるはずです。
 
 ## <a name="next-steps"></a>次のステップ  
 

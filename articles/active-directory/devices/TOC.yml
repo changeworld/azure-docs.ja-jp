@@ -26,6 +26,8 @@
       href: concept-azure-ad-join.md
     - name: ハイブリッド Azure AD 参加済みデバイス
       href: concept-azure-ad-join-hybrid.md
+    - name: デバイス登録フロー
+      href: device-registration-how-it-works.md
     - name: オンプレミスのリソースへの SSO
       href: azuread-join-sso.md
     - name: プライマリ更新トークン

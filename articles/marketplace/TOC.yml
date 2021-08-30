@@ -41,8 +41,8 @@
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: ライセンスの管理
       href: isv-app-license.md
-    - name: プライベート オファー
-      href: private-offers.md
+    - name: プライベート プラン
+      href: private-plans.md
     - name: プランと価格
       href: plans-pricing.md
     - name: 標準契約
@@ -111,6 +111,8 @@
   items:
     - name: プランの種類別の公開ガイド
       href: publisher-guide-by-offer-type.md
+    - name: Marketplace のカテゴリと業界
+      href: marketplace-categories-industries.md
     - name: Azure アプリケーション プラン
       items:
         - name: オファーを計画する

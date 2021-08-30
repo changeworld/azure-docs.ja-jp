@@ -3,18 +3,18 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2021
+ms.date: 07/01/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 7278211ee47ec4a291a7934fee4b56fae0d8dfc4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 78a2ef8491eea5fa3df5355236f23be730062108
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790385"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752004"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -22,7 +22,7 @@ Azure Cost Management は、お客様を Microsoft 顧客契約にオンボー�
 
 直接パートナーおよび間接プロバイダーの場合、全体管理者と管理者エージェントが、パートナー テナントの Cost Management にアクセスして請求価格のコストを管理できます。
 
-リセラーと顧客は、顧客テナントで Cost Management にアクセスし、サブスクリプションの消費コストを確認でき、コストは小売料金で計算されて表示されます。 ただし、コストを表示するためには、顧客テナントのサブスクリプションに対する Azure RBAC アクセス権が必要です。 顧客テナントのプロバイダーによって、コスト可視性ポリシーが有効になっている必要があります。
+リセラーと顧客は、顧客テナントで Cost Management にアクセスし、個々のサブスクリプション毎の消費コストを確認でき、コストは小売料金で計算されて表示されます。 ただし、コストを表示するためには、顧客テナントのサブスクリプションに対する Azure RBAC アクセス権が必要です。 顧客テナントのプロバイダーによって、コスト可視性ポリシーが有効になっている必要があります。
 
 顧客は、CSP パートナーによって有効化された場合、Cost Management の機能を使用できます。
 
@@ -167,7 +167,7 @@ Azure RBAC スコープの予約インスタンスの償却ビューおよび実
 
 ## <a name="analyze-costs-in-cost-analysis"></a>コスト分析でコストを分析する
 
-パートナー テナント内の課金スコープにアクセスできるパートナーは、特定の顧客または請求書に関する顧客全体にまたがるコスト分析で、請求されたコストを調査および分析できます。 [コスト分析](quick-acm-cost-analysis.md)ビューでは、[ビューを保存](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)したり、[CSV および PNG](quick-acm-cost-analysis.md#download-usage-data) のファイルにデータをエクスポートしたりすることもできます。
+パートナー テナント内の課金スコープにアクセスできるパートナーは、特定の顧客または請求書に関する顧客全体にまたがるコスト分析で、請求されたコストを調査および分析できます。 [コスト分析](quick-acm-cost-analysis.md)ビューでは、[ビューを保存](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)することもできます。
 
 顧客テナント内のサブスクリプションにアクセスできる Azure RBAC ユーザーは、その顧客テナント内のサブスクリプションの小売コストを分析し、ビューを保存して、データを CSV および PNG ファイルにエクスポートすることもできます。
 

@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/09/2019
   ms.author: aahi
-  ms.openlocfilehash: 17fea68286e457c7da41eaaae54414e1c56fa606
-  ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+  ms.openlocfilehash: bc2c06ba26775f1b820c4a8d93c2e53ea547326d
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/09/2021
-  ms.locfileid: "113551040"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121745529"
 landingContent:
 - title: Text Analytics API について
   linkLists:
@@ -114,6 +114,12 @@ landingContent:
     links:
     - text: エンティティの認識
       url: how-tos/text-analytics-how-to-entity-linking.md
+- title: テキストの概要作成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: テキストの概要作成
+      url: how-tos/extractive-summarization.md
 - title: AI の責任ある使用
   linkLists:
   - linkListType: overview

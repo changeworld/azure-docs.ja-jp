@@ -1,61 +1,51 @@
 ---
-title: マネージド ID による認証
-description: 資格情報やシークレットを使用してサインインすることなく、マネージド ID を使用して Azure Active Directory で保護されたリソースにアクセスする
+title: マネージド ID によるワークフローの認証
+description: マネージド ID を使用して、資格情報やシークレットなしで、Azure AD 保護リソースに対するトリガーとアクションを認証する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: article
-ms.date: 03/30/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aa408d0ae548e9d532f0e26562070847c0cc38c8
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 06/25/2021
+ms.custom: devx-track-azurepowershell, subject-rbac-steps
+ms.openlocfilehash: 76edcac6b77b70928cb2d6cd378b421b68b3d3ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695647"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731316"
 ---
-# <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
+# <a name="authenticate-access-to-azure-resources-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
-Azure Active Directory (Azure AD) によって保護される他のリソースに容易にアクセスして ID の認証を行うために、ロジック アプリでは、資格情報、シークレット、Azure AD トークンではなく、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前のマネージド サービス ID (MSI) ) を使用できます。 この ID は、ユーザーに代わって Azure が管理します。ユーザーがシークレットを管理したり、Azure AD トークンを直接使用したりする必要がないため、資格情報の保護に役立ちます。
+ロジック アプリ ワークフローの一部のトリガーとアクションは、Azure Active Directory (Azure AD) によって保護されているリソースに接続するときに、認証のために [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前は "*マネージド サービス ID (MSI)* " と呼ばれていた) の使用をサポートしています。 ロジック アプリ リソースでマネージド ID が有効化されて設定されている場合、ご自分の資格情報、シークレット、または Azure AD トークンを使用する必要はありません。 Azure がこの ID を管理し、ユーザーがシークレットやトークンを管理する必要がないため、認証情報が安全に保たれます。
 
-Azure Logic Apps では、"[*システム割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" と "[*ユーザー割り当て*](../active-directory/managed-identities-azure-resources/overview.md)" の両方のマネージド ID がサポートされます。 ロジック アプリまたは個々の接続では、システム割り当て ID または "*単一*" のユーザー割り当て ID のいずれかを使用できます。これは、ロジック アプリのグループ全体で共有できますが、両方を共有することはできません。
-
-<a name="triggers-actions-managed-identity"></a>
-
-## <a name="where-can-logic-apps-use-managed-identities"></a>ロジック アプリでマネージド ID を使用できる場所
-
-現時点では、認証にマネージド ID を使用できるのは、Azure AD OAuth がサポートされている[特定の組み込みのトリガーとアクション](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)および[特定のマネージド コネクタ](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)のみです。 たとえば、次のような選択肢があります。
-
-<a name="built-in-managed-identity"></a>
-
-**組み込みのトリガーとアクション**
-
-* Azure API Management
-* Azure App Service
-* Azure Functions
-* HTTP
-* HTTP および Webhook
-
-> [!NOTE]
-> HTTP トリガーおよびアクションでは、システム割り当てマネージド ID を使用して、Azure ファイアウォールの背後にある Azure Storage アカウントへの接続を認証できますが、ユーザー割り当てマネージド ID を使用して同じ接続を認証することはできません。
-
-<a name="managed-connectors-managed-identity"></a>
-
-**マネージド コネクタ**
-
-* Azure Automation
-* Azure Event Grid
-* Azure Key Vault
-* Azure Resource Manager
-* HTTP with Azure AD
-
-マネージド コネクタのサポートは、現在プレビュー段階です。 現在の一覧については、「[認証がサポートされているトリガーおよびアクションの認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)」を参照してください。
-
-この記事では、ロジック アプリ用に両方の種類のマネージド ID を設定する方法について説明します。 詳細については、以下のトピックを参照してください。
+この記事では、ロジック アプリ用に両方の種類のマネージド ID を設定する方法について説明します。 詳細については、次のドキュメントを確認してください。
 
 * [マネージド ID がサポートされているトリガーとアクション](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)
 * [ロジック アプリのマネージド ID に関する制限](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [マネージド ID を使用した Azure AD 認証がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
+
+<a name="triggers-actions-managed-identity"></a>
+
+## <a name="where-to-use-managed-identities"></a>どのような場合にマネージド ID を使用するか
+
+Azure Logic Apps は、["*システム割り当て*" マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)と [ "*ユーザー割り当て*" マネージド ID ](../active-directory/managed-identities-azure-resources/overview.md)の両方をサポートしています。これは、ロジック アプリ ワークフローの実行場所に基づいて、ロジック アプリのグループ間で共有できます。
+
+* マルチテナント (従量課金プラン) ベースのロジック アプリでは、システム割り当て ID と "*単一*" のユーザー割り当て ID の両方がサポートされています。 ただし、ロジック アプリ レベルまたは接続レベルでは、両方を同時に有効にすることができないため、使用できるマネージド ID の種類は 1 つだけです。
+
+  シングルテナント (Standard プラン) ベースのロジック アプリで現在サポートされているのは、システム割り当て ID だけです。
+
+  マルチテナント (従量課金プラン) とシングルテナント (Standard プラン) の詳細については、[シングルテナントとマルチテナントおよび統合サービス環境](single-tenant-overview-compare.md)に関するドキュメントを参照してください。
+
+<a name="built-in-managed-identity"></a>
+<a name="managed-connectors-managed-identity"></a>
+
+* Azure AD オープン認証をサポートする特定の組み込み型のマネージド コネクタ操作だけが、マネージド ID を認証で使用できます。 次の表は、"*一部のサンプル*" のみを示しています。 より詳細な一覧については、「[認証がサポートされているトリガーおよびアクションの認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)」を確認してください。
+
+  | 演算の種類 | サポート対象の操作 |
+  |----------------|----------------------|
+  | 組み込み | - Azure API Management <br>- Azure App Services <br>- Azure Functions <br>- HTTP <br>- HTTP および Webhook <p><p> **注**: HTTP 操作では、システム割り当て ID を使用して Azure ファイアウォールの背後にある Azure Storage アカウントへの接続を認証できますが、ユーザー割り当てマネージド ID による同じ接続の認証はサポートしていません。 |
+  | マネージド コネクタ (**プレビュー**) | - Azure Automation <br>- Azure Event Grid <br>- Azure Key Vault <br>- Azure Resource Manager <br>- Azure AD を使用した HTTP |
+  |||
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -81,13 +71,13 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 ユーザー割り当て ID とは異なり、システム割り当て ID を手動で作成する必要はありません。 ロジック アプリ用のシステム割り当て ID を設定する際は、次のオプションを使用できます。
 
 * [Azure Portal](#azure-portal-system-logic-app)
-* [Azure リソース マネージャーのテンプレート](#template-system-logic-app)
+* [Azure Resource Manager テンプレート (ARM テンプレート)](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
 
 #### <a name="enable-system-assigned-identity-in-azure-portal"></a>Azure portal でシステム割り当て ID を有効にする
 
-1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) のデザイナー ビューでロジック アプリを開きます。
 
 1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。 **[システム割り当て済み]**  >  **[オン]**  >  **[保存]** を選択します。 確認を求めるメッセージが表示されたら、 **[はい]** を選択します。
 
@@ -109,9 +99,9 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 
 <a name="template-system-logic-app"></a>
 
-#### <a name="enable-system-assigned-identity-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでシステム割り当て ID を有効にする
+#### <a name="enable-system-assigned-identity-in-an-arm-template"></a>ARM テンプレートでシステム割り当て ID を有効にする
 
-ロジック アプリなどの Azure リソースの作成とデプロイを自動化するために、[Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)を使用できます。 テンプレートでロジック アプリのシステム割り当てマネージド ID を有効にするには、次のように、テンプレートのロジック アプリのリソース定義に `identity` オブジェクトと `type` 子プロパティを追加します。
+ロジック アプリなどの Azure リソースの作成とデプロイを自動化するために、[ARM テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)を使用できます。 テンプレートでロジック アプリのシステム割り当てマネージド ID を有効にするには、次のように、テンプレートのロジック アプリのリソース定義に `identity` オブジェクトと `type` 子プロパティを追加します。
 
 ```json
 {
@@ -136,7 +126,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 }
 ```
 
-Azure によってロジック アプリのリソース定義が作成されると、`identity` オブジェクトで次の追加のプロパティが取得されます。
+Azure によってロジック アプリのリソース定義が作成されると、`identity` オブジェクトでこれらの他のプロパティが取得されます。
 
 ```json
 "identity": {
@@ -159,7 +149,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 ロジック アプリにユーザー割り当てのマネージド ID を設定するには、最初にその ID を別のスタンドアロン Azure リソースとして作成する必要があります。 次に、使用できるオプションを示します。
 
 * [Azure Portal](#azure-portal-user-identity)
-* [Azure リソース マネージャーのテンプレート](#template-user-identity)
+* [ARM テンプレート](#template-user-identity)
 * Azure PowerShell
   * [ユーザー割り当て ID を作成する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [ロールの割り当てを追加する](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
@@ -176,7 +166,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 1. [Azure portal](https://portal.azure.com) で、任意のページの検索ボックスに「`managed identities`」と入力し、 **[マネージド ID]** を選択します。
 
-   !["マネージド ID" を検索して選択する](./media/create-managed-service-identity/find-select-managed-identities.png)
+   !["マネージド ID" が選択されているポータルを示すスクリーンショット。](./media/create-managed-service-identity/find-select-managed-identities.png)
 
 1. **[マネージド ID]** の下の **[追加]** を選択します。
 
@@ -196,13 +186,13 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    これらの詳細の検証後、Azure によってマネージド ID が作成されます。 これで、ユーザー割り当て ID をロジック アプリに追加できるようになりました。 ロジック アプリに複数のユーザー割り当て ID を追加することはできません。
 
-1. Azure portal のロジック アプリ デザイナーで、ロジック アプリを選択して開きます。
+1. Azure portal のデザイナー ビューでロジック アプリを開きます。
 
 1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択してから、 **[ユーザー割り当て済み]**  >  **[追加]** の順に選択します。
 
    ![ユーザー割り当てマネージド ID の追加](./media/create-managed-service-identity/add-user-assigned-identity-logic-app.png)
 
-1. **[ユーザー割り当てマネージド ID の追加]** ウィンドウで、 **[サブスクリプション]** の一覧から、まだ選択されていない場合は使用する Azure サブスクリプションを選択します。 そのサブスクリプションの "*すべての*" マネージド ID を示す一覧から、目的のユーザー割り当て ID を検索して選択します。 一覧をフィルター処理するには、 **[ユーザー割り当て済みマネージド ID]** 検索ボックスに、ID またはリソース グループの名前を入力します。 終了したら、 **[追加]** を選択します。
+1. **[ユーザー割り当てマネージド ID の追加]** ウィンドウで、 **[サブスクリプション]** の一覧から、まだ選択されていない場合は使用する Azure サブスクリプションを選択します。 そのサブスクリプションの "*すべての*" マネージド ID を示す一覧から、目的のユーザー割り当て ID を選択します。 一覧をフィルター処理するには、 **[ユーザー割り当て済みマネージド ID]** 検索ボックスに、ID またはリソース グループの名前を入力します。 終了したら、 **[追加]** を選択します。
 
    ![使用するユーザー割り当て ID を選択する](./media/create-managed-service-identity/select-user-assigned-identity.png)
 
@@ -217,9 +207,9 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 <a name="template-user-identity"></a>
 
-#### <a name="create-user-assigned-identity-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでシステム割り当て ID を作成する
+#### <a name="create-user-assigned-identity-in-an-arm-template"></a>ARM テンプレートでユーザー割り当て ID を作成する
 
-ロジック アプリなどの Azure リソースの作成とデプロイを自動化するために、[Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)を使用できます。これは[認証のためのユーザー割り当て ID](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md) をサポートしています。 テンプレートの `resources` セクションでは、ロジック アプリのリソース定義に次の項目が必要です。
+ロジック アプリなどの Azure リソースの作成とデプロイを自動化するために、[ARM テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)を使用できます。これは[認証のためのユーザー割り当て ID](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md) をサポートしています。 テンプレートの `resources` セクションでは、ロジック アプリのリソース定義に次の項目が必要です。
 
 * `type` プロパティが `UserAssigned` に設定されている `identity` オブジェクト
 
@@ -308,66 +298,46 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 ## <a name="give-identity-access-to-resources"></a>ID にリソースへのアクセス権を付与する
 
-ロジック アプリのマネージド ID を認証に使用するには、ID を使用する予定の Azure リソースに対するその ID のアクセスを設定します。 このタスクを完了するには、ターゲットの Azure リソース上でその ID に適切な役割を割り当てます。 次に、使用できるオプションを示します。
+ロジック アプリのマネージド ID を認証に使用するには、その ID を使用する予定の Azure リソースで、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して自分の ID のアクセスを設定する必要があります。
 
-* [Azure Portal](#azure-portal-assign-access)
-* [Azure Resource Manager テンプレート](../role-based-access-control/role-assignments-template.md)
-* Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) - 詳細については、[Azure RBAC と Azure PowerShell を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-powershell.md)に関する記事を参照してください。
-* Azure CLI ([az role assignment create](/cli/azure/role/assignment#az_role_assignment_create)) - 詳細については、[Azure RBAC と Azure CLI を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-cli.md)に関する記事を参照してください。
+このタスクを完了するには、次のいずれかのオプションを使用して、Azure リソース上でその ID に適切なロールを割り当てます。
+
+* [Azure portal](#azure-portal-assign-access)
+* [ARM テンプレート](../role-based-access-control/role-assignments-template.md)
+* [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Azure CLI](../role-based-access-control/role-assignments-cli.md)
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
 
-### <a name="assign-access-in-the-azure-portal"></a>Azure portal 上でアクセスを割り当てる
+### <a name="assign-managed-identity-role-based-access-in-the-azure-portal"></a>Azure portal でマネージド ID のロールベースのアクセスを割り当てる
 
-マネージド ID がアクセスできる必要があるターゲット Azure リソースで、ターゲット リソースへのロールベースのアクセス権をその ID に付与します。
+マネージド ID を使用する予定の Azure リソースで、ターゲット リソースにアクセスできるロールに自分の ID を割り当てる必要があります。 このタスクに関する一般的な情報については、[Azure RBAC を使用した別のリソースへのマネージド ID アクセスの割り当て](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)に関するページを参照してください。
 
-1. [Azure portal](https://portal.azure.com) で、マネージド ID にアクセス権を与える Azure リソースに移動します。
+1. [Azure portal](https://portal.azure.com)で、ID を使用する予定のリソースを開きます。
 
-1. リソースのメニューから、 **[アクセス制御 (IAM)]**  >  **[ロールの割り当て]** を選択します。ここで、そのリソースの現在のロールの割り当てを確認できます。 ツール バーで、 **[追加]**  >  **[ロールの割り当ての追加]** の順に選択します。
+1. リソースのメニューで **[アクセス制御 (IAM)]**  >  **[追加]**  >  **[ロールの割り当ての追加]** を選択します。
 
-   ![[追加] > [ロールの割り当ての追加] の順に選択する](./media/create-managed-service-identity/add-role-to-resource.png)
+   > [!NOTE]
+   > **[ロールの割り当ての追加]** オプションが無効な場合は、ロールを割り当てるためのアクセス許可がありません。 詳細については、[Azure AD の組み込みロール](../active-directory/roles/permissions-reference.md)に関するページを確認してください。
 
-   > [!TIP]
-   > **[ロールの割り当ての追加]** オプションが無効になっている場合は、ご自分にアクセス許可がない可能性があります。 リソースのロールを管理するためのアクセス許可の詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/roles/permissions-reference.md)」をご覧ください。
+1. ここで、必要なロールをマネージド ID に割り当てます。 **[ロール]** タブで、現在のリソースへの必要なアクセス権を自分の ID に付与するロールを割り当てます。
 
-1. **[ロールの割り当ての追加]** で、ID にターゲット リソースへのアクセスに必要なアクセス権を与える **ロール** を選択します。
+   この例では、**ストレージ BLOB データ共同作成者** という名前のロールを割り当てます。これには、Azure Storage コンテナー内の BLOB への書き込みアクセスが含まれます。 特定のストレージ コンテナー ロールの詳細については、[Azure Storage コンテナー内の BLOB にアクセスできるロール](../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights)に関するページを確認してください。
 
-   このトピックの例では、ID に [Azure Storage コンテナー内の BLOB にアクセスできるロール](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)が必要であるため、マネージド ID に対して、 **[ストレージ BLOB データ共同作成者]** ロールを選択します。
+1. 次に、ロールを割り当てるマネージド ID を選択します。 **[アクセスの割り当て先]** で、 **[マネージド ID]**  >  **[メンバーを追加する]** を選択します。
 
-   ![[ストレージ BLOB データ共同作成者] ロールを選択する](./media/create-managed-service-identity/select-role-for-identity.png)
+1. マネージド ID の種類に基づいて、次の値を選択または指定します。
 
-1. 使用するマネージド ID ついて、次の手順に従います。
+   | 型 | Azure サービス インスタンス | サブスクリプション | メンバー |
+   |------|------------------------|--------------|--------|
+   | **システム割り当て** | **ロジック アプリ** | <*Azure サブスクリプション名*> | <*ロジック アプリ名*> |
+   | **ユーザー割り当て** | 該当なし | <*Azure サブスクリプション名*> | <*ユーザー割り当て ID 名*> |
+   |||||
 
-   * **システム割り当て ID**
+   ロールの割り当ての詳細については、ドキュメント「[Azure portal を使用したロールの割り当て](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-     1. **[アクセスの割り当て先]** ボックスで、 **[ロジック アプリ]** を選択します。 **[サブスクリプション]** プロパティが表示されたら、ID に関連付けられている Azure サブスクリプションを選択します。
-
-        ![システム割り当て ID のアクセス権を選択する](./media/create-managed-service-identity/assign-access-system.png)
-
-     1. **[選択]** ボックスで、一覧からロジック アプリを選択します。 一覧が長すぎる場合は、 **[選択]** ボックスを使用して一覧をフィルター処理します。
-
-        ![システム割り当て ID を設定するロジック アプリを選択する](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
-
-   * **ユーザー割り当て ID**
-
-     1. **[アクセスの割り当て先]** ボックスで、 **[ユーザー割り当てマネージド ID]** を選択します。 **[サブスクリプション]** プロパティが表示されたら、ID に関連付けられている Azure サブスクリプションを選択します。
-
-        ![ユーザー割り当て ID のアクセス権を選択する](./media/create-managed-service-identity/assign-access-user.png)
-
-     1. **[選択]** ボックスで、一覧から ID を選択します。 一覧が長すぎる場合は、 **[選択]** ボックスを使用して一覧をフィルター処理します。
-
-        ![ユーザー割り当て ID の選択](./media/create-managed-service-identity/add-permissions-select-user-assigned-identity.png)
-
-1. 終了したら、 **[保存]** を選択します。
-
-   ターゲット リソースの [ロールの割り当て] の一覧に、選択したマネージド ID とロールが表示されます。 この例では、1 つのロジック アプリに対してシステム割り当て ID を使用し、他のロジック アプリのグループに対してユーザー割り当て ID を使用する方法を示します。
-
-   ![ターゲット リソースに追加されたマネージド ID とロール](./media/create-managed-service-identity/added-roles-for-identities.png)
-
-   詳細については、「[Azure portal を使用してリソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)」を参照してください。
-
-1. 次に、マネージド ID がサポートされているトリガーまたはアクションで [ID 使用してアクセスを認証する手順](#authenticate-access-with-identity)に従います。
+1. ID のアクセスの設定が完了したら、その ID を使用して、[マネージド ID をサポートするトリガーとアクションのアクセスを認証](#authenticate-access-with-identity)できます。
 
 <a name="authenticate-access-with-identity"></a>
 
@@ -380,7 +350,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 次の手順では、Azure portal を通じて、トリガーまたはアクションでマネージド ID を使用する方法を示します。 トリガーまたはアクションの基になる JSON 定義でマネージド ID を指定する方法については、「[マネージド ID 認証](../logic-apps/logic-apps-securing-a-logic-app.md#managed-identity-authentication)」をご覧ください。
 
-1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) のデザイナー ビューでロジック アプリを開きます。
 
 1. まだ行っていない場合は、[マネージド ID がサポートされているトリガーまたはアクション](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)を追加します。
 
@@ -427,7 +397,7 @@ HTTP トリガーまたはアクションでは、ロジック アプリに対�
 具体的な例として、以前に ID 用のアクセスを設定した Azure Storage アカウントの BLOB に対して [Snapshot Blob 操作](/rest/api/storageservices/snapshot-blob)を実行するとします。 しかし、[Azure Blob Storage コネクタ](/connectors/azureblob/)では現在、この操作が提供されていません。 代わりに、[HTTP アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)または別の [BLOB サービス REST API 操作](/rest/api/storageservices/operations-on-blobs)を使用して、この操作を実行できます。
 
 > [!IMPORTANT]
-> HTTP 要求とマネージド ID を使用してファイアウォールの背後にある Azure Storage アカウントにアクセスするには、[信頼された Microsoft サービスによるアクセスを許可する例外](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)を使用してストレージ アカウントを設定する必要もあります。
+> HTTP 要求とマネージド ID を使用してファイアウォールの背後にある Azure Storage アカウントにアクセスするには、[信頼された Microsoft サービスによるアクセスを許可する例外](../connectors/connectors-create-api-azureblobstorage.md#access-blob-storage-with-managed-identities)を使用してストレージ アカウントを設定する必要もあります。
 
 [Snapshot Blob 操作](/rest/api/storageservices/snapshot-blob)を実行するには、HTTP アクションで次のプロパティを指定します。
 
@@ -467,6 +437,8 @@ HTTP トリガーまたはアクションでは、ロジック アプリに対�
    この例では、 **[システム割り当てマネージド ID]** を使用して先に進みます。
 
 1. 一部のトリガーとアクションでは、ターゲット リソース ID を設定するために **[対象ユーザー]** プロパティも表示されます。 **[対象ユーザー]** プロパティは [ターゲット リソースまたはサービスのリソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) に設定します。 そうしないと、既定では、 **[対象ユーザー]** プロパティに Azure Resource Manager のリソース ID である `https://management.azure.com/` リソース ID が使用されます。
+  
+    たとえば、[グローバル Azure クラウド内の Key Vault リソース](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-key-vault)へのアクセスを認証するには、**Audience** プロパティを、"*正確に*" このリソース ID `https://vault.azure.net` のように設定する必要があります。 この特定のリソース ID には、末尾のスラッシュが含まれて "*いない*" ことに注意してください。 実際、末尾にスラッシュを含めると、`400 Bad Request` エラーまたは `401 Unauthorized` エラーが発生する可能性があります。
 
    > [!IMPORTANT]
    > ターゲット リソース ID は、必要な末尾のスラッシュも含めて、Azure Active Directory (AD) で予想される値と *正確に一致* するようにします。 たとえば、すべての Azure Blob Storage アカウントのリソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 「[Azure AD 認証をサポートしている Azure サービスのリソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
@@ -477,7 +449,7 @@ HTTP トリガーまたはアクションでは、ロジック アプリに対�
 
    Azure AD を使用した Azure Storage へのアクセスの承認について詳しくは、次のトピックをご覧ください。
 
-   * [Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認する](../storage/common/storage-auth-aad.md)
+   * [Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認する](../storage/blobs/authorize-access-azure-active-directory.md)
    * [Azure Active Directory を使用して Azure Storage へのアクセスを承認する](/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
 
 1. 必要な方法でロジック アプリの構築を続行します。
@@ -500,7 +472,7 @@ Azure Resource Manager アクションの **リソースの読み取り** では
 
    マネージド ID が有効になっていない場合、接続を作成しようとすると次のエラーが表示されます。
 
-   *You must enable managed identity for your logic app and then grant required access to the identity in the target resource.* (ロジック アプリに対してマネージド ID を有効にし、ターゲット リソースにおいてその ID に必要なアクセス権を付与する必要があります。)
+   *ロジック アプリのマネージド ID を有効にしてから、ターゲット リソース内の ID への必要なアクセス権を付与する必要があります。*
 
    ![マネージド ID が有効になっていない場合のエラーが発生した Azure Resource Manager アクションを示すスクリーンショット。](./media/create-managed-service-identity/system-assigned-managed-identity-disabled.png)
 
@@ -592,7 +564,7 @@ ARM テンプレートを使用したデプロイを自動化し、マネージ�
 ロジック アプリのマネージド ID の使用を停止する場合は、次のオプションがあります。
 
 * [Azure Portal](#azure-portal-disable)
-* [Azure リソース マネージャーのテンプレート](#template-disable)
+* [ARM テンプレート](#template-disable)
 * Azure PowerShell
   * [ロールの割り当てを削除する](../role-based-access-control/role-assignments-powershell.md)
   * [ユーザー割り当て ID を削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
@@ -630,7 +602,7 @@ Azure portal で、まず、[ターゲット リソース](#disable-identity-tar
 
 #### <a name="disable-managed-identity-on-logic-app"></a>ロジック アプリのマネージド ID を無効にする
 
-1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
+1. [Azure portal](https://portal.azure.com) のデザイナー ビューでロジック アプリを開きます。
 
 1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択してから、お使いの ID の手順に従います。
 
@@ -646,9 +618,9 @@ Azure portal で、まず、[ターゲット リソース](#disable-identity-tar
 
 <a name="template-disable"></a>
 
-### <a name="disable-managed-identity-in-azure-resource-manager-template"></a>Resource Manager テンプレートでマネージド ID を無効にする
+### <a name="disable-managed-identity-in-an-arm-template"></a>ARM テンプレートでマネージド ID を無効にする
 
-Azure Resource Manager テンプレートを使用してロジック アプリのマネージド ID を作成した場合は、`identity` オブジェクトの `type` 子プロパティを `None` に設定します。
+ARM テンプレートを使用してロジック アプリのマネージド ID を作成した場合は、`identity` オブジェクトの `type` 子プロパティを `None` に設定します。
 
 ```json
 "identity": {

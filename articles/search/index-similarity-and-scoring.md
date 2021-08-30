@@ -2,24 +2,24 @@
 title: 類似性とスコアリングの概要
 titleSuffix: Azure Cognitive Search
 description: 類似性とスコアリングの概念について、さらにスコアリングの結果をカスタマイズするために開発者ができることについて説明します。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: puneet-hariharan-MSFT
+ms.author: puhariharan
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 72243f896b2cf7dbab61a42514bee634da28d4c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cacf6097234a5a2c7ec5261623fe653e509b8d9f
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676331"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981432"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Cognitive Search での類似性とスコアリング
 
-この記事では、Azure Cognitive Search の 2 つの類似性ランク付けアルゴリズムについて説明します。 2 つの関連機能である *スコアリング プロファイル* (検索スコアを調整するための基準) と *featuresMode* パラメーター (検索スコアをアンパックして詳細を示す) についても説明しています。 
+この記事では、一致する文書化のうち、クエリとの関連性が最も高いのはどれかを判断する、Azure Cognitive Search によって使用される 2 つの類似性ランク付けアルゴリズムについて説明します。 また、2 つの関連機能である "*スコアリング プロファイル*" (検索スコアを調整するための基準) と *featuresMode* パラメーター (検索スコアをアンパックして詳細を示す) についても説明しています。
 
-3 番目のセマンティック再ランク付けアルゴリズムは、現在パブリック プレビュー段階です。 詳細については、[セマンティック検索の概要](semantic-search-overview.md)に関するページを参照してください。
+> [!NOTE]
+> 3 番目の[セマンティック再ランク付けアルゴリズム](semantic-ranking.md)は、現在パブリック プレビュー段階です。 詳細については、[セマンティック検索の概要](semantic-search-overview.md)に関するページを参照してください。
 
 ## <a name="similarity-ranking-algorithms"></a>類似性ランク付けアルゴリズム
 

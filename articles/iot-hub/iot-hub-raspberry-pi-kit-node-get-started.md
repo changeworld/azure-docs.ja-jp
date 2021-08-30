@@ -8,23 +8,23 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/18/2021
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f6a1ebdcae8b166200f5a2a491939ede0a7a259
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97802526"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414901"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-このチュートリアルでは、まず Raspbian を実行する Raspberry Pi の操作の基礎について説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](https://www.windowsondevices.com/)を参照してください。
+このチュートリアルでは、まず Raspberry Pi OS を実行する Raspberry Pi の操作の基礎について説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](https://www.windowsondevices.com/)を参照してください。
 
 キットをお持ちでない場合は、 [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)をお試しください。 または、[こちら](https://azure.microsoft.com/develop/iot/starter-kits)で新しいキットを購入してください。
 
@@ -91,25 +91,25 @@ ms.locfileid: "97802526"
 
 ## <a name="set-up-raspberry-pi"></a>Raspberry Pi のセットアップ
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>Pi の Raspbian オペレーティング システムのインストール
+### <a name="install-the-raspberry-pi-os"></a>Raspberry Pi OS をインストールする
 
-microSD カードに Raspbian イメージをインストールするための準備をします。
+microSD カードに Raspberry Pi OS イメージをインストールするための準備をします。
 
-1. Raspbian をダウンロードします。
+1. Raspberry Pi OS with desktop をダウンロードします。
 
    a. [Raspbian Buster with desktop](https://www.raspberrypi.org/software/) (.zip ファイル)。
 
-   b. コンピューター上のフォルダーに Raspbian イメージを抽出します。
+   b. コンピューター上のフォルダーに Raspberry Pi OS with desktop イメージを抽出します。
 
-2. microSD カードに Raspbian をインストールします。
+2. microSD カードに Raspberry Pi OS with desktop をインストールします。
 
    a. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
 
-   b. Etcher を実行し、手順 1. で抽出した Raspbian イメージを選択します。
+   b. Etcher を実行し、手順 1. で抽出した Raspberry Pi OS with desktop イメージを選択します。
 
    c. microSD カード ドライブを選択します。 Etcher では適切なドライブが既に選択されている場合があります。
 
-   d. [Flash (フラッシュ)] をクリックして、microSD カードに Raspbian をインストールします。
+   d. [フラッシュ] をクリックし、microSD カードに Raspberry Pi OS with desktop をインストールします。
 
    e. インストールが完了したら、コンピューターから microSD カードを取り出します。 Etcher では完了時に microSD カードを自動的に取り出すか、マウント解除するため、microSD カードを直接取り出しても問題ありません。
 
@@ -119,13 +119,20 @@ microSD カードに Raspbian イメージをインストールするための�
 
 1. Pi をモニター、キーボード、およびマウスに接続します。
 
-2. Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspbian にサインインします。
+2. Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspberry Pi OS にサインインします。
 
 3. Raspberry アイコン > **[Preferences]\(設定)**  >  **[Raspberry Pi Configuration]\(Raspberry Pi 構成)** の順にクリックします。
 
-   ![[Raspbian Preferences] (Raspbian 設定)メニュー](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
+   ![[Raspberry Pi OS with Preferences](Raspberry Pi OS with Preferences 設定)メニュー](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. **[Interfaces]** (インターフェイス) タブで、**[I2C]** と **[SSH]** を **[Enable]** (有効) に設定し、**[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
+4. **[Interfaces]** タブで、 **[SSH]** と **[I2C]** を **[Enable]** に設定し、 **[OK]** をクリックします。 
+ 
+    | インターフェイス | 説明 |
+    | --------- | ----------- |
+    | *SSH* | Secure Shell (SSH) は、リモート コマンド行を使用して Raspberry Pi にリモート接続するために使用されます。 これは、このドキュメントで Raspberry Pi にコマンドをリモートで発行する場合に推奨される方法です。 |
+    | *I2C* | 相互集積回路 (I2C) は、センサーなどのハードウェアとのインターフェイスとして使用される通信プロトコルです。 このインターフェイスは、このトピックの物理センサーとのやり取りに必要です。|
+
+    物理的なセンサーがなく、Raspberry Pi デバイスからシミュレートされたセンサー データを使用する場合、**I2C** を無効のままにできます。
 
    ![I2C と SSH を Raspberry Pi で有効にする](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -198,7 +205,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    バージョンが 10.x より前であるか、Node.js が Pi にない場合は、最新バージョンをインストールします。
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
+   curl -sSL https://deb.nodesource.com/setup_16.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -256,6 +263,14 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 デバイスから IoT ハブが受信するメッセージを監視する方法の 1 つに、Azure IoT Tools for Visual Studio Code を使用することがあります。 詳細については、「[Visual Studio Code 用 Azure IoT Tools を使用してデバイスと IoT Hub の間のメッセージを送受信する](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)」を参照してください。
 
 デバイスから送信されたデータを処理する詳しい方法については、次のセクションに進んでください。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このトピックで作成したリソースは、このドキュメント セットの他のチュートリアルやクイックスタートで使用できます。 引き続き他のクイックスタートまたはチュートリアルの作業を行う場合、このトピックで作成したリソースをクリーンアップしないでください。 作業を続行しない場合は、次の手順に従って、このトピックで作成したすべてのリソースを Azure Portal で削除します。
+
+1. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、作成した IoT Hub を選択します。 
+1. [IoT Hub の概要] ウィンドウの上部にある **[削除]** をクリックします。
+1. ハブ名を入力し、もう一度 **[削除]** をクリックして、IoT Hub を完全に削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

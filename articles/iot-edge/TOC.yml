@@ -15,6 +15,8 @@
       href: quickstart.md
 - name: チュートリアル
   items:
+    - name: デバイスとモジュールを監視する
+      href: tutorial-monitor-with-workbooks.md
     - name: 開発環境をセットアップする
       items:
         - name: Linux コンテナーを使用した開発
@@ -131,6 +133,8 @@
           href: how-to-manage-device-certificates.md
         - name: Windows VM の入れ子になった仮想化を構成する
           href: nested-virtualization.md
+        - name: Linux on Windows 用に仮想スイッチを作成する
+          href: how-to-create-virtual-switch.md
         - name: Linux on Windows 用に GPU アクセラレーションを構成する
           href: gpu-acceleration.md
     - name: 代替デバイスのシナリオ

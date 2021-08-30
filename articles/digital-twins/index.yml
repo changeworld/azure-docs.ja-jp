@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: philmea
   ms.author: philmea
-  ms.date: 02/12/2020
-  ms.openlocfilehash: dfadcc06559a789712c4c2a59ab991e74570b3e7
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.date: 08/19/2021
+  ms.openlocfilehash: 10a8c3304ca24a02d62105ab62b6cc4cd9d135ba
+  ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112280461"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122769190"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: カスタム モデル
+    - text: DTDL モデル
       url: concepts-models.md
     - text: デジタル ツインとツイン グラフ
       url: concepts-twins-graph.md
@@ -49,7 +49,7 @@ landingContent:
       url: tutorial-code.md
   - linkListType: tutorial
     links:
-    - text: サンプル クライアント アプリを使用して基本事項を確認する
+    - text: Azure Digital Twins でグラフを作成する (クライアント アプリ)
       url: tutorial-command-line-app.md
   - linkListType: tutorial
     links:

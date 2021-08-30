@@ -2,14 +2,14 @@
 title: Event Grid ソースとしての Azure Communication Services
 description: この記事では、Event Grid イベント ソースとして Azure Communication Services を使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 06/11/2021
 ms.author: mikben
-ms.openlocfilehash: 72941faf122be50d2c721fd4c8421ae4339d5d2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6e4245d9f38c00ec337d689a11d185299d71891
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656245"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748488"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Communication Services でのイベント処理
 
@@ -17,7 +17,7 @@ Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/
 
 Azure Event Grid は、発行 - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 Event Grid には、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../azure-functions/functions-overview.md) のような Azure サービスのサポートが組み込まれています。 また、Webhook を使用することで、Azure 以外のサービスにイベント アラートを配信することもできます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](overview.md)」をご覧ください。
 
-:::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Azure Event Grid のイベント モデルを示す図。":::
+:::image type="content" source="./media/overview/functional-model.png" alt-text="Azure Event Grid のイベント モデルを示す図。":::
 
 > [!NOTE]
 > データ所在地とイベント処理の関係の詳細については、[データ所在地の概念説明ドキュメント](../communication-services/concepts/privacy.md)を参照してください。
@@ -50,6 +50,7 @@ Azure Communication Services から出力されるイベントの種類は次の
 | Microsoft.Communication.ChatThreadPropertiesUpdated| トピックなどのチャット スレッドのプロパティが更新されたときに発行されます。|    
 | Microsoft.Communication.ChatMessageEditedInThread | チャット スレッドでメッセージが編集されたときに発行されます |  
 | Microsoft.Communication.ChatMessageDeletedInThread | チャット スレッドでメッセージが削除されたときに発行されます  |  
+| Microsoft.Communication.RecordingFileStatusUpdated | ファイルの記録が可能なときに発行されます |
 
 Azure portal または Azure CLI を使用して、Communication Services リソースによって発行されたイベントをサブスクライブできます。 「[Communication Services での SMS イベントの処理方法](../communication-services/quickstarts/telephony-sms/handle-sms-events.md)」を参照してイベントの処理を開始します
 
@@ -141,6 +142,10 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
     "data": {
       "messageBody": "Welcome to Azure Communication Services",
       "messageId": "1613694358927",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "senderId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
       "senderCommunicationIdentifier": {
         "rawId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
@@ -181,6 +186,10 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
       "editTime": "2021-02-19T00:28:20.784Z",
       "messageBody": "Let's Chat about new communication services.",
       "messageId": "1613694357917",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "senderId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
       "senderCommunicationIdentifier": {
         "rawId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
@@ -730,6 +739,10 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
     "data": {
       "messageBody": "Talk about new Thread Events in commuication services",
       "messageId": "1613783230064",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "type": "Text",
       "version": "1613783230064",
       "senderDisplayName": "Bob",
@@ -762,6 +775,10 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
       "editTime": "2021-02-20T00:59:10.464+00:00",
       "messageBody": "8effb181-1eb2-4a58-9d03-ed48a461b19b",
       "messageId": "1613782685964",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "type": "Text",
       "version": "1613782750464",
       "senderDisplayName": "Scott",
@@ -814,7 +831,40 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
   }
 ]
 ```
+> [!IMPORTANT]
+> 通話レコーディング機能はまだパブリック プレビューの段階にあります
 
+### <a name="microsoftcommunicationrecordingfilestatusupdated"></a>Microsoft.Communication.RecordingFileStatusUpdated
+
+```json
+[
+ {
+  "id": "7283825e-f8f1-4c61-a9ea-752c56890500",
+  "topic": "/subscriptions/{subscription-id}/resourcegroups/}{group-name}/providers/microsoft.communication/communicationservices/{communication-services-resource-name}",
+  "subject": "/recording/call/{call-id}/recordingId/{recording-id}",
+  "data": {
+    "recordingStorageInfo": {
+      "recordingChunks": [
+        {
+          "documentId": "0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8",
+          "index": 0,
+          "endReason": "SessionEnded",
+          "contentLocation": "https://storage.asm.skype.com/v1/objects/0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8/content/video",
+          "metadataLocation": "https://storage.asm.skype.com/v1/objects/0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8/content/acsmetadata"
+        }
+      ]
+    },
+    "recordingStartTime": "2021-07-27T15:20:23.6089755Z",
+    "recordingDurationMs": 6620,
+    "sessionEndReason": "CallEnded"
+  },
+  "eventType": "Microsoft.Communication.RecordingFileStatusUpdated",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "eventTime": "2021-07-27T15:20:34.2199328Z"
+ }
+]
+```
 
 ## <a name="quickstarts-and-how-tos"></a>クイックスタートと操作方法
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用して Azure Stack VM を Azure にレプリ
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 300b239de74c7d21e03eb0c3b059663b5074964c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 386eae05ea06b59aac290d5f1f51d643d7952b6a
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728387"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580424"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
@@ -82,7 +82,7 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 
 **オペレーティング システム** | **詳細**
 --- | ---
-**64 ビット Windows** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 (SP1 から)
+**64 ビット Windows** | Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 (SP1 以降)
 **CentOS** | 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3
 **Ubuntu** | 14.04 LTS サーバー、16.04 LTS サーバー。 [サポートされているカーネル](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions)を確認してください。
 

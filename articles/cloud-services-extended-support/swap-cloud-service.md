@@ -8,12 +8,12 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: f5e01075ffb460c7ddd70b40a6b19f7ea70dd776
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d9e30d77708ad5ae8c5249a15d28685a56fd0216
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748830"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462986"
 ---
 # <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Azure Cloud Services (拡張サポート) でのデプロイのスワップまたは切り替え
 
@@ -24,9 +24,14 @@ Azure Cloud Services (拡張サポート) を使用すると、2 つの独立し
 > [!NOTE]
 > Azure Cloud Services (従来の) のデプロイと Azure Cloud Services (拡張サポート) デプロイの間でスワップすることはできません。
 
-クラウド サービスを別のクラウド サービスにスワップ可能にするのは、2 つ目のクラウド サービスをデプロイするときである必要があります。
+クラウド サービスを別のクラウド サービスにスワップ可能にする必要があるのは、ペアの 2 つ目のクラウド サービスを初めてデプロイするときです。 ペアの 2 つ目のクラウド サービスをデプロイすると、それ以降の更新でそれを既存のクラウド サービスとスワップ可能にすることはできません。
 
 デプロイをスワップするには、Azure Resource Manager テンプレート (ARM テンプレート)、Azure portal、または REST API を使用します。
+
+2 つ目のクラウド サービスをデプロイすると、両方のクラウド サービスの SwappableCloudService プロパティが互いを指し示すように設定されます。 これらのクラウド サービスに対するそれ以降の更新では、このプロパティを指定する必要があります。そうでないと、SwappableCloudService プロパティを削除または更新できないことを示すエラーが返されます。
+
+設定されると、SwappableCloudService プロパティは読み取り専用として扱われます。 これを削除したり、別の値に変更したりすることはできません。 (スワップ可能なペアの) クラウド サービスのいずれかを削除すると、残りのクラウド サービスの SwappableCloudService プロパティがクリアされます。
+
 
 ## <a name="arm-template"></a>ARM テンプレート
 
@@ -114,7 +119,7 @@ Azure Cloud Services (拡張サポート) でデプロイを正常にスワッ�
 ## <a name="next-steps"></a>次のステップ 
 
 * Azure Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
-* Azure Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+* Azure Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
 * 次のいずれかのオプションを使用して、Azure Cloud Services (拡張サポート) クラウド サービスをデプロイします。
   * [Azure Portal](deploy-portal.md)
   * [PowerShell](deploy-powershell.md)

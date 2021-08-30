@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: c6c39a7ef0404a0e78e5b8ed0b41bf54156b488a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f00f98ac9e6350aa09d3fa67c1c87677fef2db6f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032665"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738971"
 ---
 # <a name="shared-image-galleries-overview"></a>共有イメージ ギャラリーの概要
 
@@ -27,7 +27,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 - Azure RBAC を使用した、サブスクリプション間、および Active Directory (AD) テナント間の共有。
 - 各リージョン内のイメージ レプリカを使用したデプロイのスケーリング。
 
-共有イメージ ギャラリーを使用すると、組織内のさまざまなユーザー、サービス プリンシパル、AD グループに対してイメージを共有できます。 共有イメージを複数のリージョンにレプリケートすることで、デプロイのスケーリングにかかる時間を短縮することができます。
+共有イメージ ギャラリーを使用すると、組織内外のさまざまなユーザー、サービス プリンシパル、AD グループとイメージを共有できます。 共有イメージを複数のリージョンにレプリケートすることで、デプロイのスケーリングにかかる時間を短縮することができます。
 
 イメージは、作成方法に応じて、完全な VM (アタッチされた任意のデータ ディスクを含む) または OS ディスク単独のどちらかのコピーです。 イメージから VM を作成するときに、新しい VM のディスクを作成するために、イメージ内の VHD のコピーが使用されます。 イメージはストレージ内に残り、繰り返し使用して新しい VM を作成できます。
 
@@ -133,7 +133,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 [Azure ゾーン冗長ストレージ (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) では、リージョンの可用性ゾーンのエラー発生時に復元することができます。 共有イメージ ギャラリーの一般的な可用性では、Availability Zones でリージョン内の ZRS アカウントに自分のイメージを格納することを選択できます。 
 
-また、ターゲット リージョンごとにアカウントの種類を選ぶこともできます。 既定のストレージ アカウントの種類は Standard_LRS ですが、Availability Zones でリージョンに Standard_ZRS を選ぶことができます。 [ここ](../storage/common/storage-redundancy.md)で ZRS の利用可能なリージョンを確認します。
+また、ターゲット リージョンごとにアカウントの種類を選ぶこともできます。 既定のストレージ アカウントの種類は Standard_LRS ですが、Availability Zones でリージョンに Standard_ZRS を選ぶことができます。 ZRS のリージョンの可用性の詳細については、「[データの冗長性](../storage/common/storage-redundancy.md)」を参照してください。
 
 ![ZRS を示すグラフィック](./media/shared-image-galleries/zrs.png)
 
@@ -190,7 +190,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 - [.NET](/dotnet/api/overview/azure/virtualmachines/management)
 - [Java](/java/azure/)
-- [Node.js](/javascript/api/@azure/arm-compute)
+- [Node.js](/javascript/api/overview/azure/arm-compute-readme)
 - [Python](/python/api/overview/azure/virtualmachines)
 - [Go](/azure/go/)
 
@@ -201,7 +201,6 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 - [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問 
 

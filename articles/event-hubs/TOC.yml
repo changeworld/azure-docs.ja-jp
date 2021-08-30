@@ -4,6 +4,8 @@
   items:
     - name: Event Hubs とは
       href: event-hubs-about.md
+    - name: 用語
+      href: event-hubs-features.md
 - name: クイックスタート
   expanded: true
   items:
@@ -73,26 +75,26 @@
       href: event-hubs-samples.md
 - name: 概念
   items:
-    - name: Event Hubs の用語
-      href: event-hubs-features.md
-    - name: Event Hubs Premium
-      href: event-hubs-premium-overview.md
+    - name: 層
+      items:
+        - name: Premium レベル
+          href: event-hubs-premium-overview.md
+        - name: Dedicated レベル
+          href: event-hubs-dedicated-overview.md
+        - name: レベルの比較
+          href: compare-tiers.md
     - name: Apache Kafka 用 Event Hubs
       href: event-hubs-for-kafka-ecosystem-overview.md
     - name: Event Hubs Capture
       href: event-hubs-capture-overview.md
-    - name: Event Hubs Dedicated
-      href: event-hubs-dedicated-overview.md
-    - name: Event Hubs の Azure スキーマ レジストリ (プレビュー)
+    - name: Event Hubs の Azure スキーマ レジストリ
       href: schema-registry-overview.md
-    - name: イベント プロセッサ ホスト (レガシ SDK)
-      href: event-hubs-event-processor-host.md
-    - name: イベント プロセッサ (最新の SDK)
-      href: event-processor-balance-partition-load.md
-    - name: 可用性と一貫性
-      href: event-hubs-availability-and-consistency.md
-    - name: スケーラビリティ
-      href: event-hubs-scalability.md
+    - name: SDK を使用したイベント処理
+      items:
+        - name: イベント プロセッサ ホスト (レガシ SDK)
+          href: event-hubs-event-processor-host.md
+        - name: イベント プロセッサ (最新の SDK)
+          href: event-processor-balance-partition-load.md
     - name: フェデレーション
       items:
         - name: マルチサイトとマルチリージョンのフェデレーション
@@ -140,6 +142,10 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/event-hubs-security-baseline?toc=/azure/event-hubs/TOC.json
+    - name: 可用性と一貫性
+      href: event-hubs-availability-and-consistency.md
+    - name: スケーラビリティ
+      href: event-hubs-scalability.md
     - name: AMQP
       items:
         - name: AMQP 1.0 プロトコル ガイド
@@ -217,8 +223,6 @@
       items:
         - name: Azure Event Hubs の監視
           href: monitor-event-hubs.md
-        - name: 診断ログの設定
-          href: event-hubs-diagnostic-logs.md
         - name: Event Hubs を使用して Azure Diagnostics データをストリーミングする
           href: ../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md
         - name: スループット単位の自動スケール
@@ -233,7 +237,7 @@
           href: event-hubs-service-endpoints.md
         - name: プライベート エンドポイント経由のアクセスの許可
           href: private-link-service.md
-        - name: 顧客管理キーの構成
+        - name: カスタマー マネージド キーを使用してデータを暗号化する
           href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:

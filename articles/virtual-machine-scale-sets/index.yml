@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: e30d136e1ebd7f0af68ae15741fe220a399d28b5
-  ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+  ms.openlocfilehash: 3b50b0bc3c25a157c3af62004d2fb34f3bb2fcef
+  ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/13/2021
-  ms.locfileid: "107312486"
+  ms.lasthandoff: 08/23/2021
+  ms.locfileid: "122691313"
 landingContent:
 - title: 仮想マシン スケール セットについて
   linkLists:
@@ -79,3 +79,15 @@ landingContent:
       url: /learn/modules/build-app-with-scale-sets/
     - text: " Azure で Windows 仮想マシンを作成する"
       url: /learn/modules/create-windows-virtual-machine-in-azure/
+- title: スケール セットのフレキシブル オーケストレーション
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: フレキシブル オーケストレーション モード
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets.md
+    - text: CLI の使用を開始する
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets-cli.md
+    - text: ポータルの使用を開始する
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets-portal.md
+    - text: Virtual Machine Scale Sets のオーケストレーション モード
+      url: virtual-machine-scale-sets-orchestration-modes.md

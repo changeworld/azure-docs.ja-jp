@@ -74,10 +74,10 @@
               displayName: 'deployment commands,multiple resource groups'
             - name: サブスクリプション
               href: deploy-to-subscription.md
-              displayName: 'Azure policy,policy,access control'
+              displayName: 'Azure Policy,policy,access control'
             - name: 管理グループ
               href: deploy-to-management-group.md
-              displayName: 'policy,Azure policy'
+              displayName: 'policy,Azure Policy'
             - name: Tenant
               href: deploy-to-tenant.md
               displayName: assign role
@@ -85,6 +85,12 @@
           href: linter.md
         - name: ベスト プラクティス
           href: best-practices.md
+        - name: パターン
+          items:
+            - name: 構成セット
+              href: patterns-configuration-set.md
+            - name: 共有変数ファイル
+              href: patterns-shared-variable-file.md
     - name: 配置
       items:
         - name: 配置前のチェック
@@ -123,6 +129,8 @@
     - name: Bicep ファイルの構造
       displayName: 'parameters,variables,resources,outputs,condition'
       href: file.md
+    - name: Bicep リソースのリファレンス
+      href: /azure/templates/
     - name: データの種類
       href: data-types.md
       displayName: 'supported types,arrays,booleans,integers,objects,strings,secure,'
@@ -154,19 +162,17 @@
       items:
         - name: すべての演算子
           href: operators.md
+        - name: アクセサー演算子
+          href: operators-access.md
         - name: 比較演算子
           href: operators-comparison.md
         - name: 論理演算子
           href: operators-logical.md
         - name: 数値演算子
           href: operators-numeric.md
-        - name: アクセス演算子
-          href: operators-access.md
     - name: Bicep CLI
       href: bicep-cli.md
       displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'
-    - name: テンプレート リファレンス
-      href: /azure/templates/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

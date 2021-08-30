@@ -115,6 +115,8 @@
       href: premium-deploy-certificates-enterprise-ca.md
     - name: Azure Firewall Premium への移行
       href: premium-migrate.md
+    - name: Terraform を使用した Premium への移行
+      href: /azure/developer/terraform/firewall-upgrade-premium?toc=/azure/firewall/toc.json&bc=/azure/firewall/breadcrumb/toc.json
     - name: 送信 SNAT ポートのスケーリング
       href: integrate-with-nat-gateway.md
 - name: リファレンス

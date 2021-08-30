@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 01/28/2021
-  ms.openlocfilehash: ada227d0746b49ba73b6bea2104d3a7adcbaa1c5
-  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+  ms.openlocfilehash: bb05b2a2b3aa42cc83f4f014aa00082dc00e6aa9
+  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/07/2021
-  ms.locfileid: "107027467"
+  ms.lasthandoff: 08/20/2021
+  ms.locfileid: "122514534"
 landingContent:
 - title: Virtual Network について
   linkLists:
@@ -52,6 +52,8 @@ landingContent:
       url: virtual-network-service-endpoints-overview.md
     - text: 仮想ネットワークのセキュリティに関する FAQ
       url: virtual-networks-faq.md#security
+    - text: 既定のアウトバウンド アクセス
+      url: default-outbound-access.md
   - linkListType: tutorial
     links:
     - text: ネットワーク セキュリティ グループを使用してネットワーク トラフィックをフィルター処理する

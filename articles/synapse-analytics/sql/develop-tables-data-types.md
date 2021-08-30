@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: ae919a12dc1c50fcb30d08128e4ebf2faa2b2ccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32a85b4409f36846a14e21d2f3894b7dbae1ec30
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674172"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723346"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Synapse SQL でのテーブルのデータ型
 
-この記事では、Synapse SQL でテーブルのデータ型を定義するための推奨事項を紹介します。 
+この記事では、Synapse SQL 専用プールでテーブルのデータ型を定義するための推奨事項を紹介します。 
 
-## <a name="data-types"></a>データ型
+## <a name="data-types"></a>データの種類
 
-Synapse SQL では、最も一般的に使用されるデータ型をサポートしています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの[データ型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes&preserve-view=true)を参照してください。 
+Synapse SQL 専用 SQL プールでは、一般的に使用されるほとんどのデータ型がサポートされます。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの[データ型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes&preserve-view=true)を参照してください。 Synapse SQL サーバーレスの場合は、「[Azure Synapse Analytics のサーバーレス SQL プールを使用してストレージ ファイルにクエリを実行する](./query-data-storage.md)」と「[Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法](./develop-openrowset.md)」の記事を参照してください。
 
 ## <a name="minimize-row-length"></a>行の長さを最小化する
 
@@ -33,6 +33,7 @@ Synapse SQL では、最も一般的に使用されるデータ型をサポー�
 - 既定の長さで文字列を定義しないようにしてください。 たとえば、最長値が 25 文字の場合は、列を VARCHAR(25) として定義します。
 - VARCHAR のみが必要な場合は、[NVARCHAR][NVARCHAR] を使用しないようにしてください。
 - 可能であれば、NVARCHAR(MAX) または VARCHAR(MAX) の代わりに、NVARCHAR(4000) または VARCHAR(8000) を使用します。
+- 0 （ゼロ） スケールの浮動小数点および小数の使用は避けてください。  これらは TINYINT、SMALLINT、INT、または BIGINT にしてください。
 
 > [!NOTE]
 > Synapse SQL テーブルの読み込みに PolyBase 外部テーブルを使用している場合、テーブル行の定義された長さが 1 MB を超えることはできません。 可変長データを含む行が 1 MB を超える場合、BCP で行を読み込めますが、PolyBase では読み込めません。

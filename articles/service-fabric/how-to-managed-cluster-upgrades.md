@@ -2,13 +2,13 @@
 title: Azure Service Fabric マネージド クラスターのアップグレード
 description: Azure Service Fabric マネージド クラスターをアップグレードするためのオプションについて説明します。
 ms.topic: how-to
-ms.date: 05/10/2021
-ms.openlocfilehash: 478b39a6222906c793d826ab69edeeaddbb096bf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/16/2021
+ms.openlocfilehash: 50af042be1dc69f39e61447901d4d5f07da2a1e7
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960995"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290091"
 ---
 # <a name="manage-service-fabric-managed-cluster-upgrades"></a>Service Fabric マネージド クラスターのアップグレードの管理
 
@@ -22,7 +22,8 @@ Azure Service Fabric マネージド クラスターは、Microsoft が[ウェ�
 
 ウェーブ デプロイでは、テスト、ステージ、および運用のクラスターを順番にアップグレードするためのパイプラインを作成でき、それぞれが運用クラスターのアップデート前に次期の Service Fabric のバージョンを検証するための組み込みの 'ベイク時間' で区切られています。
 
->注: 既定では、クラスターはウェーブ 0 に設定されます。
+>[!NOTE]
+>既定では、クラスターはウェーブ 0 に設定されます。
 
 自動アップグレードでウェーブ デプロイを選択するには、最初に、クラスターに割り当てるウェーブを決定します。
 
@@ -56,16 +57,16 @@ Resource Manager テンプレートを使用してクラスター アップグ�
 "type": "Microsoft.ServiceFabric/managedClusters",
 "properties": {
         "ClusterUpgradeMode": "Manual",
-        "ClusterCodeVersion": "7.2.457.9590"
+        "ClusterCodeVersion": "8.0.514.9590"
         }
 }
 ```
 
 テンプレートが正常にデプロイされると、クラスター アップグレード モードの変更が適用されます。 クラスターが手動モードの場合、クラスターのアップグレードは自動的に開始されます。
 
-[クラスター正常性ポリシー](./service-fabric-health-introduction.md#health-policies) (ノードの正常性と、クラスターで実行されている全アプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。 クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。
+クラスター正常性ポリシー (ノードの正常性と、クラスターで実行されている全アプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。 クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。
 
-ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
+ロールバックが発生した場合、その原因となった問題を解決し、前述の手順に従ってもう一度アップグレードを実行する必要があります。
 
 #### <a name="automatic-upgrade-with-wave-deployment"></a>ウェーブ デプロイによる自動アップグレード
 
@@ -84,14 +85,6 @@ Resource Manager テンプレートを使用してクラスター アップグ�
 
 更新されたテンプレートをデプロイすると、クラスターは、次のアップグレード期間およびその後にわたって、指定されたウェーブに登録されます。
 
-## <a name="custom-policies-for-manual-upgrades"></a>手動アップグレードのカスタム ポリシー
-
-手動によるクラスター アップグレードのためのカスタム正常性ポリシーを指定できます。 これらのポリシーは、新しいランタイム バージョンを選択するたびに適用されます。これにより、システムによってクラスターのアップグレードが開始されます。 ポリシーをオーバーライドしていない場合、既定の設定が使用されます。
-
-カスタム正常性ポリシーを指定したり、 **[アップグレード ポリシー]** の *[カスタム]* オプションを選択して Azure portal のクラスター リソースの **[ファブリックのアップグレード]** セクションから現在の設定を確認したりできます。
-
-:::image type="content" source="./media/service-fabric-cluster-upgrade/custom-upgrade-policy.png" alt-text="アップグレード時にカスタム正常性ポリシーを設定するには、Azure portal のクラスター リソースの [ファブリックのアップグレード] セクションで [カスタム] アップグレード ポリシー オプションを選択します":::
-
 ## <a name="query-for-supported-cluster-versions"></a>サポートされているクラスター バージョンのクエリ
 
 [Azure REST API](/rest/api/azure/) を使用すると、指定した場所とサブスクリプションで使用可能なすべての Service Fabric ランタイム バージョン ([clusterVersions](/rest/api/servicefabric/sfrp-api-clusterversions_list)) を一覧表示できます。
@@ -99,41 +92,31 @@ Resource Manager テンプレートを使用してクラスター アップグ�
 サポートされているバージョンとオペレーティング システムの詳細については、[Service Fabric バージョン](service-fabric-versions.md)に関するページでも確認できます。
 
 ```REST
-GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2018-02-01
+GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/managedclusterVersions?api-version=2021-05-01
 
 "value": [
   {
-    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/5.0.1427.9490",
-    "name": "5.0.1427.9490",
-    "type": "Microsoft.ServiceFabric/environments/clusterVersions",
+    "id": "subscriptions/eec8e14e-b47d-40d9-8bd9-23ff5c381b40/providers/Microsoft.ServiceFabric/locations/eastus2/environments/Windows/managedClusterVersions/7.2.477.9590",
+    "name": "7.2.477.9590",
+    "type": "Microsoft.ServiceFabric/locations/environments/managedClusterVersions",
     "properties": {
-      "codeVersion": "5.0.1427.9490",
-      "supportExpiryUtc": "2016-11-26T23:59:59.9999999",
-      "environment": "Windows"
+      "supportExpiryUtc": "2021-11-30T00:00:00",
+      "osType": "Windows",
+      "clusterCodeVersion": "7.2.477.9590"
     }
   },
   {
-    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.0.1427.9490",
-    "name": "5.1.1427.9490",
-    "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/locations/eastus2/environments/Windows/managedClusterVersions/8.0.514.9590",
+    "name": "8.0.514.9590",
+    "type": "Microsoft.ServiceFabric/locations/environments/managedClusterVersions",
     "properties": {
-      "codeVersion": "5.1.1427.9490",
       "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-      "environment": "Windows"
-    }
-  },
-  {
-    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.4.1427.9490",
-    "name": "4.4.1427.9490",
-    "type": " Microsoft.ServiceFabric/environments/clusterVersions",
-    "properties": {
-      "codeVersion": "4.4.1427.9490",
-      "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-      "environment": "Linux"
+      "osType": "Windows",
+      "clusterCodeVersion": "8.0.514.9590"
     }
   }
 ]
-}
+
 ```
 
 出力の `supportExpiryUtc` は、特定のリリースの有効期限が近づいているか、期限切れになっていることを報告します。 最新リリースには有効な日付ではなく、*9999-12-31T23:59:59.9999999* という値が設定されていますが、これは単に有効期限が設定されていないことを意味するものです。
@@ -144,10 +127,5 @@ GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.Serv
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 <!--Image references-->
-[CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png
-[AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes2.PNG
-[AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
-[Upgrade-Wave-Settings]: ./media/service-fabric-cluster-upgrade/manage-upgrade-wave-settings.png
-[ARMUpgradeMode]: ./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG
-[Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
-[Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
+[Upgrade-Wave-Settings]: ./media/how-to-managed-cluster-upgrades/manage-upgrade-wave-settings.png
+[New-Cluster-Wave-Settings]: ./media/how-to-managed-cluster-upgrades/portal-new-cluster-upgrade-waves-setting.png

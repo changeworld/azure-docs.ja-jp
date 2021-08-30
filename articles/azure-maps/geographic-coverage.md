@@ -1,19 +1,19 @@
 ---
-title: 地理的範囲情報 | Microsoft Azure Maps
+title: Microsoft Azure Maps の地理的範囲情報
 description: Microsoft Azure Maps 内で地理データを利用できる場所の詳細。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 6/11/2020
+ms.date: 6/23/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2e6392de1eedde122567d9ffa1c8bfdd6d9c5522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 321888d2b2f3917cde0fdeb91b049578c94f601b
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84739583"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579804"
 ---
 # <a name="geographic-coverage-information"></a>地理的範囲情報
 
@@ -23,7 +23,6 @@ ms.locfileid: "84739583"
 * [トラフィックの対象範囲](traffic-coverage.md)
 * [レンダーの対象範囲](render-coverage.md)
 * [ルーティングの対象範囲](routing-coverage.md)
-* [モビリティの対象範囲](mobility-coverage.md)
 * [天気の対象範囲](weather-coverage.md)
 
 ## <a name="next-steps"></a>次のステップ

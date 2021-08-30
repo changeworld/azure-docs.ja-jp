@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a8d8d83441e77e1d3bb7153fb5af9071310e82ec
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a5eeb8fbadda24a811893a02f42b428a8365c5aa
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110086106"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110261"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
@@ -28,12 +28,6 @@ Azure Private Link サービスは、Azure Private Link を使用する独自の
 
 
 *図:Azure Private Link サービスのワークフロー。*
-
-### <a name="rbac-permissions"></a>RBAC アクセス許可
-
-以下に示すのは、Private Link サービスを作成するユーザーに必要な具体的な RBAC アクセス許可です。 カスタム ロールの詳細については、「[カスタム ロールの作成手順](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)」を参照してください。
-
-Microsoft.Resources/subscriptions/resourcegroups/resources/read Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/read Microsoft.Network/virtualNetworks/subnets/write Microsoft.Network/virtualNetworks/subnets/join/action Microsoft.Network/privateEndpoints/read Microsoft.Network/privateEndpoints/write Microsoft.Network/locations/availablePrivateEndpointTypes/read Microsoft.Network/privateLinkServices/read Microsoft.Network/privateLinkServices/write Microsoft.Network/privateLinkServices/privateEndpointConnections/read Microsoft.Network/privateLinkServices/privateEndpointConnections/write Microsoft.Network/networkSecurityGroups/join/action Microsoft.Network/loadBalancers/read Microsoft.Network/loadBalancers/write
 
 ### <a name="create-your-private-link-service"></a>Private Link サービスを作成する
 
@@ -101,7 +95,11 @@ Private Link サービスでは、次のプロパティを指定します。
 
 ## <a name="control-service-exposure"></a>サービスの公開を制御する
 
-Private Link サービスには、"可視性" 設定を使用して対象のサービスの公開を制御するオプションが用意されています。 所有するさまざまな VNet (Azure RBAC アクセス許可のみ) からの使用に向けて、サービスをプライベートに設定したり、信頼するサブスクリプションの限られたセットのみに公開を制限したりできます。また、サービスをパブリックに設定して、すべての Azure サブスクリプションが Private Link サービス上で接続を要求できるようにすることもできます。 可視性の設定により、コンシューマーが対象のサービスに接続できるかどうかが決まります。 
+Private Link サービスでは、サービスの公開を制御する **可視性** の設定に 3 つのオプションが用意されています。 可視性の設定により、コンシューマーが対象のサービスに接続できるかどうかが決まります。 次に、制限の最も厳しいオプションから順に可視性の設定オプションを示します。
+ 
+- **ロールベースのアクセス制御のみ**: ご自身が所有する異なる VNet からプライベートに利用することを目的としたサービスである場合、同じ Active Directory テナントに関連付けられたサブスクリプション内のアクセスの制御メカニズムとして RBAC を使用できます。 
+- **サブスクリプションによる制限**: 複数のテナント間で横断的に利用されるサービスの場合、信頼の置ける限られたサブスクリプションに公開を制限することができます。 承認は、事前承認することができます。
+- **お客様のエイリアスを持つすべてのユーザー**: サービスをパブリックとし、Private Link サービスのエイリアスを持つユーザーであればだれでも接続を要求できるようにしたい場合は、このオプションを選択してください。 
 
 ## <a name="control-service-access"></a>サービス アクセスを制御する
 

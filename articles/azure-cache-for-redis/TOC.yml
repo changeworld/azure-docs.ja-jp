@@ -70,7 +70,21 @@
     - name: フェールオーバーと修正プログラムの適用
       href: cache-failover.md
     - name: ベスト プラクティス
-      href: cache-best-practices.md
+      items:
+        - name: 接続の回復力
+          href: cache-best-practices-connection.md
+        - name: サーバーの負荷管理
+          href: cache-best-practices-server-load.md
+        - name: メモリ管理
+          href: cache-best-practices-memory-management.md
+        - name: 開発
+          href: cache-best-practices-development.md
+        - name: スケーリング
+          href: cache-best-practices-scale.md
+        - name: Kubernetes でホストされるクライアント アプリケーション
+          href: cache-best-practices-kubernetes.md
+        - name: パフォーマンス テスト
+          href: cache-best-practices-performance.md
     - name: セキュリティ
       items:
         - name: ネットワークの分離のオプション
@@ -110,6 +124,8 @@
           href: cache-reserved-pricing.md
         - name: Azure Cache for Redis への移行
           href: cache-migration-guide.md
+        - name: VNet インジェクションから Private Link への移行
+          href: cache-vnet-migration.md
         - name: 計画に関する FAQ
           href: cache-planning-faq.yml
     - name: ビルド

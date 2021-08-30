@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor の分析情報を使用した Virtual WAN の監視
-description: この記事では、Azure Monitor の分析情報を使用して Azure Virtual WAN を監視する方法について説明します。
+description: Azure Monitor の分析情報を使用した Azure Virtual WAN の監視について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 09/22/2020
+ms.topic: how-to
+ms.date: 06/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6ead00a0979d81ef11ac81fb13a1abe31317691d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73209f93e2b7fd96dc6ebb540d62624249db5be8
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571321"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539234"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan"></a>Virtual WAN に関する Azure Monitor の分析情報
 
@@ -88,4 +88,4 @@ Virtual WAN の **[依存関係]** ビューによって、ハブ アンド ス�
 ## <a name="next-steps"></a>次のステップ
 
 * 詳細については、「[Azure Monitor のメトリック](../azure-monitor/essentials/data-platform-metrics.md)」を参照してください。
-* すべての Virtual WAN メトリックの詳細については、[Virtual WAN のログとメトリック](logs-metrics.md)に関する記事を参照してください。
+* Virtual WAN の全メトリックの詳細については、「[Virtual WAN を監視する](monitor-virtual-wan.md)」を参照してください。

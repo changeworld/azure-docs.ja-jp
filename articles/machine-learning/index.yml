@@ -1,4 +1,4 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Azure Machine Learning のドキュメント
 summary: Azure Machine Learning を使用してモデルをトレーニングおよびデプロイし、ML のライフサイクル (MLOps) を管理する方法について説明します。 チュートリアル、コード例、API リファレンスなど。
 metadata:
@@ -7,108 +7,103 @@ metadata:
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
-  ms.topic: landing-page
+  ms.topic: hub-page
   ms.collection: collection
   ms.author: sgilley
   author: sdgilley
-  ms.date: 07/09/21
+  ms.date: 08/23/2021
   ms.custom: jordan-changes
-  ms.openlocfilehash: a6c9062be083260dd7a492363cb0dd79b2f37cdf
-  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/10/2021
-  ms.locfileid: "113595905"
-landingContent:
-- title: 開始
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Azure Machine Learning とは
-      url: overview-what-is-azure-ml.md
-  - linkListType: quickstart
-    links:
-    - text: リソースを設定する
+highlightedContent:
+  items:
+    - title: Azure Machine Learning とは
+      itemType: overview
+      url: overview-what-is-azure-machine-learning.md
+    - title: リソースを設定する
+      itemType: get-started
       url: quickstart-create-resources.md
-  - linkListType: tutorial
-    links:
-    - text: Python SDK でトレーニングする
+    - title: 'プレビュー: v2 CLI を使用したモデルのトレーニング'
+      itemType: tutorial
+      url: how-to-train-cli.md
+    - title: アーキテクチャと用語
+      itemType: overview
+      url: concept-azure-machine-learning-architecture.md
+    - title: '1 日目: Python で作業を開始する'
+      itemType: get-started
       url: tutorial-1st-experiment-hello-world.md
-    - text: v2 CLI を使用してトレーニングする (プレビュー)
-      url: how-to-train-cli.md
-- title: モデルをトレーニングする
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: モデルのトレーニングのためにハイパーパラメーターを調整する
-      url: how-to-tune-hyperparameters.md
-    - text: 再利用可能なコンポーネントからパイプラインを構築する
-      url: how-to-create-machine-learning-pipelines.md
-  - linkListType: tutorial
-    links:
-    - text: AutoML を使用してトレーニングする
-      url: tutorial-first-experiment-automated-ml.md
-    - text: クラウドでトレーニング コードを実行する (v2 CLI プレビュー)
-      url: how-to-train-cli.md
-- title: モデルをデプロイする
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: モデルをデプロイする方法
-      url: how-to-deploy-and-where.md
-    - text: マネージド エンドポイントを使用したリアルタイム スコアリング (プレビュー)
-      url: how-to-deploy-managed-online-endpoints.md
-    - text: マネージド エンドポイントを使用したバッチ スコアリング (プレビュー)
-      url: how-to-use-batch-endpoint.md
-- title: ML ライフサイクル (MLOps) を管理する
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: モデルの管理、系列、および監視
-      url: concept-model-management-and-deployment.md
-  - linkListType: how-to-guide
-    links:
-    - text: トレーニング実行を追跡、監視、分析する
-      url: how-to-track-monitor-analyze-runs.md
-    - text: データ インジェスト パイプラインの DevOps
-      url: how-to-cicd-data-ingestion.md
-- title: ML プロジェクトのセキュリティ
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: エンタープライズ セキュリティとガバナンス
-      url: concept-enterprise-security.md
-  - linkListType: tutorial
-    links:
-    - text: セキュリティで保護されたワークスペースを作成する
-      url: tutorial-create-secure-workspace.md
-  - linkListType: how-to-guide
-    links:
-    - text: データ ソースに接続する
-      url: how-to-access-data.md
-- title: リファレンス ドキュメント
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Python SDK
-      url: /python/api/overview/azure/ml/
-    - text: REST API
-      url: /rest/api/azureml/
-    - text: Machine Learning v2 CLI
-      url: /cli/azure/ml
-- title: リソース
-  linkLists:
-  - linkListType: sample
-    links:
-    - text: Python SDK のコード例
-      url: https://github.com/Azure/azureml-examples/blob/main/python-sdk/README.md
-    - text: v2 CLI のコード例 (プレビュー)
-      url: https://github.com/Azure/azureml-examples/blob/main/cli/README.md
-- title: ML Studio (クラシック) をお探しですか?
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: ML Studio (クラシック) のドキュメント
-      url: classic/index.yml
-    - text: Azure Machine Learning と Studio (クラシック)
-      url: overview-what-is-machine-learning-studio.md
+    - title: ML Studio (クラシック) からの移行
+      itemType: how-to-guide
+      url: migrate-overview.md
+conceptualContent:
+  items:
+    - title: モデルをトレーニングする
+      links:
+        - url: how-to-train-cli.md
+          itemType: how-to-guide
+          text: クラウドでトレーニング コードを実行する (v2 CLI プレビュー)
+        - url: how-to-tune-hyperparameters.md
+          itemType: how-to-guide
+          text: モデルのトレーニングのためにハイパーパラメーターを調整する
+        - url: how-to-create-machine-learning-pipelines.md
+          itemType: how-to-guide
+          text: 再利用可能なコンポーネントからパイプラインを構築する
+        - url: tutorial-first-experiment-automated-ml.md
+          itemType: tutorial
+          text: 'AutoML: 分類モデルをトレーニングする'
+    - title: モデルをデプロイする
+      links:
+        - url: how-to-deploy-and-where.md
+          itemType: how-to-guide
+          text: モデルをデプロイする方法
+        - url: how-to-deploy-managed-online-endpoints.md
+          itemType: how-to-guide
+          text: マネージド エンドポイントを使用したリアルタイム スコアリング (プレビュー)
+        - url: how-to-use-batch-endpoint.md
+          itemType: how-to-guide
+          text: マネージド エンドポイントを使用したバッチ スコアリング (プレビュー)
+    - title: ML ライフサイクル (MLOps) を管理する
+      links:
+        - url: how-to-track-monitor-analyze-runs.md
+          itemType: how-to-guide
+          text: トレーニング実行を追跡、監視、分析する
+        - url: concept-model-management-and-deployment.md
+          itemType: concept
+          text: モデルの管理、デプロイ、系列、および監視
+        - url: how-to-cicd-data-ingestion.md
+          itemType: how-to-guide
+          text: データ インジェスト パイプラインの DevOps
+    - title: ML プロジェクトのセキュリティ
+      links:
+        - url: tutorial-create-secure-workspace.md
+          itemType: tutorial
+          text: セキュリティで保護されたワークスペースを作成する
+        - url: how-to-access-data.md
+          itemType: how-to-guide
+          text: データ ソースに接続する
+        - url: concept-enterprise-security.md
+          itemType: concept
+          text: エンタープライズ セキュリティとガバナンス
+    - title: リファレンス
+      links:
+        - url: /python/api/overview/azure/ml/
+          itemType: reference
+          text: Python SDK
+        - url: /rest/api/azureml/
+          itemType: reference
+          text: REST API
+        - url: /cli/azure/ml/
+          itemType: reference
+          text: V2 CLI (プレビュー)
+        - url: ./algorithm-module-reference/module-reference.md
+          itemType: reference
+          text: アルゴリズムとモジュールのリファレンス
+    - title: リソース
+      links:
+        - url: 'https://github.com/Azure/azureml-examples/blob/main/python-sdk/README.md'
+          itemType: sample
+          text: Python SDK のコード例
+        - url: 'https://github.com/Azure/azureml-examples/blob/main/cli/README.md'
+          itemType: sample
+          text: v2 CLI のコード例 (プレビュー)
+        - url: ./classic/index.yml
+          itemType: overview
+          text: ML Studio (クラシック) のドキュメント

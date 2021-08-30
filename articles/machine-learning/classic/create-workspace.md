@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): ワークスペースの作成 - Azure'
-description: Azure Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+description: Machine Learning スタジオ (クラシック) を使用するには、Machine Learning スタジオ (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,18 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 9caac94c90aa18f8661ab46a0ae72d49500f39cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76aad9dc8ffa4ff0fb3ccb3c8093ee4efaea09b6
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520546"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582404"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (classic) ワークスペースを作成して共有する
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:**  ![これはチェック マークです。つまり、この記事は Machine Learning スタジオ (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning スタジオ (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Azure Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+Machine Learning スタジオ (クラシック) を使用するには、Machine Learning スタジオ (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
 ## <a name="create-a-studio-classic-workspace"></a>Studio (クラシック) ワークスペースを作成する
 
@@ -65,11 +65,11 @@ Machine Learning Studio (クラシック) でワークスペースを開くに�
 
     ![実験を開く](./media/create-workspace/my-experiments.png)
 
-Studio (クラシック) ワークスペースの管理方法の詳細については、「[Azure Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)」をご覧ください。
+スタジオ (クラシック) ワークスペースの管理方法の詳細については、「[Machine Learning スタジオ (クラシック) ワークスペースの管理](manage-workspace.md)」を参照してください。
 ワークスペースの作成で問題が発生した場合は、「[トラブルシューティング ガイド: Machine Learning Studio (クラシック) ワークスペースの作成と接続](index.yml)」を参照してください。
 
 
-## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (クラシック) ワークスペースを共有する
+## <a name="share-a-machine-learning-studio-classic-workspace"></a>Machine Learning スタジオ (クラシック) ワークスペースを共有する
 Machine Learning Studio (classic) ワークスペースを作成した後、ユーザーをワークスペースに招待し、ワークスペースとその実験、データセットなどのすべてに対するアクセスを共有できます。ユーザーは、次のいずれかの役割で追加することができます。
 
 * **ユーザー** - ワークスペース内の実験やデータセットの作成、表示、変更、削除を行うことができます。
@@ -126,9 +126,9 @@ Machine Learning サービスでは、データを格納するためのストレ
 
    ![Cookie の削除](media/troubleshooting-creating-ml-workspace/screen6.png)
 
-Cookie が削除されたら、ブラウザーを再起動し、[Microsoft Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) ページに移動します。 ユーザー名とパスワードの入力が求められたら、ワークスペースの作成時に使用したアカウントと同じ Microsoft アカウントを入力します。
+Cookie が削除されたら、ブラウザーを再起動し、[Machine Learning スタジオ (クラシック)](https://studio.azureml.net) ページに移動します。 ユーザー名とパスワードの入力が求められたら、ワークスペースの作成時に使用したアカウントと同じ Microsoft アカウントを入力します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-ワークスペースの管理方法の詳細については、「[Azure Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)」をご覧ください。
+ワークスペースの管理方法の詳細については、「[Machine Learning スタジオ (クラシック) ワークスペースの管理](manage-workspace.md)」を参照してください。

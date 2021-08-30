@@ -10,7 +10,7 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 05/24/2021
+  ms.date: 08/09/2021
   featureFlags:
     - clicktale
 highlightedContent:
@@ -42,6 +42,12 @@ productDirectory:
       azureCategories:
         - ai-machine-learning
       url: cognitive-services/anomaly-detector/index.yml
+    - title: Azure Applied AI Services
+      summary: 組織が一般的なシナリオの解決に AI を適用して価値を創出するまでの時間を短縮できるようにする特殊なサービス
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./applied-ai-services/index.yml
     - title: Azure Bot Service
       summary: 必要に応じてスケーリングできるインテリジェントなサーバーレス ボット サービス
       imageSrc: 'https://static.docs.com/ui/media/product/azure/bot-service.svg'
@@ -96,60 +102,6 @@ productDirectory:
       azureCategories:
         - iot
       url: /azure/rtos/
-    - title: Bing Autosuggest
-      summary: アプリに検索用のインテリジェントな自動提案機能を追加します
-      imageSrc: ./media/index/API_Bing_AutoSuggest.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-autosuggest/get-suggested-search-terms.md
-    - title: Bing Custom Search
-      summary: 使いやすく、広告の表示されない商用グレードの検索ツールで、必要な結果を得ることができます
-      imageSrc: ./media/index/API_Bing_Custom_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-custom-search/overview.md
-    - title: Bing Entity Search
-      summary: Web からエンティティ情報を特定して拡張することで、エクスペリエンスを強化します
-      imageSrc: ./media/index/API_Bing_Entity_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-entities-search/overview.md
-    - title: Bing Image Search
-      summary: 画像を検索し、総合的な結果を得ることができます
-      imageSrc: ./media/index/API_Bing_Image_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-image-search/overview.md
-    - title: Bing News Search
-      summary: ニュースを検索し、総合的な結果を得ることができます
-      imageSrc: ./media/index/API_Bing_News_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-news-search/search-the-web.md
-    - title: Bing Spell Check
-      summary: アプリでのスペル ミスを検出して修正します
-      imageSrc: ./media/index/API_Bing_Spell_Check.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-spell-check/overview.md
-    - title: Bing Video Search
-      summary: 動画を検索し、総合的な結果を得ることができます
-      imageSrc: ./media/index/API_Bing_Video_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-video-search/overview.md
-    - title: Bing Visual Search
-      summary: お好きなデバイスで説得力のある画像アプリケーションを構築するのに役立つ豊富な分析情報を得ることができます
-      imageSrc: ./media/index/API_Bing_Visual_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-visual-search/overview.md
-    - title: Bing Web Search
-      summary: 何十億もの Web ドキュメントから、より優れた検索結果を入手します
-      imageSrc: ./media/index/API_Bing_Web_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-web-search/overview.md
     - title: Azure Communication Services
       summary: Microsoft Teams が使用するのと同じ安全なプラットフォームで、豊富な通信エクスペリエンスを構築
       imageSrc: ./media/index/communication-services.svg
@@ -198,13 +150,7 @@ productDirectory:
       imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
       azureCategories:
         - ai-machine-learning
-      url: cognitive-services/immersive-reader/index.yml
-    - title: Ink Recognizer (プレビュー)
-      summary: 手書き、図形、インク ドキュメント レイアウトなどのデジタル インク コンテンツを認識する AI サービス
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
-      azureCategories:
-        - ai-machine-learning
-      url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
+      url: ./applied-ai-services/immersive-reader/index.yml
     - title: Kinect DK
       summary: 高度な AI センサーと開発者キットを使用して、コンピューターによる視覚と音声のモデルを構築します
       imageSrc: ./media/index/kinect-viewer.svg
@@ -225,7 +171,7 @@ productDirectory:
       azureCategories:
         - ai-machine-learning
       url: genomics/index.yml
-    - title: Metrics Advisor (プレビュー)
+    - title: Metrics Advisor
       summary: メトリックを監視して問題を診断する AI サービス
       imageSrc: ./media/index/metrics-advisor.svg
       azureCategories:
@@ -983,7 +929,7 @@ productDirectory:
       azureCategories:
         - management-and-governance
       url: azure-resource-manager/index.yml
-    - title: Azure Resource Mover (プレビュー)
+    - title: Azure Resource Mover
       summary: Azure リージョン間で複数のリソースを移動する方法の簡略化
       imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-mover.svg'
       azureCategories:

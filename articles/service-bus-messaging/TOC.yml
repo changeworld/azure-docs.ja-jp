@@ -34,14 +34,6 @@
               href: service-bus-python-how-to-use-queues.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-queues.md
-        - name: メッセージの送受信 (古いバージョン/パッケージ)
-          items:
-            - name: .NET (Microsoft.Azure.ServiceBus)
-              href: service-bus-dotnet-get-started-with-queues-legacy.md
-            - name: Java (azure-servicebus)
-              href: service-bus-java-how-to-use-queues-legacy.md
-            - name: PHP
-              href: service-bus-php-how-to-use-queues.md
     - name: Service Bus トピックとサブスクリプション
       items:
         - name: トピックとサブスクリプションを作成する
@@ -62,14 +54,6 @@
               href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-topics-subscriptions.md
-        - name: メッセージの発行とサブスクライブ (古いバージョン/パッケージ)
-          items:
-            - name: .NET (Microsoft.Azure.ServiceBus)
-              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
-            - name: Java (azure-servicebus)
-              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
-            - name: PHP
-              href: service-bus-php-how-to-use-topics-subscriptions.md
 - name: チュートリアル
   items:
     - name: インベントリを更新する
@@ -80,6 +64,8 @@
           href: service-bus-to-event-grid-integration-example.md
         - name: Azure Functions
           href: service-bus-to-event-grid-integration-function.md
+    - name: NServiceBus を使用してメッセージ駆動型ビジネス アプリケーションを構築する
+      href: build-message-driven-apps-nservicebus.md
 - name: サンプル
   items:
     - name: Service Bus サンプル
@@ -172,6 +158,22 @@
       items:
         - name: 名前空間の作成
           href: service-bus-create-namespace-portal.md
+        - name: メッセージの送受信 (古いバージョン/パッケージ)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-get-started-with-queues-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-queues-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-queues.md
+        - name: メッセージの発行とサブスクライブ (古いバージョン/パッケージ)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-topics-subscriptions.md
         - name: サブスクリプションのフィルターとアクションを設定する
           href: service-bus-filter-examples.md
         - name: メッセージの処理
@@ -216,8 +218,6 @@
       items:
         - name: エンドツーエンドのトレースと診断
           href: service-bus-end-to-end-tracing.md
-        - name: 診断ログ
-          href: service-bus-diagnostic-logs.md
         - name: Azure Service Bus の監視
           href: monitor-service-bus.md
     - name: 統合
@@ -267,7 +267,7 @@
           href: service-bus-service-endpoints.md
         - name: プライベート エンドポイント経由のアクセスの許可
           href: private-link-service.md
-        - name: 顧客管理キーの構成
+        - name: カスタマー マネージド キーを使用してデータを暗号化する
           href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:

@@ -8,12 +8,12 @@ ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 7c1e265f473c1c6fb70fd97416722e7b863c429b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4f31567068b3b0cf1d11764ce8f609a5889c2e51
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503560"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462593"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -288,6 +288,8 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 **--content-type** string ファイルのコンテンツの種類を指定します。 no-guess-mime-type を暗黙的に示します。 ダウンロード時に返されます。
 
 **--decompress** content-encoding が、ファイルが圧縮されていることを示している場合、ダウンロードするときに自動的に圧縮解除します。 サポートされている content-encoding の値は `gzip` と `deflate` です。 ファイル拡張子 `.gz` / `.gzip`、または `.zz` は不要です。ある場合は削除されます。
+
+**--disable-auto-decoding**    既定では false で、Windows 上での無効な文字の自動デコードが有効になります。 `true` に設定すると自動デコードを無効にすることができます。
 
 **--exclude-attributes**  string (Windows のみ) 属性が属性一覧と一致するファイルを除外します。 次に例を示します。A;S;R
 

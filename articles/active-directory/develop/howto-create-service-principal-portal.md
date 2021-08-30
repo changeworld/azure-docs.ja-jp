@@ -8,16 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 06/16/2021
 ms.author: ryanwi
-ms.reviewer: tomfitz
-ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: b772112a238b4af4ff536a98e0a4105e7237c1af
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
+ms.openlocfilehash: b4589f451894e328a27b67ac19be4ea91374bee5
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951950"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579956"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -29,6 +28,7 @@ ms.locfileid: "111951950"
 > サービス プリンシパルを作成する代わりに、アプリケーション ID 用に Azure リソースのマネージド ID を使用することを検討します。 コードが、マネージド ID をサポートするサービス上で実行され、Azure AD 認証をサポートするリソースにアクセスする場合、マネージド ID は優れた選択肢となります。 Azure リソースのマネージド ID の詳細 (どのサービスが現在マネージド ID をサポートしているかなど) については、「[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)」を参照してください。
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>アプリの登録、アプリ オブジェクト、サービス プリンシパル
+
 Azure portal を使用してサービス プリンシパルを直接作成することはできません。  Azure portal 経由でアプリケーションを登録するときに、アプリケーション オブジェクトとサービス プリンシパルは自動的にホーム ディレクトリまたはテナントに作成されます。  アプリの登録、アプリケーション オブジェクト、サービス プリンシパルの関係について詳しくは、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」を参照してください。
 
 ## <a name="permissions-required-for-registering-an-app"></a>アプリの登録に必要なアクセス許可
@@ -105,12 +105,10 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
    探しているサブスクリプションが表示されない場合は、**グローバル サブスクリプション フィルター** を選択します。 必要なサブスクリプションがポータルで選択されていることを確認してください。
 
 1. **[アクセス制御 (IAM)]** を選択します。
-1. **[ロールの割り当ての追加]** を選択します。
-1. アプリケーションに割り当てるロールを選択します。 たとえば、アプリケーションがインスタンスの **再起動**、**開始**、**停止** などのアクションを実行できるようにするには、 **[共同作成者]** ロールを選択します。  [使用可能なロール](../../role-based-access-control/built-in-roles.md)の詳細を参照してください。既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、 **[ロールの割り当ての追加]** ページを開きます。
+1. アプリケーションに割り当てるロールを選択します。 たとえば、アプリケーションがインスタンスの **再起動**、**開始**、**停止** などのアクションを実行できるようにするには、 **[共同作成者]** ロールを選択します。  [使用可能なロール](../../role-based-access-control/built-in-roles.md)の詳細を参照してください。既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。 
 
-   ![アプリケーションに割り当てるロールを選択します。](./media/howto-create-service-principal-portal/select-role.png)
-
-1. **[保存]** を選択して、ロールの割り当てを完了します。 該当のスコープのロールを持つユーザーの一覧に、アプリケーションが表示されます。
+    サブスクリプション スコープでアプリケーションに共同作成者ロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 サービス プリンシパルが設定されました。 それを使用してスクリプトまたはアプリの実行を開始できます。 サービス プリンシパル (アクセス許可、ユーザーが承諾したアクセス許可、承諾したユーザーの参照、アクセス許可の確認、サインイン情報の参照など) を管理するには、**エンタープライズ アプリケーション** に移動します。
 

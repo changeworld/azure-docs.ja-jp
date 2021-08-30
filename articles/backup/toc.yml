@@ -360,6 +360,8 @@
               href: backup-mabs-system-state-and-bmr.md
             - name: バックアップ前およびバックアップ後スクリプトの使用
               href: pre-backup-post-backup-scripts.md
+            - name: MABS でのファイル データのバックアップ
+              href: back-up-file-data.md
         - name: Azure Backup Server からデータを回復する
           href: backup-azure-alternate-dpm-server.md
         - name: Azure Backup Server を使用して VMware VM を復元する
@@ -491,7 +493,11 @@
         - name: ハイブリッド バックアップのセキュリティ
           href: backup-azure-security-feature.md
         - name: プライベート エンドポイント
-          href: private-endpoints.md
+          items:
+            - name: 概要
+              href: private-endpoints-overview.md
+            - name: 作成および使用
+              href: private-endpoints.md
         - name: Azure Backup での暗号化
           href: backup-encryption.md
         - name: カスタマー マネージド キーを使用した暗号化
@@ -539,10 +545,16 @@
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
       href: /cli/azure/backup
+    - name: Azure Dataprotection - CLI
+      href: /cli/azure/dataprotection?view=azure-cli-latest&preserve-view=true
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
+    - name: Azure Dataprotection - PowerShell
+      href: /powershell/module/az.dataprotection/?view=azps-6.1.0&preserve-view=true
     - name: PowerShell – Azure Backup エージェント
       href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
+    - name: REST - Azure Dataprotection
+      href: /rest/api/dataprotection/
     - name: REST - Backup
       href: /rest/api/backup/
     - name: REST - Recovery Services コンテナー

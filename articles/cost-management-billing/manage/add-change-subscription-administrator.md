@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 06/27/2021
 ms.author: banders
-ms.openlocfilehash: 10956953f9ab3a9e32b9da4ab8a3501d38b0e2c3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b4bd2615dd99145bd75fd7c1095056961d3b2d80
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369660"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988357"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
@@ -44,29 +44,12 @@ Microsoft では、Azure RBAC を使用してリソースへのアクセスを�
 
 ### <a name="to-assign-a-user-as-an-administrator"></a>ユーザーを管理者に割り当てるには
 
-1. サブスクリプション所有者として Azure portal にサインインし、[[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開きます。
+- 所有者ロールをサブスクリプション スコープでユーザーに割り当てます。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. アクセス権を付与するサブスクリプションをクリックします。
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
-1. **[アクセス制御 (IAM)]** をクリックします。
-
-1. **[ロールの割り当て]** タブをクリックして、このサブスクリプションのすべてのロールの割り当てを表示します。
-
-    ![ロールの割り当てを示すスクリーンショット](./media/add-change-subscription-administrator/role-assignments.png)
-
-1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、 **[ロールの割り当ての追加]** ウィンドウを開きます。
-
-    ロールを割り当てるためのアクセス許可がない場合、このオプションは無効になります。
-
-1. **[ロール]**  ドロップダウン リストで、 **[所有者]**  ロールを選択します。
-
-1. **[選択]** 一覧で、ユーザーを選択します。 一覧にユーザーが表示されない場合には、 **[選択]**  ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。
-
-    ![選択された所有者ロールを示すスクリーンショット](./media/add-change-subscription-administrator/add-role.png)
-
-1. **[保存]** をクリックしてロールを割り当てます。
-
-    しばらくすると、サブスクリプション スコープで、ユーザーに所有者のロールが割り当てられます。
+お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -74,7 +57,3 @@ Microsoft では、Azure RBAC を使用してリソースへのアクセスを�
 * [Azure での各種ロールについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory での管理者ロールのアクセス許可](../../active-directory/roles/permissions-reference.md)
-
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
-
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

@@ -10,12 +10,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 11/05/2020
-  ms.openlocfilehash: 654684ac09a2ea3a11648559bff9ab9dfb556847
-  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+  ms.openlocfilehash: b432bbee09865ae89aabc281f514ec6330fbd42d
+  ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104599971"
+  ms.lasthandoff: 08/23/2021
+  ms.locfileid: "122697044"
 landingContent:
 - title: 最新の機能
   linkLists:
@@ -28,7 +28,9 @@ landingContent:
     - text: 近接通信配置グループ
       url: co-location.md
     - text: Virtual Machine Scale Sets のオーケストレーション モード
-      url: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md
+      url: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+    - text: 仮想マシン スケール セットのフレキシブル オーケストレーション
+      url: flexible-virtual-machine-scale-sets.md
 - title: Linux のクイックスタート
   linkLists:
   - linkListType: quickstart
@@ -85,3 +87,5 @@ landingContent:
       url: https://azure.microsoft.com/pricing/details/#Linux
     - text: リージョン別の提供状況
       url: https://azure.microsoft.com/regions/services/
+    - text: 仮想マシン セレクター ツール
+      url: https://aka.ms/vm-selector

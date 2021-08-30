@@ -213,7 +213,13 @@
         - name: イベンド ハンドラーへのイベント配信の認証
           href: security-authentication.md
         - name: 発行クライアントの認証
-          href: security-authenticate-publishing-clients.md
+          items:
+            - name: 概要
+              href: authentication-overview.md
+            - name: Azure Active Directory を使用して認証する
+              href: authenticate-with-active-directory.md
+            - name: アクセス キーまたは Shared Access Signature を使用した認証
+              href: authenticate-with-access-keys-shared-access-signatures.md
         - name: Event Grid リソースへのアクセスの承認
           href: security-authorization.md
         - name: ネットワークのセキュリティ
@@ -246,7 +252,7 @@
           href: auth0-how-to.md
     - name: トピックまたはドメインのアクセス キーを取得する
       href: get-access-keys.md
-    - name: カスタム トピックへの投稿
+    - name: アクセス キーを使用したカスタム トピックへの投稿
       href: post-to-custom-topic.md
     - name: HTTP エンドポイントでのイベントの受信
       href: receive-events.md

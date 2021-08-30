@@ -3,12 +3,12 @@ title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 30b45394ea620d05a89c3b2fd747573f1ea8017d
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: a884edd23fa1538fcc2b00c80190eab6699e1e47
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205001"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414487"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -25,9 +25,21 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 各関数アプリには、1 つの着信 IP アドレスがあります。 この IP アドレスを確認するには、次のようにします。
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[設定]** で **[プロパティ]** を選択します。 受信 IP アドレスは **[仮想 IP アドレス]** の下に表示されます。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+ローカル クライアント コンピューターから `nslookup` ユーティリティを使用します。
+
+```command
+nslookup <APP_NAME>.azurewebsites.net
+```
+
+---
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
 
@@ -35,22 +47,25 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 関数アプリで使用可能な送信 IP アドレスを確認するには、次のようにします。
 
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
 1. [Azure Resource Explorer](https://resources.azure.com) にサインインします。
 2. **[サブスクリプション] > {自分のサブスクリプション} > [プロバイダー] > [Microsoft.Web] > [サイト]** を選択します。
 3. JSON パネルで、末尾が関数アプリ名の `id` プロパティを持つサイトを探します。
 4. `outboundIpAddresses` と `possibleOutboundIpAddresses` を参照してください。 
 
-現在、関数アプリでは、`outboundIpAddresses` のセットを使用できます。 `possibleOutboundIpAddresses` のセットには、関数アプリが[他の価格レベルにスケーリングする](#outbound-ip-address-changes)場合にのみ使用できる IP アドレスが含まれています。
-
-次に示すように、[Cloud Shell](../cloud-shell/quickstart.md) を使用して、使用可能な送信 IP アドレスを確認する方法もあります。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
-az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
-az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
+az functionapp show --resource-group <GROUP_NAME> --name <APP_NAME> --query outboundIpAddresses --output tsv
+az functionapp show --resource-group <GROUP_NAME> --name <APP_NAME> --query possibleOutboundIpAddresses --output tsv
 ```
+---
+
+現在、関数アプリでは、`outboundIpAddresses` のセットを使用できます。 `possibleOutboundIpAddresses` のセットには、関数アプリが[他の価格レベルにスケーリングする](#outbound-ip-address-changes)場合にのみ使用できる IP アドレスが含まれています。
 
 > [!NOTE]
-> [従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行されている関数アプリをスケーリングすると、新しい送信 IP アドレスの範囲が割り当てられる場合があります。 これらのいずれかのプランで実行する場合は、データ センター全体を許可リストに追加することが必要になる可能性があります。
+> [従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行されている関数アプリをスケーリングすると、新しい送信 IP アドレスの範囲が割り当てられる場合があります。 これらのプランで実行する場合、報告された送信 IP アドレスを使用して、確定的な許可リストを作成することはできません。 動的スケーリング中に使用される可能性のあるすべての送信アドレスを含めるには、データ センター全体を許可リストに追加する必要があります。
 
 ## <a name="data-center-outbound-ip-addresses"></a>データ センターの送信 IP アドレス
 
@@ -98,7 +113,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 自動スケールの動作により、送信 IP は、[従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行しているときにいつでも変更できます。 
 
-許可リストに追加する必要がある場合など、関数アプリの送信 IP アドレスを制御する必要がある場合は、Premium プランに[仮想ネットワーク NAT ゲートウェイ](#virtual-network-nat-gateway-for-outbound-static-ip)を実装することを検討してください。
+許可リストに追加する必要がある場合など、関数アプリの送信 IP アドレスを制御する必要がある場合は、Premium ホスティング プランでの実行中に[仮想ネットワーク NAT ゲートウェイ](#virtual-network-nat-gateway-for-outbound-static-ip)を実装することを検討してください。 これは、Dedicated (App Service) プランで実行しても行えます。
 
 ### <a name="dedicated-plans"></a>専用プラン
 
@@ -127,7 +142,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>送信の静的な IP 用の仮想ネットワーク NAT ゲートウェイ
 
-仮想ネットワーク NAT ゲートウェイを使用して、静的パブリック IP アドレス経由でトラフィックを送信することで、関数からの送信トラフィックの IP アドレスを制御できます。 このトポロジは、[Premium プラン](functions-premium-plan.md)で実行する場合に使用できます。 詳しくは、「[チュートリアル: Azure 仮想ネットワーク NAT ゲートウェイを使用して Azure Functions の送信 IP を制御する](functions-how-to-use-nat-gateway.md)」を参照してください。
+仮想ネットワーク NAT ゲートウェイを使用して、静的パブリック IP アドレス経由でトラフィックを送信することで、関数からの送信トラフィックの IP アドレスを制御できます。 このトポロジは、[Premium プラン](functions-premium-plan.md)または [Dedicated (App Service) プラン](dedicated-plan.md)で実行する場合に使用できます。 詳しくは、「[チュートリアル: Azure 仮想ネットワーク NAT ゲートウェイを使用して Azure Functions の送信 IP を制御する](functions-how-to-use-nat-gateway.md)」を参照してください。
 
 ### <a name="app-service-environments"></a>App Service Environment
 
@@ -135,16 +150,20 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
 
+# <a name="azure-porta"></a>[Azure Portal](#tab/portal)
+
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
 4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。
- 
-別の方法として、[Cloud Shell](../cloud-shell/quickstart.md) を使用することもできます。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
+
+---
 
 App Service 環境 `sku` は `Isolated` です。
 

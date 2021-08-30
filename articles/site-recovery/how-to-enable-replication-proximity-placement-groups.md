@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 4c37aab00f838de24e96e6f509ae8484df2c6715
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: abcb233665d6c6074ff50d1bb53e553ed9eb99ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904966"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741964"
 ---
 # <a name="replicate-virtual-machines-running-in-a-proximity-placement-group-to-another-region"></a>近接配置グループで実行されている仮想マシンを別のリージョンにレプリケートする
 
@@ -28,7 +28,7 @@ Site Recovery を使用すると、Azure リージョンから別のリージョ
 
 ## <a name="considerations"></a>考慮事項
 
-- ベスト エフォートは、仮想マシンを近接配置グループにフェールオーバーおよびフェールバックすることです。 近接配置グループ内の VM を起動できない場合、フェールオーバーとフェールバックは行われますが、VM は近接配置グループの外部に作成されます。
+- ベスト エフォートは、仮想マシンを近接配置グループにフェールオーバーおよびフェールバックすることです。 容量割り当ての制約があるために近接配置グループ内の VM を起動できない場合、フェールオーバーとフェールバックは実行されますが、VM は近接配置グループの外に作成されます。
 - 近接配置グループに可用性セットが固定されていて、かつフェールオーバーまたはフェールバックの際に可用性セット内の VM に割り当て制約がある場合は、可用性セットと近接配置グループの両方の外部に VM が作成されます。
 - アンマネージド ディスクでは、近接配置グループでの Site Recovery がサポートされません。
 

@@ -116,7 +116,7 @@
       href: overview-arc-integration.md
     - name: セキュリティ
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -129,22 +129,24 @@
           href: ./security-controls-policy.md
         - name: セキュリティの概要
           href: overview-security.md
-    - name: ネットワーク機能
+    - name: ネットワーク
       items:
         - name: 概要
           href: networking-features.md
-        - name: Application Gateway とサービス エンドポイントの併用
-          href: networking/app-gateway-with-service-endpoints.md
+        - name: 受信 IP と送信 IP
+          href: overview-inbound-outbound-ips.md
         - name: プライベート エンドポイント
           href: networking/private-endpoint.md
-    - name: 受信 IP と送信 IP
-      href: overview-inbound-outbound-ips.md
-    - name: Virtual Network 統合
-      href: web-sites-integrate-with-vnet.md
-    - name: Hybrid Connections (ハイブリッド接続)
-      href: app-service-hybrid-connections.md
-    - name: Traffic Manager 統合
-      href: web-sites-traffic-manager.md
+        - name: Hybrid Connections (ハイブリッド接続)
+          href: app-service-hybrid-connections.md
+        - name: Virtual Network 統合
+          href: web-sites-integrate-with-vnet.md
+        - name: Application Gateway の統合
+          href: networking/app-gateway-with-service-endpoints.md
+        - name: NAT ゲートウェイの統合
+          href: networking/nat-gateway-integration.md
+        - name: Traffic Manager 統合
+          href: web-sites-traffic-manager.md
     - name: ローカル キャッシュ
       href: overview-local-cache.md
     - name: 診断

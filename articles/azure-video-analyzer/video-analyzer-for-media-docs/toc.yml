@@ -4,6 +4,8 @@
   items:
     - name: Video Analyzer for Media とは
       href: video-indexer-overview.md
+    - name: Video Analyzer について
+      href: ../video-analyzer-docs/overview.md
 - name: クイックスタート
   expanded: true
   items:

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 08d2e50df2365c327d16d3232fd3edc0544e3ffd
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 814bd3d143be5eb295fe8e354537de8fc1d2934b
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745801"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005937"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -83,14 +83,15 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 "gpu_index": 0,
 "do_calibration": true,
 "enable_recalibration": true,
-"calibration_quality_check_frequency_seconds":86400,
+"calibration_quality_check_frequency_seconds": 86400,
 "calibration_quality_check_sample_collect_frequency_seconds": 300,
-"calibration_quality_check_one_round_sample_collect_num":10,
-"calibration_quality_check_queue_max_size":1000
+"calibration_quality_check_one_round_sample_collect_num": 10,
+"calibration_quality_check_queue_max_size": 1000,
+"calibration_event_frequency_seconds": -1
 }
 ```
 
-| 名前 | 種類| 説明|
+| 名前 | 型| 説明|
 |---------|---------|---------|
 | `gpu_index` | string| この操作が実行される GPU インデックス。|
 | `do_calibration` | string | 調整がオンになっていることを示します。 **cognitiveservices.vision.spatialanalysis-persondistance** が正しく機能するには、`do_calibration` が true である必要があります。 do_calibration は、既定では True に設定されています。 |
@@ -99,9 +100,100 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `calibration_quality_check_sample_collect_frequency_seconds` | INT | 再調整と品質チェックのために新しいデータ サンプルを収集する間の最小秒数。 既定値は `300` (5 分間) です。 `enable_recalibration=True` の場合のみ使用されます。|
 | `calibration_quality_check_one_round_sample_collect_num` | INT | サンプル コレクションのラウンドごとに収集する新しいデータ サンプルの最小数。 既定値は `10` です。 `enable_recalibration=True` の場合のみ使用されます。|
 | `calibration_quality_check_queue_max_size` | INT | カメラ モデルの調整時に格納するデータ サンプルの最大数。 既定値は `1000` です。 `enable_recalibration=True` の場合のみ使用されます。|
+| `calibration_event_frequency_seconds` | INT | カメラ調整イベントの出力頻度 (秒)。 値が `-1` の場合、カメラの調整情報が変更されない限り、カメラの調整は送信されません。 既定値は `-1` です。|
 | `enable_breakpad`| [bool] | デバッグ用のクラッシュ ダンプを生成するために使用される breakpad を有効にするかどうかを示します。 既定値は `false` です。 `true` に設定した場合は、コンテナー `createOptions` の `HostConfig` 部分に `"CapAdd": ["SYS_PTRACE"]` も追加する必要があります。 既定では、クラッシュ ダンプは [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter アプリにアップロードされます。クラッシュ ダンプを独自の AppCenter アプリにアップロードする場合は、環境変数 `RTPT_APPCENTER_APP_SECRET` をアプリのアプリ シークレットでオーバーライドできます。
 | `enable_orientation` | bool | 検出された人の向きを計算するかどうかを示します。 `enable_orientation` は既定で False に設定されます。 |
 
+
+### <a name="camera-calibration-output"></a>カメラ調整の出力
+これは、カメラ調整 (有効な場合) からの出力例です。 省略記号は、リスト内に同じタイプのオブジェクトがさらにあることを示しています。
+```
+{
+  "type": "cameraCalibrationEvent",
+  "sourceInfo": {
+    "id": "camera1",
+    "timestamp": "2021-04-20T21:15:59.100Z",
+    "width": 640,
+    "height": 360,
+    "frameId": 531,
+    "cameraCalibrationInfo": {
+      "status": "Calibrated",
+      "cameraHeight": 13.294151306152344,
+      "focalLength": 372.0000305175781,
+      "tiltupAngle": 0.9581864476203918,
+      "lastCalibratedTime": "2021-04-20T21:15:59.058"
+    }
+  },
+  "zonePlacementInfo": {
+    "optimalZoneRegion": {
+      "type": "POLYGON",
+       "points": [
+        {
+          "x": 0.8403755868544601,
+          "y": 0.5515320334261838
+        },
+        {
+          "x": 0.15805946791862285,
+          "y": 0.5487465181058496
+        },
+        ...
+      ],
+      "name": "optimal_zone_region"
+    },
+    "fairZoneRegion": {
+      "type": "POLYGON",
+      "points": [
+        {
+          "x": 0.7871674491392802,
+          "y": 0.7437325905292479
+        },
+        {
+          "x": 0.22065727699530516,
+          "y": 0.7325905292479109
+        },
+        ...
+      ],
+      "name": "fair_zone_region"
+    },
+    "uniformlySpacedPersonBoundingBoxes": [
+      {
+        "type": "RECTANGLE",
+        "points": [
+          {
+            "x": 0.0297339593114241,
+            "y": 0.0807799442896936
+          },
+          {
+            "x": 0.10015649452269171,
+            "y": 0.2757660167130919
+          }
+        ]
+      },
+      ...
+    ],
+    "personBoundingBoxGroundPoints": [
+      {
+        "x": -22.944068908691406,
+        "y": 31.487680435180664
+      },
+      ...
+    ]
+  }
+}
+```
+
+`source_info` の詳細については、[空間分析操作の出力](#spatial-analysis-operation-output)をご覧ください。
+
+| ZonePlacementInfo のフィールド名 | 型| 説明|
+|---------|---------|---------|
+| `optimalZonePolygon` | object| 操作の実線またはゾーンを配置して最適な結果を得られるカメラ画像内の多角形。 <br/> 各値のペアは、多角形の頂点の x、y を表します。 多角形は、人の追跡または人数のカウントを行う領域を表します。多角形ポイントは、正規化された座標 (0-1) に基づいています。左上隅が (0.0, 0.0)、右下隅が (1.0, 1.0) になります。|
+| `fairZonePolygon` | object| 操作の実線またはゾーンを配置して良い結果を得られるが、最適な結果は得られない可能性のあるカメラ画像内の多角形。 <br/> 内容の詳細な説明については、上記の `optimalZonePolygon` を参照してください。 |
+| `uniformlySpacedPersonBoundingBoxes` | list | 実際の空間で均一に分散されたカメラ画像内の人の境界ボックスのリスト。 値は、正規化された座標 (0-1) に基づいています。|
+| `personBoundingBoxGroundPoints` | list | カメラに相対するフロア平面上の座標の一覧。 各座標は、同じインデックスを持つ `uniformlySpacedPersonBoundingBoxes` の境界ボックスの右下に対応します。 <br/> フロア平面上の座標を計算する方法について詳しくは、[cognitiveservices.vision.spatialanalysis-persondistance の AI 分析情報の JSON 形式](#json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights)セクションの `centerGroundPoint` フィールドを参照してください。 |
+
+ビデオ フレームで視覚化されたゾーン配置情報の出力例: ![ゾーン配置情報の視覚化](./media/spatial-analysis/zone-placement-info-visualization.png)
+
+ゾーンの配置情報には構成に関する提案が示されていますが、最適な結果を得るには、[カメラ構成](#camera-configuration)のガイドラインに従う必要があります。
 
 ### <a name="speed-parameter-settings"></a>速度パラメーターの設定
 トラッカー ノードのパラメーター設定を使用して、速度計算を構成できます。
@@ -110,7 +202,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 "enable_speed": true,
 }
 ```
-| Name | 種類| 説明|
+| Name | 型| 説明|
 |---------|---------|---------|
 | `enable_speed` | bool | 検出された人の速度を計算するかどうかを示します。 `enable_speed` は既定で false に設定されます。 速度と向きの両方に最適な推定値を設定することを強くお勧めします。 |
 
@@ -136,7 +228,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 種類| 説明|
+| 名前 | 型| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -181,7 +273,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 種類| 説明|
+| 名前 | 型| 説明|
 |---------|---------|---------|
 | `lines` | list| ラインのリスト。|
 | `name` | string| このラインのフレンドリ名。|
@@ -227,7 +319,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 種類| 説明|
+| 名前 | 型| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -263,7 +355,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 種類| 説明|
+| 名前 | 型| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -1068,7 +1160,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
       }
   }
   ```
-| 名前 | 種類| 説明|
+| 名前 | 型| 説明|
 |---------|---------|---------|
 | `batch_size` | INT | すべてのカメラの解像度が同じ場合は、`batch_size` をその操作で使用されるカメラの数に設定します。それ以外の場合は、`batch_size` を 1 に設定するか、既定値 (1) のままにします。これは、バッチがサポートされないことを示します。 |
 

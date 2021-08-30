@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: dbd4e9c6e8a58738ac0a8db6c64133301d1aebe5
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 2baf8c99161d000b92aa10f02a26018bdb7264f4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950588"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093879"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -89,21 +89,30 @@ Storage Explorer を使用するために必要なアクセス許可を提供で
 > [!NOTE]
 > アカウントキーへのアクセスは、所有者、共同作成者、ストレージ アカウント共同作成者の各ロールによって許可されます。
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー:証明書チェーンの自己署名証明書 (および同様のエラー)
+## <a name="ssl-certificate-issues"></a>SSL 証明書の問題
 
-証明書のエラーは、通常、次のいずれかの状況で発生します。
+### <a name="understanding-ssl-certificate-issues"></a>SSL 証明書の問題を把握する
 
-- アプリは "_透過プロキシ_" 経由で接続されます。 つまり、サーバー (会社のサーバーなど) は HTTPS トラフィックを傍受し、暗号化を解除した後、自己署名証明書を使用して暗号化します。
-- 受信した HTTPS メッセージに自己署名 TLS/SSL 証明書を挿入するアプリケーションを実行しています。 証明書を挿入するアプリケーションの例としては、ウイルス対策およびネットワーク トラフィック検査ソフトウェアなどがあります。
+先に進む前に、Storage Explorer のネットワークに関するドキュメントの[「SSL 証明書」セクション](./storage-explorer-network.md#ssl-certificates)をお読みください。
 
-Storage Explorer は自己署名証明書または信頼されない証明書が表示されると、受信した HTTPS メッセージが変更されているかどうかを認識できなくなります。 自己署名証明書のコピーがある場合は、次の手順に従って、それを信頼するように Storage Explorer に指示できます。
+### <a name="use-system-proxy"></a>システム プロキシを使用する
+
+**[システム プロキシを使用する]** 設定をサポートする機能のみを使用している場合は、その設定を使用してみてください。 **システム プロキシ** 設定について詳しくは、[こちら](./storage-explorer-network.md#use-system-proxy-preview)を参照してください。
+
+### <a name="importing-ssl-certificates"></a>SSL 証明書をインポートする
+
+自己署名証明書のコピーがある場合は、次の手順に従って、それを信頼するように Storage Explorer に指示できます。
 
 1. Base-64 でエンコードされた X.509 (.cer) 証明書のコピーを取得します。
 2. **[編集]**  >  **[SSL 証明書]**  >  **[証明書のインポート]** の順に移動し、ファイル ピッカーを使用して .cer ファイルを検索し、選択して開きます。
 
-この問題は、複数の証明書 (ルートと中間) がある場合にも発生することがあります。 エラーを解決するには、両方の証明書を追加する必要があります。
+この問題は、複数の証明書 (ルートと中間) がある場合にも発生することがあります。 このエラーを解決するには、すべての証明書をインポートする必要があります。
 
-証明書の発行元がわからない場合は、次の手順に従って確認します。
+### <a name="finding-ssl-certificates"></a>SSL 証明書を見つける
+
+自己署名証明書のコピーをお持ちでない場合は、IT 管理者に問い合わせてください。
+
+自分で見つけるには、次の手順を試してください。
 
 1. OpenSSL をインストールします。
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html):任意の Light バージョンで十分です。
@@ -111,18 +120,20 @@ Storage Explorer は自己署名証明書または信頼されない証明書が
 2. OpenSSL を実行します。
     * Windows: インストール ディレクトリを開き、 **/bin/** を選択し、**openssl.exe** をダブルクリックします。
     * Mac と Linux:ターミナルから `openssl` を実行します。
-3. `s_client -showcerts -connect microsoft.com:443` を実行します。
-4. 自己署名証明書を検索します。 どの証明書が自己署名かわからない場合は、Subject (発行先) `("s:")` と Issuer (発行元) `("i:")` が同じであるものをすべてメモします。
+3. ストレージ リソースがある Microsoft または Azure ホスト名を対象に、`s_client -showcerts -connect <hostname>:443` コマンドを実行します。 Storage Explorer によって頻繁にアクセスされる一連のホスト名がここで見つかります。
+4. 自己署名証明書を検索します。 サブジェクト `("s:")` と発行者 `("i:")` が同じである場合、まず間違いなく証明書は自己署名されています。
 5. 自己署名証明書が見つかったら、証明書ごとに、`-----BEGIN CERTIFICATE-----` から `-----END CERTIFICATE-----` までのすべての内容をコピーして、新しい .cer ファイルに貼り付けます。
 6. Storage Explorer を開いて、 **[編集]**  >  **[SSL 証明書]**  >  **[証明書のインポート]** の順に移動します。 次に、ファイル ピッカーを使用して、作成した .cer ファイルを検索し、選択して開きます。
 
-この手順で自己署名証明書が見つからない場合は、フィードバック ツールを使用して Microsoft にご連絡ください。 また、`--ignore-certificate-errors` フラグを使用して、コマンド ラインから Storage Explorer を開くこともできます。 このフラグを指定して開くと、Storage Explorer は証明書のエラーを無視します。
+### <a name="disabling-ssl-certificate-validation"></a>SSL 証明書の検証を無効にする
+
+この手順で自己署名証明書が見つからない場合は、フィードバック ツールを使用して Microsoft にご連絡ください。 また、`--ignore-certificate-errors` フラグを使用して、コマンド ラインから Storage Explorer を開くこともできます。 このフラグを指定して開くと、Storage Explorer は証明書のエラーを無視します。 **このフラグは推奨されません。**
 
 ## <a name="sign-in-issues"></a>サインインの問題
 
 ### <a name="understanding-sign-in"></a>サインインについて
 
-[Storage Explorer へのサインイン](./storage-explorer-sign-in.md)に関するドキュメントをお読みください。
+先に進む前に、[Storage Explorer へのサインイン](./storage-explorer-sign-in.md)に関するドキュメントをお読みください。
 
 ### <a name="frequently-having-to-reenter-credentials"></a>資格情報を頻繁に再入力する必要がある
 
@@ -148,7 +159,7 @@ Web ブラウザーで Storage Explorer によってサインインが行われ�
 
 ### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>トークンを取得できず、テナントがフィルターで除外されている
 
-テナントがフィルターで除外されているためにトークンを取得できないというエラー メッセージが表示された場合は、フィルターで除外したテナント内のリソースにアクセスしようとしていることを意味します。テナントをフィルターから解除するには、 **[アカウント パネル]** に移動して、エラーに指定されたテナントのチェックボックスがオンになっていることを確認します。 Storage Explorer でのテナントのフィルター処理の詳細については、[アカウントの管理](./storage-explorer-sign-in.md#managing-accounts)に関するページを参照してください。
+テナントがフィルターで除外されているためにトークンを取得できないというエラー メッセージが表示された場合は、フィルターで除外したテナント内のリソースにアクセスしようとしていることを意味します。テナントをフィルターから解除するには、 **[アカウント パネル]** に移動して、エラーに指定されたテナントのチェック ボックスがオンになっていることを確認します。 Storage Explorer でのテナントのフィルター処理の詳細については、[アカウントの管理](./storage-explorer-sign-in.md#managing-accounts)に関するページを参照してください。
 
 ### <a name="authentication-library-failed-to-start-properly"></a>認証ライブラリを正常に開始できない
 

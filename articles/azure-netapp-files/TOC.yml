@@ -75,7 +75,7 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: 電子設計自動化に Azure NetApp Files を使用するメリット
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
-            - name: Windows Virtual Desktop での Azure NetApp Files 利用のメリット
+            - name: Azure Virtual Desktop での Azure NetApp Files 利用のメリット
               href: solutions-windows-virtual-desktop.md
             - name: SQL Server のデプロイに Azure NetApp Files を使用する利点
               href: solutions-benefits-azure-netapp-files-sql-server.md
@@ -119,8 +119,8 @@
       items:
         - name: SMB ボリュームを作成する
           href: azure-netapp-files-create-volumes-smb.md
-        - name: 既存の SMB ボリュームを変換して継続的可用性を使用する
-          href: convert-smb-continuous-availability.md
+        - name: 既存の SMB ボリュームで継続的可用性を有効にする
+          href: enable-continuous-availability-existing-SMB.md
     - name: デュアルプロトコル ボリュームを作成する
       href: create-volumes-dual-protocol.md
     - name: TLS 経由の ADDS LDAP を構成する
@@ -129,6 +129,8 @@
       href: azure-netapp-files-configure-export-policy.md
     - name: ボリュームをマウントまたはマウント解除する
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+    - name: Unix のアクセス許可を構成して所有権モードを変更する
+      href: configure-unix-permissions-change-ownership-mode.md
     - name: スナップショットを管理する
       href: azure-netapp-files-manage-snapshots.md
     - name: 容量プールまたはボリュームをサイズ変更する

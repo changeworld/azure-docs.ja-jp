@@ -88,8 +88,12 @@
               href: container-registry-import-images.md
             - name: 成果物の転送 (プレビュー)
               href: container-registry-transfer-images.md
-            - name: コンテナー イメージのロック
-              href: container-registry-image-lock.md
+            - name: レジストリ データの保護
+              items:
+                - name: コンテナー イメージのロック
+                  href: container-registry-image-lock.md
+                - name: エクスポートの無効化
+                  href: data-loss-prevention.md
             - name: コンテナー イメージの削除
               items:
                 - name: イメージ データの削除 - CLI

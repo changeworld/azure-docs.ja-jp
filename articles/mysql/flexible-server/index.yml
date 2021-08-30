@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/21/2020
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 6ffbc8d8d5813ef428ce8dbff2ebb53e9f4617e1
-  ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+  ms.openlocfilehash: 0d209c2b875b8ff1b22a4fe65098fc3fd076bde3
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/19/2021
-  ms.locfileid: "112380412"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122777538"
 landingContent:
 - title: フレキシブル サーバー (プレビュー) について
   linkLists:
@@ -21,6 +21,8 @@ landingContent:
     links:
     - text: フレキシブル サーバーとは
       url: overview.md
+    - text: フレキシブル サーバーを無料で試す
+      url: how-to-deploy-on-azure-free-account.md
   - linkListType: quickstart
     links:
     - text: フレキシブル サーバーを作成する
@@ -41,7 +43,9 @@ landingContent:
       url: concepts-compute-storage.md
     - text: MySQL のバージョン
       url: ./../concepts-supported-versions.md
-    - text: ネットワーキング
+    - text: サーバーの復元
+      url: how-to-restore-server-portal.md
+    - text: ネットワークと接続性
       url: concepts-networking.md
     - text: Monitor
       url: concepts-monitoring.md
@@ -71,6 +75,22 @@ landingContent:
     links:
     - text: サーバーの復元
       url: how-to-restore-server-portal.md
+- title: ネットワークと接続性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ネットワーク
+      url: concepts-networking.md
+    - text: プライベート アクセス
+      url: concepts-networking-vnet.md
+    - text: パブリック アクセス
+      url: concepts-networking-public.md
+  - linkListType: how-to-guide
+    links:
+    - text: プライベート アクセスを構成する
+      url: how-to-manage-virtual-network-portal.md
+    - text: パブリック アクセスを構成する
+      url: how-to-manage-firewall-portal.md
 - title: 接続する
   linkLists:
   - linkListType: quickstart

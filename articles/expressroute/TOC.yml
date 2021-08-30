@@ -144,16 +144,16 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: 監視
       items:
-        - name: ネットワークの分析情報
-          href: expressroute-network-insights.md
-        - name: ExpressRoute の監視、メトリック、およびアラート
-          href: expressroute-monitoring-metrics-alerts.md
         - name: ExpressRoute の監視
           href: monitor-expressroute.md
+        - name: ネットワークの分析情報
+          href: expressroute-network-insights.md
+        - name: ExpressRoute の接続モニターの構成
+          href: how-to-configure-connection-monitor.md
+        - name: ExpressRoute の監視、メトリック、およびアラート
+          href: expressroute-monitoring-metrics-alerts.md
         - name: メンテナンス アラートを表示および構成する
           href: maintenance-alerts.md
-        - name: ExpressRoute に使用する Network Performance Monitor の構成
-          href: how-to-npm.md
         - name: カスタム アラートを構成して、アドバタイズされるルートを監視する
           href: how-to-custom-route-alert.md
     - name: ピアリングの管理
@@ -296,3 +296,5 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: パブリック ピアリングの作成と変更
           href: about-public-peering.md
+        - name: ExpressRoute に使用する Network Performance Monitor の構成 (非推奨)
+          href: how-to-npm.md

@@ -13,32 +13,34 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 06/11/2021
+ms.date: 07/09/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c29b631d3002f0c79fb2dd1b1f26dfa65051368c
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 482008cf163d7b85e049b6494e048a8a2f04d6e2
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018967"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287602"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+この記事の手順に従って、Azure Active Directory (Azure AD) のログを Azure Monitor に統合します。
 
-Azure Monitor ログを使用すると、データのクエリを行って、特定のイベントを検索し、傾向を分析して、さまざまなデータ ソース間の相関を実行できます。 Azure Monitor ログに Azure AD アクティビティ ログを統合すると、次のようなタスクを実行できます。
+Azure Monitor ログに Azure AD アクティビティ ログを統合すると、次のようなタスクを実行できます。
 
- * Azure Security Center によって公開されたセキュリティ ログに対して Azure AD のサインイン ログを比較します
+ * Azure Security Center によって公開されたセキュリティ ログに対して Azure AD のサインイン ログを比較します。
+  
+ * Azure Application Insights からのアプリケーション パフォーマンス データを相関させることによって、アプリケーションのサインイン ページでのパフォーマンス ボトルネックのトラブルシューティングを行います。
 
- * Azure Application Insights からのアプリケーション パフォーマンス データを相関させることによって、アプリケーションのサインイン ページでのパフォーマンス ボトルネックのトラブルシューティングを行います。  
+ * Identity Protection の危険なユーザーとリスク検出ログを分析して、環境内の脅威を見つけます (パブリック プレビュー)
+ 
+ * 認証に Active Directory 認証ライブラリ (ADAL) を使用するアプリケーションからサインインを識別します。 [ADAL は、サポート終了間近です](../develop/msal-migration.md)。
 
-Ignite セッションの次のビデオでは、実用的なユーザー シナリオで Azure AD ログに対して Azure Monitor ログを使用する利点が実演されています。
+この Microsoft Ignite セッション ビデオには、実用的なシナリオで Azure AD に Azure Monitor ログを使用する利点が示されています。
 
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
-
-この記事では、Azure Active Directory (Azure AD) のログを Azure Monitor と統合する方法について説明します。
 
 ## <a name="supported-reports"></a>サポートされるレポート
 
@@ -47,10 +49,9 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 * **[監査ログ]** :テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 * **プロビジョニング ログ**:[プロビジョニング ログ](../app-provisioning/application-provisioning-log-analytics.md)を利用することで、サードパーティ製アプリケーションで作成、更新、削除されたユーザーを監視できます。 
+* **危険なユーザー ログ (パブリック プレビュー)** : [危険なユーザー ログ](../identity-protection/howto-identity-protection-investigate-risk.md#risky-users)を使用して、ユーザーのリスク レベルと修復アクティビティにおける変化をモニターできます。 
+* **リスク検出ログ (パブリック プレビュー)** : [リスク検出ログ](../identity-protection/howto-identity-protection-investigate-risk.md#risk-detections)を使用して、ユーザーのリスク検出をモニターし、組織で検出されたリスク アクティビティの傾向を分析できます。 
 
-> [!NOTE]
-> 現時点では、B2C 関連の監査およびサインインのアクティビティ ログはサポートされません。
->
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -79,9 +80,16 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 4. ログ送信先の Log Analytics ワークスペースを選択するか、表示されたダイアログ ボックスで新しいワークスペースを作成します。  
 
-5. 次のいずれかまたは両方を実行します。
+5. 次の一部、またはすべてを実行します。
     * 監査ログを Log Analytics ワークスペースに送信するには、 **[AuditLogs]** チェックボックスをオンにします。 
     * サインイン ログを Log Analytics ワークスペースに送信するには、 **[SignInLogs]** チェックボックスをオンにします。
+    * 非対話型ユーザー サインイン ログを Log Analytics ワークスペースに送信するには、 **[NonInteractiveUserSignInLogs]** チェック ボックスをオンにします。
+    * サービス プリンシパル サインイン ログを Log Analytics ワークスペースに送信するには、 **[ServicePrincipleSignInLogs]** チェック ボックスをオンにします。
+    * マネージド ID のサインイン ログを Log Analytics ワークスペースに送信するには、 **[anagedIdentitySignInLogs]** チェック ボックスをオンにします。
+    * プロビジョニング ログを Log Analytics ワークスペースに送信するには、 **[ProvisioningLogs]** チェック ボックスをオンにします。
+    * Active Directory フェデレーション サービス (ADFS) のサインイン ログを Log Analytics ワークスペースに送信するには、 **[ADFSSignInLogs]** を選択します。
+    * 危険なユーザー ログを Log Analytics ワークスペースに送信するには、 **[RiskyUsers]** チェック ボックスをオンにします。 (パブリック プレビュー)
+    * リスク検出ログを Log Analytics ワークスペースに送信するには、 **[UserRiskEvents]** チェック ボックスをオンにします。 (パブリック プレビュー)
 
 6. **[保存]** を選択して設定を保存します。
 
