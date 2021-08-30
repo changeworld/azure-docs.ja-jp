@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 3ed8a3623163ef5f596508cd7073a68eec3fe297
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6395f88f4841ef5447b8dfef5310fba6e0440e32
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736528"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771456"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -285,14 +285,17 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
     **Azure パブリック リージョン**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     **Azure China リージョン**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     **Azure US Government リージョン**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > カスタム DNS サーバーとして使用できる多くの DNS ソリューションがあるため、ここには DNS サーバーの構成手順は含まれていません。 条件付き転送を適切に構成する方法については、お使いの DNS ソリューションのドキュメントを参照してください。
@@ -415,14 +418,17 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
     **Azure パブリック リージョン**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```     
     
     **Azure China リージョン**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    
+    - ```instances.ml.azure.cn```
+
     **Azure US Government リージョン**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > カスタム DNS サーバーとして使用できる多くの DNS ソリューションがあるため、ここには DNS サーバーの構成手順は含まれていません。 条件付き転送を適切に構成する方法については、お使いの DNS ソリューションのドキュメントを参照してください。
@@ -436,14 +442,17 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
     **Azure パブリック リージョン**:
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     **Azure China リージョン**:
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     **Azure US Government リージョン**:
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > カスタム DNS サーバーとして使用できる多くの DNS ソリューションがあるため、ここには DNS サーバーの構成手順は含まれていません。 条件付き転送を適切に構成する方法については、お使いの DNS ソリューションのドキュメントを参照してください。

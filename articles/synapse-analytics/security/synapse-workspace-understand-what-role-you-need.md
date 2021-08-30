@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 56337e349cf2cfad792cecbec11503a4fd866095
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2d913d0312b75542fa52e73e68170e9a3b91cf5d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253624"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823346"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Synapse で一般的なタスクを実行するために必要なロールについて理解する
 
@@ -76,7 +76,7 @@ SQL プール|
 SQL スクリプトを作成する</br>|Synapse ユーザー、または </br>ワークスペースの Azure 所有者または共同作成者、 </br>"*SQL スクリプトの実行、変更の発行またはコミットを行うには、追加の SQL アクセス許可が必要です*"。|
 発行された SQL スクリプトを一覧表示し、開く| Synapse 成果物ユーザー、成果物発行元、Synapse 共同作成者|artifacts/read
 サーバーレス SQL プールで SQL スクリプトを実行する|プールに対する SQL アクセス許可 (Synapse 管理者に対して自動的に付与される)|なし
-専用 SQL プールで SQL スクリプトを実行する|プールに対する SQL アクセス許可|なし
+専用 SQL プールで SQL スクリプトを実行する|プールに対する SQL アクセス許可 (Synapse 管理者に対して自動的に付与される)|なし
 新しいか、更新または削除された SQL スクリプトを発行する|Synapse 成果物発行元、Synapse 共同作成者|sqlScripts/write、delete
 SQL スクリプトへの変更を Git リポジトリにコミットする|リポジトリに対する Git アクセス許可が必要|
 ワークスペースに Active Directory 管理者を割り当てる (Azure Portal のワークスペースのプロパティを使用)|ワークスペースの Azure 所有者または共同作成者 |

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9163e3dcd30cc5e47ababd929961975ac70cb243
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 45c7f5a8d6e2c227e07765f6147e58242ffe3d6c
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824697"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228910"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -120,7 +120,7 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
     "version": "2.0",
     "extensions": {
         "serviceBus": {
-            "clientRetryOptions":{
+            "retryOptions":{
                 "mode": "exponential",
                 "tryTimeout": "00:01:00",
                 "delay": "00:00:00.80",
