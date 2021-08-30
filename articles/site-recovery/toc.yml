@@ -42,12 +42,20 @@
           href: tutorial-prepare-azure.md
         - name: オンプレミスの VMware を準備する
           href: vmware-azure-tutorial-prepare-on-premises.md
-        - name: レプリケーションを設定する
+    - name: レプリケーションを設定する
+      items:
+        - name: クラシック
           href: vmware-azure-tutorial.md
+        - name: '[プレビュー]'
+          href: vmware-azure-set-up-replication-tutorial-preview.md
         - name: ディザスター リカバリー訓練を実行する
           href: tutorial-dr-drill-azure.md
-        - name: Azure にフェールオーバーする
+    - name: Azure への VMware VM フェールオーバーを実行する
+      items:
+        - name: クラシック
           href: vmware-azure-tutorial-failover-failback.md
+        - name: '[プレビュー]'
+          href: vmware-azure-tutorial-failover-failback-preview.md
     - name: Azure への Azure VMware Solution ディザスター リカバリー
       items:
         - name: Azure を準備する
@@ -122,14 +130,22 @@
           href: vmware-physical-azure-config-process-server-overview.md
         - name: 構成およびプロセス サーバーのサポート要件
           href: vmware-azure-configuration-server-requirements.md
-        - name: VMware から Azure へのアーキテクチャ
+        - name: Azure Site Recovery レプリケーション アプライアンスのデプロイ (プレビュー)
+          href: deploy-vmware-azure-replication-appliance-preview.md
+        - name: レプリケーション アプライアンスの切り替え (プレビュー)
+          href: switch-replication-appliance-preview.md
+    - name: VMware から Azure へのアーキテクチャ
+      items:
+        - name: クラシック
           href: vmware-azure-architecture.md
-        - name: レプリケーションからのディスクの除外について
-          href: exclude-disks-replication.md
-        - name: Azure から VMware へのフェールバック場所のオプション
-          href: concepts-types-of-failback.md
-        - name: VMware のディザスター リカバリー向けのマルチテナント サポート
-          href: vmware-azure-multi-tenant-overview.md
+        - name: '[プレビュー]'
+          href: vmware-azure-architecture-preview.md
+    - name: レプリケーションからのディスクの除外について
+      href: exclude-disks-replication.md
+    - name: Azure から VMware へのフェールバック場所のオプション
+      href: concepts-types-of-failback.md
+    - name: VMware のディザスター リカバリー向けのマルチテナント サポート
+      href: vmware-azure-multi-tenant-overview.md
     - name: Hyper-V VM のディザスター リカバリーについて
       items:
         - name: 一般的な質問
@@ -159,7 +175,11 @@
         - name: Site Recovery でのパブリック IP アドレスの使用
           href: concepts-public-ip-address-with-site-recovery.md
     - name: フェールオーバーとフェールバックについて
-      href: failover-failback-overview.md
+      items:
+        - name: クラシック
+          href: failover-failback-overview.md
+        - name: '[プレビュー]'
+          href: failover-failback-overview-preview.md
     - name: 復旧計画について
       href: recovery-plan-overview.md
     - name: Azure への移行について
@@ -200,6 +220,8 @@
           items:
             - name: Azure から Azure へのレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-replication.md
+            - name: グローバル ディザスター リカバリーを有効にする
+              href: azure-to-azure-enable-global-disaster-recovery.md
             - name: Policy を使用して Azure から Azure へのレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-policy.md
             - name: 暗号化された VM の Azure から Azure へのレプリケーションを有効にする
@@ -310,6 +332,8 @@
           items:
             - name: モビリティ エージェントを管理する
               href: vmware-physical-manage-mobility-service.md
+            - name: モビリティ エージェントをアップグレードする (プレビュー)
+              href: upgrade-mobility-service-preview.md
             - name: VMware 用の構成サーバーの管理
               href: vmware-azure-manage-configuration-server.md
             - name: プロセス サーバーの管理

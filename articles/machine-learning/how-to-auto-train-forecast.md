@@ -8,14 +8,14 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: contperf-fy21q1, automl
+ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
 ms.date: 06/11/2021
-ms.openlocfilehash: d2c4f759f6b2f7ef769148c99dfcbfb738b19f5e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 87ee8e4b5d28628ae09eec83d7f72f44e762e34f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030866"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182291"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Python で時系列予測モデルをトレーニングするために、AutoML を設定する
 
@@ -32,6 +32,7 @@ ms.locfileid: "112030866"
 
 従来の時系列メソッドとは異なり、自動 ML では過去の時系列値が "ピボット" され、他の予測子と共にリグレッサーの追加のディメンションになります。 このアプローチでは、トレーニング中に複数のコンテキスト変数とそれらの相互関係を組み込みます。 複数の要因が予測に影響を与える可能性があるため、この方法は実際の予測シナリオに適しています。 たとえば、売上の予測では、履歴による傾向とのインタラクション、為替レート、および価格のすべてが、売上の結果に貢献します。 
 
+
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、以下が必要です。 
@@ -40,6 +41,7 @@ ms.locfileid: "112030866"
 
 * この記事では、自動化された機械学習実験の設定にある程度精通していることを前提としています。 [チュートリアル](tutorial-auto-train-models.md)または[方法](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の主要な設計パターンについて確認してください。
 
+    [!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 ## <a name="preparing-data"></a>データの準備
 
 自動 ML の予測回帰タスクと回帰タスクの最大の違いは、有効な時系列を表す特徴量がデータに含まれているかどうかです。 通常の時系列には、明確に定義され一貫した頻度があり、連続した期間のすべてのサンプル ポイントで値があります。 
@@ -115,7 +117,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
-AutoML でクロス検証を適用して[モデルのオーバーフィットを防止](concept-manage-ml-pitfalls.md#prevent-over-fitting)する方法について、詳細情報をご覧ください。
+AutoML でクロス検証を適用して[モデルのオーバーフィットを防止](concept-manage-ml-pitfalls.md#prevent-overfitting)する方法について、詳細情報をご覧ください。
 
 ## <a name="configure-experiment"></a>実験を構成する
 
@@ -364,19 +366,28 @@ best_run, fitted_model = local_run.get_output()
 
 最適モデルのイテレーションを使用して、テスト データ セットの値を予測します。
 
-`forecast()` 関数を使用すると、予測を開始するタイミングを指定できます。これは、分類と回帰のタスクに通常使用される `predict()` とは異なります。
+[forecast_quantiles()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#forecast-quantiles-x-values--typing-any--y-values--typing-union-typing-any--nonetype----none--forecast-destination--typing-union-typing-any--nonetype----none--ignore-data-errors--bool---false-----azureml-data-abstract-dataset-abstractdataset) 関数を使用すると、予測を開始するタイミングを指定できます。これは、分類と回帰のタスクに通常使用される `predict()` メソッドとは異なります。 forecast_quantiles () メソッドでは既定で、不確実性の円すいを生じない、ポイント予測または平均/中央値予測が生成されます。 
 
-次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 このケースでは、予測の始まりはトレーニング データの最後になります。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
+次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 このケースでは、予測の始まりはトレーニング データの最後です。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
 
-`forecast()` 関数の `forecast_destination` パラメーターを使用して、指定した日付までの値を予測することもできます。
+`forecast_quantiles()` 関数の `forecast_destination` パラメーターを使用して、指定した日付までの値を予測することもできます。
 
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_model.forecast(
+label_fcst, data_trans = fitted_model.forecast_quantiles(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
+多くの場合、お客様は分布の特定の分位点での予測を把握しようとします。 たとえば、予測を使用して、在庫 (食料品や、クラウド サービスの仮想マシンなど) を制御します。 このような場合、コントロール ポイントは通常、"その品目を在庫として持ち、間違いなく不足にはならないようにしたい" といったことです。 以下は、予測で確認する分位点 (50 や 95 パーセンタイルなど) を指定する方法を示しています。 前述のコード例のように分位点を指定しない場合、50 パーセンタイルの予測のみが生成されます。 
+
+```python
+# specify which quantiles you would like 
+fitted_model.quantiles = [0.05,0.5, 0.9]
+fitted_model.forecast_quantiles(
+    test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+```
+ 
 `actual_labels` の実際の値と `predict_labels` の予測値との二乗平均平方根誤差 (RMSE) を計算します。
 
 ```python
@@ -386,7 +397,8 @@ from math import sqrt
 rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
-
+ 
+ 
 モデル全体の精度は判別しているので、最も現実的な次の手順は、モデルを使用して不明な将来の値を予測することです。 
 
 テスト セット `test_data` と同じ形式ですが将来の日時を使用してデータ セットを提供すると、結果の予測セットは時系列手順ごとに予測された値になります。 データ セット内の最後の時系列レコードは 2018 年 12 月 31 日のものだったとします。 次の日 (または予測する必要のある数の期間、< = `forecast_horizon`) の需要を予測するには、2019 年 1 月 1 日の店舗ごとに 1 つの時系列レコードを作成します。
@@ -397,13 +409,13 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.forecast(test_data)` を実行して将来の値を予測します。
+必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.forecast_quantiles(test_data)` を実行して将来の値を予測します。
 
 > [!NOTE]
 > `target_lags` や `target_rolling_window_size` が有効になっている場合、サンプル内の予測は、自動 ML を使用した予測ではサポートされません。
 
-
 ## <a name="example-notebooks"></a>サンプルの Notebook
+
 次のような高度な予測の構成の詳細なコード例については、[予測サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)を参照してください。
 
 * [休日の検出と特性付け](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
@@ -416,5 +428,4 @@ day_datetime,store,week_of_year
 
 * [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 * [解釈可能性: 自動機械学習のモデルの説明 (プレビュー)](how-to-machine-learning-interpretability-automl.md) について学習する。 
-* [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。
 * 自動機械学習で実験を作成するエンドツーエンドの例は、[回帰モデルのトレーニングのチュートリアル](tutorial-auto-train-models.md)に関する記事をご覧ください。

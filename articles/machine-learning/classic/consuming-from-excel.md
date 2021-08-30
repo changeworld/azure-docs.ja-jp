@@ -9,22 +9,22 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 52fe23315bc6f455460e8e3727d263e14799b186
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: b5394302d3b1028ff6746e9a655028fdb82d9142
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582837"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695021"
 ---
 # <a name="consuming-an-machine-learning-studio-classic-web-service-from-excel"></a>Excel からの Machine Learning スタジオ (クラシック) Web サービスの使用
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 Machine Learning スタジオ (クラシック) では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
 
 Excel 2013 (またはそれ以降) または Excel Online を使用している場合は、Excel の [Excel アドイン](excel-add-in-for-web-services.md)を使用することをお勧めします。
-
-
 
 ## <a name="steps"></a>手順
 Web サービスを発行します。 [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)でその方法を説明しています。 現在、Excel ブック機能は、1 つの出力を持つ要求/応答サービス (つまり 1 つのスコア付けラベル) のみサポートしています。 

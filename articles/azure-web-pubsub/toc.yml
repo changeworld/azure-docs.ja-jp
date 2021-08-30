@@ -1,25 +1,52 @@
 - name: Azure Web PubSub サービスに関するドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Azure Web PubSub サービスについて
       href: overview.md
+    - name: ハブ、グループ、接続について
+      href: key-concepts.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: チャットルーム ライブ デモを試す
-      href: quickstart-live-demo.md
-    - name: 単純なチャットルーム サーバーレス アプリケーションから始める
-      href: quickstart-serverless.md
+    - name: インスタンスを作成する
+      expanded: true
+      items:
+        - name: ポータル
+          href: howto-develop-create-instance.md
+        - name: CLI
+          href: quickstart-cli-create.md
+    - name: インスタンスに接続する
+      expanded: true
+      items:
+        - name: ブラウザーからのパブリッシュ/サブスクライブ
+          href: quickstart-live-demo.md
+        - name: CLI からのパブリッシュ/サブスクライブ
+          href: quickstart-cli-try.md
+        - name: Service SDK を使用したパブリッシュ/サブスクライブ
+          href: quickstart-use-sdk.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: サーバーレス開発
+      expanded: true
+      items:
+        - name: Azure Functions を使用してサーバーレス チャットを構築する
+          href: quickstart-serverless.md
+    - name: メッセージの発行とサブスクライブ
+      href: tutorial-pub-sub-messages.md
+    - name: チャット アプリを構築する
+      href: tutorial-build-chat.md
+    - name: サービスがサポートするサブプロトコルを使用したクライアント ストリーミング
+      href: tutorial-subprotocol.md
+    - name: 認証とアクセス許可
+      href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
 - name: 操作方法ガイド
   expanded: true
   items:
     - name: 開発
       items:
-        - name: インスタンスを作成する
-          href: howto-develop-create-instance.md
-        - name: メッセージの発行とサブスクライブ
-          href: 'https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message'
         - name: サブプロトコルの操作
           href: 'https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols'
         - name: 認証とアクセス許可
@@ -41,23 +68,35 @@
         - name: 診断ログのキャプチャ
           href: howto-troubleshoot-diagnostic-logs.md
 - name: 概念
+  expanded: true
   items:
-    - name: Azure Web PubSub サービスの内部構造
-      href: 'https://azure.github.io/azure-webpubsub/concepts/service-internals'
+    - name: サービスの内部構造
+      href: concept-service-internals.md
+    - name: クライアント プロトコルの概要
+      href: concept-client-protocols.md
+    - name: パフォーマンスに関する考慮事項
+      href: concept-performance.md
     - name: 課金モデル
       href: concept-billing-model.md
 - name: リファレンス
   items:
-    - name: REST API
-      href: /rest/api/webpubsub
-    - name: PubSub WebSocket サブプロトコル
-      href: 'https://azure.github.io/azure-webpubsub/references/pubsub-websocket-subprotocol'
-    - name: Web PubSub CloudEvents
-      href: 'https://azure.github.io/azure-webpubsub/references/protocol-cloudevents'
+    - name: WebSocket サブプロトコル
+      expanded: true
+      items:
+        - name: JSON WebSocket サブプロトコル
+          href: reference-json-webpubsub-subprotocol.md
+    - name: Azure Web PubSub の CloudEvents 拡張機能
+      href: reference-cloud-events.md
+    - name: Functions のトリガーとバインド
+      href: reference-functions-bindings.md
     - name: サーバー SDK
       href: choose-server-sdks.md
+    - name: REST API
+      href: /rest/api/webpubsub
 - name: リソース
   items:
+    - name: サンプル
+      href: 'https://aka.ms/awps/samples'
     - name: ソリューション
       href: /azure/architecture/
     - name: 利用可能なリージョン

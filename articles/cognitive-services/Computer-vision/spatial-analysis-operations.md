@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 814bd3d143be5eb295fe8e354537de8fc1d2934b
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: f408a9182727d8e4395972f8d9f7025f8342b4eb
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113005937"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635150"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -91,7 +91,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `gpu_index` | string| この操作が実行される GPU インデックス。|
 | `do_calibration` | string | 調整がオンになっていることを示します。 **cognitiveservices.vision.spatialanalysis-persondistance** が正しく機能するには、`do_calibration` が true である必要があります。 do_calibration は、既定では True に設定されています。 |
@@ -184,7 +184,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 
 `source_info` の詳細については、[空間分析操作の出力](#spatial-analysis-operation-output)をご覧ください。
 
-| ZonePlacementInfo のフィールド名 | 型| 説明|
+| ZonePlacementInfo のフィールド名 | Type| 説明|
 |---------|---------|---------|
 | `optimalZonePolygon` | object| 操作の実線またはゾーンを配置して最適な結果を得られるカメラ画像内の多角形。 <br/> 各値のペアは、多角形の頂点の x、y を表します。 多角形は、人の追跡または人数のカウントを行う領域を表します。多角形ポイントは、正規化された座標 (0-1) に基づいています。左上隅が (0.0, 0.0)、右下隅が (1.0, 1.0) になります。|
 | `fairZonePolygon` | object| 操作の実線またはゾーンを配置して良い結果を得られるが、最適な結果は得られない可能性のあるカメラ画像内の多角形。 <br/> 内容の詳細な説明については、上記の `optimalZonePolygon` を参照してください。 |
@@ -202,7 +202,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 "enable_speed": true,
 }
 ```
-| Name | 型| 説明|
+| Name | Type| 説明|
 |---------|---------|---------|
 | `enable_speed` | bool | 検出された人の速度を計算するかどうかを示します。 `enable_speed` は既定で false に設定されます。 速度と向きの両方に最適な推定値を設定することを強くお勧めします。 |
 
@@ -228,7 +228,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -273,7 +273,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `lines` | list| ラインのリスト。|
 | `name` | string| このラインのフレンドリ名。|
@@ -319,7 +319,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -355,13 +355,13 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
 | `polygon` | list| 各値のペアは、多角形の頂点の x、y を表します。 多角形は人数をカウントする領域を表し、人と人との距離が測定されます。 浮動小数点値は、左上隅を基準とした頂点の位置を表します。 x、y の絶対値を計算するには、これらの値とフレーム サイズを乗算します。 
 | `threshold` | float| その人がゾーン内のこのピクセル数よりも大きい場合にイベントが送信されます。 |
-| `type` | string| **cognitiveservices.vision.spatialanalysis-persondistance** の場合、これは `people_distance` である必要があります。|
+| `type` | string| **cognitiveservices.vision.spatialanalysis-persondistance** の場合、これは `persondistance` である必要があります。|
 | `trigger` | string| イベントを送信するためのトリガーの種類。 サポートされている値は、`event` (カウントが変わったときにイベントを送信する場合)、または `interval` (カウントが変わったかどうかに関係なく、イベントを定期的に送信する場合) です。
 | `output_frequency` | INT | イベントが送信される頻度。 `output_frequency` = X の場合、X おきにイベントが送信されます。たとえば、 `output_frequency` = 2 は、1 つおきにイベントが送信されることを意味します。 `output_frequency` は、`event` と `interval` の両方に適用されます。|
 | `minimum_distance_threshold` | float| 人と人との距離がその距離よりも近いときに "TooClose" イベントをトリガーする距離 (フィート単位)。|
@@ -1160,7 +1160,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すために、�
       }
   }
   ```
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `batch_size` | INT | すべてのカメラの解像度が同じ場合は、`batch_size` をその操作で使用されるカメラの数に設定します。それ以外の場合は、`batch_size` を 1 に設定するか、既定値 (1) のままにします。これは、バッチがサポートされないことを示します。 |
 

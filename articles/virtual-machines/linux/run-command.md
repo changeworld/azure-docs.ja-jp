@@ -10,12 +10,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 498c7bd16cc314316c67c202f55c7ce3dcac67c7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 67e84ce780f3013917edbce3e66c5a708509c194
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668148"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112518138"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "110668148"
 
 ## <a name="benefits"></a>メリット
 
-仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Linux VM 用の [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) から使用します。
+仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual-machines-run-commands/run-command)、または Linux VM 用の [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) から使用します。
 
 この機能は、仮想マシン内でスクリプトを実行するすべてのシナリオで役立ちます。 これは、ネットワークまたは管理ユーザーの構成が正しくないために RDP または SSH ポートが開かれていない仮想マシンをトラブルシューティングして修正する、限られた方法の 1 つです。
 
@@ -69,7 +69,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>Azure portal
 
-[Azure portal](https://portal.azure.com) 内の VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
+[Azure portal](https://portal.azure.com) で VM に移動し、左側のメニューの **[Operations]\(操作\)** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
 ![コマンドの一覧](./media/run-command/run-command-list.png)
 

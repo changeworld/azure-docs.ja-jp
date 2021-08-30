@@ -21,14 +21,6 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: essentials/quick-collect-activity-log-arm.md
-    - name: 仮想マシンの監視
-      items:
-        - name: Azure VM
-          href: vm/quick-monitor-azure-vm.md
-        - name: Linux コンピューター
-          href: vm/quick-collect-linux-computer.md
-        - name: Windows コンピューター
-          href: vm/quick-collect-windows-computer.md
     - name: アプリケーションの監視
       items:
         - name: ASP.NET Core アプリケーション
@@ -123,17 +115,25 @@
       items:
         - name: ログ データ
           href: logs/data-security.md
+        - name: ログの Azure AD Authentication
+          href: logs/azure-ad-authentication-logs.md
         - name: カスタマー マネージド キー
           href: logs/customer-managed-keys.md
         - name: Private Link ネットワーク
-          href: logs/private-link-security.md
+          items:
+            - name: Private Link の概要
+              href: logs/private-link-security.md
+            - name: Private Link の設計
+              href: logs/private-link-design.md
+            - name: Private Link の構成
+              href: logs/private-link-configure.md
         - name: 非公開ストレージ
           href: logs/private-storage.md
         - name: 個人のログ データの処理
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -175,7 +175,9 @@
             - name: ワークロードの監視
               href: vm/monitor-virtual-machine-workloads.md
           displayname: VM
-    - name: 配置
+        - name: Kubernetes の監視
+          href: ../aks/monitor-aks.md?toc=/azure/azure-monitor/toc.json
+    - name: デプロイ
       items:
         - name: Azure Monitor をデプロイする
           href: deploy.md
@@ -193,7 +195,7 @@
           items:
             - name: 使用量と推定コスト
               href: usage-estimated-costs.md
-            - name: アプリケーションの使用量とコスト
+            - name: Application Insights の使用量とコスト
               href: app/pricing.md
             - name: ログ データの使用量とコスト
               href: logs/manage-cost-storage.md
@@ -242,10 +244,14 @@
               href: logs/manage-access.md
             - name: ワークスペースの移動
               href: logs/move-workspace.md
+            - name: リージョン間でのワークスペースの移動
+              href: logs/move-workspace-region.md
             - name: サービス プロバイダー向けの設計
               href: logs/service-providers.md
             - name: Dedicated クラスター
               href: logs/logs-dedicated-clusters.md
+            - name: 可用性ゾーン
+              href: logs/availability-zones.md
         - name: Log Analytics
           items:
             - name: 概要
@@ -1106,18 +1112,30 @@
               href: containers/container-insights-enable-aks-policy.md
             - name: リージョンのマッピング
               href: containers/container-insights-region-mapping.md
-        - name: パフォーマンスの監視
-          href: containers/container-insights-analyze.md
-        - name: GPU パフォーマンスの監視
-          href: containers/container-insights-gpu-monitoring.md
-        - name: ネットワーク構成の監視
-          href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
-        - name: デプロイと HPA の監視
-          href: containers/container-insights-deployment-hpa-metrics.md
-        - name: 永続ボリューム (PV) の監視
-          href: containers/container-insights-persistent-volumes.md
-        - name: '[レポート] タブ'
-          href: insights/container-insights-reports.md
+            - name: エージェント管理
+              href: containers/container-insights-manage-agent.md
+            - name: Prometheus のメトリック スクレーピングを構成する
+              href: containers/container-insights-prometheus-integration.md
+            - name: エージェント コレクションの設定を構成する
+              href: containers/container-insights-agent-config.md
+            - name: 更新によるメトリックの有効化
+              href: containers/container-insights-update-metrics.md
+        - name: モニター
+          items:
+            - name: パフォーマンスの監視
+              href: containers/container-insights-analyze.md
+            - name: GPU パフォーマンスの監視
+              href: containers/container-insights-gpu-monitoring.md
+            - name: ネットワーク構成の監視
+              href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
+            - name: デプロイと HPA の監視
+              href: containers/container-insights-deployment-hpa-metrics.md
+            - name: 永続ボリューム (PV) の監視
+              href: containers/container-insights-persistent-volumes.md
+            - name: '[レポート] タブ'
+              href: containers/container-insights-reports.md
+        - name: ログ クエリ
+          href: containers/container-insights-log-query.md
         - name: ライブ データを表示する
           items:
             - name: Live Data の概要
@@ -1128,22 +1146,12 @@
               href: containers/container-insights-livedata-metrics.md
             - name: デプロイの表示
               href: containers/container-insights-livedata-deployments.md
-        - name: ログ クエリによるデータの分析
-          href: containers/container-insights-log-search.md
         - name: アラート
           items:
             - name: ログの警告ルールを作成する
               href: containers/container-insights-log-alerts.md
             - name: メトリックの警告ルールを作成する
               href: containers/container-insights-metric-alerts.md
-        - name: エージェント管理
-          href: containers/container-insights-manage-agent.md
-        - name: Prometheus のメトリック スクレーピングを構成する
-          href: containers/container-insights-prometheus-integration.md
-        - name: エージェント コレクションの設定を構成する
-          href: containers/container-insights-agent-config.md
-        - name: 更新によるメトリックの有効化
-          href: containers/container-insights-update-metrics.md
         - name: コストと使用量の管理
           href: containers/container-insights-cost.md
         - name: 監視を無効にする

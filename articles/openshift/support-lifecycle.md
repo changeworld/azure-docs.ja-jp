@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 03/06/2021
-ms.openlocfilehash: 22ae9bdbee4b9d6f66d08d0e3ffc37675bc5d3da
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 06/16/2021
+ms.openlocfilehash: 17cf2b839a3673477b651084f52475f9ade47b39
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143559"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289587"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 のサポート ライフサイクル
 
@@ -97,10 +97,10 @@ Azure Red Hat OpenShift SRE チームは、事前に通知することなく、�
 
 |OCP のバージョン|アップストリームのリリース|Azure Red Hat OpenShift の一般提供|有効期限切れ|
 |-|-|-|-|
-|4.3|2020 年 1 月|2020 年 4 月| 2020 年 8 月|
 |4.4.|2020 年 5 月|2020 年 7 月|4.6 一般公開|
 |4.5|2020 年 7 月| 2020 年 11 月|4.7 一般公開
 |4.6|2020 年 10 月| 2021 年 2 月|4.8 一般公開|
+|4.7|2021 年 2 月| 2021 年 7 月|4.9 GA|
 
 ## <a name="faq"></a>よく寄せられる質問
 

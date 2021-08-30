@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/17/2021
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f6cf40e7b384c9b0e88db679f9de8ac9bbba1607
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3e05dd70ab0919ca4429cee15ecfc9d6ac9ee627
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "112078774"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122264919"
 ---
 ディスクにカスタマー マネージド キーを設定する作業を初めて実行するときは、特定の順序でリソースを作成する必要があります。 最初に、Azure キー コンテナーの作成と設定を行う必要があります。
 
@@ -27,7 +27,7 @@ ms.locfileid: "112078774"
     > [!IMPORTANT]
     > デプロイを成功させるには、Azure キー コンテナー、ディスク暗号化セット、VM、ディスク、スナップショットがすべて同じリージョンとサブスクリプションに存在している必要があります。
 
-1. **[+ 追加]** を選択して、新しいキー コンテナーを作成します。
+1. **[+ 作成]** を選択して、新しいキー コンテナーを作成します。
 1. 新しいリソース グループを作成します。
 1. キー コンテナー名を入力し、リージョンを選択して、価格レベルを選択します。
 
@@ -47,7 +47,7 @@ ms.locfileid: "112078774"
 1. **[キーの種類]** は **[RSA]** 、 **[RSA キー サイズ]** は **[2048]** に設定されているので、どちらもそのままにしておきます。
 1. 必要に応じて残りの選択項目を入力したら、 **[作成]** を選択します。
 
-    ![[生成/インポート] ボタンを選択すると表示される [Create a key]\(キーを作成します\) ブレードのスクリーンショット](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
+    ![[生成/インポート] ボタンを選択すると表示される [Create a key]\(キーを作成します\) ペインのスクリーンショット](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
 
 ### <a name="add-an-azure-rbac-role"></a>Azure RBAC ロールを追加する
 
@@ -59,7 +59,7 @@ Azure キー コンテナーとキーを作成したら、Azure RBAC ロール�
 ## <a name="set-up-your-disk-encryption-set"></a>ディスク暗号化セットを設定する
 
 1. **ディスク暗号化セット** を検索して選択します。
-1. **[ディスク暗号化セット]** ブレードで、 **[+ 追加]** を選択します。
+1. **[ディスク暗号化セット]** ペインで、 **[+ 作成]** を選択します。
 
     ![ディスク暗号化ポータルのメイン画面のスクリーンショット。 [追加] ボタンが強調表示されています](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
 
@@ -74,4 +74,4 @@ Azure キー コンテナーとキーを作成したら、Azure RBAC ロール�
 1. **[選択]** を選択します。
 1. **[確認および作成]** 、 **[作成]** の順に選択します。
 
-    ![ディスク暗号化作成ブレードのスクリーンショット。 サブスクリプション、リソース グループ、ディスク暗号化セット名、リージョン、キー コンテナーとキーのセレクターが表示されています。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
+    ![ディスク暗号化作成ペインのスクリーンショット。 サブスクリプション、リソース グループ、ディスク暗号化セット名、リージョン、キー コンテナーとキーのセレクターが表示されています。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)

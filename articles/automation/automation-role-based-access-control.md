@@ -7,12 +7,12 @@ ms.subservice: shared-capabilities
 ms.date: 06/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4af5a6d105867df7d5c7a00f6fc47bd0032f4336
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 5484f1fb798022e59e71f153d087a880bca5c983
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597413"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032563"
 ---
 # <a name="manage-role-permissions-and-security"></a>ロールのアクセス許可とセキュリティの管理
 
@@ -273,11 +273,9 @@ Microsoft は、Log Analytics 共同作成者ロールから Automation アカ�
    ```json
    {
     "properties": {
-        "roleName": "Automation Account Contributor (Custom)",
+        "roleName": "Automation account Contributor (custom)",
         "description": "Allows access to manage Azure Automation and its resources",
-        "assignableScopes": [
-            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
-        ],
+        "type": "CustomRole",
         "permissions": [
             {
                 "actions": [
@@ -294,6 +292,9 @@ Microsoft は、Log Analytics 共同作成者ロールから Automation アカ�
                 "dataActions": [],
                 "notDataActions": []
             }
+        ],
+        "assignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
         ]
       }
    }

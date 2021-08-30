@@ -10,13 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
+ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b1aac64400c3c75aa48ac62e2edcc1656400e3f
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: 7889bca19bc24b8f0c0f83b9c7e3b8bf310cf3d1
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112893278"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418958"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 

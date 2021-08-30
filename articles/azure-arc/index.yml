@@ -25,10 +25,10 @@ highlightedContent:
     - title: Azure Arc 対応 Kubernetes
       itemType: overview
       url: ./kubernetes/overview.md
-    - title: Azure Arc 対応データ サービス (プレビュー)
+    - title: Azure Arc 対応データ サービス
       itemType: overview
       url: ./data/overview.md
-    - title: Azure Arc 対応サーバーでの SQL Server (プレビュー)
+    - title: Azure Arc 対応サーバーでの SQL Server
       itemType: overview
       url: /sql/sql-server/azure-arc/overview
 conceptualContent:
@@ -43,10 +43,10 @@ conceptualContent:
           text: セキュリティの概要
         - url: ./servers/policy-reference.md
           itemType: learn
-          text: Azure Policy を使用した受付制御ポリシー
+          text: Azure Policy を使用した受付制御ポリシーの定義
         - url: /sql/sql-server/azure-arc/overview
           itemType: overview
-          text: Azure Arc 対応 SQL Server を有効にする (プレビュー)
+          text: SQL Server の接続
       footerLink:
         url: ./servers/index.yml
         text: 詳細情報
@@ -67,7 +67,7 @@ conceptualContent:
       footerLink:
         url: ./kubernetes/index.yml
         text: 詳細情報
-    - title: Azure Arc 対応データ サービス (プレビュー)
+    - title: Azure Arc 対応データ サービス
       links:
         - url: ./data/install-client-tools.md
           itemType: deploy
@@ -100,11 +100,11 @@ conceptualContent:
         - url: ../automation/automation-intro.md
           itemType: overview
           text: Azure Automation の概要
-    - title: Azure Arc 対応サーバーでの SQL Server (プレビュー)
+    - title: Azure Arc 対応サーバーでの SQL Server
       links:
         - url: /sql/sql-server/azure-arc/assess
           itemType: how-to-guide
-          text: Arc 対応インスタンスを評価する
+          text: インスタンスの評価
         - url: /sql/sql-server/azure-arc/configure-advanced-data-security
           itemType: how-to-guide
           text: Advanced Data Security の構成

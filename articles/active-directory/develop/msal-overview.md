@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/22/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a3095d4123abd9dce48cd08e1b7f250ba246eafc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: aaddev, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 405843ad0d56a75dac20dc2a6c85d8bc15600312
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741727"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429103"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
 Microsoft Authentication Library (MSAL) を使用すると、ユーザーを認証し、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォームから[トークン](developer-glossary.md#security-token)を取得できます。 これは、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API へのセキュリティで保護されたアクセスを提供するために使用できます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS などの、さまざまなアプリケーション アーキテクチャとプラットフォームをサポートします。

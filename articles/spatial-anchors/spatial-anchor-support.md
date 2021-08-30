@@ -8,33 +8,33 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f47f07fee70d2fc0ee445c6788a8ccb522b7774e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c5b35e84d0e16b70b4abba8f784ba9c779c0169
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95494711"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380124"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Azure Spatial Anchors のサポート オプション
 
 ## <a name="open-a-tech-support-ticket"></a>テクニカル サポート チケットを開く
 
-Azure Portal 内で Azure Spatial Anchors のテクニカル サポート チケットを開くには、次の手順を実行します。
+Azure portal 内で Azure Spatial Anchors のテクニカル サポート チケットを開くには:
 
 1. [Azure portal](https://azure.microsoft.com/account/) を開いたら、上部メニュー バーのヘルプ アイコンを選択し、**[ヘルプとサポート]** ボタンを選択します。
 
-![Azure portal のヘルプとサポート](./media/spatial-anchor-support.png)
+   ![Azure portal のヘルプとサポート](./media/spatial-anchor-support.png)
 
 1. [ヘルプとサポート] ページを開いたら、**[新しいサポート要求]** を選択します。
 
-![Azure portal の [新しいサポート要求] ウィンドウ](./media/spatial-anchor-support2.png)
+   ![Azure portal の [新しいサポート要求] ウィンドウ](./media/spatial-anchor-support2.png)
 
 1. 次のようにサポート チケットのフィールドを入力します。
 
-- [問題の種類]: [技術]
-- サービス: Spatial Anchors
+   - [問題の種類]: [技術]
+   - サービス: Spatial Anchors
 
-![Azure portal サポート チケットのフィールド](./media/spatial-anchor-support3.png)
+   ![Azure portal サポート チケットのフィールド](./media/spatial-anchor-support3.png)
 
 ## <a name="community-support"></a>コミュニティ サポート
 
@@ -50,4 +50,4 @@ Azure Portal 内で Azure Spatial Anchors のテクニカル サポート チケ
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Spatial Anchors についてよく寄せられる質問については、[FAQ](spatial-anchor-faq.md) のページを参照してください。
+Azure Spatial Anchors についてよく寄せられる質問については、[FAQ](spatial-anchor-faq.yml) のページを参照してください。

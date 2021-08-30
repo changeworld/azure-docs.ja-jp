@@ -3,16 +3,16 @@ author: phillipgibson
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: pgibson
-ms.openlocfilehash: 990a1f7d6e81c888d9a9901bf651e61cd7072fd4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5ceb1a5e5afbcb5de85d19fe02e5c7eaaec2b0d9
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468112"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112908055"
 ---
 ## <a name="download-and-install-the-osm-client-binary"></a>OSM クライアント バイナリをダウンロードしてインストールする
 
-Windows 上の PowerShell ベースのシェルでは、次のように `Invoke-WebRequest` を使用して Istio のリリースをダウンロードし、`Expand-Archive` で解凍します。
+Windows 上の PowerShell ベースのシェルでは、次のように `Invoke-WebRequest` を使用して OSM のリリースをダウンロードし、`Expand-Archive` で解凍します。
 
 ```powershell
 # Specify the OSM version that will be leveraged throughout these instructions

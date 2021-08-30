@@ -4,14 +4,15 @@ description: Azure Data Factory でのデータ ラングリングの概要
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: f922e7a2755a6e26a0d9f93f2668753e2f4dad5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.openlocfilehash: 133496614db862d4c1af31afb015a535ddbfd188
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98738171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724457"
 ---
 # <a name="what-is-data-wrangling"></a>データ ラングリングとは
 
@@ -60,9 +61,9 @@ Power Query アクティビティを作成すると、すべてのソース デ�
 
 現時点では、Power Query M 関数は、作成中に利用可能であっても、そのすべてがデータ ラングリングでサポートされているわけではありません。 Power Query のアクティビティの作成中、関数がサポートされていない場合は、次のエラー メッセージが表示されます。
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Power Query Spark Runtime does not support the function`
 
-サポートされている変換の詳細については、[データ ラングリングの関数](wrangling-functions.md)に関する記事を参照してください。
+サポートされている変換の詳細については、[Power Query データ ラングリングの関数](wrangling-functions.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -41,7 +41,7 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: Virtual WAN に移行する
           href: migrate-from-hub-spoke-topology.md
@@ -71,6 +71,8 @@
           href: scenario-route-through-nva.md
         - name: NVA 経由のルーティング - カスタム
           href: scenario-route-through-nvas-custom.md
+        - name: 仮想ハブとの BGP ピアリング
+          href: scenario-bgp-peering-hub.md
         - name: Azure Firewall - カスタム
           href: scenario-route-between-vnets-firewall.md
         - name: Application Gateway とバックエンド プール
@@ -85,7 +87,9 @@
       items:
         - name: P2S IPsec ポリシーの概要
           href: point-to-site-ipsec.md
-    - name: Security
+        - name: P2S クライアント アドレス プールの概要
+          href: about-client-address-pools.md
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/virtual-wan-security-baseline?toc=/azure/virtual-wan/TOC.json
@@ -101,6 +105,8 @@
       href: upgrade-virtual-wan.md
     - name: 仮想ハブに NVA を作成する
       href: How-to-nva-hub.md
+    - name: VNet を仮想ハブに接続する
+      href: howto-connect-vnet-hub.md
     - name: クロステナント VNet 接続を作成する
       href: cross-tenant-vnet.md
     - name: ExpressRoute
@@ -123,8 +129,10 @@
           href: nat-rules-vpn-gateway.md
     - name: ユーザー VPN (ポイント対サイト)
       items:
-        - name: ユーザー VPN 接続を作成する
+        - name: ユーザー VPN を作成する
           href: virtual-wan-point-to-site-portal.md
+        - name: ユーザー VPN を作成する - Azure AD 認証
+          href: virtual-wan-point-to-site-azure-ad.md
         - name: 証明書の生成
           href: certificates-point-to-site.md
         - name: Azure AD テナントを構成する
@@ -145,7 +153,7 @@
               items:
                 - name: Windows 10
                   href: openvpn-azure-ad-client.md
-                - name: macOS - プレビュー
+                - name: macOS
                   href: openvpn-azure-ad-client-mac.md
         - name: Always-On トンネルを構成する
           items:
@@ -163,20 +171,26 @@
               href: openvpn-azure-ad-tenant-multi-app.md
     - name: ルーティング
       items:
-        - name: 仮想ハブのルーティングを構成する方法
+        - name: 仮想ハブのルーティングを構成する
           href: how-to-virtual-hub-routing.md
-        - name: 仮想ハブの有効なルートを表示する方法
+        - name: 仮想ハブの有効なルートを表示する
           href: effective-routes-virtual-hub.md
+        - name: ルーティング インテントとポリシーを構成する方法
+          href: how-to-routing-policies.md
         - name: 仮想ハブから NVA にトラフィックをルーティングする (レガシ)
           items:
             - name: Azure portal
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
+        - name: 仮想ハブとの BGP ピアリングを構成する
+          href: create-bgp-peering-hub-portal.md
     - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md
+        - name: Azure Firewall を経由したハブ間およびブランチ間接続
+          href: how-to-routing-policies.md
         - name: Private Link の接続の構成
           href: howto-private-link.md
         - name: リソースへのアクセス管理 - スポーク VNet P2S

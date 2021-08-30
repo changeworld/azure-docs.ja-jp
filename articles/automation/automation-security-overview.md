@@ -4,15 +4,15 @@ description: この記事では、Azure Automation アカウントの認証に�
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2021
+ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 33402eb41ed9c22cf38890229d833cd2ab00d65d
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 78b188b270ec08aa546311b449f908d47313a9a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279516"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730583"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure Automation アカウントの認証の概要
 
@@ -34,11 +34,11 @@ Azure Automation で Azure Resource Manager と PowerShell コマンドレット
 
 ## <a name="managed-identities-preview"></a>マネージド ID (プレビュー)
 
-Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID の詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
+Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、シークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID の詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
 
 以下に、マネージド ID を使用するベネフィットをいくつか紹介します。
 
-- マネージド ID を使用すると、Azure AD Authentication をサポートするあらゆる Azure サービスに対して認証を行うことができる。 クラウドおよびハイブリッド ジョブに使用できます。 ハイブリッド ジョブは、Azure または Azure 以外の VM 上で実行されている Hybrid Runbook Worker で実行するときに、マネージド ID を使用できます。
+- Automation 実行アカウントの代わりにマネージド ID を使用すると、管理が簡単になる。 実行アカウントで使用される証明書を更新する必要がありません。
 
 - マネージド ID の使用に関して追加コストは一切かからない。
 
@@ -52,8 +52,8 @@ Automation アカウントには、次の 2 種類の ID を付与できます�
 
 - ユーザー割り当て ID は、アプリに割り当てることができるスタンドアロン Azure リソースです。 アプリは複数のユーザー割り当て ID を持つことができます。
 
->[!NOTE]
-> ユーザー割り当て ID はまだサポートされていません。
+> [!NOTE]
+> ユーザー割り当て ID がサポートされているのはクラウド ジョブの場合だけです。 さまざまなマネージド ID の詳細については、「[ID の種類の管理](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)」を参照してください。
 
 マネージド ID の使用の詳細については、[Azure Automation のマネージド ID の有効化 (プレビュー)](enable-managed-identity-for-automation.md)に関するページを参照してください。
 
@@ -61,8 +61,37 @@ Automation アカウントには、次の 2 種類の ID を付与できます�
 
 Azure Automation の実行アカウントを使用すると、Azure Resource Manager リソースまたはクラシック デプロイ モデルにデプロイされたリソースを管理するための認証を行うことができるようになります。 Azure Automation には、次の 2 種類の実行アカウントがあります。
 
-* Azure 実行アカウント: Azure リソースは、Azure の Azure Resource Manager デプロイと管理サービスに基づいて管理できます。
-* Azure クラシック実行アカウント:クラシック デプロイ モデルに基づいて Azure クラシック リソースを管理できます。
+実行アカウントを作成または更新するには、アクセス許可が 3 つのレベルで必要です。
+
+- サブスクリプション、
+- Azure Active Directory (Azure AD)、および
+- Automation アカウント
+
+### <a name="subscription-permissions"></a>サブスクリプションのアクセス許可
+
+`Microsoft.Authorization/*/Write` アクセス許可が必要です。 このアクセス許可は、次のいずれかの Azure 組み込みロールのメンバーシップを通じて取得されます。
+
+- [所有者](../role-based-access-control/built-in-roles.md#owner)
+- [User Access Administrator](../role-based-access-control/built-in-roles.md#user-access-administrator)
+
+クラシック実行アカウントを構成または更新するには、サブスクリプション レベルの共同管理者ロールが必要です。 クラシック サブスクリプション アクセス許可の詳細については、「[Azure の従来のサブスクリプション管理者](../role-based-access-control/classic-administrators.md#add-a-co-administrator)」を参照してください。
+
+### <a name="azure-ad-permissions"></a>Azure AD のアクセス許可
+
+サービス プリンシパルの作成や更新ができるようになるためには、次のいずれかの Azure AD 組み込みロールのメンバーになる必要があります。
+
+- [アプリケーション管理者](../active-directory/roles/permissions-reference.md#application-administrator)
+- [アプリケーション開発者](../active-directory/roles/permissions-reference.md#application-developer)
+
+メンバーシップは、テナント内の **すべての** ユーザーにディレクトリ レベルで割り当てることができます。これが既定の動作です。 メンバーシップをどちらのロールにも、ディレクトリ レベルで付与できます。 詳細については、「[Azure AD インスタンスにアプリケーションを追加する権限のあるユーザー](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)」を参照してください。
+
+### <a name="automation-account-permissions"></a>Automation アカウントのアクセス許可
+
+Automation アカウントの作成や更新ができるようになるためには、次のいずれかの Automation アカウント ロールのメンバーになる必要があります。
+
+- [[所有者]](./automation-role-based-access-control.md#owner)
+- [Contributor](./automation-role-based-access-control.md#contributor)
+- [カスタム Azure Automation 共同作成者](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)
 
 Azure Resource Manager とクラシック デプロイ モデルの詳細については、[Azure Resource Manager とクラシック デプロイの比較](../azure-resource-manager/management/deployment-models.md)に関するページを参照してください。
 
@@ -130,13 +159,16 @@ Azure クラシック実行アカウントを作成すると、次のタスク�
 1. Azure portal の Azure Active Directory ペインで、 **[ユーザーとグループ]** を選択します。
 2. **[すべてのユーザー]** を選択します。
 3. ご自分の名前を選んでから、 **[プロファイル]** を選択します。
-4. ユーザーのプロファイルの下にある **[ユーザーの種類]** 属性の値が、確実に **[ゲスト]** には設定されていないようにします。
+4. ユーザーのプロファイルの下にある **[ユーザーの種類]** 属性の値が **[ゲスト]** に設定されていないことを確認します。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
 ロールベースのアクセス制御は、Azure AD ユーザー アカウントおよび実行アカウントに対して許可されたアクションを付与し、そのサービス プリンシパルを認証するために、Azure Resource Manager で使用できます。 Automation アクセス許可を管理するためのモデルの開発に役立つ詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
 
 リソース グループのアクセス許可の割り当てに対して厳密なセキュリティ制御がある場合は、実行アカウントのメンバーシップをリソース グループの **共同作成者** ロールに割り当てる必要があります。
+
+> [!NOTE]
+> **Log Analytics 共同作成者** ロールを利用して Automation ジョブを実行しないことをお勧めします。 代わりに、Azure Automation 共同作成者カスタム ロールを作成し、Automation アカウント関連のアクションに利用してください。 詳細については、[Azure Automation 共同作成者カスタム ロール](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)に関するページを参照してください。
 
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用した Runbook の認証
 

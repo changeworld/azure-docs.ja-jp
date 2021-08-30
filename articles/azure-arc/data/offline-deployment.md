@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5fa0b6ca41349d20614a64006536e78d8ee71844
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e81ccc8ef133cdf7c454a7a50610a1bfdf2be442
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955367"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731272"
 ---
 # <a name="offline-deployment-overview"></a>オフライン展開の概要
 
-通常、Azure Arc データ コントローラー、SQL Managed Instance、PostgreSQL Hyperscale サーバー グループの作成で使用されるコンテナー イメージは Microsoft Container Registry (MCR) から直接プルされます。 場合によっては、展開先の環境で Microsoft Container Registry に接続できないことがあります。  このような状況では、Microsoft Container Registry にアクセス _できる_ コンピューターを使用してコンテナー イメージをプルしてからそれにタグを付け、Azure Arc 対応データ サービスを展開する環境から接続 _できる_ プライベート コンテナー レジストリにそれらのイメージをプッシュできます。
+通常、Azure Arc データ コントローラー、SQL Managed Instance、PostgreSQL Hyperscale サーバー グループの作成で使用されるコンテナー イメージは Microsoft Container Registry (MCR) から直接プルされます。 場合によっては、展開先の環境で Microsoft Container Registry に接続できないことがあります。  このような状況では、Microsoft Container Registry にアクセス "_できる_" コンピューターを使用してコンテナー イメージをプルしてからそれにタグを付け、Azure Arc 対応データ サービスをデプロイする環境から接続 "_できる_" プライベート コンテナー レジストリにそれらのイメージをプッシュできます。
 
 Azure Arc 対応データ サービスには毎月の更新プログラムが提供され、多数のコンテナー イメージが存在するため、このコンテナー イメージをプルしてタグを付け、プライベート コンテナー レジストリにプッシュするプロセスはスクリプトを使用して実行することをお勧めします。  このスクリプトは、自動化することも、手動で実行することもできます。
 

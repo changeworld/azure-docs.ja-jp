@@ -273,3 +273,5 @@
   items:
     - name: Azure Active Directory のサポートを利用する
       href: active-directory-troubleshooting-support-howto.md
+    - name: Azure AD のサポート オプションとヘルプ オプション
+      href: support-help-options.md

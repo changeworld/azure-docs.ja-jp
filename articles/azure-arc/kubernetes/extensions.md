@@ -2,17 +2,17 @@
 title: Azure Arc 対応 Kubernetes クラスター拡張機能
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/25/2021
+ms.date: 06/18/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes に拡張機能をデプロイし、そのライフサイクルを管理する
-ms.openlocfilehash: cd2d0915b173f3621502f22a2d47e25271f87400
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 28f82471b13ec798f7c75f6b17d88321dd4f79a9
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951680"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378072"
 ---
 # <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>Azure Arc 対応 Kubernetes クラスター拡張機能をデプロイして管理する
 
@@ -64,6 +64,7 @@ Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラ�
 | [Azure Arc 上の Azure App Service](../../app-service/overview-arc-integration.md) | Azure Arc 対応 Kubernetes クラスター上に App Service Kubernetes 環境をプロビジョニングできるようになります。 |
 | [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md) | Azure Arc 対応 Kubernetes クラスター上で、トピックやイベント サブスクリプションなどのイベント グリッド リソースを作成および管理します。 |
 | [Azure Arc 上の Azure API Management](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md) | Azure Arc 対応 Kubernetes クラスターに API Management ゲートウェイをデプロイして管理します。 |
+| [Azure Arc 対応機械学習](../../machine-learning/how-to-attach-arc-kubernetes.md) | Azure Arc 対応 Kubernetes クラスターで Azure Machine Learning をデプロイして実行します。 |
 
 ## <a name="usage-of-cluster-extensions"></a>クラスター拡張機能の使用
 
@@ -259,7 +260,7 @@ az k8s-extension delete --name azuremonitor-containers --cluster-name <clusterNa
 >[!NOTE]
 > この拡張機能を表す Azure リソースはただちに削除されます。 Kubernetes クラスターで実行されているエージェントがネットワークに接続していて、目的の状態を取得するために Azure サービスに再びアクセスできる場合にのみ、この拡張機能に関連するクラスターの Helm リリースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Arc 対応 Kubernetes で現在使用できるクラスター拡張機能について詳しく学習してださい。
 

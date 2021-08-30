@@ -1,6 +1,6 @@
 ---
 title: ML Studio (classic):実験の表示と再実行 - Azure
-description: Azure Machine Learning Studio (classic) で実験の実行を管理します。 これまでの前提条件を厳密に調べ、再検討し、最終的に確定または改善するために、いつでも以前に実行した実験を見直すことができます。
+description: Machine Learning スタジオ (クラシック) で実験の実行を管理します。 これまでの前提条件を厳密に調べ、再検討し、最終的に確定または改善するために、いつでも以前に実行した実験を見直すことができます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 419a696da1244afab7aa03cd8c4521ea819a5298
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 196d40f7033d6b9cbb6b49cbe65517c299718af0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100515956"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695924"
 ---
-# <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で実験の実行を管理する
+# <a name="manage-experiment-runs-in-machine-learning-studio-classic"></a>Machine Learning スタジオ (クラシック) で実験の実行を管理します。
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
 

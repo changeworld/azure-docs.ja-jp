@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Translator とは
-      href: translator-info-overview.md
+      href: translator-overview.md
     - name: 言語サポート
       href: language-support.md
     - name: 価格
@@ -16,7 +16,9 @@
 - name: Text Translation
   expanded: true
   items:
-    - name: クイックスタート
+    - name: テキスト翻訳とは
+      href: text-translation-overview.md
+    - name: クイック スタート
       href: quickstart-translator.md
     - name: サンプル
       items:
@@ -68,12 +70,12 @@
           href: tutorial-build-flask-app-translation-synthesis.md
     - name: リファレンス
       items:
+        - name: Text Translator REST API
+          href: reference/rest-api-guide.md
         - name: v3 Translator リファレンス
           href: reference/v3-0-reference.md
         - name: Languages
           href: reference/v3-0-languages.md
-        - name: 要求の制限
-          href: request-limits.md
         - name: Translate
           href: reference/v3-0-translate.md
         - name: Transliterate
@@ -86,11 +88,13 @@
           href: reference/v3-0-dictionary-lookup.md
         - name: 辞書の例
           href: reference/v3-0-dictionary-examples.md
+        - name: 要求の制限
+          href: request-limits.md
 - name: ドキュメント変換
   items:
     - name: ドキュメント変換とは
       href: document-translation/overview.md
-    - name: クライアント ライブラリと SDK
+    - name: クライアント ライブラリ SDK
       href: document-translation/client-sdks.md
     - name: クイック スタート
       href: document-translation/get-started-with-document-translation.md
@@ -102,7 +106,7 @@
           href: document-translation/managed-identity.md
     - name: 関連項目
       items:
-        - name: REST API リファレンス ガイド
+        - name: ドキュメント翻訳 REST API
           href: document-translation/reference/rest-api-guide.md
         - name: サポートされるドキュメントの形式の取得
           href: document-translation/reference/get-supported-document-formats.md

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4b836fa0f9628fa3a7d4f6b6064091db7289bc
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 4f7fb48f71a891493220440d56a50e3c72510892
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796429"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744015"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -78,7 +78,8 @@ AD Domain Services と ADFS または類似の ID プロバイダーを使用し
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>緊急用アカウントのオブジェクト ID を取得する
 
-1. ユーザー管理者ロールに割り当てられているアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. ユーザー管理者ロールに割り当てられているアカウントを使用して、[Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
 1. **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 1. 緊急用アカウントを探し、そのユーザーの名前を選択します。
 1. 後で使用できるように、オブジェクト ID 属性をコピーして保存します。

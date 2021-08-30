@@ -4,7 +4,7 @@
   items:
     - name: Azure Arc 対応 Kubernetes について
       href: overview.md
-    - name: Azure Arc 検証プログラム
+    - name: Azure Arc 検証済みパートナー
       href: validation-program.md
 - name: クイックスタート
   items:
@@ -58,7 +58,7 @@
           href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Azure Defender を使用して脅威保護を適用する
           href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: Azure Policy を使用した受付制御ポリシー
+        - name: Azure Policy を使用した受付制御ポリシーの定義
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Arc 対応 Open Service Mesh をデプロイする
           href: tutorial-arc-enabled-open-service-mesh.md
@@ -83,6 +83,8 @@
       href: /powershell/module/Az.ConnectedKubernetes/
 - name: リソース
   items:
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc'
     - name: 展開を計画する
       href: plan-at-scale-deployment.md
     - name: Azure Arc のジャンプスタート

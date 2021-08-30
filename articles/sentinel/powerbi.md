@@ -6,12 +6,12 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 1e641e878bc5370c9f9d7c0cc83be79008b2ebdd
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 0e877439b18d4c7ff6c4b21baa18b3b0fd1586b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111852181"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724151"
 ---
 # <a name="tutorial-create-a-power-bi-report-from-azure-sentinel-data"></a>チュートリアル: Azure Sentinel のデータから Power BI レポートを作成する
 
@@ -29,6 +29,9 @@ Azure Sentinel の Log Analytics ワークスペースからのデータに基�
 
 Power BI サービスでアクセスが許可されたユーザーと Teams チャネルのメンバーは、Azure Sentinel のアクセス許可を必要とせずにレポートを表示できます。
 
+> [!NOTE]
+> このチュートリアルでは、Azure Sentinel のデータの分析レポートを Power BI で表示するという、お客様からのよくある質問に対するシナリオベースの手順について説明します。 詳細については、「[データ ソースの接続](connect-data-sources.md)」と「[収集されたデータを視覚化する](get-visibility.md)」を参照してください。
+>
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次のものが必要です。
@@ -203,5 +206,5 @@ Management Teams チャネルのメンバーがレポートを表示できるよ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor ログ データを Power BI にインポートする](/azure/azure-monitor/visualize/powerbi)
+- [Azure Monitor ログ データを Power BI にインポートする](../azure-monitor/visualize/powerbi.md)
 - [Power Query M 式言語](/powerquery-m/)

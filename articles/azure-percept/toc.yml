@@ -10,6 +10,8 @@
       href: overview-azure-percept-dk.md
     - name: Azure Percept Audio
       href: overview-azure-percept-audio.md
+    - name: Azure Percept Vision モジュールとワークロード
+      href: azureeyemodule-overview.md
 - name: クイックスタート
   items:
     - name: Azure Percept デバイスを設定する
@@ -34,8 +36,6 @@
       items:
         - name: 80/20 統合
           href: overview-8020-integration.md
-        - name: 携帯ネットワーク経由で接続する
-          href: connect-over-cellular.md
         - name: デバイスの更新プログラム
           href: overview-update-experience.md
     - name: Azure Percept Audio
@@ -74,6 +74,10 @@
           href: how-to-configure-voice-assistant.md
         - name: Azure Percept Studio 内で音声アシスタントを構成する
           href: how-to-manage-voice-assistant.md
+        - name: 音声アシスタント アプリケーションに戻る
+          href: return-to-voice-assistant-application-window.md
+        - name: 音声アシスタント アプリケーションを削除する
+          href: delete-voice-assistant-application.md
     - name: Azure Percept デバイスを更新する
       items:
         - name: 無線での更新を設定する
@@ -90,6 +94,8 @@
           href: how-to-connect-over-ethernet.md
         - name: ネットワークの詳細設定を行う
           href: how-to-set-up-advanced-network-settings.md
+        - name: 5G または LTE ネットワーク経由で接続する
+          href: connect-over-cellular.md
         - name: SSH 経由で接続する
           href: how-to-ssh-into-percept-dk.md
         - name: シリアル経由で接続する

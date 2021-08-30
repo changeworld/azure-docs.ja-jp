@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3278e210daf1995366ff4d18cf5a3d3d8f7b344d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: a9193b71f2634e2cf9ac5970fb6f9fe2a965dc93
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538933"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458259"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect:DirSync からのアップグレード
 Azure AD Connect は DirSync の後継のツールです。 このトピックでは、DirSync からアップグレードする方法について説明します。 以下の手順は、Azure AD Connect の別のリリースまたは Azure AD Sync からのアップグレードには使用できません。
@@ -158,7 +158,7 @@ Azure AD Connect を新しいサーバーにインストールする場合、Azu
 5. DirSync インストールからエクスポートされた設定ファイルを選択します。
 6. 次の高度なオプションを構成します。
    * Azure AD Connect のカスタムのインストール場所。
-   * SQL Server の既存のインスタンス (既定: Azure AD Connect では、SQL Server 2012 Express がインストールされます)。 DirSync サーバーと同じデータベース インスタンスは使用しないでください。
+   * SQL Server の既存のインスタンス (既定: Azure AD Connect により、SQL Server 2019 Express がインストールされます)。 DirSync サーバーと同じデータベース インスタンスは使用しないでください。
    * SQL Server への接続に使用するサービス アカウント (SQL Server データベースがリモートの場合、このアカウントはドメイン サービス アカウントにする必要があります)。
      これらのオプションは、次の画面で表示されます。  
      ![DirSync からアップグレードするための高度な構成オプションを示すスクリーンショット。](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)

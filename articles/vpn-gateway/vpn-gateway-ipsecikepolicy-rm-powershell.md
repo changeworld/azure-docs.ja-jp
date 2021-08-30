@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe50cc3b8387b8cf377a1dce7cdcd69d174bd6ef
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6bbea74f635375785f325f48a2babb01af7c8228
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671876"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463193"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
@@ -63,7 +63,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5  |
 | DH グループ         | DHGroup24、ECP384、ECP256、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、なし |
 | IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし    |
-| IPsec 整合性  | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
+| IPsec 整合性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
 | PFS グループ        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、なし 
 | QM SA の有効期間   | (**オプション**: 指定されていない場合、既定値が使用されます)<br>秒 (整数: **最小 300**/既定値 27,000 秒)<br>キロバイト数 (整数: **最小 1024**/既定値 102,400,000 キロバイト)   |
 | トラフィック セレクター | UsePolicyBasedTrafficSelectors** ($True/$False； **Optional**、指定されていない場合、既定値は $False)    |

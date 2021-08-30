@@ -9,12 +9,13 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: db2b2c413803e9c2c9952e0b75e30e9a74939871
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1b69aed711100eead6e7669c7d57e2f8faac25ad
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461569"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429183"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Python ライブラリを管理する
 

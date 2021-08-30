@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/26/2020
+ms.date: 06/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76b4469b9b0e6fcb23f9c12fa648a8204b06eb79
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103600864"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004954"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Azure Active Directory でセルフサービス パスワード リセットをトラブルシューティングする
 
@@ -49,6 +49,16 @@ UI の多くの要素は、必要になるまで表示されません。 特定�
 ## <a name="sspr-reporting"></a>SSPR レポート
 
 Azure portal の SSPR レポートで問題が発生した場合は、次のトラブルシューティングの手順を確認してください。
+
+### <a name="i-see-an-authentication-method-that-i-have-disabled-in-the-add-method-option-in-combined-registration"></a>統合された登録の [方法の追加] オプションで無効にした認証方法が表示される。
+
+統合された登録では、 **[方法の追加]** に表示される方法を決定するにあたり、次の 3 つのポリシーが考慮されます。 
+
+- [セルフサービス パスワード リセット](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+- [MFA](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)
+- [認証方法](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade/AdminAuthMethods)
+
+アプリの通知を SSPR では無効にしたにもかかわらず MFA ポリシーでは有効にした場合、統合された登録にそのオプションが表示されます。 もう 1 つの例として、ユーザーが SSPR で **[会社電話]** を無効にしても、 **[Phone/Office]\(電話/会社\)** 電話プロパティを設定している場合は、会社電話が引き続きオプションとして表示されます。 
 
 ### <a name="i-dont-see-any-password-management-activity-types-in-the-self-service-password-management-audit-event-category"></a>**[セルフサービスのパスワード管理]** 監査イベント カテゴリに、パスワード管理アクティビティの種類が表示されません。
 
@@ -98,6 +108,7 @@ Azure portal で、 **[セルフサービス パスワード リセットが有�
 | パスワードのリセット ポリシーを設定しましたが、管理者アカウントでパスワードのリセットを使用してもポリシーが適用されません。 | マイクロソフトは、最高レベルのセキュリティを維持するために、管理者パスワード リセット ポリシーを管理、制御しています。 |
 | ユーザーが 1 日に何回もパスワードの　リセットを試みることはできません。 | ユーザーが短時間に何回もパスワードをリセットできないように、自動調整メカニズムが使用されています。 調整は次のシナリオで行われます。 <br><ul><li>ユーザーが 1 時間に 5 回、電話番号の検証を試みる場合。</li><li>ユーザーが 1 時間に 5 回、セキュリティの質問ゲートの使用を試みる場合。</li><li>ユーザーが 1 時間に 5 回、同じユーザー アカウントのパスワードのリセットを試みる場合。</li></ul>この問題が発生した場合、ユーザーは最後に試行したときから 24 時間待つ必要があります。 そのあと、ユーザーはパスワードをリセットできるようになります。 |
 | ユーザーが自分の電話番号を検証するときにエラーが表示されます。 | このエラーは、入力した電話番号がファイルの電話番号と一致しない場合に発生します。 電話ベースの方法でパスワードのリセットを試みる場合は、ユーザーが国番号と市外局番を含む完全な電話番号を入力していることを確認します。 |
+| ユーザーが自分のメール アドレスを使用しているときにエラーが表示されます。 | UPN がユーザーのプライマリ ProxyAddress/SMTPAddress と異なる場合、テナントの [[Sign-in to Azure AD with email as an alternate login ID]\(代替ログイン ID としてメール アドレスを使用して Azure AD にサインインする\)](howto-authentication-use-email-signin.md) 設定が有効になっている必要があります。 |
 | 要求の処理中にエラーが発生しました。 | 一般的な SSPR 登録エラーはさまざまな問題が原因で発生することがありますが、一般的にサービスの停止や構成の問題が原因で発生します。 SSPR 登録処理を再試行したときに、この一般的なエラーが引き続き表示される場合は、[Microsoft サポートに問い合わせて](#contact-microsoft-support)、追加のサポートを要請してください。 |
 | オンプレミスのポリシーの違反 | パスワードは、オンプレミスの Active Directory のパスワード ポリシーを満たしていません。 ユーザーは、複雑さまたは強度の要件を満たすパスワードを定義する必要があります。 |
 | パスワードがあいまいポリシーに準拠していません | 使用されたパスワードは[禁止パスワード リスト](./concept-password-ban-bad.md#how-are-passwords-evaluated)に表示され、使用することはできません。 ユーザーは、禁止パスワード リストのポリシーを満たしているかそれ以上の強度のパスワードを定義する必要があります。 |

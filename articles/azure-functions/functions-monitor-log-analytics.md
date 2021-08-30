@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: b6ce9e77421df0563810fd7f8255720c1fd2d0c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 194154f192cfcc91138b13bd37b37d80d38097d2
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591072"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126790"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Azure Functions の監視
 
@@ -22,7 +22,7 @@ Azure Monitor Logs を使うと、同じワークスペース内の異なるリ�
 Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ言語](/azure/kusto/query/)のバージョンを使用します。それは、単純なログ検索に適していますが、集計、結合、スマート分析などの高度な機能も備えています。 [さまざまなレッスン](../azure-monitor/logs/get-started-queries.md)を利用すれば、クエリ言語はすぐに覚えることができます。
 
 > [!NOTE]
-> 現在、Azure Monitor Logs との統合は、Windows Consumption、Premium、Dedicated ホスティング プランで実行されている v2 および v3 の関数アプリについてはパブリック プレビュー段階にあります。
+> Azure Monitor ログとの統合は現在、パブリック プレビュー段階です。 [バージョン 1.x](functions-versions.md) で実行されている関数アプリではサポートされません。
 
 ## <a name="setting-up"></a>設定
 

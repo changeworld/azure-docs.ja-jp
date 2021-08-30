@@ -70,21 +70,7 @@
     - name: フェールオーバーと修正プログラムの適用
       href: cache-failover.md
     - name: ベスト プラクティス
-      items:
-        - name: 接続の回復力
-          href: cache-best-practices-connection.md
-        - name: サーバーの負荷管理
-          href: cache-best-practices-server-load.md
-        - name: メモリ管理
-          href: cache-best-practices-memory-management.md
-        - name: 開発
-          href: cache-best-practices-development.md
-        - name: スケーリング
-          href: cache-best-practices-scale.md
-        - name: Kubernetes でホストされるクライアント アプリケーション
-          href: cache-best-practices-kubernetes.md
-        - name: パフォーマンス テスト
-          href: cache-best-practices-performance.md
+      href: cache-best-practices.md
     - name: セキュリティ
       items:
         - name: ネットワークの分離のオプション

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/02/2021
-ms.openlocfilehash: d528d75bd26bf17ca0da20447848d315e2dc9057
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/23/2021
+ms.openlocfilehash: 5e568e0e41b4273b94f12006d998a711229335c5
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111406879"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893512"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースのアップグレード
 
@@ -86,6 +86,9 @@ ms.locfileid: "111406879"
 - お使いの PostgreSQL サーバーで TLS または SSL 接続を必要とする場合 (Azure Database for PostgreSQL サーバーでは既定でオン) は、pg_restore ツールが TLS で接続するように、環境変数 `PGSSLMODE=require` を設定します。 TLS を使用しない場合、エラー `FATAL:  SSL connection is required. Please specify SSL options and retry.` が表示される場合があります。
 
 - Windows コマンド ラインで、コマンド `SET PGSSLMODE=require` を実行してから、pg_restore コマンドを実行します。 Linux または Bash では、コマンド `export PGSSLMODE=require` を実行してから、pg_restore コマンドを実行します。
+
+>[!Important]
+> これらのコマンドは、運用環境で使用する前にテスト環境でテスト、検証することをお勧めします。
 
 ### <a name="method-1-migrate-using-dump-file"></a>方法 1:ダンプ ファイルを使用して移行する
 
@@ -171,4 +174,6 @@ PostgreSQL クライアントがない場合、または Azure Cloud Shell を�
 
 - ターゲット データベースの機能に問題がなければ、古いデータベース サーバーを削除できます。 
 - Azure Database for PostgreSQL (単一サーバーのみ)。 ソース サーバーと同じデータベース エンドポイントを使用する場合、古いソース データベース サーバーを削除した後、古いデータベース サーバー名を使用して読み取りレプリカを作成できます。 レプリケーションの安定した状態が確立されたら、レプリカを停止できます。これにより、レプリカ サーバーが独立したサーバーに昇格されます。 詳細については、「[レプリケーション](./concepts-read-replicas.md)」を参照してください。
-- これらのコマンドは､運用環境で使用する前にテスト環境でテスト､検証してください。
+
+>[!Important] 
+> アップグレード後の新しいバージョンの PostgreSQL は、運用環境で直接使用する前にテストすることを強くお勧めします。 たとえば、以前のソースのバージョン ソースと新しいバージョン ターゲットとでサーバーのパラメーターを比較します。 それらが同じであることを確認すると共に、新バージョンに追加された新しいパラメーターがあればチェックします。 バージョン間の違いについては、[こちら](https://www.postgresql.org/docs/release/)を参照してください。

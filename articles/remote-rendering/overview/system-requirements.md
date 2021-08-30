@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: 789233ce1ede751276f965143716694c6feca3ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 320f9ef1285f16a3f7b38b3b4be3e5c51eff269f
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105032795"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729806"
 ---
 # <a name="system-requirements"></a>システム要件
 
@@ -96,7 +96,6 @@ Remote Rendering 仮想マシンでは、次の IP 範囲からの共有 IP ア�
 | 8266              | UDP      | 送信 | データ転送 |
 | 5000、5433、8443  | TCP      | 送信 | [ArrInspector ツール](../resources/tools/arr-inspector.md)に必要です|
 
-
 ## <a name="software"></a>ソフトウェア
 
 次のソフトウェアがインストールされている必要があります。
@@ -111,10 +110,26 @@ Remote Rendering 仮想マシンでは、次の IP 範囲からの共有 IP ア�
 
 ## <a name="unity"></a>Unity
 
-Unity を使用した開発では、現在のバージョンの Unity (2019.3 または 2019.4 LTS) [(ダウンロード)](https://unity3d.com/get-unity/download) をインストールします。 インストールの管理には Unity Hub を使用することをお勧めします。
+Unity を使用した開発では、サポートされているバージョンの Unity [(ダウンロード)](https://unity3d.com/get-unity/download) インストールします。 インストールの管理には Unity Hub を使用することをお勧めします。
 Unity のインストールには、次のモジュールが含まれていることを確認してください。
 * **UWP** - ユニバーサル Windows プラットフォーム Build Support
 * **IL2CPP** - Windows Build Support (IL2CPP)
+
+### <a name="unity-2019"></a>Unity 2019
+
+Unity 2019 では、バージョン 2019.3 または 2019.4 LTS がサポートされています。 ただし、OpenXR バージョンのプラグインを使用するには、2020 ベースのバージョンが必要です。
+
+Unity 2019 用の ARR では、Windows Mixed Reality 用の従来の **組み込み XR** 統合と、新しい **XR SDK** プラグイン フレームワークの両方がサポートされています。
+
+### <a name="unity-2020"></a>Unity 2020
+
+Unity 2020 では、最新バージョンの Unity 2020.3 を使用します。
+
+> [!IMPORTANT]
+> OpenXR バージョンのプラグインを使用する場合は、"*ユニバーサル レンダー パイプライン*" (URP) のバージョンが 10.5.1 以上であることを確認する必要があります。 これを確認するには、Unity の *Windows* メニューで "*パッケージ マネージャー*" を開き、"*ユニバーサル RP*" セクションを参照します。![ユニバーサル RP のバージョン](./media/unity-universal-rp-version-10-5-1.png)
+
+> [!IMPORTANT]
+> **Unity 2020.3 用の WMR (Windows Mixed Reality)** プラグインでは、現在、ARR でのパフォーマンスが低下しています。 エクスペリエンスを向上させるには、Unity 2019.X を使用し続けるか、OpenXR バージョンに切り替えることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

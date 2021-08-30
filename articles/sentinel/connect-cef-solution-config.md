@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: fe60a36d93a77ee75df578e0f6fc6665da26681e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 49dab18a0f3b58d82b7de9c393f63428ac0d115b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743011"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695192"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>手順 2: CEF メッセージを送信するように、セキュリティ ソリューションを構成する
 
@@ -64,7 +64,7 @@ ms.locfileid: "121743011"
 
 1. CEF イベントを Log Analytics で検索するには、クエリ ウィンドウに `CommonSecurityLog` を入力します。
 
-1. 「手順 3: [接続を検証する](connect-cef-verify.md)」に進みます。
+1. 「手順 3: [接続を検証する](troubleshooting-cef-syslog.md#validate-cef-connectivity)」に進みます。
 
 > [!NOTE]
 > **TimeGenerated フィールドのソースの変更**

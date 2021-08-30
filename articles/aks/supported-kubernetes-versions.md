@@ -3,19 +3,20 @@ title: Azure Kubernetes Service でサポートされている Kubernetes のバ
 description: Azure Kubernetes Service (AKS) の Kubernetes バージョン サポート ポリシーとクラスターのライフサイクルを理解する
 services: container-service
 ms.topic: article
-ms.date: 03/29/2021
+ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: f2f1c01ec323452997f5e7ab8f20e13e1d572a72
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8e883c92e2ce8d64c30aeb6c8a747c18935d36e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438200"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748908"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
-Kubernetes コミュニティでは、おおよそ 3 か月おきにマイナー バージョンをリリースしています。 最近、Kubernetes コミュニティでは、バージョン 1.19 以降の[各バージョンのサポート期間が 9 か月間から 12 か月間に延長](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)されました。 
+Kubernetes コミュニティでは、おおよそ 3 か月おきにマイナー バージョンをリリースしています。 最近、Kubernetes コミュニティでは、バージョン 1.19 以降の[各バージョンのサポート期間が 9 か月間から 12 か月間に延長](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)されました。
 
 マイナー バージョンのリリースには、新しい機能と機能強化が含まれます。 修正プログラムのリリースは、より頻繁な (場合によっては毎週)、マイナー バージョンでの重要なバグ修正を目的としています。 パッチ リリースには、セキュリティの脆弱性または重大なバグの修正が含まれています。
 
@@ -100,7 +101,15 @@ New Supported Version List
 
 たとえば、*kube-apiserver* が *1.17* の場合は、その *kube-apiserver* と共に `kubectl` の *1.16* から *1.18* を使用できます。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 `kubectl` のバージョンをインストールまたは更新するには、`az aks install-cli` を実行します。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+`kubectl` のバージョンをインストールまたは更新するには、[Install-AzAksKubectl][install-azakskubectl] を実行します。
+
+---
 
 ## <a name="release-and-deprecation-process"></a>リリースと非推奨のプロセス
 
@@ -113,7 +122,7 @@ New Supported Version List
 
     > [!NOTE]
     > サブスクリプション管理者を見つけるか、サブスクリプションを変更するには、[Azure サブスクリプションの管理](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)に関するページを参照してください。
-    
+
   * 今後もサポートを受けるには、ユーザーは、バージョンの削除から **30 日** 以内にサポートされるマイナー バージョンのリリースにアップグレードする必要があります。
 
 新しい **パッチ** バージョンの Kubernetes の場合:
@@ -129,7 +138,9 @@ AKS は、運用環境に影響を与える 1 つ以上の重大なバグまた�
 
 ## <a name="azure-portal-and-cli-versions"></a>Azure portal と CLI のバージョン
 
-ポータルまたは Azure CLI を使用して AKS クラスターをデプロイする場合、クラスターは既定で N-1 マイナー バージョンおよび最新パッチに設定されます。 たとえば、AKS でサポートされているのが *1.17.a*、*1.17.b*、*1.16.c*、*1.16.d*、*1.15.e*、および *1.15.f* であれば、選択される既定のバージョンは *1.16.c* となります。
+AKS クラスターをポータル、Azure CLI、または Azure PowerShell でデプロイすると、クラスターは既定で N-1 マイナー バージョンおよび最新パッチに設定されます。 たとえば、AKS でサポートされているのが *1.17.a*、*1.17.b*、*1.16.c*、*1.16.d*、*1.15.e*、および *1.15.f* であれば、選択される既定のバージョンは *1.16.c* となります。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ご使用のサブスクリプションとリージョンで現在使用可能なバージョンを確認するには、[az aks get-versions][az-aks-get-versions] コマンドを使用します。 次の例では、*EastUS* リージョンで使用可能な Kubernetes のバージョンが一覧表示されます。
 
@@ -137,16 +148,27 @@ AKS は、運用環境に影響を与える 1 つ以上の重大なバグまた�
 az aks get-versions --location eastus --output table
 ```
 
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+ご使用のサブスクリプションとリージョンで現在使用可能なバージョンを確認するには、[Get-AzAksVersion][get-azaksversion] コマンドレットを使用します。 次の例では、*EastUS* リージョンで使用可能な Kubernetes のバージョンが一覧表示されます。
+
+```azurepowershell-interactive
+Get-AzAksVersion -Location eastus
+```
+
+---
+
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes リリース予定表
 
 過去のリリース履歴については、[Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History) に関するページを参照してください。
 
 |  K8s バージョン | アップストリームのリリース  | AKS プレビュー  | AKS GA  | サポート終了 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.18  | 2020 年 3 月 23 日  | 2020 年 5 月   | 2020 年 8 月  | *1.21 GA | 
-| 1.19  | 2020 年 8 月 4 日  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA | 
+| 1.18  | 2020 年 3 月 23 日  | 2020 年 5 月   | 2020 年 8 月  | *1.21 GA |
+| 1.19  | 2020 年 8 月 4 日  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA |
 | 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
-| 1.21  | 2021 年 4 月 8 日 | 2021 年 5 月   | 2021 年 6 月  | 1.24 GA |
+| 1.21  | 2021 年 4 月 8 日 | 2021 年 5 月   | 2021 年 7 月  | 1.24 GA |
 | 1.22  | 2021 年 8 月 4 日 | 2021 年 9 月   | 2021 年 10 月  | 1.25 GA |
 | 1.23  | 2021 年 12 月 | 2022 年 1 月   | 2022 年 2 月  | 1.26 GA |
 
@@ -160,11 +182,11 @@ az aks get-versions --location eastus --output table
 
 **Kubernetes の新バージョンについては、Microsoft からどのように通知されますか?**
 
-AKS チームは、Kubernetes の新バージョンの予定日の事前発表を、ドキュメントや [GitHub](https://github.com/Azure/AKS/releases) で公開します。また、サポート対象外となるクラスターを所有するサブスクリプション管理者に電子メールで通知します。  AKS は、発表に加えて、[Azure Advisor](../advisor/advisor-overview.md) を使用して、Azure Portal 内で顧客に通知し、サポート対象外となるユーザーに警告します。また、アプリケーションや開発プロセスに影響する API が推奨されなくなることも警告します。 
+AKS チームは、Kubernetes の新バージョンの予定日の事前発表を、ドキュメントや [GitHub](https://github.com/Azure/AKS/releases) で公開します。また、サポート対象外となるクラスターを所有するサブスクリプション管理者に電子メールで通知します。  AKS は、発表に加えて、[Azure Advisor](../advisor/advisor-overview.md) を使用して、Azure Portal 内で顧客に通知し、サポート対象外となるユーザーに警告します。また、アプリケーションや開発プロセスに影響する API が推奨されなくなることも警告します。
 
 **サポートを利用し続けるには、どのくらいの頻度で Kubernetes のバージョンをアップグレードする必要がありますか?**
 
-Kubernetes 1.19 以降では、[オープン ソース コミュニティへのサポートが 1 年間延長](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)されています。 AKS により、アップストリーム コミットメントに一致するパッチとサポートを有効にすることがコミットされています。 1\.19 以降の AKS クラスターでは、サポートされているバージョンを利用し続けることができるように、1 年に 1 回以上アップグレードできます。 
+Kubernetes 1.19 以降では、[オープン ソース コミュニティへのサポートが 1 年間延長](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)されています。 AKS により、アップストリーム コミットメントに一致するパッチとサポートを有効にすることがコミットされています。 1\.19 以降の AKS クラスターでは、サポートされているバージョンを利用し続けることができるように、1 年に 1 回以上アップグレードできます。
 
 1\.18 以前のバージョンのサポート期間は 9 か月のままです。サポートされているバージョンを利用し続けるには、9 か月ごとにアップグレードする必要があります。 新しいバージョンを定期的にテストし、Kubernetes 内に最新かつ安定した拡張機能を取り込むために新しいバージョンへのアップグレードに備えるようにします。
 
@@ -181,7 +203,7 @@ Kubernetes 1.19 以降では、[オープン ソース コミュニティへの�
 
 "サポート外" とは次のことを意味します。
 * 実行しているバージョンがサポートされているバージョンの一覧に含まれていない。
-* サポートを要求すると、サポートされているバージョンにクラスターをアップグレードするよう求められる (ただし、バージョンの非推奨後、30 日間の猶予期間中である場合を除く)。 
+* サポートを要求すると、サポートされているバージョンにクラスターをアップグレードするよう求められる (ただし、バージョンの非推奨後、30 日間の猶予期間中である場合を除く)。
 
 さらに、AKS では、サポートされているバージョンの一覧に含まれていないクラスターのランタイムなどは保証されません。
 
@@ -216,7 +238,7 @@ AKS でサポートされていないマイナー バージョンについては
 
 **非推奨になったばかりのバージョンを使用していますが、新しいノード プールを追加できますか? または、アップグレードする必要がありますか?**
 
-いいえ。 非推奨のバージョンのノード プールをクラスターに追加することはできません。 新しいバージョンのノード プールを追加することはできます。 ただし、そのためには、まず、コントロール プレーンを更新する必要があります。 
+いいえ。 非推奨のバージョンのノード プールをクラスターに追加することはできません。 新しいバージョンのノード プールを追加することはできます。 ただし、そのためには、まず、コントロール プレーンを更新する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -230,3 +252,5 @@ AKS でサポートされていないマイナー バージョンについては
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az_aks_get_versions
 [preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[install-azakskubectl]: /powershell/module/az.aks/install-azakskubectl
+[get-azaksversion]: /powershell/module/az.aks/get-azaksversion

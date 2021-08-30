@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/21/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 61ce8f178bbdf8bf6cbb981933bed290a20fe04e
-  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+  ms.openlocfilehash: 801cbe5871390a0f19a25ed606857bbbf7e09aba
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96749098"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122779950"
 landingContent:
 - title: Azure Database for PostgreSQL について
   linkLists:
@@ -61,6 +61,8 @@ landingContent:
       url: flexible-server/overview.md
     - text: すべてのフレキシブル サーバーのドキュメントを見る
       url: flexible-server/index.yml
+    - text: フレキシブル サーバーを無料で試す
+      url: flexible-server/how-to-deploy-on-azure-free-account.md
   - linkListType: concept
     links:
     - text: サーバーの概念

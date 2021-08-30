@@ -40,12 +40,16 @@
       items:
         - name: ロールの割り当ての一覧表示
           href: view-assignments.md
-        - name: グループのロールの割り当ての一覧表示
+        - name: ユーザーのロールの割り当ての表示
+          href: list-role-assignments-users.md
+        - name: グループのロールの割り当ての表示
           href: groups-view-assignments.md
     - name: ロールを割り当てる
       items:
         - name: ユーザーにロールを割り当てる
           href: manage-roles-portal.md
+        - name: さまざまなスコープでユーザーにロールを割り当てる
+          href: assign-roles-different-scopes.md
         - name: ロールを割り当て可能なグループを作成する
           href: groups-create-eligible.md
         - name: ロールをグループに割り当てる
@@ -80,7 +84,7 @@
           href: admin-units-assign-roles.md
     - name: 代理人
       items:
-        - name: アプリの管理社ロールを委任する
+        - name: 管理者ロールを委任する
           href: delegate-app-roles.md
         - name: マイ スタッフの委任
           href: my-staff-configure.md

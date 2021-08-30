@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: 最新の更新
       items:
+        - name: 2021 年 7 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-july-2021/'
         - name: 2021 年 6 月の新機能と更新された機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-june-2021/'
         - name: 2021 年 5 月の新機能と更新された機能
@@ -145,48 +147,6 @@
       href: core/overview-iot-central-operator.md
     - name: アプリケーション テンプレートとは
       href: core/concepts-app-templates.md
-    - name: 業界に固有のアプリケーション テンプレート
-      items:
-        - name: 小売
-          items:
-            - name: 概要
-              href: retail/overview-iot-central-retail.md
-            - name: ストア内分析チェックアウトのアーキテクチャ
-              href: retail/store-analytics-architecture.md
-            - name: スマート在庫管理のアーキテクチャ
-              href: retail/architecture-smart-inventory-management.md
-            - name: コネクテッド ロジスティックのアーキテクチャ
-              href: retail/architecture-connected-logistics.md
-            - name: デジタル流通センター
-              href: retail/architecture-digital-distribution-center.md
-            - name: マイクロフルフィルメント センターのアーキテクチャ
-              href: retail/architecture-micro-fulfillment-center.md
-            - name: ビデオ分析 - オブジェクトとモーションの検出
-              href: retail/architecture-video-analytics.md
-        - name: エネルギー
-          items:
-            - name: 概要
-              href: energy/overview-iot-central-energy.md
-            - name: スマート メーター アプリのアーキテクチャ
-              href: energy/concept-iot-central-smart-meter-app.md
-            - name: ソーラー パネル アプリのアーキテクチャ
-              href: energy/concept-iot-central-solar-panel-app.md
-        - name: 政府
-          items:
-            - name: 概要
-              href: government/overview-iot-central-government.md
-            - name: コネクテッド廃棄物の監視アーキテクチャ
-              href: government/concepts-connectedwastemanagement-architecture.md
-            - name: 水消費量の監視アーキテクチャ
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
-            - name: 水質監視アーキテクチャ
-              href: government/concepts-waterqualitymonitoring-architecture.md
-        - name: 医療
-          items:
-            - name: 概要
-              href: healthcare/overview-iot-central-healthcare.md
-            - name: 患者の継続的なモニタリングのアーキテクチャ
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: デバイス テンプレートとは
       href: core/concepts-device-templates.md
     - name: デバイスの接続性
@@ -245,8 +205,6 @@
           href: core/howto-create-custom-rules.md
         - name: Databricks を使用してカスタム分析を作成する
           href: core/howto-create-custom-analytics.md
-        - name: Power BI でのデータの視覚化
-          href: core/howto-connect-powerbi.md
         - name: その他の IoT クラウドの接続
           href: core/howto-build-iotc-device-bridge.md
     - name: REST API の使用

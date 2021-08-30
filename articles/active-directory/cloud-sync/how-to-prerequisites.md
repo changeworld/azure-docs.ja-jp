@@ -11,12 +11,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd2d660a0591506b59aaa1b11526175582d2785b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9dc0eed20ee392b668078425946b39ac6c6440c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758773"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742891"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド同期を選択して使用する方法に関するガイダンスを示します。
@@ -109,6 +109,9 @@ TLS 1.2 を有効にするには、次の手順に従います。
     ```
 
 1. サーバーを再起動します。
+## <a name="ntlm-requirement"></a>NTLM 要件
+
+Azure AD Connect Provisioning Agent を実行している Windows Server では NTLM を有効にしないでください。有効になっている場合は、必ず無効にしてください。 
 
 ## <a name="known-limitations"></a>既知の制限事項
 

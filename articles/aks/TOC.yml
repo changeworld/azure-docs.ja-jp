@@ -205,11 +205,11 @@
           href: use-ultra-disks.md
         - name: CSI ストレージ ドライバー
           items:
-            - name: CSI ストレージ ドライバーを有効にする (プレビュー)
+            - name: CSI ストレージ ドライバーを有効にする
               href: csi-storage-drivers.md
-            - name: Azure Disk CSI ドライバー (プレビュー)
+            - name: Azure Disk CSI ドライバー
               href: azure-disk-csi.md
-            - name: Azure Files CSI ドライバー (プレビュー)
+            - name: Azure Files CSI ドライバー
               href: azure-files-csi.md
     - name: ネットワークを構成する
       items:
@@ -223,7 +223,7 @@
           href: internal-lb.md
         - name: Standard Load Balancer の使用
           href: load-balancer-standard.md
-        - name: 静的 IP アドレスの使用
+        - name: 静的 IP アドレスと DNS ラベルの使用
           href: static-ip.md
         - name: イングレス
           items:
@@ -299,13 +299,10 @@
           href: csi-secrets-store-driver.md
     - name: 監視およびログ記録
       items:
-        - name: クラスターのメトリックの表示
-          href: view-metrics.md
-        - name: コンテナーの分析情報
-          href: ../azure-monitor/containers/container-insights-overview.md
-          maintainContext: true
-        - name: コントロール プレーン コンポーネントのログを表示する
-          href: view-control-plane-logs.md
+        - name: AKS の監視
+          href: monitor-aks.md
+        - name: 監視に関するリファレンス
+          href: monitor-aks-reference.md
         - name: kubelet ログの表示
           href: kubelet-logs.md
         - name: コンテナー データをリアルタイムで表示する
@@ -351,32 +348,12 @@
         - name: Azure API Management の使用
           href: ../api-management/api-management-kubernetes.md
           maintainContext: true
-    - name: サービス メッシュの選択とデプロイ
+    - name: サービス メッシュのデプロイ
       items:
         - name: サービス メッシュについて
           href: servicemesh-about.md
         - name: Open Service Mesh AKS アドオン (プレビュー)
           href: servicemesh-osm-about.md
-        - name: Istio の使用
-          items:
-            - name: Istio について
-              href: servicemesh-istio-about.md
-            - name: インストールと構成
-              href: servicemesh-istio-install.md
-            - name: シナリオ - インテリジェントなルーティングとカナリア リリース
-              href: servicemesh-istio-scenario-routing.md
-        - name: Linkerd の使用
-          items:
-            - name: Linkerd について
-              href: servicemesh-linkerd-about.md
-            - name: インストールと構成
-              href: servicemesh-linkerd-install.md
-        - name: Consul の使用
-          items:
-            - name: Consul について
-              href: servicemesh-consul-about.md
-            - name: インストールと構成
-              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: Ansible を使用した AKS クラスターの作成

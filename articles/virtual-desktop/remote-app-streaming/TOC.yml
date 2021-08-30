@@ -24,6 +24,8 @@
   items:
     - name: リモート アプリ ストリーミングの要点
       items:
+        - name: マネージド ID を設定する
+          href: identities.md
         - name: MSIX アプリのアタッチを使用してアプリをデプロイする
           href: msix-app-attach.md
         - name: カスタム アプリをホストする
@@ -46,6 +48,12 @@
           href: ../set-up-scaling-script.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: ユニバーサル印刷を有効にする
           href: /universal-print/fundamentals/universal-print-getting-started?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+        - name: Start VM on Connect
+          items:
+            - name: Start VM on Connect を設定する
+              href: ../start-virtual-machine-connect.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+            - name: Start VM on Connect のよくあるご質問
+              href: ../start-virtual-machine-connect-faq.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: その他のトピック
       items:
         - name: Azure Virtual Desktop リソースに接続する
@@ -124,12 +132,6 @@
           href: ../azure-monitor.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: ディザスター リカバリー プランを設定する
           href: ../disaster-recovery.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
-        - name: Start VM on Connect
-          items:
-            - name: Start VM on Connect を設定する
-              href: ../start-virtual-machine-connect.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
-            - name: Start VM on Connect のよくあるご質問
-              href: ../start-virtual-machine-connect-faq.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
         - name: ドレイン モードを設定する
           href: ../drain-mode.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
 - name: 概念
@@ -202,6 +204,8 @@
       href: ../troubleshoot-set-up-overview.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: 問題の特定と診断
       href: ../diagnostics-role-service.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - name: 作業の開始機能
+      href: ../troubleshoot-getting-started.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: ホスト プールの作成
       href: ../troubleshoot-set-up-issues.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: セッション ホスト仮想マシンの構成

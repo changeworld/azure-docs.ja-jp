@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/18/2021
+ms.date: 06/09/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: anjusingh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 284a1c9d8b79a0d4e9c479afea9713a09c8c0fa4
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 3505f53c9ddeb4f3605554799c029a8195a9ab65
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429610"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004990"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Azure Active Directory を使用して SMS ベース認証用にユーザーを構成して有効にする 
 
@@ -35,7 +35,6 @@ ms.locfileid: "122429610"
 * SMS ベース認証を有効にするには、Azure AD テナントでの "*全体管理者*" 特権が必要です。
 * テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD、EMS、または Microsoft 365 ライセンスのいずれかを保持している必要があります。
     * [Microsoft 365 F1 または F3][m365-firstline-workers-licensing]
-    * [Azure Active Directory Premium P1 または P2][azure-ad-pricing]
     * [Enterprise Mobility + Security (EMS) E3 または E5][ems-licensing] または [Microsoft 365 E3 または E5][m365-licensing]
     * [Office 365 F3][o365-f3]
 
@@ -174,4 +173,3 @@ Azure portal でユーザーのアカウントに電話番号を設定しよう�
 [m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans
 [o365-f1]: https://www.microsoft.com/microsoft-365/business/office-365-f1?market=af
 [o365-f3]: https://www.microsoft.com/microsoft-365/business/office-365-f3?activetab=pivot%3aoverviewtab
-[azure-ad-pricing]: https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing

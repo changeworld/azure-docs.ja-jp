@@ -1,24 +1,34 @@
 ---
 title: Azure Image Builder サービスのトラブルシューティング
 description: Azure VM Image Builder サービスを使用するときの一般的な問題とエラーのトラブルシューティングを行います
-author: cynthn
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85296a7b7de8e1bce03d39ab8c96c8444fe1dffb
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 91b60204c8fddd892fbaacf00a7588cf1a64854d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440954"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180360"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder サービスのトラブルシューティング
-
 この記事は、Azure Image Builder サービスの使用時に発生する可能性がある一般的な問題のトラブルシューティングと解決に役立ちます。
+
+## <a name="prerequisites"></a>前提条件
+ビルドを作成する際は、ビルドが次の前提条件を満たしていることを確認してください。
+    
+- Image Builder サービスは、WinRM または SSH を使用してビルド VM と通信します。これらの設定を、ビルドの一環として無効にしないでください。
+- Image Builder では、ビルドの一環としてリソースが作成されます。Azure Policy が AIB による必要なリソースの作成または使用を妨げていないことを確認してください。
+  - IT_ リソース グループを作成する
+  - ファイアウォールを使用せずにストレージ アカウントを作成する
+- Azure 拡張機能などの意図しない機能が Azure Policy によってビルド VM にインストールされていないことを確認します。
+-   Image Builder に、イメージの読み取り/書き込みと Azure ストレーへの接続を行うための適切なアクセス許可があることを確認します。 [CLI](./image-builder-permissions-cli.md) または [PowerShell](./image-builder-permissions-powershell.md) に関するアクセス許可のドキュメントを参照してください。
+- Image Builder では、スクリプト/インライン コマンドがエラー (ゼロ以外の終了コード) で失敗すると、ビルドが失敗になります。カスタム スクリプトがエラーなし (終了コード 0) で実行されるかユーザー入力を必要とするかをテストして検証済みであることを確認してください。 詳細については、次の[ドキュメント](../windows/image-builder-virtual-desktop.md#tips-for-building-windows-images)を参照してください。
 
 AIB の障害は、次の 2 つの領域で発生する可能性があります。
 - イメージ テンプレートの送信

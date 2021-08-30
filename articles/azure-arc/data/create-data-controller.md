@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 05/05/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 85a5c9f08304c98b544fef2ccb7818d96613b3d4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 74c41ed89a3980967532955e46d4dade9eaacdb1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748135"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728045"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="overview-of-creating-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーの作成に関する概要
 
@@ -27,7 +26,6 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 現時点でサポートされている Kubernetes サービスとディストリビューションの一覧は次のとおりです。
 
 - Azure Kubernetes Service (AKS)
-- Azure Stack の Azure Kubernetes Service エンジン (AKS エンジン)
 - Azure Stack HCI の Azure Kubernetes Service
 - Azure RedHat OpenShift (ARO)
 - OpenShift Container Platform (OCP)
@@ -54,7 +52,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - **データ コントローラーのユーザー名** - データ コントローラー管理者ユーザーの任意のユーザー名。
 - **データ コントローラーのパスワード** - データ コントローラー管理者ユーザーのパスワード。
 - **Kubernetes 名前空間の名前** - データ コントローラーを作成する Kubernetes 名前空間の名前。
-- **接続モード** - 接続モードによって、Azure Arc 対応データ サービス環境から Azure への接続の程度が決定されます。 現在、プレビューでは、間接接続モードと直接接続モードのみがサポートされています。  詳細については、[接続モード](./connectivity.md)に関するページを参照してください。 
+- **接続モード** - 接続モードによって、Azure Arc 対応データ サービス環境から Azure への接続の程度が決定されます。 間接接続モードが一般提供されています。 直接接続モードはプレビュー段階です。  詳細については、[接続モード](./connectivity.md)に関するページを参照してください。 
 - **Azure サブスクリプション ID** - Azure 内のデータ コントローラー リソースを作成する場所の Azure サブスクリプション GUID。
 - **Azure リソース グループ名** - Azure 内のデータ コントローラー リソースを作成するリソース グループの名前。
 - **Azure の場所** - Azure でデータ コントローラー リソース メタデータが格納される Azure の場所。 利用可能なリージョンの一覧については、「[Azure グローバル インフラストラクチャ/リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)」を参照してください。 デプロイしているデータ コントローラーにより管理される Azure リソースに関するメタデータと課金情報は、場所パラメーターとして指定した Azure 内の場所だけに保存されます。 直接接続モードでデプロイしている場合、データ コントローラーの場所パラメーターは、対象とするカスタム場所リソースの場所と同じになります。
@@ -66,8 +64,9 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 > **試してみたい場合**  
 > Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
 > 
-- [[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用してデータ コントローラーを作成する](create-data-controller-using-azdata.md)
-- [Azure Data Studio を使用してデータ コントローラーを作成する](create-data-controller-azure-data-studio.md)
-- [Azure Data Studio で Jupyter ノートブックを使用して Azure portal からデータ コントローラーを作成する](create-data-controller-resource-in-azure-portal.md)
-- [kubectl や oc などの Kubernetes ツールを使用してデータ コントローラーを作成する](create-data-controller-using-kubernetes-native-tools.md)
+- [CLI を使用して間接接続モードでデータ コントローラーを作成する](create-data-controller-indirect-cli.md)
+- [Azure Data Studio を使用して間接接続モードでデータ コントローラーを作成する](create-data-controller-indirect-azure-data-studio.md)
+- [Azure Data Studio で Jupyter ノートブックを使用して、データ コントローラーを Azure portal から間接接続モードで作成する](create-data-controller-indirect-azure-portal.md)
+- [Kubectl や oc などの Kubernetes ツールを使用して、データ コントローラーを間接接続モードで作成する](create-data-controller-using-kubernetes-native-tools.md)
+- [データ コントローラーを直接接続モードで作成する](create-data-controller-direct-prerequisites.md)
 - [テスト デプロイのエクスペリエンスを向上させるために Azure Arc Jumpstart でデータ コントローラーを作成する](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

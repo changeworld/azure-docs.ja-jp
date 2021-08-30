@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 06/08/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc0ea990b9bb41279e5670456c6a81d11a4753c2
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 226377f2a8df895c078d05b58d5ed49c4bba9117
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761603"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802054"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
-| クォータ名 | Scope | Notes | 値 |
+| クォータ名 | Scope | 値 | メモ | 
 | --- | --- | --- | --- |
-| Azure サブスクリプションごとの名前空間の最大数 |名前空間 | 追加の名前空間に対する後続の要求は拒否されます。 | 1000 (既定値と最大値) |
-| キューまたはトピックのサイズ |Entity |キューまたはトピックの作成または更新時に定義されます。 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元コードが例外を受け取ります。 |1、2、3、4、または 5 GB。<br /><br />Premium SKU と、[パーティション分割](../articles/service-bus-messaging/service-bus-partitioning.md)が有効な Standard SKU では、キューまたはトピックの最大サイズは 80 GB です。 |
-| 名前空間のコンカレント接続数 |名前空間 |追加の接続に関する後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。 |ネット メッセージング:1,000。<br /><br />AMQP:5,000。 |
-| キュー、トピック、またはサブスクリプション エンティティの同時受信要求数 |Entity |後続の受信要求が拒否され、呼び出し元コードが例外を受け取ります。 このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。 |5,000 |
-| 名前空間あたりのトピック数またはキュー数 |名前空間 |以後、名前空間でのトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |Basic または Standard レベルでは 10,000。 名前空間のトピックとキューの合計数は、10,000 以下にする必要があります。 <br/><br/>Premium レベルでは、メッセージング ユニット (MU) あたり 1,000 です。 |
-| 名前空間あたりの[パーティション分割されたトピックまたはキュー](../articles/service-bus-messaging/service-bus-partitioning.md)の数 |名前空間 |以後、名前空間でのパーティション分割されたトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合、呼び出し元コードが **QuotaExceededException** 例外を受け取ります。 |Basic レベルと Standard レベル: 100。<br/><br/>パーティション分割されたエンティティは、[Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) レベルではサポートされていません。<br/><br />パーティション分割された各キューまたはトピックは、名前空間あたり 1,000 エンティティのクォータに加算されます。 |
+| Azure サブスクリプションごとの名前空間の最大数 |名前空間 |  1000 (既定値と最大値) |追加の名前空間に対する後続の要求は拒否されます。 |
+| キューまたはトピックのサイズ |Entity | 1、2、3、4、または 5 GB。<p>Premium SKU と、[パーティション分割](../articles/service-bus-messaging/service-bus-partitioning.md)が有効な Standard SKU では、キューまたはトピックの最大サイズは 80 GB です。</p><p>Premium 名前空間の合計サイズの制限は、[メッセージング ユニット](../articles/service-bus-messaging/service-bus-premium-messaging.md)あたり 1 TB です。 名前空間内のすべてのエンティティの合計サイズがこの制限を超えることはできません。</p> | キューまたはトピックの作成または更新時に定義されます。 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元コードが例外を受け取ります。 |
+| 名前空間のコンカレント接続数 |名前空間 |ネット メッセージング:1,000。<br /><br />AMQP:5,000。 | 追加の接続に関する後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。 |
+| キュー、トピック、またはサブスクリプション エンティティの同時受信要求数 |Entity | 5,000 |後続の受信要求が拒否され、呼び出し元コードが例外を受け取ります。 このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。 |
+| 名前空間あたりのトピック数またはキュー数 |名前空間 | Basic または Standard レベルでは 10,000。 名前空間のトピックとキューの合計数は、10,000 以下にする必要があります。 <br/><br/>Premium レベルでは、メッセージング ユニット (MU) あたり 1,000 です。 | 以後、名前空間でのトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |
+| 名前空間あたりの[パーティション分割されたトピックまたはキュー](../articles/service-bus-messaging/service-bus-partitioning.md)の数 |名前空間 | Basic レベルと Standard レベル: 100。<br/><br/>パーティション分割されたエンティティは、[Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) レベルではサポートされていません。<br/><br />パーティション分割された各キューまたはトピックは、名前空間あたり 1,000 エンティティのクォータに加算されます。 | 以後、名前空間でのパーティション分割されたトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合、呼び出し元コードが **QuotaExceededException** 例外を受け取ります。 <p>Basic または Standard レベルの名前空間にパーティション分割されたエンティティを追加する場合は、追加の名前空間を作成します。 </p>|
 | メッセージング エンティティのパスの最大サイズ: キューまたはトピック |Entity |- |260 文字。 |
 | メッセージング エンティティ名の最大サイズ: 名前空間、サブスクリプション、またはサブスクリプション規則 |Entity |- |50 文字。 |
 | メッセージ ID の最大サイズ | Entity |- | 128 |

@@ -73,6 +73,9 @@
         - name: 委任変更の監視
           displayName: activity log
           href: ./how-to/monitor-delegation-changes.md
+        - name: 管理グループのサブスクリプションをオンボードする
+          displayName: 'mg, policy, logic app'
+          href: ./how-to/onboard-management-group.md
     - name: 顧客を表示し、管理する
       displayName: my customers
       href: ./how-to/view-manage-customers.md

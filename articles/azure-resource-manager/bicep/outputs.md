@@ -3,12 +3,12 @@ title: Bicep の出力
 description: Bicep の出力値を定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 25691bb31fbec0b00144619b97db019e13295661
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 1468f1a8a42f51dec1d195d39fe9096746c8193f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112201088"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635141"
 ---
 # <a name="outputs-in-bicep"></a>Bicep の出力
 
@@ -112,7 +112,7 @@ publicIPAddress: {
 
 Bicep では現在、ループはサポートされていません。
 
-:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/outputs.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/output.bicep":::
 
 ## <a name="get-output-values"></a>出力値の取得
 

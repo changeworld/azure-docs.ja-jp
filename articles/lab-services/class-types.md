@@ -3,12 +3,12 @@ title: Azure Lab Services における各種クラスの例 | Microsoft Docs
 description: Azure Lab Services を使用してラボを設定できる、いくつかの種類のクラスを提供します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 81b3426446894b9dd7bfccc942e04c3d9a7ea492
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 0bdbca13fa699d12b566d9943e9e14efa3f37d51
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278760"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037510"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>クラスの種類の概要 - Azure Lab Services
 
@@ -44,12 +44,19 @@ Azure Lab Services を使用した自然言語処理 (NLP) でのディープ �
 
 この種類のラボの設定方法の詳細については、「[Azure Lab Services を使用した自然言語処理でのディープ ラーニングに重点を置いたラボを設定する](class-type-deep-learning-natural-language-processing.md)」を参照してください。
 
-## <a name="ethical-hacking"></a>倫理的ハッキング
+## <a name="ethical-hacking-with-hyper-v"></a>Hyper-V を使用した倫理的ハッキング
 エシカル ハッキングのフォレンジクス面に焦点を当てたクラスのためのラボを設定できます。 侵入テストは、悪意のある攻撃者が利用する可能性のある脆弱性を実証するためにシステムまたはネットワークへの侵入を試みる訓練で、エシカル ハッキング コミュニティで使用します。
 
 エシカル ハッキング クラスの学生は、脆弱性に対する防御のための最新の手法を学習できます。 各学生は、2 つの入れ子になった仮想マシンを持つ Windows Server ホスト仮想マシンを用意し、一方の仮想マシンは [Metasploitable3](https://github.com/rapid7/metasploitable3) イメージ、もう一方のマシンは [Kali Linux](https://www.kali.org/) イメージを使用します。 Metasploitable 仮想マシンは悪用目的に使用します。  Kali Linux 仮想マシンでは、フォレンジック タスクの実行に必要なツールを利用できます。
 
 この種類のラボを設定する方法の詳細については、「[エシカル ハッキング クラスを教えるためのラボを設定する](class-type-ethical-hacking.md)」を参照してください。
+
+## <a name="ethical-hacking-with-virtualbox"></a>VirtualBox を使用した倫理的ハッキング
+エシカル ハッキングのフォレンジクス面に焦点を当てたクラスのためのラボを設定できます。 侵入テストは、悪意のある攻撃者が利用する可能性のある脆弱性を実証するためにシステムまたはネットワークへの侵入を試みる訓練で、エシカル ハッキング コミュニティで使用します。
+
+エシカル ハッキング クラスの学生は、脆弱性に対する防御のための最新の手法を学習できます。 各学生は、2 つの入れ子になった仮想マシンを含む Windows Server ホスト仮想マシンを用意し、一方の仮想マシンは [SEED Labs](https://seedsecuritylabs.org/) イメージ、もう一方のマシンは [Kali Linux](https://www.kali.org/) イメージを使用します。 SEED 仮想マシンは悪用目的に使用します。  Kali Linux 仮想マシンでは、フォレンジック タスクの実行に必要なツールを利用できます。
+
+この種類のラボを設定する方法の詳細については、「[エシカル ハッキング クラスを教えるためのラボを設定する](class-type-ethical-hacking-virtualbox.md)」を参照してください。
 
 ## <a name="matlab"></a>MATLAB
 [MATLAB](https://www.mathworks.com/) は、Matrix laboratory の略で、[MathWorks](https://www.mathworks.com/products/matlab.html) のプログラミング プラットフォームです。  計算能力と視覚化を組み合わせたツールで、数学、エンジニアリング、物理、および化学の分野でよく利用されています。
@@ -74,7 +81,7 @@ Azure Lab Services を使用した自然言語処理 (NLP) でのディープ �
 ## <a name="shell-scripting-on-linux"></a>Linux でのシェル スクリプト
 Linux でのシェル スクリプトの作成を教えるためのラボを設定できます。 スクリプトの作成は、管理者がタスクを繰り返さなくて済むようにできる、システム管理の役に立つ部分です。 このサンプル シナリオのクラスでは、従来の bash スクリプトと拡張スクリプトについて説明します。 拡張スクリプトは、bash コマンドと Ruby を組み合わせたスクリプトです。 このアプローチにより、Ruby でデータを渡すことができ、bash コマンドでシェルと対話することができます。
 
-これらのスクリプト作成のクラスを受講する学生は、Linux 仮想マシンを使用して、Linux の基本を学習し、bash シェル スクリプトの作成にも慣れることができます。 Linux 仮想マシンには、有効になったリモート デスクトップ アクセスが付属しており、[gedit](https://help.gnome.org/users/gedit/stable/) と [Visual Studio Code](https://code.visualstudio.com/) テキスト エディターがインストールされています。
+これらのスクリプト作成のクラスを受講する学生は、Linux 仮想マシンを使用して、Linux の基本を学習し、bash シェル スクリプトの作成にも慣れることができます。 Linux 仮想マシンには、有効になったリモート デスクトップ アクセスが付属しており、[Gedit](https://help.gnome.org/users/gedit/stable/) と [Visual Studio Code](https://code.visualstudio.com/) テキスト エディターがインストールされています。
 
 この種類のラボを設定する方法の詳細については、「[Linux でのシェル スクリプト](class-type-shell-scripting-linux.md)」を参照してください。
 

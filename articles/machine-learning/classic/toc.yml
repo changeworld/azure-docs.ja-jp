@@ -6,19 +6,21 @@
     - name: Machine Learning Studio (クラシック)
       displayName: overview
       href: studio-classic-overview.md
-- name: クイックスタート
+    - name: Azure Machine Learning への移行
+      href: ../migrate-overview.md
+- name: チュートリアル
   items:
     - name: 初めての実験を作成する
       displayName: quickstart
       href: create-experiment.md
-- name: チュートリアル
-  items:
-    - name: '1:予測実験の作成'
-      href: tutorial-part1-credit-risk.md
-    - name: '2:ソリューションのトレーニングと評価'
-      href: tutorial-part2-credit-risk-train.md
-    - name: '3:Web サービスのデプロイ'
-      href: tutorial-part3-credit-risk-deploy.md
+    - name: 予測モデルのトレーニングとデプロイ
+      items:
+        - name: '1:予測実験の作成'
+          href: tutorial-part1-credit-risk.md
+        - name: '2:ソリューションのトレーニングと評価'
+          href: tutorial-part2-credit-risk-train.md
+        - name: '3:Web サービスのデプロイ'
+          href: tutorial-part3-credit-risk-deploy.md
 - name: サンプル
   items:
     - name: 使用可能なデータセット
@@ -138,20 +140,6 @@
         - name: Gallery データ
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-    - name: Azure Machine Learning への移行
-      items:
-        - name: 移行の概要
-          href: migrate-overview.md
-        - name: データセットの移行
-          href: migrate-register-dataset.md
-        - name: 実験のリビルド
-          href: migrate-rebuild-experiment.md
-        - name: Web サービスのリビルド
-          href: migrate-rebuild-web-service.md
-        - name: クライアント アプリケーションの移行
-          href: migrate-rebuild-integrate-with-client-app.md
-        - name: R スクリプトの実行モジュールのリビルド
-          href: migrate-execute-r-script.md
 - name: リファレンス
   items:
     - name: アルゴリズムとモジュールのリファレンス
@@ -164,12 +152,8 @@
       href: /rest/api/machinelearning
 - name: リソース
   items:
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=machine-learning-studio'
     - name: サポートを受ける
       href: support-aml-studio.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 価格

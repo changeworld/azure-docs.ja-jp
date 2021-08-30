@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 08/15/2021
-ms.openlocfilehash: f8e860cb93930c8e412fe102cf52fbf0c8b78e41
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 46e97cf7bb2fd3f54988f1643d047cc19e3fa82e
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418342"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195202"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
@@ -128,7 +128,7 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 
 | 機能 | Azure | Azure Government  |
 | ----- | ----- | ---- |
-|- [オートメーション ルール](../../sentinel/automate-incident-handling-with-automation-rules.md) | パブリック プレビュー | パブリック プレビュー |
+|- [オートメーション ルール](../../sentinel/automate-incident-handling-with-automation-rules.md) | パブリック プレビュー | 利用不可 |
 |- [Bring Your Own ML (BYO-ML)](../../sentinel/bring-your-own-ml.md) | パブリック プレビュー | パブリック プレビュー |
 | - [クロステナントまたはクロスワークスペース インシデント ビュー](../../sentinel/multiple-workspace-view.md) |パブリック プレビュー | パブリック プレビュー |
 | - [エンティティ分析情報](../../sentinel/enable-entity-behavior-analytics.md) | GA | パブリック プレビュー |

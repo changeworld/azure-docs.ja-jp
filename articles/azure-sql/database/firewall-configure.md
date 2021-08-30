@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: sstein
-ms.date: 06/17/2020
-ms.openlocfilehash: 6367a697d33a4d658dea6e68b3a7c9d75e3d8b1a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.reviewer: mathoma
+ms.date: 07/14/2021
+ms.openlocfilehash: c1bb51ff65e7239fc758553288c84a4a52f90740
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675364"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730456"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database と Azure Synapse の IP ファイアウォール規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -103,7 +103,7 @@ ms.locfileid: "110675364"
 
 Azure 内でホストされているアプリケーションから SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。 Azure 接続を有効にするには、開始 IP アドレスと終了 IP アドレスが 0.0.0.0 に設定されているファイアウォール規則が必要です。
 
-Azure のアプリケーションがサーバーに接続しようとすると、ファイアウォールは、このファイアウォール規則の存在を確認することで、Azure 接続が許可されていることを確認します。 これは、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 [オン] に設定すると、**AllowAllWindowsIP** という名前の IP 0.0.0.0 から 0.0.0.0 の受信ファイアウォール規則が作成されます。 ポータルを使用していない場合は、PowerShell または Azure CLI を使用して、開始 IP アドレスと終了 IP アドレスが 0.0.0.0 に設定されたファイアウォール規則を作成します。 
+Azure のアプリケーションがサーバーに接続しようとすると、ファイアウォールは、このファイアウォール規則の存在を確認することで、Azure 接続が許可されていることを確認します。 これは、 **[ファイアウォールと仮想ネットワーク]** 設定で **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を **[オン]** に切り替えることで Azure portal から直接オンにすることができます。 設定を [オン] に切り替えることで、**AllowAllWindowsAzureIps** という名前の IP 0.0.0.0 から 0.0.0.0 の受信ファイアウォール規則が作成されます。 この規則は、マスター データベースの [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) ビューで表示できます。 ポータルを使用していない場合は、PowerShell または Azure CLI を使用して、開始 IP アドレスと終了 IP アドレスが 0.0.0.0 に設定されたファイアウォール規則を作成します。 
 
 > [!IMPORTANT]
 > このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。

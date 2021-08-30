@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2862919f89f6b14d4b3d3287e1b967bba8ccefe9
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c75848cf173254a43e294a01b9b81f1122d85b36
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670620"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112678732"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager 統合を使用して Azure App Service 内のカスタム ドメイン名を構成する
 
@@ -99,4 +99,4 @@ Traffic Manager では CNAME レコードを使用したカスタム ドメイ�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
+> [Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)

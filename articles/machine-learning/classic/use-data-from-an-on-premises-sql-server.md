@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: b47a8e50245df652db1c0c43aa0dddd6f8a5a0c8
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: f038cf653b4efc15c70aa566fc76e484a47472f2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580766"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688429"
 ---
 # <a name="perform-analytics-with-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server データベースを使用して Machine Learning スタジオ (クラシック) で分析を実行する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 多くの場合、オンプレミス データを操作する企業は、機械学習のワークロードのためにクラウドの拡張性と俊敏性という利点を活用しようと考えます。 しかし、オンプレミス データをクラウドに移動するために現在のビジネス プロセスおよびワークフローが中断されることは望みません。 Machine Learning スタジオ (クラシック) では、現在、SQL Server データベースからのデータの読み取りと、そのデータを使用したモデルのトレーニングとスコア付けがサポートされています。 クラウドとオンプレミス サーバー間で、手動でデータをコピーして同期する必要がなくなりました。 代わりに、Machine Learning スタジオ (クラシック) の **データのインポート** モジュールを使用すれば、トレーニングおよびスコア付けジョブのために SQL Server データベースから直接読み取ることができます。
 

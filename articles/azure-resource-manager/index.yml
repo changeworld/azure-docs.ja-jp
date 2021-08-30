@@ -55,24 +55,24 @@ conceptualContent:
         - url: bicep/overview.md
           itemType: overview
           text: 概要
-        - url: /learn/modules/deploy-azure-resources-by-using-bicep-templates
+        - url: /learn/paths/bicep-deploy
           itemType: learn
-          text: Azure リソースを展開する
+          text: Learn パス
         - url: bicep/file.md
           itemType: reference
           text: Bicep ファイルの構造
-        - url: bicep/data-types.md
-          itemType: reference
-          text: Bicep データ型
         - url: bicep/bicep-functions.md
           itemType: reference
           text: Bicep 関数
-        - url: bicep/operators.md
+        - url: /azure/templates/
           itemType: reference
-          text: Bicep 演算子
+          text: リソースの参照
         - url: bicep/deploy-powershell.md
           itemType: how-to-guide
           text: 配置
+        - url: ./bicep/best-practices.md
+          itemType: concept
+          text: ベスト プラクティス
       footerLink:
         url: bicep/index.yml
         text: さらに詳しく

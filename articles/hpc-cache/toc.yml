@@ -67,21 +67,31 @@ items:
         href: /powershell/module/Az.HPCCache
   - name: リソース
     items:
-      - name: サポート チケットを開く
+      - name: サポートにお問い合せください
         href: hpc-cache-support-ticket.md
+      - name: トラブルシューティング
+        items:
+          - name: NFS ストレージ ターゲットの作成のトラブルシューティング
+            href: troubleshoot-nas.md
+          - name: BLOB ストレージ アカウントのファイアウォール設定を回避する
+            href: hpc-cache-blob-firewall-fix.md
+          - name: リージョンの障害から復旧する
+            href: hpc-region-recovery.md
+      - name: ストレージ オプション
+        items:
+          - name: NFS でマウントされた BLOB ストレージを Azure HPC Cache で使用する
+            href: nfs-blob-considerations.md
+          - name: Azure HPC Cache で Azure NetApp Files を使用する
+            href: hpc-cache-netapp.md
       - name: Azure HPC Cache 向けに Azure CLI を設定する
         href: az-cli-prerequisites.md
-      - name: BLOB ストレージ アカウントのファイアウォール設定を回避する
-        href: hpc-cache-blob-firewall-fix.md
-      - name: NFS ストレージ ターゲットの作成のトラブルシューティング
-        href: troubleshoot-nas.md
-      - name: NFS でマウントされた BLOB ストレージを Azure HPC Cache で使用する
-        href: nfs-blob-considerations.md
-      - name: リージョンの障害から復旧する
-        href: hpc-region-recovery.md
       - name: カスタマーマネージド暗号化キーを使用する
         href: customer-keys.md
-      - name: Azure HPC Cache で Azure NetApp Files を使用する
-        href: hpc-cache-netapp.md
+      - name: 製品の概要
+        href: 'https://azure.microsoft.com/services/hpc-cache/'
+      - name: 価格と購入のオプション
+        href: 'https://azure.microsoft.com/pricing/details/hpc-cache/'
+      - name: 製品に関する FAQ
+        href: 'https://azure.microsoft.com/services/hpc-cache/#faq'
       - name: ビデオ
         href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'

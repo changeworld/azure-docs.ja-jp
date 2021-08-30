@@ -120,6 +120,8 @@
       items:
         - name: PowerShell
           href: how-to-assign-app-role-managed-identity-powershell.md
+    - name: マネージド ID アクティビティの表示
+      href: how-to-view-managed-identity-activity.md
 - name: リファレンス
   items:
     - name: .NET

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ed79831559802efdf7e3813f48b74c2fd3c63e87
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: bfcbdeb2755f76d5391de4a3c64a934b43e8f0f2
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581863"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982944"
 ---
 # <a name="monitor-indexer-status-and-results-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーの状態と結果を監視する
 
@@ -48,7 +48,7 @@ ms.locfileid: "106581863"
 
 警告は一部の種類のインデクサーで一般的であり、必ずしも問題を示すとは限りません。 たとえば、認識サービスを利用するインデクサーの場合、画像または PDF ファイルに処理するテキストが含まれないとき、警告が報告されることがあります。 
 
-インデクサーのエラーと警告を調査する方法については、[Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング](search-indexer-troubleshooting.md)に関する記事を参照してください。
+インデクサーのエラーと警告を調査する方法について詳しくは、[インデクサーのトラブルシューティング ガイド](search-indexer-troubleshooting.md)を参照してください。
 
 ## <a name="monitor-using-get-indexer-status-rest-api"></a>インデクサー状態の取得 (REST API) を使用して監視する
 

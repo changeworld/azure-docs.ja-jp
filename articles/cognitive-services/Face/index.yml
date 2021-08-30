@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 9/01/2020
-  ms.openlocfilehash: e0acf91225ed90f764aac2e4c17904782ec037d4
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 579db900c31992fbb0555a8e19c9b2753f0bde2a
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114447281"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121744764"
 landingContent:
 - title: Face サービスについて
   linkLists:
@@ -28,43 +28,43 @@ landingContent:
     links:
     - text: Face サービスの新機能
       url: releasenotes.md
-- title: 顔を検出する
+- title: 顔認識
   linkLists:
   - linkListType: concept
     links:
-    - text: 顔検出
-      url: concepts/face-detection.md
-  - linkListType: quickstart
-    links:
-    - text: .NET SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-csharp
-    - text: Python SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-python
-    - text: Go SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-go
-  - linkListType: how-to-guide
-    links:
-    - text: 顔検出モデルを指定する
-      url: Face-API-How-to-Topics/specify-detection-model.md
-- title: 顔の認識
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 顔認識
+    - text: 本人確認
       url: concepts/face-recognition.md
   - linkListType: quickstart
     links:
-    - text: .NET SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-csharp
-    - text: Python SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-python
-    - text: Go SDK の使用
-      url: quickstarts/client-libraries.md?pivots=programming-language-go
+    - text: クライアント ライブラリ SDK または REST API を使用して顔を識別する
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp
   - linkListType: how-to-guide
     links:
-    - text: 顔認識モデルを指定する
+    - text: グループに顔を追加する
+      url: Face-API-How-to-Topics/how-to-add-faces.md
+    - text: 大規模なフィーチャーを使用する
+      url: Face-API-How-to-Topics/how-to-use-large-scale.md
+    - text: PersonDirectory 構造を使用する
+      url: Face-API-How-to-Topics/use-persondirectory.md
+    - text: 顔認識モデル バージョンを指定する
       url: Face-API-How-to-Topics/specify-recognition-model.md
-- title: 顔の四角形を使用する
+- title: 検出と分析
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 顔検出と顔属性
+      url: concepts/face-detection.md
+  - linkListType: quickstart
+    links:
+    - text: クライアント ライブラリ SDK または REST API を使用して顔を検出する
+      url: quickstarts/client-libraries.md?pivots=programming-language-csharp
+  - linkListType: how-to-guide
+    links:
+    - text: 顔を検出して分析する
+      url: Face-API-How-to-Topics/howtodetectfacesinimage.md
+    - text: 顔検出モデル バージョンを指定する
+      url: Face-API-How-to-Topics/specify-detection-model.md
+- title: 顔の四角形
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -72,20 +72,6 @@ landingContent:
       url: Face-API-How-to-Topics/howtodetectfacesinimage.md
     - text: HeadPose 属性を使用する
       url: Face-API-How-to-Topics/how-to-use-headpose.md
-- title: コンテナーの使用
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: コンテナーのインストールと実行
-      url: face-how-to-install-containers.md
-  - linkListType: how-to-guide
-    links:
-    - text: コンテナーを構成する
-      url: face-resource-container-config.md
-  - linkListType: deploy
-    links:
-    - text: Container Instances の使用
-      url: ../containers/azure-container-instance-recipe.md
 - title: リファレンス
   linkLists:
   - linkListType: reference

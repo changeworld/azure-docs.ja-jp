@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/18/2021
+ms.date: 08/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ff085c32c7aeb63fea04f04558c1bccd5814b29b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 186219af41630cf66f6addc65edfe31aef1dbb03
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418547"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122270958"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -133,11 +133,14 @@ GZRS と RA-GZRS は、次のリージョンでサポートされています。
 - (アジア太平洋) 東アジア
 - (アジア太平洋) 東南アジア
 - (アジア太平洋) オーストラリア東部
+- (アジア太平洋) インド中部
 - (アジア太平洋) 東日本
+- (アジア太平洋) 韓国中部
 - (カナダ) カナダ中部
 - (ヨーロッパ) 北ヨーロッパ
 - (ヨーロッパ) 西ヨーロッパ
 - (ヨーロッパ) フランス中部
+- (ヨーロッパ) ドイツ中西部
 - (ヨーロッパ) ノルウェー東部
 - (ヨーロッパ) 英国南部
 - (南アメリカ) ブラジル南部

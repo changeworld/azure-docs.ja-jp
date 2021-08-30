@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 05/20/2021
-  ms.openlocfilehash: 4ca69803581d8cf04e20e13845944c55ec334516
-  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+  ms.date: 08/18/2021
+  ms.openlocfilehash: 6f4b12d1c4b4293ee32a30475d99810ac16af8a7
+  ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/02/2021
-  ms.locfileid: "111025418"
+  ms.lasthandoff: 08/19/2021
+  ms.locfileid: "122445033"
 landingContent:
 - title: Bicep
   linkLists:
@@ -97,7 +97,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: テンプレート リファレンス
+    - text: Bicep リソースのリファレンス
       url: /azure/templates/
     - text: Azure PowerShell
       url: /powershell/module/az.resources

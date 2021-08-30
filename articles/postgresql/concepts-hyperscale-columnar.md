@@ -1,25 +1,20 @@
 ---
-title: 列指向テーブル ストレージのプレビュー - Hyperscale (Citus) - Azure Database for PostgreSQL
-description: 列指向ストレージを使用したデータの圧縮 (プレビュー)
+title: 列指向テーブル ストレージ - Hyperscale (Citus) - Azure Database for PostgreSQL
+description: 列指向ストレージを使用したデータの圧縮
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/04/2021
-ms.openlocfilehash: c42cfcc35edf33cf30c4d69b4a1fb15d39dd4009
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 08/03/2021
+ms.openlocfilehash: 557fe7d2242b67f8fa53541aef25cfc44090e48b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773685"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745160"
 ---
-# <a name="columnar-table-storage-preview"></a>列指向テーブル ストレージ (プレビュー)
-
-> [!IMPORTANT]
-> Hyperscale (Citus) の列指向テーブル ストレージは、現在プレビュー中です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
->
-> その他の新機能については、[Hyperscale (Citus) のプレビュー機能](hyperscale-preview-features.md)に関するページで全一覧をご覧いただけます。
+# <a name="columnar-table-storage"></a>列指向テーブル ストレージ
 
 Azure Database for PostgreSQL - Hyperscale (Citus) では、分析およびデータ ウェアハウスのワークロード用に追加専用の列指向テーブル ストレージがサポートされています。 (行ではなく) 列がディスク上に連続して格納されている場合、データはより圧縮可能になり、クエリは列のサブセットをより迅速に要求できます。
 

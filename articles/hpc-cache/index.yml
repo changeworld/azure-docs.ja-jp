@@ -10,12 +10,12 @@ metadata:
   author: ekpgh
   ms.author: v-erkel
   ms.date: 07/08/2021
-  ms.openlocfilehash: bff84eabaf51fbbe8b8435cf5c56a5fd6d4a1e86
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: 0d91bd4c4b1371b155bb564a888c59235efc72c9
+  ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114294882"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122772247"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:
@@ -23,6 +23,8 @@ landingContent:
     links:
     - text: Azure HPC Cache とは
       url: hpc-cache-overview.md
+    - text: HPC Cache ソリューションがワークフローに適しているかどうか
+      url: usage-scenarios.md
 - title: はじめに
   linkLists:
   - linkListType: how-to-guide
@@ -49,7 +51,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: サポート チケットを開く
+    - text: サポートにお問い合せください
       url: hpc-cache-support-ticket.md
     - text: ストレージ ターゲットを編集する
       url: hpc-cache-edit-storage.md

@@ -1,4 +1,5 @@
 - name: エンドユーザー組織向けの Azure Defender for IoT
+  href: index.yml
   items: null
 - name: 概要
   displayName: 'IoT, OT, getting started'
@@ -11,7 +12,7 @@
       displayName: 'deployment, where to deploy'
       href: architecture.md
 - name: クイックスタート
-  expanded: false
+  expanded: true
   items:
     - name: システムの前提条件
       displayName: 'firewall, proxy, open ports'
@@ -22,6 +23,8 @@
 - name: チュートリアル
   expanded: false
   items:
+    - name: Splunk を統合する
+      href: tutorial-splunk.md
     - name: ServiceNow を統合する
       href: tutorial-servicenow.md
 - name: 概念
@@ -36,21 +39,23 @@
           displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment, DL20, EL300, R340, enterprise, SMB, corporate'
           href: how-to-identify-required-appliances.md
         - name: ネットワークをセットアップする
-          displayName: 'passive, browsers, setup, deployment, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning, QOS, QoS, Quality of Service'
+          displayName: 'passive, browsers, setup, deployment, network access, TAP, switch, mirroring, firewall, SPAN, tunnel, monitoring, tuning, QOS, QoS, Quality of Service'
           href: how-to-set-up-your-network.md
         - name: ソフトウェアをインストールする
-          displayName: 'setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports'
+          displayName: 'tunnel, setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports'
           href: how-to-install-software.md
         - name: プロキシを使用してセンサーを接続する
-          displayName: 'Squid, proxy, connect, direct internet access, access, internet'
+          displayName: 'Squid, proxy, connect, direct internet access, access, internet, tunnel'
           href: how-to-connect-sensor-by-proxy.md
+    - name: サブスクリプションの管理
+      items:
+        - name: サブスクリプションの管理
+          displayName: 'onboard, offboard, subscription, billing, pricing, payment, trial, evaluate, committed devices'
+          href: how-to-manage-subscriptions.md
     - name: オンプレミス管理コンソールを準備する
       items:
-        - name: サブスクリプションを管理する
-          displayName: 'onboard, offboard, subscription, billing, pricing, payment'
-          href: how-to-manage-subscriptions.md
         - name: オンプレミス管理コンソールをアクティブにしてセットアップする
-          displayName: 'deployment, activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
+          displayName: 'token, deployment, activate, certificate, sign in, SSL, TLS, login, setup, initial, tunnel, committed activation file'
           href: how-to-activate-and-set-up-your-on-premises-management-console.md
         - name: 高可用性のセットアップ
           displayName: 'primary, secondary, failover, failback fail, recovery'
@@ -75,7 +80,7 @@
       displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets, active, probing, scanning, switch'
       href: how-to-control-what-traffic-is-monitored.md
     - name: オンプレミス管理コンソールからセンサーを管理する
-      displayName: 'disconnect, connect, activation file, sensor backup'
+      displayName: 'update, disconnect, connect, activation file, sensor backup'
       href: how-to-manage-sensors-from-the-on-premises-management-console.md
     - name: 個々のセンサーの管理
       href: how-to-manage-individual-sensors.md
@@ -163,7 +168,7 @@
       displayName: Sentinel
       href: how-to-configure-with-sentinel.md
     - name: センサーとオンプレミスの管理コンソールのトラブルシューティング
-      displayName: 'widget, password, traffic, broadcast, unicast, NTP, quality of service'
+      displayName: 'widget, password, traffic, broadcast, unicast, NTP, quality of service, export, logs'
       href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
     - name: SNMP MIB の監視を設定する
       href: how-to-set-up-snmp-mib-monitoring.md
@@ -178,10 +183,6 @@
           href: integration-fortinet.md
         - name: Palo Alto の統合
           href: integration-palo-alto.md
-        - name: ServiceNow の統合
-          href: integration-servicenow.md
-        - name: Splunk の統合
-          href: integration-splunk.md
         - name: Qradar の統合
           href: integration-qradar.md
 - name: 関連項目

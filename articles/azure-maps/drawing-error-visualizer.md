@@ -3,19 +3,19 @@ title: Azure Maps Drawing Error Visualizer を使用する
 description: この記事では、Creator Conversion API から返された警告とエラーを視覚化する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/21/2021
+ms.date: 05/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: dcd9ccbcbc2372b5648bf6d5367b2c364a34eb0f
-ms.sourcegitcommit: 5c136a01bddfccb2cc9f7e7e7741e2cf2651ddbe
+ms.openlocfilehash: c541a35bf2ef79fd058a58713afd927413ec8fcf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111352437"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738529"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer-with-creator"></a>Creator での Azure Maps Drawing Error Visualizer の使用
+
 
 Drawing Error Visualizer は、変換プロセス中に検出された [Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)を表示するスタンドアロンの Web アプリケーションです。 Error Visualizer Web アプリケーションは、インターネットに接続せずに使用できる静的ページで構成されています。  Error Visualizer を使用すると、[Drawing パッケージの要件](drawing-requirements.md)に従ってエラーと警告を修正できます。 [Azure Maps Conversion API](/rest/api/maps/v2/conversion) からは、エラーが検出された場合にのみ、Error Visualizer のリンクを含む応答が返されます。
 
@@ -45,9 +45,8 @@ Drawing Error Visualizer をダウンロードする前に、次のことを行�
         "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Failed",
-        "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
         "properties": {
-            "diagnosticPackageLocation": "https://atlas.microsoft.com/mapData/ce61c3c1-faa8-75b7-349f-d863f6523748?api-version=1.0"
+            "diagnosticPackageLocation": "https://us.atlas.microsoft.com/mapData/ce61c3c1-faa8-75b7-349f-d863f6523748?api-version=2.0"
         }
     }
     ```

@@ -172,7 +172,7 @@ items:
                 href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: ネットワーク ルーティング設定の構成
                 href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: データ保護
+          - name: データの保護
             items:
               - name: 概要
                 href: data-protection-overview.md
@@ -188,26 +188,32 @@ items:
                 href: snapshots-overview.md
               - name: Change Feed
                 href: storage-blob-change-feed.md
-              - name: 不変 BLOB
-                href: storage-blob-immutable-storage.md
+              - name: BLOB の不変ストレージ
+                items:
+                  - name: 概要
+                    href: immutable-storage-overview.md
+                  - name: 時間ベースの保持ポリシー
+                    href: immutable-time-based-retention-policy-overview.md
+                  - name: 訴訟ホールド
+                    href: immutable-legal-hold-overview.md
           - name: 冗長性とディザスター リカバリー
             items:
               - name: データの冗長性
                 href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: 顧客が管理する、ディザスター リカバリーのためのフェールオーバー
                 href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: オブジェクト レプリケーション
-            href: object-replication-overview.md
           - name: アクセスとパフォーマンスのレベル
             items:
               - name: アクセス層
                 href: storage-blob-storage-tiers.md
               - name: アーカイブ層からのデータのリハイドレート
-                href: storage-blob-rehydration.md
+                href: archive-rehydrate-overview.md
               - name: パフォーマンス レベル
                 href: storage-blob-performance-tiers.md
-              - name: アクセス層のライフサイクルの自動化
-                href: storage-lifecycle-management-concepts.md
+              - name: ライフサイクル管理ポリシー
+                href: lifecycle-management-overview.md
+          - name: オブジェクト レプリケーション
+            href: object-replication-overview.md
           - name: パフォーマンス、スケーリング、コストの最適化
             items:
               - name: パフォーマンスとスケーラビリティのチェックリスト
@@ -442,8 +448,12 @@ items:
                 href: snapshots-manage-dotnet.md
               - name: 変更フィード ログの処理
                 href: storage-blob-change-feed-how-to.md
-              - name: 不変ポリシーの設定と管理
-                href: storage-blob-immutability-policies-manage.md
+              - name: 不変ポリシーを構成する
+                items:
+                  - name: バージョンレベルの不変ポリシーを構成する
+                    href: immutable-policy-configure-version-scope.md
+                  - name: コンテナーレベルの不変ポリシーを構成する
+                    href: immutable-policy-configure-container-scope.md
           - name: 冗長性とフェールオーバーの管理
             items:
               - name: 冗長構成の変更
@@ -454,6 +464,16 @@ items:
                 href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: アカウントのフェールオーバーを開始する
                 href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          - name: BLOB の階層化とライフサイクルの管理
+            items:
+              - name: ライフサイクル管理ポリシーを構成する
+                href: lifecycle-management-policy-configure.md
+              - name: アーカイブでデータを管理する
+                items:
+                  - name: アーカイブ済み BLOB のリハイドレート
+                    href: archive-rehydrate-to-online-tier.md
+                  - name: BLOB リハイドレートでイベントを処理する
+                    href: archive-rehydrate-handle-event.md
           - name: オブジェクト レプリケーションの構成
             href: object-replication-configure.md
           - name: コンカレンシーの管理
@@ -512,8 +532,6 @@ items:
                 href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: BLOB を使用した開発
             items:
-              - name: C++
-                href: storage-c-plus-plus-how-to-use-blobs.md
               - name: iOS
                 href: storage-ios-how-to-use-blob-storage.md
               - name: Java
@@ -524,6 +542,8 @@ items:
             href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Monitor
             items:
+              - name: シナリオとベスト プラクティス
+                href: blob-storage-monitoring-scenarios.md
               - name: ストレージ分析情報を使用する
                 href: ../common/storage-insights-overview.md
               - name: 監視 (クラシック)
@@ -538,7 +558,7 @@ items:
                 href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: リファレンス
         items:
-          - name: Azure Blob Storage リファレンス
+          - name: Blob Storage API リファレンス
             href: ../blobs/reference.md
           - name: AzCopy v10
             items:

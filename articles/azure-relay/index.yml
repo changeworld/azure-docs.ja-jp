@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/23/2021
-  ms.openlocfilehash: 4165b9086b8c28970c6a91ede2b91cac67007a33
-  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+  ms.openlocfilehash: a6c367b634ece73b6071faaf02f4f92b8d7daa6b
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/24/2021
-  ms.locfileid: "114667311"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121741218"
 landingContent:
 - title: Azure Relay について
   linkLists:
@@ -55,6 +55,18 @@ landingContent:
     links:
     - text: GitHub のサンプル
       url: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+- title: セキュリティ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 認証と権限承認
+      url: relay-authentication-and-authorization.md
+    - text: マネージド ID による認証 (プレビュー)
+      url: authenticate-managed-identity.md
+    - text: Azure Active Directory を使用したアプリケーションの認証 (プレビュー)
+      url: authenticate-application.md
+    - text: ネットワークのセキュリティ
+      url: network-security.md
 - title: API リファレンス
   linkLists:
   - linkListType: reference

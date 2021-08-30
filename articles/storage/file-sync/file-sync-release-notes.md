@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 8/10/2021
+ms.date: 8/24/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d159f8ad1840f3351fa31ec78ceead9cdfd7d9b8
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 89d6597bd37ee61b5c42199b660fd2be80fc793a
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183969"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824661"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -121,7 +121,6 @@ Windows Server で Azure File Sync エージェントをインストールして
 - フェールオーバー クラスタリングは、クラスター化ディスクでのみサポートされ、クラスターの共有ボリューム (CSV) ではサポートされません。
 - サーバー エンドポイントを入れ子にすることはできません。 同じボリューム上に、別のエンドポイントと並列に共存させることはできます。
 - サーバー エンドポイントの場所内に OS またはアプリケーションのページング ファイルを格納しないでください。
-- サーバーの名前を変更した場合、ポータル内のサーバー名は更新されません。
 
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
 - Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。

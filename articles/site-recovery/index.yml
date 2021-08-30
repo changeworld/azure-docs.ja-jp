@@ -10,12 +10,12 @@ metadata:
   author: JYOTHIRMAISURI
   ms.author: v-jysur
   ms.date: 11/19/2019
-  ms.openlocfilehash: 9fc3c96c9953810e259cbf72159d87a3130bdf66
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: bd947ba63e513a5e4f823bbd820db9acfe5e4480
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112029749"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122779968"
 landingContent:
 - title: Site Recovery について
   linkLists:
@@ -61,6 +61,8 @@ landingContent:
     links:
     - text: VMware VM のディザスター リカバリー
       url: ./tutorial-prepare-azure.md
+    - text: VMware VM のディザスター リカバリーを試す (プレビュー)
+      url: ./vmware-azure-set-up-replication-tutorial-preview.md
     - text: Hyper-V VM のディザスター リカバリー
       url: ./tutorial-prepare-azure-for-hyperv.md
     - text: 物理サーバーのディザスター リカバリー

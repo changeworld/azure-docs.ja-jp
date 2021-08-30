@@ -16,6 +16,10 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: マシンの監視
       href: ./learn/tutorial-enable-vm-insights.md
+- name: サンプル
+  items:
+    - name: Azure Resource Graph クエリ
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
     - name: セキュリティ

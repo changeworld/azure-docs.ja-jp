@@ -18,16 +18,16 @@ items:
     items:
       - name: 顔を検出して分析する
         href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-      - name: 顔認識モデル バージョンを指定する
-        href: Face-API-How-to-Topics/specify-recognition-model.md
       - name: 顔検出モデル バージョンを指定する
         href: Face-API-How-to-Topics/specify-detection-model.md
+      - name: 顔認識モデル バージョンを指定する
+        href: Face-API-How-to-Topics/specify-recognition-model.md
       - name: グループに顔を追加する
         href: Face-API-How-to-Topics/how-to-add-faces.md
-      - name: PersonDirectory 構造を使用する
-        href: Face-API-How-to-Topics/use-persondirectory.md
       - name: 大規模なフィーチャーを使用する
         href: Face-API-How-to-Topics/how-to-use-large-scale.md
+      - name: PersonDirectory 構造を使用する
+        href: Face-API-How-to-Topics/use-persondirectory.md
       - name: HeadPose 属性を使用する
         href: Face-API-How-to-Topics/how-to-use-headpose.md
       - name: Face サービスを使用するときの待機時間を軽減する
@@ -59,7 +59,7 @@ items:
             href: ../authentication.md?context=/azure/cognitive-services/face/context/context
   - name: 概念
     items:
-      - name: 顔検出
+      - name: 顔検出と分析
         href: concepts/face-detection.md
       - name: 顔認識
         href: concepts/face-recognition.md
@@ -67,9 +67,9 @@ items:
     items:
       - name: Face サービスにユーザーを追加する
         items:
-          - name: ユーザーを追加するためのベスト プラクティス
+          - name: ユーザーを登録するためのベスト プラクティス
             href: enrollment-overview.md
-          - name: ユーザーを追加するための React アプリを構築する
+          - name: ユーザーを登録するための React アプリを作成する
             href: build-enrollment-app.md
   - name: リファレンス
     items:

@@ -9,12 +9,12 @@ metadata:
   ms.date: 09/22/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 612ef6ffa35988a69e6755a38e88a083d533827c
-  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+  ms.openlocfilehash: 4ab2a940f0fdb18b60d626cb96813b708860f8ae
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2021
-  ms.locfileid: "114726652"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122779689"
 landingContent:
 - title: フレキシブル サーバー (プレビュー) について
   linkLists:
@@ -22,6 +22,8 @@ landingContent:
     links:
     - text: フレキシブル サーバーとは
       url: overview.md
+    - text: フレキシブル サーバーを無料で試す
+      url: how-to-deploy-on-azure-free-account.md
   - linkListType: quickstart
     links:
     - text: フレキシブル サーバーを作成する
@@ -54,6 +56,8 @@ landingContent:
       url: concepts-monitoring.md
     - text: 論理レプリケーション
       url: concepts-logical.md
+    - text: インテリジェント チューニング
+      url: concepts-intelligent-tuning.md
   - linkListType: how-to-guide
     links:
     - text: サーバーを管理する
@@ -64,6 +68,10 @@ landingContent:
       url: how-to-scale-compute-storage-portal.md
     - text: サーバーを再起動する
       url: how-to-restart-server-portal.md
+    - text: プライベート ネットワークの設定
+      url: how-to-manage-virtual-network-portal.md
+    - text: TLS を使用して安全に接続する
+      url: how-to-connect-tls-ssl.md
     - text: ログの構成とアクセス
       url: howto-configure-and-access-logs.md
     - text: メンテナンスのスケジュール
