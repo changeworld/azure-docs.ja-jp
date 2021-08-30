@@ -3,13 +3,13 @@ title: 概念 - ストレージ
 description: Azure VMware Solution プライベート クラウドでのストレージ容量、ストレージ ポリシー、フォールト トレランス、ストレージ統合について説明します。
 ms.topic: conceptual
 ms.custom: contperf-fy21q4
-ms.date: 04/26/2021
-ms.openlocfilehash: 8aa421cdee105573bd8edd91a4297ed773f7a459
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 07/28/2021
+ms.openlocfilehash: ae37e0147ea03f91c2af68b8733a1702a02f81f3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108069797"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729011"
 ---
 # <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware Solution のストレージの概念
 
@@ -35,7 +35,7 @@ Azure VMware Solution のプライベート クラウドは、ネイティブの
 
 既定のストレージ ポリシーは、RAID 1 (ミラーリング)、FTT-1、およびシック プロビジョニングに設定されています。  ストレージ ポリシーを調整したり新しいポリシーを適用したりしなければ、クラスターはこの構成で拡大し続けます。 3 ホスト クラスターでは、FTT-1 が 1 つのホストの障害に対応します。 Microsoft は障害を定期的に抑制して、アーキテクチャの観点からイベントが検出されたときにハードウェアを交換します。
 
-:::image type="content" source="media/vsphere-vm-storage-policies.png" alt-text="VSphere クライアント VM ストレージ ポリシーを示すスクリーンショット。":::
+:::image type="content" source="media/concepts/vsphere-vm-storage-policies.png" alt-text="VSphere クライアント VM ストレージ ポリシーを示すスクリーンショット。":::
 
 
 |プロビジョニングの種類  |説明  |
@@ -46,7 +46,7 @@ Azure VMware Solution のプライベート クラウドは、ネイティブの
 >[!TIP]
 >クラスターが 4 つ以上に拡大するかどうかわからない場合は、既定のポリシーを使用してデプロイしてください。  クラスターが拡大することが確実な場合は、最初のデプロイ後にクラスターを拡張するのでなく、デプロイ中に追加のホストをデプロイすることをお勧めします。 VM がクラスターにデプロイされるとき、VM 設定のディスクのストレージ ポリシーを RAID-5 FTT-1 と RAID-6 FTT-2 のどちらかに変更します。 
 >
->:::image type="content" source="media/vsphere-vm-storage-policies-2.png" alt-text="スクリーンショット":::
+>:::image type="content" source="media/concepts/vsphere-vm-storage-policies-2.png" alt-text="RAID-5 FTT-1 と RAID-6 Ftt-2 のオプションが強調表示されているスクリーンショット。":::
 
 
 ## <a name="data-at-rest-encryption"></a>保存データの暗号化
@@ -65,9 +65,10 @@ Microsoft は、容量消費量が 75% を超えたときにアラートを出�
 
 Azure VMware Solution ストレージに関する概念を理解したら、次の事項の学習に進むことができます。
 
-- [プライベート クラウドでクラスターをスケーリングする][tutorial-scale-private-cloud]
-- [Azure NetApp Files および Azure VMware Solution](netapp-files-with-azure-vmware-solution.md)
-- [Azure VMware Solution の vSphere ロールベースのアクセス制御](concepts-identity.md)
+- [ディスク プールを Azure VMware Solution ホストにアタッチする (プレビュー)](attach-disk-pools-to-azure-vmware-solution-hosts.md) - 最適なコストとパフォーマンスを実現するために、Azure VMware Solution の永続ストレージとしてディスクを使用できます。
+- [プライベート クラウドでクラスターをスケーリングする][tutorial-scale-private-cloud] - 実際のアプリケーション ワークロードに応じて、プライベート クラウドにあるクラスターとホストをスケーリングできます。 特定のサービスのパフォーマンスと可用性の制限については、ケース バイ ケースで対処する必要があります。
+- [Azure NetApp Files および Azure VMware Solution](netapp-files-with-azure-vmware-solution.md) - Azure NetApp を使用して、クラウド内の最も要求の厳しいエンタープライズ ファイル ワークロード (データベース、SAP、ハイパフォーマンス コンピューティング アプリケーション) を、コードを変更することなく移行して実行できます。 
+- [Azure VMware Solution の vSphere ロールベースのアクセス制御](concepts-identity.md) - vCenter を使用して VM ワークロードを管理し、NSX-T Manager を使用してプライベート クラウドを管理および拡張します。 アクセスと ID 管理では、vCenter の場合は CloudAdmin ロールが、NSX-T Manager の場合は制限付き管理者権限が使用されます。
 
 
 <!-- LINKS - external-->

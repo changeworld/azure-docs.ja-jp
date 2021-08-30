@@ -98,9 +98,9 @@
               href: manage/understand-vm-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
         - name: 含まれない Windows と SQL のコスト
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
-        - name: 個々のサブスクリプションの利用状況データ
+        - name: 個々のサブスクリプションの予約使用状況データ
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: Enterprise Agreement と Microsoft 顧客契約の利用状況データ
+        - name: EA および Microsoft 顧客契約の予約使用状況データ
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: 課金
       items:
@@ -114,8 +114,6 @@
           href: understand/mca-understand-your-invoice.md
         - name: Microsoft Customer Agreement の価格シートの用語
           href: manage/mca-understand-pricesheet.md
-        - name: Microsoft 顧客契約の FAQ
-          href: understand/mca-faq.md
         - name: Microsoft Partner Agreement の請求書の用語
           href: understand/mpa-invoice-terms.md
         - name: 更新された従量課金制の課金アカウントに対する変更
@@ -258,7 +256,7 @@
               href: understand/download-azure-invoice.md
             - name: Azure の使用量と料金の表示とダウンロード
               href: understand/download-azure-daily-usage.md
-            - name: 請求書と毎日の使用状況データをダウンロードする
+            - name: ご自身の請求書をダウンロードする
               href: manage/download-azure-invoice-daily-usage-date.md
             - name: 税務書類を表示してダウンロードする
               href: understand/mca-download-tax-document.md

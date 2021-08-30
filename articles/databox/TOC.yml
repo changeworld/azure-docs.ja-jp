@@ -116,6 +116,8 @@
                   href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: トラブルシューティング
               items:
+                - name: Data Box の共有アクセス
+                  href: data-box-troubleshoot-share-access.md
                 - name: Data Box のコピーの問題
                   href: data-box-troubleshoot.md
                 - name: Data Box のアップロードの問題

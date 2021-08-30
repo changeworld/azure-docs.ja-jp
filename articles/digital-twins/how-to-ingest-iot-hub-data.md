@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8160a2fdb35062c678fc1a9f2e629cca7885224d
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 65fbc643b1d8cef189e5f8b3e33f580a13380c8f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438998"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750888"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure Digital Twins に IoT Hub テレメトリを取り込む
 
@@ -26,11 +26,11 @@ Azure Digital Twins にデータを取り込むプロセスは、[Azure Function
 
 この例を続行する前に、前提条件として次のリソースを設定する必要があります。
 * **IoT ハブ** 手順については、この [ IoT Hub のクイック スタート](../iot-hub/quickstart-send-telemetry-cli.md)の「*IoT Hub の作成*」のセクションを参照してください。
-* デバイス テレメトリを受信する **Azure Digital Twins インスタンス**。 手順については、[方法: Azure Digital Twins インスタンスと認証の設定](./how-to-set-up-instance-portal.md)に関するページを参照してください。
+* デバイス テレメトリを受信する **Azure Digital Twins インスタンス**。 手順については、[Azure Digital Twins インスタンスと認証の設定](./how-to-set-up-instance-portal.md)に関するページを参照してください。
 
 この記事では、**Visual Studio** も使用します。 最新バージョンは、[Visual Studio のダウンロード](https://visualstudio.microsoft.com/downloads/) ページからダウンロードできます。
 
-### <a name="example-telemetry-scenario"></a>テレメトリのシナリオ例
+## <a name="example-telemetry-scenario"></a>テレメトリのシナリオ例
 
 このハウツーでは、Azure の関数を使用して、IoT Hub から Azure Digital Twins にメッセージを送信する方法の概要について説明します。 メッセージの送信に使用できる構成とマッチング戦略は多数ありますが、この記事の例には次のパーツが含まれています。
 * 既知のデバイス ID を持つ IoT Hub のサーモスタット デバイス
@@ -80,32 +80,30 @@ az dt twin create  --dt-name <instance-name> --dtmi "dtmi:contosocom:DigitalTwin
 
 このセクションでは、Azure Digital Twins にアクセスし、受信した IoT テレメトリ イベントに基づいてツインを更新するという Azure 関数を作成します。 関数を作成して発行するには、次の手順に従います。
 
-#### <a name="step-1-create-a-function-app-project"></a>手順 1: 関数アプリ プロジェクトを作成する
+1. 最初に、Visual Studio で新しい関数アプリ プロジェクトを作成します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#create-an-azure-functions-project)」を参照してください。
 
-最初に、Visual Studio で新しい関数アプリ プロジェクトを作成します。 それを行う方法については、"データを処理するために関数を設定する方法" に関する記事の「*[Visual Studio で関数アプリを作成する](how-to-create-azure-function.md#create-a-function-app-in-visual-studio)*」セクションを参照してください。
+2. 次のパッケージをご利用のプロジェクトに追加します。
+    * [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
+    * [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/)
+    * [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
 
-#### <a name="step-2-fill-in-function-code"></a>手順 2: 関数コードを入力する
+3. Visual Studio で生成したサンプル関数 *Function1.cs* の名前を *IoTHubtoTwins.cs* に変更します。 ファイル内のコードを次のコードに置き換えます。
 
-次のパッケージをご利用のプロジェクトに追加します。
-* [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
-* [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/)
-* [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
-Visual Studio で生成したサンプル関数 *Function1.cs* の名前を *IoTHubtoTwins.cs* に変更します。 ファイル内のコードを次のコードに置き換えます。
+    関数コードを保存します。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
+4. *IoTHubtoTwins.cs* 関数を使用して、プロジェクトを Azure の関数アプリに発行します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#publish-to-azure)」を参照してください。
 
-関数コードを保存します。
+[!INCLUDE [digital-twins-verify-function-publish.md](../../includes/digital-twins-verify-function-publish.md)]
 
-#### <a name="step-3-publish-the-function-app-to-azure"></a>手順 3: 関数アプリを Azure に発行する
+Azure Digital Twins にアクセスするために、関数アプリには、Azure Digital Twins インスタンスにアクセスできるアクセス許可を持つシステム マネージド ID が必要です。 次はその設定をします。
 
-*IoTHubtoTwins.cs* 関数を使用して、プロジェクトを Azure の関数アプリに発行します。
+### <a name="configure-the-function-app"></a>Function App を構成する
 
-それを行う方法については、"データを処理するために関数を設定する方法" に関する記事の「*[関数アプリを Azure に発行する](how-to-create-azure-function.md#publish-the-function-app-to-azure)*」セクションを参照してください。
+次に、Azure Digital Twins インスタンスにアクセスできるように、関数に **アクセス ロールを割り当て** て、**アプリケーション設定を構成** します。
 
-#### <a name="step-4-configure-the-function-app"></a>手順 4: 関数アプリを構成する
-
-次に、Azure Digital Twins インスタンスにアクセスできるように、関数に **アクセス ロールを割り当て** て、**アプリケーション設定を構成** します。 それを行う方法については、"データを処理するために関数を設定する方法" に関する記事の「*[関数アプリのセキュリティ アクセスを設定する](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)*」セクションを参照してください。
+[!INCLUDE [digital-twins-configure-function-app.md](../../includes/digital-twins-configure-function-app.md)]
 
 ## <a name="connect-your-function-to-iot-hub"></a>関数の IoT Hub への接続
 
@@ -140,7 +138,7 @@ _[作成]_ ボタンを選択してイベント サブスクリプションを�
 
 ## <a name="send-simulated-iot-data"></a>シミュレートされた IoT データの送信
 
-新しいイングレス機能をテストするには、デバイス シミュレーターを使用します。このデバイス シミュレーターについては、"[チュートリアル: エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)" に関するページを参照してください。 このチュートリアルは、こちらの [C# で記述された Azure Digital Twins のエンドツーエンドのサンプル プロジェクト](/samples/azure-samples/digital-twins-samples/digital-twins-samples)を使用して進められます。 このリポジトリでは、**DeviceSimulator** プロジェクトを使用します。
+新しいイングレス機能をテストするには、デバイス シミュレーターを使用します。これについては、[エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)に関するページを参照してください。 このチュートリアルは、こちらの [C# で記述された Azure Digital Twins のエンドツーエンドのサンプル プロジェクト](/samples/azure-samples/digital-twins-samples/digital-twins-samples)を使用して進められます。 このリポジトリでは、**DeviceSimulator** プロジェクトを使用します。
 
 このエンド ツー エンドのチュートリアルでは、次の手順を実行します。
 1. [シミュレートされたデバイスを IoT Hub に登録する](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
@@ -179,4 +177,4 @@ az dt twin query --query-command "select * from digitaltwins" --dt-name <Digital
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins を使用したデータのイングレスとエグレスについて確認します。
-* [概念: データのイングレスとエグレス](concepts-data-ingress-egress.md)
+* [データのイングレスとエグレス](concepts-data-ingress-egress.md)

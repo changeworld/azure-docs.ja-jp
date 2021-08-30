@@ -96,6 +96,8 @@
       href: howto-conditional-access-session-lifetime.md
     - name: トラブルシューティング
       items:
+        - name: ポリシーの変更のトラブルシューティング
+          href: troubleshoot-policy-changes-audit-log.md
         - name: サインインに関する問題のトラブルシューティング
           href: troubleshoot-conditional-access.md
         - name: What If ツールを使用したトラブルシューティング

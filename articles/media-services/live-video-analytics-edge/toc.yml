@@ -111,6 +111,8 @@
       href: troubleshoot-how-to.md
     - name: アップグレード中
       href: upgrading-lva-module.md
+    - name: Azure Video Analyzer への移行
+      href: migrate-to-azure-video-analyzer.md
     - name: gRPC 推論サーバーの開発とデプロイ
       href: develop-deploy-grpc-inference-srv-how-to.md
 - name: リファレンス

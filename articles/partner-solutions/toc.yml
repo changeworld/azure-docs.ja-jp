@@ -79,3 +79,21 @@
               href: ./elastic/manage.md
             - name: トラブルシューティング
               href: ./elastic/troubleshoot.md
+    - name: Logz.io
+      items:
+        - name: 概要
+          items:
+            - name: Logz.io とは
+              href: ./logzio/overview.md
+        - name: クイックスタート
+          items:
+            - name: Logz.io リソースの作成
+              href: ./logzio/create.md
+        - name: 方法
+          items:
+            - name: 管理する
+              href: ./logzio/manage.md
+            - name: シングル サインオンを設定する
+              href: ./logzio/setup-sso.md
+            - name: トラブルシューティング
+              href: ./logzio/troubleshoot.md

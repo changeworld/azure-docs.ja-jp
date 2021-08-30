@@ -9,20 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: a050425cec6062bdf4d62c6ace3c61d84eaede5d
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: c4cfe742789576a4aaf61cd3194af64ede849aa7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582818"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695012"
 ---
 # <a name="create-endpoints-for-deployed-machine-learning-studio-classic-web-services"></a>デプロイされた Machine Learning スタジオ (クラシック) Web サービス用のエンドポイントを作成する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-> [!NOTE]
-> このトピックでは、**従来** の Machine Learning Web サービスに適用できる手法について説明します。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。 既定のエンドポイントは、その API キーを使用して呼び出すことができます。 Web サービス ポータルから、独自のキーでさらにエンドポイントを追加できます。
 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。 各エンドポイントは一意の URL と承認キーであり、お客様に配布することができます。

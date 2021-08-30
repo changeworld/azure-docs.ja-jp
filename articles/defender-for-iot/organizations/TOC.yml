@@ -175,8 +175,6 @@
       displayName: health
     - name: パートナーとの統合
       items:
-        - name: Cisco ISE pxGrid の統合
-          href: integration-cisco-ise-pxgrid.md
         - name: Forescout の統合
           href: integration-forescout.md
         - name: Fortinet の統合

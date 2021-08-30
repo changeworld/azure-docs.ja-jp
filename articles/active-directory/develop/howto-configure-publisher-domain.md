@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 06/23/2021
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
-ms.custom: aaddev
-ms.openlocfilehash: d17bd46d8036ff2535b0dede9ab95121ad3bf7a8
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.custom: contperf-fy21q4, aaddev
+ms.openlocfilehash: 43fef26f3006120cb62676bfd5675c1e79b849d4
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713434"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579974"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>方法:アプリケーションの発行元ドメインを構成する
 
@@ -81,9 +81,7 @@ ms.locfileid: "109713434"
    ```
 
 1. プレースホルダー *{YOUR-APP-ID-HERE}* をアプリに対応するアプリケーション (クライアント) ID に置き換えます。
-
 1. このファイルを `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` でホストします。 プレースホルダー *{YOUR-DOMAIN-HERE}* を検証済みのドメインに一致するように置き換えます。
-
 1. **[ドメインを検証して保存]** ボタンをクリックします。
 
 ドメインの検証後、検証に使用されるリソースを保持する必要はありません。 検証が完了したら、ホストされているファイルは削除できます。
@@ -93,8 +91,8 @@ ms.locfileid: "109713434"
 テナントに検証済みのドメインが存在する場合は、 **[確認済みドメインの選択]** ドロップダウンからいずれかのドメインを選択します。
 
 > [!NOTE]
-> 返される必要がある `Content-Type` ヘッダーは `application/json` です。 `application/json; charset=utf-8` のようにそれ以外のものを使用すると、以下に示すエラーが発生する場合があります。
-> 
+> 返される必要がある `Content-Type` ヘッダーは `application/json` です。 `application/json; charset=utf-8` のようにそれ以外のものを使用するとエラーが発生する場合があります。
+>
 > `Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value.`
 >
 
@@ -112,7 +110,7 @@ ms.locfileid: "109713434"
 
 ## <a name="implications-on-redirect-uris"></a>リダイレクト URI への影響
 
-ユーザーが職場または学校アカウントあるいは個人の Microsoft アカウント ([マルチテナント](single-and-multi-tenant-apps.md)) でサインインするアプリケーションは、リダイレクト URI を指定するときにいくつかの制限に従います。
+ユーザーが職場または学校アカウントあるいは個人の Microsoft アカウント (マルチテナント) でサインインするアプリケーションは、リダイレクト URI を指定するときにいくつかの制限に従います。
 
 ### <a name="single-root-domain-restriction"></a>単一のルート ドメインの制限
 

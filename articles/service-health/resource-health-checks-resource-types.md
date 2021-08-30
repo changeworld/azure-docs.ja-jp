@@ -2,13 +2,13 @@
 title: Azure Resource Health でサポートされるリソースの種類 |Microsoft Docs
 description: Azure Resource Health でサポートされるリソースの種類
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/05/2021
+ms.openlocfilehash: 2b3c2944cff20db2feb3236ca7381107f3db6061
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97883369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741960"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -264,7 +264,13 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>ホスト サーバーが稼働しているか</li><li>インターネット インフォメーション サーバーが実行されているか</li><li>ロード バランサーが実行されているか</li><li>データセンターから Web アプリにアクセスできるか</li><li>サイト コンテンツをホストしているストレージ アカウントを利用できるか</li></ul>|
 
+## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/vaults
+
+| 実行されるチェック |
+| --- |
+|<ul><li>このコンテナーで構成されているバックアップ項目に関するバックアップ操作が、ユーザーのコントロールを超えた原因のために失敗しているか</li><li>このコンテナーで構成されているバックアップ項目に関する復元操作が、ユーザーのコントロールを超えた原因のために失敗しているか</li></ul> |
+
 ## <a name="next-steps"></a>次の手順
 -  [Azure Service Health ダッシュボードの概要](service-health-overview.md)に関するページと [Azure Resource Health の概要](resource-health-overview.md)に関するページを読んで、それらについての理解を深めます。 
--  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
+-  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.yml)
 - アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](./alerts-activity-log-service-notifications-portal.md)に関するページを参照してください。

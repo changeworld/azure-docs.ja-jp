@@ -2,14 +2,14 @@
 title: Durable Functions のバインド - Azure
 description: Azure Functions の Durable Functons 拡張機能のトリガーとバインドの使用方法。
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 08/03/2021
 ms.author: azfuncdf
-ms.openlocfilehash: a07748f996788825b21b5c23a117954085dadcbf
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 097527dbbf4363365e609a1f5aac1d851eb5dc60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656940"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742660"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -397,6 +397,21 @@ async def main(msg: func.QueueMessage, starter: str) -> None:
 > エンティティ トリガーは、Durable Functions 2.x 以降で使用できます。
 
 内部的には、このトリガー バインドによって、実行する必要がある新しいエンティティ操作について、構成された永続ストアがポーリングされます。
+
+.NET を使用して関数を作成する場合、エンティティ トリガーは [EntityTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.entitytriggerattribute) .NET 属性を使用して構成されます。
+
+JavaScript、Python、または PowerShell を使用する場合、エンティティ トリガーは、*function.json* の `bindings` 配列の次の JSON オブジェクトによって定義されます。
+
+```json
+{
+    "name": "<Name of input parameter in function signature>",
+    "entityName": "<Optional - name of the entity>",
+    "type": "entityTrigger",
+    "direction": "in"
+}
+```
+
+既定では、エンティティの名前は関数の名前です。
 
 ### <a name="trigger-behavior"></a>トリガーの動作
 

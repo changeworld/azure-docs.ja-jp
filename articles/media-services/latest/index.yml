@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Media Services v3 のクラウドベース プラットフォームのドキュメント
-summary: Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
+title: Azure Media Services (v3) のドキュメント
+summary: Media Services を使用して、ライブ イベントのブロードキャスト、エンコード、パッケージ化、オンデマンドでのビデオのストリーム配信を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 metadata:
-  title: Azure Media Services v3 のクラウドベース プラットフォームのドキュメント
-  description: Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。
+  title: Azure Media Services (v3) のドキュメント
+  description: Media Services を使用して、ライブ イベントのブロードキャスト、エンコード、パッケージ化、オンデマンドでのビデオのストリーム配信を行う方法を説明します。
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: IngridAtMicrosoft
   ms.author: inhenkel
-  ms.date: 03/25/2021
-  ms.openlocfilehash: fb85f973a8a20340768249a6dc2d04a360c9e587
-  ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+  ms.date: 08/18/2021
+  ms.openlocfilehash: 7e249a36b629c2c91acf67a26294fef50f1f0197
+  ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/03/2021
-  ms.locfileid: "106277489"
+  ms.lasthandoff: 08/21/2021
+  ms.locfileid: "122635042"
 landingContent:
 - title: Media Services について
   linkLists:
@@ -27,6 +27,8 @@ landingContent:
       url: media-services-overview.md
     - text: Media Services の最新情報
       url: release-notes.md
+    - text: よく寄せられる質問
+      url: frequently-asked-questions.yml
   - linkListType: concept
     links:
     - text: Media Services アカウント
@@ -41,6 +43,8 @@ landingContent:
       url: player-use-azure-media-player-how-to.md
     - text: v3 API を使用した開発のガイダンス
       url: media-services-apis-overview.md
+    - text: v2 からの移行
+      url: migrate-v-2-v-3-migration-introduction.md
 - title: はじめに
   linkLists:
   - linkListType: how-to-guide
@@ -51,6 +55,8 @@ landingContent:
       url: ./access-api-howto.md
   - linkListType: download
     links:
+    - text: すべての GitHub コード サンプル
+      url: samples-overview.md
     - text: .NET SDK のサンプル
       url: https://github.com/Azure-Samples/media-services-v3-dotnet
     - text: Java SDK のサンプル
@@ -111,6 +117,8 @@ landingContent:
       url: analyze-video-audio-files-concept.md
     - text: コンプライアンス、プライバシー、セキュリティ
       url: analyze-video-audio-files-concept.md#compliance-privacy-and-security
+    - text: Azure Video Analyzer (プレビュー) のドキュメント
+      url: ../../azure-video-analyzer/video-analyzer-docs/overview.md
   - linkListType: tutorial
     links:
     - text: ビデオを分析する

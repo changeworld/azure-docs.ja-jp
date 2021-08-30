@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: 3a1de2f0e35a3ef747818d7dea47ecacb2753cea
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 29ab3c33611b0f525b28fe51245edba377bae0b5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747277"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441429"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge のリリース ノート 
 
@@ -23,7 +23,7 @@ ms.locfileid: "111747277"
 
 ## <a name="azure-sql-edge-104"></a>Azure SQL Edge 1.0.4
 
-SQL エンジンのビルド 15.0.2000.1558
+SQL エンジンのビルド 15.0.2000.1559
 
 ### <a name="whats-new"></a>新機能
 
@@ -32,7 +32,7 @@ SQL エンジンのビルド 15.0.2000.1558
 
 ## <a name="azure-sql-edge-103"></a>Azure SQL Edge 1.0.3
 
-SQL エンジンのビルド 15.0.2000.1554
+SQL エンジンのビルド 15.0.2000.1557
 
 ### <a name="fixes"></a>修正
 
@@ -42,7 +42,7 @@ SQL エンジンのビルド 15.0.2000.1554
    
 ## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0.2
 
-SQL エンジンのビルド 15.0.2000.1554
+SQL エンジンのビルド 15.0.2000.1557
 
 ### <a name="fixes"></a>修正
 

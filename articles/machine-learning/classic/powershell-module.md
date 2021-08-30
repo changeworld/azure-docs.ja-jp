@@ -8,18 +8,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 662a550145ece8821a8cdbed0533696b265f7952
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 060cea47bf70f1e13310ecc408f89a46365a8595
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690012"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580298"
 ---
 # <a name="powershell-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) 用 PowerShell モジュール
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio (クラシック) のリソースと資産をプログラムで管理できます。
 

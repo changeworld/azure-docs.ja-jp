@@ -79,8 +79,10 @@
                   href: microsoft-resources-move-regions.md
                 - name: Azure Storage
                   href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure SQL
+                - name: Azure SQL DB と MI
                   href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure VM 上の SQL Server
+                  href: ../../azure-sql/virtual-machines/windows/move-sql-vm-different-region.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure VM
                   href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: ロジック アプリ
@@ -141,6 +143,8 @@
           href: manage-resources-powershell.md
     - name: リソース プロバイダーと種類
       href: resource-providers-and-types.md
+    - name: プレビュー機能
+      href: preview-features.md
     - name: リソース グループとリソースの削除
       href: delete-resource-group.md
     - name: リソースのロック

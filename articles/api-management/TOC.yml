@@ -215,6 +215,12 @@
               href: developer-portal-use-community-widgets.md
             - name: セルフホステッド ポータルをテストする
               href: developer-portal-testing.md
+        - name: 収益化 API
+          items:
+            - name: Azure API Management による収益化
+              href: monetization-overview.md
+            - name: API Management での収益化のサポート方法
+              href: monetization-support.md
         - name: 非推奨のポータル
           items:
             - name: 非推奨のポータル - ポータルのカスタマイズ
@@ -308,7 +314,7 @@
           href: api-management-configuration-repository-git.md
         - name: ロールベースのアクセス制御を使用する
           href: api-management-role-based-access-control.md
-        - name: API Management インスタンスを移行する
+        - name: リージョン間でインスタンスを移動する
           href: api-management-howto-migrate.md
         - name: Azure リソースのマネージド ID を使用する
           href: api-management-howto-use-managed-service-identity.md

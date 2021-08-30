@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f843f5ec593124305d978cd32559a089194ab6d
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 71b54db0df20ea1bfe630639fb5e60bea62712b2
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073343"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200278"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
 [Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
@@ -71,7 +71,7 @@ Azure portal で、個々の仮想マシンに診断拡張機能をインスト�
 10. **[保存]** をクリックして構成を保存します。 
 
 > [!NOTE]
-> 診断拡張機能の構成は、JSON と XML のどちらの形式にすることもできますが、Azure portal で実行される構成は常に JSON 形式で保存されます。 別の構成方法で XML を使用していて、Azure portal で構成を変更した場合、設定は JSON に変更されます。
+> 診断拡張機能の構成は、JSON と XML のどちらの形式にすることもできますが、Azure portal で実行される構成は常に JSON 形式で保存されます。 別の構成方法で XML を使用していて、Azure portal で構成を変更した場合、設定は JSON に変更されます。 また、これらのログの保有期間を設定するオプションはありません。
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
 Azure Resource Manager テンプレートを使用した診断拡張機能のデプロイについては、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](../../virtual-machines/extensions/diagnostics-template.md)」を参照してください。 

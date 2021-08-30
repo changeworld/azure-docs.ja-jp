@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 06/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2e0af2e682799d4286a0d00daa2ce7e3805cf4ac
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 9259fac727287ce4d52594d146eaac96a3085433
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565250"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738968"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
@@ -114,7 +114,7 @@ Web アプリケーション、モバイル アプリケーション、または
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>"サインインしたままにする (KMSI)" を有効にする
 
-KMSI 機能は、Azure AD B2C ディレクトリでローカル アカウントを持つ Web 利用ユーザーとネイティブ アプリケーションに対して有効にできます。 この機能を有効にし、ユーザーがサインインしたままにすることを選択すると、ブラウザーを閉じた後もセッションのアクティブ状態が続きます。 その後でブラウザーを再度開いても、ユーザー名とパスワードの再入力は求められません。 このアクセスは、ユーザーがサインアウトすると失効します。
+KMSI 機能は、Azure AD B2C ディレクトリでローカル アカウントを持つ Web 利用ユーザーとネイティブ アプリケーションに対して有効にできます。 この機能を有効にし、ユーザーがサインインしたままにすることを選択すると、ブラウザーを閉じた後もセッションのアクティブ状態が続きます。 [永続 Cookie](cookie-definitions.md) を設定することによって、セッションが維持されます。 KMSI を選択したユーザーがブラウザーを再度開いても、ユーザー名とパスワードの再入力は求められません。 このアクセス (永続 Cookie) は、ユーザーがサインアウトすると失効します。 
 
 ![[サインインしたままにする] チェックボックスを示すサインアップ サインイン ページの例](./media/session-behavior/keep-me-signed-in.png)
 
@@ -194,7 +194,7 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を [�
 
 ### <a name="configure-a-relying-party-file"></a>証明書利用者ファイルを設定する
 
-作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。 keepAliveInDays パラメーターを使用すると、サインインしたままにする (KMSI) セッションの Cookie を保持する期間を構成できます。 たとえば、値を 30 に設定した場合、KMSI セッションの Cookie は 30 日間保持されます。 値の範囲は 1 日から 90 日です。
+作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。 keepAliveInDays パラメーターを使用すると、サインインしたままにする (KMSI) セッションの Cookie を保持する期間を構成できます。 たとえば、値を 30 に設定した場合、KMSI セッションの Cookie は 30 日間保持されます。 値の範囲は 1 日から 90 日です。 値を 0 に設定すると、KMSI 機能がオフになります。
 
 1. カスタム ポリシー ファイルを開きます。 たとえば、*SignUpOrSignin.xml* などです。
 1. まだ存在しない場合は、子ノード `<UserJourneyBehaviors>` を `<RelyingParty>` ノードに追加します。 `<DefaultUserJourney ReferenceId="User journey Id" />` の直後に配置する必要があります。たとえば、`<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` のようにします。

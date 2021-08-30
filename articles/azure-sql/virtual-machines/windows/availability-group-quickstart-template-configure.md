@@ -15,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: ab57e66ff37fb31a91a1949896a4e7736669d6c6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 0f9d98eb2a4fe09728a890af59b4c54afbed3737
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078925"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291657"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM に SQL Server の可用性グループを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,8 +29,8 @@ ms.locfileid: "112078925"
 
    | Template | 説明 |
    | --- | --- |
-   | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Windows フェールオーバー クラスターを作成し、それに SQL Server VM を参加させます。 |
-   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | 可用性グループ リスナーを作成し、内部ロード バランサーを構成します。 このテンプレートは、Windows フェールオーバー クラスターが **101-sql-vm-ag-setup** テンプレートを使用して作成された場合にのみ使用できます。 |
+   | [sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-ag-setup) | Windows フェールオーバー クラスターを作成し、それに SQL Server VM を参加させます。 |
+   | [sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-aglistener-setup) | 可用性グループ リスナーを作成し、内部ロード バランサーを構成します。 このテンプレートは、Windows フェールオーバー クラスターが **101-sql-vm-ag-setup** テンプレートを使用して作成された場合にのみ使用できます。 |
    | &nbsp; | &nbsp; |
 
 可用性グループの作成や、内部ロード バランサーの作成など、可用性グループ構成の他の部分は手動で行う必要があります。 この記事では、一連の自動および手動の手順を示します。
@@ -60,7 +60,7 @@ SQL Server VM が SQL IaaS Agent 拡張機能に登録されたら、SQL Server 
 
 SQL Server VM を *SqlVirtualMachineGroups* リソース グループに追加することで、Windows フェールオーバー クラスター サービスをブートストラップし、クラスターを作成します。次にそのクラスターに、それらの SQL Server VM を参加させます。 この手順は、**101-sql-vm-ag-setup** クイックスタート テンプレートで自動化されます。 以下の手順を使用して実装することができます。
 
-1. [**101-sql-vm-ag-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) クイックスタート テンプレートに移動します。 次に、 **[Azure に配置する]** を選択して、Azure portal でクイックスタート テンプレートを開きます。
+1. [**sql-vm-ag-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-ag-setup) クイックスタート テンプレートに移動します。 次に、 **[Azure に配置する]** を選択して、Azure portal でクイックスタート テンプレートを開きます。
 1. 必須フィールドに入力し、Windows フェールオーバー クラスターのメタデータを構成します。 省略可能なフィールドは空白のままでかまいません。
 
    次の表では、テンプレートに必要な値を示します。 
@@ -161,7 +161,7 @@ Always On 可用性グループ リスナーには、Azure Load Balancer の内�
    
    
 内部ロード バランサーを構成して可用性グループ リスナーを作成するには、次のようにします。
-1. [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) クイックスタート テンプレートに移動し、 **[Azure に配置する]** を選択して、Azure portal でクイックスタート テンプレートを開始します。
+1. [sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-aglistener-setup) クイックスタート テンプレートに移動し、 **[Azure に配置する]** を選択して、Azure portal でクイックスタート テンプレートを開始します。
 1. 必須フィールドに入力して内部ロード バランサーを構成し、可用性グループ リスナーを作成します。 省略可能なフィールドは空白のままでかまいません。 
 
    次の表では、テンプレートに必要な値を示します。 

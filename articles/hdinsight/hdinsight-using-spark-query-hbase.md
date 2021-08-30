@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: 344caf4080380f5d9dfdaf452798ada6d1dc9f1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6e639f49844aeb39b9fc51629f798e16015fa42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98931223"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748460"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
@@ -160,11 +160,11 @@ __注:__ これらの手順は、クラスターの 1 つでスケーリング �
     |Spark のバージョン| HDI HBase のバージョン  | SHC のバージョン    |  コマンド  |
     | :-----------:| :----------: | :-----------: |:----------- |
     |      2.1    | HDI 3.6 (HBase 1.1) | 1.1.1-2.1-s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2.4    | HDI 4.0 (HBase 2.0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    
 
 2. この Spark シェル インスタンスを開いたままで、[カタログとクエリを定義します](#define-a-catalog-and-query)。 SHC コア リポジトリ内のバージョンに対応する jar が見つからない場合は、読み進めてください。 
 
-jar は、[spark-hbase-connector](https://github.com/hortonworks-spark/shc) GitHub ブランチから直接ビルドできます。 たとえば、Spark 2.3 と HBase 1.1 を使用してを実行している場合は、次の手順を実行します。
+以降の Spark および HBase のバージョンの組み合わせの場合、これらの成果物が上のリポジトリで公開されなくなります。 jar は、[spark-hbase-connector](https://github.com/hortonworks-spark/shc) GitHub ブランチから直接ビルドできます。 たとえば、Spark 2.4 と HBase 2.1 を使用して実行している場合は、これらの手順を実行します。
 
 1. リポジトリを複製します。
 
@@ -172,10 +172,10 @@ jar は、[spark-hbase-connector](https://github.com/hortonworks-spark/shc) GitH
     git clone https://github.com/hortonworks-spark/shc
     ```
     
-2. ブランチ - 2.3 にアクセスします。
+2. ブランチ - 2.4 にアクセスします。
 
     ```bash
-    git checkout branch-2.3
+    git checkout branch-2.4
     ```
 
 3. ブランチからビルドします (.jar ファイルを作成します)。
@@ -187,7 +187,7 @@ jar は、[spark-hbase-connector](https://github.com/hortonworks-spark/shc) GitH
 3. 次のコマンドを実行します (作成した .jar ファイルに対応するよう .jar の名前を変更してください)。
 
     ```bash
-    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar,/usr/hdp/current/hbase-client/lib/hbase-client.jar,/usr/hdp/current/hbase-client/lib/hbase-common.jar,/usr/hdp/current/hbase-client/lib/hbase-server.jar,/usr/hdp/current/hbase-client/lib/hbase-protocol.jar,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar
+    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/shaded-clients/*
     ```
     
 4. この Spark シェル インスタンスを開いたままで、次のセクションに進みます。 

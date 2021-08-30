@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 1ba278b80d75e64b4394bfeb1b98cd0ec2d805a8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 00f01e184b254e4fbc40fefa79506498bae30597
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469960"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634912"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Azure Static Web Apps の認証と承認
 
@@ -160,7 +160,7 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 
 ログイン後にユーザーが特定のページに戻るようにするには、`post_login_redirect_uri` クエリ文字列パラメーターに完全修飾 URL を指定します。
 
-次に例を示します。
+例:
 
 ```html
 <a href="/.auth/login/github?post_login_redirect_uri=https://zealous-water.azurestaticapps.net/success">Login</a>
@@ -196,7 +196,7 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 ```json
 {
   "route": "/.auth/login/twitter",
-  "statusCode": "404"
+  "statusCode": 404
 }
 ```
 

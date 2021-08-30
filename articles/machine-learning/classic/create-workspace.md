@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): ワークスペースの作成 - Azure'
-description: Machine Learning スタジオ (クラシック) を使用するには、Machine Learning スタジオ (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+description: Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,18 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 76aad9dc8ffa4ff0fb3ccb3c8093ee4efaea09b6
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 307134aa36508600783ce7eb518037fb13dde6f4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582404"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693819"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (classic) ワークスペースを作成して共有する
 
-**適用対象:**  ![これはチェック マークです。つまり、この記事は Machine Learning スタジオ (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning スタジオ (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Machine Learning スタジオ (クラシック) を使用するには、Machine Learning スタジオ (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+Machine Learning Studio (クラシック) を使用するには、Machine Learning Studio (クラシック) ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
 ## <a name="create-a-studio-classic-workspace"></a>Studio (クラシック) ワークスペースを作成する
 

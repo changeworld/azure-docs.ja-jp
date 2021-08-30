@@ -1,35 +1,31 @@
 ---
-title: Azure Firewall Premium プレビュー用にエンタープライズ CA 証明書をデプロイおよび構成する
-description: Azure Firewall Premium プレビュー用にエンタープライズ CA 証明書をデプロイおよび構成する方法について説明します。
+title: Azure Firewall Premium 用にエンタープライズ CA 証明書をデプロイおよび構成する
+description: Azure Firewall Premium 用にエンタープライズ CA 証明書をデプロイおよび構成する方法について説明します。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/18/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 067daef5782697357d08edc0a6c09bea8af085f6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590468"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441075"
 ---
-# <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Azure Firewall プレビュー用にエンタープライズ CA 証明書をデプロイおよび構成する
-
-> [!IMPORTANT]
-> 現在、Azure Firewall Premium はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall"></a>Azure Firewall 用にエンタープライズ CA 証明書をデプロイおよび構成する
 
 
-Azure Firewall Premium プレビューには、証明書認証チェーンを必要とする TLS 検査機能が含まれています。 運用環境のデプロイでは、エンタープライズ PKI を使用して Azure Firewall Premium で使用する証明書を生成する必要があります。 この記事を使用して、Azure Firewall Premium プレビュー用の中間 CA 証明書を作成して管理します。
+Azure Firewall Premium には、証明書認証チェーンを必要とする TLS 検査機能が含まれています。 運用環境のデプロイでは、エンタープライズ PKI を使用して Azure Firewall Premium で使用する証明書を生成する必要があります。 この記事を使用して、Azure Firewall Premium 用の中間 CA 証明書を作成して管理します。
 
-Azure Firewall Premium プレビューで使用される証明書に関する詳細については、「[Azure Firewall Premium プレビューの証明書](premium-certificates.md)」を参照してください。
+Azure Firewall Premium で使用される証明書に関する詳細については、「[Azure Firewall Premium の証明書](premium-certificates.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-エンタープライズ CA を使用して Azure Firewall Premium プレビューで使用する証明書を生成するには、次のリソースが必要です。 
+エンタープライズ CA を使用して Azure Firewall Premium で使用する証明書を生成するには、次のリソースが必要です。 
 
 - Active Directory フォレスト 
 - Web 登録が有効になっている Active Directory 証明書サービスのルート CA 
@@ -57,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal で、Key Vault の [証明書] ページに移動し、 **[生成/インポート]** を選択します。
 1. 作成方法として **[インポート]** を選択し、証明書に名前を付け、エクスポートした .pfx ファイルを選択して、パスワードを入力し、 **[作成]** を選択します。
-1. ファイアウォール ポリシーの **[TLS 検査 (プレビュー)]** ページに移動し、マネージド ID、Key Vault、および証明書を選択します。 
+1. 対象のファイアウォール ポリシーの **[TLS 検査]** ページに移動し、対象のマネージド ID、キー コンテナー、および証明書を選択します。 
 1. **[保存]** を選択します。
    :::image type="content" source="media/premium-deploy-certificates-enterprise-ca/tls-inspection.png" alt-text="TLS インスペクション":::
 
@@ -79,4 +75,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure portal での Azure Firewall Premium プレビュー](premium-portal.md)
+[Azure portal での Azure Firewall Premium](premium-portal.md)

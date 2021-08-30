@@ -8,12 +8,12 @@ ms.author: psrivas
 ms.reviewer: estfan, divswa, azla
 ms.topic: reference
 ms.date: 07/25/2021
-ms.openlocfilehash: 3d17edf35b8da5a2d8b158fdbf1bd6e5d13e627b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 056538b5a6b52fcae646f5f03c6e39c8fce6429f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779166"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768078"
 ---
 # <a name="contrl-acknowledgments-and-error-codes-for-edifact-messages-in-azure-logic-apps"></a>Azure Logic Apps の EDIFACT メッセージの CONTRL 確認応答とエラー コード
 
@@ -66,7 +66,7 @@ EDIFACT 協定で技術的な確認応答を生成するオプションを選択
 * M = 必須
 * O = 省略可能
 
-| 名前 | 必須またはオプション | 説明 |
+| Name | 必須またはオプション | 説明 |
 |------|-----------------------|-------------|
 | UNH メッセージ ヘッダー | M | メッセージ ヘッダー セグメント (UNH) は、メッセージを識別して指定します。 |
 | UCI インターチェンジの応答 | M | インターチェンジを識別し、インターチェンジ受信の性質を示します。 UCI セグメントは `1` の最大出現回数を持ち、その結果、コントロール セグメントで見つかった最初のエラーをレポートします。 |
@@ -77,7 +77,7 @@ EDIFACT 協定で技術的な確認応答を生成するオプションを選択
 
 CONTRL 技術確認には、次のデータ要素があります。
 
-| 要素 | 名前 | 使用方法 |
+| 要素 | 名前 | 使用法 |
 |---------|------|-------|
 | UNH1 | メッセージの参照番号 | - |
 | UNH2 | メッセージの識別子のサブコンポーネント | サブコンポーネント: <p><p>- 1 = CONTRL <br>- 2 = 4 <br>- 3 = 1 <br>- 4 = UN |
@@ -102,7 +102,7 @@ EDIFACT 協定で機能的確認応答を生成するオプションを選択し
 * M = 必須
 * O = 省略可能
 
-| 名前 | 必須またはオプション | 説明 |
+| Name | 必須またはオプション | 説明 |
 |------|-----------------------|-------------|
 | UNH メッセージ ヘッダー | M | メッセージ ヘッダー セグメント (UNH) は、メッセージを識別して指定します。 |
 | UCI セグメント | M | インターチェンジを識別し、インターチェンジ受信の状態を示し、受信したインターチェンジの UNA、UNB、UNZ セグメントへの参照を含みます。 UCI セグメントは `1` の最大出現回数を持ち、その結果、コントロール セグメントで見つかった最初のエラーをレポートします。 |
@@ -138,7 +138,7 @@ EDIFACT 協定で機能的確認応答を生成するオプションを選択し
 
 既定と業界の使用法では、受理されたトランザクション セットに対する SG1/SG4 ループは予期されていません。 ただし、標準への準拠をサポートするために、次の手順に従って強制的に SG1/SG4 ループを生成できます。
  
-1. [Azure portal](https://portal.azurecom) で、統合アカウントを開きます。
+1. [Azure portal](https://portal.azure.com) で、統合アカウントを開きます。
 1. 統合アカウント メニューの **[設定]** で、 **[契約]** を選択します。
 1. EDIFACT 契約を開き、 **[送信設定]** を選択します。
 1. **[Acknowledgement (確認)]** の下で、 **[Acknowledgement (CONTRL) (確認)]** を選択します。 これで、 **[Generate SG1/SG4 loop for accepted transaction sets (受理されたトランザクション セットの SG1/SG4 ループを生成する)]** を選択できるようになりました。
@@ -151,7 +151,7 @@ CONTRL メッセージには、受信したインターチェンジからコピ�
 
 CONTRL 機能確認には、次のデータ要素があります。
 
-| 要素 | 名前 | 使用方法 |
+| 要素 | 名前 | 使用法 |
 |---------|------|-------|
 | UNH1 | メッセージの参照番号 | - |
 | UNH2 | メッセージの識別子のサブコンポーネント | サブコンポーネント: <p><p>- 1 = CONTRL <br>- 2 = 4 <br>- 3 = 1 <br>- 4 = UN |
@@ -249,6 +249,6 @@ CONTRL 機能確認には、次のデータ要素があります。
 | 76 | 見つかったデータ要素が少なすぎます | 十分なデータ要素が見つかりませんでした。 |
 ||||
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [EDIFACT メッセージの交換](logic-apps-enterprise-integration-edifact.md)

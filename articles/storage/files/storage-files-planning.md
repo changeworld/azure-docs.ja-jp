@@ -4,32 +4,48 @@ description: Azure Files デプロイの計画について理解します。 Azu
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 7b1e8ba6ed5f3ffe4acebfb5bb3047ebb945e40f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e1736d94c50d5c145a66fc845936c5c26a8725cb
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477501"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224060"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
 
-- **Azure ファイル共有を直接マウントする**:Azure Files からは Server Message Block (SMB) または Network File System (NFS) アクセスが提供されるため、Azure ファイル共有は、お使いの OS で利用できる標準の SMB または NFS を利用し、オンプレミスまたはクラウドでマウントできます。 Azure ファイル共有はサーバーレスであるため、運用環境でデプロイするシナリオでは、ファイル サーバーや NAS デバイスを管理する必要ありません。 つまり、ソフトウェアの修正プログラムを適用したり、物理ディスクを交換したりする必要はありません。 
+- **Azure ファイル共有の直接マウント**: Azure Files からは Server Message Block (SMB) または Network File System (NFS) アクセスが提供されるため、Azure ファイル共有は、お使いの OS で利用できる標準の SMB または NFS (プレビュー) クライアントを利用し、オンプレミスまたはクラウドでマウントできます。 Azure ファイル共有はサーバーレスであるため、運用環境でデプロイするシナリオでは、ファイル サーバーや NAS デバイスを管理する必要ありません。 つまり、ソフトウェアの修正プログラムを適用したり、物理ディスクを交換したりする必要はありません。 
 
 - **Azure File Sync を使用したオンプレミスでの Azure ファイル共有のキャッシュ**:Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持しながら、Azure Files で組織のファイル共有を一元化できます。 Azure File Sync によって、オンプレミス (またはクラウド) の Windows Server が Azure SMB ファイル共有の高速キャッシュに変換されます。 
 
 この記事では主に、オンプレミスまたはクラウド クライアントによって直接マウントされる Azure ファイル共有をデプロイする場合の、デプロイに関する考慮事項について説明します。 Azure File Sync のデプロイを計画する場合は、「[Azure File Sync のデプロイの計画](../file-sync/file-sync-planning.md)」を参照してください。
 
 ## <a name="available-protocols"></a>使用可能なプロトコル
+Azure Files には、Azure ファイル共有のマウント用に、[サーバー メッセージ ブロック (SMB)](files-smb-protocol.md) プロトコルと[ネットワーク ファイル システム (NFS)](files-nfs-protocol.md) プロトコルの 2 つの業界標準プロトコルが用意されています。 Azure Files を使用すると、ワークロードに最適なファイル システム プロトコルを選択できます。 Azure ファイル共有では、SMB と NFS の両方のプロトコルを同じファイル共有で使用することはできません。ただし、同じストレージ アカウントに SMB と NFS の Azure ファイル共有を作成することはできます。 現在、NFS 4.1 のみが、新しい **FileStorage** ストレージ アカウント タイプ内でサポートされます (Premium ファイル共有のみ)。
 
-Azure Files からは、ファイル共有、SMB、Network File System (NFS) のマウント時に使用できるプロトコルが 2 つ提供されます。 これらのプロトコルの詳細については、「[Azure ファイル共有プロトコル](storage-files-compare-protocols.md)」を参照してください。
+SMB と NFS の両方のファイル共有に対し、Azure Files により、ストレージのニーズに合わせたスケールアップが可能で、数千ものクライアントによって同時にアクセスできる、エンタープライズ レベルのファイル共有が提供されます。
 
-> [!IMPORTANT]
-> この記事の内容の多くは SMB 共有にのみ適用されます。 NFS 共有に適用されるものからはすべて、それが適用可能であることが明示されます。
+| 機能 | SMB | NFS (プレビュー) |
+|---------|-----|---------------|
+| サポートされるプロトコルのバージョン | SMB 3.1.1、SMB 3.0、SMB 2.1 | NFS 4.1 |
+| 推奨される OS | <ul><li>Windows 10 バージョン 21H1 以降</li><li>Windows Server 2019 以降</li><li>Linux カーネル バージョン 5.3 以降</li></ul> | Linux カーネル バージョン 4.3 以降 |
+| [使用できるレベル](storage-files-planning.md#storage-tiers)  | Premium、トランザクション最適化、ホット、クール | Premium |
+| 課金モデル | <ul><li>[プロビジョニング容量 (Premium ファイル共有)](./understanding-billing.md#provisioned-model)</li><li>[従量課金制 (Standard ファイル共有)](./understanding-billing.md#pay-as-you-go-model)</li></ul> | [プロビジョニング容量](./understanding-billing.md#provisioned-model) |
+| [冗長性](storage-files-planning.md#redundancy) | LRS、ZRS、GRS、GZRS | LRS、ZRS |
+| ファイル システム セマンティクス | Win32 | POSIX |
+| 認証 | ID ベースの認証 (Kerberos)、共有キー認証 (NTLMv2) | ホストベースの認証 |
+| 承認 | Win32 スタイルのアクセス制御リスト (ACL) | UNIX 形式のアクセス許可 |
+| 大文字小文字の区別 | 大文字小文字は区別されないが、保持される | 大文字小文字は区別される |
+| 開いているファイルの削除または変更 | ロックのみを使用する | はい |
+| ファイル共有 | [Windows 共有モード](/windows/win32/fileio/creating-and-opening-files) | バイト範囲アドバイザリ ネットワーク ロック マネージャー |
+| ハード リンクのサポート | サポートされていません | サポートされています |
+| シンボリック リンクのサポート | サポートされていません | サポートされています |
+| 必要に応じてインターネットからアクセス可能 | はい (SMB 3.0 以降のみ) | いいえ |
+| FileREST のサポート | はい | サブセット: <br /><ul><li>[`FileService` に対する操作](/rest/api/storageservices/operations-on-the-account--file-service-)</li><li>[`FileShares` に対する操作](/rest/api/storageservices/operations-on-shares--file-service-)</li><li>[`Directories` に対する操作](/rest/api/storageservices/operations-on-directories)</li><li>[`Files` に対する操作](/rest/api/storageservices/operations-on-files)</li></ul> |
 
 ## <a name="management-concepts"></a>管理の概念
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -57,7 +73,7 @@ Azure ファイル共有には、ストレージ アカウントのパブリッ�
 
 Azure ファイル共有へのアクセスのブロックを解除するための次の主な 2 つのオプションがあります。
 
-- 組織のオンプレミス ネットワークに対してポート 445 のブロックを解除します。 Azure ファイル共有には、SMB 3.x や FileREST API などのインターネットで安全なプロトコルを使用して、パブリック エンドポイント経由でのみ外部からアクセスできます。 これが、オンプレミスから Azure ファイル共有にアクセスする最も簡単な方法です。これは、組織の送信ポート規則の変更のほかに、高度なネットワーク構成が必要ではないためです。しかし、SMB のレガシおよび非推奨バージョンの SMB (つまり、SMB 1.0) を削除することをお勧めします。 これを行う方法については、「[Windows/Windows Server のセキュリティ保護](storage-how-to-use-files-windows.md#securing-windowswindows-server)」と「[Linux のセキュリティ保護](storage-how-to-use-files-linux.md#securing-linux)」を参照してください。
+- 組織のオンプレミス ネットワークに対してポート 445 のブロックを解除します。 Azure ファイル共有には、SMB 3.x や FileREST API などのインターネットで安全なプロトコルを使用して、パブリック エンドポイント経由でのみ外部からアクセスできます。 これが、オンプレミスから Azure ファイル共有にアクセスする最も簡単な方法です。これは、組織の送信ポート規則の変更のほかに、高度なネットワーク構成が必要ではないためです。しかし、SMB のレガシおよび非推奨バージョンの SMB (つまり、SMB 1.0) を削除することをお勧めします。 これを行う方法については、「[Windows/Windows Server のセキュリティ保護](/windows-server/storage/file-server/troubleshoot/detect-enable-and-disable-smbv1-v2-v3)」と「[Linux のセキュリティ保護](files-remove-smb1-linux.md)」を参照してください。
 
 - ExpressRoute または VPN 接続経由で Azure ファイル共有にアクセスします。 ネットワーク トンネル経由で Azure ファイル共有にアクセスする場合、SMB トラフィックが組織の境界を通過しないため、オンプレミスのファイル共有のように Azure ファイル共有をマウントすることができます。   
 
@@ -78,7 +94,7 @@ Azure Files では、2 種類の暗号化がサポートされています。転
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
 > [!IMPORTANT]
-> このセクションでは、SMB 共有の転送中の暗号化について詳しく取り上げます。 NFS 共有による転送中の暗号化の詳細については、「[セキュリティ](storage-files-compare-protocols.md#security)」を参照してください。
+> このセクションでは、SMB 共有の転送中の暗号化について詳しく取り上げます。 NFS 共有による転送中の暗号化の詳細については、「[セキュリティとネットワーク](files-nfs-protocol.md#security-and-networking)」を参照してください。
 
 既定では、すべての Azure ストレージ アカウントで転送中の暗号化が有効になっています。 つまり、SMB 経由でファイル共有をマウントするか、または FileREST プロトコル (Azure portal、PowerShell/CLI、Azure SDK など) 経由でファイル共有にアクセスすると、Azure Files では、暗号化または HTTPS が設定されている SMB 3.x 以上で作成された接続のみが許可されます。 SMB 3.x をサポートしていないクライアント、または SMB 3.x をサポートしているが、SMB 暗号化をサポートしていないクライアントは、転送中の暗号化が有効になっている場合は Azure ファイル共有をマウントできません。 暗号化付き SMB 3.x がサポートされているオペレーティング システムの詳細については、[Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md)、および [Linux](storage-how-to-use-files-linux.md) に関する詳細なドキュメントを参照してください。 PowerShell、CLI、および SDK の現在のバージョンはすべて HTTPS をサポートしています。  
 
@@ -117,10 +133,6 @@ Azure Defender for Azure Storage (以前の Advanced Threat Protection for Azure
 
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>標準ファイル共有を最大 100 TiB にまたげるようにする
-既定では、Standard ファイル共有に使用できるのは最大 5 TiB だけですが、共有の制限は 100 TiB に増やすことができます。 共有の上限を引き上げる方法については、「[大きなファイル共有の有効化と作成](storage-files-how-to-create-large-file-share.md)」を参照してください。
-
 
 #### <a name="limitations"></a>制限事項
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]

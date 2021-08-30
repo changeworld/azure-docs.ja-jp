@@ -7,21 +7,21 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: wiassaf, sstein
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma, urmilano, wiassaf
 ms.date: 06/25/2019
-ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 818a783a85fd9117738f8199e612d97a0fb95b99
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730358"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>最小限のダウンタイムでデータベースのリソースを動的にスケーリングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database と SQL Managed Instance では、最小限の[ダウンタイム](https://azure.microsoft.com/support/legal/sla/sql-database)でデータベースにリソースを動的に追加できます。ただし、データベースへの接続が短時間失われる切り替え期間があります。これは、再試行ロジックを使用することで軽減できます。
+Azure SQL Database と SQL Managed Instance では、最小限の[ダウンタイム](https://azure.microsoft.com/support/legal/sla/azure-sql-database)でデータベースにリソースを動的に追加できます。ただし、データベースへの接続が短時間失われる切り替え期間があります。これは、再試行ロジックを使用することで軽減できます。
 
 ## <a name="overview"></a>概要
 

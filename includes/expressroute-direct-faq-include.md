@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02def8321ce5df33fb89ca8d9f6c24167c15bbb6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "73182238"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733857"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct とは何ですか?
 
@@ -39,6 +39,8 @@ ExpressRoute Direct では、お客様に、Microsoft グローバル バック�
 
 ExpressRoute Direct では、固定金額でポート ペアに対して請求されます。 Standard 回線は追加時間なしで含まれ、Premium はわずかな追加料金があります。 送信は、ピアリングの場所のゾーンに基づいて回線ごとに課金されます。
 
-### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>ExpressRoute Direct ポート ペアの課金はいつ始まりますか?
+### <a name="when-does-billing-start-and-stop-for-the-expressroute-direct-port-pairs"></a>ExpressRoute Direct のポート ペアに対する課金はいつ始まりいつ終わりますか?
 
 ExpressRoute Direct のポート ペアは、ExpressRoute Direct リソースが作成されてから 45 日目、あるいは 1 つまたは両方のリンクが有効にされたときの、どちらか早い方の時点で、課金されるようになります。 45 日の猶予期間は、お客様がコロケーション プロバイダーとの相互接続プロセスを完了できるように設けられています。
+
+ダイレクト ポートを削除し、相互接続を削除すると、ExpressRoute Direct のポート ペアに対する課金が停止されます。 

@@ -5,15 +5,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.date: 2/1/2019
+ms.date: 07/06/2021
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 9fa64d491a872d830ac57a1d097045d1702dd852
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 30a91858b03c89d38a58ba02efb75d4368d9e8d5
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527300"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302484"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "111527300"
 ## <a name="install-blobfuse-on-linux"></a>Linux に blobfuse をインストールする
 blobfuse バイナリは、Ubuntu、Debian、SUSE、CentoOS、Oracle Linux、RHEL ディストリビューション用の [Linux 用の Microsoft ソフトウェア リポジトリ](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で使用できます。 このようなディストリビューションに blobfuse をインストールするには、一覧からいずれかのリポジトリを構成します。 使用しているディストリビューション用のバイナリがない場合は、[Azure Storage のインストール手順](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)に従ってソース コードからバイナリをビルドすることもできます。
 
-blobfuse がインストールをサポートしているバージョンは次のとおりです。Ubuntu のバージョン: 16.04、18.04、および 20.04。RHEL のバージョン: 7.5、7.8、8.0、8.1、8.2。CentOS のバージョン: 7.0、8.0。Debian のバージョン: 9.0、10.0。SUSE のバージョン: 15。OracleLinux: 8.1。 次のコマンドを実行して、これらのバージョンのいずれかがデプロイされていることを確認します。
+Linux リポジトリには、次の Ubuntu バージョンを対象に blobfuse が公開されています (Ubuntu のバージョン: 16.04、18.04、および 20.04。RHEL のバージョン: 7.5、7.8、8.0、8.1、8.2。CentOS のバージョン: 7.0、8.0。Debian のバージョン: 9.0、10.0。SUSE のバージョン: 15。OracleLinux: 8.1)。 次のコマンドを実行して、これらのバージョンのいずれかがデプロイされていることを確認します。
 ```
 lsb_release -a
 ```

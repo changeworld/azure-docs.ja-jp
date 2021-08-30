@@ -120,9 +120,11 @@
 - name: 概念
   expanded: true
   items:
-    - name: 認証の基本
-      displayName: Auth basics
+    - name: 認証と承認の基本
+      displayName: AuthN and AuthZ basics
       items:
+        - name: 承認の基本
+          href: authorization-basics.md
         - name: 認証と承認
           href: authentication-vs-authorization.md
         - name: セキュリティ トークン
@@ -137,9 +139,16 @@
         - name: Microsoft Identity Web ライブラリ
           href: microsoft-identity-web.md
           displayName: 'auth, library, .NET Core, msal'
-    - name: 承認の基本
-      displayName: AuthZ basics
+    - name: アクセス許可とアクセス制御
+      displayName: Access control
       items:
+        - name: アクセス許可と同意
+          displayName: Scopes
+          href: v2-permissions-and-consent.md
+        - name: 条件付きアクセス
+          href: v2-conditional-access-dev-guide.md
+        - name: 条件付きアクセス認証コンテキストに関するガイド
+          href: developer-guide-conditional-access-authentication-context.md
         - name: アプリ開発者向けの RBAC
           href: custom-rbac-for-developers.md
     - name: アプリ シナリオと認証フロー
@@ -156,13 +165,6 @@
           href: secure-least-privileged-access.md
         - name: Azure AD アプリケーションの登録に関するセキュリティのベスト プラクティス
           href: security-best-practices-for-app-registration.md
-        - name: 条件付きアクセス
-          href: v2-conditional-access-dev-guide.md
-        - name: 認証コンテキスト
-          href: developer-guide-conditional-access-authentication-context.md
-    - name: アクセス許可と同意
-      displayName: Scopes
-      href: v2-permissions-and-consent.md
     - name: 自動ユーザー プロビジョニング (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
 - name: 操作方法
@@ -515,6 +517,8 @@
           href: support-fido2-authentication.md
     - name: アプリとサービスを認証する
       items:
+        - name: 自己署名証明書を作成してアプリを認証する
+          href: howto-create-self-signed-certificate.md
         - name: Azure PowerShell を使用してサービス プリンシパルを作成する
           href: howto-authenticate-service-principal-powershell.md
         - name: Azure Portal を使用してサービス プリンシパルを作成する
@@ -654,6 +658,8 @@
               href: reference-saml-tokens.md
     - name: Azure CLI
       href: /cli/azure/identity
+    - name: Azure PowerShell
+      href: /powershell/module/az.managedserviceidentity
     - name: アプリケーションの種類と OAuth 2.0
       displayName: 'App types, OAuth'
       href: v2-app-types.md

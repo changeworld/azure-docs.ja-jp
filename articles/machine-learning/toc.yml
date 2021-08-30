@@ -4,13 +4,27 @@
   items:
     - name: Azure Machine Learning とは
       displayName: 'AML, services, overview, introduction'
-      href: overview-what-is-azure-ml.md
+      href: overview-what-is-azure-machine-learning.md
     - name: Azure Machine Learning スタジオとは
       displayName: 'AML, studio, designer'
       href: overview-what-is-machine-learning-studio.md
     - name: アーキテクチャと用語
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
+    - name: ML Studio (クラシック) からの移行
+      items:
+        - name: 移行の概要
+          href: migrate-overview.md
+        - name: データセットの移行
+          href: migrate-register-dataset.md
+        - name: 実験のリビルド
+          href: migrate-rebuild-experiment.md
+        - name: Web サービスのリビルド
+          href: migrate-rebuild-web-service.md
+        - name: クライアント アプリケーションの移行
+          href: migrate-rebuild-integrate-with-client-app.md
+        - name: R スクリプトの実行コンポーネントのリビルド
+          href: migrate-execute-r-script.md
 - name: クイックスタート
   expanded: true
   items:
@@ -28,9 +42,9 @@
           href: tutorial-1st-experiment-sdk-train.md
         - name: 3. 独自のデータを使用する
           href: tutorial-1st-experiment-bring-data.md
-    - name: 2.0 CLI
+    - name: CLI (v2)
       items:
-        - name: 2.0 CLI を使用したモデルのトレーニング
+        - name: CLI (v2) を使用したモデルのトレーニング
           href: how-to-train-cli.md
         - name: マネージド エンドポイントを使用してリソースにアクセスする
           href: tutorial-deploy-managed-endpoints-using-system-managed-identity.md
@@ -270,11 +284,11 @@
               href: how-to-manage-workspace.md
             - name: Azure CLI の使用
               href: how-to-manage-workspace-cli.md
-            - name: REST の使用
-              href: how-to-manage-rest.md
             - name: Resource Manager テンプレートの使用
               displayName: arm
               href: how-to-create-workspace-template.md
+            - name: REST の使用
+              href: how-to-manage-rest.md
             - name: Azure Synapse Analytics ワークスペースへのリンク
               href: how-to-link-synapse-ml-workspaces.md
         - name: コンピューティング リソースを作成して管理する
@@ -302,7 +316,7 @@
               href: how-to-create-attach-compute-studio.md
     - name: 環境を設定する
       items:
-        - name: 2.0 CLI のインストールと設定
+        - name: CLI (v2) のインストールと設定
           displayName: 'azurecli, mlops'
           href: how-to-configure-cli.md
         - name: 開発環境をセットアップする
@@ -404,7 +418,7 @@
               href: how-to-export-delete-data.md
     - name: モデルをトレーニングする
       items:
-        - name: 2.0 CLI を使用したトレーニング
+        - name: CLI (v2) を使用したトレーニング
           href: how-to-train-cli.md
         - name: REST API を使用したトレーニング
           href: how-to-train-with-rest.md
@@ -418,6 +432,9 @@
             - name: ハイパーパラメーターを調整する
               displayName: 'parameter, hyperparameter, hyperdrive'
               href: how-to-tune-hyperparameters.md
+            - name: 分散 GPU ガイド
+              displayName: 'MPI, Horovod, DeepSpeed, PyTorch, Hugging Face Transformers, TensorFlow, InfiniBand'
+              href: how-to-train-distributed-gpu.md
             - name: Scikit-learn
               href: how-to-train-scikit-learn.md
             - name: TensorFlow
@@ -504,7 +521,7 @@
           href: how-to-deploy-and-where.md
         - name: エンドポイントを使用してデプロイする
           items:
-            - name: オンライン
+            - name: リアルタイム
               items:
                 - name: マネージド オンライン エンドポイントを使用して ML モデルをデプロイする
                   href: how-to-deploy-managed-online-endpoints.md
@@ -528,6 +545,8 @@
               items:
                 - name: バッチ エンドポイントでのバッチ スコアリング
                   href: how-to-use-batch-endpoint.md
+                - name: スタジオのバッチ エンドポイント
+                  href: how-to-use-batch-endpoints-studio.md
                 - name: バッチ エンドポイントのトラブルシューティング
                   href: how-to-troubleshoot-batch-endpoints.md
         - name: 展開ターゲット
@@ -678,16 +697,60 @@
   items:
     - name: REST API
       href: /rest/api/azureml/
+    - name: Python SDK
+      displayName: 'api, core, package, python, class'
+      href: /python/api/overview/azure/ml/intro
     - name: CLI (v2)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: /cli/azure/ml/
     - name: CLI (v2) YAML スキーマ
       items:
-        - name: オンライン エンドポイント
-          href: reference-online-endpoint-yaml.md
-    - name: Python SDK
-      displayName: 'api, core, package, python, class'
-      href: /python/api/overview/azure/ml/intro
+        - name: 概要
+          href: reference-yaml-overview.md
+        - name: アセット
+          items:
+            - name: ワークスペース
+              href: reference-yaml-workspace.md
+            - name: Compute
+              href: reference-yaml-compute.md
+            - name: 環境
+              href: reference-yaml-environment.md
+            - name: データセット
+              href: reference-yaml-dataset.md
+            - name: モデル
+              href: reference-yaml-model.md
+        - name: データストア
+          items:
+            - name: Azure BLOB
+              href: reference-yaml-datastore-blob.md
+            - name: Azure Files
+              href: reference-yaml-datastore-files.md
+            - name: Azure Data Lake Gen1
+              href: reference-yaml-datastore-data-lake-gen1.md
+            - name: Azure Data Lake Gen2
+              href: reference-yaml-datastore-data-lake-gen2.md
+        - name: ジョブ
+          items:
+            - name: コマンド
+              href: reference-yaml-job-command.md
+            - name: スイープ
+              href: reference-yaml-job-sweep.md
+        - name: エンドポイント
+          items:
+            - name: マネージド オンライン (リアルタイム)
+              href: reference-yaml-endpoint-managed-online.md
+            - name: マネージド バッチ
+              href: reference-yaml-endpoint-managed-batch.md
+            - name: Kubernetes (k8s) オンライン
+              href: reference-yaml-endpoint-k8s-online.md
+        - name: デプロイ
+          items:
+            - name: マネージド オンライン (リアルタイム)
+              href: reference-yaml-deployment-managed-online.md
+            - name: マネージド バッチ
+              href: reference-yaml-deployment-managed-batch.md
+            - name: Kubernetes (k8s) オンライン
+              href: reference-yaml-deployment-k8s-online.md
     - name: CLI (v1)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
@@ -696,9 +759,7 @@
       href: algorithm-module-reference/module-reference.md
     - name: データ参照を監視する
       href: monitor-resource-reference.md
-    - name: マネージド オンライン エンドポイント YAML のリファレンス
-      href: reference-online-endpoint-yaml.md
-    - name: 機械学習パイプライン YAML のリファレンス
+    - name: 機械学習 CLI (v1) パイプライン YAML のリファレンス
       href: reference-pipeline-yaml.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
