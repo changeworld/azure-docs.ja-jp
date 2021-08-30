@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins を他のサービスと統合するためのイングレスとエグレスの要件について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 3/16/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 76074004b5852ae90b0ef8ae79b2e4041e3ac544
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 55aa3f69976a413e1c23e9d935ad99fde88065ec
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541985"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252762"
 ---
 # <a name="data-ingress-and-egress-for-azure-digital-twins"></a>Azure Digital Twins のデータのイングレスとエグレス
 
@@ -28,9 +28,9 @@ Azure Digital Twins は、[IoT Hub](../iot-hub/about-iot-hub.md)、[Logic Apps](
 
 組み込みの IoT Hub をバックグラウンドで使用する代わりに、Azure Digital Twins を使用すると、サービスで使用するための "独自の" IoT Hub を実現できます。 現在運用中の既存の IoT Hub を使用することも、この目的で使用する新しい IoT Hub をデプロイすることもできます。 これにより、IoT Hub のすべてのデバイス管理機能にフル アクセスできます。
 
-任意のソースから Azure Digital Twins にデータを取り込むには、[Azure 関数](../azure-functions/functions-overview.md)を使用します。 このパターンの詳細については、[IoT Hub からテレメトリを取り込む方法](how-to-ingest-iot-hub-data.md)に関するページを参照するか、Azure Digital Twins [チュートリアルのエンド ツー エンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照してください。 
+任意のソースから Azure Digital Twins にデータを取り込むには、[Azure 関数](../azure-functions/functions-overview.md)を使用します。 このパターンの詳細については、「[IoT Hub からテレメトリを取り込む](how-to-ingest-iot-hub-data.md)」を参照するか、Azure Digital Twins の「[エンド ツー エンドのソリューションを接続する](tutorial-end-to-end.md)」でお試しください。 
 
-また、Azure Digital Twins を Logic Apps トリガーに接続する方法については、[Logic Apps と統合する方法](how-to-integrate-logic-apps.md)に関するページを参照してください。
+また、Azure Digital Twins を Azure Logic Apps トリガーに接続する方法について、「[Logic Apps との統合](how-to-integrate-logic-apps.md)」で学ぶこともできます。
 
 ## <a name="data-egress-services"></a>データ エグレス サービス
 
@@ -39,18 +39,18 @@ Azure Digital Twins は、接続されている **エンドポイント** にデ
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-エンドポイントは、管理 API または Azure portal を使用して Azure Digital Twins にアタッチされています。 エンドポイントを Azure Digital Twins に接続する方法の詳細については、[エンドポイントとルートを管理する方法](how-to-manage-routes-apis-cli.md)に関するページを参照してください。
+エンドポイントは、管理 API または Azure portal を使用して Azure Digital Twins にアタッチされています。 エンドポイントを Azure Digital Twins に接続する方法の詳細については、「[エンドポイントとルートを管理する](how-to-manage-routes.md)」を参照してください。
 
 他にも、[Azure Storage](../storage/common/storage-introduction.md)、[Azure Maps](../azure-maps/about-azure-maps.md)、[Azure Data Explorer](/azure/data-explorer/data-explorer-overview)、[Time Series Insights](../time-series-insights/overview-what-is-tsi.md) など、データの最終的な転送先となるサービスが多数あります。 このようなサービスにデータを送信するには、宛先サービスをエンドポイントにアタッチします。
 
-たとえば、Azure Maps も使用していて、Azure Digital Twins の[ツイン グラフ](concepts-twins-graph.md)と場所を関連付ける必要がある場合は、Azure Functions で Event Grid を使用して、デプロイ内のすべてのサービス間の通信を確立できます。 これについて詳しくは、[Azure Digital Twins を使用して Azure Maps の屋内マップを更新する方法](how-to-integrate-maps.md)に関するページを参照してください
+たとえば、Azure Maps も使用していて、Azure Digital Twins の[ツイン グラフ](concepts-twins-graph.md)と場所を関連付ける必要がある場合は、Azure Functions で Event Grid を使用して、デプロイ内のすべてのサービス間の通信を確立できます。 これについて詳しくは、「[Azure Digital Twins を使用して Azure Maps の屋内マップを更新する](how-to-integrate-maps.md)」を参照してください
 
-また、Time Series Insights と同様の方法でデータをルーティングする方法については、[Time Series Insights と統合する方法](how-to-integrate-time-series-insights.md)に関するページを参照してください。
+また、Time Series Insights と同様の方法でデータをルーティングする方法については、「[Time Series Insights と統合する](how-to-integrate-time-series-insights.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 エンドポイントの詳細と外部サービスに対するルーティング イベントについては、次を参照してください。
-* [概念:Azure Digital Twins イベントのルーティング](concepts-route-events.md)に関するページ
+* [Azure Digital Twins イベントのルーティング](concepts-route-events.md)
 
 IoT Hub からデータを取り込むように Azure Digital Twins を設定する方法をご覧ください。
-* [IoT Hub からテレメトリを取り込む方法](how-to-ingest-iot-hub-data.md)に関するページ
+* [IoT Hub からテレメトリを取り込む](how-to-ingest-iot-hub-data.md)

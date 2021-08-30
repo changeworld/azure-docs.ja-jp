@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a3ed2de24127f09a901fb5bcb06c84124751d74
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047045"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183891"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する
 この記事では、Azure Monitor を使用して Azure 仮想マシンから監視データを収集して分析し、正常性を維持する方法について説明します。 仮想マシンは、[他の Azure リソース](../essentials/monitor-azure-resource.md)と同様に、Azure Monitor を使用して可用性とパフォーマンスを監視できますが、ゲスト オペレーティング システムとそこで実行されるワークロードも監視する必要があるため、他のリソースと異なります。 
 
 > [!NOTE]
-> この記事では、Azure Monitor での仮想マシンの監視に関する概念とオプションの完全な概要について説明します。 基礎となる概念を重視せずに、仮想マシンの監視をすぐに開始するには、「[クイックスタート:Azure Monitor を使用して Azure 仮想マシンを監視する](./quick-monitor-azure-vm.md)」を参照してください。
+> この記事では、Azure Monitor での仮想マシンの監視に関する概念とオプションの完全な概要について説明します。 基礎となる概念を重視せずに、仮想マシンの監視をすぐに開始するには、「[クイックスタート:Azure Monitor を使用して Azure 仮想マシンを監視する](./monitor-virtual-machine.md)」を参照してください。
 
 
 ## <a name="differences-from-other-azure-resources"></a>他の Azure リソースとの違い
@@ -85,7 +85,7 @@ VM Insights からワークスペースの構成に直接アクセスするに�
 
 ![ワークスペースの構成](media/monitor-vm-azure/workspace-configuration.png)
 
-ワークスペース メニューから **[詳細設定]** 、 **[データ]** の順に選択してデータ ソースを構成します。 Windows エージェントの場合は、 **[Windows イベント ログ]** を選択し、"*システム*" や "*アプリケーション*" などの共通イベント ログを追加します。 Linux エージェントの場合は、 **[Syslog]** を選択し、*kern* や "*デーモン*" などの一般的な機能を追加します。 使用可能なデータ ソースの一覧と構成の詳細については、「[Azure Monitor のエージェント データ ソース](../agents/agent-data-sources.md)」をご覧ください。 
+ワークスペース メニューから **[エージェント構成]** を選択して、データ ソースを構成します。 Windows エージェントの場合は、 **[Windows イベント ログ]** を選択し、"*システム*" や "*アプリケーション*" などの共通イベント ログを追加します。 Linux エージェントの場合は、 **[Syslog]** を選択し、*kern* や "*デーモン*" などの一般的な機能を追加します。 使用可能なデータ ソースの一覧と構成の詳細については、「[Azure Monitor のエージェント データ ソース](../agents/agent-data-sources.md)」をご覧ください。 
 
 ![イベントの構成](media/monitor-vm-azure/configure-events.png)
 

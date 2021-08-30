@@ -5,13 +5,13 @@ author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: e6db49d34c39df2e1863dfa51914e30e9f1e1636
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 06/01/2021
+ms.openlocfilehash: a456db938d1607565525aea7ab2e9b43bc368aeb
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897093"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195199"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
@@ -192,10 +192,7 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 |Azure リージョン |リージョンのエンドポイントのプレフィックス|
 |---|---|
 | すべてのパブリック クラウド リージョン | https://<Azure リージョン コード>.monitoring.azure.com |
-| **Azure Government** | |
-| US Gov アリゾナ | https:\//usgovarizona.monitoring.azure.us |
-| **中国** | |
-| 中国東部 2 | https:\//chinaeast2.monitoring.azure.cn |
+
 
 ## <a name="latency-and-storage-retention"></a>待機時間とストレージのリテンション期間
 
@@ -236,7 +233,7 @@ Azure Monitor では、カスタム メトリックの使用に次の制限が�
 - スロットリングによりメトリックの信頼性が低下する
 - メトリック エクスプローラーが機能しない
 - アラートと通知が予測不能になる
-- コストが予想外に増加するおそれがある - ディメンションを含むカスタム メトリックがパブリック プレビュー段階の間は、Microsoft は課金しません。 ただし、将来的に課金が開始されると、予期しないコストが発生します。 計画では、監視された時系列の数と行われた API 呼び出しの数に基づいて、メトリックの消費に対して課金されます。  
+- コストが予想外に増加するおそれがある - この機能がパブリック プレビュー段階の間は、ディメンションを含むカスタム メトリックに対して Microsoft は課金しません。 ただし、将来的に課金が開始されると、予期しないコストが発生します。 計画では、監視された時系列の数と行われた API 呼び出しの数に基づいて、メトリックの消費に対して課金されます。
 
 ## <a name="next-steps"></a>次のステップ
 さまざまなサービスのカスタム メトリックを使用する。 

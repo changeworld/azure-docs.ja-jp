@@ -1,18 +1,20 @@
 ---
 title: ストアド プロシージャ アクティビティを使用したデータの変換
+titleSuffix: Azure Data Factory & Azure Synapse
 description: SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database/Data Warehouse でストアド プロシージャを呼び出す方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 11/27/2018
-ms.openlocfilehash: b9ba2f9de82522d4348fa341ad0b41d43c3eebcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3815bfca83d6dcf789a780a2d82ff1d4bb62285
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375648"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271976"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory での SQL Server ストアド プロシージャ アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -74,17 +76,12 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ       |
 
 ## <a name="parameter-data-type-mapping"></a>パラメーターのデータ型のマッピング
-パラメーターに指定するデータ型は、使用しているデータ ソースのデータ型にマップされる Azure Data Factory の型です。 データ ソースのデータ型マッピングは、コネクタ領域で確認できます。 次に例をいくつか示します。
+パラメーターに指定するデータ型は、使用しているデータ ソースのデータ型にマップされる Azure Data Factory の型です。 データ ソースのデータ型マッピングは、コネクタのドキュメントで説明されています。 次に例を示します。
 
-| Data Source          | データ型のマッピング |
-| ---------------------|-------------------|
-| Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL データベース   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
-| Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
-| SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
-
-
-
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#data-type-mapping-for-azure-synapse-analytics)
+- [Azure SQL Database のデータ型のマッピング](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)
+- [Oracle のデータ型のマッピング](connector-oracle.md#data-type-mapping-for-oracle)
+- [SQL Server のデータ型のマッピング](connector-sql-server.md#data-type-mapping-for-sql-server)
 
 ## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
@@ -96,5 +93,5 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 * [Hadoop ストリーミング アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
+* [Azure Machine Learning Studio (クラシック) の Batch Execution アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

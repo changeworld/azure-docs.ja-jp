@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: a41dce28427db40dfd19879e4ada95add64009c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a82c13d0ad64f100f2fb8b826b1786afa81abac
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772435"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253371"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
+
+> [!TIP]
+> **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使って、ワークロードに最適な他のサイズを見つけてください。
 
 Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC ワークロードに対して、リーダー クラスのパフォーマンス、スケーラビリティ、およびコスト効率が実現されるように設計されています。
 

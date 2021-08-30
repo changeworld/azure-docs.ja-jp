@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions, devx-track-azurecli
+ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34a43212e8883e1ae727d18c53d5c28f873d9e94
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 972929f93737342942ed22f103598bc55dbb57fc
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458092"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688609"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>プレビュー: SSH 証明書ベースの認証を使用した Azure Active Directory で Azure の Linux 仮想マシンにログインする
 
@@ -102,9 +102,10 @@ Azure China の場合
 
 クライアントが次の要件を満たしていることを確認してください。
 
-- SSH クライアントでは、認証のために OpenSSH ベースの証明書をサポートしている必要があります。 Az CLI (2.21.1 以上) または Azure Cloud Shell を使用して、この要件を満たすことができます。 
-- Az CLI 用 SSH 拡張機能。 これは、az を使用してインストールできます。 この拡張機能は、Azure Cloud Shell を使用している場合は、プレインストール済みであるため、インストールする必要がありません。
-- OpenSSH をサポートする Az CLI または Azure Cloud Shell 以外の他の SSH クライアントを使用している場合でも、SSH 拡張機能を備えた Az CLI を使用して、構成ファイル内のエフェメラル SSH 証明書を取得し、SSH クライアントでその構成ファイルを使用する必要があります。
+- SSH クライアントでは、認証のために OpenSSH ベースの証明書をサポートしている必要があります。 Az CLI (2.21.1 以降) と OpenSSH (Windows 10 バージョン 1803 またはそれ以降に組み込み) または Azure Cloud Shell を使用して、この要件を満たすことができます。 
+- Az CLI 用 SSH 拡張機能。 これは、`az extension add --name ssh` を使用してインストールできます。 この拡張機能は、Azure Cloud Shell を使用している場合は、プレインストール済みであるため、インストールする必要がありません。
+- OpenSSH 証明書をサポートする Az CLI または Azure Cloud Shell 以外の他の SSH クライアントを使用している場合でも、SSH 拡張機能を備えた Az CLI を使用して、構成ファイル内のエフェメラル SSH 証明書を取得し、オプションで SSH クライアントでその構成ファイルを使用する必要があります。
+- クライアントから VM のパブリックまたはプライベートのいずれかの IP への TCP 接続 (ProxyCommand または SSH 転送と接続のあるマシンへの接続も機能します)。
 
 ## <a name="enabling-azure-ad-login-in-for-linux-vm-in-azure"></a>Azure 内の Linux VM に対して Azure AD ログインを有効にする
 
@@ -189,12 +190,18 @@ VM のロールの割り当てを構成できる方法は複数あり、たと�
 
 Azure AD 対応 Linux VM のロールの割り当てを構成するには:
 
-1. 構成する仮想マシンに移動します。
-1. メニュー オプションから **[アクセス制御 (IAM)]** を選択します。
-1. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択して、[ロールの割り当ての追加] ペインを開きます。
-1. **[ロール]** ドロップダウン リストで、 **[仮想マシンの管理者ログイン]** または **[仮想マシンのユーザー ログイン]** ロールを選択します。
-1. **[選択]** フィールドで、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 一覧にセキュリティ プリンシパルが表示されない場合は、 **[選択]** ボックスに入力して、ディレクトリで表示名、メール アドレス、オブジェクト識別子を検索できます。
-1. **[保存]** を選択して、ロールを割り当てます。
+1. **[アクセス制御 (IAM)]** を選択します。
+
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | **[仮想マシンの管理者ログイン]** または **[仮想マシンのユーザー ログイン]** |
+    | アクセスの割り当て先 | ユーザー、グループ、サービス プリンシパル、またはマネージド ID |
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 しばらくすると、セキュリティ プリンシパルに選択されたスコープのロールが割り当てられます。
  
@@ -317,7 +324,7 @@ Azure AD による Azure Linux VM へのログインでは、OpenSSH 証明書�
 az ssh config --file ~/.ssh/config -n myVM -g AzureADLinuxVMPreview
 ```
 
-または、IP アドレスだけを指定して、構成をエクスポートすることもできます。 例の IP アドレスをお使いの VM のパブリックまたはプライベート IP アドレスに置き換えます。 このコマンドのヘルプについては、「`az ssh config -h`」と入力します。
+または、IP アドレスだけを指定して、構成をエクスポートすることもできます。 この例の IP アドレスは、VM のパブリック IP アドレスまたはプライベート IP アドレス (プライベート IP には独自の接続を使用する必要があります) に置き換えてください。 このコマンドのヘルプについては、「`az ssh config -h`」と入力します。
 
 ```azurecli
 az ssh config --file ~/.ssh/config --ip 10.11.123.456
@@ -345,7 +352,7 @@ az vmss identity assign --vmss-name myVMSS --resource-group AzureADLinuxVMPrevie
 az vmss extension set --publisher Microsoft.Azure.ActiveDirectory --name Azure ADSSHLoginForLinux --resource-group AzureADLinuxVMPreview --vmss-name myVMSS
 ```
 
-通常、仮想マシン スケール セットにはパブリック IP アドレスがないため、Azure Virtual Network に到達できる別のマシンから、それらに接続できる必要があります。 この例では、仮想マシン スケール セット VM のプライベート IP を使用して接続する方法を示しています。 
+通常、仮想マシン スケール セットにはパブリック IP アドレスがないため、Azure Virtual Network に到達できる別のマシンから、それらに接続できる必要があります。 この例では、仮想マシン スケール セット VM のプライベート IP を使用して、同じ仮想ネットワーク内のマシンから接続する方法を示しています。 
 
 ```azurecli
 az ssh vm --ip 10.11.123.456

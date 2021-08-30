@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 10/02/2020
-ms.openlocfilehash: c678c36ff653d8975f7a0fe1a82395c3093758f6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/06/2021
+ms.openlocfilehash: 0f4ed167fc1fd77e4b16b1f06a5beaa3ba9aef14
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458554"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122202069"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -26,11 +26,10 @@ Azure Machine Learning ワークスペースで[コンピューティング イ�
 
 この記事では、次のことについて説明します。
 
-* コンピューティング インスタンスを作成する
-* コンピューティング インスタンスを管理する (開始、停止、再起動、削除)
-* ターミナル ウィンドウにアクセスする
-* R または Python パッケージをインストールする
-* 新しい環境または Jupyter カーネルを作成する
+* コンピューティング インスタンスを[作成](#create)する
+* コンピューティング インスタンスを[管理](#manage)する (開始、停止、再起動、削除)
+* コンピューティング インスタンスを自動的に開始および停止する[スケジュールを作成](#schedule)する (プレビュー)
+* [セットアップ スクリプトを使用](#setup-script)してコンピューティング インスタンスをカスタマイズおよび構成する
 
 コンピューティング インスタンスは、企業で SSH ポートを開かなくても、[仮想ネットワーク環境](how-to-secure-training-vnet.md)でジョブを安全に実行できます。 ジョブはコンテナー化された環境で実行され、モデルの依存関係が Docker コンテナーにパッケージ化されます。
 
@@ -49,11 +48,11 @@ Azure Machine Learning ワークスペースで[コンピューティング イ�
 
 **推定所要時間**: 約 5 分です。
 
-コンピューティング インスタンスの作成は、ワークスペースに対する 1 回限りのプロセスです。 このコンピューティングは、開発ワークステーションとして、またはトレーニング用のコンピューティング先として再利用できます。 ワークスペースには複数のコンピューティング インスタンスをアタッチすることができます。
+コンピューティング インスタンスの作成は、ワークスペースに対する 1 回限りのプロセスです。 このコンピューティングは、開発ワークステーションとして、またはトレーニング用のコンピューティング先として再利用できます。 ワークスペースには複数のコンピューティング インスタンスをアタッチすることができます。 
 
-コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、VM ファミリ クォータ別およびリージョン合計クォータ別に、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。 コンピューティング インスタンスを停止しても、コンピューティング インスタンスを再起動できるように、クォータは解放されません。 コンピューティング インスタンスを一旦作成したら、その仮想マシンのサイズを変更できないことにご注意ください。
+コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、VM ファミリ クォータ別およびリージョン合計クォータ別に、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。 コンピューティング インスタンスを停止しても、コンピューティング インスタンスを再起動できるように、クォータは解放されません。 コンピューティング インスタンスを一旦作成したら、その仮想マシンのサイズは変更できなくなります。
 
-次の例では、コンピューティング インスタンスの作成方法を示します。
+<a name="create-instance"></a>次の例では、コンピューティング インスタンスの作成方法を示します。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -98,39 +97,171 @@ except ComputeTargetException:
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-詳細については、[az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance) のリファレンスを参照してください。
+詳細については、[az ml computetarget create computeinstance](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_computeinstance) のリファレンスを参照してください。
 
 # <a name="studio"></a>[スタジオ](#tab/azure-studio)
 
-Azure Machine Learning Studio のワークスペースで、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから新しいコンピューティング インスタンスを作成します。
+1. [Azure Machine Learning Studio](https://ml.azure.com) に移動します。
+1. __[管理]__ の下にある、 __[コンピューティング]__ を選択します。
+1. 最上部の **コンピューティング インスタンス** を選択します。
+1. コンピューティング インスタンスがない場合は、ページの中央にある **[作成]** を選択します。
+  
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="コンピューティング先を作成する":::
 
-スタジオでコンピューティング インスタンスを作成する方法については、[Azure Machine Learning スタジオでのコンピューティング ターゲットの作成](how-to-create-attach-compute-studio.md#compute-instance)に関するページを参照してください。
+1. コンピューティング リソースの一覧が表示されたら、一覧の上にある **[+新規]** を選択します。
+
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="[新規] の選択":::
+1. 以下をフォームに入力します。
+
+    |フィールド  |説明  |
+    |---------|---------|
+    |コンピューティング名     |  <ul><li>名前は必須であり、3 文字から 24 文字の長さにする必要があります。</li><li>有効な文字は、大文字、小文字、数字、 **-** 文字です。</li><li>名前の先頭は文字である必要があります</li><li>名前は、Azure リージョン内のすべての既存のコンピューティングで一意である必要があります。 選択した名前が一意でない場合は、アラートが表示されます</li><li>名前に **-** 文字が使用されている場合は、その後に少なくとも 1 文字を続ける必要があります</li></ul>     |
+    |仮想マシンのタイプ |  CPU または GPU を選択します。 このタイプは作成後に変更することはできません     |
+    |仮想マシンのサイズ     |  サポートされる仮想マシンのサイズがお客様のリージョンで制限されている可能性があります。 [利用可能な製品のリスト](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)に関するページを確認してください     |
+
+1. コンピューティング インスタンスの詳細設定を構成しない場合は、 **[作成]** を選択します。
+1. 必要に応じて <a name="advanced-settings"></a> **[詳細設定] の [次へ]** を選択します。
+
+    * SSH アクセスを有効にします。  以下の[詳細な SSH アクセス手順](#enable-ssh)に従います。
+    * 仮想ネットワークを有効にします。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](./how-to-secure-training-vnet.md)に関するページを参照してください。 
+    * コンピューターを別のユーザーに割り当てます。 他のユーザーに割り当てる方法の詳細については「、[代理作成](#on-behalf)」を参照してください。
+    * セットアップ スクリプトを使用したプロビジョニング (プレビュー) - セットアップ スクリプトを作成して使用する方法の詳細については、「[スクリプトを使用したコンピューティング インスタンスのカスタマイズ](#setup-script)」を参照してください。
+    * スケジュールを追加する (プレビュー)。 コンピューティング インスタンスが自動的に起動またはシャットダウンするために時間をスケジュール設定します。 以下の「[スケジュールの詳細](#schedule)」を参照してください。
 
 ---
 
 また、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)を使用してコンピューティング インスタンスを作成することもできます。
 
+## <a name="enable-ssh-access"></a><a name="enable-ssh"></a>SSH アクセスを有効にする
 
+SSH アクセスは既定では無効になっています。  SSH アクセスは、作成後に変更することはできません。 [VS Code Remote](how-to-set-up-vs-code-remote.md) を使用して対話形式でデバッグする場合は、アクセスを有効にする必要があります。  
+
+[!INCLUDE [amlinclude-info](../../includes/machine-learning-enable-ssh.md)]
+
+コンピューティング インスタンスが作成され、実行中になったら、「[SSH アクセスを使って接続する](how-to-create-attach-compute-studio.md#ssh-access)」を参照してください。
 
 ## <a name="create-on-behalf-of-preview"></a><a name="on-behalf"></a> 代理作成 (プレビュー)
 
 管理者は、データ科学者に代わってコンピューティング インスタンスを作成し、次のようにして彼らにそのインスタンスを割り当てることができます。
 
-* [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)  このテンプレートに必要な TenantID と ObjectID を見つける方法の詳細については、「[認証構成のための ID オブジェクト ID を見つける](../healthcare-apis/fhir/find-identity-object-ids.md)」を参照してください。  これらの値は Azure Active Directory ポータルでも見つけることができます。
+* Studio で、[詳細設定](?tabs=azure-studio#advanced-settings)を使用
+
+* [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)  このテンプレートに必要な TenantID と ObjectID を見つける方法の詳細については、「[認証構成のための ID オブジェクト ID を見つける](../healthcare-apis/azure-api-for-fhir/find-identity-object-ids.md)」を参照してください。  これらの値は Azure Active Directory ポータルでも見つけることができます。
 
 * REST API
 
 データ科学者向けにコンピューティング インスタンスを作成する場合は、次に示す [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) アクセス許可が必要です。
+
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/updateSchedules/action*
 
 データ科学者は、コンピューティング インスタンスを開始、停止、再起動できます。 コンピューティング インスタンスは、次に使用できます。
 * Jupyter
 * JupyterLab
 * RStudio
 * 統合されたノートブック
+
+## <a name="schedule-automatic-start-and-stop-preview"></a><a name="schedule"></a>自動開始と停止をスケジュール設定する (プレビュー)
+
+自動シャットダウンと自動開始のスケジュールを複数定義します。 たとえば、午前 9 時に開始し、午後 6 時に停止する月曜日から木曜日のスケジュールを作成し、2 番目のスケジュールを金曜日の午前 9 時に開始して午後 4 時に停止するように作成します。  コンピューティング インスタンスごとに合計 4 つのスケジュールを作成できます。
+
+コンピューティング インスタンスの[代理作成](#on-behalf)のためのスケジュールを定義することもできます。 スケジュールを作成して、停止状態のコンピューティング インスタンスを作成できます。 これは、ユーザーが別のユーザーの代わりにコンピューティング インスタンスを作成する場合に特に便利です。
+
+### <a name="create-a-schedule-in-studio"></a>Studio でスケジュールを作成する
+
+1. [フォームに記入します](?tabs=azure-studio#create-instance)。
+1. フォームの 2 ページ目で、 **[詳細設定の表示]** を開きます。
+1. **[スケジュールの追加]** を選択し、新しいスケジュールを追加します。
+
+    :::image type="content" source="media/how-to-create-attach-studio/create-schedule.png" alt-text="スクリーンショット: 詳細設定でスケジュールを追加します。":::
+
+1. **[コンピューティング インスタンスを開始する]** または **[コンピューティング インスタンスを停止する]** を選択します。
+1. **[タイム ゾーン]** を選択します。
+1. **[開始時刻]** または **[シャットダウン時刻]** を選択します。
+1. このスケジュールがアクティブになる日を選択します。
+
+    :::image type="content" source="media/how-to-create-attach-studio/stop-compute-schedule.png" alt-text="スクリーンショット: コンピューティング インスタンスのシャットダウンをスケジュールします。":::
+
+1. 別のスケジュールを作成する場合は、 **[スケジュールの追加]** をもう一度選択します。
+
+コンピューティング インスタンスが作成されたら、コンピューティング インスタンスの詳細セクションからスケジュールを表示、編集、または新しいスケジュールを追加できます。
+
+### <a name="create-a-schedule-with-a-resource-manager-template"></a>Resource Manager テンプレートでスケジュールを作成する
+
+Resource Manager テンプレートを使用して、コンピューティング インスタンスの自動開始と自動停止をスケジュール設定できます。  Resource Manager テンプレートでは、cron または LogicApps 式のいずれかを使用して、インスタンスを開始または停止するスケジュールを定義します。  
+
+```json
+"schedules": {
+  "computeStartStop": [
+      {
+      "triggerType": "Cron",
+      "cron": {
+          "startTime": "2021-03-10T21:21:07",
+          "timeZone": "Pacific Standard Time",
+          "expression": "0 18 * * *"
+      },
+      "action": "Stop",
+      "status": "Enabled"
+      },
+      {
+      "triggerType": "Cron",
+      "cron": {
+          "startTime": "2021-03-10T21:21:07",
+          "timeZone": "Pacific Standard Time",
+          "expression": "0 8 * * *"
+      },
+      "action": "Start",
+      "status": "Enabled"
+      },
+      { 
+      "triggerType": "Recurrence", 
+      "recurrence": { 
+          "frequency": "Day", 
+          "interval": 1,
+          "timeZone": "Pacific Standard Time", 
+        "schedule": { 
+          "hours": [18], 
+          "minutes": [0], 
+          "weekDays": [ 
+              "Saturday", 
+              "Sunday"
+          ] 
+          } 
+      }, 
+      "action": "Stop", 
+      "status": "Enabled" 
+      } 
+  ]
+}
+```
+
+* アクションには、"Start" または "Stop" の値を指定できます。
+* `Recurrence` のトリガーの種類では、この[繰り返しスキーマ](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)と一緒に、ロジック アプリと同じ構文を使用します。
+* `cron` のトリガーの種類には、次の標準の cron 構文を使用します。  
+
+    ```cron
+    // Crontab expression format: 
+    // 
+    // * * * * * 
+    // - - - - - 
+    // | | | | | 
+    // | | | | +----- day of week (0 - 6) (Sunday=0) 
+    // | | | +------- month (1 - 12) 
+    // | | +--------- day of month (1 - 31) 
+    // | +----------- hour (0 - 23) 
+    // +------------- min (0 - 59) 
+    // 
+    // Star (*) in the value field above means all legal values as in 
+    // braces for that column. The value column can have a * or a list 
+    // of elements separated by commas. An element is either a number in 
+    // the ranges shown above or two numbers in the range separated by a 
+    // hyphen (meaning an inclusive range). 
+    ```
+
+Azure policy を使用して、サブスクリプション内のすべてのコンピューティング インスタンスに対してシャットダウン スケジュールを適用するか、何も存在しない場合は既定の 1 つのスケジュールを適用します。
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> スクリプトを使用したコンピューティング インスタンスのカスタマイズ (プレビュー)
 
@@ -178,7 +309,7 @@ pip install "$PACKAGE"
 conda deactivate
 EOF
 ```
-*sudo -u azureuser* を実行すると、現在の作業ディレクトリが */home/azureuser* に変更されることに注意してください。 また、このブロック内のスクリプト引数にアクセスすることはできません。
+*sudo -u azureuser* コマンドを実行すると、現在の作業ディレクトリが */home/azureuser* に変更されます。 また、このブロック内のスクリプト引数にアクセスすることはできません。
 
 スクリプトでは、次の環境変数も使用できます。
 
@@ -187,6 +318,8 @@ EOF
 3. CI_NAME
 4. CI_LOCAL_UBUNTU_USER。 これは azureuser を示しています
 
+セットアップ スクリプトを Azure policy と組み合わせて使用すると、すべてのコンピューティング インスタンスの作成に対してセットアップ スクリプトを強制的に適用するか、既定値を適用できます。
+
 ### <a name="use-the-script-in-the-studio"></a>スタジオでスクリプトを使用する
 
 スクリプトを保存したら、コンピューティング インスタンスの作成時にそれを指定します。
@@ -194,15 +327,15 @@ EOF
 1. [スタジオ](https://ml.azure.com/)にサインインし、お使いのワークスペースを選択します。
 1. 左側にある **[コンピューティング]** を選択します。
 1. **[新規]** を選択して、新しいコンピューティング インスタンスを作成します。
-1. [フォームに記入します](how-to-create-attach-compute-studio.md#compute-instance)。
-1. フォームの 2 ページ目で、 **[詳細設定の表示]** を開きます
-1. **[セットアップ スクリプトを使用したプロビジョニング]** をオンにします
+1. [フォームに記入します](?tabs=azure-studio#create-instance)。
+1. フォームの 2 ページ目で、 **[詳細設定の表示]** を開きます。
+1. **[セットアップ スクリプトを使用したプロビジョニング]** をオンにします。
 1. 保存したシェル スクリプトを参照します。  または、コンピューターからスクリプトをアップロードします。
 1. 必要に応じてコマンド引数を追加します。
 
 :::image type="content" source="media/how-to-create-manage-compute-instance/setup-script.png" alt-text="スタジオのセットアップ スクリプトでコンピューティング インスタンスをプロビジョニングします。":::
 
-ワークスペース ストレージが仮想ネットワークに接続されている場合、仮想ネットワーク内から Studio にアクセスしている場合を除き、セットアップ スクリプト ファイルにアクセスできない可能性があることに注意してください。
+ワークスペース ストレージが仮想ネットワークに接続されている場合、仮想ネットワーク内から Studio にアクセスしている場合を除き、セットアップ スクリプト ファイルにアクセスできない可能性があります。
 
 ### <a name="use-script-in-a-resource-manager-template"></a>Resource Manager テンプレートでスクリプトを使用する
 
@@ -241,12 +374,15 @@ Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-
 
 セットアップ スクリプトの実行のログは、コンピューティング インスタンスの詳細ページにある [ログ] フォルダーに表示されます。 ログは、ログ \<compute instance name> フォルダーの下のノートブック ファイル共有に保存されます。 特定のコンピューティング インスタンスのスクリプト ファイルとコマンド引数は、詳細ページに表示されます。
 
+
 ## <a name="manage"></a>管理する
 
-コンピューティング インスタンスを開始、停止、再起動、削除します。 コンピューティング インスタンスは自動的にスケールダウンされません。そのため、継続して課金されることがないように、リソースを必ず停止してください。 コンピューティング インスタンスを停止すると、そのインスタンスは解放されます。 その後、必要なときにもう一度開始します。 コンピューティング インスタンスを停止すると、コンピューティング時間の課金は停止しますが、ディスク、パブリック IP、および Standard Load Balancer に対しては引き続き課金されます。
+コンピューティング インスタンスを開始、停止、再起動、削除します。 コンピューティング インスタンスは自動的にスケールダウンされません。そのため、継続して課金されることがないように、リソースを必ず停止してください。 コンピューティング インスタンスを停止すると、そのインスタンスは解放されます。 その後、必要なときにもう一度開始します。 コンピューティング インスタンスを停止すると、コンピューティング時間の課金は停止しますが、ディスク、パブリック IP、および Standard Load Balancer に対しては引き続き課金されます。 
+
+コンピューティング インスタンスの[スケジュールを作成](#schedule)して、時刻と曜日に基づいて自動的に開始および停止することができます。
 
 > [!TIP]
-> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを停止または再起動する前に、[ターミナルを使用して](how-to-access-terminal.md)少なくとも 1 から 2 GB をクリアしてください。
+> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを停止または再起動する前に、[ターミナルを使用して](how-to-access-terminal.md)少なくとも 1 から 2 GB をクリアしてください。 コンピューティング インスタンスは、sudo シャットダウンをターミナルから発行して停止しないでください。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -299,7 +435,7 @@ Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance の停止](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance の停止](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)に関する記事をご覧ください。
 
 * [開始]
 
@@ -307,7 +443,7 @@ Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance の開始](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance の開始](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)に関する記事をご覧ください。
 
 * やり直し
 
@@ -315,7 +451,7 @@ Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance 再起動](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance 再起動](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)に関する記事をご覧ください。
 
 * 削除
 
@@ -323,9 +459,10 @@ Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-
     az ml computetarget delete -n instance -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance の削除](/cli/azure/ml/computetarget#az_ml_computetarget_delete)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance の削除](/cli/azure/ml(v1)/computetarget#az_ml_computetarget_delete)に関する記事をご覧ください。
 
 # <a name="studio"></a>[スタジオ](#tab/azure-studio)
+<a name="schedule"></a>
 
 Azure Machine Learning Studio 内のご利用のワークスペースで、 **[コンピューティング]** を選択してから、上部にある **[コンピューティング インスタンス]** を選択します。
 
@@ -335,15 +472,17 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 * 新しいコンピューティング インスタンスの作成
 * コンピューティング インスタンス タブを更新する。
-* コンピューティング インスタンスを開始、停止、再起動する。  インスタンスは、実行されるたびに支払いが発生します。 コンピューティング インスタンスを使用していないときは、コストを削減するために、コンピューティング インスタンスを停止します。 コンピューティング インスタンスを停止すると、そのインスタンスは解放されます。 その後、必要なときにもう一度開始します。
+* コンピューティング インスタンスを開始、停止、再起動する。  インスタンスは、実行されるたびに支払いが発生します。 コンピューティング インスタンスを使用していないときは、コストを削減するために、コンピューティング インスタンスを停止します。 コンピューティング インスタンスを停止すると、そのインスタンスは解放されます。 その後、必要なときにもう一度開始します。 コンピューティング インスタンスが開始および停止される時刻をスケジュールすることもできます。
 * コンピューティング インスタンスを削除する。
 * コンピューティング インスタンスのリストをフィルター処理して、作成したもののみを表示する。
 
 ワークスペース内で作成した (または作成してもらった) 各コンピューティング インスタンスに対しては、次のことを行うことができます。
 
-* コンピューティング インスタンス上の Jupyter、JupyterLab、RStudio にアクセスする
-* コンピューティング インスタンスに SSH 接続する。 SSH アクセスは既定で無効になっていますが、コンピューティング インスタンスの作成時に有効にすることができます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて実行されます。 このタブには、SSH 接続の詳細が表示されます (IP アドレス、ユーザー名、ポート番号など)。
-* 特定のコンピューティング インスタンスに関する詳細を取得する (IP アドレス、リージョンなど)。
+* コンピューティング インスタンス上の Jupyter、JupyterLab、RStudio にアクセスする。
+* コンピューティング インスタンスに SSH 接続する。 SSH アクセスは既定で無効になっていますが、コンピューティング インスタンスの作成時に有効にすることができます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて実行されます。 このタブには、SSH 接続の詳細が表示されます (IP アドレス、ユーザー名、ポート番号など)。 仮想ネットワークのデプロイで SSH を無効にすると、パブリック インターネットからの SSH アクセスができなくなりますが、その状態でも、コンピューティング インスタンス ノードのプライベート IP アドレスとポート 22 を使用して、仮想ネットワーク内から SSH 接続できます。
+* 次のためのコンピューティング名を選択します。
+    * 特定のコンピューティング インスタンスに関する詳細 (IP アドレス、リージョンなど) を表示します。
+    * コンピューティング インスタンスを開始および停止するスケジュールを作成または変更します (プレビュー)。  ページの下部までスクロールして、スケジュールを編集します。
 
 ---
 
@@ -356,6 +495,7 @@ Azure RBAC によって、次のアクションを制御できます。
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/updateSchedules/action*
 
 コンピューティング インスタンスを作成するには、次のアクションのためのアクセス許可が必要です。
 * *Microsoft.MachineLearningServices/workspaces/computes/write*

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 73e42ac1f076b67d31cbad0823ea63db40045c1e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 584e200beac484ea742d51341a9cb93f0cfc4a41
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746035"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745647"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Speech SDK のログの有効化
 
@@ -47,6 +47,12 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 
 ```objc
 [config setPropertyTo:@"LogfilePathAndName" byId:SPXSpeechLogFilename];
+```
+
+```go
+import ("github.com/Microsoft/cognitive-services-speech-sdk-go/common")
+
+config.SetProperty(common.SpeechLogFilename, "LogfilePathAndName")
 ```
 
 認識エンジンは、構成オブジェクトから作成できます。 これにより、すべての認識エンジンのログが有効になります。
@@ -141,6 +147,31 @@ self.speechConfig!.setPropertyTo(logFilePath!.absoluteString, by: SPXPropertyId.
 ```
 
 iOS ファイル システムの詳細については、[こちら](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html)を参照してください。
+
+## <a name="logging-with-multiple-recognizers"></a>複数の認識エンジンによるログ記録
+
+ログ ファイルの出力パスは、`SpeechRecognizer` または他の SDK オブジェクトに構成プロパティとして指定されていますが、SDK のログ記録はシングルトンであり、個々のインスタンスの概念を持たない *プロセス全体* の機能です。 これは、対応する `SpeechConfig` で使用可能なプロパティ データを使用して静的および内部の "グローバル ログ記録の構成" ルーチンを暗黙的に呼び出す `SpeechRecognizer` コンストラクター (または同様のもの) と考えることができます。
+
+つまり、たとえば 6 つの並列認識エンジンを構成して、6 つの個別のファイルに同時に出力することはできません。 その代わりに、作成された最新の認識エンジンが、構成プロパティで指定されたファイルに出力するようにグローバル ログ インスタンスを構成し、すべての SDK ログがそのファイルに出力されるようになります。
+
+これは、ログを構成したオブジェクトの有効期間が、ログ記録の期間に関連付けられていないことも意味します。 ログは、SDK オブジェクトのリリースに応答して停止することはなく、新しいログ構成が提供されない限り、続行されます。 ログ記録の開始後は、新しいオブジェクトを作成するときに、ログ ファイルのパスを空の文字列に設定することで、プロセス全体のログ記録を停止することができます。
+
+複数のインスタンスのログ記録を構成するときの混乱を軽減するために、実際の作業を行うオブジェクトからのログ記録の制御を抽象化すると便利な場合があります。 ヘルパー ルーチンのペアの例を次に示します。
+
+```cpp
+void EnableSpeechSdkLogging(const char* relativePath)
+{
+    auto configForLogging = SpeechConfig::FromSubscription("unused_key", "unused_region");
+    configForLogging->SetProperty(PropertyId::Speech_LogFilename, relativePath);
+    auto emptyAudioConfig = AudioConfig::FromStreamInput(AudioInputStream::CreatePushStream());
+    auto temporaryRecognizer = SpeechRecognizer::FromConfig(configForLogging, emptyAudioConfig);
+}
+
+void DisableSpeechSdkLogging()
+{
+    EnableSpeechSdkLogging("");
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

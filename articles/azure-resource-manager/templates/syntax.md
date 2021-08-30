@@ -2,13 +2,13 @@
 title: テンプレートの構造と構文
 description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレート (ARM テンプレート) の構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 05/17/2021
-ms.openlocfilehash: 9a1ead39ed680921f444068e8e52136247272ac5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/16/2021
+ms.openlocfilehash: ee60651da5cee986a19cba9940c068679b342c53
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959926"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228669"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM テンプレートの構造と構文について
 
@@ -185,6 +185,12 @@ ms.locfileid: "111959926"
           "<tag-name1>": "<tag-value1>",
           "<tag-name2>": "<tag-value2>"
       },
+      "identity": {
+        "type": "<system-assigned-or-user-assigned-identity>",
+        "userAssignedIdentities": {
+          "<resource-id-of-identity>": {}
+        }
+      },
       "sku": {
           "name": "<sku-name>",
           "tier": "<sku-tier>",
@@ -234,6 +240,7 @@ ms.locfileid: "111959926"
 | location |場合により異なる |指定されたリソースのサポートされている地理的な場所。 利用可能な任意の場所を選択できますが、一般的に、ユーザーに近い場所を選択します。 また、通常、相互に対話するリソースを同じリージョンに配置します。 ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。 [リソースの場所の設定](resource-location.md)に関するページを参照してください。 |
 | dependsOn |いいえ |このリソースが配置される前に配置される必要があるリソース。 Resource Manager により、リソース間の依存関係が評価され、リソースが正しい順序でデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。 このテンプレートに配置されたリソースのみをリストします。 このテンプレートで定義されていないリソースは、既に存在している必要があります。 不要な依存関係は追加しないでください。こうした依存関係によりデプロイの速度が遅くなり、循環依存関係を作成されることがあります。 依存関係の設定のガイダンスについては、「[ARM テンプレートでのリソース デプロイ順序の定義](./resource-dependency.md)」を参照してください。 |
 | tags |いいえ |リソースに関連付けられたタグ。 サブスクリプション間でリソースを論理的に編成するためのタグを適用します。 |
+| identity | いいえ | 一部のリソースでは、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) がサポートされます。 これらのリソースには、リソース宣言のルート レベルに ID オブジェクトがあります。 ID がユーザー割り当てかシステム割り当てかを設定できます。 ユーザー割り当て ID の場合は、ID のリソース ID の一覧を指定します。 キーをリソース ID に設定し、値を空のオブジェクトに設定します。 詳細については、「[テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)」を参照してください。 |
 | sku | いいえ | 一部のリソースでは、デプロイする SKU を定義する値が許可されます。 たとえば、ストレージ アカウントの冗長性の種類を指定することができます。 |
 | kind | いいえ | 一部のリソースでは、デプロイするリソースの種類を定義する値が許可されます。 たとえば、作成する Cosmos DB の種類を指定することができます。 |
 | scope | いいえ | スコープ プロパティは、[拡張リソースの種類](../management/extension-resource-types.md)でのみ使用できます。 デプロイ スコープとは異なるスコープを指定するときに使用します。 「[ARM テンプレートで拡張リソースのスコープを設定する](scope-extension-resources.md)」をご覧下さい。 |
@@ -284,9 +291,7 @@ ms.locfileid: "111959926"
 
 > [!NOTE]
 >
-> コメント付きのテンプレートをデプロイするには、Azure PowerShell または Azure CLI を使用します。 CLI の場合は、バージョン 2.3.0 以降を使用し、`--handle-extended-json-format` スイッチを指定します。
->
-> Azure portal、DevOps パイプライン、または REST API を使用してテンプレートをデプロイする場合、コメントはサポートされません。
+> Azure コマンド ライン インターフェイスを使用してコメント付きテンプレートをデプロイする場合は、バージョン 2.3.0 以降を使用し、`--handle-extended-json-format` スイッチを指定します。
 
 ```json
 {
@@ -406,8 +411,8 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
 
 ## <a name="next-steps"></a>次のステップ
 
-* さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
+* さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「[ARM テンプレート関数](template-functions.md)」を参照してください。
 * デプロイ中に複数のテンプレートを結合するには、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」をご覧ください。
 * テンプレートの作成に関するレコメンデーションについては、「[ARM テンプレートのベストプラクティス](./best-practices.md)」を参照してください。
-* 一般的な質問に対する回答については、「[ARM テンプレートに関してよく寄せられる質問](frequently-asked-questions.md)」を参照してください。
+* 一般的な質問に対する回答については、「[ARM テンプレートに関してよく寄せられる質問](frequently-asked-questions.yml)」を参照してください。

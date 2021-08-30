@@ -10,13 +10,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 01/25/2019
-ms.openlocfilehash: e78f6762e3eb94e010909941cc84d19a37f3afc4
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 06/22/2021
+ms.openlocfilehash: dc246908497d8f13bddbc06498900842850397ae
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691349"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253170"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>バッチ処理を使用して Azure SQL Database アプリケーションと Azure SQL Managed Instance アプリケーションのパフォーマンスを強化する方法
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -602,7 +602,7 @@ exec sp_InsertOrdersBatch @orders, @details
 
 ### <a name="upsert"></a>UPSERT
 
-バッチ処理のシナリオをもう 1 つ紹介します。既存の行の更新と新しい行の挿入を同時に実行するというものです。 この操作を "UPSERT" (update + insert) と呼ぶことがあります。 この作業には、INSERT と UPDATE を別々に呼び出して実行するよりも、MERGE ステートメントを使ったやり方が最適です。 MERGE ステートメントは、挿入と更新の両方の操作を 1 回の呼び出しで実行することができます。
+バッチ処理のシナリオをもう 1 つ紹介します。既存の行の更新と新しい行の挿入を同時に実行するというものです。 この操作を "UPSERT" (update + insert) と呼ぶことがあります。 この作業には、INSERT と UPDATE を別々に呼び出して実行するよりも、MERGE ステートメントを使った方法が適切な場合があります。 MERGE ステートメントは、挿入と更新の両方の操作を 1 回の呼び出しで実行することができます。 MERGE ステートメントのロック機構は、個別の INSERT および UPDATE ステートメントとは異なる動作をします。 運用環境にデプロイする前に、特定のワークロードをテストします。
 
 テーブル値パラメーターと MERGE ステートメントとを組み合わせることによって、更新と挿入を実行できます。 たとえば、EmployeeID、FirstName、LastName、SocialSecurityNumber の列を含んだ単純な Employee テーブルがあるとします。
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: f2d9d9afb1e31f959c4e219c0c95e435c966ccd1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a095d2f6e05957e4a3daac76f3ac745e5a20de4a
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757069"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228982"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Just-In-Time (JIT) VM アクセスについて
 
@@ -56,11 +56,11 @@ Just-In-Time VM アクセスを有効にすると、受信トラフィックを�
 
 次の図は、サポートされている VM の分類を決定する際に Security Center で適用されるロジックを示しています。 
 
-[![Just-In-Time (JIT) 仮想マシン (VM) のロジック フロー](media/just-in-time-explained/jit-logic-flow.png)](media/just-in-time-explained/jit-logic-flow.png#lightbox)
+[![Just-In-Time (JIT) 仮想マシン (VM) のロジック フロー](media/just-in-time-explained/jit-logic-flow.png)](media/just-in-time-explained/jit-logic-flow.png#lightbox)。
 
 JIT の利点を得られるマシンが Security Center で検出されると、そのマシンが推奨事項の **[異常なリソース]** タブに追加されます。 
 
-![Just-In-Time (JIT) 仮想マシン (VM) のアクセスに関する推奨事項](./media/just-in-time-explained/unhealthy-resources.png)
+![Just-In-Time (JIT) 仮想マシン (VM) のアクセスに関する推奨事項。](./media/just-in-time-explained/unhealthy-resources.png)
 
 
 ## <a name="faq---just-in-time-virtual-machine-access"></a>FAQ - Just-In-Time 仮想マシン アクセス
@@ -74,7 +74,7 @@ JIT では、サブスクリプションで [Azure Defender for servers](defende
 JIT で動作するカスタム ロールを作成する場合は、次の表にある詳細情報が必要となります。
 
 > [!TIP]
-> VM への JIT アクセスを要求する必要があり、他の JIT 操作を実行しないユーザーに対して最小特権のロールを作成するには、Security Center GitHub コミュニティ ページにある [Set-JitLeastPrivilegedRole スクリプト](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)を使用します。
+> VM への JIT アクセスを要求する必要があり、他の JIT 操作を実行しないユーザーに対して最小特権のロールを作成するには、Security Center GitHub コミュニティ ページにある [Set-JitLeastPrivilegedRole スクリプト](https://github.com/Azure/Azure-Security-Center/tree/main/Powershell%20scripts/JIT%20Scripts/JIT%20Custom%20Role)を使用します。
 
 | ユーザーを有効にする目的: | 設定するアクセス許可|
 | --- | --- |
@@ -89,9 +89,7 @@ JIT で動作するカスタム ロールを作成する場合は、次の表に
 
 ## <a name="next-steps"></a>次のステップ
 
-このページでは、Just-In-Time (JIT) 仮想マシン (VM) へのアクセスを使用すべき _理由_ について説明しました。 
-
-JIT を有効にし、JIT 対応の VM へのアクセスを要求する方法については、操作方法に関する記事に進んでください。
+このページでは、Just-In-Time (JIT) 仮想マシン (VM) へのアクセスを使用すべき _理由_ について説明しました。 JIT を有効にして JIT 対応 VM へのアクセスを要求する _方法_ については、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [JIT を使用して管理ポートをセキュリティで保護する方法](security-center-just-in-time.md)

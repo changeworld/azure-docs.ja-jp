@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins Explorer の機能と目的を理解する
 author: baanders
 ms.author: baanders
-ms.date: 4/28/2021
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a0ecf0200b56b602468f1ca6c3dbfe19a5860c60
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 873e1a9fc0fdda5c331112d02a1b6111e336193e
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966386"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253647"
 ---
 # <a name="azure-digital-twins-explorer-preview"></a>Azure Digital Twins Explorer (プレビュー)
 
-**Azure Digital Twins Explorer** は、[モデル](concepts-models.md)や[ツイン グラフ](concepts-twins-graph.md)など、Azure Digital Twins インスタンス内のデータを視覚化および操作するための開発者ツールです。 
+**Azure Digital Twins Explorer** は、[モデル](concepts-models.md)や [ツイン グラフ](concepts-twins-graph.md)など、Azure Digital Twins インスタンス内のデータを視覚化および操作するための開発者ツールです。 
 
 >[!NOTE]
 >このツールは現在、**パブリック プレビュー** 段階にあります。
@@ -27,15 +27,15 @@ ms.locfileid: "111966386"
 
 ビジュアル インターフェイスは、グラフとモデルのセットの形状を探索して解釈し、個々のツインとリレーションシップに対して、特定の暫定的な変更を行う場合に最適なツールです。
 
-この記事では、ユース ケースや機能の概要など、Azure Digital Twins Explorer についての詳しい情報を提供します。 各機能の使用に関する詳細な手順については、「[方法: Azure Digital Twins Explorer を使用する](how-to-use-azure-digital-twins-explorer.md)」を参照してください。
+この記事では、ユース ケースや機能の概要など、Azure Digital Twins Explorer についての詳しい情報を提供します。 各機能の使用に関する詳細な手順については、「[Azure Digital Twins Explorer を使用する](how-to-use-azure-digital-twins-explorer.md)」を参照してください。
 
 ## <a name="when-to-use"></a>使用する場合
 
 Azure Digital Twins Explorer は、ツイン グラフを探索し、グラフのコンテキストのツインとリレーションシップを変更するユーザー向けに設計されたビジュアル ツールです。
 
 開発者は、このツールが次のシナリオで特に役立つと感じると考えられます。
-* **探索**: エクスプローラーを使用して、Azure Digital Twins と、それが実際の環境を表す方法について学習します。 表示および編集できるサンプルのモデルとグラフをインポートして、このサービスを理解しておいてください。 Azure Digital Twins Explorer の使用を開始するためのガイド付き手順については、「[クイック スタート: Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)」を参照してください。
-* **開発**: エクスプローラーを使用してツイン グラフを表示および検証し、モデル、ツイン、リレーションシップの特定のプロパティを調査します。 グラフとそのデータに暫定的な変更を加えます。 各機能の使い方の詳細な手順については、「[方法: Azure Digital Twins Explorer を使用する](how-to-use-azure-digital-twins-explorer.md)」を参照してください。 
+* **探索**: エクスプローラーを使用して、Azure Digital Twins と、それが実際の環境を表す方法について学習します。 表示および編集できるサンプルのモデルとグラフをインポートして、このサービスを理解しておいてください。 Azure Digital Twins Explorer の使用を開始するためのガイド付き手順については、「[Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)」を参照してください。
+* **開発**: エクスプローラーを使用してツイン グラフを表示および検証し、モデル、ツイン、リレーションシップの特定のプロパティを調査します。 グラフとそのデータに暫定的な変更を加えます。 各機能の使い方の詳細な手順については、「[Azure Digital Twins Explorer を使用する](how-to-use-azure-digital-twins-explorer.md)」を参照してください。 
 
 このエクスプローラーの主な目的は、グラフを視覚化して理解し、必要に応じてグラフを更新できるようにすることです。 大規模なソリューションや、繰り返したり、自動化したりする必要がある作業に対しては、代わりに [API と SDK](./concepts-apis-sdks.md) を使用して、コードを介してインスタンスと対話することを検討してください。
 
@@ -53,7 +53,7 @@ Azure Digital Twins Explorer はパネルに編成され、各パネルにはモ
 
 :::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-panels.png" alt-text="上記の各パネルが強調表示されている Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-panels.png":::
 
-各機能の使い方の詳細な手順については、「[方法: Azure Digital Twins Explorer を使用する](how-to-use-azure-digital-twins-explorer.md)」を参照してください。 
+各機能の使い方の詳細な手順については、「[Azure Digital Twins Explorer を使用する](how-to-use-azure-digital-twins-explorer.md)」を参照してください。 
 
 ## <a name="how-to-contribute"></a>貢献する方法
 
@@ -77,4 +77,4 @@ Azure Digital Twins Explorer は、Azure Digital Twins サービスと対話す�
 
 ## <a name="next-steps"></a>次のステップ 
 
-Azure Digital Twins Explorer の機能の使用方法の詳細をご覧ください:「[方法: Azure Digital Twins Explorer を使用する](how-to-use-azure-digital-twins-explorer.md)」。
+Azure Digital Twins Explorer の機能の使用方法の詳細をご覧ください:「[Azure Digital Twins Explorer を使用する](how-to-use-azure-digital-twins-explorer.md)」。

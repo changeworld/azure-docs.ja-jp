@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins によるセキュリティのベスト プラクティスについて説明します。
 author: baanders
 ms.author: baanders
-ms.date: 3/18/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: db58b523f1280847815587a5037c2348335482b6
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: a2d81d9ffbb79d0f05c8e0bf44fbe9d8967cf02f
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616174"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253771"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -58,7 +58,7 @@ Azure には、Azure Digital Twins [データ プレーン API](concepts-apis-sd
 * Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する (「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください)
 * CLI コマンドを使用してロールを追加または削除する
 
-この詳細な実行手順については、[Azure Digital Twins チュートリアルのエンド ツー エンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照してください。
+この詳細な実行手順については、Azure Digital Twins [エンド ツー エンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照してください。
 
 組み込みロールの定義方法の詳細については、Azure RBAC のドキュメントの[ロール定義の概要](../role-based-access-control/role-definitions.md)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
@@ -92,7 +92,7 @@ Azure では、システム割り当てとユーザー割り当てという 2 �
 
 Azure Digital インスタンスのシステム割り当てマネージド ID を使用して、[カスタム定義エンドポイント](concepts-route-events.md#create-an-endpoint)に対する認証を行うことができます。 Azure Digital Twins では、[Event Hub](../event-hubs/event-hubs-about.md) と  [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)  の送信先用のエンドポイントと[配信不能イベント](concepts-route-events.md#dead-letter-events)用の [Azure Storage コンテナー](../storage/blobs/storage-blobs-introduction.md)  エンドポイントに対する、システム割り当て ID ベースの認証がサポートされています。 [Event Grid](../event-grid/overview.md)  エンドポイントでは、現時点ではマネージド ID はサポートされていません。
 
-Azure Digital Twins のシステムマネージド ID を有効にし、それを使用してイベントをルーティングする方法については、「[方法: イベントをルーティングするためにマネージド ID を有効にする (プレビュー)](./how-to-enable-managed-identities-portal.md) 」を参照してください。
+Azure Digital Twins のシステムマネージド ID を有効にし、それを使用してイベントをルーティングする方法については、「[マネージド ID を使用してイベントをルーティングする](how-to-route-with-managed-identity.md)」を参照してください。
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>Azure Private Link を使用したプライベート ネットワーク アクセス (プレビュー)
 
@@ -106,7 +106,7 @@ Azure Digital Twins のシステムマネージド ID を有効にし、それ�
 
 Azure Digital Twins インスタンス用のプライベート エンドポイントを構成することで、Azure Digital Twins インスタンスをセキュリティで保護してパブリックに露出されないようにするだけでなく、VNet からのデータの流出を回避できます。
 
-Azure Digital Twins 用の Private Link を設定する方法については、「[方法: Private Link を使用してプライベート アクセスを有効にする (プレビュー)](./how-to-enable-private-link-portal.md) 」を参照してください。
+Azure Digital Twins 用の Private Link を設定する方法については、「[Private Link を使用してプライベート アクセスを有効にする (プレビュー)](./how-to-enable-private-link.md)」を参照してください。
 
 ### <a name="design-considerations"></a>設計上の考慮事項 
 
@@ -157,8 +157,8 @@ Azure Digital Twins によって、データ センターに書き込まれる�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [インスタンスと認証の設定方法](how-to-set-up-instance-portal.md)に関するページで取り上げられている、動作中の概念について確認します。
+* 「[インスタンスと認証を設定する](how-to-set-up-instance-portal.md)」で取り上げられている、動作中の概念について確認します。
 
-* クライアント アプリケーション コードからこれらの概念を操作する方法を、[アプリ認証コードを作成する方法](how-to-authenticate-client.md)に関するページで確認します。
+* クライアント アプリケーション コードからこれらの概念を操作する方法については、「[アプリ認証コードを作成する](how-to-authenticate-client.md)」を参照してください。
 
 * [Azure RBAC](../role-based-access-control/overview.md) の詳細を確認します。

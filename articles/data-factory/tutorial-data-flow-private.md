@@ -1,19 +1,20 @@
 ---
 title: Azure Data Factory マネージド仮想ネットワーク マッピング データ フローを使用してデータを変換する
 description: このチュートリアルでは、Azure Data Factory でマッピング データ フローを使用してデータを変換するための詳細な手順を説明します。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: ad101bee84256662d1436ba8d8a49304aecb9129
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 06/04/2021
+ms.openlocfilehash: e73b2a96d2b051dbb208bb9614569c423f99d8f0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518281"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749823"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>マッピング データ フローを使用して安全にデータを変換する
 
@@ -86,7 +87,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 この手順では、データ フロー アクティビティが含まれるパイプラインを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. Azure Data Factory のホーム ページで、 **[Orchestrate]\(調整\)** を選択します。
 
    ![パイプラインの作成を示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 

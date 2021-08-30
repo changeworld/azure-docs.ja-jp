@@ -3,22 +3,22 @@ title: 式関数のリァレンス ガイド
 description: Azure Logic Apps および Power Automate の式に含まれる関数のリファレンス ガイド
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: reference
-ms.date: 03/30/2021
-ms.openlocfilehash: 71a8dc9c72672ae0bee18be159631daba3d88a39
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/16/2021
+ms.openlocfilehash: 78267781c552f46952babea9704eca8d62b3b5ea
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062004"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253953"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) および [Power Automate](/flow/getting-started) でのワークフロー定義の場合、一部の[式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)では、ワークフローの実行開始時にはまだ存在しない可能性がある値が実行時のアクションから取得されます。 これらの式でこのような値を参照または処理するには、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)によって提供される "*関数*" を使用できます。
 
 > [!NOTE]
-> このリファレンス ページは、Azure Logic Apps と Power Automate の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリについて参照されていますが、これらの関数はフローとロジック アプリの両方で動作します。 Power Automate での関数と式について詳しくは、[条件での式の使用](/flow/use-expressions-in-conditions)に関する記事をご覧ください。
+> このリファレンス ページは、Azure Logic Apps と Power Automate の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリ ワークフローについて参照されていますが、これらの関数はフローとロジック アプリ ワークフローの両方で動作します。 Power Automate での関数と式について詳しくは、[条件での式の使用](/flow/use-expressions-in-conditions)に関する記事をご覧ください。
 
 たとえば、整数や浮動小数点数の合計が必要なときは、[add() 関数](../logic-apps/workflow-definition-language-functions-reference.md#add)などの数学関数を使って値を計算できます。 関数を使用して実行できるタスクの他の例を示します。
 
@@ -62,9 +62,11 @@ ms.locfileid: "110062004"
 
 どちらの例でも、`customerName` プロパティに結果を割り当てています。
 
-式の関数に関するその他の注意事項を次に示します。
+## <a name="considerations-for-using-functions"></a>関数の使用に関する考慮事項
 
 * 関数パラメーターは左から右に評価されます。
+
+* デザイナーは、デザイン時に関数パラメーターとして使用されるランタイム式を評価しません。 デザイナーでは、すべての式をデザイン時に完全に評価できる必要があります。
 
 * パラメーターの定義の構文において、パラメーターの後に疑問符 (?) が付いている場合は、そのパラメーターが省略可能であることを意味します。 たとえば、[getFutureTime()](#getFutureTime) をご覧ください。
 
@@ -202,7 +204,7 @@ Logic Apps を使用すると、base64 エンコードまたはデコードが�
 * `decodeDataUri(<value>)`
 
 > [!NOTE]
-> これらの関数のいずれかを、ロジック アプリ デザイナーを使用して (たとえば、式エディターを使用して) ワークフローに手動で追加した場合、デザイナーから移動し、デザイナーに戻ると、デザイナーからその関数が消え、パラメーター値だけが残されます。 この動作は、関数のパラメーター値を編集せずに、この関数を使用するトリガーまたはアクションを選択した場合にも発生します。 この結果は、関数の可視性のみに影響し、その結果には影響しません。 コード ビューでは、関数への影響はありません。 ただし、関数のパラメーター値を編集すると、関数とその結果が両方ともコード ビューから削除され、関数のパラメーター値だけが残されます。
+> これらの関数のいずれかを、ワークフロー デザイナーの使用中に、手動で直接トリガーまたはアクションに追加した、または式エディターを使用して追加したいずれかの場合、デザイナーから移動し、その後デザイナーに戻ると、デザイナーからその関数が消え、パラメーター値だけが残されます。 この動作は、関数のパラメーター値を編集せずに、この関数を使用するトリガーまたはアクションを選択した場合にも発生します。 この結果は、関数の可視性のみに影響し、その結果には影響しません。 コード ビューでは、関数への影響はありません。 ただし、関数のパラメーター値を編集すると、関数とその結果が両方ともコード ビューから削除され、関数のパラメーター値だけが残されます。
 
 <a name="math-functions"></a>
 
@@ -1044,7 +1046,7 @@ base64ToString('aGVsbG8=')
 
 ### <a name="binary"></a>binary
 
-文字列のバイナリ バージョンを返します。
+文字列の base64 エンコード バイナリ バージョンを返します。
 
 ```
 binary('<value>')
@@ -1057,20 +1059,12 @@ binary('<value>')
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*binary-for-input-value*> | String | 指定した文字列のバイナリ バージョン |
+| <*binary-for-input-value*> | String | 指定した文字列の base64 エンコード バイナリ バージョン |
 ||||
 
 *例*
 
-この例は、"hello" という文字列をバイナリ文字列に変換します。
-
-```
-binary('hello')
-```
-
-返される結果:
-
-`"0110100001100101011011000110110001101111"`
+たとえば、画像またはビデオ ファイルを返す HTTP アクションを使用している場合です。 `binary()` を使用して、値を base-64 でエンコードされたコンテンツ エンベロープ モデルに変換できます。 その後、`Compose` などの他のアクションでコンテンツ エンベロープを再利用できます。
 
 <a name="body"></a>
 
@@ -1145,8 +1139,8 @@ bool(<value>)
 
 | 入力値 | 種類 | 戻り値 |
 | ----------- | ---------- | ---------------------- |
-| `bool(1)` | Integer | `true` |
-| `bool(0)` | Integer    | `false` |
+| `bool(1)` | 整数型 | `true` |
+| `bool(0)` | 整数型    | `false` |
 | `bool(-1)` | Integer | `true` |
 | `bool('true')` | String | `true` |
 | `bool('false')` | String | `false` |
@@ -1226,6 +1220,9 @@ concat('Hello', 'World')
 ```
 
 返される結果: `"HelloWorld"`
+  
+> [!NOTE]
+> この結果の長さは 104,857,600 文字以下にする必要があります。
 
 <a name="contains"></a>
 
@@ -2703,6 +2700,9 @@ join(createArray('a', 'b', 'c'), '.')
 ```
 
 返される結果: `"a.b.c"`
+  
+> [!NOTE]
+> この結果の長さは 104,857,600 文字以下にする必要があります。
 
 <a name="last"></a>
 
@@ -3324,6 +3324,9 @@ range(1, 4)
 ```
 
 返される結果: `[1, 2, 3, 4]`
+  
+> [!NOTE]
+> `count` パラメーター値は、10 万を超えない正の整数である必要があります。 `startIndex` 値と `count` 値の合計は、2,147,483,647 以下である必要があります。
 
 <a name="replace"></a>
 

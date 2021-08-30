@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7648482fcf1d3618c02e4c8c8cf18aa521013baf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 22a953058084b4f828160cc9ba99c14a5313c9fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078275"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747782"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -233,7 +233,7 @@ PowerShell では次のとおりです。
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-この値は MB 単位で定義されており、ホストの合計物理メモリ以下である必要があります。 たとえば、8 GB の RAM を備えた App Service プランでは、すべてのアプリの累積合計 `WEBSITE_MEMORY_LIMIT_MB` が 8 GB を超えないようにする必要があります。 各価格レベルで使用できるメモリ量に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium コンテナー (Windows) プラン** に関するセクションを参照してください。
+この値は MB 単位で定義されており、ホストの合計物理メモリ以下である必要があります。 たとえば、8 GB の RAM を備えた App Service プランでは、すべてのアプリの累積合計 `WEBSITE_MEMORY_LIMIT_MB` が 8 GB を超えないようにする必要があります。 各価格レベルで使用できるメモリ量に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium v3 サービス プラン** に関するセクションを参照してください。
 
 ## <a name="customize-the-number-of-compute-cores"></a>コンピューティング コアの数をカスタマイズする
 
@@ -259,7 +259,7 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-プロセッサは、マルチコアまたはハイパースレッディングのプロセッサにすることができます。 各価格レベルで使用できるコア数に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium コンテナー (Windows) プラン** に関するセクションを参照してください。
+プロセッサは、マルチコアまたはハイパースレッディングのプロセッサにすることができます。 各価格レベルで使用できるコア数に関する情報については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/windows/)」の **Premium v3 サービス プラン** に関するセクションを参照してください。
 
 ## <a name="customize-health-ping-behavior"></a>正常性 ping の動作をカスタマイズする
 
@@ -386,6 +386,7 @@ wordpress:
 - マネージド ID
 - CORS
 - VNET 統合は、Docker Compose シナリオではサポートされていません。
+- 現在、Azure App Service の Docker Compose には 4,000 文字の制限があります。
 
 ### <a name="docker-compose-options"></a>Docker Compose のオプション
 
@@ -431,4 +432,5 @@ wordpress:
 
 または、その他のリソースを参照してください:
 
-[Windows/Linux コンテナーで証明書を読み込む](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)
+- [Windows/Linux コンテナーで証明書を読み込む](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)

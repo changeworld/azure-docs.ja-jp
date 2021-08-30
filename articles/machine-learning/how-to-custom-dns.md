@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 06/04/2021
+ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 616354174f5eb4bdae8e4b76379106e309c0dd14
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3ed8a3623163ef5f596508cd7073a68eec3fe297
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969092"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736528"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -25,6 +25,15 @@ ms.locfileid: "111969092"
 > [!IMPORTANT]
 > この記事では、DNS ソリューションで DNS レコードを手動登録する必要がある場合に、これらのエントリの完全修飾ドメイン名 (FQDN) と IP アドレスを検索する方法について説明します。 また、この記事では、FQDN が正しい IP アドレスに自動的に解決されるようにカスタム DNS ソリューションを構成する方法についての、アーキテクチャに関する推奨事項も提供します。 これらの項目に対する DNS レコードの構成に関する情報については、この記事では説明しません。 レコードを追加する方法については、DNS ソフトウェアのドキュメントを参照してください。
 
+> [!TIP]
+> この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
+>
+> * [Virtual Network の概要](how-to-network-security-overview.md)
+> * [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
+> * [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+> * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+> * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+> * [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
 ## <a name="prerequisites"></a>[前提条件]
 
 - [独自の DNS サーバー](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)を使用する Azure Virtual Network。
@@ -50,6 +59,7 @@ DNS サーバーと Azure Machine Learning の自動統合を使用するには�
 
 お使いのアーキテクチャはこれらの例と異なるかもしれませんが、これらを参照ポイントとして使用できます。 どちらのアーキテクチャの例でも、正しく構成されていない可能性があるコンポーネントを特定するのに役立つトラブルシューティングの手順が提供されます。
 
+別の方法として、ワークスペースを含む Azure Virtual Network (VNet) に接続しているクライアント上の `hosts` ファイルを変更することもできます。 詳細については、「[ホスト ファイル](#hosts)」セクションを参照してください。
 ### <a name="workspace-dns-resolution-path"></a>ワークスペースの DNS 解決パス
 
 Private Link 経由での特定の Azure Machine Learning ワークスペースへのアクセスは、次に示す完全修飾ドメイン (ワークスペース FQDN と呼ばれます) と通信することによって行われます。
@@ -86,7 +96,7 @@ Private Link 経由での特定の Azure Machine Learning ワークスペース�
 - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.privatelink.api.ml.azure.us```
 - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>.privatelink.notebooks.usgovcloudapi.net```
 
-FQDN は、そのリージョンの Azure Machine Learning ワークスペースの IP アドレスに解決されます。 ただし、ワークスペース プライベート リンク FQDN の解決は、上で説明したように作成されたプライベート DNS ゾーンにリンクされている仮想ネットワークの Azure DNS 仮想サーバーの IP アドレスを使用して解決するとオーバーライドされます。
+FQDN は、そのリージョンの Azure Machine Learning ワークスペースの IP アドレスに解決されます。 ただし、ワークスペースの Azure Private Link FQDN の解決は、仮想ネットワークでホストされているカスタム DNS サーバーを使用して無効にすることができます。 このアーキテクチャの例については、[vnet でホストされているカスタム DNS サーバー](#example-custom-dns-server-hosted-in-vnet)の例を参照してください。
 
 ## <a name="manual-dns-server-integration"></a>DNS サーバーの手動統合
 
@@ -147,10 +157,37 @@ VNet 内の FQDN の内部 IP アドレスを検索するには、次のいず�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli
-az network private-endpoint show --endpoint-name <endpoint> --resource-group <resource-group> --query 'customDnsConfigs[*].{FQDN: fqdn, IPAddress: ipAddresses[0]}' --output table
-```
+1. プライベート エンドポイント ネットワーク インターフェイスの ID を取得するには、次のコマンドを使用します。
 
+    ```azurecli
+    az network private-endpoint show --endpoint-name <endpoint> --resource-group <resource-group> --query 'networkInterfaces[*].id' --output table
+    ```
+
+1. IP アドレスと FQDN 情報を取得するには、次のコマンドを使用します。 `<resource-id>` を、前の手順の ID に置き換えます。
+
+    ```azurecli
+    az network nic show --ids <resource-id> --query 'ipConfigurations[*].{IPAddress: privateIpAddress, FQDNs: privateLinkConnectionProperties.fqdns}'
+    ```
+
+    出力は、次のテキストのようになります。
+
+    ```json
+    [
+        {
+            "FQDNs": [
+            "fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms",
+            "fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.cert.api.azureml.ms"
+            ],
+            "IPAddress": "10.1.0.5"
+        },
+        {
+            "FQDNs": [
+            "ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net"
+            ],
+            "IPAddress": "10.1.0.6"
+        }
+    ]
+    ```
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
@@ -234,7 +271,10 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
 
 2. **DNS サーバー仮想ネットワークにリンクされているプライベート DNS ゾーンをターゲットとするプライベート DNS 統合を使用してプライベート エンドポイントを作成します**:
 
-    次のステップでは、Azure Machine Learning ワークスペースへのプライベート エンドポイントを作成します。 プライベート エンドポイントにより、プライベート DNS 統合が有効になることが保証されます。 プライベート エンドポイントは、ステップ 1 で作成した両方のプライベート DNS ゾーンを対象とします。 これにより、ワークスペースとのすべての通信は、Azure Machine Learning 仮想ネットワークのプライベート エンドポイントを介して行われます。
+    次のステップでは、Azure Machine Learning ワークスペースへのプライベート エンドポイントを作成します。 プライベート エンドポイントは、ステップ 1 で作成した両方のプライベート DNS ゾーンを対象とします。 これにより、ワークスペースとのすべての通信は、Azure Machine Learning 仮想ネットワークのプライベート エンドポイントを介して行われます。
+
+    > [!IMPORTANT]
+    > この例が正しく機能するためには、プライベート エンドポイントでプライベート DNS 統合が有効になっている必要があります。
 
 3. **Azure DNS に転送するための条件付きフォワーダーを DNS サーバーに作成します**: 
 
@@ -243,16 +283,16 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
     条件付きで転送されるゾーンの一覧を次に示します。 Azure DNS 仮想サーバーの IP アドレスは 168.63.129.16 です。
 
     **Azure パブリック リージョン**:
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
     
     **Azure China リージョン**:
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
     
     **Azure US Government リージョン**:
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
 
     > [!IMPORTANT]
     > カスタム DNS サーバーとして使用できる多くの DNS ソリューションがあるため、ここには DNS サーバーの構成手順は含まれていません。 条件付き転送を適切に構成する方法については、お使いの DNS ソリューションのドキュメントを参照してください。
@@ -274,9 +314,9 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
     - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.api.ml.azure.us```
     - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>. notebooks.usgovcloudapi.net```
 
-5. **パブリック DNS が CNAME で応答します**:
+5. **Azure DNS は、ワークスペース ドメインを CNAME に再帰的に解決します**。
 
-    DNS サーバーは、ステップ 4 の FQDN をパブリック DNS から解決します。 パブリック DNS は、ステップ 1 の情報セクションに記載されているドメインの 1 つで応答します。
+    DNS サーバーは、手順 4 の FQDN を Azure DNS から解決します。 Azure DNS は、手順 1 に記載されているドメインの 1 つで応答します。
 
 6. **DNS サーバーは、Azure DNS からのワークスペース ドメイン CNAME レコードを再帰的に解決します**:
 
@@ -361,7 +401,10 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
 
 2. **DNS サーバー仮想ネットワークにリンクされているプライベート DNS ゾーンをターゲットとするプライベート DNS 統合を使用してプライベート エンドポイントを作成します**:
 
-    次のステップでは、Azure Machine Learning ワークスペースへのプライベート エンドポイントを作成します。 プライベート エンドポイントにより、プライベート DNS 統合が有効になることが保証されます。 プライベート エンドポイントは、ステップ 1 で作成した両方のプライベート DNS ゾーンを対象とします。 これにより、ワークスペースとのすべての通信は、Azure Machine Learning 仮想ネットワークのプライベート エンドポイントを介して行われます。
+    次のステップでは、Azure Machine Learning ワークスペースへのプライベート エンドポイントを作成します。 プライベート エンドポイントは、ステップ 1 で作成した両方のプライベート DNS ゾーンを対象とします。 これにより、ワークスペースとのすべての通信は、Azure Machine Learning 仮想ネットワークのプライベート エンドポイントを介して行われます。
+
+    > [!IMPORTANT]
+    > この例が正しく機能するためには、プライベート エンドポイントでプライベート DNS 統合が有効になっている必要があります。
 
 3. **Azure DNS に転送するための条件付きフォワーダーを DNS サーバーに作成します**:
 
@@ -370,16 +413,16 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
     条件付きで転送されるゾーンの一覧を次に示します。 Azure DNS 仮想サーバーの IP アドレスは 168.63.129.16 です。
 
     **Azure パブリック リージョン**:
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
     
     **Azure China リージョン**:
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
     
     **Azure US Government リージョン**:
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
 
     > [!IMPORTANT]
     > カスタム DNS サーバーとして使用できる多くの DNS ソリューションがあるため、ここには DNS サーバーの構成手順は含まれていません。 条件付き転送を適切に構成する方法については、お使いの DNS ソリューションのドキュメントを参照してください。
@@ -391,16 +434,16 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
     条件付きで転送されるゾーンの一覧を次に示します。 転送先の IP アドレスは、DNS サーバーの IP アドレスです。
 
     **Azure パブリック リージョン**:
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
     
     **Azure China リージョン**:
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
     
     **Azure US Government リージョン**:
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
 
     > [!IMPORTANT]
     > カスタム DNS サーバーとして使用できる多くの DNS ソリューションがあるため、ここには DNS サーバーの構成手順は含まれていません。 条件付き転送を適切に構成する方法については、お使いの DNS ソリューションのドキュメントを参照してください。
@@ -423,26 +466,62 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
     - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.api.ml.azure.us```
     - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>. notebooks.usgovcloudapi.net```
 
-6. **パブリック DNS が CNAME で応答します**:
+6. **オンプレミスの DNS サーバーは、ワークスペース ドメインを再帰的に解決します**。
 
-    DNS サーバーは、ステップ 4 の FQDN をパブリック DNS から解決します。 パブリック DNS は、ステップ 1 の情報セクションに記載されているドメインの 1 つで応答します。
+    オンプレミスの DNS サーバーは、DNS サーバーから手順 5 の FQDN を解決します。 手順 4 の条件付きフォワーダーがあるため、オンプレミスの DNS サーバーは解決のために DNS サーバーに要求を送信します。
 
-7. **オンプレミスの DNS サーバーは、DNS サーバーからのワークスペース ドメイン CNAME レコードを再帰的に解決します**:
+7. **DNS サーバーは、ワークスペース ドメインを Azure DNS から CNAME に解決します**。
 
-    オンプレミスの DNS サーバーは、ステップ 6 で受信した CNAME を再帰的に解決します。 ステップ 4 で条件付きフォワーダーのセットアップを行ったので、オンプレミスの DNS サーバーは解決のために DNS サーバーに要求を送信します。
+    DNS サーバーは、手順 5 の FQDN を Azure DNS から解決します。 Azure DNS は、手順 1 に記載されているドメインの 1 つで応答します。
 
-8. **DNS サーバーは、Azure DNS からのワークスペース ドメイン CNAME レコードを再帰的に解決します**:
+8. **オンプレミスの DNS サーバーは、DNS サーバーからのワークスペース ドメイン CNAME レコードを再帰的に解決します**:
 
-    DNS サーバーは、ステップ 5 で受信した CNAME を再帰的に解決します。 ステップ 3 で設定された条件付きフォワーダーがあるので、DNS サーバーにより要求が解決のため Azure DNS 仮想サーバーの IP アドレスに送信されます。
+    オンプレミスの DNS サーバーは、手順 7 で受信した CNAME を再帰的に解決します。 ステップ 4 で条件付きフォワーダーのセットアップを行ったので、オンプレミスの DNS サーバーは解決のために DNS サーバーに要求を送信します。
 
-9. **Azure DNS により、プライベート DNS ゾーンからレコードが返されます**:
+9. **DNS サーバーは、Azure DNS からのワークスペース ドメイン CNAME レコードを再帰的に解決します**:
+
+    DNS サーバーは、手順 7 で受信した CNAME を再帰的に解決します。 ステップ 3 で設定された条件付きフォワーダーがあるので、DNS サーバーにより要求が解決のため Azure DNS 仮想サーバーの IP アドレスに送信されます。
+
+10. **Azure DNS により、プライベート DNS ゾーンからレコードが返されます**:
 
     プライベート DNS ゾーンに格納されている対応するレコードが、DNS サーバーに返されます。これは、Azure DNS 仮想サーバーがプライベート エンドポイントの IP アドレスを返すことを意味します。
 
-10. **オンプレミスの DNS サーバーが、ワークスペース ドメイン名をプライベート エンドポイント アドレスに解決します**:
+11. **オンプレミスの DNS サーバーが、ワークスペース ドメイン名をプライベート エンドポイント アドレスに解決します**:
 
-    ステップ 7 のオンプレミス DNS サーバーから DNS サーバーへのクエリでは、最終的に、Azure Machine Learning ワークスペースへのプライベート エンドポイントに関連付けられている IP アドレスが返されます。 これらの IP アドレスを返された元のクライアントは、ステップ 1 で構成したプライベート エンドポイントを介して Azure Machine Learning ワークスペースと通信するようになります。
+    手順 8 のオンプレミス DNS サーバーから DNS サーバーへのクエリでは、最終的に、Azure Machine Learning ワークスペースへのプライベート エンドポイントに関連付けられている IP アドレスが返されます。 これらの IP アドレスを返された元のクライアントは、ステップ 1 で構成したプライベート エンドポイントを介して Azure Machine Learning ワークスペースと通信するようになります。
 
+<a id="hosts"></a>
+## <a name="example-hosts-file"></a>例: Hosts ファイル
+
+`hosts` ファイルは、Linux、macOS、および Windows がローカル コンピューターの名前解決を上書きするために使用するテキスト ドキュメントです。 このファイルには、IP アドレスの一覧と、対応するホスト名が含まれます。 ローカル コンピューターがホスト名を解決しようとすると、そのホスト名が `hosts` ファイルに含まれている場合、名前は対応する IP アドレスに解決されます。
+
+> [!IMPORTANT]
+> `hosts` ファイルは、ローカル コンピューターの名前解決のみを上書きします。 複数のコンピューターで `hosts` ファイルを使用する場合は、各コンピューターで個別にファイルを変更する必要があります。
+
+次の表は、`hosts` ファイルの場所を示しています。
+
+| オペレーティング システム | 場所 |
+| ----- | ----- |
+| Linux | `/etc/hosts` |
+| macOS | `/etc/hosts` |
+| Windows | `%SystemRoot%\System32\drivers\etc\hosts` |
+
+> [!TIP]
+> ファイル名は `hosts` であり、拡張子はありません。 ファイルを編集する場合は、管理者アクセスを使用します。 たとえば、Linux または macOS では `sudo vi` を使用する場合があります。 Windows で、管理者としてメモ帳を実行します。
+
+Azure Machine Learning の `hosts` ファイル エントリの例を次に示します。
+
+```
+# For core Azure Machine Learning hosts
+10.1.0.5    fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms
+10.1.0.5    fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.cert.api.azureml.ms
+10.1.0.6    ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net
+
+# For a compute instance named 'mycomputeinstance'
+10.1.0.5    mycomputeinstance.eastus.instances.azureml.ms
+```
+
+`hosts` ファイルの詳細については、[https://wikipedia.org/wiki/Hosts_(file)](https://wikipedia.org/wiki/Hosts_(file)) を参照してください。
 
 #### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -477,6 +556,15 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
 
 ## <a name="next-steps"></a>次の手順
 
-仮想ネットワークでの Azure Machine Learning の使用の詳細については、[仮想ネットワークの概要](how-to-network-security-overview.md)に関するページを参照してください。
+この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
+
+* [Virtual Network の概要](how-to-network-security-overview.md)
+* [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
+* [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+* [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+* [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
 
 プライベート エンドポイントの DNS 構成への統合については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md)」をご覧ください。
+
+カスタム DNS 名または TLS セキュリティを使用したデプロイ モデルの詳細については、「[TLS を使用して Web サービスをセキュリティで保護する](how-to-secure-web-service.md)」を参照してください。

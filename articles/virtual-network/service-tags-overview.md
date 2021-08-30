@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 07376647edac05384c2efc1240c2242fd5eb664b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a06a488473264a992d947ef78ad69c61776d34ae
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949813"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271209"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "111949813"
 - [リージョン](https://azure.microsoft.com/regions) スコープをサポートしている。
 - [Azure Firewall](../firewall/service-tags.md) 規則で使用可能である。
 
-既定では、サービス タグにはクラウド全体の範囲が反映されます。 サービス タグによっては、対応する IP 範囲を指定されたリージョンに制限することで、より詳細な制御を実現することもできます。 たとえば、サービス タグ **Storage** はクラウド全体の Azure Storage を表していますが、**Storage.WestUS** を使用すると、WestUS リージョンのストレージ IP アドレスのみに範囲が限定されます。 次の表に、各サービス タグでそのようなリージョン スコープがサポートされるかどうかを示します。  
+既定では、サービス タグにはクラウド全体の範囲が反映されます。 サービス タグによっては、対応する IP 範囲を指定されたリージョンに制限することで、より詳細な制御を実現することもできます。 たとえば、サービス タグ **Storage** はクラウド全体の Azure Storage を表していますが、**Storage.WestUS** を使用すると、WestUS リージョンのストレージ IP アドレスのみに範囲が限定されます。 次の表に、各サービス タグでそのようなリージョン スコープがサポートされるかどうかを示します。 各タグに示されている指示が推奨事項であることに注意してください。 たとえば、AzureCloud タグを使用して受信トラフィックを許可することができます。 ただし、この方法はほとんどのシナリオで推奨されません。これは、他の Azure ユーザーが使用するトラフィックを含め、すべての Azure IP からのトラフィックを許可するためです。 
 
 | タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
 | --- | -------- |:---:|:---:|:---:|
@@ -56,8 +56,8 @@ ms.locfileid: "111949813"
 | **AzureActiveDirectory** | Azure Active Directory。 | 送信 | いいえ | はい |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **AzureAdvancedThreatProtection** | Azure Advanced Threat Protection。 | 送信 | いいえ | いいえ |
-| **AzureAPIForFHIR** | Azure API for FHIR (高速ヘルスケア相互運用性リソース)。<br/><br/> *注: 現在、このタグは Azure portal で構成することはできません。*| 送信 | いいえ | いいえ |
 | **AzureArcInfrastructure** | Azure Arc 対応サーバー、Azure Arc 対応 Kubernetes、ゲスト構成トラフィック。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureTrafficManager**、**AzureResourceManager** の各タグに依存しています。 *現在、このタグは Azure portal で構成することはできません。*| 送信 | いいえ | はい |
+| **AzureAttestation** | Azure Attestation。<br/><br/>*注: 現在、このタグは Azure portal 経由で構成できません。* | 送信 | いいえ | はい | 
 | **AzureBackup** |Azure Backup。<br/><br/>*注:* このタグは、**Storage** タグと **AzureActiveDirectory** タグに依存します。 | 送信 | いいえ | はい |
 | **AzureBotService** | Azure Bot Service。 | 送信 | いいえ | いいえ |
 | **AzureCloud** | すべての[データセンター パブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=56519)。 | 送信 | はい | はい |
@@ -74,7 +74,7 @@ ms.locfileid: "111949813"
 | **AzureEventGrid** | Azure Event Grid。 | 両方 | いいえ | いいえ |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 両方 | いいえ | いいえ |
 | **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureFrontDoor.Frontend**、および **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | いいえ | いいえ |
-| **AzureIoTHub** | Azure IoT Hub。 | 送信 | いいえ | いいえ |
+| **AzureIoTHub** | Azure IoT Hub。 | 送信 | はい | いいえ |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグに依存します。 | 送信 | はい | はい |
 | **AzureLoadBalancer** | Azure インフラストラクチャのロード バランサー。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](./network-security-groups-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 これにはプローブ トラフィックのみが含まれ、バックエンド リソースへの実際のトラフィックは含まれません。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
 | **AzureMachineLearning** | Azure Machine Learning | 両方 | いいえ | はい |
@@ -106,7 +106,7 @@ ms.locfileid: "111949813"
 | **PowerQueryOnline** | Power Query Online。 | 両方 | いいえ | いいえ |
 | **ServiceBus** | Premium サービス レベルを使用する Azure Service Bus トラフィック。 | 送信 | はい | はい |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注:* このタグは、リージョンごとのコントロール プレーンの Service Fabric サービス エンドポイントを表します。 これにより、顧客は VNET から Service Fabric クラスターに対する管理操作を実行できるようになります (エンドポイントの例: https://westus.servicefabric.azure.com) | 両方 | いいえ | いいえ |
-| **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、および Azure Synapse Analytics。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグは、SQL マネージド インスタンスには適用されません。 | 送信 | はい | はい |
+| **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure Synapse Analytics。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグは、SQL マネージド インスタンスには適用されません。 | 送信 | はい | はい |
 | **SqlManagement** | SQL 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **Storage** | Azure Storage です。 <br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 | 送信 | はい | はい |
 | **StorageSyncService** | ストレージ同期サービス。 | 両方 | いいえ | いいえ |

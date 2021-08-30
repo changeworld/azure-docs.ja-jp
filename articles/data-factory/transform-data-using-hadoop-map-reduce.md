@@ -1,18 +1,20 @@
 ---
 title: Hadoop MapReduce アクティビティを使用してデータを変換する
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory から Azure HDInsight クラスター上の Hadoop MapReduce プログラムを実行してデータを処理する方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 05/08/2020
-ms.openlocfilehash: f03906586d6226c92cfa69e1a139d4c876cbf723
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20ac921650f980127f24a48a5dc4e80602b5ef91
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375886"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272033"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
 
@@ -85,13 +87,13 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
     "type": "HDInsightMapReduce",
     "linkedServiceName": {
         "referenceName": "MyHDInsightLinkedService",
-        "type": "LinkedServiceReference"
+        "type&quot;: &quot;LinkedServiceReference"
     },
     "typeProperties": {
         "className": "org.apache.mahout.cf.taste.hadoop.similarity.item.ItemSimilarityJob",
         "jarLinkedService": {
             "referenceName": "MyStorageLinkedService",
-            "type": "LinkedServiceReference"
+            "type&quot;: &quot;LinkedServiceReference"
         },
         "jarFilePath": "adfsamples/Mahout/jars/mahout-examples-0.9.0.2.2.7.1-34.jar",
         "arguments": [
@@ -120,5 +122,5 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
+* [Azure Machine Learning Studio (クラシック) の Batch Execution アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

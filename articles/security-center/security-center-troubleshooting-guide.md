@@ -5,20 +5,28 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 08/15/2021
 ms.author: memildin
-ms.openlocfilehash: 96cd715a16c06dd6e35d042a6938de083ec262a9
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ffa0970fe86ea832cb2c1df019bf5b0c65c70bba
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556786"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195165"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
 Security Center では、データの収集と格納に Log Analytics エージェントを使用します。 詳細については、「[Azure Security Center のプラットフォームの移行](./security-center-enable-data-collection.md)」を参照してください。 この記事の情報は、Log Analytics エージェントへの移行後の Security Center の機能を表しています。
+
+> [!TIP]
+> Azure portal の Azure Security Center ページの専用領域は、Azure Security Center と Azure Defender に関する一般的な課題を解決するための、拡大し続ける照合されたセルフヘルプ資料のセットを提供します。
+> 
+> 問題が発生している場合、またはサポート チームからのアドバイスを求めている場合は、 **[問題の診断と解決]** は、ソリューションを探すのに最適な場所です。
+> 
+> :::image type="content" source="media/release-notes/solve-problems.png" alt-text="Azure Security Center の [問題の診断と解決] ページ":::
+
 
 ## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -59,11 +67,11 @@ Security Center では、Log Analytics エージェントを使用して、Azure
 
 サービス管理コンソール (services.msc) を開くと、次のように Log Analytics エージェント サービスも実行されていることを確認できます。
 
-![サービス](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
+![承認。](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
 エージェントのバージョンを確認するには、**タスク マネージャー** を開き、 **[プロセス]** タブで **Log Analytics エージェント サービス** を見つけます。サービスを右クリックし、 **[プロパティ]** をクリックします。 **[詳細]** タブで、次のようなファイルのバージョンを確認します。
 
-![ファイル](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+![ファイル。](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
 ## <a name="log-analytics-agent-installation-scenarios"></a>Log Analytics エージェントのインストール シナリオ
 
@@ -86,11 +94,11 @@ Security Center では、Log Analytics エージェントを使用して、Azure
 | 電源状態がオフです | VM が停止しています。  Log Analytics エージェントは、実行中の VM にのみインストールできます。 | VM を再起動します。 |
 | Azure VM エージェントが見つからないか無効です | Log Analytics エージェントがまだインストールされていません。  Security Center が拡張機能をインストールするためには、有効な Azure VM エージェントが必要です。 | Azure VM エージェントを VM にインストールするか、再インストールするか、またはアップグレードしてください。 |
 | VM がインストールの準備が整っていない状態です  | VM のインストールの準備が整っていないため、Log Analytics エージェントはまだインストールされていません。 インストールする準備が VM で整っていません。VM エージェントまたは VM プロビジョニングに問題があります。 | VM の状態を確認します。 ステータス情報については、ポータルの **[Virtual Machines]** に戻って、対象の VM を選択してください。 |
-|インストールに失敗しました - 一般エラー | Log Analytics エージェントはインストールされましたが、エラーが発生したため失敗しました。 | [拡張機能を手動でインストール](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)するか、または、Security Center によって再インストールが試行されるように、拡張機能をアンインストールしてください。 |
-| インストールに失敗しました - ローカル エージェントが既にインストールされています | Log Analytics エージェントのインストールに失敗しました。 ローカル エージェント (Log Analytics または System Center Operations Manager) が VM にインストール済みであることが Security Center によって検出されました。 1 つの VM が 2 つの異なるワークスペースの管理下に置かれるマルチホーム構成を避けるために、Log Analytics エージェントのインストールは停止されました。 | これには 2 とおりの解決方法があります。1 つは、[拡張機能を手動でインストール](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)して、それを目的のワークスペースに接続する方法です。 もう 1 つは、目的のワークスペースを既定のワークスペースとして設定し、エージェントの自動プロビジョニングを有効にする方法です。  [自動プロビジョニングの有効化](security-center-enable-data-collection.md)に関するページを参照してください。 |
+|インストールに失敗しました - 一般エラー | Log Analytics エージェントはインストールされましたが、エラーが発生したため失敗しました。 | [拡張機能を手動でインストール](../azure-monitor/vm/monitor-virtual-machine.md#agents)するか、または、Security Center によって再インストールが試行されるように、拡張機能をアンインストールしてください。 |
+| インストールに失敗しました - ローカル エージェントが既にインストールされています | Log Analytics エージェントのインストールに失敗しました。 ローカル エージェント (Log Analytics または System Center Operations Manager) が VM にインストール済みであることが Security Center によって検出されました。 1 つの VM が 2 つの異なるワークスペースの管理下に置かれるマルチホーム構成を避けるために、Log Analytics エージェントのインストールは停止されました。 | これには 2 とおりの解決方法があります。1 つは、[拡張機能を手動でインストール](../azure-monitor/vm/monitor-virtual-machine.md#agents)して、それを目的のワークスペースに接続する方法です。 もう 1 つは、目的のワークスペースを既定のワークスペースとして設定し、エージェントの自動プロビジョニングを有効にする方法です。  [自動プロビジョニングの有効化](security-center-enable-data-collection.md)に関するページを参照してください。 |
 | エージェントがワークスペースに接続できません | Log Analytics エージェントはインストールされましたが、ネットワーク接続のために失敗しました。  エージェントに関して、インターネット アクセスがあること、または有効な HTTP プロキシが構成されていることを確認してください。 | 監視エージェントのネットワーク要件に関するページを参照してください。 |
 | エージェントの接続先ワークスペースが存在しないか不明です | VM にインストールされている Log Analytics エージェントが、接続先ワークスペースにアクセスできないことを Security Center が検出しました。 | この原因として 2 つのケースが考えられます。 まず、ワークスペースが削除されて現在は存在していないことが考えられます。 適切なワークスペースを備えたエージェントを再インストールするか、またはエージェントをアンインストールして、Security Center による自動プロビジョニング インストールが作動するようにしてください。 もう 1 つは、そのワークスペースを含んでいるサブスクリプションへのアクセス許可が Security Center にないケースです。 Microsoft Security Resource Provider にサブスクリプションへのアクセスを許可するためには、Security Center にそのサブスクリプションが必要です。 その対策として、Microsoft Security Resource Provider のサブスクリプションを登録します。 この作業は、API や PowerShell、ポータルから行うことができるほか、Security Center の **[概要]** ダッシュボードから、目的のサブスクリプションにフィルターを適用するだけでも実行できます。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。 |
-| エージェントが応答しないか、ID がありません | エージェントがインストールされているにもかかわらず、VM からスキャンされたセキュリティ データを Security Center が取得できません。 | エージェントからデータ (ハート ビートも含む) がまったく報告されていません。 エージェントが破損しているか、何らかの原因でトラフィックがブロックされています。 または、エージェントからはデータがレポートされているものの、Azure リソース ID が欠落しているために、データを Azure VM と突き合わせることができません。 Linux のトラブルシューティングについては、「[Troubleshooting Guide for Log Analytics Agent for Linux (Log Analytics エージェント for Linux のトラブルシューティング ガイド)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)」を参照してください。 Windows のトラブルシューティングについては、「[Troubleshooting Windows Virtual Machines (Windows 仮想マシンのトラブルシューティング)](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support)」を参照してください。 |
+| エージェントが応答しないか、ID がありません | エージェントがインストールされているにもかかわらず、VM からスキャンされたセキュリティ データを Security Center が取得できません。 | エージェントからデータ (ハート ビートも含む) がまったく報告されていません。 エージェントが破損しているか、何らかの原因でトラフィックがブロックされています。 または、エージェントからはデータがレポートされているものの、Azure リソース ID が欠落しているために、データを Azure VM と突き合わせることができません。 Linux のトラブルシューティングについては、「[Troubleshooting Guide for Log Analytics Agent for Linux (Log Analytics エージェント for Linux のトラブルシューティング ガイド)](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)」を参照してください。 Windows のトラブルシューティングについては、「[Troubleshooting Windows Virtual Machines (Windows 仮想マシンのトラブルシューティング)](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support)」を参照してください。 |
 | エージェントがインストールされていません | データ収集が無効になっています。 | セキュリティ ポリシーでデータ収集を有効にするか、Log Analytics エージェントを手動でインストールしてください。 |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>監視エージェントのネットワーク要件のトラブルシューティング<a name="mon-network-req"></a>
@@ -133,7 +141,7 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 
 一部の問題は、この記事に示したガイドラインを使用して特定できます。その他の問題については、Security Center パブリック [Microsoft Q&A ページ](/answers/topics/azure-security-center.html)でドキュメントを見つけることもできます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル** を使用して新しいサポート要求を開くことができます。
 
-![Microsoft サポート](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+![Microsoft サポート。](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 ## <a name="see-also"></a>関連項目
 

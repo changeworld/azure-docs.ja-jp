@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: d65367b561ed94c4872ce86edede2043f99cced4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 304d96e9f7566ab80ac71d176fc52ccf3c852b49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292686"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729529"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>サイト間接続を VNet に追加します。Azure portal
 
@@ -31,7 +31,7 @@ ms.locfileid: "108292686"
 次の項目についてご確認ください。
 
 * ExpressRoute と VPN Gateway の共存構成を新しく構成しているのではない。
-* 既存の接続のある Resource Manager デプロイ モデルを使用して作成した仮想ネットワークがある。
+* 既存の接続のある [Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)を使用して作成した仮想ネットワークがある。
 * VNet の仮想ネットワーク ゲートウェイがルートベースである。 VPN ゲートウェイがポリシーベースの場合は、仮想ネットワーク ゲートウェイを削除して、ルートベースとして新しい VPN ゲートウェイを作成する必要があります。
 * この VNet が接続する VNet のアドレスの範囲のいずれも重複していないこと。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいる。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。

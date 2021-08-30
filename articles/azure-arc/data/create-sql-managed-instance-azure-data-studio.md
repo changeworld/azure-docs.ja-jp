@@ -7,41 +7,22 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 3223ec1a9538228c1b3d9f2cdcb8ea1c051e0e10
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 15d4ba669f736fd1322c137a16d8b79f40cea6d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495966"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743883"
 ---
-# <a name="create-sql-managed-iinstance---azure-arc-using-azure-data-studio"></a>Azure Data Studio を使用して SQL Managed Instance - Azure Arc を作成する
+# <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Azure Data Studio を使用して Azure SQL Managed Instance - Azure Arc を作成する
 
 このドキュメントでは、Azure Data Studio を使用して Azure SQL Managed Instance - Azure Arc をインストールする手順について説明します
 
 [!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
-
-## <a name="log-in-to-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーにログインする
-
-Azure Arc データ コントローラーにまだログインしていない場合は、インスタンスを作成する前にログインします。
-
-```console
-azdata login
-```
-
-コントローラーにログインするには、データ コントローラーが作成されている名前空間、ユーザー名、パスワードを入力するように求められます。  
-
-> 名前空間を確認する必要がある場合は、```kubectl get pods -A``` を実行して、クラスター上のすべての名前空間の一覧を取得できます。
-
-```console
-Username: arcadmin
-Password:
-Namespace: arc
-Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
-```
+[!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
 
 ## <a name="create-azure-sql-managed-instance-on-azure-arc"></a>Azure Arc で Azure SQL Managed Instance を作成する
 
@@ -49,10 +30,8 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - [接続] タブで、左上にある 3 つのドットをクリックし、[新しい展開] を選択します
 - デプロイ オプションで、 **[Azure SQL Managed Instance - Azure Arc]\(Azure SQL Managed Instance - Azure Arc\)** を選択します 
   > [!NOTE]
-  > [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] が現在インストールされていない場合は、ここでインストールするように求められることがあります。
+  > 適切な CLI が現在インストールされていない場合は、ここでインストールするように求められることがあります。
 - プライバシーとライセンス条項に同意し、下部にある **[選択]** をクリックします
-
-
 
 - [Deploy Azure SQL Managed Instance - Azure Arc]\(Azure SQL Managed Instance - Azure Arc のデプロイ\) ブレードで、次の情報を入力します。
   - SQL Server インスタンスの名前を指定します
@@ -68,15 +47,10 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 
 ## <a name="connect-to-azure-sql-managed-instance---azure-arc-from-azure-data-studio"></a>Azure Data Studio から Azure SQL Managed Instance - Azure Arc に接続します
 
-- データ コントローラーの名前空間、ユーザー名、パスワードを指定して、Azure Arc データ コントローラーにログインします。 
-```console
-azdata login
-```
-
 - 次のコマンドを使用して、プロビジョニングされたすべての Azure SQL Managed Instances を表示します。
 
-```console
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s
 ```
 
 出力は次のようになります。ServerEndpoint (ポート番号を含む) をここからコピーします。
@@ -96,9 +70,6 @@ sqlinstance1  1/1         25.51.65.109:1433  Ready
 - 必要に応じて、接続先の特定のデータベース名を入力します
 - 必要に応じて、[Add New Server Group]\(新しいサーバー グループの追加\) を選択します
 - **[接続]** を選択して、Azure SQL Managed Instance - Azure Arc に接続します
-
-
-
 
 ## <a name="next-steps"></a>次の手順
 

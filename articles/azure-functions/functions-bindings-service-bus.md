@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4b0daecadd3af5f1322afc97f91706098aade768
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9163e3dcd30cc5e47ababd929961975ac70cb243
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080490"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824697"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -87,21 +87,29 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
                 "messageWaitTimeout": "00:00:30",
                 "maxAutoRenewDuration": "00:55:00",
                 "maxConcurrentSessions": 16
+            },
+            "batchOptions": {
+                "maxMessageCount": 1000,
+                "operationTimeout": "00:01:00",
+                "autoComplete": true
             }
         }
     }
 }
 ```
 
-`isSessionsEnabled` を `true` に設定している場合は、`sessionHandlerOptions` が有効になります。  `isSessionsEnabled` を `false` に設定している場合は、`messageHandlerOptions` が有効になります。
+`isSessionsEnabled` を `true` に設定している場合は、`sessionHandlerOptions` が優先されます。  `isSessionsEnabled` を `false` に設定している場合は、`messageHandlerOptions` が優先されます。
 
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |prefetchCount|0|メッセージの受信者が同時に要求できるメッセージ数を取得または設定します。|
-|maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
-|autoComplete|true|トリガーが処理後に自動的に complete を呼び出す必要があるか、または関数コードで complete を手動で呼び出すかどうか。<br><br>`false` に設定することは、C# でのみサポートされています。<br><br>`true` に設定した場合、関数の実行が正常に完了するとトリガーによって自動的にメッセージが完了され、それ以外の場合はメッセージが破棄されます。<br><br>`false` に設定する場合は、[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) を呼び出し、メッセージを完了、破棄、または配信不能にする必要があります。 例外がスローされた場合 (かつ `MessageReceiver` メソッドが呼び出されなかった場合)、ロックは維持されます。 ロックが期限切れになると、メッセージはキューに再登録されて `DeliveryCount` はインクリメントされ、ロックは自動的に更新されます。<br><br>C# 以外の関数では、関数で例外が発生すると、ランタイムによってバックグラウンドで `abandonAsync` が呼び出されます。 例外が発生しなかった場合は、バックグラウンドで `completeAsync` が呼び出されます。 |
-|maxConcurrentCalls|16|スケーリングされたインスタンスごとにメッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数。 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。|
-|maxConcurrentSessions|2000|スケーリングされたインスタンスごとに同時に処理できるセッションの最大数。|
+|messageHandlerOptions.maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
+|messageHandlerOptions.autoComplete|true|トリガーが処理後に自動的に complete を呼び出す必要があるか、または関数コードで complete を手動で呼び出すかどうか。<br><br>`false` に設定することは、C# でのみサポートされています。<br><br>`true` に設定した場合、関数の実行が正常に完了するとトリガーによって自動的にメッセージが完了され、それ以外の場合はメッセージが破棄されます。<br><br>`false` に設定する場合は、[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) を呼び出し、メッセージを完了、破棄、または配信不能にする必要があります。 例外がスローされた場合 (かつ `MessageReceiver` メソッドが呼び出されなかった場合)、ロックは維持されます。 ロックが期限切れになると、メッセージはキューに再登録されて `DeliveryCount` はインクリメントされ、ロックは自動的に更新されます。<br><br>C# 以外の関数では、関数で例外が発生すると、ランタイムによってバックグラウンドで `abandonAsync` が呼び出されます。 例外が発生しなかった場合は、バックグラウンドで `completeAsync` が呼び出されます。 |
+|messageHandlerOptions.maxConcurrentCalls|16|スケーリングされたインスタンスごとにメッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数。 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。|
+|sessionHandlerOptions.maxConcurrentSessions|2000|スケーリングされたインスタンスごとに同時に処理できるセッションの最大数。|
+|batchOptions.maxMessageCount|1000| トリガーされたときに、関数に送信されるメッセージの最大数。 |
+|batchOptions.operationTimeout|00:01:00| `hh:mm:ss` で表される期間の値。 |
+|batchOptions.autoComplete|true| `messageHandlerOptions.autoComplete` については、上記の説明を参照してください。 |
 
 ### <a name="additional-settings-for-version-5x"></a>バージョン 5.x 以降の追加設定
 
@@ -112,22 +120,20 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
     "version": "2.0",
     "extensions": {
         "serviceBus": {
-            "serviceBusOptions": {
-                "retryOptions":{
-                    "mode": "exponential",
-                    "tryTimeout": "00:00:10",
-                    "delay": "00:00:00.80",
-                    "maxDelay": "00:01:00",
-                    "maxRetries": 4
-                },
-                "prefetchCount": 100,
-                "autoCompleteMessages": true,
-                "maxAutoLockRenewalDuration": "00:05:00",
-                "maxConcurrentCalls": 32,
-                "maxConcurrentSessions": 10,
-                "maxMessages": 2000,
-                "sessionIdleTimeout": "00:01:00"
-            }
+            "clientRetryOptions":{
+                "mode": "exponential",
+                "tryTimeout": "00:01:00",
+                "delay": "00:00:00.80",
+                "maxDelay": "00:01:00",
+                "maxRetries": 3
+            },
+            "prefetchCount": 0,
+            "autoCompleteMessages": true,
+            "maxAutoLockRenewalDuration": "00:05:00",
+            "maxConcurrentCalls": 16,
+            "maxConcurrentSessions": 8,
+            "maxMessages": 1000,
+            "sessionIdleTimeout": "00:01:00"
         }
     }
 }
@@ -152,7 +158,7 @@ Service bus 拡張機能バージョン 5.x 以降を使用する場合、`Servi
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |mode|指数|再試行の遅延を計算するために使用する方法です。 既定の指数モードでは、バックオフ戦略に基づいて再試行が行われます。この場合、再試行の度に待機する期間が増加します。 `Fixed` モードでは、一定の間隔で再試行され、遅延はそれぞれ一定です。|
-|tryTimeout|00:00:10|試行ごとに操作を待機する最大期間です。|
+|tryTimeout|00:01:00|試行ごとに操作を待機する最大期間です。|
 |delay|00:00:00.80|再試行の間に適用する遅延またはバックオフ係数です。|
 |maxDelay|00:01:00|許容される再試行の間の最大遅延です。|
 |maxRetries|3|関連する操作が失敗したと判断するまでの再試行の最大回数です。|

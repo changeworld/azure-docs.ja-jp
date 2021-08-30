@@ -1,21 +1,20 @@
 ---
-title: 入力を出力フィールドにマップする
+title: スキルの出力フィールドをマップする
 titleSuffix: Azure Cognitive Search
-description: ソース データ フィールドを抽出して強化し、Azure Cognitive Search インデックスの出力フィールドにマップします。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+description: スキルセットによって作成されたエンリッチ コンテンツをエクスポートするには、その出力フィールドを検索インデックス内のフィールドにマッピングします。
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: 0e1db5f12e83a88697db38a6ddd77edab445f6c0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001305"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195205"
 ---
-# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI によって強化されたフィールドを検索可能なインデックスにマップする方法
+# <a name="map-enrichment-output-to-fields-in-a-search-index"></a>エンリッチメント出力を検索インデックス内のフィールドにマップする
 
 ![インデクサーのステージ](./media/cognitive-search-output-field-mapping/indexer-stages-output-field-mapping.png "インデクサーのステージ")
 
@@ -32,7 +31,7 @@ ms.locfileid: "96001305"
 * スキルセットはありませんが、Cosmos DB データベースから複合型にインデックスを作成しています。 その複合型のノードにアクセスして、インデックスのフィールドにマップしたいと考えています。
 
 > [!NOTE]
-> 最近、出力フィールド マッピングで関数をマッピングする機能を有効にしました。 マッピング関数の詳細については、「[フィールド マッピング関数](./search-indexer-field-mappings.md#field-mapping-functions)」を参照してください。
+> 出力フィールド マッピングは、検索インデックスにのみ適用されます。 [ナレッジ ストア](knowledge-store-concept-intro.md)を作成するインデクサーの場合、出力フィールド マッピングは無視されます。
 
 ## <a name="use-outputfieldmappings"></a>outputFieldMappings の使用
 
@@ -81,7 +80,7 @@ Content-Type: application/json
 }
 ```
 
-出力フィールド マッピングごとに、強化されたドキュメント ツリー内のデータの場所 (sourceFieldName) の名前を設定してから、インデックスで参照されるフィールド (targetFieldName) の名前を設定します。
+出力フィールド マッピングごとに、強化されたドキュメント ツリー内のデータの場所 (sourceFieldName) の名前を設定してから、インデックスで参照されるフィールド (targetFieldName) の名前を設定します。 フィールドの内容をインデックスに格納する前に、これ変換するために必要な[マッピング関数](search-indexer-field-mappings.md#field-mapping-functions)を割り当てます。
 
 ## <a name="flattening-information-from-complex-types"></a>複合型から情報をフラット化する 
 

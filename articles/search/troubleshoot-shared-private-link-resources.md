@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/30/2021
-ms.openlocfilehash: 82a5135f23293d0fe9bbaaf0eeb0543b4fdb598f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 81bae18cdc4a977ef03ddf807f9277037d939bd0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744775"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195856"
 ---
 # <a name="troubleshooting-common-issues-with-shared-private-link-resources"></a>共有プライベート リンク リソースに関する一般的な問題のトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "111744775"
 
 共有プライベート リンク リソースの作成には、次の 4 つの異なる手順が必要です。
 
-1. 顧客は、Search リソース プロバイダー (RP) で管理プレーン [CreateOrUpdate API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) を呼び出し、作成する共有プライベート リンク リソースの詳細を指定します。
+1. 顧客は、Search リソース プロバイダー (RP) で管理プレーン [CreateOrUpdate API](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/create-or-update) を呼び出し、作成する共有プライベート リンク リソースの詳細を指定します。
 
 2. Search RP によって要求が検証され、検証できた場合は、非同期 Azure Resource Manager 操作が開始されます (顧客はその進行状況に対してクエリを実行できます)。
 
@@ -70,15 +70,15 @@ ms.locfileid: "111744775"
 | Azure Key Vault | `Microsoft.KeyVault/vaults` | `2020-08-01` |
 | Azure Functions (プレビュー) | `Microsoft.Web/sites` | `2020-08-01-Preview` |
 
-さらに、指定されたリソースの種類に対して、指定された `groupId` が有効である必要があります。 たとえば、`groupId` "BLOB" は、"Microsoft.Storage/storageAccounts" に対して有効であり、その他のリソースの種類では使用できません。 特定の検索管理 API バージョンについて、顧客は[サポートされている API の一覧](/rest/api/searchmanagement/privatelinkresources/listsupported)を使用して、サポートされている `groupId` およびリソースの種類の詳細を確認できます。
+さらに、指定されたリソースの種類に対して、指定された `groupId` が有効である必要があります。 たとえば、`groupId` "BLOB" は、"Microsoft.Storage/storageAccounts" に対して有効であり、その他のリソースの種類では使用できません。 特定の検索管理 API バージョンについて、顧客は[サポートされている API の一覧](/rest/api/searchmanagement/2021-04-01-preview/private-link-resources/list-supported)を使用して、サポートされている `groupId` およびリソースの種類の詳細を確認できます。
 
 + クォータ制限の適用: Search Service では、作成できる共有プライベート リンク リソースの個別の数と、使用されているさまざまなターゲット リソースの種類の数 (`groupId` に基づく) に対してクォータが課せられています。 これらは、Azure Cognitive Search のサービスの制限に関するページのセクション「[共有プライベート リンク リソースの制限](search-limits-quotas-capacity.md#shared-private-link-resource-limits)」に記載されています。
 
 ### <a name="azure-resource-manager-deployment-failures"></a>Azure Resource Manager デプロイ エラー
 
-Search で共有プライベート リンク リソースの作成要求が受け入れられると、開始される Azure Resource Manager デプロイも、さまざまな原因で失敗するおそれがあります。 どの場合も、顧客が非同期操作の状態に対してクエリを実行すると ([こちら](search-indexer-howto-access-private.md#step-1-create-a-shared-private-link-resource-to-the-storage-account)に記載されています)、該当するエラー メッセージと入手可能な詳細情報が表示されます。
+検索サービスは、共有プライベート リンクを作成する要求を開始しますが、実際の処理は、Azure Resource Manager が実行します。 [デプロイの状態](search-indexer-howto-access-private.md#step-3-check-the-status-of-the-private-endpoint-creation)は、ポータル内で、またはクエリを使用して確認し、発生する可能性があるエラーに対処できます。
 
-Azure Resource Manager デプロイに失敗した共有プライベート リンク リソースは、[List](/rest/api/searchmanagement/sharedprivatelinkresources/listbyservice) および [Get](/rest/api/searchmanagement/sharedprivatelinkresources/get) API 呼び出しに表示されますが、"プロビジョニング状態" は `Failed` になります。 Azure Resource Manager デプロイ エラーの原因が確認されたら、`Failed` リソースを削除し、次の表から適切な解決策を適用した後、再作成します。
+Azure Resource Manager デプロイに失敗した共有プライベート リンク リソースは、[List](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/list-by-service) および [Get](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/get) API 呼び出しに表示されますが、"プロビジョニング状態" は `Failed` になります。 Azure Resource Manager デプロイ エラーの原因が確認されたら、`Failed` リソースを削除し、次の表から適切な解決策を適用した後、再作成します。
 
 | デプロイ エラーの原因 | 説明 | 解像度 |
 | --- | --- | --- |
@@ -97,7 +97,7 @@ Azure Resource Manager デプロイに失敗した共有プライベート リ�
 
 ## <a name="updating-a-shared-private-link-resource"></a>共有プライベート リンク リソースの更新
 
-既存の共有プライベート リンク リソースは、[Create API または Update API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) を使用して更新できます。 Search RP では、共有プライベート リンク リソースの限られた更新のみが可能です。この API を使用して更新できるのは、要求メッセージだけです。
+既存の共有プライベート リンク リソースは、[Create API または Update API](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/create-or-update) を使用して更新できます。 Search RP では、共有プライベート リンク リソースの限られた更新のみが可能です。この API を使用して更新できるのは、要求メッセージだけです。
 
 + 既存の共有プライベート リンク リソース (`privateLinkResourceId` や `groupId` など) の "コア" プロパティを更新することはできません。これは常にサポートされません。 要求メッセージ以外のプロパティを変更する必要がある場合は、共有プライベート リンク リソースを削除して再作成することをお勧めします。
 
@@ -105,7 +105,7 @@ Azure Resource Manager デプロイに失敗した共有プライベート リ�
 
 ## <a name="deleting-a-shared-private-link-resource"></a>共有プライベート リンク リソースの削除
 
-顧客は、[Delete API](/rest/api/searchmanagement/sharedprivatelinkresources/delete) を使用して、既存の共有プライベート リンク リソースを削除できます。 作成 (または更新) のプロセスと同様に、これは 4 つの手順を含む非同期操作です。
+顧客は、[Delete API](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/delete) を使用して、既存の共有プライベート リンク リソースを削除できます。 作成 (または更新) のプロセスと同様に、これは 4 つの手順を含む非同期操作です。
 
 1. 顧客が、共有プライベート リンク リソースを削除するよう Search RP に要求します。
 
@@ -113,7 +113,7 @@ Azure Resource Manager デプロイに失敗した共有プライベート リ�
 
 3. Search により、操作の完了に対してクエリが実行されます (通常は数分かかります)。 この時点で、共有プライベート リンク リソースのプロビジョニング状態は "削除中" になります。
 
-4. 操作が正常に完了すると、バッキング プライベート エンドポイントおよび関連付けられているすべての DNS マッピングが削除されます。 リソースは [List](/rest/api/searchmanagement/sharedprivatelinkresources/listbyservice) 操作の一部として表示されません。このリソースに対して [Get](/rest/api/searchmanagement/sharedprivatelinkresources/get) 操作を試行すると、"404 Not Found" エラーになります。
+4. 操作が正常に完了すると、バッキング プライベート エンドポイントおよび関連付けられているすべての DNS マッピングが削除されます。 リソースは [List](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/list-by-service) 操作の一部として表示されません。このリソースに対して [Get](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/get) 操作を試行すると、"404 Not Found" エラーになります。
 
 ![共有プライベート リンク リソースの削除に必要な手順 ](media\troubleshoot-shared-private-link-resources\shared-private-link-delete-states.png)
 
@@ -122,7 +122,7 @@ Azure Resource Manager デプロイに失敗した共有プライベート リ�
 | 失敗の種類 | 説明 | 解像度 |
 | --- | --- | --- |
 | リソースが最終状態以外の状態である | 最終状態 (`Succeeded` または `Failed`) ではない共有プライベート リンク リソースは削除できません。 共有プライベート リンク リソースが (まれに) 最大 8 時間、最終状態以外の状態でスタックする場合があります。 | リソースが最終状態に達するまで待ち、削除要求をもう一度お試しください。 |
-| 削除操作が "競合&quot; エラーで失敗した | 共有プライベート リンク リソースを削除する Azure Resource Manager 操作が、`privateLinkResourceId` (&quot;ターゲット RP") で指定されたターゲット リソースのリソース プロバイダーに到達してから、プライベート エンドポイントと DNS マッピングを削除できるようになります。 顧客は、[Azure リソース ロック](../azure-resource-manager/management/lock-resources.md)を利用して、リソースに対する変更を防止できます。 Azure Resource Manager がターゲット RP に到達すると、ターゲット RP では、(プライベート エンドポイントに関する詳細をそのメタデータから削除するために) ターゲット リソースの状態を変更する必要があります。 ターゲット リソース (またはそのリソース グループかサブスクリプション) にロックが構成されている場合、Azure Resource Manager 操作は "競合" (および該当する詳細情報) で失敗します。 共有プライベート リンク リソースは削除されません。 | 顧客は、削除操作を再試行する前に、ターゲット リソースのロックを解除する必要があります。 **注**: この問題は、顧客が、"ロックされた" ターゲット リソースを参照する共有プライベート リンク リソースを使用して Search Service を削除しようとした場合にも発生するおそれがあります。 |
+| 削除操作が "競合" エラーで失敗した | 共有プライベート リンク リソースを削除する Azure Resource Manager 操作が、`privateLinkResourceId` ("ターゲット RP") で指定されたターゲット リソースのリソース プロバイダーに到達してから、プライベート エンドポイントと DNS マッピングを削除できるようになります。 顧客は、[Azure リソース ロック](../azure-resource-manager/management/lock-resources.md)を利用して、リソースに対する変更を防止できます。 Azure Resource Manager がターゲット RP に到達すると、ターゲット RP では、(プライベート エンドポイントに関する詳細をそのメタデータから削除するために) ターゲット リソースの状態を変更する必要があります。 ターゲット リソース (またはそのリソース グループかサブスクリプション) にロックが構成されている場合、Azure Resource Manager 操作は "競合" (および該当する詳細情報) で失敗します。 共有プライベート リンク リソースは削除されません。 | 顧客は、削除操作を再試行する前に、ターゲット リソースのロックを解除する必要があります。 **注**: この問題は、顧客が、"ロックされた" ターゲット リソースを参照する共有プライベート リンク リソースを使用して Search Service を削除しようとした場合にも発生するおそれがあります。 |
 | 削除操作に失敗した | まれに、非同期 Azure Resource Manager 削除操作が失敗する場合があります。 この操作が失敗した場合、非同期操作の状態に対してクエリを実行すると、顧客に対してエラー メッセージと該当する詳細情報が表示されます。 | 後で操作をもう一度お試しください。問題が解決しない場合は、Azure サポートにお問い合わせください。
 | リソースが "削除中" 状態でスタックする | まれに、共有プライベート リンク リソースが "削除中" 状態で最大 8 時間スタックする場合があります。これは、Search RP で致命的なエラーが発生したことが原因であるおそれがあります。 | 8 時間待って、リソースが `Failed` 状態に遷移してから、要求を再発行します。|
 
@@ -131,4 +131,4 @@ Azure Resource Manager デプロイに失敗した共有プライベート リ�
 共有プライベート リンク リソースと、そのリソースを使用して保護されたコンテンツへの安全なアクセスを確保する方法の詳細については、こちらをご覧ください。
 
 + [インデクサーを使用した保護されたコンテンツへのアクセス](search-indexer-howto-access-private.md)
-+ [REST API リファレンス](/rest/api/searchmanagement/sharedprivatelinkresources)
++ [REST API リファレンス](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources)

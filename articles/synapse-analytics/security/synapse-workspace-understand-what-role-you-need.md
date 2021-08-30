@@ -1,19 +1,19 @@
 ---
 title: Synapse で一般的なタスクを実行するために必要なロールについて理解する
 description: この記事では、特定のタスクを実行するために必要な組み込みの Synapse RBAC ロールについて説明します
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87156914769c2cb76b7509b74ebfeb13b15af95e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 56337e349cf2cfad792cecbec11503a4fd866095
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784197"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253624"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Synapse で一般的なタスクを実行するために必要なロールについて理解する
 
@@ -92,7 +92,7 @@ Apache Spark プールで実行中のノートブックまたは Spark ジョブ
 ノートブックまたはジョブ定義に対する変更を Git リポジトリにコミットする|Git アクセス許可|なし
 パイプライン、統合ランタイム、データフロー、データセット、およびトリガー|
 統合ランタイムを作成、更新、または削除する|ワークスペースの Azure 所有者または共同作成者|
-Integration Runtime 状態を監視する|Synapse ユーザー|read、pipelines/viewOutputs
+Integration Runtime 状態を監視する|Synapse コンピューティング オペレーター|read、integrationRuntimes/viewLogs
 パイプラインの実行を確認する|Synapse 成果物発行元、Synapse 共同作成者|read、pipelines/viewOutputs 
 パイプラインを作成する |Synapse ユーザー</br>"*デバッグ、トリガーの追加、変更の発行またはコミットを行うには、追加の Synapse アクセス許可が必要です*"|読み取り
 データフローまたはデータセットを作成する |Synapse ユーザー</br>"*変更の発行またはコミットを行うには追加の Synapse アクセス許可が必要です*"|読み取り

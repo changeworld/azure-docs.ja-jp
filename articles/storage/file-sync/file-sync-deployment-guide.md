@@ -8,12 +8,12 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5825f170a1bd14fc577284b8a512ff40aa614546
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 42ca317d4838513bb23bed9f5aa1028cb964d382
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677149"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768594"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -410,89 +410,7 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 - ボリューム上でサーバー エンドポイントを確立した後もパスまたはドライブ文字を変更することはサポートされていません。 登録済みサーバーで最終的なパスを使用していることを確認します。
 - 登録済みサーバーは複数のサーバー エンドポイントをサポートできますが、同期グループには、常に登録済みサーバーあたり 1 つのサーバー エンドポイントしか含めることができません。 同期グループ内のその他のサーバー エンドポイントは、異なる登録済みサーバー上に存在する必要があります。
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
-サーバー エンドポイントを追加するには、新しく作成した同期グループに移動し、 **[サーバー エンドポイントの追加]** を選びます。
-
-![[同期グループ] ウィンドウで新しいサーバー エンドポイントを追加する](media/storage-sync-files-deployment-guide/create-sync-group-part-2.png)
-
-**[サーバー エンドポイントの追加]** ウィンドウで、次の情報を入力してサーバー エンドポイントを作成します。
-
-- **登録済みサーバー**: サーバー エンドポイントを作成するサーバーまたはクラスターの名前。
-- **パス**:同期グループの一部として同期される Windows Server のパス。
-- **クラウドの階層化**: クラウドの階層化を有効または無効にするスイッチ。 クラウドの階層化によって、使用頻度やアクセス頻度が低いファイルを Azure Files に階層化できます。
-- **ボリュームの空き領域**: サーバー エンドポイントが配置されているボリュームに確保する空き領域のサイズ。 たとえば、単一のサーバー エンドポイントで [ボリュームの空き領域] をボリュームの 50% に設定すると、データの約半量が Azure Files に階層化されます。 クラウドの階層化が有効かどうかにかかわらず、Azure ファイル共有は、データの完全なコピーを常に同期グループ内に保持します。
-- **初期ダウンロード モード**:これは、エージェント バージョン 11 からの省略可能な選択で、Azure ファイル共有にはファイルがあるが、サーバー上にはない場合に役立ちます。 このような状況は、たとえば、別のブランチ オフィス サーバーを同期グループに追加するためにサーバー エンドポイントを作成する場合や、障害が発生したサーバーをディザスター リカバリーする場合などに起こりうる可能性があります。 クラウドを使った階層化が有効になっている場合、既定では、最初にファイルのコンテンツではなく、名前空間のみが呼び戻されます。 これは、ユーザーのアクセス要求で、サーバーにどのファイルのコンテンツを呼び戻すかを決めるべきだと考えている場合に便利です。 クラウドを使った階層化が無効になっている場合、既定では、名前空間が最初にダウンロードされた後、ローカル容量に到達するまで、最終更新タイムスタンプに基づいてファイルが呼び戻されます。 ただし、初期ダウンロード モードは名前空間のみに変更できます。 3 番目のモードは、このサーバー エンドポイントでクラウドを使った階層化が無効になっている場合にのみ使用できます。 このモードでは、最初に名前空間が呼び戻されることを回避します。 ファイルは、完全にダウンロードされた場合にのみ、ローカル サーバーに表示されます。 このモードは、例えばアプリケーションでは完全なファイルが必要とされ、名前空間に階層化されたファイルがあることが許容されない場合に便利です。
-
-サーバー エンドポイントを追加するには、 **[作成]** を選びます。 Azure ファイル共有と Windows Server でファイルの同期が維持されます。 
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-サーバー エンドポイントを作成するには、必ず `<your-server-endpoint-path>` と `<your-volume-free-space>` を適切な値に置き換え、オプションの初期ダウンロード ポリシーのオプション設定を確認して、次の PowerShell コマンドを実行します。
-
-```powershell
-$serverEndpointPath = "<your-server-endpoint-path>"
-$cloudTieringDesired = $true
-$volumeFreeSpacePercentage = <your-volume-free-space>
-# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
-$initialDownloadPolicy = NamespaceOnly
-
-if ($cloudTieringDesired) {
-    # Ensure endpoint path is not the system volume
-    $directoryRoot = [System.IO.Directory]::GetDirectoryRoot($serverEndpointPath)
-    $osVolume = "$($env:SystemDrive)\"
-    if ($directoryRoot -eq $osVolume) {
-        throw [System.Exception]::new("Cloud tiering cannot be enabled on the system volume")
-    }
-
-    # Create server endpoint
-    New-AzStorageSyncServerEndpoint `
-        -Name $registeredServer.FriendlyName `
-        -SyncGroup $syncGroup `
-        -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath `
-        -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
-        -InitialDownloadPolicy $initialDownloadPolicy
-} else {
-    # Create server endpoint
-    New-AzStorageSyncServerEndpoint `
-        -Name $registeredServer.FriendlyName `
-        -SyncGroup $syncGroup `
-        -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath `
-        -InitialDownloadPolicy $initialDownloadPolicy
-}
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-[az storagesync sync-group server-endpoint](/cli/azure/storagesync/sync-group/server-endpoint#az_storagesync_sync_group_server_endpoint_create) コマンドを使用して、新しいサーバー エンドポイントを作成します。
-
-```azurecli
-# Create a new sync group server endpoint 
-az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --name myNewServerEndpointName
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
-                                                 --server-local-path d:\myPath
-                                                 --storage-sync-service myStorageSyncServiceNAme
-                                                 --sync-group-name mySyncGroupName
-
-# Create a new sync group server endpoint with additional optional parameters
-az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --storage-sync-service myStorageSyncServiceName \
-                                                 --sync-group-name mySyncGroupName \
-                                                 --name myNewServerEndpointName \
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
-                                                 --server-local-path d:\myPath \
-                                                 --cloud-tiering on \
-                                                 --volume-free-space-percent 85 \
-                                                 --tier-files-older-than-days 15 \
-                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
-                                                 --offline-data-transfer on \
-                                                 --offline-data-transfer-share-name myfilesharename \
-
-```
-
----
+[!INCLUDE [storage-files-sync-create-server-endpoint](../../../includes/storage-files-sync-create-server-endpoint.md)]
 
 ## <a name="configure-firewall-and-virtual-network-settings"></a>ファイアウォールと仮想ネットワークの設定を構成する
 
@@ -576,7 +494,7 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 ボリュームごとの既定の VSS スナップショット最大数 (64) とそれを作成する既定のスケジュールでは、インフォメーション ワーカーが以前のバージョンから復元できる最大日数は 45 日間になります (ボリューム上でどれほどの VSS スナップショットを保存できるかによって異なります)。
 
-ボリュームごとの VSS スナップショット最大数として 64 が適切ではない場合、[レジストリ キーでその値を変更する](/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)ことができます。
+ボリュームごとの VSS スナップショット最大数として 64 が適切な設定ではない場合、[レジストリ キーでその値を変更する](/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)ことができます。
 新しい制限値を有効にするには、既に有効にされている、以前のバージョンの互換性を有効にするためのコマンドレットを各ボリュームで再実行する必要があります。ボリュームごとの新しい VSS スナップショット最大数を反映するために、-Force フラグを使用します。 これにより、互換性が維持される日数が新しく計算されます。 この変更は、新しく階層化されたファイルでのみ有効になり、既に実行した VSS スケジュールへのカスタマイズはすべて上書きされることにご注意ください。
 
 <a id="proactive-recall"></a>
@@ -630,6 +548,6 @@ DFS-R のデプロイを Azure File Sync に移行するには:
 詳しくは、[Azure File Sync と分散ファイル システム (DFS) の相互運用](file-sync-planning.md#distributed-file-system-dfs)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure File Sync のサーバー エンドポイントの追加/削除](file-sync-server-endpoint.md)
+- [Azure File Sync サーバー エンドポイントを作成する](file-sync-server-endpoint-create.md)
 - [Azure File Sync (プレビュー) へのサーバーの登録/登録解除](file-sync-server-registration.md)
 - [Azure File Sync の監視](file-sync-monitoring.md)

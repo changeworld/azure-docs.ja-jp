@@ -3,14 +3,14 @@ title: Azure Site Recovery を使用した Azure VM のディザスター リカ
 description: この記事では、Azure Site Recovery を使用し、Azure VM をディザスター リカバリーすることに関連してよく寄せられる質問に回答します。
 author: sideeksh
 manager: rochakm
-ms.date: 11/03/2019
+ms.date: 07/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: cd44d3361e96a22ddb70fb5568926583ac3dbb67
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: c2fb5175b077275d0c2ef5b0a37f6d4ead76b9d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952694"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728577"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -59,13 +59,13 @@ Site Recovery で保護されるすべてのインスタンスは、保護を開
 
 ### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>別のリソース グループから Automation アカウントを選択できますか?
 
-レプリケートされた Azure VM で実行されている Mobility Service 拡張機能の更新を Site Recovery が管理できるようにすると、Azure Automation アカウントを使用して (Azure サービスによって使用される) グローバル Runbook がデプロイされます。 Site Recovery が作成する Automation アカウントを使用するか、既存の Automation アカウントを使用するように選択することができます。 
+レプリケートされた Azure VM で実行されている Mobility Service 拡張機能の更新を Site Recovery が管理できるようにすると、Azure Automation アカウントを使用して (Azure サービスによって使用される) グローバル Runbook がデプロイされます。 Site Recovery が作成する Automation アカウントを使用するか、既存の Automation アカウントを使用するように選択することができます。
 
 現在、ポータルでは、コンテナーと同じリソース グループ内の Automation アカウントのみを選択できます。 PowerShell を使って、別のリソース グループから Automation アカウントを選択できます。 [詳細については、こちらを参照してください](azure-to-azure-autoupdate.md#enable-automatic-updates)。
 
 ### <a name="if-i-use-a-customer-automation-account-thats-not-in-the-vault-resource-group-can-i-delete-the-default-runbook"></a>コンテナー リソース グループに含まれていない顧客の Automation アカウントを使用している場合、既定の Runbook を削除できますか?
 
-はい、不要な場合は削除できます。 
+はい、不要な場合は削除できます。
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>別のサブスクリプションに VM をレプリケートできますか?
 
@@ -73,9 +73,9 @@ Site Recovery で保護されるすべてのインスタンスは、保護を開
 
 ### <a name="can-i-replicate-vms-in-an-availability-zone-to-another-region"></a>可用性ゾーン内の VM を別のリージョンにレプリケートすることはできますか?
 
-はい、可用性ゾーン内の VM を別の Azure リージョンにレプリケートすることができます。 
+はい、可用性ゾーン内の VM を別の Azure リージョンにレプリケートすることができます。
 
-### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>非ゾーンの VM を同じリージョン内のゾーンにレプリケートすることはできますか? 
+### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>非ゾーンの VM を同じリージョン内のゾーンにレプリケートすることはできますか?
 
 これは、ポータルではサポートされていません。 これを行うには、REST API/PowerShell を使用できます。
 
@@ -89,7 +89,7 @@ Site Recovery で保護されるすべてのインスタンスは、保護を開
 
 ### <a name="can-i-replicate-new-disks-added-to-replicated-vms"></a>レプリケートされた VM に追加された新しいディスクをレプリケートできますか?
 
-マネージド ディスクがあるレプリケートされた VM では、新しいディスクを追加し、それらに対するレプリケーションを有効にすることができます。 新しいディスクを追加すると、レプリケートされた VM に、VM 上の 1 つ以上のディスクで保護が使用できることを示す警告メッセージが表示されます。 
+マネージド ディスクがあるレプリケートされた VM では、新しいディスクを追加し、それらに対するレプリケーションを有効にすることができます。 新しいディスクを追加すると、レプリケートされた VM に、VM 上の 1 つ以上のディスクで保護が使用できることを示す警告メッセージが表示されます。
 
 - 追加されたディスクのレプリケーションを有効にすると、初回のレプリケーション後に警告は表示されなくなります。
 - ディスクのレプリケーションを有効にしない場合、この警告を無視できます。
@@ -101,13 +101,13 @@ Site Recovery では、レプリケートされた VM からディスクを "ホ
 
 Azure VM を別の Azure リージョンにレプリケートするときは、レプリケーションは継続的に行われます。 レプリケーションのしくみについては、[こちらを参照してください](./azure-to-azure-architecture.md#replication-process)。
 
-### <a name="can-i-replicate-virtual-machines-within-a-region"></a>リージョン内で仮想マシンをレプリケートできますか? 
+### <a name="can-i-replicate-virtual-machines-within-a-region"></a>リージョン内で仮想マシンをレプリケートできますか?
 
 Site Recovery を使用して、リージョン内のディスクをレプリケートすることはできません。
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>VM インスタンスを任意の Azure リージョンにレプリケートできますか?
 
-同じ地理クラスター内の 2 つのリージョン間で VM をレプリケートして、復旧できます。 地理クラスターは、データの遅延と主権を念頭に置きながら定義されます。 リージョンのサポートについては、[こちらを参照してください。](./azure-to-azure-support-matrix.md#region-support)
+任意の 2 つのリージョン間で VM をレプリケートして、復旧できます。 
 
 ### <a name="does-site-recovery-need-internet-connectivity"></a>Site Recovery にはインターネット接続が必要ですか?
 
@@ -162,7 +162,7 @@ Site Recovery では、アプリ整合性復旧ポイントを最小間隔の 1 
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>復旧ポイントはどのように生成されて保存されますか?
 
-Site Recovery で復旧ポイントを生成する方法を理解するため、例を使ってみましょう。 
+Site Recovery で復旧ポイントを生成する方法を理解するため、例を使ってみましょう。
 
 - レプリケーション ポリシーでは、復旧ポイントが 24 時間保持され、アプリ整合性の頻度スナップショットが 1 時間ごとに取得されます。
 - Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。 この頻度は変更できません。
@@ -176,7 +176,7 @@ Site Recovery で復旧ポイントを生成する方法を理解するため、
 
 使用できる最も古い復旧ポイントは 72 時間です。
 
-### <a name="what-happens-if-site-recovery-cant-generate-recovery-points-for-more-than-24-hours"></a>Site Recovery が 24 時間以上復旧ポイントを生成できない場合はどうなりますか? 
+### <a name="what-happens-if-site-recovery-cant-generate-recovery-points-for-more-than-24-hours"></a>Site Recovery が 24 時間以上復旧ポイントを生成できない場合はどうなりますか?
 
 レプリケーション ポリシーが 24 時間で、Site Recovery で 24 時間を超えて復旧ポイントを生成できない場合、古い復旧ポイントが残ります。 Site Recovery は、新しいポイントが生成された場合、最も古いポイントのみを置き換えます。 新しい復旧ポイントができるまで、リテンション期間に到達した後も古いポイントはすべて残ります。
 
@@ -198,7 +198,7 @@ Site Recovery で復旧ポイントを生成する方法を理解するため、
 
 マルチ VM 整合性によって、レプリケートされた仮想マシン間で復旧ポイントに整合性が確保されます。
 
-- マルチ VM 整合性を有効にすると、Site Recovery によってオプションが有効なすべてのマシンのレプリケーション グループが作成されます。 
+- マルチ VM 整合性を有効にすると、Site Recovery によってオプションが有効なすべてのマシンのレプリケーション グループが作成されます。
 - レプリケーション グループのマシンをフェールオーバーすると、それらのマシン間でクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントが共有されます。
 
 マルチ VM 整合性を有効にする方法については、[こちらを参照してください](azure-to-azure-tutorial-enable-replication.md#enable-replication)。
@@ -217,8 +217,8 @@ Site Recovery で復旧ポイントを生成する方法を理解するため、
 
 ### <a name="can-i-add-a-replicating-vm-to-a-replication-group"></a>レプリケートされている VM をレプリケーション グループに追加できますか?
 
-VM のレプリケーションを有効にすると、新しいレプリケーション グループまたは既存のグループに追加できます。 既にレプリケートされている VM をグループに追加することはできません。 
- 
+VM のレプリケーションを有効にすると、新しいレプリケーション グループまたは既存のグループに追加できます。 既にレプリケートされている VM をグループに追加することはできません。
+
 ## <a name="failover"></a>[フェールオーバー]
 
 ### <a name="how-do-we-ensure-capacity-in-the-target-region"></a>ターゲット リージョンの容量を確保するにはどうすればよいですか?
@@ -270,7 +270,7 @@ Site Recovery では、フェールオーバー時に IP アドレスの指定�
 
 ### <a name="what-is-the-rto-of-a-vm-failover"></a>VM フェールオーバーの RTO とは何ですか?
 
-Site Recovery の RTO SLA は [2 時間](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)です。 ほとんどの場合、Site Recovery によって数分以内に VM がフェールオーバーされます。 RTO を計算するにはフェールオーバー ジョブを確認します。ここでは、VM を起動するまでにかかった時間が示されます。 
+Site Recovery の RTO SLA は [2 時間](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)です。 ほとんどの場合、Site Recovery によって数分以内に VM がフェールオーバーされます。 RTO を計算するにはフェールオーバー ジョブを確認します。ここでは、VM を起動するまでにかかった時間が示されます。
 
 ## <a name="recovery-plans"></a>復旧計画
 
@@ -280,7 +280,7 @@ Site Recovery での[復旧計画](site-recovery-create-recovery-plans.md)は、
 
 - 一緒にフェールオーバーする VM のグループを定義します。
 - アプリケーションが正確に起動するように、VM 間の依存関係を定義します。
-- VM フェールオーバー以外のタスクに対するカスタム手動アクションのオプションを使用して、復旧を自動化します。 
+- VM フェールオーバー以外のタスクに対するカスタム手動アクションのオプションを使用して、復旧を自動化します。
 
 
 ### <a name="how-does-sequencing-work"></a>シーケンス処理のしくみを教えてください。
@@ -299,11 +299,11 @@ Site Recovery での[復旧計画](site-recovery-create-recovery-plans.md)は、
 
 ## <a name="reprotection-and-failback"></a>再保護とフェールバック
 
-### <a name="after-failover-are-vms-in-the-secondary-region-protected-automatically"></a>フェールオーバー後、セカンダリ リージョンの VM は自動的に保護されますか? 
+### <a name="after-failover-are-vms-in-the-secondary-region-protected-automatically"></a>フェールオーバー後、セカンダリ リージョンの VM は自動的に保護されますか?
 
 いいえ。 あるリージョンから別のリージョンに Azure VM をフェールオーバーすると、その VM はターゲット ディザスター リカバリー リージョン内で保護されていない状態で起動されます。 セカンダリ リージョン内の VM を[再保護](./azure-to-azure-how-to-reprotect.md)するには、プライマリ リージョンに戻ってレプリケーションを有効にします。
 
-### <a name="when-i-reprotect-is-all-data-replicated-from-the-secondary-region-to-primary"></a>再保護すると、セカンダリ リージョンからプライマリにすべてのデータがレプリケートされますか? 
+### <a name="when-i-reprotect-is-all-data-replicated-from-the-secondary-region-to-primary"></a>再保護すると、セカンダリ リージョンからプライマリにすべてのデータがレプリケートされますか?
 
 状況により異なります。ソース リージョンの VM が存在している場合、ソース ディスクとターゲット ディスクの間の変更のみが同期されます。 Site Recovery では、ディスクを変更点と比較した後、データが転送されます。 通常、このプロセスには数時間かかります。 [詳細については、こちらを参照してください](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection)。
 
@@ -321,7 +321,7 @@ Site Recovery での[復旧計画](site-recovery-create-recovery-plans.md)は、
 
 はい、ディザスター リカバリー リージョンで[予約 Azure VM](https://azure.microsoft.com/pricing/reserved-vm-instances/) を購入することができます。Site Recovery のフェールオーバー操作でその VM が使用されます。 追加の構成は必要ありません。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 

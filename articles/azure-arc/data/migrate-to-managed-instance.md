@@ -7,20 +7,19 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: f2d2c2ecff92dde411c6ec2a8d00ad997f4c5c02
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: d93fa1d16366ee131d98aebe2ab8e3e040949d72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495829"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752346"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>移行する:SQL Server から Azure Arc 対応 SQL Managed Instance
 
 このシナリオでは、2 つの異なるバックアップ方法と復元方法を使用して、Azure Arc で SQL Server インスタンスから Azure SQL Managed Instance にデータベースを移行する手順について説明します。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="use-azure-blob-storage"></a>Azure Blob Storage を使用する
 
@@ -31,8 +30,13 @@ Azure Arc 対応 SQL Managed Instance に移行する場合は、Azure Blob Stor
 ### <a name="prerequisites"></a>前提条件
 
 - [Azure Data Studio をインストールする](install-client-tools.md)
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 - [Azure Storage Explorer をインストールする](https://azure.microsoft.com/features/storage-explorer/)
 - Azure サブスクリプション
+
+
 
 ### <a name="step-1-provision-azure-blob-storage"></a>手順 1:Azure Blob Storage をプロビジョニングする
 
@@ -193,4 +197,4 @@ GO
 
 [データ コントローラーの作成から開始する](create-data-controller.md)
 
-[データ コントローラーが既に作成されている場合: Azure Arc 対応 SQL Managed Instance を作成する](create-sql-managed-instance.md)
+[データ コントローラーが既に作成されている場合 Azure Arc 対応 SQL Managed Instance を作成する](create-sql-managed-instance.md)

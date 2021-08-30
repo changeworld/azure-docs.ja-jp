@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: a6fcb3b3fece367ab950426c29df2d1b39735957
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0daf5cab1627819093514833667606758707f17a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228725"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728678"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>資産インベントリを使用してリソースの調査と管理を行う
 
@@ -39,17 +39,17 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 ## <a name="availability"></a>可用性
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|Free|
 |必要なロールとアクセス許可:|すべてのユーザー|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png":::国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>資産インベントリの主な機能
 インベントリ ページには次のツールが含まれています。
 
-:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure Security Center の資産インベントリ ページの主な機能" lightbox="media/asset-inventory/highlights-of-inventory.png":::
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure Security Center の資産インベントリ ページの主な機能" lightbox="media/asset-inventory/highlights-of-inventory.png":::。
 
 
 ### <a name="1---summaries"></a>1 - 概要
@@ -116,18 +116,18 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
     - **[オフ]** - Azure Defender プランによって保護されていないリソース。 これらのいずれかを右クリックしてアップグレードできます。
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックでリソースを Azure Defender にアップグレードする" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックでリソースを Azure Defender にアップグレードする" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::。
 
     - **[オン]** - Azure Defender プランによって保護されているリソース。
     - **[一部]** - これは、Azure Defender プランのすべてではなく一部が無効になっている **サブスクリプション** に適用されます。 たとえば、次のサブスクリプションでは、5 つの Azure Defender プランが無効になっています。 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Azure Defender が部分的に有効なサブスクリプション":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Azure Defender が部分的に有効なサブスクリプション":::。
 
 1. クエリの結果をさらに調べるには、該当するリソースを選択します。
 
 1. 現在選択されているフィルター オプションを、Resource Graph エクスプローラーでクエリとして表示するには、 **[クエリを開く]** を選択します。
 
-    ![ARG でのインベントリ クエリ](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+    ![ARG でのインベントリ クエリ。](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
 1. フィルターを定義してページを開いたままにしておくと、Security Center で結果が自動的に更新されません。 ページを手動で再読み込みするか、 **[更新]** を選択しない限り、リソースを変更しても表示される結果には影響しません。
 
@@ -148,7 +148,7 @@ Security Center で監視されているすべてのリソースにエージェ�
 
 価格やエージェントの監視がリソースに関係しない場合、インベントリのこれらの列には何も表示されません。
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでエージェントの監視列または Azure Defender 列に空白の情報が表示される":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでエージェントの監視列または Azure Defender 列に空白の情報が表示される":::。
 
 ## <a name="next-steps"></a>次のステップ
 

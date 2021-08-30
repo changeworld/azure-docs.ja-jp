@@ -5,15 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 29bac1ea9de7fb81797733bbccce24688b4acc10
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 19606a1b529fcd7e6140d81361c5434324836198
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164347"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724738"
 ---
-# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
-
+# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する
 Azure ディスクの Container Storage Interface (CSI) ドライバーは、Azure ディスクのライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
 
 CSI は、Kubernetes のコンテナー化されたワークロードに任意のブロックおよびファイル ストレージ システムを公開する標準です。 CSI を採用および使用すると、Kubernetes のコア コードに触れたり、そのリリース サイクルを待つことなく、AKS が Kubernetes で新しいストレージ システムを公開したり、既存のストレージ システムを改良したりするプラグインを記述、デプロイ、反復処理できるようになります。
@@ -26,8 +25,6 @@ CSI ドライバーがサポートされる AKS クラスターを作成する�
 ## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Azure ディスクを含む CSI 永続ボリュームを使用する
 
 [永続ボリューム](concepts-storage.md#persistent-volumes) (PV) とは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 PV は 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 この記事では、AKS クラスター内の単一のポッドによって使用するために Azure ディスクの PV を動的に作成する方法を説明します。 静的プロビジョニングの場合は、[Azure ディスクを含むボリュームを手動で作成して使用する方法](azure-disk-volume.md)に関する記事を参照してください。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 

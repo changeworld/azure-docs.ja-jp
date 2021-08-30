@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 2e3dbc292108507793de0dd095e30ea2f63a7dab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966913"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727900"
 ---
 # <a name="what-are-security-partner-providers"></a>セキュリティ パートナー プロバイダーとは
 
@@ -25,6 +25,10 @@ Azure Firewall Manager の "*セキュリティ パートナー プロバイダ�
 サポートされているセキュリティ パートナーは、**Zscaler**、 **[Check Point](check-point-overview.md)** 、**iboss** です。
 
 ![セキュリティ パートナー プロバイダー](media/trusted-security-partners/trusted-security-partners.png)
+
+Zscaler の概要については、Jack Tracey による次のビデオをご覧ください。
+
+ > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWI4n8]
 
 ## <a name="key-scenarios"></a>主なシナリオ
 
