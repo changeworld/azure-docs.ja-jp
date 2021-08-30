@@ -7,18 +7,25 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 48924cd16eef4cafb2ee0d6a85e30903203169ce
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f51f4b9a838a7a08259b280c4d9cd185b42e588b
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785513"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116980"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
 StorSimple 8000 シリーズは、8100 または 8600 の物理オンプレミス アプライアンス、およびそれらのクラウド サービス コンポーネントによって表されます。 これらのアプライアンスのいずれかから Azure File Sync 環境にデータを移行することができます。 Azure File Sync は、StorSimple アプライアンスの移行先となる、既定の戦略的な長期 Azure サービスです。
 
 StorSimple 8000 シリーズは 2022 年 12 月に[サポート終了](/lifecycle/products/azure-storsimple-8000-series)となります。 できるだけ早く移行の計画を開始することが重要です。 この記事では、Azure File Sync への移行を成功させるために必要な背景知識と移行手順について説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="phase-1-prepare-for-migration"></a>フェーズ 1:移行を準備する
 
@@ -307,7 +314,7 @@ Azure File Sync を使用すると、最も頻繁にアクセスされるファ�
 移行計画の一環として、StorSimple ボリューム上のフォルダーを複数の Azure ファイル共有に分割する必要があると決定している場合があります。 その場合は、次のように分割することができます。
 
 1. 1 つのボリューム上のフォルダーを移行するために、複数のジョブを定義します。 それぞれの StorSimple ボリューム ソースは同じですが、ターゲットとしての Azure ファイル共有は異なります。
-1. ジョブ作成フォームの「**ディレクトリ マッピング**」セクションを使用し、特定の[マッピング セマンティクス](#semantic-elements)に従って、StorSimple ボリュームのフォルダーを指定したファイル共有に移行する必要があることを正確に指定します。
+1. ジョブ作成フォームの「**ディレクトリ マッピング**」セクションを使用し、特定の [マッピング セマンティクス](#semantic-elements)に従って、StorSimple ボリュームのフォルダーを指定したファイル共有に移行する必要があることを正確に指定します。
 
 > [!IMPORTANT]
 > このフォームのパスとマッピング式を、フォームの送信時に検証することはできません。 マッピングが正しく指定されていない場合、ジョブは完全に失敗するか、望ましくない結果を生成する可能性があります。 その場合は、通常、Azure ファイル共有を削除して再作成してから、その共有に対する新しい移行ジョブでマッピングのステートメントを修正するのが最善の方法です。 修正したマッピングのステートメントを使用して新しいジョブを実行すると、省略されたフォルダーを修正し、既存の共有に移動できます。 ただし、この方法で対処できるのは、パスのスペルミスのために省略されたフォルダーのみです。

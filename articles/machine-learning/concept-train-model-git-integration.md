@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 04/08/2021
-ms.openlocfilehash: 60dca43f95b190791c8fb593042ed612340a3af5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 37c7d94bfb645e444b4fb937823dcb8d56bcb9c7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874551"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457735"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -153,7 +153,7 @@ Python SDK または Machine Learning CLI からトレーニング実行を送�
 
 ## <a name="view-the-logged-information"></a>ログに記録された情報を表示する
 
-Git 情報は、トレーニング実行のプロパティに格納されます。 この情報は、Azure portal、Python SDK、CLI を使用して表示できます。 
+Git 情報は、トレーニング実行のプロパティに格納されます。 この情報は、Azure portal、Python SDK、Azure CLI を使用して表示できます。 
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -189,7 +189,7 @@ Git 情報は、トレーニング実行のプロパティに格納されます�
 run.properties['azureml.git.commit']
 ```
 
-### <a name="cli"></a>CLI
+### <a name="azure-cli"></a>Azure CLI
 
 CLI コマンド `az ml run` を使用して、実行からプロパティを取得できます。 たとえば、次のコマンドでは、`train-on-amlcompute` という名前の実験での、最後の実行のプロパティが返されます。
 
@@ -197,7 +197,7 @@ CLI コマンド `az ml run` を使用して、実行からプロパティを取
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-詳細については、[az ml run](/cli/azure/ml/run) のリファレンス ドキュメントを参照してください。
+詳細については、[az ml run](/cli/azure/ml(v1)/run) のリファレンス ドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

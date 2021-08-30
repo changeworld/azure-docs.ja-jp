@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: dc73ac91320e1860c5c30f1b31962ad826a1038f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 769fae5791575d8f361aaee13347bb00f3fbe749
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076800"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616435"
 ---
 # <a name="deploy-azure-monitor"></a>Azure Monitor をデプロイする
 Azure Monitor ですべての Azure リソースを監視できるようにするには、Azure Monitor コンポーネントの構成と、Azure Monitor で収集される監視データを生成するための Azure リソースの構成を、組み合わせて行います。 この記事では、一般的な構成を使用して Azure Monitor を完全に実装して Azure サブスクリプション内のすべてのリソースを監視するために必要なさまざまなステップについて説明します。 各ステップの基本的な説明は、詳細な構成要件に関する他のドキュメントへのリンクで提供されます。
@@ -129,7 +129,7 @@ VM 分析情報によって使用される Log Analytics エージェントで�
 - [Azure Web Apps でホストされているアプリケーション](app/azure-web-apps.md)
 - [Java アプリケーション](app/java-in-process-agent.md)
 - [Azure VM または Azure 仮想マシン スケール セット上の IIS でホストされる ASP.NET アプリケーション](app/azure-vm-vmss-apps.md)
-- [IIS のオンプレミス VM でホストされる ASP.NET アプリケーション](app/monitor-performance-live-website-now.md)
+- [IIS のオンプレミスでホストされる ASP.NET アプリケーション](app/status-monitor-v2-overview.md)
 
 
 **コード ベースの監視** では、さらにカスタマイズが可能で、追加のテレメトリが収集されますが、Application Insights SDK NuGet パッケージでコードに依存関係を追加する必要があります。 アプリケーションに応じて監視を有効にする方法の詳細については、次のリソースを参照してください。

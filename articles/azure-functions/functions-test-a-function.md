@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 27bc8171509e16f25c508dd71515d8cb25a11b0b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 21bc9991534084ace3be025f1ee0b295ea78558f
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639865"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113223808"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -23,6 +23,7 @@ ms.locfileid: "105639865"
 
 - [xUnit を使用した Visual Studio での C#](#c-in-visual-studio)
 - [Jest を使用した VS Code での JavaScript](#javascript-in-vs-code)
+- [pytest を使用した Python](./functions-reference-python.md?tabs=application-level#unit-testing)
 
 サンプル リポジトリは [GitHub](https://github.com/Azure-Samples/azure-functions-tests) で入手できます。
 

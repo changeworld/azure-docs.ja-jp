@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/22/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 637da84073d014effc05a25104c3233ff385b432
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 332866c49470ed47f3c3de65b03ffd07003f6d13
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752591"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253255"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -56,8 +56,10 @@ Azure portal で、または [New-AzAksCluster][new-azakscluster] コマンド�
 New-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup
 ```
 
----
+> [!NOTE]
+> エラー「Service principal clientID: 00000000-0000-0000-0000-000000000000 not found in Active Directory tenant 00000000-0000-0000-0000-000000000000」については、「[その他の注意点](#additional-considerations)」を参照して `acsServicePrincipal.json` ファイルを削除してください。
 
+---
 ## <a name="manually-create-a-service-principal"></a>手動でサービス プリンシパルを作成する
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -189,6 +191,7 @@ New-AzRoleAssignment -ApplicationId <ApplicationId> -Scope <resourceScope> -Role
 
 > [!NOTE]
 > ノード リソース グループから共同作成者ロールの割り当てを削除した場合、以下の操作が失敗する可能性があります。
+> システム マネージド ID を使用しているクラスターへのアクセス許可付与の入力には、最大で 60 分かかる場合があります。
 
 以降の各セクションでは、一般的に必要となる委任について詳しく取り上げます。
 
@@ -251,9 +254,9 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
 - すべてのサービス プリンシパルは、Azure AD アプリケーションに関連付けられています。 Kubernetes クラスターのサービス プリンシパルは、有効な任意の Azure AD アプリケーション名 (たとえば *https://www.contoso.org/example* ) に関連付けることができます。 アプリケーションの URL は、実際のエンドポイントである必要はありません。
 - サービス プリンシパルの **クライアント ID** を指定するときには、`ApplicationId` の値を使用します。
 - Kubernetes クラスター内のエージェント ノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます
-- [New-AzAksCluster][new-azakscluster] コマンドを使用してサービス プリンシパルを自動的に生成すると、そのサービス プリンシパルの資格情報は、このコマンドを実行するために使用されたコンピューター上のファイル `~/.azure/aksServicePrincipal.json` に書き込まれます。
-- 追加の AKS PowerShell コマンドでサービス プリンシパルを明示的に渡さない場合は、`~/.azure/aksServicePrincipal.json` にある既定のサービス プリンシパルが使用されます。
-- 必要に応じて、aksServicePrincipal.json ファイルを削除することもできます。これにより、AKS は新しいサービス プリンシパルを作成します。
+- [New-AzAksCluster][new-azakscluster] コマンドを使用してサービス プリンシパルを自動的に生成すると、そのサービス プリンシパルの資格情報は、このコマンドを実行するために使用されたコンピューター上のファイル `~/.azure/acsServicePrincipal.json` に書き込まれます。
+- 追加の AKS PowerShell コマンドでサービス プリンシパルを明示的に渡さない場合は、`~/.azure/acsServicePrincipal.json` にある既定のサービス プリンシパルが使用されます。
+- 必要に応じて、acsServicePrincipal.json ファイルを削除することもできます。これにより、AKS は新しいサービス プリンシパルを作成します。
 - [New-AzAksCluster][new-azakscluster] によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。
     - このサービス プリンシパルを削除するには、クラスター *ServicePrincipalProfile.ClientId* に対してクエリを実行してから、[Remove-AzADServicePrincipal][remove-azadserviceprincipal] で削除します。 次のリソース グループとクラスターの名前は、実際の値に置き換えてください。
 

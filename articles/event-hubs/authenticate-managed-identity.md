@@ -2,14 +2,14 @@
 title: Azure Active Directory を使用したマネージド ID の認証
 description: この記事では、Azure Active Directory を使用して Azure Event Hubs リソースにアクセスするためのマネージド ID を認証する方法について説明します
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/14/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 85648a5448420f3f25061142bf1f23e06de492b2
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98805284"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119972"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する
 Azure Event Hubs では、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID では、Azure Virtual Machines (VMs)、Function Apps、Virtual Machine Scale Sets などのサービスで実行されているアプリケーションから Event Hubs リソースへのアクセスを、Azure AD 資格情報を使用して承認することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。
@@ -49,28 +49,10 @@ Azure ロールの割り当ての詳細については、[Azure Active Directory
     次に、このサービス ID をご利用の Event Hubs リソースの必要なスコープ内のロールに割り当てます。
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てるには
-Event Hubs リソースにロールを割り当てるには、Azure portal でそのリソースに移動します。 リソースの [アクセス制御 (IAM)] 設定を表示し、次の手順に従ってロールの割り当てを管理します。
+目的のスコープ (Event Hubs 名前空間、リソース グループ、サブスクリプション) で、いずれかの [Event Hubs ロール](authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs)を管理対象 ID に割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 > [!NOTE]
-> 次の手順では、Event Hubs 名前空間にサービス ID のロールを割り当てます。 同じ手順に従って、任意の Event Hubs リソースにスコープ指定されたロールを割り当てることができます。 
-
-1. Azure portal でご利用の Event Hubs 名前空間に移動し、その名前空間の **[概要]** を表示します。 
-1. 左側のメニューの **[アクセス制御 (IAM)]** を選択して、イベント ハブのアクセス制御設定を表示します。
-1.  **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-3.  **[追加]** を選択し、**[ロールの割り当ての追加]*** を選択します。
-4.  **[ロールの割り当ての追加]** ページで、これらの手順に従います。
-    1. **[ロール]** で、割り当てる Event Hubs ロールを選択します。 この例では、 **[Azure Event Hubs データ所有者]** です。
-    1. **[アクセスの割り当て先]** フィールドで、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。 
-    1. Web アプリのマネージド ID が作成された **サブスクリプション** を選択します。
-    1. 作成した Web アプリの **マネージド ID** を選択します。 ID の既定の名前は、Web アプリの名前と同じです。 
-    1. 次に、 **[保存]** を選択します。 
-    
-        ![[ロールの割り当ての追加] ページ](./media/authenticate-managed-identity/add-role-assignment-page.png)
-
-    ロールを割り当てると、Web アプリケーションには、定義されたスコープの下で Event Hubs リソースへのアクセス権が付与されます。 
-
-    > [!NOTE]
-    > マネージド ID をサポートするサービスの一覧については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
+> マネージド ID をサポートするサービスの一覧については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ### <a name="test-the-web-application"></a>Web アプリケーションをテストする
 1. Event Hubs 名前空間とイベント ハブを作成します。 

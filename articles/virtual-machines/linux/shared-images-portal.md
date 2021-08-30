@@ -8,15 +8,15 @@ ms.subservice: shared-image-gallery
 ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 05/04/2020
+ms.date: 06/21/2021
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: bf788466b57193e2191ef2d93d76bd948ec206f7
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 254fb1b4c21f8dd956c271e75ddf29f25c2bce15
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026617"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204450"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>ポータルを使用して共有イメージ ギャラリーを作成する
 
@@ -32,9 +32,6 @@ ms.locfileid: "112026617"
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
-
-
-
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -60,6 +57,7 @@ ms.locfileid: "112026617"
 1. **[サイズ]** では、利用可能なサイズの一覧から VM サイズを選択し、 **[選択]** を選択します。
 1. ソース VM が一般化されている場合は、 **[管理者アカウント]** で、 **[ユーザー名]** と **[SSH 公開キー]** を入力します。 ソース VM が特殊化されている場合は、ソース VM からの情報が使用されるため、これらのオプションは灰色で表示されます。
 1. VM へのリモート アクセスを許可する場合、 **[パブリック受信ポート]** で、 **[選択したポートを許可する]** を選択し、ドロップダウンから **[SSH (22)]** を選択します。 VM へのリモート アクセスを許可しない場合、 **[パブリック受信ポート]** で、 **[なし]** を選択したままにします。
+1. イメージが Red Hat または SLES に基づいている場合を除き、[ライセンス] で **[その他の]** を選択します。
 1. 完了したら、ページの下部にある **[Review + create]\(確認と作成\)** ボタンを選択します。
 1. VM が検証に合格したら、ページの下部にある **[作成]** を選択し、デプロイを開始します。
 
@@ -77,6 +75,5 @@ ms.locfileid: "112026617"
 - [共有イメージ ギャラリーを作成する](https://azure.microsoft.com/resources/templates/sig-create/)
 - [共有イメージ ギャラリーにイメージ定義を作成する](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [共有イメージ ギャラリーにイメージのバージョンを作成する](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [イメージ バージョンから VM を作成する](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 共有イメージ ギャラリーの詳細については、[概要](../shared-image-galleries.md)のページをご覧ください。 問題が生じた場合は、「[共有イメージ ギャラリーのトラブルシューティング](../troubleshooting-shared-images.md)」を参照してください。

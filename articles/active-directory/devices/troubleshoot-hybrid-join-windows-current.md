@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 87de8f27114c8b79c297f65805226a33c70b11a9
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 5c601d81053979108ab7c49dee5b1bccbb33bf53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286962"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464012"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -374,7 +374,7 @@ WamDefaultAuthority: organizations
 ##### <a name="other-errors"></a>その他のエラー
 
 - **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
-   - 理由: [User Device Registration]\(ユーザー デバイス登録\) イベント ログに EventID 220 が存在します。 Windows で、Active Directory 内のコンピューター オブジェクトにアクセスできません。 イベントに Windows エラー コードが含まれている可能性があります。 エラー コード ERROR_NO_SUCH_LOGON_SESSION (1312) および ERROR_NO_SUCH_USER (1317) の場合、これらはオンプレミス AD のレプリケーションの問題に関連しています。
+   - 理由: [User Device Registration]\(ユーザー デバイス登録\) イベント ログに EventID 220 が存在します。 Windows で、Active Directory 内のコンピューター オブジェクトにアクセスできません。 イベントに Windows エラー コードが含まれている可能性があります。 エラー コード ERROR_NO_SUCH_LOGON_SESSION (1312) および ERROR_NO_SUCH_USER (1317) の場合、これらのエラー コードはオンプレミス AD のレプリケーションの問題に関連しています。
    - 解決策: AD のレプリケーションの問題をトラブルシューティングします。 レプリケーションの問題は一時的なものの場合があり、一定期間後に解消される可能性があります。
 
 ##### <a name="federated-join-server-errors"></a>サーバーのフェデレーション参加エラー
@@ -393,28 +393,296 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>手順 5:ログを収集して Microsoft サポートに問い合わせる
 
-[https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth) から Auth.zip ファイルをダウンロードします。
+[https://cesdiagtools.blob.core.windows.net/windows/Auth.zip](https://cesdiagtools.blob.core.windows.net/windows/Auth.zip) から Auth.zip ファイルをダウンロードします。
 
-1. ファイルを解凍し、インクルード ファイルの **start-auth.txt** と **stop-auth.txt** という名前を **start-auth.cmd** と **stop-auth.cmd** に変更します。
-1. 管理者特権でのコマンド プロンプトから、**start-auth.cmd** を実行します。
+1. ファイルを c:\temp などのフォルダーに解凍し、そのフォルダーに移動します。
+1. 管理者特権の PowerShell セッションから **.\start-auth.ps1 -v -accepteula** を実行します。
 1. アカウントの切り替えを使用して、問題のあるユーザーとの別のセッションに切り替えます。
 1. 問題を再現します。
 1. アカウントの切り替えを使用して、トレースを実行している管理者セッションに戻ります。
-1. 管理者特権でのコマンド プロンプトから、**stop-auth.cmd** を実行します。
+1. 管理者特権の PowerShell セッションから **.\stop-auth.ps1** を実行します。
 1. スクリプトが実行されたフォルダーから **Authlogs** フォルダーを Zip 形式で送信します。
+    
+## <a name="troubleshoot-post-join-authentication-issues"></a>参加後の認証の問題のトラブルシューティング
 
-## <a name="troubleshoot-post-join-issues"></a>参加後の問題のトラブルシューティング
+### <a name="step-1-retrieve-prt-status-using-dsregcmd-status"></a>手順 1: dsregcmd /status を使用して PRT の状態を取得する
 
-### <a name="retrieve-the-join-status"></a>参加状態を取得する
+**PRT の状態を取得するには:**
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet:YES および AzureADPrt:YES
+1. コマンド プロンプトを開きます。 
+   > [!NOTE] 
+   > PRT の状態を取得するには、コマンド プロンプトをログイン ユーザーのコンテキストで実行する必要があります 
 
-これらのフィールドは、ユーザーがデバイスへのサインイン時に Azure AD に対して正常に認証されたことを示します。
-これらの値が **NO** である場合、次のことが原因として考えられます。
+2. 「dsregcmd /status」と入力します 
 
-- 登録時にデバイスに関連する TPM のストレージ キーに問題がある (管理者特権での実行時に KeySignTest を確認)
-- 代替ログイン ID
-- HTTP プロキシが見つからない
+3. 現在の PRT の状態が [SSO state]\(SSO の状態\) セクションに表示されます。 
+
+4. AzureAdPrt フィールドが "NO" に設定されている場合、Azure AD からの PRT の取得中にエラーが発生しています。 
+
+5. AzureAdPrtUpdateTime が 4 時間を超える場合、おそらく PRT の更新中に問題が発生しています。 デバイスをロックしてからロックを解除して、PRT の更新を強制的に実行し、時間が更新されているかどうかを確認します。
+
+```
++----------------------------------------------------------------------+
+| SSO State                                                            |
++----------------------------------------------------------------------+
+
+                AzureAdPrt : YES
+      AzureAdPrtUpdateTime : 2020-07-12 22:57:53.000 UTC
+      AzureAdPrtExpiryTime : 2019-07-26 22:58:35.000 UTC
+       AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+             EnterprisePrt : YES
+   EnterprisePrtUpdateTime : 2020-07-12 22:57:54.000 UTC
+   EnterprisePrtExpiryTime : 2020-07-26 22:57:54.000 UTC
+    EnterprisePrtAuthority : https://corp.hybridadfs.contoso.com:443/adfs
+
++----------------------------------------------------------------------+
+```
+
+### <a name="step-2-find-the-error-code"></a>手順 2: エラーコードを見つける 
+
+### <a name="from-dsregcmd-output"></a>dsregcmd の出力から
+
+> [!NOTE]
+>  **Windows 10 May 2021 Update (バージョン 21H1)** から利用できます。
+
+[AzureAdPrt] フィールドの下の [Attempt Status]\(試行状態\) フィールドに、前回の PRT 試行の状態がその他必要なデバッグ情報と共に表示されます。 以前のバージョンの Windows では、この情報を AAD の分析ログと操作ログから抽出する必要があります。
+
+```
++----------------------------------------------------------------------+
+| SSO State                                                            |
++----------------------------------------------------------------------+
+
+                AzureAdPrt : NO
+       AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+     AcquirePrtDiagnostics : PRESENT
+      Previous Prt Attempt : 2020-07-18 20:10:33.789 UTC
+            Attempt Status : 0xc000006d
+             User Identity : john@contoso.com
+           Credential Type : Password
+            Correlation ID : 63648321-fc5c-46eb-996e-ed1f3ba7740f
+              Endpoint URI : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx/oauth2/token/
+               HTTP Method : POST
+                HTTP Error : 0x0
+               HTTP status : 400
+         Server Error Code : invalid_grant
+  Server Error Description : AADSTS50126: Error validating credentials due to invalid username or password.
+```
+
+### <a name="from-aad-analytic-and-operational-logs"></a>AAD の分析ログと操作ログから
+
+PRT の取得時に AAD CloudAP プラグインによって記録されたログ エントリを、イベント ビューアーを使用して検索します 
+
+1. AAD のイベント ログをイベント ビューアーで開きます。 これは、[Application and Services Log]\(アプリケーションとサービスのログ \) > [Microsoft] > [Windows] > [AAD] にあります 
+
+   > [!NOTE]
+   > CloudAP プラグインでは、エラー イベントが操作ログに、情報イベントが分析ログに記録されます。 問題をトラブルシューティングするには、分析ログと操作ログの両方のイベントが必要です。 
+
+2. 分析ログのイベント 1006 は PRT 取得フローの開始を表し、分析ログのイベント 1007 は PRT 取得フローの終了を表します。 AAD ログ (分析ログと操作ログ) のイベント 1006 からイベント 1007 の間に記録されているイベントはすべて、PRT 取得フローの過程で記録されたものです。 
+
+3. 最終的なエラー コードはイベント 1007 に記録されます。
+
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/event-viewer-prt-acquire.png" alt-text="イベント ビューアーのスクリーンショット。ID 1006 と ID 1007 のイベントが赤枠で囲まれ、最終的なエラー コードが強調表示されている。" border="false":::
+
+### <a name="step-3-follow-additional-troubleshooting-based-on-the-found-error-code-from-the-list-below"></a>手順 3: 見つかったエラー コードに応じてさらなるトラブルシューティング (下記) を実施する
+
+**STATUS_LOGON_FAILURE** (-1073741715/ 0xc000006d)
+
+**STATUS_WRONG_PASSWORD** (-1073741718/ 0xc000006a)
+
+理由: 
+-  デバイスが AAD 認証サービスに接続できません
+-  AAD 認証サービスまたは WS-Trust エンドポイントからエラー応答 (HTTP 400) を受信しました。
+> [!NOTE]
+> フェデレーション認証には WS-Trust が必要です
+
+解決策: 
+-  オンプレミス環境に送信プロキシが必要である場合は、デバイスのコンピューター アカウントが送信プロキシに対する検出とサイレント認証を実行できることを IT 管理者が確認する必要があります。
+-  AAD 認証サービスと WS-Trust エンドポイントから発生したエラーでは、それぞれイベント 1081 とイベント 1088 (AAD 操作ログ) に、サーバー エラー コードとエラーの説明が含まれています。 一般的なサーバー エラー コードとその解決策は、次のセクションに記載されています。 アクセス中の URL は、イベント 1081 またはイベント 1088 に先行する最初のイベント 1022 (AAD 分析ログ) のインスタンスに含まれています。
+
+---
+
+**STATUS_REQUEST_NOT_ACCEPTED** (-1073741616/ 0xc00000d0)
+
+理由:
+-  AAD 認証サービスまたは WS-Trust エンドポイントからエラー応答 (HTTP 400) を受信しました。
+> [!NOTE]
+> フェデレーション認証には WS-Trust が必要です
+
+解決策:
+-  AAD 認証サービスと WS-Trust エンドポイントから発生したエラーでは、それぞれイベント 1081 とイベント 1088 (AAD 操作ログ) に、サーバー エラー コードとエラーの説明が含まれています。 一般的なサーバー エラー コードとその解決策は、次のセクションに記載されています。 アクセス中の URL は、イベント 1081 またはイベント 1088 に先行する最初のイベント 1022 (AAD 分析ログ) のインスタンスに含まれています。
+
+---
+
+**STATUS_NETWORK_UNREACHABLE** (-1073741252/ 0xc000023c)
+
+**STATUS_BAD_NETWORK_PATH** (-1073741634/ 0xc00000be)
+
+**STATUS_UNEXPECTED_NETWORK_ERROR** (-1073741628/ 0xc00000c4)
+
+理由:
+-  AAD 認証サービスまたは WS-Trust エンドポイントからエラー応答 (HTTP 400 を超えるもの) を受信しました。
+> [!NOTE]
+> フェデレーション認証には WS-Trust が必要です
+-  必要なエンドポイントへのネットワーク接続の問題
+
+解決策: 
+-  サーバー エラーでは、AAD 認証サービスと WS-Trust エンドポイントからのエラー コードとエラーの説明がそれぞれイベント 1081 とイベント 1088 (AAD 操作ログ) に含まれています。 一般的なサーバー エラー コードとその解決策は、次のセクションに記載されています。
+-  接続の問題の場合、イベント 1022 (AAD 分析ログ) とイベント 1084 (AAD 操作ログ) にそれぞれ、アクセス中の URL とネットワーク スタックからのサブエラー コードが含まれています。
+
+---
+**STATUS_NO_SUCH_LOGON_SESSION**    (-1073741729/ 0xc000005f)
+
+理由: 
+-  AAD 認証サービスがユーザーのドメインを見つけることができなかったため、ユーザー領域の検出に失敗しました
+
+解決策:
+-  AAD には、ユーザーの UPN のドメインがカスタムドメインとして追加されている必要があります。 指定された UPN は、イベント 1144 (AAD 分析ログ) に含まれています。
+-  オンプレミス ドメイン名がルーティング不可能である場合 (不明なユーザー jdoe@contoso.local など)、代替ログイン ID (AltID: Alternate Login ID) を構成します。 参照: [前提条件](hybrid-azuread-join-plan.md) [configuring-alternate-login-id](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 
+
+---
+
+**AAD_CLOUDAP_E_OAUTH_USERNAME_IS_MALFORMED**   (-1073445812/ 0xc004844c)
+
+理由: 
+-  ユーザーの UPN の形式が正しくありません。 
+> [!NOTE] 
+> - Azure AD 参加済みデバイスの場合、UPN は LoginUI でユーザーが入力したテキストになります。
+> - Hybrid Azure AD 参加済みデバイスの場合は、ログイン プロセス中にドメイン コントローラーから UPN が返されます。
+
+解決策:
+-  ユーザーの UPN は、インターネット標準 [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) に基づくインターネット形式のログイン名である必要があります。 指定された UPN は、イベント 1144 (AAD 分析ログ) に含まれています。
+-  Hybrid 参加済みデバイスの場合は、正しい形式で UPN を返すようにドメイン コントローラーが構成されていることを確認します。 ドメイン コントローラーにおける構成済みの UPN は、whoami/upn で表示されます。
+-  オンプレミス ドメイン名がルーティング不可能である場合 (不明なユーザー jdoe@contoso.local など)、代替ログイン ID (AltID: Alternate Login ID) を構成します。 参照: [前提条件](hybrid-azuread-join-plan.md) [configuring-alternate-login-id](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 
+
+---
+
+**AAD_CLOUDAP_E_OAUTH_USER_SID_IS_EMPTY** (-1073445822/ 0xc0048442)
+
+理由:
+-  AAD 認証サービスから返された ID トークンにユーザーの SID が欠落しています
+
+解決策: 
+-  ネットワーク プロキシがサーバーの応答を妨害したり変更したりしていないことを確認します。 
+
+---
+
+**AAD_CLOUDAP_E_WSTRUST_SAML_TOKENS_ARE_EMPTY** (--1073445695/ 0xc00484c1)
+
+理由:
+-  WS-Trust エンドポイントからエラーが返されました。
+> [!NOTE]
+> フェデレーション認証には WS-Trust が必要です
+
+解決策: 
+-  ネットワーク プロキシが WS-Trust の応答を妨害したり変更したりしていないことを確認します。
+-  イベント 1088 (AAD 操作ログ) には、WS-Trust エンドポイントからのサーバー エラー コードとエラーの説明が含まれています。 一般的なサーバー エラー コードとその解決策は、次のセクションに記載されています
+
+---
+
+**AAD_CLOUDAP_E_HTTP_PASSWORD_URI_IS_EMPTY** (-1073445749/ 0xc004848b)
+
+理由:
+-  MEX エンドポイントの構成に誤りがあります。 MEX 応答に、パスワードの URL が含まれていません
+
+解決策: 
+-  ネットワーク プロキシがサーバーの応答を妨害したり変更したりしていないことを確認します
+-  有効な URL が応答で返されるように、MEX の構成を修正してください。    
+
+---
+
+**WC_E_DTDPROHIBITED** (-1072894385/ 0xc00cee4f)
+
+理由: 
+-  WS-TRUST エンドポイントからの XML 応答に DTD が含まれています。 XML 応答に DTD は想定されておらず、DTD が含まれていると応答の解析に失敗します。
+> [!NOTE]
+> フェデレーション認証には WS-Trust が必要です
+
+解決策:
+-  XML 応答で DTD が送信されないように ID プロバイダーの構成を修正します。 
+-   DTD を含んだ XML 応答を返す URL は、イベント 1022 (AAD 分析ログ) に記録されます。
+
+---
+
+**一般的なサーバー エラー コード:**
+
+**AADSTS50155: デバイス認証に失敗しました**
+
+理由: 
+-  PRT を発行するデバイスを AAD が認証できません
+-  デバイスが削除されたり無効化されたりしていないことを Azure portal で確認します。 [詳細情報](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)
+
+解決策:
+-  [こちら](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do)に記載されている手順に従い、デバイスの参加の種類に基づいてデバイスを再登録します。
+
+---
+
+**AADSTS50034: ユーザー アカウント <Account> が <tenant id> ディレクトリに存在しない**
+
+理由: 
+-  テナント内のユーザー アカウントを AAD が検出できません。
+
+解決策:
+-  ユーザーが正しい UPN を入力していることを確認します。
+-  オンプレミスのユーザー アカウントが AAD と同期されていることを確認します。
+-  指定された UPN は、イベント 1144 (AAD 分析ログ) に含まれています。
+
+---
+
+**AADSTS50126: 無効なユーザー名またはパスワードにより、資格情報の検証でエラーが発生しました。**
+
+理由: 
+-  Windows の LoginUI でユーザーが入力したユーザー名とパスワードが正しくありません。
+-  テナントでパスワード ハッシュの同期が有効になっており、なおかつ、デバイスに Hybrid Join が使用されていて、ユーザーがパスワードを変更した直後である場合、おそらく新しいパスワードが AAD と同期されていません。 
+
+解決策:
+-  新しい資格情報を含んだ新しい PRT を AAD Sync が取得するまで待ちます。 
+
+---
+
+**一般的なネットワーク エラー コード:**
+
+**ERROR_WINHTTP_TIMEOUT** (12002)
+
+**ERROR_WINHTTP_NAME_NOT_RESOLVED** (12007)
+
+**ERROR_WINHTTP_CANNOT_CONNECT** (12029)
+
+**ERROR_WINHTTP_CONNECTION_ERROR** (12030)
+
+理由: 
+-  ネットワーク全般に関連した一般的な問題です。 
+
+解決策: 
+-  アクセス中の URL は、イベント 1022 (AAD 分析ログ) と 1084 (AAD 操作ログ) に含まれています
+-  オンプレミス環境に送信プロキシが必要である場合は、デバイスのコンピューター アカウントが送信プロキシに対する検出とサイレント認証を実行できることを IT 管理者が確認する必要があります
+
+> [!NOTE]
+> その他のネットワーク エラー コードについては、[こちら](/windows/win32/winhttp/error-messages)を参照してください。
+
+---
+
+### <a name="step-4-collect-logs"></a>手順 4: ログを収集する ###
+
+**通常のログ**
+
+1. https://aka.ms/icesdptool にアクセスします。診断ツールを含んだ .cab ファイルが自動的にダウンロードされます。
+2. 再現が完了したら、このツールを実行してシナリオを再現します。 プロセスを終了します。
+3. Fiddler トレースの場合、ポップアップ表示される証明書の要求を受け入れます。
+4. トレース ファイルを保護するためのパスワードの入力が、ウィザードによって求められます。 パスワードを指定します。
+5. 最後に、収集したすべてのログが格納されているフォルダーを開きます。 通常、%LOCALAPPDATA%\ElevatedDiagnostics\<numbers> のようなフォルダーにあります
+7. 収集されたログはすべて latest.cab に含まれています。サポートに連絡して、その内容を伝えます。
+
+**ネットワーク トレース**
+
+> [!NOTE]
+> ネットワーク トレースの収集について: 再現中は Fiddler を使用しないことが大切です。
+
+1.  netsh trace start scenario=InternetClient_dbg capture=yes persistent=yes
+2.  デバイスをロックしてからロックを解除します。 Hybrid Join が使用されているデバイスの場合は、1 分以上待って PRT 取得タスクを完了させてください。
+3.  netsh trace stop
+4.  nettrace.cab を共有します
+
+---
 
 ## <a name="known-issues"></a>既知の問題
 - [設定] -> [アカウント] -> [職場または学校にアクセスする] で、Hybrid Azure AD 参加済みデバイスには、モバイル ホットスポットまたは外部 WiFi ネットワークに接続されているときに、Azure AD 用に 1 つとオンプレミス AD 用に 1 つという 2 つの異なるアカウントが表示される場合があります。 これは UI のみの問題であり、機能には影響しません。

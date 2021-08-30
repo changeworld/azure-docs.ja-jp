@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cb924ab1f8947fefc83ed35a409628a576fad4b9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c637f22a21b73450746a90b83ea7c87249da1d45
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772679"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113507431"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLI を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>ルーティング規則の追加
 
-規則は、列記されている順序で処理されます。 トラフィックは、特異性に関係なく、最初に一致した規則を使って転送されます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
+ルールの優先度フィールドが使用されていない場合、ルールは一覧表示された順序で処理されます。 トラフィックは、特異性に関係なく、最初に一致した規則を使って転送されます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。
 
 この例では、2 つの新しい規則を作成し、アプリケーション ゲートウェイをデプロイしたときに作成された既定の規則を削除します。 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create) を使用して、規則を追加することができます。
 
@@ -171,6 +171,29 @@ az network application-gateway rule delete \
   --gateway-name myAppGateway \
   --name rule1 \
   --resource-group myResourceGroupAG
+```
+### <a name="add-priority-to-routing-rules"></a>ルーティング規則に優先度を追加する
+
+より具体的なルールが最初に処理されるようにするには、ルールの優先度フィールドを使用してそのルールの優先度が高くなっていることを確認します。 既存のすべての要求ルーティング規則に対して規則の優先度フィールドを設定する必要があります。また、後で作成される新しい規則にも規則の優先度の値が必要です。
+```azurecli-interactive
+az network application-gateway rule create \
+  --gateway-name myAppGateway \
+  --name wccontosoRule \
+  --resource-group myResourceGroupAG \
+  --http-listener wccontosoListener \
+  --rule-type Basic \
+  --priority 200 \
+  --address-pool wccontosoPool
+
+az network application-gateway rule create \
+  --gateway-name myAppGateway \
+  --name shopcontosoRule \
+  --resource-group myResourceGroupAG \
+  --http-listener shopcontosoListener \
+  --rule-type Basic \
+  --priority 100 \
+  --address-pool shopcontosoPool
+
 ```
 
 ## <a name="create-virtual-machine-scale-sets"></a>仮想マシン スケール セットの作成

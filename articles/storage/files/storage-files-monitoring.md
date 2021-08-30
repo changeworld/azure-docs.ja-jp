@@ -10,16 +10,23 @@ ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 37f3d7a8ff56ea16f6004516c43ac33989263023
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 465109f42a0f5608c6b0a4b030476c915c3514df
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669844"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721784"
 ---
 # <a name="monitoring-azure-files"></a>Azure Files の監視
 
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure Files によって生成される監視データと、Azure Monitor の機能を使用してこのデータに関するアラートを分析する方法について説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="monitor-overview"></a>監視の概要
 
@@ -62,7 +69,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 ## <a name="creating-a-diagnostic-setting"></a>診断設定の作成
 
-診断設定を作成するには、Azure portal、PowerShell、Azure CLI、または Azure Resource Manager テンプレートを使用します。
+診断設定を作成するには、Azure portal、PowerShell、Azure CLI、Azure Resource Manager テンプレート、Azure Policy のいずれかを使用します。
 
 > [!NOTE]
 > Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 この機能は、Azure Resource Manager デプロイ モデルを使用して作成されたすべてのストレージ アカウントで使用できます。 「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
@@ -263,6 +270,10 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 ### <a name="template"></a>[テンプレート](#tab/template)
 
 診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+診断設定を作成するには、ポリシー定義を使用します。 これにより、作成または更新されたすべてのアカウントに対して、確実に診断設定が作成されるようになります。 「[Azure Storage 用の Azure Policy 組み込み定義](../common/policy-reference.md)」をご覧ください。
 
 ---
 
@@ -465,6 +476,10 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 ```
 
 # <a name="template"></a>[テンプレート](#tab/template)
+
+該当なし。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
 該当なし。
 

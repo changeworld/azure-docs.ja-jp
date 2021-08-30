@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 7289d9d814385f31a71cbd598889e564958a0140
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 3e27cbb2284f77abb9bd46bc6dcb7433b50a72e8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441818"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751638"
 ---
 # <a name="azure-image-builder-overview"></a>Azure Image Builder の概要
 
@@ -28,7 +28,7 @@ Azure VM Image Builder (Azure Image Builder) を使用すると、Windows また
 Azure Image Builder は、次の機能をサポートしています。
 
 - ベースライン イメージの作成。最低限のセキュリティと企業の構成を含み、各部門がさらにカスタマイズできます。
-- コア アプリケーションの統合。これにより、VM は作成後にワークロードを引き受けたり、Windows Virtual Desktop のイメージをサポートする構成を追加したりできます。
+- コア アプリケーションの統合。これにより、VM は作成後にワークロードを引き受けたり、Azure Virtual Desktop のイメージをサポートする構成を追加したりできます。
 - 既存のイメージへの修正プログラム適用。Image Builder では既存のカスタム イメージに継続的に修正プログラムを適用できます。
 - Image Builder を既存の仮想ネットワークに接続します。それにより、既存の構成サーバー (DSC、Chef、Puppet など)、ファイル共有、またはその他のルーティング可能なサーバー/サービスに接続できます。
 - Azure 共有イメージ ギャラリーとの統合。イメージをグローバルに配布、バージョン管理、およびスケールすることができます。また、イメージ管理システムを利用できます。
@@ -52,6 +52,8 @@ AIB は Azure Marketplace のベース OS イメージをサポートします�
 - Windows 10 RS5 Enterprise/Enterprise マルチセッション/Professional
 - Windows 2016
 - Windows 2019
+
+一覧に示されているのは、テスト済みで、Azure Image Builder で動作することが確認されているオペレーティング システムです。 ただし、Azure Image Builder は、マーケットプレースにあるすべての Linux または Windows イメージで動作します。
 
 ## <a name="how-it-works"></a>しくみ
 

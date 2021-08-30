@@ -4,15 +4,15 @@ description: Microsoft AppSource と Azure Marketplace に統合されたソリ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: vikrambmsft
-ms.author: vikramb
-ms.date: 04/16/2020
-ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.date: 06/22/2021
+ms.openlocfilehash: afdfce29840bbc88bdfc853e12e8109881f8366a
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880272"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002032"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
@@ -81,19 +81,13 @@ ms.locfileid: "98880272"
     * API
     * 統合データ リポジトリ
 
-    開発プロセスでは、次のリソースを使用します。
+2. ビジネスおよび技術に関するワークショップで策定したプロジェクト計画とタイムラインを推進するために、クロスパートナーのプロジェクト マネージャーを特定します。
 
-    * [ビジネスに関する意思決定ワークショップのディスカッション ガイド](https://aka.ms/AA5qicx)
-    * [技術に関する意思決定ワークショップのディスカッション ガイド](https://aka.ms/AA5qid1)
-    * [クイックスタート ビデオ:統合ソリューション ワークショップ](https://partner.microsoft.com/asset/detail/integrated-solutions-workshop-quickstart-guide-mp4)
+3. ソリューションの完全な技術的統合を開発します。
 
-1. ビジネスおよび技術に関するワークショップで策定したプロジェクト計画とタイムラインを推進するために、クロスパートナーのプロジェクト マネージャーを特定します。
+4. ソリューションの価格および Microsoft AppSource または Azure Marketplace に掲載する単一の価格ポイントを決定します。
 
-1. ソリューションの完全な技術的統合を開発します。
-
-1. ソリューションの価格および Microsoft AppSource または Azure Marketplace に掲載する単一の価格ポイントを決定します。
-
-1. Microsoft AppSource または Azure Marketplace への掲載用に、以下を含むマーケティング資料を完成させます。
+5. Microsoft AppSource または Azure Marketplace への掲載用に、以下を含むマーケティング資料を完成させます。
 
     * 統合ソリューションの名前。
     * 統合ソリューションの一覧の説明。 [オファーの掲載のベスト プラクティス](./gtm-offer-listing-best-practices.md)に従います。
@@ -103,7 +97,7 @@ ms.locfileid: "98880272"
 
 ## <a name="publish-your-integrated-solution"></a>統合ソリューションを公開する
 
-技術的な統合とマーケティング資料が終了したら、[Microsoft AppSource および Azure Marketplace 向けコンサルティング サービス](./plan-consulting-service-offer.md)の公開元ガイドを参照してください。 このリソースを使用して、ソリューションを Microsoft AppSource と Azure Marketplace のいずれで公開するかを決定します。 また、このガイドを使用して、公開成果物を準備し、公開プロセスを完了します。
+技術統合とマーケティング資料が完了したら、[Microsoft AppSource と Azure Marketplace のコンサルティング サービス](./plan-consulting-service-offer.md)の発行元ガイドを参照して、ソリューションが Microsoft AppSource または Azure Marketplace で公開されるかどうかを判断します。 このガイドを使用して、公開成果物を準備し、公開プロセスを完了することをお勧めします。
 
 コンサルティング サービス オファーには 5 種類のサービスが用意されていますが、統合ソリューションは概念実証または完全な実装のいずれかである必要があります。
 

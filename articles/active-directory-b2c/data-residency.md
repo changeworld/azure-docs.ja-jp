@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/27/2021
+ms.date: 08/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 2d4ecf925eadd00c40685fbee413df6fca0368d9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 92297e63739bca85a640120152ee864b85f0f640
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070859"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252322"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C:利用可能なリージョンとデータの保存場所
 
@@ -25,7 +25,7 @@ Azure AD B2C ID データは、テナントの作成時に指定された国/リ
 
 利用可能なリージョンとデータの保存場所は、Azure AD B2C に適用される 2 つの異なる概念です。 この記事では、これら 2 つの概念の違いについて説明するとともに、Azure と Azure AD B2C に対してそれらがどのように適用されるかを比較します。
 
-Azure AD B2C は **世界中で一般提供** されており、**データの保存場所** としては **米国、ヨーロッパ、またはアジア太平洋** を選択することができます。 Azure AD B2C は、オーストラリアで **パブリック プレビュー** 段階にあります。
+Azure AD B2C は **世界中で一般提供** されており、**データの保存場所** としては **米国、ヨーロッパ、アジア太平洋、またはオーストラリア** を選択できます。
 
 [利用可能なリージョン](#region-availability)とは、サービスを使用できる場所を指します。
 
@@ -37,7 +37,7 @@ Azure AD B2C は、Azure パブリック クラウドを介して全世界で提
 
 ## <a name="data-residency"></a>データの保存場所
 
-Azure AD B2C では、ユーザー データが米国、ヨーロッパ、またはアジア太平洋のリージョンに保存されます。
+Azure AD B2C では、ユーザー データが米国、ヨーロッパ、アジア太平洋のリージョン、またはオーストラリアに保存されます。
 
 データの保存場所は、[Azure AD B2C のテナントを作成する](tutorial-create-tenant.md)ときに選択した国/地域によって決まります。
 
@@ -55,7 +55,7 @@ Azure AD B2C では、ユーザー データが米国、ヨーロッパ、また
 
 > アフガニスタン (AF)、香港特別行政区 (HK)、インド (IN)、インドネシア (ID)、日本 (日本)、韓国 (韓国)、マレーシア (MY)、フィリピン (PH)、シンガポール (SG)、スリランカ (LK)、台湾 (TW)、タイ (TH)
 
-次の国/地域の場合、データは **オーストラリア** (プレビュー) に保存されます。
+次の国/地域の場合、データは **オーストラリア** に保存されます。
 
 > オーストラリアとニュージーランド
 

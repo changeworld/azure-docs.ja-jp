@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: f56d1c305f5d18d82ae79781a7b60fd6b429357b
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 6344e83593509b2828b41b8e9074211aa83fc2d3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613820"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440211"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -22,8 +22,8 @@ ms.locfileid: "110613820"
 この記事では、**新しい Azure Digital Twins インスタンスを設定する** 手順 (インスタンスの作成と認証の設定を含む) について説明します。 この記事を完了すると、Azure Digital Twins インスタンスのプログラミングを開始する準備が整います。
 
 この記事のこのバージョンでは、プロセスを効率化する[自動化されたデプロイ スクリプトのサンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)を実行することによってこれらの手順を完了します。 
-* このスクリプトがバックグラウンドで実行する手動の CLI 手順を表示するには、この記事の CLI バージョンである[方法: インスタンスと認証の設定 (CLI)](how-to-set-up-instance-cli.md)  に関するページを参照してください。
-* Azure portal に応じた手動の手順を表示するには、この記事のポータル バージョンである[方法: インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md)  に関するページを参照してください。
+* このスクリプトがバックグラウンドで実行する手動の CLI 手順を表示するには、この記事の CLI バージョンである[インスタンスと認証の設定 (CLI)](how-to-set-up-instance-cli.md) に関するページを参照してください。
+* Azure portal での手動の手順を表示するには、この記事のポータル バージョンである[インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md) に関するページを参照してください。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
@@ -126,7 +126,7 @@ ms.locfileid: "110613820"
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
 * [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
-* [概念: Azure Digital Twins CLI コマンド セット](concepts-cli.md)
+* [Azure Digital Twins CLI コマンド セット](concepts-cli.md)
 
 または、認証コードを使用してクライアント アプリケーションをインスタンスに接続する方法を確認します。
-* [方法: アプリ認証コードを作成する](how-to-authenticate-client.md)
+* [アプリ認証コードを作成する](how-to-authenticate-client.md)

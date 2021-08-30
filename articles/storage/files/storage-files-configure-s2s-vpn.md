@@ -7,21 +7,28 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1a08ca4142876a5a92adbe8b1c3fce9ec7953019
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7436cb2a2dc85a41ae42f15d6df7574a6bb2d5cf
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778015"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224506"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Azure Files で使用するサイト間 VPN を構成する
-サイト間 (S2S) VPN 接続を使用すると、ポート 445 を開くことなく、オンプレミス ネットワークから SMB 経由で Azure ファイル共有をマウントできます。 サイト間 VPN は、Azure リソース オファリングの VPN サービスであり、ストレージ アカウントまたはその他の Azure リソースと共にリソース グループにデプロイされる [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して設定できます。
+サイト間 (S2S) VPN 接続を使用すると、オープンなインターネット上にデータを送信することなく、オンプレミス ネットワークから Azure ファイル共有をマウントできます。 サイト間 VPN は、Azure リソース オファリングの VPN サービスであり、ストレージ アカウントまたはその他の Azure リソースと共にリソース グループにデプロイされる [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して設定できます。
 
 ![S2S VPN を使用して Azure ファイル共有をオンプレミス サイトに接続する Azure VPN Gateway のトポロジを示すトポロジ グラフ](media/storage-files-configure-s2s-vpn/s2s-topology.png)
 
 このハウツー記事を読み進める前に、Azure Files で使用可能なネットワーク オプションの完全な説明について [Azure Files のネットワークの概要](storage-files-networking-overview.md)に関するページを参照することを強くお勧めします。
 
 この記事では、Azure ファイル共有をオンプレミスに直接マウントするためにサイト間 VPN を構成する手順について詳細に説明します。 Azure File Sync の同期トラフィックをサイト間 VPN 経由でルーティングすることを検討している場合は、[Azure File Sync のプロキシとファイアウォールの設定の構成](../file-sync/file-sync-firewall-and-proxy.md)に関するページを参照してください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="prerequisites"></a>前提条件
 - オンプレミスにマウントする Azure ファイル共有。 ストレージ アカウント内にデプロイされた Azure ファイル共有は、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 Azure ファイル共有とストレージ アカウントをデプロイする方法の詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
@@ -94,7 +101,8 @@ S2S VPN の構成の最後の手順では、それが Azure Files に対して�
 
 - [Windows](storage-how-to-use-files-windows.md)
 - [macOS](storage-how-to-use-files-mac.md)
-- [Linux](storage-how-to-use-files-linux.md)
+- [Linux (NFS)](storage-files-how-to-mount-nfs-shares.md)
+- [Linux (SMB)](storage-how-to-use-files-linux.md)
 
 ## <a name="see-also"></a>関連項目
 - [Azure Files のネットワークの概要](storage-files-networking-overview.md)

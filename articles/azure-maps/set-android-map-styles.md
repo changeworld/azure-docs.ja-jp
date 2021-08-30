@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 4d96d116bc4350a3326722c87f65e887d5a54791
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 84e87593a67bfda512619c5637ffc13c07fa8111
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326545"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091278"
 ---
 # <a name="set-map-style-android-sdk"></a>マップ スタイルを設定する (Android SDK)
 
@@ -33,14 +33,14 @@ ms.locfileid: "108326545"
 マップ スタイルは、マップ コントロールの追加時に、アクティビティ クラスのレイアウト ファイルで設定できます。 次のコードは、中央の場所、ズーム レベル、およびマップ スタイルを設定します。
 
 ```XML
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/mapcontrol"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_centerLat="47.602806"
-    app:mapcontrol_centerLng="-122.329330"
-    app:mapcontrol_zoom="12"
-    app:mapcontrol_style="grayscale_dark"
+    app:azure_maps_centerLat="47.602806"
+    app:azure_maps_centerLng="-122.329330"
+    app:azure_maps_zoom="12"
+    app:azure_maps_style="grayscale_dark"
     />
 ```
 
@@ -204,6 +204,47 @@ map.setCamera(
 ::: zone-end
 
 境界ボックスの縦横比はマップの縦横比とは異なる場合があります。そのため、マップには、多くの場合、境界ボックス領域全体が表示されますが、垂直方向または水平方向の一方のみがきついことがよくあります。
+
+### <a name="animate-map-view"></a>マップ ビューをアニメーション化する
+
+マップのカメラ オプションを設定するときに、アニメーション オプションを使用して、現在のマップ ビューと次のマップ ビューの間の切り替えも作成できます。 これらのオプションでは、カメラの移動に必要なアニメーションの種類と継続時間を指定します。
+
+| オプション | 説明 |
+|--------|-------------|
+| `animationDuration(Integer durationMs)` | カメラがビュー間でアニメーション化する時間をミリ秒単位 (ms) で指定します。 |
+| `animationType(AnimationType animationType)` | 実行するアニメーションの切り替えの種類を指定します。<br/><br/> - `JUMP` - 即時に変更します。<br/> - `EASE` - カメラの設定を段階的に変更します。<br/> - `FLY` - 円弧のようなフライトに続き、カメラの設定を段階的に変更します。 |
+
+次のコードは、3 秒間の `FLY` アニメーションを使用してマップ ビューをアニメーション化する方法を示しています。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.6)),
+    zoom(12),
+    animationType(AnimationType.FLY), 
+    animationDuration(3000)
+);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.6)),
+    zoom(12.0),
+    AnimationOptions.animationType(AnimationType.FLY),
+    AnimationOptions.animationDuration(3000)
+)
+```
+
+::: zone-end
+
+次に、ニューヨークからシアトルにマップ ビューをアニメーション化する上記のコードを示します。
+
+![ニューヨークからシアトルにカメラをアニメーション化するマップ](media/set-android-map-styles/android-animate-camera.gif)
 
 ## <a name="next-steps"></a>次のステップ
 

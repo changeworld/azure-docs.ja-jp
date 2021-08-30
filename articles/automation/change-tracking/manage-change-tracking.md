@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d67acd025e453cee41a2461276d2f5df3066a141
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572644"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112518458"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Change Tracking と Inventory の管理
 
@@ -161,7 +161,7 @@ Azure Monitor ログに対して、変更レコードのさまざまな検索を
 
 |クエリ  |説明  |
 |---------|---------|
-|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Microsoft サービスの最新のインベントリ レコードで、Auto に設定されたが、Stopped として報告されたものを表示します。 結果は、指定されたソフトウェア名とコンピューターの最新のレコードに限定されます。    |
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中としてレポートされたものを表示します。 結果は、指定されたソフトウェア名とコンピューターの最新のレコードに限定されます。    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|削除されたソフトウェアの変更レコードを表示します。|
 
 ## <a name="next-steps"></a>次のステップ

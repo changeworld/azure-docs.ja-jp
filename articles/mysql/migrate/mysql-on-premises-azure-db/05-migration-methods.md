@@ -1,5 +1,5 @@
 ---
-title: オンプレミスの MySQL から Azure Database for MySQL への移行ガイドの移行方法
+title: 'オンプレミスの MySQL を Azure Database for MySQL に移行する: 移行方法'
 description: ソースからターゲットにデータを取得するには、MySQL のツールまたは機能を使用して移行を実行する必要があります。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: be44dd31b5a038414a10a7dac47e53a12573449e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 6a4b0e2dc084168e1bffa539924ad897ac93961e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082963"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085004"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-migration-methods"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイドの移行方法
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-migration-methods"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する: 移行方法
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -102,9 +104,9 @@ MySQL ワークロードを移行するために WWI が実行できるパスは
 
 | 目標 | 説明 | ツール | 前提条件 | 長所 | 短所 |
 |-----------|-------------|------|---------------|------------|---------------|
-| **可能な限り最速の移行** | 並列アプローチ | mydumper と myloader | Linux | 高度に並列化 | ターゲットの調整 |
-| **オンライン移行** | 可能な限りソースを有効な状態に維持 | binlog | なし | シームレス | 追加の処理とストレージ  |
-| **オフライン移行** | 可能な限りソースを有効な状態に維持 | Database Migration Service (DMS) | なし | 反復可能なプロセス  | データのみに制限、すべての MySQL バージョンをサポート |
+| **可能な限り最速の移行** | 並列アプローチ| mydumper と myloader | Linux | 高度に並列化 | ターゲットの調整 |
+| **オンライン移行** | 可能な限りソースを有効な状態に維持 | binlog | なし | シームレス | 追加の処理とストレージ |
+| **オフライン移行** | 可能な限りソースを有効な状態に維持 | Database Migration Service (DMS)| なし | 反復可能なプロセス | データのみに制限、すべての MySQL バージョンをサポート |
 | **高度にカスタマイズされたオフライン移行** | オブジェクトを選択的にエクスポート | mysqldump | なし | 高度にカスタマイズ可能 | 手動 |
 | **半自動化されたオフライン移行** | UI ベースのエクスポートとインポート | MySQL Workbench | ダウンロードおよびインストールする | 半自動 | 一般的なスイッチのセットのみをサポート |
 
@@ -120,6 +122,8 @@ WWI は、最初の移行ワークロードとして会議データベースを�
 
   - データ ワークロードがその方法をサポートしているかどうかを常に確認します。  
 
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Test Plans](./06-test-plans.md)

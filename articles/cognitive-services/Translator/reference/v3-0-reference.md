@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 8/11/2020
+ms.date: 07/06/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2b391c5a435c2dd2f19a3f170bf7c84edd7143f2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 18a9d2efa3093dd342e05f1c9038fa7f460d97bd
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063034"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358923"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -37,18 +37,18 @@ Microsoft Translator のサービスは、複数のデータセンター拠点�
 * **アジア太平洋:** 韓国南部、東日本、東南アジア、オーストラリア東部
 * **ヨーロッパ:** 北ヨーロッパ、西ヨーロッパ
 
-Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その Azure 地域以外に要求がルーティングされます。
+Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その地域以外に要求がルーティングされます。
 
-要求を特定の Azure 地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的の地域のエンドポイントに変更します。
+要求を特定の地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的の地域のエンドポイントに変更します。
 
-|説明|Azure 地域|ベース URL (地域のエンドポイント)|
-|:--|:--|:--|
-|Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
-|Azure|United States|   api-nam.cognitive.microsofttranslator.com|
-|Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
-|Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
+|[地理的な場所]|ベース URL (地域のエンドポイント)|
+|:--|:--|
+|グローバル (リージョンなし)|    api.cognitive.microsofttranslator.com|
+|United States|    api-nam.cognitive.microsofttranslator.com|
+|ヨーロッパ|    api-eur.cognitive.microsofttranslator.com|
+|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
 
-<sup>1</sup> スイス北部またはスイス西部にあるリソースを使用しているお客様は、彼らの Text API 要求が確実にスイス内で処理されるようにすることができます。 要求がスイスで処理されるようにするには、[リソース リージョン] の [Switzerland North]\(スイス北部\) または [Switzerland West]\(スイス西部\) で Translator リソースを作成し、API 要求でそのリソースのカスタム エンドポイントを使用します。 たとえば、Azure portal で [リソース リージョン] を [Switzerland North]\(スイス北部\) として Translator リソースを作成し、リソース名が ‘my-ch-n’ である場合、カスタム エンドポイントは “https://my-ch-n.cognitiveservices.azure.com” です。 翻訳する要求の例を次に示します。
+<sup>1</sup> スイス北部またはスイス西部にあるリソースを使用しているお客様は、彼らの Text API 要求が確実にスイス内で処理されるようにすることができます。 要求がスイスで処理されるようにするには、[リソース リージョン] の [Switzerland North]\(スイス北部\) または [Switzerland West]\(スイス西部\) で Translator リソースを作成し、API 要求でそのリソースのカスタム エンドポイントを使用します。 たとえば、Azure portal で [リソース リージョン] を [Switzerland North]\(スイス北部\) として Translator リソースを作成し、リソース名が "my-ch-n" である場合、カスタム エンドポイントは "https://my-ch-n.cognitiveservices.azure.com" です。 翻訳する要求の例を次に示します。
 ```curl
 // Pass secret key and region using headers to a custom endpoint
 curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
@@ -158,7 +158,7 @@ Authorization: Bearer <Base64-access_token>
 
 ## <a name="virtual-network-support"></a>仮想ネットワークのサポート
 
-翻訳サービスは、Azure パブリック クラウドのすべてのリージョンの Virtual Network (VNET) 機能で使用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](../../cognitive-services-virtual-networks.md?tabs=portal)」を参照してください。 
+翻訳サービスは、Azure パブリック クラウドのすべてのリージョンの Virtual Network (VNET) 機能で使用できるようになりました。 Virtual Network を有効にするには、[Azure Cognitive Services 仮想ネットワークを構成する](../../cognitive-services-virtual-networks.md?tabs=portal)方法に関するページを "*参照*" してください。 
 
 この機能を有効にした後、カスタム エンドポイントを使用して Translator を呼び出す必要があります。 グローバル トランスレーター エンドポイント ("api.cognitive.microsofttranslator.com") は使用できず、アクセス トークンで認証することはできません。
 
@@ -197,6 +197,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
     }
 }
 ```
+
 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コード:
 
 | コード | 説明 |
@@ -233,12 +234,12 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | 403000| この操作は許可されていません｡|
 | 403001| サブスクリプションが無料クォータを超えているため､この操作は許可されていません｡|
 | 405000| 要求リソースに対してこの要求メソッドを使用することはできません｡|
-| 408001| 要求された翻訳システムを準備しています。 少し待ってからもう一度お試しください。|
+| 408001| 要求された翻訳システムを準備しています。 少し待ってから再試行してください。|
 | 408002| 受信ストリームの待機中に要求がタイムアウトになりました。 サーバーが待機するように設定された時間以内に、クライアントは要求を生成しませんでした。 クライアントは、それ以降いつでも変更せずに要求を繰り返すことができます。|
 | 415000| Content-Type Content-type ヘッダーが見つからないか無効です。|
 | 429000､429001､429002| クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。|
 | 500000| 予期しないエラーが発生しました。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
-| 503000| サービスが一時的に利用できません。 もう一度試してください。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
+| 503000| サービスが一時的に利用できません。 再試行してください。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 
 ## <a name="metrics"></a>メトリック 
 メトリックを使用すると、次のスクリーンショットに示すように、Azure portal の [メトリック] セクションで、トランスレーターの使用状況と可用性の情報を表示できます。 詳細については、[データとプラットフォームのメトリック](../../../azure-monitor/essentials/data-platform-metrics.md)に関するページを参照してください。

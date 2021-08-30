@@ -2,21 +2,21 @@
 title: セキュリティの概要
 description: Azure Arc 対応サーバーに関するセキュリティ情報。
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 113eaaf779409cd77e66b253074146dfaa0ff0ab
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98117029"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390221"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Azure Arc for servers のセキュリティの概要
 
-この記事では、企業内に Azure Arc 対応サーバーを展開する前に評価する必要がある、セキュリティ構成と考慮事項について説明します。
+この記事では、企業内に Azure Arc 対応サーバーを展開する前に評価しなければならない、セキュリティ構成と考慮事項について説明します。
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-各 Azure Arc 対応サーバーは、Azure サブスクリプション内のリソース グループの一部としてマネージド ID を持ち、この ID はオンプレミスまたは他のクラウド環境を実行しているサーバーを表します。 このリソースへのアクセスは、標準の [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)によって制御されます。 Azure portal の [ **[Access Control (IAM)]**](../../role-based-access-control/role-assignments-portal.md) ページから、Azure Arc 対応サーバーにアクセスできるユーザーを確認できます。
+各 Azure Arc 対応サーバーは、Azure サブスクリプション内のリソース グループの一部としてマネージド ID を持ち、この ID はオンプレミスまたは他のクラウド環境を実行しているサーバーを表します。 このリソースへのアクセスは、標準の [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)によって制御されます。 Azure portal の [ **[Access Control (IAM)]** ](../../role-based-access-control/role-assignments-portal.md) ページから、Azure Arc 対応サーバーにアクセスできるユーザーを確認できます。
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Azure Arc 対応サーバーのアクセス制御" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
@@ -56,4 +56,6 @@ Azure Connected Machine エージェントと Azure サービスとの通信に�
 
 ## <a name="next-steps"></a>次のステップ
 
-複数のハイブリッド マシン間で Arc 対応サーバーを評価または有効化する前に、[Connected Machine エージェントの概要](agent-overview.md)を確認し、要件、エージェントに関する技術的な詳細、およびデプロイ方法を把握してください。
+* 複数のハイブリッド マシンにまたがって Arc 対応サーバーを評価するか、または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)を確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
+
+* [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。

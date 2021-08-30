@@ -4,15 +4,15 @@ description: Azure Cosmos DB アカウントの Synapse Link を有効にする�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
-ms.openlocfilehash: bba594a6b0482457acad8bead382099a1e8e3a5b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 86f27f08bd7495e558cd81b122f1daa243dbe313
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968043"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727910"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB を構成して使用する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -29,7 +29,15 @@ Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo 
 * [サーバーレス SQL プールを使用して分析ストアのクエリを実行する](#query-analytical-store-sql-on-demand)
 * [サーバーレス SQL プールを使用して Power BI のデータを分析して視覚化する](#analyze-with-powerbi)
 
+また、[Azure Cosmos DB の Azure Synapse Link を構成](/learn/modules/configure-azure-synapse-link-with-azure-cosmos-db/)する方法に関する Learn モジュールも確認できます。
+
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Azure Cosmos DB アカウントの Azure Synapse Link を有効にする
+
+> [!NOTE]
+> Azure Synapse Link でカスタマー マネージド キーを使用する場合は、ご自身のアカウント上で Synapse Link を有効にする前に、お使いの Azure Key Vault アクセス ポリシー内でご自身のアカウントのマネージド ID を構成する必要があります。 詳細については、[Azure Cosmos DB アカウントのマネージド ID を使用して、カスタマー マネージド キーを構成](how-to-setup-cmk.md#using-managed-identity)する方法に関する記事をご覧ください。
+
+> [!NOTE]
+> SQL (CORE) API アカウントに対して完全に忠実なスキーマを使用する必要がある場合は、Azure portal を使用して Synapse Link を有効にすることはできません。 このオプションは、ご自身のアカウント内で Synapse Link が有効にされた後は変更できません。これを設定するには、Azure CLI または PowerShell を使用する必要があります。 詳細については、[分析ストアのスキーマ表現に関するドキュメント](analytical-store-introduction.md#schema-representation)をご確認ください。 
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -200,15 +208,13 @@ except exceptions.CosmosResourceExistsError:
 Azure portal を使用して分析ストアが有効なコンテナーを作成した場合は、それに -1 の既定の分析 TTL が含まれます。 この値を更新するには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com/) または [Azure Cosmos DB Explorer](https://cosmos.azure.com/) にサインインします。
-
 1. Azure Cosmos DB アカウントに移動して、 **[データ エクスプローラー]** タブを開きます。
-
 1. 分析ストアが有効になっている既存のコンテナーを選択します。 それを展開し、次の値を変更します。
+   1. **[Scale & Settings]\(スケールと設定\)** ウィンドウを開きます。
+   1. **[設定]** で、 **[Analytical Storage Time to Live]\(分析ストレージの有効期限\)** を探します。
+   1. **[オン (既定値なし)]** または **[オン]** を選択し、TTL 値を設定します。
+   1. **[保存]** をクリックして変更を保存します。
 
-  * **[Scale & Settings]\(スケールと設定\)** ウィンドウを開きます。
-  * **[設定]** で、 **[Analytical Storage Time to Live]\(分析ストレージの有効期限\)** を探します。
-  * **[オン (既定値なし)]** または **[オン]** を選択し、TTL 値を設定します
-  * **[保存]** をクリックして変更を保存します。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -285,7 +291,7 @@ Azure Synapse Link の使用を開始する場合、[GitHub](https://aka.ms/cosm
 
 詳細については、次のドキュメントを参照してください。
 
-* [Azure Cosmos DB の Azure Synapse Link。](synapse-link.md)
+* [Azure Cosmos DB の Azure Synapse Link を構成](/learn/modules/configure-azure-synapse-link-with-azure-cosmos-db/)する方法に関する Learn モジュールを確認する。
 
 * [Azure Cosmos DB 分析ストアの概要。](analytical-store-introduction.md)
 

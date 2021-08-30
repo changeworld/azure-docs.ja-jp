@@ -3,19 +3,19 @@ title: Confluent Cloud を管理する - Azure パートナー ソリューシ�
 description: この記事では、Azure portal での Confluent Cloud の管理について説明します。 シングル サインオンをセットアップし、Confluent 組織を削除し、サポートを受ける方法。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 06/07/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1e53382b6f399bccac53a75595eda4e61a915a4
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99989114"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112520998"
 ---
 # <a name="manage-the-confluent-cloud-resource"></a>Confluent Cloud リソースを管理する
 
-この記事では、Azure 上で Apache Kafka for Confluent Cloud のインスタンスを管理する方法について説明します。 シングル サインオン (SSO) の設定、Confluent 組織の削除、およびサポート要求の作成方法について説明します。
+この記事では、Azure 上で Apache Kafka for Confluent Cloud のインスタンスを管理する方法について説明します。 シングル サインオン (SSO) を設定したり、Confluent 組織を削除したりする方法を紹介しています。
 
 ## <a name="single-sign-on"></a>シングル サインオン
 
@@ -27,9 +27,12 @@ SSO を有効にするには、次の手順に従います。
 1. Confluent Cloud リソースのインスタンスの **[概要]** に移動します。
 1. **[Manage on Confluent Cloud]\(Confluent Cloud の管理\)** のリンクを選択します。
 
-   :::image type="content" source="media/sso-link.png" alt-text="Confluent ポータルのシングル サインオン。":::
+   :::image type="content" source="media/manage/sso-link.png" alt-text="Confluent ポータルのシングル サインオン。":::
 
 1. SSO への同意のためのギャラリー アプリケーションをテナント管理者がインポートしていない場合、アクセス許可と同意を付与します。 この手順は、 **[Manage on Confluent Cloud]\(Confluent Cloud の管理\)** のリンクに初めてアクセスするときにのみ必要です。
+
+   :::image type="content" source="media/manage/permissions-requested.png" alt-text="アクセス許可を付与する。":::
+
 1. Confluent Cloud ポータルにシングル サインオンするための Azure AD アカウントを選択します。
 1. 同意を指定すると、Confluent Cloud ポータルにリダイレクトされます。
 
@@ -40,6 +43,8 @@ SSO を有効にするには、次の手順に従います。
 ## <a name="delete-confluent-organization"></a>Confluent 組織を削除する
 
 Confluent Cloud リソースが不要になった場合は、Azure と Confluent Cloud 内のリソースを削除します。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure 内のリソースを削除するには、次の手順に従います。
 
@@ -53,37 +58,34 @@ Azure 内のリソースを削除するには、次の手順に従います。
 
     :::image type="content" source="media/delete-resources-prompt.png" alt-text="リソースの削除の確認を求めるメッセージ。":::
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+まず、Azure CLI の環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+サインインした後、[az confluent organization delete](/cli/azure/confluent#az_confluent_organization_delete) コマンドを使用し、名前を指定して組織のリソースを削除します。
+
+```azurecli
+az confluent organization delete --name "myOrganization" --resource-group "myResourceGroup"
+```
+
+または、リソース ID を指定することもできます。
+
+```azurecli
+az confluent organization delete --id "/subscriptions/{SubID}/resourceGroups/{myResourceGroup}/providers/Microsoft.Confluent/organizations/{myOrganization}"
+```
+
+---
+
 Confluent Cloud 上のリソースを削除するには、[Confluent Cloud 環境に関する Confluent のドキュメント](https://docs.confluent.io/current/cloud/using/environments.html)と [Confluent Cloud の基礎に関する Confluent のドキュメント](https://docs.confluent.io/current/cloud/using/cloud-basics.html)を参照してください。
 
 クラスターとクラスター内のすべてのデータが完全に削除されます。 契約にデータ保持条項が含まれている場合、Confluent は[サービス使用条件に関する Confluent のドキュメント](https://www.confluent.io/confluent-cloud-tos)に指定されている期間、データを保持します。
 
 クラスターを削除した時点までの日割りの使用量に対して課金されます。 クラスターが完全に削除されると、Confluent から確認用の電子メールが送信されます。
 
-## <a name="get-support"></a>サポートを受ける
-
-サポート要求を Confluent に送信するには、次に示すように [Confluent サポート](https://support.confluent.io)に問い合わせるか、ポータルから要求を送信します。
-
-> [!NOTE]
-> 初めて使用するユーザーの場合、Confluent サポート ポータルにサインインする前にパスワードをリセットします。 Confluent Cloud のアカウントを持っていない場合は、`cloud-support@confluent.io` にメールを送信して、支援を受けてください。
-
-ポータルでは、Azure の [ヘルプとサポート] を通じて要求を送信することも、Azure 上の Apache Kafka for Confluent Cloud のインスタンスから直接それを送信することもできます。
-
-Azure の [ヘルプとサポート] を通じて要求を送信するには、次のようにします。
-
-1. **[ヘルプとサポート]** を選択します。
-1. **[サポート リクエストの作成]** を選択します。
-1. フォーム内で、 **[問題の種類]** として **[技術]** を選択します。 サブスクリプションを選択します。 サービスの一覧で、 **[Confluent on Azure]\(Azure での Confluent\)** を選択します。
-
-    :::image type="content" source="media/support-request-help.png" alt-text="ヘルプからサポート リクエストを作成する。":::
-
-リソースから要求を送信するには、次の手順を実行します。
-
-1. Azure portal で、Confluent 組織を選択します。
-1. 画面の左側にあるメニューから、 **[新しいサポート リクエスト]** を選択します。
-1. サポート リクエストを作成するには、**Confluent ポータル** へのリンクを選択します。
-
-    :::image type="content" source="media/support-request.png" alt-text="インスタンスからサポート リクエストを作成する。":::
-
 ## <a name="next-steps"></a>次の手順
 
 トラブルシューティングの支援については、「[Apache Kafka for Confluent Cloud ソリューションのトラブルシューティング](troubleshoot.md)」を参照してください。
+
+サポートに連絡する必要がある場合は、「[Confluent Cloud リソースのサポートを利用する](get-support.md)」を参照してください。

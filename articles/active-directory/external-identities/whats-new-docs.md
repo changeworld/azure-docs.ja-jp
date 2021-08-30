@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory External Identities の新機能
 description: Azure Active Directory External Identities の新規および更新されたドキュメント。
-ms.date: 06/02/2021
+ms.date: 08/03/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,60 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: fb492dd8bcc9f1c9ea3866e48ebd13277f8910ea
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 81a25af5dfa73cbeefdf5fc677da80515f20a2f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411199"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746123"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory External Identities:新機能
 
 Azure Active Directory External Identities のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 External Identities サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure AD External Identities セルフサービス サインアップのユーザー フローで API コネクタを使用して API をセキュリティで保護する](self-service-sign-up-secure-api-connector.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [外部 ID に対する ID プロバイダー](identity-providers.md)
+- [External Identities 用の Microsoft アカウント (MSA) ID プロバイダー](microsoft-account.md)
+- [電子メール ワンタイム パスコード認証](one-time-passcode.md)
+- [セルフサービス サインアップのユーザー フローをアプリに追加する](self-service-sign-up-user-flow.md)
+- [Azure Active Directory B2B コラボレーション ユーザーのプロパティ](user-properties.md)
+- [Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](google-federation.md)
+- [Azure Active Directory B2B コラボレーションの招待の利用](redemption-experience.md)
+- [Azure Active Directory B2B コラボレーションのトラブルシューティング](troubleshoot.md)
+- [API コネクタをユーザー フローに追加する](self-service-sign-up-add-api-connector.md)
+- [カスタム承認ワークフローをセルフサービス サインアップに追加する](self-service-sign-up-add-approvals.md)
+- [Azure Active Directory の外部 ID とは](compare-with-b2c.md)
+- [Azure AD External Identities の課金モデル](external-identities-pricing.md)
+- [動的グループと Azure Active Directory B2B コラボレーション](use-dynamic-groups.md)
+- [Azure Active Directory B2B のゲスト ユーザー アクセスとは](what-is-b2b.md)
+- [API コネクタを使用してセルフサービス サインアップをカスタマイズおよび拡張する](api-connectors-overview.md)
+- [ゲスト ユーザーの SAML/WS-Fed ID プロバイダーとのフェデレーション (プレビュー)](direct-federation.md)
+- [B2B コラボレーションの招待メールの要素 - Azure Active Directory](invitation-email-elements.md)
+- [B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [外部 ID 向けの Azure Active Directory (Azure AD) ID プロバイダー](azure-ad-account.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [チュートリアル: B2B ゲスト ユーザーに多要素認証を適用する](b2b-tutorial-require-mfa.md)
+- [セルフサービス サインアップのユーザー フローをアプリに追加する](self-service-sign-up-user-flow.md)
+- [クイック スタート:Azure portal でディレクトリにゲスト ユーザーを追加する](b2b-quickstart-add-guest-users-portal.md)
+- [ゲスト ユーザーの SAML/WS-Fed ID プロバイダーとのフェデレーション (プレビュー)](direct-federation.md)
+- [Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する](google-federation.md)
+- [ゲスト ユーザーとして組織を脱退する](leave-the-organization.md)
+- [Azure Active Directory B2B コラボレーションの招待の利用](redemption-experience.md)
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -63,7 +107,7 @@ Azure Active Directory External Identities のドキュメントの最新情報�
 
 ### <a name="new-articles"></a>新しい記事
 
-- [External Identities 用の Microsoft アカウント (MSA) ID プロバイダー (プレビュー)](microsoft-account.md)
+- [External Identities 用の Microsoft アカウント (MSA) ID プロバイダー](microsoft-account.md)
 
 ### <a name="updated-articles"></a>更新された記事
 

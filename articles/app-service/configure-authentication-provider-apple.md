@@ -4,12 +4,12 @@ description: App Service または Azure Functions アプリ用の ID プロバ�
 ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
-ms.openlocfilehash: b77e0613f502d003b5e4651e34be4cadbd4209a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01216b7527fd6479f43c3bf0b9d4abeb60d06435
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96603004"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093051"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>Sign in with Apple プロバイダーを使用してサインインするように、App Service または Azure Functions アプリを構成する (プレビュー)
 
@@ -137,7 +137,7 @@ public static string GetAppleClientSecret(string teamId, string clientId, string
 ## <a name="add-provider-information-to-your-application"></a><a name="configure"> </a>アプリケーションにプロバイダー情報を追加する
 
 > [!NOTE]
-> 必要な構成は新しい API 形式ですが、現時点では [ファイルベースの構成 (プレビュー)](.\app-service-authentication-how-to.md#config-file) でのみサポートされています。 このようなファイルを使用して、以下の手順を行う必要があります。
+> 必要な構成は新しい API 形式ですが、現時点では [ファイルベースの構成 (プレビュー)](configure-authentication-file-based.md) でのみサポートされています。 このようなファイルを使用して、以下の手順を行う必要があります。
 
 このセクションでは、新しい IDP を含めるように構成を更新する手順について説明します。 構成の例を次に示します。
 
@@ -147,7 +147,7 @@ public static string GetAppleClientSecret(string teamId, string clientId, string
     ```json
     "apple" : {
        "registration" : {
-            "clientId": "<client id>",
+            "clientId": "<client ID>",
             "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_CLIENT_SECRET" 
         },
        "login": {

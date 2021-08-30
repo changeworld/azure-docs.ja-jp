@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 06/16/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0afaa9a577432741da44317a9d13e288cdea0d0d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: b8b59db6b73cdc2ecae3ca60741a892580162602
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052483"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287761"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -31,9 +31,9 @@ ms.locfileid: "99052483"
 ## <a name="request-to-pay-by-invoice"></a>請求書による支払いを要求する
 
 1. Azure portal にサインインして、サポート リクエストを送信します。 **[ヘルプとサポート]** を検索して選択します。  
-    ![Microsoft Azure portal で [ヘルプとサポート] を検索する](./media/pay-by-invoice/search-for-help-and-support.png)
+    :::image type="content" source="./media/pay-by-invoice/search-for-help-and-support.png" alt-text="[ヘルプとサポート] を検索する画面のスクリーンショット。" lightbox="./media/pay-by-invoice/search-for-help-and-support.png" :::
 1. **[新しいサポート リクエスト]** を選択します。  
-    ![[新しいサポート リクエスト] リンク、[ヘルプとサポート] 画面、Microsoft Azure portal](./media/pay-by-invoice/help-and-support.png)
+    :::image type="content" source="./media/pay-by-invoice/help-and-support.png" alt-text="[新しいサポート リクエスト] リンクのスクリーンショット。" lightbox="./media/pay-by-invoice/help-and-support.png" :::
 1. **[問題の種類]** で **[課金]** を選択します。 *[問題の種類]* は、サポート要求のカテゴリです。 請求書で支払うサブスクリプションを選択します。サポート プランを選択し、 **[次へ]** を選択します。
 1. **[お支払]** を **[問題の種類]** として選択します。 *[問題の種類]* は、サポート要求のサブカテゴリです。
 1. **[Switch to Pay by Invoice]\(請求書による支払いに切り替える\)** を **[問題のサブタイプ]** として選択します。
@@ -75,11 +75,11 @@ Microsoft Online Services Program アカウントの場合は、Azure サブス�
 Azure サブスクリプションを請求書支払い (小切手/電信送金) に切り替えるには、次の手順に従います。 "*請求書支払い (小切手または電信送金) に切り替えた後にクレジット カードに戻すことはできません*"。
 
 1. Azure portal にアクセスし、アカウント管理者としてサインインします。 **[コストの管理と請求]** を検索して選択します。  
-    ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/pay-by-invoice/search.png)
+    :::image type="content" source="./media/pay-by-invoice/search.png" alt-text="Azure portal で [コストの管理と請求] を検索する画面のスクリーンショット。" lightbox="./media/pay-by-invoice/search.png" :::
 1. 請求書支払いに切り替えるサブスクリプションを選択します。
 1. **[支払い方法]** を選択します。
 1. コマンド バーで、 **[請求書による支払い]** ボタンを選択します。  
-    ![[請求書による支払い] ボタン、[支払い方法]、Microsoft Azure portal](./media/pay-by-invoice/pay-by-invoice.png)
+    :::image type="content" source="./media/pay-by-invoice/pay-by-invoice.png" alt-text="[請求書による支払い] を示すスクリーンショット。" lightbox="./media/pay-by-invoice/pay-by-invoice.png" :::
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>課金プロファイルを小切手/電信送金に切り替える
 
@@ -87,12 +87,12 @@ Azure サブスクリプションを請求書支払い (小切手/電信送金) 
 
 1. Azure portal にアクセスして、課金情報を表示します。 **[コストの管理と請求]** を検索して選択します。
 1. メニューから **[課金プロファイル]** を選択します。  
-    ![[課金プロファイル] メニュー項目、[コストの管理と請求]、Microsoft Azure portal](./media/pay-by-invoice/billing-profile.png)
+    :::image type="content" source="./media/pay-by-invoice/billing-profile.png" alt-text="[課金プロファイル] メニュー項目を示すスクリーンショット。" lightbox="./media/pay-by-invoice/billing-profile.png" :::
 1. 課金プロファイルを選択します。
 1. **[課金プロファイル]** メニューで **[支払い方法]** を選択します。  
-   ![[支払い方法] メニュー項目、[課金プロファイル]、[コスト管理]、Microsoft Azure portal](./media/pay-by-invoice/billing-profile-payment-methods.png)
-1. 小切手または電信送金で支払う資格があることを示すバナーを選択します。  
-    ![小切手または電信送金に切り替えるためのバナー、[支払い方法]、Microsoft Azure portal](./media/pay-by-invoice/customer-led-switch-to-invoice.png)
+   :::image type="content" source="./media/pay-by-invoice/billing-profile-payment-methods.png" alt-text="[支払い方法] メニュー項目を示すスクリーンショット。" lightbox="./media/pay-by-invoice/billing-profile-payment-methods.png" :::
+1. *[その他の支払い方法]* という見出し下の省略記号 (...) を選択し、 **[既定に設定]** を選択します。  
+    :::image type="content" source="./media/pay-by-invoice/customer-led-switch-to-invoice.png" alt-text="[小切手または電信送金] の省略記号と [既定に設定] オプションを示すスクリーンショット。" lightbox="./media/pay-by-invoice/customer-led-switch-to-invoice.png" :::
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

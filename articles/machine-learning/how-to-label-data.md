@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.custom: data4ml
-ms.openlocfilehash: 3fa2276163b054c72ec27901fb28315b648c47c3
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 491ee8134d17eac9e0abb54780f2aa39e1323e6c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296522"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446257"
 ---
 # <a name="labeling-images-and-text-documents"></a>画像とテキスト ドキュメントにラベルを付ける
 
@@ -79,6 +79,19 @@ ms.locfileid: "108296522"
 Azure では、ページ上のすべての画像にタグを付け終わると、 **[送信]** ボタンが有効になります。 **[送信]** を選択して作業内容を保存します。
 
 手元にあるデータのタグを送信すると、Azure によって作業キューの新しい画像セットを使ってページが更新されます。
+
+## <a name="medical-image-tasks"></a>医療画像タスク
+
+> [!IMPORTANT]
+> DICOM または同様の画像の種類にラベルを付ける機能は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、Microsoft からはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、DICOM または同様の画像の種類のデータのラベル付けの使用についてのみ責任を負います。
+
+画像プロジェクトでは、DICOM 画像形式の X 線ファイル画像をサポートしています。
+
+:::image type="content" source="media/how-to-label-data/x-ray-image.png" alt-text="ラベル付けする X 線 DICOM 画像。":::
+
+医療画像には他の画像と同じツールでラベルを付けることができますが、DICOM 画像用の追加のツールがあります。  画像の濃度を変更するには、 **[Window and level]\(ウィンドウとレベル\)** ツールを選択します。 このツールは、DICOM 画像に対してのみ使用できます。
+
+:::image type="content" source="media/how-to-label-data/window-level-tool.png" alt-text="DICOM 画像用の [Window and level]\(ウィンドウとレベル\)。":::
 
 ## <a name="tag-images-for-multi-class-classification"></a>複数クラス分類用に画像にタグを付ける
 

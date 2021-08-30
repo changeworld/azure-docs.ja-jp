@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 2233e6f40c1023f1b02543f4e234b00422f6f77f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0b1cf7d0dbf7456d01f6530355e6943c8ead54db
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077196"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014923"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -48,6 +48,9 @@ IoT Edge デバイスは、ネットワーク上の他のダウンストリー�
 ゲートウェイには、次の 2 つのパターンがあります。
 
 * "*透過的ゲートウェイ*" パターンでは、IoT Central のように動作する IoT Edge ハブ モジュールによって、IoT Central に登録されているデバイスからの接続が処理されます。 メッセージは、間にゲートウェイが存在しないかのように、ダウンストリーム デバイスから IoT Central に渡されます。
+
+    > [!NOTE]
+    > 現在 IoT Central では、IoT Edge デバイスをダウンストリーム デバイスとして、IoT Edge の透過的なゲートウェイに接続することはできません。 これは、IoT Central に接続するすべてのデバイスが、Device Provisioning Service (DPS) を使用してプロビジョニングされるためです。DPS では、入れ子になった IoT Edge シナリオはサポートされていません。
 
 * "*変換ゲートウェイ*" パターンでは、それ自体では IoT Central に接続できないデバイスが、代わりにカスタム IoT Edge モジュールに接続されます。 IoT Edge デバイス内のモジュールにより、ダウンストリーム デバイスからの受信メッセージが処理されて、IoT Central に転送されます。
 
@@ -281,6 +284,10 @@ IoT Edge ランタイムを実行できる場所については、「[Azure IoT 
 IoT Edge デバイスをゲートウェイ デバイスにするよう選択した場合は、ゲートウェイ デバイスに接続するデバイスのデバイス モデルにダウンストリーム リレーションシップを追加できます。
 
 詳細については、[IoT Edge の透過的なゲートウェイを使用してデバイスを接続する方法](how-to-connect-iot-edge-transparent-gateway.md)に関するページを参照してください。
+
+## <a name="monitor-your-iot-edge-devices"></a>IoT Edge デバイスを監視する
+
+Azure Monitor と組み込みのメトリック統合を使用して、お使いの IoT Edge フリートをリモートで監視する方法については、「[メトリックの収集と転送](../../iot-edge/how-to-collect-and-transport-metrics.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

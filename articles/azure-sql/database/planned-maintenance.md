@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: mathoma
 ms.date: 3/23/2021
-ms.openlocfilehash: 7de0db8245908e8342abbbe6a8f7cc4f2359e7f5
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: a697c0a3095963760d6a95159790c02cbab14d71
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017867"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121634"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,6 +40,10 @@ Azure SQL Database サービスと Azure SQL Managed Instance サービスのセ
 ## <a name="retry-logic"></a>再試行ロジック
 
 クラウド データベース サービスに接続するクライアント運用アプリケーションでは、堅牢な接続[再試行ロジック](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)を実装する必要があります。 これにより、再構成はエンド ユーザーに対して透過的になり、少なくとも、悪影響を最小限に抑えることができます。
+
+### <a name="service-health-alert"></a>Service Health アラート
+
+サービスの問題や計画メンテナンス作業についてのアラートを受け取りたい場合、Azure portal から、適切な種類のイベントとアクション グループに Service Health アラートを組み合わせて使用できます。 詳細については、[Azure サービスの通知でアラートを受け取る](../../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal)方法に関するページを参照してください。
 
 ## <a name="resource-health"></a>リソース ヘルス
 

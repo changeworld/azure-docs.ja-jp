@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8a67cb97487e1082aed976712ded5383008531b1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ae3f62141fdcdb1185f493eceeef7124fe11f869
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957132"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727853"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -130,7 +130,7 @@ Azure には、アプリケーションのホスティングと共に、機能�
 
   > **いつ使用するか**: キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
   >
-  > **作業開始**: [BLOB](../../storage/blobs/storage-quickstart-blobs-dotnet.md)、[テーブル](../../cosmos-db/tutorial-develop-table-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または [ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかのストレージの種類から選択します。
+  > **作業開始**: [BLOB](../../storage/blobs/storage-quickstart-blobs-dotnet.md)、[テーブル](../../cosmos-db/tutorial-develop-table-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
 
 * **Azure SQL Database**:クラウドにリレーショナル表形式データを格納する Azure ベース バージョンの Microsoft SQL Server エンジンです。 SQL Database は、予測可能なパフォーマンス、ダウンタイムなしのスケーラビリティ、ビジネス継続性、データ保護を提供しています。
 
@@ -244,7 +244,9 @@ Azure には、コマンドラインからアプリケーションとサービ�
 
 * 構成可能なダッシュボード
 * Azure リソース管理ツール
-* サブスクリプション設定と課金情報へのアクセス。 詳細については、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/features/azure-portal/)」を参照してください。
+* サブスクリプション設定と課金情報へのアクセス
+
+詳細については、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/features/azure-portal/)」を参照してください。
 
 ### <a name="rest-apis"></a>REST API
 
@@ -338,4 +340,4 @@ Azure には、Azure サブスクリプションのリソース使用状況と�
 
 事前にコストを見積もることは困難ですが、Azure には便利なツールが用意されています。 デプロイされたリソースのコストを見積もるための、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)が用意されています。 ポータルと Billing REST API で課金リソースを使用し、現在の使用状況に基づいて、今後のコストを見積もることもできます。
 
->**作業開始**: 「[Azure Consumption API の概要](../../cost-management-billing/manage/consumption-api-overview.md)」を参照してください。
+>**概要**: 詳細については「[Azure Consumption API の概要](../../cost-management-billing/manage/consumption-api-overview.md)」を参照してください。

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78468c9528c4502ce691dec183c261b9636325f8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 34a6a353593d733cf50325049cd88034fb16c9ca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094332"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723120"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位を管理する
 
@@ -30,9 +30,9 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
 - 管理単位の各管理者に対する Azure AD Premium P1 または P2 ライセンス
 - 管理単位のメンバーに対する Azure AD Free ライセンス
-- 特権ロール管理者またはグローバル管理者
+- 特権ロール管理者または全体管理者
 - PowerShell を使用する場合は、AzureAD モジュール
-- Microsoft Graph API の Graph エクスプローラーを使用する場合は、管理者の同意
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
 詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
@@ -42,7 +42,9 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. Azure Portal で、Azure AD に移動します。 次に、左側のウィンドウで、 **[管理単位]** を選択します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[管理単位]** の順に選択します。
 
     ![Azure AD の [管理単位] リンクのスクリーンショット。](./media/admin-units-manage/nav-to-admin-units.png)
 
@@ -84,11 +86,15 @@ Azure AD では、管理ロールのスコープの単位として不要にな�
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. Azure portal で、**Azure AD** に移動し、 **[管理単位]** を選択します。 
-1. 削除する管理単位を選択してから、 **[削除]** を選択します。 
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[管理単位]** の順に選択します。
+ 
+1. 削除する管理単位を選択してから、 **[削除]** を選択します。
+
 1. 管理単位の削除を確認するには、 **[はい]** を選択します。 管理単位が削除されます。
 
-![管理単位の [削除] ボタンと確認ウィンドウのスクリーンショット。](./media/admin-units-manage/select-admin-unit-to-delete.png)
+    ![管理単位の [削除] ボタンと確認ウィンドウのスクリーンショット。](./media/admin-units-manage/select-admin-unit-to-delete.png)
 
 ### <a name="powershell"></a>PowerShell
 

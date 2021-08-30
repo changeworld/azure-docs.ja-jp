@@ -4,17 +4,17 @@ description: Blob Storage のイベントをサブスクライブするには、
 author: normesta
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 03/05/2020
+ms.date: 08/11/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: be726ea6722dca1e44d6e33883a5bb22e6783431
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d05f6086bcf4bc59e9bc7f680139ccaf7660578
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889316"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178566"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする
 
@@ -160,3 +160,4 @@ az group delete --name <resource_group_name>
 
 - [Blob Storage のイベント処理](storage-blob-event-overview.md)
 - [Event Grid について](../../event-grid/overview.md)
+- [BLOB リハイドレート イベントに応答して Azure 関数を実行する](archive-rehydrate-handle-event.md)

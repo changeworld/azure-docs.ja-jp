@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 1118e44e822068566579fdc516479afeda294cf6
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: eeba36b200028d4e90e22cd32c9bab6dbe3799e0
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789499"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492867"
 ---
 # <a name="azure-digital-twins-query-language-reference-select-clause"></a>Azure Digital Twins クエリ言語リファレンス: SELECT 句
 
@@ -63,7 +63,7 @@ SELECT 句は、クエリの最初の部分です。 これにより、クエリ
 
 プロジェクションで指定されたツイン、プロパティ、またはリレーションシップのコレクション。
 
-プロジェクションに含まれるプロパティが特定のデータ行で存在しない場合、このプロパティは結果セットにも同様に存在しません。 この動作の例については、「[プロパティを射影する例: データ行のプロパティが存在しない場合](#project-property-example-property-not-present-for-a-data-row)」を参照してください。
+プロジェクションに含まれるプロパティが特定のデータ行に存在しない場合、このプロパティは結果セットにも同様に存在しません。 この動作の例については、「[プロパティを射影する例: データ行のプロパティが存在しない場合](#project-property-example-property-not-present-for-a-data-row)」を参照してください。
 
 ### <a name="examples"></a>例
 
@@ -211,7 +211,7 @@ SELECT 句は、クエリの最初の部分です。 これにより、クエリ
 
 #### <a name="project-property-example-property-not-present-for-a-data-row"></a>プロパティを射影する例: データ行のプロパティが存在しない場合
 
-プロジェクションに含まれるプロパティが特定のデータ行で存在しない場合、このプロパティは結果セットにも同様に存在しません。
+プロジェクションに含まれるプロパティが特定のデータ行に存在しない場合、このプロパティは結果セットにも同様に存在しません。
 
 この例では、人物を表すツインのセットを考えましょう。 ツインの中には年齢が関連付けられているものがありますが、そうでないものもあります。
 
@@ -268,7 +268,7 @@ SELECT 句は、クエリの最初の部分です。 これにより、クエリ
 
 ## <a name="select-top"></a>SELECT TOP
 
-このメソッドを使用すると、クエリの要件を満たす特定の数の上位項目だけを返すことができます。
+このメソッドを使用すると、クエリの要件を満たす一部の上位項目だけを返すことができます。
 
 ### <a name="syntax"></a>構文
 

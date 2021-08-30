@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e51cb6faf51484944fc3f8fa739b76d50411feac
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 92e9c22712fdbfae5ab13a23cf72e282a225288a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745345"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733242"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
@@ -39,7 +39,7 @@ AI による顔の検出と識別の概念を理解している必要があり�
 
 * [顔検出の概念](../concepts/face-detection.md)
 * [顔認識の概念](../concepts/face-recognition.md)
-* [画像内の顔を検出する方法](HowtoDetectFacesinImage.md)
+* [検出 API を呼び出す](HowtoDetectFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>指定されたモデルで顔を検出する
 
@@ -116,7 +116,7 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、さまざまな Face サービスの API で使用する認識モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出を使い始めてみましょう。
+この記事では、さまざまな Face サービスの API で使用する認識モデルを指定する方法について説明しました。 次は、クイックスタートに従って顔検出を使い始めてみましょう。
 
 * [Face .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Face Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)

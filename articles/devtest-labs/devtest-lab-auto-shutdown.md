@@ -3,12 +3,12 @@ title: Azure DevTest Labs とコンピューティング VM で自動シャッ�
 description: 使用されていないときに仮想マシンが自動的にシャットダウンされるように、ラボの自動シャットダウン ポリシーを設定する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cd7974580ea30c9d0591c88380a4e626711bad1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 946ee2a4d6f3503671664b0e46806fef7f71a459
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93318981"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301998"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボとコンピューティング仮想マシンの自動シャットダウンを構成する
 
@@ -112,7 +112,7 @@ Webhook が指定されていた場合は、Webhook の URL に通知が送信�
 
 Azure Logic Apps や Slack などのさまざまなアプリで広範囲にサポートされているため、Webhook を使用することをお勧めします。  Webhook を使用すると、通知を送信する独自の方法を実装できます。 例として、この記事では、Azure Logic Apps を使用して VM の所有者にメールを送信するよう自動シャットダウン通知を構成する方法を示します。 最初に、ラボで自動シャットダウン通知を有効にする基本的な手順を簡単に見ておきましょう。
 
-### <a name="create-a-logic-app-that-receives-email-notifications"></a>メール通知を受信するロジック アプリを作成する
+### <a name="create-a-logic-app-that-sends-email-notifications"></a>メール通知を送信するロジック アプリを作成する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) によって、Office 365 や Twitter などの他のクライアントとサービスを簡単に統合できる多くのコネクタが提供されます。 メール通知用にロジック アプリをセットアップする概要レベルの手順は、4 つのフェーズに分類できます。
 

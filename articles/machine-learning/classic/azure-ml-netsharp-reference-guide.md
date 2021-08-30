@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91fe9cee0178dc3f742ac59995212ae1ef3a7a38
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519254"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582962"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) での Net# ニューラル ネットワーク仕様言語について
 
@@ -22,10 +22,10 @@ ms.locfileid: "100519254"
 
 Net# は、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑なニューラル ネットワーク アーキテクチャを定義するために使用される、Microsoft が開発した言語です。 複雑な構造体を使用して、イメージ、ビデオ、オーディオなどのデータに関する学習を強化できます。
 
-次のコンテキストで Net # アーキテクチャの仕様をご利用いただけます。
-
-+ Microsoft Azure Machine Learning Studio (クラシック) のすべてのニューラル ネットワーク モジュール:[多クラス ニューラル ネットワーク](/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[2 クラス ニューラル ネットワーク](/azure/machine-learning/studio-module-reference/two-class-neural-network)、および[ニューラル ネットワーク回帰](/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Microsoft ML Server のニューラル ネットワーク関数: R 言語用の [NeuralNet](/machine-learning-server/r-reference/microsoftml/neuralnet) と [rxNeuralNet](/machine-learning-server/r-reference/microsoftml/rxneuralnet)、および Python 用の [rx_neural_network](/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
+Net# アーキテクチャ仕様は、Machine Learning スタジオ (クラシック) のすべてのニューラル ネットワーク モジュールで使用できます。 
+* [多クラス ニューラル ネットワーク](/azure/machine-learning/studio-module-reference/multiclass-neural-network)
+* [2 クラス ニューラル ネットワーク](/azure/machine-learning/studio-module-reference/two-class-neural-network)
+* [ニューラル ネットワーク回帰](/azure/machine-learning/studio-module-reference/neural-network-regression)
 
 
 この記事では、Net# でのカスタム ニューラル ネットワーク開発に必要な基本概念と構文について説明します。
@@ -33,7 +33,6 @@ Net# は、ディープ ニューラル ネットワークや任意次元の畳�
 + ニューラル ネットワークの前提条件と主なコンポーネントの定義方法
 + Net# 仕様言語の構文とキーワード
 + Net# を使用したカスタム ニューラル ネットワークの例
-
 
 
 ## <a name="neural-network-basics"></a>ニューラル ネットワークの基本
@@ -57,7 +56,7 @@ Net# では、さまざまな種類の結合バンドルがサポートされて
 
 ## <a name="supported-customizations"></a>サポートされるカスタマイズ
 
-Azure Machine Learning Studio (クラシック) で作成するニューラル ネットワーク モデルのアーキテクチャは、Net# を使用して高度にカスタマイズできます。 次のようにすることができます。
+Machine Learning スタジオ (クラシック) で作成するニューラル ネットワーク モデルのアーキテクチャは、Net# を使用して高度にカスタマイズできます。 次のようにすることができます。
 
 + 隠れ層を作成し、各層のノード数を管理する。
 + 層間の結合方法を指定する。
@@ -293,7 +292,7 @@ from P1 response norm {
   }
 ```
 
-+ ソース層には、5 つのマップが含まれ、12 x 12 の各次元に、合計 1440 ノードがあります。
++ ソース層には、5 つのマップが含まれ、12 x 12 の各次元に、合計 1,440 ノードがあります。
 + **KernelShape** の値は、これが、3 × 3 の四角形を隣接とする、同じマップ正規化層であることを示しています。
 + **Padding** の既定値は false のため、宛先層には次元あたり 10 ノードのみ含まれています。 ソース層のどのノードにも宛先層の 1 つのノードが対応するようにするには、Padding = [true, true, true]; を追加し、RN1 のサイズを [5, 12, 12] に変更します。
 
@@ -461,6 +460,6 @@ output Digit [10] from Hid3 all;
 + ノードの合計数は、レイヤーの宣言済みディメンショナリティ [50, 5, 5] を使用して、次のように計算できます: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + `Sharing[d]` は、`d == 0` の場合にのみ False であるため、カーネルの数は `MapCount * NodeCount\[0] = 10 * 5 = 50` です。
 
-## <a name="acknowledgements"></a>謝辞
+## <a name="acknowledgments"></a>謝辞
 
-ニューラル ネットワークのアーキテクチャをカスタマイズするための Net# 言語は Microsoft の Shon Katzenberger (設計者、Machine Learning) と Alexey Kamenev (ソフトウェア エンジニア、Microsoft Research) により開発されました。 機械学習と、画像検出からテキスト分析までの用途に社内利用されています。 詳細については、[Azure Machine Learning studio でのニューラル ネットの Net# の概要](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net)に関するページを参照してください
+ニューラル ネットワークのアーキテクチャをカスタマイズするための Net# 言語は Microsoft の Shon Katzenberger (設計者、Machine Learning) と Alexey Kamenev (ソフトウェア エンジニア、Microsoft Research) により開発されました。 機械学習と、画像検出からテキスト分析までの用途に社内利用されています。 詳細については、[Machine Learning スタジオでのニューラル ネットの Net# の概要](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net)に関するページを参照してください

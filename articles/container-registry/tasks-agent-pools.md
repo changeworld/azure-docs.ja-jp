@@ -4,12 +4,12 @@ description: Azure Container Registry タスクを実行するための専用コ
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: c23d2ab866f621db27488860ab62a41765faef40
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a303155b82cc35461cd6080b3cce694ffe7a1fc4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763705"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122841"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>専用エージェント プールで ACR タスクを実行する
 
@@ -56,10 +56,10 @@ ms.locfileid: "107763705"
 
 ### <a name="set-default-registry-optional"></a>既定のレジストリを設定する (省略可能)
 
-続く Azure CLI コマンドを簡略化するには、[az configure][az-configure] コマンドを実行して既定のレジストリを設定します。
+続く Azure CLI コマンドを簡略化するには、[az config][az-config] コマンドを実行して既定のレジストリを設定します。
 
 ```azurecli
-az configure --defaults acr=<registryName>
+az config set defaults.acr=<registryName>
 ```
 
 次の例では、既定のレジストリを設定していることを前提としています。 設定していない場合、各 `az acr` コマンドで `--registry <registryName>` パラメーターを渡します。
@@ -185,7 +185,7 @@ az acr agentpool show \
 [azure-cli]:           /cli/azure/install-azure-cli
 [open-support-ticket]: https://aka.ms/acr/support/create-ticket
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[az-configure]: /cli/azure#az_configure
+[az-config]: /cli/azure#az_config
 [az-acr-agentpool-create]: /cli/azure/acr/agentpool#az_acr_agentpool_create
 [az-acr-agentpool-update]: /cli/azure/acr/agentpool#az_acr_agentpool_update
 [az-acr-agentpool-show]: /cli/azure/acr/agentpool#az_acr_agentpool_show

@@ -2,23 +2,48 @@
 title: Data Science Virtual Machine の新機能
 titleSuffix: Azure Data Science Virtual Machine
 description: Azure Data Science Virtual Machine のリリース ノート
-author: timoklimmer
+author: michalmar
 ms.service: data-science-vm
-ms.author: tklimmer
-ms.date: 05/25/2021
+ms.author: mimarusa
+ms.date: 07/16/2021
 ms.topic: reference
-ms.openlocfilehash: a3bb8f3c7174fe301a8c81396bb46b6762e70796
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b74b535a6d6e00f83dd659728bb1ed930e1fb7dd
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409849"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371373"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine リリース ノート
 
 この記事では、Azure Data Science Virtual Machine リリースについて説明します。 含まれるツールの完全一覧とバージョン番号については、[こちらのページ](./tools-included.md)をご覧ください。
 
 バグおよび対処法については、[既知の問題のリスト](reference-known-issues.md)を参照してください。
+
+## <a name="2021-07-12"></a>2021-07-12
+
+[Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview) の新しいイメージ。
+
+主な変更点:
+
+- PyTorch 1.9.0 に更新されました
+- Azure CLI が 2.26.1 に更新されました
+- Azure CLI Azure Machine Learnign 拡張機能が 1.29.0 に更新されました
+- VS Code バージョン 1.58.1 の更新
+- 安定性の向上と軽微なバグ修正 
+
+
+## <a name="2021-06-22"></a>2021-06-22
+
+[Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) の新しいイメージ。
+
+バージョン: 21.06.22
+
+主な変更点:
+
+- PyTorch 1.9.0 に更新されました
+- git が利用できないバグを修正しました
+
 
 ## <a name="2021-06-01"></a>2021-06-01
 
@@ -41,8 +66,6 @@ ms.locfileid: "111409849"
 ## <a name="2021-05-22"></a>2021-05-22
 
 [Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) の新しいイメージ。
-
-選択されたバージョンの更新は次のとおりです。
 
 バージョン: 21.05.22
 
@@ -73,9 +96,6 @@ Firefox、Apache Drill、Microsoft Integration Runtime が削除されました�
 
 <br/>
 ダーク モード、デスクトップ上のアイコンの変更、壁紙の背景の変更。
-
-<br/>
-Gen2 仮想マシンで使用するイメージが有効化されました。
 
 ## <a name="2021-05-12"></a>2021-05-12
 

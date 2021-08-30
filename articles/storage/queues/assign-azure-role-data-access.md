@@ -6,37 +6,32 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 07/13/2021
 ms.author: tamram
-ms.reviewer: sohamnc
+ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c10386f6a81fabed61efd63aa4dffe61fe9e5cd7
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 28185918667b35012bd5fd0cc6bb6785d92b29a5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982075"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761637"
 ---
 # <a name="assign-an-azure-role-for-access-to-queue-data"></a>キュー データにアクセスするための Azure ロールを割り当てる
 
-Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 Azure Storage では、キューへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールが定義されます。
+Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 Azure Storage では、キュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の Azure 組み込みロールが定義されます。
 
-Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスのスコープは、サブスクリプション、リソース グループ、ストレージ アカウント、または個々のキューのレベルに設定できます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
+Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
-この記事では、キューへのデータ アクセス用の Azure ロールを割り当てる方法について説明します。
+Azure AD を使用してキュー データへのアクセスを承認する方法の詳細については、「[Azure Active Directory を使用してキューへのアクセスを承認する](authorize-access-azure-active-directory.md)」を参照してください。
 
-## <a name="azure-roles-for-queues"></a>キュー用の Azure ロール
-
-[!INCLUDE [storage-auth-rbac-roles-queue-include](../../../includes/storage-auth-rbac-roles-queue-include.md)]
-
-## <a name="determine-resource-scope"></a>リソースのスコープを決定する
-
-[!INCLUDE [storage-auth-resource-scope-queue-include](../../../includes/storage-auth-resource-scope-queue-include.md)]
+> [!NOTE]
+> この記事では、ストレージ アカウントのキュー データにアクセスするために Azure ロールを割り当てる方法について説明します。 Azure Storage での管理操作のロールの割り当てについては、「[Azure Storage リソース プロバイダーを使用して管理リソースにアクセスする](../common/authorization-resource-provider.md)」を参照してください。
 
 ## <a name="assign-an-azure-role"></a>Azure ロールを割り当てる
 
-Azure portal、PowerShell、または Azure CLI を使用して、データ アクセス用のロールを割り当てることができます。
+Azure portal、PowerShell、Azure CLI、または Azure Resource Manager テンプレートを使用して、データ アクセスのロールを割り当てることができます。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -100,6 +95,10 @@ az role assignment create \
 ```
 
 PowerShell を使用して、サブスクリプション、リソース グループ、またはストレージ アカウントをスコープとしたロールを割り当てる方法については、「[Azure CLI を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-cli.md)」を参照してください。
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+Azure Resource Manager テンプレートを使用して Azure ロールを割り当てる方法については、「[Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](../../role-based-access-control/role-assignments-template.md)」を参照してください。
 
 ---
 

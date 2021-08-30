@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 06/03/2021
-ms.openlocfilehash: 856a72be8e1bb69f86c2a96b8e7b57e964d26dfa
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 12c3641597168ee7e76acf4a16984f4419d40555
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410245"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298837"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
-この記事では、Microsoft マーケットプレース オファーを作成し、機能させるためのアイデアを提供します。 次の表は、パートナー センターでオファー情報を完成させるためのベスト プラクティスについてまとめたものです。 オファー実行方法の分析については、パートナー センターの[マーケットプレース分析情報ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)に移動してください。 
+この記事では、Microsoft マーケットプレース オファーを作成し、機能させるためのアイデアを提供します。 次の表は、パートナー センターでオファー情報を完成させるためのベスト プラクティスについてまとめたものです。 オファー実行方法の分析については、パートナー センターの[マーケットプレース分析情報ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2165936)に移動してください。
 
 ## <a name="online-store-offer-details"></a>オンライン ストア オファーの詳細
 
@@ -139,10 +139,10 @@ AppSource で選択した製品に表示されるオファーについて、ア�
 
 次の URL の例には、前述のクエリ パラメーターの両方が含まれています。`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-これらのパラメーターを AppSource の URL に追加すると、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/)の分析ダッシュボードでキャンペーンの効果を確認できます。
+これらのパラメーターを AppSource の URL に追加すると、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165765)の分析ダッシュボードでキャンペーンの効果を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 [商用マーケットプレースのベネフィット](./gtm-your-marketplace-benefits.md)の詳細を確認します。
 
-[パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインして、オファーを作成して構成します。
+[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインして、オファーを作成して構成します。 パートナー センターに登録していない場合、[アカウントを作成します](create-account.md)。

@@ -4,14 +4,14 @@ description: Azure Logic Apps で、入力、出力、要求ベースのトリ�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, azla
-ms.topic: conceptual
-ms.date: 05/01/2021
-ms.openlocfilehash: 50087ed6066ba97a866cc2fd40901397a3825e37
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.topic: how-to
+ms.date: 07/29/2021
+ms.openlocfilehash: 296a743924de2093ff9418333bdf8ef7e2f6f0f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983926"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731289"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -40,7 +40,7 @@ Azure でのセキュリティの詳細については、次のトピックを�
 
 ロジック アプリが要求ベースのトリガー ([Request](../connectors/connectors-native-reqres.md) トリガーや [HTTP Webhook](../connectors/connectors-native-webhook.md) トリガーなど) を介して受信する受信呼び出しによって、暗号化がサポートされており、以前は Secure Sockets Layer (SSL) と呼ばれていた[少なくともトランスポート層セキュリティ (TLS) 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security) でセキュリティ保護されます。 Logic Apps で、Request トリガーへの受信呼び出し、または HTTP Webhook トリガーもしくはアクションへのコールバックが受信されるときに、このバージョンが適用されます。 TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 詳細については、[TLS 1.0 の問題の解決](/security/solving-tls1-problem) を参照してください。
 
-受信呼び出しでは、次の暗号スイートをサポートしています。
+受信呼び出しの場合は、次の暗号スイートを使用します。
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -50,6 +50,24 @@ Azure でのセキュリティの詳細については、次のトピックを�
 * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+> [!NOTE]
+> Azure Logic Apps は現在、下位互換性のために以前の暗号スイートをサポートしています。 ただし、以前の暗号スイートは今後サポートされ "*なくなる可能性がある*" ため、新しいアプリを開発するときは "*使用しないでください*"。 
+>
+> たとえば、Azure Logic Apps サービスの使用中に、またはご自身のロジック アプリの URL 上でセキュリティ ツールを使用することで、TLS ハンドシェイク メッセージを検査すると、次の暗号スイートが見つかることがあります。 繰り返しになりますが、これらの以前のスイートは "*使用しないでください*"。
+>
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+> * TLS_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_RSA_WITH_AES_256_CBC_SHA256
+> * TLS_RSA_WITH_AES_128_CBC_SHA256
+> * TLS_RSA_WITH_AES_256_CBC_SHA
+> * TLS_RSA_WITH_AES_128_CBC_SHA
+> * TLS_RSA_WITH_3DES_EDE_CBC_SHA
 
 ご利用のロジック アプリへの受信呼び出しを受信するトリガーへのアクセスを制限して、承認されたクライアントのみがそのロジック アプリを呼び出せるようするその他の方法を、次に一覧に示します。
 
@@ -553,8 +571,17 @@ ARM テンプレートで、ロジック アプリのリソース定義で `acce
 
 ### <a name="secure-data-in-run-history-by-using-obfuscation"></a>難読化を使用して実行履歴のデータをセキュリティで保護する
 
-多くのトリガーおよびアクションには、ロジック アプリの実行履歴から、入力と出力のどちらかまたは両方をセキュリティで保護するための設定があります。 これらの設定を使用してこのデータをセキュリティで保護する前に、これらの考慮事項を確認してください。
+多くのトリガーおよびアクションには、ロジック アプリの実行履歴から、入力と出力のどちらかまたは両方をセキュリティで保護するための設定があります。 " *[マネージド コネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)" と "[カスタム コネクタ](/connectors/custom-connectors/)* " はすべて、これらのオプションに対応しています。 ただし、以下の [組み込み操作](../connectors/built-in.md)は、***これらのオプションに対応していません***。
+     
+| セキュリティで保護された入力 - サポートされていません | セキュリティで保護された出力 - サポートされていません |
+|-----------------------------|------------------------------|
+| 配列変数に追加 <br>文字列変数に追加 <br>変数の値を減らす <br>For each <br>If <br>変数の値を増やす <br>変数を初期化する <br>繰り返し <br>Scope <br>変数を設定する <br>Switch <br>Terminate <br>Until | 配列変数に追加 <br>文字列変数に追加 <br>作成 <br>変数の値を減らす <br>For each <br>If <br>変数の値を増やす <br>変数を初期化する <br>JSON の解析 <br>繰り返し <br>対応 <br>Scope <br>変数を設定する <br>Switch <br>Terminate <br>Until <br>Wait |
+|||
 
+#### <a name="considerations-for-securing-inputs-and-outputs"></a>入力と出力のセキュリティ保護に関する考慮事項
+
+これらの設定を使用してこのデータをセキュリティで保護する前に、これらの考慮事項を確認してください。
+                 
 * トリガーまたはアクションの入力または出力を隠すと、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)を追加して監視することもできません。
 
 * セキュリティで保護された出力は、[ワークフロー履歴を処理するための Logic Apps API](/rest/api/logic/) から返されません。
@@ -1027,7 +1054,7 @@ Request トリガーでは、[Azure Active Directory Open Authentication](../act
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | 使用する認証の種類。 現在、Logic Apps では [OAuth 2.0 プロトコル](../active-directory/develop/v2-overview.md)が使用されています。 |
-| **機関** | `authority` | いいえ | <*URL-for-authority-token-issuer*> | アクセス トークンを提供する機関の URL。 この値の既定値は `https://login.windows.net` です。 |
+| **機関** | `authority` | いいえ | <*URL-for-authority-token-issuer*> | アクセス トークンを提供する機関の URL (例: Azure グローバル サービス リージョンの `https://login.microsoftonline.com/`)。 その他の国内クラウドについては、[Azure AD 認証エンドポイント - ID 機関の選択](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)に関するページをご確認ください。 |
 | **テナント** | `tenant` | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
 | **対象ユーザー** | `audience` | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
 | **クライアント ID** | `clientId` | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
@@ -1121,7 +1148,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
    | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **認証** | `type` | はい | **Managed Identity** <br>or <br>`ManagedServiceIdentity` | 使用する認証の種類 |
-   | **Managed Identity** | `identity` | はい | * **システム割り当てマネージド ID**。 <br>or <br>`SystemAssigned` <p><p>* <*user-assigned-identity-name*> | 使用するマネージド ID |
+   | **Managed Identity** | `identity` | はい | * **システム割り当てマネージド ID**。 <br>or <br>`SystemAssigned` <p><p>* <*user-assigned-identity-ID*> | 使用するマネージド ID |
    | **対象ユーザー** | `audience` | はい | <*target-resource-ID*> | アクセスするターゲット リソースのリソース ID。 <p>たとえば、`https://storage.azure.com/` では、認証用の[アクセス トークン](../active-directory/develop/access-tokens.md)がすべてのストレージ アカウントに対して有効になります。 ただし、特定のストレージ アカウントに対する `https://fabrikamstorageaccount.blob.core.windows.net` など、ルート サービスの URL を指定することもできます。 <p>**注**: **[対象ユーザー]** プロパティは、一部のトリガーまたはアクションでは表示されない可能性があります。 このプロパティが表示されるようにするには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[対象ユーザー]** を選択します。 <p><p>**重要**:このターゲット リソース ID が、必要な末尾のスラッシュも含めて、Azure AD で予想される値と *正確に一致する* ようにします。 そのため、すべての Azure Blob Storage アカウントの `https://storage.azure.com/` リソース ID には、末尾のスラッシュが必要です。 ただし、特定のストレージ アカウントのリソース ID については、末尾のスラッシュは必要ありません。 これらのリソース ID を調べるには、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。 |
    |||||
 
@@ -1162,11 +1189,11 @@ Azure Logic Apps でコネクタを使用して特定のリソースに接続す
 
 ## <a name="isolation-guidance-for-logic-apps"></a>ロジック アプリの分離に関するガイダンス
 
-[Azure Government 影響レベル 5 分離ガイダンス](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps)および[米国国防総省クラウド コンピューティング セキュリティ要件ガイド (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html) に関するページで説明されているリージョンでのすべての影響レベルをサポートする Azure Logic Apps を [Azure Government](../azure-government/documentation-government-welcome.md) で使用できます。 これらの要件を満たすため、ロジック アプリで他の Azure テナントによるパフォーマンスへの影響が軽減され、コンピューティング リソースが他のテナントと共有されないよう、Logic Apps では、専用リソースを持つ環境でワークフローを作成および実行する機能がサポートされています。
+[Azure Government 影響レベル 5 分離ガイダンス](../azure-government/documentation-government-impact-level-5.md)に関するページで説明されているリージョン内でのすべての影響レベルをサポートする Azure Logic Apps を、[Azure Government](../azure-government/documentation-government-welcome.md) で使用できます。 これらの要件を満たすため、ロジック アプリで他の Azure テナントによるパフォーマンスへの影響が軽減され、コンピューティング リソースが他のテナントと共有されないよう、Logic Apps では、専用リソースを持つ環境でワークフローを作成および実行する機能がサポートされています。
 
 * 独自のコードを実行したり、XML 変換を実行したりするには、それぞれ[インライン コード機能](../logic-apps/logic-apps-add-run-inline-code.md)を使用したり、[マップとして使用するアセンブリ](../logic-apps/logic-apps-enterprise-integration-maps.md)を提供したりするのではなく、[Azure 関数を作成して呼び出します](../logic-apps/logic-apps-azure-functions.md)。 また、分離要件に準拠するように、関数アプリのホスティング環境を設定します。
 
-  たとえば、影響レベル 5 の要件を満たすには、[**Isolated** 価格レベル](../app-service/overview-hosting-plans.md) と共にやはり **Isolated** 価格レベルである [App Service Environment (ASE)](../app-service/environment/intro.md) を使用する [App Service プラン](../azure-functions/dedicated-plan.md)で関数アプリを作成します。 この環境では、関数アプリは専用の Azure 仮想マシンと専用の Azure 仮想ネットワーク上で実行されます。これにより、アプリに対するコンピューティング分離の上でのネットワークの分離と、最大のスケールアウト機能が提供されます。 詳細については、[Azure Government 影響レベル 5 分離ガイダンス - Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions) に関するページを参照してください。
+  たとえば、影響レベル 5 の要件を満たすには、[**Isolated** 価格レベル](../app-service/overview-hosting-plans.md) と共にやはり **Isolated** 価格レベルである [App Service Environment (ASE)](../app-service/environment/intro.md) を使用する [App Service プラン](../azure-functions/dedicated-plan.md)で関数アプリを作成します。 この環境では、関数アプリは専用の Azure 仮想マシンと専用の Azure 仮想ネットワーク上で実行されます。これにより、アプリに対するコンピューティング分離の上でのネットワークの分離と、最大のスケールアウト機能が提供されます。
 
   詳細については、次のドキュメントを確認してください。
 

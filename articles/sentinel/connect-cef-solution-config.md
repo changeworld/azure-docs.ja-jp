@@ -1,5 +1,5 @@
 ---
-title: セキュリティ ソリューションを構成して CEF データを Azure Sentinel Preview に接続する | Microsoft Docs
+title: セキュリティ ソリューションを構成して CEF データを Azure Sentinel に接続する | Microsoft Docs
 description: セキュリティ ソリューションを構成して CEF データを Azure Sentinel に接続する方法についての説明。
 services: sentinel
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 60ce503d4a89f245f28d5034924cb8c89c926b3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe60a36d93a77ee75df578e0f6fc6665da26681e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771296"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743011"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>手順 2: CEF メッセージを送信するように、セキュリティ ソリューションを構成する
 
@@ -82,5 +82,5 @@ ms.locfileid: "104771296"
 このドキュメントでは、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
 - [Cef および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

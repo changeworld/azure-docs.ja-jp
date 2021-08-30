@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: f1c67f9d4fda2e0ca26d8125f30e2f71213b0749
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: aa377267fb522de03ee181db99963498b5075fc4
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111853084"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112574346"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
@@ -22,52 +22,9 @@ ms.locfileid: "111853084"
 
 1 つのマネージド イメージは、最大 20 個の同時デプロイをサポートします。 同じマネージド イメージから 20 個を超える VM を同時に作成しようとすると、1 つの VHD におけるストレージ パフォーマンスの制限によって、プロビジョニングのタイムアウトが発生する可能性があります。 20 個を超える VM を同時に作成するには、20 個の同時実行 VM デプロイごとに 1 つのレプリカで構成された[共有イメージ ギャラリー](../shared-image-galleries.md) イメージを使用します。
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
+## <a name="prerequisites"></a>前提条件
 
-Sysprep はすべての個人アカウント情報とセキュリティ情報を削除して、マシンをイメージとして使用できるように準備します。 Sysprep については、[Sysprep の概要](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)を参照してください。
-
-コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳細については、「[サーバーの役割の Sysprep サポート](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)」と「[サポートされていないシナリオ](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)」を参照してください。 
-
-> [!IMPORTANT]
-> VM で Sysprep を実行すると、その VM は *一般化されている* と見なされ、再起動できなくなります。 VM の一般化プロセスは元に戻せません。 元の VM の機能を保持する場合は、[VM のコピー](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)を作成し、そのコピーを一般化してください。 
->
->Sysprep では、ドライブを完全に復号化する必要があります。 VM で暗号化を有効にしている場合は、Sysprep を実行する前に Azure からの暗号化を無効にしてください。 
->
->PowerShell で Azure Disk Encryption を無効にするには、最初に Disable-AzVMDiskEncryption、次に Remove-AzVMDiskEncryptionExtension を使用します。 暗号化を無効にする前に Remove-AzVMDiskEncryptionExtension を実行すると、失敗します。 高レベルのコマンドでは、VM 内からディスクが復号化されるだけでなく、VM の外部で、重要なプラットフォーム レベルの暗号化の設定と VM に関連する拡張機能の設定が更新されます。 これらの設定が整合していないと、プラットフォームで暗号化の状態を報告することも、VM を適切にプロビジョニングすることもできません。
->
-> 初めて VHD を Azure に仮想ハード ディスク (VHD) にアップロードする前に Sysprep を実行する予定の場合は、[VM の準備](prepare-for-upload-vhd-image.md)ができていることを確認してください。  
-> 
-> 
-
-Windows VM を一般化するには、次の手順に従います。
-
-1. Windows VM にサインインします。
-   
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。 
-
-3. panther ディレクトリ (C:\Windows\Panther) を削除します。 次に、ディレクトリを %windir%\system32\sysprep に変更して、`sysprep.exe` を実行します。
-   
-4. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスを選択します。
-   
-5. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
-   
-6. **[OK]** を選択します。
-   
-    ![Sysprep の開始](./media/upload-generalized-managed/sysprepgeneral.png)
-
-6. Sysprep は完了時に VM をシャットダウンします。 VM は再起動しないでください。
-
-> [!TIP]
-> **オプション**[DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) を使用してイメージを最適化し、VM の初回起動時間を短縮します。
->
-> イメージを最適化するには、Windows エクスプローラーで VHD をダブルクリックして VHD をマウントし、`/optimize-image` パラメーターを指定して DISM を実行します。
->
-> ```cmd
-> DISM /image:D:\ /optimize-image /boot
-> ```
-> ここで D: はマウントされた VHD のパスです。
->
-> `DISM /optimize-image` の実行は、VHD に行う最後の変更にします。 デプロイの前に VHD に変更を加えた場合は、`DISM /optimize-image` をもう一度実行する必要があります。
+イメージを作成するには、[一般化された](../generalize.md) VM が必要です。
 
 ## <a name="create-a-managed-image-in-the-portal"></a>ポータルで管理対象イメージを作成する 
 

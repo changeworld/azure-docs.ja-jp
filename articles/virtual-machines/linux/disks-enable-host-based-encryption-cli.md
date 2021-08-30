@@ -2,18 +2,18 @@
 title: ホストでの暗号化を使用してエンドツーエンドの暗号化を有効にする - Azure CLI - マネージド ディスク
 description: ホストでの暗号化を使用して、Azure マネージド ディスクでエンドツーエンドの暗号化を有効にします。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 10fe02b0deb505fcedc6fc3119150709b6613b04
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 752fef23b0acd2fe4722fb89720d6312699e49cf
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673025"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358347"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Azure CLI を使用して、ホストでの暗号化を使用したエンドツーエンドの暗号化を有効にする
 
@@ -124,6 +124,20 @@ az vm show -n $vmName \
 --query [securityProfile.encryptionAtHost] -o tsv
 ```
 
+
+### <a name="update-a-vm-to-disable-encryption-at-host"></a>VM を更新してホストでの暗号化を無効にします。 
+
+ホストでの暗号化を無効にするには、あらかじめ VM の割り当てを解除しておく必要があります。
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=false
+```
+
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>カスタマー マネージド キーを使用して、ホストでの暗号化が有効な仮想マシン スケール セットを作成します。 
 
 前に作成した DiskEncryptionSet のリソース URI を使用して、マネージド ディスクを持つ仮想マシン スケール セットを作成し、カスタマー マネージド キーを使用して、OS ディスクとデータ ディスクのキャッシュを暗号化します。 一時ディスクは、プラットフォーム マネージド キーを使用して暗号化されます。 
@@ -191,6 +205,19 @@ vmssName=yourVMName
 az vmss show -n $vmssName \
 -g $rgName \
 --query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-disable-encryption-at-host"></a>仮想マシン スケール セットを更新し、ホストでの暗号化を無効にします。 
+
+ホストでの暗号化は仮想マシン スケール セットで無効にできますが、それが作用するのは、ホストでの暗号化を無効にした後で作成した VM のみです。 既存の VM については、VM の割り当てを解除し、[ホストでの暗号化をその個々の VM で無効](#update-a-vm-to-disable-encryption-at-host)にした後、再度 VM を割り当てる必要があります。
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=false
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>サポートされている VM のサイズを確認する

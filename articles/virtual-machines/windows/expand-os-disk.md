@@ -17,12 +17,12 @@ ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7bbea4fabcfce3a8f73045ab1f5071b7df0855b8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 74ce4cf27f8a8be8fd86bad3e3f03589cf3640ea
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670342"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113600534"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
 
@@ -57,7 +57,7 @@ ms.locfileid: "110670342"
 5. **[Size + performance]\(サイズおよびパフォーマンス\)** で、必要なディスク サイズを選択します。
    
    > [!WARNING]
-   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、2,048 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 2,048 GB の領域のみです。)
+   > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、4,095 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 4,095 GB の領域のみです。)
    > 
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="ディスク サイズが選択された[Size + performance]\(サイズおよびパフォーマンス\) ペインを示すスクリーンショット。":::
@@ -105,7 +105,7 @@ ms.locfileid: "110670342"
     Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
     ```   
     > [!WARNING]
-    > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、2,048 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 2,048 GB の領域のみです。)
+    > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、4,095 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 4,095 GB の領域のみです。)
     > 
          
 6. VM の更新には数秒かかる可能性があります。 コマンドの実行が完了したら、VM を再起動します。

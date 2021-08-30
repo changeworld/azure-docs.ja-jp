@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 9df1304cd127f15d948fba3e498f6fbfbce30557
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e4e4a7169d7550523fb2e712560d1bdf86197558
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701000"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679136"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -49,7 +49,7 @@ DSVM は Azure サービスと密接に連携します。 Azure 上の Azure Syn
 
 
 ## <a name="use-jupyter-notebooks"></a>Jupyter Notebook を使用する
-Jupyter Notebook には、データ探索とモデリング用のブラウザーベースの IDE が用意されています。 Jupyter Notebook では Python 2、Python 3、R (オープン ソースおよび Microsoft R Server の両方) のいずれを使用することもできます。
+Jupyter Notebook には、データ探索とモデリング用のブラウザーベースの IDE が用意されています。 Jupyter Notebook では Python 2、Python 3、R のいずれも使用することができます。
 
 Jupyter Notebook を開始するには、 **[スタート]** メニューまたはデスクトップで **[Jupyter Notebook]** アイコンを選択します。 また、DSVM コマンド プロンプトで既存の Notebook が配置されているディレクトリ、または新しいノートブックを作成するディレクトリから、コマンド ```jupyter notebook``` を実行することもできます。  
 
@@ -68,6 +68,10 @@ Jupyter を開始すると、DSVM にあらかじめパッケージ化されて�
 ノートブックを開いているときは、ご自分で選んだライブラリを使用して、ご利用のデータの探索、モデルの構築、モデルのテストを行うことができます。
 
 ## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Microsoft Machine Learning Server を使用してデータを探索し、モデルを開発する
+
+> [!NOTE]
+> Machine Learning Server スタンドアロンのサポートは 2021 年 7 月 1 日に終了します。 これは 6 月 30 日以降、DSVM イメージから削除されます。 既存のデプロイは引き続きソフトウェアにアクセスできますが、サポート終了日に達したため、2021 年 7 月 1 日以降、サポートはなくなります。
+
 R や Python などの言語を使用して、DSVM 上で直接データ分析を実行できます。
 
 R の場合は、スタート メニューまたはデスクトップにある RStudio などの IDE を使用できます。 または、R Tools for Visual Studio を使用することもできます。 Microsoft は、オープン ソース CRAN R の上に追加のライブラリを提供することで、スケーラブルな分析を可能にし、並列チャンク分析で許容されたメモリ サイズを超える大きなデータを分析する機能を有効にしました。 
@@ -254,7 +258,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse Analytics とデータベース
 Azure Synapse Analytics は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
 
-Azure Synapse Analytics をプロビジョニングするには、こちらの[記事](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)に記載されている手順に従ってください。 Azure Synapse Analytics をプロビジョニングした後、[こちらのチュートリアル](../team-data-science-process/sqldw-walkthrough.md)を利用して、Azure Synapse Analytics 内のデータを使用してデータのアップロード、探索、およびモデリングを行うことができます。
+Azure Synapse Analytics をプロビジョニングするには、こちらの[記事](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)に記載されている手順に従ってください。 Azure Synapse Analytics をプロビジョニングした後、[こちらのチュートリアル](/azure/architecture/data-science-process/sqldw-walkthrough)を利用して、Azure Synapse Analytics 内のデータを使用してデータのアップロード、探索、およびモデリングを行うことができます。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB は、クラウドにおける NoSQL データベースです。 それを使用すれば、JSON などのドキュメントを操作することや、そうしたドキュメントを格納してクエリを実行することができます。

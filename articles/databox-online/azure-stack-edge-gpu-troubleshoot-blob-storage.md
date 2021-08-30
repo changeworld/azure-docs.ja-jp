@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 06/10/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: b54fcdc25e6278aa4e98eebde948b5f67525d080
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 2a77d4992d5ee2e505f9e3f29112d45c3776d8d2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111987856"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438764"
 ---
 # <a name="troubleshoot-blob-storage-issues-for-an-azure-stack-edge-device"></a>Azure Stack Edge デバイスの BLOB ストレージに関する問題のトラブルシューティング 
 
@@ -40,7 +40,7 @@ ms.locfileid: "111987856"
 |The value for one of the HTTP headers is not in the correct format. (いずれかの HTTP ヘッダーの値の形式が正しくありません。)|インストールしたバージョンの Python 用 Microsoft Azure Storage ライブラリが Azure Stack Edge でサポートされていません。 サポートされているライブラリ バージョンについては、「 [サポートされている Azure クライアント ライブラリ](azure-stack-edge-gpu-system-requirements-rest.md#supported-azure-client-libraries)」を参照してください。|
 |… [SSL:CERTIFICATE_VERIFY_FAILED] …| Python を実行する前に、REQUESTS_CA_BUNDLE 環境変数を Base64 でエンコードされた SSL 証明書ファイルのパスに設定してください ([証明書のダウンロード](azure-stack-edge-gpu-deploy-configure-certificates.md#generate-device-certificates)方法を参照してください)。 たとえば、以下を実行します。<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>あるいは、証明書をシステムの証明書ストアに追加し、この環境変数をそのストアのパスに設定します。 たとえば、Ubuntu 上では以下を実行します。<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`|
 |The connection times out. (接続がタイムアウトになりました。)|ご自身のデバイスにサインインし、ロックが解除されているかどうかを確認します。 デバイスは再起動されるたびに、ユーザーがサインインするまでロックされた状態になります。|
-
+|ストレージ アカウントを作成または更新できませんでした。 ストレージ アカウントのアクセス キーが有効であることを確認してください。 必要に応じて、デバイスのキーを更新します。|ストレージ アカウント キーを同期します。 [ここ](azure-stack-edge-gpu-manage-storage-accounts.md#sync-storage-keys)に記載されている手順に従います。|
 
 ## <a name="next-steps"></a>次のステップ
 

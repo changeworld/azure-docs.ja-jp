@@ -3,18 +3,32 @@ title: Azure Automation マネージド ID の問題のトラブルシューテ�
 description: この記事では、Automation アカウントでマネージド ID を使用した場合の問題のトラブルシューティングと解決方法について説明します。
 services: automation
 ms.subservice: ''
-ms.date: 04/28/2021
+ms.date: 06/28/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 719b20190194779b834eb3de996c0920d50ad313
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 89d3785ef527eebc822eefbbae2c887dd40108ee
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787356"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687499"
 ---
 # <a name="troubleshoot-azure-automation-managed-identity-issues-preview"></a>Azure Automation マネージド ID の問題のトラブルシューティング (プレビュー)
 
 この記事では、Automation アカウントでマネージド ID を使用する際に発生する可能性がある問題の解決方法について説明します。 Automation アカウントでのマネージド ID の使用に関する一般的な情報については、[Azure Automation アカウントの認証の概要](../automation-security-overview.md#managed-identities-preview)に関する記事をご覧ください。
+
+## <a name="scenario-fail-to-get-msi-token-for-account"></a>シナリオ: アカウントの MSI トークンを取得できません
+
+### <a name="issue"></a>問題
+
+Automation アカウントでユーザー割り当てマネージド ID を操作すると、`Failed to get MSI token for account a123456b-1234-12a3-123a-aa123456aa0b` のようなエラーが表示されます。
+
+### <a name="cause"></a>原因
+
+Automation アカウントのシステム割り当てマネージド ID を有効にする前に、ユーザー割り当てマネージド ID を使用する。
+
+### <a name="resolution"></a>解決方法
+
+自分の Automation アカウント用のシステム割り当てマネージド ID を有効にします。 その後、ユーザー割り当てマネージド ID を使用します。  
 
 ## <a name="scenario-attempt-to-use-managed-identity-with-automation-account-fails"></a>シナリオ: Automation アカウントでマネージド ID を使用しようとすると失敗する
 

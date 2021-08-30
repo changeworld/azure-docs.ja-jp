@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 625f77a6d9dbeaf612df884434ab39b943587791
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 7f8031f74845e957468ac8f47b7d4661c0f7ce23
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103200"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108083"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard との提携
 この記事では、Azure DDoS Protection Standard によって可能になるパートナーの営業案件について説明します。 この記事は、プロダクト マネージャーと営業開発の担当者が投資の道筋を理解し、パートナーとなる価値提案を分析できるように設計されています。

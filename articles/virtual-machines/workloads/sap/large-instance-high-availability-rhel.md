@@ -6,19 +6,22 @@ ms.author: jaawasth
 ms.service: virtual-machines-sap
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: f7b6e6efbbd17655b4f68d79ac26ee34ae754a3b
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 3da8c2a0147136ad5da90489e4f8db511cad7378
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728448"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217451"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>SAP on RHEL のための Azure Large Instances の高可用性
 
 > [!NOTE]
 > この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
-この記事では、SAP HANA データベースのフェールオーバーが自動化されるように、RHEL 7.6 で Pacemaker クラスターを構成する方法について説明します。 このガイドの手順を完了するには、Linux、SAP HANA、Pacemaker についてよく理解している必要があります。
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
+この記事では、SAP HANA データベースのフェールオーバーが自動化されるように、RHEL 7 で Pacemaker クラスターを構成する方法について説明します。 このガイドの手順を完了するには、Linux、SAP HANA、Pacemaker についてよく理解している必要があります。
 
 次の表は、この記事全体で使用されるホスト名を示したものです。 この記事のコード ブロックでは、実行する必要のあるコマンドと、それらのコマンドの出力が示されています。 各コマンドで参照されているノードに注意してください。
 
@@ -136,6 +139,7 @@ ms.locfileid: "107728448"
 
 6. システムを更新する
     1. SBD デバイスのインストールを始める前に、まず、最新の更新プログラムをシステムにインストールします。
+    1. お客様は、「[RHEL 高可用性クラスターのサポート ポリシー - クラスターでの SAP HANA の管理](https://access.redhat.com/articles/3397471)」で説明されているように、resource-agents-sap-hana パッケージの 4.1.1-12.el7_6.26 以上がインストールされていることを確認する必要があります
     1. システムを完全に更新したくない場合は、推奨ではありませんが、少なくとも次のパッケージを更新してください。
         1. `resource-agents-sap-hana`
         1. `selinux-policy`
@@ -308,7 +312,7 @@ ms.locfileid: "107728448"
 ## <a name="sbd-configuration"></a>SBD の構成
 このセクションでは、SBD を構成する方法について説明します。 このセクションでは、この記事の冒頭で参照されている 2 つの同じホスト `sollabdsm35` と `sollabdsm36` を使用します。
 
-1.  iSCSI または FC ディスクを両方のノードで表示できることを確認します。 この例では、FC ベースの SBD デバイスを使用します。 SBD フェンスの詳細については、「[RHEL 高可用性クラスターの設計ガイダンス - SBD の考慮事項](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faccess.redhat.com%2Farticles%2F2941601&data=04%7C01%7Cralf.klahr%40microsoft.com%7Cd49d7a3e3871449cdecc08d8c77341f1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637478645171139432%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=c%2BUAC5gmgpFNWZCQFfiqcik8CH%2BmhH2ly5DsOV1%2FE5M%3D&reserved=0)」を参照してください。
+1.  iSCSI または FC ディスクを両方のノードで表示できることを確認します。 この例では、FC ベースの SBD デバイスを使用します。 SBD フェンスの詳細については、「[RHEL 高可用性クラスターの設計ガイダンス - SBD の考慮事項](https://access.redhat.com/articles/2941601)」および「[RHEL 高可用性クラスターのサポート ポリシー - sbd と fence_sbd](https://access.redhat.com/articles/2800691)」を参照してください
 2.  すべてのノードで LUN-ID が同じである必要があります。
   
 3.  SBD デバイスのマルチパスの状態を確認します。
@@ -641,7 +645,7 @@ ms.locfileid: "107728448"
 
 このセクションでは、HANA をクラスターに統合します。 このセクションでは、この記事の冒頭で参照されている 2 つの同じホスト `sollabdsm35` と `sollabdsm36` を使用します。
 
-HANA を統合するには 2 つのオプションがあります。 1 つ目のオプションは、セカンダリ システムを使用して QAS システムを実行できる、コストが最適化されたソリューションです。 この方法は、クラスター ソフトウェア、オペレーティング システム、または HANA の更新プログラムをテストするためのシステムが残らず、構成の更新によって PRD システムに予定外のダウンタイムが発生する可能性があるため、お勧めしません。 さらに、セカンダリ システムで PRD システムをアクティブ化する必要がある場合は、セカンダリ ノードで QAS をシャットダウンする必要があります。 2 つ目のオプションは、1 つのクラスターに QAS システムをインストールし、PRD に 2 つ目のクラスターを使用することです。 このオプションを使用すると、運用環境に移行する前にすべてのコンポーネントをテストすることもできます。 この記事では、2 つ目のオプションを構成する方法について説明します。
+既定のサポートされている方法は、データベースを直接切り替えることができるパフォーマンス最適化シナリオを作成することです。 このドキュメントのこちらでは、このシナリオについてのみ説明します。 この場合、QAS システム用に 1 つのクラスターをインストールし、PRD システム用に別のクラスターをインストールすることをお勧めします。 この場合のみ、運用環境に移行する前にすべてのコンポーネントをテストすることができます。
 
 
 * このプロセスは、次のページでの RHEL の説明のビルドです。
@@ -649,6 +653,12 @@ HANA を統合するには 2 つのオプションがあります。 1 つ目の
   * https://access.redhat.com/articles/3004101
 
  ### <a name="steps-to-follow-to-configure-hsr"></a>HSR を構成する手順
+
+ | **ログ レプリケーション モード**            | **説明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **メモリ内同期 (既定)** | メモリ内同期 (mode=syncmem) は、ログ書き込みが成功とみなされることを意味します。このとき、ログ エントリがプライマリのログ ボリュームに書き込まれ、メモリへのコピー後にログの送信がセカンダリ インスタンスに認識されます。 セカンダリ システムへの接続が失われると、プライマリ システムはトランザクション処理を継続し、変更をローカル ディスクにのみ書き込みます。セカンダリ システムが接続されている間にプライマリとセカンダリで同時に障害が発生するまたはセカンダリ システムが切断している間に引き継ぎが実行されると、データ損失が発生する可能性があります。 このオプションを使用すると、セカンダリ インスタンスのディスク入出力を待機する必要がないため、パフォーマンスは向上しますが、データ損失に対して脆弱になります。                                                                                                                                                                                                                                                                                                                     |
+| **Synchronous**                     | 同期 (mode=sync) は、ログ書き込みが成功とみなされることを意味します。このとき、ログ エントリはプライマリ インスタンスおよびセカンダリ インスタンスのログ ボリュームに書き込まれます。 セカンダリ システムへの接続が失われると、プライマリ システムはトランザクション処理を継続し、変更をローカル ディスクにのみ書き込みます。 このシナリオでは、セカンダリ システムが接続されている限り、データの損失は発生しません。 セカンダリ システムが切断している間に引き継ぎが実行されると、データ損失が発生する可能性があります。また、このレプリケーション モードは完全同期オプションを使用して実行できます。 これは、ログ バッファーがプライマリ インスタンスおよびセカンダリ インスタンスのログ ファイルに書き込まれた場合に、ログ書き込みが正常に行われることを意味します。 また、セカンダリ システムが切断されている場合 (たとえば、ネットワーク障害が原因で)、セカンダリ システムへの接続が再確立されるまで、プライマリ システムはトランザクション処理を中断します。このシナリオでは、データの損失は発生しません。 パラメーター \[system\_replication\]/enable\_full\_sync) を使用している場合のみ、システム レプリケーションに完全同期オプションを設定できます。 完全同期オプションを有効にする方法の詳細については、「システム レプリケーションで完全同期オプションを有効にする」を参照してください。                                                                                                                                                                                                                                                                                                              |
+| **非同期**                    | 非同期 (mode = async) は、プライマリシステムが redo ログ バッファーをセカンダリ システムに非同期で送信することを意味します。 プライマリ システムは、プライマリ システムのログ ファイルに書き込みが行われ、ネットワーク経由でセカンダリ システムに送信されたときに、トランザクションをコミットします。 セカンダリ システムからの確認は待機しません。 このオプションを使用すると、セカンダリ システムのログ I/O を待機する必要がないため、パフォーマンスが向上します。 セカンダリ システム上のすべてのサービスでのデータベースの一貫性が保証されます。 ただし、データ損失に対して脆弱になります。 データの変更は、引き継ぎ時に失われる可能性があります。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 1.  ノード 1 (プライマリ) で以下のことを行います。
     1. データベースのログ モードが通常に設定されていることを確認します。
@@ -1052,7 +1062,11 @@ global.ini
 3.  クローンされた SAPHanaTopology リソースを作成します。
     SAPHanaTopology リソースは、各ノードの SAP HANA システム レプリケーションの状態と構成を収集しています。 SAPHanaTopology では次の属性を構成する必要があります。
        ```
-       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1    interleave=true
+       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 op start timeout=600 \
+       op stop timeout=300 \
+       op monitor interval=10 timeout=600 \
+       clone clone-max=2 clone-node-max=1 interleave=true
+
        ```
 
     | 属性名 | 説明  |
@@ -1064,26 +1078,15 @@ global.ini
        ```
        pcs resource show SAPHanaTopology_HR2_00
    
-       InstanceNumber 2-digit SAP Instance identifier.
-       pcs resource show SAPHanaTopology_HR2_00-clone
-   
        Clone: SAPHanaTopology_HR2_00-clone
-   
         Meta Attrs: clone-max=2 clone-node-max=1 interleave=true
-   
-        Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat
-       type=SAPHanaTopology)
-   
-        Attributes: InstanceNumber=00 SID=HR2
-   
-        Operations: monitor interval=60 timeout=60
-       (SAPHanaTopology_HR2_00-monitor-interval-60)
-   
-        start interval=0s timeout=180
-       (SAPHanaTopology_HR2_00-start-interval-0s)
-   
-        stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
-   
+        Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat type=SAPHanaTopology)
+         Attributes: InstanceNumber=00 SID=HR2
+         Operations: monitor interval=60 timeout=60 (SAPHanaTopology_HR2_00-monitor-interval-60)
+                     start interval=0s timeout=180 (SAPHanaTopology_HR2_00-start-interval-0s)
+                     stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
+       
+         
        ```
 
 4.  プライマリとセカンダリの SAPHana リソースを作成します。
@@ -1100,39 +1103,32 @@ global.ini
 
 5.  HANA リソースを作成します。
     ```
-    pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200   AUTOMATED_REGISTER=true primary notify=true clone-max=2 clone-node-max=1 interleave=true
+    pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=true op start timeout=3600 \
+    op stop timeout=3600 \
+    op monitor interval=61 role="Slave" timeout=700 \
+    op monitor interval=59 role="Master" timeout=700 \
+    op promote timeout=3600 \
+    op demote timeout=3600 \
+    master meta notify=true clone-max=2 clone-node-max=1 interleave=true
+
 
     pcs resource show SAPHana_HR2_00-primary
 
 
     Primary: SAPHana_HR2_00-primary
-
-        Meta Attrs: clone-max=2 clone-node-max=1 interleave=true notify=true
-
-        Resource: SAPHana_HR2_00 (class=ocf provider=heartbeat type=SAPHana)
-
-        Attributes: AUTOMATED_REGISTER=false DUPLICATE_PRIMARY_TIMEOUT=7200
-    InstanceNumber=00 PREFER_SITE_TAKEOVER=true SID=HR2
-
-        Operations: demote interval=0s timeout=320
-    (SAPHana_HR2_00-demote-interval-0s)
-
-        monitor interval=120 timeout=60 (SAPHana_HR2_00-monitor-interval-120)
-
-        monitor interval=121 role=Secondary timeout=60
-    (SAPHana_HR2_00-monitor-
-
-        interval-121)
-
-        monitor interval=119 role=Primary timeout=60 (SAPHana_HR2_00-monitor-
-
-        interval-119)
-
-        promote interval=0s timeout=320 (SAPHana_HR2_00-promote-interval-0s)
-
-        start interval=0s timeout=180 (SAPHana_HR2_00-start-interval-0s)
-
-        stop interval=0s timeout=240 (SAPHana_HR2_00-stop-interval-0s)
+     Meta Attrs: clone-max=2 clone-node-max=1 interleave=true notify=true
+     Resource: SAPHana_HR2_00 (class=ocf provider=heartbeat type=SAPHana)
+      Attributes: AUTOMATED_REGISTER=false DUPLICATE_PRIMARY_TIMEOUT=7200 InstanceNumber=00 PREFER_SITE_TAKEOVER=true SID=HR2
+      Operations: demote interval=0s timeout=320 (SAPHana_HR2_00-demote-interval-0s)
+                  monitor interval=120 timeout=60 (SAPHana_HR2_00-monitor-interval-120)
+                  monitor interval=121 role=Secondary timeout=60 (SAPHana_HR2_00-monitor-
+                  interval-121)
+                  monitor interval=119 role=Primary timeout=60 (SAPHana_HR2_00-monitor-
+                  interval-119)
+                  promote interval=0s timeout=320 (SAPHana_HR2_00-promote-interval-0s)
+                  start interval=0s timeout=180 (SAPHana_HR2_00-start-interval-0s)
+                  stop interval=0s timeout=240 (SAPHana_HR2_00-stop-interval-0s)
+   
 
     
     
@@ -1318,3 +1314,10 @@ pcs cluster node clear node1
 ```
 
 自動登録を優先するかどうかは顧客のシナリオによって異なります。 運用チームにとっては、引き継ぎ後にノードが自動的に再登録される方が簡単です。 ただし、最初に追加のテストを実行して、すべてが期待どおりに動作することを確認するために、ノードを手動で登録することもできます。
+
+##  <a name="references"></a>参照文献
+
+1. [pacemaker クラスターでの自動 SAP HANA システム レプリケーション (スケールアップ)](https://access.redhat.com/articles/3397471)
+2. [RHEL 高可用性クラスターのサポート ポリシ - クラスター内 SAP HANA の管理](https://access.redhat.com/articles/3397471)
+3. [Azure での RHELに対する Pacemaker の設定 - Azure 仮想マシン](high-availability-guide-rhel-pacemaker.md)
+4. [Azure portal を介した Azure HANA Large Instances の制御 - Azure 仮想マシン](hana-li-portal.md)

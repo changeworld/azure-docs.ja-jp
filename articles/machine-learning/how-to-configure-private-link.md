@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/10/2021
-ms.openlocfilehash: 9a8e4351b88c1b9c4f166dff71fe906177870d9a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 07/01/2021
+ms.openlocfilehash: 1c07e96a82814e59c635a592313e461d06a6fcc3
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984700"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217469"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用にプライベート エンドポイントを構成する
 
@@ -38,8 +38,6 @@ Azure Private Link では、プライベート エンドポイントを使用し
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
-
-* カスタマー マネージド キーでプライベート エンドポイントを有効にしたワークスペースを使用する場合は、サポート チケットを使用してこの機能を要求する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
 
 * プライベート エンドポイントを作成するには、既存の仮想ネットワークが必要です。 また、プライベート エンドポイントを追加する前に、[プライベート エンドポイントのネットワーク ポリシーを無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。
 
@@ -127,7 +125,7 @@ ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approv
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[機械学習のための Azure CLI 拡張機能 1.0 ](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) コマンドが用意されています。
+[機械学習のための Azure CLI 拡張機能 1.0 ](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint add](/cli/azure/ml(v1)/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) コマンドが用意されています。
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval --pe-vnet-name myvnet
@@ -164,7 +162,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[機械学習のための Azure CLI 拡張機能 1.0 ](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint delete](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) コマンドが用意されています。
+[機械学習のための Azure CLI 拡張機能 1.0 ](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint delete](/cli/azure/ml(v1)/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) コマンドが用意されています。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -186,7 +184,9 @@ Azure Virtual Machines について詳しくは、「[Virtual Machines のドキ
 状況によっては、VNet ではなくパブリック エンドポイント経由で、セキュリティで保護された自分のワークスペースにだれかが接続できるようにすることが必要になる場合があります。 プライベート エンドポイントを使用してワークスペースを構成した後で、必要に応じてワークスペースへのパブリック アクセスを有効にすることができます。 これを実行しても、プライベート エンドポイントは削除されません。 VNet の背後にあるコンポーネント間のすべての通信は、引き続きセキュリティで保護されます。 これにより、VNet 経由のプライベート アクセスに加えて、そのワークスペースのみへのパブリック アクセスが可能になります。
 
 > [!WARNING]
-> パブリック エンドポイント経由で接続する場合、スタジオの一部の機能がデータにアクセスできません。 この問題は、データが VNet の背後でセキュリティ保護されているサービスに格納されている場合に発生します。 たとえば、Azure Storage アカウントです。 また、コンピューティング インスタンス Jupyter/JupyterLab/RStudio の機能と実行中のノートブックが動作しないことにも注意してください。
+> パブリック エンドポイント経由で接続する場合:
+> * __Studio の一部の機能では、データへのアクセスに失敗します__。 この問題は、_データが VNet の背後でセキュリティ保護されているサービスに格納されている場合_ に発生します。 たとえば、Azure Storage アカウントです。 
+> * コンピューティング インスタンスでの Jupyter、JupyterLab、RStudio の使用 (ノートブックの実行を含む) は __サポートされていません__。
 
 プライベート エンドポイントが有効なワークスペースへのパブリック アクセスを有効にするには、次の手順を使用します。
 

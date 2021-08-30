@@ -2,13 +2,13 @@
 title: Azure Service Bus Explorer を使用して Service Bus に対してデータ操作を実行する (プレビュー)
 description: この記事では、ポータルベースの Azure Service Bus Explorer を使用して Azure Service Bus データにアクセスする方法について説明します。
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: 0b5274c492a1dfb2523c52d7aea2b7ebf8eae675
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 06/16/2021
+ms.openlocfilehash: 3b561586e77940eda5647aa0ab333ab88937463f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738958"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294357"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer を使用して Service Bus に対してデータ操作を実行する (プレビュー)
 
@@ -56,6 +56,9 @@ Azure Service Bus Explorer を使用するには、送信、ピーク、およ�
 
 :::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="SB Explorer の左側のナビゲーション メニュー":::
 
+> [!NOTE]
+> Service Bus Explorer では、最大 1 MB のメッセージ サイズがサポートされます。 
+
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>キューまたはトピックに対するメッセージの送信
 
 メッセージを **キュー** または **トピック** に送信するには、Service Bus Explorer の **_[送信]_** タブをクリックします。
@@ -100,7 +103,7 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 3. * **[キュー]** _ または _ *_[Deadletter]\(配信不能\)_** サブキューから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadLetter":::
 
 4. * **[受信]** _ ボタン、次に _ *_[はい]_** をクリックして、'受信して削除する' 操作を確定します。
 
@@ -124,7 +127,7 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 3. 次に、* **[キュー]** _ または _ *_[配信不能]_** サブキューのいずれかを選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadLetter":::
 
 4. ***[ピーク]*** ボタンをクリックします。 
 
@@ -139,7 +142,7 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 ### <a name="receiving-a-message-from-a-subscription"></a>サブスクリプションからのメッセージの受信
 
-キューの場合と同様に、***[受信]*** 操作はサブスクリプション (またはその配信不能エンティティ) に対して実行できます。 ただし、サブスクリプションはトピックのコンテキスト内に存在するため、受信操作は、Service Bus Explorer に移動して特定のトピックに対して実行されます。
+キューの場合と同様に、"***受信***" 操作をサブスクリプション (またはその配信不能エンティティ) に対して実行できます。 ただし、サブスクリプションはトピックのコンテキスト内に存在するため、受信操作は、Service Bus Explorer に移動して特定のトピックに対して実行されます。
 
 > [!IMPORTANT]
 > Service Bus Explorer によって実行される受信操作は、"***破壊的受信***" であることに注意してください。つまり、メッセージが Service Bus Explorer ツールに表示されると、キューから削除されます。
@@ -153,7 +156,7 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 2. * **[サブスクリプション]** _ または _ *_[DeadLetter]\(配信不能\)_** サブエンティティから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadLetter":::
 
 3. * **[受信]** _ ボタン、次に _ *_[はい]_** をクリックして、'受信して削除する' 操作を確定します。
 
@@ -163,7 +166,7 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 ### <a name="peeking-a-message-from-a-subscription"></a>サブスクリプションからのメッセージのピーク
 
-サブスクリプションまたは配信不能サブエンティティのメッセージを簡単に閲覧するには、サブスクリプションに対して ***ピーク*** 機能を利用する方法もあります。
+サブスクリプションまたは配信不能サブエンティティのメッセージを単に閲覧するには、サブスクリプションで "***ピーク***" 機能を利用できます。
 
 1. * **[ピーク]** _ タブをクリックし、ドロップダウン セレクターから特定の _ *_[サブスクリプション]_** を選択します。
 
@@ -171,7 +174,7 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 2. * **[サブスクリプション]** _ または _ *_[DeadLetter]\(配信不能\)_** サブエンティティから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadLetter":::
 
 3. ***[ピーク]*** ボタンをクリックします。
 
@@ -181,8 +184,8 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 > [!NOTE]
 >
-> ピークは破壊的な操作ではないため、メッセージはキューから削除 "**されません**"。
->
+> - ピークは破壊的な操作ではないため、メッセージはキューから削除 "**されません**"。
+
 
 ## <a name="next-steps"></a>次の手順
 

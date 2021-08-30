@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 821746856cb37781c8f6a2e58659ce7db43e1479
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 399ce5e8714eb6935e3c2eac06ed44b712a14e35
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609492"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741418"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -37,7 +37,7 @@ ms.locfileid: "105609492"
 1. **[保存]** を選択します。
 
 > [!NOTE]
-> すべての送信トラフィックを VNet にルーティングする場合は、統合サブネットに適用されている NSG と UDR に従います。 `WEBSITE_VNET_ROUTE_ALL`を `1` に設定しても、トラフィックを他の場所に送信するルートを指定しない限り、送信トラフィックはアプリのプロパティに一覧表示されているアドレスから送信されます。
+> すべての送信トラフィックを VNet にルーティングする場合は、統合サブネットに適用されている NSG と UDR に従います。 `WEBSITE_VNET_ROUTE_ALL`を `1` に設定した場合、トラフィックを他の場所に送信するルートを指定しない限り、パブリック IP アドレスへの送信トラフィックは、引き続きアプリのプロパティに一覧表示されているアドレスから送信されます。
 > 
 > リージョン VNet 統合では、ポート 25 を使用できません。
 

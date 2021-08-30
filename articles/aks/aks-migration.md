@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 03/25/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 39f1245883c7d296de5b2bad77f1558be9b49910
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c162a782965156545cf238f8f0489409433a0345
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887422"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724760"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -53,7 +53,7 @@ Azure Kubernetes Service (AKS) への正常な移行を計画して実行でき�
 Azure Migrate により、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データの評価と、Azure へのそれらの移行を行うための統合プラットフォームが提供されます。 AKS には、次のタスクで Azure Migrate を使用できます。
 
 * [ASP.NET アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-app-containerization-aspnet-kubernetes.md)
-* [Java Web アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-containerize-java-kubernetes.md)
+* [Java Web アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-app-containerization-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>Standard Load Balancer と Virtual Machine Scale Sets を使用する AKS
 
@@ -182,11 +182,13 @@ IP を使い切らないようにするには、[ネットワーク クォータ
 
 既存の継続的インテグレーション (CI) および継続的配置 (CD) パイプラインを使用して、既知の正常な構成を AKS にデプロイすることをお勧めします。 Azure Pipelines を使用すると、[アプリケーションをビルドして AKS にデプロイ](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)できます。 既存のデプロイ タスクを複製し、`kubeconfig` が新しい AKS クラスターを指すようにします。
 
-それが不可能な場合は、既存の Kubernetes クラスターからリソース定義をエクスポートし、AKS にそれを適用します。 オブジェクトをエクスポートするには `kubectl` を使用できます。
+それが不可能な場合は、既存の Kubernetes クラスターからリソース定義をエクスポートし、AKS にそれを適用します。 オブジェクトをエクスポートするには `kubectl` を使用できます。 次に例を示します。
 
 ```console
-kubectl get deployment -o=yaml --export > deployments.yaml
+kubectl get deployment -o yaml > deployments.yaml
 ```
+
+必ず出力を確認し、不要なライブ データ フィールドを削除してください。
 
 ### <a name="moving-existing-resources-to-another-region"></a>既存のリソースを別のリージョンに移動する
 

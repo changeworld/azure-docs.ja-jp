@@ -2,25 +2,25 @@
 title: アプリケーションの同意の管理と Azure Active Directory の同意要求の評価
 description: ユーザーの同意が無効または制限されている場合に同意要求を管理する方法、および Azure Active Directory でアプリケーションに対するテナント全体の管理者の同意要求を評価する方法について説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 4b533c7e12cf62ac633b4988774d7cff71b3e677
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7893a73650e90411aa45f35d014b394eab0ad67d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079267"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568516"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
 
-Microsoft は、エンドユーザーによるアプリケーションの同意を無効にすることを[お勧めします](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations)。 これにより、組織のセキュリティ チームと ID 管理者チームの意思決定プロセスが一元化されます。
+Microsoft では、[ユーザーの同意を制限](../../active-directory/manage-apps/configure-user-consent.md)して、検証された発行元からのアプリに対してのみユーザーに同意を許可すること、および選択したアクセス許可のみを許可することをお勧めします。 このポリシーを満たしていないアプリの場合、組織のセキュリティ チームと ID 管理者チームに意思決定プロセスが一元化されます。
 
 エンドユーザーの同意が無効または制限された後でも、ビジネス クリティカルなアプリケーションの使用を許可しながら、組織のセキュリティを確保するための重要な考慮事項がいくつかあります。 これらの手順は、サードパーティ製のアプリケーションにおける管理されていないアカウントの使用を制限しながら、組織のサポート チームと IT 管理者への影響を最小限に抑えるために不可欠です。
 
@@ -94,28 +94,34 @@ Microsoft は、エンドユーザーによるアプリケーションの同意�
 ## <a name="granting-consent-as-an-administrator"></a>管理者として同意を許可する
 
 ### <a name="granting-tenant-wide-admin-consent"></a>テナント全体の管理者の同意を許可する
+
 テナント全体の管理者の同意を Azure portal、Azure AD PowerShell、または同意プロンプト自体から許可する手順については、「[アプリケーションに対してテナント全体の管理者の同意を許可する](grant-admin-consent.md)」を参照してください。
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>特定のユーザーに代わって同意を許可する
+
 管理者は、組織全体に同意を許可するのではなく、[Microsoft Graph API](/graph/use-the-api) を使用して、1 人のユーザーに代わって委任されたアクセス許可に同意を許可することもできます。 詳細については、「[ユーザーの代わりにアクセスを取得](/graph/auth-v2-user)」を参照してください。
 
 ## <a name="limiting-user-access-to-applications"></a>アプリケーションへのユーザー アクセスを制限する
+
 テナント全体の管理者の同意が許可されている場合でも、ユーザーのアプリケーションへのアクセスは制限される可能性があります。 アプリケーションへのユーザー割り当てを要求する方法の詳細については、[ユーザーとグループを割り当てる方法](./assign-user-or-group-access-portal.md)に関する記事を参照してください。
 
 その他の複雑なシナリオの処理方法などについての詳細な概要については、[Azure AD を使用したアプリケーション アクセス管理](what-is-access-management.md)に関する記事を参照してください。
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>すべてのアプリケーションに対して今後のユーザーの同意操作をすべて無効にする
+
 ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、同意する理由または同意しない理由の詳細については、「[ユーザーおよび管理者の同意について](../develop/howto-convert-app-to-be-multi-tenant.md)」をご覧ください。
 
 ディレクトリ全体で今後のユーザーの同意動作をすべて無効にするには、次の手順に従います。
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者** としてサインインします。
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
-4.  ナビゲーション メニューで **[ユーザーとグループ]** を選択します。
-5.  **[ユーザー設定]** を選択します。
-6.  **[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** トグルを **[いいえ]** に設定し、 **[保存]** をクリックして、今後のすべてのユーザーの同意操作を無効にします。
+
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者** としてサインインします。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
+4. ナビゲーション メニューで **[ユーザーとグループ]** を選択します。
+5. **[ユーザー設定]** を選択します。
+6. **[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** トグルを **[いいえ]** に設定し、 **[保存]** をクリックして、今後のすべてのユーザーの同意操作を無効にします。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
 * [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 * [Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する](configure-user-consent.md)

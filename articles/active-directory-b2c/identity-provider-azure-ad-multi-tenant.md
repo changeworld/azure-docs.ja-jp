@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 06/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 56a2eff6a39f879de4e9d968eb470243014cb430
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 474bb5582011c9e701a188f227a54238a9f19b57
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982036"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285573"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -38,7 +38,7 @@ ms.locfileid: "111982036"
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
-## <a name="register-an-application"></a>アプリケーションを登録する
+## <a name="register-an-azure-ad-app"></a>Azure AD アプリの登録
 
 Azure Active Directory B2C (Azure AD B2C) で Azure AD アカウントを持つユーザーのサインインを有効にするには、[Azure portal](https://portal.azure.com) でアプリケーションを作成する必要があります。 詳細については、[Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)方法に関するページを参照してください。
 
@@ -63,7 +63,7 @@ Azure Active Directory B2C (Azure AD B2C) で Azure AD アカウントを持つ�
 1. **[Certificates & secrets]\(証明書とシークレット\)** を選択してから、 **[New client secret]\(新しいクライアント シークレット\)** を選択します。
 1. シークレットの **説明** を入力し、有効期限を選択して、 **[追加]** を選択します。 後の手順で使用するために、シークレットの **値** を記録しておきます。
 
-## <a name="configuring-optional-claims"></a>省略可能な要求の構成
+### <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
 Azure AD から `family_name` および `given_name` 要求を取得する場合は、Azure portal UI またはアプリケーション マニフェストでアプリケーションの省略可能な要求を構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
 
@@ -75,6 +75,10 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[トークンの種類]** で、 **[ID]** を選択します。
 1. 追加する省略可能な要求 (`family_name` と `given_name`) を選択します。
 1. **[追加]** をクリックします。
+
+## <a name="optional-verify-your-app-authenticity"></a>[省略可能] アプリの信頼性を確認する
+
+[発行元の確認](../active-directory/develop/publisher-verification-overview.md)により、ユーザーは、[登録](#register-an-azure-ad-app)したアプリの信頼性を把握できます。 検証済みアプリは、アプリの発行元が、Microsoft Partner Network (MPN) を使用して ID を[検証](/partner-center/verification-responses)したことを意味します。 [アプリを発行者確認済みとしてマークする](../active-directory/develop/mark-app-as-publisher-verified.md)方法についてご確認ください。 
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
@@ -201,8 +205,6 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 ## <a name="next-steps"></a>次のステップ
 
-カスタム ポリシーを操作する場合、開発過程でポリシーのトラブルシューティングを行っているときに、追加情報が必要になることがあります。
-
-問題の診断に役立てるために、ポリシーを一時的に "開発者モード" にして、Azure Application Insights を使用してログを収集できます。 その方法については、[Azure Active Directory B2C: ログの収集](troubleshoot-with-application-insights.md)に関するページを参照してください。
+[Azure AD トークンをアプリケーションに渡す](idp-pass-through-user-flow.md)方法について学習します。
 
 ::: zone-end

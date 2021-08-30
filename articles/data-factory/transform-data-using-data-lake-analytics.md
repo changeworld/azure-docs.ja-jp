@@ -1,18 +1,20 @@
 ---
 title: U-SQL スクリプトを使用してデータを変換する
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Lake Analytics コンピューティング サービスで、U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 08/01/2018
-ms.openlocfilehash: 94b584f0bea01754a4e955d1418a7a9a2e9aeace
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abb3d151e943dd539fe7c2e349b662412ab24f7c
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373914"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271973"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを処理する 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -46,7 +48,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 * アプリケーション キー 
 * テナント ID
 
-[ユーザー追加ウィザード](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user)を使用して、Azure Data Lake Anatlyics へのサービス プリンシパル アクセス許可を付与します。
+[ユーザー追加ウィザード](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user)を使用して、Azure Data Lake Analytics へのサービス プリンシパル アクセス許可を付与します。
 
 次のプロパティを指定して、サービス プリンシパル認証を使います。
 
@@ -193,5 +195,5 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
+* [ML Studio (classic) Batch Execution アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

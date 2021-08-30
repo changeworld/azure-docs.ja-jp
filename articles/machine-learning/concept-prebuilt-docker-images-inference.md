@@ -11,19 +11,19 @@ ms.date: 05/25/2021
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 3bc18e02345915c5446895a9acc5a33bd0b33431
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0548b309f84f46d7e1a8c904115167d59cc6f10e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746809"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417399"
 ---
 # <a name="prebuilt-docker-images-for-inference-preview"></a>推論用の事前構築済み Docker イメージ (プレビュー)
 
 推論用の事前構築済みの Docker コンテナー イメージ [(プレビュー)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) は、Azure Machine Learning でモデルをデプロイする際に使用します。  これらのイメージは、一般的な機械学習フレームワークと Python パッケージを使用して事前に構築されています。 また、次のいずれかの方法を使用して、パッケージを拡張して他のパッケージを追加することもできます。
 
 * [Python パッケージを追加する](how-to-prebuilt-docker-images-inference-python-extensibility.md)。
-* [新しい Dockerfile のベースとして事前構築済みのパッケージを使用する](how-to-extend-prebuilt-docker-image-inference.md)。 この方法を使用すると、**Python パッケージと apt パッケージ** の両方をインストールできます。
+* [新しい Dockerfile のベースとして事前構築済みの推論イメージを使用する](how-to-extend-prebuilt-docker-image-inference.md)。 この方法を使用すると、**Python パッケージと apt パッケージ** の両方をインストールできます。
 
 ## <a name="why-should-i-use-prebuilt-images"></a>事前構築済みのイメージを使用する理由
 
@@ -31,7 +31,6 @@ ms.locfileid: "111746809"
 * モデル デプロイの成功率が向上する。
 * モデル デプロイ時に不要なイメージのビルドを回避できる。
 * イメージまたはコンテナーに必要な依存関係とアクセス権のみが付与される。 
-* デプロイでの推論プロセスは、非ルートとして実行される。
 
 ## <a name="list-of-prebuilt-docker-images-for-inference"></a>推論用の事前構築済み Docker イメージの一覧 
 

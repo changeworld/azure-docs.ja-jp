@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 832cc1d4f9ec3cec4ada6e964e3ab2f6f023dd41
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 95f69f04ec1aa0fb0c5588647709d8d938ad2a53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554805"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441374"
 ---
 ### <a name="neural-and-standard-voices"></a>ニューラルと標準の音声
 
@@ -77,8 +77,8 @@ ms.locfileid: "106554805"
 |---|---|
 | 音声モデル ホスティング | 米国東部、米国西部 2、米国中南部、東南アジア、英国南部、西ヨーロッパ、オーストラリア東部 |
 | リアルタイムの文字 | 米国東部、米国西部 2、米国中南部、東南アジア、英国南部、西ヨーロッパ、オーストラリア東部 |
-| 文字数 (長い音声出力) | 米国東部、西ヨーロッパ、英国南部、東南アジア、インド中部 |
-| カスタム ニューラル トレーニング | 米国東部、英国南部 |
+| 文字数 (長い音声出力) | 米国東部、西ヨーロッパ、東南アジア、英国南部、インド中部 |
+| カスタム ニューラル トレーニング | 米国東部、東南アジア、英国南部 |
 
 ### <a name="long-audio-api"></a>Long Audio API
 

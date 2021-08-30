@@ -4,12 +4,14 @@ description: Azure Site Recovery を使用して、Azure への Hyper-V VM の�
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
-ms.openlocfilehash: b36711e9249764df5d170fa955b8d72d1a2656f1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+author: Sharmistha-Rai
+ms.author: sharrai
+ms.openlocfilehash: 7c64aee5177adf7ee1d5f5d47ba80c5e25a53002
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960857"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444799"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -25,9 +27,12 @@ ms.locfileid: "111960857"
 Hyper-V (Virtual Machine Manager あり) <br> <br>| System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](hyper-v-vmm-disaster-recovery.md)を参照してください。
 Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって管理されていない Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。
 
+> [!NOTE]
+> Azure Backup と Azure Site Recovery の両方を同じ Hyper-V ホストに構成すると、レプリケーションに問題が生じる可能性があり、サポートされていません。
+
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
 
-**[サーバー]** | **必要条件** | **詳細**
+**サーバー** | **必要条件** | **詳細**
 --- | --- | ---
 Hyper-V (Virtual Machine Manager なしで実行) |  Windows Server 2019、Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2 <br/><br/> **注:** これらのオペレーティング システムの Server コア インストールもサポートされています。 | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。
 Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 <br/><br/> **注:** これらのオペレーティング システムの Server コア インストールもサポートされています。  | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。
@@ -92,8 +97,8 @@ Azure 仮想ネットワーク サービス エンドポイント<br/> (Azure St
 ## <a name="hyper-v-host-storage"></a>Hyper-V ホスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
---- | --- | --- 
-NFS | N/A | N/A
+--- | --- | ---
+NFS | NA | NA
 SMB 3.0 | はい | はい
 SAN (ISCSI) | はい | はい
 マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | はい | はい
@@ -102,13 +107,13 @@ SAN (ISCSI) | はい | はい
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-VMDK | N/A | N/A
+VMDK | NA | NA
 VHD/VHDX | はい | はい
 Generation 2 VM | はい | はい
 EFI/UEFI<br></br>Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。| はい | はい
 共有クラスター ディスク | いいえ | いいえ
 暗号化されたディスク | いいえ | いいえ
-NFS | N/A | N/A
+NFS | NA | NA
 SMB 3.0 | いいえ | いいえ
 RDM | NA | NA
 1 TB より大きいディスク | はい、最大 4,095 GB | はい、最大 4,095 GB
@@ -148,6 +153,7 @@ Import/Export サービス | いいえ | いいえ
 **機能** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
 可用性セット | はい | はい
+可用性ゾーン | いいえ | いいえ
 ハブ | はい | はい  
 マネージド ディスク | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。 | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。
 
@@ -187,7 +193,7 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 デプロイがこの記事の設定と互換性を持たせるには、最新のプロバイダーとエージェントのバージョンを実行してください。
 
 **名前** | **説明** | **詳細**
---- | --- | --- 
+--- | --- | ---
 Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| [最新の機能と修正](./site-recovery-whats-new.md)
 Microsoft Azure Recovery Services エージェント | Hyper-V VM と Azure の間のレプリケーションを調整します<br/><br/> オンプレミスの Hyper-V サーバーにインストールされます (Virtual Machine Manager の有無にかかわらず) | ポータルから入手可能な最新のエージェント
 

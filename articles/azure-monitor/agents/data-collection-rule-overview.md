@@ -6,20 +6,20 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
 ms.custom: references_region
-ms.openlocfilehash: e7da31ec80153fe2d2bd6923850a4342886fa9be
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 83ad2245ec010bd91907ae27e077f86b4d6b1d5e
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495572"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122406"
 ---
-# <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor のデータ収集ルール (プレビュー)
+# <a name="data-collection-rules-in-azure-monitor"></a>Azure Monitor のデータ収集ルール
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータを送信または格納する場所を指定します。 この記事では、データ収集ルールの概要 (その内容と構造、それらを作成して使用する方法など) について説明します。
 
 ## <a name="input-sources"></a>入力ソース
 データ収集ルールでは現在、次の入力ソースがサポートされています。
 
-- Azure Monitor エージェントを使用した Azure 仮想マシン。 [Azure Monitor エージェント用のデータ コレクションの構成 (プレビュー)](../agents/data-collection-rule-azure-monitor-agent.md) に関する記事をご覧ください。
+- 仮想マシン、仮想マシン スケール セット、Azure Arc for servers で実行される Azure Monitor エージェント。 [Azure Monitor エージェント用のデータ コレクションの構成 (プレビュー)](../agents/data-collection-rule-azure-monitor-agent.md) に関する記事をご覧ください。
 
 
 
@@ -30,8 +30,10 @@ ms.locfileid: "110495572"
 |:---|:---|
 | データ ソース | 独自の形式と方法でデータを公開する、監視データの一意のソース。 データ ソースの例としては、Windows イベント ログ、パフォーマンス カウンター、syslog などがあります。 以下で説明するように、各データ ソースは特定のデータ ソースの種類に適合します。 |
 | ストリーム | 1 つの種類として変換およびスキーマ化される 1 組のデータ ソースを記述する一意のハンドル。 各データ ソースにはストリームが 1 つ以上必要であり、1 つのストリームが複数のデータ ソースで使用される場合もあります。 1 つのストリーム内のすべてのデータ ソースで、1 つの共通スキーマが共有されます。 同じ Log Analytics ワークスペース内の複数のテーブルに特定のデータ ソースを送信する場合などは、複数のストリームを使用します。 |
-| 変換先 | データの送信先となる 1 組の宛先。 例として、Log Analytics ワークスペース、Azure Monitor メトリック、Azure Event Hubs があります。 | 
+| 変換先 | データの送信先となる 1 組の宛先。 例として、Log Analytics ワークスペースや Azure Monitor メトリックがあります。 | 
 | データ フロー | どのストリームをどの宛先に送信するかの定義。 | 
+
+データ収集ルールはリージョナルに格納され、Log Analytics がサポートされるすべてのパブリック リージョンで利用できます。 政府機関向けのリージョンおよびクラウドは現在サポートされていません。
 
 次の図は、データ収集ルールのコンポーネントとその関係を示しています
 
@@ -73,7 +75,7 @@ ms.locfileid: "110495572"
   - [Remove-AzDataCollectionRuleAssociation](https://github.com/Azure/azure-powershell/blob/master/src/Monitor/Monitor/help/Remove-AzDataCollectionRuleAssociation.md)
 
 ## <a name="sample-data-collection-rule"></a>データ収集ルールのサンプル
-以下のデータ収集ルールのサンプルは Azure 管理エージェントを使用した仮想マシン用で、次の詳細が含まれています。
+以下のデータ収集ルールのサンプルは Azure Monitor エージェントを使用した仮想マシン用で、次の詳細が含まれています。
 
 - パフォーマンス データ
   - 特定のプロセッサ、メモリ、論理ディスク、および物理ディスクのカウンターを 15 秒ごとに収集し、1 分ごとにアップロードします。

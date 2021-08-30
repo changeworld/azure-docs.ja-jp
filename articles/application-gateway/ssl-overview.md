@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: 0800373919ba95f48d30b9fe6eb5e7f8eb99a82a
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: 8a757b1825cb1c1e2f471a965077ea5801000dc4
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422068"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761455"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway での TLS 終端とエンド ツー エンド TLS の概要
 
@@ -126,9 +126,9 @@ HTTPS の正常性プローブに対しては、Application Gateway v1 SKU で�
 ---
 シナリオ | v1 | v2 |
 | --- | --- | --- |
-| クライアントで SNI ヘッダーが指定されており、すべてのマルチサイト リスナーでの "SNI を必要とする" フラグが有効になっている場合 | 適切な証明書が返されます。(server_name に従った) サイトが存在しない場合は、接続がリセットされます。 | 使用可能な場合は、適切な証明書が返されます。それ以外の場合は、構成されている (その順序での) 最初の HTTPS リスナーの証明書が返されます。|
-| クライアントで SNI ヘッダーが指定されておらず、すべてのマルチサイト ヘッダーでの "SNI を必要とする" が有効になっている場合 | 接続がリセットされます | 構成されている (その順序での) 最初の HTTPS リスナーの証明書が返されます
-| クライアントで SNI ヘッダーが指定されておらず、証明書を使用して構成された基本リスナーがある場合 | 基本リスナーで構成されている証明書がクライアントに返されます (既定またはフォールバック証明書) | 構成されている (その順序での) 最初の HTTPS リスナーの証明書が返されます |
+| クライアントで SNI ヘッダーが指定されており、すべてのマルチサイト リスナーでの "SNI を必要とする" フラグが有効になっている場合 | 適切な証明書が返されます。(server_name に従った) サイトが存在しない場合は、接続がリセットされます。 | 使用可能な場合は、適切な証明書が返されます。それ以外の場合は、HTTPS リスナーに関連付けられている要求ルーティング規則で指定された順序に従って、最初の HTTPS リスナーの証明書が返されます|
+| クライアントで SNI ヘッダーが指定されておらず、すべてのマルチサイト ヘッダーでの "SNI を必要とする" が有効になっている場合 | 接続がリセットされます | HTTPS リスナーに関連付けられている要求ルーティング規則で指定された順序に従って、最初の HTTPS リスナーの証明書が返されます
+| クライアントで SNI ヘッダーが指定されておらず、証明書を使用して構成された基本リスナーがある場合 | 基本リスナーで構成されている証明書がクライアントに返されます (既定またはフォールバック証明書) | 基本リスナーで構成されている証明書が返されます |
 
 ### <a name="backend-tls-connection-application-gateway-to-the-backend-server"></a>バックエンド TLS 接続 (アプリケーション ゲートウェイからバックエンド サーバーへ)
 

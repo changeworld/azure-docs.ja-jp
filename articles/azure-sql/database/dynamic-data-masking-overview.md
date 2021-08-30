@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 01/25/2021
+ms.date: 06/24/2021
 tags: azure-synpase
-ms.openlocfilehash: b44248732891163bc2630cdfe5b297a06f3cf730
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 869498111df151f78cb0a1d9ad7ede1dd84aaf42
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001018"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582622"
 ---
 # <a name="dynamic-data-masking"></a>動的データ マスク 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -84,6 +84,7 @@ REST API を使用して、データ マスク ポリシーおよびルールを
 
 動的データ マスクを構成できるのは、Azure SQL Database 管理者、サーバー管理者、またはロールベースのアクセス制御 (RBAC) の [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)の各ロールです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
-[動的なデータ マスキング](/sql/relational-databases/security/dynamic-data-masking)
+- SQL Server の[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)。
+- Channel 9 の Data Exposed エピソード ([Azure SQL 動的データ マスクの粒度の細かいアクセス許可](https://channel9.msdn.com/Shows/Data-Exposed/Granular-Permissions-for-Azure-SQL-Dynamic-Data-Masking))。

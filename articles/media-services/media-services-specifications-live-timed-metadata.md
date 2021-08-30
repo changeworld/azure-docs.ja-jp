@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3bfa6d8121b895e8a1097129309c14da05569926
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91336396"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361569"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知 
 
@@ -85,7 +85,7 @@ ms.locfileid: "91336396"
 | [RFC8216]         | R. Pantos, Ed.; W. May. HTTP ライブ ストリーミング。 2017 年 8 月。 情報提供。 [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | Base16、Base32、および Base64 データ エンコード - [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | [RTMP]            | [「Adobe のリアルタイム メッセージング プロトコル」、2012 年 12 月 21 日](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
-| [SCTE-35-2019]    | SCTE 35:2019 - ケーブル接続のデジタル プログラム挿入キューイング メッセージ - https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
+| [SCTE-35-2019]    | SCTE 35:2019 - ケーブル接続のデジタル プログラム挿入キューイング メッセージ - https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-35-2019a-1582645390859.pdf                                                                       |
 | [SCTE-214-1]      | SCTE 214-1 2016 – IP ベースのケーブル サービス向け MPEG DASH パート 1:MPD の制約と拡張                                                                                                                 |
 | [SCTE-214-3]      | SCTE 214-3 2015 IP ベースのケーブル サービス向け MPEG DASH パート 3:DASH/FF プロファイル                                                                                                                                  |
 | [SCTE-224]        | SCTE 224 2018r1 – イベントのスケジューリングと通知のインターフェイス                                                                                                                                                  |

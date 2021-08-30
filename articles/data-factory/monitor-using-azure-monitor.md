@@ -5,14 +5,15 @@ author: minhe-msft
 ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: da0a9b457127400bdeb67c671b2710447b37784e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 3029f7756d50e509d7bd539dc5fde8de8a075424
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903202"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272208"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリの監視とアラート送信を行う
 
@@ -567,13 +568,13 @@ SSIS IR の開始/停止/メンテナンス操作のログの属性を次に示�
 | プロパティ                   | Type   | 説明                                                   | 例                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | String | SSIS IR 操作の名前                            | `Start/Stop/Maintenance` |
+| **operationName**          | String | SSIS IR 操作の名前                            | `Start/Stop/Maintenance/Heartbeat` |
 | **category**               | String | 診断ログのカテゴリ                               | `SSISIntegrationRuntimeLogs` |
 | **correlationId**          | String | 特定の操作を追跡するための一意の ID             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
 | **dataFactoryName**        | String | ADF の名前                                          | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                      | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                  | `Informational` |
-| **resultType**             | String | SSIS IR 操作の結果                          | `Started/InProgress/Succeeded/Failed` |
+| **resultType**             | String | SSIS IR 操作の結果                          | `Started/InProgress/Succeeded/Failed/Healthy/Unhealthy` |
 | **message**                | String | SSIS IR 操作の出力メッセージ                  | `The stopping of your SSIS integration runtime has succeeded.` |
 | **resourceId**             | String | ADF リソースの一意の ID                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
@@ -895,9 +896,20 @@ SSIS 操作のログの属性とプロパティの詳細については、[ADF �
 
 選択された SSIS パッケージ実行ログは、呼び出しメソッドに関係なく、常に Log Analytics に送信されます。 たとえば、SSMS、SQL Server エージェント、またはその他の指定されたツールで T-SQL を使用して、ADF パイプラインでの Execute SSIS Package アクティビティのトリガーされたまたはデバッグの実行として、Azure 対応 SSDT のパッケージ実行を呼び出すことができます。
 
-Logs Analytics で SSIS IR 操作ログのクエリを実行するとき、それぞれが `Start/Stop/Maintenance` と `Started/InProgress/Succeeded/Failed` に設定された **OperationName** プロパティと **ResultType** プロパティを使用できます。 
+Logs Analytics で SSIS IR 操作ログのクエリを実行するとき、それぞれが `Start/Stop/Maintenance/Heartbeat` と `Started/InProgress/Succeeded/Failed/Healthy/Unhealthy` に設定された **OperationName** プロパティと **ResultType** プロパティを使用できます。
 
 ![Log Analytics での SSIS IR パッケージ操作ログのクエリの実行](media/data-factory-monitor-oms/log-analytics-query.png)
+
+SSIS IR ノードの状態に対してクエリを実行するには、**OperationName** プロパティを `Heartbeat` に設定します。 各ノードは通常、1 分あたり 1 つの `Heartbeat` レコードを Log Analytics に送信します。このとき **ResultType** プロパティにはその状態が反映されており、パッケージの実行に使用できる場合は `Healthy`、そうでない場合は `Unhealthy` になっています。 たとえば、お使いの SSIS IR に利用可能なノードが 2 つある場合は、どの 1 分間にも 2 つの `Heartbeat` レコードが必ず表示され、その **ResultType** プロパティは `Healthy` に設定されています。
+
+![Log Analytics 上での SSIS IR ハートビートに対するクエリの実行](media/data-factory-monitor-oms/log-analytics-query-3.png)
+
+次のパターンに対してクエリを実行して、SSIS IR ノードが使用できないことを検出できます。
+
+* SSIS IR がまだ実行されているときに、`Heartbeat` レコードが見つからない 1 分間が多数存在する。
+* SSIS IR がまだ実行されているとき、多くの 1 分間に、**ResultType** プロパティが `Unhealthy` に設定されている `Heartbeat` レコードが存在する。
+
+上記のクエリを[アラート](../azure-monitor/alerts/alerts-unified-log.md)に変更し、[SSIS IR 監視ページ](monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal)に移動して、それらのアラートをいつ受け取るかを確認することができます。
 
 Logs Analytics で SSIS パッケージ実行ログのクエリを実行する場合、**OperationId**/**ExecutionId**/**CorrelationId** プロパティを使用してそれらを結合できます。 SSISDB への格納/T-SQL を使用した呼び出しが行われて **いない** パッケージに関連するすべての操作/実行の場合、**OperationId**/**ExecutionId** には常に `1` が設定されます。
 

@@ -1,5 +1,5 @@
 ---
-title: macOS を使用して SMB 経由で Azure ファイル共有をマウントする | Microsoft Docs
+title: SMB Azure ファイル共有を macOS でマウントする | Microsoft Docs
 description: macOS の Finder またはターミナルを使用して SMB 経由で Azure ファイル共有をマウントする方法について説明します。 Azure Files は、Microsoft の使いやすいクラウド ファイル システムです。
 author: roygara
 ms.service: storage
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 119f4c0ea434bc431b40c905d9142e187b7d9474
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4bbaed3cf35d25a2441a27755c73dc144a07510
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91326067"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117778"
 ---
-# <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS を使用して SMB 経由で Azure ファイル共有をマウントする
+# <a name="mount-smb-azure-file-share-on-macos"></a>SMB Azure ファイル共有を macOS でマウントする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、macOS High Sierra 10.13 以降で、業界標準の SMB 3 プロトコルを使用してマウントできます。 この記事では、Terminal を使用して macOS と Finder UI で Azure ファイル共有をマウントする、2 つの異なる方法を示します。
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>macOS 上の Azure ファイル共有をマウントするための前提条件
@@ -23,6 +23,13 @@ ms.locfileid: "91326067"
 * **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
 * **ポート 445 が開いていることの確認**: SMB は TCP ポート 445 経由で通信します。 クライアント マシン (Mac) で、ファイアウォールが TCP ポート 445 をブロックしていないことを確認します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="mount-an-azure-file-share-via-finder"></a>Finder による Azure ファイル共有のマウント
 1. **Finder を開きます**。macOS 上では既定で Finder が開かれていますが、ドック上の "macOS の顔アイコン" をクリックすると、Finder が現在選択されているアプリケーションであることを確認できます。  

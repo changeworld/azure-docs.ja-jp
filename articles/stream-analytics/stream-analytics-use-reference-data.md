@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/18/2020
-ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/25/2021
+ms.openlocfilehash: 828748a2702233bfdabf3dc627e46956bf436020
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99560221"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289375"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 
@@ -118,7 +118,7 @@ SQL Database 参照データを構成するには、まず **参照データ** �
 |3   |150 MB 以下   |
 |6 以上   |5 GB 以下    |
 
-参照データの圧縮はサポートされていません。
+参照データの圧縮はサポートされていません。 300 MB を超える参照データセットの場合、最適なパフォーマンスを実現するために[差分クエリ](./sql-reference-data.md#delta-query) オプションを使用して、ソースとして Azure SQL Database を使用することをお勧めします。 このようなシナリオで差分クエリを使用しない場合、参照データセットが更新されるたびに透かしの遅延メトリックの急増が発生します。 
 
 ## <a name="joining-multiple-reference-datasets-in-a-job"></a>ジョブ内の複数の参照データセットの結合
 クエリの 1 つのステップでは、1 つの参照データ入力と 1 つのストリーム入力のみを結合できます。 ただし、クエリを複数のステップに分割することで、複数の参照データセットを結合できます。 次に例を示します。

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 07/09/2021
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 970985193245a4d7482979c2fc753c2c0b67834b
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 816975db5ee6fd613e077dd7d268825c6601b3fe
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111406735"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444447"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>継続的アクセス評価が有効になった API をアプリケーションで使用する方法
 
@@ -52,7 +52,7 @@ WWW-Authenticate=Bearer
   - "insufficient_claims" という値を含む "error" パラメーター
   - "claims" パラメーター
 
-これらの条件が満たされると、アプリによる要求チャレンジの抽出およびデコードができるようになります。
+これらの条件が満たされると、アプリは MSAL.NET `WwwAuthenticateParameters` クラスを使用してクレーム チャレンジを抽出およびデコードできます。
 
 ```csharp
 if (APIresponse.IsSuccessStatusCode)
@@ -64,19 +64,7 @@ else
     if (APIresponse.StatusCode == System.Net.HttpStatusCode.Unauthorized
         && APIresponse.Headers.WwwAuthenticate.Any())
     {
-        AuthenticationHeaderValue bearer = APIresponse.Headers.WwwAuthenticate.First
-            (v => v.Scheme == "Bearer");
-        IEnumerable<string> parameters = bearer.Parameter.Split(',').Select(v => v.Trim()).ToList();
-        var error = GetParameter(parameters, "error");
-
-        if (null != error && "insufficient_claims" == error)
-        {
-            var claimChallengeParameter = GetParameter(parameters, "claims");
-            if (null != claimChallengeParameter)
-            {
-                var claimChallengebase64Bytes = System.Convert.FromBase64String(claimChallengeParameter);
-                var claimChallenge = System.Text.Encoding.UTF8.GetString(claimChallengebase64Bytes);
-                var newAccessToken = await GetAccessTokenWithClaimChallenge(scopes, claimChallenge);
+        string claimChallenge = WwwAuthenticateParameters.GetClaimChallengeFromResponseHeaders(APIresponse.Headers);
 ```
 
 そして、アプリでは要求チャレンジを使用して、リソースに対する新しいアクセス トークンを取得します。

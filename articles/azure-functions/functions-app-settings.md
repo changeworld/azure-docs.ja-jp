@@ -2,21 +2,21 @@
 title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
-ms.date: 09/22/2018
-ms.openlocfilehash: eb595d666641003c813573a70ab7365732e0a386
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 07/27/2021
+ms.openlocfilehash: 7275d81401444dffbe0917bdb72ba79100880749
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983152"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862686"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
-関数アプリのアプリケーション設定には、その関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 ローカルで実行する場合、これらの設定は、ローカルの[環境変数](functions-run-local.md#local-settings-file)としてアクセスされます。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
+関数アプリのアプリケーション設定には、その関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 ローカルで実行する場合、これらの設定は、ローカルの[環境変数](functions-develop-local.md#local-settings-file)としてアクセスされます。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-[host.json](functions-host-json.md) ファイルと [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
+[host.json](functions-host-json.md) ファイルと [local.settings.json](functions-develop-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
 
 > [!NOTE]
 > アプリケーション設定を使用して、host.json ファイル自体を変更することなく、host.json 設定値をオーバーライドできます。 これは、特定の環境の特定の host.json 設定を構成または変更する必要がある場合に便利です。 これにより、プロジェクトを再発行しなくても、host.json 設定を変更できます。 詳細については、[host.json のリファレンスに関する記事](functions-host-json.md#override-hostjson-values)をご覧ください。 関数アプリの設定に変更を加えるためには、関数アプリを再起動する必要があります。
@@ -294,6 +294,16 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 [!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
+## <a name="scm_logstream_timeout"></a>SCM\_LOGSTREAM\_TIMEOUT
+
+ストリーミング ログに接続されているときのタイムアウトを秒単位で制御します。 既定値は 7,200 (2 時間) です。 
+
+|Key|値の例|
+|-|-|
+|SCM_LOGSTREAM_TIMEOUT|1800|
+
+上記のサンプル値 `1800` では、タイムアウトが 30 分に設定されます。 詳細については、「[ストリーミング ログを有効にする](functions-run-local.md#enable-streaming-logs)」を参照してください。
+
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
 Windows 上で実行されているイベント ドリブン スケーリング プランに関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 詳細については、「[Function App を作成する](functions-infrastructure-as-code.md#windows)」を参照してください。
@@ -306,11 +316,13 @@ Windows 上で実行されている Premium プランまたは従量課金プラ
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
-Premium プランのみ。 `1` の値を指定すると、ストレージ アカウントを仮想ネットワークに制限している場合に、関数アプリをスケーリングできます。 ストレージ アカウントを仮想ネットワークに制限する場合は、この設定を有効にする必要があります。 詳細については、「[ストレージ アカウントを仮想ネットワークに制限する](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)」を参照してください。
+`1` の値を指定すると、ストレージ アカウントを仮想ネットワークに制限している場合に、関数アプリをスケーリングできます。 ストレージ アカウントを仮想ネットワークに制限する場合は、この設定を有効にする必要があります。 詳細については、「[ストレージ アカウントを仮想ネットワークに制限する](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)」を参照してください。
 
 |Key|値の例|
 |---|------------|
 |WEBSITE_CONTENTOVERVNET|1|
+
+Windows を実行している [Premium プラン](functions-premium-plan.md)と[Dedicated (App Service) プラン](dedicated-plan.md) (Standard 以上) でサポートされています。 Linux を実行している従量課金プランと Premium プランでは現在、サポートされていません。 
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 

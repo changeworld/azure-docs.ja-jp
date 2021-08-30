@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4624a33b12afc5eff033fe2d57bf25f812c9e667
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b1be9681246711cfd722bdc4d4806d75875f3429
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891304"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179292"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -43,6 +43,8 @@ Azure Blob Storage トリガーには、汎用ストレージ アカウントが
 - **BLOB 専用ストレージ アカウント**: [BLOB 専用ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)は、BLOB の入力と出力のバインドでサポートされ、BLOB トリガーではサポートされません。
 
 - **高スケール**: 高スケールとは、おおまかに言って、100,000 以上の BLOB を含むコンテナー、または 1 秒あたり 100 を超える BLOB の更新が発生するストレージ アカウントと定義できます。
+
+- **既存の BLOB**: BLOB トリガーは、トリガーを設定するときにコンテナー内のすべての既存の BLOB を処理します。 既存の BLOB が多数含まれ、新しい BLOB に対してトリガーするだけのコンテナーがある場合は、Event Grid トリガーを使用します。
 
 - **待ち時間の最小化**: 関数アプリを従量課金プランで使用しているときに、関数アプリがアイドル状態になっている場合、新しい BLOB の処理が最大で 10 分間遅延する可能性があります。 この待機時間を避けるには、Always On が有効な App Service プランに切り替えることができます。 BLOB ストレージ アカウントで [Event Grid トリガー](functions-bindings-event-grid.md)を使用することもできます。 例については、[Event Grid のチュートリアル](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)を参照してください。
 

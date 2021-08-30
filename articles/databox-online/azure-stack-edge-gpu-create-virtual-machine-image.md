@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/09/2021
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: a1f6b51c8ab36d779ad2771c1e12de78673e6fc1
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 94ffb38c71437c8f5902866620b5ac0c2467edfd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902453"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462917"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス用のカスタム VM イメージを作成する
 
@@ -27,7 +27,7 @@ Azure Stack Edge Pro GPU デバイスに VM をデプロイするには、Azure 
 
 VM イメージを作成する前に、次の前提条件を満たします。
 
-- [AzCopy をダウンロードします](/azure/storage/common/storage-use-azcopy-v10#download-azcopy)。 AzCopy を使用すると、OS ディスクを Azure ストレージ アカウントにすばやくコピーできます。
+- [AzCopy をダウンロードします](../storage/common/storage-use-azcopy-v10.md#download-azcopy)。 AzCopy を使用すると、OS ディスクを Azure ストレージ アカウントにすばやくコピーできます。
 
 ---
 
@@ -40,9 +40,11 @@ VM イメージを作成する前に、次の前提条件を満たします。
 
 Windows の VM イメージを作成するには、次の手順のようにします。
 
-1. Azure で Windows 仮想マシンを作成します。 ポータルでの手順については、「[Azure portal で Windows 仮想マシンを作成する](/azure/virtual-machines/windows/quick-create-portal)」を参照してください。 PowerShell での手順については、「[チュートリアル: Azure PowerShell を使用して Windows VM を作成および管理する](../virtual-machines/windows/tutorial-manage-vm.md)」を参照してください。
+1. Azure で Windows 仮想マシンを作成します。 ポータルでの手順については、「[Azure portal で Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md)」を参照してください。 PowerShell での手順については、「[チュートリアル: Azure PowerShell を使用して Windows VM を作成および管理する](../virtual-machines/windows/tutorial-manage-vm.md)」を参照してください。  
 
-   仮想マシンは第 1 世代 VM でなければなりません。 VM イメージの作成に使用する OS ディスクは、Azure でサポートされている任意のサイズの固定サイズの VHD である必要があります。 VM サイズのオプションについては、「[サポートされる VM のサイズ](azure-stack-edge-gpu-virtual-machine-sizes.md#supported-vm-sizes)」を参照してください。  
+   仮想マシンは第 1 世代 VM でなければなりません。 VM イメージの作成に使用する OS ディスクは、Azure でサポートされている任意のサイズの固定サイズの VHD である必要があります。 VM サイズのオプションについては、「[サポートされる VM のサイズ](azure-stack-edge-gpu-virtual-machine-sizes.md#supported-vm-sizes)」を参照してください。
+
+   Azure Marketplace では、固定サイズの VHD を備える任意の Windows Gen1 VM を使用できます。 動作する可能性のある Azure Marketplace イメージの一覧については、[Azure Stack Edge でよく使用される Azure Marketplace イメージ](azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md#commonly-used-marketplace-images)に関するセクションを参照してください。
 
 2. 仮想マシンを一般化します。 VM を一般化するには、[仮想マシンに接続](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm)し、コマンド プロンプトを開いて、次の `sysprep` コマンドを実行します。
 
@@ -60,7 +62,7 @@ Linux の VM イメージを作成するには、次の手順のようにしま�
 
 1. Azure で Linux 仮想マシンを作成します。 ポータルでの手順については、「[クイック スタート: Azure portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)」を参照してください。  PowerShell での手順については、「[クイック スタート: PowerShell を使用して Azure に Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-powershell.md)」を参照してください。
 
-   Azure Marketplace で提供されている固定サイズの VHD を使用する任意の Gen1 VM を使用して、Linux カスタム イメージを作成できます。ただし、Red Hat Enterprise Linux (RHEL) のイメージは例外で、追加の手順が必要です。 使用できる Azure Marketplace イメージの一覧については、「[Azure Stack Hub で使用できる Azure Marketplace 項目](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true)」を参照してください。 RHEL イメージについてのガイダンスは、後の 「[RHEL BYOS イメージの使用](#using-rhel-byos-images)」を参照してください。 
+   Azure Marketplace で提供されている固定サイズの VHD を使用する任意の Gen1 VM を使用して、Linux カスタム イメージを作成できます。ただし、Red Hat Enterprise Linux (RHEL) のイメージは例外で、追加の手順が必要です。 動作する可能性のある Azure Marketplace イメージの一覧については、[Azure Stack Edge でよく使用される Azure Marketplace イメージ](azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md#commonly-used-marketplace-images)に関するセクションを参照してください。 RHEL イメージについてのガイダンスは、後の 「[RHEL BYOS イメージの使用](#using-rhel-byos-images)」を参照してください。
 
 1. VM のプロビジョニングを解除します。 Azure VM エージェントを使用し、マシン固有のファイルとデータを削除します。 ソース Linux VM で `-deprovision+user` パラメーターを指定して `waagent` コマンドを実行します。 詳細については、「[Azure Linux エージェントの理解と使用](../virtual-machines/extensions/agent-linux.md)」を参照してください。
 
@@ -98,9 +100,9 @@ RHEL BYOS イメージを使用して VM イメージを作成するには、次
 
 VM 用の OS ディスクを Azure ストレージ アカウントにダウンロードするには、次の手順のようにします。
 
-1. [ポータルで VM を停止します](/azure/virtual-machines/windows/download-vhd#stop-the-vm)。 `sysprep` を実行して Windows VM を一般化した後でそれがシャットダウンされた場合でも、OS ディスクの割り当てを解除するためにこれを行う必要があります。
+1. [ポータルで VM を停止します](../virtual-machines/windows/download-vhd.md#stop-the-vm)。 `sysprep` を実行して Windows VM を一般化した後でそれがシャットダウンされた場合でも、OS ディスクの割り当てを解除するためにこれを行う必要があります。
 
-1. [OS ディスクのダウンロード URL を生成](/azure/virtual-machines/windows/download-vhd#generate-download-url)し、その URL を記録しておきます。 既定では、その URL は 3600 秒 (1 時間) 後に期限切れになります。 必要に応じて、その時間を延ばすことができます。
+1. [OS ディスクのダウンロード URL を生成](../virtual-machines/windows/download-vhd.md#generate-download-url)し、その URL を記録しておきます。 既定では、その URL は 3600 秒 (1 時間) 後に期限切れになります。 必要に応じて、その時間を延ばすことができます。
       
 1. 次のいずれかの方法を使用して、Azure ストレージ アカウントに VHD をダウンロードします。
    
@@ -112,7 +114,7 @@ VM 用の OS ディスクを Azure ストレージ アカウントにダウン�
 
 ## <a name="copy-vhd-to-storage-account-using-azcopy"></a>AzCopy を使用してストレージ アカウントに VHD をコピーする
 
-次の手順では、イメージを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイできるように、AzCopy を使用してカスタム VM イメージを Azure ストレージ アカウントにコピーする方法について説明します。 カスタム VM イメージは、Azure Stack Edge Pro GPU デバイスに使用しているのと同じストレージ アカウントに格納することをお勧めします。 
+次の手順では、イメージを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイできるように、AzCopy を使用してカスタム VM イメージを Azure ストレージ アカウントにコピーする方法について説明します。 カスタム VM イメージは、Azure Stack Edge と同じリージョンまたはサブスクリプションにある、使用中の既存のストレージ アカウントに格納することをお勧めします。
 
 
 ### <a name="create-target-uri-for-a-container"></a>コンテナー用のターゲット URI を作成する
@@ -152,7 +154,7 @@ AzCopy を使用するには、新しいイメージのコピー先であるス�
 
 AzCopy を使用して VHD を BLOB コンテナーにコピーするには、次の手順のようにします。
 
- 1. まだ行っていない場合は、[AZCopy](/azure/storage/common/storage-use-azcopy-v10#download-azcopy) をダウンロードします。
+ 1. まだ行っていない場合は、[AZCopy](../storage/common/storage-use-azcopy-v10.md#download-azcopy) をダウンロードします。
  
  1. PowerShell で azcopy.exe を保存したディレクトリに移動し、次のコマンドを実行します。
 

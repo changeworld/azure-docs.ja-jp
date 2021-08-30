@@ -489,8 +489,12 @@
           href: functions-hybrid-powershell.md
     - name: トラブルシューティング
       items:
-        - name: ストレージのトラブルシューティング
+        - name: 記憶域の接続
           href: functions-recover-storage-account.md
+          displayName: troubleshoot
+        - name: Azure Cosmos DB のバインド
+          href: ../cosmos-db/troubleshoot-changefeed-functions.md?toc=%2fazure%2fazure-functions%2ftoc.json
+          displayName: troubleshoot
         - name: Python 関数
           items:
             - name: 一般的なトラブルシューティング

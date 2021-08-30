@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 06/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8f9f6dc1abd08c5e53f3d44a8f6ec1b3e20786ed
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 76832f02f1c1337a705f33d26de97b0b5823c2c1
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717443"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981111"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で HTML テンプレートを使用してユーザー インターフェイスをカスタマイズする
 
@@ -91,6 +91,10 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 ## <a name="localize-content"></a>コンテンツのローカライズ
 
 Azure AD B2C テナントで [[言語のカスタマイズ]](language-customization.md) を有効にすることで HTML コンテンツをローカライズします。 この機能を有効にすると、Azure AD B2C で OpenID Connect パラメーター `ui_locales` をエンドポイントに転送できるようになります。 コンテンツ サーバーではこのパラメーターを使用し、言語固有の HTML ページを提供できます。
+
+> [!NOTE]
+> Azure AD B2C では、OpenID Connect のパラメーター (`ui_locales` など) が[例外ページ](page-layout.md#exception-page-globalexception)に渡されません。
+
 
 使用されているロケールに基づき、さまざまな場所からコンテンツを取得できます。 CORS 対応エンドポイントでは、特定の言語のコンテンツをホストするようにフォルダー構造を設定します。 ワイルドカード値 `{Culture:RFC5646}` を使うと、適切な言語が呼び出されます。
 

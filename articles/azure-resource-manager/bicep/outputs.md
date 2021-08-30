@@ -3,16 +3,16 @@ title: Bicep の出力
 description: Bicep の出力値を定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 95366013ed972e0251c99732ea4b344b5b94e743
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 25691bb31fbec0b00144619b97db019e13295661
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027224"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201088"
 ---
 # <a name="outputs-in-bicep"></a>Bicep の出力
 
-この記事では、Azure Resource Manager テンプレート (ARM テンプレート) および Bicep ファイルで出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
+この記事では、Bicep ファイルで出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
 
 各出力値の形式は、いずれかの[データ型](data-types.md)に解決される必要があります。
 

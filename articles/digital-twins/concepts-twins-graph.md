@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: デジタル ツインの概念と、そのリレーションシップによってグラフが作成されるしくみについて説明します。
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 29430671cd5879f140127c94541dd50d765fa87e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1145525fe3d2e7c42204aa675153d4eb099cccce
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460278"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254242"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
@@ -39,13 +39,15 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="サンプルのモデルとツインが表示されている Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
+
 ## <a name="create-with-the-apis"></a>API を使用して作成する
 
 このセクションでは、クライアント アプリケーションからデジタル ツインとリレーションシップを作成する方法について説明します。 これらの各概念の内部で何が行われるかについて追加のコンテキストを提供するため、[Digital Twins API](/rest/api/digital-twins/dataplane/twins) を利用する .NET コードの例が含まれています。
 
 ### <a name="create-digital-twins"></a>デジタル ツインを作成する
 
-[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、Room 型のツインをインスタンス化するクライアント コードのスニペットを次に示します。
+[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して Room 型のツインをインスタンス化するクライアント コードのスニペットと、そのインスタンス化中に定義された `twinId` を次に示します。
 
 ツインは作成時にそのプロパティを初期化できます。あるいは後で設定できます。 プロパティを初期化してツインを作成するには、必要な初期化値を与える JSON ドキュメントを作成します。
 
@@ -163,7 +165,7 @@ JSON オブジェクトとして書式設定されたリレーションシップ
 
 Azure Digital Twins の API を使用してグラフ要素を管理する方法を確認します。
 * [デジタル ツインを管理する](how-to-manage-twin.md)
-* [リレーションシップを使用してツイン グラフを管理する](how-to-manage-graph.md)
+* [ツイン グラフとリレーションシップを管理する](how-to-manage-graph.md)
 
 または、Azure Digital Twins のツイン グラフに対して情報のクエリを行う方法について学習します。
-* [概念:クエリ言語](concepts-query-language.md)
+* [クエリ言語](concepts-query-language.md)

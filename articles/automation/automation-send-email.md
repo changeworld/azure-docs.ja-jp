@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 01/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2650e3a9ce58b611c1aff1a569cc1e8f0980fd4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 622bff79d48ae707e2b32556e05dad658a0322bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833492"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730545"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Runbook からメールを送信する
 
@@ -20,16 +20,17 @@ PowerShell を使用して、[SendGrid](https://sendgrid.com/solutions) によ�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* [SendGrid アカウント](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)。
+* [SendGrid アカウント](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-sendgrid-account)。
+* Send Grid 内で送信者の確認が構成されています。 [ドメインまたは単一の送信者](https://sendgrid.com/docs/for-developers/sending-email/sender-identity/)のいずれか 
 * [Automation アカウント](./index.yml)と **Az** モジュール。
 * Runbook を保存および実行するための[実行アカウント](./automation-security-overview.md#run-as-accounts)。
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
 
-Azure Key Vault は、次の PowerShell スクリプトを使用して作成できます。 変数値を環境に固有の値に置き換えます。 コード ブロックの右上隅にある **[使ってみる]** ボタンを通じて、埋め込まれた Azure Cloud Shell を使用します。 ローカル コンピューターに [Az モジュール](/powershell/azure/install-az-ps)がインストールされている場合は、コードをローカルにコピーして実行することもできます。
+Azure Key Vault は、次の PowerShell スクリプトを使用して作成できます。 変数値を環境に固有の値に置き換えます。 コード ブロックの右上隅にある **[使ってみる]** ボタンを通じて、埋め込まれた Azure Cloud Shell を使用します。 ローカル コンピューターに [Az モジュール](/powershell/azure/install-az-ps)がインストールされている場合は、コードをローカルにコピーして実行することもできます。 また、このスクリプトによって、[Key Vault アクセス ポリシー](../key-vault/general/assign-access-policy-portal.md)が作成されます。これにより、実行アカウントが、指定されたキー コンテナー内で、キー コンテナー シークレットを取得および設定することができます。
 
 > [!NOTE]
-> API キーを取得するには、[SendGrid API キーの検索](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)に関するページに記載されている手順を使用します。
+> API キーを取得するには、[SendGrid API キーの検索](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#to-find-your-sendgrid-api-key)に関するページに記載されている手順を使用します。
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -100,8 +101,8 @@ Runbook 内で Azure Key Vault を使用するには、次のモジュールを 
 
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
-    $VaultName = "<Enter your vault name>&quot;
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name &quot;SendGridAPIKey").SecretValue
+    $VaultName = "<Enter your vault name>"
+    $SENDGRID_API_KEY = Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey" -AsPlainText
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")

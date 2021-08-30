@@ -8,28 +8,25 @@ ms.author: shipatel
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 05/25/2021
+ms.date: 06/16/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 912ad0b1cbb7814774a06cf890e3618ee06b2c0a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f9a298a311ac30b03be569a35aa59c0c6157601e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382731"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287607"
 ---
-# <a name="train-ml-models-with-mlflow-projects-and-azure-machine-learning-preview"></a>MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする (プレビュー)
+# <a name="train-ml-models-with-mlflow-projects-and-azure-machine-learning"></a>MLflow プロジェクトと Azure Machine Learning を使用して ML モデルをトレーニングする
 
-この記事では、MLflow の追跡 URI とログ API (まとめて [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) と呼ばれる) を有効にし、[MLflow プロジェクト](https://www.mlflow.org/docs/latest/projects.html)と Azure Machine Learning バックエンド サポート (プレビュー) を使用してトレーニング ジョブを送信する方法について説明します。 Azure Machine Learning 追跡を使用してローカルにジョブを送信することも、[Azure Machine Learning コンピューティング](./how-to-create-attach-compute-cluster.md)を介するなどして実行をクラウドに移行することもできます。
+この記事では、MLflow の追跡 URI とログ API (まとめて [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api) と呼ばれる) を有効にし、[MLflow プロジェクト](https://www.mlflow.org/docs/latest/projects.html)と Azure Machine Learning バックエンド サポートを使用してトレーニング ジョブを送信する方法について説明します。 Azure Machine Learning 追跡を使用してローカルにジョブを送信することも、[Azure Machine Learning コンピューティング](./how-to-create-attach-compute-cluster.md)を介するなどして実行をクラウドに移行することもできます。
 
 [MLflow Projects](https://mlflow.org/docs/latest/projects.html) を使用すると、他のデータ サイエンティスト (または自動化ツール) が実行できるようにするために、自分のコードの整理および記述を行うことができます。 Azure Machine Learning で MLflow プロジェクトを使用すると、ワークスペースでのトレーニングの実行を追跡および管理することができます。
 
 [MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLFlow Tracking は MLflow のコンポーネントです。これは、実験の環境がローカル コンピューター、リモートのコンピューティング先、仮想マシン、[Azure Databricks クラスター](how-to-use-mlflow-azure-databricks.md)のいずれであるかにかかわらず、トレーニング実行のメトリックとモデル成果物をログに記録し、追跡します。
 
 [MLflow と Azure Machine Learning の統合の詳細について、ご確認ください](how-to-use-mlflow.md)。
-
->[!NOTE]
-> オープン ソース ライブラリである MLflow は頻繁に変更されます。 そのため、Azure Machine Learning と MLflow の統合によって利用できるようになる機能はプレビューとして見なす必要があり、Microsoft は完全にサポートしていません。
 
 > [!TIP]
 > このドキュメントの情報は主に、モデルのトレーニング プロセスを監視したいデータ サイエンティストや開発者を対象としています。 Azure Machine Learning からリソース使用状況やイベント (クォータ、トレーニング実行の完了、モデル デプロイの完了など) を監視することに関心がある管理者の方は、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。

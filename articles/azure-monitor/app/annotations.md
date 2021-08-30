@@ -2,13 +2,13 @@
 title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights を使用してデプロイやその他の重要なイベントを追跡する注釈を作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 05/27/2021
-ms.openlocfilehash: cfd1c9b28a79d68983e49ef5d6dfd70dd357ab47
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.date: 07/20/2021
+ms.openlocfilehash: 230d02c26b29bb38ec4c8260109f75f1a8eca468
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071031"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741338"
 ---
 # <a name="release-annotations-for-application-insights"></a>Application Insights のリリース注釈
 
@@ -57,6 +57,25 @@ ms.locfileid: "112071031"
 
     :::image type="content" source="./media/annotations/inline-script.png" alt-text="[スクリプトの種類]、[スクリプトの場所]、[インライン スクリプト]、および [スクリプトの引数] が強調表示されている Azure CLI タスク設定のスクリーンショット。" lightbox="./media/annotations/inline-script.png":::
 
+    以下は、[build](/azure/devops/pipelines/build/variables#build-variables-devops-services) 変数と [release](/azure/devops/pipelines/release/variables#default-variables---release) 変数を使用してオプションの releaseProperties 引数に設定できるメタデータの例です。
+    
+
+    ```powershell
+    -releaseProperties @{
+     "BuildNumber"="$(Build.BuildNumber)";
+     "BuildRepositoryName"="$(Build.Repository.Name)";
+     "BuildRepositoryProvider"="$(Build.Repository.Provider)";
+     "ReleaseDefinitionName"="$(Build.DefinitionName)";
+     "ReleaseDescription"="Triggered by $(Build.DefinitionName) $(Build.BuildNumber)";
+     "ReleaseEnvironmentName"="$(Release.EnvironmentName)";
+     "ReleaseId"="$(Release.ReleaseId)";
+     "ReleaseName"="$(Release.ReleaseName)";
+     "ReleaseRequestedFor"="$(Release.RequestedFor)";
+     "ReleaseWebUrl"="$(Release.ReleaseWebUrl)";
+     "SourceBranch"="$(Build.SourceBranch)";
+     "TeamFoundationCollectionUri"="$(System.TeamFoundationCollectionUri)" }
+    ```            
+
 1. 保存します。
 
 ## <a name="create-release-annotations-with-azure-cli"></a>Azure CLI を使用してリリース注釈を作成する
@@ -103,6 +122,7 @@ Azure DevOps を使わずに、CreateReleaseAnnotation PowerShell スクリプ�
 |releaseName | 作成したリリース注釈に付ける名前。 | | 
 |releaseProperties | カスタム メタデータを注釈にアタッチするために使用されます。 | オプション|
 
+
 ## <a name="view-annotations"></a>注釈を表示する
 
 > [!NOTE]
@@ -132,6 +152,72 @@ Azure DevOps を使わずに、CreateReleaseAnnotation PowerShell スクリプ�
     :::image type="content" source="./media/annotations/workbook-show-annotations.png" alt-text="[コメントを表示する] チェック ボックスが強調表示されている [詳細設定] メニューのスクリーンショット。":::
 
 注釈マーカーを選択すると、要求元、ソース管理のブランチ、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
+
+## <a name="release-annotations-using-api-keys"></a>API キーを使用したリリース注釈
+
+リリース注釈は、Azure DevOps のクラウド ベースの Azure Pipelines サービスの機能です。
+
+### <a name="install-the-annotations-extension-one-time"></a>注釈拡張機能をインストールする (1 回限り)
+
+リリース注釈を作成できるようにするには、Visual Studio Marketplace で入手可能な Azure DevOps 拡張機能のいずれかをインストールする必要があります。
+
+1. [Azure DevOps](https://azure.microsoft.com/services/devops/) プロジェクトにサインインします。
+   
+1. Visual Studio Marketplace の [リリース注釈拡張機能](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)のページで、自分の Azure DevOps 組織を選択し、 **[インストール]** を選択して Azure DevOps 組織に拡張機能を追加します。
+   
+   ![Azure DevOps 組織を選択してから、[インストール] を選択します。](./media/annotations/1-install.png)
+   
+Azure DevOps 組織に拡張機能をインストールする必要があるのは一度だけです。 これで、組織内の任意のプロジェクトに対してリリース注釈を構成できるようになります。
+
+### <a name="configure-release-annotations-using-api-keys"></a>API キーを使用してリリース注釈を構成する
+
+Azure Pipelines のリリース テンプレートごとに個別の API キーを作成します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、アプリケーションを監視する Application Insights リソースを開きます。 または、まだない場合は、[新しい Application Insights リソースを作成](create-workspace-resource.md)します。
+   
+1. **[API アクセス]** タブを開き、 **[Application Insights ID]** をコピーします。
+   
+   ![[API アクセス] で、アプリケーション ID をコピーします。](./media/annotations/2-app-id.png)
+
+1. 別のブラウザー ウィンドウで、Azure Pipelines のデプロイを管理するリリース テンプレートを開くか、作成します。
+   
+1. **[タスクの追加]** を選択した後、メニューから **[Application Insights Release Annotation]\(Application Insights リリース注釈\)** タスクを選択します。
+   
+   ![[タスクの追加] をクリックし、[Application Insights Release Annotation]\(Application Insights リリース注釈\) を選択する。](./media/annotations/3-add-task.png)
+
+   > [!NOTE]
+   > リリース注釈タスクは、現在、Windows ベースのエージェントのみをサポートしています。Linux、macOS、または他の種類のエージェントでは実行されません。
+   
+1. **[アプリケーション ID]** に、 **[API アクセス]** タブからコピーした Application Insights ID を貼り付けます。
+   
+   ![Application Insights ID を貼り付けます。](./media/annotations/4-paste-app-id.png)
+   
+1. Application Insights の **[API アクセス]** ウィンドウに戻り、 **[API キーの作成]** を選択します。 
+   
+   ![[API アクセス] タブで、[API キーの作成] を選択する。](./media/annotations/5-create-api-key.png)
+   
+1. **[API キーの作成]** ウィンドウで、説明を入力し、 **[コメントを書く]** を選択して、 **[キーの生成]** を選択します。 新しいキーをコピーします。
+   
+   ![[API キーの作成] ウィンドウで、説明を入力し、[コメントを書く] を選択して、[キーの生成] を選択します。](./media/annotations/6-create-api-key.png)
+   
+1. リリース テンプレート ウィンドウの **[変数]** タブで、 **[追加]** を選択して新しい API キーの変数定義を作成します。
+
+1. **[名前]** に「`ApiKey`」と入力し、 **[値]** に **[API アクセス]** タブからコピーした API キーを貼り付けます。
+   
+   ![Azure DevOps の [変数] タブで、[追加] を選択し、変数名を ApiKey にして、[値] に API キーを貼り付ける。](./media/annotations/7-paste-api-key.png)
+   
+1. メイン リリース テンプレート ウィンドウで **[保存]** 選択して、テンプレートを保存します。
+
+
+   > [!NOTE]
+   > API キーに対する制限については、[REST API の割合の制限に関するドキュメント](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits)を参照してください。
+
+### <a name="transition-to-the-new-release-annotation"></a>新しいリリース注釈に切り替える
+
+新しいリリース注釈を使用するには: 
+1. [リリース注釈拡張機能を削除します](/azure/devops/marketplace/uninstall-disable-extensions)。
+1. Azure Pipelines デプロイの Application Insights リリース注釈タスクを削除します。 
+1. [Azure Pipelines](#release-annotations-with-azure-pipelines-build) または [Azure CLI](#create-release-annotations-with-azure-cli) を使用して、新しいリリース注釈を作成します。
 
 ## <a name="next-steps"></a>次のステップ
 

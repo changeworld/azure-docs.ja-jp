@@ -2,15 +2,41 @@
 title: Microsoft Azure Backup Server の新機能
 description: Microsoft Azure Backup Server には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。
 ms.topic: conceptual
-ms.date: 05/24/2020
-ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/27/2021
+ms.openlocfilehash: 8f7c0e8709cd899b9b6a285dcd8c556763869c65
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91332765"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722661"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server (MABS) の新機能
+
+## <a name="whats-new-in-mabs-v3-ur2"></a>MABS V3 UR2 の新機能
+
+Microsoft Azure Backup Server (MABS) バージョン 3 UR2 では、次の新機能/機能更新プログラムがサポートされています。
+
+UR2 の問題の修正とインストール手順については、[サポート技術情報の記事](https://support.microsoft.com/topic/update-rollup-2-for-microsoft-azure-backup-server-v3-350de164-0ae4-459a-8acf-7777dbb7fd73)を参照してください。
+
+### <a name="support-for-azure-stack-hci"></a>Azure Stack HCI のサポート
+
+MABS v3 UR2 を使用すると、Azure Stack HCI 上で Virtual Machines をバックアップできます。 [詳細については、こちらを参照してください](./back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md)。
+
+### <a name="support-for-vmware-70"></a>VMware 7.0 のサポート
+
+MABS v3 UR2 を使用すると、VMware 7.0 VM をバックアップできます。 [詳細については、こちらを参照してください](./backup-azure-backup-server-vmware.md)。
+
+### <a name="support-for-sql-server-failover-cluster-instance-fci-using-cluster-shared-volume-csv"></a>クラスターの共有ボリューム (CSV) を使用した SQL Server フェールオーバー クラスター インスタンス (FCI) のサポート
+
+MABS v3 UR2 では、クラスターの共有ボリューム (CSV) を使用して、SQL Server フェールオーバー クラスター インスタンス (FCI) がサポートされます。 CSV を使用すると、SQL Server インスタンスの管理が簡素化されます。 どのノードがディスクを所有するかについての抽象化があるため、これは、基礎となるストレージを任意のノードから管理するうえで役立ちます。 [詳細については、こちらを参照してください](./backup-azure-sql-mabs.md)。
+
+### <a name="optimized-volume-migration"></a>ボリュームの移行の最適化
+
+MABS v3 UR2 では、ボリュームの移行の最適化がサポートされています。 ボリュームの移行の最適化により、データ ソースを新しいボリュームにより高速に移動できます。 強化された移行プロセスでは、アクティブなバックアップ コピー (アクティブなレプリカ) のみが新しいボリュームに移行されます。 新しい回復ポイントはすべて新しいボリュームに作成されます。一方、既存の回復ポイントは既存のボリュームに保持され、保持ポリシーに基づいて削除されます。 [詳細については、こちらを参照してください](/system-center/dpm/volume-to-volume-migration?view=sc-dpm-2019&preserve-view=true)。
+
+### <a name="offline-backup-using-azure-data-box"></a>Azure Data Box を使用したオフライン バックアップ
+
+MABS v3 UR2 では、Azure Data Box を使用してオフライン バックアップがサポートされています。 Microsoft Azure Data Box 統合を使用すると、テラバイト単位のバックアップ データをオンプレミスから Azure ストレージに移行するという課題を克服できます。 Azure Data Box を使用すると、Azure と互換性のある独自のディスクおよびコネクタを調達したり、一時的なストレージをステージング場所としてプロビジョニングしたりするのに必要な労力を節約できます。 また、Microsoft では、Azure portal を通じて追跡できるエンドツーエンドの転送ロジスティックも処理します。 [詳細については、こちらを参照してください](./offline-backup-azure-data-box-dpm-mabs.md)。
 
 ## <a name="whats-new-in-mabs-v3-ur1"></a>MABS V3 UR1 の新機能
 
@@ -61,7 +87,7 @@ MABS V3 UR1 では、クリティカルな操作に関して新たな認証レ�
 MABS v3 UR1 では、Azure Import/Export サービスによってオフライン バックアップのエクスペリエンスが向上しています。 詳細については、[こちら](./backup-azure-backup-server-import-export.md)で最新の手順を参照してください。
 
 >[!NOTE]
->このアップデートでは、MABS の Azure Data Box を使用したオフライン バックアップのプレビューも導入されます。 詳細については、[SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) にお問い合わせください。
+>MABS v3 UR2 以降、MABS では、Azure Data Box を使用してオフライン バックアップを実行できます。 [詳細については、こちらを参照してください](./offline-backup-azure-data-box-dpm-mabs.md)。
 
 ### <a name="new-cmdlet-parameter"></a>新しいコマンドレット パラメーター
 

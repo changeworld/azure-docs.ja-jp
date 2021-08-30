@@ -3,14 +3,14 @@ title: Start/Stop VMs v2 (プレビュー) の管理
 description: この記事では、Start/Stop VMs v2 (プレビュー) 機能によって管理されている Azure VM の状態を監視し、その他の管理タスクを実行する方法について説明します。
 services: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/16/2021
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: e9d6f7a93f2bd59b120be059d7f9c254d1bde56b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 40c3d2dba3d41c7651846d09d01dd7afdce15af9
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073164"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112967063"
 ---
 # <a name="how-to-manage-startstop-vms-v2-preview"></a>Start/Stop VMs v2 (プレビュー) を管理する方法
 
@@ -21,6 +21,9 @@ Start/Stop VMs v2 (プレビュー) には、管理スコープおよび VM に�
 特定の視覚エフェクトの **[更新]** アイコンをクリックするか、ダッシュボード全体を更新することにより、オンデマンドで手動更新オプションを使って、ダッシュボード内の各タイルに表示されるログ データが 1 時間ごとに更新されます。
 
 ログベースのダッシュボードの使用の詳細については、この[チュートリアル](../../azure-monitor/visualize/tutorial-logs-dashboards.md)を参照してください。
+
+> [!NOTE]
+> デプロイ中に問題が発生した場合、VM の開始/停止 v2 (プレビュー) を使用しているときに問題が発生します。または、関連する質問がある場合、[GitHub](https://github.com/microsoft/startstopv2-deployments/issues) で問題を送信できます。 このプレビュー バージョンでは、[Azure サポート サイト](https://azure.microsoft.com/support/options/)から Azure サポート インシデントを提出できません。 
 
 ## <a name="configure-email-notifications"></a>電子メール通知の構成
 

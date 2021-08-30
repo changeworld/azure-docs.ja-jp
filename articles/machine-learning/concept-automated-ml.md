@@ -1,21 +1,21 @@
 ---
 title: 自動 ML とは AutoML
 titleSuffix: Azure Machine Learning
-description: 指定したパラメーターと条件を使用して、Azure Machine Learning がモデルを自動的に生成する方法について説明します。
+description: 自動機械学習で提供するパラメーターと条件を使用して Azure Machine Learning がモデルを自動的に生成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: cartacioS
 ms.author: sacartac
-ms.date: 10/27/2020
+ms.date: 07/01/2021
 ms.custom: automl
-ms.openlocfilehash: a45d3a9be8c4741b0d9a1df615a70b9d7e88415f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 33fa0218a81d57ae6d33578cd08917bfd2055770
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094602"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690774"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -23,18 +23,66 @@ ms.locfileid: "110094602"
 
 機械学習モデルの従来の開発はリソース集約型であり、ドメインに関する広範な知識と多数のモデルを生成して比較するための大量の時間を必要とします。 自動機械学習を使用することで、すぐに実稼働環境で使用できる ML モデルを取得するための時間を、容易にかつ効率的に短縮することができます。
 
-## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning での自動 ML
+## <a name="ways-to-use-automl-in-azure-machine-learning"></a>Azure Machine Learning で AutoML を使用する方法
 
-Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
+Azure Machine Learning には、自動 ML を使用するための次の 2 つのエクスペリエンスが用意されています。 [各エクスペリエンスにおける機能の可用性](#parity)については、次のセクションを参照してください。
 
-* コードの経験がある場合は、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) に関する記事を参照してください。  「[チュートリアル: 自動機械学習を使用してタクシー料金を予測する](tutorial-auto-train-models.md)」を開始します。
+* コードの経験がある場合: [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) に関する記事。  「[チュートリアル: 自動機械学習を使用してタクシー料金を予測する](tutorial-auto-train-models.md)」を開始します。
 
-* コードの経験があまりない、またはない場合は、Azure Machine Learning スタジオ ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  次のチュートリアルを開始します。
+* コードの経験があまりない、またはない場合: Azure Machine Learning スタジオ ([https://ml.azure.com](https://ml.azure.com/))。  次のチュートリアルを開始します。
     * [チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)。
     *  [チュートリアル:自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)
 
+<a name="parity"></a>
 
-## <a name="when-to-use-automl-classify-regression--forecast"></a>AutoML をいつ使用するか: 分類、回帰、予測
+## <a name="automl-settings-and-configuration"></a>AutoML の設定と構成
+
+### <a name="experiment-settings"></a>実験の設定 
+
+次の設定を使用して、自動 ML の実験を構成できます。 
+
+| |Python SDK|Studio Web エクスペリエンス|
+----|:----:|:----:
+|**データをトレーニングおよび検証セットに分割する**| ✓|✓
+|**ML タスクのサポート: 分類、回帰、予測**| ✓| ✓
+|**プライマリ メトリックに基づいて最適化する**| ✓| ✓
+|**Azure ML コンピューティングをコンピューティング ターゲットとしてサポートする** | ✓|✓
+|**予測期間、ターゲットのラグ、ローリング期間を構成する**|✓|✓
+|**終了条件を設定する** |✓|✓ 
+|**コンカレント イテレーションを設定する**| ✓|✓
+|**列の削除**| ✓|✓
+|**ブロック アルゴリズム**|✓|✓
+|**クロス検証** |✓|✓
+|**Azure Databricks クラスターでのトレーニングをサポートする**| ✓|
+|**エンジニアリング機能の名前を表示する**|✓|
+|**特徴付けの概要**| ✓|
+|**休日の特徴付け**|✓|
+|**ログ ファイルの詳細度**| ✓|
+
+### <a name="model-settings"></a>モデルの設定
+
+これらの設定は、自動 ML 実験の結果として最適なモデルに適用できます。
+
+| |Python SDK|Studio Web エクスペリエンス|
+|----|:----:|:----:|
+|**最適なモデルの登録、デプロイ、説明可能性**| ✓|✓|
+|**投票アンサンブルとスタック アンサンブル モデルを有効にする**| ✓|✓|
+|**プライマリ メトリック以外に基づいて最適なモデルを表示する**|✓||
+|**ONNX モデルの互換性を有効または無効にする**|✓||
+|**モデルのテスト** | ✓| |
+
+### <a name="run-control-settings"></a>コントロール設定を実行する
+
+これらの設定を使用すると、実験の実行とその子の実行を確認し、制御することができます。 
+
+| |Python SDK|Studio Web エクスペリエンス|
+|----|:----:|:----:|
+|**実行の概要テーブル**| ✓|✓|
+|**実行および子の実行を取り消す**| ✓|✓|
+|**ガードレールを取得する**| ✓|✓|
+|**実行を一時停止および再開する**| ✓| |
+
+## <a name="when-to-use-automl-classification-regression--forecasting"></a>AutoML をいつ使用するか: 分類、回帰、予測
 
 指定したターゲット メトリックを使用して自分の代わりに Azure Machine Learning にモデルのトレーニングと調整を行わせる場合は、自動 ML を適用します。 自動 ML を使うと、誰でも機械学習モデルの開発プロセスを使用でき、ユーザーはデータ サイエンスの専門知識に関係なく、どの問題についてもエンド ツー エンドの機械学習パイプラインを識別することができます。
 
@@ -199,62 +247,6 @@ Azure Machine Learning には、自動 ML を使用するための 2 つのエ�
 | UI で実験の情報とメトリックを登録して視覚化する | ✓      | ✓     |
 | データ ガードレール                                            | ✓      | ✓     |
 
-## <a name="many-models"></a>多数モデル 
-
-[多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、自動 ML を使用して、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
-
-たとえば次のシナリオで、__それぞれの事例または個々の対象の__ モデルを構築すると、結果が改善される可能性があります。
-
-* 個々の店舗の売上予測
-* 数百基の油井の予測メンテナンス
-* 個々のユーザーのエクスペリエンスの調整。
-
-<a name="parity"></a>
-
-### <a name="experiment-settings"></a>実験の設定 
-
-次の設定を使用して、自動 ML の実験を構成できます。 
-
-| |Python SDK|Studio Web エクスペリエンス|
-----|:----:|:----:
-|**データをトレーニングおよび検証セットに分割する**| ✓|✓
-|**ML タスクのサポート: 分類、回帰、予測**| ✓| ✓
-|**プライマリ メトリックに基づいて最適化する**| ✓| ✓
-|**Azure ML コンピューティングをコンピューティング ターゲットとしてサポートする** | ✓|✓
-|**予測期間、ターゲットのラグ、ローリング期間を構成する**|✓|✓
-|**終了条件を設定する** |✓|✓ 
-|**コンカレント イテレーションを設定する**| ✓|✓
-|**列の削除**| ✓|✓
-|**ブロック アルゴリズム**|✓|✓
-|**クロス検証** |✓|✓
-|**Azure Databricks クラスターでのトレーニングをサポートする**| ✓|
-|**エンジニアリング機能の名前を表示する**|✓|
-|**特徴付けの概要**| ✓|
-|**休日の特徴付け**|✓|
-|**ログ ファイルの詳細度**| ✓|
-
-### <a name="model-settings"></a>モデルの設定
-
-これらの設定は、自動 ML 実験の結果として最適なモデルに適用できます。
-
-| |Python SDK|Studio Web エクスペリエンス|
-|----|:----:|:----:|
-|**最適なモデルの登録、デプロイ、説明可能性**| ✓|✓|
-|**投票アンサンブルとスタック アンサンブル モデルを有効にする**| ✓|✓|
-|**プライマリ メトリック以外に基づいて最適なモデルを表示する**|✓||
-|**ONNX モデルの互換性を有効または無効にする**|✓||
-|**モデルのテスト** | ✓| |
-
-### <a name="run-control-settings"></a>コントロール設定を実行する
-
-これらの設定を使用すると、実験の実行とその子の実行を確認し、制御することができます。 
-
-| |Python SDK|Studio Web エクスペリエンス|
-|----|:----:|:----:|
-|**実行の概要テーブル**| ✓|✓|
-|**実行および子の実行を取り消す**| ✓|✓|
-|**ガードレールを取得する**| ✓|✓|
-|**実行を一時停止および再開する**| ✓| |
 
 <a name="use-with-onnx"></a>
 
@@ -264,7 +256,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 
 ONNX 形式に変換する方法については、[この Jupyter ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 [ONNX でサポートされているアルゴリズム](how-to-configure-auto-train.md#select-your-experiment-type)についてご確認ください。
 
-ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ML.NET を使用する .NET アプリケーションでの AutoML ONNX モデルの使用](./how-to-use-automl-onnx-model-dotnet.md)と [ONNX ランタイム C# API を使用した ONNX モデルの推論](https://github.com/plaidml/onnxruntime/blob/plaidml/docs/CSharp_API.md)に関するページを参照してください。 
+ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ML.NET を使用する .NET アプリケーションでの AutoML ONNX モデルの使用](./how-to-use-automl-onnx-model-dotnet.md)と [ONNX ランタイム C# API を使用した ONNX モデルの推論](https://www.onnxruntime.ai/docs/reference/api/csharp-api.html)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -272,17 +264,17 @@ AutoML の使用を開始する方法がわかるリソースが複数ありま�
 
 ### <a name="tutorials-how-tos"></a>チュートリアルと方法
 チュートリアルでは、AutoML シナリオのサンプルを端から端まで紹介します。
-+ **コード ファーストの場合**、[Azure Machine Learning Python SDK で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)方法のチュートリアルを参照してください。
++ **コード ファースト エクスペリエンス** については、「[チュートリアル: AutoML と Python を使用して回帰モデルをトレーニングする](tutorial-auto-train-models.md)」に従ってください。
 
- + **コードの作成経験が少ないか、まったくない場合**、[Azure Machine Learning スタジオで自動 ML 分類モデルを作成する](tutorial-first-experiment-automated-ml.md)方法のチュートリアルを参照してください。
+ + **わずかなコードまたはコードなしのエクスペリエンス** については、「[チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする](tutorial-first-experiment-automated-ml.md)」を参照してください。
 
-ハウツー記事には、AutoML が備えている機能に関する詳細があります。 たとえば、次のように入力します。 
+操作方法の記事では、自動 ML が提供する機能について詳しく説明しています。 たとえば、次のように入力します。 
 
 + 自動トレーニング実験の設定を構成してください
-    + Azure Machine Learning Studio で、[こちらの手順](how-to-use-automated-ml-for-ml-models.md)を使用します。 
-    + Python SDK で、[こちらの手順](how-to-configure-auto-train.md)を使用します。
+    + [コードの記述なし (Azure Machine Learning スタジオ)](how-to-use-automated-ml-for-ml-models.md)。 
+    + [Python SDK の使用](how-to-configure-auto-train.md)。
 
-+  [こちらの手順](how-to-auto-train-forecast.md)で、時系列データを使用して自動トレーニングする方法について学習してください。
++  [時系列データを使用して予測モデルをトレーニングする](how-to-auto-train-forecast.md)方法について学習します。
 
 ### <a name="jupyter-notebook-samples"></a>Jupyter Notebook のサンプル 
 

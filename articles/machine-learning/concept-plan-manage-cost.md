@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 01c985b0554fe5955010c1c8c286f81f8de6d3ee
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: e48cdb3792a314166a29ced4d3828ba77de46621
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006007"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742061"
 ---
 # <a name="plan-to-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストの管理を計画する
 
@@ -51,10 +51,6 @@ Cost Management のコスト分析では、ほとんどの種類の Azure アカ
 Azure Machine Learning は、新しいリソースをデプロイするときに Azure Machine Learning と共にコストが発生する Azure インフラストラクチャ上で実行されます。 追加のインフラストラクチャでコストが発生する可能性があることを理解しておくことが重要です。 デプロイされたリソースに変更を加える場合は、このコストを管理する必要があります。 
 
 
-
-
-
-
 ### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>Azure Machine Learning で通常発生するコスト
 
 Azure Machine Learning ワークスペースのリソースを作成すると、他の Azure サービスのリソースも作成されます。 これらは次のとおりです。
@@ -62,8 +58,21 @@ Azure Machine Learning ワークスペースのリソースを作成すると、
 * [Azure Container Registry](https://azure.microsoft.com/pricing/details/container-registry?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) Basic アカウント
 * [Azure ブロック BLOB ストレージ](https://azure.microsoft.com/pricing/details/storage/blobs?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) (General Purpose v1)
 * [Key Vault](https://azure.microsoft.com/pricing/details/key-vault?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Application Insights](https://azure.microsoft.com/en-us/pricing/details/monitor?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Application Insights](https://azure.microsoft.com/pricing/details/monitor?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+
+[コンピューティング インスタンス](concept-compute-instance.md)を作成するとき、VM はそのまま残るためご自身の作業に使用できます。  コンピューティング インスタンス (プレビュー) が自動的に開始および停止されるように[スケジュールを設定](how-to-create-manage-compute-instance.md#schedule)して、使用する予定がないときのコストを節約します。
  
+### <a name="costs-might-accrue-before-resource-deletion"></a>リソースの削除前にコストが発生する可能性がある
+
+Azure portal 内で、または Azure CLI を使用して Azure Machine Learning ワークスペースを削除する前、ワークスペース内でアクティブに作業していない場合でも、次のサブ リソースは一般的なコストとして蓄積されます。 後でご自身の Azure Machine Learning ワークスペースに戻る予定がある場合、これらのリソースには引き続きコストが発生する可能性があります。
+
+* VM
+* Load Balancer
+* Virtual Network
+* 帯域幅
+
+VM はそれぞれ、実行している時間ごとに課金されます。 コストは VM の仕様によって異なります。 実行中であっても、データセットに対してアクティブに動作していない VM については、ロード バランサー経由で課金されます。 コンピューティング インスタンスごとに、1 日あたり 1 つのロード バランサーに対して請求が発生します。 コンピューティング クラスターの 50 ノードごとに、1 つの Standard ロード バランサーが課金されます。 ロード バランサーあたりの課金額は 1 日あたり約 0.33 ドルです。 停止しているコンピューティング インスタンスとコンピューティング クラスターに対してロード バランサーのコストが発生するのを回避するには、コンピューティング リソースを削除します。 サブスクリプションごと、およびリージョンごとに 1 つの仮想ネットワークが課金されます。 仮想ネットワークは、複数のリージョンまたはサブスクリプションにまたがることはできません。 vNet 設定内でプライベート エンドポイントを設定しても、料金が発生することがあります。 帯域幅は使用量に基づいて課金されます。転送データが多いほど、料金は高くなります。
+
 ### <a name="costs-might-accrue-after-resource-deletion"></a>リソースの削除後にコストが発生する可能性がある
 
 Azure portal または Azure CLI で Azure Machine Learning ワークスペースを削除した後も、次のリソースは引き続き存在します。 これらを削除するまで、これらのコストは発生し続けます。
@@ -153,11 +162,13 @@ Azure Machine Learning のみのコストが表示される例を次に示しま
 - サブスクリプションとワークスペースにクォータを設定する
 - トレーニングの実行に終了ポリシーを設定する
 - 優先順位の低い仮想マシン (VM) を使用する
+- 自動的にシャットダウンおよび起動するようにコンピューティング インスタンスのスケジュールを設定する
 - Azure 予約 VM インスタンスを使用する
 - ローカルでトレーニングする
 - トレーニングを並列化する
 - データ保持と削除のポリシーを設定する
 - リソースを同じリージョンにデプロイする
+- インスタンスとクラスターを当面使用する予定がない場合は削除する
 
 詳細については、[Azure Machine Learning でのコストの管理と最適化](how-to-manage-optimize-cost.md)に関するページをご覧ください。
 

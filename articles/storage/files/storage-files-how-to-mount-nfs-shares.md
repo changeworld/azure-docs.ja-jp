@@ -1,23 +1,23 @@
 ---
-title: Azure NFS ファイル共有をマウントする - Azure Files
+title: Azure NFS ファイル共有 (プレビュー) をマウントする - Azure Files
 description: ネットワーク ファイル システム共有をマウントする方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 9b537509d83c680fc9edb014acc13b41a8ca1466
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 8f3565f05fc04a74e761b1070f0374677703d225
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810528"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225267"
 ---
-# <a name="how-to-mount-an-nfs-file-share"></a>NFS ファイル共有をマウントする方法
+# <a name="how-to-mount-an-nfs-file-share-preview"></a>NFS ファイル共有 (プレビュー) をマウントする方法
 
-[Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、サーバー メッセージ ブロック プロトコル (SMB) またはネットワーク ファイル システム (NFS) プロトコルのいずれかを使用して Linux ディストリビューションにマウントできます。 この記事では、NFS を使用したマウントについて説明します。SMB を使用したマウントの詳細については、「[Linux で Azure Files を使用する](storage-how-to-use-files-linux.md)」を参照してください。 使用できる各プロトコルの詳細については、「[Azure ファイル共有プロトコル](storage-files-compare-protocols.md)」を参照してください。
+[Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、サーバー メッセージ ブロック プロトコル (SMB) またはネットワーク ファイル システム (NFS) プロトコル (プレビュー) のいずれかを使用して Linux ディストリビューションにマウントできます。 この記事では、NFS を使用したマウントについて説明します。SMB を使用したマウントの詳細については、「[Linux で Azure Files を使用する](storage-how-to-use-files-linux.md)」を参照してください。 使用できる各プロトコルの詳細については、「[Azure ファイル共有プロトコル](storage-files-planning.md#available-protocols)」を参照してください。
 
 ## <a name="limitations"></a>制限事項
 

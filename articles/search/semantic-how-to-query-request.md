@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/27/2021
-ms.openlocfilehash: b87f36b755037519d29881eeaefddfa8c92f6a3f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 07/21/2021
+ms.openlocfilehash: e3ae63b202d826e48789bd8d15a197048d5566b7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744937"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178332"
 ---
 # <a name="create-a-query-that-invokes-semantic-ranking-and-returns-semantic-captions"></a>セマンティックのランク付けを呼び出してセマンティック キャプションを返すクエリを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "111744937"
 
 + [プレビューにサインアップする](https://aka.ms/SemanticSearchPreviewSignup) 予想されるターンアラウンドは約 2 営業日です。
 
-+ [サポートされている言語](/rest/api/searchservice/preview-api/search-documents#queryLanguage)のコンテンツを含む既存の検索インデックス。
++ [サポートされている言語](/rest/api/searchservice/preview-api/search-documents#queryLanguage)のコンテンツを含む既存の検索インデックス。 セマンティック検索は、情報または説明であるコンテンツに最適です。
 
 + クエリを送信するための検索クライアント。
 
@@ -40,7 +40,7 @@ ms.locfileid: "111744937"
 
 ## <a name="whats-a-semantic-query-type"></a>セマンティック クエリの種類とは
 
-Cognitive Search では、クエリは、クエリ処理と応答の形を決定するパラメーター化された要求です。 "*セマンティック クエリ*" には、一致する結果のコンテキストと意味を評価し、関連性の高い一致を最上位に昇格させ、セマンティック回答とキャプションを返すことができるセマンティック再ランク付けモデルを呼び出す[パラメーターがあります](#query-using-rest)。
+Cognitive Search では、クエリは、クエリ処理と応答の形を決定するパラメーター化された要求です。 "*セマンティック クエリ*" には、一致する結果のコンテキストと意味を評価し、関連性の高い一致を最上位に昇格させ、セマンティック回答とキャプションを返すことができるセマンティック再ランク付けモデルを呼び出す [パラメーターがあります](#query-using-rest)。
 
 次の要求は、最小限のセマンティック クエリ (回答なし) を表しています。
 
@@ -98,13 +98,13 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 次の表は、セマンティック クエリで使用されるパラメーターをまとめたものです。 要求内のすべてのパラメーターの一覧については、[ドキュメントの検索 (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents) に関する記事を参照してください
 
-| パラメーター | 種類 | 説明 |
+| パラメーター | Type | 説明 |
 |-----------|-------|-------------|
 | queryType | String | 有効な値は、simple、full、semantic です。 セマンティック クエリには、"semantic" の値が必要です。 |
 | queryLanguage | String | セマンティック クエリに必要です。 指定する辞書は、セマンティック ランク付け、キャプション、回答、およびスペル チェックに等しく適用されます。 詳細については、[サポートされている言語 (REST API リファレンス)](/rest/api/searchservice/preview-api/search-documents#queryLanguage) に関するセクションを参照してください。 |
 | searchFields | String | 検索可能なフィールドのコンマ区切りの一覧。 セマンティック ランク付けを行うフィールドを指定します。ここから、キャプションと回答が抽出されます。 </br></br>単純および完全なクエリの種類とは対照的に、フィールドの順番によって優先順位が決まります。 使用方法の詳細については、「[手順 2: searchFields を設定する](#searchfields)」を参照してください。 |
 | スペル チェック | String | 検索エンジンに到達する前にスペルミスを修正する省略可能なパラメーターであり、セマンティック クエリに固有のものではない。 詳細については、[クエリへのスペル修正の追加](speller-how-to-add.md)に関するページを参照してください。 |
-| answers |String | セマンティック回答を結果に含めるかどうかを指定する省略可能なパラメーター。 現在、"extractive" のみが実装されています。 回答は、最大 5 つを返すように構成できます。 既定値は 1 です。 この例は、回答の数が 3 であることを示しています: "extractive\|count3"。 詳細については、[セマンティック回答を返す](semantic-answers.md)に関するページを参照してください。|
+| answers |String | セマンティック回答を結果に含めるかどうかを指定する省略可能なパラメーター。 現在、"extractive" のみが実装されています。 回答は、最大 10 個を返すように構成できます。 既定値は 1 です。 `extractive\|count-3` という例は、回答の数が 3 であることを示しています。 詳細については、[セマンティック回答を返す](semantic-answers.md)に関するページを参照してください。|
 
 ### <a name="formulate-the-request"></a>要求を作成する
 
@@ -163,9 +163,13 @@ searchFields を設定するときは、次の[サポートされているデー
 
   + 上のフィールドの後に、セマンティック クエリの回答が見つかる可能性がある他の説明フィールドを配置します (ドキュメントのメイン コンテンツなど)。
 
-#### <a name="step-3-remove-orderby-clauses"></a>手順 3: orderBy 句を削除する
+#### <a name="step-3-remove-or-bracket-query-features-that-bypass-relevance-scoring"></a>手順 3: 関連性スコアリングをバイパスするクエリ機能を削除またはブラケット化する
 
-orderBy 句を既存のクエリ コードから削除します。 結果の順序付けにはセマンティック スコアが使用されます。明示的な並べ替えロジックを含めると、HTTP 400 エラーが返されます。
+Cognitive Search の一部のクエリ機能は関連性スコアリングを受けず、いくつかはフルテキスト検索エンジンを完全にバイパスします。 使用するクエリ ロジックに以下の機能が含まれている場合、結果に対する関連性スコアまたはセマンティック ランク付けは得られません。
+
++ フィルター、あいまい検索クエリ、および正規表現は、トークン化されていないテキストを反復処理し、コンテンツ内の逐語的一致をスキャンします。 上のすべてのクエリ形式の検索スコアは同じ 1.0 であり、セマンティック順位付けのための意味のある入力は提供しません。
+
++ 特定のフィールドで並べ替え (orderBy 句) を実行すると、検索スコアとセマンティック スコアもオーバーライドされます。 結果の並べ替えにセマンティック スコアを使用すると (明示的な並べ替えロジックを含む)、HTTP 400 エラーが返されます。
 
 #### <a name="step-4-add-answers"></a>手順 4: 回答を追加する
 
@@ -190,6 +194,17 @@ orderBy 句を既存のクエリ コードから削除します。 結果の順�
 ```
 
 強調表示スタイルが、応答のキャプションに適用されます。 既定のスタイルを使用することも、あるいはキャプションに適用される強調表示スタイルをカスタマイズすることもできます。 キャプションでは、ドキュメント内の重要な一説 (応答を要約する部分) に強調の書式設定が適用されます。 既定では、 `<em>`です。 書式設定の種類 (黄色の背景など) を指定する場合は、highlightPreTag と highlightPostTag を設定できます。
+
+## <a name="query-using-azure-sdks"></a>Azure SDK を使用してクエリを実行する
+
+Azure SDK のベータ版には、セマンティック検索のサポートが含まれています。 SDK はベータ版であるため、ドキュメントやサンプルはありませんが、上の REST API のセクションを参照して、API の動作について把握することができます。
+
+| Azure SDK | Package |
+|-----------|---------|
+| .NET | [Azure.Search.Documents package 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2)  |
+| Java | [com.azure:azure-search-documents 11.4.0-beta.2](https://search.maven.org/artifact/com.azure/azure-search-documents/11.4.0-beta.2/jar)  |
+| JavaScript | [azure/search-documents 11.2.0-beta.2](https://www.npmjs.com/package/@azure/search-documents/v/11.2.0-beta.2)|
+| Python | [azure-search-documents 11.2.0b3](https://pypi.org/project/azure-search-documents/11.2.0b3/) |
 
 ## <a name="evaluate-the-response"></a>応答を評価する
 

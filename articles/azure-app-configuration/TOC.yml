@@ -158,6 +158,8 @@
       href: howto-integrate-azure-managed-service-identity.md
     - name: 新しい Spring Boot ライブラリに更新する
       href: howto-convert-to-the-new-spring-boot.md
+    - name: Azure リージョン間でリソースを移動する
+      href: howto-move-resource-between-regions.md
 - name: リファレンス
   items:
     - name: クライアント ライブラリ

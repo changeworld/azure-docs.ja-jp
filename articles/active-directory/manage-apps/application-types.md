@@ -2,32 +2,38 @@
 title: ID 管理用の Azure Active Directory テナントを使用してアプリを表示する
 description: ID 管理用の Azure Active Directory テナントを使用してすべてのアプリを表示する方法について説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
-ms.author: mtillman
-ms.openlocfilehash: 95a5264582087d748c1cb0e6b924f14f34728ab6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 3f106a7153f9fd61c289516d129e31c9239b97fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080707"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738871"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>ID 管理用の Azure AD テナントを使用してアプリを表示する
+
 「[アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)」では、基本情報を紹介します。 ID 管理用の Azure AD テナントを使用して、すべてのアプリを表示する方法について説明します。 この記事では、表示されるアプリの種類についてもう少し詳しく説明します。
 
 ## <a name="why-does-a-specific-application-appear-in-my-all-applications-list"></a>特定のアプリケーションがすべてのアプリケーション リストに表示される理由
+
 **[すべてのアプリケーション]** にフィルターすると、 **[すべてのアプリケーションの** **一覧]** に、テナントのすべてのサービス プリンシパル オブジェクトが表示されます。 サービス プリンシパル オブジェクトは、さまざまな方法でこのリストに表示できます。
+
 - アプリケーション ギャラリーから、次のようなアプリケーションを追加する場合:
-   - **Azure AD - エンタープライズ アプリケーション** – Azure AD portal で **[エンタープライズ アプリケーション]** オプションを使用してテナントに追加されたアプリ。 通常、SAML 標準を使用して統合されたアプリです。
-   - **Azure AD - アプリの登録** – Azure AD portal で **[アプリの登録]** オプションを使用してテナントに追加されたアプリ。 通常、Open ID Connect と OAuth 標準を使用してカスタム開発されたアプリです。
-   - **アプリケーション プロキシ アプリケーション** - 外部へのセキュリティで保護されたシングル サインオンを提供するオンプレミスの環境で実行されるアプリケーション
+
+  - **Azure AD - エンタープライズ アプリケーション** – Azure AD portal で **[エンタープライズ アプリケーション]** オプションを使用してテナントに追加されたアプリ。 通常、SAML 標準を使用して統合されたアプリです。
+  - **Azure AD - アプリの登録** – Azure AD portal で **[アプリの登録]** オプションを使用してテナントに追加されたアプリ。 通常、Open ID Connect と OAuth 標準を使用してカスタム開発されたアプリです。
+  - **アプリケーション プロキシ アプリケーション** - 外部へのセキュリティで保護されたシングル サインオンを提供するオンプレミスの環境で実行されるアプリケーション
 - Azure Active Directory と統合されたサードパーティー製アプリケーションにサインアップまたはサインインする場合。 一例として、[Smartsheet](https://app.smartsheet.com/b/home) または [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) があります。
 - Microsoft 365 などの Microsoft アプリ。
+- Azure リソースのマネージド ID を使用する場合。 詳細については、[マネージド ID の種類](../managed-identities-azure-resources/overview.md#managed-identity-types)に関するページを参照してください。
 - [アプリケーション レジストリ](../develop/quickstart-register-app.md)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 - [V2.0 アプリケーション登録ポータル](../develop/quickstart-register-app.md)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 - Visual Studio の [ASP.NET の認証方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)または [接続済みサービス](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)を使用して開発しているアプリケーションを追加する場合
@@ -39,4 +45,5 @@ ms.locfileid: "112080707"
 アプリがディレクトリに追加される方法および理由について詳しくは、[アプリケーションを Azure AD に追加する方法](../develop/active-directory-how-applications-are-added.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
+
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, ladolan, azla
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 0c09d013e3e9e3934702eb512334a33a60044b9d
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 07/13/2021
+ms.openlocfilehash: bf8140c67e9f572ed9da6672e67966772267f822
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441242"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767024"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境の比較
 
@@ -95,7 +95,7 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 | Azure portal | **ロジック アプリ (従量課金)** のリソースの種類 | [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成する - Azure portal](quickstart-create-first-logic-app-workflow.md) |
 | Visual Studio Code | [**Azure Logic Apps (従量課金)** の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) | [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成する - Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 | Azure CLI | [**Logic Apps Azure CLI** の拡張機能](https://github.com/Azure/azure-cli-extensions/tree/master/src/logic) | - [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成して管理する - Azure CLI](quickstart-logic-apps-azure-cli.md) <p><p>- [az logic](/cli/azure/logic) |
-| Azure Resource Manager | [**ロジック アプリを作成する** Azure Resource Manager (ARM) テンプレート](https://azure.microsoft.com/resources/templates/logic-app-create/) | [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成してデプロイする - ARM テンプレート](quickstart-create-deploy-azure-resource-manager-template.md) |
+| Azure Resource Manager | [**ロジック アプリを作成する** ARM テンプレート](https://azure.microsoft.com/resources/templates/logic-app-create/) | [クイックスタート: マルチテナント Azure Logic Apps で統合ワークフローを作成してデプロイする - ARM テンプレート](quickstart-create-deploy-azure-resource-manager-template.md) |
 | Azure PowerShell | [Az.LogicApp モジュール](/powershell/module/az.logicapp) | [Azure PowerShell の概要](/powershell/azure/get-started-azureps) |
 | Azure REST API | [Azure Logic Apps REST API](/rest/api/logic) | [Azure Rest API リファレンスの概要](/rest/api/azure) |
 ||||
@@ -119,11 +119,14 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
 * *ステートレス*
 
-  前のイベントのデータを保持、確認、または参照する必要がある場合は、ステートフル ワークフローを作成します。 これらのワークフローで、各アクションとその状態の入出力が外部ストレージに保存されます。これにより、各実行が完了した後にその実行の詳細と履歴を確認できます。 ステートフル ワークフローでは、サービス停止が発生した場合に高い回復性を実現できます。 サービスとシステムが復元された後に、中断された実行を保存済みの状態から再構築し、ワークフローを再実行して完了することができます。 ステートフル ワークフローは、ステートレス ワークフローよりもはるかに長い間実行を継続できます。
+  前のイベントのデータを保持、確認、または参照する必要がある場合は、ステートフル ワークフローを作成します。 これらのワークフローでは、各アクションとその状態のすべての入出力が外部ストレージに転送されて保存されます。これにより、各実行が完了した後にその実行の詳細と履歴を確認できます。 ステートフル ワークフローでは、サービス停止が発生した場合に高い回復性を実現できます。 サービスとシステムが復元された後に、中断された実行を保存済みの状態から再構築し、ワークフローを再実行して完了することができます。 ステートフル ワークフローは、ステートレス ワークフローよりもはるかに長い間実行を継続できます。
 
 * *ステートレス*
 
-  後で確認できるように外部ストレージに前のイベントのデータを保存、確認、または参照する必要がない場合は、ステートレス ワークフローを作成します。 これらのワークフローでは、このデータを外部ストレージに転送するのではなく、各アクションとその状態の入出力を "*メモリ内でのみ*" 保存します。 その結果、ステートレス ワークフローで通常は 5 分未満に実行時間が短縮され、パフォーマンスが高速化されて応答時間が短くなり、スループットが向上し、実行コストが削減されます。これは、実行の詳細と履歴が外部ストレージに保持されないためです。 しかし、サービス停止が発生した場合、中断された実行は自動的には復元されないため、呼び出し元は中断された実行を手動で再送信する必要があります。 これらのワークフローは同期的にのみ実行できます。
+  後で確認するために、各実行が完了した後に外部ストレージに前のイベントのデータを保持、確認、参照する必要がない場合は、ステートレス ワークフローを作成します。 これらのワークフローでは、各アクションとその状態の入出力を外部ストレージにではなく、"*メモリ内にのみ*" 保存します。 その結果、ステートレス ワークフローでは、実行時間が短縮され (通常は 5 分未満)、パフォーマンスが高速化されて応答時間が短くなり、スループットが向上し、実行コストが削減されます。これは、実行の詳細と履歴が外部ストレージに保存されないためです。 しかし、サービス停止が発生した場合、中断された実行は自動的には復元されないため、呼び出し元は中断された実行を手動で再送信する必要があります。 これらのワークフローは同期的にのみ実行できます。
+
+  > [!IMPORTANT]
+  > ステートレス ワークフローは、"*合計*" サイズが 64 KB を超えないファイルなどのデータやコンテンツを処理する際に、最高のパフォーマンスを発揮します。 サイズの大きな添付ファイルが複数ある場合など、コンテンツのサイズが大きくなると、ワークフローのパフォーマンスが著しく低下し、メモリ不足の例外によってワークフローのクラッシュが引き起こされることもあります。 ワークフローでより大きなサイズのコンテンツを処理する必要がある場合は、代わりにステートフル ワークフローを使用してください。
 
   デバッグをより容易にするために、ステートレス ワークフローの実行履歴を有効にし (この場合、パフォーマンスに何らかの影響があります)、その後、完了時に実行履歴を無効にすることができます。 詳細については、[Visual Studio Code でのシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless)または [Azure portal でのシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless)に関するページを参照してください。
 

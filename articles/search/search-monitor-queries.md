@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 01/26/2021
+ms.openlocfilehash: 67ada228d3b4ed95b1247b221f0ad90bbbc74ba0
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592394"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416967"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Cognitive Search でクエリ要求を監視する
 
 この記事では、メトリックとリソース ログを使用してクエリのパフォーマンスと量を測定する方法について説明します。 また、クエリで使用される入力用語を収集する方法についても説明します。これは、検索コーパスの有用性と有効性を評価する必要がある場合に欠かせない情報です。
 
-メトリックにフィードされる履歴データは、30 日間保存されます。 保持期間を延長する場合、またはオペレーショナル データとクエリ文字列についてレポートする場合は、ログに記録されたイベントとメトリックを保持するためのストレージ オプションを指定する[診断設定](search-monitor-logs.md)を必ず有効にしてください。
+Azure portal には、クエリの待ち時間、クエリ負荷 (QPS)、スロットリングに関する基本的なメトリックが表示されます。 これらのメトリックにフィードされる履歴データは、30 日間保存されます。 保有期間を延長する場合、またはオペレーショナル データとクエリ文字列についてレポートする場合は、ログに記録されたイベントとメトリックを保持するためのストレージ オプションを指定する[診断設定](search-monitor-logs.md)を有効にしてください。
 
 データ測定の整合性を最大化する条件には、次のようなものがあります。
 
@@ -116,7 +116,7 @@ ms.locfileid: "100592394"
 
 1. 折れ線グラフ上で、関心領域を拡大します。 領域の先頭にマウス ポインターを置き、マウスの左ボタンを押したまま領域のもう一方の側にドラッグしてボタンを離します。 その時間範囲のグラフが拡大されます。
 
-## <a name="identify-strings-used-in-queries"></a>クエリで使用されている文字列を特定する
+## <a name="return-query-strings-entered-by-users"></a>ユーザーによって入力されたクエリ文字列を返す
 
 リソース ログを有効にすると、システムによってクエリ要求が **AzureDiagnostics** テーブルにキャプチャされます。 前提条件として、Log Analytics ワークスペースまたは別のストレージ オプションを指定して既に[リソース ログ](search-monitor-logs.md)を有効にしていることが必要です。
 
@@ -124,8 +124,8 @@ ms.locfileid: "100592394"
 
 1. 次の式を実行して、Query.Search 操作を検索します。操作名、クエリ文字列、クエリ対象のインデックス、および検出されたドキュメントの数で構成される表形式の結果セットが返されます。 最後の 2 つのステートメントは、サンプル インデックス全体から、空または未指定の検索から成るクエリ文字列を除外し、結果に含まれるノイズを削減します。
 
-   ```
-   AzureDiagnostics
+   ```kusto
+      AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
    | where Query_s != "?api-version=2020-06-30&search=*"
@@ -144,9 +144,9 @@ ms.locfileid: "100592394"
 
 1. [監視] セクションで **[ログ]** を選択して、ログ情報に対してクエリを実行します。
 
-1. 次のクエリを実行すると、ミリ秒単位の実行時間で並べ替えられたクエリが返されます。 実行時間が最も長いクエリは一番上にあります。
+1. 次の基本的なクエリを実行すると、ミリ秒単位の実行時間で並べ替えられたクエリが返されます。 実行時間が最も長いクエリは一番上にあります。
 
-   ```
+   ```Kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search"
@@ -182,10 +182,6 @@ ms.locfileid: "100592394"
    ![アラートの詳細](./media/search-monitor-usage/alert-details.png "[アラートの詳細]")
 
 メール通知を指定した場合、"Microsoft Azure" から、"Azure: Activated Severity: 3 `<your rule name>`" という件名のメールを受信します。
-
-<!-- ## Report query data
-
-Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>次のステップ
 

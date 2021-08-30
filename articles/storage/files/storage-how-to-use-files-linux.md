@@ -1,5 +1,5 @@
 ---
-title: Linux で Azure Files を使用する | Microsoft Docs
+title: SMB Azure ファイル共有を Linux でマウントする | Microsoft Docs
 description: Linux で SMB 経由で Azure File 共有をマウントする方法について説明します。 前提条件の一覧を参照してください。 Linux クライアントでの SMB のセキュリティに関する考慮事項を確認します。
 author: roygara
 ms.service: storage
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7e02d85fe5385b8918fbfdb037382aeeef444267
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 629770f2ef539f2f6e7ca8121adb941928943534
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088356"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117738"
 ---
-# <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
+# <a name="mount-smb-azure-file-share-on-linux"></a>SMB Azure ファイル共有を Linux でマウントする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、[SMB カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。
 
 Linux で Azure ファイル共有をマウントするには、SMB 3.1.1 を使用することをお勧めします。 既定では、転送中の暗号化が Azure Files で必要になりますが、これがサポートされるのは SMB 3.0 以降となります。 Azure Files では SMB 2.1 (転送中の暗号化をサポートしていない) もサポートしていますが、セキュリティ上の理由から、別の Azure リージョンまたはオンプレミスから SMB 2.1 を使用して Azure ファイル共有をマウントすることはできません。 アプリケーションで SMB 2.1 が特に必要な場合を除き、SMB 3.1.1 を使用してください。
@@ -35,6 +35,13 @@ uname -r
 
 > [!Note]  
 > SMB 2.1 のサポートが追加されたのは、Linux カーネル バージョン 3.7 となります。 お使いの Linux カーネルのバージョンが 3.7 より大きい場合、SMB 2.1 がサポートされています。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="prerequisites"></a>前提条件
 <a id="smb-client-reqs"></a>
@@ -297,88 +304,9 @@ echo "/fileshares /etc/auto.fileshares --timeout=60" > /etc/auto.master
 sudo systemctl restart autofs
 ```
 
-## <a name="securing-linux"></a>Linux のセキュリティ保護
-SMB を使って Azure ファイル共有をマウントするためには、ポート 445 にアクセスできることが必要です。 ポート 445 は、SMB 1 に固有のセキュリティ リスクから、多くの組織でブロックされています。 SMB 1 は、数多くの Linux ディストリビューションに備わっているレガシ ファイル システム プロトコルで、CIFS (Common Internet File System) と呼ばれることもあります。 SMB 1 は、旧式で効率が悪く、また何よりもセキュリティに不安があるプロトコルです。 さいわいなことに、Azure Files は SMB 1 をサポートしておらず、Linux カーネル バージョン 4.18 以降では、Linux で SMB 1 を無効にすることができます。 運用環境で SMB ファイル共有を使用する前に、Linux クライアント上で SMB 1 を無効にすることを常に[強くお勧めします](https://aka.ms/stopusingsmb1)。
-
-Linux カーネル 4.18 以降、レガシの理由から `cifs` と呼ばれる SMB カーネル モジュールでは、`disable_legacy_dialects` と呼ばれる新しいモジュール パラメーター (各種外部ドキュメントでは "*parm*" と呼ばれることが多い) を公開しています。 Linux カーネル 4.18 で導入されましたが、一部のベンダーでは、サポート対象の旧カーネルにこの変更を移植しています。 便宜のため、次の表では、よく知られた Linux ディストリビューションでこのモジュール パラメーターを使用できるかどうかについて詳しく示しています。
-
-| Distribution | SMB 1 を無効にできる |
-|--------------|-------------------|
-| Ubuntu 14.04-16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04+ | Yes |
-| Debian 8-9 | No |
-| Debian 10+ | Yes |
-| Fedora 29+ | Yes |
-| CentOS 7 | No | 
-| CentOS 8+ | Yes |
-| Red Hat Enterprise Linux 6.x-7.x | No |
-| Red Hat Enterprise Linux 8+ | Yes |
-| openSUSE Leap 15.0 | No |
-| openSUSE Leap 15.1+ | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enterprise 11.x-12.x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15.1 | No |
-
-次のコマンドを使用して、Linux ディストリビューションで `disable_legacy_dialects` モジュール パラメーターがサポートされているかどうかを確認できます。
-
-```bash
-sudo modinfo -p cifs | grep disable_legacy_dialects
-```
-
-このコマンドを実行すると、次のメッセージが出力されます。
-
-```output
-disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
-```
-
-SMB 1 を無効にする前に、SMB モジュールがご利用のシステムに現在読み込まれていないことを確認する必要があります (これは、SMB 共有をマウントしている場合に自動的に発生します)。 これを行うには、次のコマンドを使用します。SMB が読み込まれていない場合は、何も出力されません。
-
-```bash
-lsmod | grep cifs
-```
-
-モジュールをアンロードするには、最初にすべての SMB 共有のマウントを解除します (前述のように、`umount` コマンドを使用します)。 次のコマンドを使用して、システム上にマウントされているすべての SMB 共有を特定できます。
-
-```bash
-mount | grep cifs
-```
-
-すべての SMB ファイル共有のマウントを解除したら、モジュールをアンロードしても安全です。 そのためには、 `modprobe` コマンドを使用します。
-
-```bash
-sudo modprobe -r cifs
-```
-
-`modprobe` コマンドを使用して、SMB 1 をアンロードしてモジュールを手動で読み込むことができます。
-
-```bash
-sudo modprobe cifs disable_legacy_dialects=Y
-```
-
-最後に、`/sys/module/cifs/parameters` の読み込み済みパラメーターを参照すると、パラメーターを使用して SMB モジュールが読み込まれていることを確認できます。
-
-```bash
-cat /sys/module/cifs/parameters/disable_legacy_dialects
-```
-
-Ubuntu および Debian ベースのディストリビューションで SMB 1 を永続的に無効にするには、設定を使用して `/etc/modprobe.d/local.conf` という新しいファイルを作成する必要があります (他のモジュールのカスタム オプションがまだない場合)。 これを行うには、次のコマンドを使います。
-
-```bash
-echo "options cifs disable_legacy_dialects=Y" | sudo tee -a /etc/modprobe.d/local.conf > /dev/null
-```
-
-SMB モジュールを読み込むと、これが動作していることを確認できます。
-
-```bash
-sudo modprobe cifs
-cat /sys/module/cifs/parameters/disable_legacy_dialects
-```
-
 ## <a name="next-steps"></a>次のステップ
 Azure Files の詳細については、次のリンクをご覧ください。
 
-* [Azure Files のデプロイの計画](storage-files-planning.md)
-* [FAQ](./storage-files-faq.md)
-* [トラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)
+- [Azure Files のデプロイの計画](storage-files-planning.md)
+- [Linux の SMB 1 を削除する](files-remove-smb1-linux.md)
+- [トラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)

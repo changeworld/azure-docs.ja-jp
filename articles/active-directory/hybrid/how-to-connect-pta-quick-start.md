@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5e71522d53bd4e528b2a5a106a4dcc344df3ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a85f2d5d928d93bf9e85899e53439a2cc4710448
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732858"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455607"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory パススルー認証:クイック スタート
 
@@ -51,13 +51,13 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
-1. Azure AD Connect を実行するための、Windows Server 2012 R2 以降を実行しているサーバーを特定します。 まだ有効になっていない場合は、[サーバーで TLS 1.2 を有効](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)にします。 このサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。 Windows Server Core バージョンでのパススルー認証エージェントのインストールはサポートされていないことに注意してください。 
+1. Azure AD Connect を実行するための、Windows Server 2016 以降を実行しているサーバーを特定します。 まだ有効になっていない場合は、[サーバーで TLS 1.2 を有効](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)にします。 このサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。 Windows Server Core バージョンでのパススルー認証エージェントのインストールはサポートされていないことに注意してください。 
 2. [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) を、前の手順で特定したサーバーにインストールします。 Azure AD Connect が既に実行されている場合は、バージョンが 1.1.750.0 以降であることを確認します。
 
     >[!NOTE]
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合については、[Azure AD Connect のリリース ノート](./reference-connect-version-history.md)をご覧ください。
 
-3. Windows Server 2012 R2 以降が実行されていて TLS 1.2 が有効になっている 1 つまたは複数の追加のサーバーを特定します。このサーバーでは、スタンドアロンの認証エージェントを実行できます。 これらの追加のサーバーは、サインイン要求の高可用性を確保するために必要です。 これらのサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。
+3. Windows Server 2016 以降が実行されていて TLS 1.2 が有効になっている 1 つまたは複数の追加のサーバーを特定します。このサーバーでは、スタンドアロンの認証エージェントを実行できます。 これらの追加のサーバーは、サインイン要求の高可用性を確保するために必要です。 これらのサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。
 
     >[!IMPORTANT]
     >運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 40 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
@@ -179,7 +179,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにご利用のテナント上でスマート ロックアウト機能を構成する方法について説明します。
 - [現時点での制限事項](how-to-connect-pta-current-limitations.md):パススルー認証でサポートされているシナリオと、サポートされていないシナリオについて説明します。
 - [技術的な詳細](how-to-connect-pta-how-it-works.md): パススルー認証機能のしくみについて説明します。
-- [よく寄せられる質問](how-to-connect-pta-faq.md): よく寄せられる質問の回答を探します。
+- [よく寄せられる質問](how-to-connect-pta-faq.yml): よく寄せられる質問の回答を探します。
 - [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法について説明します。
 - [セキュリティの詳細](how-to-connect-pta-security-deep-dive.md): パススルー認証機能に関する技術情報を取得します。
 - [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細について説明します。

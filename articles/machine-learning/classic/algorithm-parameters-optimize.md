@@ -1,6 +1,6 @@
 ---
 title: ML Studio (classic):アルゴリズムを最適化する - Azure
-description: Azure Machine Learning Studio (クラシック) でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。
+description: Machine Learning スタジオ (クラシック) でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,22 +9,22 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: a216dc7cb17b9e35e412c6bebe34c0cccfb732e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a133f9b8d1ae22114a78be8e4d22d6293c94c7cd
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519305"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582980"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Machine Learning Studio (classic) でアルゴリズムを最適化するためにパラメーターを選択する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-このトピックでは、Azure Machine Learning Studio (クラシック) でアルゴリズムに適したハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択* といいます。
+このトピックでは、Machine Learning スタジオ (クラシック) でアルゴリズムに適したハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択* といいます。
 
 
 
-モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning Studio (クラシック) の既定のモデル選択メカニズムになっています。 Azure Machine Learning Studio (クラシック) では R と Python の両方がサポートされているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
+モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Machine Learning スタジオ (クラシック) の既定のモデル選択メカニズムになっています。 Machine Learning スタジオ (クラシック) では R と Python の両方がサポートされているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
 
 最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "100519305"
 3. **メトリックを定義する**: その後、パラメーターの最適なセットを判別するために使うメトリックを決めます。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
 4. **トレーニング、評価、および比較を行う**: パラメーター値の一意の組み合わせごとに、ユーザーが定義した誤差メトリックを使い、それに基づいて、クロス検証を実行します。 評価と比較が済むと、最適なモデルを選ぶことができます。
 
-次の図は、Azure Machine Learning Studio (クラシック) でこのプロセスを実施する方法を示しています。
+次の図は、Machine Learning スタジオ (クラシック) でこのプロセスを実施する方法を示しています。
 
 ![最適なパラメーター セットを検索します](./media/algorithm-parameters-optimize/fig1.png)
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 8dd5dc8223314894e04b060f7080ab5f3b0fdfba
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 07/08/2021
+ms.openlocfilehash: f390f6126ce2e4e780fe98f9aa038b98893b341a
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483175"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566212"
 ---
 # <a name="configure-dynamics-365-for-operations-offer-properties"></a>Dynamics 365 for Operations オファー プロパティの構成
 
@@ -30,9 +30,9 @@ ms.locfileid: "110483175"
 
 ### <a name="industries"></a>業界
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)].
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
-このオファーが適用される Dynamics 365 の **[適用対象の製品]** を選択します。
+オファーに適用する **[適用可能な製品]** (Commerce、Finance、Human Resources、Project Operations、および Supply Chain Management) を選択します。 これらの選択により、顧客は、下に表示される AppSource Dynamics 365 製品フィルターに基づいてオファーを検索できます。
 
 オファーの **アプリ バージョン** を入力します。 顧客にはオファーの詳細ページにこの番号が表示されます。
 

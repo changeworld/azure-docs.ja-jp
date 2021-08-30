@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0b29c9ceb5ad8cd7adb38582d087e91c2fe6e8b1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 86a5d327e00ee7c9595cc586aa7e63023a386bba
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743473"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586547"
 ---
 # <a name="iot-central-operator-guide"></a>IoT Central オペレーター ガイド
 
@@ -35,7 +35,7 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 
 個々のデバイスを管理するために、オペレーターはデバイス ビューを使用して、デバイスとクラウドのプロパティを設定したり、デバイス コマンドを呼び出したりできます。 前のスクリーンショットの **[デバイスの管理]** および **[コマンド]** ビューがその例です。
 
-デバイスを一括管理するために、オペレーターはジョブを作成したりスケジュールしたりできます。 ジョブでは、複数のデバイスを対象に、プロパティを更新したりコマンドを実行したりできます。 詳細については、「[Azure IoT Central アプリケーションでのジョブの作成と実行](howto-run-a-job.md)」を参照してください。
+デバイスを一括管理するために、オペレーターはジョブを作成したりスケジュールしたりできます。 ジョブでは、複数のデバイスを対象に、プロパティを更新したりコマンドを実行したりできます。 詳細については、「[Azure IoT Central アプリケーションでのジョブの作成と実行](howto-manage-devices-in-bulk.md)」を参照してください。
 
 ## <a name="troubleshoot-and-remediate-issues"></a>問題のトラブルシューティングと修復
 
@@ -43,11 +43,11 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 
 ## <a name="add-and-remove-devices"></a>デバイスの追加と削除
 
-オペレーターは、デバイスを個別または一括で IoT Central アプリケーションに追加したり、アプリケーションから削除したりできます。 詳細については、「[Azure IoT Central アプリケーションでデバイスを管理する](howto-manage-devices.md)」を参照してください。
+オペレーターは、デバイスを個別または一括で IoT Central アプリケーションに追加したり、アプリケーションから削除したりできます。 詳細については、「[Azure IoT Central アプリケーションでデバイスを管理する](howto-manage-devices-individually.md)」を参照してください。
 
 ## <a name="personalize"></a>Personalize
 
-オペレーターは、最も頻繁に使用するリソースへのリンクを含む、パーソナライズされたダッシュボードを IoT Central アプリケーションに作成できます。 詳細については、「[ダッシュボードの管理](howto-create-personal-dashboards.md#manage-dashboards)」を参照してください。
+オペレーターは、最も頻繁に使用するリソースへのリンクを含む、個人的なダッシュボードを IoT Central アプリケーションに作成できます。 詳細については、「[ダッシュボードの管理](howto-manage-dashboards.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

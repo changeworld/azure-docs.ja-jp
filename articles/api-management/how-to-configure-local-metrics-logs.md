@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/11/2021
 ms.author: apimpm
-ms.openlocfilehash: a8199f88527cfd1417997c12f9d682be1c60a810
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f17d271315bc537f916cb4d9addfa7ea1eaec995
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784541"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115832"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する
 
@@ -212,12 +212,13 @@ kubectl logs <pod-name>
 | フィールド  | Default | 説明 |
 | ------------- | ------------- | ------------- |
 | telemetry.logs.std  | `text` | 標準ストリームへのログ記録を有効にします。 値は `none`、`text`、`json` が可能です。 |
-| telemetry.logs.local  | `none` | ローカル ログ記録を有効にします。 値は `none`、`auto`、`localsyslog`、`rfc5424`、`journal` が可能です。  |
+| telemetry.logs.local  | `auto` | ローカル ログ記録を有効にします。 値は `none`、`auto`、`localsyslog`、`rfc5424`、`journal`、`json` が可能です。  |
 | telemetry.logs.local.localsyslog.endpoint  | 該当なし | localsyslog エンドポイントを指定します。  |
 | telemetry.logs.local.localsyslog.facility  | 該当なし | localsyslog [ファシリティ コード](https://en.wikipedia.org/wiki/Syslog#Facility)を指定します。 例: `7`
 | telemetry.logs.local.rfc5424.endpoint  | 該当なし | rfc5424 エンドポイントを指定します。  |
 | telemetry.logs.local.rfc5424.facility  | 該当なし | [rfc5424](https://tools.ietf.org/html/rfc5424) あたりのファシリティ コードを指定します。 例: `7`  |
 | telemetry.logs.local.journal.endpoint  | 該当なし | ジャーナル エンドポイントを指定します。  |
+| telemetry.logs.local.json.endpoint | 127.0.0.1:8888 | JSON データを受け付ける UDP エンドポイントを指定します (<ファイル パス>、<IP>:<ポート>、<ホスト名>:<ポート> のいずれか)。
 
 ローカル ログのサンプル構成を次に示します。
 

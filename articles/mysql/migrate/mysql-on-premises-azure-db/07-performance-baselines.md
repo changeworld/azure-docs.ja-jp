@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: パフォーマンス ベースライン'
+title: 'オンプレミスの MySQL を Azure Database for MySQL に移行する: パフォーマンス ベースライン'
 description: 既存の MySQL のワークロードを理解することは、移行を成功させるために行うことのできる最善の投資の 1 つです。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 9948eef759ff44468c8a9b70e790c8376b40ff16
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 2077ef62ddabf7910d5a634c07262c9d29905cf4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082947"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084968"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-performance-baselines"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: パフォーマンス ベースライン
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-performance-baselines"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する: パフォーマンス ベースライン
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -96,6 +98,8 @@ MySQL 5.5.60 により既定でインストールされるサーバー パラメ
 WWI によりその Conference データベースのワークロードが調べられ、負荷が非常に小さいことが確認されました。 基本レベルのサーバーは機能していましたが、後で別のレベルに移行するための作業を行いたくはありませんでした。 デプロイされているサーバーで最終的に他の MySQL データ ワークロードがホストされるので、`General Performance` レベルを選択しました。
 
 MySQL データベースを確認したところ、MySQL 5.5 サーバーは、初期インストール時に設定される既定のサーバー パラメーターで実行されています。
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [データ移行](./08-data-migration.md)

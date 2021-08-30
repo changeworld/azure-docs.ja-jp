@@ -2,13 +2,13 @@
 title: レジストリに関するネットワークの問題のトラブルシューティング
 description: 仮想ネットワークまたはファイアウォールの内側で Azure コンテナー レジストリにアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
-ms.date: 03/30/2021
-ms.openlocfilehash: d9cfa0aa902fca1afd1033d40b33ccdf5baa56d7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 05/10/2021
+ms.openlocfilehash: 7ea4eb698f855a98df22e2e0426a0004c890290c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066678"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722441"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "110066678"
 
 * クライアントのファイアウォールまたはプロキシによってアクセスが妨げられている - [解決策](#configure-client-firewall-access)
 * レジストリのパブリック ネットワーク アクセス規則によってアクセスが妨げられている - [解決策](#configure-public-access-to-registry)
-* 仮想ネットワークの構成によってアクセスが妨げられている - [解決策](#configure-vnet-access)
+* 仮想ネットワークまたはプライベート エンドポイントの構成によってアクセスが妨げられている - [解決策](#configure-vnet-access)
 * Azure Security Center または特定の他の Azure サービスをプライベート エンドポイント、サービス エンドポイント、またはパブリック IP アクセス規則を持つレジストリと統合しようとしている - [解決策](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>詳しい診断 
@@ -87,7 +87,11 @@ ContainerRegistryLoginEvents テーブルのレジストリ リソース ログ�
 
 Private Link のプライベート エンドポイントまたはサービス エンドポイント (プレビュー) のいずれかを使用して、仮想ネットワークが構成されていることを確認します。 現在、Azure Bastion エンドポイントはサポートされていません。
 
-プライベート エンドポイントが構成されている場合は、DNS によってレジストリのパブリック FQDN (*myregistry.azurecr.io* など) がレジストリのプライベート IP アドレスに解決されることを確認します。 DNS の参照には `dig` や `nslookup` などのネットワーク ユーティリティを使用します。 レジストリの FQDN と各データ エンドポイントの FQDN 用に [DNS レコードが構成されている](container-registry-private-link.md#dns-configuration-options)ことを確認します。
+プライベート エンドポイントが構成されている場合は、DNS によってレジストリのパブリック FQDN (*myregistry.azurecr.io* など) がレジストリのプライベート IP アドレスに解決されることを確認します。
+
+  * `--vnet` パラメーターを指定して [az acr check-health](/cli/azure/acr#az_acr_check_health) コマンドを実行し、仮想ネットワーク内のプライベート エンドポイントへの DNS ルーティングを確認します。
+  * DNS の参照には `dig` や `nslookup` などのネットワーク ユーティリティを使用します。 
+  * レジストリの FQDN と各データ エンドポイントの FQDN 用に [DNS レコードが構成されている](container-registry-private-link.md#dns-configuration-options)ことを確認します。 
 
 ネットワーク内の他のリソースからレジストリへのトラフィックを制限するために使用される NSG ルールとサービス タグを確認します。 
 
@@ -130,8 +134,8 @@ Azure Firewall または同様のソリューションがネットワークに�
 
 関連リンク:
 
-* [Azure Container Registry の監視](monitor-service.md)
-* [Container Registry に関する FAQ](container-registry-faq.md)
+* [診断の評価と監査のためのログ](./monitor-service.md)
+* [Container Registry に関する FAQ](container-registry-faq.yml)
 * [Azure Container Registry 用の Azure セキュリティ ベースライン](security-baseline.md)
 * [Azure Container Registry のベスト プラクティス](container-registry-best-practices.md)
 

@@ -15,26 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 22796134dae5c345e3f915e47bc1300affb9f60e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6a32f33eb88ac82793445badef25227f93fd809
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99566643"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253272"
 ---
 # <a name="connect-your-cisco-umbrella-to-azure-sentinel"></a>Azure Sentinel に Cisco Umbrella を接続する
 
 > [!IMPORTANT]
 > Cisco Umbrella コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Cisco Umbrella コネクタを使用すると、Azure Sentinel にすべての Cisco Umbrella セキュリティ ソリューションのログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 Cisco Umbrella と Azure Sentinel の統合には、REST API を使用します。
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
+Cisco Umbrella コネクタを使用すると、S3 API 経由でアマゾン ウェブ サービスの S3 バケットに接続し、Cisco Umbrella セキュリティ ソリューションのログを Azure Sentinel に取り込むことができます。
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
 
 ## <a name="configure-and-connect-cisco-umbrella"></a>Cisco Umbrella を構成して接続する
 
-Cisco Umbrella では、ログを統合して、Azure Sentinel に直接エクスポートできます。
+Cisco Umbrella では、ログを統合して、Amazon S3 API 経由で Azure Sentinel にエクスポートできます。
 
 1. Azure Sentinel のナビゲーション メニューで、 **[データ コネクタ]** を選択します。
 
@@ -58,6 +60,6 @@ Cisco Umbrella では、ログを統合して、Azure Sentinel に直接エク�
 
 このドキュメントでは、Cisco Umbrella のデータを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [ブックを使用](monitor-your-data.md)してデータを監視する。

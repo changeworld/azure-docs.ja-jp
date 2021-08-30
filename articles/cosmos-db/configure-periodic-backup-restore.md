@@ -4,15 +4,15 @@ description: この記事では、バックアップ間隔を指定した定期�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 07/21/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 69677ed419fa9bac2cbcb06c394c92f68d0b7777
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 7cb5c8fe924a2634627533203ed8f11969f0b432
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930931"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733190"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>定期的バックアップを使用して Azure Cosmos DB アカウントを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -32,7 +32,7 @@ Azure Cosmos DB では、データのバックアップが一定の間隔で自�
 * バックアップは、お使いのアプリケーションのパフォーマンスや可用性に影響を与えずに取得されます。 Azure Cosmos DB では、データのバックアップがバックグラウンドで実行され、プロビジョニング済みのスループット (RU) を余計に消費することも、データベースのパフォーマンスや可用性に影響することもありません。
 
 > [!Note]
-> Synapse Link が有効になっているアカウントはサポートされていません。
+> Azure Synapse Link が有効なアカウントの場合、分析ストア データはバックアップと復元に含まれません。 Synapse Link が有効になっている場合、トランザクション ストア内のデータは、Azure Cosmos DB によって、スケジュールされたバックアップ間隔で引き続き自動的にバックアップされます。 現時点では、分析ストア内のデータの自動バックアップと復元はサポートされていません。
 
 ## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>バックアップ ストレージの冗長性
 
@@ -176,5 +176,7 @@ Azure Cosmos DB SQL API アカウントをお持ちの場合は、次のいず�
 ## <a name="next-steps"></a>次のステップ
 
 * 復元の要請を行うために、Azure サポートに連絡して [Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-* [Azure portal](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md)、または [Azure Resource Manager](continuous-backup-restore-template.md) を使用して、継続的バックアップを構成および管理します。
+* [Azure portal](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli)、または [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template) を使用して継続的バックアップをプロビジョニングします。
+* [Azure portal](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli)、または [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template) を使用して継続的バックアップ アカウントを復元します。
+* [定期的なバックアップから継続的バックアップにアカウントを移行します](migrate-continuous-backup.md)。
 * 継続的バックアップ モードでデータを復元するために必要な[アクセス許可を管理](continuous-backup-restore-permissions.md)します。

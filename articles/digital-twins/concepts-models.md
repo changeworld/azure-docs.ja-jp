@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins でカスタム モデルを使用して環境内のエンティティを記述する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f99309302c594d407a0d65d0ab61a8ece860695b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8590f10f521841d0f483b82bd2e8e9e7d0b3528d
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082327"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253485"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -28,7 +28,7 @@ Azure Digital Twins のモデルは、Digital Twins Definition Language (DTDL) �
 
 DTDL の完全な言語仕様については、GitHub: [Digital Twins Definition Language (DTDL) - Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を参照してください。
 
-DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 Azure Digital Twins は DTDL **バージョン 2** を使用します (Azure Digital Twins での DTDL バージョン 1 の使用は非推奨となりました)。 
+DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 Azure Digital Twins は DTDL **バージョン 2** を使用します (Azure Digital Twins での DTDL バージョン 1 の使用は非推奨となりました)。 
 
 この記事の残りの部分では、Azure Digital Twins で言語を使用する方法について説明します。
 
@@ -94,6 +94,8 @@ DTDL モデルのインターフェイスには、以下の各フィールドを
 
 このセクションでは、DTDL モデルの **プロパティ** と **テレメトリ** について詳しく説明します。
 
+プロパティの一部として表示される可能性があるフィールドの包括的な一覧については [DTDL v2 仕様の「プロパティ」](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property)を参照してください。テレメトリの一部として表示される可能性があるフィールドの包括的な一覧については、[DTDL v2 仕様のテレメトリ](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#telemetry)に関するページを参照してください。
+
 ### <a name="difference-between-properties-and-telemetry"></a>プロパティとテレメトリの違い
 
 Azure Digital Twins の DTDL の **プロパティ** と **テレメトリ** を概念的に区別するための追加のガイダンスを次に示します。
@@ -152,11 +154,16 @@ DTDL モデルの **テレメトリ** フィールドの基本的な例を次に
 
 このセクションでは、DTDL モデルの **リレーションシップ** について詳しく説明します。
 
+リレーションシップの一部として表示される可能性のあるフィールドの包括的な一覧については、[DTDL v2 仕様のリレーションシップ](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#relationship)を参照してください。
+
 ### <a name="basic-relationship-example"></a>基本的なリレーションシップの例
 
 DTDL モデルのリレーションシップの基本的な例を次に示します。 この例では、Floor モデルへの接続を可能にする Home モデルのリレーションシップを示します。
 
 :::code language="json" source="~/digital-twins-docs-samples-getting-started/models/basic-home-example/IHome.json" highlight="12-18":::
+
+>[!NOTE]
+>リレーションシップについては、`@id` はオプションのフィールドです。 `@id` が指定されていない場合、デジタル ツイン インターフェイス プロセッサは 1 を割り当てます。
 
 ### <a name="targeted-and-non-targeted-relationships"></a>対象および対象外のリレーションシップ
 
@@ -180,14 +187,18 @@ DTDL を使用すると、**リレーションシップ** に独自のプロパ�
 
 このセクションでは、DTDL モデルの **コンポーネント** について詳しく説明します。
 
+コンポーネントの一部として表示される可能性のあるフィールドの包括的な一覧については、[DTDL v2 仕様のコンポーネント](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#component)を参照してください。
+
 ### <a name="basic-component-example"></a>基本的なコンポーネントの例
 
-DTDL モデルのコンポーネントの基本的な例を次に示します。 この例では、サーモスタット コンポーネントを使用する Room モデルを示します。
+DTDL モデルのコンポーネントの基本的な例を次に示します。 この例では、コンポーネントとしてサーモスタット モデルを使用する Room モデルを示します。
 
 :::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IRoom.json" highlight="15-19, 28-41":::
 
-> [!NOTE]
-> コンポーネント インターフェイス (サーモスタット コンポーネント) は、それを使用するインターフェイス (Room) と同じ配列で定義されていることに注意してください。 コンポーネントは、インターフェイスが検出されるようにするために、API 呼び出しの中でこのように定義する必要があります。
+このソリューション内の他のモデルにもサーモスタットが含まれている必要がある場合は、Room の場合と同様に、独自の定義でコンポーネントと同じサーモスタット モデルを参照することができます。
+
+> [!IMPORTANT]
+> コンポーネントの参照が見つかるようにするには、コンポーネント インターフェイス (上記の例ではサーモスタット) を、それを使用するすべてのインターフェイス (上の例では Room) と同じ配列で定義する必要があります。
 
 ## <a name="model-inheritance"></a>モデルの継承
 
@@ -225,7 +236,7 @@ DTDL モデルのコンポーネントの基本的な例を次に示します。
 
 ### <a name="model-uploader"></a>モデルのアップローダー 
 
-モデルの作成、拡張、または選択が完了したら、それらを Azure Digital Twins インスタンスにアップロードして、ソリューションで使用できるようにすることができます。 これを行うには、[Azure Digital Twins API](concepts-apis-sdks.md) を使用します。詳細については、[方法: DTDL モデルの管理](how-to-manage-model.md#upload-models)に関する記事を参照してください。
+モデルの作成、拡張、または選択が完了したら、それらを Azure Digital Twins インスタンスにアップロードして、ソリューションで使用できるようにすることができます。 これを行うには、[Azure Digital Twins API](concepts-apis-sdks.md) を使用します。詳細については、[DTDL モデルを管理する](how-to-manage-model.md#upload-models)をご覧ください。
 
 ただし、アップロードするモデルが多数ある場合 (またはモデルに多数の相互依存性があり、それにより個々のアップロードの順序付けが複雑になる場合)、[Azure Digital Twins のモデル アップローダーのサンプル](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels)を使用して、多数のモデルを一度にアップロードできます。 サンプルで示されている手順に従って、このプロジェクトを構成し、独自のインスタンスにモデルをアップロードするために使用します。
 
@@ -235,9 +246,9 @@ Azure Digital Twins インスタンスにモデルをアップロードした後
 
 ## <a name="next-steps"></a>次のステップ
 
-* 業界標準のオントロジに基づいてモデルを作成する方法について学習してください。"[概念: オントロジとは](concepts-ontologies.md)" に関する記事
+* 業界標準のオントロジに基づいてモデルを作成する方法について学習してください。[オントロジとは?](concepts-ontologies.md)
 
-* API 操作によるモデルの管理について詳しく学習してください。[方法: DTDL モデルの管理](how-to-manage-model.md)に関する記事
+* API 操作によるモデルの管理について詳しく学習してください。[DTDL モデルを管理する](how-to-manage-model.md)
 
-* モデルを使用してデジタル ツインを作成する方法について学習してください。"[概念: デジタル ツインとツイン グラフ](concepts-twins-graph.md)"
+* 「[デジタル ツインとツイン グラフ](concepts-twins-graph.md)」でモデルを使用してデジタル ツインを作成する方法について確認する
 

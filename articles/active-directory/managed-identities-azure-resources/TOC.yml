@@ -54,6 +54,8 @@
       href: ../../event-hubs/authenticate-managed-identity.md?context=%2fazure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context
     - name: Azure Container Instances
       href: ../../container-instances/container-instances-managed-identity.md?context=%2fazure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context
+    - name: マネージド ID アクティビティの表示
+      href: how-to-view-managed-identity-activity.md
 - name: 概念
   items:
     - name: マネージド ID と Azure VM

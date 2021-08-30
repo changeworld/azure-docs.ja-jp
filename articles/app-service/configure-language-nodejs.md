@@ -6,16 +6,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 97db865f2c590a9d7700ee53a0380604885a8155
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: da7d617ab92ed0e9c7564813006e3a0c044a48b6
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076655"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195760"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Node.js アプリを構成する
 
-Node.js アプリは、必要なすべての NPM 依存関係と共にデプロイする必要があります。 App Service 展開エンジンは、[Git リポジトリ](deploy-local-git.md)をデプロイするとき、またはビルド自動化が有効になっている [Zip パッケージ](deploy-zip.md)をデプロイするときに、`npm install --production` を自動的に実行します。 ただし、[FTP/S](deploy-ftp.md) を使用してファイルをデプロイする場合、必要なパッケージを手動でアップロードする必要があります。
+Node.js アプリは、必要なすべての NPM 依存関係と共にデプロイする必要があります。 App Service 展開エンジンは、[Git リポジトリ](deploy-local-git.md)をデプロイするとき、または[ビルド自動化が有効になっている](deploy-zip.md#enable-build-automation) [Zip パッケージ](deploy-zip.md)をデプロイするときに、`npm install --production` を自動的に実行します。 ただし、[FTP/S](deploy-ftp.md) を使用してファイルをデプロイする場合、必要なパッケージを手動でアップロードする必要があります。
 
 このガイドでは、App Service にデプロイする Node.js 開発者向けに主要な概念と手順を説明します。 Azure App Service を使用したことがない場合は、まず、[Node.js クイック スタート](quickstart-nodejs.md)と [MongoDB を使った Node.js のチュートリアル](tutorial-nodejs-mongodb-app.md)に従ってください。
 
@@ -29,7 +29,7 @@ Node.js アプリは、必要なすべての NPM 依存関係と共にデプロ�
 az webapp config appsettings list --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
 ```
 
-サポートされているすべての Node.js バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+サポートされているすべての Node.js バージョンを表示するには、`https://<sitename>.scm.azurewebsites.net/api/diagnostics/runtime` にアクセスするか、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp list-runtimes | grep node
@@ -63,7 +63,7 @@ az webapp list-runtimes --linux | grep NODE
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_NODE_DEFAULT_VERSION="10.15"
 ```
 
-この設定では、実行時と、App Service のビルド自動化中のパッケージの自動復元時の両方で使用する Node.js のバージョンを指定します。
+この設定では、実行時と、App Service のビルド自動化中のパッケージの自動復元時の両方で使用する Node.js のバージョンを指定します。 この設定は、メジャー マイナー バージョンのみを認識し、_LTS_ モニカーはサポートされていません。
 
 > [!NOTE]
 > プロジェクトの `package.json` で Node.js バージョンを設定する必要があります。 展開エンジンは、サポートされているすべての Node.js バージョンを含む別のプロセスで実行されます。
@@ -119,7 +119,7 @@ app.listen(port, () => {
 
 ## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
+Git を使用するか、[ビルドの自動化を有効](deploy-zip.md#enable-build-automation)にした zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
 
 1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
 1. フラグを指定せずに `npm install` を実行します。これには、npm `preinstall` スクリプトと `postinstall` スクリプトが含まれ、`devDependencies` のインストールも行われます。
@@ -241,7 +241,7 @@ process.env.NODE_ENV
 
 ## <a name="run-gruntbowergulp"></a>Grunt/Bower/Gulp を実行する
 
-既定では、App Service のビルド自動化によって、Node.js アプリが Git またはビルド自動化が有効になっている Zip デプロイを介してデプロイされることが認識されると、`npm install --production` が実行されます。 アプリで、Grunt、Bower、Gulp など、一般的な自動化ツールのいずれかが必要な場合、それを実行する[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。
+既定では、App Service のビルド自動化によって、Node.js アプリが Git を介して、または[ビルド自動化が有効になっている](deploy-zip.md#enable-build-automation) Zip デプロイを介してデプロイされることが認識されると、`npm install --production` が実行されます。 アプリで、Grunt、Bower、Gulp など、一般的な自動化ツールのいずれかが必要な場合、それを実行する[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。
 
 リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
 
@@ -320,7 +320,7 @@ fi
 
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
-App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
+App Service では、[TLS または SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 一般的な Web フレームワークでは、標準のアプリ パターンで `X-Forwarded-*` 情報にアクセスできます。 [Express](https://expressjs.com/) で、[trust proxy](https://expressjs.com/guide/behind-proxies.html) を使用できます。 次に例を示します。
 
@@ -384,6 +384,6 @@ Application Insights を使用すると、コードを変更することなく�
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [App Service Linux の FAQ](faq-app-service-linux.md)
+> [App Service Linux の FAQ](faq-app-service-linux.yml)
 
 ::: zone-end

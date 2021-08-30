@@ -1,28 +1,28 @@
 ---
-title: Azure portal を使用してシングルテナントの Azure Logic Apps でワークフローを作成する
-description: シングルテナントの Azure Logic Apps と Azure portal を使用して、アプリ、データ、サービス、システムを統合する自動化されたワークフローを作成します。
+title: Azure portal でシングルテナント Azure Logic Apps (Standard) を使用してワークフローを作成する
+description: Azure portal でシングルテナント Azure Logic Apps (Standard) を使用して、アプリ、データ、サービス、システムを統合する自動化されたワークフローを作成します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: 63b3de255269d921f38374adc246fb923fdda100
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 2178b3d4ea9c1cc650685b90fa5dc2cdf6551191
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110497108"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116609"
 ---
-# <a name="create-an-integration-workflow-using-single-tenant-azure-logic-apps-and-the-azure-portal"></a>シングルテナントの Azure Logic Apps と Azure portal を使用して統合ワークフローを作成する
+# <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Azure portal でシングルテナント Azure Logic Apps (Standard) を使用して統合ワークフローを作成する
 
-この記事では、**ロジック アプリ (Standard)** のリソースの種類を使用して、*シングル テナント Azure Logic Apps 環境* で実行される自動化された統合ワークフローの例を作成する方法について説明します。 新しいシングルテナント モデルとロジック アプリのリソースの種類を使用するのが初めての場合は、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を確認してください。
+この記事では、**ロジック アプリ (Standard)** のリソースの種類と Azure portal を使用して、"*シングル テナント*" Azure Logic Apps 環境で実行される自動化された統合ワークフローの例を作成する方法について説明します。 この種類のリソースは、[ステートフル ワークフローおよびステートレス ワークフロー](single-tenant-overview-compare.md#stateful-stateless)を複数ホストすることができます。 また、同じロジック アプリとテナントのワークフローは、再設計された Azure Logic Apps ランタイムと同じプロセスで実行されるため、同じリソースを共有し、パフォーマンスが向上します。 シングルテナント Azure Logic Apps オファリングの詳細については、[シングルテナント、マルチテナント、統合サービス環境の比較](single-tenant-overview-compare.md)に関するページを参照してください。
 
 このワークフロー例はクラウドベースであり、ステップは 2 つだけですが、クラウド、オンプレミス、ハイブリッド環境全体でさまざまなアプリ、データ、サービス、システムを接続できる数百の操作からワークフローを作成できます。 このワークフローの例は、組み込みの Request トリガーから始まり、Office 365 Outlook アクションが続きます。 このトリガーは、ワークフローの呼び出し可能なエンドポイントを作成し、任意の呼び出し元からの受信 HTTPS 要求を待機します。 トリガーが要求を受信して起動すると、次のアクションは、トリガーから選択した出力と共に、指定したメール アドレスに電子メールを送信することで実行されます。
 
 > [!TIP]
 > Office 365 アカウントをお持ちでない場合は、電子メール アカウントからメッセージを送信できる他の使用可能なアクション (Outlook.com など) を使用できます。
-> 
-> 代わりに Visual Studio Code を使用してこのワークフローの例を作成するには、[シングル テナントの Azure Logic Apps と Visual Studio Code を使用して統合ワークフローを作成](create-single-tenant-workflows-visual-studio-code.md)するページの手順に従います。 
+>
+> 代わりに Visual Studio Code でこのワークフローの例を作成するには、[シングル テナントの Azure Logic Apps と Visual Studio Code を使用して統合ワークフローを作成](create-single-tenant-workflows-visual-studio-code.md)するページの手順に従います。 
 > どちらのオプションも、同じ種類の環境でロジック アプリ ワークフローを開発、実行、デプロイする機能を提供します。 
 > ただし、Visual Studio Code を使用すると、ご使用の開発環境でワークフローを "*ローカル*" で開発、テスト、実行できます。
 
@@ -247,7 +247,7 @@ ms.locfileid: "110497108"
 
    ![[JSON ビュー] が選択されている、Azure portal と [API 接続] ペインを示すスクリーンショット。](./media/create-single-tenant-workflows-azure-portal/logic-app-connection-view-json.png)
 
-1. `connectionRuntimeUrl` プロパティ値を見つけてコピーし、安全な場所に保存して、この情報を使用してファイアウォールを設定できるようにします。
+1. `connectionRuntimeUrl` プロパティ値をコピーし、安全な場所に保存して、この情報を使用してファイアウォールを設定できるようにします。
 
    ![選択された "connectionRuntimeUrl" プロパティ値を示すスクリーンショット。](./media/create-single-tenant-workflows-azure-portal/logic-app-connection-runtime-url.png)
 
@@ -294,7 +294,7 @@ ms.locfileid: "110497108"
 
    1. **[すべてのコレクション]** で、要求を整理するために作成するコレクションの名前を指定して Enter キーを押し、 **[<*コレクション名*> に保存]** を選択します。 この例では、`Logic Apps requests` というコレクション名を使用しています。
 
-      Postman の要求ペインが開き、Request トリガーのエンドポイント URL に要求を送信できるようになります。
+      Postman アプリの要求ペインが開き、Request トリガーのエンドポイント URL に要求を送信できるようになります。
 
       ![要求ウィンドウを開いた Postman を示すスクリーンショット](./media/create-single-tenant-workflows-azure-portal/postman-request-pane.png)
 
@@ -412,7 +412,7 @@ Application Insights が開いたら、ロジック アプリのさまざまな�
 
 ステートレス ワークフローをさらに簡単にデバッグするには、そのワークフローの実行履歴を有効にした後、完了したら実行履歴を無効にすることができます。 Azure portal で以下の手順のようにします。または、Visual Studio Code で作業している場合は、[Visual Studio Code でのステートフルおよびステートレス ワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless)に関するページを参照してください。
 
-1. [Azure portal](https://portal.azure.com) で、ご利用の **[ロジック アプリ (Standard)]** リソースを検索して開きます。
+1. [Azure portal](https://portal.azure.com) で、ご利用の **[ロジック アプリ (Standard)]** リソースを開きます。
 
 1. ロジック アプリのメニューにある **[設定]** で、 **[構成]** を選択します。
 
@@ -472,7 +472,7 @@ Application Insights が開いたら、ロジック アプリのさまざまな�
 
   前回の実行以降に未処理の項目に対して各ワークフローがトリガーしないようにするには、次の手順に従って、ロジック アプリを再起動する前にトリガーの状態をクリアします。
 
-  1. Azure Portal で、ご利用のロジック アプリを探して選択します。
+  1. Azure Portal でロジック アプリを開きます。
   1. ロジック アプリのメニューの **[ワークフロー]** で、 **[ワークフロー]** を選択します。
   1. ワークフローを開き、そのワークフローのトリガーの任意の部分を編集します。
   1. 変更を保存します。 この手順により、トリガーの現在の状態がリセットされます。
@@ -483,7 +483,7 @@ Application Insights が開いたら、ロジック アプリのさまざまな�
 
 ### <a name="restart-stop-or-start-a-single-logic-app"></a>単一のロジック アプリの再起動、停止、または起動
 
-1. Azure Portal で、ご利用のロジック アプリを探して選択します。
+1. Azure Portal でロジック アプリを開きます。
 
 1. ロジック アプリのメニューで、 **[概要]** を選択します。
 
@@ -585,9 +585,9 @@ Application Insights が開いたら、ロジック アプリのさまざまな�
 
 * Azure Logic Apps は、新しいワークフロー インスタンスを作成することも実行することもありません。
 
-* ワークフローを削除してから同じワークフローを再作成しても、再作成されたワークフローに、削除したワークフローと同じメタデータが割り当てられることはありません。 削除したワークフローの呼び出し元となったワークフローを再保存する必要があります。 これにより、呼び出し元は、再作成されたワークフローの正しい情報を取得します。 それ以外の場合、再作成したワークフローの呼び出しは、`Unauthorized` エラーで失敗します。 この動作は、統合アカウントのアーティファクトを使用するワークフローや、Azure 関数を呼び出すワークフローにも当てはまります。
+* ワークフローを削除してから同じワークフローを再作成しても、再作成されたワークフローに、削除したワークフローと同じメタデータが割り当てられることはありません。 メタデータを最新の情報に更新するために、削除したワークフローの呼び出し元となったワークフローを再保存する必要があります。 これにより、呼び出し元は、再作成されたワークフローの正しい情報を取得します。 それ以外の場合、再作成したワークフローの呼び出しは、`Unauthorized` エラーで失敗します。 この動作は、統合アカウントのアーティファクトを使用するワークフローや、Azure 関数を呼び出すワークフローにも当てはまります。
 
-1. Azure Portal で、ご利用のロジック アプリを探して選択します。
+1. Azure Portal でロジック アプリを開きます。
 
 1. ロジック アプリのメニューの **[ワークフロー]** で、 **[ワークフロー]** を選択します。 チェック ボックスの列で、削除する 1 つまたは複数のワークフローを選択します。
 

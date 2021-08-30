@@ -4,19 +4,19 @@ description: Azure リソースのマネージド ID と Azure AD 認証をサ�
 services: active-directory
 author: barclayn
 ms.author: barclayn
-ms.date: 01/28/2021
+ms.date: 07/13/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 886e0ffb2ba9d367c5f0bb89ec1f48b5fbf7ef5a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: f1da6ec900176807647819865ba708002bd6e614
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061274"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271203"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -102,8 +102,8 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
+| システム割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
+| ユーザー割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
 
 [Azure Automation](../../automation/automation-intro.md) でマネージド ID を使用するには、次のドキュメントを参照してください。
 
@@ -155,8 +155,8 @@ Azure Container Instances のために (それが提供されているリージ�
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
+| システム割り当て済み | ![利用可能][check] | プレビュー | 使用不可 | プレビュー |
+| ユーザー割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
 
 Azure Container Registry タスクのために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
 
@@ -179,9 +179,6 @@ Azure Container Registry タスクのために (それが提供されている�
 Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
 - [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
-- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
-- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
-- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-digital-twins"></a>Azure Digital Twins
 
@@ -192,7 +189,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 
 Azure Digital Twins のために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
 
-- [Azure portal](../../digital-twins/how-to-enable-managed-identities-portal.md)
+- [Azure portal](../../digital-twins/how-to-route-with-managed-identity.md)
 
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
@@ -280,6 +277,17 @@ Azure Logic Apps のために (それが提供されているリージョンで)
 | ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
 
 詳細については、「[Azure Machine Learning でマネージド ID を使用する](../../machine-learning/how-to-use-managed-identities.md)」を参照してください。
+
+### <a name="azure-media-services"></a>Azure Media Services
+
+| マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 利用不可 | ![利用可能][check] |
+| ユーザー割り当て済み | 利用不可  | 利用不可  | 利用不可  | 利用不可  |
+
+Microsoft Azure Media Service のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
+
+- [Azure CLI](../../media-services/latest/security-access-storage-managed-identity-cli-tutorial.md)
 
 ### <a name="azure-policy"></a>Azure Policy
 
@@ -429,6 +437,15 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
 
+### <a name="azure-cosmos-db"></a>Azure Cosmos DB
+
+| クラウド | Resource ID | Status |
+|--------|------------|:-:|
+| Azure Global | `https://<account>.documents.azure.com/`<br/><br/>`https://cosmos.azure.com` | ![利用可能][check] |
+| Azure Government | `https://<account>.documents.azure.us/`<br/><br/>`https://cosmos.azure.us` | ![利用可能][check] |
+| Azure Germany | `https://<account>.documents.microsoftazure.de/`<br/><br/>`https://cosmos.microsoftazure.de` | ![利用可能][check] |
+| Azure China 21Vianet | `https://<account>.documents.azure.cn/`<br/><br/>`https://cosmos.azure.cn` | ![利用可能][check] |
+
 ### <a name="azure-sql"></a>Azure SQL
 
 | クラウド | Resource ID | Status |
@@ -492,8 +509,8 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 | ユーザー割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
 
 
-> [!Note]
-> Microsoft Power BI は[マネージド ID もサポートします](../../stream-analytics/powerbi-output-managed-identity.md)。
+> [!NOTE]
+> マネージド ID を使用して、[Azure Stream 分析ジョブを Power BI に](../../stream-analytics/powerbi-output-managed-identity.md)認証できます。
 
 
 [check]: media/services-support-managed-identities/check.png "利用可能"

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 06/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3a7c93bb0e0dcc51e35bc27fa0799d8410e66df6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c4d31d7a1d9e67b1c246de50887d65206a12d57
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581883"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284619"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でリソース所有者パスワード資格情報フローを設定する
 
@@ -365,6 +365,14 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
     "refresh_token_expires_in": 1209600
 }
 ```
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="the-provided-application-is-not-configured-to-allow-the-oauth-implicit-flow"></a>指定されたアプリケーションは、OAuth 暗黙的フローを許可するように構成されていません
+
+* **現象** - ROPC フローを実行すると、次のメッセージが表示されます: *AADB2C90057: 指定されたアプリケーションは、OAuth 暗黙的フローを許可するように構成されていません*。
+* **考えられる原因** - アプリケーションで暗黙のフローが許可されていません。
+* **解決方法**: Azure AD B2C で[アプリケーションの登録](#register-an-application)を作成するときは、アプリケーションマニフェストを手動で編集し、`oauth2AllowImplicitFlow` プロパティの値を `true` に設定する必要があります。 `oauth2AllowImplicitFlow` プロパティを構成した後、変更が有効になるまで数分間かかる場合があります (通常は 5 分以下)。 
 
 ## <a name="use-a-native-sdk-or-app-auth"></a>ネイティブ SDK または App-Auth を使用する
 

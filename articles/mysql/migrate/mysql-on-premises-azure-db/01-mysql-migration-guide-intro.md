@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 概要'
+title: 'オンプレミスの MySQL を Azure Database for MySQL に移行する: 概要'
 description: オンプレミスの MySQL から Azure Database for MySQL への移行ガイド
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: ce858a79e6e5bebd03fad92b57dfe1668d3d02d8
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 5023d53132985875fc0b927148a6efbfb0239cc3
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082850"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085130"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-introduction"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 概要
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 この移行ガイドは、MySQL ワークロードを [Azure Database for MySQL](../../overview.md) に移行しようとしている MySQL のお客様とソフトウェア インテグレーターに、スタック可能で実用的な情報を提供することを目的としています。 このガイドでは、ほとんどのケースに適用できる知識を提供し、MySQL から Azure への移行の計画と実行を成功に導くためのガイダンスを提供します。
 
@@ -39,6 +41,8 @@ PaaS オファリングに加えて、Azure VM で MySQL を実行すること�
 **MySQL 環境の比較**
 
 サービスとしてのプラットフォームである Azure Database for MySQL オファリングには、スケールアップとスケールアウト、従量課金制、高可用性、セキュリティ、管理性など、サービスとしてのインフラストラクチャ (IaaS) と比べてさまざまな利点があるため、このガイドでは、オンプレミスの MySQL ワークロードを Azure Database for MySQL オファリングに移行することに全面的に焦点を当てています。  
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [代表的なユース ケース](./02-representative-use-case.md)

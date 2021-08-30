@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.author: ali
 author: AliciaLiMicrosoft
 ms.date: 04/19/2021
-ms.openlocfilehash: 5e312941e02c5605132971a55041a0b4f7d6dbc9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 823fb43afbd7ac51cafeff7e9e18472fe32c9aec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139095"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742265"
 ---
 # <a name="log-analytics-migration-guide-for-azure-hdinsight-clusters"></a>Azure HDInsight クラスター用の Log Analytics 移行ガイド
 
@@ -34,6 +34,12 @@ Azure HDInsight チームは、顧客からのフィードバックを考慮し�
 - 高い信頼性
 - 迅速なログの配信
 - リソースベースのテーブルのグループ化と既定のクエリ
+
+
+
+> [!NOTE]  
+> 新しい Azure Montitor 統合は、パブリック プレビュー段階にあります。 これは、米国東部リージョンと西ヨーロッパ リージョンでのみ利用できます。
+
 
 ## <a name="benefits-of-the-new-azure-monitor-integration"></a>新しい Azure Monitor 統合のベネフィット
 

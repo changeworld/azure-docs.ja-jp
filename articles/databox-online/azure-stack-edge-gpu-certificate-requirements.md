@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 9184a3f429804ac383f137de49c5391e2e1db80f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6071420216a4c3e365ca5c35e1bf59713974e679
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439240"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360544"
 ---
 # <a name="certificate-requirements"></a>証明書の要件
 
@@ -34,7 +34,11 @@ ms.locfileid: "102439240"
 
 ## <a name="certificate-algorithms"></a>証明書アルゴリズム
 
-証明書アルゴリズムには次の要件が必要です。
+デバイスでは、Rivest–Shamir–Adleman (RSA) 証明書のみサポートされています。 楕円曲線デジタル署名アルゴリズム (ECDSA) 証明書はサポートされていません。
+
+RSA 公開キーを含む証明書は、RSA 証明書と呼ばれます。 楕円曲線暗号 (ECC) 公開キーを含む証明書は、ECDSA (楕円曲線デジタル署名アルゴリズム) 証明書と呼ばれます。
+
+証明書のアルゴリズムの要件は次のとおりです。
 
 * 証明書では、RSA キー アルゴリズムを使用する必要があります。
 
@@ -46,7 +50,7 @@ ms.locfileid: "102439240"
 
 ## <a name="certificate-subject-name-and-subject-alternative-name"></a>証明書のサブジェクト名とサブジェクトの別名
 
-証明書には、次のサブジェクト名とサブジェクトの別名の要件が必要です。
+サブジェクト名とサブジェクトの別名に関して、証明書は次の要件を満たしている必要があります。
 
 * 証明書のサブジェクトの別名 (SAN) フィールドですべての名前空間をカバーする 1 つの証明書を使用するか、 または、名前空間ごとに個別の証明書を使用できます。 どちらの方法でも、必要な場合にはエンドポイントに対してワイルドカードを使用する必要があります (バイナリ ラージ オブジェクト (BLOB) など)。
 
@@ -87,14 +91,12 @@ Azure Stack Edge Pro デバイスにインストールされている PFX 証明
 
 * Microsoft RSA/Schannel Cryptographic Provider を使用した RSA 証明書のみを使用してください。
 
-詳細については、[秘密キーを使用した PFX 証明書のエクスポート](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)に関するセクションを参照してください。
+詳細については、[秘密キーを使用した PFX 証明書のエクスポート](azure-stack-edge-gpu-prepare-certificates-device-upload.md#export-certificates-as-pfx-format-with-private-key)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge Pro で証明書を使用する](azure-stack-edge-gpu-manage-certificates.md)
+- デバイス用に証明書を作成します。
 
-[Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する](azure-stack-edge-gpu-create-certificates-tool.md)
+    - [Azure PowerShell コマンドレット](azure-stack-edge-gpu-create-certificates-powershell.md)を使用する
+    - [Azure Stack Hub 適合性チェッカー ツール](azure-stack-edge-gpu-create-certificates-tool.md)を使用する
 
-[秘密キーを使用して PFX 証明書をエクスポートする](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
-
-[証明書エラーのトラブルシューティング](azure-stack-edge-gpu-certificate-troubleshooting.md)

@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights スマート検出をアラートに�
 description: Azure Monitor Application Insights のスマート検出をアラート ルールにアップグレードするために必要な手順について説明します
 ms.topic: conceptual
 ms.date: 05/30/2021
-ms.openlocfilehash: 09f895af10ae6d16303ce8afb140a49c3a508cef
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: d0995c05af707c5a4fb94305ca1211e38ca59e3a
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542758"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587483"
 ---
 # <a name="migrate-azure-monitor-application-insights-smart-detection-to-alerts-preview"></a>Azure Monitor Application Insights スマート検出をアラートに移行する (プレビュー)
 
@@ -323,7 +323,7 @@ Application Insights リソースのスマート検出フィードで利用可�
 
 ### <a name="managing-alert-rule-settings-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してアラート ルールの設定を管理する
 
-移行が完了したら、Azure Resource Management テンプレートを使用して、スマート検出のアラート ルールの設定を構成できます。
+移行が完了したら、Azure Resource Manager テンプレートを使用して、スマート検出のアラート ルールの設定を構成できます。
 
 > [!NOTE]
 > 移行が完了したら、スマート検出のアラート ルールのテンプレートを使用してスマート検出の設定を構成する必要があります。また、[Application Insights Resource Manager テンプレート](../app/proactive-arm-config.md#smart-detection-rule-configuration)を使用して構成することはできなくなりました。

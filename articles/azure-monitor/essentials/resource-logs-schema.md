@@ -3,12 +3,12 @@ title: Azure リソース ログでサポートされているサービスとス
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
 ms.date: 05/10/2021
-ms.openlocfilehash: 5d9ae1cd9ca1d5f71d4ad2baff95159bf0e2e7f8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 621c606313fa68de24100e8c6214b56ee42b2f03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026437"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742604"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -56,7 +56,7 @@ ms.locfileid: "112026437"
 | Azure Batch |[Azure Batch のログ記録](../../batch/batch-diagnostics.md) |
 | Cognitive Services | [Azure Cognitive Services のログ記録](../../cognitive-services/diagnostic-logging.md) |
 | Container Instances | [Azure Container Instances のログ記録](../../container-instances/container-instances-log-analytics.md#log-schema) |
-| Container Registry | [Azure Container Registry のログ記録](../../container-registry/container-registry-diagnostics-audit-logs.md) |
+| Container Registry | [Azure Container Registry のログ記録](../../container-registry/monitor-service.md) |
 | Content Delivery Network | [CDN の Azure ログ](../../cdn/cdn-azure-diagnostic-logs.md) |
 | Cosmos DB | [Azure Cosmos DB のログ](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [Azure Monitor を使用して、データ ファクトリを監視する](../../data-factory/monitor-using-azure-monitor.md) |
@@ -66,16 +66,17 @@ ms.locfileid: "112026437"
 | Azure Database for MySQL | [Azure Database for MySQL の診断ログ](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL のログ](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Azure Databricks の診断ログ](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| Azure Machine Learning | [Azure Machine Learning での診断ログ](../../machine-learning/monitor-resource-reference.md) |
 | DDoS Protection | [Azure DDoS Protection Standard のログ](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Azure Digital Twins | [Azure Digital Twins の診断を設定する](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs のログ](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | スキーマは使用できません。 |
-| Azure Firewall | スキーマは使用できません。 |
+| Azure Firewall | [Azure Firewall のログ](../../firewall/logs-and-metrics.md#diagnostic-logs) |
 | フロントドア | [Front Door のログ](../../frontdoor/front-door-diagnostics.md) |
 | IoT Hub | [IoT Hub 操作](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | Key Vault |[Azure Key Vault のログ記録](../../key-vault/general/logging.md) |
-| Kubernetes Service |[Azure Kubernetes のログ記録](../../aks/view-control-plane-logs.md#log-event-schema) |
-| Load Balancer |[Azure Load Balancer のログ分析](../../load-balancer/load-balancer-monitor-log.md) |
+| Kubernetes Service |[Azure Kubernetes のログ記録](../../aks/monitor-aks-reference.md#resource-logs) |
+| Load Balancer |[Azure Load Balancer のログ分析](../../load-balancer/monitor-load-balancer.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Media Services | [メディア サービス監視スキーマ](../../media-services/latest/monitoring/monitor-media-services-data-reference.md#schemas) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../../virtual-network/virtual-network-nsg-manage-log.md) |

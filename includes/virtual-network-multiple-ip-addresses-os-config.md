@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f9d08bf9922da178a04ea3e58e4b463aee516a7
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84194221"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122263732"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>VM オペレーティング システムに IP アドレスを追加する
 
@@ -323,3 +323,80 @@ ip route add default via 10.0.0.1 dev eth2 table custom
     - **10.0.0.5** を、パブリック IP アドレスが関連付けられているプライベート IP アドレスに
     - **10.0.0.1** をデフォルト ゲートウェイに
     - **eth2** をセカンダリ NIC の名前に </details>
+    
+### <a name="debian-gnulinux"></a>Debian GNU/Linux
+
+<details>
+  <summary>expand</summary>
+
+1. ターミナル ウィンドウを開きます。
+2. 自身がルート ユーザーになっていることを確認します。 ルート ユーザーでない場合は、次のコマンドを入力します。
+
+   ```bash
+   sudo -i
+   ```
+
+3. ネットワーク インターフェイスの構成ファイルを更新します (‘eth0’ と仮定)。
+
+   * 次のコマンドを使用して、ネットワーク インターフェイス ファイルを開きます。
+     
+     ```bash
+     vi /etc/network/interfaces
+     ```
+    
+   * ファイルの末尾に次の行が表示されます。
+    
+      ```bash
+      auth eth0
+      iface eth0 inet dhcp
+      ```
+    
+   * dhcp の既存の行項目はそのままにします。 プライマリ IP アドレスが以前と同じ構成のまま維持されます。
+   * このファイルの行の最後に、次の行を追加します。
+
+     ```bash
+     iface eth0 inet static
+     address <your private IP address here> 
+     netmask <your subnet mask> 
+     ```
+
+4. 次のコマンドを使用して、ファイルの内容を保存します。
+
+   ```bash
+   :wq! 
+   ```
+
+5. ネットワーク サービスを再起動して、変更を反映させます。 Debian 8 以上では、次のコマンドを使用して行います。
+
+   ```bash
+   systemctl restart networking
+   ```
+   Debian の以前のバージョンでは、以下のコマンドを使用できます。
+    
+   ```bash
+   service networking restart
+   ```
+8. 次のコマンドを使用して、IP アドレスがネットワーク インターフェイスに追加されたことを確認します。
+
+   ```bash
+   ip addr list eth0
+    ```
+
+  追加した IP アドレスが、リストの一部として表示されます。 例:
+    
+  ```bash
+   1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+  2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:0d:3a:1d:1d:64 brd ff:ff:ff:ff:ff:ff
+    inet 10.2.0.5/24 brd 10.2.0.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet 10.2.0.6/24 brd 10.2.0.255 scope global secondary eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::20d:3aff:fe1d:1d64/64 scope link
+       valid_lft forever preferred_lft forever
+   ```

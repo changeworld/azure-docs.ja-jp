@@ -3,12 +3,12 @@ title: Event Grid ソースとしての Azure Media Services
 description: Azure Event Grid で Media Services イベント用に用意されているプロパティについて説明します
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c3b40f1a40cd0a5ee611a00f2f0361a8a522d3ad
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120114"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014572"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Media Services
 
@@ -28,8 +28,9 @@ JobStateChange イベントをサブスクライブすると、すべてのイ�
 | Microsoft.Media.JobScheduled| ジョブがスケジュール済みの状態に遷移したときにイベントを取得します。 |
 | Microsoft.Media.JobProcessing| ジョブが処理中の状態に遷移したときにイベントを取得します。 |
 | Microsoft.Media.JobCanceling| ジョブが取り消し中の状態に遷移したときにイベントを取得します。 |
+| Microsoft.Media.JobFinished| ジョブが終了中の状態に遷移したときにイベントを取得します。 これは、ジョブの出力を含む最終状態です。|
 | Microsoft.Media.JobCanceled| ジョブが取り消し済みの状態に遷移したときにイベントを取得します。 これは、ジョブの出力を含む最終状態です。|
-| Microsoft.Media.JobErrored | ジョブがエラー状態に遷移したときにイベントを取得します。 これは、ジョブの出力を含む最終状態です。|
+| Microsoft.Media.JobErrored| ジョブがエラー状態に遷移したときにイベントを取得します。 これは、ジョブの出力を含む最終状態です。|
 
 次の[スキーマの例](#event-schema-examples)を参照してください。
 
@@ -285,8 +286,6 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
-# <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
-
 次の例は、**JobOutputStateChange** イベントのスキーマを示しています。
 
 ```json
@@ -394,115 +393,6 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
   }
 ]
 ```
-
-# <a name="cloud-event-schema"></a>[クラウド イベント スキーマ](#tab/cloud-event-schema)
-
-次の例は、**JobOutputStateChange** イベントのスキーマを示しています。
-
-```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
-  "type": "Microsoft.Media.JobOutputStateChange",
-  "time": "2018-10-12T16:25:56.0242854",
-  "id": "dde85f46-b459-4775-b5c7-befe8e32cf90",
-  "data": {
-    "previousState": "Processing",
-    "output": {
-      "@odata.type": "#Microsoft.Media.JobOutputAsset",
-      "assetName": "output-7640689F",
-      "error": null,
-      "label": "VideoAnalyzerPreset_0",
-      "progress": 100,
-      "state": "Finished"
-    },
-    "jobCorrelationData": {
-      "testKey1": "testValue1",
-      "testKey2": "testValue2"
-    }
-  },
-  "specversion": "1.0"
-}]
-```
-
-### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled、JobOutputProcessing、JobOutputFinished、JobOutputCanceling、JobOutputCanceled、JobOutputErrored
-
-各 JobOutput の状態変更については、サンプル スキーマは次のようになります。
-
-```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
-  "type": "Microsoft.Media.JobOutputProcessing",
-  "time": "2018-10-12T16:12:18.0061141",
-  "id": "f1fd5338-1b6c-4e31-83c9-cd7c88d2aedb",
-  "data": {
-    "previousState": "Scheduled",
-    "output": {
-      "@odata.type": "#Microsoft.Media.JobOutputAsset",
-      "assetName": "output-7640689F",
-      "error": null,
-      "label": "VideoAnalyzerPreset_0",
-      "progress": 0,
-      "state": "Processing"
-    },
-    "jobCorrelationData": {
-      "testKey1": "testValue1",
-      "testKey2": "testValue2"
-    }
-  },
-  "specversion": "1.0"
-}]
-```
-### <a name="joboutputprogress"></a>JobOutputProgress
-
-スキーマの例は次のようになります。
-
- ```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/belohGroup/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/job-5AB6DE32",
-  "type": "Microsoft.Media.JobOutputProgress",
-  "time": "2018-12-10T18:20:12.1514867",
-  "id": "00000000-0000-0000-0000-000000000000",
-  "data": {
-    "jobCorrelationData": {
-      "TestKey1": "TestValue1",
-      "testKey2": "testValue2"
-    },
-    "label": "VideoAnalyzerPreset_0",
-    "progress": 86
-  },
-  "specversion": "1.0"
-}]
-```
-
-### <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
-
-次の例は、**LiveEventConnectionRejected** イベントのスキーマを示しています。 
-
-```json
-[
-  {
-    "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaServices/<account-name>",
-    "subject": "/LiveEvents/MyLiveEvent1",
-    "type": "Microsoft.Media.LiveEventConnectionRejected",
-    "time": "2018-01-16T01:57:26.005121Z",
-    "id": "b303db59-d5c1-47eb-927a-3650875fded1",
-    "data": { 
-      "streamId":"Mystream1",
-      "ingestUrl": "http://abc.ingest.isml",
-      "encoderIp": "118.238.251.xxx",
-      "encoderPort": 52859,
-      "resultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
-    },
-    "specversion": "1.0"
-  }
-]
-```
-
----
-
 
 データ オブジェクトには、次のプロパティがあります。
 
@@ -934,21 +824,25 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
     "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
     "subject": "liveEvent/mle1",
     "eventType": "Microsoft.Media.LiveEventIngestHeartbeat",
-    "eventTime": "2018-08-07T23:17:57.4610506",
+    "eventTime": "2021-05-14T23:50:00.324",
     "id": "7f450938-491f-41e1-b06f-c6cd3965d786",
     "data": {
-      "trackType": "audio",
-      "trackName": "audio",
-      "bitrate": 160000,
-      "incomingBitrate": 155903,
-      "lastTimestamp": "15336837535253637",
-      "timescale": "10000000",
-      "overlapCount": 0,
-      "discontinuityCount": 0,
-      "nonincreasingCount": 0,
-      "unexpectedBitrate": false,
-      "state": "Running",
-      "healthy": true
+      "trackType":"video",
+      "trackName":"video",
+      "bitrate":2500000,
+      "incomingBitrate":2462597,
+      "lastTimestamp":"106999",
+      "timescale":"1000",
+      "overlapCount":0,
+      "discontinuityCount":0,
+      "nonincreasingCount":0,
+      "unexpectedBitrate":false,
+      "state":"Running",
+      "healthy":true,
+      "lastFragmentArrivalTime":"2021-05-14T23:50:00.324",
+      "ingestDriftValue":"0",
+      "transcriptionState":"",
+      "transcriptionLanguage":""
     },
     "dataVersion": "1.0",
     "metadataVersion": "1"
@@ -1006,6 +900,11 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 | `unexpectedBitrate` | [bool] | 直近 20 秒における予想ビットレートと実ビットレートの差が、許容されている上限を超えているかどうか。 incomingBitrate がビットレートの 2 倍以上または incomingBitrate がビットレートの 1/2 以下または incomingBitrate が 0 のとき、かつそのときに限り true。 |
 | `state` | string | ライブ イベントの状態。 |
 | `healthy` | [bool] | カウントとフラグに基づき、取り込みが正常であるかどうかを示します。 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false の場合、Healthy は true になります。 |
+| `lastFragmentArrivalTime` | string |フラグメントがインジェスト エンドポイントに到達した最後のタイムスタンプ (UTC)。 日付形式の例: "2020-11-11 12:12:12:888999" |
+| `ingestDriftValue` | string | 直前の 1 分間に受信したオーディオまたはビデオのデータの遅延の速度 (1 分あたりの秒数) を示します。 直前の 1 分間にデータが期待よりも遅くライブ イベントに到着している場合、値は 0 より大きくなります。データが遅延なしで到着した場合は 0 になります。オーディオまたはビデオのデータが受信されなかった場合は "n/a" になります。 たとえば、ライブ コンテンツで送信しているコントリビューション エンコーダーがあり、処理の問題またはネットワーク待ち時間が原因で低速になっている場合、1 分間に合計 58 秒のオーディオまたはビデオしか配信できないことがあります。 これは、1 分あたり 2 秒のドリフトとしてレポートされます。 エンコーダーが追いついて、1 分ごとにすべての 60 秒またはそれ以上のデータを送信できる場合、この値は 0 としてレポートされます。 エンコーダーとの間で切断または不連続性が発生した場合、この値が 0 として表示され続けることがあります。これは、タイムスタンプで遅延しているデータのみが考慮され、データの中断は考慮されないためです。|
+| `transcriptionState` | string | ライブ文字起こしが有効になっている場合、オーディオ トラックのハートビートに対するこの値は "On" になります。それ以外の場合は、空の文字列が表示されます。 この状態は、ライブ文字起こしの tracktype が "audio" である場合にのみ適用されます。 他のすべてのトラックの値は空になります。|
+| `transcriptionLanguage` | string  | 文字起こし言語の言語コード (BCP-47 形式)。 たとえば、"de-de" はドイツ語 (ドイツ) を示します。 ビデオ トラックのハートビートの場合、またはライブ文字起こしが無効になっている場合、値は空です。 |
+
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 810a62dee277453d4cc2f41c72d0868549d711cf
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: b11fff95543abb4fc74b2087deffe56786998e28
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653222"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179655"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ
 
@@ -75,7 +75,7 @@ GPv1 アカウントと GPv2 アカウントとでは料金体系が異なりま
 
 ## <a name="archive-access-tier"></a>アーカイブ アクセス層
 
-アーカイブ アクセス層はストレージ コストが最も低くなりますが、ホットとクールの各層に比べてデータ取得コストが高くなります。 データは、少なくとも 180 日間、アーカイブ層に保持される必要があります。そうでない場合、早期削除料金の対象になります。 アーカイブ アクセス層のデータの取得は、指定されたリハイドレート優先度によっては、数時間かかることがあります。 小さいオブジェクトの場合、優先度の高いリハイドレートは 1 時間未満でアーカイブからオブジェクトを取得できます。 「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」で詳細を確認してください。
+アーカイブ アクセス層はストレージ コストが最も低くなりますが、ホットとクールの各層に比べてデータ取得コストが高くなります。 データは、少なくとも 180 日間、アーカイブ層に保持される必要があります。そうでない場合、早期削除料金の対象になります。 アーカイブ アクセス層のデータの取得は、指定されたリハイドレート優先度によっては、数時間かかることがあります。 小さいオブジェクトの場合、優先度の高いリハイドレートは 1 時間未満でアーカイブからオブジェクトを取得できます。 詳細については、「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」を参照してください。
 
 BLOB がアーカイブ ストレージ内にある間、BLOB データはオフラインであり、読み取りも変更もできません。 アーカイブ内の BLOB を読み取るかダウンロードするには、最初にそれをオンライン層にリハイドレートする必要があります。 アーカイブ ストレージ内の BLOB のスナップショットを作成することはできません。 ただし、BLOB メタデータはオンラインのままで使用でき、BLOB、そのプロパティ、メタデータ、および BLOB インデックス タグを一覧表示できます。 アーカイブ中の BLOB メタデータの設定または変更は許可されていません。 ただし、BLOB インデックス タグを設定したり変更したりすることはできます。 アーカイブ中の BLOB の場合、有効な操作は [Get Blob Properties](/rest/api/storageservices/get-blob-properties)、[Get Blob Metadata](/rest/api/storageservices/get-blob-metadata)、[Set Blob Tags](/rest/api/storageservices/set-blob-tags)、[Get Blob Tags](/rest/api/storageservices/get-blob-tags)、[Find Blobs by Tags](/rest/api/storageservices/find-blobs-by-tags)、[List Blobs](/rest/api/storageservices/list-blobs)、[Set Blob Tier](/rest/api/storageservices/set-blob-tier)、[Copy Blob](/rest/api/storageservices/copy-blob)、[Delete Blob](/rest/api/storageservices/delete-blob) のみです。
 
@@ -122,7 +122,7 @@ BLOB がアップロードされたり階層間で移動されたりすると、
 
 BLOB をよりクールな層 (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ) に移動するとき、この操作は移動先の層への書き込み操作として課金され、移動先の層の書き込み操作 (10,000 件単位) およびデータ書き込み (GB 単位) の料金が適用されます。
 
-BLOB をよりホットな層 (アーカイブからクール、アーカイブからホット、またはクールからホット) に移動するとき、この操作は移動元の層からの読み取りとして課金され、移動元の層の読み取り操作 (10,000 件単位) およびデータ取得 (GB 単位) の料金が適用されます。 クール層またはアーカイブ層から移動された BLOB については、[早期削除](#cool-and-archive-early-deletion)料金も適用される場合があります。 [アーカイブ層からのデータのリハイドレート](storage-blob-rehydration.md)には時間がかかり、データがオンラインに復元され、BLOB 層がホットまたはクールに変更されるまで、データにはアーカイブ料金が課金されます。
+BLOB をよりホットな層 (アーカイブからクール、アーカイブからホット、またはクールからホット) に移動するとき、この操作は移動元の層からの読み取りとして課金され、移動元の層の読み取り操作 (10,000 件単位) およびデータ取得 (GB 単位) の料金が適用されます。 クール層またはアーカイブ層から移動された BLOB については、[早期削除](#cool-and-archive-early-deletion)料金も適用される場合があります。 [アーカイブ層からのデータのリハイドレート](archive-rehydrate-overview.md)には時間がかかり、データがオンラインに復元され、BLOB 層がホットまたはクールに変更されるまで、データにはアーカイブ料金が課金されます。
 
 次の表には、各層の変更料金をまとめてあります。
 
@@ -155,7 +155,7 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 <sup>1</sup> GPv2 アカウントのクール層のオブジェクトには、30 日の最小リテンション期間があります。 Blob Storage アカウントには、クール層の最小リテンション期間はありません。
 
-<sup>2</sup> Archive Storage では、取得の待ち時間とコストが異なる High と Standard の 2 つのリハイドレート優先度が現在サポートされています。 詳細については、「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」を参照してください。
+<sup>2</sup> Archive Storage では、取得の待ち時間とコストが異なる High と Standard の 2 つのリハイドレート優先度が現在サポートされています。 詳細については、「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」を参照してください。
 
 > [!NOTE]
 > Blob Storage アカウントでは、汎用 v2 ストレージ アカウントと同じパフォーマンスとスケーラビリティ ターゲットがサポートされます。 詳細については、「[Blob Storage のスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)」を参照してください。

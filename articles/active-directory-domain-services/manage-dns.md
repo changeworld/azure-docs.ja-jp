@@ -8,24 +8,27 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 06/18/2021
 ms.author: justinha
-ms.openlocfilehash: afa6920a36a5a7218571239b36815004d8f2d450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 935abb1a1eae362e3036c323da35aa5fd7b9b018
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619353"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707970"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインで DNS を管理し、条件付きフォワーダーを作成する
 
-Azure Active Directory Domain Services (Azure AD DS) の重要な構成要素の 1 つが DNS (ドメイン名解決) です。 Azure AD DS に含まれる DNS サーバーによって、マネージド ドメインの名前が解決されます。 この DNS サーバーには、サービスの実行を可能にする重要なコンポーネントに対する組み込みの DNS レコードと更新プログラムが含まれます。
+Azure AD DS に含まれるドメイン ネーム システム (DNS) サーバーによって、マネージド ドメインの名前が解決されます。 この DNS サーバーには、サービスの実行を可能にする重要なコンポーネントに対する組み込みの DNS レコードと更新プログラムが含まれます。
 
 独自のアプリケーションやサービスを実行するとき、ドメインに参加していないコンピューターの DNS レコードを作成したり、ロード バランサーの仮想 IP アドレスを構成したり、外部 DNS フォワーダーを設定したりすることが必要になる場合があります。 "*AAD DC 管理者*" グループに属するユーザーには、Azure AD DS マネージド ドメインの DNS 管理者権限が付与され、カスタムの DNS レコードを作成、編集できます。
 
 ハイブリッド環境では、オンプレミスの AD DS 環境など、他の DNS 名前空間内で構成されている DNS ゾーンとレコードは、マネージド ドメインに同期されません。 他の DNS 名前空間で名前付きリソースを解決するには、環境内の既存の DNS サーバーを指す条件付きフォワーダーを作成して使用します。
 
 この記事では、DNS サーバー ツールをインストールしてから、DNS コンソールを使用して Azure AD DS でレコードを管理し、条件付きフォワーダーを作成する方法について説明します。
+
+>[!NOTE]
+>サーバーレベルの DNS フォワーダーの作成または変更はサポートされていないため、この作成または変更を行うと、Azure AD DS マネージド ドメインの問題が発生します。
 
 ## <a name="before-you-begin"></a>開始する前に
 

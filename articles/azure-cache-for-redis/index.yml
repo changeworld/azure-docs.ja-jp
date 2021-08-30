@@ -9,12 +9,12 @@ metadata:
   author: yegu-ms
   ms.author: yegu
   ms.date: 12/16/2019
-  ms.openlocfilehash: d6a3179e21d9e0c4bf4cbb83410af9945bbb46c0
-  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+  ms.openlocfilehash: c46932ac1a2237801453da4b02333a0d5d403813
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113109451"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123109318"
 landingContent:
 - title: Azure Cache for Redis について
   linkLists:
@@ -36,8 +36,6 @@ landingContent:
     links:
     - text: Enterprise レベルのキャッシュを作成する
       url: quickstart-create-redis-enterprise.md
-    - text: Azure Cache for Redis のベスト プラクティス
-      url: cache-best-practices.md
     - text: よく寄せられる質問
       url: cache-faq.yml
 - title: クイック スタート:Azure Cache for Redis
@@ -88,6 +86,24 @@ landingContent:
       url: /powershell/module/az.rediscache
     - text: Azure CLI
       url: /cli/azure/redis
+- title: ベスト プラクティス
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 接続の回復力
+      url: cache-best-practices-connection.md
+    - text: サーバーの負荷管理
+      url: cache-best-practices-server-load.md
+    - text: メモリ管理
+      url: cache-best-practices-memory-management.md
+    - text: 開発
+      url: cache-best-practices-development.md
+    - text: スケーリング
+      url: cache-best-practices-scale.md
+    - text: Kubernetes でホストされるクライアント アプリケーション
+      url: cache-best-practices-kubernetes.md
+    - text: パフォーマンス テスト
+      url: cache-best-practices-performance.md
 - title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide

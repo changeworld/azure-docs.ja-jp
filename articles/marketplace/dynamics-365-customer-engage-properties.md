@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: ccb3c715cf598a72eff490d4a177063898110c69
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 155b8deb614aa2c2a85ce9b81625e3d6972ff09b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820236"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566230"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-properties"></a>Dynamics 365 for Customer Engagement & Power Apps オファーのプロパティの構成
 
@@ -32,7 +32,7 @@ ms.locfileid: "107820236"
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
-このオファーが適用される Dynamics 365 の **[適用対象の製品]** を選択します。
+オファーに適用する **[適用可能な製品]** (Customer Service、Customer Voice、Project Operations、Field Service、Marketing、Mixed Reality、Power Apps、Power Automate、Power Virtual Agents、Project Service Automation、および Sales) を選択します。 これらの選択により、顧客は、下に表示される AppSource Dynamics 365 製品フィルターに基づいてオファーを検索できます。
 
 オファーの **アプリ バージョン** を入力します。 顧客にはオファーの詳細ページにこの番号が表示されます。
 

@@ -3,14 +3,14 @@ title: .NET での持続エンティティに関する開発者ガイド - Azure
 description: Azure Functions の Durable Functions 拡張機能を使用して .NET で持続エンティティを操作する方法。
 author: sebastianburckhardt
 ms.topic: conceptual
-ms.date: 10/06/2019
+ms.date: 06/30/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 88d2a23104b67dae8fd480406eb9171e9f3d5652
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6927c0a276ffa58077ce258dc5fa4ce02eb8f43f
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92740018"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108047"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET での持続エンティティに関する開発者ガイド
 
@@ -264,10 +264,11 @@ context.SignalEntity<ICounter>("myCounter", ...);
 通常どおり、すべてのパラメーターと戻り値の型は、JSON でシリアル化できる必要があります。 そうでない場合、シリアル化の例外が実行時にスローされます。
 
 さらに、いくつかの追加の規則を適用します。
+* エンティティ インターフェイスは、エンティティ クラスと同じアセンブリに定義する必要があります。
 * エンティティ インターフェイスでは、メソッドのみを定義する必要があります。
 * エンティティ インターフェイスにジェネリック パラメーターを含めることはできません。
 * エンティティ インターフェイス メソッドは、複数のパラメーターを持つことはできません。
-* エンティティ インターフェイス メソッドは、`void`、`Task`、または `Task<T>` を返す必要があります。 
+* エンティティ インターフェイス メソッドは、`void`、`Task`、または `Task<T>` を返す必要があります。
 
 これらのいずれかの規則に違反した場合、`SignalEntity` または `CreateProxy` の型引数としてインターフェイスが使用されると、実行時に `InvalidOperationException` がスローされます。 例外メッセージで、どの規則に違反したかが説明されます。
 

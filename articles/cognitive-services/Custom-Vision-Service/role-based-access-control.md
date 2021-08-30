@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: d265b6698a87c1c651dff1413cf48dd4984cd606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 050b4011dbc46b6b6567965ed94847dbaf3560c6
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94616894"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982314"
 ---
 # <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
@@ -29,13 +29,12 @@ Azure RBAC は、Custom Vision リソースに割り当てることができま�
    > [!NOTE]
    > また、リソース グループ、サブスクリプション、または管理グループ全体に対して Azure RBAC を設定することもできます。 これを行うには、目的のスコープ レベルを選択し、目的の項目に移動します (たとえば、 **[リソース グループ]** を選択し、目的のリソース グループをクリックします)。
 1. 左側のナビゲーション ウィンドウで **[アクセス制御 (IAM)]** を選択します。
-1. **[ロールの割り当て]** タブを選択して、このスコープのロールの割り当てを表示します。
 1. **[追加]**  ->  **[ロール割り当ての追加]** の順に選択します。
-1. **[ロール]** ドロップダウン リストで追加するロールを選択します。
-1. **[選択]** 一覧で、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、[選択] ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
-1. **[保存]** を選択してロールを割り当てます。
+1. 次の画面の **[ロール]** タブで、追加するロールを選択します。
+1. **[メンバー]** タブで、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。
+1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
 
-数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。
+数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。 これらの手順については、「[Azure portal を使用して Azure ロールを割り当てる](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」を参照してください。
 
 ## <a name="custom-vision-role-types"></a>Custom Vision ロールの種類
 

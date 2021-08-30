@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: a3b3c8760c3bf7d6bf4bee444bef7ed77134fb5a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 61b50f8e3c5b32401b4f7339627b9b704a4b94fd
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748306"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122969"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -99,6 +99,10 @@ App Configuration Push タスクによって、次のパラメーターが使用
 **複数の構成ファイルをアップロードするには、どうすればよいですか?**
 
 同じパイプライン内で Azure App Configuration Push タスクの複数のインスタンスを作成して、複数の構成ファイルを App Configuration ストアにプッシュします。
+
+**このタスクを使用して Key Vault 参照を作成するにはそうすればよいですか?**
+
+Key Vault 参照を作成するには、"Content Type" パラメーターを *application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8* に設定します。 構成ファイルに含まれているキーと値の一部が Key Vault 参照でない場合は、Key Vault 参照および通常のキーと値を別々の構成ファイルに格納して、それらを個別にプッシュしてください。
 
 **キー値を Configuration ストアにプッシュしようとすると、409 エラーが発生するのはなぜですか?**
 

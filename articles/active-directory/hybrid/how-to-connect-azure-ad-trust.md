@@ -1,7 +1,6 @@
 ---
 title: Azure AD Connect - Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する | Microsoft Docs
 description: Azure AD Connect によって処理される Azure AD 信頼の操作について説明します。
-keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, Azure AD, 信頼、AAD, 要求, 要求, 要求規則, 発行, 変換, 規則, バックアップ, 復元
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
@@ -18,22 +17,23 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8fea0133b7aa93b16a7e65e9e573723e7e21bae
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85360097"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460290"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する
 
 ## <a name="overview"></a>概要
 
-Azure AD Connect では、オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD との間のフェデレーションを管理することができます。 この記事では、次の項目について概説します。
+オンプレミス環境と Azure AD をフェデレーションする際は、オンプレミスの ID プロバイダーと Azure AD との間に信頼関係を構築します。  Azure AD Connect では、オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD との間のフェデレーションを管理することができます。 この記事では、次の項目について概説します。
 
 * Azure AD Connect によって処理される、信頼関連の各種構成
 * Azure AD Connect によって設定される発行変換規則 (要求規則)
 * アップグレード時や構成の更新時における要求規則のバックアップ方法と復元方法。 
+* AD FS と Azure AD との間の信頼関係にセキュリティを確保し、それを監視するためのベスト プラクティス
 
 ## <a name="settings-controlled-by-azure-ad-connect"></a>Azure AD Connect によって制御される設定
 
@@ -118,6 +118,11 @@ Azure AD Connect バージョン 1.1.873.0 以降では、Azure AD 信頼の設�
 
 > [!NOTE]
 > 追加の規則が、Azure AD Connect によって構成された規則と競合していないことを確認してください。
+
+## <a name="best-practice-for-securing-and-monitoring-the-ad-fs-trust-with-azure-ad"></a>AD FS と Azure AD との間の信頼関係にセキュリティを確保し、それを監視するためのベスト プラクティス
+AD FS と Azure AD との間でフェデレーションを行う際は、フェデレーション構成 (AD FS と Azure AD との間で構成された信頼関係) を注意深く監視し、異常なアクティビティや不審なアクティビティをキャプチャすることが欠かせません。 そのためにはアラートを設定して、フェデレーション構成に変更が加えられるたびに通知を受け取することをお勧めします。 アラートの設定方法については、[フェデレーション構成に対する変更を監視する](how-to-connect-monitor-federation-changes.md)方法に関するページを参照してください。 
+
+
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ](how-to-connect-fed-management.md)

@@ -7,23 +7,23 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: e023eacd173ce23e3f88fa97f8c0127132c953ea
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c53d875e35e77d782ac2897bbe2a1a356f8ac5a2
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744535"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359589"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
 
-NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU と AMD EPYC 7V12(Rome) CPU を搭載しています。 この VM には、最大 4 個の NVIDIA T4 GPU (それぞれに 16 GB のメモリを装備)、最大 64 個の非マルチスレッド AMD EPYC 7V12 (Rome) プロセッサ コア、440 GiB のシステム メモリが搭載されています。 これらの仮想マシンは、AI サービス (ユーザーが生成した要求のリアルタイム推論など) のデプロイや、NVIDIA の GRID ドライバーと仮想 GPU テクノロジを使用した対話型グラフィックスと視覚化ワークロードに最適です。 CUDA、TensorRT、Caffe、ONNX、およびその他のフレームワークをベースにした標準的な GPU コンピューティング ワークロードや、OpenGL と DirectX をベースにした GPU アクセラレーションを使用するグラフィック アプリケーションは、ユーザーのすぐ近くにある NCasT4_v3 シリーズに経済的にデプロイできます。
+NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU と AMD EPYC 7V12(Rome) CPU を搭載しています。 この VM には、最大 4 個の NVIDIA T4 GPU (それぞれに 16 GB のメモリを装備)、最大 64 個の非マルチスレッド AMD EPYC 7V12 (Rome) プロセッサ コア (ベース周波数 2.45 GHz、全コアのピーク周波数 3.1 GHz、単一コアのピーク周波数 3.3 GHz)、440 GiB のシステム メモリが搭載されています。 これらの仮想マシンは、AI サービス (ユーザーが生成した要求のリアルタイム推論など) のデプロイや、NVIDIA の GRID ドライバーと仮想 GPU テクノロジを使用した対話型グラフィックスと視覚化ワークロードに最適です。 CUDA、TensorRT、Caffe、ONNX、およびその他のフレームワークをベースにした標準的な GPU コンピューティング ワークロードや、OpenGL と DirectX をベースにした GPU アクセラレーションを使用するグラフィック アプリケーションは、ユーザーのすぐ近くにある NCasT4_v3 シリーズに経済的にデプロイできます。
 
 <br>
 
 [ACU](acu.md):230-260<br>
 [Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
-[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
+[Ultra Disk](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスについては、[詳細をご覧ください](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)) <br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>

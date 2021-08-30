@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 06/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c64a712cc916cad0f6f6fec77f33fcb422f834fb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a6005c267423787fed61f2fb9badfea5769137d2
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982972"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565366"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
@@ -70,6 +70,7 @@ PowerShell Runbook は、Windows PowerShell に基づきます。 Azure ポー�
 * Runbook に[並列処理](automation-powershell-workflow.md#use-parallel-processing)を使用し、複数のアクションを並列して実行することはできません。
 * Runbook に[チェックポイント](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)を使用し、エラーが発生した場合に Runbook を再開することはできません。
 * PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) コマンドレットを使用する必要があります。
+* Runbooks では PowerShell [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) ステートメントを使用できません。Azure sandbox または Hybrid Runbook Workers でサポートされておらず、ジョブが失敗する原因となります。
 
 ### <a name="known-issues"></a>既知の問題
 

@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/06/2021
+ms.date: 06/15/2021
 ms.author: b-juche
-ms.openlocfilehash: c37d67b6f090314343376237dce3b107b52ee3eb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: dfb4de158cbaf63f2a41932e630036831643fcf6
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082914"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122239"
 ---
 # <a name="storage-service-add-ons-for-azure-netapp-files"></a>Azure NetApp Files のストレージ サービス アドオン
 
-Azure NetApp Files のポータル メニュー **[ストレージ サービス アドオン]** では、Azure NetApp Files ストレージ サービスでサポートしているサードパーティ製エコシステム アドオンへの “起動パッド” を用意しています。 
+Azure NetApp Files のポータル メニュー **[ストレージ サービス アドオン]** では、Azure NetApp Files ストレージ サービスで利用できるサードパーティ製エコシステム アドオンへの "起動パッド" を用意しています。 
 
 ## <a name="access-storage-service-add-ons"></a>ストレージ サービス アドオンにアクセスする  
 

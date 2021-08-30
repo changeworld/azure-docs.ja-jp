@@ -4,16 +4,16 @@ description: Azure Active Directory Domain Services を使用して Azure Files 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/03/2021
+ms.date: 07/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 05a92cd9f2ce7d5e23896f3dd8109abde5be69ca
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f995b4b17330f6469f05c5399c2129fa7abc33bf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669913"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462576"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
@@ -22,8 +22,16 @@ ms.locfileid: "110669913"
 Azure ファイル共有を初めて使用する場合は、次の一連の記事を読む前に、[計画ガイド](storage-files-planning.md)に目を通すことをお勧めします。
 
 > [!NOTE]
-> Azure Files では、Azure AD DS と RC4-HMAC のみを使用した Kerberos 認証がサポートされています。 AES Kerberos 暗号化はまだサポートされていません。
+> Azure Files では、Azure AD DS と共に RC4-HMAC および AES-256 暗号化を使用した Kerberos 認証がサポートされています。
+>
 > Azure Files では、Azure AD と完全に同期する Azure AD DS の認証がサポートされています。 Azure AD DS で範囲指定された同期を有効にし、Azure AD から限定された ID のセットのみを同期する場合、認証と承認はサポートされていません。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -87,13 +95,14 @@ SMB を使用した Azure AD DS 認証を有効にするには、Azure AD テナ
 [Azure portal](https://portal.azure.com) を使用して SMB 経由の Azure AD DS 認証を有効にするには、次の手順に従います。
 
 1. Azure portal で、既存のストレージ アカウントに移動するか、または[ストレージ アカウントを作成](../common/storage-account-create.md)します。
-1. **[設定]** セクションで、 **[構成]** を選択します。
-1. **[Identity-based access for file shares]\(ファイル共有への ID ベースのアクセス\)** で、 **[Azure Active Directory Domain Service (AAD DS)]** のトグルを **[有効]** に切り替えます。
+1. **[ファイル共有]** セクションで、 **[Active directory: Not Configured]\(Active Directory: 未構成\)** を選択します。
+
+    :::image type="content" source="media/storage-files-active-directory-enable/files-azure-ad-enable-storage-account-identity.png" alt-text="ストレージ アカウントの [ファイル共有] ペインのスクリーンショット。Active Directory が強調表示されています。" lightbox="media/storage-files-active-directory-enable/files-azure-ad-enable-storage-account-identity.png":::
+
+1. **[Azure Active Directory Domain Services]** を選択し、トグルを **[有効]** に切り替えます。
 1. **[保存]** を選択します。
 
-次の図は、ストレージ アカウントへの SMB 経由の Azure AD DS 認証を有効にする方法を示しています。
-
-:::image type="content" source="media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png" alt-text="ストレージ アカウントの [構成] ブレードのスクリーンショット。Azure Active Directory ドメイン サービスが有効になっています。" lightbox="media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png":::
+    :::image type="content" source="media/storage-files-active-directory-enable/files-azure-ad-highlight.png" alt-text="[Active Directory] ペインのスクリーンショット。Azure Active Directory Domain Services が有効になっています。" lightbox="media/storage-files-active-directory-enable/files-azure-ad-highlight.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

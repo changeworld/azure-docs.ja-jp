@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
-ms.date: 06/02/2021
+ms.date: 07/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: a78622aaccfaeb372d67ef4575e2bd923ab6cb58
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3e80c1153737514575017685310b6e5306a47167
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415466"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730847"
 ---
 # <a name="vcore-purchase-model-overview---azure-sql-database"></a>仮想コア購入モデルの概要 - Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -104,9 +104,6 @@ To enable M-series hardware for a subscription and region, a support request mus
 -->
 
 ### <a name="dc-series"></a>DC シリーズ
-
-> [!NOTE]
-> DC シリーズは現在、**パブリック プレビュー** 段階にあります。
 
 - DC シリーズのハードウェアでは、Software Guard Extensions (Intel SGX) テクノロジを搭載した Intel プロセッサが使用されています。
 - DC シリーズは、[セキュリティで保護されたエンクレーブが設定された Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) のために必要で、これは他のハードウェア構成ではサポートされていません。
@@ -205,12 +202,16 @@ Approved support requests are typically fulfilled within 5 business days.
 
 #### <a name="dc-series"></a>DC シリーズ
 
-> [!NOTE]
-> DC シリーズは現在、**パブリック プレビュー** 段階にあります。
-
 DC シリーズは、次のリージョンで使用できます: カナダ中部、カナダ東部、米国東部、北ヨーロッパ、英国南部、西ヨーロッパ、米国西部。
 
-現在サポートされていないリージョンで DC シリーズが必要な場合は、「[Azure SQL Database と SQL Managed Instance のクォータの増加を要求する](quota-increase-request.md)」の手順に従って[サポート チケットを送信してください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+現在はサポートされていないリージョンで DC シリーズが必要な場合は、[サポート チケットを送信](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。 **[基本]** ページで、以下を設定します。
+
+1. **[問題の種類]** で、 **[技術]** を選択します。
+1. **[サービスの種類]** で、 **[SQL データベース]** を選択します。
+1. **[問題の種類]** で、 **[セキュリティ、プライバシー、およびコンプライアンス]** を選択します。
+1. **[問題のサブタイプ]** で **[Always Encrypted]** を選択します。
+
+:::image type="content" source="./media/service-tiers-vcore/request-dc-series.png" alt-text="新しいリージョンでの DC シリーズをリクエストする" loc-scope="azure-portal":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: aa17d83dcc14675db5ff6aa4597314baffbffdbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c67d6895fe4dde54992c7a79067a45dcdff18305
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98015421"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586421"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics ジョブの Azure Resource Manager テンプレートをエクスポートする
 
@@ -42,11 +42,11 @@ Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細�
 
 1. Stream Analytics ジョブのワークスペースに **[Deploy]** フォルダーが表示されることに注意してください。
 
-1. *JobTemplate.json* ファイルを調べます。これは、デプロイに使用される Azure Resource Management テンプレートです。
+1. *JobTemplate.json* ファイルを調べます。これは、デプロイに使用される Azure Resource Manager テンプレートです。
 
 ## <a name="complete-the-parameters-file"></a>パラメーター ファイルを完成する
 
-次に、Azure Resource Management テンプレートのパラメーター ファイルを完成します。
+次に、Azure Resource Manager テンプレートのパラメーター ファイルを完成させます。
 
 1. Visual Studio Code で Stream Analytics ジョブ ワークスペースの **[Deploy]** フォルダーにある *JobTemplate.parameters.json* ファイルを開きます。
 

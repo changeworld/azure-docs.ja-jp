@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/11/2021
 ms.author: yelevin
-ms.openlocfilehash: b64adbb63efaa4ce4781474f732bc9509d51029e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 97c35aa059f4419ee951875e769b252016578963
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310327"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723500"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel のアクセス許可
 
@@ -103,6 +103,23 @@ Azure Sentinel 固有の Azure ロールの割り当てでは、Azure および 
     - [テーブルレベルの RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043)
 
     リソースコンテキスト RBAC とテーブルレベル RBAC は、Azure Sentinel を丸ごと利用できる許可を与えることなく、Azure Sentinel ワークスペースに含まれる特定のデータへのアクセスを許可する 2 つの手法です。
+
+## <a name="role-recommendations"></a>ロールに関する推奨事項
+
+Azure Sentinel でロールとアクセス許可のしくみを理解したうえで、ユーザーにロールを適用するためのベスト プラクティスに関する次のガイダンスを参考にしてください。
+
+|ユーザー タイプ  |職務 |リソース グループ  |説明  |
+|---------|---------|---------|---------|
+|**セキュリティ アナリスト**     | [Azure Sentinel レスポンダー](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)        | Azure Sentinel のリソース グループ        | データ、インシデント、ブックなどの Azure Sentinel リソースを表示する。 <br><br>インシデントの割り当てや解除など、インシデントを管理する。        |
+|     | [Logic Apps の共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)        | Azure Sentinel のリソース グループ、またはプレイブックが格納されているリソース グループ        | プレイブックを分析ルールとオートメーション ルールにアタッチし、プレイブックを実行する。 <br><br>**注**: このロールにより、ユーザーがプレイブックを変更することもできます。         |
+|**セキュリティ エンジニア**     | [Azure Sentinel 共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)       |Azure Sentinel のリソース グループ         |   データ、インシデント、ブックなどの Azure Sentinel リソースを表示する。 <br><br>インシデントの割り当てや解除など、インシデントを管理する。 <br><br>ブック、分析ルールなどの Azure Sentinel リソースを作成および編集する。      |
+|     | [Logic Apps の共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)        | Azure Sentinel のリソース グループ、またはプレイブックが格納されているリソース グループ        | プレイブックを分析ルールとオートメーション ルールにアタッチし、プレイブックを実行する。 <br><br>**注**: このロールにより、ユーザーがプレイブックを変更することもできます。         |
+|  **サービス プリンシパル**   | [Azure Sentinel 共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)      |  Azure Sentinel のリソース グループ       | 管理タスクの自動化された構成 |
+|     |         |        | |
+
+> [!TIP]
+> 取り込んでいる、または監視しているデータによっては、追加のロールが必要になることがあります。 たとえば、他の Microsoft ポータル内でサービスのデータ コネクタを設定するには、グローバル管理者ロールやセキュリティ管理者ロールなどの Azure AD ロールが必要になる場合があります。
+>
 
 ## <a name="next-steps"></a>次のステップ
 

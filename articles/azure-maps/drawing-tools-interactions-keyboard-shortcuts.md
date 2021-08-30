@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: b609a21348222150faf5fb828f2cc38ca6658f5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42b756e96829a19ddd25258087a8537c9a747b10
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895819"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668859"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>描画ツール モジュールでの対話式操作の種類とキーボード ショートカット
 
@@ -140,6 +140,7 @@ ms.locfileid: "92895819"
 | `C` | 進行中の描画を完了し、描画モードをアイドル状態に設定します。 フォーカスは最上位のマップ要素に移動します。  |
 | `Escape` | 進行中の描画を取り消し、描画モードをアイドル状態に設定します。 フォーカスは最上位のマップ要素に移動します。  |
 | `F` | マウスがマップ上にある場合、ポイント、線、または多角形に座標を追加します。 クリック モードまたはハイブリッド モードのときにマップをクリックした場合と同等のアクションです。 このショートカットを使用すると、より正確で高速な描画を行うことができます。 一方の手でマウスの位置を決め、押すジェスチャでマウスを動かすことなく、もう一方の手でボタンを押すことができます。 |
+| `Delete` または `Backspace` | 編集モードで図形を選択した場合は、図形を削除します。  |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -165,6 +165,8 @@
           href: runtime-troubleshoot.md
         - name: .NET アップグレードのトラブルシューティング
           href: dotnet-upgrade-troubleshoot.md
+    - name: Azure Data Analytics の Spark への移行
+      href: migrate-azure-data-lake-analytics-to-synapse.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

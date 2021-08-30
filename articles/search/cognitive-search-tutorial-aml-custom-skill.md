@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a3c76cb931a5683cf6fd52a806979c430f3f72
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98745636"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580928"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>例:Azure Machine Learning を使用してカスタム スキルを作成およびデプロイする 
 
@@ -31,7 +31,7 @@ Azure Machine Learning でアスペクトベースのセンチメント モデ�
 > * デプロイされたモデルからの出力をカスタム スキルとして取り込む
 
 > [!IMPORTANT] 
-> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現在、.NET SDK によるサポートはありません。
+> このスキルはパブリック プレビュー段階にあり、[追加利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 [プレビューの REST API](/rest/api/searchservice/index-preview) では、このスキルがサポートされています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -100,7 +100,7 @@ Azure Machine Learning でアスペクトベースのセンチメント モデ�
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。
 

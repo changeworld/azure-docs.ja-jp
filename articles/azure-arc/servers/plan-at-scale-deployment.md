@@ -1,16 +1,16 @@
 ---
 title: Azure Arc 対応サーバーを計画およびデプロイする方法
 description: 多数のマシンを Azure Arc 対応サーバーに対して有効にして、Azure で、重要なセキュリティ、管理、監視の機能の構成を簡略化する方法について説明します。
-ms.date: 04/21/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: e3f8fe410da56f627ceab5f17c980f2daa1a262c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c37b6dbe4233afd691c0da7743973b5956f2f720
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831980"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114391746"
 ---
-# <a name="plan-and-deploy-arc-enabled-servers"></a>Arc 対応サーバーの計画およびデプロイ
+# <a name="plan-and-deploy-arc-enabled-servers"></a>Arc 対応サーバーを計画およびデプロイする
 
 IT インフラストラクチャ サービスまたはビジネス アプリケーションのデプロイは、どの企業にとっても難題です。 適切に実行し、うれしくない驚きや計画外のコストを回避するには、徹底的に計画を立てて可能な限り準備しておく必要があります。 Azure Arc 対応サーバーのデプロイを計画するには、その規模を問わず、タスクを適切に完了するために満たす必要がある、設計とデプロイの条件を網羅する必要があります。
 

@@ -210,6 +210,8 @@
                   href: ../fundamentals/operational-checklist.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: 脅威を検出して軽減する
   items:
+    - name: ランサムウェアに対するバックアップと復元の計画
+      href: ../fundamentals/backup-plan-to-protect-against-ransomware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 脅威の防止
       href: ../fundamentals/threat-detection.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 脅威の分析

@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 956e84e8eb7281541fbb787a6ce7557a1f5fee03
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: c9f9dec23209d8bc401313a7213239dff52a1023
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110586494"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586205"
 ---
 # <a name="create-an-iot-central-application"></a>IoT Central アプリケーションを作成する
 
@@ -50,8 +50,6 @@ IoT Central アプリケーションを作成するには、いくつかの方�
 | S1        | 2            | 5,000          | 1 時間に数件のメッセージ |
 | S2        | 2            | 30,000         | 数分ごとにメッセージ |
 
-詳細については、「[IoT Central アプリケーションでの請求書の管理](howto-view-bill.md)」を参照してください。
-
 ### <a name="application-name"></a>アプリケーション名
 
 選択した _アプリケーション名_ は、IoT Central アプリケーション内のすべてのページのタイトル バーに表示されます。 また、[Azure IoT Central](https://aka.ms/iotcentral) サイトの **[マイ アプリ]** ページのアプリケーションのタイルにも表示されます。
@@ -87,16 +85,81 @@ IoT Central アプリケーションの作成を開始する最も簡単な方�
 **[マイ アプリ**] ページには、アクセスできるすべての IoT Central アプリケーションが一覧表示されます。 この一覧には、作成したアプリケーションと、アクセスが許可されているアプリケーションが含まれます。
 
 > [!TIP]
-> Azure IoT Central サイトで Standard 価格プランを使用して作成するすべてのアプリケーションでは、サブスクリプションの **IOTC** リソース グループが使用されます。 次のセクションで説明するアプローチを利用すると、使用するリソース グループを選択することができます。
+> Azure IoT Central サイトで Standard 価格プランを使用して作成するすべてのアプリケーションでは、サブスクリプションの **IOTC** リソース グループが使用されます。 次のセクションで説明する手法を利用して、使用するリソース グループを選択することができます。
+
+## <a name="copy-an-application"></a>アプリケーションをコピーする
+
+デバイス インスタンス、デバイス データ履歴、およびユーザー データ以外の任意のアプリケーションのコピーを作成できます。 このコピーでは標準の料金プランが使用され、課金されます。 無料の料金プランが使用されるアプリケーションをアプリケーションをコピーして作成することはできません。
+
+**[コピー]** を選択します。 ダイアログ ボックスに、新しいアプリケーションの詳細を入力します。 **[コピー]** を選択して、続行することを確認します。 このフォームのフィールドの詳細については、[アプリケーションの作成](howto-create-iot-central-application.md)に関するページを参照してください。
+
+:::image type="content" source="media/howto-create-iot-central-application/app-copy-1.png" alt-text="アプリケーション設定ページを示すスクリーンショット。":::
+
+:::image type="content" source="media/howto-create-iot-central-application/app-copy-2.png" alt-text="[アプリケーションのコピー] 設定ページを示すスクリーンショット。":::
+
+アプリのコピー操作が成功したら、リンクを使用して新しいアプリケーションに移動できます。
+
+アプリケーションをコピーすると、ルールやメール アクションの定義もコピーされます。 Flow や Logic Apps などの一部のアクションは、ルール ID を介して特定のルールに関連付けられています。 ルールが別のアプリケーションにコピーされると、そのルールに独自のルール ID が設定されます。 この場合、ユーザーは新しいアクションを作成してから、新しいルールを関連付ける必要があります。 一般には、ルールとアクションを調べ、それらが新しいアプリで最新の状態になっていることを確認することをお勧めします。
+
+> [!WARNING]
+> 特定のデバイスに関する情報を表示するタイルがダッシュボードに含まれている場合、それらのタイルに、新しいアプリケーションで **要求されたリソースが見つからなかった** ことが表示されます。 デバイスに関する情報が新しいアプリケーションに表示されるように、これらのタイルを再構成する必要があります。
+
+## <a name="create-and-use-a-custom-application-template"></a>カスタム アプリケーション テンプレートを作成して使用する
+
+Azure IoT Central アプリケーションを作成する場合、組み込みのサンプル テンプレートを選択できます。 既存の IoT Central アプリケーションから、独自のアプリケーション テンプレートを作成することもできます。 その後、新しいアプリケーションの作成時に、独自のアプリケーション テンプレートを使用できます。
+
+アプリケーション テンプレートの作成時に、既存のアプリケーションからの以下の項目が含まれます。
+
+- 既定のアプリケーションのダッシュボード (ダッシュボードのレイアウトおよび定義済みのすべてのタイルを含む)。
+- デバイス テンプレート (測定値、設定、プロパティ、コマンドおよびダッシュボードを含む)。
+- ルール。 すべてのルール定義が含まれます。 ただし、アクション (電子メールのアクションを除く) は含まれません。
+- デバイス グループ (クエリを含む)。
+
+> [!WARNING]
+> 特定のデバイスに関する情報を表示するタイルがダッシュボードに含まれている場合、それらのタイルに、新しいアプリケーションで **要求されたリソースが見つからなかった** ことが表示されます。 デバイスに関する情報が新しいアプリケーションに表示されるように、これらのタイルを再構成する必要があります。
+
+アプリケーション テンプレート作成時に以下の項目は含まれません。
+
+- デバイス
+- ユーザー
+- 継続的データ エクスポートの定義
+
+アプリケーション テンプレートから作成されたすべてのアプリケーションに手動でこれらの項目を追加します。
+
+既存の IoT Central アプリケーションからアプリケーション テンプレートを作成するには、次の手順に従います。
+
+1. アプリケーションの **[管理]** セクションに移動します。
+1. **[Application Template Export]\(アプリケーション テンプレートのエクスポート\)** を選択します。
+1. **[Application Template Export]\(アプリケーション テンプレートのエクスポート\)** ページで、テンプレートの名前と説明を入力します。
+1. **[エクスポート]** を選択して、アプリケーション テンプレートを作成します。 そのテンプレートから他のユーザーが新しいアプリケーションを作成できるようにするための **共有可能リンク** をコピーできるようになります。
+
+:::image type="content" source="media/howto-create-iot-central-application/create-template.png" alt-text="アプリケーション テンプレートの作成方法を示すスクリーンショット。":::
+
+:::image type="content" source="media/howto-create-iot-central-application/create-template-2.png" alt-text="アプリケーション テンプレートのエクスポート方法を示すスクリーンショット。":::
+
+### <a name="use-an-application-template"></a>アプリケーション テンプレートを使用する
+
+アプリケーション テンプレートを使用して新しい IoT Central アプリケーションを作成するには、あらかじめ作成された **共有可能リンク** が必要になります。 ブラウザーのアドレス バーに **共有可能リンク** を貼り付けます。 **[アプリケーションの作成]** ページが、カスタム アプリケーション テンプレートが選択された状態で表示されます。
+
+:::image type="content" source="media/howto-create-iot-central-application/create-app.png" alt-text="テンプレートからのアプリケーションの作成方法を示すスクリーンショット。":::
+
+料金プランを選択し、フォーム上の他のフィールドを入力します。 次に、 **[作成]** を選択して、アプリケーション テンプレートから新しい IoT Central アプリケーションを作成します。
+
+### <a name="manage-application-templates"></a>アプリケーション テンプレートを管理する
+
+**[Application Template Export]\(アプリケーション テンプレートのエクスポート\)** ページで、アプリケーション テンプレートの削除や更新が行えます。
+
+アプリケーション テンプレートを削除した場合、以前に生成した共有可能リンクを使用して新しいアプリケーションを作成することができなくなります。
+
+アプリケーション テンプレートを更新するには、 **[Application Template Export]\(アプリケーション テンプレートのエクスポート\)** ページでテンプレート名や説明を変更します。 その後、 **[エクスポート]** を再度選択します。 このアクションにより、新しい **共有可能リンク** が生成され、以前に作成した **共有可能リンク** の URL が無効になります。
 
 ## <a name="other-approaches"></a>その他のアプローチ
 
 また、次のアプローチを使用して IoT Central アプリケーションを作成することもできます。
 
 - [Azure portal から IoT Central アプリケーションを作成する](howto-manage-iot-central-from-portal.md#create-iot-central-applications)
-- [Azure CLI を使用して IoT Central アプリケーションを作成する](howto-manage-iot-central-from-cli.md#create-an-application)
-- [PowerShell を使用して IoT Central アプリケーションを作成する](howto-manage-iot-central-from-powershell.md#create-an-application)
-- [IoT Central アプリケーションのプログラムを作成する](howto-manage-iot-central-programmatically.md)
+- [コマンド ラインを使用して IoT Central アプリケーションを作成する](howto-manage-iot-central-from-cli.md#create-an-application)
+- [IoT Central アプリケーションのプログラムを作成する](/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/)
 
 ## <a name="next-steps"></a>次のステップ
 

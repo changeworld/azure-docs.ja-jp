@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 06/14/2021
 ms.author: banders
-ms.openlocfilehash: 8366ba41ee302747fd5ede3cddc72814f29d30ec
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 402f2b9b8d4e7528e6578f9735e0360b4a049878
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147457"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112114520"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>予約購入と払戻のトランザクションの表示
 
@@ -46,7 +46,7 @@ Enterprise Agreement と Microsoft 顧客契約の請求閲覧者は、予約の
 
 ## <a name="view-reservation-transactions-in-power-bi"></a>Power BI で予約トランザクションを表示する
 
-エンタープライズ登録または Microsoft 顧客契約の課金管理者は、Cost Management Power BI アプリで予約トランザクションを表示できます。
+マイクロソフト エンタープライズ加入契約管理者は、Cost Management Power BI アプリで予約トランザクションを表示できます。
 
 1. [Cost Management Power BI アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)を取得します。
 1. RI の購入レポートに移動します。

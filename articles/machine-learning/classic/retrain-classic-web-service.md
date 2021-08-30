@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): 従来の Web サービスの再トレーニング - Azure'
-description: Azure Machine Learning Studio (クラシック) でモデルの再トレーニングをして従来の Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
+description: Machine Learning スタジオ (クラシック) でモデルの再トレーニングをして従来の Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,16 +9,16 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 90c968ee953e80238775639964cb09a25741b33d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9b249dff4bbb6f5c3aa688986bf470e3d449372
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517571"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579542"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>従来の Studio (クラシック) Web サービスの再トレーニングとデプロイ
 
-**適用対象:** ![緑のチェック マーク。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![「いいえ」を意味する「X」。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:**  ![適用対象:](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning スタジオ (クラシック)   ![X は "いいえ" を表します。](../../../includes/media/aml-applies-to-skus/no.png)[適用対象外:](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio (クラシック) Web サービスを再トレーニングする方法を示します。 新しい Studio (クラシック) Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。

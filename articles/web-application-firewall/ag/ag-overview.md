@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: babd628280ebaee408d44dfacfaf6a5e14f57019
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ea3bc751d91e72c68bd9900f07c3c2e8aae38212
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481824"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729441"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォールとは
 
@@ -41,7 +41,7 @@ Application Gateway によるセキュリティの強化には、TLS ポリシ�
 
 * 同じ WAF の内側にある各種サイト用にカスタム WAF ポリシーを作成できます。 
 
-* IP 評判のルールセットを使用して、悪意のあるボットから Web アプリケーションを保護できます (プレビュー)。
+* IP 評判のルールセットを使用して、悪意のあるボットから Web アプリケーションを保護する
 
 ### <a name="monitoring"></a>監視
 
@@ -69,8 +69,8 @@ Application Gateway によるセキュリティの強化には、TLS ポリシ�
 - 下限と上限を指定した、構成可能な要求サイズ制限。
 - 除外リストを使用すると、WAF の評価から特定の要求属性を省略できます。 一般的な例として、認証フィールドまたはパスワード フィールドにおいて使用される、Active Directory で挿入されたトークンが挙げられます。
 - 特定のアプリケーションのニーズに合わせてカスタム ルールを作成することができます。
-- トラフィックを geo フィルタリングすることで、特定の国/地域を対象に、アプリケーションへのアクセスを許可したりブロックしたりできます。 (プレビュー)
-- ボット軽減策ルールセットを使用してアプリケーションをボットから保護できます。 (プレビュー)
+- トラフィックを geo フィルタリングすることで、特定の国/地域を対象に、アプリケーションへのアクセスを許可したりブロックしたりできます。
+- ボット軽減策ルールセットを使用してアプリケーションをボットから保護できます。
 - 要求本文で JSON と XML を検査する
 
 ## <a name="waf-policy-and-rules"></a>WAF のポリシーと規則
@@ -99,19 +99,13 @@ Application Gateway でサポートされている 3 つのルール セット:C
 
 Application Gateway はカスタム ルールもサポートしています。 カスタム規則を使用すると、WAF を通過する要求ごとに評価される独自の規則を作成できます。 これらの規則は、マネージド規則セット内の他の規則よりも高い優先度を持ちます。 一連の条件が満たされた場合、許可またはブロックするためのアクションが実行されます。 
 
-カスタム規則のパブリック プレビューで Geomatch 演算子が利用できるようになりました。 詳細については、[Geomatch カスタム規則](custom-waf-rules-overview.md#geomatch-custom-rules-preview)に関する記事を参照してください。
-
-> [!NOTE]
-> カスタム規則用の Geomatch 演算子は、現在パブリック プレビュー段階であり、プレビュー サービス レベル アグリーメントで提供されています。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+カスタム ルールで Geomatch 演算子が利用できるようになりました。 詳細については、[Geomatch カスタム ルール](custom-waf-rules-overview.md#geomatch-custom-rules)に関するページをご覧ください。
 
 カスタム規則の詳細については、[Application Gateway のカスタム規則](custom-waf-rules-overview.md)に関する記事を参照してください。
 
-### <a name="bot-mitigation-preview"></a>ボット軽減策 (プレビュー)
+### <a name="bot-mitigation"></a>ボット軽減策
 
 マネージド ボット保護ルール セットを WAF に対して有効にして、マネージド ルール セットと共に、既知の悪意のある IP アドレスからの要求をブロックしたり、ログに記録したりすることができます。 この IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 インテリジェント セキュリティ グラフは、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。
-
-> [!NOTE]
-> ボット保護規則セットは、現在パブリック プレビュー段階であり、プレビュー サービス レベル アグリーメントで提供されます。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 ボット保護が有効になっている場合、悪意のあるボットのクライアント IP に一致する着信要求はファイアウォール ログに記録されます。詳細については、以下を参照してください。 WAF ログにはストレージ アカウント、イベント ハブ、またはログ分析からアクセスできます。 
 

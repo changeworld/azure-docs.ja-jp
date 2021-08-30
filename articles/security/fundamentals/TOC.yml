@@ -1,7 +1,5 @@
 - name: 基礎のドキュメント
   href: index.yml
-- name: システムの ID 侵害からの復旧
-  href: recover-from-identity-compromise.md
 - name: 概要
   items:
     - name: Azure のセキュリティの概要
@@ -10,6 +8,14 @@
       href: end-to-end.md
     - name: クラウドにおける共同責任
       href: shared-responsibility.md
+- name: 脅威を検出して軽減する
+  items:
+    - name: ランサムウェアに対するバックアップと復元の計画
+      href: backup-plan-to-protect-against-ransomware.md
+    - name: システムの ID 侵害からの復旧
+      href: recover-from-identity-compromise.md
+    - name: 脅威の防止
+      href: threat-detection.md
 - name: Azure のワークロードをセキュリティで保護する
   items:
     - name: セキュリティの技術的な機能
@@ -144,8 +150,6 @@
       href: service-fabric-best-practices.md
 - name: 監視、監査、および操作
   items:
-    - name: 脅威の防止
-      href: threat-detection.md
     - name: Azure のログと監査
       href: log-audit.md
     - name: セキュリティの管理と監視

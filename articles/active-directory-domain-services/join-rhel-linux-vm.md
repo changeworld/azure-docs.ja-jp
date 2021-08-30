@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: justinha
-ms.openlocfilehash: 285a972936bfdf4b173e2a20223143883cd8b7d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c883e3e5cb82107b22bf06176092ec9cfae46d23
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619557"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112516695"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる
 
@@ -35,6 +35,7 @@ ms.locfileid: "96619557"
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要であれば、1 つ目のチュートリアルで [Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
 * マネージド ドメインの一部であるユーザー アカウント。
+* 名前の切り詰めによって生じる Active Directory での競合を防ぐため、最大 15 文字の一意の Linux VM 名。
 
 ## <a name="create-and-connect-to-a-rhel-linux-vm"></a>RHEL Linux VM を作成してそれに接続する
 

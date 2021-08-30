@@ -1,5 +1,5 @@
 ---
-title: リレーションシップを使ってツイン グラフを管理する
+title: ツイン グラフとリレーションシップを管理する
 titleSuffix: Azure Digital Twins
 description: リレーションシップを使って接続することでデジタル ツインのグラフを管理する方法について説明します。
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c48f62d193af953ec080fcd559c9d7593428d99e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e43617a2874a7a6817dc8126bca8e1af79436eb2
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454626"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689963"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
@@ -20,7 +20,7 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで[認証](how-to-authenticate-client.md)コードを設定すると、Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができるようになります。
 
-この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインを操作については、[「デジタル ツインを管理する」方法](how-to-manage-twin.md)を参照してください。
+この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、「[デジタル ツインを管理する](how-to-manage-twin.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,13 +52,13 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod" highlight="13":::
 
-これで、このカスタム関数を呼び出して、このような "_包含_" 関係を作成できます。 
+このカスタム関数を呼び出して、次の方法で _包含_ 関係を作成できます。 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
 複数のリレーションシップを作成する場合は、同じメソッドの呼び出しを繰り返して、異なるリレーションシップの種類を引数に渡すことができます。 
 
-ヘルパー クラス `BasicRelationship` の詳細については、[コンセプト: Azure Digital Twins API および SDK](concepts-apis-sdks.md#serialization-helpers) に関するページを参照してください。
+ヘルパー クラス `BasicRelationship` の詳細については、[Azure Digital Twins API および SDK](concepts-apis-sdks.md#serialization-helpers) に関するページを参照してください。
 
 ### <a name="create-multiple-relationships-between-twins"></a>ツイン間でリレーションシップの作成
 
@@ -75,11 +75,19 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 ## <a name="list-relationships"></a>リレーションシップの一覧表示
 
-グラフ内の特定のツインの "**発信**" リレーションシップの一覧にアクセスするには、次のように `GetRelationships()` メソッドを使用できます。
+### <a name="list-properties-of-a-single-relationship"></a>1 つのリレーションシップのプロパティを一覧表示する
+
+リレーションシップ データはいつでも任意の型に逆シリアル化できます。 リレーションシップへの基本的なアクセスには、`BasicRelationship` 型を使用します。 また、`BasicRelationship` ヘルパー クラスを使用すると、リレーションシップで定義されたプロパティに `IDictionary<string, object>` を介してアクセスできます。 プロパティを一覧表示するには、次のコードを使用します。
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="ListRelationshipProperties":::
+
+### <a name="list-outgoing-relationships-from-a-digital-twin"></a>デジタル ツインからの出力方向のリレーションシップを一覧表示する
+
+グラフ内の特定のツインの "**発信**" リレーションシップの一覧にアクセスするには、次のように `GetRelationships()` メソッドを使用できます。 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="GetRelationshipsCall":::
 
-これによって、呼び出しの同期または非同期のバージョンのどちらを使用するかに応じて、`Azure.Pageable<T>` または `Azure.AsyncPageable<T>` が返されます。
+このメソッドでは、呼び出しの同期または非同期のバージョンのどちらを使用するかに応じて、`Azure.Pageable<T>` または `Azure.AsyncPageable<T>` が返されます。
 
 リレーションシップの一覧を取得する例を次に示します。 より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
@@ -89,11 +97,11 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindOutgoingRelationships":::
 
-取得したリレーションシップを使用して、グラフ内の他のツインに移動できます。 これを行うには、返されたリレーションシップから `target` フィールドを読み取り、それを `GetDigitalTwin()` への次の呼び出しの ID として使用します。
+取得したリレーションシップを使用すると、返されたリレーションシップから `target` フィールドを読み取り、そのフィールドを `GetDigitalTwin()` の次の呼び出しの ID として使用することで、グラフ内の他のツインに移動できます。
 
-### <a name="find-incoming-relationships-to-a-digital-twin"></a>デジタル ツインとの受信リレーションシップを見つける
+### <a name="list-incoming-relationships-to-a-digital-twin"></a>デジタル ツインとの受信リレーションシップを一覧表示する
 
-Azure Digital Twins には、特定のツインとのすべての **受信** リレーションシップを検索する API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
+Azure Digital Twins には、特定のツインとのすべての **受信** リレーションシップを検索するための API もあります。 この SDK は、逆方向のナビゲーションの場合やツインを削除するときに便利です。
 
 >[!NOTE]
 > `IncomingRelationship` の呼び出しからは、リレーションシップ全体は返されません。 `IncomingRelationship` クラスの詳細については、その[リファレンス ドキュメント](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)を参照してください。
@@ -123,13 +131,16 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 >[!NOTE]
 >このメソッドは、リレーションシップの **プロパティ** を更新するためのものです。 リレーションシップのソース ツインまたはターゲット ツインを変更する必要がある場合は、[リレーションシップを削除](#delete-relationships)し、新しいツインを使用して[再作成](#create-relationships)する必要があります。
 
-クライアント呼び出しに必要なパラメーターは、ソース ツインの ID (リレーションシップが発生したツイン)、更新するリレーションシップの ID、更新するプロパティと新しい値を含む [JSON Patch](http://jsonpatch.com/) ドキュメントです。
+クライアント呼び出しに必要なパラメーターは次のとおりです。
+- ソース ツインの ID (リレーションシップの発生元のツイン)。
+- 更新するリレーションシップの ID です。
+- 更新するプロパティおよび新しい値が含まれている [JSON パッチ](http://jsonpatch.com/)のドキュメント。
 
-このメソッドの使用方法を示すサンプル コードを次に示します。 この例では、より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
+このメソッドの使用方法を示すサンプル コード スニペットを次に示します。 この例では、より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod" highlight="6":::
 
-プロパティを更新するための情報を含む JSON Patch ドキュメントを渡して、このカスタム メソッドを呼び出す例を次に示します。
+プロパティを更新するための情報を含む JSON パッチ ドキュメントを渡して、このカスタム メソッドを呼び出す例を次に示します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
@@ -158,7 +169,7 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 | dtmi:example:Room;1    | Room1 | | | {"Temperature":80} |
 | dtmi:example:Room;1    | Room0 | | | {"Temperature":70} |
 
-このデータを Azure Digital Twins に取り込む方法の 1 つとして、テーブルを CSV ファイルに変換してコードを記述し、ファイルをコマンドに解釈して、ツインやリレーションシップを作成するという方法があります。 次のコード サンプルは、CSV ファイルからのデータの読み取り、および Azure Digital Twins でのツイン グラフの作成を示しています。
+このデータを Azure Digital Twins に取り込む 1 つの方法は、テーブルを CSV ファイルに変換することです。 テーブルが変換されたら、コードを記述して、ファイルをコマンドに解釈し、ツインとリレーションシップを作成できます。 次のコード サンプルは、CSV ファイルからのデータの読み取り、および Azure Digital Twins でのツイン グラフの作成を示しています。
 
 次のコードでは、CSV ファイルは *data.csv* と呼ばれ、Azure Digital Twins インスタンスの **ホスト名** を表すプレースホルダーがあります。 また、このサンプルでは、プロジェクトに追加できるパッケージをいくつか使用すると、このプロセスを実行しやすくなります。
 
@@ -190,7 +201,7 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
       dotnet add package Azure.Identity
       ```
 
-サンプルを直接実行する場合は、ローカルの資格情報も設定する必要があります。 次のセクションでは、これについて説明します。
+サンプルを直接実行する場合は、ローカルの資格情報も設定する必要があります。 次のセクションでは、このプロセスについて説明します。
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
 
 ### <a name="run-the-sample"></a>サンプルを実行する
@@ -207,5 +218,5 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins ツイン グラフのクエリについて確認します。
-* [概念:クエリ言語](concepts-query-language.md)
-* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)
+* [クエリ言語](concepts-query-language.md)
+* [ツイン グラフにクエリを実行する](how-to-query-graph.md)

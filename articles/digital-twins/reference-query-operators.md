@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/22/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 924f7248733ee573cc68b137fccb829b2a79af31
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 06945efc6be8700955b1a475d00d21951102c214
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296467"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492795"
 ---
 # <a name="azure-digital-twins-query-language-reference-operators"></a>Azure Digital Twins クエリ言語リファレンス: 演算子
 
@@ -28,15 +28,15 @@ ms.locfileid: "108296467"
 
 ### <a name="example"></a>例
 
-`=` を使用した例を次に示します。 次のクエリでは、Temperature の値が 80 に等しいツインが返されます。
+`=`. を使用する例を次に示します。 次のクエリでは、Temperature の値が 80 に等しいツインが返されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="EqualityExample":::
 
-`<` を使用した例を次に示します。 次のクエリでは、Temperature の値が 80 未満のツインが返されます。
+`<`. を使用する例を次に示します。 次のクエリでは、Temperature の値が 80 未満のツインが返されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="ComparisonExample":::
 
-`<=` を使用した例を次に示します。 次のクエリでは、Temperature の値が 80 以下のツインが返されます。
+`<=`. を使用する例を次に示します。 次のクエリでは、Temperature の値が 80 以下のツインが返されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="OrderedComparisonExample":::
 
@@ -45,11 +45,11 @@ ms.locfileid: "108296467"
 contains ファミリの次の演算子がサポートされています。
 
 * `IN`: 指定された値が値のセットに含まれる場合、true に評価されます。
-* `NIN`: 指定された値が値のセットに含まれていない場合、true に評価されます。
+* `NIN`: 指定された値が値のセットに含まれない場合、true に評価されます。
 
 ### <a name="example"></a>例
 
-`IN` を使用した例を次に示します。 次のクエリでは、`owner` プロパティがリストの複数のオプションの 1 つであるツインが返されます。
+`IN`. を使用する例を次に示します。 次のクエリでは、`owner` プロパティがリストの複数のオプションの 1 つであるツインが返されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="InExample":::
 
@@ -62,15 +62,15 @@ contains ファミリの次の演算子がサポートされています。
 
 ### <a name="example"></a>例
 
-`AND` を使用した例を次に示します。 次のクエリでは、80 未満の Temperature と 50 未満の Humidity の両方の条件を満たすツインが返されます。
+`AND`. を使用する例を次に示します。 次のクエリでは、80 未満の Temperature と 50 未満の Humidity の両方の条件を満たすツインが返されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="AndExample":::
 
-`OR` を使用した例を次に示します。 次のクエリでは、80 未満の Temperature と 50 未満の Humidity の 1 つ以上の条件を満たすツインが返されます。
+`OR`. を使用する例を次に示します。 次のクエリでは、80 未満の Temperature と 50 未満の Humidity の 1 つ以上の条件を満たすツインが返されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="OrExample":::
 
-`NOT` を使用した例を次に示します。 次のクエリでは、80 未満の Temperature の条件を満たしていないツインが返されます。
+`NOT`. を使用する例を次に示します。 次のクエリでは、80 未満の Temperature の条件を満たしていないツインが返されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="NotExample":::
 

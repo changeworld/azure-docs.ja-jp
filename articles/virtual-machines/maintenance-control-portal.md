@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: bcd0992347033fa355db1f952e775a5077fecabe
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: f50e0320405ecab8139657aafb8194e25957bce4
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554563"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369503"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>メンテナンス コントロールと Azure portal を使用して更新を制御する
 
@@ -87,7 +87,7 @@ ms.locfileid: "111554563"
 
 ## <a name="apply-updates"></a>更新プログラムの適用
 
-**[仮想マシン]** を使用して、必要に応じて保留中の更新プログラムを適用することができます。 VM の詳細で **[メンテナンス]** をクリックし、 **[今すぐメンテナンスを適用する]** をクリックします。
+必要に応じて、保留中の更新プログラムを適用できます。 VM または Azure Dedicated Host の詳細で、 **[メンテナンス]** をクリックし、 **[今すぐメンテナンスを適用する]** をクリックします。 更新呼び出しが適用されるまで、最大 2 時間かかる場合があります。
 
 ![保留中の更新プログラムの適用方法を示すスクリーンショット](media/virtual-machines-maintenance-control-portal/maintenance-configurations-apply-updates-now.png)
 

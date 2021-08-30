@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0ed20af6b27822f1f437f584e9b73eb416941d6f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ba278b80d75e64b4394bfeb1b98cd0ec2d805a8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066000"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469960"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Azure Static Web Apps の認証と承認
 
@@ -122,6 +122,8 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```url
 https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
+
+Azure Active Directory を使用する場合は、`<AUTHENTICATION_PROVIDER_NAME>` プレースホルダーの値として `aad` を使用することに注意してください。
 
 ## <a name="system-folder"></a>システム フォルダー
 

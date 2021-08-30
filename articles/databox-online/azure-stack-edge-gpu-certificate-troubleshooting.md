@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 02/22/2021
+ms.date: 06/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 67dd2b35229c15ae4df5ec8acb357aa35621d67c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b5a607b9c0a64c6872ab511f13034e9d6eeb86d7
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102436636"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360508"
 ---
 # <a name="troubleshooting-certificate-errors"></a>証明書エラーのトラブルシューティング
 
@@ -64,4 +64,5 @@ ms.locfileid: "102436636"
 
 ## <a name="next-steps"></a>次のステップ
 
-5\. コマンド プロンプトで、「[ipconfig /all](azure-stack-edge-gpu-certificate-requirements.md)」と入力して Enter キーを押します。
+- 「[証明書の要件](azure-stack-edge-gpu-certificate-requirements.md)」を確認します。
+- [デバイス ログ、診断テストを使用したトラブルシューティング](azure-stack-edge-gpu-troubleshoot.md)。

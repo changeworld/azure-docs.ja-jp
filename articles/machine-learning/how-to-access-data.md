@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 11/03/2020
+ms.date: 07/06/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: f0fb8ee681bfb3056547eed712d0197100b8ec08
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: a164fb60dde8ba8e652bab3c99b87ffa84ec8596
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785243"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862108"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Azure のストレージ サービスに接続する
 
@@ -33,7 +33,7 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 - [サポートされている種類のストレージ](#matrix)を持つ Azure ストレージ アカウント。
 
@@ -98,7 +98,7 @@ Azure ストレージ サービスに安全に接続できるように、Azure M
 
 Azure Machine Learning では、ファイアウォールの背後または仮想ネットワークの内部にあるストレージ アカウントと通信するには追加の構成手順が必要です。 ストレージ アカウントがファイアウォールの背後にある場合は、[Azure portal 経由で IP アドレスの許可リストを設定](../storage/common/storage-network-security.md#managing-ip-network-rules)できます。
 
-Azure Machine Learning では、仮想ネットワークの外側にあるクライアントからの要求を受信できます。 サービスからのデータを要求しているエンティティが安全であることを確認するには、[ワークスペース用に Azure Private Link を設定](how-to-configure-private-link.md)します。
+Azure Machine Learning では、仮想ネットワークの外側にあるクライアントからの要求を受信できます。 サービスのデータを要求しているエンティティが安全であることを確認するには、[プライベート エンドポイントとワークスペースを使用](how-to-configure-private-link.md)します。
 
 **Python SDK ユーザーの場合**、コンピューティング ターゲットでトレーニング スクリプトを使用してデータにアクセスするには、コンピューティング ターゲットをストレージと同じ仮想ネットワークとサブネット内に配置する必要があります。 
 
@@ -230,7 +230,7 @@ Python SDK とスタジオを使用してデータストアを作成すること
 <a name="arm"></a>
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) には、データストアの作成に使用できる多数のテンプレートがあります。
+[https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) には、データストアの作成に使用できる多数のテンプレートがあります。
 
 これらのテンプレートの使用に関する詳細については、「[Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します](how-to-create-workspace-template.md)」を参照してください。
 
@@ -282,7 +282,6 @@ Azure Machine Learning には、スコアリングにモデルを使用する方
 | ----- | :-----: | ----- |
 | [バッチ予測](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | 大量のデータの予測を非同期的に行います。 |
 | [Web サービス](how-to-deploy-and-where.md) | &nbsp; | モデルを Web サービスとしてデプロイします。 |
-| [Azure IoT Edge モジュール](how-to-deploy-and-where.md) | &nbsp; | モデルを IoT Edge デバイスにデプロイします。 |
 
 SDK でデータストアへのアクセスが提供されない場合は、関連する Azure SDK を使用してデータにアクセスするカスタム コードを作成できる場合があります。 たとえば、BLOB またはファイルに格納されたデータには、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) というクライアント ライブラリを使用してアクセスすることができます。
 

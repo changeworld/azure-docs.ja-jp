@@ -3,12 +3,12 @@ title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル �
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: 0c1c053378c8c2dec1f769fe489eb823ea81390f
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: d786b3d0e9afbf7ab4e895c6788209644d9f921f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438740"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092757"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -52,7 +52,7 @@ AMQP は、"*コンテナー*" という通信プログラムを呼び出しま�
 
 そのためネットワーク接続はコンテナーに固定されます。 ネットワーク接続は、クライアント ロールのコンテナーによって開始されます。クライアント ロールのコンテナーが、受信側ロールのコンテナーに対して送信 TCP ソケット接続を確立し、受信側ロールは受信 TCP 接続を待機してそれを受け入れます。 接続ハンドシェイクには、プロトコル バージョンのネゴシエーション、トランスポート レベルのセキュリティ (TLS/SSL) の使用に関する宣言 (またはネゴシエーション)、SASL に基づく接続スコープでの認証/承認ハンドシェイクが含まれます。
 
-Azure Service Bus では、常時 TLS の使用が必須となります。 Azure Service Bus は、TCP ポート 5671 での接続に対応しています。これによって AMQP プロトコル ハンドシェイクに移行する前に、TCP 接続が TLS に重ね合わされます。また、Azure Service Bus は、TCP ポート 5672 での接続に対応しています。これによってサーバーは、AMQP に規定されたモデルに従って、TLS に必要な接続の更新を速やかに実施することができます。 AMQP WebSocket のバインディングでは、TCP ポート 443 上にトンネルが作成されます。このトンネルが AMQP の 5671 接続に相当します。
+Azure Service Bus または Azure Event Hubs では、常時 TLS の使用が必須となります。 Azure Service Bus は、TCP ポート 5671 での接続に対応しています。これによって AMQP プロトコル ハンドシェイクに移行する前に、TCP 接続が TLS に重ね合わされます。また、Azure Service Bus は、TCP ポート 5672 での接続に対応しています。これによってサーバーは、AMQP に規定されたモデルに従って、TLS に必要な接続の更新を速やかに実施することができます。 AMQP WebSocket のバインディングでは、TCP ポート 443 上にトンネルが作成されます。このトンネルが AMQP の 5671 接続に相当します。
 
 Service Bus では、接続と TLS のセットアップ後、SASL の機構に関して次の 2 つの選択肢が用意されています。
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/19/2020
 ms.reviewer: ManojRaheja
 author: midesa
-ms.openlocfilehash: 5b7707354d7bf63671e21d1adbaebc2ef8d71d0e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 82310e14b3eac25be038a7748d1992daef72d83f
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952239"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112516677"
 ---
 # <a name="azure-data-explorer-kusto-connector-for-apache-spark"></a>Apache Spark 用の Azure Data Explorer (Kusto) コネクタ
 Apache Spark 用の Azure Data Explorer (Kusto) コネクタは、Kusto クラスターと Spark の間でデータを効率的に転送するように設計されています。 このコネクタは、Python、Java、.NET で使用できます。 これは、Azure Synapse Apache Spark 2.4 ランタイムに組み込まれています。

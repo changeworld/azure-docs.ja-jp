@@ -2,21 +2,21 @@
 title: Azure Active Directory アプリケーションのプロビジョニングで属性マッピングの式を記述するためのリファレンス
 description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。 関数の参照一覧が含まれています。
 services: active-directory
-author: mtillman
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/11/2021
+ms.date: 07/29/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3c5d2023ebc26aca0e6d1a14f43a94d2d3e3dd87
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 9736bee99483a7e4fbb5a5f02a3f415a74c9f76f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109782957"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727742"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory で属性マッピングの式を記述するためのリファレンス
 
@@ -38,7 +38,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 ## <a name="list-of-functions"></a>関数の一覧
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -55,7 +55,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
 
 
-### <a name="append-constant-suffix-to-user-name"></a>ユーザー名に定数のサフィックスを追加する
+#### <a name="append-constant-suffix-to-user-name"></a>ユーザー名に定数のサフィックスを追加する
 例: Salesforce Sandbox を使用している場合は、ユーザー名を同期する前に、すべてのユーザー名に追加のサフィックスを追加する必要があります。
 
 **式:**  
@@ -66,6 +66,18 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 * **入力**: (userPrincipalName): "John.Doe@contoso.com"
 * **出力**:  "John.Doe@contoso.com.test"
 
+---
+### <a name="approleassignmentscomplex"></a>AppRoleAssignmentsComplex
+
+**関数:** AppRoleAssignmentsComplex([appRoleAssignments])
+
+**説明:** 複数のロールをユーザーにプロビジョニングするために使用されます。 詳しい使用方法については、「[チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする](customize-application-attributes.md#provisioning-a-role-to-a-scim-app)」を参照してください。
+
+**パラメーター:** 
+
+| 名前 | 必須/繰り返し | Type | Notes |
+| --- | --- | --- | --- |
+| **appRoleAssignments** |必須 |String |**appRoleAssignments** オブジェクト |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -109,6 +121,44 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 両方の属性が同じ値を持つ場合は、True を返します。
 
 ---
+### <a name="cdate"></a>CDate
+**関数:**  
+`CDate(expression)`
+
+**説明:**  
+CDate 関数は、文字列から UTC DateTime を返します。 DateTime はネイティブな属性の種類ではありませんが、[FormatDateTime](#formatdatetime) や [DateAdd](#dateadd) などの日付関数の中で使用することができます。
+
+**パラメーター:** 
+
+| 名前 | 必須/繰り返し | Type | Notes |
+| --- | --- | --- | --- |
+| **式 (expression)** |必須 | expression | 日付/時刻を表す任意の有効な文字列。 サポートされている形式については、「[.NET カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 |
+
+**備考:**  
+返される文字列は常に UTC で、**M/d/yyyy h:mm:ss tt** の形式に従います。
+
+**例 1:** <br> 
+`CDate([StatusHireDate])`  
+**サンプル入力/出力:** 
+
+* **入力** (StatusHireDate): "2020-03-16-07:00"
+* **出力**:  "3/16/2020 7:00:00 AM" <-- *上記の DateTime に相当する UTC が返されます*
+
+**例 2:** <br> 
+`CDate("2021-06-30+08:00")`  
+**サンプル入力/出力:** 
+
+* **入力**: "2021-06-30+08:00"
+* **出力**:  "6/29/2021 4:00:00 PM" <-- *上記の DateTime に相当する UTC が返されます*
+
+**例 3:** <br> 
+`CDate("2009-06-15T01:45:30-07:00")`  
+**サンプル入力/出力:** 
+
+* **入力**: "2009-06-15T01:45:30-07:00"
+* **出力**:  "6/15/2009 8:45:30 AM" <-- *上記の DateTime に相当する UTC が返されます*
+
+---
 ### <a name="coalesce"></a>Coalesce
 **関数:** Coalesce(source1, source2, ..., defaultValue)
 
@@ -121,7 +171,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | **source1  … sourceN** | 必須 | String |必須、回数は可変。 通常は、source オブジェクトの属性の名前。 |
 | **defaultValue** | 省略可能 | String | すべてのソース値が NULL の場合に使用される既定値。 空の文字列 ("") を指定できます。
 
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL でない場合はフロー メール値、それ以外の場合は userPrincipalName
+#### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL でない場合はフロー メール値、それ以外の場合は userPrincipalName
 例: メール属性が存在する場合は、それをフローすることをお勧めします。 存在しない場合、代わりに userPrincipalName の値をフローしてください。
 
 **式:**  
@@ -198,6 +248,60 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 "cn=Joe,dc=contoso,dc=com" が返されます
 
 ---
+### <a name="dateadd"></a>DateAdd
+**関数:**  
+`DateAdd(interval, value, dateTime)`
+
+**説明:**  
+指定した時間間隔が追加された日付を表す日時文字列を返します。 返される日付は、**M/d/yyyy h:mm:ss tt** 形式です。
+
+**パラメーター:** 
+
+| 名前 | 必須/繰り返し | Type | メモ |
+| --- | --- | --- | --- |
+| **interval** |必須 | String | 追加する時間間隔。 この表の下にある指定可能な値を参照してください。 |
+| **value** |必須 | 数値 | 追加する単位の数。 正の数 (将来の日時を取得する場合) または負の数 (過去の日時を取得する場合) を指定できます。 |
+| **dateTime** |必須 | DateTime | 間隔が追加される日付を表す DateTime。 |
+
+**間隔** 文字列には次のいずれかの値が必要です。 
+ * yyyy: 年 
+ * q: 四半期
+ * m: 月
+ * y: 年間通算日
+ * d: 日
+ * w: 週日
+ * ww: 週
+ * h: 時
+ * n: 分
+ * s: 秒
+
+**例 1: 入社日に 7 日を追加する**  
+`DateAdd("d", 7, CDate([StatusHireDate]))`
+* **入力** (StatusHireDate): 2012-03-16-07:00
+* **出力**: 3/23/2012 7:00:00 AM
+
+**例 2: 入社日の 10 日前に日付を取得する**  
+`DateAdd("d", -10, CDate([StatusHireDate]))`
+* **入力** (StatusHireDate): 2012-03-16-07:00
+* **出力**: 3/6/2012 7:00:00 AM
+
+**例 3: 入社日に 2 週間を追加する**  
+`DateAdd("ww", 2, CDate([StatusHireDate]))`
+* **入力** (StatusHireDate): 2012-03-16-07:00
+* **出力**: 3/30/2012 7:00:00 AM
+
+**例 4: 入社日に 10 か月を追加する**  
+`DateAdd("m", 10, CDate([StatusHireDate]))`
+* **入力** (StatusHireDate): 2012-03-16-07:00
+* **出力**: 1/16/2013 7:00:00 AM
+
+**例 5: 入社日に 2 年を追加する**  
+`DateAdd("yyyy", 2, CDate([StatusHireDate]))`
+* **入力** (StatusHireDate): 2012-03-16-07:00
+* **出力**: 3/16/2014 7:00:00 AM
+
+---
+
 ### <a name="datefromnum"></a>DateFromNum
 **関数:** DateFromNum(value)
 
@@ -228,12 +332,12 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **dateTimeStyles** | 省略可能 | String | これを使用して、いくつかの日時解析メソッドによる文字列の解析をカスタマイズする形式指定オプションを指定します。 サポートされる値については、[DateTimeStyles のドキュメント](/dotnet/api/system.globalization.datetimestyles)を参照してください。空のままにすると、使用される既定値は DateTimeStyles.RoundtripKind、DateTimeStyles.AllowLeadingWhite、DateTimeStyles.AllowTrailingWhite です  |
-| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされている形式については、[/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings) を参照してください。 |
+| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされている形式については、「[.NET カスタム日時書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
 
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
+#### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
 例: ServiceNow などの SaaS アプリケーションに特定の形式で日付を送信する場合があります。 次の式を使用することを検討してください。 
 
 **Expression:** 
@@ -251,6 +355,31 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 **関数:** Guid()
 
 **説明:** GUID 関数は、新しいランダムな GUID を生成します。
+
+**例:** <br>
+`Guid()`<br>
+出力例: "1088051a-cd4b-4288-84f8-e02042ca72bc"
+
+---
+### <a name="ignoreflowifnullorempty"></a>IgnoreFlowIfNullOrEmpty
+**関数:** IgnoreFlowIfNullOrEmpty(expression)
+
+**説明**: IgnoreFlowIfNullOrEmpty 関数は、属性を無視し、囲まれた関数または属性が NULL または空の場合にフローから削除するようにプロビジョニング サービスに指示します。
+
+**パラメーター:** 
+
+| 名前 | 必須/繰り返し | Type | Notes |
+| --- | --- | --- | --- |
+| **式 (expression)** | 必須 | expression | 評価の対象となる式 |
+
+**例 1: 属性が null の場合はフローしない** <br>
+`IgnoreFlowIfNullOrEmpty([department])` <br>
+上記の式では、プロビジョニング フローが null または空の場合は、department 属性が削除されます。 <br>
+
+**例 2: 式マッピングが空の文字列または null と評価された場合、属性をフローしない** <br>
+たとえば、SuccessFactors の属性 *prefix* を、以下の式マッピングを用いて、オンプレミスの Active Directory Domain Services の属性 *personalTitle* にマッピングしたとします。 <br>
+`IgnoreFlowIfNullOrEmpty(Switch([prefix], "", "3443", "Dr.", "3444", "Prof.", "3445", "Prof. Dr."))` <br>
+上の式は、まず [Switch](#switch) 関数を評価します。 *prefix* 属性が *Switch* 関数内に記載された値のいずれも持たない場合、*Switch* は空の文字列を返し、属性 *personalTitle* はオンプレミス Active Directory Domain Services へのプロビジョニング フローに含まれません。
 
 ---
 ### <a name="iif"></a>IIF
@@ -369,7 +498,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | **インデックス** |必須 |Integer | 複数値の文字列内の項目のインデックス|
 
 **例:** 
-`Item([proxyAddresses], 1)` は、複数値属性の 2 番目の項目を返します。
+`Item([proxyAddresses], 1)` は、複数値属性の 1 番目の項目を返します。 インデックス 0 は使用しないでください。 
 
 ---
 ### <a name="join"></a>Join
@@ -434,7 +563,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | **source** |必須 |String | 通常は、名または姓の属性です。 |
 
 
-### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
+#### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
 例: アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換する必要があります。
 
 **Expression:** NormalizeDiacritics([givenName])
@@ -456,6 +585,17 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
+
+---
+### <a name="now"></a>Now
+**関数:** Now()
+
+**説明:**  
+Now 関数は、**M/d/yyyy h:mm:ss tt** の形式で現在の UTC DateTime を表す文字列を返します。
+
+**例:** 
+`Now()` <br>
+値の例は *7/2/2021 3:33:38 PM* を返しました
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -527,7 +667,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | **replacementAttributeName** |省略可能 |String |置換値に使用する属性の名前 |
 | **template** |省略可能 |String |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
 
-### <a name="replace-characters-using-a-regular-expression"></a>正規表現を使用して文字を置換します
+#### <a name="replace-characters-using-a-regular-expression"></a>正規表現を使用して文字を置換します
 例: 正規表現の値と一致する文字を見つけて削除する必要があります。
 
 **Expression:** 
@@ -559,7 +699,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧。 |
 
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>userPrincipalName (UPN) 属性用に一意の値を生成する
+#### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>userPrincipalName (UPN) 属性用に一意の値を生成する
 例: ユーザーの名、ミドル ネーム、姓を基にして UPN 属性の値を生成し、値を UPN 属性に割り当てる前に、対象の AD ディレクトリで値が一意であることを確認する必要があります。
 
 **Expression:** 
@@ -607,7 +747,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | **source** |必須 |String |**source** 値。 |
 | **delimiter** |必須 |String |文字列の分割に使用される文字を指定します (例: ",") |
 
-### <a name="split-a-string-into-a-multi-valued-array"></a>文字列を複数値の配列に分割します
+#### <a name="split-a-string-into-a-multi-valued-array"></a>文字列を複数値の配列に分割します
 例: コンマ区切りの一覧になっている文字列を受け取り、Salesforce の PermissionSets 属性などの複数値の属性にプラグインできる配列に分割する必要があります。 この例では、アクセス許可セットの一覧が、Azure AD の extensionAttribute5 に格納されています。
 
 **Expression:** Split([extensionAttribute5], ",")
@@ -645,7 +785,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | **key** |必須 |String |**source** 値と比較する **key**。 |
 | **value** |必須 |String |key と一致する **source** の置換値。 |
 
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>定義済みのオプション セットに基づいて値を置換する
+#### <a name="replace-a-value-based-on-predefined-set-of-options"></a>定義済みのオプション セットに基づいて値を置換する
 例: Azure AD に格納されている都道府県コードに基づいて、ユーザーのタイム ゾーンを定義する必要があります。 都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
 
 **式:**  
@@ -663,6 +803,8 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **説明:** *source* 文字列値を受け取り、指定されたカルチャ ルールを使用して小文字に変換します。 *culture* 情報が指定されていない場合は、インバリアント カルチャが使用されます。
 
+ターゲット システムの既存の値を小文字に設定する場合は、[ターゲット アプリケーションのスキーマを更新](./customize-application-attributes.md#editing-the-list-of-supported-attributes)し、対象の属性のプロパティ caseExact を "true" に設定します。 
+
 **パラメーター:** 
 
 | 名前 | 必須/繰り返し | Type | Notes |
@@ -670,7 +812,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>生成された userPrincipalName (UPN) の値を小文字に変換します
+#### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>生成された userPrincipalName (UPN) の値を小文字に変換します
 例: PreferredFirstName および PreferredLastName のソース フィールドを連結して、すべての文字を小文字に変換することで、UPN 値を生成する場合があります。 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
@@ -687,6 +829,8 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 **関数:** ToUpper(source, culture)
 
 **説明:** *source* 文字列値を受け取り、指定されたカルチャ ルールを使用して大文字に変換します。 *culture* 情報が指定されていない場合は、インバリアント カルチャが使用されます。
+
+ターゲット システムの既存の値を大文字に設定する場合は、[ターゲット アプリケーションのスキーマを更新](./customize-application-attributes.md#editing-the-list-of-supported-attributes)し、対象の属性のプロパティ caseExact を "true" に設定します。 
 
 **パラメーター:** 
 

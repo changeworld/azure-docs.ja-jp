@@ -4,15 +4,16 @@ description: Azure Data Factory 内での Azure Private Link の機能につい�
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2021
-ms.openlocfilehash: 9d41ff8d2b0bfd1e83f15366e152398f5de8ccf9
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 06/16/2021
+ms.openlocfilehash: f4ae3d0653ce99be2017b1ef08ca0645c599ee10
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020974"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740990"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 用の Azure Private Link
 
@@ -46,7 +47,7 @@ Azure Data Factory で Private Link がサポートされていると、次の�
 
 Azure Data Factory サービスへの通信は、Private Link を経由し、セキュリティで保護されたプライベート接続が提供されます。 
 
-![Azure Data Factory アーキテクチャの Private Link の図。](./media/data-factory-private-link/private-link-architecture.png)
+:::image type="content" source="./media/data-factory-private-link/private-link-architecture.png" alt-text="Azure Data Factory アーキテクチャの Private Link の図。":::
 
 上記の各通信チャネルに対して Private Link サービスを有効にすると、次の機能が提供されます。
 - **サポート対象**:
@@ -60,7 +61,7 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
    > 現在サポートされていない機能については、引き続き、前述の仮想ネットワーク内のドメインとポートまたは企業ファイアウォールを構成する必要があります。 
 
    > [!NOTE]
-   > プライベート エンドポイント経由の Azure Data Factory への接続は、データ ファクトリのセルフホステッド統合ランタイムにのみ適用されます。 Synapse ではサポートされません。
+   > プライベート エンドポイント経由の Azure Data Factory への接続は、データ ファクトリのセルフホステッド統合ランタイムにのみ適用されます。 Azure Synapse についてはサポートされていません。
 
 > [!WARNING]
 > Azure Data Factory で Private Link を有効にし、同時にパブリック アクセスをブロックする場合、リンクされたサービスを作成するときに、資格情報が Azure Key Vault に格納されていることを確認してください。 そうしないと、資格情報が機能しません。
@@ -72,7 +73,7 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
 
 上の図の例のように、プライベート エンドポイントをホストしている VNet の外部から解決されると、Data Factory の 'DataFactoryA' の DNS リソース レコードは次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | 型 | 値 |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net | CNAME   | <データ ファクトリ サービスのパブリック エンドポイント> |
@@ -80,7 +81,7 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
 
 DataFactoryA の DNS リソース レコードは、プライベート エンドポイントをホストしている VNet 内で解決されると、次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | 型 | 値 |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net   | A | <プライベート エンドポイントの IP アドレス> |

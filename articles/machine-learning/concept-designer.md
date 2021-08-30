@@ -1,26 +1,28 @@
 ---
-title: デザイナーを使用して ML モデルを構築する
+title: Azure Machine Learning デザイナーとは
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 用のデザイナーを構成する用語、概念、ワークフローについて説明します。
+description: Azure Machine Learning デザイナーの概要と、どのようなタスクに使用できるかを説明します。 ドラッグ アンド ドロップ UI により、モデルのトレーニングとデプロイが可能です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 06/28/2020
-ms.custom: designer
-ms.openlocfilehash: e6738bf944c5a80d0cb54432ade7555ebdcfbd51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/03/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: c6bb9eefd7545a014faf10ad20afa655f7f4cd48
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503542"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195868"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーとは 
 
+Azure Machine Learning デザイナーは、Azure Machine Learning 内でのモデルのトレーニングとデプロイに使用されるドラッグ アンド ドロップ インターフェイスです。 この記事では、デザイナー内で実行できるタスクについて説明します。
 
-Azure Machine Learning デザイナーを使用すると、対話型キャンバスで[データセット](#datasets)と[モジュール](#module)を視覚的に接続することにより、機械学習モデルを作成できます。 デザイナーの使用を開始する方法については、「[チュートリアル: デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)
+ - デザイナーで作業を開始するには、[コードなし回帰モデルをトレーニングするためのチュートリアル](tutorial-designer-automobile-price-train-score.md)をご覧ください。 
+ - デザイナー内で使用できるコンポーネントについては、[アルゴリズムとコンポーネントのリファレンス](/azure/machine-learning/algorithm-module-reference/module-reference)をご覧ください。
 
 ![Azure Machine Learning デザイナーの例](./media/concept-designer/designer-drag-and-drop.gif)
 
@@ -35,22 +37,22 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 ## <a name="model-training-and-deployment"></a>モデルのトレーニングとデプロイ
 
-デザイナーには、機械学習モデルを構築、テスト、デプロイするためのビジュアルキャンバスが用意されています。 デザイナーを使用すると、次のことができます。
+ビジュアル キャンバスを使用して、エンドツーエンドの機械学習ワークフローを構築します。 デザイナーでモデルすべてをトレーニング、テスト、デプロイします。
 
-+ [データセット](#datasets)と[モジュール](#module)をキャンバスにドラッグ アンド ドロップします。
-+ モジュールを接続して[パイプラインのドラフト](#pipeline-draft)を作成します。
-+ Azure Machine Learning ワークスペースのコンピューティング リソースを使用して、[パイプラインの実行](#pipeline-run)を送信します。
-+ **トレーニング パイプライン** を **推論パイプライン** に変換します。
-+ パイプラインを REST **パイプライン エンドポイント** に [発行](#publish)し、異なるパラメーターとデータセットを使用して実行される新しいパイプラインを送信します。
+1. [データセット](#datasets)と[モジュール](#module)をキャンバスにドラッグ アンド ドロップします。
+1. モジュールを接続して[パイプラインのドラフト](#pipeline-draft)を作成します。
+1. Azure Machine Learning ワークスペースのコンピューティング リソースを使用して、[パイプラインの実行](#pipeline-run)を送信します。
+1. **トレーニング パイプライン** を **推論パイプライン** に変換します。
+1. パイプラインを REST **パイプライン エンドポイント** に [発行](#publish)し、異なるパラメーターとデータセットを使用して実行される新しいパイプラインを送信します。
     + **トレーニング パイプライン** を発行し、1 つのパイプラインを再利用して、パラメーターとデータセットを変更しながら、複数のモデルをトレーニングします。
     + **バッチ推論パイプライン** を発行し、以前にトレーニングしたモデルを使用して、新しいデータで予測を行います。
-+ **リアルタイム推論パイプライン** をリアルタイム エンドポイントに [デプロイ](#deploy)して、新しいデータの予測をリアルタイムで行います。
+1. **リアルタイム推論パイプライン** をリアルタイム エンドポイントに [デプロイ](#deploy)して、新しいデータの予測をリアルタイムで行います。
 
 ![デザイナーでのトレーニング、バッチ推論、リアルタイム推論のワークフロー図](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>パイプライン
 
-[パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)は、ユーザーによって接続されたデータセットと分析モジュールで構成されます。 パイプラインには多くの用途があります。1 つのモデルをトレーニングするパイプラインや、複数のモデルをトレーニングするパイプラインを作成できます。 リアルタイムまたはバッチで予測を行うパイプラインや、データをクリーンアップするだけのパイプラインを作成できます。 パイプラインを使用して、作業を再利用し、プロジェクトを整理することができます。
+[パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)は、ユーザーによって接続されたデータセットとアルゴリズム モジュールで構成されます。 パイプラインには多くの用途があります。1 つのモデルをトレーニングするパイプラインや、複数のモデルをトレーニングするパイプラインを作成できます。 リアルタイムまたはバッチで予測を行うパイプラインや、データをクリーンアップするだけのパイプラインを作成できます。 パイプラインを使用して、作業を再利用し、プロジェクトを整理することができます。
 
 ### <a name="pipeline-draft"></a>パイプラインのドラフト
 
@@ -73,18 +75,18 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 ## <a name="datasets"></a>データセット
 
-機械学習データセットによって、データへのアクセスと操作がより容易になります。 デザイナーには、実験に利用できるいくつかのサンプル データセットが含まれています。 必要に応じて、データセットをさらに[登録](how-to-create-register-datasets.md)することができます。
+機械学習データセットによって、データへのアクセスと操作がより容易になります。 デザイナーには、実験に利用できるいくつかの[サンプル データセット](samples-designer.md#datasets)が含まれています。 必要に応じて、データセットをさらに[登録](how-to-create-register-datasets.md)することができます。
 
 ## <a name="module"></a>Module
 
 モジュールとは、データに対して実行できるアルゴリズムのことです。 デザイナーには、データのイングレス機能や、プロセスのトレーニング、スコアリング、検証などのいくつかのモジュールが用意されています。
 
-モジュールに一連のパラメーターが含まれている場合、これらを使用してモジュールの内部アルゴリズムを構成することができます。 キャンバスでモジュールを選択すると、モジュールのパラメーターは、キャンバス右側の [プロパティ] ウィンドウに表示されます。 このウィンドウでパラメーターを変更することにより、モデルを微調整できます。 デザイナーでは、個々のモジュールに対してコンピューティング リソースを設定できます。 
+モジュールに一連のパラメーターが含まれている場合、これらを使用してモジュールの内部アルゴリズムを構成することができます。 キャンバスでモジュールを選択すると、モジュールのパラメーターは、キャンバス右側の [プロパティ] ウィンドウに表示されます。 このウィンドウでパラメーターを変更することにより、パイプラインを微調整できます。 デザイナーでは、個々のモジュールに対してコンピューティング リソースを設定できます。 
 
 :::image type="content" source="./media/concept-designer/properties.png" alt-text="モジュールのプロパティ":::
 
 
-利用できる機械学習アルゴリズムのライブラリ内の移動に関するヘルプについては、「[アルゴリズムとモジュールのリファレンスの概要](algorithm-module-reference/module-reference.md)」をご覧ください。 アルゴリズムの選択の詳細については、[Azure Machine Learning アルゴリズム チート シート](algorithm-cheat-sheet.md)に関するページをご覧ください。
+利用できる機械学習アルゴリズムのライブラリ内の移動に関するヘルプについては、「[アルゴリズムとモジュールのリファレンスの概要](algorithm-module-reference/module-reference.md)」をご覧ください。 アルゴリズムの選択の詳細については、[Azure Machine Learning アルゴリズムのチート シート](algorithm-cheat-sheet.md)をご覧ください。
 
 ## <a name="compute-resources"></a><a name="compute"></a> コンピューティング リソース
 
@@ -93,7 +95,6 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 | コンピューティング ターゲット | トレーニング | デプロイ |
 | ---- |:----:|:----:|
 | Azure Machine Learning コンピューティング | ✓ | |
-| Azure Machine Learning コンピューティング インスタンス | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 コンピューティング先は、自分の [Azure Machine Learning ワークスペース](concept-workspace.md)に接続されています。 [Azure Machine Learning Studio](https://ml.azure.com) で自分のワークスペース内のコンピューティング先を管理します。
@@ -105,6 +106,8 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 リアルタイム エンドポイントは、Azure Kubernetes Service クラスターにデプロイする必要があります。
 
 モデルのデプロイ方法の詳細については、「[チュートリアル: デザイナーで機械学習モデルをデプロイする](tutorial-designer-automobile-price-deploy.md)」を参照してください。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="publish"></a>発行
 

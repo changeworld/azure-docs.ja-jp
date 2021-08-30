@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) の既定のクォータ、制限さ
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 3e1e74834153584525d2093d2a1bb8ba8e991e5a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: ea32c0e58894fe57a51cd22fccce8b2fb2fb0489
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011466"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762303"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、およびリージョンの可用性
 
@@ -38,16 +38,34 @@ AKS クラスター内の各ノードには、vCPU やメモリなどの一定�
 - Standard_A0
 - Standard_A1
 - Standard_A1_v2
+- Standard_B1ls
 - Standard_B1s
 - Standard_B1ms
 - Standard_F1
 - Standard_F1s
+- Standard_A2
+- Standard_D1
+- Standard_D1_v2
+- Standard_DS1
+- Standard_DS1_v2
 
 VM の種類とそのコンピューティング リソースの詳細については、[Azure での仮想マシンのサイズ][vm-skus]に関するページを参照してください。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
 クラスターをデプロイおよび実行できる場所の最新のリストについては、[AKS リージョンの可用性][region-availability]に関するページを参照してください。
+
+## <a name="cluster-configuration-presets-in-the-azure-portal"></a>Azure portal のクラスター構成プリセット
+
+Azure portal を使用してクラスターを作成するときは、シナリオに基づいて簡単にカスタマイズするために、プリセットの構成を選択できます。 プリセットの値はいつでも変更できます。
+
+| プリセット           | 説明                                                            |
+|------------------|------------------------------------------------------------------------|
+| Standard         | 何を選択すればよいかわからない場合に最適です。 ほとんどのアプリケーションで機能します。 |
+| 開発/テスト         | AKS で実験したり、テスト アプリケーションをデプロイしたりするのに最適です。 |
+| Cost-optimized (コスト最適化)   | 中断を許容できる運用ワークロードのコストを削減するのに最適です。 |
+| バッチ処理 | 機械学習、コンピューティング処理やグラフィックス処理の負荷が高いワークロードに最適です。 クラスターの迅速なスケールアップとスケールアウトが必要なアプリケーションに適しています。 |
+| Hardened access (強化されたアクセス)  | セキュリティと安定性を完全に制御する必要がある大企業に最適です。 |
 
 ## <a name="next-steps"></a>次のステップ
 

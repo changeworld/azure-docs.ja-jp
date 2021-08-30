@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 9eaad12e254150109498be0fac2f285f33a5965c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 491572ceaac3e4bc401d5bd6c3a5401966d0c528
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776575"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463646"
 ---
 # <a name="configure-routing-preference-for-a-kubernetes-cluster-using-azure-cli"></a>Azure CLI を使用して Kubernetes クラスターのルーティング設定を構成する
 
-この記事では、Azure CLI を使用して ISP ネットワーク ( **[インターネット]** オプション) を介して Kubernetes クラスターのルーティング設定を構成する方法について説明します。 ルーティング設定は、ルーティング設定の種類 **インターネット**** のパブリック IP アドレスを作成し、AKS クラスターの作成中にそれを使用することによって設定されます。
+この記事では、Azure CLI を使用して ISP ネットワーク ( **[インターネット]** オプション) を介して Kubernetes クラスターのルーティング設定を構成する方法について説明します。 ルーティング設定は、ルーティング設定の種類 "**インターネット**" のパブリック IP アドレスを作成し、AKS クラスターの作成中にそれを使用することによって設定されます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

@@ -1,0 +1,71 @@
+### YamlMime:FAQ
+metadata:
+  title: 管理単位のトラブルシューティングと FAQ - Azure Active Directory | Microsoft Docs
+  description: Azure Active Directory において制限されたスコープでアクセス許可を付与する管理単位を調査します。
+  services: active-directory
+  documentationcenter: ''
+  author: rolyon
+  manager: daveba
+  ms.service: active-directory
+  ms.topic: how-to
+  ms.subservice: roles
+  ms.workload: identity
+  ms.date: 11/04/2020
+  ms.author: rolyon
+  ms.reviewer: anandy
+  ms.custom: oldportal;it-pro;
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 7577d738de6dc7933a4d884879eed4bf9614eadf
+  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113095181"
+title: Azure AD の管理単位:トラブルシューティングと FAQ
+summary: >
+  Azure Active Directory (Azure AD) では、きめ細かい管理制御を行うために、1 つ以上の管理単位に制限されたスコープでユーザーを Azure AD ロールに割り当てることができます。 一般的なタスク用の PowerShell スクリプトのサンプルについては、「[管理単位の操作](/powershell/azure/active-directory/working-with-administrative-units)」を参照してください。
+sections:
+- name: 無視
+  questions:
+  - question: >
+      管理単位を作成できないのはなぜですか?
+    answer: >
+      Azure AD で管理単位を作成できるのは、"*全体管理者*" と "*特権ロール管理者*" のみです。 管理単位を作成しようとしているユーザーに、"*全体管理者*" または "*特権ロール管理者*" のロールが割り当てられていることを確認してください。
+  - question: >
+      管理単位にグループを追加しました。 そこにグループ メンバーがまだ表示されないのはなぜですか?
+    answer: >
+      グループを管理単位に追加しても、そのグループのすべてのメンバーがそれに追加されるわけではありません。 ユーザーを管理単位に直接割り当てる必要があります。
+  - question: >
+      管理単位のメンバーを先ほど追加 (または削除) しました。 メンバーがユーザー インターフェイスに表示されない (または、まだ表示されている) のはなぜですか?
+    answer: >
+      管理単位の 1 つまたは複数のメンバーの追加または削除が **[管理単位]** ページに反映されるまでに数分かかる場合があります。 あるいは、関連するリソースのプロパティに直接アクセスして、アクションが完了したかどうかを確認することもできます。 管理単位のユーザーとグループの詳細については、「[ユーザーの管理単位を一覧表示する](admin-units-add-manage-users.md)」および「[グループの管理単位を一覧表示する](admin-units-add-manage-groups.md)」を参照してください。
+  - question: >
+      私は管理単位の委任されたパスワード管理者です。 特定のユーザーのパスワードをリセットできないのはなぜですか?
+    answer: "管理単位の管理者は、自分の管理単位に割り当てられているユーザーのパスワードのみをリセットできます。 パスワードのリセットが失敗している対象のユーザーが、あなたが割り当てられている管理単位に属していることを確認してください。 ユーザーが同じ管理単位に属していても、そのユーザーのパスワードをリセットできない場合は、そのユーザーに割り当てられているロールを確認してください。 \n\n特権の昇格を防ぐため、管理単位のスコープが設定された管理者は、組織全体のスコープでロールに割り当てられているユーザーのパスワードをリセットすることはできません。\n"
+  - question: >
+      管理単位が必要なのはなぜですか? スコープを定義する方法としてセキュリティ グループを使用することはできないのでしょうか?
+    answer: "セキュリティ グループには、既存の目的と承認モデルがあります。 たとえば \"*ユーザー管理者*\" は、Azure AD 組織内のすべてのセキュリティ グループのメンバーシップを管理できます。 このロールは、Salesforce などのアプリケーションへのアクセスを管理するためにグループを使用する場合があります。 \"*ユーザー管理者*\" は委任モデル自体を管理できないようにする必要があります。これは、\"リソースのグループ化\" シナリオをサポートするためにセキュリティ グループが拡張された場合の結果です。 \n\nWindows Server Active Directory の組織単位などの管理単位は、さまざまなディレクトリ オブジェクトの管理スコープを設定する方法を提供するためのものです。 セキュリティ グループ自体は、リソース スコープのメンバーであっても構いません。 セキュリティ グループを使用して、管理者が管理できるセキュリティ グループのセットを定義すると、混乱を招く可能性があります。\n"
+  - question: >
+      グループを管理単位に追加するとはどういう意味ですか?
+    answer: >
+      グループを管理単位に追加すると、同様にその管理単位にスコープが制限されている "*ユーザー管理者*" の管理スコープにそのグループ自体が入れられます。 その管理単位のユーザー管理者は、グループ自体の名前とメンバーシップを管理できます。 "*ユーザー管理者*" には、グループのユーザーを管理する (たとえば、そのパスワードをリセットする) ためのアクセス許可は付与されません。 ユーザーを管理する権限を "*ユーザー管理者*" に付与するには、ユーザーがその管理単位の直接のメンバーになっている必要があります。
+  - question: >
+      リソース (ユーザーまたはグループ) を複数の管理単位のメンバーにすることはできますか?
+    answer: >
+      はい。リソースは複数の管理単位のメンバーにすることができます。 リソースを管理できるのは、そのリソースに対するアクセス許可を持つすべての組織全体および管理単位でスコープ設定された管理者です。
+  - question: >
+      B2C 組織では管理単位を使用できますか?
+    answer: >
+      いいえ。B2C 組織では管理単位を使用できません。
+  - question: >
+      入れ子になった管理単位はサポートされていますか?
+    answer: >
+      いいえ、入れ子になった管理単位はサポートされていません。
+  - question: >
+      PowerShell と Graph API では管理単位はサポートされていますか?
+    answer: >
+      はい。 管理単位のサポートについては、[PowerShell コマンドレットのドキュメント](/powershell/module/Azuread/)と[サンプル スクリプト](/powershell/azure/active-directory/working-with-administrative-units)を参照してください。
+
+
+      Microsoft Graph で [administrativeUnit リソースの種類](/graph/api/resources/administrativeunit)のサポートを検索してください。
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n- [管理単位を使用してロールのスコープを制限する](administrative-units.md)\n- [管理単位を管理する](admin-units-manage.md)"

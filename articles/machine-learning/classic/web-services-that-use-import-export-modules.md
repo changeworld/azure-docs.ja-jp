@@ -10,14 +10,14 @@ ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bd35487bcd11aeacae019acf0b87e4e1e716a66
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520563"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583304"
 ---
-# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>データのインポートおよびデータのエクスポート モジュールを使用する Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
+# <a name="deploy-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>データのインポートおよびデータのエクスポート モジュールを使用する Machine Learning スタジオ (クラシック) Web サービスをデプロイする
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
@@ -77,7 +77,7 @@ Azure SQL テーブルからデータを読み取るには:
 9. **[データ テーブル名] フィールド** で、「dbo.ScoredLabels」と入力します。 テーブルが存在しない場合、テーブルは実験を実行したとき、または Web サービスが呼び出されたときに作成されます。
 10. **[データベース列のコンマ区切りリスト]** フィールドで、「スコア付けラベル」と入力します。
 
-最終的な Web サービスを呼び出すアプリケーションを作成する場合は、実行時に別の入力クエリまたは変換先テーブルを指定します。 これらの入力と出力を構成するために、Web サービス パラメーターの機能を使用して *データのインポート* モジュールの *データソース* プロパティと *データのエクスポート* モード データの変換先プロパティを設定できます。  Web サービス パラメーターの詳細については、Cortana Intelligence と Machine Learning のブログにある [Azure Machine Learning Studio Web サービス パラメーターのエントリ](/archive/blogs/machinelearning/azureml-web-service-parameters)を参照してください。
+最終的な Web サービスを呼び出すアプリケーションを作成する場合は、実行時に別の入力クエリまたは変換先テーブルを指定します。 これらの入力と出力を構成するために、Web サービス パラメーターの機能を使用して *データのインポート* モジュールの *データソース* プロパティと *データのエクスポート* モード データの変換先プロパティを設定できます。  Web サービス パラメーターの詳細については、Cortana Intelligence と Machine Learning のブログにある [Machine Learning スタジオ (クラシック) Web サービス パラメーターのエントリ](/archive/blogs/machinelearning/azureml-web-service-parameters)を参照してください。
 
 クエリのインポートおよび変換先テーブルの Web サービス パラメーターを構成するには:
 
@@ -124,7 +124,7 @@ Web サービスとして予測実験をデプロイできるようになりま�
 ### <a name="deploy-a-new-web-service"></a>新しい Web サービスのデプロイ
 
 > [!NOTE]
-> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳細については、[Machine Learning Web サービス ポータルを使用した Web サービスの管理](manage-new-webservice.md)に関するページを参照してください。
 
 新しい Web サービスとしてデプロイし、それを使用するアプリケーションを作成します。
 

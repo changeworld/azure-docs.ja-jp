@@ -8,12 +8,12 @@ ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: ed9abd45c2fe973cfec4b7e2418a3e9d25322b29
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0e10309350ac2df713fb6492555bdeb98a1feade
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487751"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113134233"
 ---
 # <a name="azure-storage-analytics-and-big-data-partners"></a>Azure Storage の分析とビッグ データのパートナー
 
@@ -26,6 +26,7 @@ ms.locfileid: "109487751"
 |![Dremio 社のロゴ](./media/dremio-logo.jpg) |**Dremio**<br>アナリストやデータ サイエンティストはデータを検出、探索、およびキュレーションし、情報管理 (IT) 部門でガバナンスとセキュリティを維持します。 Dremio を使用すると、Blob Storage、Azure SQL Database、Azure Synapse SQL、HDInsight などと共に Data Lake Storage を簡単に参加させることができます。 Dremio を使用すると、Power BI アナリストは、Data Lake Storage に格納されている新しいデータセットを検索し、Power BI のデータにすぐにアクセスし、視覚エフェクトを作成し、リアルタイムでレポートを繰り返し調整できます。 また、アナリストは、Data Lake Storage と他のデータベースとの間でデータを結合する新しいレポートを作成することもできます。|[パートナー ページ](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br>|
 ![Informatica 社のロゴ](./media/informatica-logo.png) |**Informatica**<br>Informatica のエンタープライズ規模でクラウドネイティブのデータ管理プラットフォームを使用すると、Azure でのエンタープライズ データの検出、配信、品質、ガバナンスが自動化されて高速化されます。 AI を利用したメタデータに基づくデータ統合、およびデータ品質とガバナンスの機能により、分析を最新化し、Azure のデータ ウェアハウスまたはデータ レイクへの移行の時間を短縮することができます。|[パートナー ページ](https://www.informatica.com/azure)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.annualiics?tab=Overview)|
 ![Qlik 社のロゴ](./media/qlik-logo.png) |**Qlik**<br>Qlik は、スケーラブルなデータ統合と自動化ソリューションによって、BI と ML のイニシアチブの促進を支援します。 また Qlik は、移行ツールの枠を超えて、自動化されたデータ パイプラインと管理されたセルフサービス カタログによって、データおよび分析プロセス全体の俊敏性の推進も支援します。|[パートナー ページ](https://www.qlik.com/us/products/technology/qlik-microsoft-azure-migration)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik_data_integration_platform)|
+![Starburst ロゴ](./media/starburst-logo.jpg) |**Starburst**<br>Starburst は、高速に、かつ簡単に、どこからでもデータにアクセスできるようにすることでデータの価値を引き出します。 データベースの垣根を越えてデータを照会することでアクションにつなげ、データドリブンの組織を実現します。 Starburst を使用することで、チームはベンダー ロックインを回避し、各自の業務に合った既存のツールを使用することができます。|[パートナー ページ](https://www.starburst.io/platform/deployment-options/starburst-on-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1582306810515.starburst-enterprise-presto)|
 ![Striim 社のロゴ](./media/striim-logo.png) |**Striim**<br>Striim は、さまざまなソースから Azure Synapse Analytics、Cosmos DB、Azure クラウド データベースなどの複数の Azure ソリューションへの、継続的なデータ移動とストリーム内変換を可能にします。 Striim ソリューションを使用することで、Azure Data Lake Storage のお客様はストリーミング データ パイプラインをすばやく構築できます。 お客様は、必要なデータ待機時間 (リアルタイム、マイクロバッチ、またはバッチ) を選択し、より多くのコンテキストでデータをエンリッチできます。 これらのパイプラインは、Azure SQL Data Warehouse や Azure Databricks など、すべてのアプリケーションまたはビッグ データ分析ソリューションに対応できます。 |[パートナー ページ](https://www.striim.com/partners/striim-for-microsoft-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/striim.azurestorageintegration?tab=overview)|
 ![Talend 社のロゴ](./media/talend-logo.png) |**Talend**<br>Talend Data Fabric は、複数の統合およびガバナンスの機能をまとめたプラットフォームです。 Talend は、単一の統合プラットフォームを使用することで、包括的でクリーンな侵害されていないデータをリアルタイムで配信します。 Talend Trust Score は、すべてのデータセットの信頼性評価に利用できます。 |[パートナー ページ](https://www.talend.com/partners/microsoft-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendclouddi)|
 ![Unravel](./media/unravel-logo.png) |**Unravel Data**<br>Unravel Data を使用すると、1 つのウィンドウで監視および自動管理を行うことができます。 AI を活用したレコメンデーションにより、データ パイプラインとジョブの信頼性、速度、リソース割り当てを積極的に改善できます。 Unravel は、Azure Marketplace または Unravel SaaS サービスを通じて、Azure Databricks、HDInsight、Azure Data Lake Storage などと簡単に接続されます。 Unravel Data も、環境を評価することで、Azure への移行に役立ちます。 この評価では、リスクを削減しつつ迅速に移行するために必要な使用量の詳細、依存関係マップ、コスト、労力が明らかになります。|[パートナー ページ](https://www.unraveldata.com/azure-databricks/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel4databrickssubscriptionasaservice?tab=Overview)

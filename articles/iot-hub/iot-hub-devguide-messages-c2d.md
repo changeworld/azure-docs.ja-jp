@@ -2,19 +2,18 @@
 title: Azure IoT Hub の cloud-to-device メッセージの理解 | Microsoft Docs
 description: この開発者ガイドでは、IoT ハブでの cloud-to-device メッセージングの使用方法について説明します。 これには、メッセージのライフサイクルおよび構成オプションに関する情報が含まれています。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 7bb3ca2b31eaef5c0639f30e0f2a329a37dfe7e0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cc681d843d1fc68b3da6918724c7ad3e3ca5e37e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761783"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727818"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -141,7 +140,7 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 | maxDeliveryCount          | デバイスごとの cloud-to-device キューの最大配信数 | 1 から 100; 既定値: 10 |
 | feedback.ttlAsIso8601     | サービス宛てのフィードバック メッセージの保有期間 | 最大 2 日の ISO_8601 書式による間隔 (最小 1 分); 既定値: 1 時間 |
 | feedback.maxDeliveryCount | フィードバック キューの最大配信数 | 1 から 100; 既定値: 10 |
-| feedback.lockDurationAsIso8601 | フィードバック キューの最大配信数 | 5 から 300 秒の ISO_8601 書式による間隔 (最短 5 秒)。既定値: 60 秒。 |
+| feedback.lockDurationAsIso8601 | フィードバック キューのロック期間 | 5 から 300 秒の ISO_8601 書式による間隔 (最短 5 秒)。既定値: 60 秒。 |
 
 構成オプションは、次のいずれかの方法で設定できます。
 

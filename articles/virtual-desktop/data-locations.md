@@ -4,15 +4,15 @@ description: Azure Virtual Desktop のデータとメタデータが格納され
 author: Heidilohr
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 06/08/2021
+ms.date: 06/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ef72214cf0a5a5d0d65cc13dba88a4776b4240ad
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: bc356e828adbe9b2d93a202f6b58673dd4ec5efc
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745297"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113125908"
 ---
 # <a name="data-locations-for-azure-virtual-desktop"></a>Azure Virtual Desktop のデータの場所
 
@@ -49,7 +49,8 @@ Microsoft では、Azure Virtual Desktop の信頼性と拡張性を維持する
 
 - 米国 (US) (一般公開)
 - ヨーロッパ (EU) (一般公開)
-- 英国 (UK) (パブリック プレビュー)
+- イギリス (UK) (一般公開)
+- カナダ (CA) (一般公開)
 
 サービスが拡大されるにつれて、より多くの地域が追加される予定です。 格納された情報は保存時に暗号化され、geo 冗長ミラーは地域内で保持されます。 アプリ設定やユーザー データなど、顧客データは、お客様が選択した場所に配置され、サービスによって管理されることはありません。
 

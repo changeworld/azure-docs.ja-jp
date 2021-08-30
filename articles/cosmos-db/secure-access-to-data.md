@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 06/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 696d8c1a775f67271a7c7b4fa81789e7b0775bb1
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: a7b43f52fee66579beb0c91f0b76d313cd4bcdaa
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110654267"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112522211"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB には、データへのアクセスを制御する方法が 3 �
 | アクセス制御の種類 | 特性 |
 |---|---|
 | [主キー](#primary-keys) | 任意の管理操作またはデータ操作を行うことができる共有シークレット。 読み取り/書き込みと読み取り専用の両方の種類があります。 |
-| [ロールベースのアクセス制御](#rbac) | 認証に Azure Active Directory (AAD) の ID を使用する、きめ細かいロールベースのアクセス許可モデル。 |
+| [役割ベースのアクセス制御](#rbac) | 認証に Azure Active Directory (AAD) の ID を使用する、きめ細かいロールベースのアクセス許可モデル。 |
 | [リソース トークン](#resource-tokens)| ネイティブな Azure Cosmos DB のユーザーとアクセス許可に基づく、きめ細かいアクセス許可モデル。 |
 
 ## <a name="primary-keys"></a><a id="primary-keys"></a> 主キー
@@ -128,7 +128,7 @@ User user = await database.CreateUserAsync("User 1");
 
 ### <a name="permissions"></a>アクセス許可<a id="permissions"></a>
 
-アクセス許可リソースはユーザーに関連付けられ、コンテナーおよびパーティション キー レベルで割り当てられます。 各ユーザーには、0 個以上のアクセス許可を含めることができます。 アクセス許可リソースによって、ユーザーが特定のパーティション キー内の特定のコンテナーまたはデータにアクセスするときに必要なセキュリティ トークンへのアクセスが提供されます。 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
+アクセス許可リソースは、ユーザーに関連付けられて特定のリソースに割り当てられます。 各ユーザーには、0 個以上のアクセス許可を含めることができます。 アクセス許可リソースによって、ユーザーが特定のパーティション キー内の特定のコンテナーまたはデータにアクセスするときに必要なセキュリティ トークンへのアクセスが提供されます。 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
 
 - All:ユーザーはリソースに対して完全なアクセス許可を持ちます。
 - Read:ユーザーは、リソースの内容の読み取りのみを行えますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
@@ -153,7 +153,7 @@ user.CreatePermissionAsync(
     new PermissionProperties(
         id: "permissionUser1Orders",
         permissionMode: PermissionMode.All,
-        container: benchmark.container,
+        container: container,
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 

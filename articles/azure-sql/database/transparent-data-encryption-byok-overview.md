@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 02/01/2021
-ms.openlocfilehash: b3403558cbc07d152bbae7e901464a8aa4a8e4d2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 06/23/2021
+ms.openlocfilehash: c3f6046617458606d13aab243c96ef24246714fd
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812770"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090315"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -28,11 +28,15 @@ ms.locfileid: "107812770"
 
 Azure SQL Database と Azure Synapse Analytics の場合、TDE 保護機能はサーバー レベルで設定され、そのサーバーに関連付けられているすべての暗号化されたデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 "*サーバー*" という用語は、別途明記されていない限り、このドキュメントでは、SQL Database や Azure Synapse のサーバーと、SQL Managed Instance のマネージド インスタンスの両方を指します。
 
+> [!NOTE]
+> この記事は、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (専用 SQL プール (以前の SQL DW)) に適用されます。 Synapse ワークスペース内の専用 SQL プールの Transparent Data Encryption に関するドキュメントについては、「[Azure Synapse Analytics の暗号化](../../synapse-analytics/security/workspaces-encryption.md)」を参照してください。
+
 > [!IMPORTANT]
 > サービス マネージド TDE を使用していて、カスタマー マネージド TDE の使用を開始する場合は、切り替え処理中はデータが暗号化されたままとなり、データベース ファイルのダウンタイムが生じたり再暗号化が行われたりすることはありません。 サービス マネージド キーからカスタマー マネージド キーへの切り替えに必要なのは、高速のオンライン操作である DEK の再暗号化だけです。
 
 > [!NOTE]
 > <a id="doubleencryption"></a> Azure SQL のお客様に、2 つのレイヤーで保存データの暗号化を提供するため、プラットフォーム マネージド キーによる (AES-256 暗号化アルゴリズムを使用した) インフラストラクチャ暗号化がロールアウトされています。これにより、既に利用可能なカスタマー マネージド キーによる TDE と共に、保存時の暗号化の追加レイヤーが提供されます。 Azure SQL Database と Managed Instance の場合、インフラストラクチャの暗号化が有効になっていると、master データベースやその他のシステムデータベースを含むすべてのデータベースが暗号化されます。 現時点では、お客様はこの機能に対するアクセスを要求する必要があります。 この機能に関心がある場合は、AzureSQLDoubleEncryptionAtRest@service.microsoft.com にお問い合わせください。
+
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>カスタマー マネージド TDE の利点
 

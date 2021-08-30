@@ -9,18 +9,18 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 476fb664df261cf2b71802d15f23e28eb9970a65
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f802bb5d681e9e77d258d6071def53d4c5e4958f
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407455"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731099"
 ---
 # <a name="import-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>AdventureWorks サンプル データベースを Azure Arc 対応 PostgreSQL Hyperscale にインポートする
 
 [AdventureWorks](/sql/samples/adventureworks-install-configure) は、チュートリアルで使用される OLTP データベースと例を含むサンプル データベースです。 [SQL Server サンプル GitHub リポジトリ](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)の一部として、Microsoft によって提供および管理されています。
 
-オープンソース プロジェクトによって、AdventureWorks データベースが Azure Arc 対応 PostgreSQL Hyperscale と互換性を持つように変換されました。
+オープンソース プロジェクトによって、AdventureWorks データベースが Azure Arc 対応 PostgreSQL Hyperscale と互換性を備えるように変換されました。
 - [元のプロジェクト](https://github.com/lorint/AdventureWorks-for-Postgres)
 - [CSV ファイルが PostgreSQL と互換性を持つように事前に変換するプロジェクトに従う](https://github.com/NorfolkDataSci/adventure-works-postgres)
 
@@ -70,7 +70,7 @@ kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres -- psql --use
 ```
 
 
-> **注意事項: Azure Arc 対応 PostgreSQL Hyperscale をスケールアウトして、PostgreSQL Hyperscale サーバー グループのワーカー ノード全体にデータ/テーブルをシャード/分散することによるパフォーマンス上の利点はあまりありません。[推奨される次の手順](#suggested-next-steps)を参照してください。**
+> **注: スケールアウトして、データやテーブルを PostgreSQL Hyperscale サーバー グループのワーカー ノード全体にシャードまたは分散しない限り、Azure Arc 対応 PostgreSQL Hyperscale 上で実行しても、パフォーマンス上の利点はあまりありません。[「推奨される次の手順」](#suggested-next-steps)を参照してください。**
 
 ## <a name="suggested-next-steps"></a>推奨される次の手順
 - 複数の PostgreSQL Hyperscale ノードにデータを分散し、Azure Database for PostgreSQL Hyperscale のすべての利点を活用するために、Azure Database for PostgreSQL Hyperscale の概念と使い方に関するガイドを参照してください。 :

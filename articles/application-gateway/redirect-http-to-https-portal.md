@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 92805b4f6c46a32718d755d19c9053705112fa48
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5192a740667217741b20d6bd335ca5662f3fc6aa
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321341"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690605"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトするアプリケーション ゲートウェイを作成する
 
@@ -137,7 +137,7 @@ Export-PfxCertificate `
 3. 検索ボックスに、「*スケール セット*」と入力し、Enter キーを押します。
 4. **[仮想マシン スケール セット]** 、 **[作成]** の順に選択します。
 5. **[仮想マシン スケール セットの名前]** に、「*myvmss*」と入力します。
-6. オペレーティング システムのディスク イメージとして、** **[Windows Server 2016 Datacenter]** が確実に選択されているようにします。
+6. **[オペレーティング システムのディスク イメージ]** で、 **[Windows Server 2016 Datacenter]** が選択されていることを確認します。
 7. **[リソース グループ]** では、 **[myResourceGroupAG]** を選択します。
 8. **[ユーザー名]** では、「*azureuser*」と入力します。
 9. **[パスワード]** では、「*Azure123456!* 」と入力し、 パスワードを確認します。

@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 07/06/2021
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 4197b1a5f047190872d055dc2ba8ccaa11efbe6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155f3817b913e38e503d0a8fcaa6083922067ebd
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376345"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487617"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の POP IP リストの取得
 
@@ -36,11 +36,7 @@ Microsoft の Azure CDN からのトラフィックのみを受け入れるよ�
 
 Microsoft のバックエンド IP アドレス空間と Azure のインフラストラクチャ サービスによる Azure CDN からのトラフィックのみを受け入れるように、ご利用のバックエンドに対して IP ACLing を構成します。 
 
-* Microsoft の IPv4 バックエンド IP 空間からの Azure CDN: 147.243.0.0/16
-* Microsoft の IPv6 バックエンド IP 空間からの Azure CDN: 2a01:111:2050::/44
-
-Microsoft の Azure CDN でサービス タグを使用するには、Azure Front Door タグを使用してください。 Microsoft サービスに対する IP 範囲とサービス タグについては、[こちら](https://www.microsoft.com/download/details.aspx?id=56519)で見つけることができます。
-
+Azure Front Door [サービス タグ](../virtual-network/service-tags-overview.md)を Microsoft の Azure CDN と共に使用して、Microsoft のバックエンド IP 範囲を校正します。 完全なリストについては、Microsoft サービスの [IP 範囲とサービス タグ](https://www.microsoft.com/en-us/download/details.aspx?id=56519)を参照してください。
 
 ## <a name="typical-use-case"></a>一般的なユース ケース
 

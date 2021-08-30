@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2020
+ms.date: 07/18/2021
 ms.author: memildin
-ms.openlocfilehash: 55f8d37d435aa8adeb4d97246ce7b2c7811140be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e65fd5a0c672e500a0a4bc08f45e9ced32d89047
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558000"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463506"
 ---
 # <a name="security-alerts-schemas"></a>セキュリティ アラートのスキーマ
 
@@ -37,27 +37,9 @@ ms.locfileid: "102558000"
 ## <a name="the-schemas"></a>スキーマ 
 
 
-### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[ワークフロー オートメーションとイベント ハブへの連続エクスポート](#tab/schema-continuousexport)
+### <a name="azure-sentinel"></a>[Azure Sentinel](#tab/schema-sentinel)
 
-### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>Logic Apps、イベント ハブ、およびサードパーティ SIEM に送信されるアラート用のサンプル JSON
-
-以下に示したのは、次の宛先に渡されるアラート イベントのスキーマです。
-
-- Security Center のワークフロー オートメーション内に構成された Azure Logic Apps インスタンス
-- Security Center の連続エクスポート機能を使用する Azure Event Hub
-
-ワークフロー オートメーション機能の詳細については、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
-
-連続エクスポートの詳細については、「[継続的に Security Center データをエクスポートする](continuous-export.md)」を参照してください。
-
-[!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
-
-
-
-
-### <a name="azure-sentinel-and-log-analytics-workspaces"></a>[Azure Sentinel と Log Analytics ワークスペース](#tab/schema-sentinel)
-
-Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [Log Analytics ワークスペース] に送信します。 
+Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [Log Analytics ワークスペース] に送信します。
 
 Security Center のアラートを使用して Sentinel のサポート案件またはインシデントを作成するには、以下に示した、それらのアラートのスキーマが必要となります。 
 
@@ -66,83 +48,81 @@ Azure Sentinel の詳細については、[こちらのドキュメント](../se
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
 
-
-
 ### <a name="azure-activity-log"></a>[Azure アクティビティ ログ](#tab/schema-activitylog)
 
 Azure Security Center は、Azure のアクティビティ ログ内のイベントとして生成されたセキュリティ アラートを監査します。
 
 セキュリティ アラートのイベントは、アクティビティ ログで Activate Alert (アラートのアクティブ化) イベントを検索することによって確認できます。
 
-[![アクティビティ ログから Activate Alert (アラートのアクティブ化) イベントを検索する](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
+[![アクティビティ ログから Activate Alert (アラートのアクティブ化) イベントを検索する。](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
 
 
-### <a name="sample-json-for-alerts-sent-to-azure-activity-log&quot;></a>Azure のアクティビティ ログに送信されるアラートのサンプル JSON
+### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>Azure のアクティビティ ログに送信されるアラートのサンプル JSON
 
 ```json
 {
-    &quot;channels&quot;: &quot;Operation&quot;,
-    &quot;correlationId&quot;: &quot;2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff&quot;,
-    &quot;description&quot;: &quot;PREVIEW - Role binding to the cluster-admin role detected. Kubernetes audit log analysis detected a new binding to the cluster-admin role which gives administrator privileges.\r\nUnnecessary administrator privileges might cause privilege escalation in the cluster.&quot;,
-    &quot;eventDataId&quot;: &quot;2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff&quot;,
-    &quot;eventName&quot;: {
-        &quot;value&quot;: &quot;PREVIEW - Role binding to the cluster-admin role detected&quot;,
-        &quot;localizedValue&quot;: &quot;PREVIEW - Role binding to the cluster-admin role detected&quot;
+    "channels": "Operation",
+    "correlationId": "2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff",
+    "description": "PREVIEW - Role binding to the cluster-admin role detected. Kubernetes audit log analysis detected a new binding to the cluster-admin role which gives administrator privileges.\r\nUnnecessary administrator privileges might cause privilege escalation in the cluster.",
+    "eventDataId": "2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff",
+    "eventName": {
+        "value": "PREVIEW - Role binding to the cluster-admin role detected",
+        "localizedValue": "PREVIEW - Role binding to the cluster-admin role detected"
     },
-    &quot;category&quot;: {
-        &quot;value&quot;: &quot;Security&quot;,
-        &quot;localizedValue&quot;: &quot;Security&quot;
+    "category": {
+        "value": "Security",
+        "localizedValue": "Security"
     },
-    &quot;eventTimestamp&quot;: &quot;2019-12-25T18:52:36.801035Z&quot;,
-    &quot;id&quot;: &quot;/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP_NAME/providers/Microsoft.Security/locations/centralus/alerts/2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff/events/2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff/ticks/637128967568010350&quot;,
-    &quot;level&quot;: &quot;Informational&quot;,
-    &quot;operationId&quot;: &quot;2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff&quot;,
-    &quot;operationName&quot;: {
-        &quot;value&quot;: &quot;Microsoft.Security/locations/alerts/activate/action&quot;,
-        &quot;localizedValue&quot;: &quot;Activate Alert&quot;
+    "eventTimestamp": "2019-12-25T18:52:36.801035Z",
+    "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP_NAME/providers/Microsoft.Security/locations/centralus/alerts/2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff/events/2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff/ticks/637128967568010350",
+    "level": "Informational",
+    "operationId": "2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff",
+    "operationName": {
+        "value": "Microsoft.Security/locations/alerts/activate/action",
+        "localizedValue": "Activate Alert"
     },
-    &quot;resourceGroupName&quot;: &quot;RESOURCE_GROUP_NAME&quot;,
-    &quot;resourceProviderName&quot;: {
-        &quot;value&quot;: &quot;Microsoft.Security&quot;,
-        &quot;localizedValue&quot;: &quot;Microsoft.Security&quot;
+    "resourceGroupName": "RESOURCE_GROUP_NAME",
+    "resourceProviderName": {
+        "value": "Microsoft.Security",
+        "localizedValue": "Microsoft.Security"
     },
-    &quot;resourceType&quot;: {
-        &quot;value&quot;: &quot;Microsoft.Security/locations/alerts&quot;,
-        &quot;localizedValue&quot;: &quot;Microsoft.Security/locations/alerts&quot;
+    "resourceType": {
+        "value": "Microsoft.Security/locations/alerts",
+        "localizedValue": "Microsoft.Security/locations/alerts"
     },
-    &quot;resourceId&quot;: &quot;/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP_NAME/providers/Microsoft.Security/locations/centralus/alerts/2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff&quot;,
-    &quot;status&quot;: {
-        &quot;value&quot;: &quot;Active&quot;,
-        &quot;localizedValue&quot;: &quot;Active&quot;
+    "resourceId": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP_NAME/providers/Microsoft.Security/locations/centralus/alerts/2518250008431989649_e7313e05-edf4-466d-adfd-35974921aeff",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
     },
-    &quot;subStatus&quot;: {
-        &quot;value&quot;: &quot;&quot;,
-        &quot;localizedValue&quot;: &quot;&quot;
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
     },
-    &quot;submissionTimestamp&quot;: &quot;2019-12-25T19:14:03.5507487Z&quot;,
-    &quot;subscriptionId&quot;: &quot;SUBSCRIPTION_ID&quot;,
-    &quot;properties&quot;: {
-        &quot;clusterRoleBindingName&quot;: &quot;cluster-admin-binding&quot;,
-        &quot;subjectName&quot;: &quot;for-binding-test&quot;,
-        &quot;subjectKind&quot;: &quot;ServiceAccount&quot;,
-        &quot;username&quot;: &quot;masterclient&quot;,
-        &quot;actionTaken&quot;: &quot;Detected&quot;,
-        &quot;resourceType&quot;: &quot;Kubernetes Service&quot;,
-        &quot;severity&quot;: &quot;Low&quot;,
-        &quot;intent&quot;: &quot;[\"Persistence\"]&quot;,
-        &quot;compromisedEntity&quot;: &quot;ASC-IGNITE-DEMO&quot;,
-        &quot;remediationSteps&quot;: &quot;[\"Review the user in the alert details. If cluster-admin is unnecessary for this user, consider granting lower privileges to the user.\"]&quot;,
-        &quot;attackedResourceType&quot;: &quot;Kubernetes Service&quot;
+    "submissionTimestamp": "2019-12-25T19:14:03.5507487Z",
+    "subscriptionId": "SUBSCRIPTION_ID",
+    "properties": {
+        "clusterRoleBindingName": "cluster-admin-binding",
+        "subjectName": "for-binding-test",
+        "subjectKind": "ServiceAccount",
+        "username": "masterclient",
+        "actionTaken": "Detected",
+        "resourceType": "Kubernetes Service",
+        "severity": "Low",
+        "intent": "[\"Persistence\"]",
+        "compromisedEntity": "ASC-IGNITE-DEMO",
+        "remediationSteps": "[\"Review the user in the alert details. If cluster-admin is unnecessary for this user, consider granting lower privileges to the user.\"]",
+        "attackedResourceType": "Kubernetes Service"
     },
-    &quot;relatedEvents&quot;: []
+    "relatedEvents": []
 }
 ```
 
-### <a name=&quot;the-data-model-of-the-schema&quot;></a>スキーマのデータ モデル
+### <a name="the-data-model-of-the-schema"></a>スキーマのデータ モデル
 
 |フィールド|説明|
 |----|----|
-|**channels**|定数 (&quot;Operation")|
+|**channels**|定数 ("Operation")|
 |**correlationId**|Azure Security Center のアラート ID|
 |**description**|アラートの説明|
 |**eventDataId**|correlationId を参照してください。|
@@ -165,6 +145,18 @@ Azure Security Center は、Azure のアクティビティ ログ内のイベン
 |**relatedEvents**|定数 (空の配列)|
 |||
 
+
+### <a name="workflow-automation"></a>[ワークフローの自動化](#tab/schema-workflow-automation)
+
+ワークフローの自動化を使用する場合のアラート スキーマについては、[コネクタのドキュメント](/connectors/ascalert/)を参照してください。
+
+
+### <a name="continuous-export"></a>[連続エクスポート](#tab/schema-continuousexport)
+
+Security Center の連続エクスポート機能では、アラート データを以下に渡します。
+
+- Azure Event Hub。その際、[アラート API](/rest/api/securitycenter/alerts) と同じスキーマを使用します。
+- Log Analytics ワークスペース。その際、Azure Monitor データ リファレンス ドキュメントの [SecurityAlert スキーマ](/azure/azure-monitor/reference/tables/SecurityAlert)に従います。
 
 
 

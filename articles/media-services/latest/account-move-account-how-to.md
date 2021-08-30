@@ -10,12 +10,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5f48a60ee139cf4a89c0873633feea93cdde0940
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: cbda31a3aaaf741424db174aa6a676858b27a23c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963664"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471214"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3 アカウントの管理
 
@@ -25,12 +25,17 @@ Azure でメディア コンテンツの管理、暗号化、エンコード、�
 
 [!INCLUDE [account creation note](./includes/note-2020-05-01-account-creation.md)]
 
-## <a name="moving-a-media-services-account-between-subscriptions"></a>サブスクリプション間での Media Services アカウントの移動 
+## <a name="media-services-account-names"></a>Media Services アカウント名
+
+Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 文字から 24 文字です。 Media Services アカウント名は、Azure の場所内で一意である必要があります。
+
+Media Services アカウントが削除されると、アカウント名は 1 年間予約されます。 アカウントが削除された 1 年後、アカウント名は、元のアカウントが含まれていたサブスクリプションによって同じ Azure の場所でのみ再利用できます。
+
+Media Services アカウント名は、キー配信、ライブ イベント、ストリーミング エンドポイント名など、DNS 名に使用されます。 Media Services DNS 名を許可するようにファイアウォールまたはプロキシを構成している場合、Media Services アカウントを削除してから 1 年以内にこれらの構成が削除されていることを確認してください。
+
+## <a name="moving-a-media-services-account-between-subscriptions"></a>サブスクリプション間での Media Services アカウントの移動
 
 Media Services アカウントを新しいサブスクリプションに移動する必要がある場合は、まず、Media Services アカウントを含むリソース グループ全体を新しいサブスクリプションに移動する必要があります。 接続されている次のすべてのリソースを移動する必要があります。Azure Storage アカウント、Azure CDN プロファイルなど。詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。 Azure の他のリソースの場合と同様に、リソース グループの移動にはその完了まで時間がかかることがあります。
-
-> [!NOTE]
-> Media Services v3 では、マルチ テナント モデルをサポートしています。
 
 ### <a name="considerations"></a>考慮事項
 

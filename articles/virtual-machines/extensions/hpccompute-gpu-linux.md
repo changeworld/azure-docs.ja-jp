@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2021
 ms.author: amverma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 493ce6ea8bee59a98be75592f89c85980b6ce285
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 98ac0d72ee3bcb7e99030c0d6748cb359c148924
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673331"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446053"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 
@@ -29,7 +29,7 @@ ms.locfileid: "110673331"
 
 この拡張機能は、Linux N シリーズ VM に NVIDIA GPU ドライバーをインストールします。 VM ファミリに応じて、この拡張機能では CUDA ドライバーまたは GRID ドライバーがインストールされます。 この拡張機能を使用して NVIDIA ドライバーをインストールする際は、[NVIDIA のエンドユーザー使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=874330)の条項を受け入れ、同意します。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
 
-ドライバーの手動インストールの手順と現在サポートされているバージョンについては、[こちら](../linux/n-series-driver-setup.md)をご覧ください。
+ドライバーの手動インストールの手順と現在サポートされているバージョンに関する説明があります。 詳細については、[Linux 用 Azure N シリーズ GPU ドライバーの設定](../linux/n-series-driver-setup.md)に関するページを参照してください。
 NVIDIA GPU ドライバーを [Windows の N シリーズ VM](hpccompute-gpu-windows.md) にインストールする拡張機能も利用可能です。
 
 ## <a name="prerequisites"></a>前提条件

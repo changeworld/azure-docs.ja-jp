@@ -9,26 +9,28 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/7/2020
+ms.date: 07/16/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 74cbbf13b3ecb0b784138df69a8436930c2766ef
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ae74589dbbde2402d3acd916f2c5c1f58a7a5c7c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130901"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464133"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
-
 OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサービス/Web API を呼び出し、それがさらに別のサービス/Web API を呼び出す必要のあるユース ケースを提供します。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 中間層サービスがダウンストリーム サービスに認証済み要求を発行するには、そのサービスは Microsoft ID プラットフォームからのアクセス トークンをユーザーに代わってセキュリティ保護する必要があります。
 
-この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
+現時点では、OBO フローはユーザー プリンシパルに対してのみ機能します。 サービス プリンシパルは、アプリ専用トークンを要求して API に送信し、その API を介してトークンを元のサービス プリンシパルを表す別のトークンと交換することはできません。 さらに、OBO フローは、委任されたシナリオと呼ばれる別のパーティの代理として動作することに重点を置いています。これは、アクセス許可についての推論には、アプリケーション "*ロール*" ではなく、委任された "*スコープ*" のみが使用されることを意味します。 "*ロール*" は、ユーザーに代わって動作するアプリケーションではなく、フロー内のプリンシパル (ユーザー) にアタッチされたままになります。
 
+この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。 可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
 
 2018 年 5 月の時点では、暗黙的なフローから派生する一部の `id_token` は、OBO フローで使用できません。 シングルページ アプリ (SPA) では、中間層の機密クライアントに **アクセス** トークンを渡して、OBO フローを代わりに実行する必要があります。 OBO 呼び出しを実行できるクライアントの詳細については、[制限事項](#client-limitations)に関する記事を参照してください。
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
@@ -81,8 +83,8 @@ Host: login.microsoftonline.com/<tenant>
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
-&client_id=2846f71b-a7a4-4987-bab3-760035b2f389
-&client_secret=BYyVnAt56JpLwUcyo47XODd
+client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
+&client_secret=sampleCredentia1s
 &assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiIyO{a lot of characters here}
 &scope=https://graph.microsoft.com/user.read+offline_access
 &requested_token_use=on_behalf_of
@@ -153,16 +155,16 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 上記のアクセス トークンは、Microsoft Graph 用に v1.0 でフォーマットされたトークンです。 これは、トークンの形式はアクセス対象の **リソース** に基づいたものであり、要求に使用されるエンドポイントとは無関係であるためです。 Microsoft Graph は v1.0 トークンを受け入れるように設定されているため、クライアントが Microsoft Graph のトークンを要求すると、Microsoft ID プラットフォームによって v1.0 アクセス トークンが生成されます。 他のアプリからは、v2.0 形式のトークンや v1.0 形式のトークン、さらには専用や暗号化されたトークン形式が必要であると示される場合があります。  v1.0 と v2.0 のエンドポイントは両方とも、どちらの形式のトークンも出力できます。この方法では、クライアントによってトークンが要求された方法や場所に関係なく、リソースは常に適切な形式のトークンを取得できます。 
 
-アクセス トークンを調べる必要があるのはアプリケーションのみです。 クライアントは、それらを **調べることができません**。 コード内で他のアプリのアクセス トークンを調べると、そのアプリによって自身のトークンの形式が変更されたり、暗号化が開始されたりしたときに、アプリが予期せず中断される可能性があります。 
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 ### <a name="error-response-example"></a>エラー応答の例
 
-ダウンストリーム API に条件付きアクセス ポリシー ([多要素認証](../authentication/concept-mfa-howitworks.md)など) が設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスでこのエラーをクライアント アプリケーションに示す必要があります。
+ダウンストリーム API に条件付きアクセス ポリシー ([多要素認証](../authentication/concept-mfa-howitworks.md)など) が設定されている場合は、ダウンストリーム API のアクセス トークンを取得しようとすると、トークン エンドポイントからエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスでこのエラーをクライアント アプリケーションに示す必要があります。
 
 ```json
 {
     "error":"interaction_required",
-    "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
+    "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multifactor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
     "error_codes":[50079],
     "timestamp":"2017-05-01 22:43:20Z",
     "trace_id":"b72a68c3-0926-4b8e-bc35-3150069c2800",
@@ -202,7 +204,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 | assertion |required | 要求で使用されるアクセス トークンの値。|
 | client_id |required | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
 | client_secret |required | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
-| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
+| scope |required | トークン要求のスコープのスペース区切りリスト。 詳細については、「[スコープ](v2-permissions-and-consent.md)」を参照してください。 例: "https://testapp.contoso.com/user_impersonation openid" |
 | requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | requested_token_type | required | 要求するトークンの種類を指定します。 アクセス先のリソースの要件に応じて、値は **urn:ietf:params:oauth:token-type:saml2** または **urn:ietf:params:oauth:token-type:saml1** のいずれかです。 |
 

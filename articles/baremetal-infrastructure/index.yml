@@ -10,12 +10,12 @@ metadata:
   author: Ajayan1008
   ms.author: v-hborys
   ms.date: 04/14/2021
-  ms.openlocfilehash: 4d4c91a48e6310a54482e28dd9c6022c2fb9f6c3
-  ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+  ms.openlocfilehash: 6682385741d8d72eafe6817194698b13e52a5865
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121862643"
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122968864"
 landingContent:
 - title: BareMetal インフラストラクチャについて
   linkLists:
@@ -123,8 +123,8 @@ landingContent:
       url: ../virtual-machines/workloads/sap/troubleshooting-monitoring.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: HANA 側からの監視とトラブルシューティング
       url: ../virtual-machines/workloads/sap/hana-monitor-troubleshoot.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-    - text: Azure Monitor for SAP Solutions の概要
-      url: ../virtual-machines/workloads/sap/azure-monitor-overview.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: SAP on Azure の監視
+      url: ../virtual-machines/workloads/sap/monitor-sap-on-azure.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: Azure Monitor for SAP Solutions のプロバイダー
       url: ../virtual-machines/workloads/sap/azure-monitor-providers.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: Azure Monitor for SAP Solutions をデプロイする - Azure portal

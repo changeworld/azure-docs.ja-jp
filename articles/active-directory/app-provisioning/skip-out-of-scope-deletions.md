@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 37196dafd094f997bc5fe2ea165cefb9099562a0
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 6d9483ee7d6d131b28f58ce559f0313f3eddbb34
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784883"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231802"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope-in-azure-active-directory"></a>Azure Active Directory でスコープ外に出るユーザー アカウントの削除をスキップする
 
@@ -76,7 +76,7 @@ Graph エクスプローラーで次のコマンドを実行して、***SkipOutO
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
-手順 3. で更新したテキストを "要求本文" にコピーし、"要求ヘッダー" でヘッダー "Content-Type" を "application/json" に設定します。 
+手順 3. で更新したテキストを [要求本文] にコピーします。 
 
    ![PUT 要求](./media/skip-out-of-scope-deletions/skip-05.png)
 

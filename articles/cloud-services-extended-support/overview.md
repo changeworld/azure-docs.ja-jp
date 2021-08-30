@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: ffea4e8edd9cc6c11644017e972db3ce3202c766
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293874"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747583"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) について
 
@@ -21,10 +21,13 @@ Cloud Services (延長サポート) は、 [Azure Cloud Services](https://azur
 
 この変更により、Cloud Services 向けの Azure Service Manager ベースのデプロイ モデルは [Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) という名前に変更されます。 Web およびクラウド アプリケーションやサービスを構築して迅速にデプロイする機能は保持されます。 現在の要求に基づいてクラウド サービスのインフラストラクチャをスケーリングすることができ、アプリケーションのパフォーマンスを維持しながら、同時にコストも削減できるようになります。  
 
+:::image type="content" source="media/inside-azure-for-iot.png" alt-text="YouTube の Cloud Services のビデオ (延長サポート)。" link="https://youtu.be/H4K9xTUvNdw":::
+
+
 ## <a name="what-does-not-change"></a>変更されないこと 
 - ユーザーがコードを作成し、構成を定義し、それを Azure にデプロイします。 Azure はコンピューティング環境を設定し、コードを実行した後、それをユーザーに代わって監視および保持します。
-- Cloud Services (延長サポート) でも、[Web とワーカー](../cloud-services/cloud-services-choose-me.md)という 2 種類のロールがサポートされます。 Web ロールとワーカー ロールの設計、アーキテクチャ、またはコンポーネントに変更はありません。 
-- クラウド サービスの 3 つのコンポーネントであるサービス定義 (.csdef)、サービス構成 (.cscfg)、サービス パッケージ (.cspkg) は引き継がれ、それらの[形式](cloud-services-model-and-package.md)に変更はありません。 
+- Cloud Services (延長サポート) でも、[Web とワーカー](../cloud-services/cloud-services-choose-me.md)という 2 種類のロールがサポートされます。 Web および worker ロールの設計、アーキテクチャ、またはコンポーネントに変更はありません。 
+- クラウド サービスの 3 つのコンポーネントであるサービス定義 (.csdef)、サービス構成 (.cscfg)、サービス パッケージ (.cspkg) は引き継がれ、その[形式](cloud-services-model-and-package.md)に変更はありません。 
 - データ プレーンは同じであり、コントロール プレーンだけが変更されるため、ランタイム コードへの変更は必要ありません。 
 - Azure GuestOS のリリースとそれに関連する更新プログラムは Cloud Services (クラシック) と整合されます。
 - 更新ドメインに関する基になる更新プロセス、アップグレードの処理方法、ロールバック、更新中に許可されるサービスの変更は変更されません。
@@ -63,4 +66,4 @@ Cloud Services (クラシック) から Cloud Services (延長サポート) へ�
 ## <a name="next-steps"></a>次のステップ
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。

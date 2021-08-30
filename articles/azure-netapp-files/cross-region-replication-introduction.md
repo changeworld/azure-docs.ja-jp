@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 08/16/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 4273e69e3143c25fb78961c5b6b128b69b69dbd1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 625df6ed5147b77a9829b6e7b3396f4855068d62
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068125"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253855"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
@@ -44,6 +44,8 @@ Azure NetApp Files ボリューム レプリケーションは、さまざまな
 * 東日本および西日本
 * 北ヨーロッパおよび西ヨーロッパ
 * 英国南部および英国西部
+* アラブ首長国連邦北部およびアラブ首長国連邦中部
+* ノルウェー東部およびノルウェー西部
 
 ### <a name="azure-regional-non-standard-pairs"></a>Azure リージョン非標準ペア
 
@@ -56,14 +58,15 @@ Azure NetApp Files ボリューム レプリケーションは、さまざまな
 *   オーストラリア東部および東南アジア 
 *   ドイツ中西部および英国南部
 *   ドイツ中西部と西ヨーロッパ
+*   ドイツ中西部およびフランス中部
 
 ## <a name="service-level-objectives"></a>サービスレベルの目標
 
-回復ポイントの目標 (RPO)、つまりデータ損失の許容最大値は、レプリケーション スケジュールの 2 倍として定義されます。  実際に観察される RPO は、データセットの合計サイズ、変更率、データ上書きの割合、転送に使用できるレプリケーション帯域幅などの要因によって異なります。   
+回復ポイントの目標 (RPO) は、データを復旧できる対象の時点を示します。 RPO ターゲットは通常、レプリケーション スケジュールの 2 倍未満ですが、ばらつきがあります。 データセットの合計サイズ、変更率、データ上書きの割合、転送に使用できるレプリケーション帯域幅などの要因によっては、ターゲット RPO を超える場合もあります。   
 
-* レプリケーション スケジュールが 10 分の場合、最大 RPO は 20 分です。  
-* 時間単位のレプリケーション スケジュールでは、最大 RPO は 2 時間です。  
-* 毎日のレプリケーション スケジュールでは、最大 RPO は 2 日間です。  
+* レプリケーション スケジュールが 10 分の場合、一般的な RPO は 20 分未満です。  
+* 時間単位のレプリケーション スケジュールでは、一般的な RPO は 2 時間未満です。  
+* 毎日のレプリケーション スケジュールでは、一般的な RPO は 2 日未満です。  
 
 目標復旧時間 (RTO)、つまりビジネス アプリケーションのダウンタイムの最大許容期間は、アプリケーションを起動し、2 番目のサイトでデータへのアクセスを提供する際の要因によって決定されます。 ピアリング関係を解除してコピー先のボリュームをアクティブ化し、2 番目のサイトの読み書きデータ アクセスを提供するための RTO のストレージ部分は、1 分以内に完了すると予想されます。
 

@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e0605b5a882dcfa09b2435476a37d116f8c47286
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2c49bfee8f3b694ea635c836e06bfbe99ba9d758
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111350487"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112425949"
 ---
 [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md) の構成設定。
 
@@ -110,7 +110,7 @@ ms.locfileid: "111350487"
 |maxConcurrentActivityFunctions | **従量課金プラン**: 10 <br> **専用プランまたは Premium プラン**: 現在のマシンのプロセッサ数の 10 倍|1 つのホスト インスタンスで同時に処理できるアクティビティ関数の最大数。|
 |maxConcurrentOrchestratorFunctions | **従量課金プラン**: 5 <br> **専用プランまたは Premium プラン**: 現在のマシンのプロセッサ数の 10 倍 |1 つのホスト インスタンスで同時に処理できるオーケストレーター関数の最大数。|
 |maxQueuePollingInterval|30 秒|コントロールおよび作業項目キューの最大ポーリング間隔 (*hh:mm:ss* 形式)。 値が高くなるほどメッセージ処理の待機時間が長くなる可能性があります。 値が低くなるほどストレージ コストが高くなる可能性があります。これは、ストレージ トランザクションが増加するからです。|
-|azureStorageConnectionStringName |AzureWebJobsStorage|基になる Azure Storage リソースの管理に使用される Azure Storage 接続文字列を含むアプリ設定の名前。|
+|connectionStringName (2.x)<br/>azureStorageConnectionStringName (1.x) |AzureWebJobsStorage|基になる Azure Storage リソースの管理に使用される Azure Storage 接続文字列を含むアプリ設定の名前。|
 |azureStorageConnectionStringName||履歴テーブルとインスタンス テーブルに使用する接続文字列の名前。 指定しない場合は、`connectionStringName` (Durable 2.x) または `azureStorageConnectionStringName` (Durable 1.x) 接続が使用されます。|
 |trackingStoreNamePrefix||`trackingStoreConnectionStringName` が指定されているときに履歴テーブルとインスタンス テーブルに使用されるプレフィックス。 設定されていない場合、既定のプレフィックス値は `DurableTask` になります。 `trackingStoreConnectionStringName` が指定されていない場合、履歴テーブルとインスタンス テーブルは `hubName` 値をプレフィックスとして使用し、`trackingStoreNamePrefix` の設定はすべて無視されます。|
 |traceInputsAndOutputs |false|関数呼び出しの入力と出力をトレースするかどうかを示す値。 関数の実行イベントをトレースした場合の既定の動作では、関数呼び出しのシリアル化された入力および出力のバイト数が記録されます。 この動作により、ログが肥大化することも、機密情報が誤って公開されることもなく、入力および出力に関する最小限の情報が示されます。 このプロパティを true に設定すると、既定の関数ログ記録によって、関数の入力および出力の内容全体がログに記録されます。|

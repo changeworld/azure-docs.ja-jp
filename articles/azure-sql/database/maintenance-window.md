@@ -7,15 +7,15 @@ ms.subservice: service-overview
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 05/02/2021
-ms.openlocfilehash: 765c6c79bf28ad01ab0253e85affd5d4cd95ed78
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/22/2021
+ms.openlocfilehash: 9f058cfc97821dc9ddcbedeeed1acf9ebb9919d3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031909"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751310"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "112031909"
 
 ## <a name="overview"></a>概要
 
-Azure では、SQL Database と SQL マネージド インスタンス リソースの[計画メンテナンス](planned-maintenance.md)を定期的に実行します。 Azure SQL メンテナンス イベントの間、データベースは完全に利用可能ですが、[SQL Database](https://azure.microsoft.com/support/legal/sla/sql-database) と [SQL マネージド インスタンス](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance)のそれぞれの可用性 SLA 内で短時間の再構成が行われる可能性があります。
+Azure では、SQL Database と SQL マネージド インスタンス リソースの[計画メンテナンス](planned-maintenance.md)を定期的に実行します。 Azure SQL メンテナンス イベントの間、データベースは完全に利用可能ですが、[SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database) と [SQL マネージド インスタンス](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance)のそれぞれの可用性 SLA 内で短時間の再構成が行われる可能性があります。
 
 メンテナンス期間は、データベースまたはインスタンスの再構成に対して回復性がなく、計画メンテナンス イベントによる短時間の接続中断を許容できない運用環境のワークロードを対象としています。 希望するメンテナンス期間を選択することで、計画メンテナンスの影響を最小限に抑えることができます。それが営業時間のピーク時以外に行われるためです。 回復性があるワークロードと非運用環境ワークロードは、Azure SQL の既定のメンテナンス ポリシーに依存できます。
 
@@ -80,21 +80,28 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 - オーストラリア南東部
 - ブラジル南部
 - カナダ中部
+- カナダ東部
+- インド中部
 - 米国中部
 - 米国東部
 - 米国東部 2
 - 東アジア
+- フランス南部
 - ドイツ中西部
 - 東日本
+- 韓国中部*
 - 米国中北部
 - 北ヨーロッパ
 - 米国中南部
 - 東南アジア
 - 英国南部
 - 英国西部
+- 米国中西部
 - 西ヨーロッパ
 - 米国西部
 - 米国西部 2
+
+\* Azure SQL Managed Instance でのみ使用できます
 
 ## <a name="gateway-maintenance-for-azure-sql-database"></a>Azure SQL Database のゲートウェイ メンテナンス
 
@@ -120,7 +127,7 @@ Azure SQL Managed Instance は、お客様の仮想ネットワーク サブネ�
 > メンテナンス操作の終了時に短い再構成が発生します。これは、実行時間の長いトランザクションが中断された場合でも、通常は最大で 8 秒です。 再構成の影響を最小限に抑えるには、ピーク時以外に操作をスケジュールする必要があります。
 
 ### <a name="ip-address-space-requirements"></a>IP アドレス空間の要件
-サブネット内の新しい各仮想クラスターには、[仮想クラスターの IP アドレスの割り当て](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size)に従って、追加の IP アドレスが必要です。 既存のマネージド インスタンスのメンテナンス期間を変更する場合も、対応するサービス レベルの仮想コアのスケーリング シナリオと同様に、[一時的な追加の IP 容量](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios)が必要です。
+サブネット内の新しい各仮想クラスターには、[仮想クラスターの IP アドレスの割り当て](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size)に従って、追加の IP アドレスが必要です。 既存のマネージド インスタンスのメンテナンス期間を変更する場合も、対応するサービス レベルの仮想コアのスケーリング シナリオと同様に、[一時的な追加の IP 容量](../managed-instance/vnet-subnet-determine-size.md#update-scenarios)が必要です。
 
 ### <a name="ip-address-change"></a>IP アドレスの変更
 メンテナンス期間の構成および変更を行うと、サブネットの IP アドレス範囲内で、インスタンスの IP アドレスが変更されます。

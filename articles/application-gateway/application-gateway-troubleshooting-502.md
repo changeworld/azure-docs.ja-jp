@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2f1892ab7cafae0b344026ed73a801ca30f4d9ee
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: 62433a284cb271ed31427ff867cb14223443d404
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421546"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090423"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
 
@@ -131,7 +131,7 @@ DhcpOptions            : {
 
 ### <a name="cause"></a>原因
 
-ユーザー要求の受信時に、アプリケーション ゲートウェイは構成済みの規則をその要求に適用し、要求をバックエンド プール インスタンスにルーティングします。 Application Gateway は一定時間バックエンド インスタンスからの応答を待ちます。この時間間隔は構成できます。 既定では、この間隔は **20 秒** です。 Application Gateway v1 では、この間隔の間に アプリケーション ゲートウェイがバックエンド アプリケーションから応答を受信しない場合、ユーザー要求の結果として 502 エラーが表示されます。  Application Gateway v2 では、この間隔の間に アプリケーション ゲートウェイがバックエンド アプリケーションから応答を受信しない場合、次のバックエンド プール メンバーに対して要求が試行されます。  2番目の要求が失敗した場合、ユーザー要求に 502 エラーが発生します。
+ユーザー要求の受信時に、アプリケーション ゲートウェイは構成済みの規則をその要求に適用し、要求をバックエンド プール インスタンスにルーティングします。 Application Gateway は一定時間バックエンド インスタンスからの応答を待ちます。この時間間隔は構成できます。 既定では、この間隔は **20 秒** です。 Application Gateway v1 では、この間隔の間に アプリケーション ゲートウェイがバックエンド アプリケーションから応答を受信しない場合、ユーザー要求の結果として 502 エラーが表示されます。  Application Gateway v2 では、この間隔の間にアプリケーション ゲートウェイがバックエンド アプリケーションから応答を受信しない場合、次のバックエンド プール メンバーに対して要求が試行されます。  2番目の要求が失敗した場合、ユーザー要求に 502 エラーが発生します。
 
 ### <a name="solution"></a>解決策
 

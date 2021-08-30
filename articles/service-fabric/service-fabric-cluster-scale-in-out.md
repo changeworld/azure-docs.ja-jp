@@ -4,12 +4,12 @@ description: ノードの種類/仮想マシン スケール セットごとに�
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb7e668a5b50e73d5aee8aa3bcbb2ea6b1d4bac7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: bf54e6efe6de64bc02a9ba43dfae3f91c0b4ec7b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677424"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294141"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>クラスターをスケールインまたはスケールアウトする
 
@@ -65,7 +65,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 > 
 
 ### <a name="add-vms-using-a-template"></a>テンプレートを使用した VM の追加
-「[クイック スタート: テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)」のサンプル/手順に従って、各ノードの種類の VM 数を変更します。 
+「[クイック スタート: テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-scale-existing)」のサンプル/手順に従って、各ノードの種類の VM 数を変更します。 
 
 ### <a name="add-vms-using-powershell-or-cli-commands"></a>PowerShell または CLI のコマンドを使用した VM の追加
 次のコードでは、スケール セットを名前で取得し、スケール セットの **容量** を 1 ずつ増やします。

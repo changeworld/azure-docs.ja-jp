@@ -2,15 +2,16 @@
 title: マネージド アプリのデプロイ時に Key Vault を使用する
 description: Managed Applications のデプロイ時に Azure Key Vault でアクセス シークレットを使用する方法を示します。
 author: tfitzmac
+ms.custom: subject-rbac-steps
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 08/16/2021
 ms.author: tomfitz
-ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5a6dc1de2ee574a69b8dab746a24bcf82b44d64
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81458285"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253167"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Azure Managed Applications のデプロイ時に Key Vault シークレットにアクセスする
 
@@ -36,19 +37,9 @@ ms.locfileid: "81458285"
 
 ## <a name="add-service-as-contributor"></a>サービスを共同作成者として追加する
 
-1. **[アクセス制御 (IAM)]** を選択します。
+**共同作成者** ロールを、キー コンテナー スコープで **アプライアンス リソース プロバイダー** ユーザーに割り当てます。
 
-   ![[アクセス制御] の選択](./media/key-vault-access/access-control.png)
-
-1. **[ロールの割り当ての追加]** を選択します。
-
-   ![[追加] の選択](./media/key-vault-access/add-access-control.png)
-
-1. ロールとして **[共同作成者]** を選択します。 **アプライアンス リソース プロバイダー** を検索し、使用可能なオプションから選択します。
-
-   ![プロバイダーの検索](./media/key-vault-access/search-provider.png)
-
-1. **[保存]** を選択します。
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="reference-key-vault-secret"></a>Key Vault シークレットを参照する
 

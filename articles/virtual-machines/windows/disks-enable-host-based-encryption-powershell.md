@@ -2,18 +2,18 @@
 title: Azure PowerShell - VM ホストでエンドツーエンドの暗号化を有効にする
 description: ホストでの暗号化を使用して Azure VM のエンドツーエンドの暗号化を有効にする方法。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 51b8b202b95e5246b31bf97c3cc7f2e9ba8e36e7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 9fc618480b4c00ab65f4300a66747acdc2a11f74
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669088"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359013"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Azure PowerShell モジュールを使用してホストでの暗号化でエンドツーエンドでの暗号化を有効にする
 
@@ -171,6 +171,21 @@ $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
 $VM.SecurityProfile.EncryptionAtHost
 ```
 
+### <a name="disable-encryption-at-host"></a>ホストでの暗号化を無効にする
+
+ホストでの暗号化を無効にするには、あらかじめ VM の割り当てを解除しておく必要があります。
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMName = "yourVMName"
+
+$VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
+
+Stop-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Force
+
+Update-AzVM -VM $VM -ResourceGroupName $ResourceGroupName -EncryptionAtHost $false
+```
+
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>カスタマー マネージド キーを使用して、ホストでの暗号化が有効な仮想マシン スケール セットを作成します。 
 
 前に作成した DiskEncryptionSet のリソース URI を使用して、マネージド ディスクを持つ仮想マシン スケール セットを作成し、カスタマー マネージド キーを使用して、OS ディスクとデータ ディスクのキャッシュを暗号化します。 一時ディスクは、プラットフォーム マネージド キーを使用して暗号化されます。 
@@ -276,6 +291,19 @@ $VMScaleSetName = "yourVMSSName"
 $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
 
 $VMSS.VirtualMachineProfile.SecurityProfile.EncryptionAtHost
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-disable-encryption-at-host"></a>仮想マシン スケール セットを更新し、ホストでの暗号化を無効にします。 
+
+ホストでの暗号化は仮想マシン スケール セットで無効にできますが、それが作用するのは、ホストでの暗号化を無効にした後で作成した VM のみです。 既存の VM については、VM の割り当てを解除し、[ホストでの暗号化をその個々の VM で無効](#disable-encryption-at-host)にした後、再度 VM を割り当てる必要があります。
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMScaleSetName = "yourVMSSName"
+
+$VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
+
+Update-AzVmss -VirtualMachineScaleSet $VMSS -Name $VMScaleSetName -ResourceGroupName $ResourceGroupName -EncryptionAtHost $false
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>サポートされている VM のサイズを確認する

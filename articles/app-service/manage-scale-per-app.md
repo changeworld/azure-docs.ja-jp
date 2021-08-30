@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 756117a2a231fcb406fd3e3102a16c318c621aa0
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 77f8ff8cf7e3e9a83b207f8d98ef570437b27b47
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832610"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111161"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>アプリごとのスケーリングを使って Azure App Service で高密度ホスティングを実現する
 
@@ -23,7 +23,7 @@ App Service を使用するときは、そのアプリを実行する [App Servi
 App Service プラン レベルで *アプリごとのスケーリング* を有効にして、アプリをホストする App Service プランとは無関係にそのアプリをスケーリングできます。 これにより、App Service プランを 10 個のインスタンスにスケーリングしながら、5 個のインスタンスだけを使用するようにアプリを設定することが可能になります。
 
 > [!NOTE]
-> アプリごとのスケーリングは、**Standard**、**Premium**、**Premium V2**、および **Isolated** の価格レベルに限り利用できます。
+> アプリごとのスケーリングは、**Standard**、**Premium**、**Premium V2**、**Premium V3**、**Isolated** の各価格レベルに限り利用できます。
 >
 
 アプリは、インスタンス間で均等に分散するためのベスト エフォート アプローチを使用して、使用可能な App Service プランに割り当てられます。 均等に分散は保証されませんが、プラットフォームは、同じアプリの 2 つのインスタンスが同じ App Service プラン インスタンスでホストされていないことを確認します。

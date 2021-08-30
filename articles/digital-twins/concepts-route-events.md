@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins とその他の Azure サービス内でイベントをルーティングする方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 10/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a63390073f92625788dfbf43fc1183cc1812024a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b9038840142be64918b22f1aefc32d505252d71d
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460329"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254239"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -46,7 +46,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 コンピューティング リソースは、セキュリティとアクセス許可を個別に確立する必要もあります。
 
-デジタル ツイン イベントを処理するように Azure 関数を設定する手順については、[方法: データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページを参照してください。
+デジタル ツイン イベントが処理されるように Azure 関数を設定する手順については、[ツインからツインへのイベント処理の設定](how-to-send-twin-to-twin-events.md)に関するページを参照してください。
 
 ## <a name="create-an-endpoint"></a>エンドポイントの作成
 
@@ -55,7 +55,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 * イベント ハブ
 * Service Bus
 
-エンドポイントを作成するには、Azure Digital Twins [REST API、CLI コマンド](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)、または [Azure portal](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) を使用できます。
+[エンドポイントを作成する](how-to-manage-routes.md#create-an-endpoint-for-azure-digital-twins)には、Azure Digital Twins REST API、CLI コマンド、または Azure portal を使用できます。
 
 エンドポイントを定義するときは、次を指定する必要があります。
 * エンドポイントの名前
@@ -71,7 +71,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 ## <a name="create-an-event-route"></a>イベント ルートを作成する
  
-イベント ルートを作成するには、Azure Digital Twins [REST API、CLI コマンド](how-to-manage-routes-apis-cli.md#create-an-event-route)、または [Azure portal](how-to-manage-routes-portal.md#create-an-event-route) を使用できます。
+[イベント ルートを作成する](how-to-manage-routes.md#create-an-event-route)には、Azure Digital Twins REST API、CLI コマンド、または Azure portal を使用できます。
 
 次に示すのは、`CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
 
@@ -79,7 +79,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 1. まず、`DigitalTwinsEventRoute` オブジェクトが作成され、コンストラクターはエンドポイントの名前を受け取ります。 この `endpointName` フィールドは、Event Hub、Event Grid、または Service Bus などのエンドポイントを識別します。 この登録呼び出しを行う前に、これらのエンドポイントをサブスクリプションに作成し、コントロール プレーン API を使用して Azure Digital Twins にアタッチする必要があります。
 
-2. また、イベント ルート オブジェクトには [Filter](how-to-manage-routes-apis-cli.md#filter-events) フィールドがあります。このルートの後に続くイベントの種類を制限するために使用できます。 `true` のフィルターを使用すると、追加のフィルター処理を適用せずにルートが有効になります (`false` のフィルターによって、ルートは無効になります)。 
+2. また、イベント ルート オブジェクトには [Filter](how-to-manage-routes.md#filter-events) フィールドがあります。このルートの後に続くイベントの種類を制限するために使用できます。 `true` のフィルターを使用すると、追加のフィルター処理を適用せずにルートが有効になります (`false` のフィルターによって、ルートは無効になります)。 
 
 3. このイベント ルート オブジェクトは、ルートの名前と共に `CreateOrReplaceEventRouteAsync` に渡されます。
 
@@ -99,7 +99,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 SAS トークンの詳細については、次を参照してください:[共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)
 
-配信不能処理を構成してエンドポイントを設定する方法については、操作方法ガイドの「[Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) 」を参照してください。
+配信不能処理を構成してエンドポイントを設定する方法については、[Azure Digital Twins でのエンドポイントとルートの管理](how-to-manage-routes.md#create-an-endpoint-with-dead-lettering)に関するページを参照してください。
 
 ### <a name="types-of-event-messages"></a>イベントメッセージの種類
 
@@ -110,7 +110,7 @@ SAS トークンの詳細については、次を参照してください:[共�
 ## <a name="next-steps"></a>次のステップ
 
 イベント ルートを設定および管理する方法を見る:
-* [エンドポイントとルートを管理する](how-to-manage-routes-apis-cli.md)に関するページ
+* [エンドポイントとルートを管理する](how-to-manage-routes.md)
 
 または、Azure Functions を使用して Azure Digital Twins 内でイベントをルーティングする方法を見る:
-* [データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページ
+* [ツインからツインへのイベント処理を設定する](how-to-send-twin-to-twin-events.md)。

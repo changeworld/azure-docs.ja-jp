@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): Web サービスの再トレーニング - Azure'
-description: Azure Machine Learning Studio (クラシック) で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
+description: Machine Learning スタジオ (クラシック) で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp, devx-track-azurepowershell
 ms.date: 02/14/2019
-ms.openlocfilehash: a1bf9582c73eb168c0f32e713f8308096edcf603
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 5234611c99a58cefcb98d02c87d257055f603b4c
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704808"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579632"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
@@ -51,7 +51,7 @@ ms.locfileid: "110704808"
     以上の手順で、トレーニング済みのモデルとモデル評価結果を出力する再トレーニング Web サービスとして、トレーニング実験をデプロイしました。
 
 1. 実験キャンバスの下部にある **[Set Up Web Service]\(Web サービスの設定\)** をクリックします。
-1. **[Deploy Web Service [New]]\(Web サービスのデプロイ [新規]\)** を選択します。 Azure Machine Learning Web サービスのポータルが **[Web サービスのデプロイ]** ページに表示されます。
+1. **[Deploy Web Service [New]]\(Web サービスのデプロイ [新規]\)** を選択します。 Machine Learning Web サービスのポータルが **[Web サービスのデプロイ]** ページに表示されます。
 1. Web サービスの名前を入力し、支払プランを選択します。
 1. **[デプロイ]** を選択します。
 
@@ -70,7 +70,7 @@ ms.locfileid: "110704808"
 
 コメントに示されているように Nuget パッケージ Microsoft.AspNet.WebApi.Client を追加します。 参照を Microsoft.WindowsAzure.Storage.dll に追加するには、[Azure Storage サービスのクライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)のインストールが必要になる場合があります。
 
-次のスクリーン ショットは、Azure Machine Learning Web サービス ポータルの **[使用]** ページです。
+次のスクリーンショットは、Machine Learning Web サービス ポータルの **[使用]** ページです。
 
 ![[使用] ページ](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
@@ -161,7 +161,7 @@ Type : Microsoft.MachineLearning/webServices
 Tags : {}
 ```
 
-または、既存の Web サービスのリソース グループ名を判断するには、Azure Machine Learning Web サービス ポータルにサインインします。 Web サービスを選択します。 リソース グループ名は Web サービスの URL の 5 番目の要素で、" *resourceGroups* " 要素の直後にあります。 次の例では、リソース グループ名は Default-MachineLearning-SouthCentralUS です。
+または、既存の Web サービスのリソース グループ名を判断するには、Machine Learning Web サービス ポータルにサインインします。 Web サービスを選択します。 リソース グループ名は Web サービスの URL の 5 番目の要素で、" *resourceGroups* " 要素の直後にあります。 次の例では、リソース グループ名は Default-MachineLearning-SouthCentralUS です。
 
 `https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237`
 

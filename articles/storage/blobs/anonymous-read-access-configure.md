@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ba46c98a97b1ef7576cd54ab6227a18bb9cb059f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f8149be4e7e22366cf5d2ce130d3b6ec596ac782
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664933"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272005"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 
@@ -36,10 +36,10 @@ Azure Storage では、コンテナーと BLOB へのオプションの匿名パ
 
 次の表に、これらの両方の設定がコンテナーのパブリック アクセスにどのように影響を与えるかをまとめます。
 
-| パブリック アクセスの設定 | コンテナーのパブリック アクセスが無効 (既定の設定) | コンテナーのパブリック アクセスがコンテナーに対して設定されている | コンテナーのパブリック アクセスが BLOB に対して設定されている |
+|   | コンテナーのパブリック アクセス レベルが、プライベートに設定されている (既定の設定) | コンテナーのパブリック アクセス レベルが、コンテナーに設定されている | コンテナーのパブリック アクセス レベルが、BLOB に設定されている |
 |--|--|--|--|
-| ストレージ アカウントのパブリック アクセスが禁止されている | ストレージ アカウントのどのコンテナーにもパブリック アクセスはない。 | ストレージ アカウントのどのコンテナーにもパブリック アクセスはない。 ストレージ アカウントの設定は、コンテナーの設定をオーバーライドする。 | ストレージ アカウントのどのコンテナーにもパブリック アクセスはない。 ストレージ アカウントの設定は、コンテナーの設定をオーバーライドする。 |
-| ストレージ アカウントのパブリック アクセスが許可されている (既定の設定) | このコンテナーへのパブリック アクセスはない (既定の構成)。 | このコンテナーとその BLOB へのパブリック アクセスが許可される。 | このコンテナーの BLOB へのパブリック アクセスは許可されるが、コンテナーそのものに対しては許可されない。 |
+| **ストレージ アカウントのパブリック アクセスが禁止されている** | ストレージ アカウントのどのコンテナーにもパブリック アクセスはない。 | ストレージ アカウントのどのコンテナーにもパブリック アクセスはない。 ストレージ アカウントの設定は、コンテナーの設定をオーバーライドする。 | ストレージ アカウントのどのコンテナーにもパブリック アクセスはない。 ストレージ アカウントの設定は、コンテナーの設定をオーバーライドする。 |
+| **ストレージ アカウントのパブリック アクセスが許可されている (既定の設定)** | このコンテナーへのパブリック アクセスはない (既定の構成)。 | このコンテナーとその BLOB へのパブリック アクセスが許可される。 | このコンテナーの BLOB へのパブリック アクセスは許可されるが、コンテナーそのものに対しては許可されない。 |
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>ストレージ アカウントのパブリック読み取りアクセスを許可または禁止する
 
@@ -79,7 +79,7 @@ $location = "<location>"
 
 # Create a storage account with AllowBlobPublicAccess set to true (or null).
 New-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -Location $location `
     -SkuName Standard_GRS
     -AllowBlobPublicAccess $false
@@ -89,7 +89,7 @@ New-AzStorageAccount -ResourceGroupName $rgName `
 
 # Set AllowBlobPublicAccess set to false
 Set-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -AllowBlobPublicAccess $false
 
 # Read the AllowBlobPublicAccess property.
@@ -209,7 +209,7 @@ Azure portal で 1 つ以上の既存のコンテナーのパブリック アク
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell を使用して 1 つ以上のコンテナーのパブリック アクセス レベルを更新するには、[Set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) コマンドを呼び出します。 アカウント キー、接続文字列、または Shared Access Signature (SAS) を渡すことによって、この操作を承認します。 コンテナーのパブリック アクセス レベルを設定する[コンテナー ACL の設定](/rest/api/storageservices/set-container-acl)操作では、Azure AD による承認はサポートされていません。 詳細については、「[Blob および queue データ操作を呼び出す権限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」を参照してください。
+PowerShell を使用して 1 つ以上のコンテナーのパブリック アクセス レベルを更新するには、[Set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) コマンドを呼び出します。 アカウント キー、接続文字列、または Shared Access Signature (SAS) を渡すことによって、この操作を承認します。 コンテナーのパブリック アクセス レベルを設定する[コンテナー ACL の設定](/rest/api/storageservices/set-container-acl)操作では、Azure AD による承認はサポートされていません。 詳細については、「[Blob および queue データ操作を呼び出す権限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-data-operations)」を参照してください。
 
 次の例では、パブリック アクセスが無効なコンテナーを作成し、コンテナーとその BLOB への匿名アクセスが許可されるようにコンテナーのパブリック アクセス設定を更新します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
@@ -240,7 +240,7 @@ Get-AzStorageContainerAcl -Container $containerName -Context $ctx
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して 1 つ以上のコンテナーのパブリック アクセス レベルを更新するには、[az storage container set permission](/cli/azure/storage/container#az_storage_container_set_permission) コマンドを実行します。 アカウント キー、接続文字列、または Shared Access Signature (SAS) を渡すことによって、この操作を承認します。 コンテナーのパブリック アクセス レベルを設定する[コンテナー ACL の設定](/rest/api/storageservices/set-container-acl)操作では、Azure AD による承認はサポートされていません。 詳細については、「[Blob および queue データ操作を呼び出す権限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」を参照してください。
+Azure CLI を使用して 1 つ以上のコンテナーのパブリック アクセス レベルを更新するには、[az storage container set permission](/cli/azure/storage/container#az_storage_container_set_permission) コマンドを実行します。 アカウント キー、接続文字列、または Shared Access Signature (SAS) を渡すことによって、この操作を承認します。 コンテナーのパブリック アクセス レベルを設定する[コンテナー ACL の設定](/rest/api/storageservices/set-container-acl)操作では、Azure AD による承認はサポートされていません。 詳細については、「[Blob および queue データ操作を呼び出す権限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-data-operations)」を参照してください。
 
 次の例では、パブリック アクセスが無効なコンテナーを作成し、コンテナーとその BLOB への匿名アクセスが許可されるようにコンテナーのパブリック アクセス設定を更新します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
@@ -301,4 +301,4 @@ Get-AzStorageContainer -Context $ctx | Select Name, PublicAccess
 
 - [コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ](anonymous-read-access-prevent.md)
 - [.NET を使用してパブリックのコンテナーと BLOB に匿名でアクセスする](anonymous-read-access-client.md)
-- [Azure Storage へのアクセスを承認する](../common/storage-auth.md)
+- [Azure Storage へのアクセスを承認する](../common/authorize-data-access.md)

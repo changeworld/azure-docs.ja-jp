@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 9ed157dad020c69f3243db591ddf494853d793eb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 31bb35a096845c489b0f141a601ee604253e6ef9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087384"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738986"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Azure Backup を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップおよび回復する
 
@@ -35,8 +35,9 @@ ms.locfileid: "110087384"
 
 環境を準備するには、次の手順に従います。
 
-1. VM に接続します
-1. データベースを準備します。
+1. [VM に接続します](#connect-to-the-vm)。
+1. [Azure Files のストレージを設定します](#setup-azure-files-storage-for-the-oracle-archived-redo-log-files)
+1. [データベースを準備します](#prepare-the-databases)。
 
 ### <a name="connect-to-the-vm"></a>VM に接続します
 
@@ -58,9 +59,21 @@ ms.locfileid: "110087384"
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-### <a name="prepare-the-database"></a>データベースを準備する
+### <a name="setup-azure-files-storage-for-the-oracle-archived-redo-log-files"></a>Oracle のアーカイブされた再実行ログ ファイル用に Azure Files のストレージを設定する
 
-この手順では、`vmoracle19c` という仮想マシンで実行されている `test` という名前の Oracle インスタンスがあることを前提としています。
+Oracle データベースのアーカイブされた再実行ログファイルには、過去に取得したデータベースのスナップショットからロールフォワードするために必要なコミットされたトランザクションが格納されており、データベースの復旧において重要な役割を果たしています。 ARCHIVELOG モードの場合、オンラインの再実行ログファイルがいっぱいになって切り替わると、データベースによってその内容がアーカイブされます。 バックアップと合わせて、これはデータベースが失われたときにポイントインタイム リストアを実現するために必要となります。  
+   
+Oracle では、再実行ログファイルをさまざまな場所にアーカイブする機能を提供しています。業界のベスト プラクティスでは、これをホスト ストレージから分離し、独立したスナップショットで保護できるよう、保存先のうち少なくとも 1 つをリモート ストレージにすることが推奨されています。 Azure Files は、これらの要件に最適です。
+
+Azure Files のファイル共有は、SMB や NFS (プレビュー) プロトコルを使用して、通常のファイル システム コンポーネントとして、Linux や Windows VM に接続できるストレージです。 
+   
+アーカイブ用のログ ストレージとして使用するために、SMB 3.0 プロトコル (推奨) を使用して Linux 上で Azure Files ファイル共有をセットアップするには、[Linux で Azure Files を使用する攻略ガイド](../../../storage/files/storage-how-to-use-files-linux.md)に従ってください。 設定が完了したら、このガイドに戻り、残りのすべての手順を完了します。
+
+### <a name="prepare-the-databases"></a>データベースを準備する
+
+この手順は、[Oracle データベースの作成に関するクイックスタート](./oracle-database-quick-create.md)に従っていること、`vmoracle19c` という名前の VM で実行されている `oratest1` という名前の Oracle インスタンスがあること、および標準の Oracle 構成ファイル "/etc/oratab" に依存する標準の Oracle "oraenv" スクリプトを使用してシェル セッションで環境変数を設定していることを前提としています。
+
+VM 上の各データベースに対して次の手順を実行します。
 
 1. ユーザーを *oracle* ユーザーに切り替えます。
  
@@ -68,93 +81,30 @@ ms.locfileid: "110087384"
     sudo su - oracle
     ```
     
-1. 接続する前に、環境変数 ORACLE_SID を設定する必要があります。
+1. 接続する前に、`oraenv` スクリプトを実行して環境変数 ORACLE_SID を設定する必要があります。これを実行すると、ORACLE_SID 名の入力を求められます。
     
     ```bash
-    export ORACLE_SID=test;
+    $ . oraenv
     ```
 
-    また、次のコマンドを使用して、今後のサインインのために `oracle` ユーザーの `.bashrc` ファイルに ORACLE_SID 変数を追加する必要があります。
+1.   Azure Files 共有を、追加のデータベース アーカイブ ログ ファイルの保存先として追加します
+     
+     この手順では、Azure ファイル共有を構成し、Linux VM に (たとえば `/backup` という名前のマウント ポイント ディレクトリの下に) マウントしていることを前提としています。
 
-    ```bash
-    echo "export ORACLE_SID=test" >> ~oracle/.bashrc
-    ```
+     VM にインストールされている各データベースについて、以下を例として使用して、データベース SID に基づく名前のサブディレクトリを作成します。
+     
+     この例では、マウント ポイント名は `/backup` で、SID は `oratest1` であるため、サブディレクトリ `/backup/oratest1` を作成し、所有権を oracle ユーザーに変更します。 マウント ポイント名とデータベース SID には、 **/backup/SID** を置き換えてください。 
+
+     ```bash
+     sudo mkdir /backup/oratest1
+     sudo chown oracle:oinstall /backup/oratest1
+     ```
     
-1. Oracle リスナーがまだ実行されていない場合は、起動します。
-
-    ```output
-    $ lsnrctl start
-    ```
-
-    出力は次の例のようになるはずです。
-
-    ```bash
-    LSNRCTL for Linux: Version 19.0.0.0.0 - Production on 18-SEP-2020 03:23:49
-
-    Copyright (c) 1991, 2019, Oracle.  All rights reserved.
-
-    Starting /u01/app/oracle/product/19.0.0/dbhome_1/bin/tnslsnr: please wait...
-
-    TNSLSNR for Linux: Version 19.0.0.0.0 - Production
-    System parameter file is /u01/app/oracle/product/19.0.0/dbhome_1/network/admin/listener.ora
-    Log messages written to /u01/app/oracle/diag/tnslsnr/vmoracle19c/listener/alert/log.xml
-    Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=vmoracle19c.eastus.cloudapp.azure.com)(PORT=1521)))
-    Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
-
-    Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=vmoracle19c.eastus.cloudapp.azure.com)(PORT=1521)))
-    STATUS of the LISTENER
-    ------------------------
-    Alias                     LISTENER
-    Version                   TNSLSNR for Linux: Version 19.0.0.0.0 - Production
-    Start Date                18-SEP-2020 03:23:49
-    Uptime                    0 days 0 hr. 0 min. 0 sec
-    Trace Level               off
-    Security                  ON: Local OS Authentication
-    SNMP                      OFF
-    Listener Parameter File   /u01/app/oracle/product/19.0.0/dbhome_1/network/admin/listener.ora
-    Listener Log File         /u01/app/oracle/diag/tnslsnr/vmoracle19c/listener/alert/log.xml
-    Listening Endpoints Summary...
-     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=vmoracle19c.eastus.cloudapp.azure.com)(PORT=1521)))
-    (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
-    The listener supports no services
-    The command completed successfully
-    ```
-
-1.  データベースの高速回復領域 (FRA) の場所を作成します。 FRA は、バックアップと回復のためのファイルの一元的な保存場所です。
-
-    ```bash
-    mkdir /u02/fast_recovery_area
-    ```
-
-1. Oracle のアーカイブされた再実行ログ ファイル用に Azure Files ファイル共有を作成する
-
-   Oracle データベースのアーカイブされた再実行ログファイルには、過去に取得したデータベースのスナップショットからロールフォワードするために必要なコミットされたトランザクションが格納されており、データベースの復旧において重要な役割を果たしています。 ARCHIVELOG モードの場合、オンラインの再実行ログファイルがいっぱいになって切り替わると、データベースによってその内容がアーカイブされます。 バックアップと合わせて、これはデータベースが失われたときにポイントインタイム リストアを実現するために必要となります。  
-   
-   Oracle では、再実行ログファイルをさまざまな場所にアーカイブする機能を提供しています。業界のベスト プラクティスでは、これをホスト ストレージから分離し、独立したスナップショットで保護できるよう、保存先のうち少なくとも 1 つをリモート ストレージにすることが推奨されています。 Azure Files は、これらの要件に最適です。
-
-   Azure Files のファイル共有は、SMB や NFS (プレビュー) プロトコルを使用して、通常のファイル システム コンポーネントとして、Linux や Windows VM に接続できるストレージです。 アーカイブ用のログ ストレージとして使用するために、SMB 3.0 プロトコル (推奨) を使用して Linux 上で Azure Files ファイル共有をセットアップするには、[Linux で Azure Files を使用する攻略ガイド](../../../storage/files/storage-how-to-use-files-linux.md)に従ってください。 
-   
-   Azure Files 共有を構成して、Linux VM にマウントすると (例えば `/backup` という名前のマウント ポイント ディレクトリの下)、以下のようにデータベースの追加のアーカイブ ログ ファイルの保存先として追加することができます。
-
-   まず、Oracle SID の名前を確認します
+1. データベースに接続します。
+    
    ```bash
-   echo $ORACLE_SID
-   test
+   sqlplus / as sysdba
    ```
-
-   データベース SID にちなんだ名前を付けたサブディレクトリを作成します。 この例では、マウント ポイント名は `/backup` で、前のコマンドで返された SID は `test` であるため、サブディレクトリ `/backup/test` を作成し、oracle ユーザーに所有権を変更します。 マウント ポイント名とデータベース SID には、 **/backup/SID** を置き換えてください。 VM 上に複数のデータベースがある場合は、それぞれにサブディレクトリを作成し、所有権を変更します。
-
-   ```bash
-   sudo mkdir /backup/test
-   sudo chown oracle:oinstall /backup/test
-   ```
-
-1.  データベースに接続します。
-
-    ```bash
-    sqlplus / as sysdba
-    ```
-    VM に複数のデータベースがインストールされている場合は、データベースごとに手順 6 から 15 を実行する必要があります。
 
 1.  データベースがまだ実行されていない場合は、起動します。 
    
@@ -162,22 +112,11 @@ ms.locfileid: "110087384"
     SQL> startup
     ```
    
-1. データベースの最初のアーカイブ ログの保存先を、手順 5 で作成したファイル共有ディレクトリに設定します。
+1. データベースの最初のアーカイブ ログの保存先を、前に作成したファイル共有ディレクトリに設定します。
 
    ```bash
-   sqlplus / as sysdba
-   SQL> alter system set log_archive_dest_1='LOCATION=/backup/test';
-   SQL> 
+   SQL> alter system set log_archive_dest_1='LOCATION=/backup/oratest1' scope=both;
    ```
-
-
-1.  高速回復領域のデータベース環境変数を設定します。
-
-    ```bash
-    SQL> alter system set db_recovery_file_dest_size=4096M scope=both;
-    SQL> alter system set db_recovery_file_dest='/u02/fast_recovery_area' scope=both;
-    ```
-
 
 1. データベースの回復ポイントの目標 (RPO) を定義します。
 
@@ -185,12 +124,11 @@ ms.locfileid: "110087384"
     - オンラインの再実行ログファイルのサイズ。 オンライン ログファイルは満杯になると、切り替えられてアーカイブされます。 オンライン ログファイルのサイズが大きいほど、満杯になるまでの時間が長くなり、アーカイブの生成頻度が低下します。
     - ARCHIVE_LAG_TARGET パラメーターの設定では、現在のオンライン ログファイルを切り替えてアーカイブするまでに許容される最大秒数を制御します。 
 
-    切り替えとアーカイブの頻度と、それに伴うチェックポイント操作を最小限に抑えるために、Oracle のオンラインの再実行ログファイルは一般的にかなり大きなサイズ (1024 M、4096M、8192M など) になっています。 ビジー状態のデータベース環境では、数秒から数分ごとにログの切り替えとアーカイブが行われますが、あまり活発でないデータベースでは、最新のトランザクションがアーカイブされるまでに数時間から数日かかることもあり、アーカイブの頻度は劇的に低下します。 このため、一貫した RPO を実現するために、ARCHIVE_LAG_TARGET を設定することが推奨されます。 ARCHIVE_LAG_TARGET の設定値としては、データベースの復旧操作によって障害発生時から 5 分以内に復旧できるよう、5 分 (300 秒) が妥当です。
+    切り替えとアーカイブの頻度と、それに伴うチェックポイント操作を最小限に抑えるために、Oracle のオンラインの再実行ログファイルは一般的にかなり大きなサイズ (1,024 M、4,096 M、8,192 M など) になっています。 ビジー状態のデータベース環境では、数秒から数分ごとにログの切り替えとアーカイブが行われますが、あまり活発でないデータベースでは、最新のトランザクションがアーカイブされるまでに数時間から数日かかることもあり、アーカイブの頻度は劇的に低下します。 このため、一貫した RPO を実現するために、ARCHIVE_LAG_TARGET を設定することが推奨されます。 ARCHIVE_LAG_TARGET の設定値としては、データベースの復旧操作によって障害発生時から 5 分以内に復旧できるよう、5 分 (300 秒) が妥当です。
 
     ARCHIVE_LAG_TARGET を設定するには:
 
     ```bash 
-    sqlplus / as sysdba
     SQL> alter system set archive_lag_target=300 scope=both;
     ```
 
@@ -217,59 +155,47 @@ ms.locfileid: "110087384"
      SQL> ALTER DATABASE OPEN;
      SQL> ALTER SYSTEM SWITCH LOGFILE;
      ```
-
-1.  テーブルを作成して、バックアップおよび復元操作をテストします。
-
-     ```bash
-     SQL> create user scott identified by tiger quota 100M on users;
-     SQL> grant create session, create table to scott;
-     SQL> connect scott/tiger
-     SQL> create table scott_table(col1 number, col2 varchar2(50));
-     SQL> insert into scott_table VALUES(1,'Line 1');
-     SQL> commit;
-     SQL> quit
-     ```
-
-1. VM ディスクに配置されている高速回復領域にデータベースをバックアップするように RMAN を構成します。 スナップショット controlfile の構成では、%d データベース名の置換が受け付けられないため、複数のデータベースを同じ場所にバックアップできるように、ファイル名にデータベースの SID を明示的に含める必要があります。 データベース名に `<ORACLE_SID>` を置き換える必要があります。
-
-    ```bash
-    $ rman target /
-    RMAN> configure snapshot controlfile name to '/u02/fast_recovery_area/snapcf_<ORACLE_SID>.f';
-    RMAN> configure channel 1 device type disk format '/u02/fast_recovery_area/%d/Full_%d_%U_%T_%s';
-    RMAN> configure channel 2 device type disk format '/u02/fast_recovery_area/%d/Full_%d_%U_%T_%s'; 
-    ```
-
-1. 構成変更の詳細を確認します。
-
-    ```bash
-    RMAN> show all;
-    ```    
-
-1.  ここで、バックアップを実行します。 次のコマンドで、アーカイブ ログファイルを含む完全なデータベース バックアップが、圧縮形式のバックアップセットとして取得されます。
-
-     ```bash
-     RMAN> backup as compressed backupset database plus archivelog;
-     ```
-
-## <a name="using-azure-backup-preview"></a>Azure Backup の使用 (プレビュー)
+1. テーブルを作成して、バックアップおよび復元操作をテストします。
+   ```bash
+   SQL> create user scott identified by tiger quota 100M on users;
+   SQL> grant create session, create table to scott;
+   SQL> connect scott/tiger
+   SQL> create table scott_table(col1 number, col2 varchar2(50));
+   SQL> insert into scott_table VALUES(1,'Line 1');
+   SQL> commit;
+   SQL> quit
+   ```
+## <a name="using-azure-backup"></a>Azure Backup の使用 
 
 Azure Backup サービスは、データをバックアップし、それを Microsoft Azure クラウドから回復するための、シンプルで安全かつコスト効率の高いソリューションを提供します。 Azure Backup では、元のデータが誤って破壊されることを防ぐために、独立して分離されたバックアップを提供しています。 バックアップは、復旧ポイントの管理機能をビルトインで備えた Recovery Services コンテナーに格納されます。 構成とスケーラビリティは単純で、バックアップは最適化され、必要に応じて簡単に復元することができます。
 
-Azure Backup サービスでは、Oracle、MySQL、Mongo DB、PostGreSQL などのさまざまなアプリケーションの Windows および Linux VM のバックアップ中に、アプリケーションの整合性を確保するための[フレームワーク](../../../backup/backup-azure-linux-app-consistent.md)が提供されます。 これには、アプリケーションを通常モードに戻すために、ディスクのスナップショットを作成する前に事前スクリプトを呼び出す (アプリケーションを停止するため) ことと、スナップショットの完了後に事後スクリプト (アプリケーションを停止するためのコマンド) を呼び出すことが含まれます。 サンプルの事前スクリプトと事後スクリプトは GitHub に用意されていますが、これらのスクリプトの作成と保守はお客様の責任となります。
+Azure Backup サービスでは、Oracle や MySQL などのさまざまなアプリケーションの Windows および Linux VM のバックアップ中にアプリケーションの整合性を確保するための[フレームワーク](../../../backup/backup-azure-linux-app-consistent.md)が提供されます。 これには、ディスクのスナップショットを作成する前に (アプリケーションを停止するための) 事前スクリプトを呼び出すことと、スナップショットの完了後に (アプリケーションを停止解除するための) 事後スクリプトを呼び出すことが含まれます。 
 
-Azure Backup では、拡張された事前スクリプトと事後スクリプトのフレームワーク (**現時点ではプレビュー段階**) が提供されるようになりました。Azure Backup サービスによって、選択したアプリケーションのパッケージ化された事前スクリプトと事後スクリプトが提供されます。 Azure Backup ユーザーはアプリケーションに名前を付けるだけで済み、Azure VM バックアップで関連する事前および事後スクリプトが自動的に呼び出されます。 パッケージ化された事前スクリプトと事後スクリプトは Azure Backup チームによって管理されるので、ユーザーにはこれらのスクリプトのサポート、所有権、および有効性が保証されています。 現在のところ、拡張フレームワークでサポートされているアプリケーションは *Oracle* と *MySQL* です。
+このフレームワークが拡張され、Oracle のような一部のアプリケーション用にパッケージ化された事前スクリプトと事後スクリプトが Azure Backup サービスによって提供され、Linux イメージに事前に読み込まれるため、何もインストールする必要はありません。 Azure Backup ユーザーはアプリケーションに名前を付けるだけで済み、その後は Azure VM バックアップによって関連する事前および事後スクリプトが自動的に呼び出されます。 パッケージ化された事前スクリプトと事後スクリプトは Azure Backup チームによって管理されるので、ユーザーにはこれらのスクリプトのサポート、所有権、および有効性が保証されています。 現在のところ、拡張フレームワークでサポートされているアプリケーションは *Oracle* と *MySQL* です。
 
-このセクションでは、Azure Backup の拡張フレームワークを使用して、実行中の VM と Oracle データベースのアプリケーション整合性スナップショットを作成します。 このデータベースはバックアップ モードになるため、Azure Backup で VM ディスクのスナップショットを作成している間、トランザクション全体で一貫性のあるオンライン バックアップを実行できます。 スナップショットはストレージの完全なコピーであり、増分または書き込み時コピーのスナップショットではないため、データベースの復元先として有効なメディアです。 Azure Backup アプリケーション整合性スナップショットを使用する利点は、データベースのサイズに関係なく非常に高速であり、スナップショットが Recovery Services コンテナーに転送されるのを待たずに、作成後すぐに復元操作に使用できることです。
+> [!Note]
+> 拡張フレームワークにより、バックアップが実行されるごとに、VM にインストールされているすべての Oracle データベースで事前スクリプトと事後スクリプトが実行されます。 
+>
+> **workload.conf** ファイル内のパラメーター `configuration_path` は、Oracle /etc/oratab ファイル (または oratab 構文に従うユーザー定義ファイル) の場所を示します。 詳細については、「[アプリケーション整合性バックアップを設定する](#set-up-application-consistent-backups)」を参照してください。
+> 
+> Azure Backup は、# (コメントとして扱われます) または +ASM (Oracle Automatic Storage Management インスタンス) で始まる行を除き、configuration_path が指すファイルにリストされている各データベースに対してバックアップ前後のスクリプトを実行します。
+> 
+> Azure Backup 拡張フレームワークにより、ARCHIVELOG モードで動作する Oracle データベースのオンライン バックアップが作成されます。 事前および事後のスクリプトでは、ALTER DATABASE BEGIN/END BACKUP コマンドを使用して、アプリケーションの整合性が実現されます。 
+>
+> データベース バックアップの整合性を保つには、スナップショットを開始する前に NOARCHIVELOG モードのデータベースをクリーンにシャットダウンする必要があります。
+
+
+このセクションでは、Azure Backup フレームワークを使用して、実行中の VM と Oracle データベースのアプリケーション整合性スナップショットを作成します。 このデータベースはバックアップ モードになるため、Azure Backup で VM ディスクのスナップショットを作成している間、トランザクション全体で一貫性のあるオンライン バックアップを実行できます。 スナップショットはストレージの完全なコピーであり、増分または書き込み時コピーのスナップショットではないため、データベースの復元先として有効なメディアです。 Azure Backup アプリケーション整合性スナップショットを使用する利点は、データベースのサイズに関係なく非常に高速であり、スナップショットが Recovery Services コンテナーに転送されるのを待たずに、作成後すぐに復元操作に使用できることです。
 
 Azure Backup を使用してデータベースをバックアップするには、次の手順を実行します。
 
-1. アプリケーション整合性バックアップ用に環境を準備します。
-1. アプリケーション整合性バックアップを設定します。
-1. VM のアプリケーション整合性バックアップをトリガーします。
+1. [アプリケーション整合性バックアップ用に環境を準備します](#prepare-the-environment-for-an-application-consistent-backup)。
+1. [アプリケーション整合性バックアップを設定します](#set-up-application-consistent-backups)。
+1. [VM のアプリケーション整合性バックアップをトリガーします](#trigger-an-application-consistent-backup-of-the-vm)。
 
 ### <a name="prepare-the-environment-for-an-application-consistent-backup"></a>アプリケーション整合性バックアップ用に環境を準備する
 
-> [!IMPORTANT] 
+> [!Note] 
 > Oracle データベースでは、最小限の特権を使用して職務を分離するために、ジョブの役割の分離が採用されています。 これは、個別のオペレーティング システム グループを個別のデータベース管理者ロールに関連付けることで実現されます。 その後、オペレーティング システム ユーザーには、オペレーティング システム グループのメンバーシップに応じて、異なるデータベース特権を付与できます。 
 >
 > `SYSBACKUP` データベース ロール (汎用名は OSBACKUPDBA) は、データベースでバックアップ操作を実行するための限定的な特権を提供するために使用され、Azure Backup で必要とされます。
@@ -283,7 +209,7 @@ Azure Backup を使用してデータベースをバックアップするには�
 
 1. Oracle 環境を設定します。
    ```bash
-   export ORACLE_SID=test
+   export ORACLE_SID=oratest1
    export ORAENV_ASK=NO
    . oraenv
    ```
@@ -317,12 +243,13 @@ Azure Backup を使用してデータベースをバックアップするには�
 1. 前の手順で検証または作成したオペレーティング システム グループに属する新しいバックアップ ユーザー `azbackup` を作成します。 \<group name\> を、検証したグループの名前に置き換えてください:
 
    ```bash
-   sudo useradd -G <group name> azbackup
+   sudo useradd -g <group name> azbackup
    ```
 
 1. 新しいバックアップ ユーザーの外部認証を設定します。 
 
    バックアップ ユーザー `azbackup` は、外部認証を使用してデータベースにアクセスできる必要があるため、パスワードの入力が求められないようにする必要があります。 これを行うには、`azbackup` を介して外部で認証されるデータベース ユーザーを作成する必要があります。 データベースでは、検索する必要があるユーザー名にプレフィックスが使用されます。
+
    VM にインストールされている各データベースで、次の手順を実行します。
  
    sqlplus を使用してデータベースにログインし、外部認証の既定の設定を確認します。
@@ -359,15 +286,17 @@ Azure Backup を使用してデータベースをバックアップするには�
    > 1. 次のコマンドを実行します。
    >
    >    ```bash
-   >    mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
-   >    orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
-   >    rm $ORACLE_HOME/dbs/orapwtest.tmp
+   >    mv $ORACLE_HOME/dbs/orapworatest1 $ORACLE_HOME/dbs/orapworatest1.tmp
+   >    orapwd file=$ORACLE_HOME/dbs/orapworatest1 input_file=$ORACLE_HOME/dbs/orapworatest1.tmp
+   >    rm $ORACLE_HOME/dbs/orapworatest1.tmp
    >    ```
    >
    > 1. sqlplus で `GRANT` 操作を再実行します。
    >
    
 1. バックアップ メッセージをデータベース警告ログに記録するストアド プロシージャを作成します。
+
+   VM にインストールされているそれぞれのデータベースに対し、以下を実行します。
 
    ```bash
    sqlplus / as sysdba
@@ -401,7 +330,7 @@ Azure Backup を使用してデータベースをバックアップするには�
    fi
    ```
 
-1. フォルダー内に "workload.conf" があるかどうかを確認します。 存在しない場合は、 */etc/azure* ディレクトリに、次の内容を含む *workload.conf* という名前のファイルを作成します。これは `[workload]` で始まる必要があります。 ファイルが既に存在する場合は、単に次の内容に一致するようにフィールドを編集してください。 そうでない場合は、次のコマンドを実行すると、ファイルが作成され、内容が設定されます。
+1. フォルダー内に "workload.conf" があるかどうかを確認します。 存在しない場合は、 */etc/azure* ディレクトリに、次の内容を含む *workload.conf* という名前のファイルを作成します。これは `[workload]` で始まる必要があります。 ファイルが既に存在する場合は、ちょうど次の内容に一致するようにフィールドを編集してください。 そうでない場合は、次のコマンドを実行すると、ファイルが作成され、内容が設定されます。
 
    ```bash
    echo "[workload]
@@ -500,12 +429,12 @@ Azure Backup を使用してデータベースをバックアップするには�
 
 ## <a name="recovery"></a>Recovery
 
-データベースを復旧するには、次の手順を実行します。
+データベースを復旧するには、これらの手順を実行します。
 
-1. データベース ファイルを削除します。
-1. Recovery Services コンテナーから復元スクリプトを生成します。
-1. 復元ポイントをマウントします。
-1. 復旧を実行します。
+1. [データベース ファイルを削除します](#remove-the-database-files)。
+1. [Recovery Services コンテナーから復元スクリプトを生成します](#generate-a-restore-script-from-the-recovery-services-vault)。
+1. [復元ポイントをマウントします](#mount-the-restore-point)。
+1. [復旧を実行します](#perform-recovery)。
 
 ### <a name="remove-the-database-files"></a>データベース ファイルを削除する 
 
@@ -527,7 +456,7 @@ Azure Backup を使用してデータベースをバックアップするには�
 1.  障害をシミュレートするために、データベースのデータファイルと contolfiles を削除します。
 
     ```bash
-    cd /u02/oradata/TEST
+    cd /u02/oradata/ORATEST1
     rm -f *.dbf *.ctl
     ```
 
@@ -701,13 +630,14 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     ```
 
 ### <a name="perform-recovery"></a>回復の実行
+VM 上の各データベースに対して次の手順を実行します。
 
 1. 不足しているデータベース ファイルを元の場所に復元します。
 
     ```bash
-    cd /restore/vmoracle19c-2020XXXXXXXXXX/Volume1/oradata/TEST
-    cp * /u02/oradata/TEST
-    cd /u02/oradata/TEST
+    cd /restore/vmoracle19c-2020XXXXXXXXXX/Volume1/oradata/ORATEST1
+    cp * /u02/oradata/ORATEST1
+    cd /u02/oradata/ORATEST1
     chown -R oracle:oinstall *
     ```
 1. oracle ユーザーに切り替えます
@@ -739,13 +669,13 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    SQL> recover automatic database until cancel using backup controlfile;
    ORA-00279: change 2172930 generated at 04/08/2021 12:27:06 needed for thread 1
    ORA-00289: suggestion :
-   /u02/fast_recovery_area/TEST/archivelog/2021_04_08/o1_mf_1_13_%u_.arc
+   /u02/fast_recovery_area/ORATEST1/archivelog/2021_04_08/o1_mf_1_13_%u_.arc
    ORA-00280: change 2172930 for thread 1 is in sequence #13
    ORA-00278: log file
-   '/u02/fast_recovery_area/TEST/archivelog/2021_04_08/o1_mf_1_13_%u_.arc' no
+   '/u02/fast_recovery_area/ORATEST1/archivelog/2021_04_08/o1_mf_1_13_%u_.arc' no
    longer needed for this recovery
    ORA-00308: cannot open archived log
-   '/u02/fast_recovery_area/TEST/archivelog/2021_04_08/o1_mf_1_13_%u_.arc'
+   '/u02/fast_recovery_area/ORATEST1/archivelog/2021_04_08/o1_mf_1_13_%u_.arc'
    ORA-27037: unable to obtain file status
    Linux-x86_64 Error: 2: No such file or directory
    Additional information: 7
@@ -766,7 +696,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    oracle ユーザーに切り替えて Oracle SID を設定します
    ```bash
    sudo su - oracle
-   export ORACLE_SID=test
+   export ORACLE_SID=oratest1
    ```
    
    データベースに接続し、次のクエリを実行してオンライン ログファイルを見つけます 
@@ -783,31 +713,34 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
    ```output
    SEQUENCE#  CHK_CHANGE           GROUP# ARC STATUS            MEMBER
    ---------- ---------------- ---------- --- ---------------- ---------------------------------------------
-           13          2172929          1 NO  CURRENT          /u02/oradata/TEST/redo01.log
-           12          2151934          3 YES INACTIVE         /u02/oradata/TEST/redo03.log
-           11          2071784          2 YES INACTIVE         /u02/oradata/TEST/redo02.log
+           13          2172929          1 NO  CURRENT          /u02/oradata/ORATEST1/redo01.log
+           12          2151934          3 YES INACTIVE         /u02/oradata/ORATEST1/redo03.log
+           11          2071784          2 YES INACTIVE         /u02/oradata/ORATEST1/redo02.log
    ```
-   CURRENT と表示されているオンライン ログのログファイルのパスとファイル名をコピーします。この例では `/u02/oradata/TEST/redo01.log` です。 復旧コマンドを実行している ssh セッションに戻り、ログファイルの情報を入力して return キーを押します。
+   CURRENT と表示されているオンライン ログのログファイルのパスとファイル名をコピーします。この例では `/u02/oradata/ORATEST1/redo01.log` です。 復旧コマンドを実行している ssh セッションに戻り、ログファイルの情報を入力して return キーを押します。
 
    ```bash
    Specify log: {<RET>=suggested | filename | AUTO | CANCEL}
-   /u02/oradata/TEST/redo01.log
+   /u02/oradata/ORATEST1/redo01.log
    ```
 
    ログファイルが適用され、復旧が完了したことが表示されます。 「CANCEL」と入力して復旧コマンドを終了します。
    ```output
    Specify log: {<RET>=suggested | filename | AUTO | CANCEL}
-   /u02/oradata/TEST/redo01.log
+   /u02/oradata/ORATEST1/redo01.log
    Log applied.
    Media recovery complete.
    ```
 
 1. データベースを開きます
+   
+   > [!IMPORTANT]
+   > RECOVER コマンドで USING BACKUP CONTROLFILE オプションを使用する場合は、RESETLOGS オプションが必要です。 RESETLOGS は、再実行の履歴を最初にリセットすることで、データベースの新しいインカネーションを作成します。これは、以前のデータベースのインカネーションが、復旧でどれだけスキップされたかを判断する方法がないためです。
+
    ```bash
    SQL> alter database open resetlogs;
    ```
-   > [!IMPORTANT]
-   > RECOVER コマンドで USING BACKUP CONTROLFILE オプションを使用する場合は、RESETLOGS オプションが必要です。 RESETLOGS は、再実行の履歴を最初にリセットすることで、データベースの新しいインカネーションを作成します。これは、以前のデータベースのインカネーションが、復旧でどれだけスキップされたかを判断する方法がないためです。
+
    
 1. データベースの内容が完全に復旧されたことを確認します。
 
@@ -817,6 +750,9 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 1. 復元ポイントのマウントを解除します。
 
+   VM 上のすべてのデータベースが正常に復旧されたら、復元ポイントをマウント解除できます。 これは、VM 上で `unmount` コマンドを使用するか、Azure portal の [ファイルの回復] ブレードを使用して実行できます。 また、 **-clean** オプションを使用して python スクリプトを再度実行して、回復ボリュームのマウントを解除することもできます。
+
+   VM で unmount を使用:
    ```bash
    sudo umount /restore/vmoracle19c-20210107110037/Volume*
    ```
@@ -825,7 +761,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
     ![[ディスクのマウント解除] コマンド](./media/oracle-backup-recovery/recovery-service-10.png)
     
-    また、 **-clean** オプションを使用して python スクリプトを再度実行して、回復ボリュームのマウントを解除することもできます。
+
 
 ## <a name="restore-the-entire-vm"></a>VM 全体の復元
 
@@ -833,13 +769,12 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 VM 全体を復元するには、次の手順を実行します。
 
-1. vmoracle19c を停止して削除します。
-1. VM を復旧します。
-1. パブリック IP アドレスを設定します。
-1. VM に接続します
-1. データベースを起動してステージをマウントし、復旧を実行します。
+1. [VM を停止して削除します](#stop-and-delete-the-vm)。
+1. [VM を復旧します](#recover-the-vm)。
+1. [パブリック IP アドレスを設定します](#set-the-public-ip-address)。
+1. [データベース復旧を実行します](#perform-database-recovery)。
 
-### <a name="stop-and-delete-vmoracle19c"></a>vmoracle19c を停止して削除する
+### <a name="stop-and-delete-the-vm"></a>VM を停止して削除する
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -1104,27 +1039,42 @@ VM が復元されたら、元の IP アドレスを新しい VM に再割り当
 
 ---
 
-### <a name="connect-to-the-vm"></a>VM に接続します
-
-VM に接続するには:
+### <a name="perform-database-recovery"></a>データベース復旧を実行する
+最初に、VM に再接続します。
 
 ```azurecli
 ssh azureuser@<publicIpAddress>
 ```
 
-### <a name="start-the-database-to-mount-stage-and-perform-recovery"></a>データベースを起動してステージをマウントし、復旧を実行します
+VM 全体が復元されたら、それぞれに対して次の手順を実行して、VM 上の各データベースを復旧することが重要です。
 
-1. 自動開始で VM の起動時にデータベースの起動が試みられたために、インスタンスが実行されていることがあります。 ただし、データベースには復旧が必要であり、マウント ステージでのみ発生する可能性があるため、最初に準備のシャットダウンを実行します。
+1. 自動開始で VM の起動時にデータベースの起動が試みられたために、インスタンスが実行されていることがあります。 ただし、データベースには復旧が必要であり、マウント ステージでのみ発生する可能性があるため、最初に準備のシャットダウンが実行され、次にマウント ステージが開始されます。
 
     ```bash
     $ sudo su - oracle
     $ sqlplus / as sysdba
     SQL> shutdown immediate
     SQL> startup mount
-    SQL> recover automatic database;
-    SQL> alter database open;
     ```
     
+1. データベース復旧を実行する
+   > [!IMPORTANT]
+   > 復元されたデータベース制御ファイルに記録されている Oracle システム変更番号 (SCN) で復元を停止しないよう RECOVER AUTOMATIC DATABASE コマンドに通知するため、USING BACKUP CONTROLFILE 構文を指定することが重要であることに注意してください。 復元されたデータベース制御ファイルは、データベースの他の部分と一緒にスナップショットされており、そこに記録されている SCN は、スナップショット時点のものです。 この時点以降に記録されたトランザクションがあるかもしれないため、データベースにコミットされた最後のトランザクションの時点に復旧する必要があります。
+    
+    ```bash
+    SQL> recover automatic database using backup controlfile until cancel;
+    ```
+   最後に使用可能なアーカイブ ログ ファイルが適用されたら、「`CANCEL`」と入力して復旧を終了します。
+
+1. データベースを開きます
+   > [!IMPORTANT]
+   > RECOVER コマンドで USING BACKUP CONTROLFILE オプションを使用する場合は、RESETLOGS オプションが必要です。 RESETLOGS は、再実行の履歴を最初にリセットすることで、データベースの新しいインカネーションを作成します。これは、以前のデータベースのインカネーションが、復旧でどれだけスキップされたかを判断する方法がないためです。
+   
+    ```bash 
+    SQL> alter database open resetlogs;
+    ```
+   
+
 1. データベースの内容が復旧されたことを確認します。
 
     ```bash

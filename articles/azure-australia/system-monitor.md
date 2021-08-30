@@ -1,17 +1,17 @@
 ---
 title: Azure Australia におけるセキュリティのシステム監視
 description: オーストラリアのリージョン内で、オーストラリア政府のポリシー、規制、法令に固有の要件を満たすようにシステム監視を構成するためのガイダンス。
-author: galey801
+author: emilyre
 ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: grgale
-ms.openlocfilehash: f7f78dbde9810c8786e2344555444efabcc989b0
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.author: yvettep
+ms.openlocfilehash: 775b2e366d335944205197aad97c1752b6ee7d04
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779322"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "117029120"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Azure Australia におけるセキュリティのシステム監視
 
@@ -24,11 +24,11 @@ ms.locfileid: "68779322"
 * Azure Advisor
 * Azure Policy
 
-ACSC では、これらのサービスを**保護**データに使用することを推奨しています。 これらのサービスを使用することで、IT 環境のプロアクティブな監視と分析が可能になり、セキュリティを強化するためのリソースの最適な割当先を十分な情報に基づいて決定できます。 各サービスは、統合ソリューションの一部として、最適な分析情報、推奨事項、保護を提供します。
+ACSC では、これらのサービスを **保護** データに使用することを推奨しています。 これらのサービスを使用することで、IT 環境のプロアクティブな監視と分析が可能になり、セキュリティを強化するためのリソースの最適な割り当て先を十分な情報に基づいて決定できます。 各サービスは、統合ソリューションの一部として、最適な分析情報、推奨事項、保護を提供します。
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、Azure リソースとホストされたデータのセキュリティを監視して強化するための統合セキュリティ管理コンソールです。 Azure Security Center にはセキュリティ スコアが表示されます。これは、Azure Advisor で行われるベスト プラクティス構成の状態の分析と Azure Policy で行われる全体的なコンプライアンス評価に基づくスコアです。
+[Azure Security Center](../security-center/security-center-introduction.md) は、Azure リソースとホストされたデータのセキュリティを監視して強化するための統合セキュリティ管理コンソールです。 Azure Security Center にはセキュリティ スコアが表示されます。これは、Azure Advisor で行われるベスト プラクティス構成の状態の分析と Azure Policy で行われる全体的なコンプライアンス評価に基づくスコアです。
 
 Azure のお客様が Azure Security Center で利用できる機能は次のとおりです。
 
@@ -41,11 +41,11 @@ Azure のお客様が Azure Security Center で利用できる機能は次のと
 
 Azure Security Center で監視されるリソースのスコープを、ハイブリッド クラウド環境でサポートされているオンプレミス リソースへと拡大できます。 これには、サポートされているバージョンの System Center Operations Manager で現在監視されているオンプレミス リソースも含まれます。
 
-Security Center "Standard" レベルでは、[ASD Essential Eight](https://acsc.gov.au/publications/protect/essential-eight-explained.htm) で求められているクラウドベースのセキュリティ制御も実現できます。 これには、アプリケーションのホワイトリスト登録や Just-In-Time アクセスによる管理特権の制限などが含まれます。
+Security Center "Standard" レベルでは、[ASD Essential Eight](https://acsc.gov.au/publications/protect/essential-eight-explained.htm) で求められているクラウドベースのセキュリティ制御も実現できます。 これには、アプリケーションのフィルター処理や Just-In-Time アクセスによる管理特権の制限などが含まれます。
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) は、すべての Azure リソースを対象とした一元的なログ ソリューションであり、Log Analytics と Application Insights を搭載しています。 Azure リソースからは、2 種類の重要なデータとして、ログとメトリックが収集されます。 Azure Monitor で収集されたログ情報は、幅広いツールでさまざまな目的のために利用されます。
+[Azure Monitor](../azure-monitor/overview.md) は、すべての Azure リソースを対象とした一元的なログ ソリューションであり、Log Analytics と Application Insights を搭載しています。 Azure リソースからは、2 種類の重要なデータとして、ログとメトリックが収集されます。 Azure Monitor で収集されたログ情報は、幅広いツールでさまざまな目的のために利用されます。
 
 ![Azure Monitor の概要](media/overview.png)
 
@@ -53,7 +53,7 @@ Azure Monitor には "Azure アクティビティ ログ" も含まれていま�
 
 ### <a name="azure-advisor"></a>Azure Advisor
 
-[Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) では、Azure サブスクリプション内のサポート対象の Azure リソース、システムで生成されたログ ファイル、および現在のリソース構成が分析されます。 Azure Advisor での分析は、Microsoft が推奨するベスト プラクティスに基づいてリアルタイムで生成されます。 環境に追加されたサポート対象の Azure リソースはすべて分析され、適切な推奨事項が提供されます。 Azure Advisor の推奨事項は、次の 4 つのベスト プラクティス カテゴリに分類されます。
+[Azure Advisor](../advisor/advisor-overview.md) では、Azure サブスクリプション内のサポート対象の Azure リソース、システムで生成されたログ ファイル、および現在のリソース構成が分析されます。 Azure Advisor での分析は、Microsoft が推奨するベスト プラクティスに基づいてリアルタイムで生成されます。 環境に追加されたサポート対象の Azure リソースはすべて分析され、適切な推奨事項が提供されます。 Azure Advisor の推奨事項は、次の 4 つのベスト プラクティス カテゴリに分類されます。
 
 * セキュリティ
 * 高可用性
@@ -70,7 +70,7 @@ Azure Advisor で収集された情報から、管理者は次のデータを得
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) では、Azure リソースの種類とその許可された構成を管理するルールを適用できます。 ポリシーを使用して、リソースの作成と構成を制御したり、環境全体の構成設定を監査したりできます。 この監査結果は、修復アクティビティのベースとして利用できます。 Azure Policy はロールベースのアクセス制御 (RBAC) とは異なります。Azure Policy はリソースとその構成を制限するために使用し、RBAC は特権アクセスを Azure ユーザーに制限するために使用します。
+[Azure Policy](../governance/policy/overview.md) では、Azure リソースの種類とその許可された構成を管理するルールを適用できます。 ポリシーを使用して、リソースの作成と構成を制御したり、環境全体の構成設定を監査したりできます。 この監査結果は、修復アクティビティのベースとして利用できます。 Azure Policy は Azure ロールベースのアクセス制御 (Azure RBAC) とは異なります。Azure Policy はリソースとその構成を制限するために使用し、Azure RBAC は特権アクセスを Azure ユーザーに制限するために使用します。
 
 特定のポリシーが適用されているか、ポリシーの影響が監査されているかにかかわらず、ポリシーのコンプライアンスが継続的に監視され、全体的なコンプライアンス情報とリソース別のコンプライアンス情報が管理者に提供されます。 Azure Policy のコンプライアンス データは、Azure Security Center に提供され、セキュリティ スコアに反映されます。
 
@@ -92,7 +92,7 @@ ISM では、ログの収集と管理に加えて、組織の IT 環境の脆弱
 
 Azure Monitor を使用する Azure のお客様は、この要件を満たしています。 このオファリングでは、すべての Azure リソースを対象に Azure でログ リポジトリを一元化できるだけでなく、Azure イベント ハブにデータをストリーミングできます。 Azure Event Hubs は、フル マネージドのリアルタイム データ インジェスト サービスです。 Azure イベント ハブにストリーミングされた Azure Monitor データは、サポートされる既存のセキュリティ情報イベント管理 (SIEM) リポジトリやその他のサードパーティ製監視ツールにも簡単に接続できます。
 
-Microsoft では、Azure のネイティブな SIEM ソリューションである Azure Sentinel も提供しています。 Azure Sentinel は、さまざまなデータ コネクタをサポートしており、企業全体でセキュリティ イベントを監視するために使用できます。 セキュリティ管理者は、サポートされる[データ コネクタ](https://docs.microsoft.com/azure/sentinel/connect-data-sources)からのデータ、Azure Sentinel に組み込まれた機械学習機能、および Kusto クエリ言語を統合した 1 つのソリューションで、アラートの検出、脅威の可視化、プロアクティブなハンティング、脅威への対応を実現できます。 またセキュリティ管理者は、Sentinel のハンティングとノートブックの機能を利用して、セキュリティ調査で実行されるすべての手順を再利用可能なプレイブックに記録して組織内で共有できます。 組み込みの[ユーザー分析](https://docs.microsoft.com/azure/sentinel/user-analytics)を使用すれば、指定した 1 人のユーザーのアクションを調査することもできます。
+Microsoft では、Azure のネイティブな SIEM ソリューションである Azure Sentinel も提供しています。 Azure Sentinel は、さまざまなデータ コネクタをサポートしており、企業全体でセキュリティ イベントを監視するために使用できます。 セキュリティ管理者は、サポートされる[データ コネクタ](../sentinel/connect-data-sources.md)からのデータ、Azure Sentinel に組み込まれた機械学習機能、および Kusto クエリ言語を統合した 1 つのソリューションで、アラートの検出、脅威の可視化、プロアクティブなハンティング、脅威への対応を実現できます。 またセキュリティ管理者は、Azure Sentinel のハンティングとノートブックの機能を利用して、セキュリティ調査で実行されるすべての手順を再利用可能なプレイブックに記録して組織内で共有できます。 組み込みの[ユーザー分析](../sentinel/overview.md)を使用すれば、指定した 1 人のユーザーのアクションを調査することもできます。
 
 ### <a name="logged-events-and-log-detail"></a>ログに記録されるイベントとログの詳細
 
@@ -100,15 +100,15 @@ ISM には、あらゆるログ戦略で対象に含める必要があるイベ�
 
 Azure で収集されるログは、次の 3 つのカテゴリに分類されます。
 
-* **コントロール/管理ログ**:Azure Resource Manager の CREATE、UPDATE、DELETE の各操作に関する情報を提供します。
+* **コントロールおよび管理ログ**: これらのログは、Azure Resource Manager の CREATE、UPDATE、DELETE 操作に関する情報を提供します。
 
-* **データ プレーン ログ**:Azure リソースが使用されたときに発生するイベントが記録されます。 Windows イベント ログ (システム ログ、セキュリティ ログ、アプリケーション ログ) などのソースが含まれます。
+* **データ プレーン ログ**: Azure リソースが使用されたときに発生するイベントが記録されます。 Windows イベント ログ (システム ログ、セキュリティ ログ、アプリケーション ログ) などのソースが含まれます。
 
-* **処理済みイベント**:Azure がお客様に代わって自動的に処理したイベントとアラートに関する情報が含まれます。 処理済みイベントの一例が、Azure Security Center のアラートです。
+* **処理済みイベント**: Azure がお客様に代わって自動的に処理したイベントとアラートに関する情報が含まれます。 処理済みイベントの一例が、Azure Security Center のアラートです。
 
 Windows と Linux のどちらの場合も、仮想マシン エージェントのデプロイによって Azure 仮想マシンの監視が強化されます。 これにより、収集されるログ情報の幅が大きく広がります。 このエージェントのデプロイが Azure Security Center から自動的に行われるように構成できます。
 
-Microsoft では、Azure リソース固有のログとその[スキーマ](https://docs.microsoft.com/azure/security/fundamentals/log-audit)に関する詳細情報を提供しています。
+Microsoft では、Azure リソース固有のログとその[スキーマ](../security/fundamentals/log-audit.md)に関する詳細情報を提供しています。
 
 ### <a name="log-retention-and-protection"></a>ログのリテンション期間と保護
 
@@ -116,7 +116,7 @@ Microsoft では、Azure リソース固有のログとその[スキーマ](http
 
 Azure ログ イベントを保存する Azure Storage アカウントは、geo 冗長にすることができ、Azure Backup を使用してバックアップできます。 Azure Backup でキャプチャされたログを含んだバックアップを削除するには、管理者の承認が必要です。削除対象としてマークされたバックアップでも、復旧に備えて 14 日間保持されます。 Azure Backup では、保護されたインスタンスのコピーを 9999 個作成できるので、日次バックアップを 27 年以上実行できることになります。
 
-Azure ログで使用されるリソースへのアクセスを制御するには、ロールベースのアクセス制御を使用する必要があります。 ログ内のデータのセキュリティを確保するには、Azure Monitor、Azure Storage アカウント、および Azure Backup でロールベースのアクセス制御を構成する必要があります。
+Azure ログで使用されるリソースへのアクセスを制御するには、Azure ロールベースのアクセス制御 (RBAC) を使用する必要があります。 ログ内のデータのセキュリティを確保するには、Azure Monitor、Azure Storage アカウント、および Azure Backup で RBAC を構成する必要があります。
 
 ### <a name="log-auditing"></a>ログの監査
 
@@ -126,7 +126,7 @@ Azure Monitor で保存されたログ データは、Log Analytics ワークス
 
 ![Azure のログ クエリの概要](media/queries-overview.png)
 
-ログの監査は、監視ソリューションを使用することで強化できます。 このあらかじめパッケージ化されたソリューションには、収集ロジック、クエリ、データ視覚化ビューが含まれています。 Microsoft ではさまざまな監視ソリューションを[提供](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-inventory)しています。その他にも、製品ベンダー各社が Azure Marketplace でソリューションを提供しています。
+ログの監査は、監視ソリューションを使用することで強化できます。 このあらかじめパッケージ化されたソリューションには、収集ロジック、クエリ、データ視覚化ビューが含まれています。 Microsoft ではさまざまな監視ソリューションを[提供](../azure-monitor/monitor-reference.md)しています。その他にも、製品ベンダー各社が Azure Marketplace でソリューションを提供しています。
 
 ### <a name="vulnerability-assessment-and-management"></a>脆弱性の評価と管理
 
@@ -136,11 +136,11 @@ Azure Security Center のセキュリティ スコアには、環境のセキュ
 
 Azure Policy も、継続的な脆弱性評価で重要な役割を果たします。 Azure Policy で提供されるポリシーの種類は、リソース タグと値を適用するものから、リソースを作成できる Azure リージョンを制限するもの、さらに特定のリソースの種類の作成を完全にブロックするものに及びます。 Azure のポリシーは、複数のイニシアティブにグループ化することができます。 関連する Azure ポリシーがイニシアティブを使用してグループとしてまとめて適用され、それが特定のセキュリティ目標またはコンプライアンス目標のベースとなります。
 
-Azure Policy にはポリシー定義のライブラリが搭載されており、その規模は常に拡大しています。 また、Azure portal で Azure Policy の定義を独自に作成することもできます。 既存のライブラリで見つけたポリシーや新規に作成したポリシーは、Azure リソースに割り当てることができます。 リソース管理階層のさまざまなレベルで、この割り当ての[スコープを設定](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)できます。 ポリシー割り当ては継承されます。つまり、スコープ内のすべての子リソースに同じポリシーが割り当てられます。 必要に応じて、スコープが設定されたポリシー割り当てからリソースを除外することもできます。
+Azure Policy にはポリシー定義のライブラリが搭載されており、その規模は常に拡大しています。 また、Azure portal で Azure Policy の定義を独自に作成することもできます。 既存のライブラリで見つけたポリシーや新規に作成したポリシーは、Azure リソースに割り当てることができます。 リソース管理階層のさまざまなレベルで、この割り当ての[スコープを設定](../governance/policy/tutorials/create-and-manage.md)できます。 ポリシー割り当ては継承されます。つまり、スコープ内のすべての子リソースに同じポリシーが割り当てられます。 必要に応じて、スコープが設定されたポリシー割り当てからリソースを除外することもできます。
 
 デプロイされたすべての Azure ポリシーが、組織のセキュリティ スコアに関係します。 高度なオーダーメイド環境では、カスタムの Azure Policy 定義を作成しデプロイして、特定のワークロードに合わせた監査情報を提供できます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>はじめに
 
 Azure Security Center の使用を開始して、Azure Monitor、Azure Advisor、Azure Policy を最大限に活用するには、次の初期手順をお勧めします。
 
@@ -149,6 +149,6 @@ Azure Security Center の使用を開始して、Azure Monitor、Azure Advisor�
 * サポートされる Azure Virtual Machines に対して、Microsoft Monitoring Agent の自動プロビジョニングを有効にする
 * Security Center のダッシュボードで、セキュリティの推奨事項とアラートを確認し、優先順位を付け、軽減策を実施する
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Policy と Azure Blueprints](azure-policy.md) に関するページを参照して、Azure Australia のリソースに対するガバナンスと制御の実装について詳細を確認する。

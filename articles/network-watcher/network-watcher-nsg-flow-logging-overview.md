@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 4f46dc092776e73556a67fee705a98fa883dfbc6
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 23960e112dd03a711027c2364f648f60f23d0c8e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810698"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742019"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -66,7 +66,7 @@ ms.locfileid: "109810698"
 - - NSG の拒否ルールは終了するルールです。 トラフィックを拒否する NSG は、これをフロー ログに記録し、この場合の処理は、NSG がトラフィックを拒否した後に停止されます。 
 - - NSG の許可ルールは終了しないルールです。つまり、1 つの NSG で許可された場合でも、処理は次の NSG に進みます。 トラフィックを許可する最後の NSG によって、トラフィックがフロー ログに記録されます。
 - NSG フロー ログは、アクセスできる場所からストレージ アカウントに書き込まれます。
-- TA、Splunk、Grafana、Stealthwatch などのツールを使用して、フロー ログをエクスポート、処理、分析、視覚化することができます。
+- Traffic Analytics、Splunk、Grafana、Stealthwatch などのツールを使用して、フロー ログをエクスポート、処理、分析、視覚化することができます。
 
 ## <a name="log-format"></a>ログの形式
 
@@ -374,6 +374,8 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
 
+**ExpressRoute ゲートウェイ サブネット上の NSG** - トラフィックが ExpressRoute ゲートウェイ (例: [FastPath](../expressroute/about-fastpath.md)) をバイパスする可能性があるため、ExpressRoute ゲートウェイ サブネット上のフローをログに記録することはお勧めしません。 したがって、NSG が ExpressRoute ゲートウェイ サブネットにリンクされ、NSG フロー ログが有効になっている場合、仮想マシンへの送信フローがキャプチャされない可能性があります。 このようなフローは、VM のサブネットまたは NIC でキャプチャする必要があります。 
+
 **Application Gateway V2 サブネット NSG の問題**: Application Gateway V2 サブネット NSG のフロー ログは、現時点では [サポートされていません](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)。 この問題は Application Gateway V1 には影響しません。
 
 **互換性のないサービス**:プラットフォームの現行の制約に起因し、一部の Azure サービスは NSG フロー ログでサポートされていません。 互換性のないサービスには現在、次が含まれます。
@@ -415,7 +417,7 @@ NSG フロー ログがストレージ アカウントに表示されるまで�
 
 **NSG フロー ログを自動化したい**
 
-現在、ARM テンプレートを使用した 自動化のサポートは、NSG フロー ログでは使用できません。 詳細については、[機能のお知らせ](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/)を参照してください。
+NSG フロー ログに対する ARM テンプレートを使用した自動化のサポートを利用できるようになりました。 詳細については、[機能の発表](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/)と [ARM テンプレートに関するクイック スタート ドキュメント](quickstart-configure-network-security-group-flow-logs-from-arm-template.md)を参照してください。
 
 ## <a name="faq"></a>よく寄せられる質問
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 137b77c09cc1ae4f18555568287324a373ca8786
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: fb277b2468d0cf4df5d28e412a5fb91f777b46bf
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109655421"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178966"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の登録とスキャン
 
@@ -25,6 +25,12 @@ Azure Data Lake Storage Gen2 データ ソースでは、以下の機能がサ�
 - Data Lake Storage Gen2 のメタデータと分類をキャプチャする **完全および増分スキャン**
 
 - ADF コピーまたはデータフロー アクティビティのための、データ資産間の **データ系列**
+
+csv、tsv、psv、ssv などのファイルの種類では、次のロジックが適用されている場合にスキーマが抽出されます。
+
+1. 最初の行の値が空ではない
+2. 最初の行の値が一意である
+3. 最初の行の値が日付でも数値でもない
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,14 +54,14 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 1. **[ロール]** に **[ストレージ BLOB データ リーダー]** を設定し、 **[選択]** 入力ボックスに Azure Purview アカウント名を入力します。 次に、 **[保存]** を選択して、このロールの割り当てを Purview アカウントに付与します。
 
 > [!Note]
-> 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/common/storage-auth-aad.md)」の手順を参照してください
+> 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/blobs/authorize-access-azure-active-directory.md)」の手順を参照してください
 
 #### <a name="account-key"></a>アカウント キー
 
 選択した認証方法が **アカウント キー** の場合は、アクセス キーを取得して、キー コンテナーに格納する必要があります。
 
 1. ADLS Gen2 ストレージ アカウントに移動します
-1. **[設定] > [アクセス キー]** を選択します
+1. **[セキュリティとネットワーク] > [アクセス キー]** を選択します
 1. "*キー*" をコピーし、次の手順のためにどこかに保存します
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
@@ -82,7 +88,7 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
-1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
+1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
@@ -113,7 +119,7 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 新しい ADLS Gen2 アカウントをデータ カタログに登録するには、次の手順を行います。
 
 1. Purview アカウントに移動します
-2. 左側のナビゲーションで **[ソース]** を選択します。
+2. 左側のナビゲーションで **[Data Map]** を選択します。
 3. **[登録]** を選択します
 4. **[ソースの登録]** で、 **[Azure Data Lake Storage Gen2]** を選択します
 5. **[続行]** を選択します
@@ -128,7 +134,35 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 
 :::image type="content" source="media/register-scan-adls-gen2/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+
+新しいスキャンを作成して実行するには、次の操作を行います。
+
+1. Purview Studio の左側にあるペインで **[Data Map]** タブを選択します。
+
+1. 登録した Azure Data Lake Storage Gen2 ソースを選択します。
+
+1. **[新しいスキャン]** を選択します。
+
+1. 対象のデータ ソースに接続するための資格情報を選択します。
+
+   :::image type="content" source="media/register-scan-adls-gen2/set-up-scan-adls-gen2.png" alt-text="スキャンを設定する":::
+
+1. 特定のフォルダーまたはサブフォルダーをリストから選んで、スキャンのスコープに指定できます。
+
+   :::image type="content" source="media/register-scan-adls-gen2/gen2-scope-your-scan.png" alt-text="スキャンの範囲を指定する":::
+
+1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
+
+   :::image type="content" source="media/register-scan-adls-gen2/gen2-scan-rule-set.png" alt-text="スキャン ルール セット":::
+
+1. スキャン トリガーを選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+
+   :::image type="content" source="media/register-scan-adls-gen2/trigger-scan.png" alt-text="trigger":::
+
+1. スキャンを確認し、 **[保存および実行]** を選択します。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: 63bc821648348c2936d437fef7fdd89314fad3c5
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 4ca42c259e10742e61fbd7f36b73f332cba5a8db
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783227"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445832"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>cloud-init を深く知る
 [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) の詳細を学んだり、深いレベルでトラブルシューティングするには、しくみを理解する必要があります。 このドキュメントでは、重要な部分を示し、Azure 固有の内容について説明します。
@@ -22,7 +22,7 @@ ms.locfileid: "109783227"
 
 
 ## <a name="understand-cloud-init-configuration"></a>cloud-Init 構成を理解する
-プラットフォーム上で実行するように VM を構成することは、cloud-init がイメージ コンシューマーとして複数の構成を適用する必要があることを意味します。操作が必要になる主な構成は、複数の形式をサポートする `User data` (customData) です。これらについては、[こちら](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats)を参照してください。 また、追加の構成のためにスクリプト (/var/lib/cloud/scripts) を追加して実行する機能も用意されています。以下で詳しく説明します。
+プラットフォーム上で実行するように VM を構成することは、cloud-init でイメージ コンシューマーとして複数の構成を適用する必要があることを意味します。操作が必要になる主な構成は、複数の形式をサポートする `User data` (customData) です。 詳細については、[ユーザー データ形式と cloud-init 21.2 のドキュメント](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats)を参照してください。 また、追加の構成のためにスクリプト (/var/lib/cloud/scripts) を追加して実行する機能も用意されています。以下で詳しく説明します。
 
 いくつかの構成は、次のように、cloud-init に付属する Azure Marketplace イメージに既に組み込まれています。
 

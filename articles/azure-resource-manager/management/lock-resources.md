@@ -2,14 +2,14 @@
 title: 変更されないようにリソースをロックする
 description: Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 07/01/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 780957dec73177541e8677fb5f6551a6ad147797
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27ab9d607f3b8fad669682e980bc0178e8dfad42
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951436"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122202066"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -43,7 +43,9 @@ ms.locfileid: "111951436"
 
 - 読み取り専用ロックを **ストレージ アカウント** に対して設定すると、ユーザーがアカウント キーを一覧表示できなくなります。 Azure ストレージ の[キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は、アカウント キーへのアクセスを保護する POST 要求によって処理されます。これにより、ストレージ アカウントのデータに完全にアクセスできるようになります。 ストレージ アカウントに対して読み取り専用ロックが設定されている場合、アカウント キーを持っていないユーザーは、BLOB またはキュー データへのアクセスに Azure AD 資格情報を使用する必要があります。 読み取り専用ロックによって、ストレージ アカウントまたはデータ コンテナー (BLOB コンテナーまたはキュー) にスコープが設定されている Azure RBAC ロールの割り当てもできなくなります。
 
-- **ストレージ アカウント** に削除不可のロックを設定しても、そのアカウント内のデータが削除または変更されるのを防ぐことはできません。 この種類のロックでは、ストレージ アカウント自体が削除されないように保護するだけであり、そのストレージ アカウント内の BLOB、キュー、テーブル、またはファイルのデータは保護されません。
+- **ストレージ アカウント** に削除不可のロックを設定しても、そのアカウント内のデータが削除または変更されるのを防ぐことはできません。 このタイプのロックは、ストレージ アカウント自体が削除されないように保護するだけです。 要求で[データ プレーン操作](control-plane-and-data-plane.md#data-plane)が使用されている場合、ストレージ アカウントのロックでは、そのストレージ アカウント内の BLOB、キュー、テーブル、またはファイル データは保護されません。 しかし、要求が[コントロール プレーン操作](control-plane-and-data-plane.md#control-plane)を使用している場合、ロックはそれらのリソースを保護します。
+
+  たとえば、要求がコントロール プレーンの操作である[[ファイル共有] - [削除]](/rest/api/storagerp/file-shares/delete)を使用している場合、削除は拒否されます。 要求が、データ プレーン操作である [[共有の削除]](/rest/api/storageservices/delete-share) を使用している場合、削除は成功します。 コントロール プレーン操作を使用することをお勧めします。
 
 - **ストレージ アカウント** に読み取り専用ロックを設定しても、そのアカウント内のデータが削除または変更されるのを防ぐことはできません。 この種類のロックでは、ストレージ アカウント自体が削除または変更されないように保護するだけであり、そのストレージ アカウント内の BLOB、キュー、テーブル、またはファイルのデータは保護されません。
 
@@ -60,6 +62,10 @@ ms.locfileid: "111951436"
 - **リソース グループ** で削除不可のロックを使用すると、**Azure Machine Learning** によって [Azure Machine Learning コンピューティング クラスター](../../machine-learning/concept-compute-target.md#azure-machine-learning-compute-managed)が自動スケールされ、使用されていないノードが削除されるのを防ぐことができます。
 
 - **サブスクリプション** に読み取り専用ロックを設定すると、**Azure Advisor** が正常に機能しなくなります。 Advisor は、クエリの結果を格納できません。
+
+- **Application Gateway** に読み取り専用のロックがかかっていると、アプリケーション ゲートウェイのバックエンドのヘルスを取得できません。 その [ の操作は POST](/rest/api/application-gateway/application-gateways/backend-health) を使用しており、読み取り専用のロックによってブロックされています。
+
+- **AKS クラスター** に読み取り専用のロックがかかっていると、Microsoft Azure portal の AKS クラスター左側ブレードの **Kubernetes Resources** セクションから、すべてのユーザーがクラスター リソースにアクセスできなくなります。 これらの操作には、認証のための POST 要求が必要です。
 
 ## <a name="who-can-create-or-delete-locks"></a>誰がロックを作成または削除できるか
 

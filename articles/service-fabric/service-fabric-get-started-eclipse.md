@@ -1,17 +1,15 @@
 ---
 title: Eclipse 用の Azure Service Fabric プラグイン
 description: Eclipse および Service Fabric で提供されているプラグインを使用した、Java の Azure Service Fabric の概要について説明します。
-author: rapatchi
 ms.topic: conceptual
 ms.date: 04/06/2018
-ms.author: rapatchi
-ms.custom: devx-track-java
-ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-java, contperf-fy21q4
+ms.openlocfilehash: 19aba75dc314f9804931675702f1420aff0415e6
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656922"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214301"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
@@ -36,7 +34,7 @@ Service Fabric プラグインを Eclipse にインストールすることが�
 -   Eclipse の更新プログラムを確認してインストールするには、 **[Help]\(ヘルプ\)**  >  **[Check for Updates]\(更新プログラムの確認\)** の順に移動します。
 
 Service Fabric プラグインをインストールするために、Eclipse で **[Help]\(ヘルプ\)**  >  **[Install New Software]\(新しいソフトウェアのインストール\)** の順に移動します。
-1. **[Work with]\(作業対象\)** ボックスに、「https:\//dl.microsoft.com/eclipse」と入力します。
+1. **[Work with]\(作業対象\)** ボックスに「 `https://servicefabricdownloads.blob.core.windows.net/eclipse/` 」と入力します。
 2. **[追加]** をクリックします。
 
    ![Eclipse 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
@@ -49,7 +47,7 @@ Service Fabric プラグインが既にインストールされている場合�
 3. Service Fabric プラグインを更新したら、Gradle プロジェクトも更新します。  **build.gradle** を右クリックし、 **[Refresh]\(最新の情報に更新\)** を選択します。
 
 > [!NOTE]
-> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、 **[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (https:\//dl.microsoft.com/eclipse/azure/servicefabric) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
+> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、 **[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 ('https://servicefabricdownloads.blob.core.windows.net/eclipse/ ') を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
 
 > [!NOTE]
 >Eclipse が Mac で意図したように動かない場合、またはスーパー ユーザーとして実行する必要がある場合は、**ECLIPSE_INSTALLATION_PATH** フォルダーの **Eclipse.app/Contents/MacOS** サブフォルダーに移動します。 `./eclipse` を実行して Eclipse を起動します。

@@ -3,22 +3,26 @@ title: Azure Logic Apps の組み込みのトリガーとアクション
 description: 組み込みのトリガーとアクションを使用することで、Azure Logic Apps を使用して、アプリ、データ、サービス、システムを統合する自動ワークフローを作成し、ワークフローを制御し、データを管理します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: a718e7c7b771f66ed8337e53fec49e5939ab0442
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 06/16/2021
+ms.openlocfilehash: c98263500651447ddc4a9962f2e1ac10d9927502
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315761"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664937"
 ---
 # <a name="built-in-triggers-and-actions-for-logic-apps"></a>Logic Apps の組み込みのトリガーとアクション
 
+[組み込みのトリガーとアクション](apis-list.md)により、[ワークフローのスケジュールと構造の制御](#control-workflow)、[独自のコードの実行](#run-code-from-workflows)、[データの管理または操作](#manage-or-manipulate-data)、ワークフロー内の他のタスクの実行を行う手段が提供されます。 [マネージド コネクタ](managed.md)とは異なり、多くの組み込み操作は、特定のサービス、システム、またはプロトコルに関連付けられていません。 たとえば、繰り返しトリガーを使用すると、ほぼどのようなワークフローでもスケジュールに従って開始できます。 または、要求トリガーを使用することで、呼び出されるまでワークフローを待機させることもできます。 すべての組み込み操作は Logic Apps サービスでネイティブに実行され、ほとんどの場合、その使用前に接続を作成する必要はありません。
 
-[組み込みのトリガーとアクション](apis-list.md)により、[ワークフローのスケジュールと構造の制御](#control-workflow)、[独自のコードの実行](#run-code-from-workflows)、[データの管理または操作](#manage-or-manipulate-data)、ワークフロー内の他のタスクの実行を行う手段が提供されます。 [マネージド コネクタ](managed.md)とは異なり、多くの組み込み操作は、特定のサービス、システム、またはプロトコルに関連付けられていません。 たとえば、繰り返しトリガーを使用すると、ほぼどのようなワークフローでもスケジュールに従って開始できます。 または、要求トリガーを使用することで、呼び出されるまでワークフローを待機させることもできます。 すべての組み込み操作は Logic Apps サービスでネイティブに実行され、ほとんどの場合、その使用前に接続を作成する必要はありません。 
+また、Logic Apps には、Azure Service Bus、Azure Functions、Azure Blob、Azure App Services、Azure API Management、SQL、AS2 など、少数のサービス、システム、プロトコルの場合、組み込み操作も用意されています。 数と範囲は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
 
-また、Logic Apps には、 Azure Functions、Azure App Services、Azure API Management、AS2 など、少数のサービス、システム、プロトコル用の組み込み操作も用意されています。 この選択内容は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 たとえば、シングルテナントのロジックアプリを作成する場合は、Azure Service Bus、Azure Event Hubs、SQL Server、MQ で組み込みの操作を使用できます。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
+数と範囲は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
+
+
+たとえば、シングルテナントのロジックアプリを作成する場合は、Azure Service Bus、Azure Event Hubs、SQL Server、MQ で組み込みの操作を使用できます。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
 
 次の一覧では、[組み込みのトリガーとアクション](#understand-triggers-and-actions)で実行できるタスクの一部についてのみ説明します。
 
@@ -53,18 +57,6 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         [**延期期限**][schedule-delay-until-doc]: 指定された日時までワークフローを一時停止します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内のバッチのアイコン][batch-icon]][batch-doc]
-        \
-        \
-        [**バッチ**][batch-doc]
-        \
-        \
-        [**メッセージのバッチ処理**][batch-doc]: バッチ内のメッセージを処理するワークフローをトリガーします。
-        \
-        \
-        [**バッチ処理するメッセージの送信**][batch-doc]: **[メッセージのバッチ処理]** トリガーで現在開始されている既存のワークフローを呼び出します。
-    :::column-end:::
-    :::column:::
         [![Logic Apps 内の HTTP のアイコン][http-icon]][http-doc]
         \
         \
@@ -89,6 +81,18 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         \
         \
         [**応答**][http-request-doc]: 同じワークフローで **[HTTP 要求の受信時]** トリガーによって受信された要求に応答します。
+    :::column-end:::
+    :::column:::
+        [![Logic Apps 内のバッチのアイコン][batch-icon]][batch-doc]
+        \
+        \
+        [**バッチ**][batch-doc]
+        \
+        \
+        [**メッセージのバッチ処理**][batch-doc]: バッチ内のメッセージを処理するワークフローをトリガーします。
+        \
+        \
+        [**バッチ処理するメッセージの送信**][batch-doc]: **[メッセージのバッチ処理]** トリガーで現在開始されている既存のワークフローを呼び出します。
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,6 +127,12 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         **[HTTP 要求の受信時]** という名前の要求トリガーで始まる他のワークフローを呼び出します。
     :::column-end:::
     :::column:::
+        [![Logic Apps の SQL Server アイコン][sql-server-icon]][sql-server-doc]
+        \
+        \
+        [**SQL Server**][sql-server-doc] <br>(*シングルテナントのみ*)     \
+        \
+        オンプレミスの SQL Server、またはクラウド内の Azure SQL Database に接続して、レコードの管理、ストアド プロシージャの実行、クエリの実行を行えるようにします。 <p>**注**: シングルテナント Azure Logic Apps では、SQL の組み込みコネクタ操作とマネージド コネクタ操作の両方を行えますが、マルチテナント Azure Logic Apps ではマネージド コネクタ操作のみを行えます。 <p>詳細については、「[Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境の比較](../logic-apps/single-tenant-overview-compare.md)」を確認してください。
     :::column-end:::
 :::row-end:::
 
@@ -320,9 +330,10 @@ Logic Apps では、データ出力とその形式を操作するための組み
 > [!div class="nextstepaction"]
 > [Logic Apps から呼び出しできるカスタム API の作成](../logic-apps/logic-apps-create-api-app.md)
 
-<!-- Built-ins icons -->
+<!-- Built-in icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
 [azure-app-services-icon]: ./media/apis-list/azure-app-services.png
+[azure-blob-storage-icon]: ./media/apis-list/azure-blob-storage.png
 [azure-functions-icon]: ./media/apis-list/azure-functions.png
 [azure-logic-apps-icon]: ./media/apis-list/azure-logic-apps.png
 [batch-icon]: ./media/apis-list/batch.png
@@ -338,18 +349,20 @@ Logic Apps では、データ出力とその形式を操作するための組み
 [inline-code-icon]: ./media/apis-list/inline-code.png
 [schedule-icon]: ./media/apis-list/recurrence.png
 [scope-icon]: ./media/apis-list/scope.png
+[sql-server-icon]: ./media/apis-list/sql.png
 [switch-icon]: ./media/apis-list/switch.png
 [terminate-icon]: ./media/apis-list/terminate.png
 [until-icon]: ./media/apis-list/until.png
 [variables-icon]: ./media/apis-list/variables.png
 
-
 <!--Built-in doc links-->
 [azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "API を管理および発行するための Azure API Management サービス インスタンスを作成します。"
 [azure-app-services-doc]: ../logic-apps/logic-apps-custom-api-host-deploy-call.md "App Service API Apps を使用してロジック アプリを統合します。"
+[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "Azure Blob Storage コネクタを使用して BLOB コンテナーのファイルを管理します。"
 [azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Azure Functions を使用してロジック アプリを統合します。"
 [batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "グループ、またはバッチとしてメッセージを処理します。"
 [condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "配列のフィルター処理や CSV と HTML のテーブルの作成などのデータ操作を実行します。"
 [for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "配列内のすべての項目に対して同じアクションを実行します。"
 [http-doc]: ./connectors-native-http.md "ロジック アプリから HTTP または HTTPS エンドポイントを呼び出す"
 [http-request-doc]: ./connectors-native-reqres.md "ロジック アプリで HTTP 要求を受信する"
@@ -365,8 +378,8 @@ Logic Apps では、データ出力とその形式を操作するための組み
 [schedule-recurrence-doc]:  ./connectors-native-recurrence.md "定期的なスケジュールでロジック アプリを実行する"
 [schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "連続したチャンク内のデータを処理する必要があるロジック アプリを実行する"
 [scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "アクションをグループに編成します。グループ内のアクションの実行が完了すると、グループ独自のステータスが取得されます。"
+[sql-server-doc]: ./connectors-create-api-sqlazure.md "Azure SQL Database または SQL Server に接続します。SQL データベース テーブルのエントリを作成、更新、取得、削除します"
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "アクションをケースに編成します。ケースには、一意の値が割り当てられます。値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。一致が存在しない場合は、既定のケースを実行します。"
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "アクティブに実行中のロジック アプリのワークフローを停止またはキャンセルします。"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。"
-[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "配列のフィルター処理や CSV と HTML のテーブルの作成などのデータ操作を実行します。"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "変数に対する操作を実行します。たとえば、文字列または配列の変数に対する初期化、設定、増分、減分、追加などです。"

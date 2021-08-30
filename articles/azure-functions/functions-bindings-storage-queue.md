@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 7497f98ec82596417a8c3fbb8cef11814e7df6c0
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ea5f9511cd9ae6d569d833ef8f950f1391c30f38
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412189"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112187"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Queue storage のトリガーとバインドの概要
 
@@ -28,7 +28,7 @@ Azure Functions は、新しい Azure Queue storage メッセージが作成さ�
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| Language                                        | 追加手段                                   | 解説 
+| 言語                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)をお勧めします。 |
@@ -80,7 +80,7 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
 
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|キューのポーリングの最大間隔。 最小は 00:00:00.100 (100 ミリ秒) であり、最大 00:01:00 (1 分) まで増分されます。  Functions 2.x 以降では、データ型は `TimeSpan`であり、バージョン 1.x ではミリ秒単位です。|
+|maxPollingInterval|00:01:00|キューのポーリングの最大間隔。 最小間隔は 00:00:00.100 (100 ミリ秒) です。 間隔は、`maxPollingInterval` を上限としてインクリメントされます。 `maxPollingInterval` の既定値は 00:01:00 (1 分) です。 `maxPollingInterval` は 00:00:00.100 (100 ミリ秒) 以上であることが必要です。 Functions 2.x 以降では、データ型は `TimeSpan` です。 Functions 1.x では、ミリ秒単位となります。|
 |visibilityTimeout|00:00:00|メッセージの処理が失敗したときの再試行間隔。 |
 |batchSize|16|Functions ランタイムが同時に取得して並列で処理するキュー メッセージの数。 処理中のメッセージの数が `newBatchThreshold` まで減少すると、ランタイムは は別のバッチを取得し、そのメッセージの処理を開始します。 そのため、1 つの関数につき同時に処理されるメッセージの最大数は、`batchSize` に `newBatchThreshold` を加えた値です。 この制限は、キューによってトリガーされる各関数に個別に適用されます。 <br><br>1 つのキューで受信した複数のメッセージの並列実行を回避したい場合は、`batchSize` を 1 に設定します。 ただし、この設定では、関数アプリが単一の仮想マシン (VM) で実行されている限り、コンカレンシーは実現しません。 この関数アプリを複数の VM にスケール アウトすると、各 VM では、キューによってトリガーされる関数ごとに 1 つのインスタンスを実行できます。<br><br>最大の `batchSize` は 32 です。 |
 |maxDequeueCount|5|有害キューに移動する前に、メッセージの処理を試行する回数。|

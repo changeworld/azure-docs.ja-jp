@@ -3,17 +3,17 @@ title: EA から Microsoft 顧客契約の API に移行する - Azure
 description: この記事では、Microsoft Enterprise Agreement (EA) から Microsoft 顧客契約への移行とその結果について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 07/13/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 9e7d1d08a3d69337cc205bdaf4bf3afc8941dd77
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2d3bae2f6282a4e505e2d5aa9ce2cf3f52b80006
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750301"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762268"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
@@ -42,7 +42,7 @@ MCA API と新しい統合により、以下の操作が可能になります。
 - [Azure AD 認証を使用](/rest/api/azure/#create-the-request)するようにすべてのプログラミング コードを更新します。
 - EA API 呼び出しを置き換える MCA API 呼び出しのプログラム コードを更新します。
 - 新しいエラー コードを使用するように、エラー処理を更新します。
-- その他の必要なアクションについて、Cloudyn や Power BI などの追加統合内容を確認します。
+- その他の必要なアクションについて、Power BI などの追加統合サービスを確認します。
 
 ## <a name="ea-apis-replaced-with-mca-apis"></a>MCA API で置き換えられた EA API
 
@@ -78,7 +78,6 @@ EA API は、認証と承認に API キーを使用します。 MCA API は Azur
 
 | 目的 | 古いオファリング | 新しいオファリング |
 | --- | --- | --- |
-| Cloudyn | Cloudyn | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
 | Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) コンテンツ パックおよびコネクタ |  [Azure Consumption Insights コネクタ](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>残高とクレジットを取得するための API
@@ -515,18 +514,6 @@ Reservation Details API を使用して予約の概要を取得するには:
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationSummaries?api-version=2019-01-01` |
 
-
-
-## <a name="move-from-cloudyn-to-cost-management"></a>Cost Management に Cloudyn から移行する
-
-Cloudyn を使用する組織は、あらゆるコスト管理ニーズに対して [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) から使用し始める必要があります。 Cost Management はオンボードせずに、8 時間の待機時間で Azure portal で使用できます。 詳細については、[Cost Management のドキュメント](../index.yml)を参照してください。
-
-Azure Cost Management では、次の操作が可能になります。
-
-- 事前に定義された予算に対してコストを時系列で表示します。 毎日のコスト パターンを分析して、異常な支出を特定し停止します。 タグ、リソース グループ、サービス、および場所別にコストを分割します。
-- 使用状況とコストの制限を設定し、重要なしきい値に近づくと通知を受け取るように予算を作成します。 カスタム イベントをトリガーし、お客様の条件に対する厳密な制限を適用するアクション グループを使用した自動化を設定します。
-- Azure Advisor からの推奨事項を使用してコストと使用状況を最適化します。 予約により購入の最適化を見つけ、使用率の低い仮想マシンを小型化し、使用率の低いリソースを削除して、予算内に収めます。
-- コストと使用量のデータ エクスポートのスケジュールを設定し、CSV ファイルを毎日、ストレージ アカウントに発行します。 課金データを同期させ最新の状態に保つために、外部システムとの統合を自動化します。
 
 ## <a name="power-bi-integration"></a>Power BI 統合
 

@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 908d9492a6eb699c999fe93b92697dc511dca082
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 0967e440a661d6bf51dc5206e5c21cdda45db073
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110189292"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565132"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -57,7 +57,7 @@ Application Insights の統合が有効になっていると、利用統計情�
 
 ### <a name="custom-telemetry-data"></a>カスタム利用統計情報
 
-[C#](functions-dotnet-class-library.md#log-custom-telemetry-in-c-functions) と [JavaScript](functions-reference-node.md#log-custom-telemetry) では、Application Insights SDK を使用してカスタム利用統計情報を書き込むことができます。
+[C#](functions-dotnet-class-library.md#log-custom-telemetry-in-c-functions)、[JavaScript](functions-reference-node.md#log-custom-telemetry)、および [Python](functions-reference-python.md#log-custom-telemetry) では、Application Insights SDK を使用してカスタム利用統計情報を書き込むことができます。
 
 ### <a name="dependencies"></a>依存関係
 
@@ -80,6 +80,7 @@ Application Insights では、収集された依存関係データの "_アプ�
 
 + [C# 関数でカスタム テレメトリをログに記録する](functions-dotnet-class-library.md#log-custom-telemetry-in-c-functions)
 + [JavaScript 関数でカスタム テレメトリをログに記録する](functions-reference-node.md#log-custom-telemetry) 
++ [Python 関数でカスタム テレメトリをログに記録する](functions-reference-python.md#log-custom-telemetry)
 
 ## <a name="writing-to-logs"></a>ログへの書き込み 
 
@@ -123,6 +124,10 @@ _この機能はプレビュー段階にあります。_
 [Azure Functions スケール コントローラー](./event-driven-scaling.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights にログを出力させることで、Function App のためにスケール コントローラーで下されている決定をより詳細に理解できます。 生成されたログを、別のサービスによる分析のために BLOB ストレージに格納することもできます。 
 
 この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前のアプリケーション設定を、ご利用の関数アプリの設定に追加します。 詳細については、「[スケール コントローラー ログを構成する](configure-monitoring.md#configure-scale-controller-logs)」を参照してください。
+
+## <a name="azure-monitor-metrics"></a>Azure Monitor のメトリック
+
+Application Insights によって収集されるログベースのテレメトリ データに加えて、[Azure Monitor メトリック](../azure-monitor/essentials/data-platform-metrics.md)から、関数アプリがどのように実行されているかに関するデータも取得できます。 詳細については、「[Azure Functions と共に Azure Monitor メトリックを使用する](monitor-metrics.md)」を参照してください。
 
 ## <a name="report-issues"></a>レポートに関する問題
 

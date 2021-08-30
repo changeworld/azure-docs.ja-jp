@@ -3,13 +3,13 @@ title: プライベート Azure Kubernetes Service クラスターを作成す�
 description: プライベート Azure Kubernetes Service (AKS) クラスターの作成方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 3/31/2021
-ms.openlocfilehash: 7238b0d9fdf3ada1f4133c68e5248b7e20aecf91
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 6/14/2021
+ms.openlocfilehash: 0e6e825f448ae97f211d9dace03254651012cadd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371603"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747845"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -71,15 +71,35 @@ az aks create \
 次のパラメーターを使用してプライベート DNS ゾーンを構成できます。
 
 - "System"。既定値でもあります。 --private-dns-zone 引数を省略すると、AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。
-- "None"。AKS によってプライベート DNS ゾーン (プレビュー) が作成されないことを意味します。  この場合、独自の DNS サーバーを使用し、プライベート FQDN の DNS 解決を構成する必要があります。  DNS 解決を構成しない場合、エージェント ノード内でのみ DNS の解決が可能になり、デプロイ後にクラスターの問題が発生します。 
+- "None"。既定でパブリック DNS に設定されます。これは、AKS によってプライベート DNS ゾーン (プレビュー) が作成されないことを意味します。  
 - "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID"。Azure グローバル クラウド用に `privatelink.<region>.azmk8s.io` の形式でプライベート DNS ゾーンを作成する必要があります。 そのプライベート DNS ゾーンのリソース ID は、後で必要になります。  さらに、少なくとも `private dns zone contributor` および `vnet contributor` ロールを持つユーザー割り当て ID またはサービス プリンシパルも必要になります。
   - プライベート DNS ゾーンが AKS クラスターとは異なるサブスクリプションにある場合は、両方のサブスクリプションで Microsoft.ContainerServices を登録する必要があります。
   - "fqdn-subdomain" は、サブドメインの機能を `privatelink.<region>.azmk8s.io` に提供するためにのみ、"CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" と共に使用できます。
 
 ### <a name="prerequisites"></a>前提条件
 
-* AKS プレビュー バージョン 0.5.7 以降
-* API バージョン 2020-11-01 以降
+* AKS プレビュー バージョン 0.5.19 以降
+* API バージョン 2021-05-01 以降
+
+fqdn-subdomain 機能を使用するには、サブスクリプションで `EnablePrivateClusterFQDNSubdomain` 機能フラグを有効にする必要があります。 
+
+`EnablePrivateClusterFQDNSubdomain` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterFQDNSubdomain"
+```
+
+[az feature list][az-feature-list] コマンドを使用して登録状態を確認できます。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterFQDNSubdomain')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
 
@@ -91,6 +111,44 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
+```
+
+## <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>パブリック DNS アドレスがあるプライベート AKS クラスターを作成する
+
+パブリック DNS オプションを利用すると、プライベート クラスターのルーティング オプションを簡略化できます。  
+
+![パブリック DNS](https://user-images.githubusercontent.com/50749048/124776520-82629600-df0d-11eb-8f6b-71c473b6bd01.png)
+
+1. プライベート AKS クラスターをプロビジョニングするときに `--enable-public-fqdn` を指定すると、AKS は、その FQDN の追加の A レコードを Azure パブリック DNS に作成します。 エージェント ノードにより引き続きプライベート DNS ゾーンの A レコードが使用され、API サーバーとの通信のためにプライベート エンドポイントのプライベート IP アドレスが解決されます。
+
+2. `--enable-public-fqdn` と `--private-dns-zone none` の両方を使用した場合、クラスターはパブリック FQDN のみを持ちます。 このオプションを使用する場合、API サーバーの FQDN の名前解決にプライベート DNS ゾーンが作成または使用されることはありません。 API の IP は引き続きプライベートであり、パブリックにルーティングできません。
+
+### <a name="register-the-enableprivateclusterpublicfqdn-preview-feature"></a>`EnablePrivateClusterPublicFQDN` プレビュー機能を登録する
+
+新しい Enable Private Cluster Public FQDN API を使用するには、対象のサブスクリプションで `EnablePrivateClusterPublicFQDN` 機能フラグを有効にする必要があります。
+
+`EnablePrivateClusterPublicFQDN` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterPublicFQDN"
+```
+
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterPublicFQDN')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>パブリック DNS アドレスがあるプライベート AKS クラスターを作成する
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <private-dns-zone-mode> --enable-public-fqdn
 ```
 
 ## <a name="options-for-connecting-to-the-private-cluster"></a>プライベート クラスターに接続するための選択肢
@@ -198,6 +256,7 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitn
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-extension-add]: /cli/azure/extension#az_extension_add
 [az-extension-update]: /cli/azure/extension#az_extension_update

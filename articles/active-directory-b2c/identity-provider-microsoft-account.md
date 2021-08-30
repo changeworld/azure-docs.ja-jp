@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 08/09/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 60a846d72c1760c7f9dddac891f36e834b8364f3
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 324e494271287824c09030eaf918cd7f3881bc01
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028164"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178053"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Microsoft アカウントでのサインアップおよびサインインを設定する
 
@@ -33,6 +33,14 @@ ms.locfileid: "107028164"
 ## <a name="prerequisites"></a>[前提条件]
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+### <a name="verify-the-applications-publisher-domain"></a>アプリケーションのパブリッシャー ドメインを検証する
+2020 年 11 月現在、新しいアプリケーション登録は、[アプリケーションの発行元ドメインが検証済み](../active-directory/develop/howto-configure-publisher-domain.md)***かつ*** 会社の ID が Microsoft Partner Network で検証され、アプリケーションに関連付けられている場合を除き、ユーザーの同意プロンプトで未検証として表示されます。 (この変更の詳細については[こちら](../active-directory/develop/publisher-verification-overview.md)を参照してください)。Azure AD B2C ユーザー フローの場合、発行元のドメインは、[Microsoft アカウント](../active-directory-b2c/identity-provider-azure-ad-single-tenant.md)またはその他の Azure AD テナントを ID プロバイダーとして使用する場合にのみ表示されることに注意してください。 これらの新しい要件を満たすには、次の手順を実行します。
+
+1. [自分の Microsoft Partner Network (MPN) アカウントを使用して会社 ID を確認します](/partner-center/verification-responses)。 このプロセスにより、会社と会社の主要連絡先に関する情報が検証されます。
+1. 発行元の確認プロセスを完了し、次のいずれかのオプションを使用して、MPN アカウントをアプリ登録に関連付けます。
+   - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD テナント内にある場合は、[アプリ登録ポータルでアプリを検証](../active-directory/develop/mark-app-as-publisher-verified.md)します。
+   - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD B2C テナント内にある場合は、[Microsoft Graph API を使用して発行元がアプリを検証済みとしてマーク](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)します (たとえば、Graph Explorer を使用)。 アプリの検証済み発行元を設定するための UI は、現在、Azure AD B2C テナントでは無効になっています。
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する
 

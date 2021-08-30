@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6298c8483c44472fe6f52f3e48b5c529c2d978a5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0a2f1e40b85eea5f02aec93a0cac97acc5dfeaf9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457495"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732410"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>Azure AD B2C カスタム ポリシーのトラブルシューティング
 
@@ -31,7 +31,7 @@ Azure AD B2C 関連付け ID は、認可要求に関連付けられている一
 - サインイン要求の Azure Application Insights ログを検索します。
 - REST API に関連付け ID を渡し、それを使用してサインイン フローを識別します。 
 
-関連付け ID は、新しいセッションが確立されるたびに変更されます。 ポリシーをデバッグする場合は、既存のブラウザー タブを閉じてください。 または、新しいプライベート モードのブラウザーを開きます。
+関連付け ID は、新しいセッションが確立されるたびに変更されます。 お使いのポリシーをデバッグする場合は、必ず既存のブラウザー タブを閉じるか、新しいプライベート モードのブラウザーを開いてください。
 
 ### <a name="get-the-azure-ad-b2c-correlation-id"></a>Azure AD B2C 関連付け ID の取得
 

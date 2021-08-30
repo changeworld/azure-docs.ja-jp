@@ -2,13 +2,14 @@
 title: Azure Service Bus での Azure リソースのマネージド ID
 description: この記事では、Azure Service Bus エンティティ (キュー、トピック、サブスクリプション) にアクセスするためにマネージド ID を使用する方法について説明します。
 ms.topic: article
-ms.date: 04/23/2021
-ms.openlocfilehash: 3efe513d5e19ca13567b05e8f8d0aafb402ae879
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 06/14/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ed6f7d495466139a7d1a98aed7d5323f7ad4c074
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161125"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123204"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する
 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、デプロイに関連付けられ、その下でアプリケーション コードが実行されるセキュリティ保護された ID を作成できる Azure 間機能です。 この ID は、アプリケーションに必要な特定の Azure リソースにアクセスするためのカスタム アクセス許可を付与するアクセス制御ロールに関連付けることができます。
@@ -92,30 +93,10 @@ Azure ロールの割り当ての詳細については、[Azure Active Directory
 この設定を有効にすると、ご利用の Azure Active Directory (Azure AD) に新しいサービス ID が作成され、App Service ホストに構成されます。
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てるには
-ここで、サービス ID をご利用の Service Bus リソースの必要なスコープ内のロールに割り当てます。 Service Bus 名前空間にロールを割り当てるには、Azure portal で名前空間に移動します。 リソースの [アクセス制御 (IAM)] 設定を表示し、次の手順に従ってロールの割り当てを管理します。
+目的のスコープ (Service Bus 名前空間、リソース グループ、サブスクリプション) で、いずれかの [Service Bus ロール](#azure-built-in-roles-for-azure-service-bus)をマネージド サービス ID に割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。 
 
 > [!NOTE]
-> 次の手順では、Service Bus 名前空間にサービス ID のロールを割り当てます。 同じ手順に従って、他のサポートされているスコープ (リソース グループとサブスクリプション) でロールを割り当てることができます。 
-> 
-> 存在しない場合は、[Service Bus Messaging 名前空間を作成](service-bus-create-namespace-portal.md)します。 
-
-1. Azure portal で、ご利用の Service Bus 名前空間に移動し、その名前空間の **[概要]** を表示します。 
-1. 左側のメニューの **[アクセス制御 (IAM)]** を選択して、Service Bus 名前空間のアクセス制御設定を表示します。
-1.  **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-3.  **[追加]** を選択し、 **[ロール割り当ての追加]** を選択します。
-4.  **[ロールの割り当ての追加]** ページで、これらの手順に従います。
-    1. **[ロール]** で、割り当てる Service Bus ロールを選択します。 この例では、**Azure Service Bus データ所有者** です。
-    1. **[アクセスの割り当て先]** フィールドで、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。 
-    1. Web アプリのマネージド ID が作成された **サブスクリプション** を選択します。
-    1. 作成した Web アプリの **マネージド ID** を選択します。 ID の既定の名前は、Web アプリの名前と同じです。 
-    1. 次に、 **[保存]** を選択します。
-        
-        ![[ロールの割り当ての追加] ページ](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-
-    ロールを割り当てると、Web アプリケーションには、定義されたスコープの下で Service Bus リソースへのアクセス権が付与されます。 
-
-    > [!NOTE]
-    > マネージド ID をサポートするサービスの一覧については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
+> マネージド ID をサポートするサービスの一覧については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ### <a name="run-the-app"></a>アプリを実行する
 次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)の Web アプリケーション コードを使用します。  

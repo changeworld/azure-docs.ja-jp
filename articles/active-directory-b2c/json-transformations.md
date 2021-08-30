@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 06/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8d6381b6355f22ab5b60fe734b0b100c29bd6505
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119877"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981036"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -175,6 +175,28 @@ JSON データから、指定された要素を取得します。
 - 出力要求:
   - **extractedClaim**: someone@example.com
 
+GetClaimFromJson 要求変換では、JSON データから 1 つの要素が取得されます。 前の例では、emailAddress が該当します。 DisplayName を取得するには、別の要求変換を作成します。 次に例を示します。
+
+```xml
+<ClaimsTransformation Id="GetDispalyNameClaimFromJson" TransformationMethod="GetClaimFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="customUserData" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="claimToExtract" DataType="string" Value="displayName" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="displayName" TransformationClaimType="extractedClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- 入力要求:
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName":"Someone"}
+- 入力パラメーター:
+    - **claimToExtract**: displayName
+- 出力要求:
+  - **extractedClaim**: Someone
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
 

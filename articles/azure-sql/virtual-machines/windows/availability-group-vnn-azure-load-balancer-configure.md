@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/02/2020
+ms.date: 06/14/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6a31d32a4888e50cdfccf1bf609418fb31ef69e3
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 902704052524a396812e4d9d3848c754c3a7c4a3
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569595"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580892"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>AG VNN リスナーのロード バランサーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,6 +43,8 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 
 
 ## <a name="create-load-balancer"></a>ロード バランサーの作成
+
+内部ロード バランサーまたは外部ロード バランサーを作成することができます。 内部ロード バランサーは、ネットワークの内部にあるプライベート リソースからのみアクセスできます。  外部ロード バランサーは、パブリック リソースから内部リソースへとトラフィックをルーティングすることができます。 内部ロード バランサーを構成するときは、負荷分散規則を構成する際のフロントエンド IP に、可用性グループ リスナー リソースと同じ IP アドレスを使用します。 外部ロード バランサーを構成するときは、可用性グループ リスナーと同じ IP アドレスは使用できません。リスナーの IP アドレスをパブリック IP アドレスにすることはできないためです。 したがって外部ロード バランサーを使用するには、可用性グループと同じサブネット内の IP アドレスのうち、他の IP アドレスと競合しないアドレスを論理的に割り当て、そのアドレスを負荷分散規則のフロントエンド IP アドレスとして使用します。 
 
 [Azure portal](https://portal.azure.com) を使用してロード バランサーを作成します。
 
@@ -77,7 +79,7 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 
 1. VM を含む可用性セットにバックエンド プールを関連付けます。
 
-1. **[ターゲット ネットワーク IP 構成]** で、 **[仮想マシン]** を選択し、クラスター ノードとして参加する仮想マシンを選びます。 必ず、FCI または可用性グループをホストするすべての仮想マシンを含めます。
+1. **[ターゲット ネットワーク IP 構成]** で、 **[仮想マシン]** を選択し、クラスター ノードとして参加する仮想マシンを選びます。 必ず、可用性グループをホストするすべての仮想マシンを含めます。
 
 1. **[OK]** を選択して、バックエンド プールを作成します。
 
@@ -99,6 +101,10 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 
 ## <a name="set-load-balancing-rules"></a>負荷分散規則を設定する
 
+ロード バランサーの負荷分散規則を設定します。 
+
+# <a name="private-load-balancer"></a>[プライベート ロード バランサー](#tab/ilb)
+
 1. [ロード バランサー] ペインで、 **[負荷分散規則]** を選択します。
 
 1. **[追加]** を選択します。
@@ -106,7 +112,7 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 1. 次のように負荷分散規則のパラメーターを設定します。
 
    - **Name**:負荷分散規則の名前。
-   - **[フロントエンド IP アドレス]** : SQL Server FCI または AG リスナーのクラスター化されたネットワーク リソースの IP アドレス。
+   - **フロントエンド IP アドレス**: AG リスナーのクラスター化されたネットワーク リソースの IP アドレス。
    - **ポート**:SQL Server の TCP ポート。 既定のインスタンス ポートは 1433 です。
    - **[バックエンド ポート]** : **[フローティング IP (ダイレクト サーバー リターン)]** を有効にしたときの **[ポート]** の値と同じポート。
    - **[バックエンド プール]** : 先ほど構成したバックエンド プール名。
@@ -117,9 +123,33 @@ SQL Server 2019 CU8 以降を使用している顧客向けの代替の接続オ
 
 1. **[OK]** を選択します。
 
+# <a name="public-load-balancer"></a>[パブリック ロード バランサー](#tab/elb)
+
+1. [ロード バランサー] ペインで、 **[負荷分散規則]** を選択します。
+
+1. **[追加]** を選択します。
+
+1. 次のように負荷分散規則のパラメーターを設定します。
+
+   - **Name**:負荷分散規則の名前。
+   - **フロントエンド IP アドレス**: クライアントがパブリック エンドポイントへの接続に使用するパブリック IP アドレス。 
+   - **ポート**:SQL Server の TCP ポート。 既定のインスタンス ポートは 1433 です。
+   - **バックエンド ポート**: AG のリスナーによって使用される同じポート。 既定のポートは 1433 です。 
+   - **[バックエンド プール]** : 先ほど構成したバックエンド プール名。
+   - **[正常性プローブ]** : 先ほど構成した正常性プローブ。
+   - **[セッション永続化]** : [なし] :
+   - **[アイドル タイムアウト (分)]** : 4.
+   - **[フローティング IP (ダイレクト サーバー リターン)]** : 無効にします。
+
+1. **[OK]** を選択します。
+
+---
+
 ## <a name="configure-cluster-probe"></a>クラスターのプローブを構成する
 
 PowerShell でクラスターのプローブ ポート パラメーターを設定します。
+
+# <a name="private-load-balancer"></a>[プライベート ロード バランサー](#tab/ilb)
 
 クラスターのプローブ ポート パラメーターを設定するには、使用環境の値を使用して、次のスクリプトで変数を更新します。 スクリプトから山かっこ (`<` および `>`) を削除します。
 
@@ -140,8 +170,8 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 |**Value**|**説明**|
 |---------|---------|
 |`Cluster Network Name`| ネットワークの Windows Server フェールオーバー クラスターの名前。 **[フェールオーバー クラスター マネージャー]**  >  **[ネットワーク]** で、ネットワークを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
-|`AG listener IP Address Resource Name`|SQL Server FCI または AG リスナーの IP アドレスのリソース名。 **[フェールオーバー クラスター マネージャー]**  >  **[Roles]\(ロール\)** で、SQL Server FCI ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
-|`ILBIP`|内部ロード バランサー (ILB) の IP アドレス。 このアドレスは、Azure portal で ILB のフロントエンド アドレスとして構成されます。 これは、SQL Server FCI の IP アドレスでもあります。 **[フェールオーバー クラスター マネージャー]** の `<AG listener IP Address Resource Name>` がある同じプロパティ ページで見つけることができます。|
+|`AG listener IP Address Resource Name`|AG リスナーの IP アドレスのリソース名。 **[フェールオーバー クラスター マネージャー]**  >  **[Roles]\(ロール\)** で、可用性グループ ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
+|`ILBIP`|内部ロード バランサー (ILB) の IP アドレス。 このアドレスは、Azure portal で ILB のフロントエンド アドレスとして構成されます。  これは可用性グループ リスナーと同じ IP アドレスです。 **[フェールオーバー クラスター マネージャー]** の `<AG listener IP Address Resource Name>` がある同じプロパティ ページで見つけることができます。|
 |`nnnnn`|ロード バランサーの正常性プローブで構成したプローブ ポート。 未使用の TCP ポートが有効です。|
 |"SubnetMask"| クラスター パラメーターのサブネット マスク。 TCP IP のブロードキャスト アドレス `255.255.255.255` である必要があります。| 
 
@@ -151,6 +181,45 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 ```powershell
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
+
+# <a name="public-load-balancer"></a>[パブリック ロード バランサー](#tab/elb)
+
+クラスターのプローブ ポート パラメーターを設定するには、使用環境の値を使用して、次のスクリプトで変数を更新します。 スクリプトから山かっこ (`<` および `>`) を削除します。
+
+```powershell
+$ClusterNetworkName = "<Cluster Network Name>"
+$IPResourceName = "<Availability group Listener IP Address Resource Name>" 
+$ELBIP = "<n.n.n.n>" 
+[int]$ProbePort = <nnnnn>
+
+Import-Module FailoverClusters
+
+Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ELBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+```
+
+次の表では、更新する必要がある値について説明します。
+
+
+|**Value**|**説明**|
+|---------|---------|
+|`Cluster Network Name`| ネットワークの Windows Server フェールオーバー クラスターの名前。 **[フェールオーバー クラスター マネージャー]**  >  **[ネットワーク]** で、ネットワークを右クリックして **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
+|`AG listener IP Address Resource Name`|AG リスナーの IP アドレスのリソース名。 **[フェールオーバー クラスター マネージャー]**  >  **[ロール]** で、可用性グループ ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして、 **[プロパティ]** を選択します。 正しい値は **[全般]** タブの **[名前]** にあります。|
+|`ELBIP`|外部ロード バランサー (ELB) の IP アドレス。 このアドレスは、Azure portal で ELB のフロントエンド アドレスとして構成され、外部リソースからパブリック ロード バランサーへの接続に使用されます。|
+|`nnnnn`|ロード バランサーの正常性プローブで構成したプローブ ポート。 未使用の TCP ポートが有効です。|
+|"SubnetMask"| クラスター パラメーターのサブネット マスク。 TCP IP のブロードキャスト アドレス `255.255.255.255` である必要があります。| 
+
+
+クラスターのプローブを設定したら、PowerShell ですべてのクラスター パラメーターを確認できます。 このスクリプトを実行します。
+
+```powershell
+Get-ClusterResource $IPResourceName | Get-ClusterParameter
+```
+
+> [!NOTE]
+> 外部ロード バランサーにはプライベート IP アドレスがないため、サブネット内の IP アドレスを解決する VNN DNS 名をユーザーが直接使用することはできません。 パブリック LB のパブリック IP アドレスを使用するか、または DNS サーバーに対する別の DNS マッピングを構成してください。 
+
+
+---
 
 ## <a name="modify-connection-string"></a>接続文字列を変更する 
 
@@ -166,6 +235,7 @@ Get-ClusterResource yourListenerName|Set-ClusterParameter HostRecordTTL 300
 ```
 
 詳細については、SQL Server の[リスナーの接続タイムアウト](/troubleshoot/sql/availability-groups/listener-connection-times-out)に関するドキュメントを参照してください。 
+
 
 > [!TIP]
 > - 1 つのサブネットの HADR ソリューションでも、接続文字列内で MultiSubnetFailover パラメータ = true を設定することで、今後、接続文字列を変更することなく、複数のサブネットにまたがることができます。  

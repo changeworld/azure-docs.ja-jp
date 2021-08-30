@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/03/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 98a8a16a4b9cdf40642e5339de63953b4175f78c
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 0d6281f0767938b8ffd00f1790a629adcb8252d6
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558676"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722406"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-azure-certificate-authentication-powershell"></a>Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:PowerShell
 
@@ -114,7 +114,7 @@ $DNS = "10.2.1.4"
 * -GatewayType は **Vpn**、-VpnType は **RouteBased** にする必要があります。
 * -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションには、**OpenVPN、SSTP**、**IKEv2** があります。 いずれか 1 つを有効にすることも、サポートされるすべての組み合わせを有効にすることもできます。 複数の種類を有効にする場合は、名前をコンマで区切って指定します。 OpenVPN と SSTP は一緒に有効にすることができません。 Android と Linux の strongSwan クライアントおよび iOS と macOS のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
 * 仮想ネットワーク ゲートウェイ 'Basic' SKU では、IKEv2、OpenVPN、RADIUS 認証はサポートされません。 Mac クライアントを仮想ネットワークに接続する予定がある場合は、Basic SKU を使用しないでください。
-* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。 この例では、IKEv2 を使用します。
+* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイの作成が完了するまでに 45 分以上かかる場合があります。 
 
 1. VNet の仮想ネットワーク ゲートウェイを構成、作成します。 ゲートウェイの作成には約 45 分かかります。
 

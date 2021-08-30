@@ -61,7 +61,7 @@
   items:
     - name: プライベート エンドポイントの DNS レコードをエクスポートする
       href: private-endpoint-export-dns.md
-    - name: プライベート エンドポイントのネットワーク ポリシーを無効にする
+    - name: プライベート エンドポイントのネットワーク ポリシーを管理する
       href: disable-private-endpoint-network-policy.md
     - name: Private Link サービスのネットワーク ポリシーを無効にする
       href: disable-private-link-service-network-policy.md

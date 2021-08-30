@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34223e44ddfb59a72f98d31f0df5d9a882e0eb
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 0f2497e47078f91c1649db107dd105227e219ae2
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713596"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565736"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのアクセス レビューを作成する
 
@@ -53,16 +53,22 @@ ms.locfileid: "109713596"
 
 1. **[期間]** を設定して、繰り返しの系列の各レビューでレビュー担当者からの入力を受け付ける日数を定義します。 たとえば、1 月 1 日に始まり、レビューのために 30 日間開いている毎年のレビューをスケジュールして、その月の終わりまでレビュー担当者に対応する時間があるようにします。
 
-1. ユーザーに独自のアクセス レビューを実行させたい場合は、**[レビューアー]** の横にある **[セルフレビュー]** を選択し、レビュー担当者を指定したい場合は、**[特定のレビュー担当者]** を選択します。
+1. ユーザーに独自のアクセス レビューを実行させたい場合は、**[レビューアー]** の横にある **[セルフレビュー]** を選択し、レビュー担当者を指定したい場合は、**[特定のレビュー担当者]** を選択します。 レビュー担当者のマネージャーをレビュー担当者にする場合は、 **[マネージャー]** も選択できます。 このオプションを選択した場合は、システムでマネージャーが見つからない場合にレビューの転送先となる **フォールバック** を追加する必要があります。
 
-    ![レビュー担当者を選択する](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
+1. **[特定のレビュー担当者]** を選択した場合は、どのユーザーがアクセス レビューを行うかを指定します。  ![[レビュー担当者の追加] を選択する](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
-1. **[特定のレビュー担当者]** を選択した場合は、どのユーザーがアクセス レビューを行うかを指定します。
     1. **[レビュー担当者の追加]** を選択します。
     1. **[レビュー担当者を選択する]** ペインで、レビュー担当者にするユーザーを検索して選択します。
     1. レビュー担当者を選択したら、**[選択]** ボタンをクリックします。
 
     ![レビュー担当者を指定する](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
+
+1.  **[マネージャー]** を選択した場合は、フォールバック レビュー担当者を指定します。 
+    1.  **[フォールバック レビュー担当者の追加]** を選択します。
+    1. [フォールバック レビュー担当者の選択] ペインで、レビュー担当者のマネージャーのフォールバック レビュー担当者にするユーザーを検索して選択します。
+    1. フォールバック レビュー担当者を選択したら、 **[選択]**   ボタンをクリックします。 
+
+    ![フォールバック レビュー担当者を追加する](./media/entitlement-management-access-reviews/access-reviews-select-manager.png)
 
 1. 新しいアクセス パッケージを作成しようとしている場合は **[確認および作成]** をクリックし、アクセス パッケージを編集しようとしている場合はページ下部の **[更新]** をクリックします。
 

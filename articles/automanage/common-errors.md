@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 1625c4a73252f202a45dbdefba1576776ea843a0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 7acca746acf17a6ef6dd837907a159cddb20be10
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209547"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004198"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Automanage の一般的なオンボード エラーのトラブルシューティング
 Automanage は、サービスへのマシンのオンボードに失敗する場合があります。 このドキュメントでは、デプロイの失敗をトラブルシューティングする方法について説明し、デプロイが失敗する可能性があるいくつかの一般的な理由を示し、軽減策として考えられる次の手順について説明します。
@@ -23,14 +23,14 @@ Automanage は、サービスへのマシンのオンボードに失敗する場
 
 :::image type="content" source="media\common-errors\failure-flyout.png" alt-text="Automanage の失敗の詳細ポップアップ。":::
 
-### <a name="check-the-deployments-for-the-resource-group-containing-the-failed-vm"></a>失敗した VM を含むリソース グループのデプロイを確認する
+### <a name="check-the-deployments-for-the-resource-group-containing-the-failed-machine"></a>失敗したマシンを含むリソース グループのデプロイを確認する
 失敗時のポップアップには、オンボードに失敗したマシンを含むリソース グループ内のデプロイへのリンクが含まれます。 ポップアップには、デプロイのフィルター処理に使用できるプレフィックス名も含まれています。 デプロイのリンクをクリックすると、デプロイ ブレードが表示され、そこでデプロイをフィルター処理して、お使いのマシンへの Automanage デプロイを表示することができます。 複数のリージョンにわたってデプロイする場合は、正しいリージョンのデプロイをクリックしてください。
 
-### <a name="check-the-deployments-for-the-subscription-containing-the-failed-vm"></a>失敗した VM を含むサブスクリプションのデプロイを確認する
-リソース グループのデプロイにエラーが表示されない場合は、次の手順として、オンボードに失敗した VM を含むサブスクリプションのデプロイを確認します。 失敗のポップアップの **[Deployments for subscription]\(サブスクリプションのデプロイ\)** リンクをクリックし、**Automanage-DefaultResourceGroup** フィルターを使用して、デプロイをフィルター処理します。 失敗ブレードのリソース グループ名を使用して、デプロイをフィルター処理します。 デプロイ名の末尾には、リージョン名が付けられます。 複数のリージョンにわたってデプロイする場合は、正しいリージョンのデプロイをクリックしてください。
+### <a name="check-the-deployments-for-the-subscription-containing-the-failed-machine"></a>失敗したマシンを含むサブスクリプションのデプロイを確認する
+リソース グループのデプロイにエラーが表示されない場合は、次の手順として、オンボードに失敗したマシンを含むサブスクリプションのデプロイを確認します。 失敗のポップアップの **[Deployments for subscription]\(サブスクリプションのデプロイ\)** リンクをクリックし、**Automanage-DefaultResourceGroup** フィルターを使用して、デプロイをフィルター処理します。 失敗ブレードのリソース グループ名を使用して、デプロイをフィルター処理します。 デプロイ名の末尾には、リージョン名が付けられます。 複数のリージョンにわたってデプロイする場合は、正しいリージョンのデプロイをクリックしてください。
 
 ### <a name="check-deployments-in-a-subscription-linked-to-a-log-analytics-workspace"></a>Log Analytics ワークスペースにリンクされているサブスクリプションのデプロイを確認する
-失敗した VM を含むリソース グループまたはサブスクリプションに失敗したデプロイが見つからない場合、および失敗した VM が別のサブスクリプションの Log Analytics ワークスペースに接続されている場合は、Log Analytics ワークスペースにリンクされているサブスクリプションにアクセスして、失敗したデプロイがないか確認します。
+失敗したマシンを含むリソース グループまたはサブスクリプションに失敗したデプロイが見つからない場合、および失敗したマシンが別のサブスクリプションの Log Analytics ワークスペースに接続されている場合は、Log Analytics ワークスペースにリンクされているサブスクリプションにアクセスして、失敗したデプロイがないか確認します。
 
 ## <a name="common-deployment-errors"></a>一般的なデプロイのエラー
 
@@ -51,4 +51,4 @@ ASC ワークスペース: Automanage は現在、"_この場所_" では Log An
 * [Azure Automanage の詳細情報](./automanage-virtual-machines.md)
 
 > [!div class="nextstepaction"]
-> [Azure portal で Azure Automanage for virtual machines を有効にする](quick-create-virtual-machines-portal.md)
+> [Azure portal で Azure Automanage for machines を有効にする](quick-create-virtual-machines-portal.md)

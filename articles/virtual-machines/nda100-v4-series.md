@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: iafinder
-ms.openlocfilehash: 88286e15861ac5be80692d01bfe4768311e3d6e2
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 7a129c8b4c03ea4ff71255f18f0637ef57aa060a
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111886954"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586367"
 ---
 # <a name="nd-a100-v4-series"></a>ND A100 v4-シリーズ
 
@@ -47,8 +47,12 @@ Nvidia NVLink Interconnect:サポートされています<br>
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_ND96asr_v4 | 96 | 900 | 6000 | 8 A100 40 GB GPUs (NVLink 3.0) | 40 | 32 | 80,000 / 800 | 24,000 Mbps | 8 |
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)] <br>
 
+ND A100 v4 シリーズは次のカーネル バージョンをサポートしています。 
+- CentOS 7.9 HPC: 3.10.0-1160.24.1.el7.x86_64 <br>
+- Ubuntu 18.04: 5.4.0-1043-azure <br>
+- Ubuntu 20.04: 5.4.0-1046-azure <br>
 
 ## <a name="other-sizes"></a>その他のサイズ
 
