@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 1fb18deaa4a9cbb43aa75fb21ab8d58fd8976791
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: dbb2834d6d51f2555da05863c606b4678b9a17b7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293484"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772287"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache にカスタマー マネージド暗号化キーを使用する
 
@@ -122,7 +122,7 @@ Azure HPC Cache を作成する際には、暗号化キーのソースを指定�
 
 これらの設定は省略可能です。
 
-* [自動キー ローテーション](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview)を使用する場合は、 **[Always use current key version]\(常に現在のキーバージョンを使用する\)** チェックボックスをオンにします。
+* [自動キー ローテーション](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)を使用する場合は、 **[Always use current key version]\(常に現在のキーバージョンを使用する\)** チェックボックスをオンにします。
 
 * このキャッシュに特定のマネージド ID を使用する場合は、 **[マネージド ID]** セクションで **[ユーザー割り当て]** を選択し、使用する ID を選択します。 ヘルプを確認するには、[マネージド ID に関するドキュメント](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)を参照してください。
 
