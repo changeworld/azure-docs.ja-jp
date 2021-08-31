@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 346cfa898b5745b5ba8e31635337456ea9adb02d
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: ca240dd4684bfe57cd7e5a0ea1db928768d0fa22
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581720"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694581"
 ---
 # <a name="evaluate-model-performance-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 この記事では、Machine Learning Studio (クラシック) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。  モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。 その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。 Machine Learning Studio (クラシック) では、機械学習の 2 つのメイン モジュールを使用したモデルの評価がサポートされています。 
 + [モデルの評価][evaluate-model] 

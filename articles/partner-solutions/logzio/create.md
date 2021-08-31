@@ -4,15 +4,15 @@ description: Azure で Logz.io リソースを作成する方法について説�
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 07/28/2021
+ms.date: 08/17/2021
 ms.author: tomfitz
 ms.custom: references_regions
-ms.openlocfilehash: 323508356678da00f75918fcd59244fd5c860bcc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 55b5057542af2812a6d5c21acf3d4a9e1f64c293
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779240"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429346"
 ---
 # <a name="quickstart-create-a-logzio-resource-in-azure-portal"></a>クイックスタート: Azure portal で Logz.io リソースを作成する
 
@@ -44,7 +44,7 @@ Azure portal を使用して、Azure Marketplace で Logz.io を見つけます�
 
 | プロパティ | 説明 |
 | ---- | ---- |
-| **サブスクリプション** | ドロップダウン メニューから、所有者アクセス権を持っている Azure サブスクリプションを選択します。 |
+| **[サブスクリプション]** | ドロップダウン メニューから、所有者アクセス権を持っている Azure サブスクリプションを選択します。 |
 | **リソース グループ** | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 [リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)は、Azure ソリューションの関連するリソースを保持するコンテナーです。 |
 | **Logz アカウント名** | 作成する Logz.io アカウントの名前を指定します。 |
 | **場所** | **[米国西部 2]** または **[西ヨーロッパ]** を選択します。 プレビュー期間中は、これらの Azure リージョンのみが Logz.io でサポートされます。 |
@@ -89,7 +89,7 @@ Azure リソース ログは、 **[Send Azure resource logs for all defined reso
 | プロパティ | 説明 |
 | ---- | ---- |
 | **名前** | Azure Logz.io リソースに対応するタグの名前。 |
-| **値** | Azure Logz.io リソースに対応するタグの値。 |
+| **Value** | Azure Logz.io リソースに対応するタグの値。 |
 
 :::image type="content" source="./media/create/tags.png" alt-text="カスタム タグを追加する。":::
 
@@ -118,7 +118,7 @@ AAD を構成したら、 **[シングル サインオン]** タブから、Logz
 
 デプロイが成功すると、 **[リソースに移動]** ボタンを選択することで、デプロイされた Logz.io リソースを確認できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Logz.io 統合を[管理する](manage.md)方法を確認する。
 - 統合に関する問題を解決するには、[トラブルシューティング](troubleshoot.md)を参照してください。

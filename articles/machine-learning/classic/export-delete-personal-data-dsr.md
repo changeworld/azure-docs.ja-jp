@@ -9,18 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 0f590f52224eed6fd32dbb2af0297669b99a3fe8
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 47ca53ac4fa6aa30ae67fdaf9be3cf6eb3f489bb
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688855"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581504"
 ---
 # <a name="export-and-delete-in-product-user-data-from-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) から製品内ユーザー データをエクスポートおよび削除する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+
 
 Machine Learning Studio (クラシック) によって格納された製品内データは、Azure portal、Studio (クラシック) インターフェイス、PowerShell、および認証済み REST API を使用して削除またはエクスポートできます。 この記事では、その方法について説明します。 
 
@@ -75,6 +76,6 @@ Machine Learning Studio (クラシック) には 3 種類のアカウントが�
 ## <a name="export-studio-classic-data-with-powershell"></a>PowerShell を使用して Studio (クラシック) データをエクスポートする
 PowerShell では、コマンドを使用して Machine Learning Studio (クラシック) から、すべての情報をポータブル形式にエクスポートできます。 詳細については、[Machine Learning Studio (クラシック) 用 PowerShell モジュール](powershell-module.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Web サービスや契約プランの課金が説明されているドキュメントについては、[Machine Learning Studio (クラシック) REST API リファレンス](/rest/api/machinelearning/)に関するページを参照してください。

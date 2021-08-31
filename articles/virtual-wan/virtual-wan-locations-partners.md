@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: d861a5c820c38eb5e0e8ea8f777e9346871ce658
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: ff6e928c5f50c2f0a15936b190f0191da67b81c3
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579470"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419446"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -21,7 +21,7 @@ ms.locfileid: "112579470"
 
 Azure Virtual WAN は、Azure を介して支店間接続を最適化し、自動化するネットワーク サービスです。 Virtual WAN を使用すると、ブランチ デバイスを接続および構成して Azure と通信できます。 接続と構成は、手動で、または Virtual WAN パートナーを通じてプロバイダー デバイスを使用して行うことができます。 パートナー デバイスを使用すると、使いやすさ、接続の簡素化、および構成管理を実現できます。
 
-オンプレミス デバイスからの接続は、自動化された方法で仮想ハブに向けて確立されます。 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、オンプレミス ネットワーク (vpnsite) からの接続を可能にするさまざまなサービス エンドポイントが含まれています。 ハブはリージョンごとに 1 つしか存在できません。
+オンプレミス デバイスからの接続は、自動化された方法で仮想ハブに向けて確立されます。 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、オンプレミス ネットワーク (vpnsite) からの接続を可能にするさまざまなサービス エンドポイントが含まれています。 
 
 ## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>パートナーからのブランチ IPsec 接続の自動化
 

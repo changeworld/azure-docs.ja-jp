@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/24/2021
-ms.openlocfilehash: 88765f756e5473243cb22719c00d1e497fbd6ea6
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 07/27/2021
+ms.openlocfilehash: ef2db7e11666c104215b29f298882cfe77631310
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822195"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015540"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>マッピング データ フローのソース変換
 

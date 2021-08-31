@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 08/09/2021
 ms.author: victorh
-ms.openlocfilehash: 2b6e923bf7645e89434b461da47408be23f65f86
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: a23c02a406b7329f7c7cdbecba1e0c92b05d1e19
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634762"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860654"
 ---
 # <a name="use-azure-firewall-to-protect-azure-virtual-desktop-deployments"></a>Azure Firewall を使用して Azure Virtual Desktop のデプロイを保護する
 
@@ -40,16 +40,16 @@ Azure Firewall ポリシーを作成し、ネットワーク ルールとアプ�
 
 ### <a name="create-network-rules"></a>ネットワーク ルールを作成する
 
-| 名前 | 送信元の種類 | source | Protocol | 宛先ポート | 変換先の型 | 宛先 
+| 名前 | 送信元の種類 | source | プロトコル | 宛先ポート | 変換先の型 | 宛先 
 --- | --- | --- | --- | --- | --- | ---
 | 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | 80 | TCP |  IP アドレス | 169.254.169.254、168.63.129.16
 | 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | 443 | TCP | サービス タグ | AzureCloud、WindowsVirtualDesktop
-| 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | 53 | TCP、UDP | IP アドレス | *
+| 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | 52 | TCP、UDP | IP アドレス | *
 
 
 ### <a name="create-application-rules"></a>アプリケーション ルールを作成する 
 
-| 名前 | 送信元の種類 | source | Protocol | TLS インスペクション (省略可能) | 変換先の型 | 宛先 
+| 名前 | 送信元の種類 | source | プロトコル | TLS インスペクション (省略可能) | 変換先の型 | 宛先 
 --- | --- | --- | --- | --- | --- | ---
 | 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | Https:443 | | FQDN タグ | WindowsVirtualDesktop、WindowsUpdate、Windows Diagnostics、MicrosoftActiveProtectionService |
 | 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | Https:1688 | | FQDN | kms.core.windows.net 

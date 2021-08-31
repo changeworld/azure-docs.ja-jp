@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: b9efc6c8f568d054662f9084d63b83de7b39e776
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c0eea1c7f041899d5c00062de2cbf35f83b9d53b
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735784"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662088"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -634,11 +634,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DatabricksSQLPermissions |  |
 | DatabricksSSH |  |
 | DatabricksWorkspace |  |
-| DeviceFileEvents |  |
-| DeviceNetworkEvents |  |
 | DeviceNetworkInfo |  |
-| DeviceProcessEvents |  |
-| DeviceRegistryEvents |  |
 | DnsEvents |  |
 | DnsInventory |  |
 | DummyHydrationFact |  |

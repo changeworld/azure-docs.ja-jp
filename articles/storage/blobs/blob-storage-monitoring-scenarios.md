@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 1d09538b9ada9a355ed956640d13a10ad544b348
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 8a4d6ab98bd126d2b8ec98650821d191dec4ed6d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180407"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771411"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>Azure Blob Storage の監視に関するベスト プラクティス
 
@@ -154,8 +154,6 @@ StorageBlobLogs
 共有キーと SAS 認証では、個々の ID を監査する手段は提供されません。 したがって、ID に基づく監査能力を向上させたい場合は、Azure AD に移行し、共有キーと SAS の認証を禁止することをお勧めします。 共有キーと SAS 認証を禁止する方法については、「[Azure Storage アカウントの共有キーによる承認を禁止する](../common/shared-key-authorization-prevent.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=portal)」を参照してください。 Azure AD の使用を開始するには、[Azure Active Directory を使用した BLOB へのアクセスの承認](authorize-access-azure-active-directory.md)に関するページを参照してください。
 
 ## <a name="optimize-cost-for-infrequent-queries"></a>頻度の低いクエリのコストを最適化する
-
-大量のログ データを保持しているが、たまにしかクエリを実行しない場合 (コンプライアンスとセキュリティの義務を果たすためなど)、Log Analytics を使用する代わりに、ログをストレージ アカウントにアーカイブすることを検討してください。 膨大な数のトランザクションの場合、Log Analytics の使用コストは、単にストレージにアーカイブしたり、他のクエリ手法を使用したりするよりも高くなる場合があります。 Log Analytics は、Log Analytics の豊富な機能を使用する必要がある場合に合理的です。 ストレージ アカウントにログをアーカイブしてから、Synapse ワークスペースでそれらのログに対してクエリを実行することで、データ クエリのコストを削減できます。
 
 Log Analytics にログをエクスポートすることで、豊富なネイティブ クエリ機能を利用できます。 ストレージ アカウントに大量のトランザクションがある場合、Log Analytics でログを使用するコストが高くなる可能性があります。 [Azure Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/)に関するページを参照してください。 ログに対してたまにしかクエリを実行しない場合 (コンプライアンス監査のためにログに対してクエリを実行するなど)、ログをストレージ アカウントにエクスポートしてから、ログ データに対してサーバーレス クエリ ソリューション (Azure Synapse など) を使用することによって、合計コストの削減を検討することができます。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/02/2021
-ms.openlocfilehash: 44efb85ae2101ee1f35bd82b739e87103ad228bd
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 1324c26491e8c6f6368700d41f7f0aa8b12de8c6
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681352"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271364"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して仮想マシンを監視する
 このシナリオでは、Azure Monitor を使用して、仮想マシンとそのワークロードの正常性とパフォーマンスを監視する方法について説明します。 これには、傾向を識別するために収集されたデータの監視、分析、視覚化に不可欠なテレメトリのコレクションと、重大な問題が予防的に通知されるアラートを構成する方法が含まれます。
@@ -48,7 +48,7 @@ ms.locfileid: "122681352"
 
 :::image type="content" source="media/monitor-virtual-machines/monitoring-layers.png" alt-text="監視レイヤーを示す図。" lightbox="media/monitor-virtual-machines/monitoring-layers.png":::
 
-## <a name="vm-insights"></a>VM insights
+## <a name="vm-insights"></a>VM の分析情報
 このシナリオでは、仮想マシンを監視するための Azure Monitor の主要機能である [VM Insights](../vm/vminsights-overview.md) に焦点を合わせます。 VM Insights では次の機能が提供されます。
 
 - 仮想マシンのゲスト オペレーティング システムとワークロードの監視を有効にする、エージェントのオンボードの簡略化。 
@@ -61,11 +61,11 @@ Azure Monitor などのあらゆる監視ツールでは、ゲスト オペレ�
 > [!NOTE]
 > Azure Monitor エージェントは、必要な機能を得た後、Log Analytics エージェント、診断拡張機能、Telegraf エージェントの完全な後継となります。 これらの他のエージェントは、VM Insights、Azure Security Center、Azure Sentinel などの機能のために引き続き必要です。
 
-- [Azure Monitor エージェント](../agents/agents-overview.md#azure-monitor-agent): Azure、他のクラウド環境、オンプレミスの仮想マシンをサポートします。 Azure Monitor のメトリックとログにデータを送信します。 VM Insights、Azure Security Center、Azure Sentinel が完全にサポートされた場合は、Log Analytics エージェントと診断拡張機能の完全な後継となります。
+- [Azure Monitor エージェント](../agents/agents-overview.md#log-analytics-agent): Azure、他のクラウド環境、オンプレミスの仮想マシンをサポートします。 Azure Monitor のメトリックとログにデータを送信します。 VM Insights、Azure Security Center、Azure Sentinel が完全にサポートされた場合は、Log Analytics エージェントと診断拡張機能の完全な後継となります。
 - [Log Analytics エージェント](../agents/agents-overview.md#log-analytics-agent): Azure、他のクラウド環境、オンプレミスの仮想マシンをサポートします。 Azure Monitor ログにデータを送信します。 VM Insights および監視ソリューションをサポートしています。 このエージェントは System Center Operations Manager に使用されているのと同じエージェントです。
 - [Dependency Agent](../agents/agents-overview.md#dependency-agent): 仮想マシンで実行されているプロセスとその依存関係に関するデータを収集します。 Azure にデータを送信するために Log Analytics エージェントに依存しており、 VM Insights、Service Map、Wire Data 2.0 の各ソリューションがサポートされています。
 - [Azure 診断拡張機能](../agents/agents-overview.md#azure-diagnostics-extension): Azure Monitor 仮想マシンでのみ使用できます。 Azure Event Hubs および Azure Storage にデータを送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [仮想マシン用に収集された監視データを分析する](monitor-virtual-machine-analyze.md)

@@ -12,12 +12,12 @@ ms.date: 08/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b64806b3683db8f6cd3ec665b462f4f6f26397eb
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c88954434c38a04d0d1263e96639e6cca03c3a1b
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770154"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201637"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ドメインを有効にする
 
@@ -114,7 +114,7 @@ Azure AD B2C テナントの Front Door を作成するには、次の手順に�
 
 フロントエンド ホストは、アプリケーションで使用されるドメイン名です。 Front Door を作成すると、既定のフロントエンド ホストは `azurefd.net` のサブドメインになります。
 
-Azure Front Door には、カスタム ドメインをフロントエンド ホストと関連付けるオプションが用意されています。 このオプションを使用して、Front Door に所有されているドメイン名の代わりに、URL 内のカスタム ドメインに Azure AD B2C のユーザー インターフェイスを関連付けます。 たとえば、「 `https://login.contoso.com` 」のように入力します。
+Azure Front Door には、カスタム ドメインをフロントエンド ホストと関連付けるオプションが用意されています。 このオプションを使用して、Front Door に所有されているドメイン名の代わりに、URL 内のカスタム ドメインに Azure AD B2C のユーザー インターフェイスを関連付けます。 たとえば、「 https://login.contoso.com 」のように入力します。
 
 フロントエンド ホストを追加するには、次の手順に従います。
 

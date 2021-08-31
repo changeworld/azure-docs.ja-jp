@@ -9,18 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: f79325270dcd33cb451bd1f540ef60e0b1647f4d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: bc97781091f29c4d900e24b8211e4ee9d8422841
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694514"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581396"
 ---
 # <a name="import-your-training-data-into-machine-learning-studio-classic-from-various-data-sources"></a>さまざまなデータ ソースから Machine Learning Studio (クラシック) にトレーニング データをインポートする
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Machine Learning Studio (クラシック) で独自のデータを使用して予測分析ソリューションを開発し、トレーニングする場合、次の場所のデータを使用できます。 
 

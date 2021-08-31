@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: ccf05bb51c64a94c07a0277ed901912f9e4dda3e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7cf50ee7b165fec445f65d3e57e229f04db5320b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742994"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695147"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 
@@ -27,7 +27,7 @@ ms.locfileid: "121742994"
 
 CEF メッセージを送信する外部ソリューションを接続するとき、Azure Sentinel と接続するための 3 つの手順があります。
 
-手順 1: [Syslog/CEF フォワーダーをデプロイして CEF に接続する](connect-cef-agent.md) 手順 2:[ソリューション固有の手順を実行する](connect-cef-solution-config.md) 手順 3:[接続を検証する](connect-cef-verify.md)
+手順 1: [Syslog/CEF フォワーダーをデプロイして CEF に接続する](connect-cef-agent.md) 手順 2:[ソリューション固有の手順を実行する](connect-cef-solution-config.md) 手順 3:[接続を検証する](troubleshooting-cef-syslog.md#validate-cef-connectivity)
 
 この記事では、接続のしくみを説明し、前提条件を一覧表示します。また、Syslog に加えて共通イベント形式 (CEF) メッセージを送信するセキュリティ ソリューションのメカニズムをデプロイする手順を示します。 
 
@@ -100,7 +100,7 @@ CEF データを Log Analytics に取り込むためには、Azure Sentinel ワ�
 
 - 手順 1: [Syslog/CEF フォワーダーをデプロイして CEF に接続する](connect-cef-agent.md)
 - 手順 2: [ソリューション固有の手順を実行する](connect-cef-solution-config.md)
-- 手順 3: [接続を検証する](connect-cef-verify.md)
+- 手順 3: [接続を検証する](troubleshooting-cef-syslog.md#validate-cef-connectivity)
 
 Azure Sentinel で収集したデータの処理に関する詳細については、次の記事を参照してください。
 

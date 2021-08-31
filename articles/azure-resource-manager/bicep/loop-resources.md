@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: b510d2601c7f1d2724e104017707345e05fb47c7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3185d6bac1e20e1d29c4f55b0a4e954b5ae35499
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453343"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634885"
 ---
 # <a name="resource-iteration-in-bicep"></a>Bicep でのリソースの繰り返し
 
@@ -188,9 +188,9 @@ resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2021-02-01
 
 |Template  |説明  |
 |---------|---------|
-|[ループ ストレージ](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/loopstorage.bicep) |名前にインデックス番号を含む複数のストレージ アカウントをデプロイします。 |
-|[シリアル ループ ストレージ](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/loopserialstorage.bicep) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |
-|[配列を使用したループ ストレージ](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/loopstoragewitharray.bicep) |複数のストレージ アカウントをデプロイします。 名前には、配列からの値が含まれます。 |
+|[ループ ストレージ](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopstorage.bicep) |名前にインデックス番号を含む複数のストレージ アカウントをデプロイします。 |
+|[シリアル ループ ストレージ](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopserialstorage.bicep) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |
+|[配列を使用したループ ストレージ](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopstoragewitharray.bicep) |複数のストレージ アカウントをデプロイします。 名前には、配列からの値が含まれます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

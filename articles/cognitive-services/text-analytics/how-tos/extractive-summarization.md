@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.author: aahi
-ms.openlocfilehash: a55c281899495819ad8a537995867485b02c0af5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f8db386da9890be2a07f201243dbbb4beaf5c499
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779127"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444076"
 ---
 # <a name="how-to-summarize-text-with-text-analytics-preview"></a>方法: Text Analytics を使用してテキストを要約する (プレビュー)
 
@@ -87,7 +87,7 @@ Azure で Text Analytics リソースを使用して、抽出要約用の HTTPS 
 次のパラメーターは、1 つの要求内のすべてのドキュメントで共有されます。 これらのパラメーターは、要求の `tasks` 定義で指定できます。
 * `model-version` では、使用するモデルのバージョンを指定し、既定値は `latest` です。 詳細については、[モデルのバージョン](../concepts/model-versioning.md)に関する記事を参照してください 
 * `sentenceCount` では、返される文の数を指定し、既定値は `3` です。 範囲は 1 から 20 です。
-* `sortyby` では、抽出された文が返される順序を指定します。 `sortBy` に指定できる値は `Offset` と `Rank` であり、既定値は `Offset` です。 値 `Offset` は、元のドキュメント内での文の開始位置です。    
+* `sortBy` では、抽出された文が返される順序を指定します。 `sortBy` に指定できる値は `Offset` と `Rank` であり、既定値は `Offset` です。 値 `Offset` は、元のドキュメント内での文の開始位置です。    
 
 ```json
 {

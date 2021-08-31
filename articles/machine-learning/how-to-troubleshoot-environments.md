@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 07/27/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 8f5a286a835da7fb74f969295090b0ecc0731a74
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: e88637f67e8e9db01c46b6de5518c95ad4290ee9
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728469"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419204"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>環境イメージのビルドのトラブルシューティング
 
@@ -207,9 +207,6 @@ RUN apt-get update && \
 
  詳細については、[仮想ネットワークの有効化](./how-to-network-security-overview.md)に関する記事を参照してください。
 
-### <a name="you-need-to-create-an-icm"></a>ICM を作成する必要がある
-
-メタストアに対して ICM を作成または割り当てる場合は、Microsoft 側で問題を適切に把握できるように、CSS サポート チケットを含めてください。
 
 ## <a name="next-steps"></a>次のステップ
 

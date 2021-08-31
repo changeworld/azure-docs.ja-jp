@@ -8,15 +8,19 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 28365f4c5e4096c83bdf7b1c4cd7ade3fe1e46b2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d9b5803069316a97d6180429bd6b096d401d2396
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742119"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695583"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ
+
 初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの問題を質問として考案する方法について説明します。 このビデオには、分類アルゴリズムと回帰アルゴリズムの質問の比較が含まれます。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)

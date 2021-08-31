@@ -3,12 +3,12 @@ title: Azure Active Directory を使用して Event Grid 発行クライアン�
 description: この記事では、Azure Active Directory を使用して Azure Event Grid の発行クライアントを認証する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: c34ce75d02d4e3044819e5e310bdb9e74c1b0004
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b15febf10316406489d3f5bad7fc1085624ee96a
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779590"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662256"
 ---
 # <a name="authentication-and-authorization-with-azure-active-directory-preview"></a>Azure Active Directory を使用した認証と承認 (プレビュー)
 この記事では、Azure Active Directory (Azure AD) を使用して Azure Event Grid の発行クライアントを認証する方法について説明します。
@@ -77,7 +77,7 @@ Event Grid に対する認証を行うための前提条件は以下の通りで
 - アプリケーションに SDK をインストールします。
    - [Java](/java/api/overview/azure/messaging-eventgrid-readme#include-the-package)
    - [.NET](/dotnet/api/overview/azure/messaging.eventgrid-readme-pre#install-the-package)
-   - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventgrid/eventgrid.md#install-the-azureeventgrid-package)
+   - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventgrid/eventgrid#install-the-azureeventgrid-package)
    - [Python](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/eventgrid/azure-eventgrid#install-the-package)
 - Azure ID クライアント ライブラリをインストールします。 Event Grid SDK では、認証に Azure ID クライアント ライブラリを使用しています。 
    - [Java 用 Azure ID クライアント ライブラリ](/java/api/overview/azure/identity-readme)
@@ -148,7 +148,7 @@ New-AzResource -ResourceGroupName <ResourceGroupName> -ResourceType Microsoft.Ev
     - Java SDK: [github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventgrid/azure-messaging-eventgrid) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventgrid/azure-messaging-eventgrid/src/samples/java/com/azure/messaging/eventgrid) | [以前の SDK バージョンからの移行ガイド](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventgrid/azure-messaging-eventgrid/migration-guide.md)
     - .NET SDK: [github](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid) | [サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventgrid/Azure.Messaging.EventGrid/samples) | [以前の SDK バージョンからの移行ガイド](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid/MigrationGuide.md)
     - Python SDK: [github](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventgrid/azure-eventgrid) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventgrid/azure-eventgrid/samples) | [以前の SDK バージョンからの移行ガイド](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventgrid/azure-eventgrid/migration_guide.md)
-    - JavaScript SDK: [github](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/) | [サンプル](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/samples) | [以前の SDK バージョンからの移行ガイド](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/migration.md)
+    - JavaScript SDK: [github](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/) | [サンプル](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/samples) | [以前の SDK バージョンからの移行ガイド](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventgrid/eventgrid/MIGRATION.md)
 - [Event Grid SDK ブログ](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/)
 - Azure ID クライアント ライブラリ
    - [Java](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/identity/azure-identity/README.md)

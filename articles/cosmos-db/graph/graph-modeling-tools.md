@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.reviewer: sngun
-ms.openlocfilehash: eacebb55cbf4d6254d6688a95dba8ae638838cf3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d603de7ae8f011ac2ae2ed96d61efb571bdcf64
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778994"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662357"
 ---
 # <a name="third-party-data-modeling-tools-for-azure-cosmos-db-graph-data"></a>Azure Cosmos DB グラフ データのサードパーティー製データ モデリング ツール
 
@@ -40,7 +40,7 @@ Hackolade は、NoSQL データベース向けのデータ モデリングおよ
 
 図 - 2 のアニメーションは、リバース エンジニアリングのデモンストレーションです。RDBMS からエンティティが抽出され、Hackolade によって外部キーのリレーションシップから関係が検出され、修正されます。
 
-SQL Server としてのソースのサンプル DDL は、[こちら](https://github.com/Azure-Samples/northwind-ddl-sample/nw.sql)で入手できます   
+SQL Server としてのソースのサンプル DDL は、[こちら](https://github.com/Azure-Samples/northwind-ddl-sample/blob/main/nw.sql)で入手できます   
 
 
 :::image type="content" source="./media/graph-modeling-tools/hackolade-screenshot.jpg" alt-text="Graph の図":::
@@ -57,5 +57,5 @@ SQL Server としてのソースのサンプル DDL は、[こちら](https://gi
 -  [その他のデータ モデルを取得する](https://hackolade.com/samplemodels.html#cosmosdb)。
 -  [Hackolade のドキュメント](https://hackolade.com/help/CosmosDBGremlin.html)
 
-## <a name="next-steps"></a>次のステップ
-- [データの視覚化](/graph-visualization)
+## <a name="next-steps"></a>次の手順
+- [データの視覚化](/azure/cosmos-db/graph/graph-visualization-partners)

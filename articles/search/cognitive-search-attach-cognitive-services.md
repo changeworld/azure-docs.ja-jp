@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 0fe9a87e82ab391fc0e1ccfca95ad48a0ef5dc61
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c5f29cb909dae7b8e362cdf37481111dbf75c8d9
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772467"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195413"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search で Cognitive Services リソースをスキルセットにアタッチする
 
@@ -47,7 +47,7 @@ Azure Cognitive Search で [AI エンリッチメント パイプライン](cogn
   前述のとおり、[カスタム エンティティの検索](cognitive-search-skill-custom-entity-lookup.md)は、キーを必要とするが、[Cognitive Search によって測定される](https://azure.microsoft.com/pricing/details/search/#pricing)という点で特殊なケースです。
 
 > [!TIP]
-> スキルセット処理のコストを削減するには、[インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) を有効にして、スキルセットに加えた変更の影響を受けないエンリッチメントをキャッシュして再利用します。 キャッシュには Azure Storage が必要です ([価格](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください)。ただし、既存のエンリッチメントを再利用できる場合は、スキルセットの実行の累積コストが低くなります (特に画像の抽出と分析を使用するスキルセットの場合)。
+> スキルセット処理のコストを削減するには、[インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) を有効にして、スキルセットに加えた変更の影響を受けないエンリッチメントをキャッシュして再利用します。 キャッシュには Azure Storage が必要です ([価格](/pricing/details/storage/blobs/)を参照してください)。ただし、既存のエンリッチメントを再利用できる場合は、スキルセットの実行の累積コストが低くなります (特に画像の抽出と分析を使用するスキルセットの場合)。
 
 ## <a name="same-region-requirement"></a>同一リージョンの要件
 

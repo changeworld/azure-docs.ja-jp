@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b48056b9615bcbf1ecbcdaf3501437a18fcb987b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: e00eff9bfaa64abc4d37d7e4f6d66552b2f674cb
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728402"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418631"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>機密クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する
 
@@ -456,7 +456,7 @@ app.UseInMemoryTokenCaches(); // or a distributed token cache.
 1. 最新バージョンの MSAL.NET を使用していることを確認します。
 1. 機密クライアント アプリケーションを構築するときに設定した証明機関ホストと、ADAL で使用した証明機関ホストが類似していることを確認します。 特に、同じ[クラウド](msal-national-cloud.md) (Azure Government、Azure China 21Vianet、または Azure Germany) を使用していることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ADAL.NET と MSAL.NET アプリの違い](msal-net-differences-adal-net.md)についての詳細を確認してください。
 [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)の詳細を確認してください。

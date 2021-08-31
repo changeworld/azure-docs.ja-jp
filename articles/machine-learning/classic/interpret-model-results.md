@@ -8,18 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 882939a08a3a90cffd0b4eb25711d71159a91eb9
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4c824c231c1edfb9dda5df2f668fc4440a50f4e0
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689684"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581486"
 ---
 # <a name="interpret-model-results-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でモデルの結果を解釈する
 
 **適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
-
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 このトピックでは、Machine Learning Studio (クラシック) で予測結果を視覚化および解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
 

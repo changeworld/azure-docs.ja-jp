@@ -3,12 +3,12 @@ title: サインインとサインアウトのカスタマイズ
 description: App Service で組み込みの認証と認可を使用し、同時に、サインインとサインアウトの動作をカスタマイズします。
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: 80ad2725419db590cb470f5b7809c675090b37bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bdb100afa821aa08fb831aac53b1eb80cdda043e
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743902"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429543"
 ---
 # <a name="customize-sign-in-and-sign-out-in-azure-app-service-authentication"></a>Azure App Service 認証でのサインインとサインアウトのカスタマイズ
 
@@ -34,10 +34,10 @@ ms.locfileid: "121743902"
 
 ユーザーがいずれかのリンクをクリックすると、それぞれのサインイン ページが開き、ユーザーがサインインできます。
 
-サインイン後のユーザーをカスタム URL にリダイレクトさせるには、`post_login_redirect_url` クエリ文字列パラメーターを使用します (ご利用の ID プロバイダーの構成におけるリダイレクト URI と混同しないでください)。 たとえば、サインイン後にユーザーを `/Home/Index` にリダイレクトさせるには、次の HTML コードを使用します。
+サインイン後のユーザーをカスタム URL にリダイレクトさせるには、`post_login_redirect_uri` クエリ文字列パラメーターを使用します (ご利用の ID プロバイダーの構成におけるリダイレクト URI と混同しないでください)。 たとえば、サインイン後にユーザーを `/Home/Index` にリダイレクトさせるには、次の HTML コードを使用します。
 
 ```html
-<a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+<a href="/.auth/login/<provider>?post_login_redirect_uri=/Home/Index">Log in</a>
 ```
 
 ## <a name="client-directed-sign-in"></a>クライアント主導型サインイン

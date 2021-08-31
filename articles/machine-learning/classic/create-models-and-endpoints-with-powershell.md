@@ -9,16 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 9b4a5073994da972a4999a82dd9bb0790bad0342
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 979beba00c4006b69c4d9ea2187cf17f3665696d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582350"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693606"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (クラシック) と PowerShell を使用して 1 つの実験から複数の Web サービス エンドポイントを作成する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 機械学習について多くの人が考えることは、トレーニング ワークフローと使用アルゴリズムが同じ複数のモデルを作成できないものだろうか、ということです。 ただし、入力としては異なるトレーニング データセットを使用します。 この記事では、1 つの実験だけを使って、Machine Learning Studio (クラシック) で大規模にこれを行う方法を紹介します。
 

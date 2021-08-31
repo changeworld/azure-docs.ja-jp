@@ -9,18 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 42327bc0d3acd8f3afbd99814fa2687372a564d1
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 85b905019d822d20873c241cc887d7b5cf723fb3
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688828"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581414"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 
 **適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+
 
 **[Azure AI ギャラリー](https://gallery.azure.ai)** は、Azure AI を使用して構築されたソリューションを入手および共有するためのコミュニティ主導のサイトです。
 このギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
