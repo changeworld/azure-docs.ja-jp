@@ -2,24 +2,22 @@
 title: インクリメンタル エンリッチメントの概念 (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: AI エンリッチメント パイプラインからの中間コンテンツと増分変更を Azure Storage にキャッシュして、既存の処理済みドキュメントへの投資を維持します。 現在、この機能はパブリック プレビュー段階にあります。
-manager: nitinme
-author: Vkurpad
-ms.author: vikurpad
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: f3d9d9481821902246721c5c27ed99451f323ba3
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 7b3d0fc85afbff58641edea332576f921c96b672
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539821"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727788"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Cognitive Search のインクリメンタル エンリッチメントとキャッシュ
 
 > [!IMPORTANT] 
-> インクリメンタル エンリッチメントは現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 
-> [REST API プレビュー バージョン](search-api-preview.md)にはこの機能が用意されています。 現時点で、ポータルまたは .NET SDK はサポートされていません。
+> この機能はパブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 [プレビューの REST API](/rest/api/searchservice/index-preview) ではこの機能がサポートされます。
 
 *インクリメンタル エンリッチメント* は [スキルセット](cognitive-search-working-with-skillsets.md)を対象とする機能です。 Azure Storage を活用して、今後のインデクサーの実行時に再利用するために、エンリッチメント パイプラインによる処理出力を保存します。 可能な限り、インデクサーはキャッシュされているすべての有効な出力を再利用します。 
 
@@ -37,12 +35,12 @@ ms.locfileid: "111539821"
 
 ## <a name="indexer-cache"></a>インデクサー キャッシュ
 
-インクリメンタル エンリッチメントでは、エンリッチメント パイプラインにキャッシュが追加されます。 インデクサーは、ドキュメント解析から得られた結果に加え、ドキュメントごとの各スキルの出力をキャッシュします。 スキルセットが更新されたときには、変更済み (またはダウンストリーム) のスキルのみが再実行されます。 更新された結果がキャッシュに書き込まれ、検索インデックスまたはナレッジ ストア内のドキュメントが更新されます。
+インクリメンタル エンリッチメントでは、エンリッチメント パイプラインにキャッシュが追加されます。 インデクサーは、[ドキュメント解析](search-indexer-overview.md#document-cracking)から得られた結果に加え、ドキュメントごとの各スキルの出力をキャッシュします。 スキルセットが更新されたときには、変更済み (またはダウンストリーム) のスキルのみが再実行されます。 更新された結果がキャッシュに書き込まれ、検索インデックスまたはナレッジ ストア内のドキュメントが更新されます。
 
 物理的には、キャッシュはご使用の Azure Storage アカウントの BLOB コンテナーに格納されます。 キャッシュでは、更新処理の内部レコードにテーブル ストレージも使用されます。 インデクサー キャッシュには、Search サービス内のすべてのインデックスが同じストレージ アカウントを共有できます。 それぞれのインデクサーには、使用しているコンテナーに対する一意かつ不変のキャッシュ識別子が割り当てられます。
 
 > [!NOTE]
-> インデクサー キャッシュには汎用ストレージ アカウントが必要です。 詳細については、「[様々なストレージ アカウントの種類](/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
+> インデクサー キャッシュには汎用ストレージ アカウントが必要です。 詳細については、「[様々なストレージ アカウントの種類](../storage/common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。
 
 ## <a name="cache-configuration"></a>キャッシュの構成
 

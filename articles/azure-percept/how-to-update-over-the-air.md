@@ -1,5 +1,5 @@
 ---
-title: Azure Percept DK を無線 (OTA) で更新する
+title: ご自分の Azure Percept DK を無線 (OTA) の更新プログラムを使用して更新する
 description: Azure Percept DK の更新プログラムを無線 (OTA) で受信する方法について説明します
 author: mimcco
 ms.author: mimcco
@@ -7,14 +7,14 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: fc8e3e42e75eacd1c5bc3312b7adf6c8a8150f3c
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: c5045aed59be4c8903672691241b68f69e353e13
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684345"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733352"
 ---
-# <a name="update-your-azure-percept-dk-over-the-air-ota"></a>Azure Percept DK を無線 (OTA) で更新する
+# <a name="update-your-azure-percept-dk-using-over-the-air-ota-updates"></a>ご自分の Azure Percept DK を無線 (OTA) の更新プログラムを使用して更新する
 
 Device Update for IoT Hub を使用して無線 (OTA) で Azure Percept DK のキャリア ボードの OS およびファームウェアを更新する方法について学習するには、このガイドに従ってください。
 

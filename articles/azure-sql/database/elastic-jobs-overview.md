@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 35e13b483141e841d9cca5a2e5d3aa3c77ee7b4a
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: aacb8863fcb26f5551459e0fe7ad2d4faeede4e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017615"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744883"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>エラスティック ジョブの作成、構成、および管理 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -85,18 +85,18 @@ SQL エラスティック プール内のデータベースにジョブを実行
 ### <a name="idempotent-scripts"></a>べき等スクリプト
 ジョブの T-SQL スクリプトは [べき等](https://en.wikipedia.org/wiki/Idempotence)にする必要があります。 **べき等** とは、実行に成功したスクリプトを再度実行した場合に、結果が同じになることを意味します。 一時的なネットワークの問題により、スクリプトが失敗することがあります。 その場合、ジョブは事前に設定した回数に達するまで自動的にスクリプトを再試行します。 べき等スクリプトは、2 回 (以上) 実行して成功した場合、結果が同じになります。
 
-単純な方法として、作成前に、オブジェクトの存在をテストします。
-
+単純な方法として、作成前に、オブジェクトの存在をテストします。 仮定の例を以下に示します。
 
 ```sql
-IF NOT EXISTS (some_object)
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE [name] = N'some_object')
+    print 'Object does not exist'
     -- Create the object
+ELSE
+    print 'Object exists'
     -- If it exists, drop the object before recreating it.
 ```
 
 同様に、スクリプトは、それが検出する条件を論理的に試験し、対処することで正常に実行できる必要があります。
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

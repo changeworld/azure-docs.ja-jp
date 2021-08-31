@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 06/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 834afe8d0f0c5c53c2cb300d666dbcccbee46ec0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9157b6212adac3c9bfa5f5c00a9c580a615bf8cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962423"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724892"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
@@ -40,7 +40,7 @@ MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作
 
 ## <a name="user-phone-number-management-beta"></a>ユーザーの電話番号の管理 (ベータ)
 
-[SMS または音声通話](identity-provider-local.md#phone-sign-in)あるいは[多要素認証](multi-factor-authentication.md)を使用してサインインするためにユーザーが使用できる電話番号。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/phoneauthenticationmethod) に関する記事を参照してください。
+[SMS または音声通話](sign-in-options.md#phone-sign-in)あるいは[多要素認証](multi-factor-authentication.md)を使用してサインインするためにユーザーが使用できる電話番号。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/phoneauthenticationmethod) に関する記事を参照してください。
 
 - [追加](/graph/api/authentication-post-phonemethods)
 - [リスト](/graph/api/authentication-list-phonemethods)
@@ -57,7 +57,7 @@ MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作
 
 ## <a name="self-service-password-reset-email-address-beta"></a>セルフサービス パスワード リセットのメール アドレス (ベータ)
 
-パスワードをリセットするために[ユーザー名サインイン アカウント](identity-provider-local.md#username-sign-in)で使用できるメール アドレス。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/emailauthenticationmethod) に関する記事を参照してください。
+パスワードをリセットするために[ユーザー名サインイン アカウント](sign-in-options.md#username-sign-in)で使用できるメール アドレス。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/emailauthenticationmethod) に関する記事を参照してください。
 
 - [追加](/graph/api/emailauthenticationmethod-post)
 - [リスト](/graph/api/emailauthenticationmethod-list)
@@ -152,6 +152,12 @@ Azure AD B2C 監査ログにアクセスする方法の詳細については、�
 - [条件付きアクセス ポリシーを更新する](/graph/api/conditionalaccesspolicy-update)
 - [条件付きアクセス ポリシーを削除する](/graph/api/conditionalaccesspolicy-delete)
 
+## <a name="how-to-programmatically-manage-microsoft-graph"></a>プログラムで Microsoft Graph を管理する方法
+
+Microsoft Graph を管理するには、アプリケーションのアクセス許可を使用してアプリケーションとして実行するか、委任されたアクセス許可を使用できます。 委任されたアクセス許可では、アプリが要求するアクセス許可にユーザーまたは管理者が同意します。 目的のリソースに対する呼び出しを行うときにサインインしたユーザーとして振る舞う権限を、アプリに委任します。 アプリケーションのアクセス許可は、サインインしているユーザーを必要とせず、アプリケーションのアクセス許可を必要とするアプリによって使用されます。 この理由から、管理者だけがアプリケーションのアクセス許可に同意できます。
+
+> [!NOTE]
+> ユーザー フローまたはカスタム ポリシーでサインインするユーザーの委任されたアクセス許可を、Microsoft Graph の委任されたアクセス許可に対して使用することはできません。
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>コード サンプル:プログラムによってユーザー アカウントを管理する方法
 
 このコード サンプルは、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用して Microsoft Graph API と対話する .NET Core コンソール アプリケーションです。 このコードは、API を呼び出して、Azure AD B2C テナント内のユーザーをプログラムで管理する方法を示しています。
@@ -181,6 +187,9 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 アプリケーションで、実行可能なコマンドの一覧が表示されます。 たとえば、すべてのユーザーの取得、単一ユーザーの取得、ユーザーの削除、ユーザーのパスワードの更新、一括インポートなどです。
 
+> [!NOTE]
+> アプリケーションでユーザー アカウントのパスワードを更新するには、アプリケーションに[ユーザー管理者ロールを付与する](microsoft-graph-get-started.md#optional-grant-user-administrator-role)必要があります。
+ 
 ### <a name="code-discussion"></a>コードの説明
 
 このサンプル コードでは、Microsoft Graph にアクセスする高品質かつ効率的で回復性があるアプリケーションを簡単に構築できるように設計されている、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用します。

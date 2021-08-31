@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 099c65143f29f4fdf341b52e5d80731f1bdb0808
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 07/12/2021
+ms.openlocfilehash: b461b424a8b0d52533da824353abc2b24ec465a6
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031003"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666269"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割と水平スケーリング
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -71,7 +71,7 @@ Azure Cosmos DB は、ハッシュベースのパーティション分割を使�
 
 小さなコンテナーは通常、1 つの物理パーティションのみを必要としますが、少なくとも 4 つのレプリカが保持されます。
 
-次の図は、グローバルに分散されている物理パーティションに論理パーティションがどのようにマップされているかを示しています。
+次の画像は、世界中に分散する物理パーティションに対する論理パーティテョンのマッピングを表しています。 画像の [[Partition set]\(パーティション セット\)](global-dist-under-the-hood.md#partition-sets) は、複数のリージョンにまたがって同じ論理パーティション キーを管理している物理パーティションのグループを表しています。
 
 :::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Azure Cosmos DB パーティション分割を示す図" border="false":::
 
@@ -135,3 +135,4 @@ Azure Cosmos DB で[複数項目の ACID トランザクション](database-tran
 * [Azure Cosmos DB の世界規模での分散](distribute-data-globally.md)について理解します。
 * [Azure Cosmos コンテナーのスループットをプロビジョニングする](how-to-provision-container-throughput.md)方法を確認する。
 * [Azure Cosmos データベースのスループットをプロビジョニングする](how-to-provision-database-throughput.md)方法を確認する。
+* [Azure Cosmos DB でデータのモデル化とパーティショニングを行う](/learn/modules/model-partition-data-azure-cosmos-db/)方法の学習モジュールを見る。

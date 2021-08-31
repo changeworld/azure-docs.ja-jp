@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3e7eb12cad8e16d8baa1713d1b6c815e12d4de53
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1ffdba78d43d558f5d84ec30153df17dfba83cc1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475674"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460124"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -24,12 +24,12 @@ ms.locfileid: "110475674"
 
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |
-| これは&nbsp;Azure&nbsp;Digital&nbsp;Twins では次のコマンド グループに影響します。<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | これは Cloud Shell の既知の問題の結果です。"[Cloud Shell からのトークンの取得が断続的に失敗し、400 Client Error:Bad Request を受け取る](https://github.com/Azure/azure-cli/issues/11749)"<br><br>これは、Azure Digital Twins インスタンスの認証トークンと、Cloud Shell の既定方式である[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) ベースの認証に問題があることを示しています。 <br><br>これは、`az dt` または `az dt endpoint` コマンド グループからの Azure Digital Twins コマンドには影響しません。なぜなら、これらのコマンドでは別のタイプの認証トークン (Azure Resource Manager ベース) を使用し、Cloud Shell のマネージド ID 認証でも問題が発生しないからです。 | 1 つの解決方法は、Cloud Shell で `az login` コマンドを再実行し、その後のログイン手順を完了することです。 これにより、マネージド ID 認証からセッションが切り替わり、根本的な問題が回避されます。 この後、コマンドを再実行できるようになります。<br><br>または、Azure portal の [Cloud Shell] ペインを開き、そこから Cloud Shell 作業を完了することができます。<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure portal のアイコン バーにある Cloud Shell アイコンのスクリーンショット。" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。 |
+| この問題は、&nbsp;Azure&nbsp;Digital&nbsp;Twins では次のコマンド グループに影響します。<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | これは、Cloud Shell での既知の問題の結果です。[Cloud Shell からトークンを取得すると、400 Client Erro: Bad Request で断続的に失敗します](https://github.com/Azure/azure-cli/issues/11749)。<br><br>これは、Azure Digital Twins インスタンスの認証トークンと、Cloud Shell の既定の[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) ベースの認証に問題があることを示しています。 <br><br>これは、`az dt` または `az dt endpoint` コマンド グループからの Azure Digital Twins コマンドには影響しません。なぜなら、これらのコマンドでは別の種類の認証トークン (Azure Resource Manager ベース) を使用し、Cloud Shell のマネージド ID 認証でも問題が発生しないからです。 | この問題を解決するための 1 つの方法は、Cloud Shell で `az login` コマンドを再実行し、その後のログイン手順を完了することです。 このアクションにより、マネージド ID 認証からセッションが切り替わり、根本的な問題が回避されます。 その後、コマンドを再実行できます。<br><br>または、Azure portal の [Cloud Shell] ペインを開き、そこから Cloud Shell 作業を完了することができます。<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure portal のアイコン バーにある Cloud Shell アイコンのスクリーンショット。" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。 |
 
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>スクリプトを使用したセットアップ後にロールの割り当てが存在しない
 
-**問題の説明:** ユーザーによっては、[方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md)  に関するページを参照してください。 このスクリプトには失敗と示されてはいませんが、"*Azure Digital Twins データ所有者*" ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
+**問題の説明:** ユーザーによっては、[インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md) に関する記事のロールの割り当て部分で問題が発生することがあります。 このスクリプトには失敗と示されてはいませんが、"*Azure Digital Twins データ所有者*" ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
 
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |
@@ -37,21 +37,21 @@ ms.locfileid: "110475674"
 
 ## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Azure.Identity 1.2.0 での対話型ブラウザーの認証に関する問題
 
-**問題の説明**: [Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリのバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドで問題が発生することがあります。 これにより、ブラウザー ウィンドウで認証を試みるときに "Azure.Identity.AuthenticationFailedException" というエラー応答が表示されます。 ブラウザー ウィンドウが完全に起動できなくなるか、一見ユーザーが正常に認証されたかのように見せてクライアント アプリケーションがエラーで失敗します。
+**問題の説明**: [Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリのバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドで問題が発生することがあります。 この問題により、ブラウザー ウィンドウで認証を試みるときに "Azure.Identity.AuthenticationFailedException" というエラー応答が表示されます。 ブラウザー ウィンドウが完全に起動できなくなるか、一見ユーザーが正常に認証されたかのように見せてクライアント アプリケーションがエラーで失敗します。
 
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |
-| 影響を受けるメソッドは、次の記事で使用されています。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>[チュートリアル:クライアント アプリをコーディングする](tutorial-code.md)<br><br>[方法: アプリ認証コードを作成する](how-to-authenticate-client.md)<br><br>[概念: Azure Digital Twins API と SDK](concepts-apis-sdks.md) | 一部のユーザーは、`Azure.Identity` ライブラリのバージョン **1.2.0** でこの問題に直面しています。 | 解決するには、`Azure.Identity` の[新しいバージョン](https://www.nuget.org/packages/Azure.Identity)を使用するようにアプリケーションを更新します。 ライブラリのバージョンを更新すると、ブラウザーが想定どおりに読み込まれ、認証されるはずです。 |
+| 影響を受けるメソッドは、次の記事で使用されています。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>[クライアント アプリをコーディングする](tutorial-code.md)<br><br>[アプリ認証コードを作成する](how-to-authenticate-client.md)<br><br>[Azure Digital Twins API および SDK](concepts-apis-sdks.md) | 一部のユーザーは、`Azure.Identity` ライブラリのバージョン **1.2.0** でこの問題に直面しています。 | 解決するには、`Azure.Identity` の[新しいバージョン](https://www.nuget.org/packages/Azure.Identity)を使用するようにアプリケーションを更新します。 ライブラリのバージョンを更新すると、ブラウザーが想定どおりに読み込まれ、認証されるはずです。 |
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure.Identity 1.3.0 での既定の Azure 資格情報認証に関する問題
 
-**問題の説明**: [Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリのバージョン **1.3.0** を使用して認証コードを記述している場合、一部のユーザーに、これらの Azure Digital Twins ドキュメントを通じて多くのサンプルで使用される [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) メソッドに関する問題が発生しています。これは、コードから認証を試みるときに "Azure.Identity.AuthenticationFailedException: SharedTokenCacheCredential 認証に失敗しました" というエラー応答が表示されます。
+**問題の説明**: [Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリのバージョン **1.3.0** を使用して認証コードを記述している場合、一部のユーザーに、これらの Azure Digital Twins ドキュメントを通じて多くのサンプルで使用される [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) メソッドに関する問題が発生しています。この問題により、コードから認証を試みるときに "Azure.Identity.AuthenticationFailedException: SharedTokenCacheCredential 認証に失敗しました" というエラー応答が表示されます。
 
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |
-| `DefaultAzureCredential` は、認証を含むこのサービスのドキュメント例のほとんどで使用されます。 `Azure.Identity` ライブラリのバージョン 1.3.0 で `DefaultAzureCredential` を使用して認証コードを記述し、このエラー メッセージが表示される場合は、この影響を受けます。 | これは、`Azure.Identity` の構成に何らかの問題があるためである可能性があります。 | この問題を解決する方法の 1 つは、現在 `Azure.Identity` に対して開かれているこの [DefaultAzureCredential イシュー](https://github.com/Azure/azure-sdk/issues/1970)で説明されているように、ご利用の資格情報から `SharedTokenCacheCredential` を除外することです。<br>別の方法として、[バージョン 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3) など、以前のバージョンの `Azure.Identity` を使用するようにアプリケーションを変更することもできます。 これは Azure Digital Twins に機能的な影響を与えないため、これもソリューションとして受け入れることができます。 |
+| `DefaultAzureCredential` は、認証を含むこのサービスのドキュメント例のほとんどで使用されます。 `Azure.Identity` ライブラリのバージョン 1.3.0 で `DefaultAzureCredential` を使用して認証コードを記述し、このエラー メッセージが表示される場合は、この問題の影響を受けます。 | これは、`Azure.Identity` の構成に何らかの問題があるためである可能性があります。 | この問題を解決する方法の 1 つは、現在 `Azure.Identity` に対して開かれているこの [DefaultAzureCredential イシュー](https://github.com/Azure/azure-sdk/issues/1970)で説明されているように、ご利用の資格情報から `SharedTokenCacheCredential` を除外することです。<br>別の方法として、[バージョン 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3) など、以前のバージョンの `Azure.Identity` を使用するようにアプリケーションを変更することもできます。 以前のバージョンの使用は、Azure Digital Twins に機能的な影響を与えないため、ソリューションとして受け入れることができます。 |
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins のセキュリティとアクセス許可の詳細を確認します。
-* [概念:Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)
+* [Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)

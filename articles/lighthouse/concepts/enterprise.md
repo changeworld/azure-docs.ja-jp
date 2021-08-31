@@ -3,12 +3,12 @@ title: エンタープライズ シナリオにおける Azure Lighthouse
 description: Azure Lighthouse の機能を使用すると、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化できます。
 ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 139c7be2c1736841e81e70aa562ab9841fd76337
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 12a6c2f03c06fbd69e77e32b236258bc6a6c8fbe
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788717"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768302"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
@@ -38,7 +38,7 @@ ms.locfileid: "109788717"
 
 いずれの場合も、[委任されたリソースにアクセスできるユーザーを定義する際には、必ず最小限の特権の原則に従ってください](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)。 こうすることで、ユーザーが必要なタスクを実行するために必要なアクセス許可のみを持ち、不注意によるエラーが発生する可能性を減らすことができます。
 
-Azure Lighthouse では、データやリソースを物理的に移動するのではなく、管理側テナントと管理対象テナントの間に論理的なリンクのみを提供します。 さらに、アクセスは、常に管理側テナントから管理対象テナントへの一方向のみです。  管理対象テナントのリソースに対して管理操作を実行する場合は、管理側テナントのユーザーとグループが引き続き多要素認証を使用する必要があります。
+Azure Lighthouse では、データやリソースを物理的に移動するのではなく、管理側テナントと管理対象テナントの間に論理的なリンクのみを提供します。 さらに、アクセスは、常に管理側テナントから管理対象テナントへの一方向のみです。 管理対象テナントのリソースに対して管理操作を実行する場合は、管理側テナントのユーザーとグループが引き続き多要素認証を使用する必要があります。
 
 内部または外部のガバナンスとコンプライアンスのガードレールを持つ企業の場合、[Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)を使用して透過性の要件を満たすことができます。 エンタープライズのテナントが管理側と管理対象のテナントのリレーションシップを確立すると、各テナントのユーザーは、ログに記録されたアクティビティを表示することで、管理側テナントのユーザーが実行したアクションを確認できます。
 

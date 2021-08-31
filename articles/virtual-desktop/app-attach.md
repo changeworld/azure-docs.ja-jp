@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1ff5ea8c4bb0af326b37d0e4ff2185be22393f16
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6b54afdb77bd1fc3a958b959dad4fcb030e1fe2f
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745441"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228780"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを作成する
 
@@ -200,6 +200,9 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 
+>[!NOTE]
+>ステージング解除スクリプトの実行後に **$volumeGuid** ポイントが残っても、デバイスをシャットダウンできます。
+
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>MSIX アプリのアタッチ エージェントのシミュレーション スクリプトを設定する
 
 作成したスクリプトは、手動で実行するか、起動、ログオン、ログオフ、およびシャットダウン スクリプトとして自動的に実行するように設定することができます。 これらの種類のスクリプトの詳細については、[グループ ポリシーでの起動、シャットダウン、ログオン、およびログオフのスクリプトの使用](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)に関するページを参照してください。
@@ -210,6 +213,9 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 - ログオン スクリプトによって、登録スクリプトが実行されます。
 - ログオフ スクリプトによって、登録解除スクリプトが実行されます。
 - シャットダウン スクリプトによって、ステージング解除スクリプトが実行されます。
+
+>[!NOTE]
+>タスク スケジューラは、ステージ スクリプトを使用して実行できます。 スクリプトを実行するには、タスク トリガーを **[コンピューターの起動時]** に設定し、 **[最上位の特権で実行する]** を有効にします。
 
 ## <a name="use-packages-offline"></a>パッケージをオフラインで使用する
 

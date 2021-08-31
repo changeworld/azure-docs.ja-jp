@@ -7,16 +7,19 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 654ab2aaa76de849089388ccc87b9da27278cb3e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 49ebcf06d0e01fb6b97e606bbcb5c3068eb0e727
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034557"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433294"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
 ## <a name="overview"></a>概要
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です
+> 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -154,7 +157,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
 App Service Environment には、ASEv1 と ASEv2 です。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。
 
-ASEv1 では、すべてのリソースを手動で管理します。 これには、フロントエンド、ワーカー、IP ベースの SSL に使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストする worker プールを先にスケールアウトしておく必要があります。
+ASEv1 では、すべてのリソースを手動で管理します。 これには、フロントエンド、ワーカー、IP ベースの TLS/SSL バインディングに使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストする worker プールを先にスケールアウトしておく必要があります。
 
 ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 では、割り当てられた vCPU ごとに料金を支払います。 これには、フロントエンドまたはどのワークロードもホストしていない worker に使用される vCPU が含まれます。 ASEv1 では、ASE の既定の最大スケール サイズは合計で 55 ホストです。 これにはワーカーとフロントエンドが含まれます。 ASEv1 の利点の 1 つは、従来の仮想ネットワークと Resource Manager 仮想ネットワークにデプロイできることです。 ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページを参照してください。
 
@@ -164,10 +167,10 @@ Resource Manager テンプレートを使用して ASEv1 を作成するには�
 <!--Links-->
 [quickstartilbasecreate]: https://azure.microsoft.com/resources/templates/web-app-asev2-ilb-create
 [quickstartasev2create]: https://azure.microsoft.com/resources/templates/web-app-asev2-create
-[quickstartconfiguressl]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl
+[quickstartconfiguressl]: https://azure.microsoft.com/resources/templates/web-app-ase-ilb-configure-default-ssl
 [quickstartwebapponasev2create]: https://azure.microsoft.com/resources/templates/web-app-asp-app-on-asev2-create
 [examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
-[configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/
+[configuringDefaultSSLCertificate]: https://azure.microsoft.com/resources/templates/web-app-ase-ilb-configure-default-ssl/
 [Intro]: ./intro.md
 [MakeExternalASE]: ./create-external-ase.md
 [MakeASEfromTemplate]: ./create-from-template.md

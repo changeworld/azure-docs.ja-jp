@@ -11,12 +11,12 @@ author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
 ms.date: 08/20/2019
-ms.openlocfilehash: c3a2be7a00c6718dd33b573faec4a619cbf5a1bb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: f0ec1d641fc78e4fde612f987ad319d62bd9eeaf
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074847"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914231"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -142,7 +142,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ### <a name="general-limitations"></a>一般的な制限事項
 
 - テーブルに、主キー以外の ID 列を設けることはできません。
-- データ同期を使用するには、テーブルにクラスター化インデックスが必要です。
 - 主キーに、次のデータ型を含めることはできません。sql_variant、binary、varbinary、image、xml。
 - サポートされている精度は秒に対してのみであるため、次のデータの種類を主キーとして使用するときは注意してください。time、datetime、datetime2、datetimeoffset。
 - オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
@@ -154,6 +153,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - 2 つの主キーでケースだけが違っている (例: Foo と foo) 場合、データ同期ではこのシナリオがサポートされません。
 - テーブルの切り捨ては、データ同期でサポートされている操作ではありません (変更は追跡されません)。
 - ハイパースケール データベースはサポートされていません。 
+- メモリ最適化テーブルはサポートされません。
+- ハブとメンバー データベースが仮想ネットワーク内にある場合、データ同期は機能しません。これは、ハブとメンバー間の同期を実行する責任がある同期アプリで、お客様のプライベート リンク内のハブまたはメンバー データベースへのアクセスがサポートされていないためです。 この制限は、お客様もデータ同期のプライベート リンク機能を使用している場合にも適用されます。 
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 
@@ -198,6 +199,10 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 > [!NOTE]
 > 同期グループのスキーマ設定を変更する場合は、ハブ データベースを再プロビジョニングできるように、データ同期サービスがサーバーに再度アクセスすることを許可する必要があります。
+
+### <a name="region-data-residency"></a>リージョンのデータ所在地 
+
+同じリージョン内のデータを同期する場合、SQL データ同期では、サービス インスタンスがデプロイされているリージョン外部での顧客データの格納または処理は行われません。 異なるリージョン間でデータを同期すると、SQL データ同期によって、ペアになっているリージョンに顧客データがレプリケートされます。
 
 ## <a name="faq-about-sql-data-sync"></a>SQL データ同期に関する FAQ
 

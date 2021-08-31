@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 04/22/2019
-ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/20/2021
+ms.openlocfilehash: af13306598db75e89064507b9a2fad80d8d33542
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74793032"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453173"
 ---
 # <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack の組み合わせにおける AS2 メッセージ設定のためのリファレンス
 
@@ -47,7 +47,7 @@ ms.locfileid: "74793032"
 | プロパティ | 必須 | 説明 |
 |----------|----------|-------------|
 | **メッセージの署名を有効にしてください** | いいえ | すべての送信メッセージにデジタル署名する必要があるかどうかを指定します。 署名が必要な場合、以下の値を選択します。 <p>- **[署名アルゴリズム]** の一覧から、メッセージの署名に使用するアルゴリズムを選択します。 <br>- **[証明書]** ボックスの一覧から、メッセージに署名するための既存のホスト パートナーのプライベート証明書を選択します。 証明書をお持ちではない場合、[証明書の追加](../logic-apps/logic-apps-enterprise-integration-certificates.md)に関するページで詳細をご覧ください。 |
-| **メッセージの暗号化を有効にしてください** | いいえ | すべての送信メッセージを暗号化する必要があるかどうかを指定します。 暗号化が必要な場合、以下の値を選択します。 <p>- **[暗号化アルゴリズム]** ボックスの一覧から、メッセージの暗号化に使用するゲスト パートナーの公開証明書のアルゴリズムを選択します。 <br>- **[証明書]** ボックスの一覧から、送信メッセージの暗号化するための既存のゲスト パートナーのプライベート証明書を選択します。 証明書をお持ちではない場合、[証明書の追加](../logic-apps/logic-apps-enterprise-integration-certificates.md)に関するページで詳細をご覧ください。 |
+| **メッセージの暗号化を有効にしてください** | いいえ | すべての送信メッセージを暗号化する必要があるかどうかを指定します。 暗号化が必要な場合、以下の値を選択します。 <p>- **[暗号化アルゴリズム]** ボックスの一覧から、メッセージの暗号化に使用するゲスト パートナーの公開証明書のアルゴリズムを選択します。 <br>- **[証明書]** ボックスの一覧から、送信メッセージの暗号化するための既存のゲスト パートナーのパブリック証明書を選択します。 証明書をお持ちではない場合、[証明書の追加](../logic-apps/logic-apps-enterprise-integration-certificates.md)に関するページで詳細をご覧ください。 |
 | **メッセージの圧縮を有効にしてください** | いいえ | すべての送信メッセージを圧縮する必要があるかどうかを指定します。 |
 | **HTTP のヘッダーを展開する** | いいえ | HTTP `content-type` ヘッダーを単一行に置きます。 |
 | **MIME ヘッダーのファイル名を転送する** | いいえ | MIME ヘッダーにファイル名を含めるかどうかを指定します。 |

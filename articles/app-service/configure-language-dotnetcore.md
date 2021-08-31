@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 5e4351529fb7b6a66f554182a195bc26f79c0e2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee726074de4e4c8163c741ebd549636afaaef752
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889486"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750382"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET Core アプリを構成する
 
@@ -74,7 +74,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
+Git を使用するか、[ビルドの自動化を有効](deploy-zip.md#enable-build-automation)にした zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
 
 1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
 1. `dotnet restore` を実行して、NuGet の依存関係を復元します。
@@ -136,7 +136,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="deploy-multi-project-solutions"></a>マルチ プロジェクト ソリューションをデプロイする
 
-Visual Studio ソリューションに複数のプロジェクトが含まれている場合、Visual Studio の発行プロセスには、デプロイするプロジェクトの選択が既に含まれています。 ビルド自動化を有効にした状態で、Git や ZIP デプロイなどを使用して App Service 展開エンジンにデプロイすると、App Service 展開エンジンは、App Service アプリとして検出された最初の Web サイトまたは Web アプリケーション プロジェクトを選択します。 `PROJECT` アプリ設定を指定することで、App Service で使用するプロジェクトを指定できます。 たとえば、[Cloud Shell](https://shell.azure.com) で以下を実行します。
+Visual Studio ソリューションに複数のプロジェクトが含まれている場合、Visual Studio の発行プロセスには、デプロイするプロジェクトの選択が既に含まれています。 [ビルド自動化を有効](deploy-zip.md#enable-build-automation)にした状態で、Git や ZIP デプロイなどを使用して App Service 展開エンジンにデプロイすると、App Service 展開エンジンは、App Service アプリとして検出された最初の Web サイトまたは Web アプリケーション プロジェクトを選択します。 `PROJECT` アプリ設定を指定することで、App Service で使用するプロジェクトを指定できます。 たとえば、[Cloud Shell](https://shell.azure.com) で以下を実行します。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -175,7 +175,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
-App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されるかどうかをアプリのロジックで認識する必要がある場合は、*Startup.cs* で Forwarded Headers Middleware を構成します。
+App Service では、[TLS または SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されるかどうかをアプリのロジックで認識する必要がある場合は、*Startup.cs* で Forwarded Headers Middleware を構成します。
 
 - `Startup.ConfigureServices` で、`X-Forwarded-For` ヘッダーと `X-Forwarded-Proto` ヘッダーを転送するように [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) を使ってミドルウェアを構成します。
 - ミドルウェアが App Service のロード バランサーを信頼できるようにするために、既知のネットワークにプライベート IP アドレス範囲を追加します。
@@ -229,6 +229,10 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [App Service Linux の FAQ](faq-app-service-linux.md)
+> [App Service Linux の FAQ](faq-app-service-linux.yml)
 
 ::: zone-end
+
+または、その他のリソースを参照してください:
+
+[環境変数とアプリ設定のリファレンス](reference-app-settings.md)

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 07/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b8f1404e95ed2ccceb8400fdabeff2d60b6706
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f27cee969d666d8605c0c87552eed1f305e1e4c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766117"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744185"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
@@ -58,7 +58,7 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
    * ライトバック サービスがダウンしている場合は、パスワードを今すぐにはリセットできないことがユーザーに通知されます。
 1. 次に、ユーザーが適切な認証ゲートを通過すると、 **[パスワードのリセット]** ページが表示されます。
 1. ユーザーは新しいパスワードを選択して確認します。
-1. ユーザーが **[送信]** を選ぶと、プレーンテキスト パスワードがライトバックのセットアップ プロセス時に作成された対称キーを使って暗号化されます。
+1. ユーザーが **[送信]** を選択すると、プレーンテキスト パスワードがライトバックのセットアップ プロセス時に作成された公開キーを使って暗号化されます。
 1. 暗号化されたパスワードは、HTTPS チャネル経由でテナント固有の Service Bus Relay (ライトバックのセットアップ中に設定される) に送信されるペイロードに含められます。 このリレーは、オンプレミスのインストールのみを認識するランダムに生成されたパスワードによって保護されます。
 1. メッセージが Service Bus に到達した後、パスワード リセット エンドポイントが自動的にアクティブになり、保留中のリセット要求があるかどうかが確認されます。
 1. サービスは、クラウドのアンカー属性を使ってユーザーを探します。 この検索が成功するには、次の条件が満たされている必要があります。

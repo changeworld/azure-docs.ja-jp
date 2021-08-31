@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 06/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, olhuan
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: fff7512523b50c7bb0e7652832cfa27db688fff0
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 46e256aaac608d65211aa4575fc14faa9824a4bb
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570837"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112574068"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>条件付きアクセスポリシーでの場所の条件の使用 
 
@@ -87,6 +87,9 @@ IPv4/IPv6 アドレス範囲で定義されるネームド ロケーションに
 次の 24 時間、ユーザーがまだリソースにアクセスしていて、バックグラウンドで実行するアプリのアクセス許可を付与している場合、デバイスの場所は 1 時間に 1 回暗黙的に共有されます。 24 時間後、ユーザーはアプリを開いて通知を承認する必要があります。 ユーザーが自分の GPS の場所を共有するたびに、アプリはジェイルブレイク検出を実行します (Intune MAM SDK と同じロジックを使用)。 デバイスがジェイルブレイクされた場合、その場所は有効とは見なされず、ユーザーにはアクセス権が付与されません。 
 
 レポート専用モードの GPS ベースのネームド ロケーションを使用した条件付きアクセス ポリシーでは、ユーザーのサインインがブロックされていない場合でも、ユーザーに GPS の場所の共有を求めます。
+
+> [!IMPORTANT]
+> ユーザーには 1 時間おきにプロンプトが届き、Authenticator アプリで Azure AD がユーザーの位置を確認していることが知らされます。 プレビューは、この動作が容認されるか、アクセスを特定の国または地域に制限する必要がある、非常に機密性が高いアプリを保護する目的でのみ使用してください。
 
 #### <a name="include-unknown-countriesregions"></a>不明な国またはリージョンを含める
 

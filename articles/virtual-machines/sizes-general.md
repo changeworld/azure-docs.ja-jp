@@ -9,14 +9,17 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 46a9b7e630001161fbf2790cfb9be474379864b6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9910995632cb1e6e32e228a6e68be625117951c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557626"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253644"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>汎用仮想マシンのサイズ
+
+> [!TIP]
+> **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使用して、ワークロードに最適な他のサイズをご確認いただけます。
 
 汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 この記事では、汎用コンピューティングのためのサービスに関する情報を提供します。
 

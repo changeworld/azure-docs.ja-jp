@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Boot アクチュエータを使用したアプリの管理と監視
 description: Spring Boot Actuator を使用してアプリの管理と監視を行う方法について説明します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: bfe5dc7c4f6fc40154a6fc9bc3a087873ba9eaef
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d9c24868fa847ef3b8be13ca0d7775e24b3116cc
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129245"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015550"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot アクチュエータを使用したアプリの管理と監視
 
@@ -21,10 +21,12 @@ ms.locfileid: "108129245"
 アプリに新しいバイナリをデプロイした後、機能をチェックし、実行中のアプリケーションに関する情報を確認できます。 この記事では、Azure Spring Cloud によって提供されるテスト エンドポイントから API にアクセスし、アプリの実稼働可能な機能を公開する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
+
 この記事では、Azure Spring Cloud サービスに問題なくデプロイして起動できる Spring Boot 2.x アプリケーションがあることを前提としています。  「[クイック スタート:Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」をご覧ください。
 
 ## <a name="verify-app-through-test-endpoint"></a>テスト エンドポイントを介してアプリを検証する
-1. **アプリケーション ダッシュボード** にアクセスし、お使いのアプリをクリックして、アプリの概要ページに移動します。
+
+1. **アプリケーション ダッシュボード** にアクセスし、お使いのアプリを選択してアプリの概要ページに移動します。
 
 1. **[概要]** ペインに、**テスト エンドポイント** が表示されます。  コマンド ラインまたはブラウザーからこのエンド ポイントにアクセスして、API 応答を確認します。
 
@@ -50,24 +52,27 @@ ms.locfileid: "108129245"
 新しいバイナリをコンパイルして、アプリにデプロイします。
 
 ## <a name="enable-production-ready-features"></a>実稼働可能な機能を有効にする
+
 アクチュエータのエンドポイントを使用して、アプリケーションの監視と操作を行うことができます。 既定では、Spring Boot アプリケーションでは、`health` エンドポイントと `info` エンドポイントを公開して、任意のアプリケーション情報と正常性情報が表示されます。
 
 構成と構成可能環境を観察するには、`env` エンドポイントと `configgrops` エンドポイントも有効にする必要があります。
 
-1. アプリの **[概要]** ペインにアクセスし、[設定] メニューの **[構成]** をクリックして、**環境変数** の構成ページにアクセスします。
+1. アプリの **[概要]** ペインにアクセスし、[設定] メニューの **[構成]** を選択して **環境変数** の構成ページにアクセスします。
 1. 次のプロパティを、"キー:値" の形式で追加します。 この環境では、Spring Actuator エンドポイント "env"、"health"、"info" が開きます。
 
-   ```
+   ```properties
    management.endpoints.web.exposure.include: env,health,info
    ```
-1. **[保存]** ボタンをクリックすると、アプリケーションが自動的に再起動され、新しい環境変数が読み込まれます。
+
+1. **[保存]** ボタンを選択すると、アプリケーションが自動的に再起動され、新しい環境変数が読み込まれます。
 
 アプリの [概要] ペインに戻り、[プロビジョニングの状態] が [成功] に変わるまで待ちます。  複数のインスタンスが実行されます。
 
-> [!Note] 
+> [!Note]
 > アプリをパブリックに公開すると、これらのアクチュエータのエンドポイントもパブリックに公開されます。 環境変数 `management.endpoints.web.exposure.include` を削除することですべてのエンドポイントを非表示にし、`management.endpoints.web.exposure.exclude=*` を設定することができます。
 
 ## <a name="view-the-actuator-endpoint-to-view-application-information"></a>アクチュエータ エンドポイントを表示してアプリケーション情報を確認する
+
 1. これで、URL `"<test-endpoint>/actuator/"` にアクセスして、Spring Boot Actuator によって公開されているすべてのエンドポイントを確認できます。
 1. URL `"<test-endpoint>/actuator/env"` にアクセスすると、アプリによって使用されているアクティブなプロファイルと、読み込まれるすべての環境変数を確認できます。
 1. 特定の環境を検索する場合は、URL `"<test-endpoint>/actuator/env/{toMatch}"` にアクセスして表示できます。

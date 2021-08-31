@@ -4,12 +4,12 @@ description: この記事では、Azure Automation State Configuration、Azure A
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c3b00a3d60db16c3b768494f8630587a16033d8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708885"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465801"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Azure Automation でのネットワーク構成の詳細
 
@@ -36,7 +36,7 @@ ms.locfileid: "101708885"
 
 ノード間で通信する DSC リソース ([WaitFor * リソース](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)など) を使用している場合、ノード間のトラフィックを許可する必要もあります。 これらのネットワーク要件を理解するには、各 DSC リソースのドキュメントを参照してください。
 
-TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)」のセクションを参照してください。
+TLS 1.2 のクライアント要件を理解するには、「[Azure Automation 用の TLS 1.2](automation-managing-data.md#tls-12-for-azure-automation)」を参照してください。
 
 ## <a name="update-management-and-change-tracking-and-inventory"></a>Update Management および変更履歴とインベントリ
 

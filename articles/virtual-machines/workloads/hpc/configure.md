@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/02/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9f80b91695af6350376d5fcd97732e1a056278a9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 0ef3b00fe3ae68ddecc7ab93ee612e0698329c43
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413089"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460498"
 ---
 # <a name="configure-and-optimize-vms"></a>VM の構成と最適化
 
@@ -102,7 +102,7 @@ Marketplace にある Ubuntu Server 16.04 LTS、18.04 LTS、および 20.04 LTS 
 - 基本の Ubuntu Marketplace イメージから Ubuntu 18.04 および 20.04 LTS ベースの HPC VM イメージを作成するために使用されるスクリプトは、 [azhpc-images リポジトリ](https://github.com/Azure/azhpc-images/tree/master/ubuntu)にあります。
 
 > [!NOTE]
-> Mellanox OFED 5.1 以降は、FDR InfiniBand (NCv3 など) を使用する SR-IOV 対応 N シリーズ VM サイズ上の ConnectX3-Pro InfiniBand カードをサポートしていません。 ConnectX3-Pro カードが搭載された N シリーズ VM 上では、LTS Mellanox OFED バージョン 4.9-0.1.7.0 以前を使用してください。 詳細については、[こちら](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)を参照してください。
+> Mellanox OFED 5.1 以降は、FDR InfiniBand (NCv3 など) を使用する SR-IOV 対応 N シリーズ VM サイズ上の ConnectX3-Pro InfiniBand カードをサポートしていません。 ConnectX3-Pro カードが搭載された N シリーズ VM 上では、LTS Mellanox OFED バージョン 4.9-0.1.7.0 以前を使用してください。 詳細については、[Linux InfiniBand ドライバー](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)に関するページをご覧ください。
 
 ### <a name="suse-linux-enterprise-server-vm-images"></a>SUSE Linux Enterprise Server VM イメージ
 Marketplace の SLES 12 SP3 for HPC、SLES 12 SP3 for HPC (Premium)、SLES 12 SP1 for HPC、SLES 12 SP1 for HPC (Premium)、SLES 12 SP4、SLES 15 VM の各イメージがサポートされています。 これらの VM イメージには、RDMA (SR-IOV 以外の VM サイズの場合) および Intel MPI バージョン 5.1 用の Network Direct ドライバーが事前に読み込まれています。 詳細については、VM での [MPI の設定](setup-mpi.md)に関するページを参照してください。

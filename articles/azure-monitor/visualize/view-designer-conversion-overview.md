@@ -5,12 +5,12 @@ author: shijatsu
 ms.author: shijain
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 44c838fcb0728797aa3781da0ad98b37cc2c25a5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: b86e90298bc753cdea5c0fb5f255e88fcc26dc5c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317975"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440758"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor ビュー デザイナーからブックへの移行ガイド
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらはブックに移行されており、Azure portal 内でデータを分析し、高度な視覚的レポートを作成するための柔軟なキャンバスを提供します。 この記事は、ビュー デザイナーからブックへの移行を行う際に役立ちます。 
@@ -60,9 +60,7 @@ Workbooks は、データの持つ可能性を最大限に引き出すための�
 新しいブックを開始するには、 **[クイック スタート]** の下にある **空** のテンプレートを選択するか、上部のナビゲーション バーの **[新規]** アイコンを選択します。 テンプレートを表示するか、保存済みブックに戻るには、ギャラリーからその項目を選択するか、検索バーで名前を検索します。
 
 ブックを保存するには、特定のタイトル、サブスクリプション、リソース グループ、場所を指定してレポートを保存する必要があります。
-ブックは、LA ワークスペースと同じサブスクリプションおよびリソース グループを使用して、同じ設定にオートフィルされます。ただし、これらのレポート設定はユーザーが変更できます。 ブックは、既定では *[個人用レポート]* に保存され、個々のユーザーのみがアクセスできます。 また、共有レポートに直接保存することや、後で共有することもできます。
-
-![ブックの保存](media/view-designer-conversion-overview/workbooks-save.png)
+ブックは、LA ワークスペースと同じサブスクリプションおよびリソース グループを使用して、同じ設定にオートフィルされます。ただし、これらのレポート設定はユーザーが変更できます。 ブックは共有リソースであり、保存するには親リソース グループへの書き込みアクセスが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

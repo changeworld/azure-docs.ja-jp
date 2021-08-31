@@ -7,26 +7,21 @@ author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 1c74b716c6a22748a330fb3d325be3202ed89abc
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 08/12/2021
+ms.openlocfilehash: 4baadea0d78db64d97d1ae94317d7d506a141f41
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542769"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860888"
 ---
 # <a name="sentiment-cognitive-skill-v3"></a>センチメント コグニティブ スキル (V3)
 
-> [!IMPORTANT] 
-> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現時点では、ポータルと .NET SDK によるサポートはありません。
-
-V3 **センチメント** のスキルは、非構造化テキストを評価し、各レコードについて、文章とドキュメントレベルでサービスによって検出された最高の信頼スコアに基づいて、センチメント ラベル ("ネガティブ"、"中立"、"ポジティブ" など) を提供します。 このスキルでは、Cognitive Services の [Text Analytics](../cognitive-services/text-analytics/overview.md) のバージョン 3 によって提供される機械学習モデルが使用されます。
+V3 **センチメント** のスキルは、非構造化テキストを評価し、各レコードについて、文章とドキュメントレベルでサービスによって検出された最高の信頼スコアに基づいて、センチメント ラベル ("ネガティブ"、"中立"、"ポジティブ" など) を提供します。 このスキルでは、Cognitive Services の [Text Analytics](../cognitive-services/text-analytics/overview.md) のバージョン 3 によって提供される機械学習モデルが使用されます。 また、[Text Analytics API のオピニオン マイニング機能](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)も公開されており、テキストに含まれる製品やサービスの属性に関連する意見に関するより詳細な情報を提供します。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> このスキルは Cognitive Services にバインドされており、1 日にインデクサーあたり 20 ドキュメントを超えるトランザクションには[課金対象リソース](cognitive-search-attach-cognitive-services.md)が必要です。 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
-
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.V3.SentimentSkill

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 544f871f62481243cda2409db24b0d067df28c32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/26/2021
+ms.openlocfilehash: cb88998009ab05eb91b8945a138ef935660dac35
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580587"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710762"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL の監視とチューニング - Hyperscale (Citus)
 
@@ -20,9 +20,17 @@ ms.locfileid: "100580587"
 
 ## <a name="metrics"></a>メトリック
 
-Hyperscale (Citus) には、サーバー グループ内の各ノード用のメトリックが用意されています。 メトリックを使うと、サポート リソースの動作を分析できます。 各メトリックは 1 分間隔で出力されます。履歴は最大 30 日分です。
+Hyperscale (Citus) からは、サーバー グループに含まれるノードのメトリックと、全体としてのグループの集計メトリックが提供されます。 メトリックを使うと、サポート リソースの動作を分析できます。 各メトリックは 1 分間隔で出力されます。履歴は最大 30 日分です。
 
 メトリックのグラフを表示するだけでなく、アラートを構成することもできます。 詳細な手順については、[アラートの設定方法](howto-hyperscale-alert-on-metric.md)に関する記事をご覧ください。  その他のタスクとして、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../azure-monitor/data-platform.md)に関する記事をご覧ください。
+
+### <a name="per-node-vs-aggregate"></a>ノードあたりと集計
+
+既定では、Azure portal では、サーバー グループ内のノード全体で Hyperscale (Citus) メトリックが収集されます。 ただし、ディスク使用量 (%) など、一部のメトリックはノードあたりを基準にした場合に情報の有益性が上がります。 ノードのメトリックを個別に表示するには、サーバー名を基準に Azure Monitor [メトリック分割](../azure-monitor/essentials/metrics-charts.md#metric-splitting)を使用します。
+
+> [!NOTE]
+>
+> 一部の Hyperscale (Citus) サーバー グループでは、メトリック分割をサポートしていません。 そのようなサーバー グループでは、サーバー グループの **[概要]** ページでノード名をクリックすることで個々のノードのメトリックを表示できます。 次に、ノードの **[メトリック]** ページを開きます。
 
 ### <a name="list-of-metrics"></a>メトリックの一覧
 
@@ -44,3 +52,4 @@ Azure にはクラスター全体の集計メトリックは用意されてい�
 ## <a name="next-steps"></a>次のステップ
 
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-hyperscale-alert-on-metric.md)に関するページをご覧ください。
+- サーバー グループ内でノードあたりのメトリックを調べる目的で[メトリック分割](../azure-monitor/essentials/metrics-charts.md#metric-splitting)する方法について学習します。

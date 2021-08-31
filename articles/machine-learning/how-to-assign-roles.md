@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: d18d674c47d3e337ce5c789d1dc038acbf6792ba
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 2e0b503cd305697a808c08a2fe903d0f27972448
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886084"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745299"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -27,7 +27,7 @@ ms.locfileid: "107886084"
 >
 > * [Azure Kubernetes クラスター リソースへのアクセスを制御する](../aks/azure-ad-rbac.md)
 > * [Kubernetes 認可に Azure RBAC を使用する](../aks/manage-azure-rbac.md)
-> * [Azure RBAC を使用して BLOB データにアクセスする](../storage/common/storage-auth-aad-rbac-portal.md)
+> * [Azure RBAC を使用して BLOB データにアクセスする](../storage/blobs/assign-azure-role-data-access.md)
 
 > [!WARNING]
 > 一部のロールを適用すると、他のユーザーが Azure Machine Learning スタジオを使用するときに UI 機能が制限されることがあります。 たとえば、ユーザーのロールにコンピューティング インスタンスを作成する機能がない場合、コンピューティング インスタンスを作成するオプションをスタジオで使用できません。 この動作は想定されており、アクセス拒否エラーが返される操作をユーザーが実行できないようにしています。
@@ -121,7 +121,7 @@ az role definition create --role-definition data_scientist_role.json
 デプロイ後、このロールは、指定したワークスペース内で利用可能になります。 これで、このロールを Azure portal で追加し、割り当てることができるようになりました。 または、`az ml workspace share` CLI コマンドを使用して、このロールをユーザーに割り当てることができます。
 
 ```azurecli-interactive
-az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist Custom" --user jdoe@contoson.com
 ```
 
 カスタム ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。 
@@ -163,7 +163,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ## <a name="use-azure-resource-manager-templates-for-repeatability"></a>Azure Resource Manager テンプレートを繰り返し使用する
 
-複雑なロール割り当てを何度も作成することになりそうであれば、Azure Resource Manager テンプレートが非常に便利です。 [201-machine-learning-dependencies-role-assignment template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) では、ソース コードでロール割り当てを再使用できるよう指定する方法を示しています。 
+複雑なロール割り当てを何度も作成することになりそうであれば、Azure Resource Manager テンプレートが非常に便利です。 [machine-learning-dependencies-role-assignment template](https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices/machine-learning-dependencies-role-assignment) では、ソース コードでロール割り当てを再使用できるよう指定する方法を示しています。 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
@@ -182,7 +182,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 | パイプラインとエンドポイントの公開 | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` が可能なカスタム ロール |
 | AKS/ACI リソースに登録済みモデルを配置する | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/services/aks/write", "/workspaces/services/aci/write"` が可能なカスタム ロール |
 | 配置された AKS エンドポイントに対するスコアリング | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Azure Active Directory 認証を使用していない場合) または `"/workspaces/read"` (トークン認証を使用している場合) が可能なカスタム ロール |
-| 対話型ノートブックを使用してストレージにアクセスする | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` が可能なカスタム ロール |
+| 対話型ノートブックを使用してストレージにアクセスする | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listStorageAccountKeys/action"` が可能なカスタム ロール |
 | 新しいカスタム ロールを作成する | 所有者、共同作成者、または `Microsoft.Authorization/roleDefinitions/write` が可能なカスタム ロール | 必要なし | 所有者、共同作成者、または `/workspaces/computes/write` が可能なカスタム ロール |
 
 > [!TIP]
@@ -453,6 +453,42 @@ Azure Machine Learning ワークスペースで MLflow 操作を実行するに�
 }
 ```
 
+### <a name="labeling-team-lead"></a>チームリーダーのラベル付け
+
+ラベルが付いたデータセットを確認し、却下したり、ラベル付け分析情報を表示したりできます。 それに加え、このロールでは、ラベラーのロールも実行できます。
+
+`labeling_team_lead_custom_role.json` :
+```json
+{
+    "properties": {
+        "roleName": "Labeling Team Lead",
+        "description": "Team lead for Labeling Projects",
+        "assignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.MachineLearningServices/workspaces/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/write",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/reject/action",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read"
+                ],
+                "notActions": [
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/write",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/delete",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/export/action"
+                ],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 Azure ロールベースのアクセス制御 (Azure RBAC) を使用している間は、次の点に注意する必要があります。
@@ -465,7 +501,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用している
 
 - VNet 内にコンピューティング リソースをデプロイするには、次のアクションのアクセス許可を明示的に付与する必要があります。
     - VNet リソースに対する `Microsoft.Network/virtualNetworks/*/read`。
-    - サブネット リソースに対する `Microsoft.Network/virtualNetworks/subnet/join/action`。
+    - サブネット リソースに対する `Microsoft.Network/virtualNetworks/subnets/join/action`。
     
     ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください。
 

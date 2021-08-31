@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 06/22/2021
 ms.author: v-jansk
-ms.openlocfilehash: 2896c5c78acb98c798f85684ef6f800f82549b06
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ae867a4383b5644eca2cabf2651c2c40797ed49a
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412711"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540602"
 ---
 # <a name="start-translation"></a>翻訳の開始
 
-この API を使用して、Document Translation サービスで一括 (バッチ) 翻訳要求を開始します。 各要求には複数のドキュメントを含めることができ、各ドキュメントのソースと宛先のコンテナーが含まれている必要があります。
+この API を使用して、Document Translation サービスで翻訳要求を開始します。 各要求には複数のドキュメントを含めることができ、各ドキュメントのソースと宛先のコンテナーが含まれている必要があります。
 
 フォルダーをフィルター処理するには、プレフィックスとサフィックスのフィルター (指定された場合) を使用します。 プレフィックスは、コンテナー名の後のサブパスに適用されます。
 
@@ -51,7 +51,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 ## <a name="request-body-batch-submission-request"></a>要求本文: バッチ送信要求
 
-|名前|種類|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |inputs|BatchRequest[]|下に示される BatchRequest。 ドキュメントまたはドキュメントを含むフォルダーの入力リストです。 メディアの種類: "application/json"、"text/json"、"application/*+json"。|
 
@@ -59,7 +59,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 入力バッチの翻訳要求に関する定義。
 
-|名前|種類|必須|説明|
+|名前|型|必須|説明|
 |--- |--- |--- |--- |
 |source|SourceInput[]|はい|下に示される inputs.source。 入力ドキュメントのソースです。|
 |storageType|StorageInputType[]|False|下に示される inputs.storageType。 入力ドキュメントのソース文字列のストレージ型です。 1 つのドキュメントを翻訳する場合にのみ必要です。|
@@ -69,7 +69,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 入力ドキュメントのソースです。
 
-|名前|種類|必須|説明|
+|名前|型|必須|説明|
 |--- |--- |--- |--- |
 |filter|DocumentFilter[]|いいえ|下に示される DocumentFilter[]。|
 |filter.prefix|string|いいえ|翻訳対象のソースパス内のドキュメントをフィルター処理するための、大文字と小文字を区別するプレフィックス文字列。 たとえば、Azure ストレージ BLOB の URI を使用する場合は、プレフィックスを使用して、翻訳対象のサブフォルダーを制限します。|
@@ -92,7 +92,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 完成した翻訳済みドキュメントの宛先。
 
-|名前|種類|必須|説明|
+|名前|型|必須|説明|
 |--- |--- |--- |--- |
 |category|string|いいえ|翻訳要求のカテゴリまたはカスタム システム。|
 |用語集|Glossary[]|いいえ|下に示される用語集。 用語集の一覧。|
@@ -229,7 +229,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 ## <a name="error-response"></a>エラー応答
 
-|名前|種類|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

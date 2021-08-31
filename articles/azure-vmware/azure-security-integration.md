@@ -3,12 +3,12 @@ title: Azure Security Center を Azure VMware Solution と統合する
 description: Azure Security Center ダッシュボードから Azure のネイティブ セキュリティ ツールを使用して、Azure VMware Solution VM を保護する方法について説明します。
 ms.topic: how-to
 ms.date: 06/14/2021
-ms.openlocfilehash: 6060be11ada028234b11e74f56de8c9741fc4cd4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9c7326fca3aeebf277b5f54a65729e2594933984
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754243"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228666"
 ---
 # <a name="integrate-azure-security-center-with-azure-vmware-solution"></a>Azure Security Center を Azure VMware Solution と統合する 
 
@@ -25,6 +25,7 @@ Azure Security Center には、次のような多くの機能が用意されて�
  
 :::image type="content" source="media/azure-security-integration/azure-integrated-security-architecture.png" alt-text="Azure 統合セキュリティのアーキテクチャを示す図。" border="false":::
 
+**Log Analytics エージェント** により、Azure、Azure VMware Solution、オンプレミスの VM からログ データが収集されます。 ログ データは Azure Monitor ログに送信され、**Log Analytics ワークスペース** に格納されます。 各ワークスペースには、データを格納するための独自のデータ リポジトリと構成があります。  ログが収集されると、**Azure Security Center** によって、Azure VMware Solution VM の脆弱性の状態が評価され、重大な脆弱性についてアラートが生成されます。 評価が完了すると、インシデントを作成して他の脅威とマップするために、Azure Security Center から Azure Sentinel に環境の脆弱性が転送されます。  Azure Security Center は、Azure Security Center コネクタを使用して Azure Sentinel に接続されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +38,7 @@ Azure Security Center には、次のような多くの機能が用意されて�
 - [サブスクリプションで Azure Security Center を有効にします](../security-center/security-center-get-started.md)。 
 
    >[!NOTE]
-   >Azure Security Center はデプロイを必要としない事前構成済みのツールですが、Azure portal で有効にする必要があります。
+   >Azure Security Center はデプロイを必要としない事前構成済みのツールですが、有効にする必要があります。
 
 - [Azure Defender を有効にします](../security-center/enable-azure-defender.md)。 
 
@@ -76,7 +77,7 @@ Azure Security Center には、次のような多くの機能が用意されて�
 
 ## <a name="view-recommendations-and-passed-assessments"></a>推奨事項と合格した評価を表示する
 
-これにより、リソースのセキュリティ正常性の詳細が提供されます。 
+推奨事項と評価では、リソースのセキュリティ正常性の詳細が提供されます。 
 
 1. Azure Security Center で、左ペインから **[インベントリ]** を選択します。
 
@@ -88,11 +89,13 @@ Azure Security Center には、次のような多くの機能が用意されて�
 
 4. **[推奨事項の一覧]** で、 **[推奨事項]** タブ、 **[合格した評価]** タブ、 **[利用できない評価]** タブを選択して、以下の詳細を表示します。
 
-   :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="セキュリティの推奨事項と評価を示す Azure Security Center のスクリーンショット。":::
+   :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Azure Security Center のセキュリティの推奨事項と評価を示すスクリーンショット。":::
 
 ## <a name="deploy-an-azure-sentinel-workspace"></a>Azure Sentinel ワークスペースをデプロイする
 
-Azure Sentinel は Log Analytics ワークスペースの上に構築されるので、使用する Log Analytics ワークスペースを選択するだけで済みます。
+Azure Sentinel では、環境全体にわたるセキュリティ分析、アラート検出、自動化された脅威対応が提供されます。 これは、Log Analytics ワークスペースの上に構築されたクラウドネイティブのセキュリティ情報イベント管理 (SIEM) ソリューションです。
+
+Azure Sentinel は Log Analytics ワークスペースの上に構築されているため、必要なのは使用するワークスペースを選択するだけです。
 
 1. Azure portal で、**Azure Sentinel** を検索し、それを選択します。
 
@@ -112,6 +115,9 @@ Azure Sentinel は Log Analytics ワークスペースの上に構築される�
 
    :::image type="content" source="media/azure-security-integration/select-events-you-want-to-stream.png" alt-text="Azure Sentinel の [セキュリティ イベント] ページのスクリーンショット。ここで、ストリームするイベントを選択できます。":::
 
+
+
+
 ## <a name="connect-azure-sentinel-with-azure-security-center"></a>Azure Sentinel を Azure Security Center と接続する  
 
 1. Azure Sentinel ワークスペースのページで、構成したワークスペースを選択します。
@@ -120,7 +126,7 @@ Azure Sentinel は Log Analytics ワークスペースの上に構築される�
 
 3. 一覧から **[Azure Security Center]** を選択してから、 **[コネクタ ページを開く]** を選択します。
 
-    :::image type="content" source="media/azure-security-integration/connect-security-center-with-azure-sentinel.png" alt-text="Azure Security Center を Azure Sentinel と接続するための選択を示す、Azure Sentinel の [データ コネクタ] ページのスクリーンショット。":::
+   :::image type="content" source="media/azure-security-integration/connect-security-center-with-azure-sentinel.png" alt-text="Azure Security Center を Azure Sentinel と接続するための選択を示す、Azure Sentinel の [データ コネクタ] ページのスクリーンショット。":::
 
 4. **[接続]** を選択して、Azure Security Center を Azure Sentinel と接続します。
 
@@ -172,7 +178,7 @@ Azure Sentinel は Log Analytics ワークスペースの上に構築される�
 
 6. **[インシデントの設定]** タブで、 **[この分析ルールによってトリガーされるアラートからインシデントを作成する]** を有効にし、 **[次へ: 自動応答]** を選択します。
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Azure Sentinel で新しいルールを作成するための分析ルール ウィザードのスクリーンショット。[この分析ルールによってトリガーされるアラートからインシデントを作成する] が有効として表示されています。":::
+    :::image type="content" source="../sentinel/media/tutorial-detect-threats-custom/general-tab.png" alt-text="Azure Sentinel で新しいルールを作成するための分析ルール ウィザードを示すスクリーンショット。":::
 
 7. **確認\)** をクリックします。
 
@@ -205,7 +211,7 @@ Azure Sentinel は Log Analytics ワークスペースの上に構築される�
    >[!TIP]
    >**[+ 新しいクエリ]** を選択して、新しいクエリを作成することもできます。 
    >
-   >:::image type="content" source="media/azure-security-integration/create-new-query.png" alt-text="[+ 新しいクエリ] が強調表示されている、Azure Sentinel の [ハンティング] ページのスクリーンショット。":::
+   >:::image type="content" source="../sentinel/media/hunting/save-query.png" alt-text="[+ 新しいクエリ] が強調表示されている、Azure Sentinel の [ハンティング] ページのスクリーンショット。":::
 
 3. クエリを選択してから、 **[クエリの実行]** を選択します。
 

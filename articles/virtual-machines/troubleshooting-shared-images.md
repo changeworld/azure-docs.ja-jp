@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: troubleshooting
 ms.workload: infrastructure
-ms.date: 10/27/2020
+ms.date: 7/1/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 9652e940674ec7580b006cd38df2a7d17014f939
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e8cfba3c7dc13f6e32d0dd4141832bab475cc5b8
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309987"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113138821"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Azure の共有イメージ ギャラリーのトラブルシューティング
 
@@ -296,6 +296,14 @@ ms.locfileid: "107309987"
 **メッセージ**: *'GalleryImageVersion ソース リソースのサイズ 2048 はサポートされている最大サイズ 1024 を超えている' ため、このリージョンでレプリケーションが失敗しました。*  
 **原因**: ソース内のデータ ディスクが 1 TB を超えています。  
 **回避策**: データ ディスクのサイズを 1 TB 未満に変更します。
+
+**[Message]\(メッセージ\)** : *Operation 'Update Gallery Image Version' is not on allowed on <versionNumber>; since it is marked for deletion. You can only retry the Delete operation (or wait for an ongoing one to complete).* (ギャラリー イメージを削除中であるため、<versionNumber> では “ギャラリー イメージ バージョンの更新” 操作ができません。削除操作を再試行することはできます (または、実行中の操作の完了を待つことができます。))  
+**原因**: 削除中のギャラリー イメージ バージョンを更新しようとしました。  
+**回避策**: 削除イベントの完了を待って、イメージ バージョンを再作成します。
+
+**メッセージ**: *Encryption is not supported for source resource '<sourceID>'. Please use a different source resource type which supports encryption or remove encryption properties.* (ソース リソース <sourceID> の暗号化はサポートしていません。暗号化をサポートしている他のソース リソースを使用するか、暗号化プロパティを削除してください。)  
+**原因**: 現在 Shared Image Gallery では、VM、ディスク、スナップショット、マネージド イメージの暗号化だけをサポートしています。 イメージ バージョンで指定したソースのいずれかが、前掲の暗号化をサポートしているソースのリストに含まれていません。  
+**回避策**: ディスク暗号化セットをイメージ バージョンから削除し、サポート チームに問い合わせます。
 
 ## <a name="creating-or-updating-a-vm-or-scale-sets-from-an-image-version"></a>イメージ バージョンからの VM またはスケール セットの作成または更新 ##
 

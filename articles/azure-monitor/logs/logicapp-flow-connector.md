@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 4a25d7a23d486c8ce22fa433cc1ead390726facc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b6cddc32b81f0e1bf915bfa09527a3ef395f744
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048864"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735790"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps および Power Automate の Azure Monitor Logs コネクタ
 [Azure Logic Apps](../../logic-apps/index.yml) と [Power Automate](https://flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 Azure Monitor Logs コネクタを使用すると、Azure Monitor 内の Log Analytics ワークスペースまたは Application Insights アプリケーションからデータを取得するワークフローを作成できます。 この記事では、コネクタに含まれるアクションについて説明し、このデータを使用してワークフローを作成するためのチュートリアルを提供します。
@@ -20,10 +20,9 @@ ms.locfileid: "102048864"
 
 ## <a name="connector-limits"></a>コネクタの制限
 Azure Monitor Logs コネクタには次の制限があります。
-* 最大データ サイズ:16 MB
-* クエリ応答の最大サイズ 100 MB
+* クエリ応答の最大サイズ ~16.7 MB MB (16 MiB)。 コネクタ インフラストラクチャで、制限がクエリ API の制限よりも低く設定されている
 * レコードの最大数:500,000
-* クエリの最大タイムアウト 110 秒。
+* クエリの最大タイムアウト 110 秒
 * 現在、コネクタと [ログ] ページで同じグラフ ライブラリが使用されていないため、グラフの視覚エフェクトは、[ログ] ページでは使用できますが、[コネクタ] ページにはありません。
 
 使用するデータとクエリのサイズによっては、コネクタがその上限に達し、エラーが発生することがあります。 このような問題は、実行頻度を増やし、照会するデータを減らすようにトリガーの繰り返しを調整することで回避できます。 返すレコードと列が少なくなるようにデータを集計するクエリを使用できます。

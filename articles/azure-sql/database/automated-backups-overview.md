@@ -7,18 +7,18 @@ ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: references_regions, devx-track-azurepowershell
 ms.topic: conceptual
-author: shkale-msft
-ms.author: shkale
-ms.reviewer: mathoma, danil
-ms.date: 03/10/2021
-ms.openlocfilehash: 5aa0f079ed22d101e17e55d9880aaab7ae1715ff
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: mathoma, wiassaf, danil
+ms.date: 07/20/2021
+ms.openlocfilehash: 4b7b17ab75f2614a99d791118dc908cd1f7c3b97
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862660"
 ---
-# <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
+# <a name="automated-backups---azure-sql-database--azure-sql-managed-instance"></a>自動バックアップ - Azure SQL Database および Azure SQL Managed Instance
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
@@ -36,21 +36,21 @@ SQL Database と SQL Managed Instance は SQL Server 技術を利用して、[�
 
 ### <a name="backup-storage-redundancy"></a>バックアップ ストレージの冗長性
 
-SQL Database と SQL Managed Instance では既定で、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にレプリケートされる geo 冗長[ストレージ BLOB](../../storage/common/storage-redundancy.md) にデータが格納されます。 それにより、プライマリ リージョンのバックアップ ストレージに影響する障害が起きないように保護され、万一障害が発生しても別のリージョンにサーバーを復元できます。 
+SQL Database と SQL Managed Instance では既定で、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にレプリケートされる geo 冗長[ストレージ BLOB](../../storage/common/storage-redundancy.md) にデータが格納されます。 geo 冗長性により、プライマリ リージョンのバックアップ ストレージに影響する障害が起きないように保護され、万一障害が発生しても別のリージョンにサーバーを復元できます。 
 
-バックアップ ストレージの冗長性を構成するオプションによって、ローカル冗長、ゾーン冗長、geo 冗長のいずれかのストレージ BLOB を、SQL Managed Instance または SQL Database に対して柔軟に選択することができます。 マネージド インスタンスまたは SQL データベースがデプロイされているのと同じリージョンにデータが保持されるようにするには、既定の geo 冗長バックアップ ストレージの冗長性を変更し、バックアップに対してローカル冗長またはゾーン冗長のストレージ BLOB を構成することができます。 ストレージの冗長性メカニズムでは、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止や停電、大規模な自然災害など) からデータを保護するため、データのコピーが複数格納されます。 構成されたバックアップ ストレージの冗長性が、ポイントインタイム リストア (PITR) に使用される短期保有バックアップ設定と、長期的バックアップ (LTR) に使用される長期保有バックアップの、両方に適用されます。 
+バックアップ ストレージの冗長性を構成するオプションによって、ローカル冗長、ゾーン冗長、geo 冗長のいずれかのストレージ BLOB を柔軟に選択することができます。 マネージド インスタンスまたは SQL データベースがデプロイされているのと同じリージョンにデータが保持されるようにするには、既定の geo 冗長バックアップ ストレージの冗長性を変更し、バックアップに対してローカル冗長またはゾーン冗長のストレージ BLOB を構成することができます。 ストレージの冗長性メカニズムでは、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止や停電、大規模な自然災害など) からデータを保護するため、データのコピーが複数格納されます。 構成されたバックアップ ストレージの冗長性が、ポイントインタイム リストア (PITR) に使用される短期保有バックアップ設定と、長期的バックアップ (LTR) に使用される長期保有バックアップの、両方に適用されます。 
 
-SQL Database の場合、バックアップ ストレージの冗長性は、データベースの作成時に構成することも、既存のデータベースに対して更新することもできます。既存のデータベースに対する変更は、それ以降のバックアップにのみ適用されます。 既存のデータベースのバックアップ ストレージの冗長性を更新した後、変更が適用されるまでに最大 48 時間かかることがあります。 ローカル冗長またはゾーン冗長のストレージを使用するようにデータベースを更新するとすぐに、geo リストアが無効になることに注意してください。 
+SQL Database の場合、バックアップ ストレージの冗長性は、データベースの作成時に構成することも、既存のデータベースに対して更新することもできます。既存のデータベースに対する変更は、それ以降のバックアップにのみ適用されます。 既存のデータベースのバックアップ ストレージの冗長性を更新した後、変更が適用されるまでに最大 48 時間かかることがあります。 ローカル冗長またはゾーン冗長のストレージを使用するようにデータベースを更新するとすぐに、geo リストアが無効になります。 
 
 
 > [!IMPORTANT]
-> リソースがプロビジョニングされたら、マネージド インスタンス作成プロセス中にバックアップ ストレージ冗長性を構成します。ストレージ冗長性を変更することはできなくなりました。 
+> Hyperscale と SQL Managed Instance のバックアップ ストレージの冗長性は、データベースの作成時にのみ設定できます。 この設定は、リソースがプロビジョニングされた後は変更できません。 [データベースのコピー](database-copy.md) プロセスを使用して、既存の Hyperscale データベースのバックアップ ストレージの冗長性設定を更新できます。 
 
 > [!IMPORTANT]
 > ゾーン冗長ストレージは現在、[特定のリージョン](../../storage/common/storage-redundancy.md#zone-redundant-storage)でのみ利用できます。 
 
 > [!NOTE]
-> Configurable Backup Storage Redundancy for Azure SQL Database は、現在すべての Azure リージョンでパブレック プレビュー版を利用でき、東南アジア Azure リージョンでのみ一般提供しています。 この機能は、Hyperscale レベルではまだ使用できません。 
+> Configurable Backup Storage Redundancy for Azure SQL Database は、現在すべての Azure リージョンでパブレック プレビュー版を利用でき、東南アジア Azure リージョンでのみ一般提供しています。 
 
 ### <a name="backup-usage"></a>バックアップの用途
 
@@ -63,17 +63,42 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
    > geo リストアは、geo 冗長バックアップ ストレージを使用して構成された SQL データベースまたはマネージド インスタンスでのみ利用できます。
 - **長期的バックアップからの復元** - データベースの長期保有ポリシー (LTR) が構成されている場合、単一データベースまたはプールされたデータベースの [特定の長期バックアップからデータベースを復元します](long-term-retention-overview.md)。 LTR により、[Azure portal](long-term-backup-retention-configure.md#using-the-azure-portal) または [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの以前バージョンを実行するために、以前のバージョンのデータベースを復元できます。 詳細については、「[長期保存](long-term-retention-overview.md)」をご覧ください。
 
-復元を実行するには、[バックアップからのデータベースの復元](recovery-using-backups.md)に関する記事を参照してください。
-
 > [!NOTE]
 > Azure Storage では、"*レプリケーション*" とは、ある場所から別の場所に BLOB をコピーすることを表します。 SQL では、"*データベース レプリケーション*" とは、複数のセカンダリ データベースをプライマリ データベースと同期しておくために使用されるさまざまなテクノロジのことです。
 
-次の例を使用して、バックアップの構成と復元の操作を試すことができます。
+### <a name="restore-capabilities-and-features-of-azure-sql-database-and-azure-sql-managed-instance"></a><a id="restore-capabilities"></a>Azure SQL Database と Azure SQL Managed Instance の復元機能
+
+次の表は、[ポイントインタイム リストア (PITR)](recovery-using-backups.md#point-in-time-restore)、[geo リストア](recovery-using-backups.md#geo-restore)、[長期保有バックアップ](long-term-retention-overview.md)の機能をまとめたものです。
+
+| **バックアップ プロパティ** | ポイントインタイム リストア (PITR) | geo リストア | 長期バックアップの復元 |           
+|----|--|--|--|
+| **SQL バックアップの種類** | 完全、差分、ログ | PITR バックアップのレプリケートされたコピー | 完全バックアップのみ | 
+| **回復ポイントの目標 (RPO)** |  コンピューティング サイズとデータベース アクティビティの量に基づいて、5 - 10 分。 | geo レプリケーションに基づいて最大 1 時間。\*  |  1 週間 (またはユーザーのポリシー)。|
+| **目標復旧時間 (RTO)** | 復元には通常、最大 12 時間かかりますが、サイズとアクティビティによってはさらに時間が長くなる可能性があります。 [復元](recovery-using-backups.md#recovery-time)に関する記事を参照してください。 | 復元には通常、最大 12 時間かかりますが、サイズとアクティビティによってはさらに時間が長くなる可能性があります。 [復元](recovery-using-backups.md#recovery-time)に関する記事を参照してください。 | 復元には通常、最大 12 時間かかりますが、サイズとアクティビティによってはさらに時間が長くなる可能性があります。 [復元](recovery-using-backups.md#recovery-time)に関する記事を参照してください。 | 
+| **保持** | 既定では 7 日、最大 35 日 |  ソースと同じく、既定で有効になっています。\*\* | 既定では有効になっていません。リテンション期間は最大 10 年です。 |     
+| **Azure Storage**  | 既定では geo 冗長です。 必要に応じて、ゾーンまたはローカル冗長ストレージを構成できます。 | PITR バックアップ ストレージの冗長性が geo 冗長に設定されている場合に使用できます。 PITR バックアップ ストアがゾーンまたはローカル冗長ストレージの場合は使用できません。 | 既定では geo 冗長です。 ゾーンまたはローカル冗長ストレージを構成できます。 | 
+| **同じリージョンに新しいデータベースを作成するために使用** | サポートされています | サポートされています | サポートされています |
+| **別のリージョンに新しいデータベースを作成するために使用** | サポートされていません | 任意の Azure リージョンでサポートされています | 任意の Azure リージョンでサポートされています |
+| **別のサブスクリプションに新しいデータベースを作成するために使用** |  サポートされていません  |  サポートされていません\*\*\* | サポートされていません\*\*\*  | 
+| **Azure portal を使用した復元**|はい|はい|はい|
+| **PowerShell を使用した復元** |はい|はい|はい| 
+| **Azure CLI を使用した復元** |はい|はい|はい| 
+| | | | |
+
+\* 大規模なデータベースを必要とし、事業継続性を保証する必要があるビジネス上不可欠なアプリケーションの場合は、[自動フェールオーバー グループ](auto-failover-group-overview.md)を使用します。 
+
+\*\* 既定では、すべての PITR バックアップは geo 冗長ストレージに格納されます。 そのため、geo リストアは既定で有効になっています。 
+
+\*\*\* 回避策は、新しいサーバーに復元し、リソースの移動を使用してサーバーを別のサブスクリプションに移動することです。
+
+### <a name="restoring-a-database-from-backups"></a>バックアップからデータベースを復元する 
+
+復元を実行するには、[バックアップからのデータベースの復元](recovery-using-backups.md)に関する記事を参照してください。 次の例を使用して、バックアップの構成と復元の操作を試すことができます。
 
 | 操作 | Azure portal | Azure PowerShell |
 |---|---|---|
 | **バックアップ保有期間を変更する** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **長期的なバックアップ保有期間を変更する** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL Managed Instance - N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md)  |
+| **長期的なバックアップ保有期間を変更する** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-the-azure-portal) | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-powershell)  |
 | **特定の時点からデータベースを復元する** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | **削除されたデータベースの復元** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | **Azure Blob Storage からデータベースを復元する** | SQL Database - N/A <br/>SQL Managed Instance - N/A  | SQL Database - N/A <br/>[SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md) |
@@ -87,12 +112,12 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 
 ## <a name="backup-storage-consumption"></a>バックアップ ストレージ消費量
 
-SQL Server のバックアップと復元のテクノロジでは、特定の時点にデータベースを復元するには、1 回の完全バックアップ、必要に応じて 1 回の差分バックアップ、1 回以上のトランザクション ログ バックアップで構成される、中断のないバックアップ チェーンが必要です。 SQL Database および SQL Managed Instance のバックアップ スケジュールには、毎週、1 回の完全バックアップが含まれます。 したがって、保有期間全体で PITR を有効にするには、構成されている保有期間より最大で 1 週間長い期間の、完全バックアップ、差分バックアップ、トランザクション ログ バックアップが追加で保存されている必要があります。 
+SQL Server のバックアップと復元のテクノロジでは、特定の時点にデータベースを復元するには、1 回の完全バックアップ、必要に応じて 1 回の差分バックアップ、1 回以上のトランザクション ログ バックアップで構成される、中断のないバックアップ チェーンが必要です。 SQL Database および SQL Managed Instance のバックアップ スケジュールには、毎週、1 回の完全バックアップが含まれます。 したがって、保有期間全体で PITR を提供にするには、構成されている保有期間より最大で 1 週間長い期間の、完全バックアップ、差分バックアップ、トランザクション ログ バックアップが追加で保存されている必要があります。 
 
 つまり、保有期間中の任意の時点において、保有期間の最も古い時点より古い完全バックアップと、その完全バックアップから次の完全バックアップまでの差分バックアップとトランザクション ログ バックアップの中断されていないチェーンが、存在する必要があります。
 
 > [!NOTE]
-> PITR を有効にするため、追加のバックアップは、構成されている保有期間より最大 1 週間長く格納されます。 バックアップ ストレージは、すべてのバックアップと同じ料金で課金されます。 
+> PITR を提供するため、追加のバックアップは、構成されている保有期間より最大 1 週間長く格納されます。 バックアップ ストレージは、すべてのバックアップと同じ料金で課金されます。 
 
 PITR 機能を提供するために必要なくなったバックアップは、自動的に削除されます。 差分バックアップとログ バックアップでは先行する完全バックアップが復元可能である必要なため、3 つのバックアップの種類すべてが毎週まとめて消去されます。
 
@@ -101,11 +126,11 @@ PITR 機能を提供するために必要なくなったバックアップは、
 SQL Database と SQL Managed Instance では、使用されたバックアップ ストレージの合計が累積値として計算されます。 この累積値が 1 時間おきに Azure 課金パイプラインに報告されます。この時間あたり使用量がパイプラインによって集計されて、毎月末に消費量が計算されます。 データベースの削除後は、バックアップが古くなって削除されると共に消費量が減少します。 すべてのバックアップが削除されて、PITR が不可能になると、課金は停止します。
    
 > [!IMPORTANT]
-> データベースが削除された場合でも、データベースのバックアップは PITR を有効にするために保持されます。 データベースを削除して再作成すると、ストレージとコンピューティングのコストが削減される場合がありますが、削除されるたびに、削除された各データベースのバックアップがサービスによって保持されるため、バックアップ ストレージのコストが増加する可能性があります。 
+> データベースが削除された場合でも、データベースのバックアップは PITR を提供するために保持されます。 データベースを削除して再作成すると、ストレージとコンピューティングのコストが削減される場合がありますが、削除されるたびに、削除された各データベースのバックアップがサービスによって保持されるため、バックアップ ストレージのコストが増加する可能性があります。 
 
 ### <a name="monitor-consumption"></a>消費量の監視
 
-仮想コア データベースの場合、各種バックアップ (完全、差分、ログ) によって使用されるストレージは、データベース監視ブレード上で別個のメトリックとして報告されます。 次の図では、単一データベースのバックアップ ストレージ消費量の監視方法が示されています。 この機能は、マネージド インスタンスでは現在使用できません。
+仮想コア データベースの場合、各種バックアップ (完全、差分、ログ) によって使用されるストレージは、データベース監視ペイン上で別個のメトリックとして報告されます。 次の図では、単一データベースのバックアップ ストレージ消費量の監視方法が示されています。 この機能は、マネージド インスタンスでは現在使用できません。
 
 ![Azure portal でのデータベース バックアップ消費量の監視](./media/automated-backups-overview/backup-metrics.png)
 
@@ -120,7 +145,7 @@ SQL Database と SQL Managed Instance では、使用されたバックアップ
 - 一時的な結果やデータの保存には、アプリケーションのロジックでの永続的テーブルではなく TempDB を使用します。
 - 可能な限り (Dev/Test 環境など) ローカル冗長バックアップ ストレージを使用します。
 
-## <a name="backup-retention"></a>バックアップ保有期間
+## <a name="backup-retention"></a>バックアップ保持期間
 
 新しいデータベース、復元されたデータベース、コピーされたデータベースのすべてについて、Azure SQL Database と Azure SQL Managed Instance では、既定で、過去 7 日間の PITR が可能な十分なバックアップが保持されます。 Hyperscale データベースと Basic レベルのデータベースを除き、1 から 35 日の範囲で、アクティブな各データベースごとに[バックアップの保持期間を変更](#change-the-pitr-backup-retention-period)できます。 「[バックアップ ストレージ消費量](#backup-storage-consumption)」で説明されているように、PITR を有効にするために保存されているバックアップは、保有期間より古い場合があります。 Azure SQL Managed Instance のみの場合、データベースを削除した後で、PITR バックアップ保持率を 0 から 35 日の範囲で設定できます。 
 
@@ -142,7 +167,9 @@ LTR の詳細については、[バックアップの長期保有](long-term-ret
 
 ## <a name="backup-storage-costs"></a>バックアップ ストレージのコスト
 
-バックアップ ストレージの価格は、購入モデル (DTU または仮想コア) と選択したバックアップ ストレージ冗長性オプション、さらにリージョンによっても異なります。 バックアップ ストレージは、使用量 (GB/月) に応じて課金されます。価格については、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)」と「[Azure SQL Managed Instance の価格](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)」のページを参照してください。
+バックアップ ストレージの価格は、購入モデル (DTU または仮想コア) と選択したバックアップ ストレージ冗長性オプション、さらにリージョンによっても異なります。 バックアップ ストレージは、使用量 (GB/月) に応じて課金されます。価格については、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)」と「[Azure SQL Managed Instance の価格](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)」のページを参照してください。 
+
+購入モデルの詳細については、「[仮想コアと DTU のどちらかの購入モデルを選択する](purchasing-models.md)」を参照してください。
 
 > [!NOTE]
 > Azure 請求書では、バックアップ ストレージの全体の使用量ではなく、消費された超過分のバックアップ ストレージのみが表示されます。 たとえば仮に、4 TB のデータ ストレージをプロビジョニングした場合、4 TB の無料のバックアップ ストレージ領域が得られます。 合計 5.8 TB のバックアップ ストレージ領域を使用した場合、使用された超過分のバックアップ ストレージのみが課金されるため、Azure 請求書には 1.8 TB のみが表示されます。
@@ -202,13 +229,17 @@ SQL Database と SQL Managed Instance では、課金対象の合計バックア
   >[!NOTE]
   > 測定値は、現在使用中のカウンターについてのみ表示されます。 カウンターが利用できない場合、そのカテゴリが現在使用されていないと考えられます。 たとえば、マネージド インスタンスをデプロイしていないユーザーには、マネージド インスタンス カウンターが存在しません。 同様に、ストレージを使用していないリソースについては、ストレージ カウンターは表示されません。 
 
+詳細については、[Azure SQL Database のコスト管理](cost-management.md)に関するページを参照してください。
+
 ## <a name="encrypted-backups"></a>暗号化バックアップ
 
 データベースが TDE で暗号化されている場合、LTR バックアップを含むバックアップは保存中に自動的に暗号化されます。 Azure SQL のすべての新しいデータベースでは、既定で TDE が有効に構成されます。 TDE の詳細については、[SQL Database および SQL Managed Instance での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) に関するページを参照してください。
 
 ## <a name="backup-integrity"></a>バックアップの整合性
 
-Azure SQL のエンジニアリング チームは、自動データベース バックアップに対する復元の自動テストを継続的に行っています。 (このテストは、現在は SQL Managed Instance では使用できません)。ポイントインタイム リストア時に、データベースは DBCC CHECKDB の整合性チェックも受けます。
+Azure SQL のエンジニアリング チームは、自動データベース バックアップに対する復元の自動テストを継続的に行っています。 (このテストは、現在は SQL Managed Instance では使用できません。 SQL Managed Instance 内のデータベースで、ワークロードに合わせて DBCC CHECKDB をスケジュールする必要があります)。
+
+ポイントインタイム リストア時に、データベースは DBCC CHECKDB の整合性チェックも受けます。
 
 整合性チェック中に問題が見つかると、エンジニアリング チームにアラートが送信されます。 詳細については、[SQL Database でのデータ整合性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)に関するページを参照してください。
 
@@ -233,8 +264,6 @@ DTU ベースのサービス レベルから仮想コア ベースのサービ�
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>Azure portal を使用して PITR バックアップ保有期間を変更する
 
 Azure portal を使用してアクティブなデータベースの PITR バックアップ保持期間を変更するには、保持期間を変更するデータベースのサーバーまたはマネージド インスタンスに移動します。 左側のペインで **[バックアップ]** を選択してから、 **[保持ポリシー]** を選択します。PITR 保有期間を変更するデータベースを選択します。 次に、アクション バーから **[保有期間の構成]** を選択します。
-
-
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
@@ -264,7 +293,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
-**個々のアクティブな** SQL Managed Instance データベースの PITR バックアップ保持期間を変更するには、次の PowerShell の例を使用します。
+SQL Managed Instance の **単一のアクティブな** データベースの PITR バックアップ保有期間を変更するには、次の PowerShell の例を使用します。
 
 ```powershell
 # SET new PITR backup retention period on an active individual database
@@ -272,7 +301,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase -RetentionDays 1
 ```
 
-**すべてのアクティブな** SQL Managed Instance データベースの PITR バックアップ保持期間を変更するには、次の PowerShell の例を使用します。
+SQL Managed Instance の **すべてのアクティブな** データベースの PITR バックアップ保有期間を変更するには、次の PowerShell の例を使用します。
 
 ```powershell
 # SET new PITR backup retention period for ALL active databases
@@ -280,7 +309,7 @@ Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resou
 Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 1
 ```
 
-**個々の削除された** SQL Managed Instance データベースの PITR バックアップ保持期間を変更するには、次の PowerShell の例を使用します。
+SQL Managed Instance の **単一の削除された** データベースの PITR バックアップ保有期間を変更するには、次の PowerShell の例を使用します。
  
 ```powershell
 # SET new PITR backup retention on an individual deleted database
@@ -288,7 +317,7 @@ Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testser
 Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
 ```
 
-**すべての削除された** SQL Managed Instance データベースの PITR バックアップ保持期間を変更するには、次の PowerShell の例を使用します。
+SQL Managed Instance の **すべての削除された** データベースの PITR バックアップ保有期間を変更するには、次の PowerShell の例を使用します。
 
 ```powershell
 # SET new PITR backup retention for ALL deleted databases
@@ -380,15 +409,15 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
-バックアップ ストレージの冗長性は、Azure portal の **[SQL データベースの作成]** ブレードで構成できます。 このオプションは、[バックアップ ストレージの冗長性] セクションにあります。 
-![[SQL データベースの作成] ブレードを開く](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
+バックアップ ストレージの冗長性は、Azure portal の **[SQL データベースの作成]** ペインで構成できます。 このオプションは、[バックアップ ストレージの冗長性] セクションにあります。 
+![[SQL データベースの作成] ペインを開く](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
-Azure portal には、バックアップ ストレージの冗長性を変更するオプションが **[コンピューティングとストレージ]** ブレードにあります。そこには、SQL Managed Instance の作成時に、 **[基本]** タブの **[Managed Instance の構成]** オプションからアクセスすることができます。
-![[コンピューティングとストレージ] 構成ブレード](./media/automated-backups-overview/open-configuration-blade-managedinstance.png)
+Azure portal には、バックアップ ストレージの冗長性を変更するオプションが **[コンピューティングとストレージ]** ペインにあります。そこには、SQL Managed Instance の作成時に、 **[基本]** タブの **[Managed Instance の構成]** オプションからアクセスすることができます。
+![[コンピューティングとストレージ] 構成ペイン](./media/automated-backups-overview/open-configuration-blade-managedinstance.png)
 
-バックアップ ストレージの冗長性を選択するオプションは、 **[コンピューティングとストレージ]** ブレードにあります。
+バックアップ ストレージの冗長性を選択するオプションは、 **[コンピューティングとストレージ]** ペインにあります。
 ![バックアップ ストレージの冗長性を構成する](./media/automated-backups-overview/select-backup-storage-redundancy-managedinstance.png)
 
 ---
@@ -397,7 +426,7 @@ Azure portal には、バックアップ ストレージの冗長性を変更す
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
-新しいデータベースを作成するときにバックアップ ストレージの冗長性を構成するには、-BackupStoageRedundancy パラメーターを指定します。 指定できる値は、Geo、Zone、Local です。 既定では、すべての SQL データベースでバックアップに geo 冗長ストレージが使用されます。 ローカルまたはゾーンの冗長バックアップ ストレージを使用してデータベースを作成した場合、geo リストアは無効になります。 
+新しいデータベースを作成するときにバックアップ ストレージの冗長性を構成するには、-BackupStorageRedundancy パラメーターを指定します。 指定できる値は、Geo、Zone、Local です。 既定では、すべての SQL データベースでバックアップに geo 冗長ストレージが使用されます。 ローカルまたはゾーンの冗長バックアップ ストレージを使用してデータベースを作成した場合、geo リストアは無効になります。 
 
 ```powershell
 # Create a new database with geo-redundant backup storage.  
@@ -407,7 +436,7 @@ New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -D
 詳細については、「[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)」を参照してください。
 
 既存のデータベースのバックアップ ストレージの冗長性を更新するには、-BackupStorageRedundancy パラメーターを使用できます。 指定できる値は、Geo、Zone、Local です。
-変更がデータベースに適用されるまでに、最大で 48 時間かかる場合があることに注意してください。 geo 冗長バックアップ ストレージからローカルまたはゾーン冗長ストレージに切り替えると、geo リストアは無効になります。 
+変更がデータベースに適用されるまでに、最大で 48 時間かかる場合があります。 geo 冗長バックアップ ストレージからローカルまたはゾーン冗長ストレージに切り替えると、geo リストアは無効になります。 
 
 ```powershell
 # Change the backup storage redundancy for Database01 to zone-redundant. 
@@ -422,13 +451,13 @@ Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
-マネージド インスタンスを作成するときにバックアップ ストレージの冗長性を構成する場合は、-BackupStoageRedundancy パラメーターを指定できます。 指定できる値は、Geo、Zone、Local です。
+マネージド インスタンスを作成するときにバックアップ ストレージの冗長性を構成する場合は、-BackupStorageRedundancy パラメーターを指定できます。 指定できる値は、Geo、Zone、Local です。
 
 ```powershell
 New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4 -BackupStorageRedundancy Geo
 ```
 
-詳細については、「[New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)」を参照してください。
+詳細については、「[New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)」をご覧ください。
 
 ---
 
@@ -442,24 +471,24 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 
 [SQL データベースでは GRS バックアップ冗長の使用を避ける](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13)
 
+
 [SQL マネージド インスタンスでは GRS バックアップ冗長の使用を避ける](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
 
 SQL Database と Managed Instance に対する組み込みポリシーの定義の完全な一覧については、[こちら](./policy-reference.md)を参照してください。
 
-データ所在地要件を組織レベルで適用するには、これらのポリシーをサブスクリプションに割り当てることができます。 これらをサブスクリプション レベルで割り当てると、指定したサブスクリプションのユーザーは、Azure portal または Azure PowerShell を使用して、geo 冗長バックアップ ストレージでデータベースまたはマネージド インスタンスを作成できなくなります。 
+データ所在地要件を組織レベルで適用するには、これらのポリシーをサブスクリプションに割り当てることができます。 これらのポリシーをサブスクリプション レベルで割り当てると、指定したサブスクリプションのユーザーは、Azure portal または Azure PowerShell を使用して、geo 冗長バックアップ ストレージでデータベースまたはマネージド インスタンスを作成できなくなります。 
 
 > [!IMPORTANT]
 > T-SQL を使用してデータベースを作成する場合は、Azure ポリシーは適用されません。 T-SQL を使用してデータベースを作成するときにデータ所在地を適用するには、[CREATE DATABASE ステートメントの BACKUP_STORAGE_REDUNDANCY パラメーターに対する入力として "LOCAL" または "ZONE" を使用します](/sql/t-sql/statements/create-database-transact-sql#create-database-using-zone-redundancy-for-backups)。
 
 [Azure portal](../../governance/policy/assign-policy-portal.md) または [Azure PowerShell](../../governance/policy/assign-policy-powershell.md) を使用してポリシーを割り当てる方法を参照してください
 
-
 ## <a name="next-steps"></a>次のステップ
 
 - データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 その他の SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関するページを参照してください。
+- Azure Blob Storage に長期保有される自動バックアップを Azure portal を使用して構成、管理、復元する方法の詳細については、[Azure portal を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md)に関する記事を参照してください。
+- Azure Blob Storage に長期保有される自動バックアップを PowerShell を使用して構成、管理、復元する方法については、[PowerShell を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md#using-powershell)に関する記事を参照してください。 
 - [Azure portal を使用してデータベースを特定の時点に復元する](recovery-using-backups.md)方法について、詳細を確認してください。
 - [PowerShell を使用してデータベースを特定の時点に復元する](scripts/restore-database-powershell.md)方法について、詳細を確認してください。
-- Azure Blob Storage に長期保有される自動バックアップを Azure portal を使用して構成、管理、復元する方法の詳細については、[Azure portal を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md)に関する記事を参照してください。
-- Azure Blob Storage に長期保有される自動バックアップを PowerShell を使用して構成、管理、復元する方法については、[PowerShell を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md)に関する記事を参照してください。
 - Azure SQL Managed Instance でのバックアップ ストレージの消費に関する詳細については、「[説明されている Managed Instance でのバックアップ ストレージの消費](https://aka.ms/mi-backup-explained)」を参照してください。
 - バックアップ ストレージの保持期間と Azure SQL Managed Instance のコストを微調整する方法を学習するには、「[Fine tuning backup storage costs on Managed Instance (Managed Instance でのバックアップ ストレージ コストの微調整)](https://aka.ms/mi-backup-tuning)」を参照してください。

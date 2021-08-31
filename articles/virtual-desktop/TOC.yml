@@ -206,6 +206,8 @@
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/windows-virtual-desktop-security-baseline?context=/azure/virtual-desktop/context/context
+        - name: 画面キャプチャ保護
+          href: screen-capture-protection.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート

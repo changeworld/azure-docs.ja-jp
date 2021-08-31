@@ -1,15 +1,15 @@
 ---
 title: Azure portal でアカウントを作成する
-description: Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します
+description: Azure portal で Azure Batch のアカウントを作成し、大規模な並列ワークロードをクラウドで実行する方法を説明します。
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/01/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 745a2fc2e1279d05fa380b7bc053171d20a3fa4c
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101703666"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213275"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -83,13 +83,11 @@ Batch アカウントに適用される [リソース クォータ](batch-quota-
 
     :::image type="content" source="media/batch-account-create-portal/register_provider.png" alt-text="Microsoft.Batch リソース プロバイダーを示すスクリーンショット。":::
 
-1. **[サブスクリプション]** ページに戻り、 **[アクセス制御 (IAM)]**  >  **[ロールの割り当て]**  >  **[追加]**  >  **[ロール割り当ての追加]** を選択します。
+1. **[Subscription]\(サブスクリプション\)** ページに戻って **[Access control (IAM)]\(アクセス制御 \(IAM\)\)** をクリックします。
 
-    :::image type="content" source="media/batch-account-create-portal/subscription_iam.png" alt-text="サブスクリプションの [ロールの割り当て] ページのスクリーンショット。":::
+1. **[Contributor]\(共同作成者\)** か **[Owner]\(所有者\)** のロールを Batch API に割り当てます。 このアカウントは、「**Microsoft Azure Batch**」か「**MicrosoftAzureBatch**」で検索すると見つかります。 (Batch API の Object ID は **f520d84c-3fd3-4cc8-88d4-2ed25b00d27a**、Application ID は **ddbf3205-c6bd-46ae-8127-60eb93363864** です。)
 
-1. **[ロール割り当ての追加]** ページで、 **[共同作成者]** または **[所有者]** ロールを選択し、Batch API を探します。 この API を見つけるには、**Microsoft Azure Batch** または **MicrosoftAzureBatch** を検索します。 (**ddbf3205-c6bd-46ae-8127-60eb93363864** が Batch API のアプリケーション ID です。)
-
-1. Batch API を見つけたら、それを選択して **[保存]** を選択します。
+   詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="create-a-key-vault"></a>Key Vault の作成
 

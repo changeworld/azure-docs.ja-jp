@@ -1,6 +1,6 @@
 ---
-title: AzCopy v10 を使用して Azure Blob Storage から BLOB をダウンロードする | Microsoft Docs
-description: この記事には、Azure Blob Storage から BLOB をダウンロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
+title: AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする | Microsoft Docs
+description: この記事には、Azure BLOB ストレージから BLOB をダウンロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 56bb36cfda9d0cf1a8882950c862a73ad1e77898
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c57744817e26cc79c101246f146d32d3db061ed5
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502948"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361481"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy"></a>AzCopy を使用して Azure BLOB ストレージから BLOB をダウンロードする
 
@@ -243,7 +243,7 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFil
 - [例:Azure Files](storage-use-azcopy-files.md)
 - [チュートリアル:AzCopy を使用したオンプレミス データのクラウド ストレージへの移行](storage-use-azcopy-migrate-on-premises-data.md)
 
-設定の構成、パフォーマンスの最適化、および問題のトラブルシューティングを行うには、これらの記事を参照してください。
+設定の構成、パフォーマンスの最適化、および問題のトラブルシューティングを行うには、次の記事を参照してください。
 
 - [AzCopy の構成設定](storage-ref-azcopy-configuration-settings.md)
 - [AzCopy のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)

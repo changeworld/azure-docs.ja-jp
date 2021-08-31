@@ -2,14 +2,14 @@
 title: Bicep の開発およびデプロイ環境のセットアップ
 description: Bicep の開発環境とデプロイ環境の構成方法
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 07/19/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 89212841ca4f17802f6b7288b441a5f22ea2c9d6
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 297cafd074beb6c1535747be98dd664041d7b497
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537068"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453374"
 ---
 # <a name="install-bicep-tools"></a>Bicep ツールのインストール
 
@@ -62,6 +62,12 @@ az bicep install
 
 ```azurecli
 az bicep upgrade
+```
+
+インストールの有効性を検証するには、次を使用します。
+
+```azurecli
+az bicep version
 ```
 
 その他のコマンドについては、[Bicep CLI](bicep-cli.md) に関するページを参照してください。

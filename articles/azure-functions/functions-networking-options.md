@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: e7c1c8532a3f77054755eb040fceff1bf8cf273e
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b998f2876e323ad224d4ecb8afddd4c4f7d5f118
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741417"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -89,13 +89,13 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 
 関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。 
 
-この機能は、現在、専用 (App Service) プランおよび Premium プランのすべての Windows 仮想ネットワーク対応 SKU で使用できます。 従量課金プランはサポートされていません。 プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定する方法については、「[お使いのストレージ アカウントを仮想ネットワークに制限する](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network)」を参照してください。
+この機能は、専用 (App Service) プランおよび Premium プランのすべての Windows 仮想ネットワーク対応 SKU でサポートされています。 それは、Linux 仮想ネットワークでサポートされている SKU に対してもプライベート DNS によってサポートされています。 Linux プランでの従量課金プランとカスタム DNS はサポートされていません。 プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定する方法については、「[お使いのストレージ アカウントを仮想ネットワークに制限する](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network)」を参照してください。
 
 ## <a name="use-key-vault-references"></a>Key Vault 参照を使用する
 
 Azure Key Vault 参照を使用すると、コードの変更を必要とせずに、Azure Functions アプリケーションで Azure Key Vault のシークレットを使用することができます。 Azure Key Vault は、アクセス ポリシーと監査履歴を完全制御する、一元化されたシークレット管理を提供するサービスです。
 
-現在、お使いのキー コンテナーがサービス エンドポイントでセキュリティ保護されている場合、[Key Vault 参照](../app-service/app-service-key-vault-references.md)は機能しません。 仮想ネットワーク統合を使用してキー コンテナーに接続するには、アプリケーション コードで Key Vault を呼び出す必要があります。
+アプリに対して仮想ネットワーク統合が構成されている場合、[Key Vault 参照](../app-service/app-service-key-vault-references.md)を使用して、ネットワークで制限されたコンテナーのシークレットを取得することができます。
 
 ## <a name="virtual-network-triggers-non-http"></a>仮想ネットワーク トリガー (非 HTTP)
 
@@ -172,7 +172,7 @@ Premium プランまたは App Service プランの関数アプリを仮想ネ�
 ネットワークと Azure Functions の詳細については、以下を参照してください。
 
 * [仮想ネットワーク統合の概要に関するチュートリアル](./functions-create-vnet.md)
-* [関数のネットワークに関する FAQ](./functions-networking-faq.md)
+* [関数のネットワークに関する FAQ](./functions-networking-faq.yml)
 * [仮想ネットワーク統合と App Service/Functions に関する詳細情報](../app-service/web-sites-integrate-with-vnet.md)
 * [Azure の仮想ネットワークに関する詳細情報](../virtual-network/virtual-networks-overview.md)
 * [App Service Environment でさらなるネットワーク機能と制御を可能にする](../app-service/environment/intro.md)

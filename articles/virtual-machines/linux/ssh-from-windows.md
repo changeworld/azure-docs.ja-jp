@@ -9,12 +9,12 @@ ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e85974968e523903282cdd8a577dee13ab32bf4
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 485968e6fa9a68781de85648f0ad008586c2c15b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734587"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -84,6 +84,12 @@ PowerShell では、`New-AzVM` を使用し、' を使用して SSH キーを VM
 ```bash
 ssh -i ~/.ssh/id_rsa azureuser@10.111.12.123
 ```
+
+この VM にこれまで一度も接続したことがない場合は、ホストのフィンガープリントを確認するように求めるメッセージが表示されます。 提示されたフィンガープリントをそのまま受け入れたくなりますが、そのようにすると、中間者攻撃の危険性にさらされます。 ホストのフィンガープリントは常に検証するようにしてください。 これは、クライアントから初めて接続する場合にのみ行う必要があります。 ポータルを介してホストのフィンガープリントを取得するには、次を指定した実行コマンドを使用します: `ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'`。
+
+:::image type="content" source="media/ssh-from-windows/run-command-validate-host-fingerprint.png" alt-text="ホストのフィンガープリントを検証するために実行コマンドを使用する方法を示したスクリーンショット。":::
+
+CLI を使用してコマンドを実行するには、[`az vm run-command invoke` コマンド](/cli/azure/vm/run-command)を使用します。
 
 キーの組を作成したときにパスフレーズを構成してある場合、入力を求められたら、そのパスフレーズを入力します。
 

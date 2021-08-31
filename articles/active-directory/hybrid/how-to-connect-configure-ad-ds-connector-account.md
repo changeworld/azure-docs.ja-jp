@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: adea0e63c9e285a751a1a0508e84c5b83a10e994
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: e2acad2519fbf29aec72b97095318b4131207f91
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074693"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464550"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -84,7 +84,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 
 `<ADAccountName>`、`<ADDomainName>`、`<ADAccountDN>` をお使いの環境の値に変更してください。
 
-AdminSDHolder コンテナーに対するアクセス許可を変更しない場合は、スイッチ `-SkipAdminSdHolders` を使用します。 
+AdminSDHolder コンテナーに対するアクセス許可を変更する場合は、スイッチ `-IncludeAdminSdHolders` を使用します。 これは推奨されないことにご注意ください。
 
 既定では、すべてのアクセス許可設定コマンドレットが、フォレスト内の各ドメインのルートに対して AD DS のアクセス許可を設定しようとします。つまり、PowerShell セッションを実行するユーザーには、フォレスト内の各ドメインに対するドメイン管理者権限が必要になります。  この要件により、フォレストのルートからエンタープライズ管理者を使用することをお勧めします。 Azure AD Connect のデプロイに複数の AD DS コネクタがある場合は、AD DS コネクタのある各フォレストで同じコマンドレットを実行する必要があります。 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/4/2021
 ms.author: damaerte
-ms.openlocfilehash: 250e4bc171950bb643a75bdc9d80bdb2941cb97a
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: f380db2502a34115b071c3aa3e70f18a67d2ca6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748634"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 
@@ -113,7 +113,7 @@ Cloud Shell マシンは一時的ですが、ファイルは、ディスク イ�
 
 [Cloud Shell の Bash](features.md) と [Cloud Shell の PowerShell](./features.md) の機能に関する詳細をご覧ください。
 
-## <a name="complaince"></a>準拠
+## <a name="compliance"></a>コンプライアンス
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 すべての Cloud Shell インフラストラクチャは、既定で保存時の二重暗号化に準拠しています。 ユーザーによる操作は不要です。
 

@@ -4,14 +4,14 @@ description: Azure と Logz.io の統合のトラブルシューティングを�
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 07/28/2021
+ms.date: 08/17/2021
 ms.author: tomfitz
-ms.openlocfilehash: 7c27b8ffb36b918522adbcf422484b6dffe4d213
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5b1d1eb1a59e40286103d63508c98bcc3ba37b8c
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781041"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428466"
 ---
 # <a name="troubleshoot-logzio-integration-with-azure"></a>Azure と Logz.io の統合のトラブルシューティング
 
@@ -91,7 +91,7 @@ Azure Monitor 診断では、1 つのリソースまたはサブスクリプシ�
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Logz.io 統合を[管理する](manage.md)方法について説明します。
 - SSO の詳細については、「[Logz.io シングル サインオンの設定](setup-sso.md)」を参照してください。

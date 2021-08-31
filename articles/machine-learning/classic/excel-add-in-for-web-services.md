@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): Web サービス用の Excel アドイン - Azure'
-description: コードを作成することなく、Excel から直接 Azure Machine Learning Web サービスを使用する方法。
+description: コードを作成することなく、Excel から直接 Machine Learning Web サービスを使用する方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 45d9e494b9f885cfa0680bec595aefcd4074d41e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e915f6a713df68dba539d3e5aeb31501eea6ed8e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520002"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688873"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスの Excel アドイン
+# <a name="excel-add-in-for-machine-learning-studio-classic-web-services"></a>Machine Learning Studio (クラシック) Web サービスの Excel アドイン
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
 
@@ -29,7 +30,7 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
  
     > [!NOTE]
     > - ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびに **すべての** サービスの予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
-    > - Azure Machine Learning Excel アドインでは、読み込みのために Office アドイン ストアが呼び出されます。 組織で Office アドイン ストアへのアクセスが禁止されている場合、アドインの読み込み時にエラーが発生します。 この場合は、Microsoft 365 管理センターから Azure Machine Learning Excel アドインをデプロイしてください。 その後、アドインを呼び出し、URL と API キーを貼り付けて、Web サービスを手動で追加します。
+    > - Machine Learning Excel アドインでは、読み込みのために Office アドイン ストアが呼び出されます。 組織で Office アドイン ストアへのアクセスが禁止されている場合、アドインの読み込み時にエラーが発生します。 この場合は、Microsoft 365 管理センターから Machine Learning Excel アドインをデプロイしてください。 その後、アドインを呼び出し、URL と API キーを貼り付けて、Web サービスを手動で追加します。
 
  
 
@@ -59,13 +60,13 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 4. **[Request URI (要求 URI)]** セクションを探します。  URL をコピーして保存します。
 
 > [!NOTE]
-> これで、[Azure Machine Learning Web サービス](https://services.azureml.net) ポータルにサインインしてクラシック Machine Learning Web サービスの API キーを取得できます。
+> これで、[Machine Learning Web サービス](https://services.azureml.net) ポータルにサインインしてクラシック Machine Learning Web サービスの API キーを取得できます。
 > 
 > 
 
 **新しい Web サービスを使用する**
 
-1. [Azure Machine Learning Web サービス](https://services.azureml.net) ポータルで、 **[WEB サービス]** をクリックし、Web サービスを選択します。 
+1. [Machine Learning Web サービス](https://services.azureml.net) ポータルで、 **[WEB サービス]** をクリックし、Web サービスを選択します。 
 2. **[Consume (使用)]** をクリックします。
 3. **[Basic consumption info (基本的な実行情報)]** を探します。 **主キー** と **要求応答** URL をコピーして保存します。
 

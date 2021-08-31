@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud でログとメトリックを分析する |Microsoft Docs
 description: Azure Spring Cloud で診断データを分析する方法について説明します
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 7e2042294ebaefa2640873bb1ce941d9a60c7834
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e2d903f781e86670139347930289599bec6ee7e7
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128993"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015553"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -59,6 +59,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 > 1. Azure Spring Cloud インスタンスが削除または移動された場合、この操作は **診断設定** リソースには連鎖しません。 **診断設定** リソースは、その親 (つまり、Azure Spring Cloud インスタンス) に対して操作を行う前に手動で削除する必要があります。 そうしないと、新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または Azure Spring Cloud インスタンスが戻った場合は、以前の **診断設定** リソースが引き続きそれを拡張します。
 
 ## <a name="view-the-logs-and-metrics"></a>ログとメトリックの表示
+
 次の見出しで説明しているように、ログとメトリックを表示するにはさまざまな方法があります。
 
 ### <a name="use-the-logs-blade"></a>ログ ブレードの使用
@@ -72,12 +73,14 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
     AppPlatformLogsforSpring
     | limit 50
     ```
+
    * メトリックを表示するには、次のような単純なクエリを入力します。
 
     ```sql
     AzureMetrics
     | limit 50
     ```
+
 1. 検索結果を表示するには、 **[実行]** を選択します。
 
 ### <a name="use-log-analytics"></a>Log Analytics の使用
@@ -92,6 +95,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
     AppPlatformLogsforSpring
     | limit 50
     ```
+
     * メトリックを表示するには、次のような単純なクエリを入力します。
 
     ```sql
@@ -107,8 +111,9 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
-> [!NOTE]
-> `==` では大文字と小文字が区別されますが、`=~` では区別されません。
+
+    > [!NOTE]
+    > `==` では大文字と小文字が区別されますが、`=~` では区別されません。
 
 Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログのクエリを実行する場合には、[Azure Data Explorer](/azure/data-explorer/query-monitor-data)に関するページを確認してください。
 
@@ -198,12 +203,14 @@ Azure Monitor では、Log Analytics を使用したアプリケーション ロ
     </root>
 </configuration>
 ```
+
 その後、下のように、Log Analytics で再び、トークンを改行文字で置換できます。
 
 ```sql
 AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
+
 場合によっては、他の Java ログ ライブラリに同じ方法を利用することもできます。
 
 ## <a name="next-steps"></a>次の手順

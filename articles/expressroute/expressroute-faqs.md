@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 50ae89aefda00f21d07a19051c9aaa6e85726f8a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 108c7c30ad84c83e895cade79bc8a6ad30029199
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741385"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272258"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -60,7 +60,9 @@ ExpressRoute ゲートウェイでは、Azure VNet の "*アドレス空間*" �
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet からオンプレミスにアドバタイズできるプレフィックスの数はどのくらいですか?
 
-1 つの ExpressRoute 接続で、またはゲートウェイ転送を使用する VNet ピアリングによって、最大 1000 のプレフィックスがアドバタイズされます。 たとえば、ExpressRoute 回線に接続された 1 つの VNet に 999 個のアドレス空間がある場合、それらのプレフィックスの 999 個すべてがオンプレミスにアドバタイズされます。 または、"リモート ゲートウェイを許可する" オプションを使用して、1 つのアドレス空間と 500 個のスポーク VNet が有効になったゲートウェイ転送を許可するように VNet が有効になっている場合は、ゲートウェイでデプロイされた VNet は 501 個のプレフィックスをオンプレミスにアドバタイズします。
+1 つの ExpressRoute 接続で、またはゲートウェイ転送を使用する VNet ピアリングによって、最大 1000 の IPv4 プレフィックスがアドバタイズされます。 たとえば、ExpressRoute 回線に接続された 1 つの VNet に 999 個のアドレス空間がある場合、それらのプレフィックスの 999 個すべてがオンプレミスにアドバタイズされます。 または、"リモート ゲートウェイを許可する" オプションを使用して、1 つのアドレス空間と 500 個のスポーク VNet が有効になったゲートウェイ転送を許可するように VNet が有効になっている場合は、ゲートウェイでデプロイされた VNet は 501 個のプレフィックスをオンプレミスにアドバタイズします。
+
+デュアルスタック回線を使用している場合は、1 つの ExpressRoute 接続で、またはゲートウェイ転送を使用する VNet ピアリングによって、最大 100 の IPv6 プレフィックスがアドバタイズされます。 これは、上記の制限に加えて必要となります。
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>ExpressRoute 接続のプレフィックス制限を超えるとどうなりますか?
 
@@ -240,7 +242,7 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>1 つの仮想ネットワークを複数の ExpressRoute 回線に接続できますか。
 
-はい。 同じピアリングの場所または異なるピアリングの場所で、1 つの仮想ネットワークを最大 4 つの ExpressRoute 回線に接続できます。 
+はい。 1 つの仮想ネットワークを、同じ場所の最大 4 つの ExpressRoute 回線に、または異なるピアリングの場所の最大 16 の ExpressRoute 回線に接続できます。 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>ExpressRoute 回線に接続された仮想ネットワークから、インターネットにアクセスできますか。
 
@@ -297,7 +299,7 @@ BGP セッションが切断されます。 プレフィックス数が上限未
 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>ExpressRoute 回線の帯域幅を変更するには、どうすればいいですか。
 
-REST API や PowerShell コマンドレットを使用して、ExpressRoute 回線の帯域幅を更新できます。
+Azure Portal、REST API、PowerShell、Azure CLI を使用して、ExpressRoute 回線の帯域幅を更新できます。
 
 ### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>ExpressRoute 回線でメンテナンスに関する通知を受け取りました。 このメンテナンスによってどのような技術的影響がありますか。
 

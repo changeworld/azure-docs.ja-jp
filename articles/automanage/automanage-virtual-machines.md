@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 00ee1b6e9772100cbc4abf9c79260a231bbd27af
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 73fb4adaf1c14256beef23cc9ce7ec53bd020937
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755143"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723024"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>プレビュー: Azure Automanage for virtual machines
 
@@ -35,6 +35,9 @@ Azure Automanage for virtual machines サービスを使用すると、Azure で
 
 VM が配置されている geography 外で、Automanage によって顧客データが格納/処理されることはありません。 SoutheastAsia リージョンでは、SoutheastAsia 外で、Automanage によってデータが格納/処理されることはありません。
 
+> [!NOTE]
+> Automanage は Azure 仮想マシン上に加え、Arc 対応のサーバー上で有効にできます。 現在、Automanage は米国政府機関向けクラウドでは利用できません。
+
 ## <a name="prerequisites"></a>前提条件
 
 仮想マシンで Azure Automanage を有効にする前に、いくつかの前提条件を考慮する必要があります。
@@ -43,6 +46,7 @@ VM が配置されている geography 外で、Automanage によって顧客デ�
 - VM はサポート対象のリージョンに存在する必要があります (下記参照)
 - ユーザーは正しいアクセス許可を持っている必要があります (下記参照)
 - 現時点では、サンドボックス サブスクリプションは Automanage ではサポートされていません
+- 現在のところ、Automanage では Windows 10 がサポートされていません
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 Automanage では、次のリージョンにある VM のみがサポートされます。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: security-recommendations
-ms.openlocfilehash: db0e033adf553c25c6b7b401f8d0df1a2cd5995f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 260f8682766187ba9cedb3b5bf951e06548c0048
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97592162"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727942"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Queue Storage のセキュリティに関する推奨事項
 
@@ -37,7 +37,7 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
-| Azure Active Directory (Azure AD) を使用してキュー データへのアクセスを承認する | Azure AD では、Queue Storage への要求を承認するために、共有キー承認よりも優れたセキュリティと使いやすさが実現されます。 詳細については、[Azure Active Directory を使用した Azure BLOB およびキューへのアクセスの承認](../common/storage-auth-aad.md)に関するページを参照してください。 | - |
+| Azure Active Directory (Azure AD) を使用してキュー データへのアクセスを承認する | Azure AD では、Queue Storage への要求を承認するために、共有キー承認よりも優れたセキュリティと使いやすさが実現されます。 詳細については、「[Azure Storage でデータへのアクセスを承認する](../common/authorize-data-access.md)」をご覧ください。 | - |
 | Azure RBAC を使用して Azure AD セキュリティ プリンシパルにアクセス許可を割り当てる場合は、最小限の特権の原則を念頭に置く | ユーザー、グループ、またはアプリケーションにロールを割り当てる場合は、そのセキュリティ プリンシパルに対して、それぞれのタスクを実行するために必要なアクセス許可のみを付与します。 リソースへのアクセスを制限することで、意図しない、または悪意のあるデータの誤用を防ぐことができます。 | - |
 | Azure Key Vault を使用してアカウント アクセス キーをセキュリティで保護する | Azure Storage への要求を承認するには、Azure AD を使用することをお勧めします。 ただし、共有キー認証を使用する必要がある場合は、Azure Key Vault を使用してアカウント キーをセキュリティで保護します。 キーは、アプリケーションと共に保存するのではなく、実行時にキー コンテナーから取得できます。 | - |
 | アカウント キーを定期的に再生成する | アカウント キーを定期的に交換することで、悪意のあるアクターにデータが公開されるリスクが軽減されます。 | - |

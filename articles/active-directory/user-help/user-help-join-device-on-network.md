@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98991d6cbbd827c612ca74d20dbf4e7ce6795ecc
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91536972"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200836"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>職場のデバイスを組織のネットワークに参加させる
 制限されている可能性があるリソースにアクセスできるように、職場所有の Windows 10 デバイスを組織のネットワークに参加させます。
@@ -68,6 +68,9 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>既に構成されている Windows 10 デバイスを参加させるには
 デバイスが一定期間使用されており、既に設定されている場合は、次の手順に従ってデバイスをネットワークに参加させることができます。
+
+> [!NOTE]
+> 既に構成されている Windows 10 デバイスを Azure AD に参加させる場合は、ローカル管理者グループのメンバーであるアカウントを使用する必要があります。
 
 1. **[設定]** を開いてから、 **[アカウント]** を選択します。
 

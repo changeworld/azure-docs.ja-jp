@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 07/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7db85c5e1d5f67c30adf08969c51bb4c57838fb5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34bc70fa88aa3c108a946b4e040bf60f56ec95e1
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92079141"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113644331"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>VM セッションを全画面表示に変更する:Azure Bastion
 

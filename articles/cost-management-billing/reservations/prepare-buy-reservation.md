@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 3445ca559dc54e693912e1d796caeb1f940ab23e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d9de6322ac84a86902b5ef218df9abe8528b95a9
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474893"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231487"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -37,7 +37,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
 - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
-- **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。
+- **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 あるサブスクリプションが別の課金コンテキストに移動された場合、特典はそのサブスクリプションには適用されなくなります。課金コンテキストの他のサブスクリプションには引き続き適用されます。
     - マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 予約の共有スコープには、登録内の複数の Active Directory テナントが含まれます。
     - Microsoft 顧客契約のお客様の場合、課金スコープは課金プロファイルです。
     - 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。

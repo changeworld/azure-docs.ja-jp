@@ -4,12 +4,12 @@ description: 新しい Azure Monitor Application Insights のワークスペー�
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0ae01212eaa73deeac4774f7e13f5b46976ee7e2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 21cf89c7d89e310f98fea4421076d298405b6fc3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075594"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464462"
 ---
 # <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 
@@ -24,10 +24,10 @@ ms.locfileid: "110075594"
 
 ワークスペースベースの Application Insights を使用すると、次のような、Azure Monitor および Log Analytics の最新の機能を活用できます。
 
-* [カスタマー マネージド キー (CMK)](../logs/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
+* [カスタマー マネージド キー (CMK)](../logs/customer-managed-keys.md) を使用すると、自分だけがアクセスできる暗号化キーを使用して、保存データを暗号化できます。
 * [Azure Private Link](../logs/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
 * [Profiler およびスナップショット デバッガー向けの Bring Your Own Storage (BYOS)](./profiler-bring-your-own-storage.md) では、保存時の暗号化ポリシー、有効期間管理ポリシー、および Application Insights Profiler およびスナップショット デバッガーに関連付けられているすべてのデータのネットワーク アクセスを完全に制御できます。 
-* [容量予約レベル](../logs/manage-cost-storage.md#pricing-model)を利用すると、従量課金制の料金と比較して 25% も節約できます。 
+* [コミットメント レベル](../logs/manage-cost-storage.md#pricing-model)を使用すると、従量課金制の料金と比較して 30% も節約できます。 
 * Log Analytics ストリーミング インジェストにより、データ インジェストがより高速になります。
 
 ## <a name="create-workspace-based-resource"></a>ワークスペースベースのリソースを作成する

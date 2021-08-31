@@ -3,27 +3,29 @@ title: Azure Logic Apps のマネージド コネクタ
 description: Microsoft が管理するトリガーとアクションを使用することで、Azure Logic Apps を使用して他のアプリ、データ、サービス、システムを統合する自動ワークフローを作成します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: 857c0e41f52c99d83142b3db7471b51b55316b5e
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 05/16/2021
+ms.openlocfilehash: 9461baebfad58f848b27fe689ed8dbd26c9dd07e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316175"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727094"
 ---
 # <a name="managed-connectors-for-logic-apps"></a>Logic Apps のマネージド コネクタ
 
 [マネージド コネクタ](apis-list.md)により、[組み込みのトリガーとアクション](built-in.md)を使用できない他のサービスやシステムにアクセスする手段が提供されます。 これらのトリガーとアクションを使用すると、データ、アプリ、クラウドベースのサービス、オンプレミスのシステムを統合するワークフローを作成できます。 組み込みのトリガーやアクションと比較して、これらのコネクタの場合は通常、特定のサービスやシステム (Azure Blob Storage、Office 365、SQL、Salesforce、SFTP サーバーなど) に関連付けられます。 Microsoft によって管理され、Azure でホストされているマネージ コネクタでは、通常、まずワークフローからの接続を作成し、ID を認証する必要があります。 繰り返しベースのトリガーと Webhook ベースのトリガーの両方を使用できます。そのため、繰り返しベースのトリガーを使用する場合は、[繰り返しの動作の概要](apis-list.md#recurrence-behavior)を確認してください。
 
-Azure Service Bus、Azure Functions、SQL、AS2 など、いくつかのサービス、システム、プロトコルについては、Logic Apps に組み込みバージョンも用意されています。 数と範囲は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
+また、Logic Apps には、Azure Service Bus、Azure Functions、Azure Blob、Azure App Services、Azure API Management、SQL、AS2 など、少数のサービス、システム、プロトコル用の組み込み操作も用意されています。 数と範囲は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
 
 Logic Apps 用の一部のマネージド コネクタは、複数のサブカテゴリに属しています。 たとえば、SAP コネクタは、[エンタープライズ コネクタ](#enterprise-connectors)でもあり[オンプレミス コネクタ](#on-premises-connectors)でもあります。
 
 * [標準コネクタ](#standard-connectors)では、Azure Blob Storage、Office 365、SharePoint、Salesforce、Power BI、OneDrive など多くのサービスへのアクセスが提供されます。
+* [エンタープライズ コネクタ](#enterprise-connectors)では、SAP、IBM MQ、IBM 3270 などのエンタープライズ システムへのアクセスが提供されます。
 * [オンプレミス コネクタ](#on-premises-connectors)では、SQL Server、SharePoint Server、SAP、Oracle DB、ファイル共有などのオンプレミス システムへのアクセスが提供されます。
-* [統合アカウント コネクタ](#integration-account-connectors)は、XML を変換および検証したり、フラット ファイルをエンコードおよびデコードしたり、AS2、EDIFACT、X12 プロトコルを使用して企業間 (B2B) メッセージを処理したりするのに役立ちます。 
+* [統合アカウント コネクタ](#integration-account-connectors)は、XML を変換および検証したり、フラット ファイルをエンコードおよびデコードしたり、AS2、EDIFACT、X12 プロトコルを使用して企業間 (B2B) メッセージを処理したりするのに役立ちます。
+* [統合サービス環境コネクタ](#ise-connectors)は、特に ISE で実行するように設計され、ISE 以外のバージョンに対してメリットを提供します。
 
 ## <a name="standard-connectors"></a>Standard コネクタ
 
@@ -54,7 +56,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         [![Logic Apps 内の Azure Blog Storage マネージド コネクタのアイコン][azure-blob-storage-icon]][azure-blob-storage-doc]
         \
         \
-        [**Azure Blog Storage**][azure-blob-storage-doc]
+        [**Azure Blob Storage**][azure-blob-storage-doc]
         \
         \
         Azure Storage アカウントに接続して、BLOB コンテンツの作成と管理ができるようにします。
@@ -145,7 +147,6 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         Salesforce アカウントに接続して、レコード、ジョブ、オブジェクトなどの項目の作成と管理ができるようにします。
     :::column-end:::
 :::row-end:::
-
 
 ## <a name="on-premises-connectors"></a>オンプレミス コネクタ
 

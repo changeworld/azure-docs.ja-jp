@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/24/2019
+ms.date: 08/12/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 51194dbcdfd967a40da96842cf58d373fd28f96f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 04dde4560a9b03208d4c0f234d475ddce7265343
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468290"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860871"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -40,11 +40,13 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 要件に応じて、DNS の構成を設定するためのいくつかのオプションがあります。
 
+
 ### <a name="same-internal-and-external-url-different-internal-and-external-behavior"></a>同じ内部 URL と外部 URL、異なる内部の動作と外部の動作 
 
 内部ユーザーがアプリケーション プロキシ経由で転送されないようにしたい場合は、*スプリット ブレイン DNS* を設定できます。 分割 DNS のインフラストラクチャでは、名前解決のために内部ホストを内部ドメイン ネーム サーバーに、外部ホストを外部ドメイン ネーム サーバーに転送します。 
 
 ![スプリット ブレイン DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+
 
 ### <a name="different-internal-and-external-urls"></a>異なる内部 URL と外部 URL 
 
@@ -107,6 +109,9 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
    ![CNAME DNS エントリを追加する](./media/application-proxy-configure-custom-domain/dns-info.png)
    
 10. [Azure portal を使用した DNS レコードとレコード セットの管理](../../dns/dns-operations-recordsets-portal.md)に関するページにある手順に従って、新しい外部 URL を *msappproxy.net* ドメインにリダイレクトする DNS レコードを追加します。
+
+   > [!IMPORTANT] 
+   > *msappproxy.net* ドメインを指す CNAME レコードを適切に使用していることを確認してください。 レコードが IP アドレスまたはサーバー DNS 名を指すことがないようにしてください。それらは静的ではなく、サービスの回復性に影響を与える可能性があるためです。
    
 11. DNS レコードが正しく構成されていることを確認するには、[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) コマンドを使用して、外部 URL が到達可能であり、かつ *msapproxy.net* ドメインが別名として表示されることを確認します。
 

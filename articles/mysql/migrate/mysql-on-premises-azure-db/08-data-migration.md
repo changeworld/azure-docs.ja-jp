@@ -1,5 +1,5 @@
 ---
-title: オンプレミスの MySQL から Azure Database for MySQL への移行ガイドのデータ移行
+title: 'オンプレミスの MySQL を Azure Database for MySQL へ移行する: データ移行'
 description: アップグレードまたはデータを移行する前に、MySQL Workbench を使用するか、手動で mysqldump コマンドを使用して、データベースをエクスポートしてからアップグレードします。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 44b2c8aa22944cdf31c9f111a32856e5095d369d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 9e53243424f4cb0b289c0ebba9c82cb9fb4853cc
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082946"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084943"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-data-migration"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイドのデータ移行
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-data-migration"></a>オンプレミスの MySQL を Azure Database for MySQL へ移行する: データ移行
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -321,6 +323,8 @@ PowerShell を使用して Azure Database for MySQL でユーザーを作成す�
 
   - 移行実行時に、すべてのタスクが文書化され、チェック済みであることを確認します。  
 
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [MySQL Workbench を使用したデータ移行](./09-data-migration-with-mySQL-workbench.md)

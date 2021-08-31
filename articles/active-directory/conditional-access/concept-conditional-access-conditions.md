@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/18/2021
+ms.date: 07/08/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e0aaac1c52a2def624f8bc8736219685458ad42
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5a332b43da59c3e7c766d8fd911f0426fa346d8b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070294"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564988"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -117,7 +117,9 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 | Windows Server 2016 | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer |
 | Windows Server 2008 R2 | Internet Explorer |
-| macOS | Chrome、Safari |
+| macOS | Microsoft Edge、Chrome、Safari |
+
+これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行されている場合、または Cookie が無効になっている場合、デバイスのチェックは失敗します。
 
 > [!NOTE]
 > Edge 85+ の場合、デバイス ID を適切に渡すには、ユーザーがブラウザーにサインインする必要があります。 そうしない場合、アカウントの拡張機能のない Chrome のように動作します。 Hybrid Azure AD Join シナリオでは、このサインインが自動的に行われないことがあります。 Safari はデバイスベースの条件付きアクセスでサポートされていますが、**承認済みクライアント アプリを必須にする** または **アプリの保護ポリシーを必須にする** の条件を満たすことができません。 Microsoft Edge のような管理対象ブラウザーは、承認済みクライアント アプリとアプリ保護ポリシーの要件を満たしています。
@@ -143,8 +145,6 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 - 名前 1
 - 型 REG_SZ (文字列)
 - データ {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
-
-これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行している場合、デバイス チェックは失敗します。
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>サポートされているモバイル アプリケーションとデスクトップ クライアント
 

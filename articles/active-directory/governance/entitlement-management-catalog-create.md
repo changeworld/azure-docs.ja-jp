@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394565c857320c8fd94d72a0ca15358c83b0d09d
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 32b848f6a34fbd25322c53cd35dc0db600743c88
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714388"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730211"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
@@ -30,6 +30,9 @@ ms.locfileid: "109714388"
 カタログは、リソースとアクセス パッケージのコンテナーです。 関連するリソースとアクセス パッケージをグループ化するときは、カタログを作成します。 どのユーザーでも、カタログを作成すると、最初のカタログ所有者になります。 カタログ所有者は、別のカタログ所有者を追加できます。
 
 **事前に必要なロール:** グローバル管理者、ID ガバナンス管理者、ユーザー管理者、またはカタログ作成者
+
+> [!NOTE]
+> ユーザー管理者ロールが割り当てられているユーザーは、所有していないカタログでカタログを作成したり、アクセス パッケージを管理したりすることはできなくなりました。 組織内のユーザーに、エンタイトルメント管理でカタログ、アクセス パッケージ、またはポリシーを構成するユーザー管理者ロールが割り当てられている場合、代わりに、これらのユーザーに **Identity Governance 管理者** ロールを割り当てる必要があります。
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -51,13 +54,28 @@ ms.locfileid: "109714388"
 
 1. **[作成]** をクリックすると、カタログが作成されます。
 
-### <a name="creating-a-catalog-programmatically"></a>プログラムによるカタログの作成
+## <a name="create-a-catalog-programmatically"></a>カタログをプログラミングで作成する
+### <a name="create-a-catalog-with-microsoft-graph"></a>Microsoft Graph でカタログを作成する
 
-Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](/graph/api/accesspackagecatalog-post?view=graph-rest-beta&preserve-view=true)ことができます。
+Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーション、またはそのアプリケーション アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](/graph/api/accesspackagecatalog-post?view=graph-rest-beta&preserve-view=true)ことができます。
+
+### <a name="create-a-catalog--with-powershell"></a>PowerShell でカタログを作成する
+
+カタログは、PowerShell 内で [Identity Governance 用の Microsoft Graph PowerShell コマンドレット](https://www.powershellgallery.com/packages/Microsoft.Graph.Identity.Governance/) モジュール バージョン 1.6.0 以降の `New-MgEntitlementManagementAccessPackageCatalog` コマンドレットを使用して作成できます。
+
+```powershell
+Connect-MgGraph -Scopes "EntitlementManagement.ReadWrite.All"
+Select-MgProfile -Name "beta"
+$catalog = New-MgEntitlementManagementAccessPackageCatalog -DisplayName "Marketing"
+```
 
 ## <a name="add-resources-to-a-catalog"></a>カタログにリソースを追加する
 
-アクセス パッケージにリソースを含めるには、リソースがカタログ内に存在している必要があります。 追加できるリソースの種類は、グループ、アプリケーション、および SharePoint Online サイトです。 追加できるグループは、クラウドで作成された Microsoft 365 グループ、またはクラウドで作成された Azure AD セキュリティ グループです。 追加できるアプリケーションは Azure AD エンタープライズ アプリケーションで、これには SaaS アプリケーションと、Azure AD にフェデレーションされた独自アプリケーションの両方が含まれます。 追加できるサイトは、SharePoint Online サイトまたは SharePoint Online サイト コレクションです。
+アクセス パッケージにリソースを含めるには、リソースがカタログ内に存在している必要があります。 追加できるリソースの種類は、グループ、アプリケーション、および SharePoint Online サイトです。
+
+* 追加できるグループは、クラウドで作成された Microsoft 365 グループ、またはクラウドで作成された Azure AD セキュリティ グループです。  オンプレミスの Active Directory に由来するグループは、その所有者またはメンバー属性を Azure AD で変更できないため、リソースとして割り当てることができません。   Exchange Online で配布グループとして生成されるグループも、Azure AD で変更できません。
+* 追加できるアプリケーションは Azure AD エンタープライズ アプリケーションで、これには SaaS アプリケーションと、Azure AD と統合された独自アプリケーションの両方が含まれます。 複数のロールを持つアプリケーションに適切なリソースを選択する方法の詳細については、「[リソース ロールを追加する](entitlement-management-access-package-resources.md#add-resource-roles)」を参照してください。
+* 追加できるサイトは、SharePoint Online サイトまたは SharePoint Online サイト コレクションです。
 
 **事前に必要なロール:** [リソースをカタログに追加するために必要なロール](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)に関するページを参照
 
@@ -81,17 +99,17 @@ Microsoft Graph を使用して、カタログを作成することもできま�
 
     これらのリソースをカタログ内のアクセス パッケージに含めることができるようになりました。
 
-### <a name="add-a-multi-geo-sharepoint-site-preview"></a>複数の地理的な SharePoint サイトを追加する (プレビュー)
+### <a name="add-a-multi-geo-sharepoint-site"></a>複数の地理的な SharePoint サイトを追加する
 
 1. SharePoint に対して [Multi-Geo](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) が有効になっている場合、サイトの選択元の環境を選択します。
     
-    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="アクセス パッケージ - リソース ロールの追加 - SharePoint Multi-Geo サイトの選択":::
+    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multi-geo-select.png" alt-text="アクセス パッケージ - リソース ロールの追加 - SharePoint Multi-Geo サイトの選択":::
 
 1. 次に、カタログに追加するサイトを選択します。 
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>プログラムによるカタログへのリソースの追加
 
-Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&preserve-view=true)ことができます。
+Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&preserve-view=true)ことができます。  ただし、要求の時点でユーザー コンテキストがないと、アプリケーション アクセス許可のあるアプリケーションではまだ、リソースをプログラミングで追加できません。
 
 ## <a name="remove-resources-from-a-catalog"></a>カタログからリソースを削除する
 

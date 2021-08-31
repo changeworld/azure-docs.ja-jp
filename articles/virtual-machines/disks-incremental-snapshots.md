@@ -2,18 +2,18 @@
 title: 増分スナップショットの作成
 description: Azure portal、Azure PowerShell モジュール、Azure Resource Manager を使用した作成方法を含む、マネージド ディスクの増分スナップショットについて説明します。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 08/10/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ccb008ae74c67d243399cd810b43fc968755937a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: bbd87d8f8e4c140c1ced76a3c60e82d3066d2f5a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673569"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745006"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>マネージド ディスクの増分スナップショットの作成
 
@@ -23,10 +23,47 @@ ms.locfileid: "110673569"
 
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-restrictions](../../includes/virtual-machines-disks-incremental-snapshots-restrictions.md)]
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Azure CLI を使用して、増分スナップショットを作成することができます。 最新バージョンの Azure CLI が必要です。 Azure CLI を[インストール](/cli/azure/install-azure-cli)または[アップデート](/cli/azure/update-azure-cli)する方法については、以下の記事を参照してください。
 
-Azure PowerShell を使用すると、増分スナップショットを作成できます。 Azure PowerShell の最新バージョンが必要になります。次のコマンドを実行すると、最新バージョンがインストールされるか、既存のインストールを最新のバージョンに更新します。
+次のスクリプトは、特定のディスクの増分スナップショットを作成します。
+
+```azurecli
+# Declare variables
+diskName="yourDiskNameHere"
+resourceGroupName="yourResourceGroupNameHere"
+snapshotName="desiredSnapshotNameHere"
+
+# Get the disk you need to backup
+yourDiskID=$(az disk show -n $diskName -g $resourceGroupName --query "id" --output tsv)
+
+# Create the snapshot
+az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID --incremental true
+```
+
+スナップショットの `SourceResourceId` プロパティにより、同じディスクからの増分スナップショットを識別できます。 `SourceResourceId` は親ディスクの Azure Resource Manager リソース ID です。
+
+`SourceResourceId` を利用し、特定のディスクに関連付けられているすべてのスナップショットの一覧を作成できます。 `yourResourceGroupNameHere` を実際の値に変更します。次の例を利用すると、既存の増分スナップショットを一覧表示できます。
+
+
+```azurecli
+# Declare variables and create snapshot list
+subscriptionId="yourSubscriptionId"
+resourceGroupName="yourResourceGroupNameHere"
+diskName="yourDiskNameHere"
+
+az account set --subscription $subscriptionId
+
+diskId=$(az disk show -n $diskName -g $resourceGroupName --query [id] -o tsv)
+
+az snapshot list --query "[?creationData.sourceResourceId=='$diskId' && incremental]" -g $resourceGroupName --output table
+```
+
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Azure PowerShell モジュールを使用して、増分スナップショットを作成することができます。 最新バージョンの Azure PowerShell モジュールが必要になります。 次のコマンドを実行すると、最新版がインストールされるか、既存のインストールが最新版に更新されます。
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
@@ -51,9 +88,10 @@ New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName
 
 スナップショットの `SourceResourceId` プロパティと `SourceUniqueId` プロパティで同じディスクからの増分スナップショットを識別できます。 `SourceResourceId` は親ディスクの Azure Resource Manager リソース ID です。 `SourceUniqueId` はディスクの `UniqueId` プロパティから継承した値です。 ディスクを削除してから同じ名前でディスクを新規作成する場合、`UniqueId` プロパティの値が変更されます。
 
-`SourceResourceId` と `SourceUniqueId` を利用し、特定のディスクに関連付けられているすべてのスナップショットの一覧を作成できます。 `<yourResourceGroupNameHere>` を実際の値に変更します。次の例を利用すると、既存の増分スナップショットを一覧表示できます。
+`SourceResourceId` と `SourceUniqueId` を利用し、特定のディスクに関連付けられているすべてのスナップショットの一覧を作成できます。 `yourResourceGroupNameHere` を実際の値に変更します。次の例を利用すると、既存の増分スナップショットを一覧表示できます。
 
 ```PowerShell
+$resourceGroupName = "yourResourceGroupNameHere"
 $snapshots = Get-AzSnapshot -ResourceGroupName $resourceGroupName
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList

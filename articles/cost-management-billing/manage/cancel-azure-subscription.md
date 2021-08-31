@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 05/20/2021
 ms.author: banders
-ms.openlocfilehash: b0c7f1ee4daea871cfdc9e92908cd287a49997da
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 71070f56eaa8b9e1d0a4bef42d609b10ac28b7e5
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481086"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321632"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
@@ -70,18 +70,22 @@ Azure Web サイトか Azure portal からサポート プランを購入した�
 
 Microsoft では、サブスクリプションが取り消された後、お客様がデータにアクセスする必要がある場合や気が変わった場合に備えて、データを完全に削除するまで 30 から 90 日待ちます。 データの保持に対しては課金されません。 詳しくは、[Microsoft Trust Center の Microsoft によるデータの管理方法](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)に関するページをご覧ください。
 
-## <a name="delete-free-trial-subscription"></a>無料試用版サブスクリプションの削除
+## <a name="delete-free-account-or-pay-as-you-go-subscription"></a>無料アカウントまたは従量課金制サブスクリプションを削除する
 
-無料試用版サブスクリプションをお持ちの場合は、サブスクリプションが自動的に削除されるまで 30 日待つ必要はありません。 サブスクリプションは、取り消してから "*3 日*" 後に削除できます。 **[サブスクリプションの削除]** オプションは、サブスクリプションを取り消してから 3 日後まで使用できません。
+無料アカウントまたは従量課金制サブスクリプションを持っている場合、30 日 - 90 日が経過してサブスクリプションが自動的に削除されるのを待つ必要はありません。 サブスクリプションを取り消してから 3 日後に **[Delete]\(削除\)** オプションを使用できるようになります。 取り消したサブスクリプションにリソースが存在しなければ、3 日後にそのサブスクリプションを削除できます。
+
+この手順でサブスクリプションを削除します。
 
 1. サブスクリプションを取り消した日から 3 日待ちます。
-1. Azure portal の [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ページでサブスクリプションを選択します。
-1. 削除するサブスクリプションを選択します。
-1. **[概要]** を選択し、 **[サブスクリプションの削除]** を選択します。
+2. そのサブスクリプションにリソースが存在しないことを確認してから、これを削除します。
+3. Azure portal で [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) に移動します。
+4. 削除するサブスクリプションを選択します。
+5. **[Overview]\(概要\)** 、 **[Delete]\(削除\)** を順にクリックします。
+6. 確認プロンプトにサブスクリプション名を入力し、 **[Delete subscription]\(サブスクリプションの削除\)** をクリックします。
 
 ## <a name="delete-other-subscriptions"></a>他のサブスクリプションを削除する
 
-手動で削除できるサブスクリプションの種類は、無料試用版のサブスクリプションのみです。 その他の種類のサブスクリプションは、従量課金制サブスクリプションも含め、すべて[サブスクリプションの取り消し](#cancel-subscription-in-the-azure-portal)プロセスを通じて削除する必要があります。 つまり、無料試用版サブスクリプションを除き、サブスクリプションを直接削除することはできません。 ただし、サブスクリプションを取り消した後、[Azure サポート リクエスト](https://go.microsoft.com/fwlink/?linkid=2083458)を作成して、サブスクリプションを直ちに削除するよう依頼することはできます。
+サブスクリプションの種類のうち手動で削除できるのは、無料アカウントと従量課金制サブスクリプションだけです。 他の種類のサブスクリプションはすべて、[サブスクリプションの取り消し](#cancel-subscription-in-the-azure-portal)手続きにより削除されます。 つまり、無料アカウントと従量課金制サブスクリプションを除き、サブスクリプションを直接削除することはできません。 ただし、サブスクリプションを取り消した後、[Azure サポート リクエスト](https://go.microsoft.com/fwlink/?linkid=2083458)を作成して、サブスクリプションを直ちに削除するよう依頼することはできます。
 
 ## <a name="reactivate-a-subscription"></a>サブスクリプションの再アクティブ化
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/04/2021
+ms.date: 06/03/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba71fb0dd543780ebfb8783ed937a14e2afbe417
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3373c1f9a82f79782ed1758fd09c83bcfbe6fc03
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467309"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963711"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>パスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -32,7 +32,6 @@ ms.locfileid: "110467309"
 - WebAuthN requires Windows 10 バージョン 1903 以降**
 
 Web アプリやサービスへのログインにセキュリティ キーを使用するには、WebAuthN プロトコルをサポートするブラウザーが必要です。 これには、Microsoft Edge、Chrome、Firefox、Safari などが含まれます。
-
 
 ## <a name="prepare-devices"></a>デバイスを準備する
 
@@ -65,11 +64,32 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
 **全般**
 
 - **[セルフサービス セットアップを許可する]** を **[はい]** に設定したままにしてください。 [いいえ] に設定すると、認証方法ポリシーによって有効になっている場合でも、MySecurityInfo ポータルを使用して FIDO キーを登録できなくなります。  
-- **[Enforce attestation]** \(構成証明の強制\) を **[はい]** に設定するには、FIDO セキュリティ キーのメタデータを FIDO アライアンス メタデータ サービスで公開および検証する必要があります。また、マイクロソフトのその他の検証テスト セットにも合格する必要があります。 詳細については、[「Microsoft と互換性のあるセキュリティ キーとは?」](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)を参照してください。
+- **[Enforce attestation]** \(構成証明の強制\) を **[はい]** に設定するには、FIDO セキュリティ キーのメタデータを FIDO アライアンス メタデータ サービスで公開および検証する必要があります。また、マイクロソフトのその他の検証テスト セットにも合格する必要があります。 詳細については、[「Microsoft と互換性のあるセキュリティ キーとは?」](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)を参照してください。
 
 **キーの制限ポリシー**
 
 - **[Enforce key restrictions]** \(キー制限の強制\) は、組織が特定の FIDO セキュリティキー (AAGuids によって識別される) のみを許可または禁止する場合にのみ、 **[はい]** に設定してください。 自分のデバイスの AAGuids を確認するには、セキュリティ キー プロバイダーと協力してください。 キーが既に登録されている場合は、ユーザーごとのキーの認証方法の詳細を表示することで、AAGUID も検索できます。 
+
+
+## <a name="disable-a-key"></a>キーを無効にする 
+
+ユーザー アカウントにひも付けている FIDO2 キーを削除するには、ユーザーの認証方法からキーを削除します。
+
+1. Azure AD のポータルにログインし、FIDO キーを削除するユーザー アカウントを見つけます。
+1. **[Authentication methods]\(認証方法\)** で **[FIDO2 security key]\(FIDO2 セキュリティ キー\)** を右クリックし、 **[Delete]\(削除\)** をクリックします。 
+
+    ![認証方法の詳細を見る](media/howto-authentication-passwordless-deployment/security-key-view-details.png)
+
+## <a name="security-key-authenticator-attestation-guid-aaguid"></a>セキュリティ キー認証子構成証明 GUID (AAGUID)
+
+FIDO2 の仕様では、構成証明時に、セキュリティ キーの各提供者が認証子構成証明 GUID (AAGUID) を提供する必要があります。 AAGUID は、製造元やモデルなどのキーの種類を表す 128 ビットの識別子です。 
+
+>[!NOTE]
+>製造元は、この製造元が作成した実質的に同一であるすべてのキーについて、 AAGUID が同じであり、他のあらゆる種類のキーとは (高確率で) AAGUID が異なることを保証する必要があります。 これを保証するため、特定の種類のセキュリティ キーの AAGUID はランダムに生成するべきです。 詳しくは[「Web Authentication: An API for accessing Public Key Credentials - Level 2」(w3.org)](https://w3c.github.io/webauthn/) (Web 認証: 公開キー認証情報にアクセスする API - レベル 2) をご覧ください。
+
+AAGUID の取得方法は 2 つあります。 セキュリティ キーの提供者に問い合わせる方法と、ユーザー別のキー認証方法の詳細を見る方法があります。
+
+![セキュリティ キーの AAGUID を見る](media/howto-authentication-passwordless-deployment/security-key-aaguid-details.png)
 
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 セキュリティ キーのユーザー登録と管理
 
@@ -110,7 +130,7 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
 
 ### <a name="upn-changes"></a>UPN の変更
 
-Microsoft では、Hybrid Azure AD 参加済みデバイスと Azure AD 参加済みデバイスに対する、UPN の変更を可能にする機能のサポートに取り組んでいます。 ユーザーの UPN が変更されると、その変更に対応するために FIDO2 セキュリティ キーを変更することはできなくなります。 解決策は、デバイスをリセットすることです。その場合、ユーザーを再登録する必要があります。
+ユーザーの UPN が変更されると、その変更に対応するために FIDO2 セキュリティ キーを変更することはできなくなります。 FIDO2 セキュリティ キーを持つユーザーは、MySecurityInffo にログインして古いキーを削除し、新しいキーを追加することで、この問題を解決できます。
 
 ## <a name="next-steps"></a>次のステップ
 

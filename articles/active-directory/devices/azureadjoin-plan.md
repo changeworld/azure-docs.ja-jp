@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eb74dccb01bb599a40bbf9c606661d4661a37f3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bdaef1c746ca23f2badf657e6e72e6e3988bcfa4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953623"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724857"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -164,6 +164,9 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 デバイスがドメイン コントローラーへのアクセス権を持つ場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得します。 
 
+> [!NOTE]
+> Azure AD 参加済みデバイスでは、オンプレミスとクラウドの両方のアプリケーションにシームレスにアクセスできます。 詳しくは、「[How SSO to on-premises resources works on Azure AD joined devices](azuread-join-sso.md)」(Azure AD 参加済みデバイス上でのオンプレミスのリソースへの SSO の動作) をご覧ください。
+
 **推奨事項:** [Azure AD アプリのプロキシ](../app-proxy/application-proxy.md)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
 
 ### <a name="on-premises-network-shares"></a>オンプレミスのネットワーク共有
@@ -240,7 +243,7 @@ Azure portal では、組織内の Azure AD 参加済みデバイスのデプロ
 
 ### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>デバイスを参加させるには多要素認証 (MFA) が必要
 
-デバイスを Azure AD に参加させるときにユーザーに MFA の実行を要求する場合は、 **[はい]** を選択します。 ユーザーが MFA を使用して Azure AD にデバイスを参加させる場合は、デバイス自体が第 2 要素になります。
+デバイスを Azure AD に参加させるときにユーザーに MFA の実行を要求する場合は、 **[はい]** を選択します。
 
 ![デバイスを参加させるには多要素認証が必要](./media/azureadjoin-plan/03.png)
 

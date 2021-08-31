@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9424162e847a9d92019efe907ce74f21c55cdb23
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: b646c4d263896e1bf4d63bdaf965209c005b8228
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226248"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742651"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -21,7 +21,7 @@ ms.locfileid: "108226248"
 > [!NOTE]
 > この記事は、Azure Functions 2.x 以降のバージョンを対象としています。  Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
 
-その他の関数アプリの構成オプションは、[アプリ設定](functions-app-settings.md) (デプロイされているアプリの場合) または [local.settings.json](functions-run-local.md#local-settings-file) ファイル (ローカル開発の場合) で管理されます。
+その他の関数アプリの構成オプションは、[アプリ設定](functions-app-settings.md) (デプロイされているアプリの場合) または [local.settings.json](functions-develop-local.md#local-settings-file) ファイル (ローカル開発の場合) で管理されます。
 
 バインドに関連する host.json 内の構成は、関数アプリの各関数に均等に適用されます。 
 
@@ -221,6 +221,28 @@ ms.locfileid: "108226248"
 
 構成設定は、[Storage BLOB のトリガーとバインディング](functions-bindings-storage-blob.md#hostjson-settings)に関する記事に記載されています。  
 
+## <a name="console"></a>console
+
+この設定は [logging](#logging) の子です。 デバッグ モードでないときのコンソール ログ記録を制御します。
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": false,
+          "DisableColors": true
+        },
+    ...
+    }
+}
+```
+
+|プロパティ  |Default | 説明 |
+|---------|---------|---------| 
+|DisableColors|false| Linux のコンテナー ログで、ログの書式設定を抑制します。 Linux で実行しているときに、意図しない ANSI 制御文字がコンテナー ログに表示される場合は、true に設定します。 |
+|isEnabled|false|コンソール ログ記録を有効または無効にします。| 
+
 ## <a name="cosmosdb"></a>cosmosDb
 
 構成設定は、[Cosmos DB のトリガーとバインディング](functions-bindings-cosmosdb-v2-output.md#host-json)に関する記事に記載されています。
@@ -348,26 +370,6 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 この設定により、特定の関数についてログをフィルター処理できます。 詳細については、「[ログ レベルを構成する](configure-monitoring.md#configure-log-levels)」を参照してください。 |
 |console|該当なし| [console](#console) ログ記録の設定。 |
 |applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
-
-## <a name="console"></a>console
-
-この設定は [logging](#logging) の子です。 デバッグ モードでないときのコンソール ログ記録を制御します。
-
-```json
-{
-    "logging": {
-    ...
-        "console": {
-          "isEnabled": "false"
-        },
-    ...
-    }
-}
-```
-
-|プロパティ  |Default | 説明 |
-|---------|---------|---------| 
-|isEnabled|false|コンソール ログ記録を有効または無効にします。| 
 
 ## <a name="manageddependency"></a>managedDependency
 

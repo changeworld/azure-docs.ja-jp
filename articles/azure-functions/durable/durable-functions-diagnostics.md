@@ -3,14 +3,14 @@ title: Durable Functions における診断 - Azure
 description: Azure Functions の Durable Functions 拡張機能に関する問題を診断する方法について説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 06/29/2021
 ms.author: azfuncdf
-ms.openlocfilehash: d1125c2de0f548f1a6086819573acf1a2ac9c3c9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf446b435bc84649d102150b8e0f092c25a85d07
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370894"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087380"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -72,34 +72,12 @@ Application Insights に出力される追跡データの詳細レベルは、`h
 }
 ```
 
-既定では、すべての再生以外の追跡イベントが出力されます。 データのボリュームは、`Host.Triggers.DurableTask` を `"Warning"` または `"Error"` に設定し、追跡イベントの出力を例外的な状況に限定することで減らせます。
-
-詳細なオーケストレーション再生イベントの生成を有効にするには、次のように `durableTask` の下で `host.json` ファイルの `LogReplayEvents` を `true` に設定します。
-
-#### <a name="functions-10"></a>Functions 1.0
-
-```json
-{
-    "durableTask": {
-        "logReplayEvents": true
-    }
-}
-```
-
-#### <a name="functions-20"></a>Functions 2.0
-
-```json
-{
-    "extensions": {
-        "durableTask": {
-            "logReplayEvents": true
-        }
-    }
-}
-```
+既定では、すべての "_再生以外_" の追跡イベントが出力されます。 データのボリュームは、`Host.Triggers.DurableTask` を `"Warning"` または `"Error"` に設定し、追跡イベントの出力を例外的な状況に限定することで減らせます。 詳細なオーケストレーション再生イベントの生成を有効にするには、[host.json](durable-functions-bindings.md#host-json) 構成ファイルの `logReplayEvents` を `true` に設定します。
 
 > [!NOTE]
 > 既定では、データの出力頻度が高くなりすぎないよう、Azure Functions ランタイムによって Application Insights テレメトリがサンプリングされます。 そのため、短時間に多数のライフサイクル イベントが発生すると追跡情報が失われることがあります。 この動作を構成する方法については、[Azure Functions の監視に関する記事](../configure-monitoring.md#configure-sampling)で説明しています。
+
+オーケストレーター関数、アクティビティ関数、エンティティ関数の入力と出力は既定ではログに記録されません。 入力と出力をログに記録すると Application Insights のコストが上がるため、この既定の動作が推奨されています。 関数の入力および出力ペイロードには、機密情報も含まれる場合があります。 既定では、実際のペイロードの代わりに、関数の入力と出力のバイト数がログに記録されます。 Durable Functions 拡張機能で入力と出力のペイロードをすべてログに記録する場合、[host.json](durable-functions-bindings.md#host-json) 構成ファイルの `traceInputsAndOutputs` プロパティを `true` に設定します。
 
 ### <a name="single-instance-query"></a>シングル インスタンス クエリ
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする
 description: Azure Cosmos DB を Azure Spring Cloud アプリケーションにバインドする方法について説明します
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 51f6807ebaa611f8c21588aa4e6dea3461bce265
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 387d526002411395e8bebc0fa59925bfa383e598
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110058458"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861332"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする
 
@@ -25,13 +25,7 @@ Spring Boot アプリケーションを手動で構成するのではなく、Az
 * デプロイされた Azure Spring Cloud インスタンス。 [Azure CLI を使用したデプロイに関するクイックスタート](./quickstart.md)に従って作業を開始してください。
 * 共同作成者の最小アクセス許可レベルを持つ Azure Cosmos DB アカウント。
 
-## <a name="bind-azure-cosmos-db"></a>Azure Cosmos DB をバインドする
-
-Azure Cosmos DB では、5 種類の API でバインドがサポートされています。 その使用方法を次の手順で説明します。
-
-1. Azure Cosmos DB のデータベースを作成します。 詳細については、[データベースの作成](../cosmos-db/create-cosmosdb-resources-portal.md)に関するクイックスタートを参照してください。 
-
-1. データベースの名前を記録します。 この手順では、データベース名は **testdb** です。
+## <a name="prepare-your-java-project"></a>Java プロジェクトを準備する
 
 1. 次の依存関係のいずれかを Azure Spring Cloud アプリケーションの pom.xml ファイルに追加します。 API の種類に適した依存関係を選択します。
 
@@ -39,9 +33,9 @@ Azure Cosmos DB では、5 種類の API でバインドがサポートされて
 
       ```xml
       <dependency>
-          <groupId>com.microsoft.azure</groupId>
-          <artifactId>azure-cosmosdb-spring-boot-starter</artifactId>
-          <version>2.1.6</version>
+          <groupId>com.azure.spring</groupId>
+          <artifactId>azure-spring-boot-starter-cosmos</artifactId>
+          <version>3.6.0</version>
       </dependency>
       ```
 
@@ -73,7 +67,16 @@ Azure Cosmos DB では、5 種類の API でバインドがサポートされて
       </dependency>
       ```
 
-1. `az spring-cloud app update` を使用して現在のデプロイを更新するか、`az spring-cloud app deployment create` を使用して新しいデプロイを作成します。 これらのコマンドでは、新しい依存関係でアプリケーションが更新または作成されます。
+1. `az spring-cloud app deploy` を実行して現在のアプリを更新するか、`az spring-cloud app deployment create` を実行してこの変更のための新しいデプロイを作成します。
+
+## <a name="bind-your-app-to-the-azure-cosmos-db"></a>アプリを Azure Cosmos DB にバインドする
+
+#### <a name="service-binding"></a>[サービス バインド](#tab/Service-Binding)
+Azure Cosmos DB では、5 種類の API でバインドがサポートされています。 その使用方法を次の手順で説明します。
+
+1. Azure Cosmos DB のデータベースを作成します。 詳細については、[データベースの作成](../cosmos-db/create-cosmosdb-resources-portal.md)に関するクイックスタートを参照してください。
+
+1. データベースの名前を記録します。 この手順では、データベース名は **testdb** です。
 
 1. Azure portal で、自分のAzure Spring Cloud サービスのページに移動します。 **アプリケーション ダッシュボード** に移動し、Azure Cosmos DB にバインドするアプリケーションを選択します。 このアプリケーションは、前の手順で更新またはデプロイしたものと同じです。
 
@@ -90,11 +93,90 @@ Azure Cosmos DB では、5 種類の API でバインドがサポートされて
 
 1. サービスを確実に正しくバインドするには、バインド名を選択し、その詳細を確認します。 `property` フィールドは次の例のようになります。
 
-    ```
+    ```properties
     azure.cosmosdb.uri=https://<some account>.documents.azure.com:443
     azure.cosmosdb.key=abc******
     azure.cosmosdb.database=testdb
     ```
+
+#### <a name="terraform"></a>[Terraform](#tab/Terraform)
+次の Terraform スクリプトは、Azure Cosmos DB MongoDB API を使用して Azure Spring Cloud アプリを設定する方法を示しています。
+
+```terraform
+provider "azurerm" {
+  features {}
+}
+
+variable "application_name" {
+  type        = string
+  description = "The name of your application"
+  default     = "demo-abc"
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_cosmosdb_account" "cosmosdb" {
+  name                = "cosmosacct-${var.application_name}-001"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  offer_type          = "Standard"
+  kind                = "MongoDB"
+
+  consistency_policy {
+    consistency_level = "Session"
+  }
+
+  geo_location {
+    failover_priority = 0
+    location          = azurerm_resource_group.example.location
+  }
+}
+
+resource "azurerm_cosmosdb_mongo_database" "cosmosdb" {
+  name                = "cosmos-${var.application_name}-001"
+  resource_group_name = azurerm_cosmosdb_account.cosmosdb.resource_group_name
+  account_name        = azurerm_cosmosdb_account.cosmosdb.name
+}
+
+resource "azurerm_spring_cloud_service" "example" {
+  name                = "${var.application_name}"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+}
+
+resource "azurerm_spring_cloud_app" "example" {
+  name                = "${var.application_name}-app"
+  resource_group_name = azurerm_resource_group.example.name
+  service_name        = azurerm_spring_cloud_service.example.name
+  is_public           = true
+  https_only          = true
+}
+
+resource "azurerm_spring_cloud_java_deployment" "example" {
+  name                = "default"
+  spring_cloud_app_id = azurerm_spring_cloud_app.example.id
+  cpu                 = 2
+  memory_in_gb        = 4
+  instance_count      = 2
+  jvm_options         = "-XX:+PrintGC"
+  runtime_version     = "Java_11"
+
+  environment_variables = {
+    "azure.cosmosdb.uri" : azurerm_cosmosdb_account.cosmosdb.connection_strings[0]
+    "azure.cosmosdb.database" : azurerm_cosmosdb_mongo_database.cosmosdb.name
+  }
+}
+
+resource "azurerm_spring_cloud_active_deployment" "example" {
+  spring_cloud_app_id = azurerm_spring_cloud_app.example.id
+  deployment_name     = azurerm_spring_cloud_java_deployment.example.name
+}
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

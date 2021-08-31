@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): モデルの評価とクロス検証 - Azure'
-description: Azure Machine Learning Studio (classic) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。
+description: Machine Learning Studio (クラシック) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b2ca78d30659fce6e4246c81216cae94b404955e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 346cfa898b5745b5ba8e31635337456ea9adb02d
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520019"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581720"
 ---
-# <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) でモデルのパフォーマンスを評価する
+# <a name="evaluate-model-performance-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でモデルのパフォーマンスを評価する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
-この記事では、Azure Machine Learning Studio (classic) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。  モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。 その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。 Azure Machine Learning Studio (クラシック) では、 
+この記事では、Machine Learning Studio (クラシック) でモデルのパフォーマンスを監視するために使用できるメトリックについて説明します。  モデルのパフォーマンスの評価は、データ サイエンス プロセスの重要な段階の 1 つです。 その評価は、トレーニングしたモデルによるデータセットのスコア付け (予測) がどれほど成功したかを示す指標になります。 Machine Learning Studio (クラシック) では、機械学習の 2 つのメイン モジュールを使用したモデルの評価がサポートされています。 
 + [モデルの評価][evaluate-model] 
 + [モデルのクロス検証][cross-validate-model]
 
@@ -50,7 +50,7 @@ ms.locfileid: "100520019"
 自動車の大きさ、馬力、エンジンの仕様などの特徴を利用して、価格を予測するとします。 これは、ターゲット変数 (*価格*) が連続数値になる典型的な回帰問題です。 自動車のさまざまな特徴の値に基づいて価格を予測する線形回帰モデルを作成できます。 この回帰モデルを使用して、トレーニングで使用したのと同じデータセットのスコア付けを行うことができます。 自動車の価格を予測したら、その予測と実際の価格の差異の平均値に基づいてモデルのパフォーマンスを評価できます。 その一例として、Machine Learning Studio (クラシック) の *[保存されたデータセット]* セクションにある **自動車価格データ (生データ) データセット** を使用します。
 
 ### <a name="creating-the-experiment"></a>実験の作成
-Azure Machine Learning Studio (クラシック) で以下のモジュールをワークスペースに追加します。
+Machine Learning Studio (クラシック) で次のモジュールをワークスペースに追加します。
 
 * 自動車価格データ (生データ)
 * [線形回帰][linear-regression]
@@ -89,10 +89,10 @@ Azure Machine Learning Studio (クラシック) で以下のモジュールを�
 図 4: 回帰モデルのクロス検証の結果。
 
 ## <a name="evaluating-a-binary-classification-model"></a>二項分類モデルの評価
-二項分類のシナリオでは、ターゲット変数には 2 つの選択肢しかありません。たとえば、{0, 1}、{偽, 真}、{負, 正} などです。 いくつかの人口統計や雇用の変数が含まれた成人従業員のデータセットが提供され、値 {"<=50 K", ">50 K"} を使った二項変数の収入レベルを予測するように依頼されたとします。 つまり、年収が 5 万ドル以下の従業員を表す負のクラスと、その他の従業員を表す正のクラスです。 回帰のシナリオの場合と同じく、モデルのトレーニング、データのスコア付け、結果の評価を行います。 おもな違いは、Azure Machine Learning Studio (クラシック) で計算されて出力されるメトリックの選択です。 この収入レベルの予測シナリオでは、[Adult](https://archive.ics.uci.edu/ml/datasets/Adult) データセットを使用して Studio (クラシック) の実験を作成し、よく使われている二項分類モデルである 2 クラスのロジスティック回帰モデルのパフォーマンスを評価します。
+二項分類のシナリオでは、ターゲット変数には 2 つの選択肢しかありません。たとえば、{0, 1}、{偽, 真}、{負, 正} などです。 いくつかの人口統計や雇用の変数が含まれた成人従業員のデータセットが提供され、値 {"<=50 K", ">50 K"} を使った二項変数の収入レベルを予測するように依頼されたとします。 つまり、年収が 5 万ドル以下の従業員を表す負のクラスと、その他の従業員を表す正のクラスです。 回帰のシナリオの場合と同じく、モデルのトレーニング、データのスコア付け、結果の評価を行います。 ここでの主な違いは、Machine Learning Studio (クラシック) で計算され出力されるメトリックの選択です。 この収入レベルの予測シナリオでは、[Adult](https://archive.ics.uci.edu/ml/datasets/Adult) データセットを使用して Studio (クラシック) の実験を作成し、よく使われている二項分類モデルである 2 クラスのロジスティック回帰モデルのパフォーマンスを評価します。
 
 ### <a name="creating-the-experiment"></a>実験の作成
-Azure Machine Learning Studio (クラシック) で以下のモジュールをワークスペースに追加します。
+Machine Learning Studio (クラシック) で次のモジュールをワークスペースに追加します。
 
 * 米国国勢調査局提供の、成人収入に関する二項分類データセット
 * [2 クラス ロジスティック回帰][two-class-logistic-regression]
@@ -111,7 +111,7 @@ Azure Machine Learning Studio (クラシック) で以下のモジュールを�
 
 精度とは、簡単に言えば正しく分類された事例の比率です。 分類モデルを評価するときは通常、精度のメトリックに最初に注目します。 しかし、テスト データのバランスが悪い (ほとんどの事例が一方のクラスに属している )場合や、一方のクラスのパフォーマンスに主な関心がある場合には、実際には精度によって分類モデルの有効性が捕捉されるわけではありません。 たとえば、収入レベルの分類シナリオで、99% が年収 5 万ドル以下の層に属するデータをテストしているとしましょう。 どの事例についても "<=50K" の層を予測することで、0.99 の精度を達成することが可能です。 この分類モデルのパフォーマンスは非常に高いように思えるかもしれませんが、実際のところ、高収入の人たち (1%) を正確に分類することはできません。
 
-そのため、多角的に評価するには、さらに別のメトリックを計算する必要があります。 そのようなメトリックを詳しく取り上げる前に、二項分類の評価の混同行列について理解しておくことは重要です。 トレーニング セットのクラス ラベルには 2 つの値しかありません。通常は、正の値と負の値です。 分類モデルが正しく予測した正の事例と負の事例のことを、それぞれ真陽性 (TP) と真陰性 (TN) といいます。 また、間違って分類した事例のことを、それぞれ偽陽性 (FP) と偽陰性 (FN) といいます。 混同行列とは、簡単に言えば、この 4 つの分類に該当する事例の数をまとめた表です。 Azure Machine Learning Studio (クラシック) では、データセット内の 2 つのクラスが正のクラスとして自動的に設定されます。 クラス ラベルがブール値または整数値であれば、「真」または「1」のラベルの事例が正のクラスに割り当てられます。 収入のデータセットの場合のようにラベルが文字列であれば、ラベルがアルファベット順に並べ替えられ、最初に選択されるレベルが負のクラス、2 番目のレベルが正のクラスになります。
+そのため、多角的に評価するには、さらに別のメトリックを計算する必要があります。 そのようなメトリックを詳しく取り上げる前に、二項分類の評価の混同行列について理解しておくことは重要です。 トレーニング セットのクラス ラベルには 2 つの値しかありません。通常は、正の値と負の値です。 分類モデルが正しく予測した正の事例と負の事例のことを、それぞれ真陽性 (TP) と真陰性 (TN) といいます。 また、間違って分類した事例のことを、それぞれ偽陽性 (FP) と偽陰性 (FN) といいます。 混同行列とは、簡単に言えば、この 4 つの分類に該当する事例の数をまとめた表です。 Machine Learning Studio (クラシック) によって、データセット内の 2 つのクラスのうちどちらが正のクラスかが自動的に決定されます。 クラス ラベルがブール値または整数値であれば、「真」または「1」のラベルの事例が正のクラスに割り当てられます。 収入のデータセットの場合のようにラベルが文字列であれば、ラベルがアルファベット順に並べ替えられ、最初に選択されるレベルが負のクラス、2 番目のレベルが正のクラスになります。
 
 ![二項分類の混同行列](./media/evaluate-model-performance/6a.png)
 
@@ -142,7 +142,7 @@ Azure Machine Learning Studio (クラシック) で以下のモジュールを�
 この実験では、3 種類 (クラス) のあやめの事例が含まれている有名な [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") データセットを使います。 事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。 前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。 今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、1 つ目でトレーニングを行い、2 つ目でスコア付けと評価を行います。 Iris データセットは [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][import-data] モジュールを使ってダウンロードできます。
 
 ### <a name="creating-the-experiment"></a>実験の作成
-Azure Machine Learning Studio (クラシック) で以下のモジュールをワークスペースに追加します。
+Machine Learning Studio (クラシック) で次のモジュールをワークスペースに追加します。
 
 * [データのインポート][import-data]
 * [多クラス デシジョン フォレスト][multiclass-decision-forest]

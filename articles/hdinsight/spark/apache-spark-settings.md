@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 25ff8611cc988c9777b52a313cfd74d4ee0a638c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9b434852764508899f091cbb88aa0817654e08c0
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870298"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113650738"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
@@ -47,7 +47,7 @@ spark.sql.files.maxPartitionBytes 1099511627776
 spark.sql.files.openCostInBytes 1099511627776
 ```
 
-上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値がオーバーライドされます。  これらの値は、Apache Hadoop MapReduce 分割の最小サイズと parquet ブロック サイズの圧縮コーデックです。 また、Spar SQL パーティションと開いているファイルのサイズの既定値です。  これらの構成の変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、特定の特性があるためです。 これらの特性は、これらのカスタム構成設定を使うと向上します。
+上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値がオーバーライドされます。  これらの値は、Apache Hadoop MapReduce 分割の最小サイズと parquet ブロック サイズの圧縮コーデックです。 また、Spark SQL パーティションと開いているファイルのサイズの既定値です。  これらの構成の変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、特定の特性があるためです。 これらの特性は、これらのカスタム構成設定を使うと向上します。
 
 ---
 

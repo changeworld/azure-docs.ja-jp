@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c9be8958dada7acc5d53e6c99c79527e10142121
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d92591e335a24aa50de081c5a001801f22c92dba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463105"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750223"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis"></a>Azure Cache for Redis にレプリカを追加する
 この記事では、Azure portal を使用して、追加のレプリカを持つ Azure Cache インスタンスを設定する方法について説明します。
@@ -43,10 +43,14 @@ Azure Cache for Redis の Standard レベルと Premium レベルでは、2 つ�
 1. **[詳細設定]** ページで、 **[レプリカ数]** を選択します。
    
     :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="[レプリカ数]。":::
+    
+    > [!NOTE]
+    > 現在のところ、Append-only File (AOF) の永続化と geo レプリケーションは複数のレプリカ (2 個以上のレプリカ) では利用できません。
+    >
 
 1. 他のオプションは既定の設定のままにします。 
 
-1. **Create** をクリックしてください。
+1. **［作成］** を選択します
    
     キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4eba226fbbe3ef6d9791f2f098a24fdf217debaa
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 84cb22956b682a9acb23f4f391faf046eccc47a7
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110575376"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378144"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>シナリオ:カスタム設定を使用して NVA 経由でトラフィックをルーティングする
 
@@ -177,6 +177,7 @@ NVA 経由のルーティングを設定するには、次の手順を検討し�
    > * ポータル ユーザーは、0.0.0.0/0 のルートが有効になるよう、接続 (VPN/ER/P2S/VNet) で [Propagate to default route] (既定のルートに伝達する) を有効にする必要があります。
    > * PS/CLI/REST ユーザーは、0.0.0.0/0 のルートが有効になるよう、フラグ 'enableinternetsecurity' を true に設定する必要があります。
    > * 仮想ネットワーク接続では、ネクスト ホップ IP が含まれる経路にパブリック IP アドレスまたは 0.0.0.0/0 (インターネット) が指定されている場合、"複数または 1 つの" ネクスト ホップ IP の経路を SPOKE VNet 内の "同じ" ネットワーク仮想アプライアンスに指定することはできません。
+   > * 0\.0.0.0/0 が仮想ネットワーク接続で静的ルートとして構成されている場合、そのルートは、スポーク自体の中のリソースを含むすべてのトラフィックに適用されます。 つまり、すべてのトラフィックは、静的ルートのネクスト ホップ IP アドレス (NVA プライベート IP) に転送されます。 したがって、スポーク仮想ネットワーク接続でネクスト ホップ NVA IP アドレスが構成された 0.0.0.0/0 ルートを使用するデプロイでは、NVA と同じ仮想ネットワーク内のワークロードに直接アクセスする (つまり、トラフィックが NVA を経由しないようにする) ために、スポーク仮想ネットワーク接続で /32 ルートを指定してください。 たとえば、10.1.3.1 に直接アクセスする場合は、スポーク仮想ネットワーク接続で 10.1.3.1/32 のネクスト ホップ 10.1.3.1 を指定してください。
 
 ## <a name="next-steps"></a>次のステップ
 

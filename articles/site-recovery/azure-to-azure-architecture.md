@@ -5,12 +5,12 @@ services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
-ms.openlocfilehash: 38bf9d41f81a76c4263952a94b5526984db0705f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: a59760378eef7412a963f661e80debc6a7af56d5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580936"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486555"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -51,9 +51,8 @@ VM のレプリケーションを有効にすると、Site Recovery でターゲ
 
 次のようにターゲット リソースを管理できます。
 
-- レプリケーションを有効にするときに、ターゲットの設定を変更できます。
-- レプリケーションが既に動作した後で、ターゲットの設定を変更できます。 ターゲット リージョン VM の既定の SKU は、ソース VM SKU (または、ソース VM SKU と比較して、次に最適な使用できる SKU) と同じであることにご注意ください。 ターゲット リソース グループ、ターゲット名などのその他のリソースと同様に、ターゲット リージョン VM SKU は、レプリケーションの進行後に更新することもできます。 可用性の種類 (1 つのインスタンス、セット、またはゾーン) は、更新できないリソースです。 この設定を変更するには、レプリケーションを無効にして、設定を変更し、再度有効にする必要があります。 
-
+- レプリケーションを有効にするときに、ターゲットの設定を変更できます。 ターゲット リージョン VM の既定の SKU は、ソース VM SKU (または、ソース VM SKU と比較して、次に最適な使用できる SKU) と同じであることにご注意ください。 ドロップダウン リストには、ソースの VM と同じファミリの関連 SKU だけが表示されます (Gen 1 または Gen2)。
+- レプリケーションが既に動作した後で、ターゲットの設定を変更できます。 ターゲット リソース グループ、ターゲット名などのその他のリソースと同様に、ターゲット リージョン VM SKU は、レプリケーションの進行後に更新することもできます。 可用性の種類 (1 つのインスタンス、セット、またはゾーン) は、更新できないリソースです。 この設定を変更するには、レプリケーションを無効にして、設定を変更し、再度有効にする必要があります。 
 
 ## <a name="replication-policy"></a>Replication policy 
 

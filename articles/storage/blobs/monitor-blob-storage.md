@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bd9e8c2e71f69045078111bd5a4ae7c0edf567aa
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: f38149e2259dbb6724a81e8139f46bd65a0edff0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527372"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749318"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Azure Blob Storage の監視
 
@@ -67,7 +67,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 ## <a name="creating-a-diagnostic-setting"></a>診断設定の作成
 
-診断設定を作成するには、Azure portal、PowerShell、Azure CLI、または Azure Resource Manager テンプレートを使用します。 
+診断設定を作成するには、Azure portal、PowerShell、Azure CLI、Azure Resource Manager テンプレート、Azure Policy のいずれかを使用します。 
 
 一般的なガイダンスについては、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../../azure-monitor/essentials/diagnostic-settings.md)に関するページを参照してください。
 
@@ -159,7 +159,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log>
 ```
 
-このスニペットの `<storage-service-resource--id>` プレースホルダーを BLOB サービスのリソース ID に置き換えます。 ストレージ アカウントの **[プロパティ]** ページを開くと、Azure portal 上でリソース ID を確認できます。
+このスニペットの `<storage-service-resource--id>` プレースホルダーを BLOB サービスのリソース ID に置き換えます。 ストレージ アカウントの **[エンドポイント]** ページを開くと、Azure portal でリソース ID を確認できます。
 
 **Category** パラメーターの値には、`StorageRead`、`StorageWrite`、および `StorageDelete` を使用できます。
 
@@ -223,7 +223,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true }]'
 ```
 
-このスニペットの `<storage-service-resource--id>` プレースホルダーを BLOB ストレージ サービスのリソース ID に置き換えます。 ストレージ アカウントの **[プロパティ]** ページを開くと、Azure portal 上でリソース ID を確認できます。
+このスニペットの `<storage-service-resource--id>` プレースホルダーを BLOB ストレージ サービスのリソース ID に置き換えます。 ストレージ アカウントの **[エンドポイント]** ページを開くと、Azure portal でリソース ID を確認できます。
 
 **category** パラメーターの値には、`StorageRead`、`StorageWrite`、および `StorageDelete` を使用できます。
 
@@ -269,6 +269,10 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
 
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+診断設定を作成するには、ポリシー定義を使用します。 これにより、作成または更新されたすべてのアカウントに対して、確実に診断設定が作成されるようになります。 「[Azure Storage 用の Azure Policy 組み込み定義](../common/policy-reference.md)」を参照してください。
+
 ---
 
 ## <a name="analyzing-metrics"></a>メトリックの分析
@@ -302,7 +306,7 @@ Azure Blob Storage のメトリックは、次の名前空間にあります。
 
 Azure Monitor には、メトリックの定義と値を読み取るための [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。
  
-これらの例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体または BLOB ストレージ サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[プロパティ]** ページで確認できます。
+これらの例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体または BLOB ストレージ サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[エンドポイント]** ページで確認できます。
 
 `<subscription-ID>` 変数をご自身のサブスクリプションの ID に置き換えます。 `<tenant-ID>`、`<application-ID>`、および `<AccessKey>` の値を取得する方法のガイダンスについては、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」をご覧ください。 
 
@@ -444,7 +448,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 ストレージ アカウントまたは BLOB ストレージ サービスのメトリック定義を一覧表示できます。 [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) コマンドレットを使用します。
 
-この例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体のリソース ID または BLOB ストレージ サービスのリソース ID に置き換えます。  これらのリソース ID は、Azure portal 上のストレージ アカウントの **[プロパティ]** ページで確認できます。
+この例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体のリソース ID または BLOB ストレージ サービスのリソース ID に置き換えます。  これらのリソース ID は、Azure portal 上のストレージ アカウントの **[エンドポイント]** ページで確認できます。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -466,7 +470,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 ストレージ アカウントまたは BLOB ストレージ サービスのメトリック定義を一覧表示できます。 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) コマンドを使用します。
  
-この例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体のリソース ID または BLOB ストレージ サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[プロパティ]** ページで確認できます。
+この例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体のリソース ID または BLOB ストレージ サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[エンドポイント]** ページで確認できます。
 
 ```azurecli-interactive
    az monitor metrics list-definitions --resource <resource-ID>
@@ -480,6 +484,10 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
 ### <a name="template"></a>[テンプレート](#tab/template)
+
+該当なし。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
 該当なし。
 
@@ -610,3 +618,4 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 - Azure Blob Storage によって作成されるログおよびメトリックのリファレンスについては、[Azure Blob Storage 監視データのリファレンス](monitor-blob-storage-reference.md)に関するページを参照してください。
 - Azure リソースの監視の詳細については、「[Azure Monitor で Azure リソースを管理する](../../azure-monitor/essentials/monitor-azure-resource.md)」をご覧ください。
 - メトリックの移行の詳細については、「[Azure Storage メトリックの移行](../common/storage-metrics-migration.md)」をご覧ください。
+- 一般的なシナリオとベスト プラクティスについては、「[Azure Blob Storage を監視するためのベスト プラクティス](blob-storage-monitoring-scenarios.md)」を参照してください。

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd740c773998450ef6e8bb95c4df3a1abadaceed
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8ba54fa398d42aea43a93d3b3369f21f4d2168ec
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796011"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182513"
 ---
 # <a name="how-to-manage-tiered-files"></a>階層化ファイルの管理方法
 
@@ -63,11 +63,15 @@ ms.locfileid: "107796011"
 
 ## <a name="how-to-exclude-applications-from-cloud-tiering-last-access-time-tracking"></a>クラウドを使った階層化の最終アクセス時刻の追跡からアプリケーションを除外する方法
 
-Azure File Sync エージェント バージョン 11.1 では、最終アクセスの追跡からアプリケーションを除外できるようになりました。 アプリケーションからファイルへアクセスが行われると、ファイルの最終アクセス時刻がクラウドを使った階層化データベースで更新されます。 ファイル システムをスキャンするウイルス対策アプリケーションなどを使用すると、すべてのファイルの最終アクセス時刻が同じになるため、ファイルが階層化された時間に影響を及ぼします。
+アプリケーションからファイルへアクセスが行われると、ファイルの最終アクセス時刻がクラウドを使った階層化データベースで更新されます。 ファイル システムをスキャンするウイルス対策アプリケーションなどを使用すると、すべてのファイルの最終アクセス時刻が同じになるため、ファイルが階層化された時間に影響を及ぼします。
 
-最終アクセス時刻の追跡からアプリケーションを除外するには、プロセス名を HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync の下にある HeatTrackingProcessNameExclusionList レジストリ設定に追加します。
+最終アクセス時刻の追跡からアプリケーションを除外するには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync の下にある適切なレジストリ設定にそのプロセス名を追加します。
 
+v11 および v12 リリースの場合は、プロセスの除外を HeatTrackingProcessNameExclusionList レジストリ設定に追加します。
 例: reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync" /v HeatTrackingProcessNameExclusionList /t REG_MULTI_SZ /d "SampleApp.exe\0AnotherApp.exe" /f
+
+v13 リリース以降の場合は、プロセスの除外を HeatTrackingProcessNamesExclusionList レジストリ設定に追加します。
+例: reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync" /v HeatTrackingProcessNamesExclusionList /t REG_SZ /d "SampleApp.exe,AnotherApp.exe" /f
 
 > [!NOTE]
 > データ重複除去と File Server Resource Manager (FSRM) のプロセスは既定で除外されています。 プロセスの除外リストは 5 分ごとに受け入れられます。

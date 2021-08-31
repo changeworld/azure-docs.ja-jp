@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c903cf06981e1336ae30942775de11d09bb1299b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 480b8e7d5e728eca10901d753b825d1894711e70
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675358"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751650"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
@@ -190,6 +190,38 @@ _SIOS DataKeeper を使用する Azure での Windows フェールオーバー �
 > [!NOTE]
 > SQL Server のような一部の DBMS 製品では、高可用性のために共有ディスクは必要ありません。 SQL Server Always On は、DBMS のデータとログ ファイルを、クラスター ノードのローカル ディスクから別のクラスター ノードのローカル ディスクにレプリケートします。 その場合、Windows クラスター構成に共有ディスクは不要です。
 >
+## <a name="optional-configurations"></a>オプションの構成
+
+次の図は、VM の総数を減らすために Microsoft Windows フェールオーバー クラスターを実行している Azure VM 上の複数の SAP インスタンスを示しています。
+
+これは、SAP ASCS/SCS クラスター上のローカル SAP アプリケーション サーバーとすることも、Microsoft SQL Server Always On ノード上の SAP ASCS/SCS クラスター ロールとすることもできます。
+
+> [!IMPORTANT]
+> ローカル SAP アプリケーション サーバーを SQL Server Always On ノードにインストールすることはサポートされていません。
+>
+
+SAP ASCS/SCS と Microsoft SQL Server データベースは両方とも単一障害点 (SPOF) です。 これらの SPOF を Windows 環境内で保護するために、WSFC が使用されます。
+
+SAP ASCS/SCS のリソース消費量はかなり小さいものの、SQL Server または SAP アプリケーション サーバーのどちらかのメモリ構成を、2 GB 削減することをお勧めします。
+
+### <a name="sap-application-servers-on-wsfc-nodes-using-sios-datakeeper"></a>SIOS DataKeeper を使用した WSFC ノード上の SAP アプリケーション サーバー
+
+![図 6: SIOS DataKeeper とローカルにインストールされた SAP アプリケーション サーバーを使用した Azure での Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1003]
+
+> [!NOTE]
+> 図に示すように、SAP アプリケーション サーバーはローカルにインストールされているので、同期を設定する必要はありません。
+>
+### <a name="sap-ascsscs-on-sql-server-always-on-nodes-using-sios-datakeeper"></a>SIOS DataKeeper を使用した SQL Server Always On ノード上の SAP ASCS/SCS
+
+![図 7: SIOS DataKeeper を使用した SQL Server Always On ノード上の SAP ASCS/SCS][sap-ha-guide-figure-1005]
+
+[Windows SOFS を使用した WSFC ノード上の SAP アプリケーション サーバーのオプション構成][optional-fileshare]
+
+[NetApp Files SMB を使用した WSFC ノード上の SAP アプリケーション サーバーのオプション構成][optional-smb]
+
+[Windows SOFS を使用した SQL Server Always On ノード上の SAP ASCS/SCS のオプション構成][optional-fileshare-sql]
+
+[NetApp Files SMB を使用した SQL Server Always On ノード上の SAP ASCS/SCS のオプション構成][optional-smb-sql]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -253,7 +285,9 @@ _SIOS DataKeeper を使用する Azure での Windows フェールオーバー �
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
 [sap-ha-guide-figure-1001]:./media/virtual-machines-shared-sap-high-availability-guide/1001-wsfc-on-azure-ilb.png
-[sap-ha-guide-figure-1002]:./media/virtual-machines-shared-sap-high-availability-guide/1002-wsfc-sios-on-azure-ilb.png
+[sap-ha-guide-figure-1003]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sios-as.png
+[sap-ha-guide-figure-1005]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sql-ascs-sios.png
+[sap-ha-guide-figure-1002]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sios.png
 [sap-ha-guide-figure-2000]:./media/virtual-machines-shared-sap-high-availability-guide/2000-wsfc-sap-as-ha-on-azure.png
 [sap-ha-guide-figure-2001]:./media/virtual-machines-shared-sap-high-availability-guide/2001-wsfc-sap-ascs-ha-on-azure.png
 [sap-ha-guide-figure-2003]:./media/virtual-machines-shared-sap-high-availability-guide/2003-wsfc-sap-dbms-ha-on-azure.png
@@ -347,12 +381,16 @@ _SIOS DataKeeper を使用する Azure での Windows フェールオーバー �
 
 
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[optional-smb]:high-availability-guide-windows-netapp-files-smb.md#5121771a-7618-4f36-ae14-ccf9ee5f2031 (NetApp Files SMB を使用した WSFC ノード上の SAP アプリケーション サーバーのオプション構成)
+[optional-fileshare]:sap-high-availability-guide-wsfc-file-share.md#86cb3ee0-2091-4b74-be77-64c2e6424f50 (Windows SOFS を使用した WSFC ノード上の SAP アプリケーション サーバーのオプション構成)
+[optional-smb-sql]:high-availability-guide-windows-netapp-files-smb.md#01541cf2-0a03-48e3-971e-e03575fa7b4f (NetApp Files SMB を使用した SQL Server Always On ノード上の SAP ASCS/SCS のオプション構成)
+[optional-fileshare-sql]:sap-high-availability-guide-wsfc-file-share.md#db335e0d-09b4-416b-b240-afa18505f503 (Windows SOFS を使用した SQL Server Always On ノード上の SAP ASCS/SCS のオプション構成)

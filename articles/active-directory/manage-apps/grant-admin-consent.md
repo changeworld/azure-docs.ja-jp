@@ -2,22 +2,22 @@
 title: アプリケーションに対してテナント全体の管理者の同意を付与する - Azure AD
 description: エンド ユーザーがアプリケーションにサインインするときに同意を求めるメッセージが表示されないように、テナント全体の同意をアプリケーションに付与する方法について説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: mtillman
-ms.reviewer: phsignor
+ms.author: davidmu
+ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 836636dfa5cc817685ca815485aa4dba980f1e5a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 397b55bccde5781de5b9e53922e31281b3ec855c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749147"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>アプリケーションに対してテナント全体の管理者の同意を付与する
 
@@ -27,7 +27,7 @@ ms.locfileid: "112081355"
 
 ## <a name="prerequisites"></a>前提条件
 
-テナント全体の管理者の同意を付与するには、組織を代表して同意する権限を持つユーザーとしてサインインする必要があります。 これには、[全体管理者](../roles/permissions-reference.md#global-administrator)と[特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)、および一部のアプリケーションでは、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)と[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)が含まれます。 [アプリケーションにアクセス許可を付与するアクセス許可](../roles/custom-consent-permissions.md)を含む[カスタム ディレクトリ ロール](../roles/custom-create.md)が割り当てられているユーザーも、テナント全体の同意を付与することが許可されます。
+テナント全体の管理者の同意を付与するには、組織を代表して同意する権限を持つユーザーとしてサインインする必要があります。 これには[グローバル管理者](../roles/permissions-reference.md#global-administrator)と[特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)が含まれます。 Microsoft Graph または Azure AD Graph にアプリケーション アクセス許可を必要としないアプリケーションについては、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)と[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)もこれに含まれます。 [アプリケーションにアクセス許可を付与するアクセス許可](../roles/custom-consent-permissions.md)を含む[カスタム ディレクトリ ロール](../roles/custom-create.md)が割り当てられているユーザーも、テナント全体の同意を付与することが許可されます。
 
 > [!WARNING]
 > テナント全体の管理者の同意をアプリケーションに付与すると、アプリおよびアプリの発行者に、組織のデータへのアクセスが許可されます。 同意を付与する前に、アプリケーションで要求されているアクセス許可をよく確認してください。
@@ -43,7 +43,7 @@ ms.locfileid: "112081355"
 
 **[エンタープライズ アプリケーション]** に一覧表示されているアプリにテナント全体の管理者の同意を付与するには:
 
-1. [グローバル管理者](../roles/permissions-reference.md#global-administrator)、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)、または[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします。
+1. 管理者の同意の付与を許可するロールで [Azure portal](https://portal.azure.com) にサインインします (「[前提条件](#prerequisites)」参照)。
 2. **[Azure Active Directory]** を選択し、 **[エンタープライズ アプリケーション]** を選択します。
 3. テナント全体の管理者の同意を付与するアプリケーションを選択します。
 4. **[アクセス許可]** を選択し、 **[管理者の同意の付与]** をクリックします。
@@ -51,7 +51,7 @@ ms.locfileid: "112081355"
 6. アプリケーションで必要なアクセス許可に同意する場合は、同意を付与します。 そうでない場合は、 **[キャンセル]** をクリックするか、ウィンドウを閉じます。
 
 > [!WARNING]
-> **エンタープライズ アプリ** 経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。 
+> **エンタープライズ アプリ** 経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。
 
 ### <a name="grant-admin-consent-in-app-registrations"></a>アプリの登録で管理者の同意を付与する
 
@@ -59,7 +59,7 @@ ms.locfileid: "112081355"
 
 **[アプリの登録]** からテナント全体の管理者の同意を付与するには:
 
-1. [グローバル管理者](../roles/permissions-reference.md#global-administrator)、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)、または[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします。
+1. 管理者の同意の付与を許可するロールで [Azure portal](https://portal.azure.com) にサインインします (「[前提条件](#prerequisites)」参照)。
 2. **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。
 3. テナント全体の管理者の同意を付与するアプリケーションを選択します。
 4. **[API のアクセス許可]** を選択し、 **[管理者の同意を与える]** をクリックします。
@@ -67,7 +67,7 @@ ms.locfileid: "112081355"
 6. アプリケーションで必要なアクセス許可に同意する場合は、同意を付与します。 そうでない場合は、 **[キャンセル]** をクリックするか、ウィンドウを閉じます。
 
 > [!WARNING]
-> **アプリの登録** 経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。 
+> **アプリの登録** 経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>テナント全体の管理者の同意を付与するための URL を作成する
 
@@ -87,7 +87,7 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 この場合も、同意を付与する前に、アプリケーションで要求されているアクセス許可をよく確認してください。
 
 > [!WARNING]
-> この URL 経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。 
+> この URL 経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。
 
 ## <a name="next-steps"></a>次のステップ
 

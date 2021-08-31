@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.custom: references_regions
 author: vamahtan
 ms.author: vamahtan
-ms.date: 04/29/2021
-ms.openlocfilehash: 51ef78575a6987c3ac1537f1bb9d35e98e294ab6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/29/2021
+ms.openlocfilehash: 6d58fbdd2f6b4b89d2584b9f82e0f0fd0417ad35
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971412"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085112"
 ---
 # <a name="set-up-dynamics-365-for-customer-engagement--power-apps-offer-technical-configuration"></a>Dynamics 365 for Customer Engagement & Power Apps オファーの技術的な構成を設定する
 
@@ -43,9 +43,9 @@ ms.locfileid: "111971412"
 
 ## <a name="crm-package-availability"></a>CRM パッケージの利用可能性
 
-**[+ リージョンの追加]** を選択して、顧客が CRM パッケージを利用できる地理的リージョンを指定します。 次のソブリン リージョンにデプロイするには、認定プロセスの間に特別なアクセス許可と検証が必要です。[ドイツ](../germany/index.yml)、[米国政府クラウド](../azure-government/documentation-government-welcome.md)、TIP。
+**[+ リージョンの追加]** を選択して、顧客が CRM パッケージを利用できる地理的リージョンを指定します。 ソブリン リージョンとして US Gov Cloud Sovereign、China Cloud Sovereign、Germany Sovereign、US Gov High Cloud Sovereign、Test in production Sovereign、US DoD Cloud Sovereign は選択しないでください。
 
-既定では、上記で入力した **アプリケーション構成 URL** が各リージョンに使用されます。 必要に応じて、1 つ以上の特定のリージョンに個別のアプリケーション構成 URL を入力できます。
+既定では、上記で入力した **アプリケーション構成 URL** が各リージョンに使用されます。 [アプリケーション構成 URL] フィールドは空白のままにします。
 
 左側のナビゲーション メニューの次のタブである **[Microsoft との共同販売]** に進む前に、 **[下書きの保存]** を選択します。 Microsoft との共同販売 (省略可能) の設定については、「[Microsoft のセールス チームとパートナーによる共同販売の概要](./co-sell-overview.md)」を参照してください。 共同販売を設定していないか、完了した場合は、下の「**次のステップ**」に進みます。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: b66011ff41e1dd4a7439105862ca61355a95bd71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e90c33f63eb360bae4182ac1f9ed32eb9b8aa0c8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042710"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439091"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Monitor で Log Analytics エージェントを使用してカスタム ログを収集する
 
@@ -52,8 +52,8 @@ Azure Monitor の Log Analytics エージェントのカスタム ログ デー�
 ### <a name="step-1-open-the-custom-log-wizard"></a>手順 1. カスタム ログ ウィザードを開く
 カスタム ログ ウィザードは Azure Portal で実行され、収集する新しいカスタム ログを定義できます。
 
-1. Azure portal で、 **[Log Analytics ワークスペース]** 、目的のワークスペース、 **[詳細設定]** の順に選択します。
-2. **[データ]**  >  **[カスタム ログ]** をクリックします。
+1. Azure portal で、 **[Log Analytics ワークスペース]** 、目的のワークスペース、 **[設定]** の順に選択します。
+2. **[カスタム ログ]** をクリックします。
 3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。 Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。
 4. **[追加+]** をクリックし、カスタム ログ ウィザードを開きます。
 

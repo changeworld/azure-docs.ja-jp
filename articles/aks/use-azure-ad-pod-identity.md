@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で AAD ポッドマネージド ID 
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 1b1e8ab4e95a0f721f83f933b527cc40b9d5747c
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 44f4415e09ca9e2942eb1da4c69cf98759f737ce
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592592"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253878"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)
 
@@ -17,7 +17,7 @@ Azure Active Directory ポッドマネージド ID では、Kubernetes プリミ
 
 > [!NOTE]
 >このドキュメントに記載されている機能、ポッドマネージド ID (プレビュー) は、ポッドマネージド ID V2 (プレビュー) に置き換えられます。
-> AADPODIDENTITY が既にインストールされている場合、既存のインストールを削除する必要があります。 この機能を有効にすると、MIC コンポーネントは不要になります。
+> AADPODIDENTITY が既にインストールされている場合は、V2 への移行オプションがあります。 移行の詳細は、2022 年第 2 四半期に予定されているパブリック プレビューが近づくにつれて提供される予定です。 この機能を有効にすると、MIC コンポーネントは不要になります。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -26,7 +26,7 @@ Azure Active Directory ポッドマネージド ID では、Kubernetes プリミ
 次のリソースがインストールされている必要があります。
 
 * Azure CLI バージョン 2.20.0 以降
-* `azure-preview` 拡張機能バージョン 0.5.5 以降
+* `aks-preview` 拡張機能バージョン 0.5.5 以降
 
 ### <a name="limitations"></a>制限事項
 
@@ -44,7 +44,7 @@ az feature register --name EnablePodIdentityPreview --namespace Microsoft.Contai
 
 ### <a name="install-the-aks-preview-azure-cli"></a>`aks-preview` Azure CLI をインストールする
 
-*aks-preview* Azure CLI 拡張機能バージョン 0.4.64 以降も必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 または、[az extension update][az-extension-update] コマンドを使用すると、使用可能な更新プログラムをインストールできます。
+*aks-preview* Azure CLI 拡張機能バージョン 0.5.5 以降も必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 または、[az extension update][az-extension-update] コマンドを使用すると、使用可能な更新プログラムをインストールできます。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -54,7 +54,7 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-aks-cluster-with-azure-cni"></a>Azure CNI が有効になっている AKS クラスターを作成する
+## <a name="create-an-aks-cluster-with-azure-container-networking-interface-cni"></a>Azure Container Networking Interface (CNI) を使用して AKS クラスターを作成する
 
 > [!NOTE]
 > これは、推奨される既定の構成です。
@@ -65,6 +65,15 @@ Azure CNI とポッドマネージド ID が有効になっている AKS クラ�
 az group create --name myResourceGroup --location eastus
 az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network-plugin azure
 ```
+> [!NOTE]
+> Azure Active Directory ポッド ID では、次の 2 つの操作モードがサポートされます。
+> 
+> 1. 標準モード: このモードでは、次の 2 つのコンポーネントが AKS クラスターにデプロイされます。 
+>     * [Managed Identity Controller (MIC)](https://azure.github.io/aad-pod-identity/docs/concepts/mic/): Kubernetes API サーバーを介してポッド、[AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/)、および [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) の変更を監視する Kubernetes コントローラー。 MIC は関連する変更を検出すると、必要に応じて [AzureAssignedIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureassignedidentity/) を追加または削除します。 具体的には、ポッドがスケジュールされている場合、MIC は、作成フェーズ中にノード プールによって使用される基になる VMSS に Azure 上のマネージド ID を割り当てます。 ID を使用しているすべてのポッドが削除された場合、同じマネージド ID が他のポッドによって使用されていない限り、ノード プールの VMSS から ID が削除されます。 MIC は、AzureIdentity または AzureIdentityBinding が作成または削除された場合にも同様のアクションを実行します。
+>     * [Node Management Identity (NMI)](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/) は、AKS クラスターの各ノードで DaemonSet として実行されるポッドです。 NMI は、各ノード上の [Azure Instance Metadata Service](../virtual-machines/linux/instance-metadata-service.md?tabs=linux) に対するセキュリティ トークン要求をインターセプトし、それをそれ自体にリダイレクトし、トークンを要求している ID にポッドがアクセスできるか検証し、アプリケーションに代わって Azure Active Directory テナントからトークンをフェッチします。
+> 2. マネージド モード: このモードでは、NMI のみがあります。 ID は、ユーザーが手動で割り当て、管理する必要があります。 詳細については、[マネージド モードのポッド ID](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/) に関するページをご覧ください。
+>
+>[インストール ガイド](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/)に示すように Helm chart または YAML マニフェストを介して Azure Active Directory のポッド ID をインストールする場合、`standard` または `managed` モードを選択できます。 そうではなく、この記事に示すように、[AKS クラスター アドオン](/azure/aks/use-azure-ad-pod-identity)を使用して Azure Active Directory のポッド ID をインストールする場合、セットアップでは `managed` モードが使用されます。
 
 [az aks get-credentials][az-aks-get-credentials] を使用して、AKS クラスターにサインインします。 また、このコマンドにより、ご使用の開発用コンピューターに `kubectl` クライアント証明書がダウンロードされて構成されます。
 
@@ -77,7 +86,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ポッドマネージド ID が含まれるように、Azure CNI で既存の AKS クラスターを更新します。
 
 ```azurecli-interactive
-az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --network-plugin azure
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity
 ```
 ## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>Azure Active Directory ポッドマネージド ID で Kubernet ネットワーク プラグインを使用する 
 
@@ -146,12 +155,12 @@ export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n
 
 ## <a name="assign-permissions-for-the-managed-identity"></a>マネージド ID にアクセス許可を割り当てる
 
-*IDENTITY_CLIENT_ID* マネージド ID には、AKS クラスターの仮想マシン スケール セットを含むリソース グループに対するマネージド ID オペレーターのアクセス許可が付与されている必要があります。
+デモを実行するには、*IDENTITY_CLIENT_ID* マネージド ID に、AKS クラスターの仮想マシン スケール セットを含むリソース グループに対する仮想マシン共同作成者のアクセス許可が付与されている必要があります。
 
 ```azurecli-interactive
 NODE_GROUP=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
 NODES_RESOURCE_ID=$(az group show -n $NODE_GROUP -o tsv --query "id")
-az role assignment create --role "Managed Identity Operator" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
+az role assignment create --role "Virtual Machine Contributor" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
 ```
 
 ## <a name="create-a-pod-identity"></a>ポッド ID を作成する
@@ -159,7 +168,9 @@ az role assignment create --role "Managed Identity Operator" --assignee "$IDENTI
 `az aks pod-identity add` を使用して、クラスターのポッド ID を作成します。
 
 > [!IMPORTANT]
-> ID とロールのバインドを作成するには、サブスクリプションに対する適切なアクセス許可 (`Owner` など) が必要です。
+> ID を作成し、クラスター ID にロール バインドを割り当てるには、サブスクリプションに対して関連するアクセス許可 (所有者など) が必要です。
+> 
+> クラスター ID には、割り当てられる ID のためのマネージド ID オペレーター アクセス許可が必要です。
 
 ```azurecli-interactive
 export POD_IDENTITY_NAME="my-pod-identity"
@@ -169,6 +180,9 @@ az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSClu
 
 > [!NOTE]
 > AKS クラスターでポッドマネージド ID を有効にすると、*aks-addon-exception* という名前の AzurePodIdentityException が *kube-system* 名前空間に追加されます。 AzurePodIdentityException を使用すると、Node Managed Identity (NMI) サーバーによって傍受されることなく、特定のラベルを持つポッドから Azure Instance Metadata Service (IMDS) エンドポイントにアクセスできます。 *aks-addon-exception* を使用すると、AAD ポッドマネージド ID などの AKS ファーストパーティのアドオンを、AzurePodIdentityException を手動で設定しなくても動作させることができます。 必要に応じて、`az aks pod-identity exception add`、`az aks pod-identity exception delete`、`az aks pod-identity exception update`、または `kubectl` を使用して、AzurePodIdentityException を追加、削除、更新することができます。
+
+> [!NOTE]
+> `pod-identity add` を使用してポッド ID を割り当てると、Azure CLI はポッド ID (*IDENTITY_RESOURCE_ID*) を介して、マネージド ID オペレーター ロールをクラスター ID に付与しようとします。
 
 ## <a name="run-a-sample-application"></a>サンプル アプリケーションを実行する
 
@@ -183,15 +197,15 @@ kind: Pod
 metadata:
   name: demo
   labels:
-    aadpodidbinding: POD_IDENTITY_NAME
+    aadpodidbinding: $POD_IDENTITY_NAME
 spec:
   containers:
   - name: demo
     image: mcr.microsoft.com/oss/azure/aad-pod-identity/demo:v1.6.3
     args:
-      - --subscriptionid=SUBSCRIPTION_ID
-      - --clientid=IDENTITY_CLIENT_ID
-      - --resourcegroup=IDENTITY_RESOURCE_GROUP
+      - --subscriptionid=$SUBSCRIPTION_ID
+      - --clientid=$IDENTITY_CLIENT_ID
+      - --resourcegroup=$IDENTITY_RESOURCE_GROUP
     env:
       - name: MY_POD_NAME
         valueFrom:
@@ -299,9 +313,9 @@ spec:
   - name: demo
     image: mcr.microsoft.com/oss/azure/aad-pod-identity/demo:v1.6.3
     args:
-      - --subscriptionid=SUBSCRIPTION_ID
-      - --clientid=IDENTITY_CLIENT_ID
-      - --resourcegroup=IDENTITY_RESOURCE_GROUP
+      - --subscriptionid=$SUBSCRIPTION_ID
+      - --clientid=$IDENTITY_CLIENT_ID
+      - --resourcegroup=$IDENTITY_RESOURCE_GROUP
     env:
       - name: MY_POD_NAME
         valueFrom:

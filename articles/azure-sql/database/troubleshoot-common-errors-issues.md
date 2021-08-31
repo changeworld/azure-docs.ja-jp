@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
-ms.reviewer: sstein,vanto
+ms.reviewer: mathoma,vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 5953099567edc3ef0f09ae07fd2708b1ce748dd9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 804c59409ec1acea44cf650e6ccc032b50fcd26c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413611"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743706"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -127,12 +127,12 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 5. SSMS オブジェクト エクスプローラーで、 **[データベース]** を展開します。
 6. ユーザーにアクセス許可を付与するデータベースを選択します。
 7. **[セキュリティ]** を右クリックし、 **[New]\(新規\)** 、 **[ユーザー]** を選択します。
-8. プレースホルダーを含む生成されたスクリプトでは、次の SQL クエリを編集して実行します。
+8. 生成されたプレースホルダーを含むスクリプト (以下はサンプル) で、[こちら](/sql/ssms/template/replace-template-parameters)に記載された手順に従ってテンプレート パラメーターを置き換え、実行します。
 
    ```sql
-   CREATE USER <user_name, sysname, user_name>
-   FOR LOGIN <login_name, sysname, login_name>
-   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>;
+   CREATE USER [<user_name, sysname, user_name>]
+   FOR LOGIN [<login_name, sysname, login_name>]
+   WITH DEFAULT_SCHEMA = [<default_schema, sysname, dbo>];
    GO
 
    -- Add user to the database owner role

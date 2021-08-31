@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f1325141ecd9220e3564c402c5fa75fa690fe29
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: bb48d72c892723e7b6c3ca2009ea874f788bb5ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110661969"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729593"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
@@ -39,7 +39,7 @@ ms.locfileid: "110661969"
 
 ### <a name="resource-manager"></a>リソース マネージャー
 
-Resource Manager デプロイ モデルのゲートウェイのサイズを変更するには、PowerShell で次のコマンドを使用します。
+[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)のゲートウェイのサイズを変更するには、PowerShell で次のコマンドを使用します。
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg

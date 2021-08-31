@@ -1,21 +1,21 @@
 ---
 title: マネージド ID Azure Stream Analytics による BLOB 出力の認証
 description: この記事では、マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する方法について説明します。
-author: kim-ale
-ms.author: kimal
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: 98a78d9d769300fc4963869fbc4fa2607b800fad
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 07/07/2021
+ms.openlocfilehash: 708871f620614f893a641f20098f6ed58af464f5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591118"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486105"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>マネージド ID (プレビュー) を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>マネージド ID を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する
 
-Azure Blob Storage への出力に対して[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md) (プレビュー) を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
+Azure Blob Storage への出力に対して [マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
 
 この記事では、Azure portal を通じて、および Azure Resource Manager デプロイを通じて、Stream Analytics ジョブの Blob 出力に対してマネージド ID を有効にする方法を示します。
 

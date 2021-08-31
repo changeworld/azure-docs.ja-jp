@@ -4,19 +4,20 @@ description: Bicep ファイルでリソースの値取得に使用する関数�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: e52f46cf6b29af491f3542d13e360ef936251af6
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/16/2021
+ms.openlocfilehash: 9b97170e3ff434d40007e46952a52335e5f900b3
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027105"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228809"
 ---
 # <a name="resource-functions-for-bicep"></a>Bicep のリソース関数
 
 Azure Resource Manager には、Bicep ファイルでリソース値を取得する次の関数が用意されています。
 
 * [extensionResourceId](#extensionresourceid)
+* [getSecret](#getsecret)
 * [list*](#list)
 * [pickZones](#pickzones)
 * [reference](#reference)
@@ -112,13 +113,15 @@ resource policyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01'
 
 ## <a name="getsecret"></a>getSecret
 
-`getSecret([secretName])`
+`keyVaultName.getSecret(secretName)`
 
-Azure Key Vault に格納されているシークレット値を返します。 getSecret 関数を使用してキー コンテナー シークレットを取得し、戻り値を Bicep モジュールの文字列パラメーターに渡します。 getSecret 関数は `Microsoft.KeyVault/vaults` リソースでのみ呼び出すことができ、`@secure()` デコレーターを持つパラメーターでのみ使用できます。
+Azure Key Vault からシークレットを返します。 `getSecret` 関数は `Microsoft.KeyVault/vaults` リソースについてのみ呼び出すことができます。 この関数を使用して、Bicep モジュールのセキュリティで保護された文字列パラメーターにシークレットを渡します。 この関数は、`@secure()` デコレーターを持つパラメーターでのみ使用できます。
+
+キー コンテナーでは、`enabledForTemplateDeployment` を `true` に設定する必要があります。 Bicep ファイルをデプロイするユーザーは、シークレットにアクセスできる必要があります。 詳細については、「[Bicep デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](key-vault-parameter.md)」を参照してください。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | secretName | はい | string | Key Vault に格納されているシークレットの名前。 |
 
@@ -172,16 +175,19 @@ module sql './sql.bicep' = {
 
 ## <a name="list"></a>list*
 
-`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
+`resourceName.list([apiVersion], [functionValues])`
 
-この関数の構文はリスト操作の名前によって異なります。 実装ごとに、リスト操作をサポートするリソースの種類の値が返されます。 操作名は `list` で始まる必要があり、サフィックスを付けることができます。 一般的に使用されるものとして、`list`、`listKeys`、`listKeyValue`、`listSecrets` があります。
+`list` で始まる操作を使用して、任意のリソースの種類に対して list 関数を呼び出すことができます。 一般的に使用されるものとして、`list`、`listKeys`、`listKeyValue`、`listSecrets` があります。 
+
+この関数の構文は、リスト操作の名前によって異なります。 戻り値も操作によって異なります。 Bicep は現在、`list*` 関数の完了と検証をサポートしていません。
+
+**Bicep バージョン 0.4.412 以降** では、[アクセサー演算子](operators-access.md#function-accessor)を使用して list 関数を呼び出すことができます。 たとえば、「 `stg.listKeys()` 」のように入力します。 
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
-| apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
+| apiVersion |いいえ |string |このパラメーターを指定しない場合は、リソースの API バージョンが使用されます。 特定のバージョンで関数を実行する必要がある場合にのみ、カスタム API バージョンを指定します。 **yyyy-mm-dd** の形式を使用します。 |
 | functionValues |いいえ |object | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 |
 
 ### <a name="valid-uses"></a>有効な使用方法
@@ -189,6 +195,75 @@ module sql './sql.bicep' = {
 リスト関数は、リソース定義のプロパティで使用できます。 Bicep ファイルの outputs セクションでは、機密情報を公開するリスト関数を使用しないでください。 出力値はデプロイ履歴に格納されるため、悪意のあるユーザーによって取得される可能性があります。
 
 [プロパティ ループ](./loop-properties.md)で使用すると、リソース プロパティに式が代入されるため、`input` のリスト関数を使うことができます。 これらを `count` と一緒に使用することはできません。カウントは、list 関数が解決される前に決定される必要があるためです。
+
+**list** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。 **list** 関数で存在しないリソースを参照した場合、エラーが返されます。 [条件式 **?:** 演算子](./operators-logical.md#conditional-expression--)を使用して、リソースがデプロイされているときにのみ関数が評価されるようにします。
+
+### <a name="return-value"></a>戻り値
+
+返されるオブジェクトは、使用するリスト関数によって異なります。 たとえば、ストレージ アカウントに対して listKeys は次の形式を返します。
+
+```json
+{
+  "keys": [
+    {
+      "keyName": "key1",
+      "permissions": "Full",
+      "value": "{value}"
+    },
+    {
+      "keyName": "key2",
+      "permissions": "Full",
+      "value": "{value}"
+    }
+  ]
+}
+```
+
+他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、Bicep ファイルの例に示すように、outputs セクションにその関数を含めてください。
+
+### <a name="list-example"></a>リストの例
+
+次の例では、ストレージ アカウントをデプロイし、そのストレージ アカウントで listKeys を呼び出します。 このキーは、[デプロイ スクリプト](../templates/deployment-script-template.md)の値を設定するときに使用されます。
+
+```bicep
+resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: 'dscript${uniqueString(resourceGroup().id)}'
+  location: location
+  kind: 'StorageV2'
+  sku: {
+    name: 'Standard_LRS'
+  }
+}
+
+resource dScript 'Microsoft.Resources/deploymentScripts@2019-10-01-preview' = {
+  name: 'scriptWithStorage'
+  location: location
+  ...
+  properties: {
+    azCliVersion: '2.0.80'
+    storageAccountSettings: {
+      storageAccountName: stg.name
+      storageAccountKey: stg.listKeys().keys[0].value
+    }
+    ...
+  }
+}
+```
+
+次の例は、パラメーターを受け取るリスト関数を示しています。 この場合の関数は **listAccountSas** です。 有効期限のオブジェクトを渡します。 有効期限は将来の日付にする必要があります。
+
+```bicep
+param accountSasProperties object {
+  default: {
+    signedServices: 'b'
+    signedPermission: 'r'
+    signedExpiry: '2020-08-20T11:00:00Z'
+    signedResourceTypes: 's'
+  }
+}
+...
+sasToken: stg.listAccountSas('2021-04-01', accountSasProperties).accountSasToken
+```
 
 ### <a name="implementations"></a>実装
 
@@ -198,23 +273,23 @@ list* の使用例を次の表にまとめています。
 | ------------- | ------------- |
 | Microsoft.Addons/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2019-12-01/authorizationserver/listsecrets) |
-| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2019-12-01/gateway/listkeys) |
-| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
-| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
-| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
-| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2019-12-01/subscription/listsecrets) |
+| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/authorization-server/list-secrets) |
+| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2020-06-01-preview/gateway/list-keys) |
+| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/identity-provider/list-secrets) |
+| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2020-06-01-preview/named-value/list-value) |
+| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/openid-connect-provider/list-secrets) |
+| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/subscription/list-secrets) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
 | Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringcloud/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.BatchAI/workspaces/experiments/jobs | listoutputfiles |
 | Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
 | Microsoft.BotService/botServices/channels | [listChannelWithKeys](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/botservice/resource-manager/Microsoft.BotService/stable/2020-06-02/botservice.json#L553) |
 | Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
-| Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
+| Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/get-build-source-upload-url) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Microsoft.ContainerRegistry/registries/agentpools | listQueueStatus |
@@ -244,9 +319,9 @@ list* の使用例を次の表にまとめています。
 | Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listkeys) |
-| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2021-03-15/notebookworkspaces/listconnectioninfo) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2021-04-15/database-accounts/list-connection-strings) |
+| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2021-04-15/database-accounts/list-keys) |
+| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2021-04-15/notebook-workspaces/list-connection-info) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -273,9 +348,9 @@ list* の使用例を次の表にまとめています。
 | Microsoft.Logic/workflows/versions/triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
 | Microsoft.MachineLearning/webServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
 | Microsoft.MachineLearning/Workspaces | listworkspacekeys |
-| Microsoft.MachineLearningServices/workspaces/computes | [listKeys](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
-| Microsoft.MachineLearningServices/workspaces/computes | [listNodes](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
-| Microsoft.MachineLearningServices/workspaces | [listKeys](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
+| Microsoft.MachineLearningServices/workspaces/computes | [listKeys](/rest/api/azureml/compute/list-keys) |
+| Microsoft.MachineLearningServices/workspaces/computes | [listNodes](/rest/api/azureml/compute/list-nodes) |
+| Microsoft.MachineLearningServices/workspaces | [listKeys](/rest/api/azureml/workspaces/list-keys) |
 | Microsoft.Maps/accounts | [listKeys](/rest/api/maps-management/accounts/listkeys) |
 | Microsoft.Media/mediaservices/assets | [listContainerSas](/rest/api/media/assets/listcontainersas) |
 | Microsoft.Media/mediaservices/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
@@ -292,12 +367,12 @@ list* の使用例を次の表にまとめています。
 | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
 | Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
 | Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
-| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
-| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](/rest/api/servicebus/stable/namespaces%20-%20authorization%20rules/listkeys) |
+| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/2021-04-01-preview/admin-keys/get) |
+| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/2021-04-01-preview/query-keys/list-by-search-service) |
+| Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](/rest/api/servicebus/stable/namespaces-authorization-rules/list-keys) |
 | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/servicebus/stable/disasterrecoveryconfigs/listkeys) |
-| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](/rest/api/servicebus/stable/queues%20-%20authorization%20rules/listkeys) |
-| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](/rest/api/servicebus/stable/topics%20–%20authorization%20rules/listkeys) |
+| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](/rest/api/servicebus/preview/queues-authorization-rules/list-keys) |
+| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](/rest/api/servicebus/stable/topics%20%E2%80%93%20authorization%20rules/list-keys) |
 | Microsoft.SignalRService/SignalR | [listkeys](/rest/api/signalr/signalr/listkeys) |
 | Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
 | Microsoft.Storage/storageAccounts | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
@@ -339,61 +414,6 @@ list* の使用例を次の表にまとめています。
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-### <a name="return-value"></a>戻り値
-
-返されるオブジェクトは、使用するリスト関数によって異なります。 たとえば、ストレージ アカウントに対して listKeys は次の形式を返します。
-
-```json
-{
-  "keys": [
-    {
-      "keyName": "key1",
-      "permissions": "Full",
-      "value": "{value}"
-    },
-    {
-      "keyName": "key2",
-      "permissions": "Full",
-      "value": "{value}"
-    }
-  ]
-}
-```
-
-他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、Bicep ファイルの例に示すように、outputs セクションにその関数を含めてください。
-
-### <a name="remarks"></a>解説
-
-リソース名または [resourceId 関数](#resourceid)を使用して、リソースを指定します。 参照されているリソースをデプロイするのと同じ Bicep ファイルでリスト関数を使うときは、リソース名を使ってください。
-
-**list** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。 **list** 関数で存在しないリソースを参照した場合、エラーが返されます。 [条件式 **?:** 演算子](./operators-logical.md#conditional-expression--)を使用して、リソースがデプロイされているときにのみ関数が評価されるようにします。
-
-### <a name="list-example"></a>リストの例
-
-次の例では、[デプロイ スクリプト](../templates/deployment-script-template.md)の値を設定するときに listKeys を使用します。
-
-```bicep
-storageAccountSettings: {
-  storageAccountName: storageAccountName
-  storageAccountKey: listKeys(resourceId('Microsoft.Storage/storageAccounts', storageAccountName), '2019-06-01').keys[0].value
-}
-```
-
-次の例は、パラメーターを受け取るリスト関数を示しています。 この場合の関数は **listAccountSas** です。 有効期限のオブジェクトを渡します。 有効期限は将来の日付にする必要があります。
-
-```bicep
-param accountSasProperties object {
-  default: {
-    signedServices: 'b'
-    signedPermission: 'r'
-    signedExpiry: '2020-08-20T11:00:00Z'
-    signedResourceTypes: 's'
-  }
-}
-...
-sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accountSasToken
-```
-
 ## <a name="pickzones"></a>pickZones
 
 `pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
@@ -402,7 +422,7 @@ sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accoun
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | はい | string | ゾーンのサポートについて確認するためのリソースの種類のリソース プロバイダーの名前空間。 |
 | resourceType | はい | string | ゾーンのサポートについて確認するためのリソースの種類。 |
@@ -449,7 +469,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 前の例からの出力は、3 つの配列を返します。
 
-| 名前 | 種類 | 値 |
+| 名前 | 型 | 値 |
 | ---- | ---- | ----- |
 | サポート対象 | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -577,12 +597,6 @@ param builtInRoleType string {
       'description': 'Built-in role to assign'
   }
 }
-param roleNameGuid string {
-  default: newGuid()
-  metadata: {
-    'description': 'A new GUID used to identify the role assignment'
-  }
-}
 
 var roleDefinitionId = {
   Owner: {
@@ -597,7 +611,7 @@ var roleDefinitionId = {
 }
 
 resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-preview' = {
-  name: roleNameGuid
+  name: guid(resourceGroup().id, principalId, roleDefinitionId[builtInRoleType].id)
   properties: {
     roleDefinitionId: roleDefinitionId[builtInRoleType].id
     principalId: principalId
@@ -648,5 +662,5 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 ## <a name="next-steps"></a>次のステップ
 
 * Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
-* 1 種類のリソースを指定した回数分繰り返し作成するには、「[Deploy multiple instances of resources in Bicep](./loop-resources.md) (Bicep でリソースの複数のインスタンスをデプロイする方法)」を参照してください。
-* 作成した Bicep ファイルをデプロイする方法については、「[Deploy resources with Bicep and Azure PowerShell](./deploy-powershell.md) (Bicep ファイルと Azure PowerShell を使用してリソースをデプロイする)」を参照してください。
+* 1 種類のリソースを指定した回数分繰り返し作成するには、[Bicep でリソースの複数のインスタンスをデプロイする方法](./loop-resources.md)に関するページを参照してください。
+* 作成した Bicep ファイルをデプロイする方法については、「[Bicep ファイルと Azure PowerShell を使用してリソースをデプロイする](./deploy-powershell.md)」を参照してください。

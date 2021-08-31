@@ -8,19 +8,21 @@ ms.topic: include
 ms.date: 01/12/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 17d08d0ffbb33d1aef35374dd5ead518b27e9ba0
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 4b029686098ece115202e8929902955418113e79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108285029"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733854"
 ---
 | リソース | 制限 |
 | --- | --- |
-| サブスクリプションあたりの ExpressRoute 回線数 |10 |
+| サブスクリプションあたりの ExpressRoute 回線数 |50 |
 | サブスクリプションあたりのリージョンごとの ExpressRoute 回線数 (Azure Resource Manager) |10 |
-| ExpressRoute Standard の Azure プライベート ピアリングにアドバタイズされる最大ルート数 |4,000 |
-| ExpressRoute Premium アドオンの Azure プライベート ピアリングにアドバタイズされる最大ルート数 |10,000 |
+| ExpressRoute Standard の Azure プライベート ピアリングにアドバタイズされる IPv4 ルートの最大数 |4,000 |
+| ExpressRoute Premium アドオンの Azure プライベート ピアリングにアドバタイズされる IPv4 ルートの最大数 |10,000 |
+| ExpressRoute Standard の Azure プライベート ピアリングにアドバタイズされる IPv6 ルートの最大数 |100 |
+| ExpressRoute Premium アドオンの Azure プライベート ピアリングにアドバタイズされる IPv6 ルートの最大数 |100 |
 | ExpressRoute 接続に使用する VNet アドレス空間からの Azure プライベート ピアリングからアドバタイズされる最大ルート数 | 1,000 |
 | ExpressRoute Standard の Azure Microsoft ピアリングにアドバタイズされる最大ルート数 |200 |
 | ExpressRoute Premium アドオンの Azure Microsoft ピアリングにアドバタイズされる最大ルート数 |200 |

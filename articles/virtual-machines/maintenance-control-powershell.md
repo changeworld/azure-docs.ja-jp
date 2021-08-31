@@ -9,16 +9,18 @@ ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6a56e0e5f3d344f37b689daa0b9dd9f7d3263523
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ced9437fbb2a508772b8e22993e0af5bd2b69859
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672855"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595257"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
 メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストのホスト インフラストラクチャにプラットフォームの更新プログラムを適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure PowerShell オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、「[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)」を参照してください。
+
+スケール セットのメンテナンス制御の情報を探している方は、[仮想マシン スケール セットのメンテナンス制御](virtual-machine-scale-sets-maintenance-control.md)に関する記事をご覧ください。
  
 ## <a name="enable-the-powershell-module"></a>PowerShell モジュールを有効にする
 
@@ -178,7 +180,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>更新プログラムの適用
 
-[New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) を使用して、保留中の更新プログラムを適用します。
+[New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) を使用して、保留中の更新プログラムを適用します。 更新の呼び出しの適用は、完了するまでに最大で 2 時間かかる場合があります。
 
 ### <a name="isolated-vm"></a>分離された VM
 

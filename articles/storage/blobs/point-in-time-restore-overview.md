@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b959038753dd15282de357da746ef9b0e0cf2be5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d98c239da9c415da0a87f0eecad20af147802aca
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802269"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228727"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>ブロック BLOB のポイントインタイム リストア
 
@@ -78,9 +78,10 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 
 ブロック BLOB のポイントインタイム リストアには、次の制限事項と既知の問題があります。
 
-- ポイントインタイム リストア操作の一部として復元できるのは、標準の汎用 v2 ストレージ アカウントのブロック BLOB のみです。 追加 BLOB、ページ BLOB、Premium ブロック BLOB は復元されません。 
-- 保持期間中にコンテナーを削除した場合、そのコンテナーは、ポイントインタイム リストア操作では復元されません。 復元しようとしている BLOB 範囲に、削除されたコンテナー内の BLOB が含まれている場合、ポイントインタイム リストア操作は失敗します。 コンテナーの削除からの保護の詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」を参照してください。
-- 現在の時点から復元ポイントまでの間にホット層とクール層の間で BLOB が移動した場合、BLOB は以前の層に復元されます。 アーカイブ層でのブロック BLOB の復元はサポートされていません。 たとえば、ホット層の BLOB が 2 日前にアーカイブ層に移動し、復元操作によって 3 日前の時点に復元された場合、BLOB はホット層に復元されません。 アーカイブされた BLOB を復元するには、最初にアーカイブ層の外に移動します。 詳細については、「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」を参照してください。
+- ポイントインタイム リストア操作の一部として復元できるのは、標準の汎用 v2 ストレージ アカウントのブロック BLOB のみです。 追加 BLOB、ページ BLOB、Premium ブロック BLOB は復元されません。
+- 保持期間中にコンテナーを削除した場合、そのコンテナーは、ポイントインタイム リストア操作では復元されません。 復元しようとしている BLOB 範囲に、削除されたコンテナー内の BLOB が含まれている場合、ポイントインタイム リストア操作は失敗します。 コンテナーを削除から保護する方法については、「[コンテナーの論理的な削除](soft-delete-container-overview.md)」を参照してください。
+- 現在の時点から復元ポイントまでの間にホット層とクール層の間で BLOB が移動した場合、BLOB は以前の層に復元されます。 アーカイブ層でのブロック BLOB の復元はサポートされていません。 たとえば、ホット層の BLOB が 2 日前にアーカイブ層に移動し、復元操作によって 3 日前の時点に復元された場合、BLOB はホット層に復元されません。 アーカイブされた BLOB を復元するには、最初にアーカイブ層の外に移動します。 詳細については、「[アーカイブからの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」を参照してください。
+- 不変ポリシーが構成されている場合、復元操作を開始できますが、不変ポリシーによって保護されている BLOB は変更されません。 この場合の復元操作では、指定された日時への一貫性のある状態へは復元されません。
 - [Put Block](/rest/api/storageservices/put-block) または [Put Block from URL](/rest/api/storageservices/put-block-from-url) を使用してアップロードされたが、[Put Block List](/rest/api/storageservices/put-block-list) を使用してコミットされていないブロックは、BLOB の一部ではないため、復元操作の一部としては復元されません。
 - アクティブなリースを持つ BLOB は復元できません。 アクティブなリースを持つ BLOB が、復元する BLOB の範囲に含まれている場合、復元操作はアトミックに失敗します。 復元操作を開始する前に、アクティブなリースをすべて中断します。
 - スナップショットは、復元操作の一環として作成または削除されません。 ベース BLOB のみが以前の状態に復元されます。

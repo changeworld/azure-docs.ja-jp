@@ -7,19 +7,26 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9608e3bdaab033d58796a3841e8cd92d7a8a81ef
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 120f76666fb8ef55fd0cb51fe0c04b1d8448ce82
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777979"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252241"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
-ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
+ポイント対サイト (P2S) VPN 接続を使用すると、公開インターネット経由でデータを送信することなく、Azure の外部から Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
 
 このハウツー記事を読み進める前に、Azure Files で使用可能なネットワーク オプションの完全な説明について [Azure Files のネットワークの概要](storage-files-networking-overview.md)に関するページを参照することを強くお勧めします。
 
-この記事では、Azure ファイル共有をオンプレミスに直接マウントするために、Linux 上でポイント対サイト VPN を構成する手順について詳細に説明します。 Azure File Sync のトラフィックを VPN 経由でルーティングすることを検討している場合は、[Azure File Sync のプロキシとファイアウォールの設定の構成](../file-sync/file-sync-firewall-and-proxy.md)に関するページを参照してください。
+この記事では、Azure ファイル共有をオンプレミスに直接マウントするために、Linux 上でポイント対サイト VPN を構成する手順について詳細に説明します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="prerequisites"></a>前提条件
 - 最新バージョンの Azure CLI。 Azure CLI をインストールする方法の詳細については、[Azure PowerShell CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照し、オペレーティング システムを選択してください。 Linux 上で Azure PowerShell モジュールを使用することは可能ですが、下の手順は Azure CLI 用に提供されています。
@@ -34,7 +41,8 @@ Azure 仮想ネットワーク ゲートウェイは、IPsec と OpenVPN を含�
 > Ubuntu 18.10 で検証されています。
 
 ```bash
-sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils
+sudo apt update
+sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils unzip
 
 installDir="/etc/"
 ```
@@ -193,22 +201,7 @@ sudo ipsec up $virtualNetworkName
 ```
 
 ## <a name="mount-azure-file-share"></a>Azure ファイル共有をマウントする
-これでポイント対サイト VPN が設定されたので、Azure ファイル共有をマウントできます。 次の例では、共有を非永続的にマウントします。 永続的にマウントするには、[Linux での Azure ファイル共有の使用](storage-how-to-use-files-linux.md)に関するページを参照してください。 
-
-```bash
-fileShareName="myshare"
-
-mntPath="/mnt/$storageAccountName/$fileShareName"
-sudo mkdir -p $mntPath
-
-storageAccountKey=$(az storage account keys list \
-    --resource-group $resourceGroupName \
-    --account-name $storageAccountName \
-    --query "[0].value" | tr -d '"')
-
-smbPath="//$storageAccountPrivateIP/$fileShareName"
-sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
-```
+これでポイント対サイト VPN が設定されたので、Azure ファイル共有をマウントできます。 次の例では、共有を非永続的にマウントします。 永続的にマウントするには、[Linux への SMB ファイル共有のマウント](storage-how-to-use-files-linux.md)または [Linux への NFS ファイル共有のマウント](storage-files-how-to-mount-nfs-shares.md)に関する記事を参照してください。 
 
 ## <a name="see-also"></a>関連項目
 - [Azure Files のネットワークの概要](storage-files-networking-overview.md)

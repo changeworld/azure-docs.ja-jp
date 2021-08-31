@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 08/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 45efa0e955040931516924a1a8a8576a1a8bf12f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 340c9f549d1d60a19867ea4de58834d921871854
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744505"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015346"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -98,7 +98,11 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 ### <a name="view-fraud-reports"></a>不正アクセスの通報を表示する
 
-**[Azure Active Directory]**  >  **[サインイン]**  >  **[認証の詳細]** の順に選択します。 これで、不正アクセス レポートは、標準 Azure AD サインイン レポートに含まれます。ここには、MFA が拒否され、不正アクセスのコードが入力されたことを示す **"結果の詳細"** が記載されます。
+ユーザーが不正行為を通報すると、そのイベントはサインイン レポート (ユーザーによって拒否されたサインインとして) および監査ログに表示されます。
+
+- サインイン レポートで不正アクセス レポートを確認するには、 **[Azure Active Directory]**  >  **[サインイン]**  >  **[認証の詳細]** の順にクリックします。 不正アクセス レポートは標準 Azure AD サインイン レポートに含まれており、 **[結果の詳細]** に **[MFA denied, Fraud Code Entered]\(MFA が拒否されました。不正なコードが入力されました\)** として表示されます。
+
+- 監査ログで不正アクセス レポートを確認するには、 **[Azure Active Directory]**  >  **[監査ログ]** の順にクリックします。 不正アクセス レポートは、不正アクセス レポートのテナント レベルの設定に基づいて、 **[Fraud reported - user is blocked for MFA]\(不正アクセスが通報されました - ユーザーは MFA に対してブロックされました\)** または **[Fraud reported - no action taken]\(不正アクセスが通報されました - アクションは実行されませんでした\)** のアクティビティの種類の下に表示されます。
  
 ## <a name="notifications"></a>通知
 

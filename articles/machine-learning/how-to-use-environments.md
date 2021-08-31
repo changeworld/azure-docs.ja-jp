@@ -8,15 +8,15 @@ ms.author: sagopal
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 07/23/2020
+ms.date: 08/11/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: d4260b5c981c6b4f199fca88894abafbbb02e4a1
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 1588dedad6778993bc2db6307103e614a8f772ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577859"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739109"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
 
@@ -56,9 +56,9 @@ Environment(name="myenv")
 
 キュレーションされた環境には、既定でお使いのワークスペースで使用できる Python パッケージのコレクションが含まれています。 これらの環境は、キャッシュされた Docker イメージでバックアップされ、実行の準備コストを下げます。 まずは、次などの一般的なキュレーション環境を 1 つ選択するとよいでしょう。 
 
-* _AzureML-Minimal_ 環境には、実行追跡とアセット アップロードを可能にする最小限のパッケージ セットが含まれています。 それを独自の環境の開始点として利用できます。
+* _AzureML-lightgbm-3.2-ubuntu18.04-py37-cpu_ 環境には、Scikit-learn、LightGBM、XGBoost、Dask およびその他の AzureML Python SDK と追加パッケージが含まれています。
 
-* _AzureML-Tutorial_ 環境には、一般的なデータ サイエンス パッケージが含まれています。 これらのパッケージには、Scikit-Learn、Pandas、Matplotlib、およびより大きな azureml-sdk パッケージのセットが含まれます。
+* _AzureML-sklearn-0.24-ubuntu18.04-py37-cpu_ 環境には、一般的なデータ サイエンス パッケージが含まれています。 これらのパッケージには、Scikit-Learn、Pandas、Matplotlib、およびより大きな azureml-sdk パッケージのセットが含まれます。
 
 キュレーションされた環境の一覧については、[キュレーションされた環境](resource-curated-environments.md)に関する記事を参照してください。
 
@@ -68,7 +68,7 @@ Environment(name="myenv")
 from azureml.core import Workspace, Environment
 
 ws = Workspace.from_config()
-env = Environment.get(workspace=ws, name="AzureML-Minimal")
+env = Environment.get(workspace=ws, name="AzureML-sklearn-0.24-ubuntu18.04-py37-cpu")
 ```
 
 次のコードを使用して、選別された環境とそのパッケージを一覧表示できます。
@@ -87,7 +87,7 @@ for env in envs:
 
 キュレーション環境をカスタマイズするには、環境を複製して名前を変更します。 
 ```python 
-env = Environment.get(workspace=ws, name="AzureML-Minimal")
+env = Environment.get(workspace=ws, name="AzureML-sklearn-0.24-ubuntu18.04-py37-cpu")
 curated_clone = env.clone("customize_curated")
 ```
 
@@ -120,7 +120,7 @@ myenv.docker.enabled = True
 
 #### <a name="use-a-prebuilt-docker-image"></a>構築済みの Docker イメージを使用する
 
-このサービスでは既定で、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)のいずれかが自動的に使用されます。具体的には `azureml.core.environment.DEFAULT_CPU_IMAGE` によって定義されているものです。 その後、与えられた Azure ML 環境によって定義される特定の Python パッケージがあればそれがインストールされます。 その他の Azure ML CPU と GPU の基本イメージは、コンテナー [リポジトリ](https://github.com/Azure/AzureML-Containers)で入手できます。 [カスタム Docker 基本イメージ](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)を使用することも可能です。
+このサービスでは既定で、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)のいずれかが自動的に使用されます。具体的には `azureml.core.environment.DEFAULT_CPU_IMAGE` によって定義されているものです。 その後、与えられた Azure ML 環境によって定義される特定の Python パッケージがあればそれがインストールされます。 その他の Azure ML CPU と GPU の基本イメージは、コンテナー [リポジトリ](https://github.com/Azure/AzureML-Containers)で入手できます。 [カスタム Docker 基本イメージ](./how-to-deploy-custom-container.md)を使用することも可能です。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -130,8 +130,8 @@ myenv.docker.base_image_registry="your_registry_location"
 
 >[!IMPORTANT]
 > Azure Machine Learning では、次のソフトウェアを提供する Docker イメージのみがサポートされています。
-> * Ubuntu 16.04 以上
-> * Conda 4.5.# 以上
+> * Ubuntu 18.04 以上。
+> * Conda 4.7.# 以上。
 > * Python 3.6 以上
 > * /bin/sh で入手可能な POSIX 準拠シェルは、トレーニングに使用されるすべてのコンテナー イメージで必要です。 
 
@@ -144,7 +144,7 @@ Python は Azure Machine Learning における暗黙の依存関係であるた�
 ```python
 # Specify docker steps as a string. 
 dockerfile = r"""
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
 RUN echo "Hello from custom container!"
 """
 
@@ -171,7 +171,7 @@ myenv.docker.base_dockerfile = "./Dockerfile"
 
 ```python
 dockerfile = """
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1
 RUN conda install numpy
 """
 
@@ -343,6 +343,10 @@ build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=Tr
 > [!WARNING]
 >  環境内の依存関係またはチャネルの順序を変更すると、新しい環境になり、新しいイメージのビルドが必要になります。 また、既存のイメージの `build()` メソッドを呼び出すと、新しいバージョンが存在する場合にその依存関係も更新されます。 
 
+### <a name="utilize-adminless-azure-container-registry-acr-with-vnet"></a>管理者なしの Azure Container Registry (ACR) を VNet と共に活用する
+
+ユーザーは、VNet シナリオでは、ワークスペースがアタッチされた ACR で管理者モードを有効にする必要がなくなりました。 ビルドを成功させるため、コンピューティングでの派生イメージのビルド時間が 1 時間未満になるようにしてください。 イメージがワークスペース ACR にプッシュされたら、このイメージにはコンピューティング ID でのみアクセスできます。 セットアップの詳細については、[Azure Machine Learning でマネージド ID を使用する方法](./how-to-use-managed-identities.md)に関するページを参照してください。
+
 ## <a name="use-environments-for-training"></a>トレーニングに環境を使用する
 
 トレーニング実行を送信するには、環境、[コンピューティング ターゲット](concept-compute-target.md)、トレーニング Python スクリプトを実行構成に結合する必要があります。 この構成は、実行の送信に使用されるラッパー オブジェクトです。
@@ -360,7 +364,7 @@ exp = Experiment(name="myexp", workspace = ws)
 myenv = Environment(name="myenv")
 
 # Configure the ScriptRunConfig and specify the environment
-src = ScriptRunConfig(source_directory=".", script="train.py", target="local", environment=myenv)
+src = ScriptRunConfig(source_directory=".", script="train.py", compute_target="local", environment=myenv)
 
 # Submit run 
 run = exp.submit(src)
@@ -368,6 +372,9 @@ run = exp.submit(src)
 
 > [!NOTE]
 > 実行履歴または実行スナップショットを無効にするには、`src.run_config.history` の下の設定を使用します。
+
+>[!IMPORTANT]
+> コンピューティング上の任意のイメージ ビルドに CPU SKU を使用します。 
 
 実行構成で環境を指定しない場合、実行を送信するときにサービスによって既定の環境が作成されます。
 
@@ -406,15 +413,17 @@ service = Model.deploy(
 
 ## <a name="notebooks"></a>ノートブック
 
-この記事のコード例は、[envronments ノートブック の使用](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/using-environments/using-environments.ipynb)にも含まれています。
+この記事のコード例は、[envronments ノートブックの使用](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/using-environments/using-environments.ipynb)にも含まれています。
 
- ノートブックのカーネルとして Conda 環境をインストールするには、[新しい Jupyter カーネルの追加](./how-to-access-terminal.md#add-new-kernels)に関するページを参照してください。
+ノートブックのカーネルとして Conda 環境をインストールするには、[新しい Jupyter カーネルの追加](./how-to-access-terminal.md#add-new-kernels)に関するページを参照してください。
 
-[カスタム Docker イメージを使用するモデルのデプロイ方法](how-to-deploy-custom-docker-image.md)に関するページでは、カスタム Docker ベース イメージを使用してモデルをデプロイする方法を示します。
+[カスタム Docker イメージを使用するモデルのデプロイ方法](./how-to-deploy-custom-container.md)に関するページでは、カスタム Docker ベース イメージを使用してモデルをデプロイする方法を示します。
 
 この[サンプルの Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/spark) では、Spark モデルを Web サービスとしてデプロイする方法が示されます。
 
-## <a name="create-and-manage-environments-with-the-cli"></a>CLI を使用して環境を作成および管理する
+## <a name="create-and-manage-environments-with-the-azure-cli"></a>Azure CLI を使用して環境を作成および管理する
+
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) では、Python SDK のほとんどの機能をミラーリングします。 それを使用して、環境を作成および管理することができます。 このセクションで説明するコマンドでは、基本的な機能が示されています。
 
@@ -441,6 +450,10 @@ az ml environment list
 ```azurecli-interactive
 az ml environment download -n myenv -d downloaddir
 ```
+
+## <a name="create-and-manage-environments-with-visual-studio-code"></a>Visual Studio Code を使用して環境を作成および管理する
+
+Azure Machine Learning 拡張機能を使用すると、Visual Studio Code で環境を作成および管理できます。 詳細については、[VS Code 拡張機能を使用して Azure Machine Learning リソースを管理する方法](how-to-manage-resources-vscode.md#environments)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 02/21/2021
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 092484b09af008770260c64cd6b7e0ea15265811
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706039"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802564"
 ---
 Data Box デバイスでサポートされるストレージ アカウントとストレージの種類の一覧を次に示します。 全種類のストレージ アカウントを対象とする全機能の完全一覧については、「[ストレージ アカウントの種類](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。
 
@@ -49,3 +49,4 @@ Data Box デバイスでサポートされるストレージ アカウントと�
 > - ページ BLOB にアップロードされるデータは、VHD など、512 バイトに揃えられている必要があります。
 > - 最大 80 TB をエクスポートできます。
 > - ファイル履歴と BLOB スナップショットはエクスポートされません。
+> - アーカイブ BLOB はエクスポートできません。 エクスポート前に、アーカイブ層で BLOB をリハイドレートします。 詳細については、「[アーカイブ済み BLOB をオンライン層にリハイドレートする](../articles/storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier)」を参照してください。

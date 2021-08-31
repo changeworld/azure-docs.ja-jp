@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: f2797af01dad10c04c8a56cf52a584ea0f04af31
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 09dc3c20ca95f32ee4c8f01d6b4986adfcd3703e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656752"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751917"
 ---
 # <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) の登録とスキャン
 
@@ -27,12 +27,11 @@ Azure Synapse Analytics (旧称 SQL DW) では、メタデータとスキーマ�
 
 ### <a name="known-limitations"></a>既知の制限事項
 
-> * Azure Purview では、Azure Synapse Analytics での[ビュー](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true)のスキャンはサポートされていません。
 > * Azure Purview の [スキーマ] タブでは 300 を超える列がサポートされておらず、"Additional-Columns-Truncated (その他の列は切り詰められています)" と表示されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。
 - Azure Purview データ ソース管理者である必要があります
 - Purview アカウントと Azure Synapse Analytics 間のネットワーク アクセス。
  
@@ -57,11 +56,11 @@ Purview アカウントには独自のマネージド ID があり、これは�
 CREATE USER [PurviewManagedIdentity] FROM EXTERNAL PROVIDER
 GO
 
-EXEC sp_addrolemember 'db_owner', [PurviewManagedIdentity]
+EXEC sp_addrolemember 'db_datareader', [PurviewManagedIdentity]
 GO
 ```
 
-この認証には、データベース、スキーマ、テーブルのメタデータを取得するためのアクセス許可が必要です。 また、分類用のサンプリングを行うために、テーブルに対してクエリを実行できる必要もあります。 `db_owner` アクセス許可を ID に割り当てることをお勧めします。
+この認証には、データベース、スキーマ、テーブルのメタデータを取得するためのアクセス許可が必要です。 また、分類用のサンプリングを行うために、テーブルに対してクエリを実行できる必要もあります。 `db_datareader` アクセス許可を ID に割り当てることをお勧めします。
 
 ### <a name="service-principal"></a>サービス プリンシパル
 
@@ -81,7 +80,7 @@ GO
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
-1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
+1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
@@ -97,7 +96,7 @@ GO
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
 GO
 
-ALTER ROLE db_owner ADD MEMBER [ServicePrincipalName]
+ALTER ROLE db_datareader ADD MEMBER [ServicePrincipalName]
 GO
 ```
 
@@ -120,13 +119,13 @@ GO
 
 ## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>SQL 専用プール (以前の SQL DW) を登録する
 
-新しい Azure Synapse Analytics サーバーをデータ カタログに登録するには、次の操作を行います。
+Purview で新しい SQL 専用プールを登録するには、次の手順を実行します。
 
 1. ご自分の Purview アカウントに移動します。
-1. 左側のナビゲーションで **[ソース]** を選択します。
-1. **[登録]** を選択します。
+1. 左側のナビゲーションで **[Data Map]** を選択します。
+1. **[登録]** を選択します
 1. **[ソースの登録]** で、 **[SQL 専用プール (以前の SQL DW)]** を選択します。
-1. **[続行]** をクリックします。
+1. **[続行]** を選択します
 
 **[ソースの登録 (Azure Synapse Analytics)]** 画面で、次の操作を行います。
 
@@ -138,7 +137,35 @@ GO
 
 :::image type="content" source="media/register-scan-azure-synapse-analytics/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+
+新しいスキャンを作成して実行するには、次の操作を行います。
+
+1. Purview Studio の左側にあるペインで **[Data Map]** タブを選択します。
+
+1. 登録した SQL 専用プールのソースを選択します。
+
+1. **[新しいスキャン]** を選択します。
+
+1. 対象のデータ ソースに接続するための資格情報を選択します。
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/sql-dedicated-pool-set-up-scan.png" alt-text="スキャンを設定する":::
+
+1. リストから適切な項目を選択することによって、特定のテーブルに対するスキャンの範囲を指定することができます。
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/scope-scan.png" alt-text="スキャンの範囲を指定する":::
+
+1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/select-scan-rule-set.png" alt-text="スキャン ルール セット":::
+
+1. スキャン トリガーを選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/trigger-scan.png" alt-text="trigger":::
+
+1. スキャンを確認し、 **[保存および実行]** を選択します。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

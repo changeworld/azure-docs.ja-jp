@@ -1,6 +1,6 @@
 ---
-title: すべての Azure SQL データベースの診断と監査のログを Azure Sentinel に接続する
-description: Azure Policy を使用して、Azure SQL データベースの診断ログとセキュリティ監査ログを強制的に Azure Sentinel に接続する方法について説明します。
+title: すべての Azure SQL Database の診断と監査のログを Azure Sentinel に接続する
+description: Azure Policy を使用して、Azure SQL Database の診断ログとセキュリティ監査ログを強制的に Azure Sentinel に接続する方法について説明します。
 author: yelevin
 manager: rkarlin
 ms.service: azure-sentinel
@@ -8,24 +8,27 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: ba4cefaca7225f25076efa5cdcb81de46aa5cd60
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 0f1cc19aac18f22d86e0ed56eded168c78a26631
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891322"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731027"
 ---
-# <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Azure SQL データベースの診断と監査のログを接続する
+# <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Azure SQL Database の診断と監査のログを接続する
 
 Azure SQL は、アップグレード、修正プログラムの適用、バックアップ、監視などのほとんどのデータベース管理機能を、ユーザーの介入を必要とせずに処理する、フル マネージドの PaaS (サービスとしてのプラットフォーム) データベース エンジンです。 
 
-Azure SQL データベース コネクタを使用すると、データベースの監査と診断のログを Azure Sentinel にストリーミングできます。これにより、すべてのインスタンスのアクティビティを継続的に監視できます。
+Azure SQL Database コネクタを使用すると、データベースの監査と診断のログを Azure Sentinel にストリーミングできます。これにより、すべてのインスタンスのアクティビティを継続的に監視できます。
 
 - 診断ログを接続すると、さまざまなデータ型のデータベース診断ログを Azure Sentinel ワークスペースに送信できます。
 
 - 監査ログを接続すると、サーバー レベルですべての Azure SQL データベースからセキュリティ監査ログをストリーミングできます。
 
 [Azure SQL Database 診断テレメトリ](../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)と [Azure SQL サーバー監査](../azure-sql/database/auditing-overview.md)に関する詳細をご覧ください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +38,7 @@ Azure SQL データベース コネクタを使用すると、データベース
 
 - Azure Policy を使用して Azure SQL データベースおよびサーバー リソースにログ ストリーミング ポリシーを適用するには、ポリシー割り当てスコープの所有者ロールが必要です。
 
-## <a name="connect-to-azure-sql-database"></a>Azure SQL データベースに接続する
+## <a name="connect-to-an-azure-sql-database"></a>Azure SQL データベースに接続する
 
 このコネクタでは、Azure Policy を使用して、単一の Azure SQL のログ ストリーミング構成が、スコープとして定義されたインスタンスのコレクションに適用されます。 Azure SQL データベース コネクタが Azure Sentinel に送信するログには 2 種類あり、診断ログ (SQL データベースから) と監査ログ (SQL サーバー レベル) です。 **[データ型]** の下のコネクタ ページの左側で、Azure SQL データベースおよびサーバーから取り込まれたログの種類を確認できます。
 
@@ -83,7 +86,7 @@ Azure SQL データベース コネクタを使用すると、データベース
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Policy を使用して Azure SQL データベースの診断と監査のログを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Azure Policy を使用して Azure SQL Database の診断と監査のログを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

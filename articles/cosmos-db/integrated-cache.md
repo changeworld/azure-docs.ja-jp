@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 05/26/2021
 ms.author: tisande
-ms.openlocfilehash: f0a0556ce2a46f922e387d96d20b6425ab362580
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2642f1e85e12ce0251e9b7bfff84b5d468a342d2
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386444"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361407"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Azure Cosmos DB 統合キャッシュ - 概要 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,6 +25,9 @@ Azure Cosmos DB 統合キャッシュはインメモリ キャッシュで、要
 * クエリ用のクエリ キャッシュ
 
 統合キャッシュは、最も使われていない (LRU) 削除ポリシーを備えた、リードスルーとライトスルーのキャッシュです。 項目キャッシュとクエリ キャッシュでは、統合キャッシュ内で同じ容量が共有され、LRU 削除ポリシーは両方に適用されます。 言い換えると、データは、ポイント読み取りとクエリのどちらであるかに関係なく、最後に使用された日時に厳密に基づいてキャッシュから削除されます。
+
+> [!NOTE]
+> 統合キャッシュについてフィードバックはありますか? ご意見をお待ちしています。 ぜひ、Azure Cosmos DB エンジニアリング チーム (cosmoscachefeedback@microsoft.com) まで直接お寄せください。
 
 ## <a name="workloads-that-benefit-from-the-integrated-cache"></a>統合キャッシュから利点を得られるワークロード
 
@@ -78,7 +81,7 @@ Azure Cosmos DB 統合キャッシュはインメモリ キャッシュで、要
 
 クエリの結果が複数のページにわたる場合でも、クエリ キャッシュを操作する際に特別なコードは不要です。 クエリが統合キャッシュにヒットするか、バックエンドのクエリ エンジンで実行されているかにかかわらず、クエリの改ページのベスト プラクティスとコードは同じです。
 
-クエリ キャッシュでは、クエリの後続トークンが自動的にキャッシュされます (該当する場合)。 結果が複数のページにわたるクエリがある場合、統合キャッシュに格納されているすべてのページで、RU 料金は 0 になります。 クエリ結果の後続のページでバックエンドでの実行が必要な場合でも、前のページからの後続トークンがあるため、前の作業の重複を避けることができます。
+クエリ キャッシュでは、クエリの後続トークンが自動的にキャッシュされます (該当する場合)。 結果が複数のページにわたるクエリがある場合、統合キャッシュに格納されているすべてのページで、RU 料金は 0 になります。 クエリ結果の後続のページでバックエンドでの実行が必要な場合、前のページからの後続トークンがあるため、前の作業の重複を避けることができます。
 
 > [!NOTE]
 > 異なる専用ゲートウェイ ノード内の統合キャッシュ インスタンスには、互いに独立したキャッシュが備わっています。 データは、1 つのノード内にキャッシュされている場合、他のノードにもキャッシュされているとは限りません。
@@ -89,26 +92,57 @@ Azure Cosmos DB 統合キャッシュはインメモリ キャッシュで、要
 
 すべての読み取りの最終的な整合性を構成する最も簡単な方法は、[アカウントレベルでこれを設定する](consistency-levels.md#configure-the-default-consistency-level)ことです。 ただし、一部の読み取りにのみ最終的な整合性を設定する場合は、[要求レベル](how-to-manage-consistency.md#override-the-default-consistency-level)で整合性を構成することもできます。
 
-## <a name="integrated-cache-retention-time"></a>統合キャッシュの保有時間
+## <a name="maxintegratedcachestaleness"></a>MaxIntegratedCacheStaleness
 
-キャッシュの保有時間とは、キャッシュ データの最大保有期間です。 プレビュー期間中、`MaxIntegratedCacheStaleness` は常に 5 分に設定され、カスタマイズはできません。
+`MaxIntegratedCacheStaleness` は、キャッシュされているポイント読み取りおよびクエリに許容される最長失効期限です。 `MaxIntegratedCacheStaleness` は、要求レベルで構成できます。 たとえば、`MaxIntegratedCacheStaleness` を 2 時間に設定した場合、データの経過時間が 2 時間未満であれば、要求からは、キャッシュされているデータのみが返されます。 繰り返し読み取りで統合キャッシュを使用する可能性を高めるには、`MaxIntegratedCacheStaleness` を、ビジネス要件で許容される限り最大の長さに設定する必要があります。
+
+`MaxIntegratedCacheStaleness` は、最終的にキャッシュに保存する要求で構成された場合、その要求がキャッシュされる期間に影響を与えないことを理解することが重要です。 `MaxIntegratedCacheStaleness` により、キャッシュされたデータを使用しようとするときに整合性が適用されます。 グローバル TTL またはキャッシュ リテンション期間設定がないため、統合キャッシュがいっぱいであるか、現在キャッシュされているエントリの経過時間よりも短い `MaxIntegratedCacheStaleness` で新しい読み取りが実行された場合にのみ、データがキャッシュから削除されます。
+
+これは、ほとんどのキャッシュの動作方法と比べて改善された点であり、次の追加のカスタマイズが可能になります。
+
+- ポイント読み取りまたはクエリごとに異なる失効期限要件を設定できます。
+- さまざまなクライアントが同じポイント読み取りまたはクエリを実行する場合でも、クライアントでは、異なる `MaxIntegratedCacheStaleness` 値を構成できます。
+- キャッシュされたデータを使用するときに読み取りの整合性を変更した場合、`MaxIntegratedCacheStaleness` を変更すると読み取りの整合性に即座に影響します。
+
+> [!NOTE]
+> 明示的に構成されない場合、MaxIntegratedCacheStaleness の既定値は 5 分です。
+
+`MaxIntegratedCacheStaleness` パラメーターをより深く理解するために、次の例について考えてみましょう。
+
+| 時刻       | Request                                         | Response                                                     |
+| ---------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| t = 0 sec  | MaxIntegratedCacheStaleness = 30 秒でクエリ A を実行する | バックエンド データベースから結果 (通常の RU 料金) が返され、キャッシュに設定される     |
+| t = 0 sec  | MaxIntegratedCacheStaleness = 60 秒でクエリ B を実行する | バックエンド データベースから結果 (通常の RU 料金) が返され、キャッシュに設定される     |
+| t = 20 sec | MaxIntegratedCacheStaleness = 30 秒でクエリ A を実行する | 統合キャッシュから結果 (0 RU 料金) が返される           |
+| t = 20 sec | MaxIntegratedCacheStaleness = 60 秒でクエリ B を実行する | 統合キャッシュから結果 (0 RU 料金) が返される           |
+| t = 40 sec | MaxIntegratedCacheStaleness = 30 秒でクエリ A を実行する | バックエンド データベースから結果 (通常の RU 料金) が返され、キャッシュが更新される |
+| t = 40 sec | MaxIntegratedCacheStaleness = 60 秒でクエリ B を実行する | 統合キャッシュから結果 (0 RU 料金) が返される           |
+| t = 50 sec | MaxIntegratedCacheStaleness = 20 秒でクエリ B を実行する | バックエンド データベースから結果 (通常の RU 料金) が返され、キャッシュが更新される |
+
+> [!NOTE]
+> `MaxIntegratedCacheStaleness` のカスタマイズは、最新の .NET および Java プレビュー SDK でのみサポートされます。
+
+[`MaxIntegratedCacheStaleness` の構成の詳細情報。](how-to-configure-integrated-cache.md#adjust-maxintegratedcachestaleness)
 
 ## <a name="metrics"></a>メトリック
 
-統合キャッシュを使用する際は、いくつかの主要なメトリックを監視すると便利です。 統合キャッシュのメトリックには次のものが含まれます。
+統合キャッシュを使用する場合、いくつかの主要なメトリックを監視すると便利です。 統合キャッシュのメトリックには次のものが含まれます。
 
-- `DedicatedGatewayCpuUsage` - 各専用ゲートウェイ ノードによる CPU 使用率
-- `DedicatedGatewayMemoryUsage` - 要求のルーティングとキャッシュの両方に対する各専用ゲートウェイ ノードによるメモリ使用量
-- `DedicatedGatewayRequests` - 各専用ゲートウェイ ノードを介してルーティングされる要求の数
-- `IntegratedCacheEvictedEntriesSize` - 統合キャッシュから削除されたデータの量
-- `IntegratedCacheTTLExpirationCount` - 特に `MaxIntegratedCacheStaleness` の時間を超えたキャッシュ データが原因で統合キャッシュから削除されたエントリの数。
-- `IntegratedCacheHitRate` - 統合キャッシュを使用したポイント読み取りとクエリの比率 (統合キャッシュの使用を試行したすべての専用ゲートウェイ要求から算出)。
+- `DedicatedGatewayAverageCpuUsage` - 専用ゲートウェイ ノード全体の平均 CPU 使用率。
+- `DedicatedGatewayMaxCpuUsage` - 専用ゲートウェイ ノード全体の最大 CPU 使用率。
+- `DedicatedGatewayAverageMemoryUsage` - 要求のルーティングとデータのキャッシュの両方に使用されている、専用ゲートウェイ ノード全体の平均メモリ使用量。
+- `DedicatedGatewayRequests` - すべての専用ゲートウェイ インスタンス全体の専用ゲートウェイ要求の総数。
+- `IntegratedCacheEvictedEntriesSize` - 専用ゲートウェイ ノード全体で、LRU が原因で統合キャッシュから削除された平均データ量。 これには、`MaxIntegratedCacheStaleness` 時間を超過したために期限切れになったデータは含まれません。
+- `IntegratedCacheItemExpirationCount` - キャッシュされているポイント読み取りが `MaxIntegratedCacheStaleness` 時間を超過したために統合キャッシュから削除された項目の数。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
+- `IntegratedCacheQueryExpirationCount` - キャッシュされているクエリが `MaxIntegratedCacheStaleness` 時間を超過したために統合キャッシュから削除されたクエリの数。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
+- `IntegratedCacheItemHitRate` - (最終的な整合性を保って専用ゲートウェイを経由したすべてのポイント読み取り数のうち) 統合キャッシュを使用したポイント読み取りの割合。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
+- `IntegratedCacheQueryHitRate` - (最終的な整合性を保って専用ゲートウェイを経由したすべてのクエリ数のうち) 統合キャッシュを使用したクエリの割合。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
 
 既定では、([メトリック (クラシック)] ではなく) **[メトリック]** ブレードから、既存のすべてのメトリックを使用できます。
 
    :::image type="content" source="./media/integrated-cache/integrated-cache-metrics.png" alt-text="統合キャッシュのメトリックの場所を示す画像" border="false":::
 
-メトリックはすべて、専用ゲートウェイ ノードすべての平均として公開されます。 たとえば、5 つのノードが含まれる専用ゲートウェイ クラスターをプロビジョニングする場合、メトリックには 5 つのノードすべてにわたる平均値が反映されます。
+メトリックは、すべての専用ゲートウェイ ノード全体の平均、最大、または合計のいずれかです。 たとえば、5 つのノードが含まれる専用ゲートウェイ クラスターをプロビジョニングする場合、メトリックには 5 つのすべてのノード全体の集計値が反映されます。 個々のノードのメトリック値を決定することはできません。
 
 ## <a name="troubleshooting-common-issues"></a>一般的な問題のトラブルシューティング
 
@@ -120,21 +154,23 @@ Azure Cosmos DB 統合キャッシュはインメモリ キャッシュで、要
 
 ### <a name="i-cant-tell-if-my-requests-are-hitting-the-integrated-cache"></a>要求が統合キャッシュにヒットしているどうかを判断できない
 
-`IntegratedCacheHitRate` を確認します。 この値が 0 の場合、要求は統合キャッシュにヒットしていません。 専用ゲートウェイの接続文字列を使用していること、ゲートウェイ モードで接続していること、最終的な整合性が設定されていることを確認してください。
+`IntegratedCacheItemHitRate` と `IntegratedCacheQueryHitRate` を確認します。 これらの値が両方とも 0 の場合、要求は統合キャッシュにヒットしていません。 専用ゲートウェイの接続文字列を使用していること、[ゲートウェイ モードで接続している](sql-sdk-connection-modes.md)こと、[最終的な整合性が設定されている](consistency-levels.md#configure-the-default-consistency-level)ことをご確認ください。
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-small"></a>専用ゲートウェイが小さすぎるかどうかを確認したい
 
-`IntegratedCacheHitRate` を確認します。 この値が大きければ (0.5 から 0.6 より大きい場合など)、専用ゲートウェイは十分な大きさであると判断できます。
+`IntegratedCacheItemHitRate` と `IntegratedCacheQueryHitRate` を確認します。 この値が大きい場合 (たとえば、0.7 から 0.8 より大きい場合)、専用ゲートウェイは十分な大きさであると判断できます。
 
-`IntegratedCacheHitRate` が低い場合は、`IntegratedCacheEvictedEntriesSize` を確認してください。 `IntegratedCacheEvictedEntriesSize` が高い場合は、専用ゲートウェイのサイズを大きくした方がよい可能性があります。
+`IntegratedCacheItemHitRate` または `IntegratedCacheQueryHitRate` が小さい場合は、`IntegratedCacheEvictedEntriesSize` を確認します。 `IntegratedCacheEvictedEntriesSize` が高い場合は、専用ゲートウェイのサイズを大きくした方がよい可能性があります。 実験するには、専用ゲートウェイのサイズを増やし、新しい `IntegratedCacheItemHitRate` および `IntegratedCacheQueryHitRate` を比較します。 専用ゲートウェイのサイズを大きくしても、`IntegratedCacheItemHitRate` または `IntegratedCacheQueryHitRate` が改善されない場合、統合キャッシュが効果を発揮するのに十分な回数、読み取りが繰り返されないことがあります。
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-large"></a>専用ゲートウェイが大きすぎるかどうかを確認したい
 
-これを測定することは、より困難です。 一般に、専用ゲートウェイのサイズは、小さい状態から始めて、`IntegratedCacheHitRate` が高くならなくなるまで徐々に大きくしてください。
+専用ゲートウェイが大きすぎるかどうかを測定するのは、専用ゲートウェイが小さすぎるかどうかを測定するよりも困難です。 一般に、専用ゲートウェイのサイズは、小さい状態から始めて、`IntegratedCacheItemHitRate` および `IntegratedCacheQueryHitRate` が改善されなくなるまで徐々に大きくしていきます。 場合によっては、2 つのキャッシュ ヒット メトリックの両方ではなく、一方のみが重要になることがあります。 たとえば、ワークロードがポイント読み取りではなく主にクエリである場合、`IntegratedCacheQueryHitRate` の方が `IntegratedCacheItemHitRate` よりもはるかに重要です。
 
-LRU ではなく `MaxIntegratedCacheStaleness` を超過したことが原因でほとんどのデータがキャッシュから削除される場合は、キャッシュが必要以上に大きい可能性があります。 `IntegratedCacheTTLExpirationCount` の大きさが `IntegratedCacheEvictedEntriesSize` とほぼ同じであるかどうかを確認します。 そうであった場合、より小さい専用ゲートウェイ サイズで試して、パフォーマンスを比較することができます。
+LRU ではなく `MaxIntegratedCacheStaleness` を超過したことが原因でほとんどのデータがキャッシュから削除される場合は、キャッシュが必要以上に大きい可能性があります。 `IntegratedCacheItemExpirationCount` および `IntegratedCacheQueryExpirationCount` の合計が `IntegratedCacheEvictedEntriesSize` とほぼ同じ大きさの場合は、専用ゲートウェイのサイズを小さくして実験を行い、パフォーマンスを比較できます。
 
-`DedicatedGatewayMemoryUsage` を確認し、専用ゲートウェイのサイズと比較します。 `DedicatedGatewayMemoryUsage` が専用ゲートウェイのサイズよりも小さい場合は、専用ゲートウェイのサイズを小さくしてみることをお勧めします。
+### <a name="i-want-to-understand-if-i-need-to-add-more-dedicated-gateway-nodes"></a>専用ゲートウェイ ノードを追加する必要があるかどうかを知りたい
+
+場合によっては、待機時間が予想外に長い場合、専用ゲートウェイ ノードのサイズではなく、数を増加することが必要になります。 `DedicatedGatewayMaxCpuUsage` と `DedicatedGatewayAverageMemoryUsage` を調べて、専用ゲートウェイ ノードを追加すると、待機時間が短縮されるかどうかを確認します。 統合キャッシュのすべてのインスタンスは互いに独立しているため、専用ゲートウェイ ノードを追加しても `IntegratedCacheEvictedEntriesSize` は減少しないことに留意してください。 ただし、ノードを追加すると、専用ゲートウェイ クラスターが処理できる要求量が向上します。
 
 ## <a name="next-steps"></a>次の手順
 

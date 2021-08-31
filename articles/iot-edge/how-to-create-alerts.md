@@ -2,19 +2,18 @@
 title: アラートを使用して問題に関する通知を受け取る - Azure IoT Edge
 description: 大規模な監視に Azure Monitor の警告ルールを使用する
 author: veyalla
-manager: philmea
 ms.author: veyalla
 ms.date: 06/08/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 14deb9a8a8ecaf67306ab8e29b2dfea7fa130c00
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 1de507f113f5bf457a4394be9e5fb86c37291e95
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904454"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015486"
 ---
 # <a name="get-notified-about-issues-using-alerts-preview"></a>アラートを使用して問題に関する通知を受け取る (プレビュー)
 
@@ -22,11 +21,14 @@ ms.locfileid: "111904454"
 
 [Azure Monitor のログ アラート](../azure-monitor/alerts/alerts-unified-log.md)を使用して、大規模な IoT Edge デバイスを監視します。 [ソリューション アーキテクチャ](how-to-collect-and-transport-metrics.md#architecture)で強調されているように、Azure Monitor の Log Analytics はメトリック データベースとして使用されます。 この統合により、リソース中心のログ アラートを使用して、強力で柔軟なアラート機能を利用できるようになります。
 
+> [!IMPORTANT]
+> この機能は現在、IoT Hub でのみ使用可能であり、IoT Central では使用できません。
+
 ## <a name="create-an-alert-rule"></a>アラート ルールを作成する
 
 デバイス群のさまざまな条件を監視するために、[ログ警告ルールを作成する](../azure-monitor/alerts/alerts-log.md)ことができます。
 
-IoT Hub のリソースでは、[KQL](https://aka.ms/kql) アラート クエリのサンプルが提供されています。 エッジ デバイスのメトリック データに対して動作するクエリのタイトルの先頭には、*IoT Edge:* が付いています。 これらの例をそのまま使用するか、必要に応じて変更してニーズに合ったクエリを作成します。
+IoT Hub のリソースでは、[KQL](/azure/data-explorer/kusto/query/) アラート クエリのサンプルが提供されています。 エッジ デバイスのメトリック データに対して動作するクエリのタイトルの先頭には、*IoT Edge:* が付いています。 これらの例をそのまま使用するか、必要に応じて変更してニーズに合ったクエリを作成します。
 
 アラート クエリの例にアクセスするには、次の手順のようにします。
 
@@ -66,4 +68,4 @@ IoT Hub のリソースでは、[KQL](https://aka.ms/kql) アラート クエリ
 
 ## <a name="next-steps"></a>次のステップ
 
-[カスタム モジュールのメトリック](how-to-add-custom-metrics.md)を使用して、監視ソリューションを強化します。 
+[カスタム モジュールのメトリック](how-to-add-custom-metrics.md)を使用して、監視ソリューションを強化します。

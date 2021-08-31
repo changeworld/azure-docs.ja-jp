@@ -2,14 +2,14 @@
 title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
-ms.date: 06/11/2021
+ms.date: 07/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 2b5700498bd09e24adeb6d1a386e8bb8da6b92c7
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 8f953cf2bdacaa983061a04168345d1add1842f2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006727"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728914"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -39,7 +39,7 @@ Azure Backup は Recovery Services コンテナーを使用して、各種のワ
 **コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](./backup-azure-move-recovery-services-vault.md)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
 **コンテナー ストレージの種類の変更** | コンテナー ストレージのレプリケーションの種類 (geo 冗長ストレージまたはローカル冗長ストレージのいずれか) は、バックアップを格納する前に変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
-**ゾーン冗長ストレージ (ZRS)** | 英国南部 (UKS) リージョンと東南アジア (SEA) リージョンで利用できます。
+**ゾーン冗長ストレージ (ZRS)** | 英国南部、東南アジア、オーストラリア東部、北ヨーロッパ、米国中部、および東日本で、プレビューとしてサポートされています。
 **プライベート エンドポイント** | Recovery Services コンテナーのプライベート エンドポイントを作成するための要件については、[こちらのセクション](./private-endpoints.md#before-you-start)を参照してください。  
 
 ## <a name="on-premises-backup-support"></a>オンプレミス バックアップのサポート
@@ -155,6 +155,17 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 | SQL/SAP HANA | 利用可能      | フランス中部、UG アイオワ、UG バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 |
 | MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
 | AFS (Azure ファイル共有)                 | いいえ                                                           | 該当なし               |
+
+## <a name="resource-health"></a>リソース ヘルス
+
+リソース正常性チェックは、次の条件で機能します。
+
+|     |     |
+| --- | --- |
+| **サポートされているリソース** | Recovery Services コンテナー |
+| **サポートされているリージョン** | 米国東部 2、東アジア、フランス中部。 |
+| **サポートされていないリージョン** | リソースの正常性状態は "不明" と表示されます。 |
+
 
 ## <a name="next-steps"></a>次のステップ
 

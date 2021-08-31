@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2020
+ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: 2ad97656b822bc5ffc957469842436ec84d9e812
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 807138187e37deef6f23121ce085e62f520ad335
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785759"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736666"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure Front Door での HTTP ヘッダー プロトコルのサポート
 この記事では、呼び出しパスの各部で Front Door がサポートするプロトコルの概要を示します (画像を参照)。 以下のセクションでは、Front Door がサポートする HTTP ヘッダーについて詳しく説明します。
@@ -42,9 +42,9 @@ Front Door では、制限により削除されない限り、受信した要求
 | X-Azure-RequestChain | *X-Azure-RequestChain: hops=1* </br> Front Door が要求ループの検出に使用するヘッダーであり、ユーザーはそれに対する依存関係を取得することはできません。 |
 | X-Azure-FDID | *X-Azure-FDID:55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> 特定の Front Door リソースからの要求を識別する参照文字列です。 この値は、Azure portal で確認することも、管理 API を使用して取得することもできます。 このヘッダーを IP ACL と組み合わせて使用して、特定の Front Door リソースからの要求のみを受け入れるようにエンドポイントをロック ダウンすることができます。 [詳細](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-)については、FAQ を参照してください。 |
 | X-Forwarded-For | *X-Forwarded-For: 127.0.0.1* </br> X-Forwarded-For (XFF) HTTP ヘッダー フィールドは、HTTP プロキシまたはロード バランサーを経由して Web サーバーに接続しているクライアントの発信元 IP アドレスを識別することがよくあります。 既存の XFF ヘッダーがあった場合、Front Door はそのヘッダーにクライアント ソケット IP を追加するか、クライアント ソケット IP を使用した XFF ヘッダーを追加します。 |
-| X-Forwarded-Host | *X-Forwarded-Host: contoso.azurefd.net* </br> X-Forwarded-Host HTTP ヘッダー フィールドは、Host HTTP 要求ヘッダー内でクライアントによって要求された元のホストを識別するために一般的に使用される方法です。 これは、要求を処理するバックエンド サーバーによって Front Door からのホスト名が異なる場合があるからです。 |
-| X-Forwarded-Proto | *X-Forwarded-Proto: http* </br> X-Forwarded-Proto HTTP ヘッダーフィールドは、HTTP 要求の発信元のプロトコルを識別するために使用されることがよくあります。 Front Door は構成に基づいて、HTTPS を使用してバックエンドと通信する場合があります。 これは、リバース プロキシへの要求が HTTP である場合でも当てはまります。 |
-| X-FD-HealthProbe | X-FD-HealthProbe HTTP ヘッダー フィールドは、Front Door からの正常性プローブを識別するために使用されます。 このヘッダーが 1 に設定されている場合、要求は正常性プローブです。 X-Forwarded-Host ヘッダー フィールドを使用して、特定の Front Door からの厳密なアクセスが必要な場合に使用できます。 |
+| X-Forwarded-Host | *X-Forwarded-Host: contoso.azurefd.net* </br> X-Forwarded-Host HTTP ヘッダー フィールドは、Host HTTP 要求ヘッダー内でクライアントによって要求された元のホストを識別するために一般的に使用される方法です。 これは、要求を処理するバックエンド サーバーによって Front Door からのホスト名が異なる場合があるからです。 以前の値は Front Door によってオーバーライドされます。 |
+| X-Forwarded-Proto | *X-Forwarded-Proto: http* </br> X-Forwarded-Proto HTTP ヘッダーフィールドは、HTTP 要求の発信元のプロトコルを識別するために使用されることがよくあります。 Front Door は構成に基づいて、HTTPS を使用してバックエンドと通信する場合があります。 これは、リバース プロキシへの要求が HTTP である場合でも当てはまります。 以前の値は Front Door によってオーバーライドされます。 |
+| X-FD-HealthProbe | X-FD-HealthProbe HTTP ヘッダー フィールドは、Front Door からの正常性プローブを識別するために使用されます。 このヘッダーが 1 に設定されている場合、要求は正常性プローブからのものです。 X-Forwarded-Host ヘッダー フィールドの特定の値によって Front Door からのアクセスを制限するために使用できます。 |
 | X-Azure-FDID | *X-Azure-FDID ヘッダー: 437c82cd-360a-4a54-94c3-5ff707647783* </br> このフィールドには、受信した要求の送信元の Front Door を特定できる frontdoorID が含まれています。 このフィールドは、Azure Front Door Service によって設定されます。 | 
 
 ## <a name="front-door-to-client"></a>Front Door からクライアント
@@ -54,7 +54,7 @@ Front Door では、制限により削除されない限り、受信した要求
 | ヘッダー  | 例と説明 |
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> これは Front Door によって処理される要求を識別する一意の参照文字列です。アクセス ログの検索に使用されるため、トラブルシューティングには非常に重要です。|
-| X-Cache | *X-Cache:TCP_HIT* </br> このヘッダーは、要求のキャッシュの状態を示します。これにより、応答のコンテンツが Front Door のキャッシュから提供されているかどうかを識別できます。 |
+| X-Cache | *X-Cache:* このヘッダーは、要求のキャッシュの状態を示します。 <br/> - *X-Cache: TCP_HIT*: 要求の先頭のバイトは、Front Door エッジでのキャッシュ ヒットです。 <br/> - *X-Cache: TCP_REMOTE_HIT*: 要求の先頭のバイトはリージョン キャッシュ (配信元シールド レイヤー) でのキャッシュ ヒットですが、エッジ キャッシュではミスです。 <br/> - *X-Cache: TCP_MISS*: 要求の先頭のバイトはキャッシュ ミスであり、コンテンツは配信元から提供されます。 <br/> - *X-Cache: PRIVATE_NOSTORE*: Cache-Control 応答ヘッダーが private または no-store のいずれかに設定されているため、要求をキャッシュできません。 <br/> - *X-Cache: CONFIG_NOCACHE*: 要求は Front Door プロファイルでキャッシュなしに構成されています。 |
 
 "X-Azure-DebugInfo:1" 要求ヘッダーを送信して、次の省略可能な応答ヘッダーを有効にする必要があります。
 

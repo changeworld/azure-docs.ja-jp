@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/14/2021
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41cdefd340ace93d5a068c9a74543965834d01ca
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 90bb1584c94f58d96151e32c7b9c9e02989a840d
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221356"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634424"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>プライベート エンドポイントのネットワーク ポリシーを無効にする
 
@@ -27,7 +27,7 @@ NSG (ネットワーク セキュリティ グループ) などのネットワ�
 * Azure portal の Cloud Shell。
 * Azure PowerShell
 * Azure CLI
-* Azure Resource Manager テンプレート
+* Azure Resource Manager のテンプレート
  
 次の例では、仮想ネットワークの `PrivateEndpointNetworkPolicies` を無効にする方法を説明します。ここでは、**myResourceGroup** という名前のリソース グループでホストされる "**既定の**" サブネットを含む **myVNet** という名前の仮想ネットワークを想定しています。
 
@@ -42,7 +42,7 @@ $net =@{
 }
 $vnet = Get-AzVirtualNetwork @net
 
-($vnet | Select -ExpandProperty subnets).PrivateEndpointNetworkPolicies = "Disabled"
+($vnet | Select -ExpandProperty subnets | Where-Object {$_.Name -eq 'default'}).PrivateEndpointNetworkPolicies = "Disabled"
 
 $vnet | Set-AzVirtualNetwork
 ```

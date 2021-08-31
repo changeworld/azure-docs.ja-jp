@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7f9a10aca24203b69ff38ff5fab7960681145af5
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 9b0e33b80cf5bd8963efa036dc76ae9f634fee66
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227832"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460540"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM に関する既知の問題
 
@@ -49,7 +49,7 @@ max_qp: 4096
 
 ## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>SR-IOV ではない VM への InfiniBand ドライバーのインストール
 
-現在、H16r、H16mr、NC24r は SR-IOV に対応していません。 InfiniBand スタックの分岐の詳細については、[こちら](../../sizes-hpc.md#rdma-capable-instances)を参照してください。
+現在、H16r、H16mr、NC24r は SR-IOV に対応していません。 InfiniBand スタック分岐に関する詳細については、[HPC の Azure VM サイズ](../../sizes-hpc.md#rdma-capable-instances)に関するページを参照してください。
 InfiniBand は、OFED ドライバーがある SR-IOV 対応 VM サイズ上で構成できます。一方、SR-IOV ではない VM サイズには ND ドライバーが必要です。 この IB サポートは [CentOS、RHEL、Ubuntu](configure.md) で適宜利用できます。
 
 ## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM 上の Ubuntu で cloud-init により発生する重複した MAC

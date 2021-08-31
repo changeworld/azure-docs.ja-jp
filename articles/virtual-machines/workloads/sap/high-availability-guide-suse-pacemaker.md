@@ -12,14 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/13/2021
+ms.custom: subject-rbac-steps
+ms.date: 07/26/2021
 ms.author: radeltch
-ms.openlocfilehash: c762f0e04a7079fff72962cafe44b06acfcf0eaf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: be174bf6d71ed243e0e7997250df55edffc27739
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100038"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722503"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -619,18 +620,8 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** サービス プリンシパルにカスタム ロールを割り当てる
 
-最後の章で作成したカスタム ロール "Linux Fence Agent Role" をサービス プリンシパルに割り当てます。 所有者ロールは今後使わないでください。
-
-1. [https://portal.azure.com](https://portal.azure.com) に移動します
-1. [All resources] \(すべてのリソース) ブレードを開きます
-1. 1 つ目のクラスター ノードの仮想マシンを選択します
-1. [アクセス制御 (IAM)] を選択します
-1. [ロールの割り当ての追加] をクリックします
-1. "Linux Fence Agent Role" ロールを選択します
-1. 上記で作成したアプリケーションの名前を入力します
-1. [保存] をクリックします。
-
-2 つ目のクラスター ノードについても上記の手順を繰り返します。
+最後の章で作成したカスタム ロール "Linux Fence Agent Role" をサービス プリンシパルに割り当てます。 所有者ロールは今後使わないでください。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../../role-based-access-control/role-assignments-portal.md)」を参照してください。   
+必ず両方のクラスターノードにロールを割り当ててください。    
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** STONITH デバイスを作成します
 

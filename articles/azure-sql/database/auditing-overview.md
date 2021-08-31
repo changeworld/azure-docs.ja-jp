@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/01/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 5a911b7855e74b241b2281c1e466f7f9236730af
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 9abb17c1be9c862cb0d67110c88386a9c0e7313d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597259"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724557"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -271,10 +271,10 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 **REST API**:
 
-- [データベース監査ポリシーの作成または更新](/rest/api/sql/2017-03-01-preview/server-auditing-settings/create-or-update)
+- [データベース監査ポリシーの作成または更新](/rest/api/sql/database%20auditing%20settings/createorupdate)
 - [サーバー監査ポリシーの作成または更新](/rest/api/sql/server%20auditing%20settings/createorupdate)
 - [データベース監査ポリシーの取得](/rest/api/sql/database%20auditing%20settings/get)
-- [サーバー監査ポリシーの取得](/rest/api/sql/2017-03-01-preview/server-auditing-settings/get) 
+- [サーバー監査ポリシーの取得](/rest/api/sql/server%20auditing%20settings/get)
 
 WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
 
@@ -299,7 +299,7 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 > [!NOTE]
 > リンクされたサンプルは、外部の公開リポジトリにあり、保証なしに "手を加えず" に提供され、Microsoft サポート プログラム/サービスのサポート対象ではなありません。
 
-## <a name="see-also"></a>こちらもご覧ください
+## <a name="see-also"></a>関連項目
 
 - Channel 9 の Data Exposed エピソード「[Azure SQL 監査の新機能](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)」。
 - [SQL Managed Instance の監査](../managed-instance/auditing-configure.md)

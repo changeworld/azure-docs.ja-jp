@@ -3,15 +3,15 @@ title: Azure Automation の実行アカウントを管理する
 description: この記事では、PowerShell または Azure portal を使用して、Azure Automation 実行アカウントを管理する方法について説明します。
 services: automation
 ms.subservice: ''
-ms.date: 05/17/2021
+ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2d615df07e89e1fc2d4e63066d320002718d200
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b6248ee0815d90be83030931c011bb2e8208eeaa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059682"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723017"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを管理する
 
@@ -23,7 +23,7 @@ Azure Automation の実行アカウントでは、Automation の Runbook やそ�
    * エンタープライズ証明機関 (CA) またはサードパーティ証明機関から発行された証明書を更新する方法
    * 実行アカウントのアクセス許可を管理する
 
-自動化シナリオの処理に関連する Azure Automation アカウントの認証と説明については、「[Automation アカウントの認証の概要](automation-security-overview.md)」を参照してください。
+Azure Automation アカウントの認証、実行アカウントの管理に必要なアクセス許可、および自動化シナリオの処理に関連するガイダンスについては、「[Automation アカウントの認証の概要](automation-security-overview.md)」を参照してください。
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>自己署名証明書を更新する
 

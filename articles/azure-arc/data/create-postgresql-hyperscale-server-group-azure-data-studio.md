@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: afcd4eb8327ff806e76b635d8be3715d93b15ed6
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3e71dc89ccf94462f83ce07e69bc57df86ae0a72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407707"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752375"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Azure Data Studio を使用して Azure Arc 対応 PostgreSQL Hyperscale を作成する
 
@@ -23,25 +23,6 @@ ms.locfileid: "111407707"
 [!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
-
-## <a name="connect-to-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーに接続する
-
-Azure Arc データ コントローラーにまだログインしていない場合は、インスタンスを作成する前にログインします。
-
-```console
-azdata login
-```
-
-コントローラーにログインするには、データ コントローラーが作成されている名前空間、ユーザー名、パスワードを入力するように求められます。
-
-> 名前空間を確認する必要がある場合は、```kubectl get pods -A``` を実行して、クラスター上のすべての名前空間の一覧を取得できます。
-
-```console
-Username: arcadmin
-Password:
-Namespace: arc
-Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
-```
 
 ## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>OpenShift ユーザー専用の暫定的および一時的な手順
 
@@ -98,7 +79,7 @@ OpenShift の SCC の詳細については、[OpenShift のドキュメント](h
     - ログ用のストレージ クラスを設定するには、パラメーター `--storage-class-logs` または `-scl` を指定し、その後にストレージ クラスの名前を指定します。
     - バックアップ用のストレージ クラスを設定するには: Azure Arc 対応 PostgreSQL Hyperscale のこのプレビューでは、実行しようとしているバックアップ/復元操作の種類に応じて、ストレージ クラスを設定する方法が 2 つあります。 Microsoft は、このエクスペリエンスの簡素化に取り組んでいます。 ストレージ クラスまたはボリューム要求マウントのいずれかを指定します。 ボリューム要求マウントは、(同じ名前空間内の) 既存の永続的ボリューム要求と、コロンで区切られたボリュームの種類 (およびボリュームの種類に応じたオプションのメタデータ) のペアです。 永続的ボリュームは、PostgreSQL サーバー グループの各ポッドにマウントされます。
         - 実行する予定があるのはデータベースの完全復元だけである場合は、パラメーター `--storage-class-backups` または `-scb` を設定し、その後にストレージ クラスの名前を指定します。
-        - データベースの完全復元とポイントインタイム リストアの両方を行う予定の場合は、パラメーター `--volume-claim-mounts` または `-vcm` を設定し、その後にボリューム要求の名前とボリュームの種類を指定します。
+        - データベースの完全復元とポイントインタイム リストアの両方を行う予定の場合は、パラメーター `--volume-claim-mounts` または `--volume-claim-mounts` を設定し、その後にボリューム要求の名前とボリュームの種類を指定します。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -7,12 +7,12 @@ ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 01be1037b38e2991a2266c37dfd3ca026ca874ff
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: f69b7174ec37a38fd972f53daaaf09776a279cea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846430"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745094"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>セキュリティ スコアからのリソースと推奨事項の除外 
 
@@ -36,7 +36,7 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 | 価格:                        | これは、Azure Defender のお客様が追加コストなしで利用できる Azure Policy の Premium 機能です。 他のユーザーについては、将来、料金が適用されることがあります。                                                                                                                                                                 |
 | 必要なロールとアクセス許可: | **所有者** または **リソース ポリシーの共同作成者** (除外対象を作成するため)<br>規則を作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。<br>詳細については、「[Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。                                            |
 | 制限事項:                    | 除外は、Security Center の既定のイニシアチブ、[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 カスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。 |
-| クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)                                                                                                                                                                                         |
+| クラウド:                         | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: ナショナル/ソブリン (Azure Government、Azure China 21Vianet)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>除外対象の定義
@@ -77,7 +77,7 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
     1. 必要に応じて、説明を入力します。
     1. **［作成］** を選択します
 
-    :::image type="content" source="media/exempt-resource/defining-recommendation-exemption.png" alt-text="サブスクリプションまたは管理グループからの推奨事項を除外するための除外規則を作成する手順":::
+    :::image type="content" source="media/exempt-resource/defining-recommendation-exemption.png" alt-text="サブスクリプションまたは管理グループから推奨事項を除外するための除外規則を作成する手順。":::
 
     除外対象が有効になるタイミング (最大で 30 分かかる場合がある):
     - 推奨事項またはリソースは、セキュリティ スコアには影響しません。
@@ -88,11 +88,11 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
     - 推奨事項の詳細ページの上部にある情報ストリップには、除外されたリソースの数が更新されます。
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="除外されたリソースの数":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="除外されたリソースの数。":::
 
 1. 除外されたリソースを確認するには、 **[適用外]** タブを開きます。
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="除外対象の変更":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="除外対象の変更。":::
 
     各除外の理由が表 (1) に示されています。
 

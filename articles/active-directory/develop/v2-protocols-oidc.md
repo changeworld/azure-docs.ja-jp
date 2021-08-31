@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a01566341a1c5aa1700b68938410ee0c08c17ddd
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a23fd4f764773dfa29e1abd20f4952cc86049c42
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747547"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464080"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
 
@@ -26,6 +26,7 @@ OpenID Connect (OIDC) は OAuth 2.0 を基盤とした認証プロトコルで�
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 *承認* プロトコルを *認証* プロトコルとして使用するために拡張したものです。これにより、OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、*ID トークン* の概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 ID トークンは、ユーザーに関する基本的なプロファイル情報も取得します。 また、ユーザーに関する情報を返す API である、[UserInfo エンドポイント](userinfo.md)が導入されています。 
 
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram-sign-in"></a>プロトコルのダイアグラム: サインイン
 
@@ -118,7 +119,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
-| `tenant` | 必須 | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御できます。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、[プロトコルの基本](active-directory-v2-protocols.md#endpoints)に関するセクションを参照してください。 |
+| `tenant` | 必須 | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御できます。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、[プロトコルの基本](active-directory-v2-protocols.md#endpoints)に関するセクションを参照してください。 重要なこととして、あるテナントから別のテナントにユーザーをサインインさせるゲスト シナリオでは、ユーザーをリソース テナントに正しくサインインさせるためにテナント識別子を指定する "*必要があります*"。|
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。 |
 | `response_type` | 必須 | OpenID Connect サインインでは、 `id_token` を指定する必要があります。 `code` などの他の `response_type` の値が含まれる場合もあります。 |
 | `redirect_uri` | 推奨 | アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 存在しない場合、エンドポイントでは登録されている redirect_uri がランダムに 1 つ選択され、ユーザーに返送されます。 |
@@ -127,7 +128,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode` | 推奨 | 結果として得られた承認コードをアプリに返す際に使用するメソッドを指定します。 `form_post` または `fragment` を指定できます。 Web アプリケーションでは、トークンをアプリケーションに最も安全に転送できるように、`response_mode=form_post` を使用することをお勧めします。 |
 | `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | `prompt` | 省略可能 | ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は、`login`、`none`、`consent`、`select_account` のみです。 `prompt=login` 要求は、その要求においてユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。 `prompt=none` パラメーターは反対のものであり、 ユーザーがサインインする必要があることを示すために、`login_hint` と組み合わせて使用する必要があります。 これらのパラメーターは、ユーザーに対して対話形式のプロンプトをいっさい表示しません。 シングル サインオンで要求をサイレントモードで完了できない場合 (ユーザーがサインインしていないためヒントを表示するユーザーがサインインしていない場合、または複数のユーザーがサインインしていてヒントが提供されていない場合)、Microsoft ID プラットフォームからエラーが返されます。 `prompt=consent` 要求は、ユーザーがサインインした後に OAuth 同意ダイアログをトリガーします。 ダイアログでは、ユーザーにアプリへのアクセス許可を付与するよう要求します。 最後に、`select_account` がユーザーにアカウント セレクターを表示し、サイレント SSO を否定します。ただし、ユーザーは資格情報の入力を要求することなく、サインインする意図のあるアカウントを選択できます。 `login_hint` と `select_account` を一緒に使用することはできません。|
-| `login_hint` | 省略可能 | このパラメーターを使用すると、ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名および電子メール アドレス フィールドに入力することができます。 多くの場合、アプリは `preferred_username` 要求を使用して以前のサインインからユーザー名を抽出しておき、再認証時にこのパラメーターを使用します。 |
+| `login_hint` | 省略可能 | このパラメーターを使用すると、ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名および電子メール アドレス フィールドに入力することができます。 多くの場合、アプリは、以前のサインインから `login_hint` [ オプション クレーム](active-directory-optional-claims.md)を抽出した後、認証時にこのパラメーターを使用します。 |
 | `domain_hint` | 省略可能 | フェデレーション ディレクトリ内のユーザーの領域。  これで、サインイン ページでユーザーが行う電子メール ベースの検出プロセスがスキップされ、ユーザー エクスペリエンスは若干簡素化されたものになります。 AD FS のようなオンプレミス ディレクトリを介してフェデレーションされているテナントの場合、この結果、既存のログイン セッションがあるためにシームレスなサインインになることがよくあります。 |
 
 現時点では、ユーザーに資格情報の入力と認証が求められます。 Microsoft ID プラットフォームではまた、ユーザーが `scope` クエリ パラメーターに示されたアクセス許可に同意していることが確認されます。 いずれのアクセス許可にもユーザーが同意しなかった場合、Microsoft ID プラットフォームに、必要なアクセス許可に同意するようユーザーに求めるプロンプトが表示されます。 詳細については、[アクセス許可、同意、マルチテナント アプリ](v2-permissions-and-consent.md)に関する記事を参照してください。
@@ -255,6 +256,8 @@ Content-Type: application/x-www-form-urlencoded
 | `scope` | アクセス トークンに付与されるアクセス許可。  UserInfo エンドポイントは MS Graph でホストされるため、以前にアプリに付与されていた場合は、ここに追加の Graph スコープ (たとえば、user.read) が一覧表示される可能性があることに注意してください。  これは、特定のリソース用のトークンには常に、現在クライアントに付与されているすべてのアクセス許可が含まれているためです。  |
 | `id_token` | アプリが要求した ID トークン。 この ID トークンを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容の詳細については、[`id_tokens` のリファレンス](id-tokens.md)を参照してください。 |
 | `state` | 要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 ### <a name="error-response"></a>エラー応答
 

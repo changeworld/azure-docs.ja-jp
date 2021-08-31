@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: fbd4c595fd2e54f7f1a01595e4e359adc04b0ac1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e0df727c93e5307e9b66ad5755c8218954a7ff7b
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970100"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552552"
 ---
 # <a name="device-update-agent-provisioning"></a>デバイス更新エージェントのプロビジョニング
 
@@ -53,16 +53,19 @@ IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作
 1. ターミナル ウィンドウを開きます。
 
 1. デバイスのオペレーティング システムに対応するリポジトリ構成をインストールします。
+
     ```shell
     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
     ```
     
 1. 生成されたリストを sources.list.d ディレクトリにコピーします。
+
     ```shell
     sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
     ```
     
 1. Microsoft GPG 公開キーをインストールします。
+
     ```shell
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     ```
@@ -73,8 +76,12 @@ IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作
 
 ## <a name="how-to-provision-the-device-update-agent-as-a-module-identity"></a>デバイス更新エージェントをモジュール ID としてプロビジョニングする方法
 
-このセクションでは、IoT Edge 対応デバイス、Edge IoT 以外のデバイス、その他の IoT デバイスでデバイス更新エージェントをモジュール ID としてプロビジョニングする方法について説明します。
-
+このセクションでは、次のデバイスで、デバイス更新エージェントをモジュール ID としてプロビジョニングする方法について説明します。 
+* IoT Edge 対応デバイス、または 
+* Edge IoT 以外のデバイス、または
+* その他の IoT デバイス 
+ 
+管理している IoT デバイスの種類に基づいてデバイス更新エージェントを追加するには、以下のセクションのすべてまたはいずれかに従います。 
 
 ### <a name="on-iot-edge-enabled-devices"></a>IoT Edge 対応デバイスの場合
 
@@ -83,10 +90,13 @@ IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作
 1. 手順に従って [Azure IoT Edge ランタイムをインストールしてプロビジョニング](../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11)します。
 
 1. デバイス更新のイメージの更新エージェントをインストールします。
-    - [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) にサンプル画像を提供しており、swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージであり、.gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 [IoT Hub デバイスにイメージをフラッシュする方法](./device-update-raspberry-pi.md#flash-sd-card-with-image)の例を参照してください。  
 
-1. デバイス更新のパッケージの更新エージェントをインストールします。  
+    [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) リポジトリにサンプル イメージを用意しています。 swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージです。 .gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 例については、[イメージを IoT Hub デバイスにフラッシュする方法](./device-update-raspberry-pi.md#flash-sd-card-with-image)に関するページを参照してください。  
+
+1. デバイス更新のパッケージの更新エージェントをインストールします。
+
     - packages.miscrosoft.com の最新のエージェントのバージョンの場合: 次のコマンドを使用して、デバイス上のパッケージ リストを更新し、デバイス更新エージェント パッケージとその依存関係をインストールします。   
+
         ```shell
         sudo apt-get update
         ```
@@ -96,6 +106,7 @@ IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作
         ```
     
     - [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) の "RC" (リリース候補) のエージェントのバージョンの場合: デバイス更新エージェントをインストールするマシンに .dep ファイルをダウンロードし、次のコマンドを実行します。
+   
         ```shell
         sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
         ```
@@ -110,17 +121,20 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
     1. コンピューターまたは IoT デバイスにログオンします。
     1. ターミナル ウィンドウを開きます。
     1.  次のコマンドを使用して、最新の [IoT ID サービス](https://github.com/Azure/iot-identity-service/blob/main/docs-dev/packaging.md#installing-and-configuring-the-package) を IoT デバイスにインストールします。
-    
-        ```shell
-        sudo apt-get install aziot-identity-service
-        ```
+    > [!Note]
+    > 現在 IoT ID サービスでは、対称キーを使用してモジュール ID が IoT Hub に登録されます。
+
+    ```shell
+    sudo apt-get install aziot-identity-service
+    ```
         
 1. IoT ID サービスをプロビジョニングして IoT デバイス情報を取得します。
-    1. 構成テンプレートのカスタム コピーを作成して、プロビジョニング情報を追加できるようにします。 ターミナルに次のコマンドを入力します。
+
+    構成テンプレートのカスタム コピーを作成して、プロビジョニング情報を追加できるようにします。 ターミナルで、次のコマンドを入力します。
       
-        ```shell
-        sudo cp /etc/aziot/config.toml.template /etc/aziot/config.toml 
-        ```
+    ```shell
+    sudo cp /etc/aziot/config.toml.template /etc/aziot/config.toml 
+    ```
    
 1. 次に、構成ファイルを編集して、このデバイスまたはコンピューターのプロビジョナーとして機能させるデバイスの接続文字列を含めます。 ターミナルに次のコマンドを入力します。
 
@@ -139,7 +153,7 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
     1. このウィンドウで、' connection_string ' の右側にある引用符で囲まれた文字列を削除し、そこにご自身の接続文字列を追加します 
     1. 'Ctrl+X'、次に 'Y' を使用してファイルへの変更を保存し、'enter' キーを押して変更内容を保存します。 
     
-1.  この時点で、次のコマンドを使用して IoT ID サービスを適用し、再起動します。 これで、"Done!" と出力されます。これは、IoT ID サービスが正しく構成されたことを示しています。
+1. この時点で、次のコマンドを使用して IoT ID サービスを適用し、再起動します。 これで、"Done!" と出力されます。これは、IoT ID サービスが正しく構成されたことを示しています。
 
     > [!Note]
     > 現在 IoT ID サービスでは、対称キーを使用してモジュール ID が IoT Hub に登録されます。
@@ -148,60 +162,62 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
     sudo aziotctl config apply
     ```
     
-1.  最後に、デバイス更新エージェントをインストールします。 [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) にサンプル画像を提供しており、swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージであり、.gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 [IoT Hub デバイスにイメージをフラッシュする方法](./device-update-raspberry-pi.md#flash-sd-card-with-image)の例を参照してください。
+1. 最後に、デバイス更新エージェントをインストールします。 [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) にサンプル画像を提供しており、swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージであり、.gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 [IoT Hub デバイスにイメージをフラッシュする方法](./device-update-raspberry-pi.md#flash-sd-card-with-image)の例を参照してください。
 
-1.  これで、IoT デバイスでデバイス更新エージェントを開始する準備ができました。 
+1. これで、IoT デバイスでデバイス更新エージェントを開始する準備ができました。 
 
 ### <a name="other-iot-devices"></a>その他の IoT デバイス
 
 テスト用または制約のあるデバイスの場合、デバイス更新エージェントを IoT ID サービスを使用せずに構成することもできます。 (モジュールまたはデバイスから) 接続文字列を使用してデバイス更新エージェントをプロビジョニングするには、次の手順に従います。
 
+1. [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) リポジトリにサンプル イメージを用意しています。 swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージです。 .gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 例については、[イメージを IoT Hub デバイスにフラッシュする方法](./device-update-raspberry-pi.md#flash-sd-card-with-image)に関するページを参照してください。
 
-1.  [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) にサンプル画像を提供しており、swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージであり、.gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 [IoT Hub デバイスにイメージをフラッシュする方法](./device-update-raspberry-pi.md#flash-sd-card-with-image)の例を参照してください。
-
-1.  コンピューターまたは IoT Edge デバイス/IoT デバイスにログオンします。
+1. コンピューターまたは IoT Edge デバイス/IoT デバイスにログオンします。
     
-1.  ターミナル ウィンドウを開きます。
+1. ターミナル ウィンドウを開きます。
 
-1.  [デバイス更新構成ファイル](device-update-configuration-file.md)に接続文字列を追加します。
+1. [デバイス更新構成ファイル](device-update-configuration-file.md)に接続文字列を追加します。
+
     1. ターミナル ウィンドウに以下を入力します。
+   
         - [パッケージの更新](device-update-ubuntu-agent.md)では、sudo nano/etc/adu/adu-conf.txt を使用
         - [イメージの更新](device-update-raspberry-pi.md)では、sudo nano /adu/adu-conf.txt を使用
        
     1. テキストを含むウィンドウが開きます。 IoT デバイスでデバイス更新エージェントを初めてプロビジョニングするときに、'connection_String=' の後の文字列全体を削除します。 これは単なるプレース ホルダーのテキストです。
     
-    1. ターミナルで、"<your-connection-string>" を、ご自身のデバイス更新エージェント インスタンスのデバイスの接続文字列に置き換えます。
+    1. ターミナルで、<your-connection-string> を、ご自身のデバイス更新エージェント インスタンスのデバイスの接続文字列に置き換えます。 Enter キーを押し、 **[保存]** を選択します。 こちらの例のようになります。
     
-        > [!Important]
-        > 接続文字列の前後に引用符を追加しないでください。
-        ```shell
+        ```text
         connection_string=<ADD CONNECTION STRING HERE>
-        ```
-       
-    1. Enter キーを押して保存します。
+        ```   
+        
+    > [!Important]
+    > 接続文字列の前後に引用符を追加しないでください。
     
-1.  これで、IoT デバイスでデバイス更新エージェントを開始する準備ができました。 
+1. これで、IoT デバイスでデバイス更新エージェントを開始する準備ができました。 
 
 
 ## <a name="how-to-start-the-device-update-agent"></a>デバイス更新エージェントを開始する方法
 
 このセクションでは、IoT デバイスで正常に実行されているモジュール ID としてデバイス更新エージェントを開始および検証する方法について説明します。
 
-1.  デバイス更新エージェントがインストールされているコンピューターまたはデバイスにログインします。
+1. デバイス更新エージェントがインストールされているコンピューターまたはデバイスにログインします。
 
-1.  ターミナル ウィンドウを開き、次のコマンドを入力します。
+1. ターミナル ウィンドウを開き、次のコマンドを入力します。
+
     ```shell
     sudo systemctl restart adu-agent
     ```
     
-1.  次のコマンドを使用して、エージェントの状態を確認できます。 問題が発生した場合は、こちらの[トラブルシューティング ガイド](troubleshoot-device-update.md)を参照してください。
+1. 次のコマンドを使用して、エージェントの状態を確認できます。 問題が発生した場合は、こちらの[トラブルシューティング ガイド](troubleshoot-device-update.md)を参照してください。
+    
     ```shell
     sudo systemctl status adu-agent
     ```
     
     状態 OK が表示されます。
 
-1.  IoT Hub ポータルで、IoT デバイスまたは IoT Edge デバイスに移動し、デバイス更新エージェントを使用して構成したデバイスを見つけます。 そこで、デバイス更新エージェントがモジュールとして実行されていることが確認されます。 次に例を示します。
+1. IoT Hub ポータルで、IoT デバイスまたは IoT Edge デバイスに移動し、デバイス更新エージェントを使用して構成したデバイスを見つけます。 そこで、デバイス更新エージェントがモジュールとして実行されていることが確認されます。 次に例を示します。
 
     :::image type="content" source="media/understand-device-update/device-update-module.png " alt-text="デバイス更新モジュールの名前の図。" lightbox="media/understand-device-update/device-update-module.png":::
 

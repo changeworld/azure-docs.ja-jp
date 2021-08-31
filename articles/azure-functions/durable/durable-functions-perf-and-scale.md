@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/13/2021
 ms.author: azfuncdf
-ms.openlocfilehash: a91baf110e08794bcf2dedec2a61f0e6c2c734a5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 179eb4c5c380a65374143cf24b2f960458fe62b5
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375879"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240448"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -234,7 +234,7 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 > これらの設定は、1 台の VM のメモリ使用量と CPU 使用率を管理するのに役立ちます。 ただし、複数の VM にスケールアウトした場合、VM ごとに独自の一連の制限が適用されます。 これらの設定を使用して、グローバル レベルでコンカレンシーを制御することはできません。
 
 > [!NOTE]
-> オーケストレーションとエンティティは、イベントまたは操作をアクティブに処理しているときにのみメモリに読み込まれます。 これらは、ロジックを実行して待機 (すなわち、オーケストレーター関数コードで `await` (C#) または `yield` (JavaScript、Python) ステートメントを実行) した後、メモリからアンロードされます。 メモリからアンロードされたオーケストレーションとエンティティは、`maxConcurrentOrchestratorFunctions` スロットルにカウントされません。 数百万のオーケストレーションまたはエンティティが "実行中" 状態にある場合でも、オーケストレーションまたはエンティティは、アクティブなメモリに読み込まれない限り、スロットル制限にカウントされません。 アクティビティ関数をスケジュールするオーケストレーションも同様に、そのオーケストレーションがアクティビティの実行が完了するのを待機している場合はスロットルにカウントされません。
+> オーケストレーションとエンティティは、イベントまたは操作をアクティブに処理しているときにのみメモリに読み込まれます。 これらは、ロジックを実行して待機 (すなわち、オーケストレーター関数コードで `await` (C#) または `yield` (JavaScript、Python) ステートメントを実行) した後、メモリからアンロードされます。 メモリからアンロードされたオーケストレーションとエンティティは、`maxConcurrentOrchestratorFunctions` スロットルにカウントされません。 無数のオーケストレーションまたはエンティティが "実行中" 状態にある場合でも、アクティブ メモリに読み込まれるとき、スロットルの上限までしかカウントされません。 アクティビティ関数をスケジュールするオーケストレーションも同様に、そのオーケストレーションがアクティビティの実行が完了するのを待機している場合はスロットルにカウントされません。
 
 ### <a name="language-runtime-considerations"></a>言語ランタイムに関する考慮事項
 

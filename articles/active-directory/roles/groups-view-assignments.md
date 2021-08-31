@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory でグループに割り当てられているロールを表示する | Microsoft Docs
-description: Azure AD 管理センターを使用して、グループに割り当てられているロールを表示する方法について説明します。 グループと割り当てられたロールの表示は、既定のユーザー アクセス許可で行うことができます。
+description: Azure portal を使用して、グループに割り当てられているロールを表示する方法について説明します。 グループと割り当てられたロールの表示は、既定のユーザー アクセス許可で行うことができます。
 services: active-directory
 author: rolyon
 manager: daveba
@@ -13,29 +13,31 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e44dc442180631b0ebe11cae374a59fed37cc13
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 87e59c7ab9bfc5fa9211d84d2d9a855dea97ec1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085745"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732326"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>Azure Active Directory でグループに割り当てられているロールを表示する
 
-この項では、Azure AD 管理センターを使用して、グループに割り当てられているロールを表示する方法について説明します。 グループと割り当てられたロールの表示は、既定のユーザー アクセス許可で行うことができます。
+このセクションでは、Azure portal を使用してグループに割り当てられているロールを表示する方法について説明します。 グループと割り当てられたロールの表示は、既定のユーザー アクセス許可で行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- PowerShell を使用する場合の AzureADPreview モジュール
+- PowerShell を使用する場合は、AzureAD モジュール
 - Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
 詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 
-1. 目的のグループを選択します。
+1. **[Azure Active Directory]**  >  **[グループ]** を選択します。
+
+1. 目的のロール割り当て可能なグループを選択します。
 
 1. **[割り当てられたロール]** を選択します。 このグループに割り当てられているすべての Azure AD ロールが表示されます。
 
@@ -71,5 +73,5 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$f
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クラウド グループを使用してロールの割り当てを管理する](groups-concept.md)
-- [クラウド グループに割り当てられているロールのトラブルシューティング](groups-faq-troubleshooting.md)
+- [Azure AD グループを使用してロールの割り当てを管理する](groups-concept.md)
+- [グループに割り当てられている Azure AD ロールをトラブルシューティングする](groups-faq-troubleshooting.yml)

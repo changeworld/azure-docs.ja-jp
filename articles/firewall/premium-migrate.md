@@ -1,27 +1,37 @@
 ---
-title: Azure Firewall Premium プレビューへの移行
-description: Azure Firewall Standard から Azure Firewall Premium プレビューに移行する方法について説明します。
+title: Azure Firewall Premium への移行
+description: Azure Firewall Standard から Azure Firewall Premium に移行する方法について説明します。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 08/16/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27125e7f635c6d8f0690ebd39fb84eb3e0fb2989
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 53587cbc54b9e59268e6ee348bb8956a0b9ca993
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700554"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228921"
 ---
-# <a name="migrate-to-azure-firewall-premium-preview"></a>Azure Firewall Premium プレビューへの移行
+# <a name="migrate-to-azure-firewall-premium"></a>Azure Firewall Premium への移行
 
-Azure Firewall Standard を Azure Firewall Premium プレビューに移行することで、新しい Premium の機能を利用できます。 Azure Firewall Premium プレビューの機能の詳細については、「[Azure Firewall Premium プレビューの機能](premium-features.md)」を参照してください。
+Azure Firewall Standard を Azure Firewall Premium に移行することで、新しい Premium の機能を利用できます。 Azure Firewall Premium の機能の詳細については、[Azure Firewall Premium の機能](premium-features.md)に関するページを参照してください。
 
 次の 2 つの例では、以下の方法を示します。
 - Azure PowerShell を使用して既存の標準ポリシーを移行する
 - 既存の標準ファイアウォール (クラシック規則を使用) を Premium ポリシーを使用する Azure Firewall Premium に移行します。
+
+## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
+
+Standard SKU から移行するとき、パフォーマンスが考慮事項になります。 IDPS と TLS 検査は多くのコンピューティング処理を要する操作です。 Premium SKU では、Standard SKU に匹敵する最大スループット 30 Gbps までスケーリングされる、より強力な VM SKU が使用されます。 30 Gbps スループットは、アラート モードで IDPS と共に構成されるときにサポートされます。 拒否モードで IDPS を使用するときと TLS 検査では CPU 消費が増えます。 最大スループットが低下する可能性があります。 
+
+1 つまたは複数のシグネチャを **[アラートを出して拒否]** に設定するか、アプリケーション ルールで **TLS 検査** を有効にするとき、ファイアウォール スループットが 30 Gbps を下回ることがあります。 Microsoft では、ファイアウォール サービスのパフォーマンスが期待値を満たせるよう、お客様が Azure デプロイで完全なスケール テストを実行することをお勧めしています。
+
+## <a name="downtime"></a>ダウンタイム
+
+移行中はダウンタイムが発生するため、計画メンテナンス中にファイアウォールを移行します。
 
 ## <a name="migrate-an-existing-policy-using-azure-powershell"></a>Azure PowerShell を使用して既存のポリシーを移行する
 
@@ -52,7 +62,7 @@ param (
     [string]
     $PolicyId,
 
-    # #new filewallpolicy name, if not specified will be the previous name with the '_premium' suffix
+     #new firewallpolicy name, if not specified will be the previous name with the '_premium' suffix
     [Parameter(Mandatory=$false)]
     [string]
     $NewPolicyName = ""
@@ -194,7 +204,7 @@ TransformPolicyToPremium -Policy $policy
 1. **[確認および作成]** を選択します。
 1. **［作成］** を選択します
 
-デプロイが完了したら、新しいすべての Azure Firewall Premium プレビューの機能を構成できるようになります。
+デプロイが完了したら、新しいすべての Azure Firewall Premium の機能を構成できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

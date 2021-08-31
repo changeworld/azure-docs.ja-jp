@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 82d406521ad534c77fc48c095631e07a74bfd080
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044840"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252923"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Azure Sentinel クエリとアクティビティの監査
 
@@ -226,8 +226,35 @@ LAQueryLogs
 ```
 
 
+## <a name="monitor-azure-sentinel-with-workbooks-rules-and-playbooks"></a>ブック、ルール、およびプレイブックを使用して Azure Sentinel を監視する
+
+Azure Sentinel の独自の機能を使用して、Azure Sentinel 内で発生するイベントとアクションを監視します。
+
+- **ブックでの監視**。 次のブックは、ワークスペースのアクティビティを監視するように作成されました。
+
+    - **ワークスペースの監査**。 環境内のどのユーザーがアクションを実行しているか、どのような操作が実行されたかなどについての情報が含まれます。
+    - **分析の効率**。 どの分析ルールが使用されているか、最も多く対象となった MITRE 戦術、ルールから生成されたインシデントについての分析情報が得られます。
+    - **セキュリティ操作の効率性**。 SOC チームのパフォーマンス、開いているインシデント、終了したインシデントなどのメトリックを表示します。 このブックを使用して、チームのパフォーマンスを表示し、必要な注意が不足している可能性のある領域を強調することができます。
+    - **データ収集の正常性を監視**。 停滞または停止している取り込みがないかどうかを監視するのに役立ちます。 
+
+    詳細については、「[一般的に使用される Azure Sentinel ブック](top-workbooks.md)」を参照してください。
+
+- **インジェストの遅延を監視**。  インジェストの遅延の懸念がある場合、遅延を表す[分析ルールの変数を設定します](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851)。 
+
+    たとえば、次の分析ルールを使用すると、結果に重複が含まれないようにし、ルールの実行時にログが失われないようにすることができます。
+
+    ```kusto
+    let ingestion_delay= 2min;let rule_look_back = 5min;CommonSecurityLog| where TimeGenerated >= ago(ingestion_delay + rule_look_back)| where ingestion_time() > (rule_look_back)
+    -   Calculating ingestion delay
+    CommonSecurityLog| extend delay = ingestion_time() - TimeGenerated| summarize percentiles(delay,95,99) by DeviceVendor, DeviceProduct
+    ```
+
+    詳細については、「[自動化ルールで Azure Sentinel でのインシデント処理を自動化する](automate-incident-handling-with-automation-rules.md)」を参照してください。
+
+- [Connector Health Push Notification Solution](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Send-ConnectorHealthStatus) プレイブックを使用して **データ コネクタの正常性を監視** し、停滞または停止しているインジェストがないかどうかを監視し、コネクタがデータの収集を停止したとき、またはマシンがレポートを停止したときに通知を送信します。
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure Sentinel で **ワークスペース監査** ブックを使用して、SOC 環境のアクティビティを監査します。
 
-詳細については、「[チュートリアル: データの視覚化と監視](tutorial-monitor-your-data.md)」を参照してください。
+詳細については、「[データの視覚化と監視](monitor-your-data.md)」を参照してください。

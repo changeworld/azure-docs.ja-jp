@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2d474033bbcc3fbc5852cd95da31eaebd33c25ad
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6fc966fc61893fb05185a15e7149e8a132aecb04
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095286"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113125890"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -54,6 +54,7 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 * [Get Page Ranges](/rest/api/storageservices/get-page-ranges)
 * [Incremental Copy Blob](/rest/api/storageservices/incremental-copy-blob)
 * [Put Page from URL](/rest/api/storageservices/put-page-from-url)
+* [Put Block List](/rest/api/storageservices/put-block-list)
 
 アンマネージド VM ディスクは、階層型名前空間があるアカウントではサポートされていません。 ストレージ アカウントで階層型名前空間を有効にする場合は、階層型名前空間機能が有効ではないストレージ アカウントにアンマネージド VM ディスクを配置してください。
 
@@ -61,7 +62,7 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 ## <a name="support-for-setting-access-control-lists-acls-recursively"></a>アクセス制御リスト (ACL) を再帰的に設定するためのサポート
 
-親ディレクトリから子項目に ACL 変更を再帰的に適用する機能が公開されています。 この機能の現在のリリースでは、PowerShell、Azure CLI、および .NET、Java、および Python SDK を使用して ACL の変更を適用できます。 Azure portal または Azure Storage Explorer のサポートはまだ提供されていません。
+親ディレクトリから子項目に ACL 変更を再帰的に適用する機能が公開されています。 この機能の現在のリリースでは、Azure Storage Explorer、PowerShell、Azure CLI、.NET、Java、Python SDK を使用して ACL の変更を適用できます。 Azure portal のサポートはまだ提供されていません。
 
 <a id="known-issues-tools"></a>
 
@@ -71,7 +72,7 @@ AzCopy の最新バージョン ([AzCopy v10](../common/storage-use-azcopy-v10.m
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 バージョン `1.6.0` 以降のみを使用します。
 
@@ -105,3 +106,7 @@ Premium レベルで格納されているデータは、ホット、クール、
 現時点では、BLOB API のみで動作するように設計された WASB ドライバーでは、いくつかの一般的なシナリオで問題が発生します。 特に、階層型名前空間が有効なストレージ アカウントのクライアントである場合です。 これらの問題は、Data Lake Storage のマルチプロトコル アクセスによっても軽減されません。 
 
 しばらく (おそらく当面) の間は、階層型名前空間が有効なストレージ アカウントのクライアントとして、WASB ドライバーを使用しているお客様はサポートされません。 代わりに、Hadoop 環境で [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) ドライバーを使用することをお勧めします。 Hadoop branch 3 より前のバージョンを使用するオンプレミスの Hadoop 環境から移行しようとしている場合は、お客様と組織にとって適切な方法についてご連絡できるように、Azure サポート チケットを開いてください。
+
+## <a name="soft-delete-for-blobs-capability-currently-in-preview"></a>BLOB の論理削除機能 (現在プレビュー段階)
+
+論理削除されたファイルまたはディレクトリの親ディレクトリの名前が変更された場合、論理削除された項目が Azure portal で正しく表示されないことがあります。 そのような場合、[PowerShell](soft-delete-blob-manage.md?tabs=dotnet#restore-soft-deleted-blobs-and-directories-by-using-powershell) または [Azure CLI](soft-delete-blob-manage.md?tabs=dotnet#restore-soft-deleted-blobs-and-directories-by-using-azure-cli) を使用し、論理削除された項目を一覧表示し、復元できます。 

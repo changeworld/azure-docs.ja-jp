@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 58ad863c1133ee7be984fe723b567ce43a8ef6ad
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ba31710e13ef786f2e4ede68541f1a5884306669
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534825"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730206"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion リソース ログを有効にして使用する
 

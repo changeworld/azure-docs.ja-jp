@@ -4,13 +4,13 @@ description: デプロイするリソースを Bicep で宣言する方法につ
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: f62c790f1cb4f0613e17d2bbb3e4fc13e39d8e39
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/16/2021
+ms.openlocfilehash: a540a30cd93d9f1dc54f77355f2f6560444131c1
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963457"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228564"
 ---
 # <a name="resource-declaration-in-bicep"></a>リソースの Bicep を使った宣言
 
@@ -23,12 +23,12 @@ Bicep ファイルにリソースを追加する際には、まずリソース�
 次の例は、ストレージ アカウントのリソースの種類と API バージョンを設定する方法を示したものです。 この例は、リソース宣言の内容を完全に示したものではありません。
 
 ```bicep
-resource myStorageAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   ...
 }
 ```
 
-リソースのシンボリック名を設定します。 前の例では、シンボリック名は `myStorageAccount` です。 シンボリック名には任意の値を使用できますが、Bicep ファイル内の他のリソース、パラメーター、または変数と同じにすることはできません。 シンボリック名はリソース名と同じものではありません。 シンボリック名を使用すると、リソースを Bicep ファイルの他の部分で簡単に参照できます。
+リソースのシンボリック名を設定します。 前の例では、シンボリック名は `stg` です。 シンボリック名には任意の値を使用できますが、Bicep ファイル内の他のリソース、パラメーター、または変数と同じにすることはできません。 シンボリック名はリソース名と同じものではありません。 シンボリック名は、Bicep ファイルの他の部分にあるリソースを参照するために使用します。
 
 Bicep では、[Azure Resource Manager テンプレート (ARM テンプレート) JSON](../templates/syntax.md) で利用できる `apiProfile` はサポートされていません。
 
@@ -104,6 +104,40 @@ az provider show \
 
 デプロイ時には、リソースにタグを適用することができます。 タグは、デプロイされたリソースを論理的に整理するために役立ちます。 タグを指定するさまざまな方法の例については、[ARM テンプレートのタグ](../management/tag-resources.md#arm-templates)に関する記事を参照してください。
 
+## <a name="set-managed-identities-for-azure-resources"></a>Azure リソース用マネージド ID を設定する
+
+一部のリソースでは、[Azure リソース用マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) がサポートされます。 これらのリソースには、リソース宣言のルート レベルに ID オブジェクトがあります。 
+
+システム割り当てまたはユーザー割り当ての ID を使用できます。
+
+次の例は、Azure Kubernetes Service クラスターのシステム割り当て ID を構成する方法を示しています。
+
+```bicep
+resource aks 'Microsoft.ContainerService/managedClusters@2020-09-01' = {
+  name: clusterName
+  location: location
+  tags: tags
+  identity: {
+    type: 'SystemAssigned'
+  }
+```
+
+次の例は、仮想マシンのユーザー割り当て ID を構成する方法を示しています。
+
+```bicep
+param userAssignedIdentity string
+
+resource vm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  name: vmName
+  location: location
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${userAssignedIdentity}': {}
+    }
+  }
+```
+
 ## <a name="set-resource-specific-properties"></a>リソース固有のプロパティを設定する
 
 上記のプロパティは、ほとんどの種類のリソースに共通するものです。 これらの値を設定した後、デプロイするリソースの種類に固有のプロパティを設定する必要があります。
@@ -133,7 +167,7 @@ Azure Resource Manager により、リソース間の依存関係が評価され
 
 ### <a name="implicit-dependency"></a>暗黙の依存関係
 
-暗黙的な依存関係は、あるリソース宣言が、式内の別のリソース宣言の識別子を参照する場合に作成されます。 たとえば、次の例の *dnsZone* は、2 番目のリソース定義で参照されています。
+あるリソース宣言が同じデプロイ内の別のリソースを参照している場合は、暗黙的な依存関係が作成されます。 たとえば、次の例の *dnsZone* は、2 番目のリソース定義で参照されています。
 
 ```bicep
 resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = {
@@ -164,20 +198,24 @@ resource myParent 'My.Rp/parentType@2020-01-01' = {
 }
 ```
 
-詳細については、「[Bicep での子リソースの名前と種類の設定](./child-resource-name-type.md)」を参照してください。
+暗黙的な依存関係が存在する場合は、**明示的な依存関係を追加しないでください**。
+
+入れ子になったリソースの詳細については、「[Bicep での子リソースの名前と種類の設定](./child-resource-name-type.md)」を参照してください。
 
 ### <a name="explicit-dependency"></a>明示的な依存関係
 
-明示的な依存関係は、リソース宣言内で `dependsOn` プロパティを介して宣言されます。 このプロパティは、リソース識別子の配列を受け入れます。 次に、ある DNS ゾーンが別の DNS ゾーンに明示的に依存している例を示します。
+明示的な依存関係は、`dependsOn` プロパティで宣言されます。 このプロパティによって、リソース識別子の配列が受け入れられるため、複数の依存関係を指定できます。 
+
+次の例は、`dnsZone` という名前の DNS ゾーンに依存する `otherZone` という名前の DNS ゾーンを示しています。
 
 ```bicep
 resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = {
-  name: 'myZone'
+  name: 'demoeZone1'
   location: 'global'
 }
 
 resource otherZone 'Microsoft.Network/dnszones@2018-05-01' = {
-  name: 'myZone'
+  name: 'demoZone2'
   location: 'global'
   dependsOn: [
     dnsZone
@@ -187,33 +225,42 @@ resource otherZone 'Microsoft.Network/dnszones@2018-05-01' = {
 
 `dependsOn` を使用してリソース間のリレーションシップをマップする傾向があるものの、重要なのは、その操作を行う理由を理解することです。 たとえば、リソースが相互にどのように接続されているかをドキュメント化するには、`dependsOn` は適切な方法ではありません。 どのリソースが `dependsOn` 要素で定義されたかを、デプロイ後に照会することはできません。 Resource Manager ではこれらのリソースを並行してデプロイすることはできないため、不要な依存関係を設定するとデプロイ時間が遅くなります。
 
-明示的な依存関係が必要になる場合もありますが、必要になることはめったにありません。 ほとんどの場合は、シンボリック参照を利用して、リソース間の依存関係を示します。 dependsOn を使用していることに気付いたら、取り除く方法があるかどうかを検討します。
+明示的な依存関係が必要になる場合もありますが、必要になることはめったにありません。 ほとんどの場合は、シンボリック名を利用して、リソース間の依存関係を暗黙的に示すことができます。 明示的な依存関係が設定されていることに気づいた場合、削除する方法があるかどうかを検討する必要があります。
 
 ### <a name="visualize-dependencies"></a>依存関係を視覚化する
 
-Visual Studio Code には、依存関係を視覚化するためのツールが用意されています。 Visual Studio Code で Bicep ファイルを開き、左上隅にあるビジュアライザー ボタンを選択します。  次のスクリーンショットは、Bicep ファイルで定義されているビジュアル マシン リソースの依存関係を示しています。
+Visual Studio Code には、依存関係を視覚化するためのツールが用意されています。 Visual Studio Code で Bicep ファイルを開き、左上隅にあるビジュアライザー ボタンを選択します。  次のスクリーンショットには、仮想マシンの依存関係が示されています。
 
 :::image type="content" source="./media/resource-declaration/bicep-resource-visualizer.png" alt-text="Visual Studio Code の Bicep リソース ビジュアライザーのスクリーンショット":::
 
 ## <a name="reference-existing-resources"></a>既存のリソースを参照する
 
-リソース宣言で `existing` キーワードを使用して、現在のファイルの外部にあるリソースから参照を追加したり、ランタイム プロパティにアクセスしたりすることができます。 これは、ARM テンプレートの [reference () 関数](../templates/template-functions-resource.md#reference)を使用するのと同じです。
+現在の Bicep ファイルの外部にあるリソースを参照するには、リソース宣言で `existing` キーワードを使用します。
 
-`existing` キーワードを使用する場合は、リソースの `name` を指定する必要があります。また、必要に応じて、`scope` プロパティを設定して、別のスコープ内のリソースにアクセスすることもできます。 スコープ プロパティの使用方法の詳細については、「[リソース スコープ](./deploy-to-resource-group.md)」を参照してください。
+`existing` キーワードを使用する場合、リソースの `name` を指定します。 次の例では、現在のデプロイと同じリソース グループにある既存のストレージ アカウントを取得します。
 
 ```bicep
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
-  name: 'exampleStorage'
+  name: 'examplestorage'
 }
 
 output blobEndpoint string = stg.properties.primaryEndpoints.blob
 ```
 
-上記の例では、ストレージ アカウントはデプロイされていませんが、宣言により、既存のリソースのプロパティにアクセスできます。 'stg' シンボリック名を使用して、ストレージ アカウントのプロパティにアクセスできます。
+必要に応じて、別のスコープ内のリソースにアクセスするように `scope` プロパティを設定できます。 次の例では、別のリソース グループにある既存のストレージ アカウントが参照されています。
 
-`scope` プロパティを指定する例を次に示します。
+```bicep
+resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
+  name: 'examplestorage'
+  scope: resourceGroup(exampleRG)
+}
 
-resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = { name: 'exampleStorage' scope: resourceGroup(mySub, myRg) }
+output blobEndpoint string = stg.properties.primaryEndpoints.blob
+```
+
+スコープの設定の詳細については、「[Bicep のスコープ関数](bicep-functions-scope.md)」を参照してください。
+
+前の例では、ストレージ アカウントはデプロイされません。 代わりに、シンボリック名を使用して、既存のリソースのプロパティにアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01b2dbaa8ed318f08fd68660078ae6fb9923221d
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97724885"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112969769"
 ---
 # <a name="configure-authentication"></a>認証を構成する。
 
@@ -47,9 +47,25 @@ Azure Remote Rendering には、[Azure Spatial Anchors (ASA)](../../spatial-anch
 
 開発時には、短時間でプロトタイプを作成するためにアカウント キーを使用することをお勧めします。 組み込みのアカウント キーを使用してアプリケーションを運用環境に出荷しないことをお勧めします。 推奨される方法は、ユーザーベースまたはサービスベースの Azure AD 認証方法を使用することです。
 
- Azure AD 認証については、[Azure Spatial Anchors (ASA)](../../spatial-anchors/index.yml) サービスに関するページの「[Azure AD ユーザー認証](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)」セクションを参照してください。
+### <a name="azure-ad-user-authentication"></a>Azure AD ユーザー認証
 
- 詳細については、「[チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護 - Azure Active Directory 認証](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)」を参照してください
+Azure AD 認証については、[Azure Spatial Anchors のドキュメント](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)で説明しています。
+
+手順に従って、Azure portal で、Azure Active Directory ユーザー認証の設定を行います。
+
+1. Azure Active Directory にアプリケーションを登録します。 登録に際して、アプリケーションをマルチテナントにするかどうかを決める必要があります。 また、アプリケーションに対し許可されたリダイレクト URL を、[Authentication]\(認証\) ブレードで入力する必要があります。
+:::image type="content" source="./media/azure-active-directory-app-setup.png" alt-text="認証のセットアップ":::
+
+1. [API permissions]\(API 使用権限\) タブの **[mixedreality]** で、**mixedreality.signin** スコープに対する **委任権限** を請求します。
+:::image type="content" source="./media/azure-active-directory-app-api-permissions.png" alt-text="API 使用権限":::
+
+1. [Security]\(セキュリティ\) -> [Permissions]\(権限\) タブで管理者の同意を与えます。:::image type="content" source="./media/azure-active-directory-grant-admin-consent.png" alt-text="管理者の同意":::
+
+1. 次に Azure Remote Rendering Resource に移動します。 [Access Control]\(アクセス制御\) パネルで、アプリケーションとユーザーを管理するための必要な[ロール](#azure-role-based-access-control)を割り当てます。これで、アプリケーションとユーザーから委任された、Azure Remote Rendering リソースに対するアクセス権を行使できるようになります。
+:::image type="content" source="./media/azure-remote-rendering-add-role-assignment.png" alt-text="Add permissions":::
+:::image type="content" source="./media/azure-remote-rendering-role-assignments.png" alt-text="ロールの割り当て":::
+
+アプリケーションのコードで Azure AD ユーザー認証を実装する方法は、[「チュートリアル: Azure Remote Rendering とモデル ストレージのセキュリティ保護」のAzure Active Directory 認証に関するセクション](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)をご覧ください。
 
 ## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 

@@ -8,20 +8,22 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: f824cf6e30ed795ef0fe4468542ae16c801bd61b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 882939a08a3a90cffd0b4eb25711d71159a91eb9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100516126"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689684"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデル結果を解釈する
+# <a name="interpret-model-results-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) でモデルの結果を解釈する
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-このトピックでは、Azure Machine Learning Studio (クラシック) で予測結果を視覚化および解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-Azure Machine Learning Studio (クラシック) には、機械学習モデルの主な種類として次の 4 つがあります。
+このトピックでは、Machine Learning Studio (クラシック) で予測結果を視覚化および解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
+
+Machine Learning Studio (クラシック) には、機械学習モデルの主な種類として次の 4 つがあります。
 
 * 分類
 * クラスタリング
@@ -46,12 +48,12 @@ ML Studio (classic) を初めて使用する場合は、[簡単な実験を作�
 * 2 つのクラス (2 クラスまたは二項分類) のみに関する問題
 * 3 つ以上のクラス (多クラス分類) に関する問題
 
-Azure Machine Learning Studio (クラシック) には、これらの各種類の分類に対処するためのさまざまなモジュールが含まれていますが、それらの予測結果を解釈するための方法はほぼ同じです。
+Machine Learning Studio (クラシック) には、これらの各種類の分類に対処するためのさまざまなモジュールが含まれていますが、それらの予測結果を解釈するための方法はほぼ同じです。
 
 ### <a name="two-class-classification"></a>2 クラス分類
 **実験例**
 
-2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 Azure Machine Learning Studio (クラシック) で提供されるあやめのデータ セットは、2 つの花の種 (クラス 0 と 1) のみのインスタンスが含まれた一般的な[あやめのデータ セット](https://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
+2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 Machine Learning Studio (クラシック) で提供されるあやめのデータ セットは、2 つの花の種 (クラス 0 と 1) のみのインスタンスが含まれた一般的な[あやめのデータ セット](https://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
 
 ![あやめの実験のスクリーンショット](./media/interpret-model-results/1.png)
 
@@ -225,7 +227,7 @@ Web サービスを実行して返された結果は、図 19 のようになり
 * 顧客の特徴データ
 * レストラン特徴データ
 
-Azure Machine Learning Studio (クラシック) の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用すると、次のいくつかのことを実行できます。
+Machine Learning Studio (クラシック) の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用すると、次のいくつかのことを実行できます。
 
 * 特定のユーザーと項目の評価を予測する
 * 特定のユーザーに項目を推奨する
@@ -236,7 +238,7 @@ Azure Machine Learning Studio (クラシック) の[マッチボックス レコ
 
 ![マッチボックス レコメンダー](./media/interpret-model-results/19_1.png)
 
-レコメンダー システム用の一般的な Azure Machine Learning Studio (クラシック) の実験は図 20 のようになります。 これらのレコメンダー システム モジュールを使用する方法については、[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender]および[マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]に関するページを参照してください。
+レコメンダー システム用の一般的な Machine Learning Studio (クラシック) の実験は図 20 のようになります。 これらのレコメンダー システム モジュールを使用する方法については、[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender]および[マッチボックス レコメンダーのスコア付け][score-matchbox-recommender]に関するページを参照してください。
 
 ![レコメンダー システムの実験](./media/interpret-model-results/20.png)
 

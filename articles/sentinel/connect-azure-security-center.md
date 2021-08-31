@@ -1,5 +1,5 @@
 ---
-title: Azure Defender データを Azure Sentinel に接続する
+title: Azure Defender アラートを Azure Sentinel に接続する
 description: Azure Security Center からの Azure Defender アラートを接続し、それらを Azure Sentinel にストリーミングする方法について説明します。
 author: yelevin
 manager: rkarlin
@@ -7,40 +7,102 @@ ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 07/08/2021
 ms.author: yelevin
-ms.openlocfilehash: bb188aa79015c2123b9d9d8b6baf277dfadf2f9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d348231c28e33b7eaef97a468e7e8a6a8677c32
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98633046"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179391"
 ---
-# <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Azure Security Center からの Azure Defender アラート データを接続する
+# <a name="connect-azure-defender-alerts-from-azure-security-center"></a>Azure Security Center からの Azure Defender アラートの接続
 
-Azure Defender アラート コネクタを使用して、[Azure Security Center](../security-center/security-center-introduction.md) からの Azure Defender アラートを取り込み、それらを Azure Sentinel にストリーミングします。 
+## <a name="background"></a>バックグラウンド
+
+[Azure Security Center](../security-center/security-center-introduction.md) の統合クラウド ワークロード保護プラットフォーム (CWPP) である [Azure Defender](../security-center/azure-defender.md) は、ハイブリッド クラウド ワークロード全体の脅威を検出して迅速に対応できるセキュリティ管理ツールです。 
+
+このコネクタを使用すると、Azure Defender セキュリティ アラートを Azure Security Center から Azure Sentinel にストリーミングできるので、Defender アラートとそれらが生成するインシデントをより広範な組織の脅威コンテキストで表示、分析、および対応できます。
+
+Azure Defender 自体はサブスクリプションごとに有効にされるので、Azure Defender コネクタもサブスクリプションごとに個別に有効または無効にされます。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
+### <a name="alert-synchronization"></a>アラートの同期
+
+- Azure Defender を Azure Sentinel に接続すると、Azure Sentinel に取り込まれる Azure Defender アラートの状態が 2 つのサービス間で同期されます。 たとえば、Azure Defender でアラートが閉じられた場合、そのアラートは Azure Sentinel でも閉じられたものとして表示されます。
+
+- Azure Defender でアラートの状態が変更されても、Azure Sentinel アラートを含む Azure Sentinel **インシデント** の状態は影響 *されず*、アラート自体の状態のみが影響されます。
+
+### <a name="bi-directional-alert-synchronization"></a>双方向アラート同期
+
+> [!IMPORTANT]
+>
+> - **双方向アラート同期** 機能は、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+- **双方向同期** を有効にすると、元の Azure Defender アラートの状態と、それらのアラートを含む Azure Sentinel インシデントの状態が自動的に同期されます。 そのため、たとえば、Azure Defender アラートを含む Azure Sentinel インシデントが閉じられると、対応する元のアラートが Azure Defender で自動的に閉じられます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- ユーザーには、ストリーミングするログのサブスクリプションでのセキュリティ閲覧者ロールが必要です。
+- Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
-- Azure Security Center で Azure Defender を有効にする必要があります。 (Standard レベルは存在しなくなり、ライセンス要件ではなくなりました)。
+- ストリーミングするログのサブスクリプションでのセキュリティ閲覧者ロールが必要です。
+
+- コネクタを有効にするサブスクリプションごとに、Azure Security Center 内に少なくとも 1 つの **Azure Defender** プランを有効にする必要があります。 サブスクリプションで Azure Defender プランを有効にするには、そのサブスクリプションの **セキュリティ管理者** ロールを持っている必要があります。
+
+-  双方向同期を有効にするには、その関連するサブスクリプションで **共同作成者** か **セキュリティ管理者** のロールを持っている必要があります。
 
 ## <a name="connect-to-azure-defender"></a>Azure Defender に接続する
 
 1. Azure Sentinel で、ナビゲーション メニューから **[Data connectors]\(データ コネクタ\)** を選択します。
 
-1. データ コネクタ ギャラリーで、 **[Azure Defender alerts from ASC]\(ASC からの Azure Defender アラート\)** (まだ [Azure Security Center] となっているかもしれません) を選択し、 **[コネクタ ページを開く]** ボタンをクリックします。
+1. データ コネクタ ギャラリーで、 **[Azure Defender]** を選択し、詳細ウィンドウで **[コネクタ ページを開く]** をクリックします。
 
-1. **[構成]** で、アラームを Azure Sentinel にストリーミングするサブスクリプションの横にある **[接続]** をクリックします。 [接続] ボタンは、必要なアクセス許可がある場合にのみ使用できます。
+1. **[構成]** に、テナント内のサブスクリプションの一覧と、サブスクリプションと Azure Defender との接続の状態が表示されます。 アラートを Azure Sentinel にストリーミングするサブスクリプションの横にある **[状態]** トグルを選択します。 一度に複数のサブスクリプションを接続する場合は、関連するサブスクリプションの横にあるチェック ボックスをオンにし、一覧の上にあるバーの **[接続]** ボタンを選択します。
 
-1. Azure Defender からのアラートによって Azure Sentinel でインシデントが生成されるようにするかどうかを選択できます。 **[Create incidents]\(インシデントの作成\)** で **[有効化]** を選択して、アラートからインシデントを自動的に作成する既定の分析ルールを有効にします。 次に、 **[Active rules]\(アクティブなルール\)** タブの **[分析]** でこのルールを編集します。
+    > [!NOTE]
+    > - チェック ボックスと **[接続]** トグルは、必要なアクセス許可を持っているサブスクリプションのものだけがアクティブになります。
+    > - **[接続]** ボタンは、少なくとも 1 つのサブスクリプションのチェック ボックスがマークされている場合にのみアクティブになります。
 
-1. Azure Defender アラートに対して Log Analytics 内の関連スキーマを使用するには、**SecurityAlert** を検索します。
+1. サブスクリプションで双方向同期を有効にするには、リストでそのサブスクリプションを見つけ、 **[双方向同期 (プレビュー)]** 列のドロップダウン リストから **[有効]** を選択します。 一度に複数のサブスクリプションで双方向同期を有効にするには、サブスクリプションのチェック ボックスをオンにし、一覧の上のバーにある **[双方向同期を有効にする]** ボタンを選択します。
+
+    > [!NOTE]
+    > - チェック ボックスとドロップダウン リストは、[必要なアクセス許可](#prerequisites)を持っているサブスクリプションのものだけがアクティブになります。
+    > - **[双方向同期を有効にする]** ボタンは、少なくとも 1 つのサブスクリプションのチェック ボックスがマークされている場合にのみアクティブになります。
+
+1. 一覧の **[Azure Defender プラン]** 列で、Azure Defender プランがサブスクリプションで有効になっているかどうか (コネクタを有効にするための前提条件) を確認できます。 この列の各サブスクリプションの値は、空白である (Defender プランが有効になっていない) か、[すべて有効]、または [一部が有効] になります。 [一部が有効] と表示されている場合は、 **[すべて有効にする]** リンクも表示されます。これを選択すると、そのサブスクリプションの Azure Defender 構成ダッシュボードに移動します。そこで、有効にする Defender プランを選択することができます。 一覧の上のバーにある **[すべてのサブスクリプションに対して Azure Defender を有効にする]** リンク ボタンをクリックすると、Azure Defender の [作業の開始] ページに移動します。そこで、Azure Defender を有効にするサブスクリプションをすべて選択することができます。
+
+    :::image type="content" source="./media/connect-azure-security-center/azure-defender-config.png" alt-text="Azure Defender コネクタ構成のスクリーン ショット":::
+
+1. Azure Defender からのアラートによって Azure Sentinel でインシデントが生成されるようにするかどうかを選択できます。 **[インシデントの作成]** で、 **[有効化]** を選択して、[アラートからインシデントを自動的に作成する](create-incidents-from-alerts.md)既定の分析ルールを有効にします。 次に、 **[Active rules]\(アクティブなルール\)** タブの **[分析]** でこのルールを編集します。
+
+    > [!TIP]
+    > アラートの[カスタム分析ルール](detect-threats-custom.md)を Azure Defender から構成する場合は、アラートの重要度を考慮して、情報アラートに対してインシデントを開かないようにします。 
+    >
+    > Azure Security Center の情報アラート自体は、セキュリティ リスクを表すものではありません。情報アラートは、既存のオープン インシデントのコンテキストのみに関連します。 詳細については、「[Azure Security Center のセキュリティのアラートとインシデント](../security-center/security-center-alerts-overview.md)」を参照してください。
+    > 
+    
+
+## <a name="find-and-analyze-your-data"></a>データを検索して分析する
+
+> [!NOTE]
+> *双方向* のアラート同期には、数分かかる場合があります。 アラートの状態の変更は、すぐには表示されない場合があります。
+
+- Azure Defender アラートは、Log Analytics ワークスペースの *SecurityAlert* テーブルに格納されます。
+
+- Log Analytics で Azure Defender アラートに対してクエリを実行するには、最初に、次の情報をクエリ ウィンドウにコピーします。
+
+    ```kusto
+    SecurityAlert 
+    | where ProductName == "Azure Security Center"
+    ```
+
+- その他の便利なサンプル クエリ、分析ルール テンプレート、推奨されるブックについては、コネクタ ページの **[次のステップ]** タブを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Defender を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Azure Defender を Azure Sentinel に接続し、両者の間でアラートを同期する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。
+- [脅威を検出](detect-threats-custom.md)するための独自の規則を作成する。

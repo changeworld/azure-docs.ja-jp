@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3d654a84b6e0e5cfb00c7b5d5dd5742649ec7a81
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: b6af5e7efa14c7a8b2243e908b52ed6cf50c8272
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900775"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727221"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Azure portal で BLOB データへのアクセスの承認方法を選択する
 
@@ -54,7 +54,7 @@ Azure AD アカウントを使用して、Azure portal から BLOB データに�
 
 Azure Resource Manager **閲覧者** ロールを持つユーザーは、ストレージ アカウントのリソースを見ることはできますが、変更することはできません。 これは Azure Storage 内のデータに読み取りアクセス許可を提供しませんが、アカウント管理リソースに対してのみです。 ユーザーが Azure portal 内の BLOB コンテナーに移動できるようにするには、**閲覧者** ロールが必要です。
 
-BLOB データへのアクセスをサポートする組み込みロールの詳細については、[BLOB に関する Azure ロール](assign-azure-role-data-access.md#azure-roles-for-blobs)についての記事を参照してください。
+BLOB データへのアクセスをサポートする組み込みロールの詳細については、「[Azure Active Directory を使用して BLOB へのアクセスを承認する](authorize-access-azure-active-directory.md)」をご覧ください。
 
 カスタム ロールは、組み込みロールによって提供される同じアクセス許可のさまざまな組み合わせをサポートできます。 Azure カスタム ロールを作成する方法の詳細については、「[Azure のカスタム ロール](../../role-based-access-control/custom-roles.md)」と「[Azure リソースのロール定義の概要](../../role-based-access-control/role-definitions.md)」を参照してください。
 
@@ -110,5 +110,5 @@ BLOB アップロード操作を承認する方法を指定するには、次の
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する](../common/storage-auth-aad.md)
+- [Azure Storage 内のデータへのアクセスを承認する](../common/authorize-data-access.md)
 - [BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)

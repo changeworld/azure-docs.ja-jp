@@ -1,27 +1,23 @@
 ---
-title: Azure Blob Storage でのネットワーク ファイル システム 3.0 のサポート (プレビュー) | Microsoft Docs
+title: Azure Blob Storage でのネットワーク ファイル システム 3.0 のサポート | Microsoft Docs
 description: Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 このサポートにより、Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスで実行されているコンピューターから Blob Storage にコンテナーをマウントできます。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/28/2021
+ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.custom: references_regions
-ms.openlocfilehash: 709f4ed6fb57dc11d4a2b8672f253664835f20e3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f350b4fad79a80a1bba0572c5ed906aa4aff1168
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965014"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005458"
 ---
-# <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)
+# <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート
 
 Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 このサポートにより、オブジェクト ストレージのスケールと価格で Linux ファイル システムの互換性が得られます。また、Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスのコンピューターから Blob Storage にコンテナーをマウントできます。 
-
-> [!NOTE]
-> Azure Blob Storage での NFS 3.0 プロトコルのサポートはパブリック プレビューの段階にあります。 Standard レベルのパフォーマンスを持つ GPV2 ストレージ アカウントと Premium パフォーマンス レベルのブロック BLOB ストレージ アカウントをすべてのパブリック リージョンでサポートします。
 
 ハイ パフォーマンス コンピューティング (HPC) などの大規模なレガシ ワークロードをクラウドで実行することは、常に難しい課題でした。 その理由の 1 つは、アプリケーションがデータへのアクセスに NFS やサーバー メッセージ ブロック (SMB) などの従来のファイル プロトコルを使用することが多いためです。 また、ネイティブ クラウド ストレージ サービスでは、階層型名前空間と効率的なメタデータ操作を提供するファイル システムではなく、フラット型名前空間と広範なメタデータを持つオブジェクト ストレージに重点が置かれていました。 
 
@@ -48,32 +44,25 @@ NFS 3.0 プロトコル サポートを有効にすると、ストレージ ア�
 
 Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスのコンピューターから Blob Storage にコンテナーをマウントできます。 ストレージ アカウント コンテナーをマウントするには、次の操作を行う必要があります。
 
-1. NFS 3.0 プロトコル機能をサブスクリプションに登録します。
+1. Azure 仮想ネットワーク (VNet) を作成します。
 
-2. 機能が登録されたことを確認します。
+2. ネットワーク セキュリティを構成します。
 
-3. Azure 仮想ネットワーク (VNet) を作成します。
+3. VNet からのトラフィックのみを受け入れるストレージ アカウントを作成および構成します。
 
-4. ネットワーク セキュリティを構成します。
+4. ストレージ アカウントにコンテナーを作成します。
 
-5. VNet からのトラフィックのみを受け入れるストレージ アカウントを作成および構成します。
+5. コンテナーをマウントします。
 
-6. ストレージ アカウントにコンテナーを作成します。
-
-7. コンテナーをマウントします。
-
-詳細な手順については、「[ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
-
-> [!IMPORTANT]
-> これらのタスクは、順序どおりに実行することが重要です。 アカウントで NFS 3.0 プロトコルを有効にする前に、作成したコンテナーをマウントすることはできません。 また、アカウントで NFS 3.0 プロトコルを有効にすると、それを無効にすることはできません。
+詳細な手順については、「[ネットワーク ファイル システム (NFS) 3.0 プロトコルを使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-ストレージ アカウントは VNet 内に含まれている必要があります。 VNet を使用すると、クライアントはストレージ アカウントに安全に接続できます。 アカウント内のデータをセキュリティで保護する唯一の方法は、VNet とその他のネットワーク セキュリティ設定を使用することです。 アカウント キーの承認、Azure Active Directory (AD) セキュリティ、アクセス制御リスト (ACL) などのデータをセキュリティで保護するために使用されるその他のツールは、NFS 3.0 プロトコルのサポートが有効にされているアカウントではまだサポートされません。 
+トラフィックは VNet から発信される必要があります。 VNet を使用すると、クライアントはストレージ アカウントに安全に接続できます。 アカウント内のデータをセキュリティで保護する唯一の方法は、VNet とその他のネットワーク セキュリティ設定を使用することです。 アカウント キーの承認、Azure Active Directory (AD) セキュリティ、アクセス制御リスト (ACL) などのデータをセキュリティで保護するために使用されるその他のツールは、NFS 3.0 プロトコルのサポートが有効にされているアカウントではまだサポートされません。 
 
 詳細については、[BLOB ストレージのネットワーク セキュリティに関する推奨事項](security-recommendations.md#networking)に関するページを参照してください。
 
-## <a name="supported-network-connections"></a>サポートされているネットワーク接続
+### <a name="supported-network-connections"></a>サポートされているネットワーク接続
 
 クライアントは、パブリックまたは[プライベート エンドポイント](../common/storage-private-endpoints.md)経由で接続でき、次のいずれかのネットワークの場所から接続できます。
 
@@ -98,70 +87,16 @@ Linux クライアントは、Azure 仮想マシン (VM) またはオンプレ�
 
 <a id="azure-storage-features-not-yet-supported"></a>
 
-## <a name="support-for-azure-storage-features"></a>Azure Storage 機能のサポート
+## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
-次の表は、NFS 3.0 機能が有効になっているアカウントにおける Azure Storage 機能の現在のサポート レベルを示しています。 
-
-サポートは継続的に拡張されるため、この表に示されている項目の状態は時間の経過と共に変化します。
-
-| ストレージ機能 | Premium | Standard |ストレージ機能 | Premium | Standard |
-|-----------------|---------|----------|----------------|---------|----------|
-| [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)  | ✔️ |  ✔️ | [Azure Data Lake Store REST API](/rest/api/storageservices/data-lake-storage-gen2) | ✔️ |  ✔️ |
-| [Azure Blob Storage のアクセス層](storage-blob-storage-tiers.md) |    ✔️ |    ✔️ | [BLOB インデックス タグ](storage-blob-index-how-to.md) |  ⛔ | ⛔ |
-| [Azure Blob Storage ライフサイクル管理](storage-lifecycle-management-concepts.md) | ✔️  |   ✔️ | [Azure Storage Analytics のログ](../common/storage-analytics-logging.md?toc=/azure/storage/blobs/toc.json) | ⛔ |  ⛔ |
-|  [Azure Storage BLOB インベントリ](blob-inventory.md) |  ✔️  |   ✔️ | [変更フィード](storage-blob-change-feed.md) |   ⛔ | ⛔ |
-| [Azure Monitor](monitor-blob-storage.md) |    ✔️ |    ✔️ | [BLOB のバージョン管理](versioning-enable.md) | ⛔ |  ⛔ |
-| [BLOB のスナップショット](snapshots-overview.md) | ✔️  |   ✔️ | [ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md) | ⛔ |   ⛔ |
-| [プライベート エンドポイント](../common/storage-private-endpoints.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ✔️ | [Azure Backup 統合](../../backup/blob-backup-overview.md) | ⛔ | ⛔ |
-| [サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) | ✔️  |  ✔️ | [コンテナーの論理的な削除](soft-delete-container-overview.md) |  ⛔ | ⛔ |
-| [ファイアウォール規則](../common/storage-network-security.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ✔️ | [BLOB の論理的な削除](soft-delete-blob-overview.md) |    ⛔ | ⛔ |
-| [共有キーによる認可の禁止](../common/shared-key-authorization-prevent.md)  | ✔️ |    ✔️ | [ライフサイクル管理のための最終アクセス時刻の追跡](storage-lifecycle-management-concepts.md#move-data-based-on-last-accessed-date-preview) | ⛔|  ⛔ |
-| [Azure Storage の暗号化のためのカスタマー マネージド キー](../common/customer-managed-keys-overview.md) |   ✔️ |    ✔️ | [Azure Storage の暗号化のためのカスタマー指定のキー](encryption-customer-provided-keys.md)  | ⛔ | ⛔ |
-| [不変 BLOB ストレージ](storage-blob-immutable-storage.md) | ✔️    | ✔️ | [静的な Web サイトのホスティング](storage-blob-static-website.md) |    ⛔  |    ⛔ |
-| [追加 BLOB](storage-blobs-introduction.md#blobs) | ✔️   |  ✔️ | [ページ BLOB](storage-blobs-introduction.md#blobs) | ⛔ |    ⛔ |
-| [Azure Active Directory (AD) セキュリティ](../common/storage-auth-aad.md?toc=/azure/storage/blobs/toc.json) | ⛔ | ⛔ | [暗号化スコープ](encryption-scope-overview.md)  |    ⛔ | ⛔ |
-| [ブロック BLOB のオブジェクト レプリケーション](object-replication-overview.md) | ⛔  |   ⛔ | [カスタマー マネージド アカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=/azure/storage/blobs/toc.json) | ⛔ |    ⛔ |
-| [Blob ストレージのイベント](storage-blob-event-overview.md)| ⛔ |    ⛔ 
-
-  
-## <a name="known-issues"></a>既知の問題
-
-- 既存のストレージ アカウントで NFS 3.0 のサポートを有効にすることはできません。
-
-- ストレージ アカウントで NFS 3.0 のサポートを一度有効にすると、無効に戻すことはできません。
-
-### <a name="nfs-30-features-not-yet-supported"></a>まだサポートされていない NFS 3.0 の機能
-
-次の NFS 3.0 の機能はまだサポートされていません。
-
-- UDP 経由の NFS 3.0。 TCP 経由の NFS 3.0 のみがサポートされています。
-
-- ネットワーク ロック マネージャー (NLM) を使用したファイルのロック。 mount コマンドに `-o nolock` パラメーターを含める必要があります。
-
-- サブディレクトリのマウント。 ルート ディレクトリ (コンテナー) のみをマウントできます。
-
-- マウントの一覧表示 (例: `showmount -a` コマンドを使用)
-
-- エクスポートの一覧表示 (例: `showmount -e` コマンドを使用)
-
-- ハード リンク
-
-- コンテナーを読み取り専用としてエクスポートする
-
-### <a name="nfs-30-clients-not-yet-supported"></a>まだサポートされていない NFS 3.0 クライアント
-
-次の NFS 3.0 クライアントはまだサポートされていません。
-
-- Windows NFS クライアント
+NFS 3.0 サポートの現在のリリースにおける問題と制限事項の一覧については、[既知の問題](network-file-system-protocol-known-issues.md)に関する記事をご覧ください。
 
 ## <a name="pricing"></a>価格
 
-プレビュー期間中は、ストレージ アカウントに格納されているデータは、1 か月あたりの GB あたりの BLOB ストレージ料金と同じ容量料金で課金されます。 
+データ ストレージとトランザクションのコストについては、「[Azure Blob Storage の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」のページを参照してください。 
 
-プレビュー期間中は、トランザクションに対する課金はありません。 トランザクションの料金は変更される可能性があり、一般公開時に決定されます。
+## <a name="see-also"></a>関連項目
 
-## <a name="next-steps"></a>次のステップ
-
-- 開始するには、「[ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
-
-- パフォーマンスを最適化するには、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 パフォーマンスに関する考慮事項 (プレビュー)](network-file-system-protocol-support-performance.md)」を参照してください。
+- [ネットワーク ファイル システム (NFS) 3.0 プロトコルを使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)
+- [Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項](network-file-system-protocol-support-performance.md)
+- [NFS を使用した Azure Files、Blob Storage、および Azure NetApp Files へのアクセスを比較する](../common/nfs-comparison.md)

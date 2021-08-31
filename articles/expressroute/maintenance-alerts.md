@@ -7,16 +7,21 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/10/2021
 ms.author: mialdrid
-ms.openlocfilehash: 43e30ddd601640b61c42c5ba5d6bb2aaf41eb73d
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 93335c6f163e016c619fd4803a595ffcc3418a9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109739016"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735267"
 ---
 # <a name="how-to-view-and-configure-alerts-for-azure-expressroute-circuit-maintenance"></a>Azure ExpressRoute 回線のメンテナンスのアラートを確認および構成する方法
 
 ExpressRoute では Azure Service Health を使用して、計画している ExpressRoute 回線のメンテナンスの通知を行います。 Service Health により、Azure portal で、計画している、あるいは実施済みのメンテナンスを確認することや、各自の条件に合うようアラートと通知を構成することができます。 Azure Service Health の詳細は「[Azure Service Health とは](../service-health/overview.md)」をご覧ください。
+
+> [!NOTE]
+> * メンテナンス アクティビティの期間、またはいずれかの接続に影響を与える計画外のイベント時に、Microsoft では、AS パス プリペンディングを使用して、正常な接続にトラフィックをドレインする方法を優先します。 Microsoft によりパス プリペンドが構成されている場合にトラフィックを正常なパスにルーティングできること、およびサービスの中断が発生しないように、必要なルート アドバタイズが適切に構成されていること確認する必要があります。 
+> * ステートフル デバイスで ExpressRoute BGP 接続を終了すると、Microsoft または ExpressRoute プロバイダーによる計画または計画外のメンテナンス期間にフェールオーバーの問題が発生する可能性があります。 設定をテストして、トラフィックが適切にフェールオーバーされることを確認し、可能な場合は、ステートレス デバイスで BGP セッションを終了する必要があります。
+>
 
 ## <a name="view-planned-maintenance"></a>計画しているメンテナンスを確認する
 
@@ -32,7 +37,7 @@ ExpressRoute では Azure Service Health を使用して、計画している Ex
 
 1. *[サービス]* のドロップダウン メニューから **ExpressRoute** を選択し、ExpressRoute 関連のメンテナンスだけを表示します。 次に、リストから問題を選択してイベントの概要を確認します。 実行中のメンテナンスの詳細を確認するには **[Issues updates]\(問題の最新情報\)** タブを選択します。
 
-    :::image type="content" source="./media/maintenance-alerts/summary.png" alt-text="ExpressRoute のメンテナンスの概要のスクリーンショット。" lightbox="./media/maintenance-alerts/summary-expanded.png"::: 
+    :::image type="content" source="./media/maintenance-alerts/summary.png" alt-text="ExpressRoute のメンテナンスの概要のスクリーンショット。" lightbox="./media/maintenance-alerts/summary-expanded.png":::
 
 ## <a name="view-past-maintenance"></a>過去のメンテナンスを表示する
 

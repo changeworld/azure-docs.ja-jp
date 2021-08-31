@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: bdf5f2708daee0a3dc05ec8bc3d861633a3b7b7f
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 083a568f6fad664c59073e2f6858900302e9d971
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590578"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729757"
 ---
 # <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>AI を使用して Azure Cognitive Search で BLOB コンテンツを処理および分析する
 
@@ -62,7 +62,7 @@ AI エンリッチメントはインデックス作成パイプラインのア�
 
 Azure Storage 内の BLOB は、[BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) を使用してインデックス付けされます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または SDK を使用します。 BLOB インデクサーは、インデクサーによって使用されるデータ ソースが Azure Blob コンテナーである場合に呼び出されます。 BLOB のサブセットをインデックス付けするには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
 
-インデクサーでは、"ドキュメント解析" を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、画像、およびその他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメント解析は課金の対象外です。 画像抽出によるドキュメント解析は、[価格ページ](https://azure.microsoft.com/pricing/details/search/)で確認できる料金で課金されます。
+インデクサーでは、["ドキュメント解析"](search-indexer-overview.md#document-cracking) を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、画像、およびその他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメント解析は課金の対象外です。 画像抽出によるドキュメント解析は、[価格ページ](https://azure.microsoft.com/pricing/details/search/)で確認できる料金で課金されます。
 
 すべてのドキュメントが解析されますが、エンリッチメントは、そのためのスキルを明示的に指定した場合にのみ発生します。 たとえば、パイプラインが画像分析のみで構成されている場合、コンテナーまたはドキュメント内のテキストは無視されます。
 
@@ -82,7 +82,7 @@ Azure Cognitive Search では、"*スキル*" は AI 処理の個々のコンポ
 
 カスタム スキルは一見複雑ですが、実装に関しては単純明快な場合があります。 パターン マッチングまたは分類モデルを提供する既存のパッケージがある場合、BLOB から抽出したコンテンツをこれらのモデルに渡して処理を委ねることができます。 AI エンリッチメントは Azure ベースであるため、モデルも Azure に存在する必要があります。 一般的なホスティング手法としては、[Azure Functions](cognitive-search-create-custom-skill-example.md) や [Containers](https://github.com/Microsoft/SkillsExtractorCognitiveSearch) の使用があります。
 
-Cognitive Services に支えられた組み込みスキルを使用するには、リソースへのアクセスを提供するオールインワンのサブスクリプション キーである [Cognitive Services をアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。 オールインワンのキーにより、画像分析、言語検出、テキスト翻訳、テキスト分析が提供されます。 その他の組み込みスキルは Azure Cognitive Search の機能であり、追加のサービスやキーは必要ありません。 テキストの形成、分割、合併は、パイプラインの設計時に必要な場合があるヘルパー スキルの例です。
+Cognitive Services に支えられた組み込みスキルを使用するには、リソースへのアクセスを提供するオールインワンのサブスクリプション キーである [Cognitive Services をアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。 オールインワンのキーにより、画像分析、言語検出、テキスト翻訳、テキスト分析が提供されます。 その他の組み込みスキルは Azure Cognitive Search の機能であり、追加のサービスやキーは必要ありません。 シェーパー、スプリッター、マージャーは、パイプラインの設計時に必要な場合があるヘルパー スキルの例です。
 
 カスタム スキルと組み込みユーティリティ スキルのみを使用する場合、Cognitive Services に関連する依存関係やコストはありません。
 

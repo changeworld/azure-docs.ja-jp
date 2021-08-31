@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) についてよく寄せられる質
 ms.topic: conceptual
 ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8feda70f346347a3559e2696d2912d2a976b0a63
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 612493d55adddea82e3e8d1e3d169eee963bfda2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890307"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724728"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -63,7 +63,7 @@ AKS は、仮想マシン スケール セット、仮想ネットワーク、�
 このアーキテクチャを有効にするため、各 AKS デプロイは、2 つのリソース グループにまたがっています。
 
 1. 最初のリソース グループを作成します。 このグループには、Kubernetes サービスのリソースのみが含まれます。 AKS リソース プロバイダーにより、デプロイの間に 2 番目のリソース グループが自動的に作成されます。 2 番目のリソース グループの例は、*MC_myResourceGroup_myAKSCluster_eastus* です。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
-1. *ノード リソース グループ* と呼ばれる 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 既定では、ノード リソース グループには *MC_myResourceGroup_myAKSCluster_eastus* のような名前が付いています。 AKS は、クラスターが削除されるたびにノード リソースを自動的に削除するため、クラスターのライフサイクルを共有するリソースにのみ使用する必要があります。
+1. *ノード リソース グループ* と呼ばれる 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 既定では、ノード リソース グループには *MC_myResourceGroup_myAKSCluster_eastus* のような名前が付いています。 AKS では、クラスターが削除されるたびにノード リソース グループが自動的に削除されるため、クラスターのライフサイクルを共有するリソースにのみ使用するようにします。
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS ノード リソース グループに独自の名前を指定できますか?
 
@@ -286,6 +286,11 @@ spec:
 ## <a name="can-i-use-fips-cryptographic-libraries-with-deployments-on-aks"></a>AKS へのデプロイで FIPS 暗号化ライブラリを使用できますか?
 
 現在、FIPS 対応ノードは、Linux ベースのノード プールでプレビューで利用できます。 詳細については、「[FIPS 対応ノード プール (プレビュー) を追加する](use-multiple-node-pools.md#add-a-fips-enabled-node-pool-preview)」を参照してください。
+
+## <a name="can-i-configure-nsgs-with-aks"></a>AKS で NSG を構成できますか?
+
+独自のサブネットを指定する場合は、そのサブネットに関連付けられているネットワーク セキュリティ グループ (NSG) を管理する必要があります。 AKS を使用すると、NIC レベルでのみ NSG が変更され、そのサブネットに関連付けられている NSG は変更されません。 CNI を使用している場合は、NSG のセキュリティ規則でノードとポッド CIDR 範囲の間のトラフィックが確実に許可されるようにする必要もあります。 kubenet を使用している場合は、NSG のセキュリティ規則でノードとポッド CIDR の間のトラフィックが確実に許可されるようにする必要もあります。
+
 
 <!-- LINKS - internal -->
 

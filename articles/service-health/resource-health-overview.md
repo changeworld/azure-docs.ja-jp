@@ -3,12 +3,12 @@ title: Azure Resource Health の概要
 description: Azure Resource Health が、Azure のリソースに影響を及ぼしているサービスの問題を診断したり、サポートを受けたりするときにどのように役立つかについて説明します。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 903a86d216e118f783411b38ef7ad75ad004df7f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 532c7001b12efb2917c906f7607fef33bac194ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786258"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728581"
 ---
 # <a name="resource-health-overview"></a>Resource Health の概要
  
@@ -96,4 +96,4 @@ Resource Health には、 **[すべてのサービス]** を選択し、フィ�
 
 Resource Health について詳しくは、次のリファレンスをご覧ください。
 -  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)
--  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
+-  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.yml)

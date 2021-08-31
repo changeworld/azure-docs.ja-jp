@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: e339c9847024aa35665b9a8b4114102c8fde22a1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 181e0ae76dccf763d23fb648a5e6553ed352655a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470290"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748138"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Amazon S3 用 Azure Purview コネクタ
 
@@ -25,15 +25,7 @@ ms.locfileid: "110470290"
 
 ## <a name="purview-scope-for-amazon-s3"></a>Purview の Amazon S3 のスコープ
 
-次のスコープは、Purview データ ソースとしての Amazon S3 バケットの登録とスキャンに固有です。
-
-|Scope  |説明  |
-|---------|---------|
-|**ファイルの種類**     | Purview スキャナー サービスでは現在、次のファイルの種類がサポートされています。 <br><br>.avro、.csv、.doc、.docm、.docx、.dot、.json、.odp、.ods、.odt、.orc、.parquet、.pdf、.pot、.pps、.ppsx、.ppt、.pptm、.pptx、.psv、.ssv、.tsv、.txt、.xlc、.xls、.xlsb、.xlsm、.xlsx、.xlt、.xml        |
-|**リージョン**     | Amazon S3 サービス用 Purview コネクタは現在、特定のリージョンにのみデプロイされています。 <br><br>詳細については、「[ストレージとスキャンのリージョン](#storage-and-scanning-regions)」を参照してください。   |
-|     |         |
-
-詳細については、Purview の制限のドキュメントを参照してください。
+Purview の制限については、以下を参照してください。
 
 - [Azure Purview を使用する、リソースのクォータの管理と引き上げ](how-to-manage-quotas.md)
 - [Azure Purview でサポートされているデータ ソースとファイルの種類](sources-and-scans.md)
@@ -41,7 +33,7 @@ ms.locfileid: "110470290"
 
 ### <a name="storage-and-scanning-regions"></a>ストレージとスキャンのリージョン
 
-次の表は、データが格納されているリージョンと Azure Purview によってスキャンされるリージョンのマップを示しています。
+Amazon S3 サービス用 Purview コネクタは現在、特定のリージョンにのみデプロイされています。 次の表は、データが格納されているリージョンと Azure Purview によってスキャンされるリージョンのマップを示しています。
 
 > [!IMPORTANT]
 > お使いのバケットのリージョンに応じて、関連するすべてのデータ転送料金が請求されます。
@@ -51,24 +43,24 @@ ms.locfileid: "110470290"
 | ------------------------------- | ------------------------------------- |
 | 米国東部 (オハイオ)                  | 米国東部 (オハイオ)                        |
 | 米国東部 ( バージニア北部)           | 米国東部 ( バージニア北部)                       |
-| 米国西部 (北 カリフォルニア)         | 米国東部 (オハイオ) または米国西部 (北 カリフォルニア)                        |
-| 米国西部 (オレゴン)                | 米国東部 (オハイオ) または米国西部 (オレゴン)                      |
+| 米国西部 (北 カリフォルニア)         | 米国西部 (北 カリフォルニア)                        |
+| 米国西部 (オレゴン)                | 米国西部 (オレゴン)                      |
 | アフリカ (ケープタウン)              | ヨーロッパ (フランクフルト)                    |
-| アジア太平洋 (香港特別行政区)        | アジア太平洋 (シドニー) またはアジア太平洋 (シンガポール)                |
-| アジア太平洋 (ムンバイ)           | アジア太平洋 (シドニー) またはアジア太平洋 (シンガポール)                |
-| アジア太平洋 (大阪ローカル)      | アジア太平洋 (シドニー) またはアジア太平洋 (東京)                 |
-| アジア太平洋 (ソウル)            | アジア太平洋 (シドニー) またはアジア太平洋 (東京)                 |
-| アジア太平洋 (シンガポール)        | アジア太平洋 (シドニー) またはアジア太平洋 (シンガポール)                 |
+| アジア太平洋 (香港特別行政区)        | アジア太平洋 (東京)                |
+| アジア太平洋 (ムンバイ)           | アジア太平洋 (シンガポール)                |
+| アジア太平洋 (大阪ローカル)      | アジア太平洋 (東京)                 |
+| アジア太平洋 (ソウル)            | アジア太平洋 (東京)                 |
+| アジア太平洋 (シンガポール)        | アジア太平洋 (シンガポール)                 |
 | アジア太平洋 (シドニー)           | アジア太平洋 (シドニー)                  |
-| アジア太平洋 (東京)            | アジア太平洋 (シドニー) またはアジア太平洋 (東京)                |
+| アジア太平洋 (東京)            | アジア太平洋 (東京)                |
 | カナダ (中部)                | 米国東部 (オハイオ)                        |
 | 中国 (北京)                 | サポートされていません                    |
 | 中国 (Ningxia)                 | サポートされていません                   |
 | ヨーロッパ (フランクフルト)              | ヨーロッパ (フランクフルト)                    |
 | ヨーロッパ (アイルランド)                | ヨーロッパ (アイルランド)                   |
-| ヨーロッパ (ロンドン)                 | ヨーロッパ (アイルランド) またはヨーロッパ (ロンドン)                 |
-| ヨーロッパ (ミラノ)                  | ヨーロッパ (フランクフルト)                    |
-| ヨーロッパ (パリ)                  | ヨーロッパ (フランクフルト) またはヨーロッパ (パリ)                   |
+| ヨーロッパ (ロンドン)                 | ヨーロッパ (ロンドン)                 |
+| ヨーロッパ (ミラノ)                  | ヨーロッパ (パリ)                    |
+| ヨーロッパ (パリ)                  | ヨーロッパ (パリ)                   |
 | ヨーロッパ (ストックホルム)              | ヨーロッパ (フランクフルト)                    |
 | 中東 (バーレーン)           | ヨーロッパ (フランクフルト)                    |
 | 南米 (サンパウロ)       | 米国東部 (オハイオ)                        |
@@ -305,7 +297,7 @@ AWS アカウント ID とは、AWS コンソールにログインするため�
 
     ![Purview ポータルを起動します。](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
 
-1. Azure Purview の **[ソース]** ページに移動し、 **[登録]** ![[登録] アイコン](./media/register-scan-amazon-s3/register-button.png) >  **[Amazon S3]**  >  **[続行]** を選択します。
+1. Azure Purview の **[Data Map]** ページに移動し、 **[登録]** ![[登録] アイコン](./media/register-scan-amazon-s3/register-button.png) を選択します。 >  **[Amazon S3]**  >  **[続行]** を選択します。
 
     ![Amazon AWS バケットを Purview データ ソースとして追加します。](./media/register-scan-amazon-s3/add-s3-datasource-to-purview.png)
 
@@ -337,7 +329,7 @@ Amazon アカウントに複数の S3 バケットがあり、それらすべて
 
     ![Amazon S3 専用の Purview ポータルのコネクタを起動する](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
 
-1. Azure Purview の **[ソース]** ページに移動し、 **[登録]** ![[登録] アイコン](./media/register-scan-amazon-s3/register-button.png) >  **[Amazon accounts]\(Amazon アカウント\)**  >  **[続行]** を選択します。
+1. Azure Purview の **[Data Map]** ページに移動し、 **[登録]** ![[登録] アイコン](./media/register-scan-amazon-s3/register-button.png) を選択します。 >  **[Amazon accounts]\(Amazon アカウント\)**  >  **[続行]** を選択します。
 
     ![Amazon アカウントを Purview データ ソースとして追加します。](./media/register-scan-amazon-s3/add-s3-account-to-purview.png)
 
@@ -362,7 +354,7 @@ Amazon アカウントに複数の S3 バケットがあり、それらすべて
 
 バケットを Purview データ ソースとして追加したら、スケジュールされた間隔で、または直ちに実行するようにスキャンを構成できます。
 
-1. Azure Purview の **[ソース]** 領域に移動して、次のいずれかの操作を行います。
+1. Purview Studio の左側のペインで **[Data Map]** タブを選択してから、次のいずれかの操作を行います。
 
     - **[マップ ビュー]** で、 **[新しいスキャン]** ![[新しいスキャン] アイコン](./media/register-scan-amazon-s3/new-scan-button.png) をデータ ソース ボックス内で選択します。
     - **[リスト ビュー]** で、データ ソースの行をポイントし、 **[新しいスキャン]** ![[新しいスキャン] アイコン](./media/register-scan-amazon-s3/new-scan-button.png) を選択します。
@@ -411,7 +403,7 @@ Amazon アカウントに複数の S3 バケットがあり、それらすべて
 
 ## <a name="explore-purview-scanning-results"></a>Purview スキャン結果を探索する
 
-Amazon S3 バケットで Purview スキャンが完了したら、Purview の **[ソース]** 領域をドリルダウンしてスキャンの履歴を表示します。
+Amazon S3 バケットで Purview スキャンが完了したら、Purview の **[Data Map]** 領域をドリルダウンしてスキャンの履歴を表示します。
 
 データ ソースを選択して詳細を表示し、 **[スキャン]** タブを選択して、現在実行中または完了したスキャンを表示します。
 追加した AWS アカウントにバケットが複数ある場合は、アカウントの下に各バケットのスキャン履歴が表示されます。

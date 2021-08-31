@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lagayhar
 ms.reviewer: Dale.Koetke
-ms.openlocfilehash: c4aded73334e38539e1c671831fe812a9525698c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 540bed61d26b2387399230324db4373172a233a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048677"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734253"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Monitor での使用量と推定コストの監視
 
@@ -25,7 +25,7 @@ ms.locfileid: "102048677"
 
 基本的な Azure Monitor 課金モデルは、クラウドに適した使用量ベースの価格設定 (従量課金制) です。 支払いは使用した分だけで済みます。 価格の詳細は、[アラート、メトリック、通知](https://azure.microsoft.com/pricing/details/monitor/)、[Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)、および [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) で確認できます。 
 
-ログ データの従量課金制モデルに加えて、Log Analytics には容量予約があります。これにより、従量課金制の料金と比較して 25% も節約できます。 容量予約の価格を選択すると、1 日あたり 100 GB から予約を購入できます。 予約レベルを超える使用量は、従量課金制で請求されます。 容量予約の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
+ログ データの従量課金制モデルに加えて、Azure Monitor Log Analytics にはコミットメント レベルもあります。 これを使用すると、従量課金制の料金と比較して 30% もコストを節約できます。 コミットメント レベルは、100 GB/日から開始します。 コミットメント レベルを超えた使用量については、コミットメント レベルと同じ GB 単価で課金されます。 コミットメント レベルの価格については、[こちらを参照してください](https://azure.microsoft.com/pricing/details/monitor/)。
 
 一部のお客様は、[従来の Log Analytics 価格レベル](logs/manage-cost-storage.md#legacy-pricing-tiers)および[従来の Enterprise Application Insights 価格レベル](app/pricing.md#legacy-enterprise-per-node-pricing-tier)を利用できます。 
 
@@ -43,7 +43,7 @@ Azure Monitor ログをまだ使用していない場合は、[Azure Monitor 料
 
 これらのそれぞれで、料金計算ツールは、予想される使用量に基づいてコストを見積もるのに役立ちます。
 
-たとえば、Log Analytics では、VM の数と、各 VM から収集すると予想されるデータ量 (GB) を入力できます。 通常、1 GB から 3 GB のデータ月が、一般的な Azure VM から取り込まれています。 既に Azure Monitor ログを評価している場合は、独自の環境からのデータ統計を使用することができます。 [監視対象の VM の数](logs/manage-cost-storage.md#understanding-nodes-sending-data)と[ご利用のワークスペースによって取り込まれているデータ量](logs/manage-cost-storage.md#understanding-ingested-data-volume)を特定する方法については、以下を参照してください。
+たとえば、Log Analytics では、VM の数と、各 VM から収集すると予想されるデータ量 (GB) を入力できます。 通常、1 か月あたり 1 GB から 3 GB のデータが一般的な Azure VM から取り込まれます。 既に Azure Monitor ログを評価している場合は、独自の環境からのデータ統計を使用することができます。 [監視対象の VM の数](logs/manage-cost-storage.md#understanding-nodes-sending-data)と[ご利用のワークスペースによって取り込まれているデータ量](logs/manage-cost-storage.md#understanding-ingested-data-volume)を特定する方法については、以下を参照してください。
 
 Application Insights でも同様に、"アプリケーションのアクティビティに基づいてデータ量を見積もる" 機能を有効にした場合、アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーセンタイル量が表示されます。 これらのアプリケーションでの Application Insights の構成は範囲が広いので (既定のサンプリングを使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 しかし、これは、他の似た顧客が行っていることを理解するための出発点となります。 Application Insights のコストの見積もりについて、[さらに学習](app/pricing.md#estimating-the-costs-to-manage-your-application)してください。
 
@@ -66,7 +66,7 @@ Azure では、[Azure Cost Management と課金](../cost-management-billing/cost
 
 ここで、この累積コストの概要からドリルダウンして、[リソースごとのコスト] ビューで詳細を表示できます。 現在の価格レベルでは、Azure Log データは Log Analytics からのものか Application Insights からのものであるかにかかわらず、同じメーターのセットに対して課金されます。 Log Analytics の使用量と Application Insights の使用量のコストを区別するには、**[リソースの種類]** に対してフィルターを追加します。 すべての Application Insights コストを表示するには、[リソースの種類] を "microsoft.insights/components" でフィルター処理します。Log Analytics コストの場合は、[リソースの種類] を "microsoft.operationalinsights/workspaces" でフィルター処理します。 
 
-使用量の詳細は、[Azure portal で使用量をダウンロード](../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)して確認できます。 ダウンロードしたスプレッドシートでは、Azure リソースごとに、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Application Insights のリソースからの使用量を検索することができます。それには、まず、[測定カテゴリ] 列でフィルター処理を行って "Application Insights" と "Log Analytics" を表示し、次に [インスタンス ID] 列に対するフィルター ("contains microsoft.insights/components") を追加します。  すべての Azure Monitor コンポーネントに対して 1 つのログ バックエンドがあるため、ほとんどの Application Insights の使用量は、メーターでは Log Analytics の測定カテゴリで報告されます。  Application Insights の測定カテゴリで報告されるのは、従来の価格レベルおよび複数ステップ Web テストでの Application Insights リソースのみです。  使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
+使用量の詳細は、[Azure portal で使用量をダウンロード](../cost-management-billing/understand/download-azure-daily-usage.md)して確認できます。 ダウンロードしたスプレッドシートでは、Azure リソースごとに、1 日あたりの使用量を確認できます。 この Excel スプレッドシートでは、Application Insights のリソースからの使用量を検索することができます。それには、まず、[測定カテゴリ] 列でフィルター処理を行って "Application Insights" と "Log Analytics" を表示し、次に [インスタンス ID] 列に対するフィルター ("contains microsoft.insights/components") を追加します。  すべての Azure Monitor コンポーネントに対して 1 つのログ バックエンドがあるため、ほとんどの Application Insights の使用量は、メーターでは Log Analytics の測定カテゴリで報告されます。  Application Insights の測定カテゴリで報告されるのは、従来の価格レベルおよび複数ステップ Web テストでの Application Insights リソースのみです。  使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
 
 > [!NOTE]
 > **Azure Cost Management と課金** ハブの **[コスト管理]** を使用することは、監視コストを幅広く理解するための推奨アプローチです。  [Log Analytics](logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs) および [Application Insights](app/pricing.md#understand-your-usage-and-estimate-costs) の **[使用量と推定コスト]** エクスペリエンスでは、Azure Monitor のこれらの各部分のより深い分析情報が提供されます。

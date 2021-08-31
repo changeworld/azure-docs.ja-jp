@@ -9,16 +9,23 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 4575709a4fa7067b02228036fb2e2b4a60844e21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dea90773340bb16b4f3c01e11affb2d4d2851b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592312"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723383"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure Files 監視データのリファレンス
 
 Azure Files の監視データの収集と分析の詳細については、「[Azure Files の監視](storage-files-monitoring.md)」を参照してください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="metrics"></a>メトリック
 
@@ -44,7 +51,7 @@ Azure Files は、Azure Monitor で次の容量メトリックを提供します
 | FileCount   | ストレージ アカウントのファイルの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
 | FileShareCapacityQuota | Azure Files サービスで使用できる記憶域の容量の上限 (バイト単位)。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024|
 | FileShareCount | ストレージ アカウントのファイル共有の数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
-| FileShareProvisionedIOPS | ファイル共有でプロビジョニングされた IOPS の数。 このメトリックは、Premium ファイル ストレージにのみ適用されます。 <br/><br/> 単位: バイト <br/> 集計の種類:Average |
+| FileShareProvisionedIOPS | ファイル共有でプロビジョニングされた IOPS の数。 このメトリックは、Premium ファイル ストレージにのみ適用されます。 <br/><br/> 単位: CountPerSecond <br/> 集計の種類:Average |
 | FileShareSnapshotCount | ストレージ アカウントの Azure Files サービス内の共有に存在するスナップショットの数。 <br/><br/> 単位: カウント <br/> 集計の種類:Average | 
 |FileShareSnapshotSize|ストレージ アカウントの Azure Files サービスのスナップショットによって使用されている記憶域の容量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average|
 

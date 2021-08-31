@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e283ff2de003146c8228d36843f00ca8e4faced9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2d7e096a0dbd730b2ec5f64589a5924340e32f66
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748573"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195543"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption
 
@@ -38,12 +38,13 @@ Azure Disk Encryption は、Virtual Machines と同じように、ゾーン回�
 
 Windows VM は、[さまざまなサイズ](../sizes-general.md)で利用できます。 Azure Disk Encryption は、第 1 世代と第 2 世代の VM でサポートされています。 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
-Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。  Azure Disk Encryption は、一時ディスクのない VM イメージ (Dv4、Dsv4、Ev4、および Esv4) でも使用できません。  「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.md)」を参照してください。  例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
+Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。  Azure Disk Encryption は、一時ディスクのない VM イメージ (Dv4、Dsv4、Ev4、および Esv4) でも使用できません。  「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.yml)」を参照してください。  例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 - Windows クライアント: Windows 8 以降
-- Windows Server: Windows Server 2008 R2 以降  
+- Windows Server: Windows Server 2008 R2 以降
+- Windows 10 Enterprise マルチセッション  
  
 > [!NOTE]
 > Windows Server 2008 R2 には、暗号化用に .NET Framework 4.5 をインストールする必要があります。Windows Update から、オプションの更新プログラムである Windows Server 2008 R2 x64 ベース システム用の Microsoft .NET Framework 4.5.2 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)) を使用してインストールすることができます。  
@@ -63,7 +64,9 @@ Azure Disk Encryption を有効にするには、VM が次のネットワーク 
 
 Azure Disk Encryption では、Windows VM に対して BitLocker 外部キー保護機能が使用されます。 ドメインに参加している VM の場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。 "互換性のある TPM が装備されていない BitLocker を許可する" のグループ ポリシーについては、[BitLocker グループ ポリシー リファレンス](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)に関するページをご覧ください。
 
-ドメインに参加済みであり、カスタム グループ ポリシーを使用する仮想マシンでの BitLocker ポリシーには、次の設定を含める必要があります。[[BitLocker 回復情報のユーザー記憶域を構成する] -> [256 ビットの回復キーを許可する]](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 BitLocker のカスタム グループ ポリシー設定に互換性がない場合、Azure Disk Encryption は失敗します。 正しいポリシー設定がないマシンでは、新しいポリシーを適用し、新しいポリシーを強制的に更新して (gpupdate.exe /force)、再起動する処理が必要になる可能性があります。
+ドメインに参加済みであり、カスタム グループ ポリシーを使用する仮想マシンでの BitLocker ポリシーには、次の設定を含める必要があります。[[BitLocker 回復情報のユーザー記憶域を構成する] -> [256 ビットの回復キーを許可する]](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 BitLocker のカスタム グループ ポリシー設定に互換性がない場合、Azure Disk Encryption は失敗します。 正しいポリシー設定がないマシンでは、新しいポリシーを適用し、新しいポリシーを強制的に更新します (gpupdate.exe /force)。  再起動が必要になる場合があります。
+
+Microsoft Bitlocker Administration and Monitoring (MBAM) グループ ポリシー機能は、Azure Disk Encryption と互換性がありません。
 
 > [!WARNING]
 > Azure Disk Encryption では、**回復キーは保存されません**。 [[対話型ログオン: コンピューター アカウントのロックアウトのしきい値]](/windows/security/threat-protection/security-policy-settings/interactive-logon-machine-account-lockout-threshold) セキュリティ設定が有効になっている場合、マシンを回復するには、シリアル コンソールから回復キーを指定する必要があります。 適切な回復ポリシーが有効になっていることを確認する手順については、[Bitlocker 回復ガイドの計画](/windows/security/information-protection/bitlocker/bitlocker-recovery-guide-plan)に関する記事を参照してください。

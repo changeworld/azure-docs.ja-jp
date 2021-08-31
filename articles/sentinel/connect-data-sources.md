@@ -13,191 +13,168 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: d6b132fbb3aed541cc602537df1d40fa0d47702a
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: c9bce99f26d7d23d2bf655719373f43e78b5a8cb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421852"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749367"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel を有効にしたら、まずデータ ソースを接続する必要があります。 Azure Sentinel には、Microsoft 365 Defender (以前の Microsoft Threat Protection) ソリューション、Microsoft 365 ソース (Office 365 を含む)、Azure AD、Microsoft Defender for Identity (以前の Azure ATP)、Microsoft Cloud App Security など、すぐに使用でき、リアルタイム統合を提供する、Microsoft ソリューション用のコネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (CEF)、Syslog または REST-API を使用して、使用中のデータ ソースを Azure Sentinel に接続することもできます。
+Azure Sentinel を有効にした後、まずデータ ソースを接続する必要があります。 Azure Sentinel には、すぐに使用できる Microsoft 製品用コネクタが多数用意されているため、リアルタイムの統合が提供されます。 たとえば、サービス間コネクタには、Microsoft 365 Defender コネクタと、Office 365、Azure Active Directory (Azure AD)、Microsoft Defender for Identity、Microsoft Cloud App Security などの Microsoft 365 ソースが含まれます。
 
-1. メニューで **[Data connectors]\(データ コネクタ\)** を選択します。 このページでは、Azure Sentinel で提供されているコネクタとその状態の完全な一覧を表示できます。 接続するコネクタを選択し、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。 
+Microsoft 以外の製品用のより広範なセキュリティ エコシステムへの組み込みコネクタを有効にすることもできます。 たとえば、[Syslog](#syslog)、[Common Event Format (CEF)](#common-event-format-cef)、または [REST API](#rest-api-integration) を使用して、お使いのデータ ソースを Azure Sentinel に接続することもできます。
+
+詳細については、「[Azure Sentinel パートナー データ コネクタ](partner-data-connectors.md)」および「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。
+
+## <a name="enable-a-data-connector"></a>データ コネクタを更新する
+
+Azure Sentinel でデータ コネクタを有効にするには、次の手順を実行します。
+
+1. Azure Sentinel の左側のナビゲーション メニューで、 **[データ コネクタ]** を選択します。 **[データ コネクタ]** ページに、Azure Sentinel で提供されているコネクタとその状態の完全な一覧が表示されます。 接続するコネクタを選択し、 **[コネクタ ページを開く]** を選択します。 
 
    ![データ コネクタ ギャラリー](./media/collect-data/collect-data-page.png)
+   
+   詳細については、「[サービス間の統合](#service-to-service-integration)」および「[Azure Sentinel パートナー データ コネクタ ](partner-data-connectors.md)」を参照してください。
+   
 
-1. 特定のコネクタのページで、すべての前提条件を満たしたことを確認し、指示に従って Azure Sentinel にデータを接続します。 ログで Azure Sentinel との同期が開始されるまでには、しばらく時間がかかる場合があります。 接続した後、データの概要 ( **[Data received]\(受信データ\)** グラフ) と、データの種類の接続状態が表示されます。
+1. コネクタ ページで、すべての前提条件を満たしていることを確認し、指示に従って Azure Sentinel にデータを接続します。 ログで Azure Sentinel との同期が開始されるまでには、しばらく時間がかかる場合があります。 接続した後、データの概要 ( **[受信したデータ]** グラフ) とデータの種類の接続状態が表示されます。
 
    ![データ コネクタを構成する](./media/collect-data/opened-connector-page.png)
   
-1. **[Next steps]\(次のステップ\)** タブをクリックすると、特定のデータの種類に対して Azure Sentinel によって標準で提供されるコンテンツの一覧が表示されます。
+1. **[次のステップ]** タブを選択すると、特定のデータの種類に対して Azure Sentinel によって提供されるコンテンツが表示されます。
 
    ![コネクタの次のステップ](./media/collect-data/data-insights.png)
- 
 
+<a name="agent-options"></a>
 ## <a name="data-connection-methods"></a>データ接続方法
+<a name="map-data-types-with-azure-sentinel-connection-options"></a>
 
 Azure Sentinel では、次のデータ接続方法がサポートされています。
 
-- **サービス間の統合**:<br> AWS や Microsoft サービスなどの一部のサービスはネイティブに接続されるので、標準統合用の Azure 基盤を利用して、ほんの数回のクリックで次のソリューションを接続できます。
-    - [アマゾン ウェブ サービス - CloudTrail](connect-aws.md)
-    - [Azure Active Directory](connect-azure-active-directory.md) - 監査ログとサインイン ログ
-    - [Azure Active Directory Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure アクティビティ](connect-azure-activity.md)
-    - [Azure DDoS Protection](connect-azure-ddos-protection.md)
-    - Azure Security Center からの [Azure Defender アラート](connect-azure-security-center.md)
-    - [Azure Defender for IoT](connect-asc-iot.md) (以前の Azure Security Center for IoT)
-    - [Azure Firewall](connect-azure-firewall.md)
-    - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Key Vault](connect-azure-key-vault.md)
-    - [Azure Kubernetes Service (AKS)](connect-azure-kubernetes-service.md)
-    - [Azure SQL Databases](connect-azure-sql-logs.md)
-    - [Azure Storage アカウント](connect-azure-storage-account.md)
-    - [Azure Web Application Firewall (WAF)](connect-azure-waf.md) (以前の Microsoft WAF)
-    - [ドメイン ネーム サーバー](connect-dns.md)
-    - [Dynamics 365](connect-dynamics-365.md)
-    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) - M365D のインシデントと Defender for Endpoint の生データが含まれます
-    - [Microsoft Cloud App Security](connect-cloud-app-security.md)
-    - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前の Microsoft Defender Advanced Threat Protection)
-    - [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure Advanced Threat Protection)
-    - [Microsoft Defender for Office 365](connect-office-365-advanced-threat-protection.md) (以前の Office 365 Advanced Threat Protection)
-    - [Office 365](connect-office-365.md) (Teams を含む)
-    - [Windows ファイアウォール](connect-windows-firewall.md)
-    - (Windows) [セキュリティ イベント](connect-windows-security-events.md)
+### <a name="service-to-service-integration"></a>サービス間の統合
 
-- **API による外部ソリューション**:一部のデータ ソースは、接続されるデータ ソースによって提供される API を使用して接続されます。 通常、ほとんどのセキュリティ テクノロジでは、イベント ログの取得に使用できる API のセットが提供されています。API を使用して、Azure Sentinel に接続し、特定の種類のデータを収集して、Azure Log Analytics に送信します。 API を使用して接続されるアプライアンスは次のとおりです。
-    
-    - [Agari のフィッシング対策とブランド保護](connect-agari-phishing-defense.md)
-    - [Alcide kAudit](connect-alcide-kaudit.md)
-    - [Barracuda WAF](connect-barracuda.md)
-    - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
-    - [BETTER Mobile Threat Defense](connect-better-mtd.md)
-    - [Beyond Security beSECURE](connect-besecure.md)
-    - [Cisco Umbrella](connect-cisco-umbrella.md)
-    - [Citrix Analytics (セキュリティ)](connect-citrix-analytics.md)
-    - [F5 BIG-IP](connect-f5-big-ip.md)
-    - [Forcepoint DLP](connect-forcepoint-dlp.md)
-    - [Google Workspace (旧 G Suite)](connect-google-workspace.md)
-    - [NXLog (Windows) DNS ログ](connect-nxlog-dns.md)
-    - [NXLog LinuxAudit](connect-nxlog-linuxaudit.md)
-    - [Okta SSO](connect-okta-single-sign-on.md)
-    - [Orca Security](connect-orca-security-alerts.md)
-    - [Perimeter 81 ログ](connect-perimeter-81-logs.md)
-    - [Proofpoint On Demand (POD) の電子メール セキュリティ](connect-proofpoint-pod.md)
-    - [Proofpoint TAP](connect-proofpoint-tap.md)
-    - [Qualys VM](connect-qualys-vm.md)
-    - [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
-    - [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
-    - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
-    - [Symantec ICDX](connect-symantec.md)
-    - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
-    - [Zimperium](connect-zimperium-mtd.md)
+Azure Sentinel は、Azure 基盤を使用して、次の Microsoft サービスとアマゾン ウェブ サービスに対する組み込みのサービス間サポートを提供します。
 
+- [アマゾン ウェブ サービス - CloudTrail](connect-aws.md)
+- [Azure Active Directory](connect-azure-active-directory.md) (監査ログとサインイン ログを含む)
+- [Azure Active Directory Identity Protection](connect-azure-ad-identity-protection.md)
+- [Azure アクティビティ](connect-azure-activity.md)
+- [Azure DDoS Protection](connect-azure-ddos-protection.md)
+- Azure Security Center からの [Azure Defender アラート](connect-azure-security-center.md)
+- [Azure Defender for IoT](connect-asc-iot.md) (以前の Azure Security Center for IoT)
+- [Azure Firewall](connect-azure-firewall.md)
+- [Azure Information Protection](connect-azure-information-protection.md)。 詳細については、「[レポートを変更し、カスタム クエリを作成する方法](/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)」を参照してください。
+- [Azure Key Vault](connect-azure-key-vault.md)
+- [Azure Kubernetes Service (AKS)](connect-azure-kubernetes-service.md)
+- [Azure SQL Databases](connect-azure-sql-logs.md)
+- [Azure Storage アカウント](connect-azure-storage-account.md)
+- [Azure Web Application Firewall (WAF)](connect-azure-waf.md) (以前の Microsoft WAF)
+- [ドメイン ネーム サーバー](connect-dns.md)
+- [Dynamics 365](connect-dynamics-365.md)
+- [Microsoft 365 Defender](connect-microsoft-365-defender.md) (Microsoft 365 Defender for Endpoint から取得される Microsoft 365 Defender インシデントと生データを含む)
+- [Microsoft Cloud App Security (MCAS)](connect-cloud-app-security.md)
+- [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前の Microsoft Defender Advanced Threat Protection)
+- [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure Advanced Threat Protection)
+- [Microsoft Defender for Office 365](connect-office-365-advanced-threat-protection.md) (以前の Office 365 Advanced Threat Protection)
+- [Office 365](connect-office-365.md) (Microsoft Teams を含む)
+- [セキュリティ イベント (Windows)](connect-windows-security-events.md)。 詳細については、[セキュリティで保護されていないプロトコル ブックの設定](./get-visibility.md#use-built-in-workbooks)に関するページを参照してください。
+- [Windows ファイアウォール](connect-windows-firewall.md)
 
-- **エージェントによる外部ソリューション**:Azure Sentinel は、Syslog プロトコルを使用してリアルタイムのログ ストリーミングを実行できるその他のデータ ソースに対し、エージェントを使用して接続できます。
+### <a name="rest-api-integration"></a>REST API 統合
 
-    ほとんどのアプライアンスでは、Syslog プロトコルを使用して、ログ自体とログに関するデータが含まれるイベント メッセージが送信されます。 ログの形式は異なりますが、ほとんどのアプライアンスでは、CEF に基づくログ データの書式設定がサポートされています。 
+多くのセキュリティ テクノロジでは、ログ ファイルを取得するための一連の API が提供されています。一部のデータ ソースでは、これらの API を使用して Azure Sentinel に接続します。
 
-    Azure Sentinel エージェントは実際には Log Analytics エージェントであり、CEF 形式のログが、Log Analytics で取り込むことのできる形式に変換されます。 アプライアンスの種類により、エージェントは、アプライアンス上に直接、または専用の Linux ベースのログ フォワーダー上にインストールされます。 Linux 用エージェントは、UDP 経由で Syslog デーモンからイベントを受信しますが、Linux マシンで大量の Syslog イベントを収集することが予想される場合は、イベントは TCP 経由で Syslog デーモンからエージェントに送信され、そこから Log Analytics に送信されます。
+次のセクションで説明するように、API を使用するデータ コネクタは、プロバイダー側から統合するか、Azure Functions を使用して統合します。
 
-    - **ファイアウォール、プロキシ、エンドポイント - CEF:**
-        - [AI Vectra 検出](connect-ai-vectra-detect.md)
-        - [Akamai セキュリティ イベント](connect-akamai-security-events.md)
-        - [Aruba ClearPass](connect-aruba-clearpass.md)
-        - [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
-        - [Check Point](connect-checkpoint.md)
-        - [Cisco ASA](connect-cisco.md)
-        - [Citrix WAF](connect-citrix-waf.md)
-        - [CyberArk Enterprise Password Vault](connect-cyberark.md)
-        - [ExtraHop Reveal(x)](connect-extrahop.md)
-        - [F5 ASM](connect-f5.md)
-        - [Forcepoint 製品](connect-forcepoint-casb-ngfw.md)
-        - [Fortinet](connect-fortinet.md)
-        - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
-        - [Imperva WAF Gateway](connect-imperva-waf-gateway.md)
-        - [One Identity Safeguard](connect-one-identity.md)
-        - [Palo Alto Networks](connect-paloalto.md)
-        - [Thycotic Secret Server](connect-thycotic-secret-server.md)
-        - [Trend Micro Deep Security](connect-trend-micro.md)
-        - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
-        - [WireX Network Forensics Platform](connect-wirex-systems.md)
-        - [Zscaler](connect-zscaler.md)
-        - [その他の CEF ベースのアプライアンス](connect-common-event-format.md)
-    - **ファイアウォール、プロキシ、エンドポイント - Syslog:**
-        - [Active Directory 用の Alsid](connect-alsid-active-directory.md)
-        - [Cisco Meraki](connect-cisco-meraki.md)
-        - [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
-        - [Infoblox NIOS](connect-infoblox.md)
-        - [Juniper SRX](connect-juniper-srx.md)
-        - [Pulse Connect Secure](connect-pulse-connect-secure.md)
-        - [Sophos XG](connect-sophos-xg-firewall.md)
-        - [Squid Proxy](connect-squid-proxy.md)
-        - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
-        - [Symantec VIP](connect-symantec-vip.md)
-        - [VMware ESXi](connect-vmware-esxi.md)
-        - [その他の Syslog ベースのアプライアンス](connect-syslog.md)
-    - [Apache HTTP Server](connect-apache-http-server.md)
-    - DLP ソリューション
-    - [脅威インテリジェンス プロバイダー](connect-threat-intelligence.md)
-    - [DNS マシン](connect-dns.md) - DNS マシンに直接インストールされたエージェント
-    - [Azure Stack VM](connect-azure-stack.md)
-    - Linux サーバー
-    - その他のクラウド
-    
-## <a name="agent-connection-options"></a>エージェントの接続オプション<a name="agent-options"></a>
+これらのコネクタの完全な一覧と情報については、「[Azure Sentinel パートナー データ コネクタ](partner-data-connectors.md)」を参照してください。
 
-外部のアプライアンスを Azure Sentinel に接続するには、エージェントを専用のマシン (VM またはオンプレミス) に展開して、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 エージェントのデプロイは、自動または手動で行うことができます。 自動デプロイは、専用マシンが Azure に作成中の新しい VM である場合にのみ使用できます。 
+#### <a name="rest-api-integration-on-the-provider-side"></a>プロバイダー側での REST API 統合
 
-![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
+プロバイダーによって構築された API 統合は、プロバイダーのデータ ソースに接続し、[Azure Monitor Data Collector API](../azure-monitor/logs/data-collector-api.md) を使用して、Azure Sentinel カスタム ログ テーブルにデータをプッシュします。
 
-または、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントをデプロイすることもできます。
+これらのデータ コネクタを構成してログを Azure Sentinel に送信する方法の詳細については、関連するプロバイダーのドキュメントを参照してください。 
 
-![オンプレミスの CEF](./media/connect-cef/cef-syslog-onprem.png)
+#### <a name="rest-api-integration-using-azure-functions"></a>Azure Functions を使用した REST API 統合
 
-## <a name="map-data-types-with-azure-sentinel-connection-options"></a>Azure Sentinel 接続オプションを使用してデータ型をマップする
+[Azure Functions](../azure-functions/index.yml) を使用してプロバイダー API に接続する統合では、最初にデータを書式設定してから、[Azure Monitor Data Collector API](../azure-monitor/logs/data-collector-api.md) を使用して Azure Sentinel カスタム ログ テーブルに送信します。
 
+プロバイダー API に接続し、Azure Sentinel でログを収集するためにこれらのデータ コネクタを構成する方法の詳細については、Azure Sentinel のデータ コネクタごとに示されている手順に従ってください。
 
-| **データの種類** | **接続する方法** | **データ コネクタか?** | **コメント** |
-|------|---------|-------------|------|
-| AWSCloudTrail | [AWS の接続](connect-aws.md) | &#10003; | |
-| AzureActivity | [Azure アクティビティの接続](connect-azure-activity.md)と[アクティビティ ログの概要](../azure-monitor/essentials/platform-logs-overview.md)| &#10003; | |
-| AuditLogs | [Azure AD の接続](connect-azure-active-directory.md)  | &#10003; | |
-| SigninLogs | [Azure AD の接続](connect-azure-active-directory.md)  | &#10003; | |
-| AzureFirewall |[Azure Diagnostics](../firewall/firewall-diagnostics.md) | &#10003; | |
-| InformationProtectionLogs_CL  | [Azure Information Protection レポート](/azure/information-protection/reports-aip)<br>[Azure Information Protection の接続](connect-azure-information-protection.md)  | &#10003; | 通常、これにはデータ型に加えて **InformationProtectionEvents** 関数が使用されます。 詳細については、「[レポートを変更し、カスタム クエリを作成する方法](/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)」を参照してください。|
-| AzureNetworkAnalytics_CL  | [トラフィック分析スキーマ](../network-watcher/traffic-analytics.md) [トラフィック分析](../network-watcher/traffic-analytics.md)  | | |
-| CommonSecurityLog  | [CEF の接続](connect-common-event-format.md)  | &#10003; | |
-| OfficeActivity | [Office 365 の接続](connect-office-365.md) | &#10003; | |
-| SecurityEvents | [Windows セキュリティ イベントの接続](connect-windows-security-events.md)  | &#10003; | セキュリティで保護されていないプロトコル ブックについては、[セキュリティで保護されていないプロトコル ブックの設定](./quickstart-get-visibility.md#use-built-in-workbooks)に関する記事を参照してください。  |
-| syslog | [Syslog の接続](connect-syslog.md) | &#10003; | |
-| Microsoft Web アプリケーション ファイアウォール (WAF) - (AzureDiagnostics) |[Microsoft Web アプリケーション ファイアウォールの接続](./connect-azure-waf.md) | &#10003; | |
-| SymantecICDx_CL | [Symantec の接続](connect-symantec.md) | &#10003; | |
-| ThreatIntelligenceIndicator  | [脅威インテリジェンスの接続](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor サービス マップ](../azure-monitor/vm/service-map.md)<br>[Azure Monitor VM の Insights のオンボード](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Azure Monitor VM の Insights を有効にする](../azure-monitor/vm/vminsights-enable-overview.md) <br> [シングル VM のオンボードでの使用](../azure-monitor/vm/vminsights-enable-portal.md)<br>  [ポリシーによるオンボードの使用](../azure-monitor/vm/vminsights-enable-policy.md)| &#10007; | VM Insights ブック  |
-| DnsEvents | [DNS の接続](connect-dns.md) | &#10003; | |
-| W3CIISLog | [IIS ログの接続](../azure-monitor/agents/data-sources-iis-logs.md)  | &#10007; | |
-| WireData | [ワイヤ データの接続](../azure-monitor/insights/wire-data.md) | &#10007; | |
-| WindowsFirewall | [Windows ファイアウォールの接続](connect-windows-firewall.md) | &#10003; | |
-| AADIP SecurityAlert  | [Azure AD Identity Protection への接続](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure ATP) の接続 | &#10003; | |
-| ASC SecurityAlert  | Azure Security Center からの [Azure Defender アラート](connect-azure-security-center.md)の接続  | &#10003; | |
-| MCAS SecurityAlert  | [Microsoft Cloud App Security の接続](connect-cloud-app-security.md)  | &#10003; | |
-| SecurityAlert | | | |
-| Sysmon (イベント) | [Sysmon の接続](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows イベントの接続](../azure-monitor/agents/data-sources-windows-events.md) <br> [Sysmon Parser の入手](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 既定では、Sysmon コレクションは仮想マシンにインストールされません。 Sysmon エージェントのインストール方法の詳細については、[Sysmon](/sysinternals/downloads/sysmon) に関する記事を参照してください。 |
-| ConfigurationData  | [VM インベントリの自動化](../automation/change-tracking/overview.md)| &#10007; | |
-| ConfigurationChange  | [VM の追跡の自動化](../automation/change-tracking/overview.md) | &#10007; | |
-| F5 BIG-IP | [F5 BIG-IP の接続](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10003; | |
-| McasShadowItReporting  |  | &#10007; | |
-| Barracuda_CL | [Barracuda の接続](connect-barracuda.md) | &#10003; | |
+また、Azure Functions を使用する統合では、Azure Sentinel データ コネクタ ページに **[Azure へのデプロイ]** ボタンが表示されます。 これらの統合については、次の手順に従って構成を簡略化します。
+
+1. **[Azure へのデプロイ]** を選択します。
+1. プロバイダー API に接続するパラメーター値を入力します。
+1. Azure Sentinel ワークスペース ID とキーを入力し、Log Analytics に接続して、データを Azure Sentinel に送信します。
+
+> [!IMPORTANT]
+> Azure テナントで Azure Functions をホストするので、Azure Functions を使用する統合では、追加のデータ インジェスト コストが発生する可能性があります。 詳細については、[Azure Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。
+
+### <a name="agent-based-integration"></a>エージェントベースの統合
+
+Azure Sentinel では、Syslog プロトコルを使用して、リアルタイムのログ ストリーミングを実行できるどのデータ ソースにも、エージェントを介して接続できます。 たとえば、ほとんどのオンプレミス データ ソースでは、エージェントベースの統合を介して接続します。
+以下のセクションでは、Azure Sentinel エージェントベースのデータ コネクタのさまざまな種類について説明します。 エージェントベースのメカニズムを使用して接続を構成するには、各 Azure Sentinel データ コネクタ ページの手順に従います。
+
+CEF または Syslog を介して Azure Sentinel に接続するファイアウォール、プロキシ、エンドポイントの完全な一覧については、「[Azure Sentinel パートナー データ コネクタ](partner-data-connectors.md)」を参照してください。
+
+#### <a name="syslog"></a>syslog
+
+Linux 用 Log Analytics エージェント (旧称 OMS エージェント) を使用して、Linux ベースの Syslog 対応デバイスから Azure Sentinel にイベントをストリーミングできます。 Log Analytics エージェントは、Log Analytics エージェントをデバイスに直接インストールできる任意のデバイスでサポートされています。
+
+デバイスの組み込み Syslog デーモンは、指定された種類のローカル イベントを収集し、それらをローカルでエージェントに転送します。その後、ローカル イベントは Log Analytics ワークスペースにストリーミングされます。 構成が完了すると、Log Analytics Syslog テーブルにデータが表示されます。
+
+デバイスの種類により、エージェントは、デバイス上に直接、または専用の Linux ベースのログ フォワーダー上にインストールされます。 Log Analytics エージェントは、UDP を使用して Syslog デーモンからイベントを受信します。 Linux マシンで大量の Syslog イベントを収集することが予想される場合、イベントは TCP 経由で Syslog デーモンからエージェントに送信され、そこから Log Analytics に送信されます。
+
+詳細については、「[Syslog ベースのアプライアンスを Azure Sentinel に接続する](connect-syslog.md)」を参照してください。 
+
+#### <a name="common-event-format-cef"></a>Common Event Format (CEF)
+
+ログの形式は異なりますが、多くのソースでは CEF ベースの書式設定がサポートされています。 Azure Sentinel エージェントは実際には Log Analytics エージェントであり、CEF 形式のログを、Log Analytics で取り込める形式に変換します。
+
+CEF でデータを出力するデータ ソースの場合は、Syslog エージェントを設定してから、CEF データ フローを構成します。 構成が成功すると、**CommonSecurityLog** テーブルにデータが表示されます。
+
+詳細については、[CEF ベースのアプライアンスの Azure Sentinel への接続](connect-common-event-format.md)に関するページを参照してください。
+
+#### <a name="custom-logs"></a>カスタム ログ
+
+一部のデータ ソースには、Windows または Linux 上のファイルとして、収集に使用できるログがあります。 これらのログは、Log Analytics カスタム ログ収集エージェントを使用して収集できます。
+
+Log Analytics カスタム ログ収集エージェントを使用して接続するには、各 Azure Sentinel データ コネクタ ページの手順に従います。 構成が完了すると、データはカスタム テーブルに表示されます。
+
+詳細については、[Log Analytics エージェントを使用したカスタム ログの収集](../azure-monitor/agents/data-sources-custom-logs.md)に関するページを参照してください。
+
+## <a name="data-connector-support"></a>データ コネクタのサポート
+
+Microsoft と他の組織の両方が Azure Sentinel データ コネクタを作成しています。 各データ コネクタには、次のいずれかのサポートの種類があります。
+
+| サポートの種類| 説明|
+|-------------|------------|
+|**Microsoft によるサポート**|適用対象:<ul><li>Microsoft がデータ プロバイダーであり、作成者であるデータ ソースのデータ コネクタ。</li><li>Microsoft 以外のデータ ソース用の Microsoft が作成した一部のデータ コネクタ。</li></ul>Microsoft では、[Microsoft Azure サポート プラン](https://azure.microsoft.com/support/options/#overview)に従って、このカテゴリのデータ コネクタをサポートし、管理しています。<br><br>パートナーまたはコミュニティでは、Microsoft 以外の任意のパーティによって作成されたデータ コネクタをサポートしています。|
+|**パートナーによるサポート**|Microsoft 以外の取引先によって作成されたデータ コネクタに適用されます。<br><br>パートナー企業は、これらのデータ コネクタのサポートまたはメンテナンスを提供します。 パートナー企業は、独立系ソフトウェア ベンダー、マネージド サービス プロバイダー (MSP/MSSP)、システム インテグレーター (SI)、またはそのデータ コネクタの Azure Sentinel ページに連絡先情報が提供されている任意の組織である場合があります。<br><br>パートナーがサポートするデータ コネクタに関する問題については、指定されたデータ コネクタのサポート連絡先にお問い合わせください。|
+|**コミュニティによるサポート**|Azure Sentinel の指定されたデータ コネクタ ページにデータ コネクタのサポートとメンテナンスの連絡先が記載されていない Microsoft またはパートナー開発者によって作成されたデータ コネクタに適用されます。<br><br>これらのデータ コネクタについて質問または問題がある場合は、[Azure Sentinel GitHub コミュニティ](https://aka.ms/threathunters)で[問題を報告する](https://github.com/Azure/Azure-Sentinel/issues/new/choose)ことができます。|
+
+### <a name="find-the-support-contact-for-a-data-connector"></a>データ コネクタのサポート連絡先を見つける
+
+データ コネクタのサポート連絡先情報を見つけるには、次の手順を実行します。
+
+1. Azure Sentinel の左側のメニューで、 **[データ コネクタ]** を選択します。
+   
+1. サポート情報を検索するコネクタを選択します。
+   
+1. データ コネクタのサイド パネルで、 **[サポート元]** フィールドを確認します。
+   
+   ![Azure Sentinel でデータ コネクタの [サポート元] フィールドを表示するスクリーンショット。](./media/collect-data/connectors.png)
+   
+   **[サポート元]** フィールドには、選択したデータ コネクタのサポートとメンテナンスにアクセスするために使用できるサポート連絡先リンクがあります。
+
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Sentinel を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
-- [データを Azure Sentinel にオンボード](quickstart-onboard.md)し、[データや潜在的な脅威を視覚化する](quickstart-get-visibility.md)方法を確認します。
+- Azure Sentinel を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
+- [データを Azure Sentinel にオンボード](quickstart-onboard.md)し、[データや潜在的な脅威を視覚化する](get-visibility.md)方法を確認します。

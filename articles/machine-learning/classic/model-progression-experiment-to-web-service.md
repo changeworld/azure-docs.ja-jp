@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): モデルが Web サービスになるまでの過程 - Azure'
-description: Azure Machine Learning Studio (クラシック) モデルが開発中の実験から Web サービスになるまでにたどる過程の概要。
+description: ご自分の Machine Learning Studio (クラシック) モデルが開発中の実験から Web サービスになるまでにたどる過程の概要。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,18 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 4e0f5786047977a319825aae9f3c7b89c0aa118b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47845c8768e807dff7b12f401feeab3d35a9d81b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518625"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696695"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (クラシック) モデルが実験から Web サービスになるまでの過程
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Azure Machine Learning Studio (クラシック) によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+Machine Learning Studio (クラシック) は、予測分析モデルである "***実験***" を開発、実行、テスト、反復処理する対話形式のキャンバスです。 以下に対応する、多様なモジュールが用意されています。
 
 * 実験にデータを入力
 * データを操作します。
@@ -29,7 +31,7 @@ Azure Machine Learning Studio (クラシック) によって提供される対�
 * 結果を評価
 * 最終的な値を出力
 
-実験で問題がなければ、ユーザーが新しいデータを送信して折り返し結果を受信できるように、"***従来の Azure Machine Learning Web サービス** _" または "_ *_新しい Azure Machine Learning Web サービス_**" としてデプロイできます。
+ご自分の実験に問題がなければ、ユーザーが新しいデータを送信して折り返し結果を受信できる、"**Machine Learning (クラシック) Web サービス**" または "*_Azure Machine Learning Web サービス_*" としてデプロイできます。
 
 この記事では、Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程について、概要を説明します。
 
@@ -38,7 +40,7 @@ Azure Machine Learning Studio (クラシック) によって提供される対�
 >
 >
 
-Azure Machine Learning Studio (クラシック) は "*予測分析モデル*" の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に Studio (クラシック) を使用することもできます。 たとえば、データを入力して操作し、結果を出力するだけの実験などです。 この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。 これは Studio (クラシック) の一般的な使用方法ではありません。一般的な使用方法についてこれから説明し、Studio (クラシック) の機能を網羅することにします。
+Machine Learning Studio (クラシック) は "*予測分析モデル*" の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に Studio (クラシック) を使用することもできます。 たとえば、データを入力して操作し、結果を出力するだけの実験などです。 この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。 これは Studio (クラシック) の一般的な使用方法ではありません。一般的な使用方法についてこれから説明し、Studio (クラシック) の機能を網羅することにします。
 
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>予測 Web サービスの開発とデプロイ
 Machine Learning Studio (クラシック) を使用して予測 Web サービスを開発し、デプロイする場合、一般的なソリューションがたどる段階は次のようになります。
@@ -48,7 +50,7 @@ Machine Learning Studio (クラシック) を使用して予測 Web サービス
 *図 1 - 一般的な予測分析モデルの段階*
 
 ### <a name="the-training-experiment"></a>トレーニング実験
-"***トレーニング実験***" は、Machine Learning Studio (クラシック) で Web サービスを開発する最初のフェーズです。 トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。 最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。 予測分析実験の開発の例については、[Azure Machine Learning Studio (クラシック) での信用リスク評価のための予測分析ソリューション開発](tutorial-part1-credit-risk.md)に関する記事を参照してください。
+"***トレーニング実験***" は、Machine Learning Studio (クラシック) で Web サービスを開発する最初のフェーズです。 トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。 最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。 予測分析実験の開発の例については、[Machine Learning Studio (クラシック) での信用リスク評価のための予測分析ソリューション開発](tutorial-part1-credit-risk.md)に関する記事を参照してください。
 
 ### <a name="the-predictive-experiment"></a>予測実験
 トレーニング実験でモデルをトレーニングしたら、Machine Learning Studio (クラシック) で **[Web サービスの設定]** をクリックし、 **[Predictive Web Service]\(予測 Web サービス\)** を選択して、トレーニング実験を "**_予測実験_**" に変換する処理を開始します。 予測実験の目的は、トレーニング済みのモデルを使用して新しいデータにスコアを付け、最終的に Azure Web サービスとして運用できる状態にすることです。
@@ -64,12 +66,12 @@ Machine Learning Studio (クラシック) を使用して予測 Web サービス
 この変換プロセスでは、トレーニング実験は破棄されません。 このプロセスが完了すると、2 つのタブが Studio (クラシック) に表示されます。1 つがトレーニング実験用で、もう 1 つが予測実験用です。 このように、トレーニング実験に変更を加えてから、Web サービスをデプロイして、予測実験を再構築できます。 また、トレーニング実験のコピーを保存しておいて、新たに別の実験を始めることもできます。
 
 > [!NOTE]
-> **[Predictive Web Service (予測 Web サービス)]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。 トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。 詳細については、[Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](deploy-a-machine-learning-web-service.md)に関するページを参照してください。
+> **[Predictive Web Service (予測 Web サービス)]** をクリックすると、トレーニング実験を予測実験に変換する自動処理が開始されます。ほとんどの場合、この方法を利用できます。 トレーニング実験が複雑な場合 (結合するトレーニングのパスが複数ある場合など) は、この変換を手動で実行した方が良いこともあります。 詳細については、[Machine Learning Studio (クラシック) でデプロイするモデルを準備する方法](deploy-a-machine-learning-web-service.md)に関するページを参照してください。
 >
 >
 
 ### <a name="the-web-service"></a>Web サービス
-予測実験の準備が問題なくできたら、Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとしてサービスをデプロイできます。 "*従来の Machine Learning Web サービス*" としてデプロイすることでモデルを運用可能にするには、 **[Web サービスのデプロイ]** をクリックして、 **[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** を選択します。 "*新しい Machine Learning Web サービス*" としてデプロイするには、 **[Web サービスのデプロイ]** をクリックして、 **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択します。 ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」をご覧ください。
+予測実験の準備が問題なくできたら、Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとしてサービスをデプロイできます。 "*従来の Machine Learning Web サービス*" としてデプロイすることでモデルを運用可能にするには、 **[Web サービスのデプロイ]** をクリックして、 **[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** を選択します。 "*新しい Machine Learning Web サービス*" としてデプロイするには、 **[Web サービスのデプロイ]** をクリックして、 **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択します。 ユーザーは、Web サービス REST API を使用してモデルにデータを送信し、折り返し結果を受信できるようになりました。 詳細については、[Machine Learning Web サービスを使用する方法](consume-web-services.md)に関するページを参照してください。
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>一般的でないケース: 非予測 Web サービスの作成
 実験で予測分析モデルをトレーニングしない場合、トレーニング実験とスコア付け実験の両方を作成する必要はありません。実験は 1 つのみになり、この実験を Web サービスとしてデプロイすることができます。 Machine Learning Studio (クラシック) は、使用したモジュールを分析することで、実験に予測モデルが含まれるかどうかを検出します。
@@ -109,11 +111,11 @@ Machine Learning Studio (クラシック) を使用して予測 Web サービス
 ## <a name="next-steps"></a>次のステップ
 開発および実験のプロセスの詳細については、次の記事をご覧ください。
 
-* 実験の変換 - [Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](deploy-a-machine-learning-web-service.md)
-* Web サービスのデプロイ: [Azure Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)
+* 実験の変換: [Machine Learning Studio (クラシック) でデプロイするモデルを準備する方法](deploy-a-machine-learning-web-service.md)
+* Web サービスのデプロイ: [Machine Learning Web サービスをデプロイする](deploy-a-machine-learning-web-service.md)
 * モデルの再トレーニング: [プログラムによる Machine Learning のモデルの再トレーニング](./retrain-machine-learning-model.md)
 
 プロセス全体の例については、以下を参照してください。
 
-* [Machine Learning のチュートリアル: Azure Machine Learning Studio (クラシック) で初めての実験を作成する](create-experiment.md)
-* [チュートリアル:信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](tutorial-part1-credit-risk.md)
+* [Machine Learning のチュートリアル: Machine Learning Studio (クラシック) で初めて実験を作成する](create-experiment.md)
+* [チュートリアル: 信用リスク評価のための予測分析ソリューションを Machine Learning Studio (クラシック) 内で開発する](tutorial-part1-credit-risk.md)

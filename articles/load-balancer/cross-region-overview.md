@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 0a08dfd1771ab0a8f866ffad1faa2c7d867b3072
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: f873bec75d0454aed2c6569a8f8dfaa7eaab9868
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075503"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195865"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -84,7 +84,7 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
 ### <a name="static-ip"></a>静的 IP
-リージョン間ロード バランサーには静的パブリック IP が付属しています。これにより、IP アドレスを同じままにすることができます。 静的 IP の詳細については、[こちら](../virtual-network/public-ip-addresses.md#allocation-method)を参照してください
+リージョン間ロード バランサーには静的パブリック IP が付属しています。これにより、IP アドレスを同じままにすることができます。 静的 IP の詳細については、[こちら](../virtual-network/public-ip-addresses.md#ip-address-assignment)を参照してください
 
 ### <a name="client-ip-preservation"></a>クライアント IP の保持
 リージョン間ロード バランサーは、レイヤー 4 のパススルー ネットワーク ロード バランサーです。 このパススルーによって、パケットの元の IP が保持されます。  元の IP は、仮想マシン上で実行するコードで使用できます。 この保持機能により、IP アドレスに固有のロジックを適用できます。
@@ -140,6 +140,8 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 * リージョン間ロード バランサーのバックエンド プールにプライベートまたは内部ロード バランサーを追加することはできません 
 
 * リージョン間 IPv6 フロントエンド IP 構成はサポートされていません。 
+
+* UDP トラフィックは、リージョン間ロード バランサーではサポートされていません。 
 
 * 現在、正常性プローブを構成することはできません。 既定の正常性プローブによって、リージョン ロード バランサーに関する可用性情報が 20 秒ごとに自動的に収集されます。 
 

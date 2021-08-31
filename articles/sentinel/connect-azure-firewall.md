@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: b21ce75bfb33b5a8869c63b7d3f71fb9f0c93768
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4683708f8fdd4eda2f483cc4112fe9fe9939ce6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98621297"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121780906"
 ---
 # <a name="connect-data-from-azure-firewall"></a>Azure Firewall からデータを接続する
 
@@ -23,6 +23,8 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 Azure Firewall ログを Azure Sentinel に接続すると、ブック内でログ データを表示し、それを使用してカスタム アラートを作成し、組み込んで、調査を改善することができます。
 
 [Azure Firewall ログの監視](../firewall/firewall-diagnostics.md)について説明します。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +48,7 @@ Azure Firewall ログを Azure Sentinel に接続すると、ブック内でロ�
     
     1. **[Log Analytics への送信]** チェック ボックスにマークを付けます。 2 つの新しいフィールドが下に表示されます。 関連する **[サブスクリプション]** と **[Log Analytics ワークスペース]** (Azure Sentinel が存在する場所) を選択します。
 
-    1. ログを取り込むルールの種類のチェック ボックスにマークを付けます。 **AzureFirewallApplicationRule** と **AzureFirewallNetworkRule** を設定することをお勧めします。
+    1. ログを取り込むルールの種類のチェック ボックスにマークを付けます。 **AzureFirewallApplicationRule**、**AzureFirewallNetworkRule**、および **AzureFirewallDNSProxy** を設定することをお勧めします。
 
     1. ページの最上部で **[保存]** を選択します。
 
@@ -58,5 +60,5 @@ Azure Firewall ログを Azure Sentinel に接続すると、ブック内でロ�
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Firewall ログを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

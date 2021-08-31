@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: bdcb675e379b5ab94f8404966477f4d2df56400c
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d861a5c820c38eb5e0e8ea8f777e9346871ce658
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163933"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579470"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -60,7 +60,7 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 |パートナー|構成/方法/デプロイ ガイド|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN デプロイ ガイド](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco Cloud Service Router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN を VWAN ハブに導入するパブリック プレビューの間、Cisco により、vwan_public_preview@external.cisco.com にメールを送り、vManage Deployment Guide をリクエストして Cisco EFT (Early Field Trial) 顧客として登録することがエンド カスタマーに求められます。 
+|[Cisco Cloud Service Router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco SD-WAN ソリューションと Azure 仮想 WAN の統合により、Cloud OnRamp のマルチクラウド デプロイが強化され、Azure Virtual WAN ハブでネットワーク仮想アプライアンス (NVA) として Cisco Catalyst 8000V Edge ソフトウェア (Cisco Catalyst 8000V) を構成できます。 [Cisco SD-WAN Cloud OnRamp、Cisco IOS XE リリース 17.x 構成ガイドをご覧ください](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) 
 |[Virtual WAN ハブ内の VMware SD-WAN](https://sdwan.vmware.com/partners/microsoft) | VWAN ハブ内の VMware SD-WAN のパブリックプレビュー中、顧客は vhubsupport@vmware.com に電子メールを送信して VMware に登録する必要があります。 [Virtual WAN ハブ内の VMware SD-WAN デプロイ ガイド](https://kb.vmware.com/s/article/82746)|
 
 Aviatrix、Citrix、Versa Networks の各パートナーは、近い将来、仮想ハブ サービスで NVA を提供する予定です。

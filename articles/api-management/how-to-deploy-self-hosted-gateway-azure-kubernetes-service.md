@@ -8,18 +8,18 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 05/25/2021
+ms.date: 06/11/2021
 ms.author: apimpm
-ms.openlocfilehash: 366b0fa70fd5229310d0f999acd07a49c45f0da0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c43f31be807d6a649cdd750ee15841a0ecbd7631
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375444"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300761"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Azure Kubernetes Service にデプロイする
 
-この記事では、Azure API Management のセルフホステッド ゲートウェイ コンポーネントを [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) にデプロイする手順について説明します。 
+この記事では、Azure API Management のセルフホステッド ゲートウェイ コンポーネントを [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) にデプロイする手順について説明します。 セルフホステッド ゲートウェイを Kubernetes クラスターにデプロイする場合は、[操作方法に関する記事](how-to-deploy-self-hosted-gateway-kubernetes.md)を参照してください。
 
 > [!NOTE]
 > また、セルフホステッド ゲートウェイを [Azure Arc 対応 Kubernetes クラスター](how-to-deploy-self-hosted-gateway-azure-arc.md)に[クラスター拡張機能](../azure-arc/kubernetes/extensions.md)としてデプロイすることもできます。
@@ -35,30 +35,35 @@ ms.locfileid: "110375444"
 1. **[Deployment and infrastructure]\(デプロイとインフラストラクチャ\)** から **[ゲートウェイ]** を選択します。
 2. デプロイするセルフホステッド ゲートウェイ リソースを選択します。
 3. **[Deployment]/(デプロイ/)** を選択します。
-4. 既定の **[有効期限]** および **[秘密鍵]** の値を使用して、 **[トークン]** テキスト ボックスの新しいトークンが自動生成されたことに注意してください。 必要に応じていずれかまたは両方を調整し、 **[生成]** を選択して新しいトークンを作成します。
+4. 既定の **[有効期限]** および **[秘密鍵]** の値を使用して、 **[トークン]** テキスト ボックスに新しいトークンが自動生成されています。 必要に応じていずれかまたは両方を調整し、 **[生成]** を選択して新しいトークンを作成します。
 5. **[デプロイ スクリプト]** で **[Kubernetes]** が選択されていることを確認します。
 6. **[Deployment]/(デプロイ/)** の横にある **<gateway-name>.yml** ファイルのリンクを選択してファイルをダウンロードします。
-7. 必要に応じて、yml ファイルのポート マッピングとコンテナー名を調整します。
-8. シナリオによっては、[サービスの種類](../aks/concepts-network.md#services)の変更が必要になる場合があります。 既定値は `NodePort` です。
-9. **[Deploy]/(デプロイ/)** テキストボックスの右端にある **[コピー]** アイコンを選択して、`kubectl` コマンドをクリップボードに保存します。
-10. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 コマンドでは、ダウンロードした環境ファイルが現在のディレクトリに存在する必要があることに注意してください。
-```console
-    kubectl apply -f <gateway-name>.yaml
-```
-11. コマンドを実行します。 このコマンドは AKS クラスターに対して、Microsoft Container Registry からダウンロードしたセルフホステッド ゲートウェイのイメージを使用してコンテナーを実行し、HTTP (8080) ポートと HTTPS (443) ポートを公開するようにコンテナーを構成するように指示します。
-12. 次のコマンドを実行して、ゲートウェイ ポッドが実行中であることを確認します。 使用するポッド名は異なることに注意してください。
-```console
-kubectl get pods
-NAME                                   READY     STATUS    RESTARTS   AGE
-contoso-apim-gateway-59f5fb94c-s9stz   1/1       Running   0          1m
-```
-13. 次のコマンドを実行して、ゲートウェイ サービスが実行中であることを確認します。 サービス名と IP アドレスが異なることに注意してください。
-```console
-kubectl get services
-NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
-contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:30043/TCP   1m
-```
-14. Azure portal に戻り、デプロイしたばかりのゲートウェイ ノードが正常な状態を報告していることを確認します。
+7. 必要に応じて、yml ファイルの `config.service.endpoint`、ポート マッピング、コンテナー名を調整します。
+8. シナリオによっては、[サービスの種類](../aks/concepts-network.md#services)の変更が必要になる場合があります。 
+    * 既定値は `LoadBalancer` です。これは外部ロード バランサーです。 
+    * [内部ロード バランサー](../aks/internal-lb.md)を使用すると、セルフホステッド ゲートウェイへのアクセスを内部ユーザーのみに制限できます。 
+    * 下のサンプルでは `NodePort` が使用されています。
+1. **[Deploy]/(デプロイ/)** テキストボックスの右端にある **[コピー]** アイコンを選択して、`kubectl` コマンドをクリップボードに保存します。
+1. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 コマンドでは、ダウンロードした環境ファイルが現在のディレクトリに存在している必要があります。
+    ```console
+        kubectl apply -f <gateway-name>.yaml
+    ```
+1. コマンドを実行します。 コマンドは、AKS クラスターに次のことを指示します。
+    * Microsoft Container Registry からダウンロードしたセルフホステッド ゲートウェイのイメージを使用して、コンテナーを実行する。 
+    * HTTP (8080) および HTTPS (443) ポートを公開するようにコンテナーを構成する。
+1. 次のコマンドを実行して、ゲートウェイ ポッドが実行中であることを確認します。 使用するポッド名は別のものになります。
+    ```console
+    kubectl get pods
+    NAME                                   READY     STATUS    RESTARTS   AGE
+    contoso-apim-gateway-59f5fb94c-s9stz   1/1       Running   0          1m
+    ```
+1. 次のコマンドを実行して、ゲートウェイ サービスが実行中であることを確認します。 使用するサービス名と IP アドレスは別のものになります。
+    ```console
+    kubectl get services
+    NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+    contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:30043/TCP   1m
+    ```
+1. Azure portal に戻り、デプロイしたゲートウェイ ノードが正常な状態を報告していることを確認します。
 
 > [!TIP]
 > <code>kubectl logs <gateway-pod-name></code> コマンドを使用して、セルフホステッド ゲートウェイ ログのスナップショットを表示します。

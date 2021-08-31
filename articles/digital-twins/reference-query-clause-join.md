@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 7dc6827f7ebd7b034ffc00906629bafe04036fbd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 6e018985b231e67e519968c0057754c7f3383ee4
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789571"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731944"
 ---
 # <a name="azure-digital-twins-query-language-reference-join-clause"></a>Azure Digital Twins クエリ言語リファレンス: JOIN 句
 
@@ -23,9 +23,9 @@ ms.locfileid: "109789571"
 この句はクエリの実行時に省略可能です。
 
 ## <a name="core-syntax-join--related"></a>コア構文: JOIN ... RELATED 
-Azure Digital Twins のリレーションシップは、独立したエンティティでなく、デジタル ツインの一部であるため、特定の種類のリレーションシップのセットをツイン コレクションから参照するために `JOIN` クエリで `RELATED` キーワードが使用されます。 このリレーションシップのセットには、コレクション名を割り当てることができます。
+Azure Digital Twins のリレーションシップは、独立したエンティティでなく、デジタル ツインの一部であるため、ツイン コレクションから特定のタイプのリレーションシップのセットを参照するために `JOIN` クエリで `RELATED` キーワードが使用されます (タイプは [DTDL 定義](concepts-models.md#basic-relationship-example)のリレーションシップの **name** フィールドを使用して指定されます)。 リレーションシップのセットには、クエリ内でコレクション名を割り当てることができます。
 
-次いで、クエリでは `WHERE` 句を使用して、リレーションシップ クエリをサポートするために使用されている特定のツインを指定する必要があります。 これは、ソースまたはターゲット ツインの `$dtId` 値のいずれかをフィルター処理することによって行われます。
+次に、クエリでは `WHERE` 句を使用して、リレーションシップ クエリをサポートするために使用されている特定のツイン (1 つまたは複数) を指定する必要があります。これは、ソースまたはターゲット ツインの `$dtId` 値をフィルター処理することによって行われます。
 
 ### <a name="syntax"></a>構文
 
@@ -58,7 +58,7 @@ Azure Digital Twins のリレーションシップは、独立したエンティ
 * [OUTER JOIN セマンティクスがない](#no-outer-join-semantics)
 * [ソース ツインが必要](#twins-required)
 
-下のセクションで詳細をご覧ください。
+詳細については、次のセクションを参照してください。
 
 ### <a name="depth-limit-of-five"></a>5 の深さ制限
 
@@ -66,7 +66,7 @@ Azure Digital Twins のリレーションシップは、独立したエンティ
 
 #### <a name="example"></a>例
 
-次のクエリは、Azure Digital Twins クエリで可能な `JOINs` の最大数を示しています。 これにより Buliding1 のすべての LightBulb が取得されます。
+次のクエリは、Azure Digital Twins クエリで可能な `JOIN` 句の最大数を示しています。 これにより Buliding1 のすべての LightBulb が取得されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="MaxJoinExample":::
 
@@ -84,6 +84,6 @@ Building1 に Floor (フロア) が含まれていない場合、このクエリ
 
 ### <a name="twins-required"></a>ツインが必要
 
-Azure Digital Twins のリレーションには、独立したエンティティのようにクエリを実行できません。リレーションシップの発生元になるソース ツインに関する情報も提供する必要があります。 これは、`RELATED` キーワードによる Azure Digital Twins の既定の `JOIN` 使用の一部として含まれています。 
+Azure Digital Twins のリレーションには、独立したエンティティのようにクエリを実行できません。リレーションシップの発生元になるソース ツインに関する情報も提供する必要があります。 この機能は、`RELATED` キーワードによる Azure Digital Twins の既定の `JOIN` 使用の一部として含まれています。 
 
 `JOIN` 句を使用したクエリでは、`WHERE` 句の任意のツインの `$dtId` プロパティによるフィルター処理もする必要があります。これにより、リレーションシップ クエリをサポートするために使用されているツインが明確になります。

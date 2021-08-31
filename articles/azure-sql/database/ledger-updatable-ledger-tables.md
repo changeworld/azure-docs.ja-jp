@@ -1,27 +1,27 @@
 ---
 title: Azure SQL Database の更新可能な台帳テーブル
 description: この記事では、Azure SQL Database の更新可能な台帳テーブル、台帳スキーマ、および台帳ビューについて説明します。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 688bcf79acd64006f35f7d5c6909088f5448d31d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4a84cb359a0840f593fd732339a4ef9f9f3588db
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080401"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665513"
 ---
 # <a name="azure-sql-database-updatable-ledger-tables"></a>Azure SQL Database の更新可能な台帳テーブル
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
 
 更新可能な台帳テーブルはシステムによってバージョン管理されているテーブルであり、ユーザーは更新や削除を実行できますが、改ざん防止機能も用意されています。 更新や削除が行われると、以前のバージョンのすべての行が、履歴テーブルと呼ばれるセカンダリ テーブルに保存されます。 履歴テーブルは、その更新可能な台帳テーブルのスキーマを反映しています。 ある行が更新されると、その行の最新バージョンが台帳テーブルに残り、以前のバージョンはアプリケーションから透過的に、システムによって履歴テーブルに挿入されます。 
 

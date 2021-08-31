@@ -1,6 +1,6 @@
 ---
 title: ML Studio (classic):Web サービスを管理する - Azure
-description: Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
+description: Machine Learning Web サービス ポータルを使用して、Machine Learning Studio (クラシック) Web サービスを管理します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,27 +9,28 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: d3aea23c816b9d8b32b0563d3116cdc2b92e080f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6833763ad38bd821067432aa63b166826442ed2f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101094311"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695520"
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (クラシック) Web サービス ポータルを使用して Web サービスを管理する
+# <a name="manage-a-web-service-using-the-machine-learning-studio-classic-web-services-portal"></a>Machine Learning Studio (クラシック) Web サービス ポータルを使用して Web サービスを管理する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
+Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 
 
 Machine Learning Web サービス ポータルでは、次のことができます。
 
 * Web サービスの使用状況を監視する。
 * 説明を設定する、Web サービスのキーを更新する (新しい Web サービスのみ)、ストレージ アカウント キーを更新する (新しい Web サービスのみ)、ログ記録を有効にする、サンプル データを有効または無効にする。
 * Web サービスを削除する。
-* 課金プランを作成、削除、または更新する (新しい Web サービスのみ)。
-* エンドポイントを追加、削除する (クラシック Web サービスのみ)。
+* 課金プランを作成、削除、または更新する: [Azure Machine Learning のみ](../index.yml)。
+* エンドポイントの追加と削除: ML Studio (クラシック) のみ
 
 >[!NOTE]
 >クラシック Web サービスは、[Machine Learning Studio (クラシック)](https://studio.azureml.net) の **[Web サービス]** タブでも管理できます。
@@ -38,11 +39,11 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 
 新しい Web サービスは、Azure リソースとしてデプロイされます。 そのため、新しい Web サービスをデプロイおよび管理するための適切なアクセス許可が必要です。  New Web サービスをデプロイして管理するには、Web サービスがデプロイされているサブスクリプションで共同作成者または管理者ロールが割り当てられている必要があります。 別のユーザーを Machine Learning ワークスペースに招待したら、Web サービスをデプロイまたは管理する前に、そのユーザーを共同作成者または管理者ロールに割り当てる必要があります。 
 
-ユーザーが Azure Machine Learning Web サービス ポータル内のリソースにアクセスするための適切なアクセス許可を持っていない場合、Web サービスをデプロイしようとすると、次のような内容のエラーが表示されます。
+ユーザーが Machine Learning Web サービス ポータル内のリソースにアクセスするための適切なアクセス許可を持っていない場合、Web サービスをデプロイしようとすると、次のようなエラーが表示されます。
 
 *Web サービスのデプロイに失敗しました。このアカウントには、ワークスペースを含む Azure サブスクリプションへの十分なアクセス権がありません。Web サービスを Azure にデプロイするには、同じアカウントをワークスペースに招待し、ワークスペースを含む Azure サブスクリプションへのアクセス権を付与する必要があります。*
 
-ワークスペースを作成する方法の詳細については、「[Azure Machine Learning Studio (クラシック) ワークスペースの作成と共有](create-workspace.md)」を参照してください。
+ワークスペースを作成する方法の詳細については、[Machine Learning Studio (クラシック) ワークスペースの作成と共有](create-workspace.md)に関するページを参照してください。
 
 アクセス許可の設定の詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
@@ -50,7 +51,7 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 ## <a name="manage-new-web-services"></a>新しい Web サービスを管理する
 新しい Web サービスを管理するには、次のようにします。
 
-1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
+1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、[Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
 2. メニューで、 **[Web サービス]** をクリックします。
 
 すると、サブスクリプションにデプロイされている Web サービスの一覧が表示されます。 
@@ -111,13 +112,13 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 
 ## <a name="manage-classic-web-services"></a>クラシック Web サービスを管理する
 > [!NOTE]
-> このセクションの手順は、Azure Machine Learning Web サービス ポータルでのクラシック Web サービスの管理に関連しています。 Machine Learning Studio (クラシック) および Azure portal でのクラシック Web サービスの管理については、「[Azure Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)」を参照してください。
+> このセクションの手順は、Machine Learning Web サービス ポータルでのクラシック Web サービスの管理に関連しています。 Machine Learning Studio (クラシック) および Azure portal でのクラシック Web サービスの管理については、「[Azure Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)」を参照してください。
 > 
 > 
 
 クラシック Web サービスを管理するには、次のようにします。
 
-1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
+1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、[Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
 2. **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 
 クラシック Web サービスを管理するには、 **[Classic Web Services (クラシック Web サービス)]** をクリックします。 [Classic Web Services (クラシック Web サービス)]ページでは、次の操作を実行できます。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: c206cba3b23a0bf41ce32481980aa466e869bcde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d710038c00dff56d4840f7252dcb992dcb1b8c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596299"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749269"
 ---
 # <a name="states-and-billing-of-azure-virtual-machines"></a>Azure Virtual Machines の状態と課金
 
@@ -43,10 +43,10 @@ Azure リソース エクスプローラーは、VM の実行状態を表示す�
 
 | 電源状態 | 説明 | 課金 |  
 |---|---|---|
-| 開始中| 仮想マシンは起動中です。 |課金されません* | 
+| 開始中| 仮想マシンは起動中です。 | 課金されます | 
 | 実行中 | 仮想マシンは完全に起動しました。 これが標準の動作状態です。 | 課金されます | 
 | 停止中 | これは、実行中と停止間で遷移している状態です。 | 課金されます| 
-|停止済み | Virtual Machine は、ゲスト OS から、または PowerOff API を使用してシャットダウンされました。 この状態では、仮想マシンで、まだ基になるハードウェアがリースされています。 この状態は、*停止 (割り当て済み)* とも呼ばれます。 | 課金されます | 
+|停止済み | 仮想マシンはホスト上に割り当てられていますが、実行されていません。 PoweredOff 状態または *停止済み (割り当て済み)* とも呼ばれます。 これは、PowerOff API 操作を呼び出すか、ゲスト OS 内からシャットダウンを呼び出すことによって発生することがあります。 VM の作成中、または割り当て解除済み状態から VM を起動しているときに、停止済み状態が一時的に検出されることもあります。  | 課金されます | 
 | 割り当て解除中 | これは、実行中と割り当て解除間で遷移している状態です。 | 課金されません* | 
 | 割り当て解除済み | Virtual Machine は、基になるハードウェアに対するリースから解放され、完全に電源が切られました。 この状態は、*停止 (割り当て解除)* とも呼ばれます。 | 課金されません* | 
 

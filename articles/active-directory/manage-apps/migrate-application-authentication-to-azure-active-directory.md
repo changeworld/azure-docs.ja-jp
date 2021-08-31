@@ -2,22 +2,22 @@
 title: アプリケーション認証を Azure Active Directory に移行する
 description: このホワイトペーパーでは、Azure AD へのアプリケーション認証の移行の計画と利点について詳しく説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 02/05/2021
-ms.author: mtillman
-ms.reviewer: baselden
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a70392c6236591d803b4c3823677ba6788072ff
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 365283ebc45c0f85a56d27d4cc90807de9a88fb4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076998"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742878"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>アプリケーション認証を Azure Active Directory に移行する
 
@@ -555,11 +555,9 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 [MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) ポータル エクスペリエンスを **ユーザーに示します**。 ここで、すべてのクラウドベースのアプリ、[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) を使用して利用できるアプリ、およびこれらのアプリにアクセスする権限がある場合は[アプリケーション プロキシ](../app-proxy/application-proxy.md)を使用しているアプリにアクセスできます。
 
-
 次のようにして、ユーザーにアプリを検出する方法を説明できます。
 
 - [既存のシングル サインオン](./view-applications-portal.md)機能を使用して、**ユーザーを任意のアプリにリンクする**
-
 
 - アプリに対して [アプリケーションのセルフサービス アクセス](./manage-self-service-access.md)を有効にし、**キュレーションしたアプリをユーザーが追加できるようにする**
 
@@ -573,7 +571,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 - **Android デバイスの場合は**、[Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.intune)から
 
-- **Apple デバイスの場合は**、[Apple App Store から](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)。または [iOS 用のマイ アプリ モバイル アプリ](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653)をダウンロードできます
+- **Apple デバイスの場合は**、[Apple App Store から](https://apps.apple.com/us/app/intune-company-portal/id719171358)。または [iOS 用のマイ アプリ モバイル アプリ](https://appadvice.com/app/my-apps-azure-active-directory/824048653)をダウンロードできます
 
 **ユーザーがブラウザー拡張機能からアプリを開けるようにします。**
 
@@ -603,7 +601,7 @@ Azure AD によって、移行されたアプリを管理するための一元�
 
 [Azure portal](https://portal.azure.com/) を使用して、一元化された場所からすべてのアプリを監査することもできます。
 
-- **[エンタープライズ アプリケーション] の [監査] を使用して **アプリを監査** したり、[Azure AD Reporting API](../reports-monitoring/concept-reporting-api.md) から同じ情報にアクセスして、お気に入りのツールに統合したりします。
+- **[エンタープライズ アプリケーション] の [監査]** を使用して **アプリを監査** したり、[Azure AD Reporting API](../reports-monitoring/concept-reporting-api.md) から同じ情報にアクセスして、お気に入りのツールに統合したりします。
 
 - OAuth または OpenID Connect を使用するアプリの場合は、 **[エンタープライズ アプリケーション] の [アクセス許可]** を使用して、**アプリのアクセス許可を表示します**。
 

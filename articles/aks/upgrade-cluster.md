@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターをアップグレー
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 772cb9d33c9bf9307ca0dc16536933fc9123de4b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9dcbe21ccddb13037cbd7633127880320da9ff2b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860868"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -136,6 +136,12 @@ myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded       
 AKS クラスターのクラスター自動アップグレードはプレビュー機能です。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+`az cli` の場合、次の拡張機能を追加します。
+
+```azurecli-interactive
+az extension add --name aks-preview
+```
 
 `AutoUpgradePreview` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
 

@@ -2,21 +2,23 @@
 title: Key Vault のシークレットとテンプレート
 description: デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。
 ms.topic: conceptual
-ms.date: 05/17/2021
+ms.date: 06/18/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 1cf3b1f3433b47d029876e9676b85c5de776d455
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a5ee223c9cfa2dada3da4f6eb901550c9d4eec9d
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795705"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380718"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
-お使いのテンプレートやパラメーター ファイルに安全な値 (パスワードなど) を直接入れる代わりに、デプロイ時に、[Azure Key Vault](../../key-vault/general/overview.md) から値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 キー コンテナーは、デプロイ先のリソース グループとは異なるサブスクリプションにあってもかまいません。
+お使いのテンプレートやパラメーター ファイルに安全な値 (パスワードなど) を直接入れる代わりに、デプロイ時に、[Azure Key Vault](../../key-vault/general/overview.md) から値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。
 
-この記事では、機密の値をテンプレート パラメーターとして渡す方法に焦点を当てます。 この記事では、仮想マシンのプロパティを、キー コンテナー内の証明書の URL に設定する方法については説明しません。
-そのシナリオのクイックスタート テンプレートについては、[Azure Key Vault から証明書を仮想マシンにインストールする](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)方法に関する記事を参照してください。
+> [!IMPORTANT]
+> この記事では、機密の値をテンプレート パラメーターとして渡す方法に焦点を当てます。 シークレットがパラメーターとして渡されるとき、キー コンテナーは別のサブスクリプションに存在するか、デプロイ先のリソース グループに存在することがあります。 
+>
+> この記事では、仮想マシンのプロパティを、キー コンテナー内の証明書の URL に設定する方法については説明しません。 そのシナリオのクイックスタート テンプレートについては、[Azure Key Vault から証明書を仮想マシンにインストールする](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)方法に関する記事を参照してください。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>キー コンテナーとシークレットをデプロイする
 
@@ -380,7 +382,7 @@ New-AzResourceGroupDeployment `
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - キー コンテナーの一般的な情報については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」をご覧ください。
 - キー シークレットの詳細な参照例については、GitHub にある[キー コンテナーの例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。

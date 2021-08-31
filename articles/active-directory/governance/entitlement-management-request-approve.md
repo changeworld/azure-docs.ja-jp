@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd47a623700c495a571bc4ca6b949d1a2229178a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f44390d042f12336c6556d05c4fe1332e822e068
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469163"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963764"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス要求を承認または拒否する
 
@@ -49,7 +49,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. **[保留中]** タブで、要求を見つけます。
 
-## <a name="view-requestors-answers-to-questions-preview"></a>質問に対する要求元の回答を表示する (プレビュー)
+## <a name="view-requestors-answers-to-questions"></a>質問に対する要求元の回答を表示する
 
 1. マイ アクセスの **[承認]** タブに移動します。
 

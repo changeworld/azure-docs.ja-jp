@@ -3,12 +3,12 @@ title: Azure Functions でサポートされている言語
 description: サポートされている言語 (GA) とプレビュー段階の言語、および Functions の開発を他の言語に拡張する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: da3100521faae61e9803aaa82dbf91045a7ecbc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02a416fa669cd71702e991c79677575bd4563bfb
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98108553"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113493252"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
 
@@ -26,6 +26,14 @@ ms.locfileid: "98108553"
 [3 つのバージョンの Azure Functions ランタイム](functions-versions.md)を利用できます。 次の表は、各ランタイム バージョンでどの言語がサポートされているかを示しています。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
+
+### <a name="language-major-version-support"></a>言語のメジャー バージョンのサポート
+
+Azure Functions では、サポートされているプログラミング言語のメジャー バージョンのサポートを保証しています。 ほとんどの言語では、サポートされているメジャー バージョンを更新するために、マイナー バージョンまたはパッチ バージョンがリリースされています。 マイナー バージョンやパッチ バージョンの例としては、Python 3.9.1 や Node 14.17 などがあります。 サポートされている言語の新しいマイナー バージョンが使用可能になると、関数アプリで使用されるマイナー バージョンは、それらの新しいマイナー バージョンまたはパッチ バージョンに自動的にアップグレードされます。 
+
+> [!NOTE]
+>Azure Functions では、新しいマイナー バージョンが使用可能になった後いつでも古いマイナー バージョンのサポートが削除されることがあるため、関数アプリをプログラミング言語の特定のマイナーまたはパッチ バージョンに固定しないでください。  
+>
 
 ## <a name="custom-handlers"></a>カスタム ハンドラー
 

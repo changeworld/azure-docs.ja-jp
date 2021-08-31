@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: rsethur
 ms.author: seramasu
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.reviewer: laobri
-ms.openlocfilehash: b8162a9770aea9d8cb3d1220f0ab81169151f781
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: devplatv2
+ms.openlocfilehash: 97cfd7a5121094af9fc1663fcdddcd4c620b77cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747601"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742029"
 ---
 # <a name="deploy-models-with-rest-preview"></a>REST を使用してモデルをデプロイする (プレビュー)
 
@@ -34,7 +35,7 @@ REST API では、標準の HTTP 動詞を使用して、リソースの作成�
 
 ## <a name="prerequisites"></a>前提条件
 
-- 管理者権限を持っている **Azure サブスクリプション**。 そのようなサブスクリプションがない場合は、[無料または有料の個人用サブスクリプション](https://aka.ms/AMLFree)をお試しください。
+- 管理者権限を持っている **Azure サブスクリプション**。 そのようなサブスクリプションがない場合は、[無料または有料の個人用サブスクリプション](https://azure.microsoft.com/free/)をお試しください。
 - [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 - ワークスペース内のサービス プリンシパル。 管理 REST 要求で[サービス プリンシパル認証](how-to-setup-authentication.md#use-service-principal-authentication)が使用されている。
 - サービス プリンシパルの認証トークン。 「[サービス プリンシパルの認証トークンを取得する](./how-to-manage-rest.md#retrieve-a-service-principal-authentication-token)」の手順に従って、このトークンを取得します。 
@@ -50,7 +51,7 @@ REST API では、標準の HTTP 動詞を使用して、リソースの作成�
 ## <a name="azure-machine-learning-managed-online-endpoints"></a>Azure Machine Learning マネージド オンライン エンドポイント (プレビュー)
 マネージド オンライン エンドポイント (プレビュー) を使用すると、基盤となるインフラストラクチャを作成および管理することなくモデルをデプロイすることができます。 この記事では、オンライン エンドポイントとデプロイを作成し、それを呼び出して検証します。 ただし、まず、モデル、コード、環境など、デプロイに必要な資産を登録する必要があります。
 
-[CLI を含む](how-to-deploy-managed-online-endpoints.md) Azure Machine Learning オンライン エンドポイントを作成するには、さまざまな方法があります。また、[studio](how-to-use-managed-online-endpoint-studio.md) を使用して視覚的に作成することもできます。 次の例は、REST API を使用した、マネージド オンライン エンドポイントです。
+Azure Machine Learning オンライン エンドポイントを作成するには、[Azure CLI を含め](how-to-deploy-managed-online-endpoints.md)、さまざまな方法があります。また、[Studio](how-to-use-managed-online-endpoint-studio.md) を使用して視覚的に作成することもできます。 次の例は、REST API を使用した、マネージド オンライン エンドポイントです。
 
 ## <a name="create-machine-learning-assets"></a>機械学習資産を作成する
 
@@ -154,6 +155,12 @@ AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_A
 
 ## <a name="next-steps"></a>次の手順
 
-* [CLI を使用して](how-to-deploy-managed-online-endpoints.md)モデルをデプロイする方法について説明します。
+* [Azure CLI を使用して](how-to-deploy-managed-online-endpoints.md)モデルをデプロイする方法について説明します。
 * [Studio を使用して](how-to-use-managed-online-endpoint-studio.md)モデルをデプロイする方法について説明します。
+* [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md) について説明します
+* [マネージド オンライン エンドポイントとシステム マネージド ID (プレビュー) を使用して Azure リソースにアクセスする](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)方法について説明します
 * [オンライン エンドポイントを監視する](how-to-monitor-online-endpoints.md)方法について説明します。
+* [オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md) について説明します。
+* [Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する](how-to-view-online-endpoints-costs.md)。
+* [マネージド オンライン エンドポイント SKU の一覧 (プレビュー)](reference-managed-online-endpoints-vm-sku-list.md)。
+* マネージド オンライン エンドポイントに関する制限の詳細については、「[Azure Machine Learning を使用するリソースのクォータの管理と引き上げ](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)」を参照してください。

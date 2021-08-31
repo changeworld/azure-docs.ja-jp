@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: shkale-msft
-ms.author: shkale
+author: rothja
+ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 325a2feb0cf29a03a88249e2d0ac3a22f685d498
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2a725512f3fa18a9af43d2725cda4ce1248e796a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694556"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737103"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
@@ -30,6 +30,14 @@ Azure SQL Database では、同じサーバーまたは別のサーバーのい�
 
 > [!NOTE]
 > Azure SQL Database の [Configurable Backup Storage Redundancy]\(構成可能なバックアップ ストレージの冗長性\) は、ブラジル南部ではパブリック プレビューとして利用でき、一般公開されているのは東南アジアの Azure リージョンのみです。 プレビューでは、ソース データベースがローカル冗長またはゾーン冗長のバックアップ ストレージの冗長性を使用して作成されている場合、別の Azure リージョンのサーバーにデータベースをコピーすることはできません。 
+
+## <a name="database-copy-for-azure-sql-hyperscale"></a>Azure SQL Hyperscale のデータベース コピー
+
+Azure SQL Hyperscale では、ターゲット データベースによって、コピーが高速コピーかデータ コピーのサイズであるかが決定されます。
+
+高速コピー: コピーがソースと同じリージョンで行われると、BLOB のスナップショットからコピーが作成されます。このコピー操作は、データベースのサイズに関係なく高速に行われます。
+
+データ コピーのサイズ: ターゲット データベースがソースとは異なるリージョンにある場合、またはターゲットからのデータベースのバックアップのストレージ冗長性 (ローカル、ゾーン、Geo) がソース データベースと異なる場合、コピー操作はデータ操作のサイズになります。 コピー時間は、ページ サーバー BLOB が並列コピーされるときのように、サイズと直接比例しません。
 
 ## <a name="logins-in-the-database-copy"></a>データベースのコピーへのログイン
 
@@ -86,7 +94,11 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 > [!NOTE]
 > T-SQL ステートメントを終了しても、データベース コピー操作は終了しません。 操作を終了するには、ターゲット データベースを削除します。
->
+> [!NOTE]
+> ソースやコピー先サーバーにプライベート エンドポイントが構成され、パブリック ネットワーク アクセスが無効になっている場合、データベースはコピーできません。 プライベート エンドポイントが構成され、パブリック ネットワーク アクセスが許可されている場合、パブリック IP アドレスからコピー先サーバーに接続されているときに開始されたデータベース コピーは成功します。
+現在の接続の送信元 IP アドレスを確認するには、`SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;` を実行します。
+ 
+
 
 > [!IMPORTANT]
 > T-SQL CREATE DATABASE ...AS COPY OF コマンドを使用する際に、バックアップ ストレージの冗長性を選択することはできません。 

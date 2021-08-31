@@ -3,21 +3,25 @@ title: Hybrid Runbook Worker での Azure Automation Runbook の実行
 description: この記事では、Hybrid Runbook Worker を利用し、ローカル データセンターまたはその他のクラウド プロバイダーのコンピューターで Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 05/24/2021
+ms.date: 07/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b3f7afde2d681c2516d6915e4edd5c291795224d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef4c688fbe41db046b77d45090d77200d1c782cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481537"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725683"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
 通常、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) で実行する Runbook では、ローカル コンピューター上のリソース、または worker がデプロイされているローカル環境内のリソースを管理します。 Azure Automation の Runbook は、通常、Azure クラウド内のリソースを管理します。 Azure Automation で実行される Runbook と、Hybrid Runbook Worker で実行される Runbook は、使い方は異なりますが、構造的には同じものです。
 
 Hybrid Runbook Worker で実行される Runbook を作成するときは、worker がホストされているマシンで Runbook を編集し、テストする必要があります。 ホスト マシンには、ローカル リソースの管理のために必要な、すべての PowerShell モジュールとネットワーク アクセスがあります。 Hybrid Runbook Worker マシンで Runbook をテストした後は、それを Azure Automation 環境にアップロードし、worker で実行できます。
+
+## <a name="plan-for-azure-services-protected-by-firewall"></a>ファイアウォールによって保護された Azure サービスの計画
+
+[Azure Storage](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md)、または [Azure SQL](../azure-sql/database/firewall-configure.md) で Azure Firewall を有効にすると、それらのサービスの Azure Automation Runbook からのアクセスがブロックされます。 信頼された Microsoft サービスを許可するファイアウォール例外が有効になっている場合でも、Automation は信頼されたサービスの一覧に含まれていないため、アクセスはブロックされます。 ファイアウォールが有効になっている場合、アクセスは、Hybrid Runbook Worker と[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用して行う必要があります。
 
 ## <a name="plan-runbook-job-behavior"></a>Runbook ジョブの動作を計画する
 

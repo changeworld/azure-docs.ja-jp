@@ -2,14 +2,15 @@
 metadata:
   title: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
   description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
-  ms.topic: conceptual
-  ms.date: 11/7/2019
-  ms.openlocfilehash: 4a0212e204278214273f49e64b5db1da29da9fad
-  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.topic: article
+  ms.service: backup
+  ms.date: 06/23/2021
+  ms.openlocfilehash: 5983508897520ad6fe5b91df3bd6abf26244d09f
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/15/2021
-  ms.locfileid: "111907415"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253653"
 title: よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 summary: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 sections:
@@ -18,15 +19,24 @@ sections:
   - question: >
       1 日あたり何回の完全バックアップがサポートされていますか?
     answer: >
-      サポートされている完全バックアップは 1 日 1 回のみです。 同じ日に差分バックアップと完全バックアップをトリガーすることはできません。
+      1 日に 1 回の完全バックアップと複数のオンデマンド バックアップをスケジュールできます。
+
+
+      | バックアップの種類 | スケジュールされたバックアップ | オンデマンド バックアップ |
+
+      | --- | --- | --- |
+
+      | [完全] | 1 日に 1 回のみサポートされています。 | 1 日に複数回サポートされています。 |
+
+      | 差分 (差分/増分) | 1 日に 1 回のみサポートされています。 <br><br> **注:** <br> 差分バックアップは、特定の日に完全バックアップがスケジュールされていない場合にのみスケジュールできます。 また、バックアップ ポリシーでは、1 つの差分バックアップの種類 (差分/増分) のみをスケジュールできます。 | 1 日に複数回サポートされています。 |
   - question: >
-      成功したバックアップ ジョブでアラートが作成されますか?
+      バックアップ関連のアラートはどこで確認できますか?
     answer: >
-      いいえ。 成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ送信されます。 ポータル アラートの詳細な動作は[ここ](./backup-azure-monitoring-built-in-monitor.md)に記載されています。 ただし、成功したジョブに対してもアラートを生成することに関心がある場合は、[Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md) を使用できます。
+      現在、成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ生成されます。 Azure portal を使用してバックアップ アラートを表示する[方法を参照してください](backup-azure-monitoring-built-in-monitor.md)。
   - question: >
       スケジュールされたバックアップ ジョブを [バックアップ ジョブ] メニューで確認できますか?
     answer: >
-      [バックアップ ジョブ] メニューには、オンデマンドのバックアップ ジョブのみが表示されます。 スケジュールされたジョブの場合は、[Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md) を使用します。
+      [バックアップ ジョブ] メニューには、進行中か、成功したか、失敗したオンデマンド バックアップ ジョブだけが表示されます。 スケジュールされたジョブの場合は、[Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md) を使用します。
   - question: >
       今後作成されるデータベースはバックアップに自動的に追加されますか?
     answer: >
@@ -42,25 +52,25 @@ sections:
     answer: >
       名前が変更されたデータベースは、新しいデータベースとして処理されます。 このため、サービスにより、この状況は、データベースが見つからず、バックアップが失敗した場合と同様に処理されます。 名前が変更されたデータベースは新しいデータベースとして表示されるため、保護するように構成する必要があります。
   - question: >
-      Azure VM 上の SAP HANA データベースをバックアップするための前提条件は何ですか?
+      Azure Backup を使用して SAP HANA データベースのバックアップを開始するにはどうすればよいですか?
     answer: >
-      「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」セクションと[事前登録スクリプトの内容](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)に関するセクションを参照してください。
+      SAP HANA データベースのために Azure Backup の使用を開始する手順のガイドについては、[チュートリアル](./tutorial-backup-sap-hana-db.md)を参照してください。 また、[CLI](./tutorial-sap-hana-backup-cli.md) を使用してバックアップを構成および管理することもできます。
   - question: >
-      Azure で SAP HANA データベースをバックアップできるようにするには、どのようなアクセス許可を設定する必要がありますか?
+      Azure Backup を使用して SAP HANA データベースをバックアップするための前提条件がありますか?
     answer: >
-      事前登録スクリプトを実行すると、Azure で SAP HANA データベースをバックアップできるようにするために必要なアクセス許可が設定されます。 事前登録スクリプトで実行される処理の詳細については、[こちら](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)をご覧ください。
+      SAP HANA で Azure Backup を使用するための[前提条件](./tutorial-backup-sap-hana-db.md#prerequisites)を参照してください。
   - question: >
       SAP HANA を SDC から MDC に移行した後、バックアップは機能しますか?
     answer: >
       トラブルシューティング ガイドの[こちらのセクション](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid)をご覧ください。
   - question: >
-      同じバージョン内でアップグレードする場合はどうすればよいですか?
+      同一の HANA バージョン内で HANA インスタンスをでアップグレードした後もバックアップが続行されるようにするにはどうすればよいですか?
     answer: >
       トラブルシューティング ガイドの[こちらのセクション](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm)を参照してください。
   - question: >
       仮想マシンではなく、仮想 IP (ロード バランサー) に対して Azure HANA バックアップを設定できますか?
     answer: >
-      現時点では、仮想 IP のみに対してソリューションを設定することはできません。 ソリューションを実行するには、仮想マシンが必要です。
+      現時点では、仮想 IP またはプロキシに対してソリューションを設定することはできません。 ソリューションを実行するには、仮想マシンが必要です。
   - question: >
       オンデマンド バックアップを Azure コンテナーではなくローカル ファイル システムに移動する方法はありますか?
     answer: >

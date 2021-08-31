@@ -3,12 +3,12 @@ title: Grafana を使用して Azure のサービスとアプリケーション�
 description: Grafana で表示できるように Azure Monitor および Application Insights データをルーティングします。
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: decd0353bcb2cf048fd5591ea8c895cf22944809
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1bfb3322dda2b6702eb3e18eb44cc0cb2cd942ec
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048660"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666863"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure のサービスとアプリケーションを監視できるようになりました。 このプラグインを使用して、Azure Monitor によって収集されたアプリケーションのパフォーマンス データ (さまざまなログやメトリックなど) を一か所にまとめることができます。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -40,6 +40,9 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 7. Grafana サーバーのパブリック IP アドレスを取得します。リソースの一覧に戻り、 **[パブリック IP アドレス]** を選択します。
 
 ## <a name="sign-in-to-grafana"></a>Grafana にサインインする
+
+> [!IMPORTANT]
+> Internet Explorer と古いバージョンの Microsoft Edge は Grafana と互換性がありません。Microsoft Edge などの Chromium ベースのブラウザーを使用する必要があります。 [Grafana でサポートしているブラウザー](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-web-browsers)に関するページをご覧ください。
 
 1. ブラウザーで、サーバーの IP アドレスを使用して [ログイン] ページを開きます (*http://\<IP address\>:3000* または *\<DNSName>\:3000*)。 3000 は既定のポートです。セットアップ中にご自身で別のポートを選択している場合があることに注意してください。 構築した Grafana サーバーのログイン ページが表示されます。
 

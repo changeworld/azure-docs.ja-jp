@@ -2,13 +2,13 @@
 title: Bicep を使用して管理グループにリソースをデプロイする
 description: 管理グループのスコープでリソースをデプロイする Bicep ファイルを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 58fbed44045a90f4f344117fd76f7de8b0493771
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/19/2021
+ms.openlocfilehash: afa4a0f266eb7720a569df123c9828fd151d21e0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372196"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453602"
 ---
 # <a name="management-group-deployments-with-bicep-files"></a>Bicep ファイルを使用した管理グループへのデプロイ
 
@@ -128,7 +128,7 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01'
 }
 ```
 
-別の管理グループを対象とするには、モジュールを追加します。 [managementGroup 関数](bicep-functions-scope.md#managementgroup)を使用して、`scope` プロパティを設定します。 管理グループ名を指定します。
+別の管理グループを対象とするには、[モジュール](modules.md)を追加します。 [managementGroup 関数](bicep-functions-scope.md#managementgroup)を使用して、`scope` プロパティを設定します。 管理グループ名を指定します。
 
 ```bicep
 targetScope = 'managementGroup'
@@ -137,7 +137,7 @@ param otherManagementGroupName string
 
 // module deployed at management group level but in a different management group
 module exampleModule 'module.bicep' = {
-  name: 'deployToDifferntMG'
+  name: 'deployToDifferentMG'
   scope: managementGroup(otherManagementGroupName)
 }
 ```

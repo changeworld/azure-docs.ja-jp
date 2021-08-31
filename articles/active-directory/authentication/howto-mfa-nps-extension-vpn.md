@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 08/04/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c4c5c4e632943ebbe68003f663aebbeaab9ebaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fd16df2d8f1dfff4f5a7bd1075a63cf9b0ec78b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732388"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure AD MFA と統合する
 
@@ -218,6 +218,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 このセクションでは、RADIUS 認証を使用するように VPN サーバーを構成します。 このセクションでは、VPN サーバーの動作中の構成はあるが、RADIUS 認証を使用するように構成されていないことを前提としています。 VPN サーバーの構成後、構成が予想どおりに動作していることを確認します。
 
+
 > [!NOTE]
 > RADIUS 認証を使用する動作中の VPN サーバー構成が既にある場合は、このセクションを省略して構いません。
 >
@@ -244,10 +245,8 @@ NPS ロールがメンバー サーバーにインストールされている場
 
     b. **[共有シークレット]** で **[変更]** を選択し、先ほど作成してメモしておいた共有シークレットのパスワードを入力します。
 
-    c. **[タイムアウト (秒)]** ボックスで、値として「**30**」を入力します。  
-    タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。 VPN やリージョンによっては、ユーザーが複数の通話を受けられないように、タイムアウト設定が 30 秒を超える必要があります。 この問題が発生した場合は、問題が再発しなくなるまで **[タイムアウト (秒)]** 値を 30 秒単位で増やします。
-
-    ![タイムアウトを構成する [RADIUS サーバーの追加] ウィンドウ](./media/howto-mfa-nps-extension-vpn/image16.png) 
+    c. **[タイムアウト (秒)]** ボックスに、値として「**60**」を入力します。  
+    破棄される要求を最小限に抑えるには、VPN サーバーを少なくとも 60 秒のタイムアウトで構成することをお勧めします。 必要に応じて、またはイベント ログの破棄された要求を減らすために、VPN サーバーのタイムアウト値を 90 秒または 120 秒に増やすことができます。
 
 8. **[OK]** を選択します。
 
@@ -302,7 +301,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 ## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication の構成
 
-ユーザーに Multi-Factor Authentication を構成する方法については、「[クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](howto-mfa-getstarted.md#create-conditional-access-policy)」および「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください
+ユーザーに Multi-Factor Authentication を構成する方法については、「[クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](howto-mfa-getstarted.md#plan-conditional-access-policies)」および「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください
 
 ## <a name="install-and-configure-the-nps-extension"></a>NPS 拡張機能のインストールと構成
 

@@ -7,14 +7,14 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 678c5520b002f22552a6262fe245783f88ee61eb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ef0f7a581329e9ee5e4d891b41d321ed559d64d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754147"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727194"
 ---
-# <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>Azure Percept DK の RTSP ビデオ ストリームを表示する
+# <a name="view-your-azure-percept-dk-rtsp-video-stream"></a>Azure Percept DK の RTSP ビデオ ストリームを表示する
 
 Azure Percept Studio 内で Azure Percept DK からの RTSP ビデオ ストリームを表示するには、このガイドに従ってください。 デバイスにデプロイされたビジョン AI モデルからの推論が Web ストリームで表示できるようになります。
 

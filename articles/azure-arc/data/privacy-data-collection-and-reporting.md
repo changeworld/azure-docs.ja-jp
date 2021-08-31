@@ -7,20 +7,19 @@ services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 07/30/2021
 ms.custom: template-concept
-ms.openlocfilehash: 46c2addc8c844e2fe909bccddfa4927feef5a34a
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 189021997362da8508d2e60c23cc3acb1238ca55
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495778"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728027"
 ---
 # <a name="azure-arc-data-services-data-collection-and-reporting"></a>Azure Arc データ サービスのデータ収集とレポート
 
 この記事では、Azure Arc 対応データ サービスによって Microsoft に送信されるデータについて説明します。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="related-products"></a>関連製品
 
@@ -29,6 +28,9 @@ Azure Arc 対応 データ サービスでは、次の製品の一部または�
 - SQL MI – Azure Arc 
 - PostgreSQL Hyperscale – Azure Arc
 - Azure Data Studio
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 - Azure CLI (az)
 - Azure Data CLI (`azdata`) 
 
@@ -86,12 +88,12 @@ Azure に直接接続するように構成されていないクラスターで�
 
 - Arc 対応 SQL Managed Instance 
 - Arc 対応 PostgreSQL Hyperscale サーバー グループ 
-- Arc 対応 SQL Server 
+- Azure Arc 対応サーバーでの SQL Server 
 - データ コントローラー 
 
 次のセクションでは、各種類のリソースについて収集および格納されるプロパティ、型、および説明を示します。 
 
-### <a name="arc-enabled-sql-server"></a>Arc 対応 SQL Server 
+### <a name="sql-server-on-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーでの SQL Server 
 - SQL Server のエディション。 
    - `string: Edition` 
 - コンテナー リソース (Azure Arc for Servers) のリソース ID。 
@@ -256,10 +258,6 @@ Azure に直接接続するように構成されていないクラスターで�
 |ビュー    |ビューには顧客データを含めることができますが、ユーザーによってのみ制限および共有されます     |
 |クラッシュ ダンプ – 顧客データ | 最大 30 日間のクラッシュ ダンプの保有には、アクセス制御データが含まれる場合があります <br/><br/> 統計オブジェクト、行内のデータ値、クエリ テキストが顧客のクラッシュ ダンプに含まれる場合があります    |
 |クラッシュ ダンプ – 個人データ | マシン、ログイン/ユーザー名、電子メール、場所情報、顧客 ID には、ユーザーの同意を含める必要があります  |
-
-### <a name="customer-experience-improvement-program-ceip-telemetry"></a>カスタマー エクスペリエンス向上プログラム (CEIP) (テレメトリ) 
-
-テレメトリは、製品の使用状況メトリックと環境情報の追跡に使用されます。 「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy/)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [使用状況データを Azure Monitor にアップロードする](upload-usage-data.md)

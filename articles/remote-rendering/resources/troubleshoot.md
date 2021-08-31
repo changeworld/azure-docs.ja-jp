@@ -5,25 +5,29 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8f0fb9ab5c53c3fd1bfb32ac7b112a116301cba7
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 2478ec3f0e8608e1dd868745fca2c323677fadce
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575345"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729850"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
 このページでは、Azure Remote Rendering に影響を及ぼす一般的な問題とその解決方法の一覧を示します。
 
+## <a name="client-cant-connect-to-server"></a>クライアントがサーバーに接続できない
+
+(デバイス上やルーター内などの) ファイアウォールが[システム要件](../overview/system-requirements.md#network-firewall)で指定されているポートをブロックしていないことを確認します。
+
+## <a name="failed-to-load-model"></a>モデルを読み込めない
+
+BLOB 構成が正しいにもかかわらず、(Unity サンプル経由などで) モデルの読み込みが失敗する場合は、BLOB ストレージが適切にリンクされていない可能性があります。 これは、[ストレージ アカウントのリンク](../how-tos/create-an-account.md#link-storage-accounts)に関する章で説明されています。 正しくリンクした後、変更が有効になるまで最大 30 分かかる場合があることに注意してください。
+
 ## <a name="cant-link-storage-account-to-arr-account"></a>ストレージアカウントを ARR アカウントにリンクできない
 
 [ストレージ アカウントのリンク](../how-tos/create-an-account.md#link-storage-accounts)中に、Remote Rendering アカウントが一覧に表示されない場合があります。 この問題を解決するには、Azure portal の ARR アカウントに移動し、左側の **[設定]** グループの下にある **[ID]** を選択します。 **[状態]** が **[オン]** に設定されていることを確認してください。
 ![Unity のフレーム デバッガー](./media/troubleshoot-portal-identity.png)
-
-## <a name="client-cant-connect-to-server"></a>クライアントがサーバーに接続できない
-
-(デバイス上やルーター内などの) ファイアウォールが[システム要件](../overview/system-requirements.md#network-firewall)で指定されているポートをブロックしていないことを確認します。
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>エラー '`Disconnected: VideoFormatNotAvailable`'
 
@@ -161,6 +165,8 @@ Azure Remote Rendering では、動画を使用してフレーム合成を行っ
 
 この問題の原因は、MSAA、HDR、または後処理の有効化です。 低品質のプロファイルが選択されていることを確認し、Unity で既定値として設定します。 これを行うには、 *[Edit] > [Project Settings] > [Quality]* に移動します。
 
+Unity 2020 で OpenXR プラグインを使用する場合、後処理が有効になっているかどうかに関係なく、この追加のオフスクリーン レンダー ターゲットを作成する URP (ユニバーサル レンダー パイプライン) のバージョンがあります。 したがって、URP バージョンを手動で 10.5.1 以上にアップグレードすることが重要です。 これは、[システム要件](../overview/system-requirements.md#unity-2020)で説明されています。
+
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Remote Rendering API を使用する Unity コードがコンパイルされない
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>Unity エディター用にコンパイルするときにデバッグを使用する
@@ -183,9 +189,9 @@ Arm64 の `AudioPluginMsHRTF.dll` は、バージョン 3.0.1 の *Windows Mixed
 
 ## <a name="native-c-based-application-does-not-compile"></a>ネイティブ C++ ベースのアプリケーションがコンパイルされない
 
-### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP アプリケーションまたは Dll の 'ライブラリが見つかりません' エラー
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP アプリケーションまたは DLL の 'ライブラリが見つかりません' エラー
 
-C++ NuGet パッケージ内には、使用するバイナリ フレーバーを定義する `microsoft.azure.remoterendering.Cpp.targets` ファイルがあります。 `UWP` を識別するため、ファイル内の条件によって `ApplicationType == 'Windows Store'` が確認されます。 このため、この種類がプロジェクトで設定されていることを確認する必要があります。 これは、Visual Studio のプロジェクト ウィザードを使用して UWP アプリケーションまたは Dll を作成する場合に当てはまります。
+C++ NuGet パッケージ内には、使用するバイナリ フレーバーを定義する `microsoft.azure.remoterendering.Cpp.targets` ファイルがあります。 `UWP` を識別するため、ファイル内の条件によって `ApplicationType == 'Windows Store'` が確認されます。 このため、この種類がプロジェクトで設定されていることを確認する必要があります。 これは、Visual Studio のプロジェクト ウィザードを使用して UWP アプリケーションまたは DLL を作成する場合に当てはまります。
 
 ## <a name="unstable-holograms"></a>ホログラムが不安定である
 
@@ -237,7 +243,7 @@ ARR には、サーフェスが Z ファイティングになるかどうかを�
 
 * 表面または裏面のカリングを使用するレンダラーでは、サーフェスが重複し、反転して両面が表示される。
 
-    [モデル変換](../how-tos/conversion/model-conversion.md) を使用してインポートすると、モデルの基本の面が決まります。 既定値は両面です。 サーフェスは、両側からの物理的に正しい光源で、薄い壁としてレンダリングされます。 片面は、ソース アセットのフラグによって暗黙的に指定することも、[モデル変換](../how-tos/conversion/model-conversion.md)中に明示的に強制することもできます。 また、必要に応じて[片面モード](../overview/features/single-sided-rendering.md) を "標準" に設定することもできます。
+    [モデル変換](../how-tos/conversion/model-conversion.md)を使用してインポートすると、モデルの基本の面が決まります。 既定値は両面です。 サーフェスは、両側からの物理的に正しい光源で、薄い壁としてレンダリングされます。 片面は、ソース アセットのフラグによって暗黙的に指定することも、[モデル変換](../how-tos/conversion/model-conversion.md)中に明示的に強制することもできます。 また、必要に応じて[片面モード](../overview/features/single-sided-rendering.md) を "標準" に設定することもできます。
 
 * ソース アセットでオブジェクトが交差している。
 

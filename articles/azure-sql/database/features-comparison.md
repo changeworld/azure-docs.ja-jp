@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, mathoma, danil
-ms.date: 05/18/2021
-ms.openlocfilehash: 1f645b8d62bc3e0acdbdd12a21b335deea3cd53e
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 08/12/2021
+ms.openlocfilehash: b55149666af89b392bb533b317e3d6ba236779f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690027"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744878"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -93,7 +93,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 | [オペレーター](/sql/t-sql/language-elements/operators-transact-sql) | ほとんどの場合 - 個々の演算子に関する記事を参照してください |はい - [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関する記事を参照してください |
 | [Polybase](/sql/relational-databases/polybase/polybase-guide) | いいえ。 Azure Blob Storage に配置されているファイル内のデータに対してクエリを実行するには、`OPENROWSET` 関数を使用するか、[Synapse Analytics 内のサーバーレス SQL プールを参照する外部テーブル](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)を使用します。 | いいえ。 Azure Blob Storage に配置されているファイル内のデータに対してクエリを実行するには、`OPENROWSET` 関数、[Synapse Analytics 内のサーバーレス SQL プールを参照するリンク サーバー](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)、または [Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)または SQL Server を参照する外部テーブル (パブリック プレビュー段階) を使用します。 |
 | [クエリ通知](/sql/relational-databases/native-client/features/working-with-query-notifications) | いいえ | はい |
-| [Machine Learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_以前の R サービス_)| はい、[パブリック プレビュー](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | いいえ |
+| [Machine Learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_以前の R サービス_)| はい、[パブリック プレビュー](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中 | はい。 「[Azure SQL Managed Instance の Machine Learning Services](../managed-instance/machine-learning-services-overview.md)」を参照してください |
 | [復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server) | 高可用性が保証される完全復旧のみがサポートされています。 単純復旧モデルと一括ログ復旧モデルは利用できません。 | 高可用性が保証される完全復旧のみがサポートされています。 単純復旧モデルと一括ログ復旧モデルは利用できません。 |
 | [リソース ガバナー](/sql/relational-databases/resource-governor/resource-governor) | いいえ | はい |
 | [RESTORE ステートメント](/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | いいえ | はい、Azure Blob Storage に配置されているバックアップ ファイルでは、`FROM URL` オプションが必須となります。 [復元の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#restore-statement)に関する記述を参照してください |
@@ -137,14 +137,14 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | ファイル システムへのアクセス | いいえ。 代わりとして [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 | いいえ。 代わりとして [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 |
 | [geo リストア](recovery-using-backups.md#geo-restore) | はい | はい |
 | [Hyperscale アーキテクチャ](service-tier-hyperscale.md) | はい | いいえ |
-| [長期的なバックアップ保有期間 - (LTR)](long-term-retention-overview.md) | はい、自動的に取られたバックアップを最大 10 年間保持します。 | まだありません。 一時的な回避策として`COPY_ONLY` [手動バックアップ](../managed-instance/transact-sql-tsql-differences-sql-server.md#backup)を使用してください。 |
+| [長期的なバックアップ保有期間 - (LTR)](long-term-retention-overview.md) | はい、自動的に取られたバックアップを最大 10 年間保持します。 | はい、自動的に取られたバックアップを最大 10 年間保持します。 |
 | 一時停止/再開 | はい、[サーバー レスモデル](serverless-tier-overview.md)で | いいえ |
 | [ポリシーベースの管理](/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | いいえ | いいえ |
 | パブリック IP アドレス | はい。 アクセスは、ファイアウォールまたはサービス エンドポイントを使用して制限できます。  | はい。 明示的に有効にする必要があり、NSG ルールでポート 3342 を有効にする必要があります。 必要に応じて、パブリック IP を無効にすることができます。 詳細については、[パブリック エンドポイント](../managed-instance/public-endpoint-overview.md)に関するページを参照してください。 |
 | [データベースのポイントインタイム リストア](/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | はい - ハイパースケール以外のすべてのサービス レベル - [SQL Database の復旧](recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください | はい - [SQL Database の復旧](recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください |
 | リソース プール | はい、[エラスティック プール](elastic-pool-overview.md)として | はい。 SQL Managed Instance の単一のインスタンスは、同じリソース プールを共有する複数のデータベースを保持できます。 さらに、リソースを共有できる [インスタンス プール (プレビュー)](../managed-instance/instance-pools-overview.md) に SQL Managed Instance の複数のインスタンスをデプロイすることもできます。 |
 | スケールアップまたはスケールダウン (オンライン) | はい、最小限のダウンタイムで、DTU または予約済みの仮想コアまたは最大ストレージを変更できます。 | はい、最小限のダウンタイムで予約済みの仮想コアまたは最大ストレージを変更できます。 |
-| [SQL エイリアス](/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | いいえ、[DNS エイリアス](dns-alias-overview.md)を使用します。 | いいえ、[Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) を使用してクライアント コンピューターにエイリアスを設定します。 |
+| [SQL エイリアス](/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | いいえ、[DNS エイリアス](dns-alias-overview.md)を使用します。 | いいえ、[Cliconfg](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) を使用してクライアント マシンにエイリアスを設定します。 |
 | [SQL Analytics](../../azure-monitor/insights/azure-sql.md) | はい | はい |
 | [SQL データ同期](sql-data-sync-sql-server-configure.md) | はい | いいえ |
 | [SQL Server Analysis Services (SSAS)](/sql/analysis-services/analysis-services) | いいえ、[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) は別の Azure クラウド サービスです。 | いいえ、[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) は別の Azure クラウド サービスです。 |
@@ -154,7 +154,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | [VNet](../../virtual-network/virtual-networks-overview.md) | 部分的、[VNet エンドポイント](vnet-service-endpoint-rule-overview.md)を使用して制限付きアクセスを有効にします | はい、SQL Managed Instance は顧客の VNet に組み込まれます。 [サブネット](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet)と [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) を参照してください |
 | VNet サービス エンドポイント | [はい](vnet-service-endpoint-rule-overview.md) | いいえ |
 | VNet グローバル ピアリング | はい、[Private IP とサービス エンドポイント](vnet-service-endpoint-rule-overview.md)を使用します。 | はい。[仮想ネットワーク ピアリング](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913)を使用します。 |
-| [プライベート接続](../../private-link/private-link-overview.md) | はい、[Private Link](/database/private-endpoint-overview.md) を使用します | はい、VNet を使用します。 | 
+| [プライベート接続](../../private-link/private-link-overview.md) | はい、[Private Link](../../private-link/private-endpoint-overview.md) を使用します | はい、VNet を使用します。 | 
 
 ## <a name="tools"></a>ツール
 

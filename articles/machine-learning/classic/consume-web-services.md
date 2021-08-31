@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 0dc49265c0ea799e194e4ac7004b558d8a9d4dd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11f142c545bad707ec8595f13f80a95cc626674f
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519271"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582926"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (classic) Web サービスを使用する方法
 
 **適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
-Azure Machine Learning Studio (クラシック) の予測モデルを Web サービスとしてデプロイすると、REST API を使用してデータを送信し、予測を取得することができます。 リアルタイムまたはバッチ モードでデータを送信できます。
+Machine Learning Studio (クラシック) の予測モデルを Web サービスとしてデプロイすると、REST API を使用してデータを送信し、予測を取得することができます。 リアルタイムまたはバッチ モードでデータを送信できます。
 
 Machine Learning Studio (クラシック) を使用して Machine Learning Web サービスを作成してデプロイする方法の詳細については、次を参照してください。
 
@@ -32,9 +32,9 @@ Machine Learning Studio (クラシック) を使用して Machine Learning Web �
 
 
 ## <a name="overview"></a>概要
-Azure Machine Learning Web サービスを使用して、外部のアプリケーションが Machine Learning のワークフローのスコア付けモデルとリアルタイムで通信します。 Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。 Machine Learning Web サービスの呼び出しを実行するために、予測のデプロイ時に作成される API キーを渡します。 Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
+Machine Learning Web サービスを使用して、外部のアプリケーションが Machine Learning のワークフローのスコア付けモデルとリアルタイムで通信します。 Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。 Machine Learning Web サービスの呼び出しを実行するために、予測のデプロイ時に作成される API キーを渡します。 Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
 
-Azure Machine Learning Studio (クラシック) には、2 種類のサービスがあります。
+Machine Learning Studio (クラシック) には、2 種類のサービスがあります。
 
 * 要求応答サービス (RRS) – 待ち時間が短く拡張性の高い、Machine Learning Studio (クラシック) から作成およびデプロイされるステートレスなモデルへのインターフェイスを提供するサービス。
 * バッチ実行サービス (BES) – データ レコードのバッチをスコア付けする非同期のサービス。
@@ -44,12 +44,12 @@ Machine Learning Web サービスの詳細については、「[Azure Machine Le
 ## <a name="get-an-authorization-key"></a>承認キーを取得する
 実験をデプロイすると、Web サービスの API キーが生成されます。 複数の場所からキーを取得できます。
 
-### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Microsoft Azure Machine Learning Web サービス ポータルを使用する
-[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net) ポータルにサインインする
+### <a name="from-the-machine-learning-web-services-portal"></a>Machine Learning Web サービス ポータルから
+[Machine Learning Web サービス](https://services.azureml.net) ポータルにサインインします。
 
 新しい Machine Learning Web サービスの API キーを取得するには:
 
-1. Azure Machine Learning Web サービス ポータルで、上部メニューの **[Web サービス]** をクリックします。
+1. Machine Learning Web サービス ポータルで、上部メニューの **[Web サービス]** をクリックします。
 2. キーを取得する Web サービスをクリックします。
 3. 上部のメニューで **[Consume(使用)]** をクリックします。
 4. **主キー** をコピーして保存します。
@@ -82,7 +82,7 @@ Machine Learning API ヘルプには、予測 Web サービスの詳細が含ま
 
 **新しい Web サービスの Machine Learning API ヘルプを表示するには**
 
-[Azure Machine Learning Web Services ポータル](https://services.azureml.net/)で、次の手順を実行します。
+[Machine Learning Web サービス ポータル](https://services.azureml.net/)で:
 
 1. 上部のメニューで **[Web サービス]** をクリックします。
 2. キーを取得する Web サービスをクリックします。

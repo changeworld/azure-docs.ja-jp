@@ -1,5 +1,5 @@
 ---
-title: 検索インデックス作成のための Azure SQL VM 接続
+title: Azure VM 上の SQL Server へのインデクサー接続
 titleSuffix: Azure Cognitive Search
 description: 暗号化された接続を有効にして、Azure Cognitive Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
 author: markheff
@@ -7,14 +7,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 23c5d138463a52f4ff4c52b4a919b71a87b7fd6d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4aa60a5433f13ca6b942204bbdb8eb4425d0ddf7
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802881"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983214"
 ---
-# <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM で Azure Cognitive Search インデクサーから SQL Server への接続を構成する
+# <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server へのインデクサー接続
 
 Azure 仮想マシン上のデータベースからコンテンツを抽出するように [Azure SQL インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)を構成する場合は、セキュリティで保護された接続を行うために追加の手順が必要になります。 
 

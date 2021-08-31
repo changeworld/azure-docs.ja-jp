@@ -1,32 +1,32 @@
 ---
 title: Azure SQL Managed Instance:長期的なバックアップ保有期間
-description: PowerShell を使用して、Azure SQL Managed Instance の個別の Azure BLOB ストレージ コンテナーに自動バックアップを格納して復元する方法について説明します。
+description: Azure portal と PowerShell を使用し、Azure SQL Managed Instance の個別の Azure BLOB ストレージ コンテナーに自動バックアップを格納して復元する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: backup-restore
 ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: shkale-msft
-ms.author: shkale
-ms.reviewer: mathoma, sstein
-ms.date: 02/25/2021
-ms.openlocfilehash: 1f2988a383620fa1e69b64841b93700f92313a5c
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: mathoma
+ms.date: 07/13/2021
+ms.openlocfilehash: cc25b431c6e1eb4cbb6b31cfc5f9b1a1a26f8a03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592515"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751243"
 ---
-# <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Managed Instance の長期的なバックアップ保有期間を管理する (PowerShell)
+# <a name="manage-azure-sql-managed-instance-long-term-backup-retention"></a>Azure SQL Managed Instance の長期的なバックアップ保有期間を管理する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL Managed Instance では、[長期的なバックアップ保有期間](../database/long-term-retention-overview.md)ポリシー (LTR) を、パブリック プレビュー機能として構成できます。 これにより、データベースのバックアップを個別の Azure BLOB ストレージ コンテナーに最大 10 年間自動的に保持できます。 そして、PowerShell でこれらのバックアップを使用して、データベースを復旧できます。
+Azure SQL Managed Instance では、[長期的なバックアップ保有期間](../database/long-term-retention-overview.md)ポリシー (LTR) を、パブリック プレビュー機能として構成できます。 これにより、データベースのバックアップを個別の Azure BLOB ストレージ コンテナーに最大 10 年間自動的に保持できます。 Azure portal と PowerShell でこのようなバックアップを使用してデータベースを復旧できます。
 
    > [!IMPORTANT]
    > マネージド インスタンスの LTR は現在、Azure パブリック リージョンでパブリック プレビューとして利用できます。 
 
-以下のセクションでは、PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure SQL ストレージ内のバックアップを表示し、Azure SQL ストレージ内のバックアップから復元する方法について説明します。
+以下のセクションでは、Azure portal と PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure SQL ストレージ内のバックアップを表示し、Azure SQL ストレージ内のバックアップから復元する方法について説明します。
 
 
 ## <a name="using-the-azure-portal"></a>Azure ポータルの使用

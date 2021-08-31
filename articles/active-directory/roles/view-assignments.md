@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8fe57b5b6df03e135bf77e9064e14f376c57ac9
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 947e2b83c409f7e592fd112e20f64b70cc7db070
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796360"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744010"
 ---
 # <a name="list-azure-ad-role-assignments"></a>Azure AD ロールの割り当てを一覧表示する
 
@@ -34,27 +34,48 @@ ms.locfileid: "110796360"
 
 詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
 
-## <a name="list-role-assignments-in-the-azure-portal"></a>Azure portal でロールの割り当てを一覧表示する
+## <a name="azure-portal"></a>Azure portal
 
 この手順では、組織全体のスコープでロールの割り当てを一覧表示する方法について説明します。
 
-1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択します。次に、ロールを選択して開き、そのプロパティを表示します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択します。次に、ロールを選択して開き、そのプロパティを表示します。
+
 1. ロールの割り当てを一覧表示するには、 **[割り当て]** を選択します。
 
     ![一覧からロールを開いたときに、ロールの割り当てとアクセス許可を一覧表示する](./media/view-assignments/role-assignments.png)
 
-## <a name="list-my-role-assignments"></a>自分のロールの割り当てを一覧表示する
+### <a name="list-my-role-assignments"></a>自分のロールの割り当てを一覧表示する
 
 自分のアクセス許可も簡単に一覧表示することができます。 **[ロールと管理者]** ページの **[ロール]** を選択すると、現在自分に割り当てられているロールが表示されます。
 
-## <a name="download-role-assignments"></a>ロールの割り当てのダウンロード
+### <a name="download-role-assignments"></a>ロールの割り当てのダウンロード
 
 特定のロールのすべての割り当てをダウンロードするには、 **[ロールと管理者]** ページでロールを選択し、 **[ロールの割り当てのダウンロード]** を選択します。 そのロールのすべてのスコープでの割り当てを一覧表示する CSV ファイルがダウンロードされます。
 
 ![ロールのすべての割り当てをダウンロードする](./media/view-assignments/download-role-assignments.png)
 
-## <a name="list-role-assignments-using-powershell"></a>PowerShell を使用してロールの割り当てを一覧表示する
+### <a name="list-role-assignments-with-single-application-scope"></a>単一アプリケーションのスコープでロールの割り当てを一覧表示する
+
+このセクションでは、単一アプリケーションのスコープでロールの割り当てを一覧表示する方法について説明します。 現在、この機能はパブリック プレビュー段階にあります。
+
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[アプリの登録]** を選択します。次に、アプリの登録を選択してそのプロパティを表示します。 Azure AD 組織内のアプリ登録の完全な一覧を表示するには、 **[すべてのアプリケーション]** を選択する必要がある場合があります。
+
+    ![[アプリの登録] ページからアプリの登録を作成または編集する](./media/view-assignments/app-reg-all-apps.png)
+
+1. アプリの登録で、**[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
+
+    ![[アプリの登録] ページから、アプリの登録のロールの割り当てを一覧表示する](./media/view-assignments/app-reg-assignments.png)
+
+1. ロールの割り当てを一覧表示するには、 **[割り当て]** を選択します。 アプリの登録内から [割り当て] ページを開くと、この Azure AD リソースをスコープとしたロールの割り当てが表示されます。
+
+    ![アプリの登録のプロパティから、アプリの登録のロールの割り当てを一覧表示する](./media/view-assignments/app-reg-assignments-2.png)
+
+
+## <a name="powershell"></a>PowerShell
 
 このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。 この記事では、[Azure Active Directory PowerShell バージョン 2](/powershell/module/azuread/#directory_roles) モジュールを使います。 PowerShell を使用して単一アプリケーションのスコープを表示するには、[PowerShell を使用したカスタム ロールの割り当て](custom-assign-powershell.md)に関するページのコマンドレットを使用できます。
 
@@ -71,7 +92,7 @@ $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="list-role-assignments-using-the-microsoft-graph-api"></a>Microsoft Graph API を使用してロールの割り当てを一覧表示する
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 このセクションでは、組織全体のスコープでロールの割り当てを一覧表示する方法について説明します。  Graph API を使用して単一アプリケーションのスコープのロールの割り当てを一覧表示するには、[Graph API を使用したカスタム ロールの割り当て](custom-assign-graph.md)に関するページの操作を使用できます。
 
@@ -88,29 +109,12 @@ Response
 ``` HTTP
 HTTP/1.1 200 OK
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
     "resourceScopes":["/"]
 }
 ```
-
-## <a name="list-role-assignments-with-single-application-scope"></a>単一アプリケーションのスコープでロールの割り当てを一覧表示する
-
-このセクションでは、単一アプリケーションのスコープでロールの割り当てを一覧表示する方法について説明します。 現在、この機能はパブリック プレビュー段階にあります。
-
-1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[アプリの登録]** を選択し、次にそのアプリの登録を選択してそのプロパティを表示します。 Azure AD 組織内のアプリ登録の完全な一覧を表示するには、 **[すべてのアプリケーション]** を選択する必要がある場合があります。
-
-    ![[アプリの登録] ページからアプリの登録を作成または編集する](./media/view-assignments/app-reg-all-apps.png)
-
-1. アプリの登録で、**[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
-
-    ![[アプリの登録] ページから、アプリの登録のロールの割り当てを一覧表示する](./media/view-assignments/app-reg-assignments.png)
-
-1. ロールの割り当てを一覧表示するには、 **[割り当て]** を選択します。 アプリの登録内から [割り当て] ページを開くと、この Azure AD リソースをスコープとしたロールの割り当てが表示されます。
-
-    ![アプリの登録のプロパティから、アプリの登録のロールの割り当てを一覧表示する](./media/view-assignments/app-reg-assignments-2.png)
 
 ## <a name="next-steps"></a>次のステップ
 

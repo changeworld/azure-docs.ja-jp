@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: debce0a1b4c09bb89cdceb1cd29e59e1976c939a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58120c05e4ee0c3310a5da75377cd941aa289de7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539156"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453070"
 ---
 # <a name="blob-snapshots"></a>BLOB のスナップショット
 
@@ -25,7 +25,12 @@ ms.locfileid: "99539156"
 
 ## <a name="about-blob-snapshots"></a>BLOB スナップショットについて
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+> [!IMPORTANT]
+> アカウントのスナップショットで階層型名前空間機能を有効にしているものは現在、プレビュー段階です。
+> ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+>
+>
+> プレビューに登録するには、[こちらのフォーム](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u)を参照してください。
 
 スナップショットが作成された日時を示す **DateTime** 値が BLOB の URI に追加される点を除き、BLOB のスナップショットはベース BLOB とまったく同じです。 たとえば、ページ BLOB の URI が `http://storagesample.core.blob.windows.net/mydrives/myvhd` の場合、スナップショットの URI は `http://storagesample.core.blob.windows.net/mydrives/myvhd?snapshot=2011-03-09T01:42:34.9360000Z` のようになります。
 

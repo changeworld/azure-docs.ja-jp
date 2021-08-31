@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 669304159a525248dbd4f9d1c3f7b34660274b74
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 323e6960a111d8227c14cf38046807ad6c1cada6
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110486416"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122261280"
 ---
 Azure Instance Metadata Service (IMDS) によって、現在実行中の仮想マシン インスタンスに関する情報が提供されます。 これを使用して、仮想マシンの管理と構成を行うことができます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、[エンドポイント カテゴリの概要](#endpoint-categories)に関するページを参照してください。
@@ -40,8 +40,10 @@ IMDS にアクセスするには、[Azure Resource Manager](/rest/api/resources/
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | ConvertTo-Json -Depth 64
 ```
+
+`-NoProxy` には PowerShell V6 以上が必須です。 PowerShell の旧バージョンでの例が必要であれば、[こちらのサンプル リポジトリ](https://github.com/microsoft/azureimds)を参照してください。
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
@@ -70,6 +72,9 @@ Instance Metadata Service には、実行中の仮想マシン インスタン�
 
 > [!IMPORTANT]
 > IMDS は、機密データ用のチャネルでは **ありません**。 API は認証されておらず、VM 上のすべてのプロセスに対してオープン状態になっています。 このサービスを通じて公開される情報は、VM 内で実行されているすべてのアプリケーションに対する共有情報と見なす必要があります。
+
+VM 上のすべてのプロセスで IMDS エンドポイントにアクセスする必要がない場合、アクセスを制限するようにローカルのファイアウォール規則を設定できます。 たとえば、ある既知のシステム サービスだけがインスタンス メタデータ サービスにアクセスする必要がある場合、IMDS エンドポイントでファイアウォール規則を設定し、特定のプロセスにのみアクセスを許可したり、残りのプロセスのアクセスを拒否したりできます。 
+
 
 ## <a name="proxies"></a>プロキシ
 
@@ -194,7 +199,7 @@ http://169.254.169.254/metadata/instance/network/interface/0?api-version=<versio
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -249,6 +254,8 @@ IMDS はバージョン管理されており、HTTP 要求での API バージ�
 - 2020-12-01
 - 2021-01-01
 - 2021-02-01
+- 2021-03-01
+- 2021-05-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -392,7 +399,6 @@ OS ディスク オブジェクトには、VM によって使用される OS デ
 | `diffDiskSettings` | 一時ディスクの設定
 | `diskSizeGB` | ディスクのサイズ (GB)
 | `image`   | ソース ユーザー イメージの仮想ハード ディスク
-| `lun`     | ディスクの論理ユニット番号
 | `managedDisk` | マネージド ディスクのパラメーター
 | `name`    | ディスク名
 | `vhd`     | 仮想ハード ディスク
@@ -400,22 +406,30 @@ OS ディスク オブジェクトには、VM によって使用される OS デ
 
 データ ディスク アレイには、VM に接続されているデータ ディスクの一覧が含まれています。 各データ ディスク オブジェクトには、次の情報が含まれています。
 
-Data | 説明 |
------|-------------|
-| `caching` | キャッシュの要件
-| `createOption` | VM が作成された方法に関する情報
-| `diffDiskSettings` | 一時ディスクの設定
-| `diskSizeGB` | ディスクのサイズ (GB)
-| `encryptionSettings` | ディスクの暗号化の設定
-| `image` | ソース ユーザー イメージの仮想ハード ディスク
-| `managedDisk` | マネージド ディスクのパラメーター
-| `name` | ディスク名
-| `osType` | ディスクに含まれている OS の種類
-| `vhd` | 仮想ハード ディスク
-| `writeAcceleratorEnabled` | ディスクで writeAccelerator が有効になっているかどうか
+Data | 説明 | 導入されたバージョン |
+|------|-----------|--------------------|
+| `bytesPerSecondThrottle`* | ディスクの読み取り/書き込みクォータ (バイト単位) | 2021-05-01
+| `caching` | キャッシュの要件 | 2019-06-01
+| `createOption` | VM が作成された方法に関する情報 | 2019-06-01
+| `diffDiskSettings` | 一時ディスクの設定 | 2019-06-01
+| `diskCapacityBytes`* | ディスク サイズ (バイト単位) | 2021-05-01
+| `diskSizeGB` | ディスクのサイズ (GB) | 2019-06-01
+| `encryptionSettings` | ディスクの暗号化の設定 | 2019-06-01
+| `image` | ソース ユーザー イメージの仮想ハード ディスク | 2019-06-01
+| `isSharedDisk`* | ディスクがリソース間で共有されるか特定します | 2021-05-01
+| `isUltraDisk` | データ ディスクが Ultra Disk かどうかを特定します | 2021-05-01
+| `lun`     | ディスクの論理ユニット番号 | 2019-06-01
+| `managedDisk` | マネージド ディスクのパラメーター | 2019-06-01
+| `name` | ディスク名 | 2019-06-01
+| `opsPerSecondThrottle`* | ディスクの読み取り/書き込みクォータ (IOPS) | 2021-05-01
+| `osType` | ディスクに含まれている OS の種類 | 2019-06-01
+| `vhd` | 仮想ハード ディスク | 2019-06-01
+| `writeAcceleratorEnabled` | ディスクで writeAccelerator が有効になっているかどうか | 2019-06-01
+
+\* これらのフィールドは Ultra Disk の場合にのみ入力されます。Ultra Disk ではない場合、空の文字列になります。
 
 リソース ディスク オブジェクトには、VM に接続されている[ローカル一時ディスク](../articles/virtual-machines/managed-disks-overview.md#temporary-disk) (ある場合) のサイズ (KB 単位) が格納されます。
-[VM のローカル一時ディスクがない](../articles/virtual-machines/azure-vms-no-temp-disk.md)場合、この値は 0 です。 
+[VM のローカル一時ディスクがない](../articles/virtual-machines/azure-vms-no-temp-disk.yml)場合、この値は 0 です。 
 
 | Data | 説明 | 導入されたバージョン |
 |------|-------------|--------------------|
@@ -434,10 +448,9 @@ Data | 説明 |
 
 ### <a name="get-user-data"></a>ユーザー データを取得する
 
-新しい VM を作成するときに、VM のプロビジョニング中またはプロビジョニング後に使用されるデータのセットを指定し、IMDS を通じて取得することができます。 ユーザー データを設定するには、[こちら](https://aka.ms/ImdsUserDataArmTemplate)のクイックスタート テンプレートを利用します。 次のサンプルは、IMDS を介してこのデータを取得する方法を示しています。
+新しい VM を作成するときに、VM のプロビジョニング中またはプロビジョニング後に使用されるデータのセットを指定し、IMDS を通じて取得することができます。 エンドツーエンドのユーザー データ体験は[こちら](../articles/virtual-machines/user-data.md)をご覧ください。 
 
-> [!NOTE]
-> この機能はバージョン `2021-01-01` でリリースされ、Azure プラットフォームの更新プログラムに依存します。これは現在ロールアウトされている最中で、まだすべてのリージョンで利用できない場合があります。
+ユーザー データを設定するには、[こちら](https://aka.ms/ImdsUserDataArmTemplate)のクイックスタート テンプレートを利用します。 次のサンプルは、IMDS を介してこのデータを取得する方法を示しています。 この機能はバージョン `2021-01-01` 以上でリリースされます。
 
 > [!NOTE]
 > セキュリティに関する通知: IMDS は VM 上のすべてのアプリケーションに対して開かれているため、機密データをユーザー データに配置しないでください。
@@ -446,7 +459,7 @@ Data | 説明 |
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-$userData = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text"
+$userData = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text"
 [System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($userData))
 ```
 
@@ -468,7 +481,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -496,7 +509,7 @@ IMDS を介して、このデータに直接クエリを実行できます。
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -523,13 +536,13 @@ VM タグは、instance/compute/tags エンドポイントの下にあるイン�
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
 ```
 
 ---
@@ -547,7 +560,7 @@ Department:IT;ReferenceNumber:123456;TestStatus:Pending
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -613,7 +626,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -671,20 +684,25 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "sku": "2019-Datacenter",
     "storageProfile": {
         "dataDisks": [{
+            "bytesPerSecondThrottle": "979202048",
             "caching": "None",
             "createOption": "Empty",
+            "diskCapacityBytes": "274877906944",
             "diskSizeGB": "1024",
             "image": {
-                "uri": ""
+              "uri": ""
             },
+            "isSharedDisk": "false",
+            "isUltraDisk": "true",
             "lun": "0",
             "managedDisk": {
-                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
-                "storageAccountType": "Standard_LRS"
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/MicrosoftCompute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
             },
             "name": "exampledatadiskname",
+            "opsPerSecondThrottle": "65280",
             "vhd": {
-                "uri": ""
+              "uri": ""
             },
             "writeAcceleratorEnabled": "false"
         }],
@@ -775,20 +793,25 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "sku": "18.04-LTS",
     "storageProfile": {
         "dataDisks": [{
+            "bytesPerSecondThrottle": "979202048",
             "caching": "None",
             "createOption": "Empty",
+            "diskCapacityBytes": "274877906944",
             "diskSizeGB": "1024",
             "image": {
-                "uri": ""
+              "uri": ""
             },
+            "isSharedDisk": "false",
+            "isUltraDisk": "true",
             "lun": "0",
             "managedDisk": {
-                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
-                "storageAccountType": "Standard_LRS"
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
             },
             "name": "exampledatadiskname",
+            "opsPerSecondThrottle": "65280",
             "vhd": {
-                "uri": ""
+              "uri": ""
             },
             "writeAcceleratorEnabled": "false"
         }],
@@ -848,7 +871,7 @@ Azure には、[Azure Government](https://azure.microsoft.com/overview/clouds/go
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -882,7 +905,7 @@ AzurePublicCloud
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -927,7 +950,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -1021,7 +1044,7 @@ Azure Marketplace のベンダーは、自分たちのソフトウェアが Azur
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```

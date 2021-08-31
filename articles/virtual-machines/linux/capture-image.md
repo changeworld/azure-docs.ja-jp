@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: b77702ea78d9b44da7843d08b2f32adeecfb9383
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 23623d6ddd337c42b56d0c3c26aa7c3a720369d4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440612"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741794"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
@@ -24,7 +24,7 @@ ms.locfileid: "111440612"
 
 マネージド イメージを作成するには、個人のアカウント情報を削除する必要があります。 次の手順で既存の VM のプロビジョニングと割り当てを解除し、イメージを作成します。 このイメージを使用して、サブスクリプション内の任意のリソース グループに VM を作成できます。
 
-バックアップやデバッグのために既存の Linux VM のコピーを作成する方法、またはオンプレミス VM から特別な Linux VHD をアップロードする方法については、「[カスタム ディスク イメージをアップロードして Linux VM を作成する](upload-vhd.md)」を参照してください。  
+バックアップやデバッグのために既存の Linux VM のコピーを作成する方法、またはオンプレミス VM から Linux VHD をアップロードする方法については、[カスタム ディスクからの Linux VM のアップロードと作成](upload-vhd.md)に関するページを参照してください。  
 
 **Azure VM Image Builder** を使用して、ご自身のカスタム イメージを作成することができます。ツールの学習やビルド パイプラインのセットアップは必要なく、イメージ構成を用意するだけで、Image Builder によってイメージが作成されます。 詳細については、[Azure VM Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。
 

@@ -9,13 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2021
-ms.openlocfilehash: 60e5d37f57d6a87d9190650f044a1ffc991e60fb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/12/2021
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 4fe1e8cd4c78d4411a7cb9058648fc0e782cb0ee
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096021"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666305"
 ---
 # <a name="how-to-create-and-manage-luis-resources"></a>LUIS リソースを作成して管理する方法
 
@@ -69,9 +70,9 @@ LUIS リソースを作成するには、LUIS ポータル、[Azure portal](http
 
 [!INCLUDE [Create LUIS Prediction resource in LUIS portal](./includes/add-prediction-resource-portal.md)]
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+# <a name="without-luis-portal"></a>[LUIS ポータルなし](#tab/without-portal)
 
-### <a name="create-luis-resources-in-the-azure-cli"></a>Azure CLI で LUIS リソースを作成する
+### <a name="create-luis-resources-without-using-the-luis-portal"></a>LUIS ポータルを使わずに LUIS リソースを作成する
 
 [Azure CLI](/cli/azure/install-azure-cli) を使用し、各リソースを個別に作成します。
 
@@ -130,9 +131,9 @@ LUIS リソースを作成するには、LUIS ポータル、[Azure portal](http
 1. **[Prediction resource]\(予測リソース\)** タブまたは **[Authoring resource]\(オーサリング リソース\)** タブで、 **[Add prediction resource]\(予測リソースの追加\)** ボタンまたは **[Add authoring resource]\(オーサリング リソースの追加\)** ボタンを選択します。
 1. フォーム内のフィールドを使用して適切なリソースを探して、 **[保存]** を選択します。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+# <a name="without-luis-portal"></a>[LUIS ポータルなし](#tab/without-portal)
 
-## <a name="assign-prediction-resource-programmatically"></a>プログラムによる予測リソースの割り当て 
+## <a name="assign-prediction-resource-without-using-the-luis-portal"></a>LUIS ポータルを使わずに予測リソースを割り当てる
 
 CI/CD パイプラインのような自動化されたプロセスの場合、次の手順で LUIS アプリへの LUIS リソースの割り当てを自動化することできます。
 
@@ -181,9 +182,9 @@ CI/CD パイプラインのような自動化されたプロセスの場合、�
 1. **[管理]**  >  **[Azure リソース]** に移動します。
 1. リソースの **[Unassign resource]\(リソースの割り当て解除\)** ボタンを選択します。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+# <a name="without-luis-portal"></a>[LUIS ポータルなし](#tab/without-portal)
 
-## <a name="unassign-prediction-resource-programmatically"></a>プログラムによる予測リソースの割り当て解除
+## <a name="unassign-prediction-resource-without-using-the-luis-portal"></a>LUIS ポータルを使わずに、予測リソースの割り当てを解除する
 
 1. 英数字の文字列である [Azure Resource Manager トークン](https://resources.azure.com/api/token?plaintext=true) を取得します。 このトークンには有効期限があるため、すぐに使用してください。 次の Azure CLI コマンドを使うこともできます。
 

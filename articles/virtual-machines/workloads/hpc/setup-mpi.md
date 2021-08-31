@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f43fc94174ebdcfdf447d3635a696193959849fa
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 7e468b246534fef1fab4e710d0449e785280e16a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600296"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460523"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC の Message Passing Interface を設定する
 
@@ -51,7 +51,7 @@ make -j 8 && make install
 ```
 
 > [!NOTE]
-> UCX の最近のビルドでは、複数の NIC インターフェイスが存在する場合に適切な InfiniBand インターフェイスを選択するという [問題](https://github.com/openucx/ucx/pull/5965) が修正されています。 VM で高速ネットワークが有効になっている場合に InfiniBand で MPI を実行する方法の詳細については、[こちら](hb-hc-known-issues.md#accelerated-networking-on-hb-hc-hbv2-and-ndv2) を参照してください。
+> UCX の最近のビルドでは、複数の NIC インターフェイスが存在する場合に適切な InfiniBand インターフェイスを選択するという [問題](https://github.com/openucx/ucx/pull/5965) が修正されています。 詳細については、VM で高速ネットワークが有効になっている場合の InfiniBand を使用した MPI の実行に関する [HPC および GPU VM の既知の問題のトラブルシューティング](hb-hc-known-issues.md#accelerated-networking-on-hb-hc-hbv2-and-ndv2)に関するページを参照してください。
 
 ## <a name="hpc-x"></a>HPC-X
 
@@ -329,5 +329,6 @@ chmod 644 /home/$USER/.ssh/config
 
 - [InfiniBand 対応](../../sizes-hpc.md#rdma-capable-instances)の [H シリーズ](../../sizes-hpc.md)および [N シリーズ](../../sizes-gpu.md)の VM について学習します
 - [HBv3 シリーズの概要](hbv3-series-overview.md)および [HC シリーズの概要](hc-series-overview.md)に関する記事を確認します。
+- [HB シリーズ VM の最適な MPI プロセス配置](https://techcommunity.microsoft.com/t5/azure-global/optimal-mpi-process-placement-for-azure-hb-series-vms/ba-p/2450663)に関する記事を参照します。
 - [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

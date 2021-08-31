@@ -15,14 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: cc499e54ebc700f87edbc904165000155211ca1b
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 5faf675d4e5d188840b3e9ab457ec28829f52dc0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108007126"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778966"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Azure Active Directory (Azure AD) データを Azure Sentinel に接続する
+
+> [!IMPORTANT]
+> 後述のように、使用可能なログの種類の一部は現在 **プレビュー** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Azure Sentinel の組み込みコネクタを使用して、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) からデータを収集し、それを Azure Sentinel にストリーミングできます。 コネクタを使用すると、次の種類のログをストリーミングできます。
 
@@ -40,8 +45,7 @@ Azure Sentinel の組み込みコネクタを使用して、[Azure Active Direct
 
 - [**プロビジョニング ログ**](../active-directory/reports-monitoring/concept-provisioning-logs.md) (**プレビュー**) には、Azure AD プロビジョニング サービスによってプロビジョニングされたユーザー、グループ、およびロールに関するシステムアクティビティ情報が含まれています。 
 
-> [!IMPORTANT]
-> 前述のように、使用可能なログの種類の一部は現在 **プレビュー** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 - サインイン ログを Azure Sentinel に取り込むには、Azure Active Directory P1 または P2 ライセンスが必要です。 他の種類のログを取り込む場合、任意の Azure AD ライセンス (Free/O365/P1/P2) で十分です。 Azure Monitor (Log Analytics) と Azure Sentinel には、追加のギガバイト単位の料金が適用される場合があります。
@@ -75,5 +79,5 @@ Azure AD ログを照会するには、クエ リ ウィンドウの上部に関
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Active Directory を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](detect-threats-built-in.md)の概要。

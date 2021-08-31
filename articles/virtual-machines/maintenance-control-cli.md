@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: c57f66eca5d15024c6b10e8fad12ddb575b9f894
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a611daf290bda8d6511cb4217e411de2886ce822
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765901"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112370853"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>メンテナンス コントロールと Azure CLI を使用して更新を制御する
 
@@ -191,7 +191,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>更新プログラムの適用
 
-`az maintenance apply update` を使用して、保留中の更新プログラムを適用します。 成功すると、このコマンドは更新プログラムの詳細を含む JSON を返します。
+`az maintenance apply update` を使用して、保留中の更新プログラムを適用します。 成功すると、このコマンドは更新プログラムの詳細を含む JSON を返します。 更新呼び出しが適用されるまで、最大 2 時間かかる場合があります。
 
 ### <a name="isolated-vm"></a>分離された VM
 

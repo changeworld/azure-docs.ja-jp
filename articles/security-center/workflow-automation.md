@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: memildin
-ms.openlocfilehash: 6fbfb138f8c4605b12c5c4ff6cd0ac8c9b0c43dd
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ecedf0854d7d670cf88a8dcb729a01adaa88b646
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537718"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750671"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center のトリガーへの応答を自動化する
 
@@ -25,10 +25,10 @@ ms.locfileid: "110537718"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|Free|
 |必要なロールとアクセス許可:|リソース グループ上での **セキュリティ管理者ロール** または **所有者**<br>ターゲット リソースに対する書き込みアクセス許可も必要になります<br><br>Azure Logic Apps のワークフローを操作するには、次のロジック アプリのロール/アクセス許可も必要です。<br> - [ロジック アプリのオペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator)のアクセス許可が必要。または、ロジック アプリの読み取り/トリガーのアクセス権 (このロールでは、ロジック アプリを作成したり編集したりすることはできません。既存のものを *実行* するだけです)<br> - [ロジック アプリの共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)のアクセス許可は、ロジック アプリの作成と変更に必要です<br>ロジック アプリのコネクタを使用する場合は、それぞれのサービス (たとえば、Outlook/Teams/Slack のインスタンス) にサインインするために追加の資格情報が必要になることがあります。|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: ナショナル/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 
@@ -37,7 +37,7 @@ ms.locfileid: "110537718"
 
 1. Security Center のサイドバーで、 **[ワークフローの自動化]** を選択します。
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="ワークフローの自動化の一覧":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="ワークフローの自動化の一覧。":::
 
     このページで、新しい自動化ルールを作成したり、既存のものを有効化、無効化、または削除したりすることができます。
 
@@ -52,13 +52,13 @@ ms.locfileid: "110537718"
 
     1. トリガー条件が満たされたときに実行されるロジック アプリ。 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="ワークフロー自動化ウィンドウの追加":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="ワークフロー自動化ウィンドウの追加。":::
 
 1. [Actions]\(アクション\) セクションで、 **[Create a new one]\(新規作成する\)** をクリックして、ロジック アプリの作成プロセスを開始します。
 
     Azure Logic Apps が表示されます。
 
-    [![新しいロジック アプリの作成](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
+    [![新しいロジック アプリの作成。](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
 1. 名前、リソース グループ、および場所を入力し、 **[Create]\(作成\)** をクリックします。
 
@@ -78,11 +78,11 @@ ms.locfileid: "110537718"
     > [!NOTE]
     > レガシ トリガーである [Azure Security Center アラートへの応答がトリガーされるとき] を使用している場合、ロジック アプリはワークフローの自動化機能では起動されません。 代わりに、前述のいずれかのトリガーを使用してください。 
 
-    [![サンプル ロジック アプリ](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
+    [![サンプル ロジック アプリ。](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 
 1. ロジック アプリを定義したら、ワークフローの自動化の定義ウィンドウに戻ります ([ワークフロー自動化の追加])。 **[Refresh]\(最新の情報に更新\)** をクリックして、新しいロジック アプリが選択可能であることを確認します。
 
-    ![更新](media/workflow-automation/refresh-the-list-of-logic-apps.png)
+    ![[更新]](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
 1. ロジック アプリを選択し、自動化を保存します。 ロジック アプリ ドロップダウンには、Logic Apps とそれをサポートする前述の Security Center コネクタのみが表示されることにご注意ください。
 
@@ -93,7 +93,7 @@ ms.locfileid: "110537718"
 
 ロジック アプリを手動で実行するには、アラートまたは推奨事項を開き、 **[ロジック アプリのトリガー]** をクリックします。
 
-[![ロジック アプリを手動でトリガーする](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
+[![ロジック アプリを手動でトリガーする。](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
 
 ## <a name="configure-workflow-automation-at-scale-using-the-supplied-policies"></a>提供されているポリシーを使用してワークフローの自動化を大規模に構成する
@@ -118,11 +118,11 @@ ms.locfileid: "110537718"
     > [!TIP]
     > これらは、Azure Policy を検索して見つけることもできます。
     > 1. Azure Policy を開きます。
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Azure Policy へのアクセス":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Azure Policy にアクセスします。":::
     > 2. Azure Policy のメニューから **[定義]** を選択し、名前で検索します。 
 
 1. 関連する Azure Policy ページで、 **[割り当てる]** を選択します。
-    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="Azure Policy の割り当て":::
+    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="Azure Policy を割り当てます。":::
 
 1. 各タブを開き、必要に応じてパラメーターを設定します。
     1. **[基本]** タブで、ポリシーのスコープを設定します。 集中管理を使用するには、ワークフローの自動化の構成を使用するサブスクリプションが含まれている管理グループにポリシーを割り当てます。 
@@ -131,7 +131,7 @@ ms.locfileid: "110537718"
         > 各パラメーターには、使用可能なオプションを説明するツールヒントがあります。
         >
         > Azure Policy のパラメーター タブ (1) には、Security Center のワークフローの自動化ページ (2) に似た構成オプションへのアクセスが提供されています。
-        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="ワークフローの自動化のパラメーターを Azure Policy と比較する" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
+        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="ワークフローの自動化のパラメーターを Azure Policy と比較します。" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
 
     1. 必要に応じて、この割り当てを既存のサブスクリプションに適用するには、 **[修復]** タブを開き、修復タスクを作成するためのオプションを選択します。
 

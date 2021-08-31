@@ -13,12 +13,12 @@ ms.date: 05/06/2021
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cf1ca72d7afaace847fb1b8321723f57fbe133f6
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 27c56804eeb3b27bfda9f581f13b853edc8e4b4e
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802174"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453792"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>方法: アプリケーションにアプリ ロールを追加してトークンで受け取る
 
@@ -203,7 +203,8 @@ Web API に承認を追加する方法については、「[保護された Web 
 
 - コード サンプル (GitHub)
   - [グループおよびグループ要求を使用して ASP.NET Core Web アプリに承認を追加する](https://aka.ms/groupssample)
-  - [.NET Core Web API を呼び出してアプリ ロールとセキュリティ グループを使用する、Angular の単一ページ アプリケーション (SPA)](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md)
+  - [.NET Core Web API を呼び出してアプリ ロールとセキュリティ グループを使用する、Angular の単一ページ アプリケーション (SPA)](https://github.com/Azure-Samples/ms-identity-javascript-angular-tutorial/tree/main/5-AccessControl)
+  - [Node.js Web API を呼び出し、アプリ ロールとセキュリティ グループを使用する、React シングルページ アプリケーション (SPA)](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/5-AccessControl)
 - リファレンス ドキュメント
   - [Azure AD のアプリ マニフェスト](./reference-app-manifest.md)
   - [Azure AD のアクセス トークン](access-tokens.md)

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: d1bb111bbaa909c52261a0dbafe6d6e0a24390ac
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: e9e233aa5a4d32a1f298889b0a98c3a85d9cf4e5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007264"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456319"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 
@@ -127,7 +127,7 @@ VM の自動配置を使用する場合の既知の問題と制限事項:
 
 クォータの増加を要求するには、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) でサポート リクエストを作成します。
 
-専用ホストをプロビジョニングすると、専用ホストの vCPU と VM ファミリの vCPU クォータの両方が使用されますが、リージョンの vCPU は使用されません。
+専用ホストをプロビジョニングすると、専用ホストの vCPU と VM ファミリの vCPU クォータの両方が使用されますが、リージョンの vCPU は使用されません。 専用ホストに配置される VM は、VM ファミリ vCPU クォータに対してカウントされません。 専用ホストからマルチテナント環境に VM を移動する場合、その VM では VM ファミリ vCPU クォータが使用されます。
 
 
 ![ポータルの使用量とクォータのページのスクリーンショット](./media/virtual-machines-common-dedicated-hosts/quotas.png)

@@ -3,20 +3,20 @@ title: リージョン - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換、テキスト読み上げ、音声翻訳など、Speech サービスで利用可能なリージョンとエンドポイントのリスト。
 services: cognitive-services
-author: mahilleb-msft
+author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 07/01/2021
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: ab3e61a9c6593f8ee3075dd0ef6f0dee62c3a9c2
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 002f8ce7311d59a101f676908453fb1493b6dd39
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315257"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710408"
 ---
 # <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
@@ -29,6 +29,9 @@ Speech Service を使用すると、アプリケーションで音声をテキ�
 * アプリケーションで [Speech SDK](speech-sdk.md) を使用する場合、Speech の構成を作成するときに `westus` などのリージョン ID を指定します。
 * アプリケーションで Speech Service の [REST API](./overview.md#reference-docs) のいずれかを使用する場合、要求を行うときに使用するエンドポイント URI にリージョンが含まれます。
 * あるリージョン用に作成されたキーはそのリージョンでのみ有効です。 別のリージョンで使用すると認証エラーが発生します。
+
+> [!NOTE]
+> 顧客がサービス インスタンスをデプロイしたリージョンの外部で、Speech Services によって、顧客データの格納または処理が行われることはありません。
 
 ## <a name="speech-sdk"></a>Speech SDK
 

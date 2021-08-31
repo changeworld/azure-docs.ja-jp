@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) でクラスターのセキュリテ
 services: container-service
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 5cb103d843aafbb7f72c03d65b45fe3a84f8d1cd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7560e9aaabf8b21729e1e9d8e008c0b6a0e8cefb
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782983"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453324"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -279,38 +279,19 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 
 AKS のアップグレードの詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]と [AKS クラスターのアップグレード][aks-upgrade]に関する記事を参照してください。
 
-## <a name="process-linux-node-updates-and-reboots-using-kured"></a>kured を使用して Linux ノードの更新と再起動を処理する
+## <a name="process-linux-node-updates"></a>Linux ノード更新プログラムの処理
 
-> **ベスト プラクティスのガイダンス** 
-> 
-> AKS を使用すると、各 Linux ノードへのセキュリティ パッチのダウンロードとインストールが自動的に行われますが、再起動が自動的に実行されることはありません。 
-> 1. 保留中の再起動を監視するには、`kured` を使用します。
-> 1. ノードの再起動を可能にするために、ノードの遮断とドレインを安全に実行します。
-> 1. 更新プログラムを適用します。
-> 1. OS に関しては、セキュリティをできるだけ高めます。 
+AKS の Linux ノードには、毎晩、ディストリビューション更新チャネルを介してセキュリティ修正プログラムが取得されます。 この動作は、ノードが AKS クラスターにデプロイされるときに自動的に構成されます。 中断や実行中のワークロードへの潜在的な影響を最小限に抑えるために、セキュリティ修正プログラムまたはカーネルの更新プログラムに必要な場合でも、ノードは自動的に再起動されません。 ノードの再起動を処理する方法については、[AKS のノードにセキュリティとカーネルの更新プログラムを適用する方法][aks-kured]に関する記事を参照してください。
 
-Windows Server ノードでは、ポッドを安全に切断およびドレインし、更新されたノードをデプロイするために、AKS のアップグレード操作を定期的に実行します。
+### <a name="node-image-upgrades"></a>ノード イメージのアップグレード
 
-AKS の Linux ノードには、毎晩、ディストリビューション更新チャネルを介してセキュリティ修正プログラムが取得されます。 この動作は、ノードが AKS クラスターにデプロイされるときに自動的に構成されます。 中断や実行中のワークロードへの潜在的な影響を最小限に抑えるために、セキュリティ修正プログラムまたはカーネルの更新プログラムに必要な場合でも、ノードは自動的に再起動されません。
+無人アップグレードでは、Linux ノード OS にアップデートが適用されますが、クラスターのノードを作成するためのイメージは変更されません。 新しい Linux ノードがクラスターに追加された場合は、元のイメージを使用してノードが作成されます。 この新しいノードは、毎晩の自動チェックで利用可能なすべてのセキュリティおよびカーネル アップデートを受け取りますが、すべてのチェックと再起動が完了するまではパッチは適用されません。 ノード イメージのアップグレードを使用して、クラスターで使用されているノード イメージをチェックして更新することもできます。 ノード イメージのアップグレードに関する詳細については、「[Azure Kubernetes Service (AKS) ノード イメージのアップグレード][node-image-upgrade]」を参照してください。
 
-Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェクトでは、保留中のノードの再起動が監視されます。 再起動が必要な更新プログラムが Linux ノードに適用されると、そのノードの遮断と解放が安全に実行され、クラスター内の他のノード上のポッドの移動とスケジュール設定が行われます。 ノードは再起動されるとクラスターに戻され、Kubernetes でポッドのスケジューリングが再開されます。 中断を最小限に抑えるために、`kured` では一度に 1 つのノードのみを再起動できます。
+## <a name="process-windows-server-node-updates"></a>Windows Server ノード更新プログラムの処理
 
-![kured を使用した AKS ノードの再起動プロセス](media/operator-best-practices-cluster-security/node-reboot-process.png)
-
-再起動をさらに細かく制御する場合は、他のメンテナンス イベントやクラスターの問題が発生しているときに再起動しないように、`kured` を Prometheus と統合することができます。 この統合により、他の問題を解決している間にノードを再起動することによる複雑さを軽減できます。
-
-ノードの再起動を処理する方法については、[AKS のノードにセキュリティとカーネルの更新プログラムを適用する方法][aks-kured]に関する記事を参照してください。
-
-## <a name="next-steps"></a>次のステップ
-
-この記事では、AKS クラスターをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
-
-* [Azure Active Directory と AKS の統合][aks-aad]
-* [AKS クラスターを最新版の Kubernetes にアップグレードする][aks-upgrade]
-* [kured を使用してセキュリティ更新プログラムとノードの再起動を処理する][aks-kured]
+Windows Server ノードでは、ポッドを安全に切断およびドレインし、更新されたノードをデプロイするために、ノード イメージのアップグレード操作を定期的に実行します。
 
 <!-- EXTERNAL LINKS -->
-[kured]: https://github.com/weaveworks/kured
 [k8s-apparmor]: https://kubernetes.io/docs/tutorials/clusters/apparmor/
 [seccomp]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#seccomp
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -330,3 +311,4 @@ Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェク�
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
 [security-center-aks]: ../security-center/defender-for-kubernetes-introduction.md
+[node-image-upgrade]: node-image-upgrade.md

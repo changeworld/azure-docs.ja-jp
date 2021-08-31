@@ -9,12 +9,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 04/29/2021
-ms.openlocfilehash: 8e8920d2a2ebbf326c9d5d0aba100ad5352ca6c4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 13da66fbe5b79026028dc6c525283e40f1d55dad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071202"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742050"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -38,6 +38,8 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 > [!NOTE]
 > Machine Learning Server スタンドアロンのサポートは 2021 年 7 月 1 日に終了します。 これは 6 月 30 日以降、DSVM イメージから削除されます。 既存のデプロイは引き続きソフトウェアにアクセスできますが、サポート終了日に達したため、2021 年 7 月 1 日以降、サポートはなくなります。
 
+> [!NOTE]
+> SQL Server Developer エディションは、2021 年 11 月末をもって DSVM イメージから削除されます。 既存のデプロイには、今後も SQL Server Developer エディションがインストールされます。 新規デプロイで SQL Server Developer エディションにアクセスできるようにするには、Docker サポート経由でインストールして使用することができます。詳細については、「[クイック スタート:Docker を使用して SQL Server コンテナー イメージを実行する](/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-)」を参照してください
 
 ### <a name="windows"></a>Windows
 

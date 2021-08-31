@@ -3,12 +3,12 @@ title: Azure Functions をパッケージから実行する
 description: 関数アプリのプロジェクト ファイルが含まれたデプロイ パッケージ ファイルをマウントすることで、Azure Functions ランタイムで関数を実行します。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: aad6991d0ddd5c439d03e41adec63837a21db87b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0be037d5a9270d60c16f8fc128030705be8b81ef
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581594"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136888"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
 
@@ -35,7 +35,7 @@ Azure では、関数アプリのデプロイ パッケージ ファイルから
 | 値  | 説明  |
 |---------|---------|
 | **`1`**  | Windows 上で実行される関数アプリでは、推奨されています。 関数アプリの `d:\home\data\SitePackages` フォルダー内のパッケージ ファイルから実行します。 [Zip 配置を使って配置](#integration-with-zip-deployment)しない場合、このオプションでは、フォルダー内に `packagename.txt` という名前のファイルも含む必要があります。 このファイルには、フォルダー内のパッケージ ファイルの空白なしの名前のみが含まれます。 |
-|**`<URL>`**  | 実行する特定のパッケージ ファイルの場所。 Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 付きのプライベート コンテナーを使用して、Functions ランタイムがパッケージにアクセスできるようにする必要があります。 [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、パッケージ ファイルを Blob Storage アカウントにアップロードします。 また、URL を指定するとき、更新済みのパッケージを発行した後に[トリガーを同期](functions-deployment-technologies.md#trigger-syncing)する必要もあります。 |
+|**`<URL>`**  | 実行する特定のパッケージ ファイルの場所。 また、URL を指定するとき、更新済みのパッケージを発行した後に[トリガーを同期](functions-deployment-technologies.md#trigger-syncing)する必要もあります。 <br/>Blob ストレージを使用している場合は、通常、パブリック Blob を使うべきではありません。 代わりに、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) があるプライベート コンテナーを使用するか、[マネージド ID を使用して](#fetch-a-package-from-azure-blob-storage-using-a-managed-identity)パッケージにアクセスするための Functions ランタイムを有効にします。 [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使用して、パッケージ ファイルを Blob Storage アカウントにアップロードします。 |
 
 > [!CAUTION]
 > Windows 上で関数アプリを実行する場合、外部 URL のオプションではコールド スタートのパフォーマンスが悪化します。 関数アプリを Windows にデプロイするときは、`WEBSITE_RUN_FROM_PACKAGE` を `1` に設定して、zip 配置によって発行する必要があります。
@@ -46,6 +46,10 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
 
 > [!NOTE]
 > 現時点では、.zip パッケージ ファイルのみがサポートされています。
+
+### <a name="fetch-a-package-from-azure-blob-storage-using-a-managed-identity"></a>マネージド ID を使用して Azure Blob Storage からパッケージを取得する
+
+[!INCLUDE [Run from package via Identity](../../includes/app-service-run-from-package-via-identity.md)]
 
 ## <a name="integration-with-zip-deployment"></a>zip デプロイとの統合
 

@@ -7,15 +7,15 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/21/2021
+ms.date: 06/24/2021
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 196afc38c24254c4628173180205a858d1085eeb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b6ea56942580b3b8785dcf2b694b30ad64e8a258
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489933"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112894961"
 ---
 # <a name="control-access-to-iot-hub-using-azure-active-directory"></a>Azure Active Directory を使用して IoT Hub へのアクセスを制御する
 
@@ -80,7 +80,7 @@ IoT Hub には、Azure AD と RBAC を使って IoT Hub サービス API への�
 | Microsoft.Devices/IotHubs/cloudToDeviceMessages/send/action | cloud-to-device メッセージを任意のデバイスに送信します  |
 | Microsoft.Devices/IotHubs/cloudToDeviceMessages/feedback/action | cloud-to-device メッセージのフィードバック通知を受信、完了、または破棄します |
 | Microsoft.Devices/IotHubs/cloudToDeviceMessages/queue/purge/action | デバイスの保留中のすべてのコマンドを削除します  |
-| Microsoft.Devices/IotHubs/directMethods/invoke/action | デバイスでダイレクト メソッドを呼び出します |
+| Microsoft.Devices/IotHubs/directMethods/invoke/action | 任意のデバイスまたはモジュールでダイレクト メソッドを呼び出します |
 | Microsoft.Devices/IotHubs/fileUpload/notifications/action  | ファイルのアップロード通知を受信、完了、または破棄します |
 | Microsoft.Devices/IotHubs/statistics/read | デバイスとサービスの統計情報を読み取ります |
 | Microsoft.Devices/IotHubs/configurations/read | デバイス管理構成を読み取ります |
@@ -95,6 +95,9 @@ IoT Hub には、Azure AD と RBAC を使って IoT Hub サービス API への�
 > - [デジタル ツインの取得](/rest/api/iothub/service/digitaltwin/getdigitaltwin)には `Microsoft.Devices/IotHubs/twins/read` が必要であり、[デジタル ツインの更新](/rest/api/iothub/service/digitaltwin/updatedigitaltwin) には `Microsoft.Devices/IotHubs/twins/write` が必要です。
 > - [コンポーネント コマンドの呼び出し](/rest/api/iothub/service/digitaltwin/invokecomponentcommand)と[ルート レベル コマンドの呼び出し](/rest/api/iothub/service/digitaltwin/invokerootlevelcommand)の両方に、`Microsoft.Devices/IotHubs/directMethods/invoke/action` が必要です。
 
+> [!NOTE]
+> Azure AD を使用して IoT Hub からデータを取得するには、[別のイベント ハブへのルーティングを設定](iot-hub-devguide-messages-d2c.md#event-hubs-as-a-routing-endpoint)します。 [組み込みのイベント ハブ互換エンドポイント](iot-hub-devguide-messages-read-builtin.md)にアクセスするには、以前のように接続文字列 (共有アクセス キー) 方式を使用します。 
+
 ## <a name="azure-ad-access-from-azure-portal"></a>Azure portal からの Azure AD のアクセス
 
 IoT Hub にアクセスしようとすると、最初に、Azure portal によって、**Microsoft.Devices/iotHubs/listkeys/action** を持つ Azure ロールが割り当てられているかどうかが確認されます。 そうなっている場合、Azure portal では IoT Hub にアクセスするために、共有アクセス ポリシーのキーが使用されます。 そうなっていない場合、Azure portal では、Azure AD アカウントを使用してデータへのアクセスが試みられます。 
@@ -107,11 +110,17 @@ Azure AD アカウントを使用して Azure portal から IoT Hub にアクセ
 - **Microsoft.Devices/IotHubs/devices/delete** データ アクションを含まない
 - **Microsoft.Devices/iotHubs/listkeys/action** アクションを含まない
 
-次に、**Microsoft.Devices/iotHubs/listkeys/action** アクセス許可を持つ他のロール ([所有者](../role-based-access-control/built-in-roles.md#owner)や[共同作成者](../role-based-access-control/built-in-roles.md#contributor)など) がアカウントにないことを確認します。 アカウントでリソースにアクセスでき、ポータルをナビゲートできるようにするには、[閲覧者](../role-based-access-control/built-in-roles.md#reader)を割り当てます。
+次に、**Microsoft.Devices/iotHubs/listkeys/action** アクセス許可を持つ他のロール ([所有者](../role-based-access-control/built-in-roles.md#owner)や [共同作成者](../role-based-access-control/built-in-roles.md#contributor)など) がアカウントにないことを確認します。 アカウントでリソースにアクセスでき、ポータルをナビゲートできるようにするには、[閲覧者](../role-based-access-control/built-in-roles.md#reader)を割り当てます。
 
-## <a name="built-in-event-hub-compatible-endpoint-doesnt-support-azure-ad-authentication"></a>組み込みのイベント ハブ互換エンドポイントでは Azure AD の認証はサポートされない
+## <a name="azure-iot-extension-for-azure-cli"></a>Azure CLI 用 Azure IoT 拡張機能
 
-[組み込みのエンドポイント](iot-hub-devguide-messages-read-builtin.md)では、Azure AD の統合はサポートされません。 セキュリティ プリンシパルやマネージド ID を使用してそれにアクセスすることはできません。 組み込みのエンドポイントにアクセスするには、以前のように接続文字列 (共有アクセス キー) 方式を使用します。
+IoT Hub に対するほとんどのコマンドでは、Azure AD 認証がサポートされます。 コマンドの実行に使用される認証の種類は、値 key または login を受け入れる `--auth-type` パラメーターを使用して制御できます。 既定では、値 `key` が設定されます。
+
+- 前のように `--auth-type`の値が `key` の場合、CLI により、IoT Hub と対話するときに適切なポリシーが自動的に検出されます。
+
+- `--auth-type` 値が `login` の場合、Azure CLI のログイン済みプリンシパルからのアクセス トークンがこの操作に使用されます。
+
+詳細については、[Azure CLI 用 Azure IoT 拡張機能のリリース ページ](https://github.com/Azure/azure-iot-cli-extension/releases/tag/v0.10.12)を参照してください
 
 ## <a name="sdk-samples"></a>SDK のサンプル
 

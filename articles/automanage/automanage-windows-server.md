@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 3af0c8c99607675de3166c8747755791dbba5820
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 8ada2b5dbf58791da7bfbd11201a683c6a060f94
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483859"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113649606"
 ---
-# <a name="azure-automanage-for-virtual-machines-best-practices---windows-server"></a>Azure Automanage for virtual machines のベスト プラクティス - Windows Server
+# <a name="azure-automanage-for-machines-best-practices---windows-server"></a>Azure Automanage for Machines のベスト プラクティス - Windows Server
 
-Windows Server VM で Automanage for virtual machines (VM) を使用すると、これらの Azure サービスが自動的にオンボードされます。 それらはベスト プラクティスのホワイト ペーパーに不可欠なものであり、[クラウド導入フレームワーク](/azure/cloud-adoption-framework/manage/azure-server-management)を参照してください。
+Windows Server VM で Automanage Machine Best Practices を使用する場合、これらの Azure サービスは自動的にオンボードされます。 それらはベスト プラクティスのホワイト ペーパーに不可欠なものであり、[クラウド導入フレームワーク](/azure/cloud-adoption-framework/manage/azure-server-management)を参照してください。
 
 これらのすべてのサービスについては、Microsoft が自動オンボード、自動構成、ドリフトの監視、ドリフトが検出された場合の修復を行います。 このプロセスの詳細については、「[Azure Automanage for virtual machines](automanage-virtual-machines.md)」を参照してください。
 
@@ -29,16 +29,18 @@ Automanage でサポートされている Windows Server のバージョンは�
 - Windows Server 2016
 - Windows Server 2019
 - Windows Server 2019 Azure Edition
+- Windows Server 2022
+- Windows Server 2022 Azure Edition
 
 ## <a name="participating-services"></a>対象となるサービス
 
 |サービス    |説明    |サポートされている環境<sup>1</sup>    |サポートされている基本設定<sup>1</sup>    |
 |-----------|---------------|----------------------|-------------------------|
-|[VM の分析情報の監視](../azure-monitor/vm/vminsights-overview.md)    |Azure Monitor for VMs では、実行中のプロセスや他のリソースへの依存関係など、仮想マシンのパフォーマンスと正常性が監視されます。 [詳細情報](../azure-monitor/vm/vminsights-overview.md)。    |Production    |いいえ    |
-|[Backup](../backup/backup-overview.md)    |Azure Backup では、VM 上のデータが誤って破壊されることを防ぐために、独立して分離されたバックアップを提供しています。 [詳細情報](../backup/backup-azure-vms-introduction.md)。 料金は、保護対象の VM の数とサイズに基づいています。 [詳細情報](https://azure.microsoft.com/pricing/details/backup/)。    |Production    |Yes    |
+|[Machines Insights Monitoring](../azure-monitor/vm/vminsights-overview.md)    |Azure Monitor for Machines では、実行中のプロセスや他のリソースへの依存関係など、仮想マシンのパフォーマンスと正常性が監視されます。 [詳細情報](../azure-monitor/vm/vminsights-overview.md)。    |Production    |いいえ    |
+|[Backup](../backup/backup-overview.md)    |Azure Backup では、マシン上のデータが誤って破壊されることを防ぐために、独立して分離されたバックアップを提供しています。 [詳細情報](../backup/backup-azure-vms-introduction.md)。 料金は、保護対象の VM の数とサイズに基づいています。 [詳細情報](https://azure.microsoft.com/pricing/details/backup/)。    |Production    |Yes    |
 |[Azure Security Center](../security-center/security-center-introduction.md)    |Azure Security Center は統合されたインフラストラクチャ セキュリティ管理システムであり、データ センターのセキュリティ体制を強化し、クラウド内のハイブリッド ワークロード全体にわたる高度な脅威保護が提供されます。 [詳細情報](../security-center/security-center-introduction.md)。  VM が存在するサブスクリプションは、Automanage によって、Azure Security Center の Free レベルのオファリングに構成されます。 ご利用のサブスクリプションが Azure Security Center に既にオンボードされている場合、Automanage によって再構成されることはありません。    |運用、Dev/Test    |いいえ    |
 |[Microsoft Antimalware](../security/fundamentals/antimalware.md)    |Azure に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護です。 これにより、既知の悪意あるソフトウェアや望ましくないソフトウェアが Azure システム上にソフトウェア自体をインストールまたは実行しようとしたときに、アラートが生成されます。 **注:** Microsoft Antimalware を使用するには、他のマルウェア対策ソフトウェアがインストールされていないことが必要です。そうでないと、動作しない可能性があります。  [詳細情報](../security/fundamentals/antimalware.md)。 |運用、Dev/Test    |Yes    |
-|[更新管理](../automation/update-management/overview.md)    |Azure Automation の Update Management を使用して、仮想マシンのオペレーティング システムの更新プログラムを管理することができます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。 [詳細情報](../automation/update-management/overview.md)。    |運用、Dev/Test    |いいえ    |
+|[更新管理](../automation/update-management/overview.md)    |Azure Automation の Update Management を使用して、マシンのオペレーティング システムの更新プログラムを管理することができます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。 [詳細情報](../automation/update-management/overview.md)。    |運用、Dev/Test    |いいえ    |
 |[変更履歴とインベントリ](../automation/change-tracking/overview.md) |変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。  [詳細情報](../automation/change-tracking/overview.md)。    |運用、Dev/Test    |いいえ    |
 |[Azure ゲスト構成](../governance/policy/concepts/guest-configuration.md) | ゲスト構成ポリシーは、マシンのコンプライアンスに関するレポートを作成し、構成を監視するために使用されます。 ゲスト構成拡張機能を使用して、Automanage サービスによって [Windows セキュリティ ベースライン](/windows/security/threat-protection/windows-security-baselines)がインストールされます。 Windows マシンの場合、準拠していない場合はゲスト構成サービスによってベースライン設定が自動的に再適用されます。 [詳細情報](../governance/policy/concepts/guest-configuration.md)。    |運用、Dev/Test    |いいえ    |
 |[ブート診断](../virtual-machines/boot-diagnostics.md)    | ブート診断は、VM ブート エラーの診断を可能にする、Azure の仮想マシン (VM) のデバッグ機能です。 ブート診断を使用すると、ユーザーは、シリアル ログ情報とスクリーンショットを収集して、起動中の VM の状態を確認できます。 これは、マネージド ディスクを使用しているマシンに対してのみ有効になります。 |運用、Dev/Test    |いいえ    |
@@ -51,7 +53,7 @@ Automanage でサポートされている Windows Server のバージョンは�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure portal でAzure Automanage for virtual machines を有効にしてみてください。
+Azure portal で Automanage for machines を有効にしてみてください。
 
 > [!div class="nextstepaction"]
-> [Azure portal で Azure Automanage for virtual machines を有効にする](quick-create-virtual-machines-portal.md)
+> [Azure portal で Azure Automanage for machines を有効にする](quick-create-virtual-machines-portal.md)

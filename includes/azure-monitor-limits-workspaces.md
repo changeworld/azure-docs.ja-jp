@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 704697a88a723182c2dbbcb2f25eb18df7be34c1
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: b8ada581eabe0a2fedda08d0fbb1fa9585da0cca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430353"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802098"
 ---
 **データの収集量と保持期間** 
 
@@ -47,7 +47,7 @@ ms.locfileid: "111430353"
 | 1 回の投稿の最大サイズ | 30 MB | 大量の場合は複数の投稿に分割します。 |
 | フィールド値の最大サイズ  | 32 KB | 32 KB を超えるフィールドは切り詰められます。 |
 
-**Search API**
+**クエリ API**
 
 | カテゴリ | 制限 | 説明 |
 |:---|:---|:---|
@@ -60,8 +60,8 @@ ms.locfileid: "111430353"
 
 | カテゴリ | 制限 | 説明 |
 |:---|:---|:---|
+| データの最大サイズ | 16.7 MB 以下 (16 MiB 以下) | コネクタ インフラストラクチャで、制限がクエリ API の制限よりも低く設定されている |
 | レコードの最大数 | 500,000 | |
-| 返されるデータの最大サイズ | 104 MB 以下 (100 MiB 以下) | |
 | クエリ タイムアウトの最大値 | 110 秒 | |
 | グラフ | | [ログ] ページとコネクタの視覚化で使用されているグラフ ライブラリは異なり、現在、コネクタでは一部機能が使用できません。 |
 

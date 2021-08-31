@@ -2,17 +2,17 @@
 title: 概念 - ID とアクセス
 description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 832e2906656ef4da6cc9ad054927f17611fbbaf4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/29/2021
+ms.openlocfilehash: 7d6bcfc9426761615d1f9220f36834cc19eb09f8
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953156"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069497"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
-Azure VMware Solution のプライベート クラウドは、vCenter Server と NSX-T Manager を使用してプロビジョニングされます。 vCenter は仮想マシン (VM) のワークロードを管理するために使用し、NSX-T Manager はプライベート クラウドの管理と拡張を行うために使用します。 アクセスと ID 管理では、vCenter の場合は CloudAdmin ロールが、NSX-T Manager の場合は制限付き管理者権限が使用されます。 
+Azure VMware Solution のプライベート クラウドは、vCenter Server と NSX-T Manager を使用してプロビジョニングされます。 vCenter は仮想マシン (VM) のワークロードを管理するために使用し、NSX-T Manager はプライベート クラウドの管理と拡張を行うために使用します。 vCenter には CloudAdmin ロールが使用され、NSX-T Manager には制限付き管理者権限が使用されます。 
 
 ## <a name="vcenter-access-and-identity"></a>vCenter のアクセスと ID
 
@@ -22,7 +22,7 @@ Azure VMware Solution では、vCenter に cloudadmin という組み込みの�
 
 - Azure VMware Solution のデプロイでは、管理者が管理者ユーザー アカウントにアクセスすることはできません。 ただし、AD ユーザーとグループを vCenter の CloudAdmin ロールに割り当てることができます。  
 
-プライベート クラウド ユーザーは、Microsoft によってサポートと管理が行われている特定の管理コンポーネントにアクセスすることも構成することもできません (クラスター、ホスト、データストア、分散仮想スイッチなど)。
+プライベート クラウド ユーザーは、Microsoft がサポートと管理を行う特定の管理コンポーネントにはアクセスできず、それらを構成することもできません。 (クラスター、ホスト、データストア、分散仮想スイッチなど)。
 
 > [!IMPORTANT]
 > Azure VMware Solution により、vCenter のカスタム ロールが提供されていますが、現在、Azure VMware Solution ポータルでは提供されていません。 詳細については、この記事の後半の「[vCenter でカスタム ロールを作成する](#create-custom-roles-on-vcenter)」セクションを参照してください。 
@@ -31,13 +31,13 @@ Azure VMware Solution では、vCenter に cloudadmin という組み込みの�
 
 Azure VMware Solution プライベート クラウドの vCenter で Azure VMware Solution の CloudAdmin ロールに付与された特権を確認できます。
 
-1. vSphere Client にサインインし、 **[Menu]\(メニュー\)** 、 **[Administration]\(管理\)** の順に移動します。
+1. vSphere Client にサインインし、 **[Menu]\(メニュー\)**  >  **[Administration]\(管理\)** の順に移動します。
 
 1. **[Access Control]\(アクセス制御\)** で、 **[Roles]\(ロール\)** を選択します。
 
 1. ロールの一覧から **[CloudAdmin]** を選択し、 **[Privileges]\(特権\)** を選択します。 
 
-   :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="vSphere Client で CloudAdmin ロールの特権を確認する方法":::
+   :::image type="content" source="media/concepts/role-based-access-control-cloudadmin-privileges.png" alt-text="vSphere Client での CloudAdmin のロールと特権を示すスクリーンショット。":::
 
 Azure VMware Solution の CloudAdmin ロールには、vCenter に対する次の特権があります。 詳細については、[VMware 製品のドキュメント](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)を参照してください。
 
@@ -87,31 +87,31 @@ CloudAdmin ロールを使用し、現在のロール以下の権限を持つカ
 
 #### <a name="apply-a-custom-role"></a>カスタム ロールを適用する
 
-1. 追加したアクセス許可を必要とするオブジェクトに移動します。 たとえば、フォルダーにアクセス許可を適用するには、 **[メニュー]** 、 **[仮想マシンおよびテンプレート]** 、 **[フォルダー名]** の順に移動します。
+1. 追加したアクセス許可を必要とするオブジェクトに移動します。 たとえば、フォルダーにアクセス許可を適用するには、 **[メニュー]**  >  **[仮想マシンおよびテンプレート]**  >  **[フォルダー名]** の順に移動します。
 
 1. オブジェクトを右クリックし、 **[アクセス許可の追加]** を選択します。
 
-1. **[アクセス許可の追加]** ウィンドウで、グループまたはユーザーを検索できる **[ユーザー]** ドロップダウンで ID ソースを選択します。
+1. グループまたはユーザーを検索できる **[ユーザー]** ドロップダウンで ID ソースを選択します。
 
 1. **[ユーザー]** セクションで ID ソースを選択したら、ユーザーまたはグループを検索します。 
 
-1. ユーザーまたはグループに適用するロールを選択します。
+1. そのユーザーまたはグループに適用するロールを選択します。
 
 1. 必要に応じて **[子へ伝達]** をオンにし、 **[OK]** を選択します。 追加されたアクセス許可は、 **[権限]** セクションに表示されます。
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager のアクセスと ID
 
 >[!NOTE]
->NSX-T 2.5 は、現在すべての新しいプライベート クラウドでサポートされています。
+>NSX-T [!INCLUDE [nsxt-version](includes/nsxt-version.md)] は、現在すべての新しいプライベート クラウドでサポートされています。
 
-NSX-T Manager には "*管理者*" アカウントを使用してアクセスします。 これには完全な特権があるため、 Tier-1 (T1) ゲートウェイ、セグメント (論理スイッチ)、およびすべてのサービスを作成および管理できます。 この特権により、NSX-T Tier-0 (T0) ゲートウェイへのアクセスが可能になります。 T0 ゲートウェイを変更すると、ネットワーク パフォーマンスが低下したり、プライベート クラウドにアクセスできなくなったりする可能性があります。 Azure portal でサポート リクエストを開いて、NSX-T T0 ゲートウェイに対する変更を依頼してください。
+NSX-T Manager には "*管理者*" アカウントを使用してアクセスします。 これには完全な特権があるため、Tier-1 (T1) ゲートウェイ、セグメント (論理スイッチ)、およびすべてのサービスを作成および管理できます。 また、この特権により、NSX-T Tier-0 (T0) ゲートウェイへのアクセスが可能になります。 T0 ゲートウェイを変更すると、ネットワーク パフォーマンスが低下したり、プライベート クラウドにアクセスできなくなったりする可能性があります。 Azure portal でサポート リクエストを開いて、NSX-T T0 ゲートウェイに対する変更を依頼してください。
 
  
 ## <a name="next-steps"></a>次のステップ
 
 Azure VMware Solution のアクセスと ID に関する概念を理解したら、次の事項の学習に進むことができます。
 
-- [Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
+- [Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)  
 - [各特権の詳細](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
 - [Azure VMware Solution でプライベート クラウドを監視し、修復するしくみ](./concepts-private-clouds-clusters.md#host-monitoring-and-remediation)
 

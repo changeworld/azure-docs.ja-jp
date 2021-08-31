@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 07/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 5fd8dad44aa085530426168961280c4a84162ecb
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 9f78e3021df56ea750f2c902555aca796691476a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617675"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448952"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU を更新する 
 
@@ -24,8 +24,8 @@ ms.locfileid: "110617675"
 この記事で説明されている手順は別バージョンのソフトウェアで実行されましたが、現行バージョンのソフトウェアでもプロセスは同じです。
 
 > [!IMPORTANT]
-> - 更新プログラム **2105** が最新の更新プログラムであり、次のものに対応します。
->   - デバイス ソフトウェアのバージョン - **2.2.1606.3320**
+> - 更新プログラム **2106** が最新の更新プログラムであり、次のものに対応します。
+>   - デバイス ソフトウェアのバージョン - **2.2.1636.3457**
 >   - Kubernetes サーバーのバージョン - **v1.20.2**
 >   - IoT Edge のバージョン:**0.1.0-beta14**
 >   - GPU ドライバー バージョン: **460.32.03**

@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c12cb6c344554f4d18af28dd563b7c96358ea2ee
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4702a91154a4aa93a504597a02a915d1fb26ea0f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095160"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724639"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure Key Vault Analytics ソリューション
 
@@ -75,7 +75,7 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 | Azure |  |  |&#8226; |  |  | 着信時 |
 
 ## <a name="use-azure-key-vault"></a>Azure Key Vault の使用
-[ソリューションをインストール](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview)すると、Azure Monitor の **[概要]** ページの **[Key Vault Analytics]** タイルをクリックすることで、Key Vault データが表示されます。 このページは、**Azure Monitor** メニューの **[Insights]** セクションの **[More]\(詳細\)** をクリックして開きます。 
+ソリューションをインストールすると、Azure Monitor の **[概要]** ページの **[Key Vault Analytics]** タイルをクリックすることで、Key Vault データが表示されます。 このページは、**Azure Monitor** メニューの **[Insights]** セクションの **[More]\(詳細\)** をクリックして開きます。 
 
 ![Azure Monitor の [概要] ページの [Key Vault Analytics] タイルのスクリーンショット。一定期間を対象とするキー コンテナー操作のボリュームをグラフで確認できます。](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
@@ -150,4 +150,3 @@ Azure Key Vault ソリューションによって分析されるのは、Azure D
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Monitor で[ログ クエリ](../logs/log-query-overview.md)を使用して、詳細な Azure Key Vault データを表示します。
-

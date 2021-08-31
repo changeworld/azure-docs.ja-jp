@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 4e5d239416a14d2d769020283f43f2dbcf150e64
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 93ac3458e2d9954c9ec17294fe89199d11cc765f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539808"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741391"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -97,7 +97,7 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 
 関数プロジェクトでは、接続情報を構成プロバイダーからの名前で参照しています。 接続の詳細を直接受け入れないため、環境間で変更できます。 たとえば、トリガー定義に `connection` プロパティが含まれるとします。 これは接続文字列が参照されている場合がありますが、接続文字列を `function.json` に直接設定することはできません。 代わりに、`connection` を、接続文字列を含む環境変数の名前に設定します。
 
-既定の構成プロバイダーでは環境変数を使用します。 これらは、Azure Functions サービスで実行している場合は [[アプリケーションの設定]](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)、ローカルでの開発時には[ローカル設定ファイル](functions-run-local.md#local-settings-file)で設定できます。
+既定の構成プロバイダーでは環境変数を使用します。 これらは、Azure Functions サービスで実行している場合は [[アプリケーションの設定]](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)、ローカルでの開発時には[ローカル設定ファイル](functions-develop-local.md#local-settings-file)で設定できます。
 
 ### <a name="connection-values"></a>接続値
 
@@ -126,7 +126,7 @@ ID ベースの接続は、すべてのプランにおいて、次のトリガ�
 
 Functions ランタイム (`AzureWebJobsStorage`) によって使用されるストレージ接続は、ID ベースの接続を使用して構成することもできます。 以下の[「ID を使用してホスト ストレージに接続する」](#connecting-to-host-storage-with-an-identity)を参照してください。
 
-Azure Functions サービスでホストされている場合、ID ベースの接続では、[マネージド ID](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json) が使用されます。 既定では、システム割り当て ID が使用されます。 ローカル開発などの他のコンテキストで実行する場合は、代わりに開発者 ID が使用されます。ただし、代替接続パラメーターを使用してカスタマイズすることもできます。
+Azure Functions サービスでホストされている場合、ID ベースの接続では、[マネージド ID](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json) が使用されます。 ユーザー割り当て ID を `credential` および `clientID` プロパティで指定できますが、システム割り当て ID が既定で使用されます。 ローカル開発などの他のコンテキストで実行する場合は、代わりに開発者 ID が使用されます。ただし、代替接続パラメーターを使用してカスタマイズすることもできます。
 
 #### <a name="grant-permission-to-the-identity"></a>ID にアクセス許可を付与する
 
@@ -151,12 +151,14 @@ Azure サービスに対する ID ベースの接続では、次のプロパテ�
 |---|---|---|---|
 | サービス URI | Azure Blob<sup>1</sup>、Azure Queue | `<CONNECTION_NAME_PREFIX>__serviceUri` | 接続先サービスのデータ プレーン URI。 |
 | 完全修飾名前空間 | Event Hubs、Service Bus | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Event Hubs と Service Bus の完全修飾名前空間。 |
+| トークン資格情報 | (オプション)。 | `<CONNECTION_NAME_PREFIX>__credential` | 接続のためにトークンを取得する方法を定義します。 "managedidentity" に設定する必要がある場合の、ユーザー割り当て ID の指定時にのみ推奨されます。 これは Azure Functions サービスでホストされるときにのみ有効です。 |
+| クライアント ID | (オプション)。 | `<CONNECTION_NAME_PREFIX>__clientId` | `credential` が "managedidentity" に設定されると、このプロパティによって、トークンの取得時に使用されるユーザー割り当て ID が指定されます。 このプロパティは、アプリケーションに割り当てられたユーザー割り当て ID に相当するクライアント ID を受け取ります。 指定されていない場合、システム割り当て ID が使用されます。 このプロパティは、`credential` を設定しないとき、[ローカル開発シナリオ](#local-development-with-identity-based-connections)で異なる方法で使用されます。 |
 
 <sup>1</sup> Azure BLOB には、BLOB とキュー サービス URI の両方が必要です。
 
 特定の接続の種類に対して、追加のオプションがサポートされている場合があります。 接続を確立するコンポーネントのドキュメントを参照してください。
 
-##### <a name="local-development"></a>ローカル開発
+##### <a name="local-development-with-identity-based-connections"></a>ID ベースの接続によるローカル開発
 
 ローカルで実行している場合、上記の構成によって、ローカルの開発者 ID を使用するようにランタイムに指示します。 接続では次の場所から順番にトークンを取得しようとします。
 

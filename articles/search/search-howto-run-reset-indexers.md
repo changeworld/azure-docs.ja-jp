@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de17fface1a99e7e3832cf815eadda6915a707fd
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667673"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583151"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>インデクサー、スキル、またはドキュメントを実行またはリセットする方法
 
@@ -73,7 +73,7 @@ ms.locfileid: "101667673"
 ## <a name="reset-skills-preview"></a>スキルのリセット (プレビュー)
 
 > [!IMPORTANT] 
-> [スキルのリセット](/rest/api/searchservice/preview-api/reset-skills)はパブリック プレビュー段階にあり、プレビュー REST API を介してのみ利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。
+> [スキルのリセット](/rest/api/searchservice/preview-api/reset-skills)はパブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 [プレビューの REST API](/rest/api/searchservice/index-preview) ではこの機能がサポートされます。
 
 スキルセットがあるインデクサーの場合は、特定のスキルをリセットして、そのスキルと、その出力に依存するダウンストリーム スキルを強制的に処理できます。 [キャッシュされたエンリッチメント](search-howto-incremental-index.md)も更新されます。 スキルをリセットすると、キャッシュされたスキルの結果が無効になります。これは、スキルの新バージョンがデプロイされたときに、インデクサーですべてのドキュメントに対してそのスキルを再実行したい場合に便利です。 
 

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 05/16/2021
 ms.author: enewman
-ms.openlocfilehash: 60ac7c3a95564fad5c271c543beac875334b05a1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 96154718ce8e0ecff0ccdce0ded70272cdda828e
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483504"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991768"
 ---
 # <a name="set-up-lab-for-react-on-linux"></a>Linux 上の React のラボを設定する
 
@@ -85,6 +85,14 @@ npm install react-jsx
 - [React Developer Tools FireFox アドオン](https://addons.mozilla.org/firefox/addon/react-devtools/)
 
 開発モードでアプリを実行するには、`npm start` 組み込みコマンドを使用します。  コマンドの出力に、ローカル URL とネットワーク URL が一覧表示されます。  HTTP の代わりに HTTPS を使用するには、[開発時に https を使用して React アプリを作成する](https://create-react-app.dev/docs/using-https-in-development)方法に関するページを参照してください。
+
+### <a name="update-firewall-settings"></a>ファイアウォール設定の更新
+
+Ubuntu の公式ビルドには [iptables](https://help.ubuntu.com/community/IptablesHowTo) がインストールしてあり、既定ですべての受信トラフィックを許可します。  ですが、VM のファイアウォールでそれより強い通信制限を行っている場合は、NodeJS サーバーへのトラフィックを許可する受信規則を追加します。  下の例では [iptables](https://help.ubuntu.com/community/IptablesHowTo) で 3000 番ポートへの通信を許可しています。
+
+```bash
+sudo iptables -I INPUT -p tcp -m tcp --dport 3000 -j ACCEPT
+```
 
 >[!IMPORTANT]
 >インストラクターは、学生の Web サイトにアクセスするために、テンプレート VM または別のラボ VM を使用する必要があります。

@@ -6,20 +6,21 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 041e6e2b3a79fa639a00506c81fc3e7ab0a98cec
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ee0bafdfe7d7caae2d4ba65e9967d9c46e6b3e3c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746773"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736435"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-flexible-server-data-in-replication"></a>Azure Database for MySQL フレキシブル サーバーのデータイン レプリケーションを構成する方法
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 この記事では、ソースとレプリカのサーバーを構成することによって、Azure Database for MySQL フレキシブル サーバーで[データイン レプリケーション](concepts-data-in-replication.md)を設定する方法について説明します。 この記事は、MySQL サーバーとデータベースに関して、ある程度の使用経験があることを前提としています。
 
 > [!NOTE]
 > この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
->
 
 Azure Database for MySQL フレキシブル サービスでレプリカを作成するために、[データイン レプリケーション](concepts-data-in-replication.md)によって、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのソース MySQL サーバーからデータが同期されます。 データイン レプリケーションは、バイナリ ログ (binlog) ファイルの位置ベースに基づいています。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
 
@@ -44,7 +45,7 @@ Azure Database for MySQL フレキシブル サービスでレプリカを作成
 
     * プライベート アクセスが使用されている場合は、ソース サーバーと、レプリカ サーバーがホストされている Vnet との間に接続が確立されていることを確認します。 
     * [ExpressRoute](../../expressroute/expressroute-introduction.md) または [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) のどちらかを使用して、オンプレミスのソース サーバーへのサイト間接続が提供されていることを確認します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
-    * レプリカ サーバーでプライベート アクセスが使用され、ソースが Azure VM の場合は、VNet 間接続が確立されていることを確認します。 リージョン内の VNet 間のピアリングがサポートされています。**グローバル ピアリングは現在サポートされていません。** 異なるリージョンにわたる VNet 間で通信するには、VNet 間接続など他の接続方法を使用する必要があります。 詳細については、[VNet 間 VPN ゲートウェイ](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関するページを参照してください
+    * レプリカ サーバーでプライベート アクセスが使用され、ソースが Azure VM の場合は、VNet 間接続が確立されていることを確認します。 VNet 間のピアリングがサポートされています。 異なるリージョンにわたる VNet 間で通信するために、VNet 間接続など他の接続方法を使用することもできます。 詳細については、[VNet 間 VPN ゲートウェイ](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関するページを参照してください
     * 仮想ネットワークのネットワーク セキュリティ グループ規則で、送信ポート 3306 がブロックされていないことを確認します (MySQL が Azure VM で実行されている場合は受信ポートも)。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
     * レプリカ サーバーの IP アドレスを許可するようにソース サーバーのファイアウォール規則を構成します。
 
@@ -215,16 +216,7 @@ Azure Database for MySQL フレキシブル サービスでレプリカを作成
       ```sql
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
       ```
-
-2. フィルター処理を設定します。
-
-   マスターからの一部のテーブルのレプリケートをスキップする場合は、レプリカ サーバーの `replicate_wild_ignore_table` サーバー パラメーターを更新します。 コンマ区切りのリストを使用して、複数のテーブル パターンを指定できます。
-
-   このパラメーターの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)を確認してください。
-
-   このパラメーターを更新するには、[Azure portal](how-to-configure-server-parameters-portal.md) または [Azure CLI](how-to-configure-server-parameters-cli.md) を使用できます。
-
-3. レプリケーションを開始します。
+2. レプリケーションを開始します。
 
    `mysql.az_replication_start` ストアド プロシージャを呼び出してレプリケーションを開始します。
 
@@ -232,7 +224,7 @@ Azure Database for MySQL フレキシブル サービスでレプリカを作成
    CALL mysql.az_replication_start;
    ```
 
-4. レプリケーションの状態を確認します。
+3. レプリケーションの状態を確認します。
 
    レプリカ サーバーで [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) コマンドを呼び出して、レプリケーションの状態を確認します。
 

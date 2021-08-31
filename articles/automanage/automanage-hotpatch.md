@@ -9,16 +9,24 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b3fc9f12dfa6ad4edcc120ac7c9592c9435a0e4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 2f7af8ebc054b49df03a7f03c512db08a5098f2b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830180"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723019"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>新しい仮想マシンのホットパッチ (プレビュー)
 
-ホット パッチの適用は、新しい Windows Server Azure Edition の仮想マシン (VM) に更新プログラムをインストールするための新しい方法であり、インストール後に再起動を必要としません。 この記事では、Windows Server Azure Edition の VM を対象にしたホットパッチについて説明します。これの利点は次のとおりです。
+> [!IMPORTANT]
+> Windows Server サービス用 Automanage は現在パブリック プレビュー段階にあります。 後述するホットパッチ機能を使用するためには、オプトイン手順が必要です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+> [!NOTE]
+> ホットパッチ機能は、次の _Windows Server Azure Edition_ イメージのいずれかにあります: Windows Server 2019 Datacenter: Azure Edition (Core)、Windows Server 2022 Datacenter: Azure Edition (Core)
+
+ホット パッチの適用は、サポートされている _Windows Server Azure Edition_ の仮想マシン (VM) に更新プログラムをインストールするための新しい方法であり、インストール後に再起動を必要としません。 この記事では、サポートされている _Windows Server Azure Edition_ の VM を対象にしたホットパッチについて説明します。これの利点は次のとおりです。
 * 再起動の回数が減り、ワークロードへの影響が少ない
 * パッケージが小さくなり、より高速にインストールされること、Azure Update Manager でパッチ オーケストレーションが容易になることで、更新プログラムをより迅速に展開できる
 * ホットパッチ更新プログラム パッケージには、再起動せずに高速にインストールされる Windows セキュリティ更新プログラムが含まれるため、保護が強化される
@@ -41,16 +49,16 @@ ms.locfileid: "107830180"
 ## <a name="how-to-get-started"></a>ファースト ステップ
 
 > [!NOTE]
-> プレビュー段階では、[このリンク](https://aka.ms/AzureAutomanageHotPatch)を使用して Azure portal でのみ開始できます。
+> プレビュー段階では、[このリンク](https://aka.ms/AutomanageWindowsServerPreview)を使用して Azure portal で開始できます。
 
 新しい VM でホットパッチの使用を開始するには、次の手順に従います。
 1.  プレビューへのアクセスを有効にする
     * サブスクリプションごとに 1 回、プレビュー アクセスの有効化が必要になります。
     * プレビュー アクセスは、次のセクションで説明するように、API、PowerShell、または CLI を使用して有効にすることができます。
 1.  Azure portal から VM を作成する
-    * プレビュー期間中は、[こちらのリンク](https://aka.ms/AzureAutomanageHotPatch)を使用して開始する必要があります。
+    * プレビュー期間中は、[こちらのリンク](https://aka.ms/AutomanageWindowsServerPreview)を使用して開始する必要があります。
 1.  VM の詳細を指定する
-    * イメージのドロップダウンで _Windows Server 2019 Datacenter: Azure Edition_ が確実に選択されているようにします
+    * 使用するサポート対象の _Windows Server Azure Edition_ イメージが [イメージ] ドロップダウンで選択されていることを確認します。  サポートされているイメージは、この記事の冒頭に記載されています。
     * [管理] タブの手順で、[Guest OS updates]\(ゲスト OS の更新プログラム\) まで下にスクロールします。 ホット パッチの適用がオンに設定され、パッチのインストールが既定の Azure オーケストレーションによるパッチ適用に設定されていることがわかります。
     * VM ベスト プラクティスの自動管理が既定で有効になります
 1. 新しい VM を作成する
@@ -130,21 +138,21 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>パッチのインストール
 
-プレビュー期間中は、_Windows Server 2019 Datacenter: Azure Edition_ で作成されたすべての VM に対して [VM ゲストの自動パッチ適用](../virtual-machines/automatic-vm-guest-patching.md)が自動的に有効になります。 VM ゲストの自動パッチ適用を有効にすると、次のようになります。
+プレビュー期間中は、サポートされている _Windows Server Azure Edition_ イメージで作成されたすべての VM に対して [VM ゲストの自動パッチ適用](../virtual-machines/automatic-vm-guest-patching.md)が自動的に有効になります。 VM ゲストの自動パッチ適用を有効にすると、次のようになります。
 * [重大] または [セキュリティ] に分類されているパッチは、自動的にダウンロードされ、VM に適用されます。
 * パッチは、VM のタイムゾーンでピーク外の時間帯に適用されます。
-* パッチ オーケストレーションが Azure によって管理され、[可用性優先の原則](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)に従ってパッチが適用されます。
+* パッチ オーケストレーションが Azure によって管理され、[可用性優先の原則](../virtual-machines/automatic-vm-guest-patching.md#availability-first-updates)に従ってパッチが適用されます。
 * プラットフォーム正常性シグナルによって特定された仮想マシンの正常性は、パッチ適用の失敗を検出するために監視されます。
 
 ### <a name="how-does-automatic-vm-guest-patching-work"></a>VM ゲストの自動パッチ適用はどのように機能しますか?
 
 VM に対して [VM ゲストの自動パッチ適用](../virtual-machines/automatic-vm-guest-patching.md)が有効になっている場合、使用可能になった [重大] および [セキュリティ] パッチが自動的にダウンロードされて適用されます。 このプロセスは、毎月新しいパッチがリリースされるたびに自動的に開始されます。 パッチの評価とインストールは自動的に実行され、このプロセスでは必要に応じて VM の再起動が行われます。
 
-_Windows Server 2019 Datacenter: Azure Edition_ の VM でホットパッチが有効になっている場合、毎月のセキュリティ更新プログラムのほとんどは、再起動を必要としないホットパッチとして配信されます。 計画または計画外ベースラインの月に送信される最新の累積的な更新プログラムについては、VM の再起動が必要です。 また、 VM の再起動が必要な場合がある、追加の [重要] または [セキュリティ] パッチが定期的に利用可能になることもあります。
+サポートされている _Windows Server Azure Edition_ の VM でホットパッチが有効になっている場合、毎月のセキュリティ更新プログラムのほとんどは、再起動を必要としないホットパッチとして配信されます。 計画または計画外ベースラインの月に送信される最新の累積的な更新プログラムについては、VM の再起動が必要です。 また、 VM の再起動が必要な場合がある、追加の [重要] または [セキュリティ] パッチが定期的に利用可能になることもあります。
 
 VM は、その VM に適用可能なパッチを決定するため、30 日間の期間内に複数回、数日ごとに自動的に評価されます。 この自動評価により、不足しているパッチができるだけ早く検出されるようになります。
 
-パッチは、[可用性優先の原則](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)に従って、毎月のパッチ リリースから 30 日以内にインストールされます。 パッチは、VM のタイムゾーンに応じて、VM のピーク外の時間帯にのみインストールされます。 パッチが自動的にインストールされるようにするには、ピーク外の時間帯に VM が実行されている必要があります。 定期的な評価のときに VM の電源がオフになっていた場合、次回の定期的な評価中に VM の電源がオンになっていれば VM が評価され、適用するパッチが自動的にインストールされます。 通常、次回の定期的な評価は数日以内に行われます。
+パッチは、[可用性優先の原則](../virtual-machines/automatic-vm-guest-patching.md#availability-first-updates)に従って、毎月のパッチ リリースから 30 日以内にインストールされます。 パッチは、VM のタイムゾーンに応じて、VM のピーク外の時間帯にのみインストールされます。 パッチが自動的にインストールされるようにするには、ピーク外の時間帯に VM が実行されている必要があります。 定期的な評価のときに VM の電源がオフになっていた場合、次回の定期的な評価中に VM の電源がオンになっていれば VM が評価され、適用するパッチが自動的にインストールされます。 通常、次回の定期的な評価は数日以内に行われます。
 
 定義の更新プログラムや [重要] または [セキュリティ] として分類されていない他のパッチは、VM ゲストの自動パッチ適用によってインストールされません。
 
@@ -165,14 +173,14 @@ VM ゲストの自動パッチ適用を使用すると、VM は利用可能な�
 
 ホットパッチは Windows セキュリティ更新プログラムを対象としており、通常の (ホットパッチでない) Windows Update チャネルで公開されたセキュリティ更新プログラムの内容と同等です。
 
-ホットパッチを有効にして Windows Server Azure Edition の VM を実行することに関して、いくつかの重要な考慮事項があります。 ホットパッチ プログラムに含まれていない更新プログラムをインストールするには、依然として再起動が必要です。 また、新しいベースラインがインストールされた後に、定期的に再起動が必要になります。 これらの再起動により、最新の累積的な更新プログラムに含まれているセキュリティ以外のパッチと VM の同期が維持されます。
+ホットパッチを有効にしてサポートされている _Windows Server Azure Edition_ の VM を実行することに関して、いくつかの重要な考慮事項があります。 ホットパッチ プログラムに含まれていない更新プログラムをインストールするには、依然として再起動が必要です。 また、新しいベースラインがインストールされた後に、定期的に再起動が必要になります。 これらの再起動により、最新の累積的な更新プログラムに含まれているセキュリティ以外のパッチと VM の同期が維持されます。
 * ホットパッチ プログラムに現在含まれていないパッチには、Windows 用にリリースされたセキュリティ以外の更新プログラムと、Windows 以外の更新プログラム (.NET のパッチなど) があります。  これらの種類のパッチは、ベースラインの月にインストールする必要があり、再起動が必要になります。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="what-is-hotpatching"></a>ホット パッチの適用とは、どのようなものですか?
 
-* ホット パッチの適用は、Azure で Windows Server 2019 Datacenter: Azure Edition の VM に更新プログラムをインストールするための新しい方法であり、インストール後に再起動を必要としません。 実行中のプロセスのメモリ内コードにパッチを適用することで機能し、プロセスを再起動する必要がありません。
+* ホット パッチの適用は、Azure でサポートされている _Windows Server Azure Edition_ の VM に更新プログラムをインストールするための新しい方法であり、インストール後に再起動を必要としません。 実行中のプロセスのメモリ内コードにパッチを適用することで機能し、プロセスを再起動する必要がありません。
 
 ### <a name="how-does-hotpatching-work"></a>ホット パッチの適用はどのように機能しますか?
 
@@ -180,7 +188,7 @@ VM ゲストの自動パッチ適用を使用すると、VM は利用可能な�
 
 ### <a name="why-should-i-use-hotpatch"></a>ホットパッチを使用すべき理由は何ですか?
 
-* Windows Server 2019 Datacenter: Azure Edition でホットパッチを使用すると、VM の可用性が向上し (再起動の回数が減少する)、更新が高速になります (パッケージが小さくなり、より高速にインストールされ、プロセスを再起動する必要がない)。 このプロセスにより、VM は常に最新かつセキュリティで保護された状態になります。
+* サポートされている _Windows Server Azure Edition_ イメージでホットパッチを使用すると、VM の可用性が向上し (再起動の回数が減少する)、更新が高速になります (パッケージが小さくなり、より高速にインストールされ、プロセスを再起動する必要がない)。 このプロセスにより、VM は常に最新かつセキュリティで保護された状態になります。
 
 ### <a name="what-types-of-updates-are-covered-by-hotpatch"></a>どの種類の更新プログラムがホットパッチの対象になるのですか?
 
@@ -210,7 +218,7 @@ VM ゲストの自動パッチ適用を使用すると、VM は利用可能な�
 
 ### <a name="can-i-upgrade-from-my-existing-windows-server-os"></a>既存の Windows Server OS からアップグレードできますか?
 
-* 現在、Windows Server の既存バージョン (Windows Server 2016 または 2019 の Azure でないエディション) からのアップグレードはサポートされていません。 Windows Server Azure Edition の今後のリリースへのアップグレードがサポートされる予定です。
+* Windows Server の既存バージョン (Windows Server 2016 または 2019 の Azure でないエディション) から _Windows Server 2022 Datacenter: Azure Edition_ へのアップグレードはサポートされています。 _Windows Server 2019 Datacenter: Azure Edition_ へのアップグレードはサポートされていません。
 
 ### <a name="can-i-use-hotpatch-for-production-workloads-during-the-preview"></a>プレビュー期間中に、ホットパッチを実稼働ワークロードに使用できますか?
 
@@ -218,7 +226,7 @@ VM ゲストの自動パッチ適用を使用すると、VM は利用可能な�
 
 ### <a name="will-i-be-charged-during-the-preview"></a>プレビュー期間中は課金されますか?
 
-* Windows Server Azure Edition のライセンスは、プレビュー期間中は無料です。 ただし、VM 用に設定されている基になるインフラストラクチャ (ストレージ、コンピューティング、ネットワークなど) のコストは、引き続きサブスクリプションに課金されます。
+* _Windows Server Azure Edition_ のライセンスは、プレビュー期間中は無料です。 ただし、VM 用に設定されている基になるインフラストラクチャ (ストレージ、コンピューティング、ネットワークなど) のコストは、引き続きサブスクリプションに課金されます。
 
 ### <a name="how-can-i-get-troubleshooting-support-for-hotpatching"></a>ホット パッチの適用に関するトラブルシューティングのサポートを受けるには、どうすればよいですか?
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/03/2021
+ms.date: 06/17/2021
 ms.author: aahi
-ms.openlocfilehash: 60b9b7ace0f788c7ae5b248c4011ccde52811d2b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d1804505a73be2db8d7088caf74063381fa0ba33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757141"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735541"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>Text Analytics API でのモデルのバージョン管理
 
@@ -39,13 +39,20 @@ Text Analytics API のバージョン 3 を使用すると、データで使用�
 
 これらのモデルの更新情報の詳細については、[新機能](../whats-new.md)に関する記事を参照してください。
 
+## <a name="extractive-summarization"></a>抽出要約
+
+非同期 `analyze` エンドポイントを使用して、抽出要約が `version 3.1-preview.1` 以降で使用できます。 
+
+現在のモデルのバージョンは `2021-08-01` です。
+
 ## <a name="text-analytics-for-health"></a>Text Analytics for Health
 
 [Text Analytics for Health](../how-tos/text-analytics-for-health.md) コンテナーでは、上記の API エンドポイントとは異なるモデルのバージョン管理が使用されています。  コンテナー イメージごとに使用できるモデルのバージョンは 1 つだけであることに注意してください。
 
 | エンドポイント                        | コンテナー イメージ タグ                     | モデル バージョン |
 |---------------------------------|-----------------------------------------|---------------|
-| `/entities/health`              | `3.0.015370001-onprem-amd64` または最新          | `2021-03-01`  |
+| `/entities/health`              | `3.0.016230002-onprem-amd64` または最新            | `2021-05-15`  |
+| `/entities/health`              | `3.0.015370001-onprem-amd64`            | `2021-03-01`  |
 | `/entities/health`              | `1.1.013530001-amd64-preview`           | `2020-09-03`  |
 | `/entities/health`              | `1.1.013150001-amd64-preview`           | `2020-07-24`  |
 | `/domains/health`               | `1.1.012640001-amd64-preview`           | `2020-05-08`  |

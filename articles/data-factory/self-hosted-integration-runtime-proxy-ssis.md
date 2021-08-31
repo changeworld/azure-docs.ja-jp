@@ -2,23 +2,24 @@
 title: セルフホステッド統合ランタイムを SSIS のプロキシとして構成する
 description: セルフホステッド統合ランタイムを Azure-SSIS Integration Runtime のプロキシとして構成する方法について説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 05/19/2021
-ms.openlocfilehash: dde4c234a6a0459441a601813f4f4a42dfbbff1c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 07/19/2021
+ms.openlocfilehash: ff0dc37b70861dae8cddb77ef984c27109eefc15
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665470"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747416"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-この記事では、セルフホステッド統合ランタイム (セルフホステッド IR) をプロキシとして構成して、Azure Data Factory の Azure-SSIS Integration Runtime (Azure-SSIS IR) で SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。 
+この記事では、セルフホステッド統合ランタイム (セルフホステッド IR) をプロキシとして構成して、Azure Data Factory (ADF) の Azure-SSIS Integration Runtime (Azure-SSIS IR) で SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。 
 
 この機能を使用すると、[Azure-SSIS IR を仮想ネットワークに参加](./join-azure-ssis-integration-runtime-virtual-network.md)させずに、オンプレミスのデータや実行タスクにアクセスすることができます。 この機能は、企業ネットワークの構成が複雑すぎるかポリシーの制限が厳しすぎて Azure-SSIS IR を導入できない場合に役立ちます。
 
@@ -50,7 +51,7 @@ ms.locfileid: "110665470"
   
   PostgreSQL、MySQL、Oracle などの他のデータベース システム用の OLEDB/ODBC/ADO.NET ドライバーを使用する場合は、それらの Web サイトから 64 ビット版をダウンロードできます。
 - パッケージで Azure Feature Pack のデータ フロー コンポーネントを使用する場合は、セルフホステッド IR がインストールされているのと同じマシンに [SQL Server 2017 用の Azure Feature Pack をダウンロードしてインストールします](https://www.microsoft.com/download/details.aspx?id=54798) (まだインストールしていない場合)。
-- セルフホステッド IR がインストールされているのと同じコンピューターに、[64 ビット版の Visual C++ (VC) ランタイムをダウンロードしてインストールします](https://www.microsoft.com/download/details.aspx?id=40784) (まだ行っていない場合)。
+- セルフホステッド IR がインストールされているのと同じコンピューターに、[64 ビット版の Visual C++ (VC) ランタイムをダウンロードしてインストールします](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) (まだ行っていない場合)。
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>オンプレミスのタスクで Windows 認証を有効にする
 
@@ -64,13 +65,13 @@ ms.locfileid: "110665470"
 
 ## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Azure Blob Storage のリンクされたサービスをステージング用に準備する
 
-Azure Blob Storage のリンクされたサービスを、Azure-SSIS IR が設定されているのと同じデータ ファクトリに作成します (まだそうしていない場合)。 これを行うには、[Azure データ ファクトリのリンクされたサービスの作成 ](./quickstart-create-data-factory-portal.md#create-a-linked-service)に関する記事を参照してください。 次のことを行ってください。
+Azure Blob Storage のリンクされたサービスを、Azure-SSIS IR が設定されているのと同じデータ ファクトリに作成します (まだそうしていない場合)。 これを行うには、[Azure Data Factory のリンクされたサービスの作成 ](./quickstart-create-data-factory-portal.md#create-a-linked-service)に関する記事を参照してください。 次のことを行ってください。
 - **[データ ソース]** で **[Azure Blob Storage]** を選択します。  
 - **統合ランタイム経由で接続** する場合は、Azure Blob Storage のアクセス資格情報を取り込むために Azure-SSIS IR を使うのでなく、(Azure-SSIS IR でもセルフホステッド IR でもなく) **AutoResolveIntegrationRuntime** を選択します。
-- **[認証方法]** で、 **[アカウント キー]** 、 **[SAS URI]** 、 **[サービス プリンシパル]** 、または **[マネージド ID]** を選択します。  
+- **[認証方法]** で、 **[アカウント キー]** 、 **[SAS URI]** 、 **[サービス プリンシパル]** 、 **[マネージド ID]** 、または **[ユーザー割り当てマネージド ID]** を選択します。  
 
 >[!TIP]
->**サービス プリンシパル** 方法を選択した場合は、サービス プリンシパルに少なくとも *ストレージ BLOB データ共同作成者* のロールを付与します。 詳細については、「[Azure Blob Storage コネクタ](connector-azure-blob-storage.md#linked-service-properties)」をご覧ください。 **[マネージド ID]** 方法を選択した場合は、Azure Blob Storage にアクセスするための適切なロールを ADF マネージド ID に付与します。 詳細については、[ADF マネージ ID による Azure Active Directory 認証を使用した Azure Blob Storage にアクセスする](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)方法に関するページをご覧ください。
+>**サービス プリンシパル** 方法を選択した場合は、サービス プリンシパルに少なくとも *ストレージ BLOB データ共同作成者* のロールを付与します。 詳細については、「[Azure Blob Storage コネクタ](connector-azure-blob-storage.md#linked-service-properties)」をご覧ください。 **[マネージド ID]** / **[ユーザー割り当てマネージド ID]** の方式を選択した場合は、ADF の指定のシステムまたはユーザー割り当てマネージド ID に、Azure Blob Storage にアクセスするための適切なロールを付与します。 詳細については、[ADF の指定のシステムまたはユーザー割り当てマネージド ID で、Azure Active Directory (Azure AD) 認証を使用して Azure Blob Storage にアクセスする](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)方法に関するページをご覧ください。
 
 ![Azure Blob Storage のリンクされたサービスをステージング用に準備する](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -105,7 +106,7 @@ $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-pre
 $DataProxyStagingLinkedServiceName = "" # OPTIONAL to configure a proxy for on-premises data access 
 $DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data access 
 
-# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data accesss
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data access
 if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
 {
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

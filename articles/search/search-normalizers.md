@@ -8,17 +8,17 @@ ms.author: ishansri
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/23/2021
-ms.openlocfilehash: 3e7a33d9213d7af44d2cfc50baa847534618f7e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9142f03f5f23e843018f7d9b702ef8da3d650758
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608704"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578686"
 ---
 # <a name="text-normalization-for-case-insensitive-filtering-faceting-and-sorting"></a>大文字と小文字を区別しないフィルター処理、ファセット、並べ替えのためのテキスト正規化
 
- > [!IMPORTANT]
- > ノーマライザーはパブリック プレビュー段階にあり、**2020-06-30-preview REST API** を介してのみ利用できます。 プレビュー機能は、補足利用規約に基づいて、現状のまま提供されます。
+> [!IMPORTANT] 
+> この機能はパブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 [プレビューの REST API](/rest/api/searchservice/index-preview) ではこの機能がサポートされます。
 
 Azure Cognitive Search インデックスからドキュメントを検索および取得するには、ドキュメントの内容に対してクエリを一致させる必要があります。 `search` パラメーターを使用した場合のように内容を分析して一致させるトークンを生成することも、あるいは、`$filter`、`facets`、および `$orderby` を使用した場合のように、厳密なキーワード一致の対象として内容をそのまま使用することもできます。 このようなオール オア ナッシングのやり方でもほとんどのシナリオに対応できますが、分析チェーン全体を経由せずに、大文字と小文字の区別、アクセントの削除、Asciifolding などの簡単な事前処理を行う必要がある場合はうまくいきません。
 
@@ -57,7 +57,7 @@ Azure Cognitive Search は、一般的なユースケースに対応した定義
 
 ノーマライザーは、新しいフィールドがインデックスに追加されたときのみ指定できます。 正規化のニーズを前もって評価し、インデックスの削除と再作成がルーチンとなってしまうような場合は、開発の初期段階でノーマライザーを割り当てることをお勧めします。 既に作成済みのフィールドにノーマライザーを指定することはできません。
 
-1. [インデックス](/rest/api/searchservice/create-index)にフィールド定義を作成する場合は、**normalizer** プロパティを、`lowercase` などの[定義済みノーマライザー](#predefined-normalizers)またはカスタム ノーマライザー (同じインデックス スキーマで定義) のいずれかに設定します。  
+1. [インデックス](/rest/api/searchservice/create-index)にフィールド定義を作成する場合は、**normalizer** プロパティを、`lowercase` などの [定義済みノーマライザー](#predefined-normalizers)またはカスタム ノーマライザー (同じインデックス スキーマで定義) のいずれかに設定します。  
  
    ```json
    "fields": [

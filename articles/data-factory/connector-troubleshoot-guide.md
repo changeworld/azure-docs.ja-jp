@@ -1,24 +1,26 @@
 ---
-title: Azure Data Factory コネクタのトラブルシューティング
-description: Azure Data Factory でのコネクタに関する問題のトラブルシューティングを行う方法について説明します。
+title: コネクタのトラブルシューティング
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Azure Synapse Analytics でのコネクタに関する問題のトラブルシューティングを行う方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 06/07/2021
+ms.date: 08/16/2021
 ms.author: jianleishen
-ms.custom: has-adal-ref
-ms.openlocfilehash: 7407a28c442ce2ddc7fe9df3fdd71c5af4c488bc
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: has-adal-ref, synapse
+ms.openlocfilehash: 02bb677438a4139fb67b335b9e6cbbf43f8a2600
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971899"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271442"
 ---
-# <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
+# <a name="troubleshoot-azure-data-factory-and-azure-synapse-analytics-connectors"></a>Azure Data Factory と Azure Synapse Analytics のコネクタのトラブルシューティング
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory コネクタに関する問題の一般的なトラブルシューティング方法について説明します。
+この記事では、Azure Data Factory と Azure Synapse のコネクタに関する問題の一般的なトラブルシューティング方法について説明します。
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -39,6 +41,31 @@ ms.locfileid: "111971899"
 
 - **解決方法**:データセットまたはパイプライン JSON 定義を編集して、型の一貫性を保ち、デプロイを再実行してください。
 
+### <a name="error-code-fipsmodeisnotsupport"></a>エラー コード: FIPSModeIsNotSupport
+
+- **メッセージ**: `Fail to read data form Azure Blob Storage for Azure Blob connector needs MD5 algorithm which can't co-work with FIPS mode. Please change diawp.exe.config in self-hosted integration runtime install directory to disable FIPS policy following https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/enforcefipspolicy-element.`
+
+- **原因**:セルフホステッド統合ランタイムがインストールされた VM で FIPS ポリシーが有効になっています。
+
+- **推奨事項**:セルフホステッド統合ランタイムがインストールされている VM で FIPS モードを無効にします。 Windows では FIPS モードは推奨されません。
+
+### <a name="error-code-azureblobinvalidblocksize"></a>エラー コード: AzureBlobInvalidBlockSize
+
+- **メッセージ**: `Block size should between %minSize; MB and 100 MB.`
+
+- **原因**:ブロック サイズが BLOB の制限を超えています。
+
+### <a name="error-code-azurestorageoperationfailedconcurrentwrite"></a>エラー コード: AzureStorageOperationFailedConcurrentWrite
+
+- **メッセージ**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
+- **原因**: 複数の同時コピー アクティビティの実行またはアプリケーションが同じファイルに書き込んでいます。
+
+### <a name="error-code-azureappendblobconcurrentwriteconflict"></a>エラー コード: AzureAppendBlobConcurrentWriteConflict
+
+- **メッセージ**: `Detected concurrent write to the same append blob file, it's possible because you have multiple concurrent copy activities runs or applications writing to the same file '%name;'. Please check your ADF configuration and retry.`
+
+- **原因**: 複数の書き込み要求が同時に発生したため、ファイルの内容が競合しています。
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
@@ -85,7 +112,7 @@ ms.locfileid: "111971899"
 
 - **現象**:列マッピングのために Azure Cosmos DB のスキーマをインポートするときに、一部の列が欠落しています。 
 
-- **原因**:Azure Data Factory は、最初の 10 個の Azure Cosmos DB ドキュメントからスキーマを推測します。 一部のドキュメント列またはプロパティに値が含まれていない場合、Azure Data Factory によってスキーマが検出されず、その結果表示されません。
+- **原因**: Azure Data Factory と Synapse のパイプラインは、最初の 10 個の Azure Cosmos DB ドキュメントからスキーマを推論します。 一部のドキュメント列またはプロパティに値が含まれていない場合、スキーマが検出されず、その結果表示されません。
 
 - **解決方法**:次のコードに示すように、クエリを調整して、列の値を結果セットに空の値で表示するように強制できます。 最初の 10 個のドキュメントで、*impossible* 列が欠落していると見なします。 あるいは、マッピング用の列を手動で追加することもできます。
 
@@ -139,7 +166,7 @@ ms.locfileid: "111971899"
 
 - **原因**:原因の 1 つとして、使用するサービス プリンシパルまたはマネージド ID に、特定のフォルダーまたはファイルにアクセスするためのアクセス許可が付与されていないことが考えられます。
 
-- **解決方法**:コピーする必要があるすべてのフォルダーとサブフォルダーに適切なアクセス許可を付与します。 詳しくは、「[Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする](connector-azure-data-lake-store.md#linked-service-properties)」をご覧ください。
+- **解決方法**:コピーする必要があるすべてのフォルダーとサブフォルダーに適切なアクセス許可を付与します。 詳しくは、「[Azure Data Lake Storage Gen1 との間でデータをコピーする](connector-azure-data-lake-store.md#linked-service-properties)」をご覧ください。
 
 ### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>エラー メッセージ: サービス プリンシパルを使用してアクセス トークンを取得できませんでした。 ADAL エラー: service_unavailable
 
@@ -164,7 +191,7 @@ ms.locfileid: "111971899"
   | 原因分析                                               | 推奨                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | 何らかの操作に失敗したことを示すエラーが Azure Data Lake Storage Gen2 によってスローされた場合。| Azure Data Lake Storage Gen2 によってスローされたエラー メッセージの詳細を確認します。 エラーが一時的なエラーである場合は、操作を再試行してください。 さらに支援が必要な場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。 |
-  | エラー メッセージに "許可されていません" という文字列が含まれている場合は、使用するサービス プリンシパルまたはマネージド ID に、Azure Data Lake Storage Gen2 にアクセスするための十分なアクセス許可がない可能性があります。 | このエラーのトラブルシューティングを行うには、「[Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換](./connector-azure-data-lake-storage.md#service-principal-authentication)」を参照してください。 |
+  | エラー メッセージに "許可されていません" という文字列が含まれている場合は、使用するサービス プリンシパルまたはマネージド ID に、Azure Data Lake Storage Gen2 にアクセスするための十分なアクセス許可がない可能性があります。 | このエラーのトラブルシューティングを行うには、「[Azure Data Lake Storage Gen2 でのデータのコピーと変換](./connector-azure-data-lake-storage.md#service-principal-authentication)」を参照してください。 |
   | エラー メッセージに "InternalServerError" という文字列が含まれている場合は、Azure Data Lake Storage Gen2 によってエラーが返されます。 | このエラーは、一時的なエラーが原因で発生している可能性があります。 その場合は、操作を再試行します。 問題が解決しない場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。 |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Azure Data Lake Storage Gen2 アカウントへの要求によりタイムアウト エラーが発生する
@@ -195,6 +222,20 @@ ms.locfileid: "111971899"
         }
         ```
 
+        
+## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+
+### <a name="error-code-azurepostgresqlnpgsqldatatypenotsupported"></a>エラー コード: AzurePostgreSqlNpgsqlDataTypeNotSupported
+
+- **メッセージ**: `The data type of the chosen Partition Column, '%partitionColumn;', is '%dataType;' and this data type is not supported for partitioning.`
+
+- **推奨事項**: int、bigint、smallint、serial、bigserial、smallserial、タイム ゾーンのある (またはない) タイムスタンプ、タイム ゾーンのない時刻、または日付のデータ型のパーティション列を選択します。
+
+### <a name="error-code-azurepostgresqlnpgsqlpartitioncolumnnamenotprovided"></a>エラー コード: AzurePostgreSqlNpgsqlPartitionColumnNameNotProvided
+
+- **メッセージ**: `Partition column name must be specified.`
+
+- **原因**: パーティション列名が指定されておらず、自動的に決定できませんでした。
                   
 ## <a name="azure-files-storage"></a>Azure Files Storage
 
@@ -220,7 +261,7 @@ ms.locfileid: "111971899"
     | Azure SQL の場合、エラー メッセージに "SqlErrorNumber = [エラー コード]" などの SQL エラー コードが含まれている場合は、『Azure SQL DB トラブルシューティング ガイド』を参照してください。 | 推奨事項については、「[Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](../azure-sql/database/troubleshoot-common-errors-issues.md)」を参照してください。 |
     | ポート 1433 がファイアウォール許可リストに含まれているかどうかを確認します。 | 詳細については、[SQL Server で使用されるポート](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-)に関する記事を参照してください。 |
     | エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database のエラーは、何らかの特定の操作が失敗したことを示します。 | 詳細については、「[データベース エンジンのエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
-    | これが一時的な問題 (不安定なネットワーク接続など) の場合は、アクティビティ ポリシーに再試行を追加して軽減します。 | 詳細については、「[Azure Data Factory のパイプラインとアクティビティ](./concepts-pipelines-activities.md#activity-policy)」を参照してください。 |
+    | これが一時的な問題 (不安定なネットワーク接続など) の場合は、アクティビティ ポリシーに再試行を追加して軽減します。 | 詳細については、[パイプラインとアクティビティ](./concepts-pipelines-activities.md#activity-policy)に関するページを参照してください。 |
     | "Client with IP address '...' is not allowed to access the server" (IP アドレスが '...' のクライアントはサーバーへのアクセスが許可されていません) という文字列がエラー メッセージに含まれており、Azure SQL Database に接続しようとしている場合、通常、このエラーの原因は Azure SQL Database のファイアウォールの問題です。 | Azure SQL Server のファイアウォールの構成で、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** オプションを有効にします。 詳細については、[Azure SQL Database と Azure Synapse の IP ファイアウォール規則](../azure-sql/database/firewall-configure.md)に関するページを参照してください。 |
     
 ### <a name="error-code-sqloperationfailed"></a>エラー コード:SqlOperationFailed
@@ -233,7 +274,7 @@ ms.locfileid: "111971899"
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
     | エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database により、何らかの特定の操作が失敗したことを示すエラーがスローされます。 | SQL エラーが明確でない場合は、データベースを最新の互換性レベル '150' に変更してみてください。 最新バージョンの SQL エラーをスローすることができます。 詳細については、[ドキュメント](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)を参照してください。 <br/> SQL の問題のトラブルシューティングの詳細については、「[データベース エンジンのエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
     | エラー メッセージに "PdwManagedToNativeInteropException" という文字列が含まれている場合は、通常、ソースとシンクの列のサイズが一致していないことが原因です。 | ソースの列とシンクの列の両方のサイズを確認してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
-    | エラー メッセージに "InvalidOperationException" という文字列が含まれている場合は、通常、入力データが無効であることが原因です。 | 問題が発生している行を特定するには、Copy アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](./copy-activity-fault-tolerance.md)」を参照してください。 |
+    | エラー メッセージに "InvalidOperationException" という文字列が含まれている場合は、通常、入力データが無効であることが原因です。 | 問題が発生している行を特定するには、Copy アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 詳細については、[コピー アクティビティのフォールト トレランス](./copy-activity-fault-tolerance.md)に関する記事を参照してください。 |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>エラー コード:SqlUnauthorizedAccess
@@ -331,7 +372,7 @@ ms.locfileid: "111971899"
 
 - **原因**:一括コピー プログラム ユーティリティ (bcp) クライアントから無効な列長を受け取ったため、SQL 一括コピーに失敗しました。
 
-- **推奨事項**:問題が発生した行を特定するには、Copy アクティビティのフォールト トレランス機能を有効にします。 これにより、問題のある行がストレージにリダイレクトされ、さらに調査できるようになります。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](./copy-activity-fault-tolerance.md)」を参照してください。
+- **推奨事項**:問題が発生した行を特定するには、Copy アクティビティのフォールト トレランス機能を有効にします。 これにより、問題のある行がストレージにリダイレクトされ、さらに調査できるようになります。 詳細については、[コピー アクティビティのフォールト トレランス](./copy-activity-fault-tolerance.md)に関する記事を参照してください。
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>エラー コード:SqlConnectionIsClosed
@@ -342,6 +383,37 @@ ms.locfileid: "111971899"
 
 - **推奨事項**:接続を再試行します。 問題が解決しない場合は、Azure SQL サポートにお問い合わせください。
 
+### <a name="error-code-sqlserverinvalidlinkedservicecredentialmissing"></a>エラー コード: SqlServerInvalidLinkedServiceCredentialMissing
+
+- **メッセージ**: `The SQL Server linked service is invalid with its credential being missing.`
+
+- **原因**: リンク サービスが適切に構成されていません。
+
+- **推奨事項**: SQL サーバーのリンク サービスを検証して修正します。 
+
+### <a name="error-code-sqlparallelfailedtodetectpartitioncolumn"></a>エラー コード: SqlParallelFailedToDetectPartitionColumn
+
+- **メッセージ**: `Failed to detect the partition column with command '%command;', %message;.`
+
+- **原因**: テーブルに主キーまたは一意のキーがありません。
+
+- **推奨事項**: テーブルを確認して、主キーまたは一意のインデックスが作成されていることを確認します。 
+
+### <a name="error-code-sqlparallelfailedtodetectphysicalpartitions"></a>エラー コード: SqlParallelFailedToDetectPhysicalPartitions
+
+- **メッセージ**: `Failed to detect the physical partitions with command '%command;', %message;.`
+
+- **原因**: テーブルの物理パーティションが作成されていません。 データベースを確認してください。
+
+- **推奨事項**: この問題を解決するには、「[パーティション テーブルとパーティション インデックスの作成](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes?view=sql-server-ver15&preserve-view=true)」を参照してください。
+
+### <a name="error-code-sqlparallelfailedtogetpartitionrangesynapse"></a>エラー コード: SqlParallelFailedToGetPartitionRangeSynapse
+
+- **メッセージ**: `Failed to get the partitions for azure synapse with command '%command;', %message;.`
+
+- **原因**: テーブルの物理パーティションが作成されていません。 データベースを確認してください。
+
+- **推奨事項**: この問題を解決するには、「[専用 SQL プールでのテーブルのパーティション分割](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-partition.md)」を参照してください。
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>エラー メッセージ: 文字列から uniqueidentifier に変換中、変換が失敗しました。
 
@@ -450,6 +522,12 @@ ms.locfileid: "111971899"
 
     3. それに応じてテーブル スキーマを更新します。
 
+### <a name="error-code-faileddboperation"></a>エラー コード: FailedDbOperation
+
+- **メッセージ**: `User does not have permission to perform this action.`
+
+- **推奨事項**: PolyBase を使用してデータを読み込むときに、Azure Synapse Analytics コネクタで構成されているユーザーが、ターゲット データベースに対する 'CONTROL' アクセス許可を持っていることを確認します。 詳しくは、[こちらの文書](./connector-azure-sql-data-warehouse.md#required-database-permission)を参照してください。
+
 
 ## <a name="azure-table-storage"></a>Azure Table Storage
 
@@ -470,7 +548,7 @@ ms.locfileid: "111971899"
 
 - **メッセージ**: `Error thrown from driver. Sql code: '%code;'`
 
-- **原因**:エラー メッセージに "SQLSTATE=51002 SQLCODE=-805" という文字列が含まれている場合は、「[Azure Data Factory を使用して DB2 からデータをコピーする](./connector-db2.md#linked-service-properties)」の「ヒント」に従います。
+- **原因**: エラー メッセージに "SQLSTATE=51002 SQLCODE=-805" という文字列が含まれている場合は、[DB2 からのデータのコピー](./connector-db2.md#linked-service-properties)に関する記事の「ヒント」に従います。
 
 - **推奨事項**:`packageCollection` プロパティで "NULLID" の設定を試みます。
 
@@ -495,7 +573,7 @@ ms.locfileid: "111971899"
   | 原因分析                                               | 推奨                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | 問題のある行の列数が、最初の行の列数を超えています。 データの問題、または列区切り記号や引用符文字の設定が正しくないことが原因である可能性があります。 | エラー メッセージから行数を取得し、行の列を確認して、データを修正してください。 |
-  | エラー メッセージに予想される列数が "1" の場合は、正しくない圧縮やフォーマット設定が指定されている可能性があります。これにより、Azure Data Factory によってファイルが正しく解析されませんでした。 | フォーマット設定を確認して、ソース ファイルと一致していることを確認してください。 |
+  | エラー メッセージで予想される列数が "1" の場合は、正しくない圧縮やフォーマット設定が指定されている可能性があります。これにより、ファイルが正しく解析されませんでした。 | フォーマット設定を確認して、ソース ファイルと一致していることを確認してください。 |
   | ソースがフォルダーの場合、指定されたフォルダーの下にあるファイルのスキーマが異なる可能性があります。 | 指定されたフォルダー内のファイルのスキーマが同じであることを確認します。 |
 
 
@@ -514,7 +592,7 @@ ms.locfileid: "111971899"
 
 - **現象**:スキーマをインポートするとき、またはデータをプレビューするときに、いくつかの列が欠落しています。 エラー メッセージ: `The valid structure information (column name and type) are required for Dynamics source.`
 
-- **原因**:この問題は仕様によるものであり、最初の 10 個のレコード内の値が含まれていない列を Azure Data Factory が表示できないためです。 追加した列が正しい形式であることを確認します。 
+- **原因**: この問題は仕様によるものです。最初の 10 個のレコード内の値が含まれていない列を Azure Data Factory および Synapse のパイプラインでは表示できないためです。 追加した列が正しい形式であることを確認します。 
 
 - **推奨事項**:マッピング タブで列を手動で追加します。
 
@@ -680,6 +758,14 @@ ms.locfileid: "111971899"
 
 - **推奨事項**:ターゲット サーバーのポートを確認します。 FTP はポート 21 を使用します。
 
+### <a name="error-code-ftpfailedtoreadftpdata"></a>エラー コード: FtpFailedToReadFtpData
+
+- **メッセージ**: `Failed to read data from ftp: The remote server returned an error: 227 Entering Passive Mode (*,*,*,*,*,*).`
+
+- **原因**: データ ファクトリまたは Synapse のパイプラインでサポートされているパッシブ モードでのデータ転送用に 1024 から 65535 のポート範囲が開かれていません。
+
+- **推奨事項**: ターゲット サーバーのファイアウォール設定を確認してください。 ポート 1024 から 65535 または FTP サーバーで指定されたポート範囲を、SHIR または Azure IR の IP アドレスに対して開きます。
+
 
 ## <a name="http"></a>HTTP
 
@@ -687,7 +773,7 @@ ms.locfileid: "111971899"
 
 - **メッセージ**: `Failed to read data from http server. Check the error from http server：%message;`
 
-- **原因**:このエラーは、Azure Data Factory が HTTP サーバーと通信しているが、HTTP 要求操作が失敗した場合に発生します。
+- **原因**: このエラーは、データ ファクトリまたは Synapse のパイプラインが HTTP サーバーと通信しているが、HTTP 要求操作が失敗した場合に発生します。
 
 - **推奨事項**:エラー メッセージの HTTP ステータス コードを確認し、リモート サーバーの問題を修正します。
 
@@ -698,11 +784,11 @@ ms.locfileid: "111971899"
 
 - **メッセージ**: `Hour, Minute, and Second parameters describe an un-representable DateTime.`
 
-- **原因**:Data Factory では、DateTime 値は、0001-01-01 00:00:00 から 9999-12-31 23:59:59 の範囲でサポートされています。 ただし、Oracle では、紀元前や分/秒 > 59 など、より広い範囲の DateTime 値がサポートされているため、Azure Data Factory でエラーが発生します。
+- **原因**: Azure Data Factory および Synapse のパイプラインでは、DateTime 値は、0001-01-01 00:00:00 から 9999-12-31 23:59:59 の範囲でサポートされています。 ただし、Oracle では、紀元前や 59 より大きい分または秒など、より広い範囲の DateTime 値がサポートされているため、エラーが発生します。
 
 - **推奨事項**: 
 
-    Oracle の値が Azure Data Factory の範囲内にあるかどうかを確認するには、`select dump(<column name>)` を実行します。 
+    Oracle の値がサポートされる範囲内にあるかどうかを確認するには、`select dump(<column name>)` を実行します。 
 
     結果のバイト シーケンスの詳細については、[Oracle に格納されている日付](https://stackoverflow.com/questions/13568193/how-are-dates-stored-in-oracle)に関する記事を参照してください。
 
@@ -758,9 +844,9 @@ ms.locfileid: "111971899"
 
 - **メッセージ**: `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
-- **原因**:Parquet 形式は、Azure Data Factory ではサポートされていません。
+- **原因**: Parquet 形式は、Azure Data Factory および Synapse のパイプラインではサポートされていません。
 
-- **推奨事項**:「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](./supported-file-formats-and-compression-codecs.md)」に移動して、ソース データを再確認します。
+- **推奨事項**: [コピー アクティビティでサポートされているファイル形式と圧縮コーデック](./supported-file-formats-and-compression-codecs.md)に関する記事に移動して、ソース データを再確認します。
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>エラー コード:ParquetMissedDecimalPrecisionScale
@@ -796,7 +882,7 @@ ms.locfileid: "111971899"
 
 - **原因**:データは、mappings.source に指定されている型に変換できません。
 
-- **推奨事項**:ソース データを再確認するか、Copy アクティビティの列マッピングでこの列に適切なデータ型を指定してください。 詳細については、「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](./supported-file-formats-and-compression-codecs.md)」を参照してください。
+- **推奨事項**:ソース データを再確認するか、Copy アクティビティの列マッピングでこの列に適切なデータ型を指定してください。 詳細については、[コピー アクティビティでサポートされるファイル形式と圧縮コーデック](./supported-file-formats-and-compression-codecs.md)に関する記事を参照してください。
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>エラー コード:ParquetDataCountNotMatchColumnCount
@@ -881,6 +967,21 @@ ms.locfileid: "111971899"
     - 空白がある最初の行が、列名として使用されています。
     - 型 OriginalType はサポートされています。 次の特殊文字を使用しないようにしてください: `,;{}()\n\t=`。 
 
+### <a name="error-code-parquetdatetimeexceedlimit"></a>エラー コード: ParquetDateTimeExceedLimit
+
+- **メッセージ**: `The Ticks value '%ticks;' for the datetime column must be between valid datetime ticks range -621355968000000000 and 2534022144000000000.`
+
+- **原因**:datetime 値が '0001-01-01 00:00:00' である場合は、ユリウス暦とグレゴリオ暦の違いが原因で発生する可能性があります。 詳細については、「[ユリウス暦と予期的グレゴリオ暦の日付の違い](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar#Difference_between_Julian_and_proleptic_Gregorian_calendar_dates)」を参照してください。
+
+- **解決方法**: ティック値を確認し、datetime 値 '0001-01-01 00:00:00' を使用しないようにしてください。
+
+### <a name="error-code-parquetinvalidcolumnname"></a>エラー コード: ParquetInvalidColumnName
+
+- **メッセージ**: `The column name is invalid. Column name cannot contain these character:[,;{}()\n\t=]`
+
+- **原因**: 列名に無効な文字が含まれています。
+
+- **解決方法**: シンク列名が有効になるように列マッピングを追加または変更します。
 
 ## <a name="rest"></a>REST
 
@@ -888,9 +989,23 @@ ms.locfileid: "111971899"
 
 - **メッセージ**: `Rest Endpoint responded with Failure from server. Check the error from server:%message;`
 
+- **原因**: このエラーは、データ ファクトリまたは Synapse のパイプラインが HTTP プロトコル経由で REST エンドポイントと通信し、要求操作が失敗した場合に発生します。
+
+- **推奨事項**: エラー メッセージの HTTP 状態コードまたはメッセージを確認し、リモート サーバーの問題を修正します。
+
+### <a name="error-code-restsourcecallfailed"></a>エラー コード: RestSourceCallFailed
+
+- **メッセージ**: `The HttpStatusCode %statusCode; indicates failure.&#xA;Request URL: %requestUri;&#xA;Response payload:%payload;`
+
 - **原因**:このエラーは Azure Data Factory が HTTP プロトコル経由で REST エンドポイントと通信し、要求操作が失敗した場合に発生します。
 
-- **推奨事項**:エラー メッセージの HTTP ステータス コードまたはメッセージを確認し、リモート サーバーの問題を修正します。
+- **推奨事項**: エラー メッセージの HTTP 状態コード、要求 URL、または応答ペイロードを確認し、リモート サーバーの問題を修正します。
+
+### <a name="error-code-restsinkunsupportedcompressiontype"></a>エラー コード: RestSinkUNSupportedCompressionType
+
+- **メッセージ**: `User Configured CompressionType is Not Supported By Azure Data Factory：%message;`
+
+- **推奨事項**: REST シンクでサポートされている圧縮の種類を確認します。
 
 ### <a name="unexpected-network-response-from-the-rest-connector"></a>REST コネクタからの予期しないネットワーク応答
 
@@ -907,7 +1022,7 @@ ms.locfileid: "111971899"
 
       "curl--help" を使用して、より高度な方法でコマンドを使用することもできます。
 
-    - Data Factory REST コネクタのみが予期しない応答を返す場合、詳細なトラブルシューティングについて、Microsoft サポートにお問い合わせください。
+    - REST コネクタのみが予期しない応答を返す場合、詳細なトラブルシューティングについて、Microsoft サポートにお問い合わせください。
     
     - "curl" は SSL 証明書の検証問題を再現するのに適さない場合があることに注意してください。 一部のシナリオでは、SSL 証明書の検証に問題が発生せず、"curl" コマンドが正常に実行されました。 ただし、同じ URL をブラウザーで実行すると、クライアントがサーバーとの信頼関係を確立するための SSL 証明書は実際には返されません。
 
@@ -944,7 +1059,7 @@ ms.locfileid: "111971899"
 
     秘密キーのコンテンツが Key Vault からのものである場合、SFTP リンク サービスに直接アップロードすると、元のキー ファイルが機能する可能性があります。
 
-    詳細については、「[Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする](./connector-sftp.md#use-ssh-public-key-authentication)」を参照してください。 秘密キーのコンテンツは、Base64 でエンコードされた SSH 秘密キーのコンテンツです。
+    詳細については、[データ ファクトリまたは Synapse パイプラインを使用した SFTP サーバーとの間でのデータのコピー](./connector-sftp.md#use-ssh-public-key-authentication)に関する記事を参照してください。 秘密キーのコンテンツは、Base64 でエンコードされた SSH 秘密キーのコンテンツです。
 
     Base64 エンコードを使用して元の秘密キー ファイル "*全体*" をエンコードし、エンコードされた文字列を Key Vault に格納します。 ファイルから **[アップロード]** を選択した場合、元の秘密キー ファイルが、SFTP リンク サービスで使用できるキー ファイルです。
 
@@ -973,7 +1088,7 @@ ms.locfileid: "111971899"
 
 - **推奨事項**:  
 
-    現在、PKCS#8 形式の SSH 秘密キー ("-----BEGIN ENCRYPTED PRIVATE KEY-----" で開始) は、Data Factory での SFTP サーバーへのアクセスにはサポートされていません。 
+    現在、PKCS#8 形式の SSH 秘密キー (先頭が "-----BEGIN ENCRYPTED PRIVATE KEY-----") は、SFTP サーバーへのアクセスではサポートされていません。 
 
     キーを "-----BEGIN RSA PRIVATE KEY-----" から始まる従来の SSH キー形式に変換するには、次のコマンドを実行します。
 
@@ -1006,7 +1121,7 @@ ms.locfileid: "111971899"
 
 - **推奨事項**:ターゲット サーバーのポートを確認します。 既定では、SFTP はポート 22 を使用します。
 
-- **原因**:エラー メッセージに "Server response does not contain SSH protocol identification" (サーバーの応答に SSH プロトコルの ID が含まれていません) という文字列が含まれている場合、原因の 1 つとして、SFTP サーバーによって接続が調整されたことが考えられます。 Data Factory が複数の接続を作成して、SFTP サーバーから並列でダウンロードするため、SFTP サーバーの帯域幅調整が行われる場合があります。 通常、調整が発生すると、サーバーごとに異なるエラーが返されます。
+- **原因**:エラー メッセージに "Server response does not contain SSH protocol identification" (サーバーの応答に SSH プロトコルの ID が含まれていません) という文字列が含まれている場合、原因の 1 つとして、SFTP サーバーによって接続が調整されたことが考えられます。 SFTP サーバーから並列でダウンロードするために複数の接続が作成されるため、SFTP サーバーの帯域幅調整が行われる場合があります。 通常、調整が発生すると、サーバーごとに異なるエラーが返されます。
 
 - **推奨事項**:  
 
@@ -1017,6 +1132,40 @@ ms.locfileid: "111971899"
     * セルフホステッド IR を使用している場合は、セルフホステッド IR マシンの IP を許可リストに追加します。
     * Azure IR を使用している場合は、[Azure Integration Runtime IP アドレス](./azure-integration-runtime-ip-addresses.md)を追加します。 SFTP サーバーの許可リストに IP の範囲を追加しない場合は、代わりにセルフホステッド IR を使用してください。
 
+
+#### <a name="error-code-sftppermissiondenied"></a>エラー コード: SftpPermissionDenied
+
+- **メッセージ**: `Permission denied to access '%path;'`
+
+- **原因**: 指定されたユーザーには、操作するときにフォルダーまたはファイルに対する読み取りまたは書き込みのアクセス許可がありません。
+
+- **推奨事項**: SFTP サーバー上のフォルダーまたはファイルに対する読み取りまたは書き込みのアクセス許可をユーザーに付与します。
+ 
+### <a name="error-code-sftpauthenticationfailure"></a>エラー コード: SftpAuthenticationFailure
+
+- **メッセージ**: `Meet authentication failure when connect to Sftp server '%server;' using '%type;' authentication type. Please make sure you are using the correct authentication type and the credential is valid. For more details, see our troubleshooting docs.`
+
+- **原因**: 指定された資格情報 (パスワードまたは秘密キー) が無効です。
+
+- **推奨事項**: 資格情報を確認してください。
+
+- **原因**: 指定された認証の種類は、SFTP サーバーで認証を完了するために許可されていないか、十分ではありません。
+
+- **推奨事項**: 正しい認証の種類を使用するために、次のオプションを適用します。
+    - サーバーでパスワードが必要な場合は、"Basic" を使用します。
+    - サーバーで秘密キーが必要な場合は、"SSH 公開キー認証" を使用します。
+    - サーバーで "パスワード" と "秘密キー" の両方が必要な場合は、"多要素認証" を使用します。
+
+- **原因**: SFTP サーバーで認証に "keyboard-interactive" が必要ですが、"password" が指定されています。
+
+- **推奨事項**: 
+
+    "keyboard-interactive" は特殊な認証方法であり、"password" とは異なります。 つまり、サーバーにログインするときに、パスワードを手動で入力する必要があり、以前に保存したパスワードを使用することはできません。 ただし Azure Data Factory (ADF) はスケジュールされたデータ転送サービスであり、実行時にパスワードを入力するためのポップアップ入力ボックスはありません。 <br/> 
+    
+    妥協策として、実際の手動入力の代わりにバックグラウンドで入力をシミュレートするオプションが用意されており、これは "keyboard-interactive" を "password" に変更することと同じです。 このセキュリティ上の懸念を受け入れることができる場合は、次の手順に従って有効にします。<br/> 
+    1. ADF ポータルで、SFTP リンク サービスにマウス ポインターを移動し、コード ボタンを選択してそのペイロードを開きます。
+    1. "typeProperties" セクションに `"allowKeyboardInteractiveAuth": true` を追加します。
+ 
 ## <a name="sharepoint-online-list"></a>SharePoint Online リスト
 
 ### <a name="error-code-sharepointonlineauthfailed"></a>エラー コード:SharePointOnlineAuthFailed
@@ -1094,7 +1243,7 @@ ms.locfileid: "111971899"
 
 - **解決方法**:[現在は "FIPS モード" の使用を推奨していない理由](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/why-we-8217-re-not-recommending-8220-fips-mode-8221-anymore/ba-p/701037)と、セルフホステッド IR コンピューターで FIPS を無効にできるかどうかを評価する方法について参照してください。
 
-    または、Azure Data Factory が FIPS をバイパスしてアクティビティを正常に実行できるようにするだけの場合は、次の手順を実行します。
+    または、FIPS をバイパスしてアクティビティを正常に実行できるようにするだけの場合は、次の手順を実行します。
 
     1. セルフホステッド IR がインストールされているフォルダーを開きます。 パスは通常、*C:\Program Files\Microsoft Integration Runtime \<IR version>\Shared* です。
 
@@ -1104,6 +1253,163 @@ ms.locfileid: "111971899"
 
     3. ファイルを保存し、セルフホステッド IR コンピューターを再起動します。
 
+### <a name="error-code-jniexception"></a>エラー コード: JniException
+
+- **メッセージ**: `An error occurred when invoking Java Native Interface.`
+
+- **原因**: エラー メッセージに "Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]"\(JVM を作成できません: JNI リターン コード [-6] [JNI 呼び出しが失敗しました: 無効な引数です。]\) が含まれている場合、一部の無効な (グローバル) 引数が設定されているため、JVM を作成できない可能性があります。
+
+- **推奨事項**: セルフホステッド統合ランタイムの *各ノード* をホストするマシンにログインします。 次のように、システム変数が正しく設定されていることを確認します`_JAVA_OPTIONS "-Xms256m -Xmx16g" with memory bigger than 8G`。 すべての統合ランタイム ノードを再起動してから、パイプラインを再実行します。
+
+### <a name="error-code-getoauth2accesstokenerrorresponse"></a>エラー コード: GetOAuth2AccessTokenErrorResponse
+
+- **メッセージ**: `Failed to get access token from your token endpoint. Error returned from your authorization server: %errorResponse;.`
+
+- **原因**: クライアント ID またはクライアント シークレットが無効なため、承認サーバーで認証に失敗しました。
+
+- **推奨事項**: 承認サーバーのすべての OAuth2 クライアント資格情報フロー設定を修正します。
+
+### <a name="error-code-failedtogetoauth2accesstoken"></a>エラー コード: FailedToGetOAuth2AccessToken
+
+- **メッセージ**: `Failed to get access token from your token endpoint. Error message: %errorMessage;.`
+
+- **原因**: OAuth2 クライアント資格情報フロー設定が無効です。
+
+- **推奨事項**: 承認サーバーのすべての OAuth2 クライアント資格情報フロー設定を修正します。
+
+### <a name="error-code-oauth2accesstokentypenotsupported"></a>エラー コード: OAuth2AccessTokenTypeNotSupported
+
+- **メッセージ**: `The toke type '%tokenType;' from your authorization server is not supported, supported types: '%tokenTypes;'.`
+
+- **原因**: お使いの承認サーバーはサポートされていません。
+
+- **推奨事項**: サポートされているトークンの種類のトークンを返すことができる承認サーバーを使用します。
+
+### <a name="error-code-oauth2clientidcolonnotallowed"></a>エラー コード: OAuth2ClientIdColonNotAllowed
+
+- **メッセージ**: `The character colon(:) is not allowed in clientId for OAuth2ClientCredential authentication.`
+
+- **原因**: クライアント ID に無効な文字であるコロン (`:`) が含まれています。
+
+- **推奨事項**: 有効なクライアント ID を使用してください。
+
+### <a name="error-code-managedidentitycredentialobjectnotsupported"></a>エラー コード: ManagedIdentityCredentialObjectNotSupported
+
+- **メッセージ**: `Managed identity credential is not supported in this version ('%version;') of Self Hosted Integration Runtime.`
+
+- **推奨事項**: サポートされているバージョンを確認し、統合ランタイムを新しいバージョンにアップグレードします。
+
+### <a name="error-code-querymissingformatsettingsindataset"></a>エラー コード: QueryMissingFormatSettingsInDataset
+
+- **メッセージ**: `The format settings are missing in dataset %dataSetName;.`
+
+- **原因**:データセットの型が Binary で、これはサポートされていません。
+
+- **推奨事項**: DelimitedText、Json、Avro、Orc、または Parquet のデータセットを代わりに使用してください。
+
+- **原因**: ファイル ストレージについて、データセットにフォーマット設定がありません。
+
+- **推奨事項**: データセットの "バイナリ コピー" の選択を解除し、正しいフォーマット設定を設定します。
+
+### <a name="error-code-queryunsupportedcommandbehavior"></a>エラー コード: QueryUnsupportedCommandBehavior
+
+- **メッセージ**: `The command behavior "%behavior;" is not supported.`
+
+- **推奨事項**: コマンド動作をプレビューまたは GetSchema API 要求 URL のパラメーターとして追加しないでください。
+
+### <a name="error-code-dataconsistencyfailedtogetsourcefilemetadata"></a>エラー コード: DataConsistencyFailedToGetSourceFileMetadata
+
+- **メッセージ**: `Failed to retrieve source file ('%name;') metadata to validate data consistency.`
+
+- **原因**: シンク データ ストアに一時的な問題があるか、シンク データ ストアからのメタデータの取得が許可されていません。
+
+### <a name="error-code-dataconsistencyfailedtogetsinkfilemetadata"></a>エラー コード: DataConsistencyFailedToGetSinkFileMetadata
+
+- **メッセージ**: `Failed to retrieve sink file ('%name;') metadata to validate data consistency.`
+
+- **原因**: シンク データ ストアに一時的な問題があるか、シンク データ ストアからのメタデータの取得が許可されていません。
+
+### <a name="error-code-dataconsistencyvalidationnotsupportedfornondirectbinarycopy"></a>エラー コード: DataConsistencyValidationNotSupportedForNonDirectBinaryCopy
+
+- **メッセージ**: `Data consistency validation is not supported in current copy activity settings.`
+
+- **原因**: データ整合性の検証は、ダイレクト バイナリ コピー シナリオでのみサポートされています。
+
+- **推奨事項**: コピー アクティビティ ペイロードの 'validateDataConsistency' プロパティを削除します。
+
+### <a name="error-code-dataconsistencyvalidationnotsupportedforlowversionselfhostedintegrationruntime"></a>エラー コード: DataConsistencyValidationNotSupportedForLowVersionSelfHostedIntegrationRuntime
+
+- **メッセージ**: `'validateDataConsistency' is not supported in this version ('%version;') of Self Hosted Integration Runtime.`
+
+- **推奨事項**: サポートされている統合ランタイム バージョンを確認し、それを上位バージョンにアップグレードするか、コピー アクティビティから 'validateDataConsistency' プロパティを削除します。
+
+### <a name="error-code-skipmissingfilenotsupportedfornondirectbinarycopy"></a>エラー コード: SkipMissingFileNotSupportedForNonDirectBinaryCopy
+
+- **メッセージ**: `Skip missing file is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **推奨事項**: コピー アクティビティ ペイロードの skipErrorFile 設定の 'fileMissing' を削除します。
+
+### <a name="error-code-skipinconsistencydatanotsupportedfornondirectbinarycopy"></a>エラー コード: SkipInconsistencyDataNotSupportedForNonDirectBinaryCopy
+
+- **メッセージ**: `Skip inconsistency is not supported in current copy activity settings, it's only supported with direct binary copy when validateDataConsistency is true.`
+
+- **推奨事項**: コピー アクティビティ ペイロードの skipErrorFile 設定の 'dataInconsistency' を削除します。
+
+### <a name="error-code-skipforbiddenfilenotsupportedfornondirectbinarycopy"></a>エラー コード: SkipForbiddenFileNotSupportedForNonDirectBinaryCopy
+
+- **メッセージ**: `Skip forbidden file is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **推奨事項**:コピー アクティビティ ペイロードの skipErrorFile 設定の 'fileForbidden' を削除します。
+
+### <a name="error-code-skipforbiddenfilenotsupportedforthisconnector"></a>エラー コード: SkipForbiddenFileNotSupportedForThisConnector
+
+- **メッセージ**: `Skip forbidden file is not supported for this connector: ('%connectorName;').`
+
+- **推奨事項**: コピー アクティビティ ペイロードの skipErrorFile 設定の 'fileForbidden' を削除します。
+
+### <a name="error-code-skipinvalidfilenamenotsupportedfornondirectbinarycopy"></a>エラー コード: SkipInvalidFileNameNotSupportedForNonDirectBinaryCopy
+
+- **メッセージ**: `Skip invalid file name is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **推奨事項**: コピー アクティビティ ペイロードの skipErrorFile 設定の 'invalidFileName' を削除します。
+
+### <a name="error-code-skipinvalidfilenamenotsupportedforsource"></a>エラー コード: SkipInvalidFileNameNotSupportedForSource
+
+- **メッセージ**: `Skip invalid file name is not supported for '%connectorName;' source.`
+
+- **推奨事項**: コピー アクティビティ ペイロードの skipErrorFile 設定の 'invalidFileName' を削除します。
+
+### <a name="error-code-skipinvalidfilenamenotsupportedforsink"></a>エラー コード: SkipInvalidFileNameNotSupportedForSink
+
+- **メッセージ**: `Skip invalid file name is not supported for '%connectorName;' sink.`
+
+- **推奨事項**: コピー アクティビティ ペイロードの skipErrorFile 設定の 'invalidFileName' を削除します。
+
+### <a name="error-code-skipallerrorfilenotsupportedfornonbinarycopy"></a>エラー コード: SkipAllErrorFileNotSupportedForNonBinaryCopy
+
+- **メッセージ**: `Skip all error file is not supported in current copy activity settings, it's only supported with binary copy with folder.`
+
+- **推奨事項**: コピー アクティビティ ペイロードの skipErrorFile 設定の 'allErrorFile' を削除します。
+
+### <a name="error-code-deletefilesaftercompletionnotsupportedfornondirectbinarycopy"></a>エラー コード: DeleteFilesAfterCompletionNotSupportedForNonDirectBinaryCopy
+
+- **メッセージ**: `'deleteFilesAfterCompletion' is not support in current copy activity settings, it's only supported with direct binary copy.`
+
+- **推奨事項**: 'deleteFilesAfterCompletion' 設定を削除するか、ダイレクト バイナリ コピーを使用してください。
+
+### <a name="error-code-deletefilesaftercompletionnotsupportedforthisconnector"></a>エラー コード: DeleteFilesAfterCompletionNotSupportedForThisConnector
+
+- **メッセージ**: `'deleteFilesAfterCompletion' is not supported for this connector: ('%connectorName;').`
+
+- **推奨事項**: コピー アクティビティ ペイロードの 'deleteFilesAfterCompletion' 設定を削除してください。
+
+### <a name="error-code-failedtodownloadcustomplugins"></a>エラー コード: FailedToDownloadCustomPlugins
+
+- **メッセージ**: `Failed to download custom plugins.`
+
+- **原因**: ダウンロード リンクが無効であるか、一時的な接続の問題が発生しています。
+
+- **推奨事項**: 一時的な問題であることをメッセージが示す場合は、再試行します。 問題が解決しない場合は、サポート チームにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,28 +4,27 @@ description: マーケットプレースのアクティビティが要約され�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 8b76469697da62ed379d6854d2977e841080781d
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 08/06/2021
+ms.openlocfilehash: b9b3a1e651e6207cc037ab8e4c70f81a176c3d82
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539889"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747264"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [Summary] (概要) ダッシュボード
 
 この記事では、パートナー センターの [Summary]\(概要\) ダッシュボードについて説明します。 このダッシュボードには、オファーに関するマーケットプレースのアクティビティがまとめられた、集計データのグラフ、傾向、値が表示されます。
 
-パートナー センターの [概要] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[概要]** を選択します。
-
 >[!NOTE]
-> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
 
 ## <a name="summary-dashboard"></a>[Summary]\(概要\) ダッシュボード
 
-[概要] ダッシュボードには、Azure Marketplace および Microsoft AppSource のオファーのビジネス パフォーマンスの概要が示されます。 ダッシュボードは、次のことについて大まかに説明しています。
+[[概要] ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2165765)には、Azure Marketplace および Microsoft AppSource のオファーのビジネス パフォーマンスの概要が示されます。 ダッシュボードは、次のことについて大まかに説明しています。
 
 - 顧客の注文
 - 顧客
@@ -35,6 +34,8 @@ ms.locfileid: "111539889"
 ## <a name="elements-of-the-summary-dashboard"></a>[Summary]\(概要\) ダッシュボードの要素
 
 次のセクションでは、[Summary]\(概要\) ダッシュボードの使用方法とデータの読み取り方法について説明します。
+
+パートナー センターの [概要] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[概要]** を選択します。
 
 ### <a name="month-range"></a>月範囲
 
@@ -47,7 +48,7 @@ ms.locfileid: "111539889"
 
 ### <a name="orders-widget"></a>[注文] ウィジェット
 
-[概要]** ダッシュボードの [注文] ウィジェットには、すべてのトランザクションベースのオファーの現在の注文が表示されます。 [注文] ウィジェットには、選択した計算期間のすべての購入した注文 (キャンセルされた注文を除く) の数と傾向が表示されます。 **[注文]** のパーセント値は、選択した計算期間の増加量を表します。
+**[概要]** ダッシュボードの [注文] ウィジェットには、すべてのトランザクションベースのオファーの現在の注文が表示されます。 [注文] ウィジェットには、選択した計算期間のすべての購入した注文 (キャンセルされた注文を除く) の数と傾向が表示されます。 **[注文]** のパーセント値は、選択した計算期間の増加量を表します。
 
 [![[概要] ダッシュボードの [注文] ウィジェットの画像。](./media/summary-dashboard/orders-widget.png)](./media/summary-dashboard/orders-widget.png#lightbox)
 
@@ -109,4 +110,4 @@ Marketplace の分析情報では、Azure Marketplace および AppSource のオ
 - 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](customer-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
 - Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](ratings-reviews.md)」を参照してください。
-- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。

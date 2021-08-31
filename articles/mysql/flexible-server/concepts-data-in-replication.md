@@ -6,19 +6,22 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 5cc19531f076d3b630faced7fef4ea5cb05be9f1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 071672c5c2d3c741abd14dad94c8c150e427a3ce
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751381"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464776"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql-flexible--server-preview"></a>データを Azure Database for MySQL フレキシブル サーバーにレプリケートする (プレビュー)
+
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 データイン レプリケーションでは、外部の MySQL サーバーから Azure Database for MySQL フレキシブル サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン内、Azure Database for MySQL Single Server、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。 データイン レプリケーションは、バイナリ ログ (binlog) ファイルの位置ベースに基づいています。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
 
 > [!Note]
-> GTID ベースのレプリケーションは、現在、Azure Database for MySQL フレキシブル サーバーでサポートされていません。 
+> GTID ベースのレプリケーションは、現在、Azure Database for MySQL フレキシブル サーバーでサポートされていません。<br>
+> ゾーン冗長高可用性サーバーでのデータイン レプリケーションの構成は、サポートされていません 
 
 ## <a name="when-to-use-data-in-replication"></a>いつデータイン レプリケーションを使用するか
 
@@ -36,11 +39,12 @@ ms.locfileid: "111751381"
 
 ソース サーバー上の ["*mysql システム データベース*"](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) はレプリケートされません。 さらに、ソース サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 ソース サーバー上にアカウントを作成し、このアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー上に同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MySQL のマニュアル](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)を参照してください。
 
+### <a name="data-in-replication-not-supported-on-ha-enabled-servers"></a>HA 対応のサーバーではサポートされないデータイン レプリケーション 
+ゾーン冗長高可用性サーバーでのデータイン レプリケーションの構成は、サポートされていません。 HA が有効になっているサーバーでは、レプリケーション `mysql.az_replication_*` のストアド プロシージャを利用できません。 
+
 ### <a name="filtering"></a>フィルター処理
 
-(オンプレミス、仮想マシン、あるいは他のクラウド プロバイダーによってホストされているデータベース サービスでホストされている) ソース サーバーからのテーブル複製をスキップするために、`replicate_wild_ignore_table` パラメーターがサポートされています。 任意で、[Azure portal](how-to-configure-server-parameters-portal.md) または [Azure CLI](how-to-configure-server-parameters-cli.md) を使用し、Azure でホストされているレプリカ サーバー上でこのパラメーターを更新します。
-
-このパラメーターの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)を参照してください。
+テーブルのレプリケーション フィルター作成に使用されたパラメーター `replicate_wild_ignore_table` の変更は、Azure Database for MySQL フレキシブル サーバーではサポートされていません。 
 
 ### <a name="requirements"></a>必要条件
 
@@ -52,6 +56,8 @@ ms.locfileid: "111751381"
 - ソース サーバーで SSL が有効になっている場合は、ドメインに対して指定されている SSL CA 証明書が `mysql.az_replication_change_master` ストアド プロシージャに含まれていることを確認します。 次の[例](./how-to-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication)と `master_ssl_ca` パラメーターを参照してください。
 - ソース サーバーをホストしているマシンのポート 3306 で受信と送信の両方のトラフィックが許可されていることを確認します。
 - ソース サーバーに **パブリック IP アドレス** があるか、DNS がパブリックにアクセス可能か、またはソース サーバーに完全修飾ドメイン名 (FQDN) があることを確認します。
+- パブリック アクセスの場合、ソース サーバーにパブリック IP アドレスがあり、DNS がパブリックにアクセス可能であり、またはソース サーバーに完全修飾ドメイン名 (FQDN) があることを確保します。
+- プライベート アクセスの場合、ソース サーバー名を解決できることと、Azure Database for MySQL インスタンスが実行されている VNet からアクセスできることを確保します。詳細については「[Azure 仮想ネットワーク内のリソースの名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

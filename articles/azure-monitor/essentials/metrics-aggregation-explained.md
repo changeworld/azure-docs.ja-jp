@@ -6,12 +6,12 @@ ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 03/10/2021
-ms.openlocfilehash: c89b352954f114ec9da22cad6751bb57ef59899b
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 9c543b1bebfdeb47c1a1e1326f49247d8103191f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381799"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861257"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor メトリックによるメトリックの集計と表示の説明
 
@@ -97,7 +97,7 @@ ms.locfileid: "106381799"
 
 ### <a name="granularity"></a>粒度
 
-最小の時間間隔は 1 分ですが、メトリックによっては、基になるシステムでデータがもっと速くキャプチャされる場合もあります。 たとえば CPU 使用率は、15 秒ごとに一定の間隔で追跡されます。 HTTP エラーはトランザクションとして追跡されるため、1 分間で 1 個を容易に超える可能性があります。 SQL ストレージなどの他のメトリックは、20 分ごとにキャプチャされます。 この選択は、個々のリソース プロバイダーと種類によって決まります。 ほとんどの場合、実行可能な最小の間隔を指定しようとします。
+最小の時間細分性は 1 分ですが、メトリックによっては、基になるシステムでデータがもっと速くキャプチャされる場合もあります。 たとえば、Azure VM の CPU パーセンテージは 15 秒という時間間隔でキャプチャされます。 HTTP エラーはトランザクションとして追跡されるため、1 分間で 1 個を容易に超える可能性があります。 SQL ストレージなどの他のメトリックは、20 分おきという時間間隔でキャプチャされます。 この選択は、個々のリソース プロバイダーと種類によって決まります。 ほとんどの場合、実行可能な最小時間間隔を指定しようとします。
 
 ### <a name="dimensions-splitting-and-filtering"></a>ディメンション、分割、およびフィルター処理
 

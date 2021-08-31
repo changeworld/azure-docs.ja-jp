@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/03/2021
+ms.date: 08/11/2021
 ms.author: aahi
-ms.openlocfilehash: 9c2cdcaa5aaadf9b1314b436fce4ab747bebdf8c
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 9d63fc9f90408fd60331f77079fdd8f15ca4aad6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527606"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734083"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Text Analytics API v3 でサポートされているエンティティのカテゴリ
 
 この記事では、[固有表現認識 ](how-tos/text-analytics-how-to-entity-linking.md) (NER) から取得できるエンティティのカテゴリを紹介しています。 NER では、予測モデルを実行して、入力ドキュメントから固有表現を識別して分類します。
 
-NER v3.1 のプレビューも提供されており、そちらには、個人情報 (`PII`) と医療情報 (`PHI`) を検出する機能が備わっています。 また、 **[正常性]** タブをクリックして、Text Analytics で正常性に対してサポートされているカテゴリの一覧を表示します。 
+NER v3.1 も提供されており、そちらには、個人情報 (`PII`) と医療情報 (`PHI`) を検出する機能が備わっています。 また、 **[正常性]** タブをクリックして、Text Analytics で正常性に対してサポートされているカテゴリの一覧を表示します。 
 
 [移行ガイド](migration-guide.md?tabs=named-entity-recognition)で、バージョン 2.1 で返される種類の一覧を確認できます。
 

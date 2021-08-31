@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: 3233695f8a8cc14d70f0c482458e77094dde7622
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: daa53491df084cb68b26d1f9dabb3e17c77880f3
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969072"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231019"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure コンピューティング ユニット (ACU)
 
@@ -64,6 +64,7 @@ Azure コンピューティング ユニット (ACU) の概念は、Azure SKU �
 | [F2s_v2 - F72s_v2](fsv2-series.md) |195 から 210* | 2:1\*\*\* |
 | [F1 - F16](sizes-previous-gen.md) |210 - 250* | 1:1 |
 | [F1s - F16s](sizes-previous-gen.md) |210 - 250* | 1:1 |
+| [FX4 - FX48](fx-series.md) | 310 - 340* | 2:1\*\*\* | 
 | [G1 - G5](sizes-previous-gen.md) |180 ～ 240* | 1:1 |
 | [GS1 - GS5](sizes-previous-gen.md) |180 ～ 240* | 1:1 |
 | [H](h-series.md) |290 ～ 300* | 1:1 |

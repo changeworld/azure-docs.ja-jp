@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: cf3d8fd1566f3d71541aab7648680063e85079bf
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b353409ed1cacfabc8ac407e4ad17f4b1e167fe8
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121831"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727447"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent (旧称 Status Monitor v2) のトラブルシューティング
 
@@ -123,10 +123,27 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 ### <a name="troubleshooting-running-processes"></a>実行中のプロセスのトラブルシューティング
 
-インストルメント化されたコンピューターでプロセスを調べて、すべての DLL が読み込まれているかどうかを確認できます。
+インストルメント化されたコンピューターでプロセスを調べて、すべての DLL が読み込まれていて、環境変数が設定されているかどうかを確認できます。
 監視が機能している場合は、少なくとも 12 個の DLL が読み込まれる必要があります。
 
-`Get-ApplicationInsightsMonitoringStatus -InspectProcess` コマンドを使用して DLL を確認します。
+* `Get-ApplicationInsightsMonitoringStatus -InspectProcess` コマンドを使用して DLL を確認します。
+* `(Get-Process -id {PID}).StartInfo.EnvironmentVariables` コマンドを使用して環境変数を確認します。 ワーカー プロセスまたは dotnet core プロセスで設定された環境変数を次に示します。
+
+```
+COR_ENABLE_PROFILING=1
+COR_PROFILER={324F817A-7420-4E6D-B3C1-143FBED6D855}
+COR_PROFILER_PATH_32=Path to MicrosoftInstrumentationEngine_x86.dll
+COR_PROFILER_PATH_64=Path to MicrosoftInstrumentationEngine_x64.dll
+MicrosoftInstrumentationEngine_Host={CA487940-57D2-10BF-11B2-A3AD5A13CBC0}
+MicrosoftInstrumentationEngine_HostPath_32=Path to Microsoft.ApplicationInsights.ExtensionsHost_x86.dll
+MicrosoftInstrumentationEngine_HostPath_64=Path to Microsoft.ApplicationInsights.ExtensionsHost_x64.dll
+MicrosoftInstrumentationEngine_ConfigPath32_Private=Path to Microsoft.InstrumentationEngine.Extensions.config
+MicrosoftInstrumentationEngine_ConfigPath64_Private=Path to Microsoft.InstrumentationEngine.Extensions.config
+MicrosoftAppInsights_ManagedHttpModulePath=Path to Microsoft.ApplicationInsights.RedfieldIISModule.dll
+MicrosoftAppInsights_ManagedHttpModuleType=Microsoft.ApplicationInsights.RedfieldIISModule.RedfieldIISModule
+ASPNETCORE_HOSTINGSTARTUPASSEMBLIES=Microsoft.ApplicationInsights.StartupBootstrapper
+DOTNET_STARTUP_HOOKS=Path to Microsoft.ApplicationInsights.StartupHook.dll
+```
 
 このコマンドレットの使用方法の詳細については、[API リファレンス](status-monitor-v2-api-reference.md)に関する記事を参照してください。
 
@@ -142,7 +159,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
     - **[Zip]**
     - **[マージ]**
     - **.NET Symbol Collection (.NET シンボル収集)**
-5. 次の **[追加プロバイダー]** を設定します。`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. 次の **[追加プロバイダー]** を設定します。`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,252e28f4-43f9-5771-197a-e8c7e750a984,f9c04365-1d1f-5177-1cdc-a0b0554b6903`
 
 
 #### <a name="collecting-logs"></a>ログの収集

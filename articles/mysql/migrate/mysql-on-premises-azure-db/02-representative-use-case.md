@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 代表的なユース ケース'
+title: 'オンプレミスの MySQL を Azure Database for MySQL に移行する: 代表的なユース ケース'
 description: 次のユース ケースは、MySQL ワークロードを Azure Database for MySQL に移行した企業の実際の顧客シナリオに基づいています。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 9d1a6b4d5e4fa9f3c05219f40b2852eed44aaa37
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 508e27006c96003bd4c2825c9987761f83358f0d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082851"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085076"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-representative-use-case"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 代表的なユース ケース
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-representative-use-case"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する: 代表的なユース ケース
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,15 +55,17 @@ WWI では、[クラウド導入フレームワーク (CAF)](/azure/cloud-adopti
 
 | 段階 | Name | Activities |
 |-------|------|------------|
-| 1 | 移行前  | 評価、計画、移行手法の評価、アプリケーションへの影響、テスト計画、パフォーマンス ベースライン |
-| 2 | 移行      | 移行の実行、テスト計画の実行                                                                          |
-| 3 | 移行後 | 事業継続性、ディザスター リカバリー、管理、セキュリティ、パフォーマンスの最適化、プラットフォームの最新化 |
+| 1 | 移行前 | 評価、計画、移行手法の評価、アプリケーションへの影響、テスト計画、パフォーマンス ベースライン |
+| 2 | 移行     | 移行の実行、テスト計画の実行                                                                          |
+| 3 | 移行後| 事業継続性、ディザスター リカバリー、管理、セキュリティ、パフォーマンスの最適化、プラットフォームの最新化 |
 
 WWI には、5.5 から 5.7 までのさまざまなバージョンで実行されている MySQL の複数のインスタンスがあります。 これらのインスタンスをできるだけ速やかに最新バージョンに移行したいと考えていますが、新しいバージョンに移行しても、アプリケーションが確実に動作できることを望んでいます。 クラウドで同じバージョンに移行し、その後アップグレードしても問題ありませんが、2 つのタスクを同時に実現できるのであれば、そのパスを選ぶつもりです。
 
 また、障害が発生した場合に、複数の地理的リージョンでデータ ワークロードの安全と可用性を確保したいので、使用可能な構成オプションを検討したいと考えています。
 
 WWI は、最初の移行では単純なアプリケーションから始め、後のフェーズでよりビジネス クリティカルなアプリケーションに移行することを望んでいます。 これにより、チームは今後の移行に向けて準備および計画するために必要な知識と経験が得られます。  
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [評価](./03-assessment.md)

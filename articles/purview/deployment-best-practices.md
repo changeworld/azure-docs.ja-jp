@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aa2a22f6e7bfef4a04eb65ac6063c81077b6153
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949840"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739101"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure Purview のデプロイのベスト プラクティス
 
@@ -201,7 +201,7 @@ Purview では、カタログ管理者がライフ サイクルを通じて整�
 |資産に連絡先を追加する|上位の資産については、他のペルソナが連絡先を割り当てたり、REST API 経由でインポートしたりできるようにするプロセスを確立できます。|1 週間|
 |秘密度ラベルとスキャンを追加する|これは、M365 からのラベル付けの使用状況によっては、一部の組織では省略可能な場合があります。|1 ～ 2 週間|
 |分類と機微な洞察を得る|Purview のレポートと洞察を得るためにこの機能にアクセスしてさまざまなレポートを取得し、経営陣にプレゼンテーションを行うことができます。|1 日|
-|Purview 管理対象ユーザーを使用してユーザーを追加する|この手順では、Purview 管理者が Azure Active Directory 管理者と連携して、Purview へのアクセスを許可する新しいセキュリティ グループを確立する必要があります。|1 週間|
+|Purview 管理対象ユーザーを使用して追加のユーザーをオンボードする|この手順では、Purview 管理者が Azure Active Directory 管理者と連携して、Purview へのアクセスを許可する新しいセキュリティ グループを確立する必要があります。|1 週間|
 
 ### <a name="acceptance-criteria"></a>受け入れ基準
 

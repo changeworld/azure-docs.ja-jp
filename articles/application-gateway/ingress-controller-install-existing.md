@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac59d16fc25b8f7d47d3422687a390013df38ebf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693733"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752398"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>既存の Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする
 
@@ -29,7 +29,7 @@ AGIC では、Kubernetes [イングレス](https://kubernetes.io/docs/concepts/s
 
 ## <a name="prerequisites"></a>前提条件
 このドキュメントは、次のツールとインフラストラクチャが既にインストールされていることを前提としています。
-- [高度なネットワーク](../aks/configure-azure-cni.md)が構成されている [AKS](https://azure.microsoft.com/services/kubernetes-service/)
+- [AKS](https://azure.microsoft.com/services/kubernetes-service/) と [Azure Container Networking Interface (CNI)](../aks/configure-azure-cni.md)
 - AKS と同じ仮想ネットワーク内の [Application Gateway v2](./tutorial-autoscale-ps.md)
 - ご利用の AKS クラスターにインストールされている [AAD ポッド ID](https://github.com/Azure/aad-pod-identity)
 - [Cloud Shell](https://shell.azure.com/) は、`az`CLI、`kubectl`、`helm` がインストールされている Azure シェル環境です。 これらのツールは、以下のコマンドに必要です。

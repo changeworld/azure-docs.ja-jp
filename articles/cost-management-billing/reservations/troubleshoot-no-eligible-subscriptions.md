@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 12/15/2020
-ms.openlocfilehash: ad85bd278b5dff1532f218acc0b8e88515d96070
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.date: 06/27/2021
+ms.openlocfilehash: 40002ab69c39481393654629a44a038dfc9d01af
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561207"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988933"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>トラブルシューティング: "有効なサブスクリプションがない"
 
@@ -86,13 +86,17 @@ You can only purchase reservations using subscriptions on which you have owner o
 
 現在の予約注文所有者または予約所有者は、次の手順に従ってアクセス権を委任できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. **[すべてのサービス]**  >  **[予約]** の順に選択し、自分にアクセス権がある予約を一覧表示します。
-1. どの予約のアクセス権を他のユーザーに委任するかを選択します。
-1. **[アクセス制御 (IAM)]** を選択します。
-1. **[ロールの割り当ての追加]**  >  **[ロール]**  >  **[所有者]** を選択します。 また、制限付きアクセス権を付与する場合は、別のロールを選択します。
-1. 所有者として追加するユーザーの電子メール アドレスを入力します。
-1. ユーザーを選択し、 **[保存]** を選択します。
+他のユーザーが予約を管理できるようにするには、次の 2 つのオプションがあります。
+
+- 予約注文のリソース スコープのユーザーに Owner ロールを割り当てることにより、個別の予約注文に対するアクセス管理を委任する。 制限付きアクセス権を付与する場合は、別のロールを選択します。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+
+- ユーザーを課金管理者としてマイクロソフト エンタープライズ契約または Microsoft 顧客契約に追加するには、次の手順を実行します。
+    - マイクロソフト エンタープライズ契約の場合は、"_エンタープライズ管理者_" ロールを持つユーザーを追加することで、マイクロソフト エンタープライズ契約に適用されるすべての予約注文を表示および管理できます。 "_エンタープライズ管理者 (読み取り専用)_ " ロールを持つユーザーは、予約の表示のみを実行できます。 部門管理者およびアカウント所有者は、アクセス制御 (IAM) を使用して明示的にこれらに追加されて "_いない限り_"、予約を表示することはできません。 詳細については、「[Azure エンタープライズ ロールの管理](../manage/understand-ea-roles.md)」を参照してください。
+
+        "_エンタープライズ管理者は、予約注文の所有権を取得し、アクセス制御 (IAM) を使用して他のユーザーを予約に追加することができます。_ "
+    - Microsoft 顧客契約の場合は、課金プロファイル所有者ロールまたは課金プロファイル共同作成者ロールを持つユーザーが、課金プロファイルを使用して行われたすべての予約購入を管理できます。 課金プロファイル閲覧者と請求書管理者は、請求プロファイルを使用して支払われるすべての予約を表示できます。 ただし、予約に変更を加えることはできません。
+    詳細については、「[課金プロファイルのロールとタスク](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
 
 詳細については、「[予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)」を参照してください。
 

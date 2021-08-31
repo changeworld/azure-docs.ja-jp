@@ -4,15 +4,15 @@ description: ゾーン冗長を有効にすることで、リージョン内の 
 author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.date: 05/07/2021
+ms.date: 08/11/2021
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 6e8352a93575ec6222be463daea14aee28f08a7c
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 2415a07a215c99a1775593aae403af6f84b308fa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634817"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752473"
 ---
 # <a name="availability-zone-support-for-azure-api-management"></a>Azure API Management の可用性ゾーンのサポート 
 
@@ -29,19 +29,26 @@ API Management では、[複数リージョン デプロイ](api-management-howt
 * オーストラリア東部
 * ブラジル南部
 * カナダ中部
-* インド中部
+* インド中部 (*)
 * 米国中部
 * 米国東部
 * 米国東部 2
 * フランス中部
+* ドイツ中西部
 * 東日本
+* 韓国中部 (*)
 * 北ヨーロッパ
+* ノルウェー東部 (*)
+* 南アフリカ北部 (*)
 * 米国中南部
 * 東南アジア
 * 英国南部
 * 西ヨーロッパ
 * 米国西部 2
 * 米国西部 3
+
+> [!IMPORTANT]
+> \* が付いているリージョンでは、可用性ゾーンのサポートを有効にする Azure サブスクリプションのアクセスが制限されています。 Microsoft の営業担当者または顧客担当者にお問い合わせください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,6 +77,6 @@ API Management では、[複数リージョン デプロイ](api-management-howt
 ## <a name="next-steps"></a>次のステップ
 
 * [複数の Azure リージョンへの Azure API Management サービス インスタンスのデプロイ](api-management-howto-deploy-multi-region.md)について、さらに確認する。
-* [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-api-management-simple-zones)を使用してゾーン冗長を有効にすることもできます。
+* [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.apimanagement/api-management-simple-zones)を使用してゾーン冗長を有効にすることもできます。
 * [可用性ゾーンをサポートする Azure サービス](../availability-zones/az-region.md)について、さらに確認する。
-* Azure での[信頼性](/azure/architecture/framework/resiliency/overview)の構築について、さらに確認する。
+* Azure での[信頼性](/azure/architecture/framework/resiliency/app-design)の構築について、さらに確認する。

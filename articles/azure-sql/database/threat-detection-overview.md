@@ -12,17 +12,17 @@ ms.author: datrigan
 ms.reviewer: vanto, sstein
 ms.date: 06/09/2021
 tags: azure-synapse
-ms.openlocfilehash: 688a171b7f84b1aeb91adcd45115389c92e652d0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c3b2d31a2351e90be2a30b146dd12d02b90ac16b
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970694"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236375"
 ---
 # <a name="sql-advanced-threat-protection"></a>SQL Advanced Threat Protection
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)] :::image type="icon" source="../media/applies-to/yes.png" border="false":::SQL Server on Azure VM :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Arc enabled SQL Server
 
-[Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)、[Azure Virtual Machines 上の SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)、[Azure Arc 対応 SQL Server](/sql/sql-server/azure-arc/overview.ms) の Advanced Threat Protection では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。
+[Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)、[Azure Virtual Machines 上の SQL Server](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)、[Azure Arc 対応 SQL Server](/sql/sql-server/azure-arc/overview) の Advanced Threat Protection では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。
 
 Advanced Threat Protection は、高度な SQL セキュリティ機能の統合パッケージである [Azure Defender for SQL](../../security-center/defender-for-sql-introduction.md) オファリングの一部です。 Advanced Threat Protection は、Azure Defender for SQL ポータルを使用して一元的にアクセスおよび管理できます。
 
@@ -68,5 +68,4 @@ Advanced Threat Protection では、アラートが [Azure Security Center](http
 - [Azure SQL Managed Instance の Advanced Threat Protection](../managed-instance/threat-detection-configure.md) について説明します。
 - [Azure Defender for SQL](azure-defender-for-sql.md) についてさらに詳しく学習します。
 - [Azure SQL Database 監査](../../azure-sql/database/auditing-overview.md)の詳細について参照してください
-- [Azure Security Center](../../security-center/security-center-introduction.md) の詳細について学習します。
-- 価格の詳細については、[Azure SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
+- [Azure Security Center](../../security-center/security-center-introduction.md) についてさらに詳しく学習します。価格に関する詳細については、[Azure SQL Database の価格ページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。

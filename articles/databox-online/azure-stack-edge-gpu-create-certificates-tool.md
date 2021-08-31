@@ -1,21 +1,21 @@
 ---
-title: Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して証明書を作成する | Microsoft Docs
+title: Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro GPU の証明書を作成する
 description: Azure Stack Hub 適合性チェッカー ツールを使用して証明書要求を作成し、Azure Stack Edge Pro GPU デバイスで証明書を取得してインストールする方法について説明します。
 services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 06/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 8316dd0abfa437d4bf88e8268dfe034344c6614c
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 7b167efdc0b1edaa1f09b0b85a1abbf86ef77037
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389334"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113353919"
 ---
-# <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する 
+# <a name="create-certificates-for-your-azure-stack-edge-pro-gpu-using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro GPU の証明書を作成する 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
@@ -121,7 +121,7 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
     INF フォルダーも表示されます。 ここには証明書の詳細を説明するクリア テキストの management.<edge-devicename> という情報ファイルが含まれています。  
 
 
-6. これらのファイルを証明機関 (内部またはパブリックのいずれか) に送信します。 CA によって、生成された要求が使用され、[ノード証明書](azure-stack-edge-gpu-manage-certificates.md#node-certificates)、[エンドポイント証明書](azure-stack-edge-gpu-manage-certificates.md#endpoint-certificates)、[ローカル UI 証明書](azure-stack-edge-gpu-manage-certificates.md#local-ui-certificates)に対する Azure Stack Edge Pro 証明書要件を満たす証明書が生成されることを確認してください。
+6. これらのファイルを証明機関 (内部またはパブリックのいずれか) に送信します。 CA によって、生成された要求が使用され、[ノード証明書](azure-stack-edge-gpu-certificates-overview.md#node-certificates)、[エンドポイント証明書](azure-stack-edge-gpu-certificates-overview.md#endpoint-certificates)、[ローカル UI 証明書](azure-stack-edge-gpu-certificates-overview.md#local-ui-certificates)に対する Azure Stack Edge Pro 証明書要件を満たす証明書が生成されることを確認してください。
 
 ## <a name="prepare-certificates-for-deployment"></a>デプロイ用の証明書を準備する
 
@@ -152,4 +152,4 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge Pro デバイスを配置する](azure-stack-edge-gpu-deploy-prep.md)
+[デバイスに証明書をアップロードします](azure-stack-edge-gpu-manage-certificates.md)。

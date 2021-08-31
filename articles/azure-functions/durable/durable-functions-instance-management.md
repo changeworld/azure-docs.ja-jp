@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 4145ae79f1d25b80852c5c54fcc02044391f602f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 04c3e9f1a5c5a1a23a618f3274057a5e03a9f0e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376867"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752318"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure における Durable Functions でのインスタンスの管理
 
@@ -148,7 +148,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure Functions Core Tools](../functions-run-local.md) の `durable start-new` コマンドを使用して、インスタンスを直接開始することもできます。 使用できるパラメーターは次のとおりです。
+Core Tools で [`func durable start-new` コマンド](../functions-core-tools-reference.md#func-durable-start-new)を使用することで、インスタンスを直接起動することもできます。その場合、次のパラメーターを受け取ります。
 
 * **`function-name` (必須)** : 開始する関数の名前。
 * **`input` (省略可能)** : 関数への入力 (インラインまたは JSON ファイル経由のどちらか)。 ファイルの場合は、`@` でファイルへのパスにプレフィックスを追加します (例: `@path/to/file.json`)。
@@ -253,7 +253,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure Functions Core Tools](../functions-run-local.md) の `durable get-runtime-status` コマンドを使用して、オーケストレーション インスタンスの状態を直接取得することもできます。
+Core Tools で [`func durable get-runtime-status` コマンド](../functions-core-tools-reference.md#func-durable-get-runtime-status)を使用し、オーケストレーション インスタンスの状態を取得することもできます。
 
 > [!NOTE]
 > Core Tools のコマンドは、現在、ランタイム状態を永続化するために既定の [Azure Storage プロバイダー](durable-functions-storage-providers.md)を使用する場合にのみサポートされます。
@@ -352,7 +352,7 @@ function.json 構成については「[インスタンスを開始する](#javas
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure Functions Core Tools](../functions-run-local.md) の `durable get-instances` コマンドを使用して、インスタンスのクエリを直接実行することもできます。
+Core Tools で [`func durable get-instances` コマンド](../functions-core-tools-reference.md#func-durable-get-instances)を使用することでインスタンスにクエリを直接実行することもできます。
 
 > [!NOTE]
 > Core Tools のコマンドは、現在、ランタイム状態を永続化するために既定の [Azure Storage プロバイダー](durable-functions-storage-providers.md)を使用する場合にのみサポートされます。
@@ -543,7 +543,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure Functions Core Tools](../functions-run-local.md) の `durable terminate` コマンドを使用して、オーケストレーション インスタンスを直接終了することもできます。
+Core Tools で [`func durable terminate` コマンド](../functions-core-tools-reference.md#func-durable-terminate)を使用することで、オーケストレーション インスタンスを直接終了することもできます。
 
 > [!NOTE]
 > Core Tools のコマンドは、現在、ランタイム状態を永続化するために既定の [Azure Storage プロバイダー](durable-functions-storage-providers.md)を使用する場合にのみサポートされます。
@@ -624,7 +624,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure Functions Core Tools](../functions-run-local.md) の `durable raise-event` コマンドを使用して、オーケストレーション インスタンスに対するイベントを直接発生させることもできます。
+Core Tools で [`func durable raise-event` コマンド](../functions-core-tools-reference.md#func-durable-raise-event)を使用することで、オーケストレーション インスタンスに直接、イベントを発生させることもできます。
 
 > [!NOTE]
 > Core Tools のコマンドは、現在、ランタイム状態を永続化するために既定の [Azure Storage プロバイダー](durable-functions-storage-providers.md)を使用する場合にのみサポートされます。
@@ -885,7 +885,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure Functions Core Tools](../functions-run-local.md) の `durable rewind` コマンドを使用して、オーケストレーション インスタンスを直巻き戻すこともできます。
+Core Tools で [`func durable rewind` コマンド](../functions-core-tools-reference.md#func-durable-rewind)を使用することで、オーケストレーション インスタンスを直接巻き戻すこともできます。
 
 > [!NOTE]
 > Core Tools のコマンドは、現在、ランタイム状態を永続化するために既定の [Azure Storage プロバイダー](durable-functions-storage-providers.md)を使用する場合にのみサポートされます。
@@ -1034,7 +1034,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure Functions Core Tools](../functions-run-local.md) の `durable purge-history` コマンドを使用して、オーケストレーション インスタンスの履歴を消去することもできます。 前のセクションの 2 つ目の C# の例と同様に、指定した時間間隔中に作成されたすべてのオーケストレーション インスタンスの履歴が消去されます。 さらに、実行状態によって消去されるインスタンスをフィルター処理できます。
+Core Tools で [`func durable purge-history` コマンド](../functions-core-tools-reference.md#func-durable-purge-history)を使用することでオーケストレーション インスタンスの履歴を消去できます。 前のセクションの 2 つ目の C# の例と同様に、指定した時間間隔中に作成されたすべてのオーケストレーション インスタンスの履歴が消去されます。 さらに、実行状態によって消去されるインスタンスをフィルター処理できます。
 
 > [!NOTE]
 > Core Tools のコマンドは、現在、ランタイム状態を永続化するために既定の [Azure Storage プロバイダー](durable-functions-storage-providers.md)を使用する場合にのみサポートされます。
@@ -1055,7 +1055,7 @@ func durable purge-history --created-before 2021-11-14T19:35:00.0000000Z --runti
 
 ## <a name="delete-a-task-hub"></a>タスク ハブを削除する
 
-[Azure Functions Core Tools の ](../functions-run-local.md) `durable delete-task-hub` コマンドを使用して、Azure storage のテーブル、キュー、BLOB などの、特定のタスクハブに関連付けられているすべてのストレージ成果物を削除できます。 
+Core Tools の [`func durable delete-task-hub` コマンド](../functions-core-tools-reference.md#func-durable-delete-task-hub)を使用して、Azure storage のテーブル、キュー、BLOB などの、特定のタスク ハブに関連付けられているすべてのストレージ成果物を削除できます。 
 
 > [!NOTE]
 > Core Tools のコマンドは、現在、ランタイム状態を永続化するために既定の [Azure Storage プロバイダー](durable-functions-storage-providers.md)を使用する場合にのみサポートされます。

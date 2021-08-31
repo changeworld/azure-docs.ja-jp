@@ -3,12 +3,12 @@ title: Azure Arc を使用してハイブリッド インフラストラクチ�
 description: Azure Lighthouse は、Azure の外にある顧客のマシンと Kubernetes クラスターを効果的に管理するのに役立ちます。
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: edb9553288ff909e5a5f51bf1440c29914672cb9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 926ec6d3fdca6b31ee5296832e12a63a2dfa9d65
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082084"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228838"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
 
@@ -25,7 +25,7 @@ ms.locfileid: "112082084"
 > [!TIP]
 > このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
 
-## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>ハイブリッド サーバーを大規模に管理する - Azure Arc 対応サーバー
+## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーでハイブリッド サーバーを大規模に管理する
 
 サービス プロバイダーの場合、顧客が [Azure Connected Machine エージェント](../../azure-arc/servers/agent-overview.md)を使用してサブスクリプションに接続する、Azure の外部のオンプレミスの Windows Server または Linux マシンを管理できます。
 
@@ -46,7 +46,7 @@ Azure portal で委任されたサブスクリプションのリソースを表�
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Arc GitHub リポジトリ](https://github.com/microsoft/azure_arc)ですぐに使える項目とサンプルを確認します。
-- [Azure Arc 対応サーバーのサポートされるシナリオ](../../azure-arc/servers/overview.md#supported-scenarios)を確認します。
+- [Azure Arc 対応サーバーのサポートされるシナリオ](../../azure-arc/servers/overview.md#supported-cloud-operations)を確認します。
 - [Azure Arc でサポートされている Kubernetes ディストリビューション](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions)を確認します。
 - [ポリシーを大規模にデプロイする](policy-at-scale.md)方法を確認します。
 - [Azure Monitor ログを大規模に使用する](monitor-at-scale.md)方法を確認します。

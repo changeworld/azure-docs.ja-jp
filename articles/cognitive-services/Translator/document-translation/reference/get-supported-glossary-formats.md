@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 0185a4b18ed56899de9c235bbd0438ef1dedf7c4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ae21b4e510dc7e1f95303c562f58032758717d56
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412729"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540709"
 ---
 # <a name="get-supported-glossary-formats"></a>サポートされる用語集の形式の取得
 
@@ -62,7 +62,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 一覧の基本データ型が、サポートされる用語集の形式 API で返されます。
 
-|Name|種類|説明|
+|Name|型|説明|
 |--- |--- |--- |
 |value|FileFormat []|FileFormat [] には、下に示す詳細が含まれます。|
 |value.contentTypes|string []|この形式がサポートされているコンテンツの種類。|
@@ -73,7 +73,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ### <a name="error-response"></a>エラー応答
 
-|名前|種類|説明|
+|名前|型|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|

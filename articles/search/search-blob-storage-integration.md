@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: 6646a2e5a074219df13f3bf373edfc53310c8104
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 07f208753265e35bbc51c74f74a87a1742fa52ff
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556606"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727481"
 ---
 # <a name="search-over-azure-blob-storage-content"></a>Azure Blob Storage のコンテンツを検索する
 
@@ -32,13 +32,13 @@ Azure Blob Storage 内の単一コンテナーにある BLOB が入力となり�
 
 出力は常に Azure Cognitive Search インデックスであり、これはクライアント アプリケーションでの高速テキスト検索、取得、および探索に使用されます。 中間にあるのは、インデックス作成のパイプライン アーキテクチャそのものです。 パイプラインは、この記事で詳しく説明する "*インデクサー*" 機能に基づいています。
 
-インデックスが作成され設定されると、それはご利用の BLOB コンテナーとは独立した存在となりますが、変更が生じたドキュメントに基づいてインデックス作成操作を再実行することでインデックスを更新することができます。 変更を検出するには、個々の BLOB に関するタイムスタンプ情報が使用されます。 更新メカニズムとしては、スケジュールされた実行またはオンデマンドのインデックス作成のいずれかを選択できます。
+インデックスが作成され設定されると、それはご利用の BLOB コンテナーとは独立した存在となりますが、インデックス作成操作を再実行することで、変更されたドキュメントに基づいてインデックスを更新することができます。 変更を検出するには、個々の BLOB に関するタイムスタンプ情報が使用されます。 更新メカニズムとしては、スケジュールされた実行またはオンデマンドのインデックス作成のいずれかを選択できます。
 
 ## <a name="required-resources"></a>必要なリソース
 
 Azure Cognitive Search と Azure Blob Storage の両方が必要です。 Blob Storage 内には、ソース コンテンツを提供するコンテナーが必要です。
 
-ご自分のストレージ アカウント ポータル ページで直接開始できます。 左側のナビゲーション ページの **[Blob service]** で、 **[Azure Cognitive Search の追加]** をクリックして新しいサービスを作成するか、既存のサービスを選択します。 
+ご自分のストレージ アカウント ポータル ページで直接開始できます。 左側のナビゲーション ページの **[Blob service]** で、 **[Azure Cognitive Search の追加]** を選択して新しいサービスを作成するか、既存のサービスを選択します。 
 
 ご利用のストレージ アカウントに Azure Cognitive Search を追加したら、標準的なプロセスに従って BLOB データのインデックスを作成できます。 最初の導入を簡単に行うには Azure Cognitive Search の **[データのインポート]** ウィザードをお勧めします。または、Postman などのツールを使用して REST API を呼び出すこともできます。 このチュートリアルでは、Postman で REST API を呼び出す手順について説明します。[Azure Cognitive Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索](search-semi-structured-data.md)。 
 
@@ -48,7 +48,7 @@ Azure Cognitive Search と Azure Blob Storage の両方が必要です。 Blob S
 
 Azure Storage 内の BLOB は、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)を使用してインデックス作成されます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または .NET SDK を使用します。 コード内でこのインデクサーを使用するには、種類を設定してから、Azure Storage アカウントおよび BLOB コンテナーを含む接続情報を指定します。 ご利用の BLOB のサブセットを作成するには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
 
-インデクサーでは、"ドキュメント解析" を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、およびその他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメント解析は課金の対象外です。 ご利用の BLOB に画像コンテンツが含まれている場合、[AI エンリッチメントを追加](search-blob-ai-integration.md)しない限り、画像は無視されます。 標準のインデックス作成は、テキスト コンテンツのみに適用されます。
+インデクサーでは、["ドキュメント解析"](search-indexer-overview.md#document-cracking) を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、その他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメント解析は課金の対象外です。 ご利用の BLOB に画像コンテンツが含まれている場合、[AI エンリッチメントを追加](search-blob-ai-integration.md)しない限り、画像は無視されます。 標準のインデックス作成は、テキスト コンテンツのみに適用されます。
 
 BLOB インデクサーでは、構成パラメーターが用意されているほか、基になるデータが十分な情報を提供している場合は、変更の追跡がサポートされます。 コア機能の詳細については、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)に関するページを参照してください。
 

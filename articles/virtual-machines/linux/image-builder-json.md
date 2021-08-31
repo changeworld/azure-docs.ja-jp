@@ -3,19 +3,18 @@ title: Azure Image Builder テンプレートを作成する
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
 author: kof-f
 ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 05/24/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.reviewer: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07dfd9eb2dab9ae8c7e7a024bbf09c641e0910e4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d9ac06d7863ae08e380532f0b737dafc57ab666e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967237"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469157"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Azure Image Builder テンプレートを作成する 
 
@@ -98,18 +97,8 @@ Azure VM Image Builder サービスでは、顧客が単一リージョンのデ
 2. Windows ビルドの実行。"Standard_D2_v2" または同等の VM サイズを使用する必要があります。
 3. [VM の分離](../isolation.md)が必要。
 4. 特定のハードウェアを必要とするイメージのカスタマイズ (GPU VM の場合は GPU VM サイズが必要になるなど)。 
-5. ビルド VM の残りの部分でエンド ツー エンドの暗号化が必要。ローカル一時ディスクを使用しないサポート ビルド [VM](../azure-vms-no-temp-disk.md) サイズを指定する必要があります。
+5. ビルド VM の残りの部分でエンド ツー エンドの暗号化が必要。ローカル一時ディスクを使用しないサポート ビルド [VM](../azure-vms-no-temp-disk.yml) サイズを指定する必要があります。
  
-これは省略可能です。
-
-
-## <a name="proxy-vm-size"></a>プロキシ VM サイズ
-プロキシ VM は、Azure Image Builder Service とビルド VM の間でコマンドを送信するために使用されます。これは、既存の VNET を指定するときにのみ展開されます。詳細については、ネットワーク オプションに関する[ドキュメント](image-builder-networking.md#why-deploy-a-proxy-vm)を参照してください。
-```json
- {
-    "proxyVmSize": "Standard A1_v2"
- },
-```
 これは省略可能です。
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
@@ -181,7 +170,7 @@ API ではイメージ ビルド用のソースを定義する "SourceType" が�
 > 既存の Windows カスタム イメージを使用する場合、1 つの Windows 7 または Windows Server 2008 R2 イメージで Sysprep コマンドを最大 3 回実行できます。それ以降のバージョンでは、1 つの Windows イメージで最大 1001 回実行できます。詳細については、[sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) のドキュメントを参照してください。
 
 ### <a name="platformimage-source"></a>PlatformImage ソース 
-Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](../image-builder-overview.md#os-support)を参照してください。 
+Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、「[Azure Image Builder の概要](../image-builder-overview.md#os-support)」を参照してください。 
 
 ```json
         "source": {
@@ -725,3 +714,4 @@ az resource invoke-action \
 ## <a name="next-steps"></a>次のステップ
 
 さまざまなシナリオの .json ファイルのサンプルが、[Azure Image Builder の GitHub](https://github.com/azure/azvmimagebuilder) にあります。
+

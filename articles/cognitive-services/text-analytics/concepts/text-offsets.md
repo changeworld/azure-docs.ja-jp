@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 348805670187f2362eb17dae40aa94e70f1daa24
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 89091f8914acea62370290e25a2f98f5bcb220a7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084684"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745544"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Text Analytics API の出力でのテキスト オフセット
 
@@ -40,7 +40,7 @@ ms.locfileid: "110084684"
 
 Text Analytics API では、便宜上、これらのテキスト要素も返されます。
 
-## <a name="offsets-in-api-version-31-preview"></a>API バージョン 3.1-preview のオフセット
+## <a name="offsets-in-api-version-31"></a>API バージョン 3.1 のオフセット
 
 API バージョン 3.1 では、オフセットを返すすべての Text Analytics API エンドポイントで `stringIndexType` パラメーターがサポートされます。 このパラメーターは、要求された文字列反復スキームに一致するように、API 出力内の `offset` と `length` 属性を調整します。 現時点では以下の 3 種類がサポートされています。
 

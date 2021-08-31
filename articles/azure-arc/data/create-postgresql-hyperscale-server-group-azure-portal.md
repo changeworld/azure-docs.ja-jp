@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 905bfa7093fc21dfe472742e03d938cbfcaee43a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 382e4e855b0a4925cfaae2f7746587a7ab2fd951
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407581"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750318"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group-from-the-azure-portal"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを Azure portal から作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "111407581"
 ## <a name="getting-started"></a>作業の開始
 下記のトピックについて既によく理解している場合は、この段落をスキップしてください。
 作成に進む前に、次のような重要なトピックを参照してください。
-- [Azure Arc 対応データ サービスの概要](overview.md)
+- [Azure Arc 対応データ サービスの概要](overview.md)に関するページ
 - [接続モードと要件](connectivity.md)
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)
 - [Kubernetes リソース モデル](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
@@ -39,8 +39,8 @@ ms.locfileid: "111407581"
 
 要件: Azure portal から操作する Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをデプロイする前に、"*直接*" 接続モードを使用するように構成された Azure Arc データ コントローラーをデプロイする必要があります。
 Arc データ コントローラーをデプロイするには、こちらの記事の手順を実行します。
-1. [データ コントローラーのデプロイ - 直接接続モード (前提条件)](deploy-data-controller-direct-mode-prerequisites.md)
-1. [Azure Arc データ コントローラーをデプロイする | 直接接続モード](deploy-data-controller-direct-mode.md)
+1. [データ コントローラーのデプロイ - 直接接続モード (前提条件)](create-data-controller-direct-prerequisites.md)
+1. [Azure portal から直接接続モードで Azure Arc データ コントローラーをデプロイする](create-data-controller-direct-azure-portal.md)
 
 
 ## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>OpenShift ユーザー専用の暫定的および一時的な手順
@@ -90,24 +90,24 @@ Azure Arc 対応 Postgres Hyperscale サーバー グループを Azure portal �
 
 |以下のものが必要です。   |デプロイするサーバー グループの形状   |指定するワーカー ノードの数   |Note   |
 |---|---|---|---|
-|アプリケーションのスケーラビリティ ニーズを満たすための、Postgres のスケールアウト形式。   |3 つ以上の Postgres インスタンス (コーディネーターが 1 つで、ワーカーが 2 つ以上)。   |n 個 (n は 2 以上)。   |Hyperscale 機能を提供する Citus 拡張機能が読み込まれます。   |
-|最小限のコストでアプリケーションの機能検証を行うための、Postgres Hyperscale の基本形式。 パフォーマンスとスケーラビリティの検証には無効です。 その場合は、上のような種類のデプロイメントを使用する必要があります。   |コーディネーターでもありワーカーでもある 1 つの Postgres インスタンス。   |0 個。読み込む拡張機能の一覧に Citus を追加します。   |Hyperscale 機能を提供する Citus 拡張機能が読み込まれます。   |
+|アプリケーションのスケーラビリティ ニーズを満たすための、Postgres のスケールアウト形式。   |3 つ以上の Postgres インスタンス (コーディネーターが 1 つで、ワーカーが 2 つ以上)。   |n 個 (n は 2 以上)。   |ハイパースケール機能を提供する Citus 拡張機能が読み込まれます。   |
+|最小限のコストでアプリケーションの機能検証を行うための、Postgres Hyperscale の基本形式。 パフォーマンスとスケーラビリティの検証には無効です。 そのためには、上記のデプロイの種類を使用する必要があります。   |コーディネーターでもありワーカーでもある 1 つの Postgres インスタンス。   |0 個。読み込む拡張機能の一覧に Citus を追加します。   |ハイパースケール機能を提供する Citus 拡張機能が読み込まれます。   |
 |必要に応じてスケールアウトできる Postgres の単純なインスタンス。   |1 つの Postgres インスタンス。 コーディネーターとワーカーのセマンティックはまだ認識されていません。 デプロイ後にスケールアウトするには、構成を編集してワーカー ノードの数を増やし、データを分散させます。   |0   |Hyperscale 機能を提供する Citus 拡張機能はデプロイに存在しますが、まだ読み込まれていません。   |
 |   |   |   |   |
 
-1 つのワーカーを指定することはできますが、これを使用することはお勧めしません。 このデプロイでは、あまり大きな価値は得られません。 これにより、Postgres の 2 つのインスタンス (1 つのコーディネーターと 1 つのワーカー) が取得されます。 この設定では、1 つのワーカーがデプロイされるため、実際にはデータをスケールアウトできません。 そのため、パフォーマンスとスケーラビリティは向上しません。 今後のリリースでは、このデプロイのサポートは削除される予定です。
+1 つのワーカーを指定することはできますが、これを使用することはお勧めしません。 このデプロイでは、あまり大きな価値は提供されません。 これにより、Postgres の 2 つのインスタンス (1 つのコーディネーターと 1 つのワーカー) が取得されます。 この設定では、1 つのワーカーがデプロイされるため、実際にはデータをスケールアウトできません。 そのため、パフォーマンスとスケーラビリティは向上しません。 今後のリリースでは、このデプロイのサポートは削除される予定です。
 
 - サーバー グループで使おうとしている **ストレージ クラス**。 ストレージ クラスはデプロイ後に変更することはできないため、サーバー グループをデプロイする時点で設定することが重要です。 もしデプロイ後にストレージ クラスを変更するとすれば、データの抽出、サーバー グループの削除、新しいサーバー グループの作成、データのインポートが必要になります。 データ、ログ、バックアップ用に使用するストレージ クラスを指定することもできます。 既定では、ストレージ クラスを指定しない場合、データ コントローラーのストレージ クラスが使用されます。
     - データ用のストレージ クラスを設定するには、パラメーター `--storage-class-data` または `-scd` を指定し、その後にストレージ クラスの名前を指定します。
     - ログ用のストレージ クラスを設定するには、パラメーター `--storage-class-logs` または `-scl` を指定し、その後にストレージ クラスの名前を指定します。
     - バックアップ用のストレージ クラスを設定するには: Azure Arc 対応 PostgreSQL Hyperscale のこのプレビューでは、実行しようとしているバックアップ/復元操作の種類に応じて、ストレージ クラスを設定する方法が 2 つあります。 Microsoft は、このエクスペリエンスの簡素化に取り組んでいます。 ストレージ クラスまたはボリューム要求マウントのいずれかを指定します。 ボリューム要求マウントは、(同じ名前空間内の) 既存の永続的ボリューム要求と、コロンで区切られたボリュームの種類 (およびボリュームの種類に応じたオプションのメタデータ) のペアです。 永続的ボリュームは、PostgreSQL サーバー グループの各ポッドにマウントされます。
         - 実行する予定があるのはデータベースの完全復元だけである場合は、パラメーター `--storage-class-backups` または `-scb` を設定し、その後にストレージ クラスの名前を指定します。
-        - データベースの完全復元とポイントインタイム リストアの両方を行う予定の場合は、パラメーター `--volume-claim-mounts` または `-vcm` を設定し、その後にボリューム要求の名前とボリュームの種類を指定します。
+        - データベースの完全復元とポイントインタイム リストアの両方を行う予定の場合は、パラメーター `--volume-claim-mounts` または `--volume-claim-mounts` を設定し、その後にボリューム要求の名前とボリュームの種類を指定します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Arc 対応 PostgreSQL Hyperscale に接続します。[接続エンドポイントと接続文字列の取得](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)に関する記事を参照してください。
+- Azure Arc 対応 PostgreSQL Hyperscale に接続します。[接続エンドポイントと接続文字列の取得](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)に関するページを参照してください
 - 複数の PostgreSQL Hyperscale ノードにわたってデータを分散させ、パフォーマンス向上の可能性があるという利点を得るため、Azure Database for PostgreSQL Hyperscale の概念と使い方に関するガイドを参照してください。
     * [ノードとテーブル](../../postgresql/concepts-hyperscale-nodes.md)
     * [アプリケーションの種類の決定](../../postgresql/concepts-hyperscale-app-type.md)

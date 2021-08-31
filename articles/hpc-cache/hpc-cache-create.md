@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: v-erkel
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 26272090d3ec18328df2ac553b15e53abc824708
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: eb7d88424a04754612f981d58e8e1d6cb85ce0fb
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294920"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770592"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -114,7 +114,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 
 カスタマー マネージド キー暗号化を選択するには、 **[Customer managed]\(カスタマー マネージド\)** を選択します。 キー コンテナー指定のフィールドが表示されます。 使用する Azure Key Vault を選択し、このキャッシュに使用するキーとバージョンを選択します。 キーは、2048 ビット RSA キーである必要があります。 このページで、新しいキー コンテナー、キー、キー バージョンを作成できます。
 
-[自動キー ローテーション](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview)を使用する場合は、 **[Always use current key version]\(常に現在のキー バージョンを使用する\)** チェックボックスをオンにします。
+[自動キー ローテーション](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)を使用する場合は、 **[Always use current key version]\(常に現在のキー バージョンを使用する\)** チェックボックスをオンにします。
 
 このキャッシュに特定のマネージド ID を使用する場合は、 **[マネージド ID]** セクションで構成します。 詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。
 

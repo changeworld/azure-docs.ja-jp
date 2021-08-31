@@ -3,14 +3,15 @@ metadata:
   title: FAQ - Azure VM 上の SQL Server データベースのバックアップ
   description: Azure Backup を使用した Azure VM 上での SQL Server データベースのバックアップに関する一般的な質問への回答を見つけてください。
   ms.reviewer: vijayts
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: backup
   ms.date: 05/07/2021
-  ms.openlocfilehash: 0c53b52f38103790ae5439e33d81c268756b5eec
-  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+  ms.openlocfilehash: b9d0efe909cd82cec1b3ade53882b3a3935b0353
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "111907559"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253194"
 title: Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 summary: >
   この記事では、Azure 仮想マシン (VM) 上で実行され、[Azure Backup](backup-overview.md) サービスを使用する SQL Server データベースのバックアップに関する一般的な質問にお答えします。
@@ -117,7 +118,7 @@ sections:
   - question: >
       自動保護されたインスタンスの追加されたデータベースが表示されないのはなぜですか?
     answer: >
-      [自動保護されたインスタンスに追加した](backup-sql-server-database-azure-vms.md#enable-auto-protection)データベースは、保護された項目にすぐには表示されない可能性があります。 これは、検出が通常は 8 時間ごとに実行されるためです。 ただし、次の図に示すように、 **[DB の再検出]** を選択することによって検出を手動で実行した場合は、新しいデータベースを直ちに検出して保護できます。
+      [自動保護されたインスタンスに追加した](backup-sql-server-database-azure-vms.md#enable-auto-protection)データベースは、保護された項目にすぐには表示されない可能性があります。 これは、検出は通常 8 時間ごとに実行され、システムの実際の保護は VM のサイズによって異なるため、さらに時間がかかることがあるためです。 ただし、次の図に示すように、**[DB の再検出]** を選択することによって検出を手動で実行した場合は、新しいデータベースを直ちに検出できます。
 
         ![新しく追加されたデータベースを手動で検出する](./media/backup-azure-sql-database/view-newly-added-database.png)
   - question: >

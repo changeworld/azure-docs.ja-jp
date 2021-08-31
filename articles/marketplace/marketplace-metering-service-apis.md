@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2a95821b615c934a2bf22f52406f2c257b9be91b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 8a8f6052ba2ce66e22208972fa84b7af1f48dd3e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542607"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739105"
 ---
 # <a name="marketplace-metered-billing-apis"></a>マーケットプレースの従量制課金 API
 
@@ -255,6 +255,7 @@ OK です。 バッチ使用状況の生成は、さらに処理と課金を行�
 | `Error` | エラー コード。 |
 | `ResourceNotFound` | 指定された使用状況リソースは無効です。 |
 | `ResourceNotAuthorized` | このリソースの使用状況を指定することは許可されていません。 |
+| `ResourceNotActive` | リソースが一時停止になっているか、一度もアクティブになっていません。 |
 | `InvalidDimension` | 使用状況が渡されたディメンションはこのオファー/プランでは無効です。 |
 | `InvalidQuantity` | 渡された数量が 0 以下です。 |
 | `BadArgument` | 入力がないか、または不正な形式です。 |
@@ -277,4 +278,4 @@ Forbidden. 認証トークンが指定されていない、無効である、ま
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Marketplace の測定サービス API - FAQ](marketplace-metering-service-apis-faq.md)」を参照してください。
+詳細については、「[Marketplace の測定サービス API - FAQ](marketplace-metering-service-apis-faq.yml)」を参照してください。

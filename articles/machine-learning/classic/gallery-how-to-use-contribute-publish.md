@@ -9,19 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 935d0149a4a6b33c5272e57aab5f1cc9c3bb2924
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42327bc0d3acd8f3afbd99814fa2687372a564d1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519849"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688828"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは × 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 **[Azure AI ギャラリー](https://gallery.azure.ai)** は、Azure AI を使用して構築されたソリューションを入手および共有するためのコミュニティ主導のサイトです。
 このギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
@@ -30,7 +29,7 @@ ms.locfileid: "100519849"
 
 Azure AI ギャラリーには、Microsoft とデータ サイエンス コミュニティのメンバーから投稿された多数のさまざまなリソースが含まれています。 これには以下が含まれます。
 
-* **実験** - ギャラリーには、Azure Machine Learning Studio (クラシック) で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
+* **実験** - ギャラリーには、Machine Learning Studio (クラシック) で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
 * **チュートリアル**: Machine Learning のテクノロジと概念を紹介するか、Machine Learning に関する問題を解決するための高度な手法を説明するさまざまなチュートリアルを使用できます。
 * **コレクション** - コレクションでは、特定のソリューションまたは概念に対応する実験、API、およびその他のギャラリー リソースをグループ化できます。
 * **カスタム モジュール** - Studio (クラシック) ワークスペースにカスタム モジュールをダウンロードして、独自の実験で使用できます。

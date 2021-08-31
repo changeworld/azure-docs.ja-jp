@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: mlearned
-ms.openlocfilehash: 7f754aa8d454949c74ccd31e3f52423f755b2fa4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf589591ae1c4f9fa3dca2b16cc5382def0740e7
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372396"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861206"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -58,11 +58,9 @@ AKS クラスターを作成またはスケールアップすると、ノード�
 ### <a name="node-security-patches"></a>ノードのセキュリティ パッチ
 
 #### <a name="linux-nodes"></a>Linux ノード
-Azure プラットフォームでは、OS セキュリティ修正プログラムが夜間スケジュールで Linux ノードに自動的に適用されます。 Linux OS セキュリティ更新プログラムによってホストの再起動が求められた場合、自動的には再起動しません。 次のいずれかを実行できます。
-* Linux ノードを手動で再起動します。
-* Kubernetes 用オープン ソースの再起動デーモンである [Kured][kured] を使用します。 Kured は [DaemonSet][aks-daemonsets] として実行され、再起動が必要であることを示すファイルについて各ノードを監視します。 
+AKS の Linux ノードには、毎晩、ディストリビューション セキュリティ更新チャネルを介してセキュリティ修正プログラムが取得されます。 この動作は、ノードが AKS クラスターにデプロイされるときに自動的に構成されます。 中断や実行中のワークロードへの潜在的な影響を最小限に抑えるために、セキュリティ修正プログラムまたはカーネルの更新プログラムに必要な場合でも、ノードは自動的に再起動されません。 ノードの再起動を処理する方法については、[AKS のノードにセキュリティとカーネルの更新プログラムを適用する方法][aks-kured]に関する記事を参照してください。
 
-再起動は、クラスター アップグレードと同じ[切断およびドレイン プロセス](#cordon-and-drain)を使用するクラスターで管理されます。
+夜間の更新では、ノード上の OS にセキュリティ更新プログラムが適用されますが、クラスターのノード作成に使用されるノード イメージは変更されません。 新しい Linux ノードがクラスターに追加された場合は、元のイメージを使用してノードが作成されます。 この新しいノードは、毎晩の自動チェックで利用可能なすべてのセキュリティおよびカーネル アップデートを受け取りますが、すべてのチェックと再起動が完了するまではパッチは適用されません。 ノード イメージのアップグレードを使用して、クラスターで使用されているノード イメージをチェックして更新することもできます。 ノード イメージのアップグレードに関する詳細については、「[Azure Kubernetes Service (AKS) ノード イメージのアップグレード][node-image-upgrade]」を参照してください。
 
 #### <a name="windows-server-nodes"></a>Windows Server ノード
 
@@ -113,7 +111,7 @@ Azure には、AKS クラスターとコンポーネントのアップグレー�
 
 仮想ネットワークのトラフィック フローをフィルター処理する場合、Azure ではネットワーク セキュリティ グループのルールが使用されます。 これらのルールは、リソースへのアクセスを許可または拒否する発信元と宛先の IP 範囲、ポート、およびプロトコルを定義します。 Kubernetes API サーバーへの TLS トラフィックを許可する、既定の規則が作成されます。 ロード バランサー、ポート マッピング、またはイングレス ルートを使用してサービスを作成します。 AKS は、トラフィック フローのネットワーク セキュリティ グループを自動的に変更します。
 
-AKS クラスターに独自のサブネットを指定する場合は、AKS が管理するサブネットレベルのネットワーク セキュリティ グループを変更 **しないでください**。 代わりに、サブネットレベルのネットワーク セキュリティ グループをさらに作成して、トラフィックのフローを変更します。 ロード バランサーへのアクセス、コントロール プレーンとの通信、および[エグレス][aks-limit-egress-traffic]など、クラスターを管理するために必要なトラフィックに干渉しないようにしてください。
+(Azure CNI の使用時でも Kubenet の使用時でも) AKS クラスターに独自のサブネットを指定する場合は、AKS が管理する NIC レベルのネットワーク セキュリティ グループを変更 **しないでください**。 代わりに、サブネットレベルのネットワーク セキュリティ グループをさらに作成して、トラフィックのフローを変更します。 ロード バランサーへのアクセス、コントロール プレーンとの通信、および[エグレス][aks-limit-egress-traffic]など、クラスターを管理するために必要なトラフィックに干渉しないようにしてください。
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes ネットワーク ポリシー
 
@@ -166,6 +164,7 @@ AKS クラスターのセキュリティでの保護を開始するには「[AKS
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-kured]: node-updates-kured.md
 [aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
@@ -174,3 +173,4 @@ AKS クラスターのセキュリティでの保護を開始するには「[AKS
 [authorized-ip-ranges]: api-server-authorized-ip-ranges.md
 [private-clusters]: private-clusters.md
 [network-policy]: use-network-policies.md
+[node-image-upgrade]: node-image-upgrade.md

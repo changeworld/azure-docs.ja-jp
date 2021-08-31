@@ -7,14 +7,17 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f49bcba81594fa2992c07cad1efb2d6235b0270
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594047"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432934"
 ---
 # <a name="use-an-app-service-environment"></a>App Service 環境の使用
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です。
+> 
 
 App Service Environment (ASE) は、ユーザーの Azure Virtual Network インスタンス内のサブネットに Azure App Service をデプロイしたものです。 ASE は次の要素で構成されます。
 
@@ -88,9 +91,9 @@ ASE では、App Service プランを最大 100 インスタンスまでスケ�
 
 ## <a name="ip-addresses"></a>IP アドレス
 
-App Service では、アプリに専用の IP アドレスを割り当てることができます。 「[Azure App Service の TLS/SSL 証明書を購入して構成する][ConfigureSSL]」で説明されているように、この機能は IP ベースの SSL を構成した後に利用できます。 ILB ASE では、IP ベースの SSL に使用する IP アドレスをさらに追加することはできません。
+App Service では、アプリに専用の IP アドレスを割り当てることができます。 [既存のカスタム TLS/SSL 証明書を Azure App Service にバインドする][ConfigureSSL]方法に関するページで説明されているように、この機能は IP ベースの TLS/SSL バインディングを構成した後に利用できます。 ILB ASE では、IP ベースの TLS/SSL バインディングに使用する IP アドレスをさらに追加することはできません。
 
-外部 ASE では、マルチテナントの App Service の場合と同じ方法で、アプリに IP ベースの SSL を構成できます。 ASE には、IP アドレスが 30 個を上限として、常に予備のアドレスが 1 つ存在します。 すぐに使用できるアドレスを常時確保するために、アドレスを 1 つ使用すると、そのたびに、別のアドレスが追加されます。 別の IP アドレスを割り当てるには、時間の遅延が必要です。 この遅延により、IP アドレスが続けざまに追加されることを回避できます。
+外部 ASE では、マルチテナントの App Service の場合と同じ方法で、アプリに IP ベースの TLS/SSL バインディングを構成できます。 ASE には、IP アドレスが 30 個を上限として、常に予備のアドレスが 1 つ存在します。 すぐに使用できるアドレスを常時確保するために、アドレスを 1 つ使用すると、そのたびに、別のアドレスが追加されます。 別の IP アドレスを割り当てるには、時間の遅延が必要です。 この遅延により、IP アドレスが続けざまに追加されることを回避できます。
 
 ## <a name="front-end-scaling"></a>フロント エンドのスケーリング
 
@@ -141,7 +144,7 @@ Azure DNS プライベート ゾーンで DNS を構成するには、次の操�
 
 ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、*contoso.net* という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは、 *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* でのみ使用できます。 
 
-*.&lt;asename&gt;.appserviceenvironment.net* という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで *.contoso.com* を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
+*.&lt;asename&gt;.appserviceenvironment.net* という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで *.contoso.com* を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の TLS/SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
 
 ## <a name="publishing"></a>発行
 

@@ -2,18 +2,17 @@
 title: Shaper コグニティブ スキル
 titleSuffix: Azure Cognitive Search
 description: 非構造化データからメタデータと構造化された情報を抽出し、Azure Cognitive Search の AI エンリッチメント パイプライン内で複合型としてシェイプします。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: 8713cd25f30ed4a09a92dffacc5ec3e8d1cb424a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85560818"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862021"
 ---
 # <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
@@ -24,7 +23,7 @@ ms.locfileid: "85560818"
 出力の名前は常に "output" です。 内部的には、パイプラインでは別の名前をマップできます (下の例では "analyzedText") が、**Shaper** スキル自体は、応答内で "output" を返します。 これは、エンリッチメントしたドキュメントのデバッグ中に名前付けの不一致に気付いた場合や、カスタム スキルを構築し、応答を自身で作成している場合に重要なことがあります。
 
 > [!NOTE]
-> **Shaper** スキルは Cognitive Services API にバインドされていないため、使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する **無料** リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
+> このスキルは Cognitive Services にバインドされていません。 これは課金対象外で、Cognitive Services の重要な要件はありません。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

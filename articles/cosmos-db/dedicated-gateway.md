@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: 436ad1da3e1b212e03113132d4aff9f48a3d80da
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7cc6acc29cf8019bf65d3495cfd8a00a87da11bc
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386507"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914249"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Azure Cosmos DB 専用ゲートウェイ - 概要 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,6 +26,9 @@ ms.locfileid: "110386507"
 専用ゲートウェイは、Azure Cosmos DB に構築されます。 [専用ゲートウェイをプロビジョニングする](how-to-configure-integrated-cache.md)場合は、バックエンド パーティションに要求をルーティングするフルマネージド ノードがあります。 専用ゲートウェイを使用して Azure Cosmos DB に接続すると、標準ゲートウェイを使用して Azure Cosmos DB に接続するよりも待機時間が短くなり予測しやすくなります。 専用ゲートウェイと標準ゲートウェイを比較すると、キャッシュ ミスでも待機時間が改善されます。
 
 アプリケーションで専用ゲートウェイを使用するために必要なコード変更は最小限です。 新しい Azure Cosmos DB アカウントと既存の Azure Cosmos DB アカウントの両方で、読み取りパフォーマンスを向上させる専用ゲートウェイをプロビジョニングできます。
+
+> [!NOTE]
+> 専用ゲートウェイについてフィードバックがありますか? ご意見をお待ちしています。 ぜひ、Azure Cosmos DB エンジニアリング チーム (cosmoscachefeedback@microsoft.com) まで直接ご意見をお寄せください。
 
 ## <a name="connection-modes"></a>接続モード
 

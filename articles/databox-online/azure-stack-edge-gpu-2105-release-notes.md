@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 05/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 77138d6a303bd773b1e9842fdeca27462ec37f34
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 60de3b926e490ce1eb6a74b5234e21f8173a8ade
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614917"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220349"
 ---
 # <a name="azure-stack-edge-2105-release-notes"></a>Azure Stack Edge 2105 リリース ノート
 
@@ -64,7 +64,8 @@ Azure Stack Edge 2105 リリースの新機能は以下のとおりです。
 
 | いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
-|**1.**|プレビュー機能 |このリリースでは、ローカル Azure Resource Manager、VM、VM のクラウド管理、Kubernetes クラウド管理、Azure Arc 対応 Kubernetes、Azure Stack Edge Pro R および Azure Stack Edge Mini R 用の VPN、Azure Stack Edge Pro GPU 用のマルチプロセス サービス (MPS) の全機能をプレビューとしてご利用になれます。  |これらの機能は、今後のリリースで一般公開される予定です。 |
+|**1.**|プレビュー機能 |このリリースでは、ローカル Azure Resource Manager、VM、VM のクラウド管理、Kubernetes クラウド管理、Azure Arc 対応 Kubernetes、Azure Stack Edge Pro R および Azure Stack Edge Mini R 用の VPN、マルチプロセス サービス (MPS)、Azure Stack Edge Pro GPU 用の Network Function Manager の全機能をプレビューとしてご利用になれます。  |これらの機能は、今後のリリースで一般公開される予定です。 |
+|**2.**|マルチアクセス エッジ コンピューティング (MEC) または Network Function Manager (NFM) のデプロイ |2105 更新プログラムより前の MEC または NFM デプロイでは、LAN/WAN VM NetAdapter からのトラフィックがドロップされるという問題がまれに発生する場合があります。 <br><br> Azure Stack Edge デバイスのポート 5 とポート 6 は、[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-powershell.md)を可能にする Mellanox ネットワーク インターフェイス カードに接続されています。 高速ネットワークにより、ポート 5 とポート 6 からの LAN および WAN トラフィックは、ハイパーバイザー レイヤーと仮想スイッチをバイパスし、物理スイッチに直接到達できます。 <br><br> LAN および WAN ネットワーク インターフェイス上の[仮想関数 (VF)](/windows-hardware/drivers/network/sr-iov-virtual-functions--vfs-) デバイスを無効にすることで、高速ネットワークを無効にすることができます。 VM からのすべてのネットワーク トラフィックは、セキュリティ チェックを実行するハイパーバイザー レイヤーを走査するようになります。 アプリケーションに (VM NetAdapter の IP ではなく) 任意のユニキャスト発信元 IP アドレスを使用してトラフィックを送信すると、セキュリティ チェックによってトラフィックはドロップされます (これは、Virtual Networking Functions コントラクトで指定されていない任意の IP から送信されているように見えるためです)。|この問題を回避するには、2105 更新プログラムを保留にし、この問題が修正された次のリリースを待ちます。<br><br> または、Azure Stack Edge デバイスに 2105 更新プログラムを適用し、同じ VNF をデプロイし直すこともできます。 2105 更新プログラムの後にデプロイされた VNF には、修正プログラムは必要ありません。 |
 
 
 ## <a name="known-issues-from-previous-releases"></a>以前のリリースの既知の問題
@@ -102,6 +103,7 @@ Azure Stack Edge 2105 リリースの新機能は以下のとおりです。
 |**27.**|カスタム スクリプト VM 拡張機能 |以前のリリースで作成された Windows VM には既知の問題があり、デバイスは 2103 に更新されました。 <br> これらの VM でカスタム スクリプト拡張機能を追加すると、Windows VM ゲスト エージェント (バージョン 2.7.41491.901 のみ) が更新でスタックし、拡張機能のデプロイがタイムアウトになります。 | この問題の回避方法: <ul><li> リモート デスクトップ プロトコル (RDP) を使用して Windows VM に接続します。 </li><li> コンピューターで `waappagent.exe` が実行中であることを確認し ます: `Get-Process WaAppAgent`。 </li><li> `waappagent.exe` が実行されていない場合は、`rdagent` サービスを再起動します: `Get-Service RdAgent` \| `Restart-Service`。 5 分間待機します。</li><li> `waappagent.exe` が実行されている間に `WindowsAzureGuest.exe` プロセスを中止します。 </li><li>プロセスを中止した後に、新しいバージョンを使用して再度プロセスの実行が開始されます。</li><li>次のコマンドを使用して、Windows VM ゲスト エージェントのバージョンが 2.7.41491.971 であることを確認します: `Get-Process WindowsAzureGuestAgent` \| `fl ProductVersion`。</li><li>[Windows VM にカスタム スクリプト拡張機能を設定します。](azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md) </li><ul> |
 |**28.**|GPU VM |このリリースより前は、GPU VM のライフサイクルは更新フロー内で管理されていませんでした。 そのため、2103 リリースに更新すると、GPU VM は更新中に自動的に停止されません。 デバイスを更新する前に、`stop-stayProvisioned` フラグを使用して GPU VM を手動で停止する必要があります。 詳細については、「[VM を中断またはシャットダウンする](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#suspend-or-shut-down-the-vm)」を参照してください。<br> 更新前に実行が続けられていたすべての GPU VM は、更新後に起動されます。 このような場合、VM 上で実行されているワークロードは正常に終了されません。 また、更新後に VM が望ましくない状態になる可能性があります。 <br>更新前に `stop-stayProvisioned` によって停止された GPU VM はすべて、更新後に自動的に起動されます。 <br>Azure portal から GPU VM を停止した場合は、デバイスの更新後に手動で VM を起動する必要があります。| Kubernetes を使用して GPU VM を実行している場合は、更新の直前に GPU VM を停止します。 <br>GPU VM が停止されると、もともと VM によって使用されていた GPU は Kubernetes によって引き継がれます。 <br>GPU VM が停止状態になっている時間が長いほど、GPU が Kubernetes によって引き継がれる可能性が高くなります。 |
 |**29.**|マルチプロセス サービス (MPS) |デバイス ソフトウェアと Kubernetes クラスターが更新されても、ワークロードの MPS 設定は保持されません。   |[MPS を再度有効にして](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface)、MPS を使用していたワークロードを再デプロイします。 |
+
 
 
 ## <a name="next-steps"></a>次の手順

@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 06/15/2021
 ms.author: memildin
-ms.openlocfilehash: fefbc605702539cb882aba4c7802d284b4291a9c
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 3dbf8b3e15380b1e267be4f1b4af382aa9097a48
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062300"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745089"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -35,11 +35,11 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 
 | 側面                          | 詳細                                                                                                                                      |
 |---------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
-| リリース状態:                  | 一般提供 (GA)                                                                                                                    |
+| リリース状態:                  | 一般公開 (GA)                                                                                                                    |
 | 価格:                        | Free                                                                                                                                         |
 | 必要なロールとアクセス許可: | 割り当てを編集するための **所有者** または **セキュリティ管理者**<br>推奨事項を表示するための **閲覧者**                                              |
 | 環境要件:       | Kubernetes v1.14 以降が必要です。<br>クラスター上の PodSecurityPolicy リソース (古い PSP モデル) はありません。<br>Windows ノードはサポートされていません。 |
-| クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov) |
+| クラウド:                         | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet) |
 |                                 |                                                                                                                                              |
 
 
@@ -80,20 +80,24 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 
     | 推奨事項の名前                                                         | セキュリティ コントロール                         | 構成が必要 |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | コンテナーの CPU とメモリの制限を強制する必要がある                          | DDoS 攻撃からのアプリケーションの保護 | No                     |
-    | 特権コンテナーの使用を避ける                                     | アクセスおよびアクセス許可の管理            | No                     |
-    | コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある     | アクセスおよびアクセス許可の管理            | No                     |
-    | 特権エスカレーションを含むコンテナーは避ける必要がある                       | アクセスおよびアクセス許可の管理            | No                     |
-    | コンテナーをルート ユーザーとして実行しない                           | アクセスおよびアクセス許可の管理            | No                     |
-    | 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある              | アクセスおよびアクセス許可の管理            | No                     |
-    | コンテナーで最小限の特権を持つ Linux 機能を適用する必要がある       | アクセスおよびアクセス許可の管理            | **はい**                |
-    | ポッド HostPath ボリューム マウントの使用は既知のリストに制限する必要がある    | アクセスおよびアクセス許可の管理            | **はい**                |
     | コンテナーは許可されたポートでのみリッスンする必要がある                              | 承認されていないネットワーク アクセスの制限     | **はい**                |
     | サービスは許可されたポートでのみリッスンする必要がある                                | 承認されていないネットワーク アクセスの制限     | **はい**                |
     | ホスト ネットワークとポートの使用を制限する必要がある                     | 承認されていないネットワーク アクセスの制限     | **はい**                |
     | コンテナーの AppArmor プロファイルのオーバーライドまたは無効化を制限する必要がある | セキュリティ構成の修復        | **はい**                |
     | コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある            | 脆弱性の修復                | **はい**                |
-    |||
+    | コンテナーで最小限の特権を持つ Linux 機能を適用する必要がある       | アクセスおよびアクセス許可の管理            | **はい**                |
+    | ポッド HostPath ボリューム マウントの使用は既知のリストに制限する必要がある    | アクセスおよびアクセス許可の管理            | **はい**                |
+    | 特権コンテナーの使用を避ける                                     | アクセスおよびアクセス許可の管理            | No                     |
+    | 特権エスカレーションを含むコンテナーは避ける必要がある                       | アクセスおよびアクセス許可の管理            | No                     |
+    | Kubernetes クラスターで API 資格情報の自動マウントを無効にする必要がある             | アクセスおよびアクセス許可の管理            | No                     |
+    | コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある     | アクセスおよびアクセス許可の管理            | No                     |
+    | 特権エスカレーションを含むコンテナーは避ける必要がある                       | アクセスおよびアクセス許可の管理            | No                     |
+    | コンテナーをルート ユーザーとして実行しない                           | アクセスおよびアクセス許可の管理            | No                     |
+    | 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある              | アクセスおよびアクセス許可の管理            | No                     |
+    | コンテナーの CPU とメモリの制限を強制する必要がある                          | DDoS 攻撃からのアプリケーションの保護 | No                     |
+    | Kubernetes クラスターは HTTPS 経由でのみアクセス可能である必要がある                    | 転送中のデータを暗号化する                  | いいえ                     |
+    | Kubernetes クラスターでは既定の名前空間を使用しない                    | セキュリティのベストプラクティスを実装する        | いいえ                     |
+    ||||
 
 
 1. カスタマイズする必要があるパラメーターが含まれた推奨事項では、次のようにパラメーターを設定します。
@@ -101,8 +105,11 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
     1. Security Center のメニューから、 **[セキュリティ ポリシー]** を選択します。
     1. 関連するサブスクリプションを選択します。
     1. **[Security Center の既定のポリシー]** セクションで、 **[有効なポリシーの表示]** を選択します。
-    1. "ASC の既定値" を選択します。
+    1. 更新するスコープの既定のポリシーを選択します。
     1. **[パラメーター]** タブを開き、必要に応じて値を変更します。
+
+        :::image type="content" source="media/kubernetes-workload-protections/containers-parameter-requires-configuration.png" alt-text="Kubernetes ワークロード保護バンドルで推奨事項の 1 つに対してパラメーターを変更する。":::
+
     1. **[確認と保存]** を選択します。
     1. **[保存]** を選択します。
 
@@ -111,7 +118,7 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 
     1. 推奨事項の詳細ページを開き、 **[拒否]** を選択します。
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Policy パラメーターの [拒否] オプション":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Policy パラメーターの [拒否] オプション。":::
 
         これにより、スコープを設定したペインが開きます。 
 
@@ -125,7 +132,7 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 
 1. ワークロード保護セットから推奨事項を表示すると、影響を受けるポッド ("Kubernetes コンポーネント") の数がクラスターの横に表示されます。 特定のポッドの一覧を表示するには、クラスターを選択し、 **[アクションの実行]** を選択します。
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="K8s の推奨事項の影響を受けるポッドの表示"::: 
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="K8s の推奨事項の影響を受けるポッドの表示。"::: 
 
 1. 適用をテストするには、次の 2 つの Kubernetes デプロイを使用します。
 
@@ -158,7 +165,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: healthyClusterRegistry.azurecr.io/redis:latest
+        image: <customer-registry>.azurecr.io/redis:latest
         ports:
         - containerPort: 80
         resources:
@@ -191,25 +198,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-unhealthy-deployment
+  name: redis-unhealthy-deployment
   labels:
-    app: nginx
+    app: redis
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: redis
   template:
     metadata:      
       labels:
-        app: nginx
+        app: redis
     spec:
       hostNetwork: true
       hostPID: true 
       hostIPC: true
       containers:
-      - name: nginx
-        image: nginx:1.15.2
+      - name: redis
+        image: redis:latest
         ports:
         - containerPort: 9001
           hostPort: 9001
@@ -234,11 +241,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-unhealthy-service
+  name: redis-unhealthy-service
 spec:
   type: LoadBalancer
   selector:
-    app: nginx
+    app: redis
   ports:
   - port: 6001
     targetPort: 9001

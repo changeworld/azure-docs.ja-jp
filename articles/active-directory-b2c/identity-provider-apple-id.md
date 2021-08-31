@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f5e4ff93b90c7644c1d1498a14c8b9954041cb34
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: c150fdae1820dee3ae440f4d4acdacff04e14e66
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028368"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271086"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Azure Active Directory B2C を使用して、Apple ID でのサインアップとサインインを設定する (プレビュー)
 
@@ -46,19 +46,19 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
     1. **[Description]\(説明\)** を入力します。 
     1. **[Bundle ID]\(バンドル ID\)** を入力します (例: `com.contoso.azure-ad-b2c`)。 
     1. **[Capabilities]\(機能\)** については、機能の一覧から **[Sign in with Apple]\(Apple でサインイン\)** を選択します。 
-    1. この手順でアプリ ID のプレフィックス (チーム ID) をメモしておいてください。 この情報は後で必要になります。
+    1. この手順で **チーム ID** (アプリ ID のプレフィックス) をメモしておいてください。 この情報は後で必要になります。
     1. **[Continue]\(続行\)** 、 **[Register]\(登録\)** の順に選択します。
 1. メニューから、 **[Certificates, IDs, & Profiles]\(証明書、ID、プロファイル\)** を選択し、 **(+)** を選択します。
 1. **[Register a New Identifier]\(新しい ID の登録\)** で **[Services IDs]\(サービス ID\)** を選択し、 **[続行]** を選択します。
 1. **[Register a Services ID]\(サービス ID の登録\)** の場合:
     1. **[Description]\(説明\)** を入力します。 この説明は、同意画面でユーザーに表示されます。
-    1. **[Identifier]\(識別子\)** を入力します (例: `com.consoto.azure-ad-b2c-service`)。 識別子は、OpenID Connect フローのクライアント ID です。
+    1. **[Identifier]\(識別子\)** を入力します (例: `com.consoto.azure-ad-b2c-service`)。 **サービス ID** 識別子をメモしておきます。 この識別子は、OpenID Connect フローの **クライアント ID** です。
     1. **[Continue]\(続行\)** を選択し、次に **[Register]\(登録\)** を選択します。
 1. **[Identifiers]\(識別子\)** から、作成した識別子を選択します。
 1. **[Sign In with Apple]\(Apple でサインイン\)** を選択し、 **[Configure]\(構成\)** を選択します。
     1. Apple でのサインインを構成する **[Primary App ID]\(プライマリ アプリ ID\)** を選択します。
     1. **[Domains and Subdomains]\(ドメインとサブドメイン\)** に `your-tenant-name.b2clogin.com` を入力します。 your-tenant-name をテナントの名前に置き換えます。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name`」と入力します。
-    1. **[Return URLs]\(戻り先 URL\)** に `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。
+    1. **[Return URLs]\(戻り先 URL\)** に `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。 戻り先 URL はすべて小文字である必要があります。
     1. **[次へ]** を選択し、 **[Done]\(完了\)** を選択します。
     1. ポップアップ ウィンドウが閉じたら、 **[続行]** を選択し、 **[保存]** を選択します。
 
@@ -69,7 +69,7 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
     1. **キー名** を入力します。
     1. **[Sign in with Apple]\(Apple でサインイン\)** を選択し、 **[続行]** を選択します。
     1. **[Primary App ID]\(プライマリ アプリ ID\)** では、以前に作成したアプリを選択し、 **[保存]** を選択します。
-    1. **[Configure]\(構成\)** を選択し、次に **[Register]\(登録\)** を選択してキー登録プロセスを終了します。
+    1. **[Configure]\(構成\)** を選択し、次に **[Register]\(登録\)** を選択してキー登録プロセスを終了します。 **キー ID** をメモしておきます。 このキーは、ユーザー フローを構成するときに必要になります。
 1. **[Download Your Key]\(キーのダウンロード\)** では、 **[Download]\(ダウンロード\)** を選択して、自分のキーが含まれている .p8 ファイルをダウンロードします。
 
 
@@ -81,10 +81,10 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[ID プロバイダー]** を選択してから、 **[Apple (プレビュー)]** を選択します。
-1. **[名前]** を入力します。 たとえば、「*Apple*」など。
+1. **[名前]** には、「**Apple でサインイン**」と入力します。 
 1. **Apple Developer ID (チーム ID)** を入力します。
 1. **Apple サービス ID (クライアント ID)** を入力します。
-1. **Apple キー ID** を入力します。
+1. 「[Apple クライアント シークレットの作成](#creating-an-apple-client-secret)」の手順の **Apple キー ID** を入力します。
 1. **Apple 証明書データ** を選択してアップロードします。
 1. **[保存]** を選択します。
 
@@ -93,6 +93,7 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
 > - Apple でのサインインでは、管理者が 6 か月ごとにクライアント シークレットを更新する必要があります。 
 > - この機能のパブリック プレビュー中は、Apple クライアント シークレットの有効期限が切れたら手動で更新する必要があります。 Apple ID プロバイダーの [Configure social IDP]\(ソーシャル IDP の構成\) ページに事前に警告が表示されますが、独自のリマインダーを設定することをお勧めします。 
 > - シークレットを更新する必要がある場合は、Azure portal で Azure AD B2C を開き、 **[ID プロバイダー]**  >  **[Apple]** にアクセスし、 **[シークレットの更新]** を選択します。
+> - [[Apple でサインイン] ボタンを提供する](#customize-your-user-interface)方法に関するガイドラインに従ってください。
 
 ## <a name="add-the-apple-identity-provider-to-a-user-flow"></a>Apple ID プロバイダーをユーザー フローに追加する
 
@@ -124,7 +125,7 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
 1. HTTP `POST` 要求を作成し、次の情報を指定します。
 
     - **appleTeamId**: ご利用の Apple Developer Team ID
-    - **appleServiceId**: Apple サービス ID (クライアント ID でもあります)
+    - **appleServiceId**: App Service ID (クライアント ID)
     - **p8key**: PEM 形式のキー。 これは、テキスト エディターで .p8 ファイルを開き、改行なしで `-----BEGIN PRIVATE KEY-----` と `-----END PRIVATE KEY-----` の間のすべてをコピーすることで取得できます。
  
 次の JSON は、Azure 関数への呼び出し例です。
@@ -132,7 +133,6 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
 ```json
 {
     "appleTeamId": "ABC123DEFG",
-    "appleKeyId": "URKEYID001",
     "appleServiceId": "com.yourcompany.app1",
     "p8key": "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg+s07NiAcuGEu8rxsJBG7ttupF6FRe3bXdHxEipuyK82gCgYIKoZIzj0DAQehRANCAAQnR1W/KbbaihTQayXH3tuAXA8Aei7u7Ij5OdRy6clOgBeRBPy1miObKYVx3ki1msjjG2uGqRbrc1LvjLHINWRD"
 }
@@ -165,6 +165,7 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 > - Apple でのサインインでは、管理者が 6 か月ごとにクライアント シークレットを更新する必要があります。
 > - Apple クライアント シークレットの有効期限が切れた場合は、手動で更新し、新しい値をポリシー キーに格納する必要があります。
 > - 6 か月以内の独自のリマインダーを設定して、新しいクライアント シークレットを生成することをお勧めします。 
+> - [[Apple でサインイン] ボタンを提供する](#customize-your-user-interface)方法に関するガイドラインに従ってください。
 
 ## <a name="configure-apple-as-an-identity-provider"></a>Apple を ID プロバイダーとして構成する
 
@@ -182,7 +183,7 @@ Apple ID をクレーム プロバイダーとして定義するには、それ�
       <DisplayName>Apple</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="Apple-OIDC">
-          <DisplayName>Apple</DisplayName>
+          <DisplayName>Sign in with Apple</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
             <Item Key="ProviderName">apple</Item>
@@ -208,7 +209,7 @@ Apple ID をクレーム プロバイダーとして定義するには、それ�
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="user.name.firstName"/>
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="user.name.lastName"/>
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="user.email"/>
+            <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
@@ -257,3 +258,13 @@ Apple ID をクレーム プロバイダーとして定義するには、それ�
 サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
+
+## <a name="customize-your-user-interface"></a>ユーザー インターフェイスをカスタマイズする
+
+[[Apple でサインイン] を提供する](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple/overview/introduction/)方法に関するガイドラインに従ってください。 Apple では、ユーザーがアカウントを設定してサインインするのに使用できる **[Apple でサインイン]** ボタンをいくつか提供しています。 必要に応じて、[Apple でサインイン] を提供するカスタム ボタンを作成します。 [[Apple でサインイン] ボタンを表示する](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple/overview/buttons/)方法をご確認ください。
+
+Apple ユーザー インターフェイスのガイドラインに合わせるため、次を参照してください。
+
+- [HTML テンプレートを使用したユーザー インターフェイスのカスタマイズ](customize-ui-with-html.md)
+- ID プロバイダー名を[ローカライズ](language-customization.md)する。
+

@@ -3,12 +3,12 @@ title: Azure Pipelines とテンプレートを使用した CI/CD
 description: Azure Resource Manager テンプレートを使用して、Azure Pipelines で継続的インテグレーションを構成する方法について説明します。 PowerShell スクリプトを使用する方法、またはファイルをステージングの場所にコピーしてそこからデプロイする方法を示します。
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8264fd53bde168972cdddd9bdf15fccc8d536651
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561944"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984466"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Azure Pipelines を使用した ARM テンプレートの統合
 
@@ -113,7 +113,7 @@ ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateF
 
 ## <a name="copy-and-deploy-tasks"></a>コピーとデプロイのタスク
 
-このセクションでは、2 つのタスクを使用して継続的配置を構成する方法を示します。 最初のタスクでは成果物をストレージ アカウントにステージングし、2 番目のタスクではテンプレートをデプロイします。
+このセクションでは、2 つのタスクを使用して継続的配置を設定する方法を説明します。 1 つ目のタスクでは、アーティファクトをストレージ アカウントに対して準備し、2 つ目のタスクではテンプレートをデプロイします。
 
 ファイルをストレージ アカウントにコピーするには、サービス接続のサービス プリンシパルに、ストレージ BLOB データ共同作成者またはストレージ BLOB データ所有者のロールが割り当てられている必要があります。 詳細については、「[AzCopy を使ってみる](../../storage/common/storage-use-azcopy-v10.md)」を参照してください。
 

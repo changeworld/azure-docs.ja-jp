@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
 description: Azure Active Directory のテナント、ユーザー、ロールを、Azure Lighthouse のシナリオでどのように使用できるかを説明します。
-ms.date: 05/11/2021
+ms.date: 06/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: bcb3c250d0973174e7356bd489b84938238af6e7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: cdf8c10d52e0add4513d42a99d2054e1af0ed796
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074829"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112542258"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール
 
@@ -47,6 +47,12 @@ ms.locfileid: "112074829"
 
 > [!NOTE]
 > 適用可能な新しい組み込みロールが Azure に追加されると、[Azure Resource Manager テンプレートを使用して顧客のオンボードをする](../how-to/onboard-customer.md)際に割り当てることができます。 [マネージド サービス オファーを発行する](../how-to/publish-managed-services-offers.md)際に、新しく追加したロールがパートナー センターで使用できるようになるまでに時間がかかる場合があります。
+
+## <a name="transferring-delegated-subscriptions-between-azure-ad-tenants"></a>Azure AD テナント間での委任サブスクリプションの移転
+
+サブスクリプションを[他の Azure AD テナント アカウントに移転](../../cost-management-billing/manage/billing-subscription-transfer.md#transfer-a-subscription-to-another-azure-ad-tenant-account)しても、[Azure Lighthouse オンボーディング](../how-to/onboard-customer.md)で作成された[登録内容と登録割り当てリソース](architecture.md#delegation-resources-created-in-the-customer-tenant)は保持されます。 つまり、Azure Lighthouse で付与した管理テナントに対するアクセス権は、そのサブスクリプションで (あるいは、そのサブスクリプション内の委任リソース グループで) 引き続き有効です。
+
+唯一の例外は、 サブスクリプションを 委任したことがある Azure AD テナントに、同じサブスクリプションを移転する場合です。 この場合、そのサブスクリプションは (Azure Lighthouse を通じて委任するのではなく) 直接そのテナントに属することになるため、テナントへの委任リソースは削除され、Azure Lighthouse で付与したアクセス権は適用されなくなります。 ただし、そのサブスクリプションを他の管理テナントに委任したことがある場合は、それらの管理１テナントに、そのサブスクリプションに対するアクセス権がそのまま残ります。
 
 ## <a name="next-steps"></a>次のステップ
 

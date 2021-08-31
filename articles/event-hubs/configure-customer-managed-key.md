@@ -3,12 +3,12 @@ title: Azure Event Hubs 保存データの暗号化用に独自のキーを構�
 description: この記事では、Azure Event Hubs の保存データを暗号化するために独自のキーを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 89d12079195406e4b3c6da77105dc359cc1dacae
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cddeb2e11dc631e6eb9b43f6606d7ca4b41a6e35
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377245"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032869"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Event Hubs 保存データの暗号化用にカスタマー マネージド キーを構成する
 Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Event Hubs サービスには、データを格納するために Azure Storage が使用されます。 Azure Storage に格納されているすべてのデータは、Microsoft マネージド キーを使用して暗号化されます。 独自のキー (Bring Your Own Key (BYOK) またはカスタマーマネージド キーとも呼ばれます) を使用する場合、データは引き続き Microsoft マネージド キーを使用して暗号化されますが、さらに Microsoft マネージド キーはカスタマー マネージド キーを使用して暗号化されます。 この機能を使用して、Microsoft マネージド キーの暗号化に使用されるカスタマー マネージド キーへの作成、ローテーション、無効化、およびアクセスの取り消しを実行できます。 BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ プロセスです。
@@ -337,7 +337,7 @@ BYOK が有効な名前空間の診断ログを設定すると、操作に関す
                 "maximumThroughputUnits":0,
                 "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
                 "encryption":{
-                   "keySource":"Microsoft.KeyVault",
+                   "keySource":"Microsoft.KeyVault",                   
                    "keyVaultProperties":[
                       {
                          "keyName":"[parameters('keyName')]",
@@ -389,6 +389,31 @@ BYOK が有効な名前空間の診断ログを設定すると、操作に関す
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
+
+#### <a name="enable-infrastructure-encryption-for-double-encryption-of-data-in-event-hubs-namespace"></a>Event Hubs 名前空間でデータの二重暗号化のためのインフラストラクチャ暗号化を有効にする
+データがセキュリティで保護されていることについて、より高いレベルの保証が必要な場合は、インフラストラクチャ レベルの暗号化 (二重暗号化とも呼ばれる) を有効にできます。 
+
+インフラストラクチャの暗号化が有効な場合、Event Hubs 名前空間アカウント内のデータは、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用して、2 回 (サービス レベルで 1 回とインフラストラクチャ レベルで 1 回) 暗号化されます。 Event Hubs データのインフラストラクチャ暗号化を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。
+
+インフラストラクチャ暗号化を有効にするには、下に示すように、上記の **CreateEventHubClusterAndNamespace.json** で `requireInfrastructureEncryption` プロパティを使用して ARM テンプレートを更新します。 
+
+```json
+"properties":{
+   "isAutoInflateEnabled":false,
+   "maximumThroughputUnits":0,
+   "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+   "encryption":{
+      "keySource":"Microsoft.KeyVault",
+      "requireInfrastructureEncryption":true,
+      "keyVaultProperties":[
+         {
+            "keyName":"[parameters('keyName')]",
+            "keyVaultUri":"[parameters('keyVaultUri')]"
+         }
+      ]
+   }
+}
+```
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 ベスト プラクティスとして、前のセクションで示したように、ログは常に有効にしてください。 BYOK 暗号化が有効になっている場合にアクティビティを追跡するのに役立ちます。 また、問題の範囲を絞り込むのにも役立ちます。

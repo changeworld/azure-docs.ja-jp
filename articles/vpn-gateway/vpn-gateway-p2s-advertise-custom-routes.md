@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/08/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: b37b63fda6b142fc1aba458c007b6fe0eb5db814
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: cefbd6d014dda28a5e88a41a0131eeb92fc5f311
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810950"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440724"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN クライアント用のカスタム ルートをアドバタイズする
 
@@ -21,7 +21,7 @@ ms.locfileid: "111810950"
 
 :::image type="content" source="./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png" alt-text="カスタム ルート公開の図。":::
 
-## <a name="advertise-custom-routes"></a>カスタム ルートを公開する
+## <a name="advertise-custom-routes"></a><a name="advertise"></a>カスタム ルートを公開する
 
 カスタム ルートをアドバタイズするには、`Set-AzVirtualNetworkGateway cmdlet` を使用します。 次の例では、[Contoso ストレージ アカウント テーブル](https://contoso.table.core.windows.net)の IP をアドバタイズする方法を示します。
 
@@ -45,9 +45,13 @@ ms.locfileid: "111810950"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy
     ```
 
-## <a name="advertise-custom-routes---forced-tunneling"></a>カスタム ルートを公開する - 強制トンネリング
+## <a name="advertise-custom-routes---forced-tunneling"></a><a name="forced-tunneling"></a>カスタム ルートを公開する - 強制トンネリング
 
 すべてのトラフィックを VPN トンネルに誘導するには、クライアントへのカスタム ルートとして 0.0.0.0/1 と 128.0.0.0/1 を公開します。 0\.0.0.0/0 を 2 つの小さなサブネットに分割する理由は、これらの小さなプレフィックスは、ローカル ネットワーク アダプター上で既に構成されている可能性がある既定のルートより具体的で、トラフィックをルーティングするときに優先されるためです。
+
+> [!NOTE]
+> VPN ゲートウェイ経由でインターネット接続は提供されません。 その結果、インターネット向けのすべてのトラフィックが削除されます。
+>
 
 1. 強制トンネリングを有効にするには、次のコマンドを使用します。
 
@@ -55,7 +59,8 @@ ms.locfileid: "111810950"
     $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 0.0.0.0/1 , 128.0.0.0/1
     ```
-## <a name="view-custom-routes"></a>カスタム ルートを表示する
+
+## <a name="view-custom-routes"></a><a name="view"></a>カスタム ルートを表示する
 
 カスタム ルートを表示するには、次の例を使用します。
 
@@ -63,7 +68,7 @@ ms.locfileid: "111810950"
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   $gw.CustomRoutes | Format-List
   ```
-## <a name="delete-custom-routes"></a>カスタム ルートを削除する
+## <a name="delete-custom-routes"></a><a name="delete"></a>カスタム ルートを削除する
 
 カスタム ルートを削除するには、次の例を使用します。
 

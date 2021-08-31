@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 10/02/2020
+ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 9388a6e01885e4a3a0c5aa95c254910c96a4e36a
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 8d9910755162ea1da593f2e9ee50183c0a3eaa60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902359"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745292"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -29,13 +29,12 @@ Azure Machine Learning ワークスペースに Azure のコンピューティ�
 * Apache Spark プール (Azure Synapse Analytics によって機能する)
 * Azure HDInsight
 * Azure Batch
-* Azure Databricks
+* Azure Databricks - [機械学習パイプライン](how-to-create-machine-learning-pipelines.md)でのみトレーニングのコンピューティング先として使用されます
 * Azure Data Lake Analytics
 * Azure Container Instances
-
+* Azure Kubernetes Service および Azure Arc 対応 Kubernetes (プレビュー)
 
 Azure Machine Learning によって管理されるコンピューティング先を使用するには、以下を参照してください。
-
 
 * [Azure Machine Learning コンピューティング インスタンス](how-to-create-manage-compute-instance.md)
 * [Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)
@@ -346,9 +345,23 @@ except ComputeTargetException:
 
 Azure Container Instances (ACI) は、モデルのデプロイ時に動的に作成されます。 他の方法では、ACI を作成したり、ワークスペースにアタッチしたりすることはできません。 詳細については、[Azure Container Instances へのモデルのデプロイ](how-to-deploy-azure-container-instance.md)に関するページを参照してください。
 
-## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+## <a name="kubernetes-preview"></a><a id="kubernetes"></a>Kubernetes (プレビュー)
 
-Azure Kubernetes Service (AKS) を Azure Machine Learning と組み合わせて使用すると、さまざまな構成オプションが使用できます。 詳細については、[Azure Kubernetes Service を作成してアタッチする方法](how-to-create-attach-kubernetes.md)に関するページを参照してください。
+Azure Machine Learning には、トレーニング用に独自の Kubernetes クラスターを接続するための次のオプションが用意されています。
+
+* [Azure Kubernetes Service](../aks/intro-kubernetes.md)。 Azure Kubernetes Service は、Azure のマネージド クラスターを提供します。
+* [Azure Arc Kubernetes](../azure-arc/kubernetes/overview.md)。 クラスターが Azure の外でホストされている場合は、Azure Arc 対応 Kubernetes クラスターを使用します。
+
+[!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+
+ワークスペースから Kubernetes クラスターをデタッチするには、次の方法を使用します。
+
+```python
+compute_target.detach()
+```
+
+> [!WARNING]
+> クラスターをデタッチしても、**クラスターは削除されません**。 Azure Kubernetes Service クラスターを削除するには、[AKS での Azure CLI の使用](../aks/kubernetes-walkthrough.md#delete-the-cluster)に関するセクションを参照してください。 Azure Arc 対応 Kubernetes クラスターを削除するには、[Azure Arc のクイックスタート](../azure-arc/kubernetes/quickstart-connect-cluster.md#7-clean-up-resources)に関するページを参照してください。
 
 ## <a name="notebook-examples"></a>ノートブックの例
 

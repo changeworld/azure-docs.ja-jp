@@ -1,22 +1,29 @@
 ---
 title: Azure ファイル共有のパフォーマンスのトラブルシューティング ガイド
 description: Azure ファイル共有のパフォーマンスに関する既知の問題のトラブルシューティングを行います。 これらの問題が発生した場合に考えられる原因と関連する回避策を確認します。
-author: roygara
+author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 11/16/2020
-ms.author: rogarana
+ms.date: 07/06/2021
+ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b303dbc20cf0caf4bb0d75f28a2983bc0f27064d
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 65b703a4f193e6b1197c3c8f2cb03ffbc349471b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065027"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741855"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
 この記事では、Azure ファイル共有に関連する一般的な問題を示します。 これらの問題が発生した場合に考えられる原因と回避策を提示します。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高待機時間、低スループット、および全般的なパフォーマンスの問題
 
@@ -58,9 +65,9 @@ ms.locfileid: "108065027"
     > [!NOTE]
     > アラートを受信するには、この記事の後半で示す「[ファイル共有がスロットルされた場合にアラートを作成する方法](#how-to-create-an-alert-if-a-file-share-is-throttled)」セクションをご覧ください。
 
-### <a name="solution"></a>解決策
+#### <a name="solution"></a>解決策
 
-- Standard ファイル共有を使用している場合は、ストレージ アカウントで [[大きいファイルの共有]](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) を有効にします。 大きいファイルの共有では、共有あたり最大 10,000 IOPS がサポートされています。
+- 標準のファイル共有を使用している場合、ストレージ アカウントで[大きいファイルの共有を有効にし](storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account)、[ファイル共有クォータのサイズを増やして大きいファイルの共有サポートを最大限に活用してください](storage-how-to-create-file-share.md#expand-existing-file-shares)。 大きファイルの共有では、大きい IOPS と帯域幅上限がサポートされます。詳細については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](storage-files-scale-targets.md)」を参照してください。
 - Premium ファイル共有を使用している場合は、プロビジョニングされたファイル共有のサイズを増やして IOPS の上限を上げます。 詳細については、「[Premium ファイル共有のプロビジョニングについて](./understanding-billing.md#provisioned-model)」をご覧ください。
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>原因 2:メタデータまたは名前空間の過大なワークロード
@@ -71,7 +78,7 @@ ms.locfileid: "108065027"
 
 !["API 名" プロパティ フィルターを示す Premium ファイル共有のメトリック オプションのスクリーンショット。](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
-### <a name="workaround"></a>回避策
+#### <a name="workaround"></a>回避策
 
 - メタデータ操作の数を減らすようにアプリケーションを変更できるかどうかを確認します。
 - ファイル共有に仮想ハード ディスク (VHD) を追加し、クライアントから SMB を介して VHD をマウントして、データに対するファイル操作を実行します。 このアプローチは、単一のライター/リーダーのシナリオ、またはリーダーが複数でライターが存在しないシナリオで機能します。 ファイル システムは Azure Files ではなくクライアントが所有するため、これによってメタデータ操作をローカルにすることができます。 セットアップすると、ローカルに直接アタッチされているストレージの場合と同様のパフォーマンスが実現されます。
@@ -80,10 +87,18 @@ ms.locfileid: "108065027"
 
 使用しているアプリケーションがシングルスレッドで処理されている場合、これをセットアップすると、プロビジョニングされた共有サイズに応じて、最大限のスループットよりも IOPS スループットが大幅に低下する結果になる可能性があります。
 
-### <a name="solution"></a>解決策
+#### <a name="solution"></a>解決策
 
 - スレッドの数を増やすことで、アプリケーションの並列処理を増やします。
 - 並列処理が可能なアプリケーションに切り替えます。 たとえば、コピー操作では、Windows クライアントから AzCopy または RoboCopy を使用でき、Linux クライアントから **parallel** コマンドを使用できます。
+
+### <a name="cause-4-number-of-smb-channels-exceeds-four"></a>原因 4: SMB チャンネル数が 4 を超える
+
+SMB MultiChannel の使用時、チャンネル数が 4 を超える場合、パフォーマンスが低下します。 接続数が 4 を超えるかどうかを判断するには、PowerShell コマンドレット `get-SmbClientConfiguration` を使用し、現在の接続数設定を表示します。
+
+#### <a name="solution"></a>解決策
+
+チャンネルの合計が 4 を超えないよう、SMB の NIC 設定ごとに Windows を設定します。 たとえば、NIC が 2 つの場合、PowerShell コマンドレット `Set-SmbClientConfiguration -ConnectionCountPerRssNetworkInterface 2` を使用し、NIC あたりの最大を 2 に設定できます。
 
 ## <a name="very-high-latency-for-requests"></a>非常に長い要求の待機時間
 
@@ -275,7 +290,7 @@ I/O 集中型ワークロードのために、Azure ファイル共有へのア�
 12. **[アラート ルール名]** 、 **[説明]** 、 **[重大度]** などの **[アラートの詳細]** を指定します。
 13. **[アラート ルールの作成]** をクリックして、アラートを作成します。
 
-Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)」をご覧ください。
+Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/alerts/alerts-overview.md)」をご覧ください。
 
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>Premium ファイル共有がスロットルされる傾向にある場合にアラートを作成する方法
 
@@ -313,7 +328,7 @@ Azure Monitor でのアラートの構成の詳細については、「[Microsof
     >    - 手順 5 で、 **[エグレス]** ではなく、 **[トランザクション]** メトリックを選択します。
     >    - 手順 10 では、 **[集計の種類]** の唯一のオプションは *[合計]* です。 したがって、しきい値は、選択した集計粒度によって異なります。 たとえば、プロビジョニングされたベースライン IOPS の 80&nbsp;% にしきい値を設定し、 **[集計粒度]** に *1 時間* を選択した場合は、 **[しきい値]** がベースライン IOPS (バイト単位) &times;&nbsp;0.8 &times;&nbsp;3600 になります。 
 
-Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)」をご覧ください。
+Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/alerts/alerts-overview.md)」をご覧ください。
 
 ## <a name="see-also"></a>関連項目
 - [Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)  

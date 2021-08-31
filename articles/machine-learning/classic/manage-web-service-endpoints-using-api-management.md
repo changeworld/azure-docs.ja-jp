@@ -9,20 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 293643ab5354c51142baaf281b1845cfc9fa6f23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2897507270d5f87be01bc87173f48e713b1b791b
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518030"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581378"
 ---
-# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する
+# <a name="manage-machine-learning-studio-classic-web-services-using-api-management"></a>API Management を使用して Machine Learning Studio (クラシック) Web サービスを管理する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 ## <a name="overview"></a>概要
-このガイドでは、API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する方法について簡単に説明します。
+このガイドでは、API Management を使用して Machine Learning Studio (クラシック) Web サービスを管理する方法について簡単に説明します。
 
 ## <a name="what-is-azure-api-management"></a>Azure API Management とは
 Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。 詳細については、[API Management のサイト](https://azure.microsoft.com/services/api-management/)をご覧ください。 Azure API Management の使用を開始するには、[インポートと発行のガイド](../../api-management/import-and-publish.md)を参照してください。 このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
@@ -36,7 +36,7 @@ Azure API Management は、ユーザー アクセス、使用帯域幅の調整�
 
 ## <a name="create-an-api-management-instance"></a>API Management インスタンスの作成
 
-Azure Machine Learning Web サービスは、API Management インスタンスを使って管理できます。
+Machine Learning Web サービスは、API Management インスタンスを使って管理できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[+ リソースの作成]** を選択します。

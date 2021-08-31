@@ -4,25 +4,27 @@ description: Azure CLI を使用して Azure Active Directory 対応の Azure Ku
 services: container-service
 author: TomGeske
 ms.topic: article
-ms.date: 07/20/2020
-ms.author: thomasge
-ms.openlocfilehash: cb92f84560a88d406f0d519459c27b5d916ec5ad
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/29/2021
+ms.author: miwithro
+ms.openlocfilehash: 2075c4ce9bf01d4843de2037259fec2670d5dc06
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769573"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741652"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する (レガシ)
+
+> [!WARNING]
+> **このドキュメントで説明されている機能 Azure AD 統合 (レガシ) は 2024 年 2 月 29 日に非推奨になります。
+>
+> AKS には、サーバーまたはクライアント アプリケーションの管理を必要としない、改善された新しい [AKS マネージド Azure AD][managed-aad] エクスペリエンスが備わっています。 移行する場合は、[こちら][managed-aad-migrate]の手順に従ってください。
 
 Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにログインできます。 また、クラスター オペレーターが、ユーザーの ID またはディレクトリ グループ メンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を構成することもできます。
 
 この記事では、必要な Azure AD コンポーネントを作成してから、Azure AD 対応クラスターをデプロイして、AKS クラスターで基本的な Kubernetes ロールを作成する方法について説明します。
 
 この記事で使用されているサンプル スクリプトの完成版については、[Azure CLI のサンプルの AKS と Azure AD の統合][complete-script]に関するページを参照してください。
-
-> [!Important]
-> AKS には、サーバーまたはクライアント アプリケーションの管理を必要としない、改善された新しい [AKS マネージド Azure AD][managed-aad] エクスペリエンスが備わっています。 移行する場合は、[こちら][managed-aad-migrate]の手順に従ってください。
 
 ## <a name="the-following-limitations-apply"></a>次の制限事項が適用されます。
 
@@ -246,6 +248,7 @@ error: You must be logged in to the server (Unauthorized)
 * ユーザー アカウントが同じ Azure AD テナント内にあるかどうかに応じて、適切なオブジェクト ID または UPN を定義した。
 * ユーザーが 200 を超えるグループのメンバーにはなっていない。
 * サーバーのアプリケーション登録に定義されているシークレットが、`--aad-server-app-secret` を使用して構成された値と一致する
+* コンピューターにインストールする kubectl のバージョンは必ず、一度に 1 つにしてください。 バージョンが競合すると、承認中に問題が発生する可能性があります。 最新バージョンをインストールするには、[az aks install-cli][az-aks-install-cli] を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -266,6 +269,7 @@ ID とリソース管理に関するベスト プラクティスについては�
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
 [az-group-create]: /cli/azure/group#az_group_create
 [open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az_ad_user_show

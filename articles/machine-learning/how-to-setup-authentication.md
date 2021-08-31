@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 05/27/2021
 ms.topic: how-to
-ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2
-ms.openlocfilehash: 5f8f2c1f6d48a5c1b128643258af083b1811570e
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2, subject-rbac-steps
+ms.openlocfilehash: dcd4b21214439e03d3c2ba9bc9d46474bdadc48f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854632"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323953"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 
@@ -140,9 +140,17 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 
 1. [VM 上の Azure リソースに対して、システムで割り当てられたマネージド ID を有効にしてください](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
 
-1. [Azure portal](https://portal.azure.com) からお使いのワークスペースを選択し、 __[アクセス制御 (IAM)]__ 、 __[ロールの割り当ての追加]__ を順に選択し、 __[アクセスの割り当て先]__ ドロップダウンから __[仮想マシン]__ を選択します。 最後にお使いの VM の ID を選択します。
+1. [Azure portal](https://portal.azure.com) でワークスペースを選択し、 __[Access Control (IAM)]\(アクセス制御 \(IAM\)\)__ をクリックします。
+1. __[Add]\(追加\)__ 、 __[Add Role Assignment]\(ロールの割り当ての追加\)__ を順にクリックし、 __[Add role assignmen]\(ロールの割り当ての追加\) ページ__ を開きます。
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-1. この ID に割り当てるロールを選択します。 たとえば、共同作成者やカスタム ロールです。 詳細については、[リソースへのアクセスの制御](how-to-assign-roles.md)に関するページを参照してください。
+    | 設定 | 値 |
+    | ----- | ----- |
+    | Role | 割り当てるロール。 |
+    | アクセスの割り当て先 | マネージド ID |
+    | メンバー | 作成済みのマネージド ID |
+
+    ![Azure portal でロール割り当てページを追加します。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="managed-identity-with-compute-cluster"></a>コンピューティング クラスターでのマネージド ID
 
@@ -229,7 +237,8 @@ from azureml.core import Workspace
 
 ws = Workspace.get(name="ml-example",
                    auth=sp,
-                   subscription_id="your-sub-id")
+                   subscription_id="your-sub-id",
+                   resource_group="your-rg-name")
 ws.get_details()
 ```
 

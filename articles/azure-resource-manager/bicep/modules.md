@@ -4,13 +4,13 @@ description: モジュールを定義して使用する方法、およびモジ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 85f345cfd7085f34f28e4b219c4f379abff74bff
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.date: 07/15/2021
+ms.openlocfilehash: 5e092a0b7f27379cf9fdc488c7a56a295ce17d25
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421420"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752251"
 ---
 # <a name="use-bicep-modules"></a>Bicep モジュールを使用する
 
@@ -102,8 +102,21 @@ output storageEndpoint object = stgModule.outputs.storageEndpoint
     ]
     ...
     ```
+- **_params_** プロパティには、モジュール ファイルに渡すパラメーターが含まれます。 そのパラメーターは Bicep ファイルに定義されているパラメーターに一致します。
+
+リソースと同様に、モジュールは他のモジュールやリソースのデプロイに依存しない限り、並列でデプロイされます。 依存関係の詳細については、「[リソースの依存関係を設定する](resource-declaration.md#set-resource-dependencies)」を参照してください。
 
 モジュールから出力値を取得するには、`stgModule.outputs.storageEndpoint` ような構文を使用してプロパティ値を取得します。`stgModule` はモジュールの識別子です。
+
+モジュールを条件付きでデプロイできます。 [リソースを条件付きでデプロイする](conditional-resource-deployment.md)ときと同じ **if** 構文を使用します。
+
+```bicep
+param deployZone bool
+
+module dnsZone 'dnszones.bicep' = if (deployZone) {
+  name: 'myZoneModule'
+}
+```
 
 ## <a name="configure-module-scopes"></a>モジュールのスコープを構成する
 

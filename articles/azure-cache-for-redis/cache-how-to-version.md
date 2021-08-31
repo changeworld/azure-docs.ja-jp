@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 23bc9f92f405fe29aa43b266c0b18b8620e1d18c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d1dda6c4c414c79daf8223794c7d89846fad418f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463095"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739856"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Azure Cache for Redis で Redis のバージョンを設定する (プレビュー)
 この記事では、キャッシュ インスタンスで使用する Redis ソフトウェアのバージョンを構成する方法について説明します。 Azure Cache for Redis には、Redis の最新メジャー バージョンとして、少なくとも 1 つ前のバージョンが用意されています。 新しい Redis ソフトウェアがリリースされると、これらのバージョンは定期的に更新されます。 使用可能な 2 つのバージョンからいずれかを選択できます。 現在使用しているバージョンがサポートされなくなった場合は、キャッシュが自動的に次のバージョンにアップグレードされるため、注意してください。
@@ -21,7 +21,7 @@ ms.locfileid: "110463095"
 >
 
 > [!IMPORTANT]
-> Redis 6.0 の一般公開 (GA) 後は、新しく作成するキャッシュの既定の Redis バージョンは 6.0 になります。 Redis 4.0 のキャッシュも引き続き作成できます。また、 Redis 4.0 のキャッシュをGA で Redis 6.0 のキャッシュにアップグレードすることもできます。 
+> Redis 6.0 の一般公開 (GA) 後は、新しく作成するキャッシュの既定の Redis バージョンは 6.0 になります。 Redis 4.0 キャッシュは引き続き作成できます。 
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -50,13 +50,23 @@ ms.locfileid: "110463095"
    
     :::image type="content" source="media/cache-how-to-version/select-redis-version.png" alt-text="Redis のバージョン。":::
 
-1. **Create** をクリックしてください。 
+1. **［作成］** を選択します 
    
     キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
 
     > [!NOTE]
     > 現時点では、キャッシュを作成した後は Redis バージョンを変更することができません。
     >
+
+## <a name="faq"></a>よく寄せられる質問
+
+### <a name="what-features-arent-supported-with-redis-6"></a>Redis 6 でサポートされない機能は何ですか。
+
+現在のところ、Redis 6 では、クラスタリング、ゾーン冗長、ACL、PowerShell、Azure CLI、Terraform、Redis 4.0 と 6.0 のキャッシュ間の geo レプリケーションをサポートしていません。 
+
+### <a name="can-i-change-the-version-of-my-cache-after-its-created"></a>作成後にキャッシュのバージョンを変更できますか。
+
+現時点では、キャッシュの作成後にバージョンを変更することはできません。
 
 ## <a name="next-steps"></a>次の手順
 Azure Cache for Redis の機能について

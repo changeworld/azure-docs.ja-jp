@@ -7,27 +7,30 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: a379c6e828a4d3a10dd958ec7f380907b20f7352
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/10/2021
+ms.openlocfilehash: baa4a78e23b83fa7c138e71b92dba12ba23a3ab6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559126"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736316"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストア
 
-ナレッジ ストアは、Azure Cognitive Search の機能です。[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)からの出力を、独立した分析またはダウンストリーム処理に使用できるよう永続化するものです。 "*エンリッチメントされたドキュメント*" とは、AI プロセスを使用して抽出、構造化、および分析されたコンテンツから作成される、パイプラインの出力のことです。 標準的な AI パイプラインでは、エンリッチメントされたドキュメントは一時的なものであり、インデックス作成時にのみ使用され、その後破棄されます。 ナレッジ ストアを作成すると、そのエンリッチメントされたドキュメントを保持できます。 
+ナレッジ ストアは、Azure Cognitive Search の機能です。[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)からの出力を、独立した分析またはダウンストリーム処理に使用できるよう Azure Storage に永続化するものです。 "*エンリッチメントされたドキュメント*" とは、AI プロセスを使用して抽出、構造化、および分析されたコンテンツから作成される、パイプラインの出力のことです。 標準的な AI パイプラインでは、エンリッチメントされたドキュメントは一時的なものであり、インデックス作成時にのみ使用され、その後破棄されます。 ナレッジ ストアを作成すると、検査や他のナレッジ マイニング シナリオのために、エンリッチメントされたドキュメントが保持されます。
 
-過去にコグニティブ スキルを使用したことがある方であれば、"*スキルセット*" によって、ドキュメントが一連のエンリッチメントを通じて移動されることを既にご存じと思われます。 結果は、検索インデックスまたはナレッジ ストア内のプロジェクションとなります。 2 つの出力 (検索インデックスとナレッジ ストア) は、同じパイプラインから生成され、同じ入力から派生しますが、結果としては、非常に異なった形式で出力が構造化、格納、および使用されます。
+過去にコグニティブ スキルを使用したことがある方であれば、"*スキルセット*" によって、ドキュメントが一連のエンリッチメントを通じて移動されることを既にご存じと思われます。 結果は、検索インデックスまたはナレッジ ストア内のプロジェクションとなります。 2 つの出力 (検索インデックスとナレッジ ストア) は、同じパイプラインから生成され、同じ入力から派生しますが、結果としては、さまざまなアプリケーションで出力が構造化、格納、および使用されます。
+
+:::image type="content" source="media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg" alt-text="スキルセットを使用したパイプライン" border="false":::
+
+<!-- previous version of the architecture diagram
+:::image type="content" source="media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png" alt-text="Knowledge store in pipeline diagram" border="false"::: -->
 
 物理的には、ナレッジ ストアは [Azure Storage](../storage/common/storage-account-overview.md) です。つまり Azure Table Storage か Azure Blob Storage、またはその両方になります。 Azure Storage に接続できるすべてのツールまたはプロセスは、ナレッジ ストアのコンテンツを使用できます。
 
+Storage Explorer で表示されるナレッジ ストアは、テーブル、オブジェクト、またはファイルの単なるコレクションです。 次の例は、データ ソースから転送されるフィールド、またはエンリッチメントによって作成されたフィールドを含む 3 つのテーブルで構成されるナレッジ ストアを示しています (「センチメント スコア」と「translated_text」を参照)。
 
-> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
-
-
-![パイプラインにおけるナレッジ ストアの図](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "パイプラインにおけるナレッジ ストアの図")
+:::image type="content" source="media/knowledge-store-concept-intro/kstore-in-storage-explorer.png" alt-text="エンリッチメント ツリーからのスキルの読み取りおよび書き込み" border="true":::
 
 ## <a name="benefits-of-knowledge-store"></a>ナレッジ ストアのメリット
 
@@ -41,88 +44,80 @@ AI エンリッチメント パイプラインで何を生成できるかを確�
 
 + 手順とスキルセットの定義をデバッグ中に、AI インデックス作成パイプラインを調整する。 ナレッジ ストアによって、AI インデックス作成パイプライン内のスキルセット定義の製品が示されます。 これらの結果を使用すると、エンリッチメントがどのようになるかを正確に確認できるので、より優れたスキルセットを設計できます。 Azure Storage 内で [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) を使用して、ナレッジ ストアのコンテンツを表示できます。
 
-+ データを新しいフォームに整形する。 整形はスキルセット内で体系化されていますが、ポイントは、スキルセットでこの機能を提供できるようになったことです。 Azure Cognitive Search 内の [Shaper スキル](cognitive-search-skill-shaper.md)は、このタスクに対応するために拡張されました。 整形により、関係を維持しながら、データの使用目的に合致したプロジェクションを定義することができます。
++ データを新しいフォームに整形する。 リシェイプはスキルセットで体系化されますが、Azure Cognitive Search の [Shaper スキル](cognitive-search-skill-shaper.md)では、明示的な制御と複数の図形を作成する機能が提供されます。 整形により、関係を維持しながら、データの使用目的に合致したプロジェクションを定義することができます。
 
-> [!Note]
-> AI エンリッチメントとコグニティブ スキルは初めてですか。 Azure Cognitive Search は Cognitive Services の Vision および Language 機能と統合され、イメージ ファイルの光学式文字認識 (OCR)、エンティティの認識、テキスト ファイルからのキー フレーズの抽出などを使用してソース データが抽出およびエンリッチメントされます。 詳細については、[Azure Cognitive Search の AI エンリッチメント](cognitive-search-concept-intro.md)に関するページを参照してください。
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3]
 
-## <a name="physical-storage"></a>物理ストレージ
+## <a name="knowledge-store-definition"></a>ナレッジ ストアの定義
 
+インデクサーの実行中に、ナレッジ ストアは Azure Table Storage、Azure Blob Storage、またはその両方を使用して、[Azure Storage アカウント](../storage/common/storage-account-overview.md)に作成されます。 
 
-> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
-
-
-ナレッジストアの物理的表現は、スキルセットの `knowledgeStore` 定義の `projections` 要素を通じて表されます。 プロジェクションは、意図された用途に一致するように出力の構造を定義します。
-
-プロジェクションは、テーブル、オブジェクト、またはファイルとして表すことができます。
+Azure Storage 内のデータ構造は、スキルセット内の `knowledgeStore` 定義の `projections` 要素によって指定されます。 [プロジェクション](knowledge-store-projection-overview.md)は、テーブル、オブジェクト、またはファイルとして表現することが可能で、複数のセット (つまり *プロジェクション グループ*) を持ち、さまざまな用途向けに複数のデータ構造を作成できます。
 
 ```json
-"knowledgeStore": { 
-    "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-    "projections": [ 
-        { 
-            "tables": [ ], 
-            "objects": [ ], 
-            "files": [ ]
-        },
-                { 
-            "tables": [ ], 
-            "objects": [ ], 
-            "files": [ ]
-        }
+"knowledgeStore":{
+   "storageConnectionString":"<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>",
+   "projections":[
+      {
+         "tables":[ ],
+         "objects":[ ],
+         "files":[ ]
+      }
+   }
 ```
 
 この構造で指定するプロジェクションの種類によって、ナレッジ ストアによって使用されるストレージの種類が決まります。
 
-+ Table Storage は、`tables` を定義するときに使用されます。 分析ツールへの入力のために表形式のレポート構造が必要な場合や、データ フレームとして他のデータ ストアにエクスポートする場合は、テーブル プロジェクションを定義します。 複数の `tables` を指定して、エンリッチメントされたドキュメントのサブセットまたは断面を取得することができます。 同じプロジェクション グループ内では、テーブルのリレーションシップが保持されるため、すべてのテーブルを操作できます。
++ `tables` は、エンリッチメントされたコンテンツを Table Storage に投影します。 分析ツールへの入力のために表形式のレポート構造が必要な場合や、データ フレームとして他のデータ ストアにエクスポートする場合は、テーブル プロジェクションを定義します。 同じプロジェクション グループ内の複数の `tables` を指定して、エンリッチメントされたドキュメントのサブセットまたは断面を取得することができます。 同じプロジェクション グループ内では、テーブルのリレーションシップが保持されるため、すべてのテーブルを操作できます。
 
-+ BLOB ストレージは、`objects` または `files` を定義するときに使用されます。 `object` の物理的表現は、エンリッチメントされたドキュメントを表す階層型の JSON 構造体です。 `file` は、ドキュメントから抽出され、BLOB ストレージにそのまま転送されるイメージです。
++ `objects` では、JSON ドキュメントを BLOB ストレージに投影します。 `object` の物理的表現は、エンリッチメントされたドキュメントを表す階層型の JSON 構造体です。
 
-1 つのプロジェクション オブジェクトには `tables`、`objects`、`files` の 1 つのセットが含まれ、多くのシナリオで、1 つのプロジェクションを作成するだけで十分な場合があります。 
++ `files` では、イメージ ファイルを BLOB ストレージに投影します。 `file` は、ドキュメントから抽出され、BLOB ストレージにそのまま転送されるイメージです。
 
-ただし、`table`-`object`-`file` プロジェクションの複数のセットを作成することは可能であり、異なったデータ リレーションシップが必要な場合にそうすることができます。 セット内では、それらのリレーションシップが存在し、検出できることを前提として、データが関連付けられます。 追加のセットを作成する場合、各グループ内のドキュメントは決して関連付けられません。 複数のプロジェクション グループを使用する例として、オンライン システムで使用するために同じデータをプロジェクションし、それを特定の方式で表現する必要がある場合に、異なる方式で表現されるデータ サイエンス パイプラインで使用するために同じデータをさらにプロジェクションする、というものがあります。
+## <a name="create-a-knowledge-store"></a>ナレッジ ストアの作成
 
-## <a name="requirements"></a>必要条件 
+ナレッジ ストアを作成するには、ポータルまたは API を使用します。 [Azure Storage](../storage/index.yml)、[スキルセット](cognitive-search-working-with-skillsets.md)、および[インデクサー](search-indexer-overview.md)が必要になります。 インデクサーには検索インデックスが必要なので、インデックス定義も指定する必要があります。
 
-[Azure Storage](../storage/index.yml) が必要です。 物理ストレージを提供します。 BLOB ストレージ、テーブル ストレージ、またはその両方を使用できます。 BLOB ストレージは、通常、出力の行き先がダウンストリーム プロセスであるときに、そのままのエンリッチメントされたドキュメントに対して使用されます。 テーブル ストレージは、エンリッチメントされたドキュメントのスライス用であり、一般的には分析とレポートに使用されます。
+### <a name="azure-portal"></a>[**Azure portal**](#tab/kstore-portal)
 
-[スキルセット](cognitive-search-working-with-skillsets.md)が必要です。 `knowledgeStore` 定義が含まれており、エンリッチメントされたドキュメントの構造と構成を決定します。 空のスキルセットを使用してナレッジ ストアを作成することはできません。 スキルセットには少なくとも 1 つのスキルが必要です。
+**データのインポート** ウィザードを使用して、[4 つの手順で最初のナレッジ ストアを作成します](knowledge-store-connect-power-bi.md)。 ウィザードでは、次のタスクを行います。
 
-[インデクサー](search-indexer-overview.md)が必要です。 スキルセットは、実行を駆動するインデクサーによって呼び出されます。 インデクサーには、独自の要件と属性のセットがあります。 これらの属性のいくつかは、ナレッジ ストアと直接の関連があります。
+1. 未加工のコンテンツを提供するサポートされているデータ ソースを選択します。
 
-+ インデクサーには、[サポートされている Azure データ ソース](search-indexer-overview.md#supported-data-sources)が必要です (最終的にナレッジ ストアを作成するパイプラインは、Azure でサポートされているソースからデータをプルすることから始まります)。 
-
-+ インデクサーには検索インデックスが必要です。 インデクサーでは、使用する予定がない場合でも、インデックス スキーマを指定する必要があります。 最小インデックスには、キーとして指定される 1 つの文字列フィールドがあります。
-
-+ インデクサーには、変換元フィールドの別名を変換先フィールドに指定するために使用される、省略可能なフィールド マッピングが用意されています。 既定のフィールド マッピングに変更が必要な場合 (別の名前または型を使用する場合) は、インデクサー内で[フィールド マッピング](search-indexer-field-mappings.md)を作成できます。 ナレッジ ストアの出力では、BLOB オブジェクトまたはテーブルのフィールドを変換先として指定できます。
-
-+ インデクサーにはスケジュールがあり、さまざまなデータ ソースによって提供される変更検出メカニズムなど、その他のプロパティもナレッジ ストアに適用できます。 たとえば、コンテンツを更新するために、エンリッチメントを定期的に[スケジュール](search-howto-schedule-indexers.md)することができます。 
-
-## <a name="how-to-create-a-knowledge-store"></a>ナレッジ ストアの作成方法
-
-ナレッジ ストアを作成するには、ポータルまたは REST API (`api-version=2020-06-30`) を使用します。
-
-### <a name="use-the-azure-portal"></a>Azure ポータルの使用
-
-**[データのインポート]** ウィザードには、ナレッジ ストアを作成するためのオプションが含まれています。 初期探索のために、[4 つの手順で最初のナレッジ ストアを作成します](knowledge-store-connect-power-bi.md)。
-
-1. サポートされているデータ ソースを選択します。
-
-1. エンリッチメントの指定: リソースを添付し、スキルを選択し、ナレッジ ストアを指定します。 
+1. エンリッチメントの指定: Cognitive Services リソースを添付し、スキルを選択し、ナレッジ ストアを指定します。 この手順では、Azure Storage アカウントを選択し、オブジェクト、テーブル、または両方を作成するかどうかを選択します。
 
 1. インデックス スキーマを作成します。 これはウィザードによって要求され、ウィザードに推測してもらうことができます。
 
 1. ウィザードを実行します。 この最後の手順で、抽出、エンリッチメント、および格納が行われます。
 
-### <a name="use-create-skillset-rest-api"></a>スキルセットの作成を使用する (REST API)
+ウィザードを使用すると、そうでない場合はコードで処理する必要があるいくつかの追加タスクが内部的に処理されます。 整形とプロジェクションの両方 (Azure Storage 内の物理データ構造の定義) が作成されます。 ナレッジ ストアを手動で作成する場合は、コードでこれらの手順を処理する必要があります。
+
+### <a name="rest"></a>[**REST**](#tab/kstore-rest)
+
+REST API バージョン `2020-06-30` を使用すると、スキルセットに追加してナレッジ ストアを作成できます。
+
++ [スキルセットの作成 (api-version=2020-06-30)](/rest/api/searchservice/create-skillset)
++ [スキルセットの更新 (api-version=2020-06-30)](/rest/api/searchservice/update-skillset)
 
 [スキルセット](cognitive-search-working-with-skillsets.md)内で `knowledgeStore` が定義されます。次に、スキルセットが[インデクサー](search-indexer-overview.md)によって呼び出されます。 エンリッチメント中に、Azure Cognitive Search によって Azure Storage アカウント内にスペースが作成され、ご利用の構成に応じて BLOB として、またはテーブルに、エンリッチメントされたドキュメントがプロジェクションされます。
 
-REST API は、プログラムによってナレッジ ストアを作成できる唯一のメカニズムです。 探索する簡単な方法は、[Postman と REST API を使用して最初のナレッジ ストアを作成する](knowledge-store-create-rest.md)ことです。
+コードで処理する必要があるタスク:
+
++ Azure Storage (テーブル、オブジェクト、ファイル) に組み込むプロジェクションを指定する
++ スキルセットに Shaper スキルを含め、プロジェクションのスキーマとコンテンツを決定する
++ 名前付き図形をプロジェクションに割り当てる
+
+探索する簡単な方法は、[Postman を使用して最初のナレッジ ストアを作成する](knowledge-store-create-rest.md)ことです。
+
+### <a name="net-sdk"></a>[ **.NET SDK**](#tab/kstore-dotnet)
+
+.NET 開発者の場合、Azure.Search.Documents クライアント ライブラリ内の [KnowledgeStore クラス](/dotnet/api/azure.search.documents.indexes.models.knowledgestore)を使用します。
+
+---
 
 <a name="tools-and-apps"></a>
 
-## <a name="how-to-connect-with-tools-and-apps"></a>ツールやアプリと接続する方法
+## <a name="connect-with-apps"></a>アプリに接続する
 
 エンリッチメントがストレージ内に存在した後、Azure Blob または Table Storage に接続する任意のツールまたはテクノロジを使用して、コンテンツを探索、分析、または使用できます。 次の一覧が開始点です。
 
@@ -132,31 +127,36 @@ REST API は、プログラムによってナレッジ ストアを作成でき�
 
 + さらに操作するための [Azure Data Factory](../data-factory/index.yml)。
 
-<a name="kstore-rest-api"></a>
+## <a name="content-lifecycle"></a>コンテンツのライフサイクル
 
-## <a name="api-reference"></a>API リファレンス
+インデクサーとスキルセットを実行するたび、スキルセットまたは基になるソース データが変更された場合、ナレッジ ストアが更新されます。 インデクサーによって取得された変更は、エンリッチメント プロセスを通じてナレッジ ストア内のプロジェクションに反映され、投影されたデータが元のデータ ソース内のコンテンツの現在の表現になります。 
 
-REST API バージョン `2020-06-30` では、スキルセットの追加の定義を通じてナレッジ ストアが提供されています。 このリファレンスに加えて、[Postman を使用したナレッジ ストアの作成](knowledge-store-create-rest.md)に関する記事を参照し、API の呼び出し方法の詳細をご確認ください。
+> [!Note]
+> プロジェクション内のデータを編集することができますが、ソース データ内のドキュメントが更新された場合、次のパイプライン呼び出しですべての編集が上書きされます。 
 
-+ [スキルセットの作成 (api-version=2020-06-30)](/rest/api/searchservice/create-skillset)
-+ [スキルセットの更新 (api-version=2020-06-30)](/rest/api/searchservice/update-skillset)
+### <a name="changes-in-source-data"></a>ソース データの変更
 
+変更の追跡をサポートするデータ ソースの場合、インデクサーは新規および変更されたドキュメントを処理し、既に処理されている既存のドキュメントをバイパスします。 タイムスタンプ情報はデータ ソースによって異なりますが、BLOB コンテナーでは、インデクサーによって `lastmodified` の日付が確認され、取り込む必要がある BLOB が特定されます。
+
+### <a name="changes-to-a-skillset"></a>スキルセットの変更
+
+スキルセットに変更を加える場合は、[エンリッチメントされたドキュメントのキャッシュを有効にして](cognitive-search-incremental-indexing-conceptual.md)、可能な限り既存のエンリッチメントを再利用する必要があります。
+
+増分キャッシュを使用しない場合、インデクサーは常に高いウォーター マークの順に逆戻りせずドキュメントを処理します。 BLOB の場合、インデクサーは、インデクサーの設定やスキルセットに対する変更に関係なく、`lastModified` で並べ替えた BLOB を処理します。 スキルセットを変更した場合、以前に処理されたドキュメントは、新しいスキルセットを反映するように更新されません。 スキルセットの変更後に処理されたドキュメントでは新しいスキルセットが使用され、その結果、インデックス ドキュメントには古いスキルセットと新しいスキルセットが混在します。
+
+増分キャッシュを使用する場合、スキルセットの更新後に、インデクサーはスキルセットの変更の影響を受けないエンリッチメントを再利用します。 アップストリーム エンリッチメントは、変更されたスキルから独立して分離されたエンリッチメントと同様に、キャッシュからプルされます。
+
+### <a name="deletions"></a>削除
+
+インデクサーは、Azure Storage 内の構造とコンテンツを作成および更新しますが、それらを削除しません。 インデクサーまたはスキルセットが削除された場合でも、プロジェクションは引き続き存在します。 ストレージ アカウントの所有者は、不要になったプロジェクションを削除する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 
 ナレッジ ストアは、エンリッチメントされたドキュメントを永続化する手段として、スキルセットを設計する際に役立つほか、Azure Storage アカウントにアクセスする機能を備えた、あらゆるクライアント アプリケーションから利用する新しい構造やコンテンツを作成する際にも役立てることができます。
 
-エンリッチメントされたドキュメントを作成する最も簡単なアプローチは、[ポータルを使用する](knowledge-store-create-portal.md)ことですが、Postman と REST API を使用する方法もあります。オブジェクトがどのように作成され、参照されるのかについて分析情報が必要な場合には、後者の方が便利です。
+エンリッチメントされたドキュメントを作成する最も簡単なアプローチは、[ポータルを使用する](knowledge-store-create-portal.md)ことですが、Postman と REST API を使用する方法もあります。プログラムでオブジェクトがどのように作成され、参照されるのかについて分析情報が必要な場合には、後者の方が便利です。
 
 > [!div class="nextstepaction"]
 > [Postman と REST を使用してナレッジ ストアを作成する](knowledge-store-create-rest.md)
 
-プロジェクション、機能、および[スキルセットでそれらを定義する方法](knowledge-store-projection-overview.md)の詳細を確認します
-
-> [!div class="nextstepaction"]
-> [ナレッジ ストアでのプロジェクション](knowledge-store-projection-overview.md)
-
-スライス、インラインの整形、リレーションシップなどの高度なプロジェクションの概念について説明するチュートリアルについては、「[ナレッジ ストアでプロジェクションを定義する](knowledge-store-projections-examples.md)」を開始してください。
-
-> [!div class="nextstepaction"]
-> [ナレッジ ストアでのプロジェクションを定義する](knowledge-store-projections-examples.md)
+または、[プロジェクション](knowledge-store-projection-overview.md)について詳しく見てみましょう。 スライス、インラインの整形、リレーションシップなどの高度なプロジェクションの概念を示す例を確認するには、「[ナレッジ ストアでプロジェクションを定義する](knowledge-store-projections-examples.md)」を開始してください。

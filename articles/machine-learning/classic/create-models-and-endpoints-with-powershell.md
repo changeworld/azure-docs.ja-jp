@@ -9,26 +9,26 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 35b5fe4556f1d557d3fc0420e9069f2fb510eec4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b4a5073994da972a4999a82dd9bb0790bad0342
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520512"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582350"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (クラシック) と PowerShell を使用して 1 つの実験から複数の Web サービス エンドポイントを作成する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-機械学習について多くの人が考えることは、トレーニング ワークフローと使用アルゴリズムが同じ複数のモデルを作成できないものだろうか、ということです。 ただし、入力としては異なるトレーニング データセットを使用します。 この記事では、Azure Machine Learning Studio (クラシック) で 1 つの実験だけを使い、規模の制約なくこの課題に対応する方法を紹介しています。
+機械学習について多くの人が考えることは、トレーニング ワークフローと使用アルゴリズムが同じ複数のモデルを作成できないものだろうか、ということです。 ただし、入力としては異なるトレーニング データセットを使用します。 この記事では、1 つの実験だけを使って、Machine Learning Studio (クラシック) で大規模にこれを行う方法を紹介します。
 
 たとえば皆さんが、自転車レンタルのフランチャイズ事業を世界規模で展開しているとしましょう。 過去のデータに基づいてレンタルの需要を予測するために、回帰モデルを構築する必要があります。 レンタルの拠点は全世界で 1,000 店舗存在し、拠点ごとにデータセットを収集済です。 データセットには、日付、時刻、天気、交通状況などの重要な要素が含まれます。
 
 全拠点のすべてのデータセットをマージして 1 回だけモデルをトレーニングすることは可能です。 しかし、環境は拠点ごとに異なります。 このため、手法としては、拠点ごとのデータセットを使用して回帰モデルを個別にトレーニングした方が適切と考えられます。 そうすれば、トレーニング済みのモデルごとに異なる店舗サイズ、ボリューム、地勢、人口、自転車に配慮した交通環境などを反映することができます。
 
-ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Azure Machine Learning Studio (クラシック) で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
+ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Machine Learning Studio (クラシック) で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
 
-さいわい、この処理には [Azure Machine Learning Studio (クラシック) の再トレーニング API](./retrain-machine-learning-model.md) を使用でき、[Azure Machine Learning Studio (クラシック) PowerShell](powershell-module.md) でタスクを自動化することができます。
+さいわい、この処理には [Machine Learning Studio (クラシック) の再トレーニング API](./retrain-machine-learning-model.md) を使用でき、[Machine Learning Studio (クラシック) PowerShell](powershell-module.md) でタスクを自動化することができます。
 
 > [!NOTE]
 > ここではサンプルの実行時間を短くするために、拠点数を 1,000 から 10 に減らすことにします。 しかし拠点が 1,000 か所あっても原理と手順は同じです。 ただし、1,000 データセットからトレーニングする場合は、次の PowerShell スクリプトを並列に実行できます。 その方法はこの記事で取り上げる範囲を超えていますが、PowerShell のマルチスレッド化の例は、インターネットを検索すれば見つかります。  
@@ -36,7 +36,7 @@ ms.locfileid: "100520512"
 > 
 
 ## <a name="set-up-the-training-experiment"></a>トレーニング実験のセットアップ
-[Cortana Intelligence ギャラリー](https://gallery.azure.ai)にある[トレーニング実験](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)の例を使用します。 この実験を [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) ワークスペースで開いてください。
+[Cortana Intelligence ギャラリー](https://gallery.azure.ai)にある[トレーニング実験](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)の例を使用します。 この実験を [Machine Learning Studio (クラシック)](https://studio.azureml.net) ワークスペースで開いてください。
 
 > [!NOTE]
 > この例に沿って理解するためには、無料ワークスペースではなく標準のワークスペースを使用する必要があります。 エンドポイントは顧客ごとに 1 つ作成します (合計 10 エンドポイント)。無料のワークスペースはエンドポイント数が 3 個に限定されているため、標準のワークスペースが必要となります。

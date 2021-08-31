@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ノードから kubelet ログのト
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: 355c665db2627fe04595a8b519b16bd475ebcadf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20296d100d5a6bcd2cffbc93f29bfd71f56099c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735150"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733581"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes Service (AKS) クラスター ノードから kubelet ログを取得する
 
@@ -27,11 +27,14 @@ ms.locfileid: "101735150"
 
 ## <a name="get-kubelet-logs"></a>kubelet ログの取得
 
-ノードに接続したら、次のコマンドを実行して、*kubelet* ログをプルします。
+`kubectl debug` 経由でノードに接続したら、次のコマンドを実行して、*kubelet* ログをプルします。
 
 ```console
-sudo journalctl -u kubelet -o cat
+chroot /host
+journalctl -u kubelet -o cat
 ```
+> [!NOTE]
+> ノード上で既に `root` であるため、`sudo journalctl` を使用する必要はありません。
 
 > [!NOTE]
 > Windows ノードの場合、ログデータは `C:\k` にあり、*more* コマンドを使用して表示できます。
@@ -71,8 +74,8 @@ Kubernetes マスターからさらにトラブルシューティング情報が
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md
-[aks-master-logs]: ./view-control-plane-logs.md
+[aks-master-logs]: monitor-aks-reference.md#resource-logs
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[aks-master-logs]: ./view-control-plane-logs.md
+[aks-master-logs]: monitor-aks-reference.md#resource-logs
 [azure-container-logs]: ../azure-monitor/containers/container-insights-overview.md

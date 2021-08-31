@@ -5,49 +5,50 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 08/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c02c93acd23b71f73d5e27d8914d08fb1a1f99f9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ded0fe7150fae280bd2d2e33bc314c1cb8add106
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071400"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122072492"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Azure Percept Audio と音声モジュールのトラブルシューティング
 
 音声アシスタント アプリケーションの問題をトラブルシューティングするには、以下のガイドラインを使用してください。
 
-## <a name="understanding-ear-som-led-indicators"></a>Ear SoM LED インジケーターについて
-
-LED インジケーターを使用して、デバイスの状態を把握できます。 通常、デバイスの電源がオンになり、モジュールの初期化が完了するまでに約 4～5 分かかります。 初期化の手順を終えると、次のことが確認できます。
-
-1. 中央の白色 LED が点灯 (静止): デバイスの電源がオンです。
-1. 中央の白色 LED が点灯 (点滅): 認証が進行中です。
-1. 中央の白い LED が点灯 (静止): デバイスは認証されていますが、キーワードが構成されていません。
-1. デモがデプロイされ、デバイスが使用できる状態になると、3 つの LED がすべて青色に変化します。
-
-詳細については、[Azure Percept Audio のボタンと LED の動作](./audio-button-led-behavior.md)に関する記事を参照してください。
-
-### <a name="troubleshooting-led-issues"></a>LED に関する問題のトラブルシューティング
-- **中央の LED が白で点灯している場合** は、[テンプレートを使用して音声アシスタントを作成](./tutorial-no-code-speech.md)してみてください。
-- **中央の LED が常に点滅している場合** は、認証の問題を示しています。 こちらのトラブルシューティング手順を試してください。
-    - USB-A とマイクロ USB の接続がセキュリティで保護されていることを確認します。 
-    - [音声モジュールが実行されている](./troubleshoot-audio-accessory-speech-module.md#checking-runtime-status-of-the-speech-module)かどうかを確認します。
-    - デバイスを再起動します
-    - [ログを収集](./troubleshoot-audio-accessory-speech-module.md#collecting-speech-module-logs)してサポート リクエストに添付します
-    - 開発キットで最新のソフトウェアが実行されているかどうかを確認し、利用可能な場合は更新プログラムを適用します。
-
 ## <a name="checking-runtime-status-of-the-speech-module"></a>音声モジュールのランタイムの状態を確認する
 
-**azureearspeechclientmodule** のランタイムの状態が **[running]\(実行中\)** になっているかどうかを確認します。 デバイス モジュールのランタイムの状態を特定するには、[Azure portal](https://portal.azure.com/) を開いて **[すべてのリソース]**  ->  **[お使いの IoT ハブ]**  ->  **[IoT Edge]**  ->  **[お使いのデバイス ID]** に移動します。 **[モジュール]** タブをクリックすると、インストールされているすべてのモジュールのランタイムの状態が表示されます。
+**azureearspeechclientmodule** のランタイムの状態が **[running]\(実行中\)** になっているかどうかを確認します。 デバイス モジュールのランタイムの状態を特定するには、[Azure portal](https://portal.azure.com/) を開いて **[すべてのリソース]**  ->  **[お使いの IoT ハブ]**  ->  **[IoT Edge]**  ->  **[お使いのデバイス ID]** に移動します。 **[モジュール]** タブを選択すると、インストールされているすべてのモジュールのランタイムの状態が表示されます。
 
 :::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/over-the-air-iot-edge-device-page.png" alt-text="Azure portal のエッジ デバイス ページ。":::
 
-**azureearspeechclientmodule** のランタイムの状態が **[running]\(実行中\)** として表示されていない場合は、 **[モジュールの設定]**  ->  **[azureearspeechclientmodule]** をクリックします。 **[モジュールの設定]** ページの **[必要な状態]** を **[running]\(実行中\)** に設定し、 **[更新]** をクリックします。
+**azureearspeechclientmodule** のランタイムの状態が **[running]\(実行中\)** と表示されていない場合は、 **[モジュールの設定]**  ->  **[azureearspeechclientmodule]** を選択します。 **[モジュールの設定]** ページの **[必要な状態]** を **[実行中]** に設定し、 **[更新]** を選択します。
+
+## <a name="voice-assistant-application-doesnt-load"></a>音声アシスタント アプリケーションが読み込まれない
+[いずれかの音声アシスタント テンプレートをデプロイ](./tutorial-no-code-speech.md)してみてください。 テンプレートをデプロイすると、音声アシスタント アプリケーションに必要なすべてのサポート リソースが確実に作成されます。
+
+## <a name="voice-assistant-template-doesnt-get-created"></a>音声アシスタント テンプレートが作成されない
+音声アシスタント テンプレートの作成時にエラーが発生する場合は、通常、サポート リソースの 1 つに問題があります。
+1. [以前に作成したすべての音声アシスタント リソースを削除します](./delete-voice-assistant-application.md)。
+1. 新しい[音声アシスタント テンプレート](./tutorial-no-code-speech.md)をデプロイします。
+
+## <a name="voice-assistant-was-created-but-doesnt-respond-to-commands"></a>音声アシスタントは作成されたが、コマンドに応答しない
+この問題をトラブルシューティングするには、[LED の動作とトラブルシューティング ガイド](audio-button-led-behavior.md)に関するページの指示に従ってください。
+
+## <a name="voice-assistant-doesnt-respond-to-custom-keywords-created-in-speech-studio"></a>Speech Studio で作成したカスタム キーワードに音声アシスタントが応答しない
+音声モジュールが古いと、この症状が発生することがあります。 次の手順に従って、音声モジュールを最新バージョンに更新してください。
+
+1. Azure Percept Studio ホームページの左側のメニュー パネルにある **[Devices]\(デバイス\)** を選択します。
+1. デバイスを探して選択します。
+
+    :::image type="content" source="./media/tutorial-no-code-speech/devices.png" alt-text="Azure Percept Studio のデバイス一覧のスクリーンショット。":::
+1. デバイス ウィンドウで **[Speech]\(音声\)** タブを選択します。
+1. 音声モジュールのバージョンを確認します。 更新プログラムが利用可能な場合は、バージョン番号の横に **[Update]\(更新\)** ボタンが表示されます。
+1. **[Update]\(更新\)** を選択して、音声モジュールの更新プログラムをデプロイします。 通常、更新プロセスは、完了までに 2 分から 3 分かかります。
 
 ## <a name="collecting-speech-module-logs"></a>音声モジュールのログを収集する
-
 これらのコマンドを実行するには、 [SSH で開発キットに接続](./how-to-ssh-into-percept-dk.md)し、コマンドを SSH クライアント プロンプトに入力します。
 
 音声モジュールのログを収集します。
@@ -86,3 +87,4 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 - [Azure Percept Audio のボタンと LED の動作](./audio-button-led-behavior.md)
 - [Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する](./tutorial-no-code-speech.md)
 - [Azure Percept DK の一般的なトラブルシューティング ガイド](./troubleshoot-dev-kit.md)
+- [以前に作成した音声アシスタント アプリケーションに戻る方法](return-to-voice-assistant-application-window.md)

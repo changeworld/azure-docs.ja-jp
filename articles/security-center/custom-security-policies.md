@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: ab99d4aec732d2bc6b42576d30b59b0f8c0067c3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 828dd2cc5b83737a313156876c54c290a2a67d73
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772043"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238831"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>カスタム セキュリティ イニシアチブとポリシーを作成する
 
@@ -34,18 +34,18 @@ ms.locfileid: "108772043"
 
 1. カスタム イニシアティブを追加するサブスクリプションまたは管理グループを選択します。
 
-    [![カスタム ポリシーを作成するサブスクリプションの選択](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+    [![カスタム ポリシーを作成するサブスクリプションの選択。](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
     > Security Center でカスタム イニシアティブを評価および表示するためには、サブスクリプション レベル (またはそれ以上) で追加する必要があります。 使用可能な最も広いスコープを選択することをお勧めします。
 
 1. [セキュリティ ポリシー] ページの [Your custom initiatives]\(カスタム イニシアティブ\) で、 **[カスタム イニシアティブの追加]** をクリックします。
 
-    [![[カスタム イニシアティブの追加] をクリック](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![[カスタム イニシアティブの追加] をクリック。](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     次のページが表示されます。
 
-    ![ポリシーの作成または追加](media/custom-security-policies/create-or-add-custom-policy.png)
+    ![ポリシーを作成または追加。](media/custom-security-policies/create-or-add-custom-policy.png)
 
 1. [カスタム イニシアティブの追加] ページで、組織で既に作成されているカスタム ポリシーの一覧を確認します。 サブスクリプションに割り当てるイニシアティブが表示されている場合は、 **[追加]** をクリックします。 ニーズに合ったイニシアティブが一覧にない場合は、この手順をスキップしてください。
 
@@ -70,7 +70,7 @@ ms.locfileid: "108772043"
 
 1. ポリシーの生成された推奨事項を表示するには、サイドバーの **[推奨事項]** をクリックして推奨事項ページを開きます。 推奨事項は [カスタム] ラベル付きで表示され、約 1 時間以内に提供されます。
 
-    [![カスタム推奨事項](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [![カスタム推奨事項。](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 ::: zone-end
 

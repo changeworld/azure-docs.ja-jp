@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 2ff440801db7ba8c5bfc1785fc7a399a1d773b73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28365f4c5e4096c83bdf7b1c4cd7ade3fe1e46b2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517027"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742119"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ
@@ -87,8 +87,8 @@ ms.locfileid: "100517027"
 
 ここでは、データによって回答可能な質問をするための基本原則について説明してきました。
 
-Microsoft Azure Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
+Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](../overview-what-is-azure-ml.md)
+* [Azure Machine Learning の概要](../overview-what-is-azure-machine-learning.md)

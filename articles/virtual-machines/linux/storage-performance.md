@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 99349654bb01f368a2a3a84c4ecc01f248b25175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffe772677e8de28c3ea0de31092f1aca693feccf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552764"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734575"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Lsv2 シリーズ Linux 仮想マシン上でパフォーマンスを最適化する
 
@@ -32,7 +32,7 @@ Lsv2 シリーズの仮想マシン (VM) の設計は、AMD EPYC™ 7551 プロ�
 
 この記事では、ワークロードとアプリケーションで VM の設計に応じた最大限のパフォーマンスを実現するためのヒントと推奨事項を紹介します。 このページに掲載した情報は、最適化済みの Lsv2 イメージが Azure Marketplace に追加されるのに応じて随時更新していく予定です。
 
-## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ チップセットのアーキテクチャ
+## <a name="amd-epyc-chipset-architecture"></a>AMD EPYC™ チップセットのアーキテクチャ
 
 Lsv2 シリーズの VM では、Zen マイクロアーキテクチャをベースとする AMD EYPC™ サーバー プロセッサを使用しています。 AMD は、オンダイ、オンパッケージ、マルチパッケージの通信に利用が期待できる自らの NUMA モデルのスケーラブルなインターコネクトとして、Infinity Fabric (IF) for EYPC™ を開発しました。 NUMA が多くダイが少ない AMD のアーキテクチャは、Intel の最新型モノリシックダイ プロセッサで採用されている QPI (Quick-Path Interconnect) と UPI (Ultra-Path Interconnect) に比べると、パフォーマンス面でメリットと課題のどちらももたらしうる可能性を秘めています。 メモリの帯域幅と待ち時間の制約の影響が実際にどれほどのものになるかは、実行するワークロードの種類に応じて異なります。
 

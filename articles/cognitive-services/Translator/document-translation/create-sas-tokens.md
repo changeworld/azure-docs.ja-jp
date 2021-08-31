@@ -6,14 +6,14 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: e40fc569ad1c8ec5894f06915422bea37cfc40ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a91829ce79c5cd9e32efefc809dd23a19382f49
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102489635"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360273"
 ---
-# <a name="create-sas-tokens-for-document-translation-processing"></a>ドキュメント翻訳処理の SAS トークンを作成する
+# <a name="create-sas-tokens-for-your-storage-containers"></a>ストレージ コンテナーの SAS トークンを作成する
 
 この記事では、Azure Storage Explorer または Azure portal を使用して、Shared Access Signature (SAS) トークンを作成する方法について説明します。 SAS トークンを使用すると、Azure ストレージ アカウント内のリソースへの安全な委任アクセスが可能になります。
 

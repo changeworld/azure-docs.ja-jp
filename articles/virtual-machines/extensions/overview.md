@@ -7,12 +7,12 @@ ms.subservice: extensions
 author: amjads1
 ms.author: amjads
 ms.date: 08/03/2020
-ms.openlocfilehash: e1b96293db0389201fdab3340d8f0e74fefc4c52
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a7a11dde69554ae732590ddf36f8cf65929197fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559717"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737407"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 仮想マシンの拡張機能とその機能
 拡張機能は、Azure VM でのデプロイ後の構成と自動化を提供する小さなアプリケーションです。 Azure プラットフォームでは、VM の構成、監視、セキュリティ、およびユーティリティのアプリケーションを対象とする多くの拡張機能をホストします。 公開元は、アプリケーションを取得し、それを拡張機能にまとめて、インストールを簡略化します。 ユーザーは必須パラメーターを指定するだけで済みます。 
@@ -33,7 +33,9 @@ Azure VM 拡張機能は、Azure CLI、PowerShell、Resource Manager テンプ�
 
 ## <a name="troubleshoot-extensions"></a>拡張機能のトラブルシューティングを行う
 
-各拡張機能のトラブルシューティング情報については、拡張機能の概要の「**トラブルシューティングとサポート**」セクションを参照してください。 利用可能なトラブルシューティング情報の一覧を次に示します。
+Windows VM 拡張機能の一般的なトラブルシューティング手順の確認が必要な場合は、「[Azure Windows VM 拡張機能のエラーのトラブルシューティング](troubleshoot.md)」を参照してください。
+
+それ以外の場合は、各拡張機能の具体的なトラブルシューティング情報について、拡張機能の概要の「**トラブルシューティングとサポート**」セクションを参照してください。 利用可能なトラブルシューティング情報の一覧を次に示します。
 
 | 名前空間 | トラブルシューティング |
 |-----------|-----------------|

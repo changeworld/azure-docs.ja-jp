@@ -3,12 +3,12 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 80de6651d59b26b596633b8ba775c774dcfea62e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6ecfd3fd9f426676fe0b5c9a69af26b1245b7824
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970341"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742288"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -72,8 +72,10 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 |Microsoft|Windows Server|2012 - 2019|
 |Microsoft|Windows クライアント|Windows 10|
 |OpenLogic|CentOS|7.3 -8.x|
-|Red Hat|Red Hat Enterprise Linux|7.4 - 8.x|
+|Red Hat|Red Hat Enterprise Linux\*|7.4 - 8.x|
 |SUSE|SLES|12 SP3-SP5、15.x|
+
+\* Red Hat CoreOS はサポートされていません。
 
 カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシー定義でサポートされます。
 
@@ -85,7 +87,7 @@ Azure Arc マシンは、オンプレミスのネットワーク インフラス
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>Azure の仮想ネットワークを介して通信する
 
-Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 Azure データセンターの [IP 範囲の一覧](https://www.microsoft.com/en-us/download/details.aspx?id=56519)を手動で管理するのではなく、[サービス タグ](../../../virtual-network/service-tags-overview.md) "AzureArcInfrastructure" を使用することでゲスト構成サービスを参照できます。
+Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 Azure データセンターの [IP 範囲の一覧](https://www.microsoft.com/download/details.aspx?id=56519)を手動で管理するのではなく、[サービス タグ](../../../virtual-network/service-tags-overview.md) "AzureArcInfrastructure" と "Storage" を使用して、ゲスト構成と Storage のサービスを参照できます。 ゲスト構成のコンテンツ パッケージは Azure Storage によってホストされるため、両方のタグが必要です。
 
 ### <a name="communicate-over-private-link-in-azure"></a>Azure で Private Link を介して通信する
 
@@ -167,6 +169,11 @@ _[構成]_ で始まる定義を割り当てるとき、 _[前提条件を展開
 高可用性アプリケーションのアーキテクチャを検討する場合 (特に、高可用性を提供するためにロード バランサーソリューションの背後にある[可用性セット](../../../virtual-machines/availability.md#availability-sets)に仮想マシンがプロビジョニングされている場合)、ソリューション内のすべてのマシンに、同じパラメーターを含む同じポリシー定義を割り当てるのがベスト プラクティスです。 可能であれば、すべてのマシンにまたがる単一のポリシー割り当てを採用することにより、管理オーバーヘッドが最小限に抑えられます。
 
 [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) によって保護されているマシンの場合は、プライマリ サイト内のマシンと同じパラメーター値を使用した同じ定義の Azure Policy 割り当てのスコープ内にセカンダリ サイト内のマシンを入れるようにします。
+
+## <a name="data-residency"></a>データの保存場所
+
+ゲスト構成により、顧客データが格納および処理されます。 既定では、顧客データは[ペアになっているリージョン](../../../best-practices-availability-paired-regions.md)にレプリケートされます。
+単独配置リージョンの場合は、すべての顧客データがそのリージョンに格納され、処理されます。
 
 ## <a name="troubleshooting-guest-configuration"></a>ゲスト構成のトラブルシューティング
 

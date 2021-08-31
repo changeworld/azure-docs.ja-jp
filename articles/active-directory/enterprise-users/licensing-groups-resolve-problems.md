@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b35706c48ff78e81ef339ee838cc4259090e56c
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 8fb21f3173225d36fcdb2290c74a2c7805455342
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987634"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746152"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 - Exchange Online (プラン 2) と Exchange Online (プラン 1) の競合
 
-この競合を解決するには、2 つのプランを無効にする必要があります。 ユーザーに直接割り当てられている E1 ライセンスを無効にできます。 または、グループのライセンス割り当てを変更して、E3 ライセンスのプランを無効にする必要があります。 E3 ライセンスのコンテキストで冗長である場合は、E1 ライセンスをユーザーから削除することもできます。
+この競合を解決するには、プランの内 1 つを無効にする必要があります。 ユーザーに直接割り当てられている E1 ライセンスを無効にできます。 または、グループのライセンス割り当てを変更して、E3 ライセンスのプランを無効にする必要があります。 E3 ライセンスのコンテキストで冗長である場合は、E1 ライセンスをユーザーから削除することもできます。
 
 製品ライセンスの競合を解決する方法の決定は、常に管理者に委ねられます。 ライセンスの競合が Azure AD によって自動的に解決されることはありません。
 

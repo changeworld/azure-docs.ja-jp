@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 07/01/2021
 ms.author: b-juche
-ms.openlocfilehash: cb53bad331e511ea2daacc2a0fbc9c178a193a2f
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 326a0a43d8571c0acecbbffadf1ab21b267798a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655138"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743787"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -34,7 +34,7 @@ ms.locfileid: "110655138"
 
 ### <a name="oracle"></a>Oracle
 
-* [Azure NetApp Files を使用した Azure への Oracle デプロイのベスト プラクティス ガイド](https://www.netapp.com/us/media/tr-4780.pdf)
+* [Azure NetApp Files を使用した Microsoft Azure 上の Oracle Database](https://www.netapp.com/media/17105-tr4780.pdf)
 * [Microsoft Azure での Oracle VM イメージとそのデプロイ:共有ストレージの構成オプション](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス](performance-oracle-single-volumes.md)
 * [Oracle Database での Azure NetApp Files 利用のメリット](solutions-benefits-azure-netapp-files-oracle-database.md)
@@ -116,14 +116,19 @@ ms.locfileid: "110655138"
 
 このセクションでは、仮想デスクトップ インフラストラクチャ ソリューションに関するリファレンスを提供します。
 
-### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
+### <a name="azure-virtual-desktop"></a><a name="windows-virtual-desktop"></a>Azure Virtual Desktop
 
-* [Windows Virtual Desktop での Azure NetApp Files 利用のメリット](solutions-windows-virtual-desktop.md)
-* [Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
+* [Azure Virtual Desktop で Azure NetApp Files を利用するメリット](solutions-windows-virtual-desktop.md)
+* [Azure Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
 * [Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する](../virtual-desktop/create-fslogix-profile-container.md)
-* [エンタープライズ規模の Windows Virtual Desktop](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [エンタープライズ規模の Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 * [エンタープライズ向け Microsoft FSLogix - Azure NetApp Files ベスト プラクティス](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
 * [MSIX アプリのアタッチ用の Azure NetApp Files の設定](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/setting-up-azure-netapp-files-for-msix-app-attach-step-by-step/m-p/1990021)
+
+### <a name="citrix"></a>Citrix   
+
+* [Azure NetApp Files ベスト プラクティス ガイドによる Citrix プロファイル管理](https://www.netapp.com/pdf.html?item=/media/55973-tr-4901.pdf)
+
 
 ## <a name="hpc-solutions"></a>HPC ソリューション
 
@@ -151,6 +156,7 @@ ms.locfileid: "110655138"
 * [Azure NetApp Files: Microsoft Azure 上の SAS グリッドで使用する共有ファイル システム](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [Azure NetApp Files: MS Azure 上の SAS グリッドで使用する共有ファイル システム – RHEL8.3/nconnect の更新情報](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648)
 * [Microsoft Azure と SAS® を併用するためのベスト プラクティス](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
+* [Azure アーキテクチャの SAS ガイド - Azure アーキテクチャ センター | Azure NetApp Files](/azure/architecture/guide/sas/sas-overview#azure-netapp-files-nfs)
 
 ## <a name="azure-platform-services-solutions"></a>Azure プラットフォーム サービス ソリューション
 
@@ -158,6 +164,7 @@ ms.locfileid: "110655138"
 
 ### <a name="azure-kubernetes-services-and-kubernetes"></a>Azure Kubernetes Services と Kubernetes
 
+* [Astra: Azure NetApp Files で AKS ワークロードを保護、回復、管理する](https://cloud.netapp.com/hubfs/Astra%20Azure%20Documentation.pdf) 
 * [Azure NetApp Files と Azure Kubernetes Service を統合する](../aks/azure-netapp-files.md)
 * [Azure NetApp Files を使用した Azure での現実離れした Kubernetes のパフォーマンス](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
 * [Azure NetApp Files + Trident = Kubernetes 用の動的および永続的ストレージ](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)

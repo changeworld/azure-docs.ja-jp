@@ -1,45 +1,53 @@
 ---
 title: Cognitive Services をスキルセットにアタッチする
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search で Cognitive Search オールインワン サブスクリプションを AI エンリッチメント パイプラインにアタッチする方法について説明します。
-author: LuisCabrer
-ms.author: luisca
+description: Azure Cognitive Search でマルチサービス Cognitive Services リソースを AI エンリッチメント パイプラインにアタッチする方法について説明します。
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: c1ba8ce3e84439a3f9419e0c038b93fb298370b9
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 08/12/2021
+ms.openlocfilehash: 0fe9a87e82ab391fc0e1ccfca95ad48a0ef5dc61
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591334"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772467"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search で Cognitive Services リソースをスキルセットにアタッチする
 
-Azure Cognitive Search で [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)を構成するとき、限られた数のドキュメントを無料でエンリッチできます。 ワークロードが大きくなる場合や頻繁に発生する場合は、有料の "オールインワン" Cognitive Services リソースをアタッチしてください。 "オールインワン" サブスクリプションでは、個々のサービスではなくオファリングとして "Cognitive Services" を参照し、1 つの API キーを使用してアクセス権が付与されます。
+Azure Cognitive Search で [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)を構成するとき、限られた数のドキュメントを無料でエンリッチできます。 ワークロードが大きくなる場合や頻繁に発生する場合は、有料の[マルチサービス Cognitive Services リソース](../cognitive-services/cognitive-services-apis-create-account.md)をアタッチしてください。 マルチサービス リソースでは、個々のサービスではなくオファリングとして "Cognitive Services" を参照し、1 つの API キーを使用してアクセス権が付与されます。
 
-"オールインワン" Cognitive Services リソースは、スキルセットに含めることができる[定義済みのスキル](cognitive-search-predefined-skills.md)を備えています。
+リソース キーはスキルセットで指定され、Microsoft が次の API の使用に対して課金できるようにします。
 
 + イメージ分析と光学式文字認識 (OCR) のための [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/)
 + 言語検出、エンティティ認識、感情分析、およびキー フレーズ抽出のための [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/)
 + [テキストの変換](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)
 
-スキルセット定義では、"オールインワン" Cognitive Services のキーは省略可能です。 1 日あたりのトランザクション数が 20 未満の場合、コストは吸収されます。 ただし、トランザクションがこの数を超える場合は、処理を続行するために有効なリソース キーが必要です。
+キーは課金に使用されますが、接続には使用されません。 内部的には、検索サービスは、[同じ物理リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=search)に併置されている Cognitive Services リソースに接続します。
 
-任意の "オールインワン" リソース キーが有効です。 内部的には、"オールインワン" キーが別のリージョンのリソースに対するものである場合でも、検索サービスは同じ物理リージョンに併置されているリソースを使用します。 [利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)のページに、使用可能なリージョンが横並びで示されています。
+## <a name="key-requirements"></a>主な要件
 
-> [!NOTE]
-> スキルセットで定義済みのスキルを省略した場合、Cognitive Services にはアクセスされず、スキルセットでキーが指定されていても、料金は発生しません。
+リソース キーは、同じインデクサーで 1 日あたり 20 回を超えて使用される課金対象の[組み込みのスキル](cognitive-search-predefined-skills.md)に対して必須です。 Cognitive Services へのバックエンド呼び出しを行うスキルには、エンティティ リンク設定、エンティティ認識、イメージ分析、キー フレーズ抽出、言語検出、OCR、PII 検出、センチメント、テキスト翻訳が含まれます。
+
+[カスタム エンティティ検索](cognitive-search-skill-custom-entity-lookup.md)は、Cognitive Services ではなく Azure Cognitive Search によって測定されますが、インデクサーごとに 1 日あたり 20 を超えるトランザクションのロックを解除するために、Cognitive Services リソース キーが必要です。 このスキルの場合のみ、リソース キーによってトランザクション数のブロックが解除されますが、課金とは無関係です。
+
+カスタム スキルまたはユーティリティ スキル (Conditional、ドキュメント抽出、Shaper、Text Merge、Text Split) のみで構成されるスキルセットについては、キーと Cognitive Services セクションを省略できます。 また、請求対象のスキルの使用量が 1 日あたりインデクサーあたり 20 トランザクションを下回る場合も、このセクションを省略できます。
 
 ## <a name="how-billing-works"></a>請求体系について
 
 + Azure Cognitive Search では、画像とテキストのエンリッチメントに対して課金する目的でスキルセットに指定する Cognitive Services リソース キーが使用されます。 課金対象スキルの実行は、[Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)になります。
 
-+ 画像抽出は、エンリッチメントに先立ってドキュメントがクラックされるときに行われる Azure Cognitive Search 操作です。 画像抽出は課金対象です。 画像抽出の価格については、「[Azure Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)」をご覧ください。
++ 画像抽出は、エンリッチメントに先立ってドキュメントがクラックされるときに行われる Azure Cognitive Search 操作です。 画像抽出は、すべてのレベルで課金対象ですが、Free レベルでの 1 日 20 回の無料抽出を除きます。 画像抽出コストは、BLOB 内の画像ファイル、他のファイル (PDF および他のアプリ ファイル) に埋め込まれた画像、および[ドキュメント抽出](cognitive-search-skill-document-extraction.md)を使用して抽出された画像に適用されます。 画像抽出の価格については、「[Azure Cognitive Search の価格ページ](https://azure.microsoft.com/pricing/details/search/)」をご覧ください。
 
-+ テキスト抽出はドキュメントのクラック段階でも行われます。 それは課金対象ではありません。
++ [ドキュメント解析](search-indexer-overview.md#document-cracking)段階では、テキスト抽出も行われます。 それは課金対象ではありません。
 
-+ Conditional、Shaper、Text Merge、Text Split といったスキルなど、Cognitive Services を呼び出さないスキルは課金されません。
++ Conditional、Shaper、Text Merge、Text Split といったスキルなど、Cognitive Services を呼び出さないスキルは課金されません。 
+
+  前述のとおり、[カスタム エンティティの検索](cognitive-search-skill-custom-entity-lookup.md)は、キーを必要とするが、[Cognitive Search によって測定される](https://azure.microsoft.com/pricing/details/search/#pricing)という点で特殊なケースです。
+
+> [!TIP]
+> スキルセット処理のコストを削減するには、[インクリメンタル エンリッチメント (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) を有効にして、スキルセットに加えた変更の影響を受けないエンリッチメントをキャッシュして再利用します。 キャッシュには Azure Storage が必要です ([価格](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください)。ただし、既存のエンリッチメントを再利用できる場合は、スキルセットの実行の累積コストが低くなります (特に画像の抽出と分析を使用するスキルセットの場合)。
 
 ## <a name="same-region-requirement"></a>同一リージョンの要件
 
@@ -62,9 +70,7 @@ AI エンリッチメントの **データのインポート** ウィザード�
 
 ## <a name="use-billable-resources"></a>課金対象のリソースを使用する
 
-1 日に 20 を超えるエンリッチメントを作成するワークロードでは、課金対象の Cognitive Services リソースを必ずアタッチしてください。 Cognitive Services API を呼び出す予定がない場合でも、課金対象の Cognitive Services リソースを常にアタッチしておくことをお勧めします。 リソースをアタッチすることで、1 日の制限がオーバーライドされます。
-
-Cognitive Services API を呼び出すスキルに対してのみ課金されます。 [カスタム スキル](cognitive-search-create-custom-skill-example.md)、または[テキスト マージャー](cognitive-search-skill-textmerger.md)、[テキスト スプリッター](cognitive-search-skill-textsplit.md)、[Shaper](cognitive-search-skill-shaper.md) などの API ベースでないスキルについては課金されません。
+1 日に 20 を超える課金対象のエンリッチメントを作成するワークロードでは、Cognitive Services リソースを必ずアタッチしてください。 
 
 **データのインポート** ウィザードを使用している場合は、 **[Add AI enrichment (Optional)\(AI エンリッチメントの追加 (省略可能)\)]** ページで課金対象のリソースを構成できます。
 
@@ -119,7 +125,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [

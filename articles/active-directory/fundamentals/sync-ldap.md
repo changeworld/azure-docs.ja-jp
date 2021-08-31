@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f34e734b315c7c05ce77f5e168a452fc1c1c547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 224b0685b922e6ddd833637ddc1b628f0479ec70
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96168680"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200818"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>Azure Active Directory との LDAP 同期
 
@@ -59,5 +59,6 @@ Azure Active Directory (Azure AD) によって、LDAP 同期を Azure AD Connect
 * [LDAP コネクタの概要と作成](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
 
    > [!NOTE]
-   > LDAP コネクタは、Forefront Identity Manager や Microsoft Identity Manager に関する知識を必要とする高度な構成です。 運用環境で使用されている場合、この構成に関するご質問については、[Premier サポート](https://support.microsoft.com/premier)または Microsoft Partner Network を使ってお問い合わせください。
-
+   > LDAP コネクタをデプロイするには詳細な構成が必要であり、このコネクタは制限付きサポートの下で提供されます。 このコネクタを構成するには、Microsoft Identity Manager と特定の LDAP ディレクトリについて理解している必要があります。 
+   >
+   > この構成を運用環境にデプロイする必要があるお客様は、この構成に関する支援、ガイダンス、サポートが得られるよう、Microsoft コンサルティング サービスなどのパートナーと一緒に作業することをお勧めします。

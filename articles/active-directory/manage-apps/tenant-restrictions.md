@@ -2,22 +2,22 @@
 title: テナント制限を使用して SaaS アプリへのアクセスを管理する - Azure AD
 description: テナント制限を使用して、どのユーザーが自分の Azure AD テナントに基づいてアプリにアクセスできるかを管理する方法。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 6/2/2021
-ms.author: mtillman
-ms.reviewer: hpsin
+ms.date: 7/30/2021
+ms.author: davidmu
+ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c443f3084c465e1a8f2358c1b8db365e576b04f5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: d013d383192b206fdc05f36f320b01fe57526bb8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082237"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737299"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -53,7 +53,7 @@ ms.locfileid: "112082237"
 
 ### <a name="urls-and-ip-addresses"></a>URL と IP アドレス
 
-テナント制限を使用するには、クライアントは、認証のために [login.microsoftonline.com](https://login.microsoftonline.com/)、[login.microsoft.com](https://login.microsoft.com/)、および [login.windows.net](https://login.windows.net/) の Azure AD URL に接続できる必要があります。 さらに、Office 365 にアクセスするために、クライアントは「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」で定義されている完全修飾ドメイン名 (FQDN)、URL、および IP アドレスにも接続できる必要があります。 
+テナント制限を使用するには、クライアントは、認証のために [login.microsoftonline.com](https://login.microsoftonline.com/)、[login.microsoft.com](https://login.microsoft.com/)、および [login.windows.net](https://login.windows.net/) の Azure AD URL に接続できる必要があります。 さらに、Office 365 にアクセスするために、クライアントは「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」で定義されている完全修飾ドメイン名 (FQDN)、URL、および IP アドレスにも接続できる必要があります。
 
 ### <a name="proxy-configuration-and-requirements"></a>プロキシの構成と要件
 
@@ -81,9 +81,9 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net への各送
 - *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  これらの認証のログを取得するには、このスポットで独自のディレクトリ ID を使用する **必要があります**。
 
 > [!TIP]
-> ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、 **[Azure Active Directory]** を選択して、 **[プロパティ]** を選択します。 
+> ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、 **[Azure Active Directory]** を選択して、 **[プロパティ]** を選択します。
 >
-> ディレクトリ ID またはドメイン名が同じテナントを参照していることを検証するには、URL `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` で <tenant> の代わりにその ID またはドメインを使用します。  ドメインと ID の結果が同じであれば、同じテナントを参照しています。 
+> ディレクトリ ID またはドメイン名が同じテナントを参照していることを検証するには、URL `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` で <tenant> の代わりにその ID またはドメインを使用します。  ドメインと ID の結果が同じであれば、同じテナントを参照しています。
 
 ユーザーが未承認のテナントを含む独自の HTTP ヘッダーを挿入できないようにするために、受信要求に *Restrict-Access-To-Tenants* ヘッダーが既に存在する場合、プロキシはそのヘッダーを置き換える必要があります。
 
@@ -111,11 +111,11 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 Restricted-Access-Context テナントとして指定されたテナントの管理者は、このレポートを使用して、テナント制限ポリシーのためにブロックされたサインイン (使用された ID やターゲット ディレクトリ ID を含む) を確認できます。 制限を設定するテナントがサインインのユーザー テナントまたはリソース テナントのいずれかである場合は、サインインが含まれます。
 
-Restricted-Access-Context テナント以外のテナントに属するユーザーがサインインする場合、ターゲット ディレクトリ ID などの限られた情報がレポートに含まれる可能性があります。 この場合、名前やユーザー プリンシパル名などのユーザー識別情報はマスクされ、他のテナントのユーザー データは保護されます (必要に応じて、ユーザー名とオブジェクト ID の代わりに "{PII Removed}@domain.com" または 00000000-0000-0000-0000-000000000000)。 
+Restricted-Access-Context テナント以外のテナントに属するユーザーがサインインする場合、ターゲット ディレクトリ ID などの限られた情報がレポートに含まれる可能性があります。 この場合、名前やユーザー プリンシパル名などのユーザー識別情報はマスクされ、他のテナントのユーザー データは保護されます (必要に応じて、ユーザー名とオブジェクト ID の代わりに "{PII Removed}@domain.com" または 00000000-0000-0000-0000-000000000000)。
 
 Azure Portal の他のレポートと同様に、フィルターを使用してレポートの範囲を指定できます。 特定の時間間隔、ユーザー、アプリケーション、クライアント、または状態についてフィルター処理できます。 **[列]** ボタンを選択すると、次のフィールドの任意の組み合わせでデータを表示することを選択できます。
 
-- **ユーザー** - このフィールドでは、個人データを削除することができます。これは、`00000000-0000-0000-0000-000000000000` に設定されます。 
+- **ユーザー** - このフィールドでは、個人データを削除することができます。これは、`00000000-0000-0000-0000-000000000000` に設定されます。
 - **Application**
 - **状態**
 - **Date**
@@ -133,7 +133,7 @@ Azure Portal の他のレポートと同様に、フィルターを使用して�
 1. 使用されるクライアントが先進認証をサポートしている。
 2. クラウド サービスの既定の認証プロトコルとして最新の認証が有効になっている。
 
-最新の認証を現在サポートしている Office クライアントに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。 このページには、特定の Exchange Online テナントと Skype for Business Online テナントで最新の認証を有効にする手順へのリンクも含まれています。 SharePoint Online では、先進認証が既定で有効になっています。
+最新の認証を現在サポートしている Office クライアントに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。 このページには、特定の Exchange Online テナントと Skype for Business Online テナントで最新の認証を有効にする手順へのリンクも含まれています。 SharePoint Online では、先進認証が既定で有効になっています。 Teams は最新の認証のみをサポートしており、レガシ認証はサポートしていないため、このバイパスの問題は Teams には適用されません。 
 
 Microsoft 365 ブラウザー ベースのアプリケーション (Office ポータル、Yammer、SharePoint サイト、Outlook on the Web など) は現在、テナント制限をサポートしています。 シック クライアント (Outlook、Skype for Business、Word、Excel、PowerPoint など) は、先進認証を使用している場合にのみテナント制限を適用できます。  
 
@@ -157,7 +157,7 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
 
    1. Fiddler Web Debugger ツールで、 **[Rules]** メニューを選択し、 **[Customize Rules…]** を選択して CustomRules ファイルを開きます。
 
-   2. `OnBeforeRequest` 関数の先頭に次の行を追加します。 \<List of tenant identifiers\> をテナントに登録されているドメイン (`contoso.onmicrosoft.com` など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。  テナントでログ表示するには、正しい GUID 識別子を含める **必要があります**。 
+   2. `OnBeforeRequest` 関数の先頭に次の行を追加します。 \<List of tenant identifiers\> をテナントに登録されているドメイン (`contoso.onmicrosoft.com` など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。  テナントでログ表示するには、正しい GUID 識別子を含める **必要があります**。
 
    ```JScript.NET
     // Allows access to the listed tenants.

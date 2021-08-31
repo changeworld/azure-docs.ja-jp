@@ -3,23 +3,23 @@ title: Azure EA Portal のアクセスのトラブルシューティング
 description: この記事では、Azure Enterprise Agreement (EA) に関して Azure EA Portal で発生する可能性のある一般的な問題について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/26/2021
+ms.date: 07/26/2021
 ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 852fb85607318772870a8b6826c934997b84ff6d
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e18c4707a0de97c696aa4ca93ce4c3ca818eb929
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726468"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707529"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング
 
 この記事では、Azure Enterprise Agreement (EA) に関して発生する可能性のある一般的な問題について説明します。 Azure EA Portal は、Enterprise Agreement のユーザーとコストを管理するために使用されます。 Azure EA Portal へのアクセスを構成または更新しているときに、次のような問題が発生する可能性があります。
 
-## <a name="issues-adding-an-admin-to-an-enrollment"></a>登録に管理者を追加する際の問題
+## <a name="issues-adding-a-user-to-an-enrollment"></a>ユーザーを登録に追加するときの問題
 
 エンタープライズ登録には、さまざまな種類の認証レベルがあります。 認証レベルが正しく適用されていない場合、Azure EA Portal にサインインしようとすると問題が発生することがあります。
 

@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a0a7b24c2d28e27c44a130383e852838950abe49
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d6a1d252a6b9068697fe738d4d2b1c6bbf6ceeb5
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733195"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588275"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Azure IoT Central ソリューションでコマンドを使用する方法
 
@@ -39,7 +39,7 @@ ms.locfileid: "108733195"
 
 | フィールド             |説明|
 |-------------------|-----------|
-|表示名       |ダッシュボードとフォームで使用されるコマンド値。|
+|表示名       |ダッシュボード タイルとデバイス フォームで使用されるコマンド値。|
 | 名前            | コマンドの名前。 IoT Central によって表示名からこのフィールドの値が生成されますが、必要に応じて独自の値を選択できます。 このフィールドは英数字である必要があります。 デバイス コードでは、この **[名前]** 値を使用します。|
 | 機能の種類 | コマンド。|
 | オフラインの場合にキューに入れる | このコマンドを "*オフライン*" コマンドにするかどうか。 |

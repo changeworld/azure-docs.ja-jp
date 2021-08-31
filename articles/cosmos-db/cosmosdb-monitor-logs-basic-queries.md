@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/12/2021
 ms.author: esarroyo
-ms.openlocfilehash: 51ab68d77e6d5f7e69701b7bc36eaf58f51bf48d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 769db1b447c6f5ce31a1ed23ddf5d7ef973bcad5
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966355"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112553146"
 ---
 # <a name="troubleshoot-issues-with-diagnostics-queries"></a> 診断クエリに関する問題のトラブルシューティング
 
@@ -21,7 +21,7 @@ ms.locfileid: "111966355"
 
 Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテーブルに書き込まれるので、ユーザーはクエリを実行するカテゴリを指定する必要があります。
 
-リソース固有テーブル (SQL API では現在プレビュー段階) の場合、データはリソースのカテゴリごとに個別のテーブルに書き込まれます。 これにより、データを非常に簡単に操作できるようになり、スキーマも検出しやすくなり、インジェストの待ち時間とクエリ時間の両方でパフォーマンスが向上するため、このモードをお勧めします。
+Resource-specific (リソース別) テーブルでは、リソースの各カテゴリーに対応する個別のテーブルにデータを書き込みます (Table API では利用できません)。 これにより、データを非常に簡単に操作できるようになり、スキーマも検出しやすくなり、インジェストの待ち時間とクエリ時間の両方でパフォーマンスが向上するため、このモードをお勧めします。
 
 ## <a name="azurediagnostics-queries"></a><a id="azure-diagnostics-queries"></a> AzureDiagnostics クエリ
 
@@ -328,7 +328,7 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
    | summarize by OperationName 
    ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ 
 * Cosmos DB の診断設定を作成する方法の詳細については、[診断設定の作成](cosmosdb-monitor-resource-logs.md)に関する記事を参照してください。
 
 * Azure portal、CLI、または PowerShell を使用して診断設定を作成する方法の詳細については、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../azure-monitor/essentials/diagnostic-settings.md)に関する記事を参照してください。

@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): Azure Resource Manager を使用してワークスペースをデプロイする - Azure'
-description: Azure Resource Manager テンプレートを使用して Azure Machine Learning Studio (クラシック) 用のワークスペースをデプロイする方法です
+description: Azure Resource Manager テンプレートを使用して Machine Learning Studio (クラシック) 用のワークスペースをデプロイする方法
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,23 +9,23 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: 6c81397fb7729e6ce55da6fa7c8121de43c96130
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9a915a3e5df97da522c8e566a857e04d7491c471
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956043"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581578"
 ---
-# <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用して Azure Machine Learning Studio (クラシック) ワークスペースをデプロイする
+# <a name="deploy-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用して Machine Learning Studio (クラシック) ワークスペースをデプロイする
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Azure Resource Manager デプロイ テンプレートは、検証および再試行メカニズムで相互接続されたコンポーネントをデプロイできるように、スケーラブルな方法を提供し、時間を節約します。 Azure Machine Learning Studio (クラシック) ワークスペースを設定するには、たとえば、Azure ストレージ アカウントを構成してから、ワークスペースをデプロイする必要があります。 この作業を何百ものワークスペースに対して手動で行うことを想像してください。 代わりに Azure Resource Manager テンプレートを使用すれば、もっと簡単に Studio (クラシック) ワークスペースとそのすべての依存関係をデプロイできます。 この記事では、このプロセスを順を追って説明します。 Azure Resource Manager の概要については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。
+Azure Resource Manager デプロイ テンプレートは、検証および再試行メカニズムで相互接続されたコンポーネントをデプロイできるように、スケーラブルな方法を提供し、時間を節約します。 Machine Learning Studio (クラシック) ワークスペースを設定するには、たとえば、Azure ストレージ アカウントを構成してから、ワークスペースをデプロイする必要があります。 この作業を何百ものワークスペースに対して手動で行うことを想像してください。 代わりに Azure Resource Manager テンプレートを使用すれば、もっと簡単に Studio (クラシック) ワークスペースとそのすべての依存関係をデプロイできます。 この記事では、このプロセスを順を追って説明します。 Azure Resource Manager の概要については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>詳細な手順: Machine Learning ワークスペースの作成
-Azure リソース グループを作成し、Resource Manager テンプレートを使用して、新しい Azure ストレージ アカウントと新しい Azure Machine Learning Studio (クラシック) ワークスペースをデプロイします。 デプロイが完了したら、作成されたワークスペースに関する重要な情報 (プライマリ キー、workspaceID、およびワークスペースへの URL) を出力します。
+Azure リソース グループを作成し、Resource Manager テンプレートを使用して、新しい Azure ストレージ アカウントと新しい Machine Learning Studio (クラシック) ワークスペースをデプロイします。 デプロイが完了したら、作成されたワークスペースに関する重要な情報 (プライマリ キー、workspaceID、およびワークスペースへの URL) を出力します。
 
 ### <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの作成
 
@@ -128,7 +128,7 @@ $rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworks
 デプロイが完了すると、デプロイしたワークスペースのプロパティに簡単にアクセスできます。 たとえば、プライマリ キー トークンにアクセスできます。
 
 ```powershell
-# Access Azure Machine Learning Studio Workspace Token after its deployment.
+# Access Machine Learning Studio (classic) Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
@@ -138,7 +138,7 @@ $rgd.Outputs.mlWorkspaceToken.Value
 # List the primary and secondary tokens of all workspaces
 Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
-ワークスペースをプロビジョニングしたら、[Azure Machine Learning Studio (クラシック) 用の PowerShell モジュール](https://aka.ms/amlps)を使用して、Azure Machine Learning Studio (クラシック) タスクを自動化することもできます。
+ワークスペースをプロビジョニングしたら、[Machine Learning Studio (クラシック) 用の PowerShell モジュール](https://aka.ms/amlps)を使用して、Machine Learning Studio (クラシック) タスクを自動化することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

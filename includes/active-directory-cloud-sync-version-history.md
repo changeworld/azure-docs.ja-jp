@@ -1,14 +1,22 @@
 ---
-ms.openlocfilehash: 5208f497fc5423cd0e9c2343af2a5757088399b1
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: d7780da3ad23c0c157284839c5063c6c015a42a6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111449941"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121800879"
 ---
 この記事では、これまでにリリースされた Azure Active Directory Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 
 
 Microsoft では、エージェントの最新バージョンと 1 つ前のバージョンを直接サポートしています。
+
+## <a name="115820"></a>1.1.582.0
+
+2021 年 8 月 8 日 - ダウンロード開始
+
+>[!NOTE] 
+>これは Azure AD Connect のセキュリティ更新プログラム リリースです。 このリリースで[こちらの CVE](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) に記載されている脆弱性に対処します。 この脆弱性に関する詳細については、CVE を参照してください。
+>このリリースは[こちらのリンク](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller)からダウンロードできます。
 
 ## <a name="113590"></a>1.1.359.0
 

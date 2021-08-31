@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c373e45c8607f10c36f40a23c776bd081bf13207
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 59eb3874a7f0de9eba1f5b75204618c887cb9bb2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789521"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122184116"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -54,6 +54,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 * kubenet を使用するには、ルート テーブルとユーザー定義ルートが必要になるため、操作が複雑になります。
 * kubenet の設計により、直接的なポッドのアドレス指定は kubenet ではサポートされていません。
 * Azure CNI クラスターとは異なり、複数の kubenet クラスターで 1 つのサブネットを共有することはできません。
+* 独自のサブネットを指定する場合は、そのサブネットに関連付けられているネットワーク セキュリティ グループ (NSG) を管理する必要があります。 AKS では、そのサブネットに関連付けられている NSG は変更されません。 また、NSG のセキュリティ規則でノードとポッド CIDR の間のトラフィックが許可されるようにする必要もあります。
 * **kubenet でサポートされていない機能** には次のものが含まれます。
    * [Azure ネットワーク ポリシー](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)。ただし、Calico ネットワーク ポリシーは kubenet でサポートされています。
    * [Windows ノード プール](./windows-faq.md)

@@ -8,18 +8,18 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f279ea2011b37c01b1ef9ec67a2b5642f7e640b8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9d8a72f4457c6759dc93fcdeae03abd1d4c8b168
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078096"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729833"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
-この記事では、クエリの例と、**Azure Digital Twins クエリ言語** を使用して [ツイン グラフ](concepts-twins-graph.md)で情報をクエリする手順について説明します。 (クエリ言語の概要については、[クエリ言語の概念](concepts-query-language.md)に関する記事を参照してください。)
+この記事では、クエリの例と、**Azure Digital Twins クエリ言語** を使用して [ツイン グラフ](concepts-twins-graph.md)で情報をクエリする手順について説明します。 (クエリ言語の概要については、[クエリ言語](concepts-query-language.md)に関する記事を参照してください。)
 
-デジタル ツインのクエリ言語の構造および共通のクエリ操作を示すサンプル クエリについて説明します。 また、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) または [SDK](concepts-apis-sdks.md#overview-data-plane-apis) を使用して、クエリを作成した後にそれらを実行する方法について説明します。
+この記事では、デジタル ツインのクエリ言語の構造および共通のクエリ操作を示すサンプル クエリについて説明します。 また、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) または [SDK](concepts-apis-sdks.md#overview-data-plane-apis) を使用して、クエリを作成した後にそれらを実行する方法について説明します。
 
 > [!NOTE]
 > 次のサンプル クエリを、API または SDK の呼び出しで実行している場合は、クエリ テキストを 1 行にまとめる必要があります。
@@ -47,7 +47,7 @@ ms.locfileid: "110078096"
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByProperty2":::
 
-「[デジタル ツインにタグを追加する](how-to-use-tags.md)」で説明されているように、"*タグ*" プロパティを使用してツインを取得する場合に役立ちます。 次は、*red* のタグが付いているツインをすべて取得するクエリです。
+「[デジタル ツインにタグを追加する](how-to-use-tags.md)」で説明されているように、このクエリは *tag* プロパティを使用してツインを取得する場合に役立ちます。 次は、*red* のタグが付いているツインをすべて取得するクエリです。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags1":::
 
@@ -96,10 +96,10 @@ ms.locfileid: "110078096"
 
 デジタル ツインの **リレーションシップ** に基づいてクエリを実行する場合、Azure Digital Twins クエリ言語には特殊な構文があります。
 
-リレーションシップは `FROM` 句のクエリ スコープにプルされます。 "従来の" SQL 型言語とは異なり、この `FROM` 句の各式はテーブルではありません。そうではなく、`FROM` 句は、エンティティ間のリレーションシップのトラバーサルを表します。 リレーションシップをトラバーサルするために、Azure Digital Twins ではカスタム バージョンの `JOIN` を使用します。
+リレーションシップは `FROM` 句のクエリ スコープにプルされます。 "従来の" SQL 型言語とは異なり、`FROM` 句の各式はテーブルではありません。そうではなく、`FROM` 句は、エンティティ間のリレーションシップのトラバーサルを表します。 リレーションシップをトラバーサルするために、Azure Digital Twins ではカスタム バージョンの `JOIN` を使用します。
 
-Azure Digital Twins の[モデル](concepts-models.md)機能では、ツインと無関係のリレーションシップは存在しないことを思い出してください。 つまり、リレーションシップは、個別に照会することはできず、ツインに関連付けられる必要があります。
-これを処理するために、キーワード `RELATED` を `JOIN` 句に使用して、ツイン コレクションからの特定のタイプのリレーションシップのセットを取得します。 次に、クエリでは、`WHERE` 句で、リレーションシップ クエリで使用する特定のツインをフィルター処理する必要があります (ツインの `$dtId` 値を使用)。
+Azure Digital Twins [モデル](concepts-models.md)の機能を使用すると、リレーションシップがツインとは無関係に存在しないことを思い出してください。これは、リレーションシップを個別に照会することができず、ツインに関連付けられている必要があることを意味します。
+この事実を反映するために、キーワード `RELATED` を `JOIN` 句に使用して、ツイン コレクションからの特定の種類のリレーションシップのセットを取得します。 次に、クエリでは、`WHERE` 句でフィルター処理して、リレーションシップ クエリで使用する特定のツインを指定する必要があります (ツインの `$dtId` 値を使用)。
 
 次のセクションでは、このような例をいくつか示します。
 
@@ -108,6 +108,8 @@ Azure Digital Twins の[モデル](concepts-models.md)機能では、ツイン�
 リレーションシップベースのクエリの例を次に示します。 このコード スニペットを実行すると、*ID* プロパティが 'ABC' であるすべてのデジタル ツインと、*contains* リレーションシップを介してこれらのデジタル ツインに関連するすべてのデジタル ツインが選択されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationship1":::
+
+リレーションシップの種類 (上の例の `contains`) は、[DTDL 定義](concepts-models.md#basic-relationship-example)内のリレーションシップの **name** フィールドを使用して示されます。
 
 > [!NOTE]
 > 開発者は、この `JOIN` を `WHERE` 句のキー値と関連付ける (または `JOIN` 定義を使用してインラインでキー値を指定する) 必要はありません。 リレーションシップのプロパティ自体でターゲット エンティティが識別されるため、この相関関係はシステムによって自動的に計算されます。
@@ -137,11 +139,11 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 ### <a name="query-with-multiple-joins"></a>複数の JOIN を使用したクエリ
 
-1 つのクエリで、最大 5 つの `JOIN` がサポートされています。 これにより、一度に複数のレベルのリレーションシップを走査することができます。 
+1 つのクエリで最大 5 つの `JOIN` がサポートされているため、複数レベルのリレーションシップを一度に走査できます。 
 
 複数レベルのリレーションシップをクエリするには、1 つの `FROM` ステートメントに続けて N 個の `JOIN` ステートメントを使用します。ここで、`JOIN` ステートメントは前の `FROM` または `JOIN` ステートメントの結果に関するリレーションシップを表します。
 
-次に、複数結合のクエリの例を示します。このクエリでは、ルーム 1 と 2 のライトパネルに含まれるすべての電球が取得されます。
+次に、複数結合のクエリの例を示します。このクエリでは、ルーム 1 と 2 のライト パネルに含まれるすべての電球が取得されます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationship3":::
 
@@ -187,7 +189,7 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections4":::
 
-これは、上記と同じセットに対してクエリを実行する類似のクエリですが、"*Consumer.name*" プロパティのみが `consumerName` としてプロジェクションされ、完全な "Factory" はツインとしてプロジェクションされます。
+これは、上記と同じセットに対してクエリを実行する類似のクエリですが、*Consumer.name* プロパティのみが `consumerName` としてプロジェクションされ、完全な Factory はツインとしてプロジェクションされます。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections5":::
 
@@ -215,7 +217,7 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 ## <a name="other-compound-query-examples"></a>その他の複合クエリの例
 
-結合演算子を使用して上記のクエリ タイプを **組み合わせ**、1 つのクエリに含める詳細を増やすことができます。 次に、複数のツイン記述子タイプに対して一度にクエリを実行する複合クエリの追加例をいくつか挙げます。
+結合演算子を使用して上記のクエリ タイプを **組み合わせ**、1 つのクエリに含める詳細を増やすことができます。 次に、複数のツイン記述子の種類に対して一度にクエリを実行する複合クエリのその他の例をいくつか挙げます。
 
 * Room 123 に与えられているデバイスの中から、Operator の役割を担う MxChip デバイスが返されます
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples1":::
@@ -237,7 +239,7 @@ API を直接呼び出すか、Azure Digital Twins で使用可能な [SDK](conc
 この呼び出しで使用されるクエリでは、デジタル ツインの一覧が返されます。これは、上記の例で [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) オブジェクトによって表されています。 各クエリのデータの戻り値の型は、`SELECT` ステートメントで指定する項目によって異なります。
 * `SELECT * FROM ...` で始まるクエリでは、デジタル ツイン (`BasicDigitalTwin` オブジェクトとして、または独自に作成した他のカスタム デジタル ツインの種類としてシリアル化可能) の一覧が返されます。
 * `SELECT <A>, <B>, <C> FROM ...` の形式で始まるクエリでは、キー `<A>`、`<B>`、`<C>` を含むディクショナリが返されます。
-* カスタム データを返すように、他の形式の `SELECT` ステートメントを作成できます。 独自のクラスを作成して、細かくカスタマイズされた結果セットが処理されるようにすることを検討してください。 
+* カスタム データを返すように、他の形式の `SELECT` ステートメントを作成できます。 独自のクラスを作成して、カスタマイズされた結果セットが処理されるようにすることを検討してください。 
 
 ### <a name="query-with-paging"></a>ページングを使用したクエリ
 

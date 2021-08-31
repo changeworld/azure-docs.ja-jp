@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: bce09fad6ffa169a019628498a686226eff266c7
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: f21dc3251a64a3a432320e1d7a1f64abc124b61e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384980"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752081"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services をデプロイするための前提条件 (延長サポート)
 
@@ -35,6 +35,7 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
        <Subnet name="<subnet-name>"/> 
      </Subnets> 
     </InstanceAddress> 
+  </AddressAssignments> 
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>異なるリソース グループにある仮想ネットワーク
@@ -46,6 +47,7 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
         <Subnet name="<subnet-name>"/> 
        </Subnets> 
      </InstanceAddress> 
+   </AddressAssignments>
 ```
 ### <a name="2-remove-the-old-plugins"></a>2) 古いプラグインを削除する
 
@@ -110,6 +112,9 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
 ```xml
 <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
+## <a name="access-control"></a>アクセス制御
+
+ネットワーキング リソースが含まれるサブスクリプションには、Cloud Services のために[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)以上のアクセス権を与える必要があります (拡張サポート)。 詳細については、[RBAC 組み込みロール](../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
 ## <a name="key-vault-creation"></a>Key Vault の作成 
 
@@ -118,5 +123,5 @@ Key Vault は、Cloud Services (延長サポート) に関連付けられてい�
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
-- Cloud Services (延長サポート) の[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) の[よく寄せられる質問](faq.yml)を確認します。
 - [Cloud Services (延長サポート) のサンプル リポジトリ](https://github.com/Azure-Samples/cloud-services-extended-support)に関する記事を確認します。

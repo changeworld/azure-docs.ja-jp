@@ -1,32 +1,32 @@
 ---
-title: 開発とテストに Azure ストレージ エミュレーターを使用する
-description: Azure Storage Emulator を使用すると、Azure Storage アプリケーションを開発してテストするのための無料のローカル開発環境が提供されます。
+title: 開発とテストに Azure ストレージ エミュレーターを使用する (非推奨)
+description: Azure ストレージ エミュレーター (非推奨) を使用すると、Azure Storage アプリケーションを開発してテストするのための無料のローカル開発環境が提供されます。
 author: twooley
 ms.author: twooley
-ms.date: 07/16/2020
+ms.date: 07/14/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 812694ef96e60a9cc52dd9ab94408e3f90fd6d93
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2ff639cd19a97d2e3a5ef730c774f8c967cfa6c3
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677234"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203803"
 ---
-# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>開発とテストに Azure ストレージ エミュレーターを使用する
+# <a name="use-the-azure-storage-emulator-for-development-and-testing-deprecated"></a>開発とテストに Azure ストレージ エミュレーターを使用する (非推奨)
 
 Microsoft Azure Storage Emulator は、ローカル開発のために Azure の Blob service、Queue サービス、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
 
 > [!IMPORTANT]
-> Azure Storage Emulator は現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage Emulator よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
+> Azure Storage Emulator は非推奨になりました。 Azure Storage によるローカル開発には [**Azurite**](storage-use-azurite.md) エミュレーターを使用することを Microsoft は推奨しています。 Azurite は Azure Storage Emulator よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
 
 ## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターを入手する
 
 ストレージ エミュレーターは、[Microsoft Azure SDK](https://azure.microsoft.com/downloads/) に付属しています。 また、[スタンドアロンのインストーラー](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (直接ダウンロード) を使用して、ストレージ エミュレーターをインストールすることも可能です。 ストレージ エミュレーターをインストールするには、お使いのコンピューターに対する管理者特権が必要です。
 
-ストレージ エミュレーターは、現在、Windows でのみ実行されます。 Linux 用のストレージ エミュレーターが必要な場合のオプションの 1 つは、コミュニティで管理されているオープンソースのストレージ エミュレーター [Azurite](https://github.com/azure/azurite) です。
+ストレージ エミュレーターは、現在、Windows でのみ実行されます。 Linux でのエミュレーションには、[Azurite](https://github.com/azure/azurite) エミュレーターを使用します。
 
 > [!NOTE]
 > ストレージ エミュレーターの特定のバージョンで作成されたデータには、別のバージョンを使用しているとアクセスできない場合があります。 データを永続化して長期にわたって保持する必要がある場合、そのデータはストレージ エミュレーターではなく Azure ストレージ アカウントに格納することをお勧めします。

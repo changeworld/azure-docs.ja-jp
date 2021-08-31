@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05713c5a27a8b42ce9b6967212bf1414c841788c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6307c99c0796fb4159da7563c951304ceef6ece2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474579"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750861"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digital Twins の高可用性とディザスター リカバリー
 
@@ -70,7 +70,7 @@ Service Health イベントを表示するには...
 ## <a name="best-practices"></a>ベスト プラクティス
 
 HA/DR のベスト プラクティスについては、このトピックの次の Azure ガイダンスを参照してください。 
-* [Azure ビジネス継続性テクニカル ガイダンス](/azure/architecture/framework/resiliency/overview)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 
+* 「[信頼性の高い Azure アプリケーションを設計する](/azure/architecture/framework/resiliency/app-design)」という記事では、事業継続とディザスター リカバリーに対する理解が深まるよう、一般的なフレームワークについて説明しています。 
 * 「[Disaster recovery and high availability for Azure applications](/azure/architecture/framework/resiliency/backup-and-recovery)」(Azure アプリケーションのディザスター リカバリーと高可用性) では、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
 
 ## <a name="next-steps"></a>次の手順 
@@ -78,4 +78,4 @@ HA/DR のベスト プラクティスについては、このトピックの次�
 Azure Digital Twins ソリューションの概要については、次を参照してください。
  
 * [Azure Digital Twins とは](overview.md)
-* [クイック スタート: Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)
+* [Azure Digital Twins Explorer の概要](quickstart-azure-digital-twins-explorer.md)

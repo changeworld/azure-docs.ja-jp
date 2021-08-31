@@ -8,43 +8,55 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/24/2021
+ms.date: 07/01/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 81bdc8550f57a7c1c4992825cd231a9bb3cad4ce
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1c7d4eeaf7df1764b021cd5914d6f4f4a88a9a1c
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457478"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213473"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードのリセット フローを設定する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-## <a name="password-reset-flow"></a>パスワードのリセット フロー
+## <a name="overview"></a>概要
 
-[サインアップとサインイン](add-sign-up-and-sign-in-policy.md)の体験では、ユーザーは **[パスワードを忘れた場合]** リンクを使用して自分のパスワードをリセットできます。 パスワードのリセット フローでは、次の手順を実行します。
+[サインアップとサインインの流れ](add-sign-up-and-sign-in-policy.md)では、 **[Forgot your password?]\(パスワードをお忘れですか\)** リンクでパスワードをリセットできます。 このセルフサービス パスワード リセット フローは、[メール アドレス](sign-in-options.md#email-sign-in)または[ユーザー名](sign-in-options.md#username-sign-in)とパスワードでサインインを行う Azure AD B2C ローカル アカウントで利用できます。
 
-1. ユーザーはサインアップおよびサインイン ページで、 **[パスワードを忘れた場合]** リンクをクリックします。 Azure AD B2C によってパスワードのリセット フローが開始されます。
-2. ユーザーはメール アドレスを入力し、 **[確認コードを送信する]** を選択します。 Azure AD B2C から、ユーザーに確認コードが送信されます。
-
-* ユーザーは、メール ボックスを開き、確認コードをコピーする必要があります。 その後、ユーザーは Azure AD B2C パスワードのリセット ページで確認コードを入力し、 **[コードの確認]** を選択します。
-
-> [!NOTE]
-> メールの検証が完了した後でも、ユーザーは **[メールの変更]** を選択し、もう一方のメールを入力して、最初からメールの検証をやり直すことができます。
-3. ユーザーは次に、新しいパスワードを入力できます。
+パスワードのリセット フローでは、次の手順を実行します。
 
 ![パスワードのリセット フロー](./media/add-password-reset-policy/password-reset-flow.png)
 
-パスワードのリセット フローは、サインイン用のパスワードが指定されている[電子メール アドレス](identity-provider-local.md#email-sign-in)または[ユーザー名](identity-provider-local.md#username-sign-in)を使用する Azure AD B2C のローカル アカウントに適用されます。
+**1.** サインアップとサインインのページで **[Forgot your password?]\(パスワードをお忘れですか\)** リンクをクリックします。 Azure AD B2C によってパスワードのリセット フローが開始されます。
+
+**2.** メール アドレスを入力して **[Send verification code]\(確認コードの送信\)** をクリックします。 Azure AD B2C からユーザーのメールクライアントに確認コードが送信されます。 メールの確認コードをコピーして、Azure AD B2C のパスワードのリセット ページにそのコードを入力し、 **[Verify code]\(コードの確認\)** をクリックします。
+
+**3.** 新しいパスワードを入力できます。 (メールの確認後も、 **[Change e-mail]\(メールの変更\)** をクリックできます。[メール変更ボタンの非表示](#hiding-the-change-email-button)に関する下のセクションをご覧ください。)
 
 > [!TIP]
-> セルフサービス パスワード リセットのフローを使用すると、ユーザーがパスワードを忘れてしまい、パスワードのリセットを望む場合に、パスワードを変更できます。 ユーザーがパスワードを知っていて、それを変更することを望む場合に対応できるようにするため、[パスワード変更フロー](add-password-change-policy.md)を構成することを検討してください。
+> セルフサービス パスワード リセットのフローを使用すると、ユーザーがパスワードを忘れてしまい、パスワードのリセットを望む場合に、パスワードを変更できます。 
+> - 覚えているパスワードを変更する場合は、[パスワード変更フロー](add-password-change-policy.md)を使用します。 
+> - ユーザーにパスワードの変更を強制する場合は、[パスワードのリセットの強制](force-password-reset.md)フローを使用します (たとえば、はじめてサインインするとき、管理者がユーザーのパスワードをリセットしたとき、Azure AD B2C にユーザーを移行してランダムなパスワードを割り当てたとき)。
 
-ランダムなパスワードを使用してユーザーを Azure AD B2C に移行した後には、一般に、最初のサインイン時にユーザーに電子メール アドレスを確認させ、パスワードをリセットさせることを行います。 管理者がユーザーのパスワードを変更した後に、ユーザーにパスワードのリセットを強制することも一般的です。この機能を有効にするには、[パスワードの強制的なリセット](force-password-reset.md)に関するページを参照してください。
+### <a name="hiding-the-change-email-button"></a>メール変更ボタンを隠す
+
+メールの確認後も、 **[Change email]\(メールの変更\)** をクリックし、別のメールアドレスを入力し、メールの確認手続きを最初から繰り返すことができます。 **[Change email]\(メールの変更\)** ボタンを隠したい場合は、CSS を編集して、当該ページの対応する HTML 要素を隠すことができます。 たとえば、下の CSS 項目を selfAsserted.HTML に追加し、[HTML テンプレートを使用してユーザー インターフェイスをカスタマイズできます](customize-ui-with-html.md)。
+
+```html
+<style type="text/css">
+   .changeClaims
+   {
+     visibility: hidden;
+   }
+</style>
+```
+
+selfasserted.html ページの **[Change email]\(メールの変更\)** ボタンのデフォルトの名前は `changeclaims` です。 ブラウザーのツール (Inspect (調査) など) でサインアップ ページのページ ソースを調べれば、ボタンの名前が分かります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -303,8 +315,10 @@ ms.locfileid: "110457478"
 1. **[ユーザー フローを作成する]** ページで、 **[パスワード リセット]** ユーザー フローを選択します。 
 1. **[バージョンの選択]** で **[Recommended]\(推奨\)** を選択して、 **[作成]** を選択します。
 1. ユーザー フローの **[名前]** を入力します。 たとえば、「*passwordreset1*」と入力します。
-1. **[ID プロバイダー]** で、 **[Reset password using email address]\(メール アドレスを使用してパスワードをリセットする\)** を有効にします。
-1. **[アプリケーション要求]** で **[詳細を表示]** を選択し、アプリケーションに送り返される承認トークンで返される要求を選択します。 たとえば、 **[User's Object ID] (ユーザーのオブジェクト ID)** を選択します。
+1. **[Identity providers]\(ID プロバイダー\)** で **[Reset password using username]\(ユーザー名を使用してパスワードをリセット\)** または **[Reset password using email address]\(メール アドレスを使用してパスワードをリセット\)** を有効にします。
+1. 2 つ目の認証方法による ID 確認をユーザーに求める場合は、 **[Multifactor authentication]\(多要素認証\)** で、多要素認証 (MFA) をどの方法でいつ実施するかを選択します。 [詳細については、こちらを参照してください](multi-factor-authentication.md)。
+1. Azure AD B2C テナントに条件付きアクセス ポリシーを設定していて、それをこのユーザー フローで有効にする場合は、 **[Conditional access]\(条件付きアクセス\)** の **[Enforce conditional access policies]\(条件付きアクセス ポリシーを有効にする\)** チェック ボックスに印を入れます。 ポリシー名を指定する必要はありません。 [詳細については、こちらを参照してください](conditional-access-user-flow.md?pivots=b2c-user-flow)。
+1. 1. **[アプリケーション要求]** で **[詳細を表示]** を選択し、アプリケーションに送り返される承認トークンで返される要求を選択します。 たとえば、 **[User's Object ID] (ユーザーのオブジェクト ID)** を選択します。
 1. **[OK]** を選択します。
 1. **[作成]** を選択して、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
 

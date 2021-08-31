@@ -1,6 +1,6 @@
 ---
 title: Arc 対応 PostgreSQL Hyperscale サーバー グループの接続エンドポイントを取得し、接続文字列を作成する
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: Arc 対応 PostgreSQL Hyperscale サーバー グループの接続エンドポイントを取得し、接続文字列を作成する
 services: azure-arc
 ms.service: azure-arc
@@ -8,16 +8,16 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 3477c8f1dbffb9f2c42c72c1b0bfc03c662ed24c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 964b7fcca00afb91a457203d2ed53b885a254d5e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412297"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733559"
 ---
-# <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループの接続エンドポイントを取得し、接続文字列を作成する
+# <a name="get-connection-endpoints-and-form-the-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループの接続エンドポイントを取得し、接続文字列を作成する
 
 この記事では、サーバー グループの接続エンドポイントを取得する方法と、アプリケーションまたはツール (あるいはその両方) で使用する接続文字列を作成する方法について説明します。
 
@@ -26,26 +26,13 @@ ms.locfileid: "111412297"
 
 ## <a name="get-connection-end-points"></a>接続エンドポイントを取得する:
 
-### <a name="from-cli-with-azdata"></a>CLI から azdata を使用する
-#### <a name="1-connect-to-your-arc-data-controller"></a>1.Arc データ コントローラーに接続する:
-- Arc データ コントローラーのホストで既にセッションが開かれている場合:次のコマンドを実行します。
-```console
-azdata login
-```
-
-- Arc データ コントローラーのホストでセッションが開かれていない場合: 次のコマンドを実行します。 
-```console
-azdata login --endpoint https://<external IP address of host/data controller>:30080
-```
-
-#### <a name="2-show-the-connection-endpoints"></a>2.接続エンドポイントを表示する
 次のコマンドを実行します。
-```console
-azdata arc postgres endpoint list -n <server group name>
+```azurecli
+az postgres arc-server endpoint list -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 次に例を示します。
-```console
-azdata arc postgres endpoint list -n postgres01
+```azurecli
+az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
 ```
 
 エンドポイントの一覧が表示されます: アプリケーションを接続し、データベースを使用するために使用する PostgreSQL エンドポイントと、ログ分析と監視のための Kibana と Grafana のエンドポイント。 次に例を示します。 
@@ -79,10 +66,10 @@ postgres=#
 > [!NOTE]
 >
 > - "_PostgreSQL インスタンス_" という名前のエンドポイントで指定された _postgres_ ユーザーのパスワードは、サーバー グループのデプロイ時に選択したパスワードです。
-> - azdata について: 接続に関連付けられているリース時間は約 10 時間です。 その後、再接続する必要があります。 リースの有効期限が切れている場合は、azdata でコマンド (azdata login 以外) を実行しようとすると、次のエラー メッセージが表示されます。_エラー: (401)_ 
-> _理由:承認されていない_
-> _HTTP 応答ヘッダー:HTTPHeaderDict({'Date':'Sun, 06 Sep 2020 16:58:38 GMT', 'Content-Length':'0', 'WWW-Authenticate':'_ 
-> _基本領域 ="ログイン_ 資格情報が必要です", ベアラー エラー ="invalid_token", error_description="トークンの有効期限が切れています"'})_ これが発生した場合は、上記の説明に従って、azdata に再接続する必要があります。
+> _ERROR: (401)_ 
+> _Reason: Unauthorized_
+> _HTTP response headers: HTTPHeaderDict({'Date': 'Sun, 06 Sep 2020 16:58:38 GMT', 'Content-Length': '0', 'WWW-Authenticate': '_ 
+> _Basic realm="Login_ credentials required", Bearer error="invalid_token", error_description="The token is expired"'})_ これが発生した場合は、上記のように azdata と再接続する必要があります。
 
 ## <a name="from-cli-with-kubectl"></a>CLI から kubectl を使用する
 ```console
@@ -94,7 +81,6 @@ kubectl get postgresqls/<server group name> -n <namespace name>
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   3/3          123.456.789.4:31066      5d20h
 ``` 
-
 
 ## <a name="form-connection-strings"></a>接続文字列を作成する:
 サーバー グループの接続文字列の次のテンプレート表を使用します。 次に、必要に応じて、コピー/貼り付けやカスタマイズを行うことができます。

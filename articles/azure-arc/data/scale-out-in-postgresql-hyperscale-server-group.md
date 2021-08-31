@@ -7,27 +7,27 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: c96a70ff3a89c09f625f4c478f55690a3203f17c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b3e7df998d32317763c6a0de7c0e7c1cc2f2420b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414949"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733507"
 ---
 # <a name="scale-out-and-in-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>ワーカー ノードを追加して Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをスケールアウトおよびスケールインする
 このドキュメントでは、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをスケールアウトおよびスケールインする方法について説明します。 シナリオを使用して説明します。 **シナリオを実行せずにスケールアウトする方法を確認したい場合は、「[スケール アウト](#scale-out)」** または「[スケールイン]()」の段落に進んでください。
 
-Azure Arc 対応 SQL Managed Instance に Postgres インスタンス (Postgres Hyperscale ワーカー ノード) を追加するときにスケールアウトします。
+Azure Arc 対応 PosrgreSQL Hyperscale に Postgres インスタンス (Postgres Hyperscale ワーカー ノード) を追加するときにスケールアウトします。
 
-Azure Arc 対応 SQL Managed Instance から Postgres インスタンス (Postgres Hyperscale ワーカー ノード) を削除するときにスケールインします。
+Azure Arc 対応 PosrgreSQL Hyperscale から Postgres インスタンス (Postgres Hyperscale ワーカー ノード) を削除するときにスケールインします。
 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="get-started"></a>作業開始
-Azure Arc 対応 PostgreSQL Hyperscale または Azure Database for PostgreSQL Hyperscale (Citus) のスケーリング モデルについて既によく理解している場合は、この段落をスキップできます。 そうでない場合は、まず Azure Database for PostgreSQL Hyperscale (Citus) のドキュメント ページでこのスケーリング モデルについての説明を参照することが推奨されます。 Azure Database for PostgreSQL Hyperscale (Citus) は、Azure Arc 対応データ サービスの一部として提供されるのではなく、Azure でサービスとしてホストされるものと同じテクノロジです (Platform As A Service、PAAS とも呼ばれます)。
+## <a name="get-started"></a>はじめに
+Azure Arc 対応 PostgreSQL Hyperscale または Azure Database for PostgreSQL Hyperscale (Citus) のスケーリング モデルについて既によく理解している場合は、この段落をスキップできます。 そうでない場合は、まず Azure Database for PostgreSQL Hyperscale (Citus) のドキュメント ページでこのスケーリング モデルについての説明を参照することが推奨されます。 Azure Database for PostgreSQL Hyperscale (Citus) は、Azure Arc 対応 Data Services の一部として提供されるのではなく、Azure でサービスとしてホストされるものと同じテクノロジです (Platform As A Service、PAAS とも呼ばれます)。
 - [ノードとテーブル](../../postgresql/concepts-hyperscale-nodes.md)
 - [アプリケーションの種類の決定](../../postgresql/concepts-hyperscale-app-type.md)
 - [ディストリビューション列の選択](../../postgresql/concepts-hyperscale-choose-distribution-column.md)
@@ -48,12 +48,12 @@ Azure Arc 対応 PostgreSQL Hyperscale または Azure Database for PostgreSQL H
 
 ##### <a name="list-the-connection-information"></a>接続情報を一覧表示する
 最初に接続情報を取得して、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループに接続します。このコマンドの一般的な形式は次のとおりです。
-```console
-azdata arc postgres endpoint list -n <server name>
+```azurecli
+az postgres arc-server endpoint list -n <server name>  --k8s-namespace <namespace> --use-k8s
 ```
 次に例を示します。
-```console
-azdata arc postgres endpoint list -n postgres01
+```azurecli
+az postgres arc-server endpoint list -n postgres01  --k8s-namespace <namespace> --use-k8s
 ```
 
 出力例:
@@ -152,20 +152,20 @@ SELECT COUNT(*) FROM github_events;
 
 ## <a name="scale-out"></a>スケール アウト
 スケールアウト コマンドの一般的な形式は次のとおりです。
-```console
-azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
+```azurecli
+az postgres arc-server edit -n <server group name> -w <target number of worker nodes> --k8s-namespace <namespace> --use-k8s
 ```
 
 
 この例では、次のコマンドを実行して、ワーカー ノードの数を 2 から 4 に増やします。
 
-```console
-azdata arc postgres server edit -n postgres01 -w 4
+```azurecli
+az postgres arc-server edit -n postgres01 -w 4 --k8s-namespace <namespace> --use-k8s 
 ```
 
 ノードを追加すると、サーバー グループが保留中状態であることが確認できます。 次に例を示します。
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 ```console
@@ -179,10 +179,12 @@ postgres01  Pending 4/5    4
 ### <a name="verify-the-new-shape-of-the-server-group-optional"></a>サーバー グループの新しいシェイプを確認する (省略可能)
 次のいずれかの方法を使用して、追加したワーカー ノードがサーバー グループで使用されていることを確認します。
 
-#### <a name="with-azdata"></a>azdata を使用する:
+#### <a name="with-azure-cli-az"></a>Azure CLI (az) の場合:
+
 次のコマンドを実行します。
-```console
-azdata arc postgres server list
+
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 名前空間に作成されているサーバー グループの一覧が返され、ワーカー ノードの数が示されます。 次に例を示します。
@@ -232,7 +234,7 @@ SELECT COUNT(*) FROM github_events;
 
 
 > [!NOTE]
-> 環境によっては、たとえば単一ノード VM に `kubeadm` でテスト サーバー グループをデプロイした場合は、実行時間がわずかに向上することがあります。 Azure Arc 対応 PostgreSQL Hyperscale によって得られるパフォーマンス向上の種類を理解するには、次の短いビデオをご覧ください。
+> 環境によっては、たとえば単一ノード VM に `kubeadm` でテスト サーバー グループをデプロイした場合は、実行時間がわずかに向上することがあります。 Azure Arc 対応 PostgreSQL Hyperscale によって得られるパフォーマンス向上の種類を理解するには、次の短い動画をご覧ください。
 >* [Azure PostgreSQL Hyperscale (Citus) を使用したハイ パフォーマンスの HTAP](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [Python と Azure PostgreSQL Hyperscale (Citus) を使用して HTAP アプリケーションを構築する](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
@@ -240,8 +242,8 @@ SELECT COUNT(*) FROM github_events;
 スケールインする (サーバー グループでワーカー ノードの数を減らす) ときも、スケールアウトと同じコマンドを使用しますが、ワーカー グループは少ない数で指定してください。 削除されるワーカー ノードは、サーバー グループに追加された最新のノードです。 このコマンドを実行すると、システムは削除されたノードからデータを移動し、残りのノードに自動的に再調整します。 
 
 スケールイン コマンドの一般的な形式は次のとおりです。
-```console
-azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
+```azurecli
+az postgres arc-server edit -n <server group name> -w <target number of worker nodes> --k8s-namespace <namespace> --use-k8s
 ```
 
 

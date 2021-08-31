@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 04/21/2021
-ms.openlocfilehash: 1935d64db958112a7b6951abb81e3bd4d7119bda
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 06/23/2021
+ms.openlocfilehash: 4bebe0ea34f9f9cc62b0ed4e96fd6fb1c7615635
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525752"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913457"
 ---
 # <a name="generate-a-sas-uri-for-a-vm-image"></a>VM イメージの SAS URI を生成する
 
@@ -58,7 +58,7 @@ $resourceGroupName=myResourceGroupName
 $snapshotName=mySnapshot
 
 #Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
+#Know more about SAS here: https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1
 $sasExpiryDuration=3600
 
 #Provide storage account name where you want to copy the underlying VHD file. Currently, only general purpose v1 storage is supported.
@@ -84,7 +84,7 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 このスクリプトでは、次のコマンドを使用してスナップショットの SAS URI を生成し、その SAS URI を使用して基になる VHD をストレージ アカウントにコピーします。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 
-|コマンド  |Notes  |
+|command  |Notes  |
 |---------|---------|
 | az ディスク アクセスの許可    |     基盤となる VHD ファイルをストレージ アカウントにコピーするか、オンプレミスにダウンロードするために使用される、読み取り専用の SAS を生成します。    |
 |  az storage blob copy start   |    BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします。 az storage blob show を使用して、新しい BLOB の状態を確認します。     |
@@ -128,7 +128,7 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 2. PowerShell ファイル (.ps1 ファイル拡張子) を作成し、次のコードをコピーして、ローカルに保存します。
 
     ```azurecli-interactive
-    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net’ --name <container-name> --permissions rl --start ‘<start-date>’ --expiry ‘<expiry-date>’
+    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <container-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
     ```
 
 3. 次のパラメーター値を使用するようにファイルを編集します。 UTC 日時形式の日付 (2020-04-01T00:00:00Z など) を指定します。
@@ -141,7 +141,7 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
     適切なパラメーター値の例を次に示します (この記事の作成時点)。
 
     ```azurecli-interactive
-    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name <container-name> -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’
+    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name <container-name> -- permissions rl --start '2020-04-01T00:00:00Z' --expiry '2021-04-01T00:00:00Z'
     ```
 
 1. 変更を保存します。
@@ -174,5 +174,5 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 ## <a name="next-steps"></a>次の手順
 
 - 問題が発生した場合は、[VM SAS のエラー メッセージ](azure-vm-sas-failure-messages.md)に関する記事を参照してください
-- [パートナー センターにサインインする](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+- [パートナー センターにサインインする](https://go.microsoft.com/fwlink/?linkid=2165935)
 - [Azure Marketplace で仮想マシン オファーを作成する](azure-vm-create.md)

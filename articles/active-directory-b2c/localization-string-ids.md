@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50bf5f3188728db41f74b6fefe5946ef2127efe3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7e0f3e2ab306c46851e4c2ffcb6acf5824326282
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062310"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564372"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -513,11 +513,12 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 | id | 既定値 |
 | -- | ------------- |
-|UserMessageIfMaxRetryAttempted |指定されたワンタイム パスワードの検証が最大試行回数を超えました |
-|UserMessageIfSessionDoesNotExist |ワンタイム パスワードの検証セッションが期限切れになりました |
-|UserMessageIfSessionConflict |ワンタイム パスワードの検証セッションが競合しています |
-|UserMessageIfInvalidCode |検証用に指定されたワンタイム パスワードが正しくありません |
-|UserMessageIfVerificationFailedRetryAllowed |そのコードが正しくありません。 再試行してください。 | 
+| UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
+| UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
+| UserMessageIfMaxNumberOfCodeGenerated | いいえ | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
+| UserMessageIfInvalidCode | いいえ | 無効なコードが指定された場合にユーザーに表示するメッセージ。 |
+| UserMessageIfVerificationFailedRetryAllowed | いいえ | 無効なコードを指定した場合にユーザーに表示するメッセージ。ユーザーは正しいコードを指定できます。  |
+|UserMessageIfSessionConflict|いいえ| コードを確認できない場合にユーザーに表示するメッセージ。|
 
 ### <a name="one-time-password-example"></a>ワンタイム パスワードの例
 
@@ -526,9 +527,10 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
+   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
   </LocalizedStrings>
 </LocalizedResources>
 ```

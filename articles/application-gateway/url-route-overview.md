@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e38f590628381710afec1d7bbf1ceb0daf9f77a2
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 7a24b9631362618ee3be5e94066ac5267ac85962
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032215"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504875"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -27,7 +27,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 http\://contoso.com/video/* に対する要求は VideoServerPool に、http\://contoso.com/images/* に対する要求は ImageServerPool に、それぞれルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
 
 > [!IMPORTANT]
-> v1 SKU では、規則はポータルで表示される順序で処理されます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。 v2 SKU では、完全一致の優先順位が高くなります。 ただし、基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。 そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。
+> v1、v2 どちらの SKU でも、ポータルに一覧表示される順番でルールを処理します。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。 ただし、基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。 そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 構成要素
 
@@ -78,7 +78,7 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |`/images*`     |はい|
 |`/images/*.jpg`     |Ｘ|
 |`/*.jpg`     |Ｘ|
-|`/Repos/*/Comments/*`     |Ｘ|
+|`/Repos/*/Comments/*`     |いいえ|
 |`/CurrentUser/Comments/*`     |はい|
 
 #### <a name="v2"></a>v2
@@ -91,7 +91,7 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |`/images*`     |はい|
 |`/images/*.jpg`     |Ｘ|
 |`/*.jpg`     |Ｘ|
-|`/Repos/*/Comments/*`     |Ｘ|
+|`/Repos/*/Comments/*`     |いいえ|
 |`/CurrentUser/Comments/*`     |はい|
 
 詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/resources/templates/application-gateway-url-path-based-routing) 」をご覧ください。

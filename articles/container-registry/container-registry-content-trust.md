@@ -1,14 +1,15 @@
 ---
 title: 署名済みのイメージの管理
 description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。 コンテンツの信頼は Docker コンテンツの信頼を実装する、Premium サービス レベルの機能です。
-ms.topic: article
-ms.date: 09/18/2020
-ms.openlocfilehash: 238908c0075ffa5d2193eda642175a0cfe75b839
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.date: 06/25/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ddaded0ff733ea717a48bfe2bcaac4a84e102ad8
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784121"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983619"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
@@ -80,11 +81,19 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portal でレジストリに移動し、 **[アクセス制御 (IAM)]**  >  **[ロール割り当ての追加]** を選択します。 **[ロール割り当ての追加]** の **[ロール]** で [`AcrImageSigner`] を選択し、ユーザーまたはサービス プリンシパルを **選択** して (複数可)、 **[保存]** を選択します。
+1. **[アクセス制御 (IAM)]** を選択します。
 
-この例では、`AcrImageSigner` ロールが 2 つのエンティティに割り当てられています。"service-principal" という名前のサービス プリンシパルと "Azure User" という名前のユーザーです。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
 
-![Azure portal で ACR イメージの署名のためのアクセス許可を与える][content-trust-02-portal]
+1. 次のロールを割り当てます。 この例では、ロールが個々のユーザーに割り当てられます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | AcrImageSigner |
+    | アクセスの割り当て先 | User |
+    | メンバー | Alain |
+
+    ![Azure portal でロール割り当てページを追加します。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

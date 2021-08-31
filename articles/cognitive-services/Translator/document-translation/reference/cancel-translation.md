@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 06/20/2021
 ms.author: v-jansk
-ms.openlocfilehash: 46348fe35f425811e2ff03208feeae6ab7a112bd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: eb8411717d0229b13571284176da7ccc113cf828
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453582"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540742"
 ---
 # <a name="cancel-translation"></a>翻訳の取り消し
 
-現在処理中またはキューに入っているジョブをキャンセルします。 操作は、既に完了または失敗したか、キャンセル中の場合はキャンセルされません。 無効な要求が返されます。 翻訳が完了したすべてのドキュメントはキャンセルされず、課金されます。 すべての保留中ドキュメントについては、可能な場合はキャンセルされます。
+現在処理中またはキューに入っているジョブをキャンセルします。 操作は、既に完了した、失敗した、またはキャンセル中の場合はキャンセルされません。 無効な要求が返されます。 翻訳が完了したすべてのドキュメントはキャンセルされず、課金されます。 すべての保留中ドキュメントについては、可能な場合はキャンセルされます。
 
 ## <a name="request-url"></a>要求 URL
 

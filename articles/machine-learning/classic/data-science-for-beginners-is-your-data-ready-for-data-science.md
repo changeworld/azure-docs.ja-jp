@@ -9,14 +9,17 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 07db1f1c8021759fbd5702ad9353f74fcd1524c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cc7334d225f706610aacfed0cce8e15b4da21c1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100516976"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694814"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ
 データを評価して、データ サイエンスに備えるための基本的な条件を満たしていることを確認する方法について説明します。
 
@@ -99,8 +102,8 @@ ms.locfileid: "100516976"
 
 関連性があり、連続していて、正確で、かつ十分なデータがあれば、ある程度高品質なデータ サイエンスを実行するために必要なすべての材料が揃っています。
 
-Microsoft Azure Machine Learning Studio (クラシック) の *初心者向けデータ サイエンス* にある他の 4 つのビデオも必ず確認してください。
+Machine Learning Studio (クラシック) の "*初心者向けデータ サイエンス*" の他の 4 つのビデオもご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](../overview-what-is-azure-ml.md)
+* [Azure Machine Learning の概要](../overview-what-is-azure-machine-learning.md)

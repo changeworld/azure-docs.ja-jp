@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud でのアプリの状態
 description: Azure Spring Cloud でのアプリの状態のカテゴリについて説明します
-author: MikeDodaro
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 93ceb1f006b39ebaae95bb77fd3fcb474e006eb9
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 2ab7e8b548df93c5b28a3265e71ff383765bcd0d
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877662"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015449"
 ---
 # <a name="app-status-in-azure-spring-cloud"></a>Azure Spring Cloud でのアプリの状態
 
@@ -21,14 +21,14 @@ ms.locfileid: "104877662"
 Azure Spring Cloud UI を使用すると、実行中のアプリケーションの状態に関する情報を把握できます。  サブスクリプションのリソース グループごとに、アプリケーションの種類の一般的な状態が表示される **[アプリ]** オプションがあります。  アプリケーションの種類ごとに、 **[アプリケーションのインスタンス]** が表示されます。
 
 ## <a name="apps-status"></a>アプリの状態
+
 アプリケーションの種類の一般的な状態を表示するには、リソース グループの左側のナビゲーション ペインにある **[アプリ]** を選択します。 結果には、デプロイされたアプリの状態が表示されます。
 
 * **[プロビジョニングの状態]** には、デプロイのプロビジョニングの状態が表示されます
 * **[Running instance]\(実行中のインスタンス\)** には、実行されているアプリ インスタンスの数と必要なアプリ インスタンスの数が表示されます。 アプリがおそらく停止している場合、この列には "*停止済み*" と表示されます。
 * **[Registered Instance]\(登録済みインスタンス\)** には、eureka に登録されているアプリ インスタンスの数と必要なアプリ インスタンスの数が表示されます。 アプリがおそらく停止している場合、この列には "*停止済み*" と表示されます。
 
-
- ![アプリの状態](media/spring-cloud-concept-app-status/apps-ui-status.png)
+![アプリの状態](media/spring-cloud-concept-app-status/apps-ui-status.png)
 
 **デプロイの状態は次のいずれかの値として報告されます。**
 
@@ -49,11 +49,12 @@ Azure Spring Cloud UI を使用すると、実行中のアプリケーション�
 
 ## <a name="app-instances-status"></a>アプリ インスタンスの状態
 
-デプロイされたアプリの特定のインスタンスの状態を表示するには、 **[アプリ]** の UI でアプリの **[名前]** をクリックします。 次の結果が表示されます。
+デプロイされたアプリの特定のインスタンスの状態を表示するには、 **[アプリ]** の UI でそのアプリの **[名前]** を選択します。 次の結果が表示されます。
+
 * **状態**: インスタンスは実行中か、またはその状態です
 * **DiscoveryStatus**:Eureka サーバーのアプリ インスタンスは登録済みの状態です
 
- ![アプリ インスタンスの状態](media/spring-cloud-concept-app-status/apps-ui-instance-status.png)
+![アプリ インスタンスの状態](media/spring-cloud-concept-app-status/apps-ui-instance-status.png)
 
 **インスタンスの状態は、次のいずれかの値として報告されます。**
 
@@ -72,6 +73,6 @@ Azure Spring Cloud UI を使用すると、実行中のアプリケーション�
 | OUT_OF_SERVICE | アプリ インスタンスは Eureka に登録され、トラフィックを受信できます。 ただし、トラフィックのために意図的にシャットダウンします。 |
 | DOWN | アプリ インスタンスは Eureka に登録されていないか、登録されていてもトラフィックを受信できません。 |
 
-
 ## <a name="see-also"></a>関連項目
+
 * [Azure Spring Cloud で Spring または Steeltoe アプリケーションをデプロイ用に準備する](how-to-prepare-app-deployment.md)

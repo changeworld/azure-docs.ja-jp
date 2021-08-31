@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義の作成、さまざまな SDK、および Kubernetes のアドオンに関する問題をトラブルシューティングする方法について説明します。
-ms.date: 04/19/2021
+ms.date: 06/29/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f369b16755c09468dbdae2076cc7828a53c8a17
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 45c5b420ddd4eab70e381f31e7c46eeeb380b2b5
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752167"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087092"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Policy の使用に関するエラーをトラブルシューティングする
 
@@ -142,6 +142,20 @@ The policy definition '{0}' targets multiple resource types, but the policy rule
 #### <a name="resolution"></a>解決方法
 
 エイリアスが使用されている場合、その前に種類の条件を追加することによって、そのエイリアスが属しているリソースの種類に対してのみエイリアスが評価されるようにします。 別の方法としては、ポリシー定義を複数の定義に分割して、複数のリソースの種類をターゲットにしないようにします。
+
+### <a name="scenario-subscription-limit-exceeded"></a>シナリオ: サブスクリプションの上限超過
+
+#### <a name="issue"></a>問題
+
+Azure portal のコンプライアンス ページのエラー メッセージは、ポリシー割り当てのコンプライアンス取得時に表示されます。
+
+#### <a name="cause"></a>原因
+
+要求において選択範囲の下、サブスクリプションの数が上限の 5000 サブスクリプションを超過しました。 コンプライアンスの結果が部分的に表示される場合があります。
+
+#### <a name="resolution"></a>解決方法
+
+子サブスクリプションを少なくし、より詳細な範囲を選択すると、完全な結果が表示されます。
 
 ## <a name="template-errors"></a>テンプレート エラー
 

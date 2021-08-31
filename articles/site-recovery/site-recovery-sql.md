@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 6ad12ac3d06d9e0a6b4f1bf45344ece2819c1486
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 834caf50ca65fdbb4701ed3681546513785686c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140049"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749334"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する
 
@@ -85,9 +85,9 @@ BCDR テクノロジの Always On、アクティブ geo レプリケーション
 
 アプリケーションおよび Web 層の仮想マシンを含む[復旧計画を作成](site-recovery-create-recovery-plans.md)します。 次の手順は、データベース層のフェールオーバーを追加する方法を示しています。
 
-1. SQL 可用性グループをフェールオーバーするスクリプトを [Resource Manager 仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)と[従来の仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)の両方にインポートします。 これらのスクリプトを Azure Automation アカウントにインポートします。
+1. SQL 可用性グループをフェールオーバーするスクリプトを [Resource Manager 仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)と[従来の仮想マシン](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)の両方にインポートします。 これらのスクリプトを Azure Automation アカウントにインポートします。
 
-    [!["Azure へのデプロイ" のロゴの画像](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![Azure へのデプロイ ロゴ](../media/template-deployments/deploy-to-azure.svg)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. 復旧計画の最初のグループの事前アクションとして ASR-SQL-FailoverAG スクリプトを追加します。
 

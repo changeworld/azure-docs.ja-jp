@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d6a9ca83060c074740985b87af841bfa4be17f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634169"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728681"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制
 
@@ -23,10 +23,10 @@ ms.locfileid: "100634169"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|Free<br>(セキュリティ アラートのほとんどが Azure Defender でのみ使用できます)|
 |必要なロールとアクセス許可:|**セキュリティ管理者** および **所有者** は、ルールを作成および削除できます。<br>**セキュリティ閲覧者** および **閲覧者** は、ルールを表示できます。|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 
@@ -45,7 +45,7 @@ ms.locfileid: "100634169"
 > [!CAUTION]
 > セキュリティ アラートを抑制すると、Azure Defender の脅威防止の効果が低下します。 抑制ルールを使用する場合は、その潜在的な影響を慎重に確認し、長期的に監視する必要があります。
 
-:::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="アラートの抑制ルールの作成":::
+:::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="アラート抑制ルールの作成。":::
 
 ## <a name="create-a-suppression-rule"></a>抑制ルールを作成する
 
@@ -64,7 +64,7 @@ Azure portal で直接ルールを作成するには:
 
     - または、ページの上部にある **[抑制ルール]** リンクを選択し、[抑制ルール] ページで **[新しい抑制ルールの作成]** を選択します。
 
-        ![[新しい抑制ルールの作成]** ボタン](media/alerts-suppression-rules/create-new-suppression-rule.png)
+        ![[新しい抑制ルールの作成]** ボタン。](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
 1. [新しい抑制ルール] ペインで、作成した新しいルールの詳細を入力します。
     - ルールでは、**すべてのリソース** でそのアラートを無視して、今後はこれと同様のアラートが一切表示されないようにすることができます。     
@@ -73,7 +73,7 @@ Azure portal で直接ルールを作成するには:
     > [!TIP]
     > 特定のアラートから新しいルールのページを開いた場合は、そのアラートとサブスクリプションが新しいルールに自動的に構成されます。 **[新しい抑制ルールの作成]** リンクを使用した場合は、選択したサブスクリプションはポータルの現在のフィルターと一致します。
 
-    [![抑制ルールの作成ペイン](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
+    [![抑制ルールの作成ペイン。](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
 1. ルールの詳細を入力します。
     - **名前** - ルールの名前。 ルール名は、文字または数字で始まり、2 から 50 文字で指定する必要があります。ダッシュ (-) とアンダースコア (_) 以外の記号は使用できません。 
     - **状態** - 有効または無効。
@@ -90,7 +90,7 @@ Azure portal で直接ルールを作成するには:
 1. Security Center の [セキュリティ アラート] ページから、そのページの上部の **[抑制ルール]** リンクを選択します。
 1. [抑制ルール] ページが開き、選択したサブスクリプションのすべてのルールが表示されます。
 
-    [![抑制ルールの一覧](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
+    [![抑制ルールの一覧。](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
 1. 1 つのルールを編集する場合は、そのルールの省略記号メニュー (...) を開き、 **[編集]** を選択します。
 1. 必要な変更を加えて、 **[適用]** を選択します。 
@@ -103,7 +103,7 @@ Azure portal で直接ルールを作成するには:
 1. [抑制ルール] ページが開き、選択したサブスクリプションのすべてのルールが表示されます。
 1. 1 つのルールを削除する場合は、そのルールの省略記号メニュー (...) を開き、 **[削除]** を選択します。
 1. 複数のルールを削除する場合は、削除するルールのチェック ボックスを選択し、 **[削除]** を選択します。
-    ![1 つまたは複数の抑制ルールの削除](media/alerts-suppression-rules/delete-multiple-alerts.png)
+    ![1 つまたは複数の抑制ルールの削除。](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>API を使用して抑制ルールの作成および管理を行う
 

@@ -10,23 +10,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2021
+ms.date: 08/09/2021
 ms.author: yelevin
-ms.openlocfilehash: fb947b6f5930e3a0d81d53a1660885ebf1c51cca
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: b68d2a8219e7aa23aac3187333160dfd4276e7b8
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810500"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182175"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel の高度なマルチステージ攻撃の検出
 
 > [!IMPORTANT]
 > 一部の Fusion 検出 (以下でそのように示されているものを参照) は、現在 **プレビュー** 段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 機械学習を基盤とする Fusion テクノロジを利用することで、Azure Sentinel では、キルチェーンのさまざまな段階で観察される異常な動作と疑わしい行動の組み合わせを特定し、マルチステージ攻撃を自動的に検出することができます。 これらの検出を基に、Azure Sentinel では、Azure Sentinel 以外では検出が困難であろうインシデントが生成されます。 このインシデントは、2 つ以上のアラートまたはアクティビティで構成されています。 設計上、このようなインシデントでは、ボリュームが低、忠実度が高、重大度が高になります。
 
 この検出テクノロジはご利用の環境によってカスタマイズされるため、[誤検知](false-positives.md)率を減らすだけでなく、情報が制限されているか、不足している攻撃も検出できます。
+
+
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>高度なマルチステージ攻撃の検出の構成
 
@@ -57,7 +61,7 @@ ms.locfileid: "109810500"
 >
 > - 分析ルール アラートを使用した Fusion による検出は、現在 **プレビュー版** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-**Fusion** では、[スケジュールされた分析のルール](tutorial-detect-threats-custom.md)により生成されるアラートを使用して、マルチステージ攻撃を検出できます。 Azure Sentinel の Fusion の機能を最大限に活用できるよう、次の手順でこれらのルールを構成、有効化することをお勧めします。
+**Fusion** では、[スケジュールされた分析のルール](detect-threats-custom.md)により生成されるアラートを使用して、マルチステージ攻撃を検出できます。 Azure Sentinel の Fusion の機能を最大限に活用できるよう、次の手順でこれらのルールを構成、有効化することをお勧めします。
 
 1. 次の **スケジュールされた分析のルールのテンプレート** を使用して新しいルールを作成します。これは **[分析]** ブレードの **[ルールのテンプレート]** タブにあります。 テンプレート ギャラリーでルール名をクリックし、プレビュー ペインで **[ルールの作成]** をクリックします。
 
@@ -737,6 +741,26 @@ ms.locfileid: "109810500"
 
 - **資格情報が漏洩したユーザーからサインインされた後の、クラウド アプリ内のランサムウェア**
 
+### <a name="multiple-alerts-possibly-related-to-ransomware-activity-detected-public-preview"></a>ランサムウェア アクティビティに関連する可能性のある複数のアラートの検出 (パブリック プレビュー)
+
+次のデータ ソースからさまざまな種類の複数のアラートが検出され、ランサムウェア アクティビティに関連する可能性がある場合、Azure Sentinel によってインシデントが生成されます。
+
+- [Azure Defender (Azure Security Center)](connect-azure-security-center.md)
+- [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md)
+- [Microsoft Defender for Identity](connect-azure-atp.md)
+- [Microsoft Cloud App Security](connect-cloud-app-security.md)
+- [Azure Sentinel のスケジュール化された分析ルール](detect-threats-built-in.md#scheduled)。 Fusion では、戦術情報を含むスケジュール化された分析ルールのみが考慮されます。
+
+そのような Fusion インシデントは、**Multiple alerts possibly related to Ransomware activity detected (ランサムウェア アクティビティに関連する可能性のある複数のアラートの検出)** という名前が付けられ、関連するアラートが特定の期間内に検出され、攻撃の **実行** と **防衛回避** ステージに関連している場合に生成されます。
+
+たとえば、Azure Sentinel は、特定の期間内に同じホストで次のアラートがトリガーされると、ランサムウェア アクティビティの可能性に関するインシデントを生成します。
+
+- Azure Sentinel のスケジュールされたアラート (情報): **Windows エラーと警告イベント**
+- Azure Defender (中程度): **'GandCrab' ransomware was prevented ("GandCrab" ランサムウェアが阻止された)**
+- Microsoft Defender for Endpoint (情報): **'Emotet' malware was detected ("Emotet" マルウェアが検出された)**
+- Azure Defender (低い): **'Tofsee' backdoor was detected ("Tofsee" バックドアが検出された)**
+- Microsoft Defender for Endpoint (情報): **'Parite' malware was detected ("Parite" マルウェアが検出された)**
+
 ## <a name="remote-exploitation"></a>リモートの悪用
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>疑わしい攻撃フレームワーク使用後の、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィック
@@ -779,6 +803,6 @@ Azure AD への不審なサインインに対する警告で、これまで見�
 
 ## <a name="next-steps"></a>次のステップ
 
-高度なマルチステージ攻撃の検出に関する詳細を学習したので、自分のデータや潜在的な脅威を視覚化する方法を学習することができる以下のクイックスタートにも関心を持たれるかもしれません。[Azure Sentinel の概要](quickstart-get-visibility.md)
+高度なマルチステージ攻撃の検出に関する詳細を学習したので、自分のデータや潜在的な脅威を視覚化する方法を学習することができる以下のクイックスタートにも関心を持たれるかもしれません。[Azure Sentinel の概要](get-visibility.md)
 
-自分用として作成したインシデントを調査する準備ができたら、次のチュートリアルをご覧ください。[Azure Sentinel でインシデントを調査する](tutorial-investigate-cases.md)
+自分用として作成したインシデントを調査する準備ができたら、次のチュートリアルをご覧ください。[Azure Sentinel でインシデントを調査する](investigate-cases.md)

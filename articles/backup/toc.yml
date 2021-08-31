@@ -165,7 +165,7 @@
             - name: Azure VM のバックアップからのファイルの回復
               href: backup-azure-restore-files-from-vm.md
             - name: 暗号化された VM の復元
-              href: backup-azure-vms-encryption.md
+              href: restore-azure-encrypted-virtual-machines.md
             - name: 暗号化された VM の Key Vault のキーとシークレットを復元する
               href: backup-azure-restore-key-secret.md
         - name: 管理する

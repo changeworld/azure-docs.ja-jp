@@ -1,17 +1,17 @@
 ---
 ms.date: 02/16/2021
 ms.topic: reference-architecture
-author: kriation
+author: karlerickson
 title: Azure Spring Cloud の参照アーキテクチャ
 ms.author: akaleshian
 ms.service: spring-cloud
 description: この参照アーキテクチャは、Azure Spring Cloud を使用するための一般的なエンタープライズ ハブとスポーク設計を使用した基盤です。
-ms.openlocfilehash: d45d70227be2d88ca69e8a88bbc116a7f8045e74
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f0cc7a1345ff15a63c7cb9b0ebca51863fdf2791
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132685"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271214"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud の参照アーキテクチャ
 
@@ -19,7 +19,7 @@ ms.locfileid: "108132685"
 
 このアーキテクチャの実装については、GitHub にある [Azure Spring Cloud の参照アーキテクチャ][10] リポジトリを参照してください。
 
-このアーキテクチャのデプロイ オプションには、Azure Resource Manager (ARM)、Terraform、および Azure CLI が含まれます。 このリポジトリ内の成果物により、ご利用の環境に合わせてカスタマイズできる基礎が提供されます。 Azure Firewall や Application Gateway などのリソースを別のリソース グループまたはサブスクリプションにグループ化することができます。 このグループ化は、IT インフラストラクチャ、セキュリティ、ビジネス アプリケーション チームなどのさまざまな機能を別々に保つのに役立ちます。
+このアーキテクチャのデプロイ オプションには、Azure Resource Manager (ARM)、Terraform、Azure CLI、および Bicep が含まれます。 このリポジトリ内の成果物により、ご利用の環境に合わせてカスタマイズできる基礎が提供されます。 Azure Firewall や Application Gateway などのリソースを別のリソース グループまたはサブスクリプションにグループ化することができます。 このグループ化は、IT インフラストラクチャ、セキュリティ、ビジネス アプリケーション チームなどのさまざまな機能を別々に保つのに役立ちます。
 
 ## <a name="planning-the-address-space"></a>アドレス空間の計画
 

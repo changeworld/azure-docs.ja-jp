@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/02/2021
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 256902ef26328050b4ed52053f465571974ffefe
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: a2e6996bd2b86da470b364da1349248e26b2fa58
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422158"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747356"
 ---
 # <a name="troubleshoot-gpu-extension-issues-for-gpu-vms-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の GPU VM 向け GPU 拡張機能に関する問題のトラブルシューティング
 
@@ -36,7 +36,7 @@ ms.locfileid: "111422158"
 
 **推奨される解決方法:** GPU 拡張機能でサポートされているオペレーティング システムを備えた新しい VM イメージを準備します。 
 
-* サポートされているオペレーティング システムの一覧については、[GPU VM でサポートされている OS および GPU ドライバー](./azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#supported-os-and-gpu-drivers)に関するページを参照してください。
+* サポートされているオペレーティング システムの一覧については、[GPU VM でサポートされている OS および GPU ドライバー](./azure-stack-edge-gpu-overview-gpu-virtual-machines.md#supported-os-and-gpu-drivers)に関するページを参照してください。
 
 * GPU VM のイメージ準備の要件については、「[GPU VM の作成](./azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#create-gpu-vms)」を参照してください。
 
@@ -52,7 +52,7 @@ ms.locfileid: "111422158"
 
 **エラーの説明:** 拡張機能のインストール中または有効状態で、拡張機能のプロビジョニングに失敗しました。
 
-1. ゲスト ログで、関連するエラーを確認します。 <!--To collect the guest logs, see [Collect guest logs for VMs on an Azure Stack Edge Pro](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md).-->
+1. ゲスト ログで、関連するエラーを確認します。 ゲスト ログを収集するには、[Azure Stack Edge Pro 上の VM のゲスト ログを収集する](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)方法に関するページを参照してください。
 
    Linux VM の場合:
    * `/var/log/waagent.log` または `/var/log/azure/nvidia-vmext-status` を検索します。
@@ -78,7 +78,7 @@ ms.locfileid: "111422158"
 
 **推奨される解決方法:** 問題を解決するには、次の手順を行います。
 
-1.  ロックを適用しているプロセスを検出するには、\var\log\azure\nvidia-vmext-status ログで、"dpkg is used by another process" または "Another app is holding yum lock" などのエラーを見つけます。
+1.  ロックを適用しているプロセスを検出するには、\var\log\azure\nvidia-vmext-status ログで、"dpkg is used by another process" または "Another app is holding `yum lock`" などのエラーを探します。
 
 1. プロセスが終了するのを待つか、プロセスを終了します。
 
@@ -89,5 +89,4 @@ ms.locfileid: "111422158"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [GPU 拡張機能をインストールする](./azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md?tabs=linux)<!--Temporary link until next one can be restored.-->
-<!-- Remove link while cmdlet is fixed. - [Collect guest logs, and create a Support package](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)-->
+[ゲスト ログを収集し、サポート パッケージを作成する](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 314e2cf6991a33fb50ee14b9e54f9d47069dc20c
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: d8ba75ce068d7d2b604e9cafa4cde76393175c30
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027895"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298159"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -181,8 +181,6 @@ Application Insights Java 3.x は、既定では構成ファイルが `applicati
 > バージョン 3.0.2 以降では、`service.version` という名前のカスタム ディメンションを追加した場合、値はカスタム ディメンションとしてではなく、Application Insights ログ テーブルの `application_Version` 列に格納されます。
 
 ## <a name="telemetry-processors-preview"></a>テレメトリ プロセッサ (プレビュー)
-
-この機能はプレビュー段階にあります。
 
 要求、依存関係、トレースのテレメトリに適用されるルールを構成できます。次に例を示します。
  * 機密データをマスクする
@@ -399,6 +397,13 @@ Application Insights Java 3.x では、グローバル システム プロパテ
 [//]: # "  }"
 [//]: # "}"
 [//]: # "```"
+
+## <a name="authentication-preview"></a>認証 (プレビュー)
+> [!NOTE]
+> 認証機能は、3.2.0-BETA バージョン以降で利用できます
+
+これにより、Azure Active Directory 認証に必要な[トークン資格情報](/java/api/overview/azure/identity-readme#credentials)を生成するエージェントを設定できます。
+詳細については、[認証](./azure-ad-authentication.md)に関するドキュメントを参照してください。
 
 ## <a name="self-diagnostics"></a>自己診断
 

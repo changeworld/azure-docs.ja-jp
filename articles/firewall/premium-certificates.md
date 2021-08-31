@@ -1,28 +1,24 @@
 ---
-title: Azure Firewall Premium プレビューの証明書
-description: Azure Firewall Premium プレビューで TLS 検査を適切に構成するには、中間 CA 証明書を構成してインストールする必要があります。
+title: Azure Firewall Premium の証明書
+description: Azure Firewall Premium で TLS 検査を適切に構成するには、中間 CA 証明書を構成してインストールする必要があります。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 08/02/2021
 ms.author: victorh
-ms.openlocfilehash: 47ebc752dedd72bbdedc02908911f1686584acda
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0826e58f4b61e0a99064226a8488f1c3fb499cd7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102615501"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738077"
 ---
-# <a name="azure-firewall-premium-preview-certificates"></a>Azure Firewall Premium プレビューの証明書 
+# <a name="azure-firewall-premium-certificates"></a>Azure Firewall Premium の証明書 
 
-> [!IMPORTANT]
-> 現在、Azure Firewall Premium はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+Azure Firewall Premium の TLS 検査を適切に構成するには、有効な中間 CA 証明書を用意し、それを Azure Key Vault に格納する必要があります。
 
- Azure Firewall Premium プレビューの TLS 検査を適切に構成するには、有効な中間 CA 証明書を用意し、それを Azure Key Vault に格納する必要があります。
-
-## <a name="certificates-used-by-azure-firewall-premium-preview"></a>Azure Firewall Premium プレビューによって使用される証明書
+## <a name="certificates-used-by-azure-firewall-premium"></a>Azure Firewall Premium によって使用される証明書
 
 通常のデプロイで使用される証明書には 3 つの種類があります。
 
@@ -42,7 +38,7 @@ ms.locfileid: "102615501"
 
    証明機関は、ツリー構造の形式で複数の証明書を発行することができます。 ルート証明書は、ツリーの最上位にある証明書です。
 
-Azure Firewall Premium プレビューは、送信 HTTP/S トラフィックをインターセプトし、`www.website.com` のサーバー証明書を自動生成できます。 この証明書は、ユーザーが提供する中間 CA 証明書を使用して生成されます。 この手順を正しく行うには、エンドユーザーのブラウザーとクライアント アプリケーションによって組織のルート CA 証明書または中間 CA 証明書が信頼される必要があります。 
+Azure Firewall Premium では、送信 HTTP/S トラフィックをインターセプトし、`www.website.com` のサーバー証明書を自動生成できます。 この証明書は、ユーザーが提供する中間 CA 証明書を使用して生成されます。 この手順を正しく行うには、エンドユーザーのブラウザーとクライアント アプリケーションによって組織のルート CA 証明書または中間 CA 証明書が信頼される必要があります。 
 
 :::image type="content" source="media/premium-certificates/certificate-process.png" alt-text="証明書のプロセス":::
 
@@ -82,7 +78,7 @@ Azure Firewall がユーザーに代わって Key Vault から証明書を取得
 
 ## <a name="configure-a-certificate-in-your-policy"></a>ポリシー内で証明書を構成する
 
-Firewall Premium ポリシー内で CA 証明書を構成するには、ポリシーを選択し、 **[TLS 検査 (プレビュー)]** を選択します。 **[TLS 検査]** ページで **[有効化済み]** を選択します。 次に、次の図に示すように、Azure Key Vault で CA 証明書を選択します。
+Firewall Premium ポリシー内で CA 証明書を構成するには、ポリシーを選択し、 **[TLS 検査]** を選択します。 **[TLS 検査]** ページで **[有効化済み]** を選択します。 次に、次の図に示すように、Azure Key Vault で CA 証明書を選択します。
 
 :::image type="content" source="media/premium-certificates/tls-inspection.png" alt-text="Azure Firewall Premium の概要を示す図":::
  
@@ -90,13 +86,12 @@ Firewall Premium ポリシー内で CA 証明書を構成するには、ポリ�
 > Azure portal から証明書を表示して構成するには、Key Vault アクセス ポリシーに Azure ユーザー アカウントを追加する必要があります。 **[シークレットのアクセス許可]** で、ユーザー アカウントに **[取得]** と **[一覧表示]** を付与します。
    :::image type="content" source="media/premium-certificates/secret-permissions.png" alt-text="Azure Key Vault のアクセス ポリシー":::
 
-
 ## <a name="create-your-own-self-signed-ca-certificate"></a>独自の自己署名 CA 証明書を作成する
 
-TLS 検査をテストして検証するために、次のスクリプトを使用して、独自の自己署名ルート CA と中間 CA を作成することができます。
+TLS 検査をテストして検証するために独自の証明書を作成する場合、次のスクリプトを使用して、独自の自己署名ルート CA と中間 CA を作成することができます。
 
 > [!IMPORTANT]
-> 運用時には、企業の PKI を使用して中間 CA 証明書を作成する必要があります。 企業の PKI では、既存のインフラストラクチャを活用して、すべてのエンドポイント マシンへのルート CA の配布を処理します。 詳細については、「[Azure Firewall プレビュー用にエンタープライズ CA 証明書をデプロイおよび構成する](premium-deploy-certificates-enterprise-ca.md)」を参照してください。
+> 運用時には、企業の PKI を使用して中間 CA 証明書を作成する必要があります。 企業の PKI では、既存のインフラストラクチャを活用して、すべてのエンドポイント マシンへのルート CA の配布を処理します。 詳細については、「[Azure Firewall 用にエンタープライズ CA 証明書をデプロイおよび構成する](premium-deploy-certificates-enterprise-ca.md)」を参照してください。
 
 このスクリプトには、次の 2 つのバージョンがあります。
 - Bash スクリプト `cert.sh` 
@@ -202,6 +197,18 @@ Write-Host "   - interCA.pfx - Intermediate CA pkcs12 package which could be upl
 Write-Host "================"
 
 ```
+
+## <a name="certificate-auto-generation-preview"></a>証明書の自動生成 (プレビュー)
+
+非運用環境のデプロイでは、Azure Firewall Premium 証明書自動生成メカニズムを使用できます。これにより、次の 3 つのリソースが自動的に作成されます。
+
+- マネージド ID
+- Key Vault
+- 自己署名ルート CA 証明書
+
+新しいプレビュー マネージド ID を選択するだけで、3 つのリソースが Premium ポリシーで結合され、TLS 検査が設定されます。 
+
+:::image type="content" source="media/premium-certificates/auto-gen-certs.png" alt-text="自動生成された証明書":::
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

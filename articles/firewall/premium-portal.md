@@ -1,26 +1,23 @@
 ---
-title: Azure portal での Azure Firewall Premium プレビュー
-description: Azure portal での Azure Firewall Premium プレビューについて説明します。
+title: Azure portal での Azure Firewall Premium
+description: Azure portal での Azure Firewall Premium について説明します。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: 3d56fc73faeb0d48ba7e5b21449c61d6213afa40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfb9f76751bbf5966b4aaa29e382a0946bf7cfd6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100549484"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440432"
 ---
-# <a name="azure-firewall-premium-preview-in-the-azure-portal"></a>Azure portal での Azure Firewall Premium プレビュー
+# <a name="azure-firewall-premium-in-the-azure-portal"></a>Azure portal での Azure Firewall Premium
 
-> [!IMPORTANT]
-> 現在、Azure Firewall Premium はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
- Azure Firewall Premium プレビューは、機密度が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。 このパックには、次の機能があります。
+ Azure Firewall Premium は、機密度が高く、規制された環境に必要な機能を備えた次世代のファイアウォールです。 このパックには、次の機能があります。
 
 - **TLS 検査** - アウトバウンド トラフィックを復号化し、データを処理し、その後にデータを暗号化して宛先に送信します。
 - **IDPS** - ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワーク アクティビティを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、任意でそのブロックを試みることができます。
@@ -31,11 +28,11 @@ ms.locfileid: "100549484"
 
 ## <a name="deploy-the-firewall"></a>ファイアウォールをデプロイする
 
-Azure Firewall Premium プレビューのデプロイは、標準の Azure Firewall のデプロイに似ています。
+Azure Firewall Premium のデプロイは、標準の Azure Firewall のデプロイに似ています。
 
 :::image type="content" source="media/premium-portal/premium-portal.png" alt-text="ポータルのデプロイ":::
 
-**[ファイアウォール層]** には **[Premium (プレビュー)]** を選択し、 **[ファイアウォール ポリシー]** には既存の Premium ポリシーを選択するか、新しいポリシーを作成します。
+**[ファイアウォール層]** には **[Premium]** を選択し、 **[ファイアウォール ポリシー]** には既存の Premium ポリシーを選択するか、新しいポリシーを作成します。
 
 ## <a name="configure-the-premium-policy"></a>Premium ポリシーを構成する
 
@@ -51,4 +48,4 @@ Premium ポリシーでアプリケーション ルールを構成するとき�
 
 ## <a name="next-steps"></a>次のステップ
 
-実行中の Azure Firewall Premium プレビュー機能を確認するには、「[Azure Firewall Premium プレビューをデプロイして構成する](premium-deploy.md)」を参照してください。
+実行中の Azure Firewall Premium 機能を確認するには、「[Azure Firewall Premium をデプロイして構成する](premium-deploy.md)」をご覧ください。

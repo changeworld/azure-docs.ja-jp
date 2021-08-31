@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 060d24a331a7f15c4ee687c919fe8c2b7cdf2ca6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ea640bc4f5b191c3b01ed2a00ecb1d247f1a602d
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971453"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240287"
 ---
 # <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーを作成する方法
 
@@ -61,7 +61,7 @@ ms.locfileid: "111971453"
 - **[Microsoft によるアプリ ライセンス管理を有効にする]** – Microsoft を通してアプリ ライセンスを管理します。 顧客がライセンスなしでアプリの基本機能を実行したり、ライセンスを購入した後は Premium 機能を実行したりできるようにするには、 **[ライセンスが割り当てられていない場合でもアプリをインストールできるようにする]** ボックスをオンにします。 この 2 番目のボックスをオンにする場合は、ライセンスを必要としないようにソリューション パッケージを構成する必要があります。
 
     > [!NOTE]
-    > この設定は、このオファーを公開した後には変更できません。 この設定の詳細については、「[Microsoft によるサードパーティ製アプリ ライセンス管理](third-party-license.md)」を参照してください。
+    > この設定は、このオファーを公開した後には変更できません。 この設定の詳細については、「[ISV アプリのライセンス管理](isv-app-license.md)」を参照してください。
 
 - **今すぐ入手する (無料)** – 無料のオファーの一覧を顧客に提示します。
 - **無料試用版 (一覧)** – 無料試用版へのリンクが付いたオファーの一覧を顧客に提示します。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。

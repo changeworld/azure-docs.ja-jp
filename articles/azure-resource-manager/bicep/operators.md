@@ -4,31 +4,57 @@ description: Azure Resource Manager のデプロイに使用できる Bicep 演�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 154a42d1bcdc78eee63241286e8f65ab7777bc6b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/29/2021
+ms.openlocfilehash: 143c7881d3f22bf67b3dfabf74ca54825efffc94
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027225"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741211"
 ---
 # <a name="bicep-operators"></a>Bicep 演算子
 
-この記事では、Bicep テンプレートを作成し、Azure Resource Manager を使用してリソースをデプロイするときに使用できる Bicep 演算子について説明します。 演算子は、値の計算、値の比較、または条件の評価に使用されます。 Bicep 演算子には、次の 3 つの種類があります。
+この記事では、Bicep 演算子について説明します。 演算子は、値の計算、値の比較、または条件の評価に使用されます。 Bicep 演算子には、次の 4 つの種類があります。
 
+- [アクセサー (accessor)](#accessor)
 - [比較](#comparison)
 - [論理](#logical)
 - [numeric](#numeric)
 
+## <a name="operator-precedence-and-associativity"></a>演算子の優先順位と結合規則
+
+次の演算子は、優先順位の降順で一覧表示されます (位置が高いほど優先順位が高くなります)。 同じレベルの演算子の優先順位は、同じです。
+
+| Symbol | 演算の種類 | 結合規則 |
+|:-|:-|:-|
+| `(` `)` `[` `]` `.` `::` | かっこ、配列インデクサー、プロパティ アクセサー、入れ子になったリソース アクセサー  | 左から右 |
+| `!` `-` | 単項 | 右から左 |
+| `%` `*` `/` | 乗法 | 左から右 |
+| `+` `-` | 加法 | 左から右 |
+| `<=` `<` `>` `>=` | 関係 | 左から右 |
+| `==` `!=` `=~` `!~` | 等価比較 | 左から右 |
+| `&&` | 論理積 | 左から右 |
+| `||` | 論理和 | 左から右 |
+| `?` `:` | 条件式 (三項) | 右から左
+| `??` | Coalesce | 左から右
+
 `(` と `)` の間に式を挿入することで、既定の Bicep 演算子の優先順位をオーバーライドできます。 たとえば、"x + y / z" という式では、最初に除算、その次に加算が評価されます。 一方、“(x + y) / z” という式では、最初に加算、2 番目に除算が評価されます。
 
-`::` オペレーターを使用してリソースにアクセスする方法については、「[Set name and type for child resources in Bicep](child-resource-name-type.md) (Bicep での子リソースの名前と型の設定)」を参照してください。
+## <a name="accessor"></a>アクセサー
+
+アクセサー演算子は、オブジェクトの入れ子になったリソースとプロパティにアクセスするために使用されます。
+
+| 演算子 | 名前 | 説明 |
+| ---- | ---- | ---- |
+| `::` | [入れ子になったリソース アクセサー](./operators-access.md#nested-resource-accessor) | 親リソースの外部から入れ子になったリソースにアクセスします。 |
+| `.` | [プロパティ アクセサー](./operators-access.md#property-accessor) | オブジェクトのプロパティにアクセスします。 |
+| `.` | [関数アクセサー](./operators-access.md#function-accessor) | リソースで関数を呼び出します。 |
 
 ## <a name="comparison"></a>比較
 
 比較演算子を使用すると、値が比較され、`true` または `false` のいずれかが返されます。
 
-| 演算子 | Name | 説明 |
+| 演算子 | 名前 | 説明 |
 | ---- | ---- | ---- |
 | `>=` | [[次の値以上]](./operators-comparison.md#greater-than-or-equal-) | 1 番目の値が 2 番目の値以上かどうかを評価します。 |
 | `>`  | [より大きい](./operators-comparison.md#greater-than-) | 1 番目の値が 2 番目の値より大きいかどうかを評価します。 |
@@ -43,7 +69,7 @@ ms.locfileid: "111027225"
 
 論理演算子は、ブール値を評価するか、null 以外の値を返すか、または条件式を評価します。
 
-| 演算子 | Name | 説明 |
+| 演算子 | 名前 | 説明 |
 | ---- | ---- | ---- |
 | `&&` | [And](./operators-logical.md#and-) | すべての値が true の場合は `true` を返します。 |
 | `||`| [Or](./operators-logical.md#or-) | どちらかの値が true の場合は `true` を返します。 |
@@ -55,7 +81,7 @@ ms.locfileid: "111027225"
 
 数値演算子では整数を使用して計算を行い、整数値を返します。
 
-| 演算子 | Name | 説明 |
+| 演算子 | 名前 | 説明 |
 | ---- | ---- | ---- |
 | `*` | [Multiply](./operators-numeric.md#multiply-) | 2 つの整数を乗算します。 |
 | `/` | [除算](./operators-numeric.md#divide-) | 整数を整数で除算します。 |
@@ -67,9 +93,10 @@ ms.locfileid: "111027225"
 > [!NOTE]
 > 減算とマイナスには同じ演算子を使用します。 減算では 2 つのオペランドを使用し、マイナスでは 1 つのオペランドを使用するため、機能は異なります。
 
+
 ## <a name="next-steps"></a>次のステップ
 
-- Bicep ファイルの作成方法については、「[Quickstart: Create Bicep files with Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md) (クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する)」を参照してください。
+- Bicep ファイルの作成方法については、「[クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する](./quickstart-create-bicep-use-visual-studio-code.md)」を参照してください。
 - Bicep の型のエラーを解決する方法については、「[Bicep の any 関数](./bicep-functions-any.md)」を参照してください。
 - Bicep と JSON の構文を比較するには、「[テンプレートにおける JSON と Bicep の比較](./compare-template-syntax.md)」を参照してください。
-- Bicep 関数の例については、「[Bicep functions](./bicep-functions.md) (Bicep 関数)」を参照してください。
+- Bicep 関数の例については、「[Bicep 関数](./bicep-functions.md)」を参照してください。

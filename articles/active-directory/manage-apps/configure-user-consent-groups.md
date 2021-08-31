@@ -2,22 +2,22 @@
 title: Azure AD を使用し、グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 description: グループまたはチームのデータにアクセスするアプリケーションにグループ所有者とチーム所有者が同意できるかどうかを管理する方法について説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 46b6d91846b2498ce046da7a80bc3c9bc6110929
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1ce7254f92c4cc3d2a7dcf77885be88eda37099b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076062"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567992"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 
@@ -113,6 +113,9 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/p
 
 ---
 
+> [!NOTE]
+> “ユーザーに代わってアプリが会社のデータにアクセスすることに、ユーザーが同意できる” の設定を無効にしても、“ユーザーが所有するグループに代わってアプリが会社のデータにアクセスすることに、ユーザーが同意できる” の設定は無効になりません
+
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、以下を参照してください。
@@ -124,4 +127,5 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/p
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
+
 * [Microsoft Q&A の Azure AD](/answers/topics/azure-active-directory.html)

@@ -5,16 +5,16 @@ description: Azure Machine Learning でデプロイされた Web サービスを
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: aashishb
-author: aashishb
-ms.date: 03/11/2021
+ms.author: jhirono
+author: jhirono
+ms.date: 07/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 9531862ffb62a92a3b9be33b38e4ecef97bf974e
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 10eb9d57b19968737077a595030bb2a986ec6c7b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884662"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564790"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -83,7 +83,7 @@ ACI のデプロイの場合、デプロイ構成オブジェクトを使用し�
   > [!NOTE]
   > このセクションの情報は、デザイナー用のセキュリティで保護された Web サービスをデプロイするときにも適用されます。 Python SDK に慣れていない場合は、[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro) に関するページを参照してください。
 
-AML ワークスペースで [AKS クラスターを作成またはアタッチする](how-to-create-attach-kubernetes.md)ときに、 **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** および **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** の構成オブジェクトを使用して TLS 終端を有効にすることができます。 どちらのメソッドからも、**enable_ssl** メソッドを持つ構成オブジェクトが返されます。また、**enable_ssl** メソッドを使用して TLS を有効にすることができます。
+AML ワークスペースで [AKS クラスターを作成またはアタッチする](how-to-create-attach-kubernetes.md)ときに、 **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** および **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** の構成オブジェクトを使用して TLS 終端を有効にすることができます。 どちらのメソッドからも、**enable_ssl** メソッドを持つ構成オブジェクトが返されます。この **enable_ssl** メソッドを使用して TLS を有効にすることができます。
 
 Microsoft 証明書または CA から購入したカスタム証明書を使用して、TLS を有効にすることができます。 
 
@@ -152,16 +152,21 @@ aci_config = AciWebservice.deploy_configuration(
 
 カスタム証明書を使用した AKS デプロイまたは ACI デプロイのいずれの場合も、スコアリング エンドポイントの IP アドレスを指すように DNS レコードを更新する必要があります。
 
-  > [!IMPORTANT]
-  > AKS デプロイに Microsoft 提供の証明書を使用する場合、クラスターの DNS 値を手動で更新する必要はありません。 この値は、自動的に設定される必要があります。
+> [!IMPORTANT]
+> AKS デプロイに Microsoft 提供の証明書を使用する場合、クラスターの DNS 値を手動で更新する必要はありません。 この値は、自動的に設定される必要があります。
 
 以下の手順に従って、カスタム ドメイン名の DNS レコードを更新することができます。
-* スコアリング エンドポイントの IP アドレスをスコアリング エンドポイント URI から取得します。通常、これは *http://104.214.29.152:80/api/v1/service/<service-name>/score* という形式です。 
-* ドメイン名レジストラー提供のツールを使用して、ドメイン名の DNS レコードを更新します。 レコードは、スコアリング エンドポイントの IP アドレスを指している必要があります。
-* DNS レコードの更新後、*nslookup custom-domain-name* コマンドを使用して DNS の解決を検証できます。 DNS レコードが正しく更新されている場合、カスタム ドメイン名はスコアリング エンドポイントの IP アドレスを指します。
-* レジストラーと、ドメイン名に対して構成された "Time to Live" (TTL) に応じて、クライアントがドメイン名を解決できるまで、数分から数時間の遅延が生じることがあります。
+1. スコアリング エンドポイントの IP アドレスをスコアリング エンドポイント URI から取得します。通常、これは *http://104.214.29.152:80/api/v1/service/<service-name>/score* という形式です。 この例の IP アドレスは 104.214.29.152 です。
+1. ドメイン名レジストラー提供のツールを使用して、ドメイン名の DNS レコードを更新します。 このレコードは、FQDN (www\.contoso.com など) を IP アドレスにマップします。 レコードは、スコアリング エンドポイントの IP アドレスを指している必要があります。
 
+    > [!TIP]
+    > Microsoft は、カスタム DNS 名または証明書の DNS を更新する責任を負いません。 お使いのドメイン名レジストラーで更新する必要があります。
 
+1. DNS レコードの更新後、*nslookup custom-domain-name* コマンドを使用して DNS の解決を検証できます。 DNS レコードが正しく更新されている場合、カスタム ドメイン名はスコアリング エンドポイントの IP アドレスを指します。
+
+    レジストラーと、ドメイン名に対して構成された "Time to Live" (TTL) に応じて、クライアントがドメイン名を解決できるまで、数分から数時間の遅延が生じることがあります。
+
+Azure Machine Learning を使用した DNS 解決の詳細については、「[カスタム DNS サーバーでワークスペースを使用する方法](how-to-custom-dns.md)」を参照してください。
 ## <a name="update-the-tlsssl-certificate"></a>TLS/SSL 証明書を更新する
 
 TLS/SSL 証明書には有効期限切れがあるため、更新する必要があります。 通常、これは毎年発生します。 Azure Kubernetes Service にデプロイされているモデルの証明書を更新するには、次のセクションの情報を参照してください。
@@ -263,3 +268,4 @@ aks_target.update(update_config)
 具体的には、次の方法を学習します。
 + [Web サービスとしてデプロイされた機械学習モデルを使用する](how-to-consume-web-service.md)
 + [仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)
++ [カスタム DNS サーバーでワークスペースを使用する方法](how-to-custom-dns.md)

@@ -6,12 +6,12 @@ ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
 ms.date: 06/04/2021
-ms.openlocfilehash: 6e3fd0c2dafd9d174b79206cb5482450fee74f8e
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 5c6ddce8d50da1660bfcba8b29bb032b56197bb8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984050"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725450"
 ---
 # <a name="run-the-emulator-on-docker-for-linux-preview"></a>Docker for Linux 上でエミュレーターを実行する (プレビュー)
 
@@ -37,11 +37,11 @@ Azure Cosmos DB Emulator はローカルの開発者ワークステーション�
 
 - Linux エミュレーターはスケーラブルなサービスではなく、多数のコンテナーはサポートされていません。 Azure Cosmos DB Emulator を使用する場合、既定では、400 RU/s を指定した固定サイズのコンテナー (Azure Cosmos DB SDK を使用する場合にのみサポートされます) を 10 個まで、容量無制限のコンテナーを 5 個まで作成できます。 この値を変更する方法の詳細については、[PartitionCount 値の設定](emulator-command-line-parameters.md#set-partitioncount)に関する記事をご覧ください。
 
-- クラウド サービスで実行されるような[一貫性レベル](consistency-levels.md)は、 テスト シナリオの場合にのみコマンドライン引数を使用して調整できます (既定の設定は Session) が、ユーザーはクラウド サービスと同じ動作を想定していない可能性があります。 たとえば、強固および有界整合性制約の一貫性は、Cosmos DB SDK へのシグナル通知 (このアカウントの既定の一貫性) 以外にエミュレーターに対して影響を及ぼしません。
+- [整合性レベル](consistency-levels.md)はテスト シナリオの場合にのみコマンド ライン引数を使用して調整できます (既定の設定は Session) が、ユーザーはクラウド サービスの場合と同じ動作を想定してはなりません。 たとえば、強固および有界整合性制約の一貫性は、Cosmos DB SDK へのシグナル通知 (このアカウントの既定の一貫性) 以外にエミュレーターに対して影響を及ぼしません。
 
 - Linux エミュレーターは、[マルチリージョン レプリケーション](distribute-data-globally.md)を提供していません。
 
-- Azure Cosmos DB Linux Emulator のコピーには Azure Cosmos DB サービスの最新の変更が反映されていないことがあるため、必ず [Azure Cosmos DB Capacity Planner](estimate-ru-with-capacity-planner.md) に関する記事を参照し、アプリケーションのスループット (RU) のニーズを正確に見積もる必要があります。 <add link>
+- Azure Cosmos DB Linux Emulator のコピーには Azure Cosmos DB サービスの最新の変更が反映されていないことがあるため、必ず [Azure Cosmos DB Capacity Planner](estimate-ru-with-capacity-planner.md) に関する記事を参照し、アプリケーションのスループット (RU) のニーズを正確に見積もる必要があります。
 
 - Linux エミュレーターは、254 文字の最大 ID プロパティ サイズをサポートしています。
 

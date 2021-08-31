@@ -5,13 +5,13 @@ author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: fac488ba1881b6b79139eaf2468237e546737177
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 07/28/2021
+ms.openlocfilehash: cf8f4adabf07ec349c2b5890d0f3a6cfd6bbb192
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077332"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732661"
 ---
 # <a name="best-practices-for-creating-assessments"></a>評価を作成するためのベスト プラクティス
 
@@ -19,12 +19,13 @@ ms.locfileid: "106077332"
 
 この記事では、Azure Migrate Discovery and Assessment ツールを使用して評価を作成する際のベスト プラクティスについて説明します。
 
-Azure Migrate: Discovery and Assessment ツールを使用して作成した評価は、特定の時点におけるデータのスナップショットです。 Azure Migrate: Discovery and Assessment ツールを使用して作成できる評価には、次の 3 種類があります。
+Azure Migrate: Discovery and Assessment ツールを使用して作成した評価は、特定の時点におけるデータのスナップショットです。 Azure Migrate: Discovery and Assessment を使用して作成できる評価には、次の 4 種類があります。
 
 **評価の種類** | **詳細**
---- | --- 
+--- | ---
 **Azure VM** | オンプレミスのサーバーを Azure 仮想マシンに移行するための評価。 <br/><br/> この評価の種類を使用すると、[VMware](how-to-set-up-appliance-vmware.md) と [Hyper-V](how-to-set-up-appliance-hyper-v.md) の環境にあるオンプレミスのサーバー、および[物理サーバー](how-to-set-up-appliance-physical.md)を Azure に移行するために評価できます。 [詳細情報](concepts-assessment-calculation.md)
 **Azure SQL** | オンプレミスの SQL サーバーを VMware 環境から Azure SQL Database または Azure SQL Managed Instance に移行するための評価。 [詳細情報](concepts-azure-sql-assessment-calculation.md)
+**Azure App Service** | IIS Web サーバー上で実行されているオンプレミスの ASP.NET Web アプリを、VMware 環境から Azure App Service に移行するための評価。 [詳細情報](concepts-azure-webapps-assessment-calculation.md)
 **Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
@@ -35,8 +36,8 @@ Azure Migrate の評価におけるサイズ変更の設定基準のオプショ
 
 **サイズ変更の設定基準** | **詳細** | **データ**
 --- | --- | ---
-**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/>**Azure SQL の評価**: Azure SQL 構成は、CPU 使用率、メモリ使用率、IOPS (データおよびログ ファイル)、スループット、IO 操作の待機時間など、SQL インスタンスとデータベースのパフォーマンス データに基づいています。<br/><br/>**Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、CPU とメモリの使用率データに基づきます。
-**現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | **Azure VM の評価**: VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、オンプレミスの VM サイズに基づきます。
+**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD、プレミアム マネージド ディスクまたは Ultra ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/>**Azure SQL の評価**: Azure SQL 構成は、CPU 使用率、メモリ使用率、IOPS (データおよびログ ファイル)、スループット、IO 操作の待機時間など、SQL インスタンスとデータベースのパフォーマンス データに基づきます<br/><br/>**Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、CPU とメモリの使用率データに基づきます。
+**現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | **Azure VM の評価**: VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。<br/><br/> **Azure App Service の評価**: 評価の推奨事項は、オンプレミスの Web アプリ構成データに基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、オンプレミスの VM サイズに基づきます。
 
 #### <a name="example"></a>例
 たとえば、オンプレミスの VM で 4 コア CPU の使用率が 20%、8 GB メモリの使用率が 10% の場合、Azure VM の評価は次のようになります。
@@ -54,7 +55,7 @@ Azure Migrate の評価におけるサイズ変更の設定基準のオプショ
 
 Azure Migrate アプライアンスは、オンプレミス環境のプロファイリングを継続的に行い、メタデータとパフォーマンスデータを Azure に送信します。 アプライアンスを使用して検出されたサーバーの評価については、次のベスト プラクティスに従ってください。
 
-- **現状評価の作成**:現状評価は、Azure Migrate ポータルにサーバーが表示されたらすぐに作成できます。 サイズ変更の設定基準として "オンプレミス" を使用して、Azure SQL の評価を作成することはできません。
+- **現状評価の作成**:現状評価は、Azure Migrate ポータルにサーバーが表示されたらすぐに作成できます。 サイズ変更の設定基準として "オンプレミス" を使用して、Azure SQL の評価を作成することはできません。 Azure App Service の評価は、既定では "オンプレミス" です。
 - **パフォーマンスベース評価の作成**:パフォーマンスベースの評価は、検出を設定した後、少なくとも 1 日待機してから実行することをお勧めします。
     - パフォーマンス データの収集には時間がかかります。 少なくとも 1 日待機することで、評価を実行する前に十分なパフォーマンス データ ポイントを確保できます。
     - パフォーマンスベースの評価を実行する場合は、評価期間に合わせて環境をプロファイリングするようにしてください。 たとえば、パフォーマンス期間を 1 週間に設定して評価を作成する場合は、すべてのデータ ポイントを収集するために、検出を開始してから少なくとも 1 週間待つ必要があります。 そうしないと、5 つ星の評価は得られません。
@@ -71,13 +72,12 @@ CSV ファイル経由で Azure Migrate にインポートされたサーバー�
 AVS で使用されるストレージ エンジンは vSAN です。 vSAN ストレージ ポリシーには、仮想マシンのストレージ要件が定義されています。 これらのポリシーによって、ストレージを VM に割り当てる方法が決まるため、VM に必要なサービス レベルを確保できます。 使用できる FTT-Raid の組み合わせを次に示します。 
 
 **許容エラー (FTT)** | **RAID 構成** | **最小ホスト要件** | **サイズ設定の考慮事項**
---- | --- | --- | --- 
+--- | --- | --- | ---
 1 | RAID-1 (ミラーリング) | 3 | 100 GB の VM に 200 GB が使用されます。
 1 | RAID-5 (イレイジャー コーディング) | 4 | 100 GB の VM に 133.33 GB が使用されます
 2 | RAID-1 (ミラーリング) | 5 | 100 GB の VM に 300 GB が使用されます。
 2 | RAID-6 (イレイジャー コーディング) | 6 | 100 GB の VM に 150 GB が使用されます。
 3 | RAID-1 (ミラーリング) | 7 | 100 GB の VM に 400 GB が使用されます。
-
 
 ## <a name="best-practices-for-confidence-ratings"></a>信頼度レーティングのベスト プラクティス
 
@@ -103,7 +103,6 @@ AVS で使用されるストレージ エンジンは vSAN です。 vSAN スト
    61% - 80% | 4 つ星
    81% - 100% | 5 つ星
 
-
 ## <a name="common-assessment-issues"></a>評価に関する一般的な問題
 
 ここでは、評価に影響を与える一般的な環境の問題に対処する方法について説明します。
@@ -115,7 +114,9 @@ AVS で使用されるストレージ エンジンは vSAN です。 vSAN スト
 ### <a name="outdated-assessments"></a>評価が古い
 
 #### <a name="azure-vm-assessment-and-avs-assessment"></a>Azure VM の評価と AVS の評価
+
 評価されたグループ内のオンプレミス サーバーに変更があった場合、その評価は **古い** 評価としてマークされます。 次のプロパティに 1 つ以上の変更があるため、評価は "古い" としてマークされている可能性があります。
+
 - プロセッサ コアの数
 - 割り当て済みメモリ
 - ブートの種類またはファームウェア
@@ -124,16 +125,27 @@ AVS で使用されるストレージ エンジンは vSAN です。 vSAN スト
 - ネットワーク アダプターの数
 - ディスク サイズの変更 (割り当てられた GB)
 - NIC プロパティの更新。 例:MAC アドレスの変更、IP アドレスの追加など。
-    
+
 変更を反映するには、評価を再度実行します ( **[再計算]** )。
-    
+
 #### <a name="azure-sql-assessment"></a>Azure SQL の評価
+
 評価されたグループに含まれるオンプレミスの SQL インスタンスおよびデータベースに変更があった場合、その評価は **期限切れ** とマークされます。 下に示す 1 つ以上の理由により、評価は "古い" としてマークされる場合があります。
+
 - SQL インスタンスがサーバーに追加された、またはサーバーから削除された
 - SQL データベースが SQL インスタンスに追加された、または削除された
 - SQL インスタンスのデータベースの合計サイズが、20% より大きく変化した
 - プロセッサ コアの数が変更された
-- 割り当てられたメモリが変更された        
+- 割り当てられたメモリが変更された
+  
+    変更を反映するには、評価を再度実行します ( **[再計算]** )。
+
+#### <a name="azure-app-service-assessment"></a>Azure App Service の評価
+
+評価されたグループ内のオンプレミス Web アプリに変更があった場合、その評価は **古い** 評価としてマークされます。 下に示す 1 つ以上の理由により、評価は "古い" としてマークされる場合があります。
+
+- Web アプリがサーバーに追加された、またはサーバーから削除された
+- 既存の Web アプリに対して構成の変更が行われた。
   
     変更を反映するには、評価を再度実行します ( **[再計算]** )。
 
@@ -148,7 +160,7 @@ AVS で使用されるストレージ エンジンは vSAN です。 vSAN スト
     - ポート 443 でのアウトバウンド接続が許可されている
     - Hyper-V サーバーで、動的メモリが有効になっている 
     - Azure Migrate のエージェントの接続状態が "接続済み" である、また、最後のハートビートも確認します
-    - Azure SQL 評価の検出された SQL インスタンスのブレードで、すべての SQL インスタンスの Azure Migrate の接続状態が "接続済み" である
+    - Azure SQL 評価において、検出された SQL インスタンス ブレードで、すべての SQL インスタンスの Azure Migrate の接続状態が "接続済み" である
 
     評価を "再計算" し、信頼性評価に最新の変更を反映してください。
 
@@ -159,7 +171,7 @@ AVS で使用されるストレージ エンジンは vSAN です。 vSAN スト
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>AVS 評価に関する移行ツールのガイダンス
 
 Azure VMware Solution (AVS) 評価の Azure 対応性レポートでは、次の推奨ツールを確認できます。 
-- **VMware HCX または Enterprise**: VMware サーバーの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
+- **VMware HCX または Enterprise**: VMware サーバーの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/install-vmware-hcx.md)。
 - **不明**: CSV ファイルを介してインポートされたサーバーの場合、既定の移行ツールは不明です。 ただし VMware 環境内のサーバーの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。
 
 

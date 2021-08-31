@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 3/31/2021
-ms.openlocfilehash: e479a743a54e0cf3d7350fa87c3cc5ad8bf332be
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 37955c748135768701fd3429c2e4182f5d18e70c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696523"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722996"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Private Link を使用した Azure Cache for Redis
 
@@ -24,7 +24,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
-> 現時点では、ゾーン冗長、ポータル コンソールのサポート、ファイアウォール ストレージ アカウントへの永続化はサポートされていません。 
+> 現時点では、ポータル コンソールのサポートとファイアウォール ストレージ アカウントへの永続化はサポートされていません。 
 >
 >
 
@@ -212,7 +212,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 ### <a name="what-features-arent-supported-with-private-endpoints"></a>プライベート エンドポイントでサポートされていない機能は何ですか?
 
-現時点では、ゾーン冗長、ポータル コンソールのサポート、ファイアウォール ストレージ アカウントへの永続化はサポートされていません。 
+現時点では、ポータル コンソールのサポートとファイアウォール ストレージ アカウントへの永続化はサポートされていません。 
 
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>プライベート エンドポイントをパブリック ネットワーク アクセスに対して無効または有効になるように変更するにはどうすればよいですか。
 
@@ -238,6 +238,10 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 }
 ```
 
+### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-link-cache"></a>VNet インジェクションされたキャッシュを Private Link キャッシュに移行するにはどうすればよいですか。
+
+VNet インジェクションされたキャッシュを Private Link キャッシュに移行するさまざまな方法については、[移行ガイド](cache-vnet-migration.md)を参照してください。 
+
 ### <a name="how-can-i-have-multiple-endpoints-in-different-virtual-networks"></a>異なる仮想ネットワーク内に複数のエンドポイントを配置するにはどうすればよいですか。
 
 異なる仮想ネットワーク内に複数のプライベート エンドポイントを配置するには、プライベート エンドポイントを作成する _前に_、プライベート DNS ゾーンを複数の仮想ネットワークに手動で構成する必要があります。 詳細については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md)」をご覧ください。 
@@ -256,9 +260,6 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 
 お使いの VNet にリンクされているだけです。 これは VNet 内に存在しないため、依存エンドポイントに対して NSG 規則を変更する必要はありません。
 
-### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>VNet インジェクションされたキャッシュをプライベート エンドポイント キャッシュに移行するにはどうすればよいですか。
-
-VNet インジェクションされたキャッシュを削除し、プライベート エンドポイントで新しいキャッシュ インスタンスを作成する必要があります。 詳細については、「[Azure Cache for Redis に移行する](cache-migration-guide.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

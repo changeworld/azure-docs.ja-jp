@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c356ea88d23bf431df2b7785003ef23d28b5c598
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: bcf66b905b1944a160a19c35ff8d8e00c9a52e67
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572443"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446036"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Windows 用の AMD GPU ドライバー拡張機能
 
 この記事では、Windows [NVv4 シリーズ](../nvv4-series.md)の VM に AMD GPU ドライバーを配置するための VM 拡張機能の概要について説明します。 この拡張機能を使用して AMD ドライバーをインストールすると、[AMD のエンドユーザー使用許諾契約書](https://amd.com/radeonsoftwarems)の条項を受け入れ、同意することになります。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
 
-ドライバーの手動インストールの手順と現在サポートされているバージョンについては、[こちら](../windows/n-series-amd-driver-setup.md)をご覧ください。
+ドライバーの手動インストールの手順と現在サポートされているバージョンに関する説明があります。 詳細については、[Windows 用 Azure N シリーズ AMD GPU ドライバーの設定](../windows/n-series-amd-driver-setup.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

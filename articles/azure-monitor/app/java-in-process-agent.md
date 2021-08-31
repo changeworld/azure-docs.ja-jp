@@ -2,16 +2,16 @@
 title: Azure Monitor Application Insights Java
 description: コードを変更することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
-ms.date: 03/29/2020
+ms.date: 06/24/2021
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: ec48ea7bacbc0bffdd260d7c3b06660e8e7f03c1
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 83cccb8e586973cf575cf1fcd3c70a3166aeb905
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029317"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913727"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
@@ -49,11 +49,9 @@ Application Insights Java 3.x エージェントによって要求、依存関�
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.1.1.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.1.1.jar` を追加します。 
 
-一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
-
-アプリケーションの JVM 引数の構成に関する追加のヘルプについては、[JVM の引数の更新に関するヒント](./java-standalone-arguments.md)のページを参照してください。
+アプリケーションの JVM 引数の構成に関するヘルプについては、[JVM の引数の更新に関するヒント](./java-standalone-arguments.md)のページを参照してください。
 
 **3.エージェントを Application Insights リソースにポイントする**
 

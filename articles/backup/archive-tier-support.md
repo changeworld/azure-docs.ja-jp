@@ -1,23 +1,23 @@
 ---
-title: アーカイブ層のサポート (プレビュー)
+title: アーカイブ層のサポート
 description: Azure Backup のアーカイブ層のサポートについて説明します
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 08/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c817e5e0fbed7ebe6c659a91e180820de3fdc677
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ccb85c42685f962da3c9faf098d7847a93f4de74
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410101"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722740"
 ---
-# <a name="archive-tier-support-preview"></a>アーカイブ層のサポート (プレビュー)
+# <a name="archive-tier-support"></a>アーカイブ層のサポート
 
 お客様は、組織のコンプライアンス ルールによって定義されたデータ保有のニーズがある長期保有 (LTR) バックアップ データを含むバックアップ データを保存するために Azure Backup を使用しています。 ほとんどの場合、古いバックアップ データにアクセスすることはめったになく、コンプライアンスのニーズのためだけに保存されています。
 
 Azure Backup は、スナップショットと Standard 層に加えて、アーカイブ層での長期保有ポイントのバックアップをサポートしています。
 
-## <a name="scope-for-preview"></a>プレビューのスコープ
+## <a name="scope"></a>Scope
 
 サポートされているワークロード:
 
@@ -36,8 +36,8 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 
 - この機能は PowerShell を使用して提供されます。
 
->[!NOTE]
->Azure VM と Azure VM 内の SQL Server に対するアーカイブ層サポートは、限定パブリック プレビューの段階にあり、新規登録も限定されています。 アーカイブ サポートに新規登録するには、[こちら](https://aka.ms/ArchivePreviewInterestForm)のリンクをご利用ください。
+>[!Note]
+>Azure VM の SQL Server のアーカイブ アクセス層のサポートが、北ヨーロッパ、インド中部、東南アジア、オーストラリア東部で一般提供されるようになりました。 サポートされているリージョンの詳細な一覧については、[サポート マトリックス](#support-matrix)を参照してください。    <br><br>    Azure VM の SQL Server の残りのリージョンについては、アーカイブ アクセス層のサポートは限定パブリック プレビュー段階です。 Azure Virtual Machines のアーカイブ アクセス層のサポートも、限定パブリック プレビュー段階です。 限定パブリック プレビューにサインアップするには、この[リンク](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u)を使用します。
 
 ## <a name="get-started-with-powershell"></a>PowerShell の使用を開始する
 
@@ -46,7 +46,7 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 1. PowerShell で次のコマンドを実行します。
   
     ```azurepowershell
-    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
+    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.4.0 -AllowPrerelease -force
     ```
 
 1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure に接続します。
@@ -86,7 +86,7 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 
     ```
     >[!NOTE]
-    >開始日と終了日の間隔は、30 日を超えない必要があります。<br><br>異なる時間範囲の復旧ポイントを表示するには、必要に応じて開始日と終了日を変更します。
+    >異なる時間範囲の復旧ポイントを表示するには、必要に応じて開始日と終了日を変更します。
 ## <a name="use-powershell"></a>PowerShell の使用
 
 ### <a name="check-archivable-recovery-points"></a>アーカイブ可能な復旧ポイントを確認する
@@ -207,6 +207,13 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 保護を停止してデータを削除すると、すべての復旧ポイントが削除されます。 アーカイブ層で 180 日間経過していないアーカイブ内の復旧ポイントについては、復旧ポイントを削除すると早期削除コストが発生します。
 
+## <a name="support-matrix"></a>サポート マトリックス
+
+| ワークロード | プレビュー | 一般公開 |
+| --- | --- | --- |
+| Azure VM の SQL Server | 米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、米国中北部、ブラジル南部、カナダ東部、カナダ中部、西ヨーロッパ、英国南部、英国西部、東アジア、東日本、インド南部 | オーストラリア東部、インド中部、北ヨーロッパ、東南アジア |
+| Azure Virtual Machines | 米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、米国中北部、ブラジル南部、カナダ東部、カナダ中部、西ヨーロッパ、英国南部、英国西部、東アジア、東日本、インド南部、東南アジア、オーストラリア東部、インド中部、北ヨーロッパ | なし |
+
 ## <a name="error-codes-and-troubleshooting-steps"></a>エラー コードとトラブルシューティングの手順
 
 復旧ポイントをアーカイブに移動できないときに発生するいくつかのエラー コードがあります。
@@ -217,7 +224,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 **説明** - このエラー コードは、選択した復旧ポイントの種類がアーカイブへの移動資格を持たないときに表示されます。
 
-**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope-for-preview)で確認してください。
+**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope)で確認してください。
 
 ### <a name="recoverypointhaveactivedependencies"></a>RecoveryPointHaveActiveDependencies
 
@@ -225,7 +232,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 **説明 –** 選択した復旧ポイントにはアクティブな依存関係があるため、アーカイブに移動できません。
 
-**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope-for-preview)で確認してください。
+**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope)で確認してください。
 
 ### <a name="minlifespaninstandardrequiredforarchive"></a>MinLifeSpanInStandardRequiredForArchive
 
@@ -233,7 +240,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 **説明** – 復旧ポイントは Standard 層で、Azure 仮想マシンの場合は最低 3 か月間、Azure 仮想マシンの SQL Server の場合は 45 日間を経過する必要があります。
 
-**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope-for-preview)で確認してください。
+**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope)で確認してください。
 
 ### <a name="minremaininglifespaninarchiverequired"></a>MinRemainingLifeSpanInArchiveRequired
 
@@ -241,7 +248,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 **説明** – アーカイブ移動適格性に準拠するために復旧ポイントに必要な最小存続期間は 6 か月です。
 
-**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope-for-preview)で確認してください。
+**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope)で確認してください。
 
 ### <a name="usererrorrecoverypointalreadyinarchivetier"></a>UserErrorRecoveryPointAlreadyInArchiveTier
 

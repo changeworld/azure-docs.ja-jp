@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8ac1d8d10407347dac5889e9270e623e0abbeb9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: efe7a8d1969f457a70326edb99652eb8f25d27b8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968497"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213887"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -24,16 +24,17 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 ## <a name="access-to-saml-apps"></a>SAML アプリケーションへのアクセス
 
-オンプレミス アプリケーションが SAML ベースの認証を使用している場合、Azure Portal を使用して Azure AD B2B コラボレーション ユーザーがそれらのアプリケーションを簡単に利用できるようになります。
+オンプレミスのアプリで SAML による認証を使用する場合は、Azure portal で Azure AD アプリケーション プロキシを使用して、Azure AD B2B のコラボレーション ユーザーにもそれらのアプリが利用できるように、簡単に設定できます。
 
-以下の両方を行う必要があります。
+次の手順を実行する必要があります。
 
-- 「[SAML ベースのシングル サインオンの構成](../manage-apps/configure-saml-single-sign-on.md)」で説明されているように、SAML を使用してアプリを統合します。 **[サインオン URL]** 値に使用する URL をメモしておきます。
--  Azure AD アプリケーション プロキシを使用して、**Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../app-proxy/application-proxy-add-on-premises-application.md)」を参照してください。 
+- アプリケーション プロキシを有効にしてコネクターをインストールする。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../app-proxy/application-proxy-add-on-premises-application.md)」を参照してください。
+- 「[アプリケーション プロキシを使用したオンプレミスのアプリケーションに対する SAML シングル サインオン](../app-proxy/application-proxy-configure-single-sign-on-on-premises-apps.md)」の説明に従って、Azure AD アプリケーション プロキシで、SAML を利用するオンプレミスのアプリを公開します。
+- Azure AD B2B User を SAML Application に割り当てます。
 
-   **[内部 URL]** 設定を構成するときは、ギャラリー以外のアプリケーション テンプレートで指定したサインオン URL を使用します。 このような方法で、ユーザーは組織の境界外からアプリにアクセスできるようになります。 アプリケーション プロキシは、オンプレミス アプリの SAML シングル サインオンを実行します。
- 
-   ![オンプレミス アプリ設定の内部 URL と認証を表示する](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
+上の手順を完了したら、アプリが動作します。 Azure AD B2B のアクセスをテストするには
+1.  ブラウザーを開き、アプリを発行したときに作成した外部 URL に移動します。
+2.  アプリに割り当てた Azure AD B2B アカウントでサインインします。 アプリを開き、シングル サインオンでアクセスできます。
 
 ## <a name="access-to-iwa-and-kcd-apps"></a>IWA および KCD アプリへのアクセス
 

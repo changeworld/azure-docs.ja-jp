@@ -7,22 +7,21 @@ ms.subservice: azure-arc-data
 author: uc-msft
 ms.author: umajay
 ms.reviewer: mikeray
-ms.date: 10/12/2020
+ms.date: 07/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 503bfec47621e5663e6626e1285840625e92c46c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97107262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732160"
 ---
 # <a name="storage-configuration"></a>ストレージの構成
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="kubernetes-storage-concepts"></a>Kubernetes ストレージの概念
 
-Kubernetes は、基盤となる仮想化技術スタック (オプション) とハードウェアにインフラストラクチャ抽象化レイヤーを提供します。 Kubernetes がストレージを抽象化する方法は、 **[ストレージ クラス](https://kubernetes.io/docs/concepts/storage/storage-classes/)** です。 ポッドをプロビジョニングするときに、各ボリュームに使用するストレージ クラスを指定できます。 ポッドがプロビジョニングされると、ストレージ クラス **[プロビジョナー](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)** が呼び出されてストレージがプロビジョニングされ、プロビジョニングされたストレージ上に **[永続ボリューム](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)** が作成された後、ポッドが **[永続ボリューム要求](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)** によって永続ボリュームにマウントされます。
+Kubernetes は、基盤となる仮想化技術スタック (オプション) とハードウェアにインフラストラクチャ抽象化レイヤーを提供します。 Kubernetes がストレージを抽象化する方法は、 **[ストレージ クラス](https://kubernetes.io/docs/concepts/storage/storage-classes/)** です。 ポッドをプロビジョニングする際、ボリュームごとにストレージ クラスを指定できます。 ポッドがプロビジョニングされると、ストレージ クラス **[プロビジョナー](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)** が呼び出されてストレージがプロビジョニングされ、プロビジョニングされたストレージ上に **[永続ボリューム](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)** が作成された後、 **[永続ボリューム要求](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)** によってポッドが永続ボリュームにマウントされます。
 
 Kubernetes は、Kubernetes を拡張するドライバー ("アドオン" とも呼ばれます) をストレージ インフラストラクチャ プロバイダーがプラグインする手段を提供します。 ストレージのアドオンは、 **[Container Storage Interface 標準](https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/)** に準拠している必要があります。 この明確でない **[CSI ドライバーのリスト](https://kubernetes-csi.github.io/docs/drivers.html)** に含まれているアドオンも多数あります。 どの CSI ドライバーを使用するかは、クラウドでホストされたマネージド Kubernetes サービスで実行しているかどうか、またはハードウェアに使用している OEM プロバイダーなどの要因によって異なります。
 
@@ -127,8 +126,17 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 - **ローカル ストレージ** - 特定のノードのローカル ハード ドライブにプロビジョニングされているストレージ。 この種類のストレージはパフォーマンスに関しては理想的ですが、データを複数のノードにレプリケートすることによって、データの冗長性を確保するために特別に設計する必要があります。
 - **リモートの共有ストレージ** - 一部のリモート記憶装置 (例えば、SAN、NAS、または EBS や Azure Files などのクラウド ストレージ サービス) でプロビジョニングされているストレージ。 通常、この種類のストレージはデータの冗長性を自動的に提供しますが、ローカル ストレージの場合ほど高速ではありません。
 
-> [!NOTE]
-> 現時点では、NFS を使用する場合は、Azure Arc データ コントローラーをデプロイする前に、デプロイ プロファイル ファイルで allowRunAsRoot を true に設定する必要があります。
+## <a name="nfs-based-storage-classes"></a>NFS ベースのストレージ クラス
+
+NFS サーバーとストレージ クラス プロビジョナーの構成によっては、データベース インスタンスのポッド構成で `supplementalGroups` を設定する必要があります。また、クライアントによって渡されるグループ ID を使用するために NFS サーバー構成を変更する必要がある可能性があります (渡されたユーザー ID を使用してサーバー上のグループ ID を参照するのとは異なります)。 これに該当するかどうか、NFS 管理者に問い合わせて確認してください。
+
+`supplementalGroups` プロパティは値の配列を受け取り、Azure Arc データ コントローラーのデプロイの一部として設定できます。このプロパティは、Azure Arc データ コントローラーによって構成された任意のデータベース インスタンスによって使用されます。
+
+このプロパティを設定するためには、次のコマンドを実行します。
+
+```azurecli
+az arcdata dc config add --path custom/control.json --json-values 'spec.security.supplementalGroups="1234556"'
+```
 
 ### <a name="data-controller-storage-configuration"></a>データ コントローラーのストレージ構成
 
@@ -141,7 +149,7 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 |**コントローラー SQL インスタンス**|`<namespace>/logs-controldb`, `<namespace>/data-controldb`|
 |**コントローラー API サービス**|`<namespace>/data-controller`|
 
-データ コントローラーがプロビジョニングされるときに、これらの各永続ボリュームに使用されるストレージ クラスは、`azdata arc dc create` コマンドに --storage-class | -sc パラメーターを渡すか、使用する control.json 展開テンプレート ファイルでストレージ クラスを設定することによって指定されます。
+データ コントローラーがプロビジョニングされるときに、これらの各永続ボリュームに使用されるストレージ クラスは、`az arcdata dc create` コマンドに --storage-class | -sc パラメーターを渡すか、使用する control.json 展開テンプレート ファイルでストレージ クラスを設定することによって指定されます。  Azure portal を使用して直接接続モードでデータ コントローラーを作成する場合、選択した展開テンプレートはテンプレート内に定義済みのストレージ クラスを持つか、または定義済みのストレージ クラスを持たないテンプレートを選択した場合は、ストレージ クラスの入力を求めるメッセージが表示されます。  カスタム展開テンプレートを使用する場合は、ストレージ クラスを指定できます。
 
 初期状態で提供される展開テンプレートでは、ターゲット環境に適した既定のストレージ クラスが指定されていますが、デプロイ時にオーバーライドできます。 デプロイ時にデータ コントローラー ポッドのストレージ クラス構成を変更するには、[デプロイ プロファイルを変更する](create-data-controller.md)ための詳細な手順を参照してください。
 
@@ -161,31 +169,28 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 各データベース インスタンスには、データ、ログ、およびバックアップの永続ボリュームがあります。 これらの永続ボリュームのストレージ クラスは、デプロイ時に指定できます。 ストレージ クラスが指定されていない場合は、既定のストレージ クラスが使用されます。
 
-`azdata arc sql mi create` または `azdata arc postgres server create` を使用してインスタンスを作成する場合は、使用してストレージ クラスの設定に使用できるパラメーターが 2 つあります。
-
-> [!NOTE]
-> これらのパラメーターの一部は開発中であり、今後のリリースでは `azdata arc sql mi create` および `azdata arc postgres server create` で使用できるようになります。
+`az sql mi-arc create` または `az postgres arc-server create` を使用してインスタンスを作成する場合、ストレージ クラスの設定に使用できるパラメーターが 4 つあります。
 
 |パラメーター名、短い名前|使用目的|
 |---|---|
-|`--storage-class-data`, `-scd`|トランザクション ログ ファイルを含むすべてのデータ ファイルのストレージ クラスを指定するために使用されます。|
-|`--storage-class-logs`, `-scl`|すべてのログ ファイルのストレージ クラスを指定するために使用されます。|
-|`--storage-class-data-logs`, `-scdl`|データベース トランザクション ログ ファイルのストレージ クラスを指定するために使用されます。 **注意事項: まだ使用できません。**|
-|`--storage-class-backups`, `-scb`|すべてのバックアップ ファイルのストレージ クラスを指定するために使用されます。 **注意事項: まだ使用できません。**|
+|`--storage-class-data`, `-d`|トランザクション ログ ファイルを含むすべてのデータ ファイルのストレージ クラスを指定するために使用されます。|
+|`--storage-class-logs`, `-g`|すべてのログ ファイルのストレージ クラスを指定するために使用されます。|
+|`--storage-class-data-logs`|データベース トランザクション ログ ファイルのストレージ クラスを指定するために使用されます。|
+|`--storage-class-backups`|すべてのバックアップ ファイルのストレージ クラスを指定するために使用されます。|
 
 次の表は、データとログの永続ボリュームにマップされる Azure SQL Managed Instance コンテナー内のパスを示しています。
 
 |パラメーター名、短い名前|mssql-miaa コンテナー内のパス|説明|
 |---|---|---|
-|`--storage-class-data`, `-scd`|/var/opt|mssql インストールおよびその他のシステム プロセスのディレクトリが含まれています。 mssql ディレクトリには、既定のデータ (トランザクション ログを含む)、エラー ログ、バックアップのディレクトリが含まれています。|
-|`--storage-class-logs`, `-scl`|/var/log|コンソール出力 (stderr、stdout) やコンテナー内のプロセスのその他のログ情報を格納するディレクトリが含まれています。|
+|`--storage-class-data`, `-d`|/var/opt|mssql インストールおよびその他のシステム プロセスのディレクトリが含まれています。 mssql ディレクトリには、既定のデータ (トランザクション ログを含む)、エラー ログ、バックアップのディレクトリが含まれています。|
+|`--storage-class-logs`, `-g`|/var/log|コンソール出力 (stderr、stdout) やコンテナー内のプロセスのその他のログ情報を格納するディレクトリが含まれています。|
 
 次の表は、データとログの永続ボリュームにマップされる PostgreSQL インスタンス コンテナー内のパスを示しています。
 
 |パラメーター名、短い名前|postgres コンテナー内のパス|説明|
 |---|---|---|
-|`--storage-class-data`, `-scd`|/var/opt/postgresql|postgres インストールのデータとログのディレクトリが含まれています。|
-|`--storage-class-logs`, `-scl`|/var/log|コンソール出力 (stderr、stdout) やコンテナー内のプロセスのその他のログ情報を格納するディレクトリが含まれています。|
+|`--storage-class-data`, `-d`|/var/opt/postgresql|postgres インストールのデータとログのディレクトリが含まれています。|
+|`--storage-class-logs`, `-g`|/var/log|コンソール出力 (stderr、stdout) やコンテナー内のプロセスのその他のログ情報を格納するディレクトリが含まれています。|
 
 各データベース インスタンスには、データ ファイル、ログ、およびバックアップ用に個別の永続ボリュームがあります。 これは、ボリューム プロビジョナーがストレージをプロビジョニングする方法に応じて、これらの種類のファイルごとに I/O が分離されることを意味します。 各データベース インスタンスには、独自の永続ボリューム要求と永続ボリュームがあります。
 
@@ -199,13 +204,13 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 データベース インスタンス ポッドのストレージ クラスを選択する際に考慮する必要がある重要な要素は次のとおりです。
 
-- データベース インスタンスは、単一のポッド パターンまたは複数のポッド パターンでデプロイできます。 単一のポッド パターンの例として、Azure SQL マネージド インスタンスの開発者インスタンスや汎用価格レベルの Azure SQL マネージド インスタンスがあります。 複数のポッド パターンの例としては、高可用性 Business Critical 価格レベルの Azure SQL マネージド インスタンスが挙げられます (注: 価格レベルは開発中であり、お客様はまだ利用できません)。単一のポッド パターンでデプロイされたデータベース インスタンスは、データの持続性を確保するために、リモートの共有ストレージ クラスを使用する **必要があります**。これにより、ポッドが復旧したときにポッドまたはノードが停止した場合、永続ボリュームに再び接続できるようになります。 これに対し、高可用性 Azure SQL マネージド インスタンスでは Always On 可用性グループを使用して、同期または非同期で 1 つのインスタンスから別のインスタンスにデータをレプリケートします。 特にデータが同期的にレプリケートされる場合、データのコピーは常に複数存在します (通常は 3 つのコピー)。 このため、データ ファイルとログ ファイルにローカル ストレージまたはリモートの共有ストレージ クラスを使用することができます。 ローカル ストレージを使用している場合は、ポッド、ノード、またはストレージのハードウェアに障害が発生した場合でもデータが保持されます。 この柔軟性を考慮して、パフォーマンスを向上させるためにローカル ストレージを使用することもできます。
-- データベースのパフォーマンスは、主に特定の記憶装置の I/O スループットの関数です。 データベースの読み取りまたは書き込みが多い場合は、その種類のワークロード向けに設計されたハードウェアを備えたストレージ クラスを選択する必要があります。 たとえば、データベースがほとんど書き込みに使用されている場合は、RAID 0 を使用したローカル ストレージを選択できます。 データベースが主として少量の "ホット データ" の読み取りに使用されるが、コールド データの全体的なストレージ ボリュームが大きい場合は、階層化されたストレージを持つ SAN デバイスを選択できます。 適切なストレージ クラスを選択することは、データベースに使用するストレージの種類を選択することとあまり違いはありません。
+- データベース インスタンスは、単一のポッド パターンまたは複数のポッド パターンでデプロイできます。 単一のポッド パターンの例として、汎用価格レベルの Azure SQL マネージド インスタンスがあります。 複数のポッド パターンの例としては、高可用性 Business Critical 価格レベルの Azure SQL マネージド インスタンスが挙げられます 単一のポッド パターンでデプロイされたデータベース インスタンスは、データの持続性を確保するために、リモートの共有ストレージ クラスを使用する **必要があります**。これにより、ポッドが復旧したときにポッドまたはノードが停止した場合、永続ボリュームに再び接続できるようになります。 これに対し、高可用性 Azure SQL マネージド インスタンスでは Always On 可用性グループを使用して、同期または非同期で 1 つのインスタンスから別のインスタンスにデータをレプリケートします。 特にデータが同期的にレプリケートされる場合、データのコピーは常に複数存在します (通常は 3 つのコピー)。 このため、データ ファイルとログ ファイルにローカル ストレージまたはリモートの共有ストレージ クラスを使用することができます。 ローカル ストレージを使用している場合でも、データのコピーが常に複数存在するため、ポッド、ノード、またはストレージのハードウェアに障害が発生した場合にはデータが保持されます。 この柔軟性を考慮して、パフォーマンスを向上させるためにローカル ストレージを使用することもできます。
+- データベースのパフォーマンスは、主に特定の記憶装置の I/O スループットの関数です。 データベースの読み取りまたは書き込みが多い場合は、その種類のワークロード向けに設計されたハードウェアを備えたストレージ クラスを選択する必要があります。 たとえば、データベースがほとんど書き込みに使用されている場合は、RAID 0 を使用したローカル ストレージを選択できます。 データベースが主として少量の "ホット データ" の読み取りに使用されるが、コールド データの全体的なストレージ ボリュームが大きい場合は、階層化されたストレージを持つ SAN デバイスを選択できます。 適切なストレージ クラスを選択することは、データベースに使用するストレージの種類を選択することと全く同じです。
 - ローカル ストレージ ボリューム プロビジョナーを使用している場合は、ディスク I/O の競合を避けるために、データ、ログ、およびバックアップ用にプロビジョニングされるローカル ボリュームが、基になる別々の記憶装置にそれぞれ配置されているようにします。 OS も、別のディスクにマウントされているボリューム上にある必要があります。 これは基本的に、物理ハードウェア上のデータベース インスタンスの場合と同じガイダンスです。
 - 特定のインスタンス上のすべてのデータベースが永続ボリューム要求と永続ボリュームを共有するため、ビジー状態のデータベース インスタンスを同じデータベース インスタンス上に併置しないようにしてください。 可能であれば、I/O の競合を避けるために、ビジー状態のデータベースをそれぞれのデータベース インスタンスに分割します。 さらに、ノード ラベル ターゲット設定を使用してデータベース インスタンスを別々のノードに配置することで、全体的な I/O トラフィックを複数のノードに分散させることができます。 仮想化を使用している場合は、ノード レベルだけでなく、特定の物理ホスト上のすべてのノード VM によって発生する、結合された I/O アクティビティも、I/O トラフィックを分散することを検討してください。
 
 ## <a name="estimating-storage-requirements"></a>ストレージ要件の推定
-このリリースでは、ステートフル データを含むすべてのポッドは、2 つの永続ボリューム (データ用の永続ボリュームとログ用の永続ボリューム) を使用します。 次の表は、単一のデータ コントローラー、Azure SQL マネージド インスタンス、Azure Database for PostgreSQL インスタンス、および Azure PostgreSQL HyperScale インスタンスに必要な永続ボリュームの数を示しています。
+ステートフル データを含むすべてのポッドは、少なくとも 2 つの永続ボリューム (データ用の永続ボリュームとログ用の永続ボリューム) を使用します。 次の表は、単一のデータ コントローラー、Azure SQL マネージド インスタンス、Azure Database for PostgreSQL インスタンス、および Azure PostgreSQL HyperScale インスタンスに必要な永続ボリュームの数を示しています。
 
 |リソースの種類|ステートフル ポッドの数|必要な永続ボリュームの数|
 |---|---|---|
@@ -230,7 +235,7 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 ### <a name="on-premises-and-edge-sites"></a>オンプレミスとエッジ サイト
 
-Microsoft とその OEM、OS、Kubernetes パートナーは、Azure Arc データ サービスの認定プログラムに取り組んでいます。 このプログラムは、お客様に認定テスト ツールキットと同等のテスト結果を提供します。 テストでは、機能の互換性、ストレス テストの結果、パフォーマンスとスケーラビリティが評価されます。 これらの各テスト結果は、使用されている OS、使用されている Kubernetes ディストリビューション、使用されているハードウェア、使用されている CSI アドオン、および使用されているストレージ クラスを示します。 これにより、お客様は要件に合わせて最適なストレージ クラス、OS、Kubernetes ディストリビューション、およびハードウェアを選択できます。 このプログラムと初期テスト結果の詳細は、Azure Arc データ サービスの一般提供が近づいたときに提供されます。
+Microsoft とその OEM、OS、Kubernetes パートナーには、Azure Arc データ サービスの認定プログラムがあります。 このプログラムは、お客様に認定テスト ツールキットと同等のテスト結果を提供します。 テストでは、機能の互換性、ストレス テストの結果、パフォーマンスとスケーラビリティが評価されます。 これらの各テスト結果は、使用されている OS、使用されている Kubernetes ディストリビューション、使用されているハードウェア、使用されている CSI アドオン、および使用されているストレージ クラスを示します。 これにより、お客様は要件に合わせて最適なストレージ クラス、OS、Kubernetes ディストリビューション、およびハードウェアを選択できます。 このプログラムとテスト結果の詳細については、[こちら](validation-program.md)を参照してください。
 
 #### <a name="public-cloud-managed-kubernetes-services"></a>パブリック クラウド、マネージド Kubernetes サービス
 
@@ -238,6 +243,6 @@ Microsoft とその OEM、OS、Kubernetes パートナーは、Azure Arc デー�
 
 |パブリック クラウド サービス|推奨|
 |---|---|
-|**Azure Kubernetes Service (AKS)**|Azure Kubernetes Service (AKS) には、2 種類のストレージ (Azure Files と Azure Managed Disks) があります。 それぞれの種類のストレージには、Standard (HDD) と Premium (SSD) の 2 つの価格/パフォーマンス レベルがあります。 したがって、AKS では、`azurefile` (Azure Files Standard レベル)、`azurefile-premium` (Azure Files Premium レベル)、`default` (Azure ディスク Standard レベル)、および `managed-premium` (Azure ディスク Premium レベル) の 4 つのストレージ クラスが提供されます。 既定のストレージ クラスは `default` (Azure ディスク Standard レベル) です。 種類とレベルの間には相当な **[価格の違い](https://azure.microsoft.com/en-us/pricing/details/storage/)** があり、決定時に考慮する必要があります。 高パフォーマンスの要件を持つ運用環境のワークロードの場合は、すべてのストレージ クラスに `managed-premium` を使用することをお勧めします。 開発/テスト ワークロード、概念実証などでコストを考慮する場合は、`azurefile` が最もコストのかからないオプションです。 4 つのオプションはすべて、Azure 内のネットワークに接続された記憶装置であるため、リモートの共有ストレージを必要とする状況に使用できます。 AKS Storage の詳細については、[こちら](../../aks/concepts-storage.md)をご覧ください。|
+|**Azure Kubernetes Service (AKS)**|Azure Kubernetes Service (AKS) には、2 種類のストレージ (Azure Files と Azure Managed Disks) があります。 それぞれの種類のストレージには、Standard (HDD) と Premium (SSD) の 2 つの価格/パフォーマンス レベルがあります。 したがって、AKS では、`azurefile` (Azure Files Standard レベル)、`azurefile-premium` (Azure Files Premium レベル)、`default` (Azure ディスク Standard レベル)、および `managed-premium` (Azure ディスク Premium レベル) の 4 つのストレージ クラスが提供されます。 既定のストレージ クラスは `default` (Azure ディスク Standard レベル) です。 種類とレベルの間には相当な **[価格の違い](https://azure.microsoft.com/pricing/details/storage/)** があり、決定時に考慮する必要があります。 高パフォーマンスの要件を持つ運用環境のワークロードの場合は、すべてのストレージ クラスに `managed-premium` を使用することをお勧めします。 開発/テスト ワークロード、概念実証などでコストを考慮する場合は、`azurefile` が最もコストのかからないオプションです。 4 つのオプションはすべて、Azure 内のネットワークに接続された記憶装置であるため、リモートの共有ストレージを必要とする状況に使用できます。 AKS Storage の詳細については、[こちら](../../aks/concepts-storage.md)をご覧ください。|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon の Elastic Kubernetes Service には、[EBS CSI ストレージ ドライバー](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)に基づく 1 つのプライマリ ストレージ クラスがあります。 運用環境のワークロードにはこれをお勧めします。 EKS クラスターに追加できる新しいストレージ ドライバー ([EFS CSI ストレージ ドライバー](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html)) もありますが、現在はベータ段階にあり、変更される可能性があります。 AWS はこのストレージ ドライバーが運用環境でサポートされると発表していますが、まだベータ版であり、変更される可能性があるため、使用しないことをお勧めします。 既定は EBS ストレージ クラスであり、`gp2` と呼ばれます。 EKS Storage の詳細については、[こちら](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)をご覧ください。|
 |**Google Kubernetes Engine (GKE)**|Google Kubernetes Engine (GKE) には、[GCE 永続ディスク](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)に使用される `standard` と呼ばれるストレージ クラスが 1 つだけあります。 唯一のものであり、既定値でもあります。 GKE 用の[ローカルの静的なボリューム プロビジョナー](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner)があり、直接接続された SSD で使用できますが、Google によって保守またはサポートされていないため、使用しないことをお勧めします。 GKE ストレージの詳細については、[こちら](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)をご覧ください。

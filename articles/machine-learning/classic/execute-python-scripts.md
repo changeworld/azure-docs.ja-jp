@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 374589212b230e6b3ce0abcadbad8aa3eb7271fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01a8ec38ac6a52a2181834c416431c73285ac191
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519985"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581630"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で Python Machine Learning スクリプトを実行する
+# <a name="execute-python-machine-learning-scripts-in-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) で Python Machine Learning スクリプトを実行する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Python は、多くのデータ サイエンティストにとって貴重なツールです。 これは、データの探索、特徴の抽出、モデルのトレーニングと検証、デプロイなど、一般的な機械学習ワークフローのすべての段階で使用されます。
 
-この記事では、Python スクリプトの実行モジュールを使用して、Azure Machine Learning Studio (クラシック) の実験や Web サービスで Python コードを使用する方法について説明します。
+この記事では、Python スクリプトの実行モジュールを使用して、Machine Learning Studio (クラシック) の実験や Web サービスで Python コードを使用する方法について説明します。
 
 ## <a name="using-the-execute-python-script-module"></a>Python スクリプトの実行モジュールの使用
 
@@ -155,7 +155,7 @@ Studio (クラシック) にインストールされた Anaconda 環境には、
 
 ![スコアによって特徴を順位付ける関数](./media/execute-python-scripts/figure8.png)
 
-次の実験では、Azure Machine Learning Studio (classic) の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
+次の実験では、Machine Learning Studio (クラシック) の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
 
 ![Python を使用したピマ インディアン糖尿病の特徴の順位付けの実験](./media/execute-python-scripts/figure9a.png)
 

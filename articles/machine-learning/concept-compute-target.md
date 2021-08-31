@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/29/2020
-ms.openlocfilehash: 389460e79dbcc9c6ba9480540d7f361382ef5987
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 07/27/2021
+ms.openlocfilehash: a3c52783cf88e9890ffa1a96feb3a332e43c5e1c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112021089"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860825"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
@@ -24,7 +24,7 @@ ms.locfileid: "112021089"
 
 1. 最初に、少量のデータを開発して実験します。 この段階では、コンピューティング ターゲットとしてローカル環境 (ローカル コンピューターやクラウド ベースの仮想マシン (VM) など) を使用します。
 1. より大きなデータにスケールアップするか、またはこれらの[トレーニング コンピューティング ターゲット](#train)のいずれかを使用して分散トレーニングを実行します。
-1. モデルの準備ができたら、これらの[デプロイ コンピューティング ターゲット](#deploy)のいずれかを使用して、それを Web ホスティング環境または IoT デバイスにデプロイします。
+1. モデルの準備ができたら、これらの[デプロイ コンピューティング ターゲット](#deploy)のいずれかを使用して、そのモデルを Web ホスティング環境にデプロイします。
 
 コンピューティング ターゲットに使用するコンピューティング リソースは[ワークスペース](concept-workspace.md)にアタッチされています。 ローカル コンピューター以外のコンピューティング リソースは、ワークスペースのユーザーによって共有されます。
 
@@ -52,10 +52,9 @@ Azure Machine Learning では、異なるコンピューティング先に対し
 Azure Machine Learning コンピューティング インスタンスまたはコンピューティング クラスターは次の場所から作成できます。
 
 * [Azure Machine Learning スタジオ](how-to-create-attach-compute-studio.md)
-* Python SDK および CLI:
+* Python SDK および Azure CLI:
     * [コンピューティング インスタンス](how-to-create-manage-compute-instance.md)
     * [コンピューティング クラスター](how-to-create-attach-compute-cluster.md)
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (プレビュー)
 * Azure Resource Manager テンプレート。 テンプレートの例については、[Azure Machine Learning コンピューティング クラスターの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-amlcompute)に関する記事を参照してください。
 * 機械学習の [Azure CLI 用拡張機能](reference-azure-machine-learning-cli.md#resource-management)
 
@@ -64,7 +63,7 @@ Azure Machine Learning コンピューティング インスタンスまたは�
 
 |機能  |コンピューティング クラスター  |コンピューティング インスタンス  |
 |---------|---------|---------|
-|シングルノードまたはマルチノード クラスター     |    **&check;**       |         |
+|シングルノードまたはマルチノード クラスター     |    **&check;**       |    シングル ノード クラスター     |
 |実行を送信するたびに自動スケーリング     |     **&check;**      |         |
 |自動でのクラスター管理とジョブ スケジューリング     |   **&check;**        |     **&check;**      |
 |CPU と GPU の両方のリソースをサポートします     |  **&check;**         |    **&check;**       |
@@ -107,8 +106,8 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | [NDv2](../virtual-machines/ndv2-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
 | [NV](../virtual-machines/nv-series.md) | [なし] : | GPU | コンピューティングのクラスターとインスタンス |
 | [NVv3](../virtual-machines/nvv3-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
-| [NCT4_v3](../virtual-machines/nct4-v3-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
-| [NDA100_v4](../virtual-machines/nda100-v4-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [NCasT4_v3](../virtual-machines/nct4-v3-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
+| [NDasrA100_v4](../virtual-machines/nda100-v4-series.md) | 承認が必要。 | GPU | コンピューティングのクラスターとインスタンス |
 
 
 これらの VM シリーズは Azure Machine Learning でサポートされていますが、すべての Azure リージョンで使用できるとは限りません。 VM シリーズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)」を参照してください。
@@ -152,7 +151,20 @@ Azure Machine Learning コンピューティングにより、特定のハード
 
 ## <a name="unmanaged-compute"></a>アンマネージド コンピューティング
 
-アンマネージド コンピューティング先は、Azure Machine Learning によって管理 *されません*。 この種類のコンピューティング ターゲットは、Azure Machine Learning の外部で作成してからワークスペースに接続します。 アンマネージド コンピューティング リソースでは、機械学習ワークロードのパフォーマンスを維持するため、または向上させるために追加の手順が必要になる場合があります。
+アンマネージド コンピューティング先は、Azure Machine Learning によって管理 *されません*。 この種類のコンピューティング ターゲットは、Azure Machine Learning の外部で作成してからワークスペースに接続します。 アンマネージド コンピューティング リソースでは、機械学習ワークロードのパフォーマンスを維持するため、または向上させるために追加の手順が必要になる場合があります。 
+
+Azure Machine Learning は、次の種類のアンマネージド コンピューティングをサポートしています。
+
+* ユーザーのローカル コンピューター
+* リモート仮想マシン
+* Azure HDInsight
+* Azure Batch
+* Azure Databricks
+* Azure Data Lake Analytics
+* Azure Container Instances
+* Azure Kubernetes Service および Azure Arc 対応 Kubernetes (プレビュー)
+
+詳細については、「[モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する](how-to-attach-compute-targets.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

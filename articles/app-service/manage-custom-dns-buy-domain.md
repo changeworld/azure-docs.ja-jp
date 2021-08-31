@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: cdcf22a42375949cc4d6be0b4f3062cee26219d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c15c4e2f269791dfce80d89edf22d5041be636b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101704856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734474"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service のカスタム ドメイン名を購入する
 
@@ -244,13 +244,11 @@ App Service ドメイン購入後 5 日間は、購入をキャンセルでき�
 
 1. **[App Service ドメイン]** セクションで、構成するドメインを選択します。
 
-1. ドメインの左側のナビゲーションで、 **[ホスト名のバインド]** を選択します。 すべての Azure サービスのホスト名のバインドが一覧表示されます。
+1. ドメインの左側のナビゲーションで、 **[ロック]** を選択します。 
 
-    ![[ホスト名のバインド] ページを示すスクリーンショット。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+    ドメインに対して削除ロックが作成されました。 削除ロックが存在する限り、App Service ドメインを削除することはできません。
 
-1. **[...]**  >  **[削除]** の順に選んで、ホスト名のバインドを削除します。 すべてのバインドを削除した後、 **[保存]** を選びます。
-
-    <!-- ![Screenshot that shows where to delete the hostname bindings.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png) -->
+1. **[削除]** をクリックして、ロックを削除します。
 
 1. ドメインの左側のナビゲーションで、 **[概要]** を選びます。 
 

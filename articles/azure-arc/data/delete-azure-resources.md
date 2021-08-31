@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: bde1b1f84847c3ebf05f14312b89ae8227908948
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 5a2b51573e4b639c80fd36b69cef667b9ea6eff5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411181"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743855"
 ---
 # <a name="delete-resources-from-azure"></a>Azure からのリソースの削除
 
@@ -48,11 +48,10 @@ Azure Arc SQL マネージド インスタンスや Azure Arc データ コン�
     - [Azure CLI を使用した Azure Arc データ コントローラー リソースの削除](#delete-azure-arc-data-controller-resources-using-the-azure-cli)
     - [Azure CLI を使用したリソース グループの削除](#delete-a-resource-group-using-the-azure-cli)
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="delete-an-entire-resource-group"></a>リソース グループ全体の削除
 
-Azure Arc 対応データ サービスに特定の専用リソース グループを使用していて、そのリソース グループ内の *すべてのもの* を削除したい場合、リソース グループを削除すれば、その中のすべてのものが削除され ます。  
+Azure Arc 対応データ サービスに特定の専用リソース グループを使用していて、そのリソース グループ内の *すべてのもの* を削除したい場合、リソース グループを削除すれば、その中のすべてのものが削除されます。  
 
 Azure portal でリソース グループを削除するには、次の操作を行います。
 

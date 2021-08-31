@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42326cd4080fe6737fd14f8dc2c5a2028c20077f
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 890bf61eb98218df53a6aa66c9e8562881b8d2df
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854542"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895600"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>Connect Health を使用した Azure AD での AD FS サインイン - プレビュー
 
@@ -102,6 +102,9 @@ AD FS 用の Azure AD Connect Health エージェントでは、サーバーの�
 
 ***一部の AD FS サインインの [アプリケーション ID] や [アプリケーション名] に NotSet または NotApplicable が表示されるのはなぜですか?***
 AD FS サインイン レポートには、OAuth のサインイン用の [アプリケーション ID] フィールドに OAuth ID が表示されます。WS-Fed の WS-Trust サインイン シナリオでは、アプリケーション ID は NotSet または NotApplicable になり、リソース ID と証明書利用者 ID が [リソース ID] フィールドに表示されます。
+
+***[リソース ID] と [リソース名] フィールドが "Not Set (設定されていない)" と表示されるのはなぜですか?***
+"Username and Password incorrect" (ユーザー名とパスワードが正しくない) や WS-Trust ベースのサインインの失敗など、一部のエラー ケースでは、ResourceId と Name フィールドが "NotSet" になります。
 
 ***プレビュー段階のレポートには他にも何か既知の問題がありますか?***
 このレポートには、[基本情報] タブの [認証要件] フィールドに、サインインには関係なく、AD FS サインインに対して単一要素認証の値が入力されるという既知の問題があります。 さらに、[認証の詳細] タブの [要件] フィールドには [プライマリまたはセカンダリ] が表示されますが、[プライマリ] または [セカンダリ] の認証の種類を区別するための修正作業が進行中です。

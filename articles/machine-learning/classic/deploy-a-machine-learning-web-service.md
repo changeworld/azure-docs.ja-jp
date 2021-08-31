@@ -1,6 +1,6 @@
 ---
 title: 'ML Studio (classic): Web サービスをデプロイする - Azure'
-description: トレーニング実験を予測実験に変換し、そのデプロイを準備してから、Azure Machine Learning Studio (クラシック) Web サービスとしてデプロイする方法。
+description: トレーニング実験を予測実験に変換し、そのデプロイを準備してから、Machine Learning Studio (クラシック) Web サービスとしてデプロイする方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,23 +9,24 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 018e292abc7050f5d71c6bf9065618fecf8b5668
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8aff3996bf9722dc954c5532740247b05477a21b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520444"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694590"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック) ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-Azure Machine Learning Studio (クラシック) を使用すると、予測分析ソリューションを構築してテストできます。 その後、Web サービスとしてソリューションをデプロイできます。
+Machine Learning Studio (クラシック) を使用すると、予測分析ソリューションを構築してテストできます。 その後、Web サービスとしてソリューションをデプロイできます。
 
 Machine Learning Studio (クラシック) Web サービスは、アプリケーションと Machine Learning Studio (クラシック) ワークフローのスコア付けモデルの間のインターフェイスを提供します。 外部のアプリケーションは、Machine Learning Studio (クラシック) ワークフローのスコア付けモデルとリアルタイムに通信できます。 Machine Learning Studio (クラシック) Web サービスを呼び出すと、予測結果が外部のアプリケーションに返されます。 Web サービスの呼び出しを実行するには、Web サービスのデプロイ時に作成された API キーを渡します。 Machine Learning Studio (クラシック) Web サービスは、Web プログラミング プロジェクトでの一般的なアーキテクチャ選択である REST に基づいています。
 
-Azure Machine Learning Studio (クラシック) には、2 種類の Web サービスがあります。
+Machine Learning Studio (クラシック) には、2 種類の Web サービスがあります。
 
 * 要求応答サービス (RRS):待ち時間が短くスケーラビリティが高いサービス。1 つのデータ レコードをスコア付けします。
 * バッチ実行サービス (BES):非同期のサービス。データ レコードのバッチをスコア付けします。
@@ -44,10 +45,10 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 
 トレーニング実験を作成したり管理したりするプロセスはあらゆる場所でより包括的に使用できます。 詳細と例については、次の記事をご覧ください。
 
-* [Azure Machine Learning Studio (クラシック) で単純な実験を作成する](create-experiment.md)
-* [Azure Machine Learning Studio (クラシック) で予測ソリューションを開発する](tutorial-part1-credit-risk.md)
-* [Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする](import-data.md)
-* [Azure Machine Learning Studio (クラシック) で実験イテレーションを管理する](manage-experiment-iterations.md)
+* [Machine Learning Studio (クラシック) で単純な実験を作成する](create-experiment.md)
+* [Machine Learning Studio (クラシック) で予測ソリューションを開発する](tutorial-part1-credit-risk.md)
+* [Machine Learning Studio (クラシック) にトレーニング データをインポートする](import-data.md)
+* [Machine Learning Studio (クラシック) で実験イテレーションを管理する](manage-experiment-iterations.md)
 
 ## <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>トレーニング実験を予測実験に変換する
 
@@ -130,7 +131,7 @@ Web サービスを通じて提供される入力データが、これで処理�
 
 Web サービスのパラメーターを定義して、1 つまたは複数のモジュール パラメーターに関連付け、必須かオプションかを指定することができます。 Web サービスのユーザーは、サービスにアクセスするときにこれらのパラメーターの値を指定することができ、モジュールの動作はそれに応じて変更されます。
 
-Web サービス パラメーターとその使用方法の詳細については、「[Azure Machine Learning Web サービスのパラメーターの使用][webserviceparameters]」を参照してください。
+Web サービス パラメーターとその使用方法の詳細については、[Machine Learning Web サービスのパラメーターの使用][webserviceparameters]に関する記事を参照してください。
 
 次の手順では、新しい Web サービスとして予測実験をデプロイする方法を説明します。 実験は、従来の Web サービスとしてデプロイすることもできます。
 
@@ -141,7 +142,7 @@ Web サービス パラメーターとその使用方法の詳細については
 予測実験をデプロイするには、実験キャンバスの下部にある **[実行]** をクリックします。 実験の実行が終了したら **[Web サービスのデプロイ]** をクリックし、**Web サービスのデプロイ [新規]** を選択します。  Machine Learning Studio (クラシック) Web サービス ポータルのデプロイ ページが開きます。
 
 > [!NOTE] 
-> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。 
+> 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳細については、[Machine Learning Web サービス ポータルを使用した Web サービスの管理](manage-new-webservice.md)に関するページを参照してください。 
 
 ### <a name="web-service-portal-deploy-experiment-page"></a>Web サービス ポータルの [実験のデプロイ] ページ
 
@@ -190,7 +191,7 @@ Machine Learning Studio (クラシック) から Web サービスをデプロイ
 
 **[Consume (使用)]** ページでは、Web サービスへのアクセスに必要なすべての情報が提供されます。 たとえば、API キーは、サービスへの承認済みアクセスを許可するために提供されます。
 
-Machine Learning Studio (クラシック) Web サービスへのアクセスの詳細については、[Azure Machine Learning Studio (クラシック) Web サービスを使用する方法](consume-web-services.md)に関するページを参照してください。
+Machine Learning Studio (クラシック) Web サービスへのアクセスの詳細については、[Machine Learning Studio (クラシック) Web サービスを使用する方法](consume-web-services.md)に関するページを参照してください。
 
 ### <a name="manage-your-new-web-service"></a>新しい Web サービスを管理する
 
@@ -204,7 +205,7 @@ Machine Learning Studio (クラシック) Web サービス ポータルを使用
 
 #### <a name="create-a-plan-in-another-region"></a>別のリージョンにプランを作成する
 
-1. [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/)にサインインします。
+1. [Machine Learning Web サービス](https://services.azureml.net/)にサインインします。
 2. **[プラン]** メニュー オプションをクリックします。
 3. [プラン] 概要ページで **新規** をクリックします。
 4. **[サブスクリプション]** ドロップダウンで、新しいプランを配置するサブスクリプションを選択します。
@@ -216,7 +217,7 @@ Machine Learning Studio (クラシック) Web サービス ポータルを使用
 
 #### <a name="deploy-the-web-service-to-another-region"></a>別のリージョンに Web サービスをデプロイする
 
-1. Microsoft Azure Machine Learning Web サービスのページで、 **[Web サービス]** メニュー オプションをクリックします。
+1. Machine Learning Web サービスのページで、 **[Web サービス]** メニュー オプションをクリックします。
 2. 新しいリージョンにデプロイする Web サービスを選択します。
 3. **[コピー]** をクリックします。
 4. **[Web サービス名]** に Web サービスの新しい名前を入力します。
@@ -242,7 +243,7 @@ Web サービスは、Machine Learning Studio (クラシック) Web サービス
 
 要求 - 応答 Web サービスをテストするには、Web サービス ダッシュボードで **[テスト]** をクリックします。 ダイアログ ボックスが表示され、サービスへのデータの入力が促されます。 これらはスコア付け実験で想定される列になります。 データのセットを入力し、 **[OK]** をクリックします。 Web サービスによって生成された結果がダッシュボードの下部に表示されます。
 
-「新しい Web サービス」セクションで説明したように、**[テスト]** プレビュー リンクをクリックして、サービスを Azure Machine Learning Studio (クラシック) Web サービス ポータルでテストできます。
+「新しい Web サービス」セクションで説明したように、 **[テスト]** プレビュー リンクをクリックして、サービスを Machine Learning Studio (クラシック) Web サービス ポータルでテストできます。
 
 バッチ実行サービスをテストするには、 **[テスト]** プレビュー リンクをクリックします。 バッチ テストのページで、入力の下の [参照] をクリックし、適切なサンプル値を含む CSV ファイルを選択します。 CSV ファイルがなく、Machine Learning Studio (クラシック) を使用して予測実験を作成した場合は、予測実験用のデータ セットをダウンロードし、それを使用できます。
 
@@ -256,21 +257,21 @@ Web サービスは、Machine Learning Studio (クラシック) Web サービス
 
 ![Web サービス ポータル内でログ記録を有効にする](./media/publish-a-machine-learning-web-service/figure-4.png)
 
-「新しい Web サービス」セクションで説明した手順と同様に、Web サービスのエンドポイントを Azure Machine Learning Web サービス ポータルで構成することもできます。 オプションは異なりますが、サービスの説明の追加または変更、ログの有効化、テスト用サンプル データの有効化を行うことができます。
+「新しい Web サービス」セクションで説明した手順と同様に、Web サービスのエンドポイントを Machine Learning Web サービス ポータルで構成することもできます。 オプションは異なりますが、サービスの説明の追加または変更、ログの有効化、テスト用サンプル データの有効化を行うことができます。
 
 ### <a name="access-your-classic-web-service"></a>従来の Web サービスにアクセスする
 
-Azure Machine Learning Studio (クラシック) から Web サービスをデプロイしたら、プログラムでそのサービスにデータを送信したり、応答を受信したりできます。
+Machine Learning Studio (クラシック) から Web サービスをデプロイしたら、プログラムでそのサービスにデータを送信したり、応答を受信したりできます。
 
 ダッシュ ボードでは、Web サービスへのアクセスが必要なすべての情報が提供されます。 たとえば、サービスへの承認済みアクセスを許可する API キーや、コードの記述に役立つ API のヘルプ ページが提供されます。
 
-Machine Learning Studio (クラシック) Web サービスへのアクセスの詳細については、[Azure Machine Learning Studio (クラシック) Web サービスを使用する方法](consume-web-services.md)に関するページを参照してください。
+Machine Learning Studio (クラシック) Web サービスへのアクセスの詳細については、[Machine Learning Studio (クラシック) Web サービスを使用する方法](consume-web-services.md)に関するページを参照してください。
 
 ### <a name="manage-your-classic-web-service"></a>従来の Web サービスを管理する
 
 Web サービスを監視するために実行できるさまざまな操作があります。 更新および削除することもできます。 デプロイ時に作成される既定のエンドポイントに加え、従来の Web サービスにさらにエンドポイントを追加することもできます。
 
-詳細については、[Azure Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)および [Azure Machine Learning Studio (クラシック) Web サービス ポータルを使用した Web サービスの管理](manage-new-webservice.md)に関するページを参照してください。
+詳細については、[Machine Learning Studio (クラシック) ワークスペースの管理](manage-workspace.md)および [Machine Learning Studio (クラシック) Web サービス ポータルを使用した Web サービスの管理](manage-new-webservice.md)に関するページを参照してください。
 
 ## <a name="update-the-web-service"></a>Web サービスを更新する
 別のトレーニング データでのモデルの更新など、Web サービスに変更を加えたり、元の Web サービスを上書きしてもう一度デプロイしたりできます。
@@ -288,9 +289,9 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 
 * デプロイのしくみに関する技術的な詳細については、[Machine Learning Studio (クラシック) モデルが実験から運用可能な Web サービスになるまでの過程](model-progression-experiment-to-web-service.md)に関するページを参照してください。
 
-* デプロイのためにモデルを準備する方法の詳細については、[Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](deploy-a-machine-learning-web-service.md)に関するページを参照してください。
+* デプロイのためにモデルを準備する方法の詳細については、[Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法](deploy-a-machine-learning-web-service.md)に関するページを参照してください。
 
-* REST API を使用して Web サービスにアクセスするには、いくつかの方法があります。 [Azure Machine Learning Studio (クラシック) Web サービスを使用する方法](consume-web-services.md)に関するページを参照してください。
+* REST API を使用して Web サービスにアクセスするには、いくつかの方法があります。 [Machine Learning Studio (クラシック) Web サービスを使用する方法](consume-web-services.md)に関するページを参照してください。
 
 <!-- internal links -->
 [トレーニング実験を作成する]: #create-a-training-experiment

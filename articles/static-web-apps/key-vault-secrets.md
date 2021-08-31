@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/17/2021
 ms.author: cshoe
-ms.openlocfilehash: cc0ced1a6c91bf2e7960e638c295d33a45db135e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3f373122d6d68e6435cfe7083115c91718e05a09
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073344"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737472"
 ---
 # <a name="securing-authentication-secrets-in-azure-key-vault"></a>Azure Key Vault 内の認証シークレットの保護
 
@@ -24,11 +24,16 @@ ms.locfileid: "110073344"
 - その ID に Key Vault シークレットへのアクセス権を付与する。
 - Static Web Apps のアプリケーション設定から、その Key Vault シークレットを参照する。
 
-この記事では、お客様のアプリケーションでこれらの各項目を設定する方法について説明します。
+この記事では、[独自の関数アプリケーションを使用する](./functions-bring-your-own.md)ために、これらの各項目を実稼働環境で設定する方法について説明します。
+
+Key Vault 統合は以下では使用できません。
+
+- [静的 Web アプリのステージング バージョン](./review-publish-pull-requests.md)。 Key Vault 統合は、実稼働環境でのみサポートされます。
+- [マネージド関数を使用する静的 Web アプリ](./apis.md)。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- 既存の Azure Static Web Apps サイト。
+- [独自の関数](./functions-bring-your-own.md)を使用する Azure Static Web Apps サイト。
 - シークレット値が入った既存の Key Vault リソース。
 
 ## <a name="create-identity"></a>ID の作成

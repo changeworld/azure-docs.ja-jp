@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: inference server, local development, local debugging
+ms.custom: inference server, local development, local debugging, devplatv2
 ms.date: 05/14/2021
-ms.openlocfilehash: d54195829c4f4734d135e3468897711bdaa0421f
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 924995fe9330a44b52a40a8e3eb651efdeb24398
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538451"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751949"
 ---
 # <a name="azure-machine-learning-inference-http-server-preview"></a>Azure Machine Learning 推論 HTTP サーバー (プレビュー)
 
@@ -26,7 +26,7 @@ Azure Machine Learning 推論 HTTP サーバー [(プレビュー)](https://azur
 
 ## <a name="prerequisites"></a>前提条件
 
-- Python バージョン 3.7
+- 必要: Python >= 3.7
 
 ## <a name="installation"></a>インストール
 
@@ -55,7 +55,7 @@ python -m pip install azureml-inference-server-http
     source myenv/bin/activate
     ```
 
-1. [Pypi](https://pypi.org/) フィードから `azureml-inference-server-http` パッケージをインストールします。
+1. [Pypi](https://pypi.org/project/azureml-inference-server-http/) フィードから `azureml-inference-server-http` パッケージをインストールします。
 
     ```bash
     python -m pip install azureml-inference-server-http
@@ -84,13 +84,6 @@ python -m pip install azureml-inference-server-http
     > [!NOTE]
     > サーバーは 0.0.0.0 でホストされます。つまり、ホスト コンピューターのすべての IP アドレスをリッスンします。
 
-    サーバーは、これらのルートでポート 5001 でリッスンしています。
-
-    | Name | ルート|
-    | --- | --- |
-    | Liveness Probe | 127.0.0.1:5001/|
-    | Score | 127.0.0.1:5001/score|
-
 1. `curl` を使用して、スコアリング要求をサーバーに送信します。
 
     ```bash
@@ -105,6 +98,15 @@ python -m pip install azureml-inference-server-http
 
 これで、サーバーを再度実行して、スコアリング スクリプトを変更し、変更をテストできます。
 
+## <a name="server-routes"></a>サーバー ルート
+
+サーバーは、これらのルートでポート 5001 でリッスンしています。
+
+| Name | ルート|
+| --- | --- |
+| Liveness Probe | 127.0.0.1:5001/|
+| Score | 127.0.0.1:5001/score|
+
 ## <a name="server-parameters"></a>サーバー パラメーター
 
 次の表に、サーバーで受け入れられるパラメーターを示します。
@@ -115,6 +117,7 @@ python -m pip install azureml-inference-server-http
 | model_dir | × | 該当なし | 推論に使用されるモデルを保持するディレクトリへの相対または絶対パス。
 | port | False | 5001 | サーバーのサービス ポート。|
 | worker_count | False | 1 | 同時要求を処理するワーカー スレッドの数。 |
+| appinsights_instrumentation_key | × | 該当なし | ログが発行されるアプリケーション分析情報へのインストルメンテーション キー。 |
 
 ## <a name="request-flow"></a>要求フロー
 
@@ -129,6 +132,7 @@ python -m pip install azureml-inference-server-http
 1. 最後に、要求は入力スクリプトに送信されます。 次に、エントリ スクリプトは、読み込まれたモデルへの推論の呼び出しを行い、応答を返します。
 
 :::image type="content" source="./media/how-to-inference-server-http/inference-server-architecture.png" alt-text="HTTP サーバー プロセスの図":::
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="do-i-need-to-reload-the-server-when-changing-the-score-script"></a>スコア スクリプトを変更するときに、サーバーをリロードする必要がありますか。
@@ -141,4 +145,5 @@ Azure Machine Learning 推論サーバーは、Windows と Linux をベースと
 
 ## <a name="next-steps"></a>次のステップ
 
-入力スクリプトの作成とモデルのデプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする方法](how-to-deploy-and-where.md)」に関するページを参照してください。
+* 入力スクリプトの作成とモデルのデプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする方法](how-to-deploy-and-where.md)」に関するページを参照してください。
+* [推論用の事前構築済み Docker イメージ](concept-prebuilt-docker-images-inference.md)について説明します

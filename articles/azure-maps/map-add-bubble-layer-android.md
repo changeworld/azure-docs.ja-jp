@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: f3c175f30c5c0e6206f4fee274e0f3f000e55a74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3f4dc33347a7e4397a2cd53ecc56d87ed155378
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100170"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093519"
 ---
 # <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>マップにバブル レイヤーを追加する (Android SDK)
 
@@ -169,7 +169,7 @@ map.layers.add(
 
 ::: zone-end
 
-次のスクリーンショットは、上記のコードにより、バブル レイヤーにポイントがレンダリングされ、シンボル レイヤーを使ってポイントのテキスト ラベルがレンダリングされた状態を示しています。
+次のスクリーンショットは、上記のコードにより、バブル レイヤーにポイントがレンダリングされ、シンボル レイヤーを使ってポイントのテキスト ラベルがレンダリングされている状態を示しています。
 
 ![バブル レイヤーを使用してレンダリングされたポイントと、シンボル レイヤーを使用したテキスト ラベルを含むマップ](media/map-add-bubble-layer-android/android-bubble-symbol-layer.png)
 
@@ -179,6 +179,9 @@ map.layers.add(
 
 > [!div class="nextstepaction"]
 > [データ ソースを作成する](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [ポイント データをクラスタリングする](clustering-point-data-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [シンボル レイヤーを追加する](how-to-add-symbol-to-android-map.md)

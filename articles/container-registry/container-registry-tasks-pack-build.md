@@ -2,14 +2,14 @@
 title: Cloud Native Buildpack でイメージをビルドする
 description: az acr pack build コマンドを使用して、アプリからコンテナー イメージをビルドし、Dockerfile を使用せずに Azure Container Registry にプッシュします。
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 06/24/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 1700c8fda8ac91e7d447d35c0989da2d5fc3aefe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 28630c46ea56bd4df1a43e5e377b3051f9cdd966
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780931"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913964"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpacks を使用して、アプリからイメージをビルドしてプッシュする
 
@@ -29,19 +29,19 @@ Cloud Native Buildpacks を使用してコンテナー イメージをビルド�
 * コマンドを実行する Azure コンテナー レジストリ
 * イメージ名と生成されるイメージのタグ
 * ローカル ディレクトリ、GitHub リポジトリ、リモートの tarball など、ACR タスクで[サポートされるコンテキストの場所](container-registry-tasks-overview.md#context-locations)のいずれか。
-* 実際のアプリケーションに適した Buildpack ビルダー イメージの名前。 Azure Container Registry では、ビルドを高速化するために、`cloudfoundry/cnb:0.0.34-cflinuxfs3` などのビルダー イメージがキャッシュされます。  
+* 実際のアプリケーションに適した Buildpack ビルダー イメージの名前。 Azure Container Registry によってキャッシュされない場合、ビルダー イメージは `--pull` パラメーターでプルする必要があります。  
 
 `az acr pack build` では、[Run 変数](container-registry-tasks-reference-yaml.md#run-variables)や、ストリーミングされ、後で取得できるように保存される[タスク実行ログ](container-registry-tasks-logs.md)など、ACR タスク コマンドの他の機能もサポートしています。
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>例: Cloud Foundry ビルダーを使用して Node.js イメージをビルドする
 
-次の例では、`cloudfoundry/cnb:0.0.34-cflinuxfs3` ビルダーを使用して、[Azure Samples/nodejs-docs-hello world リポジトリ](https://github.com/Azure-Samples/nodejs-docs-hello-world)の Node.js アプリからコンテナー イメージをビルドします。 このビルダーは Azure Container Registry によってキャッシュされているため、`--pull` パラメーターは必要ありません。
+次の例では、`cloudfoundry/cnb:cflinuxfs3` ビルダーを使用して、[Azure Samples/nodejs-docs-hello world リポジトリ](https://github.com/Azure-Samples/nodejs-docs-hello-world)の Node.js アプリからコンテナー イメージをビルドします。
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
-    --image {{.Run.Registry}}/node-app:1.0 \
-    --builder cloudfoundry/cnb:0.0.34-cflinuxfs3 \
+    --image node-app:1.0 \
+    --pull --builder cloudfoundry/cnb:cflinuxfs3 \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
@@ -65,7 +65,7 @@ docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 
 ## <a name="example-build-java-image-with-heroku-builder"></a>例: Heroku ビルダーを使用して Java イメージをビルドする
 
-次の例では、`heroku/buildpacks:18` ビルダーを使用して、[buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) リポジトリの Java アプリからコンテナー イメージをビルドします。 `--pull` パラメーターでは、コマンドによって最新のビルダー イメージをプルする必要があることを指定します。 
+次の例では、`heroku/buildpacks:18` ビルダーを使用して、[buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) リポジトリの Java アプリからコンテナー イメージをビルドします。 
 
 ```azurecli
 az acr pack build \

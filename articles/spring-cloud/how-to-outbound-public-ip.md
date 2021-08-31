@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud で送信パブリック IP アドレスを識別する方法
 description: データベース、ストレージ、キー コンテナーなど、外部リソースと通信するために静的送信パブリック IP アドレスを表示する方法。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/17/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: bea1c156df381d8f3b53ce0eb08173d385b6eada
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cc3050cb7c92e0e46c02a4a12f218364b94b2d1f
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080652"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015544"
 ---
 # <a name="how-to-identify-outbound-public-ip-addresses-in-azure-spring-cloud"></a>Azure Spring Cloud で送信パブリック IP アドレスを識別する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "110080652"
 
 ## <a name="how-ip-addresses-work-in-azure-spring-cloud"></a>Azure Spring Cloud で IP アドレスが動作するしくみ
 
-Azure Spring Cloud サービスには、1 つまたは複数の送信パブリック IP アドレスが与えられます。 送信パブリック IP アドレスの数は、レベルやその他の要因によって異なる場合があります。 
+Azure Spring Cloud サービスには、1 つまたは複数の送信パブリック IP アドレスが与えられます。 送信パブリック IP アドレスの数は、レベルやその他の要因によって異なる場合があります。
 
 通常、送信パブリック IP アドレスは不変であり、同じままですが例外があります。
 
@@ -35,7 +35,7 @@ Azure Spring Cloud サービスには、1 つまたは複数の送信パブリ�
 
 ## <a name="find-outbound-ips"></a>IP アドレスを見つける
 
-Azure portal でサービス インスタンスによって現在使用されている送信パブリック IP アドレスを見つけるには、インスタンスの左側ナビゲーション ウィンドウで **[ネットワーク]** をクリックします。 **[送信 IP アドレス]** フィールドに表示されます。
+Azure portal でサービス インスタンスによって現在使用されている送信パブリック IP アドレスを見つけるには、インスタンスの左側ナビゲーション ウィンドウで **[ネットワーク]** を選択します。 **[送信 IP アドレス]** フィールドに表示されます。
 
 Cloud Shell で次のコマンドを実行することで、同じ情報を見つけることができます。
 
@@ -44,6 +44,7 @@ az spring-cloud show --resource-group <group_name> --name <service_name> --query
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 > [!div class="nextstepaction"]
 * [Azure リソース用マネージド ID の詳細](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [Azure Spring Cloud のキー コンテナーの詳細](./tutorial-managed-identities-key-vault.md)

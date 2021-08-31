@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 83d10a7a6e9eb14379d32cc88800a2c443feac60
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c08d0f561e743b33720258ce5d6886411f3859f0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503050"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462525"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -150,6 +150,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 **--include-pattern** string   名前がパターンの一覧と一致するファイルをのみを含めます。 例: `*.jpg;*.pdf;exactName`
 
 **--log-level** string     ログ ファイルのログ詳細度を定義します。指定可能なレベルは、`INFO` (すべての要求と応答)、`WARNING` (低速な応答)、`ERROR` (失敗した要求のみ)、`NONE` (出力ログなし) です。 (既定値は `INFO` です。) 
+
+**--mirror-mode**          このフラグが `true` に設定されている場合、最終変更時刻に基づく比較が無効になり、転送先で競合するファイルと BLOB が上書きされます。 既定値は `false` です。
 
 **--preserve-smb-info** string 既定で false になっています。 SMB 対応リソース (Windows と Azure Files) 間の SMB プロパティ情報 (最終書き込み時刻、作成時刻、属性ビット) を保持します。 ファイルのみのフィルターが指定されている場合を除き、このフラグはファイルとフォルダーの両方に適用されます (例: include-pattern)。  フォルダーの場合に保持されない最終書き込み時刻を除き、フォルダーについて転送される情報はファイルの情報と同じです。
 

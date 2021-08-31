@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 08/11/2021
 ms.author: justinha
-ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c28711e937290df75687376f3ee6e067a69ad91d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742917"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Azure Active Directory Domain Services マネージド ドメインのパスワードとアカウントのロックアウト ポリシー
 
@@ -63,7 +63,7 @@ Azure Active Directory Domain Services (Azure AD DS) でユーザーのセキュ
 
 * **アカウントのロックアウト期間:** 30
 * **許可される失敗したログオン試行回数:** 5
-* **失敗したログオン試行回数のカウントがリセットされるまでの時間:** 30 分
+* **失敗したログオン試行回数のカウントがリセットされるまでの時間:** 2 分
 * **パスワードの有効期間:** 90 日間
 
 このような既定の設定の場合、2 分以内に、5 回の無効なパスワード使用が行われた場合、ユーザー アカウントは 30 分間ロック アウトされます。 アカウントは、自動的に、30 分後にロック解除されます。
@@ -105,10 +105,7 @@ Azure でアプリケーションを構築して実行するときに、カス�
 
     カスタム パスワード ポリシーの優先順位を *1* などに設定して、既定値を上書きします。
 
-1. 必要に応じて、他のパスワード ポリシー設定を編集します。 次の重要な点に注意してください。
-
-    * パスワードの複雑さ、年齢、有効期限などの設定は、マネージド ドメインで手動で作成したユーザーに対してのみ適用されます。
-    * アカウント ロックアウトの設定はすべてのユーザーに適用されますが、マネージド ドメイン内でのみ有効になり、Azure AD 自体では有効になりません。
+1. 必要に応じて、他のパスワード ポリシー設定を編集します。 アカウント ロックアウトの設定はすべてのユーザーに適用されますが、マネージド ドメイン内でのみ有効になり、Azure AD 自体では有効になりません。
 
     ![カスタムの細かい設定が可能なパスワード ポリシーを作成する](./media/password-policy/custom-fgpp.png)
 

@@ -4,13 +4,13 @@ description: Bicep を使用して拡張リソースの種類を展開すると�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 59b6576dfb1bd5e0ac4f56e6a59b6ea4d5c4b5f4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/30/2021
+ms.openlocfilehash: a899622c22d68217fd4fbf73e495f89885f4d7ba
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027248"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445412"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>Bicep で拡張リソースのスコープを設定する
 
@@ -27,7 +27,7 @@ ms.locfileid: "111027248"
 
 ターゲット展開スコープで拡張リソースの種類を適用するには、他のリソースの種類と同様に、リソースをテンプレートに追加します。 利用可能なスコープは、[リソース グループ](deploy-to-resource-group.md)、[サブスクリプション](deploy-to-subscription.md)、[管理グループ](deploy-to-management-group.md)、[テナント](deploy-to-tenant.md)です。 展開スコープで、そのリソースの種類がサポートされている必要があります。
 
-次のテンプレートによって、ロックが展開されます。
+リソース グループにデプロイすると、次のテンプレートによってそのリソース グループにロックが追加されます。
 
 ```bicep
 resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
@@ -39,7 +39,7 @@ resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 ```
 
-次の例では、ロールを割り当てます。
+次の例では、デプロイ先のサブスクリプションにロールが割り当てられます。
 
 ```bicep
 targetScope = 'subscription'
@@ -75,7 +75,7 @@ resource roleAssignSub 'Microsoft.Authorization/roleAssignments@2020-04-01-previ
 
 ## <a name="apply-to-resource"></a>リソースに適用
 
-リソースに拡張リソースを適用するには、`scope` プロパティを使用します。 scope プロパティを、拡張を追加するリソースの名前に設定します。 scope プロパティは、拡張リソースの種類のルート プロパティです。
+リソースに拡張リソースを適用するには、`scope` プロパティを使用します。 scope プロパティで、拡張を追加するリソースを参照します。 リソースを参照するには、リソースのシンボリック名を指定します。 scope プロパティは、拡張リソースの種類のルート プロパティです。
 
 次の例では、ストレージ アカウントを作成し、それにロールを適用します。
 
@@ -102,7 +102,7 @@ var role = {
 }
 var uniqueStorageName = 'storage${uniqueString(resourceGroup().id)}'
 
-resource storageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+resource demoStorageAcct 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   name: uniqueStorageName
   location: location
   sku: {
@@ -118,10 +118,24 @@ resource roleAssignStorage 'Microsoft.Authorization/roleAssignments@2020-04-01-p
     roleDefinitionId: role[builtInRoleType]
     principalId: principalId
   }
-  scope: storageName
-  dependsOn: [
-    storageName
-  ]
+  scope: demoStorageAcct
+}
+```
+
+既存のリソースに拡張機能リソースを適用できます。 次の例では、既存のストレージ アカウントにロックが追加されます。
+
+```bicep
+resource demoStorageAcct 'Microsoft.Storage/storageAccounts@2021-04-01' existing = {
+  name: 'examplestore'
+}
+
+resource createStorageLock 'Microsoft.Authorization/locks@2016-09-01' = {
+  name: 'storeLock'
+  scope: demoStorageAcct
+  properties: {
+    level: 'CanNotDelete'
+    notes: 'Storage account should not be deleted.'
+  }
 }
 ```
 
@@ -132,4 +146,4 @@ resource roleAssignStorage 'Microsoft.Authorization/roleAssignments@2020-04-01-p
 * [リソース グループのデプロイ](deploy-to-resource-group.md)
 * [サブスクリプションへのデプロイ](deploy-to-subscription.md)
 * [管理グループのデプロイ](deploy-to-management-group.md)
-* [テナントのデプロイ](deploy-to-tenant.md)
+* [テナントへのデプロイ](deploy-to-tenant.md)

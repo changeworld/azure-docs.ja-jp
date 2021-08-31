@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: f491681c8054c800e15c3c77516ff22e3c70dbac
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 917bcf74adaaec4e354662ec25816bcad471025d
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001504"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991912"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
 
@@ -96,10 +96,13 @@ Azure Sentinel では、[1 つのクエリでの複数のワークスペース](
 
 #### <a name="cross-workspace-analytics-rules"></a>クロスワークスペース分析ルール<a name="scheduled-alerts"></a>
 <!-- Bookmark added for backward compatibility with old heading -->
-クロスワークスペース クエリをスケジュールされた分析ルールに含めることができるようになりました。ただし、次の制限事項があります。
+ワークスペースをまたぐクエリを、スケジュールされた分析ルールに組み込めるようになりました。 ワークスペースをまたぐ分析ルールは 中央 SOC で使用でき、テナント間でも MSSP の場合と同様に (Azure Lighthouse によって) 使用できますが、次の制約を受けます。
 
-- 1 つのクエリに含めることができるワークスペースは、最大 20 個です。
-- クエリで参照されているすべてのワークスペースに、Azure Sentinel をデプロイする必要があります。
+- 1 つのクエリに組み込める **ワークスペースは最大 20 個** です。
+- Azure Sentinel を、クエリで参照する **すべてのワークスペースにデプロイする** 必要があります。
+- ワークスペースをまたぐ分析ルールにより生成される警告と、それらのルールにより作成されるインシデントは、**ルールを定めているワークスペースにのみ** 存在します。 クエリで参照する他のワークスペースには表示されません。
+
+ワークスペースをまたぐ分析ルールによって作成される警告とインシデントには、参照を受けるすべてのワークスペースと “ホーム” ワークスペース (ルールを定めているワークスペース) のエンティティなど、関係するエンティティがすべて含まれます。 これにより、警告とインシデントの全体像を分析できます。
 
 > [!NOTE] 
 > 同じクエリ内で複数のワークスペースに対してクエリを実行すると、パフォーマンスに影響する可能性があるので、ロジックでこの機能が必要なときにのみ推奨されます。

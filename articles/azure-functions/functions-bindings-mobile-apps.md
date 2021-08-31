@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c2c47b4a0895ef41096348c97ebb2d6ff34e801
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88212246"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554606"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 
@@ -143,7 +143,7 @@ module.exports = function (context, myQueueItem) {
 |**tableName** |**TableName**|モバイル アプリのデータ テーブルの名前|
 | **id**| **Id** | 取得するレコードの識別子。 静的にすることも、関数を呼び出すトリガーに基づいて設定することもできます。 たとえば、関数にキュー トリガーを使用した場合、`"id": "{queueTrigger}"` は、キュー メッセージの文字列値を、取得するレコード ID として使用します。|
 |**connection**|**Connection**|モバイル アプリの URL を含むアプリ設定の名前。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL を含むアプリ設定を Function App で作成し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 URL は、`http://<appname>.azurewebsites.net` のようになります。
-|**apiKey**|**ApiKey**|モバイル アプリの API キーを含むアプリ設定の名前。 [API キーを Node.js モバイル アプリに実装する](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)場合や、[API キーを .NET モバイル アプリに実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)場合は、API キーを指定します。 キーを指定するには、API キーを含むアプリ設定を Function App で作成し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 |
+|**apiKey**|**ApiKey**|モバイル アプリの API キーを含むアプリ設定の名前。 API キーを Node.js モバイル アプリに実装する場合は API キーを指定します。あるいは、[.NET モバイル アプリで API キーを実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)こともできます。 キーを指定するには、API キーを含むアプリ設定を Function App で作成し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -300,7 +300,7 @@ public static object Run(
 | **name**| 該当なし | 関数シグネチャの出力パラメーターの名前。|
 |**tableName** |**TableName**|モバイル アプリのデータ テーブルの名前|
 |**connection**|**MobileAppUriSetting**|モバイル アプリの URL を含むアプリ設定の名前。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL を含むアプリ設定を Function App で作成し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 URL は、`http://<appname>.azurewebsites.net` のようになります。
-|**apiKey**|**ApiKeySetting**|モバイル アプリの API キーを含むアプリ設定の名前。 [API キーを Node.js モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)場合や [API キーを .NET モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)場合は、API キーを指定します。 キーを指定するには、API キーを含むアプリ設定を Function App で作成し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 |
+|**apiKey**|**ApiKeySetting**|モバイル アプリの API キーを含むアプリ設定の名前。 API キーを Node.js モバイル アプリのバックエンドに実装する場合は API キーを指定します。あるいは、[.NET モバイル アプリのバックエンドで API キーを実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)こともできます。 キーを指定するには、API キーを含むアプリ設定を Function App で作成し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

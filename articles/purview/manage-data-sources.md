@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: b8eefda763765fd17fbf86bcf3205e854459a9f6
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: c1e60ae792921ef4e218918f093001ee9947975d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656248"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724268"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Azure Purview でデータ ソースを管理する (プレビュー)
 
@@ -38,7 +38,7 @@ ms.locfileid: "109656248"
 
 ## <a name="view-sources"></a>ソースを表示する
 
-Azure Purview Studio の **[ソース]** タブで、登録されているすべてのソースを表示できます。 ビューには、マップ ビューとリスト ビューの 2 種類があります。
+Azure Purview Studio の **[データ マップ]** タブで、登録されているすべてのソースを表示できます。 ビューには、マップ ビューとリスト ビューの 2 種類があります。
 
 ### <a name="map-view"></a>マップ ビュー
 

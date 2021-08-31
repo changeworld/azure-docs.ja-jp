@@ -10,13 +10,13 @@ ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 09/01/2020
-ms.openlocfilehash: 7b25aaf6d151b840571a562819fb804f4af5c8dd
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/28/2021
+ms.openlocfilehash: a620d1cbd9ae0f9a4f03e6bf744cf2febd8ac240
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371087"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736519"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -36,6 +36,8 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 > Web サービスにデプロイする前にローカルでデバッグすることをお勧めします。 詳細については、「[ローカル デバッグ](./how-to-troubleshoot-deployment-local.md)」を参照してください。
 >
 > Azure Machine Learning の[ローカルの Notebook へのデプロイ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)に関する記事を参照することもできます
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,7 +72,7 @@ Azure Machine Learning では、"デプロイ"は、「プロジェクト リソ
 1. Dockerfile のビルドまたは計算ノードへのダウンロード (Kubernetes 関連)
     1. システムにより、次のハッシュが計算されます。 
         - 基本イメージ 
-        - カスタム Docker の手順 (「[カスタム Docker ベース イメージを使用してモデルをデプロイする](./how-to-deploy-custom-docker-image.md)」を参照してください)
+        - カスタム Docker の手順 (「[カスタム Docker ベース イメージを使用してモデルをデプロイする](./how-to-deploy-custom-container.md)」を参照してください)
         - Conda 定義 YAML ([Azure Machine Learning でのソフトウェア環境の作成と使用](./how-to-use-environments.md)に関するページを参照してください)
     1. システムでは、ワークスペース Azure Container Registry (ACR) の検索で、このハッシュがキーとして使用されます
     1. 見つからない場合、グローバル ACR で一致するものが検索されます
@@ -92,26 +94,35 @@ azureml-fe は、より多くのコアを使用するためのスケールアッ
 
 スケールダウンとスケールインを行うときは、CPU 使用率が使用されます。 CPU 使用率のしきい値に達した場合、フロントエンドでは、まずスケールダウンが行われます。 CPU 使用率がスケールインのしきい値にまで低下した場合は、スケールイン操作が行われます。 スケールアップとスケールアウトは、使用可能なクラスター リソースが十分にある場合にのみ発生します。
 
+<a id="connectivity"></a>
+
 ## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>AKS 推論クラスターの接続要件を理解する
 
 Azure Machine Learning で AKS クラスターを作成またはアタッチすると、次の 2 つのネットワーク モデルのいずれかで AKS クラスターがデプロイされます。
 * Kubenet ネットワーク - AKS クラスターのデプロイ時に、通常はネットワーク リソースが作成され、構成されます。
 * Azure Container Networking Interface (CNI) ネットワーク - AKS クラスターは、既存の仮想ネットワーク リソースと構成に接続されます。
 
-最初のネットワーク モードでは、ネットワークが作成され、Azure Machine Learning service 用に適切に構成されます。 2 番目のネットワーク モードでは、クラスターが既存の仮想ネットワークに接続されるため、特に既存の仮想ネットワークでカスタム DNS を使用している場合は、お客様は AKS 推論クラスターの接続要件に注意し、AKS 推論の DNS 解決と送信接続を確認する必要があります。
+Kubenet ネットワークでは、ネットワークが作成され、Azure Machine Learning service 用に適切に構成されます。 CNI ネットワークでは、接続要件を理解し、AKS 推論のための DNS 解決と送信接続を確認する必要があります。 たとえば、ファイアウォールを使用してネットワーク トラフィックをブロックしている場合があります。
 
-次の図は、AKS 推論のすべての接続要件をキャプチャします。 黒い矢印は実際の通信を表し、青い矢印はドメイン名を表します。このドメイン名は、お客様が管理する DNS で解決されます。
+次の図は、AKS 推論の接続要件を示しています。 黒い矢印は実際の通信を表し、青い矢印はドメイン名を表します。 これらのホストのエントリをファイアウォールまたはカスタム DNS サーバーに追加することが必要になる場合があります。
 
  ![AKS 推論の接続要件](./media/how-to-deploy-aks/aks-network.png)
 
+一般的な AKS 接続要件については、「[Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する](../aks/limit-egress-traffic.md)」を参照してください。
+
 ### <a name="overall-dns-resolution-requirements"></a>全体的な DNS 解決の要件
-既存の VNET 内の DNS 解決は、お客様の管理下にあります。 次の DNS エントリが解決可能である必要があります。
-* \<cluster\>.hcp.\<region\>.azmk8s.io の形式の AKS API サーバー
-* Microsoft Container Registry (MCR): mcr.microsoft.com
-* \<ACR name\>.azurecr.io の形式のお客様の Azure Container Registry (ARC)
-* \<account\>.table.core.windows.net および \<account\>.blob.core.windows.net の形式の Azure Storage アカウント
-* (省略可能) AAD 認証の場合: api.azureml.ms
-* スコアリング エンドポイントのドメイン名。 Azure ML またはカスタム ドメイン名で自動生成されます。 自動生成されたドメイン名は、\<leaf-domain-label \+ auto-generated suffix\>.\<region\>.cloudapp.azure.com のようになります
+
+既存の VNet 内の DNS 解決は、お客様の管理下にあります。 たとえば、ファイアウォールやカスタム DNS サーバーなどです。 次のホストに到達できる必要があります。
+
+| ホスト名 | 使用者 |
+| ----- | ----- |
+| `<cluster>.hcp.<region>.azmk8s.io` | AKS API サーバー |
+| `mcr.microsoft.com` | Microsoft Container Registry (MCR) |
+| `<ACR name>.azurecr.io` | Azure Container Registry (ACR) |
+| `<account>.table.core.windows.net` | Azure Storage アカウント (テーブル ストレージ) |
+| `<account>.blob.core.windows.net` | Azure Storage アカウント (BLOB ストレージ) |
+| `api.azureml.ms` | Azure Active Directory (AAD) 認証 |
+| `<leaf-domain-label + auto-generated suffix>.<region>.cloudapp.azure.com` | エンドポイントのドメイン名 (Azure Machine Learning によって自動生成した場合)。 カスタム ドメイン名を使用した場合は、このエントリは必要ありません。 |
 
 ### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>クラスターの作成からモデル デプロイまで、時系列順の接続要件
 
@@ -125,7 +136,7 @@ azureml-fe はデプロイされるとすぐに開始しようとしますが、
 * AKS API サーバーにそれ自体の他のインスタンスを検出するためにクエリを実行する (マルチポッド サービス)
 * それ自体の他のインスタンスに接続する
 
-azureml-fe が開始されると、正常に機能するために追加の接続が必要になります。
+azureml-fe が開始されると、正常に機能するために次の接続が必要になります。
 * Azure Storage に接続して動的構成をダウンロードする
 * デプロイされたサービスが AAD 認証を使用している場合は、AAD 認証サーバー api.azureml.ms の DNS を解決して、そのサーバーと通信します。
 * デプロイされたモデルを検出するために AKS API サーバーにクエリを実行する
@@ -372,7 +383,7 @@ print(token)
 >
 > Azure Machine Learning ワークスペースは、ご利用の Azure Kubernetes Service クラスターと同じリージョンに作成することを強くお勧めします。 トークンを使用して認証するために、Web サービスは、Azure Machine Learning ワークスペースの作成先のリージョンに対して呼び出しを行います。 ワークスペースのリージョンが利用不可になった場合、ワークスペースとは異なるリージョンにクラスターがあったとしても、Web サービスのトークンがフェッチできなくなります。 その場合、ワークスペースのリージョンが利用可能な状態に戻るまで、事実上、トークン ベースの認証が利用できない状態となります。 また、クラスターのリージョンとワークスペースのリージョンとの間の距離が長くなるほど、トークンのフェッチにかかる時間も長くなります。
 >
-> トークンを取得するには、Azure Machine Learning SDK または [az ml service get-access-token](/cli/azure/ml/service#az_ml_service_get_access_token) コマンドを使用する必要があります。
+> トークンを取得するには、Azure Machine Learning SDK または [az ml service get-access-token](/cli/azure/ml(v1)/computetarget/create#az_ml_service_get_access_token) コマンドを使用する必要があります。
 
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
@@ -383,7 +394,7 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 
 * [Kubernetes 認可に Azure RBAC を使用する](../aks/manage-azure-rbac.md)
 * [Azure Virtual Network で推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-* [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [カスタム Docker イメージを使用してモデルをデプロイする方法](./how-to-deploy-custom-container.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)

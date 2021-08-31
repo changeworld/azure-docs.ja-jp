@@ -8,12 +8,12 @@ author: ejarvi
 ms.author: ejarvi
 ms.collection: windows
 ms.date: 03/19/2020
-ms.openlocfilehash: 62ad5ca5d3b150aef5a83eaa4d5231e7bb5a6a62
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 679682ed0a268306bfb6c7afcf9abbd94a4d45b7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100182"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738978"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -134,6 +134,8 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
 
 ### <a name="property-values"></a>プロパティ値
 
+注: すべての値で大文字と小文字が区別されます。
+
 | 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
@@ -156,7 +158,7 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
 
 スキーマ v2.2 に基づくテンプレートのデプロイの例については、Azure クイックスタート テンプレートの [encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm-without-aad) を参照してください。
 
-スキーマ v1.1 に基づくテンプレートのデプロイの例については、Azure クイックスタート テンプレートの [201-encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm) を参照してください。
+スキーマ v1.1 を基板とするテンプレート デプロイの例については、Azure クイックスタート テンプレート [encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm) を参照してください。
 
 >[!NOTE]
 > また、`VolumeType` パラメーターが All に設定されている場合は、正しくフォーマットされている場合にのみ、データ ディスクが暗号化されます。

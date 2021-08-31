@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 795353c88853d53864edb2968c757d14f106ee3f
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 3e5aab3d38e4f981e27ceb59db1511c54ed89381
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585393"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752421"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Azure App Service の自分のコードから TLS/SSL 証明書を使用する
 
@@ -184,4 +184,5 @@ Node.js、PHP、Python、Java、Ruby で TLS/SSL 証明書をファイルから�
 * [Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
 * [HTTPS の適用](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 の適用](configure-ssl-bindings.md#enforce-tls-versions)
-* [FAQ:App Service 証明書](./faq-configuration-and-management.md)
+* [FAQ:App Service 証明書](./faq-configuration-and-management.yml)
+* [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

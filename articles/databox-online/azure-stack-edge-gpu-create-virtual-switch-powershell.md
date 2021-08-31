@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 06/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 1ad86695510a8fe93bbeeab27db53f5afbef92fd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 9910ac4d817879812803cd41f6b184846e1b02be
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555923"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106247"
 ---
 # <a name="create-a-new-virtual-switch-in-azure-stack-edge-pro-gpu-via-powershell"></a>PowerShell を使用して Azure Stack Edge Pro GPU に新しい仮想スイッチを作成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "106555923"
     ```
     出力例を次に示します。
     
-    ```powershell
+    ```output
         [10.100.10.10]: PS>Get-NetAdapter -Physical
         
         Name                      InterfaceDescription                    ifIndex Status       MacAddress       LinkSpeed
@@ -70,13 +70,13 @@ ms.locfileid: "106555923"
 2. 次の状態のネットワーク インターフェイスを選択します。
 
     - **Up** 状態になっている。 
-    - 既存の仮想スイッチで使用されていない。 現時点では、ネットワーク インターフェイスごとに構成できる仮想スイッチは 1 つだけです。 
+    - 既存の仮想スイッチで使用されていない。 現在、ネットワーク インターフェイスごとに構成できる仮想スイッチは 1 つのみです。 
     
     既存の仮想スイッチとネットワーク インターフェイスの関連付けを確認するには、`Get-HcsExternalVirtualSwitch` コマンドを実行します。
  
     出力例を次に示します。
 
-    ```powershell
+    ```output
     [10.100.10.10]: PS>Get-HcsExternalVirtualSwitch
 
     Name                          : vSwitch1
@@ -106,8 +106,8 @@ Add-HcsExternalVirtualSwitch -InterfaceAlias <Network interface name> -WaitForSw
 
 出力例を次に示します。
 
-```powershell
-[10.100.10.10]: P> Add-HcsExternalVirtualSwitch -InterfaceAlias Port5 -WaitForSwitchCreation $true
+```output
+[10.100.10.10]: PS> Add-HcsExternalVirtualSwitch -InterfaceAlias Port5 -WaitForSwitchCreation $true
 [10.100.10.10]: PS>Get-HcsExternalVirtualSwitch
 
 Name                          : vSwitch1
@@ -135,11 +135,69 @@ Type                          : External
 [10.100.10.10]: PS>
 ```
 
-## <a name="verify-network-subnet"></a>ネットワーク、サブネットを確認する 
+## <a name="verify-network-subnet-for-switch"></a>スイッチのネットワーク、サブネットを確認する
 
 新しい仮想スイッチを作成すると、Azure Stack Edge Pro GPU によって、それに対応する仮想ネットワークとサブネットが自動的に作成されます。 この仮想ネットワークを VM の作成時に使用できます。
 
-<!--To identify the virtual network and subnet associated with the new switch that you created, use the `Get-HcsVirtualNetwork` command. This cmdlet will be released in April some time. -->
+作成した新しいスイッチに関連付けられている仮想ネットワークとサブネットを特定するには、`Get-HcsVirtualNetwork` コマンドレットを使用します。 
+
+## <a name="create-virtual-lans"></a>仮想 LAN を作成する
+
+仮想スイッチに仮想ローカル エリア ネットワーク (LAN) の構成を追加するには、次のコマンドレットを使用します。
+
+```powershell
+Add-HcsVirtualNetwork-VirtualSwitchName <Virtual Switch name> -VnetName <Virtual Network Name> –VlanId <Vlan Id> –AddressSpace <Address Space> –GatewayIPAddress <Gateway IP>–DnsServers <Dns Servers List> -DnsSuffix <Dns Suffix name>
+``` 
+
+次のパラメーターは `Add-HcsVirtualNetwork-VirtualSwitchName` コマンドレットと共に使用します。
+
+
+|パラメーター  |説明  |
+|---------|---------|
+|VNetName     |仮想 LAN ネットワークの名前         |
+|VirtualSwitchName    |仮想 LAN の構成を追加する仮想スイッチの名前         |
+|AddressSpace     |仮想 LAN ネットワークのサブネット アドレス空間         |
+|GatewayIPAddress     |仮想ネットワークのゲートウェイ         |
+|DnsServers     |DNS サーバーの IP アドレスの一覧         |
+|DnsSuffix     |仮想 LAN ネットワーク サブネットのホスト部分のない DNS 名         |
+
+
+
+出力例を次に示します。
+
+```output
+[10.100.10.10]: PS> Add-HcsVirtualNetwork -VirtualSwitchName vSwitch1 -VnetName vlanNetwork100 -VlanId 100 -AddressSpace 5.5.0.0/16 -GatewayIPAddress 5.5.0.1 -DnsServers "5.5.50.50&quot;,&quot;5.5.50.100&quot; -DnsSuffix &quot;name.domain.com"
+
+[10.100.10.10]: PS> Get-HcsVirtualNetwork
+ 
+Name             : vnet2015
+AddressSpace     : 10.128.48.0/22
+SwitchName       : vSwitch1
+GatewayIPAddress : 10.128.48.1
+DnsServers       : {}
+DnsSuffix        :
+VlanId           : 2015
+ 
+Name             : vnet3011
+AddressSpace     : 10.126.64.0/22
+SwitchName       : vSwitch1
+GatewayIPAddress : 10.126.64.1
+DnsServers       : {}
+DnsSuffix        :
+VlanId           : 3011
+```
+ 
+> [!NOTE]
+> - 同じ仮想スイッチに複数の仮想 LAN を構成できます。 
+> - ゲートウェイ IP アドレスは、アドレス空間として渡したパラメーターと同じサブネット内になければなりません。
+> - 仮想 LAN が構成されている場合は、仮想スイッチを削除できません。 この仮想スイッチを削除するには、最初に仮想 LAN を削除してから、仮想スイッチを削除します。
+
+## <a name="verify-network-subnet-for-virtual-lan"></a>仮想 LAN のネットワーク、サブネットを確認する
+
+仮想 LAN を作成すると、仮想ネットワークとそれに対応するサブネットが自動的に作成されます。 この仮想ネットワークを VM の作成時に使用できます。
+
+作成した新しいスイッチに関連付けられている仮想ネットワークとサブネットを特定するには、`Get-HcsVirtualNetwork` コマンドレットを使用します。
+
 
 ## <a name="next-steps"></a>次の手順
 

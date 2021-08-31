@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services コンテナーを削除する
 description: この記事では、依存関係を削除してから Azure Backup Recovery Services コンテナーを削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/07/2021
-ms.openlocfilehash: 022297407200f6045cd0cf4c0922a83c41333a04
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0eb5e7c48bf15583e96a5bf30149ba01ee7c2e33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752755"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747647"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -52,7 +52,7 @@ ms.locfileid: "111752755"
 
 これらの手順を完了したら、引き続き[コンテナーを削除](#delete-the-recovery-services-vault)できます。
 
-保護されている項目がオンプレミスやクラウドになくても、引き続きコンテナーの削除エラーが発生している場合は、「[Azure Resource Manager を使用して Recovery Services コンテナーを削除する](#delete-the-recovery-services-vault-by-using-azure-resource-manager)」の手順を実行します
+依存関係を含まない **コンテナーをまだ削除できない** 場合は、[**ARM クライアントを使用してコンテナーを削除する**](#delete-the-recovery-services-vault-by-using-azure-resource-manager)に記載されている手順に従います。
 
 ## <a name="delete-protected-items-in-the-cloud"></a>クラウド内の保護されたアイテムを削除する
 

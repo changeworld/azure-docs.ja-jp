@@ -8,13 +8,13 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, subject-rbac-steps
+ms.openlocfilehash: ef49c6ebd356c97466b9b5a744cc58584c42bcb7
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97722965"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126034"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -97,20 +97,14 @@ Azure Active Directory ユーザーを対象とするアプリケーションで
 **Azure portal で**
 1.    アプリケーションをネイティブ アプリケーションとして Azure AD に登録します。 登録の一環として、アプリケーションをマルチテナントにする必要があるかどうかを決める必要があります。 アプリケーションで許可されるリダイレクト URL も指定する必要があります。
 1.  **[API のアクセス許可]** タブに移動します。
-2.  **[アクセス許可の追加]** を選択します。
+1.  **[アクセス許可の追加]** を選択します。
     1.  **[所属する組織で使用している API]** タブの **[Mixed Reality Resource Provider]\(Mixed Reality リソース プロバイダー\)** を選択します。
     2.  **[委任されたアクセス許可]** を選択します。
     3.  **[mixedreality]** の下にある **[mixedreality.signin]** を選択します。
     4.  **[アクセス許可の追加]** を選択します.
-3.  **[管理者の同意の付与]** を選択します。
+1.  **[管理者の同意の付与]** を選択します。
 
-2. アプリケーションまたはユーザーにご使用のリソースへのアクセス権を付与します。
-   1.    Azure portal で、ご使用の Spatial Anchors リソースに移動します。
-   2.    **[アクセス制御 (IAM)]** タブに移動します。
-   3.    **[ロールの割り当ての追加]** を選択します。
-   1.    [ロールを選択します](#azure-role-based-access-control)。
-   2.    **[選択]** ボックスに、アクセス権を割り当てるユーザー、グループ、またはアプリケーションの名前を入力します。
-   3.    **[保存]** を選択します。
+1. リソースへのアクセスを与えるアプリケーションまたはユーザーに [ASA RBAC の役割](#azure-role-based-access-control)を割り当てます。 アプリケーションのユーザーに ASA アカウントとは異なるロールを割り当てる場合は、複数のアプリケーションを Azure AD に登録し、それぞれに別のロールを割り当てます。 次に、ユーザーに適切なロールを使用するために承認ロジックを実装します。 詳細なロール割り当て手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 **コードで**
 1.    MSAL の **client ID** と **RedirectUri** パラメーターに自分の Azure AD アプリケーションのアプリケーション ID とリダイレクト URI を使用することを確認します。
@@ -177,18 +171,8 @@ Azure AD アクセス トークンは、[MSAL](../../active-directory/develop/ms
         1.    Azure portal で、 **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。
         2.    **[新規登録]** を選択します。
         3.    アプリケーションの名前を入力し、アプリケーションの種類として **[Web アプリ/API]** を選択し、サービスの認証 URL を入力します。 **［作成］** を選択します
-2.    アプリケーションで、 **[設定]** を選択し、 **[証明書とシークレット]** タブを選択します。新しいクライアント シークレットを作成し、期間を選択し、 **[追加]** を選択します。 シークレット値を必ず保存してください。 それを Web サービスのコードに含める必要があります。
-3.    アプリケーションまたはユーザー (および両方) にリソースへのアクセス権を付与します。
-        1.    Azure portal で、ご使用の Spatial Anchors リソースに移動します。
-        2.    **[アクセス制御 (IAM)]** タブに移動します。
-        3.    **[ロールの割り当ての追加]** を選択します。
-        4.    [ロールを選択します](#azure-role-based-access-control)。
-        5.    **[選択]** ボックスに、アクセス権を割り当てるアプリケーションの名前を入力します (1 つまたは複数)。 アプリのユーザーに Spatial Anchors アカウントとは異なるロールを割り当てる場合は、複数のアプリケーションを Azure AD に登録し、それぞれに別のロールを割り当てます。 次に、ユーザーに適切なロールを使用するために承認ロジックを実装します。
-
-              > [!NOTE]
-              > **[ロールの割り当ての追加]** ペインで、 **[アクセスの割り当て先]** から **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
-
-        6.    **[保存]** を選択します。
+1.    アプリケーションで、 **[設定]** を選択し、 **[証明書とシークレット]** タブを選択します。新しいクライアント シークレットを作成し、期間を選択し、 **[追加]** を選択します。 シークレット値を必ず保存してください。 それを Web サービスのコードに含める必要があります。
+1. リソースへのアクセスを与えるアプリケーションまたはユーザーに [ASA RBAC の役割](#azure-role-based-access-control)を割り当てます。 アプリケーションのユーザーに ASA アカウントとは異なるロールを割り当てる場合は、複数のアプリケーションを Azure AD に登録し、それぞれに別のロールを割り当てます。 次に、ユーザーに適切なロールを使用するために承認ロジックを実装します。 詳細なロール割り当て手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 **コードで**
 

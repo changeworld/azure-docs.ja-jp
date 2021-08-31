@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 5b136a95d841775861c0e4d7c0bba1feec101f0d
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 9d59e8eab9aff857991a886838cc1063a36de00c
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110493782"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112120107"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>Lab Services で 外部ファイル ストレージを使用する
 
@@ -46,9 +46,9 @@ Azure Files 共有にプライベート エンドポイントを使用する場�
 - この方法では、ファイル共有仮想ネットワークがラボ アカウントとピアリングされている必要があります。 Azure Storage アカウントの仮想ネットワークは、ラボを作成する前に、ラボ アカウントの仮想ネットワークとピアリングされている必要があります。
 
 > [!NOTE]
-> 5 TB を超えるファイル共有は、[[ローカル冗長ストレージ アカウント]](../storage/files/storage-files-how-to-create-large-file-share.md#restrictions) でのみ使用できます。
+> 既定では、Standard ファイル共有を最大 5 TiB にまたがるようにすることができます。 最大 100 TiB にまたがるファイル共有を作成する方法については、「[Azure ファイル共有を作成する](../storage/files/storage-how-to-create-file-share.md)」を参照してください。
 
-Azure Files 共有に接続された VM を作成するには、次の手順に従ってください。
+Azure Files 共有に接続された VM を作成するには、こちらの手順に従ってください。
 
 1. [Azure Storage アカウント](../storage/files/storage-how-to-create-file-share.md)を作成します。 **[接続方法]** ページで、**パブリック エンドポイント** または **プライベート エンドポイント** を選択します。
 2. プライベート メソッドを選択した場合は、仮想ネットワークからファイル共有にアクセスできるようにするために、[プライベート エンドポイント](../private-link/tutorial-private-endpoint-storage-portal.md)を作成します。 [プライベート DNS ゾーン](../dns/private-dns-privatednszone.md)を作成するか、既存のものを使用します。 プライベート Azure DNS ゾーンでは、仮想ネットワーク内での名前解決が提供されます。

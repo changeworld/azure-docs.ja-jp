@@ -2,34 +2,36 @@
 title: アプリケーションにサインインするときに、予期しない同意プロンプトが表示される | Microsoft Docs
 description: Azure AD と統合されているアプリケーションでユーザーに予期しない同意プロンプトが表示されたときのトラブルシューティングの方法
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mtillman
-ms.reviewer: asteen
+ms.author: davidmu
+ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd58aefca395cab7645f444763c50e6451e0cffc
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 81640356eb60167e8cdefc67b962bf7f38783556
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080779"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738874"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>アプリケーションにサインインするときに、予期しない同意プロンプトが表示される
 
-Azure Active Directory と統合する多くのアプリケーションを実行するためには、さまざまなリソースへのアクセス許可が必要です。 これらのリソースを Azure Active Directory に統合する際にも、Azure AD 同意フレームワークを使用してリソースへのアクセス許可が要求されます。 
+Azure Active Directory と統合する多くのアプリケーションを実行するためには、さまざまなリソースへのアクセス許可が必要です。 これらのリソースを Azure Active Directory に統合する際にも、Azure AD 同意フレームワークを使用してリソースへのアクセス許可が要求されます。
 
-このため、アプリケーションを初めて使用する際に同意プロンプトが表示されます。通常、これは 1 回限りの操作です。 
+このため、アプリケーションを初めて使用する際に同意プロンプトが表示されます。通常、これは 1 回限りの操作です。
 
 > [!VIDEO https://www.youtube.com/embed/a1AjdvNDda4]
 
 ## <a name="scenarios-in-which-users-see-consent-prompts"></a>ユーザーに同意プロンプトが表示されるシナリオ
 
 追加のプロンプトは、次のようなさまざまなシナリオで表示されます。
+
+* アプリケーションは割り当てを要求するように構成されています。 割り当てを要求するアプリに対してユーザーの同意が現在サポートされていません。 割り当てを要求するようにアプリケーションを構成する場合、割り当てられたユーザーがサインインできるよう、テナント全体の管理者の同意も必ず付与してください。
 
 * アプリケーションに必要なアクセス許可のセットが変更された場合。
 
@@ -43,8 +45,11 @@ Azure Active Directory と統合する多くのアプリケーションを実行
 
 * 開発者がアプリケーションを、使用するたびに同意プロンプトを表示するように構成した場合 (注: これはベスト プラクティスではありません)。
 
+   > [!NOTE]
+   > Microsoft の推奨事項とベスト プラクティスに従い、アプリに同意を付与するユーザーのアクセス許可を多くの組織が無効にしているか、制限しています。 テナント全体の管理者の同意を管理者が付与しているのにサインインのたびにアプリケーションからユーザーに同意の付与が強制される場合、ほとんどのユーザーはブロックされてアプリケーションを使用できません。 管理者の同意の付与後でもアプリケーションからユーザーの同意が要求された場合、サインイン毎のユーザーの同意の強制を停止する設定やオプションがないか、アプリの発行元に確認してください。
+
 ## <a name="next-steps"></a>次のステップ
 
--   [Azure Active Directory (v1.0 エンドポイント) のアプリ、アクセス許可、および同意](../develop/quickstart-register-app.md)
+* [Azure Active Directory (v1.0 エンドポイント) のアプリ、アクセス許可、および同意](../develop/quickstart-register-app.md)
 
--   [Azure Active Directory (v2.0 エンドポイント) のスコープ、アクセス許可、および同意](../develop/v2-permissions-and-consent.md)
+* [Azure Active Directory (v2.0 エンドポイント) のスコープ、アクセス許可、および同意](../develop/v2-permissions-and-consent.md)

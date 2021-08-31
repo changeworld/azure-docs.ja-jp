@@ -1,24 +1,24 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: trbye
-ms.openlocfilehash: 1fe353c4a006dba23eda104ba083e0cc20cd2559
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 342cf69a7ef50b38a50d9d95af50ea60e5c19258
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059190"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067782"
 ---
 :::row:::
     :::column span="3":::
-        音声 SDK は、Linux で使用する際、**Ubuntu 16.04/18.04/20.04**、**Debian 9/10**、**Red Hat Enterprise Linux (RHEL) 7/8**、**CentOS 7/8** のみをサポートしています。
+        音声 SDK は、Linux で使用する際、**Ubuntu 16.04** (9 月まで)、**Ubuntu 18.04/20.04**、**Debian 9/10**、**Red Hat Enterprise Linux (RHEL) 7/8**、**CentOS 7/8** のみをサポートしています。
     :::column-end:::
     :::column:::
         <br>
         <div class="icon is-large">
-            <img alt="Linux" src="https://docs.microsoft.com/media/logos/logo_linux-color.svg" width="60px">
+            <img alt="Linux" src="/media/logos/logo_linux-color.svg" width="60px">
         </div>
     :::column-end:::
 :::row-end:::

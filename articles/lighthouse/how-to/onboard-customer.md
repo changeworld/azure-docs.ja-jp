@@ -1,15 +1,15 @@
 ---
 title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これによりそのリソースは、テナント内のユーザーがアクセスして管理できます。
-ms.date: 05/25/2021
+ms.date: 08/16/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: de0520f7ed8be24ac19b4738828890877456f734
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 533841e958d7873c4961814f7398ec539fd6a6fd
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078961"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253226"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
@@ -31,8 +31,8 @@ ms.locfileid: "112078961"
 
 顧客のテナントをオンボードするには、アクティブな Azure サブスクリプションが必要です。 次のことを知っている必要があります。
 
-- サービス プロバイダーのテナント (顧客のリソースを管理する場所) のテナント ID
-- 顧客のテナント (リソースはサービス プロバイダーで管理されます) のテナント ID
+- サービス プロバイダーのテナント (顧客のリソースを管理する場所) のテナント ID。 [Azure portal でテンプレートを作成する場合](#create-your-template-in-the-azure-portal)、この値は自動的に指定されます。
+- 顧客のテナント (リソースはサービス プロバイダーで管理されます) のテナント ID。
 - サービス プロバイダーで管理される (またはサービス プロバイダーで管理されるリソース グループを含む) 顧客のテナントにある特定のサブスクリプションそれぞれのサブスクリプション ID
 
 こうした ID 値がまだない場合は、次のいずれかの方法で取得できます。 デプロイではこれらの正確な値を必ず使用してください。
@@ -121,21 +121,48 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの作成
 
-顧客をオンボードするには、プラン用に次の情報を含む [Azure Resource Manager](../../azure-resource-manager/index.yml) テンプレートを作成する必要があります。 **mspOfferName** および **mspOfferDescription** の値は、Azure portal の [[サービス プロバイダー] ページ](view-manage-service-providers.md)で顧客に表示されます。
+顧客をオンボードするには、プラン用に次の情報を含む [Azure Resource Manager](../../azure-resource-manager/index.yml) テンプレートを作成する必要があります。 顧客のテナント内にテンプレートがデプロイされると、**mspOfferName** および **mspOfferDescription** の値は、Azure portal の [[サービス プロバイダー] ページ](view-manage-service-providers.md)で顧客に表示されます。
 
 |フィールド  |定義  |
 |---------|---------|
 |**mspOfferName**     |この定義を説明する名前。 この値は、オファーのタイトルとして顧客に表示され、一意の値である必要があります。        |
-|**mspOfferDescription**     |自分のオファーの簡単な説明 (例: "Contoso VM 管理オファー")。      |
+|**mspOfferDescription**     |自分のオファーの簡単な説明 (例: "Contoso VM 管理オファー")。 このフィールドは省略可能ですが、顧客がオファーを明確に理解するために推奨されます。   |
 |**managedByTenantId**     |テナント ID。          |
 |**authorizations**     |**principalId** 値はテナントのユーザー、グループ、または SPN を表し、それぞれに、顧客が承認の目的を理解するのに役立つ **principalIdDisplayName** が指定されているほか、アクセス レベルを指定するための組み込みの **roleDefinitionId** 値がマップされています。      |
 
-オンボード プロセスには、Azure Resource Manager テンプレート ([サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)に提供されています) と、お使いの構成に合わせるための変更と承認の定義を行う、対応するパラメーター ファイルが必要です。
+このテンプレートは、Azure portal 内で、または[サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)で提供されているテンプレートを手動で変更することで作成できます。 
 
 > [!IMPORTANT]
 > ここで説明するプロセスでは、同じ顧客テナントにサブスクリプションをオンボードしている場合でも、オンボードするサブスクリプションごとに個別のデプロイが必要です。 また、同じ顧客テナントで異なるサブスクリプション内の複数のリソース グループをオンボードする場合も個別のデプロイが必要です。 ただし、1 つのサブスクリプション内の複数のリソース グループをオンボードする場合は、1 つのデプロイで実行できます。
 >
 > また、同じサブスクリプション (またはサブスクリプション内のリソース グループ) に適用される複数のプランに対しても個別のデプロイが必要です。 適用される各プランに、それぞれ異なる **mspOfferName** を使用する必要があります。
+
+### <a name="create-your-template-in-the-azure-portal"></a>Azure portal でテンプレートを作成する
+
+Azure portal でテンプレートを作成するには、 **[マイ カスタマー]** にアクセスし、概要ページで **[ARM テンプレートの作成]** を選択します。
+
+**[Create ARM Template offer]\(ARM テンプレート オファーの作成\)** ページで、**名前** とオプションの **説明** を入力します。 これらの値はテンプレートの **mspOfferName** および **mspOfferDescription** に使用されます。 **managedByTenantId** 値は、ログインしている Azure AD テナントに基づいて自動的に提供されます。
+
+次に、オンボードする顧客スコープに基づいて、 **[サブスクリプション]** または **[リソース グループ]** のいずれかを選択します。 **[リソース グループ]** を選択した場合、オンボードするリソース グループの名前を入力する必要があります。 **+** アイコンを選択して、必要に応じてリソース グループを追加できます。 (すべてのリソース グループが、同じ顧客サブスクリプション内にある必要があります)。
+
+最後に、 **[+ 承認の追加]** を選択して承認を作成します。 各承認について、次の詳細を指定します。
+
+1. 承認に含めるアカウントの種類に基づいて **[プリンシパルの種類]** を選択します。 これは、 **[ユーザー]** 、 **[グループ]** 、または **[サービス プリンシパル]** のいずれかにすることができます。 この例では、 **[ユーザー]** を選択します。
+1. **[+ ユーザーの選択]** リンクを選択して、選択ウィンドウを開きます。 検索フィールドを使用して、追加するユーザーを検索できます。 これを行ったら、 **[選択]** をクリックします。 ユーザーの **[プリンシパル ID]** が自動的に入力されます。
+1. **[表示名]** フィールド (選択したユーザーに基づいて入力される) を確認し、必要に応じて変更します。
+1. このユーザーに割り当てる **[ロール]** を選択します。
+1. **[アクセス]** の種類で、 **[永続]** または **[対象]** を選択します。 **[対象]** を選択した場合は、最大期間、多要素認証、承認が必要かどうかのオプションを指定する必要があります。 これらのオプションの詳細については、「[適格な認可を作成する](create-eligible-authorizations.md)」を参照してください。 適格な認可機能は現在パブリック プレビュー中であり、サービス プリンシパルでは使用できません。
+1. **[追加]** を選択して認可を作成します。
+
+:::image type="content" source="../media/add-authorization.png" alt-text="Azure portal の [承認の追加] セクションのスクリーンショット。":::
+
+**[追加]** を選択した後、 **[Create ARM Template offer]\(ARM テンプレート オファーの作成\)** 画面に戻ります。 **[+ 承認の追加]** を再び選択して、必要な数だけ承認を追加できます。
+
+すべての承認を追加した後、 **[テンプレートの表示]** を選択します。 この画面には、入力した値に対応する .json ファイルが表示されます。 **[ダウンロード]** を選択して、この .json ファイルのコピーを保存します。 このテンプレートは、[顧客のテナントにデプロイ](#deploy-the-azure-resource-manager-template)できます。 変更が必要な場合は、手動で編集することもできます。 このファイルは、Azure portal に格納されないことに注意してください。
+
+### <a name="create-your-template-manually"></a>テンプレートを手動で作成する
+
+Azure Resource Manager テンプレート ([サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)に提供されています) と、お使いの構成に合わせるための変更と承認の定義を行う対応するパラメーター ファイルを使用して、テンプレートを作成できます。 必要に応じて、別のパラメーター ファイルを使用するのではなく、すべての情報をテンプレートに直接含めることができます。
 
 選択するテンプレートは、オンボードの対象がサブスクリプション全体、リソース グループ、サブスクリプション内の複数のリソース グループのいずれであるかによって異なります。 また、この方法でサブスクリプションをオンボードしたい方のために、Azure Marketplace に公開したマネージド サービス オファーを購入した顧客に使用できるテンプレートも用意されています。
 
@@ -146,8 +173,10 @@ az role definition list --name "<roleName>" | grep name
 |サブスクリプション内の複数のリソース グループ   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |サブスクリプション (Azure Marketplace に公開されたオファーの使用時)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
+[適格認可](create-eligible-authorizations.md#create-eligible-authorizations-using-azure-resource-manager-templates) (現在はパブリック プレビュー) を含めるには、[サンプル レポジトリの delegated-resource-management-eligible-authorizations セクション](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-eligible-authorizations)から対応するテンプレートを選択します。
+
 > [!TIP]
-> 1 回のデプロイでグループ全体をオンボードすることはできませんが、[管理グループ レベルでポリシーをデプロイする](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups)ことはできます。 ポリシーにより、管理グループ内の各サブスクリプションが指定した管理テナントに委任されているかどうかが [deployIfNotExists 効果](../../governance/policy/concepts/effects.md#deployifnotexists)を使用して確認され、委任されていない場合は、指定した値に基づく割り当てが作成されます。 その後、管理グループ内のすべてのサブスクリプションにアクセスできるようになります。ただし、管理グループ全体に対してアクションを実行するのではなく、個々のサブスクリプションとして処理する必要があります。
+> 1 回のデプロイで管理グループ全体をオンボードすることはできませんが、[管理グループ内の各サブスクリプションをオンボードする](onboard-management-group.md)ためのポリシーをデプロイすることはできます。 その後、管理グループ内のすべてのサブスクリプションにアクセスできるようになります。ただし、(管理グループ リソースに直接アクションを実行するのではなく) 個々のサブスクリプションとして処理する必要があります。
 
 次の例では、変更した **delegatedResourceManagement.parameters.json** ファイルを示します。これを使用すれば、サブスクリプションをオンボードすることができます。 ([rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) フォルダー内にある) リソース グループのパラメーター ファイルは似ていますが、オンボードの対象となる特定のリソース グループを識別するための **rgName** パラメーターも含まれています。
 
@@ -204,26 +233,38 @@ az role definition list --name "<roleName>" | grep name
 
 上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、**delegatedRoleDefinitionIds** プロパティと 1 つ以上のサポートされている Azure 組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらのロールを顧客テナント内の[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ために必要です。  ユーザーは、サポート インシデントを作成することもできます。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、この **principalId** に適用されません。
 
-## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートをデプロイする
+## <a name="deploy-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのデプロイ
 
-パラメーター ファイルを更新したら、顧客のテナント内のユーザーは、Azure Resource Manager テンプレートを顧客のテナントにデプロイする必要があります。 オンボードするサブスクリプションごと (または、オンボードするリソース グループを含むサブスクリプションごと) に個別のデプロイが必要です。
+テンプレートを作成したら、顧客のテナント内のユーザーが、それをテナント内にデプロイする必要があります。 オンボードするサブスクリプションごと (または、オンボードするリソース グループを含むサブスクリプションごと) に個別のデプロイが必要です。
 
 > [!IMPORTANT]
 > このデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者](../../role-based-access-control/built-in-roles.md#owner)などの `Microsoft.Authorization/roleAssignments/write` アクセス許可を含むロールを持っている (またはオンボード対象のリソース グループを含む) 顧客のテナント内で実行する必要があります。 サブスクリプションを委任できるユーザーを見つけるには、顧客のテナント内のユーザーが Azure portal 上でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 >
 > サブスクリプションが[クラウド ソリューション プロバイダー (CSP) プログラム](../concepts/cloud-solution-provider.md)を使用して作成されている場合、サービス プロバイダー テナントの[管理エージェント](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ロールを持つユーザーがデプロイを実行できます。
 
-デプロイは、次に示すように PowerShell または Azure CLI を使用して、Azure portal で行うことができます。
-
-### <a name="azure-portal"></a>Azure portal
-
-1. [GitHub リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)で、使用するテンプレートの横に表示される **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンを選択します。 Azure portal でテンプレートが開きます。
-1. **[Msp Offer Name]\(Msp オファー名\)** **[Msp Offer Description]\(Msp オファーの説明\)** 、 **[Managed by Tenant Id]\(テナント ID による管理\)** 、および **[Authorizations]\(承認\)** の値を入力します。 必要に応じて、 **[パラメーターの編集]** を選択してパラメーター ファイルに `mspOfferName`、`mspOfferDescription`、`managedbyTenantId`、および `authorizations` の値を直接入力できます。 テンプレートの既定値を使用するのではなく、必ず、これらの値を更新してください。
-1. **[確認と作成]** を選択し、次に **[作成]** を選択します。
-
-数分後に、デプロイが完了したという通知が表示されます。
+デプロイは、次に示すように、PowerShell を使用するか、Azure CLI を使用するか、または Azure portal 内で行うことができます。
 
 ### <a name="powershell"></a>PowerShell
+
+1 つのテンプレートをデプロイするには、次のようにします。
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+# Deploy Azure Resource Manager template using template and parameter file locally
+New-AzSubscriptionDeployment -Name <deploymentName> `
+                 -Location <AzureRegion> `
+                 -TemplateFile <pathToTemplateFile> `
+                 -Verbose
+
+# Deploy Azure Resource Manager template that is located externally
+New-AzSubscriptionDeployment -Name <deploymentName> `
+                 -Location <AzureRegion> `
+                 -TemplateUri <templateUri> `
+                 -Verbose
+```
+
+別個のパラメーター ファイルを使用するテンプレートをデプロイするには、次のようにします。
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -245,6 +286,26 @@ New-AzSubscriptionDeployment -Name <deploymentName> `
 
 ### <a name="azure-cli"></a>Azure CLI
 
+1 つのテンプレートをデプロイするには、次のようにします。
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+# Deploy Azure Resource Manager template using template and parameter file locally
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-file <pathToTemplateFile> \
+                         --verbose
+
+# Deploy external Azure Resource Manager template, with local parameter file
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-uri <templateUri> \
+                         --verbose
+```
+
+別個のパラメーター ファイルを使用するテンプレートをデプロイするには、次のようにします。
+
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
 
@@ -262,6 +323,16 @@ az deployment sub create --name <deploymentName> \
                          --parameters <parameterFile> \
                          --verbose
 ```
+
+### <a name="azure-portal"></a>Azure portal
+
+このオプションを使用すると、テンプレートを Azure portal 内で直接変更してデプロイできます。 これは顧客テナント内のユーザーが行う必要があります。
+
+1. [GitHub リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)で、使用するテンプレートの横に表示される **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンを選択します。 Azure portal でテンプレートが開きます。
+1. **[Msp Offer Name]\(Msp オファー名\)** **[Msp Offer Description]\(Msp オファーの説明\)** 、 **[Managed by Tenant Id]\(テナント ID による管理\)** 、および **[Authorizations]\(承認\)** の値を入力します。 必要に応じて、 **[パラメーターの編集]** を選択してパラメーター ファイルに `mspOfferName`、`mspOfferDescription`、`managedbyTenantId`、および `authorizations` の値を直接入力できます。 テンプレートの既定値を使用するのではなく、必ず、これらの値を更新してください。
+1. **[確認と作成]** を選択し、次に **[作成]** を選択します。
+
+数分後に、デプロイが完了したという通知が表示されます。
 
 ## <a name="confirm-successful-onboarding"></a>オンボードが成功したことを確認する
 

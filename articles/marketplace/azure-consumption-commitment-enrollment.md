@@ -1,19 +1,19 @@
 ---
 title: Azure Consumption Commitment の登録 - Azure Marketplace
 description: この記事では、Microsoft Azure Consumption Commitment (MACC) プログラムの概要、オファーが MACC プログラムに登録されているかどうかを確認する方法、MACC の要件について説明します。
-author: mingshen-ms
-ms.author: mingshen
+author: posurnis
+ms.author: posurnis
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 06/03/2021
-ms.openlocfilehash: 55d3899630fe60b1b033bd21eeb65ab2050e57c0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 07/27/2021
+ms.openlocfilehash: a3fe8707df1270f8571ad86fe07406376f71ab93
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756277"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743231"
 ---
 # <a name="azure-consumption-commitment-enrollment"></a>Azure Consumption Commitment の登録
 
@@ -21,13 +21,11 @@ ms.locfileid: "111756277"
 
 ## <a name="macc-program"></a>MACC プログラム
 
-_Microsoft Azure Consumption Commitment (MACC)_ プログラムは、Azure Marketplace に公開されている[取引可能オファー](marketplace-commercial-transaction-capabilities-and-considerations.md#transact-overview)を対象としています。 このプログラムに登録されている取引可能オファーに対する Azure のお客様のコストは、お客様の組織の Microsoft Azure Consumption Commitment に寄与します。
+_Microsoft Azure Consumption Commitment (MACC)_ プログラムは、Azure Marketplace に公開されている [取引可能オファー](marketplace-commercial-transaction-capabilities-and-considerations.md#transact-overview)を対象としています。 このプログラムに登録されている取引可能オファーを Azure Marketplace で購入すると、組織の Microsoft Azure Consumption Commitment に貢献することになります。
 
 ### <a name="requirements-for-an-offer-to-be-enrolled-in-macc"></a>MACC にオファーを登録するための要件
 
-MACC プログラムに登録するには、オファーが次の要件を満たしている必要があります。 これらの要件の例外の要求は受け入れられません。
-
-MACC に登録するためのオファーの要件は次のとおりです。
+MACC プログラムに登録するには、オファーが次の要件を満たしている必要があります。
 
 - 0 ドルを超える料金プランで取引可能であること  
     > [!NOTE]
@@ -47,7 +45,7 @@ MACC に登録するためのオファーの要件は次のとおりです。
     ***図 1: MACC プログラムに登録されているオファー***
 
 > [!NOTE]
-> Azure Marketplace に公開されているオファーの MACC プログラムの状態は、毎週月曜日に更新されます。 つまり、MACC プログラムの適格性要件を満たすオファーを公開しても、パートナー センターの状態には、次の月曜日まで "有効" と表示されません。
+> Azure Marketplace に公開されているオファーの MACC プログラムの状態は、毎週月曜日に更新されます。 つまり、MACC プログラムの適格性要件を満たすオファーを公開しても、パートナー センターの状態には、次の月曜日まで "登録済み" と表示されません。
 
 ## <a name="next-steps"></a>次のステップ
 

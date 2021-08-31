@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 06/30/2021
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18aa1e49ad3f87ab3e222f250354c2bc5e2aca16
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93394732"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749080"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
@@ -54,7 +54,7 @@ Azure AD ロールに対するこれらの電子メールをどのユーザー�
 | セキュリティ管理者</br>(アクティブ化/有資格) | いいえ | はい* | はい |
 | グローバル管理者</br>(アクティブ化/有資格) | いいえ | はい* | はい |
 
-\*[**通知** 設定](pim-how-to-change-default-settings.md#notifications)が **有資格** に設定されている場合。
+\*[**通知** 設定](pim-how-to-change-default-settings.md)が **有資格** に設定されている場合。
 
 ユーザーが架空の Contoso 組織の Azure AD ロールをアクティブ化したときに送信される電子メールの例を次に示します。
 
@@ -66,16 +66,16 @@ Azure AD ロールに関する週間 Privileged Identity Management サマリー
 
 ![Azure AD ロールに関する週間 Privileged Identity Management ダイジェスト電子メール](./media/pim-email-notifications/email-directory-weekly.png)
 
-電子メールには 4 つのタイルが含まれています。
+電子メールに含まれるもの:
 
 | タイル | 説明 |
 | --- | --- |
 | **[Users activated]\(アクティブ化されたユーザー\)** | 組織内でユーザーの有資格ロールがアクティブ化された回数です。 |
 | **[Users made permanent]\(永続化されたユーザー\)** | 有資格割り当てを持つユーザーが永続化された回数です。 |
 | **Privileged Identity Management でのロールの割り当て** | Privileged Identity Management の内部でユーザーに資格のあるロールが割り当てられた回数。 |
-| **[Role assignments outside of PIM]\(PIM の外部でのロール割り当て\)** | Privileged Identity Management の外部 (Azure AD の内部) でユーザーに永続的なロールが割り当てられた回数。 |
+| **[Role assignments outside of PIM]\(PIM の外部でのロール割り当て\)** | Privileged Identity Management の外部 (Azure AD の内部) でユーザーに永続的なロールが割り当てられた回数。 このアラートと付属する電子メールはアラート設定を開くことで有効にしたり、無効にしたりできます。 |
 
-**[Overview of your top roles]\(上位ロールの概要\)** セクションには、各ロールの永続管理者と有資格管理者の合計数に基づいて、組織内の上位 5 つのロールが一覧表示されます。 **[アクションの実行]** リンクをクリックすると、[PIM ウィザード](pim-security-wizard.md)が開き、そこから永続管理者を有資格管理者に一括変換することができます。
+**[Overview of your top roles]\(上位ロールの概要\)** セクションには、各ロールの永続管理者と有資格管理者の合計数に基づいて、組織内の上位 5 つのロールが一覧表示されます。 **[アクションの実行]** リンクをクリックすると、[[検出と分析情報]](pim-security-wizard.md) が開き、そこから永続管理者を有資格管理者に一括変換することができます。
 
 ## <a name="email-timing-for-activation-approvals"></a>アクティブ化承認の電子メールのタイミング
 

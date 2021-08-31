@@ -5,14 +5,14 @@ services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 4839f8211e678f5fc2fb3572c7eaa545fbee6c6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 715af9d5bb67c74c91dc89a667cd9b4187b86f0d
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94961194"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221373"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>StorSimple 8000 シリーズからデータを移行するためのオプション
 
@@ -43,9 +43,16 @@ StorSimple 5000-7000 シリーズおよび StorSimple 8000 シリーズをご使
 
 #### <a name="migrate-to-nasuni"></a>Nasuni への移行
 
-Nasuni を使用すると、StorSimple 環境全体を、安定した安全なハイ パフォーマンスのファイル サービス プラットフォームに簡単に移行できます。 Nasuni は、オンプレミスのファイル ストレージのセキュリティとパフォーマンスを提供しながら、Azure のスケーラビリティおよび持続性と それを融合させます。  Nasuni は、有力な Azure 独立系ソフトウェア ベンダー (ISV) として、StorSimple データを最新のプラットフォームに移行するために必要なツールをすべて提供します。これにより、ファイルを複数の場所で共有し、共同作業を行うことができます。
+Nasuni を使用すると、StorSimple 環境全体を、安定した安全なハイ パフォーマンスのファイル サービス プラットフォームに簡単に移行できます。 Nasuni は、オンプレミスのファイル ストレージのセキュリティとパフォーマンスを提供しながら、Azure のスケーラビリティおよび持続性と それを融合させます。 Nasuni は、有力な Azure 独立系ソフトウェア ベンダー (ISV) として、StorSimple データを最新のプラットフォームに移行するために必要なツールをすべて提供します。これにより、ファイルを複数の場所で共有し、共同作業を行うことができます。
 
 今すぐお試しください。[Nasuni の Web サイト](https://info.nasuni.com/storsimple8000-webinar)。
+
+#### <a name="migrate-to-netapp"></a>NetApp への移行
+
+StorSimple 8000 シリーズのお客様は、NetApp Global File Cache (GFC) とペアの Azure NetApp Files (ANF) に移行して、リモート サイトでコンテンツを維持しながら、Azure に重要なデータを引き続き格納できます。 お客様は、Azure NetApp Files を使用して Microsoft Azure で非構造化データを一元化し、NetApp Global File Cache を使用して高速なローカルおよび地理的に分散されたアクセスを提供することで、IT ストレージとインフラストラクチャを効率化および簡素化できます。
+
+機能、デプロイ方法、移行の概要については、NetApp の「[Reference Architecture: Globally Distributed Enterprise File Sharing with Azure NetApp Files and NetApp Global File Cache (参照アーキテクチャ: Azure NetApp Files と NetApp Global File Cache を使用したグローバル分散 Enterprise ファイル共有)](https://f.hubspotusercontent20.net/hubfs/525875/r3_NA-581-0521-Ref-Arch-ANF-GFC-StorSimple%20(1)%20(1)%20(2).pdf)」を参照してください。<!--Not included: 1) Partnership with MS; 2) How to initiate migration with NetApp (other providers point people to their site).-->
+
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity

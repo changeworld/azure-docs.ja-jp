@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 3c18b6d8dc44762649a9c07b88af348a18888fb5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfec3e6305b6b955cfb7b2cfd787507db36ff6ba
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699115"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213599"
 ---
 # <a name="load-balancer-and-availability-zones"></a>ロード バランサーと可用性ゾーン
 
@@ -75,6 +75,12 @@ Standard Load Balancer のゾーン関連プロパティについて理解した
 ゾーンで障害が発生したときにゾーンを使用しているトラフィック フローは影響を受ける可能性がありますが、アプリケーションは復旧できます。 Azure がゾーンの障害に対して収束した場合、トラフィックは、再送信時にリージョン内の正常なゾーンで継続されます。
 
 障害シナリオに対するアプリケーションの回復性を向上させるには、[Azure クラウド設計パターン](/azure/architecture/patterns/)に関する記事を参照してください。
+
+## <a name="limitations"></a>制限事項
+
+* 作成済みのリソースに対して、ゾーンを変更、更新、作成することはできません。
+
+* 作成済みのリソースをゾーン ベースからゾーン冗長に、またはその逆に変更することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を確認する

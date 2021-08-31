@@ -2,17 +2,18 @@
 title: ソース管理
 description: Azure Data Factory でソース管理を構成する方法について説明します
 ms.service: data-factory
+ms.subservice: ci-cd
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2021
-ms.openlocfilehash: 77f5d940c06ef5a2a504033225b42b7ddd2c17c1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/04/2021
+ms.openlocfilehash: 1dc73117d1d9fc470ae284461e520c9d45358e87
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903274"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730126"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -55,9 +56,9 @@ Azure Repos と GitHub の両方で Git リポジトリをデータ ファクト
 
 ### <a name="configuration-method-1-home-page"></a>構成方法 1:ホーム ページ
 
-Azure Data Factory のホームページで、 **[Set up code repository]\(コード リポジトリの設定\)** を選択します。
+Azure Data Factory のホームページで、上部にある **[コード リポジトリの設定]** を選択します。
 
-![ホーム ページからコード リポジトリを構成する](media/author-visually/configure-repo.png)
+![ホーム ページからコード リポジトリを構成する](media/doc-common-process/set-up-code-repository.png)
 
 ### <a name="configuration-method-2-authoring-canvas"></a>構成方法 2:作成キャンバス
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel Preview に CEF データを接続する | Microsoft Docs
+title: Azure Sentinel に CEF データを接続する | Microsoft Docs
 description: Linux マシンをログ フォワーダーとして使用して、Azure Sentinel に共通イベント形式 (CEF) メッセージを送信する外部ソリューションを接続します。
 services: sentinel
 documentationcenter: na
@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: 54fd6c0c085c0055f3114fde606f8f7d2f2e055e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccf05bb51c64a94c07a0277ed901912f9e4dda3e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772061"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742994"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 CEF メッセージを送信する外部ソリューションを接続するとき、Azure Sentinel と接続するための 3 つの手順があります。
 
@@ -49,6 +51,8 @@ CEF メッセージを送信する外部ソリューションを接続すると�
 Syslog ソースと Syslog フォワーダーの間で TLS 通信を使用するには、TLS で通信するために Syslog デーモン (rsyslog または syslog-ng) を構成する必要があります。[TLS -rsyslog で Syslog トラフィックを暗号化する](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)方法に関するページと [TLS –syslog-ng でログ メッセージを暗号化する](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)方法に関するページをご覧ください。
  
 ## <a name="prerequisites"></a>前提条件
+
+CEF データを Log Analytics に取り込むためには、Azure Sentinel ワークスペースが必要です。
 
 ログ フォワーダーとして使用する Linux マシンで、次のいずれかのオペレーティング システムが実行されていることを確認します。
 
@@ -101,5 +105,5 @@ Syslog ソースと Syslog フォワーダーの間で TLS 通信を使用する
 Azure Sentinel で収集したデータの処理に関する詳細については、次の記事を参照してください。
 
 - [CEF および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

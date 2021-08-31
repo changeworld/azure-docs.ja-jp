@@ -7,21 +7,18 @@ ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8ffedc18ba331733723a6293756b60b733cc32cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a64049ab544b2ec790d3625dad9137ae539f3020
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733407"
 ---
 # <a name="data-structures-in-azure-maps-mobility-services-preview"></a>Azure Maps Mobility Service (プレビュー) のデータ構造 
 
 > [!IMPORTANT]
-> Azure Maps Mobility Service は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-
+> Azure Maps Mobility Services のプレビューは廃止され、2021 年 10 月 5 日以降は使用できず、サポートも停止されます。 他のすべての Azure Maps API およびサービスは、この廃止の発表の影響を受けません。
+> 詳細については、[Azure Maps Mobility のプレビューの廃止](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/)に関するページを参照してください。
 
 この記事では、[Azure Maps Mobility Service](/rest/api/maps/mobility) における都市圏の概念について説明します。 ここでは、このサービスで公共輸送機関の停留所や路線についてクエリを実行したときに返されるいくつかの一般的なフィールドについて説明します。 Mobility Service API を使って開発をする前に、この記事を読むことをお勧めします。
 

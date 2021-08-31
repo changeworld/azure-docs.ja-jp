@@ -5,40 +5,43 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4df6a84cd3402a934dc64ca8b8ac1a79ef7f0c22
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862257"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666143"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して[エンタープライズ統合および B2B ソリューション](../logic-apps/logic-apps-enterprise-integration-overview.md)をビルドする前に、統合アカウントを作成する必要があります。これは、ロジック アプリ ワークフローで定義して使用する統合成果物のためのセキュリティで保護され、スケーラブルで管理可能なコンテナーを提供する個別の Azure リソースです。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して[エンタープライズ統合および B2B ソリューション](../logic-apps/logic-apps-enterprise-integration-overview.md)をビルドする前に、統合アカウントを作成する必要があります。これは、ロジック アプリ ワークフローで定義して使用する統合成果物のためのセキュリティで保護され、スケーラブルで管理可能なコンテナーを提供する個別の Azure リソースです。 たとえば、取引先、契約、マップ、スキーマ、証明書、バッチ構成などの B2B 成果物を作成、保存、管理できます。
 
-たとえば、取引先、契約、マップ、スキーマ、証明書、バッチ構成などの B2B 成果物を作成、保存、管理できます。 また、ロジック アプリでこれらの成果物を操作し、Logic Apps B2B コネクタを使用できるようにするには、お使いのロジック アプリと[ご自分の統合アカウントをリンクさせる](#link-account)必要があります。 統合アカウントとロジック アプリは、どちらも *同じ* 場所またはリージョンに存在する必要があります。
+次の表で、統合アカウントで利用できるレベルと階層を説明します。これらは[価格により異なります](https://azure.microsoft.com/pricing/details/logic-apps/)。
+
+| レベル | 説明 |
+|------|-------------|
+| **Basic** | メッセージの処理のみを必要とするシナリオ、または大規模なビジネス エンティティと取引パートナー関係がある小規模なビジネス パートナーとして機能する場合。 <p><p>Logic Apps の SLA でサポートされています。 |
+| **Standard** | より複雑な B2B 関係があり、管理する必要があるエンティティの数が増えているシナリオ。 <p><p>Logic Apps の SLA でサポートされています。 |
+| **Free** | 調査シナリオ用であり、運用シナリオでは使用しないでください。 このレベルには、リージョンの可用性、スループット、使用量に関する制限があります。 たとえば、Free レベルは、米国西部や東南アジアなどの Azure のパブリック リージョンのみで利用できますが、[Azure China 21Vianet](/azure/china/overview-operations) または [Azure Government](../azure-government/documentation-government-welcome.md) で利用することはできません。 <p><p>**注**:Logic Apps の SLA でサポートされていません。 |
+|||
 
 > [!IMPORTANT]
-> 選択した統合アカウントの種類に基づいて、統合アカウントを作成するとコストが発生します。 詳細については、「[Logic Apps の価格モデルと課金モデル](logic-apps-pricing.md#integration-accounts)」と「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」をご覧ください。
+> 統合アカウントの作成には、統合アカウントのレベルに応じた費用がかかります。 詳しくは、[Logic Apps の価格と課金モデル](logic-apps-pricing.md#integration-accounts)に関する記事、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関するページをご確認ください。 ロジック アプリのワークフローを統合アカウント、B2B アーティファクト、B2B コネクターで使用するには、[統合アカウントをロジック アプリにリンクしておく](#link-account)必要があります。 統合アカウントとロジック アプリは、どちらも *同じ* 場所またはリージョンに存在する必要があります。
 
-このトピックでは、次のタスクの実行方法について説明します。
+このトピックでは、次のタスクの実行方法を説明します。
 
 * 統合アカウントの作成
 
   > [!TIP]
-  > [統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)内で統合アカウントを作成するには、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。
+  > [統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)内に統合アカウントを作成する方法は、[ISE での統合アカウント作成](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)に関する記事をご確認ください。
 
 * ロジック アプリへの統合アカウントのリンク
-
 * 統合アカウントの価格レベルを変更する。
-
 * ロジック アプリから統合アカウントのリンクを解除する。
-
 * 別の Azure リソース グループまたはサブスクリプションへの統合アカウントの移動
-
 * 統合アカウントの削除
 
 ## <a name="prerequisites"></a>前提条件

@@ -1,15 +1,15 @@
 ---
 title: Azure Arc 対応サーバーの組み込みポリシー定義
 description: Azure Arc 対応サーバー (プレビュー) の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a253f22abc986392e18a6c00b9de6e0d70688e6e
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 87212bebde6884c6ee6bf02d3a422b4c36f4e63b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017381"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181385"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーの Azure Policy 組み込み定義
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/13/2021
+ms.date: 06/18/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 55e63e232a804519baeeeeee3ebef84777ee1d38
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 902d9251c7393d3f6e693ba37c587398136493e6
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060780"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112368950"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで条件付きアクセス技術プロファイルを定義する
 
@@ -73,8 +73,8 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 | ClaimReferenceId | 必須 | データ型 | 説明 |
 | --------- | -------- | ----------- |----------- |
-| 課題 | はい |stringCollection | 特定された脅威を修復するためのアクションの一覧。 使用可能な値: `block` |
-| MultiConditionalAccessStatus | はい | stringCollection |  |
+| 課題 | はい |stringCollection | 特定された脅威を修復するためのアクションの一覧。 指定できる値: `block`、`mfa`、`chg_pwd`。 |
+| MultiConditionalAccessStatus | はい | stringCollection | 条件付きアクセスの評価の状態。  |
 
 **OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 

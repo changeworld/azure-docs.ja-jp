@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: 73cce13f296d65167ab2c45f677849b7f05f8b3a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b9efc6c8f568d054662f9084d63b83de7b39e776
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410119"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735784"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -30,7 +30,6 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 - ロジック アプリを使用したログ クエリからのスケジュールされたエクスポート。 これはデータ エクスポート機能に似ていますが、フィルター処理または集計されたデータを Azure ストレージに送信できます。 ただし、この方法には[ログ クエリの制限](../service-limits.md#log-analytics-workspaces)が適用されます。「[ロジック アプリを使用して Log Analytics ワークスペースから Azure ストレージへデータをアーカイブする](logs-export-logic-app.md)」を参照してください。
 - PowerShell スクリプトを使用したローカル コンピューターへのワンタイム エクスポート。 「[Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)」を参照してください。
 
-
 ## <a name="limitations"></a>制限事項
 
 - 現在、構成は CLI または REST 要求を使用して行うことができます。 Azure portal または PowerShell はまだサポートされていません。
@@ -38,7 +37,7 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 - 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションで指定されているものに限られます。 たとえば、現在、カスタム ログ テーブルはサポートされていません。
 - サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはテーブルがサポートされるまでエクスポートされません。 
 - 存在しないテーブルがデータ エクスポート ルールに含まれている場合、`Table <tableName> does not exist in the workspace` エラーで失敗します。
-- データのエクスポートはすべてのリージョンで利用できるようになる予定ですが、現在は Azure Government リージョン、西日本、ブラジル南東部、ノルウェー東部、ノルウェー西部、アラブ首長国連邦北部、アラブ首長国連邦中部、オーストラリア中部 2、スイス北部、スイス西部、ドイツ中西部、インド南部、フランス南部、西日本では利用できません
+- データのエクスポートはすべてのリージョンで利用できるようになる予定ですが、現在はスイス北部、スイス西部、ドイツ中西部、オーストラリア中部 2、アラブ首長国連邦中部、アラブ首長国連邦北部、西日本、ブラジル南東部、ノルウェー東部、ノルウェー西部、フランス南部、インド南部、韓国南部、Jio インド中部、Jio インド西部、カナダ東部、米国西部 3、スウェーデン中部、スウェーデン南部、政府機関向けクラウド、中国では利用できません。
 - ワークスペースでは、最大で 10 個のルールを定義できます。 追加の規則は許可されますが、無効の状態になります。 
 - エクスポート先は、ワークスペース内のすべてのエクスポート ルールごとに一意である必要があります。
 - エクスポート先のストレージ アカウントまたはイベント ハブは、Log Analytics ワークスペースと同じリージョンに配置されている必要があります。
@@ -61,7 +60,7 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 
 [![ストレージのサンプル データ](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
-Log Analytics のデータ エクスポートでは、時間ベースのアイテム保持ポリシーで *allowProtectedAppendWrites* 設定が有効になっている場合に、不変ストレージ アカウントに追加 BLOB を書き込むことができます。 これにより、追加 BLOB への新しいブロックの書き込みが許可される一方で、不変性の保護とコンプライアンスは維持されます。 「[保護された追加 BLOB の書き込みを許可する](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)」を参照してください。
+Log Analytics のデータ エクスポートでは、時間ベースのアイテム保持ポリシーで *allowProtectedAppendWrites* 設定が有効になっている場合に、不変ストレージ アカウントに追加 BLOB を書き込むことができます。 これにより、追加 BLOB への新しいブロックの書き込みが許可される一方で、不変性の保護とコンプライアンスは維持されます。 「[保護された追加 BLOB の書き込みを許可する](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)」を参照してください。
 
 ### <a name="event-hub"></a>イベント ハブ
 データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
@@ -76,8 +75,8 @@ Log Analytics のデータ エクスポートでは、時間ベースのアイ�
 ## <a name="prerequisites"></a>前提条件
 Log Analytics のデータ エクスポートを構成する前に、次の前提条件が満たされている必要があります。
 
-- エクスポート先は、エクスポート ルールの構成の前に作成し、Log Analytics ワークスペースと同じリージョンに配置する必要があります。 対象のデータを他のストレージ アカウントにレプリケートする必要がある場合は、[Azure Storage の冗長性オプション](../../storage/common/storage-redundancy.md)のいずれかを使用できます。  
-- ストレージ アカウントは StorageV1 または StorageV2 である必要があります。 従来のストレージはサポートされていません  
+- エクスポート先は、エクスポート ルールの構成の前に作成し、Log Analytics ワークスペースと同じリージョンに配置する必要があります。 対象のデータを他のストレージ アカウントにレプリケートする必要がある場合は、GRS および GZRS を含め、[Azure Storage の冗長性オプション](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)のいずれかを使用できます。
+- ストレージ アカウントは StorageV1 以降である必要があります。 従来のストレージはサポートされていません。
 - 選択したネットワークからのアクセスを許可するように対象のストレージ アカウントを構成した場合は、対象のストレージへの書き込みを Azure Monitor に許可するようそのストレージ アカウントの設定に例外を追加する必要があります。
 
 ## <a name="enable-data-export"></a>データ エクスポートを有効にする
@@ -121,7 +120,7 @@ find where TimeGenerated > ago(24h) | distinct Type
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -397,7 +396,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -429,7 +428,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -440,7 +439,7 @@ N/A
 テストの実行中など、データを一定期間保持する必要がないときにエクスポートを停止できるように、エクスポート ルールを無効にすることができます。 CLI を使用してデータ エクスポート ルールを無効にするには、次のコマンドを使用します。
 
 ```azurecli
-az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --enable false
+az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --enable false
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -476,7 +475,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -508,7 +507,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -543,7 +542,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 
 ## <a name="supported-tables"></a>サポート対象のテーブル
-サポート対象のテーブルは、現在、以下で指定されているものに限られます。 制限事項が指定されている場合を除き、テーブルのすべてのデータがエクスポートされます。 この一覧は、その他のテーブルのサポートが追加されると更新されます。
+サポート対象のテーブルは、現在、以下に記載されているものに限定されています。 制限事項が指定されている場合を除き、テーブルのすべてのデータがエクスポートされます。 この一覧は、その他のテーブルのサポートが追加されると更新されます。
 
 | テーブル | 制限事項 |
 |:---|:---|
@@ -558,8 +557,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AADManagedIdentitySignInLogs |  |
 | AADNonInteractiveUserSignInLogs |  |
 | AADProvisioningLogs |  |
+| AADRiskyUsers |  |
 | AADServicePrincipalSignInLogs |  |
+| AADUserRiskEvents |  |
 | ABSBotRequests |  |
+| ACSAuthIncomingOperations |  |
 | ACSBillingUsage |  |
 | ACSChatIncomingOperations |  |
 | ACSSMSIncomingOperations |  |
@@ -569,6 +571,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | ADFSSignInLogs |  |
 | ADFTriggerRun |  |
 | ADPAudit |  |
+| ADPDiagnostics |  |
 | ADPRequests |  |
 | ADReplicationResult |  |
 | ADSecurityAssessmentRecommendation |  |
@@ -580,7 +583,9 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | ADXQuery |  |
 | AegDeliveryFailureLogs |  |
 | AegPublishFailureLogs |  |
+| AEWAuditLogs |  |
 | アラート: |  |
+| AmlOnlineEndpointConsoleLog |  |
 | ApiManagementGatewayLogs |  |
 | AppCenterError |  |
 | AppPlatformSystemLogs |  |
@@ -594,13 +599,17 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AutoscaleEvaluationsLog |  |
 | AutoscaleScaleActionsLog |  |
 | AWSCloudTrail |  |
+| AWSGuardDuty |  |
+| AWSVPCFlow |  |
 | AzureAssessmentRecommendation |  |
 | AzureDevOpsAuditing |  |
 | BehaviorAnalytics |  |
 | BlockchainApplicationLog |  |
 | BlockchainProxyLog |  |
+| CDBCassandraRequests |  |
 | CDBControlPlaneRequests |  |
 | CDBDataPlaneRequests |  |
+| CDBGremlinRequests |  |
 | CDBMongoRequests |  |
 | CDBPartitionKeyRUConsumption |  |
 | CDBPartitionKeyStatistics |  |
@@ -636,6 +645,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | Dynamics365Activity |  |
 | EmailAttachmentInfo |  |
 | EmailEvents |  |
+| EmailPostDeliveryEvents |  |
 | EmailUrlInfo |  |
 | イベント | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータは、ストレージを使用して収集される一方で、このパスはエクスポートではサポートされていません。2 |
 | ExchangeAssessmentRecommendation |  |
@@ -645,9 +655,14 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | HDInsightAmbariSystemMetrics |  |
 | HDInsightHadoopAndYarnLogs |  |
 | HDInsightHadoopAndYarnMetrics |  |
+| HDInsightHBaseLogs |  |
+| HDInsightHBaseMetrics |  |
 | HDInsightHiveAndLLAPLogs |  |
 | HDInsightHiveAndLLAPMetrics |  |
 | HDInsightHiveTezAppStats |  |
+| HDInsightJupyterNotebookEvents |  |
+| HDInsightKafkaLogs |  |
+| HDInsightKafkaMetrics |  |
 | HDInsightOozieLogs |  |
 | HDInsightSecurityLogs |  |
 | HDInsightSparkApplicationEvents |  |
@@ -674,6 +689,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | KubeServices |  |
 | LAQueryLogs |  |
 | McasShadowItReporting |  |
+| MCCEventLogs |  |
 | MicrosoftAzureBastionAuditLogs |  |
 | MicrosoftDataShareReceivedSnapshotLog |  |
 | MicrosoftDataShareSentSnapshotLog |  |
@@ -681,7 +697,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | MicrosoftHealthcareApisAuditLogs |  |
 | NWConnectionMonitorPathResult |  |
 | NWConnectionMonitorTestResult |  |
-| OfficeActivity | 部分的なサポート – データの一部は、Webhook を介して O365 から LA に取り込まれます。 現在、この部分はエクスポートに含まれません。 |
+| OfficeActivity | 政府機関向けクラウドでの部分的なサポート – データの一部は、Webhook を介して O365 から LA に取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | Operation | 部分的なサポート – データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | Perf | 部分的なサポート – 現在、Windows のパフォーマンス データのみがサポートされています。 現在、Linux のパフォーマンス データはエクスポートに含まれません。 |
 | PowerBIDatasetsWorkspace |  |
@@ -693,7 +709,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SecurityBaselineSummary |  |
 | SecurityCef |  |
 | SecurityDetection |  |
-| SecurityEvent | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータは、ストレージを使用して収集される一方で、このパスはエクスポートではサポートされていません。2 |
+| SecurityEvent | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータはストレージを使用して収集されますが、このパスはエクスポートではサポートされていません。2 |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -706,6 +722,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SigninLogs |  |
 | SPAssessmentRecommendation |  |
 | SQLAssessmentRecommendation |  |
+| SQLSecurityAuditEvents |  |
 | SucceededIngestion |  |
 | SynapseBigDataPoolApplicationsEnded |  |
 | SynapseBuiltinSqlPoolRequestsEnded |  |
@@ -719,7 +736,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| syslog | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータは、ストレージを使用して収集される一方で、このパスはエクスポートではサポートされていません。2 |
+| syslog | 部分的なサポート - Log Analytics エージェント (MMA) または Azure Monitor エージェント (AMA) から到着するデータは、エクスポートで完全にサポートされます。 Diagnostics Extension エージェントを介して到着するデータはストレージを使用して収集されますが、このパスはエクスポートではサポートされていません。2 |
 | ThreatIntelligenceIndicator |  |
 | 更新 | 部分的なサポート – データの一部は、エクスポートがサポートされていない内部サービスを介して取り込まれます。 現在、この部分はエクスポートに含まれません。 |
 | UpdateRunProgress |  |

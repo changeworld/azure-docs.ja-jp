@@ -7,16 +7,16 @@ ms.topic: article
 author: vamahtan
 ms.author: vamahtan
 ms.date: 05/19/2021
-ms.openlocfilehash: 45bdf3e0006aeaf24b8c3ede0f7090aabfe85808
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 05b7c223823522b7c511df7cfa66c7dffa2a8b4b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483352"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281289"
 ---
 # <a name="dynamics-365-for-operations-functional-validation"></a>Dynamics 365 for Operations の機能検証
 
-[パートナー センター](https://partner.microsoft.com/dashboard/home)で Dynamics 365 for Operations オファーを公開するには、次の 2 つの機能検証が必要です。
+[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2166002)で Dynamics 365 for Operations オファーを公開するには、次の 2 つの機能検証が必要です。
 
 - 基本的な機能を示す Dynamics 365 環境のデモ ビデオをアップロードします。
 - ソリューションの [Lifecycle Services](https://lcs.dynamics.com/) (LCS) 環境を示すスクリーンショットを提出します。
@@ -29,7 +29,7 @@ ms.locfileid: "110483352"
 機能検証には、次の 2 つのオプションがあります。
 
 - 太平洋標準時 (PST) の営業時間中に 30 分間の電話会議を開催して、[LCS](https://lcs.dynamics.com/) 環境とソリューションのデモンストレーションと記録を行います。
-- パートナー センターで、[[コマーシャル マーケットプレース]](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) >  **[概要]** にアクセスし、プランの [Supplemental Content]\(補足コンテンツ\) タブでデモ ビデオ (URL から) と LCS のスクリーンショットをアップロードします。
+- パートナー センターで、[[コマーシャル マーケットプレース]](https://go.microsoft.com/fwlink/?linkid=2165290) にアクセスし、オファーの [Supplemental Content]\(補足コンテンツ\) タブでデモ ビデオ (URL から) と LCS のスクリーンショットをアップロードします。
 
 Microsoft 認定チームはビデオとファイルをレビューしてから、ソリューションを承認するか、次の手順について電子メールで通知します。
 
@@ -70,7 +70,7 @@ Microsoft 認定チームはビデオとファイルをレビューしてから�
 3. パートナー センターにアップロードします。
 
     1. デモ ビデオのアドレスとスクリーン ショットを含むテキスト ドキュメントを作成するか、スクリーンショットを個別の JPG ファイルとして保存します。
-    2. [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)のオファーの **[補足コンテンツ]** タブで、テキストと画像を .zip ファイルに追加します。
+    2. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)のオファーの **[補足コンテンツ]** タブで、テキストと画像を .zip ファイルに追加します。
 
     [![プロジェクト ライブラリ ウィンドウを表示します](media/dynamics-365-operations/supplemental-content.png)](media/dynamics-365-operations/supplemental-content.png#lightbox)
 

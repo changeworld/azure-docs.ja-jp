@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Secured-core Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 6a4e969c592e844164d2f031914740e24fdc8f99
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 81e9bc60a7749cdc155fc6997c198e834476dbf0
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540260"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031933"
 ---
 # <a name="edge-secured-core-certification-requirements-preview"></a>Edge Secured-Core 認定の要件 (プレビュー) #
 
@@ -49,7 +49,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|ストレージの暗号化が有効になっていることを確認するために、ツールセットでデバイスを検証します。既定のアルゴリズムは、キーの長さが 128 ビット以上の XTS-AES-AES です。|
+|検証|ストレージの暗号化が有効になっていることを確認するために、ツールセットでデバイスを検証します。既定のアルゴリズムは、キーの長さが 128 ビット以上の XTS-AES-AES です。 </br></br>注: 2021 年 6 月のプレビュー リリースでは、デバイスに DM-Crypt がインストールされており、暗号化されたパーティションがあることのみが検証されます。|
 |リソース||
 
 ---
@@ -85,7 +85,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|パートナーは、Microsoft Update、Azure Device Update、またはその他の承認されたサービスを通じて、デバイスに更新プログラムを送信できたことを確認します。|
+|検証|パートナーは、Microsoft Update、[Device Update for IoT Hub (ADU)](../iot-hub-device-update/understand-device-update.md) を通じて、デバイスに更新プログラムを送信できたことを確認します。 Device Update for IoT Hub を使用する Linux デバイスの場合、認定では、Secured Core テスト プロセス中の .swu 更新ファイル、および認定サービスで[更新マニフェスト](../iot-hub-device-update/update-manifest.md) ファイルを生成するためのデバイス固有の情報を提供する必要があります。|
 |リソース|[Device Update for IoT Hub](../iot-hub-device-update/index.yml)|
 
 ---
@@ -182,7 +182,7 @@ Edge Secured-Core は、Linux や Windows 10 IoT など、完全なオペレー�
 |適用対象|任意のデバイス|
 |OS|非依存|
 |検証の種類|手動/ツール|
-|検証|デバイスがブートされるたびに、ファームウェアとカーネルの署名が検証されることを確認するために、ツールセットでデバイスを検証します。 <ul><li>UEFI: セキュア ブートが有効</li><li>Uboot: 検証されたブートが有効</li></ul>|
+|検証|デバイスがブートされるたびに、ファームウェアとカーネルの署名が検証されることを確認するために、ツールセットでデバイスを検証します。 <ul><li>UEFI: セキュア ブートが有効</li><li>Uboot: 検証されたブートが有効</li></ul> </br> </br>注: 2021 年 6 月のプレビュー リリースでは、UEFI の存在のみが検証されます。|
 |リソース||
 
 ---

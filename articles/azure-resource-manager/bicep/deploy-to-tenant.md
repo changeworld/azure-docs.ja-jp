@@ -2,13 +2,13 @@
 title: Bicep を使用してテナントにリソースをデプロイする
 description: Bicep ファイルでテナント スコープにリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: af1ca550a6443fa7791d4f5ac496ae2d0626b176
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/19/2021
+ms.openlocfilehash: 3f446670cd85daa5b541cc9b5858ab768ac8411d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371759"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453411"
 ---
 # <a name="tenant-deployments-with-bicep-file"></a>Bicep ファイルを使用したテナントのデプロイ
 
@@ -146,7 +146,7 @@ resource mgName_resource 'Microsoft.Management/managementGroups@2020-02-01' = {
 
 ### <a name="scope-to-management-group"></a>管理グループへのスコープ
 
-テナント内の管理グループを対象とするには、モジュールを追加します。 [managementGroup 関数](bicep-functions-scope.md#managementgroup)を使用して、`scope` プロパティを設定します。 管理グループ名を指定します。
+テナント内の管理グループを対象とするには、[モジュール](modules.md)を追加します。 [managementGroup 関数](bicep-functions-scope.md#managementgroup)を使用して、`scope` プロパティを設定します。 管理グループ名を指定します。
 
 ```bicep
 targetScope = 'tenant'

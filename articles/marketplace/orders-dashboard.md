@@ -4,28 +4,27 @@ description: コマーシャル マーケットプレース オファーの注�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 344c7e6c14ca8ecdd91ffb9c148ce01d2b937573
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 08/06/2021
+ms.openlocfilehash: 1cc7e76833ac710ae4bdd511efa3033f8cf8fed7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542007"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724297"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [注文] ダッシュボード
 
 この記事では、パートナー センターの [注文] ダッシュボードについて説明します。 このダッシュボードには、増加傾向など、注文に関する情報が、グラフィカルかつダウンロード可能な形式で表示されます。
 
-パートナー センターの [注文] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[注文]** を選択します。
-
 >[!NOTE]
-> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
 
 ## <a name="orders-dashboard"></a>[注文] ダッシュボード
 
-[注文] ダッシュボードには、すべてのサービスとしてのソフトウェア (SaaS) オファーの現在の注文が表示されます。 次の項目のグラフィカル表示を見ることができます。
+[[注文] ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2165914)には、すべてのサービスとしてのソフトウェア (SaaS) オファーの現在の注文が表示されます。 次の項目のグラフィカル表示を見ることができます。
 
 - 注文数の傾向
 - シートごと、およびサイトごとの注文数の傾向
@@ -40,6 +39,8 @@ ms.locfileid: "111542007"
 ## <a name="elements-of-the-orders-dashboard"></a>[注文] ダッシュボードの要素
 
 次のセクションでは、[注文] ダッシュボードの使用方法とデータの読み方について説明します。
+
+パートナー センターの [注文] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[注文]** を選択します。
 
 ### <a name="month-range"></a>月範囲
 
@@ -118,7 +119,7 @@ SaaS オファーでは、各プランで 2 つの料金モデル、つまり、
 | Marketplace サブスクリプション ID | Marketplace サブスクリプション ID | 顧客がコマーシャル マーケットプレース オファーを購入するときに使用した Azure サブスクリプションに関連付けられている一意識別子。 インフラストラクチャ オファーの場合、これは顧客の Azure サブスクリプション GUID です。 Saas オファーでは、SaaS の購入に Azure サブスクリプションが必要ないため、これはゼロとして表示されます。 | Marketplace サブスクリプション ID |
 | MonthStartDate | 月の開始日 | 月の開始日は、購入の月を表します。 形式は yyyy-mm-dd です。 | MonthStartDate |
 | プランの種類 | プランの種類 | コマーシャル マーケットプレース オファリングの種類。 | OfferType |
-| Azure ライセンスの種類 | Azure ライセンスの種類 | Azure を購入した顧客が使用するライセンス契約の種類。 チャネルとも呼ばれます。 設定できる値は次のとおりです。<ul><li>クラウド ソリューション プロバイダー</li><li>エンタープライズ</li><li>リセラーを通じたエンタープライズ</li><li>従量課金制</li></ul> | AzureLicenseType |
+| Azure ライセンスの種類 | Azure ライセンスの種類 | Azure を購入した顧客が使用するライセンス契約の種類。 チャネルとも呼ばれます。 設定できる値は次のとおりです。<ul><li>[クラウド ソリューション プロバイダー](cloud-solution-providers.md)</li><li>エンタープライズ</li><li>リセラーを通じたエンタープライズ</li><li>従量課金制</li><li>GTM</li></ul> | AzureLicenseType |
 | Marketplace ライセンスの種類 | Marketplace ライセンスの種類 | コマーシャル マーケットプレース オファーの課金方法。 各値を次に示します。<ul><li>Azure から請求</li><li>ライセンス持ち込み</li><li>Free</li><li>Microsoft がリセラー</li></ul> | MarketplaceLicenseType |
 | SKU | SKU | オファーに関連付けられたプラン | SKU |
 | 顧客の国 | 顧客の国および地域 | 顧客が指定した国や地域の名前。 国または地域は、顧客の Azure サブスクリプションの国またはリージョン地域とは異なる場合があります。 | CustomerCountry |
@@ -136,7 +137,16 @@ SaaS オファーでは、各プランで 2 つの料金モデル、つまり、
 | Customer ID | Customer ID | 顧客に割り当てられている一意の識別子。 顧客は 0 個以上の Azure Marketplace サブスクリプションを所持できます。 | CustomerId |
 | 課金アカウント ID | 課金アカウント ID | 請求書が生成されるアカウントの識別子。 **課金アカウント ID** を **customerID** にマップして、支払い取引レポートを、顧客、注文、使用状況のレポートに関連付けます。 | BillingAccountId |
 | AssetCount | 資産数 | 注文 ID に関連付けられた資産の数。 | 非推奨 |
+| 使用不可 * | TermStartDate | 注文の期間の開始日を示します。 | TermStartDate |
+| 使用不可 * | TermEndDate | 注文の期間の終了日を示します。 | TermEndDate |
+| 使用不可 * | purchaseRecordId | 注文に関連する購入レコードの識別子。 | purchaseRecordId |
+| 使用不可 * | purchaseRecordLineItemId | この注文に関連する購入レコードの品目の識別子。 | purchaseRecordLineItemId |
+| 使用不可 * | EstimatedCharges | 課税前にすべての注文単位に対して顧客に請求される価格。 内税方式の国では、この価格に税金が含まれますが、それ以外の場合は含まれません。 | EstimatedCharges |
+| 使用不可 * | 通貨 | オファーの BillingCurrency | 通貨 |
+| 使用不可 * | HasTrial | オファーで試用期間が有効になっているかどうかを表します。 | HasTrial |
 |||||
+
+`*` これらの新しいフィールドは現在、ISVOrderV2 データセットで提供されており、プログラムでアクセスできます。
 
 ### <a name="orders-page-filters"></a>[注文] ページのフィルター
 
@@ -153,4 +163,4 @@ SaaS オファーでは、各プランで 2 つの料金モデル、つまり、
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
 - Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](ratings-reviews.md)」を参照してください。
-- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。

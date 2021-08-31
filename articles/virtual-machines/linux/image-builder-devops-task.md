@@ -1,20 +1,20 @@
 ---
 title: 'プレビュー: Azure Image Builder サービスの DevOps タスク'
 description: アプリケーションと OS をインストールして構成できるように、ビルド成果物を VM イメージに挿入する Azure DevOps タスク。
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7055aa967058e1592f757c2dabf7890b1da76632
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 2c3785f20c47656304f7d40b67c9d90c54cb3072
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441800"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447082"
 ---
 # <a name="azure-image-builder-service-devops-task-preview"></a>Azure Image Builder サービスの DevOps タスク (プレビュー)
 
@@ -79,7 +79,7 @@ Image Builder が実行されるサブスクリプションをドロップダウ
 場所は、Image Builder が実行されるリージョンです。 設定された数の[リージョン](../image-builder-overview.md#regions)のみがサポートされます。 この場所にソース イメージが存在している必要があります。 たとえば、Shared Image Gallery を使用している場合は、そのリージョンにレプリカが存在している必要があります。
 
 ### <a name="managed-identity-required"></a>マネージド ID (必須)
-Image Builder には マネージド ID が必要です。ソース カスタム イメージの読み取り、Azure Storage への接続、カスタム イメージの作成などにこれが使用されます。 詳細については、[こちら](../image-builder-overview.md#permissions)を参照してください。
+Image Builder には マネージド ID が必要です。ソース カスタム イメージの読み取り、Azure Storage への接続、カスタム イメージの作成などにこれが使用されます。 詳細については、「[Azure Image Builder の概要](../image-builder-overview.md#permissions)」を参照してください。
 
 ### <a name="vnet-support"></a>VNET のサポート
 
@@ -347,3 +347,4 @@ template name:  t_1556938436xxx
 ## <a name="next-steps"></a>次の手順
 
 詳細については、[Azure Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。
+

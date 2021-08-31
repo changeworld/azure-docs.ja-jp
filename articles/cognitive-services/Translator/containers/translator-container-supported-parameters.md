@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 25fefcdbf5fc7b8bd9ad8bc81a9a1bd6bd7d3e11
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b2c13a98c6b689594628a258faf18f8f9c0d8c69
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957427"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539558"
 ---
-# <a name="container-translator-translate-method"></a>コンテナー: Translator の Translate メソッド
+# <a name="container-translator-translate-method-preview"></a>コンテナー: Translator の Translate メソッド (プレビュー)
 
 テキストを翻訳します。
 

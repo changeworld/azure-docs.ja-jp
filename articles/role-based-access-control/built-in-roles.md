@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 05/20/2021
+ms.date: 08/04/2021
 ms.custom: generated
-ms.openlocfilehash: 989724452f57b5b44954f739eae6bff1da61263f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 39eb5b5787cb26fffa168479d34bac58ba5f9b3d
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470132"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195626"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -74,21 +74,25 @@ ms.locfileid: "110470132"
 > | [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [ストレージ キュー データ閲覧者](#storage-queue-data-reader) | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 19e7f393-937e-4f77-808e-94535e297925 |
+> | [ストレージ テーブル データ共同作成者](#storage-table-data-contributor) | Azure Storage テーブルおよびエンティティに対する読み取り、書き込み、削除のアクセスを許可します | 0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3 |
+> | [ストレージ テーブル データ閲覧者](#storage-table-data-reader) | Azure Storage テーブルおよびエンティティに対する読み取りアクセスを許可します | 76199698-9eea-4c19-bc75-cec21354c6b6 |
 > | **Web** |  |  |
 > | [Azure Maps データ共同作成者](#azure-maps-data-contributor) | Azure Maps アカウントからのマップ関連データへの読み取り、書き込み、削除のアクセスを付与します。 | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps データ閲覧者](#azure-maps-data-reader) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Azure Spring Cloud データ閲覧者](#azure-spring-cloud-data-reader) | Azure Spring Cloud データへの読み取りアクセスを許可します | b5537268-8956-4941-a8f0-646150406f0c |
 > | [Media Services アカウント管理者](#media-services-account-administrator) | Media Services アカウントを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | 054126f8-9a2b-4f1c-a9ad-eca461f08466 |
-> | [Media Services ライブ イベント管理者](#media-services-live-events-administrator) | ライブ イベント、アセット、アセット フィルター、およびストリーミング ロケーターを作成、読み取り、および変更します。他の Media Services リソースへの読み取り専用アクセスができます。 | 532bc159-b25e-42c0-969e-a1d439f60d77 |
-> | [Media Services メディア オペレーター](#media-services-media-operator) | アセット、アセット フィルター、ストリーミング ロケーター、およびジョブを作成、読み取り、変更および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | e4395492-1534-4db2-bedf-88c14621589c |
+> | [Media Services ライブ イベント管理者](#media-services-live-events-administrator) | ライブ イベント、アセット、アセット フィルター、およびストリーミング ロケーターを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | 532bc159-b25e-42c0-969e-a1d439f60d77 |
+> | [Media Services メディア オペレーター](#media-services-media-operator) | アセット、アセット フィルター、ストリーミング ロケーター、およびジョブを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | e4395492-1534-4db2-bedf-88c14621589c |
 > | [Media Services ポリシー管理者](#media-services-policy-administrator) | アカウント フィルター、ストリーミング ポリシー、コンテンツ キー ポリシー、および変換を作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 ジョブ、アセット、またはストリーミング リソースは作成できません。 | c4bba371-dacd-4a26-b320-7250bca963ae |
 > | [Media Services ストリーミング エンドポイント管理者](#media-services-streaming-endpoints-administrator) | ストリーミング エンドポイントを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | 99dba123-b5fe-44d5-874c-ced7199a5804 |
+> | [検索インデックス データ共同作成者](#search-index-data-contributor) | Azure Cognitive Search インデックス データへのフル アクセスを付与します。 | 8ebe5a00-799e-43f5-93ac-243d3dce84a7 |
+> | [検索インデックス データ閲覧者](#search-index-data-reader) | Azure Cognitive Search インデックス データへの読み取りアクセスを付与します。 | 1407120a-92aa-4202-b7e9-c0e197c71c8f |
 > | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR AccessKey 閲覧者](#signalr-accesskey-reader) | SignalR サービス アクセス キーを読み取ります | 04165923-9d83-45d5-8227-78b77b0a687e |
 > | [SignalR アプリ サーバー (プレビュー)](#signalr-app-server-preview) | AAD の認証オプションを使用して、アプリ サーバーが SignalR Service にアクセスできるようにします。 | 420fcaa2-552c-430f-98ca-3264be4806c7 |
 > | [SignalR 共同作成者](#signalr-contributor) | SignalR のサービス リソースの作成、読み取り、更新、削除を行います | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
 > | [SignalR サーバーレス共同作成者 (プレビュー)](#signalr-serverless-contributor-preview) | AAD の認証オプションを使用して、アプリがサーバーレス モードでサービスにアクセスできるようにします。 | fd53cd77-2268-407a-8f46-7e7863d0f521 |
-> | [SignalR Service 所有者 (プレビュー)](#signalr-service-owner-preview) | Azure SignalR Service REST API へのフル アクセス | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
+> | [SignalR Service 所有者](#signalr-service-owner) | Azure SignalR Service REST API へのフル アクセス | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
 > | [SignalR Service 閲覧者 (プレビュー)](#signalr-service-reader-preview) | Azure SignalR Service REST API への読み取り専用アクセス | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -135,6 +139,7 @@ ms.locfileid: "110470132"
 > | **ブロックチェーン** |  |  |
 > | [ブロックチェーン メンバー ノードへのアクセス (プレビュー)](#blockchain-member-node-access-preview) | ブロックチェーン メンバー ノードにアクセスできるようにします | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI + 機械学習** |  |  |
+> | [AzureML データ サイエンティスト](#azureml-data-scientist) | コンピューティング リソースの作成または削除とワークスペース自体の変更を除く、Azure Machine Learning ワークスペース内のすべてのアクションを実行できます。 | f6c7c914-8db3-469d-8ca1-694a8f32e121 |
 > | [Cognitive Services 共同作成者](#cognitive-services-contributor) | Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Cognitive Services Custom Vision Contributor](#cognitive-services-custom-vision-contributor) | プロジェクトの表示、作成、編集、削除を含む、プロジェクトへのフル アクセス。 | c1ff6cc2-c111-46fe-8896-e0ef812ad9f3 |
 > | [Cognitive Services Custom Vision Deployment](#cognitive-services-custom-vision-deployment) | モデルの公開、非公開、またはエクスポートを行います。 Deployment は、プロジェクトを表示できますが、更新することはできません。 | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
@@ -148,16 +153,16 @@ ms.locfileid: "110470132"
 > | [Cognitive Services QnA Maker 閲覧者](#cognitive-services-qna-maker-reader) | KB のみ、読み取りとテストが可能になります。 | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [Cognitive Services ユーザー](#cognitive-services-user) | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **モノのインターネット** |  |  |
-> | [IoT Hub データ共同作成者](#iot-hub-data-contributor) | IoT Hub データ プレーン操作へのフル アクセスを許可します。 | 4fc6c259-987e-4a07-842e-c321cc9d413f |
-> | [IoT Hub データ リーダー](#iot-hub-data-reader) | IoT Hub データプレーン プロパティへの読み取りのフル アクセスを許可します | b447c946-2db7-41ec-983d-d8bf3b1c77e3 |
-> | [IoT Hub レジストリ共同作成者](#iot-hub-registry-contributor) | IoT Hub デバイス レジストリへのフル アクセスを許可します。 | 4ea46cd5-c1b2-4a8e-910b-273211f9ce47 |
-> | [IoT Hub ツイン共同作成者](#iot-hub-twin-contributor) | すべての IoT Hub デバイスとモジュール ツインに対する読み取りおよび書き込みのアクセスを許可します。 | 494bdba2-168f-4f31-a0a1-191d2f7c028c |
 > | [デバイス更新管理者](#device-update-administrator) | 管理およびコンテンツ操作へのフル アクセスが付与されます。 | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
 > | [デバイス更新コンテンツ管理者](#device-update-content-administrator) | コンテンツ操作へのフル アクセスが付与されます。 | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
 > | [デバイス更新コンテンツ閲覧者](#device-update-content-reader) | コンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。 | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
 > | [デバイス更新デプロイ管理者](#device-update-deployments-administrator) | 管理操作へのフル アクセスが付与されます。 | e4237640-0e3d-4a46-8fda-70bc94856432 |
 > | [デバイス更新デプロイ閲覧者](#device-update-deployments-reader) | 管理操作への読み取りアクセスが付与されますが、変更を加えることはできません。 | 49e2f5d2-7741-4835-8efa-19e1fe35e47f |
 > | [デバイス更新閲覧者](#device-update-reader) | 管理操作およびコンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。 | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
+> | [IoT Hub データ共同作成者](#iot-hub-data-contributor) | IoT Hub データ プレーン操作へのフル アクセスを許可します。 | 4fc6c259-987e-4a07-842e-c321cc9d413f |
+> | [IoT Hub データ リーダー](#iot-hub-data-reader) | IoT Hub データプレーン プロパティへの読み取りのフル アクセスを許可します | b447c946-2db7-41ec-983d-d8bf3b1c77e3 |
+> | [IoT Hub レジストリ共同作成者](#iot-hub-registry-contributor) | IoT Hub デバイス レジストリへのフル アクセスを許可します。 | 4ea46cd5-c1b2-4a8e-910b-273211f9ce47 |
+> | [IoT Hub ツイン共同作成者](#iot-hub-twin-contributor) | すべての IoT Hub デバイスとモジュール ツインに対する読み取りおよび書き込みのアクセスを許可します。 | 494bdba2-168f-4f31-a0a1-191d2f7c028c |
 > | **複合現実** |  |  |
 > | [Remote Rendering 管理者](#remote-rendering-administrator) | ユーザーに、Azure Remote Rendering での変換、セッション管理、レンダリング、および診断の機能を提供します。 | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Remote Rendering クライアント](#remote-rendering-client) | ユーザーに、Azure Remote Rendering でのセッション管理、レンダリング、および診断の機能を提供します。 | d39065c4-c120-43c9-ab0a-63eed9795f0a |
@@ -170,11 +175,15 @@ ms.locfileid: "110470132"
 > | [API Management Service Reader Role](#api-management-service-reader-role) | サービスと API への読み取り専用アクセスです | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | [App Configuration データ所有者](#app-configuration-data-owner) | App Configuration データへのフル アクセスを許可します。 | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
 > | [App Configuration データ閲覧者](#app-configuration-data-reader) | App Configuration データへの読み取りアクセスを許可します。 | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | [Azure Relay リスナー](#azure-relay-listener) | Azure Relay リソースへのリッスン アクセスを許可します。 | 26e0b698-aa6d-4085-9386-aadae190014d |
+> | [Azure Relay 所有者](#azure-relay-owner) | Azure Relay リソースへのフル アクセスを許可します。 | 2787bf04-f1f5-4bfe-8383-c8a24483ee38 |
+> | [Azure Relay 送信者](#azure-relay-sender) | Azure Relay リソースへの送信アクセスを許可します。 | 26baccc8-eea7-41f1-98f4-1762cc7f685d |
 > | [Azure Service Bus データ所有者](#azure-service-bus-data-owner) | Azure Service Bus リソースへのフル アクセスを許可します。 | 090c5cfd-751d-490a-894a-3ce6f1109419 |
 > | [Azure Service Bus データ受信者](#azure-service-bus-data-receiver) | Azure Service Bus リソースへの受信アクセスを許可します。 | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
 > | [Azure Service Bus データ送信者](#azure-service-bus-data-sender) | Azure Service Bus リソースへの送信アクセスを許可します。 | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
 > | [Azure Stack Registration Owner](#azure-stack-registration-owner) | Azure Stack の登録を管理できます。 | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | [EventGrid 共同作成者](#eventgrid-contributor) | EventGrid 操作を管理できます。 | 1e241071-0855-49ea-94dc-649edcd759de |
+> | [EventGrid データ送信者](#eventgrid-data-sender) | Event Grid イベントへの送信アクセスを許可します。 | d5a91429-5739-47e2-a06b-3470a27159e7 |
 > | [EventGrid EventSubscription 共同作成者](#eventgrid-eventsubscription-contributor) | EventGrid のイベント サブスクリプション操作を管理できます。 | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [EventGrid EventSubscription 閲覧者](#eventgrid-eventsubscription-reader) | EventGrid のイベント サブスクリプションを読み取ることができます。 | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | [FHIR データ共同作成者](#fhir-data-contributor) | ユーザーまたはプリンシパルに FHIR データへのフル アクセスを許可するロール | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
@@ -538,11 +547,14 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | ロード バランサー定義を取得します。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/*/read |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 仮想マシンに通常のユーザーとしてログインします。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/action | Windows 管理者または Linux のルート ユーザーの権限で仮想マシンにログインします。 |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/login/action | Azure Arc マシンに通常のユーザーとしてログインします |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/loginAsAdmin/action | Windows 管理者または Linux のルート ユーザーの権限で Azure Arc マシンにログインします |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -561,12 +573,15 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
         "Microsoft.Network/virtualNetworks/read",
         "Microsoft.Network/loadBalancers/read",
         "Microsoft.Network/networkInterfaces/read",
-        "Microsoft.Compute/virtualMachines/*/read"
+        "Microsoft.Compute/virtualMachines/*/read",
+        "Microsoft.HybridCompute/machines/*/read"
       ],
       "notActions": [],
       "dataActions": [
         "Microsoft.Compute/virtualMachines/login/action",
-        "Microsoft.Compute/virtualMachines/loginAsAdmin/action"
+        "Microsoft.Compute/virtualMachines/loginAsAdmin/action",
+        "Microsoft.HybridCompute/machines/login/action",
+        "Microsoft.HybridCompute/machines/loginAsAdmin/action"
       ],
       "notDataActions": []
     }
@@ -708,10 +723,12 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | ロード バランサー定義を取得します。 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/*/read |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 仮想マシンに通常のユーザーとしてログインします。 |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/login/action | Azure Arc マシンに通常のユーザーとしてログインします |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -730,11 +747,13 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
         "Microsoft.Network/virtualNetworks/read",
         "Microsoft.Network/loadBalancers/read",
         "Microsoft.Network/networkInterfaces/read",
-        "Microsoft.Compute/virtualMachines/*/read"
+        "Microsoft.Compute/virtualMachines/*/read",
+        "Microsoft.HybridCompute/machines/*/read"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Compute/virtualMachines/login/action"
+        "Microsoft.Compute/virtualMachines/login/action",
+        "Microsoft.HybridCompute/machines/login/action"
       ],
       "notDataActions": []
     }
@@ -1420,6 +1439,31 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/getBackupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/write | バックアップ インスタンスを作成します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/delete | バックアップ インスタンスを削除します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | すべてのバックアップ インスタンスを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | すべてのバックアップ インスタンスを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/backup/action | バックアップ インスタンスでバックアップを実行します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/validateRestore/action | バックアップ インスタンスの復元を検証します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/restore/action | バックアップ インスタンスでの復元をトリガーします。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/write | バックアップ ポリシーを作成します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/delete | バックアップ ポリシーを削除します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | すべてのバックアップ ポリシーを返します |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | すべてのバックアップ ポリシーを返します |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | すべての復旧ポイントを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | すべての復旧ポイントを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | 復元可能な時間の範囲を見つけます。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/write | Create BackupVault 操作により、種類 'バックアップ コンテナー' の Azure リソースが作成されます。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | バックアップ コンテナーのパッチ操作の操作結果を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/checkNameAvailability/action | 要求された BackupVault 名が使用可能かどうかを確認します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | バックアップ コンテナーのバックアップ操作の状態を返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | バックアップ コンテナーのバックアップ操作の結果を返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/validateForBackup/action | バックアップ インスタンスのバックアップを検証します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | リソース プロバイダーの操作の一覧を返します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1478,7 +1522,32 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.DataProtection/locations/getBackupStatus/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/write",
+        "Microsoft.DataProtection/backupVaults/backupInstances/delete",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/backup/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/validateRestore/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/restore/action",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/write",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/delete",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/write",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/locations/checkNameAvailability/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/validateForBackup/action",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -1561,6 +1630,20 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | すべてのバックアップ インスタンスを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | すべてのバックアップ インスタンスを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | すべてのバックアップ ポリシーを返します |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | すべてのバックアップ ポリシーを返します |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | すべての復旧ポイントを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | すべての復旧ポイントを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | 復元可能な時間の範囲を見つけます。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | バックアップ コンテナーのパッチ操作の操作結果を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | バックアップ コンテナーのバックアップ操作の状態を返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | バックアップ コンテナーのバックアップ操作の結果を返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | リソース プロバイダーの操作の一覧を返します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1641,7 +1724,21 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -1699,6 +1796,30 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 機能を検証します。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJobs/action | Recovery Services コンテナーのセカンダリ リージョンにおけるリージョンをまたがる復元ジョブを一覧表示します。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJob/action | Recovery Services コンテナーのセカンダリ リージョンにおけるリージョンをまたがる復元ジョブの詳細を取得します。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationResults/read | Recovery Services コンテナーに対する CRR 操作の結果を返します。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationsStatus/read | Recovery Services コンテナーに対する CRR 操作の状態を返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/getBackupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/write | バックアップ インスタンスを作成します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | すべてのバックアップ インスタンスを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | すべてのバックアップ インスタンスを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/backup/action | バックアップ インスタンスでバックアップを実行します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/validateRestore/action | バックアップ インスタンスの復元を検証します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/restore/action | バックアップ インスタンスでの復元をトリガーします。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | すべてのバックアップ ポリシーを返します |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | すべてのバックアップ ポリシーを返します |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | すべての復旧ポイントを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | すべての復旧ポイントを返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | 復元可能な時間の範囲を見つけます。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | バックアップ コンテナーのパッチ操作の操作結果を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | サブスクリプション内のバックアップ コンテナーの一覧を取得します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | バックアップ コンテナーのバックアップ操作の状態を返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | バックアップ コンテナーのバックアップ操作の結果を返します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/validateForBackup/action | バックアップ インスタンスのバックアップを検証します。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | リソース プロバイダーの操作の一覧を返します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1754,7 +1875,31 @@ Avere vFXT クラスターを作成および管理できます。 [詳細情報]
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
         "Microsoft.RecoveryServices/Vaults/usages/read",
-        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action",
+        "Microsoft.RecoveryServices/locations/backupCrrJobs/action",
+        "Microsoft.RecoveryServices/locations/backupCrrJob/action",
+        "Microsoft.RecoveryServices/locations/backupCrrOperationResults/read",
+        "Microsoft.RecoveryServices/locations/backupCrrOperationsStatus/read",
+        "Microsoft.DataProtection/locations/getBackupStatus/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/write",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/backup/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/validateRestore/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/restore/action",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/validateForBackup/action",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -2664,6 +2809,100 @@ Azure Storage キューおよびキュー メッセージの読み取りと一�
 }
 ```
 
+### <a name="storage-table-data-contributor"></a>ストレージ テーブル データ共同作成者
+
+Azure Storage テーブルおよびエンティティに対する読み取り、書き込み、削除のアクセスを許可します
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/read | テーブルの照会 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/write | テーブルを作成する |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/delete | テーブルの削除 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/read | テーブル エンティティをクエリします |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/write | テーブル エンティティを挿入、マージ、置換します |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/delete | テーブル エンティティを削除する |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/add/action | テーブル エンティティを挿入します |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/update/action | テーブル エンティティをマージまたは更新します |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read, write and delete access to Azure Storage tables and entities",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3",
+  "name": "0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/read",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/write",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/delete"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/read",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/write",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/delete",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/add/action",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/update/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Table Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="storage-table-data-reader"></a>ストレージ テーブル データ閲覧者
+
+Azure Storage テーブルおよびエンティティに対する読み取りアクセスを許可します
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/read | テーブルの照会 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/read | テーブル エンティティをクエリします |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read access to Azure Storage tables and entities",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/76199698-9eea-4c19-bc75-cec21354c6b6",
+  "name": "76199698-9eea-4c19-bc75-cec21354c6b6",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Table Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ## <a name="web"></a>Web
 
 
@@ -2821,7 +3060,7 @@ Media Services アカウントを作成、読み取り、変更、および削�
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify and delete Media Services accounts; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Media Services accounts; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/054126f8-9a2b-4f1c-a9ad-eca461f08466",
   "name": "054126f8-9a2b-4f1c-a9ad-eca461f08466",
   "permissions": [
@@ -2855,7 +3094,7 @@ Media Services アカウントを作成、読み取り、変更、および削�
 
 ### <a name="media-services-live-events-administrator"></a>Media Services ライブ イベント管理者
 
-ライブ イベント、アセット、アセット フィルター、およびストリーミング ロケーターを作成、読み取り、および変更します。他の Media Services リソースへの読み取り専用アクセスができます。
+ライブ イベント、アセット、アセット フィルター、およびストリーミング ロケーターを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -2885,7 +3124,7 @@ Media Services アカウントを作成、読み取り、変更、および削�
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read and modify Live Events, Assets, Asset Filters and Streaming Locators; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Live Events, Assets, Asset Filters, and Streaming Locators; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/532bc159-b25e-42c0-969e-a1d439f60d77",
   "name": "532bc159-b25e-42c0-969e-a1d439f60d77",
   "permissions": [
@@ -2920,7 +3159,7 @@ Media Services アカウントを作成、読み取り、変更、および削�
 
 ### <a name="media-services-media-operator"></a>Media Services メディア オペレーター
 
-アセット、アセット フィルター、ストリーミング ロケーター、およびジョブを作成、読み取り、変更および削除します。他の Media Services リソースへの読み取り専用アクセスができます。
+アセット、アセット フィルター、ストリーミング ロケーター、およびジョブを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -2950,7 +3189,7 @@ Media Services アカウントを作成、読み取り、変更、および削�
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify, and delete of Assets, Asset Filters, Streaming Locators and Jobs; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Assets, Asset Filters, Streaming Locators, and Jobs; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e4395492-1534-4db2-bedf-88c14621589c",
   "name": "e4395492-1534-4db2-bedf-88c14621589c",
   "permissions": [
@@ -3016,7 +3255,7 @@ Media Services アカウントを作成、読み取り、変更、および削�
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify, and delete Account Filters, Streaming Policies, Content Key Policies and Transforms; read-only access to other Media Services resources. Cannot create Jobs, Assets or Streaming resources.",
+  "description": "Create, read, modify, and delete Account Filters, Streaming Policies, Content Key Policies, and Transforms; read-only access to other Media Services resources. Cannot create Jobs, Assets or Streaming resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/c4bba371-dacd-4a26-b320-7250bca963ae",
   "name": "c4bba371-dacd-4a26-b320-7250bca963ae",
   "permissions": [
@@ -3080,7 +3319,7 @@ Media Services アカウントを作成、読み取り、変更、および削�
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify and delete Streaming Endpoints; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Streaming Endpoints; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/99dba123-b5fe-44d5-874c-ced7199a5804",
   "name": "99dba123-b5fe-44d5-874c-ced7199a5804",
   "permissions": [
@@ -3104,6 +3343,84 @@ Media Services アカウントを作成、読み取り、変更、および削�
     }
   ],
   "roleName": "Media Services Streaming Endpoints Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="search-index-data-contributor"></a>検索インデックス データ共同作成者
+
+Azure Cognitive Search インデックス データへのフル アクセスを付与します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Search](resource-provider-operations.md#microsoftsearch)/searchServices/indexes/documents/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants full access to Azure Cognitive Search index data.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8ebe5a00-799e-43f5-93ac-243d3dce84a7",
+  "name": "8ebe5a00-799e-43f5-93ac-243d3dce84a7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Search/searchServices/indexes/documents/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Search Index Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="search-index-data-reader"></a>検索インデックス データ閲覧者
+
+Azure Cognitive Search インデックス データへの読み取りアクセスを付与します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Search](resource-provider-operations.md#microsoftsearch)/searchServices/indexes/documents/read | ドキュメントまたは提案されたクエリ用語をインデックスから読み取ります。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants read access to Azure Cognitive Search index data.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/1407120a-92aa-4202-b7e9-c0e197c71c8f",
+  "name": "1407120a-92aa-4202-b7e9-c0e197c71c8f",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Search/searchServices/indexes/documents/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Search Index Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3336,7 +3653,7 @@ AAD の認証オプションを使用して、アプリがサーバーレス モ
 }
 ```
 
-### <a name="signalr-service-owner-preview"></a>SignalR Service 所有者 (プレビュー)
+### <a name="signalr-service-owner"></a>SignalR Service 所有者
 
 Azure SignalR Service REST API へのフル アクセス
 
@@ -3356,6 +3673,7 @@ Azure SignalR Service REST API へのフル アクセス
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/send/action | クライアント接続にメッセージを直接送信します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | クライアント接続の存在を確認します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/write | クライアント接続を閉じます。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/serverConnection/write | サーバー接続を開始します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | 複数のクライアント接続で構成されている可能性のあるユーザーにメッセージを送信します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | ユーザーの存在を確認します。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write | ユーザーを変更します。 |
@@ -3384,6 +3702,7 @@ Azure SignalR Service REST API へのフル アクセス
         "Microsoft.SignalRService/SignalR/clientConnection/send/action",
         "Microsoft.SignalRService/SignalR/clientConnection/read",
         "Microsoft.SignalRService/SignalR/clientConnection/write",
+        "Microsoft.SignalRService/SignalR/serverConnection/write",
         "Microsoft.SignalRService/SignalR/user/send/action",
         "Microsoft.SignalRService/SignalR/user/read",
         "Microsoft.SignalRService/SignalR/user/write"
@@ -3391,7 +3710,7 @@ Azure SignalR Service REST API へのフル アクセス
       "notDataActions": []
     }
   ],
-  "roleName": "SignalR Service Owner (Preview)",
+  "roleName": "SignalR Service Owner",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3607,7 +3926,7 @@ Web サイト (Web プランではない) を管理できます。ただし、�
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | "*なし*" |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/trustedCollections/write | コンテナー レジストリ コンテンツの信頼されたコレクションのプッシュまたは公開を許可します。 これは、データ アクションであることを除き、Microsoft.ContainerRegistry/registries/sign/write アクションに似ています。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -3625,7 +3944,9 @@ Web サイト (Web プランではない) を管理できます。ただし、�
         "Microsoft.ContainerRegistry/registries/sign/write"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/trustedCollections/write"
+      ],
       "notDataActions": []
     }
   ],
@@ -3726,7 +4047,7 @@ Web サイト (Web プランではない) を管理できます。ただし、�
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | "*なし*" |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/read | コンテナー レジストリからの検疫済み成果物のプルまたは取得を許可します。 これは、データ アクションであることを除き、Microsoft.ContainerRegistry/registries/quarantine/read に似ています。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -3744,7 +4065,9 @@ Web サイト (Web プランではない) を管理できます。ただし、�
         "Microsoft.ContainerRegistry/registries/quarantine/read"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/read"
+      ],
       "notDataActions": []
     }
   ],
@@ -3766,7 +4089,8 @@ Web サイト (Web プランではない) を管理できます。ただし、�
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | "*なし*" |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/read | コンテナー レジストリからの検疫済み成果物のプルまたは取得を許可します。 これは、データ アクションであることを除き、Microsoft.ContainerRegistry/registries/quarantine/read に似ています。 |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/write | 検疫済み成果物の検疫状態の書き込みまたは更新を許可します。 これは、データ アクションであることを除き、Microsoft.ContainerRegistry/registries/quarantine/write アクションに似ています。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -3785,7 +4109,10 @@ Web サイト (Web プランではない) を管理できます。ただし、�
         "Microsoft.ContainerRegistry/registries/quarantine/write"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/read",
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/write"
+      ],
       "notDataActions": []
     }
   ],
@@ -4592,6 +4919,8 @@ SQL データベースを管理できます。ただし、それらへのアク�
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | メトリックを読み取ります。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/ledgerDigestUploads/write | 台帳ダイジェストのアップロードを有効にします  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/ledgerDigestUploads/disable/action | 台帳ダイジェストのアップロードを無効にします |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
@@ -4643,6 +4972,8 @@ SQL データベースを管理できます。ただし、それらへのアク�
         "Microsoft.Insights/metricDefinitions/read"
       ],
       "notActions": [
+        "Microsoft.Sql/servers/databases/ledgerDigestUploads/write",
+        "Microsoft.Sql/servers/databases/ledgerDigestUploads/disable/action",
         "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
@@ -5685,6 +6016,63 @@ Schema Registry グループおよびスキーマの読み取りと一覧表示�
 ## <a name="ai--machine-learning"></a>AI + 機械学習
 
 
+### <a name="azureml-data-scientist"></a>AzureML データ サイエンティスト
+
+コンピューティング リソースの作成または削除とワークスペース自体の変更を除く、Azure Machine Learning ワークスペース内のすべてのアクションを実行できます。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/read |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/action |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/delete |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/write |  |
+> | **NotActions** |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/delete | Machine Learning Services ワークスペースを削除します。 |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/write | Machine Learning Services ワークスペースを作成または更新します。 |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/*/write |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/*/delete |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/listKeys/action | Machine Learning Services ワークスペースのコンピューティング リソースについて、シークレットの一覧を取得します。 |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/listKeys/action | Machine Learning Services ワークスペースのシークレットの一覧を取得します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform all actions within an Azure Machine Learning workspace, except for creating or deleting compute resources and modifying the workspace itself.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f6c7c914-8db3-469d-8ca1-694a8f32e121",
+  "name": "f6c7c914-8db3-469d-8ca1-694a8f32e121",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.MachineLearningServices/workspaces/*/read",
+        "Microsoft.MachineLearningServices/workspaces/*/action",
+        "Microsoft.MachineLearningServices/workspaces/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/*/write"
+      ],
+      "notActions": [
+        "Microsoft.MachineLearningServices/workspaces/delete",
+        "Microsoft.MachineLearningServices/workspaces/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/listKeys/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "AzureML Data Scientist",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="cognitive-services-contributor"></a>Cognitive Services 共同作成者
 
 Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 [詳細情報](../cognitive-services/cognitive-services-virtual-networks.md)
@@ -5696,6 +6084,7 @@ Cognitive Services のキーの作成、読み取り、更新、削除、管理�
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/features/read | サブスクリプションの機能を取得します。 |
 > | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/providers/features/read | 指定されたリソース プロバイダーのサブスクリプションの機能を取得します。 |
+> | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/providers/features/register/action | 指定されたリソース プロバイダーのサブスクリプションの機能を登録します。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | ログ定義を読み取ります。 |
@@ -5731,6 +6120,7 @@ Cognitive Services のキーの作成、読み取り、更新、削除、管理�
         "Microsoft.CognitiveServices/*",
         "Microsoft.Features/features/read",
         "Microsoft.Features/providers/features/read",
+        "Microsoft.Features/providers/features/register/action",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.Insights/logDefinitions/read",
@@ -6087,7 +6477,7 @@ Face API に対する類似の操作の検出、検証、識別、グループ�
 
 ### <a name="cognitive-services-metrics-advisor-administrator"></a>Cognitive Services Metrics Advisor Administrator
 
-システム レベルの構成を含む、プロジェクトへのフル アクセス。 [詳細情報](../cognitive-services/metrics-advisor/how-tos/alerts.md)
+システム レベルの構成を含む、プロジェクトへのフル アクセス。 [詳細情報](../applied-ai-services/metrics-advisor/how-tos/alerts.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -6334,7 +6724,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 > | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | キーを一覧表示します。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | キーのリスト |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/read | クラシック メトリック アラートを読み取ります |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/read | リソースの診断設定を読み取ります |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | ログ定義を読み取ります。 |
@@ -6393,163 +6783,6 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 
 ## <a name="internet-of-things"></a>モノのインターネット
 
-### <a name="iot-hub-data-contributor"></a>IoT Hub データ共同作成者
-
-IoT Hub データ プレーン操作へのフル アクセスを許可します。
-
-> [!div class="mx-tableFixed"]
-> | アクション | 説明 |
-> | --- | --- |
-> | "*なし*" |  |
-> | **NotActions** |  |
-> | "*なし*" |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/* |  |
-> | **NotDataActions** |  |
-> | "*なし*" |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full access to IoT Hub data plane operations.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4fc6c259-987e-4a07-842e-c321cc9d413f",
-  "name": "4fc6c259-987e-4a07-842e-c321cc9d413f",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Data Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-data-reader"></a>IoT Hub データ リーダー
-
-IoT Hub データプレーン プロパティへの読み取りのフル アクセスを許可します
-
-> [!div class="mx-tableFixed"]
-> | アクション | 説明 |
-> | --- | --- |
-> | "*なし*" |  |
-> | **NotActions** |  |
-> | "*なし*" |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/*/read |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/fileUpload/notifications/action | ファイルのアップロード通知を受信、完了、または破棄します |
-> | **NotDataActions** |  |
-> | "*なし*" |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full read access to IoT Hub data-plane properties",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b447c946-2db7-41ec-983d-d8bf3b1c77e3",
-  "name": "b447c946-2db7-41ec-983d-d8bf3b1c77e3",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/*/read",
-        "Microsoft.Devices/IotHubs/fileUpload/notifications/action"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Data Reader",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-registry-contributor"></a>IoT Hub レジストリ共同作成者
-
-IoT Hub デバイス レジストリへのフル アクセスを許可します。
-
-> [!div class="mx-tableFixed"]
-> | アクション | 説明 |
-> | --- | --- |
-> | "*なし*" |  |
-> | **NotActions** |  |
-> | "*なし*" |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/devices/* |  |
-> | **NotDataActions** |  |
-> | "*なし*" |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full access to IoT Hub device registry.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
-  "name": "4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/devices/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Registry Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-twin-contributor"></a>IoT Hub ツイン共同作成者
-
-すべての IoT Hub デバイスとモジュール ツインに対する読み取りおよび書き込みのアクセスを許可します。
-
-> [!div class="mx-tableFixed"]
-> | アクション | 説明 |
-> | --- | --- |
-> | "*なし*" |  |
-> | **NotActions** |  |
-> | "*なし*" |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/twins/* |  |
-> | **NotDataActions** |  |
-> | "*なし*" |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for read and write access to all IoT Hub device and module twins.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/494bdba2-168f-4f31-a0a1-191d2f7c028c",
-  "name": "494bdba2-168f-4f31-a0a1-191d2f7c028c",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/twins/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Twin Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
 
 ### <a name="device-update-administrator"></a>デバイス更新管理者
 
@@ -6860,6 +7093,164 @@ IoT Hub デバイス レジストリへのフル アクセスを許可します�
     }
   ],
   "roleName": "Device Update Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-data-contributor"></a>IoT Hub データ共同作成者
+
+IoT Hub データ プレーン操作へのフル アクセスを許可します。 [詳細情報](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub data plane operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "name": "4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-data-reader"></a>IoT Hub データ リーダー
+
+IoT Hub データプレーン プロパティへの読み取りのフル アクセスを許可します。[詳細](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/*/read |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/fileUpload/notifications/action | ファイルのアップロード通知を受信、完了、または破棄します |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full read access to IoT Hub data-plane properties",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "name": "b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*/read",
+        "Microsoft.Devices/IotHubs/fileUpload/notifications/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-registry-contributor"></a>IoT Hub レジストリ共同作成者
+
+IoT Hub デバイス レジストリへのフル アクセスを許可します。 [詳細情報](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/devices/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub device registry.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "name": "4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/devices/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Registry Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-twin-contributor"></a>IoT Hub ツイン共同作成者
+
+すべての IoT Hub デバイスとモジュール ツインに対する読み取りおよび書き込みのアクセスを許可します。 [詳細情報](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/twins/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read and write access to all IoT Hub device and module twins.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "name": "494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/twins/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Twin Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7373,6 +7764,133 @@ App Configuration データへの読み取りアクセスを許可します。 [
 }
 ```
 
+### <a name="azure-relay-listener"></a>Azure Relay リスナー
+
+Azure Relay リソースへのリッスン アクセスを許可します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/wcfRelays/read |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/hybridConnections/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/listen/action |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for listen access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/26e0b698-aa6d-4085-9386-aadae190014d",
+  "name": "26e0b698-aa6d-4085-9386-aadae190014d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*/wcfRelays/read",
+        "Microsoft.Relay/*/hybridConnections/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*/listen/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Listener",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-relay-owner"></a>Azure Relay 所有者
+
+Azure Relay リソースへのフル アクセスを許可します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2787bf04-f1f5-4bfe-8383-c8a24483ee38",
+  "name": "2787bf04-f1f5-4bfe-8383-c8a24483ee38",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Owner",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-relay-sender"></a>Azure Relay 送信者
+
+Azure Relay リソースへの送信アクセスを許可します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/wcfRelays/read |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/hybridConnections/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/send/action |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for send access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/26baccc8-eea7-41f1-98f4-1762cc7f685d",
+  "name": "26baccc8-eea7-41f1-98f4-1762cc7f685d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*/wcfRelays/read",
+        "Microsoft.Relay/*/hybridConnections/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*/send/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Sender",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-service-bus-data-owner"></a>Azure Service Bus データ所有者
 
 Azure Service Bus リソースへのフル アクセスを許可します。 [詳細情報](../service-bus-messaging/authenticate-application.md)
@@ -7598,6 +8116,55 @@ EventGrid 操作を管理できます。
 }
 ```
 
+### <a name="eventgrid-data-sender"></a>EventGrid データ送信者
+
+Event Grid イベントへの送信アクセスを許可します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topics/read | トピックを読み取ります。 |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/domains/read | ドメインを読み取ります |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/partnerNamespaces/read | パートナー名前空間を読み取ります |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/events/send/action | トピックにイベントを送信します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows send access to event grid events.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d5a91429-5739-47e2-a06b-3470a27159e7",
+  "name": "d5a91429-5739-47e2-a06b-3470a27159e7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.EventGrid/topics/read",
+        "Microsoft.EventGrid/domains/read",
+        "Microsoft.EventGrid/partnerNamespaces/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventGrid/events/send/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "EventGrid Data Sender",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 共同作成者
 
 EventGrid のイベント サブスクリプション操作を管理できます。 [詳細情報](../event-grid/security-authorization.md)
@@ -7704,7 +8271,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 
 ### <a name="fhir-data-contributor"></a>FHIR データ共同作成者
 
-ユーザーまたはプリンシパルに FHIR データへのフル アクセスを許可するロールです。[詳細](../healthcare-apis/fhir/configure-azure-rbac.md)
+ユーザーまたはプリンシパルに FHIR データへのフル アクセスを許可するロールです。[詳細](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -7714,6 +8281,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/* |  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/* |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -7730,7 +8298,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/*"
+        "Microsoft.HealthcareApis/services/fhir/resources/*",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/*"
       ],
       "notDataActions": []
     }
@@ -7743,7 +8312,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 
 ### <a name="fhir-data-exporter"></a>FHIR データ エクスポーター
 
-ユーザーまたはプリンシパルに FHIR データの読み取りとエクスポートを許可するロールです。[詳細](../healthcare-apis/fhir/configure-azure-rbac.md)
+ユーザーまたはプリンシパルに FHIR データの読み取りとエクスポートを許可するロールです。[詳細](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -7754,6 +8323,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/read | FHIR リソースを読み取ります (検索とバージョン管理された履歴を含みます)。  |
 > | Microsoft.HealthcareApis/services/fhir/resources/export/action | エクスポート操作 ($export)。 |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/read | FHIR リソースを読み取ります (検索とバージョン管理された履歴を含みます)。  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/export/action | エクスポート操作 ($export)。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -7771,7 +8342,9 @@ EventGrid のイベント サブスクリプションを読み取ることがで
       "notActions": [],
       "dataActions": [
         "Microsoft.HealthcareApis/services/fhir/resources/read",
-        "Microsoft.HealthcareApis/services/fhir/resources/export/action"
+        "Microsoft.HealthcareApis/services/fhir/resources/export/action",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/read",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/export/action"
       ],
       "notDataActions": []
     }
@@ -7784,7 +8357,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 
 ### <a name="fhir-data-reader"></a>FHIR データ リーダー
 
-ユーザーまたはプリンシパルに FHIR データの読み取りを許可するロールです。[詳細](../healthcare-apis/fhir/configure-azure-rbac.md)
+ユーザーまたはプリンシパルに FHIR データの読み取りを許可するロールです。[詳細](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -7794,6 +8367,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/read | FHIR リソースを読み取ります (検索とバージョン管理された履歴を含みます)。  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/read | FHIR リソースを読み取ります (検索とバージョン管理された履歴を含みます)。  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -7810,7 +8384,8 @@ EventGrid のイベント サブスクリプションを読み取ることがで
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/read"
+        "Microsoft.HealthcareApis/services/fhir/resources/read",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/read"
       ],
       "notDataActions": []
     }
@@ -7823,7 +8398,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 
 ### <a name="fhir-data-writer"></a>FHIR データ ライター
 
-ユーザーまたはプリンシパルに FHIR データの読み取りと書き込みを許可するロールです。[詳細](../healthcare-apis/fhir/configure-azure-rbac.md)
+ユーザーまたはプリンシパルに FHIR データの読み取りと書き込みを許可するロールです。[詳細](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -7833,8 +8408,10 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/* |  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/* |  |
 > | **NotDataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action | ハード削除 (バージョン履歴を含みます)。 |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/hardDelete/action | ハード削除 (バージョン履歴を含みます)。 |
 
 ```json
 {
@@ -7849,10 +8426,12 @@ EventGrid のイベント サブスクリプションを読み取ることがで
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/*"
+        "Microsoft.HealthcareApis/services/fhir/resources/*",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/*"
       ],
       "notDataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action"
+        "Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/hardDelete/action"
       ]
     }
   ],
@@ -8625,7 +9204,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-administrator"></a>Key Vault Administrator
 
-キー コンテナーとその内部にあるすべてのオブジェクト (証明書、キー、シークレットを含む) に対して、すべてのデータ プレーン操作を実行します。 キー コンテナー リソースの管理やロール割り当ての管理はできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
+キー コンテナーとその内部にあるすべてのオブジェクト (証明書、キー、シークレットを含む) に対して、すべてのデータ プレーン操作を実行します。 キー コンテナー リソースの管理やロール割り当ての管理はできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 [詳細情報](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -8684,7 +9263,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-certificates-officer"></a>Key Vault Certificates Officer
 
-キーコンテナーの証明書に対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
+キーコンテナーの証明書に対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 [詳細情報](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -8800,7 +9379,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-crypto-officer"></a>Key Vault Crypto Officer
 
-キーコンテナーのキーに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
+キーコンテナーのキーに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 [詳細情報](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -8859,7 +9438,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-crypto-service-encryption-user"></a>Key Vault Crypto Service Encryption User
 
-キーのメタデータを読み取り、wrap および unwrap 操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
+キーのメタデータを読み取り、wrap および unwrap 操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 [詳細情報](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -8908,7 +9487,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-crypto-user"></a>Key Vault Crypto User
 
-キーを使用した暗号化操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
+キーを使用した暗号化操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 [詳細情報](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -8963,7 +9542,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-reader"></a>Key Vault Reader
 
-キー コンテナーとその証明書、キー、シークレットのメタデータを読み取ります。 シークレット コンテンツやキー マテリアルなどの機密値を読み取ることはできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
+キー コンテナーとその証明書、キー、シークレットのメタデータを読み取ります。 シークレット コンテンツやキー マテリアルなどの機密値を読み取ることはできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 [詳細情報](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -9024,7 +9603,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-secrets-officer"></a>Key Vault Secrets Officer
 
-キーコンテナーのシークレットに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
+キーコンテナーのシークレットに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 [詳細情報](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -9083,7 +9662,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-secrets-user"></a>Key Vault Secrets User
 
-シークレット コンテンツを読み取ります。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。
+シークレット コンテンツを読み取ります。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 [詳細情報](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -9179,6 +9758,7 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -9209,6 +9789,7 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*",
+        "Microsoft.IoTSecurity/*",
         "Microsoft.Support/*"
       ],
       "notActions": [],
@@ -9331,10 +9912,15 @@ Security Center の表示アクセス許可。 推奨事項、警告、セキュ
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/*/read |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/*/read | セキュリティ コンポーネントとポリシーの読み取り |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/*/read |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/*/read |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/action | ダウンロード可能な IoT Defender パッケージ情報を取得します |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/action | サブスクリプション クォータ データを含むマネージャー アクティブ化ファイルをダウンロードします |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/action | IoT センサーのリセット パスワード ファイルをダウンロードします |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/packageDownloads/action | ダウンロード可能な IoT Defender パッケージ情報を取得します |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/downloadManagerActivation/action | マネージャー アクティブ化ファイルをダウンロードします。 |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/sensors/* |  |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/onPremiseSensors/* |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -9360,10 +9946,15 @@ Security Center の表示アクセス許可。 推奨事項、警告、セキュ
         "Microsoft.Resources/deployments/*/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
+        "Microsoft.IoTSecurity/*/read",
         "Microsoft.Support/*/read",
         "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
         "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
         "Microsoft.Security/iotSensors/downloadResetPassword/action",
+        "Microsoft.IoTSecurity/defenderSettings/packageDownloads/action",
+        "Microsoft.IoTSecurity/defenderSettings/downloadManagerActivation/action",
+        "Microsoft.IoTSecurity/sensors/*",
+        "Microsoft.IoTSecurity/onPremiseSensors/*",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -10612,6 +11203,7 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Azure Arc マシンを読み取ります |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Azure Arc マシンが書き込まれます |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | Azure Arc マシンが削除されます |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/UpgradeExtensions/action | Azure Arc マシンの拡張機能をアップグレードします |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/read | Azure Arc 拡張機能が読み取られます |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | Azure Arc 拡張機能をインストールまたは更新されます |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/delete | Azure Arc 拡張機能が削除されます |
@@ -10638,6 +11230,7 @@ Azure Connected Machine の読み取り、書き込み、削除、再オンボ�
         "Microsoft.HybridCompute/machines/read",
         "Microsoft.HybridCompute/machines/write",
         "Microsoft.HybridCompute/machines/delete",
+        "Microsoft.HybridCompute/machines/UpgradeExtensions/action",
         "Microsoft.HybridCompute/machines/extensions/read",
         "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.HybridCompute/machines/extensions/delete",

@@ -2,14 +2,14 @@
 title: Azure BLOB バックアップのサポート マトリックス
 description: Azure BLOB をバックアップするときのサポート設定と制限の概要について説明します。
 ms.topic: conceptual
-ms.date: 05/20/2021
+ms.date: 07/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 06e6d193ec929961dd4eeb192045a217aefa4ab2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ba2798ff464720379326ee56098f840a06e2c042
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475103"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722648"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Azure BLOB バックアップのサポート マトリックス
 
@@ -32,6 +32,7 @@ BLOB の運用バックアップでは、ローカル バックアップソリ�
 - [Put Block](/rest/api/storageservices/put-block) または [Put Block from URL](/rest/api/storageservices/put-block-from-url) を使用してアップロードされたが、[Put Block List](/rest/api/storageservices/put-block-list) を使用してコミットされていないブロックは、BLOB の一部ではないため、復元操作の一部としては復元されません。
 - アクティブなリースを持つ BLOB は復元できません。 リースがアクティブになっている BLOB が、復元する BLOB の範囲に含まれる場合、復元操作は自動的に失敗します。 復元操作を始める前に、アクティブなリースをすべて中断してください。
 - スナップショットは、復元操作の一環として作成または削除されません。 ベース BLOB のみが以前の状態に復元されます。
+- 復元される BLOB の中に[変更できない BLOB](../storage/blobs/immutable-storage-overview.md#about-immutable-storage-for-blobs) がある場合、このような変更できない BLOB は、選択した復旧ポイントに基づいた状態に復元されません。 ただし、不変性が有効になっていないその他の BLOB は、選択した復旧ポイントに想定どおり復元されます。
 
 ## <a name="next-steps"></a>次のステップ
 

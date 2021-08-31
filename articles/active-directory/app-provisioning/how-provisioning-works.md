@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2021
+ms.date: 06/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e95359d24cda6b0d23084010d8ab19566dd2197c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 415824041c8e721c96ad9a9d480d5e50436310e4
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409381"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964772"
 ---
 # <a name="how-application-provisioning-works-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのプロビジョニングのしくみ
 
@@ -143,7 +143,7 @@ ServiceNow、G Suite、Box など、アプリケーションの中には、ユ�
 
 ### <a name="errors-and-retries"></a>エラーと再試行
 
-ターゲット システムでのエラーが原因で個々のユーザーの追加、更新、または削除がターゲットシステム上で行えない場合、その操作は次の同期サイクルで再試行されます。 ユーザーの再試行が失敗し続けると、その頻度は減少し始め、1 日 1 回になるように段階的にスケール バックします。 エラーを解決するには、管理者が[プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)を確認し、根本原因を特定して、適切な対応を取る必要があります。 たとえば、次のような一般的なエラーがあります。
+ターゲット システムでのエラーが原因で個々のユーザーの追加、更新、または削除がターゲットシステム上で行えない場合、その操作は次の同期サイクルで再試行されます。 エラーは継続的に再試行され、再試行頻度は徐々に減らされます。 エラーを解決するには、管理者が[プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)を確認し、根本原因を特定して、適切な対応を取る必要があります。 たとえば、次のような一般的なエラーがあります。
 
 - ターゲット システムで必要な属性がソース システムのユーザーに設定されていない
 - ソース システムのユーザーの属性値に対して、ターゲット システムに一意の制約があり、同じ値が他のユーザー レコードに存在する

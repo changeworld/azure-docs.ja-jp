@@ -4,13 +4,13 @@ description: NSG に IP アドレスを追加することなく、正常性と�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 08/11/2020
-ms.openlocfilehash: 99a61d3e445bf6887db0c97e365e6e4489eb79e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: 419feaf3102ba9db4335718131281481821fe6a9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104872015"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722295"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight の NSG サービス タグ
 
@@ -59,20 +59,32 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | オーストラリア | オーストラリア東部 | HDInsight.AustraliaEast |
 | &nbsp; | オーストラリア南東部 | HDInsight.AustraliaSoutheast |
 | &nbsp; | オーストラリア中部 | HDInsight.AustraliaCentral |
+| ブラジル | ブラジル南部 | HDInsight.BrazilSouth |
+| &nbsp; | ブラジル南東部 | HDInsight.BrazilSoutheast |
 | 中国 | 中国東部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
-| United States | 米国中北部 | HDInsight.NorthCentralUS |
-| &nbsp; | 米国西部 2 | HDInsight.WestUS2 |
-| &nbsp; | 米国中西部 | HDInsight.WestCentralUS |
-| Canada | カナダ東部 | HDInsight.CanadaEast |
-| ブラジル | ブラジル南部 | HDInsight.BrazilSouth |
+| 日本 | 西日本 | HDInsight.JapanWest |
 | 韓国 | 韓国中部 | HDInsight.KoreaCentral |
 | &nbsp; | 韓国南部 | HDInsight.KoreaSouth |
 | インド | インド中部 | HDInsight.CentralIndia |
+| &nbsp; | JIO インド西部 | HDInsight.JioIndiaWest |
 | &nbsp; | インド南部 | HDInsight.SouthIndia |
-| 日本 | 西日本 | HDInsight.JapanWest |
+| 南アフリカ | 南アフリカ北部 | HDInsight.SouthAfricaNorth |
+| UAE | アラブ首長国連邦北部 | HDInsight.UAENorth |
+| &nbsp; | アラブ首長国連邦中部 | HDInsight.UAECentral |
 | フランス | フランス中部| HDInsight.FranceCentral |
+| ドイツ | ドイツ中西部| HDInsight.GermanyWestCentral |
+| ノルウェー | ノルウェー東部 | HDInsight.NorwayEast |
+| スイス | スイス北部 | HDInsight.SwitzerlandNorth |
+| &nbsp; | スイス西部 | HDInsight.SwitzerlandWest |
 | 英国 | 英国南部 | HDInsight.UKSouth |
+| &nbsp; | 英国西部 | HDInsight.UKWest |
+| United States | 米国中北部 | HDInsight.NorthCentralUS |
+| &nbsp; | 米国西部 2 | HDInsight.WestUS2 |
+| &nbsp; | 米国西部 3 | HDInsight.WestUS3 |
+| &nbsp; | 米国中西部 | HDInsight.WestCentralUS |
+| Canada | カナダ東部 | HDInsight.CanadaEast |
+| &nbsp; | カナダ中部 | HDInsight.CanadaCentral |
 | Azure Government | USDoD 中部 | HDInsight.USDoDCentral |
 | &nbsp; | USGov テキサス | HDInsight.USGovTexas |
 | &nbsp; | USDoD 東部 | HDInsight.USDoDEast |

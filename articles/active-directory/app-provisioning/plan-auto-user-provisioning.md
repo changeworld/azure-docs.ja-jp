@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2021
+ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8b2378949e0ead4d05651fc28919aceecd4c542
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 9e58650a98539b815173040cf0e47c200045b2bb
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785027"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728500"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>Azure Active Directory で自動ユーザー プロビジョニングの展開を計画する
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) の自動ユーザープロビジョニング�
 
 ### <a name="licensing"></a>ライセンス
 
-Azure AD は、アプリケーション ギャラリー メニューに用意されているテンプレートを使用して、任意のアプリケーションのセルフサービス統合を提供します。 ライセンス要件の完全な一覧については、[Azure AD のライセンスに関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+Azure AD は、アプリケーション ギャラリー メニューに用意されているテンプレートを使用して、任意のアプリケーションのセルフサービス統合を提供します。 ライセンス要件の完全な一覧については、[Azure AD の価格に関するページ](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
 
 #### <a name="application-licensing"></a>アプリケーションのライセンス
 

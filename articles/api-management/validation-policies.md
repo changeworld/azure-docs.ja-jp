@@ -6,14 +6,14 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 07/12/2021
 ms.author: apimpm
-ms.openlocfilehash: 1a835d26b4c41c92b9849856a2f31b3550947bd8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 26f1f9449a4e02f25e44e55d578f0194615b0be5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801895"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114437075"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>要求と応答を検証するための API Management ポリシー
 
@@ -40,8 +40,8 @@ ms.locfileid: "104801895"
 | アクション         | 説明          |                                                                                                                         
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | ignore | 検証をスキップします。 |
-| 回避 (prevent) | 要求または応答の処理をブロックし、詳細な検証エラーをログに記録して、エラーを返します。 最初のエラー セットが検出されると、処理が中断されます。 |
-| 検出 (detect) | 要求または応答の処理を中断することなく、検証エラーをログに記録します。 |
+| 回避 (prevent) | 要求または応答の処理をブロックし、詳細な[検証エラー](#validation-errors)をログに記録して、エラーを返します。 最初のエラー セットが検出されると、処理が中断されます。 
+| 検出 (detect) | 要求または応答の処理を中断することなく、[検証エラー](#validation-errors)をログに記録します。 |
 
 ## <a name="logs"></a>ログ
 
@@ -97,10 +97,10 @@ API スループットに対する検証ポリシーの影響を評価するに�
 | unspecified-content-type-action | API スキーマで指定されていないコンテンツ タイプの要求または応答に対して実行する[アクション](#actions)。 |  はい     | なし   |
 | max-size | `Content-Length` ヘッダーに対してチェックされる、要求または応答の本文の最大長 (バイト単位)。 要求本文または応答本文が圧縮されている場合、この値は圧縮解除された長さになります。 許容される最大値: 102,400 バイト (100 KB)。  | はい       | なし   |
 | size-exceeded-action | 本文が `max-size` で指定されたサイズを超えている要求または応答に対して実行する[アクション](#actions)。 |  はい     | なし   |
-| errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   はい    | なし   |
+| errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   いいえ    | なし   |
 | type | `Content-Type` ヘッダーに対してチェックされる、本文の検証を実行するコンテンツ　タイプ。 この値は大文字と小文字が区別されません。 空の場合は、API スキーマで指定されているすべてのコンテンツ タイプに適用されます。 |   いいえ    |  なし  |
 | validate-as | コンテンツ タイプが一致する要求または応答の本文の検証に使用する検証エンジン。 現在唯一サポートされている値は "json" です。   |  はい     |  なし  |
-| action | 指定されたコンテンツ タイプに一致しない本文を持つ要求または応答に対して実行する[アクション](#actions)。  |  はい      | なし   |
+| action | 指定されたコンテンツ タイプに一致しない本文を持つ要求または応答に対して実行する[アクション](#actions)。  |  はい      | 該当なし   |
 
 ### <a name="usage"></a>使用法
 
@@ -165,9 +165,9 @@ API スループットに対する検証ポリシーの影響を評価するに�
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | specified-parameter-action | API スキーマで指定された要求パラメーターに対して実行する[アクション](#actions)。 <br/><br/> `headers`、`query`、または `path` 要素で指定された場合、 値は `validate-parameters` 要素内の `specified-parameter-action` の値をオーバーライドします。  |  はい     | なし   |
 | unspecified-parameter-action | API スキーマで指定されていない要求パラメーターに対して実行する[アクション](#actions)。 <br/><br/>`headers` または `query` 要素で指定された場合、 値は `validate-parameters` 要素内の `unspecified-parameter-action` の値をオーバーライドします。 |  はい     | なし   |
-| errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   はい    | なし   |
+| errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   いいえ    | なし   |
 | name | 検証アクションをオーバーライドするパラメーターの名前。 この値は大文字と小文字が区別されません。  | はい | なし |
-| action | 一致する名前を持つパラメーターに対して実行する[アクション](#actions)。 パラメーターが API スキーマで指定されている場合、この値は上位レベルの `specified-parameter-action` 構成をオーバーライドします。 パラメーターが API スキーマで指定されていない場合、この値は上位レベルの `unspecified-parameter-action` 構成をオーバーライドします。| はい | なし | 
+| action | 一致する名前を持つパラメーターに対して実行する[アクション](#actions)。 パラメーターが API スキーマで指定されている場合、この値は上位レベルの `specified-parameter-action` 構成をオーバーライドします。 パラメーターが API スキーマで指定されていない場合、この値は上位レベルの `unspecified-parameter-action` 構成をオーバーライドします。| はい | 該当なし | 
 
 ### <a name="usage"></a>使用法
 
@@ -210,9 +210,9 @@ API スループットに対する検証ポリシーの影響を評価するに�
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | specified-header-action | API スキーマで指定された応答ヘッダーに対して実行する[アクション](#actions)。  |  はい     | なし   |
 | unspecified-header-action | API スキーマで指定されていない応答ヘッダーに対して実行する[アクション](#actions)。  |  はい     | なし   |
-| errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   はい    | なし   |
+| errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   いいえ    | なし   |
 | name | 検証アクションをオーバーライドするヘッダーの名前。 この値は大文字と小文字が区別されません。 | はい | なし |
-| action | 一致する名前を持つヘッダーに対して実行する[アクション](#actions)。 API スキーマでヘッダーが指定されている場合、この値は `validate-headers` 要素内の `specified-header-action` の値をオーバーライドします。 それ以外の場合は、validate-headers 要素内の `unspecified-header-action` の値をオーバーライドします。 | はい | なし | 
+| action | 一致する名前を持つヘッダーに対して実行する[アクション](#actions)。 API スキーマでヘッダーが指定されている場合、この値は `validate-headers` 要素内の `specified-header-action` の値をオーバーライドします。 それ以外の場合は、validate-headers 要素内の `unspecified-header-action` の値をオーバーライドします。 | はい | 該当なし | 
 
 ### <a name="usage"></a>使用法
 
@@ -252,9 +252,9 @@ API スループットに対する検証ポリシーの影響を評価するに�
 | 名前                       | 説明                                                                                                                                                            | 必須 | Default |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | unspecified-status-code-action | API スキーマで指定されていない応答の HTTP 状態コードに対して実行する[アクション](#actions)。  |  はい     | なし   |
-| errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   はい    | なし   |
+| errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   いいえ    | なし   |
 | code | 検証アクションをオーバーライドする HTTP 状態コード。 | はい | なし |
-| action | API スキーマで指定されていない、一致する状態コードに対して実行する[アクション](#actions)。 状態コードが API スキーマで指定されている場合、このオーバーライドは有効になりません。 | はい | なし | 
+| action | API スキーマで指定されていない、一致する状態コードに対して実行する[アクション](#actions)。 状態コードが API スキーマで指定されている場合、このオーバーライドは有効になりません。 | はい | 該当なし | 
 
 ### <a name="usage"></a>使用法
 
@@ -271,7 +271,10 @@ API スループットに対する検証ポリシーの影響を評価するに�
 * **詳細** - エラーを調査するために使用できます。 一般に共有するためのものではありません。
 * **パブリック応答** - クライアントに返されるエラー。 実装の詳細は漏えいしません。
 
-| **名前**                             | **Type**                                                        | **検証規則** | **詳細**                                                                                                                                       | **パブリック応答**                                                                                                                       | **操作**           |
+検証ポリシーで `prevent` アクションを指定し、エラーが発生すると、API Management からの応答には、受信セクションでポリシーが適用されている場合は HTTP 状態コード 400、送信セクションでポリシーが適用されている場合は 502 が含まれます。
+
+
+| **名前**   | **Type**                                                        | **検証規則** | **詳細**                                                                                                                                       | **パブリック応答**                                                                                                                       | **操作**           |
 |----|----|---|---|---|----|
 | **validate-content** |                                                                 |                     |                                                                                                                                                   |                                                                                                                                           |                      |
 | |RequestBody                                                     | SizeLimit           | 要求の本文の長さは {size} バイトで、構成されている制限の {maxSize} バイトを超えています。                                                       | 要求の本文の長さは {size} バイトで、制限の {maxSize} バイトを超えています。                                                          | 検出 (detect) /回避 (prevent) |
@@ -285,7 +288,7 @@ API スループットに対する検証ポリシーの影響を評価するに�
 | {messageContentType}                 | ResponseBody                                                    | IncorrectMessage    | 応答の本文が、コンテンツ タイプ {messageContentType} に関連付けられている定義 {definitionName} に準拠していません。<br/><br/>{valError.Message} 行: {valError.LineNumber}、位置: {valError.LinePosition}                                       | 内部エラーにより、要求を処理できませんでした。 API の所有者に問い合わせてください。                                                       | 検出 (detect) /回避 (prevent) |
 |                                      | RequestBody                                                     | ValidationException | コンテンツ タイプ {messageContentType} に対して、要求の本文を検証できません。<br/><br/>{exception details}                                                                | 内部エラーにより、要求を処理できませんでした。 API の所有者に問い合わせてください。                                                       | 検出 (detect) /回避 (prevent) |
 |                                      | ResponseBody                                                    | ValidationException | コンテンツ タイプ {messageContentType} に対して、応答の本文を検証できません。<br/><br/>{exception details}                                                                | 内部エラーにより、要求を処理できませんでした。 API の所有者に問い合わせてください。                                                       | 検出 (detect) /回避 (prevent) |
-| **validate-parameter / validate-headers** |                                                                 |                     |                                                                                                                                                   |                                                                                                                                           |                      |
+| **validate-parameters / validate-headers** |                                                                 |                     |                                                                                                                                                   |                                                                                                                                           |                      |
 | {paramName} / {headerName}           | QueryParameter / PathParameter / RequestHeader                  | 指定されていません。         | 指定されていない {path parameter / query parameter / header} {paramName} は許可されません。                                                               | 指定されていない {path parameter / query parameter / header} {paramName} は許可されません。                                                       | 検出 (detect) /回避 (prevent) |
 | {headerName}                         | ResponseHeader                                                  | 指定されていません。         | 指定されていないヘッダー {headerName} は許可されません。                                                                                                   | 内部エラーにより、要求を処理できませんでした。 API の所有者に問い合わせてください。                                                       | 検出 (detect) /回避 (prevent) |
 |                                      |ApiSchema                                                       |                     | API のスキーマが存在しないか、解決できませんでした。                                                                                            | 内部エラーにより、要求を処理できませんでした。 API の所有者に問い合わせてください。                                                       | 検出 (detect) /回避 (prevent) |

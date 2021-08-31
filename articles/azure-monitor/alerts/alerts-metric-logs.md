@@ -4,14 +4,14 @@ description: 一般的なログ分析データでほぼリアルタイムのメ�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/14/2021
+ms.date: 06/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 55f255ddcff1928d3ea0778ff32a72c9312f9a39
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 265973fc71cde7ea2d06959c9857a8ff30260d38
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318317"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122334"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -19,9 +19,10 @@ ms.locfileid: "108318317"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-メトリック アラートは、Azure またはオンプレミスのリソースを含むログからのメトリックの一部として、メトリックとして抽出された一般的な Log Analytics ログで使用できます。 サポートされている Log Analytics ソリューションは次のとおりです。
+**ログのメトリック アラート** を使用すると、定義済みの一連の Log Analytics ログでメトリック アラート機能を利用できます。 監視対象のログは、Azure またはオンプレミスのコンピューターから収集でき、メトリックに変換されてから、他のメトリックと同様にメトリック アラート ルールによって監視されます。
+サポートされている Log Analytics ログは次のとおりです。
 
-- Windows および Linux マシンの[パフォーマンス カウンター](./../agents/data-sources-performance-counters.md)
+- Windows および Linux マシンの[パフォーマンス カウンター](./../agents/data-sources-performance-counters.md) (サポートされている [Log Analytics ワークスペース メトリック](../essentials/metrics-supported.md#microsoftoperationalinsightsworkspaces)に対応)
 - [Agent Health のためのハートビート レコード](../insights/solution-agenthealth.md)
 - [更新管理](../../automation/update-management/overview.md)レコード
 - [イベント データ](./../agents/data-sources-windows-events.md) ログ
@@ -30,14 +31,14 @@ ms.locfileid: "108318317"
 
 - メトリック アラートでは、ほぼリアルタイムの監視機能が提供されます。ログのメトリック アラートは、同じものを確保するためにログ ソースからデータをフォークします。
 - メトリック アラートはステートフルです。アラートが発生したときとアラートが解決されたときに、それぞれ一度だけ通知します。アラートの条件が満たされると間隔ごとに発生し続けるステートレスなログ アラートとは異なります。
-- ログのメトリック アラートでは複数のディメンションが提供されるので、コンピューターや OS の種類などの特定の値に簡単にフィルター処理できます。分析でクエリを作成する必要はありません。
+- ログのメトリック アラートでは複数のディメンションが提供されるので、コンピューターや OS の種類などの特定の値に簡単にフィルター処理できます。Log Analytics で複雑なクエリを定義する必要はありません。
 
 > [!NOTE]
 > 特定のメトリックやディメンションは、選択された期間内にそのためのデータが存在する場合にのみ表示されます。 Azure Log Analytics ワークスペースを使用するお客様は、これらのメトリックを使用できます。
 
 ## <a name="metrics-and-dimensions-supported-for-logs"></a>ログでサポートされるメトリックとディメンション
 
- メトリック アラートでは、ディメンションを使用するメトリックのアラートがサポートされています。 ディメンションを使用すると、メトリックを適切なレベルにフィルター処理できます。 サポートされているソリューションでの、Log Analytics ワークスペースのログでサポートされているメトリックの一覧については、[こちら](../essentials/metrics-supported.md#microsoftoperationalinsightsworkspaces)をご覧ください。
+メトリック アラートでは、ディメンションを使用するメトリックのアラートがサポートされています。 ディメンションを使用すると、メトリックを適切なレベルにフィルター処理できます。 ログでサポートされるすべてのメトリックの一覧は、[Log Analytics ワークスペース メトリック](../essentials/metrics-supported.md#microsoftoperationalinsightsworkspaces)の一覧と同じです。
 
 > [!NOTE]
 > [Azure Monitor のメトリック](../essentials/metrics-charts.md)を使用して Log Analytics ワークスペースから抽出されたサポート対象のメトリックを表示するには、その特定のメトリックに対してログのメトリック アラートを作成する必要があります。 ログのメトリック アラートで選択されたディメンションは、Azure Monitor のメトリックを使用して探索する場合にのみ表示されます。
@@ -69,11 +70,11 @@ Log Analytics データで収集されたログのメトリックを機能させ
 - 選択した "*Log Analytics ワークスペース*" のメトリック アラートを作成する際に Azure portal を使用 **しない** 場合は、まず、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための明示的なルールを手動で作成する必要があります。
 
 > [!NOTE]
-> Azure portal を使用して Log Analytics ワークスペースのメトリック アラートを作成すると、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための対応するルールがバックグラウンドで自動的に作成されます。*ユーザーの介入や操作は不要です*。 Azure portal 以外の方法を使用してログのメトリック アラートを作成する場合は、「[ログのメトリック アラートのリソース テンプレート](#resource-template-for-metric-alerts-for-logs)」をご覧ください。このセクションには、メトリック アラートを作成する前に、ScheduledQueryRule ベースのログからメトリックへの変換ルールを作成する方法のサンプルが示されています。このルールがないと、ログのメトリック アラートを作成するためのデータが存在しなくなります。
+> Azure portal を使用してログのメトリック アラートを作成すると、[Azure Monitor のスケジュールされたクエリ ルール](/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための対応するルールがバックグラウンドで自動的に作成されます。"*ユーザーの介入や操作は不要です*"。 Azure portal 以外の方法を使用して作成されたログのメトリック アラートについては、「[ログのメトリック アラートのリソース テンプレート](#resource-template-for-metric-alerts-for-logs)」をご覧ください。このセクションには、メトリック アラートを作成する前に、ScheduledQueryRule ベースのログからメトリックへの変換ルールを作成する方法のサンプルが示されています。このルールがないと、ログのメトリック アラートを作成するためのデータが存在しなくなります。
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>ログのメトリック アラートのリソース テンプレート
 
-前述のように、ログからのメトリック アラートの作成は次の 2 段階のプロセスです。
+前述のように、ログのメトリック アラートの作成は次の 2 段階のプロセスです。
 
 1. scheduledQueryRule API を使用してサポートされているログからメトリックを抽出するためのルールを作成する
 2. (手順 1 で) ログから抽出したメトリックのメトリック アラートを作成し、ターゲット リソースとして Log Analytics ワークスペースを作成する

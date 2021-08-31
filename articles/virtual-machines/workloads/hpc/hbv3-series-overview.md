@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 4119d64dcadd23415cc750e88d560057bda6af8e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7e9cdb80f1423076fb222e1d1521117e65bca9bc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138019"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460574"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3 シリーズの仮想マシンの概要 
 
@@ -130,7 +130,7 @@ HBv3 VM の特徴は、物理的にローカルの 3 つの SSD デバイスで�
 | Orchestrator のサポート           | Azure CycleCloud、Azure Batch、AKS。[クラスター構成オプション](../../sizes-hpc.md#cluster-configuration-options)                      | 
 
 > [!NOTE] 
-> Windows Server 2012 R2 は、HBv3、および 64 個を超える (仮想または物理) コアを備えたその他の VM ではサポートされていません。 詳細については、[こちら](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)を参照してください。
+> Windows Server 2012 R2 は、HBv3、および 64 個を超える (仮想または物理) コアを備えたその他の VM ではサポートされていません。 詳細については、「[Windows Server 上の Hyper-V でサポートされている Windows ゲスト オペレーティング システム](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

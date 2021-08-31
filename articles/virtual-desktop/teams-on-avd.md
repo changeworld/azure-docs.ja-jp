@@ -3,15 +3,15 @@ title: Microsoft Teams on Azure Virtual Desktop - Azure
 description: Microsoft Teams on Azure Virtual Desktop の使用方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 08/02/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 05d1188e00235001ba4d8fd173d4f03a28dadf90
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 63c75636fcab47a31735b772f85a8dccbb9c65f5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111758197"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728450"
 ---
 # <a name="use-microsoft-teams-on-azure-virtual-desktop"></a>Microsoft Teams on Azure Virtual Desktop を使用する
 
@@ -30,7 +30,7 @@ Microsoft Teams のメディア最適化では、Teams を使った通話と会�
 Microsoft Teams on Azure Virtual Desktop を使用するには、次の操作を行う必要があります。
 
 - Microsoft Teams 用の[ネットワークを準備します](/microsoftteams/prepare-network/)。
-- [Windows PC 上で Microsoft Teams を使用するためのハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 または Windows 10 IoT Enterprise デバイスに [Windows デスクトップ クライアント](connect-windows-7-10.md)をインストールします。
+- [Windows PC 上で Microsoft Teams を使用するためのハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 または Windows 10 IoT Enterprise デバイスに [Windows デスクトップ クライアント](./user-documentation/connect-windows-7-10.md)をインストールします。
 - Windows 10 マルチセッションまたは Windows 10 Enterprise 仮想マシン (VM) に接続します。
 
 ## <a name="install-the-teams-desktop-app"></a>Teams デスクトップ アプリをインストールする
@@ -51,7 +51,7 @@ Teams でメディアの最適化を有効にするには、ホストで次の�
 
 ### <a name="install-the-teams-websocket-service"></a>Teams WebSocket Service をインストールする
 
-最新の [Remote Desktop WebRTC Redirector Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) を VM イメージにインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
+最新の [Remote Desktop WebRTC Redirector Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWFYsj) を VM イメージにインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
 
 #### <a name="latest-websocket-service-versions"></a>最新の WebSocket サービスのバージョン
 
@@ -59,8 +59,13 @@ Teams でメディアの最適化を有効にするには、ホストで次の�
 
 |Version        |リリース日  |
 |---------------|--------------|
+|1.0.2106.14001 |2021 年 7 月 29 日    |
 |1.0.2006.11001 |2020 年 7 月 28 日    |
 |0.11.0         |2020 年 5 月 29 日    |
+
+#### <a name="updates-for-version-10210614001"></a>バージョン 1.0.2106.14001 用の更新プログラム
+
+WebRTC リダイレクター サービスと WebRTC クライアント プラグインの間の接続の信頼性が向上しました。
 
 #### <a name="updates-for-version-10200611001"></a>バージョン 1.0.2006.11001 用の更新プログラム
 

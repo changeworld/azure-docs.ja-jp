@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2014d2ecea91ae650ec1fb1d730ee9b64c66c98
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572954"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195911"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする
 
@@ -41,6 +41,15 @@ Azure Sentinel には、サブスクリプションとテナントのレベル�
 
 - [サブスクリプション レベルで Azure Sentinel にアラートをストリーミングする](../sentinel/connect-azure-security-center.md)
 - [テナント内のすべてのサブスクリプションを Azure Sentinel に接続する](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-security-center-auto-connect-to-sentinel/ba-p/1387539) 
+
+Azure Defender を Azure Sentinel に接続すると、Azure Sentinel に取り込まれる Azure Defender アラートの状態が 2 つのサービス間で同期されます。 たとえば、Azure Defender でアラートが閉じられた場合、そのアラートは Azure Sentinel でも閉じられたと表示されます。 Azure Defender でアラートの状態を変更しても、同期された Azure Sentinel アラートを含む Azure Sentinel **インシデント** の状態には影響せず、同期されたアラート自体の状態に限定されます。
+
+プレビュー機能である **双方向アラート同期** を有効にすると、元の Azure Defender アラートの状態が、それらの Azure Defender アラートのコピーを含む Azure Sentinel インシデントと自動的に同期されます。 そのため、たとえば、Azure Defender アラートを含む Azure Sentinel インシデントが閉じられると、対応する元のアラートが Azure Defender によって自動的に閉じられます。
+
+詳細については、「[Azure Security Center からの Azure Defender アラートの接続](../sentinel/connect-azure-security-center.md)」を参照してください。
+
+> [!NOTE]
+> 双方向アラート同期機能は Azure Government クラウドでは利用できません。 
 
 ### <a name="configure-ingestion-of-all-audit-logs-into-azure-sentinel"></a>すべての監査ログの Azure Sentinel への取り込みを構成する 
 

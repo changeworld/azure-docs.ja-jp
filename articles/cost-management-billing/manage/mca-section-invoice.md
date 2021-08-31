@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4d725375cb964cb8bc2893f5f8365416e29e5541
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036238"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734035"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>課金アカウントをカスタマイズしてコストを整理する
 
@@ -125,7 +125,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
     |---------|---------|
     |名前     | Azure portal で課金プロファイルを識別しやすくするための表示名。  |
     |発注番号    | オプションの発注番号。 発注番号は、課金プロファイルに対して生成された請求書に表示されます。 |
-    |請求先の住所   | 請求先の住所は、課金プロファイルに対して生成された請求書に表示されます。 |
+    |請求先  | 請求先は、課金プロファイルに対して生成された請求書に表示されます。 |
     |請求書を電子メールで送信   | この課金プロファイルの請求書をメールで受信するには、[請求書を電子メールで送信] のボックスをオンにします。 オプトインしない場合は、Azure portal で請求書を表示してダウンロードすることができます。|
 
 5. **［作成］** を選択します
@@ -162,10 +162,6 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 既存の Azure サブスクリプション、または Azure Marketplace や AppSource リソースなどの他の製品がある場合は、それらを既存の請求書セクションから別の請求書セクションに移動して、コストを再編成することができます。
 
-> [!IMPORTANT]
->
-> サブスクリプションと他の製品は、同じ課金プロファイルに属する請求書セクション間でのみ移動できます。 異なる課金プロファイルの請求書セクション間でのサブスクリプションと製品の移動はサポートされていません。
-
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
@@ -174,11 +170,11 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 3. サブスクリプションを新しい請求書セクションにリンクするには、画面の左側にある **[Azure サブスクリプション]** を選択します。 Azure Marketplace や AppSource リソースなどの他の製品の場合は、 **[当月サービス利用料金]** を選択します。
 
-   [![請求書セクションを変更するオプションを示すスクリーンショット](./media/mca-section-invoice/mca-select-change-invoice-section.png)](./media/mca-section-invoice/mca-select-change-invoice-section.png#lightbox)
+   [![請求書セクションを変更するオプションを示すスクリーンショット](./media/mca-section-invoice/mca-select-change-invoice-section.png)](./media/mca-section-invoice/mca-select-change-invoice-section-zoomed-in.png#lightbox)
 
 4. このページで、新しい請求書セクションにリンクするサブスクリプションまたは製品の省略記号 (3 つの点) をクリックします。 **[請求書セクションの変更]** を選択します。
 
-5. ドロップダウンからその新しい請求書セクションを選択します。 このドロップダウンには、既存の請求書セクションと同じ課金プロファイルに関連する請求書セクションのみが表示されます。
+5. ドロップダウンから、新しい請求プロファイルと請求書セクションを選択します。
 
     [![新しい請求書セクションの選択を示すスクリーンショット](./media/mca-section-invoice/mca-select-new-invoice-section.png)](./media/mca-section-invoice/mca-select-new-invoice-section-zoomed-in.png#lightbox)
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 07dd3319416f6b8cad4cd77d69da81020569788f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1cbdbad379887687c71bd8c52b5791bde4e08a08
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296578"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492885"
 ---
 # <a name="azure-digital-twins-query-language-reference-from-clause"></a>Azure Digital Twins クエリ言語リファレンス: FROM 句
 
@@ -40,7 +40,7 @@ FROM 句は、クエリの 2 番目の部分です。 コレクションと、�
 
 ### <a name="examples"></a>例
 
-ここで示すのは、基本的なクエリです。 次のクエリは、インスタンス内のすべてのデジタル ツインを返します。 
+ここで示すのは、基本的なクエリです。 次のクエリでは、インスタンス内のすべてのデジタル ツインが返されます。 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromDigitalTwinsExample":::
 
@@ -89,7 +89,7 @@ FROM 句は、クエリの 2 番目の部分です。 コレクションと、�
 * [サブクエリなし](#no-subqueries)
 * [FROM RELATIONSHIPS または JOIN を選択](#choose-from-relationships-or-join)
 
-以下のセクションで詳細をご覧ください。
+詳細については、次のセクションを参照してください。
 
 ### <a name="no-subqueries"></a>サブクエリなし
 

@@ -4,16 +4,16 @@ description: Azure に高可用性で回復力のあるアプリケーション�
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 08/04/2021
 ms.author: prsandhu
-ms.reviewer: cynthn
+ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 07f0e87b77d359d9bc1009ccc7e5176795e12cd5
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 6271fcb1702d14913578f6cc535b1dd74ba3205b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029011"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750376"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
 
@@ -53,14 +53,14 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 | ブラジル南部       | フランス中部       | 南アフリカ北部* | オーストラリア東部 |
 | カナダ中部     | ドイツ中西部 |                     | インド中部* |
 | 米国中部         | 北ヨーロッパ         |                     | 東日本     |
-| 米国東部            | 英国南部             |                     | 韓国中部* |
-| 米国東部 2          | 西ヨーロッパ          |                     | 東南アジア |
-| 米国中南部 |                      |                     |                |
+| 米国東部            | ノルウェー東部*         |                     | 韓国中部* |
+| 米国東部 2          | 英国南部             |                     | 東南アジア |
+| 米国中南部 | 西ヨーロッパ          |                     |                |
 | US Gov バージニア州    |                      |                     |                |
 | 米国西部 2        |                      |                     |                |
-| 米国西部 3*       |                      |                     |                |
+| 米国西部 3        |                      |                     |                |
 
-\* これらのリージョンの Availability Zones および利用可能なサービス サポートの詳細については、Microsoft の営業またはカスタマー担当者にお問い合わせください。 Availability Zones のサポートが今後予定されているリージョンについては、「[Azure の地域](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)」を参照してください。
+\* これらのリージョンの Availability Zones および利用可能なサービス サポートの詳細については、Microsoft の営業またはカスタマー担当者にお問い合わせください。 Availability Zones のサポートが今後予定されているリージョンについては、「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>Availability Zones をサポートしている Azure サービス
@@ -123,6 +123,7 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     [App Service Environment](../app-service/environment/zone-redundancy.md)                                    | :large_blue_diamond:  |
 |     [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md)                      | :large_blue_diamond:  |
 |     [Azure API Management](../api-management/zone-redundancy.md)                      | :large_blue_diamond:  |
+|     [Azure App Configuration](../azure-app-configuration/faq.yml#how-does-app-configuration-ensure-high-data-availability)   | :large_blue_diamond:  |    
 |     [Azure Bastion](../bastion/bastion-overview.md)                                               | :large_blue_diamond:  |
 |     [Azure Cache for Redis](../azure-cache-for-redis/cache-high-availability.md)                              | :large_blue_diamond:  |
 |     [Azure Cognitive Search](../search/search-performance-optimization.md#availability-zones)               | :large_blue_diamond:  |
@@ -131,16 +132,17 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     [Azure Data Factory](../data-factory/index.yml)                               | :large_blue_diamond:  |
 |     Azure Database for MySQL – [フレキシブル サーバー](../mysql/flexible-server/concepts-high-availability.md)                  | :large_blue_diamond:  |
 |     Azure Database for PostgreSQL – [フレキシブル サーバー](../postgresql/flexible-server/overview.md)             | :large_blue_diamond:  |
-|     [Azure DDoS Protection](../ddos-protection/ddos-faq.md)                                       | :large_blue_diamond:  |
+|     [Azure DDoS Protection](../ddos-protection/ddos-faq.yml)                                       | :large_blue_diamond:  |
 |     [Azure Disk Encryption](../virtual-machines/disks-redundancy.md)                                       | :large_blue_diamond:  |
 |     [Azure Firewall](../firewall/deploy-availability-zone-powershell.md)                                              | :large_blue_diamond:  |
 |     [Azure Firewall Manager](../firewall-manager/quick-firewall-policy.md)                                      | :large_blue_diamond:  |
 |     [Azure Kubernetes Service (AKS)](../aks/availability-zones.md)                              | :large_blue_diamond:  |
+|     [Azure Media Services (AMS)](../media-services/latest/concept-availability-zones.md)        | :large_blue_diamond:  |
 |     [Azure Private Link](../private-link/private-link-overview.md)                                          | :large_blue_diamond:  |
 |     [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)                                         | :large_blue_diamond:  |
 |     Azure SQL: [仮想マシン](../azure-sql/database/high-availability-sla.md)                                  | :large_blue_diamond:  |
 |     [Azure Web アプリケーション ファイアウォール](../firewall/deploy-availability-zone-powershell.md)                              | :large_blue_diamond:  |
-|     [Container Registry](../container-registry/zone-redundancy.md)                                          | :large_blue_diamond:  |
+|     [コンテナー レジストリ](../container-registry/zone-redundancy.md)                                          | :large_blue_diamond:  |
 |     [Event Grid](../event-grid/overview.md)                                                  | :large_blue_diamond:  |
 |     [Network Watcher](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
 |     Network Watcher: [Traffic Analytics](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | :large_blue_diamond:  |

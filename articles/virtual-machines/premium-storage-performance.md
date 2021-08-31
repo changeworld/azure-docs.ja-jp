@@ -2,17 +2,17 @@
 title: 'Azure Premium Storage: 高パフォーマンス用の設計'
 description: Azure Premium SSD マネージド ディスクを使用する高パフォーマンスのアプリケーションを設計します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 79fa9b3a84bbf523fe243b1d37d798dfd1172a6b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9edab369f009eb1d8c2c9ca9a09f7121aa180c79
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146277"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440929"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -230,7 +230,7 @@ IOPS の上限は、VM あたりとディスクあたりで異なり、互いに
 
 *Linux ディストリビューション*  
 
-Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。 さまざまな Linux ディストリビューションがサポートされています。リストについては、[こちら](linux/endorsed-distros.md)をご覧ください。 ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。 パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。 アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
+Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。 さまざまな Linux ディストリビューションがサポートされています。 詳細については、「[Azure で動作保証済みの Linux ディストリビューション](linux/endorsed-distros.md)」を参照してください。 ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。 パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。 アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
 
 Premium Storage で Linux を実行するときは、高パフォーマンスを確保するために、必要なドライバーについて最新の更新プログラムを確認してください。
 

@@ -7,23 +7,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 05/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 28dc63729a946e7b14b950f5082752d78c5992f4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3da9051a1f089d487be7021bf9341a95bae62b08
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110452686"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614373"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Cognitive Search のクエリにスペル チェックを追加する
 
 > [!IMPORTANT]
-> スペル修正はパブリック プレビュー段階にあり、プレビュー REST API を介してのみ利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。 最初のプレビュー期間中は、スペル チェックに対して料金は発生しません。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
+> スペル修正はパブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 Azure portal、プレビュー REST API からのみ利用できます。
 
 個々の検索クエリ用語が検索エンジンに到達する前に修正することで、リコールを改善できます。 **スペル チェック** パラメーターは、[simple](query-simple-syntax.md)、 [full](query-lucene-syntax.md)、および現在パブリック プレビュー中の新しい [semantic](semantic-how-to-query-request.md) オプションのすべての種類のクエリでサポートされています。
 
 ## <a name="prerequisites"></a>前提条件
+
+スペル チェックは、[セマンティック検索プレビュー](semantic-search-overview.md)と連携してリリースされました。 そのため、[サインアップ](https://aka.ms/SemanticSearchPreviewSignup)は必要ですが、使用料金は発生せず、階層の制限はありません。 スペル チェックは、セマンティック検索と[同じリージョン](semantic-search-overview.md#availability-and-pricing)で利用できます。
+
+サインアップが処理された後は、次が必要です。
 
 + [サポートされている言語](#supported-languages)のコンテンツを含む既存の検索インデックス。 [[シノニム]](search-synonyms.md) では、現在、スペル修正は機能しません。 いずれのフィールド定義でも、シノニム マップを指定するインデックスでそれを使用しないでください。
 
@@ -32,9 +36,6 @@ ms.locfileid: "110452686"
   検索クライアントは、クエリ要求でプレビューの REST API をサポートする必要があります。 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md)、または自分で変更したコードを使用して、プレビュー API への REST 呼び出しを行うことができます。
 
 + スペル修正を呼び出す[クエリ要求](/rest/api/searchservice/preview-api/search-documents)には、"api-version=2020-06-30-Preview"、"speller=lexicon"、および "queryLanguage" が[サポートされている言語](#supported-languages)に設定されている必要があります。
-
-> [!Note]
-> スペル チェック パラメーターは、セマンティック検索を提供するのと同じリージョン内のすべての階層で使用できます。 サインアップは必要ですが、料金は発生せず、階層の制限はありません。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
 
 ## <a name="spell-correction-with-simple-search"></a>単純な検索でのスペル修正
 

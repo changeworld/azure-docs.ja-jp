@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, mathoma
 ms.date: 07/01/2019
-ms.openlocfilehash: 58194f74bb32fec7d58f707d74720c37e26dba5a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c6afb13902282e1e89acb6fe7929e97994883589
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110699482"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463418"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,26 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+## <a name="august-2021"></a>2021 年 8 月
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+
+- ノルウェー東部: 51.120.104.32、51.120.208.32
+- 東日本: 40.79.184.32
+- インド中部: 40.80.48.32、20.192.96.32
+
+これらの SQL ゲートウェイは、2021 年 8 月 2 日にお客様のトラフィックの受け入れを開始します。
+
 ## <a name="june-2021"></a>2021 年 6 月
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
+
 - 英国西部: 51.140.208.96、51.140.208.97
 - 韓国中部: 20.44.24.32、20.194.64.33
 - 東日本: 13.78.104.32
 
-この SQL ゲートウェイでは、2021 年 6 月 1 日にお客様のトラフィックの受け入れを開始します。
+これらの SQL ゲートウェイでは、2021 年 6 月 1 日にお客様のトラフィックの受け入れを開始します。
+
+# <a name="completed"></a>[完了](#tab/completed-ip)
+次のゲートウェイの移行が完了しました。 
 
 ## <a name="may-2021"></a>2021 年 5 月
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
@@ -74,9 +87,6 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - 米国西部: 23.99.34.75
 
 (古いハードウェアで実行されている) これらのゲートウェイではお客様のトラフィックをルーティングしていないため、お客様への影響はないと予測されます。 これらのゲートウェイの IP アドレスは、2021 年 3 月 15 日に非アクティブ化されます。
-
-# <a name="completed"></a>[完了](#tab/completed-ip)
-次のゲートウェイの移行が完了しました。 
 
 ## <a name="february-2021"></a>2021 年 2 月
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
@@ -192,7 +202,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>影響を受ける場合の対処方法
 
-リージョンの TCP ポート 1433 上のすべての[ゲートウェイ IP アドレス](connectivity-architecture.md#gateway-ip-addresses)、およびポート範囲 11000-11999 の IP アドレスへの送信トラフィックを許可することをお勧めします。 この推奨事項は、オンプレミスから接続しているクライアントと、サービス エンドポイント経由で接続しているクライアントに適用されます。 ポート範囲の詳細については、「[接続ポリシー](connectivity-architecture.md#connection-policy)」を参照してください。
+リージョンのすべての[ゲートウェイ IP アドレス](connectivity-architecture.md#gateway-ip-addresses)の IP アドレスへの TCP ポート 1433 上の送信トラフィックを許可することをお勧めします。 また、Azure 内にあるクライアント (Azure VM など) から接続する場合や、接続ポリシーをリダイレクトに設定する場合は、ポート範囲 11000 から 11999 を許可します。 この推奨事項は、オンプレミスから接続しているクライアントと、サービス エンドポイント経由で接続しているクライアントに適用されます。 ポート範囲の詳細については、「[接続ポリシー](connectivity-architecture.md#connection-policy)」を参照してください。
 
 バージョン 4.0 より前の Microsoft JDBC ドライバーを使用しているアプリケーションからの接続は、証明書の検証に失敗する可能性があります。 以前のバージョンの Microsoft JDBC は、証明書のサブジェクト フィールドにある共通名 (CN) に依存しています。 軽減策は、hostNameInCertificate プロパティを *.database.windows.net に設定することです。 hostNameInCertificate プロパティを設定する方法の詳細については、「[暗号化を使用した接続](/sql/connect/jdbc/connecting-with-ssl-encryption)」を参照してください。
 

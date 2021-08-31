@@ -13,14 +13,14 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 06/25/2019
-ms.openlocfilehash: 2e246d6b67ad1457deb9057e771e5e95d4987809
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c4a7228662d1070f001b5cbe9d2199639362bccb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708890"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465644"
 ---
-# <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
+# <a name="overview-of-business-continuity-with-azure-sql-database--azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance によるビジネス継続性の概要
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL Database および SQL Managed Instance での **ビジネス継続性** とは、中断 (特にそのコンピューティング インフラストラクチャに対する) が発生した場合でもビジネス活動を続けることができるようにするメカニズム、ポリシー、手順を指します。 ほとんどの場合、SQL Database および SQL Managed Instance では、クラウド環境で発生する可能性がある破壊的なイベントが処理され、アプリケーションとビジネス プロセスの実行が維持されます。 ただし、次のような SQL Database では自動的に対処できない破壊的なイベントがあります。

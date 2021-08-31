@@ -5,12 +5,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 3d75d7605ba082aac84973aef247de79d55b4c9c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c9a535e06278146f89f2c8f6a1844813c2417a1a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482774"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114706905"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
@@ -19,6 +19,9 @@ ms.locfileid: "107482774"
 ブックの作成に関するビデオ チュートリアルはこちらです。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
+
+> [!NOTE]
+> レガシ ブックとプライベート ブックは削除されました。 以前のブックのコンテンツを取得するには、[ブック取得ツール](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/LegacyAI/DeprecatedWorkbookRetrievalTool.md)を使用します。
 
 ## <a name="data-sources"></a>データ ソース
 
@@ -47,6 +50,8 @@ ms.locfileid: "107482774"
 * [ツリー](../visualize/workbooks-tree-visualizations.md)
 * [グラフ](../visualize/workbooks-graph-visualizations.md)
 * [複合棒グラフ](../visualize/workbooks-composite-bar.md)
+* [蜂の巣](workbooks-honey-comb.md)
+* [Map](workbooks-map-visualizations.md)
 
 :::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="ブックの視覚化の例。" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
 
@@ -54,7 +59,7 @@ ms.locfileid: "107482774"
 
 ブック内のテキスト、クエリ、メトリックのステップは、ブックがピン モードのとき、またはブック作成者がその要素の設定を有効にしてピン アイコンが表示されるようにしている場合に、それらの項目のピン ボタンを使用してピン留めできます。
 
-ピン モードにアクセスするには、 **[編集]** をクリックして編集モードに移行し、上部のバーにある青いピン アイコンを選択します。 画面の右側にある対応する各ブック パーツの *[編集]* ボックスの上に、個々のピン アイコンが表示されます。
+ピン モードにアクセスするには、 **[編集]** を選択して編集モードに移行し、上部のバーにある青いピン アイコンを選択します。 画面の右側にある対応する各ブック パーツの *[編集]* ボックスの上に、個々のピン アイコンが表示されます。
 
 :::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="ピン留めエクスペリエンスのスクリーンショット。" border="false":::
 
@@ -128,7 +133,7 @@ ms.locfileid: "107482774"
 
 :::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="基になる Kusto クエリのスクリーンショット。" border="false" lightbox="./media/workbooks-overview/kusto.png":::
 
-右側にある他の **[編集]** ボタンを選択すると、マークダウンベースの[テキスト ボックス](../visualize/workbooks-text-visualizations.md)、[パラメーターの選択](../visualize/workbooks-parameters.md) UI 要素、その他の[グラフまたは視覚化の種類](#visualizations)など、ブックを構成する主要なコンポーネントがいくつか表示されます。
+右側にある他の **[編集]** ボタンを選択すると、マークダウンベースの [テキスト ボックス](../visualize/workbooks-text-visualizations.md)、[パラメーターの選択](../visualize/workbooks-parameters.md) UI 要素、その他の [グラフまたは視覚化の種類](#visualizations)など、ブックを構成する主要なコンポーネントがいくつか表示されます。
 
 作成済みのテンプレートを編集モードで調べ、ニーズに合わせて変更を加えたうえで独自のカスタム ブックを保存することは、Azure Monitor ブックでできることを知るための優れた方法です。
 
@@ -146,6 +151,7 @@ ms.locfileid: "107482774"
 ## <a name="sharing-workbook-templates"></a>ブック テンプレートの共有
 
 独自のブック テンプレートの作成を開始したら、より広範なコミュニティで共有することができます。 詳細情報を確認したり、既定の Azure Monitor ギャラリー ビューに含まれていない他のテンプレートを探索したりするには、[GitHub リポジトリ](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)を参照してください。 既存のブックを参照するには、GitHub の[ブック ライブラリ](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks)にアクセスします。
+
 
 ## <a name="next-step"></a>次のステップ
 

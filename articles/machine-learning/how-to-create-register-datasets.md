@@ -10,13 +10,13 @@ ms.custom: contperf-fy21q1, data4ml
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 07/31/2020
-ms.openlocfilehash: 9bfe0ad6e94ea40ad5edc97e8b3259bb817df03f
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 07/06/2021
+ms.openlocfilehash: 5443386a8e62d6576d73161519546e368f41ad82
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788339"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860891"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -38,7 +38,7 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
 データセットを作成して操作するには、以下が必要です。
 
-* Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
@@ -48,10 +48,13 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
     **OR**
 
-    * ご自分の Jupyter Notebook で作業し、 [こちらの手順](/python/api/overview/azure/ml/install)に従って SDK をご自身でインストールします。
+    * 独自の Jupyter ノートブックで作業し、[自分で SDK をインストールします](/python/api/overview/azure/ml/install)。
 
 > [!NOTE]
-> 一部の Dataset クラスは、[azureml-dataprep](https://pypi.org/project/azureml-dataprep/) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux (7、8)、Ubuntu (14.04、16.04、18.04)、Fedora (27、28)、Debian (8、9)、および CentOS (7) サポートされていないディストリビューションを使用している場合は、[こちらのガイド](/dotnet/core/install/linux)に従って、.NET Core 2.1 をインストールして続行してください。 
+> 一部の Dataset クラスは、[azureml-dataprep](https://pypi.org/project/azureml-dataprep/) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 __Linux__ で開発している場合、それらのクラスは .NET Core 2.1 に依存し、特定のディストリビューションでのみサポートされます。 サポートされているディストリビューションの詳細については、「[Linux に .NET をインストールする](/dotnet/core/install/linux)」という記事の .NET Core 2.1 列を参照してください。
+
+> [!IMPORTANT]
+> パッケージは旧バージョンの Linux ディストリビューションで動作することがありますが、メインストリーム サポートから外れているディストリビューションの使用は推奨していません。 メインストリーム サポートがないディストリビューションは、最新の更新プログラムを受信しないため、セキュリティ上の脆弱性が含まれている可能性があります。 サポートされており、互換性のある最新のディストリビューション バージョンの使用が推奨されます。
 
 ## <a name="compute-size-guidance"></a>コンピューティング サイズのガイダンス
 
@@ -85,7 +88,7 @@ TabularDataset は、[Python SDK](#create-a-tabulardataset) または [Azure Mac
 
 ## <a name="access-datasets-in-a-virtual-network"></a>仮想ネットワーク内のデータセットにアクセスする
 
-ワークスペースが仮想ネットワーク内にある場合は、検証をスキップするようにデータセットを構成する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、[ワークスペースと関連付けられているリソースをセキュリティで保護する](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)方法に関するページを参照してください。
+ワークスペースが仮想ネットワーク内にある場合は、検証をスキップするようにデータセットを構成する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、[ワークスペースと関連付けられているリソースをセキュリティで保護する](how-to-secure-workspace-vnet.md#datastores-and-datasets)方法に関するページを参照してください。
 
 <a name="datasets-sdk"></a>
 
@@ -111,7 +114,7 @@ Python SDK を使用してデータストアからデータセットを作成す
 
 任意の形式のファイルを読み込み、登録されていない FileDataset を作成するには、`FileDatasetFactory` クラスの [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true-) メソッドを使用します。 
 
-ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセットを使用する](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)方法に関する詳細を確認してください。
+ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセットを使用する](how-to-secure-workspace-vnet.md#datastores-and-datasets)方法に関する詳細を確認してください。
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -132,11 +135,11 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
-.csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) メソッドを使用します。 .parquet 形式のファイルを読み込むには、[`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。 
+.csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) メソッドを使用します。 .parquet 形式のファイルを読み込むには、[`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。 
 
-サポートされているファイル形式、構文、設計パターンの詳細については、[TabularDatasetFactory のリファレンス ドキュメント](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)を参照してください。 
+[マルチライン サポート](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--)など、サポートされているファイル形式、構文、設計パターンの詳細については、[TabularDatasetFactory のリファレンス ドキュメント](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)を参照してください。 
 
-ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_delimited_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセット](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)を使用する方法に関する詳細を確認してください。
+ストレージが仮想ネットワークまたはファイアウォールの内側にある場合は、`from_delimited_files()` メソッドでパラメーター `validate=False` を設定します。 これにより、最初の検証手順がバイパスされ、セキュリティで保護されたこれらのファイルからデータセットを作成できるようになります。 [仮想ネットワークでデータストアとデータセット](how-to-secure-workspace-vnet.md#datastores-and-datasets)を使用する方法に関する詳細を確認してください。
 
 次のコードでは、既存のワークスペースと必要なデータストアを名前で取得します。 次に、データストアとファイルの場所を `path` パラメーターに渡して、新しい TabularDataset である `weather_ds` を作成します。
 
@@ -280,9 +283,6 @@ new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'
 partition_keys = new_dataset.partition_keys # ['country']
 ```
 
->[!IMPORTANT]
-> TabularDataset パーティションは、多くのモデル アプリケーションの ParallelRunStep への入力として Azure Machine Learning パイプラインにも適用できます。 [多くのモデル アクセラレータのドキュメント](https://github.com/microsoft/solution-accelerator-many-models/blob/master/01_Data_Preparation.ipynb)で例を参照してください。
-
 ## <a name="explore-data"></a>データの探索
 
 データのラングリングが完了したら、データセットを[登録](#register-datasets)し、それをノートブックに読み込んで、モデルのトレーニングの前にデータ探索を行うことができます。
@@ -362,7 +362,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-using-azure-resource-manager"></a>Azure Resource Manager を使用してデータセットを作成する
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) には、データセットの作成に使用できる多数のテンプレートがあります。
+[https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) には、データセットの作成に使用できる多数のテンプレートがあります。
 
 これらのテンプレートの使用に関する詳細については、「[Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します](how-to-create-workspace-template.md)」を参照してください。
 

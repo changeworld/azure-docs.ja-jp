@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 06/30/2021
 ms.author: alkohli
-ms.openlocfilehash: d7dd4a3920e947469c85df0d9ab440d95ab7712d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: has-adal-ref
+ms.openlocfilehash: 453d42adca16593dfdc567d114b8dc7eb7e34143
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466927"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429695"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -49,7 +50,7 @@ ms.locfileid: "110466927"
 
 Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM を作成して管理する前に、次の手順に記載された前提条件をすべて満たしていることを確認する必要があります。
 
-1. 次の説明に従って Azure Stack Edge Pro デバイスでネットワーク設定を完了していること。「[手順 1: Azure Stack Edge Pro デバイスを構成する](azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)」
+1. 次の説明に従って Azure Stack Edge Pro デバイスでネットワーク設定を完了していること。「[手順 1: Azure Stack Edge Pro デバイスを構成する](azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)」
 
 2. ネットワーク インターフェイスでコンピューティングを有効にしました。 このネットワーク インターフェイスの IP を使用して、VM デプロイ用の仮想スイッチを作成します。 このプロセスは、次の手順で実行します。
 
@@ -355,7 +356,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
    $ENV:ARM_TENANT_ID = "c0257de7-538f-415c-993a-1b87a031879d"
    $ENV:ARM_CLIENT_ID = "cbd868c5-7207-431f-8d16-1cb144b50971"
    $ENV:ARM_CLIENT_SECRET - "<Your Azure Resource Manager password>"
-   $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
+   $ENV:ARM_SUBSCRIPTION_ID = "<Your subscription ID>"
    ```
 
    Azure Resource Manager クライアント ID はハードコーディングされています。 Azure Resource Manager Tenant ID と Azure Resource Manager Subscription ID はどちらも、前に実行した `az login` コマンドの出力に表示されます。 Azure Resource Manager のクライアント シークレットは、自分が設定した Azure Resource Manager のパスワードです。
@@ -404,7 +405,7 @@ VM を作成するための Python スクリプトが用意されています。
             ubuntu13.vhd
     
     VM image resource id:
-                /subscriptions/a4257fde-b946-4e01-ade7-674760b8d1a3/resourceGroups/azure-sample-group-virtual-machines118/providers/Microsoft.Compute/images/UbuntuImage
+                /subscriptions/.../resourceGroups/azure-sample-group-virtual-machines118/providers/Microsoft.Compute/images/UbuntuImage
     
     Create Vnet
     Create Subnet

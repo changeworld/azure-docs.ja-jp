@@ -3,22 +3,24 @@ title: Azure Kubernetes Service (AKS) の起動と停止
 description: Azure Kubernetes Service (AKS) クラスターを起動または開始する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 08/09/2021
 author: palma21
-ms.openlocfilehash: 734986d2c9b372214a54c1308e4ca445940c5f65
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fefdb4619c017d7c43e4dfa84c8099450310ca2f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111808927"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743940"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターの停止と起動
 
-AKS ワークロードは、継続的に実行する必要がない場合があります。たとえば、営業時間中にのみ使用される開発クラスターなどです。 そのため、Azure Kubernetes Service (AKS) クラスターがアイドル状態になり、システム コンポーネントしか実行されない場合があります。 [すべての `User` ノード プールを 0 にスケーリングする](scale-cluster.md#scale-user-node-pools-to-0)ことで、クラスターの占有領域を削減できますが、クラスターの実行中にシステム コンポーネントを実行するには、[`System` プール](use-system-pools.md)が必要です。 これらの期間中にコストをさらに最適化するために、クラスターを完全にオフにする (停止する) ことができます。 この操作により、コントロール プレーンとエージェント ノードが完全に停止し、再起動時に保存されているすべてのオブジェクトとクラスターの状態を保持しながら、すべてのコンピューティング コストを節約することができます。 また、週末の後に中断したところからすぐに再開することや、バッチ ジョブの実行中にのみクラスターを実行することができるようになります。
+AKS ワークロードは、継続的に実行する必要がない場合があります。たとえば、営業時間中にのみ使用される開発クラスターなどです。 そのため、Azure Kubernetes Service (AKS) クラスターがアイドル状態になり、システム コンポーネントしか実行されない場合があります。 [すべての `User` ノード プールを 0 にスケーリングする](scale-cluster.md#scale-user-node-pools-to-0)ことで、クラスターの占有領域を削減できますが、クラスターの実行中にシステム コンポーネントを実行するには、[`System` プール](use-system-pools.md)が必要です。
+これらの期間中にコストをさらに最適化するために、クラスターを完全にオフにする (停止する) ことができます。 この操作により、コントロール プレーンとエージェント ノードが完全に停止し、再起動時に保存されているすべてのオブジェクトとクラスターの状態を保持しながら、すべてのコンピューティング コストを節約することができます。 また、週末の後に中断したところからすぐに再開することや、バッチ ジョブの実行中にのみクラスターを実行することができるようになります。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要であれば、[Azure CLI を使用した場合][aks-quickstart-cli]、[Azure PowerShell を使用した場合][kubernetes-walkthrough-powershell]、または [Azure portal を使用した場合][aks-quickstart-portal]の AKS クイックスタートを参照してください。
 
 ### <a name="limitations"></a>制限事項
 
@@ -30,6 +32,8 @@ AKS ワークロードは、継続的に実行する必要がない場合があ�
 - プライベート クラスターにリンクされている、ユーザーがプロビジョニングした PrivateEndpoints は、停止した AKS クラスターを開始するときに削除して再作成する必要があります。
 
 ## <a name="stop-an-aks-cluster"></a>AKS クラスターを停止する
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 `az aks stop` コマンドを使用して、実行中の AKS クラスターのノードとコントロール プレーンを停止できます。 次の例では、*myAKSCluster* という名前のクラスターを停止します。
 
@@ -55,12 +59,35 @@ az aks stop --name myAKSCluster --resource-group myResourceGroup
 
 `provisioningState` に `Stopping` が表示されている場合は、クラスターがまだ完全に停止していないことを意味します。
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+[Stop-AzAksCluster][stop-azakscluster] コマンドレットを使用し、実行中の AKS クラスターのノードとコントロール プレーンを停止できます。 次の例では、*myAKSCluster* という名前のクラスターを停止します。
+
+```azurepowershell-interactive
+Stop-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup
+```
+
+[Get-AzAksCluster][get-azakscluster] コマンドレットを使用し、次の出力のように、`ProvisioningState` に `Stopped` が表示されていることを確認することでクラスターの停止を確認します。
+
+```Output
+ProvisioningState       : Stopped
+MaxAgentPools           : 100
+KubernetesVersion       : 1.20.7
+...
+```
+
+`ProvisioningState` に `Stopping` が表示されている場合は、クラスターがまだ完全に停止していないことを意味します。
+
+---
+
 > [!IMPORTANT]
 > [ポッド中断バジェット](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)を使用している場合、ドレイン プロセスの完了に時間がかかるため、停止操作に時間がかかる可能性があります。
 
 ## <a name="start-an-aks-cluster"></a>AKS クラスターを起動する
 
-`az aks start` コマンドを使用して、停止した AKS クラスターのノードとコントロール プレーンを起動できます。 クラスターは、以前のコントロール プレーンの状態とエージェント ノード数で再起動されます。  
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+`az aks start` コマンドを使用して、停止した AKS クラスターのノードとコントロール プレーンを起動できます。 クラスターは、以前のコントロール プレーンの状態とエージェント ノード数で再起動されます。
 次の例では、*myAKSCluster* という名前のクラスターを起動します。
 
 ```azurecli-interactive
@@ -85,8 +112,33 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 
 `provisioningState` に `Starting` が表示されている場合は、クラスターがまだ完全に起動していないことを意味します。
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+[Start-AzAksCluster][start-azakscluster] コマンドレットを使用し、停止した AKS クラスターのノードとコントロール プレーンを開始できます。 クラスターは、以前のコントロール プレーンの状態とエージェント ノード数で再起動されます。
+次の例では、*myAKSCluster* という名前のクラスターを起動します。
+
+```azurepowershell-interactive
+Start-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup
+```
+
+[Get-AzAksCluster][get-azakscluster] コマンドレットを使用し、次の出力のように、`ProvisioningState` に `Succeeded` が表示されていることを確認することでクラスターの起動時間を確認できます。
+
+```Output
+ProvisioningState       : Succeeded
+MaxAgentPools           : 100
+KubernetesVersion       : 1.20.7
+...
+```
+
+`ProvisioningState` に `Starting` が表示されている場合は、クラスターがまだ完全に起動していないことを意味します。
+
+---
+
 > [!NOTE]
-> クラスター オートスケーラーを使用している場合、クラスターのバックアップを開始するとき、現在のノード数が、設定した最小と最大の範囲値の間にないことがあります。 これは正しい動作です。 クラスターは、ワークロードを実行するために必要なノード数で開始します。これは、オートスケーラー設定の影響を受けません。 クラスターでスケーリング操作を実行すると、最小値と最大値は現在のノード数に影響し、クラスターはいずれはその必要範囲に入り、クラスターを停止するまでそこにとどまります。
+> クラスター バックアップを開始するとき、次の動作が想定されます。
+>
+> * API サーバーの IP アドレスは異なっている場合があります。
+> * クラスター オートスケーラーを使用している場合、クラスターのバックアップを開始するとき、現在のノード数が、設定した最小と最大の範囲値の間にないことがあります。 クラスターは、ワークロードを実行するために必要なノード数で開始します。これは、オートスケーラー設定の影響を受けません。 クラスターでスケーリング操作を実行すると、最小値と最大値は現在のノード数に影響し、クラスターはいずれはその必要範囲に入り、クラスターを停止するまでそこにとどまります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -106,3 +158,7 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
 [az-aks-show]: /cli/azure/aks#az_aks_show
+[kubernetes-walkthrough-powershell]: kubernetes-walkthrough-powershell.md
+[stop-azakscluster]: /powershell/module/az.aks/stop-azakscluster
+[get-azakscluster]: /powershell/module/az.aks/get-azakscluster
+[start-azakscluster]: /powershell/module/az.aks/start-azakscluster

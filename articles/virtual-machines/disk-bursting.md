@@ -1,19 +1,19 @@
 ---
 title: マネージド ディスクのバースト
 description: Azure ディスクと Azure 仮想マシンのディスク バーストについて説明します。
-author: albecker1
-ms.author: albecker
-ms.date: 06/03/2021
+author: roygara
+ms.author: rogarana
+ms.date: 06/29/2021
 ms.topic: conceptual
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f9fd7d892eea43edf71da212fdba8cc1ac11c798
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 6af3d66afe107bae470f4081407f2293fe04f0fb
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528323"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356968"
 ---
 # <a name="managed-disk-bursting"></a>マネージド ディスクのバースト
 
@@ -31,8 +31,8 @@ Azure VM のバーストとディスク リソースのバーストは互いに�
 
 現在、バーストできるマネージド ディスクの種類は、[Premium SSD](disks-types.md#premium-ssd)、[Standard SSD](disks-types.md#standard-ssd) の 2 種類です。 その他のディスクの種類は、現在バーストできません。 ディスクのバーストには、次の 2 つのモデルがあります。
 
-- オンデマンドのバースト モデル (プレビュー)。ディスクのニーズが現在の容量を超えるたびに、ディスクがバーストします。 このモデルでは、ディスクがバーストするたびに追加料金が発生します。 クレジットに含まれないバーストは、512 GiB を超えるサイズのディスクでのみ使用できます。
-- クレジットベース モデル。クレジット バケットにバースト クレジットが累積されている場合にのみ、ディスクがバーストします。 このモデルでは、ディスクのバースト時に追加料金は発生しません。 クレジットベースのバーストは、512 GiB 以下のディスクでのみ使用できます。
+- オンデマンドのバースト モデル (プレビュー)。ディスクのニーズが現在の容量を超えるたびに、ディスクがバーストします。 このモデルでは、ディスクがバーストするたびに追加料金が発生します。 オンデマンド バーストは 512 GiB より大きい Premium SSD でのみ使用できます。
+- クレジットベース モデル。クレジット バケットにバースト クレジットが累積されている場合にのみ、ディスクがバーストします。 このモデルでは、ディスクのバースト時に追加料金は発生しません。 クレジットベース バーストは、512 GiB 以下の Premium および Standard SSD でのみ使用できます。
 
 Azure [Premium SSD](disks-types.md#premium-ssd) ではいずれかのバースト モデルを使用できますが、[標準の SSD](disks-types.md#standard-ssd) は現在、クレジットベースのバーストのみを提供しています。
 
@@ -42,12 +42,13 @@ Azure [Premium SSD](disks-types.md#premium-ssd) ではいずれかのバース�
 |---------|---------|---------|---------|
 | **シナリオ**|短期的なスケーリング (30 分以下) に最適です。|短期的なスケーリング (時間制限なし) に最適です。|ワークロードが継続的にバーストで実行される場合に最適です。|
 |**コスト**     |Free         |コストは変動します。詳細については、[課金](#billing)に関するセクションをご覧ください。        |各パフォーマンス レベルのコストは固定です。詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。         |
-|**可用性**     |512 GiB 以下の Premium SSD でのみ使用できます。         |512 GiB を超える Premium SSD でのみ使用できます。         |すべての Premium SSD サイズで使用できます。         |
+|**可用性**     |512 GiB 以下の Premium および Standard SSD でのみ使用できます。         |512 GiB を超える Premium SSD でのみ使用できます。         |すべての Premium SSD サイズで使用できます。         |
 |**有効化**     |対象のディスクでは既定で有効になっています。         |ユーザーが有効にする必要があります。         |ユーザーが手動でレベルを変更する必要があります。         |
 
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting-2.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-オンデマンド バーストを有効にするには、「[オンデマンド バーストを有効にする](disks-enable-bursting.md)」をご覧ください。
-バースト リソースに関する分析情報を得る方法については、[ディスク バーストのメトリック](disks-metrics.md)に関する記事をご覧ください。
+- オンデマンド バーストを有効にするには、「[オンデマンド バーストを有効にする](disks-enable-bursting.md)」をご覧ください。
+- バースト リソースに関する分析情報を得る方法については、[ディスク バーストのメトリック](disks-metrics.md)に関する記事をご覧ください。
+- 該当するディスク サイズでそれぞれバーストできる正確な量については、「[VM ディスクのスケーラビリティおよびパフォーマンスの目標](disks-scalability-targets.md)」を参照してください。

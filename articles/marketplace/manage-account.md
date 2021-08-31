@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: fa09a03a9ffda04e09bbd5708e97334304013078
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 2bd5ae6696c5ce1c2d4ea3be974245fde1053b71
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006583"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416292"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "112006583"
 - 所有者
 - 管理者
 
-[パートナー センター アカウントの作成](./create-account.md)したら、[商業マーケットプレース ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2165290)を使用してアカウントとオファーを管理できるようになります。
+[パートナー センター アカウントの作成](./create-account.md)したら、[商業マーケットプレース ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2166002)を使用してアカウントとオファーを管理できるようになります。
 
 ## <a name="access-your-account-settings"></a>アカウント設定にアクセスする
 

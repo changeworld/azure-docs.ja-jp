@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 06/02/2021
-ms.openlocfilehash: 44a31ee5fc8118ad163b5edb582b2a182b75dd3e
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 07/22/2021
+ms.openlocfilehash: 2ff120fbc95fc96bf39f1648f14a5bdf75ee0db2
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525014"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601156"
 ---
 # <a name="create-a-virtual-machine-using-your-own-image"></a>独自のイメージを使用して仮想マシンを作成する
 
@@ -35,13 +35,13 @@ VHD を Azure 共有イメージ ギャラリーにアップロードします�
 
 ## <a name="set-the-right-permissions"></a>適切なアクセス許可の選択
 
-お使いのパートナー センターアカウントがサブスクリプションをホストしている共有イメージギャラリーの所有者であれば、それ以外のアクセス許可は必要ありません。
+お使いのパートナー センター アカウントが、Shared Image Gallery をホストしているサブスクリプションの所有者であれば、それ以外のアクセス許可は必要ありません。
 
 サブスクリプションへの読み取りアクセス権のみを持っている場合は、次の 2 つのオプションのいずれかを使用します。
 
-### <a name="option-one--ask-the-owner-to-grant-owner-permission"></a>オプション 1 – 所有者に所有者のアクセス許可を付与する
+### <a name="option-one--ask-the-owner-to-grant-owner-permission"></a>オプション 1 – 所有者に所有者のアクセス許可を付与するよう依頼する
 
-所有者に所有者のアクセス許可を付与する手順:
+所有者が所有者のアクセス許可を付与するための手順:
 
 1. Azure Shared Image Gallery (SIG) にアクセスします。
 2. 左側のパネルで **[アクセス制御 (IAM)]** を選択します。
@@ -54,13 +54,13 @@ VHD を Azure 共有イメージ ギャラリーにアップロードします�
 
 ### <a name="option-two--run-a-command"></a>オプション 2 – コマンドを実行する
 
-所有者にこれらのコマンドのいずれかを実行するよう依頼します (どちらの場合も、共有イメージ ギャラリーを作成したサブスクリプションの SusbscriptionId を使用します)。
+所有者にこれらのコマンドのいずれかを実行するよう依頼します (どちらの場合も、Shared Image Gallery を作成したサブスクリプションの SusbscriptionId を使用します)。
 
 ```azurecli
 az login
 az provider register --namespace Microsoft.PartnerCenterIngestion --subscription {subscriptionId}
 ```
- 
+
 ```powershell
 Connect-AzAccount
 Select-AzSubscription -SubscriptionId {subscriptionId}
@@ -68,10 +68,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.PartnerCenterIngestion
 ```
 
 > [!NOTE]
-> パートナー センターで SIG イメージを公開できるようになったため、SAS URI を生成する必要はありません。 ただし、それでも SAS URI の生成手順を参照する必要がある場合は、「[VM イメージの SAS URI を生成する方法](azure-vm-get-sas-uri.md)」を参照してください。
+> API を使用しなくてもパートナー センターで Shared Image Gallery (SIG) イメージを公開できるようになったため、SAS URI を生成する必要はありません。 <br/> <br/>API を使用して公開 "*している*" 場合、SIG を使用する代わりに SAS URI を生成する必要があります。[VM イメージのために SAS URI を生成する](azure-vm-get-sas-uri.md)方法に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 - [お使いの VM イメージをテストし](azure-vm-image-test.md)、それが Azure Marketplace の公開要件を満たしていることを確認します (オプション)。
-- VM イメージをテストしない場合は、 [パートナー センター](https://partner.microsoft.com/)にサインインし、SIG イメージを公開します。
-- お使いの Azure ベースの新しい VHD の作成で問題が発生した場合は、[Azure Marketplace の VM に関する FAQ](azure-vm-create-faq.md) を参照してください。
+- VM イメージをテストしない場合は、 [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165935)にサインインし、SIG イメージを公開します。
+- お使いの Azure ベースの新しい VHD の作成で問題が発生した場合は、[Azure Marketplace の VM に関する FAQ](azure-vm-create-faq.yml) を参照してください。
