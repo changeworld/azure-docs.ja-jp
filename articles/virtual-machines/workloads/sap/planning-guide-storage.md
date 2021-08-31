@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/26/2021
+ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c76ffbbaf6bbbb2afb5d84e92b6fe9ce04dc4a30
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0af6df954dda4e5af6335776b1f93f929da5834e
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128705"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323724"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP ワークロードの Azure Storage の種類
 Azure には、機能、スループット、待機時間、価格が大幅に異なるさまざまな種類のストレージがあります。 ストレージの種類の中には、SAP シナリオでは使用できないものや、制限付きで使用できるものがあります。 一方、いくつかの Azure Storage の種類が、特定の SAP ワークロードのシナリオ用として適切であるか、または最適化されています。 特に SAP HANA に関して、一部の Azure Storage の種類は SAP HANA での使用の認定を受けています。 このドキュメントでは、さまざまな種類のストレージを取り上げて、SAP ワークロードと SAP コンポーネントに対する機能と使用可能性について説明します。
@@ -86,9 +86,9 @@ Microsoft の参照アーキテクチャでは、SQL Server Always On、HANA Sys
 | DBMS ログ ボリューム (SAP HANA) M または Mv2 VM ファミリ | サポート対象外 | サポート対象外 | 推奨<sup>1</sup> | 推奨 | 推奨<sup>2</sup> | 
 | DBMS データ ボリューム (SAP HANA) Esv3 または Edsv4 VM ファミリ | サポート対象外 | サポート対象外 | 推奨 | 推奨 | 推奨<sup>2</sup> |
 | DBMS ログ ボリューム (SAP HANA) Esv3 または Edsv4 VM ファミリ | サポート対象外 | サポート対象外 | サポート対象外 | 推奨 | 推奨<sup>2</sup> | 
-| DBMS データ ボリューム (HANA 以外) | サポート対象外 | 制限付き適合 (非運用) | 推奨 | 推奨 | Oracle Linux の特定の Oracle リリースのみ |
-| DBMS ログ ボリューム (HANA 以外) M または Mv2 VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 推奨<sup>1</sup> | 推奨 | Oracle Linux の特定の Oracle リリースのみ |
-| DBMS ログ ボリューム (HANA 以外) M または Mv2 以外の VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 中規模までのワークロードに適合 | 推奨 | Oracle Linux の特定の Oracle リリースのみ |
+| DBMS データ ボリューム (HANA 以外) | サポート対象外 | 制限付き適合 (非運用) | 推奨 | 推奨 | Oracle Linux および Db2 on Linux の特定の Oracle リリースのみ |
+| DBMS ログ ボリューム (HANA 以外) M または Mv2 VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 推奨<sup>1</sup> | 推奨 | Oracle Linux および Db2 on Linux の特定の Oracle リリースのみ |
+| DBMS ログ ボリューム (HANA 以外) M または Mv2 以外の VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 中規模までのワークロードに適合 | 推奨 | Oracle Linux および Db2 on Linux の特定の Oracle リリースのみ |
 
 
 <sup>1</sup> ログまたは再実行ログ ボリューム用の M または Mv2 VM ファミリでは [Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を使用します。<sup>2</sup> ANF を使用するには ANF 上に /hana/log に加えて /hana/data も必要です。 
@@ -105,7 +105,7 @@ Microsoft の参照アーキテクチャでは、SQL Server Always On、HANA Sys
 | 可用性セット使用時の異なるストレージ クラスターへのディスクの割り当て | マネージド ディスクを使用 | マネージド ディスクを使用 | マネージド ディスクを使用 | 可用性セットを使用してデプロイした VM ではサポートされていないディスクの種類 | いいえ<sup>3</sup> |
 | Availability Zones を使用した配置 | はい | はい | はい | はい | Microsoft の関与が必要 |
 | ゾーン冗長 | マネージド ディスク非対応 | マネージド ディスク非対応 | マネージド ディスク非対応 | no | no |
-| geo 冗長 | マネージド ディスク非対応 | マネージド ディスク非対応 | no | no | no |
+| geo 冗長 | マネージド ディスク非対応 | マネージド ディスク非対応 | no | Ｘ | no |
 
 
 <sup>1</sup> ログまたは再実行ログ ボリューム用の M または Mv2 VM ファミリでは [Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を使用します。
@@ -241,6 +241,7 @@ SAP ワークロードの機能マトリックスは次のようになります�
     - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)
     - [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](./high-availability-guide-rhel-netapp-files.md)
 - /hana/data および /hana/log ボリューム用に NFS v4.1 共有を使用し、かつ (または) /hana/shared ボリューム用に NFS v4.1 か NFS v3 ボリュームを使用した SAP HANA デプロイ (「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」を参照)
+- Suse または Red Hat Linux ゲスト OS の IBM Db2
 - Oracle データと redo ログ ボリューム用に [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) を使用した Oracle Linux ゲスト OS での Oracle のデプロイ。 詳細については、「[SAP ワークロード用の Azure Virtual Machines Oracle DBMS のデプロイ](./dbms_guide_oracle.md)」の記事を参照してください
 
 > [!NOTE]
