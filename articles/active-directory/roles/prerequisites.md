@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 05/13/2021
+ms.date: 08/06/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b67f3514246bcac1185370393ac469f8c96cf3
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ef457948a28d9d07464b96bfaea4df6a6f2a8723
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747855"
 ---
 # <a name="prerequisites-to-use-powershell-or-graph-explorer-for-azure-ad-roles"></a>Azure AD ロール用に PowerShell または Graph エクスプローラーを使用するための前提条件
 
@@ -35,7 +35,7 @@ PowerShell または Graph エクスプローラーを使用して Azure Active 
 
 以下のモジュールがインストールされている必要があります。
 
-- [AzureAD](https://www.powershellgallery.com/packages/AzureAD) バージョン 2.0.2.130 以降
+- [AzureAD](https://www.powershellgallery.com/packages/AzureAD) バージョン 2.0.2.137 以降
 
 
 #### <a name="check-azuread-version"></a>AzureAD バージョンを確認する
@@ -51,7 +51,7 @@ Get-InstalledModule -Name AzureAD
 ```powershell
 Version    Name                                Repository           Description
 -------    ----                                ----------           -----------
-2.0.2.130  AzureAD                             PSGallery            Azure Active Directory V2 General Availability M...
+2.0.2.137  AzureAD                             PSGallery            Azure Active Directory V2 General Availability M...
 ```
 
 #### <a name="install-azuread"></a>AzureAD のインストール
@@ -97,7 +97,7 @@ AzureAD を使用するには、次の手順に従って、現在のセッショ
     ```powershell
     ModuleType Version    Name                                ExportedCommands
     ---------- -------    ----                                ----------------
-    Binary     2.0.2.130  AzureAD                             {Add-AzureADApplicationOwner, Add-AzureADDeviceRegisteredO...
+    Binary     2.0.2.137  AzureAD                             {Add-AzureADApplicationOwner, Add-AzureADDeviceRegisteredO...
     ```
 
 ## <a name="azureadpreview-module"></a>AzureADPreview モジュール
@@ -111,7 +111,7 @@ AzureAD を使用するには、次の手順に従って、現在のセッショ
 
 以下のモジュールがインストールされている必要があります。
 
-- [AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview) バージョン 2.0.2.129 以降
+- [AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview) バージョン 2.0.2.138 以降
 
 
 #### <a name="check-azureadpreview-version"></a>AzureADPreview バージョンの確認
@@ -127,7 +127,7 @@ Get-InstalledModule -Name AzureADPreview
 ```powershell
 Version    Name                                Repository           Description
 -------    ----                                ----------           -----------
-2.0.2.129  AzureADPreview                      PSGallery            Azure Active Directory V2 Preview Module. ...
+2.0.2.138  AzureADPreview                      PSGallery            Azure Active Directory V2 Preview Module. ...
 ```
 
 #### <a name="install-azureadpreview"></a>AzureADPreview のインストール
@@ -156,7 +156,7 @@ AzureADPreview を使用するには、次の手順に従って、現在のセ�
     Get-Module -Name AzureADPreview
     ```
 
-1. 前の手順で出力が表示されない場合は、[Import-Module](/powershell/module/powershellget/import-module) を使用して AzureADPreview をインポートします。 `-Force` パラメーターは、読み込まれたモジュールを削除し、再度インポートします。
+1. 前の手順で出力が表示されない場合は、[Import-Module](/powershell/module/microsoft.powershell.core/import-module) を使用して AzureADPreview をインポートします。 `-Force` パラメーターは、読み込まれたモジュールを削除し、再度インポートします。
 
     ```powershell
     Import-Module -Name AzureADPreview -Force
@@ -173,22 +173,22 @@ AzureADPreview を使用するには、次の手順に従って、現在のセ�
     ```powershell
     ModuleType Version    Name                                ExportedCommands
     ---------- -------    ----                                ----------------
-    Binary     2.0.2.129  AzureADPreview                      {Add-AzureADAdministrativeUnitMember, Add-AzureADApplicati...
+    Binary     2.0.2.138  AzureADPreview                      {Add-AzureADAdministrativeUnitMember, Add-AzureADApplicati...
     ```
 
 ## <a name="graph-explorer"></a>グラフ エクスプローラー
 
 [Microsoft Graph API](/graph/overview) と [Graph エクスプローラー](/graph/graph-explorer/graph-explorer-overview)を使用して Azure AD ロールを管理するには、次の操作を行う必要があります。
 
-1. Azure portal で、**Azure Active Directory** を開きます。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 
-1. **[エンタープライズ アプリケーション]** をクリックします。
+1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
 
-1. アプリケーションの一覧で **[Graph エクスプローラー]** を見つけてクリックします。
+1. アプリケーションの一覧で、 **[Graph エクスプローラー]** を見つけて選択します。
 
-1. **[アクセス許可]** をクリックします。
+1. **[アクセス許可]** を選択します。
 
-1. **[Graph エクスプローラーに管理者の同意を与えます]** をクリックします。
+1. **[Graph エクスプローラーに管理者の同意を与えます]** を選択します。
 
     ![[Graph エクスプローラーに管理者の同意を与えます] リンクを示すスクリーンショット。](./media/prerequisites/select-graph-explorer.png)
 

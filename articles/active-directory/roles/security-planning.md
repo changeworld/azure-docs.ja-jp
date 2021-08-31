@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe8024650909ef3f48057c572fba2a70f2d611e2
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0e45240d9d1a957765dfd362bf612ae2ea93919c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796395"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744012"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -66,13 +66,13 @@ ms.locfileid: "110796395"
 
 ### <a name="general-preparation"></a>一般的な準備
 
-#### <a name="turn-on-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を有効にする
+#### <a name="use-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management を使用する
 
-Azure AD 運用環境では、Azure AD Privileged Identity Management (PIM) を有効にすることをお勧めします。 PIM を有効にすると、特権アクセス ロールの変更についての電子メール通知を受け取るようになります。 通知により、高度な特権ロールに他のユーザーが追加された場合に早期警告を受け取れます。
+Azure AD 運用環境で、Azure AD Privileged Identity Management (PIM) の使用を開始することをお勧めします。 PIM の使用を開始すると、特権アクセス ロールの変更についての電子メール通知を受け取るようになります。 通知により、高度な特権ロールに他のユーザーが追加された場合に早期警告を受け取れます。
 
 Azure AD Privileged Identity Management は、Azure AD Premium P2 または EMS E5 に含まれています。 オンプレミスおよびクラウドのアプリケーションとリソースへのアクセスを保護するには、[Enterprise Mobility + Security の 90 日間無料試用版](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)にサインアップしてください。 Azure AD Privileged Identity Management と Azure AD Identity Protection では、Azure AD のレポート、監査、アラートを使用してセキュリティ アクティビティが監視されます。
 
-Azure AD Privileged Identity Management を有効にしたら、次のようにします。
+Azure AD Privileged Identity Management の使用開始後:
 
 1. Azure AD 運用組織の全体管理者であるアカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -86,7 +86,7 @@ Azure AD Privileged Identity Management を有効にしたら、次のように�
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>高度な特権ロールに属するアカウントを識別および分類する
 
-Azure AD Privileged Identity Management を有効にした後、次の Azure AD のロールに属しているユーザーを表示します。
+Azure AD Privileged Identity Management の使用を開始した後、次の Azure AD のロールに属しているユーザーを表示します。
 
 * グローバル管理者
 * 特権ロール管理者
@@ -425,7 +425,7 @@ Microsoft 365 を使用していない場合は、この手順をスキップし
 
 8. 潜在的なフォレンジック調査と法的調査のために関連ログのバックアップを保存してください。
 
-Microsoft Office 365 がセキュリティ インシデントを処理する方法について詳しくは、[Microsoft Office 365 でのセキュリティ インシデント管理](https://aka.ms/Office365SIM)に関するドキュメントをご覧ください。
+Microsoft Office 365 がセキュリティ インシデントを処理する方法について詳しくは、[Microsoft Office 365 でのセキュリティ インシデント管理](/compliance/assurance/assurance-security-incident-management)に関するドキュメントをご覧ください。
 
 ## <a name="faq-answers-for-securing-privileged-access"></a>よくあるご質問: 特権アクセスのセキュリティ保護に関する回答  
 

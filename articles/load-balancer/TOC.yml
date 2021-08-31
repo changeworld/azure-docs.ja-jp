@@ -27,8 +27,6 @@
   expanded: true
 - name: チュートリアル
   items:
-    - name: 可用性ゾーン間で VM の負荷分散を行う
-      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: 複数の可用性セットを使用して VM を負荷分散する
@@ -59,6 +57,8 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Python
+      href: python-samples.md
 - name: 概念
   items:
     - name: ポータルの設定
@@ -115,6 +115,8 @@
       href: instance-metadata-service-load-balancer.md
 - name: 操作方法
   items:
+    - name: ロード バランサー規則を管理する
+      href: manage-rules-how-to.md
     - name: 仮想マシン スケール セット
       items:
         - name: 仮想マシン スケール セットで使用される既存の Azure Load Balancer を更新または削除する
@@ -164,10 +166,10 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部ロード バランサー - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: 送信専用のロード バランサーの構成
-      href: egress-only.md
     - name: Azure IMDS を使用したメタデータの取得
       href: howto-load-balancer-imds.md
+    - name: 送信専用のロード バランサーの構成
+      href: egress-only.md
     - name: トラブルシューティング
       items:
         - name: Azure Load Balancer のトラブルシューティング
@@ -193,7 +195,7 @@
     - name: Java
       href: /java/api/com.microsoft.azure.management.network
     - name: Node.js
-      href: /javascript/api/@azure/arm-network/loadbalancers
+      href: /javascript/api/overview/azure/arm-network-readme
     - name: Ruby
       href: 'https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2020_03_01/LoadBalancers'
     - name: Python

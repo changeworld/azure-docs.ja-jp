@@ -2,18 +2,19 @@
 title: Azure Data Factory における継続的インテグレーションとデリバリー
 description: 継続的インテグレーションとデリバリーを使用して Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動する方法について説明します。
 ms.service: data-factory
+ms.subservice: ci-cd
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b8502363d7868b32bf2576742ca443b673c5123
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d85659730ae78277056ec88c8a35c545646b38ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971977"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738269"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -97,9 +98,9 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
     d.  **[Action]\(アクション\)** 一覧で、 **[Create or update resource group]\(リソース グループの作成または更新\)** を選択します。
 
-    e.  **[テンプレート]** ボックスの横にある省略記号ボタン ( **[…]** ) を選択します。 構成されている Git リポジトリの発行ブランチで生成される Azure Resource Manager テンプレートを参照します。 ファイル `ARMTemplateForFactory.json` は adf_publish ブランチの <FactoryName> フォルダーで探します。
+    e.  **[テンプレート]** ボックスの横にある省略記号ボタン ( **[…]** ) を選択します。 構成されている Git リポジトリの発行ブランチで生成される Azure Resource Manager テンプレートを参照します。 adf_publish ブランチの &lt;FactoryName&gt; フォルダーで、ファイル `ARMTemplateForFactory.json` を探します。
 
-    f.  **[…]** を選択します ( **[Template parameters]\(テンプレート パラメーター\)** ボックスの横にあります)。これにより、パラメーター ファイルを選択します。 ファイル `ARMTemplateParametersForFactory.json` は adf_publish ブランチの <FactoryName> フォルダーで探します。
+    f.  **[…]** を選択します ( **[Template parameters]\(テンプレート パラメーター\)** ボックスの横にあります)。これにより、パラメーター ファイルを選択します。 adf_publish ブランチの &gt;FactoryName&lt; フォルダーで、ファイル `ARMTemplateParametersForFactory.json` を探します。
 
     g.  **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** ボックスの横にあります)。ターゲットのデータ ファクトリに望ましいパラメーター値を入力します。 Azure Key Vault から取得した資格情報の場合は、シークレットの名前を二重引用符で囲んで入力します。 たとえば、シークレットの名前が cred1 の場合は、この値に「 **"$ (cred1)"** 」と入力します。
 

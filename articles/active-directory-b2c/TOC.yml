@@ -430,6 +430,8 @@
           displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: Azure Pipelines を使用したデプロイ
           href: deploy-custom-policies-devops.md
+        - name: GitHub Actions を使用したデプロイ
+          href: deploy-custom-policies-github-action.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
         - name: PowerShell を使用したポリシーの管理
           href: manage-custom-policies-powershell.md

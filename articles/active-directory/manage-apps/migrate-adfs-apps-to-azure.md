@@ -2,21 +2,21 @@
 title: アプリケーション認証を AD FS から Azure Active Directory に移動する
 description: Azure Active Directory を使用して Active Directory フェデレーション サービス (AD FS) を置き換え、ユーザーがすべてのアプリケーションにシングル サインオンできるようにする方法について説明します。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: mtillman
-ms.reviewer: baselden
-ms.openlocfilehash: 616550188687823438187e1e09c90d5d3c6c6835
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 6633d7a6ed7def1a2c3ee7f0262c16b106275bfa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078817"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742904"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -135,7 +135,7 @@ AD FS と Azure AD はどちらもトークン暗号化を提供します。こ�
 Azure AD SAML トークン暗号化とその構成方法については、「[Azure AD SAML トークン暗号化の構成方法](howto-saml-token-encryption.md)」を参照してください。  
 
 > [!NOTE]
-> トークン暗号化は、Azure Active Directory (Azure AD) のプレミアム機能です。 Azure AD のエディション、機能、および価格について詳しくは、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+> トークン暗号化は、Azure Active Directory (Azure AD) のプレミアム機能です。 Azure AD のエディション、機能、および価格について詳しくは、[Azure AD の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)に関するページをご覧ください。
 
 ### <a name="apps-and-configurations-that-can-be-moved-today"></a>今すぐ移動できるアプリと構成
 
@@ -154,8 +154,8 @@ Azure AD SAML トークン暗号化とその構成方法については、「[Az
 * 複数の応答 URL エンドポイントを持つアプリ。 これらは、PowerShell を使用して Azure AD で、または Azure portal インターフェイスで構成します。
 * SAML バージョン 1.1 のトークンを必要とする SharePoint アプリなどの WS-Federation アプリ。 これらは、PowerShell を使用して手動で構成できます。 また、ギャラリーからの SharePoint アプリケーションと SAML 1.1 アプリケーションに対しては、事前に統合された汎用テンプレートを追加することもできます。 SAML 2.0 プロトコルがサポートされています。
 * 複雑な要求発行変換規則。 サポートされる要求マッピングの詳細については、以下を参照してください。
-   *  [Azure Active Directory における要求のマッピング](../develop/active-directory-claims-mapping.md)。
-   * [Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)。
+  * [Azure Active Directory における要求のマッピング](../develop/active-directory-claims-mapping.md)。
+  * [Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)。
 
 ### <a name="apps-and-configurations-not-supported-in-azure-ad-today"></a>Azure AD で現時点ではサポートされていないアプリと構成
 
@@ -308,7 +308,7 @@ Azure AD でユーザーまたはグループに対して MFA 規則を指定し
 
     ‎![アクセス権を付与できる [許可] ウィンドウを示すスクリーンショット。](media/migrate-adfs-apps-to-azure/mfa-users-groups.png)
 
- #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>例 2:未登録のデバイスに MFA を適用する
+#### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>例 2:未登録のデバイスに MFA を適用する
 
 Azure AD で未登録のデバイスに対する MFA 規則を指定します。
 

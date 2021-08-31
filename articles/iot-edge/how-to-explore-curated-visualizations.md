@@ -2,25 +2,27 @@
 title: キュレーションされた視覚化を探索する - Azure IoT Edge
 description: Azure ブックを使用して、IoT Edge の組み込みのメトリックを視覚化して探索します
 author: veyalla
-manager: philmea
 ms.author: veyalla
-ms.date: 06/08/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0ca0d1fb7890f1a1a94419f58587f3a98957f41c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 7be7260e993f9cc95b542406767d6794f18836f8
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904521"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015656"
 ---
 # <a name="explore-curated-visualizations-preview"></a>キュレーションされた視覚化を探索する (プレビュー)
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Azure Monitor ブックを使用して、Azure Portal で IoT Edge デバイスから収集されたメトリックを視覚化して探索できます。 IoT Edge デバイス用にキュレーションされた監視ブックは、パブリック テンプレートの形式で提供されます。このテンプレートは、([監視] セクションの下の) **[ブック]** ページの **[IoT Hub]** ブレードでアクセスできます。
+Azure Monitor ブックを使用して、Azure Portal で IoT Edge デバイスから収集されたメトリックを視覚化して探索できます。 Azure IoT Edge デバイス用のキュレーションされた監視ブックは、パブリック テンプレートの形式で提供されています。
+
+* IoT Hub に接続されているデバイスの場合、Azure portal の **[IoT Hub]** ブレードから、 **[監視]** セクションの **[ブック]** ページに移動します。
+* IoT Central に接続されているデバイスの場合、Azure portal の **[IoT Central]** ブレードから、 **[監視]** セクションの **[ブック]** ページに移動します。
 
 キュレーション ブックでは、IoT Edge ランタイムの[組み込みのメトリック](how-to-access-built-in-metrics.md)が使用されます。 これらのビューでは、ワークロード モジュールのメトリック インストルメンテーションは必要ではありません。
 
@@ -30,15 +32,15 @@ IoT 用の Azure Monitor ブックは、メトリックの視覚化を今すぐ�
 
 キュレーション ブックにアクセスするには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、IoT Hub に移動します。
+1. [Azure portal](https://portal.azure.com) にサインインし、IoT Hub または IoT Central アプリケーションに移動します。
 
 1. メニューの **[監視]** セクションから **[ブック]** を選択します。
 
 1. パブリック テンプレートの一覧から探索するブックを選択します。
 
-   * **IoT Edge フリート ビュー**: デバイスのフリートを監視し、特定のデバイスをドリルダウンして正常性スナップショットを表示します。
-   * **IoT Edge デバイスの詳細**: IoT Edge デバイス上のメッセージング、モジュール、ホスト コンポーネントに関するデバイスの詳細を視覚化します。
-   * **IoT Edge の正常性スナップショット**: 6 つの一般的なパフォーマンス メトリックに基づいてデバイスの正常性を表示します。 正常性スナップショット ブックにアクセスするには、フリート ビュー ブックから開始し、表示する特定のデバイスを選択します。 フリート ビュー ブックでは、必要なパラメーターが正常性スナップショット ビューに渡されます。
+  * **IoT Edge フリート ビュー**: デバイスのフリートを監視し、特定のデバイスをドリルダウンして正常性スナップショットを表示します。
+  * **IoT Edge デバイスの詳細**: IoT Edge デバイス上のメッセージング、モジュール、ホスト コンポーネントに関するデバイスの詳細を視覚化します。
+  * **IoT Edge の正常性スナップショット**: 6 つの一般的なパフォーマンス メトリックに基づいてデバイスの正常性を表示します。 正常性スナップショット ブックにアクセスするには、フリート ビュー ブックから開始し、表示する特定のデバイスを選択します。 フリート ビュー ブックでは、必要なパラメーターが正常性スナップショット ビューに渡されます。
 
 ブックを独自に探索することも、次のセクションを使用して、各ブックで提供されるデータと視覚化のプレビューを取得することもできます。
 
@@ -55,7 +57,7 @@ IoT 用の Azure Monitor ブックは、メトリックの視覚化を今すぐ�
 
 :::image type="content" source="./media/how-to-explore-curated-visualizations/how-to-explore-fleet-view.gif" alt-text="フリート ビュー ブックの [デバイス] セクション。" lightbox="./media/how-to-explore-curated-visualizations/how-to-explore-fleet-view.gif":::
 
-**[デバイス]** ビューで、メトリックを送信するアクティブなデバイスの概要を確認します。 このビューには、現在の IoT Hub に関連付けられているデバイスが表示されます。
+**[デバイス]** ビューで、メトリックを送信するアクティブなデバイスの概要を確認します。 このビューには、現在の IoT Hub または IoT Central アプリケーションに関連するデバイスが表示されます。
 
 右側には、送信されたローカル メッセージとアップストリーム メッセージが表示された複合バーを含むデバイスの一覧があります。 デバイス名で一覧をフィルター処理し、デバイス名のリンクをクリックすると、その詳細なメトリックを表示できます。
 
@@ -65,7 +67,7 @@ IoT 用の Azure Monitor ブックは、メトリックの視覚化を今すぐ�
 
 :::image type="content" source="./media/how-to-explore-curated-visualizations/how-to-explore-alerts.gif" alt-text="フリート ビュー ブックの [警告] セクション。" lightbox="./media/how-to-explore-curated-visualizations/how-to-explore-alerts.gif":::
 
-**[警告]** ビューで、[事前に作成されたアラート ルール](how-to-create-alerts.md)から生成されたアラートを確認します。 このビューでは、複数の IoT Hub のアラートを表示できます。
+**[警告]** ビューで、[事前に作成されたアラート ルール](how-to-create-alerts.md)から生成されたアラートを確認します。 このビューでは、複数の IoT Hub または IoT Central アプリケーションからのアラートを表示できます。
 
 左側には、アラートの重大度とその数の一覧があります。 右側には、リージョンごとのアラートの合計を含むマップがあります。
 
@@ -147,7 +149,7 @@ IoT 用の Azure Monitor ブックは、メトリックの視覚化を今すぐ�
 
 ## <a name="customize-workbooks"></a>ブックをカスタマイズする
 
-[Azure Monitor ブック](../azure-monitor/visualize/workbooks-overview.md)はさまざまにカスタマイズできます。 パブリック テンプレートは、要件に合わせて編集できます。 すべての視覚化は、[InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) テーブルに対するリソース中心の [KQL](https://aka.ms/kql) クエリによって駆動されます。 正常性しきい値を編集する次の例を参照してください。
+[Azure Monitor ブック](../azure-monitor/visualize/workbooks-overview.md)はさまざまにカスタマイズできます。 パブリック テンプレートは、要件に合わせて編集できます。 すべての視覚化は、[InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) テーブルに対するリソース中心の [KQL](/azure/data-explorer/kusto/query/) クエリによって駆動されます。 正常性しきい値を編集する次の例を参照してください。
 
 ブックのカスタマイズを開始するには、最初に編集モードに入ります。 ブックのメニュー バーにある **[編集]** ボタンを選択します。
 

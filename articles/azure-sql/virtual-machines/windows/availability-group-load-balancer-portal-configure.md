@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8c914b2b6db65e6956db830e16351f13144ab5aa
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 4fe42db21a08a398f5518d794b897d7ce015fa66
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572205"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861825"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
 
@@ -97,7 +97,7 @@ Azure では、バックエンド アドレス プールを "*バックエンド
 
 4. **[バックエンド プールの追加]** の **[名前]** に、バックエンド プールの名前を入力します。
 
-5. **[仮想マシン]** の **[仮想マシンの追加]** を選択します。 
+5. **[仮想マシン]** の **[仮想マシンの追加]** を選択します。 VM のプライマリ IP アドレスのみを追加し、セカンダリ IP アドレスは追加しないでください。 
 
 6. **[仮想マシンの選択]** の **[可用性セットの選択]** を選択し、SQL Server 仮想マシンの追加先となる可用性セットを指定します。
 

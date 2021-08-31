@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/08/2020
+ms.date: 08/09/2021
 ms.author: rolyon
-ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fc3d614ef26235325e0b9a9e8fee68d2bf919a5
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555911"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862582"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Azure RBAC のスコープについて
 
@@ -119,6 +119,18 @@ Azure では、4 つのレベル ([管理グループ](../governance/management-
         "type": "Microsoft.Authorization/roleAssignments"
       }
     ```
+
+## <a name="scope-and-arm-templates"></a>スコープと ARM テンプレート
+
+ロールの割り当ては、"*拡張リソース*" と呼ばれる Azure Resource Manager の特殊な種類です。 拡張リソースとは、他のリソースに機能を追加するリソースです。 これらは、別のリソースの拡張機能 (子など) として常に存在します。 たとえば、サブスクリプション スコープでのロールの割り当ては、サブスクリプションの拡張リソースです。 ロールの割り当ての名前は、常に拡張するリソースの名前に `/Microsoft.Authorization/roleAssignments/{roleAssignmentId}` を加えたものになります。 Azure Resource Manager テンプレート (ARM テンプレート) を使用してロールを割り当てる場合は、通常、スコープを指定する必要はありません。 その理由は、スコープ フィールドは常に、拡張するリソースの ID になるためです。 スコープは、ロールの割り当て自体の ID から決定できます。 次の表に、ロールの割り当て ID と対応するスコープの例を示します。
+
+> [!div class="mx-tableFixed"]
+> | ロールの割り当て ID | Scope |
+> | --- | --- |
+> | `/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}` | `/subscriptions/{subscriptionId}` |
+> | `/subscriptions/{subscriptionId}/resourceGroups/Example-Storage-rg/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}` | `/subscriptions/{subscriptionId}/resourceGroups/Example-Storage-rg` |
+
+スコープと ARM テンプレートの詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](role-assignments-template.md)」を参照してください。 拡張リソースの種類の完全な一覧については、「[他のリソースの機能を拡張するリソースの種類](../azure-resource-manager/management/extension-resource-types.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,15 +1,15 @@
 ---
 title: カスタマー マネージド キーを使用してレジストリを暗号化する
 description: Azure コンテナー レジストリの保存時の暗号化、および Azure Key Vault に格納されているカスタマー マネージド キーを使用して Premium レジストリを暗号化する方法について説明します。
-ms.topic: article
-ms.date: 05/27/2021
-ms.custom: ''
-ms.openlocfilehash: 84a949e26bbf5677888185741e06139ed2d35db2
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.topic: how-to
+ms.date: 06/25/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 4258aa4e14802ba500987da419c4314e6610a210
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412747"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735507"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを暗号化する
 
@@ -117,7 +117,9 @@ keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key
 
 ### <a name="enable-key-vault-access"></a>キー コンテナーへのアクセスを有効にする
 
-ID でキー コンテナーにアクセスできるように、キー コンテナーのポリシーを構成します。 次の [az keyvault set-policy][az-keyvault-set-policy] コマンドでは、前に作成して環境変数に格納したマネージ ID のプリンシパル ID を渡します。 キーのアクセス許可を **get**、**unwrapKey**、**wrapKey** に設定します。  
+#### <a name="enable-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを有効にする
+
+1 つのオプションは、ID でキー コンテナーにアクセスできるようにキー コンテナーのポリシーを構成することです。 次の [az keyvault set-policy][az-keyvault-set-policy] コマンドでは、前に作成して環境変数に格納したマネージ ID のプリンシパル ID を渡します。 キーのアクセス許可を **get**、**unwrapKey**、**wrapKey** に設定します。  
 
 ```azurecli
 az keyvault set-policy \
@@ -125,7 +127,9 @@ az keyvault set-policy \
   --name <key-vault-name> \
   --object-id $identityPrincipalID \
   --key-permissions get unwrapKey wrapKey
+
 ```
+#### <a name="assign-rbac-role"></a>RBAC ロールを割り当てる
 
 または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) コマンドを使用して、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
 
@@ -257,7 +261,9 @@ Azure portal で、ユーザー割り当てによる [Azure リソース用マ�
 
 ### <a name="enable-key-vault-access"></a>キー コンテナーへのアクセスを有効にする
 
-ID でキー コンテナーにアクセスできるように、キー コンテナーのポリシーを構成します。
+#### <a name="enable-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを有効にする
+
+1 つのオプションは、ID でキー コンテナーにアクセスできるようにキー コンテナーのポリシーを構成することです。
 
 1. お使いのキー コンテナーに移動します。
 1. **[設定]**  >  **[アクセス ポリシー] > [+ アクセス ポリシーの追加]** を選択します。
@@ -267,14 +273,11 @@ ID でキー コンテナーにアクセスできるように、キー コンテ
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="キー コンテナーのアクセス ポリシーを作成する":::
 
-または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
+#### <a name="assign-rbac-role"></a>RBAC ロールを割り当てる
 
-1. お使いのキー コンテナーに移動します。
-1. **[アクセス制御 (IAM)]**  >  **[+ 追加]**  >  **[ロールの割り当ての追加]** の順に選択します。
-1. **[ロールの割り当ての追加]** ウィンドウで、次の手順に従います。
-    1. **[Key Vault Crypto Service Encryption User]** ロールを選択します。 
-    1. **ユーザー割り当てマネージド ID** にアクセス権を割り当てます。
-    1. ユーザー割り当てマネージド ID のリソース名を選択し、 **[保存]** を選択します。
+または、Key Vault Crypto Service Encryption User ロールを、キー コンテナー スコープでユーザー割り当てマネージド ID に割り当てます。
+
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="create-key-optional"></a>キーを作成する (省略可能)
 
@@ -588,10 +591,11 @@ Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.C
 
 **ユーザー割り当て ID**
 
-ユーザー割り当て ID でこの問題が発生した場合、まず、エラー メッセージに表示されている GUID を使用して ID の再割り当てを行ってください。 次に例を示します。
+ユーザー割り当て ID でこの問題が発生した場合は、最初に [ac acr identity assign](/cli/azure/acr/identity/#az_acr_identity_assign) コマンドを使用して、ID の再割り当てを行います。 ID のリソース ID を渡すか、ID がレジストリと同じリソース グループにある場合は ID の名前を使用します。 次に例を示します。
 
 ```azurecli
-az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+az acr identity assign -n myRegistry \
+    --identities "/subscriptions/mysubscription/resourcegroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myidentity"
 ```
         
 その後、キーを変更して異なる ID を割り当てれば、元のユーザー割り当て ID を削除することができます。

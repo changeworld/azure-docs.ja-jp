@@ -12,10 +12,6 @@
           href: concepts-certificate-rotation.md
 - name: 共有ドキュメント
   items:
-    - name: データベースのデプロイ
-      items:
-        - name: GitHub のアクション
-          href: how-to-deploy-github-action.md
     - name: 移行
       items:
         - name: pg_dump と pg_restore でデータを移行する
@@ -405,6 +401,14 @@
           items:
             - name: Azure portal
               href: howto-move-regions-portal.md
+        - name: アップグレードと移行
+          items:
+            - name: メジャー バージョンのアップグレード方法
+              href: how-to-upgrade-using-dump-and-restore.md
+            - name: pg_dump と pg_restore を使用してデータをアップグレードまたは移行する
+              href: howto-migrate-using-dump-and-restore.md
+            - name: pg_dump と psql を使用してデータをアップグレードまたは移行する
+              href: howto-migrate-using-export-and-import.md
 - name: フレキシブル サーバー (プレビュー)
   expanded: true
   items:
@@ -414,6 +418,10 @@
       href: flexible-server/overview.md
     - name: リリース ノート
       href: flexible-server/release-notes.md
+    - name: 単一サーバーとフレキシブル サーバーの比較
+      href: flexible-server/concepts-compare-single-server-flexible-server.md
+    - name: フレキシブル サーバーを無料で試す
+      href: flexible-server/how-to-deploy-on-azure-free-account.md
     - name: クイックスタート
       expanded: true
       items:
@@ -428,6 +436,8 @@
               href: flexible-server/quickstart-create-server-arm-template.md
         - name: 接続とクエリ
           items:
+            - name: VNET 内のサーバーに接続する
+              href: flexible-server/quickstart-create-connect-server-vnet.md
             - name: Azure CLI
               href: flexible-server/connect-azure-cli.md
             - name: Python
@@ -501,6 +511,8 @@
                   displayName: 'query store, performance, optimize'
                 - name: クエリ ストアのベスト プラクティス
                   href: flexible-server/concepts-query-store-best-practices.md
+                - name: インテリジェント チューニング
+                  href: flexible-server/concepts-intelligent-tuning.md
         - name: レプリケーション
           href: flexible-server/concepts-logical.md
           displayName: logical decoding
@@ -514,6 +526,12 @@
               href: flexible-server/how-to-manage-server-cli.md
             - name: 接続とクエリのガイド
               href: flexible-server/how-to-connect-query-guide.md
+        - name: データベースのデプロイ
+          items:
+            - name: GitHub のアクション
+              href: how-to-deploy-github-action.md
+            - name: Azure Pipelines
+              href: flexible-server/azure-pipelines-deploy-database-task.md
         - name: 予定メンテナンス
           items:
             - name: Azure portal
@@ -594,7 +612,7 @@
       items:
         - name: サーバー グループを作成する
           items:
-            - name: Basic レベル (プレビュー)
+            - name: Basic レベル
               href: quickstart-create-hyperscale-basic-tier.md
             - name: Standard レベル
               href: quickstart-create-hyperscale-portal.md

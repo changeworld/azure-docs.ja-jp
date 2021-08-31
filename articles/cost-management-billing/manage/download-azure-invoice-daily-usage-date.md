@@ -1,31 +1,29 @@
 ---
-title: Azure の請求書と毎日の使用状況データをダウンロードする
-description: Azure の請求書と毎日の使用状況データをダウンロードまたは表示する方法について説明します。
-keywords: 請求書,請求書のダウンロード,Azure の請求書,Azure の使用状況
+title: Azure の請求書をダウンロードする
+description: Azure の請求書をダウンロードまたは表示する方法について説明します。
+keywords: 請求書,請求書のダウンロード,Azure の請求書
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 07/28/2021
 ms.author: banders
-ms.openlocfilehash: a2f4bab7f0d2f28cdefcecd82ad9a2285cd9b41a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 14183a46085ca0da60f1abb5f6ba390b9d4c334a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451911"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745415"
 ---
-# <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
+# <a name="download-or-view-your-azure-billing-invoice"></a>Azure の請求書をダウンロードまたは表示する
 
 ほとんどのサブスクリプションの場合は、請求書を [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からダウンロードするか、メールで送信することができます。 エンタープライズ契約 (EA) の Azure のお客様 (EA のお客様) の場合、お客様の組織の請求書をダウンロードすることはできません。 請求書は、登録のために請求書を受信するよう設定されているユーザーに送信されます。
 
-EA のお客様である場合や [Microsoft 顧客契約](#check-access-to-a-microsoft-customer-agreement)を結んでいる場合は、[Azure portal](https://portal.azure.com/) で使用量をダウンロードできます。
+請求書を取得するアクセス許可を持つのは、特定のロール (アカウント管理者やエンタープライズ管理者など) だけです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](manage-billing-access.md)に関するページをご覧ください。
 
-請求書と使用状況情報を取得するアクセス許可を持つのは、特定のロール (アカウント管理者やエンタープライズ管理者など) だけです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](manage-billing-access.md)に関するページをご覧ください。
-
-Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 Microsoft Customer Agreement の課金ロールの詳細については、「[課金プロファイルのロールとタスク](understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+Microsoft 顧客契約を結んでいる場合、課金情報を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 Microsoft Customer Agreement の課金ロールの詳細については、「[課金プロファイルのロールとタスク](understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -115,54 +113,6 @@ Microsoft 顧客契約を結んでいる場合は、メールの請求書の取�
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>課金プロファイルの請求書のメールでの取得をオプトアウトする
 
 上記の手順に従い、 **[オプト アウト]** をクリックすることで、メールの請求書の取得をオプトアウトできます。すべての所有者、共同作成者、閲覧者、および請求書管理者も、メールの請求書の取得からオプトアウトされます。 閲覧者の場合は、メールの請求書の基本設定を変更できません。
-
-## <a name="download-usage-in-azure-portal"></a>Azure portal で使用状況をダウンロードする
-
- ほとんどのサブスクリプションでは、次の手順に従って、毎日の使用状況を確認してください。
-
-1. Azure portal の [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ページから、[請求書へのアクセス権を持つユーザー](manage-billing-access.md)として自分のサブスクリプションを選択します。
-
-2. **[請求書]** を選択します。
-
-    ![Screenshot that shows the Billing & usage option](./media/download-azure-invoice-daily-usage-date/billingandusage.png)
-
-3. 確認する請求書期間の [ダウンロード] ボタンをクリックします。
-
-4. **[CSV のダウンロード]** をクリックして、消費量と見積料金の日単位の内訳をダウンロードします。  CSV ファイル準備には数分かかる場合があります。
-
-### <a name="download-usage-for-ea-customers"></a>EA のお客様の使用量のダウンロード
-
-EA のお客様として使用量データを表示およびダウンロードするには、料金表示ポリシーが有効になっているエンタープライズ管理者、アカウント所有者、または部門管理者である必要があります。
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. "*コスト管理 + 請求*" を検索します。
-1. 複数の課金アカウントにアクセスできる場合、ご自分の EA 課金アカウントの課金スコープを選択します。
-1. **[使用量 + 請求金額]** を選択します。
-1. ダウンロードしたい月で、 **[ダウンロード]** を選択します。
-
-### <a name="download-usage-for-your-microsoft-customer-agreement"></a>Microsoft 顧客契約に関する使用量のダウンロード
-
-課金プロファイルの使用量データを表示およびダウンロードするには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。
-
-#### <a name="download-usage-for-billed-charges"></a>課金された料金の使用量のダウンロード
-
-1. "**コスト管理 + 請求**" を検索します。
-2. 課金プロファイルを選択します。
-3. **[請求書]** を選択します。
-4. 請求書グリッドで、ダウンロードする使用量に対応する請求書の行を探します。
-5. 行の末尾にある省略記号 (`...`) をクリックします。
-6. ダウンロードのコンテキスト メニューで **[Azure の利用状況と請求金額]** を選択します。
-
-#### <a name="download-usage-for-open-charges"></a>課金されていない料金の使用量のダウンロード
-
-現在の請求期間の月度累計使用量 (料金がまだ課金されていないことを意味します) もダウンロードできます。
-
-1. "**コスト管理 + 請求**" を検索します。
-2. 課金プロファイルを選択します。
-3. **[概要]** ブレードで **[Azure の利用状況と請求金額をダウンロードする]** をクリックします。
-
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
-[!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

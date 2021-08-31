@@ -2,17 +2,18 @@
 title: SSIS 統合ランタイムで接続の診断機能を使用する
 description: 接続の診断機能を使用して、SSIS 統合ランタイムでの接続の問題をトラブルシューティングします。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.author: meiyl
 author: meiyl
 ms.reviewer: sawinark
-ms.date: 06/07/2020
-ms.openlocfilehash: 1fb9a0c77a7cdc286c7c206d6eb33e43917ee719
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/21/2021
+ms.openlocfilehash: 1d501a461caab23fb45441473fda60e13c7e8334
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361861"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732999"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムで接続の診断機能を使用する
 
@@ -101,6 +102,6 @@ SSIS 統合ランタイムで SQL Server Integration Services (SSIS) パッケ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SSMS を使用して Azure に SSIS プロジェクトを配置する](/sql/integration-services/ssis-quickstart-deploy-ssms)
-- [SSMS を使用して Azure で SSIS パッケージを実行する](/sql/integration-services/ssis-quickstart-run-ssms)
-- [Azure で SSIS パッケージをスケジュール設定する](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)
+- [SSMS を使用した SSIS ジョブの移行](how-to-migrate-ssis-job-ssms.md)
+- [SSDT を使用して Azure で SSIS パッケージを実行する](how-to-invoke-ssis-package-ssdt.md)
+- [Azure で SSIS パッケージをスケジュール設定する](how-to-schedule-azure-ssis-integration-runtime.md)

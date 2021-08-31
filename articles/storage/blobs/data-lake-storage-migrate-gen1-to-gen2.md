@@ -4,20 +4,22 @@ description: Azure Data Lake Storage を Gen1 から Gen2 に移行します。G
 author: normesta
 ms.topic: how-to
 ms.author: normesta
-ms.date: 03/11/2020
+ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 485f0a19c5cb87b358f1723664425619b5d2c6aa
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: d6d173188c147e04a688ff7c373a1a253393ee87
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903313"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204518"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 
 データ、ワークロード、アプリケーションを、Data Lake Storage Gen1 から Data Lake Storage Gen2 に移行することができます。
+
+**2024 年 2 月 29 日** に Azure Data Lake Storage Gen1 は廃止されます。 詳細については、[公式告知](https://azure.microsoft.com/updates/action-required-switch-to-azure-data-lake-storage-gen2-by-29-february-2024/)を参照してください。 Azure Data Lake Storage Gen1 を使用している場合は、その日になる前に Azure Data Lake Storage Gen2 に移行してください。 この記事では、その方法について説明します。
 
 ‎Azure Data Lake Storage Gen2 は [Azure Blob Storage](storage-blobs-introduction.md) を基にして構築されており、ビッグ データ分析専用の機能セットを提供します。 [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) では、ファイル システム セマンティクス、ディレクトリ、ファイル レベルのセキュリティおよびスケーリングなどの [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) の機能が、[Azure Blob Storage](storage-blobs-introduction.md) の低コスト、階層型ストレージ、高可用性およびディザスター リカバリー機能と組み合わされています。
 
@@ -69,13 +71,22 @@ Gen2 に移行するには、次の方法が推奨されます。
 
 好みのパターンを使用して、データ、ワークロード、アプリケーションを移行します。 シナリオを段階的に検証することをお勧めします。
 
-1. [ストレージ アカウントを作成](../common/storage-account-create.md)し、階層型名前空間の機能を有効にします。 
+1. [ストレージ アカウントを作成](create-data-lake-storage-account.md)し、階層型名前空間の機能を有効にします。 
 
 2. データを移行します。 
 
 3. Gen2 エンドポイントを指し示すように、[ワークロード内のサービス](./data-lake-storage-supported-azure-services.md)を構成します。 
    
-4. Gen2 API を使用するようにアプリケーションを更新します。 [.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)、[JavaScript](data-lake-storage-directory-file-acl-javascript.md)、[REST](/rest/api/storageservices/data-lake-storage-gen2) に関するガイドを参照してください。 
+4. Gen2 API を使用するようにアプリケーションを更新します。 これらのガイドを参照してください。
+
+| 環境 | [アーティクル] |
+|--------|-----------|
+|Azure Storage Explorer |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリとファイルを管理する](data-lake-storage-explorer.md)|
+|.NET |[.NET を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[Java を使用して Azure Data Lake Storage Gen2 のディレクトリとファイルを管理する](data-lake-storage-directory-file-acl-java.md)|
+|Python|[Python を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する](data-lake-storage-directory-file-acl-python.md)|
+|JavaScript (Node.js)|[Node.js の JavaScript SDK を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する](data-lake-storage-directory-file-acl-javascript.md)|
+|REST API |[Azure Data Lake Store REST API](/rest/api/storageservices/data-lake-storage-gen2)|
    
 5. Data Lake Storage Gen2 の [PowerShell コマンドレット](data-lake-storage-directory-file-acl-powershell.md)および [Azure CLI コマンド](data-lake-storage-directory-file-acl-cli.md)を使用するようにスクリプトを更新します。
    
@@ -126,7 +137,7 @@ Gen2 でアプリケーションとワークロードが安定していること
 
 1. Gen1 へのすべての書き込みを停止します。
 
-2. Gen1 から Gen2 にデータを移動します。 [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md) をお勧めします。 ACL はデータと共にコピーします。
+2. Gen1 から Gen2 にデータを移動します。 [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md) または [Azure portal](data-lake-storage-migrate-gen1-to-gen2-azure-portal.md) の使用をお勧めします。 ACL はデータと共にコピーします。
 
 3. インジェスト操作とワークロードで Gen2 をポイントします。
 
@@ -144,6 +155,9 @@ Gen2 でアプリケーションとワークロードが安定していること
 :heavy_check_mark:移行と切り替えの期間中にダウンタイムが予想されます。
 
 :heavy_check_mark:ダウンタイムを許容できるパイプラインに最適であり、すべてのアプリを一度にアップグレードできます。
+
+> [!TIP]
+> [Azure portal](data-lake-storage-migrate-gen1-to-gen2-azure-portal.md) を使用してダウンタイムを短縮し、移行の完了に必要な手順の数を抑えることを検討してください。
 
 ### <a name="incremental-copy-pattern"></a>増分コピー パターン
 

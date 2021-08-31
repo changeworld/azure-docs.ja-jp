@@ -34,6 +34,8 @@
           href: quickstart-deploy-infrastructure-vnet-azure-cli.md
         - name: Terraform を使用したプロビジョニング
           href: quickstart-deploy-infrastructure-vnet-terraform.md
+        - name: Bicep を使用したプロビジョニング
+          href: quickstart-deploy-infrastructure-vnet-bicep.md
 - name: チュートリアル
   items:
     - name: アラートとアクション グループ
@@ -132,6 +134,8 @@
           href: structured-app-log.md
         - name: New Relic Java インプロセス エージェント
           href: how-to-new-relic-monitor.md
+        - name: アプリのライフサイクル イベントを監視する
+          href: monitor-app-lifecycle-events.md
     - name: ネットワーク
       items:
         - name: 仮想ネットワークに Azure Spring Cloud をデプロイする

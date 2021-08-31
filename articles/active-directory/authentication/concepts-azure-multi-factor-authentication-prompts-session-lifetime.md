@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 08/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47898b1708ebecc43ace9888dfd237fa72079c6b
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 93f5af54992189d553c9e5c5c141a6ca08b7018e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590362"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860525"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure AD Multi-Factor Authentication のセッションの有効期間について理解する
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) には、ユーザーが再認証を必要と�
 * Azure AD Premium をお使いの場合:
     * [マネージド デバイス](../devices/overview.md)または[シームレス SSO](../hybrid/how-to-connect-sso.md) を使用して、アプリケーション間でシングル サインオン (SSO) を有効にします。
     * 再認証が必要な場合は、条件付きアクセスの[サインイン頻度ポリシー](../conditional-access/howto-conditional-access-session-lifetime.md)を使用します。
-    * 管理対象外のデバイスまたはモバイル デバイスからサインインするユーザーの場合は、条件付きアクセスを使用して、永続的なブラウザー セッションとサインイン頻度ポリシーを有効にします。
+    * 管理対象外のデバイスまたはモバイル デバイスからサインインするユーザーにとって、永続的なブラウザー セッションは望ましくない場合があります。または条件付きアクセスを使用して、サインイン頻度ポリシーで永続的なブラウザー セッションを有効にできます。 サインイン リスクに基づいて、期間を適切な時間に制限すると、リスクの低いユーザーほどセッション継続時間が長くなります。
 * Microsoft 365 アプリのライセンスまたは Free レベルの Azure AD をお使いの場合:
     * [マネージド デバイス](../devices/overview.md)または[シームレス SSO](../hybrid/how-to-connect-sso.md) を使用して、アプリケーション間でシングル サインオン (SSO) を有効にします。
     * *[Remain signed-in] (サインインしたままの状態を続ける)* オプションを有効にしたままにして、ユーザーに同意するようガイドします。

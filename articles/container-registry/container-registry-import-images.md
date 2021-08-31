@@ -2,13 +2,13 @@
 title: コンテナー イメージのインポート
 description: Azure API を使用することで、Docker コマンドを実行することなく、Azure コンテナー レジストリにコンテナー イメージをインポートします。
 ms.topic: article
-ms.date: 01/15/2021
-ms.openlocfilehash: e7becadab7f23acd7b85d6d82fd8abbfa7608add
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/28/2021
+ms.openlocfilehash: 04e9ead09061fad5630b883c6f5749bafc7a4a7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781525"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779597"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 
@@ -32,9 +32,7 @@ Azure コンテナー レジストリにイメージをインポートするや�
 
 コンテナー イメージをインポートするには、Azure CLI を Azure Cloud Shell またはローカルで実行する必要があります (バージョン 2.0.55 以降を推奨します)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
-> [!NOTE]
-> 複数の Azure リージョンに同じコンテナー イメージを配布する必要がある場合、Azure Container Registry では [geo レプリケーション](container-registry-geo-replication.md)もサポートされます。 レジストリの geo レプリケーション (Premium サービス レベルが必要) を行うと、1 つのレジストリに含まれる同一のイメージとタグ名を、複数のリージョンで使用できます。
->
+[!INCLUDE [container-registry-geo-replication-include](../../includes/container-registry-geo-replication-include.md)]
 
 > [!IMPORTANT]
 > 2 つの Azure コンテナー レジストリ間でのイメージのインポートに対する変更は、2021 年 1 月の時点で導入されました。
@@ -158,7 +156,10 @@ az acr import \
 
 ## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>別の AD テナント内の Azure コンテナー レジストリからインポートする
 
-別の Azure Active Directory テナント内の Azure コンテナー レジストリからインポートするには、ログイン サーバー名でソース レジストリを指定し、レジストリへのプル アクセスを有効にするユーザー名とパスワードの資格情報を指定します。 たとえば、[リポジトリ スコープのトークン](container-registry-repository-scoped-permissions.md)とパスワード、またはソース レジストリへの ACRPull アクセス許可を持つ Active Directory [サービス プリンシパル](container-registry-auth-service-principal.md)の appID とパスワードを指定します。 
+別の Azure Active Directory テナント内の Azure コンテナー レジストリからインポートするには、ログイン サーバー名でソース レジストリを指定し、レジストリへのプル アクセスを有効にする資格情報を指定します。 
+
+### <a name="cross-tenant-import-with-username-and-password"></a>ユーザー名とパスワードを使用したテナント間のインポート
+たとえば、[リポジトリ スコープのトークン](container-registry-repository-scoped-permissions.md)とパスワード、またはソース レジストリへの ACRPull アクセス許可を持つ Active Directory [サービス プリンシパル](container-registry-auth-service-principal.md)の appID とパスワードを指定します。 
 
 ```azurecli
 az acr import \
@@ -167,6 +168,28 @@ az acr import \
   --image targetimage:tag \
   --username <SP_App_ID> \
   --password <SP_Passwd>
+```
+
+### <a name="cross-tenant-import-with-access-token"></a>アクセス トークンを使用したテナント間のインポート
+
+ソース テナントでレジストリ アクセス許可を持つ ID を使用してソース レジストリにアクセスする場合は、次のようにしてアクセス トークンを取得できます。
+
+```azurecli
+# Login to Azure CLI with the identity, for example a user-assigned managed identity
+az login --identity --username <identity_ID>
+
+# Get access token returned by `az account get-access-token`
+az account get-access-token 
+```
+
+ターゲット テナントで、アクセス トークンをパスワードとして `az acr import` コマンドに渡します。 ソース レジストリは、ログイン サーバー名によって指定されます。 このコマンドにはユーザー名は不要です。
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --password <access-token>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Azure 以外のプライベート コンテナー レジストリからインポートする
@@ -184,7 +207,13 @@ az acr import \
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、パブリック レジストリや別のプライベート レジストリから Azure コンテナー レジストリにコンテナー イメージをインポートする方法について説明しました。 追加のイメージ インポート オプションについては、[az acr import][az-acr-import] コマンドのリファレンスをご覧ください。 
+この記事では、パブリック レジストリや別のプライベート レジストリから Azure コンテナー レジストリにコンテナー イメージをインポートする方法について説明しました。 
+
+* 追加のイメージ インポート オプションについては、[az acr import][az-acr-import] コマンドのリファレンスをご覧ください。 
+
+* イメージのインポートを利用すると、別の Azure リージョン、サブスクリプション、または Azure AD テナントのコンテナー レジストリにコンテンツを移動できます。 詳細については、「[コンテナー レジストリを別のリージョンに手動で移動する](manual-regional-move.md)」を参照してください。
+
+* ネットワーク制限付きコンテナー レジストリからの[成果物のエクスポートを無効にする](data-loss-prevention.md)方法について学習します。
 
 
 <!-- LINKS - Internal -->

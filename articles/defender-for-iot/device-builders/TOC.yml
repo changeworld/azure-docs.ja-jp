@@ -1,4 +1,5 @@
 - name: デバイス ビルダー向け Azure Defender for IoT
+  href: index.yml
   items: null
 - name: 概要
   displayName: 'IoT, OT, getting started'
@@ -10,7 +11,7 @@
     - name: エージェントベースのソリューション アーキテクチャとは
       href: architecture-agent-based.md
 - name: クイックスタート
-  expanded: false
+  expanded: true
   items:
     - name: Defender for IoT エージェントベースのソリューションにオンボードする
       displayName: 'IoT Hub, existing, enable'
@@ -20,9 +21,6 @@
       href: quickstart-standalone-agent-binary-installation.md
     - name: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
       href: quickstart-create-micro-agent-module-twin.md
-    - name: ソース コードから Defender for IoT マイクロ エージェントを構築する (プレビュー)
-      displayName: 'baseline, configuration, customize, distribution'
-      href: quickstart-building-the-defender-micro-agent-from-source.md
     - name: Azure RTOS 用の Defender-IoT-micro-agent を構成する
       href: quickstart-azure-rtos-security-module.md
     - name: IoT ソリューションへの Azure リソースの追加
@@ -53,12 +51,17 @@
       href: concept-security-agent-authentication.md
     - name: セキュリティ体制 - CIS ベンチマーク
       href: concept-security-posture.md
+    - name: マイクロ エージェントの構成 (プレビュー)
+      displayNAme: 'collectors, configuration, configurations, event-based, trigger, general'
+      href: concept-micro-agent-configuration.md
     - name: マイクロ エージェントのイベント コレクション (プレビュー)
       displayName: 'process events, network connection'
       href: concept-event-aggregation.md
     - name: マイクロ エージェントの Linux の依存関係
       displayName: 'linux, micro agent, agent'
       href: concept-micro-agent-linux-dependencies.md
+    - name: エージェント ベースのセキュリティ アラート
+      href: concept-agent-based-security-alerts.md
     - name: IoT Hub 用の組み込みアラート
       displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
       href: concept-security-alerts.md
@@ -87,7 +90,7 @@
         - name: Defender-IoT-micro-agent クラシック イベントの集計
           displayName: 'twin, default, configuration, alerts'
           href: event-aggregation.md
-        - name: エージェント ベースのセキュリティ アラート
+        - name: クラシック エージェント ベースのセキュリティ アラート
           href: agent-based-security-alerts.md
         - name: エージェント ベースのセキュリティのカスタム アラート
           href: agent-based-security-custom-alerts.md

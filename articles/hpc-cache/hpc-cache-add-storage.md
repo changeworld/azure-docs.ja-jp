@@ -4,15 +4,15 @@ description: Azure HPC Cache で長期的なファイルの保管にオンプレ
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 07/12/2021
 ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: aae7d29abbb9ef18846e85e9a54ff0fb97f09181
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3ea51d88d65b8016e68673703ee823df19bcf608
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738520"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294952"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -20,7 +20,7 @@ ms.locfileid: "109738520"
 
 キャッシュに対して 10 個の異なるストレージ ターゲットを定義できます。より大きなキャッシュでは、[最大で 20 個のストレージ ターゲットをサポート](#size-your-cache-correctly-to-support-your-storage-targets)できます。
 
-このキャッシュでは、すべてのストレージ ターゲットが 1 つの集約された名前空間で提供されます。 名前空間パスは、ストレージ ターゲットを追加した後に個別に構成されます。
+このキャッシュでは、すべてのストレージ ターゲットが 1 つの[集約された名前空間](hpc-cache-namespace.md)で提供されます。 名前空間パスは、ストレージ ターゲットを追加した後に個別に構成されます。
 
 キャッシュの仮想ネットワークからストレージのエクスポートにアクセスできなければならないことに注意してください。 オンプレミスのハードウェア ストレージの場合、NFS ストレージへのアクセスに使用されるホスト名を解決できる DNS サーバーの設定が必要になることがあります。 詳細については、「[DNS アクセス](hpc-cache-prerequisites.md#dns-access)」を参照してください。
 
@@ -38,12 +38,37 @@ Azure portal からのキャッシュの作成とストレージ ターゲット
 
 ## <a name="size-your-cache-correctly-to-support-your-storage-targets"></a>ストレージ ターゲットをサポートするようキャッシュを正しいサイズに設定する
 
-サポートされるストレージ ターゲットの数はキャッシュ サイズによって異なり、キャッシュの作成時に設定されます。 サイズは、スループット容量 (GB/秒) とストレージ容量 (TB) の組み合わせです。
+サポートされるストレージ ターゲットの数はキャッシュ サイズによって異なり、キャッシュの作成時に設定されます。 キャッシュ容量は、スループット容量 (GB/秒) とストレージ容量 (TB) の組み合わせです。
 
-* 最大で 10 個のストレージ ターゲット - 選択したスループット値に対して最小または中程度のキャッシュ ストレージ サイズを選択した場合、キャッシュには最大で 10 個のストレージ ターゲットを含めることができます。
-* 最大で 20 個のストレージ ターゲット - 10 個を超えるストレージ ターゲットを使用する必要がある場合は、選択したスループット値に対して使用可能な最大キャッシュ サイズを選択します。 (Azure CLI を使用する場合は、お使いのキャッシュ SKU で有効な最大キャッシュ サイズを選択してください。)
+* 最大 10 個のストレージ ターゲット - 選択したスループットに対して最小または中程度のキャッシュ ストレージ値を持つ標準的なキャッシュには、最大 10 個のストレージ ターゲットを指定できます。
+
+  たとえば、2 GB/秒のスループットを選択し、最大のキャッシュ ストレージ サイズを選択しない場合、そのキャッシュでは最大 10 個のストレージ ターゲットがサポートされます。
+
+* 最大 20 個のストレージ ターゲット -
+
+  * (キャッシュ ストレージ サイズが事前に構成されている) すべての高スループット キャッシュでは、最大 20 個のストレージ ターゲットをサポートできます。
+  * 選択したスループット値に対して、使用可能な最大のキャッシュ サイズを選択した場合、標準的なキャッシュでは最大 20 個のストレージ ターゲットをサポートできます。 (Azure CLI を使用する場合は、お使いのキャッシュ SKU で有効な最大キャッシュ サイズを選択してください。)
 
 スループットとキャッシュ サイズの設定について詳しくは、「[キャッシュ容量を設定する](hpc-cache-create.md#set-cache-capacity)」をご覧ください。
+
+## <a name="choose-the-correct-storage-target-type"></a>適切なストレージ ターゲットの種類を選択する
+
+**NFS**、**BLOB**、および **ADLS-NFS** の 3 種類のストレージ ターゲットから選択できます。 この HPC Cache プロジェクト中にファイルを格納するために使用するストレージ システムの種類に一致する種類を選択してください。
+
+* **NFS** - ネットワーク接続ストレージ (NAS) システム上のデータにアクセスする NFS ストレージ ターゲットを作成します。 これは、オンプレミスのストレージ システムか、NFS を使用してアクセスできる別のストレージの種類になります。
+
+  * 要件: [NFS ストレージの要件](hpc-cache-prerequisites.md#nfs-storage-requirements)
+  * 指示: [新しい NFS ストレージ ターゲットを追加する](#add-a-new-nfs-storage-target)
+
+* **BLOB** - BLOB ストレージ ターゲットを使用して、作業ファイルを新しい Azure BLOB コンテナーに格納します。 このコンテナーの読み取りまたは書き込みは、Azure HPC Cache からのみ行われます。
+
+  * 前提条件: [Blob Storage の要件](hpc-cache-prerequisites.md#blob-storage-requirements)
+  * 指示: [新しい Azure Blob Storage ターゲットを追加する](#add-a-new-azure-blob-storage-target)
+
+* **ADLS-NFS** - ADLS-NFS ストレージ ターゲットは、[NFS 対応 BLOB](../storage/blobs/network-file-system-protocol-support.md) コンテナーからデータにアクセスします。 標準の NFS コマンドを使用してコンテナーを事前に読み込み、後で NFS を使用してファイルを読み取ることができます。
+
+  * 前提条件: [ADLS-NFS ストレージの要件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements)
+  * 指示: [新しい ADLS-NFS ストレージ ターゲットを追加する](#add-a-new-adls-nfs-storage-target)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>新しい Azure Blob Storage ターゲットを追加する
 
@@ -52,7 +77,9 @@ Azure portal からのキャッシュの作成とストレージ ターゲット
 Azure portal の **[ストレージ ターゲットの追加]** ページには、追加する直前に新しい BLOB コンテナーを作成するオプションが含まれています。
 
 > [!NOTE]
-> NFS でマウントされた BLOB ストレージの場合は、[ADLS-NFS ストレージ ターゲット](#) タイプを使用します。
+>
+> * NFS でマウントされた BLOB ストレージの場合は、[ADLS-NFS ストレージ ターゲット](#add-a-new-adls-nfs-storage-target) タイプを使用します。
+> * [高スループットのキャッシュ構成](hpc-cache-create.md#choose-the-cache-type-for-your-needs)では、標準の Azure Blob Storage ターゲットはサポートされていません。 代わりに、NFS 対応 BLOB ストレージ (ADLS-NFS) を使用してください。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -91,7 +118,7 @@ Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ �
 
 ストレージ アカウント所有者は、"HPC Cache リソース プロバイダー" ユーザーの[ストレージ アカウント共同作成者](../role-based-access-control/built-in-roles.md#storage-account-contributor)ロールと[ストレージ BLOB データ共同作成者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを明示的に追加する必要があります。
 
-この作業は事前に行えるほか、Blob Storage ターゲットを追加するページ上のリンクをクリックして行うこともできます。 ロールの設定を Azure 環境経由で反映させるとき、最大 5 分かかる場合があることにご留意ください。ロールの追加後、少し待ってからストレージ ターゲットを作成してください。
+この作業は、事前に、または Blob Storage ターゲットを追加する portal ページ上のリンクをクリックして実行できます。 ロールの設定を Azure 環境経由で反映させるとき、最大 5 分かかる場合があることにご留意ください。ロールの追加後、少し待ってからストレージ ターゲットを作成してください。
 
 1. ストレージ アカウントの **[アクセス制御 (IAM)]** を開きます。
 
@@ -107,7 +134,7 @@ Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ �
     ![[ロールの割り当ての追加] ページ](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
    > [!NOTE]
-   > HPC Cache リソース プロバイダーが見つからない場合は、代わりに文字列 "storagecache" を検索してみてください。 (一般提供開始前に) HPC Cache のプレビューに参加したユーザーは、サービス プリンシパルに以前の名前を使用しなければならない可能性があります。
+   > HPC Cache リソース プロバイダーが見つからない場合は、代わりに文字列 "storagecache" を検索してみてください。 これは、サービス プリンシパルの GA 前の名前でした。
 
 <!-- 
 Steps to add the Azure roles:
@@ -183,7 +210,7 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ## <a name="add-a-new-nfs-storage-target"></a>新しい NFS ストレージ ターゲットを追加する
 
-NFS ストレージ ターゲットの設定は、Blob Storage ターゲットとは異なります。 使用モデルの設定は、キャッシュでこのストレージ システムからのデータを効率的にキャッシュするのに役立ちます。
+NFS ストレージ ターゲットには、このストレージ システムからデータを格納する方法をキャッシュに指示する使用モデルの設定など、BLOB ストレージ ターゲットとは異なる設定があります。
 
 ![NFS ターゲットが定義されている [ストレージ ターゲットの追加] ページのスクリーンショット](media/add-nfs-target.png)
 
@@ -191,13 +218,15 @@ NFS ストレージ ターゲットの設定は、Blob Storage ターゲット�
 > NFS ストレージ ターゲットを作成する前に、ストレージ システムが Azure HPC Cache からアクセス可能であり、アクセス許可要件を満たしていることを確認します。 キャッシュからストレージ システムにアクセスできない場合、ストレージ ターゲットの作成は失敗します。 詳細については、「[NFS ストレージの要件](hpc-cache-prerequisites.md#nfs-storage-requirements)」と「[NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング](troubleshoot-nas.md)」を参照してください。
 
 ### <a name="choose-a-usage-model"></a>使用モデルを選択する
-<!-- referenced from GUI by aka.ms link -->
 
 NFS を使用してストレージ システムにアクセスするストレージ ターゲットを作成するときは、そのターゲットの使用モデルを選択する必要があります。 どのようにデータがキャッシュされるかは、このモデルによって決まります。
 
 これらすべての設定の詳細については、[使用モデル](cache-usage-models.md)に関するページを参照してください。
 
-組み込みの使用モデルでは、迅速な応答と古いデータを取得するリスクとのバランスを取る方法を選択できます。 ファイルの読み取り速度を最適化する場合、キャッシュ内のファイルがバックエンド ファイルと照合されるかどうかは重要でないかもしれません。 一方、リモート ストレージでファイルが常に最新の状態になっていることを確認する場合は、頻繁にチェックを行うモデルを選択します。
+HPC Cache の組み込み使用モデルでは、迅速な応答と、古いデータを取得するリスクとのバランスを取る方法を選択できます。 ファイルの読み取り速度を最適化する場合、キャッシュ内のファイルがバックエンド ファイルと照合されるかどうかは重要でないかもしれません。 一方、リモート ストレージでファイルが常に最新の状態になっていることを確認する場合は、頻繁にチェックを行うモデルを選択します。
+
+> [!NOTE]
+> [高スループット スタイルのキャッシュ](hpc-cache-create.md#choose-the-cache-type-for-your-needs)では、読み取りキャッシュのみがサポートされます。
 
 ほとんどの状況は、次の 3 つのいずれかのオプションに当てはまります。
 
@@ -246,7 +275,7 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 
 * **[ターゲットの種類]** - **[NFS]** を選択します。
 
-* **[ホスト名]** - NFS ストレージ システムの IP アドレスまたは完全修飾ドメイン名を入力します (ドメイン名を使用するのは、名前を解決できる DNS サーバーにキャッシュからアクセスできる場合のみです)。
+* **[ホスト名]** - NFS ストレージ システムの IP アドレスまたは完全修飾ドメイン名を入力します (ドメイン名は、名前を解決できる DNS サーバーへのアクセス権がキャッシュにある場合にのみ使用します)。ストレージ システムが複数の IP によって参照されている場合は、複数の IP アドレスを入力できます。
 
 * **[使用モデル]** - ワークフローに基づいていずれかのデータ キャッシュ プロファイルを選択します ([前述の「使用モデルを選択する」](#choose-a-usage-model)を参照)。
 
@@ -324,22 +353,23 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 
 ---
 
-## <a name="add-a-new-adls-nfs-storage-target-preview"></a>新しい ADLS-NFS ストレージ ターゲットを追加する (プレビュー)
+## <a name="add-a-new-adls-nfs-storage-target"></a>新しい ADLS-NFS ストレージ ターゲットを追加する
 
 ADLS-NFS ストレージ ターゲットは、Network File System (NFS) 3.0 プロトコルをサポートする Azure Blob コンテナーを使用します。
 
-> [!NOTE]
-> Azure Blob Storage での NFS 3.0 プロトコルのサポートはパブリック プレビューの段階にあります。 可用性は制限されており、機能は今後、一般公開された後で変更される可能性があります。 実稼働システムではプレビュー テクノロジを使用しないでください。
->
-> 最新情報については、[NFS 3.0 プロトコルサポート](../storage/blobs/network-file-system-protocol-support.md)を参照してください。
+この機能の詳細については、[NFS 3.0 プロトコルのサポート](../storage/blobs/network-file-system-protocol-support.md)に関する記事を参照してください。
 
 ADLS-NFS ストレージ ターゲットには、BLOB ストレージ ターゲットおよび NFS ストレージ ターゲットと類似する点がいくつかあります。 次に例を示します。
 
 * BLOB ストレージ ターゲットと同様に、[ストレージ アカウントにアクセス](#add-the-access-control-roles-to-your-account)するためのアクセス許可を Azure HPC Cache に付与する必要があります。
 * NFS ストレージ ターゲットと同様に、キャッシュ[使用モデル](#choose-a-usage-model)を設定する必要があります。
-* NFS 対応の BLOB コンテナーには NFS と互換性のある階層構造があるため、データの取り込みにキャッシュを使用する必要はありません。また、コンテナーは他の NFS システムから読み取ることができます。 ADLS-NFS コンテナーにデータを事前に読み込み、それをストレージ ターゲットとして HPC Cache に追加すると、HPC Cache の外部からデータにアクセスできます。 標準の BLOB コンテナーを HPC Cache 上のストレージ ターゲットとして使用する場合、データは独自仕様の形式で書き込まれ、他の Azure HPC Cache 互換製品からのみアクセスできます。
+* NFS 対応の BLOB コンテナーには NFS と互換性のある階層構造があるため、データの取り込みにキャッシュを使用する必要はありません。また、コンテナーは他の NFS システムから読み取ることができます。
 
-ADLS-NFS ストレージ ターゲットを作成する前に、NFS 対応のストレージ アカウントを作成する必要があります。 [Azure HPC Cache の前提条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview)に関するヒントと、[NFS を使用した BLOB ストレージのマウント](../storage/blobs/network-file-system-protocol-support-how-to.md)の手順に従ってください。 ストレージ アカウントを設定した後は、ストレージ ターゲットの作成時に新しいコンテナーを作成できます。
+  ADLS-NFS コンテナーにデータを事前に読み込み、それをストレージ ターゲットとして HPC Cache に追加すると、HPC Cache の外部からデータにアクセスできます。 標準の BLOB コンテナーを HPC Cache 上のストレージ ターゲットとして使用する場合、データは独自仕様の形式で書き込まれ、他の Azure HPC Cache 互換製品からのみアクセスできます。
+
+ADLS-NFS ストレージ ターゲットを作成する前に、NFS 対応のストレージ アカウントを作成する必要があります。 [Azure HPC Cache の前提条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements)に関するページの手順と、[NFS を使用した BLOB ストレージのマウント](../storage/blobs/network-file-system-protocol-support-how-to.md)に関するページの説明に従ってください。 キャッシュとストレージ アカウントに同じ仮想ネットワークを使用しない場合は、キャッシュの VNet でストレージアカウントの VNet にアクセスできることを確認します。
+
+ストレージ アカウントを設定した後は、ストレージ ターゲットの作成時に新しいコンテナーを作成できます。
 
 この構成の詳細については、[Azure HPC Cache で NFS マウント済み BLOB ストレージを使用する](nfs-blob-considerations.md)方法に関するページを参照してください。
 

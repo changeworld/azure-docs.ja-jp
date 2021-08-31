@@ -3,12 +3,12 @@ title: Azure Service Fabric のバージョン
 description: Azure Service Fabric のクラスターのバージョンとアクティブにサポートされているプラットフォームのバージョンについて説明します
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: f8979d83934234379a61cb8fab606cf5f37cf7e5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4eb08bb2ce94612ee81b9cdf19a1b3cd2e2d6b00
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080689"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729730"
 ---
 # <a name="service-fabric-supported-versions"></a>Service Fabric のサポートされているバージョン
 この記事の表は、アクティブにサポートされている Service Fabric とプラットフォームのバージョンの概要です。
@@ -17,8 +17,12 @@ ms.locfileid: "110080689"
 
 | Service Fabric ランタイム |次のバージョンから直接アップグレード可能|次のバージョンにダウングレード可能|互換性のある SDK または NuGet パッケージのバージョン|サポートされている .NET ランタイム** |OS バージョン |サポート終了 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.0 CU1 | 7.1 CU10 | 7.2 | バージョン 5.0 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 現在のバージョン |
-| 8.0 RTO | 7.1 CU10 | 7.2 | バージョン 5.0 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 現在のバージョン |
+| 8.1 CU1 | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 現在のバージョン |
+| 8.1 RTO | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 現在のバージョン |
+| 8.0 CU3 | 7.1 CU10 | 7.2 | バージョン 5.0 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU2 | 7.1 CU10 | 7.2 | バージョン 5.0 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU1 | 7.1 CU10 | 7.2 | バージョン 5.0 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 RTO | 7.1 CU10 | 7.2 | バージョン 5.0 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
 | 7.2 CU7 | 7.0 CU9 | 7.1 | バージョン 4.2 以前 | .NET 5.0 (プレビュー サポート)、.NET Core 2.1 以降、<br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 2021 年 11 月 30 日 |
 | 7.2 CU6 | 7.0 CU4 |7.1 | バージョン 4.2 以前 | .NET 5.0 (プレビュー サポート)、.NET Core 2.1 以降、<br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
 | 7.2 RTO-CU5 | 7.0 CU4 | 7.1 |バージョン 4.2 以前 | .NET Core 2.1 以降、<br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
@@ -47,7 +51,7 @@ ms.locfileid: "110080689"
 
 | OS のバージョン | Service Fabric のサポート終了日 | OS のライフサイクルのリンク |
 | --- | --- | --- |
-| Windows 10 2019 LTSC | 2029/1/9 | <a href="/lifecycle/products/windows-10-2019-ltsc">Windows 10 2019 LTSC - Microsoft ライフサイクル</a> |
+| Windows 10 2019 LTSC | 2029/1/9 | <a href="/lifecycle/products/windows-10-ltsc-2019">Windows 10 2019 LTSC - Microsoft ライフサイクル</a> |
 | バージョン 20H2 | 2023/5/9 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
 | バージョン 2004 | 2021 年 12 月 14 日| <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
 | バージョン 1909 | 2022/5/10 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
@@ -58,8 +62,11 @@ ms.locfileid: "110080689"
 
 | Service Fabric ランタイム | 次のバージョンから直接アップグレード可能 |次のバージョンにダウングレード可能 |互換性のある SDK または NuGet パッケージのバージョン | サポートされている .NET ランタイム** | OS のバージョン | サポート終了 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.0 CU1 | 7.1 CU8 | 7.2 | バージョン 5.0 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 現在のバージョン |
-| 8.0 RTO | 7.1 CU8 | 7.2 | バージョン 5.0 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 現在のバージョン |
+| 8.1 CU1 | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 現在のバージョン |
+| 8.1 RTO | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 現在のバージョン |
+| 8.0 CU3 | 7.1 CU8 | 7.2 | バージョン 5.0 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU1 | 7.1 CU8 | 7.2 | バージョン 5.0 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 RTO | 7.1 CU8 | 7.2 | バージョン 5.0 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
 | 7.2 CU7 | 7.0 CU9 | 7.1 | バージョン 4.2 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
 | 7.2 RTO-CU6 | 7.0 CU4 | 7.1 | バージョン 4.2 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
 | 7.1 | 7.0 CU3 | 該当なし | バージョン 4.1 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2021 年 7 月 31 日 |
@@ -75,20 +82,15 @@ ms.locfileid: "110080689"
 | Ubuntu 18.04 | 2028 年 4 月 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu のライフサイクル</a>|
 | Ubuntu 16.04 | 2024 年 4 月 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu のライフサイクル</a>|
 
-## <a name="supported-net-runtimes"></a>サポートされている .NET ランタイム
-
-次の表に、Service Fabric によってサポートされている .NET ランタイムを示します。
-
-| Service Fabric ランタイム | サポートされている Windows 用 .NET ランタイム |サポートされている Linux 用 .NET ランタイム |
-| --- | --- | --- |
-| 8.0 CU1 | .NET 5.0、.NET Core 2.1 以降、.NET Framework 4.5 以降すべて | .NET Core 2.1 以降|
-| 8.0 RTO | .NET 5.0、.NET Core 2.1 以降、.NET Framework 4.5 以降すべて | .NET Core 2.1 以降|
-
 ## <a name="service-fabric-version-name-and-number-reference"></a>Service Fabric のバージョン名と番号の参照
 次の表に、Service Fabric のバージョン名と対応するバージョン番号を示します。
 
 | バージョン名 | Windows のバージョン番号 | Linux のバージョン番号 |
 | --- | --- | --- |
+| 8.1 CU1 | 8.1.321.9590 | 8.1.323.1 |
+| 8.1 RTO | 8.1.316.9590 | 8.1.320.1 |
+| 8.0 CU3 | 8.0.536.9590 | 8.0.527.1 |
+| 8.0 CU2 | 8.0.521.9590 | NA |
 | 8.0 CU1 | 8.0.516.9590 | 8.0.515.1 | 
 | 8.0 RTO | 8.0.514.9590 | 8.0.513.1 | 
 | 7.2 CU7 | 7.2.477.9590 | 7.2.476.1 |

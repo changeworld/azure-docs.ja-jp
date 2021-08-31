@@ -3,17 +3,18 @@ title: Azure Image Builder で Windows VM を作成する
 description: Azure Image Builder で Windows VM を作成します。
 author: kof-f
 ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 04/23/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 6eaa59521a864b3d93d4c79706ca8ec7ff100d70
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 2a847d44f1c178aa5756b81e54ebdf6e961ab1d8
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030973"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594681"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder"></a>Azure Image Builder で Windows VM を作成する
 
@@ -125,7 +126,7 @@ az role definition create --role-definition ./aibRoleImageCreation.json
 # grant role definition to the user assigned identity
 az role assignment create \
     --assignee $imgBuilderCliId \
-    --role $imageRoleDefName \
+    --role "$imageRoleDefName" \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
 

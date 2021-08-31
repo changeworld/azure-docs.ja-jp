@@ -8,12 +8,12 @@ ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 69a02db3eafa9c75808eece69ce8ed676adf0ab2
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: dd161468cda08a0046f2f46a79a973e4bbf8b49a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615817"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735299"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
 
@@ -27,9 +27,9 @@ ms.locfileid: "110615817"
 
 ### <a name="prerequisites"></a>前提条件
 
-* Azure Digital Twins の[チュートリアル: エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)に関するページを参照してください。
+* [エンドツーエンド ソリューションの接続](./tutorial-end-to-end.md)に関するページに従って Azure Digital Twins を操作します。
     * 追加のエンドポイントとルートを使用して、このツインを拡張します。 また、このチュートリアルでは、関数アプリに別の関数を追加します。 
-* Azure Maps の [チュートリアル: Azure Maps Creator を使用する屋内マップの作成](../azure-maps/tutorial-creator-indoor-maps.md)方法に従って、"*地物状態セット*" を含む Azure Maps の屋内マップを作成します。
+* [Azure Maps Creator を使用した屋内マップの作成](../azure-maps/tutorial-creator-indoor-maps.md)に関するページに従って Azure Maps を操作し、"*地物状態セット*" を使用して Azure Maps の屋内マップを作成します。
     * [地物状態セット](../azure-maps/creator-indoor-maps.md#feature-statesets)は、部屋や機器といったデータセットの地物に割り当てられた動的なプロパティ (状態) のコレクションです。 上記の Azure Maps チュートリアルでは、地物状態セットによって、マップに表示される部屋の状態が格納されます。
     * 地物の "*状態セット ID*" と Azure Maps の "*サブスクリプション キー*" が必要になります。
 
@@ -45,7 +45,7 @@ ms.locfileid: "110615817"
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>ルートを作成してツイン更新通知にフィルターを適用する
 
-ツインの状態が更新されるたびに、Azure Digital Twins インスタンスでツイン更新イベントを生成できます。 Azure Digital Twins の[チュートリアル:エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)に関するページ (上記のリンク) では、温度計を使用して、部屋のツインに付属する温度属性を更新するシナリオについて説明しています。 ツインの更新通知をサブスクライブし、その情報を使用してマップを更新することで、このソリューションを拡張します。
+ツインの状態が更新されるたびに、Azure Digital Twins インスタンスでツイン更新イベントを生成できます。 Azure Digital Twins の[エンドツーエンド ソリューションの接続](./tutorial-end-to-end.md)に関するページ (上記のリンク) では、温度計を使用して、部屋のツインに関連付けられた温度属性を更新するシナリオについて説明しています。 ツインの更新通知をサブスクライブし、その情報を使用してマップを更新することで、このソリューションを拡張します。
 
 このパターンでは、IoT デバイスではなく、部屋のツインから直接読み取りを行います。これにより、マッピング ロジックを更新しなくても、基になるデータ ソースを温度に合わせて柔軟に変更することができます。 たとえば、複数の温度計を追加したり、別の部屋と温度計を共有するようにこの部屋を設定したりすることができます。これらはすべて、マップ ロジックを更新せずに行うことができます。
 
@@ -72,7 +72,7 @@ ms.locfileid: "110615817"
 
 ## <a name="create-a-function-to-update-maps"></a>マップを更新する関数を作成する
 
-エンドツーエンドのチュートリアルで、**Event Grid によってトリガーされる関数** を関数アプリ内に作成します ([チュートリアル: エンド ツー エンドのソリューションの接続](./tutorial-end-to-end.md)に関するページを参照)。 この関数によって、これらの通知がアンパックされ、1 つの部屋の温度を更新するために Azure Maps の地物状態セットに更新が送信されます。
+エンドツーエンドのチュートリアルで、**Event Grid によってトリガーされる関数** を関数アプリ内に作成します ([エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)に関するページを参照)。 この関数によって、これらの通知がアンパックされ、1 つの部屋の温度を更新するために Azure Maps の地物状態セットに更新が送信されます。
 
 参照情報については、次のドキュメントを参照してください: [Azure Functions の Azure Event Grid トリガー](../azure-functions/functions-bindings-event-grid-trigger.md)。
 
@@ -83,17 +83,17 @@ ms.locfileid: "110615817"
 関数アプリで 2 つの環境変数を設定する必要があります。 1 つは [Azure Maps のプライマリ サブスクリプション キー](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)で、もう 1 つは [Azure Maps の状態セット ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset) です。
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <your-App-Service-function-app-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
-az functionapp config appsettings set --name <your-App-Service-function-app-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
+az functionapp config appsettings set --name <your-function-app-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
+az functionapp config appsettings set --name <your-function-app-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
 ```
 
 ### <a name="view-live-updates-on-your-map"></a>マップでライブ更新を表示する
 
 ライブ更新温度を表示するには、以下の手順に従います。
 
-1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ([チュートリアル:エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照)。 この手順は、「[シミュレーションを構成して実行する](././tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションにあります。
+1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ([エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照)。 この手順は、「[シミュレーションを構成して実行する](././tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションにあります。
 2. [Azure Maps Indoor モジュール](../azure-maps/how-to-use-indoor-module.md)を使用して、Azure Maps Creator で作成された屋内マップをレンダリングします。
-    1. 「[例: Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)」 (Indoor Maps の「[チュートリアル: Azure Maps の Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md)」に含まれるセクション) の HTML をローカル ファイルにコピーします。
+    1. Indoor Maps の「[Azure Maps の Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md)」の「[例: Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)」セクションの HTML をローカル ファイルにコピーします。
     1. ローカル HTML ファイルの "*サブスクリプション キー*"、*tilesetId*、*statesetID* を、実際の値に置き換えます。
     1. ブラウザーでそのファイルを開きます。
 
@@ -113,5 +113,5 @@ az functionapp config appsettings set --name <your-App-Service-function-app-name
 
 ツイン グラフの情報の管理、アップグレード、および取得について詳しくは、以下の参照情報をご覧ください。
 
-* [方法: デジタル ツインを管理する](./how-to-manage-twin.md)
-* [方法: ツイン グラフにクエリを実行する](./how-to-query-graph.md)
+* [デジタル ツインを管理する](./how-to-manage-twin.md)
+* [ツイン グラフにクエリを実行する](./how-to-query-graph.md)

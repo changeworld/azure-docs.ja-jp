@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: thweiss
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8738f34ea9d038bbc5a0bc3d9f13be11db2b9e00
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 4f9f9c9688340a153efab189cc24ace13fc4da6e
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681712"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113589211"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -301,7 +301,7 @@ Azure Cosmos アカウントで使用されるカスタマー マネージド �
     $account | Set-AzResource -Force
     ```
 
-前のキーまたはキー バージョンは、24 時間後、または [Azure Key Vault 監査ログ](../key-vault/general/logging.md)に Azure Cosmos DB からそのキーまたはキー バージョンに対するアクティビティが出現しなくなった後に無効にすることができます。
+前のキーまたはキー バージョンは、[Azure Key Vault 監査ログ](../key-vault/general/logging.md)に Azure Cosmos DB からそのキーまたはキー バージョンに対するアクティビティが出現しなくなった後に無効にすることができます。 キーのローテーションから 24 時間が経過すれば、以前のキーまたはキーのバージョンに対するアクティビティが実行されることはないでしょう。
     
 ## <a name="error-handling"></a>エラー処理
 
@@ -341,7 +341,7 @@ Azure Cosmos DB でカスタマー マネージド キー (CMK) を使用して�
 
 ### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB の[分析ストア](analytical-store-introduction.md)とカスタマー マネージド キーを組み合わせて使用することはできますか?
 
-はい。ただし、分析ストアを有効にする前に、Azure Key Vault アクセス ポリシーで [Azure Cosmos DB アカウントのマネージド ID を使用](#using-managed-identity)する必要があります。
+はい。Azure Synapse Link では、Azure Cosmos DB アカウントのマネージド ID を使用したカスタマー マネージド キーの構成のみがサポートされています。 ご利用のアカウントで [Azure Synapse Link を有効にする](configure-synapse-link.md#enable-synapse-link)には、Azure Key Vault アクセス ポリシーで [Azure Cosmos DB アカウントのマネージド ID を使用](#using-managed-identity)する必要があります。
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>アカウント レベルのキーより細かい粒度をサポートする計画はありますか?
 

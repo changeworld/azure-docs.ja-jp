@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 72ba07090e6ce67501761d97876aa136f146d61c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 22a66ca16d8d2cb7ade82cb665f50cc9aae4b27b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437929"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747358"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes
 
@@ -45,7 +45,12 @@ Kubernetes マスター ノードは、ご利用のクラスターにとって�
 
 Kubernetes クラスター アーキテクチャの詳細については、[Kubernetes の主要な概念](https://kubernetes.io/docs/concepts/architecture/)に関するドキュメントを参照してください。
 
+マスター ノードとワーカー ノードは、CPU とメモリを消費する仮想マシンです。 Kubernetes ワークロードをデプロイする場合は、マスター VM とワーカー VM のコンピューティング要件を理解しておくことが重要です。
 
+|Kubernetes VM の種類|CPU とメモリの要件|
+|---------|---------|
+|マスター VM|4 コア、4 GB RAM|
+|ワーカー VM|12 コア、32 GB RAM|
 <!--The Kubernetes cluster control plane components make global decisions about the cluster. The control plane has:
 
 - *kubeapiserver* that is the front end of the Kubernetes API and exposes the API.

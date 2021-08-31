@@ -3,13 +3,13 @@ title: Azure portal を使用して VM を復元する
 description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します。たとえば、リージョンをまたがる復元機能があります。
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 05/01/2021
-ms.openlocfilehash: 26efe6cafc5829cedcb7bb74f8ea796256d45d10
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/06/2021
+ms.openlocfilehash: 75320c54c9496b1c978fdabb8a0a7560087f777c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966792"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738457"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -120,6 +120,9 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 1. **[復元]** で、 **[テンプレートのデプロイ]** を選択して、テンプレートのデプロイを開始します。
 
     ![復元ジョブのドリルダウン](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
+   
+   >[!Note]
+   >**[Allow storage account key access]\(ストレージ アカウント キーへのアクセスを許可する\)** が無効に設定されている Shared Access Signature (SAS) の場合は、 **[テンプレートのデプロイ]** を選択してもテンプレートはデプロイされません。
 
 1. テンプレートで提供されている VM 設定をカスタマイズするには、 **[テンプレートの編集]** を選択します。 さらにカスタマイズを追加する場合は、 **[パラメーターの編集]** を選択します。
     - カスタム テンプレートからのリソースのデプロイに関する[詳細情報](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
@@ -227,6 +230,51 @@ VM の復元が必要になることがある、一般的なシナリオは多�
 **1 つのフォレスト内の複数のドメインを復元する** | [フォレストの復旧](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)をお勧めします。
 
 詳細については、「[Active Directory ドメイン コントローラーのバックアップおよび復元](active-directory-backup-restore.md)」を参照してください。
+
+## <a name="restore-vms-with-managed-identities"></a>マネージド ID を使用して VM を復元する
+
+マネージド ID を使用すると、ユーザーが資格情報を管理する必要がなくなります。 マネージド ID は、Azure Active Directory (Azure AD) 認証をサポートするリソースに接続するときに使用する ID をアプリケーションに提供します。  
+
+Azure Backup により、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用してマネージド Azure VM を復元する柔軟性が得られます。 次の図に示すように、[システム マネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) またはユーザー マネージド ID を選択できます。 これは、Azure VM の [ **[復元の構成]** ブレード](#create-a-vm)の入力パラメーターの 1 つとして導入されています。 入力パラメーターの 1 つとして使用されるマネージド ID は、復元時にステージングの場所として使用されるストレージ アカウントへのアクセスにのみ使用され、他の Azure リソースの制御には使用されません。 これらのマネージド ID は、コンテナーに関連付けられている必要があります。
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/select-system-managed-identities-or-user-managed-identities.png" alt-text="システム マネージド ID またはユーザー マネージド ID を選択するためのスクリーンショット。":::
+
+システム割り当てまたはユーザー割り当てのマネージド ID を選択する場合は、対象となるステージング ストレージ アカウントのマネージド ID について次のアクションを確認してください。
+
+```json
+"permissions": [
+            {
+                "actions": [
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/write"
+                ],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
+                ],
+                "notDataActions": []
+            }
+```
+
+または、ステージングの場所 (ストレージ アカウント) にロールの割り当てを追加して、[[ストレージ アカウントのバックアップ共同作成者]](./blob-backup-configure-manage.md#grant-permissions-to-the-backup-vault-on-storage-accounts) および [[ストレージ BLOB データ共同作成者]](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) を割り当てて、復元操作が正常に行われるようにします。
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/add-role-assignment-on-staging-location.png" alt-text="ステージングの場所にロールの割り当てを追加するスクリーンショット。":::
+
+次の図に示すように、入力を MSI リソース ID として指定することで、[ユーザー マネージド ID](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) を選択することもできます。   
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/select-user-managed-identity-by-providing-input-as-msi-resource-id.png" alt-text="入力を MSI リソース ID として指定して、ユーザー マネージド ID を選択するスクリーンショット。":::
+
+>[!Note]
+>サポートはマネージド VM に対してのみ提供されます。クラシック VM とアンマネージド VM ではサポートされていません。 [ファイアウォールで制限されているストレージ アカウント](../storage/common/storage-network-security.md?tabs=azure-portal)の場合は、システム MSI のみサポートされています。
+>
+>リージョンをまたがる復元は、マネージド ID ではサポートされていません。
+>
+>現在、これは、すべての Azure パブリックおよび各国のクラウド リージョンで使用できます。
 
 ## <a name="track-the-restore-operation"></a>復元操作を追跡する
 

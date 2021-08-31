@@ -6,12 +6,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/12/2021
 ms.custom: devx-track-terraform, devx-track-azurepowershell
-ms.openlocfilehash: b1f40ff5175de88e101bfe8f22f9593502e7d6d0
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 9536002cb5c3e30f32479b74e761d7128090af26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005881"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729780"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure 顧客の使用状況の属性
 
@@ -33,6 +33,11 @@ ms.locfileid: "112005881"
 ## <a name="commercial-marketplace-azure-apps"></a>コマーシャル マーケットプレースの Azure アプリ
 
 コマーシャル マーケットプレースに公開されている Azure アプリの Azure の使用状況の追跡は、ほぼ自動的に行われます。 [マーケットプレースの Azure アプリのプランの技術的な構成](./azure-app-solution.md#define-the-technical-configuration)の一部として Resource Manager テンプレートをアップロードすると、パートナー センターでは、Azure Resource Manager で読み取り可能な追跡 ID を追加します。
+
+>[!NOTE]
+>アプリケーションの使用に関する属性がシステムで正しく設定されるようにするには、次のようにします。
+>1. リソースの種類 Microsoft.Resources/deployment と変数を使用して追跡 ID を定義する場合は、その変数をプランの **[技術的な構成]** ページのパートナー センターに表示される追跡 ID に置き換えます (下記の「[GUID を Resource Manager テンプレートに追加する](#add-a-guid-to-a-resource-manager-template)」を参照してください)。
+>2. Resource Manager テンプレートで、顧客の使用状況の属性以外の目的で Microsoft.Resources/deployments の種類のリソースを使用している場合、Microsoft では、ユーザーに代わって顧客の使用状況の属性の追跡 ID を追加できません。 新しいリソースの種類 Microsoft.Resources/deployments を追加し、プランの **[技術的な構成]** ページの パートナー センターに表示される追跡 ID を追加します (下記の「[GUID を Resource Manager テンプレートに追加する](#add-a-guid-to-a-resource-manager-template)」を参照してください)。
 
 Azure Resource Manager API を使用する場合は、コードでリソースをデプロイするときに Azure Resource Manager に渡すために、[以下の手順](#use-resource-manager-apis)に従って追跡 ID を追加する必要があります。 この ID は、パートナー センターのそのプランの [技術的な構成] ページに表示されます。 
 

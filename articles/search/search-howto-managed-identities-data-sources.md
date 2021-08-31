@@ -2,19 +2,17 @@
 title: マネージド ID を使用してデータ ソースへの接続を設定する
 titleSuffix: Azure Cognitive Search
 description: マネージド ID を使用してデータ ソースへのインデクサー接続を設定する方法を説明します
-manager: luisca
 author: markheff
 ms.author: maheff
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: efb7d0a239d31d82b55b5cd5066e6003391ace45
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/02/2021
+ms.openlocfilehash: bd4d10c32f1c850adf6dc886672b16937b553222
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558791"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179397"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>マネージド ID を使用してデータ ソースへのインデクサー接続を設定する
 
@@ -31,9 +29,22 @@ Azure Cognitive Search の[インデクサー](search-indexer-overview.md)は、
 
 ## <a name="using-managed-identities"></a>マネージド ID の使用
 
-[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) で自動管理される ID を Azure サービスで使用できるようにする機能です。 Azure Cognitive Search でこの機能を使用すると、資格情報が含まれていない接続文字列を使用してデータ ソース オブジェクトを作成できます。 その場合、検索サービスには、Azure ロールベースのアクセス制御 (Azure RBAC) によってデータ ソースへのアクセスが許可されます。
+[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) 内で自動管理される ID をアプリケーションで使用できるようにする機能です。 Azure Cognitive Search でこの機能を使用すると、資格情報が含まれていない接続文字列を使用してデータ ソース オブジェクトを作成できます。 その場合、検索サービスには、Azure ロールベースのアクセス制御 (Azure RBAC) によってデータ ソースへのアクセスが許可されます。
 
 マネージド ID を使用してデータ ソースを設定することで、データ ソースの資格情報を変更しても、インデクサーでは引き続きデータソースに接続できるようになります。 また、アカウント キーを含めたり、Key Vault を使用してアカウント キーを取得したりしなくても、コード内にデータ ソース オブジェクトを作成することができます。
+
+マネージド ID には 2 種類があります。 Azure Cognitive Search では、システム割り当てマネージド ID とユーザー割り当てマネージド ID がサポートされています。
+
+### <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
+
+[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) は、1 つの Azure サービスに割り当てることができます。 システム割り当てマネージド ID を 1 つの Azure Cognitive Search サービスに割り当てることができます。これは、その検索サービスのライフサイクルに関連付けられています。
+
+### <a name="user-assigned-managed-identity-preview"></a>ユーザー割り当てマネージド ID (プレビュー)
+
+> [!IMPORTANT]
+>この機能はパブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 REST API バージョン 2021-04-30-Preview および[管理 REST API 2021-04-01-Preview](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) によってこの機能が提供されます。
+
+[ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) は、1 つ以上の Azure サービスに割り当てることができるスタンドアロン Azure リソースです。 1 つの Azure Cognitive Search サービスに、1 つ以上のユーザー割り当てマネージド ID を割り当てることができます。 1 つのユーザー割り当てマネージド ID を複数の検索サービスに割り当てることができます。
 
 ## <a name="limitations"></a>制限事項
 

@@ -1,31 +1,28 @@
 ---
 title: Azure 内の Windows VM で PowerShell スクリプトを実行する
 description: このトピックでは、実行コマンド機能を使用して Azure Windows 仮想マシン内で PowerShell スクリプトを実行する方法について説明します
-services: automation
 ms.service: virtual-machines
 ms.collection: windows
 author: bobbytreed
 ms.author: robreed
-ms.date: 04/26/2019
+ms.date: 06/22/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-manager: carmonm
-ms.openlocfilehash: de84372a6d9e6aa2c506427cd601859bf1ac00f0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 81ffce59b1f99628580418836d690d650ea94a1c
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672668"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566248"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
 実行コマンド機能は、仮想マシン (VM) エージェントを使用して Azure Windows VM 内で PowerShell スクリプトを実行します。 これらのスクリプトは、マシンやアプリケーションの一般的な管理に使用できます。 これらを使用すれば、VM のアクセスおよびネットワークの問題を迅速に診断して修正し、VM を良好な状態に戻すことができます。
 
 
-
 ## <a name="benefits"></a>メリット
 
-仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Windows VM 用の [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) から使用します。
+仮想マシンには複数の方法でアクセスできます。 実行コマンドは、VM エージェントを使用して、仮想マシン上でスクリプトをリモートで実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual-machines-run-commands/run-command)、または Windows VM 用の [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) から使用します。
 
 この機能は、仮想マシン内でスクリプトを実行するすべてのシナリオで役立ちます。 これは、ネットワークまたは管理ユーザーの構成が正しくないために RDP または SSH ポートが開かれていない仮想マシンをトラブルシューティングして修正する、限られた方法の 1 つです。
 
@@ -45,6 +42,8 @@ ms.locfileid: "110672668"
 
 > [!NOTE]
 > 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 この拡張機能にこれらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行されても結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して Azure パブリック IP アドレスへのトラフィックを許可できます。
+> 
+> VM エージェントが NOT READY (準備中) 状態の場合、実行コマンド機能は動作しません。 Azure portal から、VM のプロパティでエージェントの状態を確認してください。
 
 ## <a name="available-commands"></a>使用可能なコマンド
 
@@ -53,16 +52,21 @@ ms.locfileid: "110672668"
 ```error
 The entity was not found in this Azure location
 ```
+<br>
 
-|**名前**|**説明**|
+| **名前** | **説明** |
 |---|---|
-|**RunPowerShellScript**|PowerShell スクリプトを実行します。|
-|**EnableRemotePS**|コンピューターを構成してリモート PowerShell を有効にします。|
-|**EnableAdminAccount**|ローカル管理者アカウントが無効になっているかどうかを確認し、無効になっている場合は有効にします。|
-|**IPConfig**| TCP/IP にバインドされているアダプターごとに、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイの詳細な情報を表示します。|
-|**RDPSettings**|レジストリ設定およびドメインのポリシー設定を確認します。 マシンがドメインの一部である場合はポリシー アクションを提案します。または、設定を既定値に変更します。|
-|**ResetRDPCert**|RDP リスナーに関連付けられている TLS または SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。|
-|**SetRDPPort**|リモート デスクトップ接続用の既定またはユーザー指定のポート番号を設定します。 ポートへの受信アクセスに対するファイアウォール規則を有効にします。|
+| **RunPowerShellScript** | PowerShell スクリプトを実行します |
+| **DisableNLA** | ネットワーク レベル認証を無効にします |
+| **DisableWindowsUpdate** | Windows Update の自動更新を無効にします |
+| **EnableAdminAccount** | ローカル管理者アカウントが無効になっているかどうかを確認し、無効になっている場合は有効にします。 |
+| **EnableEMS** | EMS を有効にします |
+| **EnableRemotePS** | コンピューターを構成してリモート PowerShell を有効にします。 |
+| **EnableWindowsUpdate** | Windows Update の自動更新を有効にします |
+| **IPConfig** | TCP/IP にバインドされているアダプターごとに、IP アドレス、サブネット マスク、およびデフォルト ゲートウェイの詳細な情報を表示します。 |
+| **RDPSetting** | レジストリ設定およびドメインのポリシー設定を確認します。 マシンがドメインの一部である場合はポリシー アクションを提案します。または、設定を既定値に変更します。 |
+| **ResetRDPCert** | RDP リスナーに関連付けられている TLS または SSL 証明書を削除し、RDP リスナーのセキュリティを既定値に戻します。 証明書に問題がある場合は、このスクリプトを使用します。 |
+| **SetRDPPort** | リモート デスクトップ接続用の既定またはユーザー指定のポート番号を設定します。 ポートへの受信アクセスに対するファイアウォール規則を有効にします。 |
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -82,7 +86,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="azure-portal"></a>Azure portal
 
-[Azure portal](https://portal.azure.com) 内の VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
+[Azure portal](https://portal.azure.com) で VM に移動し、左側のメニューの **[Operations]\(操作\)** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
 ![コマンドの一覧](./media/run-command/run-command-list.png)
 

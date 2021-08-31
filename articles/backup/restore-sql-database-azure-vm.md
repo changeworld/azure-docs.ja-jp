@@ -2,13 +2,13 @@
 title: Azure VM 上の SQL Server データベースを復元する
 description: この記事では、Azure VM 上で実行されており、Azure Backup でバックアップしてある SQL Server データベースを復元する方法について説明します。 [リージョンをまたがる復元] を使用して、データベースをセカンダリ リージョンに復元することもできます。
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: 7dd8d8d54fa7d33bb4a0935357597d19dd2368c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/06/2021
+ms.openlocfilehash: 312cf2918356c44b010097de4abf66be03f172a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97734404"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724551"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースを復元する
 
@@ -173,7 +173,7 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 復元オプションの 1 つである、リージョンをまたがる復元 (CRR) を使用すると、セカンダリ リージョン (Azure のペアになっているリージョン) で Azure VM 上でホストされている SQL データベースを復元できます。
 
-プレビュー期間中にこの機能にオンボードするには、「[作業を開始する前に](./backup-create-rs-vault.md#set-cross-region-restore)」セクションをお読みください。
+この機能にオンボードするには、[開始前の注意に関するセクション](./backup-create-rs-vault.md#set-cross-region-restore)を参照してください。
 
 CRR が有効になっているかどうかを確認するには、「[リージョンをまたがる復元の構成](backup-create-rs-vault.md#configure-cross-region-restore)」の手順に従ってください。
 
@@ -193,19 +193,15 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 ### <a name="restore-in-secondary-region"></a>セカンダリ リージョンに復元する
 
-セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ペインで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。
+セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ペインで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。 コンテナーがセカンダリ リージョンに存在し、SQL サーバーがセカンダリ リージョンのコンテナーに登録されている必要があります。
 
 ![復元する場所と方法](./media/backup-azure-sql-database/restore-secondary-region.png)
-
->[!NOTE]
->セカンダリ リージョンの仮想ネットワークは一意に割り当てる必要があり、そのリソース グループの他の VM には使用できません。
 
 ![復元進行中通知をトリガーする](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 >[!NOTE]
->
 >- 復元がトリガーされた後、データ転送フェーズでは、復元ジョブを取り消すことができません。
->- セカンダリ リージョンに復元するために必要な Azure ロールは、プライマリ リージョンにおけるものと同じです。
+>- リージョン間で復元操作を実行するために必要なロールまたはアクセス レベルは、サブスクリプションの "_バックアップ オペレーター_" ロール、ソースおよびターゲットの仮想マシンでの "_共同作成者 (書き込み)_ " アクセスです。 バックアップ ジョブを表示するため、サブスクリプションで必要な最小限の権限は _バックアップ閲覧者_ です。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>セカンダリ リージョンの復元ジョブの監視
 

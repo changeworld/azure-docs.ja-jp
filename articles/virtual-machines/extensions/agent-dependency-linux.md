@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.collection: linux
 ms.date: 06/01/2021
-ms.openlocfilehash: 97f557ec45530de3f42dd61ee1cded57fd7c33a0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ce4b7ee2fea9d5b2b7c92b5ade1b3ad146382214
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793748"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744980"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux 用 Azure Monitor Dependency 仮想マシン拡張機能
 
@@ -27,7 +27,7 @@ Linux 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs の�
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Azure Linux VM に対する Azure VM Dependency Agent 拡張機能のスキーマを示したものです。 
+次の JSON は、Azure Linux VM に対する Azure VM Dependency Agent 拡張機能のスキーマを示したものです。
 
 ```json
 {
@@ -101,7 +101,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 }
 ```
 
-拡張子 JSON をテンプレートのルートに配置すると、リソース名には親仮想マシンへの参照が含まれます。 種類には、入れ子にされた構成が反映されます。 
+拡張子 JSON をテンプレートのルートに配置すると、リソース名には親仮想マシンへの参照が含まれます。 種類には、入れ子にされた構成が反映されます。
 
 ```json
 {
@@ -132,31 +132,22 @@ az vm extension set \
     --vm-name myVM \
     --name DependencyAgentLinux \
     --publisher Microsoft.Azure.Monitoring.DependencyAgent \
-    --version 9.5 
+    --version 9.5
 ```
 
-## <a name="automatic-upgrade-preview"></a>自動アップグレード (プレビュー)
-マイナー バージョンの依存関係拡張機能を自動的にアップグレードする新しい機能が、パブリック プレビューで利用できるようになりました。 この機能を有効にするには、次の構成変更を実行する必要があります。
+## <a name="automatic-extension-upgrade"></a>拡張機能の自動アップグレード
+依存関係拡張機能の[マイナー バージョンを自動的にアップグレード](../automatic-extension-upgrade.md)する新しい機能が利用できるようになりました。
 
--   「[プレビュー アクセスの有効化](../automatic-extension-upgrade.md#enabling-preview-access)」に示されているいずれかの方法を使用して、サブスクリプションの機能を有効にします。
-- `enableAutomaticUpgrade` 属性をテンプレートに追加します。
+拡張機能の自動アップグレードを拡張機能に対して有効にするには、プロパティ `enableAutomaticUpgrade` が `true` に設定され、拡張機能テンプレートに追加されているようにする必要があります。 このプロパティは、すべての VM または VM スケール セットで個別に有効にする必要があります。 [有効化](../automatic-extension-upgrade.md#enabling-automatic-extension-upgrade)のセクションで説明されているいずれかの方法を使用して、VM または VM スケール セットに対してこの機能を有効にします。
 
-Dependency Agent 拡張機能バージョン管理スキームは、次の形式に従います。
+VM または VM スケール セットで拡張機能の自動アップグレードが有効になっていると、拡張機能の発行元がその拡張機能の新しいバージョンをリリースするたびに、拡張機能が自動的にアップグレードされます。 このアップグレードは、[こちら](../automatic-extension-upgrade.md#how-does-automatic-extension-upgrade-work)で説明されているように、可用性優先の原則に従って安全に適用されます。
 
-```
-<MM.mm.bb.rr> where M = Major version number, m = minor version number, b = bug number, r = revision number.
-```
+`enableAutomaticUpgrade` 属性の機能は、`autoUpgradeMinorVersion` の機能とは異なります。 拡張機能の発行元が新しいバージョンがリリースしたとき、`autoUpgradeMinorVersion` 属性はマイナー バージョンの更新を自動的にトリガーしません。 `autoUpgradeMinorVersion` 属性は、デプロイ時に新しいマイナー バージョンが使用可能な場合に、それを拡張機能で使用する必要があるかどうかを示します。 ただし、デプロイされると、このプロパティが true に設定されていても、再デプロイされない限り、拡張機能でマイナー バージョンのアップグレードは行われません。
 
-`enableAutomaticUpgrade` と `autoUpgradeMinorVersion` の属性の組み合わせによって、サブスクリプション内の仮想マシンのアップグレードの処理方法が決定されます。
-
-| enableAutomaticUpgrade | autoUpgradeMinorVersion | 結果 |
-|:---|:---|:---|
-| true | false | 新しいバージョンの bb.rr が存在する場合は、依存関係エージェントをアップグレードします。 たとえば、9.6.0.1355 を実行しており、新しいバージョンが 9.6.2.1366 になる場合、有効なサブスクリプションの仮想マシンは 9.6.2.1366 にアップグレードされます。 |
-| true | true |  これにより、新しいバージョンの mm.bb.rr または bb.rr が存在する場合、依存関係エージェントがアップグレードされます。 たとえば、9.6.0.1355 を実行しており、新しいバージョンが 9.7.1.1416 になる場合、有効なサブスクリプションの仮想マシンは 9.7.1.1416 にアップグレードされます。 また、9.6.0.1355 を実行しており、新しいバージョンが 9.6.2.1366 になる場合、有効なサブスクリプションの仮想マシンは 9.6.2.1366 にアップグレードされます。 |
-| false | true または false | 自動アップグレードが無効です。
+拡張機能のバージョンを最新の状態に保つために、拡張機能のデプロイで `enableAutomaticUpgrade` を使用することをお勧めします。
 
 > [!IMPORTANT]
-> テンプレートに `enableAutomaticUpgrade` を追加する場合は、API バージョン 2019-12-01 以降を使用してください。
+> テンプレートに `enableAutomaticUpgrade` を追加する場合は、必ず API バージョン 2019-12-01 以降で使用してください。
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
@@ -171,7 +162,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 拡張機能の実行の出力は、次のファイルにログ記録されます。
 
 ```
-/opt/microsoft/dependency-agent/log/install.log 
+/opt/microsoft/dependency-agent/log/install.log
 ```
 
 ### <a name="support"></a>サポート

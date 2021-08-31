@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 10caff631d59085aa2bbfcd573c3e3114b0306f7
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 3b64b77d4e9061e122c627154c4623fcebfce631
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560872"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178952"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -23,8 +23,6 @@ ms.locfileid: "111560872"
 [App Service Static Web Apps](https://azure.microsoft.com/services/app-service/static/) は、Azure Storage の静的 Web サイト ホスティングに代わる優れた選択肢であり、Web サイトでコンテンツのレンダリングが必要ない場合にも適してします。 App Service Static Web Apps では、GitHub ソースからグローバル デプロイまでのフル マネージドの継続的インテグレーションと継続的デリバリー (CI/CD) ワークフローが提供されます。
 
 Web サーバーでコンテンツのレンダリングが必要な場合は、[Azure App Service](https://azure.microsoft.com/services/app-service/) を使用できます。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up-a-static-website"></a>静的 Web サイトの設定
 
@@ -121,6 +119,36 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 静的 Web サイトのページでメトリックを有効にできます。 メトリックを有効にすると、 **$web** コンテナーのファイルに関するトラフィック統計情報が、メトリック ダッシュボードでレポートされます。
 
 静的 Web サイトのページでメトリックを有効にするには、「[Enable metrics on static website pages](storage-blob-static-website-how-to.md#metrics)」 (静的 Web サイト ページでメトリックを有効にする) を参照してください。
+
+## <a name="faq"></a>よく寄せられる質問
+
+##### <a name="does-the-azure-storage-firewall-work-with-a-static-website"></a>Azure Storage のファイアウォールは静的 Web サイトで動作しますか?
+
+ストレージ アカウントには組み込みの[ファイアウォール機能](../common/storage-network-security.md)がありますが、このファイアウォールは静的 Web サイトのエンドポイントには作用しません。 これは、BLOB、ファイル、テーブル、キュー サービスのエンドポイントなど、他のストレージ エンドポイントを保護するためにのみ使用できます。 
+
+##### <a name="do-static-websites-support-azure-active-directory-azure-ad"></a>静的 Web サイトでは、Azure Active Directory (Azure AD) はサポートされますか?
+
+はい。 ただし、OpenID を使用して Google 認証や Facebook などのソーシャル ID プロバイダーを使用するオプションはありません。
+
+##### <a name="how-do-i-use-a-custom-domain-with-a-static-website"></a>静的 Web サイトでのカスタム ドメインの使用方法を教えてください
+
+[Azure Content Delivery Network (Azure CDN)](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) を使用して、静的 Web サイトで[カスタム ドメイン](./static-website-content-delivery-network.md)を構成できます。 Azure CDN によって、世界中のどこからアクセスする場合でも Web サイトの待ち時間が一貫して短くなります。 
+
+##### <a name="how-do-i-use-a-custom-ssl-certificate-with-a-static-website"></a>静的 Web サイトでカスタム SSL 証明書をどのように使用しますか?
+
+[Azure CDN](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) を使用して、静的 Web サイトで[カスタム SSL](./static-website-content-delivery-network.md) 証明書を構成できます。 Azure CDN によって、世界中のどこからアクセスする場合でも Web サイトの待ち時間が一貫して短くなります。
+
+##### <a name="how-do-i-add-custom-headers-and-rules-with-a-static-website"></a>静的 Web サイトでカスタム ヘッダーとルールをどのように追加しますか?
+
+静的 Web サイトのホスト ヘッダーを構成するには、[Azure CDN - Verizon Premium](../../cdn/cdn-verizon-premium-rules-engine.md) を使用します。 [こちら](https://feedback.azure.com/forums/217298-storage/suggestions/34959124-allow-adding-headers-to-static-website-hosting-in)でフィードバックをお寄せください。
+
+##### <a name="why-am-i-getting-an-http-404-error-from-a-static-website"></a>静的 Web サイトで HTTP 404 エラーが発生するのはなぜですか?
+
+これは、正しくない大文字と小文字を使用してファイル名を参照した場合に発生する可能性があります。 たとえば、`index.html` ではなく `Index.html` になります。 静的 Web サイトの URL にあるファイル名と拡張子は、HTTP を介して提供される場合でも大文字と小文字が区別されます。 これは、Azure CDN エンドポイントがまだプロビジョニングされていない場合にも発生することがあります。 新しい Azure CDN をプロビジョニングした後、伝達が完了するまで、最大 90 分間待ってください。
+
+##### <a name="why-isnt-the-root-directory-of-the-website-not-redirecting-to-the-default-index-page"></a>Web サイトのルート ディレクトリが既定のインデックス ページにリダイレクトされないのはなぜですか?
+
+Azure portal で、お使いのアカウントの静的 Web サイト構成ページを開き、 **[インデックス ドキュメント名]** フィールドに設定されている名前と拡張子を見つけてください。 この名前が、ストレージ アカウントの **$web** コンテナーにあるファイルの名前と完全に同じであることを確認します。 静的 Web サイトの URL にあるファイル名と拡張子は、HTTP を介して提供される場合でも大文字と小文字が区別されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -16,7 +16,7 @@
       href: getting-started-feature.md
 - name: チュートリアル
   items:
-    - name: 1. Azure portal を使用してホスト プールを作成する
+    - name: 1. ホスト プールを作成する
       href: create-host-pools-azure-marketplace.md
     - name: 2. アプリ グループを管理する
       href: manage-app-groups.md
@@ -50,7 +50,7 @@
       href: powershell-module.md
     - name: ホスト プールとセッション ホストを作成する
       items:
-        - name: PowerShell
+        - name: PowerShell または Azure CLI を使用してホスト プールを作成する
           href: create-host-pools-powershell.md
         - name: Azure AD 参加済みセッション ホストをデプロイする
           href: deploy-azure-ad-joined-vm.md
@@ -60,7 +60,7 @@
           href: configure-vm-gpu.md
         - name: 既存のホスト プールを展開する
           href: expand-existing-host-pool.md
-        - name: PowerShell を使用してアプリ グループを管理する
+        - name: PowerShell または Azure CLI を使用してアプリ グループを管理する
           href: manage-app-groups-powershell.md
     - name: ホスト プールを削除する
       href: delete-host-pool.md

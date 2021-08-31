@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5563ff1f57f6b3684834a2488fc0665ac5eddd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ead99d955fbd82099b4ad577e99026e8e66aea5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102610044"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442416"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>API コネクタを使用してセルフサービス サインアップをカスタマイズおよび拡張する 
 
@@ -35,13 +35,13 @@ API コネクタは、API 呼び出しに関する HTTP エンドポイントの
 
 ユーザー フロー内には、API コネクタを有効にできる場所が 2 か所あります。
 
-- ID プロバイダーを使用してサインインした後
+- サインアップ時に ID プロバイダーとのフェデレーションを行った後
 - ユーザーを作成する前
 
 > [!IMPORTANT]
 > どちらの場合も、API コネクタは、サインイン時ではなく、ユーザーの **サインアップ** 時に呼び出されます。
 
-### <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
+### <a name="after-federating-with-an-identity-provider-during-sign-up"></a>サインアップ時に ID プロバイダーとのフェデレーションを行った後
 
 サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。 このステップでお客様が有効する可能性がある API コネクタのシナリオの例を次に示します。
 

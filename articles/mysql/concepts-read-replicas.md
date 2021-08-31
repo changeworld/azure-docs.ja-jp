@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89cb9122da21887165b2330f75dd316c184de823
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98250266"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121781077"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 読み取りレプリカ機能を使用すると、Azure Database for MySQL サーバーから、読み取り専用サーバーにデータをレプリケートできます。 ソース サーバーから最大 5 つのレプリカにレプリケートできます。 レプリカは、MySQL エンジンのネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
 
@@ -48,7 +50,38 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ソース サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカを作成できます。 サポートされているユニバーサル レプリカ リージョンは次のとおりです。
 
-オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部、米国西部 2、米国中西部。
+| リージョン | レプリカの可用性 | 
+| --- | --- | 
+| オーストラリア東部 | :heavy_check_mark: | 
+| オーストラリア東南部 | :heavy_check_mark: | 
+| Brazil South | :heavy_check_mark: | 
+| カナダ中部 | :heavy_check_mark: |
+| カナダ東部 | :heavy_check_mark: |
+| 米国中部 | :heavy_check_mark: | 
+| 米国東部 | :heavy_check_mark: | 
+| 米国東部 2 | :heavy_check_mark: |
+| 東アジア | :heavy_check_mark: | 
+| Japan East | :heavy_check_mark: | 
+| 西日本 | :heavy_check_mark: | 
+| 韓国中部 | :heavy_check_mark: |
+| 韓国南部 | :heavy_check_mark: |
+| 北ヨーロッパ | :heavy_check_mark: | 
+| 米国中北部 | :heavy_check_mark: | 
+| 米国中南部 | :heavy_check_mark: | 
+| Southeast Asia | :heavy_check_mark: | 
+| 英国南部 | :heavy_check_mark: | 
+| 英国西部 | :heavy_check_mark: | 
+| 米国中西部 | :heavy_check_mark: | 
+| 米国西部 | :heavy_check_mark: | 
+| 米国西部 2 | :heavy_check_mark: | 
+| 西ヨーロッパ | :heavy_check_mark: | 
+| インド中部* | :heavy_check_mark: | 
+| フランス中部* | :heavy_check_mark: | 
+| アラブ首長国連邦北部* | :heavy_check_mark: | 
+| 南アフリカ北部* | :heavy_check_mark: |
+
+> [!Note] 
+> *パブリック プレビューで Azure Database for MySQL に General Purpose Storage v2 があるリージョン  <br /> *これらの Azure リージョンでは、General Purpose Storage v1 と v2 の両方でサーバーを作成できます。 パブリック プレビュー段階の General Purpose Storage v2 を使用して作成されたサーバーの場合、レプリカ サーバーは、General Purpose Storage v2 をサポートする Azure リージョン内でのみ作成できます。
 
 ### <a name="paired-regions"></a>ペアになっているリージョン
 
@@ -141,11 +174,18 @@ GTID を構成するために、次のサーバー パラメーターを使用�
 |`enforce_gtid_consistency`|トランザクション セーフな方法でログに記録できるステートメントのみを実行できるようにすることで、GTID の一貫性を強制的に適用します。 GTID レプリケーションを有効にする前に、この値を `ON` に設定する必要があります。 |`OFF`|`OFF`:すべてのトランザクションが GTID の一貫性に違反することが許可されます。  <br> `ON`:すべてのトランザクションが GTID の一貫性に違反することが許可されません。 <br> `WARN`:すべてのトランザクションは GTID の一貫性に違反することが許可されますが、警告が生成されます。 | 
 
 > [!NOTE]
-> いったん GTID を有効になると、無効に戻すことはできません。 GTID をオフにする必要がある場合は、サポートにお問い合わせください。 
+> * いったん GTID を有効になると、無効に戻すことはできません。 GTID をオフにする必要がある場合は、サポートにお問い合わせください。 
+>
+> * GTID をある値から別の値に変更するには、一度に 1 つのステップをモードの昇順で実行します。 たとえば、gtid_mode が現在 OFF_PERMISSIVE に設定されている場合、ON_PERMISSIVE に変更することはできますが、ON にはできません。
+>
+> * レプリケーションの整合性を維持するために、マスターまたはレプリカ サーバーに対してこれを更新することはできません。
+>
+> * gtid_mode=ON を設定する前に enforce_gtid_consistency を ON に設定することをお勧めします
+
 
 GTID を有効にして整合性動作を構成するには、[Azure portal](howto-server-parameters.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md)、または [PowerShell](howto-configure-server-parameters-using-powershell.md) を使用して、`gtid_mode` と `enforce_gtid_consistency` のサーバー パラメーターを更新します。
 
-ソース サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID レプリケーションが使用されます。 レプリケーションの整合性を維持するために、ソースまたはレプリカ サーバーの `gtid_mode` を更新することはできません。
+ソース サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID レプリケーションが使用されます。 レプリケーションの一貫性を確保するために、GTID が有効になっているマスターまたはレプリカ サーバーを作成した後で `gtid_mode` を変更することはできません。 
 
 ## <a name="considerations-and-limitations"></a>考慮事項と制限事項
 

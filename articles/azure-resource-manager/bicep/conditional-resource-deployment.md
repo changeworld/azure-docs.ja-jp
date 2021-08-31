@@ -4,17 +4,17 @@ description: リソースを Bicep を使用して条件付きでデプロイす
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 9636444af81b000443dc72cf6e3fc1d8d6da5093
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/30/2021
+ms.openlocfilehash: f3c845757d6cd251905e39999c9858224ee67269
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537085"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724574"
 ---
 # <a name="conditional-deployment-in-bicep"></a>Bicep における条件付きデプロイ
 
-オプションで Bicep 内のリソースをデプロイする必要があることがあります。 `if` キーワードを使用してリソースをデプロイするかどうかを指定します。 この条件の値は true または false に解決されます。 値が true の場合、リソースが作成されます。 値が false の場合、リソースは作成されません。 この要素の値は、リソース全体にのみ適用できます。
+オプションで Bicep を使用してリソースまたはモジュールをデプロイする必要があることがあります。 `if` キーワードを使用して、リソースまたはモジュールをデプロイするかどうかを指定します。 この条件の値は true または false に解決されます。 値が true の場合、リソースが作成されます。 値が false の場合、リソースは作成されません。 この値は、リソースまたはモジュール全体にのみ適用できます。
 
 > [!NOTE]
 > 条件付きのデプロイは[子リソース](child-resource-name-type.md)にはカスケードされません。 リソースとその子リソースを条件付きでデプロイする場合は、リソースの種類ごとに同じ条件を適用する必要があります。
@@ -32,7 +32,17 @@ resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
 }
 ```
 
-条件は、依存関係の宣言と共に使用できます。 条件付きリソースの識別子が別のリソース (明示的な依存関係) の `dependsOn` で指定されている場合、テンプレートのデプロイ時に条件が false と評価されると依存関係は無視されます。 条件の評価結果が true であると依存関係は尊重されます。 条件付きリソース (暗黙の依存関係) のプロパティを参照することはできますが、場合によっては実行時エラーが発生することがあります。
+次の例では、条件付きでモジュールをデプロイします。
+
+```bicep
+param deployZone bool
+
+module dnsZone 'dnszones.bicep' = if (deployZone) {
+  name: 'myZoneModule'
+}
+```
+
+条件は、依存関係の宣言と共に使用できます。 [明示的な依存関係](resource-declaration.md#set-resource-dependencies)の場合、リソースがデプロイされていないと、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。 暗黙的な依存関係の場合、条件付きリソースのプロパティを参照することはできますが、デプロイ エラーが発生する可能性があります。
 
 ## <a name="new-or-existing-resource"></a>新規または既存のリソース
 
@@ -64,8 +74,6 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 
 パラメーター `newOrExisting` が **new** に設定されると、その条件は true に評価されます。 ストレージ アカウントはデプロイされます。 ただし、`newOrExisting` が **existing** に設定されると、その条件は false に評価され、ストレージ アカウントはデプロイされません。
 
-`condition` 要素を使用する完全なテンプレート例については、[新規または既存の仮想ネットワーク、ストレージ、およびパブリック IP を使用する VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-new-or-existing-conditions) に関するページを参照してください。
-
 ## <a name="runtime-functions"></a>ランタイム関数
 
 条件付きでデプロイされるリソースで [reference](./bicep-functions-resource.md#reference) または [list](./bicep-functions-resource.md#list) 関数を使用した場合、この関数はリソースがデプロイされていなくても評価されます。 この関数が存在しないリソースを参照する場合、エラーが返されます。
@@ -96,8 +104,6 @@ resource vmName_omsOnboarding 'Microsoft.Compute/virtualMachines/extensions@2017
 
 output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!' : 'Nothing to enable')
 ```
-
-他のリソースと同じように、条件付きリソースにる[依存するリソース](./resource-declaration.md#set-resource-dependencies)として設定します。 条件付きリソースがデプロイされていない場合、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

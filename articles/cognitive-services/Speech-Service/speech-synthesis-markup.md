@@ -3,20 +3,20 @@ title: 音声合成マークアップ言語 (SSML) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 音声合成マークアップ言語を使用して、テキスト読み上げの発音と韻律を制御します。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3ba2dad93778e9d4482fa00c854a73dbc616d290
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f69ea6fcc48cf12b012e15ab7ff1fd2b569c0889
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750409"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071528"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -764,6 +764,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 | `ordinal` | | テキストは序数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"3 つ目のオプションを選択します"。 |
 | `telephone` | | テキストは電話番号として読み上げられます。 `format` 属性には、国番号を表す数字を含めることができます。 たとえば、米国の場合は "1"、イタリアの場合は "39" になります。 音声合成エンジンでは、この情報を電話番号の発音のガイドに使用することができます。 電話番号には、国番号を含めることもできます。その場合は、`format` の国番号よりも優先されます。 音声合成エンジンでは次のように発音されます。<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />"My number is area code eight eight eight five five five one two one two" (私の番号は市外局番 888 555 1212 です)。 |
 | `time` | hms12、hms24 | テキストは時刻として読み上げられます。 `format` 属性では、時刻が 12 時間形式 (hms12) または 24 時間形式 (hms24) のいずれを使用するかを指定します。 時間、分、秒を表す数字を区切るには、コロンを使用します。 有効な時刻の例を次に示します。12:35、1:14:32、08:15、02:50:45。 音声合成エンジンでは次のように発音されます。<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"The train departs at four A M" (この電車は午前 4 時に発車します)。 |
+| `name` | | テキストは個人名として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`<say-as interpret-as="name">ED</say-as>`<br /><br />[æd] です。 <br />中国語名では、一部の文字は姓に出現するときに異なる発音になります。 たとえば、音声合成エンジンでは、次における仇の発音は <br /><br />`<say-as interpret-as="address">仇先生</say-as>`<br /><br /> [chóu] ではなく [qiú] です。 |
 
 **使用方法**
 

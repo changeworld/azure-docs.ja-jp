@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 06/01/2021
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3edb1db5fd714e8ff9b21a0617ac5053e77a0e20
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 76bfd886b471e5e4e2c3fa8a6733dcb67e7ea77d
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111905666"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113493237"
 ---
 |Language                                 |1.x         |2.x| 3.x |
 |-----------------------------------------|------------|---| --- |
@@ -18,7 +18,7 @@ ms.locfileid: "111905666"
 |[JavaScript](../articles/azure-functions/functions-reference-node.md#node-version)|GA (Node 6)|GA (Node 10、8)| GA (Node 14、12、10) |
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4.8)|GA (.NET Core 2.1<sup>2</sup>)| GA (.NET Core 3.1) |
 |[Java](../articles/azure-functions/functions-reference-java.md)|該当なし|GA (Java 8)| GA (Java 11、8)|
-|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |該当なし|GA (PowerShell Core 6)| GA (PowerShell 7、Core 6)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |該当なし|GA (PowerShell Core 6)| GA (PowerShell 7.0、Core 6)|
 |[Python](../articles/azure-functions/functions-reference-python.md#python-version)|該当なし|GA (Python 3.7、3.6)| GA (Python 3.8、3.7、3.6) <br/> プレビュー (Python 3.9)|
 |[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |該当なし|GA<sup>3</sup>| GA<sup>3</sup> |
 

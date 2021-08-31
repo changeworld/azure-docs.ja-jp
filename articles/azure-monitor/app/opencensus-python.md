@@ -7,12 +7,12 @@ ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 4f3ef03e3561cf054102b5f5c15ff571c3d4d28d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 988f32cae16a026ddef0294815ffd21ba0d81760
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742627"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991741"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -514,6 +514,13 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 - `max_batch_size`:一度にエクスポートされるテレメトリの最大サイズを指定します。
 - `proxies`:Azure Monitor にデータを送信するために使用する一連のプロキシを指定します。 詳細については、「[proxies](https://requests.readthedocs.io/en/master/user/advanced/#proxies)」 (プロキシ) を参照してください。
 - `storage_path`:ローカル ストレージ フォルダーが存在する場所へのパス (未送信のテレメトリ)。 `opencensus-ext-azure` v 1.0.3 以降の既定のパスは、OS の一時ディレクトリ + `opencensus-python` + `your-ikey` です。 v1.0.3 より前の既定のパスは、$USER + `.opencensus` + `.azure` + `python-file-name` です。
+
+## <a name="authentication-preview"></a>認証 (プレビュー)
+> [!NOTE]
+> 認証機能は、`opencensus-ext-azure` v1.1b0 以降で利用できます。
+
+Azure Monitor エクスポーターはそれぞれ、Azure Active Directory (AAD) による OAuth 認証を用いて安全にテレメトリのペイロードを送信する構成をサポートします。
+詳細については、[認証](./azure-ad-authentication.md)に関するドキュメントを参照してください。
 
 ## <a name="view-your-data-with-queries"></a>クエリを使用してデータを表示する
 

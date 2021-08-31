@@ -3,19 +3,19 @@ title: Audio Content Creation - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Audio Content Creation は、Microsoft のテキスト読み上げ出力をご使用のアプリや製品に合わせてカスタマイズしたり微調整したりするためのオンライン ツールです。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.author: trbye
-ms.openlocfilehash: 94e060176b921529a42e28e8c735b0f1cdda5293
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 087459b5831aa69c6e30e1dbe824d1902facbc2d
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075080"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419198"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
@@ -103,7 +103,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ```xml
 <speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="en-US">
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)">
     Welcome to use Audio Content Creation <break time="10ms" />to customize audio output for your products.
     </voice>
 </speak>
@@ -141,9 +141,10 @@ Welcome to use Audio Content Creation to customize audio output for your product
 2. **[アクセス制御 (IAM)]** をクリックします。 **[ロールの割り当て]** タブをクリックして、このサブスクリプションのすべてのロールの割り当てを表示します。
     :::image type="content" source="media/audio-content-creation/access-control-roles.png" alt-text="[ロールの割り当て] タブ":::
 3. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。 [ロール] ドロップダウン リストで、 **[Cognitive Service User]\(Cognitive Service ユーザー\)** ロールを選択します。 この音声リソースの所有権をユーザーに付与する場合は、 **[所有者]** ロールを選択します。
-4. リストからユーザーを選択します。 一覧にユーザーが表示されない場合には、[選択] ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。 ユーザーがこのディレクトリに存在しない場合は、そのユーザーの [Microsoft アカウント](https://account.microsoft.com/account) (Azure Active Directory によって信頼されている) を入力できます。
-5. **[保存]** をクリックしてロールを割り当てます。 ユーザーは招待メールを受け取ります。 電子メールで **[招待を承諾]**  >  **[Azure への参加を承諾]** をクリックし、招待を受け入れます。 その後、ユーザーは Azure portal にリダイレクトされます。 ユーザーが Azure portal で行う必要のあるアクションはありません。
-6. しばらくすると、そのユーザーには、音声リソース スコープで Cognitive Service ユーザー ロールが割り当てられます。 ユーザーは [[Audio Content Creation]](https://aka.ms/audiocontentcreation) ページにアクセスするか、最新の情報に更新し、開始する音声リソースを選択できます。 
+4. ユーザーのメール アドレスを入力し、ディレクトリ内のユーザーを選択します。 メール アドレスは、Azure Active Directory によって信頼されている **Microsoft アカウント** である必要があります。 ユーザーは、個人のメール アドレスを使用して [Microsoft アカウント](https://account.microsoft.com/account)に簡単にサインアップできます。 
+5. **[保存]** をクリックしてロールを割り当てます。 
+6. ユーザーは招待メールを受け取ります。 電子メールで **[招待を承諾]**  >  **[Azure への参加を承諾]** をクリックし、招待を受け入れます。 その後、ユーザーは Azure portal にリダイレクトされます。 ユーザーが Azure portal 内で行う必要のあるアクションはありません。 しばらくすると、ユーザーには音声リソース スコープでユーザーロールが割り当てられ、この音声リソースにアクセスできるようになります。 ユーザーが招待メールを受信しなかった場合は、[ロールの割り当て] でユーザーのアカウントを検索し、ユーザーのプロファイル内に移動できます。 [ID] -> [招待が受け入れられました] を探し、 **[(管理)]** をクリックして、電子メールの招待を再送信します。 招待リンクをユーザーにコピーすることもできます。 
+7. ユーザーは [Audio Content Creation](https://aka.ms/audiocontentcreation) 製品ページにアクセスするか最新の情報に更新し、ユーザーの Microsoft アカウントでサインインします。 すべての音声製品の中から **[Audio Content Creation]** ブロックを選択します。 ポップアップ ウィンドウまたはページの右上にある設定で、音声リソースを選択します。 ユーザーが使用可能な音声リソースを見つけられない場合は、適切なディレクトリにいるかどうかを確認します。 適切なディレクトリを確認するには、右上隅にあるアカウント プロファイルをクリックし、[現在のディレクトリ] の横にある **[切り替え]** をクリックします。 複数のディレクトリを使用できる場合は、複数のディレクトリにアクセスできることを意味します。 別のディレクトリに切り替えて設定に移動し、適切な音声リソースが使用可能かどうかを確認します。 
 
     :::image type="content" source="media/audio-content-creation/add-role-first.png" alt-text="ロールの追加ダイアログ":::
 
@@ -162,9 +163,9 @@ Welcome to use Audio Content Creation to customize audio output for your product
 いずれかのユーザーが他のユーザーにアクセス権を付与できるようにする場合は、そのユーザーに音声リソースの所有者ロールを付与し、そのユーザーを Azure ディレクトリ閲覧者として設定する必要があります。
 1. ユーザーを音声リソースの所有者として追加します。 [ユーザーを音声リソースに追加する方法](#add-users-to-a-speech-resource)を参照してください。
     :::image type="content" source="media/audio-content-creation/add-role.png" alt-text="ロールの所有者フィールド":::
-1. [Azure portal](https://portal.azure.com/) で、左上にある折りたたまれたメニューを選択します。 **[Azure Active Directory]** をクリックして、 **[ユーザー]** をクリックします。
-1. ユーザーの Microsoft アカウントを検索し、ユーザーの詳細ページに移動します。 **[割り当てられたロール]** をクリックします。
-1. **[割り当ての追加]**  ->  **[ディレクトリ閲覧者]** をクリックします。
+2. [Azure portal](https://portal.azure.com/) で、左上にある折りたたまれたメニューを選択します。 **[Azure Active Directory]** をクリックして、 **[ユーザー]** をクリックします。
+3. ユーザーの Microsoft アカウントを検索し、ユーザーの詳細ページに移動します。 **[割り当てられたロール]** をクリックします。
+4. **[割り当ての追加]**  ->  **[ディレクトリ閲覧者]** をクリックします。 [割り当ての追加] ボタンがグレー表示されている場合は、アクセス権がないことを意味します。 ユーザーに割り当てを追加できるのは、このディレクトリの全体管理者のみです。
 
 ## <a name="see-also"></a>関連項目
 

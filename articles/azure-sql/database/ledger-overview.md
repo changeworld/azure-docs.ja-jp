@@ -1,27 +1,27 @@
 ---
 title: Azure SQL Database 台帳の概要
 description: Azure SQL Database 台帳機能の基本について説明します。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: bbca4e9f4ec7ccf2b1bfd2927dd0f76eb51161b7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6b8ca057d896cc7fa353e8b09b1d1667b87cc273
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077070"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727056"
 ---
 # <a name="azure-sql-database-ledger"></a>Azure SQL Database 台帳
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリックプ レビュー段階であり、米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
 
 データベース システムに格納されているデータの整合性に関する信頼を確立することは、財務、医療、その他の機密データを管理するすべての組織にとって長年の問題でした。 [Azure SQL Database](sql-database-paas-overview.md) の台帳機能は、データベースに改ざん防止機能を提供します。 監査者や他のビジネス関係者などの他の関係者に対して、データが改ざんされていないことを暗号学的に証明できます。
 
@@ -61,7 +61,7 @@ ms.locfileid: "112077070"
 
 データベースによって受信された各トランザクションは、暗号学的にハッシュされます (SHA-256)。 ハッシュ関数では、トランザクションの値と、ハッシュ関数への入力として以前のトランザクションのハッシュが使用されます。 (値には、トランザクションに含まれる行のハッシュが含まれています)。関数は、ブロックチェーンのように、すべてのトランザクションを暗号学的にリンクします。 
 
-暗号学的にハッシュされた ([データベース ダイジェスト](#database-digests)) は、データベースの状態を表します。 それらは、定期的に生成されて、Azure SQL Database 外部の改ざん防止保存場所に格納されます。 保存場所の例としては、[Azure Blob Storage の不変ストレージ機能](../../storage/blobs/storage-blob-immutable-storage.md)や [Azure Confidential Ledger](../../confidential-ledger/index.yml) があります。 データベース ダイジェストを後で使用し、ダイジェスト内のハッシュの値をデータベース内の計算されたハッシュと比較することにより、データベースの整合性を検証します。 
+暗号学的にハッシュされた ([データベース ダイジェスト](#database-digests)) は、データベースの状態を表します。 それらは、定期的に生成されて、Azure SQL Database 外部の改ざん防止保存場所に格納されます。 保存場所の例としては、[Azure Blob Storage の不変ストレージ機能](../../storage/blobs/immutable-storage-overview.md)や [Azure Confidential Ledger](../../confidential-ledger/index.yml) があります。 データベース ダイジェストを後で使用し、ダイジェスト内のハッシュの値をデータベース内の計算されたハッシュと比較することにより、データベースの整合性を検証します。 
 
 台帳機能は、次の 2 つの形式 Azure SQL Database テーブルに導入されます。
 
@@ -116,7 +116,7 @@ ms.locfileid: "112077070"
 2. これらの変更を含むデータベースを表すハッシュを生成する。
 3. ブロック内のトランザクションの更新されたハッシュを表すダイジェストを変更する。 
 
-台帳を使用すると、データベース ダイジェストを自動的に生成して、[不変ストレージ](../../storage/blobs/storage-blob-immutable-storage.md)や [Azure Confidential Ledger](../../confidential-ledger/index.yml) に格納し、改ざんを防ぐことができます。 また、ユーザーが手動でデータベース ダイジェストを生成し、自分の選択した場所に格納することもできます。 データベース ダイジェストは、台帳テーブルに格納されているデータが改ざんされていないことを確認するために、後で使用されます。
+台帳を使用すると、データベース ダイジェストを自動的に生成して、[不変ストレージ](../../storage/blobs/immutable-storage-overview.md)や [Azure Confidential Ledger](../../confidential-ledger/index.yml) に格納し、改ざんを防ぐことができます。 また、ユーザーが手動でデータベース ダイジェストを生成し、自分の選択した場所に格納することもできます。 データベース ダイジェストは、台帳テーブルに格納されているデータが改ざんされていないことを確認するために、後で使用されます。
 
 ### <a name="ledger-verification"></a>台帳の検証
 

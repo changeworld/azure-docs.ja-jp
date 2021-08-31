@@ -6,16 +6,16 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 88886f46f028da19f5e5b75f42e5d96a09f2213a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 1b13d49707402143c59078aa3e73cd93db1b10de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795565"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748077"
 ---
 # <a name="handle-false-positives-in-azure-sentinel"></a>Azure Sentinel での偽陽性の処理
 
-ネットワークで疑わしい問題が発生すると、[Azure Sentinel の分析ルール](tutorial-detect-threats-built-in.md)によって通知されます。 完璧な分析ルールはありません。必ず処理が必要な偽陽性を受け取ります。 この記事では、オートメーションを使用するか、スケジュールが設定された分析ルールを変更して、偽陽性を処理する方法について説明します。
+ネットワークで疑わしい問題が発生すると、[Azure Sentinel の分析ルール](detect-threats-built-in.md)によって通知されます。 完璧な分析ルールはありません。必ず処理が必要な偽陽性を受け取ります。 この記事では、オートメーションを使用するか、スケジュールが設定された分析ルールを変更して、偽陽性を処理する方法について説明します。
 
 ## <a name="false-positive-causes-and-prevention"></a>偽陽性の原因と防止
 
@@ -31,10 +31,10 @@ ms.locfileid: "109795565"
 
 - **オートメーション ルール** では、分析ルールを変更することなく、例外を作成します。
 - **スケジュールが設定された分析ルールの変更** では、より詳細で永続的な例外を許可します。
-  
+
 次の表で、各方法の特徴について説明します。
 
-  
+
 |Method|特徴|
 |-|-|
 |**オートメーション ルール**|<ul><li>複数の分析ルールに適用できる。</li><li>監査証跡が保持される。 例外によってインシデントの作成は回避されますが、アラートは監査のために引き続き記録されます。</li><li>多くの場合、アナリストによって生成される。</li><li>限られた時間で例外の適用が許可される。 たとえば、メンテナンス作業によって、メンテナンス期間外では真のインシデントになる偽陽性がトリガーされる場合があります。</li></ul>|
@@ -51,17 +51,17 @@ ms.locfileid: "109795565"
 1. **[Create new automation rule]\(新しいオートメーション ルールの作成\)** サイドバーで、必要に応じて、アラート ルール名だけではなく、新しいルール名を変更して例外を識別します。
 1. **[条件]** の下に、必要に応じて、例外を適用する **分析ルール名** を追加します。
 1. サイドバーには、現在のインシデントで、偽陽性の原因となった可能性がある特定のエンティティが表示されます。 自動提案を受け入れるか、修正して例外を微調整します。 たとえば、IP アドレスの条件を変更して、サブネット全体に適用することができます。
-   
+
    :::image type="content" source="media/false-positives/create-rule.png" alt-text="Azure Sentinel でインシデントのオートメーション ルールを作成する方法を示すスクリーンショット。":::
-   
+
 1. トリガーを定義した後は、引き続きそのルールの動作を定義できます。
-   
+
    :::image type="content" source="media/false-positives/apply-rule.png" alt-text="Azure Sentinel でオートメーション ルールの作成と適用を完了する方法を示すスクリーンショット。":::
-   
+
    - このルールは、例外条件を満たすインシデントをクローズするように既に構成されています。
    - 自動的にクローズされたインシデントには、例外を説明するコメントを追加できます。 たとえば、インシデントが既知の管理アクティビティからのものであることを指定できます。
    - 既定では、ルールは 24 時間後に自動的に期限が切れるように設定されます。 この有効期限は必要な場合があり、偽陰性のエラーが発生する可能性を減らします。 より長い例外が必要な場合は、 **[ルールの有効期限]** を後の時間に設定してください。
-   
+
 1. **[適用]** を選択して例外をアクティブにします。
 
 > [!TIP]
@@ -75,7 +75,7 @@ ms.locfileid: "109795565"
 
 既存の分析ルールを編集するには、Azure Sentinel の左側のナビゲーション メニューから、 **[オートメーション]** を選択します。 編集するルールを選択し、右下にある **[編集]** を選択して、**分析ルール ウィザード** を開きます。
 
-**分析ルール ウィザード** を使用して分析ルールを作成および編集する方法について詳しくは、「[チュートリアル: 脅威を検出するためのカスタム分析規則を作成する](tutorial-detect-threats-custom.md)」をご覧ください。
+**分析ルール ウィザード** を使用して分析ルールを作成および編集する方法の詳細については、「[脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)」をご覧ください。
 
 一般的なルール プリアンブルで例外を実装するために、ルール クエリの先頭付近に `where IPAddress !in ('<ip addresses>')` のような条件を追加できます。 この行により、ルールから特定の IP アドレスが除外されます。
 
@@ -146,6 +146,7 @@ let subnets = _GetWatchlist('subnetallowlist');
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、次を参照してください。
+- [UEBA データを使用して擬陽性を分析する](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
 - [自動化ルールで Azure Sentinel でのインシデント処理を自動化する](automate-incident-handling-with-automation-rules.md)
-- [チュートリアル:脅威を検出するためのカスタム分析規則を作成する](tutorial-detect-threats-custom.md)
+- [脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)
 - [Azure Sentinel ウォッチリストを使用する](watchlists.md)

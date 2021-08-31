@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a80770013d373dbbd1ca672fbd2153731b604f5c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 619c29b2c28c04e1cbf4d4dcda8fe3048234e7dd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079555"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752177"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して管理を自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -78,6 +78,7 @@ SQL Server IaaS Agent 拡張機能には、SQL Server VM を管理するため�
 | **ポータルでディスク使用率を表示する** | Azure portal 内の SQL データ ファイルのディスク使用率をグラフィカルに表示できます。  <br/> 管理モード: [完全] | 
 | **柔軟なライセンス** | ライセンス持ち込み (「Azure ハイブリッド特典」とも呼ばれます) から従量課金制のライセンス モデルに、またはその逆に[シームレスに移行](licensing-model-azure-hybrid-benefit-ahb-change.md)することで、コストを節約できます。 <br/> 管理モード: Lightweight および完全| 
 | **柔軟なバージョン/エディション** | SQL Server の[バージョン](change-sql-server-version.md)または[エディション](change-sql-server-edition.md)を変更する場合は、SQL Server VM 全体を再デプロイすることなく、Azure portal 内のメタデータを更新できます。  <br/> 管理モード: Lightweight および完全| 
+| **Security Center ポータルの統合** | [Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md) を有効にすると、Azure portal の [SQL 仮想マシン](manage-sql-vm-portal.md) リソースに Security Center 推奨事項を直接表示できます。 詳細については、[セキュリティのベスト プラクティス](security-considerations-best-practices.md)を参照してください。  <br/> 管理モード: Lightweight および完全| 
 
 
 ## <a name="management-modes"></a>管理モード
@@ -173,4 +174,4 @@ SQL Server IaaS 拡張機能を Azure VM 上の SQL Server にインストール
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)」を参照してください。
 
-詳細については、[よく寄せられる質問](frequently-asked-questions-faq.yml)を参照してください。 
+詳細については、[よく寄せられる質問](frequently-asked-questions-faq.yml)を参照してください。

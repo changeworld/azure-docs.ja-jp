@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 460176dd8c86abc59d2f82948a6a35655b9eef84
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: fae919afc12afd5a6169dd119b57ae72ae7c14f0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530528"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472880"
 ---
 ### <a name="functional-limits"></a>機能制限
 
@@ -58,4 +58,4 @@ ms.locfileid: "111530528"
 
 Azure Digital Twins モデルの DTDL ドキュメント内のデータ型とフィールドに関する制限事項については、GitHub の仕様ドキュメントを参照してください。[Digital Twins Definition Language (DTDL) - バージョン 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
-クエリの待機時間の詳細は、[クエリ言語](../articles/digital-twins/concepts-query-language.md#considerations-for-querying)に関するセクションで説明しています。 クエリ言語の特定の機能の制約については、[クエリの参考ドキュメント](../articles/digital-twins/concepts-query-language.md#reference-documentation)をご覧ください。
+クエリの待ち時間の詳細は、[クエリ言語](../articles/digital-twins/concepts-query-language.md#considerations-for-querying)に関するセクションで説明しています。 クエリ言語の特定の機能の制約については、[クエリの参考ドキュメント](../articles/digital-twins/concepts-query-language.md#reference-documentation)をご覧ください。

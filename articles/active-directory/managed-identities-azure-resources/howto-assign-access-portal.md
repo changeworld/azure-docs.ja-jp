@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: ''
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 06/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6584754edf3ff7ae31c3b9ace72baf16459dbc44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eeff666af9d680baa037415cedb19077de9c061f
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93359996"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966358"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure portal を使用してリソースにマネージド ID アクセスを割り当てる
 
@@ -41,9 +42,13 @@ ms.locfileid: "93359996"
 
 2. アクセス制御を変更する目的のリソースに移動します。 この例では、ストレージ アカウントに Azure 仮想マシンへのアクセスを許可するため、ストレージ アカウントに移動します。
 
-3. リソースの **[アクセス制御 (IAM)]** ページを選択し、 **[+ ロール割り当ての追加]** を選択します。 その後、 **[ロール]** 、 **[Assign access to]\(アクセスの割り当て先\)** の順に指定して、該当の **[サブスクリプション]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、 **[保存]** を選択します。 
+1. **[アクセス制御 (IAM)]** を選択します。
 
-   ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
+
+1. ロールとマネージド ID を選択します。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
      
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,17 +2,18 @@
 title: Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 description: Azure-SSIS 統合ランタイムを Azure 仮想ネットワークに参加させる方法について説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 11/02/2020
+ms.date: 07/16/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0df96e2c1e238beafabb60aaa00c668f521d0c70
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 55ad870da1b89e24777647613f607038089863e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739454"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 
@@ -55,7 +56,7 @@ Azure-SSIS IR を仮想ネットワークに参加させる場合は、次の重
 
 - 従来の仮想ネットワークが、Azure-SSIS IR とは異なる場所にあるオンプレミス ネットワークに既に接続されている場合は、Azure-SSIS IR を参加させる [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)を作成できます。 次に、[クラシックと Azure Resource Manager の間の仮想ネットワーク](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)接続を構成します。 
  
-- Azure Resource Manager 仮想ネットワークが Azure-SSIS IR とは異なる場所にあるオンプレミス ネットワークに既に接続されている場合は、まず Azure-SSIS IR を参加させる [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)を作成できます。 次に、Azure Resource Management と Azure Resource Manager 間の仮想ネットワーク接続を構成します。 
+- Azure Resource Manager 仮想ネットワークが Azure-SSIS IR とは異なる場所にあるオンプレミス ネットワークに既に接続されている場合は、まず Azure-SSIS IR を参加させる [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)を作成できます。 次に、[Azure Resource Management と Azure Resource Manager 間の仮想ネットワーク](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)接続を構成します。 
 
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>SQL Database での SSIS カタログのホスト
 
@@ -72,7 +73,7 @@ SSIS パッケージで、[仮想ネットワーク サービス エンドポイ
 SSIS パッケージで、特定の静的パブリック IP アドレスのみを許可するデータ ストアおよびリソースにアクセスするときに、Azure-SSIS IR からのそれらのリソースへのアクセスをセキュリティで保護する必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させながら[パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)を関連付け、それらの IP アドレスからのアクセスを許可するために関連するリソースに IP ファイアウォール規則を追加することができます。 これを行うには、次の 2 つの方法があります。 
 
 - Azure-SSIS IR を作成するときに、独自のパブリック IP アドレスを使用し、[Data Factory UI または SDK](#join-the-azure-ssis-ir-to-a-virtual-network) を介して指定することができます。 指定したパブリック IP アドレスが使用されるのは、Azure-SSIS IR の送信インターネット接続のみであり、サブネット内の他のデバイスでは使用されません。
-- サブネットに対して、Azure-SSIS IR を参加させ、このサブネット内のすべての送信接続で指定したパブリック IP アドレスが使用されるように [Virtual Network NAT](../virtual-network/nat-overview.md) を設定することもできます。
+- サブネットに対して、Azure-SSIS IR を参加させ、このサブネット内のすべての送信接続で指定したパブリック IP アドレスが使用されるように [Virtual Network NAT](../virtual-network/nat-gateway/nat-overview.md) を設定することもできます。
 
 すべての場合に、仮想ネットワークは Azure Resource Manager デプロイ モデルでのみデプロイすることができます。
 
@@ -157,7 +158,7 @@ Azure-SSIS IR によって使用されるサブネットに NSG を実装する�
 
 -   **Azure-SSIS IR の受信要件**
 
-| Direction | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
+| Direction | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
 |---|---|---|---|---|---|---|
 | 受信 | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877 (IR を Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS IR のノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
 | 受信 | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | (省略可能) この規則は、Microsoft サポーターがお客様に対して、高度なトラブルシューティングのために開くように依頼した場合にのみ必要になり、トラブルシューティングの直後に閉じることができます。 **CorpNetSaw** サービス タグでは、Microsoft 企業ネットワーク上のセキュリティで保護されたアクセス ワークステーションでのみ、リモート デスクトップの使用が許可されます。 このサービス タグはポータルから選択することはできず、Azure PowerShell または Azure CLI 経由でのみ使用できます。 <br/><br/> NIC レベルの NSG では、ポート 3389 が既定で開かれ、サブネット レベルの NSG ではポート 3389 を制御できます。一方、保護のために各 IR ノードの Windows ファイアウォール規則では既定で、Azure-SSIS IR によってポート 3389 の送信が禁止されています。 |
@@ -165,7 +166,7 @@ Azure-SSIS IR によって使用されるサブネットに NSG を実装する�
 
 -   **Azure-SSIS IR の送信要件**
 
-| Direction | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
+| Direction | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
 |---|---|---|---|---|---|---|
 | 送信 | TCP | VirtualNetwork | * | AzureCloud | 443 | 仮想ネットワークの Azure-SSIS IR のノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
 | 送信 | TCP | VirtualNetwork | * | インターネット | 80 | (省略可能) 仮想ネットワーク内の Azure-SSIS IR のノードでは、このポートを使用して、インターネットから証明書失効リストをダウンロードします。 このトラフィックをブロックすると、IR の開始時にパフォーマンスが低下し、証明書の使用状況について証明書失効リストを確認する機能が失われる可能性があります。 送信先を特定の FQDN にさらに絞り込む場合は、「**Azure ExpressRoute または UDR を使用する**」のセクションを参照してください|

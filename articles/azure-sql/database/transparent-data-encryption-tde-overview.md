@@ -11,28 +11,32 @@ ms.topic: conceptual
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 10/12/2020
-ms.openlocfilehash: f93d65b4d10c1a8454a8e24b5cb081dae4d6943e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 06/23/2021
+ms.openlocfilehash: 16886e185d27a67cdea64c4214ca6132e714e9d9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812806"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741209"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance および Azure Synapse Analytics の透過的なデータ暗号化
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) は、保存データを暗号化することによって、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics を悪意のあるオフライン アクティビティの脅威から保護するために役立ちます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 新しくデプロイされるすべての SQL Database では、TDE は既定で有効になっています。Azure SQL Database や Azure SQL Managed Instance の古いデータベースでは手動で有効にする必要があります。 Azure Synapse Analytics には、TDE を手動で有効にする必要があります。
+[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) は、保存データを暗号化することによって、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics を悪意のあるオフライン アクティビティの脅威から保護するために役立ちます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 新しくデプロイされるすべての Azure SQL Database では、TDE は既定で有効になっています。Azure SQL Database の古いデータベースでは手動で有効にする必要があります。 Azure SQL Managed Instance では、TDE は、新しく作成されたデータベースでインスタンス レベルで有効化されます。 Azure Synapse Analytics には、TDE を手動で有効にする必要があります。 
+
+> [!NOTE]
+> この記事は、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (専用 SQL プール (以前の SQL DW)) に適用されます。 Synapse ワークスペース内の専用 SQL プールの Transparent Data Encryption に関するドキュメントについては、[Azure Synapse Analytics の暗号化](../../synapse-analytics/security/workspaces-encryption.md)に関する記事を参照してください。
 
 TDE では、ページ レベルでデータのリアルタイム I/O 暗号化と暗号化解除が実行されます。 各ページは、メモリに読み込まれるときに暗号化解除され、ディスクに書き込まれる前に暗号化されます。 TDE では、データベース暗号化キー (DEK) という対称キーを使用してデータベース全体のストレージが暗号化されます。 データベースの起動時に、DEK の暗号化は解除され、SQL Server データベース エンジン プロセスでデータベース ファイルの暗号化解除と再暗号化を行うために使用されます。 DEK は TDE 保護機能によって保護されます。 TDE 保護機能は、サービスによって管理される証明書 (サービスによって管理される透過的なデータ暗号化) または [Azure Key Vault](../../key-vault/general/security-features.md) に格納される非対称キー (顧客によって管理される透過的なデータ暗号化) のどちらかです。
 
 Azure SQL Database と Azure Synapse の場合、TDE 保護機能は[サーバー](logical-servers.md) レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 *サーバー* という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
 
 > [!IMPORTANT]
-> SQL Database で新しく作成されたすべてのデータベースは、サービスによって管理される透過的なデータ暗号化を使用して既定で暗号化されます。 2017 年 5 月より前に作成された既存の SQL データベースと、復元、geo レプリケーション、データベース コピーによって作成された SQL データベースは、既定では暗号化されません。 2019 年 2 月より前に作成された既存の SQL Managed Instance データベースは、既定では暗号化されません。 復元によって作成された SQL Managed Instance データベースでは、ソースから暗号化の状態が継承されます。
+> SQL Database で新しく作成されたすべてのデータベースは、サービスによって管理される透過的なデータ暗号化を使用して既定で暗号化されます。 2017 年 5 月より前に作成された既存の SQL データベースと、復元、geo レプリケーション、データベース コピーによって作成された SQL データベースは、既定では暗号化されません。 2019 年 2 月より前に作成された既存の SQL Managed Instance データベースは、既定では暗号化されません。 復元によって作成された SQL Managed Instance データベースでは、ソースから暗号化の状態が継承されます。 TDE で暗号化された既存のデータベースを復元するには、必要な TDE 証明書を最初に SQL Managed Instance に[インポート](../managed-instance/tde-certificate-migrate.md)する必要があります。 
 
 > [!NOTE]
 > TDE を使用して、Azure SQL Database および Azure SQL Managed Instance の **マスター** データベースなどのシステム データベースを暗号化することはできません。 **master** データベースには、ユーザー データベースで TDE 操作を実行するために必要なオブジェクトが含まれています。 機密データをシステム データベースに保存しないようにしてください。 現在、マスターを含むシステム データベースを暗号化する[インフラストラクチャ暗号化](transparent-data-encryption-byok-overview.md#doubleencryption)がロールアウトされています。 
+
 
 ## <a name="service-managed-transparent-data-encryption"></a>サービスによって管理された Transparent Data Encryption
 
@@ -120,7 +124,7 @@ Transact-SQL を使用して TDE を管理します。
 
 master データベースの **dbmanager** ロールの管理者またはメンバーであるログインを使用してデータベースに接続します。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF によって、データベースを暗号化または暗号化解除します。 |
 | [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |データベースの暗号化の状態と、関連付けられているデータベース暗号化キーに関する情報を返します。 |
@@ -136,7 +140,7 @@ REST API を使用して TDE を管理します。
 REST API で TDE を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ マネージャーとして接続する必要があります。
 Azure SQL Database と Azure Synapse には次の一連のコマンドを使用します。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[サーバーの作成または更新](/rest/api/sql/servers/createorupdate)|Azure Active Directory ID をサーバーに追加します。 (Key Vault へのアクセスを許可するために使用します)|
 |[サーバー キーの作成または更新](/rest/api/sql/serverkeys/createorupdate)|サーバーに Key Vault キーを追加します。|

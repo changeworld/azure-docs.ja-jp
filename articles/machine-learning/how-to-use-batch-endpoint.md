@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: tracych
 ms.author: tracych
 ms.reviewer: laobri
-ms.date: 5/25/2021
-ms.custom: how-to
-ms.openlocfilehash: 53fa68fdffd27c1d48322104c541894c6f9c4dd8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 8/11/2021
+ms.custom: how-to, devplatv2
+ms.openlocfilehash: bd5d5eba2d5da4cd0f920d4c6287e779d83ac293
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751255"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739119"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>バッチ エンドポイント (プレビュー) を使用したバッチ スコアリング
 
@@ -27,7 +27,7 @@ ms.locfileid: "111751255"
 > [!div class="checklist"]
 > * MLflow モデルのバッチ エンドポイントをノー コード エクスペリエンスで作成する
 > * バッチ エンドポイントの詳細を確認する
-> * CLI を使用してバッチ スコアリング ジョブを開始する
+> * Azure CLI を使用してバッチ スコアリング ジョブを開始する
 > * バッチ スコアリング ジョブの実行の進行状況を監視し、スコアリング結果を確認する
 > * バッチ エンドポイントに新しいデプロイを追加する
 > * REST を使用してバッチ スコアリング ジョブを開始する
@@ -36,7 +36,7 @@ ms.locfileid: "111751255"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 * Azure コマンド ライン インターフェイス (CLI) と ML 拡張機能。
 
@@ -77,16 +77,14 @@ ML 拡張機能の構成について詳しくは、[2.0 CLI (プレビュー) �
 汎用的なコンピューティング先である [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) を作成するには、次のコードを実行します。 コンピューティング先の詳細については、[Azure Machine Learning のコンピューティング先の概要](./concept-compute-target.md)に関するページを参照してください。
 
 ```azurecli
-az ml compute create --name cpu-cluster --type AmlCompute --min-instances 0 --max-instances 5
+az ml compute create --name cpu-cluster --type amlcompute --min-instances 0 --max-instances 5
 ```
 
 ## <a name="create-a-batch-endpoint"></a>バッチ エンドポイントを作成する
 
 MLflow モデルを使用する場合は、バッチ エンドポイントのノー コード作成を利用できます。 つまり、スコアリング スクリプトと環境は、どちらも自動的に生成されるので、自分で用意する必要はありません。 詳細については、[MLflow と Azure Machine Learning を使用して ML モデルをトレーニングして追跡する方法 (プレビュー)](how-to-use-mlflow.md) に関するページを参照してください。
 
-```azurecli
-az ml endpoint create --type batch --file cli/endpoints/batch/create-batch-endpoint.yml
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_endpoint" :::
 
 以下に示したのは、MLflow のバッチ エンドポイントを定義する YAML ファイルです。
 
@@ -120,15 +118,13 @@ az ml endpoint create --type batch --file cli/endpoints/batch/create-batch-endpo
 
 バッチ エンドポイントを作成した後は、`show` を使用して詳細を確認できます。 返されたデータから特定の属性のみを取得するには、[`--query parameter`](/cli/azure/query-azure-cli) を使用します。
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
-## <a name="start-a-batch-scoring-job-using-cli"></a>CLI を使用してバッチ スコアリング ジョブを開始する
+## <a name="start-a-batch-scoring-job-using-the-azure-cli"></a>Azure CLI を使用してバッチ スコアリング ジョブを開始する
 
-バッチ スコアリング ワークロードは、オフライン ジョブとして実行されます。 バッチ スコアリングは、大きなデータを処理するように設計されています。 入力は、コンピューティング クラスター上で並列処理されます。 データ パーティションは、ノード上のプロセスに割り当てられます。 複数のプロセスがある単一ノードでは、複数のパーティションが並列に実行されます。 既定では、バッチ スコアリングによって、スコアリング出力が Blob Storage に格納されます。 バッチ スコアリング ジョブは、CLI からデータ入力を渡すことで開始できます。 また、出力の場所を構成したり、最適なパフォーマンスを得るために一部の設定を上書きしたりすることもできます。
+バッチ スコアリング ワークロードは、オフライン ジョブとして実行されます。 バッチ スコアリングは、大きなデータを処理するように設計されています。 入力は、コンピューティング クラスター上で並列処理されます。 データ パーティションは、ノード上のプロセスに割り当てられます。 複数のプロセスがある単一ノードでは、複数のパーティションが並列に実行されます。 既定では、バッチ スコアリングによって、スコアリング出力が Blob Storage に格納されます。 バッチ スコアリング ジョブは、Azure CLI からデータ入力を渡すことで開始できます。 また、出力の場所を構成したり、最適なパフォーマンスを得るために一部の設定を上書きしたりすることもできます。
 
-### <a name="start-a-bath-scoring-job-with-different-inputs-options"></a>異なる入力オプションでバッチ スコアリング ジョブを開始する
+### <a name="start-a-batch-scoring-job-with-different-input-options"></a>異なる入力オプションでバッチ スコアリング ジョブを開始する
 
 データの入力には、3 とおりの指定方法があります。
 
@@ -187,30 +183,26 @@ az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipeli
 ```azurecli
 az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --set retry_settings.max_retries=1
 ```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_with_new_settings" :::
 
 ## <a name="check-batch-scoring-job-execution-progress"></a>バッチ スコアリング ジョブ実行の進行状況を確認する
 
 バッチ スコアリング ジョブは、入力のセット全体を処理するために、ある程度時間がかかるのが普通です。 ジョブの進行状況は、Azure Machine Learning スタジオから監視できます。 スタジオのリンクは、`invoke` の応答で、`interactionEndpoints.Studio.endpoint` の値として提供されます。
 
-ジョブの詳細と状態は、CLI を使用して確認することもできます。
+ジョブの詳細と状態は、Azure CLI を使用して確認することもできます。
 
 呼び出しの応答からジョブ名を取得します。
 
-```azurecli
-job_name=$(az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --query name -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job" :::
 
 バッチ スコアリング ジョブの詳細と状態を確認するには、`job show` を使用します。
 
-```azurecli
-az ml job show --name $job_name
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_job_status" :::
 
 ジョブのログは、`job stream` を使用してストリーム配信します。
 
-```azurecli
-az ml job stream --name $job_name
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="stream_job_logs_to_console" :::
+
 
 ## <a name="check-batch-scoring-results"></a>バッチ スコアリングの結果を確認する
 
@@ -234,9 +226,7 @@ az ml job stream --name $job_name
 
 既存のバッチ エンドポイントに新しいデプロイを追加するには、次のコマンドを使用します。
 
-```azurecli
-az ml endpoint update --name mybatchedp --type batch --deployment-file cli/endpoints/batch/add-deployment.yml
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" range="65" :::
 
 このサンプルでは、MLflow 以外のモデルを使用します。 MLflow 以外のモデルを使用する場合は、YAML ファイルで環境とスコアリング スクリプトを指定する必要があります。
 
@@ -252,29 +242,21 @@ MLflow 以外のモデルには、他にも次のようなデプロイ属性が�
 
 デプロイの詳細を確認するには、次を実行します。
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 ### <a name="activate-the-new-deployment"></a>新しいデプロイをアクティブにする
 
 バッチ推論では、問い合わせの 100% を目的のデプロイに送信する必要があります。 新しく作成したデプロイをターゲットとして設定するには、次を使用します。
 
-```azurecli
-az ml endpoint update --name mybatchedp --type batch --traffic mnist-deployment:100
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="switch_traffic" :::
 
 デプロイの詳細を改めて観察すると、変更内容がわかります。
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 これで、この新しいデプロイでバッチ スコアリング ジョブを呼び出すことができます。
 
-```azurecli
-az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist --mini-batch-size 10 --instance-count 2
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_with_new_settings" :::
 
 ## <a name="start-a-batch-scoring-job-using-rest"></a>REST を使用してバッチ スコアリング ジョブを開始する
 
@@ -282,28 +264,17 @@ az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipeli
 
 1. `scoring_uri` を取得します。  
 
-```azurecli
-scoring_uri=$(az ml endpoint show --name mybatchedp --type batch --query scoring_uri -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="get_scoring_uri" :::
 
 2. アクセス トークンを取得します。
 
-```azurecli
-auth_token=$(az account get-access-token --query accessToken -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="get_token" :::
+
 
 3. `scoring_uri`、アクセス トークン、JSON データを使用して要求を POST し、バッチ スコアリング ジョブを開始します。
 
-```bash
-curl --location --request POST "$scoring_uri" --header "Authorization: Bearer $auth_token" --header 'Content-Type: application/json' --data-raw '{
-"properties": {
-  "dataset": {
-    "dataInputType": "DataUrl",
-    "Path": "https://pipelinedata.blob.core.windows.net/sampledata/mnist"
-    }
-  }
-}'
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_rest":::
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -321,3 +292,4 @@ curl --location --request POST "$scoring_uri" --header "Authorization: Bearer $a
 この記事では、大量のデータをスコアリングできるよう、バッチ エンドポイントを作成して呼び出す方法について説明しました。 Azure Machine Learning の詳細については、以下の他の記事をご覧ください。
 
 * [バッチ エンドポイントのトラブルシューティング](how-to-troubleshoot-batch-endpoints.md)
+* [マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)

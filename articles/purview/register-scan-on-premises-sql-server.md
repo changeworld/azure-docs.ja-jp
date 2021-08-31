@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 43a71f6260f688a1e9cc5e39e0c61f81d2265eb3
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 2f07ed4ca7bdb722a2563c5e81f7e30a57c79aeb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721940"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>オンプレミスの SQL Server の登録とスキャン
 
@@ -31,10 +31,6 @@ ms.locfileid: "111559644"
 - SQL Server 2000 から SQL Server 2019 までのすべてのバージョンの SQL
 
 - 認証方法: SQL 認証
-
-### <a name="known-limitations"></a>既知の制限事項
-
-Azure Purview は、SQL Server での[ビュー](/sql/relational-databases/views/views)のスキャンはサポートしません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -99,7 +95,7 @@ SQL アカウントには、**master** データベースへのアクセス権�
 
 1. 左側のナビゲーションの Sources and scanning\(ソースとスキャン\) で、**統合ランタイム** を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[ここ](manage-integration-runtimes.md)に記載されている手順に従って、オンプレミスまたはオンプレミス ネットワークにアクセスできる Azure VM でスキャンするためのセルフホステッド統合ランタイムを作成します。
 
-1. 左側のナビゲーションで **[ソース]** を選択します。
+1. 左側のナビゲーションで **[Data Map]** を選択します。
 
 1. **[登録]** を選択します
 
@@ -127,7 +123,7 @@ SQL アカウントには、**master** データベースへのアクセス権�
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scope-your-scan.png" alt-text="スキャンの範囲を指定する":::
 
-1. スキャンのルール セットを選びます。 システム既定のルール セット、既存のカスタム ルール セットのどちらかを選ぶか、新しいルール セットをインラインで作成できます。
+1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scan-rule-set.png" alt-text="スキャン ルール セット":::
 

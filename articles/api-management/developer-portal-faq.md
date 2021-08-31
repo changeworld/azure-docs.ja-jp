@@ -6,16 +6,16 @@ services: api-management
 documentationcenter: API Management
 author: mikebudzynski
 ms.service: api-management
-ms.topic: article
-ms.date: 04/15/2021
+ms.topic: troubleshooting
+ms.date: 07/30/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: afe41f7db56be5de56831d039a1161f1ee2c69f5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b7b7efda7ca28382ca1dfbdead64db9976d67bd4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747784"
 ---
 # <a name="api-management-developer-portal---frequently-asked-questions"></a>API Management 開発者ポータル - よく寄せられる質問
 
@@ -149,6 +149,27 @@ API Management サービスが VNet 内にある場合は、[VNet 接続に関�
 
 ローカル バージョンの開発者ポータルでストレージ アカウントまたは API Management インスタンスから情報を保存または取得できない場合は、SAS トークンの有効期限が切れている可能性があります。 新しいトークンを生成することでこれを解決できます。 手順については、[開発者ポータルのセルフホスト](developer-portal-self-host.md#step-2-configure-json-files-static-website-and-cors-settings)に関するチュートリアルを参照してください。
 
+## <a name="how-do-i-disable-sign-up-in-the-developer-portal"></a>開発者ポータルでサインアップを無効にするにはどうすればよいですか?
+
+開発者ポータルでサインアップ機能を既定で有効にする必要がない場合は、次の手順で無効にすることができます。
+
+1. Azure portal で、API Management インスタンスに移動します。
+1. メニューの **[開発者ポータル]** で **[ID]** を選択します。
+1. 一覧に表示されている各 ID プロバイダーを削除します。 各 ID プロバイダーを指定してコンテキスト メニュー ( **...** ) を選択し、 **[削除]** を選択します。
+ 
+   :::image type="content" source="media/developer-portal-faq/delete-identity-providers.png" alt-text="ID プロバイダーの削除":::
+ 
+1. 開発者ポータルの管理インターフェイスに移動します。
+1. ポータル コンテンツの **[サインアップ]** リンクとナビゲーション項目を削除します。 ポータル コンテンツのカスタマイズ方法の詳細については、「[チュートリアル: 開発者ポータルへのアクセスとそのカスタマイズ](api-management-howto-developer-portal-customize.md)」を参照してください。
+ 
+   :::image type="content" source="media/developer-portal-faq/delete-navigation-item.png" alt-text="ナビゲーション項目の削除":::
+ 
+1. ユーザーが直接移動する場合は、 **[サインアップ]** ページ コンテンツを変更して、ID データの入力に使用するフィールドを削除します。
+   
+   必要に応じて、 **[サインアップ]** ページを削除します。 現時点では、このページの一覧表示と削除には [contentItem](/rest/api/apimanagement/2021-01-01-preview/content-item) REST API を使用します。
+ 
+1. 変更を保存して、[ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)します。
+
 ## <a name="how-can-i-remove-the-developer-portal-content-provisioned-to-my-api-management-service"></a>API Management サービスにプロビジョニングされた開発者ポータルのコンテンツを削除するにはどうすればよいですか。
 
 開発者ポータルの [GitHub リポジトリ](https://github.com/Azure/api-management-developer-portal)の `scripts.v3/cleanup.bat` スクリプトに必要なパラメーターを指定し、スクリプトを実行します
@@ -167,10 +188,11 @@ cd ..
 https://contoso.com/signin-sso?token=[user-specific token]
 ```
 ### <a name="generate-user-tokens"></a>ユーザー トークンを生成する
-[API Management REST API](/rest/api/apimanagement/apimanagementrest/api-management-rest) の「[共有アクセス トークンの取得](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken)」操作を使用して、"*ユーザー固有のトークン*" (管理者トークンを含む) を生成することができます。
+[API Management REST API](/rest/api/apimanagement/apimanagementrest/api-management-rest) の「[共有アクセス トークンの取得](/rest/api/apimanagement/2020-12-01/user/get-shared-access-token)」操作を使用して、"*ユーザー固有のトークン*" (管理者トークンを含む) を生成することができます。
 
 > [!NOTE]
 > トークンは URL エンコードされている必要があります。
+
 
 ## <a name="next-steps"></a>次のステップ
 

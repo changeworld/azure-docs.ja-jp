@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: e9fbafa9f3c33d10496e84f61e1f2b97f6328d3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fc565a886698466fce8eaa6ac5ff47ae44be4c9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100581807"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458832"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する
 
 Logic Apps は、自動化された定期的なタスクとプロセスを作成し、スケジュールに従って実行するのに役立ちます。 組み込みの繰り返しトリガーまたはスライディング ウィンドウ トリガー (スケジュール タイプのトリガー) で始まるロジック アプリ ワークフローを作成することによって、直ちに、後で、または定期的な間隔でタスクを実行できます。 Azure の内部および外部のサービス (HTTP または HTTPS エンドポイントなど) を呼び出したり、Azure Storage や Azure Service Bus などの Azure サービスにメッセージを投稿したり、ファイル共有にアップロードされたファイルを取得したりできます。 繰り返しトリガーを使うと、タスクの実行に対して複雑なスケジュールと高度な繰り返しを設定することもできます。 組み込みのスケジュール トリガーおよびアクションの詳細については、「[スケジュール トリガー](#schedule-triggers)」および「[スケジュールのアクション](#schedule-actions)」を参照してください。 
 
 > [!TIP]
-> スケジュールされたジョブごとに個別のロジック アプリを作成したり、[リージョンおよびサブスクリプションあたりのワークフロー数に関する制限](../logic-apps/logic-apps-limits-and-config.md#definition-limits)に達したりすることなく、繰り返しのワークロードをスケジュールして実行できます。 代わりに、[Azure クイックスタート テンプレート: Logic Apps ジョブ スケジューラ](https://github.com/Azure/azure-quickstart-templates/tree/master/301-logicapps-jobscheduler/)によって作成されたロジック アプリ パターンを使用できます。
+> スケジュールされたジョブごとに個別のロジック アプリを作成したり、[リージョンおよびサブスクリプションあたりのワークフロー数に関する制限](../logic-apps/logic-apps-limits-and-config.md#definition-limits)に達したりすることなく、繰り返しのワークロードをスケジュールして実行できます。 代わりに、[Azure クイックスタート テンプレート: Logic Apps ジョブ スケジューラ](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logicapps-jobscheduler/)によって作成されたロジック アプリ パターンを使用できます。
 >
 > Logic Apps ジョブ スケジューラ テンプレートでは、TimerJob ロジック アプリを呼び出す CreateTimerJob ロジック アプリを作成します。 その後、HTTP 要求を作成し、その要求の入力としてスケジュールを渡すことによって、CreateTimerJob ロジック アプリを API として呼び出すことができます。 CreateTimerJob ロジック アプリを呼び出すたびに、TimerJob ロジック アプリも呼び出されます。これにより、指定されたスケジュールに基づいて、または指定された制限を満たすまで継続的に実行される新しい TimerJob インスタンスが作成されます。 それにより、インスタンスが個々のロジック アプリ ワークフロー定義またはリソースではなくなるため、ワークフローの制限を気にすることなく、TimerJob インスタンスを必要な数だけ実行できます。
 
@@ -199,6 +199,27 @@ Logic Apps は、自動化された定期的なタスクとプロセスを作成
 ![[Scheduler: Run once jobs] (Scheduler: ジョブを 1 回実行する) テンプレートを選択する](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
 
 または、**HTTP 要求の受信時 - 要求** トリガーでロジック アプリを開始できる場合は、開始時刻をパラメーターとしてトリガーに渡します。 初めてのアクションの場合は、**延期期限 - スケジュール** アクションを使用し、次のアクションが実行を開始する時刻を指定します。
+
+<a name="run-once-last-day-of-the-month"></a>
+
+## <a name="run-once-at-last-day-of-the-month"></a>月の最終日に 1 回実行
+
+繰り返しトリガーを月の最終日に 1 回だけ実行するには、デザイナーではなくコード ビューを使用して、ワークフローの基になる JSON 定義でトリガーを編集する必要があります。 ただし、以下の例を使用できます。
+
+```json
+"triggers": {
+    "Recurrence": {
+        "recurrence": {
+            "frequency": "Month",
+            "interval": 1,
+            "schedule": {
+                "monthDays": [-1]
+            }
+        },
+        "type": "Recurrence"
+    }
+}
+```
 
 <a name="example-recurrences"></a>
 

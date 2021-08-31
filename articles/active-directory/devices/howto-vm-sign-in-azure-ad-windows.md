@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 06/04/2021
+ms.date: 06/30/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions, devx-track-azurecli
+ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 834aa7643583683f7ee64abdbd1e18e0b76c6ada
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: e29ee77aa3fb9f33c5c923a49de07ffea1642a77
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538817"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113138451"
 ---
 # <a name="login-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用して Azure 内の Windows 仮想マシンにログインする
 
@@ -173,16 +173,18 @@ VM のロールの割り当てを構成するには、次のような複数の�
 
 Azure AD を有効にした Windows Server 2019 Datacenter VM のロールの割り当てを構成するには、次の操作を行います。
 
-1. 特定の仮想マシンの [概要] ページに移動します。
-1. メニュー オプションから **[アクセス制御 (IAM)]** を選択します。
-1. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択して、[ロールの割り当ての追加] ペインを開きます。
-1. **[ロール]** ドロップダウン リストで、 **[仮想マシンの管理者ログイン]** や **[仮想マシンのユーザー ログイン]** などのロールを選択します。
-1. **[選択]** フィールドで、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 [選択] 一覧で、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、 **[選択]**  ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
-1. **[保存]** を選択して、ロールを割り当てます。
+1. **[アクセス制御 (IAM)]** を選択します。
 
-しばらくすると、セキュリティ プリンシパルに選択されたスコープのロールが割り当てられます。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
 
-![VM にアクセスするユーザーにロールを割り当てる](./media/howto-vm-sign-in-azure-ad-windows/azure-portal-access-control-assign-role.png)
+1. 次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | **[仮想マシンの管理者ログイン]** または **[仮想マシンのユーザー ログイン]** |
+    | アクセスの割り当て先 | ユーザー、グループ、サービス プリンシパル、またはマネージド ID |
+
+    ![Azure portal でロール割り当てページを追加します。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Azure Cloud Shell のエクスペリエンスを使用する
 
@@ -267,14 +269,13 @@ VM が Azure AD 参加プロセスを完了するには、AADLoginForWindows 拡
    
    - `curl https://login.microsoftonline.com/ -D -`
    - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
-
-   > [!NOTE]
-   > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。
-
    - `curl https://enterpriseregistration.windows.net/ -D -`
    - `curl https://device.login.microsoftonline.com/ -D -`
    - `curl https://pas.windows.net/ -D -`
 
+   > [!NOTE]
+   > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。<br/> `enterpriseregistration.windows.net` と `pas.windows.net` から 404 Not Found が返されますが、これは想定された動作です。
+            
 1. Device State (デバイスの状態) を表示するには、`dsregcmd /status` を実行します。 目標は、Device State (デバイスの状態) で `AzureAdJoined : YES` と表示されることです。
 
    > [!NOTE]
@@ -302,13 +303,12 @@ AADLoginForWindows 拡張機能が特定のエラー コードで失敗した場
 
    - `curl https://login.microsoftonline.com/ -D -`
    - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
-   
-   > [!NOTE]
-   > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。 テナント ID を検索する必要がある場合、アカウント名にマウス カーソルを合わせてディレクトリとテナント ID を取得するか、Azure portal で **[Azure Active Directory]、[プロパティ]、[ディレクトリ ID]** の順に選択します。
-
    - `curl https://enterpriseregistration.windows.net/ -D -`
    - `curl https://device.login.microsoftonline.com/ -D -`
    - `curl https://pas.windows.net/ -D -`
+   
+   > [!NOTE]
+   > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。 テナント ID を検索する必要がある場合、アカウント名にマウス カーソルを合わせてディレクトリとテナント ID を取得するか、Azure portal で **[Azure Active Directory]、[プロパティ]、[ディレクトリ ID]** の順に選択します。<br/>`enterpriseregistration.windows.net` と `pas.windows.net` から 404 Not Found が返されますが、これは想定された動作です。
 
 1. コマンドが "ホスト名 `<URL>` を解決できません" で失敗した場合、このコマンドを実行して、VM で使用されている DNS サーバーを特定してみてください。
    

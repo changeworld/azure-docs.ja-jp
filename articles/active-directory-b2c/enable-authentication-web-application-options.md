@@ -7,32 +7,34 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/25/2021
+ms.date: 08/12/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 3335e035a2d36cc7830d8bc93db82a7d318d26b3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 126bdd850d29d716433b7854c71d02269b95ec2e
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110482341"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067969"
 ---
-# <a name="configure-authentication-in-a-sample-web-application-using-azure-active-directory-b2c-options"></a>Azure Active Directory B2C のオプションを使用してサンプル Web アプリケーションで認証を構成する
+# <a name="configure-authentication-options-in-a-web-application-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Web アプリケーションで認証オプションを構成する 
 
-この記事では、Web アプリケーションの Azure Active Directory B2C (Azure AD B2C) 認証エクスペリエンスをカスタマイズおよび拡張する方法について説明します。 開始する前に、[サンプル Web アプリケーションでの認証の構成](configure-authentication-sample-web-app.md)に関する記事、または[独自の Web アプリケーションでの認証の有効化](enable-authentication-web-application.md)に関する記事の内容を理解しておいてください。
+この記事では、Web アプリケーションの Azure Active Directory B2C (Azure AD B2C) 認証エクスペリエンスをカスタマイズおよび拡張する方法について説明します。 開始する前に、[サンプル Web アプリケーションでの認証の構成](configure-authentication-sample-web-app.md)に関する記事、または[独自の Web アプリケーションでの認証の有効化](enable-authentication-web-application.md)に関する記事の内容を理解しておくことが重要です。
 
-## <a name="use-a-custom-domain"></a>カスタム ドメインの使用
+[!INCLUDE [active-directory-b2c-app-integration-custom-domain](../../includes/active-directory-b2c-app-integration-custom-domain.md)]
 
-アプリケーションのリダイレクト URL で[カスタム ドメイン](custom-domain.md)を使用すると、よりシームレスなユーザー エクスペリエンスが提供されます。 ユーザーからすると、サインイン プロセスの間、Azure AD B2C の既定のドメインである .b2clogin.com にリダイレクトされることなく、現在のドメインに留まっているように見えます。
+認証 URL でカスタム ドメインとテナント ID を使用するには、[カスタム ドメインを有効にする](custom-domain.md)方法に関するページのガイダンスに従ってください。 プロジェクト ルート フォルダーで、`appsettings.json` ファイルを開きます。 このファイルには、Azure AD B2C ID プロバイダーに関する情報が含まれています。 
 
-カスタム ドメインを使用するには、[カスタム ドメインの有効化](custom-domain.md)に関する記事のガイダンスに従います。 プロジェクト ルート フォルダーで、`appsettings.json` ファイルを開きます。 このファイルには、Azure AD B2C ID プロバイダーに関する情報が含まれています。 `Instance` エントリをカスタム ドメインで更新します。
+- `Instance` エントリをカスタム ドメインで更新します。
+- `Domain` エントリを自分の[テナント ID](tenant-management.md#get-your-tenant-id) で更新します。 詳しくは、「[テナント ID を使用する](custom-domain.md#optional-use-tenant-id)」をご覧ください。
 
 次の JSON は、変更前のアプリ設定を示しています。 
 
 ```JSon
 "AzureAdB2C": {
   "Instance": "https://contoso.b2clogin.com",
+  "Domain": "tenant-name.onmicrosoft.com",
   ...
 }
 ```  
@@ -42,29 +44,6 @@ ms.locfileid: "110482341"
 ```JSon
 "AzureAdB2C": {
   "Instance": "https://login.contoso.com",
-  ...
-}
-``` 
-
-## <a name="use-your-tenant-id"></a>テナント ID を使用する
-
-URL の B2C テナント名を自分のテナント ID の GUID に置き換えると、URL 内の "b2c" へのすべての参照を削除できます。  たとえば、`https://account.contosobank.co.uk/contosobank.onmicrosoft.com/` を `https://account.contosobank.co.uk/<tenant ID GUID>/` に変更できます。
-
-テナント ID を使用するには、[カスタム ドメインの有効化](custom-domain.md#optional-use-tenant-id)に関する記事のガイダンスに従います。 プロジェクト ルート フォルダーで、`appsettings.json` ファイルを開きます。 このファイルには、Azure AD B2C ID プロバイダーに関する情報が含まれています。 `Domain` エントリをカスタム ドメインで更新します。
-
-次の JSON は、変更前のアプリ設定を示しています。 
-
-```JSon
-"AzureAdB2C": {
-  "Domain": "tenant-name.onmicrosoft.com",
-  ...
-}
-```  
-
-次の JSON は、変更後のアプリ設定を示しています。
-
-```JSon
-"AzureAdB2C": {
   "Domain": "00000000-0000-0000-0000-000000000000",
   ...
 }
@@ -105,14 +84,10 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 コンテキスト パラメーターを使用して、コントローラーと *OnRedirectToIdentityProvider* 関数の間でパラメーターを渡すことができます。 
 
 
-## <a name="prepopulate-the-sign-in-name"></a>サインイン名を事前入力する
+[!INCLUDE [active-directory-b2c-app-integration-login-hint](../../includes/active-directory-b2c-app-integration-login-hint.md)]
 
-サインイン ユーザー体験中に、アプリが特定のユーザーをターゲットにする場合があります。 ユーザーをターゲットにする場合、アプリケーションでは、認可要求でユーザー サインイン名と共に `login_hint` クエリ パラメーターを指定できます。 Azure AD B2C によってサインイン名が自動的に入力されるので、ユーザーはパスワードを入力するだけで済みます。 
-
-サインイン名を事前入力するには、これらの手順に従います。
-
-1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
 1. カスタム ポリシーを使用している場合は、[直接サインインの設定](direct-signin.md#prepopulate-the-sign-in-name)に関する記事の説明に従って、必要な入力要求を追加します。 
+1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
 1. *OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
     
     ```csharp
@@ -125,14 +100,10 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
     }
     ```
 
-## <a name="redirect-sign-in-to-an-external-identity-provider"></a>サインインを外部 ID プロバイダーにリダイレクトする
+[!INCLUDE [active-directory-b2c-app-integration-domain-hint](../../includes/active-directory-b2c-app-integration-domain-hint.md)]
 
-Facebook、LinkedIn、Google などのソーシャル アカウントを含むようにアプリケーションのサインイン プロセスを構成した場合は、`domain_hint` パラメーターを指定できます。 このクエリ パラメーターは、サインインに使用する必要があるソーシャル ID プロバイダーに関するヒントを Azure AD B2C に提供します。 たとえば、アプリケーションで `domain_hint=facebook.com` を指定した場合、サインイン フローで Facebook のサインイン ページに直接移動します。 
-
-サインインを外部 ID プロバイダーにリダイレクトするには、これらの手順に従います。
-
-1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
 1. 外部 ID プロバイダーのドメイン名を確認します。 詳細については、「[サインインをソーシャル プロバイダーにリダイレクトする](direct-signin.md#redirect-sign-in-to-a-social-provider)」を参照してください。 
+1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
 1. *OnRedirectToIdentityProviderFunc* 関数で、*OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
     
     ```csharp
@@ -145,12 +116,10 @@ Facebook、LinkedIn、Google などのソーシャル アカウントを含む�
     }
     ```
 
-## <a name="specify-the-ui-language"></a>UI 言語を指定する
 
-Azure AD B2C の言語のカスタマイズを使用すると、ユーザー フローで、顧客のニーズに合わせてさまざまな言語に対応できます。 詳細については、[言語のカスタマイズ](language-customization.md)に関する記事を参照してください。
+[!INCLUDE [active-directory-b2c-app-integration-ui-locales](../../includes/active-directory-b2c-app-integration-ui-locales.md)]
 
-優先言語を設定するには、これらの手順に従います。
-
+1. [言語のカスタマイズを構成します](language-customization.md)。
 1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
 1. *OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
 
@@ -164,13 +133,9 @@ Azure AD B2C の言語のカスタマイズを使用すると、ユーザー フ
     }
     ```
 
-## <a name="pass-a-custom-query-string-parameter"></a>カスタム クエリ文字列パラメーターを渡す
+[!INCLUDE [active-directory-b2c-app-integration-custom-parameters](../../includes/active-directory-b2c-app-integration-custom-parameters.md)]
 
-カスタム ポリシーを使用すると、[ページ コンテンツを動的に変更する](customize-ui-with-html.md?pivots=b2c-custom-policy#configure-dynamic-custom-page-content-uri)場合などに、カスタム クエリ文字列パラメーターを渡すことができます。
-
-
-カスタム クエリ文字列パラメーターを渡すには、これらの手順に従います。
-
+1. [ContentDefinitionParameters](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) 要素を構成します。
 1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
 1. *OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
     
@@ -184,11 +149,8 @@ Azure AD B2C の言語のカスタマイズを使用すると、ユーザー フ
     }
     ```
 
-## <a name="pass-id-token-hint"></a>ID トークン ヒントを渡す
 
-Azure AD B2C により、証明書利用者アプリケーションは OAuth2 認可要求の一部として受信 JWT を送信できます。 JWT トークンは、証明書利用者アプリケーションまたは ID プロバイダーが発行でき、これによって、ユーザーまたは認可要求に関するヒントを渡すことができます。 Azure AD B2C は、署名、発行者名、トークン対象ユーザーを検証し、受信トークンから要求を抽出します。
-
-認証要求に ID トークン ヒントを含めるには、これらの手順に従います。 
+[!INCLUDE [active-directory-b2c-app-integration-id-token-hint](../../includes/active-directory-b2c-app-integration-id-token-hint.md)]
 
 1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
 1. カスタム ポリシーで、[ID トークン ヒントの技術プロファイル](id-token-hint.md)を定義します。
@@ -209,7 +171,11 @@ Azure AD B2C により、証明書利用者アプリケーションは OAuth2 �
 
 **サインイン**、**サインアップ**、または **サインアウト** アクションをカスタマイズする場合は、独自のコントローラーを作成することをお勧めします。 独自のコントローラーを使用すると、コントローラーと認証ライブラリの間でパラメーターを渡すことができます。 `AccountController` は `Microsoft.Identity.Web.UI` NuGet パッケージの一部であり、サインインおよびサインアウト アクションを処理します。 その実装は、[Microsoft Identity Web ライブラリ](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs)で確認できます。 
 
-次のコード スニペットは、**SignIn** アクションでのカスタム `MyAccountController` を示しています。 このアクションでは、`campaign_id` という名前のパラメーターを認証ライブラリに渡します。
+### <a name="add-the-account-controller"></a>アカウント コントローラーを追加する
+
+Visual Studio プロジェクトで、**Controllers** フォルダーを右クリックし、新しい **コントローラー** を追加します。 **[MVC コントローラー - 空]** を選択し、**MyAccountController.cs** という名前を指定します。
+
+次のコード スニペットは、**SignIn** アクションでのカスタム `MyAccountController` を示しています。
 
 ```csharp
 using System;
@@ -237,34 +203,145 @@ namespace mywebapp.Controllers
             scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
             var redirectUrl = Url.Content("~/");
             var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
-            properties.Items["campaign_id"] = "1234";
             return Challenge(properties, scheme);
         }
 
     }
 }
-
 ```
 
 `_LoginPartial.cshtml` ビューで、コントローラーへのサインイン リンクを変更します
 
-```
+```html
 <form method="get" asp-area="MicrosoftIdentity" asp-controller="MyAccount" asp-action="SignIn">
 ```
 
-`Startup.cs` 呼び出しの `OnRedirectToIdentityProvider` で、カスタム パラメーターを読み取ることができます。
+### <a name="pass-the-azure-ad-b2c-policy-id"></a>Azure AD B2C ポリシー ID を渡す
+
+次のコード スニペットは、**SignIn** と **SignUp** アクションでのカスタム `MyAccountController` を示しています。 このアクションでは、`policy` という名前のパラメーターを認証ライブラリに渡します。 これにより、特定のアクションに対して正しい Azure AD B2C ポリシー ID を指定できます。
+
+```csharp
+public IActionResult SignIn([FromRoute] string scheme)
+{
+    scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
+    var redirectUrl = Url.Content("~/");
+    var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+    properties.Items["policy"] = "B2C_1_SignIn";
+    return Challenge(properties, scheme);
+}
+
+public IActionResult SignUp([FromRoute] string scheme)
+{
+    scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
+    var redirectUrl = Url.Content("~/");
+    var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+    properties.Items["policy"] = "B2C_1_SignUp";
+    return Challenge(properties, scheme);
+}
+```
+
+`_LoginPartial.cshtml` ビューで、サインアップやプロファイルの編集など、他のすべての認証リンクに対して `asp-controller` 値を `MyAccountController` に変更します。
+
+### <a name="pass-custom-parameters"></a>カスタム パラメーターを渡す
+
+次のコード スニペットは、**SignIn** アクションでのカスタム `MyAccountController` を示しています。 このアクションでは、`campaign_id` という名前のパラメーターを認証ライブラリに渡します。
+
+```csharp
+public IActionResult SignIn([FromRoute] string scheme)
+{
+    scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
+    var redirectUrl = Url.Content("~/");
+    var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+    properties.Items["policy"] = "B2C_1_SignIn";
+    properties.Items["campaign_id"] = "1234";
+    return Challenge(properties, scheme);
+}
+```
+
+「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。 次に、`OnRedirectToIdentityProvider` メソッドで、カスタム パラメーターを読み取ります。
 
 ```csharp
 private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 {
     // Read the custom parameter
-    var campaign_id = (context.Properties.Items.ContainsKey("campaign_id"))
-    
+    var campaign_id = context.Properties.Items.FirstOrDefault(x => x.Key == "campaign_id").Value;
+
     // Add your custom code here
+    if (campaign_id != null)
+    {
+        // Send parameter to authentication request
+        context.ProtocolMessage.SetParameter("campaign_id", campaign_id);
+    }
     
     await Task.CompletedTask.ConfigureAwait(false);
 }
 ```
+
+## <a name="secure-your-logout-redirect"></a>ログアウトのリダイレクトをセキュリティで保護する
+
+ログアウト後、ユーザーは、アプリケーションに対して指定されている応答 URL に関係なく、`post_logout_redirect_uri` パラメーターに指定された URI にリダイレクトされます。 ただし、有効な `id_token_hint` が渡され、 [[ログアウト要求に ID トークンが必要]](session-behavior.md#secure-your-logout-redirect) が有効になっている場合、Azure AD B2C では、リダイレクトの実行前に、`post_logout_redirect_uri` の値がいずれかのアプリケーションの構成済みのリダイレクト URI と一致するかどうかが検証されます。 一致する応答 URL がアプリケーションで構成されていない場合は、エラー メッセージが表示され、ユーザーはリダイレクトされません。
+
+セキュリティで保護されたログアウト リダイレクトを自分のアプリケーションでサポートするには、まず、[アカウント コントローラー](enable-authentication-web-application-options.md#add-the-account-controller)と[高度なシナリオのサポート](#support-advanced-scenarios)に関するセクションの手順に従います。 次に、以下の手順に従ってください。
+
+1. `MyAccountController.cs` コントローラーで、次のコード スニペットを使用して **SignOut** アクションを追加します。
+
+    ```csharp
+    [HttpGet("{scheme?}")]
+    public async Task<IActionResult> SignOutAsync([FromRoute] string scheme)
+    {
+        scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
+
+        //obtain the id_token
+        var idToken = await HttpContext.GetTokenAsync("id_token");
+        //send the id_token value to the authentication middleware
+        properties.Items["id_token_hint"] = idToken;            
+
+        return SignOut(properties,CookieAuthenticationDefaults.AuthenticationScheme,scheme);
+    }
+    ```
+
+1. **Startup.cs** クラスで、`id_token_hint` 値を解析し、その値を認証要求に追加します。 次のコード スニペットは、`id_token_hint` 値を認証要求に渡す方法を示しています。
+
+    ```csharp
+    private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
+    {
+        var id_token_hint = context.Properties.Items.FirstOrDefault(x => x.Key == "id_token_hint").Value;
+        if (id_token_hint != null)
+        {
+            // Send parameter to authentication request
+            context.ProtocolMessage.SetParameter("id_token_hint", id_token_hint);
+        }
+
+        await Task.CompletedTask.ConfigureAwait(false);
+    }
+    ```
+
+1. `ConfigureServices` 関数で、**コントローラー** が `id_token` 値にアクセスできるように `SaveTokens` オプションを追加します。 
+
+    ```csharp
+    services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+        .AddMicrosoftIdentityWebApp(options =>
+        {
+            Configuration.Bind("AzureAdB2C", options);
+            options.Events ??= new OpenIdConnectEvents();        
+            options.Events.OnRedirectToIdentityProvider += OnRedirectToIdentityProviderFunc;
+            options.SaveTokens = true;
+        });
+    ```
+
+1. **appsettings.json** 構成ファイルで、ログアウト リダイレクト URI パスを `SignedOutCallbackPath` キーに追加します。
+
+    ```json
+    "AzureAdB2C": {
+      "Instance": "https://<your-tenant-name>.b2clogin.com",
+      "ClientId": "<web-app-application-id>",
+      "Domain": "<your-b2c-domain>",
+      "SignedOutCallbackPath": "/signout/<your-sign-up-in-policy>",
+      "SignUpSignInPolicyId": "<your-sign-up-in-policy>"
+    }
+    ```
+
+上記の例で、ログアウト要求に渡される **post_logout_redirect_uri** は、`https://your-app.com/signout/<your-sign-up-in-policy>` の形式になります。 この URL をアプリケーション登録の応答 URL に追加する必要があります。
 
 ## <a name="role-based-access-control"></a>ロール ベースのアクセス制御
 

@@ -80,6 +80,8 @@
           href: delete-voice-assistant-application.md
     - name: Azure Percept デバイスを更新する
       items:
+        - name: 更新戦略を決定する方法
+          href: how-to-determine-your-update-strategy.md
         - name: 無線での更新を設定する
           href: how-to-set-up-over-the-air-updates.md
         - name: 更新プログラム パッケージを特定する
@@ -120,6 +122,14 @@
           href: how-to-get-hardware-support.md
 - name: リファレンス
   items:
+    - name: リリース
+      items:
+        - name: OTA 更新プログラムのソフトウェア リリース
+          href: software-releases-over-the-air-updates.md
+        - name: USB を使用して更新するための Azure Percept DK ソフトウェア リリース
+          href: software-releases-usb-cable-updates.md
+        - name: Azure Percept DK ソフトウェアのリリース ノート
+          href: azure-percept-devkit-software-release-notes.md
     - name: Azure Percept デバイスのデータシート
       items:
         - name: Azure Percept DK のデータシート

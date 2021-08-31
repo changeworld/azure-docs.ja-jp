@@ -10,18 +10,18 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 95c9880eb8c61b5a057cf2573aad7871c3c37bb3
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 5bba667b70099e3f88e1ff62ae3472144556a0d1
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613614"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862220"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
 Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、**2018 年 9 月** のリリースで非推奨とされ、改善された [アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
 
-エクスペリエンスの向上のため、このリリースには、お客様からのフィードバックをきっかけとする重要なアップデートが多く含まれています。 実験の実施からモデルのデプロイに至るまで、コア機能は変更されていません。 ただし、堅牢な <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a>、R SDK、[Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
+エクスペリエンスの向上のため、このリリースには、お客様からのフィードバックをきっかけとする重要なアップデートが多く含まれています。 実験の実施からモデルのデプロイに至るまで、コア機能は変更されていません。 ただし、堅牢な <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> と [Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
 
 以前のバージョンの Azure Machine Learning で作成された成果物のほとんどは、独自のローカル ストレージやクラウド ストレージに保管されています。 これらの成果物が消失することはありません。
 
@@ -85,7 +85,7 @@ run = exp.submit(source_directory=script_folder,
 
 以前の CLI のサポートが終了したので、モデルを再デプロイしたり、お客様が最初にご自分のモデル管理アカウントを使用してデプロイした Web サービスを管理したりすることはできなくなりました。 ただし、これらの Web サービスは Azure Container Service (ACS) がサポートされている限りは引き続き機能します。
 
-最新バージョンでは、モデルは Web サービスとして Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) クラスターにデプロイされます。 また、FPGA や Azure IoT Edge にデプロイすることもできます。
+最新バージョンでは、モデルは Web サービスとして Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) クラスターにデプロイされます。 FPGA をデプロイすることもできます。
 
 詳細については、次の記事を参照してください。
 + [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)
@@ -95,7 +95,7 @@ run = exp.submit(source_directory=script_folder,
 
 [Azure Machine Learning の最新のアーキテクチャ](concept-azure-machine-learning-architecture.md)について確認してください。
 
-サービスの概要については、「[Azure Machine Learning とは](overview-what-is-azure-ml.md)」を参照してください。
+サービスの概要については、「[Azure Machine Learning とは](overview-what-is-azure-machine-learning.md)」を参照してください。
 
 最初に、「[クイック スタート: Azure Machine Learning サービスの基本操作](quickstart-create-resources.md)」をお読みください。  その後、これらのリソースを使用して、お好きな方法で最初の実験を作成します。
 

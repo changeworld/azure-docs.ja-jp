@@ -6,14 +6,14 @@ ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
 ms.custom: mvc
-ms.date: 05/12/2021
+ms.date: 07/21/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 42cd84387d1b5b67a09afcc072c897d6980b3d49
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: f2a634aa73cf9b9cb2b379887f9a677a79c39b57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109815232"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745057"
 ---
 # <a name="azure-sentinel-sap-solution-logs-reference-public-preview"></a>Azure Sentinel SAP ソリューションのログ リファレンス (パブリック プレビュー)
 
@@ -38,7 +38,7 @@ ms.locfileid: "109815232"
 
 - **ログの目的**: 必要に応じて後で再現できるよう、アプリケーション実行の進行状況を記録します。
 
-    XBP インターフェイスの標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。
+    XBP インターフェイスの標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。 このログは、クライアントごとに生成されます。
 
 
 ### <a name="abapapplog_cl-log-schema"></a>ABAPAppLog_CL ログ スキーマ
@@ -90,9 +90,9 @@ ms.locfileid: "109815232"
 
     - SAP システム内のその他のエンティティ (ユーザー データ、ロール、アドレスなど)。
 
-    標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。
+    標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。 このログは、クライアントごとに生成されます。
 
-### <a name="abapauditlog_cl-log-schema"></a>ABAPAuditLog_CL ログ スキーマ
+### <a name="abapchangedocslog_cl-log-schema"></a>ABAPChangeDocsLog_CL ログ スキーマ
 
 
 | フィールド                    | Description                 |
@@ -134,7 +134,7 @@ ms.locfileid: "109815232"
 
 - **ログの目的**: Change & Transport System (CTS) のログ、たとえば変更が加えられたディレクトリ オブジェクトやカスタマイズを含みます。
 
-    標準テーブルと標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。
+    標準テーブルと標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
 > [!NOTE]
 > アプリケーション ログ、変更文書、テーブルの記録に加え、Change & Transport System を使用して運用システムに行うあらゆる変更が CTS ログと TMS ログに記録されます。
@@ -170,7 +170,7 @@ ms.locfileid: "109815232"
 
 - **ログの目的**: 監査にとってきわめて重要なテーブルや監査の対象になりやすいテーブルのログ記録に対応します。
 
-    カスタム サービスと RFC を併用することで利用できます。
+    カスタム サービスと RFC を併用することで利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
 ### <a name="abaptabledatalog_cl-log-schema"></a>ABAPTableDataLog_CL ログ スキーマ
 
@@ -196,13 +196,13 @@ ms.locfileid: "109815232"
 
 ## <a name="abap-gateway-log"></a>ABAP ゲートウェイ ログ
 
-- **Azure Sentinel における名前**: `GW_CL`
+- **Azure Sentinel における名前**: `ABAPOS_GW_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/62b4de4187cb43668d15dac48fc00732/7.5.7/en-US/48b2a710ca1c3079e10000000a42189b.html)
 
-- **ログの目的**: ゲートウェイのアクティビティを監視します。 SAP Control Web サービスによって利用できます。
+- **ログの目的**: ゲートウェイのアクティビティを監視します。 SAP Control Web サービスによって利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
-### <a name="gw_cl-log-schema"></a>GW_CL ログ スキーマ
+### <a name="abapos_gw_cl-log-schema"></a>ABAPOS_GW_CL ログ スキーマ
 
 | フィールド        | 説明      |
 | ------------ | ---------------- |
@@ -216,15 +216,15 @@ ms.locfileid: "109815232"
 
 ## <a name="abap-icm-log"></a>ABAP ICM ログ
 
-- **Azure Sentinel における名前**: `ICM_CL`
+- **Azure Sentinel における名前**: `ABAPOS_ICM_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/683d6a1797a34730a6e005d1e8de6f22/7.52.4/en-US/a10ec40d01e740b58d0a5231736c434e.html)
 
 - **ログの目的**: 受信要求と送信要求を記録し、HTTP 要求の統計情報を集計します。
 
-    SAP Control Web サービスによって利用できます。
+    SAP Control Web サービスによって利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
-### <a name="icm_cl-log-schema"></a>ICM_CL ログ スキーマ
+### <a name="abapos_icm_cl-log-schema"></a>ABAPOS_ICM_CL ログ スキーマ
 
 | フィールド        | 説明      |
 | ------------ | ---------------- |
@@ -244,7 +244,7 @@ ms.locfileid: "109815232"
 
 - **ログの目的**: すべてのバックグラウンド処理ジョブ ログ (SM37) を結合します。
 
-    XBP インターフェイスの標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。
+    XBP インターフェイスの標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
 ### <a name="abapjoblog_cl-log-schema"></a>ABAPJobLog_CL ログ スキーマ
 
@@ -292,7 +292,7 @@ ms.locfileid: "109815232"
     - 比較的大まかなデータを提供する情報 (サインイン試行の成功と失敗など)
     - 一連のイベントの再構築を可能にする情報 (トランザクション開始の成功、失敗など)
 
-    RFC XAL または SAL インターフェイスを介して利用できます。 SAL は、Basis 7.50 バージョン以降で提供されます。
+    RFC XAL または SAL インターフェイスを介して利用できます。 SAL は、Basis 7.50 バージョン以降で提供されます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
 ### <a name="abapauditlog_cl-log-schema"></a>ABAPAuditLog_CL ログ スキーマ
 
@@ -336,9 +336,9 @@ ms.locfileid: "109815232"
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/290ce8983cbc4848a9d7b6f5e77491b9/7.52.1/en-US/4eae791c40f72045e10000000a421937.html)
 
-- **ログの目的**: スプール要求 (SP01) の履歴を含む SAP 印刷のメイン ログとして機能します。 (SP01).
+- **ログの目的**: スプール要求 (SP01) の履歴を含む SAP 印刷のメイン ログとして機能します。 (SP01)。
 
-    標準テーブルに基づくカスタム サービスと RFC を併用することで利用できます。
+    標準テーブルに基づくカスタム サービスと RFC を併用することで利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
 ### <a name="abapspoollog_cl-log-schema"></a>ABAPSpoolLog_CL ログ スキーマ
 
@@ -395,9 +395,9 @@ ms.locfileid: "109815232"
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/290ce8983cbc4848a9d7b6f5e77491b9/7.52.1/en-US/4eae779e40f72045e10000000a421937.html)
 
-- **ログの目的**: スプール出力要求 (SP02) の履歴を含む SAP 印刷のメイン ログとして機能します。 (SP02).
+- **ログの目的**: スプール出力要求 (SP02) の履歴を含む SAP 印刷のメイン ログとして機能します。 (SP02)。
 
-    標準テーブルに基づくカスタム サービスと RFC を併用することで利用できます。
+    標準テーブルに基づくカスタム サービスと RFC を併用することで利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
 ### <a name="abapspooloutputlog_cl-log-schema"></a>ABAPSpoolOutputLog_CL ログ スキーマ
 
@@ -442,15 +442,15 @@ ms.locfileid: "109815232"
 
 ## <a name="abap-syslog"></a>ABAP SysLog
 
-- **Azure Sentinel における名前**: `SysLog_CL`
+- **Azure Sentinel における名前**: `ABAPOS_Syslog_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcbaf36611d3a6510000e835363f.html)
 
 - **ログの目的**: SAP NetWeaver Application Server (SAP NetWeaver AS) ABAP システムのエラー、警告、ユーザー ロック (既知のユーザーからのサインイン試行の失敗によるもの)、処理メッセージをすべて記録します。
 
-    SAP Control Web サービスによって利用できます。
+    SAP Control Web サービスによって利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
-### <a name="syslog_cl-log-schema"></a>SysLog_CL ログ スキーマ
+### <a name="abapos_syslog_cl-log-schema"></a>ABAPOS_Syslog_CL ログスキーマ
 
 
 | フィールド            | Description            |
@@ -479,7 +479,7 @@ ms.locfileid: "109815232"
 
     マッピングの済んでいないビジネス プロセスとしては、たとえばリリースや承認の単純な手続きのほか、基本資料を作成して関連部署を調整するなど、より複雑なビジネス プロセスが挙げられます。
 
-    標準テーブルと標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。
+    標準テーブルと標準サービスに基づくカスタム サービスと RFC を併用することで利用できます。 このログは、クライアントごとに生成されます。
 
 ### <a name="abapworkflowlog_cl-log-schema"></a>ABAPWorkflowLog_CL ログスキーマ
 
@@ -526,15 +526,15 @@ ms.locfileid: "109815232"
 
 ## <a name="abap-workprocess-log"></a>ABAP WorkProcess ログ
 
-- **Azure Sentinel における名前**: `WP_CL`
+- **Azure Sentinel における名前**: `ABAPOS_WP_CL`
 
 - **関連する SAP ドキュメント**: [SAP ヘルプ ポータル](https://help.sap.com/viewer/d0739d980ecf42ae9f3b4c19e21a4b6e/7.3.15/en-US/46fb763b6d4c5515e10000000a1553f6.html)
 
 - **ログの目的**: 作業プロセスのログをすべて結合します (既定値: `dev_*`)。
 
-    SAP Control Web サービスによって利用できます。
+    SAP Control Web サービスによって利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
-### <a name="wp_cl-log-schema"></a>WP_CL ログ スキーマ
+### <a name="abapos_wp_cl-log-schema"></a>ABAPOS_WP_CL ログ スキーマ
 
 
 | フィールド        | 説明         |
@@ -557,7 +557,7 @@ ms.locfileid: "109815232"
 
 - **ログの目的**: ユーザーの操作、つまり SAP HANA データベースにおいて試行された操作を記録します。 たとえば、機密データへの読み取りアクセスを記録、監視することができます。
 
-    Syslog 用 Sentinel Linux エージェントによって利用できます。
+    Syslog 用 Sentinel Linux エージェントによって利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
 ### <a name="syslog-log-schema"></a>Syslog ログ スキーマ
 
@@ -581,7 +581,7 @@ ms.locfileid: "109815232"
 
 - **ログの目的**: Java ファイルベースのすべてのログ (セキュリティ監査ログを含む) と、システム (クラスターおよびサーバー プロセス)、パフォーマンス、ゲートウェイのログとを結合します。 開発者のトレース ログや既定のトレース ログも含みます。
 
-    SAP Control Web サービスによって利用できます。
+    SAP Control Web サービスによって利用できます。 このログは、すべてのクライアントにわたるデータを使用して生成されます。
 
 ### <a name="javafileslogscl-log-schema"></a>JavaFilesLogsCL ログ スキーマ
 
@@ -618,7 +618,8 @@ ms.locfileid: "109815232"
 
 詳細については、次を参照してください。
 
-- [チュートリアル: SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
+- [SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
 - [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
-- [Azure Sentinel SAP データ コネクタをオンプレミスにデプロイする](sap-solution-deploy-alternate.md)
+- [エキスパートの構成オプション、オンプレミスへの展開、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP ソリューション: 組み込みのセキュリティ コンテンツ](sap-solution-security-content.md)
+- [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

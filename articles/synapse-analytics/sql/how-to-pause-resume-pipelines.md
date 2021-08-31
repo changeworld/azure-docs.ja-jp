@@ -4,15 +4,17 @@ description: Azure Synapse Analytics で Synapse パイプラインを使用し�
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
+ms.reviewer: wiassaf
+ms.subservice: sql
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 08/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 454c25891759d99b3f622d66920f20d2ec0f1a6c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 01fd517be7e60a5ab16e7844d8c149ddac2dcb3e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081642"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862444"
 ---
 # <a name="pause-and-resume-dedicated-sql-pools-with-synapse-pipelines"></a>Synapse パイプラインを使用して専用 SQL プールを一時停止および再開する
 
@@ -22,21 +24,21 @@ ms.locfileid: "110081642"
 
 1. パイプラインを作成します。
 1. パイプラインでパラメーターを設定します。
-1. Synapse ワークスペースの専用 SQL プールの一覧を確認します。
+1. Azure Synapse ワークスペースの専用 SQL プールの一覧を確認します。
 1. 一覧から一時停止または再開したくない専用 SQL プールをフィルター処理します。 
 1. 各専用 SQL プールをループしてから、次の操作を行います。
     1. 専用 SQL プールの状態を確認します。
     1. 専用 SQL プールの状態を評価します。
     1. 専用 SQL プールを一時停止または再開します。
 
-これらの手順は、Synapse のシンプルなパイプラインにレイアウトされています。
+これらの手順は、Azure Synapse のシンプルなパイプラインにレイアウトされています。
 
 ![シンプルな Synapse パイプライン](./media/how-to-pause-resume-pipelines/simple-pipeline.png)
 
 
 環境の性質によっては、ここで説明するプロセス全体が適用されない場合があり、適切な手順を選択するだけで済む場合があります。 ここで説明するプロセスは、開発、テスト、または PoC 環境ですべてのインスタンスを一時停止または再開するために使用できます。 運用環境では、インスタンスごとに一時停止または再開をスケジュールする可能性が高くなります。そのため、必要になるのは手順 5a から 5c までのみとなります。
 
-上記の手順では、Synapse と Azure SQL の REST API を使用します。
+上記の手順では、Azure Synapse と Azure SQL の REST API を使用します。
 
 - [専用 SQL プールの操作](/rest/api/synapse/sqlpools)
  
@@ -62,10 +64,10 @@ Synapse パイプラインを使用すると、一時停止と再開を自動化
 作成するパイプラインはパラメーター駆動型になります。 パラメーターを使用すると、複数のサブスクリプション、リソース グループ、または専用 SQL プール全体で使用できる汎用パイプラインを作成できます。 パイプライン画面の下部付近にある **[パラメーター]** タブを選択します。 **[+ 新規]** を選択して、次の各パラメーターを作成します。
 
     
-|Name  |種類  |既定値  |説明|
+|Name  |Type  |既定値  |説明|
 |---------|---------|---------|-----------|
 |ResourceGroup    |string        |Synapse          |専用 SQL プールのリソース グループの名前|
-|SubscriptionID   |string        |<SubscriptionID> |リソース グループのサブスクリプション ID|
+|SubscriptionID   |string        |`<SubscriptionID>` |リソース グループのサブスクリプション ID|
 |WorkspaceName    |string        |Synapse          |ワークスペースの名前|
 |SQLPoolName      |string        |SQLPool1         |専用 SQL プールの名前|
 |PauseorResume    |string        |一時停止            |パイプライン実行の終了時に必要な状態|
@@ -225,5 +227,5 @@ Azure Synapse のマネージド ID と、専用 SQL プールにマネージド
 
 [ワークスペースのマネージド ID にアクセス許可を付与する](../security/how-to-grant-workspace-managed-identity-permissions.md)
 
-[Synapse のパイプラインの実行に対する SQL アクセス制御](../security/how-to-set-up-access-control.md#step-73-sql-access-control-for-synapse-pipeline-runs)
+[Synapse のパイプラインの実行に対する SQL アクセス制御](../security/how-to-set-up-access-control.md#step-73-sql-access-control-for-azure-synapse-pipeline-runs)
 

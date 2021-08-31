@@ -4,15 +4,15 @@ description: Azure HPC Cache インスタンスを作成する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 07/15/2021
 ms.author: v-erkel
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 72c9590cca805d0a6e22d42f482ad80935e842d3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 26272090d3ec18328df2ac553b15e53abc824708
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706793"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294920"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -28,7 +28,7 @@ Azure portal または Azure CLI を使用してキャッシュを作成しま�
 
 ## <a name="define-basic-details"></a>基本的な詳細を定義する
 
-![Azure portal のプロジェクト詳細ページのスクリーンショット](media/hpc-cache-create-basics.png)
+![Azure portal のプロジェクト詳細ページのスクリーンショット。](media/hpc-cache-create-basics.png)
 
 **[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。
 
@@ -39,49 +39,92 @@ Azure portal または Azure CLI を使用してキャッシュを作成しま�
 * サブネット - 少なくとも 64 個の IP アドレス (/24) を持つサブネットを選択または作成します。 このサブネットは、この Azure HPC Cache インスタンスにのみ使用する必要があります。
 
 ## <a name="set-cache-capacity"></a>キャッシュ容量を設定する
-<!-- referenced from GUI - update aka.ms link if you change this header text -->
+<!-- referenced from GUI - update aka.ms/hpc-cache-iops link if you change this header text -->
 
-**[キャッシュ]** ページで、キャッシュの容量を設定する必要があります。 ご自分のキャッシュで保持できるデータの量とクライアント要求の処理の迅速さは、ここで設定する値によって決まります。
+**[キャッシュ]** ページで、キャッシュの容量を設定する必要があります。 ここで設定された値によって、キャッシュがクライアント要求を処理できる速度と保持できるデータの量が決まります。
 
 容量は、キャッシュのコストと、それがサポートできるストレージ ターゲットの数にも影響します。
 
-これらの 2 つの値を設定して容量を選択してください。
+キャッシュ容量は、次の 2 つの値の組み合わせです。
 
 * キャッシュの最大データ転送速度 (スループット) (GB/秒)
 * キャッシュ データ用に割り当てるストレージの容量 (TB)
 
-選択可能ないずれかのスループット値とキャッシュ ストレージ サイズを選択してください。
+![Azure portal のキャッシュ サイズ設定ページのスクリーンショット。](media/hpc-cache-create-capacity.png)
 
-> [!TIP]
-> キャッシュで 10 を超えるストレージ ターゲットを使用する場合は、スループット サイズに対して使用可能なキャッシュ ストレージの最大サイズ値を選択する必要があります。 詳細については、「[ストレージ ターゲット の追加](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)」を参照してください。
+### <a name="understand-throughput-and-cache-size"></a>スループットとキャッシュ サイズについて
 
-実際のデータ転送速度は、ワークロードとネットワーク速度、ストレージ ターゲットの種類によって異なることに注意してください。 選択した値により、キャッシュ システム全体の最大スループットが設定されますが、その一部はオーバーヘッド タスクに使用されます。 たとえば、キャッシュに既に格納されていないファイルがクライアントによって要求された場合、またはファイルが古いとマークされている場合、キャッシュでは、スループットの一部を使用して、バックエンド ストレージからファイルがフェッチされます。
+HPC Cache の効率性に影響を及ぼす可能性がある要因はいくつかありますが、最も重要なことの 1 つが、適切なスループット値とキャッシュ ストレージ サイズを選択することです。
 
-Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるために、どのファイルをキャッシュして事前に読み込むかが管理されます。 キャッシュの内容は絶えず評価され、アクセスされる頻度が低くなったファイルは長期ストレージに移されます。 メタデータ用の追加領域やその他のオーバーヘッドと、アクティブな作業ファイル一式を無理なく保持できるキャッシュ ストレージ サイズを選んでください。
+スループット値を選択する場合は、ワークロードとネットワーク速度、ストレージ ターゲットの種類によって実際のデータ転送速度が異なることに注意してください。
 
-![キャッシュ サイズ設定ページのスクリーンショット](media/hpc-cache-create-capacity.png)
+選択した値により、キャッシュ システム全体の最大スループットが設定されますが、その一部はオーバーヘッド タスクに使用されます。 たとえば、キャッシュに既に格納されていないファイルがクライアントによって要求された場合、またはファイルが古いとマークされている場合、キャッシュでは、スループットの一部を使用して、バックエンド ストレージからファイルがフェッチされます。
+
+Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるために、どのファイルをキャッシュして事前に読み込むかが管理されます。 キャッシュの内容は絶えず評価され、アクセスされる頻度が低くなったファイルは長期ストレージに移されます。
+
+メタデータ用の追加領域やその他のオーバーヘッドと、アクティブな作業ファイル一式を無理なく保持できるキャッシュ ストレージ サイズを選んでください。
+
+スループットとキャッシュ サイズは、特定のキャッシュでサポートされるストレージ ターゲットの数にも影響します。 キャッシュで 10 を超えるストレージ ターゲットを使用する場合は、スループット サイズに対して使用可能なキャッシュ ストレージの最大サイズ値を選択するか、高スループットの読み取り専用構成の 1 つを選択する必要があります。 詳細については、「[ストレージ ターゲット の追加](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)」を参照してください。
+
+キャッシュのサイズを正しく設定するためのヘルプが必要な場合は、Microsoft サービスおよびサポートにお問い合わせください。
+
+### <a name="choose-the-cache-type-for-your-needs"></a>ニーズに合わせてキャッシュの種類を選択する
+
+キャッシュ容量を選択するときに、一部のスループット値のキャッシュ サイズが固定されていて、それ以外は複数のキャッシュ サイズ オプションから選択できる場合があります。 これは、キャッシュ インフラストラクチャに 2 つの異なるスタイルがあるためです。
+
+* 標準キャッシュ - [スループット] メニューの **[読み取り/書き込みキャッシュ]** の下に一覧表示されます
+
+  標準キャッシュでは、複数のキャッシュ サイズ値から選択できます。 これらのキャッシュは、読み取り専用または読み取りおよび書き込みキャッシュ用に構成できます。
+
+* 高スループット キャッシュ - [スループット] メニューの **[読み取り専用キャッシュ]** の下に一覧表示されます
+
+  高スループット構成では、NVME ディスクを使用して事前に構成されているので、キャッシュ サイズが設定されています。 これらはファイル読み取り専用アクセスを最適化するように設計されています。
+
+![ポータルの [最大スループット] メニューのスクリーンショット。 "読み取り/書き込みキャッシュ" の見出しの下に複数のサイズ オプションがあり、"読み取り専用" の見出しの下に複数のサイズ オプションがあります。](media/rw-ro-cache-sizing.png)
+
+次の表では、2 つのオプションのいくつかの重要な違いについて説明します。
+
+| 属性 | Standard キャッシュ | 高スループット キャッシュ |
+|--|--|--|
+| スループット メニュー カテゴリ |"読み取り/書き込みキャッシュ"| "読み取り専用キャッシュ"|
+| スループットのサイズ | 2、4、または 8 GB/秒 | 4.5、9、または 16 GB/秒 |
+| キャッシュ サイズ | 2 GB/秒の場合、3、6、または 12 TB<br/> 4 GB/秒の場合、6、12、24 TB<br/> 8 GB/秒の場合、12、24、または 48 TB| 4\.5 GB/秒の場合、21 TB <br/> 9 GB/秒の場合、42 TB <br/> 16 GB/秒の場合、84 TB |
+| ストレージ ターゲットの最大数 | キャッシュ サイズの選択に応じて [10 または 20](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets) | 20 |
+| 互換性のあるストレージ ターゲットの種類 | Azure BLOB、オンプレミス NFS ストレージ、NFS 対応 BLOB | オンプレミスの NFS ストレージ <br/>この組み合わせに対する NFS 対応 BLOB ストレージは、プレビュー段階です |
+| キャッシュ スタイル | 読み取りキャッシュまたは読み取り/書き込みキャッシュ | 読み取りキャッシュのみ |
+| 不要な場合は、コストを節約するためにキャッシュを停止できる | はい | いいえ |
+
+これらのオプションの詳細については、次を参照してください。
+
+* [ストレージ ターゲットの最大数](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)
+* [読み取りおよび書き込みのキャッシュ モード](cache-usage-models.md#basic-file-caching-concepts)
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Azure Key Vault の暗号化を有効にする (省略可能)
-
-**[Disk encryption keys]\(ディスク暗号化キー\)** ページは **[キャッシュ]** タブと **[タグ]** タブの間に表示されます。<!-- Read [Regional availability](hpc-cache-overview.md#region-availability) to learn more about region support. -->
 
 キャッシュ ストレージで使用する暗号化キーを管理する場合は、 **[Disk encryption keys] (ディスク暗号化キー)** ページで、お使いの Azure Key Vault の情報を入力します。 キー コンテナーは、キャッシュと同じリージョンおよび同じサブスクリプションに存在する必要があります。
 
 カスタマー マネージド キーが不要な場合は、このセクションを省略できます。 Azure では、既定で Microsoft のマネージド キーを使用してデータを暗号化します。 詳細については、[Azure Storage の暗号化](../storage/common/storage-service-encryption.md)に関する記事を参照してください。
 
 > [!NOTE]
->
-> * キャッシュの作成後に、Microsoft のマネージド キーとカスタマー マネージド キーを切り換えることはできません。
-> * キャッシュが作成されたら、それに対してキー コンテナーへのアクセスを承認する必要があります。 キャッシュの **[概要]** ページの **[暗号化を有効にする]** ボタンをクリックして、暗号化を有効にします。 この手順は、キャッシュの作成から 90 分以内に実行してください。
-> * キャッシュ ディスクは、この承認の後に作成されます。 これは、最初のキャッシュ作成時間は短いが、アクセスを承認してから 10 分以上はキャッシュを使用できないことを意味します。
+> キャッシュの作成後に、Microsoft のマネージド キーとカスタマー マネージド キーを切り換えることはできません。
 
 カスタマー マネージド キー暗号化プロセスの詳細については、「[Azure HPC Cache にカスタマー マネージド暗号化キーを使用する](customer-keys.md)」を参照してください。
 
-![[Customer managed]\(カスタマー マネージド\) が選択され、キー コンテナーのフィールドが表示されている暗号化キー ページのスクリーンショット](media/create-encryption.png)
+![暗号化キー ページのスクリーンショット。[カスタマー マネージド] が選択され、[カスタマー キーの設定] と [マネージド ID] の構成フォームが表示されています。](media/create-encryption.png)
 
 カスタマー マネージド キー暗号化を選択するには、 **[Customer managed]\(カスタマー マネージド\)** を選択します。 キー コンテナー指定のフィールドが表示されます。 使用する Azure Key Vault を選択し、このキャッシュに使用するキーとバージョンを選択します。 キーは、2048 ビット RSA キーである必要があります。 このページで、新しいキー コンテナー、キー、キー バージョンを作成できます。
 
-キャッシュを作成したら、それに対してキー コンテナー サービスの使用を承認する必要があります。 詳細については、「[キャッシュから Azure Key Vault の暗号化を承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)」を参照してください。
+[自動キー ローテーション](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview)を使用する場合は、 **[Always use current key version]\(常に現在のキー バージョンを使用する\)** チェックボックスをオンにします。
+
+このキャッシュに特定のマネージド ID を使用する場合は、 **[マネージド ID]** セクションで構成します。 詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。
+
+> [!NOTE]
+> キャッシュを作成した後で、割り当てられた ID を変更することはできません。
+
+システム割り当てマネージド ID、またはキー コンテナーへのアクセス権がまだないユーザー割り当て ID を使用する場合は、キャッシュを作成した後に追加の手順を実行する必要があります。 この手動の手順で、キャッシュのマネージド ID がキー コンテナーを使用することを承認します。
+
+* マネージド ID 設定の違いについては、「[キャッシュのマネージド ID オプションを選択する](customer-keys.md#choose-a-managed-identity-option-for-the-cache)」を参照してください。
+* 手動の手順については、「[キャッシュから Azure Key Vault の暗号化を承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed)」を参照してください。
 
 ## <a name="add-resource-tags-optional"></a>リソース タグを追加する (省略可)
 
@@ -100,7 +143,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 ![Azure portal における Azure HPC Cache インスタンスのスクリーンショット](media/hpc-cache-new-overview.png)
 
 > [!NOTE]
-> キャッシュでカスタマー マネージド暗号化キーを使用する場合は、デプロイの状態が完了に変更される前に、リソースの一覧にそのキャッシュが表示されることがあります。 キャッシュの状態が **[Waiting for key]\(キーの待機中\)** になるとすぐに、それに対してキー コンテナーの使用を [承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)ことができます。
+> キャッシュでカスタマー マネージド暗号化キーを使用し、作成後に手動の認証手順が必要な場合は、デプロイの状態が完了に変更される前に、リソースの一覧にそのキャッシュが表示されることがあります。 キャッシュの状態が **[Waiting for key]\(キーの待機中\)** になるとすぐに、それに対してキー コンテナーの使用を [承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed)ことができます。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -120,8 +163,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 * Azure リージョン
 * キャッシュのサブネット (次の形式):
 
-  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
-nets/<cache_subnet_name>"``
+  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"``
 
   キャッシュのサブネットには少なくとも 64 個の IP アドレス (/24) が必要で、そこに他のリソースを格納することはできません。
 
@@ -140,7 +182,7 @@ nets/<cache_subnet_name>"``
   | 6144 GB    | はい         | はい         | no          |
   | 12288 GB   | 可         | はい         | 可         |
   | 24576 GB   | Ｘ          | はい         | 可         |
-  | 49152 GB   | Ｘ          | Ｘ          | はい         |
+  | 49152 GB   | Ｘ          | いいえ          | はい         |
 
   キャッシュで 10 を超えるストレージ ターゲットを使用する場合は、SKU に対して使用可能なキャッシュの最大サイズ値を選択します。 これらの構成は、最大 20 のストレージ ターゲットをサポートします。
 
@@ -225,8 +267,7 @@ Install-Module -Name Az.HPCCache
 * Azure リージョン
 * キャッシュのサブネット (次の形式):
 
-  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
-nets/<cache_subnet_name>"`
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"`
 
   キャッシュのサブネットには少なくとも 64 個の IP アドレス (/24) が必要で、そこに他のリソースを格納することはできません。
 
@@ -245,7 +286,7 @@ nets/<cache_subnet_name>"`
   | 6144 GB    | はい         | はい         | no          |
   | 12,288 GB   | はい         | はい         | はい         |
   | 24,576 GB   | no          | はい         | はい         |
-  | 49,152 GB   | no          | Ｘ          | 可         |
+  | 49,152 GB   | no          | いいえ          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
 
@@ -293,4 +334,4 @@ upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/
 **[リソース]** の一覧にキャッシュが表示されたら、次の手順に進むことができます。
 
 * [ストレージ ターゲットを定義](hpc-cache-add-storage.md)して、キャッシュがデータ ソースにアクセスできるようにします。
-* カスタマー マネージド暗号化キーを使用する場合は、キャッシュの概要ページで [Azure Key Vault の暗号化を承認](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)して、キャッシュのセットアップを完了する必要があります。 この手順は、ストレージを追加する前に実行する必要があります。 詳細については、[カスタマー マネージド暗号化キーの使用](customer-keys.md)に関する記事を参照してください。
+* カスタマー マネージド暗号化キーを使用し、キャッシュの概要ページで [Azure Key Vault の暗号化を承認](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed)して、キャッシュのセットアップを完了する必要がある場合は、「[カスタマー マネージド暗号化キーを使用する](customer-keys.md)」のガイダンスに従います。 この手順は、ストレージを追加する前に実行する必要があります。

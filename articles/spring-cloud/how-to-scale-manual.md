@@ -3,16 +3,16 @@ title: Azure Spring Cloud でアプリケーションをスケーリングする
 description: Azure portal で Azure Spring Cloud を使用してアプリケーションをスケーリングする方法について説明します
 ms.service: spring-cloud
 ms.topic: how-to
-ms.author: brendm
-author: bmitchell287
+ms.author: karler
+author: karlerickson
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 97261755f55f9193d0169e91597318928bb45b97
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 22bae9cd5a626f6a90427bd7522f2b99fa08ca0c
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134701"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015361"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud でアプリケーションをスケーリングする
 
@@ -28,7 +28,7 @@ ms.locfileid: "108134701"
 
 以下の手順に従うためには、次の要件を満たす必要があります。
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * デプロイされた Azure Spring Cloud サービス インスタンス。  [Azure CLI を使用したアプリのデプロイに関するクイックスタート](./quickstart.md)に従って作業を開始してください。
 * サービス インスタンスで既に作成してある少なくとも 1 つのアプリケーション。
 
@@ -63,7 +63,8 @@ ms.locfileid: "108134701"
 数秒後、行った変更が **[概要]** ページに表示され、詳細は **[アプリケーション インスタンス]** タブで確認できるようになります。スケーリングには、コードの変更や再デプロイは不要です。
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
-Basic レベルをご利用の場合で、かつ、少なくとも 1 つの[制限](./quotas.md)によって制約を受けている場合は、Standard レベルにアップグレードしてください。 そのためには、まず [Standard レベル] 列を選択し、 **[アップグレード]** ボタンをクリックして、[価格レベル] メニューに移動します。
+
+Basic レベルをご利用の場合で、かつ、少なくとも 1 つの[制限](./quotas.md)によって制約を受けている場合は、Standard レベルにアップグレードしてください。 そのためには、まず **[Standard レベル]** 列を選択して **[アップグレード]** ボタンを選択し、[価格レベル] メニューに移動します。
 
 ## <a name="next-steps"></a>次のステップ
 

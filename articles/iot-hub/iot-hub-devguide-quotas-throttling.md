@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 - contperf-fy21q4
-ms.openlocfilehash: 127e511769a7c2aface1531c9f888e9ce213b999
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f0c07da859ae34a030058ee2c99d2c7b72378f5d
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407023"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135629"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -70,7 +70,7 @@ ms.locfileid: "111407023"
 
 *  **クォータ** は、ハブで送信できる *1 日あたり* のメッセージの集計数です。 ハブのクォータ制限は、[IoT Hub 料金ページ](https://azure.microsoft.com/pricing/details/iot-hub/)の列 **[ユニットごとのメッセージの合計数 (1 日あたり)]** に表示されます。
 
-*  クラウドからデバイスおよびデバイスからクラウドへの調整によって、メッセージを送信できる最大 *速度* が決まります。メッセージの数は 4 KB のチャンクに関係ありません。 各メッセージの[最大メッセージ サイズ](iot-hub-devguide-quotas-throttling.md#other-limits)は 256 KB まで可能です。
+*  クラウドからデバイスおよびデバイスからクラウドへの調整によって、メッセージを送信できる最大 *速度* が決まります。メッセージの数は 4 KB のチャンクに関係ありません。 D2C メッセージの最大サイズは 256 KB です。C2D メッセージの最大サイズは 64 KB です。 これらは、メッセージの種類ごとの [最大メッセージ サイズ] です。
 
 *  調整制限に達したり超過したりしないように、呼び出しを調整することをお勧めします。 上限に達した場合、IoT Hub はエラーコード 429 で応答し、クライアントはバックオフして再試行する必要があります。 これらの制限はハブあたり (場合によってはハブ/ユニットあたり) です。 詳細については、[接続と信頼できるメッセージング/再試行パターンの管理](iot-hub-reliability-features-in-sdks.md#retry-patterns)に関するページを参照してください。
 

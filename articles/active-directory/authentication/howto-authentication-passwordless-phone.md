@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f741cb21f427734c49001b9c672ed3e61c43adbc
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 3f2f3a3c561b2fe82dcbeaaee1138c0d465ac6a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613233"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737328"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリでパスワードなしのサインインを有効にする 
 
@@ -36,7 +36,12 @@ Microsoft Authenticator アプリから電話によるサインインを有効�
 
 Microsoft Authenticator アプリでパスワードなしの電話によるサインインを使用するには、次の前提条件を満たしている必要があります。
 
-- 検証方法としてプッシュ通知が許可されている Azure AD Multi-Factor Authentication。
+- 検証方法としてプッシュ通知が許可されている Azure AD Multi-Factor Authentication。 スマートフォンまたはタブレットへのプッシュ通知は、Authenticator アプリでアカウントへの不正アクセスを防止したり、不正なトランザクションを停止させたりするのに役立ちます。 Authenticator アプリは、プッシュ通知を行うように設定されたときに自動的にコードを生成します。これにより、デバイスが接続されていない場合でも、ユーザーはバックアップのサインイン方法を保持できます。 
+  
+  ユーザーが電話によるサインインのプッシュ通知を登録できるようにするには、Azure Multi-factor Auth Connector を有効にする必要があります。
+
+  ![有効化された Azure Multi-Factor Auth Connector のスクリーンショット。](media/howto-authentication-passwordless-phone/connector.png)
+
 - iOS 8.0 以降、または Android 6.0 以降を実行しているデバイスにインストールされている最新バージョンの Microsoft Authenticator。
 - Microsoft Authenticator アプリがインストールされているデバイスを、Azure AD テナント内で個々のユーザーに登録する必要があります。 
 
@@ -57,7 +62,7 @@ Azure AD では、サインイン プロセス中に使用できる認証方法�
 
 パスワードなしの電話によるサインインの認証方法を有効にするには、次の手順を実行します。
 
-1. "*全体管理者*" アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. *認証ポリシー管理者* アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 1. *Azure Active Directory* を検索して選択し、 **[セキュリティ]**  >  **[認証方法]**  >  **[ポリシー]** の順に移動します。
 1. **[Microsoft Authenticator]** で、次のオプションを選択します。
    1. **有効にする** - [はい] または [いいえ]
@@ -144,5 +149,5 @@ Azure AD のパスワードなし認証方法にユーザーが自分自身を�
 Azure AD 認証とパスワードレスの方法については、次の記事を参照してください。
 
 - [パスワードレス認証のしくみを学習する](concept-authentication-passwordless.md)
-- [デバイス登録の詳細](../devices/overview.md#getting-devices-in-azure-ad)
+- [デバイス登録の詳細](../devices/overview.md)
 - [Azure AD Multi-Factor Authentication の詳細](../authentication/howto-mfa-getstarted.md)

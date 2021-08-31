@@ -3,12 +3,12 @@ title: バックアップ センターのサポート マトリックス
 description: この記事では、バックアップ センターがワークロードの種類ごとにサポートするシナリオを要約しています
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: d6e5d34e201edda4fd1e9fda85f210fb88211e28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b922f2e320f9b41186f5a6397af5cd5f4b3f7750
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504509"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181363"
 ---
 # <a name="support-matrix-for-backup-center"></a>バックアップ センターのサポート マトリックス
 
@@ -31,14 +31,15 @@ ms.locfileid: "102504509"
 | 洞察 | View Backup Reports | <li> Azure Virtual Machine <br><br> <li> Azure 仮想マシンでの SQL <br><br> <li> Azure 仮想マシンでの SAP HANA <br><br> <li> Azure Files <br><br> <li> System Center Data Protection Manager <br><br> <li> Azure Backup エージェント (MARS) <br><br> <li> Azure Backup Server (MABS) | [バックアップ レポートのサポートされるシナリオ](./configure-reports.md#supported-scenarios)を参照 |
 | ガバナンス | カテゴリ [バックアップ] での組み込みとカスタムの Azure ポリシーの表示と割り当て | N/A | N/A |
 | ガバナンス | バックアップ用に構成されていないデータソースの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | N/A |
+| 監視 | 大規模な Azure Monitor アラートの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files<br/><br/> <li>Azure BLOB<br/><br/> <li>Azure Managed Disks | [アラート](./backup-azure-monitoring-built-in-monitor.md#azure-monitor-alerts-for-azure-backup-preview)に関するドキュメントを参照 |
+| アクション | バックアップ センターからのリージョン間復元ジョブの実行 | <li> Azure Virtual Machine <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA | [リージョンをまたがる復元](./backup-create-rs-vault.md#set-cross-region-restore)に関するドキュメントを参照 |
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
 | **カテゴリ** | **シナリオ**  |
 |--------------|---------------|
-| 監視 | アラートの大規模な表示 |
-| アクション | コンテナー設定の大規模な構成 |
-| アクション | バックアップ センターからのリージョン間復元ジョブの実行 |
+| アクション | コンテナー設定の大規模な構成は、現在、バックアップ センターからサポートされていません |
+| 可用性 | バックアップ センターは、現在、国内のクラウドでは使用できません | 
 
 ## <a name="next-steps"></a>次のステップ
 

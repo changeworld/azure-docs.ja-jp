@@ -13,12 +13,12 @@ ms.date: 03/11/2021
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: f6e683977781b7522eb23a10fcdb997c3e65938d
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: d3ec7c9786a9b5d3774c05669ae6d51ad443e71d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783323"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744091"
 ---
 # <a name="manage-your-users-with-my-staff"></a>マイ スタッフを使用してユーザーを管理する
 
@@ -43,17 +43,19 @@ ms.locfileid: "110783323"
 * SMS ベース認証を有効にするには、Azure AD テナントでの "*グローバル管理者*" 特権が必要です。
 * テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD または Microsoft 365 ライセンスのいずれかを保持している必要があります。
 
-  * [Azure AD Premium P1 または P2](https://azure.microsoft.com/pricing/details/active-directory/)
-  * [Microsoft 365 (M365) F1 または F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
-  * [Enterprise Mobility + Security (EMS) E3 または E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) または [Microsoft 365 (M365) E3 または E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
+  * [Azure AD Premium P1 または P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)
+  * [Microsoft 365 F1 または F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security (EMS) E3 または E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) または [Microsoft 365 E3 または E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>マイ スタッフを有効にする方法
 
 管理単位を構成した後は、マイ スタッフにアクセスするユーザーにこのスコープを適用できます。 管理者ロールを割り当てられたユーザーだけが、マイ スタッフにアクセスできます。 マイ スタッフを有効にするには、次の手順のようにします。
 
-1. ユーザー管理者として Azure portal にサインインします。
-2. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[ユーザー機能プレビュー]**  >  **[ユーザー機能プレビュー設定の管理]** に移動します。
-3. **[管理者はマイ スタッフにアクセスできます]** では、すべてのユーザーまたは選択したユーザーにアクセスを許可したり、すべてのユーザーにアクセスを禁止したりできます。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にユーザー管理者としてサインインします。
+
+1. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[ユーザー機能プレビュー]**  >  **[ユーザー機能プレビュー設定の管理]** の順に選択します。
+
+1. **[管理者はマイ スタッフにアクセスできます]** では、すべてのユーザーまたは選択したユーザーにアクセスを許可したり、すべてのユーザーにアクセスを禁止したりできます。
 
 > [!Note]
 > 管理者ロールを割り当てられたユーザーだけが、マイ スタッフにアクセスできます。 管理者ロールが割り当てられていないユーザーに対してマイ スタッフを有効にすると、そのユーザーはマイ スタッフにアクセスできなくなります。

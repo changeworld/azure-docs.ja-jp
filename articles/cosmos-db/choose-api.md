@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2021
-ms.openlocfilehash: a4873662578dee69d4f7fe16618101a732129f58
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/12/2021
+ms.openlocfilehash: 451e03c8557f224dce118866932307b32bfbfd56
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111561788"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735440"
 ---
 # <a name="choose-an-api-in-azure-cosmos-db"></a>Azure Cosmos DB で API を選択する
 
@@ -43,7 +43,7 @@ MongoDB、Cassandra、Gremlin、Table 用の API では、オープンソース 
 
 ## <a name="coresql-api"></a>Core(SQL) API
 
-この API では、データをドキュメント形式で格納します。 インターフェイス、サービス、SDK クライアント ライブラリを完全に制御できるため、最適なエンドツーエンド エクスペリエンスが提供されます。 Azure Cosmos DB にロールアウトされた新機能は、SQL API アカウントで最初に使用できるようになります。 Azure Cosmos DB SQL API アカウントでは、構造化照会言語 (SQL) 構文を使用した項目のクエリがサポートされています。これは、JSON オブジェクトを照会するための最もよく知られている一般的なクエリ言語の 1 つです。 詳細については、「[SQL クエリの使用を開始する](sql-query-getting-started.md)」を参照してください。
+この API では、データをドキュメント形式で格納します。 インターフェイス、サービス、SDK クライアント ライブラリを完全に制御できるため、最適なエンドツーエンド エクスペリエンスが提供されます。 Azure Cosmos DB にロールアウトされた新機能は、SQL API アカウントで最初に使用できるようになります。 Azure Cosmos DB SQL API アカウントでは、構造化照会言語 (SQL) 構文を使用した項目のクエリがサポートされています。これは、JSON オブジェクトを照会するための最もよく知られている一般的なクエリ言語の 1 つです。 詳細については、[Azure Cosmos DB SQL API](/learn/modules/intro-to-azure-cosmos-db-core-api/) の学習モジュールおよび「[SQL クエリの使用を開始する](sql-query-getting-started.md)」を参照してください。
 
 Oracle、DynamoDB、HBase などの他のデータベースから移行する場合や、最新のテクノロジを使用してアプリをビルドする場合は、SQL API を使用することをお勧めします。 SQL API では分析がサポートされ、運用と分析のワークロード間でパフォーマンスを分離できます。
 
@@ -51,9 +51,9 @@ Oracle、DynamoDB、HBase などの他のデータベースから移行する場
 
 この API では、BSON 形式を使用してドキュメント構造にデータを格納します。 MongoDB ワイヤ プロトコルと互換性がありますが、ネイティブ MongoDB に関するコードは使用されません。 この API は、スケーリング、高可用性、geo レプリケーション、複数の書き込み場所、自動および透過的なシャード管理、運用および分析ストア間の透過的なレプリケーションなどの Azure Cosmos DB の機能の使用を損なうことなく、より広範な MongoDB エコシステムとスキルを使用する場合に最適です。
 
-接続文字列を変更するだけで、MongoDB 用 API で既存の MongoDB アプリを使用できます。 mongodump と mongorestore などのネイティブ MongoDB ツールまたは Azure Database Migration ツールを使用して、既存のデータを移動できます。 MongoDB シェル、[MongoDB Compass](mongodb-compass.md)、[Robo3T](mongodb-robomongo.md) などのツールを使用すると、クエリを実行し、ネイティブ MongoDB の場合と同様にデータを操作できます。
+接続文字列を変更するだけで、MongoDB 用 API で既存の MongoDB アプリを使用できます。 mongodump と mongorestore などのネイティブ MongoDB ツールまたは Azure Database Migration ツールを使用して、既存のデータを移動できます。 MongoDB シェル、[MongoDB Compass](mongodb/connect-using-compass.md)、[Robo3T](mongodb/connect-using-robomongo.md) などのツールを使用すると、クエリを実行し、ネイティブ MongoDB の場合と同様にデータを操作できます。
 
-MongoDB 用 API は、MongoDB サーバー バージョン 4.0、3.6、3.2 と互換性があります。 最高のパフォーマンスと全機能のサポートが提供されるため、サーバー バージョン 4.0 をお勧めします。 詳細については、[MongoDB 用 API](mongodb-introduction.md) に関する記事を参照してください。
+MongoDB 用 API は、MongoDB サーバー バージョン 4.0、3.6、3.2 と互換性があります。 最高のパフォーマンスと全機能のサポートが提供されるため、サーバー バージョン 4.0 をお勧めします。 詳細については、[MongoDB 用 API](mongodb/mongodb-introduction.md) に関する記事を参照してください。
 
 ## <a name="cassandra-api"></a>Cassandra API
 
@@ -71,12 +71,12 @@ Azure Cosmos DB の Gremlin API は、[Apache TinkerPop](https://tinkerpop.apach
 
 この API では、データをキー/値形式で格納します。 現在、Azure Table Storage を使用している場合は、待機時間、スケーリング、スループット、グローバル配布、インデックス管理、低クエリ パフォーマンスにいくつかの制限がある可能性があります。 Table API によってこれらの制限が克服されます。Azure Cosmos DB のベネフィットを活用する場合は、アプリを移行することをお勧めします。 Table API でサポートされているのは、OLTP シナリオのみです。
 
-Azure Table Storage 用に作成されたアプリケーションを Table API に移行することができます。これにより、コードにほとんど変更を加えることなく、高度な機能を利用できるようになります。 詳細については、[Table API](table-introduction.md) に関する記事を参照してください。
+Azure Table Storage 用に作成されたアプリケーションを Table API に移行することができます。これにより、コードにほとんど変更を加えることなく、高度な機能を利用できるようになります。 詳細については、[Table API](introduction.md) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
-* [Azure Cosmos DB の MongoDB 用 API の概要](create-mongodb-nodejs.md)
-* [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
+* [Azure Cosmos DB の MongoDB 用 API の概要](mongodb/create-mongodb-nodejs.md)
+* [Azure Cosmos DB Cassandra API を使ってみる](cassandra/manage-data-dotnet.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)

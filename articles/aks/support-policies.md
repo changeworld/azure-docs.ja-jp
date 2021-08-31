@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のサポート ポリシー、共�
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 3e4f5e4411eb81ab14d844adf03433e9de0d73b2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1e85effa5a8efca59bfc88aada050ee5ddcc7fcf
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368112"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666443"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -127,7 +127,7 @@ AKS の 1 つまたは複数のマネージド コンポーネントでセキュ
 
 ## <a name="network-ports-access-and-nsgs"></a>ネットワーク ポート、アクセス、NSG
 
-NSG のカスタマイズは、カスタム サブネット上でのみ行うことができます。 マネージド サブネット上またはエージェント ノードの NIC レベルで NSG をカスタマイズすることはできません。 AKS では、エグレスを制御し必要な接続を確保するために、特定のエンドポイントへのエグレス要件があります。[エグレス トラフィックの制限](limit-egress-traffic.md)に関する記事を参照してください。
+NSG のカスタマイズは、カスタム サブネット上でのみ行うことができます。 マネージド サブネット上またはエージェント ノードの NIC レベルで NSG をカスタマイズすることはできません。 AKS では、エグレスを制御し必要な接続を確保するために、特定のエンドポイントへのエグレス要件があります。[エグレス トラフィックの制限](limit-egress-traffic.md)に関する記事を参照してください。 イングレスの場合、要件は、クラスターにデプロイしたアプリケーションに基づきます。
 
 ## <a name="stopped-or-de-allocated-clusters"></a>停止または割り当て解除されたクラスター
 

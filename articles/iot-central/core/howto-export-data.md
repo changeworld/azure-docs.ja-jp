@@ -8,12 +8,12 @@ ms.date: 06/04/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 914fd683c45415db4af1f932404bc2cc2cf35716
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 0435fece7394c0a1494e51581bce263cbf1e068a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111814551"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461181"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
@@ -31,7 +31,7 @@ ms.locfileid: "111814551"
 
 ## <a name="prerequisites"></a>前提条件
 
-データ エクスポート機能を使用するには、[V3 アプリケーション](howto-get-app-info.md)が必要です。また、[データ エクスポート](howto-manage-users-roles.md)のアクセス許可が必要です。
+データ エクスポート機能を使用するには、[V3 アプリケーション](howto-faq.yml#how-do-i-get-information-about-my-application-)が必要です。また、[データ エクスポート](howto-manage-users-roles.md)のアクセス許可が必要です。
 
 V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central アプリケーションの移行](howto-migrate.md)に関する記事を参照してください。
 
@@ -174,7 +174,7 @@ IoT Central でエクスポートの状態を確認するだけでなく、[Azur
 - 宛先に正常にエクスポートされたメッセージの数。
 - 発生したエラーの数。
 
-詳細については、「[IoT Central アプリケーションの全体的な正常性状態を監視する](howto-monitor-application-health.md)」を参照してください。
+詳細については、「[アプリケーションの正常性を監視する](howto-manage-iot-central-from-portal.md#monitor-application-health)」を参照してください。
 
 ## <a name="destinations"></a>変換先
 
@@ -209,7 +209,7 @@ Webhook が宛先の場合も、データはほぼリアルタイムでエクス
 - `enqueuedTime`: IoT Central によってこのメッセージが受信された時刻。
 - `enrichments`:エクスポートに設定されたエンリッチメント。
 - `module`: このメッセージを送信した IoT Edge モジュール。 このフィールドは、メッセージが IoT Edge モジュールから送信された場合にのみ表示されます。
-- `component`: このメッセージを送信したコンポーネント。 このフィールドは、メッセージで送信された機能が[デバイス テンプレートのコンポーネント](howto-set-up-template.md#create-a-component)としてモデル化されている場合にのみ表示されます。
+- `component`: このメッセージを送信したコンポーネント。 このフィールドは、メッセージで送信された機能がデバイス テンプレートでコンポーネントとしてモデル化されている場合にのみ表示されます。
 - `messageProperties`:デバイスからメッセージと一緒に送信された追加のプロパティ。 これらのプロパティは *アプリケーション プロパティ* と呼ばれることもあります。 [詳細については IoT Hub のドキュメントを参照してください](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
 Event Hubs と Service Bus の場合、IoT Central は、デバイスからメッセージを受信した後、すぐに新しいメッセージをエクスポートします。 各メッセージのユーザー プロパティ (アプリケーション プロパティとも呼ばれます) では、`iotcentral-device-id`、`iotcentral-application-id`、および `iotcentral-message-source` が自動的に含まれます。
@@ -349,7 +349,7 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
 
 ## <a name="property-changes-format"></a>プロパティ変更の形式
 
-各メッセージまたはレコードは、デバイスまたはクラウドのプロパティに対する 1 つの変更を表します。 デバイスのプロパティの場合、報告された値の変更のみが別個のメッセージとしてエクスポートされます。 エクスポートされたメッセージに含まれる情報は次のとおりです。
+各メッセージまたはレコードは、デバイスとクラウドのプロパティの変更を表します。 エクスポートされたメッセージに含まれる情報は次のとおりです。
 
 - `applicationId`:IoT Central アプリケーションの ID。
 - `messageSource`:メッセージのソース - `properties`。
@@ -358,8 +358,9 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
 - `schema`:ペイロード スキーマの名前とバージョン。
 - `enqueuedTime`: IoT Central によってこの変更が検出された時刻。
 - `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
+- `properties`: 変更されたプロパティの名前と値を含む、変更されたプロパティの配列。 プロパティがコンポーネントまたは IoT Edge モジュール内でモデル化されている場合、コンポーネントとモジュールの情報が含まれます。
 - `enrichments`:エクスポートに設定されたエンリッチメント。
-
+- 
 Event Hubs と Service Bus の場合、IoT Central から新しいメッセージ データが、ほぼリアルタイムでイベント ハブあるいは Service Bus キューまたはトピックに送信されます。 各メッセージのユーザー プロパティ (アプリケーション プロパティとも呼ばれます) では、`iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` および `iotcentral-message-type` が自動的に含まれます。
 
 Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。
@@ -377,13 +378,13 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
     "enqueuedTime": "2020-08-05T22:37:32.942Z",
     "properties": [{
         "name": "MachineSerialNumber",
-        "value": "abc"
+        "value": "abc",
+        "module": "VitalsModule",
+        "component": "DeviceComponent"
     }],
     "enrichments": {
         "userSpecifiedKey" : "sampleValue"
-    },
-    "module": "VitalsModule",
-    "component": "DeviceComponent"
+    }
 }
 ```
 ## <a name="device-connectivity-changes-format"></a>デバイス接続性の変更形式

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 35f4e76a437c5ea5926a95b199e433c6e5b1eb76
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: da6dfb018885ce55323e4a05e738501692c68a58
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901261"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727978"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Azure portal でキュー データへのアクセスの承認方法を選択する
 
@@ -28,9 +28,9 @@ Azure portal でキュー データへのアクセスを承認する方法に応
 
 ### <a name="use-the-account-access-key"></a>アカウント アクセス キーを使用する
 
-アカウント アクセス キーを使用してキュー データにアクセスするには、Azure RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft. Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、少なくとも最大の権限から順に次のものが含まれます。
+アカウント アクセス キーを使用してキュー データにアクセスするには、Azure RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、権限が最小のものから最大のものの順に、次のものが含まれます。
 
-- [閲覧者とデータ アクセス](../../role-based-access-control/built-in-roles.md#reader-and-data-access)のロール
+- [閲覧者とデータ アクセス](../../role-based-access-control/built-in-roles.md#reader-and-data-access) ロール
 - [Storage Account の共同作成者ロール](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 - Azure Resource Manager の[共同作成者ロール](../../role-based-access-control/built-in-roles.md#contributor)
 - Azure Resource Manager の[所有者ロール](../../role-based-access-control/built-in-roles.md#owner)
@@ -50,9 +50,9 @@ Azure AD アカウントを使用して、Azure portal からキュー データ
 - キュー データへのアクセスを提供する組み込みロールまたはカスタム ロールのいずれかが割り当てられている。
 - Azure Resource Manager の[リーダー](../../role-based-access-control/built-in-roles.md#reader)ロールが、少なくとも、ストレージ アカウント以上のレベルを範囲として割り当てられている。 **リーダー** 役割は最も制限の厳しいアクセス許可を付与しますが、ストレージ アカウントの管理リソースへのアクセス権を付与する別の Azure Resource Manager ロールも受け入れることができます。
 
-Azure Resource Manager **閲覧者** ロールは、ユーザーにストレージ アカウントのリソースの表示を許可しますが、変更は許可しません。 これは Azure Storage 内のデータに読み取りアクセス許可を提供しませんが、アカウント管理リソースに対してのみです。 ユーザーが Azure portal 内のキューに移動できるようにするには、 **閲覧者** ロールが必要です。
+Azure Resource Manager **閲覧者** ロールを持つユーザーは、ストレージ アカウントのリソースを見ることはできますが、変更することはできません。 これは Azure Storage 内のデータに読み取りアクセス許可を提供しませんが、アカウント管理リソースに対してのみです。 ユーザーが Azure portal 内のキューに移動できるようにするには、 **閲覧者** ロールが必要です。
 
-キュー データへのアクセスをサポートする組み込みロールの詳細については、[「キューの Azure ロール」](assign-azure-role-data-access.md#azure-roles-for-queues)を参照してください。
+キュー データへのアクセスをサポートする組み込みロールの詳細については、「[Azure Active Directory を使用してキューへのアクセスを承認する](authorize-access-azure-active-directory.md)」を参照してください。
 
 カスタム ロールは、組み込みロールによって提供される同じアクセス許可のさまざまな組み合わせをサポートできます。 Azure カスタム ロールを作成する方法の詳細については、「[Azure のカスタム ロール](../../role-based-access-control/custom-roles.md)」と「[Azure リソースのロール定義の概要](../../role-based-access-control/role-definitions.md)」を参照してください。
 
@@ -93,5 +93,5 @@ Azure AD アカウントを使用して認証を行う場合は、ポータル�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する](../common/storage-auth-aad.md)
+- [Azure Storage 内のデータへのアクセスを承認する](../common/authorize-data-access.md)
 - [キュー データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)

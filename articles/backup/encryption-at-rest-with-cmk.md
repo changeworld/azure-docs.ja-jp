@@ -4,12 +4,12 @@ description: Azure Backup でカスタマー マネージド キー (CMK) を使
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48268af7ec4874d0e5c9ad3bb79a95307aba15b7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5a036d7808a365e7f4332d380246bfa17be8e6c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672169"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722659"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -286,11 +286,11 @@ InfrastructureEncryptionState : Disabled
 >[!IMPORTANT]
 > 保護の構成に進むには、次の手順を **正しく** 完了している必要があります。
 >
->1. バックアップ コンテナーを作成した
+>1. Recovery Services コンテナーを作成した
 >1. Recovery Services コンテナーのシステム割り当てマネージド ID を有効にした。または、ユーザー割り当てマネージド ID をコンテナーに割り当てた
->1. キー コンテナーから暗号化キーにアクセスするために、バックアップ コンテナー (またはユーザー当てマネージド ID) にアクセス許可を割り当てた
+>1. Key Vault から暗号化キーにアクセスするために、Recovery Services コンテナー (またはユーザー当てマネージド ID) にアクセス許可を割り当てた
 >1. キー コンテナーで論理的な削除と消去保護を有効にした
->1. バックアップ コンテナーに有効な暗号化キーを割り当てた
+>1. Recovery Services コンテナーに有効な暗号化キーを割り当てた
 >
 >上記の手順をすべて確認できた場合のみ、バックアップの構成に進んでください。
 

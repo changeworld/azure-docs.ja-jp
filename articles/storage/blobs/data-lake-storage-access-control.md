@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 142c8b1439447da4d535dd97e191a0ada503fe94
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 14a357bf5f7fece43ce72b58142aa0047213bfab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632603"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737466"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>AzureData Lake Storage Gen2 のアクセス制御リスト (ACL)
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制
 
 ## <a name="about-acls"></a>ACL について
 
-[セキュリティ プリンシパル](../../role-based-access-control/overview.md#security-principal)をファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 これらの関連付けは、"*アクセス制御リスト (ACL)* " でキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。 セキュリティ プリンシパルがファイルまたはディレクトリに対して操作を実行しようとすると、ACL チェックによって、そのセキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、その操作を実行するための適切なアクセス許可レベルを持っているかどうかが判断されます。
+[セキュリティ プリンシパル](../../role-based-access-control/overview.md#security-principal)をファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 各関連付けは、*アクセス制御リスト (ACL)* のエントリとしてキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。 セキュリティ プリンシパルがファイルまたはディレクトリに対して操作を実行しようとすると、ACL チェックによって、そのセキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) が、その操作を実行するための適切なアクセス許可レベルを持っているかどうかが判断されます。
 
 > [!NOTE]
 > ACL は同じテナント内のセキュリティ プリンシパルにのみ適用され、共有キーまたは Shared Access Signature (SAS) トークン認証を使用するユーザーには適用されません。 これは、呼び出し元に ID が関連付けられていないため、セキュリティ プリンシパルのアクセス許可ベースの認可を実行できないことが原因です。  
@@ -94,7 +94,7 @@ Data Lake Storage Gen2 で使用されている POSIX 形式のモデルでは�
 
 次の表は、**Operation** 列に示されている操作を実行するためにセキュリティ プリンシパルを有効にするのに必要な ACL エントリを示します。 
 
-この表は、架空のディレクトリ階層の各レベルを表す列を示しています。 コンテナーのルート ディレクトリ (`\`)、**Oregon** という名前のサブディレクトリ、**Portland** という名前の Oregon ディレクトリのサブディレクトリ、および **Data.txt** という名前の Portland ディレクトリのテキスト ファイルの列があります。 
+この表は、架空のディレクトリ階層の各レベルを表す列を示しています。 コンテナーのルート ディレクトリ (`/`)、**Oregon** という名前のサブディレクトリ、**Portland** という名前の Oregon ディレクトリのサブディレクトリ、および **Data.txt** という名前の Portland ディレクトリのテキスト ファイルの列があります。 
 
 > [!IMPORTANT]
 > この表は、Azure ロールの割り当てを使用せずに ACL **のみ** を使用していることを前提としています。 Azure RBAC と ACL を組み合わせた同様の表を確認するには、「[アクセス許可の表: Azure RBAC と ACL の組み合わせ](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)」を参照してください。
@@ -154,11 +154,21 @@ POSIX ACL では、すべてのユーザーが *プライマリ グループ* �
 > [!NOTE]
 > 所有グループが、ファイルやディレクトリの ACL を変更することはできません。  ルート ディレクトリの場合 (上記の **ケース 1**)、所有グループはアカウントを作成したユーザーに設定されますが、所有グループを介したアクセス許可の付与に関して、単一ユーザー アカウントは有効ではありません。 この権限は、有効なユーザー グループに対して、該当する場合に割り当てることができます。
 
-## <a name="access-check-algorithm"></a>アクセス確認アルゴリズム
+## <a name="how-permissions-are-evaluated"></a>権限を評価する方法
 
-次の擬似コードは、ストレージ アカウントのアクセス確認アルゴリズムを示しています。
+ID は、次の順序で評価されます。 
 
-```console
+1. スーパーユーザー
+2. 所有ユーザー
+3. 名前付きユーザー、サービス プリンシパル、またはマネージド ID
+4. 所有グループまたは名前付きグループ
+5. その他のすべてのユーザー
+
+これらの ID のうち複数の ID がセキュリティ プリンシパルに適用される場合、最初の ID に関連付けられているアクセス許可レベルが付与されます。 たとえば、セキュリティ プリンシパルが所有ユーザーと名前付きユーザーの両方である場合、所有ユーザーに関連付けられているアクセス許可レベルが適用されます。
+
+次の擬似コードは、ストレージ アカウントのアクセス確認アルゴリズムを示しています。 このアルゴリズムは、ID が評価される順序を示します。
+
+```python
 def access_check( user, desired_perms, path ) : 
   # access_check returns true if user has the desired permissions on the path, false otherwise
   # user is the identity that wants to perform an operation on path
@@ -206,7 +216,7 @@ def access_check( user, desired_perms, path ) :
 
 |Entity|ディレクトリ|ファイル|
 |--|--|--|
-|所有ユーザー|`rwx`|`r-w`|
+|所有ユーザー|`rwx`|`rw-`|
 |所有グループ|`r-x`|`r--`|
 |その他|`---`|`---`|
 

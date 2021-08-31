@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: dd0ceb00b80a045d60de562fbf9ac01b91e41e68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e0b0a3023147fc12c0133f7fb0c78b943c09ced
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720187"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067057"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services のサポート オプションとヘルプ オプション
 
@@ -106,13 +106,9 @@ Stack Overflow に新しい質問を送信する場合は、次のいずれか�
 * [Metrics Advisor (プレビュー)](https://stackoverflow.com/search?q=azure+metrics+advisor)
 * [Personalizer](https://stackoverflow.com/search?q=azure+personalizer)
 
-## <a name="submit-feedback-on-user-voice"></a>ユーザーの声へのフィードバックの送信
+## <a name="submit-feedback"></a>フィードバックを送信
 
-<div class='icon is-large'>
-    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
-</div>
-
-新機能を要求するには、UserVoice に投稿します。 Cognitive Services とその API を、あなたが開発するアプリケーションによりいっそう役立てるためのアイデアを共有します。 
+新機能を要求するには、 https://feedback.azure.com に投稿します。 Cognitive Services とその API を、あなたが開発するアプリケーションによりいっそう役立てるためのアイデアを共有します。 
 
 * [Cognitive Services](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)
 

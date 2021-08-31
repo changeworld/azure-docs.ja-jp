@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 06/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: e616b21b1b94d141bf54a589ac134878d829ba8e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: a03031640bd116e2901ff123b5fec13d36151fd4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900559"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723429"
 ---
 # <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)
 
@@ -43,9 +43,9 @@ ms.locfileid: "111900559"
 
 SAP Basis のバージョンに応じて、SAP ソリューションには次の SAP ログ変更要求が必要です。
 
-- **SAP Basis バージョン 7.50 以降** では、NPLK900131 をインストールします
-- **SAP Basis バージョン 7.40** では、NPLK900132 をインストールします
-- サポートされている SAP Basis バージョンに **必要な承認を持つ SAP ロールを作成するには**、NPLK900114 をインストールします。 詳細については、「[SAP システムを構成する](sap-deploy-solution.md#configure-your-sap-system)」と「[必要な ABAP 承認](#required-abap-authorizations)」を参照してください。
+- **SAP Basis バージョン 7.50 以降** では、NPLK900144 をインストールします
+- **それより前のバージョンの場合は**、NPLK900146 をインストールします
+- サポートされている SAP Basis バージョンに **必要な承認を持つ SAP ロールを作成するには**、NPLK900140 をインストールします。 詳細については、「[SAP システムを構成する](sap-deploy-solution.md#configure-your-sap-system)」と「[必要な ABAP 承認](#required-abap-authorizations)」を参照してください。
 
 > [!NOTE]
 > 必要な SAP ログ変更要求では、コネクタに必要なカスタム RFC VM が公開され、標準オブジェクトやカスタム オブジェクトは変更されません。
@@ -138,7 +138,8 @@ SAP Basis バージョンが 7.50 以前の場合は、次の SAP ノートを�
 
 詳細については、次を参照してください。
 
-- [チュートリアル: SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
-- [Azure Sentinel SAP データ コネクタをオンプレミスに展開する](sap-solution-deploy-alternate.md)
+- [SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
+- [エキスパートの構成オプション、オンプレミスのデプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
 - [Azure Sentinel SAP ソリューション: 利用できるセキュリティ コンテンツ](sap-solution-security-content.md)
+- [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

@@ -10,12 +10,13 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 05/25/2021
 ms.reviewer: peterlu
-ms.openlocfilehash: 65b7446602c8b7202ba7ccf56115edfc5de333db
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: devplatv2
+ms.openlocfilehash: 89fb2c08aa76b88110bb5832f297d08d5891dda4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750733"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448321"
 ---
 # <a name="train-models-with-rest-preview"></a>REST を使用してモデルをトレーニングする (プレビュー)
 
@@ -34,7 +35,7 @@ REST API では、標準の HTTP 動詞を使用して、リソースの作成�
 
 ## <a name="prerequisites"></a>前提条件
 
-- 管理者権限を持っている **Azure サブスクリプション**。 そのようなサブスクリプションがない場合は、[無料または有料の個人用サブスクリプション](https://aka.ms/AMLFree)をお試しください。
+- 管理者権限を持っている **Azure サブスクリプション**。 そのようなサブスクリプションがない場合は、[無料または有料の個人用サブスクリプション](https://azure.microsoft.com/free/)をお試しください。
 - [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 - ワークスペース内のサービス プリンシパル。 管理 REST 要求で[サービス プリンシパル認証](how-to-setup-authentication.md#use-service-principal-authentication)が使用されている。
 - サービス プリンシパルの認証トークン。 「[サービス プリンシパルの認証トークンを取得する](./how-to-manage-rest.md#retrieve-a-service-principal-authentication-token)」の手順に従って、このトークンを取得します。 
@@ -47,7 +48,7 @@ REST API では、標準の HTTP 動詞を使用して、リソースの作成�
 - 実行方法
 - 実行する場所
 
-SDK、CLI、スタジオによる視覚的な方法など、Azure Machine Learning ジョブを送信する方法はたくさんあります。 次の例では、REST API を使用して LightGBM トレーニング ジョブを送信します。
+SDK、Azure CLI、スタジオによる視覚的な方法など、Azure Machine Learning ジョブを送信する方法はたくさんあります。 次の例では、REST API を使用して LightGBM トレーニング ジョブを送信します。
 
 ## <a name="create-machine-learning-assets"></a>機械学習資産を作成する
 

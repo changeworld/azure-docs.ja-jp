@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 05/24/2021
 ms.author: pepogors
-ms.openlocfilehash: 347fd606e1c91d583ec81f17d9203bbe46020b57
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ad760cb50e2719d3eb910f597e1fe9377580176e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473158"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737512"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 
@@ -233,7 +233,7 @@ Standard SKU ロード バランサーおよびパブリック IP では、Basic
 >[!IMPORTANT]
 >Service Fabric クラスター リソース API バージョンは、2020-12-01-preview 以降である必要があります。
 >
->クラスター コード バージョンは 7.2.445 以降である必要があります。
+>クラスター コード バージョンは 8.0.536 以降である必要があります。
 
 ```json
 {

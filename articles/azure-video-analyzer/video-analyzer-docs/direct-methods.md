@@ -2,19 +2,19 @@
 title: Azure Video Analyzer でダイレクト メソッドを使用する - Azure
 description: Azure Video Analyzer では、いくつかのダイレクト メソッドが公開されています。 ダイレクト メソッドは、このトピックで説明する規則に基づいています。
 ms.topic: conceptual
-ms.date: 05/06/2021
-ms.openlocfilehash: 06d19047ae20fc752a09a28b2508cfdd2b08eb8d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 7b56404a371b0e50fe129d0fc5c2edb46b0c0f06
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387311"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724544"
 ---
 # <a name="azure-video-analyzer-direct-methods"></a>Azure Video Analyzer のダイレクト メソッド
 
 Azure Video Analyzer の IoT Edge モジュール`avaedge`では、IoT Hub から呼び出すことができるダイレクト メソッドがいくつか公開されています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 この方法は、デバイスが応答できるかどうかに応じて即座に実行するアクションが異なるシナリオで便利です。 詳細については、「[IoT Hub からのダイレクト メソッドの呼び出しについて](../../iot-hub/iot-hub-devguide-direct-methods.md)」を参照してください。
 
-このトピックでは、これらのメソッドと規則について説明します。
+このトピックでは、これらのメソッド、規則、およびメソッドのスキーマについて説明します。
 
 ## <a name="conventions"></a>規則
 
@@ -107,7 +107,7 @@ Azure Video Analyzer の IoT Edge モジュール`avaedge`では、IoT Hub か�
 |409|   ResourceValidationError|    参照されたリソース (例: ビデオ リソース) は、有効な状態ではありません。|
 
 ## <a name="supported-direct-methods"></a>サポートされているダイレクト メソッド  
-Video Analyzer エッジ モジュールによって公開されるダイレクト メソッドを次に示します。
+Video Analyzer エッジ モジュールによって公開されるダイレクト メソッドを次に示します。 ダイレクト メソッドのスキーマについては、[こちら](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json)を参照してください。
 
 ### <a name="pipelinetopologylist"></a>pipelineTopologyList
 

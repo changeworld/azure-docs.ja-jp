@@ -81,6 +81,8 @@
           href: certificate-signing-options.md
         - name: 証明書の管理
           href: manage-certificates-for-federated-single-sign-on.md
+        - name: 同意フィッシングから保護する
+          href: protect-against-consent-phishing.md
         - name: テナント制限
           href: tenant-restrictions.md
         - name: SAML トークン暗号化の構成
@@ -146,11 +148,13 @@
       items:
         - name: Azure AD を使用した安全なハイブリッド アクセス
           href: secure-hybrid-access.md
-        - name: F5 と Azure AD の統合
+        - name: Datawiza
+          href: datawiza-with-azure-ad.md
+        - name: F5
           href: f5-aad-integration.md
         - name: Azure IaaS での F5 BIG-IP VE のデプロイ
           href: f5-bigip-deployment-guide.md
-        - name: パスワードレス VPN のための F5 Big-IP と Azure AD
+        - name: F5 Big-IP パスワードレス VPN
           href: f5-aad-password-less-vpn.md
     - name: トラブルシューティング
       items:

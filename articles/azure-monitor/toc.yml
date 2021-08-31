@@ -101,6 +101,8 @@
       href: powershell-samples.md
     - name: Azure Resource Graph クエリ
       href: ./resource-graph-samples.md
+    - name: Azure CLI メトリックのアラート
+      href: azure-cli-metrics-alert-sample.md
 - name: 概念
   items:
     - name: 何を監視できるか
@@ -1120,7 +1122,7 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
-        - name: モニター
+        - name: Monitor
           items:
             - name: パフォーマンスの監視
               href: containers/container-insights-analyze.md

@@ -5,15 +5,15 @@ author: ggailey777
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.topic: conceptual
 ms.custom: devx-track-csharp, vs-azure
-ms.date: 07/30/2020
+ms.date: 06/24/2021
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65475b6f1558930ca8c91c7d1283745bc1b80b8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89226031"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121780834"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Visual Studio を使用して Web ジョブの開発とデプロイを行う
 
@@ -28,7 +28,7 @@ Web ジョブを開発するときには、[.NET Core アプリ](#webjobs-as-net
 バージョン 3.x の Azure WebJobs SDK を使用する場合、.NET Core コンソール アプリとしての Webジョブの作成と発行が可能です。 .NET Core コンソール アプリを作成し、Web ジョブとして Azure に発行する詳細な手順については、「[イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する](webjobs-sdk-get-started.md)」を参照してください。
 
 > [!NOTE]
-> .NET Core Web ジョブを Web プロジェクトにリンクすることはできません。 Web アプリと共に Web ジョブをデプロイする必要がある場合は、[.NET Framework コンソール アプリとして Web ジョブを作成します](#webjobs-as-net-framework-console-apps)。  
+> .NET Core Web アプリや .NET Core Web ジョブを Web プロジェクトにリンクすることはできません。 Web アプリと共に Web ジョブをデプロイする必要がある場合は、[.NET Framework コンソール アプリとして Web ジョブを作成します](#webjobs-as-net-framework-console-apps)。  
 
 ### <a name="deploy-to-azure-app-service"></a>Azure App Service にデプロイする
 

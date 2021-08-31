@@ -8,19 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/12/2021
+ms.date: 08/09/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: f79c9cb7381f2325de2efca5e20b37c60ab72013
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 79d527f0a966388758969837aaab95f7f9327e07
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113652456"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739604"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+* バージョン `3.2-preview.1` に[抽出要約](how-tos/extractive-summarization.md)のパブリック プレビューが組み込まれました。
+* [非同期操作](how-tos/text-analytics-how-to-call-api.md?tabs=asynchronous)が Azure Government と Azure China のリージョンで使用可能になりました。
+* クライアント ライブラリの新しいプレビュー バージョンで、抽出要約がサポートされるようになりました。 次のサンプルを参照してください。
+    * [.NET](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample8_ExtractSummary.md)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeExtractiveSummarization.java)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/textanalytics/azure-ai-textanalytics/samples/sample_extract_summary.py)
 
 ## <a name="july-2021"></a>2021 年 7 月
 

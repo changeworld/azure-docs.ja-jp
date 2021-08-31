@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 09a23e9e1e4508b10003f95f6e8c3502ea214d64
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 74ce915d5183315ab3a9ef57c8913ac6b7a3a9f1
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109733769"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415392"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -38,7 +38,7 @@ ms.locfileid: "109733769"
 [Azure AD の資格情報](disk-encryption-windows-aad.md#)を使用して暗号化を有効にする場合、ターゲット VM は、Azure Active Directory のエンドポイントと Key Vault のエンドポイントの両方への接続を許可する必要があります。 現在の Azure Active Directory 認証エンドポイントは、[Microsoft 365 の URL と IP アドレスの範囲](/microsoft-365/enterprise/urls-and-ip-address-ranges)に関するドキュメントのセクション 56 と 59 に記載されています。 Key Vault の説明は、「[ファイアウォールの向こう側にある Access Azure Key Vault へのアクセス](../../key-vault/general/access-behind-firewall.md)」方法に関するドキュメンテーションにあります。
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
-VM は、その VM 内からしかアクセスできない既知のルーティング不可能な IP アドレス (`169.254.169.254`) を使用する [Azure Instance Metadata サービス](../windows/instance-metadata-service.md) エンドポイントにアクセスできる必要があります。  ローカル HTTP トラフィックをこのアドレスに変更する (たとえば X-Forwarded-For ヘッダーを追加する) プロキシ構成はサポートされません。
+VM は、Azure プラットフォーム リソースとの通信に使用する[仮想パブリック IP アドレス](../../virtual-network/what-is-ip-address-168-63-129-16.md) (`168.63.129.16`) と [Azure Instance Metadata Service](../windows/instance-metadata-service.md) のエンドポイント (`169.254.169.254`) にアクセスできる必要があります。 ローカル HTTP トラフィックをこのアドレスに変更する (たとえば X-Forwarded-For ヘッダーを追加する) プロキシ構成はサポートされません。
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Windows Server 2016 Server Core のトラブルシューティング
 

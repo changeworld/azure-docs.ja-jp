@@ -1,18 +1,18 @@
 ---
 title: 仮想ネットワークでの Azure Spring Cloud のトラブルシューティング
 description: Azure Spring Cloud 仮想ネットワークのトラブルシューティング ガイド。
-author: mikedodaro
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/19/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 82ee9b368ecb98d4bb1833ab9a4fc1dc22182e99
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 95b288181180e2409bcb18f4f8233af568bd311c
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968880"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015440"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>仮想ネットワークでの Azure Spring Cloud のトラブルシューティング
 
@@ -46,4 +46,4 @@ Resource Manager テンプレートを使用して Azure Spring Cloud サービ�
 
 ## <a name="other-issues"></a>その他の問題
 
-[Azure Spring Cloud に関する一般的な問題のトラブルシューティング](./troubleshoot.md)。
+[Azure Spring Cloud に関する一般的な問題のトラブルシューティング](./troubleshoot.md)

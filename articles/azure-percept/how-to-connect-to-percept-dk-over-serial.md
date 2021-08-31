@@ -7,19 +7,19 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b1cb975c65f2234892cfef919220c68ebf5b2dca
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a9b864f5d8341253c70fbde6d111b04a4d924f1d
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488269"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371473"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-serial"></a>Azure Percept DK にシリアルで接続する
 
 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) から Azure Percept DK へのシリアル接続を設定するには、次の手順に従います。
 
 > [!WARNING]
-> 極端な障害 (デバイスが使用不能になるなど) の場合を除き、シリアルで開発キットを接続しようと **しないで** ください。 シリアル ケーブルを接続するためにキャリア ボードの格納装置を取り外すことは非常に困難であり、Wi-Fi アンテナ ケーブルが破損します。
+> **プライベート プレビュー開発キットをお持ちの場合**、極端な障害 (デバイスが使用不能になるなど) の場合を除き、シリアル経由で開発キットを接続しようと **しないで** ください。 シリアル経由で接続するには、プライベート プレビュー開発キットを逆アセンブルして、GPIO ピンにアクセスする必要があります。 キャリア ボードの格納装置を取り外すことは非常に困難であり、Wi-Fi アンテナ ケーブルを破損する可能性があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,27 +32,9 @@ ms.locfileid: "109488269"
 
 ## <a name="start-the-serial-connection"></a>シリアル接続を開始する
 
-1. キャリア ボードが 80/20 レールに接続されている場合は、16 進値キー (開発キットのウェルカム カードに含まれています) を使用してレールから取り外します。
+1. 次に示すように、[USB to TTL シリアル ケーブル](https://www.adafruit.com/product/954)をマザーボードの 3 つの GPIO ピンに接続します。
 
-1. キャリア ボードの格納装置の底面にあるネジを取り外し、マザーボードを引き出します。
-
-    > [!WARNING]
-    > マザーボードを取り外すと、Wi-Fi アンテナ ケーブルが破損します。 デバイスを復旧する手段が他にない場合以外は、シリアル接続を続行 **しないで** ください。
-
-1. ヒートシンクを取り外します。
-
-1. GPIO ピンからジャンパー ボードを取り外します。
-
-    > [!TIP]
-    > ジャンパー ボードを取り外す前に、その向きを書き留めておきます。 たとえば、回路の方を指すように、ジャンパー ボードに矢印を描いておくか、ステッカーを貼っておきます。 ジャンパー ボードは方向が固定されておらず、キャリア ボードを組み立て直すときに誤って逆に接続してしまう場合があります。
-
-1. 次に示すように、[USB to TTL シリアル ケーブル](https://www.adafruit.com/product/954)をマザーボードの GPIO ピンに接続します。
-
-    - 黒いケーブル (GND) をピン 6 に接続します。
-    - 白いケーブル (RX) をピン 8 に接続します。
-    - 緑のケーブル (TX) をピン 10 に接続します。
-
-    :::image type="content" source="./media/how-to-connect-to-percept-dk-over-serial/serial-connection-carrier-board.png" alt-text="キャリア ボードのシリアル ピンの接続。":::
+    :::image type="content" source="./media/how-to-connect-to-percept-dk-over-serial/apdk-serial-pins.jpg" alt-text="キャリア ボードのシリアル ピンの接続。":::
 
 1. 開発キットの電源を入れ、シリアル ケーブルの USB 側を PC に接続します。
 

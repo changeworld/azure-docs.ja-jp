@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 5d81b8321fe574be39a23a99521521516b86cfbb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: de9f88d7505f91c9075167a5adf81e3e5463cf0b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971256"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178132"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>Microsoft Dynamics 365 オファーを計画する
 
@@ -31,7 +31,7 @@ Dynamics 365 オファーで使用可能なライセンス オプションは次
 | [Contact me (お問い合わせ)] | 顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、お客様のオファーの種類の **[オファーのセットアップ]** ページの **[潜在顧客]** セクションを参照してください。 |
 | Free trial (無料試用版) (一覧) | 1、3、または 6 か月の無料試用版を顧客に提供します。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。 |
 | Get it now (今すぐ入手する) (無料) | 無料のオファーの一覧を顧客に提示します。 |
-| 今すぐ入手する | パートナー センターでサードパーティのライセンスを管理できます。<br>現在、次のオファーの種類でのみ使用できます。<ul><li>Dynamics 365 for Customer Engagement & Power Apps</li></ul><br>このオプションの詳細については、「[Microsoft によるサードパーティ製アプリ ライセンス管理](third-party-license.md)」を参照してください。 |
+| 今すぐ入手する | パートナー センターで ISV アプリのライセンスを管理できます。<br>現在、次のオファーの種類でのみ使用できます。<ul><li>Dynamics 365 for Customer Engagement & Power Apps</li></ul><br>このオプションの詳細については、「[ISV アプリのライセンス管理](isv-app-license.md)」を参照してください。 |
 |||
 
 ## <a name="test-drive"></a>体験版
@@ -85,8 +85,7 @@ Microsoft がサポートするマーケティングおよびセールス チャ
 
 | 公開ガイド    | Notes  |
 | :------------------- | :-------------------|
-| [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) | Enterprise Edition 向けに作成している場合は、最初に、こちらの追加の[公開プロセスとガイドライン](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。 |
-| [Dynamics 365 for Business Central](dynamics-365-business-central-offer-setup.md) |   |
-| [Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) | 最初に、こちらの追加の[公開プロセスとガイドライン](/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。 |
-| [Power BI](./power-bi-app-offer-setup.md) | 最初に、こちらの追加の [公開プロセスとガイドライン](/power-bi/developer/office-store)を確認します。 |
-|||
+| [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) | Enterprise Edition 向けに作成している場合は、最初に、こちらの追加の[公開プロセスとガイドライン](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。 製品の種類には、Commerce、Finance、Human Resources、Project Operations、Supply Chain Management が含まれます。 |
+| [Dynamics 365 for Business Central](dynamics-365-business-central-offer-setup.md) | N/A |
+| [Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) | 最初に、こちらの追加の[公開プロセスとガイドライン](/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。 製品の種類には、Customer Service、Customer Voice、Project Operations、Field Service、Marketing、Mixed Reality、Power Apps、Power Automate、Power Virtual Agents、Project Service Automation、Sales が含まれます。 |
+|

@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 06/04/2021
+ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 9913fc2e3780d9d6ab91be19913238f8002f281a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: e04d3a0a5b7c48117af1f597606658a878a3a6ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983275"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740770"
 ---
 # <a name="troubleshoot-vm-deployment-in-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU での VM のデプロイのトラブルシューティング
 
@@ -21,7 +21,7 @@ ms.locfileid: "111983275"
 
 この記事では、Azure Stack Edge Pro GPU デバイスに仮想マシンをデプロイするときに発生する一般的なエラーのトラブルシューティングを行う方法について説明します。 この記事では、VM のプロビジョニングのタイムアウトおよびネットワーク インターフェイスと VM の作成中の問題の原因である最も一般的な問題を調査するときのガイダンスを提供します。
 
-VM のプロビジョニングの失敗を診断するには、失敗した仮想マシンのゲスト ログを確認します。 <!--For steps to collect VM guest logs and include them in a Support package, see [Collect guest logs for VMs on Azure Stack Edge Pro](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md).-->
+VM のプロビジョニングの失敗を診断するには、失敗した仮想マシンのゲスト ログを確認します。 VM ゲスト ログを収集してサポート パッケージに含める手順については、[Azure Stack Edge Pro 上の VM のゲスト ログ収集](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)に関する記事を参照してください。
 
 VM のデプロイ前に VM イメージの正常なアップロードを妨げる問題のガイダンスについては、「[Azure Stack Edge Pro GPU での仮想マシン イメージのアップロードのトラブルシューティング](azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md)」を参照してください。
 
@@ -32,7 +32,7 @@ VM のデプロイ前に VM イメージの正常なアップロードを妨げ�
 
 VM のプロビジョニングがタイムアウトすると、次のエラーが表示されます。 
 
-![VM のプロビジョニングがタイムアウトすると Azure portal に表示されるエラーのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-provisioning-timeout-01.png) 
+![VM のプロビジョニングが Azure Stack Edge でタイムアウトしたときに Azure portal に表示されるエラーのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-provisioning-timeout-01.png) 
 
 VM プロビジョニングがタイムアウトする問題のよくある原因は次のとおりです。
 - VM に割り当てた IP アドレスが既に使用されています。 [詳細情報](#vm-provisioning-timeout)
@@ -90,7 +90,7 @@ VM から既定のゲートウェイと DNS サーバーに到達できること
 
    既定のゲートウェイと DNS サーバーの IP アドレスを確認するには、デバイスのローカル UI に移動します。 目的のポートを選択し、ネットワーク設定を表示します。
 
-   ![Azure Stack Edge Pro GPU デバイス上のポートに対する既定のゲートウェイと DNS サーバーの設定のスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gateway-dns-server-settings-01.png) 
+   ![ポート 2 のネットワーク設定が表示されている Azure Stack Edge デバイスの [ネットワーク] ページのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gateway-dns-server-settings-01.png) 
 
 
 ### <a name="cloud-init-issues-linux-vms"></a>`cloud init` に関する問題 (Linux VM)
@@ -121,7 +121,7 @@ VM から既定のゲートウェイと DNS サーバーに到達できること
 
    データ ソースが *Azure* に設定されている場合、*cloud init* のログのエントリは次のようになります。
 
-   ![データ ソースが Azure に設定された VM イメージの cloud-init のログ エントリの画像。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/cloud-init-log-entry-01.png) 
+   ![データ ソースが Azure に設定されている VM イメージの cloud-init のログ エントリの図。 識別用のテキストが強調表示されています。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/cloud-init-log-entry-01.png)
 
    データ ソースが Azure に設定されていない場合は、`cloud init` スクリプトの修正が必要な場合があります。 詳細については、「[cloud-init を深く知る](../virtual-machines/linux/cloud-init-deep-dive.md)」を参照してください。
 
@@ -153,7 +153,7 @@ VM から既定のゲートウェイと DNS サーバーに到達できること
 
 1. ネットワーク インターフェイスが正常に作成されていない場合は、次のエラーが表示されます。
 
-   ![ネットワーク インターフェイスの作成が失敗した場合にポータルに表示されるエラーのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/nic-creation-failed-01.png)
+   ![Azure Stack Edge デバイスでの VM のデプロイ中にネットワーク インターフェイスの作成が失敗した場合に Azure portal に表示されるエラーのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/nic-creation-failed-01.png)
 
 **推奨される解決方法:** VM を再度作成し、それに静的 IP アドレスを割り当てます。
 
@@ -166,7 +166,7 @@ VM から既定のゲートウェイと DNS サーバーに到達できること
 
 **エラーの説明:** メモリ不足のために VM の作成が失敗すると、次のエラーが表示されます。
  
-![VM の作成が失敗した場合にポータルに表示されるエラーのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-creation-failed-01.png)
+![Azure Stack Edge デバイスで VM の作成に失敗した場合に Azure portal に表示されるエラーのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-creation-failed-01.png)
 
 **推奨される解決方法:** デバイスで使用可能なメモリを調べて、適切な VM サイズを選択します。 詳細については、「[Azure Stack Edge でサポートされている仮想マシンのサイズ](azure-stack-edge-gpu-virtual-machine-sizes.md)」を参照してください。
 
@@ -188,16 +188,15 @@ VM のデプロイに使用できるメモリは、いくつかの要因によ�
 
 Kubernetes が既に有効になっている GPU デバイスに VM をデプロイしようとすると、GPU は使用できなくなり、VM のプロビジョニングは次のエラーで失敗します。
 
-![GPU VM の作成が、使用可能な GPU がないために失敗した場合に、ポータルに表示されるエラーのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gpu-vm-creation-failed-01.png)
+![Azure Stack Edge デバイスに使用可能な GPU がないために GPU VM の作成が失敗した場合に、Azure portal に表示されるエラーのスクリーンショット。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gpu-vm-creation-failed-01.png)
 
 **考えられる原因:** VM が作成される前に Kubernetes が有効になっている場合は、使用可能なすべての GPU が Kubernetes によって使用され、どのような GPU サイズの VM も作成できません。 使用可能な GPU の数と同じ GPU サイズの VM を作成できます。 Azure Stack Edge デバイスが備えることのできる GPU は、1 つまたは 2 つです。
 
-**推奨される解決方法:** Kubernetes が構成されている 1 GPU または 2 GPU デバイスでの VM デプロイのオプションについては、「[GPU VM と Kubernetes](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#gpu-vms-and-kubernetes)」を参照してください。
+**推奨される解決方法:** Kubernetes が構成されている 1 GPU または 2 GPU デバイスでの VM デプロイのオプションについては、「[GPU VM と Kubernetes](azure-stack-edge-gpu-overview-gpu-virtual-machines.md#gpu-vms-and-kubernetes)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-<!-- Remove link while cmdlet issue is fixed. - * [Collect a Support package that includes guest logs for a failed VM](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)-->
-* [GPU 拡張機能のインストールが失敗する問題のトラブルシューティング](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)
-* [Azure Resource Manager での問題のトラブルシューティング](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)
-
+- [失敗した VM のゲスト ログを含むサポート パッケージの収集](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)<!--Does a failed VM have a guest log? Does it have GPU and memory metrics?-->
+- [GPU 拡張機能のインストールが失敗する問題のトラブルシューティング](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)
+- [Azure Resource Manager での問題のトラブルシューティング](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)

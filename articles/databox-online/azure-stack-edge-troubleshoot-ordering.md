@@ -6,26 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 02/22/2021
+ms.date: 06/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 99d68cc9a801a73680f32c6f4baa46cebff3b4eb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1d84d6b8bd2978f58f5fb44c0ee1d003db89b7da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460414"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746525"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Azure Stack Edge の順序の問題をトラブルシューティングする
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
-
-このチュートリアルでは、以下の内容を学習します。
-
-> [!div class="checklist"]
->
-> * 順序の問題をトラブルシューティングする
 
 ## <a name="unsupported-subscription-or-region"></a>サポートされていないサブスクリプションまたはリージョン
 
@@ -43,7 +37,12 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 **エラー:** EA、CSP、またはスポンサー サブスクリプションを所有しており、次のエラーが表示されます。
 
-*選択されたサブスクリプションの種類はサポートされていません。サポートされるサブスクリプションを使用していることを確認してください。[詳細については、こちらを参照してください](azure-stack-edge-deploy-prep.md#prerequisites)。サポートされるサブスクリプションの種類を使用している場合は、`Microsoft.DataBoxEdge` プロバイダーが登録されていることを確認してください。登録する方法については、「[リソース プロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)* 」を参照してください。
+*選択されたサブスクリプションの種類はサポートされていません。 サポートされるサブスクリプションを使用していることを確認してください。 [詳細については、こちらを参照してください](azure-stack-edge-deploy-prep.md#prerequisites)。 サポートされているサブスクリプションの種類を使用する場合は、次を確認してください。
+ 
+- クラシック ポータルを使用して注文するときに、`Microsoft.DataBoxEdge` プロバイダーが登録されている。
+- Azure Edge Hardware Center (プレビュー) を使用して注文するときに、`Microsoft.EdgeOrder` プロバイダーが登録されている。
+ 
+登録する方法については、「[リソース プロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」を参照してください。*
 
 **推奨されている解決方法:** 次の手順に従って Azure Stack Edge リソース プロバイダーを登録します。
 
@@ -59,11 +58,13 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 詳細については、「[リソース プロバイダーを登録する](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」を参照してください。
 
-## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Microsoft.DataBoxEdge がサブスクリプションに登録されいない
+## <a name="resource-provider-not-registered-for-subscription"></a>リソース プロバイダーがサブスクリプションに登録されていない
 
-**エラー:** Azure portal で、Azure Stack Edge または Data Box Gateway に使用するサブスクリプションを選択すると、次のエラーが表示されます。
+**エラー:** Azure portal で、Azure Stack Edge または Data Box Gateway を使用するサブスクリプションを選択すると、次のいずれかのエラーが表示されます。
 
 *リソース プロバイダー Microsoft.DataBoxEdge はサブスクリプション &lt;サブスクリプション名&gt; に登録されておらず、サブスクリプション &lt;サブスクリプション名&gt; のリソース プロバイダーを登録するためのアクセス許可がありません*。
+
+*リソース プロバイダー: Microsoft.EdgeOrder はサブスクリプション &lt;サブスクリプション名&gt; に登録されておらず、サブスクリプション &lt;サブスクリプション名&gt; のリソース プロバイダーを登録するためのアクセス許可がありません*。
 
 **推奨されている解決方法:** サブスクリプションのアクセスを昇格させるか、またはリソース プロバイダーを登録するための所有者または共同作成者のアクセス権を持つだれかを見つけます。
 
@@ -77,4 +78,4 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stack Edge に関する問題をトラブルシューティングする](azure-stack-edge-troubleshoot.md)方法の詳細について学習します。
+* [Azure Stack Edge に関する問題をトラブルシューティングする](azure-stack-edge-gpu-troubleshoot.md)方法の詳細について学習します。

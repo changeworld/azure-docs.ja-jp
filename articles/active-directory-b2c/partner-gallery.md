@@ -11,16 +11,18 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9703ef0caa5df967033001cbeb241d1649eb2a11
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: fa59db40f88824bdbec6fbaae8cf3664ae825846
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930276"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727783"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
-ISV パートナー ネットワークは、Microsoft のソリューションの機能を拡張し、シームレスなエンドユーザー エクスペリエンスを構築するのに役立ちます。 Azure AD B2C を使用すると、ISV パートナーと統合して、多要素認証 (MFA) 方法の有効化、ロールベースのアクセス制御の実施、本人確認と証明の有効化、ボット検出と不正行為防止によるセキュリティの向上、Payment Services Directive 2 (PSD2) のセキュリティで保護されたカスタマー認証 (SCA) の要件の充足が可能です。 詳細なサンプルのチュートリアルを使用して、ISV パートナーとアプリを統合する方法を学習してください。
+ISV パートナー ネットワークは、Microsoft のソリューションの機能を拡張し、シームレスなエンドユーザー エクスペリエンスを構築するのに役立ちます。 Azure AD B2C を使用すると、ISV パートナーと統合して、多要素認証 (MFA) 方法の有効化、ロールベースのアクセス制御の実施、本人確認と証明の有効化、ボット検出と不正行為防止によるセキュリティの向上、Payment Services Directive 2 (PSD2) のセキュリティで保護されたカスタマー認証 (SCA) の要件の充足が可能です。 詳細なサンプルのチュートリアルを使用して、ISV パートナーとアプリを統合する方法を学習してください。 
+
+このサンプル ドキュメントを検討するには、[Microsoft Application Network ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) でアプリケーション要求を送信します。 その他の質問については、[SaaSApplicationIntegrations@service.microsoft.com](mailto:SaaSApplicationIntegrations@service.microsoft.com) までメールをお送りください。
 
 >[!NOTE]
 >[GitHub の Azure Active Directory B2C コミュニティ サイト](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/)にも、コミュニティからのサンプル カスタム ポリシーが提供されています。
@@ -43,10 +45,12 @@ Microsoft は、MFA とパスワードレス認証に関して次の ISV と提�
 
 | ISV パートナー | 説明と統合のチュートリアル |
 |:-------------------------|:--------------|
+| ![bloksec ロゴのスクリーンショット](./media/partner-gallery/bloksec-logo.png) | [BlokSec](./partner-bloksec.md) は、パスワードレス認証とトークンレス MFA ソリューションであり、リアルタイムの同意ベースのサービスを提供し、パスワード スタッフィング、フィッシング、中間者攻撃などの ID 中心のサイバー攻撃から顧客を保護します。 |
 | ![Hypr ロゴのスクリーンショット](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) は、パスワードを公開キー暗号化に置き換えることによって、不正行為、フィッシング、資格情報の再利用を排除するパスワードレス認証プロバイダーです。 |
 | ![itsme ロゴのスクリーンショット](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) は、ユーザーがカード リーダー、パスワード、2 要素認証、および複数の PIN コードを使用せずに安全にサインインできる、eiDAS (Electronic Identification, Authentication and Trust Services) に準拠したデジタル ID ソリューションです。 |
 |![Keyless ロゴのスクリーンショット。](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) は、顔の生体認証スキャンの形式で認証を行い、不正行為、フィッシング、および資格情報の再利用を排除するパスワードレス認証プロバイダーです。
 | ![Nevis ロゴのスクリーンショット](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) を使用すると、パスワードレス認証が有効になり、強力な顧客認証と PSD2 のトランザクション要件に準拠するために、Nevis Access アプリによる、モバイルファーストの完全にブランド化されたエンド ユーザー エクスペリエンスが提供されます。 |
+| ![nok nok ロゴのスクリーンショット](./media/partner-gallery/nok-nok-logo.png) | [Nok Nok](./partner-nok-nok.md) は、パスワードレス認証を提供し、モバイル および Web のアプリケーションに対して、FIDO 認定の多要素認証 (FIDO UAF、FIDO U2F、WebAuthn、FIDO2 など) を有効にします。 Nok Nok を使用しているお客様は、ユーザー エクスペリエンスのバランスを取りながら、セキュリティ態勢を改善できます。
 | ![Trusona ロゴのスクリーンショット](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 統合を使用すると、安全にサインインし、パスワードレス認証、MFA、およびデジタル ライセンス スキャンを有効にすることができます。 |
 | ![Twilio ロゴのスクリーンショット。](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) は、SMS ワンタイム パスワード (OTP)、時間ベースのワンタイム パスワード (TOTP)、およびプッシュ通知を使用して MFA を有効にしたり、PSD2 の SCA 要件に準拠したりするための複数のソリューションを提供しています。 |
 | ![TypingDNA ロゴのスクリーンショット](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) は、ユーザーの入力パターンを分析して、強力な顧客認証を実現します。 これは、企業がサイレント MFA を有効にし、PSD2 の SCA 要件に準拠するのに役立ちます。 |
@@ -67,6 +71,7 @@ Microsoft は、次の ISV と提携して、オンプレミス アプリケー�
 
 | ISV パートナー | 説明と統合のチュートリアル |
 |:-------------------------|:--------------|
+| ![Datawiza ロゴのスクリーンショット](./media/partner-gallery/datawiza-logo.png) | [Datawiza](./partner-datawiza.md) を使用すると、アプリケーションに対する SSO ときめ細かなアクセス制御が可能になり、Azure AD B2C がオンプレミスのレガシ アプリケーションの保護まで拡張されます。  |
 | ![Ping ロゴのスクリーンショット](./media/partner-gallery/ping-logo.png) | [Ping Identity](./partner-ping-identity.md) を使用すると、複数のクラウドにわたってオンプレミスのレガシ アプリケーションへの安全なハイブリッド アクセスが可能になります。 |
 | ![Strata ロゴのスクリーンショット](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) は、一貫性のあるアクセス ポリシーを適用し、ID の同期を維持し、レガシ ID システムから Azure AD B2C によって提供される標準ベースの認証とアクセス制御にアプリケーションを簡単に移行できるようにすることで、オンプレミスのアプリケーションへの、セキュリティで保護されたハイブリッド アクセスを提供します。 |
 | ![Zscaler ロゴのスクリーンショット](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) は、VPN のコスト、手間、セキュリティ上のリスクが生じることなく、非公開のアプリケーションおよび資産への、セキュリティで保護されたポリシーベースのアクセスを実現します。 |
@@ -87,7 +92,8 @@ Microsoft は、Web アプリケーション ファイアウォール (WAF) に�
 
 | ISV パートナー | 説明と統合のチュートリアル |
 |:-------------------------|:--------------|
-| ![Cloudflare ロゴのスクリーンショット](./media/partner-gallery/cloudflare-logo.png) | [Cloudflare](./partner-cloudflare.md) は、SQLi や XSS など、脆弱性を悪用する悪意のある攻撃から組織を保護する WAF プロバイダーです。 |
+|  ![Akamai ロゴのスクリーンショット](./media/partner-gallery/akamai-logo.png) | [Akamai WAF](./partner-akamai.md) を使用すると、トラフィックをきめ細かく操作して、悪意のある攻撃から ID インフラストラクチャをセキュリティで保護することができます。  |
+![Cloudflare ロゴのスクリーンショット](./media/partner-gallery/cloudflare-logo.png) | [Cloudflare](./partner-cloudflare.md) は、SQLi や XSS など、脆弱性を悪用する悪意のある攻撃から組織を保護する WAF プロバイダーです。 |
 
 
 ## <a name="additional-information"></a>関連情報

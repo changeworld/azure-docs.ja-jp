@@ -259,8 +259,9 @@
             - name: セキュリティで保護された Web サービスを構成する
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
-            - name: ファイアウォールを構成する
+            - name: 必要なネットワーク トラフィックを構成する
               href: how-to-access-azureml-behind-firewall.md
+              displayName: 'firewall, user-defined route, udr'
         - name: データ保護
           items:
             - name: フェールオーバーとディザスター リカバリー

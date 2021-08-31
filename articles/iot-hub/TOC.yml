@@ -102,21 +102,21 @@
         - name: メッセージを送受信する
           href: iot-hub-devguide-messaging.md
           items:
+            - name: IoT Hub メッセージを作成し、読み取る
+              href: iot-hub-devguide-messages-construct.md
+            - name: デバイス通信プロトコルを選択する
+              href: iot-hub-devguide-protocols.md
+            - name: デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
+              href: iot-hub-devguide-messages-read-builtin.md
             - name: メッセージ ルーティングを使用して、デバイスからクラウドへのメッセージを送信する
               href: iot-hub-devguide-messages-d2c.md
               items:
-                - name: IoT Hub メッセージを作成し、読み取る
-                  href: iot-hub-devguide-messages-construct.md
-                - name: デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
-                  href: iot-hub-devguide-messages-read-builtin.md
                 - name: device-to-cloud メッセージにカスタム エンドポイントとルーティング規則を使用する
                   href: iot-hub-devguide-messages-read-custom.md
                 - name: メッセージ ルートにクエリを追加する
                   href: iot-hub-devguide-routing-query-syntax.md
             - name: cloud-to-device メッセージを IoT Hub から送信する
               href: iot-hub-devguide-messages-c2d.md
-            - name: 通信プロトコルを選択する
-              href: iot-hub-devguide-protocols.md
         - name: Event Grid を使用して IoT Hub のイベントに対応する
           href: iot-hub-event-grid.md
         - name: デバイスからファイルをアップロードする
@@ -310,6 +310,8 @@
           href: iot-hub-ip-filtering.md
         - name: パブリック ネットワーク アクセスの管理
           href: iot-hub-public-network-access.md
+        - name: 送信ネットワーク アクセスを制限する
+          href: iot-hub-restrict-outbound-network-access.md
         - name: 大規模な自動デバイス管理
           items:
             - name: Azure Portal の使用

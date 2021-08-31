@@ -4,17 +4,17 @@ description: 暗号化スコープは、コンテナーまたは個々の BLOB �
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 06/01/2021
+ms.date: 07/19/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d089ef587e209810fe0400871aba9a55cb9c0ed3
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 0d8f1a7e0312ea350a5a34c13d8389b240c14476
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372659"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472471"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>BLOB ストレージの暗号化スコープ
 
@@ -72,7 +72,7 @@ Azure Storage のインフラストラクチャ暗号化により、データの
 
 暗号化スコープが無効の場合、それに対して課金されることはなくなります。 不要な料金が発生しないように、不要な暗号化スコープを無効にします。
 
-暗号化スコープがカスタマー マネージド キーで保護されている場合、キー コンテナーでキーを削除すると、データにアクセスできなくなります。 必ず暗号化スコープも無効にして、課金されないようにしてください。
+暗号化スコープがカスタマー マネージド キーで保護されている場合、キー コンテナー内のキーを取り消すと、データにアクセスできなくなります。 暗号化スコープに対して課金されないようにするには、キー コンテナー内のキーを取り消す前に必ず暗号化スコープを無効にしてください。
 
 カスタマー マネージド キーはキー コンテナー内での論理的な削除と消去保護によって保護されており、削除されたキーはそれらのプロパティによって定義されている動作に従うことにご注意ください。 詳細については、Azure Key Vault のドキュメントで次のトピックのいずれかを参照してください。
 

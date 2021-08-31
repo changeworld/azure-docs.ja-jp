@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/03/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 12ee5a02b0451fd70df0e7155e9460290943f5b2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 4bede3a7f5c39f8665d47984fb91cf2503842cae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962046"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741730"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API を使用してプロビジョニングを構成する
 
@@ -42,12 +42,12 @@ Azure portal は、個々のアプリのプロビジョニングを一度に 1 �
 1. サインインに成功すると、左側のペインにユーザー アカウントの詳細が表示されます。
 
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>ギャラリー アプリケーション テンプレート識別子を取得する
-Azure AD アプリケーション ギャラリーのアプリケーションにはそれぞれ、そのアプリケーションのメタデータを記述する[アプリケーション テンプレート](/graph/api/applicationtemplate-list?tabs=http&view=graph-rest-beta)があります。 このテンプレートを使用して、管理用のテナントにアプリケーションとサービス プリンシパルのインスタンスを作成できます。
+Azure AD アプリケーション ギャラリーのアプリケーションにはそれぞれ、そのアプリケーションのメタデータを記述する[アプリケーション テンプレート](/graph/api/applicationtemplate-list?tabs=http&view=graph-rest-beta&preserve-view=true)があります。 このテンプレートを使用して、管理用のテナントにアプリケーションとサービス プリンシパルのインスタンスを作成できます。 **AWS Single-Account Access** のアプリケーション テンプレートとその応答の識別子を取得し、**id** プロパティの値を記録します。これは、このチュートリアルの後の部分で使用します。
 
 #### <a name="request"></a>Request
 
 ```msgraph-interactive
-GET https://graph.microsoft.com/beta/applicationTemplates
+GET https://graph.microsoft.com/beta/applicationTemplates?$filter=displayName eq 'AWS Single-Account Access'
 ```
 #### <a name="response"></a>Response
 
@@ -61,6 +61,7 @@ GET https://graph.microsoft.com/beta/applicationTemplates
 ```http
 HTTP/1.1 200 OK
 Content-type: application/json
+
 {
   "value": [
   {
@@ -80,14 +81,14 @@ Content-type: application/json
              "developerServices"
          ],
          "publisher": "Amazon",
-         "description": null    
+         "description": "Federate to a single AWS account and use SAML claims to authorize access to AWS IAM roles. If you have many AWS accounts, consider using the AWS Single Sign-On gallery application instead."    
   
 }
 ```
 
 ### <a name="create-the-gallery-application"></a>ギャラリー アプリケーションを作成する
 
-前のステップで取得したアプリケーションのテンプレート ID を使用して、ご自身のテナント内にアプリケーションとサービス プリンシパルの[インスタンスを作成](/graph/api/applicationtemplate-instantiate?tabs=http&view=graph-rest-beta)します。
+前のステップで取得したアプリケーションのテンプレート ID を使用して、ご自身のテナント内にアプリケーションとサービス プリンシパルの[インスタンスを作成](/graph/api/applicationtemplate-instantiate?tabs=http&view=graph-rest-beta&preserve-view=true)します。
 
 #### <a name="request"></a>Request
 
@@ -95,6 +96,7 @@ Content-type: application/json
 ```msgraph-interactive
 POST https://graph.microsoft.com/beta/applicationTemplates/{id}/instantiate
 Content-type: application/json
+
 {
   "displayName": "AWS Contoso"
 }
@@ -105,6 +107,7 @@ Content-type: application/json
 ```http
 HTTP/1.1 201 OK
 Content-type: application/json
+
 {
     "application": {
         "objectId": "cbc071a6-0fa5-4859-8g55-e983ef63df63",
@@ -142,7 +145,7 @@ Content-type: application/json
 
 ### <a name="retrieve-the-template-for-the-provisioning-connector"></a>プロビジョニング コネクタのテンプレートを取得する
 
-ギャラリー内の、プロビジョニングが有効になっているアプリケーションには、構成を効率化するためのテンプレートがあります。 次の要求を使用して、[プロビジョニング構成のテンプレートを取得](/graph/api/synchronization-synchronizationtemplate-list?tabs=http&view=graph-rest-beta)します。 ID を指定する必要があることに注意してください。 この ID は前のリソース (この場合は servicePrincipal リソース) を示します。 
+ギャラリー内の、プロビジョニングが有効になっているアプリケーションには、構成を効率化するためのテンプレートがあります。 次の要求を使用して、[プロビジョニング構成のテンプレートを取得](/graph/api/synchronization-synchronizationtemplate-list?tabs=http&view=graph-rest-beta&preserve-view=true)します。 ID を指定する必要があることに注意してください。 この ID は前のリソース (この場合は servicePrincipal リソース) を示します。 
 
 #### <a name="request"></a>Request
 
@@ -153,6 +156,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/temp
 #### <a name="response"></a>Response
 ```http
 HTTP/1.1 200 OK
+
 {
     "value": [
         {
@@ -168,13 +172,14 @@ HTTP/1.1 200 OK
 ```
 
 ### <a name="create-the-provisioning-job"></a>プロビジョニング ジョブを作成する
-プロビジョニングを有効にするには、まず[ジョブを作成する](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)必要があります。 プロビジョニング ジョブを作成するには、次の要求を使用します。 ジョブに使用するテンプレートを指定するときは、前の手順の templateId を使用します。
+プロビジョニングを有効にするには、まず[ジョブを作成する](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta&preserve-view=true)必要があります。 プロビジョニング ジョブを作成するには、次の要求を使用します。 ジョブに使用するテンプレートを指定するときは、前の手順の templateId を使用します。
 
 #### <a name="request"></a>Request
 
 ```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs
 Content-type: application/json
+
 { 
     "templateId": "aws"
 }
@@ -184,6 +189,7 @@ Content-type: application/json
 ```http
 HTTP/1.1 201 OK
 Content-type: application/json
+
 {
     "id": "{jobId}",
     "templateId": "aws",
@@ -212,15 +218,20 @@ Content-type: application/json
 
 ### <a name="test-the-connection-to-the-application"></a>アプリケーションへの接続をテストする
 
-サードパーティ アプリケーションとの接続をテストします。 クライアント シークレットとシークレット トークンを必要とするアプリケーションの例を次に示します。 アプリケーションにはそれぞれ独自の要件があります。 多くの場合、クライアント シークレットの代わりにベース アドレスがアプリケーションで使用されます。 アプリで必要な資格情報を確認するには、アプリケーションのプロビジョニング構成ページに移動し、開発者モードで **[テスト接続]** をクリックします。 ネットワーク トラフィックに、資格情報に使用されたパラメーターが表示されます。 資格情報の完全な一覧については、「[synchronizationJob: validateCredentials](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta)」を参照してください。 Azure Databricks などのほとんどのアプリケーションは、BaseAddress と SecretToken に依存しています。 BaseAddress は、Azure portal でテナントの URL として表されます。 
+サードパーティ アプリケーションとの接続をテストします。 クライアント シークレットとシークレット トークンを必要とするアプリケーションの例を次に示します。 アプリケーションにはそれぞれ独自の要件があります。 多くの場合、クライアント シークレットの代わりにベース アドレスがアプリケーションで使用されます。 アプリで必要な資格情報を確認するには、アプリケーションのプロビジョニング構成ページに移動し、開発者モードで **[テスト接続]** をクリックします。 ネットワーク トラフィックに、資格情報に使用されたパラメーターが表示されます。 資格情報の完全な一覧については、「[synchronizationJob: validateCredentials](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta&preserve-view=true)」を参照してください。 Azure Databricks などのほとんどのアプリケーションは、BaseAddress と SecretToken に依存しています。 BaseAddress は、Azure portal でテナントの URL として表されます。 
 
 #### <a name="request"></a>Request
 ```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{id}/validateCredentials
+
 { 
     "credentials": [ 
-        { "key": "ClientSecret", "value": "xxxxxxxxxxxxxxxxxxxxx" },
-        { "key": "SecretToken", "value": "xxxxxxxxxxxxxxxxxxxxx" }
+        { 
+            "key": "ClientSecret", "value": "xxxxxxxxxxxxxxxxxxxxx" 
+        },
+        {
+            "key": "SecretToken", "value": "xxxxxxxxxxxxxxxxxxxxx"
+        }
     ]
 }
 ```
@@ -231,7 +242,7 @@ HTTP/1.1 204 No Content
 
 ### <a name="save-your-credentials"></a>資格情報を保存する
 
-プロビジョニングを構成するには、Azure AD とアプリケーションの間に信頼を確立する必要があります。 サードパーティ アプリケーションへのアクセスを承認します。 クライアント シークレットとシークレット トークンを必要とするアプリケーションの例を次に示します。 アプリケーションにはそれぞれ独自の要件があります。 [API ドキュメント](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta)を参照して、使用可能なオプションを確認してください。 
+プロビジョニングを構成するには、Azure AD とアプリケーションの間に信頼を確立する必要があります。 サードパーティ アプリケーションへのアクセスを承認します。 クライアント シークレットとシークレット トークンを必要とするアプリケーションの例を次に示します。 アプリケーションにはそれぞれ独自の要件があります。 [API ドキュメント](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta&preserve-view=true)を参照して、使用可能なオプションを確認してください。 
 
 #### <a name="request"></a>Request
 ```msgraph-interactive
@@ -239,8 +250,12 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
  
 { 
     "value": [ 
-        { "key": "ClientSecret", "value": "xxxxxxxxxxxxxxxxxxxxx" },
-        { "key": "SecretToken", "value": "xxxxxxxxxxxxxxxxxxxxx" }
+        { 
+            "key": "ClientSecret", "value": "xxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+            "key": "SecretToken", "value": "xxxxxxxxxxxxxxxxxxxxx"
+        }
     ]
 }
 ```
@@ -251,7 +266,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="step-4-start-the-provisioning-job"></a>手順 4: プロビジョニング ジョブを開始する
-プロビジョニング ジョブが構成されたので、次のコマンドを使用して[ジョブを開始](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)します。 
+プロビジョニング ジョブが構成されたので、次のコマンドを使用して[ジョブを開始](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta&preserve-view=true)します。 
 
 
 #### <a name="request"></a>Request
@@ -282,7 +297,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs
 ```http
 HTTP/1.1 200 OK
 Content-type: application/json
-Content-length: 2577
+
 {
     "id": "{jobId}",
     "templateId": "aws",
@@ -316,7 +331,7 @@ Content-length: 2577
 
 
 ### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>プロビジョニング ログを使用してプロビジョニング イベントを監視する
-プロビジョニング ジョブの状態の監視に加えて、[プロビジョニング ログ](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta)を使用して、発生しているすべてのイベントについてクエリを実行できます。 たとえば、特定のユーザーについてクエリを実行し、正常にプロビジョニングされたかどうかを判断します。
+プロビジョニング ジョブの状態の監視に加えて、[プロビジョニング ログ](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta&preserve-view=true)を使用して、発生しているすべてのイベントについてクエリを実行できます。 たとえば、特定のユーザーについてクエリを実行し、正常にプロビジョニングされたかどうかを判断します。
 
 #### <a name="request"></a>Request
 ```msgraph-interactive
@@ -326,6 +341,7 @@ GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```http
 HTTP/1.1 200 OK
 Content-type: application/json
+
 {
     "@odata.context": "https://graph.microsoft.com/beta/$metadata#auditLogs/provisioning",
     "value": [
@@ -363,5 +379,5 @@ Content-type: application/json
 ```
 ## <a name="see-also"></a>関連項目
 
-- [同期に関する Microsoft Graph のドキュメントを確認する](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [同期に関する Microsoft Graph のドキュメントを確認する](/graph/api/resources/synchronization-overview?view=graph-rest-beta&preserve-view=true)
 - [カスタム SCIM アプリと Azure AD の統合](./use-scim-to-provision-users-and-groups.md)

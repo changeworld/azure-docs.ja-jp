@@ -7,12 +7,12 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 87f188b414791636e147a19202b6fcf314d6f307
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 0c087838029a5e7863359564682a6843238421c5
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683667"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964592"
 ---
 # <a name="transform-data-for-iot-central"></a>IoT Central に対するデータの変換
 
@@ -35,7 +35,7 @@ IoT デバイスから送信されるデータにはさまざまな形式があ�
 |------------------------|-------------|----------|-------|
 | メッセージの形式         | JSON メッセージに変換または操作します。 | CSV から JSON へ  | イングレス時。 IoT Central で行われるのは、値の JSON メッセージの受け入れのみです。 詳細については、「[テレメトリ、プロパティ、およびコマンドのペイロード](concepts-telemetry-properties-commands.md)」を参照してください。 |
 | 計算を           | [Azure Functions](../../azure-functions/index.yml) で実行できる数学関数。 | 華氏から摂氏への単位変換。  | IoT Central への直接接続を介して、デバイスのスケーラブルなイングレスを活用するために、エグレス パターンを使用して変換します。 データを変換すると、視覚化やジョブなどの IoT Central 機能を使用できるようになります。 |
-| メッセージの強化     | デバイスのプロパティやテレメトリにはない外部データソースからのエンリッチメント。 内部エンリッチメントの詳細については、「[データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする](howto-export-data.md)」を参照してください | デバイスの場所データを使用して気象情報をメッセージに追加する。 | IoT Central への直接接続を介して、デバイスのスケーラブルなイングレスを活用するために、エグレス パターンを使用して変換します。 |
+| メッセージの強化     | デバイスのプロパティやテレメトリにはない外部データソースからのエンリッチメント。 内部エンリッチメントの詳細については、「[データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする](howto-export-data.md)」を参照してください | デバイスの[場所データ](howto-use-location-data.md)を使用して気象情報をメッセージに追加する。 | IoT Central への直接接続を介して、デバイスのスケーラブルなイングレスを活用するために、エグレス パターンを使用して変換します。 |
 
 ## <a name="prerequisites"></a>前提条件
 

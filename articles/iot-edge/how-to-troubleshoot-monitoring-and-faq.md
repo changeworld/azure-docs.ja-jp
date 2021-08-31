@@ -2,7 +2,6 @@
 title: 監視のトラブルシューティングと FAQ - Azure IoT Edge
 description: Azure Monitor 統合のトラブルシューティングと FAQ
 author: veyalla
-manager: philmea
 ms.author: veyalla
 ms.date: 06/09/2021
 ms.topic: conceptual
@@ -10,12 +9,12 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 zone_pivot_groups: how-to-troubleshoot-monitoring-and-faq-zpg
-ms.openlocfilehash: 09475cf4ee2c78596e3c93f408fc88c16e1a751e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 9d3e89ee74dd1f0274ad742cae4a9706f54b7780
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904542"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015392"
 ---
 # <a name="faq-and-troubleshooting"></a>FAQ とトラブルシューティング
 
@@ -31,22 +30,26 @@ ms.locfileid: "111904542"
 
 ### <a name="verify-that-httpsettings__enabled-environment-variable-isnt-set-to-false"></a>*httpSettings__enabled* 環境変数が *false* に設定されていないことを確認
 
-組み込みのメトリック エンドポイントでは、http プロトコルが使用されます。 これらは、http が環境変数設定を通じて明示的に無効になっている場合には、モジュール ネットワーク内でも使用できません。
+IoT Edge システム モジュールによって公開される組み込みのメトリック エンドポイントでは、http プロトコルが使用されます。 これらは、http が Edge Hub または Edge Agent モジュールの環境変数設定を通じて明示的に無効になっている場合には、モジュール ネットワーク内でも使用できません。
 
 ### <a name="set-no_proxy-environment-variable-if-using-http-proxy-server"></a>http プロキシ サーバーを使用する場合には *NO_PROXY* 環境変数を設定
 
 詳細については、「[プロキシに関する考慮事項](how-to-collect-and-transport-metrics.md#proxy-considerations)」をご覧ください。
 
+### <a name="update-moby-engine"></a>Moby エンジンの更新
+
+Linux ホスト上で、最新バージョンのコンテナー エンジンを使用していることを確認します。 [インストール手順](how-to-install-iot-edge.md#install-a-container-engine)に従って、最新バージョンに更新することをお勧めします。
+
 ## <a name="how-do-i-collect-logs-along-with-metrics"></a>メトリックと共にログを収集するにはどうすればよいですか?
 
-[組み込みのログ プル機能](how-to-retrieve-iot-edge-logs.md)を使用できます。 組み込みのログ取得機能を使用するサンプル ソリューションは、[ **https://aka.ms/iot-elms** ](https://aka.ms/iot-elms) で確認できます。
+[組み込みのログ プル機能](how-to-retrieve-iot-edge-logs.md)を使用できます。 組み込みのログ取得機能を使用するサンプル ソリューションは、[ **https://aka.ms/iot-elms**](https://aka.ms/iot-elms) で確認できます。
 
 ## <a name="why-cant-i-see-device-metrics-in-the-metrics-page-in-azure-portal"></a>Azure portal のメトリック ページにデバイスのメトリックが表示されないのはなぜですか?
 
 Azure Monitor の[ネイティブ メトリック](../azure-monitor/essentials/data-platform-metrics.md) テクノロジでは、Prometheus データ形式がまだ直接サポートされていません。 次の理由から、現時点ではログベースのメトリックの方が IoT Edge メトリックに適しています。
 
 * 標準の *InsightsMetrics* テーブルを使用した Prometheus メトリック形式のネイティブ サポート。
-* 視覚化とアラートを実現するための、[KQL](https://aka.ms/kql) による高度なデータ処理。
+* 視覚化とアラートを実現するための、[KQL](/azure/data-explorer/kusto/query/) による高度なデータ処理。
 
 Azure portal の **[メトリック]** ではなく、 **[ログ]** ページにメトリックが表示される理由は、メトリック データベースとして Log Analytics を使用しているためです。
 
@@ -78,7 +81,7 @@ Azure portal の **[メトリック]** ではなく、 **[ログ]** ページに
 
 アラート ルールを作成するときに、プレビュー グラフを確認してアラート ロジックがトリガーされるのを確認します。
 
-問題が見つからなかった場合は、**Log Analytics** サービスの[テクニカル サポート インシデント](https://azure.microsoft.com/support/create-ticket/)を作成します。
+問題が見つからなかった場合は、**Log Analytics** サービスの [テクニカル サポート インシデント](https://azure.microsoft.com/support/create-ticket/)を作成します。
 
 :::zone-end
 
@@ -86,7 +89,7 @@ Azure portal の **[メトリック]** ではなく、 **[ログ]** ページに
 
 ## <a name="my-device-isnt-showing-up-in-the-monitoring-workbook"></a>デバイスが監視ブックに表示されない
 
-ブックでは、デバイス メトリックが *ResourceId* を使用して正しい IoT ハブにリンクされていることが必要とされます。 メトリックコレクターが、正しい [ResourceId](how-to-collect-and-transport-metrics.md#metrics-collector-configuration) で *構成されている* ことを確認します。
+ブックでは、デバイス メトリックが *ResourceId* を使用して正しい IoT ハブまたは IoT Central アプリケーションにリンクされていることが必要とされます。 メトリックコレクターが、正しい [ResourceId](how-to-collect-and-transport-metrics.md#metrics-collector-configuration) で *構成されている* ことを確認します。
 
 メトリックコレクター モジュール ログを使用し、選択した時間範囲内にデバイスがメトリックを送信したことを確認します。
 
@@ -100,7 +103,7 @@ Azure portal の **[メトリック]** ではなく、 **[ログ]** ページに
 
 ## <a name="i-cannot-see-the-workbooks-in-the-public-templates"></a>パブリック テンプレートにブックが表示されない
 
-Log Analytics ワークスペースではなく、ポータルの IoT ハブ ページで **[ブック]** ページを表示していることを確認します。
+Log Analytics ワークスペースではなく、ポータルの IoT ハブまたは IoT Central アプリケーション ページで **[ブック]** ページを表示していることを確認します。
 
 ブックがまだ表示されない場合は、実稼働前の Azure portal 環境を使用してみてください ([`https://ms.portal.azure.com`](https://ms.portal.azure.com))。 ブックの更新が運用環境に表示されるまで時間がかかることがありますが、その場合でも実稼働前の環境で利用できます。
 

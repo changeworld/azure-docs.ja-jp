@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.custom: troubleshooting
+ms.custom: troubleshooting, devplatv2
 ms.reviewer: laobri
 ms.author: tracych
 author: tracych
 ms.date: 05/05/2021
-ms.openlocfilehash: dfdf13d36a3d60c0f544cfda7b74cdba1dcc16ec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9fbbc2af3681b6f91ec3c1e0f6adfd46a8598c17
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382856"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448315"
 ---
 # <a name="troubleshooting-batch-endpoints-preview"></a>バッチ エンドポイントのトラブルシューティング (プレビュー)
 
@@ -50,7 +50,7 @@ MLflow 以外のモデルを使用している場合、スコアリング スク
 
 ### <a name="get-logs"></a>ログを取得する
 
-CLI または REST を使用してバッチ エンドポイントを呼び出した後、バッチ スコアリング ジョブが非同期的に実行されます。 バッチ スコアリング ジョブのログは、2 とおりの方法で取得できます。
+Azure CLI または REST を使用してバッチ エンドポイントを呼び出した後、バッチ スコアリング ジョブが非同期的に実行されます。 バッチ スコアリング ジョブのログは、2 とおりの方法で取得できます。
 
 方法 1: ログをローカル コンソールにストリーム配信する
 

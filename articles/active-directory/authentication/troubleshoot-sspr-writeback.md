@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/26/2020
+ms.date: 08/11/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03b93c09ebe1c8361379dba018d7c756f409d4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a96181c86faf983abd349dcb9b287e2f3ac344de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745153"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747922"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットの書き戻しをトラブルシューティングする
 
@@ -49,6 +49,18 @@ Azure [GOV エンドポイント](../../azure-government/compare-azure-governmen
 * *\*.servicebus.usgovcloudapi.net*
 
 より高い細分性が必要な場合は、[Microsoft Azure データセンターの IP 範囲の一覧](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください。 この一覧は毎週水曜日に更新され、翌週の月曜日に有効になります。
+
+環境内で URL とポートへのアクセスが制限されているかどうかを判断するには、次のコマンドレットを実行します。
+
+```powershell
+Test-NetConnection -ComputerName https://ssprdedicatedsbprodncu.servicebus.windows.net -Port 443
+```
+
+または以下を実行します。
+
+```powershell
+Invoke-WebRequest -Uri https://ssprdedicatedbprodscu.windows.net -Verbose
+```
 
 詳細については、[Azure AD Connect の接続の前提条件](../hybrid/how-to-connect-install-prerequisites.md)に関するページを参照してください。
 
@@ -185,6 +197,7 @@ Azure AD Connect を再インストールすると、Azure AD とローカルの
 | 31017| AuthTokenSuccess| このイベントは、オフボードまたはオンボード プロセスを開始するために、Azure AD Connect のセットアップ時に指定されたグローバル管理者の承認トークンを正常に取得したことを示します。|
 | 31018| KeyPairCreationSuccess| このイベントは、パスワード暗号化キーが正常に作成されたことを示します。 このキーは、クラウドからのパスワードを暗号化してご利用のオンプレミス環境に送信するために使用されます。|
 | 31034| ServiceBusListenerError| このイベントは、テナントの Service Bus リスナーへの接続中にエラーが発生したことを示します。 エラー メッセージに "リモート証明書が無効です" と表示される場合は、「[Azure TLS 証明書の変更](../../security/fundamentals/tls-certificate-changes.md)」で説明されているように、すべての必要なルート CA が Azure AD Connect サーバーに存在していることを確認してください。 |
+| 31044| PasswordResetService| このイベントは、パスワード ライトバックが機能していないことを示します。 Service Bus は、冗長性を確保するために 2 つの異なるリレーで要求をリッスンします。 それぞれのリレー接続は、独自のサービス ホストによって管理されます。 どちらかのサービス ホストが実行されていない場合、ライトバック クライアントからエラーが返されます。|
 | 32000| UnknownError| このイベントは、パスワード管理操作中に発生した原因不明のエラーを示します。 詳細については、イベントの例外の説明をご覧ください。 問題が発生した場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。 これで解決されない場合は、サポート リクエストを開いたときに指定される追跡 ID と共にイベント ログのコピーを含めてください。|
 | 32001| ServiceError| このイベントは、クラウド パスワード リセット サービスへの接続中にエラーが発生したことを示します。 このエラーは通常、オンプレミスのサービスがパスワード リセット Web サービスに接続できない場合に発生します。|
 | 32002| ServiceBusError| このイベントは、テナントの Service Bus インスタンスへの接続中にエラーが発生したことを示します。 これは、オンプレミス環境で発信接続をブロックしている場合に発生する可能性があります。 ファイアウォールで TCP 443 経由の https://ssprdedicatedsbprodncu.servicebus.windows.net への接続が許可されていることを確認してから、やり直してください。 問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。|

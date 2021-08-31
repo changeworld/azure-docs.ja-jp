@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 4fb4025d10990c0f499a16bbb6bc308eb74c00cf
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: f9c6f8cc3c973d3172166514815018979f744173
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655172"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744925"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 
@@ -23,7 +23,7 @@ ms.locfileid: "110655172"
 * **フェーズ 2:** TLS 1.1 と TLS 1.0 のサポートは停止されます。 この変更以降、お使いのアプリケーションでは、TLS 1.2 以降を使用してキャッシュと通信する必要があります。 Azure Cache for Redis サービスは、TLS 1.2 以降のみをサポートするための移行中に、使用できると予想されます。
 
   > [!NOTE]
-  > フェーズ 2 はとりあえず、2020 年 12 月 31 日より前に開始する予定はありません。 ただし、今すぐこの変更の計画を開始し、TLS 1.2 以降をサポートするように事前にクライアントを更新することが強く推奨されます。 
+  > フェーズ 2 は COVID-19 のために延期されています。 今すぐこの変更の計画を開始し、TLS 1.2 以降をサポートするように事前にクライアントを更新することを強くお勧めします。 
   >
 
 この変更の一環として、安全でない古い暗号スイートのサポートは、今後廃止します。 キャッシュで TLS のバージョン要件を 1.2 以上に設定する場合、サポートされる暗号スイートは次のものに限られます。
@@ -43,7 +43,7 @@ ms.locfileid: "110655172"
 | Azure China 21Vianet |  2020 年 3 月 13 日    | COVID-19 の影響により延期  |
 
 > [!NOTE]
-> フェーズ 2 はとりあえず、2020 年 12 月 31 日より前に開始する予定はありません。 この記事は、具体的な日付が設定されたときに更新されます。
+> フェーズ 2 は COVID-19 のために延期されています。 この記事は、具体的な日付が設定されたときに更新されます。
 >
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>アプリケーションが既に準拠しているかどうかを確認する

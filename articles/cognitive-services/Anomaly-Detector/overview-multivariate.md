@@ -1,7 +1,7 @@
 ---
 title: Anomaly Detector 多変量 API とは
 titleSuffix: Azure Cognitive Services
-description: 新しい Anomaly Detector パブリック プレビュー多変量 API の概要。
+description: 新しい Anomaly Detector 多変量 API プレビューの概要。
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
-ms.openlocfilehash: e913cc4738b0f58a411e80f3e2b602a072f28665
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 2e74edb0f716862925bb19140a4425366ebab894
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005989"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587663"
 ---
-# <a name="multivariate-time-series-anomaly-detection-public-preview"></a>多変量時系列の異常検出 (パブリック プレビュー)
+# <a name="multivariate-time-series-anomaly-detection-preview"></a>多変量時系列の異常検出 (プレビュー)
 
 新しい **多変量異常検出** API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出するための高度な AI を開発者がさらに容易に統合することができます。 最大 300 の異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されるようになりました。 この新しい機能を使用すると、ソフトウェア アプリケーション、サーバー、工業用機械、宇宙船、さらにユーザーのビジネスなどの複雑なシステムを障害から予防的に保護することができます。
 
@@ -38,10 +38,9 @@ Anomaly Detector API (多変量) を呼び出す方法については、こち�
 
 Notebook を実行するには、有効な Anomaly Detector API **サブスクリプション キー** と **API エンドポイント** を取得する必要があります。 ノートブックで、有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加し、`endpoint` 変数をエンドポイントに変更します。
 
-
 ## <a name="region-support"></a>リージョンのサポート
 
-Anomaly Detector 多変量のパブリック プレビューは、現在、米国西部 2、西ヨーロッパ、米国東部 2、米国中南部、米国東部、英国南部の 6 つのリージョンでご利用いただけます。
+Anomaly Detector 多変量のプレビューは現在、東南アジア、オーストラリア東部、カナダ中部、北ヨーロッパ、西ヨーロッパ、米国東部、米国東部 2、米国中南部、米国西部 2、英国南部の 10 か所の Azure リージョンで提供されています。
 
 ## <a name="algorithms"></a>アルゴリズム
 
@@ -60,5 +59,6 @@ Anomaly Detector 多変量のパブリック プレビューは、現在、米�
 
 ## <a name="next-steps"></a>次のステップ
 
+- [チュートリアル](./tutorials/learn-multivariate-anomaly-detection.md): この記事は、多変量 API の使用方法を説明するエンドツーエンドのチュートリアルです。
 - [クイックスタート](./quickstarts/client-libraries-multivariate.md)。
 - [ベスト プラクティス](./concepts/best-practices-multivariate.md): この記事は、多変量 API で使用するために推奨されるパターンに関するものです。

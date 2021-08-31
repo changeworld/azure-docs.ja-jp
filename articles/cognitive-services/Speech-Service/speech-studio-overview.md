@@ -3,19 +3,19 @@ title: Speech Studio の概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Speech Studio は、アプリケーションで Azure 音声サービスの機能を構築および統合するための UI ベースのツールのセットです。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.author: trbye
-ms.openlocfilehash: ddf7b85f5775ee25a260f19ae81e43afff95facb
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.author: lajanuar
+ms.openlocfilehash: 6042a129308b7be478b2bd1a45379ad56f62aca6
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902340"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067060"
 ---
 # <a name="what-is-speech-studio"></a>Speech Studio とは
 
@@ -23,16 +23,12 @@ ms.locfileid: "111902340"
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 
-[Speech Studio](https://speech.microsoft.com) を使用する前に、Azure アカウントと音声サービス サブスクリプションを用意する必要があります。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](overview.md#try-the-speech-service-for-free)。
+[Speech Studio](https://speech.microsoft.com) を使用する前に、Azure アカウントを用意して、音声サービス リソースを追加する必要があります。 アカウントとリソースがない場合は、[Speech Service を無料でお試しください](overview.md#try-the-speech-service-for-free)。
 
-> [!NOTE]
-> 必ず Standard (S0) サブスクリプションを作成してください。 Free (F0) サブスクリプションはサポートされていません。
+Azure アカウントと音声サービス リソースを作成したら、次を実行します。
 
-Azure アカウントと音声サービス サブスクリプションを作成した後、以下を実行します。
-
-1. [Speech Studio](https://speech.microsoft.com) にサインインします。
-1. 作業に必要なサブスクリプションを選択し、音声プロジェクトを作成します。
-1. サブスクリプションを変更する場合は、上部のメニューで [歯車] ボタンを選択します。
+1. Azure アカウントで [Speech Studio](https://speech.microsoft.com) にサインインします。
+1. 開始するために必要な音声サービス リソースを選択します。 (リソースは、上部メニューの [設定] でいつでも変更できます。)
 
 ## <a name="speech-studio-features"></a>Speech Studio の機能
 

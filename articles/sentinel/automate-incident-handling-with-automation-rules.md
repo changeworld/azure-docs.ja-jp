@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 869693765463589c3e94aef9a1cee17867117c5d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 1244959bac7a2c530444e3d4b36691d4f760529a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072679"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731054"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>自動化ルールで Azure Sentinel でのインシデント処理を自動化する
 
@@ -42,7 +42,7 @@ ms.locfileid: "112072679"
 
 自動化ルールは、インシデントの作成によってトリガーされます。 
 
-確認する – [Azure Sentinel で組み込みの分析ルールを使用して脅威を検出する](tutorial-detect-threats-built-in.md)のチュートリアルで説明されているように、インシデントは、複数の種類の分析ルールによってアラートから作成されます。
+確認する – [Azure Sentinel で組み込みの分析ルールを使用して脅威を検出する](detect-threats-built-in.md)のチュートリアルで説明されているように、インシデントは、複数の種類の分析ルールによってアラートから作成されます。
 
 ### <a name="conditions"></a>条件
 
@@ -54,7 +54,7 @@ ms.locfileid: "112072679"
 
 - インシデントの状態を変更して、ワークフローを最新の状態に保ちます。
 
-  - [終了理由](tutorial-investigate-cases.md#closing-an-incident)を指定して、コメントを追加して "closed" に変更する場合。 これにより、パフォーマンスと有効性を追跡し、[誤検知](false-positives.md)を減らすための微調整を行うことができます。
+  - [終了理由](investigate-cases.md#closing-an-incident)を指定して、コメントを追加して "closed" に変更する場合。 これにより、パフォーマンスと有効性を追跡し、[誤検知](false-positives.md)を減らすための微調整を行うことができます。
 
 - インシデントの重要度を変更する – インシデントに関連するエンティティのプレゼンス、不在、値、または属性に基づいて、再評価や優先順位の変更を行うことができます。
 
@@ -122,7 +122,14 @@ Microsoft セキュリティ アラートには、次のものが含まれます
 
 自動化ルールは、決定した順序に従って順番に実行されます。 各自動化ルールは、前の規則の実行が完了した後に実行されます。 自動化ルール内では、すべてのアクションが、定義されている順序で順番に実行されます。
 
-プレイブック アクションの場合、プレイブック アクションの開始とリストの次のアクションの間に 2 分の遅延があります。
+自動化ルール内のプレイブック アクションは、次の基準に従って、ある状況下では異なって処理されることがあります。
+
+| プレイブックの実行時間 | 自動化ルールが次のアクションに進むタイミング |
+| ----------------- | --------------------------------------------------- |
+| 1 秒未満 | プレイブックが完了した直後 |
+| 2 分未満 | プレイブックの実行開始から最長 2 分後。<br>ただし、プレイブックが完了してから 10 秒以内 |
+| 2 分以上 | プレイブックの実行開始から 2 分後。<br>それが完了したかどうかは無関係 |
+|
 
 ### <a name="permissions-for-automation-rules-to-run-playbooks"></a>プレイブックを実行するための自動化ルールへのアクセス許可
 

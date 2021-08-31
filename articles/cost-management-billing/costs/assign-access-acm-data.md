@@ -3,18 +3,18 @@ title: Azure Cost Management のデータへのアクセス許可を割り当て
 description: この記事では、Azure Cost Management のデータに対するアクセス許可をさまざまなアクセス スコープで割り当てる方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 06/27/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 9ee0f7f854363389f3e6594946411f05b1b8b790
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645289"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988699"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -140,45 +140,24 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 
 管理グループのスコープを表示するアクセスには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 管理グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、管理グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
 
-1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
-2. サイド バーで **[すべてのサービス]** を選択し、 _管理グループ_ を検索して、 **[管理グループ]** を選択します。
-3. 階層内の管理グループを選択します。
-4. 管理グループの名前の横にある **[詳細]** を選択します。
-5. 左側のウィンドウから **[アクセス制御 (IAM)]** を選択します。
-6. **[追加]** を選択します。
-7. **[ロール]** の下で **[Cost Management 閲覧者]** を選択します。
-8. **[アクセスの割り当て先]** の下で、 **[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
-9. アクセス許可を割り当てるには、ユーザーを検索して選択します。
-10. **[保存]** を選択します。  
-    ![管理グループ用の [アクセス許可の追加] ボックスの情報の例](./media/assign-access-acm-data/add-permissions.png)
+
+- 管理グループ スコープで Cost Management 閲覧者 (または閲覧者) ロールをユーザーに割り当てます。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="assign-subscription-scope-access"></a>サブスクリプションのスコープへのアクセス権を割り当てる
 
 サブスクリプションにアクセスするには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 サブスクリプションへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、サブスクリプションに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
 
-1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
-2. サイド バーで **[すべてのサービス]** を選択し、 _サブスクリプション_ を検索して、 **[サブスクリプション]** を選択します。
-3. サブスクリプションを選択します。
-4. 左側のウィンドウから **[アクセス制御 (IAM)]** を選択します。
-5. **[追加]** を選択します。
-6. **[ロール]** の下で **[Cost Management 閲覧者]** を選択します。
-7. **[アクセスの割り当て先]** の下で、 **[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
-8. アクセス許可を割り当てるには、ユーザーを検索して選択します。
-9. **[保存]** を選択します。
+- サブスクリプション スコープで Cost Management 閲覧者 (または閲覧者) ロールをユーザーに割り当てます。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="assign-resource-group-scope-access"></a>リソース グループのスコープへのアクセス許可を割り当てる
 
 リソース グループにアクセスするには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 リソース グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、リソース グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
 
-1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
-2. サイド バーで **[すべてのサービス]** を選択し、 _リソース グループ_ を検索して、 **[リソース グループ]** を選択します。
-3. リソース グループを選択します。
-4. 左側のウィンドウから **[アクセス制御 (IAM)]** を選択します。
-5. **[追加]** を選択します。
-6. **[ロール]** の下で **[Cost Management 閲覧者]** を選択します。
-7. **[アクセスの割り当て先]** の下で、 **[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
-8. アクセス許可を割り当てるには、ユーザーを検索して選択します。
-9. **[保存]** を選択します。
+
+- リソース グループ スコープで Cost Management 閲覧者 (または閲覧者) ロールをユーザーに割り当てます。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="cross-tenant-authentication-issues"></a>テナント間の認証の問題
 

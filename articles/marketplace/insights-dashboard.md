@@ -4,27 +4,26 @@ description: パートナー センターのマーケットプレース Web 分�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 03/23/2021
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: b02d5d4ae412867237d253e488fdb6cd8dd19769
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: a4bd78c15d2015eabf95926e2b4bcf43d6cbcdcb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539938"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735048"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
 
 この記事では、パートナー センターの [Marketplace の分析情報] ダッシュボードについて説明します。 このダッシュボードには、コマーシャル マーケットプレース Web 分析の概要が表示されます。これにより公開元は、次のコマーシャル マーケットプレースのオンライン ストアに掲載されている、個々の製品詳細ページの顧客エンゲージメントを測定できます: Microsoft AppSource と Azure Marketplace。
 
-パートナー センターの **[Marketplace の分析情報]** ダッシュボードにアクセスするには、コマーシャル マーケットプレースで **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[Marketplace の分析情報]** を選択します。
-
-分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
 
 ## <a name="marketplace-insights-dashboard"></a>[Marketplace の分析情報] ダッシュボード
 
-[Marketplace の分析情報] ダッシュボードには、Azure Marketplace および AppSource のオファーのビジネス パフォーマンスの概要が示されます。 このダッシュボードは、次のことについて大まかに説明しています。
+[[Marketplace の分析情報] ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2165936)には、Azure Marketplace および AppSource のオファーのビジネス パフォーマンスの概要が示されます。 このダッシュボードは、次のことについて大まかに説明しています。
 
 - ページ アクセス数の傾向
 - Call to Action の傾向
@@ -40,6 +39,8 @@ Marketplace の分析情報ダッシュボードにはクリックストリー�
 ## <a name="elements-of-the-marketplace-insights-dashboard"></a>[Marketplace の分析情報] ダッシュボードの要素
 
 [Marketplace の分析情報] ダッシュボードでは、2 つのタブに Azure Marketplace および AppSource の Web テレメトリの詳細が表示されます。 次のセクションでは、[Marketplace の分析情報] ダッシュボードの使用方法とデータの読み取り方法について説明します。
+
+パートナー センターの **[Marketplace の分析情報]** ダッシュボードにアクセスするには、コマーシャル マーケットプレースで **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[Marketplace の分析情報]** を選択します。
 
 ### <a name="month-range"></a>月範囲
 
@@ -127,4 +128,4 @@ Marketplace の分析情報ダッシュボードにはクリックストリー�
 - 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](customer-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
 - Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](ratings-reviews.md)」を参照してください。
-- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](analytics-faq.md)」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](analytics-faq.yml)」を参照してください。

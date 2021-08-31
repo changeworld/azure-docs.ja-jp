@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 8bcf300c9e17bd809a0dc35443917dee2a908e27
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 0e252a1822d36bf1d8aecbac7f38a0d315d38351
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075585"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371843"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する
 
@@ -29,7 +29,7 @@ Azure プライベート エンドポイントは、Azure Private Link の基本
 次の制限事項が適用されます。
 
 * プライベート エンドポイントからのトラフィックによって、ネットワーク セキュリティ グループ (NSG) がバイパスされます
-* プライベート エンドポイントからのトラフィックによって、ユーザー定義ルート (UDR) がバイパスされます
+* プライベート エンドポイントからのトラフィックによって、ユーザー定義ルート (UDR) がバイパスされます。 ユーザー定義ルートは、プライベート エンドポイント宛てのトラフィックをオーバーライドするために使用できます。
 * サブネットにアタッチできるルート テーブルは 1 つです
 * ルート テーブルでは最大 400 ルートがサポートされます
 

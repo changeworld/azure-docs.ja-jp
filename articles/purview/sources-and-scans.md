@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 15ade6fca3885bfabba7a23e2c3d8e561a9e6a0c
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: e5b2c5eaca13b26504c4229ef990abc4adce23c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738466"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724187"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure Purview でサポートされているデータ ソースとファイルの種類
 
@@ -32,7 +32,7 @@ Purview では、[こちら](purview-connector-overview.md)に示すすべての
 - Purview では、カスタム ファイル拡張子とカスタム パーサーもサポートされています。
  
 > [!Note]
-> すべての Gzip ファイルは、内部の 1 つの csv ファイルにマップする必要があります。 Gzip ファイルは、システムおよびカスタムの分類ルールの対象となります。 現在、内部の複数のファイルにマップされた gzip ファイル、または csv 以外の任意のファイルの種類のスキャンはサポートされていません。 また、Purview スキャナーでは、スキーマの抽出と分類のために、スナップ圧縮されたファイルの種類が PARQUET や AVRO のスキャンがサポートされています。
+> すべての Gzip ファイルは、内部の 1 つの csv ファイルにマップする必要があります。 Gzip ファイルは、システムおよびカスタムの分類ルールの対象となります。 現在、内部の複数のファイルにマップされた gzip ファイル、または csv 以外の任意のファイルの種類のスキャンはサポートされていません。 また、Purview スキャナーでは、スキーマの抽出と分類のために、スナップ圧縮された PARQUET 型のスキャンがサポートされています。 
 
 > [!Note]
 > Purview スキャナーでは、ファイルの種類が AVRO、ORC、PARQUET の複雑なデータ型のスキーマ抽出はサポートされていません。   
@@ -46,9 +46,10 @@ Purview の用語では、
 
 すべての構造化されたファイル形式について、Purview スキャナーによって次のようにファイルがサンプリングされます。
 
-- 構造化されたファイルの種類の場合、各列の 128 行または 1 MB のいずれか小さい方がサンプリングされます。
-- ドキュメント ファイル形式の場合、各ファイルにつき 20 MB がサンプリングされます。
+- 構造化されたファイルの種類の場合、各列の上位 128 行または最初の 1 MB のいずれか小さい方がサンプリングされます。
+- ドキュメント ファイル形式の場合、各ファイルにつき最初の 20 MB がサンプリングされます。
     - ドキュメント ファイルが 20 MB を超える場合は、詳細スキャンの対象にはなりません (分類の対象になります)。 この場合、Purview によって、ファイル名や完全修飾名などの基本的なメタ データのみがキャプチャされます。
+- **表形式データ ソース (SQL、CosmosDB)** の場合、上位 128 行がサンプリングされます。 
 
 ## <a name="resource-set-file-sampling"></a>リソース セット ファイルのサンプリング
 
@@ -64,7 +65,7 @@ Purview の用語では、
 
 ## <a name="classification"></a>分類
 
-105 個すべてのシステム分類ルールが、構造化されたファイル形式に適用されます。 MCE 分類ルールのみがドキュメント ファイルの種類に適用されます (データ スキャン ネイティブの正規表現パターンではなく、ブルーム フィルターベースの検出)。 サポートされている分類の詳細については、「[Azure Purview でサポートされている分類](supported-classifications.md)」を参照してください。
+206 個すべてのシステム分類ルールが、構造化されたファイル形式に適用されます。 MCE 分類ルールのみがドキュメント ファイルの種類に適用されます (データ スキャン ネイティブの正規表現パターンではなく、ブルーム フィルターベースの検出)。 サポートされている分類の詳細については、「[Azure Purview でサポートされている分類](supported-classifications.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -136,7 +136,7 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: Architecture
+    - name: アーキテクチャ
       href: service-fabric-architecture.md
     - name: セキュリティ
       items:
@@ -199,7 +199,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: Architecture
+            - name: アーキテクチャ
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -330,7 +330,7 @@
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: Architecture
+            - name: アーキテクチャ
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -404,7 +404,7 @@
           href: how-to-managed-cluster-configuration.md
         - name: 管理対象クラスター ノードの種類に VM スケールセット拡張機能を追加する
           href: how-to-managed-cluster-vmss-extension.md
-        - name: NSG ルールおよびその他のマネージド クラスター ネットワーク オプションを追加する
+        - name: 管理対象クラスターのネットワーク設定を構成する
           href: how-to-managed-cluster-networking.md
         - name: 管理対象クラスターの可用性ゾーン スパニングを構成する
           href: how-to-managed-cluster-availability-zones.md
@@ -414,14 +414,16 @@
           href: how-to-managed-cluster-managed-disk.md
         - name: 管理されたクラスターのアップグレード オプションを構成する
           href: how-to-managed-cluster-upgrades.md
-        - name: 管理対象クラスターのアプリケーション シークレットをデプロイする
+        - name: 管理対象クラスターにアプリケーション シークレットをデプロイする
           href: how-to-managed-cluster-application-secrets.md
-        - name: ARM テンプレートを使用して管理対象クラスター アプリケーションをデプロイする
+        - name: Azure Resource Manager を使用してアプリケーションを管理対象クラスターにデプロイする
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: マネージド ID を使用して管理対象クラスター アプリケーションをデプロイする
+        - name: マネージド ID を使用してアプリケーションを管理対象クラスターにデプロイする
           href: how-to-managed-cluster-application-managed-identity.md
         - name: 管理対象クラスターにステートレス専用のノードの種類をデプロイする
           href: how-to-managed-cluster-stateless-node-type.md
+        - name: 管理されたクラスターで大規模なスケーリングのためにセカンダリ ノードの種類を構成する
+          href: how-to-managed-cluster-large-virtual-machine-scale-sets.md
         - name: マネージド クラスター ノードのマネージド ID を使用する
           href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 開発環境を設定する
@@ -828,6 +830,10 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: 他の Azure リソースへのアクセス権を付与する
           href: how-to-grant-access-other-resources.md
+    - name: クラスターを新しいリージョンに移行する
+      items:
+        - name: Azure Service Fabric クラスターを新しいリージョンに移動する方法
+          href: service-fabric-cluster-region-move.md
     - name: Cloud Services から移行する
       items:
         - name: Cloud Services と Service Fabric を比較する

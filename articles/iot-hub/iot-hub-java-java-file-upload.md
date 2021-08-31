@@ -2,23 +2,22 @@
 title: Java を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs
 description: Java 用 Azure IoT device SDK を使用してデバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 06/28/2017
+ms.date: 07/18/2021
 ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: dc87ad0af7eac71d7f2835b2b0d582fe8d1ec1b9
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a280e7b156ebb31269e4a65508596f8ba03c3caf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985384"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779065"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Java)
 
@@ -26,7 +25,7 @@ ms.locfileid: "111985384"
 
 このチュートリアルでは、Java を使った IoT Hub のファイル アップロードの機能を使用する方法を示します。 ファイルのアップロード プロセスの概要については、「[IoT Hub を使用したファイルのアップロード](iot-hub-devguide-file-upload.md)」を参照してください。
 
-[デバイスから IoT ハブにテレメトリを送信する方法](quickstart-send-telemetry-java.md)のクイックスタートと [IoT Hub で cloud-to-device メッセージを送信する方法](iot-hub-java-java-c2d.md)のチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングと cloud-to-device メッセージの基本的な機能が示されています。 「[IoT Hub を使用してメッセージ ルーティングを構成する](tutorial-routing.md)」チュートリアルでは、Azure Blob Storage にデバイスからクラウドへのメッセージを確実に格納する方法を説明しています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 次に例を示します。
+[デバイスから IoT ハブにテレメトリを送信する方法](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java)のクイックスタートと [IoT Hub で cloud-to-device メッセージを送信する方法](iot-hub-java-java-c2d.md)のチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングと cloud-to-device メッセージの基本的な機能が示されています。 「[IoT Hub を使用してメッセージ ルーティングを構成する](tutorial-routing.md)」チュートリアルでは、Azure Blob Storage にデバイスからクラウドへのメッセージを確実に格納する方法を説明しています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 次に例を示します。
 
 * イメージを含む大きなファイル
 * ビデオ
@@ -54,7 +53,11 @@ ms.locfileid: "111985384"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
+
+[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-include-associate-storage.md)]
 
 ## <a name="create-a-project-using-maven"></a>Maven を使ってプロジェクトを作成する
 
@@ -165,10 +168,9 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
 
 ```
 
+## <a name="upload-a-file-from-a-device-app"></a>デバイス アプリからのファイルのアップロード
 
-## <a name="upload-a-file"></a>ファイルをアップロードする
-
-アップロードするファイルを、プロジェクト ツリー内の `my-app` フォルダーにコピーします。 テキスト エディターを使用して、App.java を次のコードに置き換えます。 示された接続文字列とファイル名を指定します。
+アップロードするファイルを、プロジェクト ツリー内の `my-app` フォルダーにコピーします。 テキスト エディターを使用して、App.java を次のコードに置き換えます。 示されたデバイス接続文字列とファイル名を指定します。 デバイス接続文字列は、デバイスの登録時にコピーしたものです。
 
 ```java
 package com.mycompany.app;
@@ -284,23 +286,8 @@ public class App
     }
 }
 ```
-## <a name="get-the-device-connection-string"></a>デバイスの接続文字列を取得する
 
-Azure Cloud Shell で次のコマンドを実行し、ご利用のデバイスの ''_デバイス接続文字列_'' を取得します。 以下のプレースホルダーは、IoT ハブに対して選んだ名前とデバイスの名前に置き換えてください。
-
-```azurecli-interactive
-az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id {YourDevice} --output table
-```
-    
-次のようなデバイス接続文字列をコピーし、示されたコード サンプルに配置します。
-  
-```cmd/sh
-HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}
-```
-
-アップロードするファイルへのパスを、示されたコード サンプルに配置します。
-    
-## <a name="build-and-run-the-application"></a>アプリケーションをビルドして実行する
+## <a name="build-and-run-the-application"></a>アプリケーションのビルドと実行
 
 `my-app` フォルダーのコマンド プロンプトで、次のコマンドを実行します。
 

@@ -6,20 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 76e1f80e1c6e1d977521724959db6ad36694f238
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 80337c4953182e903655eddb360fc8b49a88ca59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110684120"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732930"
 ---
 # <a name="install-gpu-extension-on-vms-for-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスの VM に GPU 拡張機能をインストールする
 
 [!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
-この記事では、GPU ドライバー拡張機能をインストールして、Azure Stack Edge デバイスで実行されている GPU VM に適切な Nvidia ドライバーをインストールする方法について説明します。 この記事では、Windows と Linux の VM に GPU 拡張機能をインストールする手順について説明します。
+この記事では、GPU ドライバー拡張機能をインストールして、Azure Stack Edge デバイスで実行されている GPU VM に適切な Nvidia ドライバーをインストールする方法について説明します。 この記事では、Windows と Linux VM の両方で Azure Resource Manager テンプレートを使用して GPU 拡張機能をインストールするための手順について説明します。
+
+> [!NOTE]
+> Azure portal では、VM の作成時または VM のデプロイ後に GPU 拡張機能をインストールできます。 手順と要件については、[GPU 仮想マシンをデプロイ する](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md)に関する記事を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,11 +35,9 @@ ms.locfileid: "110684120"
 
         次の例では、ポート 2 がインターネットに接続され、コンピューティング ネットワークを有効にするために使用されています。 ご使用の環境に Kubernetes がデプロイされていない場合は、Kubernetes ノード IP と外部サービス IP の割り当てをスキップできます。
 
-        ![インターネットに接続されているポートでのコンピューティング設定の有効化](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
+        ![Azure Stack Edge デバイスの [コンピューティング] ウィンドウのスクリーンショット. ポート 2 の [コンピューティング] の設定が強調表示されています。](media/azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension/enable-compute-network-1.png)
 1. クライアント コンピューターに [GPU 拡張テンプレートとパラメーター ファイルをダウンロード](https://aka.ms/ase-vm-templates)します。 それを、作業ディレクトリとして使用するディレクトリに解凍します。
 1. デバイスへのアクセスに使用するクライアントが、Azure PowerShell 経由で Azure Resource Manager にまだ接続されていることを確認します。 Azure Stack Edge デバイスが再起動されると、Azure Resource Manager への接続は 1.5 時間ごとに有効期限が切れます。 この場合、実行するすべてのコマンドレットで、Azure に接続されていないことを示すエラー メッセージが返されます。 再度サインインする必要があります。 詳細な手順については、「[Azure Stack Edge デバイスで Azure Resource Manager に接続する](azure-stack-edge-gpu-connect-resource-manager.md)」を参照してください。
-
-
 
 ## <a name="edit-parameters-file"></a>パラメーター ファイルを編集する
 
@@ -391,6 +392,9 @@ PS C:\Program Files\NVIDIA Corporation\NVSMI>
 
 詳細については、「[Windows 用の Nvidia GPU ドライバー拡張機能](../virtual-machines/extensions/hpccompute-gpu-windows.md)」を参照してください。
 
+> [!NOTE]
+> GPU ドライバーと GPU 拡張機能のインストールが完了すると、コンピューティングにインターネット アクセスのあるポートを使用する必要がなくなります。
+
 ### <a name="linux"></a>[Linux](#tab/linux)
 
 ドライバーのインストールを確認するには、次の手順に従います。
@@ -468,6 +472,10 @@ PS C:\Program Files\NVIDIA Corporation\NVSMI>
 
 詳細については、「[Linux 用の Nvidia GPU ドライバー拡張機能](../virtual-machines/extensions/hpccompute-gpu-linux.md)」を参照してください。
 
+> [!NOTE]
+> GPU ドライバーと GPU 拡張機能のインストールが完了すると、コンピューティングにインターネット アクセスのあるポートを使用する必要がなくなります。
+
+
 ---
 
 
@@ -493,6 +501,8 @@ Requestld IsSuccessStatusCode StatusCode ReasonPhrase
 
 具体的には、次の方法を学習します。
 
+- [GPU 拡張機能の問題をトラブルシューティングします](azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md)。
+- [デバイス上の VM アクティビティを監視します](azure-stack-edge-gpu-monitor-virtual-machine-activity.md)。
 - [VM ディスクを管理します](azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md)。
 - [VM ネットワーク インターフェイスを管理します](azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md)。
 - [VM のサイズを管理します](azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md)。

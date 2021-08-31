@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: sgilley
-ms.author: copeters
-author: lostmygithubaccount
+ms.author: wibuchan
+author: buchananwp
 ms.date: 06/25/2020
-ms.topic: conceptual
-ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: 95fb2dfeea98b988eaeaea43efc4ea44fd6e33fd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.custom: data4ml, contperf-fy21q2
+ms.openlocfilehash: 5d4c3974bdd1ef90556d19e3ca49cc613d36923d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770311"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729790"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 
@@ -41,7 +41,7 @@ Azure Machine Learning データセット モニター (プレビュー) を使�
 ## <a name="prerequisites"></a>前提条件
 
 データセット モニターを作成して使用するには、以下が必要です。
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 * [Azure Machine Learning SDK for Python がインストール済み](/python/api/overview/azure/ml/install) (これには azureml-datasets パッケージが含まれています)。
 * データのファイル パス、ファイル名、または列にタイムスタンプが指定された構造化 (表形式) データ。
@@ -102,7 +102,7 @@ Azure Machine Learning では、データセット モニターを使用し、�
 
 ## <a name="create-target-dataset"></a>ターゲット データセットを作成する
 
-ターゲット データセットには、データ内の列またはファイルのパス パターンから派生した仮想列のいずれかにタイムスタンプ列を指定することにより、`timeseries` 特性が設定されている必要があります。 [Python SDK](#sdk-dataset) または [Azure Machine Learning Studio](#studio-dataset) を使用して、タイムスタンプを持つデータセットを作成します。 `timeseries` 特性をデータセットに追加するには、"タイムスタンプ" を表す列を指定する必要があります。 データが "{yyyy/MM/dd}" などの時刻情報を含むフォルダー構造に分割されている場合は、パス パターン設定を使用して仮想列を作成して、"パーティションのタイムスタンプ" として設定し、時系列機能の重要度を向上させます。
+ターゲット データセットには、データ内の列またはファイルのパス パターンから派生した仮想列のいずれかにタイムスタンプ列を指定することにより、`timeseries` 特性が設定されている必要があります。 [Python SDK](#sdk-dataset) または [Azure Machine Learning Studio](#studio-dataset) を使用して、タイムスタンプを持つデータセットを作成します。 `timeseries` 特性をデータセットに追加するには、"タイムスタンプ" を表す列を指定する必要があります。 データが "{yyyy/MM/dd}" などの時刻情報を含むフォルダー構造にパーティション分割されている場合は、パス パターン設定を使用して仮想列を作成し、"パーティションのタイムスタンプ" として設定して、時系列 API 機能を有効にします。
 
 # <a name="python"></a>[Python](#tab/python)
 <a name="sdk-dataset"></a>
@@ -147,11 +147,11 @@ Azure Machine Learning Studio を使用してデータセットを作成する�
 
 [![パーティション形式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
-**スキーマ** 設定では、指定されたデータセットの仮想または実際の列からタイムスタンプ列を指定します。
+**[スキーマ]** 設定では、指定されたデータセットの仮想または実際の列から **タイムスタンプ** 列を指定します。 この型は、データに時刻構成要素があることを示します。 
 
 :::image type="content" source="media/how-to-monitor-datasets/timestamp.png" alt-text="タイムスタンプを設定する":::
 
-この場合のように、データが日付でパーティション分割されている場合は、partition_timestamp も指定できます。  こうすることで、より効率的に日付を処理できます。
+この場合のように、データが日付または時刻で既にパーティション分割されている場合は、**パーティションのタイムスタンプ** も指定できます。 これにより、日付の効率的な処理が可能となり、トレーニング中に利用できる時系列 API を有効にできます。
 
 :::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="パーティションのタイムスタンプ":::
 
@@ -175,7 +175,7 @@ from datetime import datetime
 ws = Workspace.from_config()
 
 # get the target dataset
-dset = Dataset.get_by_name(ws, 'target')
+target = Dataset.get_by_name(ws, 'target')
 
 # set the baseline dataset
 baseline = target.time_before(datetime(2019, 2, 1))

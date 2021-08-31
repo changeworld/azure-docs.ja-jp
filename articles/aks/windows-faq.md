@@ -5,12 +5,12 @@ description: Windows Server ノード プールとアプリケーション ワ�
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 5d3d78eb20a9ca8b663fa0cf381fcce1bd528345
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b278be45af62d50c8df85ed833ebbeb99dd5c35d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463306"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747800"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS の Windows Server ノード プールに関してよく寄せられる質問
 
@@ -103,7 +103,7 @@ az aks update \
 
 ## <a name="how-many-node-pools-can-i-create"></a>ノード プールはいくつ作成できますか?
 
-AKS クラスターでは、最大で 10 のノード プールを作成できます。 それらのノード プール全体で最大 1,000 個のノードを使用できます。 [ノード プールの制限][nodepool-limitations]に関するページを参照してください。
+AKS クラスターは最大 100 個のノード プールを持つことができます。 それらのノード プール全体で最大 1,000 個のノードを使用できます。 [ノード プールの制限][nodepool-limitations]に関するページを参照してください。
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Windows ノード プールにはどのような名前を指定できますか?
 

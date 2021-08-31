@@ -1,15 +1,15 @@
 ---
 title: Azure PowerShell を使用して VM 拡張機能を有効にする
 description: この記事では、Azure PowerShell を使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 05/06/2021
+ms.date: 08/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 59e33a8e4e5a2bc0cc8f620bd4b7fb8b65c5d7e9
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 9a626e42b5447cafcf0fe99876eb0146a02c25f3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803208"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734408"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure PowerShell を使用して Azure VM 拡張機能を有効にする
 
@@ -44,19 +44,19 @@ PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "
 
 Arc 対応 Windows サーバーで Log Analytics VM 拡張機能を有効にするには、前の例の `-ExtensionType` パラメーターの値を `"MicrosoftMonitoringAgent"` に変更します。
 
-次の例では、Arc 対応 Linux サーバーでカスタム スクリプト拡張機能を有効にします。
+次の例では、Arc 対応サーバーでカスタム スクリプト拡張機能を有効にします。
 
 ```powershell
 PS C:\> $Setting = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName myResourceGroup -MachineName myMachineName -Location eastus -Publisher "Microsoft.Compute"  -Settings $Setting -ExtensionType CustomScriptExtension
 ```
 
-### <a name="key-vault-vm-extension-preview"></a>Key Vault VM 拡張機能 (プレビュー)
+### <a name="key-vault-vm-extension"></a>Key Vault VM 拡張機能 
 
 > [!WARNING]
 > 多くの場合、PowerShell クライアントでは、`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.` エラーを伴って akvvm_service が失敗する原因となる settings.json で、`\` が `"` に追加されます。
 
-次の例では、Arc 対応サーバーで Key Vault VM 拡張機能 (プレビュー) を有効にします。
+次の例では、Arc 対応サーバーで Key Vault VM 拡張機能を有効にします。
 
 ```powershell
 # Build settings
@@ -98,7 +98,7 @@ custom  westus2   CustomScriptExtension Succeeded
 
 ## <a name="remove-an-installed-extension"></a>インストールされている拡張機能を削除する
 
-Arc 対応サーバー上の VM 拡張機能を削除するには、`-Name`、`-MachineName`、`-ResourceGroupName` の各パラメーターと共に [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) を使用します。
+Arc 対応サーバー上にインストールされた VM 拡張機能を削除するには、`-Name`、`-MachineName`、`-ResourceGroupName` の各パラメーターと共に [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) を使用します。
 
 たとえば、Linux 用の Log Analytics VM 拡張機能を削除するには、次のコマンドを実行します。
 

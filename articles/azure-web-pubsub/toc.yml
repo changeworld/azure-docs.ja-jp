@@ -32,7 +32,9 @@
     - name: サーバーレス開発
       expanded: true
       items:
-        - name: Azure Functions を使用してサーバーレス チャットを構築する
+        - name: Azure Functions で通知アプリを構築する
+          href: tutorial-serverless-notification.md
+        - name: Azure Functions でチャット アプリを構築する
           href: quickstart-serverless.md
     - name: メッセージの発行とサブスクライブ
       href: tutorial-pub-sub-messages.md
@@ -41,16 +43,14 @@
     - name: サービスがサポートするサブプロトコルを使用したクライアント ストリーミング
       href: tutorial-subprotocol.md
     - name: 認証とアクセス許可
-      href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
+      href: tutorial-permission.md
 - name: 操作方法ガイド
   expanded: true
   items:
     - name: 開発
       items:
-        - name: サブプロトコルの操作
-          href: 'https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols'
-        - name: 認証とアクセス許可
-          href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
+        - name: WebSocket クライアントを作成する方法
+          href: howto-websocket-connect.md
     - name: セキュリティで保護
       items:
         - name: アクセス キーを保護する
@@ -90,7 +90,15 @@
     - name: Functions のトリガーとバインド
       href: reference-functions-bindings.md
     - name: サーバー SDK
-      href: choose-server-sdks.md
+      items:
+        - name: サーバー SDK - C#
+          href: reference-server-sdk-csharp.md
+        - name: サーバー SDK - Java
+          href: reference-server-sdk-java.md
+        - name: サーバー SDK - JavaScript
+          href: reference-server-sdk-js.md
+        - name: サーバー SDK - Python
+          href: reference-server-sdk-python.md
     - name: REST API
       href: /rest/api/webpubsub
 - name: リソース

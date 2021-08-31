@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2021
-ms.openlocfilehash: baa3508917180ebbaccb9ef8863fd4c5bf68ed74
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/05/2021
+ms.openlocfilehash: 39f7af59a808fbe0c4141e17cb709c014c91dd4d
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129371"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594897"
 ---
 # <a name="create-and-edit-plans-for-an-azure-container-offer"></a>Azure コンテナー オファーのプランを作成および編集する
 
@@ -31,7 +31,7 @@ ms.locfileid: "108129371"
 プランに対してで使用可能なアクションは、プランの現在の状態によって異なります。 これには次のようなものがあります。
 
 - **ドラフトを削除する**: プランの状態がドラフトの場合。
-- **販売プランを停止する**: プランの状態が一般公開の場合。
+- **配布を停止する**: プランの状態が一般公開の場合。
 
 ## <a name="edit-a-plan"></a>プランを編集する
 

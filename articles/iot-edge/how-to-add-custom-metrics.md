@@ -2,19 +2,18 @@
 title: カスタム メトリックを追加する方法 - Azure IoT Edge
 description: カスタム モジュールのシナリオ固有のメトリックを使用して組み込みのメトリックを強化する
 author: veyalla
-manager: philmea
 ms.author: veyalla
-ms.date: 06/08/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12defc783be6fb1a87b815284b1fbf019d8c8817
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 8e9c5b74b19af00228f03b26450b987d87283376
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904449"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015489"
 ---
 # <a name="add-custom-metrics-preview"></a>カスタム メトリックを追加する (プレビュー)
 
@@ -32,7 +31,7 @@ ms.locfileid: "111904449"
 
 * メトリック名の先頭にモジュール名を含めて、どのモジュールがメトリックを生成したかを明確にします。
 
-* すべてのメトリックで、IoT Hub 名、IoT Edge デバイス ID、モジュール ID をラベル ("*タグ*"/"*ディメンション*" とも呼ばれます) として含めます。 この情報は、IoT Edge エージェントによって開始されたすべてのモジュールで環境変数として使用できます。 このアプローチは、サンプル リポジトリの例で[示されて](https://github.com/Azure-Samples/iotedge-module-prom-custom-metrics/blob/b6b8501adb484521b76e6f317fefee57128834a6/csharp/Program.cs#L49)います。 このコンテキストがないと、特定のメトリック値を特定のデバイスに関連付けることはできません。
+* IoT Hub 名または IoT Central アプリケーション名、IoT Edge デバイス ID、モジュール ID をラベル ("*タグ*"/"*ディメンション*" とも呼ばれる) としてすべてのメトリックに含めます。 この情報は、IoT Edge エージェントによって開始されたすべてのモジュールで環境変数として使用できます。 このアプローチは、サンプル リポジトリの例で[示されて](https://github.com/Azure-Samples/iotedge-module-prom-custom-metrics/blob/b6b8501adb484521b76e6f317fefee57128834a6/csharp/Program.cs#L49)います。 このコンテキストがないと、特定のメトリック値を特定のデバイスに関連付けることはできません。
 
 * ラベルにインスタンス ID を含めます。 インスタンス ID には、モジュールの起動時に生成される [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) のような一意の ID を指定できます。 インスタンス ID 情報は、バックエンドでモジュールのメトリックを処理するときに、モジュールの再起動を調整するのに役立ちます。
 
@@ -43,7 +42,7 @@ ms.locfileid: "111904449"
 環境変数 `MetricsEndpointsCSV` を更新して、カスタム モジュールのメトリック エンドポイントの URL を含める必要があります。 環境変数を更新するときは、[メトリック コレクターの構成](how-to-collect-and-transport-metrics.md#metrics-collector-configuration)の例で示されているように、システム モジュールのエンドポイントを必ず含めてください。
 
 >[!NOTE]
->既定では、カスタム モジュールのメトリック エンドポイントは、メトリック コレクターがアクセスできるようにホスト ポートにマップする必要はありません。 明示的にオーバーライドされない限り、Linux では、両方のモジュールが、*azure-iot-edge* という名前の[ユーザー定義の Docker ブリッジ ネットワーク](https://docs.docker.com/network/bridge/#differences-between-user-defined-bridges-and-the-default-bridge)で開始されます。
+>既定では、カスタム モジュールのメトリック エンドポイントは、メトリック コレクターがアクセスできるようにホスト ポートにマップする必要はありません。 明示的にオーバーライドされない限り、Linux では、両方のモジュールが、*azure-iot-edge* という名前の [ユーザー定義の Docker ブリッジ ネットワーク](https://docs.docker.com/network/bridge/#differences-between-user-defined-bridges-and-the-default-bridge)で開始されます。
 >
 >ユーザー定義の Docker ネットワークには、モジュール (コンテナー) 名を使用したモジュール間通信を可能にする既定の DNS リゾルバーが含まれています。 たとえば、*module1* というカスタム モジュールが、http ポート *9600* でパス */metrics* のメトリックを生成している場合、エンドポイント *http://module1:9600/metrics* から収集するようにコレクターを構成する必要があります。
 
@@ -57,7 +56,7 @@ sudo docker exec replace-with-metrics-collector-module-name curl http://replace-
 
 Log Analytics でカスタム メトリックを受け取ると、カスタムの視覚化とアラートを作成できます。 監視ブックを拡張して、クエリを使用した視覚化を追加することができます。
 
-すべてのメトリックは、IoT Hub のリソース ID に関連付けられています。 そのため、バッキング Log Analytics ワークスペースではなく、関連する IoT Hub の **[ログ]** ページからカスタム メトリックが正しく取り込まれているかどうかを確認できます。 次の基本的な KQL クエリを使用して確認します。
+すべてのメトリックは、IoT Hub または IoT Central アプリケーションのリソース ID に関連付けられています。 そのため、バッキング Log Analytics ワークスペースではなく、関連する IoT Hub または IoT Central アプリケーションの **[ログ]** ページから、カスタム メトリックが正しく取り込まれているかどうかを確認できます。 次の基本的な KQL クエリを使用して確認します。
 
 ```KQL
 InsightsMetrics

@@ -6,15 +6,15 @@ author: tomaschladek
 manager: nmurav
 services: azure-communication-services
 ms.author: tchladek
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 5e53f9e89dd9718111da4f8016bc3e5a7f791627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 452fffa58d9845c1655c8b643dcde54f0b6a7d90
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496577"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459264"
 ---
 # <a name="identity-model"></a>ID モデル
 
@@ -86,3 +86,4 @@ Azure Communication Services では、アクセス キーをローテーショ�
 * アクセス トークンの管理の概要については、「[アクセス トークンを作成して管理する](../quickstarts/access-tokens.md)」を参照してください。
 * 認証の概要については、「[Azure Communication Services に対する認証](./authentication.md)」を参照してください。
 * データ所在地とプライバシーの概要については、「[利用可能なリージョンとデータの保存場所](./privacy.md)」を参照してください。
+* テスト用の ID をすばやく作成する方法については、[ID をすばやく作成するためのクイックスタート](../quickstarts/identity/quick-create-identity.md)を参照してください。

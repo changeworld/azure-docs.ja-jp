@@ -1,36 +1,25 @@
 ---
 title: カスタム エンティティの参照認知検索スキル
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search の認知検索パイプラインで、テキストからさまざまなカスタム エンティティを抽出します。 このスキルは現在、パブリック プレビューの段階です。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+description: Azure Cognitive Search の認知検索パイプラインで、テキストからさまざまなカスタム エンティティを抽出します。
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 68e4949fe0ef0b10018cd3827e259028c37d5b5c
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 08/12/2021
+ms.openlocfilehash: 977ac567f195e0ab8053d7b8bd98543801a3b6a4
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019091"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860561"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill"></a>カスタム エンティティの参照認知スキル
+# <a name="custom-entity-lookup-cognitive-skill"></a>カスタム エンティティの参照認知スキル
 
 **カスタム エンティティの参照** スキルを使うと、ユーザーが定義したカスタムの単語と語句の一覧からテキストを検索できます。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。  
 
-このスキルは、Cognitive Services API にバインドされていません。 ただし、1 日の強化の制限を上書きするには、[Cognitive Services リソースを接続する](./cognitive-search-attach-cognitive-services.md)ようにします。 Azure Cognitive Search 経由でアクセスする場合、1 日あたりの制限が Cognitive Services への無料のアクセスに適用されます。
-
-## <a name="pricing-details"></a>価格の詳細
-
-テキスト レコードは、スキルへの入力として提供されるドキュメント内の 1000 文字単位の数に対応します。
-
-|  Pricing tier  |        価格  |
-|--------------|----------------------|
-| 0 - 50 万テキスト レコード | 1,000 テキスト レコードあたり $1 |
-| 50 万 - 250 万テキスト レコード | 1,000 テキスト レコードあたり $0.75 |
-| 250 万 - 1,000 万テキスト レコード | 1,000 テキスト レコードあたり $0.30 |
-| 1,000 万テキスト レコード以上 | 1,000 テキスト レコードあたり $0.25 |
+> [!NOTE]
+> このスキルは Cognitive Services API にバインドされていませんが、20 を超えるトランザクションを許可するには Cognitive Services キーが必要です。 このスキルは、[Cognitive Search によって測定](https://azure.microsoft.com/pricing/details/search/#pricing)されます。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.CustomEntityLookupSkill 
@@ -175,13 +164,12 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
 | `accentSensitive` | (省略可能) 前述のルート エンティティ "accentSensitive" パラメーターと同じように機能しますが、この別名のみに適用されます。 |
 | `fuzzyEditDistance` | (省略可能) 前述のルート エンティティ "fuzzyEditDistance" パラメーターと同じように機能しますが、この別名のみに適用されます。 |
 
-
 ### <a name="inline-format"></a>インライン形式
 
 場合によっては、インラインでスキル定義に直接一致するカスタム エンティティの一覧を指定する方が便利です。 その場合は前述のような JSON 形式を使用できますが、スキル定義にインラインで指定されます。
 サイズが 10 KB (シリアル化されたサイズ) 未満の構成のみをインラインで定義できます。 
 
-##    <a name="sample-definition"></a>定義例
+## <a name="sample-definition"></a>定義例
 
 インライン形式を使用したスキル定義例を次に示します。
 
@@ -221,6 +209,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
     ]
   }
 ```
+
 また、エンティティ定義ファイルへのポインターを指定する場合の、`entitiesDefinitionUri` 形式を使用したスキル定義例を次に示します。
 
 ```json
@@ -244,7 +233,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
 
 ```
 
-##    <a name="sample-input"></a>サンプル入力
+## <a name="sample-input"></a>サンプル入力
 
 ```json
 {
@@ -261,7 +250,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
 }
 ```
 
-##    <a name="sample-output"></a>サンプル出力
+## <a name="sample-output"></a>サンプル出力
 
 ```json
   { 

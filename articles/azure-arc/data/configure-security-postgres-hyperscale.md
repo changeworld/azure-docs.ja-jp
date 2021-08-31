@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: b6f9570c04b9182e756560a23ffb6bbbdc079cd1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8841c3abae51de0cfcd1391940f9232c4585c02f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407747"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744928"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのセキュリティを構成する
 
@@ -31,9 +31,9 @@ ms.locfileid: "111407747"
 保存時の暗号化は、データベースを格納するディスクを暗号化するか、データベースの機能を使用して挿入または更新するデータを暗号化することで (あるいは両方を行うことで) 実装できます。
 
 ### <a name="hardware-linux-host-volume-encryption"></a>ハードウェア:Linux ホスト ボリュームの暗号化
-Azure Arc 対応 Data Services のセットアップで使用されるディスク上に存在するデータをセキュリティ保護するには、システム データの暗号化を実装します。 このトピックの詳細については、次を参照してください。
+Azure Arc 対応 Data Services のセットアップで使用されるディスク上に存在するデータをセキュリティで保護するには、システム データの暗号化を実装します。 このトピックの詳細については、次を参照してください。
 - 一般的な Linux の「[保存データの暗号化](https://wiki.archlinux.org/index.php/Data-at-rest_encryption)」 
-- LUKS `cryptsetup` 暗号化コマンド (Linux) を使用したディスクの暗号化 (https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) 具体的には、Azure Arc 対応 Data Services は、お客様が提供する物理インフラストラクチャ上で実行されるため、インフラストラクチャのセキュリティを保護する責任はお客様にあります)。
+- LUKS `cryptsetup` 暗号化コマンド (Linux) を使用したディスクの暗号化 (https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) 具体的には、Azure Arc 対応 Data Services は、お客様が提供する物理インフラストラクチャ上で実行されるため、インフラストラクチャをセキュリティで保護する責任はお客様にあります。
 
 ### <a name="software-use-the-postgresql-pgcrypto-extension-in-your-server-group"></a>ソフトウェア:サーバー グループで PostgreSQL の `pgcrypto` 拡張機能を使用する
 Azure Arc のセットアップをホストするために使用されるディスクを暗号化するだけでなく、データベース内のデータを暗号化するためにアプリケーションで使用できるメカニズムが公開されるように、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを構成することもできます。 `pgcrypto` 拡張機能は、Postgres の `contrib` 拡張機能の一部であり、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで使用できます。 `pgcrypto` 拡張機能の詳細については、[こちら](https://www.postgresql.org/docs/current/pgcrypto.html)を参照してください。
@@ -147,7 +147,7 @@ select * from mysecrets;
    (1 row)
    ```
 
-この例は、Postgres の `pgcrypto` 拡張機能を使用して、Azure Arc 対応 PostgreSQL Hyperscale で保存データを暗号化し (暗号化されたデータを格納し)、`pgcrypto` で提供された関数をアプリケーションで使用して、その暗号化されたデータを操作できることを示しています。
+この簡単な例は、Postgres の `pgcrypto` 拡張機能を使用して、Azure Arc 対応 PostgreSQL Hyperscale で保存データを暗号化し (暗号化されたデータを格納し)、`pgcrypto` で提供された関数をアプリケーションで使用して、その暗号化されたデータを操作できることを示しています。
 
 ## <a name="user-management"></a>[ユーザー管理]
 ### <a name="general-perspectives"></a>一般的なパースペクティブ
@@ -156,8 +156,8 @@ Postgres の標準的な方法を使用して、ユーザーまたはロール�
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>_postgres_ 管理ユーザーのパスワードを変更する
 Azure Arc 対応 PostgreSQL Hyperscale には、サーバー グループの作成時にパスワードを設定する _postgres_ という標準の Postgres 管理ユーザーが用意されています。
 パスワードを変更するためのコマンドの一般的な形式は、次のとおりです。
-```console
-azdata arc postgres server edit --name <server group name> --admin-password
+```azurecli
+az postgres arc-server edit --name <server group name> --admin-password --k8s-namespace <namespace> --use-k8s
 ```
 
 ここで、`--admin-password` は、AZDATA_PASSWORD **セッション** 環境変数内の値の存在に関連するブール値です。
@@ -169,12 +169,13 @@ AZDATA_PASSWORD **セッション** 環境変数が存在していて値がな�
 
 1. AZDATA_PASSWORD **セッション** 環境変数を削除するか、その値を削除します
 2. 次のコマンドを実行します。
-   ```console
-   azdata arc postgres server edit --name <server group name> --admin-password
+
+   ```azurecli
+   az postgres arc-server edit --name <server group name> --admin-password --k8s-namespace <namespace> --use-k8s
    ```
    次に例を示します。
-   ```console
-   azdata arc postgres server edit -n postgres01 --admin-password
+   ```azurecli
+   az postgres arc-server edit -n postgres01 --admin-password --k8s-namespace <namespace> --use-k8s
    ```
    パスワードを入力してそれを確認するように求められます。
    ```console
@@ -191,12 +192,12 @@ AZDATA_PASSWORD **セッション** 環境変数が存在していて値がな�
 #### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>AZDATA_PASSWORD **セッション** 環境変数を使用して postgres 管理ユーザーのパスワードを変更する:
 1. AZDATA_PASSWORD **セッション** 環境変数の値を、パスワードとして使用するものに設定します。
 2. 次のコマンドを実行します。
-   ```console
-   azdata arc postgres server edit --name <server group name> --admin-password
+   ```azurecli
+   az postgres arc-server edit --name <server group name> --admin-password --k8s-namespace <namespace> --use-k8s
    ```
    次に例を示します。
-   ```console
-   azdata arc postgres server edit -n postgres01 --admin-password
+   ```azurecli
+   az postgres arc-server edit -n postgres01 --admin-password --k8s-namespace <namespace> --use-k8s
    ```
    
    パスワードが更新されると、コマンドの出力は次のようになります。

@@ -2,19 +2,18 @@
 title: 対称キーの構成証明を使用してデバイスをプロビジョニングする - Azure IoT Edge
 description: 対称キーの構成証明を使用して、デバイス プロビジョニング サービスで Azure IoT Edge の自動デバイス プロビジョニングをテストします
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 03/01/2021
+ms.date: 07/21/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 66e1e561c14b169d41028e151ac054888830b881
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d4aa7f1a02d8ab789810f06b38c95e9cfd76d5fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481975"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742254"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -25,8 +24,13 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 この記事では、次の手順に従って、IoT Edge デバイスで対称キーの構成証明を使用して Device Provisioning Service の個別またはグループ登録を作成する方法について説明します。
 
 * IoT Hub Device Provisioning Service (DPS) のインスタンスを作成する。
-* デバイスの登録を作成する。
+* 個別またはグループの登録を作成する。
 * IoT Edge ランタイムをインストールし、IoT Hub に接続する。
+
+:::moniker range=">=iotedge-2020-11"
+>[!TIP]
+>簡素化されたエクスペリエンスのために、[Azure IoT Edge 構成ツール](https://github.com/azure/iot-edge-config)をお試しください。 現在パブリック プレビュー中のこのコマンド ライン ツールは、デバイスに IoT Edge をインストールし、DPS と対称キーの構成証明を使用してプロビジョニングします。
+:::moniker-end
 
 対称キーの構成証明は、Device Provisioning Service インスタンスを使用してデバイスを認証する簡単なアプローチです。 この構成証明の方法では、初めてデバイスのプロビジョニングを行う開発者または厳密なセキュリティ要件がない開発者に対して、"Hello world" エクスペリエンスを提示します。 [TPM](../iot-dps/concepts-tpm-attestation.md) または [X.509 証明書](../iot-dps/concepts-x509-attestation.md)を使用するデバイス構成証明は、より安全であり、さらに厳格なセキュリティ要件に対して使用する必要があります。
 
@@ -41,22 +45,18 @@ Azure 内に IoT Hub Device Provisioning Service の新しいインスタンス�
 
 Device Provisioning Service を実行した後、概要ページから **[ID スコープ]** の値をコピーします。 この値は、IoT Edge ランタイムを構成するときに使用します。
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>デバイスの一意の登録 ID を選択する
+## <a name="choose-a-unique-device-registration-id"></a>デバイスの一意の登録 ID を選択する
 
-各デバイスを識別する一意の登録 ID を定義する必要があります。 デバイスの MAC アドレス、シリアル番号、または何らかの固有の情報を使用できます。
+各デバイスを識別する一意の登録 ID を定義する必要があります。 デバイスの MAC アドレス、シリアル番号、または何らかの固有の情報を使用できます。 この例では、MAC アドレスとシリアル番号の組み合わせを使用して、次のような登録 ID の文字列を形成します: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`。 有効な文字は、小文字の英字、数字、ダッシュ (`-`) です。
 
-この例では、MAC アドレスとシリアル番号の組み合わせを使用して、次のような登録 ID の文字列を形成します: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`。
+## <a name="option-1-create-a-dps-individual-enrollment"></a>オプション 1: DPS 個別登録を作成する
 
-デバイスの一意の登録 ID を作成します。 有効な文字は、小文字の英字、数字、ダッシュ ('-') です。
-
-## <a name="create-a-dps-enrollment"></a>DPS の登録を作成する
-
-デバイスの登録 ID を使用して、DPS で個別登録を作成します。
+DPS を使用して 1 つのデバイスをプロビジョニングする個別登録を作成します。
 
 DPS 内に登録を作成するときに、**デバイス ツインの初期状態** を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
 
 > [!TIP]
-> 対称キーの構成証明を使用する場合、グループの登録も可能です。その場合は、個別の登録と同じ決定を行います。
+> この記事の手順は Azure portal 向けですが、Azure CLI を使用して個別登録を作成することもできます。 詳細については、[az iot dps enrollment](/cli/azure/iot/dps/enrollment) を参照してください。 この CLI コマンドの一部として、**edge-enabled** フラグを使用して、登録の対象が IoT Edge デバイスであることを指定します。
 
 1. [Azure portal](https://portal.azure.com) で、IoT Hub Device Provisioning Service のインスタンスに移動します。
 
@@ -66,22 +66,11 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
    1. **[メカニズム]** で **[対称キー]** を選択します。
 
-   1. **[キーの自動生成]** チェック ボックスをオンにします。
+   1. デバイスの一意の **登録 ID** を指定します。
 
-   1. デバイス用に作成した **登録 ID** を指定します。
+   1. 必要に応じて、デバイスの **IoT Hub デバイス ID** を指定します。 デバイス ID を使用して、個々のデバイスをモジュール展開のターゲットにすることができます。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
 
-   1. 必要に応じて、**IoT Hub のデバイス ID** を指定します。 デバイス ID を使用して、個々のデバイスをモジュール展開のターゲットにすることができます。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
-
-   1. **[True]** を選択して、その登録が IoT Edge デバイス用のものであることを宣言します。 グループ登録の場合、すべてのデバイスを IoT Edge デバイスにする必要があります。そうしない場合、いずれも IoT Edge デバイスにすることはできません。
-
-      > [!TIP]
-      > Azure CLI では、[登録](/cli/azure/iot/dps/enrollment)または [登録グループ](/cli/azure/iot/dps/enrollment-group)を作成し、**Edge 対応** フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
-
-   1. **デバイスをハブに割り当てる方法** について、Device Provisioning Service の割り当てポリシーの既定値をそのまま使用するか、その登録に固有の別の値を選択します。
-
-   1. デバイスの接続先になるリンクされた **IoT Hub** を選択します。 複数のハブを選択でき、デバイスは、選択した割り当てポリシーに従ってそれらのハブの 1 つに割り当てられます。
-
-   1. デバイスが初回以降にプロビジョニングを要求したときのために、**再プロビジョニング時のデバイス データの処理方法** を選択します。
+   1. **[True]** を選択して、その登録が IoT Edge デバイス用のものであることを宣言します。
 
    1. 必要に応じて、 **[デバイス ツインの初期状態]** にタグ値を追加します。 タグを使用して、デバイス グループをモジュール展開のターゲットにすることができます。 次に例を示します。
 
@@ -96,32 +85,71 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
       }
       ```
 
-   1. **[エントリの有効化]** が **[有効]** に設定されていることを確認します。
+   1. **[保存]** を選択します。
+
+1. IoT Edge ランタイムのインストール時に使用する個別登録の **主キー** の値をコピーします。
+
+これで、このデバイスの登録が存在しているので、IoT Edge ランタイムによってインストール時にデバイスを自動的にプロビジョニングできます。
+
+## <a name="option-2-create-a-dps-enrollment-group"></a>オプション 2: DPS 登録グループを作成する
+
+デバイスの登録 ID を使用して、DPS で個別登録を作成します。
+
+DPS 内に登録を作成するときに、**デバイス ツインの初期状態** を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
+
+> [!TIP]
+> この記事の手順は Azure portal 向けですが、Azure CLI を使用して個別登録を作成することもできます。 詳細については、[az iot dps enrollment-group](/cli/azure/iot/dps/enrollment-group) を参照してください。 この CLI コマンドの一部として、**edge-enabled** フラグを使用して、登録の対象が IoT Edge デバイスであることを指定します。 グループ登録の場合、すべてのデバイスを IoT Edge デバイスにする必要があります。そうしない場合、いずれも IoT Edge デバイスにすることはできません。
+
+1. [Azure portal](https://portal.azure.com) で、IoT Hub Device Provisioning Service のインスタンスに移動します。
+
+1. **[設定]** の下の **[登録の管理]** を選択します。
+
+1. **[Add individual enrollment]\(個別登録の追加\)** を選択し、登録を構成する次の手順を完了します。  
+
+   1. **[グループ名]** を指定します。
+
+   1. 構成証明の種類として **[対称キー]** を選択します。
+
+   1. **[True]** を選択して、その登録が IoT Edge デバイス用のものであることを宣言します。 グループ登録の場合、すべてのデバイスを IoT Edge デバイスにする必要があります。そうしない場合、いずれも IoT Edge デバイスにすることはできません。
+
+   1. 必要に応じて、 **[デバイス ツインの初期状態]** にタグ値を追加します。 タグを使用して、デバイス グループをモジュール展開のターゲットにすることができます。 次に例を示します。
+
+      ```json
+      {
+         "tags": {
+            "environment": "test"
+         },
+         "properties": {
+            "desired": {}
+         }
+      }
+      ```
 
    1. **[保存]** を選択します。
 
-これで、このデバイスの登録が存在しているので、IoT Edge ランタイムによってインストール時にデバイスを自動的にプロビジョニングできます。 IoT Edge ランタイムのインストール時や、グループ登録に使用するデバイス キーを作成する場合に使用できるよう、登録の **プライマリ キー** の値をコピーしておいてください。
+1. グループ登録で使用するデバイス キーを作成するときに使用する、登録グループの **主キー** の値をコピーします。
 
-## <a name="derive-a-device-key"></a>デバイス キーを派生させる
+これで、登録グループが存在しているので、IoT Edge ランタイムによってインストール時にデバイスを自動的にプロビジョニングできます。
 
-> [!NOTE]
-> このセクションは、グループ登録を使用する場合にのみ必須となります。
+### <a name="derive-a-device-key"></a>デバイス キーを派生させる
 
-各デバイスでは、プロビジョニングの間に、派生デバイス キーと一意の登録 ID を使用して、登録で対称キーの構成証明が実行されます。 デバイス キーを生成するには、DPS 登録からコピーしたキーを使用して、デバイスに対する一意の登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。
+グループ登録の一部としてプロビジョニングされる各デバイスには、プロビジョニング中に登録で対称キー構成証明を実行するために、派生デバイス キーが必要です。
+
+デバイス キーを生成するには、DPS 登録グループからコピーしたキーを使用して、デバイスに対する一意の登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。
 
 デバイス コードには、登録の主キーやセカンダリ キーを含めないでください。
 
-### <a name="linux-workstations"></a>Linux ワークステーション
+#### <a name="derive-a-key-on-linux"></a>Linux でキーを派生させる
 
-Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
+Linux では、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
 
 **KEY** の値を、前に書き留めた **主キー** で置き換えます。
 
 **REG_ID** の値をデバイスの登録 ID に置き換えます。
 
 ```bash
-KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
-REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+KEY=PASTE_YOUR_ENROLLMENT_KEY_HERE
+REG_ID=PASTE_YOUR_REGISTRATION_ID_HERE
 
 keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
 echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
@@ -131,17 +159,17 @@ echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | ba
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
-### <a name="windows-based-workstations"></a>Windows ベースのワークステーション
+#### <a name="derive-a-key-on-windows"></a>Windows でキーを派生させる
 
-Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
+Windows では、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
 
 **KEY** の値を、前に書き留めた **主キー** で置き換えます。
 
 **REG_ID** の値をデバイスの登録 ID に置き換えます。
 
 ```powershell
-$KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
-$REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
+$KEY='PASTE_YOUR_ENROLLMENT_KEY_HERE'
+$REG_ID='PASTE_YOUR_REGISTRATION_ID_HERE'
 
 $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
 $hmacsha256.key = [Convert]::FromBase64String($KEY)
@@ -158,7 +186,28 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。
 
+<!-- 1.1 -->
+:::moniker range="=iotedge-2018-06"
+
+お使いのオペレーティング システムに基づいて、Azure IoT Edge をインストールする適切な手順に従います。
+
+* [IoT Edge for Linux をインストールする](how-to-install-iot-edge.md)
+* [IoT Edge for Linux を Windows デバイスにインストールする](how-to-install-iot-edge-on-windows.md)
+  * このシナリオは、Windows デバイスで IoT Edge を実行する場合に推奨される方法です。
+* [Windows コンテナーを使用して IoT Edge をインストールする](how-to-install-iot-edge-windows-on-windows.md)
+
+デバイスに IoT Edgeインストールしたら、この記事に戻ってデバイスをプロビジョニングします。
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 [Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge.md)に関するページにある手順に従い、その後、この記事に戻ってデバイスをプロビジョニングします。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="configure-the-device-with-provisioning-information"></a>プロビジョニング情報を使用してデバイスを構成する
 
@@ -168,15 +217,13 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 * DPS の **ID スコープ** 値
 * 作成したデバイス **登録 ID**
-* DPS の登録からコピーした **プライマリ キー**
+* 個別登録の **主キー**、またはグループ登録を使用するデバイスの[派生キー](#derive-a-device-key)のいずれか。
 
-> [!TIP]
-> グループ登録の場合、DPS 登録の主キーではなく、各デバイスの[派生キー](#derive-a-device-key)が必要となります。
-
-### <a name="linux-device"></a>Linux デバイス
+# <a name="linux"></a>[Linux](#tab/linux)
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
+
 1. IoT Edge デバイスで構成ファイルを開きます。
 
    ```bash
@@ -192,11 +239,11 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
-     scope_id: "<SCOPE_ID>"
+     scope_id: "PASTE_YOUR_SCOPE_ID_HERE"
      attestation:
        method: "symmetric_key"
-       registration_id: "<REGISTRATION_ID>"
-       symmetric_key: "<SYMMETRIC_KEY>"
+       registration_id: "PASTE_YOUR_REGISTRATION_ID_HERE"
+       symmetric_key: "PASTE_YOUR_PRIMARY_KEY_OR_DERIVED_KEY_HERE"
    #  always_reprovision_on_startup: true
    #  dynamic_reprovisioning: false
    ```
@@ -236,13 +283,13 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    [provisioning]
    source = "dps"
    global_endpoint = "https://global.azure-devices-provisioning.net"
-   id_scope = "<SCOPE_ID>"
+   id_scope = "PASTE_YOUR_SCOPE_ID_HERE"
    
    [provisioning.attestation]
    method = "symmetric_key"
-   registration_id = "<REGISTRATION_ID>"
+   registration_id = "PASTE_YOUR_REGISTRATION_ID_HERE"
 
-   symmetric_key = "<PRIMARY_KEY OR DERIVED_KEY>"
+   symmetric_key = "PASTE_YOUR_PRIMARY_KEY_OR_DERIVED_KEY_HERE"
    ```
 
 1. `id_scope`、`registration_id`、`symmetric_key` の値を DPS およびデバイス情報で更新します。
@@ -262,7 +309,53 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 :::moniker-end
 <!-- end 1.2 -->
 
-### <a name="windows-device"></a>Windows デバイス
+# <a name="linux-on-windows"></a>[Linux on Windows](#tab/eflow)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+PowerShell または Windows Admin Center 使用して、IoT Edge デバイスをプロビジョニングできます。
+
+### <a name="powershell"></a>PowerShell
+
+PowerShell の場合は、プレースホルダーの値を独自の値で更新して、次のコマンドを実行します。
+
+```powershell
+Provision-EflowVm -provisioningType DpsSymmetricKey -scopeId PASTE_YOUR_ID_SCOPE_HERE -registrationId PASTE_YOUR_REGISTRATION_ID_HERE -symmKey PASTE_YOUR_PRIMARY_KEY_OR_DERIVED_KEY_HERE
+```
+
+### <a name="windows-admin-center"></a>Windows Admin Center
+
+Windows Admin Center の場合は、次の手順に従います。
+
+1. **[Azure IoT Edge device provisioning]\(Azure IoT Edge デバイスのプロビジョニング\)** ペインで、プロビジョニング方法のドロップダウンから **[Symmetric Key (DPS)]\(対称キー (DPS)\)** を選択します。
+
+1. [Azure portal](https://ms.portal.azure.com/) で、お使いの DPS インスタンスに移動します。
+
+1. DPS スコープ ID、デバイス登録 ID、および登録の主キーまたは派生キーを Windows Admin Center の各フィールドに入力します。
+
+1. **[Provisioning with the selected method]\(選択した方法でプロビジョニング\)** を選択します。
+
+   ![対称キーのプロビジョニングに必要なフィールドを入力した後、選択した方法でのプロビジョニングを選択します](./media/how-to-install-iot-edge-on-windows/provisioning-with-selected-method-symmetric-key.png)
+
+1. プロビジョニングが完了したら、 **[完了]** を選択します。 メイン ダッシュボードに自動的に戻ります。 これで、種類が `IoT Edge Devices` の新しいデバイスが一覧に表示されます。 IoT Edge デバイスを選択して、それに接続できます。 **[Overview]\(概要\)** ページでは、デバイスの **[IoT Edge Module List]\(IoT Edge モジュール一覧\)** と **[IoT Edge Status]\(IoT Edge の状態\)** を見ることができます。
+
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>現在、IoT Edge Linux for Windows 上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+<!-- 1.1 -->
+:::moniker range="=iotedge-2018-06"
 
 1. 管理者モードで PowerShell ウィンドウを開きます。 IoT Edge をインストールするときは、PowerShell (x86) ではなく、PowerShell の AMD64 セッションを必ず使用してください。
 
@@ -277,11 +370,29 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    Initialize-IoTEdge -DpsSymmetricKey -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
    ```
 
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>現在、Windows 上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+---
+
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
-ランタイムが正常に起動されたら、IoT Hub にアクセスし、デバイスに IoT Edge モジュールを展開できます。 ランタイムが正常にインストールされ、起動されたことを確認するには、デバイスで次のコマンドを使用します。
+ランタイムが正常に起動されたら、IoT Hub にアクセスし、デバイスに IoT Edge モジュールを展開できます。
 
-### <a name="linux-device"></a>Linux デバイス
+Device Provisioning Service で作成した個々の登録が使用されたことを確認できます。 Azure portal で Device Provisioning Service インスタンスに移動します。 作成した個々の登録の詳細を開きます。 登録の状態が **割り当て** られており、デバイス ID が表示されています。
+
+IoT Edge が正常にインストールされ、起動されたことを確認するには、デバイスで次のコマンドを使用します。
+
+# <a name="linux"></a>[Linux](#tab/linux)
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
@@ -329,7 +440,50 @@ sudo iotedge list
 
 :::moniker-end
 
-### <a name="windows-device"></a>Windows デバイス
+# <a name="linux-on-windows"></a>[Linux on Windows](#tab/eflow)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+IoT Edge for Linux on Windows 仮想マシンに接続します。
+
+```powershell
+Connect-EflowVM
+```
+
+IoT Edge サービスの状態を確認します。
+
+```cmd/sh
+sudo systemctl status iotedge
+```
+
+サービス ログを調べます。
+
+```cmd/sh
+sudo journalctl -u iotedge --no-pager --no-full
+```
+
+実行中のモジュールを一覧表示します。
+
+```cmd/sh
+sudo iotedge list
+```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>現在、IoT Edge Linux for Windows 上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+<!-- 1.1 -->
+:::moniker range="=iotedge-2018-06"
 
 IoT Edge サービスの状態を確認します。
 
@@ -349,7 +503,18 @@ Get-Service iotedge
 iotedge list
 ```
 
-Device Provisioning Service で作成した個々の登録が使用されたことを確認できます。 Azure portal で Device Provisioning Service インスタンスに移動します。 作成した個々の登録の詳細を開きます。 登録の状態が **割り当て** られており、デバイス ID が表示されています。
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>現在、Windows 上で実行されている IoT Edge バージョン 1.2 はサポートされていません。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

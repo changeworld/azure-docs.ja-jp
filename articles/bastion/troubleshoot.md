@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 740b228855a11623600d8724eeff7ad865538e74
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 6b8ce0014524a407d6d35b85fed3bf5f41b556cf
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004189"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067940"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング
 
@@ -68,6 +68,13 @@ The key's randomart image is:
 **質問:** ドメインに参加している Windows 仮想マシンに接続できません。
 
 **A:** Azure Bastion は、ドメイン参加 VM へのサインインには、ユーザー名とパスワードに基づくドメイン サインインのみをサポートしています。 Azure portal でドメインの資格情報を指定する場合は、サインインに *domain\username* 形式ではなく UPN (username@domain) 形式を使用します。 これは、ドメイン参加またはハイブリッド参加 (ドメイン参加と Azure AD 参加の両方) 仮想マシンでサポートされています。 Azure AD 参加のみの仮想マシンではサポートされていません。
+
+## <a name="unable-to-connect-to-virtual-machine"></a><a name="connectivity"></a> 仮想マシンに接続できません
+
+**Q:** 仮想マシンに接続できません (上記の問題は発生していません)。
+
+**A:** 接続の問題をトラブルシューティングするには、Azure portal 内で Azure Bastion リソースの **[接続のトラブルシューティング]** タブ ( **[監視]** セクション内) に移動します。 Network Watcher の接続のトラブルシューティングを使用すると、仮想マシン (VM) から VM、完全修飾ドメイン名 (FQDN)、URI、または IPv4 アドレスへの直接 TCP 接続を確認できます。 開始するには、接続を開始するソースと接続先を選択し、[チェック] を選択します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)。
+
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>ファイル転送に関する問題
 

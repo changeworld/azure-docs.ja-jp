@@ -4,12 +4,12 @@ description: 1 つの Azure Batch ジョブで大量のタスクを効率的に�
 ms.topic: how-to
 ms.date: 12/30/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 08cf92507a4556afbf56c9cb7e2c9c1b3a6c9479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 825bee374ec006708b4b0b38e7d101554b3a9c25
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97831518"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014937"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>1 つの Batch ジョブに多数のタスクを送信する
 
@@ -141,7 +141,7 @@ pip install azure-batch
 pip install azure-batch-extensions
 ```
 
-SDK 拡張機能を使用する `BatchExtensionsClient` を設定します。
+`import azext.batch as batch` を使用してパッケージをインポートした後、この SDK 拡張機能を使用する `BatchExtensionsClient` を設定します。
 
 ```python
 

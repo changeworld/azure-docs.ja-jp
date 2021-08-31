@@ -7,13 +7,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de8acfbf4d4930f5c029aaa71300af770a274194
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98598360"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751455"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
 
@@ -22,7 +21,7 @@ Azure Maps [Search Service](/rest/api/maps/search) は、開発者が住所、�
 
 この記事では、次の方法について学習します。
 
-* [住所検索 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) を使用して、住所 (ジオコード アドレスの場所) の緯度と経度の座標を要求する
+* [住所検索 API](/rest/api/maps/search/getsearchaddress) を使用して、住所 (ジオコード アドレスの場所) の緯度と経度の座標を要求する
 * [あいまい検索 API](/rest/api/maps/search/getsearchfuzzy) を使用して、住所または目的地 (POI) を検索する
 * 座標位置を番地に変換するために [住所の逆引き検索](/rest/api/maps/search/getsearchaddressreverse)を行う
 * [交差点住所の逆引き検索 API](/rest/api/maps/search/getsearchaddressreversecrossstreet) を使用して、座標位置を人間が理解できる交差道路に変換する  多くの場合、これは、デバイスまたはアセットから GPS フィードを受信し、座標が配置されている場所を知る必要があるアプリケーションをトラッキングする場合に必要です。
@@ -41,25 +40,23 @@ Azure Maps [Search Service](/rest/api/maps/search) は、開発者が住所、�
 >[!TIP]
 >ジオコーディングする住所のセットがある場合は、[Post Search Address Batch API](/rest/api/maps/search/postsearchaddressbatch) を使用して、クエリのバッチを単一の API 呼び出しで送信できます。
 
-1. Postman アプリを開きます。 Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。  コレクションに名前を付け、 **[作成]** ボタンを選択します。 このコレクションは、このドキュメントの残りの例で使用します。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。
 
-2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 前の手順で作成したコレクションを選択し、 **[Save]\(保存\)** を選択します。
-
-3. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求では、特定の住所 (`400 Braod St, Seattle, WA 98109`) を検索します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
+2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求では、特定の住所 (`400 Braod St, Seattle, WA 98109`) を検索します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
     ```
 
-4. 青い **[送信]** ボタンをクリックします。 応答本文には、1 つの場所のデータが含まれます。
+3. 青い **[送信]** ボタンをクリックします。 応答本文には、1 つの場所のデータが含まれます。
 
-5. 今度は、場所の候補が複数個ある住所を検索します。 **[パラメーター]** セクションで、`query` キーを `400 Broad, Seattle` に変更します。 青い **[送信]** ボタンをクリックします。
+4. 今度は、場所の候補が複数個ある住所を検索します。 **[パラメーター]** セクションで、`query` キーを `400 Broad, Seattle` に変更します。 青い **[送信]** ボタンをクリックします。
 
     :::image type="content" source="./media/how-to-search-for-address/search-address.png" alt-text="住所の検索":::
 
-6. 次に、`query` キーを `400 Broa` に設定してみます。
+5. 次に、`query` キーを `400 Broa` に設定してみます。
 
-7. **[送信]** ボタンをクリックします。 応答に複数の国からの応答が含まれていることがわかります。 ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を要求に追加してください。
+6. **[送信]** ボタンをクリックします。 応答に複数の国からの応答が含まれていることがわかります。 ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を要求に追加してください。
 
 ## <a name="using-fuzzy-search-api"></a>あいまい検索 API の使用
 
@@ -75,7 +72,7 @@ Azure Maps [Fuzzy Search API](/rest/api/maps/search/getsearchfuzzy) では、標
 >[!IMPORTANT]
 >ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を追加してください。 詳細については、[検索のベスト プラクティス](how-to-use-best-practices-for-search.md#geobiased-search-results)に関するセクションをご覧ください。
 
-1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 前のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
@@ -113,7 +110,7 @@ Azure Maps [Fuzzy Search API](/rest/api/maps/search/getsearchfuzzy) では、標
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>住所の逆引き検索を使用した所在地住所の検索
 
-Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) は、座標を人が判読できる番地に変換します。 この API は、GPS フィードを利用して特定の座標点の住所を検出する必要があるアプリケーションでよく使用されます。
+Azure Maps [Get Search Address Reverse API](/rest/api/maps/search/getsearchaddressreverse) は、座標を人が判読できる番地に変換します。 この API は、GPS フィードを利用して特定の座標点の住所を検出する必要があるアプリケーションでよく使用されます。
 
 >[!IMPORTANT]
 >ユーザーの関連領域に結果をジオバイアスするには、常にできるだけ多くの場所の詳細を追加してください。 詳細については、[検索のベスト プラクティス](how-to-use-best-practices-for-search.md#geobiased-search-results)に関するセクションをご覧ください。
@@ -123,7 +120,7 @@ Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api
 
 この例では、利用可能ないくつかのオプション パラメーターを使用して、逆方向の検索を行います。 省略可能なパラメーターの完全な一覧については、[逆方向の検索のパラメーター](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)に関するセクションをご覧ください。
 
-1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 最初のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
 
@@ -159,7 +156,7 @@ Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api
 
 この例では、住所の座標に基づいて交差道路を検索します。
 
-1. Postman アプリで、 **[new]\(新規\)** をクリックし、 **[Request]\(\要求\)** を選択します。 要求の **[要求名]** を入力します。 最初のセクションで作成したコレクションを選択するか、新しいコレクションを作成して、 **[Save]\(保存\)** を選択します。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[Create New]\(新規作成\)** ウィンドウで **[HTTP Request]\(HTTP 要求\)** を選択します。 要求の **[要求名]** を入力します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。 要求は次の URL のようになります。
   

@@ -3,12 +3,12 @@ title: Azure Site Recovery での復旧計画の作成/カスタマイズ
 description: Azure Site Recovery サービスを使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする方法について説明します。
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee7386b07c93182bb8703702e2ce63e10626457d
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009723"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666161"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 
@@ -34,6 +34,7 @@ ms.locfileid: "96009723"
     - 復旧計画には、ソースとターゲットが同一のマシンを含めることができます。
     - VMM によって管理される VMware VM と Hyper-V VM を同じ計画に含めることができます。
     - VMware VM と物理サーバーを同じ計画に含めることができます。
+    - 1 つの復旧計画に含まれる VM はすべて、単一サブスクリプションにレプリケートする必要があります。 異なる VM を異なるサブスクリプションにレプリケートする場合は、複数の復旧計画 (ターゲット サブスクリプションごとに少なくとも 1 つ) を使用してください。
 
 4. **[Select items virtual machines]\(仮想マシンの項目の選択\)** で、計画に追加する必要のあるマシン (またはレプリケーション グループ) を選択します。 次に、 **[OK]** をクリックします
     - マシンがその計画の既定のグループ (グループ 1) に追加されます。 フェールオーバー後、このグループのすべてのマシンが同時に開始されます。

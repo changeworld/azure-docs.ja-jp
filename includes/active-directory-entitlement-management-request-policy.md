@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 1bbc549a9ba457d5f515df25d6fdce0c2ede6f2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9686cce60520895fe4a3ae7fb47e1eb0eca03599
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105582286"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112975302"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -210,16 +210,16 @@ ms.locfileid: "105582286"
 
 1. **[次へ]** をクリックします。
 
-## <a name="add-requestor-information-preview-to-an-access-package"></a>アクセス パッケージに要求元の情報 (プレビュー) を追加する
+## <a name="add-requestor-information-to-an-access-package"></a>アクセス パッケージに要求元の情報を追加する
 
-1. **[Requestor information]\(要求元の情報\)** タブに移動し、 **[質問]** サブタブをクリックします。
+1. **[要求元情報]** タブに移動し、 **[質問]** サブタブをクリックします。
  
 1. 要求元に質問する内容 (表示文字列とも呼ばれます) を **[質問]** ボックスに質問として入力します。
 
-    ![アクセス パッケージ - ポリシー - 要求元情報の有効化の設定](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+    ![アクセス パッケージ - ポリシー - 要求元情報設定を有効にする](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
 
-1. 独自のローカライズ オプションを追加する場合は、 **[add localization]\(ローカリゼーションの追加\)** をクリックします。
-    1. **[Add localizations for question]\(質問のローカリゼーションの追加\)** ペインで、質問をローカライズする言語の **言語コード** を選択します。
+1. 質問と回答のオプションをローカライズしたい場合は、 **[add localization]\(ローカリゼーションの追加\)** をクリックします。
+    1. **[質問のローカリゼーションの追加]** ペインで、質問をローカライズする言語の **[言語コード]** を選択します。
     1. 構成した言語で、**Localized Text\(ローカライズされたテキスト)** ボックスに質問を入力します。
     1. 必要なすべてのローカライズを追加したら、 **[保存]** をクリックします。
 
@@ -229,10 +229,13 @@ ms.locfileid: "105582286"
  
     ![アクセス パッケージ - ポリシー - 複数選択の回答形式の表示と編集の選択](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  
-1. 複数選択を選択した場合、 **[view and edit]\(表示と編集\)** ボタンをクリックして、回答のオプションを構成します。
-    1. [view and edit]\(表示と編集\) を選択すると、 **[View/edit question]\(質問の表示と編集\)** ペインが開きます。
+1. 複数選択を選択した場合は、 **[edit and localize]\(編集とローカライズ\)** ボタンをクリックして回答のオプションを構成します。
+    1. [edit and localize]\(編集とローカライズ\) を選択すると、 **[Edit/localize question]\(質問の編集とローカライズ\)** ペインが開きます。
     1. 質問の回答時に要求元に指定する回答のオプションを、 **[Answer values]\(回答の値\)** ボックスに入力します。
-    1. 必要な数の回答を入力し、 **[保存]** をクリックします。
+    1. 必要な数の回答を入力します。
+    1. 複数選択オプション用に独自のローカリゼーションを追加したい場合は、特定のオプションに使用するローカライズ言語の **[Optional language code]\(オプションの言語コード\)** を選択します。
+    1. 構成した言語で、[ローカライズされたテキスト] ボックスにオプションを入力します。
+    1. 複数選択の各オプションに必要なローカリゼーションをすべて追加したら、 **[保存]** をクリックします。
     
     ![アクセス パッケージ - ポリシー - 複数選択オプションの入力](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
   

@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud で仮想ネットワークのアプリにアクセスする
 description: Azure Spring Cloud で仮想ネットワークのアプリにアクセスします。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 593065b200ab0dc98e5fa97299c137aedfd1be63
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 68cac51ba9d54abc6514cf493077740339ac56c5
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129317"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015573"
 ---
 # <a name="access-your-application-in-a-private-network"></a>プライベート ネットワークのアプリにアクセスする
 
@@ -26,9 +26,12 @@ ms.locfileid: "108129317"
 
 1. Azure portal を開きます。 上部の検索ボックスで「**プライベート DNS ゾーン**」を検索し、その結果から **[プライベート DNS ゾーン]** を選択します。
 
-2. **[プライベート DNS ゾーン]** ページで、 **[+ 追加]** を選択します。
+2. **[プライベート DNS ゾーン]** ページで、 **[追加]** を選択します。
 
 3. **[プライベート DNS ゾーンの作成]** ページでフォームに入力します。 ゾーンの **[名前]** として「 **<span>private.azuremicroservices.io</span>** 」と入力します。
+
+    >[!NOTE]
+    > Azure China を使用している場合は `private.azuremicroservices.io` を `private.microservices.azure.cn` に置き換えてください。詳細なドキュメントについては、[こちら](/azure/china/resources-developer-guide#check-endpoints-in-azure)を参照してください。
 
 4. **[確認および作成]** を選択します。
 
@@ -40,7 +43,7 @@ ms.locfileid: "108129317"
 
 プライベート DNS ゾーンを仮想ネットワークにリンクさせるには、仮想ネットワーク リンクを作成する必要があります。
 
-1. 上記で作成したプライベート DNS ゾーン リソース ( **<span>private.azuremicroservices.io</span>** ) を選択します 
+1. 上記で作成したプライベート DNS ゾーン リソース ( **<span>private.azuremicroservices.io</span>** ) を選択します
 
 2. 左側のウィンドウで、**[Virtual network links]\(仮想ネットワーク リンク\)** を選択します。
 
@@ -52,7 +55,7 @@ ms.locfileid: "108129317"
 
     ![仮想ネットワークリンクの追加](media/spring-cloud-access-app-vnet/add-virtual-network-link.png)
 
-6. **[OK]** をクリックします。
+6. **[OK]** を選択します。
 
 ## <a name="create-dns-record"></a>DNS レコードの作成
 
@@ -81,7 +84,7 @@ $SERVICE_RUNTIME_RG --query "[0].privateIpAddress" -o tsv`
 
 4. 上記で作成したプライベート DNS ゾーン リソース ( **<span>private.azuremicroservices.io</span>** ) を選択します。
 
-5. **[+ レコード セット]** を選択します。
+5. **[レコード セット]** を選択します。
 
 6. **[レコード セットの追加]** で、この情報を入力または選択します。
 

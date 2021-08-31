@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: 41cc4c174028ff23cdcc248c6b10d746e5669349
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 08/11/2021
+ms.openlocfilehash: 010fbfc3b6a2df9c8cdca1221fb4f25a5d288d70
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751237"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742185"
 ---
 # <a name="set-up-devops-deployment-for-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps 用に DevOps のデプロイを設定する
 
@@ -47,7 +47,7 @@ ms.locfileid: "111751237"
 |---------------|----------|-------------|
 | ロジック アプリ (Standard) | Yes | この Azure リソースには、シングルテナント Azure Logic Apps で実行されるワークフローが含まれています。 |
 | Functions Premium または App Service ホスティング プラン | Yes | この Azure リソースでは、計算、処理、ストレージ、ネットワークなど、ロジック アプリの実行に使用するホスティング リソースを指定します。 <p><p>**重要**: 現在のエクスペリエンスでは、 **ロジック アプリ (standard)** リソースには、Functions Premium ホスティング プランに基づく [**Workflow Standard** ホスティング プラン](logic-apps-pricing.md#standard-pricing)が必要です。 |
-| Azure ストレージ アカウント | はい (ステートレス ワークフロー用) | この Azure リソースには、ワークフローに関するメタデータ、状態、入力、出力、実行履歴、およびその他の情報が格納されます。 |
+| Azure ストレージ アカウント | はい (ステートフルとステートレスの両方のワークフローの場合) | この Azure リソースには、ワークフローに関するメタデータ、アクセスの制御用のキー、状態、入力、出力、実行履歴、およびその他の情報が格納されます。 |
 | Application Insights | オプション | この Azure リソースは、ワークフローの監視機能を提供します。 |
 | API 接続 | 省略可能 (存在しない場合) | これらの Azure リソースは、ワークフローで、Office 365、SharePoint などのマネージ コネクタ操作を実行するために使用するマネージド API 接続を定義します。 <p><p>**重要**: ロジック アプリ プロジェクトでは、**connections.json** ファイルに、ワークフローで使用する任意のマネージド API 接続と Azure functions のメタデータ、エンドポイント、およびキーが含まれています。 環境ごとに異なる接続と関数を使用するには、**connections.json** ファイルをパラメーター化し、エンドポイントを更新してください。 <p><p>詳細については、 [API 接続リソースとアクセスポリシー](#api-connection-resources)を確認してください。 |
 | Azure Resource Manager (ARM) テンプレート | オプション | この Azure リソースでは、再利用または [エクスポート](../azure-resource-manager/templates/template-tutorial-export-template.md)できるベースライン インフラストラクチャのデプロイを定義します。 このテンプレートには、例えばマネージド API 接続を使用するために必要なアクセスポリシーも含まれています。 <p><p>**重要**: ARM テンプレートのエクスポートには、ワークフローで使用する API 接続リソースに関連するすべてのパラメーターが含まれているわけではありません。 詳細については、「[Find API connection parameters](#find-api-connection-parameters)」\(API 接続パラメーターの検索\)を確認してください。 |
@@ -81,7 +81,7 @@ ms.locfileid: "111751237"
 
 接続リソース定義を完了するために `properties` オブジェクトで使用する必要がある値を見つけるには、特定のコネクタに対して次のAPI を使用できます。
 
-`PUT https://management.azure.com/subscriptions/{subscription-ID}/providers/Microsoft.Web/locations/{location}/managedApis/{connector-name}?api-version=2018–07–01-preview`
+`GET https://management.azure.com/subscriptions/{subscription-ID}/providers/Microsoft.Web/locations/{location}/managedApis/{connector-name}?api-version=2016-06-01`
 
 応答において `connectionParameters` オブジェクトを探します。このオブジェクトには、その特定のコネクタのリソース定義を完了するために必要なすべての情報が含まれます。 次の例は、SQL マネージド接続のリソース定義の例を示しています。
 
@@ -217,9 +217,16 @@ Azure DevOps デプロイの場合、Azure Pipelines で [Azure Function App Dep
 
 ##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>Azure Logic Apps (Standard) の Azure CLI 用拡張機能をインストールする
 
-"*プレビュー*" 版のシングルテナント Azure Logic Apps (Standard) の Azure CLI 用拡張機能をインストールするには、`az extension add` コマンドに次の必須パラメーターを設定して実行します。
+現時点では、この拡張機能の "*プレビュー*" バージョンのみを使用できます。 この拡張機能をまだインストールしていない場合は、次の必須パラメーターを指定して `az extension add` コマンドを実行します。
 
 ```azurecli-interactive
+az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
+```
+
+最新の拡張機能 (バージョン 0.1.1) を取得するには、これらのコマンドを実行して既存の拡張機能を削除し、ソースから最新バージョンをインストールします。
+
+```azurecli-interactive
+az extension remove --name logicapp
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
 

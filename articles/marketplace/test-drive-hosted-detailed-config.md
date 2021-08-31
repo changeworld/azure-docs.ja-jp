@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 04/20/2021
-ms.openlocfilehash: 85668f07512e8aaa925b924ef0e631fe89b5c3fa
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: d3458d456793a3853fc2277bc1443c6fdfbc5865
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005701"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068335"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>ホストされた体験版の詳細な構成
 
@@ -36,15 +36,29 @@ ms.locfileid: "112005701"
 
     - **[同時実行体験版の最大数]** – アクティブな体験版を同時に実行できるユーザーの数。 体験版がアクティブになっている間、各ユーザーは Dynamics のライセンスを消費するので、少なくともここで指定する数の Dynamics ライセンスを体験版ユーザーに使用できるようにします。 3 から 5 をお勧めします。
     - **[体験版の期間]** – ユーザーの体験版がアクティブになっている最大時間数。 この時間が経過すると、ユーザーはテナントからプロビジョニング解除されます。 アプリの複雑さに応じて、2 から 24 時間をお勧めします。 この時間が経過した後でユーザーが再び体験版にアクセスしたい場合、ユーザーはいつでも別の体験版を要求できます。
-    - **[インスタンス URL]** – 体験版ユーザーが体験版を始めるときの転送先の URL。 通常これは、アプリとサンプル データがインストールされている Dynamics 365 インスタンスの URL です。 値の例: `https://testdrive.crm.dynamics.com`。
-    - **[インスタンスの Web API URL]** – Dynamics 365 インスタンスの Web API URL。 この値を取得するには、Microsoft Dynamics 365 インスタンスにサインインし、 **[設定]**  >  **[カスタマイズ]**  >  **[開発者リソース]**  >  **[インスタンスの Web API]** に移動して、アドレス (URL) をコピーします。 値の例:
+    - **インスタンス URL**
+        - "*カスタマー エンゲージメント*" – 体験版ユーザーが体験版を始めるときの転送先の URL。 通常これは、アプリとサンプル データがインストールされている Dynamics 365 インスタンスの URL です。 値の例: `https://testdrive.crm.dynamics.com`。
+        - "*キャンバス アプリ (Power Apps)* "
+            1. **PowerApps ポータル** のページを開き、サインインします。
+            2. **[アプリ]** を選択し、次にアプリの省略記号を選択します。
+            4. **[詳細]** を選択します。
+            5. **[詳細]** タブから、**Web リンク** をコピーします。
 
-        :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="インスタンス Web API の例。":::
+                :::image type="content" source="./media/test-drive/testdrive-canvas-app.png" alt-text="TestDrive キャンバス アプリ ウィンドウを表示しています。":::
 
-    - **[ロール名]** : 体験版用に作成した Dynamics 365 のカスタム セキュリティ ロールの名前、または既存のロールを使用できます。 新しいロールには、Customer Engagement インスタンスにサインインするために必要な最小権限が追加されている必要があります。 [Microsoft Dynamics 365 にサインインするために必要な最小権限](https://community.dynamics.com/crm/b/crminogic/archive/2016/11/24/minimum-privileges-required-to-login-microsoft-dynamics-365)に関するページを参照してください。 これは、体験版の使用中にユーザーに割り当てられるロールです。 値の例: `testdriverole`。
+    - **インスタンス Web API URL**
+        - "*カスタマー エンゲージメント*" – Dynamics 365 インスタンスの Web API URL。 この値を取得するには、Microsoft Dynamics 365 インスタンスにサインインし、 **[設定]**  >  **[カスタマイズ]**  >  **[開発者リソース]**  >  **[インスタンスの Web API]** の順に選択し、アドレス (URL) をコピーします。 値の例:
+
+            :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="インスタンス Web API の例。":::
+
+        - "*キャンバス アプリ (Power Apps)* " – キャンバス アプリへのバックエンドとして CE または Dataverse を使用していない場合は、`https://localhost` をプレースホルダーとして使用します。
+
+    - **ロール名**
+        - "*カスタマー エンゲージメント*" - 体験版用に作成した Dynamics 365 のカスタム セキュリティ ロールの名前。または既存のロールを使用できます。 新しいロールには、Customer Engagement インスタンスにサインインするために必要な最小権限が追加されている必要があります。 [Microsoft Dynamics 365 にサインインするために必要な最小権限](https://community.dynamics.com/crm/b/crminogic/archive/2016/11/24/minimum-privileges-required-to-login-microsoft-dynamics-365)に関するページを参照してください。 これは、体験版の使用中にユーザーに割り当てられるロールです。 値の例: `testdriverole`。
+        - "*キャンバス アプリ (Power Apps)* " – バックエンド データ ソースとして CE または Dataverse を使用していない場合は、"NA" を使用します。
     
-        > [!IMPORTANT]
-        > セキュリティ グループのチェックが追加されていないことを確認します。 これにより、ユーザーを Customer Engagement インスタンスと同期させることができます。
+    > [!IMPORTANT]
+    > セキュリティ グループのチェックが追加されていないことを確認します。 これにより、ユーザーを Customer Engagement インスタンスと同期させることができます。
 
     - **[Azure Active Directory テナント ID]** – Dynamics 365 インスタンスのための Azure テナントの ID。 この値を取得するには、Azure portal にサインインし、 **[Azure Active Directory]**  >  **[プロパティ]** に移動して、ディレクトリ ID をコピーします。 値の例:172f988bf-86f1-41af-91ab-2d7cd01112341。
     - **[Azure Active Directory テナント名]** – Dynamics 365 インスタンスのための Azure テナントの名前。 「`<tenantname>.onmicrosoft.com`」の形式を使用します。 値の例: `testdrive.onmicrosoft.com`。

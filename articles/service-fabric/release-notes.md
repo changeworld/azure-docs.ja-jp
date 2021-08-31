@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 0e5b4d17b0c0ccaa4c839338e0656c0a8eda3bd5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 11615d48bb1331e068c685a507670f0add883344
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078026"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721843"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -22,6 +22,24 @@ ms.locfileid: "112078026"
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">サポート オプション</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">サポートされているバージョン</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">コード サンプル</a>
+
+
+## <a name="service-fabric-81"></a>Service Fabric 8.1
+
+Service Fabric ランタイムの 8.1 リリースでは、ツールと SDK の更新プログラムと共に、さまざまな Azure リージョンへのロールアウトが開始されたことをお知らせします。 .NET SDK、Java SDK、および Service Fabric ランタイムの更新プログラムは、Web Platform Installer、NuGet パッケージ、Maven リポジトリから入手できます。
+
+### <a name="key-announcements"></a>重要なお知らせ
+- 補助レプリカのサポートを追加しました
+- **プレビュー** .NET 6.0 Service Fabric アプリケーションのサポートを追加しました
+- アプリケーションの説明を更新するための API サポートを追加しました
+- IPC の障害とプロセスのスタックを検出するために、Reconfiguration Agent (RA) と Reconfiguration Agent Proxy (RAP) の間に定期的な ping を追加しました
+- コンテナー化されていないアプリケーション用に liveness probe と readiness probe のサポートを追加しました
+- クラスターの更新がノード容量の更新に影響しないようにしました
+
+### <a name="service-fabric-81-releases"></a>Service Fabric 8.1 リリース
+| リリース日 | Release | 詳細情報 |
+|---|---|---|
+| 2021 年 7 月 28 日 | [Azure Service Fabric 8.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-release/ba-p/2594194)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81.md)|
 
 
 ## <a name="service-fabric-80"></a>Service Fabric 8.0
@@ -46,11 +64,13 @@ Service Fabric ランタイムの 8.0 リリースでは、ツールと SDK の�
 - 安全に解放できるようになったらすぐに参照を解放するように StateManager を修正
 - ユーザー シークレットの格納中は、セントラル シークレット サービスの削除をブロック
 
-
 ### <a name="service-fabric-80-releases"></a>Service Fabric 8.0 リリース
 | リリース日 | Release | 詳細情報 |
 |---|---|---|
 | 2021 年 4 月 8 日 | [Azure Service Fabric 8.0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-release/ba-p/2260016)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80.md)|
+| 2021 年 5 月 17 日 | [Azure Service Fabric 8.0 の 最初の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-first-refresh-release/ba-p/2362556) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU1.md) |
+| 2021 年 6 月 17 日 | [Azure Service Fabric 8.0 の 2 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-second-refresh-release/ba-p/2462979) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU2.md) |
+| 2021 年 7 月 28 日 | [Azure Service Fabric 8.0 の 3 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-third-refresh-release/ba-p/2594180) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80CU3.md) |
 
 
 ## <a name="previous-versions"></a>以前のバージョン

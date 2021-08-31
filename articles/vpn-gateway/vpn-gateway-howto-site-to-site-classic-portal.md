@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: f440ec76d3085e7a5ef7ec99f1a5a76c9c444ef9
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 71b365a2034e40831d4216f83d046c0b897bbe26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205343"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729500"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
@@ -34,7 +34,7 @@ ms.locfileid: "108205343"
 
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
-* クラシック デプロイ モデルで作業することを確認します。 Resource Manager デプロイ モデルで作業する場合は、[サイト間接続の作成 (Resource Manager)](./tutorial-site-to-site-portal.md) に関する記事を参照してください。 Resource Manager デプロイ モデルはレガシーであるため、このクラシック モデルを使用することをお勧めします。
+* クラシック デプロイ モデルで作業することを確認します。 [Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)で作業する場合は、[サイト間接続の作成 (Resource Manager)](./tutorial-site-to-site-portal.md) に関する記事を参照してください。 Resource Manager デプロイ モデルはレガシーであるため、このクラシック モデルを使用することをお勧めします。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいることを確認します。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
 * VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。

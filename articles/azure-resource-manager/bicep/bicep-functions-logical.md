@@ -4,17 +4,19 @@ description: Bicep ファイルで論理値の取得に使用する関数につ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: e2b0f79b2d8e0bf1f00e4db108b7a5f33a1be9a7
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/29/2021
+ms.openlocfilehash: 8fe09057ea293300754fc35614c00a9b808da247
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744911"
 ---
 # <a name="logical-functions-for-bicep"></a>Bicep の論理関数
 
-Resource Manager では、Bicep 用に`bool`関数を用意しています。 Azure Resource Manager JSON 論理関数の一部は、[Bicep 論理演算子](./operators-logical.md)に置き換えられました。
+Resource Manager では、Bicep 用に`bool`関数を用意しています。 
+
+Azure Resource Manager テンプレート内の論理関数の多くは、Bicep の[論理演算子](./operators-logical.md)に置き換えられています。
 
 ## <a name="bool"></a>[bool]
 
@@ -24,7 +26,7 @@ Resource Manager では、Bicep 用に`bool`関数を用意しています。 Az
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |ブール値に変換する値。 |
 
@@ -45,7 +47,7 @@ output falseInt bool = bool(0)
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -54,4 +56,5 @@ output falseInt bool = bool(0)
 
 ## <a name="next-steps"></a>次のステップ
 
+* ほとんどの論理演算子については、「[Bicep 論理演算子](./operators-logical.md)」を参照してください。
 * Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。

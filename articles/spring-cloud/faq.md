@@ -1,19 +1,19 @@
 ---
 title: Azure Spring Cloud についてよく寄せられる質問 | Microsoft Docs
 description: この記事では、Azure Spring Cloud についてよく寄せられる質問に回答します。
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a60634175ff06780372331bef6b28de2edbfea33
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5cc02d09efda462a2feaaa77ff74dff9dedd2041
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144639"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860807"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -29,7 +29,7 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、および Log An
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Azure Spring Cloud のセキュリティはどの程度でしょうか?
 
-セキュリティとプライバシーは、Azure や Azure Spring Cloud のお客様にとっての最優先事項です。 Azure では、アプリケーション データ、ログ、または構成を確実に暗号化することにより、お客様だけがこれらのすべてのデータにアクセスできるようにしています。 
+セキュリティとプライバシーは、Azure や Azure Spring Cloud のお客様にとっての最優先事項です。 Azure では、アプリケーション データ、ログ、または構成を確実に暗号化することにより、お客様だけがこれらのすべてのデータにアクセスできるようにしています。
 
 * Azure Spring Cloud のサービス インスタンスは、相互に分離されています。
 * Azure Spring Cloud には、TLS/SSL と証明書の包括的な管理機能が用意されています。
@@ -46,13 +46,15 @@ Azure Spring Cloud はリージョン サービスです。 Azure Spring Cloud �
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud の既知の制限事項はどのようなものですか?
 
 Azure Spring Cloud には、次の既知の制限があります。
-    
+
 * `spring.application.name` が、各アプリケーションを作成するために使用されるアプリケーション名によって上書きされます。
 * `server.port` の既定のポートは 1025 です。 他の値が適用されている場合は上書きされます。 また、この設定を尊重するようにして、コードでサーバーのポートを指定しないでください。
 * Azure portal と Azure Resource Manager テンプレートがアプリケーション パッケージのアップロードをサポートしていません。 Azure CLI 経由でアプリケーションをデプロイすることによってのみ、アプリケーション パッケージをアップロードできます。
 
-### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。 
+### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。
+
 どれを使用すればよいでしょうか? また、各レベルにはどのような制限がありますか?
+
 * Azure Spring Cloud には、2 つの価格レベルがあります。Basic と Standard です。 Basic レベルは、Dev/Test、および Azure Spring Cloud の試用を目的としています。 Standard レベルは、汎用の運用トラフィックを実行するために最適化されています。 制限と機能レベルの比較については、[Azure Spring Cloud の価格の詳細](https://azure.microsoft.com/pricing/details/spring-cloud/)に関する記事を参照してください。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
@@ -74,7 +76,7 @@ Azure Spring Cloud は、Java 8 および 11 をサポートしています。 �
 Microsoft は、Spring Boot 2.4 の問題を特定しました。現在、Spring コミュニティと協力してその解決に取り組んでいます。 その間は、アプリと Eureka の間で TLS 認証を有効にするために、これらの 2 つの依存関係を含めてください。
 
 ```xml
-<dependency> 
+<dependency>
     <groupId>com.sun.jersey</groupId>
     <artifactId>jersey-client</artifactId>
     <version>1.19.4</version>
@@ -102,6 +104,7 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 ### <a name="what-resource-types-does-service-binding-support"></a>サービス バインディングでサポートされるリソースの種類は何ですか?
 
 現時点でサポートされているサービスは次の 3 種類です:
+
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure Cache for Redis
@@ -113,14 +116,13 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 
 ### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure Spring Cloud インスタンスには、送信パブリック IP アドレスはいくつありますか?
 
-送信パブリック IP アドレスの数は、レベルやその他の要因によって異なる場合があります。 
+送信パブリック IP アドレスの数は、レベルやその他の要因によって異なる場合があります。
 
 | Azure Spring Cloud インスタンスの種類 | 送信パブリック IP アドレスの既定の数 |
 | -------------------------------- | ---------------------------------------------- |
 | Basic レベルのインスタンス             | 1                                              |
 | Standard レベルのインスタンス          | 2                                              |
 | VNet インジェクション インスタンス         | 1                                              |
-
 
 ### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>送信パブリック IP アドレスの数を増やすことはできますか?
 
@@ -153,7 +155,7 @@ LTS と MTS の JDK リリースには、四半期ごとのセキュリティ更
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 LTS バージョンと Java 11 LTS バージョンのサポート期間を教えてください。
 
-[Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-jdk-long-term-support)に関する記事を参照してください。
+[Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-support-on-azure)に関する記事を参照してください。
 
 * Java 8 LTS は 2030 年 12 月までサポートされます。
 * Java 11 LTS は 2027 年 9 月までサポートされます。
@@ -186,6 +188,7 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 ## <a name="deployment"></a>デプロイ
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure Spring Cloud はブルーグリーン デプロイをサポートしていますか?
+
 はい。 詳細については、[ステージング環境の設定](./how-to-staging-environment.md)に関するページを参照してください。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Kubernetes にアクセスしてアプリケーション コンテナーを操作することはできるのでしょうか?
@@ -204,6 +207,7 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?
 
 既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行しようとしている場合は、次のベスト プラクティスを確認することをお勧めします。
+
 * アプリケーションの依存関係をすべて解決しておく必要があります。
 * 構成エントリ、環境変数、および JVM パラメーターを準備しておき、それらを Azure Spring Cloud でのデプロイと比較できるようにします。
 * サービス バインドを使用する場合は、Azure サービスをチェックし、適切なアクセス許可を設定していることを確認してください。
@@ -225,21 +229,21 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 2022 年 12 月 3 日までです。 「[.NET Core サポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)」を参照してください。
 ::: zone-end
 
-
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>サービス レジストリがまれに利用できなくなると、どのような影響がありますか?
 
-あまり起こることではありませんが、次のようなエラーが発生することがあります。 
-```
+あまり起こることではありませんが、アプリケーション ログに次のようなエラーが表示されることがあります。
+
+```output
 RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
 ```
-これはアプリケーションのログに記録されたエラーです。 ネットワークが不安定などの問題により、速度が極端に低下した Spring フレームワークによって発生した問題です。 
+
+この問題は、ネットワークの不安定性またはその他のネットワークの問題により、速度が極端に低下した Spring フレームワークによって発生します。
 
 Eureka クライアントには、それに対処するハートビートと再試行ポリシーの両方が備わっているため、ユーザー エクスペリエンスに影響はありません。 一時的なエラーと考えられるので、無視してかまいません。
 
 この点については、今後ユーザーのアプリケーションからこのエラーが返されないよう改善する予定です。
-
 
 ## <a name="next-steps"></a>次のステップ
 

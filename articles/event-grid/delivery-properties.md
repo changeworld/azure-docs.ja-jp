@@ -2,13 +2,13 @@
 title: Azure Event Grid - 配信されたイベントにカスタム ヘッダーを設定する
 description: 配信されたイベントにカスタム ヘッダー (または配信プロパティ) を設定する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 515f2687781329d0f9f9648460663a0a30f7c637
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 08/13/2021
+ms.openlocfilehash: de16c3b4981dc02a54a68269d4eef743d9f48c4b
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069500"
 ---
 # <a name="custom-delivery-properties"></a>カスタム配信プロパティ
 イベント サブスクリプションを使用すると、配信されたイベントに含まれる HTTP ヘッダーを設定できます。 この機能を使用すると、宛先に必要なカスタム ヘッダーを設定できます。 イベント サブスクリプションを作成するときに、最大 10 個のヘッダーを設定できます。 各ヘッダーの値は、4,096 (4 K) バイトより大きくすることはできません。
@@ -33,6 +33,20 @@ Azure portal でイベント サブスクリプションを作成する場合は
 受信イベントのプロパティに基づいてヘッダーの値を設定できます。 JsonPath 構文を使用して、送信要求のヘッダーの値として使用する受信イベントのプロパティ値を参照します。 たとえば、イベント データの受信イベント プロパティ **system** の値を使用して、**Channel** という名前のヘッダーの値を設定するには、次の方法でイベント サブスクリプションを構成します。
 
 :::image type="content" source="./media/delivery-properties/dynamic-header-property.png" alt-text="配信プロパティ - 動的":::
+
+## <a name="use-azure-cli"></a>Azure CLI の使用
+`az eventgrid event-subscription create` コマンドを使用してサブスクリプションを作成するときに `--delivery-attribute-mapping` パラメーターを使用します。 次に例を示します。
+
+```azurecli
+az eventgrid event-subscription create -n es1 \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1
+    --endpoint-type storagequeue \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/sa1/queueservices/default/queues/q1 \
+    --enable-advanced-filtering-on-arrays true
+    --delivery-attribute-mapping staticproperty1 static somestaticvalue2 true 
+    --delivery-attribute-mapping staticproperty2 static somestaticvalue3 false 
+    --delivery-attribute-mapping dynamicproperty1 dynamic data.key1
+```
 
 ## <a name="examples"></a>例
 ここでは、配信プロパティの使用例をいくつか紹介します。

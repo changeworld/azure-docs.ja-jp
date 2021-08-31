@@ -1,18 +1,18 @@
 ---
 title: マイクロサービス アプリケーションの自動スケーリングを設定する
 description: この記事では、Microsoft Azure portal または Azure CLI を使用してアプリケーションの自動スケーリングの設定をセットアップする方法について説明します。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 596c0deb833c5af7b85c1680062a24f075cf28cf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d1e0b9cb6beb48e6f9ae8c8d5d985f4dfd930d2d
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134629"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015506"
 ---
 # <a name="set-up-autoscale-for-microservice-applications"></a>マイクロサービス アプリケーションの自動スケーリングを設定する
 
@@ -38,7 +38,6 @@ ms.locfileid: "108134629"
 6. 左側のナビゲーション ペインのメニューにある **[設定]** の **[スケールアウト]** タブに移動します。
 7. 自動スケーリングを設定するデプロイを選択します。 次のセクションで示す自動スケーリングのオプションが表示されます。
 
-
 ![自動スケーリング メニュー](./media/spring-cloud-autoscale/autoscale-menu.png)
 
 ## <a name="set-up-autoscale-settings-for-your-application-in-the-azure-portal"></a>Azure portal でアプリケーションに対する自動スケーリングの設定をセットアップする
@@ -53,20 +52,24 @@ Azure portal でスケーリング方法を選択します。  次の図では�
 ![カスタム自動スケーリング](./media/spring-cloud-autoscale/custom-autoscale.png)
 
 ## <a name="set-up-autoscale-settings-for-your-application-in-azure-cli"></a>Azure CLI でアプリケーションに対する自動スケーリングの設定をセットアップする
+
 Azure CLI を使用して自動スケーリング モードを設定することもできます。  次のコマンドを使用すると、自動スケーリング設定と自動スケーリング規則が作成されます。
 
-* 自動スケーリング設定を作成します
-  ```
-  az monitor autoscale create -g demo-rg --resource /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/demo-rg/providers/Microsoft.AppPlatform/Spring/autoscale/apps/demo/deployments/default --name demo-setting --min-count 1 --max-count 5 --count 1
-  ```
-* 自動スケーリング規則を作成します
-  ```
-  az monitor autoscale rule create -g demo-rg --autoscale-name demo-setting --scale out 1 --cooldown 1 --condition "tomcat.global.request.total.count > 100 avg 1m where AppName == demo and Deployment == default"
-  ```
+* 自動スケーリング設定を作成します。
+
+   ```azurecli
+   az monitor autoscale create -g demo-rg --resource /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/demo-rg/providers/Microsoft.AppPlatform/Spring/autoscale/apps/demo/deployments/default --name demo-setting --min-count 1 --max-count 5 --count 1
+   ```
+
+* 自動スケーリング規則を作成します。
+
+   ```azurecli
+   az monitor autoscale rule create -g demo-rg --autoscale-name demo-setting --scale out 1 --cooldown 1 --condition "tomcat.global.request.total.count > 100 avg 1m where AppName == demo and Deployment == default"
+   ```
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
 
-Basic レベルを使用していて、その 1 つ以上の制限により制約を受けている場合は、Standard レベルにアップグレードできます。 そのためには、まず *[Standard]* レベル列を選択して **[アップグレード]** ボタンをクリックし、 **[価格]** レベル メニューに移動します。
+Basic レベルを使用していて、その 1 つ以上の制限により制約を受けている場合は、Standard レベルにアップグレードできます。 そのためには、まず **[Standard レベル]** 列を選択し、次に **[アップグレード]** ボタンを選択して、 **[価格]** レベル メニューに移動します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,19 +2,18 @@
 title: Azure IoT Edge をインストールする | Microsoft Docs
 description: Windows デバイスまたは Linux デバイスに Azure IoT Edge をインストールする手順
 author: kgremban
-manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 06/28/2021
 ms.author: kgremban
-ms.openlocfilehash: 39e165d862d6e174f763cd58529727fd26b8bd46
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0f0cf8f4ce8f82964a69635debacea772c4310da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311075"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750764"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Azure IoT Edge for Linux をインストールまたはアンインストールする
 
@@ -113,25 +112,14 @@ IoT Edge セキュリティ デーモンによって、IoT Edge デバイス上�
    sudo apt-get update
    ```
 
-使用できる IoT Edge のバージョンを確認します。
-
-   ```bash
-   apt list -a iotedge
-   ```
-
-最新バージョンのセキュリティ デーモンをインストールするには、次のコマンドを使用します。これにより、**libiothsm-std** パッケージの最新バージョンもインストールされます。
+IoT Edge バージョン 1.1* と **libiothsm-std** パッケージをインストールします。
 
    ```bash
    sudo apt-get install iotedge
    ```
 
-または、特定のバージョンのセキュリティ デーモンをインストールする場合は、apt リスト出力から該当するバージョンを指定します。 また、**libiothsm-std** パッケージにも同じバージョンを指定します。そうしないと、最新バージョンがインストールされます。 たとえば、次のコマンドでは、1.1 リリースの最新バージョンがインストールされます。
-
-   ```bash
-   sudo apt-get install iotedge=1.1* libiothsm-std=1.1*
-   ```
-
-インストールするバージョンが一覧にない場合は、この記事で後述する「[オフラインまたは特定のバージョンのインストール](#offline-or-specific-version-installation-optional)」の手順に従ってください。 そのセクションでは、IoT Edge セキュリティ デーモンの以前の任意のバージョン、またはリリース候補のバージョンをターゲットとする方法が説明されています。
+>[!NOTE]
+>IoT Edge バージョン 1.1 は、IoT Edge の長期サポート ブランチです。 古いバージョンを実行している場合は、サポートされなくなるため、最新のパッチのインストールまたは更新をお勧めします。
 
 <!-- end 1.1 -->
 ::: moniker-end
@@ -156,23 +144,19 @@ IoT ID サービスは、IoT Edge のバージョン 1.2 と共に導入され�
    sudo apt-get update
    ```
 
-使用できる IoT Edge のバージョンを確認します。
+IoT Edge がどのバージョンであるかと、IoT ID サービスが使用できることを確認します。
 
    ```bash
-   apt list -a aziot-edge
+   apt list -a aziot-edge aziot-identity-service
    ```
 
-最新バージョンの IoT Edge をインストールする場合は、次のコマンドを使用して、最新バージョンの ID サービス パッケージもインストールします。
+最新バージョンの IoT Edge と IoT ID サービス パッケージをインストールするには、次のコマンドを使用します。
 
    ```bash
    sudo apt-get install aziot-edge
    ```
 
-または、特定のバージョンの IoT Edge と ID サービスをインストールする場合は、apt リスト出力から該当するバージョンを指定します。 両方のサービスに対して同じバージョンを指定してください。 たとえば、次のコマンドでは、1.2 リリースの最新バージョンがインストールされます。
-
-   ```bash
-   sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
-   ```
+また、最新バージョンではないバージョンの IoT Edge をインストールする場合は、`aziot-edge` サービスと `aziot-identity-service` サービスの両方に必ず同じバージョンをインストールしてください。
 
 <!-- end 1.2 -->
 ::: moniker-end

@@ -3,7 +3,7 @@ title: ログ フォワーダーをデプロイして CEF データを Azure Sen
 description: Azure Sentinel に CEF データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
-author: yelevin
+author: batamig
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
-ms.author: yelevin
-ms.openlocfilehash: ee28837d3e687d78b645a1ab18a9add1f8e57fcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: bagol
+ms.openlocfilehash: 2acbc6c48826f9455e264690789dc823da5a762c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748094"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>手順 1:ログ フォワーダーをデプロイする
 
@@ -38,7 +38,7 @@ ms.locfileid: "104771262"
 
 - 指定した Linux マシンに対する昇格されたアクセス許可 (sudo) が必要です。
 
-- Linux マシンに **python 2.7** または **3** がインストールされている必要があります。<br>`python -version` コマンドを使用して確認してください。
+- Linux マシンに **python 2.7** または **3** がインストールされている必要があります。<br>`python --version` または `python3 --version` コマンドを使用して確認してください。
 
 - Log Analytics エージェントをインストールする前に Linux マシンを Azure ワークスペースに接続することは避けてください。
 
@@ -155,7 +155,7 @@ syslog デーモンを選択して、適切な説明を表示してください�
     - <a name="mapping-command"></a>マッピングに問題がある場合は、**次のコマンドを手動で実行** するよう指示するエラー メッセージが表示されます (プレースホルダーをワークスペース ID に置き換えます)。 このコマンドは、正しいマッピングを確認して、エージェントを再起動します。
     
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        sudo sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng デーモン](#tab/syslogng)
@@ -231,5 +231,5 @@ syslog デーモンを選択して、適切な説明を表示してください�
 このドキュメントでは、Log Analytics エージェントをデプロイして、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
 - [Cef および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

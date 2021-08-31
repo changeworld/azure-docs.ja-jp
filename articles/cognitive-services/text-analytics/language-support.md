@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/14/2021
+ms.date: 07/06/2021
 ms.author: aahi
-ms.openlocfilehash: 0e897b71f1f5f99ce2834768a72bf99b9773301f
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 105f88499367857d1133ab24a88372db747727bf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078260"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741102"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
-> [!NOTE]
-> 言語は、特定の Text Analytics 機能に対して新しいモデル バージョンがリリースされると追加されます。 使用している機能の最新モデル バージョン、および詳細については、[モデルのバージョン管理](concepts/model-versioning.md)に関するページを参照してください。   
-
 #### <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment-analysis)
 
-| Language              | 言語コード | v3 のサポート | 最初の v3 のモデル バージョン |              Notes |
+> [!NOTE]
+> 言語は、特定の Text Analytics 機能に対して新しい[モデル バージョン](concepts/model-versioning.md)がリリースされると追加されます。 感情分析の現在のモデル バージョンは `2020-04-01` です。
+
+| Language              | 言語コード | v3.x のサポート | 最初の v3 のモデル バージョン |              Notes |
 |:----------------------|:-------------:|:----------:|:--------------------------:|-------------------:|
 | 簡体中国語    |   `zh-hans`   |     ✓      |         2019-10-01         | `zh` も可能 |
 | 繁体字中国語   |   `zh-hant`   |    ✓      |         2019-10-01         |                    |
@@ -42,7 +42,7 @@ ms.locfileid: "112078260"
 | スペイン語               |     `es`      |     ✓      |         2019-10-01         |                    |
 | トルコ語               |     `tr`      |     ✓       |         2020-04-01        |                    |
 
-### <a name="opinion-mining-v31-preview-only"></a>意見マイニング (v3.1-preview のみ)
+### <a name="opinion-mining-v31-only"></a>オピニオン マイニング (v3.1 のみ)
 
 | Language              | 言語コード | 次の v3 のモデル バージョン以降 |              Notes |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
@@ -53,8 +53,9 @@ ms.locfileid: "112078260"
 
 > [!NOTE]
 > * \* でマークされている言語では、"Person"、"Location"、および "Organization" エンティティのみが返されます。
+> * 言語は、特定の Text Analytics 機能に対して新しい[モデル バージョン](concepts/model-versioning.md)がリリースされると追加されます。 NER の現在のモデル バージョンは `2021-06-01` です。
 
-| Language               | 言語コード | v3 のサポート | 次の v3 のモデル バージョン以降 |       Notes        |
+| Language               | 言語コード | v3.x のサポート | 次の v3 のモデル バージョン以降 |       Notes        |
 |:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
 | アラビア語                 |     `ar`      |      ✓*    |               2019-10-01        |                    |
 | 簡体中国語     |   `zh-hans`   |     ✓      |               2021-01-15        | `zh` も可能 |
@@ -82,7 +83,10 @@ ms.locfileid: "112078260"
 
 #### <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/key-phrase-extraction)
 
-| Language              | 言語コード |  v3 のサポート | 次の v3 のモデル バージョン以降 |       Notes        |
+> [!NOTE]
+> 言語は、特定の Text Analytics 機能に対して新しい[モデル バージョン](concepts/model-versioning.md)がリリースされると追加されます。 キー フレーズ抽出の現在のモデル バージョンは `2021-06-01` です。
+
+| Language              | 言語コード |  v3.x のサポート | 次の v3 のモデル バージョン以降 |       Notes        |
 |:----------------------|:-------------:|:----------:|:-----------------------------------------:|:------------------:|
 | アフリカーンス語             |     `af`      |     ✓      |                2020-07-01                 |                    |
 | ブルガリア語             |     `bg`      |     ✓      |                2020-07-01                 |                    |
@@ -115,16 +119,35 @@ ms.locfileid: "112078260"
 | スウェーデン語               |     `sv`      |     ✓      |                2019-10-01                 |                    |
 | トルコ語               |     `tr`      |     ✓      |                2020-07-01                 |                    |
 
-#### <a name="entity-linking"></a>[エンティティ リンク設定](#tab/entity-linking)
+#### <a name="entity-linking"></a>[Entity Linking](#tab/entity-linking)
 
-| Language | 言語コード |  v3 のサポート | 次の v3 のモデル バージョン以降 | Notes |
+> [!NOTE]
+> 言語は、特定の Text Analytics 機能に対して新しい[モデル バージョン](concepts/model-versioning.md)がリリースされると追加されます。 エンティティ リンク設定の現在のモデル バージョンは `2020-02-01` です。
+
+| Language | 言語コード |  v3.x のサポート | 次の v3 のモデル バージョン以降 | Notes |
 |:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
 | 英語  |     `en`      |     ✓      |                2019-10-01                 |       |
 | スペイン語  |     `es`      |    ✓      |                2019-10-01                 |       |
 
+#### <a name="text-analytics-for-health"></a>[Text Analytics for Health](#tab/health)
+
+> [!NOTE]
+> * このコンテナーでは、API エンドポイントおよび SDK とは異なるモデル バージョンが使用されています。
+> * 言語は、特定の Text Analytics 機能に対して新しいモデル バージョンがリリースされると追加されます。 Text Analytics for Health の現在の[モデル バージョン](concepts/model-versioning.md)は次のとおりです。
+>    * API と SDK: `2021-05-15`
+>    * コンテナー: `2021-03-01`
+
+
+| Language | 言語コード |  v3.x のサポート | 次の v3 のモデル バージョン以降 | Notes |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
+| 英語  |     `en`      |     ✓      |                API エンドポイント: 2019-10-01 <br> コンテナー: 2020-04-16                |       |
+
 #### <a name="personally-identifiable-information-pii"></a>[個人を特定できる情報 (PII)](#tab/pii)
 
-| Language               | 言語コード | v3 のサポート | 次の v3 のモデル バージョン以降 |       Notes        |
+> [!NOTE]
+> 言語は、特定の Text Analytics 機能に対して新しい[モデル バージョン](concepts/model-versioning.md)がリリースされると追加されます。 PII の現在のモデル バージョンは `2021-01-15` です。
+
+| Language               | 言語コード | v3.x のサポート | 次の v3 のモデル バージョン以降 |       Notes        |
 |:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
 | 簡体中国語     |   `zh-hans`   |     ✓      |               2021-01-15        | `zh` も可能 |
 | 英語                |     `en`      |     ✓      |               2020-07-01        |                    |
@@ -139,11 +162,14 @@ ms.locfileid: "112078260"
 
 #### <a name="language-detection"></a>[言語検出](#tab/language-detection)
 
+> [!NOTE]
+> 言語は、特定の Text Analytics 機能に対して新しい[モデル バージョン](concepts/model-versioning.md)がリリースされると追加されます。 言語検出の現在のモデル バージョンは `2021-01-05` です。
+
 Text Analytics API では、広範囲の言語、異形、方言、およびいくつかの地方/文化言語を検出し、検出された言語をその名前およびコードと一緒に返すことができます。 Text Analytics 言語検出言語コードパラメーターは [BCP-47](https://tools.ietf.org/html/bcp47) 標準に準拠しており、ほとんどは [ISO-639-1](https://www.iso.org/iso-639-language-codes.html) 識別子に準拠しています。 
 
 使用頻度の低い言語で表されるコンテンツがある場合は、言語検出を試して、コードが返されるかどうかを確認できます。 検出できない言語の応答は `unknown` です。
 
-| Language | 言語コード | v3 のサポート | 次の v3 のモデル バージョン以降 |
+| Language | 言語コード | v3.x のサポート | 次の v3 のモデル バージョン以降 |
 |:-|:-:|:-:|:-:|
 |アフリカーンス語|`af`|✓|    |
 |アルバニア語|`sq`|✓|    |
@@ -261,6 +287,21 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 |ユカテコ語| `yua` | ✓| |
 |ズールー語|`zu`|✓|2021-01-05|
 
+
+#### <a name="text-summarization"></a>[テキスト要約](#tab/summarization)
+
+| Language | 言語コード |  v3.x のサポート | 次の v3 のモデル バージョン以降 | Notes |
+|:---------|:-------------:|:----------:|:-----------------------------------------:|:-----:|
+| 簡体中国語     |   `zh-hans`   |     ✓      |               2021-08-01        | `zh` も可能 |
+| 英語  |     `en`      |     ✓      |                2021-08-01                 |       |
+| フランス語                 |     `fr`      |     ✓      |               2021-08-01        |                    |
+| ドイツ語                 |     `de`      |     ✓      |               2021-08-01        |                    |
+| イタリア語               |     `it`      |     ✓       |               2021-08-01        |                    |
+| 日本語              |     `ja`      |     ✓       |               2021-08-01        |                    |
+| 韓国語                |     `ko`      |     ✓       |               2021-08-01        |                    |
+| スペイン語               |     `es`      |     ✓       |               2021-08-01        |                    |
+| ポルトガル語 (ブラジル)   |    `pt-BR`    |     ✓       |               2021-08-01        |                    |
+| ポルトガル語 (ポルトガル) |    `pt-PT`    |     ✓       |               2021-08-01        | `pt` も可能 |
 
 ---
 

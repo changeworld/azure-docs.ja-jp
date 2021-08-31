@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 469adf1c0e5108f7a8c89a7c3a4bebba5d42b431
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d80ae76ed47366e56a3a1bf318219c6944fa3dbe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183966"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739277"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 
@@ -148,7 +148,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 ### <a name="error"></a>エラー
 
-"マネージド ID にストレージ アカウントに対するアクセス許可がありません。 ストレージ アカウントのマネージド ID に対して、"ストレージ BLOB データ所有者" ロールが割り当てられていることを確認してください。 ストレージ: /subscriptions/ \<Subscription ID\> /resourceGroups/\< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>、マネージド ID: /subscriptions/ \<Subscription ID\> /resourceGroups/ /\< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
+"マネージド ID にストレージ アカウントに対するアクセス許可がありません。 ストレージ アカウントのマネージド ID に対して、"ストレージ BLOB データ所有者" ロールが割り当てられていることを確認してください。 ストレージ: /subscriptions/ \<Subscription ID\> /resourceGroups/\<Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>、マネージド ID: /subscriptions/ \<Subscription ID\> /resourceGroups/ /\<Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
 
 ### <a name="cause"></a>原因
 
@@ -169,7 +169,7 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 
 ### <a name="error"></a>エラー
 
-"サブネット /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> で構成されている、ネットワーク セキュリティ グループ /subscriptions/\<SubscriptionID\>/resourceGroups/<リソース グループ名\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> 内のセキュリティ規則で、必要な受信または送信接続が許可されていません。 詳細については、「[Azure HDInsight 用の仮想ネットワークを計画する](./hdinsight-plan-virtual-network-deployment.md)」にアクセスするか、サポートにお問い合わせください。"
+"サブネット /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> で構成されている、ネットワーク セキュリティ グループ /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> 内のセキュリティ規則で、必要な受信または送信接続が許可されていません。 詳細については、「[Azure HDInsight 用の仮想ネットワークを計画する](./hdinsight-plan-virtual-network-deployment.md)」にアクセスするか、サポートにお問い合わせください。"
 
 ### <a name="cause"></a>原因
 
@@ -217,7 +217,7 @@ HDInsight サービスが、クラスターを作成しようとしていると�
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Error Code:Deployments failed due to policy violation:'Resource '<Resource URI>' was disallowed by policy. Policy identifiers: '[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition": <Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Error Code:Deployments failed due to policy violation:'Resource '\<Resource URI\>' was disallowed by policy. Policy identifiers: '[{"policyAssignment":{"name":"\<Policy Name\> ","id":"/providers/Microsoft.Management/managementGroups/\<Management Group Name\> providers/Microsoft.Authorization/policyAssignments/\<Policy Name\>"},"policyDefinition": \<Policy Definition\>
 
 ### <a name="cause"></a>原因
 

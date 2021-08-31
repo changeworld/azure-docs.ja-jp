@@ -1,19 +1,20 @@
 ---
-title: Postman で要求を行う
+title: Postman で API 要求を行う
 titleSuffix: Azure Digital Twins
-description: Azure Digital Twins API をテストするために Postman を構成して使用する方法について説明します。
+description: Azure Digital Twins API を呼び出すために Postman を構成して使用する方法について説明します。
 ms.author: baanders
 author: baanders
 ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
-ms.date: 11/10/2020
-ms.openlocfilehash: 839ce4df4a79b34890a19d3beb470b77fef1f19d
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.date: 6/16/2021
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 3974b080c2a763db4ffa0f344ef18ce129959a53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617658"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459455"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Postman を使用して Azure Digital Twins API に要求を送信する方法
 
@@ -27,7 +28,7 @@ ms.locfileid: "110617658"
     1. [独自のコレクションを最初から作成します](#create-your-own-collection)。
 1. [構成されたコレクションに要求の追加を行い](#add-an-individual-request)、Azure Digital Twins API に送信します。
 
-Azure Digital Twins には、**データ プレーン** と **コントロール プレーン** で使用できる 2 つの API セットがあります。 これらの API セットの相違点について詳しくは、[Azure Digital Twins の API および SDK の概念](concepts-apis-sdks.md)に関するページをご覧ください。 この記事には、両方の API セットに関する情報が含まれています。
+Azure Digital Twins には、**データ プレーン** と **コントロール プレーン** で使用できる 2 つの API セットがあります。 これらの API セットの相違点について詳しくは、「[Azure Digital Twins API および SDK](concepts-apis-sdks.md)」をご覧ください。 この記事には、両方の API セットに関する情報が含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -78,7 +79,7 @@ Postman と Azure Digital Twins インスタンスを設定したので、次は
     ---
 
     >[!NOTE]
-    > インスタンスとは異なる Azure Active Directory テナントに属しているサービス プリンシパルまたはユーザー アカウントを使用して Azure Digital Twins インスタンスにアクセスする必要がある場合は、Azure Digital Twins インスタンスの "ホーム" テナントからの **トークン** を要求する必要があります。 このプロセスの詳細については、"[アプリ認証コードを作成する方法](how-to-authenticate-client.md#authenticate-across-tenants)" に関するページを参照してください。
+    > インスタンスとは異なる Azure Active Directory テナントに属しているサービス プリンシパルまたはユーザー アカウントを使用して Azure Digital Twins インスタンスにアクセスする必要がある場合は、Azure Digital Twins インスタンスの "ホーム" テナントからの **トークン** を要求する必要があります。 このプロセスの詳細については、[アプリ認証コードの作成](how-to-authenticate-client.md#authenticate-across-tenants)に関するページを参照してください。
 
 3. 結果の `accessToken` の値をコピーし、次のセクションで使用するために保存します。 これが、要求を許可するために Postman に提供する **トークン値** です。
 
@@ -288,7 +289,7 @@ Azure Digital Twins API のいずれかに対する Postman 要求を行うに�
 
    :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="Postman の新しい要求の詳細に [Body] タブがあるスクリーンショット。それには、&quot;SELECT * FROM DIGITALTWINS&quot; というクエリを含む生の JSON 本文が含まれています。" lightbox="media/how-to-use-postman/postman-request-body.png":::
 
-   Azure Digital Twins クエリの作成の詳細については、[ツイン グラフにクエリを実行する](how-to-query-graph.md)方法に関する記事を参照してください。
+   Azure Digital Twins クエリの作成の詳細については、[ツイン グラフに対するクエリの実行](how-to-query-graph.md)に関するページを参照してください。
 
 1. 要求の種類に応じて必要になる場合があるその他のフィールドについては、リファレンス ドキュメントを参照してください。 クエリ API については、Postman 要求ですべての要件が満たされたので、この手順は完了です。
 1. **[Send]\(送信\)** ボタンを使用して、完成した要求を送信します。
@@ -302,4 +303,4 @@ Azure Digital Twins API のいずれかに対する Postman 要求を行うに�
 
 ## <a name="next-steps"></a>次のステップ
 
-Digital Twins API について詳しくは、[Azure Digital Twins の API および SDK の概念](concepts-apis-sdks.md)に関するページをご覧になるか、[REST API のリファレンス ドキュメント](/rest/api/azure-digitaltwins/)をご覧ください。
+Digital Twins API の詳細については、「[Azure Digital Twins の API および SDK](concepts-apis-sdks.md)」をご覧になるか、[REST API のリファレンス ドキュメント](/rest/api/azure-digitaltwins/)をご覧ください。

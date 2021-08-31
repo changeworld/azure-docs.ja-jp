@@ -11,12 +11,12 @@ ms.topic: guide
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: 155c87c1f5343e583beb226c2eb5416d782fcfb9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dafe702121934a1267f01a861932dc49361e5258
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963191"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688550"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance のコンテンツ参照
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "111963191"
 
 ## <a name="load-data"></a>データの読み込み
 
-- [Azure SQL Managed Instance への移行](migrate-to-instance-from-sql-server.md): Azure SQL Managed Instance への移行のための推奨される移行プロセスおよびツールについて説明します。
+- [SQL Server から Azure SQL Managed Instance へのガイド](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md): Azure SQL Managed Instance への移行のための推奨される移行プロセスおよびツールについて説明します。
 - [Azure SQL Managed Instance への TDE 証明書の移行](tde-certificate-migrate.md): お客様の SQL Server データベースが Transparent Data Encryption (TDE) を使用して保護される場合、お客様が Azure に格納したいバックアップの暗号化を解除するために SQL Managed Instance によって使用される証明書を移行する必要があります。
 - [BACPAC からの DB のインポート](../database/database-import.md)
 - [BACPAC への DB のエクスポート](../database/database-export.md)

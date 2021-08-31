@@ -4,12 +4,12 @@ description: Application Insights で利用できる言語、プラットフォ�
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: fe71a2d402781625cf22abb91bc56e6e8994f03d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d388914badbd9ac8870a9d5e23370cd5b0319eea
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079266"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616399"
 ---
 # <a name="supported-languages"></a>サポートされている言語
 
@@ -24,7 +24,7 @@ ms.locfileid: "110079266"
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>既にデプロイされているアプリケーションのインストルメンテーション (コード不要、エージェントベース)
 * [Azure VM および Azure 仮想マシン スケール セット](./azure-vm-vmss-apps.md)
 * [Azure App Service](./azure-web-apps.md)
-* [ASP.NET - 既にライブとなっているアプリ用](./monitor-performance-live-website-now.md)
+* [ASP.NET - IIS をホストとする Web アプリの場合](./status-monitor-v2-overview.md)
 * [Azure Cloud Services](./cloudservices.md)、Web ロールと worker ロールの両方を含む
 * [Azure Functions](../../azure-functions/functions-monitoring.md)
 ### <a name="instrumentation-through-code-sdks"></a>コードを使用したインストルメンテーション (SDK)

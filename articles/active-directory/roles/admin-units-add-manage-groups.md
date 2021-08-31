@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa9a7b08f792c36ecf0f65e37f2f9e9c551bca8c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c824ee3a8365261fa6409bf79904cde1b409fc26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088140"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734505"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory で管理単位のグループを追加して管理する
 
@@ -29,9 +29,9 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 - 管理単位の各管理者に対する Azure AD Premium P1 または P2 ライセンス
 - 管理単位のメンバーに対する Azure AD Free ライセンス
-- 特権ロール管理者またはグローバル管理者
+- 特権ロール管理者または全体管理者
 - PowerShell を使用する場合は、AzureAD モジュール
-- Microsoft Graph API の Graph エクスプローラーを使用する場合は、管理者の同意
+- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
 詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
@@ -45,21 +45,29 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 * **[グループ]** ウィンドウで、次を行います。
 
-  1. Azure portal で、**Azure AD** に移動します。
-  1. **[グループ]** を選択し、管理単位に割り当てるグループを選択します。 
+  1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+  1. **[Azure Active Directory]**  >  **[グループ]** を選択します。
+
+  1. 管理単位に割り当てるグループを選択します。
+
   1. 左側のウィンドウで、 **[管理単位]** を選択して、グループが割り当てられている管理単位を一覧表示します。 
 
      ![[管理単位] ウィンドウの [Assign to administrative unit]\(管理単位に割り当てる\) リンクのスクリーンショット。](./media/admin-units-add-manage-groups/assign-to-group-1.png)
 
   1. **[Assign to administrative unit]\(管理単位に割り当てる\)** を選択します。
+
   1. 右側のウィンドウで、管理単位を選択します。
 
-* **[管理単位]**  >  **[すべてのグループ]** ウィンドウで次を行います。
+* **[管理単位]**  >  **[グループ]** ウィンドウで次を行います。
 
-  1. Azure portal で、**Azure AD** に移動します。
+  1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+  1. **[Azure Active Directory]**  >  **[管理単位]** の順に選択します。
   
-  1. 左側のウィンドウで、 **[管理単位]** を選択してから **[すべてのグループ]** を選択します。 
-     管理単位に既に割り当てられているグループは、右側のウィンドウに表示されます。 
+  1. グループを追加する管理単位を選択します。
+  
+  1. **[グループ]** を選びます。 管理単位に既に割り当てられているグループは、右側のウィンドウに表示されます。 
 
   1. **[グループ]** ウィンドウで、 **[追加]** を選択します。
     右側のウィンドウには、Azure AD 組織内の使用可能なすべてのグループが一覧表示されます。 

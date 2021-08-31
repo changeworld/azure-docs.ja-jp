@@ -4,33 +4,32 @@ description: コマーシャル マーケットプレース分析の [顧客] �
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 3d5016e1671bb52d4b819c10e7c52c12e5046b7e
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 43332c559c309bc99754467994a4718ece78d3cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731210"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [顧客] ダッシュボード
 
 この記事では、パートナー センターの [顧客] ダッシュボードについて説明します。 このダッシュボードには、成長傾向などの顧客に関する情報が、グラフィカルかつダウンロード可能な形式で表示されます。
 
-パートナー センターの [顧客] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[顧客]** を選択します。
-
 >[!NOTE]
-> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+> 分析の用語の詳細な定義については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。
 
 ## <a name="customers-dashboard"></a>[顧客] ダッシュボード
 
-[顧客] ダッシュボードには、プランを購入した顧客のデータが表示されます。 次の項目のグラフィカル表示を見ることができます。
+[[顧客] ダッシュボード](https://go.microsoft.com/fwlink/?linkid=2166011)には、プランを購入した顧客のデータが表示されます。 次の項目のグラフィカル表示を見ることができます。
 
 - アクティブな顧客およびチャーン顧客の傾向
 - 既存の顧客、新規の顧客、およびチャーン顧客を含む顧客成長傾向
 - 注文別および使用量別の顧客
-- 顧客のパーセンタイル 
+- 顧客のパーセンタイル
 - 注文数と使用量ごとの顧客の種類
 - 地域別顧客数
 - 顧客詳細テーブル
@@ -42,6 +41,8 @@ ms.locfileid: "111541171"
 ## <a name="elements-of-the-customers-dashboard"></a>[顧客] ダッシュボードの要素
 
 次のセクションでは、[顧客] ダッシュボードの使用方法とデータの読み方について説明します。
+
+パートナー センターの [顧客] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[顧客]** を選択します。
 
 ### <a name="month-range"></a>月範囲
 
@@ -181,4 +182,4 @@ _**表 1: データ用語の辞書**_
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](downloads-dashboard.md)」を参照してください。
 - Azure Marketplace と Microsoft AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[パートナー センターの評価とレビューの分析ダッシュボード](ratings-reviews.md)」を参照してください。
-- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.md)」を参照してください。
+- コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析の用語とよく寄せられる質問](./analytics-faq.yml)」を参照してください。

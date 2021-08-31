@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/27/2021
-ms.openlocfilehash: d0390bd70080ea0174a81cce9538396321dec658
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 3a8c00dcb2bf016cf70f02dcfdebc5e55bf5d66c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539344"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178129"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Azure Cognitive Search でセマンティック回答を返す
 
@@ -69,7 +69,7 @@ Cognitive Search は、機械読み取りの理解モデルを使用して最適
 
 + "searchFields" によって、抽出モデルにトークンを提供する文字列フィールドが決まります。 回答は、キャプションを生成する同じフィールドからも生成されます。 キャプションと回答のどちらでも機能するようにこのフィールドを設定する方法についての詳細なガイダンスについては、「[searchFields を設定する](semantic-how-to-query-request.md#searchfields)」を参照してください。 
 
-+ "answers" の場合、パラメーターの構造は `"answers": "extractive"` です。ここで、返される回答の既定の数は 1 です。 上記の例に示すように、`count` を追加することで、回答の数を最大 5 つまで増やすことができます。  複数の回答が必要かどうかは、アプリのユーザー エクスペリエンスと、結果の表示方法によって異なります。
++ "answers" の場合、パラメーターの構造は `"answers": "extractive"` です。ここで、返される回答の既定の数は 1 です。 上記の例に示すように、`count` を追加することで、回答の数を最大 10 個まで増やすことができます。  複数の回答が必要かどうかは、アプリのユーザー エクスペリエンスと、結果の表示方法によって異なります。
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>応答から回答を分解する
 

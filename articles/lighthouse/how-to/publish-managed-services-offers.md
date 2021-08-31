@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 03/31/2021
+ms.date: 08/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 014386c6c4676abbc441cc2e23bdfcf90f3adc09
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: af5ca37d312f5bdfcfae179997b920a466f01462
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965119"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742188"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -63,6 +63,9 @@ ms.locfileid: "111965119"
 > 委任は、オンボード対象の (またはオンボード対象のリソース グループを含む) サブスクリプションに対して、`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客のテナント内のゲスト以外のアカウントで実行する必要があります。 サブスクリプションを委任できるユーザーを見つけるには、顧客のテナント内のユーザーが Azure portal 上でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 
 顧客がサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) を委任した後、そのサブスクリプションに **Microsoft.ManagedServices** リソース プロバイダーが登録され、テナント内のユーザーは、オファー内の承認に従って、委任されたリソースにアクセスできるようになります。
+
+> [!NOTE]
+> 後で追加のサブスクリプションまたはリソース グループを同じオファーに委任する場合、お客様は委任する前に、各サブスクリプションに [**Microsoft.ManagedServices** リソース プロバイダーを手動で登録する](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)必要があります。
 
 更新されたバージョンのオファーを発行する場合、お客様は [Azure portal で変更を確認し、新しいバージョンを受け入れる](view-manage-service-providers.md#update-service-provider-offers)ことができます。
 

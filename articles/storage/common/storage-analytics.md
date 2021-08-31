@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ccd5cf9ebc1c5183571dcdfbe3beeabe1b28a63
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737683"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448119"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -37,7 +37,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 * ログの BLOB の作成要求
 * メトリックのテーブル エンティティの作成要求
 
-データ保持ポリシーを構成した場合、Storage Analytics が古いログ データやメトリック データを削除しますが、その際の削除トランザクションに対する料金は発生しません。 ただし、クライアントからの削除トランザクションは課金対象となります。 保持ポリシーの詳細については、「[Storage Analytics のデータ保持ポリシーの設定](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)」をご覧ください。
+データ保持ポリシーを構成している場合は、古いログとメトリック データを削除することで、支出を削減できます。 保持ポリシーの詳細については、「[Storage Analytics のデータ保持ポリシーの設定](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)」をご覧ください。
 
 ### <a name="understanding-billable-requests"></a>課金の対象となる要求について
 

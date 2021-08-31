@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/26/2021
+ms.date: 08/09/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a6952679ad2497a059b6ad043ef5e1e23fea0236
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 7a213198421597e444a55c53d85cdb6e427425a3
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744073"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178054"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -35,6 +35,14 @@ ms.locfileid: "111744073"
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+### <a name="verify-the-applications-publisher-domain"></a>アプリケーションのパブリッシャー ドメインを検証する
+2020 年 11 月現在、新しいアプリケーション登録は、[アプリケーションの発行元ドメインが検証済み](../active-directory/develop/howto-configure-publisher-domain.md)で、"***かつ***" 会社の ID が Microsoft Partner Network で検証され、アプリケーションに関連付けられている場合を除き、ユーザーの同意プロンプトで未検証として表示されます。 (この変更の詳細については[こちら](../active-directory/develop/publisher-verification-overview.md)を参照してください)。Azure AD B2C ユーザー フローの場合、発行元のドメインは、[Microsoft アカウント](../active-directory-b2c/identity-provider-microsoft-account.md)またはその他の Azure AD テナントを ID プロバイダーとして使用する場合にのみ表示されることに注意してください。 これらの新しい要件を満たすには、以下を実行します。
+
+1. [自分の Microsoft Partner Network (MPN) アカウントを使用して会社 ID を確認します](/partner-center/verification-responses)。 このプロセスにより、会社と会社の主要連絡先に関する情報が検証されます。
+1. 発行元の確認プロセスを完了し、次のいずれかのオプションを使用して、MPN アカウントをアプリ登録に関連付けます。
+   - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD テナント内にある場合は、[アプリ登録ポータルでアプリを検証](../active-directory/develop/mark-app-as-publisher-verified.md)します。
+   - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD B2C テナント内にある場合は、[Microsoft Graph API を使用して発行元により検証済みとしてアプリをマーク](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)します (たとえば、Graph Explorer を使用)。 アプリの検証済み発行元を設定するための UI は、現在、Azure AD B2C テナントでは無効になっています。
 
 ## <a name="register-an-azure-ad-app"></a>Azure AD アプリの登録
 
@@ -72,6 +80,10 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[トークンの種類]** で、 **[ID]** を選択します。
 1. 追加する省略可能な要求 (`family_name` と `given_name`) を選択します。
 1. **[追加]** をクリックします。
+
+## <a name="optional-verify-your-app-authenticity"></a>[省略可能] アプリの信頼性を確認する
+
+[発行元の確認](../active-directory/develop/publisher-verification-overview.md)により、ユーザーは、[登録](#register-an-azure-ad-app)したアプリの信頼性を把握できます。 検証済みアプリは、アプリの発行元が、Microsoft Partner Network (MPN) を使用して ID を[検証](/partner-center/verification-responses)したことを意味します。 [アプリを発行者確認済みとしてマークする](../active-directory/develop/mark-app-as-publisher-verified.md)方法についてご確認ください。 
 
 ::: zone pivot="b2c-user-flow"
 
@@ -236,10 +248,8 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 
 サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
+::: zone-end
+
 ## <a name="next-steps"></a>次のステップ
 
-カスタム ポリシーを操作する場合、開発過程でポリシーのトラブルシューティングを行っているときに、追加情報が必要になることがあります。
-
-問題の診断に役立てるために、ポリシーを一時的に "開発者モード" にして、Azure Application Insights を使用してログを収集できます。 その方法については、[Azure Active Directory B2C: ログの収集](troubleshoot-with-application-insights.md)に関するページを参照してください。
-
-::: zone-end
+[Azure AD トークンをアプリケーションに渡す](idp-pass-through-user-flow.md)方法について学習する。

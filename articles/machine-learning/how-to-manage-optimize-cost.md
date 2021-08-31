@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: f5f0351e21588d6e01a633a11d5638358e4d706b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: bf29f435c2d9439659abdcc76a7f8d85cf51c2af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008268"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739154"
 ---
 # <a name="manage-and-optimize-azure-machine-learning-costs"></a>Azure Machine Learning のコストを管理して最適化する
 
@@ -26,9 +26,10 @@ Azure Machine Learning に対して機械学習モデルをトレーニングし
 - サブスクリプションとワークスペースにクォータを設定する
 - トレーニングの実行に終了ポリシーを設定する
 - 優先順位の低い仮想マシン (VM) を使用する
+- 自動的にシャットダウンおよび起動するようにコンピューティング インスタンスのスケジュールを設定する
 - Azure 予約 VM インスタンスを使用する
 - ローカルでトレーニングする
-- トレーニングの並列化
+- トレーニングを並列化する
 - データ保持と削除のポリシーを設定する
 - リソースを同じリージョンにデプロイする
 
@@ -55,7 +56,7 @@ AmlCompute クラスターは、ワークロードに基づいて動的にスケ
 + 反復の少ない実験を実行する場合は、この時間を短くしてコストを節約します。
 + 反復の多い開発またはテストの実験を実行する場合は、トレーニング スクリプトまたは環境を変更するたびに、常にスケールアップとスケールダウンの料金が発生しないように、時間を長くする必要がある場合があります。
 
-AmlCompute クラスターは、[AmlCompute SDK クラス](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)、[AmlCompute CLI](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
+AmlCompute クラスターは、[AmlCompute SDK クラス](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)、[AmlCompute CLI](/cli/azure/ml(v1)/computetarget/create#az_ml_v1__computetarget_create_amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
@@ -86,6 +87,10 @@ Azure では、仮想マシン スケール セット、Batch、および Machin
 
  コンピューティング インスタンスは、対話型のノートブック エクスペリエンスをサポートする必要があるため、低優先順位の VM では機能しません。
 
+## <a name="schedule-compute-instances"></a>コンピューティング インスタンスのスケジュールを設定する
+
+[コンピューティング インスタンス](concept-compute-instance.md)を作成する場合、VM はそのまま維持されるため、ご自身の作業に使用できます。  コンピューティング インスタンスが自動的に開始および停止されるように (プレビュー) [スケジュールを設定](how-to-create-manage-compute-instance.md#schedule)して、使用する予定がないときのコストを節約します。
+
 ## <a name="use-reserved-instances"></a>予約インスタンスを使用する
 
 コンピューティング リソースのコストを削減するもう 1 つの方法は、Azure 予約 VM インスタンスです。 このオファリングでは、1 年間または 3 年間の契約を結びます。 これらの割引は、従量課金制料金の最大 72% までの範囲で、毎月の Azure の請求に直接適用されます。
@@ -104,7 +109,7 @@ Visual Studio Code では、機械学習アプリケーションを開発する�
 
 ## <a name="set-data-retention--deletion-policies"></a>データ保持と削除のポリシーを設定する
 
-パイプラインが実行されるたび、各ステップで中間データセットが生成されます。 時間が経過すると、これらの中間データセットはストレージ アカウントの領域を使用します。 データセットをアーカイブおよび削除するには、ライフサイクル全体を通してデータを管理するポリシーを設定することを検討します。 詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](/storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。
+パイプラインが実行されるたび、各ステップで中間データセットが生成されます。 時間が経過すると、これらの中間データセットはストレージ アカウントの領域を使用します。 データセットをアーカイブおよび削除するには、ライフサイクル全体を通してデータを管理するポリシーを設定することを検討します。 詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](../storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。
 
 ## <a name="deploy-resources-to-the-same-region"></a>リソースを同じリージョンにデプロイする
 

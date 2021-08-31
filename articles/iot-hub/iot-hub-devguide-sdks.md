@@ -2,7 +2,6 @@
 title: Azure IoT Hub SDK | Microsoft Docs
 description: デバイス アプリとバックエンド アプリのビルドに使用できる Azure IoT Hub SDK へのリンク。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +11,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 67c9bd6c4f8779340a847815da8692e12e3ee1ac
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 823cb1ae9afb6af8b8ed0446e58930fa62ee7f07
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537053"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740486"
 ---
 # <a name="azure-iot-hub-sdks"></a>Azure IoT Hub SDK
 
@@ -25,7 +24,7 @@ IoT Hub を使用する場合、以下の 2 つのカテゴリのソフトウェ
 
 * [**IoT Hub Service SDK**](#azure-iot-hub-service-sdks) を利用すると、IoT ハブを管理するバックエンド アプリケーションをビルドでき、必要に応じて、メッセージを送信する、ジョブのスケジュールを設定する、ダイレクト メソッドを呼び出す、IoT デバイスまたはモジュールに必要なプロパティの更新情報を送信することができます。
 
-* [**IoT Hub Device SDK**](../iot-develop/about-iot-sdks.md) を利用すると、デバイス クライアントまたはモジュール クライアントを使用して、IoT デバイス上で実行するアプリをビルドできます。 これらのアプリは IoT Hub にテレメトリを送信し、必要に応じて IoT Hub からメッセージ、ジョブ、メソッド、ツインの更新を受信します。 これらの SDK を使用して、[Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)の規則およびモデルを使用するデバイス アプリをビルドし、IoT プラグ アンド プレイ対応アプリケーションにその機能を提供することができます。 また、モジュール クライアントを使用して、[Azure IoT Edge ランタイム](../iot-edge/about-iot-edge.md)用の[モジュール](../iot-edge/iot-edge-modules.md)を作成することもできます。
+* [**IoT Hub Device SDK**](../iot-develop/about-iot-sdks.md) を利用すると、デバイス クライアントまたはモジュール クライアントを使用して、IoT デバイス上で実行するアプリをビルドできます。 これらのアプリは IoT Hub にテレメトリを送信し、必要に応じて IoT Hub からメッセージ、ジョブ、メソッド、ツインの更新を受信します。 これらの SDK を使用して、[Azure IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)の規則およびモデルを使用するデバイス アプリをビルドし、IoT プラグ アンド プレイ対応アプリケーションにその機能を提供することができます。 また、モジュール クライアントを使用して、[Azure IoT Edge ランタイム](../iot-edge/about-iot-edge.md)用の[モジュール](../iot-edge/iot-edge-modules.md)を作成することもできます。
 
 また、[デバイス プロビジョニング サービス](../iot-dps/about-iot-dps.md)を操作するための一連の SDK も利用できます。
 
@@ -70,9 +69,9 @@ Microsoft Azure IoT device SDK には、Azure IoT Hub サービスに接続お�
 
 IoT Hub Device SDK の詳細については、[IoT デバイス開発に関するドキュメント](../iot-develop/about-iot-sdks.md)を参照してください。
 
-## <a name="os-platform-and-hardware-compatibility"></a>OS プラットフォームとハードウェアの互換性
+## <a name="sdk-and-hardware-compatibility"></a>SDK とハードウェアの互換性
 
-SDK でサポートされるプラットフォームは、「[Azure IoT SDK プラットフォームのサポート](iot-hub-device-sdk-platform-support.md)」で確認できます。
+デバイス SDK の選択の詳細については、「[Azure IoT device SDK の概要](../iot-develop/about-iot-sdks.md)」を参照してください。
 
 特定のハードウェア デバイスとの SDK の互換性の詳細については、[Azure Certified for IoT デバイス カタログ](https://devicecatalog.azure.com/)または個々のリポジトリを参照してください。
 
@@ -84,7 +83,7 @@ Azure IoT SDK を使用した開発に関連するドキュメント
 
 * IoT Hub デバイス SDK を使用して[接続と信頼できるメッセージングを管理する方法](iot-hub-reliability-features-in-sdks.md)に関する記事を参照してください。
 * iOS や Android などの[モバイル プラットフォーム向けの開発](iot-hub-how-to-develop-for-mobile-devices.md)方法に関する記事を参照してください。
-* [Azure IoT SDK プラットフォームのサポート](iot-hub-device-sdk-platform-support.md)
+* [IoT デバイス開発のドキュメント](../iot-develop/about-iot-sdks.md)
 
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 

@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) での証明書のローテーション
 description: Azure Kubernetes Service (AKS) クラスターで証明書をローテーションする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 11/15/2019
-ms.openlocfilehash: b3ab6074dcbf79df8b2b0ff3369b94006343a2a6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 7/13/2021
+ms.openlocfilehash: ea488e281e52949eeb53fdeffb1dc26afb5a9b5e
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089868"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066225"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -33,17 +33,32 @@ AKS では、次の証明書、証明機関、およびサービス アカウン
 * `kubectl` クライアントには、AKS クラスターと通信するための証明書があります。
 
 > [!NOTE]
-> 2019 年 3 月より前に作成された AKS クラスターには、2 年後に期限切れになる証明書があります。 2019 年 3 月以降に作成されたすべてのクラスター、またはその証明書がローテーションされているすべてのクラスターには、30 年後に期限切れになるクラスター CA 証明書があります。 他のすべての証明書は 2 年後に有効期限が切れます。 クラスターがいつ作成されたかを確認するには、`kubectl get nodes` を使用して、ノード プールの *Age* を確認します。
+> 2019 年 5 月より前に作成された AKS クラスターには、2 年後に期限切れになる証明書があります。 2019 年 5 月以降に作成されたすべてのクラスター、またはその証明書がローテーションされているすべてのクラスターには、30 年後に期限切れになるクラスター CA 証明書があります。 署名にクラスター CA を使用する他のすべての AKS 証明書は、2 年後に有効期限が切れ、AKS バージョンのアップグレード中に自動的にローテーションされます。 クラスターがいつ作成されたかを確認するには、`kubectl get nodes` を使用して、ノード プールの *Age* を確認します。
 > 
-> また、クラスターの証明書の有効期限を確認することもできます。 たとえば、次の Bash コマンドを使用すると、*myAKSCluster* クラスターの証明書の詳細が表示されます。
+> また、クラスターの証明書の有効期限を確認することもできます。 たとえば、次の bash コマンドを使用すると、リソース グループ *rg* 内の *myAKSCluster* クラスターのクライアント証明書の詳細が表示されます
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
+> kubectl config view --raw -o jsonpath="{.users[?(@.name == 'clusterUser_rg_myAKSCluster')].user.client-certificate-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
+
+* apiserver 証明書の有効期限を確認する
+```console
+curl https://{apiserver-fqdn} -k -v 2>&1 |grep expire
+```
+
+* VMAS エージェント ノードで証明書の有効期限を確認する
+```console
+az vm run-command invoke -g MC_rg_myAKSCluster_region -n vm-name --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
+```
+
+* VMSS エージェント ノードで証明書の有効期限を確認する
+```console
+az vmss run-command invoke -g MC_rg_myAKSCluster_region -n vmss-name --instance-id 0 --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
+```
 
 ## <a name="rotate-your-cluster-certificates"></a>クラスター証明書をローテーションする
 
 > [!WARNING]
-> `az aks rotate-certs` を使用して証明書をローテーションすると、AKS クラスターに最大 30 分間のダウンタイムが生じる可能性があります。
+> `az aks rotate-certs` を使用して証明書をローテーションすると、すべてのノードが再作成され、AKS クラスターに最大 30 分間のダウンタイムが生じる可能性があります。
 
 [az aks get-credentials][az-aks-get-credentials] を使用して、AKS クラスターにサインインします。 また、このコマンドにより、ご使用のローカル コンピューターに `kubectl` クライアント証明書がダウンロードされて構成されます。
 

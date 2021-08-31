@@ -3,16 +3,16 @@ title: Azure Arc 対応 Open Service Mesh (プレビュー)
 description: Arc 対応 Kubernetes クラスターの Open Service Mesh (OSM) 拡張機能
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/24/2021
+ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: 83140603eab8ed28f3ea82d3f9ab205f84569c75
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ebf73d6a79048a7cd08b0995e98da229f9df46ca
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483095"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068222"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>Azure Arc 対応 Open Service Mesh (プレビュー)
 
@@ -54,8 +54,8 @@ KUBECONFIG 環境変数に、OSM 拡張機能をインストールする Kuberne
 
 ```azurecli-interactive
 export VERSION=0.8.4
-export $CLUSTER_NAME=<arc-cluster-name>
-export $RESOURCE_GROUP=<resource-group-name>
+export CLUSTER_NAME=<arc-cluster-name>
+export RESOURCE_GROUP=<resource-group-name>
 ```
 
 Arc 対応 Open Service Mesh はプレビュー版ですが、`az k8s-extension create` コマンドでは `--release-train` フラグとして `pilot` だけを使用できます。 `--auto-upgrade-minor-version` は常に `false` に設定されているので、バージョンを指定する必要があります。 OpenShift クラスターを使用している場合は、この[セクション](#install-a-specific-version-of-osm-on-openshift-cluster)の手順に従ってください。
@@ -242,8 +242,70 @@ az k8s-extension show --cluster-type connectedClusters --cluster-name $CLUSTER_N
   "version": "0.8.4"
 }
 ```
-
 ## <a name="osm-controller-configuration"></a>OSM コントローラーの構成
+OSM では、arc-osm-system 名前空間内のコントロール プレーンの一部として MeshConfig リソース `osm-mesh-config` がデプロイされます。 この MeshConfig の目的は、メッシュの所有者またはオペレーターに、そのニーズに基づいてメッシュ構成の一部を更新する機能を提供することです。 既定値を表示するには、次のコマンドを使用します。
+
+```azurecli-interactive
+kubectl describe meshconfig osm-mesh-config -n arc-osm-system
+```
+出力には既定値が表示されます。
+
+```azurecli-interactive
+Certificate:
+    Service Cert Validity Duration:  24h
+  Feature Flags:
+    Enable Egress Policy:      true
+    Enable Multicluster Mode:  false
+    Enable WASM Stats:         true
+  Observability:
+    Enable Debug Server:  false
+    Osm Log Level:        info
+    Tracing:
+      Address:   jaeger.osm-system.svc.cluster.local
+      Enable:    false
+      Endpoint:  /api/v2/spans
+      Port:      9411
+  Sidecar:
+    Config Resync Interval:            0s
+    Enable Privileged Init Container:  false
+    Envoy Image:                       mcr.microsoft.com/oss/envoyproxy/envoy:v1.18.3
+    Init Container Image:              mcr.microsoft.com/oss/openservicemesh/init:v0.9.1
+    Log Level:                         error
+    Max Data Plane Connections:        0
+    Resources:
+  Traffic:
+    Enable Egress:                          false
+    Enable Permissive Traffic Policy Mode:  true
+    Inbound External Authorization:
+      Enable:              false
+      Failure Mode Allow:  false
+      Stat Prefix:         inboundExtAuthz
+      Timeout:             1s
+    Use HTTPS Ingress:     false
+```
+詳細については、「[構成 API リファレンス](https://docs.openservicemesh.io/docs/api_reference/config/v1alpha1/)」を参照してください。 **spec.traffic.enablePermissiveTrafficPolicyMode** が **true** に設定されていることに注意してください。 OSM の制限のないトラフィック ポリシー モードは、[SMI](https://smi-spec.io/) トラフィック ポリシーの適用がバイパスされるモードです。 このモードの OSM では、サービス メッシュの一部であるサービスが自動的に検出され、これらのサービスと通信できるように各エンボイ プロキシ サイドカーのトラフィック ポリシー規則がプログラムされます。
+
+### <a name="making-changes-to-osm-controller-configuration"></a>OSM コントローラーの構成の変更
+
+> [!NOTE]
+> MeshConfig `osm-mesh-config` の値はアップグレード後も保持されます。
+
+`osm-mesh-config` に対する変更は、kubectl patch コマンドを使用して実行できます。 次の例では、制限の少ないトラフィック ポリシー モードが false に変更されています。
+
+```azurecli-interactive
+kubectl patch meshconfig osm-mesh-config -n arc-osm-system -p '{"spec":{"traffic":{"enablePermissiveTrafficPolicyMode":false}}}' --type=merge
+```
+
+正しくない値が使用されている場合、MeshConfig CRD の検証によって、値が無効である理由を説明するエラー メッセージが表示されて変更が阻止されます。 たとえば、次のコマンドは、enableEgress を非ブール値に修正した場合にどうなるかを示しています。
+
+```azurecli-interactive
+kubectl patch meshconfig osm-mesh-config -n arc-osm-system -p '{"spec":{"traffic":{"enableEgress":"no"}}}'  --type=merge
+
+# Validations on the CRD will deny this change
+The MeshConfig "osm-mesh-config" is invalid: spec.traffic.enableEgress: Invalid value: "string": spec.traffic.enableEgress in body must be of type boolean: "string"
+```
+
+## <a name="osm-controller-configuration-version-v084"></a>OSM コントローラーの構成 (バージョン v0.8.4)
 
 現在、ConfigMap で OSM コントローラーの構成にアクセスし、これを構成できます。 OSM コントローラーの構成設定を見るには、`kubectl` で、構成設定を表示するクエリを `osm-config` ConfigMap に対して実行します。
 
@@ -267,11 +329,9 @@ kubectl get configmap osm-config -n arc-osm-system -o json
 }
 ```
 
-使用できるそれぞれの構成を理解するには、[OSM ConfigMap のドキュメント](https://release-v0-8.docs.openservicemesh.io/docs/osm_config_map/)を参照ください。 **permissive_traffic_policy_mode** が **true** に構成されていることに注目してください。 OSM の制限のないトラフィック ポリシー モードは、[SMI](https://smi-spec.io/) トラフィック ポリシーの適用がバイパスされるモードです。 このモードの OSM では、サービス メッシュの一部であるサービスが自動的に検出され、これらのサービスと通信できるように各エンボイ プロキシ サイドカーのトラフィック ポリシー規則がプログラムされます。
+使用できるそれぞれの構成を理解するには、[OSM ConfigMap のドキュメント](https://release-v0-8.docs.openservicemesh.io/docs/osm_config_map/)を参照ください。 
 
-### <a name="making-changes-to-osm-configmap"></a>OSM ConfigMap を変更する
-
-OSM ConfigMap を変更するには次の説明に従ってください。
+バージョン v0.8.4 のOSM ConfigMap を変更するには、次のガイダンスに従ってください。
 
 1. JSON ファイルへの変更をコピーし、保存します。 この例では、permissive_traffic_policy_mode を true から false に変更します。 `osm-config` を変更するたびに、既定の `osm-config` から変更したすべての項目を、JSON ファイル形式のリストにより指定する必要があります。
     ```json
@@ -306,32 +366,25 @@ OSM の機能を使用するには、アプリケーションの名前空間を�
 osm namespace add <namespace_name>
 ```
 
-サービスの詳しいオンボード方法は、[こちら](https://docs.openservicemesh.io/docs/tasks_usage/onboard_services/)で説明されています。
+サービスの詳しいオンボード方法は、[こちら](https://docs.openservicemesh.io/docs/guides/app_onboarding/#onboard-services)で説明されています。
 
 ### <a name="configure-osm-with-service-mesh-interface-smi-policies"></a>Service Mesh Interface (SMI) ポリシーで OSM を構成する
 
-[デモ アプリケーション](https://release-v0-8.docs.openservicemesh.io/docs/install/manual_demo/)を確認することから始めてもかまいませんし、テスト環境で SMI ポリシーを試すこともできます。
+[デモ アプリケーション](https://docs.openservicemesh.io/docs/getting_started/quickstart/manual_demo/#deploy-applications)を確認することから始めてもかまいませんし、テスト環境で SMI ポリシーを試すこともできます。
 
 > [!NOTE] 
 > 実行する書店アプリのバージョンが、クラスターにインストールした OSM 拡張機能のバージョンと一致することを確認してください。 例: OSM 拡張機能の v0.8.4 を使用している場合は、OSM 上流リポジトリの release-v0.8 ブランチのブックストア デモを使用します。
 
 ### <a name="configuring-your-own-jaeger-prometheus-and-grafana-instances"></a>独自の Jaeger、Prometheus、Grafana インスタンスを構成する
 
-OSM 拡張機能にインストールされた [Jaeger](https://www.jaegertracing.io/docs/getting-started/)、[Prometheus](https://prometheus.io/docs/prometheus/latest/installation/)、[Grafana](https://grafana.com/docs/grafana/latest/installation/) は既定で無効にしてあります。ユーザーが、これらのツールの独自のインスタンスを OSM と連携させられるようにすることが目的です。 独自のインスタンスを連携させる方法は、次のドキュメントをご確認ください。
+OSM 拡張機能では [Jaeger](https://www.jaegertracing.io/docs/getting-started/)、[Prometheus](https://prometheus.io/docs/prometheus/latest/installation/)、[Grafana](https://grafana.com/docs/grafana/latest/installation/) のようなアドオンがインストールされないため、ユーザーは、自分で実行しているこれらのツールのインスタンスに OSM を統合することができます。 独自のインスタンスを連携させる方法は、次のドキュメントをご確認ください。
 
-- [BYO-Jaeger instance](https://github.com/openservicemesh/osm-docs/blob/main/content/docs/tasks_usage/observability/tracing.md#byo-bring-your-own) (独自の Jaeger インスタンス)
-    - このドキュメントで説明している値を設定するには、`osm-config` ConfigMap を次の設定で更新する必要があります。
-        ```json
-        {
-          "osm.OpenServiceMesh.tracing.enable": "true",
-          "osm.OpenServiceMesh.tracing.address": "<tracing server hostname>",
-          "osm.OpenServiceMesh.tracing.port": "<tracing server port>",
-          "osm.OpenServiceMesh.tracing.endpoint": "<tracing server endpoint>",
-        }
-        ```
-        [このセクション](#making-changes-to-osm-configmap)の説明に従って、これらの設定を osm-config にプッシュします。
-- [BYO-Prometheus instance](https://github.com/openservicemesh/osm/blob/release-v0.8/docs/content/docs/tasks_usage/metrics.md#byo-bring-your-own) (独自の Prometheus インスタンス)
-- [BYO-Grafana dashboard](https://github.com/openservicemesh/osm/blob/release-v0.8/docs/content/docs/tasks_usage/metrics.md#importing-dashboards-on-a-byo-grafana-instance) (独自の Grafana ダッシュボード)
+> [!NOTE]
+> OSM の GitHub ドキュメントで提供されているコマンドは注意して使用してください。 `osm-mesh-config` に変更を加える場合は、必ず正しい名前空間名 'arc-osm-system' を使用してください。
+
+- [BYO-Jaeger instance](https://docs.openservicemesh.io/docs/guides/observability/tracing/#byo-bring-your-own) (独自の Jaeger インスタンス)
+- [BYO-Prometheus instance](https://docs.openservicemesh.io/docs/guides/observability/metrics/#byo-prometheus) (独自の Prometheus インスタンス)
+- [BYO-Grafana dashboard](https://docs.openservicemesh.io/docs/guides/observability/metrics/#importing-dashboards-on-a-byo-grafana-instance) (独自の Grafana ダッシュボード)
 
 
 ## <a name="monitoring-application-using-azure-monitor-and-applications-insights"></a>Azure Monitor と Applications Insights でアプリケーションを監視する
@@ -340,7 +393,7 @@ Azure Monitor と Azure Application Insights の両方では、クラウドお�
 
 今後、Arc 対応 Open Service Mesh とこれらの Azure サービスの高度な連携を実装する予定であり、OSM のメトリクスに基づく重要な KPI の確認と対応を、Azure でシームレスに実行できるようになります。 下の手順に従って、Azure Monitor でprometheus エンドポイントのスクレイピングを有効にし、アプリケーションのメトリクスを収集できるようにします。 
 
-1. OSM の ConfigMap で prometheus_scraping が true になっていることを確認します。
+1. `osm-mesh-config` で prometheus_scraping が true になっていることを確認します。
 
 2. 監視するアプリケーションの名前空間がメッシュにオンボードされていることを確認します。 [こちら](#onboard-namespaces-to-the-service-mesh)に記載された説明に従います。
 
@@ -362,7 +415,7 @@ Azure Monitor と Azure Application Insights の両方では、クラウドお�
     kubectl apply -f container-azm-ms-osmconfig.yaml
     ```
 
-Log Analytics にメトリクスを表示するように最大 15 分程度かかります。 InsightsMetrics テーブルに対するクエリを実行できます。
+Log Analytics にメトリクスを表示するには最大 15 分程度かかります。 InsightsMetrics テーブルに対するクエリを実行できます。
 
 ```azurecli-interactive
 InsightsMetrics
@@ -396,11 +449,6 @@ Azure Monitor との連携の詳細は[こちら](https://github.com/microsoft/D
 
 ## <a name="upgrade-the-osm-extension-instance-to-a-specific-version"></a>OSM 拡張機能インスタンスを特定のバージョンにアップグレードする
 
-> [!NOTE]
-> OSM のアドオンをアップグレードすると、ユーザーが OSM ConfigMap で構成した値が上書きされる可能性があります。
-
-ConfigMap のこれまでの変更が上書きされないよう、これまでの変更に使用したのと同じ構成設定ファイルを指定してください。
-
 アップグレード中、コントロール プレーンでダウンタイムが発生する場合があります。 データ プレーンは、CRD のアップグレード中のみ影響を受けます。
 
 ### <a name="supported-upgrades"></a>サポートされるアップグレード
@@ -411,28 +459,33 @@ OSM 拡張機能は、次のマイナー バージョンにアップグレード
 
 アップグレード先のバージョンで CRD バージョンが更新されている場合は、既存の CRD を先に削除しなければ、OSM 拡張機能をそのバージョンにアップグレードすることはできません。 アップグレード先の OSM で CRD バージョンが更新されているかどうかは、[OSM リリース ノート](https://github.com/openservicemesh/osm/releases)の CRD Updates (CRD の更新) セクションで確認できます。
 
-[OSM CRD Upgrades のドキュメント](https://github.com/openservicemesh/osm/blob/release-v0.8/docs/content/docs/upgrade_guide.md#crd-upgrades)を確認し、クラスターのアップグレードに備えます。 アップグレード後にすぐ再作成できるよう、CRD を削除する前に Custom Resource をバックアップします。 その後で、このガイドの説明に従って、Helm や OSM CLI の代わりに az k8s-extension を使用して、アップグレードを実行してください。
+アップグレード後にすぐ再作成できるよう、CRD を削除する前に Custom Resource をバックアップします。 その後、次に示すアップグレード手順に従います。
 
 > [!NOTE] 
 > CRD をアップグレードすると、削除されてから再び作成されるまでの間 SMI ポリシーが存在しなくなるので、その間データ プレーンが影響を受けます。
 
 ### <a name="upgrade-instructions"></a>アップグレード方法の説明
 
-1. 必要に応じて、[古くなった CRD を削除し、新しい CRD をインストールします](https://github.com/openservicemesh/osm/blob/release-v0.8/docs/content/docs/upgrade_guide.md#crd-upgrades)。
-    - 新しく作成するときの参照用に、既存の Custom Resources をバックアップします。
-    - 新しいバージョンの拡張機能をインストールする前に、更新された CRD と Custom Resources をインストールします。
+1. 古い CRD とカスタム リソースを削除します ([OSM リポジトリ](https://github.com/openservicemesh/osm)のルートから実行)。 [OSM CRD](https://github.com/openservicemesh/osm/tree/main/charts/osm/crds) のタグがグラフの新しいバージョンに対応していることを確認します。
+    ```azurecli-interactive
+    kubectl delete --ignore-not-found --recursive -f ./charts/osm/crds/
 
-2. chart の新しいバージョンを環境変数に設定します。
+2. Install the updated CRDs.
+    ```azurecli-interactive
+    kubectl apply -f charts/osm/crds/
+    ```
+
+3. chart の新しいバージョンを環境変数に設定します。
     ```azurecli-interactive
     export VERSION=<chart version>
     ```
     
-3. chart の新しいバージョンを使用して az k8s-extension create を実行します。
+4. chart の新しいバージョンを使用して az k8s-extension create を実行します。
     ```azurecli-interactive
     az k8s-extension create --cluster-name $CLUSTER_NAME --resource-group $RESOURCE_GROUP --cluster-type connectedClusters --extension-type Microsoft.openservicemesh --scope cluster --release-train pilot --name osm --version $VERSION --configuration-settings-file $SETTINGS_FILE
     ```
 
-4. 必要に応じて、新しい CRD で Custom Resources を再作成します。
+5. 新しい CRD を使用してカスタム リソースを再作成します
 
 ## <a name="uninstall-arc-enabled-open-service-mesh"></a>Arc 対応 Open Service Mesh をアンインストールします。
 

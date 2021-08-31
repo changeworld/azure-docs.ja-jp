@@ -12,12 +12,12 @@ ms.date: 04/29/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 8aaa087d1de85b77c9407f8d39e029e3bf2696f2
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 38af8d1ffd422b151bebc2fea42c575f181cc72e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614849"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741098"
 ---
 # <a name="lower-speech-synthesis-latency-using-speech-sdk"></a>Speech SDK を使用して音声合成の待機時間を短縮する
 
@@ -343,7 +343,8 @@ Speech SDK のパフォーマンスが向上し続けているため、アプリ
 ロード テストを使用して、音声合成サービスの容量と待機時間をテストすることができます。
 ガイドラインを次に示します。
 
- - 音声合成サービスには自動スケール機能がありますが、スケールアウトに時間がかかります。同時実行の数が短時間で増加した場合、クライアントの待機時間が長くなったり、`429` エラー コードが返されたり (要求が多すぎます) する可能性があります。 そのため、ロード テストでは、同時実行を徐々に増やすことをお勧めします。 詳細については、[次の記事](speech-services-quotas-and-limits.md#general-best-practices-to-mitigate-throttling-during-autoscaling)を参照してください。
+ - 音声合成サービスには自動スケール機能がありますが、スケールアウトに時間がかかります。同時実行の数が短時間で増加した場合、クライアントの待機時間が長くなったり、`429` エラー コードが返されたり (要求が多すぎます) する可能性があります。 そのため、ロード テストでは、同時実行を徐々に増やすことをお勧めします。 詳細については、[こちらの記事を参照してください](speech-services-quotas-and-limits.md#general-best-practices-to-mitigate-throttling-during-autoscaling)。特に、[ワークロード パターンのこの例](speech-services-quotas-and-limits.md#example-of-a-workload-pattern-best-practice)をご確認ください。
+ - オブジェクト プールを使用したサンプル ([C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs) および [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechSynthesisScenarioSamples.java)) を、ロード テストや待機時間数の取得に利用できます。 サンプルのテストのターン数と同時実行を、目的の同時実行に合わせて変更できます。
  - このサービスには実際のトラフィックに基づくクォータ制限があるため、実際のトラフィックよりも同時実行の数を多くしてロード テストを実行する場合は、テストの前に接続しておきます。
 
 ## <a name="next-steps"></a>次のステップ

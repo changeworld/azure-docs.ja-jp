@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: allensu
-ms.openlocfilehash: 159c4ac852e1caee3794962a262f84baee8b3487
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 19553eb4f5f7df7c3edf54ff3fded3727feb2e54
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959243"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727977"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Microsoft からの Azure CDN に対するデバッグ HTTP ヘッダー
 デバッグ応答ヘッダー `X-Cache` では、コンテンツ提供元の CDN スタックのレイヤーに関する詳細が提供されます。 このヘッダーは、Microsoft からの Azure CDN に固有のものです。
@@ -30,6 +30,8 @@ ms.locfileid: "111959243"
 -------|------------
 X-Cache:TCP_HIT | このヘッダーは、コンテンツが CDN エッジ キャッシュから提供されているときに返されます。 
 X-Cache: TCP_REMOTE_HIT | このヘッダーは、コンテンツが CDN リージョン キャッシュ (配信元シールド レイヤー) から提供されているときに返されます。
-X-Cache: TCP_MISS | このヘッダーは、キャッシュ ミスがあり、コンテンツが配信元から提供されているときに返されます。 
+X-Cache: TCP_MISS | このヘッダーは、キャッシュ ミスがあり、コンテンツが配信元から提供されているときに返されます。
+X-Cache: PRIVATE_NOSTORE | このヘッダーは、Cache-Control 応答ヘッダーが private または no-store のいずれかに設定されているため、要求をキャッシュできないときに返されます。
+X-Cache: CONFIG_NOCACHE | このヘッダーは、要求が CDN プロファイルにキャッシュされないように構成されている場合に返されます。
 
 Azure CDN でサポートされている HTTP ヘッダーの詳細については、「[Front Door からバックエンド](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend)」を参照してください。

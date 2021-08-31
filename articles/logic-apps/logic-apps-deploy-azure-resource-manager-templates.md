@@ -3,16 +3,16 @@ title: ロジック アプリ テンプレートのデプロイ
 description: Azure Logic Apps 用に作成された Azure Resource Manager テンプレートをデプロイする方法について説明します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: article
-ms.date: 08/25/2020
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 08/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f8a71aa4545316313f4ef2d9f349646ca8769d7
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 8be8361b58e4b1b1fad3f41b29958a360e206890
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278436"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733779"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 
@@ -93,11 +93,11 @@ Azure Pipelines と Azure Resource Manager テンプレートの継続的イン�
 
 * [Azure Pipelines を使用した Resource Manager テンプレートの統合](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
 * [チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
-* [サンプル:Azure Logic Apps から Azure Service Bus キューに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル:Azure Logic Apps から Azure Storage アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル:Azure Logic Apps の関数アプリ アクションを設定し、Azure DevOps に Azure Pipelines を使用してデプロイする](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル:Azure Logic Apps から統合アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [サンプル:Azure Logic Apps を使用した Azure Pipelines の調整](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [サンプル:Azure Logic Apps を使用した Azure Pipelines の調整](https://github.com/Azure-Samples/azure-logic-apps-pipeline-orchestration)
+* [サンプル:Azure Logic Apps から Azure Storage アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/storage-account-connections)
+* [サンプル:Azure Logic Apps から Azure Service Bus キューに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/service-bus-connections)
+* [サンプル: Azure Logic Apps の Azure Functions アクションを設定し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/function-app-actions)
+* [サンプル:Azure Logic Apps から統合アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/integration-account-connections)
 
 Azure Pipelines を使用するための一般的な大まかな手順は次のとおりです。
 
@@ -123,14 +123,14 @@ Azure Pipelines を使用するための一般的な大まかな手順は次の�
 
 接続の承認に関するいくつかの推奨事項を次に示します。
 
+* Azure portal または Visual Studio のいずれかで、Logic App Designer でロジック アプリを開くことによって OAuth 接続を手動で承認します。 接続を承認すると、アクセスを許可するための確認ページが表示される場合があります。
+
 * 同じリージョンにあるロジック アプリ全体で、API 接続リソースを事前承認して共有します。 API 接続は、ロジック アプリとは別に Azure リソースとして存在します。 ロジック アプリは API 接続リソースに依存しますが、API 接続リソースはロジック アプリに依存せず、依存するロジック アプリを削除した後も維持されます。 また、ロジック アプリは他のリソース グループに存在する API 接続を使用できます。 ただし、ロジック アプリ デザイナーは、使用するロジック アプリと同じリソース グループ内の API 接続の作成のみサポートします。
 
   > [!NOTE]
   > API 接続の共有を検討している場合、ソリューションによって[調整に関する問題を解決できる](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling)ことを確認してください。 調整は接続レベルで行われるため、複数のロジック アプリにわたって同じ接続を再利用すると、調整の問題が発生する可能性が高くなることがあります。
 
 * 多要素認証を必要とするサービスやシステムがシナリオに含まれている場合を除き、PowerShell スクリプトを使用して、承認と同意が既に提供されたアクティブなブラウザー セッションを持つ仮想マシン上で継続的インテグレーション ワーカーを通常のユーザー アカウントとして実行することによって、各 OAuth 接続への同意を提供することができます。 たとえば、[Logic Apps GitHub リポジトリの LogicAppConnectionAuth プロジェクト](https://github.com/logicappsio/LogicAppConnectionAuth)によって提供されるサンプル スクリプトを再利用できます。
-
-* Azure portal または Visual Studio のいずれかで、Logic App Designer でロジック アプリを開くことによって OAuth 接続を手動で承認します。
 
 * 接続を承認するのではなく Azure Active Directory (Azure AD) [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)を使用する場合は、[ロジック アプリ テンプレートでサービス プリンシパル パラメーターを指定する方法](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)のページを参照してください。
 

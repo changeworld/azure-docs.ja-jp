@@ -2,19 +2,21 @@
 title: Azure PowerShell を使用してストレージ アカウント内の Azure BLOB をバックアップする
 description: Azure PowerShell を使用して、ストレージ アカウント内のすべての Azure BLOB をバックアップする方法について説明します。
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: 55d33283360adae4894032bec648cfc973391f38
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/06/2021
+ms.openlocfilehash: 0f3e7d03abbf4a5bfbb5d5cb533df04a17c71edf
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968691"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179782"
 ---
 # <a name="back-up-all-azure-blobs-in-a-storage-account-using-azure-powershell"></a>Azure PowerShell を使用してストレージ アカウント内のすべての Azure BLOB をバックアップする
 
 この記事では、Azure PowerShell を使用して、ストレージ アカウント内のすべての [Azure BLOB](./blob-backup-overview.md) をバックアップする方法について説明します。
 
 この記事では、次の方法について学習します。
+
+- 開始する前に
 
 - バックアップ コンテナーの作成
 
@@ -26,6 +28,10 @@ Azure BLOB の使用可能なリージョン、サポートされるシナリオ
 
 > [!IMPORTANT]
 > Azure BLOB のサポートは、Az 5.9.0 バージョンから利用できます。
+
+## <a name="before-you-start"></a>開始する前に
+
+始める前に[前提条件](./blob-backup-configure-manage.md#before-you-start)と[サポート マトリックス](./blob-backup-support-matrix.md)に関する記事を参照してください。
 
 ## <a name="create-a-backup-vault"></a>バックアップ コンテナーの作成
 
@@ -57,7 +63,7 @@ Type                : Microsoft.DataProtection/backupVaults
 コンテナーを作成したら、Azure BLOB を保護するためのバックアップ ポリシーを作成しましょう。
 
 > [!IMPORTANT]
-> コンテナーのバックアップ ストレージの冗長性が表示されますが、冗長性は BLOB の運用バックアップには適用されません。このバックアップはローカルなものであり、バックアップ コンテナーにデータは格納されないためです。 バックアップ コンテナー。 ここでのバックアップ コンテナーは、ストレージ アカウント内のブロック BLOB の保護を管理するために役立つ管理エンティティです。
+> コンテナーのバックアップ ストレージの冗長性が表示されますが、冗長性は BLOB の運用バックアップには適用されません。このバックアップはローカルなものであり、バックアップ コンテナーにデータは格納されないためです。 ここでのバックアップ コンテナーは、ストレージ アカウント内のブロック BLOB の保護を管理するために役立つ管理エンティティです。
 
 ## <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/17/2021
+ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e08f9090682a62ffe209122e88adca9e9710b96
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 3b1d7d8b658e0a0ac01789ca8a13ce0a2f779767
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064037"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734531"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -119,13 +119,13 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50048 | SubjectMismatchesIssuer - サブジェクトが、クライアント アサーション内の発行者クレームと一致しません。 テナント管理者に問い合わせてください。 |
 | AADSTS50049 | NoSuchInstanceForDiscovery - 不明または無効なインスタンス。 |
 | AADSTS50050 | MalformedDiscoveryRequest - 要求が正しい形式ではありません。 |
-| AADSTS50053 | IdsLocked - ユーザーが間違ったユーザー ID またはパスワードで何度もサインインを試みたために、アカウントがロックされています。 |
-| AADSTS50055 | InvalidPasswordExpiredPassword - パスワードの期限が切れています。 |
-| AADSTS50056 | パスワードが無効または null です。パスワードがこのユーザーのストアに存在しません。 |
-| AADSTS50057 | UserDisabled - ユーザー アカウントが無効にされています。 アカウントは、管理者によって無効にされています。 |
-| AADSTS50058 | UserInformationNotProvided - ユーザーがサインインしていないことを意味します。 これは、ユーザーが認証されておらず、まだサインインしていないときに想定される一般的なエラーです。</br>ユーザーがその前にサインインした SSO のコンテキストでこのエラーが発生した場合は、SSO セッションが見つからないか無効であることを意味します。</br>prompt=none が指定されている場合、このエラーがアプリケーションに返される可能性があります。 |
+| AADSTS50053 | このエラーは、以下の 2 つの異なる理由により発生する可能性があります。 <br><ul><li>IdsLocked - ユーザーが間違ったユーザー ID またはパスワードで何度もサインインを試みたために、アカウントがロックされています。 サインインの試行が繰り返されたため、ユーザーがブロックされています。 「[リスクを修復してユーザーをブロック解除する](../identity-protection/howto-identity-protection-remediate-unblock.md)」を参照してください。</li><li>または、サインインが、悪意のあるアクティビティを伴う IP アドレスからのものであるため、ブロックされました。</li></ul> <br>このエラーの原因となった失敗の理由を特定するには、[Azure portal](https://portal.azure.com) にサインインします。  Azure AD テナントに移動し、 **[監視]**  ->  **[サインイン]** に移動します。**サインイン エラー コード** が 50053 の失敗したユーザー サインインを見つけ、 **[失敗の理由]** を確認します。|
+| AADSTS50055 | InvalidPasswordExpiredPassword - パスワードの期限が切れています。 ユーザーのパスワードの有効期限が切れているため、ログインまたはセッションが終了しました。 リセットする機会が提供されるか、[Azure Active Directory を使用してユーザーのパスワードをリセットする](../fundamentals/active-directory-users-reset-password-azure-portal.md)方法で管理者にリセットを求めることができます。 |
+| AADSTS50056 | パスワードが無効または null です。パスワードはこのユーザーのディレクトリに存在しません。 ユーザーは、パスワードを再入力するよう求められます。 |
+| AADSTS50057 | UserDisabled - ユーザー アカウントが無効にされています。 このアカウントの基礎となる Active Directory のユーザー オブジェクトが無効になっています。 管理者は、[Powershell を介して](/powershell/module/activedirectory/enable-adaccount)このアカウントを再有効化できます。 |
+| AADSTS50058 | UserInformationNotProvided - シングル サインオンに関するセッション情報が不十分です。 これは、ユーザーがサインインしていないことを意味します。 これは、ユーザーが認証されておらず、まだサインインしていないときに想定される一般的なエラーです。</br>ユーザーがその前にサインインした SSO のコンテキストでこのエラーが発生した場合は、SSO セッションが見つからないか無効であることを意味します。</br>prompt=none が指定されている場合、このエラーがアプリケーションに返される可能性があります。 |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided - テナントを識別する情報が要求内に見つからず、指定されたどの資格情報でも暗黙的に示されませんでした。 ユーザーはテナント管理者に連絡して問題解決に協力してもらうことができます。 |
-| AADSTS50061 | SignoutInvalidRequest - サインアウト要求が無効です。 |
+| AADSTS50061 | SignoutInvalidRequest - サインアウトを完了できません。 要求が無効でした。 |
 | AADSTS50064 | CredentialAuthenticationError - ユーザー名またはパスワードの資格情報の検証に失敗しました。 |
 | AADSTS50068 | SignoutInitiatorNotParticipant - サインアウトに失敗しました。 サインアウトを開始したアプリケーションは現在のセッションの参加者ではありません。 |
 | AADSTS50070 | SignoutUnknownSessionIdentifier - サインアウトに失敗しました。 サインアウト要求で、既存のセッションと一致していない名前識別子が指定されました。 |
@@ -136,14 +136,16 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50079 | UserStrongAuthEnrollmentRequired - 管理者による構成変更により、またはユーザーが新しい場所に移動したため、ユーザーは多要素認証を使用する必要があります。 |
 | AADSTS50085 | 更新トークンにソーシャル IDP ログインが必要です。 ユーザーに、ユーザー名とパスワードで再度サインインを試行させます |
 | AADSTS50086 | SasNonRetryableError |
-| AADSTS50087 | SasRetryableError - サービスは一時的に利用できません。 やり直してください。 |
-| AADSTS50089 | フロー トークンの有効期限が切れています。認証に失敗しました。 ユーザーに、ユーザー名とパスワードを使用してサインインを再試行させてください。 |
+| AADSTS50087 | SasRetryableError - 強力な認証中に一時的なエラーが発生しました。 再試行してください。 |
+| AADSTS50088 | 通信の MFA 呼び出しの上限に達しました。 しばらくたってからもう一度試してください。 |
+| AADSTS50089 | フロー トークンの有効期限切れのため、認証に失敗しました。 予想される動作 - 認証コード、更新トークン、セッションが時間の経過により期限切れになるか、ユーザーまたは管理者によって取り消されます。アプリは、ユーザーに新しいログインを要求します。 |
 | AADSTS50097 | DeviceAuthenticationRequired - デバイス認証が必要です。 |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized - JWT 署名が無効です。 |
 | AADSTS50105 | EntitlementGrantsNotFound - サインインしているユーザーが、サインインしているアプリのロールに割り当てられていません。 アプリにユーザーを割り当ててください。 詳細については、エラー [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS50107 | InvalidRealmUri - 要求されたフェデレーション領域オブジェクトが存在しません。 テナント管理者に問い合わせてください。 |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat - JWT ヘッダーの問題。 テナント管理者に問い合わせてください。 |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter - 要求の変換に、無効な入力パラメーターが含まれています。 テナント管理者に問い合わせて、ポリシーを更新してください。 |
+| AADSTS501241 | 変換 ID '{transformId}' に必須の入力 '{paramName}' がありません。 このエラーは、Azure AD がアプリケーションに対する SAML 応答の作成を試みているときに返されます。 SAML 応答では NameID 要求または NameIdentifier が必須であり、Azure AD が NameID 要求のソース属性を取得できなかった場合に、このエラーが返されます。 解決するには、[Azure Portal] > [Azure Active Directory] > [エンタープライズ アプリケーション] > アプリケーションを選択します > [シングル サインオン] > [ユーザー属性とクレーム] > [一意のユーザー識別子 (名前 ID)] で要求規則を必ず追加してください。  |
 | AADSTS50125 | PasswordResetRegistrationRequiredInterrupt - パスワードのリセットまたはパスワード登録エントリのため、サインインが中断されました。 |
 | AADSTS50126 | InvalidUserNameOrPassword - 無効なユーザー名またはパスワードにより、資格情報の検証でエラーが発生しました。 |
 | AADSTS50127 | BrokerAppNotInstalled - ユーザーは、このコンテンツにアクセスするためにブローカー アプリをインストールする必要があります。 |
@@ -156,7 +158,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50135 | PasswordChangeCompromisedPassword - アカウントのリスクのため、パスワードの変更が必要です。 |
 | AADSTS50136 | RedirectMsaSessionToApp - 単一 MSA セッションが検出されました。 |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken - 外部更新トークンがないためセッションが無効です。 |
-| AADSTS50140 | KmsiInterrupt - ユーザーがサインインしたときの "サインインしたままにする" 割り込みによりエラーが発生しました。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
+| AADSTS50140 | KmsiInterrupt - ユーザーがサインインしたときの "サインインしたままにする" 割り込みによりエラーが発生しました。 これはログイン　フローの予想される部分であり、以降のログインが容易になるように現在のブラウザーにサインインしたままにするかユーザーに確認しています 詳細については、「[新しい Azure AD サインインと「サインインしたままにする」エクスペリエンスが登場](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/the-new-azure-ad-sign-in-and-keep-me-signed-in-experiences/m-p/128267)」を参照してください。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開く](../fundamentals/active-directory-troubleshooting-support-howto.md)ことができます。|
 | AADSTS50143 | セッションが一致しません。異なるリソースにより、ユーザーのテナントがドメインのヒントと一致しないため、セッションが無効です。 詳細を調べるための相関 ID、要求 ID、エラー コードを添えて、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword - ユーザーの Active Directory パスワードの有効期限が切れました。 ユーザーに新しいパスワードを生成するか、またはユーザーにセルフサービスのリセット ツールを使用させて、パスワードをリセットしてください。 |
 | AADSTS50146 | MissingCustomSigningKey - このアプリは、アプリ固有の署名キーを使って構成する必要があります。 そのように構成されていません。または、キーが有効期限切れか、またはまだ有効になっていません。 |
@@ -193,6 +195,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS65004 | UserDeclinedConsent - ユーザーはアプリへのアクセスの同意を拒否しました。 ユーザーに、再度サインインしてアプリに同意させてください|
 | AADSTS65005 | MisconfiguredApplication - アプリの必須リソース アクセス リストに、リソースによって検出可能なアプリが含まれていません。または、必須リソース アクセス リストで指定されていないリソースへのアクセスをクライアント アプリが要求したか、Graph サービスから無効な要求が返されたか、リソースが見つかりません。 アプリが SAML をサポートしている場合、間違った識別子 (エンティティ) でアプリを構成している可能性があります。 詳細については、エラー [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS650052 | このアプリには、組織 `\"{organization}\"` がサブスクライブしていないか有効にしていない `(\"{name}\")` サービスへのアクセスが必要です。 サービス サブスクリプションの構成を確認するには、IT 管理者にお問い合わせください。 |
+| AADSTS650054 |  アプリケーションが、削除されたか使用できなくなったリソースにアクセスするためのアクセス許可を要求しました。 アプリが呼び出しているすべてのリソースが、操作中のテナントに存在していることを確認してください。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 認証に失敗しました。 更新トークンが無効です。 次のいずれかの理由がエラーの原因の可能性があります。<ul><li>トークンのバインド ヘッダーが空</li><li>トークンのバインド ハッシュが一致しない</li></ul> |
 | AADSTS70001 | UnauthorizedClient - アプリケーションが無効です。 詳細については、エラー [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory) のトラブルシューティングに関する記事を参照してください。 |
@@ -200,6 +203,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS70003 | UnsupportedGrantType - アプリがサポートされていない付与タイプを返しました。 |
 | AADSTS70004 | InvalidRedirectUri - アプリが無効なリダイレクト URI を返しました。 クライアントによって指定されているリダイレクト アドレスが、構成されているどのアドレス、または OIDC 承認リストのどのアドレスとも、一致しません。 |
 | AADSTS70005 | UnsupportedResponseType - 次の理由により、アプリがサポートされていない応答の種類を返しました。<ul><li>応答の種類 "token" がアプリに対して有効になっていません</li><li>応答の種類 "id_token" には "OpenID" スコープが必要です。エンコードされた wctx にサポートされていない OAuth パラメーター値が含まれます</li></ul> |
+| AADSTS700054 | Response_type 'id_token' がアプリケーションに対して有効になっていません。  アプリケーションが承認エンドポイントから ID トークンを要求しましたが、ID トークンの暗黙的な許可が有効になっていませんでした。  [Azure Portal] > [Azure Active Directory] > [アプリの登録] > アプリケーションを選択します > [認証] > [暗黙的な許可およびハイブリッド フロー] で、[ID トークン] が選択されていることを確認してください。|
 | AADSTS70007 | UnsupportedResponseMode - アプリが、トークンを要求するときに、`response_mode` のサポートされていない値を返しました。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 非アクティブのため、更新トークンの有効期限が切れました。 トークンは XXX に発行され、一定期間、非アクティブでした。 |
 | AADSTS70011 | InvalidScope - アプリによって要求されたスコープが無効です。 |

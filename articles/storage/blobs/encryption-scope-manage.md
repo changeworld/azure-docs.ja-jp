@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1419dcba2dbf1732760848738c6f50c4168ac545
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a44666d8378b13f7ac8498ae4256507705ffc42b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664985"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723408"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>暗号化スコープの作成と管理
 
@@ -27,7 +27,7 @@ ms.locfileid: "110664985"
 
 ## <a name="create-an-encryption-scope"></a>暗号化スコープの作成
 
-保護対象の暗号化スコープは、Microsoft マネージド キーを使用して作成することも、Azure Key Vault または Azure Key Vault Managed Hardware Security Model (HSM) (プレビュー) に格納されているカスタマー マネージド キーを使用して作成することもできます。 カスタマー マネージド キーを使用して暗号化スコープを作成するには、まずキー コンテナーまたは Managed HSM を作成し、スコープで使用するキーを追加する必要があります。 キー コンテナーまたは Managed HSM では、消去保護が有効になっている必要があり、これがストレージ アカウントと同じリージョンに存在する必要があります。
+保護対象の暗号化スコープは、Microsoft マネージド キーを使用して作成することも、Azure Key Vault または Azure Key Vault Managed Hardware Security Model (HSM) に格納されているカスタマー マネージド キーを使用して作成することもできます。 カスタマー マネージド キーを使用して暗号化スコープを作成するには、まずキー コンテナーまたは Managed HSM を作成し、スコープで使用するキーを追加する必要があります。 キー コンテナーまたは Managed HSM では、消去保護が有効になっている必要があり、これがストレージ アカウントと同じリージョンに存在する必要があります。
 
 暗号化スコープは、作成時に自動的に有効になります。 作成した暗号化スコープは、BLOB の作成時に指定できます。 コンテナーを作成するときに既定の暗号化スコープを指定することもできます。これは、コンテナー内のすべての BLOB に自動的に適用されます。
 
@@ -65,7 +65,7 @@ $accountName = "<storage-account>"
 $scopeName1 = "customer1scope"
 
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -StorageAccountName $accountName `
     -EncryptionScopeName $scopeName1 `
     -StorageEncryption
 ```
@@ -105,7 +105,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ```powershell
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -StorageAccountName $accountName `
     -EncryptionScopeName $scopeName2 `
     -KeyUri $keyUri `
     -KeyvaultEncryption
@@ -181,7 +181,7 @@ az storage account encryption-scope create \
 キー コンテナーまたはマネージド HSM でカスタマー マネージド キーを使用して Azure Storage 暗号化を構成する方法については、次の記事を参照してください。
 
 - [Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](../common/customer-managed-keys-configure-key-vault.md)
-- [Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する](../common/customer-managed-keys-configure-key-vault-hsm.md)。
+- [Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する](../common/customer-managed-keys-configure-key-vault-hsm.md)
 
 インフラストラクチャ暗号化の詳細については、「[データの二重暗号化のためのインフラストラクチャ暗号化を有効にする](../common/infrastructure-encryption-enable.md)」を参照してください。
 

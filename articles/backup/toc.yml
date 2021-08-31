@@ -184,6 +184,8 @@
           items:
             - name: コンテナーから複数の SQL Server VM をバックアップする
               href: backup-sql-server-database-azure-vms.md
+            - name: SQL 可用性グループのバックアップ
+              href: backup-sql-server-on-availability-groups.md
             - name: VM ペインから SQL Server VM をバックアップする
               href: backup-sql-server-vm-from-vm-pane.md
         - name: 復元

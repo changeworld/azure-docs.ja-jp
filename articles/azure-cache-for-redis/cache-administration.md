@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7654e3a405d8baeb2e8fc598d49cc7fff014efed
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: c2006c71a9ba9ff24662f27a9f2e4015786197e7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653922"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742686"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure Cache for Redis を管理する方法
 
@@ -24,15 +24,15 @@ ms.locfileid: "110653922"
 
 左側の **[再起動]** では、キャッシュの 1 つ以上のノードを再起動できます。 この再起動機能により、アプリケーションにキャッシュ ノードの障害が発生した場合の回復性をテストすることができます。
 
-![[再起動] オプションが強調表示されているスクリーンショット。](./media/cache-administration/redis-cache-administration-reboot.png)
+:::image type="content" source="media/cache-administration/cache-administration-reboot-2.png" alt-text="[再起動] メニュー オプションが強調表示されているスクリーンショット":::
 
 再起動するノードを選び、 **[再起動]** を選択します。
 
-![再起動できるノードを示すスクリーンショット。](./media/cache-administration/redis-cache-reboot.png)
+:::image type="content" source="media/cache-administration/redis-cache-reboot-2.png" alt-text="再起動できるノードを示すスクリーンショット":::
 
 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動するキャッシュのシャードを選択できます。
 
-![再起動](./media/cache-administration/redis-cache-reboot-cluster.png)
+:::image type="content" source="media/cache-administration/redis-cache-reboot-cluster-2.png" alt-text="シャードのオプションのスクリーンショット":::
 
 キャッシュの 1 つ以上のノードを再起動するには、ノードを選択し、 **[再起動]** を選択します。 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動するシャードを選択し、 **[再起動]** を選択します。 数分後、選択したノードが再起動され、さらに数分後にオンラインに戻ります。
 
@@ -75,7 +75,7 @@ PowerShell での手順については、「[To reboot an Azure Cache for Redis]
 
 ## <a name="schedule-updates"></a>更新のスケジュール
 
-左側の **[更新のスケジュール]** では、キャッシュ インスタンスのメンテナンス期間を選択できます。 メンテナンス期間を使用すると、キャッシュをホストしている VM を更新できる曜日と時間を制御できます。 Azure Cache for Redis では、定義された時間枠の中で Redis サーバー ソフトウェアの更新を開始して完了するための最大限の努力が行われます。
+左側の **[更新のスケジュール設定]** では、キャッシュ インスタンスのメンテナンス期間を選択できます。 メンテナンス期間を使用すると、キャッシュをホストしている VM を更新できる曜日と時間を制御できます。 Azure Cache for Redis では、定義された時間枠の中で Redis サーバー ソフトウェアの更新を開始して完了するための最大限の努力が行われます。
 
 > [!NOTE]
 > メンテナンス期間は Redis サーバーの更新と、キャッシュをホストしている VM のオペレーティング システムの更新に適用されます。 メンテナンス期間は、キャッシュ VM やその他の Azure ネットワーク コンポーネントをホストしているホストのホスト OS 更新には適用されません。 滅多にありませんが、以前のモデルでキャッシュがホストされている場合 (キャッシュが以前のモデル上にあるかどうかは、キャッシュの DNS 名が "cloudapp.net"、"chinacloudapp.cn"、"usgovcloudapi.net" または "cloudapi.de" の接頭辞で解決されるかどうかで判断できます)、メンテナンス期間はゲスト OS 更新にも適用されません。
@@ -83,11 +83,11 @@ PowerShell での手順については、「[To reboot an Azure Cache for Redis]
 > 現時点では、Enterprise レベルのキャッシュの再起動やスケジュールされた更新を構成するするためのオプションはありません。
 >
 
-![更新のスケジュール](./media/cache-administration/redis-schedule-updates.png)
+:::image type="content" source="media/cache-administration/redis-schedule-updates-2.png" alt-text="更新のスケジュール設定を示すスクリーンショット":::
 
 メンテナンス期間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス期間の開始時刻を指定します。 **[OK]** をクリックします。 メンテナンス時間の時刻は UTC 時間です。
 
-更新の既定の最小メンテナンス時間は 5 時間です。 この値は、Azure portal からは構成できませんが、PowerShell で [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳細については、「Can I manage scheduled updates using PowerShell, CLI, or other management tools? (PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか)」を参照してください。
+更新の既定の最小メンテナンス時間は 5 時間です。 この値は、Azure portal からは構成できませんが、PowerShell で [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。 詳しくは、「[PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)」をご覧ください。
 
 ## <a name="schedule-updates-faq"></a>更新のスケジュールに関する FAQ
 

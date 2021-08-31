@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: b0f5bf01080d89e6dc6d6843312d96243b8526ba
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 5c8858e50707209b47eb61d554a8e4f7313c92c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484543"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731187"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>VMware 仮想マシンの Azure へのエージェントレス移行をスケーリングする
 
@@ -60,42 +60,45 @@ VMware 仮想マシンに対してエージェントレスの移行方法を使�
 ### <a name="2-download-the-installer-for-the-scale-out-appliance"></a>2.スケールアウト アプライアンスのインストーラーをダウンロードする
 
 **[Azure Migrate アプライアンスをダウンロードします]** で、 **[ダウンロード]** をクリックします。 PowerShell インストーラー スクリプトをダウンロードして、スケールアウト アプライアンスをWindows Server 2016 を実行している既存のサーバーにデプロイする必要があります。対象は、必要なハードウェア構成 (32 GB RAM、8 つの vCPU、約 80 GB のディスク ストレージ、直接またはプロキシ経由のインターネット アクセス) を満たしている必要があります。
+
 :::image type="content" source="./media/how-to-scale-out-for-migration/download-scale-out.png" alt-text="スケールアウト アプライアンス用のスクリプトをダウンロードする":::
 
 > [!TIP]
 > 次の手順を実行して、ダウンロードした zip ファイルのチェックサムを検証することができます。
 >
-> 1. 管理者としてコマンド プロンプトを開きます
+> 1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。
 > 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例 (パブリック クラウドの場合): ```C:\>Get-FileHash -Path .\AzureMigrateInstaller-VMware-Public-Scaleout.zip -Algorithm SHA256 ```
-> 3. 計算されたハッシュ値が次の文字列と一致しない場合は、ポータルから最新バージョンのスケールアウト アプライアンス インストーラーをダウンロードします。1E6B6E3EE8B2A800818B925F5DA67EF7874DAD87E32847120B32F3E21F5960F9
+    - 使用例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+> 3. 計算されたハッシュ値が次の文字列と一致しない場合は、ポータルから最新バージョンのスケールアウト アプライアンス インストーラーをダウンロードします。b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure Migrate インストーラー スクリプトを実行する
-インストーラー スクリプトでは以下が実行されます。
 
-- より多くの同時サーバー レプリケーションを実行するために、ゲートウェイ エージェントとアプライアンス構成マネージャーをインストールする。
-- Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
-- IIS 書き込み可能モジュールをダウンロードしてインストールする。
-- Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
-- パスに次のファイルを作成する。
-    - **構成ファイル**: %Programdata%\Microsoft Azure\Config
-    - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
-
-次のようにスクリプトを実行します。
-
-1. スケールアウト アプライアンスをホストするサーバー上のフォルダーに zip ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
+1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
-3. PowerShell のディレクトリを、ダウンロードした zip ファイルの内容が抽出されたフォルダーに変更します。
+3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    - パブリック クラウドの場合: 
-    
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-    スクリプトの実行が完了すると、アプライアンス構成マネージャーが起動します。
+5. シナリオ、クラウド、構成、接続性の各選択肢から選択して、必要なアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合、**スケールアウト アプライアンス** は、**Azure パブリック クラウド** で **既定の " _(パブリック エンドポイント)_ " 接続** を使用して、VMware 環境で実行されているサーバーで Azure Migrate プロジェクトへの同時レプリケーションを開始するように設定されます。
 
-問題が発生した場合は、トラブルシューティングのために次のスクリプト ログにアクセスできます: <br/> C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log。
+    :::image type="content" source="./media/how-to-scale-out-for-migration/script-vmware-scaleout-inline.png" alt-text="スケールアウト アプライアンスを設定する方法を示すスクリーンショット。" lightbox="./media/how-to-scale-out-for-migration/script-vmware-scaleout-expanded.png":::
+
+6. インストーラー スクリプトでは以下が実行されます。
+
+    - より多くの同時サーバー レプリケーションを実行するために、ゲートウェイ エージェントとアプライアンス構成マネージャーをインストールする。
+    - Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
+    - IIS 書き込み可能モジュールをダウンロードしてインストールする。
+    - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
+    - パスに次のファイルを作成する。
+        - **構成ファイル**: %Programdata%\Microsoft Azure\Config
+        - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
+
+スクリプトが正常に実行されると、アプライアンス構成マネージャーが自動的に起動します。
+
+> [!NOTE]
+> 問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
 
 
 ### <a name="4-configure-the-appliance"></a>4. アプライアンスを構成する
@@ -121,7 +124,8 @@ VMware 仮想マシンに対してエージェントレスの移行方法を使�
 
 1. ポータルからコピーした **Azure Migrate プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [Manage existing appliances]\(既存のアプライアンスの管理\)** に移動して、プライマリ アプライアンス名を選択し、これに関連付けられたスケールアウト アプライアンスを見つけ、対応するキーをコピーします。
 1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
-:::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="デバイス コードを示すモーダル":::
+
+   :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="デバイス コードを示すモーダル":::
 
 1. **[Copy code & Login]\(コードのコピーとログイン\)** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure ログイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
 1. 新しいタブで、デバイス コードを貼り付け、Azure のユーザー名とパスワードを使用してサインインします。

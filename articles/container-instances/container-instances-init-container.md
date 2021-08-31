@@ -3,12 +3,12 @@ title: init コンテナーを実行する
 description: アプリケーション コンテナーが実行される前に、Azure Container Instances で init コンテナーを実行して、コンテナー グループでセットアップ タスクを実行します。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 9ccaf1a67d6ca3bcff422acb591b528cc72a9608
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a108e76f76fb773d0f982a38b6415f9cd9937001
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763939"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181342"
 ---
 # <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>コンテナー グループでのセットアップ タスクのために init コンテナーを実行する
 
@@ -36,7 +36,7 @@ Azure Container Instances では、コンテナー グループ内の "*init コ
 
 まず、次の JSON を `azuredeploy.json` という名前の新しいファイルにコピーします。 このテンプレートは、1 つの init コンテナーと 2 つのアプリケーション コンテナーを含むコンテナー グループを設定します。
 
-* *init1* コンテナーは、Docker Hub から [busybox](https://hub.docker.com/_/busybox) イメージを実行します。 60 秒間スリープ状態になってから、[emptyDir ボリューム](container-instances-volume-emptydir.md)内のファイルにコマンドライン文字列を書き込みます。
+* *init1* コンテナーでは、[busybox](https://hub.docker.com/_/busybox) イメージが実行されます。 60 秒間スリープ状態になってから、[emptyDir ボリューム](container-instances-volume-emptydir.md)内のファイルにコマンドライン文字列を書き込みます。
 * どちらのアプリケーション コンテナーでも、Microsoft の `aci-wordcount` コンテナー イメージが実行されます。
     * *hamlet* コンテナーは、既定の構成でワードカウント アプリを実行し、シェイクスピアの戯曲 "*ハムレット*" での単語の頻度をカウントします。
     * *juliet* アプリ コンテナーは、emptDir ボリュームからコマンドライン文字列を読み取って、代わりにシェイクスピアの "*ロミオとジュリエット*" でワードカウント アプリを実行します。
@@ -68,7 +68,7 @@ Azure Container Instances では、コンテナー グループ内の "*init コ
                 {
                     "name": "init1",
                     "properties": {
-                        "image": "busybox",
+                        "image": "mcr.microsoft.com/aks/e2e/library-busybox:master.210714.1",
                         "environmentVariables": [],
                         "volumeMounts": [
                             {

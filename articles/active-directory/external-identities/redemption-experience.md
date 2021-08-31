@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80de2d30055d5a78f4a0105d33f01b4fabfbcd47
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 766228eb291776c0ba4162f78238d6336d9194ae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955091"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746146"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -24,7 +24,9 @@ ms.locfileid: "111955091"
 ゲスト ユーザーをディレクトリに追加すると、そのゲスト ユーザーのアカウントは同意状態 (PowerShell で表示可能) になります。これは、最初は **PendingAcceptance** に設定されます。 ゲストが招待を受け入れ、プライバシー ポリシーと利用規約に同意するまで、この設定は維持されます。 その後、同意の状態が **承認済み** に変わり、同意ページはゲストに表示されなくなります。
 
    > [!IMPORTANT]
-   > - **2021 年の下半期以降**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   >
+   > - **2021 年 7 月 12 日以降**、Azure AD の B2B のお客様が、カスタムまたは基幹業務アプリケーションのセルフサービス サインアップで使用するために新しい Google の統合をセットアップした場合、認証がシステム Web ビューに移動されるまで、Google ID を使用した認証が機能しなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - **2021 年の 9 月 30 日より**、Google は[埋め込みの Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 自分のアプリで埋め込みの Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
    > - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様には、一般提供が開始された、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。
 
 ## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>共通のエンドポイントを使用した引き換えとサインイン
@@ -62,9 +64,9 @@ ms.locfileid: "111955091"
 
 ## <a name="redemption-limitation-with-conflicting-contact-object"></a>連絡先オブジェクトの競合による引き換えの制限
 招待された外部ゲスト ユーザーのメール アドレスルが既存の[連絡先オブジェクト](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)と競合しているために、ゲスト ユーザーが proxyAddress なしで作成される場合があります。 これは既知の制限であり、ゲスト ユーザーは次のことを行えなくなります。 
-- [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation)、[Microsoft アカウント](/azure/active-directory/external-identities/microsoft-account)、[Google フェデレーション](/azure/active-directory/external-identities/google-federation)、または[電子メール ワンタイム パスコード](/azure/active-directory/external-identities/one-time-passcode) アカウントを使用して、直接リンクから招待を引き換える。 
-- [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) および[電子メール ワンタイム パスコード](/azure/active-directory/external-identities/one-time-passcode) アカウントを使用して、招待メールの引き換えリンクから招待を引き換える。
-- [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) および [Google フェデレーション](/azure/active-directory/external-identities/google-federation) アカウントを使用して、引き換え後にアプリケーションにもう一度サインインする。
+- [SAML/WS-Fed IdP](./direct-federation.md)、[Microsoft アカウント](./microsoft-account.md)、[Google フェデレーション](./google-federation.md)、または[電子メール ワンタイム パスコード](./one-time-passcode.md) アカウントを使用して、直接リンクから招待を引き換える。 
+- [SAML/WS-Fed IdP](./direct-federation.md) および[電子メール ワンタイム パスコード](./one-time-passcode.md) アカウントを使用して、招待メールの引き換えリンクから招待を引き換える。
+- [SAML/WS-Fed IdP](./direct-federation.md) および [Google フェデレーション](./google-federation.md) アカウントを使用して、引き換え後にアプリケーションにもう一度サインインする。
 
 [連絡先オブジェクト](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)の競合が原因で招待を引き換えることができないユーザーのブロックを解除するには、これらの手順に従います。
 1. 競合する連絡先オブジェクトを削除します。
@@ -126,7 +128,12 @@ ms.locfileid: "111955091"
 
    ![アプリ アクセス パネルを示すスクリーンショット](media/redemption-experience/myapps.png) 
 
-ディレクトリでは、ゲストの **[招待が受け入れられました]** の値が **[はい]** に変わります。 MSA が作成された場合、ゲストの **[ソース]** には **Microsoft アカウント** が示されます。 ゲスト ユーザー アカウントのプロパティの詳細については、[Azure AD B2B コラボレーション ユーザーのプロパティ](user-properties.md)に関するページを参照してください。 
+> [!NOTE]
+> 同意エクスペリエンスは、ユーザーがサインインした後にのみ表示され、前には表示されません。 同意エクスペリエンスがユーザーに表示されないシナリオがあります。次に例を示します。
+> - ユーザーが既に同意エクスペリエンスを受け入れている
+> - 管理者が[テナント全体の管理者の同意をアプリケーションに付与している](../manage-apps/grant-admin-consent.md)
+
+ディレクトリでは、ゲストの **[招待が受け入れられました]** の値が **[はい]** に変わります。 MSA が作成された場合、ゲストの **[ソース]** には **Microsoft アカウント** が示されます。 ゲスト ユーザー アカウントのプロパティの詳細については、[Azure AD B2B コラボレーション ユーザーのプロパティ](user-properties.md)に関するページを参照してください。 アプリケーションへのアクセス中に管理者の同意を要求するエラーが表示される場合は、[アプリに管理者の同意を付与する方法](../develop/v2-admin-consent.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

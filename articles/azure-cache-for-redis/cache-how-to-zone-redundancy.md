@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: b61e1e0b185355c06d10648f267895e819162318
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 522cf0ad115e1149d7746ecadef96ae9494a1d8c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969706"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744942"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Azure Cache for Redis のゾーン冗長性を有効にする
 この記事では、Azure portal を使用してゾーン冗長の Azure Cache インスタンスを構成する方法について説明します。
@@ -51,18 +51,18 @@ Azure Cache for Redis の Standard、Premium、および Enterprise の各レベ
    
     :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="可用性ゾーン":::
 
-1. 他のオプションは既定の設定のままにします。 
+1. クラスタリングまたは RDB 永続化 (あるいはその両方) の設定を構成します。  
 
     > [!NOTE]
     > ゾーン冗長性では、AOF 永続化がサポートされず、現在 geo レプリケーションも使用できません。
     >
 
-1. **Create** をクリックしてください。 
+1. **［作成］** を選択します 
    
     キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
    
     > [!NOTE]
-    > 可用性ゾーンは、キャッシュの作成後に変更することはできません。
+    > 可用性ゾーンは、キャッシュの作成後に変更することも、有効にすることもできません。 
     >
 
 ## <a name="zone-redundancy-faq"></a>ゾーン冗長性に関する FAQ

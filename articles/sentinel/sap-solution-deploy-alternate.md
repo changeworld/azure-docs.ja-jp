@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel SAP データ コネクタをオンプレミスに展開する | Microsoft Docs
-description: オンプレミスのマシンを使用して、SAP 環境用の Azure Sentinel データ コネクタを展開する方法について説明します。
+title: Azure Sentinel SAP データ コネクタ エキスパートの構成オプション、オンプレミスのデプロイ、および SAPControl ログ ソース | Microsoft Docs
+description: エキスパートの構成オプションとオンプレミスのマシンを使用して、SAP 環境用の Azure Sentinel データ コネクタをデプロイする方法について説明します。 SAPControl ログ ソースの詳細も確認してください。
 author: batamig
 ms.author: bagol
 ms.service: azure-sentinel
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 05/19/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: fc045d4b6c185b9e27573a1dd97c1194239f7463
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ba0457bef8ad4e732cffe229e850272f68a6d30f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466461"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723438"
 ---
-# <a name="deploy-the-azure-sentinel-sap-data-connector-on-premises"></a>Azure Sentinel SAP データ コネクタをオンプレミスに展開する
+# <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>エキスパートの構成オプション、オンプレミスのデプロイ、SAPControl のログ ソース
 
 この記事では、Azure Sentinel SAP データ コネクタをエキスパートまたはカスタム プロセスに展開する方法について説明します。これには、オンプレミスのマシンと Azure Key Vault を使用して資格情報を格納する方法などが含まれます。
 
@@ -38,20 +38,31 @@ Azure Sentinel SAP データ コネクタを展開するための基本的な前
 
 Azure Sentinel SAP データ コネクタ専用の Azure キー コンテナーを作成します。
 
-次のコマンドを実行して、Azure キー コンテナーを作成します。
+次のコマンドを実行して、Azure キー コンテナーを作成し、Azure サービス プリンシパルにアクセスを許可します。 
 
 ``` azurecli
 kvgp=<KVResourceGroup>
 
 kvname=<keyvaultname>
 
+spname=<sp-name>
+
+kvname=<keyvaultname>
+# Optional when Azure MI not enabled - Create sp user for AZ cli connection, save details for env.list file
+az ad sp create-for-rbac –name $spname 
+
+SpID=$(az ad sp list –display-name $spname –query “[].appId” --output tsv
+
 #Create key vault
 az keyvault create \
   --name $kvname \
   --resource-group $kvgp
+  
+# Add access to SP
+az keyvault set-policy --name $kvname --resource-group $kvgp --object-id $spID --secret-permissions get list set
 ```
 
-詳細については、「[クイック スタート: Azure CLI を使用してキー コンテナーを作成する](/azure/key-vault/general/quick-create-cli)」を参照してください。
+詳細については、「[クイック スタート: Azure CLI を使用してキー コンテナーを作成する](../key-vault/general/quick-create-cli.md)」を参照してください。
 
 ## <a name="add-azure-key-vault-secrets"></a>Azure Key Vault シークレットを追加する
 
@@ -132,8 +143,9 @@ SAP 資格情報を使用してキー コンテナーを準備した後に、こ
 
     ```bash
     mkdir /home/$(pwd)/sapcon/<sap-sid>/
-    Cd /home/$(pwd)/sapcon/<sap-sid>/
-    Wget  https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/template/systemconfig.inicp <**nwrfc750X_X-xxxxxxx.zip**> /home/$(pwd)/sapcon/<sap-sid>/
+    cd /home/$(pwd)/sapcon/<sap-sid>/
+    wget  https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/template/systemconfig.ini 
+    cp <**nwrfc750X_X-xxxxxxx.zip**> /home/$(pwd)/sapcon/<sap-sid>/
     ```
 
 1. 埋め込みコメントを参考にして、必要に応じて **systemconfig.ini** ファイルを編集します。 詳細については、「[SAP データ コネクタを手動で構成する](#manually-configure-the-sap-data-connector)」を参照してください。
@@ -164,7 +176,7 @@ SAP 資格情報を使用してキー コンテナーを準備した後に、こ
     ```bash
     ##############################################################
     ##############################################################
-    # env.list template
+    # env.list template for Credentials
     SAPADMUSER=<SET_SAPCONTROL_USER>
     SAPADMPASSWORD=<SET_SAPCONTROL_PASS>
     ABAPUSER=SET_ABAP_USER>
@@ -172,13 +184,18 @@ SAP 資格情報を使用してキー コンテナーを準備した後に、こ
     JAVAUSER=<SET_JAVA_OS_USER>
     JAVAPASS=<SET_JAVA_OS_USER>
     ##############################################################
+    ##############################################################
+    # env.list template for AZ Cli when MI is not enabled
+    AZURE_TENANT_ID=<your tenant id>
+    AZURE_CLIENT_ID=<your client/app id>
+    ##############################################################
     ```
 
 1. SAP データ コネクタがインストールされた、定義済みの Docker イメージをダウンロードして実行します。  次を実行します。
 
     ```bash
-    docker pull mcr.microsoft.com/azure-sentinel/solution/sapcon:latest-preview
-    docker run --env-file=<env.list_location> -d -v /home/$(pwd)/sapcon/<sap-sid>/:/sapcon-app/sapcon/config/system --name sapcon-<sid> sapcon
+    docker pull docker pull mcr.microsoft.com/azure-sentinel/solutions/sapcon:latest-preview
+    docker run --env-file=<env.list_location> -d --restart unless-stopped -v /home/$(pwd)/sapcon/<sap-sid>/:/sapcon-app/sapcon/config/system --name sapcon-<sid> sapcon
     rm -f <env.list_location>
     ```
 
@@ -237,10 +254,10 @@ osuser = <SET_YOUR_SAPADM_LIKE_USER>
 ospasswd = <SET_YOUR_SAPADM_PASS>
 x509pkicert = <SET_YOUR_X509_PKI_CERTIFICATE>
 ##############################################################
-appserver = <SET_YOUR_SAPCTRL_SERVER>
-instance = <SET_YOUR_SAP_INSTANCE>
-abapseverity = <SET_ABAP_SEVERITY>
-abaptz = <SET_ABAP_TZ>
+appserver = <SET_YOUR_SAPCTRL_SERVER IP OR FQDN>
+instance = <SET_YOUR_SAP_INSTANCE NUMBER, example 10>
+abapseverity = <SET_ABAP_SEVERITY 0 = All logs ; 1 = Warning ; 2 = Error>
+abaptz = <SET_ABAP_TZ --Use ONLY GMT FORMAT-- example - For OS Timezone = NZST use abaptz = GMT+12>
 
 [File Extraction JAVA]
 javaosuser = <SET_YOUR_JAVAADM_LIKE_USER>
@@ -249,10 +266,10 @@ javaosuser = <SET_YOUR_JAVAADM_LIKE_USER>
 javaospasswd = <SET_YOUR_JAVAADM_PASS>
 javax509pkicert = <SET_YOUR_X509_PKI_CERTIFICATE>
 ##############################################################
-javaappserver = <SET_YOUR_JAVA_SAPCTRL_SERVER>
-javainstance = <SET_YOUR_JAVA_SAP_INSTANCE>
-javaseverity = <SET_JAVA_SEVERITY>
-javatz = <SET_JAVA_TZ>
+javaappserver = <SET_YOUR_JAVA_SAPCTRL_SERVER IP ADDRESS OR FQDN>
+javainstance = <SET_YOUR_JAVA_SAP_INSTANCE for example 10>
+javaseverity = <SET_JAVA_SEVERITY  0 = All logs ; 1 = Warning ; 2 = Error>
+javatz = <SET_JAVA_TZ --Use ONLY GMT FORMAT-- example - For OS Timezone = NZST use javatz = GMT+12>
 ```
 
 ### <a name="define-the-sap-logs-that-are-sent-to-azure-sentinel"></a>Azure Sentinel に送信される SAP ログを定義する
@@ -314,6 +331,28 @@ timechunk = 60
 |**timechunk**     |   システムが、データ抽出の間隔として特定の分数を待機することを指定します。 このパラメータは、大量のデータが予想される場合に使用します。 <br><br>たとえば、最初の 24 時間の間の初期データの読み込み中、各データ抽出に十分な時間を与えるために、データ抽出を 30 分ごとにしか実行しないようにすることができます。 このような場合は、この値を **30** に設定します。  |
 |     |         |
 
+### <a name="configuring-an-abap-sap-control-instance"></a>ABAP SAP Control インスタンスを構成する
+
+NW RFC と SAP Control Web サービスベースのログの両方を含む、すべての ABAP ログを Azure Sentinel に取り込むには、次の ABAP SAP Control の詳細を構成します。
+
+|設定  |説明  |
+|---------|---------|
+|**javaappserver**     |ご使用の SAP Control ABAP サーバー ホストを入力します。 <br>例: `contoso-erp.appserver.com`         |
+|**javainstance**     |ご使用の SAP Control ABAP インスタンス番号を入力します。 <br>例: `00`         |
+|**abaptz**     |ご使用の SAP Control ABAP サーバーで設定されているタイム ゾーンを GMT 形式で入力します。 <br>例: `GMT+3`         |
+|**abapseverity**     |ABAP ログを Azure Sentinel に取り込む最小限の包括的な重大度レベルを入力します。  次の値が含まれます。 <br><br>- **0** = すべてのログ <br>- **1** = 警告 <br>- **2** = エラー     |
+
+
+### <a name="configuring-a-java-sap-control-instance"></a>Java SAP Control インスタンスを構成する
+
+SAP Control Web サービス ログを Azure Sentinel に取り込むには、次の JAVA SAP Control インスタンスの詳細を構成します。
+
+|パラメーター  |説明  |
+|---------|---------|
+|**javaappserver**     |ご使用の SAP Control Java サーバー ホストを入力します。 <br>例: `contoso-java.server.com`         |
+|**javainstance**     |ご使用の SAP Control ABAP インスタンス番号を入力します。 <br>例: `10`         |
+|**javatz**     |ご使用の SAP Control Java サーバーで設定されているタイム ゾーンを GMT 形式で入力します。 <br>例: `GMT+3`         |
+|**javaseverity**     |Web サービス ログを Azure Sentinel に取り込む最小限の包括的な重大度レベルを入力します。  次の値が含まれます。 <br><br>- **0** = すべてのログ <br>- **1** = 警告 <br>- **2** = エラー     |
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -326,3 +365,4 @@ SAP データ コネクタをインストールしたら、SAP 関連のセキ�
 - [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
 - [Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス](sap-solution-security-content.md)
+- [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

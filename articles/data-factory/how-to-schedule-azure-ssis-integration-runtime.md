@@ -2,17 +2,18 @@
 title: Azure-SSIS Integration Runtime のスケジュールを設定する方法
 description: この記事では、Azure Data Factory を使用して、Azure-SSIS Integration Runtime の開始と停止のスケジュールを設定する方法を説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 06/04/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 40c3b8ab228c93fd4c681281d89d16f88ddf30f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dec61a586c744fd8a5f537bf5a593b7409a1636e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735343"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 
@@ -79,9 +80,9 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 
 ### <a name="create-your-pipelines"></a>パイプラインを作成する
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。 
+1. ホーム ページで **[Orchestrate]\(調整\)** を選択します。 
 
-   ![開始ページ](./media/how-to-schedule-azure-ssis-integration-runtime/get-started-page.png)
+   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
    
 2. **[アクティビティ]** ツールボックスの **[全般]** メニューを展開し、 **[Web]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティ プロパティ ウィンドウの **[全般]** タブで、アクティビティの名前を「**startMyIR**」に変更します。 **[設定]** タブに切り替えて、次の操作を実行します。
 

@@ -10,12 +10,13 @@ ms.author: petrodeg
 ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: f493cfc21ff3f5e2aa122bbbc08f24e1a759558e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: devplatv2
+ms.openlocfilehash: 9f50fd0ff60f819717dbcb1e3878b4caf56c563b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480947"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729786"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)
 
@@ -33,7 +34,7 @@ Azure Machine Learning のマネージド オンライン エンドポイント�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [2.0 CLI (プレビュー) のインストール、設定、および使用](how-to-configure-cli.md)。
 
@@ -51,7 +52,7 @@ az ml endpoint create -n <endpoint-name> -f <spec_file.yaml> --local
 - Docker では、新しいコンテナー イメージをビルドするか、ローカルの Docker キャッシュから既存のイメージをプルします。 仕様ファイルの環境部分に一致する既存のイメージがある場合は、それが使用されます。
 - Docker では、モデルやコード ファイルなど、マウントされているローカルの成果物を使用して、新しいコンテナーを起動します。
 
-詳細については、「[マネージド オンライン エンドポイントを使用して機械学習モデルをローカルにデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-using-local-endpoints)」を参照してください。
+詳細については、「[マネージド オンライン エンドポイントを使用して機械学習モデルをローカルにデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-by-using-local-endpoints)」を参照してください。
 
 ## <a name="get-container-logs"></a>コンテナー ログを取得する
 
@@ -96,6 +97,10 @@ az ml endpoint get-logs -h
 モデルをデプロイする前に、十分なコンピューティング クォータを用意する必要があります。 このクォータでは、サブスクリプションごと、ワークスペースごと、SKU ごと、リージョンごとに使用可能な仮想コアの量を定義します。 SKU の種類に基づいて、デプロイするたびに使用可能なクォータが減算され、削除するたびに加算されます。
 
 考えられる軽減策は、使用されていない削除可能なデプロイが含まれていないかを確認することです。 または、[クォータの引き上げ要求](./how-to-manage-quotas.md)を送信できます。
+
+### <a name="err_1101-out-of-capacity"></a>ERR_1101: Out of capacity (容量不足です)
+
+Azure Machine Learning の容量不足のため、指定された VM サイズをプロビジョニングできませんでした。 後で再試行するか、別のリージョンにデプロイしてみてください。
 
 ### <a name="err_1200-unable-to-download-user-container-image"></a>ERR_1200: Unable to download user container image (ERR_1200: ユーザー コンテナー イメージをダウンロードできません)
 
@@ -150,6 +155,10 @@ az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --tail
 az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --lines 100
 ```
 
+### <a name="err_1350-unable-to-download-user-model-not-enough-space-on-the-disk"></a>ERR_1350: Unable to download user model, not enough space on the disk (ユーザー モデルをダウンロードできません。ディスクに十分な領域がありません)
+
+この問題は、モデルのサイズが使用可能なディスク領域よりも大きい場合に発生します。 もっと大きいディスク領域がある SKU を試してください。
+
 ### <a name="err_2100-unable-to-start-user-container"></a>ERR_2100: Unable to start user container (ERR_2100: ユーザー コンテナーを起動できません)
 
 デプロイの一部として提供される `score.py` を実行するために、Azure では `score.py` に必要なすべてのリソースを含むコンテナーを作成し、そのコンテナーでスコアリング スクリプトを実行します。
@@ -196,8 +205,7 @@ REST 要求でマネージド オンライン エンドポイントにアクセ�
 
 ## <a name="next-steps"></a>次のステップ
 
-デプロイの詳細については、以下を参照してください。
-
-* [マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)
-* [オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md)
+- [マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)
+- [オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md)
+- [マネージド オンライン エンドポイント (プレビュー) YAML リファレンス](reference-yaml-endpoint-managed-online.md)
 

@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 07/28/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05aca853e2eba98d224131c98751b4e2f4200024
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aa38195c836c77e9f0fd621776e997d4b7fff7bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765649"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744151"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件付きアクセス:セキュリティ情報登録のセキュリティ保護
 
-Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 この機能は、[統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用できます。 この機能により、組織は、条件付きアクセス ポリシー内のアプリケーションと同様に登録プロセスを処理し、条件付きアクセスの機能を最大限に活用してエクスペリエンスをセキュリティ保護できます。 
+Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの登録をユーザーがいつどのように行うかについてのセキュリティ保護が、条件付きアクセス ポリシーのユーザー アクションを使用して可能になりました。 この機能は、[統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を有効にしている組織で使用できます。 この機能により、組織は、条件付きアクセス ポリシー内のアプリケーションと同様に登録プロセスを処理し、条件付きアクセスの機能を最大限に活用してエクスペリエンスをセキュリティ保護できます。 Microsoft Authenticator アプリにサインインしているか、パスワードレスの電話によるサインインを有効にしているユーザーは、このポリシーの対象となります。
 
 一部の組織では、これまで、登録エクスペリエンスをセキュリティ保護する手段として、信頼されたネットワークの場所またはデバイスのコンプライアンスを使用していた場合がありました。 Azure AD に[一時アクセス パス](../authentication/howto-authentication-temporary-access-pass.md)が追加されたことにより、管理者は、任意のデバイスや場所から登録できるように、時間制限のある資格情報をユーザーにプロビジョニングできます。 一時アクセス パスの資格情報は、多要素認証の条件付きアクセス要件を満たしています。
 
