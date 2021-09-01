@@ -3,16 +3,16 @@ title: Azure Spring Cloud で Config Server インスタンスを設定する
 description: Azure portal で自分の Azure Spring Cloud 向けに Spring Cloud Config Server インスタンスを設定する方法を説明します
 ms.service: spring-cloud
 ms.topic: how-to
-ms.author: brendm
-author: bmitchell287
+ms.author: karler
+author: karlerickson
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: e4e4701b535e5363d0eb64f377fe4dccc3a3dd7d
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 123cc401d03a802c0a390f88cfc727893f165364
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653598"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015452"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -23,12 +23,13 @@ ms.locfileid: "110653598"
 Spring Cloud Config は、分散システムで外部化された構成用に、サーバー側とクライアント側のサポートを提供します。 Config Server インスタンスを使用すると、すべての環境にわたってアプリケーションの外部プロパティを一元的に管理できます。 詳細については、[Spring Cloud Config Server のリファレンス](https://spring.io/projects/spring-cloud-config)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * 既にプロビジョニングされ、実行されている Azure Spring Cloud サービス。 Azure Spring Cloud サービスを設定し、起動するには、「[クイックスタート: Azure CLI を使用して Java Spring アプリケーションを起動する](./quickstart.md)」を参照してください。
 
 ## <a name="restriction"></a>Restriction
 
-Git バックエンドで Config Server を使用する場合、いくつかの制限があります。 Config Server と Service Discovery にアクセスするため、一部のプロパティがお使いのアプリケーション環境に自動的に挿入されます。 これらのプロパティを Config Server ファイルからも構成すると、競合と予期しない動作が生じる場合があります。 プロパティには、次のようなものがあります。 
+Git バックエンドで Config Server を使用する場合、いくつかの制限があります。 Config Server と Service Discovery にアクセスするため、一部のプロパティがお使いのアプリケーション環境に自動的に挿入されます。 これらのプロパティを Config Server ファイルからも構成すると、競合と予期しない動作が生じる場合があります。 プロパティには、次のようなものがあります。
 
 ```yaml
 eureka.client.service-url.defaultZone
@@ -139,17 +140,17 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 
 4. **[既定のリポジトリ]** セクションで **[URI]** を "https://github.com/Azure-Samples/piggymetrics-config" に設定します。
 
-5. **[検証]** をクリックします。
+5. **[検証]** を選択します。
 
     ![構成サーバーへの移動](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
-6. 検証が完了したら、 **[適用]** をクリックして変更内容を保存します。
+6. 検証が完了したら、 **[適用]** を選択して変更を保存します。
 
     ![構成サーバーの検証](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
 
 7. 構成の更新に数分かかる場合があります。
- 
-    ![構成サーバーの更新](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+    ![構成サーバーの更新](media/spring-cloud-quickstart-launch-app-portal/updating-config.png)
 
 8. 構成が完了すると、通知が届きます。
 
@@ -157,14 +158,14 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 
 #### <a name="default-repository"></a>既定のリポジトリ
 
-* **パブリック リポジトリ**: **[既定のリポジトリ]** セクションで、 **[URI]** ボックスにリポジトリの URI を貼り付けます。  **[ラベル]** を「**config**」に設定します。 **[認証]** の設定が **[パブリック]** であることを確認し、 **[適用]** を選択して完了します。 
+* **パブリック リポジトリ**: **[既定のリポジトリ]** セクションで、 **[URI]** ボックスにリポジトリの URI を貼り付けます。  **[ラベル]** を「**config**」に設定します。 **[認証]** の設定が **[パブリック]** であることを確認し、 **[適用]** を選択して完了します。
 
 * **プライベート リポジトリ**: Azure Spring Cloud では、基本的なパスワード (トークン) ベースの認証と SSH がサポートされています。
 
     * **基本認証**: **[既定のリポジトリ]** セクションの **[URI]** ボックスにリポジトリの URI を貼り付けてから、 **[認証]** ("鉛筆" アイコン) ボタンを選択します。 **[認証の編集]** ペインの **[認証の種類]** ボックスの一覧から **[HTTP 基本]** を選択し、ユーザー名とパスワード (トークン) を入力して、Azure Spring Cloud へのアクセスを許可します。 **[OK]** を選択し、 **[適用]** を選択して、Config Server インスタンスの設定を完了します。
 
     ![[認証の編集] ペインの基本認証](media/spring-cloud-tutorial-config-server/basic-auth.png)
-    
+
     > [!CAUTION]
     > GitHub など、一部の Git リポジトリ サーバーでは、**基本認証** に *personal-token* や *access-token* (パスワードなど) が使用されます。 その種のトークンは、有効期限切れになることがないため、Azure Spring Cloud でパスワードとして使用できます。 ただし、Bitbucket や Azure DevOps などの他の Git リポジトリ サーバーでは、*access-token* が 1 時間または 2 時間以内に期限切れになります。 つまり、それらのリポジトリ サーバーを Azure Spring Cloud で使用する場合、このオプションは非現実的です。
 
@@ -174,7 +175,7 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 
 #### <a name="pattern-repository"></a>パターン リポジトリ
 
-オプションの **パターン リポジトリ** を使用してサービスを構成する場合は、**既定のリポジトリ** と同じように、**URI** と **認証** を指定します。 パターンの **名前** を必ず指定し、 **[適用]** を選択してインスタンスに接続します。 
+オプションの **パターン リポジトリ** を使用してサービスを構成する場合は、**既定のリポジトリ** と同じように、**URI** と **認証** を指定します。 パターンの **名前** を必ず指定し、 **[適用]** を選択してインスタンスに接続します。
 
 ### <a name="enter-repository-information-into-a-yaml-file"></a>リポジトリの情報を YAML ファイルに入力する
 
@@ -196,34 +197,33 @@ spring:
 
 ![Config Server の [通知] ペイン](media/spring-cloud-tutorial-config-server/local-yml-success.png)
 
-
-YAML ファイルの情報が Azure portal に表示されます。 完了するには **[適用]** を選択します。 
+YAML ファイルの情報が Azure portal に表示されます。 完了するには **[適用]** を選択します。
 
 ## <a name="using-azure-repos-for-azure-spring-cloud-configuration"></a>Azure Spring Cloud 構成向け Azure Repos の使用
 
 Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュリティ保護されているパブリックの Git リポジトリにアクセスできます。 Azure Repos による作成と管理が簡単な最後のオプションを使用します。
 
 ### <a name="get-repo-url-and-credentials"></a>リポジトリ URL と資格情報を取得する
-1. プロジェクトの Azure Repos ポータルで、[複製] ボタンをクリックします。
+
+1. プロジェクトの Azure Repos ポータルで、 **[複製]** ボタンを選択します。
 
     ![[複製] ボタン](media/spring-cloud-tutorial-config-server/clone-button.png)
 
 1. テキストボックスから複製 URL をコピーします。 この URL は通常、次の形式になります。
 
-    ```Text
+    ```text
     https://<organization name>@dev.azure.com/<organization name>/<project name>/_git/<repository name>
     ```
 
     `@` を含め、`https://` の後と `dev.azure.com` の前にあるものをすべて削除します。 結果的に出来上がる URL は次の形式になります。
 
-    ```Text
+    ```text
     https://dev.azure.com/<organization name>/<project name>/_git/<repository name>
     ```
 
     次のセクションで使用するためにこの URL を保存します。
 
-1. [Git 資格情報の生成] をクリックします。 ユーザー名とパスワードが表示されます。 次のセクションで使用するためにこれらを保存します。
-
+1. **[Git 資格情報の生成]** を選択します。 ユーザー名とパスワードが表示されます。 次のセクションで使用するためにこれらを保存します。
 
 ### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>Git リポジトリにアクセスするように Azure Spring Cloud を構成する
 
@@ -234,11 +234,12 @@ Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュ
 1. 構成するサービスを選択します。
 
 1. サービス ページの左ペインで、 **[設定]** の **[Config Server]** タブを選択します。前に作成したリポジトリを構成します。
-   - 前のセクションから保存したリポジトリ URL を追加します
-   - `Authentication` をクリックして [`HTTP Basic`] を選択します。
-   - __ユーザー名__ は前のセクションで保存したユーザー名です
-   - __パスワード__ は前のセクションで保存したパスワードです
-   - [適用] をクリックし、処理が正常に完了するまで待ちます
+
+   - 前のセクションから保存したリポジトリ URL を追加します。
+   - **[認証]** を選択してから、 **[HTTP Basic]** を選択します。
+   - __ユーザー名__ は前のセクションで保存したユーザー名です。
+   - __パスワード__ は前のセクションで保存したパスワードです。
+   - **[適用]** を選択し、処理が正常に完了するまで待ちます。
 
    ![Spring Cloud Config Server](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
@@ -247,6 +248,7 @@ Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュ
 **[Config Server]** タブに表示される **[リセット]** ボタンを選択すると、既存の設定を完全に消去できます。 GitHub から Azure DevOps への移動など、Config Server インスタンスを別のソースに接続する場合は、Config Server の設定を削除します。
 
 ## <a name="config-server-refresh"></a>Config Server の更新
+
 プロパティが変更された場合、変更を行う前に、それらのプロパティを使用するサービスに通知する必要があります。 Spring Cloud の既定のソリューションでは、[更新イベント](https://spring.io/guides/gs/centralized-configuration/)を手動でトリガーします。これは、アプリ インスタンスが多数ある場合は実現できない可能性があります。 または Azure Spring Cloud において、構成クライアントが内部更新に基づいて変更をポーリングすることで、構成サーバーから値を自動的に更新できます。
 
 - まず、spring-cloud-starter-azure-spring-cloud-client を、pom.xml の依存関係セクションに含めます。
@@ -262,7 +264,7 @@ Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュ
 - 2 つ目は自動更新を有効にし、application.yml で適切な更新間隔を設定します。 この例では、クライアントは 5 秒ごとに構成変更をポーリングします。これは、更新間隔に設定できる最小値です。
 既定では、自動更新は false に設定され、refresh-interval は 60 秒に設定されます。
 
-  ``` yml
+  ```yml
   spring:
     cloud:
       config:
@@ -272,15 +274,14 @@ Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュ
 
 - 最後に、@refreshScope をコードに追加します。 この例では、変数 connectTimeout は5秒ごとに自動的に更新されます。
 
-  ``` java
+  ```java
   @RestController
   @RefreshScope
   public class HelloController {
       @Value("${timeout:4000}")
-      private String connectTimeout;    
+      private String connectTimeout;
   }
   ```
-
 
 ## <a name="next-steps"></a>次のステップ
 

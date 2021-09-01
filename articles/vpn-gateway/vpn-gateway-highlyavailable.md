@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 05/27/2021
 ms.author: yushwang
-ms.openlocfilehash: f00de78ba4e2b46595489f46155546157642fb12
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 82a1ad0968a80be1ff1780b1cf83ec928a016dbb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953849"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729535"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性のクロスプレミス接続および VNet 間接続
 
@@ -83,5 +83,5 @@ Azure ゲートウェイ インスタンスがアクティブ/アクティブ構
 これにより、すべての計画的なメンテナンス イベントに備えて 2 つの仮想ネットワーク間にトンネルのペアが常に存在し、より高い可用性が実現されます。 クロスプレミス接続の同じトポロジには 2 つの接続が必要ですが、前に示した VNet 間トポロジではゲートウェイごとに必要な接続は 1 つだけです。 さらに、VNet 間接続経由のトランジット ルーティングが必要でない限り、BGP はオプションです。
 
 ## <a name="next-steps"></a>次のステップ
-アクティブ/アクティブのクロスプレミス接続と VNet 間接続を構成する手順については、[クロスプレミス接続と VNet 間接続のアクティブ/アクティブ VPN Gateway の構成](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。
+[Azure Portal](active-active-portal.md) または [PowerShell](vpn-gateway-activeactive-rm-powershell.md) を使用する「[アクティブ/アクティブ ゲートウェイの構成](active-active-portal.md)」を参照してください。
 

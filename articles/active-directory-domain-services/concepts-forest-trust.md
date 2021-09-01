@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 06/18/2021
 ms.author: justinha
-ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d7c3eeb184f7ceb09541ca9533203f4b45194bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96620207"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730830"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストに対する信頼関係のしくみ
 
@@ -37,7 +37,7 @@ Azure AD DS で信頼を使用するには、[フォレストの信頼を使用�
 
 信頼を介した通信のフローは、信頼の方向によって決まります。 信頼は、一方向または双方向であることがあり、推移的または非推移的である場合があります。
 
-次の図は、*ツリー 1* と *ツリー 2* のすべてのドメインに、既定で推移的な信頼関係があることを示しています。 その結果、*ツリー 1* のユーザーは、*ツリー* 2 のドメインにあるリソースにアクセスでき、*ツリー 1* のユーザーは *ツリー 2* のリソースにアクセスできます (リソースで適切なアクセス許可が割り当てられている場合)。
+次の図は、*ツリー 1* と *ツリー 2* のすべてのドメインに、既定で推移的な信頼関係があることを示しています。 その結果、*ツリー 1* のユーザーは、*ツリー* 2 のドメインにあるリソースにアクセスでき、*ツリー 2* のユーザーは *ツリー 1* のリソースにアクセスできます (リソースで適切なアクセス許可が割り当てられている場合)。
 
 ![2 つのフォレスト間の信頼関係の図](./media/concepts-forest-trust/trust-relationships.png)
 
@@ -108,7 +108,7 @@ AD DS フォレスト内のすべてのドメイン信頼は、双方向の推�
 
 フォレストの信頼を作成するには、Active Directory の Domain Admins グループ (フォレスト ルート ドメイン内) または Enterprise Admins グループのメンバーである必要があります。 各信頼には、両方のフォレストの管理者が知っておく必要があるパスワードが割り当てられます。 両方のフォレストの Enterprise Admins のメンバーは、信頼を両方のフォレストに一度に作成することができます。このシナリオでは、暗号的にランダムなパスワードが、両方のフォレストに対して自動的に生成されて書き込まれます。
 
-Azure AD Domain Services の出力方向のフォレストの信頼は、Azure portal で作成されます。 マネージド ドメイン自体との信頼を手動で作成することはありません。 入力方向のフォレストの信頼は、オンプレミス Active Directory で前述の特権を持つユーザーによって構成される必要があります。
+マネージド ドメイン リソース フォレストでは、オンプレミスのフォレストに対する一方向の送信フォレストの信頼が最大 5 つサポートされます。 Azure AD Domain Services の出力方向のフォレストの信頼は、Azure portal で作成されます。 マネージド ドメイン自体との信頼を手動で作成することはありません。 入力方向のフォレストの信頼は、オンプレミス Active Directory で前述の特権を持つユーザーによって構成される必要があります。 
 
 ## <a name="trust-processes-and-interactions"></a>信頼のプロセスと相互作用
 

@@ -2,13 +2,13 @@
 title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
-ms.date: 06/09/2021
-ms.openlocfilehash: 1831b103dc037b5f92f9ca53be1c71ce1bb3f558
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 07/29/2021
+ms.openlocfilehash: 952b5521a16ebc955e71319efe1f0b2bc48e47a9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889808"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014616"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -174,6 +174,10 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 [!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
+## <a name="azure-netapp-files"></a>Azure NetApp Files
+
+[!INCLUDE [netapp-limits](../../../includes/netapp-service-limits.md)]
+
 ## <a name="azure-policy-limits"></a>Azure Policy の制限
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
@@ -243,6 +247,10 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 ## <a name="database-migration-service-limits"></a>Database Migration Service の制限
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
+
+## <a name="device-update-for-iot-hub--limits"></a>Device Update for IoT Hub の制限
+
+[!INCLUDE [device-update-for-iot-hub-limits](../../../includes/device-update-for-iot-hub-limits.md)]
 
 ## <a name="digital-twins-limits"></a>Digital Twins の制限
 

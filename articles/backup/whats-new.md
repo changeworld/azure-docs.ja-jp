@@ -2,13 +2,13 @@
 title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: 7be5b96a8575c0bed9208ef5d700aca747411aa2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/05/2021
+ms.openlocfilehash: f2c4e3fa492a4dfe3c42ffb615442d3c6c449404
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959332"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122184085"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -18,6 +18,8 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 
 ## <a name="updates-summary"></a>更新の概要
 
+- 2021 年 7 月
+  - [Azure VM 内の SQL Server の Azure Backup でのアーカイブ層のサポートが一般提供開始](#archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available)
 - 2021 年 5 月
   - [Azure BLOB のバックアップが一般提供開始](#backup-for-azure-blobs-is-now-generally-available)
 - 2021 年 4 月
@@ -44,6 +46,18 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
   - [RHEL の Azure 仮想マシンでの SAP HANA のバックアップ (プレビュー段階)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [バックアップ データ用のゾーン冗長ストレージ (ZRS) (プレビュー段階)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM での SQL Server および SAP HANA ワークロードの論理的な削除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available"></a>Azure VM 内の SQL Server の Azure Backup でのアーカイブ層のサポートが一般提供開始
+
+Azure Backup を使用すると、Azure Virtual Machines および Azure Virtual Machines 内の SQL Server の長期保有ポイントを、低コストのアーカイブ層に移動できます。 Vault アーカイブ層の復旧ポイントから復元することもできます。
+
+復旧ポイントを移動する機能に加えて:
+
+- Azure Backup は、コスト節約を可能にする Azure Virtual Machine バックアップの特定の復旧ポイント セットを移動するための推奨事項を提供します。
+- 特定のバックアップ項目についてそれらすべての復旧ポイントを、サンプル スクリプトを使用して一気に移動することができます。
+- コンテナー ダッシュボードでアーカイブ ストレージの使用状況を表示できます。
+
+詳細については、「[アーカイブ層のサポート](./archive-tier-support.md)」を参照してください。
 
 ## <a name="backup-for-azure-blobs-is-now-generally-available"></a>Azure BLOB のバックアップが一般提供開始
 
@@ -103,7 +117,7 @@ Azure Backup では、Azure Resource Manager (ARM) テンプレートを使用�
 
 Azure VM でホストされている SAP HANA データベースの増分バックアップが、Azure Backup でサポートされるようになりました。 これにより、SAP HANA データのバックアップを、いっそう高速に、コスト効率よく行うことができます。
 
-詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](/azure/backup/sap-hana-faq-backup-azure-vm.yml#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
+詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](/azure/backup/sap-hana-faq-backup-azure-vm#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
 
 ## <a name="backup-center-in-preview"></a>バックアップ センター (プレビュー段階)
 
@@ -183,6 +197,6 @@ Azure Backup では、カスタマー マネージド キーを使用して暗�
 
 詳細については、[カスタマー マネージド キーを使用した Azure Backup の暗号化](encryption-at-rest-with-cmk.md)に関する記事を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Backup のガイダンスとベスト プラクティス](guidance-best-practices.md)

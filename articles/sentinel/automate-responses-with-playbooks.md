@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 06/29/2021
 ms.author: yelevin
-ms.openlocfilehash: 0687b3bf486d2496763237164536be34f504f7ed
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: bddd27b29a1546f0c985f7a5b3aa15027be75d46
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112070887"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726100"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>Azure Sentinel のプレイブックを使用して脅威への対応を自動化する
 
@@ -33,6 +33,8 @@ ms.locfileid: "112070887"
 これらのアラートのほとんどではないにしても多くは、定義された特定の修復アクションで対処できる、繰り返し起こるパターンに従っています。
 
 プレイブックは、Azure Sentinel からルーチンとして実行できるこれらの修復アクションのコレクションです。 プレイブックは、[**脅威への対応を自動化および調整**](tutorial-respond-threats-playbook.md)するのに役立ちます。特定のアラートまたはインシデントが、分析ルールまたは自動化ルールによってそれぞれトリガーされたときに、これらに対応して手動で実行することも、自動的に実行するように設定することもできます。
+
+たとえば、アカウントとマシンが侵害された場合、SOC チームにインシデントが通知されるまで、プレイブックでマシンをネットワークから分離し、アカウントをブロックすることができます。
 
 プレイブックはサブスクリプション レベルで作成および適用されますが、**プレイブック** タブ (新しい **オートメーション** ブレードにある) には、選択したすべてのサブスクリプションで利用可能なすべてのプレイブックが表示されます。
 
@@ -197,7 +199,7 @@ Azure Sentinel インシデントが、ユーザー名と IP アドレス エン
 
 アラートの作成によってトリガーされ、アラートを入力として受け取るプレイブックの場合 (その最初の手順は、「Azure Sentinel アラートがトリガーされたとき」です)、プレイブックを分析ルールにアタッチします。
 
-1. 自動応答を定義するアラートを生成する[分析ルール](tutorial-detect-threats-custom.md)を編集します。
+1. 自動応答を定義するアラートを生成する[分析ルール](detect-threats-custom.md)を編集します。
 
 1. **[自動応答]** タブの **[アラートの自動化]** で、アラートが作成されたときにこの分析ルールによってトリガーされる 1 つ以上のプレイブックを選択します。
 
@@ -242,7 +244,7 @@ Azure Sentinel インシデントが、ユーザー名と IP アドレス エン
 
 ### <a name="run-a-playbook-manually-on-an-incident"></a>インシデントに対して手動でプレイブックを実行する
 
-まだサポートされていません。 <!--make this a note instead? -->
+まだサポートされていません。
 
 ## <a name="manage-your-playbooks"></a>プレイブックを管理する
 
@@ -275,6 +277,29 @@ API 接続は、Logic Apps を他のサービスに接続するために使用�
 API 接続を表示するもう 1 つの方法は、 **[すべてのリソース]** ブレードにアクセスし、 *[API 接続]* の種類でフィルター処理することです。 この方法を使用すると、一度に複数の接続の選択、タグ付け、削除を実行できます。
 
 既存の接続の承認を変更するには、接続リソースを入力し、 **[API 接続の編集]** を選択します。
+
+## <a name="recommended-playbooks"></a>推奨されるプレイブック
+
+次の推奨されるプレイブック、および他の同様のプレイブックを、[Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)で入手できます。
+
+- **通知プレイブック** は、アラートまたはインシデントが作成され、構成されている宛先に通知が送信されるとトリガーされます。
+
+    - [Microsoft Teams チャネルでメッセージを投稿する](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Post-Message-Teams)
+    - [Outlook メール通知を送信する](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Incident-Email-Notification)
+    - [Slack チャネルでメッセージを投稿する](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Post-Message-Slack)
+
+- **ブロック プレイブック** は、アラートまたはインシデントが作成されるとトリガーされ、アカウント、IP アドレス、ホストなどのエンティティ情報を収集して、それ以上のアクションからそれらをブロックします。
+
+    - [IP アドレス をブロックするプロンプトを表示する](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Block-IPs-on-MDATP-Using-GraphSecurity)。
+    - [AAD ユーザーをブロックする](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Block-AADUser)
+    - [AAD ユーザーのパスワードをリセットする](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Reset-AADUserPassword/)
+    - [マシンを分離するプロンプトを表示する](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Isolate-AzureVMtoNSG)
+
+- **作成、更新、または終了プレイブック** を使用すると、Azure Sentinel、Microsoft 365 セキュリティ サービス、または他のチケット システムで、インシデントを作成、更新、または終了できます。
+
+    - [インシデントの重大度を変更する](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Change-Incident-Severity)
+    - [ServiceNow インシデントを作成する](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Create-SNOW-record)
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 61076b49d396c83a67635e46eb4f1b928b3f9e1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec65980e3886b62b8718799d1566a11d5c13a679
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933973"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721762"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network についてよく寄せられる質問 (FAQ)
 
@@ -80,10 +80,10 @@ VNet を使用して次のことが行えます。
 - x.x.x.0:ネットワーク アドレス
 - x.x.x.1:既定のゲートウェイ用に Azure によって予約されています
 - x.x.x.2、x.x.x.3:Azure DNS IP を VNet 空間にマッピングするために Azure によって予約されています
-- x.x.x.255:ネットワーク ブロードキャスト アドレス
+- x.x.x.255: サイズが /25 以上のサブネットのネットワーク ブロードキャスト アドレス。 これは、小さいサブネットでは異なるアドレスです。 
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet およびサブネットは、どれくらい小規模に、また、大規模になるのでしょうか。
-サポートされる最小の IPv4 サブネットは /29、最大は /8 です (CIDR サブネット定義を使用)。  IPv6 のサブネットは、正確に /64 のサイズである必要があります。  
+サポートされる最小の IPv4 サブネットは /29、最大は /2 です (CIDR サブネット定義を使用)。  IPv6 のサブネットは、正確に /64 のサイズである必要があります。  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>VNet を使用して、VLAN を Azure に接続できるでしょうか。
 いいえ。 VNet はレイヤー 3 のオーバーレイです。 Azure では、任意のレイヤー 2 のセマンティクスはサポートされません。
@@ -194,7 +194,7 @@ Nothing。 IP アドレス (パブリック VIP、パブリック、プライベ
 はい。 ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイし、VNet 統合を使用してアプリのバックエンドを VNet に接続し、サービス エンドポイントを使用してインバウンド トラフィックをアプリにロックダウンできます。 詳細については、次の記事を参照してください。
 
 * [App Service のネットワーク機能](../app-service/networking-features.md)
-* [App Service Environmentで Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [App Service 環境で Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [アプリを Azure Virtual Network に統合する](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [App Service のアクセス制限](../app-service/app-service-ip-restrictions.md)
 
@@ -263,7 +263,7 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 - Logic Apps
 - HDInsight
 -   Azure Batch
-- App Service Environment
+- App Service 環境
 
 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
 
@@ -419,7 +419,7 @@ Azure サービスに到達するには、NSG で送信接続を許可する必�
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure Synapse Analytics|   128|
-|Azure KeyVault|    127|
+|Azure KeyVault|    200 |
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
 |Azure Service Bus| 128|

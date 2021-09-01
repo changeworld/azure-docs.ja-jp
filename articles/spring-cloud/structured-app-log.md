@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud の構造化アプリケーション ログ | Microsoft Docs
 description: この記事では、Azure Spring Cloud で構造化アプリケーション ログ データを生成および収集する方法について説明します。
-author: MikeDodaro
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/05/2021
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: ef51fc0c67c938a2d0933b6032072acc24e42dd3
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 8d84462d38c00e3788e424bd7cac6742d8b0e408
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494631"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015579"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure Spring Cloud の構造化アプリケーション ログ
 
@@ -43,11 +43,11 @@ ms.locfileid: "110494631"
 
 * "timestamp" フィールドは必須であり、UTC 形式である必要があります。他のすべてのフィールドは省略可能です。
 * "mdc" フィールドの "traceId" と "spanId" はトレースに使用されます。
-* 個々の JSON レコードはログに 1 行で記録されます。 
+* 個々の JSON レコードはログに 1 行で記録されます。
 
-**ログ レコードのサンプル** 
+**ログ レコードのサンプル**
 
- ```
+```log
 {"timestamp":"2021-01-08T09:23:51.280Z","logger":"com.example.demo.HelloController","level":"ERROR","thread":"http-nio-1456-exec-4","mdc":{"traceId":"c84f8a897041f634","spanId":"c84f8a897041f634"},"stackTrace":"java.lang.RuntimeException: get an exception\r\n\tat com.example.demo.HelloController.throwEx(HelloController.java:54)\r\n\","message":"Got an exception","exceptionClass":"RuntimeException"}
 ```
 
@@ -57,17 +57,17 @@ JSON ログの各行には、最大 **16K バイト** を含めることがで�
 
 通常、これは、特に [AppInsights In-Process エージェント](./how-to-application-insights.md) が有効になっている場合に、深いスタックトレースを使用した例外ログで発生します。  最終的な出力が適切に解析されるように、スタックトレース出力に制限設定を適用します (次の構成サンプルを参照)。
 
-## <a name="generate-schema-compliant-json-log"></a>スキーマ準拠の JSON ログを生成する  
+## <a name="generate-schema-compliant-json-log"></a>スキーマ準拠の JSON ログを生成する
 
-Spring アプリケーションの場合、[logback](http://logback.qos.ch/) や [log4j2](https://logging.apache.org/log4j/2.x/) などの一般的な[ログ記録フレームワーク](https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-logging.html#boot-features-custom-log-configuration)を使用して、期待される JSON ログ形式を生成できます。 
+Spring アプリケーションの場合、[logback](http://logback.qos.ch/) や [log4j2](https://logging.apache.org/log4j/2.x/) などの一般的な[ログ記録フレームワーク](https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-logging.html#boot-features-custom-log-configuration)を使用して、期待される JSON ログ形式を生成できます。
 
-### <a name="log-with-logback"></a>logback でログを記録する 
+### <a name="log-with-logback"></a>logback でログを記録する
 
-Spring Boot スターターを使用する場合は、既定で logback が使用されます。 logback アプリの場合は、[logstash-encoder](https://github.com/logstash/logstash-logback-encoder) を使用して JSON 形式のログを生成します。 この方法は Spring Boot バージョン 2.1 以降でサポートされています。 
+Spring Boot スターターを使用する場合は、既定で logback が使用されます。 logback アプリの場合は、[logstash-encoder](https://github.com/logstash/logstash-logback-encoder) を使用して JSON 形式のログを生成します。 この方法は Spring Boot バージョン 2.1 以降でサポートされています。
 
 手順:
 
-1. logstash の依存関係を `pom.xml` ファイルに追加します。 
+1. logstash の依存関係を `pom.xml` ファイルに追加します。
 
     ```xml
     <dependency>
@@ -76,7 +76,9 @@ Spring Boot スターターを使用する場合は、既定で logback が使�
         <version>6.5</version>
     </dependency>
     ```
+
 1. `logback-spring.xml` 構成ファイルを更新して、JSON 形式を設定します。
+
     ```xml
     <configuration>
         <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -122,6 +124,7 @@ Spring Boot スターターを使用する場合は、既定で logback が使�
         </root>
     </configuration>
     ```
+
 1. `logback-spring.xml` のような `-spring` サフィックスが付いたログ構成ファイルを使用する場合は、ログ構成を Spring アクティブ プロファイルに基づいて設定できます。
 
     ```xml
@@ -141,10 +144,10 @@ Spring Boot スターターを使用する場合は、既定で logback が使�
         </springProfile>
     </configuration>
     ```
-    
+
     ローカル開発では、Spring Cloud アプリケーションの JVM 引数を `-Dspring.profiles.active=dev` にして実行すると、JSON 形式の行でなく人間が読み取り可能なログを表示できます。
 
-### <a name="log-with-log4j2"></a>log4j2 でログを記録する 
+### <a name="log-with-log4j2"></a>log4j2 でログを記録する
 
 log4j2 アプリの場合、[json-template-layout](https://logging.apache.org/log4j/2.x/manual/json-template-layout.html) を使用して JSON 形式のログを生成します。 この方法は Spring Boot バージョン 2.1 以降でサポートされています。
 
@@ -216,7 +219,7 @@ log4j2 アプリの場合、[json-template-layout](https://logging.apache.org/lo
     }
     ```
 
-3. この JSON レイアウト テンプレートを `log4j2-spring.xml` 構成ファイルで使用します。 
+3. この JSON レイアウト テンプレートを `log4j2-spring.xml` 構成ファイルで使用します。
 
     ```xml
     <configuration>
@@ -243,10 +246,10 @@ log4j2 アプリの場合、[json-template-layout](https://logging.apache.org/lo
 次の手順に従います。
 
 1. サービス インスタンスのサービスの概要ページに移動します。
-2. `Monitoring` セクションの `Logs` エントリをクリックします。
+2. **[監視]** セクションで **[ログ]** エントリを選択します。
 3. 次のクエリを実行します。
 
-   ```
+   ```query
    AppPlatformLogsforSpring
    | where TimeGenerated > ago(1h)
    | project AppTimestamp, Logger, CustomLevel, Thread, Message, ExceptionClass, StackTrace, TraceId, SpanId
@@ -256,29 +259,28 @@ log4j2 アプリの場合、[json-template-layout](https://logging.apache.org/lo
 
    ![JSON ログの表示](media/spring-cloud-structured-app-log/json-log-query.png)
 
-
 ### <a name="show-log-entries-containing-errors"></a>エラーを含むログ エントリを表示する
 
 エラーがあるログ エントリを確認するには、次のクエリを実行します。
 
-```
+```query
 AppPlatformLogsforSpring
-| where TimeGenerated > ago(1h) and CustomLevel == "ERROR" 
-| project AppTimestamp, Logger, ExceptionClass, StackTrace, Message, AppName 
+| where TimeGenerated > ago(1h) and CustomLevel == "ERROR"
+| project AppTimestamp, Logger, ExceptionClass, StackTrace, Message, AppName
 | sort by AppTimestamp
 ```
 
-このクエリを使用してエラーを検出するか、クエリ用語を変更して特定の例外クラスまたはエラー コードを検索します。 
+このクエリを使用してエラーを検出するか、クエリ用語を変更して特定の例外クラスまたはエラー コードを検索します。
 
 ### <a name="show-log-entries-for-a-specific-traceid"></a>特定のトレース ID のログ エントリを表示する
 
 特定のトレース ID "trace_id" のログ エントリを確認するには、次のクエリを実行します。
 
-```
+```query
 AppPlatformLogsforSpring
 | where TimeGenerated > ago(1h)
-| where TraceId == "trace_id" 
-| project AppTimestamp, Logger, TraceId, SpanId, StackTrace, Message, AppName 
+| where TraceId == "trace_id"
+| project AppTimestamp, Logger, TraceId, SpanId, StackTrace, Message, AppName
 | sort by AppTimestamp
 ```
 

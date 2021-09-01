@@ -2,19 +2,18 @@
 title: メトリックの収集と転送 - Azure IoT Edge
 description: Azure Monitor を使用して、IoT Edge の組み込みのメトリックをリモートで監視します
 author: veyalla
-manager: philmea
 ms.author: veyalla
-ms.date: 06/09/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b7c849bd00991eb243c9620c1b08bede7f239170
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 60a01c9e3a3e8643ad7d993db34d299fdc5ef145
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904457"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014594"
 ---
 # <a name="collect-and-transport-metrics-preview"></a>メトリックの収集と転送 (プレビュー)
 
@@ -24,18 +23,34 @@ Azure Monitor と組み込みのメトリックの統合を使用すると、IoT
 
 ## <a name="architecture"></a>アーキテクチャ
 
-[![メトリック監視アーキテクチャ](./media/how-to-collect-and-transport-metrics/arch.png)](./media/how-to-collect-and-transport-metrics/arch.png#lightbox)
+# <a name="iot-hub"></a>[IoT Hub](#tab/iothub)
+
+[![IoT Hub を使用したメトリック監視アーキテクチャ](./media/how-to-collect-and-transport-metrics/arch.png)](./media/how-to-collect-and-transport-metrics/arch.png#lightbox)
 
 | Note | 説明 |
 |-|-|
 |  1 | すべてのモジュールは、[Prometheus データ モデル](https://prometheus.io/docs/concepts/data_model/)を使用してメトリックを出力する必要があります。 [組み込みのメトリック](how-to-access-built-in-metrics.md)を使用すると、既定で広範なワークロードの可視化が可能になりますが、カスタム モジュールを使用し、シナリオ固有のメトリックを出力して監視ソリューションを強化することもできます。 オープンソース ライブラリを使用してカスタム モジュールをインストルメントする方法については、「[カスタム メトリックを追加する](how-to-add-custom-metrics.md)」を参照してください。 |
-|  2️ | [metrics-collector モジュール](https://aka.ms/edgemon-metric-collector)は、ワークロード モジュールのメトリックを収集し、それらをオフデバイスに転送する、Microsoft が提供する IoT Edge モジュールです。 メトリック コレクションでは "*プル*" モデルが使用されます。 収集頻度、エンドポイント、フィルターは、モジュールから送信されるデータを制御するように構成できます。 詳細については、この記事の後半の[「メトリック コレクターの構成」セクション](#metrics-collector-configuration)を参照してください。 |
+|  2️ | [metrics-collector モジュール](https://aka.ms/edgemon-metrics-collector)は、ワークロード モジュールのメトリックを収集し、それらをオフデバイスに転送する、Microsoft が提供する IoT Edge モジュールです。 メトリック コレクションでは "*プル*" モデルが使用されます。 収集頻度、エンドポイント、フィルターは、モジュールから送信されるデータを制御するように構成できます。 詳細については、この記事の後半の[「メトリック コレクターの構成」セクション](#metrics-collector-configuration)を参照してください。 |
 |  3️ | metrics-collector モジュールからクラウドにメトリックを送信するには、2 つのオプションがあります。 "*オプション 1*" では、メトリックが Log Analytics に送信されます <sup>1</sup>。収集されたメトリックは、`InsightsMetrics` という固定のネイティブ テーブルを使用して、指定された Log Analytics ワークスペースに取り込まれます。 このテーブルのスキーマは、Prometheus メトリック データ モデルと互換性があります。<br><br> このオプションを使用するには、送信ポート 443 でワークスペースにアクセスする必要があります。 Log Analytics ワークスペースの ID とキーは、モジュール構成の一部として指定する必要があります。 制限付きネットワークで有効にするには、この記事の後半の「[制限付きネットワーク アクセス シナリオで有効にする](#enable-in-restricted-network-access-scenarios)」を参照してください。
 |  4️ | 各メトリック エントリには、[モジュール構成](#metrics-collector-configuration)の一部として指定された `ResourceId` が含まれています。 この関連付けにより、指定したリソース (たとえば、IoT Hub) に自動的にメトリックがリンクされます。 その結果、[キュレーション IoT Edge ブック テンプレート](how-to-explore-curated-visualizations.md)では、リソースに対してクエリを発行することでメトリックを取得できます。 <br><br> また、この方法では、複数の IoT Hub で 1 つの Log Analytics ワークスペースをメトリック データベースとして安全に共有することもできます。 |
 |  5️ | "*オプション 2*" では、メトリックが IoT Hub に送信されます <sup>1</sup>。コレクター モジュールは、収集されたメトリックを UTF-8 でエンコードされた JSON [device-to-cloud メッセージ](../iot-hub/iot-hub-devguide-messages-d2c.md)として `edgeHub` モジュール経由で送信するように構成できます。 このオプションを使用すると、IoT Hub エンドポイントへの外部アクセスのみを許可されている、ロックダウンされた IoT Edge デバイスの監視のロックが解除されます。 また、子デバイスが親デバイスにのみアクセスできる入れ子になった構成内の子 IoT Edge デバイスを監視することもできます。 |
-|  6️ | IoT Hub を使用してメトリックをルーティングする場合は、(1 回限りの) クラウド ワークフローを設定する必要があります。 このワークフローでは、metrics-collector モジュールから受信したメッセージを処理し、Log Analytics ワークスペースに送信します。 このワークフローを使用すると、この省略可能なパスを介して受信したメトリックに対しても、[キュレーションされた視覚化](how-to-explore-curated-visualizations.md)と[アラート](how-to-create-alerts.md)の機能が有効になります。 このクラウド ワークフローを設定する方法の詳細については、「[IoT Hub を通じてメトリックをルーティングする](#route-metrics-through-iot-hub)」セクションを参照してください。 |
+|  6️ | IoT Hub を使用してメトリックをルーティングする場合は、(1 回限りの) クラウド ワークフローを設定する必要があります。 このワークフローでは、metrics-collector モジュールから受信したメッセージを処理し、Log Analytics ワークスペースに送信します。 このワークフローを使用すると、この省略可能なパスを介して受信したメトリックに対しても、[キュレーションされた視覚化](how-to-explore-curated-visualizations.md)と[アラート](how-to-create-alerts.md)の機能が有効になります。 このクラウド ワークフローを設定する方法の詳細については、「[IoT Hub を通じてメトリックをルーティングする](#route-metrics)」セクションを参照してください。 |
 
 <sup>1</sup> 現在、"*オプション 1*" を使用して IoT Edge デバイスから Log Analytics にメトリックを直接転送する方が、必要なセットアップが最小限となる簡単なパスです。 特定のシナリオで IoT Edge デバイスが IoT Hub とのみ通信する "*オプション 2*" のアプローチが必要な場合を除いて、1 つ目のオプションが推奨されます。
+
+# <a name="iot-central"></a>[IoT Central](#tab/iotcentral)
+
+[![IoT Central を使用したメトリック監視アーキテクチャ](./media/how-to-collect-and-transport-metrics/arch-iot-central.png)](./media/how-to-collect-and-transport-metrics/arch-iot-central.png#lightbox)
+
+| Note | 説明 |
+|-|-|
+|  1 | すべてのモジュールは、[Prometheus データ モデル](https://prometheus.io/docs/concepts/data_model/)を使用してメトリックを出力する必要があります。 [組み込みのメトリック](how-to-access-built-in-metrics.md)を使用すると、既定で広範なワークロードの可視化が可能になりますが、カスタム モジュールを使用し、シナリオ固有のメトリックを出力して監視ソリューションを強化することもできます。 オープンソース ライブラリを使用してカスタム モジュールをインストルメントする方法については、「[カスタム メトリックを追加する](how-to-add-custom-metrics.md)」を参照してください。 |
+|  2️ | [metrics-collector モジュール](https://aka.ms/edgemon-metrics-collector)は、ワークロード モジュールのメトリックを収集し、それらをオフデバイスに転送する、Microsoft が提供する IoT Edge モジュールです。 メトリック コレクションでは "*プル*" モデルが使用されます。 収集頻度、エンドポイント、フィルターは、モジュールから送信されるデータを制御するように構成できます。 詳細については、この記事の後半の[「メトリック コレクターの構成」セクション](#metrics-collector-configuration)を参照してください。 |
+|  3️ | metrics-collector モジュールからクラウドにメトリックを送信するには、2 つのオプションがあります。 *オプション 1* ではメトリックが Log Analytics に送信されます。 収集されたメトリックは、`InsightsMetrics` という固定のネイティブ テーブルを使用して、指定された Log Analytics ワークスペースに取り込まれます。 このテーブルのスキーマは、Prometheus メトリック データ モデルと互換性があります。<br><br> このオプションを使用するには、送信ポート 443 でワークスペースにアクセスする必要があります。 Log Analytics ワークスペースの ID とキーは、モジュール構成の一部として指定する必要があります。 制限付きネットワークで有効にするには、この記事の後半の「[制限付きネットワーク アクセス シナリオで有効にする](#enable-in-restricted-network-access-scenarios)」を参照してください。
+|  4️ | 各メトリック エントリには、[モジュール構成](#metrics-collector-configuration)の一部として指定された `ResourceId` が含まれています。 この関連付けにより、指定したリソース (たとえば、IoT Central) に自動的にメトリックがリンクされます。 その結果、[キュレーション IoT Edge ブック テンプレート](how-to-explore-curated-visualizations.md)では、リソースに対してクエリを発行することでメトリックを取得できます。 <br><br> また、この方法では、複数の IoT Central アプリケーションで 1 つの Log Analytics ワークスペースをメトリック データベースとして安全に共有することもできます。 |
+|  5️ | *オプション 2* ではメトリックが IoT Central に送信されます。 このオプションを使用すると、オペレーターはメトリックとデバイス テレメトリを 1 つの場所で表示できます。 コレクター モジュールは、収集されたメトリックを UTF-8 でエンコードされた JSON [device-to-cloud メッセージ](../iot-hub/iot-hub-devguide-messages-d2c.md)として `edgeHub` モジュール経由で送信するように構成できます。 このオプションを使用すると、IoT Central エンドポイントへの外部アクセスのみを許可されている、ロックダウンされた IoT Edge デバイスの監視のロックが解除されます。 また、子デバイスが親デバイスにのみアクセスできる入れ子になった構成内の子 IoT Edge デバイスを監視することもできます。 |
+
+---
 
 ## <a name="metrics-collector-module"></a>メトリック コレクター モジュール
 
@@ -49,18 +64,43 @@ metrics-collector モジュールは、Linux X64、ARM32、ARM64、Windows X64 (
 
 metrics-collector のすべての構成は、環境変数を使用して行われます。 少なくとも、次の表で「**必須**」とマークされている変数を指定する必要があります。
 
+# <a name="iot-hub"></a>[IoT Hub](#tab/iothub)
+
 | 環境変数名 | 説明 |
 |-|-|
-| `ResourceId` | デバイスが通信する IoT Hub のリソース ID。 リソース ID を取得する手順については、「[リソース ID](#resource-id)」セクションを参照してください。  <br><br>  **必須** <br><br> 既定値: *none* |
+| `ResourceId` | デバイスが通信する IoT Hub のリソース ID。 詳細については、「[リソース ID](#resource-id)」セクションを参照してください。  <br><br>  **必須** <br><br> 既定値: *none* |
 | `UploadTarget` |  メトリックを HTTPS 経由で Azure Monitor に直接送信するか、D2C メッセージとして IoT Hub に送信するかを制御します。 詳細については、「[ターゲットをアップロードする](#upload-target)」を参照してください。 <br><br>**AzureMonitor** または **IoTMessage** のいずれかを指定できます  <br><br>  **必要なし** <br><br> 既定値: *AzureMonitor* |
 | `LogAnalyticsWorkspaceId` | [Log Analytics ワークスペース ID](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)。 <br><br>*UploadTarget* が *AzureMonitor* の場合にのみ **必須** <br><br>既定値: *none* |
 | `LogAnalyticsSharedKey` | [Log Analytics ワークスペース キー](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)。 <br><br>*UploadTarget* が *AzureMonitor* の場合にのみ **必須**   <br><br> 既定値: *none* |
+| `ScrapeFrequencyInSecs` | メトリックを収集して転送する定期的な実行間隔 (秒)。<br><br>  例: *600* <br><br>  **必要なし** <br><br> 既定値: *300* |
 | `MetricsEndpointsCSV` | Prometheus メトリックを収集するエンドポイントのコンマ区切りの一覧。 メトリックを収集するモジュール エンドポイントはすべて、この一覧に含まれている必要があります。<br><br>  例: *http://edgeAgent:9600/metrics , http://edgeHub:9600/metrics, http://MetricsSpewer:9417/metrics* <br><br>  **必要なし** <br><br> 既定値: *http://edgeHub:9600/metrics , http://edgeAgent:9600/metrics* |
 | `AllowedMetrics` | 収集するメトリックの一覧。他のメトリックはすべて無視されます。 空の文字列に設定すると無効になります。 詳細については、「[許可リストと禁止リスト](#allow-and-disallow-lists)」を参照してください。 <br><br>例: *metricToScrape{quantile=0.99}[endpoint=http://MetricsSpewer:9417/metrics ]*<br><br>  **必要なし** <br><br> 既定値: "*空*" |
 | `BlockedMetrics` | 無視するメトリックの一覧。 *AllowedMetrics* をオーバーライドします。そのため、メトリックが両方の一覧に含まれている場合、そのメトリックは報告されません。 詳細については、「[許可リストと禁止リスト](#allow-and-disallow-lists)」を参照してください。 <br><br>   例: *metricToIgnore{quantile=0.5}[endpoint=http://VeryNoisyModule:9001/metrics ], docker_container_disk_write_bytes*<br><br>  **必要なし**  <br><br>既定値: "*空*" |
 | `CompressForUpload` | メトリックをアップロードするときに圧縮を使用する必要があるかどうかを制御します。 すべてのアップロード ターゲットに適用されます。<br><br>  例: *true* <br><br>    **必要なし** <br><br>  既定値: *true* |
+| `AzureDomain` | メトリックを Log Analytics に直接取り込むときに使用する最上位の Azure ドメインを指定します。 <br><br>  例: *azure.us* <br><br>    **必要なし** <br><br>  既定値: *azure.com* |
+
+# <a name="iot-central"></a>[IoT Central](#tab/iotcentral)
+
+| 環境変数名 | 説明 |
+|-|-|
+| `ResourceId` | デバイスが通信する IoT Central アプリケーションのリソース ID。 詳細については、「[リソース ID](#resource-id)」セクションを参照してください。  <br><br>  **必須** <br><br> 既定値: *none* |
+| `UploadTarget` |  メトリックを HTTPS 経由で Azure Monitor に直接送信するか、D2C メッセージとして IoT Central に送信するかを制御します。 詳細については、「[ターゲットをアップロードする](#upload-target)」を参照してください。 <br><br>**AzureMonitor** または **IoTMessage** のいずれかを指定できます  <br><br>  **必要なし** <br><br> 既定値: *AzureMonitor* |
+| `LogAnalyticsWorkspaceId` | [Log Analytics ワークスペース ID](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)。 <br><br>*UploadTarget* が *AzureMonitor* の場合にのみ **必須** <br><br>既定値: *none* |
+| `LogAnalyticsSharedKey` | [Log Analytics ワークスペース キー](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)。 <br><br>*UploadTarget* が *AzureMonitor* の場合にのみ **必須**   <br><br> 既定値: *none* |
+| `ScrapeFrequencyInSecs` | メトリックを収集して転送する定期的な実行間隔 (秒)。<br><br>  例: *600* <br><br>  **必要なし** <br><br> 既定値: *300* |
+| `MetricsEndpointsCSV` | Prometheus メトリックを収集するエンドポイントのコンマ区切りの一覧。 メトリックを収集するモジュール エンドポイントはすべて、この一覧に含まれている必要があります。<br><br>  例: *http://edgeAgent:9600/metrics , http://edgeHub:9600/metrics, http://MetricsSpewer:9417/metrics* <br><br>  **必要なし** <br><br> 既定値: *http://edgeHub:9600/metrics , http://edgeAgent:9600/metrics* |
+| `AllowedMetrics` | 収集するメトリックの一覧。他のメトリックはすべて無視されます。 空の文字列に設定すると無効になります。 詳細については、「[許可リストと禁止リスト](#allow-and-disallow-lists)」を参照してください。 <br><br>例: *metricToScrape{quantile=0.99}[endpoint=http://MetricsSpewer:9417/metrics ]*<br><br>  **必要なし** <br><br> 既定値: "*空*" |
+| `BlockedMetrics` | 無視するメトリックの一覧。 *AllowedMetrics* をオーバーライドします。そのため、メトリックが両方の一覧に含まれている場合、そのメトリックは報告されません。 詳細については、「[許可リストと禁止リスト](#allow-and-disallow-lists)」を参照してください。 <br><br>   例: *metricToIgnore{quantile=0.5}[endpoint=http://VeryNoisyModule:9001/metrics ], docker_container_disk_write_bytes*<br><br>  **必要なし**  <br><br>既定値: "*空*" |
+| `CompressForUpload` | メトリックをアップロードするときに圧縮を使用する必要があるかどうかを制御します。 すべてのアップロード ターゲットに適用されます。<br><br>  例: *true* <br><br>    **必要なし** <br><br>  既定値: *true* |
+| `AzureDomain` | メトリックを Log Analytics に直接取り込むときに使用する最上位の Azure ドメインを指定します。 <br><br>  例: *azure.us* <br><br>    **必要なし** <br><br>  既定値: *azure.com* |
+
+IoT Edge と IoT Central の詳細については、「[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する](../iot-central/core/concepts-iot-edge.md)」を参照してください。
+
+---
 
 ### <a name="resource-id"></a>Resource ID
+
+# <a name="iot-hub"></a>[IoT Hub](#tab/iothub)
 
 metrics-collector モジュールには、IoT Edge デバイスが属する IoT Hub の Azure Resource Manager ID が必要です。 **ResourceID** 環境変数の値としてこの ID を指定します。
 
@@ -77,10 +117,34 @@ metrics-collector モジュールには、IoT Edge デバイスが属する IoT 
 または、次のように [az resource show](/cli/azure/resource#az_resource_show) コマンドを使用して ID を取得します。
 
 ```azurecli-interactive
-az resource show -g \<group> -n \<name> --resource-type "Microsoft.Devices/IoTHubs"`
+az resource show -g <resource group> -n <hub name> --resource-type "Microsoft.Devices/IoTHubs"
 ```
 
+# <a name="iot-central"></a>[IoT Central](#tab/iotcentral)
+
+metrics-collector モジュールには、IoT Edge デバイスが属する IoT CentralI アプリケーションの Azure Resource Manager ID が必要です。 **ResourceID** 環境変数の値としてこの ID を指定します。
+
+リソース ID の形式は次のとおりです。
+
+```input
+/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.IoTCentral/IoTApps/<iot central app name>
+```
+
+リソース ID は、Azure Portal 内の IoT Central アプリケーションの **[プロパティ]** ページにあります。
+
+:::image type="content" source="./media/how-to-collect-and-transport-metrics/resource-id-iot-central.png" alt-text="IoT Central のプロパティからリソース ID を取得します。":::
+
+または、次のように [az resource show](/cli/azure/resource#az_resource_show) コマンドを使用して ID を取得します。
+
+```azurecli-interactive
+az resource show -g <resource group> -n <application name> --resource-type "Microsoft.IoTCentral/IoTApps"
+```
+
+---
+
 ### <a name="upload-target"></a>ターゲットをアップロードする
+
+# <a name="iot-hub"></a>[IoT Hub](#tab/iothub)
 
 **UploadTarget** 構成オプションでは、メトリックを Azure Monitor に直接送信するか、IoT Hub に送信するかが制御されます。
 
@@ -103,6 +167,32 @@ az resource show -g \<group> -n \<name> --resource-type "Microsoft.Devices/IoTHu
     }
 }]
 ```
+
+# <a name="iot-central"></a>[IoT Central](#tab/iotcentral)
+
+**UploadTarget** 構成オプションでは、メトリックを Azure Monitor に直接送信するか、IoT Central に送信するかが制御されます。
+
+**UploadTarget** を **IoTMessage** に設定した場合、モジュール メトリックは IoT メッセージとして発行されます。 これらのメッセージは、エンドポイント `/messages/modules/<module name>/outputs/metricOutput` から UTF8 でエンコードされた json として出力されます。 その形式は次のとおりです。
+
+```json
+[{
+    "TimeGeneratedUtc": "<time generated>",
+    "Name": "<prometheus metric name>",
+    "Value": <decimal value>,
+    "Label": {
+        "<label name>": "<label value>"
+    }
+}, {
+    "TimeGeneratedUtc": "2020-07-28T20:00:43.2770247Z",
+    "Name": "docker_container_disk_write_bytes",
+    "Value": 0.0,
+    "Label": {
+        "name": "AzureMonitorForIotEdgeModule"
+    }
+}]
+```
+
+---
 
 ### <a name="allow-and-disallow-lists"></a>許可リストと禁止リスト
 
@@ -167,7 +257,9 @@ metrics-collector モジュールは .NET Core で記述されています。 �
 
 `NO_PROXY` の値を、除外するホスト名のコンマ区切りの一覧に設定します。 ホスト名にはモジュール名を使用します。 例: *edgeHub,edgeAgent,myCustomModule*。
 
-## <a name="route-metrics-through-iot-hub"></a>IoT Hub を通じてメトリックをルーティングする
+## <a name="route-metrics"></a>ルート メトリック
+
+# <a name="iot-hub"></a>[IoT Hub](#tab/iothub)
 
 場合によっては、Log Analytics に直接送信するのではなく、IoT Hub でメトリックを取り込む必要があります。 たとえば、[入れ子になった構成で IoT Edge デバイス](tutorial-nested-iot-edge.md)を監視するときに、子デバイスが親デバイスの IoT Edge ハブにのみアクセスできるようにする場合などです。 もう 1 つの例は、IoT Hub に対してのみ送信ネットワーク アクセスを有効にした IoT Edge デバイスをデプロイする場合です。
 
@@ -176,7 +268,7 @@ metrics-collector モジュールは .NET Core で記述されています。 �
 >[!TIP]
 >コレクター モジュールから IoT Hub にメトリック メッセージを配信するために、必ず edgeHub ルートを追加してください。 `FROM /messages/modules/replace-with-collector-module-name/* INTO $upstream` のように表示されます。
 
-このオプションを選択すると、IoT Hub に到着したメトリック メッセージを Log Analytics ワークスペースに配信するための追加のセットアップが必要になります。 この設定がないと、[キュレーションされた視覚化](how-to-explore-curated-visualizations.md)や[アラート](how-to-create-alerts.md)など、統合のもう 1 つの部分は機能しません。
+このオプションを選択すると、IoT Hub に到着したメトリック メッセージを Log Analytics ワークスペースに配信するための[追加のセットアップ](how-to-collect-and-transport-metrics.md#sample-cloud-workflow)が必要になります。 この設定がないと、[キュレーションされた視覚化](how-to-explore-curated-visualizations.md)や[アラート](how-to-create-alerts.md)など、統合のもう 1 つの部分は機能しません。
 
 >[!NOTE]
 >このオプションを使用する場合は、追加のコストに注意してください。 メトリック メッセージは、IoT Hub メッセージ クォータに対してカウントされます。 また、Log Analytics インジェストとクラウド ワークフロー リソースに対しても課金されます。
@@ -184,6 +276,124 @@ metrics-collector モジュールは .NET Core で記述されています。 �
 ### <a name="sample-cloud-workflow"></a>サンプル クラウド ワークフロー
 
 IoT Hub から Log Analytics にメトリック メッセージを配信するクラウド ワークフローは、[IoT Edge のログ記録と監視のサンプル](https://github.com/Azure-Samples/iotedge-logging-and-monitoring-solution#monitoring-architecture-reference)の一部として利用できます。 このサンプルは、既存のクラウド リソースにデプロイすることも、運用環境のデプロイの参照として使用することもできます。
+
+# <a name="iot-central"></a>[IoT Central](#tab/iotcentral)
+
+場合によっては、Log Analytics に直接送信するのではなく、IoT Central でメトリックを取り込む必要があります。 たとえば、[入れ子になった構成で IoT Edge デバイス](tutorial-nested-iot-edge.md)を監視するときに、子デバイスが親デバイスの IoT Edge ハブにのみアクセスできるようにする場合などです。 もう 1 つの例は、IoT Central に対してのみ送信ネットワーク アクセスを有効にした IoT Edge デバイスをデプロイする場合です。
+
+このシナリオで監視を有効にするために、metrics-collector モジュールは、edgeHub モジュールを介して device-to-cloud (D2C) メッセージとしてメトリックを送信するように構成できます。 この機能を有効にするには、コレクター[構成](#metrics-collector-configuration)で `UploadTarget` 環境変数を `IoTMessage` に設定します。
+
+次のデプロイ マニフェストの例は、構成を示しています。
+
+```json
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {}
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            // ...
+          },
+          "edgeHub": {
+            // ...
+          }
+        },
+        "modules": {
+          "SimulatedTemperatureSensor": {
+            // ...
+          },
+          "AzureMonitorForIotEdgeModule": {
+            "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-metrics-collector:1.0",
+                "createOptions": "{\"HostConfig\":{\"LogConfig\":{\"Type\":\"json-file\",\"Config\":{\"max-size\":\"4m\",\"max-file\":\"7\"}}}}"
+            },
+            "type": "docker",
+            "env": {
+              "UploadTarget": {
+                "value": "IotMessage"
+              },
+              "ResourceId": {
+                "value": "/subscriptions/{your subscription id}/IOTC/providers/Microsoft.IoTCentral/IoTApps/{your app name}"
+              },
+              "MetricsEndpointsCSV": {
+                "value": "http://edgeHub:9600/metrics,http://edgeAgent:9600/metrics"
+              },
+              "ScrapeFrequencyInSecs": {
+                "value": "30"
+              },
+              "AllowedMetrics": {
+                "value": ""
+              },
+              "BlockedMetrics": {
+                "value": ""
+              },
+              "CompressForUpload": {
+                "value": "false"
+              },
+              "TransformForIoTCentral": {
+                "value": "true"
+              }
+            },
+            "status": "running",
+            "restartPolicy": "always",
+            "version": "1.0"
+          }
+        }
+      }
+    },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "temperatureupload": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO $upstream",
+          "metricupload": "FROM /messages/modules/AzureMonitorForIotEdgeModule/outputs/metricOutput INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 7200
+        }
+      }
+    },
+    "SimulatedTemperatureSensor": {
+      // ...
+    },
+    "AzureMonitorForIotEdgeModule": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "scrapeFrequencySecs": 30,
+        "metricsFormat": "Json",
+        "syncTarget": "IoTHub"
+      }
+    }
+  }
+}
+```
+
+>[!TIP]
+>コレクター モジュールから IoT Central にメトリック メッセージを配信するために、必ず edgeHub ルートを追加してください。 `FROM /messages/modules/replace-with-collector-module-name/* INTO $upstream` のように表示されます。
+
+IoT Edge デバイスからのメトリックを IoT Central アプリケーションで表示するには:
+
+* **IoT Edge メトリック標準インターフェイス** を継承インターフェイスとして[デバイス テンプレート](../iot-central/core/concepts-device-templates.md)に追加します。
+
+    :::image type="content" source="media/how-to-collect-and-transport-metrics/add-metrics-interface.png" alt-text="IoT Edge メトリック標準インターフェイスを追加します。":::
+
+* インターフェイスで定義されたテレメトリ値を使用して、IoT Edge デバイスを監視するために必要な[ダッシュボード](../iot-central/core/howto-manage-dashboards.md)をビルドします。
+
+    :::image type="content" source="media/how-to-collect-and-transport-metrics/iot-edge-metrics-telemetry.png" alt-text="テレメトリとして使用可能な IoT Edge メトリック。":::
+
+>[!NOTE]
+>このオプションを使用する場合は、追加のコストに注意してください。 メトリック メッセージは、IoT Central メッセージ クォータに対してカウントされます。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

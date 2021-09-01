@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f7e7e9261eb0ea2969dbfb752426ca16dd3b33c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95999447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728096"
 ---
 機能は簡単にセットアップできますが、問題が発生しないという意味ではありません。 目的のエンドポイントへのアクセスに関して問題が発生した場合は、アプリのコンソールからの接続をテストするために、いくつかのユーティリティを利用できます。 利用できるコンソールが 2 つあります。 1 つは Kudu コンソールで、もう 1 つは Azure portal 内のコンソールです。 アプリから Kudu コンソールにアクセスするには、 **[ツール]**  >  **[Kudu]** の順に移動します。 [サイト名].scm.azurewebsites.net で Kudo コンソールにアクセスすることもできます。 Web サイトが読み込まれたら、 **[デバッグ コンソール]** タブに移動します。お使いのアプリから Azure portal によってホストされたコンソールにアクセスするには、 **[ツール]**  >  **[コンソール]** の順に移動します。
 
@@ -43,7 +43,7 @@ tcpping.exe hostname [optional: port]
 これらの項目が問題の回答になっていない場合は、まず次のような点を確認してください。
 
 **リージョン VNet 統合**
-* 宛先は RFC1918 以外のアドレスであり、WEBSITE_VNET_ROUTE_ALL が 1 に設定されていないこと。
+* 宛先は RFC1918 以外のアドレスであり、[すべてルーティング] が有効になっていないこと。
 * 統合サブネットからのエグレスをブロックしている NSG は存在するか。
 * Azure ExpressRoute または VPN をまたがって移動する場合は、オンプレミスのゲートウェイがトラフィック バックアップを Azure にルーティングするように構成されているか。 仮想ネットワーク内のエンドポイントには到達できるが、オンプレミスに到達できない場合は、ルートを確認します。
 * 統合サブネットに委任を設定するための十分なアクセス許可があるか。 リージョン VNet 統合が構成されている間、統合サブネットは Microsoft.Web/serverFarms に委任されます。 VNet 統合 UI では、Microsoft.Web/serverFarms に対するサブネットが自動的に委任されます。 アカウントに委任を設定するための十分なネットワークのアクセス許可がない場合は、サブネットを委任するために、統合サブネットに属性を設定できるユーザーが必要になります。 統合サブネットを手動で委任するには、Azure Virtual Network サブネット UI にアクセスして、Microsoft.Web/serverFarms の委任を設定します。

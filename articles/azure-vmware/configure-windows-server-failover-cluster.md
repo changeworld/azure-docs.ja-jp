@@ -3,12 +3,12 @@ title: Azure VMware Solution vSAN 上に Windows Server フェールオーバー
 description: ネイティブ共有ディスクを使用して Azure VMware Solution vSAN 上に Windows Server フェールオーバー クラスターを設定する方法を説明します。
 ms.topic: how-to
 ms.date: 05/04/2021
-ms.openlocfilehash: f2fc9e712d3f56aeddc6e66c12837794dceb9abe
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fcde65b98b3774ee1ef9b15bfa6da3836aaa8a1b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954494"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323187"
 ---
 # <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>Azure VMware Solution vSAN 上に Windows Server フェールオーバー クラスターを構成する
 
@@ -31,9 +31,9 @@ WSFC クラスターは、Cluster-Across-Box (CAB) と呼ばれる別の Azure V
 
 サポートされている WSFC 構成をデプロイすることが重要です。 ソリューションは、vSphere 上で Azure VMware Solution を使用してサポートされる必要があります。 VMware では、vSphere 6.7 上の WSFC について、[フェールオーバー クラスタリングと Microsoft Cluster Service の設定](https://docs.vmware.com/en/VMware-vSphere/6.7/vsphere-esxi-vcenter-server-67-setup-mscs.pdf) (英語版) という詳細なドキュメントが用意されています。
 
-この記事では、Windows Server 2016 および Windows Server 2019 上の WSFC に焦点を当てています。 Windows Server の古いバージョンは、[メインストリーム サポート](https://support.microsoft.com/lifecycle/search?alpha=windows%20server)対象ではないため、ここでは考慮しません。
+この記事では、Windows Server 2016 および Windows Server 2019 上の WSFC に焦点を当てています。 残念ながら、Windows Server の古いバージョンは[メインストリーム サポート](https://support.microsoft.com/lifecycle/search?alpha=windows%20server)対象ではないため、ここでは考慮しません。
 
-まず、[WSFC を作成](/windows-server/failover-clustering/create-failover-cluster)する必要があります。 Azure VMware Solution での WSFC デプロイの詳細については、この記事に記載されている情報を使用してください。
+まず、[WSFC を作成](/windows-server/failover-clustering/create-failover-cluster)する必要があります。 次に、この記事に記載されている情報を使用して、Azure VMware Solution で WSFC デプロイを指定します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,11 +42,11 @@ WSFC クラスターは、Cluster-Across-Box (CAB) と呼ばれる別の Azure V
 
 ## <a name="reference-architecture"></a>参照アーキテクチャ
 
-Azure VMware Solution では、仮想化された WSFC に対するネイティブ サポートが提供されます。 仮想ディスク レベルでは、SCSI-3 Persistent Reservations (SCSI3PR) がサポートされています。 このサポートは、WSFC でノード間の共有ディスクへのアクセスを調停するために必要です。 SCSI3PR のサポートにより、vSAN データストアでネイティブに VM 間で共有されるディスク リソースを使用して WSFC を構成できます。
+Azure VMware Solution では、仮想化された WSFC に対するネイティブ サポートが提供されます。 仮想ディスク レベルでは、SCSI-3 Persistent Reservations (SCSI3PR) がサポートされています。 WSFC は、ノード間の共有ディスクへのアクセスを調停するために、このサポートを必要とします。 SCSI3PR のサポートにより、vSAN データストアでネイティブに VM 間で共有されるディスク リソースを使用して WSFC を構成できます。
 
 次の図は、Azure VMware Solution プライベート クラウド上の WSFC 仮想ノードのアーキテクチャを示しています。 これは、広範な Azure プラットフォームに関して、WSFC 仮想サーバー (赤い枠) を含めて、Azure VMware Solution が存在する場所を示しています。 この図では、一般的なハブ スポーク アーキテクチャを示していますが、Azure Virtual WAN を使用して同様のセットアップが可能です。 どちらの場合も、他の Azure サービスによってもたらされるすべての価値が提供されます。
 
-:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Azure VMware Solution プライベート クラウド上の Windows Server フェールオーバー クラスター仮想ノードのアーキテクチャ図。" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Azure VMware Solution プライベート クラウド上の Windows Server フェールオーバー クラスター仮想ノードの図。" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>サポートされている構成
 
@@ -132,7 +132,7 @@ Azure VMware Solution では、仮想化された WSFC に対するネイティ�
 6. クォーラムのクラスター監視を構成します (ファイル共有監視は正常に動作します)。
 7. WSFC クラスターのすべてのノードの電源をオフにします。
 8. WSFC の各 VM 部分に 1 つ以上の準仮想化 SCSI コントローラー (最大 4 つ) を追加します。 前の段落での設定を使用します。
-9. 最初のクラスター ノードで、 **[新しいデバイスの追加]**  >  **[ハードディスク]** を使用して、必要なすべての共有ディスクを追加します。 ディスクの共有は **[未指定]** (既定)、ディスク モードは **[独立型 - 永続]** のままにします。 これを、前の手順で作成したコントローラーにアタッチします。
+9. 最初のクラスター ノードで、 **[新しいデバイスの追加]**  >  **[ハードディスク]** を使用して、必要なすべての共有ディスクを追加します。 ディスクの共有は **[未指定]** (既定)、ディスク モードは **[独立型 - 永続]** のままにします。 その後、これを前の手順で作成したコントローラーにアタッチします。
 10. 残りの WSFC ノードで続けます。 前の手順で作成したディスクを追加するには、 **[新しいデバイス]**  >  **[既存のハードディスク]** の順に選択します。 必ず、すべての WSFC ノードで同じディスク SCSI ID を維持してください。
 11. 最初の WSFC ノードの電源を入れ、サインインし、ディスク管理コンソール (mmc) を開きます。 追加した共有ディスクが OS によって管理でき、初期化されていることを確認します。 ディスクをフォーマットし、ドライブ文字を割り当てます。
 12. 他の WSFC ノードの電源を入れます。
@@ -144,7 +144,7 @@ Azure VMware Solution では、仮想化された WSFC に対するネイティ�
 
        - **記憶域スペースの永続的な予約を検証する**。 (Azure VMware Solution vSAN 上などの) クラスターで記憶域スペースを使用していない場合、このテストは適用されません。 この警告を含め、記憶域スペースの永続的な予約の検証テストに関する結果はすべて無視してかまいません。 警告を回避するために、このテストを除外できます。
         
-      - **ネットワーク通信を検証する**。 クラスターの検証テストでは、1 台のクラスター ノードにつき 1 つのネットワーク インターフェイスしか使用できないという警告がスローされます。 この警告は無視してかまいません。 ノードはいずれかの NSX-T セグメントに接続されているため、Azure VMware Solution で必要な可用性とパフォーマンスが提供されます。 ただし、ネットワーク通信の他の側面を検証するため、この項目はクラスターの検証テストの一部として保持してください。
+      - **ネットワーク通信を検証する**。 クラスターの検証テストでは、1 台のクラスター ノードにつき 1 つのネットワーク インターフェイスしか使用できないという警告が表示されます。 この警告は無視できます。 ノードはいずれかの NSX-T セグメントに接続されているため、Azure VMware Solution で必要な可用性とパフォーマンスが提供されます。 ただし、ネットワーク通信の他の側面を検証するため、この項目はクラスターの検証テストの一部として保持してください。
 
 16. 同じ Azure VMware Solution ノードに WSFC VM を配置するための DRS ルールを作成します。 これを行うには、ホストと VM 間のアフィニティ ルールが必要です。 これにより、クラスター ノードは同じ Azure VMware Solution ホストで実行されます。 この場合も、これは、配置ポリシーが利用可能になるまでのパイロットの目的で行われます。
 
@@ -165,5 +165,5 @@ Azure VMware Solution での WSFC の設定について理解したので、次�
 
 - WSFC 機能を必要とするアプリケーションを追加して新しい WSFC を設定する (例: SQL Server と SAP ASCS)。
 - バックアップ ソリューションを設定する。
-  - [Azure VMware Solution 向けの Azure Backup Server の設定](../backup/backup-azure-microsoft-azure-backup.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)
-  - [Azure VMware Solution 仮想マシンのバックアップ ソリューション](../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)
+  - [Azure VMware Solution 向けの Azure Backup Server の設定](set-up-backup-server-for-azure-vmware-solution.md)
+  - [Azure VMware Solution 仮想マシンのバックアップ ソリューション](backup-azure-vmware-solution-virtual-machines.md)

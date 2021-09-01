@@ -14,20 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2021
 ms.author: yelevin
-ms.openlocfilehash: a706704365731d5f5ba157837269a90dbcb12e18
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 851b1659baf10826d98246aaf8ebd8ec138c5542
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810302"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182537"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
 > [!IMPORTANT]
 >
-> - UEBA およびエンティティ ページ機能は、Azure Sentinel の "**_すべて_**" の地域とリージョンで **一般提供** になりました。
+> - UEBA およびエンティティ ページ機能は、Azure Sentinel の "**_すべて_**" の地域とリージョンで **一般提供** になりました。 
 >
 > - **IP アドレス エンティティ** は現在 **プレビュー** の段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>ユーザーとエンティティの行動分析 (UEBA) の概要
 
@@ -82,7 +84,7 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 - 右側のパネルには、エンティティに関する行動分析情報が表示されます。 これらの分析情報は、異常やセキュリティの脅威をすばやく特定するために役立ちます。 この分析情報は Microsoft のセキュリティ調査チームによって開発され、異常検出モデルに基づいています。
 
 > [!NOTE]
-> **IP アドレス エンティティ ページ** (現在はプレビュー段階にあります) には、**Microsoft の脅威インテリジェンス サービス** によって提供される **位置情報データ** が含まれています。 このサービスは、Microsoft ソリューションとサードパーティのベンダーやパートナーが提供する位置情報データを組み合わせたものです。 このデータは、セキュリティ インシデントのコンテキストで分析や調査に利用できます。
+> **IP アドレス エンティティ ページ** (現在はプレビュー段階にあります) には、**Microsoft の脅威インテリジェンス サービス** によって提供される **位置情報データ** が含まれています。 このサービスは、Microsoft ソリューションとサードパーティのベンダーやパートナーが提供する位置情報データを組み合わせたものです。 このデータは、セキュリティ インシデントのコンテキストで分析や調査に利用できます。 詳細については、「[REST API を介して位置情報データで Azure Sentinel のエンティティを強化する (パブリック プレビュー)](geolocation-data-api.md)」も参照してください。
 
 ### <a name="the-timeline"></a>タイムライン
 
@@ -94,7 +96,7 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 
 タイムラインには、次の種類の項目が含まれています。
 
-- アラート - そのエンティティが **[マップされたエンティティ]** として定義されているすべてのアラート。 組織で[分析ルールを使用したカスタム アラート](./tutorial-detect-threats-custom.md)が作成されている場合は、ルールのエンティティ マッピングが正しく実行されていることを確認する必要がある点に注意してください。
+- アラート - そのエンティティが **[マップされたエンティティ]** として定義されているすべてのアラート。 組織で[分析ルールを使用したカスタム アラート](./detect-threats-custom.md)が作成されている場合は、ルールのエンティティ マッピングが正しく実行されていることを確認する必要がある点に注意してください。
 
 - ブックマーク - ページにその特定のエンティティが表示されているすべてのブックマーク。
 
@@ -163,7 +165,7 @@ Azure Sentinel には、**BehaviorAnalytics** テーブルに基づいた、一�
 詳細については次を参照してください:
 
 - [Azure Sentinel で脅威を検出する](hunting.md)
-- [ データの視覚化と監視](tutorial-monitor-your-data.md)
+- [ データの視覚化と監視](monitor-your-data.md)
 
 従来の防御ツールが古いものになるにつれて、膨大な数のデジタル資産を所有している組織は、組織の環境が直面している可能性のあるリスクと体制の全体像を把握することが困難になります。 分析やルールなどの事後対応型の取り組みに依存しすぎると、悪意のあるアクターがそれらの取り組みを回避する方法を学んでしまいます。 ここが UEBA の出番です。リスクのスコアリング方法とアルゴリズムにより、実際に何が起こっているのかを把握できます。
 

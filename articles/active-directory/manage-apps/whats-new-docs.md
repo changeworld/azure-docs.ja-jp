@@ -1,31 +1,61 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 06/02/2021
+ms.date: 08/03/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: mtillman
-author: mtillman
+ms.author: davidmu
+author: davidmu1
 manager: CelesteDG
-ms.openlocfilehash: 361fb5cc46d356fbab53defc5c3add4d7a5b768b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+reviewer: napuri
+ms.openlocfilehash: d95c81256dcb58b64273d6062563daf38dfdb4fa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079195"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727628"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [マイ アプリ ポータルでコレクションを作成する](access-panel-collections.md)
+- [クイック スタート: アプリへのユーザーの割り当て](add-application-portal-assign-users.md)
+- [クイック スタート: アプリケーションのプロパティを構成する](add-application-portal-configure.md)
+- [クイック スタート: アプリケーションの OIDC ベースのシングル サインオンを設定する](add-application-portal-setup-oidc-sso.md)
+- [クイック スタート: アプリケーションの SAML ベースのシングル サインオンを設定する](add-application-portal-setup-sso.md)
+- [クイック スタート: テナントにアプリケーションを追加する](add-application-portal.md)
+- [クイック スタート: テナントからアプリケーションを削除する](delete-application-portal.md)
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+- [クイック スタート:Azure Active Directory (Azure AD) テナントを使用して ID 管理を行っているアプリケーションの一覧を表示する](view-applications-portal.md)
+- [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [クイック スタート:Azure Active Directory (Azure AD) テナントにアプリケーションを追加する](add-application-portal.md)
+- [グループ データにアクセスするアプリに対するグループ所有者の同意を構成する](configure-user-consent-groups.md)
+- [クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する](add-application-portal-configure.md)
+- [Azure Active Directory のアプリに対するユーザー割り当ての管理](assign-user-or-group-access-portal.md)
+- [アプリケーションにサインインするときに、予期しない同意プロンプトが表示される](application-sign-in-unexpected-user-consent-prompt.md)
+- [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
+- [テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](tenant-restrictions.md)
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+
 
 ## <a name="may-2021"></a>2021 年 5 月
 
 ### <a name="updated-articles"></a>更新された記事
 
 - [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
-
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -47,7 +77,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 - [テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](tenant-restrictions.md)
 - [Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド](plan-an-application-integration.md)
-
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -76,7 +105,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [Azure AD アプリケーション プロキシは:バージョンのリリース履歴](../app-proxy/application-proxy-release-version-history.md)
 - [ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](configure-authentication-for-federated-users-portal.md)
 - [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
-
 
 ## <a name="february-2021"></a>2021 年 2 月
 
