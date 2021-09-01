@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive, devx-track-azurepowershell
 ms.date: 02/13/2020
-ms.openlocfilehash: bfd0c54e2f824973a8a0c5ff023cc8bcaa3ecc68
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 8855c1004406d8db3b34fe442c9c764293df5119
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696888"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122653459"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する
 
-[!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-portal-management-selector.md)]
 
 Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell Az モジュールを使用して Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[Az.HDInsight リファレンス](/powershell/module/az.hdinsight)を参照してください。
 

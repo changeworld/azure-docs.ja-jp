@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/18/2020
-ms.openlocfilehash: 5e608d38ff70d51b569088629a6d80cb08e74ed4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: ea92a5e196c809535801278631cbfdfdc5013199
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251626"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288219"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Cognitive Search でのシノニム
 
-シノニム マップを使用すると、ユーザーが実際に用語を提供する必要がなく、クエリのスコープを拡張する同等の用語を関連付けられます。 たとえば、"dog"、"canine"、"puppy" がシノニムであると仮定すると、"canine" に対するクエリは "dog" を含むドキュメントで一致します。
+検索サービス内において、シノニム マップは同等の用語を関連付けるグローバル リソースです。ユーザーが実際に用語を提供する必要がなく、クエリのスコープが拡張されます。 たとえば、"dog"、"canine"、"puppy" がマップされたシノニムであると仮定すると、"canine" に対するクエリは "dog" を含むドキュメントで一致します。
 
 ## <a name="create-synonyms"></a>シノニムを作成する
 
@@ -38,7 +38,13 @@ POST /synonymmaps?api-version=2020-06-30
 }
 ```
 
-シノニム マップを作成するには、「[シノニム マップの作成 (REST API)](/rest/api/searchservice/create-synonym-map)」または Azure SDK を使用します。 C# 開発者には、「[C# で Azure Cognitive Search にシノニムを追加する](search-synonyms-tutorial-sdk.md)」から始めることをお勧めします。
+シノニム マップはプログラムを使用して作成します (ポータルではシノニム マップ定義がサポートされていません)。
+
++ [シノニム マップの作成 (REST API)](/rest/api/searchservice/create-synonym-map)。 最もわかりやすいリファレンスです。
++ [SynonymMap クラス (.NET)](/dotnet/api/azure.search.documents.indexes.models.synonymmap) と [C# を使用したシノニムの追加](search-synonyms-tutorial-sdk.md)
++ [SynonymMap クラス (Python)](/python/api/azure-search-documents/azure.search.documents.indexes.models.synonymmap)
++ [SynonymMap インターフェイス (JavaScript)](/javascript/api/@azure/search-documents/synonymmap)
++ [SynonymMap クラス (Java)](/java/api/com.azure.search.documents.indexes.models.synonymmap)
 
 ## <a name="define-rules"></a>ルールを定義する
 
@@ -85,7 +91,14 @@ POST /synonymmaps?api-version=2020-06-30
 
 ### <a name="escaping-special-characters"></a>特殊文字のエスケープ
 
-シノニムは、クエリ処理中に分析されます。 コンマや他の特殊文字を含むシノニムを定義する必要がある場合は、次の例のように円記号でエスケープできます。
+フルテキスト検索では、他のクエリ用語と同様に、シノニムがクエリ処理の際に分析されます。つまり、予約文字と特殊文字に関する規則がシノニム マップ内の用語に適用されます。 エスケープが必要な文字の一覧は、単純な構文と完全な構文で異なります。
+
++ [単純な構文](query-simple-syntax.md)  `+ | " ( ) ' \`
++ [完全な構文](query-lucene-syntax.md) `+ - & | ! ( ) { } [ ] ^ " ~ * ? : \ /`
+
+インデックス作成時に既定のアナライザーによって破棄される可能性のある文字を保持する必要がある場合は、それらの文字を保持するアナライザーに置き換える必要があることに注意してください。 選択肢には、ハイフンでつながれた単語を保持する Microsoft 自然[言語アナライザー](index-add-language-analyzers.md)や、より複雑なパターン用のカスタム アナライザーなどが含まれます。 詳細については、[部分的な語句、パターン、特殊文字](search-query-partial-matching.md)に関する記事を参照してください。
+
+円記号を使用して文字をエスケープする方法の例を次に示します。
 
 ```json
 {

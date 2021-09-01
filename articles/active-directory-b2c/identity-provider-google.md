@@ -8,24 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 07/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 06f656fd45bfa0f8aedb086e95f5b991868656ff
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: fedae4f6593e14d812d1fb8fe123ca9a99f8476e
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314987"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114401012"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 > [!IMPORTANT]
-> **2021 年の下半期から** Google の [Web ビュー サインイン サポートが非推奨になります](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 Azure AD B2B 招待または Azure AD B2C に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](../active-directory/external-identities/google-federation.md#deprecation-of-web-view-sign-in-support)。
+> **2021 年 9 月 30 日より**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 アプリで埋め込みの Web ビューを使用してユーザーを認証しており、Azure AD B2C で Google フェデレーションを使用している場合は、Google Gmail ユーザーを認証できなくなります。 [詳細については、こちらを参照してください](../active-directory/external-identities/google-federation.md#deprecation-of-web-view-sign-in-support)。
+
 
 ::: zone pivot="b2c-custom-policy"
 

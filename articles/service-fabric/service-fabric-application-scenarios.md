@@ -3,12 +3,12 @@ title: アプリケーションのシナリオと設計
 description: Service Fabric のクラウド アプリケーションのカテゴリの概要 ステートフル サービスとステートレス サービスを使用したアプリケーションの設計について説明します。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 7d9459e6e0168657cf8e9062331fec0237f58c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 703adde38d195395ae07dea022da873754e1d2f1
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045758"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867140"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ
 
@@ -46,7 +46,7 @@ Service Fabric 独自のアーキテクチャでは、リアルタイムに近�
 
 ## <a name="application-design-case-studies"></a>アプリケーション設計のケース スタディ
 
-アプリケーション設計における Service Fabric の使用方法を示すケース スタディが、[顧客事例](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc)サイトと [Azure のマイクロサービス](https://azure.microsoft.com/solutions/microservice-applications/) サイトで公開されています。
+アプリケーション設計における Service Fabric の使用方法を示すケース スタディが、[顧客事例](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc)サイトと [Azure のマイクロサービス](https://azure.microsoft.com/solutions/microservice-applications/) サイトで公開されています。
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>ステートレスとステートフルなマイクロサービスから成るアプリケーションを設計する
 

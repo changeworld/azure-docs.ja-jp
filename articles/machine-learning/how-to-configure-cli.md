@@ -10,12 +10,13 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
-ms.openlocfilehash: e93985b6583f164e1ea497f5d8cad7352b60f556
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: devx-track-azurecli, devplatv2
+ms.openlocfilehash: 53d7b42426919ec5b91821ac67fbde940972494a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755557"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745229"
 ---
 # <a name="install-set-up-and-use-the-20-cli-preview"></a>2\.0 CLI (プレビュー) をインストール、設定、および使用する
 
@@ -25,7 +26,7 @@ ms.locfileid: "111755557"
 
 ## <a name="prerequisites"></a>前提条件
 
-- CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+- CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 - ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
     > [!TIP]
@@ -60,6 +61,14 @@ help コマンドを実行してインストールを確認し、使用可能な
 拡張機能を最新バージョンにアップグレードすることができます。
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_update":::
+
+### <a name="installation-on-linux"></a>Linux へのインストール
+
+Linux を使用している場合、必要な CLI バージョンと Machine Learning 拡張機能をインストールする最も簡単な方法は次のとおりです。
+
+:::code language="bash" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_install_linux":::
+
+詳しくは、[Linux 向け Azure CLI のインストールに関するページ](/cli/azure/install-azure-cli-linux)を参照してください。
 
 ## <a name="set-up"></a>設定
 

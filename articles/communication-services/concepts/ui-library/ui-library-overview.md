@@ -6,15 +6,15 @@ author: ddematheu2
 manager: chrispalm
 services: azure-communication-services
 ms.author: dademath
-ms.date: 05/11/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 4176bdf61cafdf50aef71e76b832a0e669f1535c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 86ef660c5d4b0f0132218df1df37c8934f27ec08
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468806"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653607"
 ---
 # <a name="ui-library-overview"></a>UI ライブラリの概要
 
@@ -53,8 +53,8 @@ npm i --save @azure/communication-react
 
 | Composite    | ユース ケース  | 
 | ------------ | ---------- |
-| [CallComposite](https://azure.github.io/communication-ui-library/?path=/docs/composites-callcomposite--basic-example) | ユーザーが通話を開始したり、参加したりすることができる通話エクスペリエンス。 このエクスペリエンスにおいて、ユーザーは自分のデバイスを構成したり、ビデオ通話に参加して、他の参加者 (ビデオがオンの参加者も含む) を見ることができます。 Teams との相互運用には、許可待ちのユーザーのためのロビー機能が含まれています。 |
-| [ChatComposite](https://azure.github.io/communication-ui-library/?path=/docs/composites-chatcomposite--basic-example)    | ユーザーがメッセージを送受信できるチャット エクスペリエンス。 入力、読み取り、参加者の入退出などのスレッド イベントが、チャット スレッドの一部としてユーザーに表示されます。                                                                                                                          |
+| [CallComposite](https://azure.github.io/communication-ui-library/?path=/story/composites-call--basic-example) | ユーザーが通話を開始したり、参加したりすることができる通話エクスペリエンス。 このエクスペリエンスにおいて、ユーザーは自分のデバイスを構成したり、ビデオ通話に参加して、他の参加者 (ビデオがオンの参加者も含む) を見ることができます。 Teams との相互運用には、許可待ちのユーザーのためのロビー機能が含まれています。 |
+| [ChatComposite](https://azure.github.io/communication-ui-library/?path=/story/composites-chat--basic-example)    | ユーザーがメッセージを送受信できるチャット エクスペリエンス。 入力、読み取り、参加者の入退出などのスレッド イベントが、チャット スレッドの一部としてユーザーに表示されます。                                                                                                                          |
 
 ## <a name="ui-component-overview"></a>UI コンポーネントの概要
 
@@ -63,17 +63,16 @@ UI コンポーネントを使用すると、アプリケーションのブラ�
 
 | 領域    | コンポーネント    | 説明       |
 | ------- | ------------ | ----------------- |
-| 呼び出し | [Grid レイアウト](https://azure.github.io/communication-ui-library/?path=/story/ui-components-gridlayout--grid-layout-component)                | ビデオ タイルを NxN のグリッドに整理するためのグリッド コンポーネント                                            |
-|         | [ビデオ タイル](https://azure.github.io/communication-ui-library/?path=/story/ui-components-videotile--video-tile-component)                   | 使用可能な場合はビデオ ストリームを表示し、ない場合は既定の静的コンポーネントを表示するコンポーネント        |
-|         | [コントロール バー](https://azure.github.io/communication-ui-library/?path=/story/ui-components-controlbar--control-bar-component)                | ミュートや共有画面など、特定の呼び出しアクションに接続するための DefaultButtons を整理するためのコンテナー |
+| 呼び出し | [Grid レイアウト](https://azure.github.io/communication-ui-library/?path=/story/ui-components-gridlayout--grid-layout)                | ビデオ タイルを NxN のグリッドに整理するためのグリッド コンポーネント                                            |
+|         | [ビデオ タイル](https://azure.github.io/communication-ui-library/?path=/story/ui-components-videotile--video-tile)                   | 使用可能な場合はビデオ ストリームを表示し、ない場合は既定の静的コンポーネントを表示するコンポーネント        |
+|         | [コントロール バー](https://azure.github.io/communication-ui-library/?path=/story/ui-components-controlbar--control-bar)                | ミュートや共有画面など、特定の呼び出しアクションに接続するための DefaultButtons を整理するためのコンテナー |
 |         | [VideoGallery](https://azure.github.io/communication-ui-library/?path=/story/ui-components-video-gallery--video-gallery)                                           | 参加者が増える度に動的に変更されるターンキーのビデオ ギャラリー コンポーネント               |
-| チャット    | [メッセージ スレッド](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagethread--message-thread-component)       | チャット メッセージ、システム メッセージ、カスタム メッセージを表示するコンテナー                          |
-|         | [送信ボックス](https://azure.github.io/communication-ui-library/?path=/story/ui-components-sendbox--send-box-component)                         | 不連続な [送信] ボタンを持つテキスト入力コンポーネント                                                   |
-|         | [メッセージの状態インジケーター](https://azure.github.io/communication-ui-library/?path=/story/ui-components-message-status-indicator--message-status-indicator)        | 送信されたメッセージの状態を表示するマルチステート読み取りの確認メッセージ コンポーネント                                   |
-|         | [入力インジケーター](https://azure.github.io/communication-ui-library/?path=/story/ui-components-typingindicator--typing-indicator-component) | スレッドで現在入力中の参加者を表示するテキスト コンポーネント                      |
-| 共通  | [参加者の項目](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantitem--participant-item-component) | アバターと表示名を含む、通話またはチャット参加者を表示する共通コンポーネント            |
-|         | [参加者リスト](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participant-list--participant-list)                                 | アバターと表示名を含む、通話またはチャット参加者の一覧を表示する共通コンポーネント       |
-
+| チャット    | [メッセージ スレッド](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagethread--message-thread)       | チャット メッセージ、システム メッセージ、カスタム メッセージを表示するコンテナー                          |
+|         | [送信ボックス](https://azure.github.io/communication-ui-library/?path=/story/ui-components-sendbox--send-box)                         | 不連続な [送信] ボタンを持つテキスト入力コンポーネント                                                   |
+|         | [メッセージの状態インジケーター](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagestatusindicator--message-status-indicator)        | 送信されたメッセージの状態を表示するマルチステート読み取りの確認メッセージ コンポーネント                                   |
+|         | [入力インジケーター](https://azure.github.io/communication-ui-library/?path=/story/ui-components-typingindicator--typing-indicator) | スレッドで現在入力中の参加者を表示するテキスト コンポーネント                      |
+| 共通  | [参加者の項目](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantitem--participant-item) | アバターと表示名を含む、通話またはチャット参加者を表示する共通コンポーネント            |
+|         | [参加者リスト](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantlist--participant-list)                                 | アバターと表示名を含む、通話またはチャット参加者の一覧を表示する共通コンポーネント       |
 
 ## <a name="what-ui-artifact-is-best-for-my-project"></a>自分のプロジェクトに最適な UI アーティファクトとは
 

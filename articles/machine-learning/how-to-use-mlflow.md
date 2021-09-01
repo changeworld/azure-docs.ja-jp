@@ -1,7 +1,7 @@
 ---
 title: ML 実験の MLflow Tracking
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用して MLflow を設定し、ML モデルからのメトリックと成果物をログに記録し、Web サービスとして ML モデルをデプロイします。
+description: ML モデルのメトリックと成果物をログに記録するために、MLflow Tracking と Azure Machine Learning を設定します。
 services: machine-learning
 author: shivp950
 ms.author: shipatel
@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 783be7d595022ba08d7896540683635dbc59ade4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 867f4a7c2c45a73c3ebc651a0f2d7a4b38156b90
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378841"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031105"
 ---
 # <a name="track-ml-models-with-mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning を使用して ML モデルを追跡する
 
@@ -26,11 +26,13 @@ ms.locfileid: "110378841"
 
 + [Azure Machine Learning ワークスペース](./concept-azure-machine-learning-architecture.md#workspace)で、実験のメトリックと成果物を追跡してログに記録します。 実験に MLflow Tracking を既に使用している場合、トレーニングのメトリックとモデルを保存するための一元化された安全でスケーラブルな場所がワークスペースに用意されています。
 
-+ [Azure Machine Learning バックエンド サポートを備えた MLflow Projects を使用してトレーニング ジョブを送信します (プレビュー)](how-to-train-mlflow-projects.md)。 Azure Machine Learning 追跡を使用してローカルにジョブを送信することも、[Azure Machine Learning コンピューティング](how-to-create-attach-compute-cluster.md)を介するなどして実行をクラウドに移行することもできます。
++ [Azure Machine Learning バックエンド サポートを備えた MLflow Projects を使用してトレーニング ジョブを送信します](how-to-train-mlflow-projects.md)。 Azure Machine Learning 追跡を使用してローカルにジョブを送信することも、[Azure Machine Learning コンピューティング](how-to-create-attach-compute-cluster.md)を介するなどして実行をクラウドに移行することもできます。
 
 + MLflow および Azure Machine Learning モデル レジストリでモデルを追跡および管理します。
 
 [MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLFlow Tracking は MLflow のコンポーネントです。これは、実験の環境がローカル コンピューター、リモートのコンピューティング先、仮想マシン、[Azure Databricks クラスター](how-to-use-mlflow-azure-databricks.md)のいずれであるかにかかわらず、トレーニング実行のメトリックとモデル成果物をログに記録し、追跡します。 
+
+MLflow と Azure Machine Learning のその他の機能統合については、「[MLflow と Azure Machine Learning](concept-mlflow.md)」をご覧ください。
 
 次の図は、MLflow Tracking を使用して、実験の実行メトリックを追跡し、Azure Machine Learning ワークスペース内にモデル成果物を保存する例を示しています。
 
@@ -41,24 +43,6 @@ ms.locfileid: "110378841"
 
 > [!NOTE] 
 > SQL ストレージ、サーバー、UI、またはデータ サイエンスの依存関係のない軽量 MLflow パッケージである [MLflow Skinny クライアント](https://github.com/mlflow/mlflow/blob/master/README_SKINNY.rst)を使用できます。 主に追跡機能とログ機能を必要とし、デプロイを含む MLflow の全機能はインポートしないユーザーには、これが推奨されます。 
-
-## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>MLflow と Azure Machine Learning のクライアントの比較
-
- 次の表に、Azure Machine Learning を使用できるさまざまなクライアントとそれぞれの機能を示します。
-
- MLflow Tracking は、メトリックのログ機能と成果物の保存機能を提供します。他の方法では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) を使用している場合にのみこれらの機能を利用できます。
-
-| 機能 | MLflow Tracking & Deployment | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
-|---|---|---|---|---|
-| ワークスペースの管理 |   | ✓ | ✓ | ✓ |
-| データ ストアの使用  |   | ✓ | ✓ | |
-| メトリックのログ記録      | ✓ | ✓ |   | |
-| 成果物のアップロード | ✓ | ✓ |   | |
-| メトリックを表示する     | ✓ | ✓ | ✓ | ✓ |
-| コンピューティングの管理   |   | ✓ | ✓ | ✓ |
-| モデルをデプロイする    | ✓ | ✓ | ✓ | ✓ |
-|モデル パフォーマンスを監視する||✓|  |   |
-| データの誤差を検出する |   | ✓ |   | ✓ |
 
 ## <a name="prerequisites"></a>前提条件
 

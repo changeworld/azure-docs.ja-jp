@@ -5,14 +5,14 @@ author: miag
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2021
+ms.date: 08/24/2021
 ms.author: miag
-ms.openlocfilehash: 7122cfc12e47734b84aab752901fa9750b7e5164
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 4d5a518bc517b950f5366ba53eadb7284121a5e3
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891997"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866410"
 ---
 # <a name="iot-hub-support-for-managed-identities"></a>IoT Hub でのマネージド ID のサポート 
 
@@ -121,10 +121,10 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 ```
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID 
 このセクションでは、Azure portal を使用して、IoT ハブとの間でユーザー割り当てマネージド ID を追加および削除する方法について説明します。
-1.  最初に、スタンドアロン リソースとしてユーザー割り当てマネージド ID を作成する必要があります。 [こちら](./../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)の手順に従って、ユーザー割り当てマネージド ID を作成できます。
+1.  最初に、スタンドアロン リソースとしてユーザー割り当てマネージド ID を作成する必要があります。 それを行うには、「[ユーザー割り当てマネージド ID を作成する](./../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#create-a-user-assigned-managed-identity)」の手順に従います。
 2.  IoT ハブにアクセスし、IoT Hub ポータルで **[ID]** に移動します。
 3.  **[ユーザー割り当て]** タブで、 **[ユーザー割り当てマネージド ID の追加]** をクリックします。 ハブに追加するユーザー割り当てマネージド ID を選択し、 **[選択]** をクリックします。 
-4.  IoT ハブからユーザー割り当て ID を削除できます。 削除するユーザー割り当て ID を選択し、 **[削除]** ボタンをクリックします。 この削除では、ユーザー割り当て ID は IoT ハブから削除されるだけで、リソースとしては削除されないことに注意してください。 リソースとしてのユーザー割り当て ID を削除するには、[こちら](./../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#delete-a-user-assigned-managed-identity)の手順に従います。
+4.  IoT ハブからユーザー割り当て ID を削除できます。 削除するユーザー割り当て ID を選択し、 **[削除]** ボタンをクリックします。 この削除では、ユーザー割り当て ID は IoT ハブから削除されるだけで、リソースとしては削除されないことに注意してください。 リソースとしてのユーザー割り当て ID を削除するには、「[ユーザー割り当てマネージド ID を削除する](./../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#delete-a-user-assigned-managed-identity)」の手順に従います。
 
     :::image type="content" source="./media/iot-hub-managed-identity/user-assigned.png" alt-text="IoT ハブのユーザー割り当てマネージド ID を追加する方法を示すスクリーンショット":::        
 
@@ -224,14 +224,14 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>IoT Hub から他の Azure リソースへのエグレス接続
 IoT Hub では、[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)、[ファイルのアップロード](iot-hub-devguide-file-upload.md)、[デバイスの一括インポートおよびエクスポート](iot-hub-bulk-identity-mgmt.md)のために、IoT Hub ハブから他の Azure サービスへのエグレス接続にマネージド ID を使用できます。 顧客所有のエンドポイント (ストレージ アカウント、イベント ハブ、サービス バス エンドポイントなど) への IoT Hub エグレス接続ごとに、使用するマネージド ID を選択できます。 
 
-### <a name="message-routing"></a>メッセージ ルーティング
+## <a name="configure-message-routing-with-managed-identities"></a>マネージド ID を使用してメッセージ ルーティングを構成する
 このセクションでは、例として、イベント ハブ カスタム エンドポイントへの[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用します。 同じことが他のルーティング カスタム エンドポイントにも当てはまります。 
 
 1.  まず、Azure portal でご使用のイベント ハブに移動し、マネージド ID に適切なアクセス権を割り当てる必要があります。 イベント ハブで、 **[アクセスの制御 (IAM)]** タブに移動し、 **[追加]** 、 **[ロールの割り当ての追加]** の順にクリックします。
 3.  **[ロール] として [Event Hubs Data Sender]\(Event Hubs のデータ送信者\)** を選択します。
 
     > [!NOTE] 
-    > ストレージ アカウントの場合は、 **[ロール]** として **[ストレージ BLOB データ共同作成者]** を選択します ([ [共同作成者] または [ストレージ アカウント共同作成者] では "*ありません*"](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues))。 サービス バスの場合は、 **[ロール]** として **[Azure Service Bus のデータ送信者]** を選択します。
+    > ストレージ アカウントの場合は、 **[ロール]** として **[ストレージ BLOB データ共同作成者]** を選択します ([ [共同作成者] または [ストレージ アカウント共同作成者] では "*ありません*"](../storage/blobs/assign-azure-role-data-access.md))。 サービス バスの場合は、 **[ロール]** として **[Azure Service Bus のデータ送信者]** を選択します。
 
 4.  ユーザー割り当ての場合、 **[アクセスの割り当て先]** で **[ユーザー割り当てマネージド ID]** を選択します。 ドロップダウン リストで、ご使用のサブスクリプションとユーザー割り当てマネージド ID を選択します。 **[保存]** ボタンをクリックします。
 
@@ -258,7 +258,7 @@ IoT Hub では、[メッセージ ルーティング](iot-hub-devguide-messages-
 
 10. このエンドポイントに対して更新する新しい認証の種類を選択し、 **[保存]** をクリックします。
 
-### <a name="file-upload"></a>ファイルのアップロード
+## <a name="configure-file-upload-with-managed-identities"></a>マネージド ID を使用してファイルのアップロードを構成する
 IoT Hub の[ファイルのアップロード](iot-hub-devguide-file-upload.md)機能を使用すると、デバイスで顧客所有のストレージ アカウントにファイルをアップロードできます。 ファイルのアップロードを機能させるには、IoT Hub でストレージ アカウントに接続する必要があります。 メッセージ ルーティングと同様に、Azure Storage アカウントへの IoT Hub エグレス接続のための優先する認証の種類とマネージド ID を選択できます。 
 
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
@@ -273,14 +273,14 @@ IoT Hub の[ファイルのアップロード](iot-hub-devguide-file-upload.md)�
     > マネージド ID を使用するファイルのアップロードのためにストレージ アカウントを IoT Hub に保存する前に、上記の手順を完了して、マネージド ID に適切なアクセスを割り当てる必要があります。 ロールの割り当てが反映されるまで数分お待ちください。 
  
 5. ご使用の IoT Hub のリソース ページで、 **[ファイルのアップロード]** タブに移動します。
-6. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、必要に応じて **[ファイル通知の設定]、[SAS TTL]、[既定の TTL]、[最大配信回数]** を構成します。 優先する認証の種類を選択し、 **[保存]** をクリックします。
+6. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、必要に応じて **[ファイル通知の設定]、[SAS TTL]、[既定の TTL]、[最大配信回数]** を構成します。 優先する認証の種類を選択し、 **[保存]** をクリックします。 この手順でエラーが発生した場合は、一時的にストレージ アカウントを設定して、**すべてのネットワーク** からのアクセスを許可してから、再試行してください。 ファイルのアップロードの構成が完了したら、ストレージ アカウントでファイアウォールを構成できます。
 
     :::image type="content" source="./media/iot-hub-managed-identity/file-upload.png" alt-text="msi を使用する IoT Hub のファイルのアップロード":::
 
     > [!NOTE]
     > ファイルのアップロードのシナリオでは、ハブとデバイスの両方がストレージ アカウントに接続する必要があります。 上記の手順は、必要な認証の種類を使用して、IoT ハブをストレージ アカウントに接続するためのものです。 その場合も、SAS URI を使用してデバイスをストレージに接続する必要があります。 現在、SAS URI は接続文字列を使用して生成されます。 マネージド ID を使用した SAS URI の生成のサポートが近日中に追加される予定です。 [ファイルのアップロード](iot-hub-devguide-file-upload.md)の手順に従ってください。
 
-### <a name="bulk-device-importexport"></a>デバイスの一括デインポートとエクスポート
+## <a name="configure-bulk-device-importexport-with-managed-identities"></a>マネージド ID を使用してデバイスの一括インポートとエクスポートを構成する
 
 IoT Hub では、顧客指定のストレージ BLOB 間で、一括して[デバイスの情報をインポートおよびエクスポートする](iot-hub-bulk-identity-mgmt.md)機能がサポートされています。 この機能では、IoT Hub からストレージ アカウントへの接続が必要です。 
 

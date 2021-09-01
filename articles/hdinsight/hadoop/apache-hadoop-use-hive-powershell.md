@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurepowershell
 ms.date: 12/24/2019
-ms.openlocfilehash: 9334a5dfcdc305efb69b1ba77925d44ff0ba1843
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 7da28dbee9fa4ae1bda70348cffe0c123a7a970e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706797"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122652218"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell を使用して Apache Hive クエリを実行する
 
-[!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
+[!INCLUDE [hive-selector](../includes/hdinsight-selector-use-hive.md)]
 
 このドキュメントでは、Azure PowerShell を使用して HDInsight クラスター上の Apache Hadoop で Apache Hive クエリを実行する例を示します。
 

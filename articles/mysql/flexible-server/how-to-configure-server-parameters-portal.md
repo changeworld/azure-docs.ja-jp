@@ -6,17 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 618862e12bd62fbe37ef5e621c89babd7942c04b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2d02a4e0e63bd0861c0a414f3d56e9c62e19dc8a
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106957"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651682"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのサーバー パラメータを構成する
 
-> [!IMPORTANT] 
-> Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
+> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 サーバー パラメーターを使用して Azure Database for MySQL フレキシブル サーバー構成を管理できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。  
 
@@ -67,7 +69,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> タイム ゾーン テーブルにデータが正しく入力されるようにするには、サーバーを再起動する必要があります。<!-- FIX ME To restart the server, use the [Azure portal](how-to-restart-server-portal.md) or [CLI](how-to-restart-server-cli.md).-->
+>タイム ゾーン テーブルにデータが正しく入力されるようにするには、サーバーを再起動する必要があります。<!-- FIX ME To restart the server, use the [Azure portal](how-to-restart-server-portal.md) or [CLI](how-to-restart-server-cli.md).-->
 
 利用可能なタイム ゾーン値を表示するには、次のコマンドを実行します。
 

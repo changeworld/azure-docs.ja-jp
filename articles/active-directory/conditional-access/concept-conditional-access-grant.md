@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 06/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70cc20b51587a70e8a124b6f3b5d047ff827db83
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 695786a43291bdb0cb679d79cfa4e6d08cf67770
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034591"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867221"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -58,7 +58,7 @@ ms.locfileid: "112034591"
 
 Microsoft Intune をデプロイしている組織では、デバイスから返された情報を使用して、特定の準拠要件を満たすデバイスを識別することができます。 このポリシー準拠情報は Intune から Azure AD に転送され、条件付きアクセスはそこで、リソースへのアクセスを許可するかブロックするかを決定できます。 準拠ポリシーの詳細については、「[Intune を使用して組織内のリソースへのアクセスを許可するように、デバイス上でルールを設定する](/intune/protect/device-compliance-get-started)」という記事を参照してください。
 
-デバイスを準拠としてマークするには、Intune (任意のデバイス OS の場合) または Windows 10 デバイス用のサード パーティ製 MDM システムを使用できます。 Jamf pro は、唯一サポートされているサードパーティ製 MDM システムです。 統合の詳細については、「[コンプライアンスのために Jamf Pro を Intune と統合する](/intune/protect/conditional-access-integrate-jamf)」を参照してください。
+デバイスを準拠としてマークするには、Intune (任意のデバイス OS の場合) または Windows 10 デバイス用のサード パーティ製 MDM システムを使用できます。 サポートされているサード パーティの MDM システムの一覧については、「[Intune でサード パーティのデバイス コンプライアンス パートナーをサポートする](/mem/intune/protect/device-compliance-partners)」の記事を参照してください。
 
 デバイスを準拠としてマークするには、あらかじめそのデバイスが Azure AD に登録されている必要があります。 デバイス登録の詳細については、「[デバイス ID とは](../devices/overview.md)」を参照してください。
 
@@ -72,7 +72,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 組織は、選択したクラウド アプリへのアクセス試行を、承認されたクライアント アプリから行うように要求することができます。 これらの承認されたクライアント アプリは、モバイル デバイス管理 (MDM) ソリューションには一切依存せずに、[Intune アプリ保護ポリシー](/intune/app-protection-policy)をサポートします。
 
-この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft Authenticator または Microsoft ポータル サイトを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーは必要なブローカー アプリをインストールするために、適切な App ストアにリダイレクトされます。
+この許可コントロールを適用するために、条件付きアクセスでは、ブローカー アプリを使用する必要があるデバイスを Azure Active Directory に登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft Authenticator または Microsoft ポータル サイトを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーは必要なブローカー アプリをインストールするために、適切な App ストアにリダイレクトされます。
 
 次のクライアン トアプリは、この設定をサポートすることが確認されています。
 
@@ -92,7 +92,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
-- Microsoft PowerApps
+- Microsoft Power Apps
 - Microsoft Power BI
 - Microsoft PowerPoint
 - Microsoft SharePoint
@@ -122,7 +122,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 条件付きアクセス ポリシー内で、選択したクラウド アプリがアクセスできるようにする前に、クライアント アプリに [Intune アプリ保護ポリシー](/intune/app-protection-policy)が存在することを要求できます。 
 
-この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
+この許可コントロールを適用するために、条件付きアクセスでは、ブローカー アプリを使用する必要があるデバイスを Azure Active Directory に登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
 
 アプリケーションには **Policy Assurance** が実装された **Intune SDK** が必要であり、この設定をサポートするための他の特定の要件を満たす必要があります。 Intune SDK を使用してアプリケーションを実装する開発者は、これらの要件について SDK ドキュメントで詳細を確認できます。
 
@@ -140,12 +140,13 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft Power BI
 - Microsoft PowerPoint
 - Microsoft SharePoint
+- Microsoft Teams
 - Microsoft Word
 - MultiLine for Intune
 - Nine Mail - Email & Calendar
 
 > [!NOTE]
-> Microsoft Teams、Microsoft Kaizala、Microsoft Skype for Business、Microsoft Visio では、**アプリの保護ポリシーを必須にする** 許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、**承認済みのアプリを必須にする** 許可を明示的に使用してください。 この 3 つのアプリケーションでは、2 つの許可の間で or 句を使用することはできません。
+> Microsoft Kaizala、Microsoft Skype for Business、および Microsoft Visio では、**アプリの保護ポリシーを必須にする** 許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、**承認済みのアプリを必須にする** 許可を明示的に使用してください。 この 3 つのアプリケーションでは、2 つの許可の間で or 句を使用することはできません。
 
 **解説**
 
@@ -158,22 +159,22 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 ### <a name="require-password-change"></a>パスワードの変更を必須とする 
 
-ユーザー リスクが検出されると、ユーザー リスク ポリシーの条件で、管理者が Azure AD セルフサービス パスワード リセットを使用して、ユーザーがパスワードを安全に変更できるようにすることができます。 ユーザー リスクが検出された場合、ユーザーは、セルフサービス パスワード リセットを実行して自己修復し、ユーザーのリスク イベントを閉じて、管理者に対する不要なノイズが発生しないようにすることができます。 
+ユーザー リスクが検出されると、ユーザー リスク ポリシーの条件で、管理者が Azure AD セルフサービス パスワード リセットを使用して、ユーザーがパスワードを安全に変更できるようにすることができます。 ユーザー リスクが検出された場合、ユーザーはセルフサービス パスワード リセットを実行して自己修復することができます。この処理では、管理者に対して不要なノイズが発生しないように、ユーザー リスク イベントが閉じられます。 
 
 ユーザーにパスワードの変更が求められた場合は、まず多要素認証を完了する必要があります。 アカウントのリスクが検出された場合に備えて、すべてのユーザーが多要素認証に登録されていることを確認する必要があります。  
 
 > [!WARNING]
 > ユーザー リスク ポリシーをトリガーする前に、ユーザーがセルフサービス パスワード リセット に登録済みである必要があります。 
 
-パスワード変更制御を使用してポリシーを構成する場合、いくつかの制限があります。  
+パスワード変更制御を使用してポリシーを構成する場合の制限。  
 
-1. ポリシーは 'すべてのクラウド アプリ' に割り当てる必要があります。 これにより、攻撃者は、別のアプリにサインインするだけで別のアプリを使用してユーザーのパスワードを変更し、アカウントのリスクをリセットすることができなくなります。 
+1. ポリシーは 'すべてのクラウド アプリ' に割り当てる必要があります。 この要件により、攻撃者は、別のアプリにサインインすることにより、別のアプリを使用してユーザーのパスワードを変更し、アカウントのリスクをリセットすることができなくなります。 
 1. パスワードの変更要求は、準拠デバイスの要求など、他のコントロールと共に使用することができません。  
 1. パスワード変更のコントロールは、ユーザーとグループの割り当て条件、クラウド アプリの割り当て条件 ([すべて] に設定する必要があります)、およびユーザー リスク条件でのみ使用できます。 
 
 ### <a name="terms-of-use"></a>使用条件
 
-社内で利用規約を作成している場合、許可コントロールに追加のオプションが表示されます。 これらのオプションを使用すると、ポリシーによって保護されたリソースにアクセスするための条件として、管理者は利用規約への同意を要求することができます。 利用規約の詳細については、「[Azure Active Directory の利用規約](terms-of-use.md)」を参照してください。
+組織で利用規約を作成している場合、許可コントロールに他のオプションが表示されることがあります。 これらのオプションを使用すると、ポリシーによって保護されたリソースにアクセスするための条件として、管理者は利用規約への同意を要求することができます。 利用規約の詳細については、「[Azure Active Directory の利用規約](terms-of-use.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,14 +2,14 @@
 title: 論理的な組織化のためにリソース、リソース グループ、サブスクリプションにタグを付ける
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
 ms.topic: conceptual
-ms.date: 05/05/2021
+ms.date: 07/29/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b5278408ac1adf1e12adf8f7facebd26e6d96d6d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 9dc4b87713d5b397b900f19e83c297130a10be3c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813909"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751367"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -843,12 +843,13 @@ REST API の操作については、「 [Azure Billing REST API Reference (Azure
 * 各リソース、リソース グループ、サブスクリプションには、最大で 50 個のタグ名と値のペアを付けることができます。 許可される最大数よりも多くのタグを適用する必要がある場合は、タグ値に JSON 文字列を使用します。 JSON 文字列には、1 つのタグ名に適用される値を多数含めることができます。 リソース グループまたはサブスクリプションには、それぞれ 50 個のタグ名と値のペアが付けられたリソースを多数含めることができます。
 * タグ名は 512 文字まで、タグ値は 256 文字までに制限されます。 ストレージ アカウントについては、タグ名は 128 文字まで、タグ値は 256 文字までに制限されます。
 * Cloud Services など、クラシック リソースにタグを適用することはできません。
+* Azure IP グループと Azure ファイアウォール ポリシーでは、PATCH 操作はサポートされていません。つまり、ポータル経由でのタグの更新はサポートされていません。 それらのリソースに対しては、代わりに update コマンドを使用してください。 たとえば、[az network ip-group update](/cli/azure/network/ip-group#az_network_ip_group_update) コマンドを使用して、IP グループのタグを更新できます。 
 * タグ名には、これらの文字を含めることはできません: `<`、`>`、`%`、`&`、`\`、`?`、`/`
 
    > [!NOTE]
    > * Azure DNS ゾーンと Traffic Manager では、タグの中でスペースを使用したり、数字で始まるタグを使用したりすることができません。
    >
-   > * Azure Front Door では、タグ名に `#` を使用できません。
+   > * Azure Front Door では、タグ名に `#` または `:` を使用できません。
    >
    > * 次の Azure リソースでは、15 個のタグのみがサポートされています。
    >     * Azure Automation 

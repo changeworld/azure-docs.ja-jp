@@ -4,16 +4,16 @@ description: Curl を使用して Apache Sqoop ジョブを Azure HDInsight に�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2a097e18f6e1f285335a89574efd720fd251e92
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98928370"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122653407"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Curl を使用して HDInsight で Apache Sqoop ジョブを実行します。
 
-[!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
+[!INCLUDE [sqoop-selector](../includes/hdinsight-selector-use-sqoop.md)]
 
 Curl を使用して HDInsight 上の Apache Hadoop クラスターで Apache Sqoop ジョブを実行する方法について説明します。 この記事では、Curl を使用して、Azure Storage からデータをエクスポートし、SQL Server データベースにインポートする方法を示します。 この記事は、「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の続きです。
 

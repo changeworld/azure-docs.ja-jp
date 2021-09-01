@@ -9,12 +9,12 @@ ms.subservice: baremetal-sap
 ms.date: 07/08/2021
 ms.devlang: azurepowershell
 ms.custom: devx-track-azurepowershell - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 62f1cdcc51779351d743c5e3be5b8405a0bee2d1
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 572c2f76e315baf916adaab8cc31d154bce32ff0
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567652"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969753"
 ---
 # <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>クイック スタート」を参照してください。Azure PowerShell を使用してAzure Monitor for SAP Solutions をデプロイする
 
@@ -144,4 +144,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 Azure Monitor for SAP Solutions の詳細について学習します。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor for SAP Solutions](azure-monitor-overview.md)
+> [SAP on Azure の監視](monitor-sap-on-azure.md)

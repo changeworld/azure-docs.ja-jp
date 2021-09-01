@@ -5,15 +5,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/26/2020
-ms.openlocfilehash: fd303804706f9ae210e6714cc8698c94c39ebef6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/17/2021
+ms.openlocfilehash: 61e2f33511e6a200258ed16b5ef191e153553db8
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106855"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653647"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーの読み取りレプリカは、プレビュー段階です。
@@ -21,7 +23,10 @@ ms.locfileid: "105106855"
 この記事では、Azure portal を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成および管理する方法について説明します。
 
 > [!Note]
-> 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
+>
+> * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
+>
+> * プライマリ サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID ベースのレプリケーションが使用されます。 詳細については、「[グローバル トランザクション識別子 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +35,7 @@ ms.locfileid: "105106855"
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
 > [!IMPORTANT]
-> 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+>既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次の手順を使用して作成できます。
 
@@ -60,7 +65,7 @@ ms.locfileid: "105106855"
 ## <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
 
 > [!IMPORTANT]
-> サーバーへのレプリケーションの停止は、元に戻すことができません。 ソースとレプリカの間のレプリケーションを停止すると、元に戻すことはできません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
+>サーバーへのレプリケーションの停止は、元に戻すことができません。 ソースとレプリカの間のレプリケーションを停止すると、元に戻すことはできません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
 
 Azure Portal からソースとレプリカ サーバー間のレプリケーションを停止するには、次の手順を使用します。
 
@@ -103,7 +108,7 @@ Azure Portal からソースとレプリカ サーバー間のレプリケーシ
 ## <a name="delete-a-source-server"></a>ソース サーバーを削除する
 
 > [!IMPORTANT]
-> ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
+>ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
 
 ソース サーバーを Azure Portal から削除するには、次の手順を使用します。
 

@@ -14,12 +14,12 @@ ms.date: 7/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76c18626f54f1862e01140b374e5fd185d1fe814
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: e8c7ac04450f8c9434b8a6c674792d777c53b149
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122196018"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864994"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールのアクセス レビューを作成する
 
@@ -49,8 +49,6 @@ ms.locfileid: "122196018"
 4. **[管理]** で **[Azure AD ロール]** をもう一度選択します。
 
 5. [管理] の下で **[アクセス レビュー]** を選択し、次に **[新規]** を選択して新しいアクセス レビューを作成します。
-
-    <kbd>![Azure AD ロール - すべてのレビューの状態を示す [アクセス レビュー] 一覧](./media/pim-how-to-start-security-review/access-reviews.png)</kbd>
 
 6. アクセス レビューに名前を付けます。 必要に応じて、そのレビューに説明を加えます。 その名前と説明がレビュアーに示されます。
 

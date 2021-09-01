@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 03/11/2021
-ms.openlocfilehash: 0a24546579df020dcb7c7a9b01ee3d181226d2df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99e7e09ac1b73dfb24cea14fe1b407f491e4ade5
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617490"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236897"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>テナント全体の可視性を付与および要求する
 
@@ -26,11 +26,11 @@ Azure Active Directory (AD) ロールが **グローバル管理者** である�
 
 1. テナントのルート管理グループに割り当てられていないグローバル管理者ユーザーとして、Security Center の **[概要]** ページを開き、バナーの **[テナント全体の可視性]** リンクを選択します。 
 
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-banner.png" alt-text="Azure Security Center でテナントレベルのアクセス許可を有効にする":::
+    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-banner.png" alt-text="Azure Security Center でテナントレベルのアクセス許可を有効にする。":::
 
 1. 割り当てる新しい Azure ロールを選択します。 
 
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-form.png" alt-text="ユーザーに割り当てるテナントレベルのアクセス許可を定義するフォーム":::
+    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-form.png" alt-text="ユーザーに割り当てるテナントレベルのアクセス許可を定義するフォーム。":::
 
     > [!TIP]
     > 一般に、セキュリティ管理者ロールはルート レベルでポリシーを適用するために必要であり、テナント レベルの可視性を提供するのであればセキュリティ閲覧者で十分です。 これらのロールによって付与されるアクセス許可について詳しくは、[セキュリティ管理者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-admin)または[セキュリティ閲覧者組み込みロールの説明](../role-based-access-control/built-in-roles.md#security-reader)に関するページをご覧ください。
@@ -71,13 +71,13 @@ Security Center にログインした場合に、ビューが制限されてい�
 
 1. 詳細な要求フォームで、目的のロールを選択し、これらのアクセス許可が必要である正当な理由を選択します。
 
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Azure グローバル管理者にテナント全体のアクセス許可を要求するための詳細ページ":::
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Azure グローバル管理者にテナント全体のアクセス許可を要求するための詳細ページ。":::
 
 1. **[アクセス権の要求]** を選択します。
 
     グローバル管理者に電子メールが送信されます。 電子メールには Security Center へのリンクが含まれ、それを使用して要求を承認または拒否することができます。
 
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="新しいアクセス許可についてグローバル管理者に電子メールで送信する":::
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="新しいアクセス許可についてグローバル管理者に電子メールで送信する。":::
 
     グローバル管理者が **[要求の確認]** を選択してプロセスを完了したら、決定内容が要求元のユーザーに電子メールで送信されます。 
 

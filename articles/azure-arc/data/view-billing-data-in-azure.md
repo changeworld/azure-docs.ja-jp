@@ -7,27 +7,26 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 2c4e25aebf46ea13b69b8ca24d1336c4ba5521ad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202656"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751491"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>課金データを Azure にアップロードして Azure portal に表示する
 
 > [!IMPORTANT] 
 >  Azure Arc 対応データ サービスの使用コストは、プレビュー期間中は発生しません。 課金システムはエンド ツー エンドで動作しますが、課金メーターは $0 に設定されます。  このシナリオに従った場合、請求書の現在のエントリでは、サービスの名前は **hybrid data services (ハイブリッド データ サービス)** になり、リソースの種類は **Microsoft.AzureArcData/`<resource type>`** という名前になります。 作成した各データ サービス - Azure Arc のレコードを表示できますが、各レコードの請求額は $0 になります。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="connectivity-modes---implications-for-billing-data"></a>接続モード - 課金データに対する影響
 
 将来的に、次の 2 つのモードで Azure Arc 対応データ サービスを実行できるようになります。
 
-- **間接接続** - Azure に直接接続することはできません。 データは、エクスポートとアップロードのプロセスを通してのみ Azure に送信されます。 現在のプレビューでは、Azure Arc データ サービスのすべてのデプロイはこのモードで動作します。
+- **間接接続** - Azure に直接接続することはできません。 データは、エクスポートとアップロードのプロセスを通してのみ Azure に送信されます。
 - **直接接続** - このモードでは、Azure Arc 対応 Kubernetes サービスに存在する依存関係により、Azure と、Azure Arc 対応データ サービスが実行されている Kubernetes クラスターとの間に、直接接続が提供されます。 これにより、より多くの機能が有効になり、Azure PaaS でデータ サービスを管理するのと同じように、Azure portal と Azure CLI を使用して Azure Arc 対応データ サービスを管理することもできます。  この接続モードはプレビューではまだ使用できませんが、近日中に公開される予定です。
 
 [接続モード](./connectivity.md)に関するページで、両者の違いの詳細を確認できます。
@@ -46,8 +45,8 @@ ms.locfileid: "102202656"
 
 次のコマンドを実行して、課金データをエクスポートします。
 
-```console
-azdata arc dc export -t usage -p usage.json
+```azurecli
+az arcdata dc export -t usage -p usage.json --k8s-namespace <namespace> --use-k8s
 ```
 
 現時点では、ファイルは暗号化されていないので、内容を確認することができます。 テキスト エディターで自由に開き、どのような内容か確認してください。
@@ -103,8 +102,8 @@ azdata arc dc export -t usage -p usage.json
 
 次のコマンドを実行して、usage.json ファイルを Azure にアップロードします。
 
-```console
-azdata arc dc upload -p usage.json
+```azurecli
+az arcdata dc upload -p usage.json
 ```
 
 ## <a name="view-billing-data-in-azure-portal"></a>Azure portal で課金データを表示する

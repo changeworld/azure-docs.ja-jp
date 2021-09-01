@@ -3,20 +3,20 @@ title: Azure Media Services のクォータと制限
 description: このトピックでは Microsoft Azure Media Services のクォータと制限について説明します。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9b1e43968569fb7c185043e1dd249c65fcadddfb
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 4c0cb8241f6eb284acecfcb5921db616af336da8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278662"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866933"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services のクォータと制限
@@ -48,14 +48,6 @@ ms.locfileid: "106278662"
 | [ストレージ アカウント](storage-account-concept.md) | 100<sup>(2)</sup> (固定) |
 
 <sup>1</sup> Azure Blob Storage では現在、1 つの BLOB でサポートされる最大サイズは 5 TB です。 Media Services ではさらに、サービスで使用される VM サイズに基づく別の制限が適用されます。 サイズの上限は、アップロードするファイルのほかに、Media Services 処理 (エンコードまたは分析) の結果として生成されるファイルにも適用されます。 ソース ファイルが 260 GB を超える場合、Job は失敗する可能性があります。 
-
-以下の表では、メディア占有ユニット S1、S2、S3 での制限を示します。 ソース ファイルがこの表に定義されている上限を超える場合、エンコード ジョブは失敗します。 4K 解像度の長時間ソースをエンコードする場合、必要なパフォーマンスを確保するためには、S3 メディア占有ユニットを使用する必要があります。 S3 メディア占有ユニットに関する 260 GB の制限を超える 4K コンテンツがある場合は、サポート チケットを開きます。
-
-|メディア占有ユニットの種類|最大入力サイズ (GB)|
-|---|---|
-|S1 |    26|
-|S2    | 60|
-|S3    |260|
 
 <sup>2</sup> ストレージ アカウントは、同じ Azure サブスクリプションからのものである必要があります。
 

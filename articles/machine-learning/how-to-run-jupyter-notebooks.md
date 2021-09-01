@@ -9,13 +9,13 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: 0a95d95842d0b361a1a276566b01b7ea735c4670
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 07/22/2021
+ms.openlocfilehash: 890330700e21c34b1a3d9ae78068f577f5f64c6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952082"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739164"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebook を実行する
 
@@ -28,7 +28,7 @@ Azure Machine Learning スタジオのワークスペースで Jupyter Notebooks
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://aka.ms/AMLFree) を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
 
 ## <a name="edit-a-notebook"></a>ノートブックを編集する
@@ -72,6 +72,31 @@ VS Code でノートブックを開いたときにも、同じスニペットを
 スニペット パネルでは、新しいスニペットを追加する要求を送信することもできます。
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="スニペット パネルを使用して新しいスニペットを提案できる":::
+
+## <a name="collaborate-with-notebook-comments-preview"></a>ノートブックのコメントを使用して共同作業する (プレビュー)
+
+ノートブックのコメントを使用して、ノートブックにアクセスできる他のユーザーと共同作業を行います。
+
+ノートブックの上部にある **[Notebook comments]\(ノートブックのコメント\)** ツールを使用して、コメント ペインのオンとオフを切り替えます。  画面の幅が十分でない場合は、ツールのセットの最後にある **[...]** を最初に選択して、このツールを探します。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/notebook-comments-tool.png" alt-text="上部のツール バーにあるノートブックのコメント ツールのスクリーンショット。":::  
+
+コメント ペインが表示されているかどうかにかかわらず、任意のコード セルにコメントを追加できます。
+
+1. コード セルでテキストを選択します。  コメントを作成できるのは、コード セル内のテキストのみです。
+1. **[New comment thread]\(新しいコメント スレッド\)** ツールを使用して、コメントを作成します。
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/comment-from-code.png" alt-text="コード セルへのコメント追加ツールのスクリーンショット。":::
+1. コメント ペインがそれまで非表示だった場合は、これで開かれます。  
+1. コメントを入力して、ツールで投稿するか、**Ctrl + Enter** キーを使用します。
+1. コメントが投稿された後、次のことを行うには右上の **[...]** を選択します。
+    * コメントを編集する
+    * スレッドを解決する
+    * スレッドを削除する
+
+コメントが付いているテキストは、コード内で紫色の強調表示を使用して表示されます。 コメント ペインでコメントを選択すると、強調表示されたテキストが含まれるセルまでノートブックがスクロールします。
+
+> [!NOTE]
+> コメントは、コード セルのメタデータに保存されます。
 
 ## <a name="clean-your-notebook-preview"></a>ノートブックをクリーンアップする (プレビュー)
 
@@ -288,9 +313,11 @@ Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブック
 
 * ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への WebSocket 接続が許可されていることを確認してください。 
 
-* コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、[仮想ネットワーク内からのみアクセス](./how-to-secure-training-vnet.md#compute-instance)できます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して < instance-name >.< region >.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md?tabs=azure-cli)に関する記事をご覧ください。
+* プライベート エンドポイントのあるワークスペースにデプロイされたコンピューティング インスタンスには、[仮想ネットワーク内からのみアクセスする](./how-to-secure-training-vnet.md#compute-instance)ことができます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して < instance-name >.< region >.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md?tabs=azure-cli)に関する記事をご覧ください。
 
-* カーネルがクラッシュして再起動された場合は、次のコマンドを実行して jupyter ログを表示し、詳細を確認することができます。 `sudo journalctl -u jupyter`. カーネルの問題が解決しない場合は、さらに大きなメモリでコンピューティング インスタンスを使用することを検討してください。
+* カーネルがクラッシュして再起動された場合は、次のコマンドを実行して jupyter ログを表示し、詳細を確認することができます: `sudo journalctl -u jupyter`。 カーネルの問題が解決しない場合は、さらに大きなメモリでコンピューティング インスタンスを使用することを検討してください。
+
+* トークンの期限切れの問題が発生する場合は、Azure ML スタジオからサインアウトし、再度サインインしてから、ノートブック カーネルを再起動します。
     
 ## <a name="next-steps"></a>次のステップ
 

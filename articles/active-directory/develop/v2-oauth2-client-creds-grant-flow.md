@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 6/8/2021
+ms.date: 06/30/2021
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ce694be685ff82e73551f792bf96451092423413
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: f55c5096f9205e75904a65724715104fe8bca849
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111809730"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779470"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -28,6 +28,8 @@ RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の�
 OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 高いレベルの保証では、Microsoft ID プラットフォームにより、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。  アプリケーション独自の資格情報が使用されているため、これらの資格情報を安全に保つ必要があります。この資格情報をソース コードで公開したり、Web ページに埋め込んだり、広く分散したネイティブ アプリケーションで使用したり "_しないで_" ください。 
 
 クライアント資格情報フローでは、アクセス許可は管理者によってアプリケーション自体に直接付与されます。 アプリがリソースにトークンを提示するとき、リソースはアプリ自体がアクションの実行を承認されていることを求めます。これは、認証に関与しているユーザーが存在しないためです。  この記事では、[API の呼び出しをアプリケーションに承認する](#application-permissions)ために必要な手順と、[その API を呼び出すために必要なトークンを取得する方法](#get-a-token)の両方について説明します。
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
@@ -83,9 +85,6 @@ ACL を使用する代わりに、API を使用して **アプリケーション
 
 組織の管理者にアクセス許可を要求する準備ができたら、Microsoft ID プラットフォームの *管理者の同意エンドポイント* にユーザーをリダイレクトできます。
 
-> [!TIP]
-> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-
 ```HTTP
 // Line breaks are for legibility only.
 
@@ -115,7 +114,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 管理者がアプリケーションにアクセス許可を承認すると、成功応答は次のようになります。
 
 ```HTTP
-GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
+GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=12345&admin_consent=True
 ```
 
 | パラメーター | 説明 |
@@ -143,9 +142,6 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 アプリケーションに必要な承認を獲得後、API のアクセス トークンの取得を開始します。 クライアント資格情報の許可を使用してトークンを取得するには、次のように `/token` Microsoft ID プラットフォームに POST 要求を送信します。
 
-> [!TIP]
-> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
 
 ```HTTP
@@ -155,7 +151,7 @@ Content-Type: application/x-www-form-urlencoded
 
 client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
-&client_secret=5ampl3Cr3dentia1s
+&client_secret=sampleCredentia1s
 &grant_type=client_credentials
 ```
 
@@ -195,11 +191,11 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `client_assertion` | 必須 | 作成する必要があるアサーション (JSON Web トークン) です。このアサーションは、アプリケーションの資格情報として登録した証明書で署名する必要があります。 証明書の登録方法とアサーションの形式の詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。|
 | `grant_type` | 必須 | `client_credentials` に設定する必要があります。 |
 
-パラメーターは、共有シークレットによる要求のパラメーターとほぼ同じであることに注意してください。唯一異なるのは、client_secret パラメーターが、client_assertion_type と client_assertion の 2 つのパラメーターに置き換えられている点です。
+証明書ベースの要求のパラメーターが共有シークレット ベースの要求と異なるのは 1 箇所だけであり、`client_secret` パラメーターが `client_assertion_type` パラメーターと `client_assertion` パラメーターに置き換えられています。
 
 ### <a name="successful-response"></a>成功応答
 
-成功応答は次のようになります。
+どちらの方法でも成功した応答は次のようになります。
 
 ```json
 {
@@ -214,6 +210,8 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `access_token` | 要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、認証することができます。 |
 | `token_type` | トークン タイプ値を指定します。 Microsoft ID プラットフォームでサポートされる種類は `bearer` のみです。 |
 | `expires_in` | アクセス トークンが有効な時間 (秒単位)。 |
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 ### <a name="error-response"></a>エラー応答
 

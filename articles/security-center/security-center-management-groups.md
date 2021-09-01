@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2021
 ms.custom: subject-rbac-steps
 ms.author: memildin
-ms.openlocfilehash: 14cad6e5d95492b889a4e1a09abac9bd3ee8e603
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: a4b95636052db0d5d244c5b451ec33dfa4e812f0
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887308"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237382"
 ---
 # <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>サブスクリプションを管理グループに整理し、ユーザーにロールを割り当てる
 
@@ -43,13 +43,13 @@ Azure AD テナントにリンクされているすべてのサブスクリプ�
 
 1. [Azure portal](https://portal.azure.com) で上部のバーの検索ボックスを使用し、 **[管理グループ]** を検索して開きます。
 
-    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="管理グループへのアクセス":::
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="管理グループへのアクセス。":::
 
     管理グループの一覧が表示されます。
 
 1. 管理グループを作成するには、 **[管理グループの追加]** を選択し、関連する詳細情報を入力して、 **[保存]** を選択します。
 
-    :::image type="content" source="media/security-center-management-groups/add-management-group.png" alt-text="Azure への管理グループの追加":::
+    :::image type="content" source="media/security-center-management-groups/add-management-group.png" alt-text="Azure への管理グループの追加。":::
 
     - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 
     - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、いつでも変更できます。  
@@ -60,13 +60,13 @@ Azure AD テナントにリンクされているすべてのサブスクリプ�
 
 1. Azure portal から、**管理グループ** を開き、サブスクリプションの管理グループを選択します。
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="サブスクリプションの管理グループを選択する":::
+    :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="サブスクリプションの管理グループを選択する。":::
 
 1. グループのページが開いたら、 **[サブスクリプション]** を選択します。
 
 1. サブスクリプション ページで **[追加]** を選択し、サブスクリプションを選択して **[保存]** を選択します。 スコープ内のすべてのサブスクリプションを追加するまで、この手順を繰り返します。
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-add-subscriptions.png" alt-text="管理グループにサブスクリプションを追加する":::
+    :::image type="content" source="./media/security-center-management-groups/management-group-add-subscriptions.png" alt-text="管理グループへのサブスクリプションの追加。":::
 
    > [!IMPORTANT]
    > 管理グループには、サブスクリプションと子管理グループの両方を含めることができます。 親管理グループに対する Azure ロールをユーザーに割り当てると、そのアクセス権は子管理グループのサブスクリプションによって継承されます。 親管理グループで設定されたポリシーは、子にも継承されます。 
@@ -79,7 +79,7 @@ Azure AD テナントにリンクされているすべてのサブスクリプ�
 
 1. [Azure portal](https://portal.azure.com) で上部のバーの検索ボックスを使用し、 **[管理グループ]** を検索して開きます。
 
-    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="管理グループへのアクセス":::
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="管理グループへのアクセス。":::
 
     管理グループの一覧が表示されます。
 
@@ -87,11 +87,11 @@ Azure AD テナントにリンクされているすべてのサブスクリプ�
 
 1. **[アクセス制御 (IAM)]** を選択し、 **[ロールの割り当て]** タブを開き、 **[追加]**   >  **[ロールの割り当ての追加]** を選択します。
 
-    :::image type="content" source="./media/security-center-management-groups/add-user.png" alt-text="管理グループへのユーザーの追加":::
+    :::image type="content" source="./media/security-center-management-groups/add-user.png" alt-text="管理グループへのユーザーの追加。":::
 
 1. **[ロールの割り当ての追加]** ページ で、関連するロールを選択します。
 
-    :::image type="content" source="./media/security-center-management-groups/add-role-assignment-page.png" alt-text="[ロールの割り当ての追加] ページ":::
+    :::image type="content" source="./media/security-center-management-groups/add-role-assignment-page.png" alt-text="[ロールの割り当ての追加] ページ。":::
 
 1. **[メンバー]** タブで **[+ メンバーの 選択]** を選択 し、関連するメンバーにロールを割り当てます。
 
@@ -110,7 +110,7 @@ Azure AD テナントにリンクされているすべてのサブスクリプ�
 
 3. メッセージが表示されたら、グローバル管理者の資格情報でサインインします。 
 
-    ![サインイン プロンプトのスクリーンショット](./media/security-center-management-groups/azurerm-sign-in.PNG)
+    ![サインイン プロンプトのスクリーンショット。](./media/security-center-management-groups/azurerm-sign-in.PNG)
 
 4. 次のコマンドを実行して、閲覧者ロールのアクセス許可を付与します。
 

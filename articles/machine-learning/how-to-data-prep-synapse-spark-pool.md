@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 247b70e195bb17c8983d8012880f77de7bf5884b
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 424e1908df6d3e92d365e2dd3e10a42f7d1ddb2a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408733"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296402"
 ---
 # <a name="data-wrangling-with-apache-spark-pools-preview"></a>Apache Spark プールを使用したデータ ラングリング (プレビュー) 
 
@@ -95,9 +95,15 @@ env.register(workspace=ws)
 
 Apache Spark プールとカスタム環境を使用したデータ準備を開始するには、Apache Spark プールの名前と Apache Spark セッション中に使用する環境を指定します。 さらに、サブスクリプション ID、機械学習ワークスペースのリソース グループ、機械学習ワークスペースの名前を指定することもできます。
 
+>[!IMPORTANT]
+> リンクされた Synapse ワークスペースで [[セッション レベルのパッケージを許可する]](../synapse-analytics/spark/apache-spark-manage-python-packages.md#session-scoped-packages-preview) が有効になっている必要があります。
+>
+>![セッション レベルのパッケージを有効にする](media/how-to-data-prep-synapse-spark-pool/enable-session-level-package.png)
+
 ```python
 %synapse start -c SynapseSparkPoolAlias -e myenv -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName
 ```
+
 ## <a name="load-data-from-storage"></a>ストレージからデータを読み込む
 
 Apache Spark セッションが開始されたら、準備するデータを読み取ります。 データの読み込みは、Azure Blob Storage および Azure Data Lake Storage Generation 1 および 2 でサポートされます。
@@ -108,7 +114,7 @@ Apache Spark セッションが開始されたら、準備するデータを読�
 
 * 既存の [Azure Machine Learning データセット](how-to-create-register-datasets.md)からデータを読み取ります。
 
-これらのストレージ サービスにアクセスするには、**ストレージ BLOB データ閲覧者** のアクセス許可が必要です。 これらのストレージ サービスにデータを書き戻す予定がある場合は、**ストレージ BLOB データ共同作成者** のアクセス許可が必要となります。 [詳細については、ストレージのアクセス許可とロールに関するページを参照](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)してください。
+これらのストレージ サービスにアクセスするには、**ストレージ BLOB データ閲覧者** のアクセス許可が必要です。 これらのストレージ サービスにデータを書き戻す予定がある場合は、**ストレージ BLOB データ共同作成者** のアクセス許可が必要となります。 [詳細については、ストレージのアクセス許可とロールに関するページを参照](../storage/blobs/assign-azure-role-data-access.md)してください。
 
 ### <a name="load-data-with-hadoop-distributed-files-system-hdfs-path"></a>Hadoop Distributed Files System (HDFS) パスを使用してデータを読み込む
 
@@ -207,7 +213,7 @@ df.show()
 
 データ探索とデータ準備が完了したら、後で使用できるよう準備済みのデータを Azure 上のストレージ アカウントに保存します。
 
-次の例では、準備済みのデータを Azure Blob Storage に書き戻し、`training_data` ディレクトリにある元の `Titanic.csv` ファイルを上書きします。 ストレージへの書き戻しを行うには、**ストレージ BLOB データ共同作成者** のアクセス許可が必要となります。 [詳細については、ストレージのアクセス許可とロールに関するページを参照](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)してください。
+次の例では、準備済みのデータを Azure Blob Storage に書き戻し、`training_data` ディレクトリにある元の `Titanic.csv` ファイルを上書きします。 ストレージへの書き戻しを行うには、**ストレージ BLOB データ共同作成者** のアクセス許可が必要となります。 [詳細については、ストレージのアクセス許可とロールに関するページを参照](../storage/blobs/assign-azure-role-data-access.md)してください。
 
 ```python
 %% synapse
