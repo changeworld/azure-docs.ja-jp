@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7d637a98a0f250936fa8c9024ae1302d3aaa536
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 50984f7a22caa6e1340b6ed4d927d9450eccdf9e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572377"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752185"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>可用性グループの DNN リスナーの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -179,7 +179,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 ## <a name="port-considerations"></a>ポートに関する考慮事項
 
-DNN リスナーは、特定の一意のポートで、すべての IP アドレスをリッスンするように設計されています。 リスナー名の DNS エントリは、可用性グループ内のすべてのレプリカのアドレスに解決されます。 これは、「[スクリプトの作成](#create-script)」セクションで示している PowerShell スクリプトで自動的に実行されます。 DNN リスナーはすべての IP アドレスで接続を受け入れるため、リスナー ポートが一意であること、可用性グループ内の他のレプリカで使用されていないことが重要です。 SQL Server は常に、直接、または SQL Browser サービスを介してポート 1433 でリッスンするため、どの DNN リスナーに対してもポート 1433 を使用することはできません。
+DNN リスナーは、特定の一意のポートで、すべての IP アドレスをリッスンするように設計されています。 リスナー名の DNS エントリは、可用性グループ内のすべてのレプリカのアドレスに解決されます。 これは、「[スクリプトの作成](#create-script)」セクションで示している PowerShell スクリプトで自動的に実行されます。 DNN リスナーはすべての IP アドレスで接続を受け入れるため、リスナー ポートが一意であること、可用性グループ内の他のレプリカで使用されていないことが重要です。 既定では、SQL Server は、直接、または SQL Browser サービスを介して、ポート 1433 でリッスンするため、DNN リスナーにはポート 1433 を使用しないことを強くお勧めします。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -191,4 +191,3 @@ DNN リスナーは、特定の一意のポートで、すべての IP アドレ
 - [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
 - [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
 - [AlwaysOn 可用性グループの概要](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
-

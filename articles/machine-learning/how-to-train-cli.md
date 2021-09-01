@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: lostmygithubaccount
 ms.author: copeters
-ms.date: 06/08/2021
+ms.date: 06/18/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 141f1ac9cefa91c93a6f2e0cb8500f378ae4700b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.custom: devx-track-azurecli, devplatv2
+ms.openlocfilehash: dda9c6dee04d724d27668cb8bbe5e189b774433d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008023"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457766"
 ---
 # <a name="train-models-create-jobs-with-the-20-cli-preview"></a>2\.0 CLI を使用してモデルをトレーニングする (ジョブを作成する) (プレビュー)
 
@@ -30,7 +31,7 @@ Machine Learning 用の Azure 2.0 CLI 拡張機能 (プレビュー) を使用�
 
 ## <a name="prerequisites"></a>前提条件
 
-- CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+- CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 - [Machine Learning 用の Azure CLI 拡張機能をインストールして設定する](how-to-configure-cli.md)
 - examples リポジトリをクローンします。
 
@@ -64,14 +65,13 @@ Azure Machine Learning では、次の成果物を自動的にキャプチャし
 
 ```tree
 .
-├── environment.yml
 ├── job-sweep.yml
 ├── job.yml
 └── src
     └── main.py
 ```
 
-このディレクトリには、conda 環境ファイルとソース コード サブディレクトリ `src` の 2 つのジョブ ファイルが含まれています。 この例では `src` の下にファイルが 1 つしかありませんが、サブディレクトリ全体が再帰的にアップロードされ、ジョブで使用できるようになります。
+このディレクトリには、2 つのジョブ ファイルとソース コード サブディレクトリ `src` が含まれています。 この例では `src` の下にファイルが 1 つしかありませんが、サブディレクトリ全体が再帰的にアップロードされ、ジョブで使用できるようになります。
 
 基本的なコマンド ジョブは、`job.yml` を介して構成されます。
 
@@ -93,7 +93,7 @@ Azure Machine Learning では、次の成果物を自動的にキャプチャし
 > [Docker](https://docker.io) をローカルにインストールして実行する必要があります。 Python は、ジョブの環境にインストールする必要があります。 `inputs` を使用するローカル実行の場合、Python パッケージ `azureml-dataprep` をジョブの環境にインストールする必要があります。
 
 > [!TIP]
-> 基本の Docker イメージをプルし、その上に conda 環境を作成するため、これには数分かかります。 イメージのビルド時間を回避するには、事前構築済み Docker イメージを使用します。
+> 基本 Docker イメージをプルするため、これには数分かかります。 イメージのビルド時間を回避するには、事前構築済み Docker イメージを使用します。
 
 ## <a name="create-compute"></a>コンピューティングを作成する
 
@@ -104,6 +104,8 @@ Azure Machine Learning では、次の成果物を自動的にキャプチャし
 `cpu-cluster` と `gpu-cluster` はジョブが送信されるまで 0 ノードのままであるため、この時点ではコンピューティングの料金は請求されないことに注意してください。 [AmlCompute のコストを管理および最適化する](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)方法を確認してください。
 
 コンピューティング作成オプションの詳細については、`az ml compute create -h` に関するページを参照してください。
+
+[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 ## <a name="basic-python-training-job"></a>基本的な Python トレーニング ジョブ
 
@@ -167,7 +169,7 @@ Azure Machine Learning では、機械学習モデルのハイパーパラメー
 
 ## <a name="distributed-training"></a>分散トレーニング
 
-コマンド ジョブで `distributed` セクションを指定できます。 Azure ML では、PyTorch、Tensorflow、および MPI 互換フレームワークの分散トレーニングをサポートしています。 PyTorch と TensorFlow を使用すると、TensorFlow の `tf.distributed.Strategy` API など、それぞれのフレームワークに対するネイティブ分散トレーニングが可能になります。
+コマンド ジョブで `distribution` セクションを指定できます。 Azure ML では、PyTorch、Tensorflow、および MPI 互換フレームワークの分散トレーニングをサポートしています。 PyTorch と TensorFlow を使用すると、TensorFlow の `tf.distributed.Strategy` API など、それぞれのフレームワークに対するネイティブ分散トレーニングが可能になります。
 
 `compute.instance_count` を、ジョブに必要なノード数に必ず設定してください (既定値は 1)。
 

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 「デジタル ツインにタグを実装する方法」を参照してください
 author: baanders
 ms.author: baanders
-ms.date: 7/22/2020
+ms.date: 8/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a161df47047ffb92b1557b84e457363ee9d2507c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8059178543bde38cbb1429f98f2f0205fb07c347
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090084"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771177"
 ---
 # <a name="add-tags-to-digital-twins"></a>デジタル ツインにタグを追加する 
 
@@ -38,13 +38,35 @@ ms.locfileid: "110090084"
 
 `tags` プロパティがデジタル ツインのモデルの一部となったら、このプロパティの値を設定することによって、デジタル ツインにマーカー タグを設定できます。 
 
-3 つのツインにマーカー `tags` を設定する例を次に示します。
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
-
-[.NET SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用してツインにマーカー `tags` を設定する方法のコード例を次に示します。
+以下に、[.NET SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用してツインにマーカー `tags` を設定する方法のコード例を示します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesCsharp":::
+
+上記の例に従ってタグ プロパティを持つツインを作成すると、ツインは次のようになります。
+
+```JSON
+{
+  "$dtId": "myTwinID",
+  "$etag": "W/\"e7429259-6833-46b4-b443-200a77a468c2\"",
+  "$metadata": {
+    "$model": "dtmi:example:Room;1",
+    "Temperature": {
+      "lastUpdateTime": "2021-08-03T14:24:42.0850614Z"
+    },
+    "tags": {
+      "lastUpdateTime": "2021-08-03T14:24:42.0850614Z"
+    }
+  },
+  "Temperature": 75,
+  "tags": {
+    "VIP": true,
+    "oceanview": true
+  }
+}
+```
+
+>[!TIP]
+> ツインの JSON 表現を参照するには、CLI または API で、それに対する[クエリを実行](how-to-query-graph.md)します。
 
 ### <a name="query-with-marker-tags"></a>マーカー タグを使用したクエリ
 
@@ -74,11 +96,44 @@ ms.locfileid: "110090084"
 
 マーカー タグの場合と同様に、デジタル ツインに値タグを設定するには、モデルからこの `tags` プロパティの値を設定します。 値タグをマーカー タグとして使用するには、`tagValue` フィールドを空の文字列値 (`""`) に設定します。 
 
-3 つのツインに値 `tags` を設定する例を次に示します。
+下に示したのは、サイズを表す値タグを持つ 2 つのツインの JSON 本文です。 この例のツインには、マーカー タグとして使用されている "red" や "purple" の値タグもあります。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
+Twin1 の例には、大きなサイズの値タグと、"red" のマーカー タグがあります。
 
-この例では、`red` と `purple` がマーカー タグとして使用されていることに注意してください。
+```JSON
+{
+  "$dtId": "Twin1",
+  "$etag": "W/\"d3997593-cc5f-4d8a-8683-957becc2bcdd\"",
+  "$metadata": {
+    "$model": "dtmi:example:ValueTags;1",
+    "tags": {
+      "lastUpdateTime": "2021-08-03T14:43:02.3150852Z"
+    }
+  },
+  "tags": {
+    "red": "",
+    "size": "large"
+  }
+}
+```
+
+Twin2 の例には、小さなサイズの値タグと、"purple" のマーカー タグがあります。
+```JSON
+{
+  "$dtId": "Twin2",
+  "$etag": "W/\"e215e586-b14a-4234-8ddb-be69ebfef878\"",
+  "$metadata": {
+    "$model": "dtmi:example:ValueTags;1",
+    "tags": {
+      "lastUpdateTime": "2021-08-03T14:43:53.1517123Z"
+    }
+  },
+  "tags": {
+    "purple": "",
+    "size": "small"
+  }
+}
+```
 
 ### <a name="query-with-value-tags"></a>値タグを使用したクエリ
 
@@ -95,7 +150,7 @@ red ではなく、small (値タグ) であるすべてのエンティティを�
 ## <a name="next-steps"></a>次のステップ
 
 デジタル ツイン モデルの設計と管理の詳細については、次の記事を参照してください。
-* [方法: DTDL モデルの管理](how-to-manage-model.md)に関する記事
+* [DTDL モデルを管理する](how-to-manage-model.md)
 
 ツイン グラフに対するクエリ実行の詳細については、次の記事を参照してください。
-* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)
+* [ツイン グラフにクエリを実行する](how-to-query-graph.md)

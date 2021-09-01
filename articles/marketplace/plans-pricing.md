@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: 4ab56d50bbe6eed3763540e7b993ecc4f403b09c
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: f222245af177380a59f4c2adc9987b144a1c9b6f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598272"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864670"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>コマーシャル マーケットプレース オファーのプランと価格
 
@@ -146,7 +146,7 @@ Azure 仮想マシンおよび SaaS プランの取引可能オファーにつ�
 > - Azure 仮想マシン 
 > - SaaS 
 > - Dynamics 365 Business Central
-> - Dynamics 365 for Customer Engagement および PowerApps
+> - Dynamics 365 for Customer Engagement & Power Apps
 > - Dynamics 365 for Operations
 >
 > リスト オプションの詳細については、「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。

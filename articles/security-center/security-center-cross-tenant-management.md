@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 65ab3d1e6229d3d6fad752b1bc336d0ad749b597
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: e4207bbc045f451b45f8b5da42fba08b406caeca
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787997"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237562"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Security Center でのテナント間の管理
 
@@ -39,7 +39,7 @@ ms.locfileid: "109787997"
 
 上部のメニューバーからフィルター アイコンをクリックし、表示するサブスクリプションを各テナントのディレクトリから選択します。
 
-  ![テナントをフィルター処理する](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
+  ![テナントをフィルター処理する。](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
 ビューとアクションは基本的に同じです。 次に例をいくつか示します。
 

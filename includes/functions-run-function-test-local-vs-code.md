@@ -2,14 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/28/2021
+ms.date: 08/16/2021
 ms.author: glenga
-ms.openlocfilehash: eae828d03431dd339c5399d8db8c6e46141ab11b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 51e02f41e451f0a171e2b011647da294734608af
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075349"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122832411"
 ---
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
@@ -26,8 +26,6 @@ Visual Studio Code を [Azure Functions Core Tools](../articles/azure-functions/
     :::image type="content" source="media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="Visual Studio Code から今すぐ関数を実行する":::
     
 1. **[Enter request body]\(要求本文を入力してください\)** に、要求メッセージ本文の値として `{ "name": "Azure" }` が表示されます。 Enter キーを押して、この要求メッセージを関数に送信します。 
-
-   代わりに、Web ブラウザーの `http://localhost:7071/api/HttpExample` アドレスに HTTP GET 要求を送信することもできます。
 
 1. ローカルで関数を実行し、応答が返されると、Visual Studio Code で通知が発生します。 関数の実行に関する情報は、 **[ターミナル]** パネルに表示されます。
 

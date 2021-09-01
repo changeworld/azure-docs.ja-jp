@@ -5,26 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/20/2021
+ms.date: 06/15/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99da9afc9afb3c6eb19caf696c6b9802aed6a2dd
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: adb0073ca5d8bfb822d7ac47d7e7f770d18423ca
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953666"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514803"
 ---
-# <a name="conditional-access-cloud-apps-actions-and-authentication--context"></a>条件付きアクセス: クラウド アプリ、アクション、認証コンテキスト
+# <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>条件付きアクセス: クラウド アプリ、アクション、認証コンテキスト
 
 クラウド アプリ、操作、認証コンテキストは、Azure AD 条件付きアクセス ポリシーの重要なシグナルです。 管理者は、条件付きアクセス ポリシーを使用して、特定のアプリケーション、アクション、認証コンテキストにコントロールを割り当てることができます。
 
 - 管理者は、組み込みの Microsoft アプリケーションおよび [Azure AD 統合アプリケーション](../manage-apps/what-is-application-management.md) (ギャラリー、ギャラリー以外、[アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md)経由で公開されたアプリケーションなど) を含むアプリケーションの一覧から選択できます。
-- 管理者は、**セキュリティ情報の登録** または **デバイスの登録または結合 (プレビュー)** などの[ユーザー操作](#user-actions)で、クラウド アプリケーションに基づかないポリシーを定義することができます。これにより、条件付きアクセスでこれらのアクションに対するコントロールを適用できます。
-- 管理者は、[認証コンテキスト](#authentication-context-preview)を使用して、アプリケーション内に追加のセキュリティ層を提供できます。 
+- 管理者は、クラウド アプリケーションではなく、**セキュリティ情報の登録** や **デバイスの登録または参加** などの[ユーザー操作](#user-actions)に基づいてポリシーを定義することを選択できます。これにより、条件付きアクセスで、これらの操作に関する制御を適用できます。
+- 管理者は、[認証コンテキスト](#authentication-context-preview)を使用して、アプリケーション内に追加のセキュリティ レイヤーを提供できます。 
 
 ![条件付きアクセス ポリシーを定義し、クラウド アプリを指定する](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "111953666"
 
 既存の Microsoft クラウド アプリケーションの多くは、選択できるアプリケーションの一覧に含まれています。 
 
-管理者は、次の Microsoft のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。 Office 365 や Microsoft Azure Management などの一部のアプリには、複数の関連する子アプリやサービスが含まれています。 アプリは継続的に追加されるため、次の一覧は完全なものではなく、変更される可能性があります。
+管理者は、次の Microsoft のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。 Office 365 や Microsoft Azure Management などの一部のアプリには、複数の関連する子アプリやサービスが含まれています。 アプリは継続的に追加されるため、次の一覧はすべてを網羅したものではなく、変更されることがあります。
 
 - [Office 365](#office-365)
 - Azure Analysis Services
@@ -70,17 +70,20 @@ ms.locfileid: "111953666"
 - 仮想プライベート ネットワーク (VPN)
 - Windows Defender ATP
 
-条件付きアクセスで使用できるアプリケーションは、オンボードと検証のプロセスを経ています。 このリストにはすべての Microsoft アプリが含まれているわけではありません。多くはバックエンド サービスであり、ポリシーを直接適用することは想定されていないためです。 探しているアプリケーションが見つからない場合、特定のアプリケーション チームに連絡するか、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) で要求を行うことができます。
+> [!IMPORTANT]
+> 条件付きアクセスで使用できるアプリケーションは、オンボードと検証のプロセスを経ています。 この一覧にすべての Microsoft アプリが含まれているわけではありません。多くはバックエンド サービスであり、ポリシーを直接適用することは想定されていないためです。 欠けているアプリケーションを探している場合は、特定のアプリケーション チームに問い合わせるか、または [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) で要求を発行することができます。
 
 ### <a name="office-365"></a>Office 365
 
 Microsoft 365 では、Exchange、SharePoint、Microsoft Teams などのクラウドベースの生産性およびコラボレーション サービスが提供されます。 Microsoft 365 クラウド サービスは、スムーズに共同作業を行うために緊密に統合されています。 Microsoft Teams などの一部のアプリは SharePoint や Exchange などの他のアプリに依存しているため、この統合により、ポリシーの作成時に混乱が生じる可能性があります。
 
-Office 365 アプリを使用すると、これらのサービスを一度にすべてターゲットにすることができます。 Microsoft では、[サービスの依存関係](service-dependencies.md)の問題を回避するために、個々のクラウド アプリをターゲットにするのではなく、新しい Office 365 アプリを使用することをお勧めしています。 このアプリケーション グループをターゲットにすることで、ポリシーと依存関係の不整合が原因で発生する可能性のある問題を回避できます。
+Office 365 スイートにより、これらのサービスを一度にすべてターゲットにすることができます。 [サービスの依存関係](service-dependencies.md)に関する問題を回避するために、個々のクラウド アプリをターゲットにするのではなく、新しい Office 365 スイートを使用することをお勧めします。 
 
-管理者は、Office 365 アプリを組み込み、選択した特定のアプリをポリシーで除外することにより、必要に応じて特定のアプリをポリシーから除外することを選択できます。
+このアプリケーション グループをターゲットにすると、整合性のないポリシーや依存関係のために発生する可能性のある問題を回避するのに役立ちます。 たとえば、Exchange Online アプリは、メール、予定表、連絡先情報などの従来の Exchange Online データに関連付けられています。 関連するメタデータは、検索などのさまざまなリソースを通して公開される可能性があります。 すべてのメタデータが意図したとおりに確実に保護されるようにするために、管理者は Office 365 アプリにポリシーを割り当てる必要があります。
 
-Office 365 クライアント アプリに含まれる主要なアプリケーション:
+管理者は、必要に応じて特定のアプリをポリシーから除外する (つまり、Office 365 スイートをポリシーに含め、特定のアプリを除外する) ことができます。
+
+Office 365 クライアント アプリには、次の主要なアプリケーションが含まれています。
 
    - Microsoft Flow
    - Microsoft フォーム
@@ -101,7 +104,7 @@ Office 365 クライアント アプリに含まれる主要なアプリケー�
 
 ### <a name="microsoft-azure-management"></a>Microsoft Azure の管理
 
-Microsoft Azure Management アプリケーションには、基になる複数のサービスが含まれています。 
+Microsoft Azure の管理アプリケーションには、複数のサービスが含まれています。 
 
    - Azure portal
    - Azure Resource Manager プロバイダー
@@ -117,7 +120,7 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 
 ### <a name="other-applications"></a>他のアプリケーション
 
-管理者は、Microsoft アプリに加えて、Azure AD に登録された任意のアプリケーションを条件付きアクセス ポリシーに追加することができます。 これらのアプリケーションには次が含まれます。 
+管理者は、Azure AD に登録された任意のアプリケーションを条件付きアクセス ポリシーに追加できます。 これらのアプリケーションには次が含まれます。 
 
 - [Azure AD アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md)経由で公開されるアプリケーション
 - [ギャラリーから追加されたアプリケーション](../manage-apps/add-application-portal.md)
@@ -134,10 +137,10 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 
 - **セキュリティに関する情報の登録**: このユーザー操作により、統合された登録が有効になったユーザーが自分のセキュリティに関する情報を登録しようとすると、条件付きアクセス ポリシーが適用されます。 詳細情報については、「[統合されたセキュリティ情報の登録](../authentication/concept-registration-mfa-sspr-combined.md)」を参照してください。
 
-- **デバイスの登録または参加 (プレビュー)** : このユーザー操作により、ユーザーがデバイスを Azure AD に [登録](../devices/concept-azure-ad-register.md)するか [参加](../devices/concept-azure-ad-join.md)させるときに、管理者は条件付きアクセス ポリシーを適用することができます。 これにより、現在存在するテナント全体のポリシーではなく、デバイスを登録するか参加させるための多要素認証をきめ細かく構成できます。 このユーザー操作には、次の 3 つの重要な考慮事項があります。 
+- **デバイスの登録または参加**: このユーザー操作により、管理者は、ユーザーがデバイスを Azure AD に[登録](../devices/concept-azure-ad-register.md)するか、または[参加](../devices/concept-azure-ad-join.md)させたときに条件付きアクセス ポリシーを適用できます。 これにより、現在存在するテナント全体のポリシーではなく、デバイスを登録するか参加させるための多要素認証をきめ細かく構成できます。 このユーザー操作には、次の 3 つの重要な考慮事項があります。 
    - `Require multi-factor authentication` は、このユーザー操作で使用できる唯一のアクセス制御であり、それ以外はすべて無効になっています。 この制限により、Azure AD デバイス登録に依存している、あるいは Azure AD デバイス登録に適用されないアクセス制御との競合を防ぐことができます。 
-   - `Client apps` および `Device state` 条件は、Azure AD デバイス登録に依存して条件付きアクセス ポリシーを適用するため、このユーザー操作では使用できません。
-   - このユーザー操作によって条件付きアクセスポリシーを有効にした場合、 **[Azure Active Directory]**  >  **[デバイス]**  >  **[デバイス設定]**  - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` を **[いいえ]** に設定する必要があります。 そうしないと、このユーザー操作による条件付きアクセス ポリシーが適切に適用されません。 このデバイス設定に関する詳細については、「[デバイス設定の構成](../devices/device-management-azure-portal.md#configure-device-settings)」を参照してください。 
+   - `Client apps`、`Filters for devices`、`Device state` の各条件は、条件付きアクセス ポリシーの適用を Azure AD デバイス登録に依存しているため、このユーザー操作では使用できません。
+   - このユーザー操作によって条件付きアクセスポリシーを有効にした場合、 **[Azure Active Directory]**  >  **[デバイス]**  >  **[デバイス設定]**  - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` を **[いいえ]** に設定する必要があります。 そうしないと、このユーザー操作での条件付きアクセス ポリシーが適切に適用されません。 このデバイス設定に関するより詳細な情報は、「[デバイス設定の構成](../devices/device-management-azure-portal.md#configure-device-settings)」に記載されています。 
 
 ## <a name="authentication-context-preview"></a>認証コンテキスト (プレビュー)
 
@@ -162,15 +165,19 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 - **[アプリに発行]** チェックボックスをオンにすると、認証コンテキストがアプリに対して公開され、割り当て可能になります。 オフにした場合、認証コンテキストはダウンストリーム リソースに使用できなくなります。 
 - **[ID]** は読み取り専用で、トークンとアプリで要求固有の認証コンテキスト定義に使用されます。 トラブルシューティングおよび開発のユースケース用として、ここに一覧表示されています。 
 
-その後、管理者は、 **[割り当て]**  >  **[クラウド アプリまたはアクション]**  >  **[認証コンテキスト]** の条件付きアクセス ポリシーで、公開されている認証コンテキストを選択できます。
+#### <a name="add-to-conditional-access-policy"></a>条件付きアクセス ポリシーに追加する
+
+管理者は、 **[割り当て]**  >  **[クラウド アプリまたはアクション]** で **[このポリシーが適用される対象を選択する]** メニューから **[認証コンテキスト]** を選択することによって、条件付きアクセス ポリシーで、公開されている認証コンテキストを選択できます。
+
+:::image type="content" source="media/concept-conditional-access-cloud-apps/conditional-access-authentication-context-in-policy.png" alt-text="ポリシーへの条件付きアクセス認証コンテキストの追加":::
 
 ### <a name="tag-resources-with-authentication-contexts"></a>認証コンテキストを含むリソースをタグ付けする 
 
 アプリケーションでの認証コンテキストの使用の詳細については、次の記事を参照してください。
 
-- [SharePoint Online](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option)
+- [SharePoint サイトを保護するための Microsoft Information Protection 秘密度ラベル](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option&preserve-view=true)
 - [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
-- カスタム アプリケーション
+- [カスタム アプリケーション](../develop/developer-guide-conditional-access-authentication-context.md)
 
 ## <a name="next-steps"></a>次のステップ
 

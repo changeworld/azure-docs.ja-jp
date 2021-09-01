@@ -6,14 +6,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: bobazile
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: c2d6f3ebe3d11c304efe57141db3d8935611bf72
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6f843b8ab2e19231dbf0507fd666a08c999cb094
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743539"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251192"
 ---
 # <a name="telephony-concepts"></a>テレフォニーの概念
 

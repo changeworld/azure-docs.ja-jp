@@ -1,18 +1,18 @@
 ---
 title: サポートされている分類の一覧
 description: このページでは、Azure Purview でサポートされているシステム分類の一覧を示します。
-author: anmuk601
-ms.author: anmuk
+author: viseshag
+ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
 ms.date: 4/1/2021
-ms.openlocfilehash: e1d3d495d958465e966701aa7ce91bc2706b48e0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f6282d66a6c499e5a8e14cd90e90dc9b6f6ee633
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219588"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768382"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure Purview でサポートされている分類
 
@@ -65,7 +65,7 @@ Person ブルーム フィルターは、以下の 2 つのデータセットを
 
 ### <a name="keywords"></a>キーワード
 
-#### <a name="keyword_aba_routing"></a>Keyword_aba_routing
+#### <a name="keyword_aba_routing"></a>Keyword\_aba\_routing
 
 ```
 amba number
@@ -103,7 +103,7 @@ RTN
 
 ### <a name="keywords"></a>キーワード
 
-#### <a name="keyword_argentina_national_id"></a>Keyword_argentina_national_id
+#### <a name="keyword_argentina_national_id"></a>Keyword\_argentina\_national\_id
 
 ```
 Argentina National Identity number
@@ -135,7 +135,7 @@ rnp
 
 ### <a name="keywords"></a>キーワード
 
-#### <a name="keyword_australia_bank_account_number"></a>Keyword_australia_bank_account_number
+#### <a name="keyword_australia_bank_account_number"></a>Keyword\_australia\_bank\_account\_number
 
 ```
 swift bank code
@@ -152,7 +152,61 @@ banking information
 full names
 iaea
 ```
+## <a name="australia-business-number"></a>オーストラリアのビジネス番号
 
+### <a name="format"></a>Format
+11 桁の数字 (省略可能な区切り記号を含む)
+
+### <a name="pattern"></a>Pattern
+11 桁の数字と省略可能な区切り記号:
+
+- 2 桁の数字
+- 省略可能なハイフンまたはスペース
+- 3 桁の数字
+- 省略可能なハイフンまたはスペース
+- 3 桁の数字
+- 省略可能なハイフンまたはスペース
+- 3 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_australia_business_number"></a>Keyword\_australia\_business\_number
+```
+australia business no
+business number
+abn#
+businessid#
+business id
+abn
+businessno#
+```
+
+## <a name="australia-company-number"></a>オーストラリアの企業番号 
+
+### <a name="format"></a>Format
+9 桁の数字と区切り記号
+
+### <a name="pattern"></a>Pattern
+9 桁の数字と区切り記号:
+
+- 3 桁の数字
+- 1 つのスペース
+- 3 桁の数字
+- 1 つのスペース
+- 3 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_australia_company_number"></a>Keyword\_australia\_company\_number
+```
+acn
+australia company no
+australia company no#
+australia company number
+australian company no
+australian company no#
+australian company number
+```
 ## <a name="australia-drivers-license-number"></a>オーストラリアの運転免許証番号
 
 ### <a name="format"></a>Format
@@ -176,7 +230,7 @@ OR
 
 ### <a name="keywords"></a>キーワード
 
-#### <a name="keyword_australia_drivers_license_number"></a>Keyword_australia_drivers_license_number
+#### <a name="keyword_australia_drivers_license_number"></a>Keyword\_australia\_drivers\_license\_number
 
 ```
 international driving permits
@@ -244,7 +298,7 @@ Driver's License#
 Driver's Licenses#
 ```
 
-#### <a name="keyword_australia_drivers_license_number_exclusions"></a>Keyword_australia_drivers_license_number_exclusions
+#### <a name="keyword_australia_drivers_license_number_exclusions"></a>Keyword\_australia\_drivers\_license\_number\_exclusions
 
 ```
 aaa
@@ -299,7 +353,7 @@ Driver's Licenses#
 
 ### <a name="keywords"></a>キーワード
 
-#### <a name="keyword_australia_medicare_number"></a>Keyword_Australia_Medicare_Number
+#### <a name="keyword_australia_medicare_number"></a>Keyword\_Australia\_Medicare\_Number
 
 ```
 bank account details
@@ -396,15 +450,383 @@ individual tax return
 tax file number
 tfn
 ```
-
-## <a name="belgium-national-number"></a>ベルギーの国民番号
+## <a name="austria-identity-card"></a>オーストリアの身分証明書
 
 ### <a name="format"></a>Format
 
-11 桁の数字と省略可能な区切り記号
+文字、数字、特殊文字の 24 文字の組み合わせ
 
 ### <a name="pattern"></a>Pattern
 
+24 文字:
+
+- 22 文字 (大文字と小文字は区別されません)、数字、円記号、スラッシュ、またはプラス記号
+- 2 文字 (大文字と小文字は区別されません)、数字、円記号、スラッシュ、プラス記号、または等号
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_austria_eu_national_id_card"></a>Keyword\_austria\_eu\_national\_id\_card
+
+```
+identity number
+national id
+personalausweis republik österreich
+```
+## <a name="austria-tax-identification-number"></a>オーストリアの納税者番号
+
+### <a name="format"></a>Format
+
+9 桁の数字 (省略可能なハイフンとスラッシュを含む)
+
+### <a name="pattern"></a>Pattern
+
+9 桁の数字 (省略可能なハイフンとスラッシュを含む):
+
+- 2 桁の数字
+- 1 つのハイフン (省略可能)
+- 3 桁の数字
+- 1 つのスラッシュ (省略可能)
+- 4 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_austria_eu_tax_file_number"></a>Keywords\_austria\_eu\_tax\_file\_number
+
+```
+österreich
+st.nr.
+steuernummer
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+tax number
+```
+## <a name="austria-passport-number"></a>オーストラリアのパスポート番号
+
+### <a name="format"></a>Format
+1 文字の後に省略可能なスペースと 7 桁の数字
+
+### <a name="pattern"></a>Pattern
+1 文字、7 桁の数字、1 つのスペースの組み合わせ:
+
+- 1 文字 (大文字と小文字は区別されません)
+- 1 つのスペース (省略可能)
+- 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_austria_eu_passport_number"></a>Keywords\_austria\_eu\_passport\_number
+```
+reisepassnummer
+reisepasse
+No-Reisepass
+Nr-Reisepass
+Reisepass-Nr
+Passnummer
+reisepässe
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="austria-social-security-number"></a>オーストリアの社会保障番号 
+
+### <a name="format"></a>Format
+指定した形式の 10 桁の数字
+
+### <a name="pattern"></a>Pattern
+10 桁の数字:
+
+- シリアル番号に対応する 3 桁の数字
+- 1 桁のチェック ディジット
+- 生年月日 (DDMMYY) に対応する 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_austria_eu_ssn_or_equivalent"></a>Keywords\_austria\_eu\_ssn\_or\_equivalent
+```
+austrian ssn
+ehic number
+ehic no
+insurance code
+insurancecode#
+insurance number
+insurance no
+krankenkassennummer
+krankenversicherung
+socialsecurityno
+socialsecurityno#
+social security no
+social security number
+social security code
+sozialversicherungsnummer
+sozialversicherungsnummer#
+soziale sicherheit kein
+sozialesicherheitkein#
+ssn#
+ssn
+versicherungscode
+versicherungsnummer
+zdravstveno zavarovanje
+```
+
+## <a name="austria-tax-identification-number"></a>オーストリアの納税者番号 
+
+### <a name="format"></a>Format
+9 桁の数字 (省略可能なハイフンとスラッシュを含む)
+
+### <a name="pattern"></a>Pattern
+9 桁の数字 (省略可能なハイフンとスラッシュを含む):
+
+- 2 桁の数字
+- 1 つのハイフン (省略可能)
+- 3 桁の数字
+- 1 つのスラッシュ (省略可能)
+- 4 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_austria_eu_tax_file_number"></a>Keywords\_austria\_eu\_tax\_file\_number
+```
+österreich
+st.nr.
+steuernummer
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+tax number
+```
+
+## <a name="austria-value-added-tax"></a>オーストリアの付加価値税 
+### <a name="format"></a>Format
+11 文字の英数字パターン
+
+### <a name="pattern"></a>Pattern
+11 文字の英数字パターン:
+
+- A または a
+- T または t
+- 省略可能なスペース
+- U または u
+- 省略可能なスペース
+- 2 桁または 3 桁の数字
+- 省略可能なスペース
+- 4 桁の数字
+- 省略可能なスペース
+- 1 桁または 2 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_austria_value_added_tax"></a>Keyword\_austria\_value\_added\_tax
+```
+vat number
+vat#
+austrian vat number
+vat no.
+vatno#
+value added tax number
+austrian vat
+mwst
+umsatzsteuernummer
+mwstnummer
+ust.-identifikationsnummer
+umsatzsteuer-identifikationsnummer
+vat identification number
+atu number
+uid number
+```
+## <a name="belgium-drivers-license-number"></a>ベルギーの運転免許証番号 
+
+### <a name="format"></a>Format
+スペースと区切り記号のない 10 桁の数字
+
+### <a name="pattern"></a>Pattern
+10 桁
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+ 
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+
+#### <a name="keywords_belgium_eu_drivers_license_number"></a>Keywords\_belgium\_eu\_driver's\_license\_number
+```
+rijbewijs
+rijbewijsnummer
+führerschein
+führerscheinnummer
+füehrerscheinnummer
+fuhrerschein
+fuehrerschein
+fuhrerscheinnummer
+fuehrerscheinnummer
+permis de conduire
+numéro permis conduire
+```
+## <a name="belgium-national-number"></a>ベルギーの国民番号
+
+### <a name="format"></a>Format
+11 桁の数字と省略可能な区切り記号
+
+### <a name="pattern"></a>Pattern
 11 桁の数字と区切り記号:
 
 - YY.MM.DD 形式の生年月日 (6 桁の数字と 2 つの省略可能なピリオド)
@@ -416,7 +838,6 @@ tfn
 ### <a name="keywords"></a>キーワード
 
 #### <a name="keyword_belgium_national_number"></a>Keyword\_belgium\_national\_number
-
 ```
 be lasting aantal
 bnn#
@@ -475,6 +896,77 @@ tin ID
 tin no
 tin#
 ```
+## <a name="belgium-passport-number"></a>ベルギーのパスポート番号 
+
+### <a name="format"></a>Format
+2 文字の後に 6 桁の数字 (スペースまたは区切り記号を含まない)
+
+### <a name="pattern"></a>Pattern
+2 文字の後に 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_belgium_eu_passport_number"></a>Keywords\_belgium\_eu\_passport\_number
+```
+numéro passeport
+paspoort nr
+paspoort-nr
+paspoortnummer
+paspoortnummers
+Passeport carte
+Passeport livre
+Pass-Nr
+Passnummer
+reisepass kein
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="belgium-value-added-tax-number"></a>ベルギーの付加価値税番号 
+### <a name="format"></a>Format
+12 文字の英数字パターン
+
+### <a name="pattern"></a>Pattern
+12 文字の英数字パターン:
+
+- 1 文字 B または b
+- 1 文字 E または e
+- 1 桁の数字 0
+- 1 から 9 の 1 桁の数字
+- 省略可能なドットまたはハイフンまたはスペース
+- 4 桁の数字
+- 省略可能なドットまたはハイフンまたはスペース
+- 4 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_belgium_value_added_tax_number"></a>Keyword\_belgium\_value\_added\_tax\_number
+```
+nº tva
+vat number
+vat no
+numéro t.v.a
+umsatzsteuer-identifikationsnummer
+umsatzsteuernummer
+btw
+btw#
+vat#
+```
 
 ## <a name="brazil-cpf-number"></a>ブラジルの CPF 番号
 
@@ -501,7 +993,6 @@ tin#
 ### <a name="keywords"></a>キーワード
 
 #### <a name="keyword_brazil_cpf"></a>Keyword\_brazil\_cpf
-
 ```
 CPF
 Identification
@@ -537,7 +1028,6 @@ Receita
 ### <a name="keywords"></a>キーワード
 
 #### <a name="keyword_brazil_cnpj"></a>Keyword\_brazil\_cnpj
-
 ```
 CNPJ
 CNPJ/MF
@@ -589,7 +1079,6 @@ Empresa
 ### <a name="keywords"></a>キーワード
 
 #### <a name="keyword_brazil_rg"></a>Keyword\_brazil\_rg
-
 ```
 Cédula de identidade
 identity card
@@ -599,6 +1088,98 @@ registro de Iidentidade
 registro geral
 RG (this keyword is case-sensitive)
 RIC (this keyword is case-sensitive)
+```
+## <a name="bulgaria-passport-number"></a>ブルガリアのパスポート番号 
+
+### <a name="format"></a>Format
+9 桁の数字
+### <a name="pattern"></a>Pattern
+スペースと区切り記号のない 9 桁の数字
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_bulgaria_eu_passport_number"></a>Keywords\_bulgaria\_eu\_passport\_number
+```
+номер на паспорта
+номер на паспорт
+паспорт №
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="bulgaria-uniform-civil-number"></a>ブルガリアの統一市民番号
+
+### <a name="format"></a>Format
+スペースと区切り記号のない 10 桁の数字
+
+### <a name="pattern"></a>Pattern
+スペースと区切り記号のない 10 桁の数字
+
+- 生年月日 (DDMMYY) に対応する 6 桁の数字
+- 出生順位に対応する 2 桁の数字
+- 性別に対応する 1 桁の数字: 男性の場合は偶数、女性の場合は奇数
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_bulgaria_eu_national_id_card"></a>Keywords\_bulgaria\_eu\_national\_id\_card
+```
+bnn#
+bnn
+bucn#
+bucn
+edinen grazhdanski nomer
+egn#
+egn
+identification number
+national id
+national number
+nationalnumber#
+nationalnumber
+personal id
+personal no
+personal number
+personalidnumber#
+social security number
+ssn#
+ssn
+uniform civil id
+uniform civil no
+uniform civil number
+uniformcivilno#
+uniformcivilno
+uniformcivilnumber#
+uniformcivilnumber
+unique citizenship number
+егн#
+егн
+единен граждански номер
+идентификационен номер
+личен номер
+лична идентификация
+лично не
+национален номер
+номер на гражданството
+униформ id
+униформ граждански id
+униформ граждански не
+униформ граждански номер
+униформгражданскиid#
+униформгражданскине.#
 ```
 
 ## <a name="canada-bank-account-number"></a>カナダの銀行口座番号
@@ -622,7 +1203,6 @@ RIC (this keyword is case-sensitive)
 ### <a name="keywords"></a>キーワード
 
 #### <a name="keyword_canada_bank_account_number"></a>Keyword\_canada\_bank\_account\_number
-
 ```
 canada savings bonds
 canada revenue agency
@@ -660,10 +1240,10 @@ direct deposit
 ### <a name="keywords"></a>キーワード
 
 #### <a name="keyword_province_name_drivers_license_name"></a>Keyword\_[province\_name]\_drivers\_license\_name
-
-- 州略称 (例: AB)
-- 州名 (例: アルバータ)
-
+```
+- The province abbreviation, for example AB
+- The province name, for example Alberta
+```
 #### <a name="keyword_canada_drivers_license"></a>Keyword\_canada\_drivers\_license
 
 ```
@@ -1522,7 +2102,34 @@ tin ID
 tin no
 tin#
 ```
+## <a name="croatia-passport-number"></a>クロアチアのパスポート番号
+### <a name="format"></a>Format
+スペースと区切り記号のない 9 桁の数字
 
+### <a name="pattern"></a>Pattern
+9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_croatia_eu_passport_number"></a>Keywords\_croatia\_eu\_passport\_number
+```
+broj putovnice
+br. Putovnice
+br putovnice
+```
 ## <a name="croatia-personal-identification-oib-number"></a>クロアチアの個人識別 (OIB) 番号
 
 ### <a name="format"></a>Format
@@ -1570,7 +2177,581 @@ tin ID
 tin no
 tin#
 ```
+## <a name="cyprus-drivers-license-number"></a>キプロスの運転免許証番号 
 
+### <a name="format"></a>Format
+スペースと区切り記号のない 12 桁の数字
+### <a name="pattern"></a>Pattern
+12 桁
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_cyprus_eu_drivers_license_number"></a>Keywords\_cyprus\_eu\_driver's\_license\_number
+```
+άδεια οδήγησης
+αριθμό άδειας οδήγησης
+άδειες οδήγησης
+```
+## <a name="cyprus-identity-card"></a>キプロスの身分証明書
+
+### <a name="format"></a>Format
+スペースと区切り記号のない 10 桁の数字
+### <a name="pattern"></a>Pattern
+
+10 桁
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_cyprus_eu_national_id_card"></a>Keywords\_cyprus\_eu\_national\_id\_card
+```
+id card number
+identity card number
+kimlik karti
+national identification number
+personal id number
+ταυτοτητασ
+```
+## <a name="cyprus-passport-number"></a>キプロスのパスポート番号
+### <a name="format"></a>Format
+1 文字の後に 6 桁から 8 桁の数字 (スペースまたは区切り記号を含まない)
+### <a name="pattern"></a>Pattern
+1 文字の後に 6 桁から 8 桁の数字
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_cyprus_eu_passport_number"></a>Keywords\_cyprus\_eu\_passport\_number
+```
+αριθμό διαβατηρίου
+pasaportu
+Αριθμός Διαβατηρίου
+κυπριακό διαβατήριο
+διαβατήριο#
+διαβατήριο
+αριθμός διαβατηρίου
+Pasaport Kimliği
+pasaport numarası
+Pasaport no.
+Αρ. Διαβατηρίου
+```
+#### <a name="keywords_cyprus_eu_passport_date"></a>Keywords\_cyprus\_eu\_passport\_date
+```
+expires on
+issued on
+```
+## <a name="cyprus-tax-identification-number"></a>キプロスの納税者番号
+
+### <a name="format"></a>Format
+指定したパターンの 8 桁の数字と 1 文字
+
+### <a name="pattern"></a>Pattern
+
+8 桁の数字と 1 文字:
+
+- "0" または "9"
+- 7 桁の数字
+- 1 文字 (大文字と小文字は区別されません)
+
+### <a name="keywords"></a>キーワード
+#### <a name="keywords_cyprus_eu_tax_file_number"></a>Keywords\_cyprus\_eu\_tax\_file\_number
+```
+tax id
+tax identification code
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tic#
+tic
+tin id
+tin no
+tin#
+vergi kimlik kodu
+vergi kimlik numarası
+αριθμός φορολογικού μητρώου
+κωδικός φορολογικού μητρώου
+φορολογική ταυτότητα
+φορολογικού κωδικού
+```
+## <a name="czech-republic-drivers-license-number"></a>チェコ共和国の運転免許証番号 
+### <a name="format"></a>Format
+2 文字の後に 6 桁の数字
+### <a name="pattern"></a>Pattern
+8 桁の文字と数字:
+
+- 文字 'E' (大文字と小文字は区別されません)
+- 1 文字
+- 1 つのスペース (省略可能)
+- 6 桁の数字
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_czech_republic_eu_drivers_license_number"></a>Keywords\_czech\_republic\_eu\_driver's\_license\_number
+```
+řidičský prúkaz
+řidičské průkazy
+číslo řidičského průkazu
+čísla řidičských průkazů
+```
+
+## <a name="czech-passport-number"></a>チェコ共和国のパスポート番号 
+### <a name="format"></a>Format
+スペースや区切り記号のない 8 桁の数字
+### <a name="pattern"></a>Pattern
+スペースや区切り記号のない 8 桁の数字
+
+### <a name="keywords"></a>キーワード
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_czech_republic_eu_passport_number"></a>Keywords\_czech\_republic\_eu\_passport\_number
+```
+cestovní pas
+číslo pasu
+cestovní pasu
+passeport no
+čísla pasu
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="denmark-drivers-license-number"></a>デンマークの運転免許証番号 
+
+### <a name="format"></a>Format
+スペースと区切り記号のない 8 桁の数字
+
+### <a name="pattern"></a>Pattern
+8 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_denmark_eu_drivers_license_number"></a>Keywords\_denmark\_eu\_driver's\_license\_number
+```
+kørekort
+kørekortnummer
+```
+## <a name="denmark-passport-number"></a>デンマークのパスポート番号 
+### <a name="format"></a>Format
+スペースと区切り記号のない 9 桁の数字
+### <a name="pattern"></a>Pattern
+9 桁の数字
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_denmark_eu_passport_number"></a>Keywords\_denmark\_eu\_passport\_number
+```
+pasnummer
+Passeport n°
+pasnumre
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
 ## <a name="denmark-personal-identification-number"></a>デンマークの個人識別番号
 
 ### <a name="format"></a>Format
@@ -1660,7 +2841,220 @@ sygesikringskortnummer
 sygesikringsnr
 sygesikringsnummer
 ```
+## <a name="estonia-drivers-license-number"></a>エストニアの運転免許証番号 
+### <a name="format"></a>Format
+2 文字の後に 6 桁の数字
+### <a name="pattern"></a>Pattern
+2 文字と 6 桁の数字:
 
+- 文字 "ET" (大文字と小文字は区別されません)
+- 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_estonia_eu_drivers_license_number"></a>Keywords\_estonia\_eu\_driver's\_license\_number
+```
+-- permis de conduire
+juhilubade numbrid
+juhiloa number
+juhiluba
+```
+## <a name="estonia-passport-number"></a>エストニアのパスポート番号 
+### <a name="format"></a>Format
+1 文字の後に 7 桁の数字 (スペースまたは区切り記号を含まない)
+### <a name="pattern"></a>Pattern
+1 文字の後に 7 桁の数字
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_estonia_eu_passport_number"></a>Keywords\_estonia\_eu\_passport\_number
+```
+eesti kodaniku pass passi number passinumbrid document number document no dokumendi nr
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="estonia-personal-identification-code-isikukood"></a>エストニアの個人識別コード (isikukood)
+
+### <a name="format"></a>Format
+スペースと区切り記号のない 11 桁の数字
+
+### <a name="pattern"></a>Pattern
+11 桁の数字:
+
+- 性別と誕生世紀に対応する 1 桁の数字 (奇数は男性、偶数は女性、1 から 2: 19 世紀、3 から 4: 20 世紀、5 から 6: 21 世紀)
+- 生年月日 (YYMMDD) に対応する 6 桁の数字
+- 同じ日に生まれた人を区別するシリアル番号に対応する 3 桁の数字
+- 1 桁のチェック ディジット
+### <a name="keywords"></a>キーワード
+#### <a name="keywords_estonia_eu_national_id_card"></a>Keywords\_estonia\_eu\_national\_id\_card
+```
+id-kaart
+ik
+isikukood#
+isikukood
+maksu id
+maksukohustuslase identifitseerimisnumber
+maksunumber
+national identification number
+national number
+personal code
+personal id number
+personal identification code
+personal identification number
+personalidnumber#
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
 ## <a name="eu-debit-card-number"></a>EU デビット カード番号
 
 ### <a name="format"></a>Format
@@ -2135,8 +3529,183 @@ válido hasta
 - スウェーデン
 - 英国
 
+## <a name="finland-drivers-license-number"></a>フィンランドの運転免許証番号 
 
+### <a name="format"></a>Format
+1 つのハイフンが含まれた 10 桁の数字
 
+### <a name="pattern"></a>Pattern
+1 つのハイフンが含まれた 10 桁の数字:
+
+- 6 桁の数字
+- 1 つのハイフン
+- 3 桁の数字
+- 1 桁の数字または文字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_finland_eu_drivers_license_number"></a>Keywords\_finland\_eu\_driver's\_license\_number
+```
+ajokortti
+permis de conduire
+ajokortin numero
+kuljettaja lic.
+körkort
+körkortnummer
+förare lic.
+ajokortit
+ajokortin numerot
+```
+## <a name="finland-european-health-insurance-number"></a>フィンランドの欧州健康保険番号
+
+### <a name="format"></a>Format
+20 桁の数字
+### <a name="pattern"></a>Pattern
+20 桁の数字
+- 10 桁の数字 - 8024680246
+- 1 つの省略可能なスペースまたはハイフン
+- 10 桁
+
+### <a name="keywords"></a>キーワード
+#### <a name="keyword_finland_european_health_insurance_number"></a>Keyword\_finland\_european\_health\_insurance\_number
+```
+ehic#
+ehic
+finlandehicnumber#
+finska sjukförsäkringskort
+health card
+health insurance card
+health insurance number
+hälsokort
+sairaanhoitokortin
+sairausvakuutuskortti
+sairausvakuutusnumero
+sjukförsäkring nummer
+sjukförsäkringskort
+suomen sairausvakuutuskortti
+terveyskortti
+```
 ## <a name="finland-national-id"></a>フィンランドの国民 ID
 
 ### <a name="format"></a>Format
@@ -2390,7 +3959,24 @@ license numbers
 license numbers
 numéros de license
 ```
+## <a name="france-health-insurance-number"></a>フランスの健康保険番号
+### <a name="format"></a>Format
+21 桁の数字
+### <a name="pattern"></a>Pattern
+21 桁の数字:
 
+- 10 桁
+- 1 つの省略可能なスペース
+- 10 桁
+- 1 つの省略可能なスペース
+- 1 桁の数字
+### <a name="keywords"></a>キーワード
+#### <a name="keyword_france_health_insurance_number"></a>Keyword\_France\_health\_insurance\_number
+```
+insurance card
+carte vitale
+carte d'assuré social
+```
 ## <a name="france-national-id-card-cni"></a>フランスの国民 ID カード (CNI)
 
 ### <a name="format"></a>Format
@@ -2502,7 +4088,78 @@ numéro d'assurance sociale
 numéro de sécu
 code sécu
 ```
+## <a name="france-tax-identification-number-numro-spi"></a>フランスの納税者番号 (numéro SPI) 
+### <a name="format"></a>Format 
+13 桁の数字
+### <a name="pattern"></a>Pattern
+13 桁の数字
 
+- 0、1、2、または 3 である必要がある 1 桁の数字
+- 1 桁の数字
+- 1 つのスペース (省略可能)
+- 2 桁の数字
+- 1 つのスペース (省略可能)
+- 3 桁の数字
+- 1 つのスペース (省略可能)
+- 3 桁の数字
+- 1 つのスペース (省略可能)
+- 3 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_france_eu_tax_file_number"></a>Keywords\_france\_eu\_tax\_file\_number
+```
+numéro d'identification fiscale
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="france-value-added-tax-number"></a>フランスの付加価値税番号 
+
+### <a name="format"></a>Format 
+13 文字の英数字パターン
+
+### <a name="pattern"></a>Pattern
+13 文字の英数字パターン:
+
+- 2 文字 - FR (大文字と小文字は区別されません)
+- 1 つの省略可能なスペースまたはハイフン
+- 2 桁の文字または数字
+- 1 つの省略可能なスペース、ドット、ハイフン、またはコンマ
+- 3 桁の数字
+- 1 つの省略可能なスペース、ドット、ハイフン、またはコンマ
+- 3 桁の数字
+- 1 つの省略可能なスペース、ドット、ハイフン、またはコンマ
+- 3 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_france_value_added_tax_number"></a>Keyword\_France\_value\_added\_tax\_number
+```
+vat number
+vat no
+vat#
+value added tax
+siren identification no numéro d'identification taxe sur valeur ajoutée
+taxe valeur ajoutée
+taxe sur la valeur ajoutée
+n° tva
+numéro de tva
+numéro d'identification siren
+```
 ## <a name="germany-drivers-license-number"></a>ドイツの運転免許証番号
 
 この機密情報タイプのエンティティは、EU の運転免許証番号の機密情報タイプに含まれており、スタンドアロンの機密情報タイプのエンティティとして使用できます。
@@ -2745,7 +4402,219 @@ reisepässe
 passeport no.
 passeport no
 ```
+## <a name="germany-tax-identification-number"></a>ドイツの納税者番号 
 
+### <a name="format"></a>Format 
+スペースと区切り記号のない 11 桁の数字
+
+### <a name="pattern"></a>Pattern
+11 桁の数字
+
+- 2 桁の数字
+- 1 つの省略可能なスペース
+- 3 桁の数字
+- 1 つの省略可能なスペース
+- 3 桁の数字
+- 1 つの省略可能なスペース
+- 2 桁の数字
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_germany_eu_tax_file_number"></a>Keywords\_germany\_eu_tax\_file\_number
+```
+identifikationsnummer
+steuer id
+steueridentifikationsnummer
+steuernummer
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+zinn#
+zinn
+zinnnummer
+```
+## <a name="germany-value-added-tax-number"></a>ドイツの付加価値税番号 
+
+### <a name="format"></a>Format 
+11 文字の英数字パターン
+
+### <a name="pattern"></a>Pattern
+11 文字の英数字パターン:
+
+- 1 文字 D または d
+- 1 文字 E または e
+- 1 つの省略可能なスペース
+- 3 桁の数字
+- 1 つの省略可能なスペースまたはコンマ
+- 3 桁の数字
+- 1 つの省略可能なスペースまたはコンマ
+- 3 桁の数字
+
+### <a name="keywords"></a>キーワード 
+
+#### <a name="keyword_germany_value_added_tax_number"></a>Keyword\_germany\_value\_added\_tax\_number
+```
+vat number
+vat no
+vat#
+vat#  mehrwertsteuer
+mwst
+mehrwertsteuer identifikationsnummer
+mehrwertsteuer nummer
+```
+## <a name="greece-drivers-license-number"></a>ギリシャの運転免許証番号 
+スペースと区切り記号のない 9 桁の数字
+
+### <a name="format"></a>Format 
+スペースと区切り記号のない 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_greece_eu_drivers_license_number"></a>Keywords\_greece\_eu\_driver's\_license\_number
+```
+δεια οδήγησης
+Adeia odigisis
+Άδεια οδήγησης
+Δίπλωμα οδήγησης
+```
 ## <a name="greece-national-id-card"></a>ギリシャの国民 ID カード
 
 ### <a name="format"></a>Format
@@ -2780,7 +4649,96 @@ tautotita
 ταυτότητα
 ταυτότητας
 ```
+## <a name="greece-passport-number"></a>ギリシャのパスポート番号
 
+### <a name="format"></a>Format 
+2 文字の後に 7 桁の数字 (スペースまたは区切り記号を含まない)
+
+### <a name="pattern"></a>Pattern
+2 文字の後に 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_greece_eu_passport_number"></a>Keywords\_greece\_eu\_passport\_number
+```
+αριθμός διαβατηρίου
+αριθμούς διαβατηρίου
+αριθμός διαβατηριο
+```
+## <a name="greece-social-security-number-amka"></a>ギリシャの社会保障番号 (AMKA)
+
+### <a name="format"></a>Format 
+スペースと区切り記号のない 11 桁の数字
+
+### <a name="pattern"></a>Pattern
+- 生年月日 YYMMDD としての 6 桁の数字
+- 4 桁の数字
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_greece_eu_ssn_or_equivalent"></a>Keywords\_greece\_eu\_ssn\_or\_equivalent
+```
+- ssn
+- ssn#
+- social security no
+- socialsecurityno#
+- social security number
+- amka
+- a.m.k.a.
+- Αριθμού Μητρώου Κοινωνικής Ασφάλισης
+```
+## <a name="greece-tax-identification-number"></a>ギリシャの納税者番号
+
+### <a name="format"></a>Format 
+スペースと区切り記号のない 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_greece_eu_tax_file_number"></a>Keywords\_greece\_eu\_tax\_file\_number
+```
+afm#
+afm
+aφμ|aφμ αριθμός
+aφμ
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+tax registry no
+tax registry number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+taxregistryno#
+tin id
+tin no
+tin#
+αριθμός φορολογικού μητρώου
+τον αριθμό φορολογικού μητρώου
+φορολογικού μητρώου νο
+```
 ## <a name="hong-kong-identity-card-hkid-number"></a>香港特別行政区の身分証明書 (HKID) 番号
 
 ### <a name="format"></a>Format
@@ -2838,7 +4796,302 @@ Hong Kong ID
 香港特別行政區非永久性居民身分證
 香港特別行政區非永久性居民身分証
 ```
+## <a name="hungary-drivers-license-number"></a>ハンガリーの運転免許証番号 
 
+### <a name="format"></a>Format 
+2 文字の後に 6 桁の数字
+
+### <a name="pattern"></a>Pattern
+2 文字と 6 桁の数字:
+
+- 2 文字 (大文字と小文字は区別されません)
+- 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_hungary_eu_drivers_license_number"></a>Keywords\_hungary\_eu\_driver's\_license\_number
+```
+vezetoi engedely
+vezetői engedély
+vezetői engedélyek
+```
+## <a name="hungary-passport-number"></a>ハンガリーのパスポート番号 
+
+### <a name="format"></a>Format 
+2 文字の後に 6 桁または 7 桁の数字 (スペースまたは区切り記号を含まない)
+
+### <a name="pattern"></a>Pattern
+2 文字の後に 6 桁または 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_hungary_eu_passport_number"></a>Keywords\_hungary\_eu\_passport\_number
+```
+útlevél száma
+Útlevelek száma
+útlevél szám
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+有効期限の発行日
+
+## <a name="hungary-personal-identification-number"></a>ハンガリーの個人識別番号 
+
+### <a name="format"></a>Format 
+11 桁の数字
+
+### <a name="pattern"></a>Pattern
+11 桁の数字:
+
+- 性別に対応する 1 桁の数字、男性の場合 1、女性の場合 2 です。 1900 年より前に生まれた市民や二重市民権を持つ市民に対して、他の番号も可能です。
+- 生年月日 (YYMMDD) に対応する 6 桁の数字
+- シリアル番号に対応する 3 桁の数字
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_hungary_eu_national_id_card"></a>Keywords\_hungary\_eu\_national\_id\_card
+```
+id number
+identification number
+sz ig
+sz. ig.
+sz.ig.
+személyazonosító igazolvány
+személyi igazolvány
+```
+## <a name="hungary-social-security-number-taj"></a>ハンガリーの社会保障番号 (TAJ) 
+
+### <a name="format"></a>Format 
+スペースと区切り記号のない 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_hungary_eu_ssn_or_equivalent"></a>Keywords\_hungary\_eu\_ssn\_or\_equivalent
+```
+- hungarian social security number
+- social security number
+- socialsecuritynumber#
+- hssn#
+- socialsecuritynno
+- hssn
+- taj
+- taj#
+- ssn
+- ssn#
+- social security no
+- áfa
+- közösségi adószám
+- általános forgalmi adó szám
+- hozzáadottérték adó
+- áfa szám
+- magyar áfa szám
+```
+## <a name="hungary-value-added-tax-number"></a>ハンガリーの付加価値税番号 
+
+### <a name="format"></a>Format 
+10 文字の英数字パターン
+
+### <a name="pattern"></a>Pattern
+10 文字の英数字パターン:
+
+- 2 文字 - HU または hu
+- 省略可能なスペース
+- 8 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_hungary_value_added_tax_number"></a>Keyword\_Hungary\_value\_added\_tax\_number
+```
+vat
+value added tax number
+vat#
+vatno#
+hungarianvatno#
+tax no.
+value added tax áfa
+közösségi adószám
+általános forgalmi adó szám
+hozzáadottérték adó
+áfa szám
+```
+
+## <a name="hungary-tax-identification-number"></a>ハンガリーの納税者番号 
+
+### <a name="format"></a>Format 
+スペースまたは区切り記号がない 10 桁の数字
+
+### <a name="pattern"></a>Pattern
+10 桁の数字:
+
+- "8" である必要がある 1 桁の数字
+- 8 桁の数字
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_hungary_eu_tax_file_number"></a>Keywords\_hungary\_eu\_tax\_file\_number
+```
+adóazonosító szám
+adóhatóság szám
+adószám
+hungarian tin
+hungatiantin#
+tax authority no
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+vat number
+```
 ## <a name="ip-address"></a>IP アドレス
 
 ### <a name="format"></a>Format
@@ -2974,6 +5227,187 @@ ad, ae, al, at, az, ba, be, bg, bh, ch, cr, cy, cz, de, dk, do, ee, es, fi, fo, 
 
 なし
 
+## <a name="ireland-drivers-license-number"></a>アイルランドの運転免許証番号 
+
+### <a name="format"></a>Format 
+6 桁の数字の後に 4 文字
+
+### <a name="pattern"></a>Pattern
+6 桁の数字と 4 文字:
+
+- 6 桁の数字
+- 4 文字 (大文字と小文字は区別されません)
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_ireland_eu_drivers_license_number"></a>Keywords\_ireland\_eu\_driver's\_license\_number
+```
+ceadúnas tiomána
+ceadúnais tiomána 
+```
+## <a name="ireland-passport-number"></a>アイルランドのパスポート番号 
+
+
+### <a name="format"></a>Format 
+2 桁の文字または数字の後に 7 桁の数字 (スペースまたは区切り記号を含まない)
+
+### <a name="pattern"></a>Pattern
+2 桁の文字または数字の後に 7 桁の数字:
+
+- 2 桁の数字または文字 (大文字と小文字は区別されません)
+- 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_ireland_eu_passport_number"></a>Keywords\_ireland\_eu\_passport\_number
+```
+passeport numero
+uimhreacha pasanna
+uimhir pas
+uimhir phas
+uimhreacha pas
+uimhir cárta
+uimhir chárta
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
 ## <a name="ireland-personal-public-service-pps-number"></a>アイルランドの個人公共サービス (PPS) 番号
 
 ### <a name="format"></a>Format
@@ -3140,7 +5574,123 @@ patente guida
 patenti di guida
 patenti guida
 ```
+## <a name="italy-fiscal-code"></a>イタリアの個人納税者番号 
 
+### <a name="format"></a>Format 
+指定したパターンの 16 文字の文字と数字の組み合わせ
+
+### <a name="pattern"></a>Pattern
+16 文字の文字と数字の組み合わせ:
+
+- 姓の先頭の 3 つの子音に対応する 3 文字
+- 名の 1 番目、3 番目、および 4 番目の子音に対応する 3 文字
+- 誕生年の末尾の桁に対応する 2 桁の数字
+- 誕生月の文字に対応する 1 文字。文字はアルファベット順に使用されますが、A から E、H、L、M、P、R から T の文字のみが使用されます (つまり、1 月は A、10 月は R)
+- 性別を区別するために、誕生日の日に対応する 2 桁の数字で、女性の誕生日には 40 が追加されます
+- 人が出生した地方自治体に固有の市外局番に対応する 4 桁の数字 (外国の場合は全国規模のコードが使われます)
+- 1 桁のパリティ数字 
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_italy_eu_national_id_card"></a>Keywords\_italy\_eu\_national\_id\_card
+```
+codice fiscal
+codice fiscale
+codice id personale
+codice personale
+fiscal code
+numero certificato personale
+numero di identificazione fiscale
+numero id personale
+numero personale
+personal certificate number
+personal code
+personal id code
+personal id number
+personalcodeno#
+tax code
+tax id
+tax identification no
+tax identification number
+tax identity number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="italy-passport-number"></a>イタリアのパスポート番号 
+
+### <a name="format"></a>Format 
+2 桁の文字または数字の後に 7 桁の数字 (スペースまたは区切り記号を含まない)
+
+### <a name="pattern"></a>Pattern
+2 桁の文字または数字の後に 7 桁の数字:
+
+- 2 桁の数字または文字 (大文字と小文字は区別されません)
+- 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_italy_eu_passport_number"></a>Keywords\_italy\_eu\_passport\_number
+```
+italiana passaporto
+passaporto italiana
+passaporto numero
+numéro passeport
+numero di passaporto
+numeri del passaporto
+passeport italien
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="italy-value-added-tax"></a>イタリアの付加価値税 
+
+### <a name="format"></a>Format 
+省略可能な区切り記号を含む 13 文字の英数字パターン
+
+### <a name="pattern"></a>Pattern
+省略可能な区切り記号を含む 13 文字の英数字パターン:
+
+- I または i
+- T または t
+- 省略可能なスペース、ドット、ハイフン、またはコンマ
+- 11 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_italy_value_added_tax_number"></a>Keyword\_italy\_value\_added\_tax\_number
+```
+vat number
+vat no
+vat#
+iva
+iva#
+```
 ## <a name="japan-bank-account-number"></a>日本の銀行口座番号
 
 ### <a name="format"></a>Format
@@ -3263,7 +5813,63 @@ lics#
 免許証#
 免許#
 ```
+## <a name="japanese-my-number--corporate"></a>日本のマイナンバー (企業) 
 
+
+### <a name="format"></a>Format 
+13 桁の数字
+
+### <a name="pattern"></a>Pattern
+13 桁の数字:
+
+- 1 から 9 までの 1 桁の数字
+- 12 桁
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_japan_my_number_corporate"></a>Keyword\_japan\_my\_number\_corporate
+```
+corporate number
+マイナンバー
+共通番号
+マイナンバーカード
+マイナンバーカード番号
+個人番号カード
+個人識別番号
+個人識別ナンバー
+法人番号
+指定通知書
+```
+## <a name="japanese-my-number--personal"></a>日本のマイナンバー (個人) 
+
+
+### <a name="format"></a>Format 
+12 桁の数字
+
+### <a name="pattern"></a>Pattern
+12 桁の数字:
+
+- 4 桁の数字
+- 1 つの省略可能なスペース、ドット、またはハイフン
+- 4 桁の数字
+- 1 つの省略可能なスペース、ドット、またはハイフン
+- 4 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_japan_my_number_personal"></a>Keyword\_japan\_my\_number\_personal
+```
+my number
+マイナンバー
+個人番号
+共通番号
+マイナンバーカード
+マイナンバーカード番号
+個人番号カード
+個人識別番号
+個人識別ナンバー
+通知カード
+```
 ## <a name="japan-passport-number"></a>日本のパスポート番号
 
 ### <a name="format"></a>Format
@@ -3386,7 +5992,770 @@ Social Insurance Number
 厚生年金
 厚生年金被保険者整理番号
 ```
+## <a name="latvia-drivers-license-number"></a>ラトビアの運転免許証番号
 
+### <a name="format"></a>Format
+3 文字の後に 6 桁の数字
+
+### <a name="pattern"></a>Pattern
+3 文字と 6 桁の数字:
+
+- 3 文字 (大文字と小文字は区別されません)
+- 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_latvia_eu_drivers_license_number"></a>Keywords\_latvia\_eu\_driver's\_license\_number
+```
+autovadītāja apliecība
+autovadītāja apliecības
+vadītāja apliecība
+```
+## <a name="latvia-passport-number"></a>ラトビアのパスポート番号 
+
+### <a name="format"></a>Format 
+2 桁の文字または数字の後に 7 桁の数字 (スペースまたは区切り記号を含まない)
+
+### <a name="pattern"></a>Pattern
+2 桁の文字または数字の後に 7 桁の数字:
+
+- 2 桁の数字または文字 (大文字と小文字は区別されません)
+- 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_latvia_eu_passport_number"></a>Keywords\_latvia\_eu\_passport\_number
+```
+pase numurs
+pase numur
+pases numuri
+pases nr
+passeport no
+n° du Passeport
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="latvia-personal-code-personas-kods-or-pic"></a>ラトビアの個人コード (Personas kods または PIC)  
+
+### <a name="format"></a>Format 
+11 桁の数字と 1 つの省略可能なハイフン
+
+### <a name="pattern"></a>Pattern
+古い形式
+
+11 桁の数字と 1 つのハイフン:
+
+- 生年月日 (DDMMYY) に対応する 6 桁の数字
+- 1 つのハイフン
+- 誕生世紀に対応する 1 桁の数字 (19 世紀の場合は "0"、20 世紀の場合は "1"、21 世紀の場合は "2")
+- ランダムに生成された 4 桁の数字
+- 新しい形式
+
+11 桁の数字
+
+- 2 桁の数字 "32"
+- 9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_latvia_eu_national_id_card"></a>Keywords\_latvia\_eu\_national\_id\_card
+```
+administrative number
+alvas nē
+birth number
+citizen number
+civil number
+electronic census number
+electronic number
+fiscal code
+healthcare user number
+id#
+id-code
+identification number
+identifikācijas numurs
+id-number
+individual number
+latvija alva
+nacionālais id
+national id
+national identifying number
+national identity number
+national insurance number
+national register number
+nodokļa numurs
+nodokļu id
+nodokļu identifikācija numurs
+personal certificate number
+personal code
+personal id code
+personal id number
+personal identification code
+personal identifier
+personal identity number
+personal number
+personal numeric code
+personalcodeno#
+personas kods
+population identification code
+public service number
+registration number
+revenue number
+social insurance number
+social security number
+state tax code
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+voter’s number
+```
+## <a name="lithuania-drivers-license-number"></a>リトアニアの運転免許証番号 
+
+### <a name="format"></a>Format 
+スペースと区切り記号のない 8 桁の数字
+
+### <a name="pattern"></a>Pattern
+8 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_lithuania_eu_drivers_license_number"></a>Keywords\_lithuania\_eu\_driver's\_license\_number
+```
+vairuotojo pažymėjimas
+vairuotojo pažymėjimo numeris
+vairuotojo pažymėjimo numeriai
+```
+## <a name="lithuania-passport-number"></a>リトアニアのパスポート番号 
+
+### <a name="format"></a>Format 
+スペースまたは区切り記号のない 8 桁の数字または文字
+
+### <a name="pattern"></a>Pattern
+8 桁の数字または文字 (大文字と小文字は区別されません)
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_lithuania_eu_passport_number"></a>Keywords\_lithuania\_eu\_passport\_number
+```
+paso numeris
+paso numeriai
+paso nr
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="lithuania-personal-code-asmens-kodas"></a>リトアニアの個人コード (Asmens kodas)  
+
+### <a name="format"></a>Format 
+スペースと区切り記号のない 11 桁の数字
+
+### <a name="pattern"></a>Pattern
+スペースと区切り記号のない 11 桁の数字:
+
+- 人の性別と誕生世紀に対応する 1 桁の数字 (1 から 6)
+- 生年月日 (YYMMDD) に対応する 6 桁の数字
+- 生年月日のシリアル番号に対応する 3 桁の数字
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_lithuania_eu_national_id_card"></a>Keywords\_lithuania\_eu\_national\_id\_card
+```
+asmeninis skaitmeninis kodas
+asmens kodas
+citizen service number
+mokesčių id
+mokesčių identifikavimas numeris
+mokesčių identifikavimo numeris
+mokesčių numeris
+national identification number
+personal code
+personal numeric code
+piliečio paslaugos numeris
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+unikalus identifikavimo kodas
+unikalus identifikavimo numeris
+unique identification number
+unique identity number
+uniqueidentityno#
+```
+## <a name="luxembourg-drivers-license-number"></a>ルクセンブルクの運転免許証番号 
+
+### <a name="format"></a>Format 
+スペースと区切り記号のない 6 桁の数字
+
+### <a name="pattern"></a>Pattern
+6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_luxemburg_eu_drivers_license_number"></a>Keywords\_luxemburg\_eu\_driver's\_license\_number
+```
+fahrerlaubnis
+Führerschäin
+```
+## <a name="luxembourg-passport-number"></a>ルクセンブルクのパスポート番号 
+
+### <a name="format"></a>Format 
+スペースまたは区切り記号のない 8 桁の数字または文字
+
+### <a name="pattern"></a>Pattern
+8 桁の数字または文字 (大文字と小文字は区別されません)
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_luxemburg_eu_passport_number"></a>Keywords\_luxemburg\_eu\_passport\_number
+```
+ausweisnummer
+luxembourg pass
+luxembourg passeport
+luxembourg passport
+no de passeport
+no-reisepass
+nr-reisepass
+numéro de passeport
+pass net
+pass nr
+passnummer
+passeport nombre
+reisepässe
+reisepass-nr
+reisepassnummer
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="luxemburg-national-identification-number---natural-persons"></a>ルクセンブルグの国民識別番号 (自然人)
+
+### <a name="format"></a>Format 
+スペースまたは区切り記号がない 13 桁の数字
+
+### <a name="pattern"></a>Pattern
+13 桁の数字:
+
+- 11 桁の数字
+- 2 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_luxemburg_eu_national_id_card"></a>Keywords\_luxemburg\_eu\_national\_id\_card
+```
+eindeutige id
+eindeutige id-nummer
+eindeutigeid#
+id personnelle
+idpersonnelle#
+idpersonnelle
+individual code
+individual id
+individual identification
+individual identity
+numéro d'identification personnel
+personal id
+personal identification
+personal identity
+personalidno#
+personalidnumber#
+persönliche identifikationsnummer
+unique id
+unique identity
+uniqueidkey#
+```
+## <a name="luxemburg-national-identification-number---non-natural-persons"></a>ルクセンブルグの国民識別番号 (自然人以外)
+
+### <a name="format"></a>Format 
+11 桁の数字
+
+### <a name="pattern"></a>Pattern
+11 桁の数字
+
+- 2 桁の数字
+- 1 つの省略可能なスペース
+- 3 桁の数字
+- 1 つの省略可能なスペース
+- 3 桁の数字
+- 1 つの省略可能なスペース
+- 2 桁の数字
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_luxemburg_eu_tax_file_number"></a>Keywords\_luxemburg\_eu\_tax\_file\_number
+```
+carte de sécurité sociale
+étain non
+étain#
+identifiant d'impôt
+luxembourg tax identifikatiounsnummer
+numéro d'étain
+numéro d'identification fiscal luxembourgeois
+numéro d'identification fiscale
+social security
+sozialunterstützung
+sozialversécherung
+sozialversicherungsausweis
+steier id
+steier identifikatiounsnummer
+steier nummer
+steuer id
+steueridentifikationsnummer
+steuernummer
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+zinn#
+zinn
+zinnzahl
+```
 ## <a name="malaysia-identification-card-number"></a>マレーシアの身分証明書番号
 
 ### <a name="format"></a>Format
@@ -3434,7 +6803,268 @@ malaysian identity card
 nric
 personal identification card
 ```
+## <a name="malta-drivers-license-number"></a>マルタの運転免許証番号 
 
+### <a name="format"></a>Format 
+指定したパターンの 2 文字と 6 桁の数字の組み合わせ
+
+### <a name="pattern"></a>Pattern
+2 文字と 6 桁の数字の組み合わせ:
+
+- 2 文字 (数字または文字、大文字と小文字は区別されません)
+- 1 つのスペース (省略可能)
+- 3 桁の数字
+- 1 つのスペース (省略可能)
+- 3 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_malta_eu_drivers_license_number"></a>Keywords\_malta\_eu\_driver's\_license\_number
+```
+liċenzja tas-sewqan
+liċenzji tas-sewwieq
+```
+## <a name="malta-identity-card-number"></a>マルタの身分証明書番号 
+
+### <a name="format"></a>Format 
+7 桁の数字の後に 1 文字
+
+### <a name="pattern"></a>Pattern
+7 桁の数字の後に 1 文字:
+
+- 7 桁の数字
+- "M、G、A、P、L、H、B、Z" の 1 文字 (大文字と小文字は区別されません)
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_malta_eu_national_id_card"></a>Keywords\_malta\_eu\_national\_id\_card
+```
+citizen service number
+id tat-taxxa
+identifika numru tal-biljett
+kodiċi numerali personali
+numru ta 'identifikazzjoni personali
+numru ta 'identifikazzjoni tat-taxxa
+numru ta 'identifikazzjoni uniku
+numru ta' identità uniku
+numru tas-servizz taċ-ċittadin
+numru tat-taxxa
+personal numeric code
+unique identification number
+unique identity number
+uniqueidentityno#
+```
+## <a name="malta-passport-number"></a>マルタのパスポート番号 
+
+### <a name="format"></a>Format 
+スペースや区切り記号のない 7 桁の数字
+
+### <a name="pattern"></a>Pattern
+7 桁の数字
+
+### <a name="keywords"></a>キーワード
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_malta_eu_passport_number"></a>Keywords\_malta\_eu\_passport\_number
+```
+numru tal-passaport
+numri tal-passaport
+Nru tal-passaport
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="malta-tax-id-number"></a>マルタの納税者番号 
+
+### <a name="format"></a>Format 
+マルタ国民の場合:
+
+- 指定したパターンの 7 桁の数字と 1 文字
+
+マルタ以外の国民とマルタの事業体:
+
+- 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+マルタの国民: 7 桁の数字と 1 文字
+
+- 7 桁の数字
+- 1 文字 (大文字と小文字は区別されません)
+
+マルタ以外の国民とマルタの事業体: 9 桁の数字
+
+- 9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_malta_eu_tax_file_number"></a>Keywords\_malta\_eu\_tax\_file\_number
+```
+citizen service number
+id tat-taxxa
+identifika numru tal-biljett
+kodiċi numerali personali
+numru ta 'identifikazzjoni personali
+numru ta 'identifikazzjoni tat-taxxa
+numru ta 'identifikazzjoni uniku
+numru ta' identità uniku
+numru tas-servizz taċ-ċittadin
+numru tat-taxxa
+personal numeric code
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+unique identification number
+unique identity number
+uniqueidentityno#
+```
 ## <a name="netherlands-citizens-service-bsn-number"></a>オランダの市民サービス (BSN) 番号
 
 ### <a name="format"></a>Format
@@ -3478,7 +7108,422 @@ unique identification number
 unique identity number
 uniqueidentityno#
 ```
+## <a name="netherlands-drivers-license-number"></a>オランダの運転免許証番号 
 
+### <a name="format"></a>Format 
+
+スペースと区切り記号のない 10 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+10 桁
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_netherlands_eu_drivers_license_number"></a>Keywords\_netherlands\_eu\_driver's\_license\_number
+```
+permis de conduire
+rijbewijs
+rijbewijsnummer
+rijbewijzen
+rijbewijs nummer
+rijbewijsnummers
+```
+
+## <a name="netherlands-passport-number"></a>オランダのパスポート番号 
+
+### <a name="format"></a>Format 
+
+スペースまたは区切り記号のない 9 桁の文字または数字
+
+### <a name="pattern"></a>Pattern
+
+9 桁の文字または数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_netherlands_eu_passport_number"></a>Keywords\_netherlands\_eu\_passport\_number
+```
+paspoort nummer
+paspoortnummers
+paspoortnummer
+paspoort nr
+```
+## <a name="netherlands-tax-identification-number"></a>オランダの納税者番号 
+
+### <a name="format"></a>Format 
+
+スペースや区切り記号のない 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_netherlands_eu_tax_file_number"></a>Keywords\_netherlands\_eu\_tax\_file\_number
+```
+btw nummer
+hollânske tax identification
+hulandes impuesto id number
+hulandes impuesto identification
+identificatienummer belasting
+identificatienummer van belasting
+impuesto identification number
+impuesto number
+nederlands belasting id nummer
+nederlands belasting identificatie
+nederlands belasting identificatienummer
+nederlands belastingnummer
+nederlandse belasting identificatie
+netherlands tax identification
+netherland's tax identification
+netherlands tin
+netherland's tin
+tax id
+tax identification no
+tax identification number
+tax identification tal
+tax no#
+tax no
+tax number
+tax registration number
+tax tal
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="netherlands-value-added-tax-number"></a>オランダの付加価値税番号 
+
+### <a name="format"></a>Format 
+
+14 文字の英数字パターン
+
+### <a name="pattern"></a>Pattern
+
+14 文字の英数字パターン:
+
+- N または n
+- L または l
+- 省略可能なスペース、ドット、またはハイフン
+- 9 桁の数字
+- 省略可能なスペース、ドット、またはハイフン
+- B または b
+- 2 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_netherlands_value_added_tax_number"></a>Keyword\_netherlands\_value\_added\_tax\_number
+```
+vat number
+vat no
+vat#
+wearde tafoege tax getal
+btw nûmer
+btw-nummer
+```
+## <a name="new-zealand-bank-account-number"></a>ニュージーランドの銀行口座番号 
+
+### <a name="format"></a>Format 
+
+省略可能な区切り記号を含む 14 桁から 16 桁のパターン
+
+### <a name="pattern"></a>Pattern
+
+省略可能な区切り記号を含む 14 桁から 16 桁のパターン:
+
+- 2 桁の数字
+- 省略可能なハイフンまたはスペース
+- 3 から 4 桁の数字
+- 省略可能なハイフンまたはスペース
+- 7 桁の数字
+- 省略可能なハイフンまたはスペース
+- 2 から 3 桁の数字
+- 省略可能なハイフンまたはスペース
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_new_zealand_bank_account_number"></a>Keyword\_new\_zealand\_bank\_account\_number
+```
+account number
+bank account
+bank_acct_id
+bank_acct_branch
+bank_acct_nbr
+```
+## <a name="new-zealand-driver-license"></a>ニュージーランドの運転免許証 
+
+### <a name="format"></a>Format 
+
+8 文字の英数字パターン
+
+### <a name="pattern"></a>Pattern
+
+8 文字の英数字パターン
+
+- 2 文字
+- 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_new_zealand_drivers_license_number"></a>Keyword\_new\_zealand\_drivers\_license\_number
+```
+driverlicence
+driverlicences
+driver lic
+driver licence
+driver licences
+driverslic
+driverslicence
+driverslicences
+drivers lic
+drivers lics
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's licence
+driver's licences
+driverlic#
+driverlics#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver licence#
+driver licences#
+driverslic#
+driverslics#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's licence#
+driver's licences#
+international driving permit
+international driving permits
+nz automobile association
+new zealand automobile association
+```
+## <a name="new-zealand-inland-revenue-number"></a>ニュージーランドの内国税収入番号 
+
+### <a name="format"></a>Format 
+
+省略可能な区切り記号を含む 8 桁または 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+省略可能な区切り記号を含む 8 桁または 9 桁の数字
+
+- 2 桁または 3 桁の数字
+- 1 つの省略可能なスペースまたはハイフン
+- 3 桁の数字
+- 1 つの省略可能なスペースまたはハイフン
+- 3 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_new_zealand_inland_revenue_number"></a>Keyword\_new\_zealand\_inland\_revenue\_number
+```
+ird no.
+ird no#
+nz ird
+new zealand ird
+ird number
+inland revenue number
+```
+## <a name="new-zealand-social-welfare-number"></a>ニュージーランドの社会福祉番号
+
+### <a name="format"></a>Format
+
+9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+9 桁の数字
+
+- 3 桁の数字
+- 省略可能なハイフン
+- 3 桁の数字
+- 省略可能なハイフン
+- 3 桁の数字
+
+#### <a name="keyword_new_zealand_social_welfare_number"></a>Keyword\_new\_zealand\_social\_welfare\_number
+```
+social welfare #
+social welfare#
+social welfare No.  
+social welfare number
+swn#
+```
 ## <a name="new-zealand-ministry-of-health-number"></a>ニュージーランド保健省 (Ministry of Health) 番号
 
 ### <a name="format"></a>Format
@@ -3563,6 +7608,151 @@ Identity Card
 Pinag-isang Multi-Layunin ID
 ```
 
+## <a name="poland-drivers-license-number"></a>ポーランドの運転免許証番号
+
+### <a name="format"></a>Format
+
+2 つのスラッシュを含む 14 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+14 桁の数字と 2 つのスラッシュ:
+
+- 5 桁の数字
+- スラッシュ
+- 2 桁の数字
+- スラッシュ
+- 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_poland_eu_drivers_license_number"></a>Keywords\_poland\_eu\_driver's\_license\_number
+```
+prawo jazdy
+prawa jazdy
+```
+
 ## <a name="poland-identity-card"></a>ポーランドの身分証明書
 
 ### <a name="format"></a>Format
@@ -3637,6 +7827,82 @@ Nr. Paszportu
 Paszport
 ```
 
+## <a name="poland-regon-number"></a>ポーランドの REGON 番号
+
+### <a name="format"></a>Format
+
+9 桁または 14 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+9 桁または 14 桁の数字:
+
+- 9 桁の数字または
+- 9 桁の数字
+- ハイフン
+- 5 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_poland_regon_number"></a>Keywords\_poland\_regon\_number
+```
+regon id
+statistical number
+statistical id
+statistical no
+regon number
+regonid#
+regonno#
+company id
+companyid#
+companyidno#
+numer statystyczny
+numeru regon
+numerstatystyczny#
+numeruregon#
+```
+## <a name="poland-tax-identification-number"></a>ポーランドの納税者番号
+
+### <a name="format"></a>Format
+
+スペースまたは区切り記号がない 11 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+11 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_poland_eu_tax_file_number"></a>Keywords\_poland\_eu\_tax\_file\_number
+```
+nip#
+nip
+numer identyfikacji podatkowej
+numeridentyfikacjipodatkowej#
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+vat id#
+vat id
+vat no
+vat number
+vatid#
+vatid
+vatno#
+```
 ## <a name="portugal-citizen-card-number"></a>ポルトガルの市民カード番号
 
 ### <a name="format"></a>Format
@@ -3836,6 +8102,408 @@ permissão condução
 Licença condução Portugal
 carta de condução
 ```
+## <a name="portugal-passport-number"></a>ポルトガルのパスポート番号
+
+### <a name="format"></a>Format
+
+1 文字の後に 6 桁の数字 (スペースまたは区切り記号を含まない)
+
+### <a name="pattern"></a>Pattern
+
+1 文字の後に 6 桁の数字:
+
+- 1 文字 (大文字と小文字は区別されません)
+- 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_portugal_eu_passport_number"></a>Keywords\_portugal\_eu\_passport\_number
+```
+número do passaporte
+portuguese passport
+portuguese passeport
+portuguese passaporte
+passaporte nº
+passeport nº
+números de passaporte
+portuguese passports
+número passaporte
+números passaporte
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+
+## <a name="portugal-tax-identification-number"></a>ポルトガルの納税者番号
+
+### <a name="format"></a>Format
+
+省略可能なスペースを含む 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+- 3 桁の数字
+- 1 つの省略可能なスペース
+- 3 桁の数字
+- 1 つの省略可能なスペース
+- 3 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_portugal_eu_tax_file_number"></a>Keywords\_portugal\_eu\_tax\_file\_number
+```
+cpf#
+cpf
+nif#
+nif
+número de identificação fisca
+numero fiscal
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="romania-drivers-license-number"></a>ルーマニアの運転免許証番号
+
+### <a name="format"></a>Format
+
+1 文字の後に 8 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+1 文字の後に 8 桁の数字:
+
+- 1 文字 (大文字と小文字は区別されません) または数字
+- 8 桁の数字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_romania_eu_drivers_license_number"></a>Keywords\_romania\_eu\_driver's\_license\_number
+```
+permis de conducere
+permisului de conducere
+permisului conducere
+permisele de conducere
+permisele conducere
+permis conducere
+```
+
+## <a name="romania-passport-number"></a>ルーマニアのパスポート番号
+
+### <a name="format"></a>Format
+
+スペースと区切り記号のない 8 桁または 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+8 桁または 9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_romania_eu_passport_number"></a>Keywords\_romania\_eu\_passport\_number
+```
+numărul pașaportului numarul pasaportului numerele pașaportului Pașaport nr
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+
+## <a name="romania-personal-numeric-code-cnp"></a>ルーマニアの身分証明書 (CNP)
+
+### <a name="format"></a>Format
+
+スペースと区切り記号のない 13 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+- 1 から 9 の 1 桁の数字
+- 生年月日 (YYMMDD) を表す 6 桁の数字
+- 2 桁の数字 (01 から 52 または 99 を指定可能)
+- 4 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_romania_eu_national_id_card"></a>Keywords\_romania\_eu\_national\_id\_card
+```
+cnp#
+cnp
+cod identificare personal
+cod numeric personal
+cod unic identificare
+codnumericpersonal#
+codul fiscal nr.
+identificarea fiscală nr#
+id-ul taxei
+insurance number
+insurancenumber#
+national id#
+national id
+national identification number
+număr identificare personal
+număr identitate
+număr personal unic
+număridentitate#
+număridentitate
+numărpersonalunic#
+numărpersonalunic
+număru de identificare fiscală
+numărul de identificare fiscală
+personal numeric code
+pin#
+pin
+tax file no
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+unique identification number
+unique identity number
+uniqueidentityno#
+uniqueidentityno
+```
+
+## <a name="russia-passport-number-domestic"></a>ロシアのパスポート番号 (国内)
+
+### <a name="format"></a>Format
+
+10 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+10 桁の数字:
+
+- 2 桁の数字
+- 1 つの省略可能なスペースまたはハイフン
+- 2 桁の数字
+- 1 つの省略可能なスペース
+- 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_russia_passport_number_domestic"></a>Keyword\_russia\_passport\_number\_domestic
+```
+passport number
+passport no
+passport #
+passport id
+passportno#
+passportnumber#
+паспорт нет
+паспорт id
+pоссийской паспорт
+pусский номер паспорта
+паспорт#
+паспортid#
+номер паспорта
+номерпаспорта#
+```
+## <a name="russia-passport-number-international"></a>ロシアのパスポート番号 (海外)
+
+### <a name="format"></a>Format
+
+9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+9 桁の数字:
+
+- 2 桁の数字
+- 1 つの省略可能なスペースまたはハイフン
+- 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_russia_passport_number_international"></a>Keywords\_russia\_passport\_number\_international
+```
+passport number
+passport no
+passport #
+passport id
+passportno#
+passportnumber#
+паспорт нет
+паспорт id
+pоссийской паспорт
+pусский номер паспорта
+паспорт#
+паспортid#
+номер паспорта
+номерпаспорта#
+```
 
 ## <a name="saudi-arabia-national-id"></a>サウジアラビアの国民 ID
 
@@ -3884,6 +8552,477 @@ Foreign Identification Number
 FIN
 身份证
 身份證
+```
+## <a name="slovakia-drivers-license-number"></a>スロバキアの運転免許証番号
+
+### <a name="format"></a>Format
+
+1 文字の後に 7 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+1 文字の後に 7 桁の数字
+
+- 1 文字 (大文字と小文字は区別されません) または数字
+- 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_slovakia_eu_drivers_license_number"></a>Keywords\_slovakia\_eu\_driver's\_license\_number
+```
+vodičský preukaz
+vodičské preukazy
+vodičského preukazu
+vodičských preukazov
+```
+## <a name="slovakia-personal-number"></a>スロバキアの個人番号
+
+### <a name="format"></a>Format
+省略可能な円記号を含む 9 桁または 10 桁の数字
+
+### <a name="pattern"></a>Pattern
+- 生年月日を表す 6 桁の数字
+- 省略可能なスラッシュ (/)
+- 3 桁の数字
+- 省略可能な 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_slovakia_eu_national_id_card"></a>Keywords\_slovakia\_eu\_national\_id\_card
+```
+azonosító szám
+birth number
+číslo národnej identifikačnej karty
+číslo občianského preukazu
+daňové číslo
+id number
+identification no
+identification number
+identifikačná karta č
+identifikačné číslo
+identity card no
+identity card number
+národná identifikačná značka č
+national number
+nationalnumber#
+nemzeti személyazonosító igazolvány
+personalidnumber#
+rč
+rodne cislo
+rodné číslo
+social security number
+ssn#
+ssn
+személyi igazolvány szám
+személyi igazolvány száma
+személyigazolvány szám
+tax file no
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="slovenia-drivers-license-number"></a>スロベニアの運転免許証番号
+
+### <a name="format"></a>Format
+
+スペースと区切り記号のない 9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_slovenia_eu_drivers_license_number"></a>Keywords\_slovenia\_eu\_driver's\_license\_number
+```
+vozniško dovoljenje
+vozniška številka licence
+vozniških dovoljenj
+številka vozniškega dovoljenja
+številke vozniških dovoljenj
+```
+## <a name="slovenia-passport-number"></a>スロベニアのパスポート番号
+
+### <a name="format"></a>Format
+
+2 文字の後に 7 桁の数字 (スペースまたは区切り記号を含まない)
+
+### <a name="pattern"></a>Pattern
+
+2 文字の後に 7 桁の数字:
+
+- 文字 "P"
+- 1 文字の大文字
+- 7 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+- passport#
+- passport #
+- passportid
+- passports
+- passportno
+- passport no
+- passportnumber
+- passport number
+- passportnumbers
+- passport numbers
+```
+#### <a name="keywords_slovenia_eu_passport_number"></a>Keywords\_slovenia\_eu\_passport\_number
+```
+- številka potnega lista
+- potek veljavnosti
+- potni list#
+- datum rojstva
+- potni list
+- številke potnih listov
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+- date of issue
+- date of expiry
+```
+## <a name="slovenia-tax-identification-number"></a>スロベニアの納税者番号
+
+### <a name="format"></a>Format
+
+スペースや区切り記号がない 8 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+- 1 から 9 の 1 桁の数字
+- 6 桁の数字
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_slovenia_eu_tax_file_number"></a>Keywords\_slovenia\_eu\_tax\_file\_number
+```
+davčna številka
+identifikacijska številka davka
+številka davčne datoteke
+tax file no
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+
+## <a name="slovenia-unique-master-citizen-number"></a>スロベニアの市民識別番号
+
+### <a name="format"></a>Format
+
+スペースや区切り記号のない 13 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+指定したパターンの 13 桁の数字:
+
+- 生年月日 (DDMMLLL) に対応する 7 桁の数字で、"LLL" は出生年の末尾の 3 桁に対応する
+- 出生地域に対応する 2 桁の数字 "50"
+- 同じ日に生まれた人の性別とシリアル番号の組み合わせに対応する 3 桁の数字。 男性の場合は 000 から 499、女性の場合は 500 から 999。
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_slovenia_eu_national_id_card"></a>Keywords\_slovenia\_eu\_national\_id\_card
+```
+edinstvena številka glavnega državljana
+emšo
+enotna maticna številka obcana
+id card
+identification number
+identifikacijska številka
+identity card
+nacionalna id
+nacionalni potni list
+national id
+osebna izkaznica
+osebni koda
+osebni ne
+osebni številka
+personal code
+personal number
+personal numeric code
+številka državljana
+unique citizen number
+unique id number
+unique identity number
+unique master citizen number
+unique registration number
+uniqueidentityno #
+uniqueidentityno#
 ```
 
 ## <a name="south-africa-identification-number"></a>南アフリカの識別番号
@@ -3941,6 +9080,247 @@ RRN
 주민등록번호
 ```
 
+## <a name="spain-dni"></a>スペインの DNI 
+
+### <a name="format"></a>Format
+
+8 桁の数字の後に 1 文字
+
+### <a name="pattern"></a>Pattern
+
+7 桁の数字の後に 1 文字
+
+- 8 桁の数字
+- 1 つの省略可能なスペースまたはハイフン
+- 1 文字のチェック文字 (大文字と小文字は区別されません)
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_spain_eu_national_id_card"></a>Keywords\_spain\_eu\_national\_id\_card
+```
+carné de identidad
+dni#
+dni
+dninúmero#
+documento nacional de identidad
+identidad único
+identidadúnico#
+insurance number
+national identification number
+national identity
+nationalid#
+nationalidno#
+nie#
+nie
+nienúmero#
+número de identificación
+número nacional identidad
+personal identification number
+personal identity no
+unique identity number
+uniqueid#
+```
+## <a name="spain-drivers-license-number"></a>スペインの運転免許証番号 
+
+### <a name="format"></a>Format
+
+8 桁の数字の後に 1 文字
+
+### <a name="pattern"></a>Pattern
+
+8 桁の数字の後に 1 文字:
+
+- 8 桁の数字
+- 1 桁の数字または文字 (大文字と小文字は区別されません)
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+
+#### <a name="keywords_spain_eu_drivers_license_number"></a>Keywords\_spain\_eu\_driver's\_license\_number
+```
+permiso de conducción
+permiso conducción
+licencia de conducir
+licencia conducir
+permiso conducir
+permiso de conducir
+permisos de conducir
+permisos conducir
+carnet conducir
+carnet de conducir
+licencia de manejo
+licencia manejo
+```
+## <a name="spain-passport-number"></a>スペインのパスポート番号 
+
+### <a name="format"></a>Format
+
+スペースまたは区切り記号がない 8 文字または 9 文字の文字と数字の組み合わせ
+
+### <a name="pattern"></a>Pattern
+
+8 文字または 9 文字の文字と数字の組み合わせ:
+
+- 2 桁の数字または文字
+- 1 桁の数字または文字 (省略可能)
+- 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_spain_eu_passport_number"></a>Keywords\_spain\_eu\_passport\_number
+```
+libreta pasaporte
+número pasaporte
+españa pasaporte
+números de pasaporte
+número de pasaporte
+números pasaporte
+pasaporte no
+Passeport n°
+n° Passeport
+pasaporte no.
+pasaporte n°
+spain passport
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
 ## <a name="spain-social-security-number-ssn"></a>スペインの社会保障番号 (SSN)
 
 この機密情報タイプのエンティティは、EU の社会保障番号または同等の ID の機密情報タイプに含まれており、スタンドアロンの機密情報タイプのエンティティとして使用できます。
@@ -3962,6 +9342,229 @@ RRN
 ### <a name="keywords"></a>キーワード
 
 なし
+
+## <a name="spain-tax-identification-number"></a>スペインの納税者番号 
+
+### <a name="format"></a>Format
+
+指定したパターンの 7 桁または 8 桁の数字と 1 文字または 2 文字
+
+### <a name="pattern"></a>Pattern
+
+スペインの国民 ID カードを持つスペインの自然人:
+
+- 8 桁の数字
+- 1 つの大文字 (大文字と小文字が区別されます)
+
+スペインの国民 ID カードのない非居住スペイン人
+
+- 1 つの大文字 "L" (大文字と小文字が区別されます)
+- 7 桁の数字
+- 1 つの大文字 (大文字と小文字が区別されます)
+
+スペインの国民 ID カードのない 14 歳以下の居住スペイン人:
+
+- 1 つの大文字 "K" (大文字と小文字が区別されます)
+- 7 桁の数字
+- 1 つの大文字 (大文字と小文字が区別されます)
+
+外国人の識別番号を持つ外国人
+
+- "X"、"Y"、または "Z" の 1 つの大文字 (大文字と小文字が区別されます)
+- 7 桁の数字
+- 1 つの大文字 (大文字と小文字が区別されます)
+
+外国人の識別番号を持たない外国人
+
+- "M" の 1 つの大文字 (大文字と小文字が区別されます)
+- 7 桁の数字
+- 1 つの大文字 (大文字と小文字が区別されます)
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_spain_eu_tax_file_number"></a>Keywords\_spain\_eu\_tax\_file\_number
+```
+cif
+cifid#
+cifnúmero#
+número de contribuyente
+número de identificación fiscal
+número de impuesto corporativo
+spanishcifid#
+spanishcifid
+spanishcifno#
+spanishcifno
+tax file no
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="sweden-drivers-license-number"></a>スウェーデンの運転免許証番号
+
+### <a name="format"></a>Format
+
+1 つのハイフンが含まれた 10 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+1 つのハイフンが含まれた 10 桁の数字:
+
+- 6 桁の数字
+- 1 つのハイフン
+- 4 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+
+#### <a name="keywords_sweden_eu_drivers_license_number"></a>Keywords\_sweden\_eu\_driver's\_license\_number
+```
+ajokortti
+permis de conducere
+ajokortin numero
+kuljettajat lic.
+drivere lic.
+körkort
+numărul permisului de conducere
+שאָפער דערלויבעניש נומער
+förare lic.
+דריווערס דערלויבעניש
+körkortsnummer
+```
 
 ## <a name="sweden-national-id"></a>スウェーデンの国民 ID
 
@@ -4052,6 +9655,52 @@ PasseportNon
 Passeportn °
 ```
 
+## <a name="sweden-tax-identification-number"></a>スウェーデンの納税者番号
+
+### <a name="format"></a>Format
+
+指定したパターンの 10 桁の数字と記号
+
+### <a name="pattern"></a>Pattern
+
+10 桁の数字と記号:
+
+- 生年月日 (DDMMYY) に対応する 6 桁の数字
+- プラス記号またはマイナス記号
+- 識別番号を一意にする 3 桁の数字:
+- 1990 年より前に発行された番号の場合、7 番目と 8 番目の数字は出生地または外国生まれの人を識別します
+- 9 番目の位置の数字は、男性の場合は奇数または女性の場合は偶数で性別を示します
+- 1 桁のチェック ディジット
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keywords_sweden_eu_tax_file_number"></a>Keywords\_sweden\_eu\_tax\_file\_number
+```
+personal id number
+personnummer
+skatt id nummer
+skatt identifikation
+skattebetalarens identifikationsnummer
+sverige tin
+tax file
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+
 ## <a name="swift-code"></a>SWIFT コード
 
 ### <a name="format"></a>Format
@@ -4094,7 +9743,7 @@ code SWIFT
 le numéro de swift
 swift numéro d'acheminement
 le numéro BIC
-#BIC
+\#BIC
 code identificateur de banque
 SWIFTコード
 SWIFT番号
@@ -4107,6 +9756,48 @@ BIC コード
 金融機関識別コード
 金融機関コード
 銀行コード
+```
+
+## <a name="switzerland-ssn-ahv-number"></a>スイスの SSN AHV 番号
+
+### <a name="format"></a>Format
+
+13 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+13 桁の数字:
+
+- 3 桁の数字 - 756
+- 省略可能なドット
+- 4 桁の数字
+- 省略可能なドット
+- 4 桁の数字
+- 省略可能なドット
+- 2 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_swiss_ssn_ahv_number"></a>Keyword\_swiss\_ssn\_AHV\_number
+```
+ahv
+ssn
+pid
+insurance number
+personalidno#
+social security number
+personal id number
+personal identification no.
+insuranceno#
+uniqueidno#
+unique identification no.
+avs number
+personal identity no versicherungsnummer
+identifikationsnummer
+einzigartige identität nicht
+sozialversicherungsnummer
+identification personnelle id
+numéro de sécurité sociale
 ```
 
 ## <a name="taiwan-national-identification-number"></a>台湾の国民識別番号
@@ -4410,6 +10101,50 @@ tin no
 tin#
 ```
 
+## <a name="ukraine-passport-domestic"></a>ウクライナのパスポート (国内)
+
+### <a name="format"></a>Format
+
+9 桁の数字
+
+### <a name="pattern"></a>Pattern
+
+9 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_ukraine_passport_domestic"></a>Keyword\_ukraine\_passport\_domestic
+```
+ukraine passport
+passport number
+passport no
+паспорт України
+номер паспорта
+персональний
+```
+## <a name="ukraine-passport-international"></a>ウクライナのパスポート (海外)
+
+### <a name="format"></a>Format
+
+8 文字の英数字パターン
+
+#### <a name="pattern"></a>Pattern
+
+8 文字の英数字パターン:
+
+- 2 桁の文字または数字
+- 6 桁の数字
+
+### <a name="keywords"></a>キーワード
+
+#### <a name="keyword_ukraine_passport_international"></a>Keyword\_ukraine\_passport\_international
+```
+ukraine passport
+passport number
+passport no
+паспорт України
+номер паспорта
+```
 ## <a name="us-bank-account-number"></a>米国の銀行口座番号
 
 ### <a name="format"></a>Format
@@ -4625,7 +10360,7 @@ individual taxpayer
 
 9 桁の数字 (書式設定されたパターンまたは書式設定されていないパターン)
 
->[!Note]
+> [!Note]
 > 2011 年中頃までに発行された SSN には、有効になるには数値の特定の部分が特定の範囲内である必要がある厳密な書式設定があります (ただし、チェックサムはありません)。
 >
 

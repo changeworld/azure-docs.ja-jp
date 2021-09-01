@@ -4,16 +4,18 @@ description: Azure portal を使用して、Azure Blockchain Service 用のブ�
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b80bbc1b302579f0145e7b5cb6c5e3e0561d2ef7
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85200683"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122652800"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portal を使用してブロックチェーン データ マネージャーを構成する
 
 ブロックチェーン データをキャプチャして Azure Event Grid トピックに送信するように、Azure Blockchain Service のブロックチェーン データ マネージャーを構成します。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 ブロックチェーン データ マネージャー インスタンスを構成するには、次のようにします。
 
@@ -40,7 +42,7 @@ Blockchain Data Manager インスタンスは、Azure Blockchain Service トラ�
 
     次の詳細を入力します。
 
-    設定 | 説明
+    設定 | Description
     --------|------------
     名前 | 接続されている Blockchain Data Manager の一意の名前を入力します。 ブロックチェーン データ マネージャー名には小文字と数字を使用でき、最大文字数は 20 文字です。
     トランザクション ノード | トランザクション ノードを選択します。 自分が読み取りアクセスを持っているトランザクション ノードだけが一覧表示されます。
@@ -108,7 +110,7 @@ Blockchain Data Manager では、アプリケーションの追加時に、コ�
 
     ![ストレージ アカウント コンテナーの作成](./media/data-manager-portal/create-container.png)
 
-    | フィールド | 説明 |
+    | フィールド | Description |
     |-------|-------------|
     | 名前  | コンテナーに名前を付けます。 たとえば、*smartcontract* です。 |
     | パブリック アクセス レベル | *[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)* を選択します |
@@ -144,7 +146,7 @@ Blockchain Data Manager では、アプリケーションの追加時に、コ�
 
     ブロックチェーン アプリケーションの名前と、スマート コントラクト ABI およびバイトコードの URL を入力します。
 
-    設定 | 説明
+    設定 | Description
     --------|------------
     名前 | 追跡するブロックチェーン アプリケーションの一意の名前を入力します。
     コントラクト ABI | コントラクト ABI ファイルへの URL パス。 詳細については、「[コントラクト ABI とバイトコード URL の作成](#create-contract-abi-and-bytecode-url)」を参照してください。

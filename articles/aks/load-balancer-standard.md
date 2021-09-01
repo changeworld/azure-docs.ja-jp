@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3f2219f5052aee0c0a9cd43aa87df8789adbcae2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 73c91e1c4d72fce5757b0b1a0caafc22e0fbcc60
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783091"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114230519"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する
 
@@ -127,7 +127,7 @@ AKS によって作成されるパブリック IP は、AKS 管理対象リソ�
 
 - カスタム パブリック IP アドレスは、ユーザーが作成して所有する必要があります。 管理の競合が発生するため、AKS によって作成されるマネージド パブリック IP アドレスを独自のカスタム IP として再使用することはできません。
 - 送信 IP にアクセスするためのアクセス許可が AKS クラスター ID (サービス プリンシパルまたはマネージド ID) に付与されていることを確認する必要があります。 [必要なパブリック IP アクセス許可リストに従って](kubernetes-service-principal.md#networking)します。
-- 送信 IP または送信 IP プレフィックスを構成するために必要な[前提条件と制約](../virtual-network/public-ip-address-prefix.md#constraints)を満たしていることをご確認ください。
+- 送信 IP または送信 IP プレフィックスを構成するために必要な[前提条件と制約](../virtual-network/public-ip-address-prefix.md#limitations)を満たしていることをご確認ください。
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>クラスターを独自の送信パブリック IP で更新する
 
@@ -342,7 +342,7 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 ### <a name="steps"></a>手順
 1. 接続のアイドル状態が長時間続いているかどうか、および既定のアイドル タイムアウトに基づいてそのポートが解放されているかどうかを確認します。 そうである場合は、ご使用のシナリオのタイムアウト値を既定の 30 分より短くする必要があります。
 2. 対象のアプリケーションで送信接続をどのように作成しているかを調査します (たとえば、コード レビューやパケット キャプチャ)。
-3. このアクティビティが予期される動作であるかどうか、またはアプリケーションが誤動作しているかどうかを判断します。 Azure Monitor で[メトリック](../load-balancer/load-balancer-standard-diagnostics.md)と[ログ](../load-balancer/load-balancer-monitor-log.md)を使用して、調査結果を実証します。 たとえば、SNAT 接続メトリックの "失敗" カテゴリを使用します。
+3. このアクティビティが予期される動作であるかどうか、またはアプリケーションが誤動作しているかどうかを判断します。 Azure Monitor で[メトリック](../load-balancer/load-balancer-standard-diagnostics.md)と[ログ](../load-balancer/monitor-load-balancer.md)を使用して、調査結果を実証します。 たとえば、SNAT 接続メトリックの "失敗" カテゴリを使用します。
 4. 適切な[パターン](#design-patterns)に従っているかどうかを評価します。
 5. SNAT ポートの枯渇が、[送信 IP アドレスの追加と割り当て送信ポート数の追加](#configure-the-allocated-outbound-ports)によって軽減されるかどうかを評価します。
 

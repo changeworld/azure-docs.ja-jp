@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
-ms.date: 05/24/2021
-ms.openlocfilehash: 35822fb47add5c355ad9461b09e8e910f0a5a1fd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 07/16/2021
+ms.openlocfilehash: d53ebd32c870ce8ec26bca7bcb811fbdd45c58b2
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480376"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114392376"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -17,6 +17,34 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - 最新のリリース
 - 既知の問題
 - バグの修正
+
+## <a name="july-2021"></a>2021 年 7 月
+
+バージョン 1.8
+
+### <a name="new-features"></a>新機能
+
+- Red Hat および CentOS システムに Azure Monitor Agent 拡張機能をインストールする際の信頼性が向上しました
+- リソース名の最大長 (54 文字) をエージェント側で強制する機能を追加しました
+- ゲスト構成ポリシーの機能強化:
+  - Linux オペレーティング システム上で PowerShell ベースのゲスト構成ポリシーのサポートを追加しました
+  - 同一サーバー上で同じゲスト構成ポリシーを複数回割り当てることができるようになりました
+  - Windows オペレーティング システム上の PowerShell Core をバージョン 7.1 にアップグレードしました
+
+### <a name="fixed"></a>固定
+
+- Windows アプリケーションのイベント ログにサービスの開始または停止イベントを書き込むことができない場合、エージェントの実行が継続されるようになります。
+
+## <a name="june-2021"></a>2021 年 6 月
+
+バージョン 1.7
+
+### <a name="new-features"></a>新機能
+
+- オンボード時の信頼性が向上しました。
+  - HIMDS を使用できない場合の再試行ロジックが向上しました
+  - OS 情報を取得できない場合、オンボードを中断せずに継続するようになります
+- Red Hat および CentOS システムに OMS エージェント拡張機能をインストールする際の信頼性が向上しました
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -35,22 +63,23 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 
 バージョン 1.5
 
-### <a name="new-feature"></a>新機能
+### <a name="new-features"></a>新機能
 
 - Red Hat Enterprise Linux 8 および CentOS Linux 8 のサポートが追加されました。
 - エラーおよび詳細出力を stderr に送る新しい `-useStderr` パラメーター。
 - 出力結果を JSON 形式 (-useStderr と共に使用するとき) で送る新しい `-json` パラメーター。
-- 他のインスタンス メタデータとして製造元、モデル、SQL Server がインストールされているかどうか (ブール値)、クラスター リソース ID (Azure Stack HCI ノードの場合) を収集します。
+- 他のインスタンス メタデータとして製造元、モデル、クラスター リソース ID (Azure Stack HCI ノードの場合) を収集します。
  
 ## <a name="march-2021"></a>2021 年 3 月
 
 バージョン 1.4
 
-### <a name="new-feature"></a>新機能
+### <a name="new-features"></a>新機能
 
 - 現在限定プレビュー段階にあるプライベート エンドポイントのサポートを追加しました。
 - azcmagent 用の終了コードの詳細な一覧。
 - エージェントの構成パラメーターを、`--config` パラメーターを使用してファイルから読み取れるようになりました。
+- Microsoft SQL Server がサーバーにインストールされているかどうかを判断できる新しいインスタンスのメタデータを収集します
 
 ### <a name="fixed"></a>固定
 
@@ -60,7 +89,7 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 
 バージョン:1.3
 
-### <a name="new-feature"></a>新機能
+### <a name="new-features"></a>新機能
 
 Windows Server 2008 R2 SP1 のサポートを追加。
 
@@ -98,7 +127,7 @@ Version: 1.1
 - Connected Machine エージェントが Azure でホストされている仮想マシンにインストールされている場合は、Arc 対応サーバーのリソースから VM 拡張機能をインストールまたは変更できません。 これは、仮想マシンの **Microsoft.Compute** および **Microsoft.HybridCompute** リソースから競合する拡張機能の操作が実行されることを回避するためです。 マシンの **Microsoft.Compute** リソースをすべての拡張機能の操作に使用します。
 - ゲスト構成プロセスの名前が Linux では *gcd* から *gcad* に、Windows では *gcarcservice* から *gcservice* に変更されました。
 
-### <a name="new-feature"></a>新機能
+### <a name="new-features"></a>新機能
 
 - サポートに関する情報を収集する `azcmagent logs` オプションが追加されました。
 - EULA を表示する `azcmagent license` オプションが追加されました。
@@ -129,4 +158,6 @@ Version: 1.1
 
 ## <a name="next-steps"></a>次のステップ
 
-複数のハイブリッド マシン間で Arc 対応サーバーを評価または有効化する前に、[Connected Machine エージェントの概要](agent-overview.md)を確認し、要件、エージェントに関する技術的な詳細、およびデプロイ方法を把握してください。
+- 複数のハイブリッド マシンにまたがって Arc 対応サーバーを評価するか、または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)を確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
+
+- [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。

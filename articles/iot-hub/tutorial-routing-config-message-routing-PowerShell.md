@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 10a7a3435dcc31c6694b7b88316bb59c1c2e45cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 39d14187c2a6acb9731b8f3c477685d2635c2607
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727773"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830799"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure PowerShell を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -73,11 +73,10 @@ New-AzIotHub -ResourceGroupName $resourceGroup `
     -Location $location `
     -Units 1 
 
-# Add a consumer group to the IoT hub for the 'events' endpoint.
+# Add a consumer group to the IoT hub.
 Add-AzIotHubEventHubConsumerGroup -ResourceGroupName $resourceGroup `
   -Name $iotHubName `
-  -EventHubConsumerGroupName $iotHubConsumerGroup `
-  -EventHubEndpointName "events"
+  -EventHubConsumerGroupName $iotHubConsumerGroup
 
 # The storage account name must be globally unique, so add a random value to the end.
 $storageAccountName = "contosostorage" + $randomValue
@@ -249,7 +248,24 @@ $endpointType = "servicebusqueue"
 $routeName = "ContosoSBQueueRoute"
 $condition = 'level="critical"'
 
-# Add the routing endpoint, using the connection string property from the key.
+# If this script fails on the next statement (Add-AzIotHubRoutingEndpoint),
+# put the pause in and run it again. Note that if you're running it
+# interactively, you can just stop it and then run the rest, because
+# you have already set the variables before you get to this point.
+#
+# Pause for 90 seconds to allow previous steps to complete.
+# Then report it to the IoT team here: 
+# https://github.com/Azure/azure-powershell/issues
+#   pause for 90 seconds and then start again. 
+# This way, it if didn't get to finish before it tried to move on, 
+#   now it will have time to finish. 
+## Start-Sleep -Seconds 90
+
+# This command is the one that sometimes doesn't work. It's as if it doesn't have time to
+#   finish before it moves to the next line.
+# The error from Add-AzIotHubRoutingEndpoint is "Operation returned an invalid status code 'BadRequest'".
+# This command adds the routing endpoint, using the connection string property from the key. 
+# This will definitely work if you execute the Sleep command first (it's in the line above).
 Add-AzIotHubRoutingEndpoint `
   -ResourceGroupName $resourceGroup `
   -Name $iotHubName `

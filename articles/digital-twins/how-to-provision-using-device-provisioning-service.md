@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d33dbacc6ea7e0d363c1b2f803f08f4ee1e211a3
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: c611194819255b4d986f4cfa57d15a2e0d73cd42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615952"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739378"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Device Provisioning Service (DPS) を使用して Azure Digital Twins でデバイスを自動管理する
 
@@ -25,9 +25,9 @@ ms.locfileid: "110615952"
 ## <a name="prerequisites"></a>前提条件
 
 プロビジョニングを設定する前に、次の設定を行う必要があります。
-* **Azure Digital Twins インスタンス**。  [「ハウツー: インスタンスと認証を設定する」](how-to-set-up-instance-portal.md) の手順に従って、Azure デジタル ツイン インスタンスを作成します。 Azure portal ([手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) でインスタンスの **_ホスト名_** を収集します。
+* **Azure Digital Twins インスタンス**。 [インスタンスと認証の設定](how-to-set-up-instance-portal.md)に関する記事の手順に従って、Azure Digital Twins のインスタンスを作成します。 Azure portal ([手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) でインスタンスの **_ホスト名_** を収集します。
 * **IoT ハブ** です。 手順については、「[IoT Hub のクイックスタート](../iot-hub/quickstart-send-telemetry-cli.md)」の「IoT Hub の作成」セクションを参照してください。
-* IoT Hub のデータに基づいてデジタル ツイン情報を更新する [Azure 関数](../azure-functions/functions-overview.md)。  [「ハウツー: IoT ハブ データを取り込み、この Azure 関数を作成する」](how-to-ingest-iot-hub-data.md) の手順に従います。 この記事で使用する関数 **_名_** を収集します。
+* IoT Hub のデータに基づいてデジタル ツイン情報を更新する [Azure 関数](../azure-functions/functions-overview.md)。 [IoT ハブ データの取り込み](how-to-ingest-iot-hub-data.md)に関する記事の手順に従って、この Azure 関数を作成します。 この記事で使用する関数 **_名_** を収集します。
 
 このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含む **デバイス シミュレーター** も使用します。 デバイス シミュレーターは次の場所にあります: [Azure Digital Twins と IoT Hub の統合のサンプル](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 サンプルのリンクに移動し、タイトルの下にある **[Browse Code]\(コードの参照\)** ボタンを選択して、お使いのマシン上でサンプル プロジェクトを取得します。 これにより、サンプル用の GitHub リポジトリに移動します。 **[Code]\(コード\)** ボタンと、 **[Download ZIP]\(ZIP のダウンロード\)** を選択することによって、.ZIP ファイルとしてダウンロードできます。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "110615952"
 
 デバイス プロビジョニング サービスを使用して新しいデバイスをプロビジョニングすると、登録 ID と同じ名前でそのデバイスの新しいツインがAzure Digital Twins 内に作成されます。
 
-Device Provisioning Service のインスタンスを作成します。これが IoT デバイスのプロビジョニングに使用されます。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[クイック スタート:Azure portal で IoT Hub Device Provisioning Service を設定する](../iot-dps/quick-setup-auto-provision.md)」。
+Device Provisioning Service のインスタンスを作成します。これが IoT デバイスのプロビジョニングに使用されます。 以下の Azure CLI の手順を使用するか、「[Azure Portal で IoT Hub Device Provisioning Service を設定する](../iot-dps/quick-setup-auto-provision.md)」に従って Azure portal を使用することができます。
 
 次の Azure CLI コマンドを実行すると、デバイス プロビジョニング サービスが作成されます。 デバイスプロビジョニングサービスの名前、リソースグループ、およびリージョンを指定する必要があります。 デバイス プロビジョニング サービスがサポートされているリージョンを確認するには、「[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)」ページを参照してください。
 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、[Azure CLI がマシンにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
@@ -87,25 +87,18 @@ az iot dps create --name <Device-Provisioning-Service-name> --resource-group <re
 
 まず、コンピューター上の Visual Studio で 関数アプリのプロジェクトを開き、次の手順に従います。
 
-#### <a name="step-1-add-a-new-function"></a>ステップ1: 新しい関数を追加する 
+1. 最初に、Visual Studio の関数アプリ プロジェクトに、種類が "*HTTP トリガー*" の新しい関数を作成します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)」を参照してください。
 
-Visual Studio の関数アプリ プロジェクトに、種類が *HTTP トリガー* の新しい関数を追加します。
+2. 新しい NuGet パッケージをプロジェクトに追加します: [Microsoft.Azure.Devices.Provisioning.Servic](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)。 コード内で使用されているパッケージが既にプロジェクトに含まれていない場合は、さらにパッケージをプロジェクトに追加することが必要になる場合があります。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-http-trigger-function-visual-studio.png" alt-text="関数アプリ プロジェクトに Http トリガー型の Azure 関数を追加する Visual Studio ビューのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/add-http-trigger-function-visual-studio.png":::
+3. 新しく作成された関数コード ファイルで、次のコードnい貼り付けて、関数の名前を *DpsAdtAllocationFunc.cs* に変更し、ファイルを保存します。
 
-#### <a name="step-2-fill-in-function-code"></a>手順 2: 関数コードを入力する
+    :::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
 
-新しい NuGet パッケージをプロジェクトに追加します: [Microsoft.Azure.Devices.Provisioning.Servic](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)。 コード内で使用されているパッケージが既にプロジェクトに含まれていない場合は、さらにパッケージをプロジェクトに追加することが必要になる場合があります。
+4. *DpsAdtAllocationFunc.cs* 関数が含まれるプロジェクトを Azure の関数アプリに発行します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#publish-to-azure)」を参照してください。
 
-新しく作成された関数コード ファイルで、次のコードnい貼り付けて、関数の名前を *DpsAdtAllocationFunc.cs* に変更し、ファイルを保存します。
-
-:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
-
-#### <a name="step-3-publish-the-function-app-to-azure"></a>手順 3: 関数アプリを Azure に発行する
-
-*DpsAdtAllocationFunc.cs* 関数を使用してプロジェクトを Azure の関数アプリに発行します。
-
-[!INCLUDE [digital-twins-publish-and-configure-function-app.md](../../includes/digital-twins-publish-and-configure-function-app.md)]
+> [!IMPORTANT]
+> 「[前提条件](#prerequisites)」セクションで関数アプリを初めて作成する場合、その関数のアクセス ロールが既に割り当てられていて、Azure Digital Twins インスタンスにアクセスするためのアプリケーション設定が構成されている可能性があります。 これらは、関数アプリ全体に対して 1 回実行する必要があるため、続行する前にアプリで完了したことを確認してください。 手順については、"*アプリ認証コードの記述*" に関する記事の「[発行されたアプリを構成する](how-to-authenticate-client.md#configure-published-app)」セクションを参照してください。
 
 ### <a name="create-device-provisioning-enrollment"></a>デバイス プロビジョニング登録の作成
 
@@ -138,7 +131,7 @@ Visual Studio の関数アプリ プロジェクトに、種類が *HTTP トリ�
 
 [!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 
-モデルの詳細については、「[ハウツー: モデルを管理する](how-to-manage-model.md#upload-models)」を参照してください。
+モデルの詳細については、[モデルの管理](how-to-manage-model.md#upload-models)に関する記事を参照してください。
 
 #### <a name="configure-and-run-the-simulator"></a>シミュレーターを構成して実行する
 
@@ -237,7 +230,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 2. 次の Azure CLI コマンドを使用して、関数アプリの設定に変数として接続文字列を追加します。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、[Azure CLI がマシンにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
 
     ```azurecli-interactive
-    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event-Hubs-SAS-connection-string-Listen>" --resource-group <resource-group> --name <your-App-Service-function-app-name>
+    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event-Hubs-SAS-connection-string-Listen>" --resource-group <resource-group> --name <your-function-app-name>
     ```
 
 ### <a name="add-a-function-to-retire-with-iot-hub-lifecycle-events"></a>IoT Hub ライフサイクル イベントを使用してインベントリから削除する関数を追加する
@@ -248,23 +241,18 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 
 まず、コンピューター上の Visual Studio で 関数アプリのプロジェクトを開き、次の手順に従います。
 
-#### <a name="step-1-add-a-new-function"></a>ステップ1: 新しい関数を追加する
-     
-Visual Studio の関数アプリ プロジェクトに、*イベント ハブ トリガー* 型の新しい関数を追加します。
+1. 最初に、Visual Studio の関数アプリ プロジェクトに、種類が "*イベント ハブ トリガー*" の新しい関数を作成します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)」を参照してください。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png" alt-text="関数アプリ プロジェクトにイベント ハブ トリガー型の Azure 関数を追加する方法が示されている Visual Studio ウィンドウのスクリーンショット。" lightbox="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png":::
+2. 新しい NuGet パッケージをプロジェクトに追加します: [Microsoft.Azure.Devices.Provisioning.Servic](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)。 コード内で使用されているパッケージが既にプロジェクトに含まれていない場合は、さらにパッケージをプロジェクトに追加することが必要になる場合があります。
 
-#### <a name="step-2-fill-in-function-code"></a>手順 2: 関数コードを入力する
+3. 新しく作成された関数コード ファイルに次のコードを貼り付けて、関数の名前を *DeleteDeviceInTwinFunc.cs* に変更し、ファイルを保存します。
 
-新しく作成された関数コード ファイルで、次のコードnい貼り付けて、関数の名前を `DeleteDeviceInTwinFunc.cs` に変更し、ファイルを保存します。
+    :::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
 
-:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
+4. *DeleteDeviceInTwinFunc.cs* 関数が含まれるプロジェクトを Azure の関数アプリに発行します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#publish-to-azure)」を参照してください。
 
-#### <a name="step-3-publish-the-function-app-to-azure"></a>手順 3: 関数アプリを Azure に発行する
-
-*DeleteDeviceInTwinFunc.cs* 関数を使用してプロジェクトを Azure の関数アプリに発行します。
-
-[!INCLUDE [digital-twins-publish-and-configure-function-app.md](../../includes/digital-twins-publish-and-configure-function-app.md)]
+> [!IMPORTANT]
+> 「[前提条件](#prerequisites)」セクションで関数アプリを初めて作成する場合、その関数のアクセス ロールが既に割り当てられていて、Azure Digital Twins インスタンスにアクセスするためのアプリケーション設定が構成されている可能性があります。 これらは、関数アプリ全体に対して 1 回実行する必要があるため、続行する前にアプリで完了したことを確認してください。 手順については、"*アプリ認証コードの記述*" に関する記事の「[発行されたアプリを構成する](how-to-authenticate-client.md#configure-published-app)」セクションを参照してください。
 
 ### <a name="create-an-iot-hub-route-for-lifecycle-events"></a>ライフサイクル イベントの IoT Hub ルートの作成
 
@@ -349,7 +337,7 @@ az group delete --name <your-resource-group>
 
 デバイスに対して作成したデジタル ツインは、Azure Digital Twins にフラット階層として格納されますが、モデル情報と組織の複数レベルの階層を使用して強化することができます。 この概念の詳細については、以下を参照してください。
 
-* [概念:デジタル ツインとツイン グラフ](concepts-twins-graph.md)
+* [デジタル ツインとツイン グラフ](concepts-twins-graph.md)
 
 Azure 関数で HTTP 要求を使用する方法の詳細については次を参照してください。
 
@@ -357,5 +345,5 @@ Azure 関数で HTTP 要求を使用する方法の詳細については次を�
 
 Azure Digital Twins に既に格納されているモデルとグラフ データを使用して、この情報を自動的に提供するカスタム ロジックを作成できます。 ツイン グラフの情報の管理、アップグレード、および取得の詳細については、以下を参照してください。
 
-* [方法: デジタル ツインを管理する](how-to-manage-twin.md)
-* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)
+* [デジタル ツインを管理する](how-to-manage-twin.md)
+* [ツイン グラフにクエリを実行する](how-to-query-graph.md)

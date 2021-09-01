@@ -2,19 +2,19 @@
 title: クライアントとサーバーのアーキテクチャ
 titleSuffix: An Azure Communication Services concept document
 description: Communication Services のアーキテクチャについて説明します。
-author: mikben
+author: probableprime
 manager: mikben
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: a278a83f0a498baef991f75d4dd77a572c4c2470
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 75ab8032d197b00516578f1e0a92f29122126249
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114288395"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966624"
 ---
 # <a name="client-and-server-architecture"></a>クライアントとサーバーのアーキテクチャ
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2dc6d99b8b1c913479fc584b52f6ff919dfac675
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b2c4a56be15aa8a331224958329ba263bc9a8426
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792293"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205083"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Azure CLI を使用して、Shared Image Gallery 内のマネージド ディスクまたはスナップショットからイメージを作成する
 
@@ -92,6 +92,9 @@ az sig image-definition create \
    --os-state specialized
 ```
 
+> [!NOTE]
+> サードパーティ イメージに由来するイメージを含むイメージ定義の場合、プラン情報は、サードパーティ イメージのプラン情報と正確に一致している必要があります。 イメージ定義にプラン情報を含めるには、イメージ定義を作成するときに、`--plan-name`、`--plan-product`、および `--plan-publisher` を追加します。
+>
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 

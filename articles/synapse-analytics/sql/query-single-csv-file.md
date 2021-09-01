@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8400713ea04c3f26d18fc032b5b0d0f3b8c65068
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 6744970ec7aadfc4a9cb967c479307b441f4fb1b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061922"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453053"
 ---
 # <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
@@ -175,25 +175,15 @@ WHERE
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'csv/population-unix-hdr/population.csv',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT = 'CSV', PARSER_VERSION = '2.0',
-        FIELDTERMINATOR =',',
-        FIRSTROW = 2,
-        HEADER_ROW = TRUE
-    )
-    WITH (
-        [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
-        [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
-        [year] smallint,
-        [population] bigint
+    BULK 'csv/population-unix-hdr/population.csv',
+    DATA_SOURCE = 'SqlOnDemandDemo',
+    FORMAT = 'CSV', PARSER_VERSION = '2.0',
+    FIELDTERMINATOR =',',
+    HEADER_ROW = TRUE
     ) AS [r]
-WHERE
-    country_name = 'Luxembourg'
-    AND year = 2017;
 ```
 
-オプション `HEADER_ROW = { TRUE | FALSE }` を使用すると、CSV ファイルの最初の行がヘッダー行として読み取られ、その値が既定の名前 (C1、C2 など) の代わりに列名として表示されます。
+オプション `HEADER_ROW = TRUE` を指定すると、ファイル内のヘッダー行から列名が読み取られます。 これは、ファイルの内容に詳しくない場合の探索目的に最適です。 最高のパフォーマンスについては、[ベスト プラクティスの「適切なデータ型を使用する」セクション](best-practices-serverless-sql-pool.md#use-appropriate-data-types)を参照してください。 さらに、[こちらで OPENROWSET 構文](develop-openrowset.md#syntax)に関する詳細も参照できます。
 
 ## <a name="custom-quote-character"></a>カスタム引用符文字
 

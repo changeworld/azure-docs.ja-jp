@@ -2,14 +2,14 @@
 title: コンテナー ワークロード
 description: Azure Batch でコンテナー イメージからアプリを実行し、スケーリングする方法について説明します。 コンテナー タスクの実行をサポートするコンピューティング ノードのプールを作成します。
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 08/13/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c753a6ca0566b666eb343b922bd2ea673e56d9ee
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91843449"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181500"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
@@ -32,14 +32,13 @@ Azure Batch を使用すると、Azure で大量のバッチ コンピューテ�
   - Batch Java SDK バージョン 3.0
   - Batch Node.js SDK バージョン 3.0
 
-- **アカウント**: ご使用の Azure サブスクリプションで、Batch アカウントを作成する必要があります。また、必要に応じて、Azure Storage アカウントを作成します。
+- **アカウント**: ご使用の Azure サブスクリプションで、[Batch アカウント](accounts.md)を作成する必要があります。また、必要に応じて、Azure Storage アカウントを作成します。
 
-- **サポートされている VM イメージ**: コンテナーは、以下の「サポートされている仮想マシン イメージ」セクションで説明するイメージの仮想マシン構成で作成されたプールでのみサポートされます。 カスタム イメージを提供する場合は、次のセクションの注意点と「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の要件を参照してください。
+- **サポートされている VM イメージ**: コンテナーは、サポートされているイメージ (次のセクションに示す) から仮想マシン構成を使用して作成されたプールでのみサポートされます。 カスタム イメージを提供する場合は、次のセクションの注意点と「[マネージ カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の要件を参照してください。
 
 次の制限事項にご注意ください。
 
 - Batch では、Linux プールで実行されているコンテナーに対してのみ、RDMA サポートが提供されます。
-
 - Windows コンテナー ワークロードの場合は、プールにマルチコア VM サイズを選択することをお勧めします。
 
 ## <a name="supported-virtual-machine-images"></a>サポートされている仮想マシン イメージ
@@ -71,10 +70,8 @@ Linux コンテナー ワークロードの場合、現在、Batch は、Azure M
 これらのイメージは、Azure Batch プールでの使用のみがサポートされており、Docker コンテナーの実行に適しています。 これらには以下が装備されています。
 
 - プレインストールされた Docker 互換の [Moby](https://github.com/moby/moby) コンテナー ランタイム
-
 - Azure N シリーズ VM へのデプロイを効率化するためにプレインストールされた NVIDIA GPU ドライバーと NVIDIA コンテナー ランタイム
-
-- `-rdma` のサフィックスが付いたイメージの Infiniband RDMA VM サイズをサポートする、プレインストールされ、事前に構成されたイメージ。 現時点では、これらのイメージは SR-IOV IB/RDMA VM サイズをサポートしていません。
+- '-rdma' というサフィックスが付いた VM イメージは、InfiniBand RDMA VM サイズをサポートするように事前構成されています。 これらの VM イメージは、InfiniBand をサポートしていない VM サイズでは使用しないでください。
 
 Docker を実行している VM から、Batch と互換性のある Linux ディストリビューションのいずれかでカスタム イメージを作成することもできます。 独自のカスタム Linux イメージを提供する場合は、「[マネージド カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の手順を参照してください。
 
@@ -83,7 +80,6 @@ Docker を実行している VM から、Batch と互換性のある Linux デ�
 カスタム Linux イメージを使用するためのその他の注意点:
 
 - カスタム イメージを使用する場合に Azure N シリーズ サイズの GPU パフォーマンスを活用するには、事前に NVIDIA ドライバーをインストールします。 また、NVIDIA GPU の Docker エンジン ユーティリティ、[NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker) をインストールする必要もあります。
-
 - Azure RDMA ネットワークにアクセスするには、RDMA 対応の VM サイズを使用します。 必要な RDMA ドライバーは、Batch でサポートされている CentOS HPC イメージおよび Ubuntu イメージにインストールされます。 MPI ワークロードを実行するには、追加構成が必要になる可能性があります。 「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](batch-pool-compute-intensive-sizes.md)」を参照してください。
 
 ## <a name="container-configuration-for-batch-pool"></a>Batch プール用のコンテナー構成
@@ -285,7 +281,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 - コンテナー イメージでタスクを実行する場合は、[クラウド タスク](/dotnet/api/microsoft.azure.batch.cloudtask)と[ジョブ マネージャー タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)にコンテナー設定が必要です。 ただし、[開始タスク](/dotnet/api/microsoft.azure.batch.starttask)、[ジョブの準備タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)、および[ジョブの解放タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)にはコンテナー設定は不要です (つまり、コンテナーのコンテキスト内で、またはノード上で直接実行できます)。
 
-- Windows の場合、タスクは [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) を `admin` に設定して実行する必要があります。 
+- Windows の場合、タスクは [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) を `admin` に設定して実行する必要があります。
 
 - Linux の場合、Batch ではユーザーおよびグループの権限がコンテナーにマップされます。 コンテナー内の任意のフォルダーへのアクセスに管理者権限が必要な場合は、管理者の昇格レベルを使用して、プール スコープとしてタスクを実行する必要がある場合があります。 これにより、Batch がコンテナー コンテキストでルートとしてタスクを実行するようになります。 そうしないと、管理者以外のユーザーがこれらのフォルダーにアクセスできない可能性があります。
 

@@ -13,18 +13,20 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c2d081ded07b1d32ee7525855c1756e13dfd57aa
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7ec7213caa3d35fda7c637930e1cb950443a3f55
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277506"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "122652215"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API を使用したフィルターの作成
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、アセットの既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツのアセットフィルターを定義することができます。 
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-concept.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 

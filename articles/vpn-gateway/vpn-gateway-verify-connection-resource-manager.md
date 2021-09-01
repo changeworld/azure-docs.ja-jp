@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3616c425f191c9ff7788cb5f4333fa69d65e5728
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: eaeb77e1dafe7b2791537190d0b4d220363280a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204605"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729472"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>VPN Gateway 接続の確認
 
-この記事では、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方での VPN ゲートウェイ接続を確認する方法について説明します。
+この記事では、クラシック デプロイ モデルと [Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)の両方での VPN ゲートウェイ接続を確認する方法について説明します。
 
 ## <a name="azure-portal"></a>Azure portal
 

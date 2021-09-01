@@ -4,17 +4,17 @@ description: BLOB はアーカイブ アクセス層に含まれていますが�
 services: storage
 author: tamram
 ms.author: tamram
-ms.date: 08/11/2021
+ms.date: 08/24/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 916e51a78cdaef96517ac5b17ba11000367756ad
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 33f29c44e32f1deed0c21e3695e61457a31c7f65
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206369"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829678"
 ---
 # <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>アーカイブ層からの BLOB のリハイドレートの概要
 

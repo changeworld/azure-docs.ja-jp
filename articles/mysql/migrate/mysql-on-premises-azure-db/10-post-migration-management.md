@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 移行後の管理'
+title: 'オンプレミスの MySQL から Azure Database for MySQL への移行: 移行後の管理'
 description: 移行が正常に完了したら、次のフェーズで、新しいクラウドベースのデータ ワークロード リソースを管理します。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 85a30571491f08adee55d2c0f19641eb838b69e8
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: bed5253a1d5948e7d016bca9e46236d6b57bac57
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082907"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292952"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-post-migration-management"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 移行後の管理
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-post-migration-management"></a>オンプレミスの MySQL から Azure Database for MySQL への移行: 移行後の管理
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +30,7 @@ ms.locfileid: "112082907"
 
 Azure Database for MySQL は、[Azure Monitor](../../../azure-monitor/overview.md)、[Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md)、[Azure Sentinel](../../../sentinel/overview.md) などの Azure ベースのツールを使用して、これら両方の種類の操作アクティビティを監視する機能を備えています。 Azure ベースのツールに加え、これらのログを使用するようにセキュリティ情報イベント管理 (SIEM) システムを構成することもできます。
 
-新しいクラウドベース ワークロードの監視にどちらのツールを使用する場合でも、疑わしいアクティビティについて Azure とデータベース管理者に警告するアラートを作成する必要があります。 特定のアラート イベントに明確に定義された修復パスがある場合、アラートによって自動化された [Azure Runbook](/azure/automation/automation-quickstart-create-runbook) を起動し、そのイベントに対処できます。
+新しいクラウドベース ワークロードの監視にどちらのツールを使用する場合でも、疑わしいアクティビティについて Azure とデータベース管理者に警告するアラートを作成する必要があります。 特定のアラート イベントに明確に定義された修復パスがある場合、アラートによって自動化された [Azure Runbook](../../../automation/automation-quickstart-create-runbook.md) を起動し、そのイベントに対処できます。
 
 完全に監視された環境を作成する最初の手順は、MySQL ログ データが Azure Monitor に流れるようにすることです。 詳細については、「[Azure portal での Azure Database for MySQL の監査ログの構成とアクセス](../../howto-configure-audit-logs-portal.md)」を参照してください。
 
@@ -56,11 +58,11 @@ AzureMetrics
 | project TimeGenerated, Total, Maximum, Minimum, TimeGrain, UnitName 
 | top 1 by TimeGenerated
 ```
-KQL クエリを作成したら、これらのクエリに基づいて[ログ アラート](/azure/azure-monitor/platform/alerts-unified-log)を作成します。
+KQL クエリを作成したら、これらのクエリに基づいて[ログ アラート](../../../azure-monitor/alerts/alerts-unified-log.md)を作成します。
 
 ## <a name="server-parameters"></a>サーバー パラメーター
 
-移行の一環として、高速エグレスをサポートするようにオンプレミスの[サーバー パラメーター](/azure/mysql/concepts-server-parameters)が変更されている可能性があります。 また、Azure Database for MySQL パラメーターにも、高速イングレスをサポートするように変更が行われています。 移行後は、Azure サーバー パラメーターを、オンプレミスのワークロード用に最適化された元の値に戻す必要があります。
+移行の一環として、高速エグレスをサポートするようにオンプレミスの[サーバー パラメーター](../../concepts-server-parameters.md)が変更されている可能性があります。 また、Azure Database for MySQL パラメーターにも、高速イングレスをサポートするように変更が行われています。 移行後は、Azure サーバー パラメーターを、オンプレミスのワークロード用に最適化された元の値に戻す必要があります。
 
 ただし、必ず確認し、ワークロードと環境に適したサーバー パラメーターの変更を行ってください。 オンプレミス環境に最適な値の中には、クラウドベースの環境に最適でないものがあります。 さらに、現在のオンプレミスのパラメーターを Azure に移行しようとしている場合は、それらが実際に設定できることを確認してください。
 
@@ -93,16 +95,16 @@ Azure Database for MySQL は PaaS オファリングであるため、管理者�
 > [!NOTE]
 > このスタイルのフェールオーバー アーキテクチャでは、この種のフェールオーバー シナリオをサポートするために、アプリケーション データ レイヤーに対する変更が必要になる場合があります。 読み取りレプリカが読み取りレプリカとして維持され、レベル上げされない場合、アプリケーションはデータの読み取りのみを行うことができ、何らかの操作でデータベースに情報を書き込もうとすると失敗することがあります。
 
-[計画メンテナンス通知](/azure/mysql/concepts-monitoring#planned-maintenance-notification)機能により、更新プログラムまたは重要なセキュリティ パッチのインストールの最大 72 時間前に、リソース所有者に通知されます。 データベース管理者は、計画および計画外のメンテナンスについてアプリケーション ユーザーに通知することが必要になる場合があります。
+[計画メンテナンス通知](../../concepts-monitoring.md#planned-maintenance-notification)機能により、更新プログラムまたは重要なセキュリティ パッチのインストールの最大 72 時間前に、リソース所有者に通知されます。 データベース管理者は、計画および計画外のメンテナンスについてアプリケーション ユーザーに通知することが必要になる場合があります。
 
 > [!NOTE]
 > Azure Database for MySQL のメンテナンス通知は極めて重要です。 データベース メンテナンスにより、データベースおよび接続されているアプリケーションが一定期間停止される可能性があります。
 
 ## <a name="wwi-scenario"></a>WWI のシナリオ
 
-WWI では、Azure アクティビティ ログを利用し、MySQL ログを [Log Analytics ワークスペース](../../../azure-monitor/logs/design-logs-deployment.md)に流すことができるようにしました。 このワークスペースは [Azure Sentinel](../../../sentinel/index.yml) の一部として構成され、すべての[脅威分析](/azure/mysql/concepts-data-access-and-security-threat-protection)イベントを明らかにして、インシデントが作成されるようにします。
+WWI では、Azure アクティビティ ログを利用し、MySQL ログを [Log Analytics ワークスペース](../../../azure-monitor/logs/design-logs-deployment.md)に流すことができるようにしました。 このワークスペースは [Azure Sentinel](../../../sentinel/index.yml) の一部として構成され、すべての[脅威分析](../../concepts-security.md#threat-protection)イベントを明らかにして、インシデントが作成されるようにします。
 
-MySQL DBA は、Azure Database for [MySQL の Azure PowerShell コマンドレット](/azure/mysql/quickstart-create-mysql-server-database-using-azure-powershell)をインストールし、Azure portal に毎回ログオンしなくて済むように、MySQL サーバーの管理を自動化しました。
+MySQL DBA は、Azure Database for [MySQL の Azure PowerShell コマンドレット](../../quickstart-create-mysql-server-database-using-azure-powershell.md)をインストールし、Azure portal に毎回ログオンしなくて済むように、MySQL サーバーの管理を自動化しました。
 
 ## <a name="management-checklist"></a>管理のチェックリスト
 
@@ -114,6 +116,8 @@ MySQL DBA は、Azure Database for [MySQL の Azure PowerShell コマンドレ�
 
   - アップグレードやパッチなどのメンテナンス イベントの通知を設定します。 必要に応じてユーザーに通知します。  
 
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [最適化](./11-optimization.md)
