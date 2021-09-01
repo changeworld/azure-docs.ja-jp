@@ -1,19 +1,21 @@
 ---
 title: Azure Blockchain Service のトランザクション ノードを構成する
 description: Azure Blockchain Service のトランザクション ノードを構成する方法です
-ms.date: 11/20/2019
+ms.date: 05/11/2021
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 0b659fa9f15cd41e9e55de526747d470046cafa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 436c7721bac29e8a18a333e385f12a70e0701ba5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091260"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122651946"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Service のトランザクション ノードを構成する
 
 トランザクション ノードは、パブリック エンドポイントを介して Azure Blockchain Service にブロックチェーン トランザクションを送信するために使用されます。 既定のトランザクション ノードは、ブロックチェーンに登録された Ethereum アカウントの秘密キーを格納しているので、削除することはできません。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 既定のトランザクション ノードの詳細を表示するには:
 
@@ -35,7 +37,7 @@ ms.locfileid: "101091260"
 
     ![トランザクション ノードを追加する](./media/configure-transaction-nodes/add-node.png)
 
-    | 設定 | 説明 |
+    | 設定 | Description |
     |---------|-------------|
     | 名前 | トランザクション ノードの名前。 名前は、トランザクション ノードのエンドポイントの DNS アドレスを作成するために使われます。 たとえば、「 `newnode-myblockchainmember.blockchain.azure.com` 」のように入力します。 作成後にノード名を変更することはできません。 |
     | Password | 強力なパスワードを設定します。 そのパスワードを使って、基本認証でトランザクション ノードのエンドポイントにアクセスします。
@@ -99,7 +101,7 @@ URL を使用するには、\<password\> をノードのプロビジョニング
 
 ### <a name="firewall-rules"></a>ファイアウォール規則
 
-ファイアウォール規則を使用すると、トランザクション ノードに対して認証を試みることができる IP アドレスを制限できます。  トランザクション ノードにファイアウォール規則を構成しないと、すべてのパーティーがアクセスできません。  
+ファイアウォール規則を使用すると、トランザクション ノードに対して認証を試みることができる IP アドレスを制限できます。  トランザクション ノードにファイアウォール規則を構成しないと、すべてのパーティーがアクセスできません。
 
 トランザクション ノードのファイアウォール規則を表示するには、Azure Blockchain Service メンバーのトランザクション ノードの 1 つに移動し、設定の **[ファイアウォール規則]** を選択します。
 

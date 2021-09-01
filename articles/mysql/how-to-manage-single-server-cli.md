@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: 03227f121f58e52d2e9d34613917fda864666ce1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 51e0913404fd0cf853eaeae39a91f648ece17341
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769969"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653321"
 ---
 # <a name="manage-an-azure-database-for-mysql-single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーを管理する
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、Azure でデプロイされた単一サーバーを管理する方法を示します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの詳細の表示が含まれます。
 

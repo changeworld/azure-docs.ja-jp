@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: de7b112540d332216e361d5694f22d21c724ca36
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27d00d137c2fb178b2bd96732664c08965ce3073
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960407"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634496"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>Bicep と Azure PowerShell を使用してリソースをデプロイする
 
@@ -25,7 +25,7 @@ Bicep ファイルをデプロイするには、[Azure PowerShell バージョ�
 Azure PowerShell をインストールし、Azure に接続する必要があります。
 
 - **ローカル コンピューターに Azure PowerShell コマンドレットをインストールします。** 詳細については、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
-- **[Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)** を使用して、Azure に接続します。 Azure サブスクリプションが複数ある場合は、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を実行する必要が生じることもあります。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](/powershell/azure/manage-subscriptions-azureps)」をご覧ください。
+- **[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) を使用して Azure に接続します**。 Azure サブスクリプションが複数ある場合は、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を実行する必要が生じることもあります。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](/powershell/azure/manage-subscriptions-azureps)」をご覧ください。
 
 PowerShell がインストールされていない場合は、Azure Cloud Shell を使用できます。 詳細については、「[Azure Cloud Shell から Bicep ファイルをデプロイする](./deploy-cloud-shell.md)」を参照してください。
 
@@ -50,7 +50,7 @@ PowerShell がインストールされていない場合は、Azure Cloud Shell 
 - **管理グループ** にデプロイするには、[新しい AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)を使用します。
 
   ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-bicep>
+  New-AzManagementGroupDeployment -ManagementGroupId <management-group-id> -Location <location> -TemplateFile <path-to-bicep>
   ```
 
   管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
@@ -75,7 +75,7 @@ PowerShell がインストールされていない場合は、Azure Cloud Shell 
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-ローカルの Bicep ファイルをデプロイするには、デプロイ コマンドで `-TemplateFile` パラメーターを使用します。 次の例では、Bicep ファイルから取得したパラメーター値を設定する方法も示しています。
+ローカルの Bicep ファイルをデプロイするには、デプロイ コマンドで `-TemplateFile` パラメーターを使用します。
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 ### <a name="parameter-files"></a>パラメーター ファイル
 
-スクリプト内のインライン値としてパラメーターを渡すよりも、パラメーター値を含む JSON ファイルを使用するほうが簡単な場合もあります。 パラメーター ファイルは、ローカル ファイルでも、アクセス可能な URI を持つ外部ファイルでもかまいません。Bicep ファイルでは JSON パラメーター ファイルを使用します。
+スクリプト内のインライン値としてパラメーターを渡すよりも、パラメーター値を含む JSON ファイルを使用するほうが簡単な場合もあります。 パラメーター ファイルは、ローカル ファイルでも、アクセス可能な URI を持つ外部ファイルでもかまいません。 Bicep ファイルでは、JSON パラメーターファイルを使用します。
 
 パラメーター ファイルの詳細については、「[Resource Manager パラメーター ファイルを作成する](./parameter-files.md)」を参照してください。
 
@@ -157,7 +157,7 @@ Bicep ファイルをデプロイする前に、Bicep ファイルが環境に�
 
 ## <a name="deploy-template-specs"></a>テンプレート スペックをデプロイする
 
-現在、Azure PowerShell では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。こちらに[例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)があります。 また、Bicep CLI を使用して Bicep ファイルを ARM テンプレート JSON に組み込み、JSON テンプレートを使用してテンプレート スペックを作成することもできます。
+現在、Azure PowerShell では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。こちらに[例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep)があります。 また、Bicep CLI を使用して Bicep ファイルを ARM テンプレート JSON に組み込み、JSON テンプレートを使用してテンプレート スペックを作成することもできます。
 
 ## <a name="deployment-name"></a>デプロイ名
 
@@ -190,5 +190,5 @@ $deploymentName="ExampleDeployment"+"$today"
 ## <a name="next-steps"></a>次のステップ
 
 - エラーが発生したときに正常なデプロイにロールバックするには、「[エラー発生時に正常なデプロイにロールバックする](../templates/rollback-on-error.md)」を参照してください。
-- テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](../templates/syntax.md)」を参照してください。
+- ファイルでパラメーターを定義する方法については、「[Bicep ファイルの構造と構文について](file.md)」を参照してください。
 - SAS トークンを必要とするテンプレートをデプロイする方法については、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](../templates/secure-template-with-sas-token.md)」を参照してください。

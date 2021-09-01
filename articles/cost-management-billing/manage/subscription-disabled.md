@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 07/15/2021
 ms.author: banders
-ms.openlocfilehash: aad194babdf539584f3e349e8050105ed801bbf0
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 1e669a794abe848d326a6d08156621dcf3883ec5
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331738"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292232"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>無効な Azure サブスクリプションを再度有効にする
 
@@ -60,6 +60,10 @@ Azure の課金アクティビティの監視および管理については、�
 ## <a name="after-reactivation"></a>再度有効にした後
 
 サブスクリプションを再度有効にした後、リソースの作成または管理に遅延が発生する可能性があります。 遅延が 30 分を超えた場合は、[Azure の課金サポート](https://go.microsoft.com/fwlink/?linkid=2083458)にお問い合わせください。 ほとんどの Azure リソースは自動的に再開され、対処は必要ありません。 しかし、Azure サービス リソースを確認し、自動的に再開されていないものは再起動することをお勧めします。
+
+## <a name="upgrade-a-disabled-free-account"></a>無効になった無料アカウントをアップグレードする
+
+無料ではないリソースを使用していて、クレジットを使い果たしたために、サブスクリプションが無効になり、その後サブスクリプションをアップグレードした場合、アップグレード後にリソースが有効になります。 この状況により、使用されたリソースに対して課金されます。 無料アカウントのアップグレードの詳細については、「[Azure アカウントをアップグレードする](upgrade-azure-subscription.md)」を参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/02/2021
-ms.openlocfilehash: 0560c7e1f8770dd27d8ad462d10a2668d69d5865
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ab1be78570ef784da6a51eb27d9d18d5c902f092
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559250"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221649"
 ---
 # <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>チュートリアル:デバッグ セッションを使用してスキルセットをデバッグする
 
@@ -39,7 +39,7 @@ Azure portal の **デバッグ セッション** には、スキルセットの
 
 + REST API を使用してオブジェクトを作成するための [Postman デスクトップ アプリ](https://www.getpostman.com/)と [Postman コレクション](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions)。
 
-+ [サンプル データ (臨床試験)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19)。
++ [サンプル データ (臨床試験)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-pdf-19)。
 
 > [!NOTE]
 > また、このクイックスタートでは [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 ワークロードは非常に小さいので、最大 20 トランザクションの処理を無料で使用するために Cognitive Services を内部で利用しています。 つまり、追加の Cognitive Services リソースを作成しなくても、この演習を完了できるということです。
@@ -48,7 +48,7 @@ Azure portal の **デバッグ セッション** には、スキルセットの
 
 このセクションでは、Azure Blob Storage にサンプル データ セットを作成し、インデクサーとスキルセットに作業用コンテンツを用意します。
 
-1. 19 個のファイルから成る[サンプル データ (clinical-trials-pdf-19) をダウンロード](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19)してください。
+1. 19 個のファイルから成る[サンプル データ (clinical-trials-pdf-19) をダウンロード](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-pdf-19)してください。
 
 1. [Azure Storage アカウントを作成](../storage/common/storage-account-create.md?tabs=azure-portal)するか、[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 
 

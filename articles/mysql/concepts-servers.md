@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cb8394de49c2c5daeae156a9316466928eded148
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a359c71ab3882c810b8594f4e4e6d73f8124e70
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628477"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652128"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。
 
@@ -68,7 +70,7 @@ Azure portal または Azure CLI を使用して、Azure Database for MySQL サ�
 |-----|-----|-----|-----|
 |*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連する接続を終了します。|
 |*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
-|*mysql.az_load_timezone*|該当なし|なし|[タイム ゾーン テーブル](howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
+|*mysql.az_load_timezone*|該当なし|該当なし|[タイム ゾーン テーブル](howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
 
 ## <a name="next-steps"></a>次のステップ
 

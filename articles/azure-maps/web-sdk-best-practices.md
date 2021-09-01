@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 31db8c4d8a371aaad939e3a85972958befb2206e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 630b354768e3ad0882911f11a99cca06fc87154e
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137565"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234431"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Azure Maps Web SDK のベスト プラクティス
 
@@ -405,7 +405,7 @@ https://azure.com/support
 
 **Azure Maps のテクニカル ヘルプはどこで入手できますか?**
 
-Power BI の Azure Maps ビジュアルに関連する場合: https://powerbi.microsoft.com/support/ 他のすべての Azure Maps サービス: https://azure.com/support または開発者フォーラム: https://docs.microsoft.com/answers/topics/azure-maps.html
+Power BI の Azure Maps ビジュアルに関連する場合: https://powerbi.microsoft.com/support/ 他のすべての Azure Maps サービス: https://azure.com/support または開発者フォーラム: [https://docs.microsoft.com/answers/topics/azure-maps.html](/answers/topics/azure-maps.html)
 
 **機能を要求するには、どのようにすればよいですか?**
 

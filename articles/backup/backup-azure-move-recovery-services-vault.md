@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 239294f1744da9f040ac62435e6930b60f6bc357
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6de0d6902705ff0edffd5e51e0e8f9abc6378830
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954370"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298091"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -23,7 +23,7 @@ ms.locfileid: "111954370"
 
 - リソース グループをまたいでコンテナーを移動している間、ソースとターゲットの両方のリソース グループがロックされ、書き込み操作と削除操作が禁止されます。 詳細については、[こちらの記事](../azure-resource-manager/management/move-resource-group-and-subscription.md)を参照してください。
 - 管理者のサブスクリプションのみが、コンテナーを移動するアクセス許可を持ちます。
-- サブスクリプション間でコンテナーを移動する場合、ターゲット サブスクリプションがソース サブスクリプションと同じテナントに存在すること、またその状態が有効になっている必要があります。 コンテナーを別の Azure AD ディレクトリに移動するには、[サブスクリプションを別のディレクトリに移動する方法](../role-based-access-control/transfer-subscription.md)および [Recovery Service コンテナーの FAQ](/azure/backup/backup-azure-backup-faq.yml#recovery-services-vault) に関する記事を参照してください。
+- サブスクリプション間でコンテナーを移動する場合、ターゲット サブスクリプションがソース サブスクリプションと同じテナントに存在すること、またその状態が有効になっている必要があります。 コンテナーを別の Azure AD に移動するには、[サブスクリプションを別のディレクトリに移動する方法](../role-based-access-control/transfer-subscription.md)および [Recovery Service コンテナーの FAQ](/azure/backup/backup-azure-backup-faq#recovery-services-vault) に関する記事をご覧ください。
 - ターゲット リソース グループへの書き込み操作を実行するアクセス許可が必要です。
 - コンテナーを移動すると、リソース グループのみが変更されます。 Recovery Services コンテナーは同じ場所に存在し、変更することはできません。
 - 一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つだけです。

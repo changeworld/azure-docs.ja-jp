@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: c23028e4cbbeb7e92fd8b0a7fb6b6b81a54a0806
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2d49a112413c482751f51d67f2fb3990dcfe52c2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132235"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219981"
 ---
 # <a name="saml-token-claims-reference"></a>SAML トークン要求のリファレンス
 
@@ -154,7 +154,7 @@ ms.locfileid: "108132235"
 
 ## <a name="next-steps"></a>次の手順
 
-* Microsoft Graph API を使用してトークンの有効期間ポリシーを管理する方法の詳細については、[Azure AD ポリシー リソースの概要](/graph/api/resources/policy)に関するページを参照してください。
+* Microsoft Graph API を使用してトークンの有効期間ポリシーを管理する方法の詳細については、[Azure AD ポリシー リソースの概要](/graph/api/resources/policy-overview)に関するページを参照してください。
 * [カスタムの要求と省略可能な要求](active-directory-optional-claims.md)をアプリケーションのトークンに追加します。
 * [SAML で シングル サインオン (SSO)](single-sign-on-saml-protocol.md) を使用します。
 * [Azure シングル サイン アウト SAML プロトコル](single-sign-out-saml-protocol.md) を使用します

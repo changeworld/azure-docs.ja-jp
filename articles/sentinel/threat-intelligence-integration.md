@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: 8c9206404294557f3f4a50d03ae550e407b92ed3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c231840b6255ef693353d83323710cb3243efaef
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751792"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214303"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel への脅威インテリジェンスの統合
 
@@ -112,7 +112,7 @@ TAXII 脅威インテリジェンスフィードに接続するには、以下�
 
 ### <a name="threatquotient-threat-intelligence-platform"></a>ThreatQuotient 脅威インテリジェンス プラットフォーム
 
-- [ThreatQuotient TIP](https://www.threatq.com/) を Azure Sentinel に接続する手順とサポート情報については、[ThreatQ 統合用の Microsoft Sentinel コネクタ](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=DetailsAndSupport)に関するページを参照してください。
+- [ThreatQuotient TIP](https://www.threatq.com/) を Azure Sentinel に接続する手順とサポート情報については、[ThreatQ 統合用の Microsoft Sentinel コネクタ](https://azuremarketplace.microsoft.com/marketplace/apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?tab=overview)に関するページを参照してください。
 
 ## <a name="incident-enrichment-sources"></a>インシデント エンリッチメント処理ソース
 

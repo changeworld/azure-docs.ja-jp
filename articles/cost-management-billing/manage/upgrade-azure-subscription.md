@@ -8,15 +8,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/11/2021
+ms.date: 07/15/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56d0116217f8db76131ccecc884312fb5296d1ed
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: ad09c97b784dcfabfe0dfa3e531fc789ba6fc956
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331720"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297360"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Azure 無料アカウントまたは Azure for Students Starter アカウントをアップグレードする
 
@@ -25,6 +25,9 @@ ms.locfileid: "108331720"
 [Azure for Students Starter アカウント](https://azure.microsoft.com/offers/ms-azr-0144p/)にサインアップ済みで、なおかつ [Azure 無料アカウント](https://azure.microsoft.com/free/)の利用資格がある方は、[Azure 無料アカウント](https://azure.microsoft.com/free/)にアップグレードすることができます。 アップグレード時には、200 ドルの Azure クレジットが請求通貨で付与されるほか、12 か月間の無料サービスが提供されます。 無料アカウントの利用資格がない場合は、[サポート リクエスト](https://go.microsoft.com/fwlink/?linkid=2083458)を使用して、[従量課金制料金](https://azure.microsoft.com/offers/ms-azr-0003p/)にアップグレードすることができます。
 
 [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/) アカウントをお持ちの場合は、[サポート リクエスト](https://go.microsoft.com/fwlink/?linkid=2083458)を使用して[従量課金制料金](https://azure.microsoft.com/offers/ms-azr-0003p/)にアップグレードすることができます。
+
+>[!NOTE]
+>無料ではないリソースを使用していて、クレジットを使い果たしたために、サブスクリプションが無効になり、その後サブスクリプションをアップグレードした場合、アップグレード後にリソースが有効になります。 この状況により、使用されたリソースに対して課金されます。
 
 <a id="freetrial"></a>
 

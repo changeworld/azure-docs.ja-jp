@@ -11,12 +11,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 200fa1b225e4f0f8c4dc2a11c3da2a02227c778e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 96e402a46d931223832295ccbd892eb38b909c59
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960698"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220793"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
@@ -187,7 +187,7 @@ MS Graph API シリーズを使用して、サインイン リスクベースの
 
 Identity Protection では、ユーザーの標準的な行動であると確信できるものは何かを判断し、それを使用してユーザーのリスクに関する意思決定を行うことができます。 ユーザー リスクとは、ID が侵害されている確率の計算です。 P2 ライセンスを所持する B2C テナントの場合、ユーザー リスクを組み込んだ条件付きアクセス ポリシーを作成できます。 ユーザーにリスクがあると検出された場合は、リスクを修復してアカウントにアクセスするために、安全な方法でパスワードを変更するように求めることができます。 ユーザーが自己修復できるよう、セキュリティで保護されたパスワード変更を求めるユーザー リスク ポリシーを設定することを強くお勧めします。
 
-[Identity Protection でのユーザー リスク](../active-directory/identity-protection/concept-identity-protection-risks.md#user-risk)の詳細を確認し、[B2C の Identity Protection の検出に関する制限事項](identity-protection-investigate-risk.md#service-limitations-and-considerations)を考慮してください。
+[Identity Protection でのユーザー リスク](../active-directory/identity-protection/concept-identity-protection-risks.md#user-linked-detections)の詳細を確認し、[B2C の Identity Protection の検出に関する制限事項](identity-protection-investigate-risk.md#service-limitations-and-considerations)を考慮してください。
 
 Azure portal または Microsoft Graph API を使用して条件付きアクセスを構成し、ユーザー リスクが中または高の場合に多要素認証 (MFA) とパスワード変更を求める、ユーザー リスクベースの条件付きアクセス ポリシーを有効にします。
 

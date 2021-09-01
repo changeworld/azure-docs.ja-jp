@@ -1,18 +1,18 @@
 ---
-title: Azure Arc 対応サーバーの VM 拡張機能に関する問題のトラブルシューティング
-description: この記事では、Azure Arc 対応サーバーで発生する Azure VM 拡張機能に関する問題をトラブルシューティングして解決する方法について説明します。
-ms.date: 09/24/2020
+title: Azure Arc 対応サーバーの VM 拡張機能に関する問題をトラブルシューティングする
+description: この記事では、Azure Arc 対応サーバーで発生する Azure VM 拡張機能に関する問題をトラブルシューティングして解決する方法を示します。
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 690b92389d86ca497801af79c6930677c19178fe
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584665"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390203"
 ---
-# <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Arc 対応サーバーの VM 拡張機能に関する問題のトラブルシューティング
+# <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Arc 対応サーバーの VM 拡張機能に関する問題をトラブルシューティングする
 
-この記事では、Arc 対応サーバーに Azure VM 拡張機能をデプロイまたは削除しようとしたときに発生するおそれがある問題のトラブルシューティングと解決に関する情報について説明します。 一般的な情報については、[Azure VM 拡張機能の管理と使用](./manage-vm-extensions.md)に関するページを参照してください。
+この記事では、Arc 対応サーバーに Azure VM 拡張機能をデプロイまたは削除しようとしている間に発生する可能性がある問題のトラブルシューティングと解決に関する情報を提供します。 一般的な情報については、[Azure VM 拡張機能の管理と使用](./manage-vm-extensions.md)に関するページを参照してください。
 
 ## <a name="general-troubleshooting"></a>一般的なトラブルシューティング
 
@@ -36,7 +36,7 @@ ms.locfileid: "100584665"
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェント
 
-- Log Analytics エージェント バージョン 1.13.9 (対応する拡張機能バージョンは 1.13.15) によって、アップロードされたデータが Azure Arc 対応サーバーのリソース ID を使用して正しくマークされていません。 ログはサービスに送信されますが、選択した対応サーバーのデータを表示しようとして **[ログ]** または **[分析情報]** を選択した場合、データは返されません。 ワークスペースにスコープが設定されている Azure Monitor Logs または Azure Monitor for VMs からクエリを実行することで、データを表示できます。
+- Log Analytics エージェント バージョン 1.13.9 (対応する拡張機能バージョンは 1.13.15) が、アップロードされたデータを Azure Arc 対応サーバーのリソース ID で正しくマークしていません。 ログはサービスに送信されますが、選択した対応サーバーのデータを表示しようとして **[ログ]** または **[分析情報]** を選択した場合、データは返されません。 ワークスペースにスコープが設定されている Azure Monitor Logs または Azure Monitor for VMs からクエリを実行することで、データを表示できます。
 
 - 現在、一部のディストリビューションは、Linux 用 Log Analytics エージェントでサポートされていません。 エージェントには、Python 2 などの追加の依存関係をインストールする必要があります。 [こちら](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)のサポート マトリックスと前提条件を確認してください。
 

@@ -10,12 +10,12 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: 7714adf00a40953301cf3f13eb8d6e403cd8c7a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9a8272d6b21130f253046ef3ffe05db8b00d4b79
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736560"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038672"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。
 
@@ -276,9 +276,6 @@ New-AzResourceGroupDeployment `
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>プライベート エンドポイントの背後にのみワークスペースをデプロイする
 
 関連付けられたリソースが仮想ネットワークの背後にない場合、**privateEndpointType** パラメーターを `AutoAproval` または `ManualApproval` に設定すると、ワークスペースをプライベート エンドポイントの背後にデプロイできます。 これは、新規および既存のワークスペースの両方に対して行うことができます。 既存のワークスペースを更新する場合は、テンプレート パラメーターに既存のワークスペースの情報を入力します。
-
-> [!IMPORTANT]
-> Azure Government リージョンでは、プライベート エンドポイントで Azure Machine Learning ワークスペースを使用することはできません。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

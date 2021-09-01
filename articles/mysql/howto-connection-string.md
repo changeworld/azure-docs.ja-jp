@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 40af2660f0052a876ef9310bc2426295ba67558b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a1c642ba4c1274e245dbcc407e1c09dc7e61742
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94541489"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651828"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Azure Database for MySQL にアプリケーションを接続する方法
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 このトピックでは、Azure Database for MySQL でサポートされているすべての接続文字列の種類と共に、テンプレートと例を紹介します。 実際に使用する接続文字列のパラメーターと設定は異なる可能性があります。
 
 - 証明書を取得するには、[SSL を構成する方法](./howto-configure-ssl.md)に関するページを参照してください。

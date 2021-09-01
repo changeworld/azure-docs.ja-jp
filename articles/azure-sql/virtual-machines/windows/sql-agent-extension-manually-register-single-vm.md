@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 07/21/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 7890d87730aa65e09e3bbc5a79fd22eb68610939
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 649bf52c48867f4508a7071cb1443b62eae36010
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079717"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860339"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM を SQL IaaS Agent 拡張機能に登録する
 
@@ -57,8 +57,8 @@ SQL Server VM を SQL IaaS Agent 拡張機能に登録するには、最初に�
 
 1. Azure portal を開き、 **[すべてのサービス]** に移動します。
 1. **[サブスクリプション]** に移動し、目的のサブスクリプションを選択します。
-1. **[サブスクリプション]** ページで、 **[拡張機能]** に移動します。
-1. フィルターに「**sql**」と入力し、SQL 関連の拡張機能を表示します。
+1. **[サブスクリプション]** ページで、 **[設定]** の **[リソース プロバイダー]** を選択します。
+1. フィルター内に「**sql**」と入力し、SQL 関連のリソースプロバイダーを表示します。
 1. 必要なアクションに応じて、**Microsoft.SqlVirtualMachine** プロバイダーで **[登録]** 、 **[再登録]** 、または **[登録解除]** を選択します。
 
    ![プロバイダーの変更](./media/sql-agent-extension-manually-register-single-vm/select-resource-provider-sql.png)
@@ -167,9 +167,11 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ---
 
-## <a name="verify-mode"></a>検証モード
+## <a name="check-extension-mode"></a>拡張機能モードを確認する
 
-Azure PowerShell を次のように使用して、SQL Server IaaS Agent の現在のモードを確認できます。
+Azure PowerShell を使用して、SQL Server IaaS エージェント拡張機能がどのモードにあるかを確認します。 
+
+拡張機能のモードを確認するには、次の Azure PowerShell コマンドレットを使用します。 
 
 ```powershell-interactive
 # Get the SqlVirtualMachine
@@ -189,7 +191,7 @@ $sqlvm.SqlManagementType
 Azure portal を使用して拡張機能をフル モードにアップグレードするには、これらの手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. [SQL 仮想マシン](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) リソースに移動します。
+1. [SQL 仮想マシン](manage-sql-vm-portal.md#access-the-resource) リソースに移動します。
 1. ご利用の SQL Server VM を選択し、 **[概要]** を選択します。
 1. IaaS モードが NoAgent または軽量である SQL Server VM では、**SQL IaaS 拡張機能で利用できるのはライセンスの種類とエディションの更新のみ** という内容のメッセージを選択します。
 
@@ -239,6 +241,8 @@ Azure portal を使用して登録状態を確認するには、これらの手�
 
    ![SQL RP 登録による状態を確認する](./media/sql-agent-extension-manually-register-single-vm/verify-registration-status.png)
 
+または、 **[SQL 仮想マシン]** リソースの **[サポートとトラブルシューティング]** ウィンドウで **[修復]** を選択して状態を確認することもできます。 SQL IaaS エージェント拡張機能のプロビジョニング状態は、 **[成功]** または **[失敗]** になります。 
+
 ### <a name="command-line"></a>コマンド ライン
 
 Azure CLI または Azure PowerShell を使用して現在の SQL Server VM の登録状態を確認します。 登録が成功していれば、`ProvisioningState` に `Succeeded` と表示されます。
@@ -262,6 +266,23 @@ Azure PowerShell を使用して登録状態を確認するには、次のコー
 ---
 
 エラーは、SQL Server VM が拡張機能に登録されていないことを示します。
+
+## <a name="repair-extension"></a>拡張機能の修復
+
+SQL IaaS エージェント拡張機能が失敗状態になる可能性があります。 SQL IaaS エージェント拡張機能を修復するには、Azure portal を使用を使用します。 これを行うには、次のステップに従います。 
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご利用の [SQL Server VM](manage-sql-vm-portal.md) にアクセスします。
+1. 一覧から SQL Server VM を選択します。 お使いの SQL Server VM がここに表示されていない場合は、SQL IaaS Agent 拡張機能に登録されていない可能性があります。
+1. **[SQL 仮想マシン]** リソース ページの **[サポートとトラブルシューティング]** の下にある **[修復]** を選択します。 
+
+   :::image type="content" source="media/sql-agent-extension-manually-register-single-vm/repair-extension.png" alt-text="[SQL 仮想マシン] リソース ページの [サポートとトラブルシューティング] の下にある [修復] を選択します":::   
+
+1. プロビジョニングの状態が **[失敗]** と表示されている場合は、 **[修復]** を選択して拡張機能を修復します。 状態が **[成功]** の場合は、 **[強制修復]** の横にあるチェックボックスをオンにして、状態に関係なく拡張機能を修復できます。 
+
+   ![プロビジョニングの状態が [失敗] と表示されている場合は、[修復] を選択して拡張機能を修復します。 状態が [成功] の場合は、[強制修復] の横にあるチェックボックスをオンにして、状態に関係なく拡張機能を修復できます。](./media/sql-agent-extension-manually-register-single-vm/force-repair-extension.png)
+
+
 
 ## <a name="unregister-from-extension"></a>拡張機能から登録を解除する
 

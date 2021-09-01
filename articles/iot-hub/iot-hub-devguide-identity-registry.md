@@ -6,18 +6,18 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/06/2021
+ms.date: 06/29/2021
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2590ffd15ec046d0fc81e73b98577fa9ad91ae41
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 71007f18edcac6089be89537f0021f75c2cc4b38
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712750"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294744"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -183,8 +183,10 @@ iothub-message-schema | moduleLifecycleNotification |
 | deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , : = @ $ '`)。 |
 | generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
 | etag |必須、読み取り専用 |[RFC7232](https://tools.ietf.org/html/rfc7232) に準拠した、デバイス ID の弱い ETag を表す文字列。 |
-| auth |オプション |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
-| auth.symkey |オプション |base64 形式でプライマリ キーとセカンダリ キーを格納する複合オブジェクト。 |
+| 認証 |オプション |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 詳細については、REST API ドキュメントの「[AuthenticationMechanism](/rest/api/iothub/service/devices/get-identity#authenticationmechanism)」を参照してください。 |
+| capabilities | 省略可能 | デバイスの一連の機能。 たとえば、デバイスがエッジ デバイスかどうか、など。 詳細については、REST API ドキュメントの「[Device Capabilities](/rest/api/iothub/service/devices/get-identity#devicecapabilities)」を参照してください。 |
+| deviceScope | 省略可能 | デバイスのスコープ。 エッジ デバイスでは、自動生成され、変更できません。 非エッジ デバイスでは、非推奨とされます。 ただし、子 (リーフ) デバイスでは、以前のバージョンの API との下位互換性を維持するため、このプロパティを **parentScopes** プロパティ (親デバイスの **deviceScope**) と同じ値に設定します。 詳細については、「[ゲートウェイとしての IoT Edge: 親と子のリレーションシップ](../iot-edge/iot-edge-as-gateway.md#parent-and-child-relationships)」を参照してください。|
+| parentScopes | 省略可能 | 子デバイスの直接の親のスコープ (親デバイスの **deviceScope** プロパティの値)。 エッジ デバイスでは、デバイスに親がない場合、値は空です。 非エッジ デバイスでは、デバイスに親がない場合、このプロパティは存在しません。 詳細については、「[ゲートウェイとしての IoT Edge: 親と子のリレーションシップ](../iot-edge/iot-edge-as-gateway.md#parent-and-child-relationships)」を参照してください。 |
 | status |必須 |アクセス インジケーター。 **[有効]** または **[無効]** のいずれか。 **[有効]** の場合、デバイスからの接続が許可されます。 **[無効]** の場合、このデバイスからデバイス向けのエンドポイントにアクセスできません。 |
 | statusReason |オプション |デバイス ID の状態の理由を格納する、長さが 128 文字の文字列。 すべての UTF-8 文字を使用できます。 |
 | statusUpdateTime |読み取り専用 |状態が最後に更新された日時を示す時間のインジケーター。 |
@@ -208,11 +210,9 @@ iothub-message-schema | moduleLifecycleNotification |
 | moduleId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , : = @ $ '`)。 |
 | generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
 | etag |必須、読み取り専用 |[RFC7232](https://tools.ietf.org/html/rfc7232) に準拠した、デバイス ID の弱い ETag を表す文字列。 |
-| auth |オプション |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
-| auth.symkey |オプション |base64 形式でプライマリ キーとセカンダリ キーを格納する複合オブジェクト。 |
-| status |必須 |アクセス インジケーター。 **[有効]** または **[無効]** のいずれか。 **[有効]** の場合、デバイスからの接続が許可されます。 **[無効]** の場合、このデバイスからデバイス向けのエンドポイントにアクセスできません。 |
-| statusReason |オプション |デバイス ID の状態の理由を格納する、長さが 128 文字の文字列。 すべての UTF-8 文字を使用できます。 |
-| statusUpdateTime |読み取り専用 |状態が最後に更新された日時を示す時間のインジケーター。 |
+| 認証 |オプション |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 詳細については、REST API ドキュメントの「[AuthenticationMechanism](/rest/api/iothub/service/modules/get-identity#authenticationmechanism)」を参照してください。 |
+| managedBy | 省略可能 | このモジュールを管理している主体を識別します。 たとえば、エッジ ランタイムによってこのモジュールが所有されている場合、この値は「IotEdge」になります。 |
+| cloudToDeviceMessageCount | 読み取り専用 | モジュールに送信するために現在キューに登録されている、クラウドからモジュールへのメッセージの数。 |
 | connectionState |読み取り専用 |接続状態を示すフィールド。**Connected** または **Disconnected** のいずれか。 このフィールドは、デバイスの接続状態に関する IoT Hub ビューを表します。 **重要**: このフィールドは、開発およびデバッグ専用として使用してください。 接続状態は、MQTT または AMQP を使用するデバイスについてのみ更新されます。 また、この更新はプロトコル レベルの ping (MQTT ping または AMQP ping) に基づいており、遅延は最大でもわずか 5 分です。 このため、接続状態にあると報告されているが切断状態にあるデバイスのように、偽陽性を示す可能性があります。 |
 | connectionStateUpdatedTime |読み取り専用 |前回接続状態が更新された日時を示す時間のインジケーター。 |
 | lastActivityTime |読み取り専用 |前回デバイスが接続された日時またはメッセージを送受信した日時を示す時間のインジケーター。 |
@@ -248,7 +248,7 @@ IoT ハブの ID レジストリの使用方法を理解できたら、次の Io
 
 この記事で説明した概念を試すには、次の IoT Hub のチュートリアルをご覧ください。
 
-* [Azure IoT Hub を使ってみる](quickstart-send-telemetry-dotnet.md)
+* [Azure IoT Hub を使ってみる](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)
 
 IoT Hub Device Provisioning サービスを使用してノータッチの Just-In-Time プロビジョニングを実現する方法については、次を参照してください。 
 

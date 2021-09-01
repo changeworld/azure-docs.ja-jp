@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7d663345a5980d32a59d3185226e48dc75ef96c2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5857ba3543cabd2dc80831b51b256a139f43e8b6
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737245"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221135"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service 向けの PHP アプリを構成する
 
@@ -119,11 +119,11 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-Git か、[ビルド自動化を有効](deploy-zip.md#enable-build-automation)にした Zip デプロイを利用してすべての変更をコミットし、コードをデプロイします。 これで Composer はデプロイの自動化の一部として実行しているはずです。
+Git か、[ビルド自動化を有効](deploy-zip.md#enable-build-automation-for-zip-deploy)にした Zip デプロイを利用してすべての変更をコミットし、コードをデプロイします。 これで Composer はデプロイの自動化の一部として実行しているはずです。
 
 ## <a name="run-gruntbowergulp"></a>Grunt/Bower/Gulp を実行する
 
-Grunt、Bower、Gulp など、一般的な自動化ツールを App Service でデプロイ時に実行する場合、[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。 App Service では、Git か、[ビルド自動化を有効](deploy-zip.md#enable-build-automation)にした [Zip デプロイ](deploy-zip.md)を利用してデプロイするとき、このスクリプトが実行されます。 
+Grunt、Bower、Gulp など、一般的な自動化ツールを App Service でデプロイ時に実行する場合、[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。 App Service では、Git か、[ビルド自動化を有効](deploy-zip.md#enable-build-automation-for-zip-deploy)にした [Zip デプロイ](deploy-zip.md)を利用してデプロイするとき、このスクリプトが実行されます。 
 
 リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
 
@@ -206,7 +206,7 @@ fi
 
 ## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-[ビルドの自動化を有効](deploy-zip.md#enable-build-automation)にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
+[ビルドの自動化を有効](deploy-zip.md#enable-build-automation-for-zip-deploy)にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
 
 1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
 1. `php composer.phar install` を実行します。

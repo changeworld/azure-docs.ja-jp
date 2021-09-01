@@ -1,18 +1,18 @@
 ---
 title: Azure Percept DK でネットワークの詳細設定を行う
 description: この記事では、Azure Percept DK セットアップ エクスペリエンス中のネットワークの詳細設定について説明します
-author: mimcco
-ms.author: mimcco
+author: WendyAnn0079
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 7/19/2021
 ms.custom: template-how-to
-ms.openlocfilehash: bc680025e37ded3fd91b840d00ba075772cbb656
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac06d331bcd587c1294c21388faac75cc6f8cfd6
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727204"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219633"
 ---
 # <a name="set-up-advanced-network-settings-on-the-azure-percept-dk"></a>Azure Percept DK でネットワークの詳細設定を行う
 
@@ -98,5 +98,5 @@ IPv4 と IPv6 はどちらも、ローカル接続の Azure Percept DK でサポ
 1. **[保存]** を選びます。
 1. **[戻る]** を選択して、メインの **[ネットワークの詳細設定]** ページに戻ります
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 **[ネットワークの詳細設定]** の変更が完了したら、 **[戻る]** ボタンを選択して、[Azure Percept DK セットアップ エクスペリエンスを続行します](./quickstart-percept-dk-set-up.md)。

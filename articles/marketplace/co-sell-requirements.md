@@ -1,19 +1,19 @@
 ---
 title: 共同販売の要件 | Azure Marketplace
-description: Microsoft コマーシャル マーケットプレースのプランが共同販売の準備完了または共同販売インセンティブ対象ステータスの資格を得るために満たす必要のある要件について説明します。
+description: Microsoft コマーシャル マーケットプレースのプランが、共同販売の準備完了または共同販売インセンティブ ステータスの資格を得るために満たす必要のある要件について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 04/16/2021
-ms.openlocfilehash: 7a5e4375ebe289bb5ae012f94ba9dd050563bbbb
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.date: 07/13/2021
+ms.openlocfilehash: 31ea2d07db013220db97ab9d3b0e7879f83bc3fe
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209861"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114388064"
 ---
 # <a name="co-sell-requirements"></a>共同販売の要件
 
@@ -25,8 +25,8 @@ ms.locfileid: "108209861"
 | ------------ | ------------- |
 | 共同販売の準備が未完了 | [共同販売の準備完了ステータスの最小要件](#requirements-for-co-sell-ready-status)が満たされていません。 |
 | 共同販売の準備完了 | [共同販売の準備完了ステータスの要件](#requirements-for-co-sell-ready-status)がすべて満たされています。 |
-| Azure IP 共同販売インセンティブ対象 | [これらの追加の要件](#requirements-for-azure-ip-co-sell-incentivized-status)に加えて、共同販売の準備完了の要件が満たされています。 |
-| Business Applications 共同販売インセンティブ対象 | このステータスは、[Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)の Dynamics 365 と Power Apps のプランに適用されます。[このステータスの要件](#requirements-for-business-applications-co-sell-incentivized-status)がすべて満たされていることを示します。 |
+| Azure IP 共同販売インセンティブ | [これらの追加の要件](#requirements-for-azure-ip-co-sell-incentive-status)に加えて、共同販売の準備完了の要件が満たされています。 |
+| Business Applications 共同販売インセンティブ | このステータスは、[Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)の Dynamics 365 と Power Apps のプランに適用されます。[このステータスの要件](#requirements-for-business-applications-co-sell-incentive-status)がすべて満たされていることを示します。 |
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>共同販売の準備完了ステータスの要件
@@ -64,9 +64,9 @@ Microsoft は、これらのドキュメントの作成に役立つテンプレ�
 
 共同販売の準備完了ステータスの資格を得るには、自分のプランまたはソリューションがコマーシャル マーケットプレースのオンライン ストアの少なくともいずれか (Azure Marketplace または Microsoft AppSource) に実際に公開されている必要があります。 コマーシャル マーケットプレースへのプランの公開については、「[プランの種類別の公開ガイド](publisher-guide-by-offer-type.md)」を参照してください。 これまでコマーシャル マーケットプレースでプランを公開したことがない場合は、[コマーシャル マーケットプレース アカウント](create-account.md)を持っていることを確認してください。
 
-## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Azure IP 共同販売インセンティブ対象ステータスの要件
+## <a name="requirements-for-azure-ip-co-sell-incentive-status"></a>Azure IP 共同販売インセンティブ ステータスの要件
 
-Azure IP 共同販売インセンティブ対象ステータスは、次のプランの種類に適用されます。
+Azure IP 共同販売インセンティブ ステータスは、次のプランの種類に適用されます。
 
 - Azure Application
 - Azure Container
@@ -74,7 +74,7 @@ Azure IP 共同販売インセンティブ対象ステータスは、次のプ�
 - IoT Edge モジュール
 - サービスとしてのソフトウェア (SaaS)
 
-共同販売の準備完了ステータスの取得後、Azure IP 共同販売インセンティブ対象ステータスを取得するには、さらに 3 つの要件を満たす必要があります。
+共同販売の準備完了ステータスを達成した後、Azure IP 共同販売インセンティブ ステータスを達成するための追加の要件として、次の 3 つがあります。
 
 要件 1 - 次の実現:
 
@@ -86,7 +86,7 @@ Azure IP 共同販売インセンティブ対象ステータスは、次のプ�
 要件 3 - 参照アーキテクチャ図の提供:
 - 参照アーキテクチャ図を共同販売のドキュメントと一緒にパートナー センターにアップロードし、審査を受けます。 この図の作成のガイダンスについては、「[参照アーキテクチャ図](reference-architecture-diagram.md)」を参照してください。 図のアップロードの詳細については、「[コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)」を参照してください。
 
-## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Business Applications 共同販売インセンティブ対象ステータスの要件
+## <a name="requirements-for-business-applications-co-sell-incentive-status"></a>Business Applications 共同販売インセンティブ ステータスの要件
 
 このステータスは、ISV コネクト プログラムに登録されている、Dynamics 365 または Power Apps を基盤とする IP ベースのソリューションに適用されます (Dynamics 365 Business Central を除く)。 ただし、Microsoft 販売者がプランを貴社と共同販売するためには、そのプランが共同販売の準備完了ステータス (前述) の要件を満たしていることも必要です。
 

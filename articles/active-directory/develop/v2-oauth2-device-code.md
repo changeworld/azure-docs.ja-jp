@@ -9,22 +9,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 06/25/2021
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 053f56f56c28560b700122a99fc2d97f4c8e0279
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88272452"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "122652973"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス許可付与フロー
 
 Microsoft ID プラットフォームでは、ユーザーがスマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできるようにする[デバイス許可付与](https://tools.ietf.org/html/rfc8628)がサポートされています。  このフローを実現するには、デバイスのユーザーが別のデバイス上のブラウザーを使って Web ページにアクセスしてサインインするようにします。  ユーザーがサインインすると、デバイスは必要に応じてアクセス トークンと更新トークンを取得できます。
 
 この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
@@ -36,10 +38,6 @@ Microsoft ID プラットフォームでは、ユーザーがスマート TV、I
 
 クライアントはまず、認証を開始するために使用するデバイスとユーザー コードを認証サーバーに確認する必要があります。 クライアントはこの要求を `/devicecode` エンドポイントから収集します。 クライアントは、この要求に、ユーザーから取得する必要のあるアクセス許可も含める必要があります。 ユーザーはこの要求が送信された時点から 15 分以内にサインインしなければならないので (`expires_in` の通常の値)、ユーザーがサインインする準備ができたことを示したときにのみこの要求を行います。
 
-> [!TIP]
-> を必ず置き換えてください)。
-> [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-
 ```HTTP
 // Line breaks are for legibility only.
 
@@ -47,7 +45,7 @@ POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-scope=user.read%20openid%20profile
+&scope=user.read%20openid%20profile
 
 ```
 
@@ -85,9 +83,9 @@ scope=user.read%20openid%20profile
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type: urn:ietf:params:oauth:grant-type:device_code
-client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
-device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
+grant_type=urn:ietf:params:oauth:grant-type:device_code
+&client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&device_code=GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
 | パラメーター | 必須 | 説明|
@@ -133,3 +131,5 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | `refresh_token` | 不透明な文字列 | 元の `scope` パラメーターに `offline_access` が含まれている場合に発行されます。  |
 
 [OAuth コード フローのドキュメント](v2-oauth2-auth-code-flow.md#refresh-the-access-token)で説明されているのと同じフローに従い、更新トークンを使用して新しいアクセス トークンと更新トークンを取得できます。
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]

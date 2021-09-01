@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 49a369c439465a7a93cba1aea983d23a54da206e
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: f58b3ea4a3d6a7fd1607410b1b9d521f57cb26bb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569507"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219651"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -145,7 +145,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 クラスターに多数の投票がある場合は、ビジネス ニーズに最適な[クォーラム ソリューション](hadr-cluster-quorum-configure-how-to.md)を構成します。 詳細については、[SQL Server VM でのクォーラム](hadr-windows-server-failover-cluster-overview.md#quorum)に関する記事をご覧ください。 
 
-## <a name="validate-cluster"></a>クラスターの検証
+## <a name="validate-cluster"></a>クラスターを検証する
 UI または PowerShell を使用して、クラスターを検証します。
 
 UI を使用してクラスターを検証するには、いずれかの仮想マシンで次の手順を実行します。
@@ -196,7 +196,7 @@ FCI データ ディレクトリは、Azure 共有ディスク上に存在する
 
 ## <a name="register-with-the-sql-vm-rp"></a>SQL VM RP への登録
 
-ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)で SQL IaaS Agent 拡張機能 (RP) に登録します。このモードは、現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
+ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-agent-extension-manually-register-single-vm.md#lightweight-mode)で SQL IaaS Agent 拡張機能 (RP) に登録します。このモードは、現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
 
 PowerShell を使用して軽量モードで SQL Server VM を登録します。  
 

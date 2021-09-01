@@ -12,14 +12,14 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 8ca10c54cff14bd9301e06a891bcb1f7013959f9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ff363550b44286cb7140f533981229565fdf795f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176470"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032237"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
+# <a name="configure-terms-of-service-and-privacy-statement-for-an-app"></a>アプリのサービス利用規約とプライバシーに関する声明を構成する
 
 Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウントと統合されているマルチテナント アプリをビルドして管理する開発者は、アプリのサービス利用規約とプライバシーに関する声明へのリンクを含める必要があります。 サービス利用規約とプライバシーに関する声明は、ユーザーの同意エクスペリエンスからユーザーに提示されます。 これは、ユーザーがアプリを信頼できることを知るのに役立ちます。 サービス利用規約とプライバシーに関する声明は、ユーザー向けマルチテナント アプリに特に重要です。アプリは複数のディレクトリによって使用され、すべての Microsoft アカウントで利用できます。
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d986106337eb1ede2f6d61303d8a4c487bbed276
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7926994766646f89a2ea853df3cc60715005b814
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93088473"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097790"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>NoSQL データベースとリレーショナル データベースの違いについて
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Azure Cosmos DB は、すべての主要な NoSQL モデルの種類、列ファ
 [マイクロサービス](https://en.wikipedia.org/wiki/Microservices) パターンは、近年著しく拡大しました。 このパターンのルーツは、[サービス指向アーキテクチャ](https://en.wikipedia.org/wiki/Service-oriented_architecture)にあります。 これらの最新のマイクロサービス アーキテクチャにおけるデータ転送のデファクト スタンダードは [JSON](https://en.wikipedia.org/wiki/JSON)です。これは、ドキュメント指向 NoSQL データベースの大部分の記憶媒体でもあります。 これにより、NoSQL ドキュメント ストアは、複雑なマイクロサービスの実装全体での永続化と同期 ([イベント ソーシング パターン](https://en.wikipedia.org/wiki/Event-driven_architecture)を使用) の両方に、よりシームレスに適合するようになります。 これらのアーキテクチャでは、より従来型のリレーショナル データベースの保守がはるかに複雑になる可能性があります。 これは、API 間の状態と同期の両方で、より多くの量の変換が必要になるためです。 特に Azure Cosmos DB には、JSON ベースのマイクロサービス アーキテクチャに、多くの NoSQL データベースよりもシームレスに適合する、多くの機能があります。
 
 * 純粋な JSON データ型の選択
-* データベースに組み込まれた JavaScript エンジンと[クエリ API](./javascript-query-api.md)。
+* データベースに組み込まれた JavaScript エンジンと[クエリ API](sql/javascript-query-api.md)。
 * コンテナーに対する変更の通知を受け取るためにクライアントがサブスクライブできる最新の[変更フィード](./change-feed.md)。
 
 ## <a name="some-challenges-with-nosql-databases"></a>NoSQL データベースに関するいくつかの課題

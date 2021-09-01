@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27a6c07fd43fc167efb32369e6269206c9462e51
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 152dfc877ad96d2b002fed43eea92a0b607e8bd2
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570504"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652383"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、Azure Database for MySQL を使用して Azure Active Directory アクセスを構成する方法と、Azure AD トークンを使用して接続する方法について説明します。
 

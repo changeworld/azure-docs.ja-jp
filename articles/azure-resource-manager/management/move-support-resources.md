@@ -3,12 +3,12 @@ title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループ、サブスクリプション、またはリージョンに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 3a43ea09dd4986d1f2d0e2679e81f5b25b590f7e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f00acadf42c3767814850db59c64ab76b30de2ea
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968328"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297005"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -911,7 +911,7 @@ ms.locfileid: "111968328"
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | controllers | はい | はい | いいえ |
-> | AKS クラスター | **保留中** | **保留中** | いいえ<br/><br/> 別リージョンへの移行の[詳細をご覧ください](../../dev-spaces/index.yml)。
+> | AKS クラスター | **保留中** | **保留中** | いいえ<br/><br/> 別リージョンへの移行の[詳細をご覧ください](/previous-versions/azure/dev-spaces/)。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1104,7 +1104,7 @@ ms.locfileid: "111968328"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | accounts | はい | はい | いいえ。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
+> | accounts | はい | はい | いいえ。 [詳細については、こちらを参照してください](../../azure-monitor/faq.yml#how-do-i-move-an-application-insights-resource-to-a-new-region-)。 |
 > | actiongroups | はい | はい | いいえ |
 > | activitylogalerts | いいえ | いいえ | いいえ |
 > | alertrules | はい | はい | いいえ |
@@ -2082,4 +2082,4 @@ ms.locfileid: "111968328"
 
 - リソースの移動のコマンドについては、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](move-resource-group-and-subscription.md)」を参照してください。
 - Resource Mover サービスの[詳細を学習](../../resource-mover/overview.md)します。
-- コンマ区切りの値のファイルと同じデータを取得するには、[move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) をダウンロードします。
+- 同じデータをコンマ区切り値のファイルとして入手するには、リソース グループおよびサブスクリプションでの移動のサポートに関する [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) をダウンロードしてください。 これらのプロパティとリージョンでの移動のサポートが必要な場合は、[move-support-resources-with-regions.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources-with-regions.csv) をダウンロードしてください。

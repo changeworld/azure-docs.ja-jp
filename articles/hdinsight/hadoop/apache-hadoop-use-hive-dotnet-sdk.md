@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: 032c070a9485fc4720ae7966a0991bc0c5ae3921
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8c2dc7cef889a0488352ace443771d118b0d0613
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867850"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122652754"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して Apache Hive クエリを実行する
 
-[!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
+[!INCLUDE [hive-selector](../includes/hdinsight-selector-use-hive.md)]
 
 HDInsight .NET SDK を使用して Apache Hive クエリを送信する方法について説明します。 Hive テーブルを表示するための Hive クエリを送信し、結果を表示する C# プログラムを作成します。
 

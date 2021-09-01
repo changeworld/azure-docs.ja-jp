@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: be52bbe58f6c2ff6ee21703860e8d8e00ec30072
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c257941079c3a43639337dd1b010002ddac4672e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110153"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652217"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのメトリックのアラートを設定する 
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 この記事では、Azure Portal を使用して Azure Database for MySQL のアラートを設定する方法について説明します。 お使いの Azure のサービスの監視メトリックに基づいてアラートを受け取ることができます。
@@ -23,16 +25,19 @@ ms.locfileid: "105110153"
 このアラートは、指定したメトリックの値が、割り当てたしきい値を超えたときにトリガーされます。 アラートは条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
 
 アラートがトリガーされたときに実行されるように構成できるアクションは次のとおりです。
+
 * サービス管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
 * Webhook を呼び出す
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
+
 * [Azure Portal](../../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
+
 1. [Azure portal](https://portal.azure.com/) で、監視する Azure Database for MySQL フレキシブル サーバーを選択します。
 2. サイドバーの **[監視]** セクションで、 **[アラート]** を選択します。
 3. **[+ 新しいアラート ルール]** を選択します。

@@ -7,14 +7,14 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 07/02/2021
 ms.author: nitinme
-ms.openlocfilehash: 9136db7a40958af2e6b0711595bce4d5e7988af6
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 90071be491fa16d483d1348feabb7a1180c333e8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810915"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297413"
 ---
 # <a name="recover-deleted-cognitive-services-resources"></a>削除された Cognitive Services リソースの復旧
 
@@ -30,6 +30,8 @@ ms.locfileid: "111810915"
 * 削除されたリソースの復旧を試みる前に、そのアカウントのリソース グループが存在することを確認してください。 リソース グループが削除されている場合は、再作成する必要があります。 リソース グループを復旧することはできません。 詳しくは、 [リソース グループの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関する記事をご覧ください。
 * 削除されたリソースによって Azure Key Vault でカスタマー マネージド キーが使用されており、キー コンテナーも削除されている場合は、Cognitive Services リソースを復元する前に、そのキー コンテナーを復元する必要があります。 詳細については、[Azure Key Vault の復旧の管理](../key-vault/general/key-vault-recovery.md)に関する記事を参照してください。
 * 削除されたリソースによってユーザーが管理するストレージが使用されており、そのストレージ アカウントも削除されている場合は、Cognitive Services リソースを復元する前に、そのストレージ アカウントを復元する必要があります。 詳細については、「[削除されたストレージ アカウントを復旧する](../storage/common/storage-account-recover.md)」を参照してください。
+
+サブスクリプションには、[Cognitive Services 共同作成者](../role-based-access-control/built-in-roles.md#cognitive-services-contributor)または[共同作成者](../role-based-access-control/built-in-roles.md#contributor)などのリソースを消去するための `Microsoft.CognitiveServices/locations/resourceGroups/deletedAccounts/delete` アクセス許可が必要です。 
 
 ## <a name="recover-a-deleted-resource"></a>削除されたリソースを復旧する 
 
@@ -73,6 +75,11 @@ New-AzResource -Location {location}-Properties @{restore=$true} -ResourceId /sub
 Get-AzResource -ResourceId /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts -ApiVersion 2021-04-30 
 ```
 
+### <a name="using-the-azure-cli"></a>Azure CLI の使用
+
+```azurecli-interactive
+az resource create --subscription {subscriptionID} -g {resourceGroup} -n {resourceName} --location {location} --namespace Microsoft.CognitiveServices --resource-type accounts --properties "{\"restore\": true}"
+```
 
 ## <a name="purge-a-deleted-resource"></a>削除されたリソースを消去する 
 
@@ -105,7 +112,7 @@ Remove-AzResource -ResourceId /subscriptions/{subscriptionID}/providers/Microsof
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
 ```azurecli-interactive
-az resource delete /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroup}/deletedAccounts/{resourceName}
+az resource delete --ids /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/resourceGroups/{resourceGroup}/deletedAccounts/{resourceName}
 ```
 
 ## <a name="see-also"></a>関連項目
