@@ -1,14 +1,14 @@
 ---
 title: Azure Policy 状態変更イベントに対応する
 description: Azure Event Grid を使用してアプリ ポリシーのイベントにサブスクライブすると、複雑なコードを必要とせずに、アプリケーションが状態の変化に対応できます。
-ms.date: 03/29/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 197dfbe410874541c38334b169c526bac63a614e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4cd443882b3d1f9ffdcf0c317b6012654e0780c2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752905"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324879"
 ---
 # <a name="reacting-to-azure-policy-state-change-events"></a>Azure Policy 状態変更イベントに対応する
 
@@ -47,7 +47,7 @@ Event Grid イベントのプロパティの使用法について詳しくは、
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | コンプライアンス状態の変更の対象となるリソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` の形式が使用されます。 |
 | `data` | object | Azure Policy イベントのデータ。 |
-| `data.timestamp` | string | リソースが Azure Policy によってスキャンされた時刻 (UTC)。 イベントを並べ替えるには、このプロパティを、最上位レベルの `eventTime` または `time` プロパティの代わりに使用します。 |
+| `data.timestamp` | string | リソースが Azure Policy によってスキャンされた時刻 (UTC)。 イベントを並べ替えるには、このプロパティを、トップレベルの `eventTime` または `time` プロパティの代わりに使用します。 |
 | `data.policyAssignmentId` | string | ポリシー割り当てのリソース ID。 |
 | `data.policyDefinitionId` | string | ポリシー定義のリソース ID。 |
 | `data.policyDefinitionReferenceId` | string | イニシアチブ定義内のポリシー定義の参照 ID (ポリシー割り当てがイニシアチブの場合)。 空の場合もあります。 |

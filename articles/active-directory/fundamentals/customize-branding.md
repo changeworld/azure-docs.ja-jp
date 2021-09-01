@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 07/03/2021
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5513aff9bed85293978061f8989c1389e9e7a9c4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 47815bcca9c6630392cb86284d8e8c3cf4d08e67
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954950"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733198"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Microsoft 365 など) にユーザーが サインインするときに表示されます。
 
 >[!NOTE]
->カスタム ブランドを追加するには、Azure Active Directory Premium 1 または Premium 2 のライセンスを持っている必要があります。 ライセンスとエディションの詳細については、「[Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)」を参照してください。<br><br>Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium エディションを使用できます。 中国の 21Vianet が運営する Azure サービスでは、Azure AD Premium エディションは現在サポートされていません。 詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)を利用してお問い合わせください。
+>カスタム ブランドを追加するには、Azure Active Directory Premium 1、Premium 2、または Office 365 (Office 365 アプリ用) のライセンスを持っている必要があります。 ライセンスとエディションの詳細については、「[Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)」を参照してください。<br><br>Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium エディションを使用できます。 中国の 21Vianet が運営する Azure サービスでは、Azure AD Premium エディションは現在サポートされていません。 詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)を利用してお問い合わせください。
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Azure AD のサインイン ページをカスタマイズする
 Azure AD のサインイン ページをカスタマイズできます。このページは、ユーザーが組織のテナント固有のアプリ (`https://outlook.com/contoso.com` など) にサインインするとき、またはドメイン変数 (`https://passwordreset.microsoftonline.com/?whr=contoso.com`) を渡すときに表示されます。
@@ -32,7 +32,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 カスタム ブランドは、ユーザーが www\.office.com などのサイトに移動したときにすぐに表示されるわけではありません。 カスタマイズされたブランドは、ユーザーがサインインした後で表示されます。 ユーザーがサインインすると、ブランド化に 15 分以上かかることがあります。 
 
 > [!NOTE]
-> すべてのブランド要素は省略可能です。 たとえば、背景画像なしでバナー ロゴを指定した場合、サインイン ページには目的のサイト (たとえば Microsoft 365) の既定の背景画像とロゴが表示されます。<br><br>さらに、サインイン ページのブランド情報は、個人用 Microsoft アカウントに継承されることはありません。 ユーザーまたはゲスト ユーザーが個人用 Microsoft アカウントを使用してサインインした場合、そのサインイン ページには組織のブランドは反映されません。
+> **すべてのブランド化要素は省略可能であり、変更されない場合は既定のままになります。** たとえば、背景画像なしでバナー ロゴを指定した場合、サインイン ページには目的のサイト (Microsoft 365 など) の既定の背景画像とロゴが表示されます。<br><br>さらに、サインイン ページのブランド情報は、個人用 Microsoft アカウントに継承されることはありません。 ユーザーまたはゲスト ユーザーが個人用 Microsoft アカウントを使用してサインインした場合、そのサインイン ページには組織のブランドは反映されません。
 
 ### <a name="to-customize-your-branding"></a>ブランドをカスタマイズするには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
@@ -52,7 +52,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
         - **言語**。 言語は、既定値として自動的に設定され、変更することはできません。
         
-        - **サインイン ページの背景画像**。 サインイン ページの背景として表示する .png または .jpg 画像ファイルを選択します。 画像はブラウザーの中央に固定され、表示可能な領域のサイズに合わせて拡大縮小されます。 1920 x 1080 ピクセルを超える画像、またはファイル サイズが 300 KB を超える画像は選択できません。
+        - **サインイン ページの背景画像**。 サインイン ページの背景として表示する .png または .jpg 画像ファイルを選択します。 画像はブラウザーの中央に固定され、表示可能な領域のサイズに合わせて拡大縮小されます。 1920 x 1080 ピクセルを超える画像、またはファイル サイズが 300,000 バイトを超える画像は選択できません。
         
             被写体に焦点が強く当てられていない画像を使用することをお勧めします。たとえば画面中央に不透明な白いボックスを表示すると、表示可能な領域の大きさに応じて画像の一部を覆うことができます。
 
@@ -140,7 +140,9 @@ Azure AD のサインイン ページをカスタマイズできます。この�
     ![Contoso - 会社のブランド ページ。新しい言語構成が表示されています](media/customize-branding/company-branding-french-config.png)
 
 ## <a name="add-your-custom-branding-to-pages"></a>ページにカスタム ブランドを追加するには
-ページにカスタム ブランドを追加するには、URL の末尾を `?whr=yourdomainname` テキストを使用して変更します。 この変更は、多要素認証 (MFA) 設定ページ、セルフサービス パスワード リセット (SSPR) 設定 ページ、サインイン ページを含むさまざまなページに反映されます。
+ページにカスタム ブランドを追加するには、URL の末尾を `?whr=yourdomainname` テキストを使用して変更します。 この固有の変更は、多要素認証 (MFA) 設定ページ、セルフサービス パスワード リセット (SSPR) 設定 ページ、サインイン ページを含むさまざまな種類のページに反映されます。
+
+ブランド化のためのカスタマイズされた URL がアプリケーションでサポートされるかどうかは個々のアプリケーションによって異なり、カスタム ブランドをページに追加する前に確認する必要があります。
 
 **例:**
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション プロキシの新機能
 description: Azure Active Directory アプリケーション プロキシの新規および更新されたドキュメント。
-ms.date: 06/02/2021
+ms.date: 08/03/2021
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.topic: reference
@@ -9,16 +9,35 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: a74653f95c6321581b5ce832f100133d86bfc120
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f4fd9a1ac646e4a78598b4d07ba8197ed89da148
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963869"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732386"
 ---
 # <a name="azure-active-directory-application-proxy-whats-new"></a>Azure Active Directory アプリケーション プロキシ: 新機能
 
 Azure Active Directory アプリケーション プロキシに関するドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [ネットワーク デバイス登録サービス (NDES) サーバー上の Azure Active Directory アプリケーション プロキシとの統合](active-directory-app-proxy-protect-ndes.md)
+- [Azure AD アプリケーション プロキシのデプロイ計画](application-proxy-deployment-plan.md)
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml)
+- [Azure Active Directory アプリケーション プロキシと SharePoint を統合する (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Azure Active Directory アプリケーション プロキシを利用し、SharePoint へのリモート アクセスを有効にする](application-proxy-integrate-with-sharepoint-server.md)
+- [Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する](what-is-application-proxy.md)
+- [Azure Active Directory アプリケーション プロキシ: 新機能](whats-new-docs.md)
+- [Azure Active Directory アプリケーション プロキシを使用したリモート デスクトップの公開](application-proxy-integrate-with-remote-desktop-services.md)
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory アプリケーション プロキシを使用してオンプレミス API に安全にアクセスする](application-proxy-secure-api-access.md)
 
 ## <a name="may-2021"></a>2021 年 5 月
 

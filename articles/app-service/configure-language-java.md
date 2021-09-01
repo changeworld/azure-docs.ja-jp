@@ -11,18 +11,18 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: a42db5b6787f56f981ea1afa34958fecf6b2f9fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 75ee1ca92fb687975dabe0011ce8a95b8c03172b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477016"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723087"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
 Java 開発者は、Azure App Service を使用することで、フル マネージド サービス上で Java SE、Tomcat、JBoss EAP の Web アプリケーションを迅速にビルド、デプロイ、スケーリングすることができます。 アプリケーションのデプロイは、Maven プラグインを使用して、コマンド ラインから、または IntelliJ、Eclipse、Visual Studio Code などのエディターで行います。
 
-このガイドでは、App Service を使用する Java 開発者向けに主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、まず [Java クイック スタート](quickstart-java.md)をお読みください。 Java 開発に限られない、App Service の使用に関する一般的な質問については、[App Service の FAQ](faq-configuration-and-management.md) に関する記事で回答されています。
+このガイドでは、App Service を使用する Java 開発者向けに主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、まず [Java クイック スタート](quickstart-java.md)をお読みください。 Java 開発に限られない、App Service の使用に関する一般的な質問については、[App Service の FAQ](faq-configuration-and-management.yml) に関する記事で回答されています。
 
 ## <a name="show-java-version"></a>Java バージョンを表示する
 
@@ -69,7 +69,7 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#rest)を参照してください。 
 
 > [!NOTE]
->  App Service でアプリケーションを識別して実行するには、.jar アプリケーションの名前を `app.jar` にする必要があります。 (上記で説明した) Maven プラグインを使用すると、デプロイ中にアプリケーションの名前が自動的に変更されます。 JAR の名前を *app.jar* に変更しない場合は、.jar アプリを実行するコマンドが含まれるシェル スクリプトをアップロードできます。 ポータルの構成セクションで [[スタートアップ ファイル]](faq-app-service-linux.md#built-in-images) テキストボックスにこのスクリプトの絶対パスを貼り付けます。 スタートアップ スクリプトは、配置先のディレクトリからは実行されません。 そのため、スタートアップ スクリプトでファイルを参照するには、常に絶対パスを使用します (例: `java -jar /home/myapp/myapp.jar`)。
+>  App Service でアプリケーションを識別して実行するには、.jar アプリケーションの名前を `app.jar` にする必要があります。 (上記で説明した) Maven プラグインを使用すると、デプロイ中にアプリケーションの名前が自動的に変更されます。 JAR の名前を *app.jar* に変更しない場合は、.jar アプリを実行するコマンドが含まれるシェル スクリプトをアップロードできます。 ポータルの構成セクションで [[スタートアップ ファイル]](/azure/app-service/faq-app-service-linux#built-in-images) テキスト ボックスにこのスクリプトの絶対パスを貼り付けます。 スタートアップ スクリプトは、配置先のディレクトリからは実行されません。 そのため、スタートアップ スクリプトでファイルを参照するには、常に絶対パスを使用します (例: `java -jar /home/myapp/myapp.jar`)。
 
 ### <a name="tomcat"></a>Tomcat
 
@@ -126,7 +126,7 @@ Azul JVM を使用する App Service のすべての Java ランタイムには�
 
 #### <a name="timed-recording"></a>時間指定の記録
 
-時間を指定して記録を行うには、Java アプリケーションの PID (プロセス ID) が必要です。 PID を検索するには、ブラウザーで Web アプリの SCM サイト (https://<your-site-name>.scm.azurewebsites.net/ProcessExplorer/) を開きます。 このページには、Web アプリで実行中のプロセスが表示されます。 テーブル内で "java" という名前のプロセスを探し、対応する PID (プロセス ID) をコピーします。
+時間を指定して記録を行うには、Java アプリケーションの PID (プロセス ID) が必要です。 PID を検索するには、ブラウザーで Web アプリの SCM サイト (`https://<your-site-name>.scm.azurewebsites.net/ProcessExplorer/`) を開きます。 このページには、Web アプリで実行中のプロセスが表示されます。 テーブル内で "java" という名前のプロセスを探し、対応する PID (プロセス ID) をコピーします。
 
 次に、SCM サイト上部のツール バーにある **デバッグ コンソール** を開き、次のコマンドを実行します。 `<pid>` を、先ほどコピーしたプロセス ID に置き換えます。 このコマンドにより、Java アプリケーションのプロファイラーによる 30 秒の記録が開始され、`D:\home` ディレクトリに `timed_recording_example.jfr` という名前のファイルが生成されます。
 
@@ -156,7 +156,7 @@ jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/hom
 
 #### <a name="continuous-recording"></a>継続的な記録
 
-Zulu Flight Recorder を使うと、ランタイムのパフォーマンスに対する影響を最小限にして、Java アプリケーションを継続的にプロファイリングできます ([出典](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf))。 そのためには、次の Azure CLI コマンドを実行し、必要な構成で JAVA_OPTS という名前のアプリ設定を作成します。 JAVA_OPTS アプリ設定の内容は、アプリの起動時に `java` コマンドに渡されます。
+Zulu Flight Recorder を使うと、ランタイムのパフォーマンスに対する影響を最小限にして、Java アプリケーションを継続的にプロファイリングできます。 そのためには、次の Azure CLI コマンドを実行し、必要な構成で JAVA_OPTS という名前のアプリ設定を作成します。 JAVA_OPTS アプリ設定の内容は、アプリの起動時に `java` コマンドに渡されます。
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
@@ -197,7 +197,7 @@ Azure App Service for Linux では、Azure portal および CLI を使用した�
 
 - [アプリケーションの設定の構成](configure-common.md#configure-app-settings)
 - [カスタム ドメインの設定](app-service-web-tutorial-custom-domain.md)
-- [SSL バインドの構成](configure-ssl-bindings.md)
+- [TLS/SSL バインドを構成する](configure-ssl-bindings.md)
 - [CDN の追加](../cdn/cdn-add-to-web-app.md)
 - [Kudu サイトを構成する](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
@@ -206,7 +206,7 @@ Azure App Service for Linux では、Azure portal および CLI を使用した�
 
 割り当てられたメモリまたはその他の JVM ランタイムのオプションを設定するには、[アプリ設定](configure-common.md#configure-app-settings)を作成して `JAVA_OPTS` と名付け、オプションを指定します。 App Service では、開始時にこの設定が環境変数として Java ランタイムに渡されます。
 
-Azure portal の Web アプリ用の **[アプリケーション設定]** で、`-Xms512m -Xmx1204m` などの追加の設定を含む、`JAVA_OPTS` という名前の新しいアプリ設定を作成します。
+Azure portal の Web アプリの **[アプリケーション設定]** で、`-Xms512m -Xmx1204m` などの追加設定が含まれる新しいアプリ設定 (Java SE の場合は `JAVA_OPTS` という名前、Tomcat の場合は `CATALINA_OPTS` という名前) を作成します。
 
 Maven プラグインからアプリ設定を構成するには、Azure プラグイン セクションで設定/値のタグを追加します。 次の例では、特定の最小および最大の Java ヒープ サイズを設定します。
 
@@ -269,7 +269,7 @@ App Service で実行される Java アプリケーションは、他のアプ�
 
 ### <a name="authenticate-users-easy-auth"></a>ユーザーを認証する (Easy Auth)
 
-**[認証/承認]** オプションを使用して、Azure portal でアプリ認証を設定します。 そこから、Azure Active Directory、または Facebook、Google、GitHub などのソーシャル ログインを使用して、認証を有効にすることができます。 Azure portal の構成は、1 つの認証プロバイダーを構成するときにのみ機能します。 詳細については、「[Azure Active Directory ログインを使用するよう App Service アプリを構成する](configure-authentication-provider-aad.md)」と、他の ID プロバイダーの関連記事を参照してください。 複数のサインイン プロバイダーを有効にする必要がある場合は、[App Service 認証のカスタマイズ](app-service-authentication-how-to.md)に関する記事の手順に従います。
+**[認証/承認]** オプションを使用して、Azure portal でアプリ認証を設定します。 そこから、Azure Active Directory、または Facebook、Google、GitHub などのソーシャル ログインを使用して、認証を有効にすることができます。 Azure portal の構成は、1 つの認証プロバイダーを構成するときにのみ機能します。 詳細については、「[Azure Active Directory ログインを使用するよう App Service アプリを構成する](configure-authentication-provider-aad.md)」と、他の ID プロバイダーの関連記事を参照してください。 複数のサインイン プロバイダーを有効にする必要がある場合は、[サインインとサインアウトのカスタマイズ](configure-authentication-customize-sign-in-out.md)に関する記事の手順に従います。
 
 #### <a name="java-se"></a>Java SE
 
@@ -297,7 +297,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使用します。 他のアクションを実行する場合は、「[Azure App Service 上での認証と承認の高度な使用方法](./app-service-authentication-how-to.md)」を参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
+ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使用します。 他のアクションを実行するには、[サインインとサインアウトのカスタマイズ](configure-authentication-customize-sign-in-out.md)に関するドキュメントを参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
 
 ```java
 public boolean isSecure()
@@ -311,7 +311,7 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>TLS/SSL を構成する
 
-「[Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」の手順に従って、既存の SSL 証明書をアップロードし、アプリケーションのドメイン名にバインドします。 既定では、アプリケーションで引き続き HTTP 接続が許可されます。チュートリアルの特定の手順に従って、SSL と TLS を適用します。
+[Azure App Service での TLS/SSL バインドによるカスタム DNS 名のセキュリティ保護](configure-ssl-bindings.md)に関する記事の手順に従って、既存の TLS/SSL 証明書をアップロードし、アプリケーションのドメイン名にバインドします。 既定では、アプリケーションで引き続き HTTP 接続が許可されます。チュートリアルの特定の手順に従って、TLS/SSL を適用します。
 
 ### <a name="use-keyvault-references"></a>KeyVault 参照を使用する
 
@@ -337,7 +337,7 @@ Java キー ストアの証明書を使用して JDBC 接続を暗号化する�
 
 #### <a name="initialize-the-java-key-store"></a>Java キー ストアを初期化する
 
-`import java.security.KeyStore` オブジェクトを初期化するには、キー ストア ファイルをパスワードと共に読み込みます。 両方のキー ストアの既定のパスワードは "changeit" です。
+`import java.security.KeyStore` オブジェクトを初期化するには、キー ストア ファイルをパスワードと共に読み込みます。 両方のキー ストアの既定のパスワードは `changeit` です。
 
 ```java
 KeyStore keyStore = KeyStore.getInstance("jks");
@@ -369,11 +369,11 @@ Azure Monitor Application Insights は、クラウド ネイティブのアプ�
 
 #### <a name="azure-portal"></a>Azure portal
 
-Azure portal で Application Insights を有効にするには、左側のメニューの **[Application Insights]** に移動し、 **[Application Insights を有効にする]** を選択します。 既定では、Web アプリと同じ名前の新しい Application Insights リソースが使用されます。 既存の Application Insights リソースを使用することも、名前を変更することもできます。 下部にある **[適用]** をクリックします
+Azure portal で Application Insights を有効にするには、左側のメニューで **[Application Insights]** に移動し、 **[Application Insights を有効にする]** を選択します。 既定では、Web アプリと同じ名前の新しい Application Insights リソースが使用されます。 既存の Application Insights リソースを使用することも、名前を変更することもできます。 下部にある **[適用]** をクリックします
 
 #### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用して有効にするには、Application Insights リソースを作成し、Application Insights を Web アプリに接続するために、ポータルでいくつかのアプリ設定を指定する必要があります。
+Azure CLI を使用して有効にするには、Application Insights リソースを作成し、Application Insights を Web アプリに接続するために、Azure portal でいくつかのアプリ設定を指定する必要があります。
 
 1. Application Insights 拡張機能を有効にする
 
@@ -558,6 +558,8 @@ Windows での App Service 上の Tomcat インストールは、App Service プ
 2. Tomcat をローカルにコピーします。
 3. 必要な構成変更を行います。
 4. 構成が正常に完了したことを示します。
+
+Windows サイトの場合は、`wwwroot` ディレクトリに `startup.cmd` または `startup.ps1` という名前のファイルを作成します。 これは、Tomcat サーバーが起動する前に自動的に実行されます。
 
 この手順を完了する PowerShell スクリプトを次に示します。
 
@@ -856,7 +858,7 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 #### <a name="shared-server-level-resources"></a>共有のサーバーレベル リソース
 
-サーバーレベルの共有データ ソースを追加するには、Tomcat のserver.xml を編集する必要があります。 まず、[スタートアップ スクリプト](faq-app-service-linux.md#built-in-images)をアップロードし、 **[構成]**  >  **[スタートアップ コマンド]** でスクリプトへのパスを設定します。 [FTP](deploy-ftp.md) を使用してスタートアップ スクリプトをアップロードできます。
+サーバーレベルの共有データ ソースを追加するには、Tomcat のserver.xml を編集する必要があります。 まず、[スタートアップ スクリプト](/azure/app-service/faq-app-service-linux#built-in-images)をアップロードし、 **[構成]**  >  **[スタートアップ コマンド]** でスクリプトへのパスを設定します。 [FTP](deploy-ftp.md) を使用してスタートアップ スクリプトをアップロードできます。
 
 スタートアップ スクリプトによって、server.xml ファイルへの [xsl 変換](https://www.w3schools.com/xml/xsl_intro.asp)が作成され、結果の xml ファイルが `/usr/local/tomcat/conf/server.xml` に出力されます。 スタートアップ スクリプトでは、apk を使用して libxslt をインストールする必要があります。 xsl ファイルとスタートアップ スクリプトは FTP 経由でアップロードできます。 以下にスタートアップ スクリプトの例を示します。
 
@@ -986,7 +988,7 @@ xsl ファイルの例は次のとおりです。 この xsl ファイルの例�
     data-source add --name=postgresDS --driver-name=postgres --jndi-name=java:jboss/datasources/postgresDS --connection-url=${POSTGRES_CONNECTION_URL,env.POSTGRES_CONNECTION_URL:jdbc:postgresql://db:5432/postgres} --user-name=${POSTGRES_SERVER_ADMIN_FULL_NAME,env.POSTGRES_SERVER_ADMIN_FULL_NAME:postgres} --password=${POSTGRES_SERVER_ADMIN_PASSWORD,env.POSTGRES_SERVER_ADMIN_PASSWORD:example} --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=org.postgresql.Driver --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker
     ```
 
-1. JBoss CLI コマンドを呼び出すスタートアップ スクリプト `startup_script.sh` を作成します。 次の例は、`jboss-cli-commands.cli` を呼び出す方法を示したものです。 後で、コンテナーの起動時にこのスクリプトを実行するように App Service を構成します。 
+1. JBoss CLI コマンドを呼び出すスタートアップ スクリプト `startup_script.sh` を作成します。 次の例は、`jboss-cli-commands.cli` を呼び出す方法を示したものです。 後で、コンテナーの起動時にこのスクリプトが実行されるように App Service を構成します。 
 
     ```bash
     $JBOSS_HOME/bin/jboss-cli.sh --connect --file=/home/site/deployments/tools/jboss-cli-commands.cli
@@ -1020,11 +1022,11 @@ JBoss EAP は、Premium v3 および Isolated v2 App Service プラン タイプ
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK のバージョンとメンテナンス
 
-Azure でサポートされている Java Development Kit (JDK) は、[Azul Systems](https://www.azul.com/) で提供されている [Zulu](https://www.azul.com/downloads/azure-only/zulu/) です。 OpenJDK の Azul Zulu Enterprise ビルドは、Microsoft および Azul Systems でサポートされる、Azure と Azure Stack 用の OpenJDK の無料でマルチプラット フォーム対応の実稼働可能なディストリビューションです。 これらには、Java SE アプリケーションを構築および実行するためのすべてのコンポーネントが含まれています。 [Java JDK のインストール](/azure/developer/java/fundamentals/java-jdk-long-term-support)に関するページから JDK をインストールできます。
+Azure でサポートされている Java Development Kit (JDK) は、[Azul Systems](https://www.azul.com/) で提供されている [Zulu](https://www.azul.com/downloads/azure-only/zulu/) です。 OpenJDK の Azul Zulu Enterprise ビルドは、Microsoft および Azul Systems でサポートされる、Azure と Azure Stack 用の OpenJDK の無料でマルチプラット フォーム対応の実稼働可能なディストリビューションです。 これらには、Java SE アプリケーションを構築および実行するためのすべてのコンポーネントが含まれています。 [Java JDK のインストール](/azure/developer/java/fundamentals/java-support-on-azure)に関するページから JDK をインストールできます。
 
 メジャー バージョンの更新プログラムは、Azure App Service の新しいランタイム オプションによって提供されます。 お客様は、App Service デプロイを構成することで Java のこれらの新しいバージョンに更新します。また、主要な更新プログラムをテストし、ニーズを満たしていることを確認する必要があります。
 
-サポートされている JDK は、毎年 1 月、4 月、7 月、および 10 月の四半期ごとに自動的に適用されます。 Azure 上の Java の詳細については、[こちらのサポート ドキュメント](/azure/developer/java/fundamentals/java-jdk-long-term-support)を参照してください。
+サポートされている JDK は、毎年 1 月、4 月、7 月、および 10 月の四半期ごとに自動的に適用されます。 Azure 上の Java の詳細については、[こちらのサポート ドキュメント](/azure/developer/java/fundamentals/java-support-on-azure)を参照してください。
 
 ### <a name="security-updates"></a>セキュリティ更新プログラム
 
@@ -1049,4 +1051,5 @@ Tomcat 8.0 は、[2018 年 9 月 30 日にサポートが終了 (EOL)](https://t
 
 [Java 開発者向けの Azure](/java/azure/) センターにアクセスして、Azure クイック スタート、チュートリアル、および Java リファレンス ドキュメントを入手してください。
 
-Java 開発に限られない、App Service for Linux の使用に関する一般的な質問については、[App Service Linux の FAQ](faq-app-service-linux.md) で回答されています。
+- [App Service Linux の FAQ](faq-app-service-linux.yml)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

@@ -2,16 +2,16 @@
 title: Azure Site Recovery を使用して Azure VM フェールオーバー後に IP アドレスを保持する
 description: ディザスター リカバリーのために、Azure Site Recovery を使用して Azure VM をセカンダリ リージョンへフェールオーバーする際に、IP アドレスを保持する方法について説明します
 ms.service: site-recovery
-ms.date: 4/9/2019
+ms.date: 07/25/2021
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 782e6247bb17485e8e654c7e879f477fe531edc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023552"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736232"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する
 
@@ -33,6 +33,8 @@ ms.locfileid: "96023552"
 A 社は、Azure ですべてのアプリを実行しています。
 
 ### <a name="before-failover"></a>フェールオーバー前
+
+>[! 注 世界中の任意の 2 つの Azure リージョン間でレプリケーションを実行できるようになりました。 お客様は、レプリケーションを自身の大陸内に限定されることなく有効化できるようになりました。
 
 フェールオーバー前のアーキテクチャを次に示します。
 
@@ -93,7 +95,7 @@ A 社は、Azure ですべてのアプリを実行しています。
         - **Recovery VNet 1** と **Recovery VNet 2** にはそれぞれ、**Souce VNet 1** と **Souce VNet 2** に対応する 2 つのサブネットがあります。東南アジアには、アドレス空間が 10.3.0.0/16 の、追加の VNet (**Azure VNet**) があります。
         - **Azure VNet** には、アドレス空間が 10.3.4.0/24 のサブネット (**Subnet 4**) が含まれています。
         - SQL Server Always On やドメイン コントローラーなどのレプリカ ノードは、**Subnet 4** 内に配置されています。
-- いくつかのサイト間 VPN 接続が存在します。 
+- いくつかのサイト間 VPN 接続が存在します。
     - **Source VNet 1** と **Azure VNet**
     - **Source VNet 2** と **Azure VNet**
     - **Source VNet 1** と **Source VNet 2** はサイト間 VPN で接続されています
@@ -121,7 +123,7 @@ A 社は、Azure ですべてのアプリを実行しています。
 
 ## <a name="hybrid-resources-full-failover"></a>ハイブリッド リソース: 完全フェールオーバー
 
-このシナリオでは、**B 社** はハイブリッド型の事業を運用しており、アプリケーション インフラストラクチャの一部を Azure で実行し、残りをオンプレミスで実行しています。 
+このシナリオでは、**B 社** はハイブリッド型の事業を運用しており、アプリケーション インフラストラクチャの一部を Azure で実行し、残りをオンプレミスで実行しています。
 
 ### <a name="before-failover"></a>フェールオーバー前
 

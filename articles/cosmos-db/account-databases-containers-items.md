@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 07/12/2021
 ms.reviewer: sngun
-ms.openlocfilehash: f714a70a0d9eb971498fc2f9fe648804a59b5136
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 55ec61dc83aa9821433cd3a53230d9e5c5d545ec
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475016"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664910"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB リソース モデル
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -101,7 +101,7 @@ Azure Cosmos コンテナーには、一連のシステム定義のプロパテ�
 |\_etag | システム生成 | オプティミスティック同時実行制御に使用されるエンティティ タグ | はい | いいえ | いいえ | いいえ | いいえ |
 |\_ts | システム生成 | コンテナーの最終更新時のタイムスタンプ | はい | いいえ | いいえ | いいえ | いいえ |
 |\_self | システム生成 | コンテナーのアドレス指定可能な URI | はい | いいえ | いいえ | いいえ | いいえ |
-|id | ユーザー構成可能 | コンテナーのユーザーが定義した一意の名前 | はい | Yes | Yes | Yes | はい |
+|id | ユーザー構成可能 | コンテナーのユーザーが定義した一意の名前 | はい | はい | はい | はい | はい |
 |indexingPolicy | ユーザー構成可能 | インデックスのパス、インデックスの種類、インデックス モードを変更する機能を提供します | はい | いいえ | いいえ | いいえ | はい |
 |TimeToLive | ユーザー構成可能 | 設定した期間後にコンテナーから自動的に項目を削除する機能を提供します。 詳細については、[Time to Live](time-to-live.md) に関するページを参照してください。 | はい | いいえ | いいえ | いいえ | はい |
 |changeFeedPolicy | ユーザー構成可能 | コンテナー内の項目に加えられた変更の読み取りに使用されます。 詳細については、[変更フィード](change-feed.md)に関するページを参照してください。 | はい | いいえ | いいえ | いいえ | はい |
@@ -113,11 +113,11 @@ Azure Cosmos コンテナーでは、いずれかの Azure Cosmos API を使用�
 
 | 操作 | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- | --- |
-| データベース内のコンテナーを列挙する | はい | Yes | Yes | はい | NA | NA |
-| コンテナーを読み取る | はい | Yes | Yes | はい | NA | NA |
-| 新しいコンテナーを作成する | はい | Yes | Yes | はい | NA | NA |
-| コンテナーを更新する | はい | Yes | Yes | はい | NA | NA |
-| コンテナーを削除する | はい | Yes | Yes | はい | NA | NA |
+| データベース内のコンテナーを列挙する | はい | はい | はい | はい | NA | NA |
+| コンテナーを読み取る | はい | はい | はい | はい | NA | NA |
+| 新しいコンテナーを作成する | はい | はい | はい | はい | NA | NA |
+| コンテナーを更新する | はい | はい | はい | はい | NA | NA |
+| コンテナーを削除する | はい | はい | はい | はい | NA | NA |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos 項目
 
@@ -137,8 +137,8 @@ Azure Cosmos のどの項目にも、以下のシステム定義プロパティ�
 |\_etag | システム生成 | オプティミスティック同時実行制御に使用されるエンティティ タグ | はい | いいえ | いいえ | いいえ | いいえ |
 |\_ts | システム生成 | 項目の最終更新のタイムスタンプ | はい | いいえ | いいえ | いいえ | いいえ |
 |\_self | システム生成 | 項目のアドレス指定可能な URI | はい | いいえ | いいえ | いいえ | いいえ |
-|id | 接続前/接続後 | 論理パーティション内のユーザーが定義した一意の名前。 | はい | Yes | Yes | Yes | はい |
-|任意のユーザー定義のプロパティ | ユーザー定義 | API のネイティブ表現 (JSON、BSON、CQL など) で表されるユーザー定義のプロパティ | はい | Yes | Yes | Yes | はい |
+|id | 接続前/接続後 | 論理パーティション内のユーザーが定義した一意の名前。 | はい | はい | はい | はい | はい |
+|任意のユーザー定義のプロパティ | ユーザー定義 | API のネイティブ表現 (JSON、BSON、CQL など) で表されるユーザー定義のプロパティ | はい | はい | はい | はい | はい |
 
 > [!NOTE]
 > `id` プロパティの一意性は、各論理パーティション内でのみ適用されます。 複数のドキュメントで、異なるパーティション キー値を持つ同じ `id` プロパティを使用できます。
@@ -149,12 +149,13 @@ Azure Cosmos 項目では、次の操作をサポートします。 Azure Cosmos
 
 | 操作 | Azure CLI | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- | --- |
-| 挿入、置換、削除、アップサート、読み取り | いいえ | はい | Yes | Yes | Yes | はい |
+| 挿入、置換、削除、アップサート、読み取り | いいえ | はい | はい | はい | はい | はい |
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos アカウントの管理方法とその他の概念を確認します。
 
+* 詳細については、Learn モジュール「[Azure Cosmos DB SQL API](/learn/modules/intro-to-azure-cosmos-db-core-api/)」を参照してください。
 * [Azure Cosmos アカウントを管理する方法](how-to-manage-database-account.md)
 * [グローバル配信](distribute-data-globally.md)
 * [一貫性レベル](consistency-levels.md)

@@ -4,15 +4,15 @@ description: Azure Cosmos DB のトランザクション (行ベース) スト�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9328b8159b04d4e7e7bc2383739c86c76dbf156a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 5bcc0fed8413affe6d525f03bd08e8b61751f893
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985888"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745518"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -153,28 +153,66 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
 
 ### <a name="schema-representation"></a>スキーマ表現
 
-分析ストアには、2 つのスキーマ表現モードがあります。 これらのモードでは、ポリモーフィック型スキーマを処理する列形式の表現の簡略さと、クエリ エクスペリエンスの簡略さとの間でトレードオフがあります。
+分析ストアには、2 つのスキーマ表現モードがあります。 これらのモードでは、データベース アカウント内のすべてのコンテナーのスキーマ表現方法が定義されており、クエリ エクスペリエンスの簡単さと、ポリモーフィック型スキーマのより包括的な列表現の便利さとの間にはトレードオフがあります。
 
-* 適切に定義されたスキーマ表現
-* 完全に忠実なスキーマ表現
+* SQL (CORE) API アカウントの既定のオプションである、適切に定義されたスキーマ表現。 
+* MongoDB 用 Azure Cosmos DB API アカウントの既定のオプションである、完全に忠実なスキーマ表現。
 
+SQL (Core) API アカウントに完全に忠実なスキーマを使用することができます。 この可能性に関する考慮事項を次に示します。
+
+ * このオプションは、Synapse Link が有効になっていないアカウントに対してのみ有効です。
+ * Synapse Link を無効にしてから再びオンにして、既定のオプションをリセットし、適切に定義されたものから完全に忠実なものに変更することはできません。
+ * 他のプロセスを使用して、適切に定義されたものを完全に忠実なものに変更することはできません。
+ * MongoDB アカウントは、表現方法を変更するこの可能性とは互換性がありません。
+ * 現在、この決定は Azure portal では行うことができません。
+ * このオプションの決定は、アカウントで Synapse Link を有効にするのと同じときに行う必要があります。
+ 
+ Azure CLI を使用する場合:
+ ```cli
+ az cosmosdb create --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup --subscription MySubscription --analytical-storage-schema-type "FullFidelity" --enable-analytical-storage true
+ ```
+ 
 > [!NOTE]
-> SQL (コア) API アカウントの場合、分析ストアを有効にすると、分析ストアの既定のスキーマ表現が適切に定義されます。 MongoDB アカウント用の Azure Cosmos DB API の場合、分析ストアの既定のスキーマ表現は完全に忠実なスキーマ表現になります。 
+> 既存のアカウントの場合は、上のコマンドで `create` を `update` に置き換えます。
+ 
+  PowerShell を使用する場合:
+  ```
+   New-AzCosmosDBAccount -ResourceGroupName MyResourceGroup -Name MyCosmosDBDatabaseAccount  -EnableAnalyticalStorage true -AnalyticalStorageSchemaType "FullFidelity"
+   ```
+ 
+> [!NOTE]
+> 既存のアカウントの場合は、上のコマンドで `New-AzCosmosDBAccount` を `Update-AzCosmosDBAccount` に置き換えます。
+ 
 
-**適切に定義されたスキーマ表現**
+
+#### <a name="well-defined-schema-representation"></a>適切に定義されたスキーマ表現
 
 適切に定義されたスキーマ表現は、スキーマに依存しないデータの単純な表形式表現をトランザクション ストアに作成します。 適切に定義されたスキーマ表現には、次の考慮事項があります。
 
-* プロパティは、どのような項目でも常に同じ型にします。
-* null からそれ以外のデータ型への変更は 1 回のみ許可されます。最初に出現する null 以外の型では、列のデータ型が定義されます。
+* 最初のドキュメントで基本スキーマを定義し、プロパティはすべてのドキュメントで常に同じ型である必要があります。 例外は次の場合だけです。
+  * null からそれ以外のデータ型。最初に出現する null 以外の型で、列のデータ型が定義されます。 null 以外の最初のデータ型に従っていないドキュメントは、分析ストアでは表されません。
+  * `float` から `integer`。 すべてのドキュメントが分析ストアで表されます。
+  * `integer` から `float`。 すべてのドキュメントが分析ストアで表されます。 ただし、Azure Synapse SQL サーバーレス プールでこのデータを読み取るには、WITH 句を使用して列を `varchar` に変換する必要があります。 この最初の変換の後で、再び数値に変換することができます。 次の例を確認してください。ここで、**num** の最初の値は整数で、2 番目の値は float でした。
 
-  * たとえば、`{"a":123} {"a": "str"}` は、`"a"` が文字列の場合と数値の場合があるため、適切に定義されたスキーマではありません。 この場合、分析ストアでは、`"a"` のデータ型は、コンテナーの有効期間内で最初に検出された項目での `“a”` のデータ型として登録されます。 ドキュメントは分析ストアに含まれますが、`"a"` のデータ型が異なる項目は含まれません。
+```SQL
+SELECT CAST (num as float) as num
+FROM OPENROWSET(PROVIDER = 'CosmosDB',
+                CONNECTION = '<your-connection',
+                OBJECT = 'IntToFloat',
+                SERVER_CREDENTIAL = 'your-credential'
+) 
+WITH (num varchar(100)) AS [IntToFloat]
+```
+
+  * 基本スキーマのデータ型に従わないプロパティは、分析ストアでは表されません。 たとえば、次の 2 つのドキュメントについて考えてみます。最初のものでは、分析ストアの基本スキーマが定義されています。 `id` が `2` である 2 番目のドキュメントは、プロパティ `"a"` が文字列であり、最初のドキュメントの`"a"` は数値であるため、2 番目には適切に定義されたスキーマはありません。 この場合、コンテナーの有効期間をとおして、分析ストアでは `"a"` のデータ型は `integer` として登録されます。 2 番目のドキュメントはそれでも分析ストアに含まれますが、その `"a"` プロパティは含まれません。
   
-    この条件は、null プロパティには適用されません。 たとえば、`{"a":123} {"a":null}` はやはり適切に定義されています。
+    * `{"id": "1", "a":123}` 
+    * `{"id": "2", "a": "str"}`
+     
+ > [!NOTE]
+ > 上のこの条件は、null プロパティには適用されません。 たとえば、`{"a":123} and {"a":null}` はやはり適切に定義されています。
 
-* 配列型に含まれる繰り返される型は、1 つである必要があります。
-
-  * たとえば、`{"a": ["str",12]}` は、配列には整数型と文字列型が混在しているため、適切に定義されたスキーマではありません。
+* 配列型に含まれる繰り返される型は、1 つである必要があります。 たとえば、`{"a": ["str",12]}` は、配列には整数型と文字列型が混在しているため、適切に定義されたスキーマではありません。
 
 > [!NOTE]
 > Azure Cosmos DB 分析ストアが適切に定義されたスキーマ表現に準拠していて、上記の仕様を特定の項目が違反している場合、これらの項目は分析ストアには含まれません。
@@ -192,7 +230,7 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
   * Azure Synapse の SQL サーバーレス プールは、これらの列を `NULL` として表示します。
 
 
-**完全に忠実なスキーマ表現**
+#### <a name="full-fidelity-schema-representation"></a>完全に忠実なスキーマ表現
 
 完全に忠実なスキーマ表現は、スキーマに依存しないオペレーショナル データ内のさまざまなポリモーフィック型スキーマを処理するように設計されています。 このスキーマ表現では、適切に定義されたスキーマ制約 (つまり、混在したデータ型フィールドも、混在したデータ型配列も存在しない) に違反しても、分析ストアから項目が削除されることはありません。
 
@@ -260,7 +298,11 @@ salary: 1000000
 
 ## <a name="security"></a>セキュリティ
 
-分析ストアでの認証は、特定のデータベースに対するトランザクション ストアと同じです。 認証には主キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
+* 分析ストアでの認証は、特定のデータベースに対するトランザクション ストアと同じです。 認証には主キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
+
+* **プライベート エンドポイントを使用したネットワーク分離** - トランザクション ストアおよび分析ストア内のデータへのネットワーク アクセスを個別に制御できます。 ネットワークの分離は、Azure Synapse ワークスペースのマネージド仮想ネットワーク内で、ストアごとに別個のマネージド プライベート エンドポイントを使用して行われます。 詳細については、[分析ストアのプライベート エンドポイントを構成する](analytical-store-private-endpoints.md)方法に関する記事を参照してください。
+
+* **カスタマー マネージド キーを使用したデータの暗号化** - 同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 Azure Synapse Link では、Azure Cosmos DB アカウントのマネージド ID を使用したカスタマー マネージド キーの構成のみがサポートされています。 アカウントで [Azure Synapse Link を有効にする](configure-synapse-link.md#enable-synapse-link)前に、Azure Key Vault のアクセス ポリシーでアカウントのマネージド ID を構成する必要があります。 詳細については、[Azure Cosmos DB アカウントのマネージド ID を使用して、カスタマー マネージド キーを構成](how-to-setup-cmk.md#using-managed-identity)する方法に関するセクションを参照してください。
 
 ## <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>複数の Azure Synapse Analytics ランタイムのサポート
 
@@ -320,9 +362,11 @@ Azure Cosmos DB コンテナーで分析ストアを有効にするためのだ�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳しく学習するために、次のドキュメントを参照してください。
+詳細については、次のドキュメントを参照してください。
 
 * [Azure Synapse Link for Azure Cosmos DB](synapse-link.md)
+
+* [Azure Synapse Analytics を使用してトランザクションと分析のハイブリッド処理を設計する](/learn/modules/design-hybrid-transactional-analytical-processing-using-azure-synapse-analytics/)方法に関する学習モジュールを確認する
 
 * [Azure Synapse Link for Azure Cosmos DB の概要](configure-synapse-link.md)
 

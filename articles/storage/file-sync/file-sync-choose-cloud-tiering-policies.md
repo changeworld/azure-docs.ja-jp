@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0bf41e1a847335a99b3e8f2e9ecbac504c3179e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: daa13c090ad9c10dbc21c082871f02ee1cc9f241
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796544"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323064"
 ---
 # <a name="choose-cloud-tiering-policies"></a>クラウドを使った階層化ポリシーの選択
 
@@ -56,9 +56,9 @@ Azure File Sync は、Windows Server 2012 R2 以降が搭載された NTFS ボ�
 |256 TB – 512 TB| 128 KB              |
 |512 TB – 1 PB  | 256 KB              |
 |1 PB – 2 PB    | 512 KB              |
-|2 TB – 4 PB    | 1024 KB             |
-|4 TB – 8 TB    | 2048 KB (最大サイズ)  |
-|8 TB 以上         | サポート外       |
+|2 PB – 4 PB    | 1024 KB             |
+|4 PB – 8 PB    | 2048 KB (最大サイズ)  |
+|> 8 PB         | サポート外       |
 
 ボリュームを作成するときに、ボリュームを異なるクラスター サイズで手動でフォーマットしてしまうことがあります。 ボリュームが古いバージョンの Windows に由来する場合は、既定のクラスター サイズも異なる場合があります。 [この記事では、既定のクラスター サイズの詳細について説明しています。](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat) 4 KB 未満のクラスター サイズを選択した場合でも、階層化できる最小のファイル サイズとして 8 KB の制限が引き続き適用されます (技術的に、クラスター サイズに 2 を乗算した結果が 8 KB 未満になる場合でも)。
 

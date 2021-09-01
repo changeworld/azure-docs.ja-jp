@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 529be70de61fe9adb025ee801bd417bc860ef5e6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97630277"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736329"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Cognitive Search のエンリッチメント パイプラインの AML スキル
 
 > [!IMPORTANT] 
-> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現在、.NET SDK によるサポートはありません。
+> このスキルはパブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 [プレビューの REST API](/rest/api/searchservice/index-preview) では、このスキルがサポートされています。
 
-**AML** スキルを使用すると、カスタム [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) (AML) モデルを使用して AI エンリッチメントを拡張できます。 AML モデルが [トレーニングされてデプロイされる](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)と、**AML** スキルによって AI エンリッチメントに統合されます。
+**AML** スキルを使用すると、カスタム [Azure Machine Learning](../machine-learning/overview-what-is-azure-machine-learning.md) (AML) モデルを使用して AI エンリッチメントを拡張できます。 AML モデルが [トレーニングされてデプロイされる](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)と、**AML** スキルによって AI エンリッチメントに統合されます。
 
 組み込みスキルと同様に、**AML** スキルには入力と出力があります。 入力は、デプロイされた AML サービスに JSON オブジェクトとして送信され、成功状態コードとともに JSON ペイロードを応答として出力します。 応答には、**AML** スキルによって指定された出力が含まれることが想定されます。 その他の応答はエラーと見なされ、エンリッチメントは実行されません。
 

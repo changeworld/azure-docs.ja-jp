@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-js
-ms.openlocfilehash: 69c4d1fa56c6ff98989b4f9a5ae54209eb76be13
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 2a300a2bdffec7c376206f62d1b6fc8791aad01b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113659410"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122423443"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -78,7 +78,7 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig
 * リソースの場合: 音声キーと、それに関連付けられた場所/リージョンを渡します。
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 音声キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 音声キーまたは認証トークンは省略可能です。
-* 認証トークンの場合: 認証トークンと、それに関連付けられた場所またはリージョンを渡します。
+* 認証トークンの場合: 認証トークンと、それに関連付けられた場所/リージョンを渡します。
 
 この例では、音声キーと場所/リージョンを使用して [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
@@ -267,7 +267,7 @@ SSML を使用したカスタマイズを開始するには、音声を切り替
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-US-AriaNeural">
+  <voice name="en-US-ChristopherNeural">
     When you're on the freeway, it's a good idea to use a GPS.
   </voice>
 </speak>
@@ -309,7 +309,7 @@ function synthesizeSpeech() {
 ```
 
 > [!NOTE]
-> SSML を使用せずに音声を変更するには、`SpeechConfig.speechSynthesisVoiceName = "en-US-AriaNeural";` を使用して `SpeechConfig` のプロパティを設定します
+> SSML を使用せずに音声を変更するには、`SpeechConfig.speechSynthesisVoiceName = "en-US-ChristopherNeural";` を使用して `SpeechConfig` のプロパティを設定します
 
 ## <a name="get-facial-pose-events"></a>表情イベントを取得する
 

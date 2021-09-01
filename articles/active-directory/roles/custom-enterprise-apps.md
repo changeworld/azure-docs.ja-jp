@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db22b44e032261d138d74e34340dca6fcaf75779
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bf49cfd4d1e0e9b3e65354c9f6c89dd7efd71970
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092874"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739952"
 ---
 # <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリを管理するためのカスタム ロールを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "110092874"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure AD Premium P1 または P2 ライセンス
-- 特権ロール管理者またはグローバル管理者
+- 特権ロール管理者または全体管理者
 - PowerShell を使用する場合の AzureADPreview モジュール
 - Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
@@ -54,8 +54,9 @@ ms.locfileid: "110092874"
 >[!NOTE]
 > カスタム ロールは組織全体のレベルで作成および管理され、組織の [概要] ページからのみ使用できます。
 
-1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択してから、**[新しいカスタム ロール]** を選択します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択してから、 **[新しいカスタム ロール]** を選択します。
 
     ![Azure AD のロール一覧から新しいカスタム ロールを追加する](./media/custom-enterprise-apps/new-custom-role.png)
 
@@ -73,8 +74,10 @@ ms.locfileid: "110092874"
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-portal"></a>Azure portal を使用してユーザーにロールを割り当てる
 
-1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、次に **[ロールと管理者]** を選択します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択します。
+
 1. **[ユーザーとグループの割り当てを管理するためのアクセス許可を付与する]** ロールを選択します。
 
     ![[ロールと管理者] を開き、カスタム ロールを検索する](./media/custom-enterprise-apps/select-custom-role.png)

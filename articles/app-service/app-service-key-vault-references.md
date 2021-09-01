@@ -3,15 +3,15 @@ title: Key Vault 参照を使用する
 description: Azure Key Vault 参照を使用するように Azure App Service と Azure Functions を設定する方法について説明します。 Key Vault シークレットをアプリケーション コードで使用できるようにします。
 author: mattchenderson
 ms.topic: article
-ms.date: 05/25/2021
+ms.date: 06/11/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 3300f5fbb5613672d7979f161ca0c92126f26a83
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 15b5974aff53303ca0245fc6100ea22eebc70c6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578118"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752470"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -23,26 +23,43 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
 
 1. [Key Vault クイック スタート](../key-vault/secrets/quick-create-cli.md)に従い、Key Vault を作成してください。
 
-1. [システム割り当てのマネージド ID](overview-managed-identity.md) を自分のアプリケーションのために作成します。
+1. アプリケーション用の[マネージド ID](overview-managed-identity.md) を作成します。
 
-   > [!NOTE] 
-   > Key Vault 参照では現在のところ、システム割り当てのマネージド ID のみをサポートしています。 ユーザー割り当て ID は使用できません。
+    Key Vault 参照では、アプリのシステム割り当て ID が既定で使用されますが、[ユーザー割り当て ID を指定する](#access-vaults-with-a-user-assigned-identity)ことができます。
 
 1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/security-features.md#privileged-access)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
 
 ### <a name="access-network-restricted-vaults"></a>ネットワーク制限があるコンテナーにアクセスする
 
-> [!NOTE]
-> Linux ベースのアプリケーションでは現在、アプリが [App Service Environment](./environment/intro.md) 内でホストされている場合を除き、ネットワーク制限があるキー コンテナーのシークレットを解決できません。
-
 コンテナーが[ネットワーク制限](../key-vault/general/overview-vnet-service-endpoints.md)付きで構成されている場合は、アプリケーションがネットワークにアクセスできることを確認する必要もあります。
 
 1. [App Service のネットワーク機能](./networking-features.md)と [Azure Functions のネットワーク オプション](../azure-functions/functions-networking-options.md)のページの説明に従って、アプリケーションの送信ネットワーク機能が構成されていることを確認します。
 
+    プライベート エンドポイントを使用しようとする Linux アプリケーションでは、さらに、すべてのトラフィックを仮想ネットワーク経由でルーティングするようにアプリを明示的に構成する必要があります。 この要件は、今後の更新で削除される予定です。 これを設定するには、次の CLI コマンドを使用します。
+
+    ```azurecli
+    az webapp config set --subscription <sub> -g <rg> -n <appname> --generic-configurations '{"vnetRouteAllEnabled": true}'
+    ```
+
 2. アプリがアクセスするネットワークまたはサブネットに対するコンテナーの構成アカウントがあることを確認します。
 
-> [!IMPORTANT]
-> 仮想ネットワーク統合によるコンテナーへのアクセスは、現在、[特定のバージョンが指定されていないシークレットの自動更新](#rotation)と両立できません。
+### <a name="access-vaults-with-a-user-assigned-identity"></a>ユーザー割り当て ID を使用してコンテナーにアクセスする
+
+一部のアプリでは、作成時の、システム割り当て ID をまだ使用できないときに、シークレットを参照する必要があります。 このような場合は、ユーザー割り当て ID を作成し、コンテナーへのアクセス権を事前に与えることができます。
+
+ユーザー割り当て ID にアクセス許可を付与した後、次の手順のようにします。
+
+1. まだ行っていない場合は、アプリケーションに [ID を割り当てます](./overview-managed-identity.md#add-a-user-assigned-identity)。
+
+1. `keyVaultReferenceIdentity` プロパティにユーザー割り当て ID のリソース ID を設定することにより、この ID を使用して Key Vault 参照操作を行うようアプリを構成します。
+
+    ```azurecli-interactive
+    userAssignedIdentityResourceId=$(az identity show -g MyResourceGroupName -n MyUserAssignedIdentityName --query id -o tsv)
+    appResourceId=$(az webapp show -g MyResourceGroupName -n MyAppName --query id -o tsv)
+    az rest --method PATCH --uri "${appResourceId}?api-version=2021-01-01" --body "{'properties':{'keyVaultReferenceIdentity':'${userAssignedIdentityResourceId}'}}"
+    ```
+
+この構成は、アプリのすべての参照に適用されます。
 
 ## <a name="reference-syntax"></a>参照構文
 
@@ -67,9 +84,6 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 ```
 
 ## <a name="rotation"></a>回転
-
-> [!IMPORTANT]
-> [仮想ネットワーク統合によるコンテナーへのアクセス](#access-network-restricted-vaults)は、現在、特定のバージョンが指定されていないシークレットの自動更新と両立できません。
 
 参照でバージョンが指定されていない場合、アプリでは Key Vault に存在する最新バージョンを使用します。 回転イベントなどにより新しいバージョンが利用可能になると、アプリは自動的に更新され、1 日以内に最新バージョンの使用が開始されます。 アプリに対して行われた構成の変更により、参照されているすべてのシークレットの最新バージョンが即座に更新されます。
 
@@ -201,7 +215,7 @@ Function App の擬似テンプレートの例は次のようになります。
 ```
 
 > [!NOTE] 
-> この例では、ソース管理デプロイはアプリケーション設定に依存します。 アプリ設定は非同期で更新されるため、通常、これは安全ではありません。 しかしながら、`WEBSITE_ENABLE_SYNC_UPDATE_SITE` アプリケーション設定を含めているため、同期で更新されます。 つまり、ソース管理デプロイは、アプリケーションが完全に更新されたときにのみ開始されます。
+> この例では、ソース管理デプロイはアプリケーション設定に依存します。 アプリ設定は非同期で更新されるため、通常、これは安全ではありません。 しかしながら、`WEBSITE_ENABLE_SYNC_UPDATE_SITE` アプリケーション設定を含めているため、同期で更新されます。 つまり、ソース管理デプロイは、アプリケーションが完全に更新されたときにのみ開始されます。 他のアプリの設定については、「[Azure App Service の環境変数とアプリ設定](reference-app-settings.md)」を参照してください。
 
 ## <a name="troubleshooting-key-vault-references"></a>Key Vault 参照のトラブルシューティング
 

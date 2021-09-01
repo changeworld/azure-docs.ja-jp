@@ -3,15 +3,15 @@ title: Azure Automation への Linux Hybrid Runbook Worker のデプロイ
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのマシン上で Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/06/2021
+ms.date: 08/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d60e4964ca9ce4de4b4d8e5545875f5c47f0f809
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 1cd00a81717e95efe65402c2eb0912d2f43d89b6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854398"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744975"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -45,11 +45,11 @@ Hybrid Runbook Worker 機能では、次のディストリビューションが�
 
 * Amazon Linux 2012.09 から 2015.09
 * CentOS Linux 5、6、7、8
-* Oracle Linux 5、6、7
+* Oracle Linux 6、7、8
 * Red Hat Enterprise Linux Server 5、6、7、8
 * Debian GNU/Linux 6、7、8
-* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS、および 18.04 LTS
-* SUSE Linux Enterprise Server 12 および 15 (SUSE ではバージョン 13 と 14 はなし)
+* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS、18.04、20.04 LTS
+* SUSE Linux Enterprise Server 12、15、15.1 (SUSE のバージョン 13 と 14 はリリースされませんでした)
 
 > [!IMPORTANT]
 > システムの Hybrid Runbook Worker ロールに依存する Update Management 機能を有効にする前に、[ここ](update-management/operating-system-requirements.md)でサポート対象の配布を確認してください。
@@ -67,9 +67,11 @@ Linux システムおよびユーザー Hybrid Runbook Worker の最小要件は
 |Glibc |GNU C ライブラリ| 2.5-12 |
 |Openssl| OpenSSL ライブラリ | 1.0 (TLS 1.1 と TLS 1.2 がサポートされます)|
 |Curl | cURL Web クライアント | 7.15.5|
-|Python-ctypes | Python 2.x または Python 3.x が必要 |
+|Python-ctypes | Python 用の外部関数ライブラリ| Python 2.x または Python 3.x が必要 |
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール)|
+
 | **オプション パッケージ** | **説明** | **最小バージョン**|
+|--------------------- | --------------------- | -------------------|
 | PowerShell Core | PowerShell Runbook を実行するには、PowerShell Core をインストールする必要があります。 インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/install/installing-powershell-core-on-linux)」をご覧ください。 | 6.0.0 |
 
 ### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>Hybrid Runbook Worker グループへのマシンの追加

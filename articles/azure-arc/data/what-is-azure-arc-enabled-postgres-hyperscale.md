@@ -9,16 +9,16 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8edf540c3f67a3a8bee075569f0a2588cae18a62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d43753084f79184b338b16223ed45cb00a2dfb33
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390013"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732460"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale とは
 
-Azure Arc 対応 PostgreSQL Hyperscale は、Azure Arc 対応データ サービスの一部として使用できるデータベース サービスの 1 つです。 Azure Arc により、Kubernetes と任意のインフラストラクチャを使用して、Azure データ サービスをオンプレミス、エッジ、パブリック クラウドで実行できるようになります。 Azure Arc 対応データ サービスの価値提案は次の内容を示します。
+Azure Arc 対応 PostgreSQL Hyperscale は、Azure Arc 対応データ サービスの一部として使用できるデータベース サービスの 1 つです。 Azure Arc を使用すると、Kubernetes と選択したインフラストラクチャを使用して、オンプレミス、エッジ、パブリック クラウドで Azure データ サービスを実行できます。 Azure Arc 対応データ サービスの価値提案は次の内容を示します。
 - 常に最新
 - エラスティック スケール
 - セルフサービス プロビジョニング
@@ -30,6 +30,9 @@ Azure Arc 対応 PostgreSQL Hyperscale は、Azure Arc 対応データ サービ
 - [接続モードと要件](connectivity.md)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+これらの機能の詳細については、この Data Exposed エピソードを参照することもできます。
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-Arc-Enabled-PostgreSQL-Hyperscale--Data-Exposed/player?format=ny]
 
 ## <a name="compare-solutions"></a>ソリューションを比較する
 

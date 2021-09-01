@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ef47a97381c0c01afb13b66495167795c49b03c3
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d689d06536dd04532571190b8857c3be24278866
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444718"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729315"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -128,7 +128,7 @@ Authorization: Bearer <token>
   }
   ```
 
-[専用クラスターに関する記事](./logs-dedicated-clusters.md#create-a-dedicated-cluster)で示されている手順に従います。 
+[専用クラスターに関する記事](./logs-dedicated-clusters.md#creating-a-cluster)で示されている手順に従います。 
 
 ## <a name="grant-key-vault-permissions"></a>Key Vault アクセス許可を付与する
 
@@ -245,7 +245,7 @@ Content-type: application/json
 
 この操作を実行するには、ワークスペースとクラスターの両方に対して、`Microsoft.OperationalInsights/workspaces/write` および `Microsoft.OperationalInsights/clusters/write` が含まれる "書き込み" アクセス許可が必要です。
 
-[専用クラスターに関する記事](./logs-dedicated-clusters.md#link-a-workspace-to-a-cluster)で示されている手順に従います。
+[専用クラスターに関する記事](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)で示されている手順に従います。
 
 ## <a name="key-revocation"></a>キーの失効
 

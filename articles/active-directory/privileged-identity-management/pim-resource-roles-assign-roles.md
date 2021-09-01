@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 05/11/2020
+ms.date: 06/15/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0824a0947318172ec8094787f4fe01058f1a5e7
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 2c50d62d5c8f24ed25258305411f9ed045098c7f
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846137"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232833"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールを割り当てる
 
@@ -35,6 +35,8 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 > [!NOTE]
 > Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者サブスクリプション ロールに割り当てられたグループのユーザーまたはメンバー、および Azure AD 全体管理者には、既定でリソース管理者のアクセス許可が与えられます。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソース用 Privileged Identity Management を使用したアクセスの確認ができます。 リソース管理者のアクセス許可がないユーザーは、リソース用 Privileged Identity Management を管理できません。 [Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)の一覧を表示します。
 
+Privileged Identity Management では、組み込みとカスタムの両方の Azure ロールがサポートされます。 Azure カスタム ロールの詳細については、「[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
+
 ## <a name="role-assignment-conditions"></a>ロールの割り当て条件
 
 Azure ABAC (Azure の属性ベースのアクセス制御) プレビューを使用すると、資格のあるロールの割り当てに対し、Privileged Identity Management (PIM) を使用してリソースの条件を設定できます。 PIM を使用する場合、エンド ユーザーは、資格のあるロールの割り当てをアクティブ化して、特定のアクションを実行するためのアクセス許可を取得する必要があります。 PIM で Azure ABAC の条件を使用すると、きめ細かな条件を使用してリソースに対するユーザーのロールのアクセス許可を制限できるだけでなく、PIM を使用して、期限付きの設定、承認ワークフロー、監査証跡などでロールの割り当てを保護することもできます。 詳細については、[Azure の属性ベースのアクセス制御 (パブリック プレビュー)](../../role-based-access-control/conditions-overview.md) に関するページを参照してください。
@@ -44,8 +46,6 @@ Azure ABAC (Azure の属性ベースのアクセス制御) プレビューを使
 ユーザーを Azure リソース ロールの候補にするには、次の手順を実行します。
 
 1. 所有者またはユーザー アクセス管理者ロールのアクセス許可で [Azure portal](https://portal.azure.com/) にサインインします。
-
-    Privileged Identity Management を管理するためのアクセス権を別の管理者に付与する方法については、「[Privileged Identity Management を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)」を参照してください。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 

@@ -3,13 +3,13 @@ title: Azure CLI を使用して AKS クラスター上に Windows Server コン
 description: 迅速に Kubernetes クラスターを作成し、Azure CLI を使用して Azure Kubernetes Service (AKS) で Windows Server コンテナーにアプリケーションをデプロイする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 50b5d0a46c97cfd816b80c3fb7c8f8667e3e89d7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/06/2021
+ms.openlocfilehash: 29f010bd9067236e1e07ab79f7a8fbec436ffd85
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379373"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733576"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -93,7 +93,7 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
-    --kubernetes-version 1.20.2 \
+    --kubernetes-version 1.20.7 \
     --network-plugin azure
 ```
 
@@ -121,13 +121,13 @@ az aks nodepool add \
 
 上記のコマンドでは、*npwin* という名前の新しいノード プールが作成され、それが *myAKSCluster* に追加されます。 上記のコマンドではまた、`az aks create` の実行時に作成された既定の VNET 内の既定のサブネットが使用されます。
 
-### <a name="add-a-windows-server-node-pool-with-containerd-preview"></a>`containerd`(プレビュー) を使用して Windows Server ノードプールを追加する
+## <a name="optional-using-containerd-with-windows-server-node-pools-preview"></a>省略可能: Windows Server ノード プール で `containerd` を使用する (プレビュー)
 
 Kubernetes バージョン1.20 以降では、Windows Server 2019 ノード プールのコンテナー ランタイムとして `containerd` を指定できます。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-*aks-preview* Azure CLI 拡張機能が必要になります。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 または、[az extension update][az-extension-update] コマンドを使用すると、使用可能な更新プログラムをインストールできます。
+*aks-preview* Azure CLI 拡張機能バージョン 0.5.24 以降が必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 または、[az extension update][az-extension-update] コマンドを使用すると、使用可能な更新プログラムをインストールできます。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -136,6 +136,12 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
+
+> [!IMPORTANT]
+> Windows Server 2019 ノードプールで `containerd` を使用する場合:
+> - コントロール プレーンと Windows Server 2019 の両方のノードプールで、Kubernetes バージョン 1.20 以上を使用する必要があります。
+> - Windows Server のコンテナーを実行するためのノード プールを作成または更新する場合、*node-vm-size* の既定値は *Standard_D2s_v3* です。これは、Kubernetes 1.20 までの Windows server 2019 ノードプールの最小推奨サイズです。 `containerd` を使用した Windows Server 2019 ノードプールの最小推奨サイズは *Standard_D4s_v3* です。 *node-vm-size* パラメーターを設定する場合は、[制限された VM サイズ][restricted-vm-sizes]の一覧を確認してください。
+> - ワークロードが正しくスケジュールされていることを保証するには、`containerd` を実行している Windows Server 2019 ノードプールで [テイントまたはラベル][aks-taints] を使用し、容認またはノードのセレクターをデプロイで使用することを強くお勧めします。
 
 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`UseCustomizedWindowsContainerRuntime` 機能フラグを登録します。
 
@@ -155,6 +161,8 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/U
 az provider register --namespace Microsoft.ContainerService
 ```
 
+### <a name="add-a-windows-server-node-pool-with-containerd-preview"></a>`containerd`(プレビュー) を使用して Windows Server ノードプールを追加する
+
 Windows Server コンテナーを `containerd` ランタイムで実行できるノード プールをさらに追加するには、`az aks nodepool add` コマンドを使用します。
 
 > [!NOTE]
@@ -167,19 +175,42 @@ az aks nodepool add \
     --os-type Windows \
     --name npwcd \
     --node-vm-size Standard_D4s_v3 \
-    --kubernetes-version 1.20.2 \
+    --kubernetes-version 1.20.5 \
     --aks-custom-headers WindowsContainerRuntime=containerd \
     --node-count 1
 ```
 
 上のコマンドは、*npwcd* という名前のランタイムとして `containerd` を使用して新しい Windows Server ノードプールを作成し、それを *myAKSCluster* に追加します。 上記のコマンドではまた、`az aks create` の実行時に作成された既定の VNET 内の既定のサブネットが使用されます。
 
-> [!IMPORTANT]
-> Windows Server 2019 ノードプールで `containerd` を使用する場合:
-> - コントロール プレーンと Windows Server 2019 の両方のノードプールで、Kubernetes バージョン 1.20 以上を使用する必要があります。
-> - コンテナー ランタイムとして Docker を使用している既存の Windows Server 2019 ノードプールを、`containerd` を使用するようにアップグレードすることはできません。 新しいノード プールを作成する必要があります。
-> - Windows Server のコンテナーを実行するためのノード プールを作成する場合、*node-vm-size* の既定値は *Standard_D2s_v3* です。これは、Kubernetes 1.20 までの Windows server 2019 ノードプールの最小推奨サイズです。 `containerd` を使用した Windows Server 2019 ノードプールの最小推奨サイズは *Standard_D4s_v3* です。 *node-vm-size* パラメーターを設定する場合は、[制限された VM サイズ][restricted-vm-sizes]の一覧を確認してください。
-> - ワークロードが正しくスケジュールされていることを保証するには、`containerd` を実行している Windows Server 2019 ノードプールで [テイントまたはラベル][aks-taints] を使用し、容認またはノードのセレクターをデプロイで使用することを強くお勧めします。
+### <a name="upgrade-an-existing-windows-server-node-pool-to-containerd-preview"></a>既存の Windows Server ノード プールを `containerd` にアップグレードする (プレビュー)
+
+`az aks nodepool upgrade` コマンドを使用して、特定のノード プールを Docker から `containerd` にアップグレードします。
+
+```azurecli
+az aks nodepool upgrade \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name npwd \
+    --kubernetes-version 1.20.7 \
+    --aks-custom-headers WindowsContainerRuntime=containerd
+```
+
+上記のコマンドは、*npwd* という名前のノード プールを `containerd` ランタイムにアップグレードします。
+
+クラスターの既存のすべてのノード プールをアップグレードして、すべての Windows Server ノード プールで `containerd` ランタイムを使用するには:
+
+```azurecli
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version 1.20.7 \
+    --aks-custom-headers WindowsContainerRuntime=containerd
+```
+
+上記のコマンドでは、`containerd` ランタイムを使用するために、*myAKSCluster* のすべての Windows Server ノード プールをアップグレードします。
+
+> [!NOTE]
+> `containerd` ランタイムを使用するために、既存のすべての Windows Server ノード プールをアップグレードしても、新しい Windows Server ノード プールを追加すると、Docker が既定のランタイムになります。 
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
@@ -205,10 +236,10 @@ kubectl get nodes -o wide
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
-aks-nodepool1-12345678-vmss000000   Ready    agent   34m    v1.20.2   10.240.0.4    <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
-aks-nodepool1-12345678-vmss000001   Ready    agent   34m    v1.20.2   10.240.0.35   <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
-aksnpwcd123456                      Ready    agent   9m6s   v1.20.2   10.240.0.97   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    containerd://1.4.4+unknown
-aksnpwin987654                      Ready    agent   25m    v1.20.2   10.240.0.66   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    docker://19.3.14
+aks-nodepool1-12345678-vmss000000   Ready    agent   34m    v1.20.7   10.240.0.4    <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
+aks-nodepool1-12345678-vmss000001   Ready    agent   34m    v1.20.7   10.240.0.35   <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
+aksnpwcd123456                      Ready    agent   9m6s   v1.20.7   10.240.0.97   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    containerd://1.4.4+unknown
+aksnpwin987654                      Ready    agent   25m    v1.20.7   10.240.0.66   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    docker://19.3.14
 ```
 
 > [!NOTE]
@@ -238,7 +269,7 @@ spec:
         app: sample
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": windows
+        "kubernetes.io/os": windows
       containers:
       - name: sample
         image: mcr.microsoft.com/dotnet/framework/samples:aspnetapp

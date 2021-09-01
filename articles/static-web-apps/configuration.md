@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 06/17/2021
 ms.author: cshoe
-ms.openlocfilehash: 693a102c988d87dc4ed6ac9f0f4cb2176ec78ca5
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 210618ba5c49fbe0e53bd5b3fb2fe808b6b6aa03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059996"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728503"
 ---
 # <a name="configure-azure-static-web-apps"></a>Azure Static Web Apps を構成する
 
@@ -25,13 +25,16 @@ Azure Static Web Apps の構成は、次の設定を制御する _staticwebapp.c
 - HTTP 応答のオーバーライド
 - グローバル HTTP ヘッダーの定義
 - カスタムの MIME の種類
+- ネットワーク
 
 > [!NOTE]
 > ルーティングを構成するのに以前使用されていた [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) は非推奨となっています。 この記事の説明のとおりに _staticwebapp.config.json_ を使用して、静的 Web アプリのルーティングやその他の設定を構成してください。
+> 
+> これは、Azure Static Web Apps に関するドキュメントで、Azure Storage の[静的 Web サイトのホスティング](../storage/blobs/storage-blob-static-website.md)機能とは別の、スタンドアロン製品です。
 
 ## <a name="file-location"></a>ファイルの場所
 
-_staticwebapp.config.json_ の推奨される場所は、[ワークフロー ファイル](./github-actions-workflow.md)で `app_location` として設定されたフォルダー内です。 ただし、このファイルは、アプリケーションのソース コード フォルダー内の任意の場所に配置できます。
+_staticwebapp.config.json_ の推奨される場所は、[ワークフロー ファイル](./github-actions-workflow.md)で `app_location` として設定されたフォルダー内です。 ただし、このファイルは `app_location` として設定されたフォルダー内の任意のサブフォルダーに配置できます。
 
 詳細については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
 
@@ -76,9 +79,9 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 
 ## <a name="securing-routes-with-roles"></a>ロールによるルートのセキュリティ保護
 
-ルートをセキュリティで保護するには、規則の `allowedRoles` 配列に 1 つ以上のロール名を追加します。ユーザーは、[招待](./authentication-authorization.md)を介してカスタム ロールに関連付けられます。 使用例については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
+ルートをセキュリティで保護するには、1 つまたは複数のロール名を規則の `allowedRoles` 配列に追加します。 使用例については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
 
-既定では、すべてのユーザーが組み込みの `anonymous` ロールに属し、ログインしているすべてのユーザーが `authenticated` ロールのメンバーになります。
+既定では、すべてのユーザーが組み込みの `anonymous` ロールに属し、ログインしているすべてのユーザーが `authenticated` ロールのメンバーになります。 必要に応じて、[状態](./authentication-authorization.md)を介してユーザーをカスタム ロールに関連付けることができます。
 
 たとえば、認証されたユーザーのみにルートを制限するには、組み込みの `authenticated` ロールを `allowedRoles` 配列に追加します。
 
@@ -149,7 +152,17 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 
 シングル ページ アプリケーションは、多くの場合、クライアント側のルーティングに依存します。 これらのクライアント側ルーティング規則では、要求をサーバーに返さずに、ブラウザーのウィンドウの場所が更新されます。 ページを更新する場合、またはクライアント側ルーティング規則によって生成された URL に直接移動する場合は、適切な HTML ページ (通常はクライアント側アプリの _index.html_) を提供するために、サーバー側フォールバック ルートが必要です。
 
-ファイル フィルターでパス ワイルドカードが使用されている次の例に示すように、フォールバック ルートを実装する規則を使用するようにアプリを構成できます。
+`navigationFallback` セクションを追加して、フォールバック ルールを定義できます。 次の例は、デプロイされたファイルに一致しないすべての静的ファイルの要求に対して _/index.html_ を返します。
+
+```json
+{
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
+}
+```
+
+フィルターを定義すると、どの要求でフォールバック ファイルを返すかを制御できます。 次の例では、 _/images_ フォルダーの特定のルートと _/css_ フォルダーのすべてのファイルに対する要求が、フォールバック ファイルを返す対象から除外されます。
 
 ```json
 {
@@ -184,6 +197,9 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 | _/css/global.css_                                      | スタイルシート ファイル                                                                                           | `200`              |
 | _/images_ または _/css_ フォルダー外にあるその他のファイル | _index.html_ ファイル                                                                                        | `200`              |
 
+> [!IMPORTANT]
+> 非推奨の [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) ファイルから移行する場合は、[routing rules](#routes) にレガシ フォールバック ルート (`"route": "/*"`) を含めないでください。
+
 ## <a name="global-headers"></a>グローバル ヘッダー
 
 `globalHeaders` セクションでは、[ルート ヘッダー](#route-headers)規則によってオーバーライドされない限り、各応答に適用される一連の [HTTP ヘッダー](https://developer.mozilla.org/docs/Web/HTTP/Headers)が提供されます。それ以外の場合は、ルートからのヘッダーとグローバル ヘッダーの両方の和集合が返されます。
@@ -217,24 +233,44 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 {
   "responseOverrides": {
     "400": {
-      "rewrite": "/invalid-invitation-error.html",
-      "statusCode": 200
+      "rewrite": "/invalid-invitation-error.html"
     },
     "401": {
       "statusCode": 302,
       "redirect": "/login"
     },
     "403": {
-      "rewrite": "/custom-forbidden-page.html",
-      "statusCode": 200
+      "rewrite": "/custom-forbidden-page.html"
     },
     "404": {
-      "rewrite": "/custom-404.html",
-      "statusCode": 200
+      "rewrite": "/custom-404.html"
     }
   }
 }
 ```
+
+## <a name="networking"></a>ネットワーク
+
+`networking` セクションは、静的 Web アプリのネットワーク構成を制御します。 アプリへのアクセスを制限するには、`allowedIpRanges` で許可される IP アドレス ブロックの一覧を指定します。
+
+> [!NOTE]
+> ネットワーク構成は、Azure Static Web Apps Standard プランでのみ使用できます。
+
+クラスレス ドメイン間ルーティング (CIDR) 表記で IPv4 アドレス ブロックを定義します。 CIDR 表記の詳細については、「[クラスレス ドメイン間ルーティング](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)」を参照してください。 各 IPv4 アドレス ブロックは、パブリック アドレス空間またはプライベート アドレス空間を表します。 1 つの IP アドレスからのアクセスのみを許可したい場合は、`/32` CIDR ブロックを使用できます。
+
+```json
+{
+  "networking": {
+    "allowedIpRanges": [
+      "10.0.0.0/24",
+      "100.0.0.0/32",
+      "192.168.100.0/22"
+    ]
+  }
+}
+```
+
+1 つ以上の IP アドレス ブロックが指定されている場合、`allowedIpRanges` の値と一致しない IP アドレスからの要求はアクセスを拒否されます。
 
 ## <a name="example-configuration-file"></a>構成ファイルの例
 
@@ -345,7 +381,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 
 ## <a name="restrictions"></a>制限
 
-_staticwebapps.config.json_ ファイルには次の制限があります。
+_staticwebapp.config.json_ ファイルには次の制限があります。
 
 - 最大ファイル サイズは 100 KB
 - 最大 50 種類のロール

@@ -5,21 +5,60 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 05/24/2021
-ms.openlocfilehash: 1dbbbc76cb67adb678cc557c4193c0a25f280540
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/24/2021
+ms.openlocfilehash: 055b933834c3cf112742d011a7f34205a07c5e04
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952956"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746564"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でのマッピング データ フローにおけるコネクタと形式に関する問題をトラブルシューティングする
 
 
 この記事では、Azure Data Factory (ADF) でのマッピング データ フローのためのコネクタと形式に関するトラブルシューティング方法について説明します。
 
+## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-## <a name="cosmos-db--json"></a>Cosmos DB および JSON
+### <a name="account-kind-of-storage-general-purpose-v1-doesnt-support-service-principal-and-mi-authentication"></a>ストレージのアカウントの種類 (汎用 v1) で、サービス プリンシパルと MI 認証がサポートされていない
+
+#### <a name="symptoms"></a>現象
+
+データ フローで、サービス プリンシパルまたは MI 認証で Azure Blob Storage (汎用 v1) を使用すると、次のエラー メッセージが表示される場合があります。
+
+`com.microsoft.dataflow.broker.InvalidOperationException: ServicePrincipal and MI auth are not supported if blob storage kind is Storage (general purpose v1)`
+
+#### <a name="cause"></a>原因
+
+データ フローで Azure Blob のリンク サービスを使用する際に、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 この状況を、次の画像 1 と画像 2 に示します。
+
+画像 1: Azure Blob Storage のリンク サービスのアカウントの種類
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/storage-account-kind.png" alt-text="Azure Blob Storage のリンク サービスのストレージ アカウントの種類を示すスクリーンショット。"::: 
+
+画像 2: ストレージ アカウントのページ
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/storage-account-page.png" alt-text="ストレージ アカウントのページを示すスクリーンショット。" lightbox="./media/data-flow-troubleshoot-connector-format/storage-account-page.png"::: 
+
+
+#### <a name="recommendation"></a>推奨
+
+この問題を解決するには、以下の推奨事項を参照してください。
+
+- Azure Blob のリンク サービスでストレージ アカウントの種類が **None** の場合は、適切なアカウントの種類を指定します。次の画像 3 を参照してください。 さらに、画像 2 を参照してストレージ アカウントの種類を取得し、アカウントの種類が "Storage" (汎用 v1) ではないことを確認します。
+
+    画像 3: Azure Blob Storage のリンク サービスでストレージ アカウントの種類を指定する
+
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/specify-storage-account-kind.png" alt-text="Azure Blob Storage のリンク サービスでストレージ アカウントの種類を指定する方法を示しているスクリーンショット。"::: 
+    
+
+- アカウントの種類が "Storage" (汎用 v1) の場合は、ストレージ アカウントを **汎用 v2** にアップグレードするか、別の認証を選択します。
+
+    画像 4: ストレージ アカウントを汎用 v2 にアップグレードする
+
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/upgrade-storage-account.png" alt-text="ストレージ アカウントを汎用 v2 にアップグレードする方法を示しているスクリーンショット。" lightbox="./media/data-flow-troubleshoot-connector-format/upgrade-storage-account.png"::: 
+
+## <a name="azure-cosmos-db-and-json-format"></a>Azure Cosmos DB と JSON 形式
 
 ### <a name="support-customized-schemas-in-the-source"></a>ソースでのカスタマイズされたスキーマをサポートする
 
@@ -54,6 +93,40 @@ ADF データ フローを使用して Cosmos DB または JSON から他のデ�
 - **オプション 2**: ソース データのスキーマと DSL 言語を使い慣れている場合は、データ フローのソース スクリプトを手動で更新して、データを読み取るための追加/欠落列を追加することができます。 例を次の図に示します。 
 
     ![ソース スキーマをカスタマイズする 2 番目のオプションを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
+
+### <a name="support-map-type-in-the-source"></a>ソースでの map 型のサポート
+
+#### <a name="symptoms"></a>現象
+ADF データ フローでは、Cosmos DB または JSON ソースで map データ型を直接サポートすることはできません。そのため、"インポートプロジェクション" で map データ型を取得することはできません。
+
+#### <a name="cause"></a>原因
+Cosmos DB と JSON では、これらはスキーマ フリー接続です。関連する Spark コネクタではサンプル データを使用してスキーマが推論され、そのスキーマが Cosmos DB/JSON 送信元スキーマとして使用されます。 スキーマを推論するとき、Cosmos DB/JSON Spark コネクタでは、オブジェクト データは map データ型ではなく構造体としてのみ推論できます。そのため、map 型を直接サポートすることはできません。
+
+#### <a name="recommendation"></a>推奨 
+この問題を解決するには、次の例と手順を参照して、Cosmos DB/JSON ソースのスクリプト (DSL) を手動で更新し、map データ型がサポートされるようにします。
+
+**例**:
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/script-example.png" alt-text="Cosmos DB/JSON ソースのスクリプト (DSL) の更新例を示すスクリーンショット。" lightbox="./media/data-flow-troubleshoot-connector-format/script-example.png"::: 
+    
+**手順 1**: データフロー アクティビティのスクリプトを開きます。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/open-script.png" alt-text="データフロー アクティビティのスクリプトを開く方法を示すスクリーンショット。" ::: 
+    
+**手順 2**: DSL を更新し、上記の例を参照して map 型がサポートされるようにします。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/update-dsl.png" alt-text="DSL を更新する方法を示すスクリーンショット。" ::: 
+
+map 型のサポート:
+
+|型 |map 型のサポートの有無   |コメント|
+|-------------------------|-----------|------------|
+|Excel、CSV  |いいえ      |どちらも、プリミティブ型の表形式データ ソースであるため、map 型をサポートする必要はありません。 |
+|Orc、Avro |はい |なし。|
+|JSON|はい |map 型を直接サポートすることはできません。このセクションの推奨事項に従って、ソース プロジェクションでスクリプト (DSL) を更新してください。|
+|Cosmos DB |はい |map 型を直接サポートすることはできません。このセクションの推奨事項に従って、ソース プロジェクションでスクリプト (DSL) を更新してください。|
+|Parquet |はい |現在、Parquet データセットでは複合データ型がサポートされていないため、map 型を取得するには、データフロー Parquet ソースの下にある "インポート プロジェクション" を使用する必要があります。|
+|XML |いいえ |なし。|
 
 ### <a name="consume-json-files-generated-by-copy-activities"></a>コピー アクティビティによって生成された JSON ファイルを使用する
 
@@ -110,130 +183,54 @@ Azure Data Factory のマッピング データ フローでは、パラメー�
 
 :::image type="content" source="./media/data-flow-troubleshoot-connector-format/set-parameter-in-query.png" alt-text="クエリで設定されているパラメーターを示しているスクリーンショット。"::: 
 
-## <a name="cdm"></a>CDM
+## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-### <a name="modeljson-files-with-special-characters"></a>特殊文字を含む Model.Json ファイル
-
-#### <a name="symptoms"></a>現象 
-model.json ファイルの最終的な名前に特殊文字が含まれているという問題が発生することがあります。  
-
-#### <a name="error-message"></a>エラー メッセージ  
-`at Source 'source1': java.lang.IllegalArgumentException: java.net.URISyntaxException: Relative path in absolute URI: PPDFTable1.csv@snapshot=2020-10-21T18:00:36.9469086Z. ` 
-
-#### <a name="recommendation"></a>推奨  
-ファイル名に含まれる特殊文字を置き換えます。これは Synapse では機能しますが、ADF では機能しません。  
-
-### <a name="no-data-output-in-the-data-preview-or-after-running-pipelines"></a>データのプレビューまたはパイプラインの実行後にデータが出力されない
+### <a name="fail-to-create-files-with-service-principle-authentication"></a>サービス プリンシパル認証を使用したファイルの作成に失敗する
 
 #### <a name="symptoms"></a>現象
-CDM に manifest.json を使用すると、データ プレビューに、またはパイプラインの実行後にデータが表示されません。 ヘッダーのみが表示されます。 この問題は、次の図で確認できます。<br/>
+別のソースから ADLS Gen1 シンクにデータを移動または転送しようとすると、リンク サービスの認証方法がサービス プリンシパル認証の場合、次のエラー メッセージが表示されてジョブが失敗することがあります。
 
-![データが出力されない現象を示しているスクリーンショット。](./media/data-flow-troubleshoot-connector-format/no-data-output.png)
-
-#### <a name="cause"></a>原因
-マニフェスト ドキュメントに、CDM フォルダーが記述されています。たとえば、フォルダー内にあるエンティティ、それらのエンティティの参照、およびこのインスタンスに対応するデータなどです。 マニフェスト ドキュメントには、データの読み取り先を ADF に示す `dataPartitions` 情報がありません。この情報が空であるため、データが返されません。 
-
-#### <a name="recommendation"></a>推奨
-`dataPartitions` 情報を含めるようにマニフェスト ドキュメントを更新します。ドキュメントを更新するには、[Common Data Model メタデータ: マニフェストの概要 - サンプル マニフェスト ドキュメント](/common-data-model/cdm-manifest#example-manifest-document)のサンプル マニフェスト ドキュメントを参照してください。
-
-### <a name="json-array-attributes-are-inferred-as-separate-columns"></a>JSON 配列属性が個別の列として推論される
-
-#### <a name="symptoms"></a>現象 
-CDM エンティティの 1 つの属性 (文字列型) にデータとして JSON 配列があるという問題が発生する場合があります。 このデータが検出されると、ADF によってデータが個別の列として誤って推論されます。 次の図からわかるように、ソースに示される 1 つの属性 (msfp_otherproperties) は、CDM コネクタのプレビューでは個別の列として推論されます。<br/> 
-
-- CSV ソース データ (2 番目の列を参照): <br/>
-
-    ![CSV ソース データ内の属性を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/json-array-csv.png)
-
-- CDM ソース データ プレビュー: <br/>
-
-    ![CDM ソース データ内の個別の列を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/json-array-cdm.png)
-
- 
-また、誤差の列をマップし、データ フロー式を使用して、この属性を配列として変換することもできます。 ただし、この属性は読み取り時に別の列として読み取られるため、配列への変換は機能しません。  
+`org.apache.hadoop.security.AccessControlException: CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.). [2b5e5d92-xxxx-xxxx-xxxx-db4ce6fa0487] failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)`
 
 #### <a name="cause"></a>原因
-この問題は、その列の JSON オブジェクト値内のコンマが原因である可能性があります。 データ ファイルは CSV ファイルであることが想定されているため、コンマは列の値の末尾を示します。 
+
+RWX のアクセス許可またはデータセットのプロパティが正しく設定されていません。
 
 #### <a name="recommendation"></a>推奨
-この問題を解決するには、JSON 列を二重引用符で囲み、円記号 (`\`) を使用して内側の引用符を回避する必要があります。 こうすることで、その列の値の内容を 1 つの列として完全に読み込むことができます。  
-  
->[!Note]
->CDM から、列の値のデータ型が JSON であることは通知されませんが、文字列でありそのように解析されることが通知されます。
 
-### <a name="unable-to-fetch-data-in-the-data-flow-preview"></a>データ フロー プレビューでデータをフェッチできない
+- ターゲット フォルダーに適切なアクセス許可がない場合は、「[サービス プリンシパル認証を使用する](./connector-azure-data-lake-store.md#use-service-principal-authentication)」のドキュメントを参照して、Gen1 で適切なアクセス許可を割り当てます。
+
+- ターゲット フォルダーに適切なアクセス許可があり、データ フローのファイル名プロパティを使用して適切なフォルダーとファイル名をターゲットにしているが、データセットのファイル パスのプロパティがターゲット ファイル パスに設定されていない場合 (通常は設定しません)、次の図に示す例のように、バックエンド システムがデータセットのファイル パスに基づいてファイルを作成しようとし、データセットのファイル パスに正しいアクセス許可がないため、このエラーが発生します。
+    
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/file-path-property.png" alt-text="ファイル パスのプロパティを示すスクリーンショット。"::: 
+    
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/file-name-property.png" alt-text="ファイル名のプロパティを示すスクリーンショット。"::: 
+
+    
+    この問題を解決するには、2 つの方法があります。
+    1. WX アクセス許可をデータセットのファイル パスに割り当てます。
+    1. データセットのファイル パスを、WX アクセス許可を持つフォルダーとして設定し、残りのフォルダー パスとファイル名をデータ フローに設定します。
+
+## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+
+### <a name="failed-with-an-error-error-while-reading-file-xxx-it-is-possible-the-underlying-files-have-been-updated"></a>エラー: "Error while reading file XXX. (ファイル XXX の読み取り中にエラーが発生しました。) It is possible the underlying files have been updated (基になるファイルが更新されている可能性があります。)"
 
 #### <a name="symptoms"></a>現象
-Power BI によって生成された model.json で CDM を使用します。 データ フロー プレビューを使用して CDM データをプレビューすると、次のエラーが発生します。 `No output data.`
+
+ADLS Gen2 をデータ フローのシンクとして使用し (データのプレビュー、デバッグまたはトリガーの実行などを行い)、**シンク** ステージの **[最適化]** タブのパーティション設定が既定ではない場合、次のエラー メッセージが表示されてジョブが失敗する可能性があります。
+
+`Job failed due to reason: Error while reading file abfss:REDACTED_LOCAL_PART@prod.dfs.core.windows.net/import/data/e3342084-930c-4f08-9975-558a3116a1a9/part-00000-tid-7848242374008877624-5df7454e-7b14-4253-a20b-d20b63fe9983-1-1-c000.csv. It is possible the underlying files have been updated. You can explicitly invalidate the cache in Spark by running 'REFRESH TABLE tableName' command in SQL or by recreating the Dataset/DataFrame involved.`
 
 #### <a name="cause"></a>原因
- 次のコードが、Power BI データ フローによって生成される model.json ファイルのパーティションに存在しています。
-```json
-"partitions": [  
-{  
-"name": "Part001",  
-"refreshTime": "2020-10-02T13:26:10.7624605+00:00",  
-"location": "https://datalakegen2.dfs.core.windows.net/powerbi/salesEntities/salesPerfByYear.csv @snapshot=2020-10-02T13:26:10.6681248Z"  
-}  
-```
-この model.json ファイルの場合、問題は、データ パーティション ファイルの名前付けスキーマに特殊文字が含まれていて、'@' を含むサポート ファイル パスが現在存在していないことです。  
+
+1. MI または SP の認証に適切なアクセス許可を割り当てていません。
+1. 不要なファイルを処理するためのカスタマイズされたジョブがある可能性があります。これはデータ フローの中間出力に影響します。
 
 #### <a name="recommendation"></a>推奨
-データ パーティションのファイル名と model.json ファイルから `@snapshot=2020-10-02T13:26:10.6681248Z` の部分を削除してから、操作をやり直してください。 
+1. リンク サービスに Gen2 に対する R/W/E アクセス許可があるかどうかを確認します。 MI 認証または SP 認証を使用する場合は、アクセス制御 (IAM) で少なくともストレージ BLOB データ共同作成者ロールを付与します。
+1. 名前が規則と一致しない別の場所にファイルを移動するまたはファイルを削除する特定のジョブがあるかどうかを確認します。 データ フローでは、最初にパーティション ファイルをターゲット フォルダーに書き込んでから、マージおよび名前変更操作が実行されるため、中間ファイルの名前が規則と一致しない場合があります。
 
-### <a name="the-corpus-path-is-null-or-empty"></a>コーパスのパスが null または空である
-
-#### <a name="symptoms"></a>現象
-モデル形式のデータ フローで CDM を使用すると、データをプレビューできず、次のエラーが発生します。`DF-CDM_005 The corpus path is null or empty` エラーを次の図に示します。  
-
-![コーパス パス エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/corpus-path-error.png)
-
-#### <a name="cause"></a>原因
-model.json のデータ パーティション パスが、データ レイクではなく BLOB ストレージの場所を指しています。 この場所には、ADLS Gen2 の **dfs.core.windows.net** のベース URL を指定する必要があります。 
-
-#### <a name="recommendation"></a>推奨
-この問題を解決するには、「[ADF によりインライン データセットと Common Data Model のサポートがデータ フローに追加される](https://techcommunity.microsoft.com/t5/azure-data-factory/adf-adds-support-for-inline-datasets-and-common-data-model-to/ba-p/1441798)」を参照してください。次の図は、この記事のコーパス パス エラーを修正する方法を示しています。
-
-![コーパス パス エラーの修正方法を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/fix-format-issue.png)
-
-### <a name="unable-to-read-csv-data-files"></a>CSV データ ファイルが読み取れない
-
-#### <a name="symptoms"></a>現象 
-マニフェストをソースとして持つ共通データ モデルとしてインライン データセットを使用し、エントリ マニフェスト ファイル、ルート パス、エンティティ名、およびパスを指定しました。 マニフェストには、CSV ファイルの場所を含むデータ パーティションがあります。 一方、エンティティ スキーマと csv スキーマは同一で、すべての検証は成功しました。 ただし、データ プレビューでは、データではなくスキーマのみが読み込まれ、データは非表示になります。これを次の図に示します。
-
-![データ ファイルを読み取れない問題を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/unable-read-data.png)
-
-#### <a name="cause"></a>原因
-CDM フォルダーは論理モデルと物理モデルに分離されていないため、CDM フォルダーには物理モデルのみが存在します。 「[論理定義](/common-data-model/sdk/logical-definitions)」と「[論理エンティティ定義の解決](/common-data-model/sdk/convert-logical-entities-resolved-entities)」の 2 つの記事でその違いを説明しています。<br/> 
-
-#### <a name="recommendation"></a>推奨
-ソースとして CDM を使用するデータ フローの場合、エンティティ参照として論理モデルを使用し、物理的に解決されたエンティティの場所とデータ パーティションの場所を記述するマニフェストを使用してみてください。 パブリック CDM GitHub リポジトリ ([CDM-schemaDocuments](https://github.com/microsoft/CDM/tree/master/schemaDocuments)) 内で、論理エンティティ定義のサンプルをいくつか見ることができます。<br/>
-
-コーパスを作成するには、最初にスキーマ ドキュメント フォルダー (GitHub リポジトリ内のそのレベル) 内のファイルをコピーし、それらのファイルをフォルダーに配置することをお勧めします。 その後、リポジトリ内の定義済みの論理エンティティの 1 つを (開始点または参照ポイントとして) 使用して、論理モデルを作成できます。<br/>
-
-コーパスを設定したら、データ フロー内でシンクとして CDM を使用することをお勧めします。これにより、整形式の CDM フォルダーを適切に作成できます。 CSV データセットをソースとして使用して、作成した CDM モデルにシンクできます。
-
-## <a name="delta"></a>差分
-
-### <a name="the-sink-does-not-support-the-schema-drift-with-upsert-or-update"></a>シンクで、アップサートまたは更新でのスキーマの誤差がサポートされない
-
-#### <a name="symptoms"></a>現象
-マッピング データ フローの差分シンクで、アップサートまたは更新でのスキーマの誤差がサポートされないという問題が発生する可能性があります。 問題は、差分がマッピング データ フローのターゲットで、ユーザーがアップサートまたは更新を構成している場合、スキーマの誤差が機能しないことです。 
-
-差分への "最初" の読み込みの後に列がソースに追加された場合、後続のジョブは、新しい列を見つけることができないというエラーで失敗します。これは、行の変更でアップサートまたは更新を実行すると発生します。 挿入に対してのみ機能するようです。
-
-#### <a name="error-message"></a>エラー メッセージ
-`DF-SYS-01 at Sink 'SnkDeltaLake': org.apache.spark.sql.AnalysisException: cannot resolve target.BICC_RV in UPDATE clause given columns target. `
-
-#### <a name="cause"></a>原因
-これは、データ フロー ランタイムで使用される IO 差分ライブラリの制限が原因で発生する差分形式の問題です。 この問題はまだ修正中です。
-
-#### <a name="recommendation"></a>推奨
-この問題を解決するには、最初にスキーマを更新してから、データを書き込む必要があります。 次の手順に従うことができます。 <br/>
-1. スキーマを更新するためのマージ スキーマ オプションを使用して、挿入専用の差分シンクを含むデータ フローを 1 つ作成します。 
-1. 手順 1 の後で、削除、アップサート、更新のいずれかを使用して、スキーマを変更せずにターゲット シンクを変更します。 <br/>
-
-## <a name="azure-postgresql"></a>Azure PostgreSQL
+## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 
 ### <a name="encounter-an-error-failed-with-exception-handshake_failure"></a>エラー: 次の例外で失敗しました: handshake_failure が発生する 
 
@@ -255,74 +252,81 @@ Azure PostgreSQL サーバーにフレキシブル サーバーまたは Hypersc
 #### <a name="recommendation"></a>推奨
 コピー アクティビティを使用して、この問題のブロック解除を試すことができます。 
 
-## <a name="csv-and-excel"></a>CSV と Excel
-
-### <a name="set-the-quote-character-to-no-quote-char-is-not-supported-in-the-csv"></a>CSV で、引用符文字を 'no quote char' に設定することがサポートされていない
+## <a name="azure-sql-database"></a>Azure SQL データベース
  
-#### <a name="symptoms"></a>現象
-
-引用符文字が 'no quote char' に設定されていると、CSV ではサポートされない問題がいくつかあります。
-
-1. 引用符文字が 'no quote char' に設定されている場合、複数文字の列区切り記号の先頭と末尾を同じ文字にすることはできません。
-2. 引用符文字が 'no quote char' に設定されている場合、複数文字の列区切り記号にエスケープ文字 (`\`) を含めることはできません。
-3. 引用符文字が 'no quote char' に設定されている場合、列の値に行の区切り記号を含めることはできません。
-4. 列の値に列の区切り記号が含まれている場合、引用符文字とエスケープ文字の両方を空にすることはできません (no quote および no escape)。
-
-#### <a name="cause"></a>原因
-
-この現象の原因を、それぞれ例とともに以下に示します。
-1. 先頭と末尾に同じ文字を使用している。<br/>
-`column delimiter: $*^$*`<br/>
-`column value: abc$*^    def`<br/>
-`csv sink: abc$*^$*^$*def ` <br/>
-`will be read as "abc" and "^&*def"`<br/>
-
-2. 複数文字の区切り記号にエスケープ文字が含まれている。<br/>
-`column delimiter: \x`<br/>
-`escape char:\`<br/>
-`column value: "abc\\xdef"`<br/>
-エスケープ文字は、列区切り記号または文字のいずれかをエスケープします。
-
-3. 列の値に行区切り記号が含まれている。 <br/>
-`We need quote character to tell if row delimiter is inside column value or not.`
-
-4. 引用符文字とエスケープ文字の両方が空で、列の値に列の区切り記号が含まれている。<br/>
-`Column delimiter: \t`<br/>
-`column value: 111\t222\t33\t3`<br/>
-`It will be ambigious if it contains 3 columns 111,222,33\t3 or 4 columns 111,222,33,3.`<br/>
-
-#### <a name="recommendation"></a>推奨
-1 番目の現象と 2 番目の現象は現在解決できません。 3 番目と 4 番目の現象には、次の方法を適用できます。
-- 現象 3 の場合、複数行の csv ファイルに 'no quote char' を使用しないでください。
-- 現象 4 の場合、引用符文字またはエスケープ文字のいずれかを空以外に設定するか、データ内のすべての列区切り記号を削除します。
-
-### <a name="read-files-with-different-schemas-error"></a>スキーマが異なるファイルの読み取りエラー
+### <a name="unable-to-connect-to-the-sql-database"></a>SQL Database に接続できない
 
 #### <a name="symptoms"></a>現象
 
-データ フローを使用して、スキーマが異なる CSV や Excel などのファイルを読み取ると、データ フローのデバッグ、サンドボックス、またはアクティビティの実行が失敗します。
-- CSV の場合、ファイルのスキーマが異なると、データの不整合が発生します。 
-
-    ![1 番目のスキーマ エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/schema-error-1.png)
-
-- Excel の場合、ファイルのスキーマが異なるとエラーが発生します。
-
-    ![2 番目のスキーマ エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/schema-error-2.png)
+Azure SQL Database は、リンク サービスのデータ コピー、データセットのプレビュー データ、およびテスト接続で適切に機能しますが、同じ Azure SQL Database がデータ フローでソースまたはシンクとして使用されると、次のようなエラーが表示されて失敗します。 `Cannot connect to SQL database: 'jdbc:sqlserver://powerbasenz.database.windows.net;..., Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access`
 
 #### <a name="cause"></a>原因
 
-データ フローでスキーマが異なるファイルを読み取ることはサポートされていません。
+Azure SQL Database サーバーのファイアウォール設定が間違っているため、データ フロー ランタイムで接続できません。 現時点では、データ フローを使用して Azure SQL Database の読み取り/書き込みを行おうとすると、ジョブを実行する spark クラスターを構築するために Azure Databricks が使用されますが、これは固定 IP 範囲をサポートしていません。 詳細については、「[Azure Integration Runtime の IP アドレス](./azure-integration-runtime-ip-addresses.md)」を参照してください。
 
 #### <a name="recommendation"></a>推奨
 
-それでもデータ フローで CSV や Excel ファイルなどのスキーマが異なるファイルを転送する必要がある場合は、次の方法を使用して対処できます。
+Azure SQL Database のファイアウォール設定を確認し、固定 IP の範囲を設定するのではなく、[Azure サービスへのアクセスを許可] に設定します。
 
-- CSV の場合、スキーマ全体を取得するには、異なるファイルのスキーマを手動でマージする必要があります。 たとえば、file_1 には列`c_1, c_2, c_3` があり、file_2 には列 `c_3, c_4,... c_10` があるため、マージされた完全なスキーマは `c_1, c_2... c_10` になります。 次に、データがない場合でも、他のファイルにも同じ完全なスキーマが含まれるようにします。たとえば、file_x には列 `c_1, c_2, c_3, c_4` しかないので、ファイルに列 `c_5, c_6, ... c_10` を追加すると、機能するようになります。
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/allow-access-to-azure-service.png" alt-text="ファイアウォール設定で Azure サービスへのアクセスを許可する方法を示すスクリーンショット。"::: 
 
-- Excel の場合は、次のいずれかのオプションを適用することで、この問題を解決できます。
+### <a name="syntax-error-when-using-queries-as-input"></a>入力としてクエリを使用すると構文エラーが発生する
 
-    - **オプション-1**: スキーマ全体を取得するには、異なるファイルのスキーマを手動でマージする必要があります。 たとえば、file_1 には列`c_1, c_2, c_3` があり、file_2 には列 `c_3, c_4,... c_10` があるため、マージされた完全なスキーマは `c_1, c_2... c_10` になります。 次に、データがない場合でも、他のファイルにも同じスキーマが含まれるようにします。たとえば、file_x の "SHEET_1" には列 `c_1, c_2, c_3, c_4` しかないので、シートにも列 `c_5, c_6, ... c_10` を追加すると、機能するようになります。
-    - **オプション-2**: **range (例: A1:G100) + firstRowAsHeader = false** を使用すると、列名と数が異なっていても、すべての Excel ファイルからデータを読み込むことができます。
+#### <a name="symptoms"></a>現象
+
+Azure SQL でデータ フロー ソースの入力としてクエリを使用すると、次のエラー メッセージが表示されて失敗します。
+
+`at Source 'source1': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax XXXXXXXX.`
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/error-detail.png" alt-text="エラーの詳細を示すスクリーンショット。"::: 
+
+#### <a name="cause"></a>原因
+
+データ フロー ソースで使用されるクエリは、サブクエリとして実行できる必要があります。 このエラーの原因は、クエリ構文が正しくないか、サブクエリとして実行できないことです。 SSMS で次のクエリを実行して、検証することができます。
+
+`SELECT top(0) * from ($yourQuery) as T_TEMP`
+
+#### <a name="recommendation"></a>推奨
+
+適切なクエリを指定し、最初に SSMS でテストします。
+
+### <a name="failed-with-an-error-sqlserverexception-111212-operation-cannot-be-performed-within-a-transaction"></a>エラー: "SQLServerException: 111212; Operation cannot be performed within a transaction." (SQLServerException: 111212; トランザクション内で操作を実行できません。) で失敗する
+
+#### <a name="symptoms"></a>現象
+
+Azure SQL Database をデータ フローのシンクとして使用して、データのプレビュー、デバッグまたはトリガーの実行、およびその他アクティビティを実行すると、次のエラー メッセージが表示されてジョブが失敗することがあります。
+
+`{"StatusCode":"DFExecutorUserError","Message":"Job failed due to reason: at Sink 'sink': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: 111212;Operation cannot be performed within a transaction.","Details":"at Sink 'sink': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: 111212;Operation cannot be performed within a transaction."}`
+
+#### <a name="cause"></a>原因
+エラー "`111212;Operation cannot be performed within a transaction.`" は、Synapse 専用 SQL プールでのみ発生します。 しかし、代わりに Azure SQL Database をコネクタとして誤って使用しています。
+
+#### <a name="recommendation"></a>推奨
+SQL Database が Synapse 専用 SQL プールであるかどうかを確認します。 その場合は、次の図に示すように、Azure Synapse Analytics をコネクタとして使用してください。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/synapse-analytics-connector.png" alt-text="Azure Synapse Analytics コネクタを示すスクリーンショット。"::: 
+
+### <a name="data-with-the-decimal-type-become-null"></a>10 進型のデータが null になる
+
+#### <a name="symptoms"></a>現象
+
+SQL データベースのテーブルにデータを挿入するとします。 データに 10 進型が含まれていて、SQL データベースの 10 進型の列に挿入する必要がある場合は、データ値が null に変更される場合があります。
+
+プレビューを実行すると、前のステージで、次の図のような値が表示されます。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/value-in-previous-stage.png" alt-text="前のステージの値を示すスクリーンショット。"::: 
+
+シンク ステージでは、次の図に示すように null になります。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/value-in-sink-stage.png" alt-text="シンク ステージの値を示すスクリーンショット。"::: 
+
+#### <a name="cause"></a>原因
+10 進型には、小数点以下桁数と有効桁数のプロパティがあります。 データ型がシンク テーブル内のデータ型と一致しない場合、ターゲットの 10 進数が元の 10 進数よりも大きいかどうかがシステムによって検証されます。元の値はターゲットの 10 進数でオーバーフローしません。 そのため、値は null にキャストされます。
+
+#### <a name="recommendation"></a>推奨
+SQL データベースのデータとテーブルの間の 10 進型を確認して比較し、小数点以下桁数と有効桁数が同じになるように変更します。
+
+toDecimal (IDecimal、小数点以下桁数、有効桁数) を使用して、元のデータをターゲットの小数点以下桁数と有効桁数にキャストできるかどうかを判断できます。 null が返された場合は、挿入時にデータをキャストして進めることができないことを意味します。
 
 ## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
@@ -458,47 +462,199 @@ Azure Blob Storage をステージングのリンク サービスとして使用
 #### <a name="recommendation"></a>推奨
 ストレージ用の Azure Data Lake Gen2 のリンク サービスを作成し、データ フロー アクティビティで、ステージングのリンク サービスとして Gen2 ストレージを選択します。
 
+## <a name="common-data-model-format"></a>Common Data Model 形式
 
-## <a name="azure-blob-storage"></a>Azure Blob Storage
+### <a name="modeljson-files-with-special-characters"></a>特殊文字を含む Model.Json ファイル
 
-### <a name="account-kind-of-storage-general-purpose-v1-doesnt-support-service-principal-and-mi-authentication"></a>ストレージのアカウントの種類 (汎用 v1) で、サービス プリンシパルと MI 認証がサポートされていない
+#### <a name="symptoms"></a>現象 
+model.json ファイルの最終的な名前に特殊文字が含まれているという問題が発生することがあります。  
+
+#### <a name="error-message"></a>エラー メッセージ  
+`at Source 'source1': java.lang.IllegalArgumentException: java.net.URISyntaxException: Relative path in absolute URI: PPDFTable1.csv@snapshot=2020-10-21T18:00:36.9469086Z. ` 
+
+#### <a name="recommendation"></a>推奨  
+ファイル名に含まれる特殊文字を置き換えます。これは Synapse では機能しますが、ADF では機能しません。  
+
+### <a name="no-data-output-in-the-data-preview-or-after-running-pipelines"></a>データのプレビューまたはパイプラインの実行後にデータが出力されない
 
 #### <a name="symptoms"></a>現象
+CDM に manifest.json を使用すると、データ プレビューに、またはパイプラインの実行後にデータが表示されません。 ヘッダーのみが表示されます。 この問題は、次の図で確認できます。<br/>
 
-データ フローで、サービス プリンシパルまたは MI 認証で Azure Blob Storage (汎用 v1) を使用すると、次のエラー メッセージが表示される場合があります。
+![データが出力されない現象を示しているスクリーンショット。](./media/data-flow-troubleshoot-connector-format/no-data-output.png)
 
-`com.microsoft.dataflow.broker.InvalidOperationException: ServicePrincipal and MI auth are not supported if blob storage kind is Storage (general purpose v1)`
+#### <a name="cause"></a>原因
+マニフェスト ドキュメントに、CDM フォルダーが記述されています。たとえば、フォルダー内にあるエンティティ、それらのエンティティの参照、およびこのインスタンスに対応するデータなどです。 マニフェスト ドキュメントには、データの読み取り先を ADF に示す `dataPartitions` 情報がありません。この情報が空であるため、データが返されません。 
+
+#### <a name="recommendation"></a>推奨
+`dataPartitions` 情報を含めるようにマニフェスト ドキュメントを更新します。ドキュメントを更新するには、[Common Data Model メタデータ: マニフェストの概要 - サンプル マニフェスト ドキュメント](/common-data-model/cdm-manifest#example-manifest-document)のサンプル マニフェスト ドキュメントを参照してください。
+
+### <a name="json-array-attributes-are-inferred-as-separate-columns"></a>JSON 配列属性が個別の列として推論される
+
+#### <a name="symptoms"></a>現象 
+CDM エンティティの 1 つの属性 (文字列型) にデータとして JSON 配列があるという問題が発生する場合があります。 このデータが検出されると、ADF によってデータが個別の列として誤って推論されます。 次の図からわかるように、ソースに示される 1 つの属性 (msfp_otherproperties) は、CDM コネクタのプレビューでは個別の列として推論されます。<br/> 
+
+- CSV ソース データ (2 番目の列を参照): <br/>
+
+    ![CSV ソース データ内の属性を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/json-array-csv.png)
+
+- CDM ソース データ プレビュー: <br/>
+
+    ![CDM ソース データ内の個別の列を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/json-array-cdm.png)
+
+ 
+また、誤差の列をマップし、データ フロー式を使用して、この属性を配列として変換することもできます。 ただし、この属性は読み取り時に別の列として読み取られるため、配列への変換は機能しません。  
+
+#### <a name="cause"></a>原因
+この問題は、その列の JSON オブジェクト値内のコンマが原因である可能性があります。 データ ファイルは CSV ファイルであることが想定されているため、コンマは列の値の末尾を示します。 
+
+#### <a name="recommendation"></a>推奨
+この問題を解決するには、JSON 列を二重引用符で囲み、円記号 (`\`) を使用して内側の引用符を回避する必要があります。 こうすることで、その列の値の内容を 1 つの列として完全に読み込むことができます。  
+  
+>[!Note]
+>CDM から、列の値のデータ型が JSON であることは通知されませんが、文字列でありそのように解析されることが通知されます。
+
+### <a name="unable-to-fetch-data-in-the-data-flow-preview"></a>データ フロー プレビューでデータをフェッチできない
+
+#### <a name="symptoms"></a>現象
+Power BI によって生成された model.json で CDM を使用します。 データ フロー プレビューを使用して CDM データをプレビューすると、次のエラーが発生します。 `No output data.`
+
+#### <a name="cause"></a>原因
+ 次のコードが、Power BI データ フローによって生成される model.json ファイルのパーティションに存在しています。
+```json
+"partitions": [  
+{  
+"name": "Part001",  
+"refreshTime": "2020-10-02T13:26:10.7624605+00:00",  
+"location": "https://datalakegen2.dfs.core.windows.net/powerbi/salesEntities/salesPerfByYear.csv @snapshot=2020-10-02T13:26:10.6681248Z"  
+}  
+```
+この model.json ファイルの場合、問題は、データ パーティション ファイルの名前付けスキーマに特殊文字が含まれていて、'@' を含むサポート ファイル パスが現在存在していないことです。  
+
+#### <a name="recommendation"></a>推奨
+データ パーティションのファイル名と model.json ファイルから `@snapshot=2020-10-02T13:26:10.6681248Z` の部分を削除してから、操作をやり直してください。 
+
+### <a name="the-corpus-path-is-null-or-empty"></a>コーパスのパスが null または空である
+
+#### <a name="symptoms"></a>現象
+モデル形式のデータ フローで CDM を使用すると、データをプレビューできず、次のエラーが発生します。`DF-CDM_005 The corpus path is null or empty` エラーを次の図に示します。  
+
+![コーパス パス エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/corpus-path-error.png)
+
+#### <a name="cause"></a>原因
+model.json のデータ パーティション パスが、データ レイクではなく BLOB ストレージの場所を指しています。 この場所には、ADLS Gen2 の **dfs.core.windows.net** のベース URL を指定する必要があります。 
+
+#### <a name="recommendation"></a>推奨
+この問題を解決するには、「[ADF によりインライン データセットと Common Data Model のサポートがデータ フローに追加される](https://techcommunity.microsoft.com/t5/azure-data-factory/adf-adds-support-for-inline-datasets-and-common-data-model-to/ba-p/1441798)」を参照してください。次の図は、この記事のコーパス パス エラーを修正する方法を示しています。
+
+![コーパス パス エラーの修正方法を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/fix-format-issue.png)
+
+### <a name="unable-to-read-csv-data-files"></a>CSV データ ファイルが読み取れない
+
+#### <a name="symptoms"></a>現象 
+マニフェストをソースとして持つ共通データ モデルとしてインライン データセットを使用し、エントリ マニフェスト ファイル、ルート パス、エンティティ名、およびパスを指定しました。 マニフェストには、CSV ファイルの場所を含むデータ パーティションがあります。 一方、エンティティ スキーマと csv スキーマは同一で、すべての検証は成功しました。 ただし、データ プレビューでは、データではなくスキーマのみが読み込まれ、データは非表示になります。これを次の図に示します。
+
+![データ ファイルを読み取れない問題を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/unable-read-data.png)
+
+#### <a name="cause"></a>原因
+CDM フォルダーは論理モデルと物理モデルに分離されていないため、CDM フォルダーには物理モデルのみが存在します。 「[論理定義](/common-data-model/sdk/logical-definitions)」と「[論理エンティティ定義の解決](/common-data-model/sdk/convert-logical-entities-resolved-entities)」の 2 つの記事でその違いを説明しています。<br/> 
+
+#### <a name="recommendation"></a>推奨
+ソースとして CDM を使用するデータ フローの場合、エンティティ参照として論理モデルを使用し、物理的に解決されたエンティティの場所とデータ パーティションの場所を記述するマニフェストを使用してみてください。 パブリック CDM GitHub リポジトリ ([CDM-schemaDocuments](https://github.com/microsoft/CDM/tree/master/schemaDocuments)) 内で、論理エンティティ定義のサンプルをいくつか見ることができます。<br/>
+
+コーパスを作成するには、最初にスキーマ ドキュメント フォルダー (GitHub リポジトリ内のそのレベル) 内のファイルをコピーし、それらのファイルをフォルダーに配置することをお勧めします。 その後、リポジトリ内の定義済みの論理エンティティの 1 つを (開始点または参照ポイントとして) 使用して、論理モデルを作成できます。<br/>
+
+コーパスを設定したら、データ フロー内でシンクとして CDM を使用することをお勧めします。これにより、整形式の CDM フォルダーを適切に作成できます。 CSV データセットをソースとして使用して、作成した CDM モデルにシンクできます。
+
+## <a name="csv-and-excel-format"></a>CSV と Excel 形式
+
+### <a name="set-the-quote-character-to-no-quote-char-is-not-supported-in-the-csv"></a>CSV で、引用符文字を 'no quote char' に設定することがサポートされていない
+ 
+#### <a name="symptoms"></a>現象
+
+引用符文字が 'no quote char' に設定されていると、CSV ではサポートされない問題がいくつかあります。
+
+1. 引用符文字が 'no quote char' に設定されている場合、複数文字の列区切り記号の先頭と末尾を同じ文字にすることはできません。
+2. 引用符文字が 'no quote char' に設定されている場合、複数文字の列区切り記号にエスケープ文字 (`\`) を含めることはできません。
+3. 引用符文字が 'no quote char' に設定されている場合、列の値に行の区切り記号を含めることはできません。
+4. 列の値に列の区切り記号が含まれている場合、引用符文字とエスケープ文字の両方を空にすることはできません (no quote および no escape)。
 
 #### <a name="cause"></a>原因
 
-データ フローで Azure Blob のリンク サービスを使用する際に、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 この状況を、次の画像 1 と画像 2 に示します。
+この現象の原因を、それぞれ例とともに以下に示します。
+1. 先頭と末尾に同じ文字を使用している。<br/>
+`column delimiter: $*^$*`<br/>
+`column value: abc$*^    def`<br/>
+`csv sink: abc$*^$*^$*def ` <br/>
+`will be read as "abc" and "^&*def"`<br/>
 
-画像 1: Azure Blob Storage のリンク サービスのアカウントの種類
+2. 複数文字の区切り記号にエスケープ文字が含まれている。<br/>
+`column delimiter: \x`<br/>
+`escape char:\`<br/>
+`column value: "abc\\xdef"`<br/>
+エスケープ文字は、列区切り記号または文字のいずれかをエスケープします。
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/storage-account-kind.png" alt-text="Azure Blob Storage のリンク サービスのストレージ アカウントの種類を示すスクリーンショット。"::: 
+3. 列の値に行区切り記号が含まれている。 <br/>
+`We need quote character to tell if row delimiter is inside column value or not.`
 
-画像 2: ストレージ アカウントのページ
+4. 引用符文字とエスケープ文字の両方が空で、列の値に列の区切り記号が含まれている。<br/>
+`Column delimiter: \t`<br/>
+`column value: 111\t222\t33\t3`<br/>
+`It will be ambigious if it contains 3 columns 111,222,33\t3 or 4 columns 111,222,33,3.`<br/>
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/storage-account-page.png" alt-text="ストレージ アカウントのページを示すスクリーンショット。" lightbox="./media/data-flow-troubleshoot-connector-format/storage-account-page.png"::: 
+#### <a name="recommendation"></a>推奨
+1 番目の現象と 2 番目の現象は現在解決できません。 3 番目と 4 番目の現象には、次の方法を適用できます。
+- 現象 3 の場合、複数行の csv ファイルに 'no quote char' を使用しないでください。
+- 現象 4 の場合、引用符文字またはエスケープ文字のいずれかを空以外に設定するか、データ内のすべての列区切り記号を削除します。
 
+### <a name="read-files-with-different-schemas-error"></a>スキーマが異なるファイルの読み取りエラー
+
+#### <a name="symptoms"></a>現象
+
+データ フローを使用して、スキーマが異なる CSV や Excel などのファイルを読み取ると、データ フローのデバッグ、サンドボックス、またはアクティビティの実行が失敗します。
+- CSV の場合、ファイルのスキーマが異なると、データの不整合が発生します。 
+
+    ![1 番目のスキーマ エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/schema-error-1.png)
+
+- Excel の場合、ファイルのスキーマが異なるとエラーが発生します。
+
+    ![2 番目のスキーマ エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/schema-error-2.png)
+
+#### <a name="cause"></a>原因
+
+データ フローでスキーマが異なるファイルを読み取ることはサポートされていません。
 
 #### <a name="recommendation"></a>推奨
 
-この問題を解決するには、以下の推奨事項を参照してください。
+それでもデータ フローで CSV や Excel ファイルなどのスキーマが異なるファイルを転送する必要がある場合は、次の方法を使用して対処できます。
 
-- Azure Blob のリンク サービスでストレージ アカウントの種類が **None** の場合は、適切なアカウントの種類を指定します。次の画像 3 を参照してください。 さらに、画像 2 を参照してストレージ アカウントの種類を取得し、アカウントの種類が "Storage" (汎用 v1) ではないことを確認します。
+- CSV の場合、スキーマ全体を取得するには、異なるファイルのスキーマを手動でマージする必要があります。 たとえば、file_1 には列`c_1, c_2, c_3` があり、file_2 には列 `c_3, c_4,... c_10` があるため、マージされた完全なスキーマは `c_1, c_2... c_10` になります。 次に、データがない場合でも、他のファイルにも同じ完全なスキーマが含まれるようにします。たとえば、file_x には列 `c_1, c_2, c_3, c_4` しかないので、ファイルに列 `c_5, c_6, ... c_10` を追加すると、機能するようになります。
 
-    画像 3: Azure Blob Storage のリンク サービスでストレージ アカウントの種類を指定する
+- Excel の場合は、次のいずれかのオプションを適用することで、この問題を解決できます。
 
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/specify-storage-account-kind.png" alt-text="Azure Blob Storage のリンク サービスでストレージ アカウントの種類を指定する方法を示しているスクリーンショット。"::: 
-    
+    - **オプション-1**: スキーマ全体を取得するには、異なるファイルのスキーマを手動でマージする必要があります。 たとえば、file_1 には列`c_1, c_2, c_3` があり、file_2 には列 `c_3, c_4,... c_10` があるため、マージされた完全なスキーマは `c_1, c_2... c_10` になります。 次に、データがない場合でも、他のファイルにも同じスキーマが含まれるようにします。たとえば、file_x の "SHEET_1" には列 `c_1, c_2, c_3, c_4` しかないので、シートにも列 `c_5, c_6, ... c_10` を追加すると、機能するようになります。
+    - **オプション-2**: **range (例: A1:G100) + firstRowAsHeader = false** を使用すると、列名と数が異なっていても、すべての Excel ファイルからデータを読み込むことができます。
 
-- アカウントの種類が "Storage" (汎用 v1) の場合は、ストレージ アカウントを **汎用 v2** にアップグレードするか、別の認証を選択します。
+## <a name="delta-format"></a>差分形式
 
-    画像 4: ストレージ アカウントを汎用 v2 にアップグレードする
+### <a name="the-sink-does-not-support-the-schema-drift-with-upsert-or-update"></a>シンクで、アップサートまたは更新でのスキーマの誤差がサポートされない
 
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/upgrade-storage-account.png" alt-text="ストレージ アカウントを汎用 v2 にアップグレードする方法を示しているスクリーンショット。" lightbox="./media/data-flow-troubleshoot-connector-format/upgrade-storage-account.png"::: 
-    
+#### <a name="symptoms"></a>現象
+マッピング データ フローの差分シンクで、アップサートまたは更新でのスキーマの誤差がサポートされないという問題が発生する可能性があります。 問題は、差分がマッピング データ フローのターゲットで、ユーザーがアップサートまたは更新を構成している場合、スキーマの誤差が機能しないことです。 
+
+差分への "最初" の読み込みの後に列がソースに追加された場合、後続のジョブは、新しい列を見つけることができないというエラーで失敗します。これは、行の変更でアップサートまたは更新を実行すると発生します。 挿入に対してのみ機能するようです。
+
+#### <a name="error-message"></a>エラー メッセージ
+`DF-SYS-01 at Sink 'SnkDeltaLake': org.apache.spark.sql.AnalysisException: cannot resolve target.BICC_RV in UPDATE clause given columns target. `
+
+#### <a name="cause"></a>原因
+これは、データ フロー ランタイムで使用される IO 差分ライブラリの制限が原因で発生する差分形式の問題です。 この問題はまだ修正中です。
+
+#### <a name="recommendation"></a>推奨
+この問題を解決するには、最初にスキーマを更新してから、データを書き込む必要があります。 次の手順に従うことができます。 <br/>
+1. スキーマを更新するためのマージ スキーマ オプションを使用して、挿入専用の差分シンクを含むデータ フローを 1 つ作成します。 
+1. 手順 1 の後で、削除、アップサート、更新のいずれかを使用して、スキーマを変更せずにターゲット シンクを変更します。 <br/>
+
+
 
 ## <a name="snowflake"></a>Snowflake
 
@@ -604,129 +760,6 @@ Snowflake のクエリでエラーが発生した場合は、次の手順に従�
     - テーブルを使用してクエリを実行します。例: `select "movieId", "title" from Public."testQuotedTable2"`
     
 1. Snowflake の SQL クエリは、テストと検証が終了したら、データ フローの Snowflake ソースで直接使用することができます。
-
-## <a name="azure-sql-database"></a>Azure SQL データベース
- 
-### <a name="unable-to-connect-to-the-sql-database"></a>SQL Database に接続できない
-
-#### <a name="symptoms"></a>現象
-
-Azure SQL Database は、リンク サービスのデータ コピー、データセットのプレビュー データ、およびテスト接続で適切に機能しますが、同じ Azure SQL Database がデータ フローでソースまたはシンクとして使用されると、次のようなエラーが表示されて失敗します。 `Cannot connect to SQL database: 'jdbc:sqlserver://powerbasenz.database.windows.net;..., Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access`
-
-#### <a name="cause"></a>原因
-
-Azure SQL Database サーバーのファイアウォール設定が間違っているため、データ フロー ランタイムで接続できません。 現時点では、データ フローを使用して Azure SQL Database の読み取り/書き込みを行おうとすると、ジョブを実行する spark クラスターを構築するために Azure Databricks が使用されますが、これは固定 IP 範囲をサポートしていません。 詳細については、「[Azure Integration Runtime の IP アドレス](./azure-integration-runtime-ip-addresses.md)」を参照してください。
-
-#### <a name="recommendation"></a>推奨
-
-Azure SQL Database のファイアウォール設定を確認し、固定 IP の範囲を設定するのではなく、[Azure サービスへのアクセスを許可] に設定します。
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/allow-access-to-azure-service.png" alt-text="ファイアウォール設定で Azure サービスへのアクセスを許可する方法を示すスクリーンショット。"::: 
-
-### <a name="syntax-error-when-using-queries-as-input"></a>入力としてクエリを使用すると構文エラーが発生する
-
-#### <a name="symptoms"></a>現象
-
-Azure SQL でデータ フロー ソースの入力としてクエリを使用すると、次のエラー メッセージが表示されて失敗します。
-
-`at Source 'source1': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax XXXXXXXX.`
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/error-detail.png" alt-text="エラーの詳細を示すスクリーンショット。"::: 
-
-#### <a name="cause"></a>原因
-
-データ フロー ソースで使用されるクエリは、サブクエリとして実行できる必要があります。 このエラーの原因は、クエリ構文が正しくないか、サブクエリとして実行できないことです。 SSMS で次のクエリを実行して、検証することができます。
-
-`SELECT top(0) * from ($yourQuery) as T_TEMP`
-
-#### <a name="recommendation"></a>推奨
-
-適切なクエリを指定し、最初に SSMS でテストします。
-
-### <a name="failed-with-an-error-sqlserverexception-111212-operation-cannot-be-performed-within-a-transaction"></a>エラー: "SQLServerException: 111212; Operation cannot be performed within a transaction." (SQLServerException: 111212; トランザクション内で操作を実行できません。) で失敗する
-
-#### <a name="symptoms"></a>現象
-
-Azure SQL Database をデータ フローのシンクとして使用して、データのプレビュー、デバッグまたはトリガーの実行、およびその他アクティビティを実行すると、次のエラー メッセージが表示されてジョブが失敗することがあります。
-
-`{"StatusCode":"DFExecutorUserError","Message":"Job failed due to reason: at Sink 'sink': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: 111212;Operation cannot be performed within a transaction.","Details":"at Sink 'sink': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: 111212;Operation cannot be performed within a transaction."}`
-
-#### <a name="cause"></a>原因
-エラー "`111212;Operation cannot be performed within a transaction.`" は、Synapse 専用 SQL プールでのみ発生します。 しかし、代わりに Azure SQL Database をコネクタとして誤って使用しています。
-
-#### <a name="recommendation"></a>推奨
-SQL Database が Synapse 専用 SQL プールであるかどうかを確認します。 その場合は、次の図に示すように、Azure Synapse Analytics をコネクタとして使用してください。
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/synapse-analytics-connector.png" alt-text="Azure Synapse Analytics コネクタを示すスクリーンショット。"::: 
-
-### <a name="data-with-the-decimal-type-become-null"></a>10 進型のデータが null になる
-
-#### <a name="symptoms"></a>現象
-
-SQL データベースのテーブルにデータを挿入するとします。 データに 10 進型が含まれていて、SQL データベースの 10 進型の列に挿入する必要がある場合は、データ値が null に変更される場合があります。
-
-プレビューを実行すると、前のステージで、次の図のような値が表示されます。
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/value-in-previous-stage.png" alt-text="前のステージの値を示すスクリーンショット。"::: 
-
-シンク ステージでは、次の図に示すように null になります。
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/value-in-sink-stage.png" alt-text="シンク ステージの値を示すスクリーンショット。"::: 
-
-#### <a name="cause"></a>原因
-10 進型には、小数点以下桁数と有効桁数のプロパティがあります。 データ型がシンク テーブル内のデータ型と一致しない場合、ターゲットの 10 進数が元の 10 進数よりも大きいかどうかがシステムによって検証されます。元の値はターゲットの 10 進数でオーバーフローしません。 そのため、値は null にキャストされます。
-
-#### <a name="recommendation"></a>推奨
-SQL データベースのデータとテーブルの間の 10 進型を確認して比較し、小数点以下桁数と有効桁数が同じになるように変更します。
-
-toDecimal (IDecimal、小数点以下桁数、有効桁数) を使用して、元のデータをターゲットの小数点以下桁数と有効桁数にキャストできるかどうかを判断できます。 null が返された場合は、挿入時にデータをキャストして進めることができないことを意味します。
-
-## <a name="adls-gen2"></a>ADLS Gen2
-
-### <a name="failed-with-an-error-error-while-reading-file-xxx-it-is-possible-the-underlying-files-have-been-updated"></a>エラー: "Error while reading file XXX. (ファイル XXX の読み取り中にエラーが発生しました。) It is possible the underlying files have been updated (基になるファイルが更新されている可能性があります。)"
-
-#### <a name="symptoms"></a>現象
-
-ADLS Gen2 をデータ フローのシンクとして使用し (データのプレビュー、デバッグまたはトリガーの実行などを行い)、**シンク** ステージの **[最適化]** タブのパーティション設定が既定ではない場合、次のエラー メッセージが表示されてジョブが失敗する可能性があります。
-
-`Job failed due to reason: Error while reading file abfss:REDACTED_LOCAL_PART@prod.dfs.core.windows.net/import/data/e3342084-930c-4f08-9975-558a3116a1a9/part-00000-tid-7848242374008877624-5df7454e-7b14-4253-a20b-d20b63fe9983-1-1-c000.csv. It is possible the underlying files have been updated. You can explicitly invalidate the cache in Spark by running 'REFRESH TABLE tableName' command in SQL or by recreating the Dataset/DataFrame involved.`
-
-#### <a name="cause"></a>原因
-
-1. MI または SP の認証に適切なアクセス許可を割り当てていません。
-1. 不要なファイルを処理するためのカスタマイズされたジョブがある可能性があります。これはデータ フローの中間出力に影響します。
-
-#### <a name="recommendation"></a>推奨
-1. リンク サービスに Gen2 に対する R/W/E アクセス許可があるかどうかを確認します。 MI 認証または SP 認証を使用する場合は、アクセス制御 (IAM) で少なくともストレージ BLOB データ共同作成者ロールを付与します。
-1. 名前が規則と一致しない別の場所にファイルを移動するまたはファイルを削除する特定のジョブがあるかどうかを確認します。 データ フローでは、最初にパーティション ファイルをターゲット フォルダーに書き込んでから、マージおよび名前変更操作が実行されるため、中間ファイルの名前が規則と一致しない場合があります。
-
-## <a name="adls-gen1"></a>ADLS Gen1
-
-### <a name="fail-to-create-files-with-service-principle-authentication"></a>サービス プリンシパル認証を使用したファイルの作成に失敗する
-
-#### <a name="symptoms"></a>現象
-別のソースから ADLS Gen1 シンクにデータを移動または転送しようとすると、リンク サービスの認証方法がサービス プリンシパル認証の場合、次のエラー メッセージが表示されてジョブが失敗することがあります。
-
-`org.apache.hadoop.security.AccessControlException: CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.). [2b5e5d92-xxxx-xxxx-xxxx-db4ce6fa0487] failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)`
-
-#### <a name="cause"></a>原因
-
-RWX のアクセス許可またはデータセットのプロパティが正しく設定されていません。
-
-#### <a name="recommendation"></a>推奨
-
-- ターゲット フォルダーに適切なアクセス許可がない場合は、「[サービス プリンシパル認証を使用する](./connector-azure-data-lake-store.md#use-service-principal-authentication)」のドキュメントを参照して、Gen1 で適切なアクセス許可を割り当てます。
-
-- ターゲット フォルダーに適切なアクセス許可があり、データ フローのファイル名プロパティを使用して適切なフォルダーとファイル名をターゲットにしているが、データセットのファイル パスのプロパティがターゲット ファイル パスに設定されていない場合 (通常は設定しません)、次の図に示す例のように、バックエンド システムがデータセットのファイル パスに基づいてファイルを作成しようとし、データセットのファイル パスに正しいアクセス許可がないため、このエラーが発生します。
-    
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/file-path-property.png" alt-text="ファイル パスのプロパティを示すスクリーンショット"::: 
-    
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/file-name-property.png" alt-text="ファイル名のプロパティを示すスクリーンショット"::: 
-
-    
-    この問題を解決するには、2 つの方法があります。
-    1. WX アクセス許可をデータセットのファイル パスに割り当てます。
-    1. データセットのファイル パスを、WX アクセス許可を持つフォルダーとして設定し、残りのフォルダー パスとファイル名をデータ フローに設定します。
 
 ## <a name="next-steps"></a>次のステップ
 トラブルシューティングの詳細について、次のリソースを参照してください。

@@ -6,19 +6,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/04/2021
+ms.date: 07/27/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 97c8f1111f84b36ead123dcad9f8d9faeb157336
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 638a38cf1cbe9aee231e1db400440330bd852b9f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729653"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
-この記事では、RADIUS 認証を使用するポイント対サイト接続を備えた VNet を作成する方法について説明します。 この構成は、Resource Manager デプロイ モデルについてのみ使用できます。
+この記事では、RADIUS 認証を使用するポイント対サイト接続を備えた VNet を作成する方法について説明します。 この構成は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)についてのみ使用できます。
 
 ポイント対サイト (P2S) VPN ゲートウェイでは、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 P2S VPN は、VNet への接続が必要なクライアントがごく少ない場合に、サイト対サイト VPN の代わりに使用するソリューションとしても便利です。
 
@@ -34,7 +34,7 @@ P2S VPN 接続は、Windows デバイスと Mac デバイスから開始され�
 
 ポイント対サイト接続に、VPN デバイスや公開 IP アドレスは必要ありません。 P2S では、SSTP (Secure Socket トンネリング プロトコル)、OpenVPN、または IKEv2 経由の VPN 接続が作成されます。
 
-* SSTP は、Windows クライアント プラットフォームでのみサポートされる TLS ベースの VPN トンネルです。 ファイアウォールを通過できるため、接続元の場所を問わず Azure に接続する際の理想的なオプションとなっています。 サーバー側でのサポート対象の SSTP バージョンは、1.0、1.1、1.2 です。 使用するバージョンはクライアントによって決まります。 Windows 8.1 以降の場合、SSTP では既定で 1.2 が使用されます。
+* SSTP は、Windows クライアント プラットフォームでのみサポートされる TLS ベースの VPN トンネルです。 ファイアウォールを通過できるため、接続元の場所を問わず Windows デバイスを Azure に接続する際の理想的なオプションとなっています。 サーバー側では、TLS バージョン 1.2 のみをサポートしています。 パフォーマンス、スケーラビリティ、セキュリティを向上させるには、代わりに OpenVPN プロトコルの使用を検討してください。
 
 * SSL/TLS ベースの VPN プロトコルである OpenVPN® プロトコル。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (macOS バージョン 10.13 以上) から接続する際に使用できます。
 
@@ -161,7 +161,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 VPN ゲートウェイを VNet 用に構成して作成します。
 
 * -GatewayType は "Vpn"、-VpnType は "RouteBased" にする必要があります。
-* 選択する [ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)  によっては、VPN ゲートウェイの作成が完了するまでに最大で 45 分かかる場合があります。
+* 選択する [ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)  によっては、VPN ゲートウェイの作成が完了するまでに 45 分以上かかる場合があります。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `

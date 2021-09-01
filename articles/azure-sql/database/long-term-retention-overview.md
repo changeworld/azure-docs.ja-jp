@@ -8,16 +8,16 @@ ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: shkale-msft
-ms.author: shkale
+author: SQLSourabh
+ms.author: sourabha
 ms.reviewer: mathoma
-ms.date: 02/25/2021
-ms.openlocfilehash: e49f6220a25a449221ccab70a7439722189378cd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 07/13/2021
+ms.openlocfilehash: 13e522b45673723a33b8739ccefafa4a8410910a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708494"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751327"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>長期リテンション - Azure SQL Database と Azure SQL Managed Instance
 
@@ -34,7 +34,7 @@ ms.locfileid: "110708494"
 
 ## <a name="how-long-term-retention-works"></a>長期リテンションのしくみ
      
-長期的なバックアップ保有期間 (LTR) は、ポイントインタイム リストア (PITR) を有効にするために[自動的に作成された](automated-backups-overview.md)完全なデータベース バックアップを利用します。 LTR ポリシーが構成されている場合、これらのバックアップは長期保存用に異なるストレージ BLOB にコピーされます。 コピーは、データベースのワークロードのパフォーマンスに影響しないバック グラウンド ジョブです。 SQL Database では、各データベースの LTR ポリシーで LTR バックアップを作成する頻度も指定できます。
+バックアップの長期保有 (LTR) では、ポイントインタイム リストア (PITR) を有効にするために[自動的に作成](automated-backups-overview.md)される完全なデータベース バックアップが利用されます。 LTR ポリシーが構成されている場合、これらのバックアップは長期保存用に異なるストレージ BLOB にコピーされます。 コピーは、データベースのワークロードのパフォーマンスに影響しないバック グラウンド ジョブです。 SQL Database では、各データベースの LTR ポリシーで LTR バックアップを作成する頻度も指定できます。
 
 LTR を有効にするために、ポリシーの定義には、毎週のバックアップ リテンション期間 (W)、毎月のバックアップ リテンション期間 (M)、毎年のバックアップ リテンション期間 (Y)、年度の通算週 (WeekOfYear) の 4 つのパラメーターの組み合わせを使用できます。 W を指定すると、毎週 1 つのバックアップが長期ストレージにコピーされます。 M を指定すると、毎月の最初のバックアップが長期ストレージにコピーされます。 Y を指定すると、WeekOfYear によって指定された週に 1 つのバックアップが長期ストレージにコピーされます。 指定した WeekOfYear がポリシーの構成時点で既に過去である場合、初回の LTR バックアップは次の年に作成されます。 各バックアップは、LTR バックアップの作成時に構成されるポリシー パラメーターに従って、長期ストレージに保持されます。
 
@@ -75,7 +75,7 @@ W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>geo レプリケーションと長期のバックアップ リテンション期間
 
-ビジネス継続性のソリューションとしてアクティブ geo レプリケーションやフェールオーバー グループを使用している場合、最終的なフェールオーバーを準備して、セカンダリ データベースまたはインスタンス上に同じ LTR ポリシーを構成する必要があります。 バックアップがセカンダリから生成されないときに、LTR ストレージのコストが増加することはありません。 セカンダリがプライマリになった場合にのみ、バックアップが作成されます。 フェールオーバーがトリガーされ、プライマリがセカンダリ リージョンに移動するときに、LTR バックアップの中断されない生成が保証されます。 
+ビジネス継続性のソリューションとしてアクティブ geo レプリケーションやフェールオーバー グループを使用している場合、最終的なフェールオーバーを準備して、セカンダリ データベースまたはインスタンス上に同じ LTR ポリシーを構成する必要があります。 バックアップがセカンダリから生成されないときに、LTR ストレージのコストが増加することはありません。 バックアップは、セカンダリがプライマリになった場合にのみ作成されます。 フェールオーバーがトリガーされ、プライマリがセカンダリ リージョンに移動するときに、LTR バックアップの中断されない生成が保証されます。 
 
 > [!NOTE]
 > 元のプライマリ データベースをフェールオーバーの原因となる停止から回復させると、これが新しいセカンダリになります。 したがって、バックアップの作成は再開することなく、既存の LTR ポリシーは、もう一度プライマリになるまで反映されることはありません。 
@@ -87,7 +87,7 @@ Azure SQL Database には Azure portal を使用し、Azure SQL Managed Instance
 
 Azure portal または PowerShell を使用して、長期のリテンション期間を構成したり、SQL Database のバックアップからデータベースを復元したりする方法については、「[Azure SQL Database の長期的なバックアップ保有期間を管理する](long-term-backup-retention-configure.md)」を参照してください。
 
-PowerShell を使用して、長期のリテンション期間を構成したり、SQL Managed Instance のバックアップからデータベースを復元したりする方法については、[Azure SQL Managed Instance の長期的なバックアップ保有期間の管理](../managed-instance/long-term-backup-retention-configure.md)に関するページを参照してください。
+Azure portal または PowerShell を使用して、長期保有を構成したり、SQL Managed Instance のバックアップからデータベースを復元したりする方法については、「[Azure SQL Managed Instance の長期的なバックアップ保有期間を管理する](../managed-instance/long-term-backup-retention-configure.md)」を参照してください。
 
 LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。 データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 Azure portal または PowerShell を使用して LTR バックアップからデータベースを復元する方法については、「[Azure SQL Database の長期的なバックアップ保有期間を管理する](long-term-backup-retention-configure.md)」を参照してください。 
 

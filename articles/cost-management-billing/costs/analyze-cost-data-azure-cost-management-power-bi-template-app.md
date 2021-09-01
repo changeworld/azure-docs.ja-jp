@@ -3,17 +3,17 @@ title: Power BI アプリを使用して Azure のコストを分析する
 description: この記事では、Azure Cost Management Power BI アプリをインストールして使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/19/2021
+ms.date: 06/15/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: b08ff57f964ef7bc3712c930c222a10ed0f89ef4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 903bcab1816263cdd660f5b41561cd5209b6557f
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045100"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200971"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
@@ -46,10 +46,10 @@ Azure Cost Management Power BI アプリは現在、[マイクロソフト エ�
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" alt-text="[データを接続] リンクが強調表示されたスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" :::
 1. 表示されるダイアログで、**BillingProfileIdOrEnrollmentNumber** の EA 登録番号を入力します。 取得するデータの月数を指定します。 既定の **[範囲]** 値である **[Enrollment Number]\(登録番号\)** のままにして、 **[次へ]** を選択します。  
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="E A 登録情報を入力する場所を示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
-1. 次のダイアログで Azure に接続し、データを取得します。 "*構成された既定値のままにして*"、 **[サインインして続行する]** を選択します。  
-    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="既定値が表示されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
-1. 最後のインストール手順では、EA 登録に接続し、[エンタープライズ管理者](../manage/understand-ea-roles.md)アカウントが必要です。 すべて既定値のままにします。 **[サインインして接続する]** を選択します。  
+1. 次のインストール手順では、EA 登録に接続し、[エンタープライズ管理者](../manage/understand-ea-roles.md)アカウントが必要です。 すべて既定値のままにします。 **[サインインして接続する]** を選択します。  
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="接続に使用する既定値が表示されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
+1. 最後のダイアログで Azure に接続し、データを取得します。 "*構成された既定値のままにして*"、 **[サインインして続行する]** を選択します。  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="既定値が表示されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
 1. EA 登録で認証するよう求められます。 Power BI を使用して認証します。 認証が完了すると、Power BI のデータ更新が開始されます。
     > [!NOTE]
     > データ更新処理が完了するまでにかなりの時間がかかることがあります。 この長さは、指定された月数と同期に必要なデータの量によって異なります。

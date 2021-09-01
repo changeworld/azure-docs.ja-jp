@@ -4,57 +4,80 @@ description: ユーザーは QnA Maker リソースへのパブリック アク�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: fa24347c8fcc0550dc6dc86c96624d1b1f6dcf25
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/13/2021
+ms.openlocfilehash: 91bfa04c9fab179cf3935e703f13004f3aadd170
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376325"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220064"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定
 
-QnA Maker リソースへのパブリック アクセスを制限するには、次の手順に従う必要があります。 [仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
+QnA Maker リソースへのパブリック アクセスを制限するには、次の手順に従います。 [仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
 
-## <a name="restrict-access-to-app-service-qna-runtime"></a>App Service (QnA Runtime) へのアクセスを制限する
+## <a name="restrict-access-to-app-service-qna-runtime"></a>App Service (QnA runtime) へのアクセスを制限する
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-App Service 許可リストに IP を追加してアクセスを制限したり、QnA Maker App Service をホストするように App Service Environment を構成したりできます。
+ServiceTag `CognitiveServicesMangement` を使用すると、App Service または ASE (App Service Environment) のネットワーク セキュリティ グループの受信規則の受信アクセスを制限することができます。サービス タグiの詳細については、 [「仮想ネットワーク サービス タグ」の記事](../../../virtual-network/service-tags-overview.md)を参照してください。 
 
-#### <a name="add-ips-to-app-service-allow-list"></a>App Service 許可リストに IP を追加する
+### <a name="regular-app-service"></a>通常の App Service
 
-1. Cognitive Services IP からのトラフィックのみを許可します。 これらは、既にサービスタグ `CognitiveServicesManagement` に含まれています。 これは、オーサリング API シリーズ (KB の作成/更新) で App Service を起動し、それに応じて Azure Search Service を更新するために必要です。 [サービス タグに関する詳細](../../../virtual-network/service-tags-overview.md)を確認します。
-2. Azure Bot Service、QnA Maker ポータルなどの他のエントリ ポイントにも予測 "GenerateAnswer" API アクセスを許可していることを確認します。
-3. IP アドレスの範囲を許可リストに追加するには、次の手順に従ってください。
+1. Azure portal から Cloud Shell (PowerShell) を開きます。
+2. ページの下部にある PowerShell ウィンドウで、次のコマンドを実行します。
 
-   1. [すべてのサービス タグの IP 範囲](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードします。
-   2. "CognitiveServicesManagement" の IP を選択します。
-   3. App Service リソースのネットワーク セクションに移動し、[アクセス制限の構成] オプションをクリックして許可リストに IP を追加します。
+```ps
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "<resource group name>" -WebAppName "<app service name>" -Name "cognitive services Tag" -Priority 100 -Action Allow -ServiceTag "CognitiveServicesManagement" 
+```
+3.  追加されたアクセス規則が **[ネットワーク]** タブの **[アクセス制限]** セクションに存在することを確認します。  
 
-また、App Service に対して同じ処理を行う自動スクリプトも用意されています。 [許可リストを構成するための PowerShell スクリプト](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1)については、GitHub 上にあります。 スクリプト パラメーターとして、サブスクリプション ID、リソース グループ、および実際の App Service 名を入力する必要があります。 スクリプトを実行すると、App Service の許可リストに IP が自動的に追加されます。
+    > [!div class="mx-imgBorder"]
+    > [ ![アクセス制限規則のスクリーンショット]( ../media/network-isolation/access-restrictions.png) ](  ../media/network-isolation/access-restrictions.png#lightbox)
 
-#### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>QnA Maker App Service をホストするように App Service Environment を構成する
+4. https://qnamaker.ai ポータルの **テスト ペイン** にアクセスするには、ポータルにアクセスする **マシンのパブリック IP アドレス** を追加します。 **[アクセス制限]** ページから **[ルールの追加]** を選択し、クライアント IP へのアクセスを許可します。 
+
+    > [!div class="mx-imgBorder"]
+    > [ ![パブリック IP アドレスを追加したアクセス制限規則のスクリーンショット]( ../media/network-isolation/public-address.png) ](  ../media/network-isolation/public-address.png#lightbox)
+
+### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>QnA Maker App Service をホストするように App Service Environment を構成する
+
+App Service Environment (ASE) を使用して、QnA Maker App Service のインスタンスをホストできます。 次の手順に従います。
+
+1. [新しい Azure Cognitive Search リソース](https://ms.portal.azure.com/#create/Microsoft.Search)を作成します。
+2. App Service を使用して外部 ASE を作成します。
+    - 手順については、この [App Service のクイックスタート](../../../app-service/environment/create-external-ase.md#create-an-ase-and-an-app-service-plan-together)に従います。 このプロセスには最大で 1 から 2 時間かかります。
+    - 最後に、App Service エンドポイントが `https://<app service name>.<ASE name>.p.azurewebsite.net` のように表示されます。 
+    - 例: `https:// mywebsite.myase.p.azurewebsite.net`  
+3. 次の App Service の構成を追加します。
     
-App Service Environment (ASE) を使用して、QnA Maker App Service をホストできます。 次の手順に従ってください。
+    | 名前                       | 値                                                     |
+    |:---------------------------|:----------------------------------------------------------| 
+    | PrimaryEndpointKey         | `<app service name>-PrimaryEndpointKey`                   | 
+    | AzureSearchName            | `<Azure Cognitive Search Resource Name from step #1>`     | 
+    | AzureSearchAdminKey        | `<Azure Cognitive Search Resource admin Key from step #1>`| 
+    | QNAMAKER_EXTENSION_VERSION | `latest`                                                  |
+    | DefaultAnswer              | `no answer found`                                         |
 
-1. App Service Environment を作成し、"外部" としてマークします。 手順については、[チュートリアル](../../../app-service/environment/create-external-ase.md)を参照してください。
-2.  App Service Environment 内に App Service を作成します。
-    1. App Service の構成を確認し、アプリケーション設定として "PrimaryEndpointKey" を追加します。 'PrimaryEndpointKey' の値は、“\<app-name\>-PrimaryEndpointKey” に設定されている必要があります。 アプリ名は、App Service の URL で定義されています。 たとえば、App Service の URL が "mywebsite.myase.p.azurewebsite.net" の場合、アプリ名は "mywebsite" になります。 この場合、'PrimaryEndpointKey' の値は “mywebsite-PrimaryEndpointKey” に設定されている必要があります。
-    2. Azure Search サービスを作成します。
-    3. Azure Search とアプリの設定が適切に構成されていることを確認します。 
-          この[チュートリアル](../reference-app-service.md?tabs=v1#app-service)を参照してください。
-3.  App Service Environment に関連付けられているネットワーク セキュリティ グループを更新します。
-    1. 事前に作成された受信セキュリティ規則を要件に従って更新します。
-    2. ソースが 'Service Tag'、ソース サービス タグが 'CognitiveServicesManagement' の新しい受信セキュリティ規則を追加します。
-       
-    ![受信ポートの例外](../media/inbound-ports.png)
+4. https://qnamaker.ai ポータルのテスト ペインへのアクセスを許可するには、CORS origin "*" を App Service に追加します。 **CORS** は、[App Service] ペインの API ヘッダーの下にあります。
 
-4.  Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。QnA Maker エンドポイントは上記で作成した App Service Environment (https:// mywebsite.myase.p.azurewebsite.net) に設定する必要があります。
+    > [!div class="mx-imgBorder"]
+    > [ ![App Service UI 内の CORS インターフェイスのスクリーンショット]( ../media/network-isolation/cross-orgin-resource-sharing.png) ](  ../media/network-isolation/cross-orgin-resource-sharing.png#lightbox)
+
+5. Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。 QnA Maker エンドポイントは、上で作成した App Service エンドポイント (`https:// mywebsite.myase.p.azurewebsite.net`) に設定する必要があります。 [参照用に使用できるサンプル Azure Resource Manager テンプレート](https://github.com/pchoudhari/QnAMakerBackupRestore/tree/master/QnAMakerASEArmTemplate)はこちらです。
+
+### <a name="related-questions"></a>関連する質問
+
+#### <a name="can-qna-maker-be-deployed-to-an-internal-ase"></a>QnA Maker を内部 ASE にデプロイすることはできますか。 
+
+外部 ASE を使用する主な理由は、QnAMaker サービス バックエンド (オーサリング API) をインターネット経由で App Service に接続するようにできるためです。 ただし、`CognitiveServicesManagement` サービス タグに関連付けられたアドレスからの接続のみを許可するように受信アクセス制限を追加することで、引き続き保護することができます。
+
+それでも内部 ASE を使用したい場合は、アプリ ゲートウェイの DNS TLS/SSL 証明書を使用して、その特定の QnA Maker アプリをパブリック ドメインの ASE で公開する必要があります。詳細については、[App Services の Enterprise デプロイに関する記事](/azure/architecture/reference-architectures/enterprise-integration/ase-standard-deployment)を参照してください。
+
     
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-App Service の展開に Custom question answering は含まれません。
+App Service は、カスタム質問と回答とは一緒にデプロイされません。
 
 ---
 
@@ -62,15 +85,52 @@ App Service の展開に Custom question answering は含まれません。
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-Cognitive Search インスタンスは、QnA Maker リソースの作成後、プライベート エンドポイントを介して分離できます。 プライベート エンドポイントで接続するには、VNet 経由で Search Service インスタンスにアクセスできる必要があります。 
+Cognitive Search インスタンスは、QnA Maker リソースの作成後、プライベート エンドポイントを介して分離できます。 アクセスをロック ダウンするには、次の手順に従います。
 
-QnA Maker App Service が App Service Environment を使用して制限される場合、同じ VNet を使用し、Cognitive Search インスタンスへのプライベート エンドポイント接続を作成できます。 VNet で新しい DNS エントリを作成し、Cognitive Search エンドポイントを Cognitive Search プライベート エンドポイント IP アドレスにマップします。 
+1. 新しい[仮想ネットワーク (VNet)](https://portal.azure.com/#create/Microsoft.VirtualNetwork-ARM) を作成するか、既存の ASE (App Service Environment) の VNet を使用します。
+2. VNet リソースを開き、 **[サブネット]** タブで 2 つのサブネットを作成します。 1 つは App Service 用 **(appservicesubnet)** で、もう 1 つは委任なしの Cognitive Search リソース用のサブネット **(searchservicesubnet)** です。 
 
-QnAMaker App Service に App Service Environment が使用されない場合、まず、新しい VNet リソースを作成してから Cognitive Search インスタンスへのプライベート エンドポイント接続を作成します。 この場合、Cognitive Search インスタンスに接続するには、QnA Maker App Service を [VNet と統合する](../../../app-service/web-sites-integrate-with-vnet.md)必要があります。 
+    > [!div class="mx-imgBorder"]
+    > [ ![仮想ネットワーク サブネット UI インターフェイスのスクリーンショット]( ../media/network-isolation/subnets.png) ](  ../media/network-isolation/subnets.png#lightbox)
+
+3. Cognitive Search サービス インスタンスの **[ネットワーク]** タブに移動し、エンドポイント接続データをパブリックからプライベートに切り替えます。 この操作は実行時間の長いプロセスであり、完了するまで **最大で 30 分かかることがあります**。
+
+    > [!div class="mx-imgBorder"]
+    > [ ![パブリック/プライベート トグル ボタンを使用したネットワーク UI のスクリーンショット]( ../media/network-isolation/private.png) ](  ../media/network-isolation/private.png#lightbox)
+
+4. 検索リソースをプライベートに切り替えたら、 **[プライベート エンドポイント** の追加] を選択します。
+    - **[基本] タブ**: 検索リソースと同じリージョンにエンドポイントを作成していることを確認します。
+    - **[リソース] タブ**: 必要な検索リソースの種類 `Microsoft.Search/searchServices` を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > [ ![プライベート エンドポイントの作成の UI ウィンドウのスクリーンショット]( ../media/network-isolation/private-endpoint.png) ](  ../media/network-isolation/private-endpoint.png#lightbox)
+
+    - **[構成] タブ**: 手順 2 で作成した VNet のサブネット (searchservicesubnet) を使用します。 その後、 **[プライベート DNS 統合]** セクションで、対応するサブスクリプションを選択し、**privatelink.search.windows.net** という新しいプライベート DNS ゾーンを作成します。
+
+     > [!div class="mx-imgBorder"]
+     > [ ![サブネット フィールドが設定されたプライベート エンドポイントの作成の UI ウィンドウのスクリーンショット]( ../media/network-isolation/subnet.png) ](  ../media/network-isolation/subnet.png#lightbox)
+
+    5. 通常の App Service の VNET 統合を有効にします。 既に VNET にアクセスできるため、ASE では、この手順をスキップできます。
+        - App Service の **[ネットワーク]** セクションに移動し、 **[VNet 統合]** を開きます。
+        - 手順 2 で作成した専用 App Service VNet のサブネット (appservicevnet) にリンクします。
+    
+     > [!div class="mx-imgBorder"]
+     > [ ![VNET 統合 UI のスクリーンショット]( ../media/network-isolation/integration.png) ](  ../media/network-isolation/integration.png#lightbox)
+
 
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
 Azure Search リソースに[プライベート エンドポイントを作成](../reference-private-endpoint.md)します。
+
+QnA Maker リソースへのパブリック アクセスを制限するには、次の手順に従います。 [仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
+
+VNet に基づいて Cognitive Service リソースへのアクセスを制限した後、オンプレミス ネットワークまたはローカル ブラウザーから https://qnamaker.ai ポータル上のナレッジベースを参照します。
+- [オンプレミス ネットワーク](../../cognitive-services-virtual-networks.md?tabs=portal#configuring-access-from-on-premises-networks)へのアクセスを許可します。
+- [ローカルのブラウザーとマシン](../../cognitive-services-virtual-networks.md?tabs=portal#managing-ip-network-rules)へのアクセスを許可します。
+- **[ネットワーク]** タブの **[ファイアウォール] セクションの下にマシンのパブリック IP アドレス** を追加します。既定では、`portal.azure.com` には現在アクセスしているマシンのパブリック IP が表示され (このエントリを選択します)、次に **[保存]** を選択します。
+
+     > [!div class="mx-imgBorder"]
+     > [ ![ファイアウォールと仮想ネットワークの構成 UI のスクリーンショット]( ../media/network-isolation/firewall.png) ](  ../media/network-isolation/firewall.png#lightbox)
 
 ---
 

@@ -1,20 +1,20 @@
 ---
-title: Azure Logic Apps から SharePoint に接続する
+title: SharePoint に接続する
 description: Azure Logic Apps を使用して、SharePoint Online またはオンプレミスの SharePoint Server のリソースを監視および管理します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 08/11/2021
 tags: connectors
-ms.openlocfilehash: 750253d5607262614cf8576c376b261616361266
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e53fca8b0e9f8dbca3dba8bd684e71ef25c88738
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285450"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722525"
 ---
-# <a name="connect-to-sharepoint-resources-with-azure-logic-apps"></a>Azure Logic Apps を使用して SharePoint リソースに接続する
+# <a name="connect-to-sharepoint-resources-using-azure-logic-apps"></a>Azure Logic Apps を使用して SharePoint リソースに接続する
 
 SharePoint Online やオンプレミスの SharePoint Server で、ファイル、フォルダー、リスト、項目などのリソースを監視および管理するタスクを自動化するために、Azure Logic Apps と SharePoint コネクタを使用して、自動化された統合ワークフローを作成することができます。
 
@@ -36,9 +36,16 @@ SharePoint Online やオンプレミスの SharePoint Server で、ファイル�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
+* [職場または学校アカウント](https://support.microsoft.com/office/what-account-to-use-with-office-and-you-need-one-914e6610-2763-47ac-ab36-602a81068235#bkmk_msavsworkschool)でサインインする SharePoint で使用する Microsoft Office 365 アカウントの資格情報。
 
-* SharePoint サイト アドレスとユーザーの資格情報。 ワークフローを承認して SharePoint アカウントにアクセスできるようにするには、これらの資格情報が必要です。
+  ワークフローによる SharePoint アカウントへのアクセスを承認できるように、これらの資格情報が必要です。
+
+  > [!NOTE]
+  > [21vianet によって運営されている Microsoft Azure](https://portal.azure.cn) を使用している場合、Azure Active Directory (Azure AD) 認証は、.com アカウントではなく、21vianet (.cn) によって運営されている Microsoft Office 365 のアカウントでのみ機能します。
+
+* SharePoint サイトのアドレス
+
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
 * オンプレミスの SharePoint サーバーへの接続のために、ローカル コンピューターに[オンプレミス データ ゲートウェイをインストールし](../logic-apps/logic-apps-gateway-install.md)、[Azure で既に作成されているデータ ゲートウェイ リソースを設定する](../logic-apps/logic-apps-gateway-connection.md)必要があります。
 
@@ -49,13 +56,17 @@ SharePoint Online やオンプレミスの SharePoint Server で、ファイル�
   * SharePoint トリガーを使用してワークフローを開始するには、空のロジック アプリ ワークフローが必要です。
   * SharePoint アクションを追加するには、ワークフローに既にトリガーがある必要があります。
 
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/sharepoint/)を参照してください。
+
 ## <a name="connect-to-sharepoint"></a>SharePoint に接続する
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
 ## <a name="add-a-trigger"></a>トリガーの追加
 
-1. Azure portal、Visual Studio Code、または Visual Studio から、ロジック アプリ デザイナーでロジック アプリ ワークフローを開きます (まだ開いていない場合)。
+1. Azure portal、Visual Studio Code、または Visual Studio から、ビジュアル デザイナーでロジック アプリ ワークフローを開きます (まだ開いていない場合)。
 
 1. デザイナーの検索ボックスに、検索用語として「`sharepoint`」と入力します。 **SharePoint** コネクタを選択します。
 
@@ -74,7 +85,7 @@ SharePoint Online やオンプレミスの SharePoint Server で、ファイル�
 
 ## <a name="add-an-action"></a>アクションを追加する
 
-1. Azure portal、Visual Studio Code、または Visual Studio から、ロジック アプリ デザイナーでロジック アプリ ワークフローを開きます (まだ開いていない場合)。
+1. Azure portal、Visual Studio Code、または Visual Studio から、ビジュアル デザイナーでロジック アプリ ワークフローを開きます (まだ開いていない場合)。
 
 1. 次のいずれかのオプションを選択します。
 
@@ -95,10 +106,6 @@ SharePoint Online やオンプレミスの SharePoint Server で、ファイル�
    ワークフローで接続が正常に作成されると、選択したアクションが表示されます。
 
 1. アクションを設定するための情報を指定し、ワークフローのビルドを続行します。
-
-## <a name="connector-reference"></a>コネクタのレファレンス
-
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/sharepoint/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

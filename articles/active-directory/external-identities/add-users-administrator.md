@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5e538be52f21d169aefd350aa2781de0065f04f
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: c93b0199acf36666fb4c2801f44f21fe314a571b
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632919"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114227950"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
@@ -47,7 +47,7 @@ B2B コラボレーション ユーザーをディレクトリに追加するに
    - **メール アドレス (必須)** 。 ゲスト ユーザーのメール アドレス。
    - **個人用メッセージ (オプション)** 。ゲスト ユーザーへの個人用ウェルカム メッセージが含まれます。
    - **グループ**: 1 つまたは複数の既存のグループにゲスト ユーザーを追加するか、後で追加することができます。
-   -  **ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、 **[ロール]** の横にある **[ユーザー]** を選択して、Azure AD ロールに追加することができます。  
+   -  **ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、 **[ロール]** の横にある **[ユーザー]** を選択して、Azure AD ロールに追加することができます。  外部ゲスト ユーザーの Azure ロールについて、[詳細を確認](../../role-based-access-control/role-assignments-external-users.md)してください。
 
    > [!NOTE]
    > グループのメール アドレスはサポートされていません。個人のメール アドレスを入力してください。 また、一部の電子メール プロバイダーでは、ユーザーはプラス記号 (+) と追加テキストを電子メール アドレスに付け加えて、受信ボックスのフィルター処理などに役立てることができます。 ただし、Azure AD では現在、電子メール アドレスのプラス記号はサポートされていません。 配信の問題を回避するために、プラス記号と、それに続く @ 記号より前の任意の文字を含めません。

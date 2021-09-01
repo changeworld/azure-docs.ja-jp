@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: aa377547f7f4961e199ec8d62bf0f1435296f983
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cc264171c6c2dc5588156af2d3d0deb21e4fe94
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669306"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228087"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web アプリ: コード構成
 
@@ -210,7 +210,7 @@ ASP.NET の場合は、ミドルウェアの OIDC イベントをサブスクラ
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Microsoft.Identity.Web では、正しい OpenID Connect 設定を設定し、コードの受信イベントをサブスクライブして、コードを引き換えることで、コードを簡単にすることができます。 認証コードを引き換えるために、追加のコードは必要ありません。 この仕組みの詳細については、[Microsoft.Identity.Web のソース コード](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L140)をご覧ください。
+Microsoft.Identity.Web では、正しい OpenID Connect 設定を設定し、コードの受信イベントをサブスクライブして、コードを引き換えることで、コードを簡単にすることができます。 認可コードを引き換えるために、特別なコードは必要ありません。 この仕組みの詳細については、[Microsoft.Identity.Web のソース コード](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L140)をご覧ください。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -387,7 +387,7 @@ def authorized():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core のチュートリアルでは、依存関係の挿入を使用して、アプリケーションの Startup.cs ファイルでトークン キャッシュの実装を決定できます。 Microsoft.Identity.Web には、「[トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)」で説明されている構築済みのトークン キャッシュ シリアライザーが付属しています。 興味深い可能性として、ASP.NET Core の[分散メモリ キャッシュ](/aspnet/core/performance/caching/distributed#distributed-memory-cache)を選択できます。
+ASP.NET Core のチュートリアルでは、依存関係の挿入を使用して、アプリケーションの Startup.cs ファイルでトークン キャッシュの実装を決定できます。 Microsoft.Identity.Web には、「[トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)」で説明されている構築済みのトークン キャッシュ シリアライザーが付属しています。 興味深い可能性として、ASP.NET Core の[分散メモリ キャッシュ](/aspnet/core/performance/caching/distributed#distributed-memory-cache)を選択できます。
 
 ```csharp
 // Use a distributed token cache by adding:
@@ -416,32 +416,60 @@ services.AddDistributedSqlServerCache(options =>
 });
 ```
 
-トークン キャッシュ プロバイダーの詳細については、Microsoft.Identity.Web の[トークン キャッシュのシリアル化](https://aka.ms/ms-id-web/token-cache-serialization)に関する記事、および Web アプリのチュートリアルの [ASP.NET Core Web アプリのチュートリアル | トークンキャッシュ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)のフェーズもご覧ください。
+トークン キャッシュ プロバイダーの詳細については、Microsoft.Identity.Web の[トークン キャッシュのシリアル化](https://aka.ms/ms-id-web/token-cache-serialization)に関する記事、および Web アプリのチュートリアルの [ASP.NET Core Web アプリのチュートリアル | トークン キャッシュ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)のフェーズもご覧ください。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Web アプリまたは Web API でのトークン キャッシュの実装は、[ファイル ベース](scenario-desktop-acquire-token.md#file-based-token-cache)であることが多いデスクトップ アプリケーションでの実装とは異なります。
 
-Web アプリの実装では、ASP.NET セッションまたはサーバー メモリを使用できます。 たとえば、[MsalAppBuilder.cs#L39-L51](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Utils/MsalAppBuilder.cs#L39-L51) で MSAL.NET アプリケーションの作成後にキャッシュの実装をフックする方法を参照してください。
+Web アプリの実装では、ASP.NET セッションまたはサーバー メモリを使用できます。 たとえば、[MsalAppBuilder.cs#L39-L51](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/79e3e1f084cd78f9170a8ca4077869f217735a1a/WebApp/Utils/MsalAppBuilder.cs#L57-L58) で MSAL.NET アプリケーションの作成後にキャッシュの実装をフックする方法を参照してください。
+
+
+まず、これらの実装を使用するには:
+- Microsoft.Identity.Web Nuget パッケージを追加します。 これらのトークン キャッシュ シリアライザーは、不要な依存関係を避けるため、MSAL.NET に直接取り込まれません。 ASP.NET Core の上位レベルに加えて、Microsoft.Identity.Web により、MSAL.NET のヘルパーであるクラスが取り込まれます。 
+- コードで、Microsoft.Identity.Web 名前空間を使用します。
+
+  ```csharp
+  #using Microsoft.Identity.Web
+  ```
+- 機密クライアント アプリケーションを構築したら、選択したトークン キャッシュのシリアル化を追加します。
 
 ```csharp
 public static class MsalAppBuilder
 {
- // Omitted code
-    public static IConfidentialClientApplication BuildConfidentialClientApplication(ClaimsPrincipal currentUser)
+  private static IConfidentialClientApplication clientapp;
+
+  public static IConfidentialClientApplication BuildConfidentialClientApplication()
+  {
+    if (clientapp == null)
     {
-      IConfidentialClientApplication clientapp = ConfidentialClientApplicationBuilder.Create(AuthenticationConfig.ClientId)
+      clientapp = ConfidentialClientApplicationBuilder.Create(AuthenticationConfig.ClientId)
             .WithClientSecret(AuthenticationConfig.ClientSecret)
             .WithRedirectUri(AuthenticationConfig.RedirectUri)
             .WithAuthority(new Uri(AuthenticationConfig.Authority))
             .Build();
 
-      // After the ConfidentialClientApplication is created, we overwrite its default UserTokenCache with our implementation.
-      MSALPerUserMemoryTokenCache userTokenCache = new MSALPerUserMemoryTokenCache(clientapp.UserTokenCache, currentUser ?? ClaimsPrincipal.Current);
-
-      return clientapp;
+      // After the ConfidentialClientApplication is created, we overwrite its default UserTokenCache serialization with our implementation
+      clientapp.AddInMemoryTokenCache();
+    }
+    return clientapp;
   }
 ```
+
+`clientapp.AddInMemoryTokenCache()` の代わりに、Redis、SQL、CosmosDB、分散メモリなどのより高度なキャッシュ シリアル化実装を使用することもできます。 Redis の例を次に示します。
+
+```csharp
+  clientapp.AddDistributedTokenCache(services =>
+  {
+    services.AddStackExchangeRedisCache(options =>
+    {
+        options.Configuration = "localhost";
+        options.InstanceName = "SampleInstance";
+    });
+  });
+```
+
+詳細については、[MSAL.NET のトークン キャッシュ シリアル化](./msal-net-token-cache-serialization.md)に関するページを参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 

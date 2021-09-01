@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 94cbe0fa6669546cee8e989a6db2fcbb428cb9d0
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7d663345a5980d32a59d3185226e48dc75ef96c2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829442"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737245"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service 向けの PHP アプリを構成する
 
@@ -119,11 +119,11 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-Git か、ビルド自動化を有効にした Zip デプロイを利用してすべての変更をコミットし、コードをデプロイします。 これで Composer はデプロイの自動化の一部として実行しているはずです。
+Git か、[ビルド自動化を有効](deploy-zip.md#enable-build-automation)にした Zip デプロイを利用してすべての変更をコミットし、コードをデプロイします。 これで Composer はデプロイの自動化の一部として実行しているはずです。
 
 ## <a name="run-gruntbowergulp"></a>Grunt/Bower/Gulp を実行する
 
-Grunt、Bower、Gulp など、一般的な自動化ツールを App Service でデプロイ時に実行する場合、[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。 App Service では、Git か、ビルド自動化を有効にした [Zip デプロイ](deploy-zip.md)を利用してデプロイするとき、このスクリプトが実行されます。 
+Grunt、Bower、Gulp など、一般的な自動化ツールを App Service でデプロイ時に実行する場合、[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。 App Service では、Git か、[ビルド自動化を有効](deploy-zip.md#enable-build-automation)にした [Zip デプロイ](deploy-zip.md)を利用してデプロイするとき、このスクリプトが実行されます。 
 
 リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
 
@@ -206,7 +206,7 @@ fi
 
 ## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
+[ビルドの自動化を有効](deploy-zip.md#enable-build-automation)にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
 
 1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
 1. `php composer.phar install` を実行します。
@@ -279,7 +279,7 @@ App Service の既定の PHP イメージでは Apache が使用されていて�
 
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
-App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
+App Service では、[TLS または SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 ```php
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
@@ -495,6 +495,10 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [App Service Linux の FAQ](faq-app-service-linux.md)
+> [App Service Linux の FAQ](faq-app-service-linux.yml)
 
 ::: zone-end
+
+または、その他のリソースを参照してください:
+
+[環境変数とアプリ設定のリファレンス](reference-app-settings.md)

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: a040200c5746defcaee84a951521d5919c0c4d28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26784222d49e6f48ed324ce345dcb1f2ba7d4cf1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91660678"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741444"
 ---
 # <a name="delete-azure-arc-data-controller"></a>Azure Arc データ コントローラーを削除する
 
@@ -22,48 +22,41 @@ ms.locfileid: "91660678"
 
 先に進む前に、データ コントローラーに作成されているすべてのデータ サービスを、次のようにして削除してください。
 
-## <a name="log-in-to-the-data-controller"></a>データ コントローラーにログインする
-
-削除するデータ コントローラーにログインします。
-
-```
-azdata login
-```
-
 ## <a name="list--delete-existing-data-services"></a>既存のデータ サービスを表示して削除する
 
 次のコマンドを実行して、SQL マネージド インスタンスが作成されているかどうかを確認します。
 
-```
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s
 ```
 
 上の一覧にある SQL マネージド インスタンスごとに、次のように削除コマンドを実行します。
 
-```
-azdata arc sql mi delete -n <name>
-# for example: azdata arc sql mi delete -n sqlinstance1
+```azurecli
+az sql mi-arc delete -n <name> --k8s-namespace <namespace> --use-k8s
+# for example: az sql mi-arc delete -n sqlinstance1 --k8s-namespace <namespace> --use-k8s
 ```
 
 同様に、PostgreSQL Hyperscale インスタンスを確認するには、次のように実行します。
 
-```
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 また、各 PostgreSQL Hyperscale インスタンスに対して、次のように削除コマンドを実行します。
-```
-azdata arc postgres server delete -n <name>
-# for example: azdata arc postgres server delete -n pg1
+
+```azurecli
+az postgres arc-server delete -n <name> --k8s-namespace <namespace> --use-k8s
+# for example: az postgres arc-server delete -n pg1 --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="delete-controller"></a>コントローラーを削除する
 
 すべての SQL マネージド インスタンスと PostgreSQL Hyperscale インスタンスを削除した後、次のようにしてデータ コントローラーを削除できます。
 
-```
-azdata arc dc delete -n <name> -ns <namespace>
-# for example: azdata arc dc delete -ns arc -n arcdc
+```azurecli
+az arcdata dc delete -n <name> -ns <namespace>
+# for example: az arcdata dc delete -ns arc -n arcdc
 ```
 
 ### <a name="remove-sccs-red-hat-openshift-only"></a>SCC を削除する (Red Hat OpenShift のみ)

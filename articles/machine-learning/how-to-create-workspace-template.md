@@ -10,12 +10,12 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: afb0d487d43b2a04aa298d9ec4249a6855d06544
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7714adf00a40953301cf3f13eb8d6e403cd8c7a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967748"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736560"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。
 
@@ -28,11 +28,9 @@ ms.locfileid: "111967748"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 * CLI からテンプレートを使用するには、[Azure PowerShell](/powershell/azure/) または [Azure CLI](/cli/azure/install-azure-cli) が必要です。
-
-* 一部のシナリオでは、サポート チケットを開く必要があります。 たとえば、カスタマーマネージド キーを使用する Private Link 対応ワークスペースを使います。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -280,7 +278,7 @@ New-AzResourceGroupDeployment `
 関連付けられたリソースが仮想ネットワークの背後にない場合、**privateEndpointType** パラメーターを `AutoAproval` または `ManualApproval` に設定すると、ワークスペースをプライベート エンドポイントの背後にデプロイできます。 これは、新規および既存のワークスペースの両方に対して行うことができます。 既存のワークスペースを更新する場合は、テンプレート パラメーターに既存のワークスペースの情報を入力します。
 
 > [!IMPORTANT]
-> Azure Government リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
+> Azure Government リージョンでは、プライベート エンドポイントで Azure Machine Learning ワークスペースを使用することはできません。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -541,7 +539,7 @@ New-AzResourceGroupDeployment `
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
 1. 「[カスタム テンプレートからリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」の手順に従います。 __[テンプレートの選択]__ 画面に到達したら、 **[クイックスタート]** エントリを選択します。 表示されたら、[ここをクリックして、テンプレート リポジトリを開いてください] というリンクを選択します。 このリンクを使用すると、Azure クイックスタート テンプレート リポジトリの `quickstarts` ディレクトリに移動できます。
-1. クイックスタート テンプレートの一覧で、`microsoft.machinelearningservices'. Finally, select `[Azure へのデプロイ] を選択します。
+1. クイックスタート テンプレートの一覧で、`microsoft.machinelearningservices` を選択します。 最後に、`Deploy to Azure` を選択します。
 1. テンプレートが表示されたら、デプロイのシナリオに応じて、以下の必須情報とその他のパラメーターを指定します。
 
    * サブスクリプション:これらのリソースに使用する Azure サブスクリプションを選択します。

@@ -3,15 +3,20 @@ title: Azure Lab Services で共有イメージ ギャラリーを使用する |
 description: 共有イメージ ギャラリーを使用するようにラボ アカウントを構成して、ユーザーが他のユーザーとイメージを共有したり、他のユーザーがイメージを使用してラボでテンプレート VM を作成したりできるようにする方法について説明します。
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: e4ebc0c865784922cc52d4f9b67c61f27908df55
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: caba089d5f3f0f9ec50f575a06ce9fad1bf8ef8f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970000"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743248"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーを使用する
-この記事では、教育者やラボ管理者がテンプレート仮想マシンのイメージを[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に保存して、他のユーザーがラボを作成するために使用できるようにする方法について説明します。 
+
+イメージには、VM にインストールされているオペレーティング システム、ソフトウェア アプリケーション、ファイル、および設定が含まれています。  新しいラボを設定するときに使用できるイメージには、次の 2 つの種類があります。
+-   Azure 内で使用するために Microsoft によって事前に構築された Marketplace イメージ。  これらのイメージには、Windows または Linux がインストールされ、ソフトウェア アプリケーションが含まれる場合もあります。  たとえば、[Data Science Virtual Machine イメージ](../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)には、インストール済みのディープ ラーニング フレームワークとツールが含まれています。
+-   教育機関の IT 部門や他の教師によって作成されるカスタム イメージ。  Windows と Linux の両方のカスタム イメージを作成し、独自のニーズに基づいて Microsoft とサードパーティ製のアプリケーションを柔軟にインストールできます。  また、ファイルの追加やアプリケーション設定の変更なども行うことができます。
+
+この記事では、教師やラボ管理者がテンプレート仮想マシンからカスタム イメージを作成して[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に保存し、他のユーザーが新しいラボを作成する際に使用できるようにする方法について説明します。
 
 > [!IMPORTANT]
 > 共有イメージ ギャラリーの使用中は、Azure Lab Services では、128 GB 未満の OS ディスク領域を持つイメージのみがサポートされます。 128 GB を超えるディスク領域を持つイメージ、または複数のディスクのイメージは、ラボの作成時に仮想マシン イメージの一覧に表示されません。
@@ -27,7 +32,6 @@ ms.locfileid: "111970000"
 ## <a name="prerequisites"></a>前提条件
 - [Azure PowerShell](../virtual-machines/shared-images-powershell.md) または [Azure CLI](../virtual-machines/shared-images-cli.md) のいずれかを使用して、共有イメージ ギャラリーを作成します。
 - あらかじめ共有イメージ ギャラリーをラボ アカウントにアタッチしておきます。 詳細な手順については、[共有イメージ ギャラリーをアタッチまたはデタッチする方法](how-to-attach-detach-shared-image-gallery.md)に関するページを参照してください。
-
 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>共有イメージ ギャラリーに既存のイメージを保存する
 共有イメージ ギャラリーがアタッチされたら、ラボ アカウントの管理者または教師は、他の教師が再利用できるように共有イメージ ギャラリーにイメージを保存できます。 
@@ -49,7 +53,7 @@ ms.locfileid: "111970000"
     共有イメージ ギャラリーにイメージを保存すると、別のラボを作成するときにギャラリーからそのイメージを使用できるようになります。 ラボのコンテキスト外で共有イメージ ギャラリーにイメージをアップロードすることもできます。 詳細については、次を参照してください。
 
     - [共有イメージ ギャラリーの概要](../virtual-machines/shared-images-powershell.md)
-    - [カスタム イメージを共有イメージ ギャラリーにアップロードする](upload-custom-image-shared-image-gallery.md)
+    - [カスタム イメージを作成するための推奨される方法](approaches-for-custom-image-creation.md)
 
     > [!IMPORTANT]
     > 共有イメージ ギャラリーに、Azure Lab Services 内の [ラボのテンプレート イメージを保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)すると、そのイメージは **特殊化されたイメージ** としてギャラリーにアップロードされます。 [特殊化されたイメージ](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)には、マシン固有の情報とユーザー プロファイルが保持されます。 一般化されたイメージは、引き続き Azure Lab Services の外部のギャラリーに直接アップロードできます。    
@@ -68,13 +72,13 @@ ms.locfileid: "111970000"
 
  ![[共有イメージ ギャラリーに再エクスポート] ダイアログ](./media/how-to-use-shared-image-gallery/reexport-to-shared-image-gallery-dialog.png) 
 
-**[新しいイメージを作成]** を選択すると、新しい[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)が作成されます。  これにより、共有イメージ ギャラリーに既に存在する元のカスタム イメージを変更することなく、完全に新しいカスタム イメージを保存できます。
+**[新しいイメージを作成]** を選択すると、新しい [イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)が作成されます。  これにより、共有イメージ ギャラリーに既に存在する元のカスタム イメージを変更することなく、完全に新しいカスタム イメージを保存できます。
 
-代わりに **[既存のイメージを更新]** を選択すると、元のカスタム イメージの定義が新しい[バージョン](../virtual-machines/shared-image-galleries.md#image-versions)で更新されます。  ラボ サービスでは、次にカスタム イメージを使用してラボが作成されるときに、最新バージョンが自動的に使用されます。
+代わりに **[既存のイメージを更新]** を選択すると、元のカスタム イメージの定義が新しい [バージョン](../virtual-machines/shared-image-galleries.md#image-versions)で更新されます。  ラボ サービスでは、次にカスタム イメージを使用してラボが作成されるときに、最新バージョンが自動的に使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 共有イメージ ギャラリーをラボ アカウントにアタッチおよびデタッチして設定する方法については、[共有イメージ ギャラリーをアタッチおよびデタッチする方法](how-to-attach-detach-shared-image-gallery.md)に関するページを参照してください。
 
-ラボのコンテキストの外部にある共有イメージ ギャラリーに Windows カスタム イメージを移動するには、[カスタム イメージの共有イメージ ギャラリーへの移動](upload-custom-image-shared-image-gallery.md)に関するページを参照してください。
+ラボのコンテキスト外で共有イメージ ギャラリーにカスタム イメージを取り込む他のオプションについては、「[カスタム イメージを作成するための推奨される方法](approaches-for-custom-image-creation.md)」を参照してください。
 
 共有イメージ ギャラリー全般の詳細については、[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に関するページを参照してください。

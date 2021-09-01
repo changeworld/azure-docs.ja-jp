@@ -3,12 +3,12 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: c8649c342b237a321c3c47510644451ceb3581fe
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 97a58c38f08e3b22f25ca2834a26692452fcff9e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467925"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746724"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
@@ -78,9 +78,9 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 |場所  |設定 | 値 | 説明  |
 |---------|---------|---------|---------|
-|別のストレージ アカウント     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 指定された SAS URL に基づいて、2 番目のストレージ アカウントの Blob Storage にキーを格納します。 キーは、関数アプリに固有のシークレットを使用して、格納される前に暗号化されます。 |
+|別のストレージ アカウント     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL>` | 指定された SAS URL に基づいて、2 番目のストレージ アカウントの Blob Storage にキーを格納します。 キーは、関数アプリに固有のシークレットを使用して、格納される前に暗号化されます。 |
 |ファイル システム   | `AzureWebJobsSecretStorageType`   |  `files`       | キーはファイル システムに保存されており、関数アプリに固有のシークレットを使用して、格納の前に暗号化されます。 |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | コンテナーには、ホスティング リソースのシステム割り当てマネージド ID に対応するアクセス ポリシーが必要です。 アクセス ポリシーでは、`Get`、`Set`、`List`、`Delete` というシークレットのアクセス許可を、その ID に付与することを必要としています。 <br/>ローカルで実行している場合は、開発者 ID が使用され、設定は [local.settings.json file](functions-run-local.md#local-settings-file) に含まれている必要があります。 | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | コンテナーには、ホスティング リソースのシステム割り当てマネージド ID に対応するアクセス ポリシーが必要です。 アクセス ポリシーでは、`Get`、`Set`、`List`、`Delete` というシークレットのアクセス許可を、その ID に付与することを必要としています。 <br/>ローカルで実行している場合は、開発者 ID が使用され、設定は [local.settings.json file](functions-develop-local.md#local-settings-file) に含まれている必要があります。 | 
 |Kubernetes シークレット  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (省略可) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Kubernetes で Functions ランタイムを実行する場合にのみサポートされます。 `AzureWebJobsKubernetesSecretName` が設定されていない場合、リポジトリは読み取り専用と見なされます。 この場合は、デプロイの前に値を生成する必要があります。 Kubernetes にデプロイすると、Azure Functions Core Tools によって値が自動的に生成されます。|
 
 ### <a name="authenticationauthorization"></a>認証/承認
@@ -131,7 +131,7 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 アプリ設定と接続文字列は、Azure で暗号化されて格納されます。 これらの暗号化は、アプリの起動時にアプリのプロセス メモリに挿入される前にのみ解除されます。 暗号化キーは定期的に回転されます。 セキュリティで保護されたシークレットのストレージを自分で管理したい場合は、アプリ設定で Azure Key Vault を参照する必要があります。 
 
-ローカル コンピューターで関数を開発するとき、local.settings.json ファイルで既定で設定を暗号化することもできます。 詳細については、[ローカル設定ファイル](functions-run-local.md#local-settings-file)の `IsEncrypted` プロパティを参照してください。  
+ローカル コンピューターで関数を開発するとき、local.settings.json ファイルで既定で設定を暗号化することもできます。 詳細については、[ローカル設定ファイル](functions-develop-local.md#local-settings-file)の `IsEncrypted` プロパティを参照してください。  
 
 #### <a name="key-vault-references"></a>Key Vault の参照
 

@@ -7,13 +7,13 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 08/23/2021
-ms.openlocfilehash: 38e1d89a6934c603fa15c4b50e2309c57dc28622
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 02/02/2021
+ms.openlocfilehash: 30e87110ae7124141eaeb18fafa77bcef1d59201
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771810"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726910"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>継続的インテグレーションおよびデリバリーの自動発行
 
@@ -79,10 +79,10 @@ Azure Data Factory では、継続的インテグレーションと継続的デ�
 
 ### <a name="export-arm-template"></a>Resource Manager テンプレートのエクスポート
 
-`npm run build export <rootFolder> <factoryId> [outputFolder]` を実行して、特定のフォルダーのリソースを使用して ARM テンプレートをエクスポートします。 このコマンドでは、ARM テンプレートを生成する前に検証チェックも実行されます。 次に例を示します。
+`npm run start export <rootFolder> <factoryId> [outputFolder]` を実行して、特定のフォルダーのリソースを使用して ARM テンプレートをエクスポートします。 このコマンドでは、ARM テンプレートを生成する前に検証チェックも実行されます。 次に例を示します。
 
 ```dos
-npm run build export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
+npm run start export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
 ```
 
 - `RootFolder` は、Data Factory リソースが配置されている場所を表す必須フィールドです。
@@ -94,10 +94,10 @@ npm run build export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxx
 
 ### <a name="validate"></a>検証
 
-`npm run build validate <rootFolder> <factoryId>` を実行して、特定のフォルダーのすべてのリソースを検証します。 次に例を示します。
+`npm run start validate <rootFolder> <factoryId>` を実行して、特定のフォルダーのすべてのリソースを検証します。 次に例を示します。
 
 ```dos
-npm run build validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
+npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
 ```
 
 - `RootFolder` は、Data Factory リソースが配置されている場所を表す必須フィールドです。

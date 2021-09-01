@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 03/16/2020
-ms.openlocfilehash: c82f68ee35ae95a424c0847be9a9cc770185af43
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 3fe1862f951b83c6514bda061650b912e9230e46
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005737"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071571"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>ホストされた体験版用に Azure Marketplace サブスクリプションを設定する
 
@@ -72,7 +72,33 @@ ms.locfileid: "112005737"
 
         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="アカウントへのサインイン。":::
 
-6. 上で作成した Azure アプリをアプリケーション ユーザーとして体験版 CRM インスタンスに追加します。
+6. 新しいセキュリティ グループを作成し、キャンバス アプリ (Power Apps) に追加します。 この手順は、キャンバス アプリ (Power Apps) プランにのみ適用されます。
+    1. 新しいセキュリティ グループを作成します。
+        1. **[Azure Active Directory]** に移動します。
+        1. **[管理]** にある **[グループ]** を選択します。
+        1. **[+ 新しいグループ]** を選択します。
+        1. **[セキュリティ グループ]** の種類を選択します。 
+        1. **[グループ名]** として「*TestDriveSecurityGroup*」と入力します。
+        1. **[セキュリティ グループ体験版]** などの説明を追加します。
+        1. 他のフィールドは既定値のままにして、 **[作成]** を選択します。
+
+            :::image type="content" source="./media/test-drive/create-new-group.png" alt-text="新しいセキュリティ グループを作成する方法を示します。":::
+
+    1. 作成したセキュリティ グループをキャンバス アプリ (Power Apps) に追加します。
+        1. **[PowerApps]** ポータル ページを開き、サインインします。
+        1. **[アプリ]** を選択し、アプリの省略記号をクリックします。
+        1. **[共有]** を選択します。
+        1. 前の手順で作成した **TestDriveSecurityGroup** セキュリティ グループを検索します。
+        1. セキュリティ グループに **[データのアクセス許可]** を追加します。
+        1. **[電子メールの送信]** 招待状チェック ボックスをオフにします。
+        1. **[共有]** を選択します。
+    
+            > [!NOTE]
+            > キャンバス アプリ (Power Apps) 用の CE/Dataverse 以外のバックエンド データ ソースを使用する場合:
+            > - 上記で作成したセキュリティ グループにデータ ソースへのアクセスを許可します。 たとえば、SharePoint データ ソースなどです。
+            > - SharePoint を開き、データ テーブルをセキュリティ グループと共有します。
+
+7. 作成したばかりの Azure アプリをアプリケーション ユーザーとして体験版 CRM インスタンスに追加します。 この手順は、Dynamics 365 Customer Engagement オファーにのみ適用されます。
     1. **Azure Active Directory** に新しいユーザーを追加します。 このユーザーを作成するには、(同じテナントに属している) **[名前]** と **[ユーザー名]** の値のみが必要です。他のフィールドは既定値のままにしておきます。 ユーザー名の値をコピーします。
     2. **CRM インスタンス** にサインインし、 **[設定]**  >  **[セキュリティ]**  >  **[ユーザー]** を選択します。
     3. ビューを **[アプリケーション ユーザー]** に変更します。

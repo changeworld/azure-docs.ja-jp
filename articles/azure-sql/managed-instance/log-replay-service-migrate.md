@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: mathoma
 ms.date: 03/31/2021
-ms.openlocfilehash: 535ad3bac6c4f88593fc196cf6487038f937d509
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e76493aa83383e4ce59da77cfb0ce050475ad303
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697283"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751262"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Log Replay Service (プレビュー) を使用して SQL Server から SQL Managed Instance にデータベースを移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -107,7 +107,7 @@ LRS は、Blob Storage 上の適切なフォルダーを指すデータベース
 - 1 つのファイルを使用するのではなく、完全バックアップと差分バックアップを複数のファイルに分割します。
 - バックアップの圧縮を有効にします。
 - リリースされる最新のコマンドレットに常に更新されるため、Cloud Shell を使用してスクリプトを実行します。
-- LRS を開始してから 47 時間以内に移行を完了するように計画します。 これは、システム管理されているソフトウェア パッチのインストールが行われない猶予期間です。
+- LRS を開始してから 36 時間以内に移行を完了するように計画します。 これは、システム管理されているソフトウェア パッチのインストールが行われない猶予期間です。
 
 > [!IMPORTANT]
 > - 移行プロセスが完了するまで、LRS で復元中のデータベースを使用することはできません。 
@@ -166,7 +166,7 @@ Azure Blob Storage は、SQL Server と SQL Managed Instance 間のバックア�
 
 LRS を使用したマネージド インスタンスへのデータベースの移行では、次の方法を使用して Blob Storage にバックアップをアップロードできます。
 - SQL Server ネイティブの [BACKUP TO URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 機能を使用する
-- [AzCopy](../../storage/common/storage-use-azcopy-v10.md) または [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) を使用して、バックアップを BLOB コンテナーにアップロードする
+- [AzCopy](../../storage/common/storage-use-azcopy-v10.md) または [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer) を使用して、バックアップを BLOB コンテナーにアップロードする
 - Azure portal で Storage Explorer を使用する
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>SQL Server のバックアップを Blob Storage に直接作成する
@@ -330,7 +330,7 @@ az sql midb log-replay start <required parameters> &
 ```
 
 > [!IMPORTANT]
-> LRS を開始すると、システムで管理されているソフトウェア パッチが 47 時間停止されます。 この時間枠を過ぎると、自動化された次のソフトウェア パッチによって、LRS が自動的に停止されます。 その場合、移行を再開することはできないため、最初からやり直す必要があります。 
+> LRS を開始すると、システムで管理されているソフトウェア パッチが 36 時間停止されます。 この時間枠を過ぎると、自動化された次のソフトウェア パッチによって、LRS が自動的に停止されます。 その場合、移行を再開することはできないため、最初からやり直す必要があります。 
 
 ## <a name="monitor-the-migration-progress"></a>移行の進行状況を監視する
 
@@ -389,7 +389,7 @@ az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last
 
 LRS の機能制限は次のとおりです。
 - 復元中のデータベースを、移行プロセス中の読み取り専用アクセスに使用することはできません。
-- LRS を開始すると、システムで管理されているソフトウェア パッチが 47 時間ブロックされます。 この時間枠が終了した後、次のソフトウェア更新プログラムにより、LRS が停止されます。 その後、LRS を最初からやり直す必要があります。
+- LRS を開始すると、システムで管理されているソフトウェア パッチが 36 時間ブロックされます。 この時間枠が終了した後、次のソフトウェア更新プログラムにより、LRS が停止されます。 その後、LRS を最初からやり直す必要があります。
 - LRS では、SQL Server のデータベースを `CHECKSUM` オプションを有効にしてバックアップする必要があります。
 - LRS によって使用される SAS トークンは Azure Blob Storage コンテナー全体に対して生成される必要があり、読み取りとリストのアクセス許可のみ付与されている必要があります。
 - 異なるデータベースのバックアップ ファイルは、Blob Storage 上の個別のフォルダーに配置する必要があります。

@@ -4,14 +4,14 @@ description: Azure と Logz.io の統合を管理する方法について説明�
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 07/28/2021
+ms.date: 08/17/2021
 ms.author: tomfitz
-ms.openlocfilehash: 0b00e1b4b5cf868fdd70909a1ce42f0861f2e0b2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e86b42694276c23f4d38809c9b40a7f92e39fa64
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779026"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429411"
 ---
 # <a name="manage-the-logzio-integration-in-azure"></a>Azure で Logz.io の統合を管理する
 
@@ -23,7 +23,7 @@ Logz.io の **[Overview]\(概要\)** 画面には、次の項目を含むリソ�
 
 - **リソース グループ**
 - **場所**
-- **サブスクリプション**
+- **[サブスクリプション]**
 - **タグ**
 - **Logz.io SSO**
 - **請求期間**
@@ -165,6 +165,6 @@ Logz.io にログが送信されなくなり、Logz.io に関するすべての�
 
 Azure と Logz.io の統合に関してサポートに問い合わせるには、 **[サポートとトラブルシューティング]** で **[新規サポート リクエスト]** を選択します。 このオプションを選択すると、[Logz.io ポータル](https://app.logz.io/)に移動します。 チャット内サポートを使用するか、[help@logz.io](mailto:help@logz.io) にメールを送信します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 統合に関する問題を解決するには、[トラブルシューティング](troubleshoot.md)を参照してください。
