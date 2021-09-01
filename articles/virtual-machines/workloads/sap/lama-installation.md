@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 9eca2fe92109bcd91fe5943e53d1e18734401984
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: bebae71179153479d66891924ba2f7679838d8bc
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111814361"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112297047"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -132,7 +132,7 @@ Connection successful: (接続成功:)Connection to Microsoft cloud was successf
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>新しい適応型 SAP システムのプロビジョニング
 
-新しい仮想マシンを手動でデプロイするか、または[クイック スタート リポジトリ](https://github.com/Azure/azure-quickstart-templates)内にあるいずれかの Azure テンプレートを使用できます。 このリポジトリには、[SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver アプリケーション サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)、および[データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database)用のテンプレートが含まれています。 これらのテンプレートを使用すると、システム コピー/複製などの一部として新しいホストをプロビジョニングすることもできます。
+新しい仮想マシンを手動でデプロイするか、または[クイック スタート リポジトリ](https://github.com/Azure/azure-quickstart-templates)内にあるいずれかの Azure テンプレートを使用できます。 このリポジトリには、[SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-ascs)、[SAP NetWeaver アプリケーション サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-apps)、および[データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-database)用のテンプレートが含まれています。 これらのテンプレートを使用すると、システム コピー/複製などの一部として新しいホストをプロビジョニングすることもできます。
 
 新しい仮想マシンおよび SAP インスタンスのデプロイが準備解除された場合に IP アドレスが "盗まれる" のを防ぐために、SAP LaMa で管理するすべての仮想マシンについて個別のサブネットを使用し、動的 IP アドレスは使用しないことをお勧めします。
 

@@ -4,12 +4,12 @@ description: Resource Manager デプロイ モデルとクラシック (ある�
 ms.topic: conceptual
 ms.date: 04/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0d4b21b095b715599059452c269cde24fb701364
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e9ea1e778db81cfaa69163d5e127d384f8c4b3f5
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322115"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298171"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -148,7 +148,7 @@ Azure Resource Manager を使用して作成された仮想マシン、仮想ネ
 
 **Azure リソース マネージャーのテンプレートの例はどこで入手できますか。**
 
-[Azure Resource Manager のクイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)に関するページで、広範囲にわたるスターター テンプレートが提供されています。
+[Azure Resource Manager のクイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)に関するページで、広範囲にわたるスターター テンプレートが提供されています。
 
 ## <a name="next-steps"></a>次のステップ
 

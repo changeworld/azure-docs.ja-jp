@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3eddd53d8b1d4ff59f27535a070924cf0e86c5a7
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 0374c2da7cda001da779c42cacaf11db6f797356
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904417"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587393"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>集約された名前空間を設定する
 
@@ -115,7 +115,7 @@ update コマンドで使用するオプションは "create" コマンドに似
 
 ---
 
-### <a name="adls-nfs-namespace-paths-preview"></a>ADLS-NFS 名前空間パス (プレビュー)
+### <a name="adls-nfs-namespace-paths"></a>ADLS-NFS 名前空間パス
 
 通常の BLOB ストレージ ターゲットと同様に、ADLS-NFS ストレージ ターゲットは 1 つのエクスポートしか持たないため、1 つの名前空間パスしか持てません。
 

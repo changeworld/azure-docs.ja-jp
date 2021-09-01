@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: 21f8109fa1db49af8f2e84833466ed204d2f59fa
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/05/2021
+ms.openlocfilehash: 4ab56d50bbe6eed3763540e7b993ecc4f403b09c
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536534"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598272"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>コマーシャル マーケットプレース オファーのプランと価格
 
@@ -68,7 +68,7 @@ ms.locfileid: "111536534"
 プランを作成すると、 **[プランの概要]** ページに、プランの名前、ID、その他の詳細、現在の公開状態、使用可能なアクションの一覧が表示されます。 使用可能なアクションはプランの状態によって異なり、次のものが含まれる場合があります。
 
 - プランの状態が **[ドラフト]** の場合 – ドラフトの削除。
-- プランの状態が **[ライブ]** の場合 – プランの販売の停止、またはプライベート対象ユーザーの同期。
+- プランの状態が **[ライブ]** の場合 – プランの配布の停止、またはプライベート対象ユーザーの同期。
 
 次のスクリーンショットは 2 つのドラフト オファーを示しています。
 

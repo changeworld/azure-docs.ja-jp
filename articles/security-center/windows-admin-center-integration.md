@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: fc4207547a1f34fca1ef302626f1365572a236b9
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f0a6c62145f5e8c94462a33fe446c595a7e2109e
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101309"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236807"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Security Center を使用した Windows Admin Center リソースの保護
 
@@ -35,13 +35,13 @@ Windows Admin Center は、Windows サーバーの管理ツールです。 シ�
 
 1. Windows Admin Center で、いずれかのサーバーを選択し、 **[ツール]** ウィンドウで Azure Security Center 拡張機能を選択します。
 
-    ![Windows Admin Center の Azure Security Center 拡張機能](./media/windows-admin-center-integration/onboarding-from-wac.png)
+    ![Windows Admin Center の Azure Security Center 拡張機能。](./media/windows-admin-center-integration/onboarding-from-wac.png)
 
     > [!NOTE]
     > サーバーが既に Security Center にオンボードされている場合、セットアップ ウィンドウは表示されません。
 
 1. **[Sign in to Azure and set up]\(Azure にサインインして設定\)** をクリックします。
-    ![Windows Admin Center 拡張機能を Azure Security Center にオンボードする](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
+    ![Windows Admin Center 拡張機能を Azure Security Center にオンボードする。](./media/windows-admin-center-integration/onboarding-from-wac-welcome.png)
 
 1. 指示に従って、サーバーを Security Center に接続します。 必要な詳細情報を入力して確認したら、Security Center によって、次のすべてが満たされるように、必要な構成の変更が行われます。
     * Azure ゲートウェイが登録されていること。
@@ -58,7 +58,7 @@ Windows Admin Center は、Windows サーバーの管理ツールです。 シ�
 
 オンボードが完了すると、Windows Admin Center の Azure Security Center 領域で直接アラートと推奨事項を確認できます。 推奨事項またはアラートをクリックすると、それが Azure portal に表示されます。 そこでは、追加の情報と、問題を修復する方法も確認できます。
 
-[![Windows Admin Center に表示される Security Center のレコメンデーションとアラート](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
+[![Windows Admin Center に表示される Security Center の推奨事項とアラート。](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
 ## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Windows Admin Center で管理されているサーバーのセキュリティに関する推奨事項とアラートを Security Center で確認する
 Azure Security Center から:
@@ -67,4 +67,4 @@ Azure Security Center から:
 
 * すべての Windows Admin Center サーバーのセキュリティ アラートを表示するには、 **[セキュリティ アラート]** を開きます。 **[フィルター]** をクリックし、[Azure 以外] **のみ** が選択されていることを確認します。
 
-    :::image type="content" source="./media/windows-admin-center-integration/filtering-alerts-by-environment.png" alt-text="Windows Admin Center で管理されているサーバーのセキュリティ アラートをフィルター処理する" lightbox="./media/windows-admin-center-integration/filtering-alerts-by-environment.png":::
+    :::image type="content" source="./media/windows-admin-center-integration/filtering-alerts-by-environment.png" alt-text="Windows Admin Center で管理されているサーバーのセキュリティ アラートをフィルター処理する。" lightbox="./media/windows-admin-center-integration/filtering-alerts-by-environment.png":::

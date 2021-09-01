@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b5f4314afa17f245c36417916bc9af59aa7493a
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634718"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237552"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>ファイルの整合性の監視 (FIM) を使用してベースラインを比較する
 
@@ -36,7 +36,7 @@ ms.locfileid: "100634718"
 
 FIM レジストリ ハイブの既定値は、一般的なセキュリティ領域内で再帰的な変更を監視する便利な手段を提供します。  たとえば、敵対者は、起動時やシャットダウン時に実行を構成することによって、LOCAL_SYSTEM コンテキストで実行されるスクリプトを構成することがあります。  この種類の変更を監視するには、組み込みのチェックを有効にします。  
 
-![レジストリ](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![レジストリ:](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > 再帰的なチェックは、カスタムのレジストリ パスではなく、推奨されるセキュリティ ハイブにのみ適用されます。  
@@ -70,14 +70,14 @@ FIM ベースラインは、オペレーティング システムとサポート
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
     ```
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="レジストリに対する FIM を有効にする":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="レジストリに対する FIM を有効にする。":::
 
 ## <a name="track-changes-to-windows-files"></a>Windows ファイルに対する変更の追跡
 
 1. **[Windows ファイル変更を追跡するための追加]** ウィンドウの **[パスの入力]** テキスト ボックスに、追跡するファイルが含まれているフォルダーを入力します。次の図の例では、**Contoso の Web アプリ** は **ContosWebApp** フォルダー構造内の D:\ ドライブにあります。  
 1. 設定クラスの名前を入力し、再帰を有効にして、ワイルドカード (*) サフィックスで最上位のフォルダーを指定することで、カスタムの Windows ファイルのエントリを作成します。
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="ファイルに対する FIM を有効にする":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="ファイルに対する FIM を有効にする。":::
 
 ## <a name="retrieve-change-data"></a>変更データの取得
 
@@ -117,4 +117,4 @@ FIM ベースラインは、オペレーティング システムとサポート
 
 レポートは、アーカイブや Power BI レポートへのチャンネル用に CSV にエクスポートできます。  
 
-![FIM データ](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)
+![FIM データ。](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)

@@ -2,17 +2,19 @@
 title: HDInsight の ML Services 向けの Azure storage ソリューション - Azure
 description: HDInsight の ML Services で利用できるさまざまなストレージ オプションについて説明します
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2ed4e27fb680c14ed5bbae0585d89152c1999b97
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943908"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295869"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure storage ソリューション
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 HDInsight 上の ML Services には、分析結果を含んだオブジェクトや、データ、コードを永続化するための異なるストレージ ソリューションがあります。 そのソリューションの例を次に示します。
 

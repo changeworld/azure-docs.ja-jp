@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: pafarley
-ms.openlocfilehash: 195beaaae2925ce9cc6e7cc70bd0415ded49f155
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d5a1da6bbe251e6200cd3a64117748e9ebbfae2a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166705"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298117"
 ---
 # <a name="call-the-read-api"></a>Read API を呼び出す
 
@@ -24,6 +24,8 @@ ms.locfileid: "108166705"
 このガイドは、既に <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成</a>し、サブスクリプション キーとエンドポイント URL を取得していることを前提としています。 まだの場合は、[クイックスタート](../quickstarts-sdk/client-library.md)に従って作業を開始してください。
 
 ## <a name="submit-data-to-the-service"></a>サービスにデータを送信する
+
+ローカルの画像またはリモートの画像を Read API に送信します。 ローカルの場合、バイナリ画像データを HTTP 要求本文に配置します。 リモートの場合、要求本文を `{"url":"http://example.com/images/test.jpg"}` のような形式にして、画像の URL を指定します。
 
 Read API の [Read 呼び出し](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)は、画像または PDF ドキュメントを入力として受け取り、非同期でテキストを抽出します。
 

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: memildin
-ms.openlocfilehash: a8356b863323511951ddd5eae463e0f07d65e61c
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: f205f66adc2c875e271a85efc2e48763c260dfa0
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061976"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237679"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Azure Security Center のセキュリティのアラートとインシデント
 
@@ -56,7 +56,7 @@ Azure Security Center では、脅威に関する状況の変化を継続的に�
 
 Security Center では、真の脅威を検出し、誤検知を減らすために、Azure のリソースやネットワークから、ログ データを収集、分析、統合します。 接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) とも連動します。 Security Center は、この情報を分析し、多くの場合、複数の情報源から得た情報との関連性を探りながら、脅威を特定します。
 
-![Security Center Data collection and presentation](./media/security-center-alerts-overview/security-center-detection-capabilities.png)
+![Security Center のデータ収集と表示。](./media/security-center-alerts-overview/security-center-detection-capabilities.png)
 
 Security Center には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。 ビッグ データや [機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) における革新的テクノロジを活かし、クラウド ファブリック全体にわたってイベントが評価されるので、手作業に頼った手法や攻撃の進化を予測する手法では特定できない脅威でも検出することができます。 こうしたセキュリティ分析の例を次に示します。
 
@@ -110,7 +110,7 @@ Security Center では、MITRE 攻撃マトリックスを利用してアラー�
 > [!TIP]
 > Fusion の分析によって生成される可能性のあるセキュリティ インシデント アラートの一覧については、[アラートの参照テーブル](alerts-reference.md#alerts-fusion)に関するページを参照してください。
 
-:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="セキュリティ インシデント検出レポートのスクリーンショット":::
+:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="セキュリティ インシデント検出レポートのスクリーンショット。":::
 
 セキュリティ インシデントを管理するには、[Azure Security Center でのセキュリティ インシデントの管理方法](security-center-incident.md)に関するページをご覧ください。
 
