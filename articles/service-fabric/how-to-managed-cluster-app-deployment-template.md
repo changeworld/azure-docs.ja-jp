@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを使用して、アプ�
 ms.topic: how-to
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f2561b182689467598f2c939589295d9af72e4d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6a40dc23b0eeda4c680d0151b08cb1c8f1a84053
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671222"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290155"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>ARM テンプレートを使用して Service Fabric マネージド クラスター アプリケーションをデプロイする
 
@@ -55,7 +55,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 クラスター内のリソースは、パブリック アクセス レベルを **[プライベート]** に設定することで、セキュリティで保護することができます。 アクセス権は、次の複数の方法で付与できます。
 
 * [Azure Active Directory](../storage/common/storage-auth-aad-app.md) を使用して BLOB とキューへのアクセスを承認する。
-* [Azure portal で Azure RBAC](../storage/common/storage-auth-aad-rbac-portal.md) を使用して Azure BLOB とキューのデータへのアクセスを付与する。
+* [Azure portal で Azure RBAC](../storage/blobs/assign-azure-role-data-access.md) を使用して Azure BLOB とキューのデータへのアクセスを付与する。
 * [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature) を使用してアクセスを委任する。
 
 次のスクリーンショットの例では、BLOB の匿名読み取りアクセスを使用しています。
@@ -179,6 +179,17 @@ Resource Manager でアプリケーション リソース モデルを使用し�
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
+
+
+## <a name="migration-from-classic-to-managed-clusters"></a>クラシックからマネージド クラスターへの移行
+
+アプリケーションをクラシックからマネージド クラスターに移行する場合は、型が正しく指定されていることを確認する必要があります。さもないと、エラーが発生します。 
+
+次の項目は、使用頻度のため具体的に挙げていますが、違いの排他的リストとすることを意図したわけではありません。 
+
+* upgradeReplicaSetCheckTimeout は現在マネージドの整数になっていますが、クラシック SFRP では文字列です。 
+
+プロパティと型の完全な一覧については、[マネージド クラスター アプリケーションのリソースの種類](/azure/templates/microsoft.servicefabric/managedclusters/applications?tabs=json)に関するページを参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,16 +2,16 @@
 title: クイックスタート - Android アプリから Teams 会議に参加する
 description: このチュートリアルでは、Android 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します
 author: chpalm
-ms.author: mikben
+ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd8b4872f60b274741808033d73492130710a066
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 7d9c0adfe946dee7f3a634cd2eaf44a92bab83b6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112536102"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078530"
 ---
 このクイックスタートでは、Android 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します。
 

@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 286ce9b628eff0975cff1cfa006f914ed43c3c46
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 195e47ce7165a02c5bb7126521432d448e2199a9
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469681"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238800"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
 
@@ -56,7 +56,7 @@ Azure Resource Manager ベースの Azure Container Registry に格納されて�
 
 1. 結果を表示するために、 **[推奨事項]** ページへ移動します。 問題が見つかった場合は、**Azure Container Registry イメージの脆弱性を修復する必要があります** という推奨事項が表示されます。
 
-    ![問題を修復するための推奨事項 ](media/monitor-container-security/acr-finding.png)
+    ![問題を修復するための推奨事項。](media/monitor-container-security/acr-finding.png)
 
 1. 推奨事項を選択します。 
 
@@ -64,29 +64,29 @@ Azure Resource Manager ベースの Azure Container Registry に格納されて�
 
 1. 特定のレジストリを選択して、その中の脆弱なリポジトリを含むリポジトリを確認します。
 
-    ![レジストリの選択](media/monitor-container-security/acr-finding-select-registry.png)
+    ![レジストリの選択。](media/monitor-container-security/acr-finding-select-registry.png)
 
     影響を受けるリポジトリの一覧を示したレジストリの詳細ページが開きます。
 
 1. 特定のリポジトリを選択して、その中の脆弱性のあるイメージを含むリポジトリを確認します。
 
-    ![リポジトリの選択](media/monitor-container-security/acr-finding-select-repository.png)
+    ![リポジトリを選択します。](media/monitor-container-security/acr-finding-select-repository.png)
 
     リポジトリの詳細ページが開きます。 脆弱性のあるイメージが、結果の重大度の評価と共に一覧表示されます。
 
 1. 脆弱性を表示するには、特定のイメージを選択します。
 
-    ![イメージの選択](media/monitor-container-security/acr-finding-select-image.png)
+    ![イメージの選択。](media/monitor-container-security/acr-finding-select-image.png)
 
     選択されたイメージに対応する結果の一覧が開きます。
 
-    ![結果の一覧](media/monitor-container-security/acr-findings.png)
+    ![結果の一覧。](media/monitor-container-security/acr-findings.png)
 
 1. 結果の詳細を確認するには、その結果を選択します。 
 
     結果の詳細ペインが開きます。
 
-    [![結果の詳細ペイン](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
+    [![結果の詳細ペイン。](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
 
     このペインには、問題の詳細な説明と、脅威を軽減するための外部リソースへのリンクが含まれます。
 
@@ -138,12 +138,12 @@ Azure Resource Manager ベースの Azure Container Registry に格納されて�
 1. 条件を定義します。
 1. **[ルールの適用]** を選択します。
 
-    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="レジストリで VA の結果の無効化ルールを作成する":::
+    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="レジストリで VA の結果の無効化ルールを作成する。":::
 
 1. ルールを表示、無効化、または削除するには、次の手順に従います。 
     1. **[ルールを無効にする]** を選択します。
     1. アクティブなルールが適用されているサブスクリプションは、スコープの一覧に **[Rule applied]\(ルール適用済み\)** と表示されます。
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="既存のルールを変更または削除する":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="既存のルールを変更または削除する。":::
     1. ルールを表示または削除するには、省略記号メニュー ("...") を選択します。
 
 

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7bfe8b1255c88878c2dc4661e9daa3e16397e9f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 75ce18b89975aaf0f45620291ccd106db69656ec
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792275"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205100"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Azure CLI を使用して Azure の VM からイメージ バージョンを作成する
 
@@ -75,6 +75,9 @@ az sig image-definition create \
    --os-state specialized
 ```
 
+> [!NOTE]
+> サードパーティ イメージに由来するイメージを含むイメージ定義の場合、プラン情報は、サードパーティ イメージのプラン情報と正確に一致している必要があります。 イメージ定義にプラン情報を含めるには、イメージ定義を作成するときに、`--plan-name`、`--plan-product`、および `--plan-publisher` を追加します。
+>
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 

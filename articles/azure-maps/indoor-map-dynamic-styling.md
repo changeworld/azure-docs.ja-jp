@@ -7,13 +7,12 @@ ms.date: 05/20/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 85b64f52fc1832ec1d25767c1cdfef8977d96fe8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 05e169667067033428d5fc995af4d866dc46d20b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030325"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751433"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator の屋内マップに動的スタイル設定を実装する
 
@@ -68,33 +67,27 @@ map.events.add("click", function(e){
 
 1. Postman アプリ内で **[新規]** を選択します。
 
-2. **[新規作成]** ウィンドウで **[コレクション]** を選択します。
+2. **[新規作成]** ウィンドウで **[HTTP 要求]** を選択します。
 
-3. もう一度 **[新規]** を選択します。
+3. 要求の **[要求名]** を入力します (*POST Data Upload* など)。
 
-4. **[新規作成]** ウィンドウで **[要求]** を選択します。
-
-5. 要求の **[要求名]** を入力します (*POST Data Upload* など)。
-
-6. 前に作成したリソースを選択してから、 **[保存]** を選択します。
-
-7. [Feature Update States API](/rest/api/maps/v2/feature-state/update-states) に対する次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換え、`statesetId` を `statesetId` に置き換えます)。
+4. [Feature Update States API](/rest/api/maps/v2/feature-state/update-states) に対する次の URL を入力します (`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換え、`statesetId` を `statesetId` に置き換えます)。
 
     ```http
     https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-8. **[Headers]\(ヘッダー\)** タブを選択します。
+5. **[Headers]\(ヘッダー\)** タブを選択します。
 
-9. **[キー]** フィールドで、`Content-Type` を選択します。 **[値]** フィールドで、`application/json` を選択します。
+6. **[キー]** フィールドで、`Content-Type` を選択します。 **[値]** フィールドで、`application/json` を選択します。
 
      :::image type="content" source="./media/indoor-map-dynamic-styling/stateset-header.png"alt-text="状態セット作成用のヘッダー タブ情報。":::
 
-10. **[Body]** タブを選択します。
+7. **[Body]** タブを選択します。
 
-11. ドロップダウン リストで、 **[raw]** と **[JSON]** を選択します。
+8. ドロップダウン リストで、 **[raw]** と **[JSON]** を選択します。
 
-12. 次の JSON スタイルをコピーして、 **[本文]** ウィンドウに貼り付けます。
+9. 次の JSON スタイルをコピーして、 **[本文]** ウィンドウに貼り付けます。
 
     ```json
     {
@@ -111,13 +104,13 @@ map.events.add("click", function(e){
     >[!IMPORTANT]
     >POST されたタイム スタンプが、同じ地物 `ID` に対する以前の地物状態の更新要求で使用されたタイム スタンプより後の場合にのみ、更新は保存されます。
 
-13. ステップ 7 で使用した URL を変更し、`UNIT26` を `UNIT27` に置き換えます。
+10. ステップ 7 で使用した URL を変更し、`UNIT26` を `UNIT27` に置き換えます。
 
     ```http
     https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT27?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-14. 次の JSON スタイルをコピーして、 **[本文]** ウィンドウに貼り付けます。
+11. 次の JSON スタイルをコピーして、 **[本文]** ウィンドウに貼り付けます。
 
     ``` json
     {

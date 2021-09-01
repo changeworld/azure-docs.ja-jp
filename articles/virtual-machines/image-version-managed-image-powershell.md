@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 505a160ee677815c5619fad47fd0d1b9ced7d68d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 282c463f1045cda63abec0358da38f294e41b05a
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669445"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205151"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>マネージド イメージを Shared Image Gallery に複製する
 
@@ -71,6 +71,10 @@ $imageDefinition = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
+
+> [!NOTE]
+> サードパーティ イメージに由来するイメージを含むイメージ定義の場合、プラン情報は、サードパーティ イメージのプラン情報と正確に一致している必要があります。 イメージ定義にプラン情報を含めるには、イメージ定義を作成するときに、`-PurchasePlanName`、`-PurchasePlanProduct`、および `-PurchasePlanPublisher` を追加します。
+>
 
 ## <a name="get-the-managed-image"></a>マネージド イメージを取得する
 

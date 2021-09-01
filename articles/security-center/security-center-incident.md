@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e385dec04db44e88ef5759cf8e2391b19b77dccc
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652108"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237520"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの管理
 
@@ -31,19 +31,19 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
 1. Security Center のアラート ページで、 **[フィルターの追加]** ボタンを使用してアラート名によってフィルター処理し、アラート名 **[複数のリソースでセキュリティ インシデントが検出されました]** に絞り込みます。 
 
-    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Azure Security Center のアラート ページでインシデントを特定する":::
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Azure Security Center のアラート ページでインシデントを特定する。":::
 
     一覧がフィルター処理され、インシデントのみが表示されるようになりました。 セキュリティ インシデントには、セキュリティ アラートとは異なるアイコンが付いています。
 
-    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Azure Security Center のアラート ページのインシデント一覧":::
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Azure Security Center のアラート ページのインシデント一覧。":::
 
 1. インシデントの詳細を表示するには、一覧から 1 つを選択します。 サイド ペインに、インシデントの詳細が表示されます。
 
-    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="インシデントの詳細を示すサイド ペイン":::
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="インシデントの詳細を示すサイド ペイン。":::
 
 1. 詳細を表示するには、 **[すべての詳細を表示]** を選択します。
 
-    [![Azure Security Center でのセキュリティ インシデントへの対応](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
+    [![Azure Security Center でのセキュリティ インシデントへの対応。](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 
     セキュリティ インシデント ページの左側のウィンドウには、セキュリティ インシデントに関する概要情報 (タイトル、重要度、状態、アクティビティ時間、説明、影響を受けるリソース) が表示されます。 影響を受けるリソースの横に、関連する Azure タグが表示されます。 これらのタグを使用して、アラートを調査するときにリソースの組織コンテキストを推測します。
 
@@ -52,7 +52,7 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
     >[!TIP]
     > 具体的なアラートの詳細については、そのアラートを選択してください。 
 
-    [![インシデントの [アクションの実行] タブ](media/security-center-incident/incident-take-action-tab.png)](media/security-center-incident/incident-take-action-tab.png#lightbox)
+    [![インシデントの [アクションの実行] タブ。](media/security-center-incident/incident-take-action-tab.png)](media/security-center-incident/incident-take-action-tab.png#lightbox)
 
     **[アクションの実行]** タブに切り替えるには、右側のウィンドウの下部にあるタブまたはボタンを選択します。 このタブを使用すると、次のような操作を実行できます。
     - *[Mitigate the threat]\(脅威の軽減\)* - このセキュリティ インシデントに対する手動の修復手順を提供します

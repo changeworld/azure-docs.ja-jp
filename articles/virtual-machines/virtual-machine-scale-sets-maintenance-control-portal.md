@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6537728feb2145520ee49457b00d9944d5967c9f
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 656d72663045b4604b9a94cbc686150925caca83
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112073142"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202042"
 ---
 # <a name="maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-azure-portal"></a>Azure portal を使用した、Azure 仮想マシン スケール セットの OS イメージ アップグレードのメンテナンス コントロール
 
@@ -36,7 +36,7 @@ ms.locfileid: "112073142"
     
     :::image type="content" source="media/virtual-machine-scale-sets-maintenance-control-portal/maintenance-configurations-basics-tab.png" alt-text="[メンテナンス構成] の基本を示すスクリーンショット":::
 
-1. Azure でリソースを更新するスケジュールを、[スケジュール] タブで宣言します。 開始日、メンテナンス時間、頻度を設定します。 スケジュールを決めたら、それ以降手動で更新する必要はなくなります。 **[次へ]** を選択します。 
+1. [スケジュール] タブで、Azure でリソースに更新プログラムを適用するスケジュールされた期間を宣言します。 開始日、メンテナンス時間、頻度を設定します。 スケジュールを決めたら、それ以降手動で更新する必要はなくなります。 **[次へ]** を選択します。 
 
     > [!IMPORTANT]
     > メンテナンス スケジュールの **期間** は *5 時間* 以上に設定する必要があります。 メンテナンスの **頻度** は、少なくとも 1 日 1 回以上に設定する必要があります。 
@@ -60,10 +60,10 @@ ms.locfileid: "112073142"
 
 ![リソースを割り当てる方法を示すスクリーンショット](media/virtual-machine-scale-sets-maintenance-control-portal/maintenance-configurations-add-assignment.png)
 
-メンテナンス構成を割り当てるリソースを選び、 **[Ok]** をクリックします。 **[種類]** 列には、リソースが分離された VM か Azure 専用ホストかが示されます。 構成を割り当てるには、VM が実行されている必要があります。 停止している VM に構成を割り当てようとすると、エラーが発生します。 
+メンテナンス構成を割り当てる仮想マシン スケール セットのリソースを選択し、 **[OK]** をクリックします。  
 
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure で実行している仮想マシンのメンテナンスと更新について知る](maintenance-and-updates.md)
+> [Azure で実行されている仮想マシンのメンテナンスと更新について確認する](maintenance-and-updates.md)

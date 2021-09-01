@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/15/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 88caf10fad48512c41a56061ff5a4a87e57b3a7e
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 4e08834237d396ae1a2ae3990b3e8d21f75ffaca
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771222"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290481"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 を使用するようにアプリケーションを移行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,9 +39,9 @@ ms.locfileid: "122771222"
 
 | Java SDK| リリース日 | バンドルされた API   | Maven Jar  | Java パッケージ名  |API リファレンス   | リリース ノート  | 廃止日 |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|--------|
-| Async 2.x.x  | 2018 年 6 月    | Async(RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [リリース ノート](sql-api-sdk-async-java.md) | 2024 年 8 月 31 日 |
+| Async 2.x.x  | 2018 年 6 月    | Async(RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [リリース ノート](sql-api-sdk-async-java.md) | - |
 | Sync 2.x.x     | 2018 年 9 月    | 同期   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [リリース ノート](sql-api-sdk-java.md)  | 2024 年 2 月 29 日 |
-| 3.x.x    | 2019 年 7 月    | Async(Reactor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - | 2024 年 8 月 31 日 |
+| 3.x.x    | 2019 年 7 月    | Async(Reactor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - | - |
 | 4.0   | 2020 年 6 月   | Async(Reactor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | [API](/java/api/overview/azure/cosmosdb) | - | - |
 
 ## <a name="sdk-level-implementation-changes"></a>SDK レベルの実装の変更

@@ -2,13 +2,13 @@
 title: ACR タスクの概要
 description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 ms.topic: article
-ms.date: 08/12/2020
-ms.openlocfilehash: a42a2bfcdc1621689421940c4db2fcf4f5e64b89
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/14/2021
+ms.openlocfilehash: 8a68ff312df13517bfe2b59d97dff25783da11ab
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781003"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202276"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -61,12 +61,21 @@ ACR タスクでは、Git リポジトリをタスクのコンテキストとし
 | Commit | はい |
 | Pull request | いいえ |
 
-ソース コード更新トリガーを構成するには、公開または非公開 GitHub または Azure DevOps リポジトリに Webhook を設定するアクセス トークン (PAT) をタスクに与える必要があります。
-
 > [!NOTE]
 > 現在、GitHub Enterprise リポジトリにおける commit や pull request トリガーは、ACR タスクではサポートされません。
 
 ソース コードのコミット時にビルドをトリガーする方法については、[Azure Container Registry タスクを使用してコンテナー イメージのビルドを自動化する](container-registry-tutorial-build-task.md)ことに関する ACR タスクの 2 つ目のチュートリアルを参照してください。
+
+### <a name="personal-access-token"></a>個人用アクセス トークン
+
+ソース コード更新トリガーを構成するには、公開または非公開 GitHub または Azure DevOps リポジトリに Webhook を設定するアクセス トークン (PAT) をタスクに与える必要があります。 PAT に必要なスコープは次のとおりです。
+
+| リポジトリの種類 |GitHub  |DevOps  |
+|---------|---------|---------|
+|Public Repo    | repo:status<br/>public_repo        | コード (読み取り)        |
+|プライベート リポジトリ   | repo (フル コントロール)    | コード (読み取り)      |
+
+PAT を作成するには、[GitHub](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) または [Azure DevOps](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) のドキュメントを参照してください。
 
 ## <a name="automate-os-and-framework-patching"></a>OS とフレームワークの修正プログラムの適用を自動化する
 
@@ -114,7 +123,7 @@ ACR タスクはこの自動検出とリビルドによって、更新された�
 | コンテナー レジストリの成果物 | コンテナー レジストリ リポジトリ内の [OCI 成果物](container-registry-oci-artifacts.md)ファイル。 | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
-> 非公開 Git リポジトリをタスクのコンテキストとして使用する場合、非公開アクセストークン（PAT）を提供する必要があります。
+> ソース コードの更新によってトリガーされたタスクのコンテキストとして Git リポジトリを使用する場合は、[個人用アクセス トークン (PAT)](#personal-access-token) を提供する必要があります。
 
 ## <a name="image-platforms"></a>イメージのプラットフォーム
 

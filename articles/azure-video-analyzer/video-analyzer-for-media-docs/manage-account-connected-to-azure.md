@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) アカウントの管理
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: Azure に接続された Azure Video Analyzer for Media (旧 Video Indexer) アカウントを管理する方法について説明します。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: c5acccbb4d7314a6ba462284674ffd1e1fd21ca0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 836cff6a8b55378089a6215b9d0c25e3fcac76c4
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386713"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305177"
 ---
 # <a name="manage-a-video-analyzer-for-media-account-connected-to-azure"></a>Azure に接続されている Video Analyzer for Media アカウントを管理します。
 
@@ -58,14 +59,6 @@ Videos Indexer アカウントが Azure に接続されている場合は、次�
 |Azure Media Services のリソース グループ名|Media Services アカウントを作成したリソース グループの名前。|
 |アプリケーション ID|この Video Analyzer for Media アカウントに対して作成した (指定された Media Services アカウントのアクセス許可を持つ) Azure AD アプリケーション ID。 <br/><br/>アプリ ID を取得するには、Azure portal に移動します。 Media Services アカウントで、アカウントを選択し、**[API アクセス]** に移動します。 **[サービス プリンシパルを使って Media Services API に接続する]**  ->  **[Azure AD アプリ]** を選択します。 関連するパラメーターをコピーします。|
 |アプリケーション キー|上で指定した Media Services アカウントに関連付けられている Azure AD アプリケーション キー。 <br/><br/>アプリ キーを取得するには、Azure portal に移動します。 Media Services アカウントで、アカウントを選択し、**[API アクセス]** に移動します。 **[サービス プリンシパルを使って Media Services API に接続する]**  ->  **[アプリケーションの管理]**  ->  **[証明書とシークレット]** を選択します。 関連するパラメーターをコピーします。|
-
-## <a name="autoscale-reserved-units"></a>占有ユニットの自動スケール
-
-**[設定]** ページでは、メディア占有ユニット (RU) の自動スケールを設定できます。 オプションが **[オン]** の場合は、最大数の RU を割り当てることができ、Video Analyzer for Media が確実に RU の停止と開始を自動で行うことができます。 このオプションでは、アイドル時間に余分な費用はかかりませんが、インデックス作成の負荷が高いときは、インデックス作成ジョブが完了するまで長時間待機しません。
-
-自動スケーリングでは、1 RU 未満または Media Services アカウントの既定の上限を超えるスケーリングは行われません。 制限値を上げるには、サービス要求を作成してください。 クォータと制限の詳細、サポート チケットを開く方法については、「 [Quotas and limitations (クォータと制限)](../../media-services/previous/media-services-quotas-and-limitations.md)」をご覧ください
-
-![Video Analyzer for Media での占有ユニットの自動スケール](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>エラーと警告
 

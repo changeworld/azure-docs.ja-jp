@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 08/05/2021
 tags: connectors
-ms.openlocfilehash: a19253e117f748b4d4045bfd2a29552018bba91e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 32638d71f2c700700be5eb1b2ad63f18969d82a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781561"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750019"
 ---
 # <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの作成と管理を行う
 
@@ -91,11 +91,12 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 
 * SFTP サーバーのアドレスとアカウントの資格情報。これにより、ワークフローで SFTP アカウントにアクセスできます。 SSH 秘密キーと SSH 秘密キーのパスワードにもアクセスできる必要があります。 チャンクを使用して大きなファイルをアップロードするには、SFTP サーバー上のルート フォルダーに対する読み取りと書き込み両方のアクセス権が必要です。 そうでない場合は、"401 権限がありません" エラーが表示されます。
 
-  秘密キー認証とパスワード認証の両方が、SFTP-SSH コネクタでサポートされます。 ただし、SFTP-SSH コネクタでサポートされているのは、以下の秘密キー形式、アルゴリズム、およびフィンガープリント "*のみ*" です。
+  秘密キー認証とパスワード認証の両方が、SFTP-SSH コネクタでサポートされます。 ただし、SFTP-SSH コネクタでサポートされているのは、以下の秘密キー形式、暗号化アルゴリズム、フィンガープリント、キー交換アルゴリズム "*のみ*" です。
 
   * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (デジタル署名アルゴリズム) キー。 秘密キーが PuTTY (.ppk) ファイル形式の場合は、まず、[キーを OpenSSH (.pem) ファイル形式に変換します](#convert-to-openssh)。
   * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
   * **フィンガープリント**: MD5
+  * **キー交換アルゴリズム**: curve25519-sha256、curve25519-sha256@libssh.org、ecdh-sha2-nistp256、ecdh-sha2-nistp384、ecdh-sha2-nistp521、diffie-hellman-group-exchange-sha256、diffie-hellman-group-exchange-sha1、diffie-hellman-group16-sha512、diffie-hellman-group14-sha256、diffie-hellman-group14-sha1、diffie-hellman-group1-sha1
 
   ワークフローに SFTP-SSH のトリガーまたはアクションを追加した後は、SFTP サーバーの接続情報を指定する必要があります。 この接続の SSH 秘密キーを指定するときは、"***キーを手動で入力または編集しないでください** _"。これを行うと、接続が失敗する可能性があります。 代わりに、必ず、自分の SSH 秘密キー ファイルから "_*_キーをコピーし_*_"、そのキーを接続の詳細に "_ *_貼り付ける_**" ようにしてください。 詳細については、この記事の後の「[SSH で SFTP に接続する](#connect)」セクションを参照してください。
 
@@ -259,9 +260,9 @@ SFTP サーバーでファイルが追加または変更されると、このト
 
 このエラーは、ご使用のロジック アプリが SFTP サーバーとの接続を正常に確立できない場合に発生する可能性があります。 この問題にはさまざまな理由が考えられるため、こちらのトラブルシューティング オプションを試してみてください。
 
-* 接続のタイムアウトは 20 秒です。 SFTP サーバーのパフォーマンスが良好で、ファイアウォールなどの中間デバイスによってオーバーヘッドが増加されていないことを確認してください。 
+* 接続のタイムアウトは 20 秒です。 SFTP サーバーのパフォーマンスが良好で、ファイアウォールなどの中間デバイスによってオーバーヘッドが増加されていないことを確認してください。
 
-* ファイアウォールが設定されている場合は、**マネージド コネクタの IP** アドレスが承認済みリストに追加されていることを確認します。 ご使用のロジック アプリのリージョンに対する IP アドレスを見つけるには、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#multi-tenant-azure---outbound-ip-addresses)に関する記事を参照してください。
+* ファイアウォールが設定されている場合は、ご使用のリージョンに対する **マネージド コネクタの IP** アドレスが承認済みリストに追加されていることを確認します。 ご使用のロジック アプリのリージョンに対する IP アドレスを見つけるには、[Azure Logic Apps でのマネージド コネクタの送信 IP](/connectors/common/outbound-ip-addresses) に関する記事を参照してください。
 
 * このエラーが断続的に発生する場合は、SFTP-SSH アクションの **再試行ポリシー** 設定を変更し、既定の 4 回の再試行よりも大きい再試行回数にします。
 

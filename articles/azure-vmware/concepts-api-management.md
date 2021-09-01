@@ -3,19 +3,18 @@ title: 概念 - API Management
 description: Azure VMware Solution 仮想マシン (VM) 上で実行されている API を API Management が保護する方法について説明します
 ms.topic: conceptual
 ms.date: 04/28/2021
-ms.openlocfilehash: aba60f255019701722b38036c87bcb592a0a4410
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 14b2d81d0080ebf389c817d1c718d207aa922b0d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204533"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752109"
 ---
 # <a name="publish-and-protect-apis-running-on-azure-vmware-solution-vms"></a>Azure VMware Solution VM 上で実行されている API を発行および保護する
 
-Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) を使用すると、外部または内部のコンシューマーに安全に発行できます。  Developer (開発) および Premium (運用) の SKU のみで、Azure Virtual Network 統合を使用して、Azure VMware Solution ワークロードで実行されている API を発行することができます。  どちらの SKU でも、API Management サービスとバックエンド間の接続を確立することができます。 
+Microsoft Azure [API Management](https://azure.microsoft.com/services/api-management/) を使用すると、外部または内部のコンシューマーに安全に発行できます。  Developer (開発) および Premium (運用) の SKU のみで、Azure Virtual Network 統合を使用して、Azure VMware Solution ワークロードで実行されている API を発行することができます。 加えて、どちらの SKU でも、API Management サービスとバックエンド間の接続を確立することができます。
 
-API Management 構成は、Azure VMware Solution の仮想マシン (VM) およびオンプレミス上で実行されるバックエンド サービスの場合と同じです。 どちらのデプロイにおいても、Azure VMware Solution でバックエンド サーバーが NSX Load Balancer の後ろに配置されている場合、API Management によってロード バランサーの仮想 IP がバックエンド エンドポイントとして構成されます。 
-
+API Management 構成は、Azure VMware Solution の仮想マシン (VM) およびオンプレミスで実行されるバックエンド サービスの場合と同じです。 加えて、Azure VMware Solution でバックエンド サーバーが NSX Load Balancer の後ろに配置されている場合、どちらのデプロイでも API Management によってロード バランサーの仮想 IP がバックエンド エンドポイントとして構成されます。
 
 ## <a name="external-deployment"></a>外部デプロイ
 
@@ -31,7 +30,7 @@ API Management 構成は、Azure VMware Solution の仮想マシン (VM) およ�
 
 API Management には Azure パブリック API があり、Azure DDOS Protection サービスをアクティブ化することをお勧めします。 
 
-:::image type="content" source="media/api-management/external-deployment.png" alt-text="外部デプロイ - Azure VMware Solution 向けの API Management":::
+:::image type="content" source="media/api-management/api-management-external-deployment.png" alt-text="Azure VMware Solution 向けの外部 API Management デプロイを示す図" border="false":::
 
 
 ## <a name="internal-deployment"></a>内部デプロイ
@@ -56,4 +55,4 @@ API Management には Azure パブリック API があり、Azure DDOS Protectio
 * 外部トラフィックは、API Management の外部保護レイヤーを使用する Application Gateway を通じて Azure に入ります。
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="内部デプロイ - Azure VMware Solution 向けの API Management" lightbox="media/api-management/internal-deployment.png":::
+:::image type="content" source="media/api-management/api-management-internal-deployment.png" alt-text="Azure VMware Solution 向けの内部 API Management デプロイを示す図" lightbox="media/api-management/api-management-internal-deployment.png" border="false":::

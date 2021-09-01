@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: memildin
-ms.openlocfilehash: b48adf5e6c2c7b91e98ef410c71802b5d47d2845
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b7c8003bd40df21fb749fcb576afeaec5dacead9
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459791"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236843"
 ---
 # <a name="manage-security-policies"></a>セキュリティ ポリシーの管理
 
@@ -35,7 +35,7 @@ Security Center でセキュリティ ポリシーを表示するには:
 
 1. **Security Center** ダッシュボードで **[セキュリティ ポリシー]** を選択します。
 
-    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="[ポリシー管理] ページ":::
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="[ポリシー管理] ページ。":::
 
    **[ポリシー管理]** 画面には、管理グループ、サブスクリプション、およびワークスペースの数、および管理グループの構造が表示されます。
 
@@ -56,7 +56,7 @@ Security Center でセキュリティ ポリシーを表示するには:
 
     1. 既定のイニシアチブを表示して編集するには、 **[有効なポリシーの表示]** を選択し、下記の説明に従って操作を進めます。 
 
-        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="[有効なポリシー] 画面":::
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="[有効なポリシー] 画面。":::
 
        この **[セキュリティ ポリシー]** 画面には、選択したサブスクリプションまたは管理グループに割り当てられているポリシーによって実行されたアクションが反映されます。
        
@@ -80,7 +80,7 @@ Security Center の規制コンプライアンス ツールで適用した規制
 
 1. Security Center 内の **[Policy & Compliance]\(ポリシーとコンプライアンス\)** セクションで **[セキュリティ ポリシー]** を選択します。
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でポリシー管理プロセスの開始":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でのポリシー管理プロセスの開始。":::
 
 1. 推奨事項 (およびポリシー) を無効にするサブスクリプションまたは管理グループを選択します。
 
@@ -93,7 +93,7 @@ Security Center の規制コンプライアンス ツールで適用した規制
 
 1. ドロップダウン リストで、対応するポリシーの値を **[無効]** に変更します。
 
-   ![ポリシーの無効化](./media/tutorial-security-policy/disable-policy.png)
+   ![ポリシーの無効化。](./media/tutorial-security-policy/disable-policy.png)
 
 1. **[保存]** を選択します。
 
@@ -109,7 +109,7 @@ Security Center の規制コンプライアンス ツールで適用した規制
 
 1. Security Center 内の **[Policy & Compliance]\(ポリシーとコンプライアンス\)** セクションで **[セキュリティ ポリシー]** を選択します。
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でポリシー管理プロセスの開始":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でのポリシー管理プロセスの開始。":::
 
 1. 推奨事項 (およびポリシー) を有効にするサブスクリプションまたは管理グループを選択します。
 

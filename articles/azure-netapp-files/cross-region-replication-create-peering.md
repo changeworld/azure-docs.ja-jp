@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 08/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 84b10fefbfae4ca42fa96cc96f357dbfe0d25800
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 94528abaf90a94c59dd97c9a4ae0d15162914bc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794774"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751379"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Azure NetApp Files のボリューム レプリケーションを作成する
 
@@ -105,6 +105,9 @@ NFS プロトコルの場合、エクスポート ポリシー ルールが、�
     ![レプリケーションの承認](../media/azure-netapp-files/cross-region-replication-authorize.png) 
 
 6. [承認] フィールドに、手順 3. で取得した宛先レプリケーション ボリュームのリソース ID を貼り付け、 **[OK]** をクリックします。
+
+    > [!NOTE]
+    > 特定の時点での宛先ストレージの状態など、さまざまな要因により、ソース ボリュームの使用領域と宛先ボリュームの使用領域が違っている可能性があります。 <!-- ANF-14038 --> 
 
 ## <a name="next-steps"></a>次のステップ  
 

@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 06/10/2021
+ms.date: 08/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: 0e8c63827ba6e2e022e0d7876952b0a159c1e569
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: eef2a1eb5f17864074ac346ac7a89a59d1d59778
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984628"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037292"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Azure Machine Learning ソブリン クラウドの同等性
 
@@ -57,15 +57,14 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 | Jupyter、JupyterLab の統合                                            | GA                   | YES                | YES         |
 | Virtual Network (VNet) のサポート                                             | パブリック プレビュー       | YES                | YES         |
 | **SDK のサポート** |  |  | | 
-| [R SDK のサポート](https://azure.github.io/azureml-sdk-for-r/reference/index.html)                                                              | パブリック プレビュー       | YES                | YES         |
 | [Python SDK サポート](/python/api/overview/azure/ml/)                                                         | GA                   | YES                | YES         |
 | **[Security](concept-enterprise-security.md)** |   | | | 
 | トレーニングのための Virtual Network (VNet) サポート                                | GA                   | YES                | YES         |
 | 推論のための Virtual Network (VNet) のサポート                               | GA                   | YES                | YES         |
 | エンドポイント認証のスコア付け                                            | パブリック プレビュー       | YES                | YES         |
-| ワークプレース プライベート エンドポイント                                                 | パブリック プレビュー       | NO                 | NO          |
+| ワークプレース プライベート エンドポイント                                                 | GA  |  GA  |  GA |
 | VNet の背後にある ACI                                                            | パブリック プレビュー       | NO                 | NO          |
-| VNet の背後にある ACR                                                            | パブリック プレビュー       | NO                 | NO          |
+| VNet の背後にある ACR                                                            | GA       | YES                 | YES          |
 | AKS クラスターのプライベート IP                                                  | パブリック プレビュー       | NO                 | NO          |
 | **Compute** |   | | |
 | [ワークスペース間のクォータ管理](how-to-manage-quotas.md)                                         | GA                   | YES                | YES         |
@@ -101,9 +100,8 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 | [バッチ推論](tutorial-pipeline-batch-scoring-classification.md)                                                          | GA                   | YES                | YES         |
 | [FPGA での Data Box Edge](how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)                                                    | パブリック プレビュー       | NO                 | NO          |
 | **その他** |   | | |
-| [Open Datasets](/azure/open-datasets/samples)                                                              | パブリック プレビュー       | YES                | YES         |
+| [Open Datasets](../open-datasets/samples.md)                                                              | パブリック プレビュー       | YES                | YES         |
 | [カスタム Cognitive Search](how-to-deploy-model-cognitive-search.md)                                                    | パブリック プレビュー       | YES                | YES         |
-| [多数モデル ソリューション アクセラレータ](https://github.com/microsoft/solution-accelerator-many-models)                                                                | パブリック プレビュー       | NO                 | NO          |
 
 
 ### <a name="azure-government-scenarios"></a>Azure Government シナリオ
@@ -111,15 +109,14 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 | シナリオ                                                    | 米国バージニア | 米国アリゾナ| 制限事項  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **全般的なセキュリティ設定** |   | | |
-| 2 つのサービス間のプライベート ネットワーク通信                                     | NO | NO | 現在プライベート リンクはありません | 
-| インターネット アクセス (受信および送信) と特定の VNet を無効または制御する | PARTIAL| PARTIAL   | VNet の背後にある ACR は Azure Government では利用できません。ACI で再確認してください | 
+| インターネット アクセス (受信および送信) と特定の VNet を無効または制御する | PARTIAL| PARTIAL   |  | 
 | 関連付けられているすべてのリソース/サービスの配置  | YES | YES |  |
 | 保存時および転送中の暗号化。                                                 | YES | YES |  |
 | コンピューティング リソースへのルート アクセスと SSH アクセス。                                          | YES | YES |  |
-| エンドポイントの保護、修正プログラムの適用、ログ記録など、デプロイされたシステム (インスタンス、エンドポイントなど) のセキュリティを維持する |  PARTIAL|  PARTIAL |VNet とプライベート エンドポイントの背後にある ACI は現在使用できません |                                  
-| ACI/AKS 統合の制御 (無効化/制限/制限)                    | PARTIAL| PARTIAL |VNet とプライベート エンドポイントの背後にある ACI は現在使用できません|
+| エンドポイントの保護、修正プログラムの適用、ログ記録など、デプロイされたシステム (インスタンス、エンドポイントなど) のセキュリティを維持する |  PARTIAL|  PARTIAL |VNet の内側にある ACI は現在使用できません |                                  
+| ACI/AKS 統合の制御 (無効化/制限/制限)                    | PARTIAL| PARTIAL |VNet の内側にある ACI は現在使用できません|
 | Azure ロールベースのアクセス制御 (Azure RBAC) - カスタム ロールの作成                           | YES | YES |  |
-| ML サービスによって使用される ACR イメージへのアクセスの制御 (Azure によって提供または維持される、またはカスタム)  |PARTIAL|  PARTIAL | プライベート エンドポイントと VNet の背後にある ACR は Azure Government ではサポートされません |
+| ML サービスによって使用される ACR イメージへのアクセスの制御 (Azure によって提供または維持される、またはカスタム)  |PARTIAL|  PARTIAL |  |
 | **一般的な Machine Learning サービスの使用** |  | | |
 | モデルを構築し、そのモデルをトレーニングし、エンドポイントとしてホストし、webapp を介して使用するための開発環境を用意する機能     | YES | YES |  |
 | ADLS (Data Lake Storage) からデータをプルする機能                                 |YES | YES |  |
@@ -132,7 +129,7 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 * Azure Machine Learning のコンピューティング インスタンスでは、24 時間以上続くトークンを更新する機能は Azure Government では使用できません。
 * 米国アリゾナ リージョンでは、モデル プロファイルは 4 CPU をサポートしません。   
 * サンプル ノートブックは、パブリック データへのアクセスが必要な場合、Azure Government で機能しないことがあります。
-* IP アドレス:[VNet と強制トンネリング](how-to-secure-training-vnet.md#forced-tunneling)命令で使用される CLI コマンドは、IP 範囲を返しません。 代わりに [Azure Government の Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=57063)を使用してください。
+* IP アドレス: [必要なパブリック インターネット アクセス](how-to-secure-training-vnet.md#required-public-internet-access)命令で使用される CLI コマンドからは、IP 範囲は返されません。 代わりに [Azure Government の Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=57063)を使用してください。
 * スケジュールされたパイプラインの場合は、BLOB ベースのトリガー メカニズムも用意されています。 このメカニズムは CMK ワークスペースではサポートされていません。 CMK ワークスペースで BLOB を利用したトリガーを有効にするには、追加の設定が必要です。 詳細については、「[ロジック アプリから Machine Learning パイプラインの実行をトリガーする](how-to-trigger-published-pipeline.md)」を参照してください。
 * ファイアウォール: Azure Government リージョンを使用するときは、次のホストをファイアウォールの設定に追加します。
 
@@ -166,19 +163,18 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 | R および Python のサポート                                                       | GA               | YES       | 該当なし        |
 | 仮想ネットワークのサポート                                                    | パブリック プレビュー   | NO        | 該当なし        |
 | **コンピューティング インスタンス** |    | | |
-| 統合されたノートブックのマネージド コンピューティング インスタンス                         | GA               | NO        | 該当なし        |
+| 統合されたノートブックのマネージド コンピューティング インスタンス                         | GA               | YES        | 該当なし        |
 | Jupyter、JupyterLab の統合                                            | GA               | YES       | 該当なし        |
 | Virtual Network (VNet) のサポート                                             | パブリック プレビュー   | YES       | 該当なし        |
 | **SDK のサポート** |    | | |
-| R SDK のサポート                                                              | パブリック プレビュー   | YES       | 該当なし        |
 | Python SDK サポート                                                         | GA               | YES       | 該当なし        |
 | **Security** |   | | |
 | トレーニングのための Virtual Network (VNet) サポート                                | GA               | YES       | 該当なし        |
 | 推論のための Virtual Network (VNet) のサポート                               | GA               | YES       | 該当なし        |
 | エンドポイント認証のスコア付け                                            | パブリック プレビュー   | YES       | 該当なし        |
-| ワークプレース プライベート リンク                                                     | GA               | NO        | 該当なし        |
+| ワークプレース プライベート エンドポイント                                                 | GA               | NO        | 該当なし        |
 | VNet の背後にある ACI                                                            | パブリック プレビュー   | NO        | 該当なし        |
-| VNet の背後にある ACR                                                            | パブリック プレビュー   | NO        | 該当なし        |
+| VNet の背後にある ACR                                                            | GA   | YES       | 該当なし        |
 | AKS クラスターのプライベート IP                                                  | パブリック プレビュー   | NO        | 該当なし        |
 | **Compute** |   | | |
 | ワークスペース間のクォータ管理                                         | GA               | YES       | 該当なし        |
@@ -216,7 +212,6 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 | **その他** |    | | |
 | Open Datasets                                                              | パブリック プレビュー   | YES       | 該当なし        |
 | カスタム Cognitive Search                                                    | パブリック プレビュー   | YES       | 該当なし        |
-| 多数モデル                                                                | パブリック プレビュー   | NO        | 該当なし        |
 
 
 
@@ -232,8 +227,8 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * サンプル ノートブックは、パブリック データへのアクセスが必要な場合に機能しないことがあります。
-* IP アドレス範囲:[VNet と強制トンネリング](how-to-secure-training-vnet.md#forced-tunneling)命令で使用される CLI コマンドは、IP 範囲を返しません。 代わりに [Azure China の Azure IP 範囲とサービス タグ](https://www.microsoft.com//download/details.aspx?id=57062)を使用してください。
-* Azure Machine Learning コンピューティング インスタンスのプレビューは、プライベート リンクが有効になっているワークスペースでは現在サポートされていませんが、すべての AML リージョンにサービス展開する次回のデプロイでは CI がサポートされるようになります。
+* IP アドレスの範囲: [必要なパブリック インターネット アクセス](how-to-secure-training-vnet.md#required-public-internet-access)命令で使用される CLI コマンドからは、IP 範囲は返されません。 代わりに [Azure China の Azure IP 範囲とサービス タグ](https://www.microsoft.com//download/details.aspx?id=57062)を使用してください。
+* Azure Machine Learning コンピューティング インスタンスのプレビューは、プライベート エンドポイントが有効になっているワークスペースでは現在サポートされていませんが、すべての AML リージョンにサービス展開する次回のデプロイでは CI がサポートされるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

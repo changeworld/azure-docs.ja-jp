@@ -1,51 +1,52 @@
 ---
-title: Azure Active Directory B2C を使用してサンプル SPA アプリケーションで認証を構成する
-description: SPA アプリケーションで Azure Active Directory B2C を使用してユーザーをサインインおよびサインアップします。
+title: Azure Active Directory B2C を使用してサンプルのシングルページ アプリケーションで認証を構成する
+description: この記事では、Azure Active Directory B2C を使用してシングルページ アプリケーションでユーザーをサインインおよびサインアップする方法について説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/11/2021
+ms.date: 07/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: addf3870c22105a2ff42202e768d1e8cda4ffbde
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: ffda1151054b887114523704498a97d2ab7f7c44
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112073086"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779201"
 ---
-# <a name="configure-authentication-in-a-sample-single-page-application-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用してサンプルのシングル ページ アプリケーションで認証を構成する
+# <a name="configure-authentication-in-a-sample-single-page-application-by-using-azure-ad-b2c"></a>Azure AD B2C を使用してサンプルのシングルページ アプリケーションで認証を構成する
 
-この記事では、サンプルの JavaScript シングル ページ アプリケーションを使用して、SPA アプリに Azure Active Directory B2C (Azure AD B2C) 認証を追加する方法を説明します。
+この記事では、サンプルの JavaScript シングルページ アプリケーション (SPA) を使用して、Azure Active Directory B2C (Azure AD B2C) 認証を SPA に追加する方法について説明します。
 
 ## <a name="overview"></a>概要
 
-OpenID Connect (OIDC) は OAuth 2.0 を基盤とした認証プロトコルであり、ユーザーをアプリケーションに安全にサインインさせるために利用できます。 このシングル ページ アプリケーションのサンプルでは、[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) と OIDC PKCE フローが使用されます。 MSAL.js は、SPA アプリへの認証と承認サポートの追加を簡略化する、Microsoft で提供されているライブラリです。
+OpenID Connect (OIDC) は、OAuth 2.0 を基盤にした認証プロトコルです。 これを使用して、ユーザーをアプリケーションに安全にサインインさせることができます。 このシングルページ アプリケーションのサンプルでは、[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) と OIDC PKCE フローを使用します。 Microsoft が提供する MSAL.js ライブラリを使用すると、認証と認可のサポートを SPA アプリに簡単に追加できます。
 
-### <a name="sign-in-flow"></a>サインイン フロー
+### <a name="sign-in-flow"></a>Sign-in flow
+
 サインイン フローでは、次の手順が実行されます。
 
-1. ユーザーが Web アプリに移動し、 **[サインイン]** を選択します。 
+1. ユーザーが Web アプリにアクセスして **[サインイン]** を選択します。
 1. アプリによって認証要求が開始され、ユーザーが Azure AD B2C にリダイレクトされます。
-1. ユーザーは[サインアップまたはサインイン](add-sign-up-and-sign-in-policy.md)するか、[パスワードをリセット](add-password-reset-policy.md)するか、[ソーシャル アカウント](add-identity-provider.md)を使用してサインインします。
-1. サインインに成功すると、Azure AD B2C によって ID トークンがアプリに返されます。
-1. シングル ページ アプリケーションは、ID トークンを検証し、クレームを読み取り、保護されたリソースまたは API をユーザーが呼び出すことを許可します。
+1. ユーザーが[サインアップまたはサインイン](add-sign-up-and-sign-in-policy.md)し、[パスワードをリセット](add-password-reset-policy.md)します。 [ソーシャル アカウント](add-identity-provider.md)を使用してサインインすることもできます。
+1. ユーザーがサインインすると、Azure AD B2C からアプリに認可コードが返されます。
+1. シングルページ アプリケーションで、ID トークンが検証され、要求が読み取られ、保護されたリソースと API をユーザーが呼び出すことが許可されます。
 
 ### <a name="app-registration-overview"></a>アプリ登録の概要
 
-アプリで Azure AD B2C を使用してサインインし、Web API を呼び出せるようにするには、Azure AD B2C ディレクトリに 2 つのアプリケーションを登録する必要があります。  
+アプリで Azure AD B2C を使用してサインインし、Web API を呼び出せるようにするには、Azure AD B2C ディレクトリに 2 つのアプリケーションを登録します。  
 
-- **Web アプリケーション** の登録により、アプリでは Azure AD B2C を使用してサインインできるようになります。 アプリの登録時に、"*リダイレクト URI*" を指定します。 リダイレクト URI は、ユーザーが Azure AD B2C で認証された後にリダイレクトされるエンドポイントです。 アプリの登録プロセスによって、アプリを一意に識別する "*アプリケーション ID*" ("*クライアント ID*" とも呼ばれます) が生成されます。
+- **Web アプリケーション** の登録により、アプリでは Azure AD B2C を使用してサインインできるようになります。 登録時に、"*リダイレクト URI*" を指定します。 リダイレクト URI は、Azure AD B2C での認証が完了した後にユーザーが Azure AD B2C によってリダイレクトされるエンドポイントです。 アプリの登録プロセスによって、アプリを一意に識別する "*アプリケーション ID*" ("*クライアント ID*" とも呼ばれます) が生成されます。
 
-- **Web API** の登録により、アプリではセキュリティで保護された Web API を呼び出すことができます。 登録には、Web API の "*スコープ*" が含まれます。 スコープを使用することで、Web API などの保護されたリソースへのアクセス許可を管理できます。 Web アプリケーションのアクセス許可を Web API のスコープに付与します。 アクセス トークンが要求されると、アプリでは、必要なアクセス許可が要求の scope パラメーターに指定されます。  
+- **Web API** の登録により、アプリではセキュリティで保護された Web API を呼び出すことができます。 登録には、Web API の "*スコープ*" が含まれます。 スコープを使用することで、Web API などの保護されたリソースへのアクセス許可を管理できます。 Web アプリケーションのアクセス許可を Web API のスコープに付与します。 アクセス トークンが要求されたら、アプリで必要なアクセス許可を要求の scope パラメーターに指定します。  
 
-次の図では、アプリの登録とアプリケーションのアーキテクチャについて説明します。
+アプリのアーキテクチャと登録について、次の図に示します。
 
-![Web API 呼び出しの登録とトークンが使用されている Web アプリ](./media/configure-authentication-sample-spa-app/spa-app-with-api-architecture.png) 
+![Web API 呼び出しの登録とトークンが使用されている Web アプリの図。](./media/configure-authentication-sample-spa-app/spa-app-with-api-architecture.png) 
 
 ### <a name="call-to-a-web-api"></a>Web API の呼び出し
 
@@ -68,70 +69,78 @@ OpenID Connect (OIDC) は OAuth 2.0 を基盤とした認証プロトコルで�
 
 ## <a name="step-2-register-your-spa-and-api"></a>手順 2: SPA と API を登録する
 
-この手順では、SPA アプリと Web API アプリケーションの登録を作成し、Web API のスコープを指定します。
+この手順では、SPA と Web API アプリケーションの登録を作成し、Web API のスコープを指定します。
 
-### <a name="21-register-the-web-api-application"></a>2.1 Web API アプリケーションを登録する
+### <a name="step-21-register-the-web-api-application"></a>手順 2.1: Web API アプリケーションを登録する
 
 [!INCLUDE [active-directory-b2c-app-integration-register-api](../../includes/active-directory-b2c-app-integration-register-api.md)]
 
-### <a name="22-configure-scopes"></a>2.2 スコープを構成する
+### <a name="step-22-configure-scopes"></a>手順 2.2: スコープを構成する
 
 [!INCLUDE [active-directory-b2c-app-integration-api-scopes](../../includes/active-directory-b2c-app-integration-api-scopes.md)]
 
-### <a name="23-register-the-client-app"></a>2.3 クライアント アプリを登録する
+### <a name="step-23-register-the-spa"></a>手順 2.3: SPA を登録する
 
-アプリ登録を作成するには、次の手順に従います。
+SPA 登録を作成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
+
 1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **Azure AD B2C** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. アプリケーションの **名前** を入力します。 たとえば、*MyApp* とします。
+1. アプリケーションの **[名前]** を入力します (*MyApp* など)。
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any identity provider or organizational directory (for authenticating users with user flows)]\((ユーザー フローを使用してユーザーを認証するための) 任意の ID プロバイダーまたは組織のディレクトリのアカウント\)** を選択します。 
-1. **[リダイレクト URI]** で、 **[Single-page application (SPA)]\(シングルページ アプリケーション (SPA)\)** を選択し、URL テキスト ボックスに「`http://localhost:6420`」と入力します。
-1. **[アクセス許可]** で、 **[openid と offline_access アクセス許可に対して管理者の同意を付与します]** チェック ボックスをオンにします。
+1. **[リダイレクト URI]** で、 **[Single-page application (SPA)]\(シングルページ アプリケーション (SPA)\)** を選択し、URL ボックスに「`http://localhost:6420`」と入力します。
+1. **[アクセス許可]** で、 **[Grant admin consent to openid and offline access permissions]\(OpenID とオフラインのアクセス許可に管理者の同意を与える\)** チェック ボックスをオンにします。
 1. **[登録]** を選択します。
+
+### <a name="step-24-enable-the-implicit-grant-flow"></a>手順 2.4: 暗黙的な許可のフローを有効にする
 
 次に、暗黙的な許可のフローを有効にします。
 
-1. [管理] で、 [認証] を選択します。
-1. [新しいエクスペリエンスを試す] (表示されている場合) を選択します。
-1. [暗黙的な許可] で、[ID トークン] チェック ボックスをオンにします。
-1. [保存] を選択します。
+1. **[管理]** で、 **[認証]** を選択します。
 
-**アプリケーション (クライアント) ID** を記録しておきます。これは、後の手順で Web アプリケーションを構成するときに使用します。
-    ![アプリケーション ID を取得する](./media/configure-authentication-sample-web-app/get-azure-ad-b2c-app-id.png)  
+1. **[新しいエクスペリエンスを試す]** (表示されている場合) を選択します。
 
-### <a name="25-grant-permissions"></a>2.5 アクセス許可を付与する
+1. **[Implicit grant]\(暗黙的な許可\)** で、 **[ID トークン]** チェック ボックスをオンにします。
+
+1. **[保存]** を選択します。
+
+   **アプリケーション (クライアント) ID** を記録しておきます。これは、後で Web アプリケーションを構成するときに使用します。
+
+    ![Web アプリケーション ID を記録するための Web アプリの [概要] ページのスクリーンショット。](./media/configure-authentication-sample-web-app/get-azure-ad-b2c-app-id.png)  
+
+### <a name="step-25-grant-permissions"></a>手順 2.5: アクセス許可を付与する
 
 [!INCLUDE [active-directory-b2c-app-integration-grant-permissions](../../includes/active-directory-b2c-app-integration-grant-permissions.md)]
 
 ## <a name="step-3-get-the-spa-sample-code"></a>手順 3: SPA のサンプル コードを取得する
 
-このサンプルでは、シングルページ アプリケーションでユーザーのサインアップおよびサインイン、保護された Web API の呼び出しに Azure AD B2C を使用する方法が示されています。 下のサンプルをダウンロードします。
+このサンプルでは、シングルページ アプリケーションでユーザーのサインアップとサインインに Azure AD B2C を使用する方法を示します。 その後、アプリではアクセス トークンを取得して、保護された Web API を呼び出します。 
 
-  [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)するか、GitHub からサンプルを複製します。
+SPA サンプル コードは、次のいずれかの方法で入手できます。 
 
-  ```
-  git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
-  ```
+* [zip ファイルをダウンロードします](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)。 
+* 次のコマンドを実行して、GitHub からサンプルを複製します。
 
-### <a name="31-update-the-spa-sample"></a>3.1 SPA のサンプルを更新する
+    ```bash
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
+    ```
 
-サンプルを入手したので、Azure AD B2C テナント名と手順 2.3 で記録した *myApp* のアプリケーション ID を使用してコードを更新します。
+### <a name="step-31-update-the-spa-sample"></a>手順 3.1: SPA のサンプルを更新する
 
-*App* フォルダー内の *authConfig.js* ファイルを開きます。
-1. `msalConfig` オブジェクトで `clientId` の割り当てを見つけ、手順 2.3 で記録した **アプリケーション (クライアント) ID** に置き換えます。
+SPA サンプルを入手したら、Azure AD B2C と Web API の値でコードを更新します。 サンプル フォルダー内の `App` フォルダーにある、次の表の JavaScript ファイルを開き、それぞれの対応する値で更新します。  
 
-`policies.js` ファイルを開きます。
-1. `names` の下のエントリを見つけて、それらの割り当てを、前の手順で作成したユーザー フローの名前 (`b2c_1_susi`など) に置き換えます。
-1. `authorities` の下のエントリを見つけて、それらの割り当てを、前の手順で作成した適切なユーザー フローの名前 (`https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`など) に置き換えます。
-1. `authorityDomain` の割り当てを見つけ、`<your-tenant-name>.b2clogin.com` に置き換えます。
 
-`apiConfig.js` ファイルを開きます。
-1. `b2cScopes` の割り当てを見つけ、URL を、Web API 用に作成したスコープ URL (たとえば、`b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/tasks-api/tasks.read"]`) に置き換えます。
-1. `webApi` の割り当てを見つけ、現在の URL を `http://localhost:5000/tasks` に置き換えます。
-
+|ファイル  |Key  |値  |
+|---------|---------|---------|
+|authConfig.js|clientId| [手順 2.3](#step-23-register-the-spa) の SPA ID。|
+|policies.js| names| ユーザー フロー、または[手順 1](#step-1-configure-your-user-flow) で作成したカスタム ポリシー。|
+|policies.js|authorities|Azure AD B2C [テナント名](tenant-management.md#get-your-tenant-name) (例: `contoso.onmicrosoft.com`)。 次に、ユーザー フロー、または[手順 1](#step-1-configure-your-user-flow) で作成したカスタム ポリシーに置き換えます (例: `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`)。|
+|policies.js|authorityDomain|Azure AD B2C [テナント名](tenant-management.md#get-your-tenant-name) (例: `contoso.onmicrosoft.com`)。|
+|apiConfig.js|b2cScopes|[手順 2.2](#step-22-configure-scopes) で作成した Web API スコープ (例: `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/tasks-api/tasks.read"]`)。|
+|apiConfig.js|webApi|Web API の URL (`http://localhost:5000/tasks`)。|
+| | | |
 
 結果のコードは次のサンプルのようになります。
 
@@ -194,18 +203,24 @@ const apiConfig = {
 
 ## <a name="step-4-get-the-web-api-sample-code"></a>手順 4: Web API のサンプル コードを取得する
 
-Web API を登録し、そのスコープを定義したので、Azure AD B2C テナントで動作するように Web API コードを構成します。 下のサンプルをダウンロードします。
+Web API を登録し、そのスコープを定義したので、Azure AD B2C テナントで動作するように Web API コードを構成します。 
 
-[\*.zip アーカイブをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip)するか、GitHub からサンプルの Web API プロジェクトを複製します。 また、GitHub で [Azure-Samples/active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) プロジェクトを直接参照することもできます。
+Web API のサンプル コードは、次のいずれかの方法で入手できます。
 
-```console
-git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
-```
+* [\*.zip アーカイブをダウンロードします](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip)。
 
-### <a name="41-update-the-web-api"></a>4.1 Web API を更新する
+* 次のコマンドを実行して、GitHub からサンプル Web API プロジェクトを複製します。
+
+    ```bash
+    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
+    ```
+
+* また、GitHub で [Azure-Samples/active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) プロジェクトに直接アクセスすることもできます。
+
+### <a name="step-41-update-the-web-api"></a>手順 4.1: Web API を更新する
 
 1. コード エディターで *config.json* ファイルを開きます。
-1. 前に作成したアプリケーション登録で変数の値を変更します。 また、前提条件の一部として作成したユーザー フローを使用して、`policyName` を更新します。 たとえば、*b2c_1_susi* のようにします。
+1. 前に作成したアプリケーション登録で変数の値を変更します。 前提条件の一部として作成したユーザー フローを使用して、`policyName` を更新します (例: *b2c_1_susi*)。
     
     ```json
     "credentials": {
@@ -220,9 +235,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
     },
     ```
 
-### <a name="42-enable-cors"></a>4.2 CORS を有効にする
+### <a name="step-42-enable-cors"></a>手順 4.2: CORS を有効にする
 
-シングルページ アプリケーションに Node.js Web API の呼び出しを許可するには、Web API で [CORS](https://expressjs.com/en/resources/middleware/cors.html) を有効にする必要があります。 運用アプリケーションでは、どのドメインによって要求が行われているかに注意する必要があります。 この例では、どのドメインからの要求も許可します。
+シングルページ アプリケーションに Node.js Web API の呼び出しを許可するには、Web API で [クロスオリジン リソース共有 (CORS)](https://expressjs.com/en/resources/middleware/cors.html) を有効にする必要があります。 運用アプリケーションでは、どのドメインによって要求が行われているかに注意してください。 この例では、どのドメインからの要求も許可します。
 
 CORS を有効にするには、次のミドルウェアを使用します。 ダウンロードした Node.js の Web API コード サンプルでは、*index.js* ファイルに既に追加されています。
 
@@ -240,7 +255,7 @@ app.use((req, res, next) => {
 
 ### <a name="run-the-nodejs-web-api"></a>Node.js Web API を実行する
 
-1. コンソール ウィンドウを開き、Node.js Web API サンプルを含むディレクトリに移動します。 次に例を示します。
+1. コンソール ウィンドウを開き、Node.js Web API サンプルが含まれるディレクトリに移動します。 次に例を示します。
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -261,7 +276,7 @@ app.use((req, res, next) => {
 
 ### <a name="run-the-single-page-app"></a>シングルページ アプリを実行する
 
-1. 別のコンソール ウィンドウを開き、JavaScript SPA サンプルを含むディレクトリに移動します。 次に例を示します。
+1. 別のコンソール ウィンドウを開き、JavaScript SPA サンプルが含まれるディレクトリに移動します。 次に例を示します。
 
     ```console
     cd ms-identity-b2c-javascript-spa
@@ -280,18 +295,18 @@ app.use((req, res, next) => {
     Listening on port 6420...
     ```
 
-1. アプリケーションを表示するには、ブラウザーで `http://localhost:6420` に移動します。
+1. アプリケーションを表示するには、ブラウザーで `http://localhost:6420` にアクセスします。
 
-    ![ブラウザーに表示されたシングルページ アプリケーションのサンプル アプリ](./media/configure-authentication-sample-spa-app/sample-app-sign-in.png)
+    ![ブラウザー ウィンドウに表示された SPA サンプル アプリのスクリーンショット。](./media/configure-authentication-sample-spa-app/sample-app-sign-in.png)
 
-1. [前のチュートリアル](tutorial-single-page-app.md)で使用したメール アドレスとパスワードを使用してサインインします。 ログインが成功すると、`User 'Your Username' logged-in` というメッセージが表示されます。
+1. サインインアップまたはサインイン プロセスを完了します。 正常にログインすると、"User \<your username> logged in" というメッセージが表示されます。
 1. **[Call API]** ボタンを選択します。 SPA では、要求内のアクセス トークンを保護された Web API に送信します。それによって、ログインしているユーザーの表示名が返されます。
 
-    ![API によって返されるユーザー名の JSON 結果を示す、ブラウザーのシングルページ アプリケーション](./media/configure-authentication-sample-spa-app/sample-app-result.png)
+    ![API から返されたユーザー名 JSON の結果を示す、ブラウザー ウィンドウ内の SPA のスクリーンショット。](./media/configure-authentication-sample-spa-app/sample-app-result.png)
 
 ## <a name="deploy-your-application"></a>アプリケーションをデプロイする 
 
-運用アプリケーションでは、通常、アプリ登録のリダイレクト URI は、アプリが実行されているパブリックにアクセス可能なエンドポイント (`https://contoso.com/signin-oidc` など) です。 
+運用アプリケーションでは、アプリ登録のリダイレクト URI は通常、アプリが実行されているパブリックにアクセス可能なエンドポイント (`https://contoso.com/signin-oidc` など) です。 
 
 お使いの登録済みアプリケーションでは、いつでもリダイレクト URI を追加したり、変更したりすることができます。 リダイレクト URI には、次の制限があります。
 
@@ -300,5 +315,8 @@ app.use((req, res, next) => {
 
 ## <a name="next-steps"></a>次のステップ
 
-* [コード サンプル](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)の詳細情報
-* [Azure AD B2C を使用した独自の SPA アプリケーションでの認証オプション](enable-authentication-spa-app-options.md)について学習する
+この記事で説明した概念の詳細については、以下を参照してください。
+* [コード サンプルの詳細情報](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
+* [独自の SPA で認証を有効にする](enable-authentication-spa-app.md)
+* [SPA で認証オプションを構成する](enable-authentication-spa-app-options.md)
+* [独自の Web API で認証を有効にする](enable-authentication-web-api.md)

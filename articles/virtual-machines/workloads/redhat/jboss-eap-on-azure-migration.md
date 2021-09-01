@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: deded6927998daa5956cff2f63a0a53d3b973b6d
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: cbfbbfaea3954afd2a77090acb140c41e0b93052
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855129"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290638"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Java アプリケーションを Azure VM と仮想マシン スケール セット上の JBoss EAP に移行する方法
 
@@ -21,13 +21,13 @@ ms.locfileid: "111855129"
 
 ## <a name="best-practice-starting-with-azure-marketplace-offers-and-quickstarts"></a>Azure Marketplace のオファーとクイックスタートで始める場合のベスト プラクティス
 
-Red Hat と Microsoft は提携して、[Azure Marketplace オファーに JBoss EAP](https://aka.ms/AMP-JBoss-EAP) のセットを追加し、Azure への移行の確固たる出発点を提供しています。 ドキュメントでオファーとプランの一覧を参照し、既存のデプロイに最もよく合うものを選択してください。 [Azure での JBoss EAP のベスト プラクティス](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/jboss-eap-azure-best-practices/)に関する記事を参照してください
+Red Hat と Microsoft は提携して、[Azure Marketplace オファーに JBoss EAP](https://aka.ms/AMP-JBoss-EAP) のセットを追加し、Azure への移行の確固たる出発点を提供しています。 ドキュメントでオファーとプランの一覧を参照し、既存のデプロイに最もよく合うものを選択してください。 [Azure での JBoss EAP のベスト プラクティス](./jboss-eap-on-azure-best-practices.md)に関する記事を参照してください
 
 よい出発点になる既存のオファーがない場合は、Azure VM と他の利用可能なリソースを使用してデプロイを手動で再現できます。 詳細については、「[IaaS とは](https://azure.microsoft.com/overview/what-is-iaas/)」を参照してください。
 
 ### <a name="azure-marketplace-offers"></a>Azure Marketplace オファー
 
-Red Hat は Microsoft と連携して、以下のオファリングを Azure Marketplace で発行しています。 これらのオファーには、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/) から、または [Azure Portal](https://azure.microsoft.com/features/azure-portal/) からアクセスできます。 詳細については、[Azure Marketplace オファー 使用して Azure VM と VM Scale Sets に Red Hat JBoss EAP をデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/jboss-eap-azure-marketplace/)方法に関する記事を参照してください。
+Red Hat は Microsoft と連携して、以下のオファリングを Azure Marketplace で発行しています。 これらのオファーには、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/) から、または [Azure portal](https://azure.microsoft.com/features/azure-portal/) からアクセスできます。 詳細については、「[Azure Marketplace プランを使用して Azure VM と仮想マシン スケール セットに Red Hat JBoss Enterprise Platform (EAP) をデプロイする](./jboss-eap-marketplace-image.md)」方法に関する記事を参照してください。
 
 この Marketplace オファーには、JBoss EAP と RHEL のバージョンのさまざまな組み合わせと、柔軟なサポート サブスクリプション モデルが含まれています。 JBoss EAP は常に BYOS (サブスクリプション持ち込み) で利用できますが、RHEL の場合は、BYOS または PAYG (従量課金制) を選択することができます。 Azure Marketplace オファーには、スタンドアロン VM、クラスター化 VM、クラスター化された仮想マシン スケール セットとしての JBoss EAP on RHEL のプラン オプションが含まれています。 6 つのプランは次のとおりです。
 
@@ -46,7 +46,7 @@ Azure Marketplace のオファーと共に、EAP on Azure を体験するため�
 - JBoss EAP on RHEL クラスター化 VM
 - JBoss EAP on RHEL クラスター化仮想マシン スケール セット
 
-すぐに始めるには、自分の JBoss EAP on RHEL バージョンの組み合わせとよく一致するクイックスタート テンプレートのいずれかを選択します。 詳細については、[JBoss EAP on Azure のクイックスタート](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/jboss-eap-on-rhel)に関するドキュメントを参照してください。 
+すぐに始めるには、自分の JBoss EAP on RHEL バージョンの組み合わせとよく一致するクイックスタート テンプレートのいずれかを選択します。 詳細については、[JBoss EAP on Azure のクイックスタート](./jboss-eap-on-rhel.md)に関するドキュメントを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,13 +56,13 @@ Azure Marketplace のオファーと共に、EAP on Azure を体験するため�
 
 - **RHEL のオプション** - 従量課金制 (PAYG) またはサブスクリプション持ち込み (BYOS) のどちらかを選択します。 BYOS の場合は、ソリューション テンプレートを使用して Marketplace オファーをデプロイする前に、[Red Hat Cloud Access](https://access.redhat.com/) [RHEL Gold Image](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/) をアクティブにする必要があります。 [こちらの手順](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)に従って、Microsoft Azure で使用するために RHEL Gold イメージを有効にします。
 
-- **[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/overview)** 。
+- **[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/overview)** 。
 
 - **Java ソース コードと [Java Development Kit (JDK) のバージョン](https://www.oracle.com/java/technologies/javase-downloads.html)**
 
 - **[JBoss EAP 7.2 に基づく Java アプリケーション](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/development_guide/index#become_familiar_with_java_enterprise_edition_8)** または **[JBoss EAP 7.3 に基づく Java アプリケーション](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html-single/development_guide/index#get_started_developing_applications)** .
 
-**RHEL のオプション** - PAYG または BYOS を選択します。 BYOS の場合は、Azure Marketplace オファーを使用するために [Red Hat Cloud Access](https://access.redhat.com/documentation/red_hat_subscription_management/1/html-single/red_hat_cloud_access_reference_guide/index) RHEL Gold Image をアクティブ化する必要があります。 BYOS オファーは、Azure Portal の [Private Offer]\(プライベート オファー\) セクションに表示されます。 
+**RHEL のオプション** - PAYG または BYOS を選択します。 BYOS の場合は、Azure Marketplace オファーを使用するために [Red Hat Cloud Access](https://access.redhat.com/documentation/red_hat_subscription_management/1/html-single/red_hat_cloud_access_reference_guide/index) RHEL Gold Image をアクティブ化する必要があります。 BYOS オファーは、Azure portal の [プライベート オファー] セクションに表示されます。 
 
 **製品のバージョン**
 
@@ -131,11 +131,11 @@ JBoss EAP マネージド ドメインは、Microsoft Azure ではサポート�
 
 ### <a name="inventory-server-capacity"></a>サーバー容量をインベントリする
 
-現在の運用サーバーのハードウェア (メモリ、CPU、ディスクなど) と、平均およびピーク時の要求数とリソース使用率を文書化します。 この情報は、選択した移行パスに関係なく必要になります。 サイズの詳細については、「[Cloud Services のサイズ](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs)」を参照してください。
+現在の運用サーバーのハードウェア (メモリ、CPU、ディスクなど) と、平均およびピーク時の要求数とリソース使用率を文書化します。 この情報は、選択した移行パスに関係なく必要になります。 サイズの詳細については、「[Cloud Services のサイズ](../../../cloud-services/cloud-services-sizes-specs.md)」を参照してください。
 
 ### <a name="inventory-all-secrets"></a>すべてのシークレットをインベントリする
 
-[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) や [Azure App Configuration](https://azure.microsoft.com/services/app-configuration/) などの "サービスとしての構成" テクノロジが登場する前は、"シークレット" の明確に定義された概念はありませんでした。 代わりに、現在 "シークレット" を呼ばれるものとして効果的に機能する、さまざまな種類の構成設定のセットがありました。 JBoss EAP などのアプリ サーバーでは、これらのシークレットは多くの異なる構成ファイルと構成ストアにあります。 すべてのシークレットとパスワードについて、実稼働サーバー上のすべてのプロパティと構成ファイルを確認します。 必ず、WAR ファイル内の *jboss-web.xml* を確認してください。 また、パスワードや資格情報を含む構成ファイルがアプリケーション内に見つかる場合もあります。 Azure Key Vault の詳細については、「[Azure Key Vault の基本的な概念](https://docs.microsoft.com/azure/key-vault/general/basic-concepts)」参照してください。
+[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) や [Azure App Configuration](https://azure.microsoft.com/services/app-configuration/) などの "サービスとしての構成" テクノロジが登場する前は、"シークレット" の明確に定義された概念はありませんでした。 代わりに、現在 "シークレット" を呼ばれるものとして効果的に機能する、さまざまな種類の構成設定のセットがありました。 JBoss EAP などのアプリ サーバーでは、これらのシークレットは多くの異なる構成ファイルと構成ストアにあります。 すべてのシークレットとパスワードについて、実稼働サーバー上のすべてのプロパティと構成ファイルを確認します。 必ず、WAR ファイル内の *jboss-web.xml* を確認してください。 また、パスワードや資格情報を含む構成ファイルがアプリケーション内に見つかる場合もあります。 Azure Key Vault の詳細については、「[Azure Key Vault の基本的な概念](../../../key-vault/general/basic-concepts.md)」参照してください。
 
 ### <a name="inventory-all-certificates"></a>すべての証明書をインベントリする
 
@@ -169,23 +169,23 @@ WEB-INF/jboss-web.xml または WEB-INF/web.xml、あるいはその両方のフ
 
 **読み取り専用の静的コンテンツ**
 
-現在、アプリケーションで静的コンテンツを提供している場合は、そのための別の場所が必要になります。 静的コンテンツを Azure Blob Storage に移動し、グローバルな高速ダウンロードのために [Azure Content Delivery Network (CDN)](https://docs.microsoft.com/azure/cdn/) を追加することを検討できます。 詳細については、「[Azure Storage での静的 Web サイト ホスティング](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)」と[「クイック スタート:Azure ストレージ アカウントと Azure CDN との統合](https://docs.microsoft.com/azure/cdn/cdn-create-a-storage-account-with-cdn)」を参照してください。
+現在、アプリケーションで静的コンテンツを提供している場合は、そのための別の場所が必要になります。 静的コンテンツを Azure Blob Storage に移動し、グローバルな高速ダウンロードのために [Azure Content Delivery Network (CDN)](../../../cdn/index.yml) を追加することを検討できます。 詳細については、「[Azure Storage での静的 Web サイト ホスティング](../../../storage/blobs/storage-blob-static-website.md)」と[「クイック スタート:Azure ストレージ アカウントと Azure CDN との統合](../../../cdn/cdn-create-a-storage-account-with-cdn.md)」を参照してください。
 
 **動的に公開される静的コンテンツ**
 
-アプリケーションによってアップロードまたは生成されるが、作成後に変更できない静的コンテンツをアプリケーションで許可する場合は、前述のように [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/) と Azure CDN を使用し、[Azure Function](https://docs.microsoft.com/azure/azure-functions/) でアップロードと CDN の更新を処理します。 「[Azure Functions を使用した静的コンテンツのアップロードと CDN の事前読み込み](https://github.com/Azure-Samples/functions-java-push-static-contents-to-cdn)」で、ご利用いただけるサンプルの実装を提供しています。
+アプリケーションによってアップロードまたは生成されるが、作成後に変更できない静的コンテンツをアプリケーションで許可する場合は、前述のように [Azure Blob Storage](../../../storage/blobs/index.yml) と Azure CDN を使用し、[Azure Function](../../../azure-functions/index.yml) でアップロードと CDN の更新を処理します。 「[Azure Functions を使用した静的コンテンツのアップロードと CDN の事前読み込み](https://github.com/Azure-Samples/functions-java-push-static-contents-to-cdn)」で、ご利用いただけるサンプルの実装を提供しています。
 
 **動的または内部のコンテンツ**
 
-アプリケーションで頻繁に書き込みおよび読み取りされるファイル (一時データ ファイルなど) や、アプリケーションでのみ表示できる静的ファイルには、[Azure Storage](https://docs.microsoft.com/azure/storage/) 共有を永続ボリュームとしてマウントできます。 詳細については、「[Azure Kubernetes Service で Azure Files を含む永続ボリュームを動的に作成して使用する](https://docs.microsoft.com/azure/aks/azure-files-dynamic-pv)」を参照してください。
+アプリケーションで頻繁に書き込みおよび読み取りされるファイル (一時データ ファイルなど) や、アプリケーションでのみ表示できる静的ファイルには、[Azure Storage](../../../storage/index.yml) 共有を永続ボリュームとしてマウントできます。 詳細については、「[Azure Kubernetes Service で Azure Files を含む永続ボリュームを動的に作成して使用する](../../../aks/azure-files-dynamic-pv.md)」を参照してください。
 
 ### <a name="determine-whether-a-connection-to-on-premises-is-needed"></a>オンプレミスへの接続が必要かどうかを判断する
 
-アプリケーションからオンプレミスのサービスのいずれかにアクセスする必要がある場合、Azure の接続サービスの 1 つをプロビジョニングする必要があります。 詳しくは、「[オンプレミス ネットワークの Azure への接続](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)」をご覧ください。 または、オンプレミスのリソースで公開されている一般公開の API を使用するように、アプリケーションをリファクタリングする必要があります。
+アプリケーションからオンプレミスのサービスのいずれかにアクセスする必要がある場合、Azure の接続サービスの 1 つをプロビジョニングする必要があります。 詳しくは、「[オンプレミス ネットワークの Azure への接続](/azure/architecture/reference-architectures/hybrid-networking/)」をご覧ください。 または、オンプレミスのリソースで公開されている一般公開の API を使用するように、アプリケーションをリファクタリングする必要があります。
 
 ### <a name="determine-whether-jms-queues-or-topics-are-in-use"></a>JMS キューまたはトピックが使用中かどうか確認する
 
-アプリケーションで JMS キューまたはトピックを使用している場合は、外部でホストされている JMS サーバーにそれらを移行する必要があります。 Azure Service Bus と Advanced Message Queuing Protocol (AMQP) は、JMS を使用している場合の優れた移行方法となります。 詳細については、[Azure Service Bus と AMQP 1.0 での JMS の使用](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp)に関する記事または「[Azure Service Bus キューとの間でメッセージを送受信する (Java)](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-java-how-to-use-queues)」を参照してください
+アプリケーションで JMS キューまたはトピックを使用している場合は、外部でホストされている JMS サーバーにそれらを移行する必要があります。 Azure Service Bus と Advanced Message Queuing Protocol (AMQP) は、JMS を使用している場合の優れた移行方法となります。 詳細については、[Azure Service Bus と AMQP 1.0 での JMS の使用](../../../service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp.md)に関する記事または「[Azure Service Bus キューとの間でメッセージを送受信する (Java)](../../../service-bus-messaging/service-bus-java-how-to-use-queues.md)」を参照してください
 
 JMS 永続ストアが構成されている場合は、それらの構成を把握して、移行後に適用する必要があります。
 
@@ -209,8 +209,8 @@ JMS 永続ストアが構成されている場合は、それらの構成を把�
 移行を始めるには、最初に JBoss EAP インフラストラクチャをデプロイする必要があります。 デプロイには複数のオプションがあります
 
 - [**Azure Virtual Machine**](https://azure.microsoft.com/overview/what-is-a-virtual-machine/)
-- [**Azure 仮想マシン スケール セット**](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)
-- [**Azure App Service**](https://aka.ms/jboss-app-service-overview)
+- [**Azure 仮想マシン スケール セット**](../../../virtual-machine-scale-sets/overview.md)
+- [**Azure App Service**](/azure/developer/java/ee/jboss-on-azure)
 - [**Azure Red Hat OpenShift (ARO) for Containers**](https://azure.microsoft.com/services/openshift)
 - [**Azure Container Service**](https://azure.microsoft.com/product-categories/containers/)
 
@@ -239,22 +239,22 @@ JMS 永続ストアが構成されている場合は、それらの構成を把�
 
 お使いの環境に適した次の方法を使用して、アプリケーションを公開できます。
 
-* サーバーとアプリケーションにアクセスするための[パブリック IP を作成](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)します。
-* 同じ Virtual Network (VNet) 内の別のサブネット (新しいサブネット) に、[同じ Virtual Network 内のジャンプ VM を作成](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)し、ジャンプ VM 経由でサーバーにアクセスします。 このジャンプ VM は、アプリケーションを公開するために使用できます。
-* 別の Virtual Network で [VNet ピアリングを使用してジャンプ VM を作成](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)し、サーバーにアクセスして、[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal#peer-virtual-networks)を使用してアプリケーションを公開します。
-* [Application Gateway](https://docs.microsoft.com/azure/application-gateway/quick-create-portal#create-an-application-gateway) を使用してアプリケーションを公開します
-* [外部 Load Balancer](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal#create-a-standard-load-balancer) (ELB) を使用してアプリケーションを公開します。
+* サーバーとアプリケーションにアクセスするための[パブリック IP を作成](../../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)します。
+* 同じ Virtual Network (VNet) 内の別のサブネット (新しいサブネット) に、[同じ Virtual Network 内のジャンプ VM を作成](../../windows/quick-create-portal.md#create-virtual-machine)し、ジャンプ VM 経由でサーバーにアクセスします。 このジャンプ VM は、アプリケーションを公開するために使用できます。
+* 別の Virtual Network で [VNet ピアリングを使用してジャンプ VM を作成](../../windows/quick-create-portal.md#create-virtual-machine)し、サーバーにアクセスして、[仮想ネットワーク ピアリング](../../../virtual-network/tutorial-connect-virtual-networks-portal.md#peer-virtual-networks)を使用してアプリケーションを公開します。
+* [Application Gateway](../../../application-gateway/quick-create-portal.md#create-an-application-gateway) を使用してアプリケーションを公開します
+* [外部 Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard#create-load-balancer-resources) (ELB) を使用してアプリケーションを公開します。
 
 ## <a name="post-migration"></a>移行後
 
 「移行前」ステップで定義した移行の目標に到達したら、エンド ツー エンドの受け入れテストを実施して、すべてが予期したとおりに機能することを確認します。 移行後の機能強化に関するトピックをいくつか記載していますが、もちろん以下に限定されません。
 
-* Azure Storage を使用して、VM にマウントされた静的コンテンツを提供します。 詳細については、[VM へのデータ ディスクのアタッチまたはデタッチ](https://docs.microsoft.com/azure/devtest-labs/devtest-lab-attach-detach-data-disk)に関するページを参照してください
-* Azure DevOps を使用して、移行した JBoss クラスターにアプリケーションをデプロイします。 詳細については、[Azure DevOps の使用開始に関するドキュメント](https://docs.microsoft.com/azure/devops/get-started/?view=azure-devops)を参照してください。
-* [Application Gateway](https://docs.microsoft.com/azure/application-gateway/) の使用を検討してください。
-* 高度な負荷分散サービスを使用してネットワーク トポロジを強化します。 詳細については、「[Azure で負荷分散サービスを使用する](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)」を参照してください。
-* Azure マネージド ID をマネージド シークレットに利用して、ロールベースのアクセス制御 (RBAC) を Azure リソースに割り当てます。 詳細については、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)」を参照してください。
-* Azure Key Vault を使用して、"シークレット" として機能するすべての情報を格納します。 詳細については、「[Azure Key Vault の基本的な概念](https://docs.microsoft.com/azure/key-vault/general/basic-concepts)」を参照してください。
+* Azure Storage を使用して、VM にマウントされた静的コンテンツを提供します。 詳細については、[VM へのデータ ディスクのアタッチまたはデタッチ](../../../devtest-labs/devtest-lab-attach-detach-data-disk.md)に関するページを参照してください
+* Azure DevOps を使用して、移行した JBoss クラスターにアプリケーションをデプロイします。 詳細については、[Azure DevOps の使用開始に関するドキュメント](/azure/devops/get-started/?view=azure-devops)を参照してください。
+* [Application Gateway](../../../application-gateway/index.yml) の使用を検討してください。
+* 高度な負荷分散サービスを使用してネットワーク トポロジを強化します。 詳細については、「[Azure で負荷分散サービスを使用する](../../../traffic-manager/traffic-manager-load-balancing-azure.md)」を参照してください。
+* Azure マネージド ID をマネージド シークレットに利用して、ロールベースのアクセス制御 (RBAC) を Azure リソースに割り当てます。 詳細については、「[Azure リソースのマネージド ID とは](../../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
+* Azure Key Vault を使用して、"シークレット" として機能するすべての情報を格納します。 詳細については、「[Azure Key Vault の基本的な概念](../../../key-vault/general/basic-concepts.md)」を参照してください。
 
 ## <a name="resource-links-and-support"></a>リソースのリンクとサポート
 
@@ -263,15 +263,15 @@ JMS 永続ストアが構成されている場合は、それらの構成を把�
 * [JBoss EAP](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html/getting_started_with_jboss_eap_for_openshift_online/introduction) の詳細を確認する
 * [Red Hat Subscription Manager (Cloud Access)](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html-single/red_hat_cloud_access_reference_guide/index) の詳細を確認する
 * [Azure 仮想マシン](https://azure.microsoft.com/overview/what-is-a-virtual-machine/)の詳細情報
-* [Azure 仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)の詳細を確認する
+* [Azure 仮想マシン スケール セット](../../../virtual-machine-scale-sets/overview.md)の詳細を確認する
 * [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/) の詳細を確認する
-* [Azure App Service on Linux](https://docs.microsoft.com/azure/app-service/overview#app-service-on-linux) の詳細を確認する
-* [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) の詳細を確認する
-* [Azure ネットワーク](https://docs.microsoft.com/azure/networking/networking-overview)の詳細を確認する
+* [Azure App Service on Linux](../../../app-service/overview.md#app-service-on-linux) の詳細を確認する
+* [Azure Storage](../../../storage/common/storage-introduction.md) の詳細を確認する
+* [Azure ネットワーク](../../../networking/fundamentals/networking-overview.md)の詳細を確認する
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Marketplace から RHEL の VM または VM スケール セットに JBoss EAP をデプロイする](https://aka.ms/AMP-JBoss-EAP)
-* [Azure App Service 向けの Java アプリを構成する](https://docs.microsoft.com/azure/app-service/configure-language-java)
+* [Azure App Service 向けの Java アプリを構成する](../../../app-service/configure-language-java.md)
 * [JBoss EAP を Azure App Service にデプロイする方法](https://github.com/JasonFreeberg/jboss-on-app-service)のチュートリアル
 * [Azure App Service Migration Assistance を使用する](https://azure.microsoft.com/services/app-service/migration-assistant/)
 * [Red Hat Migration Toolkit for Applications を使用する](https://developers.redhat.com/products/mta)

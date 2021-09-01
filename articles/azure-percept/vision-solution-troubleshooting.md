@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 80e25690e133b348ad5ee180bb5a3e01d4176c90
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 79a9147fde164a672d310a7dea6fb6166ed3a1f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136249"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751373"
 ---
 # <a name="vision-solution-troubleshooting"></a>ビジョン ソリューションのトラブルシューティング
 
@@ -113,6 +113,8 @@ azureeyemodule モジュール ツインを使用すると、メッセージの�
 デバイスの RTSP ビデオ ストリームは、[Azure Percept Studio](./how-to-view-video-stream.md) または [VLC メディア プレーヤー](https://www.videolan.org/vlc/index.html)で表示します。
 
 VLC メディア プレーヤーで RTSP ストリームを開くには、 **[Media]\(メディア\)**  >  **[Open network stream]\(ネットワーク ストリームを開く\)**  >  **[rtsp://<デバイスの IP アドレス>:8554/result]** に移動します。
+
+RTSP ストリームが灰色のボックスによって部分的にブロックされている場合、低速なネットワーク接続を使用して表示しようとしている可能性があります。 ビデオ ストリームのための十分な帯域幅が接続にあることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

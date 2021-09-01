@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/19/2021
+ms.date: 06/15/2021
 ms.author: rolyon
-ms.openlocfilehash: c9ab7faebc28354e96cf1c54332fc1d7b19ef196
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6177de5dfc89dcbc33b9ff4291bf65ea909a3b9b
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469908"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235718"
 ---
 # <a name="azure-custom-roles"></a>Azure カスタム ロール
 
@@ -166,6 +166,8 @@ Azure CLI を使用して表示される同じカスタム ロールを次に示
 | `DataActions`</br>`dataActions` | いいえ | String[] | 対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定する文字列の配列。 `DataActions` が含まれるカスタム ロールを作成する場合、そのロールは管理グループのスコープで割り当てることができません。 詳細については、「[DataActions](role-definitions.md#dataactions)」を参照してください。 |
 | `NotDataActions`</br>`notDataActions` | いいえ | String[] | 許可された `DataActions` から除外されるデータ操作を指定する文字列の配列。 詳細については、「[NotDataActions](role-definitions.md#notdataactions)」を参照してください。 |
 | `AssignableScopes`</br>`assignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。 詳細については、「[AssignableScopes](role-definitions.md#assignablescopes)」を参照してください。 |
+
+アクセス許可の文字列では大文字と小文字が区別されません。 カスタム ロールを作成する場合は、「[Azure リソース プロバイダーの操作](resource-provider-operations.md)」に示されているアクセス許可の大文字と小文字の区別の規則に従ってください。
 
 ## <a name="wildcard-permissions"></a>ワイルドカードのアクセス許可
 

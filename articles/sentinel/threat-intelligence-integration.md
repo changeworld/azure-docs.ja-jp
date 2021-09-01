@@ -11,30 +11,32 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/12/2021
+ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: d8f7fff97a92a98fbcd0198ce601c88df914d9e2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8c9206404294557f3f4a50d03ae550e407b92ed3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471486"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751792"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel への脅威インテリジェンスの統合
 
-> [!IMPORTANT]
-> Azure Sentinel の脅威インテリジェンス データ コネクタは、現在パブリック プレビュー中です。
-> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+既知の脅威を検出して優先順位を付けるセキュリティ アナリストの能力を高めるために、Azure Sentinel には、[脅威インテリジェンスのフィードを使用](work-with-threat-indicators.md)する方法がいくつか用意されています。 
 
-既知の脅威を検出して優先順位を付けるセキュリティ アナリストの能力を高めるために、Azure Sentinel には、[脅威インテリジェンスのフィードを使用](import-threat-intelligence.md)する方法がいくつか用意されています。 
-
-数多く提供されている統合脅威インテリジェンス プラットフォーム (TIP、Threat Intelligence Platform) 製品の 1 つを使用し、TAXII サーバーに接続して STIX に適合したあらゆる脅威インテリジェンス ソースを活用できるほか、[Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) と直接やり取りするあらゆるカスタム ソリューションを利用することができます。
+数多く提供されている[統合脅威インテリジェンス プラットフォーム (TIP、Threat Intelligence Platform) 製品](connect-threat-intelligence-tip.md)の 1 つを使用し、[TAXII サーバーに接続](connect-threat-intelligence-taxii.md)して STIX に適合したあらゆる脅威インテリジェンス ソースを活用できるほか、[Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) と直接やり取りするあらゆるカスタム ソリューションを利用することができます。 
 
 効果的な調査や対応の措置につながる TI 情報でインシデントをエンリッチメント処理するために、プレイブックから脅威インテリジェンス ソースに接続することもできます。
 
+> [!TIP]
+> [マネージド サービス プロバイダー (MSSP)](mssp-protect-intellectual-property.md) のように、同じテナントに複数のワークスペースがある場合、一元化されたワークスペースにのみ脅威インジケーターを接続した方がコスト効率が高い場合があります。
+>
+> 同じ脅威インジケーターのセットが個別のワークスペースにインポートされている場合、ワークスペース全体で脅威インジケーターを集計するためのワークスペース横断クエリを実行できます。 MSSP インシデントの検出、調査、ハンティングのエクスペリエンス内でそれらを関連付けます。
+>
+
 ## <a name="taxii-threat-intelligence-feeds"></a>TAXII 脅威インテリジェンス フィード
 
-TAXII 脅威インテリジェンス フィードに接続するには、以下にリンク付きで示した各ベンダーから提供されている [Threat intelligence - TAXII](connect-threat-intelligence.md#connect-azure-sentinel-to-taxii-servers) データ コネクタを使用します。 コネクタで使用するための必要なデータを入手するためには、適宜ベンダーに直接問い合わせてください。
+TAXII 脅威インテリジェンスフィードに接続するには、以下にリンクされている各ベンダー提供のデータと共に、[Azure Sentinel を STIX/TAXII 脅威インテリジェンス フィードに接続する](connect-threat-intelligence-taxii.md)手順に従います。 コネクタで使用するための必要なデータを入手するためには、適宜ベンダーに直接問い合わせてください。
 
 ### <a name="anomali-limo"></a>Anomali Limo
 
@@ -69,7 +71,7 @@ TAXII 脅威インテリジェンス フィードに接続するには、以下�
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>統合された脅威インテリジェンス プラットフォーム製品
 
-脅威インテリジェンス プラットフォーム (TIP) フィードに接続するには、手順に従って[脅威インテリジェンス プラットフォーム](connect-threat-intelligence.md#connect-azure-sentinel-to-your-threat-intelligence-platform) フィードを Azure Sentinel に接続します。 この手順の第 2 部では、TIP ソリューションに情報を入力する必要があります。 詳細については、以下のリンクを参照してください。
+脅威インテリジェンス プラットフォーム (TIP) フィードに接続するには、手順に従って[脅威インテリジェンス プラットフォームを Azure Sentinel に接続](connect-threat-intelligence-tip.md)します。 この手順の第 2 部では、TIP ソリューションに情報を入力する必要があります。 詳細については、以下のリンクを参照してください。
 
 ### <a name="agari-phishing-defense-and-brand-protection"></a>Agari のフィッシング対策とブランド保護
 
@@ -85,7 +87,7 @@ TAXII 脅威インテリジェンス フィードに接続するには、以下�
 
 ### <a name="eclecticiq-platform"></a>EclecticIQ Platform
 
-- [EclecticIQ Platform](https://www.eclecticiq.com/platform/) に関する詳細情報。
+- EclecticIQ Platform は Azure Sentinel と統合され、脅威の検出、ハンティング、対応を強化します。 この双方向統合の[ベネフィットとユース ケース](https://www.eclecticiq.com/resources/azure-sentinel-and-eclecticiq-intelligence-center)について確認してください。
 
 ### <a name="groupib-threat-intelligence-and-attribution"></a>GroupIB の脅威インテリジェンスと帰属特定
 
@@ -128,7 +130,7 @@ TAXII 脅威インテリジェンス フィードに接続するには、以下�
 
 ### <a name="reversinglabs-titaniumcloud"></a>ReversingLabs TitaniumCloud
 
-- [ReversingLabs](https://www.reversinglabs.com/products/file-reputation-service) のインシデント エンリッチメント処理プレイブックを Azure Sentinel [GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Enrich-SentinelIncident-ReversingLabs-File-Information)から探して有効にします。
+- [ReversingLabs](https://www.reversinglabs.com/products/file-reputation-service) のインシデント エンリッチメント処理プレイブックを Azure Sentinel [GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/ReversingLabs/Playbooks/Enrich-SentinelIncident-ReversingLabs-File-Information)から探して有効にします。
 - ReversingLabs Intelligence ロジック アプリ [コネクタのドキュメント](/connectors/reversinglabsintelligence/)を参照してください。
 
 ### <a name="riskiq-passive-total"></a>RiskIQ Passive Total
@@ -146,5 +148,5 @@ TAXII 脅威インテリジェンス フィードに接続するには、以下�
 
 このドキュメントでは、Azure Sentinel に脅威インテリジェンス プロバイダーを接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
+- [データと潜在的な脅威を可視化](get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。

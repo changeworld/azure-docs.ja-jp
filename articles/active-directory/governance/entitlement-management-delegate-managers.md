@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a33170fecab6efbe86568eb81b87637ca5da24
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 95c875c1a4ded86686120bb4de67904ef69a53c6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714298"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286553"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージ管理者にアクセス ガバナンスを委任する
 
@@ -35,6 +35,8 @@ ms.locfileid: "109714298"
 この動画では、カタログの所有者からアクセス パッケージ管理者にアクセス ガバナンスを委任する方法を概説します。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq08]
+
+カタログ所有者ロールとアクセス パッケージ マネージャー ロールに加えて、カタログ閲覧者ロールにユーザーを追加することもできます。これにより、カタログへの表示専用アクセスが付与されます。また、アクセス パッケージ割り当てマネージャー ロールにユーザーを追加することもできます。これにより、ユーザーは割り当てを変更できますが、パッケージやポリシーにはアクセスすることはできません。
 
 ## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>カタログ所有者としてアクセス パッケージ管理者に委任する
 

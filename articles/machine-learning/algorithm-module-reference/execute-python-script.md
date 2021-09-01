@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.custom: devx-track-python, has-adal-ref
+ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 06/15/2021
-ms.openlocfilehash: d4ac33619d653b99de32dcd86cf226f217382f43
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 668e44b8192ef5dcfde4e932741f81ecbc35b5ca
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429765"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236177"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 

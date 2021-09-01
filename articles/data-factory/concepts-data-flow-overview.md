@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 05/20/2021
-ms.openlocfilehash: 8e10ede945f60ee693738ab7230a2c50b5bcb972
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 1d4e8ad4fd7d0b5690f506e9db7f1043c8f21045
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638639"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039092"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory のマッピング データ フロー
 
@@ -156,7 +156,7 @@ ms.locfileid: "122638639"
 | 米国中南部  | |
 | インド南部 | |
 | 東南アジア    | ✓ |
-| スイス北部 |   |
+| スイス北部 | ✓ |
 | スイス西部 | |
 | アラブ首長国連邦中部 | |
 | アラブ首長国連邦北部 | ✓ |

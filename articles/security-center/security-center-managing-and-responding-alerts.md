@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: df8b4534c6da446bd4ceeb18acf70036cd63f83c
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: dbed9883fbddc2efdaaa8ad252578afa928167bd
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061184"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237247"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Security Center でのセキュリティ アラートの管理と対応
 
@@ -46,7 +46,7 @@ Security Center によってアラートが生成される方法の概要につ�
 
 1. アラートの一覧をフィルター処理するには、関連するフィルターを選択します。 必要に応じて、 **[フィルターの追加]** オプションを使用して、さらにフィルターを追加することもできます。
 
-    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="アラート ビューへのフィルターの追加" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="アラート ビューへのフィルターの追加。" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
 
     この一覧は、選択したフィルター オプションに応じて更新されます。 フィルター処理はとても有益な機能です。 たとえば、システム内の潜在的な違反を調査するために、過去 24 時間以内に発生したセキュリティの警告を確認することができます。
 
@@ -55,7 +55,7 @@ Security Center によってアラートが生成される方法の概要につ�
 
 1. **[セキュリティ アラート]** リストから、アラートを選択します。 作業ウィンドウが開き、アラートとその影響を受けたすべてのリソースの説明が表示されます。 
 
-    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="セキュリティ アラートのミニ詳細ビュー":::
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="セキュリティ アラートのミニ詳細ビュー。":::
 
     > [!TIP]
     > この作業ウィンドウを開いた状態で、キーボードの上矢印と下矢印を使用して、アラートの一覧をすばやく確認できます。
@@ -66,7 +66,7 @@ Security Center によってアラートが生成される方法の概要につ�
 
     右側のペインには、問題の調査に役立つアラートの詳細が含まれている **[アラートの詳細]** タブがあります。IP アドレス、ファイル、プロセスなど。
      
-    ![セキュリティのアラートに対処する方法の推奨事項](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
+    ![セキュリティ アラートに対処する方法の推奨事項。](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
     また、右側のペインには **[アクションの実行]** タブがあります。このタブを使用して、セキュリティ アラートに関するその他のアクションを実行します。 次のようなアクションがあります。
     - *[Mitigate the threat]\(脅威の軽減\)* - このセキュリティ アラートに対する手動の修復手順を提供します
@@ -74,7 +74,7 @@ Security Center によってアラートが生成される方法の概要につ�
     - *[Trigger automated response]\(自動応答のトリガー\)* - このセキュリティ アラートへの応答としてロジック アプリをトリガーするオプションを提供します
     - *[Suppress similar alerts]\(類似のアラートの抑制\)* - 組織に関連しないアラートの場合、同様の特性を持つ今後のアラートを抑制するオプションを提供します
 
-    ![[アクションの実行] タブ](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
+    ![[アクションの実行] タブ。](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
 
 
