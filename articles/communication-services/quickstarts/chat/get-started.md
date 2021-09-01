@@ -5,17 +5,17 @@ description: このクイックスタートでは、Communication Services チ�
 author: fanche
 manager: phans
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: dfe1e6d0d357eb77a8000123c6e9d5de606dafe9
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: c05bc5c332be311de0cafc180f16651e4d83406f
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113369"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967897"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>クイック スタート:チャットをアプリに追加する
 

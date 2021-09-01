@@ -8,19 +8,19 @@ ms.subservice: core
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.topic: how-to
-ms.custom: how-to
-ms.openlocfilehash: 93365304e958bfabaf3067ab58312a9b78745edb
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.custom: how-to, devplatv2
+ms.openlocfilehash: 11fa5a3057f50a354058141ed688d8c55b4345d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854668"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739136"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>オンライン エンドポイントの安全なロールアウト (プレビュー)
 
-運用環境に既存のモデルがデプロイされているとき、新しいバージョンのモデルをデプロイしたいとします。 中断なく新しい ML モデルをロールアウトするにはどうすればよいのでしょうか。 そのようなニーズにちょうど適合するのがブルーグリーン デプロイ、つまり新しいバージョンの Web サービスを運用環境に導入する際に、最初は変更をユーザー (または要求) のごく一部にロールアウトしてから全体にロールアウトする手法です。 
+運用環境に既存のモデルがデプロイされているとき、新しいバージョンのモデルをデプロイしたいとします。 中断なく新しい ML モデルをロールアウトするにはどうすればよいのでしょうか。 そのようなニーズにちょうど適合するのがブルーグリーン デプロイ、つまり新しいバージョンの Web サービスを運用環境に導入する際に、最初は変更をユーザー (または要求) のごく一部にロールアウトしてから全体にロールアウトする手法です。 この記事では、オンライン エンドポイントを使用していることを前提としています。詳細については、「[Azure Machine Learning エンドポイント (プレビュー) とは](concept-endpoints.md)」を参照してください。
 
 この記事では、次の内容について説明します。
 
@@ -37,7 +37,7 @@ ms.locfileid: "111854668"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning を使用するためには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure Machine Learning を使用するためには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 * Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[2.0 CLI (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
 
@@ -145,3 +145,15 @@ az ml endpoint show --name $ENDPOINT_NAME
 デプロイを使用する予定がなければ、次のようにして削除してください。
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
+
+
+## <a name="next-steps"></a>次のステップ
+- [REST を使用してモデルをデプロイする (プレビュー)](how-to-deploy-with-rest.md)
+- [スタジオでマネージド オンライン エンドポイント (プレビュー) を作成および使用する](how-to-use-managed-online-endpoint-studio.md)
+- [チュートリアル: マネージド オンライン エンドポイントとシステム マネージド ID (プレビュー) を使用して Azure リソースにアクセスする](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)
+- [マネージド オンライン エンドポイント (プレビュー) を監視する](how-to-monitor-online-endpoints.md)
+- [Azure Machine Learning を使用するリソースのクォータの管理と引き上げ](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)
+- [Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する](how-to-view-online-endpoints-costs.md)
+- [マネージド オンライン エンドポイント SKU の一覧 (プレビュー)](reference-managed-online-endpoints-vm-sku-list.md)
+- [マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)](how-to-troubleshoot-managed-online-endpoints.md)
+- [マネージド オンライン エンドポイント (プレビュー) YAML リファレンス](reference-yaml-endpoint-managed-online.md)

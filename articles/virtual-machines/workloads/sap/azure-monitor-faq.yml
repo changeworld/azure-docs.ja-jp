@@ -7,12 +7,12 @@ metadata:
   ms.topic: article
   ms.date: 07/08/2020
   ms.author: radeltch
-  ms.openlocfilehash: ac0646f0fca867402477acac9bca62753f275fdd
-  ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+  ms.openlocfilehash: 903d2e2b2413f4ad92a6f0fb88871f4410e464b4
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114393614"
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122967151"
 title: Azure Monitor for SAP Solutions に関する FAQ (プレビュー)
 summary: "## <a name=\"frequently-asked-questions\"></a>よく寄せられる質問\n\nこの記事では、Azure Monitor for SAP Solutions に関してよく寄せられる質問 (FAQ) に対する回答を示します。  \n"
 sections:
@@ -82,4 +82,4 @@ sections:
   - question: >
       SAP NetWeaver プロバイダーを設定するためのシステム構成を実行した後、SAP インスタンスを再起動する必要はありますか?
     answer: "はい。SAP 構成の変更によってメソッドの保護を解除した場合は、それぞれの SAP システムを再起動して、構成の変更が確実に更新されるようにする必要があります。  \n"
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nAzure Monitor for SAP Solutions の詳細について学習します。\n\n> [!div class=\"nextstepaction\"]\n> [Azure Monitor for SAP Solutions](azure-monitor-overview.md)"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nAzure Monitor for SAP Solutions の詳細について学習します。\n\n> [!div class=\"nextstepaction\"]\n> [SAP on Azure の監視](monitor-sap-on-azure.md)"

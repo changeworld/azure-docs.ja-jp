@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4abe8e07a8311bab9b6e98746d0fc05bd2e89395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71e84b72af5776b41a0f0565910a7c791f97d1c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743725"
 ---
 # <a name="advanced-development-with-azure-percept"></a>Azure Percept を使用した高度な開発
 

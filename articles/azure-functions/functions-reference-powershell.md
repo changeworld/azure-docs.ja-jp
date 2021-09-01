@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 9877f50fe7bb06cb33a38f8ee89fa09ad12c0693
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 297d8af86f22cc588060cb90f327ad6dd335437d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672480"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741387"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -393,6 +393,8 @@ Visual Studio Code や Azure Functions Core Tools などのツールを使用し
 
 現在のバージョンを確認するには、任意の関数から `$PSVersionTable` を出力します。
 
+Azure Functions のランタイム サポート ポリシーの詳細については、こちらの[記事](./language-support-policy.md)を参照してください。
+
 ### <a name="running-local-on-a-specific-version"></a>特定のバージョンでのローカルな実行
 
 ローカルで実行する場合、Azure Functions ランタイムは既定で PowerShell Core 6 を使用します。 代わりに PowerShell 7 を使用してローカルで実行するには、プロジェクト ルートの local.setting.json ファイルの `Values` 配列に設定 `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"` を追加する必要があります。 PowerShell 7 でローカルに実行する場合、local.settings.json ファイルは次の例のようになります。 
@@ -411,6 +413,7 @@ Visual Studio Code や Azure Functions Core Tools などのツールを使用し
 ### <a name="changing-the-powershell-version"></a>PowerShell のバージョンの変更
 
 PowerShell Core 6 から PowerShell 7 にアップグレードできるようにするには、関数アプリがバージョン 3.x で実行されている必要があります。 これを行う方法については、「[現在のランタイム バージョンの表示と更新](set-runtime-version.md#view-and-update-the-current-runtime-version)」を参照してください。
+
 
 関数アプリで使用される PowerShell のバージョンを変更するには、次のステップに従います。 これは、Azure portal または PowerShell を使用して行うことができます。
 
@@ -568,7 +571,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-ローカルで実行する場合、アプリ設定は [local.settings.json](functions-run-local.md#local-settings-file) プロジェクト ファイルから読み取られます。
+ローカルで実行する場合、アプリ設定は [local.settings.json](functions-develop-local.md#local-settings-file) プロジェクト ファイルから読み取られます。
 
 ## <a name="concurrency"></a>コンカレンシー
 

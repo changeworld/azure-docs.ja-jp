@@ -1,14 +1,14 @@
 ---
 title: 委任されたリソースを大規模に監視する
 description: Azure Lighthouse は、すべての顧客テナントで、スケーラブルな方法により、Azure Monitor のログを使用するのに役立ちます。
-ms.date: 05/10/2021
+ms.date: 08/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 29f78eb677b17193876ec45250e639cb9086cf6b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 3424078b00aef569f054d6d3c02382f4bd071a91
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082309"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325068"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
@@ -31,7 +31,7 @@ ms.locfileid: "112082309"
 Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/logs/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md)、[Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) のいずれかを使用して作成できます。
 
 > [!IMPORTANT]
-> すべてのワークスペースが顧客テナントに作成されている場合でも、管理テナントのサブスクリプションには、Microsoft.Insights リソース プロバイダーも登録する必要があります。 管理テナントに既存の Azure サブスクリプションがない場合は、次の PowerShell コマンドを使用してリソース プロバイダーを手動で登録できます。
+> すべてのワークスペースが顧客テナントに作成されている場合、管理テナントのサブスクリプションには、Microsoft.Insights リソース プロバイダーも[登録する](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)必要があります。 管理テナントに既存の Azure サブスクリプションがない場合は、次の PowerShell コマンドを使用してリソース プロバイダーを手動で登録できます。
 >
 > ```powershell
 > $ManagingTenantId = "your-managing-Azure-AD-tenant-id"
@@ -43,7 +43,6 @@ Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/logs
 > New-AzADServicePrincipal -ApplicationId 1215fb39-1d15-4c05-b2e3-d519ac3feab4
 > New-AzADServicePrincipal -ApplicationId 6da94f3c-0d67-4092-a408-bb5d1cb08d2d 
 > ```
->
 
 ## <a name="deploy-policies-that-log-data"></a>データのログ記録ポリシーをデプロイする
 
@@ -56,6 +55,24 @@ Log Analytics ワークスペースを作成したら、診断データが各テ
 ## <a name="analyze-the-gathered-data"></a>生成されたデータを分析する
 
 ポリシーをデプロイすると、各顧客テナントに作成した Log Analytics ワークスペースにデータがログされます。 管理下にある全顧客の分析情報を入手したければ、[Azure Monitor Workbooks](../../azure-monitor/visualize/workbooks-overview.md) などのツールを使用して、複数のデータ ソースから情報を収集し、分析してください。
+
+## <a name="query-data-across-customer-workspaces"></a>顧客ワークスペース間でデータのクエリを実行する
+
+複数のワークスペースを含むユニオンを作成することで、異なるカスタマー テナント内の Log Analytics ワークスペース全体のデータを取得する[ログ クエリ](../../azure-monitor/logs/log-query-overview.md)を実行できます。 TenantID 列を含めることで、どの結果がどのテナントに属しているのかを確認することができます。
+
+次のクエリ例を実行すると、2 つの異なる顧客テナントのワークスペースにまたがる AzureDiagnostics テーブルにユニオンが作成されます。 結果には、Category、ResourceGroup、TenantID の各列が表示されます。
+
+``` Kusto
+union AzureDiagnostics,
+workspace("WS-customer-tenant-1").AzureDiagnostics,
+workspace("WS-customer-tenant-2").AzureDiagnostics
+| project Category, ResourceGroup, TenantId
+```
+
+複数の Log Analytics ワークスペースにわたって実行できるその他のクエリの例については、[Azure Monitor で複数のリソースにわたってクエリを実行する](../../azure-monitor/logs/cross-workspace-query.md)方法に関する記事を参照してください。
+
+> [!IMPORTANT]
+> Log Analytics ワークスペースからデータのクエリを実行するために使用する Automation アカウントを使用する場合、その Automation アカウントをワークスペースと同じテナント内に作成する必要があります。
 
 ## <a name="view-alerts-across-customers"></a>顧客間のアラートを表示する
 
@@ -78,5 +95,5 @@ alertsmanagementresources
 ## <a name="next-steps"></a>次のステップ
 
 - GitHub の「[ドメインごとのアクティビティ ログ](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain)」ブックを試してみます。
-- 複数の Log Analytics ワークスペースに [Update Management ログを問い合わせる](../../automation/update-management/query-logs.md)ことで、パッチ コンプライアンス レポートを追跡するこの [MVP ビルト サンプル ワークブック](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)を試してみます。 
+- 複数の Log Analytics ワークスペースに [Update Management ログを問い合わせる](../../automation/update-management/query-logs.md)ことで、パッチ コンプライアンス レポートを追跡するこの [MVP ビルト サンプル ワークブック](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)を試してみます。
 - 他の[テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd70bccde30c2b844cfa6188a3fb06a075558a91
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e83b7b8fd3e1667dbf6f402be2f7dd52a6381340
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143001"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965721"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -64,7 +64,7 @@ VPN または ExpressRoute 経由でのサイト対サイト接続は運用環�
 - Azure PowerShell コマンドレット
 - Azure CLI
 
-[SAP Cloud platform](https://cal.sap.com/) を使って Azure VM サービスに完全にインストールされた SAP HANA プラットフォームをデプロイすることもできます。 インストール プロセスについては、「[Azure に SAP S/4HANA または BW/4HANA をデプロイする](./cal-s4h.md)」をご覧いただくか、[こちら](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)でリリースされている自動化スクリプトを参照してください。
+[SAP Cloud platform](https://cal.sap.com/) を使って Azure VM サービスに完全にインストールされた SAP HANA プラットフォームをデプロイすることもできます。 インストール プロセスについては、「[Azure に SAP S/4HANA または BW/4HANA をデプロイする](./cal-s4h.md)」をご覧いただくか、[GitHub](https://github.com/AzureCAT-GSI/SAP-HANA-ARM) でリリースされている自動化スクリプトを参照してください。
 
 >[!IMPORTANT]
 > M208xx_v2 VM を使用するには、Azure VM イメージ ギャラリーから Linux イメージを選択するときに注意する必要があります。 詳細については、[メモリ最適化された仮想マシンのサイズ](../../mv2-series.md)に関する記事をお読みください。
@@ -143,7 +143,7 @@ SAP HANA スケールアウトの VM ノードの基本構成は、次のよう�
 - その他のディスク ボリュームはすべて、異なるノード間では共有されず、NFS に基づきません。 非共有の **/hana/data** および **/hana/log** を使用したスケールアウト HANA インストールのインストール構成と手順については、このドキュメントで後述します。 使用できる HANA 認定ストレージについては、記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」を確認してください。
 
 
-ボリュームまたはディスクのサイズを設定するときに、ワーカー ノードの数によって決まる必要なサイズについて、[SAP HANA TDI ストレージ要件](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)に関するドキュメントを確認する必要があります。 このドキュメントには、ボリュームの必要な容量を把握するために適用する必要がある数式が記載されています。
+ボリュームまたはディスクのサイズを設定するときに、ワーカー ノードの数によって決まる必要なサイズについて、[SAP HANA TDI ストレージ要件](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf)に関するドキュメントを確認する必要があります。 このドキュメントには、ボリュームの必要な容量を把握するために適用する必要がある数式が記載されています。
 
 スケールアウト SAP HANA VM の単一ノード構成の図に示されているその他の設計基準として、VNet またはそれ以上に優れたサブネット構成があります。 SAP では、HANA ノード間の通信から、クライアント/アプリケーションに向かうトラフィックを分離することを強く推奨しています。 図に示すように、2 つの異なる vNIC を VM にアタッチすることで、この目的が達成されます。 2 つの vNIC は別々のサブネットにあり、2 つの異なる IP アドレスを備えています。 NSG またはユーザー定義のルートを使用して規則をルーティングすることで、トラフィックの流れを制御します。
 
@@ -211,7 +211,7 @@ Azure IaaS では、専用の VM でのみ DT 2.0 がサポートされます。
 - M64-32ms 
 - E32sv3 
 
-VM の種類の説明については、[こちら](../../sizes-memory.md)を参照してください。
+VM の種類の説明については、「[Azure VM のサイズ - メモリ](../../sizes-memory.md)」を参照してください。
 
 コストを節約するために "ウォーム" データをオフロードするというのが、DT 2.0 の基本的な考え方の場合、対応する VM のサイズを使用するのが妥当です。 可能な組み合わせに関する厳密な規則はありません。 特定の顧客のワークロードによって異なります。
 
@@ -232,7 +232,7 @@ SAP HANA 認定の M シリーズ VM とサポート対象の DT 2.0 VM (M64-32m
 
 専用の VM 上に DT 2.0 をインストールするには、DT 2.0 VM と、最小 10 Gb の SAP HANA VM の間にネットワーク スループットが必要です。 そのため、同じ Azure Vnet 内にすべての VM を配置し、Azure 高速ネットワークを有効にすることが必須です。
 
-Azure 高速ネットワークの詳細については、[こちら](../../../virtual-network/create-vm-accelerated-networking-cli.md)を参照してください。
+Azure 高速ネットワークの詳細については、[Azure CLI での高速ネットワークを使用する Azure VM の作成](../../../virtual-network/create-vm-accelerated-networking-cli.md)に関するページを参照してください。
 
 ### <a name="vm-storage-for-sap-hana-dt-20"></a>SAP HANA DT 2.0 用の VM ストレージ
 
@@ -243,9 +243,9 @@ DT 2.0 のベスト プラクティス ガイダンスに従い、ディスク I
 
 DT 2.0 VM に複数の Azure ディスクをアタッチし、OS レベルでソフトウェア RAID (ストライピング) を作成して、VM あたりのディスク スループットの上限に達するようにする必要があります。 この点に関しては、単一の Azure ディスクで VM の上限に達するスループットを提供することはできません。 DT 2.0 を実行するには、Azure Premium Storage が必須です。 
 
-- 利用可能な Azure ディスクの種類の詳細については、[こちら](../../disks-types.md)を参照してください。
-- mdadm でのソフトウェア RAID の作成の詳細については、[こちら](/previous-versions/azure/virtual-machines/linux/configure-raid)を参照してください。
-- 最大スループットのストライプ ボリュームを作成するための LVM の構成の詳細については、[こちら](/previous-versions/azure/virtual-machines/linux/configure-lvm)を参照してください。
+- 使用可能な Azure ディスクの種類の詳細については、「[Azure IaaS VM 用のディスクの種類の選択 - マネージド ディスク](../../disks-types.md)」ページを参照してください
+- mdadm によるソフトウェア RAID の作成の詳細については、「[Linux VM でのソフトウェア RAID の構成](/previous-versions/azure/virtual-machines/linux/configure-raid)」ページを参照してください
+- 最大スループットのストライプ ボリュームを作成するための LVM の構成の詳細については、「[Linux を実行する仮想マシンで LVM を構成する](/previous-versions/azure/virtual-machines/linux/configure-lvm)」を参照してください
 
 サイズの要件に応じて、VM の最大スループットに達するようにするためのさまざまなオプションがあります。 ここでは、VM スループットの上限に達するように DT 2.0 VM の種類ごとに可能なデータ ボリューム ディスク構成を示します。 E32sv3 VM は、より小規模なワークロードのエントリ レベルと見なす必要があります。 十分な速度でないことがわかった場合、VM のサイズを M64-32ms に変更する必要がある可能性があります。
 M64-32ms VM のメモリは多いため、IO 読み込みでは、特に読み取り集中型のワークロードの上限に達しない場合があります。 そのため、顧客固有のワークロードによっては、ストライプ セット内の少ないディスクで十分な場合があります。 しかし、安全策として、最大スループットを保証するために次のディスク構成が選択されています。
@@ -259,7 +259,7 @@ M64-32ms VM のメモリは多いため、IO 読み込みでは、特に読み�
 
 特に読み取り負荷の高いワークロードの場合、IO パフォーマンスを高め、データベース ソフトウェアのデータ ボリュームに関する推奨事項に従って、Azure ホスト キャッシュの "読み取り専用" を有効にすることができます。 一方、トランザクション ログの場合は、Azure ホスト ディスク キャッシュを "なし" にする必要があります。 
 
-ログ ボリュームのサイズについては、データ サイズの 15% のヒューリスティックを開始点とすることをお勧めします。 ログ ボリュームの作成は、コストとスループットの要件に応じて、さまざまな Azure ディスクの種類を使用して行うことができます。 ログ ボリュームの場合、高い I/O スループットが必要です。  VM の種類として M64-32ms を使用している場合は、[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を有効にすることが必須です。 Azure 書き込みアクセラレータにより、トランザクション ログに最適なディスク書き込み待ち時間が提供されます (M シリーズでのみ利用可能)。 VM の種類ごとのディスクの最大数など、考慮すべきいくつかの項目があります。 書き込みアクセラレータの詳細については、[こちら](../../how-to-enable-write-accelerator.md)を参照してください。
+ログ ボリュームのサイズについては、データ サイズの 15% のヒューリスティックを開始点とすることをお勧めします。 ログ ボリュームの作成は、コストとスループットの要件に応じて、さまざまな Azure ディスクの種類を使用して行うことができます。 ログ ボリュームの場合、高い I/O スループットが必要です。  VM の種類として M64-32ms を使用している場合は、[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を有効にすることが必須です。 Azure 書き込みアクセラレータにより、トランザクション ログに最適なディスク書き込み待ち時間が提供されます (M シリーズでのみ利用可能)。 VM の種類ごとのディスクの最大数など、考慮すべきいくつかの項目があります。 書き込みアクセラレータの詳細については、「[Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)」ページを参照してください
 
 
 ログ ボリュームのサイズ変更に関するいくつかの例を次に示します。

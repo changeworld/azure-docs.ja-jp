@@ -2,18 +2,19 @@
 title: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
 description: この記事では、SSIS パッケージの実行アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 07/20/2020
-ms.openlocfilehash: 40e7d5c11a2ebc62e59c3d5d20dfefe18a33f9a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/04/2021
+ms.openlocfilehash: 3b8c15a764f3a196232e43ffd8d7fd7fe373355c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391611"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739461"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 
@@ -37,9 +38,9 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
 
    ![Data Factory ホーム ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
-   **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。 
+   ホーム ページで **[Orchestrate]\(調整\)** を選択します。 
 
-   ![開始ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
+   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. **[アクティビティ]** ツールボックスで **[全般]** を展開します。 次に、**SSIS パッケージの実行** アクティビティをパイプライン デザイナー画面にドラッグします。 
 

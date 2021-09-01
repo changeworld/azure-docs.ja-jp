@@ -1,19 +1,20 @@
 ---
-title: Azure Video Analyzer for Media (旧称 Video Indexer) が利用可能なリージョン - Azure
-titleSuffix: Azure Video Analyzer for Media (formerly Video Indexer)
+title: Azure Video Analyzer for Media (旧称 Video Indexer) が利用可能なリージョン
+titleSuffix: Azure Video Analyzer for Media
 description: この記事では、Azure Video Analyzer for Media (旧称 Video Indexer) が利用可能な Azure リージョンについて説明します。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 09/14/2020
 ms.author: juliako
-ms.openlocfilehash: 900a8b1b8fdc35997e0ad7ee09430f4eb33a4d9e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1db75ea3ba67d4e8f0551495274ec3fff38e29b4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387616"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119170"
 ---
 # <a name="azure-regions-in-which-video-analyzer-for-media-exists"></a>Video Analyzer for Media が存在する Azure リージョン
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/15/2020
+ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
-ms.custom: aaddev
-ms.openlocfilehash: eb9a6e1f3044492b09dac3fb3168a9bd26aeff0f
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 5b490ff71253739779089da92c87532f7abbdbcc
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494614"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418529"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
@@ -118,23 +118,91 @@ SSO プラグインは、次の条件を満たすデバイスによって自動�
 
 Microsoft ID プラットフォーム ライブラリを使用しないアプリ用の Microsoft Enterprise SSO プラグインを構成するには、次のパラメーターを使用します。
 
-特定のアプリの一覧を指定するには、次のパラメーターを使用します。
+#### <a name="enable-sso-for-all-managed-apps"></a>すべてのマネージド アプリに対して SSO を有効にする
+
+- **キー**: `Enable_SSO_On_All_ManagedApps`
+- **型**: `Integer`
+- **値**: 1 または 0。
+
+このフラグがオンの場合 (その値は `1` に設定されます)、`AppBlockList` に含まれていないすべての MDM マネージド アプリが SSO に参加する可能性があります。
+
+#### <a name="enable-sso-for-specific-apps"></a>SSO を特定のアプリで有効にする
 
 - **キー**: `AppAllowList`
 - **型**: `String`
 - **値**: SSO への参加が許可されているアプリケーションのアプリケーション バンドル ID のコンマ区切りの一覧。
 - **例**: `com.contoso.workapp, com.contoso.travelapp`
 
-プレフィックスの一覧を指定するには、次のパラメーターを使用します。
+>[!NOTE]
+> Safari と Safari View Service は、既定で SSO に参加できます。 AppBlockList に Safari と Safari View Service のバンドル ID を追加することで、SSO に参加"*しない*"構成を行えます。 iOS バンドル ID : [com.apple.mobilesafari, com.apple.SafariViewService] , macOS BundleID : com.apple.Safari
+
+#### <a name="enable-sso-for-all-apps-with-a-specific-bundle-id-prefix"></a>SSO を特定のバンドル ID プレフィックスを持つすべてのアプリに対して有効にする
 - **キー**: `AppPrefixAllowList`
 - **型**: `String`
 - **値**: SSO への参加が許可されているアプリケーションのアプリケーション バンドル ID プレフィックスのコンマ区切りの一覧です。 このパラメーターによって、特定のプレフィックスで始まるすべてのアプリを SSO に参加させることができます。
 - **例**: `com.contoso., com.fabrikam.`
 
-MDM 管理者が SSO への参加を許可している[同意済みアプリ](./application-consent-experience.md)は、エンド ユーザーのトークンをサイレントで取得できます。 そのため、許可リストには信頼されたアプリケーションのみを追加してください。 
+#### <a name="disable-sso-for-specific-apps"></a>SSO を特定のアプリで無効にする
 
->[!NOTE]
-> SSO に参加できるアプリの一覧に、MSAL または ASWebAuthenticationSession を使用するアプリケーションを追加する必要はありません。 これらのアプリケーションは既定で有効になっています。 
+- **キー**: `AppBlockList`
+- **型**: `String`
+- **値**: SSO への参加が許可されていないアプリケーションのアプリケーション バンドル ID のコンマ区切りの一覧。
+- **例**: `com.contoso.studyapp, com.contoso.travelapp`
+
+Safari または Safari View Service の SSO を"*無効*"にするには、バンドル ID を `AppBlockList` に追加して明示的に行う必要があります。 
+
+- iOS: `com.apple.mobilesafari`、`com.apple.SafariViewService`
+- macOS: `com.apple.Safari`
+
+#### <a name="enable-sso-through-cookies-for-a-specific-application"></a>特定のアプリケーションに対して Cookie を使用して SSO を有効にする
+
+高度なネットワーク設定を持ついくつかのアプリで SSO が有効になっていると、予期しない問題が発生する可能性があります。 たとえば、ネットワーク要求が取り消されたか、中断されたことを示すエラーが表示される場合があります。
+
+ユーザーがアプリケーションへサインインできず、他の設定からそれを有効にした後でも問題がある場合は、それを `AppCookieSSOAllowList` に追加して問題を解決してみてください。
+
+- **キー**: `AppCookieSSOAllowList`
+- **型**: `String`
+- **値**: SSO への参加が許可されているアプリケーションのアプリケーション バンドル ID プレフィックスのコンマ区切りの一覧です。 一覧に含まれるプレフィックスで始まるすべてのアプリが、SSO への参加を許可されます。
+- **例**: `com.contoso.myapp1, com.fabrikam.myapp2`
+
+**その他の要件**: `AppCookieSSOAllowList`を使用してアプリケーションの SSO を有効にするには、バンドル ID プレフィックス `AppPrefixAllowList` も追加する必要があります。
+
+この構成は、予期しないサインイン エラーが発生したアプリケーションに対してのみ試してください。 
+
+#### <a name="summary-of-keys"></a>キーの概要
+
+| キー | 種類 | 値 |
+|--|--|--|
+| `Enable_SSO_On_All_ManagedApps` | Integer | `1` はすべてのマネージド アプリで SSO を有効にします。`0` はすべてのマネージド アプリで SSO を無効にします。 |
+| `AppAllowList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されているアプリケーションのバンドル ID。 |
+| `AppBlockList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されていないアプリケーションのバンドル ID。 |
+| `AppPrefixAllowList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されているアプリケーションのバンドル ID プレフィックス。 |
+| `AppCookieSSOAllowList` | String<br/>*(コンマ区切りのリスト)* | SSO に参加することが許可されているが、特別なネットワーク設定を使用し、他の設定を使用した SSO に問題があるアプリケーションのバンドル ID プレフィックス。 `AppCookieSSOAllowList` に追加するアプリは、`AppPrefixAllowList` にも追加する必要があります。 |
+
+#### <a name="settings-for-common-scenarios"></a>一般的なシナリオの設定
+
+- *シナリオ*: SSO をほとんどの管理対象アプリケーションで有効にしたいが、すべてではない。
+
+    | キー | 値 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppBlockList` | SSO に参加できないようにしたいアプリのバンドル ID (コンマ区切りリスト)。 |
+
+- *シナリオ* SSO を Safari で無効にしたい (既定では有効) が、SSO をすべてのマネージド アプリで有効にしたい。
+
+    | キー | 値 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppBlockList` | SSO に参加できないようにしたい Safari アプリのバンドル ID (コンマ区切りリスト)。<br/><li>iOS の場合: `com.apple.mobilesafari`、`com.apple.SafariViewService`<br/><li>macOS の場合: `com.apple.Safari` |
+
+- *シナリオ*: SSO をすべてのマネージド アプリといくつかの非マネージド アプリで有効にしたいが、SSO を他のいくつかのアプリで無効にしたい。
+
+    | キー | 値 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppAllowList` | SSO の場合に参加できるようにしたいアプリのバンドル ID (コンマ区切りリスト)。 |
+    | `AppBlockList` | SSO に参加できないようにしたいアプリのバンドル ID (コンマ区切りリスト)。 |
+
 
 ##### <a name="find-app-bundle-identifiers-on-ios-devices"></a>iOS デバイスでのアプリ バンドル ID の確認
 
@@ -192,21 +260,6 @@ Microsoft Enterprise SSO プラグインでは、許可されたアプリケー�
 - **値**: 1 または 0
 
 すべてのアプリで一貫したエクスペリエンスを得るには、このフラグを有効にすることをお勧めします。 既定では無効になっています。 
-
-#### <a name="enable-sso-through-cookies-for-a-specific-application"></a>特定のアプリケーションに対して Cookie を使用して SSO を有効にする
-
-いくつかのアプリは SSO 拡張機能と互換性がない場合があります。 特に、高度なネットワーク設定を持つアプリで SSO が有効になっていると、予期しない問題が発生する可能性があります。 たとえば、ネットワーク要求が取り消されたか、中断されたことを示すエラーが表示される場合があります。 
-
-「[MSAL を使用しないアプリケーション](#applications-that-dont-use-msal)」で説明されている方法を使用してのサインインで問題が発生した場合は、別の構成を試してみてください。 プラグインを構成するには、次のパラメーターを使用します。
-
-- **キー**: `AppCookieSSOAllowList`
-- **型**: `String`
-- **値**: SSO への参加が許可されているアプリケーションのアプリケーション バンドル ID プレフィックスのコンマ区切りの一覧です。 一覧に含まれるプレフィックスで始まるすべてのアプリが、SSO への参加を許可されます。
-- **例**: `com.contoso.myapp1, com.fabrikam.myapp2`
-
-この設定を使用して SSO を有効にしたアプリケーションを、`AppCookieSSOAllowList` と `AppPrefixAllowList` の両方に追加する必要があります。
-
-この構成は、予期しないサインイン エラーが発生したアプリケーションに対してのみ試してください。 
 
 #### <a name="use-intune-for-simplified-configuration"></a>Intune を使用して構成を簡略化する
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: how-to
-ms.date: 04/28/2021
+ms.topic: conceptual
+ms.date: 07/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 775cb6f7cfc19b0009fc92cc5afbd3ac383b3ea3
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 73cb44dd3564f56f8edd5304a344a50f1e4b5c9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663861"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740759"
 ---
 # <a name="virtual-machines-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の仮想マシン
 
@@ -53,8 +53,9 @@ VM をデプロイすることを計画している場合は、VM のサイズ�
 |マスター VM|4 コア、4 GB RAM|
 |ワーカー VM|12 コア、32 GB RAM|
 
-
 デバイスで使用可能なコンピューティングとメモリについては、使用しているデバイス モデルの「[コンピューティングとメモリの仕様](azure-stack-edge-gpu-technical-specifications-compliance.md#compute-and-memory-specifications)」を参照してください。 
+
+GPU 仮想マシンの場合は、[NCasT4-v3 シリーズの VM サイズ](azure-stack-edge-gpu-virtual-machine-sizes.md#ncast4_v3-series-preview)を使用する必要があります。
 
 
 ### <a name="vm-limits"></a>VM の制限

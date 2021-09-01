@@ -3,8 +3,7 @@ title: Azure Active Directory レポートに関する FAQ | Microsoft Docs
 description: Azure Active Directory レポートに関するよく寄せられる質問
 services: active-directory
 documentationcenter: ''
-author: cawrites
-manager: MarkusVi
+author: MarkusVi
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
@@ -12,22 +11,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 05/12/2020
+ms.date: 07/28/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4da0083a236900037b388798d825515e94613c20
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b64c33619eae16cb08b9ccdc1b4fd5265813d9ed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533693"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739946"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
 この記事では、Azure Active Directory (Azure AD) レポートに関してよく寄せられる質問に対する回答を示します。 詳細については、「[Azure Active Directory レポート](overview-reports.md)」をご覧ください。 
 
 ## <a name="getting-started"></a>作業の開始 
+
+**Q: レポートのライセンスはどのように機能しますか。**
+
+**A:** すべての Azure AD ライセンスを使用すると、Azure Portal でアクティビティ ログを表示できます。 
+
+テナントが以下の場合:
+
+- 無料ライセンスの Azure AD の場合、Portal で最大 7 日間のアクティビティ ログ データを確認できます。 
+- Azure AD Premium ライセンスの場合、Azure Portal で最大 30 日間のデータを確認できます。 
+
+また、そのログ データを Azure Monitor、Azure Event Hubs、Azure Storage にエクスポートしたり、Microsoft Graph API を使用してアクティビティ データに対してクエリを実行したりすることもできます。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 アップグレード前のアクティビティ データがない状態でプレミアム ライセンスにアップグレードした後、データがログに表示されるまでには数日間かかります。
+
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
 

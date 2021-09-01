@@ -5,17 +5,17 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 03/05/2021
-ms.openlocfilehash: 32ad688a2b42f2699933f2e26aed44122f36ff40
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 08/09/2021
+ms.openlocfilehash: 82070e6b10a1b0bffddb511545f54d369f6f99b8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409579"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745578"
 ---
 # <a name="get-started-with-document-translation"></a>ドキュメント変換を使ってみる
 
- この記事では、HTTP REST API メソッドでドキュメント翻訳を使用する方法について説明します。 ドキュメント翻訳は、[Azure Translator](../translator-info-overview.md) サービスのクラウドベースの機能です。  ドキュメント翻訳 API は、ソース ドキュメントの構造とテキストの書式設定を保持しながら、ドキュメント全体を翻訳できるようにします。
+ この記事では、HTTP REST API メソッドでドキュメント翻訳を使用する方法について説明します。 ドキュメント翻訳は、[Azure Translator](../translator-overview.md) サービスのクラウドベースの機能です。  ドキュメント翻訳 API は、ソース ドキュメントの構造とテキストの書式設定を保持しながら、ドキュメント全体を翻訳できるようにします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,11 +29,11 @@ ms.locfileid: "111409579"
 
 * アクティブな [**Azure アカウント**](https://azure.microsoft.com/free/cognitive-services/)。  アカウントがない場合は、[**無料アカウントを作成**](https://azure.microsoft.com/free/)できます。
 
-* [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) サービス リソース (Cognitive Services リソース **ではない**)。
+* [**単一サービス Translator リソース**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) (マルチサービス Cognitive Services リソースとは **異なる**)。
 
 * [**Azure Blob Storage アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。
 
-## <a name="get-your-custom-domain-name-and-subscription-key"></a>カスタム ドメイン名とサブスクリプション キーを取得する
+## <a name="custom-domain-name-and-subscription-key"></a>カスタム ドメイン名とサブスクリプション キー
 
 > [!IMPORTANT]
 >
@@ -65,13 +65,15 @@ Translator サービスへの要求には、アクセス認証を受けるため
 
 :::image type="content" source="../media/translator-keys.png" alt-text="Azure portal 内のサブスクリプション キーの取得のフィールドの画像。":::
 
-## <a name="create-your-azure-blob-storage-containers"></a>Azure Blob Storage コンテナーを作成する
+## <a name="create-azure-blob-storage-containers"></a>Azure BLOB ストレージ コンテナーを作成する
 
-[**Azure Blob Storage アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)内に、ソース、ターゲット、省略可能な用語集のファイル用の [**コンテナーを作成**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)する必要があります。
+[**Azure Blob ストレージ アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)内に、ソースおよびターゲットの各ファイル用の [**コンテナーを作成**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)する必要があります。
 
 * **ソースのコンテナー**。 このコンテナーは、翻訳対象のファイルをアップロードする場所です (必須)。
-* **ターゲットのコンテナー**。 このコンテナーは、翻訳されたファイルを格納する場所です (必須)。  
-* **用語集のコンテナー**。 このコンテナーは、用語集ファイルをアップロードする場所です (省略可能)。  
+* **ターゲットのコンテナー**。 このコンテナーは、翻訳されたファイルを格納する場所です (必須)。
+
+> [!NOTE]
+> ドキュメント翻訳では、用語集は、個別の用語集コンテナーではなく、ターゲット コンテナー内の BLOB としてサポートされます。 カスタム用語集を含める場合は、それをターゲット コンテナーに追加し、要求に ` glossaryUrl` を含める必要があります。  翻訳言語のペアが用語集に存在しない場合、それは適用されません。 「[カスタム用語集を使用してドキュメントを翻訳する](#translate-documents-using-a-custom-glossary)」を "*参照してください*"
 
 ### <a name="create-sas-access-tokens-for-document-translation"></a>**ドキュメント翻訳用の SAS アクセス トークンを作成する**
 
@@ -79,15 +81,123 @@ Translator サービスへの要求には、アクセス認証を受けるため
 
 * **ソース** のコンテナーまたは BLOB には、**読み取り** と **一覧表示** のアクセス権が指定されている必要があります。
 * **ターゲット** のコンテナーまたは BLOB には、**書き込み** と **一覧表示** のアクセス権が指定されている必要があります。
-* **用語集** のコンテナーまたは BLOB には、**読み取り** と **一覧表示** のアクセス権が指定されている必要があります。
+* **用語集** の BLOB には、**読み取り** と **一覧表示** のアクセス権が指定されている必要があります。
 
 > [!TIP]
 >
-> * 操作で **複数** のファイル (BLOB) を翻訳する場合は、**コンテナー レベルで SAS アクセス権を委任** します。  
-> * 操作で **1 つ** のファイル (BLOB) を翻訳する場合は、**BLOB レベルで SAS アクセス権を委任** します。  
+> * 操作で **複数** のファイル (BLOB) を翻訳する場合は、**コンテナー レベルで SAS アクセス権を委任** します。
+> * 操作で **1 つ** のファイル (BLOB) を翻訳する場合は、**BLOB レベルで SAS アクセス権を委任** します。
 >
 
-## <a name="set-up-your-coding-platform"></a>コーディング プラットフォームを設定する
+## <a name="document-translation-http-requests"></a>ドキュメント翻訳: HTTP 要求
+
+バッチのドキュメント翻訳要求は、POST 要求を通じて Translator サービス エンドポイントに送信されます。 成功した場合、POST メソッドから `202 Accepted` 応答コードが返され、バッチ要求が作成されます。
+
+### <a name="http-headers"></a>HTTP ヘッダー
+
+各 Document Translator API 要求には、次のヘッダーが含まれています。
+
+|HTTP ヘッダー|説明|
+|---|--|
+|Ocp-Apim-Subscription-Key|**必須**: 値は、Translator または Cognitive Services リソースの Azure サブスクリプション キーです。|
+|Content-Type|**必須**: ペイロードのコンテンツ タイプを指定します。 許容される値は、application/json または charset=UTF-8 です。|
+|Content-Length|**必須**: 要求本文の長さです。|
+
+### <a name="post-request-body-properties"></a>POST 要求本文のプロパティ
+
+* Post 要求の URL は POST`https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches`
+* POST 要求本文は、`inputs` という名前の JSON オブジェクトです。
+* `inputs` オブジェクトには、ソースとターゲットの言語ペア用の `sourceURL` と `targetURL` のコンテナー アドレスが両方とも含まれています
+* `prefix` と `suffix` のフィールド (省略可能) は、フォルダーを格納しているコンテナー内のドキュメントをフィルター処理するために使用されます。
+* `glossaries` フィールド (省略可能) の値は、ドキュメントが翻訳されるときに適用されます。
+* 各ターゲット言語の `targetUrl` は一意でなければなりません。
+
+>[!NOTE]
+> 同じ名前のファイルが宛先に既に存在する場合は、上書きされます。
+
+<!-- markdownlint-disable MD024 -->
+### <a name="translate-all-documents-in-a-container"></a>コンテナー内のすべてのドキュメントを翻訳する
+
+```json
+{
+    "inputs": [
+        {
+            "source": {
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="translate-a-specific-document-in-a-container"></a>コンテナー内の特定のドキュメントを翻訳する
+
+* "storageType": "File" が指定されていることを確認してください
+* (コンテナーではなく) 特定の BLOB またはドキュメントに対して、ソース URL と SAS トークンが作成されていることを確認してください
+* ターゲット URL の一部としてターゲット ファイル名が指定されていることを確認してください (ただし、SAS トークンはコンテナー用のままです)。
+* 下のサンプル要求では、1 つのドキュメントが 2 つのターゲット言語に翻訳されています
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
+                    "language": "es"
+                },
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
+                    "language": "de"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="translate-documents-using-a-custom-glossary"></a>カスタム用語集を使用してドキュメントを翻訳する
+
+```json
+{
+    "inputs": [
+        {
+            "source": {
+                "sourceUrl": "https://myblob.blob.core.windows.net/source",
+                "filter": {
+                    "prefix": "myfolder/"
+                }
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://myblob.blob.core.windows.net/target",
+                    "language": "es",
+                    "glossaries": [
+                        {
+                            "glossaryUrl": "https:// myblob.blob.core.windows.net/glossary/en-es.xlf",
+                            "format": "xliff"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+## <a name="use-code-to-submit-document-translation-requests"></a>コードを使用してドキュメント翻訳要求を送信する
+
+### <a name="set-up-your-coding-platform"></a>コーディング プラットフォームを設定する
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -105,7 +215,7 @@ Translator サービスへの要求には、アクセス認証を受けるため
 * エンドポイント、サブスクリプション キー、コンテナー URL の値を設定します。
 * プログラムを実行します。
 
-### <a name="python"></a>[Python](#tab/python)  
+### <a name="python"></a>[Python](#tab/python)
 
 * 新しいプロジェクトを作成します。
 * サンプルのいずれかからコードをコピーし、プロジェクトに貼り付けます。
@@ -120,7 +230,7 @@ Translator サービスへの要求には、アクセス認証を受けるため
 mkdir sample-project
 ```
 
-* プロジェクト ディレクトリで、次のサブディレクトリ構造を作成します。  
+* プロジェクト ディレクトリで、次のサブディレクトリ構造を作成します。
 
   src</br>
 &emsp; └ main</br>
@@ -167,7 +277,7 @@ gradle build
 gradle run
 ```
 
-### <a name="go"></a>[Go](#tab/go)  
+### <a name="go"></a>[Go](#tab/go)
 
 * 新しい Go プロジェクトを作成します。
 * 次に示すコードを追加します。
@@ -178,87 +288,6 @@ gradle run
 * ファイルを実行します (例: "example-code")。
 
  ---
-
-## <a name="make-document-translation-requests"></a>ドキュメント翻訳要求を行う
-
-バッチのドキュメント翻訳要求は、POST 要求を通じて Translator サービス エンドポイントに送信されます。 成功した場合、POST メソッドから `202 Accepted` 応答コードが返され、バッチ要求が作成されます。
-
-### <a name="http-headers"></a>HTTP ヘッダー
-
-各 Document Translator API 要求には、次のヘッダーが含まれています。
-
-|HTTP ヘッダー|説明|
-|---|--|
-|Ocp-Apim-Subscription-Key|**必須**: 値は、Translator または Cognitive Services リソースの Azure サブスクリプション キーです。|
-|Content-Type|**必須**: ペイロードのコンテンツ タイプを指定します。 許容される値は、application/json または charset=UTF-8 です。|
-|Content-Length|**必須**: 要求本文の長さです。|
-
-### <a name="post-request-body-properties"></a>POST 要求本文のプロパティ
-
-* Post 要求の URL は POST`https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches`
-* POST 要求本文は、`inputs` という名前の JSON オブジェクトです。
-* `inputs` オブジェクトには、ソースとターゲットの言語ペア用の `sourceURL` と `targetURL` のコンテナー アドレスが両方とも含まれていて、必要に応じて `glossaryURL` のコンテナー アドレスを含めることができます。
-* `prefix` と `suffix` のフィールド (省略可能) は、フォルダーを格納しているコンテナー内のドキュメントをフィルター処理するために使用されます。
-* `glossaries` フィールド (省略可能) の値は、ドキュメントが翻訳されるときに適用されます。
-* 各ターゲット言語の `targetUrl` は一意でなければなりません。
-
->[!NOTE]
-> 同じ名前のファイルが宛先に既に存在する場合は、上書きされます。
-
-## <a name="post-a-translation-request"></a>翻訳要求を POST する
-
-<!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>コンテナー内のすべてのドキュメントを翻訳するための POST 要求本文
-
-```json
-{
-    "inputs": [
-        {
-            "source": {
-                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
-            },
-            "targets": [
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
-                    "language": "fr"
-                }
-            ]
-        }
-    ]
-}
-```
-
-
-### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>コンテナー内の特定のドキュメントを翻訳するための POST 要求本文
-
-* "storageType": "File" が指定されていることを確認してください
-* (コンテナーではなく) 特定の BLOB またはドキュメントに対して、ソース URL と SAS トークンが作成されていることを確認してください 
-* ターゲット URL の一部としてターゲット ファイル名が指定されていることを確認してください (ただし、SAS トークンはコンテナー用のままです)。
-* 下のサンプル要求では、1 つのドキュメントが 2 つのターゲット言語に翻訳されています
-
-```json
-{
-    "inputs": [
-        {
-            "storageType": "File",
-            "source": {
-                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
-            },
-            "targets": [
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
-                    "language": "es"
-                },
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
-                    "language": "de"
-                }
-            ]
-        }
-    ]
-}
-```
-
 
 > [!IMPORTANT]
 >
@@ -286,9 +315,7 @@ Operation-Location   | https://<<span>リソースの名前を指定します。
 
 >
 
-## <a name="_post-document-translation_-request"></a>_ドキュメント翻訳要求を POST する_
-
-バッチのドキュメント翻訳要求を翻訳サービスに送信します。
+ ## <a name="translate-documents"></a>ドキュメントを翻訳する
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -298,7 +325,7 @@ Operation-Location   | https://<<span>リソースの名前を指定します。
     using System.Net.Http;
     using System.Threading.Tasks;
     using System.Text;
-    
+
 
     class Program
     {
@@ -310,27 +337,27 @@ Operation-Location   | https://<<span>リソースの名前を指定します。
         private static readonly string subscriptionKey = "<YOUR-SUBSCRIPTION-KEY>";
 
         static readonly string json = ("{\"inputs\": [{\"source\": {\"sourceUrl\": \"https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS\",\"storageSource\": \"AzureBlob\",\"language\": \"en\",\"filter\":{\"prefix\": \"Demo_1/\"} }, \"targets\": [{\"targetUrl\": \"https://YOUR-TARGET-URL-WITH-WRITE-LIST-ACCESS-SAS\",\"storageSource\": \"AzureBlob\",\"category\": \"general\",\"language\": \"es\"}]}]}");
-        
+
         static async Task Main(string[] args)
         {
             using HttpClient client = new HttpClient();
             using HttpRequestMessage request = new HttpRequestMessage();
             {
-            
+
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 request.Method = HttpMethod.Post;
                 request.RequestUri = new Uri(endpoint + route);
                 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 request.Content = content;
-                
+
                 HttpResponseMessage  response = await client.SendAsync(request);
                 string result = response.Content.ReadAsStringAsync().Result;
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine($"Status code: {response.StatusCode}");
                     Console.WriteLine();
-                    Console.WriteLine($"Response Headers:"); 
+                    Console.WriteLine($"Response Headers:");
                     Console.WriteLine(response.Headers);
                 }
                 else
@@ -519,14 +546,14 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_"></a>_ファイル形式を取得する_ 
+## <a name="get-file-formats"></a>ファイル形式を取得する
 
 サポートされているファイル形式の一覧を取得します。 成功した場合、このメソッドから `200 OK` 応答コードが返されます。
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -577,7 +604,7 @@ let route = '/documents/formats';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -610,7 +637,7 @@ public class GetFileFormats {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -696,7 +723,7 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_"></a>_ジョブの状態を取得する_ 
+## <a name="get-job-status"></a>ジョブの状態の取得
 
 1 つのジョブの現在の状態と、ドキュメント翻訳要求に含まれるすべてのジョブの概要を取得します。 成功した場合、このメソッドから `200 OK` 応答コードが返されます。
 <!-- markdownlint-disable MD024 -->
@@ -704,7 +731,7 @@ func main() {
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -755,7 +782,7 @@ let route = '/batches/{id}';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -789,7 +816,7 @@ public class GetJobStatus {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -875,7 +902,7 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_"></a>_ドキュメントの状態を取得する_
+## <a name="get-document-status"></a>ドキュメント状態の取得
 
 ### <a name="brief-overview"></a>概要
 
@@ -884,7 +911,7 @@ func main() {
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -935,7 +962,7 @@ let route = '/{id}/document/{documentId}';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -969,7 +996,7 @@ public class GetDocumentStatus {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -1055,7 +1082,7 @@ func main() {
 
 ---
 
-## <a name="_delete-job_"></a>_ジョブを削除する_ 
+## <a name="delete-job"></a>ジョブを削除する
 
 ### <a name="brief-overview"></a>概要
 
@@ -1064,7 +1091,7 @@ func main() {
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -1115,7 +1142,7 @@ let route = '/batches/{id}';
 let config = {
   method: 'delete',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -1149,7 +1176,7 @@ public class DeleteJob {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("DELETE", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -1248,6 +1275,18 @@ func main() {
 |翻訳メモリ ファイルのサイズ| ≤ 10 MB|
 
 ドキュメント翻訳を使用して、暗号化されたパスワードやコンテンツをコピーするための制限付きアクセスなどによって、セキュリティで保護されたドキュメントを翻訳することはできません。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="common-http-status-codes"></a>一般的な HTTP 状態コード
+
+| HTTP 状態コード | 説明 | 考えられる理由 |
+|------------------|-------------|-----------------|
+| 200 | [OK] | 要求は成功しました。 |
+| 400 | 正しくない要求 | 必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。 |
+| 401 | 権限がありません | 要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。 Azure portal でサブスクリプションを管理する場合、**Cognitive Services** マルチサービス リソース "_ではなく_"、**Translator** シングルサービス リソースを使用していることを確認してください。
+| 429 | 要求が多すぎます | 使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。 |
+| 502 | 無効なゲートウェイ    | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
 
 ## <a name="learn-more"></a>詳細情報
 

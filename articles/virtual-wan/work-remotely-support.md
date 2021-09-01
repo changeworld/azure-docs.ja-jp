@@ -2,17 +2,17 @@
 title: Azure Virtual WAN とリモートでの作業
 description: COVID-19 の世界的流行により、Azure Virtual WAN を利用してリモートで作業できるようにする方法について説明します。
 services: virtual-wan
-author: reyandap
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: fb3af5f19e81ccf21a9ca38fe45514aa0bdf471e
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: c82bce78f82e28d4accc97ec816e6b1edc9346cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110580252"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746943"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure Virtual WAN とリモート作業のサポート
 
@@ -51,11 +51,11 @@ Basic Virtual WAN では、サイト間 VPN のみが提供されます。 リ�
 
 ## <a name="additional-information"></a><a name="other considerations"></a>追加情報
 
-Virtual WAN では、リージョンおよび場所ごとに 1 つのハブがサポートされます。 場所の情報については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。 各ハブでは、最大で、10,000 のリモート ユーザー接続、1,000 のブランチ接続、4 つの ExpressRoute 回線、500 の Virtual Network 接続がサポートされています。 リモート ユーザーをスケールアップするとき、質問がある場合は、遠慮せず azurevirtualwan@microsoft.com にメールでお問い合わせください。 テクニカル サポートが必要な場合は、Azure portal からサポート チケットを開くと、ヘルプが提供されます。
+Virtual WAN では、リージョンまたは場所ごとに複数のハブがサポートされています。 場所の情報については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。 各ハブでは、最大で、10,000 のリモート ユーザー接続、1,000 のブランチ接続、4 つの ExpressRoute 回線、500 の Virtual Network 接続がサポートされています。 リモート ユーザーをスケールアップするとき、質問がある場合は、遠慮せず azurevirtualwan@microsoft.com にメールでお問い合わせください。 テクニカル サポートが必要な場合は、Azure portal からサポート チケットを開くと、ヘルプが提供されます。
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 
-[!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+「[Virtual WAN の FAQ](virtual-wan-faq.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

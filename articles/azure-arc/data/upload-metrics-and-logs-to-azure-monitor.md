@@ -1,30 +1,25 @@
 ---
-title: 使用状況データ、メトリック、およびログを Azure Monitor にアップロードする
-description: リソース インベントリ、使用状況データ、メトリック、およびログを Azure Monitor にアップロードする
+title: 使用状況データ、メトリック、およびログを Azure にアップロードする
+description: リソース インベントリ、使用状況データ、メトリック、およびログを Azure にアップロードする
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: a522a650413be056ff64d26e90b6c15cf88d9a7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f314b8918b415c0449722d1229c6de47af1cac5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643492"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741440"
 ---
-# <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>使用状況データ、メトリック、およびログを Azure Monitor にアップロードする
+# <a name="upload-usage-data-metrics-and-logs-to-azure"></a>使用状況データ、メトリック、およびログを Azure にアップロードする
 
 課金目的の使用状況情報、監視メトリック、およびログを定期的にエクスポートし、Azure にアップロードできます。 これらの 3 種類のデータのエクスポートとアップロードでは、データ コントローラー、SQL マネージド インスタンス、および Azure の PostgreSQL Hyperscale サーバー グループ リソースも作成および更新されます。
-
-> [!NOTE] 
-> プレビュー期間中は、Azure Arc 対応データ サービス利用のコストは発生しません。
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 使用状況データ、メトリック、またはログをアップロードする前に、次のことを行う必要があります。
 
@@ -36,7 +31,7 @@ ms.locfileid: "101643492"
 
 必要なツールは次のとおりです。 
 * Azure CLI (az) 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 
+* `arcdata` 拡張機能 
 
 [ツールのインストール](./install-client-tools.md)に関する記事を参照してください。
 
@@ -68,7 +63,7 @@ az provider register -n Microsoft.AzureArcData --wait
 サービス プリンシパルを作成するには、次の例を更新します。 `<ServicePrincipalName>`、`SubscriptionId`、`resourcegroup` を実際の値で置き換えてコマンドを実行します。
 
 ```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/{SubscriptionId}/resourceGroups/{resourcegroup}
+az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/<SubscriptionId>/resourceGroups/<resourcegroup>
 ```
 
 以前にサービス プリンシパルを作成しており、単に最新の資格情報の取得が必要な場合は、次のコマンドを実行して資格情報をリセットします。
@@ -137,7 +132,7 @@ $Env:SPN_TENANT_ID="<tenant>"
 > Windows 環境から実行する場合は、ロール名に二重引用符を使用する必要があります。
 
 ```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 
 ```
 ::: zone-end
@@ -145,7 +140,7 @@ az role assignment create --assignee <appId> --role "Monitoring Metrics Publishe
 ::: zone pivot="client-operating-system-macos-and-linux"
 
 ```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 ```
 
 ::: zone-end
@@ -153,7 +148,7 @@ az role assignment create --assignee <appId> --role 'Monitoring Metrics Publishe
 ::: zone pivot="client-operating-system-powershell"
 
 ```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 ```
 
 ::: zone-end
@@ -173,23 +168,31 @@ az role assignment create --assignee <appId> --role 'Monitoring Metrics Publishe
 }
 ```
 
+## <a name="verify-service-principal-role"></a>サービス プリンシパルのロールの確認
+
+```azurecli
+az role assignment list -o table
+```
+
 サービス プリンシパルが適切なロールに割り当てられたら、メトリックまたはユーザー データのアップロードに進むことができます。 
 
-## <a name="upload-logs-metrics-or-user-data"></a>ログ、メトリック、またはユーザー データをアップロードする
 
-ログ、メトリック、またはユーザー データをアップロードするための具体的な手順は、アップロードする情報の種類によって異なります。 
+
+## <a name="upload-logs-metrics-or-usage-data"></a>ログ、メトリック、または使用状況データをアップロードする
+
+ログ、メトリック、または使用状況データをアップロードするための具体的な手順は、アップロードする情報の種類によって異なります。 
 
 [ログを Azure Monitor にアップロードする](upload-logs.md)
 
 [メトリックを Azure Monitor にアップロードする](upload-metrics.md)
 
-[使用状況データを Azure Monitor にアップロードする](upload-usage-data.md)
+[使用状況データを Azure にアップロードする](upload-usage-data.md)
 
-## <a name="general-guidance-on-exporting-and-uploading-usage-metrics"></a>使用状況、メトリックのエクスポートとアップロードに関する一般的なガイダンス
+## <a name="general-guidance-on-exporting-and-uploading-usage-and-metrics"></a>使用状況、メトリックのエクスポートとアップロードに関する一般的なガイダンス
 
 Azure Arc 対応データ サービスに対する作成、読み取り、更新、削除 (CRUD) 操作は、課金および監視の目的でログに記録されます。 これらの CRUD 操作を監視し、使用量を適切に計算するバックグラウンド サービスがあります。 実際の使用状況または使用量の計算は、スケジュールに従って、バックグラウンドで実行されます。 
 
-プレビュー期間中、この処理は夜間に行われます。 一般的なガイダンスは、使用状況を 1 日に 1 回だけアップロードすることです。 使用状況情報をエクスポートし、同じ 24 時間以内に複数回アップロードすると、リソースの使用状況ではなく Azure portal のリソース インベントリのみが更新されます。
+使用状況のアップロードは 1 日に 1 回だけ実行してください。 使用状況情報をエクスポートし、同じ 24 時間以内に複数回アップロードすると、リソースの使用状況ではなく Azure portal のリソース インベントリのみが更新されます。
 
 メトリックをアップロードする場合、Azure Monitor では過去 30 分間のデータのみが受け入れられます ([詳細を参照](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting))。 メトリックをアップロードするためのガイダンスは、エクスポート ファイルを作成した直後にメトリックをアップロードして、Azure portal でデータセット全体を表示できるようにすることです。 たとえば、午後 2:00 にメトリックをエクスポートし、午後 2:50 にアップロード コマンドを実行した場合などです。 Azure Monitor では過去 30 分間のデータのみが受け入れられるため、ポータルにデータが表示されない場合があります。 
 

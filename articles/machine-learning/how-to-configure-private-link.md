@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2021
-ms.openlocfilehash: 1c07e96a82814e59c635a592313e461d06a6fcc3
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: ef8d50b0cc4463f59d8fcb96afda3ef4a5c96781
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217469"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028391"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用にプライベート エンドポイントを構成する
 
@@ -43,7 +43,6 @@ Azure Private Link では、プライベート エンドポイントを使用し
 
 ## <a name="limitations"></a>制限事項
 
-* Azure Government リージョンでは、プライベート エンドポイントで Azure Machine Learning ワークスペースを使用することはできません。
 * プライベート エンドポイントで保護されたワークスペースのパブリック アクセスを有効にしていて、パブリック インターネット経由で Azure Machine Learning Studio を使用する場合、デザイナーなどの一部の機能から自分のデータにアクセスできないことがあります。 この問題は、データが VNet の背後でセキュリティ保護されているサービスに格納されている場合に発生します。 たとえば、Azure Storage アカウントです。
 * Mozilla Firefox を使用している場合、ワークスペースのプライベート エンドポイントにアクセスしようとしたときに問題が発生することがあります。 この問題は、Mozilla の DNS over HTTPS に関連している可能性があります。 回避策として、Microsoft Edge または Google Chrome を使用することをお勧めします。
 * プライベート エンドポイントを使用しても、ワークスペースの削除やコンピューティング リソースの管理などの Azure コントロール プレーン (管理操作) には影響しません。 たとえば、コンピューティング先の作成、更新、削除などです。 これらの操作は、通常どおりパブリック インターネット経由で実行されます。 Azure Machine Learning Studio を使用するなどのデータ プレーン操作、API (公開されたパイプラインを含む)、または SDK では、プライベート エンドポイントが使用されます。

@@ -1,23 +1,23 @@
 ---
 title: PostgreSQL 拡張機能を使用する
 description: PostgreSQL 拡張機能を使用する
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: ba92ca8a959fae389dbdb30c295e6592f76100eb
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 831b3e220afe826b5190588b8855b72a8d648916
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288528"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743837"
 ---
-# <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
+# <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応の PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
 
 PostgreSQL は、拡張機能で使用する場合に最適です。 実際、独自の Hyperscale 機能の主要素は、Microsoft 提供の `citus` 拡張機能です。これは既定でインストールされ、Postgres で、複数ノード間のデータの透過的なシャード化を可能にします。
 
@@ -59,12 +59,12 @@ PostgreSQL は、拡張機能で使用する場合に最適です。 実際、�
 - この手順は、shared_preload_libraries で事前に読み込む必要がない拡張機能については必要ありません。 これらの拡張機能については、次の段落「[拡張機能の作成](#create-extensions)」に進むことができます。
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>サーバー グループの作成時に拡張機能を追加する
-```console
-azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
+```azurecli
+az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names>
 ```
 ### <a name="add-an-extension-to-an-instance-that-already-exists"></a>既に存在するインスタンスに拡張機能を追加する
-```console
-azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
+```azurecli
+az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names>
 ```
 
 
@@ -73,9 +73,9 @@ azdata arc postgres server edit -n <name of your postgresql server group> --exte
 ## <a name="show-the-list-of-extensions-added-to-shared_preload_libraries"></a>shared_preload_libraries に追加された拡張機能の一覧を表示する
 次のコマンドのいずれかを実行します。
 
-### <a name="with-an-azdata-cli-command"></a>azdata CLI コマンドを使用する
-```console
-azdata arc postgres server show -n <server group name>
+### <a name="with-cli-command"></a>CLI コマンドを使用する
+```azurecli
+az postgres arc-server show -n <server group name>
 ```
 出力をスクロールし、サーバー グループの仕様の engine\extensions セクションを確認します。 次に例を示します。
 ```console
@@ -185,8 +185,8 @@ SELECT name, address FROM coffee_shops ORDER BY geom <-> ST_SetSRID(ST_MakePoint
 
 ここでは、`pg_cron` を shared_preload_libraries に追加することで、それを PostgreSQL サーバー グループ上で有効にしましょう。
 
-```console
-azdata postgres server update -n pg2 -ns arc --extensions pg_cron
+```azurecli
+az postgres arc-server update -n pg2 -ns arc --extensions pg_cron
 ```
 
 サーバー グループは、拡張機能のインストールを完了するために再起動します。 これには 2 ～ 3 分かかることがあります。

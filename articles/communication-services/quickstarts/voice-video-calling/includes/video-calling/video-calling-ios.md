@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: e134173fdcd72c637be990b92a278d848ce6527b
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.author: rifox
+ms.openlocfilehash: c2d280de30997996902def6f04eb1d35c956999a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112535538"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966021"
 ---
 Communication Services Calling SDK を使用して 1 対 1 のビデオ通話をアプリに追加することによって、Azure Communication Services の使用を開始します。 このクイックスタートでは、iOS 用の Azure Communication Services Calling SDK を使用して、ビデオ通話を開始および応答する方法について説明します。
 

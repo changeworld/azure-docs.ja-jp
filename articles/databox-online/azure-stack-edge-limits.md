@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro FPGA の制限 | Microsoft Docs
-description: Azure Stack Edge Pro FPGA を配置して操作するときの制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
+title: Azure Stack Edge Pro GPU/Pro FPGA の制限 | Microsoft Docs
+description: Azure Stack Edge Pro GPU/Pro FPGA を配置して操作するときの制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 8f10b6e1a621f9851ba5654f01a621551cf25f6e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 64be85db0e2d11d2aee5a61742f427087a77cef2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080958"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736719"
 ---
-# <a name="azure-stack-edge-pro-fpga-limits"></a>Azure Stack Edge Pro FPGA の制限
+# <a name="azure-stack-edge-limits"></a>Azure Stack Edge の制限
 
-Microsoft Azure Stack Edge Pro FPGA ソリューションを配置および操作するときは、以下の制限事項を考慮してください。 
+Microsoft Azure Stack Edge Pro GPU または Azure Stack Edge Pro FPGA ソリューションを配置および操作するときは、以下の制限事項を考慮してください。 
 
 ## <a name="azure-stack-edge-service-limits"></a>Azure Stack Edge サービスの制限
 
@@ -25,16 +25,14 @@ Microsoft Azure Stack Edge Pro FPGA ソリューションを配置および操�
 
 ## <a name="azure-stack-edge-device-limits"></a>Azure Stack Edge デバイスの制限
 
-次の表で、Azure Stack Edge Pro FPGA デバイスの制限について説明します。 
-
 次の表では、Azure Stack Edge デバイスの制限について説明します。
 
 | 説明 | 値 |
 |---|---|
 |いいえ。 デバイスあたりのファイル数 |1 億 |
 |いいえ。 コンテナーあたりの共有数 |1 |
-|最大の デバイスあたり共有エンドポイントと REST エンドポイントの数| 24 |
-|最大の デバイスあたり階層化ストレージ アカウント数| 24|
+|最大の デバイスあたり共有エンドポイントと REST エンドポイントの数 (GPU デバイスのみ)| 24 |
+|最大の デバイスあたり階層化ストレージ アカウント数 (GPU デバイスのみ)| 24|
 |1 つの共有に書き込まれる最大サイズ ファイル| 5 TB |
 |最大のデバイスあたりリソース グループ数| 800 |
 
@@ -57,4 +55,5 @@ Microsoft Azure Stack Edge Pro FPGA ソリューションを配置および操�
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Azure Stack Edge Pro GPU のデプロイを準備する](azure-stack-edge-gpu-deploy-prep.md)
 - [Azure Stack Edge Pro FPGA のデプロイを準備する](azure-stack-edge-deploy-prep.md)

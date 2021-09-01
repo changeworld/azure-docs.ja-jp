@@ -1,5 +1,5 @@
 ---
-title: メモリを最適化した Dv2 と DSv2 シリーズ VM - Azure Virtual Machines
+title: メモリを最適化した Dv2 と Dsv2 シリーズ VM - Azure Virtual Machines
 description: Dv2 と DSv2 シリーズ VM の仕様。
 author: joelpelley
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f07e4542e380e4e8057d9011a6b613e9ad55a058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3a3feb844d9c29aa63c0a85d3b3391c8ab654a6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560329"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740077"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>メモリが最適化された Dv2 と Dsv2 シリーズ
 
@@ -28,7 +28,7 @@ Dv2 シリーズのサイズは、Intel® Xeon® Platinum 8272CL (Cascade Lake)�
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br> 
 
@@ -40,7 +40,7 @@ Dv2 シリーズのサイズは、Intel® Xeon® Platinum 8272CL (Cascade Lake)�
 | Standard_D14_v2 | 16 | 112 | 800 | 48000/750/375 | 64/64x500 | 8|12000 |
 | Standard_D15_v2 <sup>1</sup> | 20 | 140 | 1000 | 60000/937/468 | 64/64x500 | 8|25000 <sup>2</sup> |
 
-<sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
+<sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。<br>
 <sup>2</sup> 高速ネットワークを使用した場合、25,000 Mbps。
 
 ## <a name="dsv2-series-11-15"></a>DSv2 シリーズ 11 - 15
@@ -53,7 +53,7 @@ DSv2 シリーズのサイズは、Intel® Xeon® Platinum 8272CL (Cascade Lake)
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br> 
 
@@ -68,7 +68,7 @@ DSv2 シリーズのサイズは、Intel® Xeon® Platinum 8272CL (Cascade Lake)
 <sup>1</sup> DSv2 シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](./premium-storage-performance.md)に関する記事を参照してください。
 <sup>2</sup> インスタンスは Intel Haswell ベースのハードウェアに分離され、1 人の顧客専用となります。  
 <sup>3</sup> コア数を制限したサイズも提供しています。  
-<sup>4</sup> 高速ネットワークを使用した場合、25,000 Mbps。
+<sup>4</sup> 高速ネットワークを使用した場合、25,000 Mbps。<br>
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

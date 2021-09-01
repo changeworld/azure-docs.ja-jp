@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 05/03/2021
+ms.date: 08/26/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7fb92bf8e741da59f4dbc5255811eb7f67497fe9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4c9472b419fd796ae53383f73c168e6ac43342bb
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768861"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965867"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-and-policy-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Azure Firewall とポリシーをデプロイして構成する
 
@@ -97,7 +97,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. **[サブネット アドレス範囲]** に「**10.0.2.0/24**」と入力します。
 6. **[追加]** を選択します。
 7. **[確認および作成]** を選択します。
-8. **［作成］** を選択します
+8. **[作成]** を選択します。
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
@@ -281,4 +281,4 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)
+> [Azure Firewall Premium をデプロイして構成する](premium-deploy.md)

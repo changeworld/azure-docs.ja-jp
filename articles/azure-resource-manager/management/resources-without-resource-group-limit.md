@@ -2,13 +2,13 @@
 title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
-ms.date: 04/12/2021
-ms.openlocfilehash: f77bd964003638ca33e1f30e352b1f35a866ac6a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 07/13/2021
+ms.openlocfilehash: e9145500ade55aa8cb9061b6da125e2bd8a0f5c5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060248"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769247"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -28,7 +28,6 @@ ms.locfileid: "112060248"
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
-* edgeSubscriptions
 * linkedSubscriptions
 * registrations
 * registrations/customerSubscriptions
@@ -119,7 +118,7 @@ ms.locfileid: "112060248"
 ## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
-* scheduledQueryRules
+* scheduledqueryrules
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -137,6 +136,7 @@ ms.locfileid: "112060248"
 * netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
 * netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/snapshotPolicies
 * netAppAccounts/volumeGroups
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -173,7 +173,7 @@ ms.locfileid: "112060248"
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
+* publicIPAddresses
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -209,20 +209,20 @@ ms.locfileid: "112060248"
 * accounts/accountQuotaPolicies
 * accounts/groupPolicies
 * accounts/jobs
+* accounts/models
 * accounts/storageContainers
-
-## <a name="microsoftstorage"></a>Microsoft.Storage
-
-* storageAccounts
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 * servers/databases
 
-## <a name="microsoftweb"></a>Microsoft.Web
+## <a name="microsoftstorage"></a>Microsoft.Storage
 
-* apiManagementAccounts/apis
-* sites
+* storageAccounts
+
+## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
+
+* streamingjobs - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 
 ## <a name="next-steps"></a>次のステップ
 

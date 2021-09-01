@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: 5e09a3cbeac53393c686ceb298a217e1626442da
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.author: rifox
+ms.openlocfilehash: efdb3ce1457ec8ac7c66761fab8d0b1ebd730982
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112536082"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122970250"
 ---
 ## <a name="setting-up"></a>設定
 

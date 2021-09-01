@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 06/02/2021
+ms.date: 06/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 55e87d6f0e2708e94beb1e2f9391bfa7aff44ceb
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: be920fa3cd35d2b1e92891d5595dfbe27a258447
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111814082"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741606"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -141,7 +141,7 @@ ms.locfileid: "111814082"
 | renewal-period | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                              | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
 | retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
-| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | N/A  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
 | total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
@@ -217,7 +217,7 @@ ms.locfileid: "111814082"
 | renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                           | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
 | retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
-| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | N/A  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
 | total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
@@ -567,7 +567,7 @@ ms.locfileid: "111814082"
 | failed-validation-httpcode      | JWT が検証で不合格となった場合に返す HTTP 状態コード。                                                                                                                                                                                                                                                                                                                                                                                         | いいえ                                                                               | 401                                                                               |
 | header-name                     | トークンを保持する HTTP ヘッダーの名前。                                                                                                                                                                                                                                                                                                                                                                                                         | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
 | query-parameter-name            | トークンを保持するクエリ パラメーターの名前。                                                                                                                                                                                                                                                                                                                                                                                                     | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
-| token-value                     | JWT トークンを含む文字列を返す式                                                                                                                                                                                                                                                                                                                                                                                                     | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
+| token-value                     | JWT トークンを含む文字列を返す式。 トークン値の一部として `Bearer ` を返すことはできません。                                                                                                                                                                                                                                                                                                                                           | `header-name`、`query-parameter-name`、`token-value` のいずれかを指定する必要があります。 | 該当なし                                                                               |
 | id                              | `key` 要素の `id` 属性を使用すると、署名検証用の適切なキーを確認するためにトークン内の `kid` クレーム (存在する場合) と照合する文字列を指定できます。                                                                                                                                                                                                                                           | いいえ                                                                               | 該当なし                                                                               |
 | match                           | `claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> - `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> - `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも 1 つトークン内に存在する必要があります。                                                       | No                                                                               | all                                                                               |
 | require-expiration-time         | ブール型。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                               | いいえ                                                                               | true                                                                              |
@@ -601,42 +601,42 @@ ms.locfileid: "111814082"
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
 ```xml
-<validate-client-certificate> 
-    validate-revocation="true|false" 
-    validate-trust="true|false" 
-    validate-not-before="true|false" 
-    validate-not-after="true|false" 
-    ignore-error="true|false"> 
-    <identities> 
-        <identity  
-            thumbprint="certificate thumbprint"  
-            serial-number="certificate serial number" 
-            common-name="certificate common name"  
-            subject="certificate subject string"  
-            dns-name="certificate DNS name" 
-            issuer="certificate issuer" 
-            issuer-thumbprint="certificate issuer thumbprint"  
-            issuer-certificate-id="certificate identifier" /> 
-    </identities> 
+<validate-client-certificate 
+    validate-revocation="true|false"
+    validate-trust="true|false" 
+    validate-not-before="true|false" 
+    validate-not-after="true|false" 
+    ignore-error="true|false">
+    <identities>
+        <identity 
+            thumbprint="certificate thumbprint"
+            serial-number="certificate serial number"
+            common-name="certificate common name"
+            subject="certificate subject string"
+            dns-name="certificate DNS name"
+            issuer-subject="certificate issuer"
+            issuer-thumbprint="certificate issuer thumbprint"
+            issuer-certificate-id="certificate identifier" />
+    </identities>
 </validate-client-certificate> 
 ```
 
 ### <a name="example"></a>例
 
-次の例では、ポリシーの既定の検証規則に一致するようにクライアント証明書を検証し、サブジェクトと発行者が指定された値に一致するかどうかを確認します。
+次の例では、ポリシーの既定の検証規則に一致するようにクライアント証明書を検証し、サブジェクトと発行者の名前が指定された値に一致するかどうかを確認します。
 
 ```xml
-<validate-client-certificate> 
-    validate-revocation="true" 
-    validate-trust="true" 
-    validate-not-before="true" 
-    validate-not-after="true" 
-    ignore-error="false"
-    <identities> 
-        <identity 
+<validate-client-certificate 
+    validate-revocation="true" 
+    validate-trust="true" 
+    validate-not-before="true" 
+    validate-not-after="true" 
+    ignore-error="false">
+    <identities>
+        <identity
             subject="C=US, ST=Illinois, L=Chicago, O=Contoso Corp., CN=*.contoso.com"
-            issuer="C=BE, O=FabrikamSign nv-sa, OU=Root CA, CN=FabrikamSign Root CA" />
-    </identities> 
+            issuer-subject="C=BE, O=FabrikamSign nv-sa, OU=Root CA, CN=FabrikamSign Root CA" />
+    </identities>
 </validate-client-certificate> 
 ```
 
@@ -661,10 +661,10 @@ ms.locfileid: "111814082"
 | serial-number | 証明書のシリアル番号。 | Ｘ | N/A |
 | common-name | 証明書の共通名 (サブジェクト文字列の一部)。 | Ｘ | N/A |
 | subject | サブジェクト文字列。 識別名の形式に従う必要があります。 | Ｘ | N/A |
-| dns-name | サブジェクトの代替名要求内の dnsName エントリの値。 | Ｘ | N/A | 
-| 発行者 | 発行者のサブジェクト。 識別名の形式に従う必要があります。 | Ｘ | N/A | 
+| dns-name | サブジェクトの代替名要求内の dnsName エントリの値。 | Ｘ | 該当なし | 
+| issuer-subject | 発行者のサブジェクト。 識別名の形式に従う必要があります。 | Ｘ | N/A | 
 | issuer-thumbprint | 発行者の拇印。 | Ｘ | N/A | 
-| issuer-certificate-id | 発行者の公開キーを表す既存の証明書エンティティの識別子。 | Ｘ | 該当なし | 
+| issuer-certificate-id | 発行者の公開キーを表す既存の証明書エンティティの識別子。 他の発行者属性と同時に指定できません。  | Ｘ | 該当なし | 
 
 ### <a name="usage"></a>使用法
 

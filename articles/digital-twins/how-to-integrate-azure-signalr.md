@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 902a028b77352a09fe4c615992192bc9246e9aa5
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: fcf3167e4f407a64d474275e495b73f511feabdf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616055"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748527"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Twins を Azure SignalR Service と統合する
 
@@ -24,7 +24,7 @@ ms.locfileid: "110616055"
 
 操作を続行する前に完了しておく前提条件を次に示します。
 
-* この記事でソリューションを Azure SignalR Service と統合する前に、Azure Digital Twins の「[チュートリアル: エンド ツー エンドのソリューションを接続する](tutorial-end-to-end.md)」を完了する必要があります。それに基づいてこの操作方法の記事が作成されているからです。 そのチュートリアルでは、仮想 IoT デバイスで動作してデジタル ツインの更新をトリガーする Azure Digital Twins インスタンスを設定する手順が示されています。 この操作方法の記事では、Azure SignalR Service を使用してそれらの更新プログラムをサンプル Web アプリに接続します。
+* この記事でソリューションを Azure SignalR Service と統合する前に、Azure Digital Twins の[エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するチュートリアルを完了する必要があります。それに基づいてこの操作方法の記事が作成されているからです。 そのチュートリアルでは、仮想 IoT デバイスで動作してデジタル ツインの更新をトリガーする Azure Digital Twins インスタンスを設定する手順が示されています。 この操作方法の記事では、Azure SignalR Service を使用してそれらの更新プログラムをサンプル Web アプリに接続します。
 
 * そのチュートリアルから次の値が必要になります。
   - Event Grid トピック
@@ -44,7 +44,7 @@ ms.locfileid: "110616055"
 ## <a name="download-the-sample-applications"></a>サンプル アプリケーションのダウンロード
 
 最初に、必要なサンプル アプリをダウンロードします。 次の両方が必要になります。
-* [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): このサンプルには、Azure Digital Twins インスタンスにデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、「[チュートリアル:エンド ツー エンドのソリューションの接続](tutorial-end-to-end.md)」に関するページを参照)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。
+* [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): このサンプルには、Azure Digital Twins インスタンス内でデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、[エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するチュートリアルで学習できます)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。
     - 「[前提条件](#prerequisites)」にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、[サンプルにアクセス](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、.zip 形式でこれをダウンロードできます。
 
         :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub のデジタル ツインのサンプル リポジトリと、それを zip としてダウンロードする手順を示すスクリーンショット。" lightbox="media/includes/download-repo-zip.png":::
@@ -65,7 +65,7 @@ ms.locfileid: "110616055"
 
 Visual Studio (または任意の別のコード エディター) を起動し、*digital-twins-samples-master > ADTSampleApp* フォルダー内のコード ソリューションを開きます。 その後、次の手順を実行して関数を作成します。
 
-1. *SampleFunctionsApp* プロジェクトに **SignalRFunctions.cs** と呼ばれる新しい C# クラスを作成します。
+1. *SampleFunctionsApp* プロジェクトに **SignalRFunctions.cs** と呼ばれる新しい C# クラスを作成します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)」を参照してください。
 
 1. このクラス ファイルの内容を次のコードに置き換えます。
     
@@ -78,7 +78,9 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
     これにより、そのクラスに含まれる依存関係の問題が解決されます。
 
-1. 「*エンド ツー エンドのソリューションを接続する*」のチュートリアルの [「アプリの発行」セクション](tutorial-end-to-end.md#publish-the-app)で説明されている手順を使用して、関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 
+1. 関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 Visual Studio を使用して関数を発行する方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#publish-to-azure)」を参照してください。
+
+### <a name="configure-the-function"></a>関数を構成する
 
 次に、Azure SignalR インスタンスと通信するように関数を構成します。 まず、SignalR インスタンスの **接続文字列** を収集し、関数アプリの設定に追加します。
 
@@ -91,14 +93,14 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 1. 最後に、次の Azure CLI コマンドを使用して、Azure SignalR の **接続文字列** を関数のアプリ設定に追加します。 また、プレースホルダーを、[チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)のリソース グループと App Service/関数アプリの名前に置き換えます。 このコマンドは、[Azure Cloud Shell](https://shell.azure.com) で実行するか、[Azure CLI がマシンにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
  
     ```azurecli-interactive
-    az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-function-app-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
+    az functionapp config appsettings set --resource-group <your-resource-group> --name <your-function-app-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
     このコマンドの出力では、Azure 関数用に設定されたすべてのアプリ設定が出力されます。 一覧の下部で `AzureSignalRConnectionString` を検索して、それが追加されていることを確認します。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="'AzureSignalRConnectionString' と呼ばれるリスト項目が表示されている、コマンド ウィンドウの出力のスクリーンショット。":::
 
-#### <a name="connect-the-function-to-event-grid"></a>Event Grid に関数を接続する
+## <a name="connect-the-function-to-event-grid"></a>Event Grid に関数を接続する
 
 次に、*broadcast* Azure 関数を **Event Grid トピック** ([チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)で作成) でサブスクライブします。 これにより、テレメトリ データは thermostat67 ツインから Event Grid トピックを経て関数へと流れることができます。 ここから、この関数によってすべてのクライアントにそのデータをブロードキャストできます。
 

@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 83f2322942e865ad60dd91332499fb7c0555b382
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ROBOTS: NOINDEX
+ms.openlocfilehash: eb6548f1f6e0c9c49fd07f11fe881f94b787e5fc
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740546"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967058"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル:Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 

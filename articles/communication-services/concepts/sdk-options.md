@@ -2,19 +2,19 @@
 title: Azure Communication Services の SDK と REST API
 titleSuffix: An Azure Communication Services concept document
 description: Azure Communication Services の SDK と REST API について詳しく説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: cdc9ae8f89c13a528ff31855f731821b39e5a048
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: baba53d797d3d530b7f71b7f87e01dd673e6a6cc
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742538"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966405"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK と REST API
 

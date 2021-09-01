@@ -6,15 +6,26 @@ ms.author: andbrown
 ms.date: 2/10/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 4cd5e0c016b98a3dc9336237a5c1b14e6b0f5789
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 39a1acb596f4d56915aabfa0a64fc69d6e55aec2
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040585"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769109"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub"></a>Device Update for IoT Hub への更新プログラムのインポート
 Device Update for IoT Hub からデバイスに更新プログラムを展開するには、まず、その更新プログラムをデバイス更新サービスに "_インポート_" する必要があります。 ここでは、更新プログラムをインポートするときに理解しておくべき重要な概念の概要を示します。
+
+## <a name="limits-on-importing-updates"></a>更新プログラムのインポートの制限
+Device Update for IoT Hub インスタンスごとに、次の制限が適用されます。
+
+* ADU インスタンスあたり 5 プロバイダー
+* プロバイダーあたり 5 つの名前
+* 名前あたり 25 バージョン
+
+また、累積的に (すべてのプロバイダーと名前全体で) 100 個の更新プログラム バージョンの制限もあります。
+
+更新プログラムの送信における個々のファイルの最大許容サイズは 800 MB です。 1 回の更新プログラムの送信ですべてのファイルの _合計_ が 800 MB を超えないようにする必要もあります。
 
 ## <a name="import-manifest"></a>インポート マニフェスト
 

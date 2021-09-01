@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 1355f6e6120f77ead063bb9246bf1c2864341373
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: c60b2301e6f0ea2767128224c4e76a677df69e0d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007573"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746006"
 ---
-# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する
 
 Azure Files の Container Storage Interface (CSI) ドライバーは、Azure Files 共有のライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
 
@@ -28,8 +28,6 @@ CSI ドライバーがサポートされる AKS クラスターを作成する�
 [永続ボリューム (PV)](concepts-storage.md#persistent-volumes)とは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 PV は 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 複数のポッドが同じストレージ ボリュームに同時アクセスする必要がある場合は、Azure Files を使用し、[サーバー メッセージ ブロック (SMB) プロトコル][smb-overview]を使用して接続します。 この記事では、AKS クラスターの複数のポッドで使用するために、Azure Files 共有を動的に作成する方法を示します。 静的プロビジョニングの場合は、[Azure Files 共有を含むボリュームを手動で作成して使用する](azure-files-volume.md)に関する記事を参照してください。
 
 Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>組み込みのストレージ クラスを使用して Azure Files の PV を動的に作成する
 
@@ -192,13 +190,75 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
+## <a name="use-a-persistent-volume-with-private-azure-files-storage-private-endpoint"></a>プライベート Azure Files ストレージ (プライベートエンドポイント) で永続ボリュームを使用する
+
+Azure Files リソースがプライベート エンドポイントで保護されている場合は、次のパラメーターを使用してカスタマイズされた独自のストレージ クラスを作成する必要があります。
+
+* `resourceGroup`: ストレージ アカウントが配置されているリソース グループ。
+* `storageAccount`: ストレージ アカウントの名前。
+* `server`: ストレージ アカウントのプライベート エンドポイントの FQDN (例: `<storage account name>.privatelink.file.core.windows.net`)。
+
+*private-azure-file-sc.yaml* という名前のファイルを作成し、次のマニフェストの例をそのファイルに貼り付けます。 `<resourceGroup>` および `<storageAccountName>` の値を置き換えます。
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: private-azurefile-csi
+provisioner: file.csi.azure.com
+allowVolumeExpansion: true
+parameters:
+  resourceGroup: <resourceGroup>
+  storageAccount: <storageAccountName>
+  server: <storageAccountName>.privatelink.file.core.windows.net 
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=0
+  - gid=0
+  - mfsymlinks
+  - cache=strict  # https://linux.die.net/man/8/mount.cifs
+  - nosharesock  # reduce probability of reconnect race
+  - actimeo=30  # reduce latency for metadata-heavy workload
+```
+
+[kubectl apply][kubectl-apply] コマンドを使用して、ストレージ クラスを作成します。
+
+```console
+kubectl apply -f private-azure-file-sc.yaml
+
+storageclass.storage.k8s.io/private-azurefile-csi created
+```
+  
+*private-pvc.yaml* という名前のファイルを作成し、次のマニフェストの例をそのファイルに貼り付けます。
+  
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: private-azurefile-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: private-azurefile-csi
+  resources:
+    requests:
+      storage: 100Gi
+```
+  
+[kubectl apply][kubectl-apply] コマンドを使用して、PVC を作成します。
+  
+```console
+kubectl apply -f private-pvc.yaml
+```
+
 ## <a name="nfs-file-shares"></a>NFS ファイル共有
 
-[Azure Files では、NFS v4.1 プロトコルがサポートされるようになりました](../storage/files/storage-files-how-to-create-nfs-shares.md)。 Azure Files での NFS 4.1 のサポートによって、サービスとしてのフル マネージド NFS ファイル システムがお客様に提供されます。これは、可用性が高く耐久性に優れた、分散型で回復力のあるストレージ プラットフォーム上に構築されています。
+[Azure Files では、NFS v4.1 プロトコルがサポートされています](../storage/files/storage-files-how-to-create-nfs-shares.md)。 Azure Files での NFS 4.1 のサポートによって、サービスとしてのフル マネージド NFS ファイル システムがお客様に提供されます。これは、可用性が高く耐久性に優れた、分散型で回復力のあるストレージ プラットフォーム上に構築されています。
 
  このオプションは、インプレース データ更新を使用するランダム アクセス ワークロードに合わせて最適化されており、完全な POSIX ファイル システムのサポートを提供します。 このセクションでは、AKS クラスター上で NFS 共有を Azure File CSI ドライバーと共に使用する方法について説明します。
-
-[制限事項](../storage/files/storage-files-compare-protocols.md#limitations)と[利用可能なリージョン](../storage/files/storage-files-compare-protocols.md#regional-availability)を必ず確認してください。
 
 ### <a name="create-nfs-file-share-storage-class"></a>NFS ファイル共有のストレージ クラスを作成する
 

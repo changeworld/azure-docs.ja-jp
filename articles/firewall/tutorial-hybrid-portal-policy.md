@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 04/27/2021
+ms.date: 08/26/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: b396da87089351859cb5f0c38d72e39da5d7f7d3
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 25ec41f3c3d191c0ff13eb4301396b78100b3ef7
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077627"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028476"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-and-policy-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル: Azure portal を使用してハイブリッド ネットワークに Azure Firewall とポリシーをデプロイして構成する
 
@@ -465,7 +465,5 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次のステップ
 
-次に、Azure Firewall のログを監視することができます。
-
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)
+> [Azure Firewall Premium をデプロイして構成する](premium-deploy.md)

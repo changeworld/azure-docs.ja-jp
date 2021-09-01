@@ -1,6 +1,6 @@
 ---
 title: Azure Arc で PostgreSQL Hyperscale サーバー グループの Postgres エンジン サーバー パラメーターを構成する
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: Azure Arc で PostgreSQL Hyperscale サーバー グループの Postgres エンジン サーバー パラメーターを構成する
 services: azure-arc
 ms.service: azure-arc
@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 06bff9acd76edc05498285809735eb4ec8a3c2f3
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e634bcc7d07cfba4016c8f2db323e78e9beda92a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407761"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737189"
 ---
 # <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale のデータベース エンジン設定を設定する
 
@@ -41,22 +41,22 @@ ms.locfileid: "111407761"
 
 データベース エンジン設定を構成するためのコマンドの一般的な形式は次のとおりです。
 
-```console
-azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-engine-settings, --re}] {'<parameter name>=<parameter value>, ...'}
+```azurecli
+az postgres arc-server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-settings , --re}] {'<parameter name>=<parameter value>, ...'} --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="show-current-custom-values"></a>現在のカスタム値を表示する
 
 ### <a name="with-azure-data-cli-azdata-command"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] コマンドを使用する
 
-```console
-azdata arc postgres server show -n <server group name>
+```azurecli
+az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 
 次に例を示します。
 
-```console
-azdata arc postgres server show -n postgres01
+```azurecli
+az postgres arc-server show -n postgres01 --k8s-namespace <namespace> --use-k8s 
 ```
 
 このコマンドでは、設定したパラメーターを確認できるサーバー グループの仕様が返されます。 engine\settings セクションがない場合は、すべてのパラメーターが既定値で実行されていることになります。
@@ -82,14 +82,14 @@ engine": {
 
    次を実行します。
 
-   ```console
-   azdata arc postgres server show -n <server group name>
+   ```azurecli
+   az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
    ```
 
    次に例を示します。
 
-   ```console
-   azdata arc postgres server show -n postgres01
+   ```azurecli
+   az postgres arc-server show -n postgres01 --k8s-namespace <namespace> --use-k8s
    ```
 
    このコマンドでは、設定したパラメーターを確認できるサーバー グループの仕様が返されます。 engine\settings セクションがない場合は、すべてのパラメーターが既定値で実行されていることになります。
@@ -146,26 +146,26 @@ engine": {
 
 ### <a name="set-a-single-parameter"></a>1 つのパラメーターを設定する
 
-```console
-azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
+```azurecli
+az postgres arc-server edit -n <server group name> --engine-settings  <parameter name>=<parameter value> --k8s-namespace <namespace> --use-k8s
 ```
 
 次に例を示します。
 
-```console
-azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  shared_buffers=8MB --k8s-namespace <namespace> --use-k8s
 ```
 
 ### <a name="set-multiple-parameters-with-a-single-command"></a>1 つのコマンドで複数のパラメーターを設定する
 
-```console
-azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
+```azurecli
+az postgres arc-server edit -n <server group name> --engine-settings  '<parameter name>=<parameter value>, <parameter name>=<parameter value>, --k8s-namespace <namespace> --use-k8s...'
 ```
 
 次に例を示します。
 
-```console
-azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'shared_buffers=8MB, max_connections=50' --k8s-namespace <namespace> --use-k8s
 ```
 
 ### <a name="reset-a-parameter-to-its-default-value"></a>パラメーターを既定値にリセットする
@@ -174,34 +174,34 @@ azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connec
 
 次に例を示します。
 
-```console
-azdata arc postgres server edit -n postgres01 -e shared_buffers=
+```azurecli
+az postgres arc-server edit -n postgres01 --k8s-namespace <namespace> --use-k8s --engine-settings  shared_buffers=
 ```
 
 ### <a name="reset-all-parameters-to-their-default-values"></a>すべてのパラメーターを既定値にリセットする
 
-```console
-azdata arc postgres server edit -n <server group name> -e '' -re
+```azurecli
+az postgres arc-server edit -n <server group name> --engine-settings  '' -re --k8s-namespace <namespace> --use-k8s
 ```
 
 次に例を示します。
 
-```console
-azdata arc postgres server edit -n postgres01 -e '' -re
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  '' -re --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="special-considerations"></a>特別な考慮事項
 
 ### <a name="set-a-parameter-which-value-contains-a-comma-space-or-special-character"></a>値にコンマ、空白、または特殊文字が含まれるパラメーターを設定する
 
-```console
-azdata arc postgres server edit -n <server group name> -e '<parameter name>="<parameter value>"'
+```azurecli
+az postgres arc-server edit -n <server group name> --engine-settings  '<parameter name>="<parameter value>"' --k8s-namespace <namespace> --use-k8s
 ```
 
 次に例を示します。
 
-```console
-azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plpgsql,plperl"'
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'custom_variable_classes = "plpgsql,plperl"' --k8s-namespace <namespace> --use-k8s
 ```
 
 ### <a name="pass-an-environment-variable-in-a-parameter-value"></a>パラメーター値で環境変数を渡す
@@ -210,8 +210,8 @@ azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plp
 
 次に例を示します。 
 
-```console
-azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'
+```azurecli
+az postgres arc-server edit -n postgres01 --engine-settings  'search_path = "$user"' --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="next-steps"></a>次のステップ

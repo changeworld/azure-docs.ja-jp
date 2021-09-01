@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c0d0fa394c8b962206879a80d600987753f2f6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: db8be2618ee4bdeab517242870d593e88f631cfa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953472"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740025"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -36,6 +36,14 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 > [!NOTE]
 > Windows 10 の Hybrid Azure AD 参加に最低限必要なドメイン コントローラー バージョンは、Windows Server 2008 R2 です。
+
+Hybrid Azure AD Join を使用したデバイスには、ドメイン コントローラーへのネットワーク接続が定期的に必要になります。 この接続がない場合、デバイスは使用できなくなります。
+
+ドメイン コントローラーへの通信経路がないと利用できないシナリオ:
+
+- デバイスのパスワードの変更
+- ユーザー パスワードの変更 (キャッシュされた資格情報)
+- TPM をリセットしたため
 
 ## <a name="plan-your-implementation"></a>実装の計画
 
@@ -93,7 +101,7 @@ Windows デスクトップ オペレーティング システムを実行して�
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Azure AD 登録状態のデバイスの処理
 
-Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
+Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](concept-azure-ad-register.md)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
 
 - "<i>デバイスが Hybrid Azure AD 参加済みになり、同じユーザーがログインした後</i>"、ユーザーの既存の Azure AD 登録済み状態は自動的に削除されます。 たとえば、ユーザー A がデバイスに Azure AD 登録済み状態を持っている場合は、ユーザー A がデバイスにログインしたときにのみ、ユーザー A の二重状態はクリーンアップされます。 同じデバイスに複数のユーザーがいる場合、それらのユーザーがログインすると、二重状態は個別にクリーンアップされます。 Azure AD の登録済み状態が削除されるだけでなく、Windows 10 では、登録が自動登録を介して Azure AD 登録の一部として行われた場合に、Intune またはその他の MDM からもデバイスの登録が解除されます。
 - デバイス上のすべてのローカル アカウントの Azure AD 登録済みの状態は、この変更による影響を受けません。 これは、ドメイン アカウントにのみ適用されます。 そのため、ローカル アカウントの Azure AD 登録済みの状態は、ユーザーがドメイン ユーザーではないため、ユーザーのログオン後でも自動的には削除されません。 

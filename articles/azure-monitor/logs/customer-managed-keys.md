@@ -4,14 +4,14 @@ description: Azure Key Vault キーを使用して Log Analytics ワークスペ
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/21/2021
+ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fc66f79e09021a10c2dde3cc973cd608baeedc32
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: ef47a97381c0c01afb13b66495167795c49b03c3
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061616"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444718"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -27,9 +27,9 @@ Azure Monitor により、Microsoft マネージド キー (MMK) を使用して
 
 カスタマー マネージド キーは、より高い保護レベルと制御を可能にする[専用のクラスター](./logs-dedicated-clusters.md)で提供されます。 専用クラスターに取り込まれたデータは、2 回暗号化されます。Microsoft のマネージド キーまたはカスタマー マネージド キーを使用してサービス レベルで一度暗号化され、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用してインフラストラクチャ レベルで一度暗号化されます。 [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。 専用クラスターを使用すると、[ロックボックス](#customer-lockbox-preview) コントロールを使用してデータを保護することもできます。
 
-過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、カスタマー マネージド キーの構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#key-revocation)に従います。 2021 年の前半には、カスタマー マネージド キーを使用して SSD データを暗号化できるように準備しています。
+過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、カスタマー マネージド キーの構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#key-revocation)に従います。 2021 年の後半には、カスタマー マネージド キーを使用して SSD データを暗号化できるように準備しています。
 
-Log Analytics 専用クラスターには、1000 GB/日以上の容量予約[価格モデル](./logs-dedicated-clusters.md#cluster-pricing-model)を使用します。
+Log Analytics 専用クラスターの[価格モデル](./logs-dedicated-clusters.md#cluster-pricing-model)には、500 GB から始まるコミットメント レベルが必要で、1,000 GB、2,000 GB、5,000 GB のいずれかの値を設定できます。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Monitor でのカスタマー マネージド キーの動作
 
@@ -79,7 +79,7 @@ Azure Monitor は、マネージド ID を使用して Azure Key Vault にアク
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -93,12 +93,12 @@ N/A
 
 REST を使用している場合、応答では最初に HTTP 状態コード 202 (承認済み) と *Azure-AsyncOperation* プロパティを持つヘッダーが返されます。
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2021-06-01"
 ```
 
 *Azure-AsyncOperation* ヘッダー値に含まれるエンドポイントに GET 要求を送信することにより、非同期操作の状態を確認できます。
 ```rst
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2021-06-01
 Authorization: Bearer <token>
 ```
 
@@ -117,8 +117,7 @@ Authorization: Bearer <token>
 
 ## <a name="create-cluster"></a>クラスターの作成
 
-クラスターでは、システム割り当てとユーザー割り当ての 2 つの[マネージド ID の種類](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)がサポートされていますが、シナリオに応じて単一の ID をクラスターで定義できます。 
-- システム割り当てマネージド ID の方がシンプルで、ID の `type` が "*SystemAssigned*" に設定されている場合、クラスターの作成時に自動的に作成されます。 後でこの ID を使用して、ラップおよびラップ解除操作に必要な Key Vault へのストレージ アクセス権を付与できます。 
+クラスターは、システム割り当てマネージド ID をサポートとしており、ID `type` のプロパティは `SystemAssigned` に設定する必要があります。 ID は、クラスターの作成時に自動的に生成されます。後で使用して、ラップおよびラップ解除操作のために、Key Vault へのストレージアクセスを許可することができます。 
   
   システム割り当てマネージド ID に関するクラスターの ID 設定
   ```json
@@ -129,23 +128,7 @@ Authorization: Bearer <token>
   }
   ```
 
-- クラスターの作成時にカスタマー マネージド キーを定義する場合は、事前に Key Vault でキーを作成し、ユーザー割り当て ID を付与します。その後、これらの設定 (ID の `type` として "*UserAssigned*"、ID の *リソース ID* が設定された `UserAssignedIdentities`) を使用してクラスターを作成します。
-
-  ユーザー割り当てマネージド ID に関するクラスターの ID 設定
-  ```json
-  {
-  "identity": {
-  "type": "UserAssigned",
-    "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
-      }
-  }
-  ```
-
-> [!IMPORTANT]
-> Key Vault がプライベート リンク (VNet) に配置されている場合は、ユーザー割り当てマネージド ID を使用できません。 このシナリオでは、システム割り当てマネージド ID を使用できます。
-
-[専用クラスターに関する記事](./logs-dedicated-clusters.md#creating-a-cluster)で示されている手順に従います。 
+[専用クラスターに関する記事](./logs-dedicated-clusters.md#create-a-dedicated-cluster)で示されている手順に従います。 
 
 ## <a name="grant-key-vault-permissions"></a>Key Vault アクセス許可を付与する
 
@@ -176,7 +159,7 @@ Key Vault でアクセス ポリシーを作成し、クラスターにアクセ
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -192,7 +175,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -Cl
 # <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2020-08-01
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2021-06-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -205,14 +188,14 @@ Content-type: application/json
   },
   "sku": {
     "name": "CapacityReservation",
-    "capacity": 1000
+    "capacity": 500
   }
 }
 ```
 
 **Response**
 
-キーの伝達が完了するまで数分かかります。 更新の状態を確認するには、次の 2 つの方法があります。
+キーの伝達が完了するまでしばらくかかります。 更新の状態を確認するには、次の 2 つの方法があります。
 1. 応答から Azure-AsyncOperation URL 値をコピーし、[非同期操作と状態のチェック](#asynchronous-operations-and-status-check)に従います。
 2. クラスターに GET 要求を送信し、*KeyVaultProperties* のプロパティを調べます。 最近更新されたキーが応答で返されます。
 
@@ -222,13 +205,12 @@ Content-type: application/json
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principle-id"
-    },
+    "principalId": "principal-id"
+  },
   "sku": {
-    "name": "capacityReservation",
-    "capacity": 1000,
-    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-    },
+    "name": "capacityreservation",
+    "capacity": 500
+  },
   "properties": {
     "keyVaultProperties": {
       "keyVaultUri": "https://key-vault-name.vault.azure.net",
@@ -236,13 +218,21 @@ Content-type: application/json
       "keyVersion": "current-version"
       },
     "provisioningState": "Succeeded",
-    "billingType": "cluster",
-    "clusterId": "cluster-id"
+    "clusterId": "cluster-id",
+    "billingType": "Cluster",
+    "lastModifiedDate": "last-modified-date",
+    "createdDate": "created-date",
+    "isDoubleEncryptionEnabled": false,
+    "isAvailabilityZonesEnabled": false,
+    "capacityReservationProperties": {
+      "lastSkuUpdate": "last-sku-modified-date",
+      "minCapacity": 500
+    }
   },
   "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
+  "location": "cluster-region"
 }
 ```
 
@@ -255,7 +245,7 @@ Content-type: application/json
 
 この操作を実行するには、ワークスペースとクラスターの両方に対して、`Microsoft.OperationalInsights/workspaces/write` および `Microsoft.OperationalInsights/clusters/write` が含まれる "書き込み" アクセス許可が必要です。
 
-[専用クラスターに関する記事](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)で示されている手順に従います。
+[専用クラスターに関する記事](./logs-dedicated-clusters.md#link-a-workspace-to-a-cluster)で示されている手順に従います。
 
 ## <a name="key-revocation"></a>キーの失効
 
@@ -300,7 +290,7 @@ Bring Your Own Storage (BYOS) を使用して、それをワークスペース�
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -319,7 +309,7 @@ New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group
 # <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2021-06-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -344,7 +334,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -363,7 +353,7 @@ New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group
 # <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2021-06-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -424,10 +414,10 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 - ロックボックスは、現在、中国では使用できません。 
 
 - [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、サポートされているリージョンで 2020 年 10 月以降に作成されたクラスターに対して自動的に構成されます。 クラスターが二重暗号化されるように構成されているかどうかを確認するには、クラスターに対して GET 要求を送信し、二重暗号化が有効になっているクラスターの `isDoubleEncryptionEnabled` の値が `true` かどうかを検査します。 
-  - クラスターを作成したときに、「<リージョン名> ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加すると、二重暗号化なしでクラスターを作成できます。
+  - クラスターを作成したときに、「"リージョン名" ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加すると、二重暗号化なしでクラスターを作成できます。
   - クラスターの作成後に、二重暗号化の設定を変更することはできません。
 
-  - クラスターの `identity` `type` を `None` acks に設定すると、データへのアクセスも失効しますが、サポートに連絡しない限り取り消すことができないため、この方法はお勧めできません。 データへのアクセスを失効させる方法としては、[キーの失効](#key-revocation)をお勧めします。
+  - クラスターの `identity` `type` を `None` に設定すると、データへのアクセスも失効しますが、サポートに連絡しない限り取り消すことができないため、この方法はお勧めできません。 データへのアクセスを失効させる方法としては、[キーの失効](#key-revocation)をお勧めします。
 
   - Key Vault がプライベート リンク (VNet) に配置されている場合は、ユーザー割り当てマネージド ID を持つカスタマー マネージド キーを使用できません。 このシナリオでは、システム割り当てマネージド ID を使用できます。
 
@@ -436,11 +426,9 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 - Key Vault の可用性に関する動作
   - 通常の運用では、Storage は一時的に AEK をキャッシュし、定期的に Key Vault に戻ってラップを解除します。
     
-  - 一時的な接続エラー -- Storage は、キーが短時間キャッシュにとどまることができるようにすることで一時的なエラー (タイムアウト、接続エラー、DNS の問題) を処理し、これにより可用性の小さな中断を克服できます。 クエリ機能と取り込み機能は中断されることなく続行されます。
+  - Key Vault 接続エラー - Storage では、可用性の問題が発生している間キーをキャッシュに残して、一時的なエラー (タイムアウト、接続エラー、DNS の問題) を処理します。これにより、中断と可用性の問題が解決されます。 クエリ機能と取り込み機能は中断されることなく続行されます。
     
-  - ライブ サイト -- 約 30 分で使用できなくなると、Storage アカウントが使用できなくなります。 クエリ機能は使用できず、データの損失を防ぐために、Microsoft キーを使用して数時間の間、取り込まれたデータがキャッシュされます。 Key Vault へのアクセスが復元されると、クエリが使用可能になり、一時的にキャッシュされたデータがデータストアに取り込まれ、カスタマー マネージド キーで暗号化されます。
-
-  - Key Vault へのアクセス レート - 折り返し操作と折り返しの解除操作のために Azure Monitor Storage が Key Vault にアクセスする頻度は、6 秒から 60 秒です。
+- Key Vault へのアクセス レート - 折り返し操作と折り返しの解除操作のために Azure Monitor Storage が Key Vault にアクセスする頻度は、6 秒から 60 秒です。
 
 - クラスターがプロビジョニング中または更新中の状態のときにクラスターを更新すると、更新は失敗します。
 
@@ -467,10 +455,9 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
   -  400 -- The body of the request is null or in bad format. (400 -- 要求の本文が null であるか無効な形式です。)
   -  400 -- SKU name is invalid. (400 -- SKU 名が無効です。) SKU 名を capacityReservation に設定してください。
   -  400 -- Capacity was provided but SKU is not capacityReservation. (400 -- 容量が指定されましたが、SKU は capacityReservation ではありません。) SKU 名を capacityReservation に設定してください。
-  -  400 -- Missing Capacity in SKU. (400 -- SKU に容量がありません。) 容量の値を 1000 以上に指定してください。100 (GB) 刻みで指定できます。
-  -  400 -- Capacity in SKU is not in range. (400 -- SKU の容量が範囲内ではありません。) 最小 1000 から、ワークスペースの [使用量と推定コスト] で設定可能な許容される最大容量までにする必要があります。
+  -  400 -- Missing Capacity in SKU. (400 -- SKU に容量がありません。) 容量の値を 1 日あたり 500 GB、1,000 GB、2,000 GB、または 5,000 GB に設定してください。
   -  400 -- Capacity is locked for 30 days. (400 -- 容量は 30 日間ロックされます。) 容量の減少は更新の 30 日後に許可されます。
-  -  400 -- No SKU was set. (400 -- SKU が設定されていませんでした。) SKU 名を capacityReservation にし、容量の値を 100 (GB) 刻みで 1000 以上に設定してください。
+  -  400 -- No SKU was set. (400 -- SKU が設定されていませんでした。) SKU 名を capacityReservation にし、容量の値を 1 日あたり 500 GB、1,000 GB、2,000 GB、または 5,000 GB に設定してください。
   -  400 -- Identity is null or empty. (400 -- ID が null または空です。) systemAssigned の種類の ID を設定してください。
   -  400 -- KeyVaultProperties are set on creation. (400 -- 作成時に KeyVaultProperties が設定されます。) クラスターの作成後に KeyVaultProperties を更新してください。
   -  400 -- Operation cannot be executed now. (400 -- 現在、操作を実行できません。) 非同期操作は成功以外の状態になっています。 更新操作を実行する前に、クラスターでの操作が完了している必要があります。

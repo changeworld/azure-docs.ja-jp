@@ -4,23 +4,23 @@ description: Azure Functions の特定の仮想ネットワーク タスクを�
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c123b20e163731f9a872a969f2f1564479b6e308
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 1e04a43a7a9b2eb8b3d29be6ced0d92d8bcc8308
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718433"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202924"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>仮想ネットワークで Azure Functions を構成する方法
 
-この記事では、仮想ネットワークに接続してそこで実行されるように関数アプリを構成するタスクを実行する方法について説明します。 Azure Functions とネットワークの詳細については、「[Azure Functions のネットワーク オプション](functions-networking-options.md)」を参照してください。
+この記事では、仮想ネットワークに接続してそこで実行されるように関数アプリを構成するタスクを実行する方法について説明します。 ストレージ アカウントをセキュリティで保護する方法に関する詳細なチュートリアルについては、[仮想ネットワークへの接続チュートリアル](functions-create-vnet.md)を参照してください。 Azure Functions とネットワークの詳細については、「[Azure Functions のネットワーク オプション](functions-networking-options.md)」を参照してください。
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する 
 
-関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。 
+関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。 プライベート エンドポイントを使用してストレージ アカウントを構成すると、関数アプリへのパブリック アクセスは自動的に無効になり、関数アプリには仮想ネットワーク経由でのみアクセスできるようになります。 
 
 > [!NOTE]  
-> この機能は、現在、専用 (App Service) プランのすべての Windows 仮想ネットワーク対応 SKU と、Premium プランで有効です。 従量課金プランはサポートされていません。 
+> この機能は、現在、専用 (App Service) プランのすべての Windows 仮想ネットワークでサポートされている SKU と、Windows Elastic Premium プランで有効です。 それは、Linux 仮想ネットワークでサポートされている SKU に対してもプライベート DNS によってサポートされています。 従量課金プランと Linux 用カスタム DNS プランはサポートされていません。 
 
 プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
 
