@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central 管理者ガイド
 description: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 この記事では、IoT Central の管理者ロールの概要を示します。
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c355902eae6aed1504b64dd12d056c6059771e57
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4ff2ea374768189881c9e1ff28511bc403dd6306
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759421"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015559"
 ---
 # <a name="iot-central-administrator-guide"></a>IoT Central 管理者ガイド
 
@@ -48,7 +48,7 @@ IoT Central アプリケーションに接続するデバイスは、通常、�
 
 - [アプリケーションの名前と URL を変更する](howto-administer.md#change-application-name-and-url)
 - [UI のカスタマイズ](howto-customize-ui.md)
-- [アプリケーションを別の価格プランに移動する](howto-view-bill.md)
+- [アプリケーションを別の価格プランに移動する](howto-faq.yml#how-do-i-move-from-a-free-to-a-standard-pricing-plan-)
 - [ファイルのアップロードを構成する](howto-configure-file-uploads.md)
 
 ## <a name="export-an-application"></a>アプリケーションのエクスポート
@@ -58,7 +58,7 @@ IoT Central アプリケーションに接続するデバイスは、通常、�
 - アプリケーションの 1 つの複製が必要なだけの場合は、アプリケーションのコピーを作成します。 たとえば、テスト用に複製したコピーが必要になる場合があります。
 - 複数のコピーを作成する予定がある場合は、既存のアプリケーションからアプリケーション テンプレートを作成します。
 
-詳細については、「[Azure IoT Central アプリケーションをエクスポートする](howto-use-app-templates.md)」を参照してください。
+詳細については、「[カスタム アプリケーション テンプレートを作成して使用する](howto-create-iot-central-application.md#create-and-use-a-custom-application-template)」を参照してください。
 
 ## <a name="migrate-to-a-new-version"></a>新しいバージョンに移行する
 
@@ -72,14 +72,17 @@ IoT Central アプリケーションに接続するデバイスは、通常、�
 
 メトリックを表示するために、管理者は Azure portal、REST API、PowerShell、または Azure CLI クエリのグラフを使用できます。
 
-詳細については、「[IoT Central アプリケーションの全体的な正常性状態を監視する](howto-monitor-application-health.md)」を参照してください。
+詳細については、「[アプリケーションの正常性を監視する](howto-manage-iot-central-from-portal.md#monitor-application-health)」を参照してください。
+
+## <a name="monitor-connected-iot-edge-devices"></a>接続されている IoT Edge デバイスを監視する
+
+Azure Monitor と組み込みのメトリック統合を使用して、お使いの IoT Edge フリートをリモートで監視する方法については、「[メトリックの収集と転送](../../iot-edge/how-to-collect-and-transport-metrics.md)」を参照してください。
 
 ## <a name="tools"></a>ツール
 
 管理者として使用するツールの多くは、各 IoT Central アプリケーションの **[管理]** セクションで使用できます。 次のツールを使用して、いくつかの管理タスクを実行することもできます。
 
-- [Azure CLI](howto-manage-iot-central-from-cli.md)
-- [Azure PowerShell](howto-manage-iot-central-from-powershell.md)
+- [Azure コマンド ライン](howto-manage-iot-central-from-cli.md)
 - [Azure Portal](howto-manage-iot-central-from-portal.md)
 
 ## <a name="next-steps"></a>次のステップ

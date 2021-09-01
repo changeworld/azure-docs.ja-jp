@@ -1,18 +1,18 @@
 ---
 title: 仮想ネットワークに Azure Spring Cloud をデプロイする
 description: 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
-ms.openlocfilehash: 0921c3d9bf254e3d486ec381c3243a8035bb6f50
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6822514e6bcbb5a232f7ee7f22ec8b0ee8a21e10
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750355"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396743"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>仮想ネットワークに Azure Spring Cloud をデプロイする
 
@@ -25,6 +25,12 @@ ms.locfileid: "111750355"
 * 企業ネットワークでの Azure Spring Cloud アプリとサービス ランタイムのインターネットからの分離。
 * オンプレミスのデータ センター内のシステムや、他の仮想ネットワーク内の Azure サービスとの Azure Spring Cloud の対話。
 * Azure Spring Cloud の送受信ネットワーク通信を制御するための顧客への権限付与。
+
+次のビデオでは、管理対象仮想ネットワークを使用して Spring Boot アプリケーションをセキュリティで保護する方法について説明します。
+
+<br>
+
+> [!VIDEO https://www.youtube.com/embed/LbHD0jd8DTQ?list=PLPeZXlCR7ew8LlhnSH63KcM0XhMKxT1k_]
 
 > [!Note]
 > Azure 仮想ネットワークは、新しい Azure Spring Cloud のサービス インスタンスを作成する時点に限り選択できます。 Azure Spring Cloud を作成した後で、別の仮想ネットワークを使用するように変更することはできません。
@@ -88,22 +94,24 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 
     ![[アクセス制御] 画面を示すスクリーンショット。](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. **Azure Spring Cloud リソース プロバイダー** に *所有者* ロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+1. **Azure Spring Cloud リソース プロバイダー** に *所有者* ロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md#step-2-open-the-add-role-assignment-pane)」を参照してください。
 
-この手順は、次の Azure CLI コマンドを実行して行うこともできます。
+    ![リソース プロバイダーへの所有者の割り当てを示すスクリーンショット。](./media/spring-cloud-v-net-injection/assign-owner-resource-provider.png)
 
-```azurecli
-VIRTUAL_NETWORK_RESOURCE_ID=`az network vnet show \
-    --name ${NAME_OF_VIRTUAL_NETWORK} \
-    --resource-group ${RESOURCE_GROUP_OF_VIRTUAL_NETWORK} \
-    --query "id" \
-    --output tsv`
+    この手順は、次の Azure CLI コマンドを実行して行うこともできます。
 
-az role assignment create \
-    --role "Owner" \
-    --scope ${VIRTUAL_NETWORK_RESOURCE_ID} \
-    --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
-```
+    ```azurecli
+    VIRTUAL_NETWORK_RESOURCE_ID=`az network vnet show \
+        --name ${NAME_OF_VIRTUAL_NETWORK} \
+        --resource-group ${RESOURCE_GROUP_OF_VIRTUAL_NETWORK} \
+        --query "id" \
+        --output tsv`
+
+    az role assignment create \
+        --role "Owner" \
+        --scope ${VIRTUAL_NETWORK_RESOURCE_ID} \
+        --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
+    ```
 
 ## <a name="deploy-an-azure-spring-cloud-instance"></a>Azure Spring Cloud インスタンスのデプロイ
 
@@ -113,7 +121,7 @@ az role assignment create \
 
 1. 上部の検索ボックスで、**Azure Spring Cloud** を検索します。 その結果から **[Azure Spring Cloud]** を選択します。
 
-1. **[Azure Spring Cloud]** ページで **[+ 追加]** を選択します。
+1. **[Azure Spring Cloud]** ページで **[追加]** を選択します。
 
 1. Azure Spring Cloud の **[作成]** ページで、フォームに入力します。
 
@@ -167,7 +175,7 @@ az role assignment create \
 | /25             | 128       | 120           | <p> 1 コアのアプリ: 500<br> 2 コアのアプリ: 500<br>  3 コアのアプリ: 480<br>  4 コアのアプリ: 360</p> |
 | /24             | 256       | 248           | <p> 1 コアのアプリ: 500<br/> 2 コアのアプリ: 500<br/>  3 コアのアプリ: 500<br/>  4 コアのアプリ: 500</p> |
 
-サブネットの場合、5 つの IP アドレスが Azure によって予約されており、Azure Spring Cloud で少なくとも 4 つのアドレスが必要です。 少なくとも 9 個の IP アドレスが必要になるため、/29 と /30 は非運用です。
+サブネットの場合、5 つの IP アドレスが Azure によって予約されており、Azure Spring Cloud で少なくとも 3 つの IP アドレスが必要です。 少なくとも 8 個の IP アドレスが必要になるため、/29 と /30 は非運用です。
 
 サービス ランタイムのサブネットの場合、最小サイズは /28 です。 このサイズは、アプリ インスタンスの数には影響しません。
 
@@ -177,9 +185,8 @@ Azure Spring Cloud では、既存のサブネットとルート テーブルの
 
 カスタム サブネットにルート テーブルが含まれていない場合、Azure Spring Cloud はサブネットごとにルート テーブルを作成し、インスタンスのライフサイクルを通してこれらにルールを追加します。 カスタム サブネットにルート テーブルが含まれている場合は、Azure Spring Cloud はインスタンスの操作中に既存のルート テーブルを確認し、操作に応じてルールを追加または更新します。
 
-> [!Warning] 
+> [!Warning]
 > カスタム ルールをカスタム ルート テーブルに追加し、更新することができます。 ただし、ルールは Azure Spring Cloud によって追加され、ルールを更新したり削除したりすることはできません。 0\.0.0.0/0 などのルールは、特定のルート テーブルに常に存在し、NVA や他のエグレス ゲートウェイなどのインターネット ゲートウェイのターゲットにマップされている必要があります。 ルールの更新でカスタム ルールのみが変更されている場合は注意が必要です。
-
 
 ### <a name="route-table-requirements"></a>ルート テーブルの要件
 
@@ -193,9 +200,6 @@ Azure Spring Cloud では、既存のサブネットとルート テーブルの
 
 ## <a name="next-steps"></a>次のステップ
 
-[VNet 内の Azure Spring Cloud にアプリケーションをデプロイする](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
-
-## <a name="see-also"></a>関連項目
-
+- [VNet 内の Azure Spring Cloud にアプリケーションをデプロイする](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 - [VNET での Azure Spring Cloud のトラブルシューティング](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/05-troubleshooting-azure-spring-cloud-in-vnet.md)
 - [VNET での Azure Spring Cloud の実行に関するお客様の責任](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/06-customer-responsibilities-for-running-azure-spring-cloud-in-vnet.md)

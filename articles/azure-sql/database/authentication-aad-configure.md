@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, sstein
-ms.date: 05/11/2021
-ms.openlocfilehash: 4d06ec600f71e682c9faadf3760ee76bb41c40b2
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.reviewer: vanto
+ms.date: 08/11/2021
+ms.openlocfilehash: 29479aa35146630162226ff392f3924bc59ea8ae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020999"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735627"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -302,7 +302,7 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Serve
 **DisplayName** 入力パラメーターには、Azure AD の表示名またはユーザー プリンシパル名を使用できます。 たとえば、``DisplayName="John Smith"`` や ``DisplayName="johns@contoso.com"``す。 Azure AD グループの場合は、Azure AD の表示名のみがサポートされています。
 
 > [!NOTE]
-> Azure PowerShell コマンド ```Set-AzSqlServerActiveDirectoryAdministrator``` では、サポートされていないユーザーに対する Azure AD 管理者のプロビジョニングは禁止されていません。 サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません
+> Azure PowerShell コマンド `Set-AzSqlServerActiveDirectoryAdministrator` では、サポートされていないユーザーに対する Azure AD 管理者のプロビジョニングは禁止されていません。 サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません
 
 次の例では、オプションとして **ObjectID** を使用します。
 
@@ -330,7 +330,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングできます。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者をプロビジョニングします。 (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者を削除します。 |
@@ -386,10 +386,14 @@ SQL Managed Instance では Azure AD サーバー プリンシパル (ログイ�
 > [!WARNING]
 > T-SQL の `CREATE LOGIN` ステートメントと `CREATE USER` ステートメントのユーザー名に含まれるコロン `:` やアンパサンド `&` などの特殊文字は、サポートされていません。
 
+> [!IMPORTANT]
+> 2048 を超える Azure AD のセキュリティ グループに属する Azure AD のユーザーとサービス プリンシパル (Azure AD アプリケーション) は、SQL Database、Managed Instance、または Azure Synapse でデータベースにログインすることはできません。
+
+
 Azure AD ベースの包含データベース ユーザー (データベースを所有するサーバー管理者以外) を作成するには、少なくとも **ALTER ANY USER** アクセス許可を持つユーザーとして、Azure AD の ID でデータベースに接続します。 その後、次の Transact-SQL 構文を使用します。
 
 ```sql
-CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
+CREATE USER [<Azure_AD_principal_name>] FROM EXTERNAL PROVIDER;
 ```
 
 *Azure_AD_principal_name* には、Azure AD ユーザーのユーザー プリンシパル名または Azure AD のグループの表示名を指定できます。

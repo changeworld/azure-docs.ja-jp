@@ -10,12 +10,12 @@ ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 13491735f73cb1696f3c36f3434cc781a1e2b739
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80c02416f5e1fb232d84b1311d261122dc7b9a35
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526807"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733666"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>コンテナー、ディレクトリ、または BLOB のユーザー委任 SAS を .NET で作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "99526807"
 
 ## <a name="assign-azure-roles-for-access-to-data"></a>データにアクセスするための Azure ロールを割り当る
 
-Azure AD セキュリティ プリンシパルが Blob データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での BLOB データへのアクセスを許可する Azure ロールをセキュリティ プリンシパルに割り当てる必要があります。 Azure RBAC 経由でのアクセス許可の割り当てについては、[Azure Active Directory を使用した Azure BLOB とキューへのアクセスの承認](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)に関する記事の「**アクセス権に Azure ロールを割り当てる**」というタイトルのセクションを参照してください。
+Azure AD セキュリティ プリンシパルが Blob データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での BLOB データへのアクセスを許可する Azure ロールをセキュリティ プリンシパルに割り当てる必要があります。 Azure RBAC によるアクセス許可の割り当てについては、「[BLOB データにアクセスするために Azure ロールを割り当てる](assign-azure-role-data-access.md)」を参照してください。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 

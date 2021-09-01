@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: b0a912a3023ba6d8504d5856d5a45a93d0dc9488
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: a3eb35ada01612d3a3298b1899d3e9fb7101684b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809402"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735883"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング
 
@@ -42,6 +42,7 @@ Redis は、[INFO](https://redis.io/commands/info) コマンドを通して、�
 - 大きいキャッシュ オブジェクトをより小さい関連オブジェクトに分割します。
 - 潜在的な影響について早期に通知される、使用済みメモリなどのメトリックに関する[アラートを作成](cache-how-to-monitor.md#alerts)します。
 - メモリ容量の多いより大きいキャッシュ サイズに[スケーリング](cache-how-to-scale.md)します。
+- メモリ容量の多いより大きいキャッシュ サイズに[スケーリング](cache-how-to-scale.md)します。 詳細については、「[Azure Cache for Redis 計画に関するよくあるご質問](./cache-planning-faq.yml)」を参照してください。
 
 ## <a name="high-cpu-usage-or-server-load"></a>高い CPU 使用率またはサーバーの負荷
 
@@ -53,11 +54,11 @@ CPU またはサーバーの負荷などの[メトリックを監視](cache-how-
 
 - 以下に示す[実行時間の長いコマンド](#long-running-commands)や深刻なメモリ不足によるページ フォールトなどの、CPU スパイクの原因を調査します。
 - 潜在的な影響について早期に通知される、CPU または サーバーの負荷などのメトリックに関する[アラートを作成](cache-how-to-monitor.md#alerts)します。
-- CPU 容量の多いより大きいキャッシュ サイズに[スケーリング](cache-how-to-scale.md)します。
+- より多くのシャードに[スケール](cache-how-to-scale.md)アウトして、複数の Redis プロセスに負荷を分散するか、CPU コアを追加してより大きなキャッシュ サイズにスケールアップします。 詳細については、「[Azure Cache for Redis 計画に関するよくあるご質問](./cache-planning-faq.yml)」を参照してください。
 
 ## <a name="long-running-commands"></a>実行時間の長いコマンド
 
-Redis コマンドの中には、他のコマンドより実行コストが高いものがあります。 [Redis コマンドのドキュメント](https://redis.io/commands)は、各コマンドの時間複雑度を示しています。 Redis コマンドの処理はシングルスレッドで行われるため、コマンドの実行時間が長いと、それより後に実行される他のコマンドはすべてブロックされます。 Redis サーバーに対して発行しているコマンドを確認し、パフォーマンスへの影響を理解する必要があります。 たとえば、[KEYS](https://redis.io/commands/keys) コマンドは多くの場合、それが O(N) 操作であることを認識せずに使用されます。 [SCAN](https://redis.io/commands/scan) を使用して KEYS を回避することにより CPU スパイクを削減できます。
+Redis コマンドの中には、他のコマンドより実行コストが高いものがあります。 [Redis コマンドのドキュメント](https://redis.io/commands)は、各コマンドの時間複雑度を示しています。 Redis コマンドの処理はシングルスレッドで行われるため、コマンドの実行時間が長いと、それより後に実行される他のコマンドはすべてブロックされます。 パフォーマンスへの影響を把握するには、Redis サーバーに対して発行しているコマンドを確認してください。 たとえば、[KEYS](https://redis.io/commands/keys) コマンドは多くの場合、それが O(N) 操作であることを認識せずに使用されます。 [SCAN](https://redis.io/commands/scan) を使用して KEYS を回避することにより CPU スパイクを削減できます。
 
 [SLOWLOG](https://redis.io/commands/slowlog) コマンドを使用すると、サーバーに対して実行されているコストの高いコマンドを測定できます。
 
@@ -71,12 +72,12 @@ Redis コマンドの中には、他のコマンドより実行コストが高�
 
 - ネットワーク要求を削減するようにクライアント呼び出し動作を変更します。
 - 潜在的な影響について早期に通知される、キャッシュの読み取りやキャッシュの書き込みなどのメトリックに関する[アラートを作成](cache-how-to-monitor.md#alerts)します。
-- ネットワーク帯域幅容量の多いより大きいキャッシュ サイズに[スケーリング](cache-how-to-scale.md)します。
+- ネットワーク帯域幅容量の多いより大きいキャッシュ サイズに[スケーリング](cache-how-to-scale.md)します。 詳細については、「[Azure Cache for Redis 計画に関するよくあるご質問](./cache-planning-faq.yml)」を参照してください。
 
 ## <a name="additional-information"></a>関連情報
 
 - [Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング](cache-troubleshoot-client.md)
 - [最適なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)
-- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)
 - [Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)
-- [Redis コマンドの実行方法](cache-development-faq.md#how-can-i-run-redis-commands)
+- [Redis コマンドの実行方法](cache-development-faq.yml#how-can-i-run-redis-commands-)

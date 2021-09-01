@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.custom: devx-track-python
+ms.custom: devx-track-python, has-adal-ref
 author: likebupt
 ms.author: keli19
-ms.date: 01/02/2021
-ms.openlocfilehash: 6003ca9156d8553604d7ebbf94c5c3373d077f0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/15/2021
+ms.openlocfilehash: d4ac33619d653b99de32dcd86cf226f217382f43
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102500701"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429765"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -162,8 +162,8 @@ Python スクリプトの実行モジュールには、出発点として利用�
     
     アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでもパイプラインの実行中に使用できます。 アーカイブにディレクトリ構造が含まれる場合、その構造が保持されます。
  
-    > [!WARNING]
-    > **app** は、組み込みサービスの予約語であるため、**app** をフォルダー名またはスクリプトとして使用 **しないでください**。 ただし、`app123` など、他の名前空間は使用できます。
+    > [!IMPORTANT]
+    > 一部の一般的な単語 (`test`、`app` など) は組み込みサービス用に予約されているため、スクリプト バンドル内のファイルには一意でわかりやすい名前を使用してください。
    
     Python スクリプト ファイルと txt ファイルが含まれているスクリプト バンドルの例を次に示します。
       

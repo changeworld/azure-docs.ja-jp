@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 62f51922399a300b9ed803c3ee2d380dcab615b8
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 672fac2b33ef1d8fd9be1948d0c7da332f8ce43b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987526"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733858"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute の仮想ネットワーク ゲートウェイについて
 
@@ -31,23 +31,50 @@ ms.locfileid: "107987526"
 ## <a name="gateway-skus"></a><a name="gwsku"></a>ゲートウェイの SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-ゲートウェイをより強力なゲートウェイ SKU にアップグレードする場合、ほとんどの場合 "Resize-AzVirtualNetworkGateway" PowerShell コマンドレットを使用できます。 これは、Standard および HighPerformance SKU へのアップグレードの場合でも機能します。 ただし、UltraPerformance SKU へのアップグレードでは、ゲートウェイを再作成する必要があります。 ゲートウェイの再作成によりダウンタイムが発生します。
+ゲートウェイをより強力なゲートウェイ SKU にアップグレードする場合、ほとんどの場合 "Resize-AzVirtualNetworkGateway" PowerShell コマンドレットを使用できます。 これは、Standard および HighPerformance SKU へのアップグレードの場合でも機能します。 ただし、可用性ゾーン (AZ) 以外のゲートウェイを UltraPerformance SKU にアップグレードするには、ゲートウェイを再作成する必要があります。 ゲートウェイの再作成によりダウンタイムが発生します。 AZ 対応 SKU をアップグレードするためにゲートウェイを削除して再作成する必要はありません。
+### <a name="feature-support-by-gateway-sku"></a><a name="gatewayfeaturesupport"></a>ゲートウェイ SKU による機能のサポート
+次の表では、各ゲートウェイの種類でサポートされる機能を示しています。
+
+|**ゲートウェイ SKU**|**VPN Gateway と ExpressRoute の共存**|**FastPath**|**回線接続の最大数**|
+| --- | --- | --- | --- |
+|**Standard SKU/ERGw1Az**|はい|いいえ|4|
+|**High Perf SKU/ERGw2Az**|はい|いいえ|8
+|**Ultra Performance SKU/ErGw3Az**|はい|はい|16
 
 ### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>ゲートウェイ SKU の推定パフォーマンス
-次の表は、ゲートウェイの種類と、予測されるパフォーマンスを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
+次の表は、ゲートウェイの種類と、予測されるパフォーマンスとスケールの数値を示したものです。 これらの数値は、以下のテスト条件から得られたもので、サポートの上限を表しています。 実際のパフォーマンスは、トラフィックによってテスト条件がどれだけ厳密に再現されるかによって異なる場合があります。
+
+### <a name="testing-conditions"></a>テスト条件
+##### <a name="standardergw1az"></a>**Standard/ERGw1Az** #####
+
+- 回線帯域幅: 1 Gbps
+- ゲートウェイによってアドバタイズされたルートの数: 500
+- 学習されたルートの数: 4,000
+##### <a name="high-performanceergw2az"></a>**High Performance/ERGw2Az** #####
+
+- 回線帯域幅: 1 Gbps
+- ゲートウェイによってアドバタイズされたルートの数: 500
+- 学習されたルートの数: 9,500
+##### <a name="ultra-performanceergw3az"></a>**Ultra Performance/ErGw3Az** #####
+
+- 回線帯域幅: 1 Gbps
+- ゲートウェイによってアドバタイズされたルートの数: 500
+- 学習されたルートの数: 9,500
+
+ この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
+ 
+|**ゲートウェイ SKU**|**1 秒あたりの接続数**|**1 秒あたりのメガビット数**|**1 秒あたりのパケット数**|**Virtual Network でサポートされている VM の数**|
+| --- | --- | --- | --- | --- |
+|**Standard/ERGw1Az**|7,000|1,000|100,000|2,000|
+|**High Performance/ERGw2Az**|14,000|2,000|250,000|4,500|
+|**Ultra Performance/ErGw3Az**|16,000|10,000|1,000,000|11,000|
 
 > [!IMPORTANT]
 > アプリケーションのパフォーマンスは複数の要因によって異なります。これらの要因には、エンド ツー エンドの待機時間、アプリケーションが起動するトラフィック フローの数などがあります。 テーブルの数値は、アプリケーションが理想的な環境で理論上達成できる上限を表しています。
->
->
 
-> [!NOTE]
+>[!NOTE]
 > 同じ仮想ネットワークに接続できる同じピアリングの場所からの ExpressRoute 回線の最大数は、すべてのゲートウェイに対して 4 です。
 >
->
-
-[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
-
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>ゲートウェイ サブネット
 

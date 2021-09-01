@@ -3,16 +3,16 @@ title: Azure Security Center を使用して Docker ホストをセキュリテ�
 description: Docker ホストを保護し、CIS Docker ベンチマークに準拠していることを確認する方法
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 07/18/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b30e08a2739000d2a7ec14a95742f2654e1d2ea1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e421815fd962a62760c4d16106daa7f85fb1599
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98916236"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732554"
 ---
 # <a name="harden-your-docker-hosts"></a>Docker ホストのセキュリティを強化する
 
@@ -29,10 +29,10 @@ Security Center には CIS Docker Benchmark のルールセット全体が含ま
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|ホストが接続するワークスペースの **閲覧者**|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png":::国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Docker 構成のセキュリティの脆弱性を特定して修復する
@@ -43,18 +43,21 @@ Security Center には CIS Docker Benchmark のルールセット全体が含ま
 
     [推奨事項] ページには、影響を受けるリソース (Docker ホスト) が表示されます。 
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-found.png" alt-text="コンテナーのセキュリティ構成の脆弱性を修復するための推奨事項":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-found.png" alt-text="コンテナーのセキュリティ構成の脆弱性を修復するための推奨事項。":::
+
+    > [!NOTE]
+    > Docker を実行していないマシンは、 **[適用されないリソース]** タブに表示されます。これらは Azure Policy に [準拠] と表示されます。 
 
 1. 特定のホストで障害が発生した CIS コントロールを表示して修復するには、調査するホストを選択します。 
 
     > [!TIP]
     > [資産インベントリ] ページで開始し、そこからこの推奨事項に到達した場合は、[推奨事項] ページの **[アクションの実行]** ボタンを選択します。
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Log Analytics を起動する [アクションの実行] ボタン":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Log Analytics を起動する [アクションの実行] ボタン。":::
 
     実行の準備が整ったカスタム操作を示した Log Analytics が開きます。 既定のカスタム クエリには、問題を解決するためのガイドラインと共に評価済みの失敗したルールの全一覧が含まれています。
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="失敗したすべての CIS コントロールを表示するクエリを含む Log Analytics ページ":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="失敗したすべての CIS コントロールを表示するクエリを含む Log Analytics ページ。":::
 
 1. 必要に応じて、クエリ パラメーターを調整します。
 

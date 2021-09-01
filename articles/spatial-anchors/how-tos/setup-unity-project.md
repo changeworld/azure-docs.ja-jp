@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 03/30/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fe9160f22754c62888b2a61ce9751f596842604e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: d87c789b4c5f1decc468838ccabd136cec32cabc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076704"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721805"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity プロジェクトでの Azure Spatial Anchors の構成
 
@@ -32,6 +32,13 @@ Unity プロジェクトに Azure Spatial Anchors SDK を含める前に、必�
 
 ### <a name="import-asa-packages"></a>ASA パッケージのインポート
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
+
+### <a name="hololens-only-configure-your-unity-project-xr-settings"></a>HoloLens のみ: Unity プロジェクトの XR 設定を構成する
+HoloLens で複合現実アプリを開発する場合、Unity で XR 構成を設定する必要があります。 詳細については、「[XR 構成の設定 - 混合現実 | Microsoft Docs](https://docs.microsoft.com/windows/mixed-reality/develop/unity/xr-project-setup?tabs=openxr)」と「[Unity バージョンと XR プラグインの選択 - 混合現実 | Microsoft Docs](https://docs.microsoft.com/windows/mixed-reality/develop/unity/choosing-unity-version)」を参照してください。
+
+Azure Spatial Anchors SDK 2.9 以前では、Windows XR プラグイン (com.unity.xr.windowsmr) のみがサポートされています。そのため Azure Spatial Anchor の HoloLens Unity パッケージには、com.unity.xr.windowsmr パッケージに対する明示的な依存関係があります。
+
+Azure Spatial Anchors SDK のバージョン 2.10.0 以降では、Mixed Reality OpenXR プラグイン ([com.microsoft.mixedreality.openxr](https://dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging?_a=package&feed=Unity-packages&view=overview&package=com.microsoft.mixedreality.openxr&protocolType=Npm)) と Windows XR プラグイン ([com.unity.xr.windowsmr](https://docs.unity3d.com/Manual/com.unity.xr.windowsmr.html)) の両方がサポートされています。 プロジェクトには、ユーザーの選択に従って、com.microsoft.mixedreality.openxr または com.unity.xr.windowsmr のいずれかを含める必要があります。
 
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Android のみ:mainTemplate.gradle ファイルを構成する
 

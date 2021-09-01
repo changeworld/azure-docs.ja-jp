@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
-ms.author: trbye
-ms.openlocfilehash: f7e57b90b7d81c27d8e8fa2eda63203968f641d7
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.author: lajanuar
+ms.openlocfilehash: fb5c858cef3ad53ccda73ef3d9524241d3f2f749
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113279928"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122423326"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -49,19 +49,19 @@ from azure.cognitiveservices.speech.audio import AudioOutputConfig
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成する必要があります。 このクラスには、音声キーとそれに関連付けられた場所またはリージョン、エンドポイント、ホスト、認証トークンなど、サブスクリプションに関する情報が含まれています。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成する必要があります。 このクラスには、音声キーとそれに関連付けられた場所/リージョン、エンドポイント、ホスト、認証トークンなど、サブスクリプションに関する情報が含まれています。
 
 > [!NOTE]
 > 音声認識、音声合成、翻訳、またはインテント認識のどれを実行するのかに関係なく、必ず構成を作成します。
 
 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を初期化するには、次に示すようないくつかの方法があります。
 
-* サブスクリプションの場合: 音声キーと、それに関連付けられた場所またはリージョンを渡します。
+* サブスクリプションの場合: 音声キーと、それに関連付けられた場所/リージョンを渡します。
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 音声キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 音声キーまたは認証トークンは省略可能です。
-* 認証トークンの場合: 認証トークンと、それに関連付けられた場所またはリージョンを渡します。
+* 認証トークンの場合: 認証トークンと、それに関連付けられた場所/リージョンを渡します。
 
-この例では、音声キーと場所またはリージョンを使用して [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。
+この例では、音声キーと場所/リージョンを使用して [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。
 
 ```python
 speech_config = SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
@@ -152,7 +152,7 @@ SSML を使用したカスタマイズを開始するには、音声を切り替
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-US-AriaNeural">
+  <voice name="en-US-ChristopherNeural">
     When you're on the freeway, it's a good idea to use a GPS.
   </voice>
 </speak>
@@ -174,7 +174,7 @@ stream.save_to_wav_file("path/to/write/file.wav")
 ```
 
 > [!NOTE]
-> SSML を使用せずに音声を変更するには、`SpeechConfig.speech_synthesis_voice_name = "en-US-AriaNeural"` を使用して `SpeechConfig` のプロパティを設定します
+> SSML を使用せずに音声を変更するには、`SpeechConfig.speech_synthesis_voice_name = "en-US-ChristopherNeural"` を使用して `SpeechConfig` のプロパティを設定します
 
 ## <a name="get-facial-pose-events"></a>表情イベントを取得する
 

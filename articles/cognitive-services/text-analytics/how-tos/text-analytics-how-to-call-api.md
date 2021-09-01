@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: aahi
-ms.openlocfilehash: b7ad200bba527d0b4b841483175b2672d94f162e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b9e18bb9bf313ce2bbf1441b319b841a3153f38b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962854"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396970"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -58,7 +58,7 @@ Text Analytics は同期的に呼び出すことができます (低待機時間
 
 ## <a name="using-the-api-asynchronously"></a>API の非同期的な使用
 
-v3.1-preview.5 以降の Text Analytics API には、2 つの非同期エンドポイントがあります。 
+Text Analytics v3.1 API には、2 つの非同期エンドポイントがあります。 
 
 * Text Analytics 用の `/analyze` エンドポイントを使用すると、API の 1 回の呼び出しで、複数のテキスト分析機能を使用して同じテキスト ドキュメントのセットを分析できます。 以前は、複数の機能を使用するには、操作ごとに個別に API を呼び出す必要がありました。 Text Analytics の複数の機能で、大きなドキュメントのセットを分析する必要があるときは、この機能を検討してください。
 
@@ -76,11 +76,14 @@ v3.1-preview.5 以降の Text Analytics API には、2 つの非同期エンド�
 | エンティティ リンク設定 | ✔ | ✔* |
 | Text Analytics for Health (コンテナー) | ✔ |  |
 | Text Analytics for Health (API) |  | ✔  |
+| テキスト要約 |  | ✔  |
 
 `*` - `/analyze` エンドポイントを通して非同期に呼び出されます。
 
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
+
+[!INCLUDE [text-analytics-character-limits](../includes/character-limits.md)]
 
 <a name="json-schema"></a>
 
@@ -131,6 +134,7 @@ API 要求の形式は、すべての同期操作について同じです。 ド
 * Entity Linking
 * 感情分析
 * オピニオン マイニング
+* テキスト要約
 
 | 要素 | 有効な値 | 必須 | 使用方法 |
 |---------|--------------|-----------|-------|
@@ -139,10 +143,10 @@ API 要求の形式は、すべての同期操作について同じです。 ド
 |`documents` | 後の `id` および `text` フィールドが含まれます | 必須 | 送信される各ドキュメントの情報と、ドキュメントの名前のテキストが含まれます。 |
 |`id` | String | 必須 | 指定した ID は、出力を構造化するために使用されます。 |
 |`text` | 最大 125,000 文字の、構造化されていない生のテキスト。 | 必須 | 英語である必要があります。現在サポートされている言語はこれだけです。 |
-|`tasks` | `entityRecognitionTasks`、`entityLinkingTasks`、`keyPhraseExtractionTasks`、`entityRecognitionPiiTasks`、または `sentimentAnalysisTasks` の Text Analytics 機能が含まれます。 | 必須 | 使用する 1 つ以上の Text Analytics 機能。 `entityRecognitionPiiTasks` にはオプションのパラメーター `domain` があり、これを `pii` または `phi` および `pii-categories` に設定して、選択したエンティティ型を検出することができます。 `domain` パラメーターが指定されていない場合、システムは既定値の `pii` になります。 同様に、`sentimentAnalysisTasks` には `opinionMining` ブール型パラメーターがあり、感情分析の出力にオピニオン マイニング結果が含められます。 |
+|`tasks` | `entityRecognitionTasks`、`entityLinkingTasks`、`keyPhraseExtractionTasks`、`entityRecognitionPiiTasks`、`extractiveSummarizationTasks`、または `sentimentAnalysisTasks` の Text Analytics 機能が含まれます。 | 必須 | 使用する 1 つ以上の Text Analytics 機能。 `entityRecognitionPiiTasks` にはオプションのパラメーター `domain` があり、これを `pii` または `phi` および `piiCategories` に設定して、選択したエンティティ型を検出することができます。 `domain` パラメーターが指定されていない場合、システムは既定値の `pii` になります。 同様に、`sentimentAnalysisTasks` には `opinionMining` ブール型パラメーターがあり、感情分析の出力にオピニオン マイニング結果が含められます。 |
 |`parameters` | 後の `model-version` および `stringIndexType` フィールドが含まれます | 必須 | このフィールドは、上で選択した機能タスクに含まれています。 これらには、使用するモデル バージョンとインデックスの種類に関する情報が含まれます。 |
 |`model-version` | String | 必須 | 呼び出しで使用するモデルのバージョンを指定します。  |
-|`stringIndexType` | String | 必須 | プログラミング環境に合ったテキスト デコーダーを指定します。  サポートされている種類は、`textElement_v8` (既定)、`unicodeCodePoint`、`utf16CodeUnit` です。 詳細については、[テキストのオフセットに関する記事](../concepts/text-offsets.md#offsets-in-api-version-31-preview)を参照してください。  |
+|`stringIndexType` | String | 必須 | プログラミング環境に合ったテキスト デコーダーを指定します。  サポートされている種類は、`textElement_v8` (既定)、`unicodeCodePoint`、`utf16CodeUnit` です。 詳細については、[テキストのオフセットに関する記事](../concepts/text-offsets.md#offsets-in-api-version-31)を参照してください。  |
 |`domain` | String | 省略可能 | `entityRecognitionPiiTasks` タスクへのパラメーターとしてのみ適用され、`pii` または `phi` に設定できます。 指定されていない場合は、既定で `pii` になります。  |
 
 ```json
@@ -165,8 +169,7 @@ API 要求の形式は、すべての同期操作について同じです。 ド
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElement_v8",
-                    "loggingOptOut": "false"
+                    "loggingOptOut": false
                 }
             }
         ],
@@ -174,8 +177,7 @@ API 要求の形式は、すべての同期操作について同じです。 ド
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElement_v8",
-                    "loggingOptOut": "true",
+                    "loggingOptOut": true,
                     "domain": "phi",
                     "piiCategories":["default"]
                 }
@@ -185,8 +187,7 @@ API 要求の形式は、すべての同期操作について同じです。 ド
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElement_v8",
-                    "loggingOptOut": "false"
+                    "loggingOptOut": false
                 }
             }
         ],
@@ -194,7 +195,7 @@ API 要求の形式は、すべての同期操作について同じです。 ド
             {
                 "parameters": {
                     "model-version": "latest",
-                    "loggingOptOut": "false"
+                    "loggingOptOut": false
                 }
             }
         ],
@@ -202,9 +203,8 @@ API 要求の形式は、すべての同期操作について同じです。 ド
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElement_v8",
-                    "loggingOptOut": "false",
-                    "opinionMining": "true"
+                    "loggingOptOut": false,
+                    "opinionMining": true
                 }
             }
         ]
@@ -215,7 +215,7 @@ API 要求の形式は、すべての同期操作について同じです。 ド
 
 ### <a name="asynchronous-requests-to-the-health-endpoint"></a>`/health` エンドポイントへの非同期要求
 
-Text Analytics for Health でホストされた API への API 要求の形式は、コンテナーの場合と同じです。 ドキュメントは生の構造化されていないテキストとして JSON オブジェクトで送信されます。 XML はサポートされていません。 JSON スキーマは、以下で説明する要素で構成されています。  Text Analytics for Health のパブリック プレビューへのアクセスを要求するには、[Cognitive Services 要求フォーム](https://aka.ms/csgate)に記入して送信してください。 Text Analytics for Health の使用には課金されません。 
+Text Analytics for Health でホストされた API への API 要求の形式は、コンテナーの場合と同じです。 ドキュメントは生の構造化されていないテキストとして JSON オブジェクトで送信されます。 XML はサポートされていません。 JSON スキーマは、以下で説明する要素で構成されています。  Text Analytics for Health へのアクセスを要求するには、[Cognitive Services 要求フォーム](https://aka.ms/csgate)に記入して送信してください。
 
 | 要素 | 有効な値 | 必須 | 使用方法 |
 |---------|--------------|-----------|-------|
@@ -249,7 +249,10 @@ example.json
 
 Postman (または別の Web API テスト ツール) で、使用する機能のエンドポイントを追加します。 次の表で適切なエンドポイントの形式を確認し、`<your-text-analytics-resource>` をご自分のリソース エンドポイントに置き換えます。 例:
 
-`https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
+> [!TIP]
+> `/v3.1` を `/v3.0/` に置き換えて、以下の同期エンドポイントの v3.0 を呼び出すことができます。
+
+`https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1/languages`
 
 #### <a name="synchronous"></a>[Synchronous](#tab/synchronous)
 
@@ -257,14 +260,14 @@ Postman (または別の Web API テスト ツール) で、使用する機能�
 
 | 機能 | 要求の種類 | リソースのエンドポイント |
 |--|--|--|
-| 言語検出 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
-| 感情分析 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
-| オピニオン マイニング | POST | `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/sentiment?opinionMining=true` |
-| キー フレーズ抽出 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/keyPhrases` |
-| 固有表現認識 - 一般 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/general` |
-| 固有表現認識 - PII | POST | `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/recognition/pii` |
-| 固有表現認識 - PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi` |
-| Entity Linking | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/linking` |
+| 言語検出 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/languages` |
+| 感情分析 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/sentiment` |
+| オピニオン マイニング | POST | `<your-text-analytics-resource>/text/analytics/v3.1/sentiment?opinionMining=true` |
+| キー フレーズ抽出 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/keyPhrases` |
+| 固有表現認識 - 一般 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/entities/recognition/general` |
+| 固有表現認識 - PII | POST | `<your-text-analytics-resource>/text/analytics/v3.1/entities/recognition/pii` |
+| 固有表現認識 - PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.1/entities/recognition/pii?domain=phi` |
+| Entity Linking | POST | `<your-text-analytics-resource>/text/analytics/v3.1/entities/linking` |
 
 #### <a name="asynchronous"></a>[非同期](#tab/asynchronous)
 
@@ -272,16 +275,16 @@ Postman (または別の Web API テスト ツール) で、使用する機能�
 
 | 機能 | 要求の種類 | リソースのエンドポイント |
 |--|--|--|
-| 分析ジョブを送信する | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/analyze` |
-| 分析の状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/analyze/jobs/<Operation-Location>` |
+| 分析ジョブを送信する | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1/analyze` |
+| 分析の状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>`/health` エンドポイントに非同期要求を送信するためのエンドポイント
 
 | 機能 | 要求の種類 | リソースのエンドポイント |
 |--|--|--|
-| Text Analytics for Health ジョブを送信する  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs` |
-| ジョブの状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs/<Operation-Location>` |
-| ジョブの取り消し | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs/<Operation-Location>` |
+| Text Analytics for Health ジョブを送信する  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1/entities/health/jobs` |
+| ジョブの状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1/entities/health/jobs/<Operation-Location>` |
+| ジョブの取り消し | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -317,9 +320,9 @@ API 要求を送信します。 同期エンドポイントを呼び出した場
 非同期の `/analyze` または `/health` エンドポイントを呼び出した場合は、202 応答コードを受信したことを確認します。 結果を表示するには、この応答を取得する必要があります。
 
 1. API の応答で、API に送信したジョブを示す `Operation-Location` をヘッダーから見つけます。 
-2. 使用したエンドポイントに対する GET 要求を作成します。 エンドポイントの形式については[上の表](#set-up-a-request)を参照し、[API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/AnalyzeStatus)を参照してください。 例:
+2. 使用したエンドポイントに対する GET 要求を作成します。 エンドポイントの形式については[上の表](#set-up-a-request)を参照し、[API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/AnalyzeStatus)を参照してください。 例:
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1/analyze/jobs/<Operation-Location>`
 
 3. `Operation-Location` を要求に追加します。
 
@@ -357,7 +360,7 @@ API 要求を送信します。 同期エンドポイントを呼び出した場
 
 * [Text Analytics の概要](../overview.md)
 * [モデルのバージョン](../concepts/model-versioning.md)
-* [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)</br>
+* [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.yml)</br>
 * [Text Analytics 製品ページ](//go.microsoft.com/fwlink/?LinkID=759712)
 * [Text Analytics クライアント ライブラリの使用](../quickstarts/client-libraries-rest-api.md)
 * [新機能](../whats-new.md)
