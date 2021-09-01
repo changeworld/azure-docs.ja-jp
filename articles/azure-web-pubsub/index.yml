@@ -9,12 +9,12 @@ metadata:
   author: yjin81
   ms.author: yajin1
   ms.date: 01/27/2021
-  ms.openlocfilehash: e983c957135f247276d87de749dc13a6a05ed9a7
-  ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+  ms.openlocfilehash: b04fedf6e0eb1840ea6b86956fe979e675c6b927
+  ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113217019"
+  ms.lasthandoff: 08/30/2021
+  ms.locfileid: "123185527"
 landingContent:
 - title: Azure Web PubSub サービスについて
   linkLists:
@@ -22,21 +22,33 @@ landingContent:
     links:
     - text: Azure Web PubSub サービスとは
       url: overview.md
-- title: はじめに
+    - text: Azure Web PubSub サービスの主要な概念
+      url: key-concepts.md
+- title: 作業開始
   linkLists:
   - linkListType: quickstart
     links:
-    - text: チャットルーム ライブ デモを開始する
-      url: quickstart-live-demo.md
+    - text: インスタンスに接続する
+      url: quickstart-cli-try.md
     - text: 単純なチャットルーム サーバーレス アプリケーションから始める
       url: quickstart-serverless.md
+    - text: Azure Functions を使用したサーバーレス開発
+      url: tutorial-serverless-notification.md
   - linkListType: how-to-guide
     links:
-    - text: Web PubSub インスタンスを作成する方法
-      url: howto-develop-create-instance.md
-    - text: メッセージの発行とサブスクライブ
-      url: https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message
-    - text: サブプロトコルの操作
-      url: https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols
+    - text: チャット アプリを構築する
+      url: tutorial-build-chat.md
+    - text: サービスがサポートするサブプロトコルを使用したクライアント ストリーミング
+      url: tutorial-subprotocol.md
     - text: 認証とアクセス許可
-      url: https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions
+      url: tutorial-permission.md
+- title: ライブ デモ
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ホワイトボード
+      url: https://azure.github.io/azure-webpubsub/demos/whiteboard
+    - text: 簡単なチャット
+      url: https://azure.github.io/azure-webpubsub/demos/chat
+    - text: コード ストリーミング
+      url: https://azure.github.io/azure-webpubsub/demos/code-streaming

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: a6f9add11b6632d1ee26041ade0ade45ec58716d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 56cbcf841d26cc7f8f26235728ef0dd1c596daa0
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538083"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289192"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Linux 仮想マシンに SSH 接続する
 
@@ -83,10 +83,6 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 
 ## <a name="connect-using-a-private-key-stored-in-azure-key-vault"></a><a name="akv"></a>接続: Azure Key Vault に格納された秘密キーの使用
 
->[!NOTE]
->この機能のポータルの更新は、現在リージョンにロールアウトされています。
->
-
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="Azure portal の仮想マシンの概要のスクリーンショット。[接続] が選択されています":::
@@ -94,14 +90,18 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 1. **[Azure Bastion を使用して接続する]** ページで、 **[ユーザー名]** を入力し、 **[Azure Key Vault の SSH 秘密キー]** を選択します。
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/ssh-key-vault.png" alt-text="Azure Key Vault の SSH 秘密キー":::
-1. **[Azure Key Vault]** ドロップダウンを選択し、SSH 秘密キーを保存したリソースを選択します。 Azure Key Vault リソースを設定していない場合は、[Key Vault の作成](../key-vault/general/quick-create-portal.md)に関する記事を参照し、SSH 秘密キーを新しい Key Vault シークレットの値として格納します。
+1. **[Azure Key Vault]** ドロップダウンを選択し、SSH 秘密キーを保存したリソースを選択します。 Azure Key Vault リソースを設定していない場合は、[Key Vault の作成](../key-vault/secrets/quick-create-powershell.md)に関する記事を参照し、SSH 秘密キーを新しい Key Vault シークレットの値として格納します。
+
+   >[!NOTE]
+   >**PowerShell** または **Azure CLI** エクスペリエンスを使用し、SSH 秘密キーをシークレットとして Azure Key Vault に保存してください。 Azure Key Vault ポータル エクスペリエンスを使用して秘密キーを保存すると、書式設定に支障をきたし、ログインに失敗します。 ポータル エクスペリエンスを使用して秘密キーをシークレットとして保存し、元の秘密キー ファイルにアクセスできなくなった場合は、「[SSH キーを更新する](../virtual-machines/extensions/vmaccess.md#update-ssh-key)」を参照して、新しい SSH キー ペアでターゲット VM へのアクセスを更新してください。
+   >
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/key-vault.png" alt-text="Azure Key Vault":::
 
    Key Vault リソースに格納されているシークレットの **一覧表示** および **取得** のアクセス権を持っていることを確認します。 Key Vault リソースのアクセス ポリシーの割り当てと変更については、[Key Vault アクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-portal.md)に関する記事を参照してください。
 1. **[Azure Key Vault Secret]\(Azure Key Vault シークレット\)** ドロップダウンを選択し、SSH 秘密キーの値が含まれている Key Vault シークレットを選択します。
-1. **[接続]** を選択して VM に接続します。 **[接続]** をクリックすると、この仮想マシンへの SSH 接続が Azure portal で直接開きます。 この接続は、仮想マシンのプライベート IP を使用して、Bastion サービスのポート 443 で HTML5 を介して行われます。
+3. **[接続]** を選択して VM に接続します。 **[接続]** をクリックすると、この仮想マシンへの SSH 接続が Azure portal で直接開きます。 この接続は、仮想マシンのプライベート IP を使用して、Bastion サービスのポート 443 で HTML5 を介して行われます。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Bastion の詳細については、[Bastion に関する FAQ](bastion-faq.md) をご覧ください。 
+Azure Bastion の詳細については、[Bastion に関する FAQ](bastion-faq.md) をご覧ください。

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c3542332fbdad13d56a141d677e91b68f7e99d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97812790"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728075"
 ---
 * Isolated を除くすべての価格プランをサポートするマルチテナント システム
 * VNet にデプロイされ、Isolated 価格プランのアプリをサポートする App Service Environment。
@@ -30,7 +30,7 @@ VNet 統合により、アプリから VNet 内のリソースにアクセスで
 以下のような一部の機能は、VNet 統合ではサポートされません。
 
 * ドライブのマウント。
-* Active Directory 統合。
+* Windows Server の Active Directory の統合。
 * NetBIOS。
 
 ゲートウェイが必要な VNet 統合では、ターゲット VNet 内、あるいはピアリングまたは VPN を使用してターゲット VNet に接続されているネットワーク内のリソースのみにアクセスできます。 ゲートウェイが必要な VNet 統合では、Azure ExpressRoute 接続全体で利用可能なリソースへのアクセスを有効にしたり、サービス エンドポイントと連携したりすることはできません。

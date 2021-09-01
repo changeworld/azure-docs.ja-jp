@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: jushiman
-ms.openlocfilehash: 87a97f974ba687001c9e7648c9738e4af5cf2314
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: eb8e094b4a78e718efc86314ca74c0df92426248
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112073051"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122229013"
 ---
 # <a name="fx-series"></a>FX シリーズ
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 07/08/2021
 ms.author: alkohli
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 21cb737cf6168f44c1e71815d90139a04ba1d37b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 97ba43602899ee60a6a2d24cdd699b12b8a1c687
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697093"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219711"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU のアクセス、電源、接続モードを管理する
 
@@ -161,9 +161,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 デバイスは、既定の完全接続モードだけでなく、部分接続モードまたは完全切断モードで実行することもできます。 ここでは、これらの各モードについて説明します。
 
-- **完全接続** - これは、デバイスが動作する通常の既定モードです。 このモードでは、データのクラウドのアップロードとダウンロードの両方が有効です。 Azure portal またはローカル Web UI を使用して、デバイスを管理できます。
+- **完全接続** - これは、デバイスが動作する通常の既定モードです。 このモードでは、データのクラウドのアップロードとダウンロードの両方が有効です。 Azure portal またはローカル Web UI を使用して、デバイスを管理できます。 
 
-- **部分切断** – このモードでは、デバイスは共有データをアップロードもダウンロードもできませんが、Azure portal からデバイスを管理することはできます。
+    > [!NOTE]
+    > ネットワーク機能マネージャーのデプロイでは、Azure Stack Edge デバイスが **オンライン** であり、完全接続モードで動作している必要があります。
+
+- **部分切断** - このモードでは、デバイスは共有データをアップロードもダウンロードもできませんが、Azure portal からデバイスを管理することはできます。
 
     このモードは通常、従量制課金のサテライト ネットワークで使用され、目的はネットワーク帯域幅の消費量を最小限に抑えることです。 デバイス監視操作のため、最小限のネットワーク消費が発生する可能性があります。
 

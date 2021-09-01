@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af4356a4f432572920bd07fd8d7ea8c7e5f6663e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718745"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653642"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーで監査ログを使用してデータベース アクティビティを追跡する
 
-> [!IMPORTANT] 
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
 
 Azure Database for MySQL フレキシブル サーバーでは、ユーザーが監査ログを構成することができます。 監査ログは、接続、管理、DDL、DML の各イベントなど、データベースレベルのアクティビティを追跡するために使用できます。 これらの種類のログは、通常、コンプライアンスのために使用されます。

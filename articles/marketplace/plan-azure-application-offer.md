@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 8120bcb030f5a1ff6948757d8f65e3a21d31898f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bd0e89e1967842e8167c3da1fc3d2a716a5f7bd6
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955403"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633779"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する
 
@@ -35,7 +35,7 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 - [Azure Resource Manager テンプレートについての理解](../azure-resource-manager/templates/syntax.md)
 - クイック スタート:
-    - [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)
+    - [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)
     - [Azure テンプレートのベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     - [アプリケーション定義の発行](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
     - [サービス カタログ アプリのデプロイ](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
@@ -95,7 +95,7 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 
 ## <a name="categories-and-subcategories"></a>カテゴリとサブカテゴリ
 
-少なくとも 1 つで最大 2 つのカテゴリを選択して、オファーを適切なコマーシャル マーケットプレース検索領域にグループ化できます。 プライマリおよびセカンダリ カテゴリについてそれぞれ最大 2 つのサブカテゴリを選択できます。 カテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](gtm-offer-listing-best-practices.md#categories)」を参照してください。
+少なくとも 1 つで最大 2 つのカテゴリを選択して、オファーを適切なコマーシャル マーケットプレース検索領域にグループ化できます。 プライマリおよびセカンダリ カテゴリについてそれぞれ最大 2 つのサブカテゴリを選択できます。 カテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](marketplace-categories-industries.md#categories)」を参照してください。
 
 ## <a name="legal-contracts"></a>法的契約
 
@@ -148,7 +148,7 @@ Azure portal でのオファー情報の表示例を次のスクリーンショ�
     このテキスト ボックスには、説明をより魅力的にするために使用できるリッチ テキスト エディター コントロールが用意されています。 また、HTML タグを使用して説明の書式を設定することもできます。 このボックスには、HTML マークアップとスペースを含む最大 3,000 文字のテキストを入力できます。 その他のヒントについては、「[人の心をつかむアプリの説明を書く](/windows/uwp/publish/write-a-great-app-description)」および「[コマーシャル マーケットプレースのオファー説明でサポートされている HTML タグ](supported-html-tags.md)」を参照してください。
 
 - **検索キーワード** (省略可能): オンライン ストアで顧客がオファーを見つけることができるように使用する検索キーワードを、最大 3 つ指定します。 最良の結果を得るために、これらのキーワードを説明にも使用します。 オファーの **名前** と **説明** を含める必要はありません。 そのテキストは検索に自動的に含まれます。
-- **プライバシー ポリシーのリンク**: 会社のプライバシー ポリシーの URL。 有効なプライバシー ポリシーを提供する必要があり、アプリがプライバシーに関する法律および規制に準拠していることを保証する責任があります。
+- **プライバシー ポリシー リンク**: 会社のプライバシー ポリシーの URL。 有効なプライバシー ポリシーを提供する必要があり、アプリがプライバシーに関する法律および規制に準拠していることを保証する責任があります。
 - **役に立つリンク** (省略可能): オファーのユーザーにさまざまなリソースへのリンクを提供できます。 たとえば、フォーラム、FAQ、リリース ノートなどがあります。
 - **連絡先情報**:組織の次の連絡先を指定する必要があります。
   - **サポートの連絡先**: 顧客がチケットを開くときに使用する、Microsoft パートナーの名前、電話番号、電子メール アドレスを指定します。 サポート Web サイトの URL も含める必要があります。

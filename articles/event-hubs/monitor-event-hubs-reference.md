@@ -4,12 +4,12 @@ description: Azure Event Hubs を監視する際に必要となる重要なリ�
 ms.topic: reference
 ms.custom: subject-monitoring
 ms.date: 06/11/2021
-ms.openlocfilehash: 3d68f84c3c58cd29951c2d51cc8d89e3573b7f7a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 4dc40cef074a223a2cc34e3a87c9acae840f8dbf
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063781"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992047"
 ---
 # <a name="monitoring-azure-event-hubs-data-reference"></a>Azure Event Hubs データの監視のリファレンス
 Azure Event Hubs の監視データの収集と分析の詳細については、[Azure Event Hubs の監視](monitor-event-hubs.md)に関するページを参照してください。
@@ -68,6 +68,8 @@ Azure Event Hubs の監視データの収集と分析の詳細については、
 |User Errors (ユーザー エラー) | いいえ | Count | 合計 | 指定された期間にわたってユーザー エラーのために処理されなかった要求の数。 | エンティティ名<br/><br/>操作の結果|
 |クォータ超過エラー数 | いいえ |Count | 合計 | 指定した期間にわたってクォータ超過によって発生したエラーの数。 | エンティティ名<br/><br/>操作の結果|
 
+> [!NOTE]
+> Logic Apps では、エポック受信者が作成され、サービスの負荷に応じて受信者が 1 つのノードから別のノードに移動される場合があります。 これらの移動時に、`ReceiverDisconnection` 例外が発生する可能性があります。 これらは、Event Hubs のサービス側ではユーザー エラーとしてカウントされます。 Logic Apps で Event Hubs クライアントからエラーを収集して、ユーザー ログでそれらを確認できるようにすることができます。
 
 ## <a name="metric-dimensions"></a>メトリック ディメンション
 
@@ -78,7 +80,7 @@ Azure Event Hubs は、Azure Monitor でのメトリックの次のディメン�
 |エンティティ名| イベント ハブの名前。|
 
 ## <a name="resource-logs"></a>リソース ログ
-[!INCLUDE [event-hubs-diagnostic-log-schema](../../includes/event-hubs-diagnostic-log-schema.md)]
+[!INCLUDE [event-hubs-diagnostic-log-schema](./includes/event-hubs-diagnostic-log-schema.md)]
 
 
 

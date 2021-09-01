@@ -1,19 +1,19 @@
 ---
 title: Synapse Studio で Synapse RBAC ロールの割り当てを確認する方法
 description: この記事では、Synapse Studio を使用して Synapse RBAC ロールの割り当てを確認する方法について説明します
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: acc1ed8cece087628f6f8deb41696acefe124874
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 11e5ed746215df4518e9bd6af2c0c92539067e47
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784036"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747002"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>Synapse RBAC ロールの割り当てを確認する方法
 
@@ -28,7 +28,7 @@ Synapse RBAC ロールを使用してユーザー、グループ、その他の�
 
 ## <a name="open-synapse-studio"></a>Synapse Studio を開く  
 
-ロールの割り当てを確認するには、最初に [Synapse Studio を開き](https://web.azuresynapse.net/)、ワークスペースを選択します。 
+ロールの割り当てを確認するには、最初に [Synapse Studio を開き](https://web.azuresynapse.net/)、ワークスペースを選択します。 ワークスペースにサインインするには、2 つの **アカウント選択方法** があります。 1 つは **Azure サブスクリプション** からの方法、もう 1 つは **手動による入力** です。 Synapse Azure ロール以上のレベルの Azure ロールがある場合は、両方の方法を使用してワークスペースにログインできます。 関連する Azure ロールがなく、Synapse RBAC ロールとして許可されている場合、ワークスペースにログインする唯一の方法は **手動の入力** しかありません。
 
 ![ワークスペースへのログイン](./media/common/login-workspace.png) 
  

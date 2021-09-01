@@ -1,19 +1,19 @@
 ---
 title: Liquid テンプレートを使用して JSON と XML を変換する
-description: Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換する
+description: Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 07/31/2020
-ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/25/2021
+ms.openlocfilehash: 01b5e9930353078406751001300a1baa3c23cf00
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94992711"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690563"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Liquid テンプレートを Azure Logic Apps のマップとして使用して JSON と XML を変換する
 
@@ -132,9 +132,20 @@ ms.locfileid: "94992711"
 
 ## <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
-[Postman](https://www.getpostman.com/postman) または同様のツールを使用して、JSON 入力をロジック アプリに送信します。 ロジック アプリからの変換された JSON 出力は、次の例のようになります。
+1. [Postman](https://www.getpostman.com/postman) などのツールと `POST` メソッドを使用して、要求トリガーの URL に呼び出しを送信し、変換する JSON 入力を含めます。次に例を示します。
 
-![出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
+   ```json
+   {
+      "devices": "Surface, Windows Phone, Desktop computer, Monitors",
+      "firstName": "Dean",
+      "lastName": "Ledet",
+      "phone": "(111)5551111"
+   }
+   ```
+
+1. ワークフローの実行が完了したら、ワークフローの実行履歴に移動し、 **[JSON を JSON に変換]** アクションの入力と出力を調べます。次に例を示します。
+
+   ![出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
 <a name="template-considerations"></a>
 

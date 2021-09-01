@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: a85246e9c60af6363ddd59066f55941da04cfe1c
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.author: rifox
+ms.openlocfilehash: 59c39c7d71946ee93a0d72d5b71e1b96333d2c15
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112536130"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122970291"
 ---
 このクイックスタートでは、Windows 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
 

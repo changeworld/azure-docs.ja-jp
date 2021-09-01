@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea502deee0caf5418bf5554473180eb405792567
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ff1c0d1e552ad26832b2c142f5ca1506654a9a0c
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287052"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219540"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>dsregcmd コマンドを使用したデバイスのトラブルシューティング
 
@@ -56,7 +56,7 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 
 ## <a name="device-details"></a>[デバイスの詳細]
 
-デバイスが Azure AD 参加済みまたはハイブリッド Azure AD 参加済み (Azure AD に未登録) の場合にのみ表示されます。 このセクションには、クラウドに格納されている詳細を識別するデバイスの一覧が示されます。
+デバイスが Azure AD 参加済みまたはハイブリッド Azure AD 参加済み (Azure AD に未登録) の場合にのみ表示されます。 このセクションには、Azure AD に格納されている詳細を識別するデバイスの一覧が示されます。
 
 - **DeviceId:** Azure AD テナント内のデバイスの一意の ID
 - **Thumbprint:** デバイス証明書の拇印
@@ -64,6 +64,14 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 - **KeyContainerId:** -デバイス証明書に関連付けられているデバイスの秘密キーの ContainerId
 - **Keyprovider:** デバイスの秘密キーを格納するために使用される KeyProvider (ハードウェア/ソフトウェア)。
 - **TpmProtected:** デバイスの秘密キーがハードウェア TPM に格納されている場合は "YES"。
+
+> [!NOTE]
+> **DeviceAuthStatus** フィールドは **Windows 10 May 2021 Update (バージョン 21H1)** で追加されました。
+
+- **DeviceAuthStatus:** Azure AD でデバイスの正常性を確認するためのチェックを実行します。  
+"SUCCESS": Azure AD にデバイスが存在し、有効になっている場合。  
+"FAILED. Device is either disabled or deleted": デバイスが無効になっているか削除されている場合。[詳細情報](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)。  
+"FAILED. ERROR": テストを実行できなかった場合。 このテストには、Azure AD へのネットワーク接続が必要です。  
 
 ### <a name="sample-device-details-output"></a>デバイスの詳細の出力例
 
@@ -78,6 +86,7 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
             KeyContainerId : 13e68a58-xxxx-xxxx-xxxx-a20a2411xxxx
                KeyProvider : Microsoft Software Key Storage Provider
               TpmProtected : NO
+          DeviceAuthStatus : SUCCESS
 +----------------------------------------------------------------------+
 ```
 
@@ -134,7 +143,7 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 - **CanReset:** ユーザーが Windows Hello キーをリセットできるかどうかを示します。
 - **使用可能な値:** DestructiveOnly、NonDestructiveOnly、DestructiveAndNonDestructive、またはエラーの場合は Unknown。
 - **WorkplaceJoined:** Azure AD の登録済みアカウントが現在の NTUSER コンテキストでデバイスに追加された場合は、"YES" に設定されます。
-- **WamDefaultSet:** ログインしているユーザーに対して WAM の既定の WebAccount が作成されている場合は "YES" に設定されます。 このフィールドでは、dsreg/status が管理者特権でのコマンド プロンプトから実行されている場合にエラーが表示されることがあります。
+- **WamDefaultSet:** ログインしているユーザーに対して WAM の既定の WebAccount が作成されている場合は "YES" に設定されます。 このフィールドでは、dsregcmd/status が管理者特権でのコマンド プロンプトから実行されている場合にエラーが表示されることがあります。
 - **WamDefaultAuthority:** Azure AD の場合は "organizations" に設定されます。
 - **WamDefaultId:** Azure AD の場合は常に "https://login.microsoft.com" です。
 - **WamDefaultGUID:** 既定の WAM WebAccount の WAM プロバイダーの (Azure AD/Microsoft アカウント) GUID。
@@ -174,6 +183,34 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 - **EnterprisePrtExpiryTime:** 更新されない場合に PRT が期限切れになる UTC 時刻に設定されます。
 - **EnterprisePrtAuthority:** ADFS 機関 URL
 
+>[!NOTE]
+> **Windows 10 May 2021 Update (バージョン 21H1)** で、次の PRT 診断フィールドが追加されました
+
+>[!NOTE]
+> それぞれ、**AzureAdPrt** フィールドの下に表示される診断情報は AzureAD PRT の取得と更新用であり、**EnterprisePrt** の下に表示される診断情報は Enterprise PRT の取得と更新用です。
+
+>[!NOTE]
+>診断情報は、最後に成功した PRT 更新時間 (AzureAdPrtUpdateTime、EnterprisePrtUpdateTime) の後に取得または更新エラーが発生した場合にのみ表示されます。  
+>共有デバイスでは、この診断情報は別のユーザーのログオン試行からのものである可能性があります。
+
+- **AcquirePrtDiagnostics:** ログに PRT 取得の診断情報が含まれている場合は、"PRESENT" に設定されます。  
+診断情報が使用できない場合、このフィールドはスキップされます。
+- **Previous Prt Attempt:** 失敗した PRT の試行が発生したローカル時刻 (UTC 形式)。  
+- **Attempt Status:** 返されたクライアント エラー コード (HRESULT)。
+- **User Identity:** PRT の試行が発生したユーザーの UPN。
+- **Credential Type:** PRT を取得または更新するために使用される資格情報。 一般的な資格情報の種類は、パスワードと NGC (Windows Hello) です。
+- **Correlation ID:** 失敗した PRT の試行に対してサーバーから送信された関連付け ID。
+- **Endpoint URI:** 障害が発生する前に最後にアクセスしたエンドポイント。
+- **HTTP Method:** エンドポイントへのアクセスに使用される HTTP メソッド。
+- **HTTP Error:** WinHttp のトランスポート エラー コード。 WinHttp エラーについては、[こちら](/windows/win32/winhttp/error-messages)を参照してください。
+- **HTTP Status:** エンドポイントから返された HTTP の状態。
+- **Server Error Code:** サーバーからのエラー コード。  
+- **Server Error Description:** サーバーからのエラー メッセージ。
+- **RefreshPrtDiagnostics:** ログに PRT 取得の診断情報が含まれている場合は、"PRESENT" に設定されます。  
+診断情報が使用できない場合、このフィールドはスキップされます。
+診断情報のフィールドは **AcquirePrtDiagnostics** と同じです
+
+
 ### <a name="sample-sso-state-output"></a>SSO 状態の出力例
 
 ```
@@ -181,10 +218,20 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 | SSO State                                                            |
 +----------------------------------------------------------------------+
 
-                AzureAdPrt : YES
-      AzureAdPrtUpdateTime : 2019-01-24 19:15:26.000 UTC
-      AzureAdPrtExpiryTime : 2019-02-07 19:15:26.000 UTC
+                AzureAdPrt : NO
        AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+     AcquirePrtDiagnostics : PRESENT
+      Previous Prt Attempt : 2020-07-18 20:10:33.789 UTC
+            Attempt Status : 0xc000006d
+             User Identity : john@contoso.com
+           Credential Type : Password
+            Correlation ID : 63648321-fc5c-46eb-996e-ed1f3ba7740f
+              Endpoint URI : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx/oauth2/token/
+               HTTP Method : POST
+                HTTP Error : 0x0
+               HTTP status : 400
+         Server Error Code : invalid_grant
+  Server Error Description : AADSTS50126: Error validating credentials due to invalid username or password.
              EnterprisePrt : YES
    EnterprisePrtUpdateTime : 2019-01-24 19:15:33.000 UTC
    EnterprisePrtExpiryTime : 2019-02-07 19:15:33.000 UTC

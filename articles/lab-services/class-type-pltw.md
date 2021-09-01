@@ -3,12 +3,12 @@ title: Azure Lab Services を使用して Project Lead The Way ラボを設定�
 description: Project Lead The Way クラスの授業用ラボを設定する方法について説明します。
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: aaaddcb2c2111ccfbf0edfc79bbefafb711b19dc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 85e8b8d55ed5a91c21c2554ce15e3ef893e30f15
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768537"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737688"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Project Lead The Way クラス用ラボを設定する
 
@@ -100,7 +100,7 @@ Autodesk によって生成されたライセンス ファイルには、ライ�
 ### <a name="template-machine"></a>テンプレート マシン
 PLTW に必要なインストール ファイルが大きいファイルである場合があります。 ラボのテンプレート VM にファイルをダウンロードするときに、コピーに時間がかかることがあります。
 
-インストール ファイルをテンプレート マシンにダウンロードして、そこにすべてをインストールするのではなく、物理環境で PLTW イメージを作成することをお勧めします。  その後、カスタム イメージを Shared Image Gallery にインポートし、これらのイメージを使用してラボを作成することができます。  詳細については、「[カスタム イメージを Shared Image Gallery にアップロードする](./upload-custom-image-shared-image-gallery.md)」を参照してください。
+インストール ファイルをテンプレート マシンにダウンロードして、そこにすべてをインストールするのではなく、物理環境で PLTW イメージを作成することをお勧めします。  その後、カスタム イメージを共有イメージ ギャラリーにインポートして、ラボの作成にそれらを使用できるようにすることができます。  詳細については、「[カスタム イメージを作成するための推奨される方法](approaches-for-custom-image-creation.md)」を参照してください。
 
 この推奨事項に従ってラボを設定するための主なタスクは、次のとおりです。
 

@@ -1,27 +1,23 @@
 ---
 title: Azure Germany のネットワーク サービス | Microsoft Docs
 description: Azure Germany へのプライベート接続に関する機能の比較とガイダンスを提供します
-services: germany
-cloud: na
-documentationcenter: na
-author: gitralf
-manager: rainerst
-ms.assetid: na
-ms.service: germany
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/13/2017
+ms.date: 10/16/2020
+author: gitralf
 ms.author: ralfwi
-ms.openlocfilehash: 42b68d14776c2c2bd52c69034443052c7d942801
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.service: germany
+ms.custom: bfdocs
+ms.openlocfilehash: aa1d648cf3e3f43d4a29c5dc199420f8d731848a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685618"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "117029205"
 ---
 # <a name="azure-germany-networking-services"></a>Azure Germany のネットワーク サービス
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 ## <a name="expressroute-private-connectivity"></a>ExpressRoute (プライベート接続)
 ExpressRoute は、Azure Germany で一般提供されています。 詳細については (パートナーとピアリングの場所を含む)、[ExpressRoute グローバル ドキュメント](../expressroute/index.yml)をご覧ください。
 
@@ -33,10 +29,10 @@ ExpressRoute は、Azure Germany で一般提供されています。 詳細に�
 * Azure Germany ExpressRoute の配置場所により、お客様と Azure Germany の geo 冗長リージョンにとって最適な経路 (最短のホップ、低待機時間、高パフォーマンスなど) を提供します。
 * Azure Germany ExpressRoute のプライベート接続では、インターネットを使用したりインターネット上を移動することはなく、インターネットに一切依存していません。
 * Azure Germany の物理的および論理的なインフラストラクチャは、国際的な Microsoft クラウド ネットワークから物理的に分離された専用のインフラストラクチャです。
-* Azure Germany ExpressRoute は、Microsoft Azure クラウド サービスへのプライベート接続を提供しますが、Office 365 または Dynamics 365 クラウド サービスへのプライベート接続は提供しません。
+* Azure Germany ExpressRoute では、Microsoft Azure クラウド サービスへのプライベート接続は提供されますが、Microsoft 365 または Dynamics 365 クラウド サービスへのプライベート接続は提供されません。
 
 ### <a name="considerations"></a>考慮事項
-次の 2 つの基本的なサービスで、Azure Germany にプライベート ネットワーク接続を提供します。ExpressRoute と VPN (一般的な組織の場合サイト間) です。
+次の 2 つの基本的なサービスにより、Azure Germany へのプライベート ネットワーク接続が提供されます: ExpressRoute と VPN (一般的な組織ではサイト間)。
 
 ExpressRoute を使用して、Azure Germany データセンターとオンプレミス インフラストラクチャ間やコロケーション環境内でプライベート接続を作成できます。 ExpressRoute 接続では、公共のインターネットを利用できません。 それらは一般的なインターネット接続よりも信頼性が高く、高速で、待機時間が短い接続を提供します。 オンプレミスのシステムと Azure 間のデータ転送に ExpressRoute 接続を使用することで、コスト上の大きなメリットが得られることがあります。   
 
@@ -68,5 +64,5 @@ Azure Traffic Manager は、Azure Germany で一般提供されています。 �
 ## <a name="support-for-vpn-gateway"></a>VPN Gateway のサポート 
 Azure VPN Gateway は、Azure Germany で一般提供されています。 詳細については、[VPN Gateway グローバル ドキュメント](../vpn-gateway/vpn-gateway-about-vpngateways.md)をご覧ください。 
 
-## <a name="next-steps"></a>次の手順
-補足情報と更新情報については、[Azure Germany のブログ](https://blogs.msdn.microsoft.com/azuregermany/)を参照してください。
+## <a name="next-steps"></a>次のステップ
+補足情報と更新情報については、[Azure Germany のブログ](/archive/blogs/azuregermany/)を参照してください。

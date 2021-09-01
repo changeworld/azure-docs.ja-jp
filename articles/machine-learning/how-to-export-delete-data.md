@@ -7,14 +7,14 @@ ms.service: machine-learning
 ms.subservice: core
 author: lobrien
 ms.author: laobri
-ms.date: 04/24/2020
+ms.date: 08/05/2021
 ms.topic: how-to
-ms.openlocfilehash: f3e432573e07146157d76de71e5ef1b328ed5bcf
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 1889798d120946e0afc319ceeeaa43db12f59566
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885076"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736518"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する
 
@@ -32,7 +32,7 @@ Azure Machine Learning では、個人データは実行履歴ドキュメント
 
 ## <a name="delete-high-level-resources-using-the-portal"></a>ポータルを使用して高レベル リソースを削除する
 
-ワークスペースを作成すると、Azure によってリソース グループ内に次の多数のリソースが作成されます。
+ワークスペースを作成すると、Azure によってリソース グループ内にいくつかのリソースが作成されます。
 
 - ワークスペース自体
 - ストレージ アカウント
@@ -52,11 +52,14 @@ Azure Machine Learning では、個人データは実行履歴ドキュメント
 
 Azure Machine Learning Studio は、ノートブック、データセット、モデル、実験などの機械学習リソースの統合ビューを提供します。 Azure Machine Learning Studio では、データと実験の記録を保持することに注力しています。 パイプラインやコンピューティング リソースなどの計算リソースは、ブラウザーを使用して削除できます。 これらのリソースについては、問題のリソースに移動し、 **[削除]** を選択します。 
 
-データセットの登録は解除でき、実験はアーカイブできますが、これらの操作によってデータが削除されることはありません。 データを完全に削除するには、データセットと実行データをストレージ レベルで削除する必要があります。 ストレージ レベルでの削除は、前に説明したように、ポータルを使用して行います。
+データセットの登録は解除でき、実験はアーカイブできますが、これらの操作によってデータが削除されることはありません。 データを完全に削除するには、データセットと実験データをストレージ レベルで削除する必要があります。 ストレージ レベルでの削除は、前に説明したように、ポータルを使用して行います。 個々の実行は、スタジオで直接削除できます。 実行を削除すると、実行のデータが削除されます。 
+
+> [!NOTE]
+> データセットを登録解除する前に、その **データ ソース** リンクを使用して、削除する特定のデータの URL を見つけます。 
 
 Studio を使用して、実験の実行からトレーニング アーティファクトをダウンロードできます。 目的の **[実験]** と **[実行]** を選択します。 **[Output + logs]\(出力とログ\)** を選択し、ダウンロードする特定のアーティファクトに移動します。 **...** 、 **[ダウンロード]** の順に選択します。
 
-登録済みのモデルをダウンロードするには、目的の **[モデル]** に移動し、 **[ダウンロード]** を選択します。 
+**[モデル]** に移動して **[ダウンロード]** を選択することにより、登録されているモデルをダウンロードできます。 
 
 :::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="[ダウンロード] オプションが強調表示されている Studio モデル ページのスクリーンショット":::
 

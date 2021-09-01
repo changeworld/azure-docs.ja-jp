@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: ebb980aa257fc09c3d6a407febbf60f2d1a26a4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68ee7528eb7b8d91d4346b5cf7fa2f92841255b7
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94536474"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653470"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL - フレキシブル サーバーの監査ログの構成とアクセス
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
@@ -21,6 +23,7 @@ ms.locfileid: "94536474"
 Azure Database for MySQL フレキシブル サーバーの[監査ログ](concepts-audit-logs.md)と診断設定を Azure portal から構成することができます。
 
 ## <a name="prerequisites"></a>前提条件
+
 この記事の手順では、[フレキシブル サーバー](quickstart-create-server-portal.md)が必要です。
 
 ## <a name="configure-audit-logging"></a>監査ログを構成する

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bef0dc016b2b216d51a4844c469d14a24e11068b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 3d7ece742e211715c27a4bb81b67c51a7910552f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111437768"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746076"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールを作成して割り当てる
 
@@ -39,7 +39,8 @@ ms.locfileid: "111437768"
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>新しいカスタム ロールを作成してアプリ登録を管理するためのアクセス権を付与する
 
-1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
 1. **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[新しいカスタム ロール]** を選択します。
 
    ![[ロールと管理者] ページでロールを作成または編集する](./media/custom-create/new-custom-role.png)
@@ -165,8 +166,10 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 組み込みロールと同様に、既定では、組織内のすべてのアプリ登録にアクセス許可を付与するために、カスタム ロールは既定の組織全体のスコープで割り当てられます。 さらに、カスタム ロールおよびいくつかの関連する組み込みロール (Azure AD リソースの種類によって異なります) は、単一の Azure AD リソースのスコープで割り当てることもできます。 これにより、2 つ目のカスタム ロールを作成せずに、1 つのアプリの資格情報と基本プロパティを更新できるアクセス許可をユーザーに付与できます。
 
-1. アプリケーション開発者のアクセス許可を使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[アプリの登録]** を選択します。
+1. アプリケーション開発者のアクセス許可を使用して、[Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。
+
 1. 付与しようとするアクセス権によって管理されるアプリ登録を選択します。 Azure AD 組織内のアプリ登録の完全な一覧を表示するには、 **[すべてのアプリケーション]** を選択する必要がある場合があります。
 
     ![ロールの割り当てのリソース スコープとしてアプリ登録を選択する](./media/custom-create/appreg-all-apps.png)
@@ -174,6 +177,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 1. [アプリの登録] で、 **[ロールと管理者]** を選択します。 まだ 1 つも作成していない場合は、[前の手順](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)の指示を参照してください。
 
 1. ロールを選択して、 **[割り当て]** ページを開きます。
+
 1. **[割り当ての追加]** を選択してユーザーを追加します。 このユーザーには、選択したアプリ登録に対してのみアクセス許可が付与されます。
 
 ## <a name="next-steps"></a>次のステップ

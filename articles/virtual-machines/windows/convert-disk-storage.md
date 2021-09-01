@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2b0ac2750515c8a61674b695e0faf3fd54ff7c6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 994b24110399057741b9f62f7ecf30a8a505fd6d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670256"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181766"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>マネージド ディスクのストレージの種類を更新する
 
@@ -117,7 +117,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 3. VM が停止していない場合、VM の **[概要]** ウィンドウの一番上で **[停止]** を選択し、VM が停止するまで待ちます。
 4. VM のウィンドウで、メニューから **[ディスク]** を選択します。
 5. 変換するディスクを選択します。
-6. メニューから **[構成]** を選択します。
+6. メニューで **[Size + performance]\(サイズおよびパフォーマンス\)** を選択します。
 7. **[アカウントの種類]** を、元のディスクの種類から目的のディスクの種類に変更します。
 8. **[保存]** を選択し、ディスク ウィンドウを閉じます。
 

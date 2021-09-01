@@ -4,16 +4,16 @@ description: ワークステーションから Azure PowerShell を使用して�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 62ac9d5243c719af73cfd30b3a5190a2e7344668
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ac2bbac1f920bd4cb3a6042de58993f15c0ccdbd
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559288"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122652688"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
 
-[!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
+[!INCLUDE [sqoop-selector](../includes/hdinsight-selector-use-sqoop.md)]
 
 HDInsight 内で Apache Sqoop を使用して、HDInsight クラスターと Azure SQL Database 間でデータのインポートとエクスポートを行う方法について学習します。
 

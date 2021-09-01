@@ -6,16 +6,18 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f80d123a96a24ef9e9402cc2b142e94448468ea1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b3e33fecc1df930cf4fb01808b2a8400a210fce8
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745639"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707147"
 ---
 # <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用の MSIX イメージを準備する
 
 MSIX アプリのアタッチはアプリケーション レイヤー ソリューションです。これを使用すると、MSIX パッケージからユーザー セッションにアプリを動的にアタッチできます。 MSIX パッケージ システムは、アプリをオペレーティング システムから分離することで、仮想マシンのイメージを簡単に作成できるようにします。 また、MSIX パッケージを使用すると、ユーザーが自分の仮想マシンでアクセスできるアプリをより細かく制御できます。 アプリをマスター イメージから分離し、後でユーザーに提供することもできます。
+
+デスクトップ インストーラー (MSI、EXE、ClickOnce、App-V、スクリプトなど) を MSIX に変換する手順については、「[任意のデスクトップ インストーラー (MSI、EXE、ClickOnce、または App-V) から MSIX パッケージを作成する](/windows/msix/packaging-tool/create-app-package)」を参照してください。
 
 ## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>MSIX 用の VHD または VHDX パッケージを生成する
 
@@ -106,4 +108,4 @@ MSIX パッケージを作成した後、結果として得られた VHD、VHDX�
 役に立つその他の記事を次に示します。
 
 - [MSIX アプリのアタッチの用語集](app-attach-glossary.md)
-- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.md)
+- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.yml)

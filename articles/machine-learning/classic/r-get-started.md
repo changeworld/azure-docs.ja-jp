@@ -1,6 +1,6 @@
 ---
 title: Machine Learning スタジオで R を使用する - Azure
-description: この R プログラミング チュートリアルは、R での Azure Machine Learning Studio (classic) を使用した予測ソリューションの作成に必要な基本的な事柄を習得できるように作成されています。
+description: この R プログラミング チュートリアルは、R での Machine Learning スタジオ (クラシック) を使用した予測ソリューションの作成に必要な基本的な事柄を習得できるように作成されています。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: c619b51f9323477bda4f1ec99aeeb1bfa01028fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46cefe1e7f535a066125f368e1c80497a1a28d3f
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517741"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579776"
 ---
-# <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R での Azure Machine Learning Studio (classic) の使用を開始する
+# <a name="get-started-with-machine-learning-studio-classic-in-r"></a>R での Machine Learning スタジオ (クラシック) の使用を開始する
 
-**適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:**  ![これはチェック マークです。つまり、この記事は Machine Learning スタジオ (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning スタジオ (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としていません。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 <!-- Stephen F Elston, Ph.D. -->
-このチュートリアルでは、Azure Machine Learning スタジオを使用して R コードを作成、テスト、実行する方法について説明します。 最終的には、予測ソリューションが完成します。
+このチュートリアルでは、Machine Learning スタジオ (クラシック) を使用して R コードを作成、テスト、実行する方法について説明します。 最終的には、予測ソリューションが完成します。
 
 > [!div class="checklist"]
 > * データのクリーニングと変換のためのコードを作成します。
@@ -187,7 +187,7 @@ cadairydata <- maml.mapInputPort(1)
 str(cadairydata)
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio (classic)
+## Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
@@ -226,7 +226,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
    str(cadairydata)
    pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
    ## The following line should be executed only when running in
-   ## Azure Machine Learning Studio (classic)
+   ## Machine Learning Studio (classic)
    maml.mapOutputPort('cadairydata')
    ```
 
@@ -369,7 +369,7 @@ cadairydata <- maml.mapInputPort(1)
 cadairydata$Month <- as.factor(cadairydata$Month)
 str(cadairydata) # Check the result
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio (classic)
+## Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
@@ -904,7 +904,7 @@ outframe
 
 
 ## WARNING!
-## The following line works only in Azure Machine Learning Studio (classic)
+## The following line works only in Machine Learning Studio (classic)
 ## When running in RStudio, this code will result in an error
 #maml.mapOutputPort('outframe')
 ```
@@ -1159,7 +1159,7 @@ predict2  <- predict(milk.lm2, cadairydata)
 
 ## Compute and plot the residuals
 residuals <- cadairydata$Milk.Prod - predict2
-plot(cadairytrain$Time, residuals[1:216], xlab = "Time&quot;, ylab =&quot;Residuals of Seasonal Model")
+plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
 ```
 
 残差のプロットをこちらに示します。
@@ -1261,7 +1261,7 @@ rowNames = c("Trend Model", "Seasonal Model"),
 RMS.df
 
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio (classic)
+## Machine Learning Studio (classic)
 maml.mapOutputPort('RMS.df')
 ```
 

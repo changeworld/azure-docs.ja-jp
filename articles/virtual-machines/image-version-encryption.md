@@ -1,20 +1,20 @@
 ---
-title: プレビュー - 独自のキーで暗号化されたイメージ バージョンを作成する
+title: 独自のキーで暗号化されたイメージ バージョンを作成する
 description: カスタマー マネージド暗号化キーを使用して、共有イメージ ギャラリーにイメージ バージョンを作成します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 11/3/2020
-ms.author: cynthn
+ms.date: 7/1/2021
+ms.author: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20e5d4f0d9d3f8f8ab168ca7699f99bc40919b32
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c04dffcad178694f4f2548f38aa4c1d512c6fe60
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669480"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322989"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
 
@@ -48,40 +48,9 @@ ms.locfileid: "110669480"
 - 独自のキーを使用してディスクやイメージを暗号化した後は、それらのディスクやイメージを暗号化するためにプラットフォーム マネージド キーを使用する方法に戻すことはできません。
 
 
-> [!IMPORTANT]
-> カスタマー マネージド キーを使用した暗号化は、現在はパブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-
 ## <a name="powershell"></a>PowerShell
 
-パブリック プレビューでは、まずこの機能を登録する必要があります。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
-```
-
-登録が完了するまでに数分かかります。 `Get-AzProviderFeature` を使用して、機能の登録の状態を確認します。
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
-```
-
-`RegistrationState` から `Registered` が返されたら、次の手順に進むことができます。
-
-プロバイダーの登録を確認します。 `Registered` が返されることを確認します。
-
-```azurepowershell-interactive
-Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Property ResourceTypes,RegistrationState
-```
-
-`Registered` が返されない場合は、次のコードを使用してプロバイダーを登録します。
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-イメージ バージョンのディスク暗号化セットを指定するには、`-TargetRegion` パラメーターを指定して [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) を使用します。 
+イメージ バージョンのディスク暗号化セットを指定するには、`-TargetRegion` パラメーターを指定して [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用します。 
 
 ```azurepowershell-interactive
 
@@ -136,33 +105,6 @@ New-AzGalleryImageVersion `
 
 ## <a name="cli"></a>CLI 
 
-パブリック プレビューでは、まずこの機能を登録する必要があります。 登録には 30 分程度かかります。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name SIGEncryption
-```
-
-機能の登録の状態を確認します。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name SIGEncryption | grep state
-```
-
-このコードから `"state": "Registered"` が返されたら、次の手順に進むことができます。
-
-登録を確認します。
-
-```azurecli-interactive
-az provider show -n Microsoft.Compute | grep registrationState
-```
-
-登録済みにならない場合は、次のコマンドを実行します。
-
-```azurecli-interactive
-az provider register -n Microsoft.Compute
-```
-
-
 イメージ バージョンのディスク暗号化セットを指定するには、`--target-region-encryption` パラメーターを指定して [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) を使用します。 `--target-region-encryption` の形式は、OS とデータ ディスクを暗号化するためのキーのコンマ区切りリストです。 `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` のようになります。 
 
 OS ディスクのソースがマネージド ディスクであるか VM である場合は、`--managed-image` を使用してイメージ バージョンのソースを指定します。 この例では、ソースは、OS ディスクと LUN 0 のデータ ディスクを備えたマネージド イメージです。 この OS ディスクは DiskEncryptionSet1 で暗号化され、データ ディスクは DiskEncryptionSet2 で暗号化されます。
@@ -206,10 +148,6 @@ az sig image-version create \
 ## <a name="portal"></a>ポータル
 
 ポータルで自分のイメージ バージョンを作成する場合は、 **[暗号化]** タブを使用して、ストレージ暗号化セットを適用できます。
-
-> [!IMPORTANT]
-> 二重暗号化を使用するには、リンク [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) を使用して Azure portal にアクセスする必要があります。 現時点では、このリンクを使用しないと、保存時の二重暗号化がパブリックの Azure portal に表示されません。
-
 
 1. **[イメージ バージョンを作成する]** ページで、 **[暗号化]** タブを選択します。
 2. **[暗号化の種類]** で、 **[カスタマー マネージド キーを使用した保存時の暗号化]** または **[Double encryption with platform-managed and customer-managed keys]** \(プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化\) を選択します。 

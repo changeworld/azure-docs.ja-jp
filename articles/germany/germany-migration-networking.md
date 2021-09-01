@@ -1,28 +1,28 @@
 ---
 title: Azure ネットワーク リソースを Azure Germany からグローバル Azure に移行する
 description: この記事では、Azure ネットワーク リソースの Azure Germany からグローバル Azure への移行に関する情報を提供します。
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 08/15/2018
-ms.topic: article
-ms.custom: bfmigrate
-ms.openlocfilehash: 2d6814653967fa76ad22bcefcc94df42d60d67b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: bfmigrate, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 1e8cb8dd4d167b1671edb8367beb5514104938ac
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165954"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "117029224"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>ネットワーク リソースをグローバル Azure に移行する
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 ほとんどのネットワーク サービスは、Azure Germany からグローバル Azure への移行をサポートしていません。 ただし、サイト間 VPN を使用して、両方のクラウド環境内のネットワークを接続できます。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-クラウドの間でサイト間 VPN を設定するために実行する手順は、オンプレミスのネットワークと Azure の間でサイト間 VPN をデプロイするために実行する手順に似ています。 両方のクラウドでゲートウェイを定義した後、互いに通信する方法を VPN に指示します。 「[Azure Portal でサイト間接続を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)」では、サイト間 VPN をデプロイするために完了する手順について説明しています。 手順の概要を次に示します。
+クラウドの間でサイト間 VPN を設定するために実行する手順は、オンプレミスのネットワークと Azure の間でサイト間 VPN をデプロイするために実行する手順に似ています。 両方のクラウドでゲートウェイを定義した後、互いに通信する方法を VPN に指示します。 「[Azure Portal でサイト間接続を作成する](../vpn-gateway/tutorial-site-to-site-portal.md)」では、サイト間 VPN をデプロイするために完了する手順について説明しています。 手順の概要を次に示します。
 
 1. 仮想ネットワークを定義します。
 1. アドレス空間を定義します。
@@ -48,9 +48,9 @@ ms.locfileid: "66165954"
 
 現時点では、仮想ネットワークの Azure Germany からグローバル Azure への移行はサポートされていません。 ターゲット リージョンで新しい仮想ネットワークを作成し、これらの仮想ネットワークにリソースを移行することをお勧めします。
 
-詳細:
+詳細情報:
 
-- [Azure Virtual Network のチュートリアル](https://docs.microsoft.com/azure/virtual-network/#step-by-step-tutorials)を完了することによって知識を更新してください。
+- [Azure Virtual Network のチュートリアル](../virtual-network/index.yml)を完了することによって知識を更新してください。
 - [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)を確認してください。
 - [仮想ネットワークを計画する](../virtual-network/virtual-network-vnet-plan-design-arm.md)方法を学習してください。
 
@@ -65,19 +65,19 @@ $nsg=Get-AzNetworkSecurityGroup -ResourceName <nsg-name> -ResourceGroupName <res
 Get-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 ```
 
-詳細:
+詳細情報:
 
-- [ネットワーク セキュリティ グループに関する知識](../virtual-network/security-overview.md#network-security-groups)を更新してください。
-- [ネットワーク セキュリティの概要](../virtual-network/security-overview.md)を確認してください。
+- [ネットワーク セキュリティ グループに関する知識](../virtual-network/network-security-groups-overview.md#network-security-groups)を更新してください。
+- [ネットワーク セキュリティの概要](../virtual-network/network-security-groups-overview.md)を確認してください。
 - [ネットワーク セキュリティ グループを管理する](../virtual-network/manage-network-security-group.md)方法を学習してください。
 
 ## <a name="expressroute"></a>ExpressRoute
 
 現時点では、Azure ExpressRoute インスタンスの Azure Germany からグローバル Azure への移行はサポートされていません。 グローバル Azure で、新しい ExpressRoute 回線と新しい ExpressRoute ゲートウェイを作成することをお勧めします。
 
-詳細:
+詳細情報:
 
-- [ExpressRoute のチュートリアル](https://docs.microsoft.com/azure/expressroute/#step-by-step-tutorials)を完了することによって知識を更新してください。
+- [ExpressRoute のチュートリアル](../expressroute/index.yml)を完了することによって知識を更新してください。
 - [新しい ExpressRoute ゲートウェイを作成する](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)方法を学習してください。
 - [ExpressRoute の場所およびサービス プロバイダー](../expressroute/expressroute-locations.md)について学習してください。
 - [ExpressRoute 用の仮想ネットワーク ゲートウェイ](../expressroute/expressroute-about-virtual-network-gateways.md)に関するページを参照してください。
@@ -90,12 +90,12 @@ Get-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 
 オンプレミスの構成を確実に更新するようにしてください。 また、Azure ネットワーク環境を更新した後、古い IP アドレス範囲の既存のルールもすべて削除してください。
 
-詳細:
+詳細情報:
 
-- [VPN Gateway のチュートリアル](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials)を完了することによって知識を更新してください。
-- [サイト間接続を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)方法を学習してください。
+- [VPN Gateway のチュートリアル](../vpn-gateway/index.yml)を完了することによって知識を更新してください。
+- [サイト間接続を作成する](../vpn-gateway/tutorial-site-to-site-portal.md)方法を学習してください。
 - [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway) PowerShell コマンドレットを確認してください。
-- [サイト間接続の作成](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/)に関するブログの投稿を参照してください。
+- [サイト間接続の作成](/archive/blogs/ralfwi/connecting-clouds)に関するブログの投稿を参照してください。
  
 ## <a name="application-gateway"></a>Application Gateway
 
@@ -103,9 +103,9 @@ Get-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 
 現在のゲートウェイ構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzApplicationGateway*` で始まる一連のコマンドレットを使用します。
 
-詳細:
+詳細情報:
 
-- [Application Gateway のチュートリアル](https://docs.microsoft.com/azure/application-gateway/#step-by-step-tutorials)を完了することによって知識を更新してください。
+- [Application Gateway のチュートリアル](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)を完了することによって知識を更新してください。
 - [アプリケーション ゲートウェイを作成する](../application-gateway/quick-create-portal.md)方法を学習してください。
 - [Get-AzApplicationGateway](/powershell/module/az.network/get-azapplicationgateway) PowerShell コマンドレットを確認してください。
 
@@ -147,9 +147,9 @@ az network dns record-set list -g <resource group> -z <zone name>
 az network dns record-set ns list -g <resource group> -z --output json
 ```
 
-詳細:
+詳細情報:
 
-- [Azure DNS のチュートリアル](https://docs.microsoft.com/azure/dns/#step-by-step-tutorials)を完了することによって知識を更新してください。
+- [Azure DNS のチュートリアル](../dns/index.yml)を完了することによって知識を更新してください。
 - [Azure DNS の概要](../dns/dns-overview.md)を確認してください。
 - [Azure DNS のインポートとエクスポート](../dns/dns-import-export.md)の詳細を学習してください。
 
@@ -157,16 +157,16 @@ az network dns record-set ns list -g <resource group> -z --output json
 
 現時点では、Azure Network Watcher インスタンスの Azure Germany からグローバル Azure への移行はサポートされていません。 グローバル Azure で、新しい Network Watcher インスタンスを作成および構成することをお勧めします。 その後、古い環境と新しい環境の間で結果を比較します。
 
-詳細:
+詳細情報:
 
-- [Network Watcher のチュートリアル](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials)を完了して、新しい知識を得ましょう。
+- [Network Watcher のチュートリアル](../network-watcher/index.yml)を完了して、新しい知識を得ましょう。
 - [Network Watcher の概要](../network-watcher/network-watcher-monitoring-overview.md)を確認してください。
 - [ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-portal.md)の詳細を学習してください。
-- [接続モニター](../network-watcher/connection-monitor.md)に関するページを参照してください。
+- [接続モニター](../network-watcher/connection-monitor.md)について確認してください。
 
 ## <a name="traffic-manager"></a>Traffic Manager
 
-Azure Traffic Manager は、スムーズな移行を完了するために役立ちます。 ただし、Azure Germany で作成した Traffic Manager プロファイルをグローバル Azure に移行することはできません (移行中に Traffic Manager エンドポイントをターゲット環境に移行するため、いずれにしても Traffic Manager プロファイルを更新する必要があります)。
+Azure Traffic Manager は、スムーズな移行を完了するために役立ちます。 ただし、Azure Germany で作成した Traffic Manager プロファイルをグローバル Azure に移行することはできません  (移行中に Traffic Manager エンドポイントをターゲット環境に移行するため、いずれにしても Traffic Manager プロファイルを更新する必要があります)。
 
 ソース環境で引き続き実行されている Traffic Manager を使用して、ターゲット環境で追加のエンドポイントを定義できます。 Traffic Manager が新しい環境で実行されている場合も引き続き、ソース環境でまだ移行されていないエンドポイントを定義できます。 このシナリオは、[ブルーグリーン シナリオ](https://azure.microsoft.com/blog/blue-green-deployments-using-azure-traffic-manager/)と呼ばれます。 このシナリオには、次の手順が必要です。
 
@@ -178,23 +178,23 @@ Azure Traffic Manager は、スムーズな移行を完了するために役立�
    1. エンドポイントをグローバル Azure に移行します。
    1. 新しいエンドポイントを使用するように Traffic Manager プロファイルを変更します。
 
-詳細:
+詳細情報:
 
-- [Traffic Manager のチュートリアル](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials)を完了して、新しい知識を得ましょう。
+- [Traffic Manager のチュートリアル](../traffic-manager/index.yml)を完了して、新しい知識を得ましょう。
 - [Traffic Manager の概要](../traffic-manager/traffic-manager-overview.md)を確認してください。
-- [Traffic Manager プロファイルの作成](../traffic-manager/traffic-manager-create-profile.md)方法を確認します。
+- [Traffic Manager プロファイルの作成](../traffic-manager/quickstart-create-traffic-manager-profile.md)方法を確認します。
 
 ## <a name="load-balancer"></a>Load Balancer
 
 現時点では、Azure Load Balancer インスタンスの Azure Germany からグローバル Azure への移行はサポートされていません。 グローバル Azure で、新しいロード バランサーを作成および構成することをお勧めします。
 
-詳細:
+詳細情報:
 
-- [Load Balancer のチュートリアル](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)を完了することによって知識を更新してください。
+- [Load Balancer のチュートリアル](../load-balancer/index.yml)を完了することによって知識を更新してください。
 - [Load Balancer の概要](../load-balancer/load-balancer-overview.md)を確認してください。
 - [新しいロード バランサーを作成する](../load-balancer/quickstart-load-balancer-standard-public-portal.md)方法を学習してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
@@ -206,6 +206,6 @@ Azure Traffic Manager は、スムーズな移行を完了するために役立�
 - [IoT](./germany-migration-iot.md)
 - [統合](./germany-migration-integration.md)
 - [ID](./germany-migration-identity.md)
-- [セキュリティ](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [管理ツール](./germany-migration-management-tools.md)
 - [メディア](./germany-migration-media.md)

@@ -3,17 +3,17 @@ title: Azure IaaS VM 用のディスクの種類の選択 - マネージド デ�
 description: Ultra Disks、Premium SSD、Standard SSD、Standard HDD など、仮想マシンで使用できる Azure ディスクの種類について説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 05/12/2021
+ms.date: 06/29/2021
 ms.topic: conceptual
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 782d4d18e9b6ffc16c1d95a995cef806adc42904
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5c8e9a7d2d9989ef3080741753f604b9eb5d4289
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083424"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113362181"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -78,13 +78,11 @@ Premium Storage に互換性のあるサイズなど、Windows または Linux �
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
-Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。 Premium SSD ディスクは、1 桁のミリ秒の低遅延と、前出の表に示した目標 IOPS とスループットを 99.9% の時間で提供するように設計されています。
+Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。 Premium SSD は、1 桁のミリ秒の低遅延と、前出の表に示した目標 IOPS とスループットを、99.9% の確率で提供するように設計されています。
 
 ## <a name="bursting"></a>バースト
 
-P30 より小さいサイズの Premium SSD では、ディスク バーストを提供しており、ディスクあたり IOPS を最高 3500 まで、帯域幅を最高 170 MB/s までバーストできます。 バーストは自動化され、クレジット システムに基づいて動作します。 ディスク トラフィックがプロビジョニングされたパフォーマンス ターゲットを下回る場合、クレジットはバースト バケットに自動的に蓄積されます。また、トラフィック バーストがターゲットを超えた場合、最大バースト制限まで自動的にクレジットが消費されます。 最大バースト制限は、消費されるバースト クレジットがある場合でも、ディスク IOPS および帯域幅の上限を定義します。 ディスク バースティングは、IO パターンの予測できない変更に対して優れた耐性を示します。 これは、OS ディスクの起動や激しいトラフィックを含むアプリケーションにおいて、最大限に活用できます。    
-
-既定では、ディスク バースティング サポートは適用可能なディスク サイズを新しくデプロイする際に有効になります。ユーザーの操作は必要ありません。 既存の適用可能なサイズのディスクの場合、ディスクのデタッチと再アタッチまたは接続済み VM の停止と再起動という、2 つのオプションのいずれかを使用してバースティングを有効にすることができます。 バーストが適用可能なすべてのディスク サイズは、ディスクが 30 分のピーク バースト制限での最大期間をサポートする仮想マシンに接続されている場合、最大のバースト クレジット バケットを使用して起動されます。 Azure ディスクでのバースティングの動作の詳細については、[Premium SSD バースティング](./disk-bursting.md)に関する記事を参照してください。 
+Premium SSD では、ディスク バーストが提供されます。 ディスク バースティングは、IO パターンの予測できない変更に対して優れた耐性を示します。 これは、OS ディスクの起動や激しいトラフィックを含むアプリケーションにおいて、最大限に活用できます。 Azure ディスクのバーストのしくみの詳細については、「[ディスク レベルのバースト](disk-bursting.md#disk-level-bursting)」を参照してください。
 
 ### <a name="transactions"></a>トランザクション
 
@@ -102,6 +100,10 @@ Standard SSD は、1 桁のミリ秒の遅延と、前出の表に示されて�
 ### <a name="transactions"></a>トランザクション
 
 Standard SSD では、スループットが 256 KiB 以下の I/O 操作は、それぞれ単一の I/O 操作とみなされます。 スループットが 256 KiB を超える I/O 操作は、サイズが 256 KiB の複数の I/O とみなされます。 これらのトランザクションは、課金への影響があります。
+
+### <a name="bursting"></a>バースト
+
+標準 SSD では、ディスク バーストが提供されます。 ディスク バースティングは、IO パターンの予測できない変更に対して優れた耐性を示します。 これは、OS ディスクの起動や激しいトラフィックを含むアプリケーションにおいて、最大限に活用できます。 Azure ディスクのバーストのしくみの詳細については、「[ディスク レベルのバースト](disk-bursting.md#disk-level-bursting)」を参照してください。
 
 ## <a name="standard-hdd"></a>Standard HDD
 

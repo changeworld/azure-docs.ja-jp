@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 5b03806b234e0f52453211bce0e468610c14a299
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b99df2f95838fe1913876a3e6a138935806df836
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411217"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724658"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの配置
 
@@ -138,8 +138,8 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの一部であ�
 次に、スケール アウトしてサーバー グループに 3 つ目のワーカー ノードを追加し、何が起こるかを観察します。 4 つ目のポッドでホストされる 4 つ目の PostgreSQL インスタンスが作成されます。
 スケール アウトするには、次のコマンドを実行します。
 
-```console
-azdata arc postgres server edit --name postgres01 --workers 3
+```azurecli
+az postgres arc-server edit --name postgres01 --workers 3 --k8s-namespace <namespace> --use-k8s
 ```
 
 これにより、次の出力が生成されます。
@@ -151,8 +151,8 @@ postgres01 is Ready
 
 Azure Arc データ コントローラーにデプロイされているサーバー グループを一覧表示し、サーバー グループが 3 つのワーカーで実行されていることを確認します。 次のコマンドを実行します。
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 次のように、2 つのワーカーから 3 つのワーカーにスケール アウトされたことを確認します。
@@ -246,7 +246,7 @@ Kubernetes クラスターでホストされているワークロードの数が
 
 ## <a name="scale-out-aks"></a>AKS をスケール アウトする
 
-AKS クラスターと Azure Arc 対応 PostgreSQL Hyperscale サーバーの両方を水平方向にスケーリングすることで、Azure Arc 対応 PostgreSQL Hyperscale の高パフォーマンスを最大限に活用できることを説明します。
+AKS クラスターと Azure Arc 対応 PostgreSQL Hyperscale サーバーの両方を水平方向にスケーリングすることで、Azure Arc 対応 PostgreSQL Hyperscale のハイ パフォーマンスを最大限に活用できることを示します。
 AKS クラスターに 5 つ目のノードを追加してみましょう。
 
 :::row:::
@@ -286,8 +286,8 @@ Kubernetes クラスターの新しい物理ノードによって、Azure Arc �
 
 5 つ目の物理ノードでは、まだワークロードをホストしていません。 Azure Arc 対応 PostgreSQL Hyperscale をスケール アウトすると、Kubernetes では新しい PostgreSQL ポッドの配置が最適化されます。また、より多くのワークロードが既にホストされている物理ノード上にこれを併置することはできません。 次のコマンドを実行して、Azure Arc 対応 PostgreSQL Hyperscale を 3 つのワーカーから 4 つのワーカーにスケーリングします。 操作の最後に、サーバー グループが構成され、5 つの PostgreSQL インスタンス (1 つのコーディネーターと 4 つのワーカー) に分散されます。
 
-```console
-azdata arc postgres server edit --name postgres01 --workers 4
+```azurecli
+az postgres arc-server edit --name postgres01 --workers 4 --k8s-namespace <namespace> --use-k8s
 ```
 
 これにより、次の出力が生成されます。
@@ -299,8 +299,8 @@ postgres01 is Ready
 
 データ コントローラーにデプロイされているサーバー グループを一覧表示し、サーバー グループが 4 つのワーカーで実行されていることを確認します。
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 3 つのワーカーから 4 つのワーカーにスケール アウトされたことを確認します。 

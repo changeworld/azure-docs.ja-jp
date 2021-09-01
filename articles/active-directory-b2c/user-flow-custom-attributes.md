@@ -7,27 +7,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 08/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 836802e65c8eb76f17bbf053e54ed9dbedf54049
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607919"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740031"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム属性を定義する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-「[カスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](configure-user-input.md)」の記事では、組み込みの[ユーザー プロファイル属性](user-profile-attributes.md)を使用する方法について説明しています。 この記事では、Azure Active Directory B2C (Azure AD B2C) ディレクトリでカスタム属性を有効にします。 新しい属性は、後でカスタム要求として、[ユーザー フロー](user-flow-overview.md)や[カスタム ポリシー](custom-policy-get-started.md)で同時に使用することができます。
+「[カスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](configure-user-input.md)」の記事では、組み込みの[ユーザー プロファイル属性](user-profile-attributes.md)を使用する方法について説明しています。 この記事では、Azure Active Directory B2C (Azure AD B2C) ディレクトリでカスタム属性を有効にします。 新しい属性は、後でカスタム要求として、[ユーザー フロー](user-flow-overview.md)や[カスタム ポリシー](user-flow-overview.md)で同時に使用することができます。
 
 Azure AD B2C ディレクトリには、[組み込みの属性セット](user-profile-attributes.md)が付属します。 ただし、次のような場合には、特定のシナリオを管理するために、独自の属性を作成する必要があります。
 
-* 顧客向けアプリケーションで、**LoyaltyId** 属性を保持する必要がある。
+* 顧客向けアプリケーションで、**loyaltyId** 属性を保持する必要がある。
 * ID プロバイダーが、保存する必要がある一意のユーザー識別子 (**uniqueUserGUID**) を保持している。
 * カスタム ユーザー体験で、他のロジックを運用するために必要な、ユーザーの状態 (**migrationStatus**) を保持する必要がある。
 
@@ -68,7 +68,24 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C 拡張アプリ
 
-拡張属性は、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 拡張属性は、`b2c-extensions-app` というアプリケーションに関連付けられます。 Azure AD B2C は、ユーザー データを保存するためにこのアプリケーションを使用します。このため、このアプリケーションは変更しないでください。 このアプリケーションは、Azure AD B2C (アプリの登録) から確認できます。 次の手順でアプリケーション プロパティを取得します。
+拡張属性は、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 拡張属性は、`b2c-extensions-app` というアプリケーションに関連付けられます。 Azure AD B2C は、ユーザー データを保存するためにこのアプリケーションを使用します。このため、このアプリケーションは変更しないでください。 このアプリケーションは、Azure AD B2C (アプリの登録) から確認できます。 
+
+::: zone pivot="b2c-user-flow"
+
+アプリケーション ID を取得するには:
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録]** を選択してから、 **[すべてのアプリケーション]** を選択します。
+1. `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` アプリケーションを選択します。
+1. **[アプリケーション ID]** をコピーします。 例: `11111111-1111-1111-1111-111111111111`.
+ 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+次の手順でアプリケーション プロパティを取得します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
@@ -78,8 +95,6 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 1. 次の識別子をクリップボードにコピーして保存します。
     * **アプリケーション ID**。 例: `11111111-1111-1111-1111-111111111111`.
     * **オブジェクト ID**。 例: `22222222-2222-2222-2222-222222222222`.
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="modify-your-custom-policy"></a>カスタム ポリシーの変更
 

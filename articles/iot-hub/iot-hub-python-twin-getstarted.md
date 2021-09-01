@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 292c23398950a367f77c4200925007f660702a34
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87875474"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737727"
 ---
 # <a name="get-started-with-device-twins-python"></a>デバイス ツインの概要 (Python)
 
@@ -239,8 +239,8 @@ ms.locfileid: "87875474"
 
 詳細については、次のリソースをご覧ください。
 
-* [IoT Hub の概要](quickstart-send-telemetry-python.md)に関するチュートリアルでデバイスからテレメトリを送信する。
+* [IoT Hub の概要](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-python)に関するチュートリアルでデバイスからテレメトリを送信する。
 
 * [必要なプロパティを使用してデバイスを構成する](tutorial-device-twins.md)方法に関するチュートリアルで、デバイス ツインの必要なプロパティを使用してデバイスを構成する。
 
-* [ダイレクト メソッドの使用](quickstart-control-device-python.md)に関するチュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
+* [ダイレクト メソッドの使用](./quickstart-control-device.md?pivots=programming-language-python)に関するクイックスタートで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。

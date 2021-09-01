@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8141d44aa4da394726d8c45a1f8514bdcaac09aa
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: f3a19958770e157ed31dc3104331bcf5f860041d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229380"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719589"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>複数の認証の種類を使用して VNet へのポイント対サイト VPN 接続を構成する: Azure portal
 
@@ -41,7 +41,8 @@ Azure サブスクリプションを持っていることを確認します。 A
 * **[リソース グループ]:** TestRG1
 * **[場所]:** 米国東部
 * **GatewaySubnet:** 10.1.255.0/27<br>
-* **仮想ネットワーク ゲートウェイ名:** VNet1GW
+* **SKU:** VpnGw2
+* **世代:** 第 2 世代
 * **ゲートウェイの種類:** VPN
 * **VPN の種類:** ルート ベース
 * **パブリック IP アドレス名:** VNet1GWpip
@@ -66,7 +67,12 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+デプロイの状態は、ゲートウェイの [概要] ページで確認できます。 ゲートウェイの作成とデプロイが完了するまでに 45 分以上かかることがよくあります。 ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。
+
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="client-address-pool"></a><a name="addresspool"></a>クライアント アドレス プール
 

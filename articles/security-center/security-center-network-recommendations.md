@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: c24e3473c07759aa256a077d11edb20c616629f6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dd09279665230062c7a2567784731144ef438c6c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439512"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237235"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -31,7 +31,7 @@ Security Center の **ネットワーク** 機能は次のとおりです。
 
 [資産インベントリ ページ](asset-inventory.md)で、リソースの種類のフィルターを使用して、調査するネットワーク リソースを選択します。
 
-:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="資産インベントリのネットワーク リソースの種類" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
+:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="資産インベントリのネットワーク リソースの種類。" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
 
 
 ## <a name="network-map"></a>ネットワーク マップ
@@ -42,7 +42,7 @@ Security Center の **ネットワーク** 機能は次のとおりです。
 
 1. Security Center のメニューから Azure Defender ダッシュボードを開き、 **[ネットワーク マップ]** を選択します。
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Azure Defender ダッシュボードからネットワーク マップを開く" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Azure Defender ダッシュボードからネットワーク マップを開く。" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. **[レイヤー]** メニューを選択し、 **[トポロジ]** を選択します。
  
@@ -55,7 +55,7 @@ Security Center の **ネットワーク** 機能は次のとおりです。
 - インターネットに接続するリソース
 - マップは、Azure 内で選択したサブスクリプションに対して最適化されます。 選択内容を変更した場合、マップが再計算され、新しい設定に基づいてもう一度最適化されます。  
 
-[![ネットワーク トポロジ マップ](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
+[![ネットワーク トポロジ マップ。](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>ネットワーク マップについて
 
@@ -107,7 +107,7 @@ Security Center の **ネットワーク** 機能は次のとおりです。
 
 **このデータは、ネットワーク セキュリティ グループの分析と、交差と相互作用を把握するために複数のルールを分析する高度な機械学習アルゴリズムに基づいています。** 
 
-[![ネットワーク トラフィック マップ](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+[![ネットワーク トラフィック マップ。](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
 ## <a name="next-steps"></a>次のステップ

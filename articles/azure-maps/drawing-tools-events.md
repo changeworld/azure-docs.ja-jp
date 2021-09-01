@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 6abe0ed88adbdf8263aa27d340fb2fff156d98e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edb3b0bdcd5d8e9f80493267cad3ccbfa07a576f
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90089345"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665212"
 ---
 # <a name="drawing-tool-events"></a>描画ツール イベント
 
@@ -24,6 +24,7 @@ ms.locfileid: "90089345"
 | `drawingchanged` | 図形に任意の座標が追加されたり、それが変更されると発生します。 | 
 | `drawingchanging` | 図形のプレビュー座標が表示されると発生します。 たとえば、このイベントは座標をドラッグすると複数回発生します。 | 
 | `drawingcomplete` | 図形の描画が終了したり、編集モードが終了すると発生します。 |
+| `drawingerased` | `erase-geometry` モードのときに、図形が描画マネージャーから消去されると発生します。 |
 | `drawingmodechanged` | 描画モードが変更されると発生します。 新しい描画モードはイベント ハンドラーに渡されます。 |
 | `drawingstarted` | ユーザーが図形の描画を開始すると、または図形を編集モードにすると発生します。  |
 

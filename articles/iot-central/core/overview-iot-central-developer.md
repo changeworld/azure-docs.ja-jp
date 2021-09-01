@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 90e1b951cd3990df3615cdcf33a4d659f693b5ee
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e7ec54a85c2b5f964327d7d60c9f856e70320225
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064884"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467864"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
 
@@ -27,7 +27,7 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 - "_プロパティ_": デバイスが IoT Central に報告する状態の値。 たとえば、デバイスのファームウェアの現在のバージョン。 さらに、IoT Central がデバイスで更新できる書き込み可能なプロパティも使用できます (目標温度など)。
 - "_コマンド_": デバイスの動作を制御するために IoT Central から呼び出されます。 たとえば、IoT Central アプリケーションは、デバイスを再起動するためにコマンドを呼び出す場合があります。
 
-ソリューション ビルダーは、テレメトリの視覚化、プロパティの管理、コマンドの呼び出しを行うために、IoT Central の Web UI でダッシュボードとビューを構成する役割を担います。
+ソリューション ビルダーは、テレメトリの視覚化、プロパティの管理、コマンドの呼び出しを行うために、IoT Central の Web UI でダッシュボードとデバイスのビューを構成する役割を担います。
 
 ## <a name="types-of-device"></a>デバイスの種類
 
@@ -85,7 +85,7 @@ IoT Central デバイス テンプレートには、その種類のデバイス�
 
 各モデルには、一意の "_デバイス ツイン モデル識別子_" (DTMI) があります (例: `dtmi:com:example:Thermostat;1`)。 デバイスは、IoT Central に接続するときに、実装するモデルの DTMI を送信します。 これにより、IoT Central で正しいデバイス テンプレートをデバイスに関連付けることができます。
 
-[IoT プラグ アンド プレイ](../../iot-pnp/overview-iot-plug-and-play.md)では、DTDL モデルの実装時にデバイスで遵守されるべき一連の規則を定義しています。
+[IoT プラグ アンド プレイ](../../iot-develop/overview-iot-plug-and-play.md)では、DTDL モデルの実装時にデバイスで遵守されるべき一連の規則を定義しています。
 
 [Azure IoT device SDK](#languages-and-sdks) では、IoT プラグ アンド プレイ規則がサポートされています。
 
@@ -100,10 +100,10 @@ IoT Central デバイス テンプレートには、その種類のデバイス�
 
 DTDL モデルは、"_コンポーネントなし_" または "_複数コンポーネント_" のモデルにすることができます。
 
-- コンポーネントなしモデル: 単純なモデルでは、埋め込みコンポーネントまたはカスケードされたコンポーネントは使用されません。 すべてのテレメトリ、プロパティ、コマンドは、1 つの "_既定のコンポーネント_" として定義されます。 例については、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) モデルを参照してください。
-- 複数コンポーネント モデル: 2 つ以上のコンポーネントを含むより複雑なモデル。 これらのコンポーネントには、1 つの既定のコンポーネントと、入れ子になった 1 つ以上の追加コンポーネントが含まれます。 例については、[Temperature Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) モデルを参照してください。
+- コンポーネントなしモデル: 単純なモデルでは、埋め込みコンポーネントまたはカスケードされたコンポーネントは使用されません。 すべてのテレメトリ、プロパティ、コマンドは、1 つの "_ルート コンポーネント_" として定義されます。 例については、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) モデルを参照してください。
+- 複数コンポーネント モデル: 2 つ以上のコンポーネントを含むより複雑なモデル。 これらのコンポーネントには、1 つのルート コンポーネントと、入れ子になった 1 つ以上の追加コンポーネントが含まれます。 例については、[Temperature Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) モデルを参照してください。
 
-詳細については、[IoT プラグ アンド プレイ モデリング ガイド](../../iot-pnp/concepts-modeling-guide.md)を参照してください。
+詳細については、[IoT プラグ アンド プレイ モデリング ガイド](../../iot-develop/concepts-modeling-guide.md)を参照してください。
 
 ### <a name="conventions"></a>規約
 
@@ -119,7 +119,7 @@ DTDL モデルは、"_コンポーネントなし_" または "_複数コンポ�
 
 デバイスが IoT Central と交換する JSON メッセージの形式の詳細については、「[テレメトリ、プロパティ、およびコマンドのペイロード](concepts-telemetry-properties-commands.md)」を参照してください。
 
-IoT プラグ アンド プレイ規則の詳細については、「[IoT プラグ アンド プレイ規則](../../iot-pnp/concepts-convention.md)」を参照してください。
+IoT プラグ アンド プレイ規則の詳細については、「[IoT プラグ アンド プレイ規則](../../iot-develop/concepts-convention.md)」を参照してください。
 
 ### <a name="device-sdks"></a>デバイスの SDK
 

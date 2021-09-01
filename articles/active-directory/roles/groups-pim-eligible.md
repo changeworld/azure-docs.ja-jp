@@ -13,19 +13,19 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d1d5e1b9a159d8084c3bf93d00611af72f2b21
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 38b6ee8181f24601a66df7205d44256604834c10
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085871"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228637"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Privileged Identity Management を使用してグループにロールを割り当てる
 
 この記事では、Azure AD Privileged Identity Management (PIM) を使用して、グループに Azure Active Directory (Azure AD) ロールを割り当てる方法について説明します。
 
 > [!NOTE]
-> Privileged Identity Management を使用して Azure AD ロールにグループを割り当てることができるようにするには、更新されたバージョンの PIM を使用する必要があります。 Azure AD 組織で Privileged Identity Management API を活用している場合、PIM は以前のバージョンである可能性があります。 その場合、エイリアス pim_preview@microsoft.com に連絡して、組織を移動し、API を更新してください。 詳細については、[PIM の Azure AD ロールと機能](../privileged-identity-management/azure-ad-roles-features.md)に関する記事を参照してください。
+> Privileged Identity Management を使用して Azure AD ロールにグループを割り当てることができるようにするには、更新されたバージョンの PIM を使用する必要があります。 Azure AD 組織で Privileged Identity Management API を活用している場合、PIM は以前のバージョンである可能性があります。 その場合、エイリアス pim_preview@microsoft.com に連絡して、組織を移動し、API を更新してください。 詳細については、[PIM の Azure AD ロールと機能](../privileged-identity-management/pim-configure.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "110085871"
 - PowerShell を使用する場合の AzureADPreview モジュール
 - Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
-詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
+詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
 
 ## <a name="azure-portal"></a>Azure portal
 
@@ -84,7 +84,7 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クラウド グループを使用してロールの割り当てを管理する](groups-concept.md)
-- [クラウド グループに割り当てられているロールのトラブルシューティング](groups-faq-troubleshooting.md)
+- [Azure AD グループを使用してロールの割り当てを管理する](groups-concept.md)
+- [グループに割り当てられている Azure AD ロールをトラブルシューティングする](groups-faq-troubleshooting.yml)
 - [Privileged Identity Management で Azure AD 管理者ロールの設定を構成する](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [Privileged Identity Management で Azure リソース ロールを割り当てる](../privileged-identity-management/pim-resource-roles-assign-roles.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2b6b3e9a6bdead4e4da7f1a829698d86cfbf52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9eeed96b87aa5c115994ee73d1985526b26af11
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92366175"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733748"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>条件付きアクセス:Azure 管理のために MFA を必須にする
 
@@ -26,7 +26,7 @@ ms.locfileid: "92366175"
 * Azure PowerShell
 * Azure CLI
 
-これらのツールは、リソースに対する高い特権のアクセスを提供できます。このアクセス権によって、サブスクリプション全体の構成、サービス設定、サブスクリプションの課金を変更できます。 これらの特権リソースを保護するために、Microsoft では、これらのリソースにアクセスするすべてのユーザーに対して多要素認証を必須にすることをお勧めします。
+これらのツールは、リソースに対する高い特権のアクセスを提供できます。このアクセス権によって、サブスクリプション全体の構成、サービス設定、サブスクリプションの課金を変更できます。 これらの特権リソースを保護するために、Microsoft では、これらのリソースにアクセスするすべてのユーザーに対して多要素認証を必須にすることをお勧めします。 Azure AD では、これらのツールは [Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management) と呼ばれるスイートにまとめられています。 Azure Government の場合、これは Azure Government Cloud Management API アプリになっているはずです。 
 
 ## <a name="user-exclusions"></a>ユーザーの除外
 
@@ -39,7 +39,7 @@ ms.locfileid: "92366175"
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
-次の手順では、[Microsoft Azure の管理](concept-conditional-access-cloud-apps.md#microsoft-azure-management)アプリへのアクセス権を持つユーザーに対して、多要素認証の実行を必須にする条件付きアクセス ポリシーを作成します。
+次の手順では、[Microsoft Azure Management](concept-conditional-access-cloud-apps.md#microsoft-azure-management) スイートへのアクセス権を持つユーザーに対して、多要素認証の実行を必須にする条件付きアクセス ポリシーを作成します。
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
@@ -50,7 +50,6 @@ ms.locfileid: "92366175"
    1. **[除外]** で、 **[ユーザーとグループ]** を選択し、組織の緊急アクセス用または非常用アカウントを選択します。 
    1. **[Done]** を選択します。
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[アプリを選択]** を選択し、 **[Microsoft Azure Management]\(Microsoft Azure の管理\)** を選択し、 **[Select]\(選択する\)** 、 **[Done]\(完了\)** の順に選択します。
-1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** の **[このポリシーを適用するクライアント アプリを選択します]** で、すべてを既定値が選択された状態のままにして、 **[完了]** を選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** 、 **[Require multi-factor authentication]\(多要素認証を要求する\)** の順に選択し、 **[Select]\(選択する\)** を選択します。
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。

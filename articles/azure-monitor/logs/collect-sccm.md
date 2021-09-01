@@ -4,19 +4,19 @@ description: この記事では、Configuration Manager を Azure Monitor のワ
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/30/2020
-ms.openlocfilehash: 7302f61fce6763fdbb41c2b4899dea749ac3225f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 08/02/2021
+ms.openlocfilehash: 2bb6bcc45c6ebb325dbb8ec56eb37b6fdce293ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031074"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735831"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの Microsoft Endpoint Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
 
 > [!IMPORTANT]
-> Configuration Manager バージョン 2010 以降では、この機能は非推奨とされます。<!-- 8269855 --> 詳しくは、「[Configuration Manager から削除された機能と非推奨の機能](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures)」をご覧ください。
+> Configuration Manager バージョン 2010 以降では、この機能は非推奨とされます。<!-- 8269855 --> バージョン 2107 以降では、Configuration Manager から削除されています。<!-- 9649296 --> 詳しくは、「[Configuration Manager から削除された機能と非推奨の機能](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

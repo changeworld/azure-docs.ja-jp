@@ -3,15 +3,15 @@ title: Azure Virtual Desktop の診断の問題 - Azure
 description: Azure Virtual Desktop の診断機能を使用して問題を診断する方法。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/21/2020
+ms.date: 06/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: de140f83c4f00d92379b1ff0b70f627234480295
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0154bb61dcfbcf8024f09052d7a199ac63f71d8e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757879"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112412543"
 ---
 # <a name="identify-and-diagnose-azure-virtual-desktop-issues"></a>Azure Virtual Desktop の問題を特定し診断する
 
@@ -34,18 +34,6 @@ WVDErrors テーブルでは、あらゆる種類のアクティビティを対�
 >[!NOTE]
 >この一覧には、最も一般的なエラーが含まれており、定期的に更新されます。 最新の情報を得るために、必ず 1 か月に 1 回以上この記事をご確認ください。
 
-## <a name="management-errors"></a>管理エラー
-
-|エラー メッセージ|推奨されている解決方法|
-|---|---|
-|登録キーを作成できませんでした |登録トークンを作成できませんでした。 有効期限を短くして (1 時間から 1 か月)、もう一度作成してみてください。 |
-|登録キーを削除できませんでした|登録トークンを削除できませんでした。 もう一度削除してみてください。 それでもうまくいかない場合は、PowerShell を使用して、トークンがまだ存在するかどうかを確認します。 存在する場合は、PowerShell を使用して削除します。|
-|セッション ホストのドレイン モードを変更できませんでした |VM でドレイン モードを変更できませんでした。 VM の状態を確認します。 VM を使用できない場合、ドレイン モードを変更することはできません。|
-|ユーザー セッションを切断できませんでした |VM からユーザーを切断できませんでした。 VM の状態を確認します。 VM を使用できない場合、ユーザー セッションを切断することはできません。 VM を使用できる場合は、ユーザー セッションの状態を確認して、接続が切断されていないかどうかを確認します。 |
-|セッション ホスト内のすべてのユーザーをログオフできませんでした |VM からユーザーをサインアウトすることができませんでした。 VM の状態を確認します。 使用できない場合、ユーザーはサインアウトできません。ユーザー セッションの状態を確認して、既にサインアウトされていないかどうかを確認します。PowerShell を使用して強制的にサインアウトすることができます。 |
-|アプリケーション グループからユーザーの割り当てを解除できませんでした|ユーザーのアプリ グループの公開を取り消すことができませんでした。 ユーザーが Azure AD で利用できるかどうかを確認します。 ユーザーが、アプリ グループが公開されているユーザー グループに属しているかどうかを確認します。 |
-|利用できる場所の取得でエラーが発生しました |ホスト プールの作成ウィザードで使用されている VM の場所を確認します。 その場所でイメージを使用できない場合は、その場所にイメージを追加するか、別の VM の場所を選択します。 |
-
 ### <a name="connection-error-codes"></a>接続エラー コード
 
 |数値コード|エラー コード|推奨されている解決方法|
@@ -61,16 +49,8 @@ WVDErrors テーブルでは、あらゆる種類のアクティビティを対�
 |14|UnexpectedNetworkDisconnect|ネットワークへの接続が削除されました。 ユーザーにもう一度接続するよう依頼してください。|
 |24|ReverseConnectFailed|ホスト仮想マシンには、RD ゲートウェイへの直接の見通し線がありません。 ゲートウェイ IP アドレスを解決できることを確認してください。|
 
-## <a name="error-cant-add-user-assignments-to-an-app-group"></a>エラー:アプリ グループにユーザー割り当てを追加できない
-
-アプリ グループにユーザーを割り当てた後に、"セッションが終了している" または "認証の問題が発生している (拡張機能 Microsoft_Azure_WVD)" ことを示す警告が Azure portal に表示されます。 そして、割り当てページは読み込まれず、その後、Azure portal 全体 (Azure Monitor、Log Analytics、Service Health など) でページの読み込みが停止します。
-
-**原因:** 条件付きアクセス ポリシーに問題があります。 Azure portal は、SharePoint Online に依存する Microsoft Graph のトークンを取得しようとしています。 お客様には、データ ストレージにアクセスするための使用条件に同意することをユーザーに求める "Microsoft Office 365 Data Storage Terms of Use" という条件付きアクセス ポリシーがあります。 しかし、まだサインインしていないため、Azure portal はトークンを取得できません。
-
-**解決策:** Azure portal にサインインする前に、まず、管理者が SharePoint にサインインして使用条件に同意する必要があります。 その後、通常のように Azure portal にサインインできるようになります。
-
 ## <a name="next-steps"></a>次のステップ
 
-Azure Virtual Desktop 内のロールについて詳しくは、[「Azure Virtual Desktop 環境」](environment-setup.md)をご覧ください。
+Azure Virtual Desktop 内のロールの詳細については、「[Azure Virtual Desktop 環境](environment-setup.md)」を参照してください。
 
 Azure Virtual Desktop に使用可能な PowerShell コマンドレットの一覧を表示するには、[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)に関する記事をご覧ください。

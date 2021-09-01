@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 2410e5fed48b7ab206360debc3bbeb174b3943cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b36d7bbde524bf3ddcaed2e096f9403caf16ea3c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517061"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742133"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
@@ -49,9 +49,9 @@ ms.locfileid: "100517061"
 
 ## <a name="find-examples-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで例を検索する
 
-Microsoft では、[Azure Machine Learning Studio (クラシック)](https://azure.microsoft.com/services/machine-learning-studio/) というクラウドベースのサービスを提供しています。 さまざまな機械学習アルゴリズムを使って実験できるワークスペースが用意されており、有益なソリューションが得られたら、それを Web サービスとして立ち上げることができます。
+Microsoft では、[Machine Learning Studio (クラシック)](https://azure.microsoft.com/services/machine-learning-studio/) というクラウドベースのサービスを提供しています。 さまざまな機械学習アルゴリズムを使って実験できるワークスペースが用意されており、有益なソリューションが得られたら、それを Web サービスとして立ち上げることができます。
 
-このサービスの一部として、 **[Azure AI ギャラリー](https://gallery.azure.ai/)** というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning Studio (クラシック) の実験 (モデル) のコレクションがあります。これらは有志によって構築され、だれもが使用できるように提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。 だれでもアクセスできるので、自由に閲覧してください。
+このサービスの一部として、 **[Azure AI ギャラリー](https://gallery.azure.ai/)** というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Machine Learning Studio (クラシック) の実験 (モデル) のコレクションがあります。これらは有志によって構築され、だれもが使用できるように提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。 だれでもアクセスできるので、自由に閲覧してください。
 
 ![Azure AI ギャラリー](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -74,7 +74,7 @@ Microsoft では、[Azure Machine Learning Studio (クラシック)](https://azu
 
 ![[Studio (クラシック) で開く] ボタン](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-このリンクをクリックすると、**Azure Machine Learning Studio (クラシック)** が表示されます。 実験のコピーが作成され、自分のワークスペースに配置されます。 ここには投稿者のデータセットとそのすべての処理、その投稿者が使用したすべてのアルゴリズム、結果の保存方法が含まれています。
+このリンクをクリックすると、**Machine Learning Studio (クラシック)** が表示されます。 実験のコピーが作成され、自分のワークスペースに配置されます。 ここには投稿者のデータセットとそのすべての処理、その投稿者が使用したすべてのアルゴリズム、結果の保存方法が含まれています。
 
 ![Machine Learning Studio (クラシック) でギャラリー実験を開く - クラスタリング アルゴリズム サンプル](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
@@ -87,8 +87,8 @@ Microsoft では、[Azure Machine Learning Studio (クラシック)](https://azu
 
 [Azure AI ギャラリー](https://gallery.azure.ai)は、独自のソリューションの出発点として使用できる動作している実験を検索するための場所です。
 
-Microsoft Azure Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
+Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Machine Learning Studio (クラシック) で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](../overview-what-is-azure-ml.md)
+* [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試す](create-experiment.md)
+* [Azure Machine Learning の概要](../overview-what-is-azure-machine-learning.md)

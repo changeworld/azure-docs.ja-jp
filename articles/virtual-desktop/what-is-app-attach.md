@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 3da80de79490ce21ae99a4dd7dd36c08054cd666
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d55308876db0928bef4fdf3b89ace10305f7c47d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751579"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726015"
 ---
 # <a name="what-is-msix-app-attach"></a>MSIX アプリのアタッチとは
 
@@ -27,7 +27,7 @@ Azure Virtual Desktop でアプリを配信するには、次のいずれかの�
 
 - アプリをマスター イメージに配置する
 - SCCM や Intune などのツールを中央管理に使用する
-- 動的なアプリのプロビジョニング (AppV、VMWare AppVolumes、または Citrix AppLayering)
+- 動的なアプリのプロビジョニング (AppV、VMware AppVolumes、または Citrix AppLayering)
 - Microsoft とサードパーティのツールを使用してカスタム ツールまたはスクリプトを作成する
 
 ## <a name="what-does-msix-app-attach-do"></a>MSIX アプリのアタッチの効果
@@ -56,4 +56,4 @@ MSIX アプリのアタッチは、VDI または SBC の外部で適用される
 
 ## <a name="next-steps"></a>次のステップ
 
-MSIX アプリのアタッチの詳細については、[用語集](app-attach-glossary.md)と[よくあるご質問](app-attach-faq.md)に関する記事を参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。
+MSIX アプリのアタッチの詳細については、[用語集](app-attach-glossary.md)と[よくあるご質問](app-attach-faq.yml)に関する記事を参照してください。 それ以外の場合、[アプリのアタッチの設定](app-attach.md)を開始してください。

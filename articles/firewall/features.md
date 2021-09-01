@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 8dbfb23d4314f8ceb13ad36ca9733e446e176090
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 5acb23767f8c766de80961fb8e76297f4b31a5c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278186"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738084"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -35,7 +35,7 @@ Azure Firewall には次の機能が含まれています。
 - 複数のパブリック IP アドレス
 - Azure Monitor ログ記録
 - 強制トンネリング
-- Web カテゴリ (プレビュー)
+- Web カテゴリ
 - 認定資格
 
 ## <a name="built-in-high-availability"></a>組み込みの高可用性
@@ -59,7 +59,7 @@ Availability Zones の詳細については、「[Azure のリージョンと Av
 
 ## <a name="unrestricted-cloud-scalability"></a>クラウドによる無制限のスケーラビリティ
 
-Azure Firewall では、必要に応じてスケールアップしてネットワーク トラフィック フローの変化に対応できるので、ピーク時のトラフィックを処理するために予算を立てる必要がありません。
+Azure Firewall では、必要に応じてスケールアウトしてネットワーク トラフィック フローの変化に対応できるので、ピーク時のトラフィックを処理するために予算を立てる必要がありません。
 
 ## <a name="application-fqdn-filtering-rules"></a>アプリケーションの FQDN のフィルタリング規則
 
@@ -68,6 +68,8 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 ## <a name="network-traffic-filtering-rules"></a>ネットワーク トラフィックのフィルタリング規則
 
 送信元と送信先の IP アドレス、ポート、プロトコルを基準として、"*許可*" または "*拒否*" のネットワーク フィルタリング規則を一元的に作成できます。 Azure Firewall は完全にステートフルであるため、各種の接続の正当なパケットを識別できます。 規則は、複数のサブスクリプションと仮想ネットワークにまたがって適用および記録されます。
+
+Azure Firewall では、レイヤー 3 とレイヤー 4 のネットワーク プロトコルのステートフル フィルター処理がサポートされています。 レイヤー 3 の IP プロトコルをフィルター処理するには、ネットワーク規則で **任意** のプロトコルを選択し、ポートでワイルドカード **\*** を選択します。
 
 ## <a name="fqdn-tags"></a>FQDN のタグ
 
@@ -114,29 +116,17 @@ Azure Firewall ブックにより、Azure Firewall のデータ分析のため�
 
 インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングするように、Azure Firewall を構成することができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
 
-## <a name="web-categories-preview"></a>Web カテゴリ (プレビュー)
+## <a name="web-categories"></a>Web カテゴリ
 
-Web カテゴリでは、管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトなどの Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。 Web カテゴリは Azure Firewall Standard に含まれていますが、Azure Firewall Premium プレビューではさらに細かく調整されています。 Standard SKU の FQDN に基づくカテゴリと一致する Web カテゴリの機能とは異なり、Premium SKU では HTTP と HTTPS の両方のトラフィックの URL 全体に従ってカテゴリと一致します。 Azure Firewall Premium プレビューの詳細については、[Azure Firewall Premium プレビューの機能](premium-features.md)に関するページを参照してください。
+Web カテゴリでは、管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトなどの Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。 Web カテゴリは Azure Firewall Standard に含まれていますが、Azure Firewall Premium ではさらに細かく調整されています。 FQDN に基づくカテゴリと照合する Standard SKU の Web カテゴリ機能とは異なり、Premium SKU では、HTTP と HTTPS の両方のトラフィックについて URL 全体に従ってカテゴリを照合します。 Azure Firewall Premium の詳細については、[Azure Firewall Premium の機能](premium-features.md)に関するページを参照してください。
 
-たとえば、Azure Firewall が `www.google.com/news` の HTTPS 要求をインターセプトする場合、次のような分類が必要です。 
+たとえば、Azure Firewall が `www.google.com/news` の HTTPS 要求をインターセプトする場合、次のような分類が想定されます。 
 
 - Firewall Standard - FQDN 部分のみが検証されるため、`www.google.com` は "*検索エンジン*" として分類されます。 
 
 - Firewall Premium - URL 全体が検証されるため、`www.google.com/news` は "*ニュース*" として分類されます。
 
 カテゴリは、 **[責任]** 、 **[高帯域幅]** 、 **[ビジネス利用]** 、 **[生産性の低下]** 、 **[一般的なネット サーフィン]** 、 **[未分類]** の下で重要度に基づいて整理されています。
-
-### <a name="categorization-change"></a>分類の変更
-
-次の場合に、分類の変更を要求できます。
-
- - FQDN または URL が別のカテゴリの下にある必要があると思われる 
- 
-or 
-
-- 分類されていない FQDN または URL に対して推奨されるカテゴリがある
-
-[https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) で要求を送信してください。
 
 ### <a name="category-exceptions"></a>カテゴリの例外
 
@@ -150,4 +140,4 @@ Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Firewall Premium プレビューの機能](premium-features.md)
+- [Azure Firewall Premium の機能](premium-features.md)

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/09/2020
+ms.date: 08/11/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec237af8cd0c79d5a7b62aad0bc6521e5cf3d7e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7a3cf21ef2493ef6a93397e6d6601e326d0ef0d3
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059243"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252820"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
 Azure AD Connect の自動アップグレードは、Azure AD Connect の新しいバージョンを定期的にチェックする機能です。 サーバーが自動アップグレードに対応していて、そのサーバーが適合している新しいバージョンが見つかった場合、その新しいバージョンへの自動アップグレードが実行されます。
@@ -50,6 +50,22 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 
 
 **Synchronization Service Manager** UI がサーバーで実行されている場合は、UI が閉じられるまで、アップグレードが中断されます。
+
+>[!NOTE]
+> Azure AD Connect のすべてのリリースが自動アップグレードに対応しているわけではありません。 リリースの状態により、リリースが自動アップグレードに対応しているか、ダウンロードにのみ対応しているかが示されます。 Azure AD Connect サーバーに対して自動アップグレードが有効になっており、自動アップグレードの **[適格性](#auto-upgrade-eligibility)が構成** にある場合、そのサーバーは、自動アップグレードのためにリリースされた Azure AD Connect の最新バージョンに自動的にアップグレードされます。 詳細については、記事「[Azure AD Connect: バージョンのリリース履歴](reference-connect-version-history.md)」を参照してください。
+
+## <a name="auto-upgrade-eligibility"></a>自動アップグレードの適格性
+自動アップグレードの適格性を得るには、次のいずれかの条件を満たしてはなりません。
+
+| 結果メッセージ | 説明 |
+| --- | --- |
+|UpgradeNotSupportedCustomizedSyncRules|ユーザーが構成に独自のカスタム ルールを追加しました。|
+|UpgradeNotSupportedInvalidPersistedState|インストールが簡単設定でも DirSync のアップグレードでもありません。|
+|UpgradeNotSupportedNonLocalDbInstall|SQL Server Express LocalDB データベースが使用されていません。|
+|UpgradeNotSupportedLocalDbSizeExceeded|ローカル DB のサイズが 8 GB 以上です。|
+|UpgradeNotSupportedAADHealthUploadDisabled|正常性データのアップロードがポータルから無効になっています。|
+
+
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 インストール済みの Connect が想定されているとおりに自動的にアップグレードしない場合は、次の手順を実行して問題の原因を特定してください。

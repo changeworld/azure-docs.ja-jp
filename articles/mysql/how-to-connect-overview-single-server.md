@@ -7,14 +7,16 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/22/2020
-ms.openlocfilehash: 0414aaad5a1cf6edb9c2152eed70f8753946cca1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: def4794d091155cbf10a854d304d4390659626bf
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92546434"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653556"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-mysql--single-server"></a>Azure Database for MySQL - 単一サーバーへの接続とクエリの概要
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 次のドキュメントは、Azure Database for MySQL 単一サーバーに接続してクエリを実行する例を紹介したリンク集です。 このガイドには、以下のサポートされている言語でサーバーに接続するために使用できる TLS の推奨事項とライブラリも含まれています。
 

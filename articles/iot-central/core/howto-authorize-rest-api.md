@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 73ef942b42858a3219502fe09c3b9281be81f964
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 540137495e06bb05fbf5e96e3b930e0c8cda4b10
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776549"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461232"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>IoT Central REST API 呼び出しを認証および承認する方法
 
@@ -24,9 +24,11 @@ IoT Central REST API を使用すると、IoT Central アプリケーション�
 
 ## <a name="token-types"></a>トークンの種類
 
+ユーザー ベアラー トークンは、自動化、テスト、API 呼び出しを自分で実行する場合に使用します。SPN ベアラー トークンは、開発環境 (devops など) を自動化、スクリプト化する場合に使用します。 API トークンはどちらの場合にも使用できますが、期限切れや漏えいのリスクがあるので、可能な限りベアラーを使用することをお勧めします。 これでおわかりいただけたでしょうか。 
+
 REST API を使用して IoT Central アプリケーションにアクセスするには、次の方法を使用できます。
 
-- _Azure Active Directory ベアラー トークン_。 ベアラー トークンは、Azure Active Directory ユーザー アカウントに関連付けられています。 このトークンにより、IoT Central アプリケーションでユーザーが持っているのと同じアクセス許可が呼び出し元に付与されます。
+- _Azure Active Directory ベアラー トークン_。 ベアラー トークンは、Azure Active Directory ユーザー アカウントまたはサービス プリンシパルに関連付けられています。 このトークンにより、IoT Central アプリケーションでユーザーまたはサービス プリンシパルが持っているのと同じアクセス許可が呼び出し元に付与されます。
 - IoT Central API トークン。 API トークンは、IoT Central アプリケーションのロールに関連付けられています。
 
 IoT Central のユーザーとロールの詳細については、「[IoT Central アプリケーションでユーザーとロールを管理する](howto-manage-users-roles.md)」を参照してください。
@@ -56,6 +58,8 @@ az account get-access-token --resource https://apps.azureiotcentral.com
 ```
 
 ベアラー トークンの有効期間は約 1 時間です。有効期間を過ぎたら、新しいものを作成する必要があります。
+
+サービス プリンシパルのベアラー トークンを取得するには、「[サービス プリンシパルの認証](/rest/api/iotcentral/authentication#service-principal-authentication)」を参照してください。
 
 ## <a name="get-an-api-token"></a>API トークンを取得する
 

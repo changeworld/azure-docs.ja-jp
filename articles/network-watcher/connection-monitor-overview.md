@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: fe259c3858e798f9bcb72600b680f12c19055884
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 41c39a87375b66e9aaf916f927d09a3b6abb3b0e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470354"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748200"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>接続モニターによるネットワーク接続の監視
 
@@ -76,7 +76,7 @@ ms.locfileid: "110470354"
 
 接続モニターで、オンプレミスのコンピューターが監視のソースとして認識されるようにするには、コンピューターに Log Analytics エージェントをインストールします。  その後、Network Performance Monitor ソリューションを有効にします。 これらのエージェントは Log Analytics ワークスペースにリンクされているので、監視を開始するには、ワークスペース ID とプライマリ キーをセットアップする必要があります。
 
-Windows コンピューター用の Log Analytics エージェントをインストールする方法については、「[Windows 用の Azure Monitor 仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)」を参照してください。
+Windows コンピューター用の Log Analytics エージェントをインストールするには、[Windows への Log Analytics エージェントのインストール](../azure-monitor/agents/agent-windows.md)に関する記事を参照してください。
 
 パスにファイアウォールまたはネットワーク仮想アプライアンス (NVA) が含まれている場合は、ターゲットに到達可能であることを確認します。
 
@@ -279,9 +279,18 @@ Network Watcher から接続モニターに移動したときには、以下の�
 
 監視データのカスタム ビューを作成するには、Log Analytics を使用します。 UI に表示されるすべてのデータは、Log Analytics からのものです。 リポジトリ内のデータを対話形式で分析できます。 Log Analytics に基づく Agent Health または他のソリューションからのデータを関連付けます。 Excel や Power BI にデータをエクスポートするか、または共有可能なリンクを作成します。
 
+#### <a name="network-topology-in-connection-monitor"></a>接続モニターでのネットワーク トポロジ 
+
+接続モニターのトポロジは、通常、エージェントによって実行される Trace Route コマンドの結果を使用して構築されます。このコマンドでは、基本的に、接続元から接続先までのすべてのホップが取得されます。
+ただし、接続元または接続先が Azure の境界内にある場合は、2 つの異なる操作の結果をマージすることによってトポロジが構築されます。
+最初の 1 つは、明らかに Trace Route コマンドの結果です。 2 つ目は、Azure 境界内の (顧客) ネットワーク構成に基づく論理ルートを識別する内部コマンド (NW のネクスト ホップ診断ツールとよく似ています) の結果です。 後者は論理的なものであり、前者では通常は Azure 境界内のホップが識別されないため、マージされた結果のいくつかのホップ (最も多い場合で、Azure 境界内のすべてのホップ) には、待機時間の値がありません。
+
 #### <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
 接続モニター エクスペリエンスの前に作成された接続モニターでは、次の 4 つのメトリックすべてを使用できます: 失敗したプローブの割合、AverageRoundtripMs、ChecksFailedPercent、RoundTripTimeMs。 接続モニター エクスペリエンスで作成された接続モニターでは、データを使用できるのは、ChecksFailedPercent、RoundTripTimeMs、および Test Result メトリックについてのみです。
+
+メトリックは監視頻度に従って生成され、特定の時点での接続モニターの側面が示されます。 接続モニターのメトリックには、SourceName、DestinationName、TestConfiguration、TestGroup などの複数のディメンションもあります。これらのディメンションを使用すると、特定のデータ セットを視覚化でき、アラートを定義するときに同じものを対象にすることもできます。
+現在、Azure のメトリックで使用できる最小の時間単位は 1 分です。周期が 1 分未満の場合は、集計された結果が表示されます。
 
   :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="接続モニターのメトリックを示すスクリーンショット" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
@@ -365,6 +374,37 @@ Azure ネットワークの問題は、ネットワーク トポロジで確認�
 * ゲートウェイの接続で BGP が有効になっていない。
 * ロード バランサーで DIP プローブがダウンする。
 
+## <a name="comparision-between-azures-connectivity-monitoring-support"></a>Azure の接続監視サポートの比較 
+
+Network Performance Monitor と接続モニター (クラシック) から、機能が向上した新しい接続モニターに、1 回のクリックで、ダウンタイムなしにテストを移行できます。
+ 
+この移行は、次の結果を生み出すために役立ちます。
+
+* エージェントとファイアウォールの設定は現状のままです。 変更の必要はありません。 
+* 既存の接続モニターは、接続モニター -> テストグループ -> テスト形式にマップされます。 **[編集]** を選択することで、新しい接続モニターのプロパティを表示して変更したり、テンプレートをダウンロードして接続モニターの変更を行い、それを Azure Resource Manager 経由で送信したりできます。 
+* Network Watcher 拡張機能を備えた Azure 仮想マシンでは、ワークスペースとメトリックの両方にデータが送信します。 接続モニターでは、古いメトリック(ProbesFailedPercent と AverageRoundtripMs) の代わりに、新しいメトリック (ChecksFailedPercent と RoundTripTimeMs) 経由でデータを使用できるようになります。 古いメトリックは、ProbesFailedPercent -> ChecksFailedPercent および AverageRoundtripMs -> RoundTripTimeMs として、新しいメトリックに移行されます。
+* データの監視:
+   * **アラート**:新しいメトリックに自動的に移行されます。
+   * **ダッシュボードと統合**:メトリック セットを手動で編集する必要があります。 
+   
+Network Performance Monitor と接続モニター (クラシック) から接続モニターに移行する理由はいくつかあります。 以下は、Network Performance Monitor と接続モニター (クラシック) と比較して Azure の接続モニターがどのように動作するかを示すいくつかのユースケースです。 
+
+ | 機能  | Network Performance Monitor | 接続モニター (クラシック) | 接続モニター |
+ | -------  | --------------------------- | -------------------------- | ------------------ | 
+ | Azure とハイブリッド監視のための統合されたエクスペリエンス | 利用不可 | 利用不可 | 利用可能 |
+ | クロス サブスクリプション、クロス リージョン、クロス ワークスペースの監視 | クロス サブスクリプションとクロス リージョンの監視は可能ですが、クロス ワークスペースの監視はできません | 利用不可 | クロス サブスクリプションとクロス ワークスペースの監視が可能です。Azure エージェントにはリージョンの境界があります  |
+ | 集中型ワークスペースのサポート |  利用不可 | 利用不可   | 利用可能 |
+ | 複数の接続元から複数の接続先に ping を実行できます | パフォーマンスの監視では、複数の接続元から複数の接続先に ping を実行できます。サービス接続の監視では複数の接続元から 1 つのサービスまたは URL に ping を実行でき、ExpressRoute では複数の接続元から複数の接続先に ping を実行できます | 利用不可 | 利用可能 |
+ | オンプレミス、インターネット ホップ、Azure を対象とする統合されたトポロジ | 利用不可 | 利用不可 | 利用可能 |
+ | HTTP 状態コードのチェック | 利用不可  | 利用不可 | 利用可能 |
+ | 接続診断 | 利用不可 | 利用可能 | 利用可能 |
+ | 複合リソース - VNET、サブネット、オンプレミスのカスタム ネットワーク | パフォーマンスの監視ではサブネット、オンプレミス ネットワーク、論理ネットワーク グループがサポートされ、サービス接続の監視と ExpressRoute ではオンプレミスと Azure のエージェントのみがサポートされます | 利用不可 | 利用可能 |
+ | 接続メトリックとディメンションの測定 |   利用不可 | 損失、待機時間、RTT | 利用可能 |
+ | 自動化 – PS/CLI/Terraform | 利用不可 | 利用可能 | 利用可能 |
+ | Linux のサポート | パフォーマンスの監視では Linux がサポートされており、サービス接続モニターと ExpressRoute では Linux はサポートされていません | 利用可能 | 利用可能 |
+ | パブリック、政府機関向け、Mooncake、エアギャップのクラウドのサポート | 利用可能 | 利用可能 | 利用可能|
+
+
 ## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="are-classic-vms-supported"></a>クラシック VM はサポートされていますか?
@@ -379,6 +419,9 @@ Azure 以外から Azure へのトポロジは、宛先の Azure リソースと
 ### <a name="the-test-failure-reason-is-nothing-to-display"></a>テスト エラーの理由に "表示するものがありません" と表示されます
 接続モニター ダッシュボードに表示される問題は、トポロジの検出またはホップ探索中に見つかります。 %loss または RTT に設定されているしきい値に違反したとしても、ホップで問題が見つからない場合があります。
 
+### <a name="while-migrating-existing-connection-monitor-classic-to-connection-monitor-the-external-endpoint-tests-are-being-migrated-with-tcp-protocol-only"></a>既存の接続モニター (クラシック) を接続モニターに移行する間に、外部エンドポイントのテストは TCP プロトコルでのみ移行されますか? 
+接続モニター (クラシック) にはプロトコルの選択はありません。 そのため、お客様は、接続モニター (クラシック) で HTTP プロトコルを使用して外部エンドポイントへの接続を指定することはできませんでした。
+接続モニター (クラシック) では、すべてのテストで TCP プロトコルのみが使用されているため、移行時には、接続モニターのテストで TCP 構成が作成されます。 
 
 ## <a name="next-steps"></a>次の手順
     

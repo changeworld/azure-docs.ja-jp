@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2, subject-rbac-steps
-ms.openlocfilehash: 203c53daf07949e343e9aa7e5cf56e89a7b07b1f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f520ed1054c5d0d9dd6c053e22a984a813840131
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474545"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468778"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure Digital Twins インスタンスと認証を設定する (ポータル)
 
@@ -22,42 +22,34 @@ ms.locfileid: "110474545"
 この記事では、**新しい Azure Digital Twins インスタンスを設定する** 手順 (インスタンスの作成と認証の設定を含む) について説明します。 この記事を完了すると、Azure Digital Twins インスタンスのプログラミングを開始する準備が整います。
 
 この記事のこのバージョンでは、Azure portal を使用して、これらの手順を 1 つずつ手動で実行します。 Azure portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。
-* CLI を使用してこれらの手順を手動で実行するには、こちら記事の CLI バージョンを確認してください: [方法: インスタンスと認証を設定する (CLI)](how-to-set-up-instance-cli.md) 。
-* デプロイ スクリプトのサンプルを使用して自動での設定を実行するには、こちらの記事のスクリプト化されたバージョンを確認してください: [方法: インスタンスと認証を設定する (スクリプト化)](how-to-set-up-instance-scripted.md) 。
+* これらの手順を CLI を使用して手動で実行するには、[インスタンスと認証の設定 (CLI)](how-to-set-up-instance-cli.md) に関するページにあるこの記事の CLI バージョンを参照してください。
+* デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、[インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md) に関するページにあるこの記事のスクリプト化バージョンを参照してください。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを作成する
 
-このセクションでは、[Azure portal](https://ms.portal.azure.com/) を使用して、**Azure Digital Twins の新しいインスタンスを作成** します。 ポータルに移動し、自分の資格情報でログインします。
+[!INCLUDE [digital-twins-setup-portal.md](../../includes/digital-twins-setup-portal.md)]
 
-Azure portal に入ったら、Azure サービスのホーム ページ メニューで _[リソースの作成]_ を選択して開始します。
+3. 以下の **[リソースの作成]** ページで、次に示した値を入力します。
+    * **サブスクリプション**:使用している Azure サブスクリプション
+      - **[リソース グループ]** :インスタンスのデプロイ先にするリソース グループ。 検討できる既存のリソース グループがまだない場合は、 *[新規作成]* リンクを選択して新しいリソース グループの名前を入力することで、ここで作成することができます
+    * **[場所]** :デプロイする Azure Digital Twins 対応のリージョン。 リージョンのサポートに関する詳細については、"[リージョン別の利用可能な Azure 製品 (Azure Digital Twins)](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins) " に関するページを参照してください。
+    * **[リソース名]** : Azure Digital Twins インスタンスの名前。 サブスクリプションのリージョンに、指定した名前がすでに使用されている別の Azure Digital Twins インスタンスがある場合は、別の名前を選択するように求められます。
+    * **[リソースへのアクセスを許可する]** : このセクションのボックスをオンにすると、インスタンス内のデータにアクセスして管理するためのアクセス許可が Azure アカウントに付与されます。 ご自分でインスタンスを管理する場合は、ここでこのチェック ボックスをオンにしてください。 サブスクリプションにアクセス許可がないため、これが淡色表示されている場合は、リソースの作成を続行し、後で必要なアクセス許可を持つ人にロールを付与してもらうことができます。 このロールとインスタンスへのロールの割り当ての詳細については、次のセクション「[ユーザーのアクセス許可を設定する](#set-up-user-access-permissions)」を参照してください。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="ホーム ページの [リソースの作成] アイコンが強調表示されている Azure portal のスクリーンショット。":::
+    :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Azure portal の Azure Digital Twins の [リソースの作成] プロセスのスクリーンショット。記述された値が入力されます。":::
 
-検索ボックスで *Azure Digital Twins* を検索し、結果から **[Azure Digital Twins]** サービスを選択します。 _[作成]_ ボタンを選択して、サービスの新しいインスタンスを作成します。
+4. 操作を完了し、インスタンスの設定をこれ以上構成しない場合は、 **[確認と作成]** を選択できます。 これにより、[概要] ページに移動し、入力したインスタンスの詳細を確認して **[作成]** で完了できます。 
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure Digital Twins サービス ページの [作成] ボタンが強調表示されている Azure portal のスクリーンショット。":::
-
-以下の **[リソースの作成]** ページで、次に示した値を入力します。
-* **サブスクリプション**:使用している Azure サブスクリプション
-  - **[リソース グループ]** :インスタンスのデプロイ先にするリソース グループ。 検討できる既存のリソース グループがまだない場合は、 *[新規作成]* リンクを選択して新しいリソース グループの名前を入力することで、ここで作成することができます
-* **[場所]** :デプロイする Azure Digital Twins 対応のリージョン。 リージョンのサポートに関する詳細については、"[リージョン別の利用可能な Azure 製品 (Azure Digital Twins)](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins) " に関するページを参照してください。
-* **[リソース名]** : Azure Digital Twins インスタンスの名前。 サブスクリプションのリージョンに、指定した名前がすでに使用されている別の Azure Digital Twins インスタンスがある場合は、別の名前を選択するように求められます。
-* **[リソースへのアクセスを許可する]** : このセクションのボックスをオンにすると、インスタンス内のデータにアクセスして管理するためのアクセス許可が Azure アカウントに付与されます。 ご自分でインスタンスを管理する場合は、ここでこのチェック ボックスをオンにしてください。 サブスクリプションにアクセス許可がないため、これが淡色表示されている場合は、リソースの作成を続行し、後で必要なアクセス許可を持つ人にロールを付与してもらうことができます。 このロールとインスタンスへのロールの割り当ての詳細については、次のセクション「[ユーザーのアクセス許可を設定する](#set-up-user-access-permissions)」を参照してください。
-
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Azure portal の Azure Digital Twins の [リソースの作成] プロセスのスクリーンショット。記述された値が入力されます。":::
-
-操作を完了し、インスタンスの設定をこれ以上構成しない場合は、 **[確認と作成]** を選択できます。 これにより、[概要] ページに移動し、入力したインスタンスの詳細を確認して **[作成]** で完了できます。 
-
-インスタンスの詳細をさらに構成する場合は、次のセクションに残りの設定タブの説明があります。
+    インスタンスの詳細をさらに構成する場合は、次のセクションに残りの設定タブの説明があります。
 
 ### <a name="additional-setup-options"></a>その他の設定オプション
 
 ここでは、 **[リソースの作成]** プロセスで他のタブを使用して、設定中に構成できる追加のオプションを示します。
 
-* **ネットワーク**:このタブでは、[Azure Private Link](../private-link/private-link-overview.md) でプライベート エンドポイントを有効にして、インスタンスがパブリック ネットワークに露出されないようにすることができます。 手順については、[方法: Private Link を使用してプライベート アクセスを有効にする (プレビュー)](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation) 」を参照してください。
-* **[詳細設定]** :このタブでは、エンドポイントにイベントを転送するときに使用できる、インスタンスの [システムマネージド ID](concepts-route-events.md) を有効にすることができます。 Azure Digital Twins でシステム マネージド ID を使用する方法については、[Azure Digital Twins ソリューションのセキュリティの概念](concepts-security.md#managed-identity-for-accessing-other-resources-preview)に関する記事を参照してください。
+* **ネットワーク**:このタブでは、[Azure Private Link](../private-link/private-link-overview.md) でプライベート エンドポイントを有効にして、インスタンスがパブリック ネットワークに露出されないようにすることができます。 手順については、「[Private Link を使用してプライベート アクセスを有効にする (プレビュー)](./how-to-enable-private-link.md?tabs=portal#add-a-private-endpoint-during-instance-creation)」を参照してください。
+* **[詳細設定]** :このタブでは、エンドポイントにイベントを転送するときに使用できる、インスタンスの [システムマネージド ID](concepts-route-events.md) を有効にすることができます。 Azure Digital Twins でシステム マネージド ID を使用する方法の詳細については、[Azure Digital Twins ソリューションのセキュリティ](concepts-security.md#managed-identity-for-accessing-other-resources-preview)に関するページを参照してください。
 * **タグ**:このタブでは、Azure リソース間での整理に役立てるために、インスタンスにタグを追加できます。 Azure リソース タグの詳細については、[論理的な組織化のためのリソース、リソース グループ、およびサブスクリプションへのタグ付け](../azure-resource-manager/management/tag-resources.md)に関する記事を参照してください。
 
 ### <a name="verify-success-and-collect-important-values"></a>正常に実行されたことを確認して重要な値を収集する
@@ -135,7 +127,7 @@ Azure Identity Management (IAM) のアクセス制御オプションを使用し
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
 * [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
-* [概念: Azure Digital Twins CLI コマンド セット](concepts-cli.md)
+* [Azure Digital Twins CLI コマンド セット](concepts-cli.md)
 
 または、認証コードを使用してクライアント アプリケーションをインスタンスに接続する方法を確認します。
-* [方法: アプリ認証コードを作成する](how-to-authenticate-client.md)
+* [アプリ認証コードを作成する](how-to-authenticate-client.md)

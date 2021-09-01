@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/26/2021
 ms.author: justinha
-ms.openlocfilehash: f1f2499c49c4adf16b632bc75c246a28330ad27b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67eeae96e7965db1eb92f34f23ca6d8745aaac3a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619387"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707980"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインのグループ ポリシーを管理する
 
@@ -43,8 +43,6 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 > グループ ポリシー管理用テンプレートを使用するには、新しいテンプレートを管理ワークステーションにコピーします。 *.admx* ファイルを `%SYSTEMROOT%\PolicyDefinitions` にコピーし、ロケール固有の *.adml* ファイルを `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]` にコピーします。この `Language-CountryRegion` は *.adml* の言語とリージョンに一致します。
 >
 > たとえば、英国、米国バージョンの *.adml* ファイルを `\en-us` フォルダーにコピーします。
->
-> また、マネージド ドメインの一部であるドメイン コントローラーに、グループ ポリシー管理用テンプレートを一元的に格納することもできます。 詳細については、「[Windows でグループ ポリシー管理用テンプレート用のセントラル ストアを作成および管理する方法](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)」を参照してください。
 
 ## <a name="install-group-policy-management-tools"></a>グループ ポリシーの管理ツールをインストールする
 

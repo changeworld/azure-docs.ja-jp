@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 06/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee850765006af15d8e323831d70dfcd7849d1287
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5dec171c299bdd8ea6c5989794539b6c79e7d3fe
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145963"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114229691"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Azure AD Connect 単一オブジェクト同期 
 
@@ -56,7 +56,9 @@ HTML レポートには、次のものがあります。
 
 ## <a name="prerequisites"></a>前提条件 
 
-単一オブジェクト同期ツールを使用するには、2021 年 3 月の Azure AD Connect 以降のリリースを使用する必要があります。 
+単一オブジェクト同期ツールを使用するには、次を使用する必要があります。  
+ - Azure AD Connect の 2021 年 3 月 ([1.6.4.0](reference-connect-version-history.md#1640)) 以降のリリース。
+ -  [PowerShell 5.0](/powershell/scripting/windows-powershell/whats-new/what-s-new-in-windows-powershell-50?view=powershell-7.1)
 
 ### <a name="run-the-single-object-sync-tool"></a>単一オブジェクト同期ツールを実行する 
 

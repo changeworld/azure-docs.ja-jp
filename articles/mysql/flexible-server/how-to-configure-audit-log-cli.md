@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.openlocfilehash: 9a633e9201c78bda0ff2c88abd6a5dd2e67acdf3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ac24c933cefda60f8ed0bb305c2d49800bd2d610
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738865"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652522"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL - フレキシブル サーバーの監査ログの構成とアクセス
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
@@ -21,6 +23,7 @@ ms.locfileid: "108738865"
 この記事では、Azure CLI を使用して MySQL フレキシブル サーバーの[監査ログ](concepts-audit-logs.md)を構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
+
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 - Azure CLI をインストールするか、最新バージョンにアップグレードします。 [Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 -  [az login](/cli/azure/reference-index#az_login) コマンドを使用して Azure アカウントにログインします。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** を参照します。
@@ -50,6 +53,7 @@ ms.locfileid: "108738865"
 
 ```azurecli
 # Enable audit logs
+
 az mysql flexible-server parameter set \
 --name audit_log_enabled \
 --resource-group myresourcegroup \

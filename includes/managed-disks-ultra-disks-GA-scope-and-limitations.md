@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/12/2021
+ms.date: 08/17/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a95f83dbfa0574aa88b964538f329c7d9075a50b
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: d0bed89f56d41c6613080e84d743d245243bb507
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111593399"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322013"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。
 
@@ -82,6 +82,6 @@ Ultra ディスクが利用できるリージョンとそれに該当する可�
 - ディスク スナップショット、ディスクのエクスポート、ディスクの種類の変更、VM イメージ、可用性セット、Azure 専用ホスト、Azure Disk Encryption は現在のところサポートされていません。
 - Azure Backup または Azure Site Recovery との統合は現在のところサポートされていません。
 - キャッシュされていない読み取りとキャッシュされていない書き込みのみがサポートされます。
-- GA VM での IOPS の現在の上限は 80,000 です。
+- 現在、一般提供されているサイズの 1 つの VM の IOPS の上限は 80,000 です。 IOPS がさらに大きい Ultra ディスクは、複数の VM をサポートする共有ディスクとして使用できます。
 
 Azure Ultra ディスクからは、既定でサブスクリプション別にリージョンあたり最大 32 TiB が提供されますが、Ultra ディスクでは要求があればそれを超える容量が提供されます。 容量の増加を依頼するには、クォータの増加を要求するか、Azure サポートにお問い合わせください。

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/29/2021
+ms.date: 08/04/2021
 ms.author: aahi
-ms.openlocfilehash: e25851bc9d3cba6e71056a6fb6a24ff9a0cee6ce
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6a7dca4fd7fe74515f7532b457ce9e1aaad65b57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968061"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745522"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
-[キー フレーズ抽出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) API は、非構造化テキストを評価し、各 JSON ドキュメントに対してキー フレーズのリストを返します。
+[キー フレーズ抽出](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/KeyPhrases) API は、非構造化テキストを評価し、各 JSON ドキュメントに対してキー フレーズのリストを返します。
 
 この機能は、ドキュメントのコレクション内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、このサービスは話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "111968061"
 
 JSON ドキュメントは、次の形式である必要があります: ID、テキスト、言語
 
-ドキュメントのサイズは、ドキュメントあたり 5,120 文字以下である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、キー フレーズの抽出用に送信するコンテンツを示しています。 
+ドキュメントのサイズは、ドキュメントあたり 5,120 文字以下である必要があり、コレクションあたり最大 10 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、キー フレーズの抽出用に送信するコンテンツを示しています。 
 
 要求と応答オブジェクトの詳細については、[Text Analytics API の呼び出し方法](text-analytics-how-to-call-api.md)に関するページを参照してください。  
 
@@ -76,7 +76,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 ### <a name="example-asynchronous-request-object"></a>非同期要求オブジェクトの例
 
-`v3.1-preview.3` 以降、`/analyze` エンドポイントを使用して、NER 要求を非同期的に送信できます。
+`v3.1` 以降、`/analyze` エンドポイントを使用して、NER 要求を非同期的に送信できます。
 
 
 ```json
@@ -108,16 +108,16 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 要求定義の詳細については、[Text Analytics API の呼び出し方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Key Phrases API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Key Phrases API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/KeyPhrases)。
 
-+ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、キー フレーズ抽出用の HTTP エンドポイントを設定します。 API を同期的に使用している場合は、URL に `/text/analytics/v3.0/keyPhrases` を含める必要があります。 (例: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`)。
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、キー フレーズ抽出用の HTTP エンドポイントを設定します。 API を同期的に使用している場合は、URL に `/text/analytics/v3.1/keyPhrases` を含める必要があります。 (例: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.1/keyPhrases`)。
 
 + Text Analytics 操作用の[アクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)が含まれるように要求ヘッダーを設定します。
 
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)に記載されている **API テスト コンソール** を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/KeyPhrases)に記載されている **API テスト コンソール** を開き、要求を構造化して POST でサービスに投稿します。
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
@@ -131,67 +131,64 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。
 
-v3.1-preview エンドポイントからのキー フレーズ抽出の出力例を次に示します。
+v3.1 エンドポイントからのキー フレーズ抽出の出力例を次に示します。
 
 ### <a name="synchronous-result"></a>同期の結果
 
 ```json
-    {
-       "documents":[
-          {
-             "id":"1",
-             "keyPhrases":[
-                "year",
+{
+    "documents": [
+        {
+            "id": "1",
+            "keyPhrases": [
                 "trail",
                 "trip",
                 "views",
                 "hike"
-             ],
-             "warnings":[]
-          },
-          {
-             "id":"2",
-             "keyPhrases":[
-                "marked trails",
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "keyPhrases": [
                 "Worst hike",
-                "goners"
-             ],
-             "warnings":[]
-          },
-          {
-             "id":"3",
-             "keyPhrases":[
-                "trail",
+                "trails"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "keyPhrases": [
+                "less athletic",
                 "small children",
-                "family"
-             ],
-             "warnings":[]
-          },
-          {
-             "id":"4",
-             "keyPhrases":[
+                "Everyone",
+                "family",
+                "trail"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "4",
+            "keyPhrases": [
                 "spectacular views",
                 "trail",
-                "Worth",
                 "area"
-             ],
-             "warnings":[]
-          },
-          {
-             "id":"5",
-             "keyPhrases":[
-                "places",
-                "beautiful views",
+            ],
+            "warnings": []
+        },
+        {
+            "id": "5",
+            "keyPhrases": [
                 "favorite trail",
-                "rest"
-             ],
-             "warnings":[]
-          }
-       ],
-       "errors":[],
-       "modelVersion":"2020-07-01"
-    }
-
+                "beautiful views",
+                "many places"
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2021-06-01"
+}
 ```
 前述のように、アナライザーは重要ではない単語を検索して破棄し、文の主語または目的語と思われる 1 つの用語または語句を保持します。
 
@@ -201,51 +198,46 @@ v3.1-preview エンドポイントからのキー フレーズ抽出の出力例
 
 ```json
 {
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
+    "jobId": "fa813c9a-0d96-4a34-8e4f-a2a6824f9190",
+    "lastUpdateDateTime": "2021-07-07T18:16:45Z",
+    "createdDateTime": "2021-07-07T18:16:15Z",
+    "expirationDateTime": "2021-07-08T18:16:15Z",
+    "status": "succeeded",
+    "errors": [],
+    "displayName": "My Job",
+    "tasks": {
+        "completed": 1,
+        "failed": 0,
+        "inProgress": 0,
+        "total": 1,
+        "keyPhraseExtractionTasks": [
+            {
+                "lastUpdateDateTime": "2021-07-07T18:16:45.0623454Z",
+                "taskName": "KeyPhraseExtraction_latest",
+                "state": "succeeded",
+                "results": {
+                    "documents": [
+                        {
+                            "id": "doc1",
+                            "keyPhrases": [],
+                            "warnings": []
+                        },
+                        {
+                            "id": "doc2",
+                            "keyPhrases": [
+                                "Pike place market",
+                                "Seattle attraction",
+                                "favorite"
+                            ],
+                            "warnings": []
+                        }
+                    ],
+                    "errors": [],
+                    "modelVersion": "2021-06-01"
+                }
+            }
+        ]
+    }
 }
 ```
 
@@ -254,14 +246,14 @@ v3.1-preview エンドポイントからのキー フレーズ抽出の出力例
 
 この記事では、Cognitive Services の Text Analytics を使用するキー フレーズ抽出の概念とワークフローについて説明しました。 要約すると:
 
-+ 選択した言語に対して、[キー フレーズ抽出 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) を使用できます。
++ 選択した言語に対して、[キー フレーズ抽出 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/KeyPhrases) を使用できます。
 + 要求本文内の JSON ドキュメントには、ID、テキスト、および言語のコードが含まれます。
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)を使用して `/keyphrases` エンドポイントまたは `/analyze` エンドポイントに対して行われます。
 + ドキュメント ID ごとのキーワードやキーフレーズで構成される応答出力は、Microsoft Office Excel や Power BI を含む JSON を受け取るすべてのアプリにストリーミングすることができます。
 
 ## <a name="see-also"></a>関連項目
 
- [Text Analytics の概要](../overview.md) [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)</br>
+ [Text Analytics の概要](../overview.md) [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.yml)</br>
  [Text Analytics 製品ページ](//go.microsoft.com/fwlink/?LinkID=759712)
 
 ## <a name="next-steps"></a>次のステップ

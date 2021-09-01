@@ -4,20 +4,22 @@ description: Bicep デプロイ時にパラメーターとしてキー コンテ
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: f96b9228b6ebe6ab3ca6d48dc3403bbafa6e8d55
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 06/18/2021
+ms.openlocfilehash: e940a812b4e010e9499a9a85cfd400b679d43781
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029677"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376308"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-bicep-deployment"></a>Bicep デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
-お使いの Bicep ファイルやパラメーター ファイルにセキュリティで保護された値 (パスワードなど) を直接入れる代わりに、デプロイ時に、[Azure Key Vault](../../key-vault/general/overview.md) から値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 [モジュール](./modules.md)が `secure:true` 修飾子を持つ `string` パラメーターを必要とする場合は、`getSecret` 関数を使用してキー コンテナーのシークレットを取得できます。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 キー コンテナーは、デプロイ先のリソース グループとは異なるサブスクリプションにあってもかまいません。
+お使いの Bicep ファイルやパラメーター ファイルにセキュリティで保護された値 (パスワードなど) を直接入れる代わりに、デプロイ時に、[Azure Key Vault](../../key-vault/general/overview.md) から値を取得できます。 [モジュール](./modules.md)が `secure:true` 修飾子を持つ `string` パラメーターを必要とする場合は、[getSecret 関数](bicep-functions-resource.md#getsecret)を使用してキー コンテナーのシークレットを取得できます。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。
 
-この記事では、機密の値を Bicep パラメーターとして渡す方法に焦点を当てます。 この記事では、仮想マシンのプロパティを、キー コンテナー内の証明書の URL に設定する方法については説明しません。
-そのシナリオのクイックスタート テンプレートについては、[Azure Key Vault から証明書を仮想マシンにインストールする](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)方法に関する記事を参照してください。
+> [!IMPORTANT]
+> この記事では、機密の値をテンプレート パラメーターとして渡す方法に焦点を当てます。 シークレットがパラメーターとして渡されるとき、キー コンテナーは別のサブスクリプションに存在するか、デプロイ先のリソース グループに存在することがあります。 
+>
+> この記事では、仮想マシンのプロパティを、キー コンテナー内の証明書の URL に設定する方法については説明しません。 そのシナリオのクイックスタート テンプレートについては、[Azure Key Vault から証明書を仮想マシンにインストールする](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)方法に関する記事を参照してください。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>キー コンテナーとシークレットをデプロイする
 
@@ -157,7 +159,7 @@ Bicep ファイルをデプロイするユーザーには、そのリソース �
 
 ## <a name="use-getsecret-function"></a>getSecret 関数を使用する
 
-[`getSecret` 関数](./bicep-functions-resource.md#getsecret)を使用してキー コンテナーのシークレットを取得し、その値をモジュールの `string` パラメーターに渡すことができます。 `getSecret` 関数は `Microsoft.KeyVault/vaults` リソースでのみ呼び出すことができ、`@secure()` デコレーターのパラメーターと共にのみ使用できます。
+[getSecret 関数](./bicep-functions-resource.md#getsecret)を使用してキー コンテナーのシークレットを取得し、その値をモジュールの `string` パラメーターに渡すことができます。 `getSecret` 関数は `Microsoft.KeyVault/vaults` リソースでのみ呼び出すことができ、`@secure()` デコレーターのパラメーターと共にのみ使用できます。
 
 次の Bicep ファイルによって、Azure SQL サーバーが作成されます。 `adminPassword` パラメーターには `@secure()` デコレーターがあります。
 
@@ -208,7 +210,7 @@ module sql './sql.bicep' = {
 
 ## <a name="reference-secrets-in-parameter-file"></a>パラメーター ファイルのシークレットを参照する
 
-この手法では、Bicep ではなく、パラメーター ファイルでキー コンテナーを参照します。 次の図は、パラメーター ファイルがシークレットを参照し、その値を Bicep ファイルに渡すしくみを示しています。
+モジュールを使用しない場合は、パラメーター ファイルで直接キー コンテナーを参照できます。 次の図は、パラメーター ファイルがシークレットを参照し、その値を Bicep ファイルに渡すしくみを示しています。
 
 ![Resource Manager のキー コンテナー統合の図](./media/key-vault-parameter/statickeyvault.png)
 

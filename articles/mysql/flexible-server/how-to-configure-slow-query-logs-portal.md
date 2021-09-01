@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a61c8e3451d661dae2e5ad56a0d4a947252ec873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e28e11c8addc83cfe913a28cb91d3bc0d4580a8e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94540065"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651641"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL フレキシブル サーバーの低速クエリ ログの構成とアクセス
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
@@ -21,9 +23,11 @@ ms.locfileid: "94540065"
 Azure portal から Azure Database for MySQL フレキシブル サーバーの[低速クエリ ログ](concepts-slow-query-logs.md)の構成、一覧表示、ダウンロードを行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
+
 この記事の手順では、[フレキシブル サーバー](quickstart-create-server-portal.md)が必要です。
 
 ## <a name="configure-logging"></a>ログの構成
+
 MySQL の低速クエリ ログへのアクセスを構成します。 
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。

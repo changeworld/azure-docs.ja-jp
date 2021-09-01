@@ -3,15 +3,15 @@ title: Azure での Update Management のデプロイで事前スクリプトと
 description: この記事では、更新プログラムのデプロイのための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 07/20/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51067095b7ebb33da61908b1424752b481668f5f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 57a8158dca53f4f60bc4405e1b95aa0ad9d2cf9b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830810"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472096"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
@@ -45,21 +45,57 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
-|プロパティ  |説明  |
-|---------|---------|
-|SoftwareUpdateConfigurationName     | ソフトウェア更新構成の名前。        |
-|SoftwareUpdateConfigurationRunId     | 実行の一意の ID。        |
-|SoftwareUpdateConfigurationSettings     | ソフトウェア更新構成に関連したプロパティのコレクション。         |
-|SoftwareUpdateConfigurationSettings.operatingSystem     | 更新プログラムの展開の対象となるオペレーティング システム。         |
-|SoftwareUpdateConfigurationSettings.duration     | ISO8601 に従って `PT[n]H[n]M[n]S` として実行される更新プログラムのデプロイの最大期間。メンテナンス期間とも呼ばれる。          |
-|SoftwareUpdateConfigurationSettings.Windows     | Windows コンピューターに関連したプロパティのコレクション。         |
-|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | 更新プログラムの展開から除外される KB の一覧。        |
-|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | 更新プログラムの展開のために選択された更新プログラムの分類。        |
-|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | 更新プログラムの展開のための再起動設定。        |
-|azureVirtualMachines     | 更新プログラムの展開における Azure VM 用の resourceId の一覧。        |
-|nonAzureComputerNames|更新プログラムの展開における Azure 以外のコンピューターの FQDN の一覧。|
+|プロパティ  |Type |説明  |
+|---------|---------|---------|
+|SoftwareUpdateConfigurationName     |String | ソフトウェア更新構成の名前。        |
+|SoftwareUpdateConfigurationRunId     |GUID | 実行の一意の ID。        |
+|SoftwareUpdateConfigurationSettings     || ソフトウェア更新構成に関連したプロパティのコレクション。         |
+|SoftwareUpdateConfigurationSettings.OperatingSystem     |int | 更新プログラムの展開の対象となるオペレーティング システム。 `1` = Windows および `2` = Linux        |
+|SoftwareUpdateConfigurationSettings.Duration     |Timespan (HH:MM:SS) | ISO8601 に従って `PT[n]H[n]M[n]S` として実行される更新プログラムのデプロイの最大期間。メンテナンス期間とも呼ばれる。<br> 例: 02:00:00         |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration     || Windows コンピューターに関連したプロパティのコレクション。         |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.excludedKbNumbers     |String | 更新プログラムの展開から除外される KB のスペース区切りの一覧。        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.includedKbNumbers     |String | 更新プログラムの展開に含まれる KB のスペース区切りの一覧。        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.UpdateCategories     |整数型 | 1 = "Critical";<br> 2 = "Security"<br> 4 = "UpdateRollUp"<br> 8 = "FeaturePack"<br> 16 = "ServicePack"<br> 32 = "Definition"<br> 64 = "Tools"<br> 128 = "Updates"        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.rebootSetting     |String | 更新プログラムの展開のための再起動設定。 値は `IfRequired`、`Never`、`Always` です      |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration     || Linux コンピューターに関連したプロパティのコレクション。         |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageClassifications |整数型 |0 = "Unclassified"<br> 1 = "Critical"<br> 2 = "Security"<br> 4 = "Other"|
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageNameMasks |String | 更新プログラムの展開に含まれるパッケージ名のスペース区切りの一覧。 |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.ExcludedPackageNameMasks |String |更新プログラムの展開から除外されるパッケージ名のスペース区切りの一覧。 |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.RebootSetting |String |更新プログラムの展開のための再起動設定。 値は `IfRequired`、`Never`、`Always` です      |
+|SoftwareUpdateConfiguationSettings.AzureVirtualMachines     |文字列配列 | 更新プログラムの展開における Azure VM 用の resourceId の一覧。        |
+|SoftwareUpdateConfigurationSettings.NonAzureComputerNames|文字列配列 |更新プログラムの展開における Azure 以外のコンピューターの FQDN の一覧。|
 
-次の例は、**SoftwareUpdateConfigurationRunContext** パラメーターに渡される JSON 文字列です。
+次の例は、Linux コンピューターの **SoftwareUpdateConfigurationSettings** プロパティに渡される JSON 文字列です。
+
+```json
+"SoftwareUpdateConfigurationSettings": {
+     "OperatingSystem": 2,
+     "WindowsConfiguration": null,
+     "LinuxConfiguration": {
+         "IncludedPackageClassifications": 7,
+         "ExcludedPackageNameMasks": "fgh xyz",
+         "IncludedPackageNameMasks": "abc bin*",
+         "RebootSetting": "IfRequired"
+     },
+     "Targets": {
+         "azureQueries": null,
+         "nonAzureQueries": ""
+     },
+     "NonAzureComputerNames": [
+        "box1.contoso.com",
+        "box2.contoso.com"
+     ],
+     "AzureVirtualMachines": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/vm-01"
+     ],
+     "Duration": "02:00:00",
+     "PSComputerName": "localhost",
+     "PSShowComputerName": true,
+     "PSSourceJobInstanceId": "2477a37b-5262-4f4f-b636-3a70152901e9"
+ }
+```
+
+次の例は、Windows コンピューターの **SoftwareUpdateConfigurationSettings** プロパティに渡される JSON 文字列です。
 
 ```json
 "SoftwareUpdateConfigurationRunContext": {
@@ -67,7 +103,7 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
     "SoftwareUpdateConfigurationRunId": "00000000-0000-0000-0000-000000000000",
     "SoftwareUpdateConfigurationSettings": {
       "operatingSystem": "Windows",
-      "duration": "PT2H0M",
+      "duration": "02:00:00",
       "windows": {
         "excludedKbNumbers": [
           "168934",
@@ -77,9 +113,9 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
         "rebootSetting": "IfRequired"
       },
       "azureVirtualMachines": [
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03"
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-01",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-02",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-03"
       ],
       "nonAzureComputerNames": [
         "box1.contoso.com",

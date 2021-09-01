@@ -1,21 +1,21 @@
 ---
-title: SSL IP アドレスの変更に備える
-description: SSL IP アドレスの変更が予定されている場合に、変更後もアプリが動作し続けるようにする方法を説明します。
+title: TLS または SSL IP アドレスの変更に備える
+description: TLS または SSL IP アドレスの変更が予定されている場合に、変更後もアプリが動作し続けるようにする方法を説明します。
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3712931f73463ec1a799f003b82197752a735136
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020961"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895285"
 ---
-# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>SSL IP アドレスの変更に備える方法
+# <a name="how-to-prepare-for-a-tlsssl-ip-address-change"></a>TLS または SSL IP アドレスの変更に備える方法
 
-お使いの Azure App Service アプリの SSL IP アドレスが変更されるという通知を受け取った場合は、この記事の手順に従って既存の SSL IP アドレスを解放し、新しい SSL IP アドレスを割り当てます。
+お使いの Azure App Service アプリの TLS または SSL IP アドレスが変更されるという通知を受け取った場合は、この記事の手順に従って既存の TLS または SSL IP アドレスを解放し、新しいアドレスを割り当てます。
 
-## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>SSL IP アドレスを解放し、新しい SSL IP アドレスを割り当てる
+## <a name="release-tlsssl-ip-addresses-and-assign-new-ones"></a>TLS または SSL IP アドレスを解放し、新しいアドレスを割り当てる
 
 1.  [Azure Portal](https://portal.azure.com)を開きます。
 

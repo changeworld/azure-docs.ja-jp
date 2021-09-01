@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate での物理的な検出および評価のサポート
 description: Azure Migrate Discovery and Assessment を使用した物理的な検出および評価のサポートについて説明します
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: aad800a710a1bc3942efc128f8350044a513d44f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2d68a74332ef77694d44597e6f879858fa0051bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472026"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726225"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>物理サーバーの検出および評価のサポート マトリックス 
 
@@ -38,10 +38,44 @@ ms.locfileid: "110472026"
 
 **アクセス許可:**
 
-- Windows サーバーの場合、ドメイン参加済みのサーバーにはドメイン アカウントを、ドメインに参加していないサーバーにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
+アプライアンスが物理サーバーへのアクセスに使用できるアカウントを設定します。
+
+**Windows サーバー**
+
+- Windows サーバーの場合、ドメイン参加済みのサーバーにはドメイン アカウントを、ドメインに参加していないサーバーにはローカル アカウントを使用します。 
+- 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。 
+- リモート管理ユーザー グループが存在しない場合は、ユーザー アカウントを次のグループに追加します: **WinRMRemoteWMIUsers_** 。
+- このアカウントには、サーバーとの CIM 接続を作成し、[こちら](migrate-appliance.md#collected-data---physical)で示されている WMI クラスから必要な構成とパフォーマンス メタデータをプルするために、アプライアンスにこれらのアクセス許可が必要です。
+- 場合によっては、これらのグループにアカウントを追加しても、WMI クラスから必要なデータが返されないことがあります。それは、[UAC](/windows/win32/wmisdk/user-account-control-and-wmi) によって、アカウントがフィルター処理される可能性があるためです。 この UAC フィルター処理を克服するには、ターゲット サーバー上の CIMV2 名前空間およびサブ名前空間に対する必要なアクセス許可をユーザー アカウントが持っている必要があります。 [こちら](troubleshoot-appliance.md#access-is-denied-when-connecting-to-physical-servers-during-validation)の手順に従って、必要なアクセス許可を有効にすることができます。
+
     > [!Note]
-    > Windows Server 2008 および 2008 R2 の場合は、サーバーに WMF 3.0 がインストールされていることと、サーバーにアクセスするために使用されるドメインおよびローカル アカウントが、Performance Monitor Users、Performance Log Users、および WinRMRemoteWMIUsers グループに追加されていることを確認してください。
-- Linux サーバーの場合は、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
+    > Windows Server 2008 および 2008 R2 の場合は、サーバー上に WMF 3.0 がインストールされていることを確認してください。
+
+**Linux サーバー**
+
+- 検出するサーバーのルート アカウントが必要です。 または、sudo アクセス許可を持つユーザー アカウントを指定することもできます。
+- 2021 年 7 月 20 日以降にポータルからダウンロードされた新しいアプライアンス インストーラー スクリプトでは、sudo アクセス権を持つユーザー アカウントの追加が既定でサポートされています。
+- 以前のアプライアンスについては、次の手順に従って機能を有効にすることができます。
+    1. アプライアンスを実行しているサーバーで、レジストリ エディターを開きます。
+    1. HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance に移動します。
+    1. DWORD 値を 1 にしてレジストリ キー 'isSudo' を作成します。
+
+    :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="sudo サポートを有効にする方法を示すスクリーンショット":::
+
+- ターゲット サーバーからの構成およびパフォーマンスのメタデータを検出するには、[こちら](migrate-appliance.md#linux-server-metadata)の一覧にあるコマンドに対する sudo アクセスを有効にする必要があります。 sudo コマンドが呼び出されるたびにパスワードを要求することなく、必要なコマンドを実行するために、アカウントに対して ' NOPASSWD' を有効にしていることを確認してください。
+- 次の Linux OS ディストリビューションは、sudo アクセス権を持つアカウントを使用した Azure Migrate による検出においてサポートされています。
+
+    オペレーティング システム | バージョン 
+    --- | ---
+    Red Hat Enterprise Linux | 6、7、8
+    Cent OS | 6.6、8.2
+    Ubuntu | 14.04、16.04、18.04
+    SUSE Linux | 11.4、12.4
+    Debian | 7、10
+    Amazon Linux | 2.0.2021
+    CoreOS Container | 2345.3.0
+
+- ルート アカウントまたは sudo アクセス権を持つユーザー アカウントを指定できない場合は、以下のコマンドを使用することで、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance レジストリで 'isSudo' レジストリ キーの値を '0' に設定し、非ルート アカウントに必要な機能を提供することができます。
 
 **コマンド** | **目的**
 --- | --- |

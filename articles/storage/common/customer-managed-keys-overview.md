@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: cd2a265c5d4c339fa6e50338949cbf643314a3ee
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: cc0e6dc0e11809fb1e8cf046821231cc98f769f6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371324"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439860"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure Storage の暗号化のためのカスタマー マネージド キー
 
@@ -24,14 +24,11 @@ ms.locfileid: "111371324"
 カスタマー マネージド キーを格納するには、次のいずれかの Azure キー ストアを使用する必要があります。
 
 - [Azure Key Vault](../../key-vault/general/overview.md)
-- [Azure Key Vault のマネージド ハードウェア セキュリティ モジュール (HSM) (プレビュー)](../../key-vault/managed-hsm/overview.md)
+- [Azure Key Vault のマネージド ハードウェア セキュリティ モジュール (HSM)](../../key-vault/managed-hsm/overview.md)
 
 独自のキーを作成してキー コンテナーまたはマネージド HSM に格納することも、Azure Key Vault API を使ってキーを生成することもできます。 ストレージ アカウントとキー コンテナーまたはマネージド HSM は同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在する必要がありますが、サブスクリプションは異なっていてもかまいません。
 
-> [!IMPORTANT]
->
-> Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化は、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
->
+> [!NOTE]
 > Azure Key Vault と Azure Key Vault Managed HSM では、構成用に同じ API と管理インターフェイスがサポートされています。
 
 ## <a name="about-customer-managed-keys"></a>カスタマー マネージド キーの概要
@@ -76,7 +73,7 @@ BLOB ストレージと Azure Files のデータは、カスタマー マネー�
 
 カスタマー マネージド キーと Microsoft マネージド キーをいつでも切り替えることができます。 Microsoft マネージド キーの詳細については、「[暗号化キーの管理について](storage-service-encryption.md#about-encryption-key-management)」を参照してください。
 
-キー コンテナーにあるカスタマー マネージド キーを使用して Azure Storage 暗号化を構成する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」を参照してください。 マネージド HSM にあるカスタマー マネージド キーを構成する方法については、「[Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)」を参照してください。
+キー コンテナーにあるカスタマー マネージド キーを使用して Azure Storage 暗号化を構成する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」を参照してください。 マネージド HSM にあるカスタマー マネージド キーを構成する方法については、「[Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)」を参照してください。
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Azure AD の 1 つの機能である、Azure リソース用マネージド ID に依存します。 マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 Azure portal でカスタマー マネージド キーを構成すると、内部でマネージド ID がストレージ アカウントに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはストレージ アカウントを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのストレージ アカウントに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure リソース用マネージド ID に関する FAQ と既知の問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」の中の「**Azure AD ディレクトリ間のサブスクリプションの転送**」を参照してください。  
@@ -92,7 +89,7 @@ Azure Storage の暗号化では、2048、3072、および 4096 のサイズの 
 - **キーのバージョンを自動的に更新する:** 新しいバージョンが利用可能になった場合にカスタマー マネージド キーを自動的に更新するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を有効にするときに、キーのバージョンを省略します。 キーのバージョンが省略されている場合、Azure Storage によってキー コンテナーまたはマネージド HSM が毎日チェックされ、新しいバージョンのカスタマー マネージド キーがないかどうかが確認されます。 Azure Storage では最新バージョンのキーが自動的に使用されます。
 - **キーのバージョンを手動で更新する:** Azure Storage 暗号化に特定のバージョンのキーを使用するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を有効にするときに、そのキー バージョンを指定します。 キーのバージョンを指定した場合、キーのバージョンを手動で更新するまで、Azure Storage ではそのバージョンが暗号化に使用されます。
 
-    キーのバージョンが明示的に指定されている場合は、新しいバージョンを作成するときに、新しいキー バージョンの URI を使用するようにストレージ アカウントを手動で更新する必要があります。 新しいバージョンのキーを使用するようにストレージ アカウントを更新する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」または「[Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)」を参照してください。
+    キーのバージョンが明示的に指定されている場合は、新しいバージョンを作成するときに、新しいキー バージョンの URI を使用するようにストレージ アカウントを手動で更新する必要があります。 新しいバージョンのキーを使用するようにストレージ アカウントを更新する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」または「[Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)」を参照してください。
 
 キーのバージョンを更新すると、ルート暗号化キーの保護が変更されますが、Azure Storage アカウント内のデータは再暗号化されません。 ユーザーがこれ以上操作を行う必要はありません。
 
@@ -135,4 +132,4 @@ Azure Storage の暗号化では、2048、3072、および 4096 のサイズの 
 
 - [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
 - [Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)
-- [Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)
+- [Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault-hsm.md)

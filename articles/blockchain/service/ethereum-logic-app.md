@@ -4,16 +4,20 @@ description: Azure Logic Apps で Ethereum ブロックチェーン コネクタ
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
-ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0eb4056567692ddb221f3207ac92b3373f6bdff2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96763793"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122651625"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する
 
-[Azure Logic Apps](../../logic-apps/index.yml) で [Ethereum ブロックチェーン コネクタ](/connectors/blockchainethereum/)を使用することにより、スマート コントラクト アクションを実行し、スマート コントラクト イベントに応答できます。 この記事では、Ethereum ブロックチェーン コネクタを使用して、ブロックチェーン情報を別のサービスに送信したり、ブロックチェーン関数を呼び出したりする方法について説明します。 たとえば、ブロックチェーン台帳から情報を返す REST ベースのマイクロサービスを作成するとします。 ロジック アプリを使用すると、ブロックチェーン台帳に格納されている情報を照会する HTTP 要求を受け入れることができます。
+[Azure Logic Apps](../../logic-apps/index.yml) で [Ethereum ブロックチェーン コネクタ](/connectors/blockchainethereum/)を使用することにより、スマート コントラクト アクションを実行し、スマート コントラクト イベントに応答できます。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+この記事では、Ethereum ブロックチェーン コネクタを使用して、ブロックチェーン情報を別のサービスに送信したり、ブロックチェーン関数を呼び出したりする方法について説明します。 たとえば、ブロックチェーン台帳から情報を返す REST ベースのマイクロサービスを作成するとします。 ロジック アプリを使用すると、ブロックチェーン台帳に格納されている情報を照会する HTTP 要求を受け入れることができます。
 
 ## <a name="prerequisites"></a>前提条件
 

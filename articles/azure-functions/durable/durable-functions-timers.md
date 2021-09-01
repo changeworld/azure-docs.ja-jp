@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で持続的タ�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4fcaf265af6eea6d9bef47858742192103777682
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: aac9e0b562f765a1b0e3d6b0f04bc609dc230492
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862683"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259710"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
@@ -192,7 +192,7 @@ $timerTask = Start-DurableTimer -Duration $expiryTime -NoWait
 $winner = Wait-DurableTask -Task @($activityTask, $timerTask) -Any
 
 if ($winner -eq $activityTask) {
-    Stop-DurableTaskTimer -Task $timerTask
+    Stop-DurableTimerTask -Task $timerTask
     return $True
 }
 else {

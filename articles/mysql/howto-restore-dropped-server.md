@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 361af28932226640db077bf4949f7bd472ceb986
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 9ddf3885931e527e4fd82037d9e82693fb6afa5f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166579"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652165"
 ---
 # <a name="restore-a-deleted-azure-database-for-mysql-server"></a>削除した Azure Database for MySQL サーバーを復元する
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 サーバーが削除された場合、データベース サーバーのバックアップはサービス内で最大 5 日間保持できます。 データベースのバックアップは、元々サーバーをホストしている Azure サブスクリプションからのみアクセスおよび復元できます。 次の推奨手順に従うと、サーバーが削除されてから 5 日以内に削除された MySQL サーバーを復旧させることができます。 推奨される手順は、サーバーのバックアップがまだ使用可能であり、システムから削除されていない場合にのみ機能します。 
 

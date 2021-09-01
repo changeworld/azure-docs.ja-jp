@@ -2,21 +2,21 @@
 title: ビジネス インテリジェンス パートナー
 description: Azure Synapse Analytics をサポートするソリューションを提供するサードパーティのビジネス インテリジェンス パートナーのリスト。
 services: synapse-analytics
-author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/27/2019
+ms.date: 07/09/2021
+author: mabasile-MSFT
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 96d1a3ed6bfe3fa90cdfa11f1b1081f12e4af990
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e77146667488482b6970f60c2d4f76ec76a4b45f
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95904352"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113643597"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics のビジネス インテリジェンス パートナー
 
@@ -25,13 +25,14 @@ ms.locfileid: "95904352"
 ## <a name="our-business-intelligence-partners"></a>ビジネス インテリジェンス パートナー
 | Partner | 説明 | Web サイト/製品リンク |
 | ------- | ----------- | -------------------- |
-| ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>AtScale は、分散データに対して、セキュリティで保護され、管理される、単一のワークスペースを提供します。 AtScale の Cloud OLAP、Autonomous Data Engineering™、および Universal Semantic Layer™ は、ビジネス上の意思決定をより迅速かつ正確に行うことを目指して、ビジネス インテリジェンスの成果を推進しています。 |[製品ページ](https://www.atscale.com/partners/microsoft/)<br> |
+| ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>AtScale は、分散データに対して、セキュリティで保護され、管理される、単一のワークスペースを提供します。 AtScale の Cloud OLAP、Autonomous Data Engineering&trade;、および Universal Semantic Layer&trade; は、ビジネス上の意思決定をより迅速かつ正確に行うことを目指して、ビジネス インテリジェンスの成果を推進しています。 |[製品ページ](https://www.atscale.com/partners/microsoft/)<br> |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst は、共有の一般的な分析ファブリック上に織り込まれた仮想化 BI インスタンスのネットワークを介して、組織全体を接続します|[製品ページ](https://www.birst.com/)<br> |
+| ![カウント](./media/sql-data-warehouse-partner-business-intelligence/count-logo.png) |**Count**<br> Count は次世代の SQL エディターであり、データを探索してチームと共有するための最も迅速な方法を提供します。 Count の中心は、コードの構築、迅速な反復処理、フローの維持を可能にする、SQL 用に構築されたデータ ノートブックです。 わずか数回のクリックで、結果をすぐに視覚化したり、カスタマイズして美しく詳細なグラフを作成したりできます。 1 回限りのクエリから、任意の Azure Synapse データ ソースから構築された完全にインタラクティブなデータ ストーリーまで、あらゆるものを瞬時に共有できます。 |[製品ページ](https://count.co/)<br>|
 | ![Dremio](./media/sql-data-warehouse-partner-business-intelligence/dremio-logo.png) |**Dremio**<br> アナリストやデータ サイエンティストは、Dremio の直感的な UI を使用してデータを検出、探索、およびキュレーションし、IT でガバナンスとセキュリティを維持します。 Dremio を使用すると、Blob Storage、Azure SQL Database、Azure Synapse SQL、HDInsight などと共に ADLS を簡単に参加させることができます。 Dremio を使用すると、Power BI アナリストは、ADLS に格納されている新しいデータセットを検索し、IT で準備しなくても Power BI のデータにすぐにアクセスし、視覚エフェクトを作成し、リアルタイムでレポートを繰り返し調整できます。 およびアナリストは、ADLS と他のデータベースとの間でデータを結合する新しいレポートを作成できます。 |[製品ページ](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br> |
 | ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas Data Visualization は、ビジネス インテリジェンスおよびデータ可視化ソフトウェアの世界的な一流プロバイダーです。  Dundas のダッシュボード、レポート作成、およびビジュアル データ分析により、ビジネス アプリケーションがシームレスに統合されることで、適切な決断とすばやい分析が可能になります。|[製品ページ](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cognos Analytics**<br>Cognos Analytics には、幅広いサプライ チェーンを調査する経験豊富なビジネス アナリストにとっても、1 つのキャンペーンを最適化するマーケティング担当者にとっても、シンプルでわかりやすく使いやすいセルフサービス機能を備えています。 Cognos Analytics は、AI などの機能を使って、データ探索をガイドします。 これにより、ユーザーは必要な答えを簡単に得ることができます。|[製品ページ](https://www.ibm.com/products/cognos-analytics)<br>|
 | ![Information Builders](./media/sql-data-warehouse-partner-business-intelligence/informationbuilders_logo.png) |**Information Builders (WebFOCUS)**<br>WebFOCUS ビジネス インテリジェンスにより、企業は企業の内外で、データを戦略的に使用できるようになります。 これにより、ユーザーと管理者は、複数のデータ ソースや形式のコンテンツを結合するダッシュボードを迅速に作成できます。 また、あらゆる BI および分析コンテンツのシームレスで安全な配信と共有を可能にする堅牢なセキュリティと包括的なガバナンスも提供されます。|[製品ページ](https://www.informationbuilders.com/products/bi-and-analytics-platform)<br> |
-| ![Jinfonet](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_logo.png) |**Jinfonet JReport**<br>JReport は、企業向けの組み込み可能な BI ソリューションです。 このソリューションでは、レポートの作成、ダッシュボード、およびクラウド、ビッグ データ、トランザクション データ ソースに対するデータ分析などの機能が用意されています。 データを視覚化することにより、独自のレポート作成とデータ探索を実行して、機敏で継続的な意思決定を実現できます。 |[製品ページ](https://www.jinfonet.com/product/jreport-designer)<br> |
+| ![Jinfonet](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_logo.png) |**Jinfonet JReport**<br>JReport は、企業向けの組み込み可能な BI ソリューションです。 このソリューションでは、レポートの作成、ダッシュボード、およびクラウド、ビッグ データ、トランザクション データ ソースに対するデータ分析などの機能が用意されています。 データを視覚化することにより、独自のレポート作成とデータ探索を実行して、機敏で継続的な意思決定を実現できます。 |[製品ページ](https://www.logianalytics.com/jreport/)<br> |
 | ![LogiAnalytics](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_logo.png) |**Logi Analytics**<br>Logi Analytics と連携することで、世界で最も大規模かつ多様なデータ セットの収集、分析、および即時操作が可能になります。 |[製品ページ](https://www.logianalytics.com/)<br>|
 | ![Looker](./media/sql-data-warehouse-partner-business-intelligence/looker_logo.png) |**Looker BI**<br>Looker は社内のすべてのユーザーがビジネスの推進に利用できるデータを探索して理解する機能を提供します。 さらに、Looker は、データ アナリストがそのデータを管理監督するための柔軟で再利用可能なモデリング レイヤーも提供します。  Looker を触媒として使用することによって、企業のカルチャが根本的に変革されます。|[製品ページ](https://looker.com/partners/microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20)<br> |
 | ![Microstrategy](./media/sql-data-warehouse-partner-business-intelligence/microstrategy_logo.png) |**MicroStrategy**<br>MicroStrategy プラットフォームは、組織がビジネス データから価値を得ることができるビジネス インテリジェンスおよび分析機能をすべて備えています。 MicroStrategy の強力な分析エンジン、包括的なツールセット、多様なデータ コネクタ、およびオープン アーキテクチャにより、すべてのチームでの分析にアクセスを拡張するために必要なすべてのものが揃います。|[製品ページ](https://www.microstrategy.com/us/product/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microstrategy.microstrategy_enterprise_platform_vm)<br> |
@@ -49,4 +50,5 @@ ms.locfileid: "95904352"
 ## <a name="next-steps"></a>次の手順
 その他のパートナーの詳細については、[データ統合パートナー](sql-data-warehouse-partner-data-integration.md)、[データ管理パートナー](sql-data-warehouse-partner-data-management.md)、および[機械学習と AI のパートナー](sql-data-warehouse-partner-machine-learning-ai.md)に関する記事を参照してください。
 
+[Synapse Studio を使用したパートナー ソリューションを検出する](sql-data-warehouse-partner-browse-partners.md)方法に関する記事を参照してください。
  

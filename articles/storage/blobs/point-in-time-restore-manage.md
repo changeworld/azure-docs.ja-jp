@@ -10,12 +10,12 @@ ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd58ae6aa0083b0f2a02ef1c008e76f92f39b766
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 904def8328fbd7e23812b7ca325beda7722c5189
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676303"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504695"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "110676303"
 ポイントインタイム リストアの詳細については、「[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)」を参照してください。
 
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。 また、誤って削除されるのを防ぐために、コンテナーと BLOB の論理的な削除を有効にすることをお勧めします。 詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」および「[BLOB の論理的な削除](soft-delete-blob-overview.md)」を参照してください。
+> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。 また、誤って削除されるのを防ぐために、コンテナーと BLOB の論理的な削除を有効にすることをお勧めします。 詳細については、「[コンテナーの論理的な削除](soft-delete-container-overview.md)」と「[BLOB の論理的な削除](soft-delete-blob-overview.md)」を参照してください。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>ポイントインタイム リストアを有効にして構成する
 

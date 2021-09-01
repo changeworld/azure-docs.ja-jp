@@ -5,13 +5,13 @@ metadata:
   ms.reviewer: vijayts
   ms.topic: article
   ms.service: backup
-  ms.date: 05/07/2021
-  ms.openlocfilehash: b9d0efe909cd82cec1b3ade53882b3a3935b0353
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 08/20/2021
+  ms.openlocfilehash: d8c04eead12e3c0e96cf72e7492c52ccdb49686e
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253194"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123108917"
 title: Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 summary: >
   この記事では、Azure 仮想マシン (VM) 上で実行され、[Azure Backup](backup-overview.md) サービスを使用する SQL Server データベースのバックアップに関する一般的な質問にお答えします。
@@ -75,18 +75,6 @@ sections:
       > [!NOTE]
 
       > UX では、いつでも、引き続き先に進みいくつでもバックアップをスケジュールできます。 ただし、それらは上の例に従った値 (たとえば、5) のスライディング ウィンドウで処理されます。
-  - question: >
-      セカンダリ レプリカから完全バックアップを実行できますか?
-    answer: >
-      SQL の制限に従って、セカンダリ レプリカにおいてコピーのみの完全バックアップを実行できます。 ただし、完全バックアップは許可されていません。
-  - question: >
-      オンプレミスの可用性グループを保護できますか?
-    answer: >
-      いいえ。 Azure Backup は、Azure で実行されている SQL Server データベースを保護します。 可用性グループ (AG) が Azure とオンプレミスのコンピューターに分散しているとき、AG は、プライマリ レプリカが Azure で実行されている場合にのみ保護できます。 また、Azure Backup は、Recovery Services コンテナーと同じ Azure リージョンで実行されているノードしか保護しません。
-  - question: >
-      リージョンにまたがる可用性グループを保護できますか?
-    answer: >
-      Azure Backup Recovery Services コンテナーは、そのコンテナーと同じリージョンにあるすべてのノードを検出して保護できます。 SQL Server Always On 可用性グループが複数の Azure リージョンにまたがっている場合は、プライマリ ノードが存在するリージョンからのバックアップを設定します。 Azure Backup は、バックアップ設定に従って、可用性グループ内のすべてのデータベースを検出して保護できます。 バックアップ設定が満たされていない場合は、バックアップが失敗し、エラー通知が表示されます。
   - question: >
       成功したバックアップ ジョブでアラートが作成されますか?
     answer: >

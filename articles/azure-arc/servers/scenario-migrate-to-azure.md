@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーを Azure に移行する
 description: オンプレミスまたは他のクラウド環境で実行されている Azure Arc 対応サーバーを Azure に移行する方法について説明します。
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4c8a5ea1974e251ba147fb7ee09b9ac49c364876
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 9dd7baa2466f4acd3e4106c3cec5a0d7e7afe05c
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109629490"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390238"
 ---
 # <a name="migrate-your-on-premises-or-other-cloud-arc-enabled-server-to-azure"></a>オンプレミスまたは他のクラウドの Arc 対応サーバーを Azure に移行する
 

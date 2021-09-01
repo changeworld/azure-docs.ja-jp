@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e86c9afcdb68aa6ad030405a2b5cbe59dc92e6f0
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99989075"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201629"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
@@ -40,7 +40,7 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 
 ## <a name="supported-regions-and-service-offerings"></a>サポートされているリージョンとサービス内容
 
-仮想ネットワーク (Vnet) は、[Cognitive Services が使用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/)でサポートされます。 Cognitive Services は、ネットワーク ルールの構成用のサービス タグをサポートしています。 次に示すサービスは、**CognitiveServicesManagement** サービス タグに含まれています。
+仮想ネットワーク (Vnet) は、[Cognitive Services が使用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/)でサポートされます。 現在、マルチサービス リソースでは VNet がサポートされていません。 Cognitive Services は、ネットワーク ルールの構成用のサービス タグをサポートしています。 次に示すサービスは、**CognitiveServicesManagement** サービス タグに含まれています。
 
 > [!div class="checklist"]
 > * Anomaly Detector

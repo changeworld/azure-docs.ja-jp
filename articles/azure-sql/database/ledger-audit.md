@@ -1,29 +1,29 @@
 ---
 title: 台帳が有効化されたテーブルを使用した Azure SQL Database 監査イベント
 description: Azure SQL Database 台帳監査機能の概要
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: eafca78dc22a01784eee79293fb7a2ec798818ad
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d032b311809449d35a017fdd053fb97447b8479c
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110388400"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666745"
 ---
 # <a name="azure-sql-database-audit-events-with-ledger-enabled-tables"></a>台帳が有効化されたテーブルを使用した Azure SQL Database 監査イベント
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳は **パブリック プレビュー** 段階にあります。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
 
-台帳が有効化されたテーブルを使用してフォレンジクス アクティビティを実行すると、台帳ビューとデータベース台帳でキャプチャされたデータに加えて、追加のアクション ID が SQL 監査ログに追加されます。  次のテーブルは、これらの新しい監査ログ イベントと、イベントをトリガーする条件の概要を示します。
+台帳が有効になっているテーブルを使用してフォレンジック アクティビティを実行すると、データが台帳ビューとデータベース台帳にキャプチャされます。 その他のアクション ID も SQL 監査ログに追加されます。 次の表は、これらの新しい監査ログ イベントの概要を示しています。 イベントがトリガーされる条件は、各表の後にあります。
 
 ## <a name="enable-ledger"></a>台帳を有効化する
 
@@ -39,7 +39,7 @@ ms.locfileid: "110388400"
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 1 |
 
-**イベントをトリガーする条件**: 新しい台帳テーブルの作成、通常のテーブルの台帳テーブルへの変換。
+**イベントがトリガーされる条件**: 新しい台帳テーブルを作成したときか、標準のテーブルを台帳テーブルに変換したとき。
 
 ## <a name="alter-ledger"></a>台帳を変更する
 
@@ -55,7 +55,7 @@ ms.locfileid: "110388400"
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 1 |
 
-**イベントをトリガーする条件**: 台帳テーブルの削除または名前の変更、台帳テーブルの通常のテーブルへの変換、台帳テーブル内の列の追加、削除、または名前の変更。
+**イベントがトリガーされる条件**: 台帳テーブルを削除または名前変更したとき、台帳テーブルを通常のテーブルに変換したとき、および台帳テーブルで列を追加、削除、または名前変更したとき。
 
 
 ## <a name="generate-ledger-digest"></a>台帳ダイジェストを生成する
@@ -72,7 +72,7 @@ ms.locfileid: "110388400"
 | **configuration_group_name** | LEDGER_OPERATION_GROUP  |
 | **action_in_log** | 1 |
 
-**イベントをトリガーする条件**: 台帳ダイジェストの生成。
+**イベントがトリガーされる条件**: 台帳ダイジェストを生成したとき。
 
 ## <a name="verify-ledger"></a>台帳を検証する
 
@@ -88,7 +88,7 @@ ms.locfileid: "110388400"
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 1 |
 
-**イベントをトリガーする条件**: 台帳ダイジェストの検証。
+**イベントがトリガーされる条件**: 台帳ダイジェストを検証したとき。
 
 ## <a name="ledger-operation-group"></a>台帳操作グループ
 
@@ -104,7 +104,7 @@ ms.locfileid: "110388400"
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 0 |
 
-**イベントをトリガーする条件**: 該当なし
+**イベントがトリガーされる条件**: 該当なし
 
 | 列 | [値] |
 |--|--|
@@ -118,10 +118,10 @@ ms.locfileid: "110388400"
 | **configuration_group_name** | LEDGER_OPERATION_GROUP |
 | **action_in_log** | 0 |
 
-**イベントをトリガーする条件**: 該当なし 
+**イベントがトリガーされる条件**: 該当なし 
 
 ## <a name="next-steps"></a>次の手順
 
 - [Azure SQL Database および Azure Synapse Analytics の監査](auditing-overview.md)
 - [Azure SQL Database 台帳の概要](ledger-overview.md)
-- [クイックスタート: 台帳が有効化された Azure SQL Database を作成する](ledger-create-a-single-database-with-ledger-enabled.md)
+- [クイックスタート: Azure SQL Database で台帳が有効化されたデータベースを作成する](ledger-create-a-single-database-with-ledger-enabled.md)

@@ -1,27 +1,27 @@
 ---
 title: 更新可能な台帳テーブルを作成、使用する
 description: Azure SQL Database で更新可能な台帳テーブルを作成、使用する方法を説明します。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 739523f6d98ea2905f4de5071581c8f4d8484893
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e4027bcaba4e89e89bec2ffa45d50c94e9a07b12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076422"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739699"
 ---
 # <a name="create-and-use-updatable-ledger-tables"></a>更新可能な台帳テーブルを作成、使用する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
 
 この記事では、Azure SQL Database で[更新可能な台帳テーブル](ledger-updatable-ledger-tables.md)を作成する方法を示します。 次に、更新可能な台帳テーブルに値を挿入した後、データを更新します。 最後に、台帳ビューを使用して結果を表示します。 顧客の口座残高の変化を追跡する銀行のアプリケーションを例に使用します。 この例では、更新可能な台帳テーブルとそれに対応する履歴テーブルおよび台帳ビューの関係を、実際の使用に役立つよう説明します。
 
@@ -161,7 +161,7 @@ ms.locfileid: "112076422"
    FROM [Account].[Balance] 
    GO
    
-   SELECT * FROM <Your unique history table name>
+   SELECT * FROM [<Your unique history table name>]
    GO 
    
    SELECT * FROM Account.Balance_Ledger

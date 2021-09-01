@@ -3,7 +3,7 @@ title: 'クイック スタート: テナントからアプリケーションを
 titleSuffix: Azure AD
 description: このクイックスタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントからアプリケーションを削除します。
 services: active-directory
-author: davidmu
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 04e4e011773426b5be7f6ef9c00f7969c35d20fd
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: a29ac9aa0cecaefb3d9ada87b60d2bebb8c5269b
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668426"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112423"
 ---
 # <a name="quickstart-delete-an-application-from-your-tenant"></a>クイック スタート: テナントからアプリケーションを削除する
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーを Azure Sentinel にオンボードする
 description: Azure Arc 対応サーバーを Azure Sentinel に追加し、そのセキュリティ状態を予防的に監視する方法について説明します。
-ms.date: 11/16/2020
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c0af2c48db12eca6453415767e611b0993554ee
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584739"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608269"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Azure Arc 対応サーバーを Azure Sentinel にオンボードする
 
@@ -43,8 +43,8 @@ Azure Sentinel には、Microsoft ソリューション用のすぐに使用で�
 
 Azure Policy を使用して、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。
 
-Arc 対応サーバーが接続されると、データの Azure Sentinel へのストリーミングが開始され、操作を開始する準備が整います。 [組み込みのブック](../../sentinel/quickstart-get-visibility.md)でログを表示したり、Log Analytics でクエリを作成して[データを調査](../../sentinel/tutorial-investigate-cases.md)したりできます。
+Arc 対応サーバーが接続されると、データの Azure Sentinel へのストリーミングが開始され、操作を開始する準備が整います。 [組み込みのブック](/azure/sentinel/get-visibility)でログを表示したり、Log Analytics でクエリを作成して[データを調査](/azure/sentinel/investigate-cases)したりできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Sentinel を使用した脅威の検出](../../sentinel/tutorial-detect-threats-built-in.md)の概要。
+[Azure Sentinel を使用した脅威の検出](/azure/sentinel/detect-threats-built-in)の概要。
