@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2bf603d29b5e949ef83c872017bae49e71b2fcb0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 3e8c2846b58499e5aabdec80f8fcd75cab3e6eb5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204875"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729495"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "108204875"
 
 :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNet 間の図":::
 
-この記事の手順は、Azure Resource Manager デプロイ モデルに適用されます。また、この手順では Azure ポータルを使用します。 以下の記事で説明されているオプションを使用して、別のデプロイ ツールやモデルでこの構成を作成することができます。
+この記事の手順は、[Azure Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に適用されます。また、この手順では Azure portal を使用します。 以下の記事で説明されているオプションを使用して、別のデプロイ ツールやモデルでこの構成を作成することができます。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -87,10 +87,10 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 * **仮想ネットワーク ゲートウェイの設定**
   * **Name**:VNet1GW
   * **[リソース グループ]** :米国東部
-  * **世代**: 第 1 世代
+  * **世代:** 第 2 世代
   * **[ゲートウェイの種類]** : **[VPN]** を選択します。
-  * **VPN の種類**: **[ルート*ベース]** を選択します。
-  * **SKU**: VpnGw1
+  * **[VPN の種類]** : **[ルート ベース]** を選択します。
+  * **SKU**: VpnGw2
   * **仮想ネットワーク**:VNet1
   * **[ゲートウェイ サブネットのアドレス範囲]** : 10.1.255.0/27
   * **[パブリック IP アドレス]** : 新規作成
@@ -115,10 +115,10 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 * **仮想ネットワーク ゲートウェイの設定**
   * **Name**:VNet4GW
   * **[リソース グループ]** :米国西部
-  * **世代**: 第 1 世代
+  * **世代:** 第 2 世代
   * **[ゲートウェイの種類]** : **[VPN]** を選択します。
-  * **VPN の種類**: **[ルート ベース]** を選択します。
-  * **SKU**: VpnGw1
+  * **[VPN の種類]** : **[ルート ベース]** を選択します。
+  * **SKU**: VpnGw2
   * **仮想ネットワーク**:VNet4
   * **[ゲートウェイ サブネットのアドレス範囲]** : 10.41.255.0/27
   * **[パブリック IP アドレス]** : 新規作成
@@ -146,7 +146,10 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 
 ### <a name="to-create-a-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成するには
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+デプロイの状態は、ゲートウェイの [概要] ページで確認できます。 ゲートウェイの作成とデプロイが完了するまでに 45 分以上かかることがあります。 ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。 ゲートウェイは、接続されたデバイスとして表示されます。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -161,10 +164,10 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
 1. Azure ポータルで、 **[すべてのリソース]** を選択し、検索ボックスに *仮想ネットワーク ゲートウェイ* を入力してから、VNet の仮想ネットワーク ゲートウェイに移動します。 たとえば、 **[VNet1GW]** に移動します。 ゲートウェイを選択して、**仮想ネットワーク ゲートウェイ** のページを開きます。
 1. [ゲートウェイ] ページで、 **[設定] > [接続]** の順にアクセスします。 次に、 **[+ 追加]** を選択します。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="[接続] ページ":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="[接続] ページを示すスクリーンショット。" border="false":::
 1. **[接続の追加]** ページが開きます。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="[接続の追加]":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="[接続の追加] ページを示すスクリーンショット。":::
 
    **[接続の追加]** ページで、接続の値を入力します。
 
@@ -176,7 +179,7 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
 
    * **2 番目の仮想ネットワーク ゲートウェイ**:このフィールドでは、接続先として作成する VNet の仮想ネットワーク ゲートウェイを設定します。 **[別の仮想ネットワーク ゲートウェイを選択する]** を選び、 **[仮想ネットワーク ゲートウェイの選択]** ページを開きます。
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="ゲートウェイを選択":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="別のゲートウェイが選択されている [仮想ネットワーク ゲートウェイの選択] ページを示すスクリーンショット。":::
 
      * このページに一覧表示されている仮想ネットワーク ゲートウェイを確認します。 自分のサブスクリプションに属している仮想ネットワーク ゲートウェイのみが表示されていることがわかります。 自分のサブスクリプションに属していない仮想ネットワーク ゲートウェイに接続する場合は、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) を使用します。
 
@@ -194,10 +197,10 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
 1. Azure ポータルで仮想ネットワーク ゲートウェイを探します。 
 1. **仮想ネットワーク ゲートウェイ** のページで、 **[接続]** を選択して仮想ネットワーク ゲートウェイの **[接続]** ページを表示します。 接続が確立された後、 **[状態]** の値が **[接続済み]** に変わります。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="接続を確認する":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="接続を確認する [接続] ページを示すスクリーンショット。" border="false":::
 1. **[名前]** 列で、いずれかの接続を選択して詳細を表示します。 データのフローが開始されると、 **[データ入力]** と **[データ出力]** に値が表示されます。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="リソース グループを示すスクリーンショット。[データ入力] と [データ出力] に値が含まれています。":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="リソース グループを示すスクリーンショット。[データ入力] と [データ出力] に値が含まれています。" border="false":::
 
 ## <a name="add-additional-connections"></a>さらに接続を追加する
 

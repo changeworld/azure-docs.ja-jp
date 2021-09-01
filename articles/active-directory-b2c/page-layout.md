@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/26/2021
+ms.date: 08/03/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb2a0cbba9d1aaf4a4465de7d4b994cde45f6df1
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 3eeed53c16bbd6b2c1170512606472ac5329b126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590182"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733763"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
@@ -26,17 +26,39 @@ ms.locfileid: "111590182"
 > Azure Active Directory B2C では、新しいページ レイアウト バージョンごとに機能強化と修正がリリースされます。 ページ レイアウトのバージョンを最新の状態に保ち、すべてのページ要素に最新のセキュリティの強化、アクセシビリティ標準、フィードバックを反映することを強くお勧めします。
 >
 
-## <a name="jquery-version"></a>jQuery バージョン
+## <a name="jquery-and-handlebars-versions"></a>jQuery および Handlebars のバージョン
 
-[Azure AD B2C] ページのレイアウトでは、次のバージョンの [jQuery ライブラリ](https://jquery.com/)を使用します。
+[Azure AD B2C] ページのレイアウトでは、次のバージョンの [jQuery ライブラリ](https://jquery.com/)と [Handlebars テンプレート](https://handlebarsjs.com/)を使用します。
 
-|ページ レイアウトのバージョンから  |jQuery バージョン  |
-|---------|---------|
-|2.1.4 | 3.5.1 |
-|1.2.0 | 3.4.1 |
-|1.1.0 | 1.10.2 |
+|要素 |ページ レイアウト バージョンの範囲 |jQuery バージョン  |Handlebars ランタイム バージョン |Handlebars コンパイラ バージョン |
+|---------|---------|------|--------|----------|
+|multifactor |>= 1.2.4 | 3.5.1 | 4.7.6 |4.7.7 |
+|            |< 1.2.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|selfasserted |>= 2.1.4 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 2.1.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|unifiedssp |>= 2.1.4 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 2.1.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|globalexception |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|providerselection |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|claimsconsent |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|unifiedssd |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
 
 ## <a name="self-asserted-page-selfasserted"></a>セルフアサート ページ (selfasserted)
+
+**2.1.7**
+- 要求が失敗する原因となっている言語エンコードの問題を修正しました。
+- フォームの送信時にのみインライン エラー メッセージを表示するアクセシビリティのバグを修正しました。
 
 **2.1.6**
 - 別のフィールドにすばやく入力するとパスワード エラーがクリアされる問題を修正しました。
@@ -154,6 +176,9 @@ ms.locfileid: "111590182"
 - 最初のリリース
 
 ## <a name="mfa-page-multifactor"></a>MFA ページ (多要素)
+
+**1.2.5**
+- 要求が失敗する原因となっている言語エンコードの問題を修正しました。
 
 **1.2.4**
 - jQuery のバージョンが 3.5.1 に更新されました。

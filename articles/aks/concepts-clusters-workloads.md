@@ -4,12 +4,12 @@ description: Kubernetes の基本のクラスターおよびワークロード�
 services: container-service
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: b8a342730a6f37a5498e59e883b0f77b8bfabbb2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4db6ee6d117f7743147dad43dcfff98dd99fd76d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372432"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733650"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -165,7 +165,7 @@ spec:
     - name: myfrontend
       image: mcr.microsoft.com/oss/nginx/nginx:1.15.12-alpine
   nodeSelector:
-    "beta.kubernetes.io/os": linux
+    "kubernetes.io/os": linux
 ```
 
 ポッドがスケジュールされる場所を制御する方法の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][operator-best-practices-advanced-scheduler]」を参照してください。

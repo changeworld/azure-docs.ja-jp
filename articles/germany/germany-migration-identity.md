@@ -1,26 +1,26 @@
 ---
 title: Azure ID リソースを Azure Germany からグローバル Azure に移行する
 description: この記事では、Azure ID リソースの Azure Germany からグローバル Azure への移行に関する情報を提供します。
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 07ecaa564f2fda21967ab6f0c30c06fa876e4171
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41f8019d8732560754be4757845f22f436cfcf70
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780819"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "117029110"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>ID リソースをグローバル Azure に移行する
 
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
+
 この記事には、Azure ID リソースを Azure Germany からグローバル Azure に移行するために役立つ可能性がある情報があります。
 
-ID/テナントに関するガイダンスは、Azure のみの顧客を対象にしています。 Azure と O365 (またはその他の Microsoft 製品) のために一般的な Azure Active Directory (Azure AD) テナントを使用する場合は、ID の移行に複雑さが発生するため、この移行ガイダンスを使用する前に、まずアカウント マネージャーに連絡する必要があります。
+ID/テナントに関するガイダンスは、Azure のみの顧客を対象にしています。 Azure と Microsoft 365 (またはその他の Microsoft 製品) のために一般的な Azure Active Directory (Azure AD) テナントを使用する場合は、ID の移行に複雑さが伴うため、この移行ガイダンスを使用する前に、まずアカウント マネージャーに連絡する必要があります。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -28,7 +28,7 @@ Azure Germany の Azure AD は、グローバル Azure の Azure AD から分離
 
 Azure Germany とグローバル Azure の既定のテナント名は、Azure が環境に基づいて自動的にサフィックスを追加するため、常に異なります。 たとえば、グローバル Azure の **contoso** テナントのメンバーのユーザー名が **user1\@contoso.microsoftazure.com** であるとします。 Azure Germany で、それは **user1\@contoso.microsoftazure.de** です。
 
-Azure AD でカスタム ドメイン名 (**contoso.com** など) を使用する場合、Azure でドメイン名を登録する必要があります。 カスタム ドメイン名は、一度に *1 つだけ*のクラウド環境に定義できます。 ドメインが Azure Active Directory の*いずれか*のインスタンスに既に登録されている場合、ドメインの検証が失敗します。 たとえば、Azure Germany に存在するユーザー **user1\@contoso.com** は、同時に同じ名前でグローバル Azure にも存在することはできません。 **contoso.com** の登録は失敗します。
+Azure AD でカスタム ドメイン名 (**contoso.com** など) を使用する場合、Azure でドメイン名を登録する必要があります。 カスタム ドメイン名は、一度に *1 つだけ* のクラウド環境に定義できます。 ドメインが Azure Active Directory の *いずれか* のインスタンスに既に登録されている場合、ドメインの検証が失敗します。 たとえば、Azure Germany に存在するユーザー **user1\@contoso.com** は、同時に同じ名前でグローバル Azure にも存在することはできません。 **contoso.com** の登録は失敗します。
 
 一部のユーザーが既に新しい環境に存在し、一部のユーザーがまだ古い環境に存在する "ソフト" 移行では、異なるクラウド環境ごとに異なるサインイン名が必要です。
 
@@ -121,11 +121,11 @@ Get-AzureADDirectoryRole
 Get-AzureADDirectoryRole | ForEach-Object {$_.DisplayName; Get-AzureADDirectoryRoleMember -ObjectId
 $_.ObjectId | Format-Table}
 ```
-詳細:
+詳細情報:
 
-- [ハイブリッド ID ソリューション](../active-directory/choose-hybrid-identity-solution.md)について参照してください。
-- さまざまなクラウド環境に同期する方法については、[複数のクラウドで Azure AD Connect を使用する](https://blogs.technet.microsoft.com/ralfwi/2017/01/24/using-adconnect-with-multiple-clouds/)方法に関するブログの投稿を参照してください。
-- [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) の詳細を確認してください。
+- [ハイブリッド ID ソリューション](../active-directory/hybrid/whatis-hybrid-identity.md)について参照してください。
+- さまざまなクラウド環境に同期する方法については、[複数のクラウドで Azure AD Connect を使用する](/archive/blogs/ralfwi/using-adconnect-with-multiple-clouds)方法に関するブログの投稿を参照してください。
+- [Azure Active Directory](../active-directory/index.yml) の詳細を確認してください。
 - [カスタム ドメイン名](../active-directory/fundamentals/add-custom-domain.md)について参照してください。
 - [CSV から Azure AD にデータをインポートする](/powershell/azure/active-directory/importing-data)方法を確認してください。
 
@@ -143,13 +143,13 @@ Azure AD Connect は、オンプレミス Active Directory インスタンスと
 Get-AzureADUser -All $true |Where-Object {$_.DirSyncEnabled -ne "True"}
 ```
 
-詳細:
+詳細情報:
 
 - [Azure AD Connect](../active-directory/hybrid/reference-connect-dirsync-deprecated.md) の詳細を確認してください。
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-新しい環境で、ユーザーを再作成し、Azure Multi-factor Authentication インスタンスを再定義する必要があります。 
+新しい環境で、ユーザーを再作成し、Azure AD Multi-factor Authentication インスタンスを再定義する必要があります。 
 
 多要素認証が有効になっているか、または適用対象にされているユーザー アカウントの一覧を取得するには:
 
@@ -157,11 +157,11 @@ Get-AzureADUser -All $true |Where-Object {$_.DirSyncEnabled -ne "True"}
 1. **[ユーザー]**  >  **[すべてのユーザー]**  >  **[Multi-Factor Authentication]** の順に選択します。
 1. 多要素認証サービス ページにリダイレクトされたら、適切なフィルターを設定して、ユーザーの一覧を取得します。
 
-詳細:
+詳細情報:
 
-- [Azure Multi-factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md) の詳細を確認してください。
+- [Azure AD Multi-factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md) の詳細を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
@@ -173,6 +173,6 @@ Get-AzureADUser -All $true |Where-Object {$_.DirSyncEnabled -ne "True"}
 - [Analytics](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [統合](./germany-migration-integration.md)
-- [セキュリティ](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [管理ツール](./germany-migration-management-tools.md)
 - [メディア](./germany-migration-media.md)

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: a691c242cbe91ea4a3e76bd0b1a93f11a6dd7c8b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 7b295fd67052d91c229977571056b3ea95d56773
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750586"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122177853"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Storage の登録とスキャン
 
@@ -21,6 +21,12 @@ ms.locfileid: "111750586"
 ## <a name="supported-capabilities"></a>サポートされる機能
 
 Azure Blob Storage では、フル スキャンと増分スキャンがサポートされ、メタデータとスキーマがキャプチャされます。 また、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
+
+csv、tsv、psv、ssv などのファイルの種類では、次のロジックが適用されている場合にスキーマが抽出されます。
+
+1. 最初の行の値が空ではない
+2. 最初の行の値が一意である
+3. 最初の行の値が日付でも数値でもない
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +51,7 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 1. **[ロール]** に **[ストレージ BLOB データ リーダー]** を設定し、 **[選択]** 入力ボックスに Azure Purview アカウント名を入力します。 次に、 **[保存]** を選択して、このロールの割り当てを Purview アカウントに付与します。
 
 > [!Note]
-> 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/common/storage-auth-aad.md)」の手順を参照してください
+> 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/blobs/authorize-access-azure-active-directory.md)」の手順を参照してください
 
 ### <a name="account-key"></a>アカウント キー
 
@@ -144,7 +150,7 @@ Azure Blob Storage の認証を設定するには、次の 3 つの方法があ�
 
    :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scope-your-scan.png" alt-text="スキャンの範囲を指定する":::
 
-1. スキャンのルール セットを選びます。 システム既定のルール セット、既存のカスタム ルール セットのどちらかを選ぶか、新しいルール セットをインラインで作成できます。
+1. 次に、スキャン ルール セットを選択します。 システムの既定のものを選択するか、既存のカスタム ルール セットを使用するか、新しいルール セットをインラインで作成することができます。
 
    :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scan-rule-set.png" alt-text="スキャン ルール セット":::
 

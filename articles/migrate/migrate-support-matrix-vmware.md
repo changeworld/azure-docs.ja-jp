@@ -1,19 +1,19 @@
 ---
-title: Azure Migrate での VMware サーバー評価サポート
+title: Azure Migrate での VMware サーバー検出のサポート
 description: VMware 環境内のサーバーの Azure Migrate 検出および評価サポートについて学習します。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: de4d66f3ef8195e13ff8b67538901d1ebc7d88aa
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dedb05df1713238a6271af4dfd7b9cf1695d0bc7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971063"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182274"
 ---
-# <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
+# <a name="support-matrix-for-vmware-discovery"></a>VMware 検出のサポート マトリックス 
 
 この記事は、[Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) ツールを使用して、VMware 環境内のサーバーを、Azure に移行するために検出して評価する場合の前提条件とサポート要件をまとめたものです。
 
@@ -35,7 +35,7 @@ Azure への VMware サーバーの移行を計画するときは、[移行の�
 
 VMware | 詳細
 --- | ---
-**vCenter Server** | 検出および評価対象のサーバーは、vCenter Server バージョン 7.0、6.7、6.5、6.0、または 5.5 で管理されている必要があります。<br /><br /> アプライアンスで ESXi ホストの詳細を指定することによるサーバーの検出は、現在サポートされていません。
+**vCenter Server** | 検出および評価対象のサーバーは、vCenter Server バージョン 7.0、6.7、6.5、6.0、または 5.5 で管理されている必要があります。<br /><br /> アプライアンスで ESXi ホストの詳細を指定することによるサーバーの検出は、現在サポートされていません。 <br /><br /> IPv6 アドレスが vCenter Server (サーバーの検出と評価) と ESXi ホスト (サーバーのレプリケーション) でサポートされていません。
 **アクセス許可** | Azure Migrate: Discovery and Assessment ツールには、vCenter Server の読み取り専用アカウントが必要です。<br /><br /> ソフトウェア インベントリおよびエージェントレスの依存関係の分析にそのツールを使用する場合、アカウントには VMware VM でのゲスト操作に対する特権が必要です。
 
 ## <a name="server-requirements"></a>サーバーの要件
@@ -62,23 +62,25 @@ Device | Connection
 **vCenter Server** | TCP ポート 443 で、アプライアンスが評価用に構成およびパフォーマンスのメタデータを収集できるようにするインバウンド接続。 <br /><br /> 既定では、アプライアンスはポート 443 で vCenter に接続します。 vCenter Server で別のポートをリッスンしている場合は、検出の設定時にそのポートを変更できます。
 **ESXi ホスト** | [ソフトウェア インベントリの検出](how-to-discover-applications.md)または[エージェントレスの依存関係の分析](concepts-dependency-visualization.md#agentless-analysis)の場合、アプライアンスが TCP ポート 443 上の ESXi ホストに接続されると、サーバー上のソフトウェア インベントリと依存関係が検出されます。
 
-## <a name="application-discovery-requirements"></a>アプリケーションの検出の要件
+## <a name="software-inventory-requirements"></a>ソフトウェア インベントリの要件
 
-サーバーの検出に加えて、Azure Migrate: Discovery and Assessment では、サーバーで実行されているソフトウェアのインベントリを完了できます。 アプリケーションを検出することで、オンプレミスのワークロードに合わせて調整された移行パスを特定し、計画することができます。
+サーバーの検出に加えて、Azure Migrate: Discovery and Assessment では、ソフトウェア インベントリをサーバーで実行できます。 ソフトウェア インベントリを使用すると、オンプレミスのワークロードに合わせて調整された移行パスを特定し、計画することができます。
 
 サポート | 詳細
 --- | ---
-**サポートされているサーバー** | 現在、VMware 環境内のサーバーに対してのみサポートされています。 アプリケーションの検出は、各 Azure Migrate アプライアンスから最大 10,000 台のサーバーに対して実行できます。
+**サポートされているサーバー** | 現在、VMware 環境内のサーバーに対してのみサポートされています。 ソフトウェア インベントリを、各 Azure Migrate アプライアンスから、最大 10,000 台のサーバーで実行できます。
 **オペレーティング システム** | すべてのバージョンの Windows および Linux を実行しているサーバーがサポートされています。
-**VM 要件** | ソフトウェア インベントリの検出の場合、VMware ツールがサーバーにインストールされ、実行されている必要があります。 <br /><br /> VMware ツールのバージョンは、バージョン 10.2.1 以降である必要があります。<br /><br /> Windows サーバーには、PowerShell バージョン 2.0 以降がインストールされている必要があります。
-**検出** | サーバー上のアプリケーション検出は、サーバーにインストールされている VMware ツールを使用して、vCenter Server から実行されます。 アプライアンスでは、vSphere API を使用して、vCenter Server を実行しているサーバーからソフトウェア インベントリについての情報を収集します。 アプリケーションの検出はエージェントレスです。 サーバーにエージェントはインストールされず、アプライアンスはサーバーに直接接続されません。 Windows および Linux サーバーで、WMI と SSH がそれぞれ有効化され、使用可能になっている必要があります。
-**vCenter Server ユーザー アカウント** | アプリケーション検出のためにサーバーとやりとりするには、評価に使用される vCenter Server の読み取り専用アカウントに、VMware VM でのゲスト操作に対する権限が必要です。
-**サーバー アクセス** | アプリケーション検出のために、アプライアンス構成マネージャーにドメインおよびドメイン以外 (Windows または Linux) の複数の資格情報を追加することができます。<br /><br /> Windows サーバー用にゲスト ユーザー アカウントと、すべての Linux サーバー用に標準ユーザー アカウント (非 `sudo` アクセス) が必要です。
-**ポート アクセス** | アプリケーション検出を実行する対象のサーバーが実行されている ESXi ホスト上で、Azure Migrate アプライアンスから TCP ポート 443 への接続ができる必要があります。 ソフトウェア インベントリの詳細を含むファイルをダウンロードするために、vCenter Server を実行しているサーバーから ESXi ホスト接続が返されます。
+**VM 要件** | ソフトウェア インベントリでは、VMware ツールがサーバーにインストールされ、実行されている必要があります。 <br /><br /> VMware ツールのバージョンは、バージョン 10.2.1 以降である必要があります。<br /><br /> Windows サーバーには、PowerShell バージョン 2.0 以降がインストールされている必要があります。
+**検出** | ソフトウェア インベントリは、サーバーにインストールされている VMware ツールを使用して、vCenter Server から実行されます。 アプライアンスでは、vSphere API を使用して、vCenter Server を実行しているサーバーからソフトウェア インベントリについての情報を収集します。 ソフトウェア インベントリはエージェントレスです。 サーバーにエージェントはインストールされず、アプライアンスはサーバーに直接接続されません。 サーバーにインストールされている役割と機能の詳細を収集するために、WMI を有効にして、Windows サーバーで使用できるようにしてください。
+**vCenter Server ユーザー アカウント** | ソフトウェア インベントリのためにサーバーとやりとりするには、評価に使用される vCenter Server の読み取り専用アカウントに、VMware VM でのゲスト操作に対する権限が必要です。
+**サーバー アクセス** | ソフトウェア インベントリのために、アプライアンス構成マネージャーにドメインおよびドメイン以外 (Windows または Linux) の複数の資格情報を追加することができます。<br /><br /> Windows サーバー用にゲスト ユーザー アカウントと、すべての Linux サーバー用に標準ユーザー アカウント (非 `sudo` アクセス) が必要です。
+**ポート アクセス** | ソフトウェア インベントリを実行する対象のサーバーが実行されている ESXi ホスト上で、Azure Migrate アプライアンスから TCP ポート 443 への接続ができる必要があります。 ソフトウェア インベントリの詳細を含むファイルをダウンロードするために、vCenter Server を実行しているサーバーから ESXi ホスト接続が返されます。
 
 ## <a name="sql-server-instance-and-database-discovery-requirements"></a>SQL Server インスタンスとデータベース検出の要件
 
-[アプリケーション検出](how-to-discover-applications.md)により、SQL Server インスタンスが識別されます。 この情報を使用し、アプライアンス構成マネージャーで提供される Windows 認証または SQL Server 認証の資格情報を介して、アプライアンスからそれぞれの SQL Server インスタンスへの接続が試みられます。 アプライアンスが接続された後、SQL Server インスタンスとデータベースの構成とパフォーマンスのデータが収集されます。 SQL Server 構成データは 24 時間に 1 回更新されます。 パフォーマンス データは 30 秒ごとに取り込まれます。
+[ソフトウェア インベントリ](how-to-discover-applications.md)により、SQL Server インスタンスが識別されます。 この情報を使用し、アプライアンス構成マネージャーで提供される Windows 認証または SQL Server 認証の資格情報を介して、アプライアンスからそれぞれの SQL Server インスタンスへの接続が試みられます。 アプライアンスは、ネットワークの見通しがある SQL Server インスタンスのみに接続できますが、ソフトウェア インベントリ単体ではネットワークの見通しが必要ない場合があります。
+
+アプライアンスが接続された後、SQL Server インスタンスとデータベースの構成とパフォーマンスのデータが収集されます。 SQL Server 構成データは 24 時間に 1 回更新されます。 パフォーマンス データは 30 秒ごとに取り込まれます。
 
 サポート | 詳細
 --- | ---
@@ -93,22 +95,38 @@ Device | Connection
 **サポートされている SQL サービス** | SQL Server データベース エンジンのみがサポートされています。 <br /><br /> SQL Server Reporting Services (SSRS)、SQL Server Integration Services (SSIS)、SQL Server Analysis Services (SSAS) の検出はサポートされていません。
 
 > [!NOTE]
-> [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) プロパティが `true` に設定されている場合は、Azure Migrate により、Azure Migrate アプライアンスとソース SQL Server インスタンス間の通信が暗号化されます。 トランスポート層では SSL を使用してチャネルを暗号化し、証明書チェーンをバイパスして信頼を確認します。 アプライアンス サーバーは、[証明書のルート証明機関を信頼](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)するように設定する必要があります。
+> Azure Migrate の既定では、SQL インスタンスに接続する最も安全な方法が使用されます。つまり、Azure Migrate により、TrustServerCertificate プロパティが `true` に設定され、Azure Migrate アプライアンスとソース SQL Server インスタンス間の通信が暗号化されます。 さらに、トランスポート層で SSL を使用してチャネルが暗号化され、証明書チェーンによる信頼性の検証がバイパスされます。 そのため、証明書のルート証明機関を信頼するようにアプライアンス サーバーを設定する必要があります。 
 >
-> サーバーの起動時に証明書がプロビジョニングされていない場合は、SQL Server により、ログオン パケットの暗号化に使用される自己署名証明書が生成されます。 [詳細については、こちらを参照してください](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
->
+> ただし、アプライアンス上で **[Edit SQL Server connection properties]\(SQL Server の接続プロパティの編集\)** を選択して、接続設定を変更することができます。何を選択すべきかについては、[詳細](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)のページを参照してください。
+
+## <a name="aspnet-web-apps-discovery-requirements"></a>ASP.NET Web アプリの検出要件
+
+[ソフトウェア インベントリ](how-to-discover-applications.md)は、検出されたサーバーに存在する Web サーバーの役割を識別します。 サーバーで Web サーバーの役割が有効になっている場合、Azure Migrate により、サーバーで Web アプリの検出が実行されます。
+ユーザーは、アプライアンスにドメイン資格情報とドメイン以外の資格情報の両方を追加できます。 使用するアカウントがソース サーバーに対するローカル管理者特権を持っていることを確認してください。 Azure Migrate により、各サーバーに資格情報が自動的にマップされます。そのため、手動でマップする必要はありません。 最も重要なのは、これらの資格情報が Microsoft に送信されず、ソース環境で実行されているアプライアンスに残るという点です。
+アプライアンスが接続されると、IIS Web サーバーと ASP.NET Web アプリの構成データが収集されます。 Web アプリ構成データは 24 時間に 1 回更新されます。
+
+サポート | 詳細
+--- | ---
+**サポートされているサーバー** | 現在サポートされているのは、VMware 環境で IIS を実行している Windows サーバーのみです。
+**Windows サーバー** | Windows Server 2008 R2 以降がサポートされています。
+**Linux サーバー** | 現在サポートされていません。
+**IIS アクセス** | Web アプリの検出にローカル管理者ユーザー アカウントが必要です。
+**IIS のバージョン** | IIS 7.5 以降がサポートされています。
+
+> [!NOTE]
+> データが保存時と転送中に必ず暗号化されます。
 
 ## <a name="dependency-analysis-requirements-agentless"></a>依存関係の分析の要件 (エージェントレス)
 
 [依存関係の分析](concepts-dependency-visualization.md)は、評価して Azure に移行するオンプレミス サーバー間の依存関係を特定するのに役立ちます。 以下の表は、エージェントレスの依存関係の分析を設定するための要件をまとめたものです。
 
 サポート | 詳細
---- | --- 
+--- | ---
 **サポートされているサーバー** | 現在、VMware 環境内のサーバーに対してのみサポートされています。
-**Windows サーバー** | Windows Server 2016<br /> Windows Server 2012 R2<br /> Windows Server 2012<br /> Windows Server 2008 R2 (64 ビット)<br />Microsoft Windows Server 2008 (32 ビット)
+**Windows サーバー** | Windows Server 2019<br />Windows Server 2016<br /> Windows Server 2012 R2<br /> Windows Server 2012<br /> Windows Server 2008 R2 (64 ビット)<br />Microsoft Windows Server 2008 (32 ビット)
 **Linux サーバー** | Red Hat Enterprise Linux 7、6、5<br /> Ubuntu Linux 16.04、14.04<br /> Debian 8、7<br /> Oracle Linux 7、6<br /> CentOS 7、6、5<br /> SUSE Linux Enterprise Server 11 以降
 **サーバーの要件** | 分析するサーバーに VMware ツール (10.2.1 以降) がインストールされ、実行されている必要があります。<br /><br /> サーバーには、PowerShell バージョン 2.0 以降がインストールされている必要があります。
-**検出方法** |  サーバー間の依存関係情報は、vCenter Server を実行しているサーバーにインストールされている VMware ツールを使用して収集されます。 vSphere API を使用して、アプライアンスによってサーバーから情報が収集されます。 サーバーにエージェントはインストールされず、アプライアンスはサーバーに直接接続されません。 Windows および Linux サーバーで、WMI と SSH がそれぞれ有効化され、使用可能になっている必要があります。
+**検出方法** |  サーバー間の依存関係情報は、vCenter Server を実行しているサーバーにインストールされている VMware ツールを使用して収集されます。 vSphere API を使用して、アプライアンスによってサーバーから情報が収集されます。 サーバーにエージェントはインストールされず、アプライアンスはサーバーに直接接続されません。 WMI を有効にして Windows サーバーで使用できるようにする必要があります。
 **vCenter アカウント** | 評価のために Azure Migrate によって使用される読み取り専用アカウントには、VMware VM でのゲスト操作に対する権限が必要です。
 **Windows サーバーのアクセス許可** |  サーバーに対する管理者権限を持つユーザー アカウント (ローカルまたはドメイン)。
 **Linux アカウント** | ルート ユーザー アカウント、または /bin/netstat および /bin/ls ファイルに対して次のアクセス許可を持つアカウント。 <br />CAP_DAC_READ_SEARCH<br /> CAP_SYS_PTRACE<br /><br /> これらの機能は次のコマンドを使用して設定します。<br /><code>sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls<br /> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat</code>

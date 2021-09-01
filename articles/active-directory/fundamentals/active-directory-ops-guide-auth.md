@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b7aefa537c9b822572f38501920afdaa45bc01c3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c1fa9d27bbdfe91eebb74186e69cf707166384fd
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955055"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228620"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -42,7 +42,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | Azure AD Identity Protection からのリスクと脆弱性のレポートでフラグが設定されたユーザーをトリアージして調査する | InfoSec 運用チーム |
 
 > [!NOTE]
-> Azure AD Identity Protection には、Azure AD Premium P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、[Azure AD Free および Azure AD Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+> Azure AD Identity Protection には、Azure AD Premium P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、[Azure AD Free および Azure AD Premium エディションの一般公開されている機能の比較](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)に関するページをご覧ください。
 
 リストを確認しているときに、所有者が空のタスクに所有者を割り当てたり、上記のレコメンデーションに一致しない所有者を持つタスクの所有権を調整したりする必要があることに気付く場合があります。
 
@@ -249,7 +249,7 @@ Microsoft Intune アプリケーション管理 (MAM) を使用すると、ス�
 - 複数のアプリケーションに適用できる重要なポリシーの小さいセットを用意します
 - 空の例外グループを定義し、それらをポリシーに追加して例外戦略を設定します
 - MFA 制御を使用しない[緊急用](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency)アカウントを計画します
-- Exchange Online や Sharepoint Online などのサービスに対して同じ一連の制御を実装することで、Microsoft 365 クライアント アプリケーション (たとえば、Teams、OneDrive、Outlook など) で一貫したエクスペリエンスを確保します
+- Exchange Online や SharePoint Online などのサービスに対して同じ一連の制御を実装することで、Microsoft 365 クライアント アプリケーション (たとえば、Teams、OneDrive、Outlook など) で一貫したエクスペリエンスを確保します
 - ポリシーへの割り当ては、個人ではなくグループを使用して実装する必要があります
 - ポリシーで使用されている例外グループを定期的にレビューして、ユーザーがセキュリティ体制外にある時間を制限します。 Azure AD P2 を所有している場合は、アクセス レビューを使用してプロセスを自動化できます
 
@@ -328,7 +328,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 #### <a name="user-settings"></a>ユーザー設定
 
-- **外部ユーザー** - 外部コラボレーションは、Teams、Power BI、Sharepoint Online、Azure Information Protection などのサービスを使用して、企業内で有機的に発生する場合があります。 ユーザーが開始した外部コラボレーションを制御するための明示的な制約がある場合は、[Azure AD エンタイトルメント管理](../governance/entitlement-management-overview.md)やヘルプ デスクの利用などの制御された運用を使用して、外部ユーザーを有効にすることをお勧めします。 サービスに対して有機的な外部コラボレーションを許可しない場合は、[外部ユーザーの招待からメンバーを完全にブロックする](../external-identities/delegate-invitations.md)ことができます。 また、外部ユーザーの招待で[特定のドメインを許可またはブロック](../external-identities/allow-deny-list.md)することもできます。
+- **外部ユーザー** - 外部コラボレーションは、Teams、Power BI、SharePoint Online、Azure Information Protection などのサービスを使用して、企業内で有機的に発生する場合があります。 ユーザーが開始した外部コラボレーションを制御するための明示的な制約がある場合は、[Azure AD エンタイトルメント管理](../governance/entitlement-management-overview.md)やヘルプ デスクの利用などの制御された運用を使用して、外部ユーザーを有効にすることをお勧めします。 サービスに対して有機的な外部コラボレーションを許可しない場合は、[外部ユーザーの招待からメンバーを完全にブロックする](../external-identities/delegate-invitations.md)ことができます。 また、外部ユーザーの招待で[特定のドメインを許可またはブロック](../external-identities/allow-deny-list.md)することもできます。
 - **アプリの登録** - アプリの登録が有効になっている場合、エンド ユーザーはアプリケーション自体をオンボードし、データへのアクセスを許可することができます。 アプリの登録の典型的な例としては、Outlook プラグインを有効にするユーザー、またはメールやカレンダーを読んだりメールを送信したりするための音声アシスタント (Alexa や Siri など) があります。 顧客がアプリの登録を無効にすると決めた場合は、アプリケーションを管理者アカウントに登録する必要があり、多くの場合はプロセスを運用化するプロセスを設計する必要があるため、InfoSec チームと IAM チームは例外 (ビジネス要件に基づいて必要なアプリの登録) の管理に関与する必要があります。
 - **管理ポータル** - 組織は Azure portal の Azure AD ブレードをロックダウンして、管理者以外が Azure portal 内の Azure AD 管理にアクセスして混乱を招くことができないようにします。 Azure AD 管理ポータルのユーザー設定にアクセスして、アクセスを制限します。
 

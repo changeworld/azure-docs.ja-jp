@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 07/13/2021
 ms.author: cherylmc
-ms.openlocfilehash: d7f888c5bbb47a3690aee9b139d2516eb956a35f
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ccbee86e8f5ae2ab514c8ec7ece4d41e1e890e4e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110540387"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733288"
 ---
 # <a name="vnet-peering-and-azure-bastion"></a>VNet ピアリングと Azure Bastion
 
@@ -48,7 +48,7 @@ VNet ピアリングが構成されている場合、Azure Bastion はハブ ア
 3. **[接続]** ドロップダウン メニューにある Bastion を表示するには、 **[サブスクリプション] > [グローバル サブスクリプション]** で、アクセス権を持つサブスクリプションを選択する必要があります。
 4. 接続する仮想マシンを選択します。
 5. ピアリングされた VNet 全体で Azure Bastion がシームレスに検出されます。
-6. 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。 RDP と SSH の同時セッションの制限については、[RDP と SSH のセッション](bastion-faq.md#limits)に関するページを参照してください。
+6. 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="のインスタンスに接続するときには、":::
 
@@ -59,7 +59,7 @@ VNet ピアリングが構成されている場合、Azure Bastion はハブ ア
 
 ## <a name="faq"></a>よく寄せられる質問
 
-[!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]
+よく寄せられる質問については、Bastion VNet ピアリングの [FAQ](bastion-faq.md#peering) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

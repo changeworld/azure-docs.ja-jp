@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 462f37730d61a674edd463e57a98a1228c8ed611
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fee408738c556686fbdc3f7935cc840c9e392b58
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967083"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736094"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
@@ -123,3 +123,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 
 ### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>サイトの管理操作後にローカル キャッシュ ログをフラッシュする方法
 ローカル キャッシュ ログをフラッシュするには、アプリを停止して再起動します。 この操作により、古いキャッシュがクリアされます。 
+
+## <a name="more-resources"></a>その他のリソース
+
+[環境変数とアプリ設定のリファレンス](reference-app-settings.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: 7f83171733abc07de5997503560c6cc7278f3f39
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: fd6ebf1534869fa96fe6249d302406583fe55e59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752381"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733595"
 ---
 # <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (AKS) クラスターで Kubernetes にシークレット ストア CSI ドライバーを使用する (プレビュー)
 
@@ -72,25 +72,33 @@ az extension update --name aks-preview
 
 ## <a name="create-an-aks-cluster-with-secrets-store-csi-driver-support"></a>シークレット ストア CSI ドライバー サポート付きの AKS クラスターを作成する
 
-> [!NOTE]
-> ユーザー割り当てまたはシステム割り当てマネージド ID を使用してクラスターへのアクセスを提供する予定がある場合は、`enable-managed-identity` フラグを使用してクラスターで Azure Active Directory を有効にします。 詳細については、「[Azure Kubernetes Service でマネージド ID を使用する][aks-managed-identity]」を参照してください。
-
 最初に、Azure リソース グループを作成します。
 
 ```azurecli-interactive
-az group create -n myResourceGroup -l westus
+az group create -n myResourceGroup -l eastus2
 ```
 
 シークレット ストア CSI ドライバー機能を備えた AKS クラスターを作成するには、アドオン `azure-keyvault-secrets-provider` を指定して [az aks create][az-aks-create] コマンドを使用します。
 
 ```azurecli-interactive
-az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider
+az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-managed-identity
+```
+
+ユーザー割り当てマネージド ID は、`azurekeyvaultsecretsprovider-*` という名前の Azure リソースにアクセスするために、アドオンによって作成されます。 この ID を使用して、シークレットが格納される Azure Key Vault に接続できます。 出力内の ID の `clientId` をメモします。
+
+```json
+...,
+ "addonProfiles": {
+    "azureKeyvaultSecretsProvider": {
+      ...,
+      "identity": {
+        "clientId": "<client-id>",
+        ...
+      }
+    }
 ```
 
 ## <a name="upgrade-an-existing-aks-cluster-with-secrets-store-csi-driver-support"></a>シークレット ストア CSI ドライバー サポート付きの既存の AKS クラスターをアップグレードする
-
-> [!NOTE]
-> ユーザー割り当てまたはシステム割り当てマネージド ID を使用してクラスターへのアクセスを提供する予定がある場合は、`enable-managed-identity` フラグを使用してクラスターで Azure Active Directory を有効にします。 詳細については、「[Azure Kubernetes Service でマネージド ID を使用する][aks-managed-identity]」を参照してください。
 
 シークレット ストア CSI ドライバー機能を備えた既存の AKS クラスターをアップグレードするには、アドオン `azure-keyvault-secrets-provider` を指定して [az aks enable-addons][az-aks-enable-addons] コマンドを使用します。
 
@@ -98,9 +106,11 @@ az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-
 az aks enable-addons --addons azure-keyvault-secrets-provider --name myAKSCluster --resource-group myResourceGroup
 ```
 
+前述のように、アドオンによって、ユーザー割り当てマネージド ID が作成され、この ID を使用して、Azure Key Vault を認証できます。
+
 ## <a name="verify-secrets-store-csi-driver-installation"></a>シークレット ストア CSI ドライバーのインストールの確認
 
-これらのコマンドにより、シークレット ストア CSI ドライバーと Azure Key Vault プロバイダーがノードにインストールされます。 kube-system 名前空間の secrets-store-csi-driver および secrets-store-provider-azure ラベルを持つすべてのポッドを一覧表示し、出力が以下のようになることを確認します。
+上記では、シークレット ストア CSI ドライバーと Azure Key Vault プロバイダーがノードにインストールされます。 kube-system 名前空間の secrets-store-csi-driver および secrets-store-provider-azure ラベルを持つすべてのポッドを一覧表示して、完了を確認し、出力が以下のようになることを確認します。
 
 ```bash
 kubectl get pods -n kube-system -l 'app in (secrets-store-csi-driver, secrets-store-provider-azure)'
@@ -113,7 +123,6 @@ kube-system   aks-secrets-store-provider-azure-5p4nb   1/1     Running   0      
 kube-system   aks-secrets-store-provider-azure-6pqmv   1/1     Running   0          4m24s
 kube-system   aks-secrets-store-provider-azure-f5qlm   1/1     Running   0          4m25s
 ```
-
 
 ## <a name="enabling-and-disabling-autorotation"></a>自動ローテーションの有効化と無効化
 
@@ -140,55 +149,56 @@ az aks update -g myResourceGroup -n myAKSCluster2 --disable-secret-rotation
 
 ## <a name="create-or-use-an-existing-azure-key-vault"></a>Azure Key Vault を作成するか既存のものを使用する
 
-AKS クラスターに加えて、シークレット コンテンツを含む Azure Key Vault リソースが必要です。 Azure Key Vault インスタンスをデプロイするには、こちらの手順に従います。
+AKS クラスターに加えて、シークレット コンテンツを含む Azure Key Vault リソースが必要です。 Key Vault の名前はグローバルに一意である必要があることに注意してください。
 
-1. [Key Vault を作成します][create-key-vault]
-2. [キー コンテナー内のシークレットを設定します][set-secret-key-vault]
+```azurecli
+az keyvault create -n <keyvault-name> -g myResourceGroup -l eastus2
+```
+
+Azure Key Vault では、キー、シークレット、証明書を格納できます。 この例では、`ExampleSecret` というプレーン テキスト シークレットを設定します。
+
+```azurecli
+az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyAKSExampleSecret
+```
 
 次のセクションで使用するために、次のプロパティをメモしておきます。
 
 - Key Vault 内のシークレット オブジェクトの名前
-- シークレットのコンテンツの種類 (シークレット、キー、証明書)
-- Key Vault リソースの名前
+- オブジェクトの種類 (シークレット、キー、または証明書)
+- Azure Key Vault の名前
 - サブスクリプションが属している Azure テナント ID
 
 ## <a name="provide-identity-to-access-azure-key-vault"></a>Azure Key Vault にアクセスするために ID を提供する
 
-この記事の例ではサービス プリンシパルを使用していますが、Azure Key Vault プロバイダーには 4 つのアクセス方法が用意されています。 それらを確認し、お客様のユース ケースに最適なものを選択します。 選択した方法によっては、キー コンテナーからシークレットを取得するためのサービス プリンシパルのアクセス許可の付与など、追加の手順が必要になる場合があることに注意してください。
+前の手順の値を使用して、アクセス許可を設定し、アドオンによって作成されたマネージド ID が keyvault オブジェクトにアクセスできるようにします。
 
-- [サービス プリンシパル][service-principal-access]
-- [ポッド ID][pod-identity-access]
-- [ユーザー割り当てマネージド ID][ua-mi-access]
-- [システム割り当てマネージド ID][sa-mi-access]
+```azurecli
+az keyvault set-policy -n <keyvault-name> --<object-type>-permissions get --spn <client-id>
+```
 
 ## <a name="create-and-apply-your-own-secretproviderclass-object"></a>独自の SecretProviderClass オブジェクトを作成して適用する
 
-AKS クラスターに対してシークレット ストア CSI ドライバーを使用および構成するには、SecretProviderClass カスタム リソースを作成します。
-
-キー コンテナーにアクセスするためのサービス プリンシパルの使用例を次に示します。
+AKS クラスターに対してシークレット ストア CSI ドライバーを使用および構成するには、SecretProviderClass カスタム リソースを作成します。 `objects` 配列が、Azure Key Vault インスタンスに格納されているオブジェクトと一致することを確認します。
 
 ```yml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
 kind: SecretProviderClass
 metadata:
-  name: azure-kvname
+  name: <keyvault-name>
 spec:
   provider: azure
   parameters:
-    usePodIdentity: "false"         # [OPTIONAL] if not provided, will default to "false"
-    keyvaultName: "kvname"          # the name of the KeyVault
-    cloudName: ""                   # [OPTIONAL for Azure] if not provided, azure environment will default to AzurePublicCloud 
+    keyvaultName: "<keyvault-name>"       # The name of the Azure Key Vault
+    useVMManagedIdentity: "true"         
+    userAssignedIdentityID: "<client-id>" # The clientId of the addon-created managed identity
+    cloudName: ""                         # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud 
     objects:  |
       array:
         - |
-          objectName: secret1
-          objectType: secret        # object types: secret, key or cert
-          objectVersion: ""         # [OPTIONAL] object versions, default to latest if empty
-        - |
-          objectName: key1
-          objectType: key
-          objectVersion: ""
-    tenantId: "<tenant-id>"                 # the tenant ID of the KeyVault
+          objectName: <secret-name>       # In this example, 'ExampleSecret'   
+          objectType: secret              # Object types: secret, key or cert
+          objectVersion: ""               # [OPTIONAL] object versions, default to latest if empty
+    tenantId: "<tenant-id>"               # the tenant ID containing the Azure Key Vault instance
 ```
 
 詳細については、「[独自の SecretProviderClass オブジェクトを作成する][sample-secret-provider-class]」を参照してください。 上記でメモした値を必ず使用するようにしてください。
@@ -203,7 +213,7 @@ kubectl apply -f ./new-secretproviderclass.yaml
 
 ## <a name="update-and-apply-your-clusters-deployment-yaml"></a>クラスターのデプロイ YAML を更新して適用する
 
-新しいカスタム リソースが確実にクラスターで使用されているようにするには、デプロイ YAML を更新します。 より包括的な例については、サービス プリンシパルを使用して Azure Key Vault にアクセスする[サンプル デプロイ][sample-deployment]を参照してください。 必ず、選択したキー コンテナー アクセス方法の追加の手順をすべて行うようにしてください。
+新しいカスタム リソースが確実にクラスターで使用されているようにするには、デプロイ YAML を更新します。 次に例を示します。
 
 ```yml
 kind: Pod
@@ -227,9 +237,7 @@ spec:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-          secretProviderClass: "azure-kvname"
-        nodePublishSecretRef:                       # Only required when using service principal mode
-          name: secrets-store-creds                 # Only required when using service principal mode. The name of the Kubernetes secret that contains the service principal credentials to access keyvault.
+          secretProviderClass: "<keyvault-name>"
 ```
 
 更新されたデプロイをクラスターに適用します。
@@ -246,8 +254,8 @@ kubectl apply -f ./my-deployment.yaml
 ## show secrets held in secrets-store
 kubectl exec busybox-secrets-store-inline -- ls /mnt/secrets-store/
 
-## print a test secret 'secret1' held in secrets-store
-kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/secret1
+## print a test secret 'ExampleSecret' held in secrets-store
+kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/ExampleSecret
 ```
 
 ## <a name="disable-secrets-store-csi-driver-on-an-existing-aks-cluster"></a>既存の AKS クラスターでシークレット ストア CSI ドライバーを無効にする
@@ -284,8 +292,3 @@ AKS クラスターで CSI シークレット ストア ドライバーを使用
 [kube-csi]: https://kubernetes-csi.github.io/docs/
 [key-vault-provider-install]: https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation
 [sample-secret-provider-class]: https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/usage/#create-your-own-secretproviderclass-object
-[service-principal-access]: https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/service-principal-mode/
-[pod-identity-access]: https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/pod-identity-mode/
-[ua-mi-access]: https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/user-assigned-msi-mode/
-[sa-mi-access]: https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/system-assigned-msi-mode/
-[sample-deployment]: https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/examples/service-principal/pod-inline-volume-service-principal.yaml

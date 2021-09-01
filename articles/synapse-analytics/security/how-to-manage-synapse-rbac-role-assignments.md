@@ -1,19 +1,19 @@
 ---
 title: Synapse Studio で Synapse RBAC の割り当てを管理する方法
 description: この記事では、AAD セキュリティ プリンシパルに Synapse RBAC ロールを割り当てたり、取り消したりする方法について説明します。
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01f923828f0b83280d033b9bc6e5c7b6bbebae35
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8bbb6185368b438376529d69409d301c0cdd9c97
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784077"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732486"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Synapse Studio で Synapse RBAC ロールの割り当てを管理する方法
 
@@ -33,7 +33,7 @@ Synapse RBAC は、ロールを使用してユーザー、グループ、その�
 
 ## <a name="open-synapse-studio"></a>Synapse Studio を開く  
 
-ユーザー、グループ、サービス プリンシパル、またはマネージド ID にロールを割り当てるには、まず [Synapse Studio を開いて](https://web.azuresynapse.net/)ワークスペースを選択します。 
+ユーザー、グループ、サービス プリンシパル、またはマネージド ID にロールを割り当てるには、まず [Synapse Studio を開いて](https://web.azuresynapse.net/)ワークスペースにログインします。 
 
 ![ワークスペースへのログイン](./media/common/login-workspace.png) 
  

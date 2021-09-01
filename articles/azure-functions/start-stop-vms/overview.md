@@ -4,19 +4,22 @@ description: この記事では、スケジュールに従って Azure Resource 
 ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/29/2021
-ms.openlocfilehash: 8df0f31b57d7cd82ed89c4f5f0df37535ad9678a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/25/2021
+ms.openlocfilehash: 3e2946bf493da2570106fdb554704ef7f286b7cb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067278"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738542"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>Start/Stop VMs v2 (プレビュー) の概要
 
 Start/Stop VMs v2 (プレビュー) 機能は、複数のサブスクリプションにわたって Azure 仮想マシン (VM) を開始または停止します。 これは、ユーザー定義のスケジュールで Azure VM を開始または停止し、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) を使用して分析情報を提供し、[アクション グループ](../../azure-monitor/alerts/action-groups.md)を使用してオプションの通知を送信します。 この機能を使用すると、ほとんどのシナリオで Azure Resource Manager VM とクラシック VM の両方を管理できます。
 
 この新しいバージョンの Start/Stop VMs v2 (プレビュー) により、VM のコストを最適化する必要がある顧客向けに、分散型の低コストなオートメーション オプションが提供されます。 これは Azure Automation で使用できる[元のバージョン](../../automation/automation-solution-vm-management.md)と同じ機能をすべて提供しますが、より新しい Azure のテクノロジを活用するように設計されています。
+
+> [!NOTE]
+> デプロイ中に問題が発生した場合、Start/Stop VMs v2 (プレビュー) を使用しているときに問題が発生します。または、関連する質問がある場合、[GitHub](https://github.com/microsoft/startstopv2-deployments/issues) で問題を送信できます。 このプレビュー バージョンでは、[Azure サポート サイト](https://azure.microsoft.com/support/options/)から Azure サポート インシデントを提出することはできません。 
 
 ## <a name="overview"></a>概要
 
@@ -28,15 +31,16 @@ Start/Stop VMs v2 (プレビュー) は再設計されており、[以前のバ�
 
 |Name |トリガー |[説明] |
 |-----|--------|------------|
-|AlertAvailabilityTest |Timer |この関数は、可用性テストを実行して、プライマリ関数 **AutoStopVM** が常に使用可能であることを確認します。|
-|AutoStop |HTTP |この関数では、ロジック アプリから呼び出されるエントリ ポイント関数である **AutoStop** シナリオがサポートされています。|
-|AutoStopAvailabilityTest |Timer |この関数は、可用性テストを実行して、プライマリ関数 **AutoStop** が常に使用可能であることを確認します。|
-|AutoStopVM |HTTP |この関数は、アラート条件が true である場合に VM アラートによって自動的にトリガーされます。|
-|CreateAutoStopAlertExecutor |キュー |この関数は、**AutoStop** 関数からペイロード情報を取得して、VM に関するアラートを作成します。|
 |スケジュール済み |HTTP |この関数が対象とするシナリオは、スケジュール設定とシーケンス設定の両方です (ペイロード スキーマによって区別されます)。 これは、ロジック アプリから呼び出されたエントリ ポイント関数であり、VM の開始または停止の操作を処理するペイロードを取得します。 |
-|ScheduledAvailabilityTest |Timer |この関数は、可用性テストを実行して、プライマリ関数 **Scheduled** が常に使用可能であることを確認します。|
-|VirtualMachineRequestExecutor |キュー |この関数は、VM で実際の開始および停止の操作を実行します。|
+|AutoStop |HTTP |この関数では、ロジック アプリから呼び出されるエントリ ポイント関数である **AutoStop** シナリオがサポートされています。|
+|AutoStopVM |HTTP |この関数は、アラート条件が true である場合に VM アラートによって自動的にトリガーされます。|
 |VirtualMachineRequestOrchestrator |キュー |この関数は、**Scheduled** 関数からペイロード情報を取得し、VM の開始と停止の要求を調整します。|
+|VirtualMachineRequestExecutor |キュー |この関数は、VM で実際の開始および停止の操作を実行します。|
+|CreateAutoStopAlertExecutor |キュー |この関数は、**AutoStop** 関数からペイロード情報を取得して、VM に関するアラートを作成します。|
+|HeartBeatAvailabilityTest |Timer |この関数は、プライマリ HTTP 関数の可用性を監視します。|
+|CostAnalyticsFunction |Timer |この関数は、1 か月ごとに Start/Stop V2 ソリューションを実行するためのコストを計算します。|
+|SavingsAnalyticsFunction |Timer |この関数は、1 か月ごとに Start/Stop V2 ソリューションで実現できる合計の節約額を計算します。|
+|VirtualMachineSavingsFunction |キュー |この関数は、Start/Stop V2 ソリューションによって実現される VM で実際の節約額の計算を実行します。|
 
 たとえば、**Scheduled** HTTP トリガー関数は、スケジュールと シーケンスのシナリオを処理するために使用されます。 同様に、**AutoStop** HTTP トリガー関数によって、自動停止シナリオが処理されます。
 

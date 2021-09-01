@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 07/08/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to resize VMs running on an Azure Stack Edge Pro device so that I can use it to run applications using Edge compute before sending it to Azure.
-ms.openlocfilehash: bf2125a6e1d0b443202a036c52fdf845f79d11fa
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 5e41edf0cf080d06a0829e31e7105a13a0035f93
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079866"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736745"
 ---
 # <a name="use-the-azure-portal-to-resize-the-vms-on-your-azure-stack-edge-pro-gpu"></a>Azure portal を使用して Azure Stack Edge Pro GPU 上の VM のサイズを変更する
 
@@ -40,24 +40,24 @@ Azure portal を使用して、デバイスで実行されている VM のサイ
 
 1. VM は **[停止]** 状態になっている必要がある。 VM を停止するには、 **[仮想マシン] > [概要]** にアクセスし、停止する VM を選択します。 [概要] ページで **[停止]** を選択し、確認を求めるダイアログが表示されたら **[はい]** を選択します。 VM のサイズを変更する前に、VM を停止する必要があります。
 
-    ![[概要] ページから VM を停止する](./media/azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal/stop-vm-2.png)
+    ![Virtual Machines の概要から VM を停止するための画面のスクリーンショット。 [はい] ボタンが強調表示されます。](./media/azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal/stop-vm-2.png)
 
 
 ## <a name="resize-a-vm"></a>VM のサイズを変更する
 
 デバイスにデプロイされている仮想マシンのサイズを変更するには、こちらの手順に従います。 
 
-1. 停止した仮想マシンにアクセスし、 **[概要]** ページにアクセスします。 **[VM size (change)]\(VM サイズ (変更)\)** を選択します。
+1. 停止した仮想マシンにアクセスし、仮想マシンの **[詳細]** で **[VM サイズ (変更)]** を選択します。
     
-    ![[概要] ページで VM サイズの変更を選択する](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-1.png)
+    ![仮想マシンの [詳細] タブのスクリーンショット。 [詳細] タブと [VM サイズ] オプションが強調表示されます。](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-1.png)
 
 2. **[Change VM size]\(VM サイズの変更\)** ブレードのコマンド バーで **[VM サイズ]** を選択し、 **[変更]** を選択します。
 
-    ![新しい VM サイズを選択する](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-2.png)
+    ![[VM サイズの変更] 画面のスクリーンショット。 [変更] ボタンと同様に、VM サイズが強調表示されます。](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-2.png)
 
 3. 仮想マシンが更新されていることを示す通知が表示されます。 仮想マシンが正常に更新されると、 **[概要]** ページが更新され、サイズ変更された VM が表示されます。
 
-    ![VM をサイズ変更する ](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-3.png)
+    ![VM の [概要] ページのスクリーンショット。 サイズが変更された VM の VM サイズの値が強調表示されます。](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-3.png)
 
 
 ## <a name="next-steps"></a>次のステップ

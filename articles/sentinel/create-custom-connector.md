@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: d964dc25fd450f244e34140080e77cdc0e319941
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b2e2e1dad8d8fca6ce809e7e76a7ba8021420561
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749431"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182522"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel カスタム コネクタを作成するためのリソース
 
@@ -211,9 +211,11 @@ Azure Sentinel は、クエリ時の解析に対応しています。 クエリ�
 
 Azure Sentinel に取り込まれたデータを使用して、次のいずれかのプロセスで環境をセキュリティ保護します。
 
-- [アラートの視覚化](quickstart-get-visibility.md)
-- [ データの視覚化と監視](tutorial-monitor-your-data.md)
-- [インシデントの調査](tutorial-investigate-cases.md)
-- [脅威を検出する](tutorial-detect-threats-built-in.md)
+- [アラートの視覚化](get-visibility.md)
+- [ データの視覚化と監視](monitor-your-data.md)
+- [インシデントの調査](investigate-cases.md)
+- [脅威を検出する](detect-threats-built-in.md)
 - [脅威の防止の自動化](tutorial-respond-threats-playbook.md)
 - [脅威の探索](hunting.md)
+
+また、ズームを監視するカスタム コネクタを作成する例についても説明します。[Azure Sentinel を使用したズームの監視](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516)に関するページを参照してください。

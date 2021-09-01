@@ -17,12 +17,12 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce8adf65eba2586440d490860f13a6c5aa1f626
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 032a8fddb836146a5e902b168ab5aea9763bdc31
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088176"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376607"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 
@@ -44,7 +44,7 @@ ms.locfileid: "110088176"
     
 ## <a name="how-to-detect-inactive-user-accounts"></a>非アクティブなユーザー アカウントの検出方法
 
-非アクティブなアカウントを検出するには、**Microsoft Graph** API のリソースの種類 **signInActivity** によって表示される **lastSignInDateTime** プロパティを評価します。 このプロパティを使用すると、次のシナリオの解決策を実行できます。
+非アクティブなアカウントを検出するには、**Microsoft Graph** API のリソースの種類 **signInActivity** によって表示される **lastSignInDateTime** プロパティを評価します。 **lastSignInDateTime** プロパティは、ユーザーが Azure AD への対話型サインインを正常に実行した最終時刻を表示します。 このプロパティを使用すると、次のシナリオの解決策を実行できます。
 
 - **名前別のユーザー**:このシナリオでは、特定のユーザーを名前で検索することで、lastSignInDateTime を評価できます。`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 

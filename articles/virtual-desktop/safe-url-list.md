@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7206b035724027f346fe49c8834c2fd35ec83af9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: da8cc0ea77de3b544b4bcb97d2ed699c74329e68
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752965"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113757644"
 ---
 # <a name="required-url-list"></a>必要な URL リスト
 
@@ -29,7 +29,7 @@ Azure Virtual Desktop をデプロイし、使用するには、仮想マシン 
 - 必要な URL チェック ツールは、商用クラウドでのデプロイにのみ使用できます。
 - 必要な URL チェック ツールでは、ワイルドカードを含む URL をチェックできないため、必ず最初にそれらの URL のブロックを解除してください。
 
-### <a name="requirements"></a>必要条件
+### <a name="requirements"></a>要件
 
 必要な URL チェック ツールを使用するには、次のものが必要です。
 
@@ -152,4 +152,4 @@ Azure Virtual Desktop 用に作成する Azure 仮想マシンには、Azure Gov
 >[!IMPORTANT]
 >信頼できるクライアント エクスペリエンスを実現するには、これらの URL を開くことが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。
 >
->これらの URL はクライアントのサイトとリソースにのみ対応します。 この一覧には、他のサービス (Azure Active Directory など) の URL は含まれません。 Azure Active Directory URL は「[Office 365 URL および IP アドレス範囲](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)」の ID 56 にあります。
+>これらの URL はクライアントのサイトとリソースにのみ対応します。 この一覧には、他のサービス (Azure Active Directory など) の URL は含まれません。 Azure Active Directory URL は「[Office 365 URL および IP アドレス範囲](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)」の ID 56、59、および 125 にあります。

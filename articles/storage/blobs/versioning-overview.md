@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/08/2021
+ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1742679fbca38b878325bd56fa01fc2efebf4f82
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305057"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733702"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 
@@ -182,7 +182,7 @@ BLOB のスナップショットは、ある時点で作成された BLOB の読
 
 次のいずれかの方法を使用して、BLOB のバージョンへのアクセスを承認することができます。
 
-- Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Active Directory (Azure AD) セキュリティ プリンシパルにアクセス許可を付与する。 セキュリティと使いやすさのために、Azure AD を使用することをお勧めします。 BLOB 操作での Azure AD の使用に関する詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../common/storage-auth-aad.md)」を参照してください。
+- Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Active Directory (Azure AD) セキュリティ プリンシパルにアクセス許可を付与する。 セキュリティと使いやすさのために、Azure AD を使用することをお勧めします。 BLOB 操作での Azure AD の使用に関する詳細については、「[Azure Storage 内のデータへのアクセスを認可する](../common/authorize-data-access.md)」を参照してください。
 - Shared Access Signature (SAS) を使用して、BLOB バージョンへのアクセスを委任する。 BLOB バージョンを表す、署名済みリソースの種類である `bv` のバージョン ID を指定して、特定のバージョンに対する操作の SAS トークンを作成します。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。
 - アカウント アクセス キーを使用して、共有キーでの BLOB バージョンに対する操作を承認する。 詳細については、[共有キーによる承認](/rest/api/storageservices/authorize-with-shared-key)に関するページを参照してください。
 

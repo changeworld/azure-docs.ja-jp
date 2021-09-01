@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: 7807659a30127f39bb79ad99bdb733c12eb1d25d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c5a3b9b312e093d7bee5c0c555e8e2eab0c531b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100548687"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731141"
 ---
 # <a name="scan-insights-on-your-data-in-azure-purview"></a>Azure Purview 内のデータに関するスキャンの分析情報
 
@@ -62,7 +62,7 @@ Azure Purview では、ソースの種類を登録してスキャンできます
 
     :::image type="content" source="./media/scan-insights/main-graph.png" alt-text="時間の経過によるスキャンの状態の表示":::
 
-4. 特定のスキャンをさらに調査するには、**スキャン名** をクリックします。これにより、Azure Purview の **ソース** エクスペリエンス内のスキャン履歴に接続されます。 実行履歴ページからは、エラーのさらなる調査に役立つ実行 ID を取得できます。
+4. 特定のスキャンをさらに調査するには、**スキャン名** をクリックします。これにより、Azure Purview の **Data Map** エクスペリエンス内のスキャン履歴に接続されます。 実行履歴ページからは、エラーのさらなる調査に役立つ実行 ID を取得できます。
 
     :::image type="content" source="./media/scan-insights/scan-status.png" alt-text="スキャンの詳細の表示":::
 
@@ -74,4 +74,4 @@ Azure Purview では、ソースの種類を登録してスキャンできます
 
 * [データの分析情報](./concept-insights.md)を含む Azure Purview の **分析情報** ついてさらに学習します
 
-* [データ ソースの管理](./manage-data-sources.md)を含む Azure Purview の **ソース** エクスペリエンスついてさらに学習します
+* [データ ソースの管理](./manage-data-sources.md)を含む Azure Purview の **Data Map** エクスペリエンスについてさらに学習します

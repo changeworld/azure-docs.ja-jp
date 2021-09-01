@@ -1,6 +1,6 @@
 ---
-title: Application Gateway サービス エンドポイントとの統合 - Azure App Service | Microsoft Docs
-description: Application Gateway がサービス エンドポイントで保護された Azure App Service と統合する方法について説明します。
+title: Application Gateway の統合 - Azure App Service | Microsoft Docs
+description: Application Gateway を Azure App Service と統合する方法について説明します。
 services: app-service
 documentationcenter: ''
 author: madsd
@@ -11,18 +11,18 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 08/04/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: b383c28ca5097a6a30dc43f48213b0793ccdee11
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 50de997203357f86cae4a684eb55b5e30e97b712
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096384"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736104"
 ---
-# <a name="application-gateway-integration-with-service-endpoints"></a>サービス エンドポイントと Application Gateway の統合
-App Service には、Azure Application Gateway との統合において少し異なる構成を必要とする 3 つのバリエーションがあります。 バリエーションには、通常の App Service (マルチテナント、内部ロード バランサー (ILB) App Service Environment (ASE)、外部 ASE とも呼ばれます) が含まれます。 この記事では、App Service (マルチテナント) を使用して構成し、ILB と外部 ASE に関する考慮事項について説明します。
+# <a name="application-gateway-integration"></a>Application Gateway の統合
+App Service には、Azure Application Gateway との統合において少し異なる構成を必要とする 3 つのバリエーションがあります。 バリエーションには、通常の App Service (マルチテナント、内部ロード バランサー (ILB) App Service Environment (ASE)、外部 ASE とも呼ばれます) が含まれます。 この記事では、トラフィックをセキュリティで保護するためにサービス エンドポイントを使用して App Service (マルチテナント) で構成する方法について説明します。 また、この記事では、プライベート エンドポイントの使用、ILB との統合、外部 ASE に関する考慮事項についても説明します。 最後に、この記事には SCM/Kudu サイトに関する考慮事項があります。
 
 ## <a name="integration-with-app-service-multi-tenant"></a>App Service (マルチテナント) との統合
 App Service (マルチテナント) には、インターネットに接続するパブリック エンドポイントがあります。 [サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)を使用すると、Azure Virtual Network 内の特定のサブネットからのトラフィックのみを許可し、他のすべてのトラフィックをブロックすることができます。 次のシナリオでは、この機能を使用して、App Service インスタンスが特定の Application Gateway インスタンスからのトラフィックのみを受信できるようにします。
@@ -40,7 +40,7 @@ Azure portal では、4 つの手順に従ってセットアップのプロビ�
 
 Application Gateway を通じて App Service にアクセスできるようになりましたが、App Service に直接アクセスしようとすると、Web サイトが停止していることを示す 403 HTTP エラーが表示されます。
 
-![[エラー 403 - 許可されていません] のテキストを示すスクリーンショット。](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/website-403-forbidden.png" alt-text="[エラー 403 - 許可されていません] のテキストを示すスクリーンショット。":::
 
 ## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 [Resource Manager デプロイ テンプレート][template-app-gateway-app-service-complete]では、完全なシナリオがプロビジョニングされます。 このシナリオでは Application Gateway からのトラフィックのみを受信するため、サービス エンドポイントおよびアクセス制限を使用してロックダウンされた App Service インスタンスが含まれます。 このテンプレートには、簡単にするために、リソース名に追加された多数のスマート既定値と固有の接尾辞が含まれています。 これらをオーバーライドするには、リポジトリを複製するか、テンプレートをダウンロードして編集する必要があります。
@@ -55,6 +55,12 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 既定の構成では、コマンドによって、サブネットのサービス エンドポイント構成と App Service のアクセス制限の両方が設定されます。
+
+## <a name="considerations-when-using-private-endpoint"></a>プライベート エンドポイントを使用する場合の考慮事項
+
+サービス エンドポイントの代わりにプライベート エンドポイントを使用して、Application Gateway と App Service (マルチテナント) 間のトラフィックをセキュリティで保護することができます。 Application Gateway が App Service アプリのプライベート IP を DNS で解決できるようにする、またはバックエンド プールでプライベート IP を使用し、HTTP 設定でホスト名をオーバーライドできるようにする必要があります。
+
+:::image type="content" source="./media/app-gateway-with-service-endpoints/private-endpoint-appgw.png" alt-text="図には、トラフィックが Azure Virtual Network 内の Application Gateway に流れ、そこからプライベート エンドポイントを経由して App Service 内のアプリのインスタンスに送信されることが示されています。":::
 
 ## <a name="considerations-for-ilb-ase"></a>ILB ASE に関する考慮事項
 ILB ASE はインターネットに公開されず、インスタンスと Application Gateway 間のトラフィックは既に Virtual Network に分離されています。 次の[ハウツーガイド](../environment/integrate-with-application-gateway.md)では、ILB ASE を構成し、Azure portal を使用して Application Gateway と統合します。

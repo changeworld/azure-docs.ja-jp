@@ -5,15 +5,15 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 04/14/2020
+ms.date: 07/30/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dcce15618159b9d6a06a513435f0e091e02a2b2c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ad73d319e5466bb541a99e3ef33b17cdc644dfe5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729418"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール v2 カスタム規則
 
@@ -108,7 +108,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 次の変数のいずれかである必要があります。
 
-- RemoteAddr – リモート コンピューター接続の IP アドレス/ホスト名
+- RemoteAddr – リモート コンピューター接続の IP アドレス/アドレス範囲
 - RequestMethod – HTTP 要求メソッド (GET、POST、PUT、DELETE など)
 - QueryString – URI 内の変数
 - PostArgs – POST 本文で送信される引数。 この一致変数を使用するカスタム ルールは、"Content-Type" ヘッダーが "application/x-www-form-urlencoded" および "multipart/form-data" に設定されている場合にのみ適用されます。
@@ -135,7 +135,7 @@ matchVariable コレクションのフィールドを記述します。 たと�
 - BeginsWith
 - EndsWith
 - Regex
-- Geomatch (プレビュー)
+- Geomatch
 
 ### <a name="negate-condition-optional"></a>Negate condition (否定条件) [省略可能]
 
@@ -162,9 +162,9 @@ matchVariable コレクションのフィールドを記述します。 たと�
 - Block – *SecDefaultAction* (検出/防止モード) に基づいてトランザクションをブロックします。 許可アクションと同様に、要求がいったん評価されてブロック リストに追加されると、評価を停止して要求はブロックされます。 同じ条件を満たすそれ以降のいかなる要求も評価されず、単にブロックされます。 
 - Log – 規則はログに書き込まれますが、残りの規則の評価も実行されます。 他のカスタム規則が優先度の順に評価された後、マネージド規則が評価されます。
 
-## <a name="geomatch-custom-rules-preview"></a>Geomatch カスタム規則 (プレビュー)
+## <a name="geomatch-custom-rules"></a>Geomatch カスタム ルール
 
-カスタム規則では、実際のアプリケーションのニーズとセキュリティ ポリシーに沿ったカスタマイズされた規則を作成できます。 国やリージョンごとに Web アプリケーションへのアクセスを制限できます。 詳細については、「[Geomatch カスタム規則 (プレビュー)](geomatch-custom-rules.md)」を参照してください。
+カスタム規則では、実際のアプリケーションのニーズとセキュリティ ポリシーに沿ったカスタマイズされた規則を作成できます。 国やリージョンごとに Web アプリケーションへのアクセスを制限できます。 詳細については、[Geomatch カスタム ルール](geomatch-custom-rules.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

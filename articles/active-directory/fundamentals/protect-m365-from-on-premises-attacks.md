@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cee69fbd2cb829a7ec90179e94098e307e5a094
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 456f635e3cd7be91064a15b87c0da627678fdc45
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968538"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732982"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -172,7 +172,7 @@ Azure AD の機能を使用して、デバイスを安全に管理します。
 
     -   すべてのデバイス管理ワークロードの権限のソースとして [Microsoft Intune](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/microsoft-intune) を使用します。
 
--   [**特権アクセス デバイスをデプロイする**](/security/compass/privileged-access-devices#device-roles-and-profiles): 特権アクセスを使用して、Microsoft 365 と Azure AD を管理します。
+-   [**特権アクセス デバイスをデプロイする**](/security/compass/privileged-access-devices#device-roles-and-profiles): [特権アクセスをセキュリティで保護する](/security/compass/overview)ための完全な方法の一部として、特権アクセスを使用して Microsoft 365 と Azure AD を管理します。
 
 ## <a name="workloads-applications-and-resources"></a>ワークロード、アプリケーション、リソース 
 
@@ -209,7 +209,7 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
 * 条件付きアクセスが含まれないバージョンの Azure AD を使用している場合は、[Azure AD のセキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用していることを確認します。
 
-   Azure AD の機能のライセンスに関する詳細については、[Azure AD 価格ガイド](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
+   Azure AD の機能のライセンスに関する詳細については、[Azure AD 価格ガイド](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)に関するページを参照してください。
 
 ## <a name="monitor"></a>モニター 
 

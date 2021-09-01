@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL データベースから Azure Arc 対応 PostgreSQL Hyperscale サーバー グループにデータを移行する
-titleSuffix: Azure Arc enabled database services
+titleSuffix: Azure Arc-enabled database services
 description: PostgreSQL データベースから Azure Arc 対応 PostgreSQL Hyperscale サーバー グループにデータを移行する
 services: azure-arc
 ms.service: azure-arc
@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 06860f9d09db7a9e9497431620e15cc5e3168206
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 25e19ac7512c26e9e6985d033ec46d76b4c5233a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411631"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729382"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループに PostgreSQL データベースを移行する
 
@@ -45,6 +45,8 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループは、PostgreSQL
 - `psql`
 - ...
 
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 ## <a name="example"></a>例
 `pgAdmin` ツールを用いたそれらの手順について説明します。
 次のセットアップを検討します。
@@ -73,8 +75,8 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループは、PostgreSQL
 > [!NOTE]
 > `pgAdmin` ツールで Postgres インスタンスを登録するには、Kubernetes クラスターでのインスタンスのパブリック IP を使用し、ポートとセキュリティ コンテキストを適切に設定する必要があります。 これらの詳細は、次のコマンドを実行して `psql` エンドポイントの行で確認できます。
 
-```console
-azdata arc postgres endpoint list -n postgres01
+```azurecli
+az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
 ```
 次のような出力が返されます。
 ```console
@@ -128,8 +130,8 @@ Arc セットアップ内では、`psql` を使用して Postgres インスタ�
 
 1. `psql` の接続文字列から役に立つエンド ポイントの一覧を表示します。
 
-   ```console
-   azdata arc postgres endpoint list -n postgres01
+   ```azurecli
+   az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
    [
      {
        "Description": "PostgreSQL Instance",

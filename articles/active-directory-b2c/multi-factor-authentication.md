@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 08/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 601eec9c65ee7e9bc3c163da78a81a372f26507d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 42feac542760bbebc703cabc4ecc114b0ab4259d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061698"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725754"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C の多要素認証 | Microsoft Docs
 
@@ -29,6 +29,14 @@ Azure Active Directory B2C (Azure AD B2C) は [Azure AD Multi-Factor Authenticat
 
 - 多要素認証が、あるアプリケーションのアクセスには必要ないが、別のアプリケーションのアクセスには必要な場合。 たとえば、顧客が自動車保険アプリケーションにサインインするにはソーシャルまたはローカル アカウントを使用できますが、同じディレクトリに登録されている住宅保険アプリケーションにアクセスするには事前に電話番号を確認する必要があるような場合です。
 - 通常のアプリケーションへのアクセスには多要素認証は必要ないが、アプリケーション内の機密性が高い部分へのアクセスにはそれが必要である場合。 たとえば、顧客が銀行取引アプリケーションにサインインし、口座の残高を確認するにはソーシャルまたはローカル アカウントを使用できますが、ネット送金を行うには事前に電話番号の確認が必要になるような場合です。
+
+### <a name="verification-methods"></a>検証方法
+
+[条件付きアクセス](conditional-access-identity-protection-overview.md)を使用して、ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。 多要素認証の方法は次のとおりです。
+
+- Email
+- SMS
+- 電話
 
 ## <a name="set-multi-factor-authentication"></a>多要素認証の設定
 
@@ -46,8 +54,8 @@ Azure Active Directory B2C (Azure AD B2C) は [Azure AD Multi-Factor Authenticat
    - **[常にオン]** - 条件付きアクセスの設定に関係なく、MFA が常に必須になります。 サインアップ時に、ユーザーは MFA に登録するよう求められます。 サインインの間に、ユーザーが MFA にまだ登録されていない場合は、登録するよう求められます。
    - **[Conditional]\(条件付き\)** - サインアップとサインインの間に、ユーザーは MFA への登録を求められます (新規ユーザーと、MFA に未登録の既存ユーザーの両方)。 サインイン時には、アクティブな条件付きアクセス ポリシーの評価で要求されている場合にのみ、MFA が適用されます。
 
-      - 結果がリスクを伴わない MFA チャレンジである場合は、MFA が適用されます。 ユーザーが MFA にまだ登録されていない場合は、登録するよう求められます。
-      - 結果がリスクによる MFA チャレンジであり、"*なおかつ*" ユーザーが MFA に登録されていない場合は、サインインがブロックされます。
+    - 結果がリスクを伴わない MFA チャレンジである場合は、MFA が適用されます。 ユーザーが MFA にまだ登録されていない場合は、登録するよう求められます。
+    - 結果がリスクによる MFA チャレンジであり、"*なおかつ*" ユーザーが MFA に登録されていない場合は、サインインがブロックされます。
 
    > [!NOTE]
    >

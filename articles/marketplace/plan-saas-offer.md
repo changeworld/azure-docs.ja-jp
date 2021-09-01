@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 92edc1e2e2ae1e359cfd951a239e30d506d2452c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 07/31/2021
+ms.openlocfilehash: 7afdd852bebc4eeff24671d8d60cb8805f86f29c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692010"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736489"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
 
@@ -27,10 +27,10 @@ ms.locfileid: "110692010"
 
 | リスト オプション | トランザクション プロセス |
 | ------------ | ------------- |
-| [Contact me (お問い合わせ)] | 顧客は、登録情報から直接連絡します。``*`` |
-| 無料試用版 | 顧客は、Azure Active Directory (Azure AD) を介してターゲットの URL にリダイレクトされます。``*`` |
-| Get it now (今すぐ入手する) (無料) | 顧客は、Azure AD を介してターゲットの URL にリダイレクトされます。``*`` |
-| Microsoft を通じた販売  | Microsoft を通じて販売されたオファーは、"_取引可能_" オファーと呼ばれます。 取引可能なオファーは、Microsoft が公開元の代わりにソフトウェア ライセンス費用の交換を支援する際のオファーです。 Microsoft は、公開元に代わって選択された価格モデルを使用して SaaS オファーの料金を請求し、顧客トランザクションを管理します。 Azure インフラストラクチャの利用料金は、お客様 (パートナー) に直接課金されます。 価格モデルのインフラストラクチャ コストを考慮する必要があります。 これについては、以下の「[SaaS 課金](#saas-billing)」で詳細に説明します。  |
+| [Contact me (お問い合わせ)] | 顧客は、登録情報から直接連絡します。``*``<br>オファーを公開した後で、別のリスト オプションに変更することができます。 |
+| 無料試用版 | 顧客は、Azure Active Directory (Azure AD) を介してターゲットの URL にリダイレクトされます。``*``<br>オファーを公開した後で、別のリスト オプションに変更することができます。 |
+| Get it now (今すぐ入手する) (無料) | 顧客は、Azure AD を介してターゲットの URL にリダイレクトされます。``*``<br>オファーを公開した後で、別のリスト オプションに変更することができます。 |
+| Microsoft を通じた販売  | Microsoft を通じて販売されたオファーは、"_取引可能_" オファーと呼ばれます。 取引可能なオファーは、Microsoft が公開元の代わりにソフトウェア ライセンス費用の交換を支援する際のオファーです。 Microsoft は、公開元に代わって選択された価格モデルを使用して SaaS オファーの料金を請求し、顧客トランザクションを管理します。 Azure インフラストラクチャの利用料金は、お客様 (パートナー) に直接課金されます。 価格モデルのインフラストラクチャ コストを考慮する必要があります。 これについては、以下の「[SaaS 課金](#saas-billing)」で詳細に説明します。<br><br>**注**: オファーが公開されると、このオプションを変更することはできません。  |
 |||
 
 ``*``ソフトウェア ライセンス トランザクションのすべての側面 (注文、フルフィルメント、使用状況測定、課金、請求、支払い、収集を含みますが、これらに限定されません) のサポートは、公開元が担当します。

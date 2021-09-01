@@ -1,6 +1,6 @@
 ---
-title: API コネクタをユーザー フローに追加する (プレビュー)
-description: ユーザー フローで使用するように API コネクタを構成します。
+title: API コネクタをサインアップ ユーザー フローに追加する
+description: サインアップ ユーザー フローで使用するように API コネクタを構成します。
 services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
@@ -11,31 +11,26 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1913b6cf14aaf31d610adcf446dbe91326e02ff1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 62a88350e0bb1fceba635c651f8b831cba30cfce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742915"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732455"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API コネクタをサインアップ ユーザー フローに追加する
 
-開発者または IT 管理者は、API コネクタを使用し、サインアップ ユーザー フローと REST API を統合してサインアップ体験をカスタマイズしたり、外部システムと統合したりできます。 このチュートリアルの最後では、[REST API サービス](api-connectors-overview.md)と対話する Azure AD B2C ユーザー フローを作成することができます。 
+開発者または IT 管理者は、API コネクタを使用し、サインアップ ユーザー フローと REST API を統合してサインアップ体験をカスタマイズしたり、外部システムと統合したりできます。 このチュートリアルの最後では、[REST API サービス](api-connectors-overview.md)と対話する Azure AD B2C ユーザー フローを作成して、サンアップ エクスペリエンスを変更できるようになります。 
 
 ::: zone pivot="b2c-user-flow"
-
-このシナリオでは、REST API によって、メール アドレスのドメインが fabrikam.com であるか、fabricam.com であるか検証されます。 ユーザーが指定した表示名が 5 文字を超えています。 次に、静的な値を含む役職を返します。 
-
-> [!IMPORTANT]
-> サインアップ用の API コネクタは、Azure AD B2C のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
+API エンドポイントは、[サンプル](api-connector-samples.md#api-connector-rest-api-samples)の 1 つを使用して作成できます。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
 このシナリオでは、ユーザーが Azure AD B2C サインアップ ページにロイヤルティ番号を入力する機能を追加します。 REST API によって、メール アドレスとロイヤルティ番号の組み合わせがプロモーション コードにマッピングされているかどうかが検証されます。 REST API がこのユーザーのプロモーション コードを見つけると、Azure AD B2C に返されます。 最後に、アプリケーションが使用するトークン要求にプロモーション コードが挿入されます。
 
-対話は、オーケストレーション手順として設計することもできます。 これは、REST API が画面上のデータを検証せず、常に要求を返す場合に適しています。 詳細については、「[チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-exchange.md)を参照してください。
+対話は、オーケストレーション手順として設計することもできます。 これは、REST API が画面上のデータを検証せず、常に要求を返す場合に適しています。 詳細については、「[チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](add-api-connector-token-enrichment.md)を参照してください。
 
 ::: zone-end
 
@@ -51,56 +46,20 @@ ms.locfileid: "108742915"
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。
-4. **[API connectors (Preview)]\(API コネクタ (プレビュー)\)** を選択し、 **[New API connector]\(新しい API コネクタ\)** を選択します。
+4. **[API コネクタ]** を選択し、 **[新しい API コネクタ]** を選択します。
 
-   ![新しい API コネクタを追加する](./media/add-api-connector/api-connector-new.png)
+   ![API コネクタの基本構成のスクリーンショット](media/add-api-connector/api-connector-new.png)
 
 5. 呼び出しの表示名を指定します。 例: **ユーザー情報の検証**。
 6. API 呼び出しの **[エンドポイント URL]** を指定します。
-7. **[認証の種類]** を選択し、API を呼び出すための認証情報を構成します。 API のセキュリティ保護に関するオプションについては、以下のセクションを参照してください。
+7. **[認証の種類]** を選択し、API を呼び出すための認証情報を構成します。 [API コネクタのセキュリティ保護](secure-rest-api.md)の方法を参照してください。
 
-    ![API コネクタの構成](./media/add-api-connector/api-connector-config.png)
+   ![API コネクタの認証構成のスクリーンショット](media/add-api-connector/api-connector-config.png)
 
 8. **[保存]** を選択します。
 
-## <a name="securing-the-api-endpoint"></a>API エンドポイントのセキュリティ保護
-API エンドポイントを保護するには、HTTP 基本認証または HTTPS クライアント証明書認証 (プレビュー) を使用します。 どちらの場合も、API エンドポイントを呼び出すときに Azure AD B2C によって使用される資格情報を指定します。 次に、API エンドポイントは資格情報を確認し、承認の決定を行います。
-
-### <a name="http-basic-authentication"></a>HTTP 基本認証
-HTTP 基本認証は [RFC 2617](https://tools.ietf.org/html/rfc2617) で定義されています。 Azure AD B2C は、`Authorization` ヘッダー内にクライアント資格情報 (`username` および `password`) を持つ HTTP 要求を送信します。 資格情報は、Base64 でエンコードされた文字列 `username:password` として書式設定されます。 API は、API 呼び出しを拒否するかどうかを判断するために、これらの値をチェックします。
-
-### <a name="https-client-certificate-authentication-preview"></a>HTTPS クライアント証明書認証 (プレビュー)
-
-> [!IMPORTANT]
-> この機能はプレビュー段階であり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-クライアント証明書の認証は証明書ベースの相互認証方法であり、クライアントがクライアント証明書をサーバーに提供し、その ID を証明します。 この場合、Azure AD B2C は API コネクタ構成の一部としてアップロードした証明書を使用します。 これは、TLS/SSL ハンドシェイクの一部として発生します。 これにより、API サービスはアクセスを、適切な証明書を持つサービスのみに制限できます。 クライアント証明書は、PKCS12 (PFX) X.509 デジタル証明書です。 運用環境では、証明機関によって署名されている必要があります。 
-
-証明書を作成するには、[Azure Key Vault](../key-vault/certificates/create-certificate.md) を使用できます。これには、自己署名証明書のオプションと、署名された証明書の証明書発行者プロバイダーとの統合があります。 推奨設定には次が含まれます。
-- **[サブジェクト]** : `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
-- **[コンテンツの種類]** : `PKCS #12`
-- **[有効期間のアクション タイプ]** : `Email all contacts at a given percentage lifetime` または `Email all contacts a given number of days before expiry`
-- **[キーの種類]** : `RSA`
-- **[キー サイズ]** : `2048`
-- **[エクスポート可能な秘密キー]** : `Yes` (pfx ファイルをエクスポートできるようにするため)
-
-これで、[証明書をエクスポート](../key-vault/certificates/how-to-export-certificate.md)できます。 別の選択肢として、PowerShell の [New-SelfSignedCertificate](../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) コマンドレットを使用して自己署名証明書を生成することもできます。
-
-証明書を取得したら、それを API コネクタ構成の一部としてアップロードできます。 なお、パスワードは、パスワードで保護されている証明書ファイルにのみ必要です。
-
-API エンドポイントを保護するために、API では、送信されたクライアント証明書に基づいて承認が実装される必要があります。 Azure App Service と Azure Functions については、[TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md)に関するページで、*API コードから証明書を有効化および検証* する方法をご覧ください。  また、Azure API Management を使用し、ポリシー式を使用して、必要な値に対する[クライアント証明書のプロパティを確認](
-../api-management/api-management-howto-mutual-certificates-for-clients.md)することもできます。
-
-証明書の有効期限がまもなく切れることを知らせるリマインダー アラートを設定することをお勧めします。 新しい証明書を生成して、上記の手順を繰り返す必要があります。 API サービスでは、新しい証明書がデプロイされている間、一時的に古い証明書と新しい証明書を受け入れることができます。 既存の API コネクタに新しい証明書をアップロードするには、 **[API コネクタ]** で API コネクタを選択し、 **[新しい証明書のアップロード]** をクリックします。 直近でアップロードされ、開始日を過ぎていて有効期限が切れていない証明書が、Azure Active Directory によって自動的に使用されます。
-
-### <a name="api-key"></a>API キー
-
-一部のサービスは、開発時に HTTP エンドポイントへのアクセスを難読化するために "API キー" メカニズムを使用しています。 [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) に対しては、`code` を **エンドポイント URL** にクエリ パラメーターとして含めることで、これを実現できます。 たとえば、`https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b> です。 
-
-これは、運用環境で単独で使用する必要があるメカニズムではありません。 そのため、基本認証または証明書認証の構成は常に必要です。 開発上の目的により、いずれの認証方法も実装しない場合 (非推奨) は、基本認証を選択し、(API で承認を実装している 間は API が無視できる) `username` と `password` に一時的な値を使用します。
-
-## <a name="the-request-sent-to-your-api"></a>API に送信される要求
-API コネクタによってユーザー属性 ("要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
+## <a name="the-request-sent-to-your-api&quot;></a>API に送信される要求
+API コネクタによってユーザー属性 (&quot;要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
 
 **要求の例**
 ```http
@@ -127,6 +86,8 @@ Content-type: application/json
  "country":"United States",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+ "step": "<step-name>",
+ "client_id":"93fd07aa-333c-409d-955d-96008fd08dd9",
  "ui_locales":"en-US"
 }
 ```
@@ -135,13 +96,17 @@ Content-type: application/json
 
 カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_CustomAttribute** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、[Azure AD B2C でカスタム属性を定義する方法](user-flow-custom-attributes.md)に関するページを参照してください。
 
-また、**UI ロケール ("ui_locales")** 要求は、すべての要求で既定で送信されます。 これによって、デバイスで構成されているユーザーのロケールがわかります。API ではこれを使用して、国際化応答を返すことができます。
-
+また、これらの要求は、通常、すべての要求で送信されます。
+- **UI ロケール ('ui_locales')** - デバイスで構成されているエンド ユーザーのロケール。 これを API で使用して、国際化された応答を返すことができます。
+- **ステップ ('step')** - API コネクタが呼び出されたユーザー フロー上のステップまたはポイント。 次の値が含まれます。
+  - `PostFederationSignup` - "サインアップ中に ID プロバイダーとのフェデレーションを行った後" に対応します。
+  - `PostAttributeCollection` - "ユーザーを作成する前" に対応します。
+  - `PreTokenIssuance` - "トークン (プレビュー) を送信する前に" に対応します。 [このステップについて説明します。](add-api-connector-token-enrichment.md)
+- **クライアント ID ('client_id')** - エンド ユーザーがユーザー フローで認証しているアプリケーションの `appId` 値。 これは、アクセス トークンのリソース アプリケーションの `appId` では *ありません*。
+- **メールアドレス ('email')** または [**ID ('identities')** ](/graph/api/resources/objectidentity) - これらの要求は、アプリケーションに対して認証を行っているエンド ユーザーを識別するために API で使用できます。
+  
 > [!IMPORTANT]
 > API エンドポイントが呼び出されたときに要求に値がない場合、要求は API に送信されません。 API は、要求に要求が含まれていないケースを明示的に確認して処理するように設計する必要があります。
-
-> [!TIP] 
-> [**identities ("identities")**](/graph/api/resources/objectidentity) および **Email Address ("email")** の各要求は、テナントにアカウントを作成する前にユーザーを識別するために API によって使用できます。 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>ユーザー フローで API コネクタを有効にする
 
@@ -152,14 +117,17 @@ Content-type: application/json
 4. **[ユーザー フロー]** を選択し、API コネクタを追加するユーザー フローを選択します。
 5. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
 
-   - **ID プロバイダーを使用してサインインした後**
+   - **サインアップ時に ID プロバイダーとのフェデレーションを行った後**
    - **ユーザーを作成する前**
+   - **トークンを送信する前 (プレビュー)**
 
-   ![API をユーザー フローに追加する](./media/add-api-connector/api-connectors-user-flow-select.png)
+   ![ユーザー フローのステップに対して API コネクタを選択する](media/add-api-connector/api-connectors-user-flow-select.png)
 
 6. **[保存]** を選択します。
 
-## <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
+これらの手順は、**サインアップとサインイン (推奨)** と **サインアップ (推奨)** 用ですが、エクスペリエンスのサインアップ部分のみに適用されます。
+
+## <a name="after-federating-with-an-identity-provider-during-sign-up"></a>サインアップ時に ID プロバイダーとのフェデレーションを行った後
 
 サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。
 
@@ -180,6 +148,8 @@ Content-type: application/json
  "displayName": "John Smith",
  "givenName":"John",
  "lastName":"Smith",
+ "step": "PostFederationSignup",
+ "client_id":"<guid>",
  "ui_locales":"en-US"
 }
 ```
@@ -239,6 +209,8 @@ Content-type: application/json
  "country":"United States",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+ "step": "PostAttributeCollection",
+ "client_id":"93fd07aa-333c-409d-955d-96008fd08dd9",
  "ui_locales":"en-US"
 }
 ```
@@ -259,7 +231,9 @@ API に送信される要求は、ユーザーから収集される情報また�
 
 継続応答では、API から要求が返されることがあります。 要求が API によって返されると、その要求によって次のことが行われます。
 
-- 属性収集ページから要求に既に割り当てられている値をオーバーライドする。
+- [属性コレクション] ページでユーザーが既に指定したすべての値を上書きします。
+
+ユーザーから収集しない要求をサインアップ時にディレクトリに書き込むには、ユーザー フローの **[ユーザー属性]** で要求を選択する必要があります。既定では、ユーザーに値の入力が求められますが、[カスタム JavaScript または CSS](customize-ui-with-html.md) を使用して、エンド ユーザーの入力フィールドを非表示にすることができます。
 
 [継続応答](#example-of-a-continuation-response)の例を参照してください。
 
@@ -272,6 +246,58 @@ API に送信される要求は、ユーザーから収集される情報また�
  API が検証エラー応答で応答すると、ユーザー フローは属性収集ページにとどまり、`userMessage` がユーザーに表示されます。 これで、ユーザーはフォームを編集して再送信することができます。 この種類の応答は、入力の検証に使用できます。
 
 [検証エラー応答](#example-of-a-validation-error-response)の例を参照してください。
+
+## <a name="before-sending-the-token-preview"></a>トークンを送信する前 (プレビュー)
+
+> [!IMPORTANT]
+> この手順で使用されている API コネクタはプレビュー段階です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+この手順の API コネクタは、サインインとサインアップ中にトークンを発行しようとすると呼び出されます。 この手順の API コネクタを使用すると、外部ソースからの要求値でトークンを強化できます。
+
+### <a name="example-request-sent-to-the-api-at-this-step"></a>この手順で API に送信される要求の例
+
+```http
+POST <API-endpoint>
+Content-type: application/json
+
+{
+ "clientId": "231c70e8-8424-48ac-9b5d-5623b9e4ccf3",
+ "step": "PreTokenApplicationClaims",
+ "ui_locales":"en-US"
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [
+     {
+     "signInType":"federated",
+     "issuer":"facebook.com",
+     "issuerAssignedId":"0123456789"
+     }
+ ],
+ "displayName": "John Smith",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+}
+```
+
+API に送信される要求は、ユーザーに定義した情報によって異なります。
+
+### <a name="expected-response-types-from-the-web-api-at-this-step"></a>この手順での Web API からの予期される応答の種類
+
+ユーザー フロー中に Web API で Azure AD から HTTP 要求を受信すると、次の応答が返されることがあります。
+
+- 継続応答
+
+#### <a name="continuation-response"></a>継続応答
+
+継続応答は、ユーザー フローが次の手順 (トークンの発行) に進む必要があることを示します。
+
+継続応答では、API から追加の要求が返されることがあります。 トークンで返す API から返される要求は、組み込みの要求であるか、[カスタム属性として定義する必要があり](user-flow-custom-attributes.md)、ユーザー フローの **アプリケーション要求** 構成で選択する必要があります。 
+
+トークンの要求値は、ディレクトリの値ではなく、API によって返される値になります。 一部の要求値は、API 応答によって上書きできません。 API によって返すことができる要求は、`email` を除き、 **[ユーザー属性]** にあるセットに対応します。
+
+[継続応答](#example-of-a-continuation-response)の例を参照してください。
+
+> [!NOTE]
+> API は、最初の認証中にのみ呼び出されます。 更新トークンを使用して新しいアクセス トークンまたは ID トークンを自動的に取得する場合、トークンには、最初の認証中に評価された値が含まれます。 
 
 ## <a name="example-responses"></a>応答の例
 
@@ -291,9 +317,10 @@ Content-type: application/json
 
 | パラメーター                                          | Type              | 必須 | 説明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| version     | String | はい      | API のバージョン。                                                    |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 要求に `_<extensions-app-id>_` が含まれている必要はありません。 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。  |
+| \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。                    |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | `_<extensions-app-id>_` は *省略可能* であり、要求に含める必要はありません。 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 |
 
 ### <a name="example-of-a-blocking-response"></a>ブロック応答の例
 
@@ -317,7 +344,7 @@ Content-type: application/json
 
 **ブロック応答を使用したエンド ユーザー エクスペリエンス**
 
-![ブロック ページの例](./media/add-api-connector/blocking-page-response.png)
+![ブロック応答の例](media/add-api-connector/blocking-page-response.png)
 
 ### <a name="example-of-a-validation-error-response"></a>検証エラー応答の例
 
@@ -345,8 +372,7 @@ Content-type: application/json
 
 **検証エラー応答を使用したエンド ユーザー エクスペリエンス**
 
-![検証ページの例](./media/add-api-connector/validation-error-postal-code.png)
-
+![検証エラー応答の例](media/add-api-connector/validation-error-postal-code.png)
 
 ::: zone-end
 
@@ -589,17 +615,60 @@ REST API をデプロイした後、`REST-ValidateProfile` 技術プロファイ
 
 ## <a name="best-practices-and-how-to-troubleshoot"></a>ベスト プラクティスとトラブルシューティングの方法
 
+::: zone pivot="b2c-user-flow"
+
 ### <a name="using-serverless-cloud-functions"></a>サーバーレス クラウド機能の使用
 
-Azure Functions の HTTP トリガーなどのサーバーレス機能を使用すると、API コネクタで使用する API エンドポイントを作成できます。 サーバーレス クラウド機能を使用して、[たとえば](code-samples.md#api-connectors)、検証ロジックを実行したり、特定の電子メール ドメインへのサインアップを制限したりすることができます。 より複雑なシナリオには、サーバーレス クラウド機能を使用して、他の Web API、ユーザー ストア、および他のクラウド サービスを呼び出して起動することもできます。
+[Azure Functions の HTTP トリガー](../azure-functions/functions-bindings-http-webhook-trigger.md)などのサーバーレス機能を使用すると、API コネクタで使用する API エンドポイントを作成できます。 サーバーレス クラウド機能を使用して、[たとえば](api-connector-samples.md#api-connector-rest-api-samples)、検証ロジックを実行したり、特定の電子メール ドメインへのサインアップを制限したりすることができます。 複雑なシナリオには、サーバーレス クラウド機能を使用して、他の Web API、データ ストア、および他のクラウド サービスを呼び出して起動することもできます。
 
 ### <a name="best-practices"></a>ベスト プラクティス
 次のことを確認します。
 * API は、上で説明した API 要求と応答のコントラクトに従っています。 
 * API コネクタの **エンドポイント URL** によって、正確な API エンドポイントが指定されます。
-* API によって、受け取った要求の null 値が明示的に確認されます。
+* API によって、それが依存する受信済み要求の null 値が明示的に確認されます。
+* API には、[API コネクタのセキュリティ保護](secure-rest-api.md)に関する記事で説明されている認証方法が実装されています。
 * API が可能な限り迅速に応答することで、スムーズなユーザー エクスペリエンスが保証されます。
-    * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを 使用します。 Azure Functions の場合は、[Premium プラン](../azure-functions/functions-scale.md)を使用することをお勧めします。
+    * Azure AD B2C 側は、応答を受信するために最大 *20 秒間* 待機します。 何も受信しない場合は、API の呼び出しが *もう一度実行 (再試行)* されます。
+    * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを使用します。 Azure Functions の場合、運用環境では少なくとも [Premium プラン](../azure-functions/functions-scale.md)を使用することをお勧めします。
+* API の高可用性を保証します。
+* ダウンストリームの API、データベース、または API のその他の依存関係のパフォーマンスを監視し、最適化します。
+  
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
+
+### <a name="use-logging"></a>ログの使用
+
+一般に、予期しないエラー コード、例外、およびパフォーマンスの低下について API を監視するには、ご使用の Web API サービスによって有効になっているログ ツール ([Application insights](../azure-functions/functions-monitoring.md) など) を使うと便利です。
+* HTTP 200 または 400 以外の HTTP 状態コードを監視します。
+* 401 または 403 HTTP 状態コードは、通常、認証に問題があることを示しています。 API コネクタで API の認証レイヤーとそれに対応する構成を再確認します。
+* 開発では、必要に応じて、より積極的なログ レベル ("トレース" や "デバッグ" など) を使用します。
+* 長い応答時間について API を監視します。 
+
+さらに、Azure AD B2C では、ユーザー フローを介してユーザー認証中に発生した API トランザクションに関するメタデータをログに記録します。 次のようにして探します。
+1. **Azure AD B2C** にアクセスします。
+2. **[活動]** で、 **[監査ログ]** を選択します。
+3. リスト ビューをフィルター処理する: **[日付]** で、目的の期間を選択し、 **[アクティビティ]** で、 **[ユーザー フローの一部として呼び出された API]** を選択します。
+4. 個々のログを検査します。 各行は、ユーザー フロー中に呼び出しを試行する API コネクタを表します。 API 呼び出しが失敗し、再試行が発生した場合でも、1 つの行として表されます。 `numberOfAttempts` は、API が呼び出された回数を示します。 この値は `1` または `2` です。 API 呼び出しに関するその他の情報については、ログに詳しく説明されています。
+
+![ユーザー認証中の API コネクタ トランザクションの例](media/add-api-connector/example-anonymized-audit-log.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+### <a name="using-serverless-cloud-functions"></a>サーバーレス クラウド機能の使用
+
+[Azure Functions の HTTP トリガー](../azure-functions/functions-bindings-http-webhook-trigger.md)などのサーバーレス クラウド機能では、API コネクタとして使用する API エンドポイントを作成するためのシンプルで高可用性、高パフォーマンスな方法を提供します。
+
+### <a name="best-practices"></a>ベスト プラクティス
+次のことを確認します。
+* API によって、それが依存する受信済み要求の null 値が明示的に確認されます。
+* API には、[API コネクタのセキュリティ保護](secure-rest-api.md)に関する記事で説明されている認証方法が実装されています。
+* API が可能な限り迅速に応答することで、スムーズなユーザー エクスペリエンスが保証されます。 
+    * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを使用します。 Azure Functions の場合は、少なくとも [Premium プラン](../azure-functions/functions-scale.md)を使用することをお勧めします。
+* API の高可用性を保証します。
+* ダウンストリームの API、データベース、または API のその他の依存関係のパフォーマンスを監視し、最適化します。
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
  
 ### <a name="use-logging"></a>ログの使用
 
@@ -609,18 +678,20 @@ Azure Functions の HTTP トリガーなどのサーバーレス機能を使用�
 * 開発では、必要に応じて、より積極的なログ レベル ("トレース" や "デバッグ" など) を使用します。
 * 長い応答時間について API を監視します。
 
+::: zone-end
+
 ## <a name="next-steps"></a>次の手順
 
 ::: zone pivot="b2c-user-flow"
 
-- [サンプル](code-samples.md#api-connectors)を使用して作業を開始します。
+- [サンプル](api-connector-samples.md#api-connector-rest-api-samples)を使用して作業を開始します。
 - [API コネクタをセキュリティで保護する](secure-rest-api.md)
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-- [チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-exchange.md)
+- [チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](add-api-connector-token-enrichment.md)
 - [API コネクタをセキュリティで保護する](secure-rest-api.md)
 - [リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)
 

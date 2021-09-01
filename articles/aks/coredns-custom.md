@@ -6,12 +6,12 @@ author: palma21
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jpalma
-ms.openlocfilehash: ff7862636ec96db525e4a6920b35dbc1ce6be6d7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 2472e6cc2c0b24ed73532f3b04cd514a266542fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076242"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723093"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service で CoreDNS をカスタマイズする
 
@@ -52,7 +52,6 @@ data:
         rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
         kubernetes cluster.local in-addr.arpa ip6.arpa {
           pods insecure
-          upstream
           fallthrough in-addr.arpa ip6.arpa
         }
         forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
@@ -179,22 +178,6 @@ metadata:
   namespace: kube-system
 data:
     test.override: | # you may select any name here, but it must end with the .override file extension
-          hosts example.hosts example.org { # example.hosts must be a file
-              10.0.0.1 example.org
-              fallthrough
-          }
-```
-
-インラインを使用してホスト テーブル内に 1 行以上を指定するには、次のようにします。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: coredns-custom # this is the name of the configmap you can overwrite with your changes
-  namespace: kube-system
-data:
-    test.override: | # you may select any name here, but it must end with the .override file extension
           hosts { 
               10.0.0.1 example1.org
               10.0.0.2 example2.org
@@ -203,7 +186,9 @@ data:
           }
 ```
 
-## <a name="enable-logging-for-dns-query-debugging"></a>DNS クエリのデバッグ用にログ記録を有効にする 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+エンドポイントや解決策を調べるなど、CoreDNS の一般的なトラブルシューティング手順については、「[DNS 解決のデバッグ][coredns-troubleshooting]」を参照してください。
 
 DNS クエリのログ記録を有効にするには、次の構成を coredns-custom ConfigMap に適用します。
 
@@ -216,6 +201,12 @@ metadata:
 data:
   log.override: | # you may select any name here, but it must end with the .override file extension
         log
+```
+
+構成の変更を適用した後に、`kubectl logs` コマンドを使用して CoreDNS のデバッグ ログを表示します。 次に例を示します。
+
+```console
+kubectl logs --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -233,6 +224,7 @@ data:
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [coredns hosts]: https://coredns.io/plugins/hosts/
+[coredns-troubleshooting]: https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
 
 <!-- LINKS - internal -->
 [concepts-network]: concepts-network.md

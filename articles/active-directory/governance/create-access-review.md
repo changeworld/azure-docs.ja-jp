@@ -15,12 +15,12 @@ ms.date: 5/6/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaf1bd295528792ebc181027af7d5dfb21583bd4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3b4426f10ced8d8cda294c3a80923712f59e8466
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410209"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195361"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -127,7 +127,7 @@ ms.locfileid: "111410209"
 15. **[詳細設定]** セクションで、次のものを選択できます
     - レビュー担当者による承認理由の指定を必須にするには、 **[正当な理由が必要です]** を **[有効]** に設定します。
     - アクセス レビュー開始時に Azure AD からレビュー担当者にメール通知を送信し、レビュー完了時に管理者にメール通知を送信するには、 **[メール通知]** を **[有効]** に設定します。
-    - レビューを完了していないレビュー担当者に、進行中のアクセス レビューに関するリマインダーを Azure AD から送信するには、 **[リマインダー]** を **[有効]** に設定します。 これらのリマインダーは、レビュー期間の途中で送信されます。
+    - すべてのレビュー担当者に、進行中のアクセス レビューに関するリマインダーを Azure AD から送信するには、 **[リマインダー]** を **[有効]** に設定します。 レビュー担当者がリマインダーをレビュー期間の途中で、レビューをその時点で完了したかどうかにかかわらず、受け取ります。
     - レビュー担当者に送信されるメールの内容は、レビュー名、リソース名、期限などのレビューの詳細に基づいて自動生成されます。追加の指示や連絡先情報などの追加情報を伝達する方法が必要な場合は、 **[Additional content for reviewer email]\(レビュー担当者のメールに関する追加のコンテンツ\)** セクションでこれらの詳細を指定できます。 入力した情報は、割り当てられたレビュー担当者に送信される招待およびリマインダーのメールに含まれます。 下の画像で強調表示されているセクションは、この情報が表示される場所を示しています。
 
       ![レビュー担当者向けの追加のコンテンツ](./media/create-access-review/additional-content-reviewer.png)
@@ -183,7 +183,7 @@ ms.locfileid: "111410209"
 ## <a name="create-reviews-via-apis"></a>API を使用してレビューを作成する
 
 API を使ってアクセス レビューを作ることもできます。 グループおよびアプリケーション ユーザーのアクセス レビューを管理するために Azure portal で行うことは、Microsoft Graph API を使って行うこともできます。 
-+ 詳しくは、[Azure AD アクセス レビュー API リファレンス](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)のページをご覧ください。
++ 詳しくは、[Azure AD アクセス レビュー API リファレンス](/graph/api/resources/accessreviewsv2-root)のページをご覧ください。
 + チュートリアルについては、[「アクセス レビュー API を使用して、Microsoft 365 グループへのゲスト アクセスを確認」](/graph/tutorial-accessreviews-m365group)を参照してください。
 + コード サンプルについては、「[Example of retrieving Azure AD Access Reviews via Microsoft Graph (Microsoft Graph を使用して Azure AD アクセス レビューを取得する例)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)」をご覧ください。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: b375ad72d3ef459635c4a786391ef7b9836d8a99
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b1dc3b61c73894d7792835000f0e13e0bc8b412b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411588"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728641"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines を有効にする 
 
@@ -30,10 +30,10 @@ ms.locfileid: "111411588"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|**Azure Defender for SQL servers on machines** は、[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)に記載されているように課金されます|
 |保護される SQL のバージョン:|Azure SQL Server (Microsoft サポートの対象となるすべてのバージョン)|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure China 21Vianet|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines の設定
@@ -73,11 +73,11 @@ ms.locfileid: "111411588"
 
     - **既定以外のワークスペース** を使用している場合は、該当する **ワークスペース** を選択します (必要に応じて、フィルターにワークスペースの名前を入力します)。
 
-        ![既定以外のワークスペースをタイトルで検索する](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
+        ![既定以外のワークスペースをタイトルで検索する。](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
 1. **Azure Defender for SQL servers on machines** プランのオプションを **オン** に設定します。 
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="オプションのプランを含む Security Center の価格ページ":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="オプションのプランを含む Security Center の価格ページ。":::
 
     選択したワークスペースに接続されているすべての SQL サーバーでプランが有効になります。 この保護は、SQL Server インスタンスの最初の再起動後に完全にアクティブになります。
 

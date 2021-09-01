@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: kkrishna
 ms.workload: identity
 ms.custom: aaddev
-ms.openlocfilehash: c632b19daf52fd2af4d2c2920c3a61519da6c85c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 0a310df6793d2caecda095f0c89244ffee5e46eb
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408067"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728032"
 ---
 # <a name="developers-guide-to-conditional-access-authentication-context"></a>条件付きアクセスの認証コンテキストの開発者ガイド
 
@@ -43,9 +43,9 @@ IT 管理者と規制機関は、認証の追加要素をユーザーに頻繁�
 
 ### <a name="prerequisites"></a>前提条件
 
-**最初に**、認証と許可に [OpenID Connect](v2-protocols-oidc.md)/ [OAuth 2.0](v2-oauth2-auth-code-flow.md) プロトコルを使用して、アプリを Microsoft ID プラットフォームと統合する必要があります。 [Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)を使用してアプリケーションを統合し、Azure Active Directory　でセキュリティ保護することが推奨されます。 アプリと Microsoft ID プラットフォームの統合方法の学習は、[Microsoft ID プラットフォームのドキュメント](index.yml)をお読みになることから始めることをお勧めします。 条件付きアクセス認証コンテキスト機能のサポートは、業界標準の [OpenID Connect](v2-protocols-oidc.md) プロトコルによって提供されるプロトコル拡張機能に基づいて構築されています。 開発者は、[条件付きアクセス認証コンテキスト参照](/graph/api/resources/authenticationcontextclassreference)の **値** と[クレーム要求](claims-challenge.md)パラメーターを使用して、アプリがポリシーをトリガーして満たすことができるようにします。
+**最初に**、認証と許可に [OpenID Connect](v2-protocols-oidc.md)/ [OAuth 2.0](v2-oauth2-auth-code-flow.md) プロトコルを使用して、アプリを Microsoft ID プラットフォームと統合する必要があります。 [Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)を使用してアプリケーションを統合し、Azure Active Directory　でセキュリティ保護することが推奨されます。 アプリと Microsoft ID プラットフォームの統合方法の学習は、[Microsoft ID プラットフォームのドキュメント](index.yml)をお読みになることから始めることをお勧めします。 条件付きアクセス認証コンテキスト機能のサポートは、業界標準の [OpenID Connect](v2-protocols-oidc.md) プロトコルによって提供されるプロトコル拡張機能に基づいて構築されています。 開発者は、[条件付きアクセス認証コンテキスト参照](/graph/api/resources/authenticationcontextclassreference)の **値** と [クレーム要求](claims-challenge.md)パラメーターを使用して、アプリがポリシーをトリガーして満たすことができるようにします。
 
-**2 番目に**、[条件付きアクセス](../conditional-access/overview.md)では、Azure AD Premium P1 ライセンスが必要になります。 ライセンスの詳細については、[Azure AD の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+**2 番目に**、[条件付きアクセス](../conditional-access/overview.md)では、Azure AD Premium P1 ライセンスが必要になります。 ライセンスの詳細については、[Azure AD の価格に関するページ](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)を参照してください。
 
 **3 番目に**、現時点では、ユーザーがサインインするアプリケーションでのみ使用できます。 それ自体として認証されるアプリケーションはサポートされていません。 Microsoft ID プラットフォームでサポートされている認証アプリの種類とフローについては、「[認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)」ガイドを参照してください。
 
@@ -88,7 +88,7 @@ IT 管理者と規制機関は、認証の追加要素をユーザーに頻繁�
 
 **3 番目**: アプリケーション (この例では、Web API を想定します) では、保存されたマッピングに対して呼び出しを評価し、その結果に応じて、クライアント アプリのクレーム チャレンジを発生させる必要があります。 このアクションを準備するには、次の手順を実行します。
 
-1. 機密性が高く、認証コンテキストによって保護されている操作の場合は、前に保存した認証コンテキスト ID マッピングに対して **acrs** 要求の値を評価し、次のコード スニペットに示す[クレーム チャレンジ](claims-challenge.md)を発生させます。 
+1. 機密性が高く、認証コンテキストによって保護されている操作の場合は、前に保存した認証コンテキスト ID マッピングに対して **acrs** 要求の値を評価し、次のコード スニペットに示す [クレーム チャレンジ](claims-challenge.md)を発生させます。 
 
 1. 次の図は、ユーザー、クライアント アプリ、Web API の間の相互作用を示しています。
 
@@ -221,6 +221,7 @@ IT 管理者と規制機関は、認証の追加要素をユーザーに頻繁�
 - [機密データとアクションに対するきめ細かな条件付きアクセス (ブログ)](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/granular-conditional-access-for-sensitive-data-and-actions/ba-p/1751775)
 - [Microsoft ID プラットフォームを使用したゼロ トラスト](/security/zero-trust/identity-developer)
 - [Microsoft ID プラットフォームを使用したゼロ トラスト対応アプリの構築](/security/zero-trust/identity-developer)
+- [条件付きアクセス認証コンテキストを使用して、Web アプリで高\-特権の操作のステップ\-アップ認証を実行する](https://github.com/Azure-Samples/ms-identity-dotnetcore-ca-auth-context-app/blob/main/README.md)
 - [条件付きアクセス認証コンテキストを使用して、Web API で高特権の操作のステップアップ認証を実行する](https://github.com/Azure-Samples/ms-identity-ca-auth-context/blob/main/README.md)
 - [条件付きアクセス認証コンテキスト](../conditional-access/concept-conditional-access-cloud-apps.md#authentication-context-preview)
 - [authenticationContextClassReference リソース タイプ - MS Graph](/graph/api/conditionalaccessroot-list-authenticationcontextclassreferences)

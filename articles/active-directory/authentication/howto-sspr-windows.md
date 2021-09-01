@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3defd1bf3e3052f45f00eeeec0078ce0f6bbde
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491387"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723139"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Windows のサインイン画面で Azure Active Directory のセルフサービス パスワード リセットを有効にする
 
@@ -45,6 +45,7 @@ Windows のサインイン画面から SSPR を使用する場合は、次の制
     - *HideFastUserSwitching* が有効または 1 に設定されている
     - *DontDisplayLastUserName* が有効または 1 に設定されている
     - *NoLockScreen* が有効または 1 に設定されている
+    - *BlockNonAdminUserInstall* が有効または 1 に設定されている
     - *EnableLostMode* がデバイスで設定されている
     - Explorer.exe をカスタム シェルで置き換える
 - 次の具体的な 3 つの設定を組み合わせると、この機能が動作しなくなる可能性があります。

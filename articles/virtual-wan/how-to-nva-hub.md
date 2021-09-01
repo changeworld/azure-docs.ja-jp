@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/02/2021
+ms.date: 07/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0119d9b1938698ed27d9c1539c1366859d0fc7f9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 0252305167f0f77d310810af0a147106fae9e0c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411955"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730883"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub"></a>Azure Virtual WAN ハブでネットワーク仮想アプライアンスを作成する方法
 
@@ -93,6 +93,8 @@ Azure Virtual WAN 内の **VMware SD-WAN** のデプロイ ドキュメントの
 1. このページでは、共同管理者アクセス契約の条項に同意するように求められます。 これは、このデプロイでパブリッシャーが一部のリソースへのアクセス権を持っているマネージド アプリケーションで標準です。 **[上記のご契約条件に同意します]** ボックスを確認し、 **[作成]** を選択します。
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet をハブに接続する
+
+このセクションでは、ハブと VNet の間に接続を作成します。
 
 [!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 

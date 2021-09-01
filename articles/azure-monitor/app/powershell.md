@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを使用して、PowerShe
 ms.topic: conceptual
 ms.date: 05/02/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d629ef1bc7d2086f85bbb08105041a0457b133c5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 99da4f3134d8e646ba8decbc986ceb082860ca57
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954887"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463749"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
@@ -246,7 +246,7 @@ $Resource | Set-AzResource -Force
 
 ### <a name="setting-data-retention-using-rest"></a>REST を使用したデータ保有期間の設定
 
-Application Insights リソースの現在のデータ保有期間を取得するには、OSS ツール [ARMClient](https://github.com/projectkudu/ARMClient) を使用します。  (ARMClient の詳細については、[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) および [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) による記事を参照してください。)`ARMClient` を使用して現在の保有期間を取得する例を次に示します。
+Application Insights リソースの現在のデータ保有期間を取得するには、OSS ツール [ARMClient](https://github.com/projectkudu/ARMClient) を使用します。  (ARMClient の詳細については、[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) および Daniel Bowbyes による記事を参照してください。) `ARMClient` を使用して現在の保有期間を取得する例を次に示します。
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -472,4 +472,4 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 * [Application Insights リソースを作成するための PowerShell スクリプト](./create-new-resource.md#creating-a-resource-automatically) - テンプレートを使用しない簡単な方法
 * [Web テストを作成する](../alerts/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Azure Diagnostics を Application Insights に送信する](powershell-azure-diagnostics.md)
-* [リリースの注釈を作成する](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [リリースの注釈を作成する](annotations.md)

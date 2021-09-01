@@ -2,24 +2,22 @@
 title: Azure Active Directory でマイ アプリ ポータルのコレクションを作成する | Microsoft Docs
 description: マイ アプリ コレクションを使用してマイ アプリ ページをカスタマイズし、エンド ユーザーのマイ アプリ エクスペリエンスをシンプルにします。 別個のタブを使用してアプリケーションをグループに整理します。
 services: active-directory
-documentationcenter: ''
-author: mtillman
+author: davidmu1
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.author: mtillman
-ms.reviewer: kasimpso
+ms.author: davidmu
+ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 239bd084a1a593211a544b86ba8b24ed9c13624a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e47e7900fd6d678e07b4fb4ccfe02b17f734c67f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077684"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727633"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>マイ アプリ ポータルでコレクションを作成する
 
@@ -71,15 +69,13 @@ ms.locfileid: "112077684"
 
 11. **[確認および作成]** を選択します。 新しいコレクションのプロパティが表示されます。
 
-
 ## <a name="view-audit-logs"></a>監査ログの表示
 
 監査ログには、コレクション作成エンド ユーザー アクションなど、マイ アプリ コレクションの操作が記録されます。 マイ アプリから次のイベントが生成されます。
 
-* コレクションの作成
-* コレクションを編集する
-* コレクションを削除する
-* アプリケーションの起動 (エンド ユーザー)
+* 管理者コレクションの作成
+* 管理者コレクションの編集
+* 管理者コレクションの削除
 * セルフサービス アプリケーションの追加 (エンド ユーザー)
 * セルフサービス アプリケーションの削除 (エンド ユーザー)
 
@@ -89,11 +85,12 @@ ms.locfileid: "112077684"
 
 [マイアプリ] ページで、ユーザーは **[マイ アカウント]**  >  **[マイ アカウントの表示]** を選択して自分のアカウントの設定を開くことができ ます。 Azure AD の **[マイ アカウント]** ページで、ユーザーは自分のセキュリティ情報、デバイス、パスワードなどを管理できます。 また、Office アカウントの設定にアクセスすることもできます。
 
-Azure AD アカウントのページや Office アカウントのページの問題についてサポート リクエストを送信する必要がある場合は、次の手順に従ってリクエストが適切にルーティングされるようにしてください。 
+Azure AD アカウントのページや Office アカウントのページの問題についてサポート リクエストを送信する必要がある場合は、次の手順に従ってリクエストが適切にルーティングされるようにしてください。
 
 * Azure AD の **[マイ アカウント]** ページの問題については、Azure portal 内からサポート リクエストを開いてください。 **[Azure portal]**  >  **[Azure Active Directory]**  >  **[新しいサポート リクエスト]** に移動します。
 
-* Office の **[マイ アカウント]** ページの問題については、Microsoft 365 管理センター内からサポート リクエストを開いてください。 **[Microsoft 365 管理センター]**  >  **[サポート]** に移動します。 
+* Office の **[マイ アカウント]** ページの問題については、Microsoft 365 管理センター内からサポート リクエストを開いてください。 **[Microsoft 365 管理センター]**  >  **[サポート]** に移動します。
 
 ## <a name="next-steps"></a>次のステップ
+
 [Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス](end-user-experiences.md)

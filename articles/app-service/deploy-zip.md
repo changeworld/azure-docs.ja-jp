@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c4fdf78096f6f8b46c601440db6604cec6c61c99
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a6adf67eb10d276fc7484c088e7238ab8b72c1b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730626"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
@@ -40,7 +40,7 @@ WAR ファイルの展開では、Java Web アプリを実行するために [WA
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-現在、上記のエンドポイントは Linux App Services では機能しません。 代わりに、FTP または [ZIP デプロイ API](faq-app-service-linux.md#continuous-integration-and-deployment) の使用を検討してください。
+現在、上記のエンドポイントは Linux App Services では機能しません。 代わりに、FTP または [ZIP デプロイ API](/azure/app-service/faq-app-service-linux#continuous-integration-and-deployment) の使用を検討してください。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Azure CLI を使って ZIP ファイルを展開する
 
@@ -53,6 +53,8 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 ```
 
 このコマンドは、ファイルとディレクトリを ZIP ファイルから既定の App Service アプリケーション フォルダー (`\home\site\wwwroot`) にデプロイし、アプリを再起動します。
+
+## <a name="enable-build-automation"></a>ビルド自動化を有効にする
 
 既定で、展開エンジンでは ZIP ファイルがそのまま実行できる状態で、ビルド自動化は実行されないことが想定されています。 [Git デプロイ](deploy-local-git.md)の場合と同じビルド自動化を有効にするには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行することで、`SCM_DO_BUILD_DURING_DEPLOYMENT` アプリ設定を設定します。
 
@@ -98,3 +100,4 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 * [Kudu:Deploying from a zip file (Kudu: zip ファイルからのデプロイ)](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 * [Azure App Service のデプロイ資格情報](deploy-ftp.md)
+* [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

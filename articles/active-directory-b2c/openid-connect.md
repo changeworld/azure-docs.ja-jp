@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 08/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87415fc98bbcc9331ae4ff6282a65c85b570042d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32154904a78062f5e3afdb6217351f39151b36b8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579775"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729401"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -42,7 +42,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
+&response_mode=fragment
 &scope=openid%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
@@ -55,7 +55,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
 | nonce | はい | 要求に追加する (アプリケーションによって生成された) 値。この値が、最終的な ID トークンに要求として追加されます。 アプリケーションでこの値を確認することにより、トークン再生攻撃を緩和することができます。 この値は通常、要求の送信元を識別するために使用できるランダム化された一意の文字列です。 |
 | response_type | はい | OpenID Connect の ID トークンが含まれている必要があります。 Web アプリケーションが Web API を呼び出すためのトークンも必要とする場合は、`code+id_token` を使用します。 |
-| scope | はい | スコープのスペース区切りリスト。 `openid` スコープは、ユーザーをサインインさせ、ID トークンの形式でユーザーに関するデータを取得するためのアクセス許可を示します。 Web アプリケーションの場合、`offline_access` スコープは任意です。 これは、リソースへのアクセス期間を延長するには、アプリケーションで "*更新トークン*" が必要であることを示します。 |
+| scope | はい | スコープのスペース区切りリスト。 `openid` スコープは、ユーザーをサインインさせ、ID トークンの形式でユーザーに関するデータを取得するためのアクセス許可を示します。 Web アプリケーションの場合、`offline_access` スコープは任意です。 これは、リソースへのアクセス期間を延長するには、アプリケーションで "*更新トークン*" が必要であることを示します。 `https://{tenant-name}/{app-id-uri}/{scope}` は、保護されたリソース (Web API など) に対するアクセス許可を示します。 詳細については、[アクセス トークンを要求する](access-tokens.md#scopes)を参照してください。 |
 | prompt | いいえ | 必要とされている、ユーザーとの対話の種類。 現時点で有効な値は `login` だけです。これはユーザーに、その要求に関する資格情報を強制的に入力させます。 |
 | redirect_uri | いいえ | アプリケーションの `redirect_uri` パラメーター。これにより、アプリケーションは認証応答を送受信できます。 これは、URL でエンコードされている必要がある点を除き、Azure portal で登録した `redirect_uri` パラメーターのいずれかに正確に一致している必要があります。 |
 | response_mode | いいえ | 結果として得られた承認コードをアプリケーションに送り返すために使用される方法。 これは `query`、`form_post`、`fragment` のいずれかにできます。  最高のセキュリティを得るには、`form_post` 応答モードをお勧めします。 |

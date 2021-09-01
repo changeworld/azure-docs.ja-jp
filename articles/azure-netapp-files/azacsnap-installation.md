@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 08/03/2021
 ms.author: phjensen
-ms.openlocfilehash: 0eae929d60ce852e7a98f12430de796aa664d86f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5eae527b288570053e1e899bc776d541ffa9e60b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481452"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729233"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールをインストールする
 
@@ -69,9 +69,13 @@ ms.locfileid: "110481452"
 
 ## <a name="enable-communication-with-storage"></a>ストレージとの通信を有効にする
 
-このセクションでは、ストレージとの通信を有効にする方法について説明します。
+このセクションでは、ストレージとの通信を有効にする方法について説明します。  
 
-### <a name="azure-netapp-files"></a>Azure NetApp Files
+次の手順に従って、構成用にストレージを構成します。
+1. [Azure NetApp Files (仮想マシンを使用)](#azure-netapp-files-with-virtual-machine) 
+1. [Azure Large Instance (ベアメタル)](#azure-large-instance-bare-metal)
+
+### <a name="azure-netapp-files-with-virtual-machine"></a>Azure NetApp Files (仮想マシンを使用)
 
 RBAC サービス プリンシパルを作成します
 
@@ -114,7 +118,7 @@ RBAC サービス プリンシパルを作成します
 
 1. 出力内容を切り取り、`azacsnap` コマンドと同じシステム上に格納されている `azureauth.json` というファイルに貼り付け、適切なシステム アクセス許可でファイルを保護します。
 
-### <a name="azure-large-instance"></a>Azure Large Instances
+### <a name="azure-large-instance-bare-metal"></a>Azure Large Instance (ベアメタル)
 
 ストレージ バックエンドとの通信は、暗号化された SSH チャネルを介して実行されます。 次の手順の例では、この通信用の SSH の設定に関するガイダンスを提供します。
 

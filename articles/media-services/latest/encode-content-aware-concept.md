@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8b48c6b0ef84458fa54692994d8e295d25114dd8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 0b87b37b98ada136597faa3ac5d990d6e08e9865
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111240"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179422"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する
 
@@ -29,7 +29,7 @@ ms.locfileid: "106111240"
 
 Microsoft の[アダプティブ ストリーミング](encode-autogen-bitrate-ladder.md) プリセットは、ソース ビデオの品質と解像度のばらつきの問題に部分的に対処しています。 お客様のところには、一部が 1080 p でそれ以外が 720 p、またいくつかは SD やそれ以下の解像度というように、さまざまなコンテンツが混在しています。 さらに、すべてのソース コンテンツが映画やテレビ スタジオの高品質メザニンであるとは限りません。 アダプティブ ストリーミング プリセットは、ビットレート ラダーが入力メザニンの解像度または平均ビットレートを絶対に超えないようにすることで、これらの問題を解決します。 ただし、このプリセットでは、解像度とビットレート以外のソース プロパティは確認されません。
 
-## <a name="the-content-aware-encoding"></a>コンテンツに対応したエンコード
+## <a name="the-content-aware-encoding-preset"></a>コンテンツに対応したエンコード プリセット
 
 コンテンツに対応したエンコード プリセットは、広範な計算解析を必要とせずに、エンコーダーに与えられた解像度に対して最適なビットレート値を探させるカスタム ロジックを組み込むことによって、"アダプティブ ビットレート ストリーミング" のメカニズムを拡張します。 このプリセットでは、一連の GOP 配列 MP4 が作成されます。 入力コンテンツを指定すると、サービスによって入力コンテンツに対する最初の簡単な分析が実行され、その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤーの数、適切なビット レートと解像度の設定が決定されます。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビットレートはアダプティブ ストリーミング プリセットよりも低いものの、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります
 
@@ -53,6 +53,12 @@ Microsoft の[アダプティブ ストリーミング](encode-autogen-bitrate-l
 
 "**図 4:低品質の入力 (1080 p) に対して VMAF を使用した RD 曲線**
 
+## <a name="8-bit-hevc-h265-support"></a>8 ビット HEVC (H.265) のサポート
+
+Azure Media Services の Standard Encoder で、8 ビットの HEVC (H.265) エンコードがサポートされるようになりました。 HEVC コンテンツは、'hev1' 形式を使用して、Dynamic Packager を通じて配信およびパッケージ化できます。
+
+HEVC サンプルを含む新しい .NET カスタム エンコードは、[media-services-v3-dotnet Git Hub リポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)で入手できます。 カスタム エンコードに加えて、AMS では、[2021 年 2 月のリリース ノート](https://docs.microsoft.com/azure/media-services/latest/release-notes#february-2021)で確認できる他の新しい組み込み HEVC エンコード プリセットもサポートされています。
+
 ## <a name="how-to-use-the-content-aware-encoding-preset"></a>コンテンツに対応したエンコード プリセットの使用方法 
 
 次のようにこのプリセットを使用する変換を作成することができます。 
@@ -60,7 +66,7 @@ Microsoft の[アダプティブ ストリーミング](encode-autogen-bitrate-l
 変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
 
 > [!NOTE]
-> ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** プリセットを使用してください。
+> ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** プリセットを使用してください。 または、HEVC でエンコードする場合は **H265ContentAwareEncoding** を使用できます。
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -79,7 +85,7 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> `ContentAwareEncoding` プリセットを使用したエンコード ジョブは、出力時間 (分) に基づいて課金されます。 
+> `ContentAwareEncoding` プリセットを使用したエンコード ジョブは、出力時間 (分) のみに基づいて課金されます。 AMS では 2 パス エンコードが使用され、[価格ページ](https://azure.microsoft.com/pricing/details/media-services/#overview)に記載されているもの以外のプリセットの使用に関連する追加料金は発生しません。
   
 ## <a name="next-steps"></a>次のステップ
 

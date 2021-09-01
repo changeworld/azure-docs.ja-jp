@@ -4,12 +4,12 @@ description: 要求テレメトリと共に ASP.NET アプリから例外を取�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/19/2021
-ms.openlocfilehash: e992fcd16b678a89ae56ceaea4bd7d4ffb85c4fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d81881318f6bbfa5c44b9cd947cf408cefa766ae
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455083"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616246"
 ---
 # <a name="diagnose-exceptions-in-web-apps-with-application-insights"></a>Application Insights を使用した Web アプリの例外の診断
 
@@ -26,7 +26,7 @@ Web アプリケーションの例外は、[Application Insights](./app-insights
   * **Azure Web アプリ**: [Application Insights 拡張機能](./azure-web-apps.md)を追加する
   * **Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ**: [アプリケーション監視拡張機能](./azure-vm-vmss-apps.md)を追加する
   * [Application Insights SDK](./asp-net.md) をアプリ コードにインストールする
-  * **IIS Web サーバー**: [Application Insights エージェント](./monitor-performance-live-website-now.md)を実行する
+  * **IIS Web サーバー**: [Application Insights エージェント](./status-monitor-v2-overview.md)を実行する
   * **Java Web アプリ**: [Java エージェント](./java-in-process-agent.md)を有効にする
 
 ### <a name="client-side"></a>クライアント側
@@ -520,7 +520,7 @@ namespace WcfService4
 
 ## <a name="exception-performance-counters"></a>例外パフォーマンス カウンター
 
-サーバーに [Application Insights エージェントがインストール](./monitor-performance-live-website-now.md)されている場合は、.NET によって測定された例外レートのグラフを取得できます。 これには、処理済みの .NET 例外と未処理の .NET 例外の両方が含まれます。
+サーバーに [Azure Monitor Application Insights エージェントがインストール](./status-monitor-v2-overview.md)されている場合は、.NET によって測定された例外レートのグラフを取得できます。 これには、処理済みの .NET 例外と未処理の .NET 例外の両方が含まれます。
 
 [Metric Explorer]\(メトリックス エクスプローラー\) タブを開き、新しいグラフを追加して、パフォーマンス カウンターの下に表示されている **[例外レート]** を選択します。
 

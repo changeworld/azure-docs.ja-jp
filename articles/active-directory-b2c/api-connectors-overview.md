@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 07/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a9eeb7ed664f67e1273a7dfff701a18970cd91fd
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: cade077501e499893686fcc856129deb61e8778e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174526"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723317"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>API コネクタを使用してサインアップ ユーザー フローをカスタマイズおよび拡張する
 
@@ -24,32 +24,28 @@ ms.locfileid: "108174526"
 
 ::: zone pivot="b2c-user-flow"
 
-> [!IMPORTANT]
-> サインアップ用の API コネクタは、Azure AD B2C のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
 ## <a name="overview"></a>概要 
 
 開発者または IT 管理者は、API コネクタを使用し、サインアップ ユーザー フローと REST API を統合してサインアップ体験をカスタマイズしたり、外部システムと統合したりできます。 たとえば、API コネクタを使用すると、次のことができます。
 
 - **ユーザー入力データの検証**。 不正な、または無効なユーザー データに対する検証を行います。 たとえば、ユーザーが提供したデータを外部データ ストア内の既存のデータまたは許可されている値の一覧と照らし合わせて検証することができます。 無効な場合は、有効なデータを提供するようユーザーに求めることも、ユーザーがサインアップ フローを続行できないようにすることもできます。
-- **カスタム承認ワークフローと統合します**。 アカウントの作成を管理したり、制限したりするには、カスタム承認システムに接続します。
-- **ユーザー属性を上書する** ユーザーから収集された属性を再フォーマットし、それに値を割り当てます。 たとえば、ユーザーが名をすべて小文字または大文字で入力する場合に、名の最初の文字だけを大文字にするように書式設定できます。 
 - **ユーザー ID を確認します**。 本人確認サービスを使用して、アカウント作成の決定のセキュリティ レベルを向上させます。
+- **カスタム承認ワークフローと統合します**。 アカウントの作成を管理したり、制限したりするには、カスタム承認システムに接続します。
+- **外部ソースの属性を使用してトークンを拡張します**。 Azure AD B2C の外部にある、クラウド システム、カスタム ユーザー ストア、カスタム アクセス許可システム、レガシ ID サービスなどを始めとしたソースのユーザーに関する属性を使用して、トークンを強化します。
+- **ユーザー属性を上書する** ユーザーから収集された属性を再フォーマットし、それに値を割り当てます。 たとえば、ユーザーが名をすべて小文字または大文字で入力する場合に、名の最初の文字だけを大文字にするように書式設定できます。 
 - **カスタム ビジネス ロジックを実行します**。 ご利用のクラウド システム内で下流イベントをトリガーすれば、プッシュ通知の送信、企業データベースの更新、アクセス許可の管理、データベースの監査、およびその他のカスタム アクションの実行を行うことができます。
 
-API コネクタは、API 呼び出しに関する HTTP エンドポイントの URL と認証を定義することで、API エンドポイントを呼び出すために必要な情報を Azure AD B2C に提供します。 API コネクタを構成したら、それをユーザーフローの特定のステップに対して有効にすることができます。 サインアップ フローでユーザーがこのステップに達すると、API コネクタが呼び出され、HTTP POST 要求として具体化されて、ユーザー情報 ("クレーム") を JSON 本文のキーと値のペアとして送信します。 API 応答は、ユーザー フローの実行に影響を与える可能性があります。 たとえば、API 応答によって、ユーザーのサインアップがブロックされたり、ユーザーが情報の再入力を求められたり、ユーザー属性が上書きおよび追加されたりする可能性があります。
+API コネクタは、API 呼び出しに関する HTTP エンドポイントの URL と認証を定義することで、API エンドポイントを呼び出すために必要な情報を Azure AD B2C に提供します。 API コネクタを構成したら、それをユーザーフローの特定のステップに対して有効にすることができます。 サインアップ フローでユーザーがこのステップに達すると、API コネクタが呼び出され、HTTP POST 要求として具体化されて、ユーザー情報 ("クレーム") を JSON 本文のキーと値のペアとして送信します。 API 応答は、ユーザー フローの実行に影響を与える可能性があります。 たとえば、API 応答によって、ユーザーのサインアップがブロックされたり、ユーザーが情報の再入力を求められたり、ユーザー属性が上書きされたりする可能性があります。
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>ユーザー フロー内で API コネクタを有効にできる場所
 
-ユーザー フロー内には、API コネクタを有効にできる場所が 2 か所あります。
+ユーザー フロー内には、API コネクタを有効にできる場所が 3 か所あります。
 
-- ID プロバイダーを使用してサインインした後
-- ユーザーを作成する前
+- **サインアップ時に ID プロバイダーとのフェデレーションを行った後** - 当てはまるのはサインアップ エクスペリエンスのみです
+- **ユーザーを作成する前** - 当てはまるのはサインアップ エクスペリエンスのみです
+- **トークンを送信する前 (プレビュー)** - サインアップとサインインに当てはまります
 
-> [!IMPORTANT]
-> どちらの場合も、API コネクタは、サインイン時ではなく、ユーザーの **サインアップ** 時に呼び出されます。
-
-### <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
+### <a name="after-federating-with-an-identity-provider-during-sign-up"></a>サインアップ時に ID プロバイダーとのフェデレーションを行った後
 
 サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。 このステップでお客様が有効する可能性がある API コネクタのシナリオの例を次に示します。
 
@@ -64,6 +60,15 @@ API コネクタは、API 呼び出しに関する HTTP エンドポイントの
 - ユーザーが入力したデータに基づいてユーザーのサインアップをブロックします。
 - ユーザー ID を確認します。
 - 外部システムに対して、ユーザーに関する既存のデータをクエリして、それをアプリケーション トークンで返すか、Azure AD に格納します。
+
+### <a name="before-sending-the-token-preview"></a>トークンを送信する前 (プレビュー)
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
+
+サインアップまたはサインイン プロセスの、このステップでの API コネクタは、トークンが発行される前に呼び出されます。 以下に、このステップで有効する可能性があるシナリオの例を示します。
+- レガシ ID システム、人事システム、外部ユーザー ストアなど、ディレクトリとは異なるソースからのユーザーに関する属性を使用してトークンを強化します。
+- 独自のアクセス許可システムに格納して管理するグループまたはロールの属性を使用してトークンを強化します。 
+- ディレクトリ内の要求の値に、要求の変換または操作を適用します。
 
 ::: zone-end
 
@@ -146,6 +151,34 @@ RESTful 要求プロバイダーが解析する出力要求は、次のような
 </OutputClaims>
 ```
 
+### <a name="handling-null-values"></a>null 値の処理 
+
+列の値が不明であるか存在しないときには、データベース内の null 値が使用されます。  `null` 値を持つ JSON キーは含めないでください。 次の例では、メールから `null` 値が返されます。
+
+```json
+{
+  "name": "Emily Smith",
+  "email": null,
+  "loyaltyNumber":  1234
+}
+```
+
+要素が null のときには次のいずれかになります。
+
+- JSON からキーと値のペアが省略されます。
+- Azure AD B2C の要求データ型に対応する値が返されます。 たとえば、`string` データ型の場合、空の文字列 `""` が返されます。 `integer` データ型の場合、0 値の `0` が返されます。 `dateTime` データ型の場合、最小値の `1970-00-00T00:00:00.0000000Z` が返されます。
+
+次の例は、null 値の処理方法を示しています。 メールは JSON から省略されています。
+
+```json
+{
+  "name": "Emily Smith",
+  "loyaltyNumber":  1234
+}
+```
+
+### <a name="parse-a-nested-json-body"></a>入れ子になった JSON 本文を解析する
+
 入れ子になった JSON 本文の応答を解析するには、ResolveJsonPathsInJsonTokens メタデータを true に設定します。 出力要求で、PartnerClaimType を出力する JSON パス要素に設定します。
 
 ```json
@@ -210,71 +243,26 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
 
 ::: zone-end
 
-## <a name="security-considerations"></a>セキュリティに関する考慮事項
+## <a name="development-of-your-rest-api"></a>REST API の開発 
 
-認証されたクライアントだけが REST API エンドポイントと通信できるように、その REST API エンドポイントを保護してください。 REST API は、HTTPS エンドポイントを使用する必要があります。 認証の種類を、次のいずれかの認証方法に設定します。
-
-### <a name="api-key"></a>API キー
-
-API キーは、REST API エンドポイントにアクセスするユーザーを認証するために使用される一意の識別子です。 たとえば、[Azure Functions の HTTP トリガー](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)には、クエリ パラメーターとして `code` がエンドポイント URL に含まれます。
-
-::: zone pivot="b2c-user-flow"
-
-```http
-https://contoso.azurewebsites.net/api/endpoint?code=0123456789 
-```
-
-API キー認証を実稼働環境で単独で使用することはできません。 そのため、基本認証または証明書認証の構成は常に必要です。 開発上の目的により、いずれの認証方法も実装しない場合 (非推奨) は、基本認証を選択し、(API で承認を実装している 間は API が無視できる) `username` と `password` に一時的な値を使用します。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-API キーには、カスタム HTTP ヘッダーを送信できます。 たとえば、[Azure Functions HTTP トリガー](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)は、`x-functions-key` HTTP ヘッダーを使用して要求者を識別します。  
-
-::: zone-end
-
-### <a name="client-certificate"></a>クライアント証明書
-
-クライアント証明書の認証は証明書ベースの相互認証方法であり、クライアントがクライアント証明書をサーバーに提供し、その ID を証明します。 この場合、Azure AD B2C は API コネクタ構成の一部としてアップロードした証明書を使用します。  この動作は、SSL ハンドシェイクの一部として行なわれます。 
-
-これにより、API サービスはアクセスを、適切な証明書を持つサービスのみに制限できます。 クライアント証明書は、PKCS12 (PFX) X.509 デジタル証明書です。 運用環境では、証明機関によって署名されている必要があります。
-
-### <a name="http-basic-authentication"></a>HTTP 基本認証
-
-HTTP 基本認証は [RFC 2617](https://tools.ietf.org/html/rfc2617) で定義されています。 Azure AD B2C は、`Authorization` ヘッダー内にクライアント資格情報 (`username` および `password`) を持つ HTTP 要求を送信します。 資格情報は、Base64 でエンコードされた文字列 `username:password` として書式設定されます。 API は、API 呼び出しを拒否するかどうかを判断するために、これらの値をチェックします。
-
-::: zone pivot="b2c-custom-policy"
-
-### <a name="bearer-token"></a>ベアラー トークン
-
-ベアラー トークン認証の定義については、「[OAuth 2.0 Authorization Framework:Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 ベアラー トークン認証では、Azure AD B2C は、Authorization ヘッダーにトークンを含む HTTP 要求を送信します。
-
-```http
-Authorization: Bearer <token>
-```
-
-ベアラー トークンは、不透明な文字列です。 これは、JWT アクセス トークン、または REST API が Azure AD B2C によって Authorization ヘッダーで送信されることを想定する任意の文字列です。 
- 
-::: zone-end
-
-## <a name="rest-api-platform"></a>REST API プラットフォーム
-
-REST API は、セキュリティで保護され、要求を JSON 形式で送受信できる限り、任意のプラットフォームに基づいており、任意のプログラミング言語で記述できます。
+REST API は、セキュリティで保護され、要求を JSON 形式で送受信できる限り、どのプラットフォームでも開発でき、任意のプログラミング言語で記述できます。
 
 REST API サービスへの要求は Azure AD B2C サーバーから作成されます。 REST API サービスは、パブリックにアクセスできる HTTPS エンドポイントに公開する必要があります。 REST API の呼び出しは、Azure データ センターの IP アドレスから受け取ります。
 
-REST API サービスとその基になるコンポーネント (データベースやファイル システムなど) を高可用性として設計します。
+開発が容易になるよう、[Azure Functions の HTTP トリガー](../azure-functions/functions-bindings-http-webhook-trigger.md)のようなサーバーレス クラウド関数を使用できます。
 
+REST API サービスとその基になるコンポーネント (データベースやファイル システムなど) は、高可用性を備えるように設計する必要があります。
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-
-
 ::: zone pivot="b2c-user-flow"
 
-- [API コネクタをユーザー フローに追加](add-api-connector.md)する方法について説明します。
-- [サンプル](code-samples.md#api-connectors)を使用して作業を開始します。
+- [API コネクタを追加してサインアップ エクスペリエンスを変更する](add-api-connector.md)方法を確認します
+- [API コネクタを追加し、外部要求によってトークンを強化する](add-api-connector-token-enrichment.md)方法を確認します
+- [API コネクタをセキュリティで保護する](secure-rest-api.md)方法を確認します
+- [サンプル](api-connector-samples.md#api-connector-rest-api-samples)を使用して作業を開始します
 
 ::: zone-end
 
@@ -283,7 +271,7 @@ REST API サービスとその基になるコンポーネント (データベー
 RESTful 技術プロファイルの使用例については、次の記事を参照してください。
 
 - [チュートリアル: API コネクタをサインアップ ユーザー フローに追加する](add-api-connector.md)
-- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-exchange.md)
+- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](add-api-connector-token-enrichment.md)
 - [REST API サービスをセキュリティで保護する](secure-rest-api.md)
 - [リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)
 

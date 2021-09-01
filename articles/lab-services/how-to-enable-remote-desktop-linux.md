@@ -3,12 +3,12 @@ title: Azure Lab Services の Linux 向けグラフィカル リモート デス
 description: Azure Lab Services のラボで Linux 仮想マシン向けリモート デスクトップを有効にする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 604cde661fb566851d3eacdb42dd41f4effded7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647955"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737682"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Azure Lab Services の Linux 仮想マシンでグラフィカル リモート デスクトップを有効にする
 この記事では、次のタスクの手順について説明します。
@@ -25,12 +25,15 @@ ms.locfileid: "94647955"
 RDP を使用するには、講師が次のことを行う必要があります。
   - リモート デスクトップ接続を有効にします。これは、VM のポートを RDP 用に開くために必要です。
   - RDP リモート デスクトップ サーバーをインストールします。
-  - Linux グラフィカル デスクトップ環境 (MATE、XFCE など) をインストールします。
+  - Linux グラフィカル デスクトップ環境 (XFCE、MATE など) をインストールします。
+
+> [!WARNING]
+>  [GNOME](https://www.gnome.org/) とは異なるグラフィカル デスクトップ環境を使用することをお勧めします。  ラボ VM への GNOME のインストールは避けてください。これは、VM が Azure Lab Services で正常に動作するために必要な Azure Linux エージェントと GNOME が競合するためです。  前述のように、XFCE や MATE などのグラフィカル デスクトップ環境を使用することをお勧めします。
 
 ### <a name="x2go-setup"></a>X2Go の設定
 X2Go を使用するには、講師が次のことを行う必要があります。
 - X2Go リモート デスクトップ サーバーをインストールします。
-- Linux グラフィカル デスクトップ環境 (MATE、XFCE など) をインストールします。
+- Linux グラフィカル デスクトップ環境 (XFCE、MATE など) をインストールします。
 
 X2Go では、SSH 用に既に有効になっているのと同じポートが使用されます。  そのため、VM で X2Go 用にポートを開くために、追加の構成を行う必要はありません。
 

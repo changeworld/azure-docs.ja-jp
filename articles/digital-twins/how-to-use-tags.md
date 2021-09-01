@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 「デジタル ツインにタグを実装する方法」を参照してください
 author: baanders
 ms.author: baanders
-ms.date: 8/19/2021
+ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8059178543bde38cbb1429f98f2f0205fb07c347
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 30e199b87f2cd6436f9d088bc8b2acd4ba8fdcaf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771177"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724442"
 ---
 # <a name="add-tags-to-digital-twins"></a>デジタル ツインにタグを追加する 
 

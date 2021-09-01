@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 792801c568255b471487c14b6a812942298ad0d4
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 925c468ff744df8b543618e4282ec9b6a9dda78a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906550"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723061"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -64,6 +64,8 @@ ms.locfileid: "107906550"
 
 別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](./deploy-local-git.md)ことができます。 スロットには、異なるリポジトリブランチ、または異なるリポジトリからデプロイできます。
 
+スロットの URL は、`http://sitename-slotname.azurewebsites.net` の形式になります。 URL の長さを必要な DNS の制限内に維持するため、サイト名は 40 文字で切り捨てられ、スロット名は 19 文字で切り捨てられ、結果のドメイン名が一意になるように、4 つのランダムな文字が追加されます。 
+
 <a name="AboutConfiguration"></a>
 
 ## <a name="what-happens-during-a-swap"></a>スワップ中の動作
@@ -94,6 +96,9 @@ ms.locfileid: "107906550"
 1. この時点でソース スロットには、スワップ以前にはターゲット スロットにあったアプリがあるため、すべての設定を適用してインスタンスを再起動することで、同じ操作を実行します。
 
 スワップ操作のどの時点でも、スワップされるアプリを初期化するすべての作業はソース スロットで発生しています。 ソース スロットが準備され、ウォームアップされている間、スワップがどこで成功するか失敗するかに関わらず、ターゲット スロットはオンライン状態に留まります。 ステージング スロットと運用スロットを入れ換える場合は常に、運用スロットがターゲット スロットであるようにします。 こうすることで、スワップ操作が運用アプリに影響を及ぼしません。
+
+> [!NOTE]
+> 以前の運用インスタンス (このスワップ操作の後でステージングにスワップされるもの) は、スワップ プロセスの最後のステップですぐにリサイクルされます。 アプリケーションに実行時間の長い操作がある場合は、ワーカーがリサイクルされるときに破棄されます。 これは関数アプリにも適用されます。 そのため、アプリケーションのコードはフォールト トレラントな方法で記述する必要があります。 
 
 ### <a name="which-settings-are-swapped"></a>スワップされる設定
 
@@ -173,7 +178,7 @@ ms.locfileid: "107906550"
 ## <a name="configure-auto-swap"></a>自動スワップを構成する
 
 > [!NOTE]
-> 自動スワップは、Linux 上の Web アプリではサポートされていません。
+> 自動スワップは、Linux および Web App for Containers の Web アプリではサポートされていません。
 
 自動スワップを使うと、アプリのユーザーにコールド スタートを課したりダウンタイムを生じさせたりすることなく、アプリを連続的にデプロイする効率的な Azure DevOps シナリオを実現できます。 あるスロットから運用環境への自動スワップが有効になっていると、コードの変更をそのスロットにプッシュするたびに、ソース スロットでウォームアップされた後、App Service によって自動的に、[アプリが運用環境にスワップ](#swap-operation-steps)されます。
 

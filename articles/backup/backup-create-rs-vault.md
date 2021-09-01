@@ -2,14 +2,14 @@
 title: Recovery Services コンテナーを作成して構成する
 description: この記事では、バックアップと復旧ポイントを格納する Recovery Services コンテナーを作成して構成する方法について説明します。 リージョンをまたがる復元を使用してセカンダリ リージョンで復元する方法について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 08/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: b301ce0ab2f4b57a03e3ba24d672bb4102a1a997
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: cbb1280b1ed78d82c312169f99a0d46f312fbd9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794224"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722690"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する
 
@@ -46,13 +46,13 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 
 これは次のデータソースをサポートしています。
 
-- Azure VM (一般提供)
-- Azure VM 上でホストされている SQL データベース (プレビュー)
-- Azure VM 上でホストされている SAP HANA データベース (プレビュー)
+- Azure VM
+- Azure VM 上にホストされている SQL データベース
+- Azure VM 上にホストされている SAP HANA データベース
 
 リージョンをまたがる復元を使用すると、次のことができます。
 
-- 監査またはコンプライアンスの必要がある場合にドリルを行う
+- 監査またはコンプライアンスの要件がある場合にドリルを実施する
 - プライマリ リージョンで障害が発生した場合にデータを復元する
 
 VM を復元する場合は、VM またはそのディスクを復元できます。 Azure VM 上にホストされている SQL/SAP HANA データベースから復元する場合は、データベースまたはそのファイルを復元できます。
@@ -65,8 +65,7 @@ VM を復元する場合は、VM またはそのディスクを復元できま�
 >作業を開始する前に、次のことを行います。
 >
 >- サポートされているマネージド型とリージョンの一覧については、[サポート マトリックス](backup-support-matrix.md#cross-region-restore)を参照してください。
->- Azure VM のリージョンをまたがる復元 (CRR) 機能は、現在、すべての Azure パブリック リージョンで一般提供されています。
->- SQL と SAP HANA データベースのリージョンをまたがる復元は、すべての Azure パブリック リージョンでプレビュー段階にあります。
+>- Azure VM のリージョンをまたがる復元 (CRR) 機能と SAP HANA データベースは、現在、Azure のパブリック リージョンとソブリン リージョンのすべてで一般提供されています。 利用可能なリージョンについては、[サポート マトリックス](backup-support-matrix.md#cross-region-restore)を参照してください。
 >- CRR は、任意の GRS コンテナーのためのコンテナー レベルのオプトイン機能です (既定ではオフになっています)。
 >- オプトイン後にセカンダリ リージョンでバックアップ項目が利用可能になるまでに、最大 48 時間かかることがあります。
 >- 現在、Azure VM の CRR は、Azure Resource Manager の Azure VM と暗号化された Azure VM でサポートされています。 クラシック Azure VM はサポートされません。 追加の管理の種類が CRR をサポートすると、それらは自動的に **登録** されます。
@@ -78,6 +77,9 @@ VM を復元する場合は、VM またはそのディスクを復元できま�
 GRS 冗長性を使用して作成されたコンテナーには、リージョンをまたがる復元機能を構成するためのオプションが含まれています。 すべての GRS コンテナーにはバナーがあり、それはドキュメントにリンクされます。 コンテナーの CRR を構成するには、[バックアップ構成] ウィンドウにアクセスします。ここには、この機能を有効にするオプションが含まれています。
 
  ![バックアップ構成のバナー](./media/backup-azure-arm-restore-vms/banner.png)
+
+>[!Note]
+>制限された、ペアになっているリージョンにアクセスしても、 **[バックアップ構成]** ブレードでリージョンをまたがる復元の設定を表示できない場合は、復旧サービス リソース プロバイダーを再登録します。 <br><br> プロバイダーを再登録するには、Azure portal のサブスクリプションに移動し、左側のナビゲーションバーで **[リソース プロバイダー]** に移動し、 **[Microsoft.RecoveryServices]** を選択し、 **[再登録]** を選択します。
 
 1. ポータルから、Recovery Services コンテナー > **[プロパティ]** ( **[設定]** の下) にアクセスします。
 1. **[バックアップ構成]** で **[更新]** を選択します。

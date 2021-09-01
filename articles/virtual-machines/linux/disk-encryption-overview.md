@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5b84526f6f3193fc47bc211fcdec71bb5e27390f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bc800d12dd26f8edc3fa2f8719104f5f0d793b6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077682"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737404"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -38,7 +38,7 @@ Azure Disk Encryption は、Virtual Machines と同じように、ゾーン回�
 
 Linux VM は、[さまざまなサイズ](../sizes.md)で利用できます。 Azure Disk Encryption は、第 1 世代と第 2 世代の VM でサポートされています。 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
-「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.md)」を参照してください。
+「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.yml)」を参照してください。
 
 また、Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) または次の最小メモリ要件を満たしていない仮想マシンでは利用できません。
 
@@ -63,6 +63,10 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 
 | Publisher | プラン | SKU | URN | 暗号化がサポートされているボリュームの種類 |
 | --- | --- |--- | --- |
+| Canonical | Ubuntu | 20.04-LTS | Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest | OS とデータ ディスク |
+| Canonical | Ubuntu | 20.04-DAILY-LTS | Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts:latest | OS とデータ ディスク |
+| Canonical | Ubuntu | 20.04-LTS Gen2 | Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest | OS とデータ ディスク |
+| Canonical | Ubuntu | 20.04-DAILY-LTS Gen2 |Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:latest | OS とデータ ディスク |
 | Canonical | Ubuntu | 18.04-LTS | Canonical:UbuntuServer:18.04-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 18.04 | 18.04-DAILY-LTS | Canonical:UbuntuServer:18.04-DAILY-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | OS とデータ ディスク |

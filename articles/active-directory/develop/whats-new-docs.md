@@ -5,22 +5,58 @@ description: Microsoft ID プラットフォームの新規および更新され
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 04/30/2021
+ms.date: 07/01/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 7fff1380697f1179207b470e803bf6994e32e1e2
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 37e382b9d547f911d2df47b1297cb967e1c12f12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782378"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725748"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure AD アプリケーションの登録に関するセキュリティのベスト プラクティス](security-best-practices-for-app-registration.md)
+- [アプリケーション開発者向けのロールベースのアクセス制御](custom-rbac-for-developers.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [JavaScript アプリを ADAL.js から MSAL.js に移行する方法](msal-compare-msal-js-and-adal-js.md)
+- [Node.js アプリを ADAL から MSAL に移行する方法](msal-node-migration.md)
+- [機密クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する](msal-net-migration-confidential-client.md)
+- [Microsoft ID プラットフォームでのアクセス許可と同意](v2-permissions-and-consent.md)
+- [保護された Web API: スコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)
+- [クイック スタート:Microsoft でのサインインを ASP.NET Core Web アプリに追加する](quickstart-v2-aspnet-core-webapp.md)
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [アプリケーションの最小特権アクセスに関するベスト プラクティス](secure-least-privileged-access.md)
+- [ADAL.NET アプリと MSAL.NET アプリの違い](msal-net-differences-adal-net.md)
+- [方法: テナントで ADAL を使用しているアプリの一覧を取得する](howto-get-list-of-all-active-directory-auth-library-apps.md)
+- [機密クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する方法](msal-net-migration-confidential-client.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)
+- [Web API を呼び出す Web アプリ: コード構成](scenario-web-app-call-api-app-configuration.md)
+- [テナントに存在する特定のアプリに対するトークンに組み込むクレームをカスタマイズする](active-directory-claims-mapping.md)
+- [Microsoft ID プラットフォームのコード サンプル](sample-v2-code.md)
+- [MSAL.NET または Microsoft Identity. Web へのアプリケーションの移行](msal-net-migration.md)
+- [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)
+- [認証の新機能](reference-breaking-changes.md)
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -43,53 +79,3 @@ Microsoft ID プラットフォームに関するドキュメントの新着情�
 - [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
 - [クイック スタート:Microsoft ID プラットフォームによって保護されている ASP.NET Web API を呼び出す](quickstart-v2-dotnet-native-aspnet.md)
 - [チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す](tutorial-v2-android.md)
-
-## <a name="april-2021"></a>2021 年 4 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [要求のマッピング ポリシーの種類](reference-claims-mapping-policy-type.md)
-- [Node.js アプリを ADAL から MSAL に移行する方法](msal-node-migration.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)](active-directory-configurable-token-lifetimes.md)
-- [トークンの有効期間ポリシーを構成する (プレビュー)](configure-token-lifetimes.md)
-- [Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)
-- [Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)
-- [クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する](quickstart-v2-nodejs-webapp-msal.md)
-- [クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する](quickstart-v2-angular.md)
-- [シングルページ アプリケーション：API を呼び出すトークンを取得する](scenario-spa-acquire-token.md)
-- [シングルページ アプリケーション：コード構成](scenario-spa-app-configuration.md)
-- [シングルページ アプリケーション：サインインとサインアウト](scenario-spa-sign-in.md)
-- [国内クラウド環境で MSAL を使用する](msal-national-cloud.md)
-- [Azure AD アプリケーションの同意エクスペリエンスについて](application-consent-experience.md)
-
-## <a name="march-2021"></a>2021 年 3 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [Microsoft ID プラットフォームで最近削除されたアプリケーションを復元または削除する](./howto-restore-app.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [Microsoft ID プラットフォームの管理者の同意](v2-admin-consent.md)
-- [MSAL.NET を使用した Xamarin Android の構成要件とトラブルシューティングのヒント](msal-net-xamarin-android-considerations.md)
-- [Web API を呼び出すデーモン アプリ - トークンを取得する](scenario-daemon-acquire-token.md)
-- [Web API を呼び出すデーモン アプリ - コードの構成](scenario-daemon-app-configuration.md)
-- [Web API を呼び出すデーモン アプリ - アプリからの Web API 呼び出し](scenario-daemon-call-api.md)
-- [Web API を呼び出すデーモン アプリ - 運用環境への移行](scenario-daemon-production.md)
-- [Web API を呼び出すデスクトップ アプリ:トークンを取得する](scenario-desktop-acquire-token.md)
-- [Web API を呼び出すデスクトップ アプリ:コード構成](scenario-desktop-app-configuration.md)
-- [Web API を呼び出すデスクトップ アプリ:Web API を呼び出す](scenario-desktop-call-api.md)
-- [方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)](active-directory-claims-mapping.md)
-- [Python 用の MSAL でのログ記録](msal-logging-python.md)
-- [Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)](apple-sso-plugin.md)
-- [クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する](quickstart-v2-aspnet-webapp.md)
-- [クイック スタート:Microsoft でのサインインを ASP.NET Core Web アプリに追加する](quickstart-v2-aspnet-core-webapp.md)
-- [クイックスタート: コンソール アプリの ID を使用してトークンを取得し、Microsoft Graph API を呼び出す](quickstart-v2-netcore-daemon.md)
-- [クイックスタート:Microsoft ID プラットフォームを使用して ASP.NET Core Web API を保護する](quickstart-v2-aspnet-core-web-api.md)
-- [クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する](quickstart-v2-angular.md)
-- [開発者向けのサポート オプションとヘルプ オプション](developer-support-help-options.md)
-- [ユーザーをサインインさせる Web アプリ:コード構成](scenario-web-app-sign-user-app-configuration.md)
-- [ユーザーをサインインさせる Web アプリ:サインインとサインアウト](scenario-web-app-sign-user-sign-in.md)

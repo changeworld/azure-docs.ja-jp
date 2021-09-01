@@ -3,23 +3,19 @@ title: 接続時に仮想マシンを起動 - Azure
 description: 接続時に仮想マシンを起動機能を構成する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 05/21/2021
+ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7e4ca9a6cfc87844bf74131b145c19aecd964554
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 301a2b0626b6dd40f90a8b693e3284c12d948fa1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752137"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728460"
 ---
-# <a name="start-virtual-machine-on-connect-preview"></a>接続時に仮想マシンを起動 (プレビュー)
+# <a name="start-virtual-machine-on-connect"></a>接続時に仮想マシンを起動
 
-> [!IMPORTANT]
-> 現在、接続時に仮想マシンを起動機能はパブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-接続時に仮想マシン (VM) を起動 (プレビュー) 機能を使用すると、エンド ユーザーは必要時にのみ VM をオンにできるため、コストの節約になります。 必要でないときは VM をオフにすることができます。
+[接続時に仮想マシン (VM) を起動] の機能を使用すると、エンド ユーザーは必要時にのみ VM をオンにできるため、コストの節約になります。 必要でないときは VM をオフにすることができます。
 
 >[!NOTE]
 >Azure Virtual Desktop (クラシック) では、この機能はサポートされていません。
@@ -30,12 +26,13 @@ PowerShell と Azure portal を使用して、個人用またはプールされ�
 
 次のリモート デスクトップ クライアントでは、接続時に仮想マシンを起動機能がサポートされています。
 
-- [Web クライアント](connect-web.md)
-- [Windows クライアント (バージョン1.2748 以降)](connect-windows-7-10.md)
-- [Android クライアント (バージョン 10.0.10 以降)](connect-android.md)
-- [macOS クライアント (バージョン 10.6.4 以降)](connect-macos.md)
-
-更新プログラムとクライアント サポートに関するお知らせについては、[Tech Community フォーラム](https://aka.ms/wvdtc)のページをご覧ください。
+- [Web クライアント](./user-documentation/connect-web.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Windows クライアント (バージョン 1.2.2061 以降)](./user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Android クライアント (バージョン 10.0.10 以降)](./user-documentation/connect-android.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [macOS クライアント (バージョン 10.6.4 以降)](./user-documentation/connect-macos.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [iOS クライアント (バージョン 10.2.5 以降)](./user-documentation/connect-ios.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Microsoft Store クライアント (バージョン 10.2.2005.0 以降)](./user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- 「[シン クライアントのサポート](./user-documentation/linux-overview.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)」に記載されている シン クライアント
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>接続時に仮想マシンを起動用のカスタム ロールを作成する
 
@@ -69,7 +66,7 @@ Azure portal を使用して、接続時に仮想マシンを起動のカスタ�
 
 2. 先ほど作成したロールを選択します。
 
-3. 検索バーに「**Azure Virtual Desktop**」と入力して選択します。
+3. 検索バーに「**Windows Virtual Desktop**」と入力して選択します (これは間もなく「Azure Virtual Desktop」に更新される予定です)。
 
       >[!NOTE]
       >Azure Virtual Desktop (クラシック) をデプロイしている場合は、2 つのアプリが表示されることがあります。 表示される両方のアプリにロールを割り当てます。
@@ -79,30 +76,33 @@ Azure portal を使用して、接続時に仮想マシンを起動のカスタ�
 
 ### <a name="create-a-custom-role-with-a-json-file-template"></a>JSON ファイル テンプレートを使用してカスタム ロールを作成する
 
-JSON ファイルを使用してカスタム ロールを作成する場合、使用できる基本的なテンプレートを次の例で示します。 サブスクリプション ID の値は、ロールを割り当てるサブスクリプション ID に置き換えてください。
+JSON ファイルを使用してカスタム ロールを作成する場合、使用できる基本的なテンプレートを次の例で示します。 *AssignableScopes* のサブスクリプション ID の値を、ロールを割り当てるサブスクリプション ID に置き換えてください。
 
 ```json
 {
-    "properties": {
-        "roleName": "start VM on connect",
-        "description": "Friendly description.",
-        "assignableScopes": [
-            "/subscriptions/<SubscriptionID>"
-        ],
-        "permissions": [
-            {
-                "actions": [
-                    "Microsoft.Compute/virtualMachines/start/action",
-                    "Microsoft.Compute/virtualMachines/read"
-                ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
-            }
-        ]
-    }
+  "Name": "Start VM on connect (Custom)",
+  "IsCustom": true,
+  "Description": "Start VM on connect with AVD (Custom)",
+  "Actions": [
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/read"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/00000000-0000-0000-0000-000000000000"
+  ]
 }
 ```
+
+JSON テンプレートを使用するには、JSON ファイルを保存し、関連するサブスクリプション情報を *[割り当て可能なスコープ]* に追加してから、PowerShell で次のコマンドレットを実行します。
+
+```powershell
+New-AzRoleDefinition -InputFile "C:\temp\filename"
+```
+
+カスタム ロールの作成の詳細については、「[Azure PowerShell を使用して Azure カスタム ロールを作成または更新する](../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template)」を参照してください。
 
 ## <a name="configure-the-start-vm-on-connect-feature"></a>接続時に仮想マシンを起動機能を構成する
 

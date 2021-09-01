@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 8b10e281c20703f563fb2e0d3929ee936b094f26
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: f0edc024a8266704f3a45a48f50adb32b2616d95
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753455"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321778"
 ---
 # <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>ポータルを使用して VM とスケール セットを専用ホストにデプロイします
 
@@ -122,6 +122,6 @@ VM がデプロイされるまでに数分かかります。
 
 - 詳細については、[専用ホスト](dedicated-hosts.md)の概要に関するページを参照してください。
 
-- [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。
+- リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用する、[Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)で使用できるサンプル テンプレートがあります。
 
 - [Azure CLI](./linux/dedicated-hosts-cli.md) または [PowerShell](./windows/dedicated-hosts-powershell.md) を使用して専用ホストをデプロイすることもできます。

@@ -4,16 +4,17 @@ description: コンテナーごとの BLOB の数と合計サイズを計算す�
 services: storage
 author: normesta
 ms.author: normesta
-ms.date: 03/10/2021
+ms.date: 08/16/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 8365c4873165b5a8040bc3def5743eca435cb7e9
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ffdb6dd0d998cfe12b50dab85f49f06e30903d6f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653939"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122270952"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Azure Storage インベントリを使用してコンテナーあたりの BLOB の数と合計サイズを計算する
 
@@ -21,25 +22,11 @@ ms.locfileid: "110653939"
 
 この方法には、BLOB メタデータは含まれていません。 Azure Blob Storage インベントリ機能では、[List Blobs](/rest/api/storageservices/list-blobs) REST API と既定のパラメーターが使用されます。 そのため、この例はスナップショットや '$' コンテナーなどに対応していません。
 
-> [!IMPORTANT]
-> BLOB インベントリは現在、**プレビュー** の段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
 ## <a name="enable-inventory-reports"></a>インベントリ レポートを有効にする
 
-この方法の最初の手順は、ストレージ アカウントで[インベントリ レポートを有効にする](blob-inventory.md#enable-inventory-reports)ことです。 インベントリ レポートを有効にしてから、最初のレポートを生成するには、最大で 24 時間待機することが必要な場合があります。
+この方法の最初の手順は、ストレージ アカウントで[インベントリ レポートを有効にする](blob-inventory.md#enabling-inventory-reports)ことです。 インベントリ レポートを有効にしてから、最初のレポートを生成するには、最大で 24 時間待機することが必要な場合があります。
 
-分析するインベントリ レポートがある場合は、レポート CSV ファイルが置かれているコンテナーに対する BLOB 読み取りアクセス権を自分自身に付与します。
-
-1. インベントリ CSV レポート ファイルが格納されているコンテナーに移動します。
-1. **[アクセス制御 (IAM)]** 、 **[ロールの割り当ての追加]** の順に選択します。
-
-    :::image type="content" source="media/calculate-blob-count-size/access.png" alt-text="[ロールの割り当ての追加] を選択する":::
-
-1. **[ロール]** ドロップダウン リストから **[ストレージ BLOB データ閲覧者]** を選択します。
-
-    :::image type="content" source="media/calculate-blob-count-size/add-role-assignment.png" alt-text="ドロップダウンから [ストレージ BLOB データ閲覧者] ロールを追加する":::
-
-1. レポートを実行するのに使用しているアカウントの電子メール アドレスを **[選択]** フィールドに入力します。
+分析するインベントリ レポートがあるときは、自分に **ストレージ BLOB データ閲覧者** ロールを付与してレポート CSV ファイルが置かれているコンテナーに対する読み取りアクセス権を自分自身に付与します。 必ずレポートを実行するために使用しているアカウントの電子メール アドレスを使用してください。 Azure ロールベースのアクセス制御 (Azure RBAC) を持つユーザーに Azure ロールを割り当てる方法については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」の手順に従ってください。
 
 ## <a name="create-an-azure-synapse-workspace"></a>Azure Synapse ワークスペースを作成する
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/06/2021
+ms.date: 07/30/2021
 ms.author: rolyon
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 66efe0015e0ca85ac793100ee6d8d0944e3614c1
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 49ca89112f011f8f1c6d411ab187697b29523eeb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690867"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728687"
 ---
 # <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
@@ -29,10 +29,6 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 
 ポータルですべてのロールを一覧表示するには、次の手順に従います。
 
-**[ロール]** タブは、最近いくつかの追加機能によって更新されました。 以前のエクスペリエンスを表示する必要がある場合は、 **[ロール (クラシック)]** タブを表示してください。いずれかのロール タブを使用してロールを操作できます。ただし、カスタム ロールを作成または削除する場合は、最新の変更内容を表示するためにページを手動で更新する必要がある場合があります。
-
-#### <a name="roles"></a>[ロール](#tab/roles/)
-
 1. Azure portal で、 **[すべてのサービス]** をクリックしてから任意のスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
 
 1. 特定のリソースをクリックします。
@@ -43,6 +39,9 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 
    ![新しいエクスペリエンスを使用したロールの一覧を示すスクリーンショット。](./media/shared/roles-list.png)
 
+    > [!TIP]
+    > 以前のロール リスト エクスペリエンスを表示するには、 **[クラシック エクスペリエンスを使用する]** をクリックします。
+  
 1. 特定のロールのアクセス許可を表示するには、 **[詳細]** 列の **[表示]** リンクをクリックします。
 
     アクセス許可ウィンドウが表示されます。
@@ -50,22 +49,6 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 1. **[アクセス許可]** タブをクリックして、選択したロールのアクセス許可を表示および検索します。
 
    ![新しいエクスペリエンスを使用したロールのアクセス許可を示すスクリーンショット。](./media/role-definitions-list/role-permissions.png)
-
-#### <a name="roles-classic"></a>[ロール (クラシック)](#tab/roles-classic/)
-
-1. Azure portal で、 **[すべてのサービス]** をクリックしてから任意のスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
-
-1. 特定のリソースをクリックします。
-
-1. **[アクセス制御 (IAM)]** をクリックします。
-
-1. **[ロール (クラシック)]** タブをクリックして、すべての組み込みおよびカスタムのロールの一覧を表示します。
-
-   現在のスコープの各ロールに割り当てられているユーザーとグループの数を確認できます。
-
-   ![ロールの一覧表示](./media/role-definitions-list/roles-list-classic.png)
-
----
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

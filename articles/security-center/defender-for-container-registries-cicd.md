@@ -7,12 +7,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6cfa74ea6b92597734158cb2de0bad24b0336b16
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: eb7309f067c350eac0d9455767b137377caf588b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890548"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736308"
 ---
 # <a name="identify-vulnerable-container-images-in-your-cicd-workflows"></a>CI/CD ワークフロー内の脆弱なコンテナー イメージを特定する
 
@@ -33,7 +33,7 @@ CI/CD スキャンの結果は、Qualys による既存のレジストリ スキ
 |----|:----|
 |リリース状態:| **この CI/CD 統合はプレビュー段階です。**<br>非運用ワークフローでのみ試されることをお勧めします。<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 |価格:|**コンテナー レジストリ用 Azure Defender** は、[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)に表示されている通りに課金されます。|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: ナショナル/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 ## <a name="prerequisites"></a>前提条件
@@ -56,7 +56,7 @@ GitHub ワークフローでイメージの脆弱性スキャンを有効にす�
 1. 表示されたペインで、ワークフローから CI/CD スキャンの結果をプッシュする Application Insights アカウントを選択します。
 1. 認証トークンと接続文字列を GitHub ワークフローにコピーします。
 
-    :::image type="content" source="./media/defender-for-container-registries-cicd/enable-cicd-integration.png" alt-text="GitHub ワークフローでコンテナー イメージの脆弱性スキャンの CI/CD 統合を有効にする" lightbox="./media/defender-for-container-registries-cicd/enable-cicd-integration.png":::
+    :::image type="content" source="./media/defender-for-container-registries-cicd/enable-cicd-integration.png" alt-text="GitHub ワークフローでコンテナー イメージの脆弱性スキャンに対して CI/CD 統合を有効にします。" lightbox="./media/defender-for-container-registries-cicd/enable-cicd-integration.png":::
 
     > [!IMPORTANT]
     > 認証トークンと接続文字列は、取り込まれたセキュリティ テレメトリをサブスクリプション内のリソースと関連付けるために使用されます。 これらのパラメーターに無効な値を使用すると、テレメトリがドロップされます。
@@ -101,7 +101,7 @@ GitHub ワークフローでイメージの脆弱性スキャンを有効にす�
 
 1. 結果を表示するために、 **[推奨事項]** ページへ移動します。 問題が見つかった場合は、**Azure Container Registry イメージの脆弱性を修復する必要があります** という推奨事項が表示されます。
 
-    ![問題を修復するための推奨事項 ](media/monitor-container-security/acr-finding.png)
+    ![問題を修復するための推奨事項。](media/monitor-container-security/acr-finding.png)
 
 1. 推奨事項を選択します。 
 
@@ -109,27 +109,27 @@ GitHub ワークフローでイメージの脆弱性スキャンを有効にす�
 
 1. **影響を受けるリソース** の一覧を開き、異常なレジストリを選択して、その中の脆弱性のあるイメージを含むリポジトリを表示します。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/select-registry.png" alt-text="異常なレジストリを選択する":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/select-registry.png" alt-text="異常なレジストリを選択します。":::
 
     影響を受けるリポジトリの一覧を示したレジストリの詳細ページが開きます。
 
 1. 特定のリポジトリを選択して、その中の脆弱性のあるイメージを含むリポジトリを確認します。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/select-repository.png" alt-text="異常なリポジトリを選択する":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/select-repository.png" alt-text="異常なリポジトリを選択します。":::
 
     リポジトリの詳細ページが開きます。 脆弱性のあるイメージが、結果の重大度の評価と共に一覧表示されます。
 
 1. 脆弱性を表示するには、特定のイメージを選択します。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/select-image.png" alt-text="異常なイメージを選択する":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/select-image.png" alt-text="異常なイメージを選択します。":::
 
     選択されたイメージに対応する結果の一覧が開きます。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/cicd-scan-results.png" alt-text="イメージ スキャンの結果":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/cicd-scan-results.png" alt-text="イメージ スキャンの結果。":::
 
 1. どの GitHub ワークフローがこれらの脆弱性のあるイメージをプッシュしているかについて詳しく知るには、情報バブルを選択します。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/cicd-findings.png" alt-text="特定の GitHub ブランチとコミットに関する CI/CD の結果":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/cicd-findings.png" alt-text="特定の GitHub ブランチとコミットに関する CI/CD の結果。":::
 
 
 

@@ -9,23 +9,23 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
-ms.custom: fasttrack-edit
-ms.openlocfilehash: e84f0d45666e158805a9290d2e446672a6867fb2
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 2d0d0f70f5a610e77169685a716282bcc0456cab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030847"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729824"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>ポータルまたは Python SDK を使用して Azure Machine Learning ワークスペースを管理する
 
-この記事では、Azure portal または [Python 用 SDK](/python/api/overview/azure/ml/) を使用して、[Azure Machine Learning](overview-what-is-azure-ml.md) 用の [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、削除します
+この記事では、Azure portal または [Python 用 SDK](/python/api/overview/azure/ml/) を使用して、[Azure Machine Learning](overview-what-is-azure-machine-learning.md) 用の [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、削除します
 
 ニーズに変化が生じたり自動化の要件が増えたりしたときに、[CLI](reference-azure-machine-learning-cli.md) または [VS Code 拡張機能](how-to-setup-vs-code.md)を使用して、ワークスペースを管理することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 * Python SDK を使用する場合は、[その SDK をインストール](/python/api/overview/azure/ml/install)します。
 
 ## <a name="limitations"></a>制限事項
@@ -396,3 +396,5 @@ Azure Machine Learning ワークスペースでは、一部の操作に対して
 ## <a name="next-steps"></a>次のステップ
 
 ワークスペースを作成したら、[モデルをトレーニングしてデプロイする](tutorial-train-models-with-aml.md)方法を確認します。
+
+組織の要件に合わせてワークスペースを計画する方法の詳細については、[Azure Machine Learning の整理とセットアップ](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-resource-organization)に関するページを参照してください。

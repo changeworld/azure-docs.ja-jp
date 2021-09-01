@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a122c5dc10600b612c20d3a742f3500944562357
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e4eac73f756268af21cbb97c8c5c2bf53c2322bc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733689"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -54,9 +54,9 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 |   | マネージド<sup>4</sup> | 最新の Windows とダウンレベルの Windows | 永続的 | はい |
 |   |   | 最新の Windows | 非永続的 | いいえ |
 |   |   | ダウンレベルの Windows | 非永続的 | はい<sup>6</sup> |
-| Azure AD 参加済み | フェデレーション | 最新の Windows | 永続的 | いいえ |
+| Azure AD 参加済み | フェデレーション | 最新の Windows | 永続的 | 制限付き<sup>7</sup> |
 |   |   |   | 非永続的 | いいえ |
-|   | マネージド | 最新の Windows | 永続的 | いいえ |
+|   | マネージド | 最新の Windows | 永続的 | 制限付き<sup>7</sup> |
 |   |   |   | 非永続的 | いいえ |
 | Azure AD 登録済み | フェデレーション/マネージド | 最新の Windows/ダウンレベルの Windows | 永続的/非永続的 | 適用外 |
 
@@ -71,6 +71,7 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 
 <sup>6</sup> **ダウンレベルの Windows で非永続的機能をサポートする** には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。
 
+<sup>7</sup> **Azure AD 参加のサポート** は、Azure Virtual Desktop および Windows 365 でのみ利用できます。
 
 ## <a name="microsofts-guidance"></a>Microsoft のガイダンス
 
@@ -96,7 +97,7 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
    - 最新の Windows とダウンロードレベルの Windows への非永続的 VDI のデプロイでは、**ApproximateLastLogonTimestamp** が 15 日より古いデバイスを削除する必要があります。
 
 > [!NOTE]
-> 非永続的な VDI を使用する場合、デバイスの参加状態を回避するには、次のレジストリ キーが設定されていることを確認します。  
+> 非永続的 VDI を使用する場合、職場または学校アカウントの追加を回避するには、次のレジストリ キーが設定されていることを確認します。  
 > `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
 >
 > Windows 10 バージョン 1803 以降を実行していることを確認します。  
@@ -109,7 +110,9 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 > * `%localappdata%\Microsoft\TokenBroker`
 > * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
 > * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WorkplaceJoin`
 >
+> 職場アカウントのデバイス証明書のローミングはサポートされていません。 "MS 組織アクセス" によって発行された証明書は、現在のユーザーとローカル マシンの個人用 (MY) 証明書ストアに格納されます。
 
 
 ### <a name="persistent-vdi"></a>永続的 VDI

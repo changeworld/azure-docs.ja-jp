@@ -7,18 +7,18 @@ ms.date: 01/18/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0868720668f5db09748e6976327f1500bc8a4781
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8d85f5f18ad21b5a27a7fdb48e9ee14ab751f5d5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733357"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113757895"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>V2 の IoT Central アプリケーションを V3 に移行する
 
 現在、新しい IoT Central アプリケーションを作成すると、V3 アプリケーションになります。 アプリケーションを以前に作成した場合、作成した時期によっては V2 である場合があります。 この記事では、V2 を V3 アプリケーションに移行して、最新の IoT Central 機能を使用できるようにする方法について説明します。
 
-IoT Central アプリケーションのバージョンを特定する方法については、「[アプリケーションに関する情報](howto-get-app-info.md)」を参照してください。
+IoT Central アプリケーションのバージョンを特定する方法については、「[アプリケーションに関する情報はどのような方法で取得できますか?](howto-faq.yml#how-do-i-get-information-about-my-application-)」を参照してください。
 
 V2 から V3 にアプリケーションを移行する手順を次に示します。
 
@@ -72,7 +72,7 @@ IoT Central は、既存の V3 アプリケーションへの移行をサポー�
 
 推奨される構成手順を次に示すので考慮してください。
 
-- [ダッシュボードを構成する](howto-add-tiles-to-your-dashboard.md)
+- [ダッシュボードを構成する](howto-manage-dashboards.md)
 - [データのエクスポートを構成する](howto-export-data.md)
 - [規則とアクションを構成する](quick-configure-rules.md)
 - [アプリケーションの UI をカスタマイズする](howto-customize-ui.md)

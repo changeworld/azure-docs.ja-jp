@@ -2,7 +2,6 @@
 title: ダウンストリーム IoT Edge デバイスを接続する - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge ゲートウェイ デバイスに接続するように IoT Edge デバイスを構成する方法。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: cdc7ce9fbb24dc593ebd4dedc7c2c4ce82afa3f0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2fbb03ae08d1146b51a4a73f1b2260443c1609d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094823"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722124"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -148,7 +147,11 @@ IoT Edge は自分のデバイスに既にインストールされている必�
    ```
 
    >[!TIP]
-   >構成ファイルがデバイスにまだ存在しない場合は、`/etc/aziot/config.toml.edge.template` をテンプレートとして使用して作成します。
+   >デバイスにまだ構成ファイルが存在しない場合は、次のコマンドを使用し、テンプレート ファイルに基づいて作成します。
+   >
+   >```bash
+   >sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   >```
 
 1. 構成ファイルで **ホスト名** セクションを見つけます。 `hostname` パラメーターが含まれる行をコメント解除し、IoT Edge デバイスの完全修飾ドメイン名 (FQDN) または IP アドレスになるように、値を更新します。
 
@@ -385,7 +388,7 @@ API プロキシ モジュールは、ほとんどの一般的なゲートウェ
                        "edgeAgent": {
                            "settings": {
                                "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
-                               "createOptions": ""
+                               "createOptions": "{}"
                            },
                            "type": "docker"
                        },

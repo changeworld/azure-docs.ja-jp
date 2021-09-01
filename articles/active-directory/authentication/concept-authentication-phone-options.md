@@ -5,23 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 06/30/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb1504e406e5edb25cea01fa2add5751257802e8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b1bb9c2ad21469ad6b658795f29361760d4bcf13
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744451"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737352"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory の認証方法 - 電話オプション
 
 テキスト メッセージを使用した直接認証では、[ユーザーが SMS ベースの認証を構成して有効にする](howto-authentication-sms-signin.md)ことができます。 SMS ベースのサインインは、第一線で働くユーザーに最適です。 SMS ベースのサインインでは、ユーザーはアプリケーションやサービスにアクセスするためのユーザー名とパスワードを知る必要がありません。 代わりに、登録済みの携帯電話番号を入力し、確認コードを含むテキスト メッセージを受信して、サインイン インターフェイスに入力します。
 
-また、ユーザーは、Azure AD Multi-Factor Authentication またはセルフサービス パスワード リセット (SSPR) で使用される認証のセカンダリ形式として、携帯電話または会社の電話を使用して自身を確認することもできます。
+また、ユーザーは、Azure AD Multi-Factor Authentication またはセルフサービス パスワード リセット (SSPR) で使用される認証のセカンダリ形式として、携帯電話または会社の電話を使用して自身を確認することもできます。 
+
+> [!NOTE]
+> 試用版サブスクリプションを使用した Azure AD テナントでは、音声通話の確認は使用できません。  たとえば、試用版 EMS ライセンスにサインアップした場合、音声通話の確認機能が提供されません。
 
 正常に動作させるには、電話番号の形式が " *+<国コード> <電話番号>* " (例: *+1 4251234567*) になっている必要があります。
 
@@ -50,7 +53,7 @@ SSPR または Azure AD Multi-Factor Authentication で音声通話の確認を�
 
 ## <a name="office-phone-verification"></a>会社電話の確認
 
-SSPR または Azure AD Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に自動音声通話が発信されます。 サインイン プロセスを完了するには、ユーザーはテンキーで # を入力するように求められます。
+SSPR または Azure AD Multi-Factor Authentication で音声通話の確認を使用すると、ユーザーが登録した電話番号に自動音声通話が発信されます。 サインイン プロセスを完了するには、ユーザーはテンキーで # を入力するように求められます。 
 
 ## <a name="troubleshooting-phone-options"></a>電話オプションのトラブルシューティング
 

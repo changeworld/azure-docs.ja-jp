@@ -1,22 +1,22 @@
 ---
-title: BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)
+title: BLOB インデックス タグを使用して Azure BLOB データを管理および検索する
 description: BLOB インデックス タグを使用して、BLOB オブジェクトの分類、管理、およびクエリを実行する方法について説明します。
 author: normesta
 ms.author: normesta
-ms.date: 05/17/2021
+ms.date: 06/14/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: bd1738c0a5d63ad9eacaa1500a6ce10268a93b04
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c4ff918be67d74d536159ebbd3e707c1d7e68e8b
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664881"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730750"
 ---
-# <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)
+# <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する
 
 データセットのサイズが大きくなるほど、大量のデータから特定のオブジェクトを見つけるのが難しくなることがあります。 BLOB インデックス タグを使用すると、キー値インデックス タグ属性を使用して、データ管理機能と探索機能が提供されます。 ストレージ アカウントの 1 つのコンテナー内またはすべてのコンテナー内のオブジェクトを分類および検索できます。 データ要件が変化したら、インデックス タグを更新することによってオブジェクトを動的に分類できます。 現在のコンテナーの編成に合わせてオブジェクトを保持できます。
 
@@ -28,9 +28,6 @@ BLOB インデックス タグを使用すると、次のことができます�
 - [BLOB ライフサイクル管理](storage-lifecycle-management-concepts.md)などの機能の高度な制御に、インデックス タグを使用する
 
 ストレージ アカウントに何百万もの BLOB があり、多数の異なるアプリケーションによってアクセスされるシナリオについて考えてみましょう。 1 つのプロジェクトからすべての関連データを検索する必要があります。 データは異なる名前付け規則を使用して複数のコンテナーに分散されている可能性があるので、スコープ内に何があるか確実にはわかりません。 ただし、アプリケーションを使用すると、すべてのデータにプロジェクトに基づくタグが付けられてアップロードされます。 何百万もの BLOB を検索して名前とプロパティを比較するのではなく、`Project = Contoso` を検出条件として使用できます。 BLOB インデックスにより、ストレージ アカウント全体のすべてのコンテナーがフィルター処理され、`Project = Contoso` から 50 個の BLOB のセットだけがすばやく検出されて返されます。
-
-> [!IMPORTANT]
-> BLOB インデックス タグは、現在 **プレビュー** 段階であり、すべてのパブリック リージョンで利用できます。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 BLOB インデックスの使用方法の例については、[BLOB インデックス タグを使用したデータの管理と検索](storage-blob-index-how-to.md)に関する記事を参照してください。
 
@@ -222,7 +219,7 @@ BLOB インデックス一致をライフサイクル ルールのスタンド�
 
 次のいずれかの方法を使用して、BLOB インデックス タグへのアクセスを承認できます。
 
-- Azure Active Directory (Azure AD) セキュリティ プリンシパルへのアクセス許可を付与するための、Azure のロールベースのアクセス制御 (Azure RBAC) の使用。 優れたセキュリティと使いやすさのためには、Azure AD を使用します。 BLOB 操作での Azure AD の使用に関する詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../common/storage-auth-aad.md)」を参照してください。
+- Azure Active Directory (Azure AD) セキュリティ プリンシパルへのアクセス許可を付与するための、Azure のロールベースのアクセス制御 (Azure RBAC) の使用。 優れたセキュリティと使いやすさのためには、Azure AD を使用します。 BLOB 操作での Azure AD の使用に関する詳細については、「[Azure Storage 内のデータへのアクセスを承認する](../common/authorize-data-access.md)」を参照してください。
 - BLOB インデックスへのアクセスを委任するための、Shared Access Signature (SAS) の使用。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。
 - 共有キーを使用した操作を承認するための、アカウント アクセス キーの使用。 詳細については、[共有キーによる承認](/rest/api/storageservices/authorize-with-shared-key)に関するページを参照してください。
 
@@ -230,7 +227,7 @@ BLOB インデックス タグは、BLOB データに対するサブリソース
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-[Azure AD ID](../common/storage-auth-aad.md) を使用する呼び出し元には、BLOB インデックス タグを操作するための次のアクセス許可が付与される場合があります。
+[Azure AD ID](../common/authorize-data-access.md) を使用する呼び出し元には、BLOB インデックス タグを操作するための次のアクセス許可が付与される場合があります。
 
 | BLOB インデックス タグの操作                                          | Azure RBAC アクション                                                             |
 |--------------------------------------------------------------------|-------------------------------------------------------------------------------|
@@ -282,7 +279,7 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 
 ## <a name="pricing"></a>価格
 
-BLOB インデックスの価格はパブリック プレビュー段階であり、一般提供については変更される可能性があります。 ストレージ アカウント内のインデックス タグの月単位の平均数に対して課金されます。 インデックス作成エンジンには料金はかかりません。 BLOB タグの設定、BLOB タグの取得、および BLOB タグの検索の要求は、現在のそれぞれのトランザクション レートで課金されます。 タグによる BLOB の検索トランザクションを実行するときに試用されるリスト トランザクションの数は、要求に含まれる句の数と同じであることに注意してください。 たとえば、クエリ (StoreID = 100) は 1 つのリスト トランザクションです。  クエリ (StoreID = 100 AND SKU = 10010) は 2 つのリスト トランザクションです。 詳しくは、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
+ストレージ アカウント内のインデックス タグの月単位の平均数に対して課金されます。 インデックス作成エンジンには料金はかかりません。 BLOB タグの設定、BLOB タグの取得、および BLOB タグの検索の要求は、現在のそれぞれのトランザクション レートで課金されます。 タグによる BLOB の検索トランザクションを実行するときに試用されるリスト トランザクションの数は、要求に含まれる句の数と同じであることに注意してください。 たとえば、クエリ (StoreID = 100) は 1 つのリスト トランザクションです。  クエリ (StoreID = 100 AND SKU = 10010) は 2 つのリスト トランザクションです。 詳しくは、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
 ## <a name="regional-availability-and-storage-account-support"></a>リージョンの可用性とストレージ アカウントのサポート
 
@@ -295,42 +292,20 @@ BLOB インデックス タグは現在すべてのパブリック リージョ�
 使い始めるには、[BLOB インデックス タグを使用したデータの管理と検索](storage-blob-index-how-to.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> ストレージ アカウントで BLOB インデックス プレビューを使用する前に、サブスクリプションを登録する必要があります。 この記事の「[条件と既知の問題](#conditions-and-known-issues)」セクションを参照してください。
-
-### <a name="register-your-subscription-preview"></a>サブスクリプションを登録する (プレビュー)
-
-BLOB インデックス タグはパブリックプ プレビュー段階だけであるため、この機能を使用する前にサブスクリプションを登録する必要があります。 要求を送信するには、次の PowerShell または CLI コマンドを実行します。
-
-#### <a name="register-by-using-powershell"></a>PowerShell を使用して登録する
-
-```powershell
-Register-AzProviderFeature -FeatureName BlobIndex -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-#### <a name="register-by-using-azure-cli"></a>Azure CLI を使用して登録する
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name BlobIndex
-az provider register --namespace 'Microsoft.Storage'
-```
+> ストレージ アカウントで BLOB インデックスを使用する前に、サブスクリプションを登録する必要があります。 この記事の「[条件と既知の問題](#conditions-and-known-issues)」セクションを参照してください。
 
 ## <a name="conditions-and-known-issues"></a>条件と既知の問題
 
-このセクションでは、BLOB インデックス タグのパブリック プレビューにおける既知の問題と条件について説明します。 動作が変更される可能性があるため、この機能は一般提供 (GA) になるまで運用ワークロードに使用しないでください。
+このセクションでは、既知の問題と条件について説明します。
 
-- プレビューのためには、プレビュー リージョンでストレージ アカウントの BLOB インデックスを使用にする前に、まずサブスクリプションを登録する必要があります。
-- プレビューでは、汎用 v2 アカウントのみがサポートされています。 Premium ブロック BLOB、レガシ BLOB、および階層型名前空間が有効になっているアカウントはサポートされていません。 汎用 v1 アカウントはサポートされません。
+- 汎用 v2 アカウントのみがサポートされています。 Premium ブロック BLOB、レガシ BLOB、および階層型名前空間が有効になっているアカウントはサポートされていません。 汎用 v1 アカウントはサポートされません。
 - インデックス タグがあるページ BLOB をアップロードしても、タグは保持されません。 ページ BLOB をアップロードした後で、タグを設定してください。
 - フィルター処理が単一のコンテナーにスコープされている場合、フィルター式のすべてのインデックス タグが等値チェック (キー = 値) である場合にのみ `@container` を渡すことができます。
 - `AND` 条件で範囲演算子を使用する場合は、同じインデックス タグ キー名のみを指定できます (`"Age" > '013' AND "Age" < '100'`)。
-- バージョン管理と BLOB インデックスはサポートされていません。 BLOB インデックス タグはバージョンに対して保持されますが、BLOB インデックス エンジンには渡されません。
+- バージョン管理が有効になっている場合でも、現在のバージョンでインデックス タグを使用できます。 以前のバージョンでは、インデックス タグはバージョンに対して保持されますが、BLOB インデックス エンジンには渡されません。 インデックス タグのクエリを実行して以前のバージョンを取得することはできません。
 - インデックス タグにインデックスが付けられているかどうかを判断する API はありません。
-- アカウントのフェールオーバーはサポートされていません。 フェールオーバー後に BLOB インデックスが正しく更新されない可能性があります。
 - ライフサイクル管理によってサポートされているのは、BLOB インデックス一致による等値チェックのみです。
 - `Copy Blob` を使用しても、BLOB インデックス タグはコピー元 BLOB から新しいコピー先 BLOB にコピーされません。 コピー操作中にコピー先 BLOB に適用するタグを指定できます。
-- コピー先 BLOB にタグが適用されている別のストレージ アカウントから `Copy Blob` (非同期コピー) を使用すると、BLOB インデックス エンジンからフィルター セットで BLOB とそのタグが返されなくなります。 URL (同期コピー) から `Copy Blob` を使用してください。
-- スナップショットの作成時にタグは保持されます。 ただし、スナップショットの昇格はサポートされていないため、空のタグ セットが生成される可能性があります。
 
 ## <a name="faq"></a>よく寄せられる質問
 

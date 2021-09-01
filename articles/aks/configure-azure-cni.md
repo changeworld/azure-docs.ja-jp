@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: bdbc6956f9a32cbba369135652fb4ac03c581108
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7ac3cbc5c8be5ef417e54b29f1bc85f5546071f2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559378"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181446"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -28,6 +28,7 @@ ms.locfileid: "111559378"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * AKS ノード プールに割り当てられたサブネットを[委任されたサブネット](../virtual-network/subnet-delegation-overview.md)にすることはできません。
+* 独自のサブネットを指定する場合は、そのサブネットに関連付けられているネットワーク セキュリティ グループ (NSG) を管理する必要があります。 AKS では、そのサブネットに関連付けられている NSG は変更されません。 また、NSG のセキュリティ規則でノードとポッド CIDR の範囲の間のトラフィックが許可されるようにする必要もあります。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>クラスターの IP アドレス指定を計画する
 
@@ -83,7 +84,7 @@ AKS クラスターのノードごとの最大ポッド数は 250 です。 ノ�
 
 * **Azure CLI**:[az aks create][az-aks-create] コマンドを使用して、クラスターをデプロイするときに `--max-pods` 引数を指定します。 最大値は 250 です。
 * **Resource Manager テンプレート**:Resource Manager テンプレートを使用してクラスターをデプロイするときに、[ManagedClusterAgentPoolProfile] オブジェクトに `maxPods` プロパティを指定します。 最大値は 250 です。
-* **Azure ポータル**:Azure portal を使用してクラスターをデプロイするときに、ノードごとのポッドの最大数を変更することはできません。 Azure portal を使用してデプロイした Azure CNI ネットワーク クラスターのポッド数は、ノードあたり 30 に制限されています。
+* **Azure ポータル**:Azure portal を使用してクラスターをデプロイするときに、ノードごとのポッドの最大数を変更することはできません。 Azure portal を使用してデプロイした Azure CNI ネットワーク クラスターのポッド数は、ノードあたり 110 に制限されています。
 
 ### <a name="configure-maximum---existing-clusters"></a>最大値の構成 - 既存のクラスター
 
@@ -151,23 +152,7 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-> [!NOTE] 
-> このプレビュー機能は現在、次のリージョンでご利用いただけます:
->
-> * 米国東部
-> * 米国東部 2
-> * 米国中北部
-> * 米国中西部
-> * 米国西部
-> * 米国西部 2
-> * カナダ中部
-> * オーストラリア東部
-> * 英国南部
-> * 北ヨーロッパ
-> * 西ヨーロッパ
-> * 東南アジア
-
-従来の CNI の欠点は、AKS クラスターが大きくなったときにポッド IP アドレスが枯渇することです。その結果、より大きなサブネットでクラスター全体を再構築する必要が生じます。 Azure CNI の新しい動的 IP 割り当て機能は、AKS クラスターをホストしているサブネットとは別のサブネットから ポッド IP を割り当てることで、この問題を解決するものです。  次のような利点があります。
+従来の CNI の欠点は、AKS クラスターが大きくなったときにポッド IP アドレスが枯渇することです。その結果、より大きなサブネットでクラスター全体を再構築する必要が生じます。 Azure CNI の新しい動的 IP 割り当て機能は、AKS クラスターをホストしているサブネットとは別のサブネットから ポッド IP を割り当てることで、この問題を解決するものです。 次のような利点があります。
 
 * **IP の使用効率の向上**: IP は、ポッド サブネットからクラスター ポッドへと動的に割り当てられます。 これにより、すべてのノードで IP が静的に割り当てられる従来の CNI ソリューションと比べて、クラスター内での IP の使用効率が向上します。  
 
@@ -178,6 +163,13 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 * **ポッドに対する個別の VNet ポリシー**: ポッドには個別のサブネットがあるので、ノード ポリシーとは異なる VNet ポリシーを構成できます。 そのため、ノードではなくポッドに対してのみインターネット接続を許可したり、VNet ネットワーク NAT を使用してノード プール内のポッドのソース IP を修正したり、NSG を使用してノード プール間のトラフィックをフィルター処理したりと、さまざまな方法で便利なシナリオを実現できます。  
 
 * **Kubernetes ネットワーク ポリシー**: Azure ネットワーク ポリシーと Calico は、この新しいソリューションと連携して動作します。  
+
+### <a name="additional-prerequisites"></a>追加の前提条件
+
+Azure CNI について既に記載されている[前提条件][prerequisites]は引き続き適用されますが、いくつか追加の制限事項があります。
+
+* Linux のノード クラスターとノード プールのみがサポートされています。
+* AKS Engine クラスターと DIY クラスターはサポートされていません。
 
 ### <a name="install-the-aks-preview-azure-cli"></a>`aks-preview` Azure CLI をインストールする
 
@@ -213,13 +205,6 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/P
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="additional-prerequisites"></a>追加の前提条件
-
-Azure CNI について既に記載されている前提条件は引き続き適用されますが、いくつか追加の制限事項があります。
-
-* Linux のノード クラスターとノード プールのみがサポートされています。
-* AKS Engine クラスターと DIY クラスターはサポートされていません。
-
 ### <a name="planning-ip-addressing"></a>IP アドレスの計画
 
 この機能を使用すると、計画が大幅に簡単になります。 ノードとポッドは独立してスケーリングされるため、アドレス空間も個別に計画することができます。 ポッド サブネットはノード プールの粒度に合わせて構成できるので、ユーザーはノード プールを追加する際、常に新しいサブネットを追加できます。 クラスター/ノード プール内のシステム ポッドはポッド サブネットからも IP を受信するので、この動作については把握をしておく必要があります。
@@ -251,23 +236,31 @@ Azure CNI で動的 IP 割り当てを使用する場合は、ノードあたり
 まず、2 つのサブネットを持つ仮想ネットワークを作成します。
 
 ```azurecli-interactive
-$resourceGroup="myResourceGroup"
-$vnet="myVirtualNetwork"
+resourceGroup="myResourceGroup"
+vnet="myVirtualNetwork"
+location="westcentralus"
+
+# Create the resource group
+az group create --name $resourceGroup --location $location
 
 # Create our two subnet network 
-az network vnet create -g $rg --name $vnet --address-prefixes 10.0.0.0/8 -o none 
-az network vnet subnet create -g $rg --vnet-name $vnet --name nodesubnet --address-prefixes 10.240.0.0/16 -o none 
-az network vnet subnet create -g $rg --vnet-name $vnet --name podsubnet --address-prefixes 10.241.0.0/16 -o none 
+az network vnet create -g $resourceGroup --location $location --name $vnet --address-prefixes 10.0.0.0/8 -o none 
+az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name nodesubnet --address-prefixes 10.240.0.0/16 -o none 
+az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name podsubnet --address-prefixes 10.241.0.0/16 -o none 
 ```
 
 次に、`--vnet-subnet-id` を使用してノード サブネットを参照し、`--pod-subnet-id` を使用してポッド サブネットを参照して、クラスターを作成します。
 
 ```azurecli-interactive
-$clusterName="myAKSCluster"
-$location="eastus"
-$subscription="aaaaaaa-aaaaa-aaaaaa-aaaa"
+clusterName="myAKSCluster"
+subscription="aaaaaaa-aaaaa-aaaaaa-aaaa"
 
-az aks create -n $clusterName -g $resourceGroup -l $location --max-pods 250 --node-count 2 --network-plugin azure --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/nodesubnet --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/podsubnet  
+az aks create -n $clusterName -g $resourceGroup -l $location \
+  --max-pods 250 \
+  --node-count 2 \
+  --network-plugin azure \
+  --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/nodesubnet \
+  --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/podsubnet  
 ```
 
 #### <a name="adding-node-pool"></a>ノード プールの追加
@@ -278,7 +271,12 @@ az aks create -n $clusterName -g $resourceGroup -l $location --max-pods 250 --no
 az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name node2subnet --address-prefixes 10.242.0.0/16 -o none 
 az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name pod2subnet --address-prefixes 10.243.0.0/16 -o none 
 
-az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newNodepool --max-pods 250 --node-count 2 --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/node2subnet  --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/pod2subnet --no-wait 
+az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newnodepool \
+  --max-pods 250 \
+  --node-count 2 \
+  --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/node2subnet \
+  --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/pod2subnet \
+  --no-wait 
 ```
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -374,3 +372,4 @@ AKS のネットワークの詳細については、次の記事を参照して�
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
 [system-node-pools]: use-system-pools.md
+[prerequisites]: configure-azure-cni.md#prerequisites

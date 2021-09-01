@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 06/06/2020
-ms.openlocfilehash: 869f2c8ca5f0cbfb422c1aaa65907a2ad941e86a
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: 9523a28ca191402ca4f1ec4bfb174edce359bf67
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112678144"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722876"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,12 +43,12 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 
 - Azure アカウントとサブスクリプション。 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 - テーブルを作成できるデータベース。
-  
+
   - 必要に応じて、数分で [**AdventureWorksLT** デモ データベースを作成](single-database-create-quickstart.md)できる。
 
 - SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。
   最新の ssms.exe をダウンロードすることができる。
-  
+
   - 「 [SQL Server Management Studio のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」というタイトルのトピック。
   - [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
 
@@ -442,9 +442,11 @@ GO
 実行時にターゲットがアタッチできなかった場合、イベント セッションを停止し、再起動する必要があります。
 
 ```sql
-ALTER EVENT SESSION ... STATE = STOP;
+ALTER EVENT SESSION gmeventsessionname240b
+    ON DATABASE STATE = STOP;
 GO
-ALTER EVENT SESSION ... STATE = START;
+ALTER EVENT SESSION gmeventsessionname240b
+    ON DATABASE STATE = START;
 GO
 ```
 
@@ -508,7 +510,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 - わかりやすくするために、Azure Storage コンテナーの使用を「*C:\myeventdata.xel*」のような単純なファイルに完全に置換します。 ファイルは SQL Server をホストするコンピューターのローカル ハード ドライブに書き込まれます。
 - **CREATE MASTER KEY** と **CREATE CREDENTIAL** には Transact-SQL ステートメントを必要としません。
 - **CREATE EVENT SESSION** ステートメントの **ADD TARGET** 句で、**filename=** に割り当てられている HTTP 値を「*C:\myfile.xel*」のような完全パス文字列に置換します。
-  
+
   - Azure ストレージ アカウントは必要ありません。
 
 ## <a name="more-information"></a>詳細情報

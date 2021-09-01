@@ -9,12 +9,12 @@ ms.date: 04/29/2021
 ms.author: cherylmc
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 259d5776e6f9a2ce431743fe8dd3d9160b9f657d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: fcce91b5914318157ca4263504d46c992294d153
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671893"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729541"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ VNet 名: VNet1<br>
 リソース グループ名: RG1<br>
 仮想ネットワーク ゲートウェイ名: GW1<br>
 
-次の手順は、Resource Manager デプロイ モデルに該当します。
+次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に該当します。
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. 削除する仮想ネットワーク ゲートウェイを取得します。
 
@@ -148,7 +148,7 @@ VNet 名: VNet1<br>
 リソース グループ名: RG1<br>
 仮想ネットワーク ゲートウェイ名: GW1<br>
 
-次の手順は、Resource Manager デプロイ モデルに該当します。
+次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に該当します。
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. 削除する仮想ネットワーク ゲートウェイを取得します。
 
@@ -236,7 +236,7 @@ VNet 名: VNet1<br>
 リソース グループ名: RG1<br>
 仮想ネットワーク ゲートウェイ名: GW1<br>
 
-次の手順は、Resource Manager デプロイ モデルに該当します。
+次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に該当します。
 
 
 >[!NOTE]
@@ -289,7 +289,7 @@ Set-AzVirtualNetwork -VirtualNetwork $GWSub
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>リソース グループを削除して VPN ゲートウェイを削除する
 
-リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、Resource Manager デプロイ モデルに該当します。
+リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)にのみ該当します。
 
 ### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. サブスクリプションのすべてのリソース グループの一覧を取得します。
 

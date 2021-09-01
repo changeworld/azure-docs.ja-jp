@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 257f3473da4284080d7977021cb97c6dbce0fbde
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 6b115971104699775e9a58a7b25addefe4d12d1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535170"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730733"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -62,7 +62,7 @@ Microsoft のエンジニアによって公開された、ポッド、ノード�
 * ポッド自体。`kubectl describe pod <pod-name>` を使用します。
 * ログ。`kubectl logs <pod-name>` を使用します。
 
-ポッドの問題のトラブルシューティング方法について詳しくは、「[Debug applications (アプリケーションをデバッグする)](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)」をご覧ください。
+ポッドの問題のトラブルシューティングを行う方法の詳細については、Kubernetes ドキュメントの[ポッドのデバッグ](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)に関するページを参照してください。
 
 ## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`kubectl` または API サーバーに接続する他のサードパーティ製ツールを使用すると、`TCP timeouts` が発生します
 AKS には、サービス レベル目標 (SLO) とサービス レベル アグリーメント (SLA) を保証するために、コア数に応じて垂直方向にスケーリングする HA コントロール プレーンがあります。 接続のタイムアウトが発生している場合は、以下を確認してください。
@@ -217,7 +217,7 @@ Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The
 
 ## <a name="when-resuming-my-cluster-after-a-stop-operation-why-is-my-node-count-not-in-the-autoscaler-min-and-max-range"></a>停止操作を実行した後でクラスターを再開するときに、ノード数が、自動スケーリングの最小数と最大数の間の範囲にないのはなぜですか。
 
-クラスターの自動スケーリングを使用している場合は、クラスターのバックアップを起動するときに、現在のノード数が、設定した最小数と最大数の間の範囲に収まらない場合があります。 これは正しい動作です。 クラスターは、ワークロードを実行するのに必要な数のノードとともに起動します。このとき、自動スケーリングの設定は反映されません。 クラスターでスケーリング操作が実行されるときに、この最小値と最大値は現在のノード数に反映され、やがて、クラスターのノード数は設定した範囲内に収まります。その後、クラスターを停止するまでこの範囲内にあります。
+クラスターの自動スケーリングを使用している場合は、クラスターのバックアップを起動するときに、現在のノード数が、設定した最小数と最大数の間の範囲に収まらない場合があります。 これは正しい動作です。 クラスターは、ワークロードを実行するために必要なノード数で開始します。これは、オートスケーラー設定の影響を受けません。 クラスターでスケーリング操作が実行されるときに、この最小値と最大値は現在のノード数に反映され、やがて、クラスターのノード数は設定した範囲内に収まります。その後、クラスターを停止するまでこの範囲内にあります。
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure Storage および ASK のトラブルシューティング
 
@@ -456,5 +456,5 @@ AKS により、この軽減策を改善するために、ノード プールで
 
 
 <!-- LINKS - internal -->
-[view-master-logs]: ./view-control-plane-logs.md
+[view-master-logs]: monitor-aks-reference.md#resource-logs
 [cluster-autoscaler]: cluster-autoscaler.md
