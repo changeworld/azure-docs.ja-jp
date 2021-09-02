@@ -1,16 +1,19 @@
 ---
 title: Personalizer のしくみ - Personalizer
 description: Personalizer の "_ループ_" は、機械学習を使用して、コンテンツの最上位のアクションを予測するモデルを構築します。 このモデルは、Rank と Reward の呼び出しを使用して送信したデータでのみトレーニングされます。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9c9d9f2b06a34feca2974bf97fb5d494c6105471
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91303609"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829930"
 ---
 # <a name="how-personalizer-works"></a>Personalizer のしくみ
 

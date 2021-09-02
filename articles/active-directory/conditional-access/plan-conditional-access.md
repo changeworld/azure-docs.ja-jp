@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 17b69d4473529f585d6a0c997bafca42516e91a2
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102427183"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203164"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -50,7 +50,7 @@ Microsoft は、基本レベルのセキュリティを保証する[セキュリ
 
 [条件付きアクセスのライセンス要件](overview.md)に関する記事を参照してください。
 
-追加機能が必要な場合、関連するライセンスが必要になることもあります。 詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+追加機能が必要な場合、関連するライセンスが必要になることもあります。 詳細については、「[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」をご覧ください。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -316,7 +316,7 @@ MFA アクセスを必須とする一般的なユース ケース:
 
 * [すべてのユーザーが MFA に登録することを必須にする](howto-conditional-access-policy-risk.md)
 
-* [リスクの高いユーザーのパスワードの変更を必須にする](howto-conditional-access-policy-risk.md)
+* [リスクの高いユーザーのパスワードの変更を必須にする](howto-conditional-access-policy-risk-user.md)
 
 * [サインインのリスクが中以上のユーザーに対して MFA を必須にする](howto-conditional-access-policy-risk.md)
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 07/19/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc0acadadc728f714e84418a438c451aea255ccc
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e45101caec9127c39837d015d6a5117c7e2ae775
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408031"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472045"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -153,7 +153,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 |  <ul><li>EnableGroupCreation<li>型: Boolean<li>既定値はTrue |ディレクトリで管理者以外のユーザーによる Microsoft 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GroupCreationAllowedGroupId<li>型: String<li>既定値: "" |EnableGroupCreation == false の場合でも Microsoft 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
 |  <ul><li>UsageGuidelinesUrl<li>型: String<li>既定値: "" |グループ使用ガイドラインへのリンク。 |
-|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: "" | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、分類は ClassificationList 内のエントリと一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: "" | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、分類は ClassificationList 内のエントリと一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。<br>プロパティ ClassificationDescriptions の文字制限は 300 です。コンマをエスケープすることはできません。
 |  <ul><li>DefaultClassification<li>型: String<li>既定値: "" | 何も指定されていない場合にグループの既定の分類として使用される分類。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
 |  <ul><li>PrefixSuffixNamingRequirement<li>型: String<li>既定値: "" | Microsoft 365 グループ用に構成された名前付け規則を定義する、最大文字数 64 文字の文字列。 詳細については、[Microsoft 365 グループの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
 | <ul><li>CustomBlockedWordsList<li>型: String<li>既定値: "" | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Microsoft 365 グループの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |

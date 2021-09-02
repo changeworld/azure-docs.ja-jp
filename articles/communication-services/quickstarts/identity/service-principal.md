@@ -5,17 +5,17 @@ description: Azure Active Directory を使用すると、Azure VM、関数アプ
 services: azure-communication-services
 author: peiliu
 ms.service: azure-communication-services
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 06/30/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: a14e18b1f50885ee0dcdb4b2c6f361714422524b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3559dc9f7adc10f11e13e18468bbbd964bf5db04
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448549"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253535"
 ---
 # <a name="quickstart-authenticate-using-azure-active-directory"></a>クイック スタート: Azure Active Directory を使用して認証する
 

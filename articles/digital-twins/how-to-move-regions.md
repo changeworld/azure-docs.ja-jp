@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: b21915b6cf0cd018ccbf7b79fc9a5ab8dc222925
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 9617fc3cc7668d8449a9ec3b46e6c82228783e9d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076075"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447151"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
@@ -52,71 +52,26 @@ Azure Digital Twins インスタンスを再作成しようとしている場合
     - Azure IoT Hub Device Provisioning Service
 * インスタンスに接続する *個人または会社のアプリ* には、他にどのようなものがあるか?
 
-この情報は、[Azure portal](https://portal.azure.com)、[Azure Digital Twins の API と SDK](how-to-use-apis-sdks.md)、[Azure Digital Twins CLI コマンド](how-to-use-cli.md)、または [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用して収集できます。
+この情報は、[Azure portal](https://portal.azure.com)、[Azure Digital Twins の API と SDK](concepts-apis-sdks.md)、[Azure Digital Twins CLI コマンド](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)、または [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) を使用して収集できます。
 
 ## <a name="prepare"></a>準備
 
-このセクションでは、元のインスタンスから元のモデル、ツイン、グラフをダウンロードすることによってインスタンスを再作成するための準備を行います。 この記事では、このタスクに [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用します。
+このセクションでは、元のインスタンスから元のモデル、ツイン、グラフをダウンロードすることによってインスタンスを再作成するための準備を行います。 この記事では、このタスクに [Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) を使用します。
 
 >[!NOTE]
 >モデルやグラフを含むファイルがインスタンスに既に存在している場合があります。 その場合、すべてを再度ダウンロードする必要はありません。欠落している要素や、これらのファイルを最初にアップロードした後に変更された可能性があるもののみをダウンロードしてください。 たとえば、新しいデータで更新されたツインがある場合があります。
 
-### <a name="limitations-of-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer の制限事項
+### <a name="download-models-twins-and-graph-with-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer を使用してモデル、ツイン、グラフをダウンロードする
 
-[Azure Digital Twins Explorer サンプル](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、グラフの視覚的な表現をサポートするクライアント アプリのサンプルであり、インスタンスとの視覚的な対話機能を備えています。 この記事では、これを使用してモデル、ツイン、グラフをダウンロードし、後で再アップロードする方法を示します。
+最初に、[Azure portal](https://portal.azure.com) で Azure Digital Twins インスタンスの **Azure Digital Twins Explorer** を開きます。 それには、ポータルの検索バーで名前を検索することによって、ポータルの新しい Azure Digital Twins インスタンスに移動します。 次に、 **[Explorer に移動する (プレビュー)]** ボタンを選択します。 
 
-このサンプルは完全なツールではありません。 ストレス テストが行われておらず、大きなサイズのグラフを処理するように構築されていませんでした。 そのため、次のようなすぐに使えるサンプルの制限事項に留意してください。
+:::image type="content" source="media/includes/azure-digital-twins-explorer-portal-access.png" alt-text="Azure Digital Twins インスタンスの [概要] ページが表示されている Azure portal のスクリーンショット。[Explorer に移動する (プレビュー)] ボタンが強調されています。" lightbox="media/includes/azure-digital-twins-explorer-portal-access.png":::
 
-* このサンプルは現在、最大 1,000 ノードと 2,000 のリレーションシップのグラフ サイズでのみテストされています。
-* 断続的なエラーが発生した場合の再試行は、このサンプルでサポートされません。
-* このサンプルでは、アップロードされたデータが不完全かどうかについて、ユーザーに通知を行いません。
-* このサンプルでは、メモリなどの使用可能なリソースを超える非常に大きなグラフによって発生するエラーの処理は行いません。
+これにより、このインスタンスに接続された Azure Digital Twins Explorer ウィンドウが開きます。
 
-お使いのグラフのサイズをこのサンプルで処理できない場合は、他の Azure Digital Twins 開発者ツールを使用してグラフをエクスポートおよびインポートできます。
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="インターネット ブラウザーでの Azure portal のスクリーンショット。ポータルには、データが含まれていない Azure Digital Twins Explorer が表示されています。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
-* [Azure Digital Twins CLI コマンド](how-to-use-cli.md)
-* [Azure Digital Twins API および SDK](how-to-use-apis-sdks.md)
-
-### <a name="set-up-the-azure-digital-twins-explorer-application"></a>Azure Digital Twins Explorer アプリケーションを設定する
-
-Azure Digital Twins Explorer の設定を進めるには、まず、サンプル アプリケーション コードをダウンロードして設定し、コンピューター上で実行します。
-
-サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページに移動してください。 タイトルの下の **[コードの参照]** ボタンを選択すると、サンプルの GitHub リポジトリに移動します。 **[コード]** ボタンと **[ZIP のダウンロード]** を選択してサンプルを *.ZIP* ファイルとしてコンピューターにダウンロードします。
-
-:::image type="content" source="media/how-to-move-regions/download-repo-zip.png" alt-text="GitHub にある digital-twins-explorer リポジトリのスクリーンショット。[コード] ボタンが選択され、表示された小さなダイアログ ボックスで [ZIP のダウンロード] ボタンが強調表示されています。" lightbox="media/how-to-move-regions/download-repo-zip.png":::
-
-ファイルを解凍します。
-
-次に、Azure Digital Twins Explorer のアクセス許可を設定し、構成します。 Azure Digital Twins クイックスタートの「[Azure Digital Twins と Azure Digital Twins Explorer を設定する](quickstart-azure-digital-twins-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer)」セクションの指示に従ってください。 このセクションでは、次の手順について説明します。
-
-1. Azure Digital Twins インスタンスを設定します。 インスタンスは既にあるため、この部分はスキップしてかまいません。
-1. インスタンスへのアクセスを提供するようにローカルの Azure 資格情報を設定します。
-1. Azure Digital Twins Explorer を実行し、お使いのインスタンスに接続するように構成します。 移動する元の Azure Digital Twins インスタンスの "*ホスト名*" を使用します。
-
-これで、コンピューター上のブラウザーで Azure Digital Twins Explorer サンプル アプリが実行されます。 このサンプルが、元の Azure Digital Twins インスタンスに接続していることを確認します。
-
-:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリが表示されたブラウザー ウィンドウ。このアプリは Azure Digital Twins Explorer と呼ばれ、クエリ エクスプローラー、モデル、ツイン グラフ、プロパティの各ボックスが含まれています。画面上にデータはまだありません。" lightbox="media/how-to-move-regions/explorer-blank.png":::
-
-接続を確認するには、 **[クエリの実行]** ボタンを選択して既定のクエリを実行します。これにより、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスのグラフにすべてのツインとリレーションシップが表示されます。
-
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウの右上隅にある [クエリの実行] ボタンが強調表示されている。" lightbox="media/how-to-move-regions/run-query.png":::
-
-この記事の後半で、Azure Digital Twins Explorer を再び使用して、これらのアイテムをターゲット リージョンの新しいインスタンスに再アップロードします。このため、Azure Digital Twins Explorer は実行したままでかまいません。
-
-### <a name="download-models-twins-and-graph"></a>モデル、ツイン、グラフのダウンロード
-
-次に、ソリューションのモデル、ツイン、グラフをコンピューターにダウンロードします。
-
-これらのアイテムをすべて一度にダウンロードするには、まず、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスに完全なグラフが表示されていることを確認します。 完全なグラフがまだ表示されていない場合は、 **[クエリ エクスプローラー]** ボックスで `SELECT * FROM digitaltwins` の既定のクエリを再実行します。
- 
-その後、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックス内の **[グラフのエクスポート]** アイコンを選択します。
-
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="[TWIN GRAPH]\(ツイン グラフ\) ボックスで強調表示されているアイコン。クラウドから外に向かう矢印を示している。" lightbox="media/how-to-move-regions/export-graph.png":::
-
-この操作を行うと、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスで **[ダウンロード]** リンクが有効になります。 これを選択して、モデル、ツイン、リレーションシップを含む、クエリ結果の JSON ベースの表現をダウンロードします。 この操作を行うと、.json ファイルがコンピューターにダウンロードされるはずです。
-
->[!NOTE]
->ダウンロードしたファイルのファイル拡張子が違っている場合は、拡張子を直接編集して .json に変更してみてください。
+Azure Digital Twins Explorer の手順に従って、[グラフとモデルをエクスポートします](how-to-use-azure-digital-twins-explorer.md#export-graph-and-models)。 これにより、モデル、ツイン、リレーションシップ (グラフで現在使用されていないモデルを含む) のコードを含む JSON ファイルがマシンにダウンロードされます。
 
 ## <a name="move"></a>詳細ビュー
 
@@ -124,72 +79,30 @@ Azure Digital Twins Explorer の設定を進めるには、まず、サンプル
 
 ### <a name="create-a-new-instance"></a>新しいインスタンスの作成
 
-まず、Azure Digital Twins の新しいインスタンスをターゲット リージョンに作成します。 [インスタンスと認証の設定方法](how-to-set-up-instance-portal.md)に関するページの手順に従います。 これらの点に留意してください。
+まず、Azure Digital Twins の新しいインスタンスをターゲット リージョンに作成します。 「[インスタンスと認証を設定する](how-to-set-up-instance-portal.md)」の手順に従います。 これらの点に留意してください。
 
 * 別のリソース グループにある "*場合*" は、新しいインスタンスは同じ名前のままにすることができます。 元のインスタンスを含む同じリソース グループを使用する必要がある場合、新しいインスタンスには別個の名前が必要になります。
 * 場所の入力を求められたら、新しいターゲット リージョンを入力します。
 
 この手順が完了した後、対象のデータを使用して設定を続けるために、新しいインスタンスのホスト名が必要になります。 セットアップ中にホスト名をメモしなかった場合は、[これらの手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)に従って Azure portal から今すぐ取得してください。
 
-### <a name="repopulate-the-old-instance"></a>古いインスタンスを再設定する
+次に、新しいインスタンスのデータを設定して、元のインスタンスのコピーになるようにします。
 
-次に、新しいインスタンスを設定して、元のもののコピーになるようにします。
-
-#### <a name="upload-the-original-models-twins-and-graph-by-using-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer を使用して元のモデル、ツイン、グラフをアップロードする
+#### <a name="upload-models-twins-and-graph-with-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer を使用してモデル、ツイン、グラフをアップロードする
 
 このセクションでは、モデル、ツイン、グラフを新しいインスタンスに再アップロードできます。 モデル、ツイン、またはグラフが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#re-create-endpoints-and-routes)に進むことができます。
 
-それ以外の場合は、Azure Digital Twins Explorer を実行しているブラウザー ウィンドウに戻り、これらの手順に従います。
+最初に、[Azure portal](https://portal.azure.com) で新しいインスタンスの **Azure Digital Twins Explorer** に移動します。 
 
-##### <a name="connect-to-the-new-instance"></a>新しいインスタンスへの接続
+この記事の前半で[ダウンロードした JSON ファイル](#download-models-twins-and-graph-with-azure-digital-twins-explorer)を新しいインスタンスにインポートします。Azure Digital Twins Explorer の手順に従って、[ファイルを Azure Digital Twins Explorer にインポートしてください](how-to-use-azure-digital-twins-explorer.md#import-file-to-azure-digital-twins-explorer)。 これにより、元のインスタンスからすべてのモデル、ツイン、リレーションシップが新しいインスタンスにアップロードされます。
 
-Azure Digital Twins Explorer は現在、元の Azure Digital Twins インスタンスに接続しています。 ウィンドウの右上隅にある **[サインイン]** ボタンを選択して、新しいインスタンスを指すように接続を切り替えます。
+すべてが正常にアップロードされたことを確認するには、 **[ツイン グラフ]** タブに切り替えて戻り、 **[クエリ エクスプローラー]** パネルにある **[クエリの実行]** ボタンを選択して、すべてのツインとリレーションシップをグラフに表示する既定のクエリを実行します。 この操作を行うと、 **[モデル]** パネルのモデルの一覧も更新されます。
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Azure Digital Twins Explorer のウィンドウの右上隅にある [サインイン] アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウの右上隅にある [クエリの実行] ボタンが強調されている Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/how-to-move-regions/run-query.png":::
 
-**ADT URL** を新しいインスタンスに置き換えます。 *https://{新しいインスタンスのホスト名}* になるように、この値を変更します。
+すべてのツインとリレーションシップを表示したグラフが **[ツイン グラフ]** パネルに表示されます。 **[モデル]** パネルにもモデルの一覧が表示されます。
 
-**[接続]** を選択します。 Azure の資格情報を使用して再度サインインするか、インスタンスに対する同意をこのアプリケーションに与えるかを求められる場合があります。
-
-##### <a name="upload-models-twins-and-graph"></a>モデル、ツイン、グラフのアップロード
-
-次に、以前にダウンロードしたソリューション コンポーネントを新しいインスタンスにアップロードします。
-
-モデル、ツイン、グラフをアップロードするには、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスにある **[グラフのインポート]** アイコンを選択します。 このオプションを選ぶと、これら 3 つのコンポーネントがすべて一度にアップロードされます。 また、グラフで現在使用されていないモデルもアップロードされます。
-
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="[TWIN GRAPH]\(ツイン グラフ\) ボックスで強調表示されているアイコン。クラウドに向かう矢印を示している。" lightbox="media/how-to-move-regions/import-graph.png":::
-
-ファイル選択ボックスで、ダウンロードしたグラフに移動します。 グラフの **.json** ファイルを選び、 **[開く]** を選択します。
-
-数秒後、Azure Digital Twins Explorer で **[インポート]** ビューが開き、読み込まれるグラフのプレビューが表示されます。
-
-グラフのアップロードを確認するには、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスの右上隅にある **[保存]** アイコンを選択します。
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="[Graph Preview]\(グラフのプレビュー\) ペインで強調表示されている [保存] アイコン。" lightbox="media/how-to-move-regions/graph-preview-save.png":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-これで、Azure Digital Twins Explorer で (ツインとリレーションシップを含む) モデルとグラフが新しい Azure Digital Twins インスタンスにアップロードされるようになりました。 アップロードされたモデル、ツイン、リレーションシップの数を示す成功メッセージが表示されるはずです。
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="グラフのインポート成功を示すダイアログ ボックス。インポートに成功し、2 つのモデル、4 つのツイン、2 つのリレーションシップがインポートされたことを示している。" lightbox="media/how-to-move-regions/import-success.png":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-すべてが正常にアップロードされたことを確認するには、 **[TWIN GRAPH]\(ツイン グラフ\)** タブに切り替えて戻り、 **[クエリ エクスプローラー]** ボックスにある **[クエリの実行]** ボタンを選択して、すべてのツインとリレーションシップをグラフに表示する既定のクエリを実行します。 この操作を行うと、 **[モデル]** ボックスのモデルの一覧も更新されます。
-
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウの右上隅にある [クエリの実行] ボタンの周囲が強調表示されている。" lightbox="media/how-to-move-regions/run-query.png":::
-
-すべてのツインとリレーションシップを表示したグラフが **[TWIN GRAPH]\(ツイン グラフ\)** ボックスに表示されます。 **[モデル]** ボックスにもモデルの一覧が表示されます。
-
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="[モデル] ボックス内で強調表示された 2 つのモデルと、[Twin Graph]\(ツイン グラフ\) ボックス内で強調表示されたグラフを示す Azure Digital Twins Explorer のビュー。" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="[モデル] ボックス内で強調表示された 2 つのモデルと、[ツイン グラフ] ボックス内で強調表示されたグラフを示す Azure Digital Twins Explorer のスクリーンショット。" lightbox="media/how-to-move-regions/post-upload.png":::
 
 これらのビューで、モデル、ツイン、グラフがターゲット リージョンの新しいインスタンスに再アップロードされたことを確認できます。
 
@@ -197,7 +110,7 @@ Azure Digital Twins Explorer は現在、元の Azure Digital Twins インスタ
 
 元のインスタンスにエンドポイントまたはルートがある場合、新しいインスタンスでそれらを再作成する必要があります。 エンドポイントまたはルートが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#relink-connected-resources)に進むことができます。
 
-それ以外の場合は、[エンドポイントとルートの管理方法](how-to-manage-routes-portal.md)に関するページの手順に従います。その際に新しいインスタンスを使用します。 これらの点に留意してください。
+それ以外の場合、新しいインスタンスを使用して、「[エンドポイントとルートを管理する](how-to-manage-routes.md)」の手順に従います。 これらの点に留意してください。
 
 * エンドポイントに使用している Event Grid、Event Hubs、Service Bus リソースを再作成する必要は "*ありません*"。 詳細については、エンドポイントに関する指示の「前提条件」セクションを参照してください。 必要なのは、Azure Digital Twins インスタンスでエンドポイントを再作成することだけです。
 * エンドポイントとルートの名前は別のインスタンスにスコープ設定されるため、再利用できます。
@@ -219,8 +132,8 @@ Azure Digital Twins Explorer は現在、元の Azure Digital Twins インスタ
 * Time Series Insights。
 * Azure Maps。
 * IoT Hub Device Provisioning Service。
-* Azure の外部の個人または会社のアプリ。このようなクライアント アプリの例としては、「[チュートリアル: クライアント アプリをコーディングする](tutorial-code.md)」で作成した、インスタンスに接続して Azure Digital Twins API を呼び出すものがあります。
-* Azure AD アプリ登録を再作成する必要は "*ありません*"。 [アプリ登録](how-to-create-app-registration.md)を使用して Azure Digital Twins API に接続する場合、新しいインスタンスで同じアプリ登録を再利用できます。
+* Azure の外部の個人または会社のアプリ。たとえば、「[クライアント アプリをコーディングする](tutorial-code.md)」で作成された、インスタンスに接続し、Azure Digital Twins API を呼び出すクライアント アプリなどです。
+* Azure AD アプリ登録を再作成する必要は "*ありません*"。 [アプリ登録](./how-to-create-app-registration-portal.md)を使用して Azure Digital Twins API に接続する場合、新しいインスタンスで同じアプリ登録を再利用できます。
 
 この手順を完了した後、ターゲット リージョンの新しいインスタンスが元のインスタンスのコピーになるはずです。
 
@@ -229,9 +142,9 @@ Azure Digital Twins Explorer は現在、元の Azure Digital Twins インスタ
 新しいインスタンスが正しく設定されたことを確認するには、次のツールを使用します。
 
 * [Azure Portal](https://portal.azure.com) このポータルは、新しいインスタンスが存在し、正しいターゲット リージョンにあることを確認するのに適しています。 また、エンドポイントとルート、および他の Azure サービスへの接続を確認するのに適しています。
-* [Azure Digital Twins CLI コマンド](how-to-use-cli.md)。 これらのコマンドは、新しいインスタンスが存在し、正しいターゲット リージョンにあることを確認するのに適しています。 また、これらはインスタンス データを確認するために使用できます。
+* [Azure Digital Twins CLI コマンド](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)。 これらのコマンドは、新しいインスタンスが存在し、正しいターゲット リージョンにあることを確認するのに適しています。 また、これらはインスタンス データを確認するために使用できます。
 * [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 Azure Digital Twins Explorer は、モデル、ツイン、グラフなどのインスタンス データを確認するのに適しています。
-* [Azure Digital Twins API および SDK](how-to-use-apis-sdks.md)。 これらのリソースは、モデル、ツイン、グラフなどのインスタンス データを確認するのに適しています。 また、エンドポイントとルートの確認にも適しています。
+* [Azure Digital Twins API および SDK](concepts-apis-sdks.md)。 これらのリソースは、モデル、ツイン、グラフなどのインスタンス データを確認するのに適しています。 また、エンドポイントとルートの確認にも適しています。
 
 元のインスタンスで実行していたカスタム アプリやエンドツーエンド フローを実行してみることもでき、これは、それらが新しいインスタンスで正しく動作していることを確認するのに役立ちます。
 
@@ -239,10 +152,10 @@ Azure Digital Twins Explorer は現在、元の Azure Digital Twins インスタ
 
 これで、元のインスタンスのデータと接続のコピーを使用して新しいインスタンスがターゲット リージョンに設定されたので、元のインスタンスを削除することができます。
 
-[Azure portal](https://portal.azure.com)、[Azure CLI](how-to-use-cli.md)、または[コントロール プレーン API](how-to-use-apis-sdks.md#overview-control-plane-apis) を使用できます。
+[Azure portal](https://portal.azure.com)、[Azure CLI](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)、または[コントロール プレーン API](concepts-apis-sdks.md#overview-control-plane-apis) を使用できます。
 
 Azure portal を使用してインスタンスを削除するには、ブラウザー ウィンドウで[ポータルを開き](https://portal.azure.com)、ポータルの検索バーで元の Azure Digital Twins インスタンスの名前を検索して、そこに移動します。
 
 **[削除]** ボタンを選択し、画面の指示に従って削除を完了します。
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure portal の [概要] タブでの Azure Digital Twins インスタンスの詳細のビュー。[削除] ボタンが強調表示されている。":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure portal の [概要] タブでの Azure Digital Twins インスタンスの詳細のスクリーンショット。[削除] ボタンが強調表示されています。":::

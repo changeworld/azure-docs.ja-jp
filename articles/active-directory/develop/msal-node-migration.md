@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/26/2021
 ms.author: v-doeris
-ms.openlocfilehash: 0fbcd0437488631d8bd4b34d67a28bda81f2a6e9
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.custom: has-adal-ref
+ms.openlocfilehash: 55cf58924bca9839225eafaa3e4084d60db5f898
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539898"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429121"
 ---
 # <a name="how-to-migrate-a-nodejs-app-from-adal-to-msal"></a>Node.js アプリを ADAL から MSAL に移行する方法
 
@@ -141,6 +142,101 @@ const cca = new msal.ConfidentialClientApplication(msalConfig);
 
 重要な違いとして、MSAL には、機関の検証を無効にするフラグがなく、機関は必ず既定で検証されます。 要求した機関は、MSAL によって、Microsoft が認識している機関の一覧、または構成で指定した機関の一覧と比較されます。 詳細については、「[構成オプション](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md)」を参照してください
 
+## <a name="switch-to-msal-api"></a>MSAL API に切り替える
+
+ADAL Node のパブリック メソッドのほとんどには、MSAL Node に同等のものがあります。
+
+| ADAL                                | MSAL                              | メモ                             |
+|-------------------------------------|-----------------------------------|-----------------------------------|
+| `acquireToken`                      | `acquireTokenSilent`              | 名前が変更され、[アカウント](https://azuread.github.io/microsoft-authentication-library-for-js/ref/modules/_azure_msal_common.html#accountinfo) オブジェクトが必要になりました |
+| `acquireTokenWithAuthorizationCode` | `acquireTokenByCode`              |                                   |
+| `acquireTokenWithClientCredentials` | `acquireTokenByClientCredential` |                                   |
+| `acquireTokenWithRefreshToken`      | `acquireTokenByRefreshToken`      | 有効な[更新トークン](#remove-logic-around-refresh-tokens)を移行する場合に便利です              |
+| `acquireTokenWithDeviceCode`        | `acquireTokenByDeviceCode`        | ユーザー コードの取得を抽象化するようになりました (下記参照) |
+| `acquireTokenWithUsernamePassword`  | `acquireTokenByUsernamePassword`  |                                   |
+
+ただし、ADAL Node の一部のメソッドは非推奨とされ、その一方、MSAL Node には新しいメソッドが用意されています。
+
+| ADAL                              | MSAL                            | メモ                             |
+|-----------------------------------|---------------------------------|-----------------------------------|
+| `acquireUserCode`                   | 該当なし                             | `acquireTokeByDeviceCode` とマージされました (上記参照)|
+| 該当なし                               | `acquireTokenOnBehalfOf`          | [OBO フロー](./v2-oauth2-on-behalf-of-flow.md)を抽象化する新しいメソッド |
+| `acquireTokenWithClientCertificate` | 該当なし                             | 初期化中に証明書が割り当てられるようになったため、不要になりました ([構成オプション](#configure-msal)に関するセクションを参照) |
+| 該当なし                               | `getAuthCodeUrl`                  | [承認エンドポイント](./active-directory-v2-protocols.md#endpoints)の URL の構成を抽象化する新しいメソッド |
+
+## <a name="use-scopes-instead-of-resources"></a>リソースの代わりにスコープを使用する
+
+v1.0 と v2.0 のエンドポイントの重要な違いは、リソースへのアクセス方法に関するものです。 ADAL Node では、最初にアプリ登録ポータルにアクセス許可を登録してから、下に示すように、リソース (Microsoft Graph など) のアクセス トークンを要求します。
+
+```javascript
+authenticationContext.acquireTokenWithAuthorizationCode(
+    req.query.code,
+    redirectUri,
+    resource, // e.g. 'https://graph.microsoft.com'
+    clientId,
+    clientSecret,
+    function (err, response) {
+        // do something with the authentication response
+    }
+);
+```
+
+MSAL Node では、**v1.0** と **v2.0** の両方のエンドポイントがサポートされています。 v2.0 エンドポイントは、"*スコープ中心*" モデルを使用してリソースにアクセスします。 したがって、リソースのアクセス トークンを要求するときは、そのリソースのスコープも指定する必要があります。
+
+```javascript
+const tokenRequest = {
+    code: req.query.code,
+    scopes: ["https://graph.microsoft.com/User.Read"],
+    redirectUri: REDIRECT_URI,
+};
+
+pca.acquireTokenByCode(tokenRequest).then((response) => {
+    // do something with the authentication response
+}).catch((error) => {
+    console.log(error);
+});
+```
+
+スコープ中心モデルの利点の 1 つは、"*動的スコープ*" を使用できることです。 v1.0 を使用してアプリケーションを作成するときは、ユーザーがログイン時に同意するアプリケーションで必要なアクセス許可 ("*静的スコープ*" と呼ばれます) の完全なセットを登録する必要がありました。 v2.0 では、スコープ パラメーターを使用して、アクセス許可を必要なときに要求できます (この理由により、"*動的スコープ*")。 これによって、ユーザーはスコープに **増分同意** を与えることができます。 最初ユーザーにはアプリケーションへのサインインだけを行わせ、どのような種類のアクセスも必要としない場合、そうすることができます。 その後、ユーザーの予定表を読み取る機能が必要になった場合は、acquireToken メソッドで予定表のスコープを要求してユーザーの同意を得ることができます。 詳細については、「[リソースとスコープ](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md)」を参照してください
+
+## <a name="use-promises-instead-of-callbacks"></a>コールバックの代わりに Promise を使用する
+
+ADAL Node では、認証が成功し、応答が取得された後に、すべての操作にコールバックが使用されます。
+
+```javascript
+var context = new AuthenticationContext(authorityUrl, validateAuthority);
+
+context.acquireTokenWithClientCredentials(resource, clientId, clientSecret, function(err, response) {
+    if (err) {
+        console.log(err);
+    } else {
+        // do something with the authentication response
+    }
+});
+```
+
+MSAL Node では、Promise が代わりに使用されます。
+
+```javascript
+    const cca = new msal.ConfidentialClientApplication(msalConfig);
+
+    cca.acquireTokenByClientCredential(tokenRequest).then((response) => {
+        // do something with the authentication response
+    }).catch((error) => {
+        console.log(error);
+    });
+```
+
+ES8 に付属する **async と await** 構文を使用することもできます。
+
+```javascript
+    try {
+        const authResponse = await cca.acquireTokenByCode(tokenRequest);
+    } catch (error) {
+        console.log(error);
+    }
+```
+
 ## <a name="enable-logging"></a>ログの有効化
 
 ADAL Node では、コード内の任意の場所でログを別途構成します。
@@ -188,101 +284,6 @@ const msalConfig = {
 const cca = new msal.ConfidentialClientApplication(msalConfig);
 ```
 
-## <a name="use-scopes-instead-of-resources"></a>リソースの代わりにスコープを使用する
-
-v1.0 と v2.0 のエンドポイントの重要な違いは、リソースへのアクセス方法に関するものです。 ADAL Node では、最初にアプリ登録ポータルにアクセス許可を登録してから、下に示すように、リソース (Microsoft Graph など) のアクセス トークンを要求します。
-
-```javascript
-authenticationContext.acquireTokenWithAuthorizationCode(
-    req.query.code,
-    redirectUri,
-    resource, // e.g. 'https://graph.microsoft.com'
-    clientId,
-    clientSecret,
-    function (err, response) {
-        // do something with the authentication response
-    }
-);
-```
-
-MSAL Node では、**v1.0** と **v2.0** の両方のエンドポイントがサポートされています。 v2.0 エンドポイントは、"*スコープ中心*" モデルを使用してリソースにアクセスします。 したがって、リソースのアクセス トークンを要求するときは、そのリソースのスコープも指定する必要があります。
-
-```javascript
-const tokenRequest = {
-    code: req.query.code,
-    scopes: ["https://graph.microsoft.com/User.Read"],
-    redirectUri: REDIRECT_URI,
-};
-
-pca.acquireTokenByCode(tokenRequest).then((response) => {
-    // do something with the authentication response
-}).catch((error) => {
-    console.log(error);
-});
-```
-
-スコープ中心モデルの利点の 1 つは、"*動的スコープ*" を使用できることです。 v1.0 を使用してアプリケーションを作成するときは、ユーザーがログイン時に同意するアプリケーションで必要なアクセス許可 ("*静的スコープ*" と呼ばれます) の完全なセットを登録する必要がありました。 v2.0 では、スコープ パラメーターを使用して、アクセス許可を必要なときに要求できます (この理由により、"*動的スコープ*")。 これによって、ユーザーはスコープに **増分同意** を与えることができます。 最初ユーザーにはアプリケーションへのサインインだけを行わせ、どのような種類のアクセスも必要としない場合、そうすることができます。 その後、ユーザーの予定表を読み取る機能が必要になった場合は、acquireToken メソッドで予定表のスコープを要求してユーザーの同意を得ることができます。 詳細については、「[リソースとスコープ](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md)」を参照してください
-
-## <a name="switch-to-msal-api"></a>MSAL API に切り替える
-
-ADAL Node のパブリック メソッドのほとんどには、MSAL Node に同等のものがあります。
-
-| ADAL                                | MSAL                              | メモ                             |
-|-------------------------------------|-----------------------------------|-----------------------------------|
-| `acquireToken`                      | `acquireTokenSilent`              | 名前が変更され、[アカウント](https://azuread.github.io/microsoft-authentication-library-for-js/ref/modules/_azure_msal_common.html#accountinfo) オブジェクトが必要になりました |
-| `acquireTokenWithAuthorizationCode` | `acquireByAuthorizationCode`      |                                   |
-| `acquireTokenWithClientCredentials` | `acquireTokenByClientCredential` |                                   |
-| `acquireTokenWithRefreshToken`      | `acquireTokenByRefreshToken`      |                                   |
-| `acquireTokenWithDeviceCode`        | `acquireTokenByDeviceCode`        | ユーザー コードの取得を抽象化するようになりました (下記参照) |
-| `acquireTokenWithUsernamePassword`  | `acquireTokenByUsernamePassword`  |                                   |
-
-ただし、ADAL Node の一部のメソッドは非推奨とされ、その一方、MSAL Node には新しいメソッドが用意されています。
-
-| ADAL                              | MSAL                            | メモ                             |
-|-----------------------------------|---------------------------------|-----------------------------------|
-| `acquireUserCode`                   | 該当なし                             | `acquireTokeByDeviceCode` とマージされました (上記参照)|
-| 該当なし                               | `acquireTokenOnBehalfOf`          | [OBO フロー](./v2-oauth2-on-behalf-of-flow.md)を抽象化する新しいメソッド |
-| `acquireTokenWithClientCertificate` | 該当なし                             | 初期化中に証明書が割り当てられるようになったため、不要になりました ([構成オプション](#configure-msal)に関するセクションを参照) |
-| 該当なし                               | `getAuthCodeUrl`                  | [承認エンドポイント](./active-directory-v2-protocols.md#endpoints)の URL の構成を抽象化する新しいメソッド |
-
-## <a name="use-promises-instead-of-callbacks"></a>コールバックの代わりに Promise を使用する
-
-ADAL Node では、認証が成功し、応答が取得された後に、すべての操作にコールバックが使用されます。
-
-```javascript
-var context = new AuthenticationContext(authorityUrl, validateAuthority);
-
-context.acquireTokenWithClientCredentials(resource, clientId, clientSecret, function(err, response) {
-    if (err) {
-        console.log(err);
-    } else {
-        // do something with the authentication response
-    }
-});
-```
-
-MSAL Node では、Promise が代わりに使用されます。
-
-```javascript
-    const cca = new msal.ConfidentialClientApplication(msalConfig);
-
-    cca.acquireTokenByClientCredential(tokenRequest).then((response) => {
-        // do something with the authentication response
-    }).catch((error) => {
-        console.log(error);
-    });
-```
-
-ES8 に付属する **async と await** 構文を使用することもできます。
-
-```javascript
-    try {
-        const authResponse = await cca.acquireTokenByCode(tokenRequest);
-    } catch (error) {
-        console.log(error);
-    }
-```
-
 ## <a name="enable-token-caching"></a>トークンのキャッシュの有効化
 
 ADAL Node では、インメモリ トークン キャッシュをインポートするオプションがありました。 このトークン キャッシュは、`AuthenticationContext` オブジェクトを初期化するときにパラメーターとして使用されます。
@@ -296,11 +297,13 @@ var authorityURI = "https://login.microsoftonline.com/common";
 var context = new AuthenticationContext(authorityURI, true, cache);
 ```
 
-MSAL Node は、既定ではインメモリ トークン キャッシュを使用します。 これは明示的にインポートする必要はなく、`ConfidentialClientApplication` および `PublicClientApplication` オブジェクトの一部として公開されています。
+MSAL Node は、既定ではインメモリ トークン キャッシュを使用します。 これは明示的にインポートする必要はなく、`ConfidentialClientApplication` および `PublicClientApplication` クラスの一部として公開されています。
 
 ```javascript
 const msalTokenCache = publicClientApplication.getTokenCache();
 ```
+
+重要なことは、ADAL Node を使用した以前のトークン キャッシュは、キャッシュ スキーマに互換性がないため、MSAL Node に転送できないということです。 ただし、MSAL Node で ADAL Node を使用して以前にアプリで取得した有効な更新トークンを使用することができます。 詳細については、[更新トークン](#remove-logic-around-refresh-tokens)のセクションを参照してください。
 
 独自の **キャッシュ プラグイン** を用意して、ディスクにキャッシュを書き込むこともできます。 キャッシュ プラグインには、インターフェイス [ICachePlugin](https://azuread.github.io/microsoft-authentication-library-for-js/ref/interfaces/_azure_msal_common.icacheplugin.html) の実装が必要です。 ログと同様に、キャッシュは構成オプションの一部であり、MSAL Node インスタンスの初期化で作成されます。
 
@@ -357,7 +360,41 @@ ADAL Node では、更新トークン (RT) が公開されました。これに�
 - ユーザーが接続されなくなったダッシュボードの更新などのアクションをユーザーの代わりに行う実行時間の長いサービス。
 - クライアントが RT を Web サービスに渡せるようにする WebFarm シナリオ (キャッシュはサーバー側ではなく、クライアント側で行われます (暗号化された Cookie))。
 
-MSAL Node では、セキュリティ上の理由により、更新トークンは公開されません。 代わりに、MSAL がトークンの更新を処理します。 そのため、これに関するロジックを構築する必要がなくなりました。 それでも、以前に取得した更新トークンを移行して使用する必要がある場合、MSAL Node では ADAL Node の `acquireTokenWithRefreshToken` メソッドと同等である `acquireTokenByRefreshToken` が用意されています。
+MSAL Node とその他の MSAL は、セキュリティ上の理由により、更新トークンは公開されません。 代わりに、MSAL がトークンの更新を処理します。 そのため、これに関するロジックを構築する必要がなくなりました。 ただし、以前に取得した (有効な) 更新トークンを ADAL ノードのキャッシュから利用して、MSAL Node を含む新しいトークン セットを取得 **できます**。 これを行うために、MSAL Node では `acquireTokenByRefreshToken` が提供されています。これは、ADAL Node の `acquireTokenWithRefreshToken` メソッドに相当するものです。
+
+```javascript
+var msal = require('@azure/msal-node');
+
+const config = {
+    auth: {
+        clientId: "ENTER_CLIENT_ID",
+        authority: "https://login.microsoftonline.com/ENTER_TENANT_ID",
+        clientSecret: "ENTER_CLIENT_SECRET"
+    }
+};
+
+const cca = new msal.ConfidentialClientApplication(config);
+
+const refreshTokenRequest = {
+    refreshToken: "", // your previous refresh token here
+    scopes: ["user.read"],
+};
+
+cca.acquireTokenByRefreshToken(refreshTokenRequest).then((response) => {
+    console.log(JSON.stringify(response));
+}).catch((error) => {
+    console.log(JSON.stringify(error));
+});
+```
+
+> [!NOTE]
+> 上記で示されているように、MSAL Node の `acquireTokenByRefreshToken` メソッドを使用して新しいトークンのセットを取得するために現在も有効なトークンを使用した後は、古い ADAL Node トークン キャッシュを破棄することをお勧めします。
+
+## <a name="handle-errors-and-exceptions"></a>エラーと例外を処理する
+
+MSAL Node を使用している場合に、最も一般的な種類のエラーは、`interaction_required` エラーです。 多くの場合、このエラーは単に対話型トークン取得のプロンプトを開始するだけで解決されます。 たとえば、`acquireTokenSilent` を使用する場合に、キャッシュされた更新トークンがない場合、MSAL Node はアクセス トークンをサイレントで取得できません。 同様に、アクセスしようとしている Web API に[条件付きアクセス](../conditional-access/overview.md) ポリシーが設定されている場合があり、その場合、ユーザーは[多要素認証](../authentication/concept-mfa-howitworks.md) (MFA) を実行する必要があります。 そのような場合に、`acquireTokenByCode` をトリガーして `interaction_required` エラーを処理すると、ユーザーに MFA を要求するプロンプトが表示され、それを実行できるようになります。
+
+発生する可能性のあるもう一つの一般的なエラーは `consent_required` です。これは、保護されたリソースのアクセス トークンを取得するために必要な権限がユーザーによって同意されていない場合に発生します。 `interaction_required` の場合と同様に、`consent_required` エラーのソリューションによって、`acquireTokenByCode` メソッドを使用した対話的なトークン取得のプロンプトが開始されることがよくあります。
 
 ## <a name="run-the-app"></a>アプリを実行する
 
@@ -367,7 +404,7 @@ MSAL Node では、セキュリティ上の理由により、更新トークン�
 npm start
 ```
 
-## <a name="example-securing-web-apps-with-adal-node-vs-msal-node"></a>例: ADAL Node と MSAL Node を使用した Web アプリのセキュリティ保護
+## <a name="example-acquiring-tokens-with-adal-node-vs-msal-node"></a>例: ADAL Node または MSAL Node を使用したトークンの取得
 
 下のスニペットは、Express.js フレームワークの機密クライアント Web アプリを示しています。 これは、ユーザーが認証ルート `/auth` に達したときにサインインを実行し、`/redirect` ルートを介して Microsoft Graph のアクセス トークンを取得し、そのトークンの内容を表示します。
 

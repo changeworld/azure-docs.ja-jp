@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ebe6a96c88d061138eb629f50aa37ea90fe40eb4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d432ff03290c3ce26346b99c428cd89c853ed6b7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475881"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472147"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>業界標準オントロジを Azure Digital Twins 用の DTDL に変換する
 
@@ -61,6 +61,6 @@ Azure Digital Twins サービスで使用するために、RDF ベースのモ�
 
 ## <a name="next-steps"></a>次のステップ 
 
-* 仕様に合うように業界標準のオントロジを拡張する方法について学習します。"[概念: 業界のオントロジの拡張](concepts-ontologies-extend.md)" に関する記事。
+* [業界のオントロジの拡張](concepts-ontologies-extend.md)に関する記事を確認して、仕様を満たすように業界標準のオントロジを拡張する方法の詳細について学習します。
 
 * または、オントロジに基づいてモデルを開発するためのパスを続行します。[モデル開発パスでのオントロジ戦略の使用](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)に関する記事。

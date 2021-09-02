@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想ネットワーク内の IPv4 アプリケーションを IPv6 にアップグレードする - PowerShell
+title: Azure 仮想ネットワーク 内で IPv4 アプリケーションを IPv6 に追加する - PowerShell
 titlesuffix: Azure Virtual Network
 description: この記事では、Azure PowerShell を使用して Azure 仮想ネットワーク内の既存のアプリケーションに IPv6 アドレスをデプロイする方法について示します。
 services: virtual-network
@@ -14,14 +14,14 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 771d108bc3a3262c46ab13127727eddce2abaeb8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5d4982fac67b0d5bde5e0c68f64da634f01a9eab
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675815"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435652"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションを IPv6 にアップグレードする - PowerShell
+# <a name="add-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Azure 仮想ネットワーク 内で IPv4 アプリケーションを IPv6 に追加する - PowerShell
 
 この記事では、Standard Load Balancer とパブリック IP を使用して、Azure 仮想ネットワーク内の既存の IPv4 アプリケーションに IPv6 接続を追加する方法について説明します。 インプレース アップグレードには次のものが含まれます。
 - 仮想ネットワークとサブネットの IPv6 アドレス空間

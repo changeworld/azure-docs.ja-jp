@@ -2,18 +2,19 @@
 title: 強化学習 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: Personalizer では、より良い順位付けの提案を行う目的で、アクションと現在のコンテキストに関する情報が利用されます。 これらのアクションとコンテキストに関する情報は、特徴と呼ばれる属性またはプロパティです。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6ad6414060bc744a85aaecfc8b9ceeac8dd57d30
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87132740"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830758"
 ---
 # <a name="what-is-reinforcement-learning"></a>強化学習とは
 

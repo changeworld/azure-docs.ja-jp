@@ -3,12 +3,12 @@ title: REST API を使用して Azure ファイル共有を復元する
 description: REST API を使用して、Azure Backup によって作成された復元ポイントから Azure ファイル共有または特定のファイルを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7673379df250892671eb01fd2635cca651f69b04
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88761799"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457439"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>REST API を使用して Azure ファイル共有を復元する
 
@@ -33,7 +33,7 @@ ms.locfileid: "88761799"
 
 ## <a name="fetch-containername-and-protecteditemname"></a>ContainerName と ProtectedItemName をフェッチする
 
-復元関連の API 呼び出しのほとんどでは、{containerName} と {protectedItemName} の URI パラメーターに値を渡す必要があります。 これらのパラメーターの値を取得するには、[GET backupprotectableitems](/rest/api/backup/protecteditems/get) 操作の応答本文の ID 属性を使用します。 この例では、保護するファイル共有の ID は次のとおりです。
+復元関連の API 呼び出しのほとんどでは、{containerName} と {protectedItemName} の URI パラメーターに値を渡す必要があります。 これらのパラメーターの値を取得するには、[GET backupprotectableitems](/rest/api/backup/protected-items/get) 操作の応答本文の ID 属性を使用します。 この例では、保護するファイル共有の ID は次のとおりです。
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -58,7 +58,7 @@ URI の値を次のように設定します。
 * {protectedItemName}: *azurefileshare;azurefiles*
 * {ResourceGroupName}: *azurefiles*
 
-GET URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません。
+GET URI には、すべての必須パラメーターが含まれます。 別の要求本文は必要ありません。
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13
@@ -160,7 +160,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Azure ファイル共有の復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-名前 |  Type   |   説明
+名前 |  型   |   説明
 --- | ---- | ----
 Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパティ
 
@@ -370,7 +370,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Azure ファイル共有の復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-名前 |  Type   |   説明
+名前 |  型   |   説明
 --- | ---- | ----
 Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパティ
 

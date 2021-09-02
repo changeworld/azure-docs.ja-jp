@@ -1,20 +1,20 @@
 ---
-title: Azure Percept Audio と音声モジュールに関する問題のトラブルシューティング
+title: Azure Percept Audio と音声モジュールのトラブルシューティング
 description: Azure Percept Audio と azureearspeechclientmodule のトラブルシューティングのヒントを得る
-author: mimcco
-ms.author: mimcco
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ded0fe7150fae280bd2d2e33bc314c1cb8add106
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 00f3694201d3aaf876d642e67e5b523f6fb50547
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072492"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222725"
 ---
-# <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Azure Percept Audio と音声モジュールのトラブルシューティング
+# <a name="troubleshoot-azure-percept-audio-and-speech-module"></a>Azure Percept Audio と音声モジュールのトラブルシューティング
 
 音声アシスタント アプリケーションの問題をトラブルシューティングするには、以下のガイドラインを使用してください。
 

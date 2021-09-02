@@ -1,37 +1,37 @@
 ---
-title: Visual Studio Code を使用してシングルテナントの Azure Logic Apps でワークフローを作成する
-description: シングルテナントの Azure Logic Apps と Visual Studio Code を使用して、アプリ、データ、サービス、システムを統合する自動化されたワークフローを作成します。
+title: Visual Studio Code でシングルテナント Azure Logic Apps (Standard) を使用してワークフローを作成する
+description: Visual Studio Code でシングルテナント Azure Logic Apps (Standard) を使用して、アプリ、データ、サービス、システムを統合する自動化されたワークフローを作成します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 9507f8877be033772acb34fbbbe7996c38fca6ad
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/13/2021
+ms.openlocfilehash: 776068748b9cd7e90b9d9418bdf9a31fe36ff180
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370035"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733756"
 ---
-# <a name="create-an-integration-workflow-using-single-tenant-azure-logic-apps-and-visual-studio-code"></a>シングルテナントの Azure Logic Apps と Visual Studio Code を使用して統合ワークフローを作成する
+# <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-visual-studio-code"></a>Visual Studio Code でシングルテナント Azure Logic Apps (Standard) を使用して統合ワークフローを作成する
 
-この記事では、**Logic App (Standard)** のリソースの種類、Visual Studio Code、**Azure Logic Apps (Standard)** の拡張機能を使用して、自動化された統合ワークフローの例を作成する方法について説明します。 Visual Studio Code でこのロジック アプリ ワークフローを作成する場合、"*ローカル*" の開発環境でワークフローを実行およびテストすることができます。
+この記事では、**Azure Logic Apps (Standard)** 拡張機能で Visual Studio Code を使用して、*シングルテナント* Azure Logic Apps 環境で実行される自動化された統合ワークフローの例を作成する方法について説明します。 この拡張機能を使用して作成するロジック アプリは、次の機能を提供するリソースの種類 **Logic App (Standard)** に基づいています。
 
-Azure Logic Apps のコンテナー化されたランタイムが再設計されたため、準備が整ったら、"*シングルテナントの Azure Logic Apps 環境*" または Azure Functions を実行できる任意の場所にデプロイできます。 マルチテナントの AzureLogic Apps 環境で機能するマルチテナントの **Azure Logic Apps (従量課金)** 拡張機能と比較して、シングルテナントの **Azure Logic Apps (Standard)** 拡張機能には、次の属性を持つロジック アプリを作成する機能が用意されています。
+* Visual Studio Code 開発環境内でローカルにロジック アプリ ワークフローを実行およびテストできます。
 
-* **Logic App (Standard)** リソースの種類は、ご使用の開発環境で、シングルテナントの Azure Logic Apps 環境またはコンテナーなどの Azure Functions を実行できる任意の場所でローカルに実行される複数の [ステートフルおよびステートレスのワークフロー](single-tenant-overview-compare.md#stateful-stateless)をホストできます。 この属性により、ワークフローの柔軟性と移植性が提供されます。
+* ロジック アプリには複数の[ステートフルおよびステートレスのワークフロー](single-tenant-overview-compare.md#stateful-stateless)を含めることができます。
 
-* **Logic App (Standard)** リソースでは、同じロジック アプリとテナントのワークフローは、再設計された Azure Logic Apps ランタイムと同じプロセスで実行されるため、同じリソースを共有し、パフォーマンスが向上します。
+* 同じロジック アプリとテナントのワークフローは、Azure Logic Apps ランタイムと同じプロセスで実行されるため、同じリソースを共有し、パフォーマンスが向上します。
 
-* **Logic App (Standard)** リソースは、Azure に直接、または Azure Functions を実行できる任意の場所 (コンテナーなど) にデプロイできます。
+* Azure Logic Apps のコンテナー化されたランタイムにより、リソースの種類 **Logic App (Standard)** は、シングルテナント Azure Logic Apps 環境、または Azure Functions を実行できるあらゆる場所 (コンテナーを含む) に直接デプロイできます。
 
-**Logic App (Standard)** のリソースの種類とシングルテナント モデルの詳細については、[シングルテナントとマルチテナントおよび統合サービス環境](single-tenant-overview-compare.md)に関する記事を参照してください。
+シングルテナント Azure Logic Apps オファリングの詳細については、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を参照してください。
 
 ワークフローの例はクラウドベースであり、ステップは 2 つだけですが、クラウド、オンプレミス、ハイブリッド環境全体でさまざまなアプリ、データ、サービス、システムを接続できる数百の操作からワークフローを作成できます。 このワークフローの例は、組み込みの Request トリガーから始まり、Office 365 Outlook アクションが続きます。 このトリガーは、ワークフローの呼び出し可能なエンドポイントを作成し、任意の呼び出し元からの受信 HTTPS 要求を待機します。 トリガーが要求を受信して起動すると、次のアクションは、トリガーから選択した出力と共に、指定したメール アドレスに電子メールを送信することで実行されます。
 
 > [!TIP]
 > Office 365 アカウントをお持ちでない場合は、電子メール アカウントからメッセージを送信できる他の使用可能なアクション (Outlook.com など) を使用できます。
-> 
+>
 > 代わりに Azure portal を使用してこのワークフローの例を作成するには、[シングル テナントの Azure Logic Apps と Azure portal を使用して統合ワークフローを作成する](create-single-tenant-workflows-azure-portal.md)に関するページの手順に従います。 
 > どちらのオプションでも、同じ種類の環境でロジック アプリ ワークフローを開発、実行、デプロイする機能が提供されます。 
 > ただし、Visual Studio Code を使用すると、ご使用の開発環境でワークフローを "*ローカル*" で開発、テスト、実行できます。
@@ -114,7 +114,7 @@ Visual Studio Code でローカル開発を行う場合は、ローカルの開�
 
 * [組み込みの HTTP Webhook トリガー](../connectors/connectors-native-webhook.md)など、Webhook ベースのトリガーとアクションを Visual Studio Code でローカルに実行するには、[コールバック URL への転送を設定する](#webhook-setup)必要があります。
 
-* この記事のワークフローの例をテストするには、Request トリガーによって作成されたエンドポイントに呼び出しを送信できるツールが必要です。 このようなツールがない場合は、[Postman](https://www.postman.com/downloads/) をダウンロードしてインストールし、使用することができます。
+* この記事のワークフローの例をテストするには、Request トリガーによって作成されたエンドポイントに呼び出しを送信できるツールが必要です。 このようなツールがない場合は、[Postman](https://www.postman.com/downloads/) アプリをダウンロードしてインストールし、使用することができます。
 
 * [Application Insights](../azure-monitor/app/app-insights-overview.md) の使用をサポートする設定を使用してロジック アプリ リソースを作成する場合は、必要に応じて、ロジック アプリの診断ログとトレースを有効にすることができます。 ロジック アプリを作成するとき、またはデプロイの後に、それを行うことができます。 Application Insights のインスタンスを用意する必要がありますが、このリソースは、[事前に](../azure-monitor/app/create-workspace-resource.md)、ロジック アプリを作成するときに、またはデプロイの後で、作成することができます。
 
@@ -214,43 +214,6 @@ Visual Studio Code でローカル開発を行う場合は、ローカルの開�
 
    ![プロジェクト フォルダー、ワークフロー フォルダー、"workflow. json" ファイルが表示されている [エクスプローラー] ペインのスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/local-project-created.png)
 
-1. macOS または Linux を使用している場合は、次の手順に従って、ストレージ アカウントへのアクセスを設定します。この操作は、プロジェクトをローカルで実行するために必要です。
-
-   1. プロジェクトのルート フォルダーで、**local.settings.json** ファイルを開きます。
-
-      ![[エクスプローラー] ペインとプロジェクトの "local.settings.json" ファイルが示されているスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/local-settings-json-files.png)
-
-   1. `AzureWebJobsStorage` プロパティの値を、前に保存したストレージ アカウントの接続文字列に置き換えます。次に例を示します。
-
-      次の処理の前
-
-      ```json
-      {
-         "IsEncrypted": false,
-         "Values": {
-            "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-          }
-      }
-      ```
-
-      次の処理の後
-
-      ```json
-      {
-         "IsEncrypted": false,
-         "Values": {
-            "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net",
-           "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-         }
-      }
-      ```
-
-      > [!IMPORTANT]
-      > 運用環境のシナリオでは、たとえば、キー コンテナーを使用して、このようなシークレットや機密情報を保護し、セキュリティで保護するようにしてください。
-
-   1. 完了したら、変更を保存してください。
-
 <a name="enable-built-in-connector-authoring"></a>
 
 ## <a name="enable-built-in-connector-authoring"></a>組み込みコネクタの作成を有効にする
@@ -315,7 +278,7 @@ Visual Studio Code でローカル開発を行う場合は、ローカルの開�
 
    ![エクスプローラー ウィンドウとリソース グループ名のボックスを示すスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/enter-name-for-resource-group.png)
 
-1. 場所の一覧で、リソース グループとリソースの作成に使用する Azure リージョンを見つけて選択します。 この例では、 **[米国中西部]** を使用します。
+1. 場所の一覧で、リソース グループとリソースの作成に使用する Azure リージョンを選択します。 この例では、 **[米国中西部]** を使用します。
 
    ![エクスプローラー ウィンドウと場所の一覧が表示され、[米国中西部] が選択されているスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/select-azure-region.png)
 
@@ -369,7 +332,7 @@ Visual Studio Code でローカル開発を行う場合は、ローカルの開�
 
    デザイナーに **[操作を選択してください]** というプロンプトが表示され、次のアクションを選択できるように **[アクションの追加]** ペインが再び表示されます。
 
-1. Azure にデプロイされているマネージド コネクタのアクションを見つけて選択できるように、 **[アクションの追加]** ウィンドウの **[操作の選択]** 検索ボックスで **[Azure]** を選択します。
+1. Azure にデプロイされているマネージド コネクタのアクションを選択できるように、 **[アクションの追加]** ペインの **[操作の選択]** 検索ボックスで **[Azure]** を選択します。
 
    この例では、Office 365 Outlook アクション **[メールの送信 (V2)]** を選択して使用します。
 
@@ -469,7 +432,7 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
    > プロンプトが再び表示されるようにするには、プロジェクトのルート レベルで **local.settings.json** ファイルのショートカット メニューを開き、 **[Configure Webhook Redirect Endpoint]\(Webhook リダイレクト エンドポイントの構成\)** を選択します。 これでプロンプトが表示されるので、転送 URL を指定できるようになります。
 
    Visual Studio Code によって、転送 URL がプロジェクトのルート フォルダー内の **local.settings.json** ファイルに追加されます。 `Values` オブジェクトに `Workflows.WebhookRedirectHostUri` という名前のプロパティが表示されるようになり、転送 URL に設定されます。たとえば、次のようになります。
-   
+
    ```json
    {
       "IsEncrypted": false,
@@ -573,7 +536,7 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
 
    1. **[すべてのコレクション]** で、要求を整理するために作成するコレクションの名前を指定して Enter キーを押し、 **[<*コレクション名*> に保存]** を選択します。 この例では、`Logic Apps requests` というコレクション名を使用しています。
 
-      Postman の要求ウィンドウが開き、Request トリガーのコールバック URL に要求を送信できるようになります。
+      Postman の要求ペインが開き、Request トリガーのコールバック URL に要求を送信できるようになります。
 
       ![要求ウィンドウを開いた Postman を示すスクリーンショット](./media/create-single-tenant-workflows-visual-studio-code/postman-request-pane.png)
 
@@ -707,7 +670,7 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
 
 <a name="firewall-setup"></a>
 
-##  <a name="find-domain-names-for-firewall-access"></a>ファイアウォール アクセス用のドメイン名を検索する
+## <a name="find-domain-names-for-firewall-access"></a>ファイアウォール アクセス用のドメイン名を検索する
 
 ロジック アプリのワークフローをデプロイして Azure portal で実行する前に、環境内にトラフィックを制限する厳しいネットワーク要件またはファイアウォールがある場合は、ワークフロー内に存在するすべてのトリガーまたはアクション接続に対するアクセス許可を設定する必要があります。
 
@@ -715,7 +678,7 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
 
 1. ロジック アプリ プロジェクトで、**connections.js** ファイル (最初の接続ベースのトリガーまたはアクションをワークフローに追加した後に作成されます) を開いて、`managedApiConnections` オブジェクトを検索します。
 
-1. 作成した接続ごとに、`connectionRuntimeUrl` プロパティ値を見つけてコピーし、安全な場所に保存して、この情報を使用してファイアウォールを設定できるようにします。
+1. 作成した接続ごとに、`connectionRuntimeUrl` プロパティ値をコピーし、安全な場所に保存して、この情報を使用してファイアウォールを設定できるようにします。
 
    この例の **connections.js** ファイルには、これらの `connectionRuntimeUrl` 値を含む 2 つの接続 (AS2 接続と Office 365 接続) が含まれています。
 
@@ -794,9 +757,9 @@ Visual Studio Code から、プロジェクトを Azure に直接発行するこ
 
    1. ホスティング プランの名前を入力して、選択したプランの価格レベルを選択します。
 
-      詳細については、[ホスティング プランと価格レベル](logic-apps-pricing.md#standard-pricing)に関する記事を参照してください。
+      詳細については、「[ホスティング プランと価格レベル](logic-apps-pricing.md#standard-pricing)」を参照してください。
 
-   1. 最適なパフォーマンスを得るには、デプロイ用のプロジェクトと同じリソース グループを見つけて選択します。
+   1. 最適なパフォーマンスを得るには、デプロイ用のプロジェクトと同じリソース グループを選択します。
 
       > [!NOTE]
       > 別のリソース グループを作成したり、使用したりすることはできますが、パフォーマンスに影響を与える可能性があります。 別のリソース グループを作成または選択した場合、確認プロンプトが表示された後にキャンセルすると、デプロイも取り消されます。
@@ -955,7 +918,7 @@ Visual Studio Code では、リソースの種類が元の **[Logic Apps]** で�
 
    ![開いている "Azure Logic Apps (Standard)" 拡張機能ウィンドウとデプロイされたワークフローが示された Visual Studio Code を示すスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
-1. ロジック アプリのすべてのワークフローを表示するには、ロジック アプリを展開した後、 **[ワークフロー]** ノードを展開します。
+1. ロジック アプリのすべてのワークフローを表示するには、ロジック アプリを展開した後、 **[ワークフロー]** という名前のノードを展開します。
 
 1. 特定のワークフローを表示するには、ワークフローのショートカット メニューを開き、 **[デザイナーで開く]** を選択します。これにより、ワークフローが読み取り専用モードで開きます。
 
@@ -963,7 +926,7 @@ Visual Studio Code では、リソースの種類が元の **[Logic Apps]** で�
 
    * Visual Studio Code のワークフロー デザイナーでプロジェクトの **workflow.json** ファイルを開き、編集を行って、ロジック アプリを Azure に再デプロイします。
 
-   * Azure portal で、[ご利用のロジック アプリを検索して開きます](#manage-deployed-apps-portal)。 ワークフローを検索、編集、保存します。
+   * Azure portal 上で[ロジック アプリを開きます](#manage-deployed-apps-portal)。 その後、ワークフローを開き、編集し、保存できます。
 
 1. デプロイされたロジック アプリを Azure portal で開くには、ロジック アプリのショートカット メニューを開き、 **[ポータルで開く]** を選択します。
 
@@ -991,7 +954,7 @@ Visual Studio Code では、リソースの種類が元の **[Logic Apps]** で�
 
   1. Visual Studio Code の左側のツールバーで、[Azure] アイコンを選択します。 
   1. **[Azure: Logic Apps (Standard)]** ウィンドウで、サブスクリプションを展開します。これによって、そのサブスクリプションにデプロイされているすべてのロジック アプリが表示されます。
-  1. ロジック アプリを展開し、 **[ワークフロー]** ノードを展開します。
+  1. ロジック アプリを展開し、 **[ワークフロー]** という名前のノードを展開します。
   1. ワークフローを開き、そのワークフローのトリガーの任意の部分を編集します。
   1. 変更を保存します。 この手順により、トリガーの現在の状態がリセットされます。
   1. 各ワークフローに対してこの手順を繰り返します。
@@ -1007,7 +970,7 @@ Visual Studio Code では、リソースの種類が元の **[Logic Apps]** で�
 
 * Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
 
-* ワークフローを削除してから同じワークフローを再作成しても、再作成されたワークフローに、削除したワークフローと同じメタデータが割り当てられることはありません。 削除したワークフローの呼び出し元となったワークフローを再保存する必要があります。 これにより、呼び出し元は、再作成されたワークフローの正しい情報を取得します。 それ以外の場合、再作成したワークフローの呼び出しは、`Unauthorized` エラーで失敗します。 この動作は、統合アカウントのアーティファクトを使用するワークフローや、Azure 関数を呼び出すワークフローにも当てはまります。
+* ワークフローを削除してから同じワークフローを再作成しても、再作成されたワークフローに、削除したワークフローと同じメタデータが割り当てられることはありません。 メタデータを最新の情報に更新するために、削除したワークフローの呼び出し元となったワークフローを再保存する必要があります。 これにより、呼び出し元は、再作成されたワークフローの正しい情報を取得します。 それ以外の場合、再作成したワークフローの呼び出しは、`Unauthorized` エラーで失敗します。 この動作は、統合アカウントのアーティファクトを使用するワークフローや、Azure 関数を呼び出すワークフローにも当てはまります。
 
 <a name="manage-deployed-apps-portal"></a>
 
@@ -1019,7 +982,7 @@ Visual Studio Code では、リソースの種類が元の **[Logic Apps]** で�
 
    ![検索テキスト "logic app" が入力された Azure portal の検索ボックスを示すスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/portal-find-logic-app-resource.png)
 
-1. **[Logic App (Standard)]** ウィンドウで、Visual Studio Code からデプロイしたロジック アプリを探して選択します。
+1. **[Logic App (Standard)]** ペインで、Visual Studio Code からデプロイしたロジック アプリを選択します。
 
    ![Azure portal と、Azure でデプロイされた Logic App (Standard) リソースを示すスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/logic-app-resources-pane.png)
 
@@ -1051,7 +1014,7 @@ Visual Studio Code では、リソースの種類が元の **[Logic Apps]** で�
 
 Azure portal を使用すると、Visual Studio Code からデプロイした **Logic App (Standard)** リソースに空のワークフローを追加し、それらのワークフローを Azure portal でビルドできます。
 
-1. [Azure portal](https://portal.azure.com) で、デプロイされた **Logic App (Standard)** リソースを見つけて選択します。
+1. [Azure portal](https://portal.azure.com) 上で、デプロイされた **Logic App (Standard)** リソースを選択します。
 
 1. ロジック アプリのメニューで、 **[ワークフロー]** を選択します。 **[ワークフロー]** ウィンドウで、 **[追加]** を選択します。
 
@@ -1073,7 +1036,7 @@ Azure portal を使用すると、Visual Studio Code からデプロイした **
 
 ステートレス ワークフローをさらに簡単にデバッグするには、そのワークフローの実行履歴を有効にした後、完了したら実行履歴を無効にすることができます。 Visual Studio Code の場合は、こちらの手順のようにします。Azure portal で作業している場合は、[Azure portal でシングルテナント ベースのワークフローを作成する](create-single-tenant-workflows-azure-portal.md#enable-run-history-stateless)に関するセクションを参照してください。
 
-1. Visual Studio Code プロジェクトで、**workflow-designtime** フォルダーを展開し、**local.settings.json** ファイルを開きます。
+1. Visual Studio Code プロジェクトで、**workflow-designtime** という名前のフォルダーを展開し、**local.settings.json** ファイルを開きます。
 
 1. `Workflows.{yourWorkflowName}.operationOptions` プロパティを追加し、値を `WithStatelessRunHistory` に設定します。次に例を示します。
 
@@ -1112,7 +1075,7 @@ Azure portal を使用すると、Visual Studio Code からデプロイした **
 
 Visual Studio Code から Azure に **Logic App (Standard)** リソースをデプロイすると、Azure portal とそのワークフローの **[監視]** エクスペリエンスを使用して、そのリソース内のワークフローの利用可能な実行履歴と詳細を確認できます。 ただし、最初に、そのロジック アプリ リソースで **監視** ビュー機能を有効にする必要があります。
 
-1. [Azure portal](https://portal.azure.com) で、デプロイされた **Logic App (Standard)** リソースを見つけて選択します。
+1. [Azure portal](https://portal.azure.com) 上で、デプロイされた **Logic App (Standard)** リソースを選択します。
 
 1. そのリソースのメニューで、 **[API]** の下にある **[CORS]** を選択します。
 
@@ -1268,7 +1231,7 @@ Application Insights が開いたら、ロジック アプリのさまざまな�
 
 デバッグ セッションを開始しようとすると、 **"Error exists after running preLaunchTask 'generateDebugSymbols' (preLaunchTask 'generateDebugSymbols' の実行後にエラーがあります)"** というエラーが発生します。 この問題を解決するには、プロジェクト内の **tasks.json** ファイルを編集して、シンボルの生成をスキップします。
 
-1. プロジェクト内で **.vscode** フォルダーを展開し、**tasks.json** ファイルを開きます。
+1. プロジェクト内で、 **.vscode** という名前のフォルダーを展開し、**tasks.json** ファイルを開きます。
 
 1. 次のタスクで、`"dependsOn: "generateDebugSymbols"` という行と、前の行の末尾のコンマを削除し、次のようにします。
 

@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Hub を使用して音声アシスタント アプリケーションを構成する
+title: Azure Percept 音声アシスタント アプリケーションを構成する
 description: Azure IoT Hub を使用して音声アシスタント アプリケーションを構成する
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01e7fd180448639f9dc2440b546746046d9097aa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ed9a6bcc77e94b569e10a439b044ce78a90faff2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743732"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226821"
 ---
-# <a name="configure-your-voice-assistant-application-using-azure-iot-hub"></a>Azure IoT Hub を使用して音声アシスタント アプリケーションを構成する
+# <a name="configure-your-azure-percept-voice-assistant-application"></a>Azure Percept 音声アシスタント アプリケーションを構成する
 
 この記事では、IoT Hub を使用して、音声アシスタント アプリケーションを構成する方法について説明します。 音声アシスタントを作成するプロセスの手順を説明したチュートリアルについては、[Azure Percept Studio と Azure Percept Audio による、コーディングなしの音声アシスタントの作成](./tutorial-no-code-speech.md)に関するページを参照してください。
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85c6d8520938ffc859a7116d1dc9e61cb26534e4
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f9ed7b31625275c808555534fcd49314444ab0ad
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030559"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114388149"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 
@@ -164,6 +164,10 @@ Azure portal でログにアクセスする方法はいくつかあります。 
 ![クライアント アプリ フィルター](./media/concept-sign-ins/client-app-filter.png)
 
 
+> [!NOTE]
+> プライバシーに関するコミットメントにより、テナント間のシナリオの場合、Azure AD によってこのフィールドがホーム テナントに設定されることはありません。
+
+
 |名前|先進認証|説明|
 |---|:-:|---|
 |認証済み SMTP| |電子メール メッセージを送信するために POP および IMAP のクライアントで使用されます。|
@@ -182,6 +186,10 @@ Azure portal でログにアクセスする方法はいくつかあります。 
 |POP3| |POP3 を使用して電子メールを取得する従来のメール クライアント。|
 |レポート Web サービス| |Exchange Online でレポート データを取得するために使用されます。|
 |その他のクライアント| |クライアント アプリが含まれていない、または不明であるユーザーのサインインの試行をすべて表示します。|
+
+
+
+
 
 
 

@@ -8,12 +8,12 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: 74bc41fb84f63f4705da95f80d6f27dea009ea43
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d010d079aaeded441fa7b846435cdaef0dfedd74
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866737"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389120"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーの共同販売を構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "122866737"
 - Azure Container
 - Azure Virtual Machine
 - コンサルティング サービス
-- Dynamics 365 for Customer Engagement & Power Apps
+- Dynamics 365 for Customer Engagement および PowerApps
 - Dynamics 365 for Operations
 - Dynamics 365 Business Central
 - IoT Edge モジュール

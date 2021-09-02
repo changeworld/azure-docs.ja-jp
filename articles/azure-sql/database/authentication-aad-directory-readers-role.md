@@ -8,22 +8,19 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: d764c6b6cff6a0ba23d659d4fda63e21aac9b155
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/30/2021
+ms.openlocfilehash: 738338c4f3931e97965e697ca1bf316018a495c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644177"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735589"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-> [!NOTE]
-> この記事にある機能は **パブリック プレビュー** 段階です。
-
-Azure Active Directory (Azure AD) に、[クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)](../../active-directory/roles/groups-concept.md) 方法が導入されました。 これにより、Azure AD ロールをグループに割り当てることができます。
+Azure Active Directory (Azure AD) に、[Azure AD グループを使用してロールの割り当てを管理する (プレビュー)](../../active-directory/roles/groups-concept.md) 方法が導入されました。 これにより、Azure AD ロールをグループに割り当てることができます。
 
 Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics に対して [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) を有効にする場合、[Azure AD Graph API](/graph/migrate-azure-ad-graph-planning-checklist) に対する読み取りアクセスを許可するには Azure AD [**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)ロールをその ID に割り当てる必要があります。 SQL Database と Azure Synapse におけるマネージド ID は、サーバー ID と呼ばれます。 SQL Managed Instance のマネージド ID はマネージド インスタンス ID と呼ばれ、これはインスタンスの作成時に自動的に割り当てられます。 SQL Database または Azure Synapse にサーバー ID を割り当てる方法の詳細については、「[サービス プリンシパルが Azure AD ユーザーを作成できるようにする](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users)」を参照してください。
 
@@ -45,7 +42,7 @@ SQL Managed Instance では、[マネージド インスタンスの Azure AD �
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>Azure AD グループへのディレクトリ閲覧者ロールの付与
 
-現在は **パブリック プレビュー** 段階にありますが、[グローバル管理者](../../active-directory/roles/permissions-reference.md#global-administrator)または [特権ロール管理者](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)が Azure AD グループを作成し、[**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)権限をそのグループに割り当てることができるようになりました。 これにより、このグループのメンバーは Azure AD Graph API にアクセスできるようになります。 さらに、このグループの所有者である Azure AD ユーザーは、このグループに新しいメンバーを割り当てることができます (Azure SQL 論理サーバーの ID を含む)。
+[グローバル管理者](../../active-directory/roles/permissions-reference.md#global-administrator)または [特権ロール管理者](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)が Azure AD グループを作成し、[**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)権限をそのグループに割り当てることができるようになりました。 これにより、このグループのメンバーは Azure AD Graph API にアクセスできるようになります。 さらに、このグループの所有者である Azure AD ユーザーは、このグループに新しいメンバーを割り当てることができます (Azure SQL 論理サーバーの ID を含む)。
 
 このソリューションでは、グループを作成してユーザーを 1 回限りのアクティビティとして割り当てるには、これまでと変わらず高い特権を持つユーザー (全体管理者または特権ロール管理者) が必要になりますが、今後は Azure AD グループの所有者が、追加のメンバーを割り当てることができるようになります。 これにより、将来的には、Azure ADテナント内のすべての SQL Database、SQL Managed Instance、または Azure Synapse サーバーを構成するために、高い特権を持つユーザーに関与してもらう必要がなくなります。
 

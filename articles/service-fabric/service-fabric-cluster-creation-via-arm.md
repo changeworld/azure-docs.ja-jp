@@ -4,12 +4,12 @@ description: Azure で Azure Resource Manager を使用してセキュリティ�
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3f3d76b1cea2e1ed06f50bbdfbf4343972bc3945
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 7323f6762fe6c55f1ab548f1c8196ee761014a2d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671035"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463879"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
@@ -57,16 +57,14 @@ az account set --subscription $subscriptionId
 
 ### <a name="use-the-default-cluster-template-that-ships-in-the-module"></a>モジュールに付属する既定のクラスター テンプレートを使用する
 
-次のコマンドを使用し、最小限のパラメーターと既定のテンプレートを指定して、簡単にクラスターを作成します。
+次の PowerShell または Azure CLI のいずれかのコマンドを使用し、既定のテンプレートを使用して、クラスターをすばやく作成します。
 
-ここで使用されているテンプレートは、[Azure Service Fabric テンプレート サンプル: Windows テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)と [Ubuntu テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)のページで入手できます。
+使用されている既定のテンプレートは、[Windows の場合はこちら](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)から、[Ubuntu の場合はこちら](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)から入手できます。
 
-次のコマンドでは、Windows または Linux のクラスターを作成できます。どちらかの OS を指定する必要があります。 次の PowerShell/CLI コマンドでは、指定した *CertificateOutputFolder* に証明書も出力されます。ただし、証明書フォルダーはあらかじめ作成しておく必要があります。 このコマンドは、VM SKU など他のパラメーターも受け取ります。
+以下のコマンドを実行すると、OS パラメーターをどのように指定したかに応じて、Windows クラスターまたは Linux クラスターのいずれかを作成できます。 PowerShell コマンド/CLI コマンドのどちらも、指定した *CertificateOutputFolder* に証明書が出力されます (コマンドを実行する前に、指定した証明書フォルダの場所が既に存在することを確認してください)。
 
 > [!NOTE]
-> 次の PowerShell コマンドを Azure PowerShell `Az` モジュールで使用できます。 Azure Resource Manager PowerShell の現在のバージョンを確認するには、PowerShell コマンド "Get-Module Az" を実行します。 Azure Resource Manager PowerShell のバージョンをアップグレードするには、[こちらのリンク](/powershell/azure/install-Az-ps)に従ってください。 
->
->
+> 次の PowerShell コマンドを Azure PowerShell `Az` モジュールで使用できます。 Azure Resource Manager PowerShell の現在のバージョンを確認するには、PowerShell コマンド "Get-Module Az" を実行します。 Azure Resource Manager PowerShell のバージョンをアップグレードするには、[こちらのリンク](/powershell/azure/install-Az-ps)に従ってください。
 
 PowerShell を使用してクラスターを展開します。
 
@@ -158,12 +156,13 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ## <a name="create-a-new-cluster-using-your-own-x509-certificate"></a>独自の X.509 証明書を使用して新しいクラスターを作成する
 
-クラスターのセキュリティ保護に使用する証明書を持っている場合は、次のコマンドを使用してクラスターを作成します。
+既存の証明書を指定して新しいクラスターを作成し、そのセキュリティを確保するには、次のコマンドを使用します。
 
 CA で署名された証明書で、他の用途にも使用する予定がある場合は、Key Vault 専用のリソース グループを用意することをお勧めします。 Key Vault は専用のリソース グループに配置することをお勧めします。 そうすることで、必要なキーとシークレットを失うことなく、コンピューティング リソース グループやストレージ リソース グループを削除することができます (Service Fabric クラスターのあるリソース グループを含む)。 **Key Vault を持つリソース グループは、それを使用するクラスターと *同じリージョンにある必要があります*。**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>モジュールに付属する既定の 5 ノードと 1 ノード タイプのテンプレートを使用する
-ここで使用されているテンプレートは、[Azure サンプル: Windows テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)と [Ubuntu テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)のページで入手できます。
+
+使用されている既定のテンプレートは、[Windows の場合はこちら](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)から、[Ubuntu の場合はこちら](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)から入手できます。
 
 PowerShell を使用してクラスターを展開します。
 
@@ -285,7 +284,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 テンプレートを使用するための JSON の構文とプロパティについては、[Microsoft.ServiceFabric/clusters のテンプレート リファレンス](/azure/templates/microsoft.servicefabric/clusters)に関するページを参照してください。
 
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
+[azure-powershell]:/powershell/azure/install-Az-ps
+[azure-CLI]:/cli/azure/get-started-with-azure-cli
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

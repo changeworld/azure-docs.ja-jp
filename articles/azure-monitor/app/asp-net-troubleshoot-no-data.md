@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 2a301efe2ea7c6c74d503fda4a9bbf63f8ce7f80
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 828eab154c09e3e623b5cfb84d6fc72d2bd480f5
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061580"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616147"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -38,9 +38,9 @@ ms.locfileid: "112061580"
 * これはおそらくファイアウォールの問題です。 [Application Insights がデータを送信できるようにファイアウォールの例外を設定](../../azure-monitor/app/ip-addresses.md)してください。
 * IIS サーバーに、.NET 拡張機能 4.5 または ASP.NET 4.5 などの前提条件がない可能性があります。
 
-*既存のアプリを監視するために、Web サーバーに [Status Monitor をインストール](./monitor-performance-live-website-now.md)したのですが、結果がまったく表示されません。*
+*[既存のアプリを監視するために Web サーバーに Azure Monitor Application Insights Agent](./status-monitor-v2-overview.md) をインストールしたのですが、結果がまったく表示されません。*
 
-* 「 [Status Monitor のトラブルシューティング](./monitor-performance-live-website-now.md#troubleshoot)」を参照してください。
+* 「 [Status Monitor のトラブルシューティング](./status-monitor-v2-troubleshoot.md)」を参照してください。
 
 > [!IMPORTANT]
 > インストルメンテーション キーよりも、[接続文字列](./sdk-connection-string.md?tabs=net)を使用することをお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 接続文字列により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
@@ -185,13 +185,13 @@ Application Insights をインストールしているとき、またはログ �
 [依存関係のテレメトリ](./asp-net-dependencies.md)に関する記事と[例外のテレメトリ](asp-net-exceptions.md)に関する記事をご覧ください。
 
 ## <a name="no-performance-data"></a>パフォーマンス データが表示されない
-パフォーマンス データ (CPU、IO レートなど) は、[Java Web サービス](java-2x-collectd.md)、[Windows デスクトップ アプリ](./windows-desktop.md)、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](./monitor-performance-live-website-now.md)、[Azure Cloud Services](./app-insights-overview.md) で使用できます。 パフォーマンス データは、[設定] の [サーバー] の下にあります。
+パフォーマンス データ (CPU、IO 量など) は、[Java Web サービス](java-2x-collectd.md)、[Windows デスクトップ アプリ](./windows-desktop.md)、[IIS Web アプリおよびサービス (Application Insights Agent がインストールされている場合)](./status-monitor-v2-overview.md)、および [Azure Cloud Services](./app-insights-overview.md) で使用できます。 パフォーマンス データは、[設定] の [サーバー] の下にあります。
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>サーバーにアプリを発行して以来、(サーバー) データが得られない
 * すべての Microsoft. ApplicationInsights DLL が Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll と一緒にサーバーにコピーされたことを確認します。
 * ファイアウォールで、[一部の TCP ポートを開く](./ip-addresses.md)ことが必要な場合があります。
 * プロキシを使用して社内ネットワークの外に送信しなければならない場合は、Web.config に [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) を設定します。
-* Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217) がインストールされていることを確認します。
+* Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://www.microsoft.com/download/details.aspx?id=28936) がインストールされていることを確認します。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
 * データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。

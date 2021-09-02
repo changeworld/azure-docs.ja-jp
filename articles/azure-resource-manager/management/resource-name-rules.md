@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: a7d0d934549d1dd06099bc02105cf2dcfdaa0109
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.date: 07/08/2021
+ms.openlocfilehash: a068f28ada85f73aed339956e242c959d6dcb4d3
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202859"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688309"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -171,6 +171,7 @@ ms.locfileid: "108202859"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | availabilitySets | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
+> | cloudservices | resource group | 1 ～ 15 <br><br>下記の「注意」を参照。 | スペースまたは次の文字は使用できません:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
 > | diskEncryptionSets | resource group | 1 ～ 80 | 英数字とアンダースコア。 |
 > | disks | resource group | 1 ～ 80 | 英数字、アンダースコア、およびハイフン。 |
 > | galleries | resource group | 1 ～ 80 | 英数字とピリオド。<br><br>先頭と末尾には英数字を使用します。 |
@@ -192,6 +193,13 @@ ms.locfileid: "108202859"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | communicationServices | グローバル | 1 ～ 63 | 英数字、ハイフン、およびアンダースコア。 |
+
+## <a name="microsoftconsumption"></a>Microsoft.Consumption
+
+> [!div class="mx-tableFixed"]
+> | Entity | Scope | 長さ | 有効な文字 |
+> | --- | --- | --- | --- |
+> | budgets | サブスクリプションまたはリソース グループ | 1 ～ 63 | 英数字、ハイフン、およびアンダースコア。 |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
@@ -261,7 +269,7 @@ ms.locfileid: "108202859"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | workspaces | resource group | 3-30 | 英数字、アンダースコア、およびハイフン |
+> | workspaces | resource group | 3-64 | 英数字、アンダースコア、およびハイフン |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -405,7 +413,7 @@ ms.locfileid: "108202859"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
-> | actionGroups | resource group | 1-260 | 次は使用できません:<br>`/&%\?` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+> | actionGroups | resource group | 1-260 | 次は使用できません:<br>`:<>+/&%\?` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 > | components | resource group | 1-260 | 次は使用できません:<br>`%&\?/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 > | scheduledQueryRules | resource group | 1-260 | 次は使用できません:<br>`*<>%{}&:\\?/#` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 > | metricAlerts | resource group | 1-260 | 次は使用できません:<br>`*#&+:<>?@%{}\/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |

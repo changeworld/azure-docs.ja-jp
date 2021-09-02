@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: c136f0f2a946eca0d89c04734c9f351d4e6c79d6
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: 8a66e42466f6b7ed85a330bb3bf3f1dda422e0d5
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113601139"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867545"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する
 
@@ -59,7 +59,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(省略可能) Power Automate を使用してリード通知を取得する
 
-[Power Automate](/flow/) を使用して、Azure Storage テーブルにリードが追加されるたびに通知を自動的に送信できます。 アカウントを持っていない場合は、[無料アカウントにサインアップ](https://flow.microsoft.com/)できます。
+[Power Automate](/power-automate/) を使用して、Azure Storage テーブルにリードが追加されるたびに通知を自動的に送信できます。 アカウントを持っていない場合は、[無料アカウントにサインアップ](https://flow.microsoft.com/)できます。
 
 ### <a name="lead-notification-example"></a>潜在顧客の通知の例
 

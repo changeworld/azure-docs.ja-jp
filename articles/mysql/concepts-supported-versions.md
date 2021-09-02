@@ -5,19 +5,20 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
+ms.custom: ''
 ms.date: 6/3/2020
-ms.openlocfilehash: 1804cef5baf70fad303c2813286e2bad500e63d7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2c212922ebf550b75ee140637717a48beec9de02
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073380"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652854"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 Azure Database for MySQL は、InnoDB ストレージ エンジンを使用して [MySQL Community Edition](https://www.mysql.com/products/community/) から開発されました。 このサービスは、コミュニティでサポートされている現在のメジャー バージョン (MySQL 5.6、5.7、8.0) をすべてサポートしています。 MySQL では、X.Y.Z の名前付けスキームが使用されています。ここで、X はメジャー バージョン、Y はマイナー バージョン、Z はバグ修正リリースです。 スキームの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)をご覧ください。
-
-
 
 ## <a name="connect-to-a-gateway-node-that-is-running-a-specific-mysql-version"></a>特定の MySQL バージョンが実行されているゲートウェイ ノードに接続する
 
@@ -34,7 +35,6 @@ Azure Database for MySQL サービスでは、ゲートウェイ ノードは、
 
 ## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL では、現在、次の MySQL メジャーおよびマイナー バージョンがサポートされています。
 
-
 | Version | [単一サーバー](overview.md) <br/> 現行のマイナー バージョン |[フレキシブル サーバー (プレビュー)](./flexible-server/overview.md) <br/> 現行のマイナー バージョン  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL バージョン 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (廃止) | サポートされていません|
@@ -44,6 +44,7 @@ Azure Database for MySQL サービスでは、ゲートウェイ ノードは、
 [バージョン サポート ポリシーのドキュメント](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)で、廃止されたバージョンのバージョン サポート ポリシーを参照してください。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
+
 このサービスでは、バグ修正バージョンの更新プログラムの適用が自動管理されます。 たとえば、5.7.20 から 5.7.21 などです。  
 
 現在、メジャー バージョンのアップグレードは、MySQL v5.6 から v5.7 へのアップグレードがサポートされています。 詳細については、[メジャー バージョンのアップグレードの実行方法](how-to-major-version-upgrade.md)に関する記事を参照してください。 5\.7 から 8.0 にアップグレードする場合は、[ダンプを実行し、新しいエンジンのバージョンで作成されたサーバーにそれを復元](./concepts-migrate-dump-restore.md)することをお勧めします。

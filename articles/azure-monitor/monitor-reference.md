@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: b04cacb1d2767e152e62bc3fd5902798204f3f60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e43944b803f798c3bd741903f1ee0732bcb93d4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734282"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864535"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -126,7 +126,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |マップ  | いいえ | いいえ | いいえ |  |
 |Media Services | はい | はい | いいえ |  |
 |Microsoft マネージド デスクトップ | いいえ | いいえ | いいえ |  |
-|Microsoft PowerApps | いいえ | いいえ | いいえ |  |
+|Microsoft Power Apps | いいえ | いいえ | いいえ |  |
 |Microsoft Social Engagement | いいえ | いいえ | いいえ |  |
 |Microsoft Stream | はい | はい | いいえ |  |
 |移行 | いいえ | いいえ | いいえ |  |

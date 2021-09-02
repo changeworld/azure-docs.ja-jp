@@ -1,16 +1,16 @@
 ---
-title: Arc 対応サーバーでの Azure リソースに対する認証
-description: この記事では、Azure Instance Metadata Service での Arc 対応サーバーのサポートと、シークレットを使用して Azure リソースおよびローカルに対して認証する方法について説明します。
+title: Arc 対応サーバーでの Azure リソースに対して認証を行う
+description: このアーティクルでは、Azure Instance Metadata Service での Arc 対応サーバーのサポートと、シークレットを使用して Azure リソースおよびローカルに対して認証する方法について説明します。
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: 49b70928ae972da8e0a0d14d711e4b6f246cca6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 76f7174792f751322545b1d30bb51476c5339e26
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96939044"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389912"
 ---
-# <a name="authenticate-against-azure-resources-with-arc-enabled-servers"></a>Arc 対応サーバーでの Azure リソースに対する認証
+# <a name="authenticate-against-azure-resources-with-arc-enabled-servers"></a>Arc 対応サーバーでの Azure リソースに対して認証を行う
 
 Azure Arc 対応サーバーで直接実行されるアプリケーションやプロセスは、マネージド ID を利用して、Azure Active Directory ベースの認証をサポートしている他の Azure リソースにアクセスできます。 アプリケーションはその ID を表す[アクセス トークン](../../active-directory/develop/developer-glossary.md#access-token) (Arc 対応サーバ-に対してシステムが割り当てる) を取得し、それをベアラー トークンとして使用して、別のサービスに対してそれ自体を認証できます。
 
@@ -30,7 +30,7 @@ Azure Arc 対応サーバーで直接実行されるアプリケーションや�
 
 マネージド ID が有効になっているサーバーの環境は、Windows の Arc 対応サーバー上で次の変数を使用して構成されます。
 
-- **IMDS_ENDPOINT**: Arc 対応サーバーの IMDS エンドポイント IP アドレス `http://localhost:40342` です。
+- **IMDS_ENDPOINT**: Arc 対応サーバーの IMDS エンドポイントの IP アドレス`http://localhost:40342`。
 
 - **IDENTITY_ENDPOINT**: サービスのマネージド ID に対応する localhost エンドポイントです (`http://localhost:40342/metadata/identity/oauth2/token`)。
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/11/2021
+ms.date: 08/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a96181c86faf983abd349dcb9b287e2f3ac344de
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ccc9b6dffd6fa18fc18a9d16bc702553d277193d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747922"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866600"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットの書き戻しをトラブルシューティングする
 
@@ -53,13 +53,13 @@ Azure [GOV エンドポイント](../../azure-government/compare-azure-governmen
 環境内で URL とポートへのアクセスが制限されているかどうかを判断するには、次のコマンドレットを実行します。
 
 ```powershell
-Test-NetConnection -ComputerName https://ssprdedicatedsbprodncu.servicebus.windows.net -Port 443
+Test-NetConnection -ComputerName ssprdedicatedsbprodscu.servicebus.windows.net -Port 443
 ```
 
 または以下を実行します。
 
 ```powershell
-Invoke-WebRequest -Uri https://ssprdedicatedbprodscu.windows.net -Verbose
+Invoke-WebRequest -Uri https://ssprdedicatedbprodscu.servicebus.windows.net -Verbose
 ```
 
 詳細については、[Azure AD Connect の接続の前提条件](../hybrid/how-to-connect-install-prerequisites.md)に関するページを参照してください。

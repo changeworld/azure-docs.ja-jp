@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23f88a783ca257090fc607cc9a16ec457c7e9c8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d4fb6c1dbeca8c2073a0a493e67b05d46d36738
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90016590"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223216"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Azure AD とのパスワード ハッシュ同期とは
 パスワード ハッシュ同期は、ハイブリッド ID を実現するために使用されるサインイン方法の 1 つです。 Azure AD Connect では、オンプレミスの Active Directory インスタンスからクラウドベースの Azure AD インスタンスに、ユーザーのパスワードのハッシュを同期します。
@@ -30,7 +30,7 @@ ms.locfileid: "90016590"
 * ユーザーの生産性が向上する。
 * ヘルプデスクのコストが削減される。  
 
-パスワード ハッシュの同期では、ハイブリッド アカウントの[漏洩資格情報検出](../identity-protection/concept-identity-protection-risks.md#user-risk)も有効になります。 Microsoft はダーク Web の研究者や法執行機関と協力し、公で利用できるユーザー名とパスワードのペアを見つけています。 そのようなペアが Microsoft のユーザーと一致する場合、関連付けられているアカウントが高リスクに移されます。 
+パスワード ハッシュの同期では、ハイブリッド アカウントの[漏洩資格情報検出](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)も有効になります。 Microsoft はダーク Web の研究者や法執行機関と協力し、公で利用できるユーザー名とパスワードのペアを見つけています。 そのようなペアが Microsoft のユーザーと一致する場合、関連付けられているアカウントが高リスクに移されます。 
 
 >[!NOTE]
 > 新たに漏洩し、PHS を有効にした後に見つかった資格情報のみ、テナントに対して処理されます。 以前に検出された資格情報ペアは検証されません。

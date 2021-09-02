@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: c7f8f46cf8d6195df7d47663cae809c7074129e4
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: a1b9c8f81de706fb53839a241115947d6cf8d0bc
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903943"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113726916"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する
 
@@ -62,7 +62,7 @@ Azure Storage では、次の 3 種類の Shared Access Signature がサポー�
 アカウント SAS の詳細については、[アカウント SAS の作成 (REST API)](/rest/api/storageservices/create-account-sas) に関するページを参照してください。
 
 > [!NOTE]
-> セキュリティのベスト プラクティスとして、より侵害されやすいアカウント キーを使用するのではなく、可能な限り Azure AD 資格情報を使用することをお勧めします。 アプリケーション設計で、BLOB ストレージへのアクセスのため、Shared Access Signature が必要な場合は、セキュリティを強化するために、可能な限り、Azure AD 資格情報を使用してユーザー委任 SAS を作成してください。 詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
+> セキュリティのベスト プラクティスとして、より侵害されやすいアカウント キーを使用するのではなく、可能な限り Azure AD 資格情報を使用することをお勧めします。 アプリケーション設計で、BLOB ストレージへのアクセスのため、Shared Access Signature が必要な場合は、セキュリティを強化するために、可能な限り、Azure AD 資格情報を使用してユーザー委任 SAS を作成してください。 詳細については、「[Azure Storage でデータへのアクセスを承認する](authorize-data-access.md)」をご覧ください。
 
 Shared Access Signature の形式は、次の 2 つのいずれかです。
 

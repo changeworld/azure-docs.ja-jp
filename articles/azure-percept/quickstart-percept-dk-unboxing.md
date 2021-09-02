@@ -1,20 +1,20 @@
 ---
-title: Azure Percept DK コンポーネントを箱から取り出して組み立てる
+title: Azure Percept DK デバイスを箱から取り出して組み立てる
 description: Azure Percept DK を箱から取り出し、接続し、電源を入れる方法について学習します
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/16/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: deaa0a3904eef33ebab8e73687d6864d389e2963
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ce47b2463441fdd44c9db72c2dcbf2f8935b15d6
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748045"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222979"
 ---
-# <a name="quickstart-unbox-and-assemble-your-azure-percept-dk-components"></a>クイックスタート: Azure Percept DK コンポーネントを箱から取り出して組み立てる
+# <a name="unbox-and-assemble-the-azure-percept-dk-device"></a>Azure Percept DK デバイスを箱から取り出して組み立てる
 
 Azure Percept DK を受け取ったら、このガイドを参照して、コンポーネントの接続とデバイスの電源投入に関する情報を確認してください。
 

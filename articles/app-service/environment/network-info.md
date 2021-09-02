@@ -7,14 +7,18 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0931d5668835229be858a8725fd1a2d90c81081d
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95997343"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432952"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
+
+> [!NOTE]
+> これは、Isolated App Service プランで使用される App Service Environment v2 に関する記事です
+> 
 
 ## <a name="overview"></a>概要 ##
 
@@ -127,7 +131,7 @@ ASE で認識されている必要のある IP アドレスがいくつかあり
 - **パブリック受信 IP アドレス**:外部 ASE でのアプリ トラフィック、および外部 ASE と ILB ASE の両方での管理トラフィックに使用されます。
 - **送信パブリック IP**:VPN 経由でルーティングされない、VNet を離れる ASE からの送信接続の "発信元" IP として使用されます。
 - **ILB IP アドレス**:ILB IP アドレスは ILB ASE にのみ存在します。
-- **アプリに割り当てられた IP ベースの SSL アドレス**:外部 ASE でのみ、かつ IP ベースの SSL が構成されている場合にのみ可能です。
+- **アプリに割り当てられた IP ベースの TLS/SSL アドレス**: 外部 ASE でのみ、かつ IP ベースの TLS/SSL バインドが構成されている場合にのみ可能です。
 
 これらすべての IP アドレスは、ASE の UI から Azure portal に表示されます。 ILB ASE が存在する場合は、ILB の IP が一覧表示されます。
 

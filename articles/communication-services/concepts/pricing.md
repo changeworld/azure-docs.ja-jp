@@ -7,14 +7,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: nmurav
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: ba47fd528882e1d7de45470f00316c57b966ddb5
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: d8938a437db42a2d1cb5dd88f6102ce7f5facb3a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762875"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259067"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
@@ -77,10 +77,6 @@ Alice は、Azure Communication Services のダイレクト ルーティング�
 - Communication Services サーバーから SBC への Communication Services ダイレクト ルーティング発信レッグの参加者 1 名 (Bob) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04。
 
 **通話の総コスト**: $0.04 + $0.04 = $0.08
-
-> [!Note]
-> Azure Communication Services のダイレクト ルーティング区間は、2021 年 8 月 1 日まで課金されません。
-
 
 ### <a name="pricing-example-group-audio-call-using-js-sdk-and-one-pstn-leg"></a>価格の例: JS SDK と 1 PSTN レッグを使用してグループ音声通話を行う
 

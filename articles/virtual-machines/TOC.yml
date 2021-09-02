@@ -407,6 +407,32 @@
         - name: VM インスタンス サイズの柔軟性
           displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
+    - name: 容量予約 (プレビュー)
+      items:
+        - name: 概要 (プレビュー)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-overview.md
+        - name: 容量予約を作成する (プレビュー)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-create.md
+        - name: 容量予約の過剰割り当て (プレビュー)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-overallocate.md
+        - name: 容量予約を変更する (プレビュー)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-modify.md
+        - name: VM を関連付ける (プレビュー)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-associate-vm.md
+        - name: VM を削除する (プレビュー)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-remove-vm.md
+        - name: VM スケール セットを関連付ける (プレビュー)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-associate-virtual-machine-scale-set.md
+        - name: VM スケール セットを削除する (プレビュー)
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-remove-virtual-machine-scale-set.md
     - name: 仮想マシンを作成する
       items:
         - name: Linux

@@ -8,20 +8,22 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/06/2021
+ms.date: 07/14/2021
 ms.author: rolyon
-ms.openlocfilehash: a12f3ca25df2d4473361e0a1ef596384813dc6a8
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 64f164c7d5e60e92e30986f8a39b34e92b1fdce4
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854740"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202481"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
 組織には複数の Azure サブスクリプションがある場合があります。 各サブスクリプションは、特定の Azure Active Directory (Azure AD) ディレクトリと関連付けられています。 管理を容易にするために、サブスクリプションを別の Azure AD ディレクトリに移転することが必要になる場合があります。 サブスクリプションを別の Azure AD ディレクトリに移転する場合、一部のリソースはターゲット ディレクトリに移転されません。 たとえば、Azure のロールベースのアクセス制御 (Azure RBAC) でのすべてのロールの割り当てとカスタム ロールは、ソース ディレクトリからは **完全に** 削除され、ターゲット ディレクトリには移転されません。
 
 この記事では、サブスクリプションを別の Azure AD ディレクトリに移転し、移転後にいくつかのリソースを再作成するために実行できる基本的な手順について説明します。
+
+代わりに、ご自身の組織内のさまざまなディレクトリに対するサブスクリプションの転送を **ブロック** する必要がある場合は、サブスクリプション ポリシーを構成できます。 詳細については、「[Azure サブスクリプションのポリシーを管理する](../cost-management-billing/manage/manage-azure-subscription-policy.md)」を参照してください。
 
 > [!NOTE]
 > Azure クラウド ソリューション プロバイダー (CSP) のサブスクリプションでは、サブスクリプションに対する Azure AD ディレクトリの変更はサポートされていません。
@@ -249,18 +251,19 @@ ms.locfileid: "111854740"
 
 ### <a name="list-other-known-resources"></a>他の既知のリソースの一覧を表示する
 
-1. [az account show](/cli/azure/account#az_account_show) を使用して、サブスクリプション ID を取得します。
+1. [az account show](/cli/azure/account#az_account_show) を使用して、サブスクリプション IDを取得します (`bash` 内)。
 
     ```azurecli
-    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"//')
+    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"//' -e 's/\r$//')
     ```
-
-1. [az graph](/cli/azure/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します。
+    
+1. [az graph](/cli/azure/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します (`bash` 内)。
 
     ```azurecli
-    az graph query -q \
-    'resources | where type != "microsoft.azureactivedirectory/b2cdirectories" | where  identity <> "" or properties.tenantId <> "" or properties.encryptionSettingsCollection.enabled == true | project name, type, kind, identity, tenantId, properties.tenantId' \
-    --subscriptions $subscriptionId --output table
+    az graph query -q 'resources 
+        | where type != "microsoft.azureactivedirectory/b2cdirectories" 
+        | where  identity <> "" or properties.tenantId <> "" or properties.encryptionSettingsCollection.enabled == true 
+        | project name, type, kind, identity, tenantId, properties.tenantId' --subscriptions $subscriptionId --output yaml
     ```
 
 ## <a name="step-2-transfer-the-subscription"></a>手順 2:サブスクリプションを移転する

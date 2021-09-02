@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 07/23/2020
-ms.openlocfilehash: 729879bb472786165b21a47a7baf058294a4db1f
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.date: 05/26/2021
+ms.openlocfilehash: 03f0ab53b4d2db74a18073808295e12fe5adaaaa
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961525"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494786"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
@@ -32,6 +32,7 @@ Azure AD 管理者 (ユーザーまたはグループを使用できます) を�
 
 > [!IMPORTANT]
 > 管理者を設定すると、管理者の完全なアクセス許可を持つ新しいユーザーが Azure Database for PostgreSQL サーバーに追加されます。 Azure Database for PostgreSQL の Azure AD 管理者ユーザーは、ロール `azure_ad_admin` を持ちます。
+> 作成できる Azure AD 管理者は、PostgreSQL サーバーあたり 1 人だけです。別の管理者を選択すると、そのサーバーに構成されている既存の Azure AD 管理者が上書きされます。 個々のユーザーではなく、Azure AD グループを指定して、複数の管理者を持つことができます。 
 
 作成できる Azure AD 管理者は、PostgreSQL サーバーあたり 1 人だけです。別の管理者を選択すると、そのサーバーに構成されている既存の Azure AD 管理者が上書きされます。 個々のユーザーではなく、Azure AD グループを指定して、複数の管理者を持つことができます。 その後、管理目的には、グループ名を使用してサインインすることに注意してください。
 
@@ -45,12 +46,10 @@ Azure AD 統合は、psql などの一般的な PostgreSQL ツールと連携す
 
 現在、次のクライアントがテストされています。
 
-- psql commandline (PGPASSWORD 変数を使用してトークンを渡す。以下を参照)
+- psql commandline (PGPASSWORD 変数を使用してトークンを渡す。詳細については、手順 3 を参照)
 - Azure Data Studio (PostgreSQL 拡張機能を使用)
 - その他の libpq ベースのクライアント (例: 一般的なアプリケーション フレームワークと ORM)
-
-> [!NOTE]
-> pgAdmin には、パスワードに対して 256 文字というハードコーディングの制限があり、Azure AD トークンはこれを超えているため、pgAdmin でこのトークンを使用することは現在サポートされていないことに注意してください。
+- PgAdmin (サーバーの作成時に [今すぐ接続] をオフにする。 詳細については、手順 4 を参照)
 
 ユーザー/アプリケーションで Azure AD を使用して認証を行う必要がある手順を次に示します。
 
@@ -58,7 +57,9 @@ Azure AD 統合は、psql などの一般的な PostgreSQL ツールと連携す
 
 Azure Cloud Shell、Azure VM、またはお使いのローカル コンピューター上で、次の手順を実行できます。 [Azure CLI がインストールされている](/cli/azure/install-azure-cli)ことを確認します。
 
-### <a name="step-1-authenticate-with-azure-ad"></a>手順 1:Azure AD による認証
+## <a name="authenticate-with-azure-ad-as-a-single-user"></a>1 人のユーザーとして Azure AD で認証する
+
+### <a name="step-1-login-to-the-users-azure-subscription"></a>手順 1: ユーザーの Azure サブスクリプションにログインする
 
 最初に、Azure CLI ツールを使用して Azure AD による認証を行います。 この手順は、Azure Cloud Shell では必要ありません。
 
@@ -104,10 +105,8 @@ az account get-access-token --resource-type oss-rdbms
 
 トークンは、認証されたユーザーに関するすべての情報をエンコードする Base 64 文字列であり、Azure Database for PostgreSQL サービスをターゲットとしています。
 
-> [!NOTE]
-> アクセス トークンの有効性は、5 分から 60 分の範囲内です。 アクセス トークンは、Azure Database for PostgreSQL へのログインを開始する直前に取得することをお勧めします。
 
-### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>手順 3:PostgreSQL でログインするためのパスワードとしてトークンを使用する
+### <a name="step-3-use-token-as-password-for-logging-in-with-client-psql"></a>手順 3: クライアント psql でログインするためのパスワードとしてトークンを使用する
 
 接続時には、PostgreSQL ユーザー パスワードとしてアクセス トークンを使用する必要があります。
 
@@ -134,17 +133,92 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
+### <a name="step-4-use-token-as-a-password-for-logging-in-with-pgadmin"></a>手順 4: PgAdmin でログインするためのパスワードとしてトークンを使用する
+
+pgAdmin で Azure AD トークンを使用して接続するには、次の手順に従う必要があります。
+1. サーバーの作成時に [今すぐ接続] オプションをオフにします。
+2. [接続] タブにサーバーの詳細を入力し、保存します。
+3. ブラウザー メニューの [connect to the Azure Database for PostgreSQL server]\( Azure Database for PostgreSQL サーバーに接続する\) をクリックします
+4. メッセージが表示されたら、AD トークンのパスワードを入力します。
+
 
 接続時の重要な考慮事項:
 
-* `user@tenant.onmicrosoft.com` は、接続に使用しようとしている Azure AD ユーザーまたはグループの名前です
-* Azure AD ユーザー/グループ名の後には常にサーバー名を付加してください (`@mydb` など)
-* Azure AD ユーザーまたはグループ名の正確なスペルを使用するようにしてください
-* Azure AD ユーザーおよびグループの名前では、大文字と小文字が区別されます
-* グループとして接続する場合は、グループ名のみ (`GroupName@mydb` など) を使用します
-* 名前にスペースが含まれている場合は、各スペースの前に `\` を使用してそれをエスケープします。
+* `user@tenant.onmicrosoft.com` は、Azure AD ユーザーの名前です 
+* Azure ユーザーの名前は正確なスペルで入力してください。Azure AD のユーザー名とグループ名は大文字と小文字が区別されます。
+* 名前にスペースが含まれている場合は、各スペースの前に `\` を使用してエスケープします。
+* アクセス トークンの有効性は、5 分から 60 分の範囲内です。 アクセス トークンは、Azure Database for PostgreSQL へのログインを開始する直前に取得することをお勧めします。
 
+これで、Azure AD 認証を使用して、ご自身の Azure Database for PostgreSQL サーバーに対して認証されました。
+
+## <a name="authenticate-with-azure-ad-as-a-group-member"></a>グループ メンバーとして Azure AD で認証する
+
+### <a name="step-1-create-azure-ad-groups-in-azure-database-for-postgresql"></a>手順 1: Azure Database for PostgreSQL 内で Azure AD グループを作成する
+
+Azure AD グループがデータベースにアクセスできるようにするには、ユーザーの場合と同じメカニズムを使用しますが、代わりにグループ名を指定します。
+
+例:
+
+```
+CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
+```
+ログインするときに、グループのメンバーは自分の個人用アクセス トークンを使用しますが、ユーザー名として指定されたグループ名でサインインします。
+
+### <a name="step-2-login-to-the-users-azure-subscription"></a>手順 2: ユーザーの Azure サブスクリプションにログインする
+
+Azure CLI ツールを使用して、Azure AD で認証します。 この手順は、Azure Cloud Shell では必要ありません。 ユーザーは、Azure AD グループのメンバーである必要があります。
+
+```
+az login
+```
+
+### <a name="step-3-retrieve-azure-ad-access-token"></a>手順 3: Azure AD アクセス トークンを取得する
+
+Azure CLI ツールを起動して、手順 2 で認証された Azure AD ユーザーのアクセス トークンを取得し、Azure Database for PostgreSQL にアクセスします。
+
+例 (パブリック クラウドの場合):
+
+```azurecli-interactive
+az account get-access-token --resource https://ossrdbms-aad.database.windows.net
+```
+
+上記のリソース値は、示されているとおりに正確に指定する必要があります。 他のクラウドの場合、リソース値は次を使用して検索できます。
+
+```azurecli-interactive
+az cloud show
+```
+
+Azure CLI バージョン 2.0.71 以降では、すべてのクラウドに対して、次のより便利なバージョンでコマンドを指定できます。
+
+```azurecli-interactive
+az account get-access-token --resource-type oss-rdbms
+```
+
+認証が成功すると、Azure AD によってアクセス トークンが返されます。
+
+```json
+{
+  "accessToken": "TOKEN",
+  "expiresOn": "...",
+  "subscription": "...",
+  "tenant": "...",
+  "tokenType": "Bearer"
+}
+```
+
+### <a name="step-4-use-token-as-password-for-logging-in-with-psql-or-pgadmin-see-above-steps-for-user-connection"></a>手順 4: psql または PgAdmin でログインするためのパスワードとしてトークンを使用する (ユーザー接続については、上記の手順を参照)
+
+グループ メンバーとして接続するときの重要な考慮事項:
+* groupname@mydb は、接続に使用しようとしている Azure AD グループの名前です
+* Azure AD ユーザー/グループ名の後には常にサーバー名を付加してください (@mydb など)
+* Azure AD グループの名前は正確なスペルで入力してください。
+* Azure AD ユーザーおよびグループの名前では、大文字と小文字が区別されます
+* グループとして接続する場合は、グループ メンバーのエイリアスではなく、グループ名のみを使用します (GroupName@mydb など)。
+* 名前にスペースが含まれている場合は、各スペースの前に \ を使用してエスケープします。
+* アクセス トークンの有効性は、5 分から 60 分の範囲内です。 アクセス トークンは、Azure Database for PostgreSQL へのログインを開始する直前に取得することをお勧めします。
+  
 これで、Azure AD 認証を使用して PostgreSQL サーバーに対して認証されました。
+
 
 ## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL で Azure AD ユーザーを作成する
 
@@ -163,18 +237,6 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 > [!NOTE]
 > Azure AD を通じてユーザーを認証しても、Azure Database for PostgreSQL データベース内のオブジェクトにアクセスするためのアクセス許可はユーザーに付与されません。 必要なアクセス許可をユーザーに手動で付与する必要があります。
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL で Azure AD グループを作成する
-
-Azure AD グループがデータベースにアクセスできるようにするには、ユーザーの場合と同じメカニズムを使用しますが、代わりにグループ名を指定します。
-
-**例:**
-
-```sql
-CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-ログインするときに、グループのメンバーは自分の個人用アクセス トークンを使用しますが、ユーザー名として指定されたグループ名でサインインします。
 
 ## <a name="token-validation"></a>トークンの検証
 

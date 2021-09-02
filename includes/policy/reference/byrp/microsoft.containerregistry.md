@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/13/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3853e811d0b5f7774fcfc58c1d235a5f90bc70eb
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f82638baae468047cd2025d555ce460d9616bb19
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183877"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110491"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[コンテナー レジストリを構成して、ローカルの認証を無効にします。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F79fdfe03-ffcb-4e55-b4d0-b925b8241759) |コンテナー レジストリで排他的に Azure Active Directory ID を認証専用で求めるように、ローカル認証方法を無効にします。 詳細は、[https://aka.ms/acr/authentication](../../../../articles/container-registry/container-registry-authentication.md) を参照してください。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_AdminAccountDisabled_Modify.json) |
+|[コンテナー レジストリを構成して、ローカルの認証を無効にします。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F79fdfe03-ffcb-4e55-b4d0-b925b8241759) |コンテナー レジストリで排他的に Azure Active Directory ID を認証専用で求めるように、ローカル認証方法を無効にします。 詳細は、[https://aka.ms/acr/authentication](../../../../articles/container-registry/container-registry-authentication.md) で参照してください。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_AdminAccountDisabled_Modify.json) |
 |[パブリック ネットワーク アクセスが無効になるようにコンテナー レジストリを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa3701552-92ea-433e-9d17-33b7f1208fc9) |Container Registry リソースの公衆ネットワーク アクセスを無効にして、パブリック インターネット経由でアクセスできないようにします。 これにより、データ漏えいのリスクを軽減することができます。 詳細情報: [https://aka.ms/acr/portal/public-network](../../../../articles/container-registry/container-registry-access-selected-networks.md) および [https://aka.ms/acr/private-link](../../../../articles/container-registry/container-registry-private-link.md)。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PublicNetworkAccess_Modify.json) |
 |[プライベート エンドポイントを使用してコンテナー レジストリを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd85c6833-7d33-4cf5-a915-aaa2de84405f) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークが Azure サービスに接続されます。 Premium Container Registry リソースにプライベート エンドポイントをマッピングすることで、データ漏洩のリスクを軽減できます。 詳細情報: [https://aka.ms/privateendpoints](../../../../articles/event-grid/configure-private-endpoints.md) および [https://aka.ms/acr/private-link](../../../../articles/container-registry/container-registry-private-link.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateEndpoint_DeployIfNotExists.json) |
 |[コンテナー レジストリは、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5b9159ae-1701-4a6f-9a7a-aa9c8ddd0580) |カスタマー マネージド キーを使用して、レジストリのコンテンツ保存時の暗号化を管理します。 既定では、データはサービス マネージド キーを使用して保存時に暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/acr/CMK](../../../../articles/container-registry/container-registry-customer-managed-keys.md) をご覧ください。 |Audit、Deny、Disabled |[1.1.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_CMKEncryptionEnabled_Audit.json) |

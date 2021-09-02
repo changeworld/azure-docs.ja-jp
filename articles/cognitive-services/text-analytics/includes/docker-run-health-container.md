@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/18/2021
 ms.author: aahi
-ms.openlocfilehash: 47a7059e21f1c9b9d6d72644bc08c62b66afc772
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 2bd9d1c6a76e8bf2726831859045363809458228
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339856"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123122080"
 ---
 ## <a name="install-the-container"></a>コンテナーをインストールする
 
@@ -186,7 +186,7 @@ services:
         # replace with path to logs folder
       - <path-to-logs-folder>:/output
   nginx:
-    image: nginx
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     ports:
       - 443:443
     volumes:

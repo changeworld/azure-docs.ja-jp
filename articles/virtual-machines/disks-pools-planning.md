@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e3ffadcdc77d09d04518cdf577208250c2906407
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 74d50826811198811e6cea671641cae378d1235c
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469889"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419587"
 ---
 # <a name="azure-disk-pools-preview-planning-guide"></a>Azure ディスク プール (プレビュー) の計画ガイド
 
@@ -66,8 +66,6 @@ Azure ディスク プール (プレビュー) をデプロイする前に、ワ
 - 影響を受けたデータストアを使用しているこの Azure VMware Solution クラウドでホストされているすべての VMware VM は、不健全な状態になります。
 - この Azure VMware Solution クラウド内のクラスターの正常性は、1 回の操作を除き、影響を受けません。ホストをメンテナンス モードにすることはできません。 Azure VMware Solution は、この障害を処理し、影響を受けたデータストアを切断することで復旧を試みます。
 
-この状態を入力した場合は、次の[手順](disks-pools-troubleshoot.md#recover-a-disk-pool-or-an-iscsi-target)に従ってディスク プールを復旧します。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ディスク プールをデプロイする](disks-pools-deploy.md)。

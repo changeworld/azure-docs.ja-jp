@@ -4,20 +4,19 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0c60b111483d896ad2beb008d165b9fb84160b35
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073170"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835564"
 ---
 >[!NOTE]
 >固定されないリソースの場合は、サポート チケットを開いてクォータの増加を要求してください。 上限を高くするために追加の Azure Media Services アカウントを作成することはしないでください。
 
 | リソース | 制限 | 
 | --- | --- | 
-| 1 つのサブスクリプション内の Azure Media Services アカウント | 25 (固定) |
-| Media Services アカウントあたりのメディア占有ユニット数 |25 (S1)<br/>10 (S2、S3)<sup>1</sup> | 
+| 1 つのサブスクリプション内の Azure Media Services アカウント | 25 (固定) | 
 | Media Services アカウントあたりの Job | 50,000<sup>2</sup> |
 | ジョブあたりのチェーン タスク数 | 30 (固定) |
 | Media Services アカウントあたりのアセット数 | 1,000,000|

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6509c7b47a0f8c3f36df72e1d3aa16c834594f
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: f2de6916a3845e0e51e810d12199d41b3cfd9319
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110612820"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225596"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>条件付きアクセス:ユーザー リスクベースの条件付きアクセス
 
-Microsoft では、研究者、法執行機関、Microsoft のさまざまなセキュリティ チーム、その他の信頼できる情報源と協力して、漏洩したユーザー名とパスワードのペアを調査しています。 Azure AD Premium P2 のライセンスを所持する組織では、[Azure AD Identity Protection のユーザー リスク検出](../identity-protection/concept-identity-protection-risks.md#user-risk)を組み込んだ条件付きアクセス ポリシーを作成できます。 
+Microsoft では、研究者、法執行機関、Microsoft のさまざまなセキュリティ チーム、その他の信頼できる情報源と協力して、漏洩したユーザー名とパスワードのペアを調査しています。 Azure AD Premium P2 のライセンスを所持する組織では、[Azure AD Identity Protection のユーザー リスク検出](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)を組み込んだ条件付きアクセス ポリシーを作成できます。 
 
 このポリシーを構成できる場所は 2 つあります。1 つは条件付きアクセスで、もう 1 つは Identity Protection です。 拡張診断データ、レポート専用モードの統合、Graph API のサポート、ポリシーで他の条件付きアクセス属性を使用する機能など、より多くのコンテキストを提供するときは、条件付きアクセス ポリシーを使用した構成をお勧めします。
 

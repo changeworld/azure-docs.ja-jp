@@ -3,12 +3,12 @@ title: Container insights のログのクエリを実行する方法
 description: Container insights により、メトリックとログ データが収集されます。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: a8df32440cf5e45184c62e4e05567d500d7d5a32
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6b5e88e8de1f88a738fdfbb60678909d20e72863
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780981"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187201"
 ---
 # <a name="how-to-query-logs-from-container-insights"></a>Container insights のログのクエリを実行する方法
 
@@ -99,7 +99,6 @@ on ContainerID
 // at this point before the next pipe, columns from both tables are available to be "projected". Due to both
 // tables having a "Name" column, we assign an alias as PodName to one column which we actually want
 | project TimeGenerated, PodName, LogEntry, LogEntrySource
-| extend TimeGenerated = TimeGenerated - 21600s | order by TimeGenerated desc
 | summarize by TimeGenerated, LogEntry
 | order by TimeGenerated desc
 ```

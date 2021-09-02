@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 論理サーバー用に Azure Attestation を構成する
+title: Azure Attestation を使用して Always Encrypted の構成証明を構成する
 description: Azure SQL Database でセキュリティで保護されたエンクレーブが設定された Always Encrypted に対して Azure Attestation を構成します。
 keywords: データの暗号化, sql 暗号化, データベース暗号化, 機密データ, Always Encrypted, セキュリティで保護されたエンクレーブ, SGX, 構成証明
 services: sql-database
@@ -10,21 +10,18 @@ ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 05/01/2021
+ms.date: 07/14/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e2e6bc57a830b5257d246a4229e174cf8612d3c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6a27acf96b42a4a963b88e281fd692a91616b7e4
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662524"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727203"
 ---
-# <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Azure SQL 論理サーバー用に Azure Attestation を構成する
+# <a name="configure-attestation-for-always-encrypted-using-azure-attestation"></a>Azure Attestation を使用して Always Encrypted の構成証明を構成する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
-
-> [!NOTE]
-> Azure SQL Database のセキュリティで保護されたエンクレーブが設定された Always Encrypted は、現在、**パブリック プレビュー** 段階にあります。
 
 [Microsoft Azure Attestation](../../attestation/overview.md) は、Intel Software Guard Extensions (Intel SGX) エンクレーブなどの高信頼実行環境 (TEE) を証明するためのソリューションです。 
 
@@ -42,6 +39,9 @@ Azure SQL Database での[セキュリティで保護されたエンクレーブ
 [構成証明プロバイダー](../../attestation/basic-concepts.md#attestation-provider)は、[構成証明ポリシー](../../attestation/basic-concepts.md#attestation-request)に対して[構成証明要求](../../attestation/basic-concepts.md#attestation-request)を評価し、[構成証明トークン](../../attestation/basic-concepts.md#attestation-token)を発行する Azure Attestation のリソースです。 
 
 構成証明ポリシーは、[要求規則の文法](../../attestation/claim-rule-grammar.md)を使用して指定します。
+
+> [!IMPORTANT]
+> 構成証明プロバイダーは、エンクレーブ内で実行されているコードを検証しない、Intel SGX エンクレーブの既定のポリシーを使用して作成されます。 Microsoft では、セキュリティで保護されたエンクレーブが設定された Always Encrypted に既定のポリシーを使用するのではなく、後述の推奨ポリシーを設定することを強くお勧めします。
 
 Azure SQL Database の Always Encrypted に使用される Intel SGX エンクレーブを証明するには、次のポリシーをお勧めします。
 
@@ -69,7 +69,7 @@ authorizationrules
   > 構成証明の主な目標の 1 つは、エンクレーブ内で実行されるバイナリが、実行されるべきバイナリであることをクライアントに認識させることにあります。 構成証明ポリシーからは、この目的のために 2 つのメカニズムが提供されます。 1 つは **mrenclave** 要求です。これは、エンクレーブで実行されることになっているバイナリのハッシュです。 **mrenclave** の問題は、コードをほんの少し変えただけでもバイナリ ハッシュが変わることにあります。エンクレーブ内で実行されているコードの改訂が難しくなります。 そのため、**mrsigner** の使用を推奨しています。これは、エンクレーブ バイナリの署名に使用されるキーのハッシュです。 Microsoft がエンクレーブを改訂するとき、署名キーが変わらない限り、**mrsigner** も同じままです。 この方法で、顧客のアプリケーションを壊すことなく、更新後のバイナリをデプロイすることが可能になります。 
 
 > [!IMPORTANT]
-> 構成証明プロバイダーは、エンクレーブ内で実行されているコードを検証しない、Intel SGX エンクレーブの既定のポリシーを使用して作成されます。 Microsoft では、セキュリティで保護されたエンクレーブが設定された Always Encrypted に既定のポリシーを使用するのではなく、前述の推奨ポリシーを設定することを強くお勧めします。
+> Always Encrypted エンクレーブ バイナリへの署名に使用するキーのローテーションが必要になる場合がありますが、これはまれな事例であると想定されています。 新しいキーで署名されたエンクレーブ バイナリの新しいバージョンが Azure SQL Database に展開される前に、この記事は更新され、推奨される新しい構成証明ポリシーが提供されます。また、アプリケーションが中断なく機能し続けるようにするために、構成証明プロバイダーでポリシーを更新する方法も示されます。
 
 構成証明プロバイダーを作成して構成証明ポリシーで構成する方法については、以下を参照してください。
 
@@ -82,6 +82,7 @@ authorizationrules
 - [クイックスタート: Azure CLI を使用して Azure Attestation を設定する](../../attestation/quickstart-azure-cli.md)
     > [!IMPORTANT]
     > Azure CLI で構成証明ポリシーを構成する場合は、`attestation-type` パラメーターを `SGX-IntelSDK` に設定します。
+
 
 ## <a name="determine-the-attestation-url-for-your-attestation-policy"></a>構成証明ポリシーの構成証明 URL を確認する
 

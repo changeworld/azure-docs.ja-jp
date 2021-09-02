@@ -5,16 +5,16 @@ description: Azure portal、PowerShell、Azure CLI を使用して Azure ファ�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 0100bd0e0eb0ee6dbd802ad1cf5df002a706c12c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 442eef44f727ce7ef6059fa0bdfbf440c0345a09
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676165"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727154"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -31,6 +31,13 @@ Azure ファイル共有を作成するには、その使用方法について 3
     ローカルおよびゾーン冗長ストレージ アカウントでは、Azure ファイル共有は 100 TiB まで拡張できますが、geo および geo ゾーン冗長ストレージ アカウントでは、Azure ファイル共有は 5 TiB までしか拡張できません。 
 
 これら 3 つの選択の詳細については、「[Azure Files のデプロイの計画](storage-files-planning.md)」を参照してください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="prerequisites"></a>前提条件
 - この記事では、既に Azure サブスクリプションが作成されていることを前提としています。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
@@ -163,6 +170,37 @@ az storage account create \
 
 ---
 
+### <a name="enable-large-files-shares-on-an-existing-account"></a>既存のアカウントで大きなファイル共有を有効にする
+既存のアカウントで Azure ファイル共有を作成する前に、より大きいファイル共有に対してそれを有効にすることができます (まだ有効にしていない場合)。 LRS および ZRS、または ZRS を使用する Standard Storage アカウントは、より大規模なファイル共有をサポートするようにアップグレードできます。 持っているアカウントが GRS、GZRS、RA-GRS または RA-GZRS アカウントである場合は、それを LRS アカウントに変換してから、この作業を行う必要があります。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+1. [Azure portal](https://portal.azure.com) を開き、大きなファイル共有を有効にするストレージ アカウントに移動します。
+1. ストレージ アカウントを開き、 **[ファイル共有]** を選択します。
+1. **[Large file shares]\(大きなファイル共有\)** で **[有効]** を選択し、 **[保存]** を選択します。
+1. **[概要]** を選択し、 **[最新の情報に更新]** を選択します。
+1. **[容量の共有]** を選択し、 **[100 TiB]** を選択して **[保存]** を選択します。
+
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="[ファイル共有] ブレードで [100 TiB] の共有が強調表示されている Azure ストレージ アカウントのスクリーンショット。":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+既存のアカウントで大きなファイル共有を有効にするには、次のコマンドを使用します。 `<yourStorageAccountName>` と `<yourResourceGroup>` を実際の情報に置き換えます。
+
+```powershell
+Set-AzStorageAccount `
+    -ResourceGroupName <yourResourceGroup> `
+    -Name <yourStorageAccountName> `
+    -EnableLargeFileShare
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+既存のアカウントで大きなファイル共有を有効にするには、次のコマンドを使用します。 `<yourStorageAccountName>` と `<yourResourceGroup>` を実際の情報に置き換えます。
+
+```azurecli-interactive
+az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
+```
+
+---
+
 ## <a name="create-a-file-share"></a>ファイル共有を作成する
 ストレージ アカウントを作成したら、後はファイル共有を作成するだけです。 このプロセスは、Premium ファイル共有と Standard ファイル共有のどちらを使用しているかに関係なく、ほぼ同じです。 次の相違点について検討してください。
 
@@ -173,7 +211,7 @@ Standard ファイル共有は、Standard の層であるトランザクショ�
 
 **クォータ** プロパティの意味は、Premium と Standard のファイル共有の間で若干異なります。
 
-- Standard ファイル共有の場合、それはエンド ユーザーがアクセスできない Azure ファイル共有の上限です。 クォータが指定されていない場合、Standard ファイル共有は最大 100 TiB (ストレージ アカウントに対して大きいファイルの共有プロパティが設定されていない場合は 5 TiB) にまたがることができます。
+- Standard ファイル共有の場合、それはエンド ユーザーがアクセスできない Azure ファイル共有の上限です。 クォータが指定されていない場合、Standard ファイル共有は最大 100 TiB (ストレージ アカウントに対して大きいファイルの共有プロパティが設定されていない場合は 5 TiB) にまたがることができます。 大きいファイル共有を有効にしてストレージ アカウントを作成していなかった場合、「[既存のアカウントで大きなファイル共有を有効にする](#enable-large-files-shares-on-an-existing-account)」を参照し、100 TiB のファイル共有を有効にする方法を確認してください。 受信するパフォーマンス (IOP/Mbps) は、設定したクォータによって異なります。
 
 - Premium ファイル共有の場合、クォータは **プロビジョニング済みのサイズ** を意味します。 実際の使用量に関係なく、プロビジョニング済みのサイズが課金される容量です。 Premium ファイル共有を計画する方法の詳細については、[Premium ファイル共有のプロビジョニング](understanding-billing.md#provisioned-model)に関するセクションを参照してください。
 
@@ -185,7 +223,7 @@ Standard ファイル共有は、Standard の層であるトランザクショ�
 新しい [ファイル共有] ブレードが画面に表示されます。 新しいファイル共有ブレードのフィールドをすべて入力して、ファイル共有を作成します。
 
 - **[名前]** : 作成するファイルの名前。
-- **[クォータ]** : Standard ファイル共有のファイル共有のクォータ。Premium ファイル共有のプロビジョニング済みのファイル共有のサイズ。
+- **[クォータ]** : Standard ファイル共有のファイル共有のクォータ。Premium ファイル共有のプロビジョニング済みのファイル共有のサイズ。 Standard ファイル共有の場合、クォータによって、受け取るパフォーマンスも異なります。
 - **[層]** : ファイル共有用に選択した層。 このフィールドは、**汎用 (GPv2) ストレージ アカウント** でのみ使用できます。 トランザクション最適化、ホット、またはクールを選択できます。 共有の層はいつでも変更できます。 移行中は可能な限り最もホットな層を選択してトランザクションの費用を最小限に抑え、移行の完了後に必要に応じて下位の層に切り替えることをお勧めします。
 
 **[作成]** を選択して、新しい共有の作成を完了します。
@@ -272,6 +310,45 @@ az storage share-rm update \
     --storage-account $storageAccountName \
     --name $shareName \
     --access-tier "Cool"
+```
+
+---
+
+### <a name="expand-existing-file-shares"></a>既存のファイル共有の拡張
+既存のストレージ アカウントで大きなファイル共有を有効にする場合、そのストレージ アカウントで既存のファイル共有を拡張して、容量とスケーリング上限を増やす必要があります。 
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+1. ストレージ アカウントで **[ファイル共有]** を選択します。
+1. ファイル共有を右クリックし、 **[クォータ]** を選択します。
+1. 希望する新しいサイズを入力し、 **[OK]** を選択します。
+
+![既存のファイル共有のクォータを持つ Azure portal UI](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+クォータを最大サイズに設定するには、次のコマンドを使用します。 `<YourResourceGroupName>`、`<YourStorageAccountName>`、および `<YourStorageAccountFileShareName>` を実際の情報に置き換えます。
+
+```powershell
+$resourceGroupName = "<YourResourceGroupName>"
+$storageAccountName = "<YourStorageAccountName>"
+$shareName="<YourStorageAccountFileShareName>"
+
+# update quota
+Set-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -QuotaGiB 102400
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+クォータを最大サイズに設定するには、次のコマンドを使用します。 `<yourResourceGroupName>`、`<yourStorageAccountName>`、および `<yourFileShareName>` を実際の情報に置き換えます。
+
+```azurecli-interactive
+az storage share-rm update \
+    --resource-group <yourResourceGroupName> \
+    --storage-account <yourStorageAccountName> \
+    --name <yourFileShareName> \
+    --quota 102400
 ```
 
 ---

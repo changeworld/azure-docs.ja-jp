@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/27/2021
-ms.openlocfilehash: 09c27d77c80b7c9178fbbe9f7c5e01b3bc67c567
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 675c90218f456fc0f238fcf3b1fb93d2e5a7bc44
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969051"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296302"
 ---
 # <a name="onboard-on-premises-servers-in-vmware-virtual-environment-to-azure-arc"></a>VMware 仮想環境内のオンプレミス サーバーを Azure Arc にオンボードする   
 
@@ -21,19 +21,22 @@ Azure Arc を使用すると、移行の対象として最適ではないオン�
 
 ## <a name="before-you-get-started"></a>開始する前に
 
-- Azure Migrate: 検出および評価ツールを使用して VMware 環境で実行されているサーバーを検出するための[要件を確認します](/azure/migrate/tutorial-discover-vmware#prerequisites)。  
-- 使用する [VMware vCenter](/azure/migrate/tutorial-discover-vmware#prepare-vmware) を準備し、ソフトウェア インベントリを実行するための [VMware の要件](migrate-support-matrix-vmware.md#vmware-requirements)を確認します。 検出されたサーバーの Azure Arc へのオンボードを開始するには、ソフトウェア インベントリが完了している必要があります。   
-- サーバー上でソフトウェア インベントリを開始する前に、[アプリケーションの検出要件](migrate-support-matrix-vmware.md#application-discovery-requirements)を確認します。 Windows サーバーには、PowerShell バージョン 3.0 以降がインストールされている必要があります。 
-- ポート アクセス要件を確認して、検出されたサーバーのインベントリへのリモート接続を許可します。 
-    - **Windows:** WinRM ポート 5985 上の受信接続 (HTTP)。 <br/>
-    - **Linux:** ポート 22 上の受信接続 (TCP)。 
-- [Azure Arc の前提条件](/azure/azure-arc/servers/agent-overview#prerequisites)を確認し、次の考慮事項を確認してください。
+- Azure Migrate: 検出および評価ツールを使用して VMware 環境で実行されているサーバーを検出するための[要件を確認します](./tutorial-discover-vmware.md#prerequisites)。  
+- 使用する [VMware vCenter](./tutorial-discover-vmware.md#prepare-vmware) を準備し、ソフトウェア インベントリを実行するための [VMware の要件](migrate-support-matrix-vmware.md#vmware-requirements)を確認します。 検出されたサーバーの Azure Arc へのオンボードを開始するには、ソフトウェア インベントリが完了している必要があります。   
+- サーバー上でソフトウェア インベントリを開始する前に、[アプリケーションの検出要件](migrate-support-matrix-vmware.md#software-inventory-requirements)を確認します。 Windows サーバーには、PowerShell バージョン 3.0 以降がインストールされている必要があります。 
+- 検出されたサーバーのインベントリへのリモート接続を許可して、Azure Arc にオンボードするための前提条件を確認します。 
+    1. 検出されたサーバーへの受信リモート接続を許可します 
+        - _Windows の場合:_ WinRM ポート 5985 (HTTP) 上の受信接続。 すべてのターゲット Windows サーバー上で "winrm qc" コマンドを実行して、ローカル コンピューター上の WS-Management プロトコルを有効にします。 
+        - _Linux の場合:_ すべてのターゲット Linux サーバー上で、ポート 22 (SSH) 上の受信接続を許可します。
+        - リモート マシン (検出されたサーバー) の IP アドレスを、アプライアンス上の WinRM TrustedHosts リストに追加することもできます。 
+    2. Azure Migrate アプライアンスは、ターゲット サーバーへのネットワーク通信経路が必要です。 
+- [Azure Arc の前提条件](../azure-arc/servers/agent-overview.md#prerequisites)を確認し、次の考慮事項を確認してください。
     - Azure Arc へのオンボードは、vCenter Server の検出とソフトウェア インベントリの完了後にのみ開始できます。 ソフトウェア インベントリをオンにした後、完了するまでに最大 6 時間かかる場合があります。
-    -  Arc オンボード プロセス中に、検出されたサーバーに [Azure Arc ハイブリッド接続マシン エージェント](/azure/azure-arc/servers/learn/quick-enable-hybrid-vm)がインストールされます。 エージェントをインストールして構成するために、サーバーで管理者権限を持つ資格情報を提供してください。 Linux では root アカウントを提供し、Windows ではローカルの Administrators グループのメンバー アカウントを提供します。 
-    - サーバーで、[サポートされているオペレーティング システム](/azure/azure-arc/servers/agent-overview#supported-operating-systems)が実行中であることを確認します。
-    - [必要な Azure ロール](/azure/azure-arc/servers/agent-overview#required-permissions)への割り当てが、Azure アカウントに付与されていることを確認します。
-    - 検出されたサーバーがファイアウォールまたはプロキシ サーバーを介してインターネット経由で通信する場合、[必要な URL](/azure/azure-arc/servers/agent-overview#networking-configuration) がブロックされていないことを確認します。
-    - Azure Arc が[サポートされているリージョン](/azure/azure-arc/servers/overview#supported-regions)を確認します。 
+    -  Arc オンボード プロセス中に、検出されたサーバーに [Azure Arc ハイブリッド接続マシン エージェント](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)がインストールされます。 エージェントをインストールして構成するために、サーバーで管理者権限を持つ資格情報を提供してください。 Linux では root アカウントを提供し、Windows ではローカルの Administrators グループのメンバー アカウントを提供します。 
+    - サーバーで、[サポートされているオペレーティング システム](../azure-arc/servers/agent-overview.md#supported-operating-systems)が実行中であることを確認します。
+    - [必要な Azure ロール](../azure-arc/servers/agent-overview.md#required-permissions)への割り当てが、Azure アカウントに付与されていることを確認します。
+    - 検出されたサーバーがファイアウォールまたはプロキシ サーバーを介してインターネット経由で通信する場合、[必要な URL](../azure-arc/servers/agent-overview.md#networking-configuration) がブロックされていないことを確認します。
+    - Azure Arc が[サポートされているリージョン](../azure-arc/servers/overview.md#supported-regions)を確認します。 
     - Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5, 000 個のマシン インスタンスがサポートされます。
 
 
@@ -132,12 +135,13 @@ Azure Migrate アプライアンスを使用して Azure Arc へのオンボー�
 サーバーに接続するための[前提条件](./migrate-support-matrix-physical.md)が満たされていないか、サーバーへの接続でプロキシ設定などのネットワークの問題が発生しています。
 
 **推奨アクション**   
-- [こちら](https://go.microsoft.com/fwlink/?linkid=2134728)に記載されている前提条件とポート アクセス要件を、サーバーが満たしていることを確認します。 
-- リモート マシン (検出されたサーバー) の IP アドレスを、Azure Migrate アプライアンス上の WinRM TrustedHosts リストに追加し、操作を再試行します。 
+- サーバーが[前提条件](#before-you-get-started)と[ポート アクセス要件](./migrate-support-matrix-physical.md)を満たしていることを確認します。 
+- リモート マシン (検出されたサーバー) の IP アドレスを、Azure Migrate アプライアンス上の WinRM TrustedHosts リストに追加し、操作を再試行します。 これは、サーバー上のリモート受信接続を許可するためのものです - _Windows:_ WinRM ポート 5985 (HTTP) と _Linux:_ SSH ポート 22 (TCP)
 - アプライアンスでサーバーに接続するための正しい認証方法が選択されていることを確認します。 
    > [!Note] 
    > Azure Migrate では、Linux サーバーに対するパスワードベースと SSH キーベースの両方の認証がサポートされています。
-- 問題が引き続き発生する場合は、Microsoft サポート ケースを提出してください。その際、アプライアンス マシン ID (アプライアンス構成マネージャーのフッターにあります) を指定してください。    
+- 問題が引き続き発生する場合は、Microsoft サポート ケースを提出してください。その際、アプライアンス マシン ID (アプライアンス構成マネージャーのフッターにあります) を指定してください。     
+   
 
 ### <a name="error-60002---invalidservercredentials"></a>エラー 60002 - InvalidServerCredentials  
 
@@ -157,7 +161,7 @@ Azure Migrate アプライアンスを使用して Azure Arc へのオンボー�
 **推奨アクション**  
 - 影響を受けるサーバーに最新のカーネルと OS の更新プログラムがインストールされていることを確認します。
 - アプライアンスとサーバーの間にネットワーク待機時間がないことを確認します。 待機時間の問題を回避するために、アプライアンスとソース サーバーを同じドメインに配置することをお勧めします。
-- 影響を受けるサーバーにアプライアンスから接続し、[こちら](./troubleshoot-appliance-discovery.md)に記載されているコマンドを実行して、null または空のデータが返されるかどうかを確認します。
+- 影響を受けるサーバーにアプライアンスから接続し、[こちら](./troubleshoot-appliance.md)に記載されているコマンドを実行して、null または空のデータが返されるかどうかを確認します。
 - 問題が引き続き発生する場合は、Microsoft サポート ケースを提出してください。その際、アプライアンス マシン ID (アプライアンス構成マネージャーのフッターにあります) を指定してください。  
 
 ### <a name="error-60108---softwareinventorycredentialnotassociated"></a>エラー 60108 - SoftwareInventoryCredentialNotAssociated  

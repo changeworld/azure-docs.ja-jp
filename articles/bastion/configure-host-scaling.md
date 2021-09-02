@@ -6,14 +6,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9b9315705896dcec4e7a3baa2ad962ca04036a48
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: d5087994a72b52ce091dac98987b8e0bc60e287e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732092"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224742"
 ---
 # <a name="configure-host-scaling-preview"></a>ホストのスケーリングの構成 (プレビュー)
 
@@ -21,9 +21,8 @@ ms.locfileid: "113732092"
 
 ## <a name="configuration-steps"></a>構成の手順
 
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
-1. Azure portal で、Bastion ホストに移動します。
+1. [Azure portal](https://ms.portal.azure.com) にサインインします。
+1. Azure portal 上で、Bastion ホストに移動します。
 1. ホスト スケーリング インスタンス数には Standard レベルが必要です。 **[構成]** ページ の **[レベル]** で、レベルが **Standard** であることを確認します。 レベルが Basic である場合は、ドロップダウンから **[Standard]** を選択します。 
 
    :::image type="content" source="./media/configure-host-scaling/select-sku.png" alt-text="レベルの選択のスクリーンショット。" lightbox="./media/configure-host-scaling/select-sku.png":::

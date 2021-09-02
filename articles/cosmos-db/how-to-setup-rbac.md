@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/21/2021
 ms.author: thweiss
-ms.openlocfilehash: b1b4b9fbb3914ca3389f57d680d2298c00d64a9b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d83d6ad6834ea38b293054e59eb39a35be5c507e
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114444771"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111504"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>Azure Active Directory を使用して Azure Cosmos DB アカウントのロールベースのアクセス制御を構成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB データ プレーン RBAC は、[Azure RBAC](../role-based-acc
 > このアクセス許可モデルでは、データの読み取りと書き込みを行うことができるデータベース操作のみが対象になります。 コンテナーの作成やスループットの変更などの管理操作は、いかなるものも対象に **なりません**。 つまり、AAD ID で管理操作を認証するために、**Azure Cosmos DB データ プレーン SDK を使用することはできません**。 代わりに、次の方法で [Azure RBAC](role-based-access-control.md) を使用する必要があります。
 > - [Azure Resource Manager (ARM) テンプレート](manage-with-templates.md)
 > - [Azure PowerShell スクリプト](manage-with-powershell.md)、
-> - [Azure CLI スクリプト](manage-with-cli.md)、
+> - [Azure CLI スクリプト](sql/manage-with-cli.md)、
 > - 次で利用可能な Azure 管理ライブラリ
 >   - [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.CosmosDB/)
 >   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)

@@ -2,21 +2,21 @@
 title: クイックスタート - SMS メッセージを送信する
 titleSuffix: An Azure Communication Services quickstart
 description: Azure Communication Services を使用して SMS メッセージを送信する方法について説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 7ef417530aadc4fd0be79f3715ee5d9ad4a71e6d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 1ace517eefe9b9f579de2975a1809278d5a5afbb
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111971"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257749"
 ---
 # <a name="quickstart-send-an-sms-message"></a>クイック スタート:SMS メッセージを送信する
 

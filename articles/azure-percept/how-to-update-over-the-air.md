@@ -1,20 +1,20 @@
 ---
-title: ご自分の Azure Percept DK を無線 (OTA) の更新プログラムを使用して更新する
+title: Azure Percept DK を無線で更新する
 description: Azure Percept DK の更新プログラムを無線 (OTA) で受信する方法について説明します
-author: mimcco
-ms.author: mimcco
+author: EthanChangAED
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c5045aed59be4c8903672691241b68f69e353e13
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b3dd8e10379e28a7bd988ec37dcd1943fcac2d3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733352"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222255"
 ---
-# <a name="update-your-azure-percept-dk-using-over-the-air-ota-updates"></a>ご自分の Azure Percept DK を無線 (OTA) の更新プログラムを使用して更新する
+# <a name="update-azure-percept-dk-over-the-air"></a>Azure Percept DK を無線で更新する
 
 Device Update for IoT Hub を使用して無線 (OTA) で Azure Percept DK のキャリア ボードの OS およびファームウェアを更新する方法について学習するには、このガイドに従ってください。
 
@@ -68,12 +68,10 @@ Device Update for IoT Hub では、Azure Percept DK の特定のグループに�
 - デバイスは 1 つのグループにのみ属することができます。
 
 1. デバイスにタグを追加します。
-
     1. 左側のナビゲーション ウィンドウの **[IoT Edge]** で Azure Percept DK を見つけて、その **[デバイス ツイン]** に移動します。
-
     1. 下のように、新しい **Device Update for IoT Hub** タグ値を追加します (```<CustomTagValue>``` は、AzurePerceptGroup1 などのタグの値/名前を表します)。 デバイス ツインの [JSON ドキュメント タグ](../iot-hub/iot-hub-devguide-device-twins.md#device-twins)の詳細についてご確認ください。
 
-        ```
+        ```json
         "tags": {
         "ADUGroup": "<CustomTagValue>"
         },
@@ -84,15 +82,10 @@ Device Update for IoT Hub では、Azure Percept DK の特定のグループに�
 1. 既存の Azure IoT Hub タグを選択して、グループを作成します。
 
     1. Azure IoT Hub ページに戻ります。
-
     1. 左側のメニュー パネルで、 **[デバイスの自動管理]** の下にある **[デバイスの更新プログラム]** を選択します。
-
     1. **[グループ]** タブを選択します。このページには、Device Update に接続されている、グループ化されていないデバイスの数が表示されます。
-
     1. **[+ 追加]** を選択して、新しいグループを作成します。
-
     1. 一覧から IoT Hub タグを選択し、 **[送信]** をクリックします。
-
     1. グループが作成されると、更新のコンプライアンス チャートおよびグループの一覧が更新されます。 チャートには、さまざまなコンプライアンス対応状態 (**On latest update (最新の更新状態)** 、**New updates available (利用可能な新しい更新がある)** 、**Updates in progress (更新の進行中)** 、および **Not yet grouped (まだグループ化されていない)** ) にあるデバイスの数が表示されます。
 
 ## <a name="deploy-an-update"></a>更新プログラムをデプロイする
