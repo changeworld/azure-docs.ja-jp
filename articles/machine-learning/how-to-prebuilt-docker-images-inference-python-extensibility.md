@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 8af27f876f1c325cf99214e36f680e012e86c98d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 08139501886f580033aae46bdabd55ed300c5059
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536328"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710018"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>事前構築済み Docker イメージの Python パッケージ拡張 (プレビュー)
 
@@ -173,6 +173,13 @@ myenv.environment_variables = {
 
 
 * 登録済みのモデルまたはローカル モデルを読み込む方法について詳しくは、[デプロイする場所と方法](how-to-deploy-and-where.md?tabs=azcli#define-a-dummy-entry-script)に関するページを参照してください。
+
+## <a name="bug-fixes"></a>バグの修正
+
+### <a name="2021-07-26"></a>2021 年 07 月 26 日
+
+* `AZUREML_EXTRA_REQUIREMENTS_TXT` と `AZUREML_EXTRA_PYTHON_LIB_PATH` は、スコア スクリプトのディレクトリに対して常に相対的になるようになりました。
+たとえば、requirements.txt とスコア スクリプトの両方が **my_folder** 内にある場合は、`AZUREML_EXTRA_REQUIREMENTS_TXT` を requirements.txt に設定する必要があります。 `AZUREML_EXTRA_REQUIREMENTS_TXT` は **my_folder/requirements.txt** に設定されなくなります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,12 +3,12 @@ title: Azure Service Bus 保存データの暗号化用に独自のキーを構�
 description: この記事では、Azure Service Bus の保存データを暗号化するための独自のキーを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 0ebce2d9b5d02f12f9f2ab363b225519fcc838d7
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 586d8d477a27b44bf530ae52acbbe088eefe02c5
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854362"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031678"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
 Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。 Azure Storage に格納されているすべてのデータは、Microsoft マネージド キーを使用して暗号化されます。 独自のキー (Bring Your Own Key (BYOK) またはカスタマーマネージド キーとも呼ばれます) を使用する場合、データは引き続き Microsoft マネージド キーを使用して暗号化されますが、さらに Microsoft マネージド キーはカスタマー マネージド キーを使用して暗号化されます。 この機能を使用して、Microsoft マネージド キーの暗号化に使用されるカスタマー マネージド キーへの作成、ローテーション、無効化、およびアクセスの取り消しを実行できます。 BYOK 機能の有効化は、名前空間での 1 回限りのセットアップ プロセスです。
@@ -274,7 +274,7 @@ Service Bus インスタンスでは、そのリストされた暗号化キー�
              },
              "properties":{
                 "encryption":{
-                   "keySource":"Microsoft.KeyVault",
+                   "keySource":"Microsoft.KeyVault",             
                    "keyVaultProperties":[
                       {
                          "keyName":"[parameters('keyName')]",
@@ -322,6 +322,28 @@ Service Bus インスタンスでは、そのリストされた暗号化キー�
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
     ```
+
+#### <a name="enable-infrastructure-encryption-for-double-encryption-of-data-inazure-service-bus-data"></a>Azure Service Bus データ内のデータの二重暗号化のためにインフラストラクチャ暗号化を有効にする 
+データがセキュリティで保護されていることについて、より高いレベルの保証が必要な場合は、インフラストラクチャ レベルの暗号化 (二重暗号化とも呼ばれます) を有効にできます。 
+
+インフラストラクチャ暗号化が有効な場合、Azure Service Bus 内のデータは、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用して、2 回 (サービス レベルで 1 回とインフラストラクチャ レベルで 1 回) 暗号化されます。 このため、Azure Service Bus データのインフラストラクチャ暗号化によって、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。
+
+下に示すように、ARM テンプレートの上記の **UpdateServiceBusNamespaceWithEncryption.json** の `requireInfrastructureEncryption` プロパティを更新することで、インフラストラクチャ暗号化を有効にできます。 
+
+```json
+"properties":{
+   "encryption":{
+      "keySource":"Microsoft.KeyVault",    
+      "requireInfrastructureEncryption":true,         
+      "keyVaultProperties":[
+         {
+            "keyName":"[parameters('keyName')]",
+            "keyVaultUri":"[parameters('keyVaultUri')]"
+         }
+      ]
+   }
+}
+```
     
 
 ## <a name="next-steps"></a>次のステップ

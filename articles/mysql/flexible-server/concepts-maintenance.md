@@ -6,14 +6,16 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 424402db1933c0a20ddd25a6e5af11d84d0775a8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 0da77cb5291022357384fdf2e14e90fe76850f4f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481159"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653016"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Azure Database for MySQL での予定メンテナンス - フレキシブル サーバー
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL - フレキシブル サーバーでは、管理対象のデータベースを安全で安定した最新の状態に保つために定期的なメンテナンスが実行されます。 メンテナンス中に、サーバーでは新しい機能、更新プログラム、パッチが取得されます。
 

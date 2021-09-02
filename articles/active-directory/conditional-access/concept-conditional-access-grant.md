@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 695786a43291bdb0cb679d79cfa4e6d08cf67770
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 6df1b170d350d483a52311d8a7d2bcd24282eaa6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867221"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667015"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -92,7 +92,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
-- Microsoft Power Apps
+- Microsoft PowerApps
 - Microsoft Power BI
 - Microsoft PowerPoint
 - Microsoft SharePoint
@@ -140,7 +140,6 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft Power BI
 - Microsoft PowerPoint
 - Microsoft SharePoint
-- Microsoft Teams
 - Microsoft Word
 - MultiLine for Intune
 - Nine Mail - Email & Calendar

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: reference
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
-ms.date: 12/19/2018
-ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: ''
+ms.date: 07/23/2021
+ms.openlocfilehash: 79226ed8fa4d4e78120a0c91b672d4cfa23712fc
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96501211"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675116"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL Database での拡張イベント 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL Database での拡張イベントの機能セットは SQL Server お�
 
 ## <a name="prerequisites"></a>前提条件
 
-このトピックは、以下の知識をお持ちのユーザーを想定しています。
+この記事は、以下の知識をお持ちのユーザーを想定しています。
 
 - [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [拡張イベント](/sql/relational-databases/extended-events/extended-events)
@@ -49,12 +49,12 @@ Azure SQL Database での拡張イベントの機能セットは SQL Server お�
 
 ## <a name="code-samples"></a>コード サンプル
 
-関連するトピックで次の 2 つのコード サンプルを提供します。
+関連記事には、次の 2 つのコード サンプルが含まれています。
 
 - [Azure SQL Database での拡張イベント向けリング バッファー ターゲット コード](xevent-code-ring-buffer.md)
 
   - 短く単純な Transact-SQL スクリプト。
-  - コード サンプルのトピックで強調しているように、リング バッファー ターゲットの作業が完了したら、alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` ステートメントの実行によりそのリソースを解放する必要があります。 後ほど、 `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`によりリング バッファーの他のインスタンスを追加できます。
+  - コード サンプルの記事で強調しているように、リング バッファー ターゲットの作業が完了したら、alter-drop (`ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;`) ステートメントの実行によりそのリソースを解放する必要があります。 後ほど、 `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`によりリング バッファーの他のインスタンスを追加できます。
 
 - [Azure SQL Database の拡張イベントのためのイベント ファイル ターゲット コード](xevent-code-event-file.md)
 
@@ -75,13 +75,13 @@ Azure SQL Database での拡張イベントの機能セットは SQL Server お�
 
 | カタログ ビューの名前<br/>カタログ ビュー | 説明 |
 |:--- |:--- |
-| **sys.database_event_session_actions** |イベント セッションの各イベントのアクションごとに 1 行のデータを返します。 |
-| **sys.database_event_session_events** |イベント セッションのイベントごとに行を返します。 |
-| **sys.database_event_session_fields** |イベントとターゲットに明示的に設定されたカスタマイズ可能な列ごとに行を返します。 |
-| **sys.database_event_session_targets** |イベント セッションのイベント ターゲットごとに 1 行のデータを返します。 |
-| **sys.database_event_sessions** |データベース内のイベント セッションごとに行を返します。 |
+| `sys.database_event_session_actions` |イベント セッションの各イベントのアクションごとに 1 行のデータを返します。 |
+| `sys.database_event_session_events` |イベント セッションのイベントごとに行を返します。 |
+| `sys.database_event_session_fields` |イベントとターゲットに明示的に設定されたカスタマイズ可能な列ごとに行を返します。 |
+| `sys.database_event_session_targets` |イベント セッションのイベント ターゲットごとに 1 行のデータを返します。 |
+| `sys.database_event_sessions` |データベース内のイベント セッションごとに行を返します。 |
 
-Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、 *.server\_* が含まれています。 名前のパターンは、**sys.server_event_%** のようになっています。
+Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、 *.server\_* が含まれています。 名前のパターンは `sys.server_event_%` のようになります。
 
 ## <a name="new-dynamic-management-views-dmvs"></a>新しい動的管理ビュー [(DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
@@ -89,30 +89,30 @@ Azure SQL Database には、拡張イベントをサポートする [動的管�
 
 | DMV の名前 | 説明 |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |イベント セッション アクションに関する情報を返します。 |
-| **sys.dm_xe_database_session_events** |セッション イベントに関する情報を返します。 |
-| **sys.dm_xe_database_session_object_columns** |セッションにバインドされたオブジェクトの構成値を示します。 |
-| **sys.dm_xe_database_session_targets** |セッション ターゲットに関する情報を返します。 |
-| **sys.dm_xe_database_sessions** |現在のデータベースを対象としたイベント セッションごとに行を返します。 |
+| `sys.dm_xe_database_session_event_actions` |イベント セッション アクションに関する情報を返します。 |
+| `sys.dm_xe_database_session_events` |セッション イベントに関する情報を返します。 |
+| `sys.dm_xe_database_session_object_columns` |セッションにバインドされたオブジェクトの構成値を示します。 |
+| `sys.dm_xe_database_session_targets` |セッション ターゲットに関する情報を返します。 |
+| `sys.dm_xe_database_sessions` |現在のデータベースを対象としたイベント セッションごとに行を返します。 |
 
 Microsoft SQL Server では、同様のカタログ ビューは次のように名前から *\_database* 部分を削除した命名がなされています。
 
-- **sys.dm_xe_sessions** 名前の代わり<br/>**sys.dm_xe_database_sessions**
+- `sys.dm_xe_sessions` (`sys.dm_xe_database_sessions` の代わり)
 
 ### <a name="dmvs-common-to-both"></a>両者に共通の DMV
 
 拡張イベントについては、次のような Azure SQL Database、Azure SQL Managed Instance、および Microsoft SQL Server に共通した DMV も存在します。
 
-- **sys.dm_xe_map_values**
-- **sys.dm_xe_object_columns**
-- **sys.dm_xe_objects**
-- **sys.dm_xe_packages**
+- `sys.dm_xe_map_values`
+- `sys.dm_xe_object_columns`
+- `sys.dm_xe_objects`
+- `sys.dm_xe_packages`
 
 <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
 ## <a name="find-the-available-extended-events-actions-and-targets"></a>使用可能な拡張イベント、アクション、ターゲットを検索
 
-簡単な SQL **SELECT** を実行して、使用可能なイベント、アクション、ターゲットのリストを取得できます。
+使用可能なイベント、アクション、ターゲットの一覧を取得するには、サンプル クエリを使用します。
 
 ```sql
 SELECT
@@ -140,9 +140,9 @@ SELECT
 
 Azure SQL Database のイベント セッションから結果を取得できるターゲットを次に挙げます。
 
-- [リング バッファー ターゲット](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)) - イベント データを一時的にメモリに保持します。
-- [イベント カウンター ターゲット](/previous-versions/sql/sql-server-2016/ff878025(v=sql.130)) - 拡張イベント セッションの間に発生したすべてのイベントをカウントします。
-- [イベント ファイル ターゲット](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) - Azure Storage コンテナーに完了したバッファーを書き込みます。
+- [リング バッファー ターゲット](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#ring_buffer-target) - イベント データを一時的にメモリに保持します。
+- [イベント カウンター ターゲット](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_counter-target) - 拡張イベント セッションの間に発生したすべてのイベントをカウントします。
+- [イベント ファイル ターゲット](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target) - Azure Storage コンテナーに完了したバッファーを書き込みます。
 
 [Event Tracing for Windows (ETW)](/dotnet/framework/wcf/samples/etw-tracing) API は Azure SQL Database の拡張イベントでは使用できません。
 
@@ -151,11 +151,11 @@ Azure SQL Database のイベント セッションから結果を取得できる
 Azure SQL Database のクラウド環境にふさわしいセキュリティ関連の相違点を次にいくつか挙げます。
 
 - 拡張イベントは単一テナントの分離モデルが元になっています。 あるデータベースのイベント セッションが他のデータベースからのデータやイベントにアクセスすることはできません。
-- **マスター** データベースのコンテキストで、**CREATE EVENT SESSION** ステートメントを実行することはできません。
-
+- `master` データベースのコンテキストで、`CREATE EVENT SESSION` ステートメントを実行することはできません。
+    
 ## <a name="permission-model"></a>権限モデル
 
-**CREATE EVENT SESSION** ステートメントを実行するには、データベースで **コントロール** 権限が必要です。 データベース所有者 (dbo) には **コントロール** 権限があります。
+`CREATE EVENT SESSION` ステートメントを実行するには、データベースで **コントロール** 権限が必要です。 データベース所有者 (dbo) には **コントロール** 権限があります。
 
 ### <a name="storage-container-authorizations"></a>ストレージ コンテナーの承認
 
@@ -168,6 +168,11 @@ Azure Storage コンテナーのために生成した SAS トークンには、�
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
 システム全体にとって不健全と言える程、拡張イベントの使い過ぎによるアクティブメモリの蓄積が起きるシナリオがあります。 そのため、Azure SQL Database はイベント セッションによって蓄積され得るアクティブ メモリの量に対する制限を動的に設定、調整します。 多くの要因が動的な計算に影響します。
+
+次の場合、Azure SQL Database の XEvent セッションで使用できるメモリに上限があります。
+  - DTU 購入モデルの単一の Azure SQL Database では、各データベースで最大 128 MB を使用できます。 これは、Premium レベルでのみ 256 MB に引き上げられます。
+  - 仮想コア購入モデルの単一の Azure SQL Database では、各データベースで最大 128 MB を使用できます。
+  - エラスティック プールでは、個々のデータベースは単一データベースの制限によって制限され、合計で 512 MB を超えることはできません。
 
 メモリの最大量が使用されたというエラー メッセージを受信した場合、次の修正措置を実行することができます。
 
@@ -182,13 +187,11 @@ Azure Storage BLOB にデータを保持する際に、 **イベント ファイ
 
 ## <a name="related-links"></a>関連リンク
 
-- [Azure Storage における Azure PowerShell の使用](/powershell/module/az.storage/)。
 - [Azure Storage コマンドレット](/powershell/module/Azure.Storage)
 - [Azure Storage での Azure PowerShell の使用](/powershell/module/az.storage/)
 - [.NET から BLOB ストレージを使用する方法](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
 - [CREATE EVENT SESSION (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
-- [Jonathan Kehayias の Microsoft SQL Server の拡張イベントに関するブログ投稿](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 - パラメーターを Azure SQL Database に絞り込んだ、Azure "*サービスの更新情報*" の Web ページ。
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 

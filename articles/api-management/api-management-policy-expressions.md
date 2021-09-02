@@ -4,21 +4,16 @@ description: Azure API Management 内のポリシー式について説明しま�
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
-ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/07/2021
 ms.author: apimpm
-ms.openlocfilehash: aec1967f0652e18c4a24ca258c14a103355b22af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65309253886d8186087a1ac93b5da9d067f444bc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99219317"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468486"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事では、C# 7 のポリシー式の構文について説明します。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -27,7 +22,7 @@ ms.locfileid: "99219317"
 
 - バックエンド サービスにコンテキスト情報を指定する方法をご覧ください。 この情報を指定するには、[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーおよび [HTTP ヘッダーの設定](api-management-transformation-policies.md#SetHTTPheader)ポリシーを使用します。
 - [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレームに基づいて操作へのアクセスを事前に承認する方法を示します。
-- [API Inspector](./api-management-howto-api-inspector.md) トレースによってポリシーの評価方法と評価結果を確認する方法を示します。
+- [API Inspector](./api-management-howto-api-inspector.md) トレースによってポリシーの評価方法と評価結果を検出する方法を示します。
 - [キャッシュから取得](api-management-caching-policies.md#GetFromCache)ポリシーおよび[キャッシュに格納](api-management-caching-policies.md#StoreToCache)ポリシーの式を使用して、API Management 応答のキャッシュを構成する方法をご覧ください。 バックエンド サービスの `Cache-Control` ディレクティブによって指定されたバックエンド サービスの応答キャッシュ時間と一致するように設定しています。
 - コンテンツのフィルター処理を実行する方法をご覧ください。 [制御フロー](api-management-advanced-policies.md#choose) ポリシーおよび[本文設定](api-management-transformation-policies.md#SetBody)ポリシーを使用して、バックエンドから受信した応答からデータ要素を削除しています。
 - ポリシー ステートメントをダウンロードするには、[api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub リポジトリをご覧ください。
@@ -123,6 +118,7 @@ ms.locfileid: "99219317"
 |System.Linq.Enumerable|All|
 |System.Math|All|
 |System.MidpointRounding|All|
+|System.Net.IPAddress|All|
 |System.Net.WebUtility|All|
 |System.Nullable|All|
 |System.Random|All|
@@ -212,7 +208,7 @@ ms.locfileid: "99219317"
 |----------------------|-------------------------------------------------------|
 |context|[Api](#ref-context-api):[IApi](#ref-iapi)<br /><br /> [デプロイ](#ref-context-deployment)<br /><br /> Elapsed:TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [Product](#ref-context-product)<br /><br /> [Request](#ref-context-request)<br /><br /> RequestId:Guid - 一意の要求識別子<br /><br /> [Response](#ref-context-response)<br /><br /> [サブスクリプション](#ref-context-subscription)<br /><br /> タイムスタンプ:DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> [User](#ref-context-user)<br /><br /> [変数](#ref-context-variables): IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|
 |<a id="ref-context-api"></a>context.Api|Id: 文字列<br /><br /> IsCurrentRevision: ブール値<br /><br />  Name: 文字列<br /><br /> Path: 文字列<br /><br /> Revision: 文字列<br /><br /> ServiceUrl:[IUrl](#ref-iurl)<br /><br /> Version: 文字列 |
-|<a id="ref-context-deployment"></a>context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates:IReadOnlyDictionary<string, X509Certificate2>|
+|<a id="ref-context-deployment"></a>context.Deployment|GatewayId: 文字列 (マネージド ゲートウェイの場合に 'managed' を返します)<br /><br /> Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates:IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|
 |<a id="ref-context-operation"></a>context.Operation|Id: 文字列<br /><br /> Method: 文字列<br /><br /> Name: 文字列<br /><br /> UrlTemplate: 文字列|
 |<a id="ref-context-product"></a>context.Product|Apis:IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: ブール値<br /><br /> Groups:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 文字列<br /><br /> Name: 文字列<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: ブール値|
@@ -224,7 +220,7 @@ ms.locfileid: "99219317"
 |<a id="ref-context-user"></a>context.User|Email: 文字列<br /><br /> FirstName: 文字列<br /><br /> Groups:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 文字列<br /><br /> Identities:IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: 文字列<br /><br /> Note: 文字列<br /><br /> RegistrationDate:DateTime|
 |<a id="ref-iapi"></a>IApi|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> Protocols:IEnumerable<string\><br /><br /> ServiceUrl:[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames:[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: 文字列<br /><br /> Name: 文字列|
-|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):T の値: string、byte[]、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` メソッドと `context.Response.Body.As<T>` メソッドは、指定した型 `T` で要求および応答のメッセージ本文を読み取るのに使用します。 メソッドでは既定で元のメッセージ本文のストリームが使用され、制御が戻ると使用不可になります。 本文ストリームのコピーでメソッドを実行することでこれを回避するには、`preserveContent` パラメーターを `true` に設定します。 例については、[こちら](api-management-transformation-policies.md#SetBody)を参照してください。|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):T の値: string、byte[]、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` メソッドと `context.Response.Body.As<T>` メソッドは、指定した型 `T` で要求および応答のメッセージ本文を読み取るのに使用します。 メソッドでは既定で元のメッセージ本文のストリームが使用され、制御が戻ると使用不可になります。 本文ストリームのコピーでメソッドを実行することでこれを回避するには、[この例](api-management-transformation-policies.md#SetBody)のように `preserveContent` パラメーターを `true` に設定します。|
 |<a id="ref-iurl"></a>IUrl|Host: 文字列<br /><br /> Path: 文字列<br /><br /> Port: 整数<br /><br /> [Query](#ref-iurl-query): IReadOnlyDictionary<string, string[]><br /><br /> QueryString: 文字列<br /><br /> Scheme: 文字列|
 |<a id="ref-iuseridentity"></a>IUserIdentity|Id: 文字列<br /><br /> Provider: 文字列|
 |<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header: 文字列<br /><br /> Query: 文字列|

@@ -4,12 +4,12 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 61b7aa455cf9b782ca10d749344c26f5d15caa40
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d2cf6f53b295d5ac138f86deb765892fd34d907
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072516"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234575"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -186,7 +186,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | loggingLevelTelemetry | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) | numeric<br/> 1 |
 | diagnosticLogInterval | 内部ログ キューの (内部) ポーリング間隔 (ミリ秒) | numeric<br/> 10000 |
 | samplingPercentage | 送信されるイベントの割合。 既定値は 100 で、すべてのイベントが送信されます。 大規模なアプリケーションでデータ上限を維持する場合は、これを設定します。 | numeric<br/>100 |
-| autoTrackPageVisitTime | true の場合、ページビューに関して、前にインストルメント化されたページのビュー時間が追跡されてテレメトリとして送信されます。また、現在のページビューについて新しいタイマーが開始されます。 | boolean<br/>false |
+| autoTrackPageVisitTime | true の場合、ページ ビューに関して、_前_ にインストルメント化されたページのビュー時間が追跡されてテレメトリとして送信されます。また、現在のページ ビューについて新しいタイマーが開始されます。 これは `PageVisitTime` という名前のカスタム メトリック (単位: `milliseconds`) として送信され、Date の [now()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) 関数 (使用可能な場合) を使用して計算されます。now() が使用できない場合 (IE8 以下) は、(new Date()).[getTime()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime) にフォールバックされます。 既定値は false です。 | boolean<br/>false |
 | disableAjaxTracking | true の場合、Ajax 呼び出しは自動収集されません。 | boolean<br/> false |
 | disableFetchTracking | true の場合、フェッチ要求は自動収集されません。|boolean<br/>true |
 | overridePageViewDuration | true の場合、trackPageView の既定の動作が変わり、trackPageView の呼び出し時にページビュー期間の終了を記録します。 false の場合に、trackPageView にカスタム期間が指定されていないと、Navigation Timing API を使用してページ ビューのパフォーマンスが計算されます。 |boolean<br/>

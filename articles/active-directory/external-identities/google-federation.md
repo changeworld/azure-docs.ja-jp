@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/08/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c21e03870a53858fe877410a7cd75fdc7e82a83b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 37feb36e69277002f124b4a909d5bf8f75a4a3f3
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963518"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666893"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -28,10 +28,12 @@ Google とのフェデレーションを設定することで、招待された�
 ![Google ユーザーのサインイン オプション](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
-> Google フェデレーションは Gmail ユーザー専用に設計されています。 G Suite ドメインとのフェデレーションを行うには、[SAML/WS-Fed ID プロバイダー フェデレーション](direct-federation.md)を使用します。
+> Google フェデレーションは Gmail ユーザー専用に設計されています。 Google Workspace ドメインとのフェデレーションを行うには、[SAML/WS-Fed ID プロバイダー フェデレーション](direct-federation.md)を使用します。
 
 > [!IMPORTANT]
-> **2021 年の下半期以降**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](#deprecation-of-web-view-sign-in-support)。
+>
+> - **2021 年 7 月 12 日以降では**、Azure AD B2B のお客様がセルフサービス サインアップで使用するため、あるいはカスタム アプリケーションまたは基幹業務アプリケーションに外部ユーザーを招待するために、新しい Google 統合をセットアップした場合、Gmail ユーザーの認証がブロックされる可能性があります (以下の「[予期される事柄](#what-to-expect)」に示すようなエラー画面が表示されます)。 この問題が発生するのは、2021 年 7 月 12日 以降にセルフサービス サインアップ ユーザー フローまたは招待のために Google 統合を作成し、カスタム アプリケーションまたは基幹業務アプリケーションの Gmail 認証がシステム Web ビューに移動されていない場合のみです。 システム Web ビューは既定で有効になっているため、ほとんどのアプリは影響を受けません。 この問題を回避するには、セルフサービス サインアップのために新しい Google 統合を作成する前に、Gmail 認証をシステム ブラウザーに移動することを強くお勧めします。 「[埋め込み Web ビューに必要な対応](#action-needed-for-embedded-frameworks)」を参照してください。
+> - **2021 年 9 月 30 日以降**、Google では [Web ビューのサインイン サポートが非推奨](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)になります。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B (外部ユーザーの招待用)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google ユーザーのエクスペリエンスの内容
 
@@ -58,29 +60,37 @@ Google ゲスト ユーザーは、テナント情報を含むアプリケーシ
 
 ## <a name="deprecation-of-web-view-sign-in-support"></a>Web ビュー サインイン サポートの廃止
 
-2021 年の下半期以降、Google は[埋め込み Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 用の Google フェデレーションを使用している場合、[Gmail でセルフサービス サインアップ](identity-providers.md)を使用している場合、またはアプリで埋め込みの Web ビューを使用してユーザーを認証している場合は、Google Gmail ユーザーは認証できなくなります。
+2021 年の 9 月 30 日より、Google は[埋め込み Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。
 
 Gmail ユーザーに影響を与える既知のシナリオを次に示します。
+- Windows 上の Microsoft アプリ (Teams や PowerApps など) 
 - [WebView](/windows/communitytoolkit/controls/wpf-winforms/webview) コントロール、[WebView2](/microsoft-edge/webview2/)、または古い WebBrowser コントロールを認証で使用する Windows アプリ。 これらのアプリは、Web アカウント マネージャー (WAM) フローの使用へ移行する必要があります。
 - WebView UI 要素を使用した Android アプリケーション 
 - UIWebView または WKWebview を使用した iOS アプリケーション 
-- ADAL を使用したアプリ
+- [ADAL を使用したアプリ](../develop/howto-get-list-of-all-active-directory-auth-library-apps.md)
 
 この変更は以下のものには影響しません。
-
-- Windows 上の Microsoft アプリ
 - Web アプリ
 - 認証でシステム Web ビューを使用したモバイルアプリ (iOS の [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)、Android の[カスタム タブ](https://developer.chrome.com/docs/android/custom-tabs/overview/))。  
-- G Suite ID (たとえば、G Suite との [SAML ベースのフェデレーション](direct-federation.md)を使用している場合)
+- Google Workspace ID (たとえば、Google Workspace との [SAML ベースのフェデレーション](direct-federation.md)を使用している場合)
 
 この変更によって次のような影響があるか Google に確認しています。
 - Web アカウント マネージャー (WAM) または Web 認証ブローカー (WAB) を使用する Windows アプリ。  
 
 Microsoft はさまざまなプラットフォームおよびシナリオのテストを継続しており、それに応じてこの記事を更新する予定です。
+
 ### <a name="action-needed-for-embedded-web-views"></a>埋め込み Web ビューに必要な対応
+
 サインインにシステム ブラウザーを使用するようにアプリを変更します。 詳細については、MSAL.NET のドキュメントの「[埋め込み Web UI とシステム Web UI の比較](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui)」を参照してください。 すべての MSAL SDK が既定でシステム Web ビューを使用します。
+
 ### <a name="what-to-expect"></a>ウィザードの内容
-Google が 2021 年下半期にこれらの変更を実施する前に、Microsoft はまだ埋め込み Web ビューを使用しているアプリのための回避策を配備して、認証がブロックされないようにします。
+
+Google が 2021 年 9 月 30 日にこれらの変更を実施する前に、Microsoft はまだ埋め込み Web ビューを使用しているアプリのための回避策を配備して、認証がブロックされないようにします。 埋め込み Web ビューで Gmail アカウントを使用してサインインするユーザーは、サインインを完了するために、別のブラウザーでコードを入力するように求められます。
+
+または、既存の Gmail ユーザーと新しい Gmail ユーザーに、電子メールのワンタイム パスコードを使用してサインインさせることもできます。 Gmail ユーザーが電子メールのワンタイム パスコードを使用するようにするには、次のようにします。
+1. [電子メールのワンタイム パスコードを有効にする](one-time-passcode.md#enable-email-one-time-passcode)
+2. [Google フェデレーションを削除する](google-federation.md#how-do-i-remove-google-federation)
+3. Gmail ユーザーの[利用状態をリセット](reset-redemption-status.md)して、今後、電子メールのワンタイム パスコードを使用できるようにします。
 
 許可された認証用 Web ビューに移行しているアプリケーションには影響はなく、ユーザーは通常どおり Google 経由で認証することができます。
 
@@ -91,12 +101,15 @@ Google が 2021 年下半期にこれらの変更を実施する前に、Microso
 このドキュメントは、Google により日付と詳細情報が共有されたら更新される予定です。
 
 ### <a name="distinguishing-between-cefelectron-and-embedded-web-views"></a>CEF/Electron と埋め込み Web ビューを区別する
-[埋め込み Web ビューとフレームワーク サインイン サポートの廃止](#deprecation-of-web-view-sign-in-support)に加えて、Google は [Chromium Embedded Framework (CEF) ベースの Gmail 認証の廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)も行います。 Electron アプリなど、CEF で構築されたアプリケーションについて、Google は 2021 年 6 月 30 日に認証を無効にします。 影響を受けるアプリケーションには Google から直接通知が送られており、このドキュメントでは説明していません。  このドキュメントは、Google が 2021 年後半の別の日付で制限する予定である、上で説明した埋め込み Web ビューに関連しています。
+
+[埋め込み Web ビューとフレームワーク サインイン サポートの廃止](#deprecation-of-web-view-sign-in-support)に加えて、Google は [Chromium Embedded Framework (CEF) ベースの Gmail 認証の廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)も行います。 Electron アプリなど、CEF で構築されたアプリケーションについて、Google は 2021 年 6 月 30 日に認証を無効にします。 影響を受けるアプリケーションには Google から直接通知が送られており、このドキュメントでは説明していません。  このドキュメントは、Google が別の日付 (2021 年 9 月 30 日) に制限する予定である、上で説明した埋め込み Web ビューに関連しています。
 
 ### <a name="action-needed-for-embedded-frameworks"></a>埋め込みフレームワークに必要な対応
+
 [Google のガイダンス](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)に従って、ご利用のアプリが影響を受けるかどうかを判断します。
 
 ## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
+
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure Active Directory (Azure AD) に後で追加できるクライアント ID とクライアント シークレットを取得します。 
 1. https://console.developers.google.com で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
 2. サービスの使用条件への同意を求めるメッセージが表示されたらそのようにします。
@@ -139,6 +152,7 @@ Google が 2021 年下半期にこれらの変更を実施する前に、Microso
     ![OAuth クライアント ID とクライアント シークレットを示すスクリーンショット。](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>手順 2:Azure AD で Google フェデレーションを構成する 
+
 次に、Google クライアント ID とクライアント シークレットを設定します。 Azure portal または PowerShell を使用して行うことができます。 自分自身を招待することで、Google フェデレーションの構成をテストしてください。 Gmail アドレスを使用し、招待を自分の招待された Google アカウントと引き換えてみます。 
 
 **Azure portal で Google フェデレーションを構成するには** 
@@ -161,6 +175,7 @@ Google が 2021 年下半期にこれらの変更を実施する前に、Microso
    > クライアント ID とクライアント シークレットは、「手順 1: Google 開発者プロジェクトを構成する」で作成したアプリのものを使用します。 詳細については、「[New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true)」を参照してください。 
  
 ## <a name="how-do-i-remove-google-federation"></a>Google フェデレーションを削除する方法
+
 Google フェデレーション セットアップは削除できます。 そのようにした場合、既に招待を引き換え済みの Google ゲスト ユーザーは、サインインできなくなります。 ただし、[ユーザーの引き換え状態をリセットする](reset-redemption-status.md)ことで、リソースへのアクセスを再度許可することができます。
  
 **Azure AD ポータルで Google フェデレーションを削除するには**

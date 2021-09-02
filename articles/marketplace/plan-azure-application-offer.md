@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: bd0e89e1967842e8167c3da1fc3d2a716a5f7bd6
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: c8faefa8f1793275e4c93bf772e89ebf852b33d4
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633779"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283449"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する
 
@@ -95,7 +95,7 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 
 ## <a name="categories-and-subcategories"></a>カテゴリとサブカテゴリ
 
-少なくとも 1 つで最大 2 つのカテゴリを選択して、オファーを適切なコマーシャル マーケットプレース検索領域にグループ化できます。 プライマリおよびセカンダリ カテゴリについてそれぞれ最大 2 つのサブカテゴリを選択できます。 カテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](marketplace-categories-industries.md#categories)」を参照してください。
+少なくとも 1 つで最大 2 つのカテゴリを選択して、オファーを適切なコマーシャル マーケットプレース検索領域にグループ化できます。 プライマリおよびセカンダリ カテゴリについてそれぞれ最大 2 つのサブカテゴリを選択できます。 カテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](gtm-offer-listing-best-practices.md#categories)」を参照してください。
 
 ## <a name="legal-contracts"></a>法的契約
 

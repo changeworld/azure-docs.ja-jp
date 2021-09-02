@@ -10,14 +10,14 @@ metadata:
   ms.subservice: domain-services
   ms.workload: identity
   ms.topic: how-to
-  ms.date: 02/09/2021
+  ms.date: 06/18/2021
   ms.author: justinha
-  ms.openlocfilehash: a431fff476cd79d25c4db0e60ad0bcff361a4a2a
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 287613213a565f475515e3034fd3897d29c1fff0
+  ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "111907479"
+  ms.lasthandoff: 07/27/2021
+  ms.locfileid: "114707904"
 title: Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)
 summary: このページには、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。
 sections:
@@ -73,6 +73,9 @@ sections:
       自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。
     answer: >
       いいえ。 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待されたゲスト ユーザーは、Azure AD Domain Services の管理対象ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに格納されません。 そのため、Azure AD Domain Services では、これらのユーザーの NTLM と Kerberos のハッシュをマネージド ドメインに同期することはできません。 このようなユーザーは、サインインすることも、マネージド ドメインにコンピューターを参加させることもできません。
+  - question: >
+      リソース フォレストとオンプレミス フォレストの間に、双方向のフォレストの信頼を作成できますか。
+    answer: "いいえ。 マネージド ドメイン リソース フォレストでは、オンプレミスのフォレストに対する一方向の送信フォレストの信頼が最大 5 つサポートされます。 \n"
   - question: >
       既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。
     answer: >
@@ -158,6 +161,10 @@ sections:
       Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。 Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。
     answer: >
       いいえ。 Azure AD Domain Services は従量課金制の Azure サービスであり、EMS の一部ではありません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free および Premium) で使用できます。 使用量に応じて、時間単位で課金されます。
+  - question: >
+      マネージド ドメインの下に子ドメインを作成できますか。
+    answer: >
+      いいえ。 Azure AD Domain Services の設計は、単一ドメインの単一フォレストであり、子ドメインを作成することはできません。
   - question: >
       このサービスは、どの Azure のリージョンで利用できますか。
     answer: >

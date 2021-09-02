@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 28d602f5edebaa122ec873338d99e31a4f755d14
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/25/2021
+ms.openlocfilehash: 4726df91efb18b2d9beec77606db449bd4aee3fa
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372466"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652650"
 ---
 # <a name="secure-traffic-between-virtual-networks-and-single-tenant-workflows-in-azure-logic-apps-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure Logic Apps の仮想ネットワークとシングルテナント ワークフロー間のトラフィックをセキュリティで保護する
 
@@ -153,7 +153,7 @@ ms.locfileid: "110372466"
 
 ### <a name="considerations-for-private-endpoints-on-storage-accounts"></a>ストレージ アカウントのプライベート エンドポイントに関する考慮事項
 
-- テーブル、キュー、BLOB ストレージ サービスごとに異なるプライベート エンドポイントを作成します。
+- テーブル、キュー、BLOB、ファイル ストレージ サービスごとに異なるプライベート エンドポイントを作成します。
 
 - この設定を使用して、すべての送信トラフィックを仮想ネットワーク経由でルーティングします。
 

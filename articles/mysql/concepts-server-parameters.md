@@ -6,14 +6,16 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 756337ce20c827d0c6549181c20fd843fa60c020
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8220afc8020e5a6a4ba77c46a98ee3c220c3f37e
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720955"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675318"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 この記事では、Azure Database for MySQL でサーバー パラメーターを構成するための考慮事項とガイドラインを示します。
 
@@ -65,7 +67,7 @@ Azure Database for MySQL の場合、バイナリ ログは常に有効になっ
 
 このパラメーターの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_buffer_pool_size)を確認してください。
 
-#### <a name="servers-supporting-up-to-4-tb-storage"></a>最大 4 TB のストレージをサポートするサーバー
+#### <a name="servers-on-general-purpose-storage-v1-supporting-up-to-4-tb"></a>[汎用ストレージ v1 (最大 4 TB をサポート)](concepts-pricing-tiers.md#general-purpose-storage-v1-supports-up-to-4-tb) 上のサーバー
 
 |**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 (バイト)**|
 |---|---|---|---|---|
@@ -83,7 +85,7 @@ Azure Database for MySQL の場合、バイナリ ログは常に有効になっ
 |メモリ最適化|16|65498251264|134217728|65498251264|
 |メモリ最適化|32|132070244352|134217728|132070244352|
 
-#### <a name="servers-support-up-to-16-tb-storage"></a>サーバーは最大 16 TB のストレージをサポート
+#### <a name="servers-on-general-purpose-storage-v1-supporting-up-to-16-tb"></a>[汎用ストレージ v1 (最大 16 TB をサポート)](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) 上のサーバー
 
 |**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 (バイト)**|
 |---|---|---|---|---|
@@ -104,11 +106,11 @@ Azure Database for MySQL の場合、バイナリ ログは常に有効になっ
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table` は、価格レベルのうち、General Purpose と Memory Optimized でのみ更新できます。
+> `innodb_file_per_table` は、[汎用ストレージ v2](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) の General Purpose および Memory Optimized 価格レベルでのみ更新できます。
 
 MySQL では、テーブルの作成時に指定した構成に基づいて、InnoDB テーブルが異なるテーブルスペースに格納されます。 [システム テーブルスペース](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html)は、InnoDB データ辞書のストレージ領域です。 [file-per-table テーブルスペース](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html)は、1 つの InnoDB テーブルに対するデータとインデックスを含み、固有のデータ ファイル内のファイル システムに格納されています。 この動作は、`innodb_file_per_table` サーバー パラメーターによって制御されています。 `innodb_file_per_table` を `OFF` に設定すると、InnoDB ではシステム テーブルスペースにテーブルが作成されます。 それ以外の場合、InnoDB では file-per-table テーブルスペースにテーブルが作成されます。
 
-Azure Database for MySQL は、1 つのデータ ファイルで、最大 **4 TB** までサポートします。 データベースのサイズが 4 TB を超える場合は、[innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) テーブルスペースにテーブルを作成する必要があります。 1 つのテーブル サイズが 4 TB を超える場合は、パーティション テーブルを使用する必要があります。
+Azure Database for MySQL では、[汎用ストレージ v2](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) の 1 つのデータ ファイルで、最大 **4 TB** までサポートされます。 データベースのサイズが 4 TB を超える場合は、[innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) テーブルスペースにテーブルを作成する必要があります。 1 つのテーブル サイズが 4 TB を超える場合は、パーティション テーブルを使用する必要があります。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 

@@ -8,12 +8,12 @@ ms.date: 12/16/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c52cd013d1a5d2cbde0ab88eac24d2fd3ef77d46
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 1e2751c7df1cd3b43ce6c700bc51b51faf95963f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613529"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468710"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>Azure Digital Twins インスタンスと認証を設定する (PowerShell)
 
@@ -23,8 +23,8 @@ ms.locfileid: "110613529"
 
 この記事のこのバージョンでは、[Azure PowerShell](/powershell/azure/new-azureps-module-az) を使用して、これらの手順を 1 つずつ手動で実行します。
 
-* Azure portal を使用してこれらの手順を手動で実行するには、この記事のポータル バージョンである[方法: インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md)  に関するページを参照してください。
-* デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、この記事のスクリプト化バージョンである[方法: インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md)  に関するページを参照してください。
+* これらの手順を Azure portal を使用して手動で実行するには、[インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md) に関するページにあるこの記事のポータル バージョンを参照してください。
+* デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、[インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md) に関するページにあるこの記事のスクリプト化バージョンを参照してください。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
@@ -145,4 +145,4 @@ New-AzRoleAssignment @Params
 ## <a name="next-steps"></a>次のステップ
 
 認証コードを使ってクライアント アプリケーションをインスタンスに接続する方法を確認します。
-* [方法: アプリ認証コードを作成する](how-to-authenticate-client.md)
+* [アプリ認証コードを作成する](how-to-authenticate-client.md)

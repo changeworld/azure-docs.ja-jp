@@ -9,13 +9,14 @@ ms.topic: conceptual
 ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
-ms.date: 05/25/2021
-ms.openlocfilehash: bc1983a16ba2ec85dc943e10d7b2220b0de1dc88
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.custom: devplatv2
+ms.date: 06/17/2021
+ms.openlocfilehash: 8ce9241e11bd9aa259c8b7a1bf3114be677a01bd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408535"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447654"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Azure Machine Learning エンドポイント (プレビュー) とは 
 
@@ -28,7 +29,7 @@ Azure Machine Learning エンドポイント (プレビュー) を使用して�
 > * エンドポイント
 > * デプロイメント
 > * マネージド オンライン エンドポイント
-> * AKS オンライン エンドポイント
+> * Azure Kubernetes Service (AKS) オンライン エンドポイント
 > * バッチ推論エンドポイント
 
 ## <a name="what-are-endpoints-and-deployments-preview"></a>エンドポイントとデプロイ (プレビュー) とは
@@ -56,11 +57,11 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 ### <a name="multiple-developer-interfaces"></a>複数の開発者インターフェイス
 
 複数の開発者ツールを使用して、バッチおよびオンライン エンドポイントを作成、管理します。
-- CLI
+- Azure CLI
 - ARM と REST API
 - Azure Machine Learning スタジオ Web ポータル
 - Azure portal (IT および管理者)
-- CLI インターフェイスと REST および ARM インターフェイスを使用した、CI/CD MLOps パイプラインのサポート
+- Azure CLI インターフェイスと REST および ARM インターフェイスを使用した、CI/CD MLOps パイプラインのサポート
 
 ## <a name="what-are-online-endpoints-preview"></a>オンライン エンドポイント (プレビュー) とは
 
@@ -109,7 +110,7 @@ Azure Machine Learning では、エンドポイントとデプロイの概念を
 
 |  | マネージド オンライン エンドポイント | AKS オンライン エンドポイント |
 |-|-|-|
-| **推奨されるユーザー** | マネージド モデル デプロイおよび拡張された MLOps エクスペリエンスを必要とするユーザー | Azure Kubernetes Service (AKS) を使用し、インフラストラクチャの要件を管理できるユーザー |
+| **推奨されるユーザー** | マネージド モデル デプロイおよび拡張された MLOps エクスペリエンスを必要とするユーザー | Azure Kubernetes Service (AKS) を使用し、インフラストラクチャの要件を自己管理できるユーザー |
 | **インフラストラクチャの管理** | マネージド コンピューティング プロビジョニング、スケーリング、ホスト OS イメージの更新、およびセキュリティ強化 | ユーザーの責任での対応 |
 | **コンピューティングの種類** | マネージド (AmlCompute) | AKS |
 | **追加設定なしの監視** | [Azure 監視](how-to-monitor-online-endpoints.md) <br> (待ち時間やスループットなど、主要なメトリックが含まれます) | サポートされていない |
@@ -189,5 +190,7 @@ MLflow モデルを使用するバッチ エンドポイントの場合は、以
 - [Azure CLI を使用してマネージド オンライン エンドポイントをデプロイする方法](how-to-deploy-managed-online-endpoints.md)
 - [Azure CLI を使用してバッチ エンドポイントをデプロイする方法](how-to-use-batch-endpoint.md)
 - [スタジオを使用してマネージド オンライン エンドポイントを使用する方法](how-to-use-managed-online-endpoint-studio.md)
+- [REST を使用してモデルをデプロイする (プレビュー)](how-to-deploy-with-rest.md)
 - [マネージド オンライン エンドポイントを監視する方法](how-to-monitor-online-endpoints.md)
 - [オンライン エンドポイントのコストを表示する方法](how-to-view-online-endpoints-costs.md)
+- [Azure Machine Learning を使用するリソースのクォータの管理と引き上げ](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)

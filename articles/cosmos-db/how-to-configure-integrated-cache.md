@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: ddfdd4897a0cd194465828bba4bea0c002a4e434
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b8c2e27b7023a106815b34538f1cd3dba85354b3
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110797674"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667657"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>Azure Cosmos DB 統合キャッシュを構成する方法 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,6 +59,11 @@ ms.locfileid: "110797674"
 
 3. .NET または Java SDK を使用する場合は、接続モードを[ゲートウェイ モード](sql-sdk-connection-modes.md#available-connectivity-modes)に設定します。 この手順は、Python と Node.js の各 SDK では不要です。これらには、ゲートウェイ モード以外で接続するための追加オプションがないためです。
 
+> [!NOTE]
+> 最新バージョンの .NET または Java SDK を使用している場合、既定の接続モードはダイレクト モードです。 統合キャッシュを使用するには、この既定値をオーバーライドする必要があります。
+
+Java SDK を使用している場合は、`CosmosClientBuilder` 内で [contentResponseOnWriteEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.contentresponseonwriteenabled?view=azure-java-stable&preserve-view=true) を `true` に手動で設定する必要もあります。 他の SDK を使用している場合、この値は既に既定で `true` に設定されているので、変更を加える必要はありません。
+
 ## <a name="adjust-request-consistency"></a>要求の整合性を調整する
 
 要求の整合性を [eventual]\(最終的\) に調整する必要があります。 これを行わないと、要求は常に統合キャッシュをバイパスします。 すべての読み取り操作の最終的な整合性を構成する最も簡単な方法は、[アカウント レベルでこれを設定する方法](consistency-levels.md#configure-the-default-consistency-level)です。 また、[要求レベル](how-to-manage-consistency.md#override-the-default-consistency-level)で整合性を構成することもできます。これは、読み取りのサブセットでのみ統合キャッシュを使用する場合に推奨されます。
@@ -85,7 +90,7 @@ FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefin
 ```
 
 > [!NOTE]
-> 現時点では、最新の .NET と Java プレビュー SDK を使用して MaxIntegratedCacheStaleness のみを調整できます。
+> 現時点では、最新の [.NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.17.0-preview) と [Java](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.16.0-beta.1) のプレビュー SDK を使用して MaxIntegratedCacheStaleness のみを調整できます。
 
 ## <a name="verify-cache-hits"></a>キャッシュ ヒット数を確認する
 
@@ -96,6 +101,10 @@ FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefin
 -   クライアントが専用ゲートウェイ エンドポイントに接続している
 -  クライアントがゲートウェイ モードを使用している (Python と Node.js の SDK では、常にゲートウェイ モードが使用されています)
 -   要求の整合性を、[eventual]\(最終的\) に設定する必要があります。
+
+> [!NOTE]
+> 統合キャッシュに関するフィードバックはありますか? ご意見をお待ちしています。 フィードバックは、Azure Cosmos DB エンジニアリング チーム (cosmoscachefeedback@microsoft.com) と直接共有できます
+
 
 ## <a name="next-steps"></a>次の手順
 

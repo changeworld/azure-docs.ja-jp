@@ -1,8 +1,8 @@
 ---
 title: Image Builder - Windows Virtual Desktop イメージを作成する
 description: PowerShell で Azure Image Builder を使用して、Windows Virtual Desktop の Azure VM イメージを作成します。
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
 ms.reviewer: cynthn
 ms.date: 05/12/2021
 ms.topic: article
@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20f50ccfcbfce7a4e70722feaef4d245e11336f8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 45748ac5c21993e6df69950e03de9e90180c4ab0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031117"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472079"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Windows Virtual Desktop イメージを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "112031117"
 
 * [Fslogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1) をインストールする。
 * コミュニティ リポジトリから [Windows Virtual Desktop の最適化スクリプト](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool)を実行する。
-* [Microsoft Teams](../../virtual-desktop/teams-on-wvd.md) をインストールする。
+* [Microsoft Teams](../../virtual-desktop/teams-on-avd.md) をインストールする。
 * [Restart](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
 * [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer) を実行する。
 
@@ -74,7 +74,7 @@ Image Builder の構成のデプロイを簡略化するために、この例で
 
 ## <a name="prerequisites"></a>前提条件
 
-最新の Azure PowerShell コマンドレットがインストールされている必要があります。インストールの詳細については、[こちら](/powershell/azure/overview)を参照してください。
+最新の Azure PowerShell コマンドレットがインストールされている必要があります。インストールの詳細については、[Azure PowerShell の概要](/powershell/azure/overview)に関するページを参照してください。
 
 ```PowerShell
 # check you are registered for the providers, ensure RegistrationState is set to 'Registered'.
@@ -162,8 +162,7 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 ```
 
 > [!NOTE] 
-> 「New-AzRoleDefinition: ロールの定義の制限を超えました。 ロールの定義はこれ以上作成できません」のようなエラーが表示された場合、 解決方法については、 https://docs.microsoft.com/azure/role-based-access-control/troubleshooting の記事を参照してください。
-
+> 「New-AzRoleDefinition: ロールの定義の制限を超えました。 ロールの定義はこれ以上作成できません」のようなエラーが表示された場合、 「[Azure RBAC のトラブルシューティング](../../role-based-access-control/troubleshooting.md)」を参照してください。
 
 
 ## <a name="create-the-shared-image-gallery"></a>Shared Image Gallery を作成する 
@@ -273,7 +272,7 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>VM の作成
-ビルドが完了したら、イメージから VM を作成できます。[こちら](/powershell/module/az.compute/new-azvm#examples)からサンプルを使用してください。
+これでビルドが完了したしたので、イメージから VM を作成できます。[New-AzVM (Az.Compute)](/powershell/module/az.compute/new-azvm#examples) の例を使用してください。
 
 ## <a name="clean-up"></a>クリーンアップ
 
@@ -306,3 +305,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 ## <a name="next-steps"></a>次のステップ
 
 [GitHub](https://github.com/azure/azvmimagebuilder/tree/master/quickquickstarts) で他のサンプルを試すこともできます。
+
