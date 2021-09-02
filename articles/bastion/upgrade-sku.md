@@ -6,14 +6,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 08/30/2021
+ms.date: 07/13/2021
 ms.author: cherylmc
-ms.openlocfilehash: 5ed0dd6ad86b5f7758f0e1972867876eedc3b51a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8a2c35f2ef4dafe9024deab1c26116c0ca20e01e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225947"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733306"
 ---
 # <a name="upgrade-a-sku-preview"></a>SKU をアップグレードする (プレビュー)
 
@@ -21,7 +21,8 @@ ms.locfileid: "123225947"
 
 ## <a name="configuration-steps"></a>構成の手順
 
-1. [Azure portal](https://ms.portal.azure.com) にサインインします。
+[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
+
 1. Azure portal 上で、Bastion ホストに移動します。
 1. **[構成]** ページ の **[レベル]** で、ドロップダウンから **[Standard]** を選択します。
 

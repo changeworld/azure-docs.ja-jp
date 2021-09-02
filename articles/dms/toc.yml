@@ -18,6 +18,8 @@
           href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: 概念
   items:
+    - name: Azure Data Studio を使用した移行
+      href: migration-using-azure-data-studio.md
     - name: 前提条件
       href: pre-reqs.md
     - name: データベース移行シナリオの状態

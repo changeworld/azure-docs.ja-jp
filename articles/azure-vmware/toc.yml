@@ -48,46 +48,12 @@
       href: concepts-networking.md
     - name: プライベート クラウドとクラスター
       href: concepts-private-clouds-clusters.md
+    - name: 実行コマンド
+      href: concepts-run-command.md
     - name: ストレージ
       href: concepts-storage.md
 - name: 操作方法ガイド
   items:
-    - name: Azure VMware Solution の評価を作成する
-      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
-    - name: Azure VMware Solution のホスト クォータを要求する
-      href: request-host-quota-azure-vmware-solution.md
-    - name: 予約インスタンスを使用してコストを削減する
-      href: reserved-instance.md
-    - name: 配置ポリシーを作成する
-      href: create-placement-policy.md
-    - name: ネットワークを構成する
-      items:
-        - name: DHCP サーバーまたはリレーを構成する
-          href: configure-dhcp-azure-vmware-solution.md
-        - name: L2 拡張ネットワークで DHCP を構成する
-          href: configure-l2-stretched-vmware-hcx-networks.md
-        - name: DNS フォワーダーを構成する
-          href: configure-dns-azure-vmware-solution.md
-        - name: ポート ミラーリングの構成
-          href: configure-port-mirroring-azure-vmware-solution.md
-        - name: パブリック インターネット アクセスを有効にする
-          href: enable-public-internet-access.md
-        - name: vWAN でサイト間 VPN を構成する
-          href: configure-site-to-site-vpn-gateway.md
-    - name: 同じリージョン内の複数のプライベート クラウドを接続する
-      href: connect-multiple-private-clouds-same-region.md
-    - name: GitHub Enterprise Server を構成する
-      href: configure-github-enterprise-server.md
-    - name: Windows Server フェールオーバー クラスターの構成
-      href: configure-windows-server-failover-cluster.md
-    - name: cloudadmin 資格情報のローテーション
-      href: rotate-cloudadmin-credentials.md
-    - name: リソースの移動
-      items:
-        - name: Azure VMware Solution のサブスクリプションを移動する
-          href: move-ea-csp-subscriptions.md
-        - name: リージョン間で Azure VMware Solution リソースを移動する
-          href: move-azure-vmware-solution-across-regions.md
     - name: Azure のネイティブ統合
       items:
         - name: VM を保護、監視、管理する
@@ -126,6 +92,60 @@
               href: ../site-recovery/avs-tutorial-reprotect.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
             - name: Azure からのフェールバック
               href: ../site-recovery/avs-tutorial-failback.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+    - name: Azure VMware Solution の評価を作成する
+      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+    - name: 配置ポリシーを作成する
+      href: create-placement-policy.md
+    - name: vCenter の外部 ID ソースを構成する
+      href: configure-identity-source-vcenter.md
+    - name: GitHub Enterprise Server を構成する
+      href: configure-github-enterprise-server.md
+    - name: ネットワークを構成する
+      items:
+        - name: DHCP サーバーまたはリレーを構成する
+          href: configure-dhcp-azure-vmware-solution.md
+        - name: L2 拡張ネットワークで DHCP を構成する
+          href: configure-l2-stretched-vmware-hcx-networks.md
+        - name: DNS フォワーダーを構成する
+          href: configure-dns-azure-vmware-solution.md
+        - name: ポート ミラーリングの構成
+          href: configure-port-mirroring-azure-vmware-solution.md
+        - name: パブリック インターネット アクセスを有効にする
+          href: enable-public-internet-access.md
+        - name: vWAN でサイト間 VPN を構成する
+          href: configure-site-to-site-vpn-gateway.md
+    - name: ストレージ ポリシーを構成する
+      href: configure-storage-policy.md
+    - name: Windows Server フェールオーバー クラスターの構成
+      href: configure-windows-server-failover-cluster.md
+    - name: 同じリージョン内の複数のプライベート クラウドを接続する
+      href: connect-multiple-private-clouds-same-region.md
+    - name: ディザスター リカバリーをデプロイする
+      items:
+        - name: JetStream DR をデプロイする
+          href: deploy-disaster-recovery-using-jetstream.md
+        - name: ディザスター リカバリー用に VMware HCX をデプロイする
+          href: deploy-disaster-recovery-using-vmware-hcx.md
+        - name: ディザスター リカバリー用に VMware SRM をデプロイする
+          href: disaster-recovery-using-vmware-site-recovery-manager.md
+    - name: リソースの移動
+      items:
+        - name: Azure VMware Solution のサブスクリプションを移動する
+          href: move-ea-csp-subscriptions.md
+        - name: リージョン間で Azure VMware Solution リソースを移動する
+          href: move-azure-vmware-solution-across-regions.md
+    - name: Azure VMware Solution のホスト クォータを要求する
+      href: request-host-quota-azure-vmware-solution.md
+    - name: cloudadmin 資格情報のローテーション
+      href: rotate-cloudadmin-credentials.md
+    - name: 予約インスタンスを使用してコストを削減する
+      href: reserved-instance.md
+    - name: VMware のエコシステム
+      items:
+        - name: VM のバックアップ ソリューション
+          href: ecosystem-back-up-vms.md
+        - name: VM の移行ソリューション
+          href: ecosystem-migration-vms.md
     - name: VMware ソリューション
       items:
         - name: vRealize Operations を構成する
@@ -142,12 +162,6 @@
               href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: VMware HCX アプライアンスをアップグレードする
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
-    - name: VMware のエコシステム
-      items:
-        - name: VM のバックアップ ソリューション
-          href: ecosystem-back-up-vms.md
-        - name: VM の移行ソリューション
-          href: ecosystem-migration-vms.md
 - name: リソース
   items:
     - name: ラーニング パス
@@ -164,6 +178,8 @@
       items:
         - name: 全般
           href: ./faq.yml
+        - name: 課金
+          href: /azure/azure-vmware/faq#billing
         - name: 顧客とのコミュニケーション
           href: /azure/azure-vmware/faq#customer-communication
         - name: 構成とセットアップ
@@ -176,7 +192,7 @@
           href: /azure/azure-vmware/faq#compute
         - name: ネットワークと相互接続
           href: /azure/azure-vmware/faq#networking-and-interconnectivity
-        - name: ストレージ
+        - name: Storage
           href: /azure/azure-vmware/faq#storage
         - name: ホスト、クラスター、およびプライベート クラウド
           href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'
@@ -184,8 +200,6 @@
           href: /azure/azure-vmware/faq#identity-management
         - name: CSP とマルチテナント
           href: /azure/azure-vmware/faq#csp-and-multi-tenancy
-        - name: 課金とサポート
-          href: /azure/azure-vmware/faq#billing-and-support
     - name: ビデオ
       items:
         - name: 再生リスト
@@ -196,8 +210,6 @@
           href: 'https://youtu.be/BoQYvqzb6Y8'
         - name: 移行と容量計画
           href: 'https://youtu.be/NoNG-hkksrA'
-        - name: Azure Logic App を使用して vCenter および NSX-T のパスワードをローテーションする
-          href: 'https://youtu.be/cK1qY3knj88'
 - name: リファレンス
   items:
     - name: REST API

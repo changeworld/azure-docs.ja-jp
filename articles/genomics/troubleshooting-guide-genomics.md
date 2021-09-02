@@ -4,18 +4,18 @@ titleSuffix: Microsoft Genomics
 description: エラー メッセージとその解決方法など、Microsoft Genomics を使用するためのトラブルシューティング方法について学習します。
 keywords: トラブルシューティング, エラー, デバッグ
 services: genomics
-author: ruchir
-ms.author: ruchir
+author: vigunase
+ms.author: vigunase
 ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 00b81e57a656afbfce13027a8855104faf889146
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 580acb1db02530d1c9ef40d9c116ea5a661bd570
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551742"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259809"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 

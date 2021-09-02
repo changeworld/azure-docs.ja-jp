@@ -1,20 +1,20 @@
 ---
 title: Azure Percept DK にシリアルで接続する
 description: USB to TTL シリアル ケーブルを使用して、Azure Percept DK へのシリアル接続を設定する方法
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a9b864f5d8341253c70fbde6d111b04a4d924f1d
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: fa28fc845e8f15f06170a31d1d22892eca061bb7
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371473"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220416"
 ---
-# <a name="connect-to-your-azure-percept-dk-over-serial"></a>Azure Percept DK にシリアルで接続する
+# <a name="connect-to-azure-percept-dk-over-serial"></a>Azure Percept DK にシリアルで接続する
 
 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) から Azure Percept DK へのシリアル接続を設定するには、次の手順に従います。
 

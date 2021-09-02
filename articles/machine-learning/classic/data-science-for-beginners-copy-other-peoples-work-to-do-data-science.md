@@ -9,14 +9,17 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: b36d7bbde524bf3ddcaed2e096f9403caf16ea3c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5151b00c0ef07b929df30c67e1e27d24245fcf13
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742133"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694552"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
 データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を、Azure AI ギャラリーで検索します。
 
@@ -89,6 +92,6 @@ Microsoft では、[Machine Learning Studio (クラシック)](https://azure.mic
 
 Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試す](create-experiment.md)
 * [Azure Machine Learning の概要](../overview-what-is-azure-machine-learning.md)

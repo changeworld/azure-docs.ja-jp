@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: aebcf680fec069fdb28114ef8a1a0f6fd8547e63
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: f1e995e558b902b9b1210b87f319748d731228b6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458580"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967830"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートから NSG フロー ログを構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "112458580"
 ## <a name="nsg-flow-logs-object"></a>NSG フロー ログ オブジェクト
 
 すべてのパラメーターを持つ NSG フロー ログ オブジェクトを以下に示します。
-プロパティの完全な概要については、[NSG フロー ログのテンプレート リファレンス](/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)を参照してください。
+プロパティの完全な概要については、[NSG フロー ログのテンプレート リファレンス](/azure/templates/microsoft.network/networkwatchers/flowlogs#retentionpolicyparameters)を参照してください。
 
 ```json
 {

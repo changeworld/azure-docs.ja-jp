@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 06/27/2021
 ms.author: banders
-ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cee0acf851d82ba09867b8d66c09a17b21e7af45
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862851"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989059"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -62,15 +62,8 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 他のユーザーが予約を管理できるようにするには、次の 2 つのオプションがあります。
 
-- 個々の予約注文のアクセス管理を委任するには、次の手順を実行します。
-    1. [Azure portal](https://portal.azure.com) にサインインします。
-    1. **[すべてのサービス]**  >  **[予約]** の順に選択し、自分にアクセス権がある予約を一覧表示します。
-    1. どの予約のアクセス権を他のユーザーに委任するかを選択します。
-    1. [予約の詳細] で、予約注文を選択します。
-    1. **[アクセス制御 (IAM)]** を選択します。
-    1. **[ロールの割り当ての追加]**  >  **[ロール]**  >  **[所有者]** を選択します。 制限付きアクセス権を付与する場合は、別のロールを選択します。
-    1. 所有者として追加するユーザーの電子メール アドレスを入力します。
-    1. ユーザーを選択し、 **[保存]** を選択します。
+- 予約注文のリソース スコープのユーザーに Owner ロールを割り当てることにより、個別の予約注文に対するアクセス管理を委任します。 制限付きアクセス権を付与する場合は、別のロールを選択します。  
+     詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 - ユーザーを課金管理者としてマイクロソフト エンタープライズ契約または Microsoft 顧客契約に追加するには、次の手順を実行します。
     - マイクロソフト エンタープライズ契約の場合は、"_エンタープライズ管理者_" ロールを持つユーザーを追加することで、マイクロソフト エンタープライズ契約に適用されるすべての予約注文を表示および管理できます。 "_エンタープライズ管理者 (読み取り専用)_ " ロールを持つユーザーは、予約の表示のみを実行できます。 部門管理者およびアカウント所有者は、アクセス制御 (IAM) を使用して明示的にこれらに追加されて "_いない限り_"、予約を表示することはできません。 詳細については、「[Azure エンタープライズ ロールの管理](../manage/understand-ea-roles.md)」を参照してください。
@@ -81,8 +74,18 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>課金管理者が予約を表示または管理する方法
 
-1. **[コストの管理と請求]** に移動し、ページの左側にある **[予約トランザクション]** を選択します。
-2. 必要な課金アクセス許可がある場合は、予約を表示および管理できます。 予約が表示されない場合は、予約が作成された Azure AD テナントを使用してサインインしていることを確認してください。
+課金管理者の場合は、次の手順を使用して、すべての予約と予約トランザクションを表示および管理します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Cost Management + Billing]** に移動します。
+    - EA 管理者の場合は、左側のメニューで **[課金スコープ]** を選択し、課金スコープの一覧でスコープを選択します。
+    - Microsoft 顧客契約の課金プロファイル所有者の場合は、左側のメニューで **[課金プロファイル]** を選択します。 課金プロファイルの一覧でプロファイルを選択します。
+2. 左側のメニューで、 **[製品とサービス]**  >  **[予約]** を選択します。
+3. EA 加入契約または課金プロファイルの予約の完全な一覧が表示されます。
+4. 課金管理者は、予約を選択し、表示されたウィンドウで **[アクセスの付与]** を選択することで、予約の所有権を取得できます。
+
+## <a name="change-billing-subscription-for-an-azure-reservation"></a>Azure の予約の課金サブスクリプションを変更する
+
+予約の購入後に課金サブスクリプションを変更することは認められていません。 サブスクリプションの変更をご希望の場合は、交換プロセスを使用して、予約に適切な課金サブスクリプションを設定してください。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>1 つの予約を 2 つの予約に分割する
 
@@ -182,4 +185,3 @@ Azure の予約の詳細については、次の記事を参照してくださ�
  - [予約の更新](reservation-renew.md)
  - [テナント間での転送](troubleshoot-reservation-transfers-between-tenants.md)
  - [Azure のログから予約購入者を見つける](find-reservation-purchaser-from-logs.md)
- - [予約の更新](reservation-renew.md)

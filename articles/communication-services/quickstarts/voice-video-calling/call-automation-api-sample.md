@@ -7,15 +7,15 @@ manager: anvalent
 services: azure-communication-services
 ms.author: jken
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: 4acc1ba17dd10b70a7873aa06626d410a3426c87
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: b41ed8b917e3311aa69369bc0fa5725305346056
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252521"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254601"
 ---
 # <a name="quickstart-use-the-call-automation-apis"></a>クイックスタート: Call Automation API を使用する
 

@@ -1,20 +1,20 @@
 ---
-title: イーサネット経由で Azure Percept DK セットアップ エクスペリエンスを起動する方法
+title: Azure Percept DK にイーサネットで接続する
 description: このガイドでは、イーサネット接続を介して接続したときに Azure Percept DK セットアップ エクスペリエンスに接続する方法について説明します。
-author: mimcco
-ms.author: mimcco
+author: WendyAnn0079
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 06/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01a1c2fcb5981681c504e3e61fc68a10922e15d5
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 6ffc2a2d55bdad670c8323dfc57efad17dec1930
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441984"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227100"
 ---
-# <a name="how-to-launch-the-azure-percept-dk-setup-experience-over-ethernet"></a>イーサネット経由で Azure Percept DK セットアップ エクスペリエンスを起動する方法
+# <a name="connect-to-azure-percept-dk-over-ethernet"></a>Azure Percept DK にイーサネットで接続する
 
 このハウツーガイドでは、イーサネット接続経由で Azure Percept DK セットアップ エクスペリエンスを起動する方法について説明します。 これは「[クイック スタート: Azure Percept DK を設定し、最初の AI モデルをデプロイする](./quickstart-percept-dk-set-up.md)」ガイドに関連しています。 以下で説明する各オプションを参照し、環境に最適なものを選択してください。
 

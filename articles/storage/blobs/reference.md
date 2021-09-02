@@ -7,12 +7,12 @@ ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: reference
-ms.openlocfilehash: e0c23dcc8f98353d9d009a81b6187ad1bd5b4e56
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 738081a8f31e50accee17f66272b278e72544916
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740157"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215342"
 ---
 # <a name="azure-blob-storage-api-reference"></a>Azure Blob Storage API リファレンス
 
@@ -113,4 +113,4 @@ Blob Storage API リファレンス、ライブラリ パッケージ、readme �
 
 ## <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI リファレンス](/cli/azure/storage)
+[Azure CLI リファレンス](/cli/azure/azure-cli-reference-for-storage)

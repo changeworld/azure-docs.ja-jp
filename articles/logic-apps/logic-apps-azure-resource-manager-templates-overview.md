@@ -3,15 +3,15 @@ title: 概要 - Azure Logic Apps のデプロイを自動化する
 description: Azure Logic Apps のデプロイを自動化するための Azure Resource Manager テンプレートについて説明します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: ac2746c963c00ffd12a272b0c41322b0f9b9b24e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 538ee3d5dec64e2558297005a600cfd1662a322a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961639"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223879"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -328,7 +328,7 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 
 ロジック アプリのリソース定義に固有の属性は次のとおりです。
 
-| 属性 | 必須 | 種類 | 説明 |
+| 属性 | 必須 | Type | 説明 |
 |-----------|----------|------|-------------|
 | `state` | はい | String | デプロイ時のロジック アプリの状態。`Enabled` はロジック アプリがアクティブな状態であることを意味し、`Disabled` はロジック アプリが非アクティブな状態であることを意味します。 たとえば、ロジック アプリをアクティブにする準備ができておらず、ドラフト バージョンをデプロイする必要がある場合は、`Disabled` オプションを使用できます。 |
 | `integrationAccount` | いいえ | Object | 企業間 (B2B) のシナリオで成果物を格納する統合アカウントをロジック アプリで使用している場合、このオブジェクトには、統合アカウントの ID を指定する `id` 属性が含まれます。 |
@@ -534,9 +534,15 @@ Azure リソース グループ内のすべてのリソースのリソース定�
             // End workflow definition
             // Start workflow definition parameter values
             "parameters": {
-               "authenticationType": "[parameters('TemplateAuthenticationType')]", // Template parameter reference
-               "fabrikamPassword": "[parameters('TemplateFabrikamPassword')]", // Template parameter reference
-               "fabrikamUserName": "[parameters('TemplateFabrikamUserName')]" // Template parameter reference
+               "authenticationType": {
+                  "value": "[parameters('TemplateAuthenticationType')]" // Template parameter reference
+               },
+               "fabrikamPassword": {                  
+                  "value": "[parameters('TemplateFabrikamPassword')]" // Template parameter reference
+               },
+               "fabrikamUserName": {
+                  "value": "[parameters('TemplateFabrikamUserName')]" // Template parameter reference
+               }
             },
             "accessControl": {}
          },

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 3453d1a0d06fd9918f3f1ae49a519d676ab26785
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5921ad250934121223c35012d2278165b3dcc262
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468441"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237177"
 ---
 # <a name="review-your-security-recommendations"></a>セキュリティの推奨事項を確認する
 
@@ -24,11 +24,11 @@ Security Center はリソースのセキュリティの状態を分析して、�
 
 1. Security Center のメニューから **[推奨事項]** ページを開いて、お使いの環境に適用できる推奨事項を確認します。 推奨事項は、セキュリティ コントロールにグループ化されています。
 
-    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="セキュリティ コントロールにグループ化された推奨事項" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="セキュリティ コントロールにグループ化された推奨事項。" lightbox="./media/security-center-recommendations/view-recommendations.png":::
 
 1. リソースの種類、重大度、環境、あるいは自分にとって重要なその他の条件に固有の推奨を見つけるには、推奨事項一覧に任意のフィルターを使用してください。
 
-    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Azure Security Center 推奨事項一覧を絞り込むためのフィルター":::
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Azure Security Center 推奨事項一覧を絞り込むためのフィルター。":::
 
 1. コントロールを展開し、特定の推奨事項を選択して [推奨事項の詳細] ページを表示します。
 
@@ -79,7 +79,7 @@ ARG は、堅牢なフィルター処理、グループ化、並べ替え機能�
 
 プレビューの推奨事項の例を次に示します。
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="プレビュー フラグが設定された推奨事項":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="プレビュー フラグが設定された推奨事項。":::
  
 ## <a name="next-steps"></a>次のステップ
 

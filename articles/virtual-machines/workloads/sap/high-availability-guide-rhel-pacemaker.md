@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.custom: subject-rbac-steps
-ms.date: 07/26/2021
+ms.date: 08/26/2021
 ms.author: radeltch
-ms.openlocfilehash: bf9aa35951ef770cda56a68e2d6200b3ea64611d
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 412bbd6f7414cdeaab1c116210b511bc8000c270
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721078"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123109802"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -247,26 +247,20 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ```json
 {
-    "properties": {
-        "roleName": "Linux Fence Agent Role",
-        "description": "Allows to power-off and start virtual machines",
-        "assignableScopes": [
-            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-        ],
-        "permissions": [
-            {
-                "actions": [
-                    "Microsoft.Compute/*/read",
-                    "Microsoft.Compute/virtualMachines/powerOff/action",
-                    "Microsoft.Compute/virtualMachines/start/action"
-                ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
-            }
-        ]
-    }
+      "Name": "Linux Fence Agent Role",
+      "description": "Allows to power-off and start virtual machines",
+      "assignableScopes": [
+              "/subscriptions/e663cc2d-722b-4be1-b636-bbd9e4c60fd9",
+              "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+      ],
+      "actions": [
+              "Microsoft.Compute/*/read",
+              "Microsoft.Compute/virtualMachines/powerOff/action",
+              "Microsoft.Compute/virtualMachines/start/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
 }
 ```
 

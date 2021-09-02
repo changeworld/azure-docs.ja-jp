@@ -8,12 +8,12 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: b0ee55c3521b8d21d27428e6aa9eab468038c214
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 7c9380ffc383307307509d03d19967b02e6bbdb3
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111634"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256347"
 ---
 # <a name="quickstart-call-to-phone"></a>クイックスタート: 電話の呼び出し
 

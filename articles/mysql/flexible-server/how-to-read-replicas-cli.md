@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 06/17/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bc95cd3ab471826538a551687c38d1422e4b7163
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: adffb4edf7f689002cab7eae86388ff18ac04027
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108657"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651570"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーの読み取りレプリカは、プレビュー段階です。
@@ -22,9 +24,13 @@ ms.locfileid: "105108657"
 この記事では、Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成および管理する方法について説明します。 読み取りレプリカの詳細については、[概要](concepts-read-replicas.md)を参照してください。
 
 > [!Note]
-> 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
+>
+> * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
+>
+> * プライマリ サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID ベースのレプリケーションが使用されます。 詳細については、「[グローバル トランザクション識別子 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)」を参照してください。
 
 ## <a name="azure-cli"></a>Azure CLI
+
 Azure CLI を使用して、読み取りレプリカを作成して管理できます。
 
 ### <a name="prerequisites"></a>前提条件
@@ -35,7 +41,7 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
 > [!IMPORTANT]
-> 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+>既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次のコマンドを使用して作成できます。
 
@@ -58,7 +64,7 @@ az mysql flexible-server replica list --server-name mydemoserver --resource-grou
 ### <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
 
 > [!IMPORTANT]
-> サーバーへのレプリケーションの停止は、元に戻すことができません。 ソースとレプリカの間のレプリケーションを停止すると、元に戻すことはできません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
+>サーバーへのレプリケーションの停止は、元に戻すことができません。 ソースとレプリカの間のレプリケーションを停止すると、元に戻すことはできません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
 
 読み取りレプリカ サーバーへのレプリケーションは、次のコマンドを使用して停止できます。
 
@@ -77,7 +83,7 @@ az mysql flexible-server delete --resource-group myresourcegroup --name mydemore
 ### <a name="delete-a-source-server"></a>ソース サーバーの削除
 
 > [!IMPORTANT]
-> ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
+>ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
 
 ソース サーバーを削除するには、 **[az mysql flexible-server delete](/cli/azure/mysql/flexible-server)** コマンドを実行します。
 

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d723423fdb57ad60f5665be2d5fa0a760c9d770d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3c9b954776c33fedc3a770bc0aab0185ad595aff
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742906"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219740"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -584,7 +584,7 @@ B2C で、企業-消費者間 (B2C) アプリおよびユーザーのための�
 **サービス カテゴリ:** Identity Protection  
 **製品の機能:** ID のセキュリティ & 保護
  
-この新しい検出は、攻撃が発生したことが検出された際に、そのセッションのリスクを「高」にすることで当社のセキュリティ チームからユーザーに通知し、ユーザーを保護することを目的とした方法です。 この検出では、関連するサインインも危険なものとしてマークされます。 この検出は、既存の Azure Active Directory の脅威インテリジェンスによるユーザー リスク検出に続き、Microsoft のセキュリティ チームが観測したさまざまな攻撃を完全にカバーします。 [詳細については、こちらを参照してください](../identity-protection/concept-identity-protection-risks.md#user-risk)。
+この新しい検出は、攻撃が発生したことが検出された際に、そのセッションのリスクを「高」にすることで当社のセキュリティ チームからユーザーに通知し、ユーザーを保護することを目的とした方法です。 この検出では、関連するサインインも危険なものとしてマークされます。 この検出は、既存の Azure Active Directory の脅威インテリジェンスによるユーザー リスク検出に続き、Microsoft のセキュリティ チームが観測したさまざまな攻撃を完全にカバーします。 [詳細については、こちらを参照してください](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)。
  
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 機械学習モデルをデプロイする方法
 titleSuffix: Azure Machine Learning
-description: 機械学習モデルをデプロイする方法と場所について説明します。 Azure Container Instances、Azure Kubernetes Service、Azure IoT Edge、および FPGA にデプロイします。
+description: 機械学習モデルをデプロイする方法と場所について説明します。 Azure Container Instances、Azure Kubernetes Service、および FPGA にデプロイします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.date: 04/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
 adobe-target: true
-ms.openlocfilehash: 0592577040d411d3ecad395d8697828a5c4bc516
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6fc1fbb6a665d03e250beec85c66178feaa55189
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081373"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862260"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>機械学習モデルを Azure にデプロイする 
 
@@ -37,6 +37,8 @@ ms.locfileid: "112081373"
 1. 結果の Web サービスをテストする
 
 機械学習デプロイ ワークフローに関連する概念の詳細については、[Azure Machine Learning でのモデルの管理、デプロイ、監視](concept-model-management-and-deployment.md)に関する記事を参照してください。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -88,7 +90,7 @@ SDK を使用してワークスペースに接続する方法の詳細につい�
 展開する機械学習サービスには通常、次のものが必要です。
     
  + 展開する特定のモデルを表すリソース (例: Pytorch のモデルのファイル)
- + 特定の入力に応じてモデルを実行するために、そのサービス上で実行するコード
+ + 特定の入力に対してモデルを実行する、サービス上で実行されるコード
 
 Azure Machine Learnings では、サービスを 2 つの部分に分けて展開することにより、それまでと同じコードを維持しつつモデルを更新できます。 コードとは "_別に_" モデルをアップロードする仕組みを "モデルの登録" と定義しています。
 
@@ -410,7 +412,7 @@ Deploy your service again: null
 
 ワークスペースから登録済みのモデルを削除するには、`az ml model delete <model id>` を使用します。
 
-[Web サービスの削除](/cli/azure/ml/service#az_ml_service_delete)と[モデルの削除](/cli/azure/ml/model#az_ml_model_delete)に関する詳細を確認してください。
+[Web サービスの削除](/cli/azure/ml(v1)/computetarget/create#az_ml_service_delete)と[モデルの削除](/cli/azure/ml/model#az_ml_model_delete)に関する詳細を確認してください。
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Percept の概要
 description: Azure Percept プラットフォームの詳細情報
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0a5dfd39fd6047256d951fe33c10167e4f4c21b
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567663"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221262"
 ---
-# <a name="introduction-to-azure-percept"></a>Azure Percept の概要
+# <a name="azure-percept-overview"></a>Azure Percept の概要
 
 Azure Percept は、IoT と AI をエッジで使用してビジネス変革を促進するために設計されたハードウェア、ソフトウェア、およびサービスのファミリです。 Azure Percept はシリコンからサービスまでの完全なスタックをカバーし、大規模なエッジ AI の統合に関する課題を解決します。  
 
