@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 08/02/2021
-  ms.openlocfilehash: 0c9e3b78cac6bce3fb4a928faa76d7613d22a2dc
-  ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+  ms.date: 08/31/2021
+  ms.openlocfilehash: e0bf4719596ea64c5b80f66a48861d080a9e0d58
+  ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/16/2021
-  ms.locfileid: "122228609"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123258388"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
       url: introduction.md
     - text: プラットフォームの更新
       url: azure-vmware-solution-platform-updates.md
+    - text: よく寄せられる質問
+      url: ./faq.yml
   - linkListType: concept
     links:
     - text: アクセスと ID
@@ -36,32 +38,10 @@ landingContent:
       url: concepts-networking.md
     - text: プライベート クラウドとクラスター
       url: concepts-private-clouds-clusters.md
-    - text: ストレージ
+    - text: 実行コマンド
+      url: concepts-run-command.md
+    - text: Storage
       url: concepts-storage.md
-- title: よく寄せられる質問
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: 全般
-      url: ./faq.yml
-    - text: 顧客とのコミュニケーション
-      url: /azure/azure-vmware/faq#customer-communication
-    - text: 構成とセットアップ
-      url: /azure/azure-vmware/faq#configuration-and-setup
-    - text: VMware ソフトウェア
-      url: /azure/azure-vmware/faq#vmware-software
-    - text: Compute
-      url: /azure/azure-vmware/faq#compute
-    - text: ネットワークと相互接続
-      url: /azure/azure-vmware/faq#networking-and-interconnectivity
-    - text: ストレージ
-      url: /azure/azure-vmware/faq#storage
-    - text: ホスト、クラスター、およびプライベート クラウド
-      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
-    - text: ID 管理
-      url: /azure/azure-vmware/faq#identity-management
-    - text: 課金とサポート
-      url: /azure/azure-vmware/faq#billing-and-support
 - title: はじめに
   linkLists:
   - linkListType: deploy
@@ -94,12 +74,24 @@ landingContent:
       url: tutorial-scale-private-cloud.md
     - text: 8 - プライベート クラウドを削除する
       url: tutorial-delete-private-cloud.md
+- title: 障害復旧
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: JetStream DR をデプロイする
+      url: deploy-disaster-recovery-using-jetstream.md
+    - text: ディザスター リカバリー用に VMware HCX をデプロイする
+      url: deploy-disaster-recovery-using-vmware-hcx.md
+    - text: ディザスター リカバリー用に VMware SRM をデプロイする
+      url: disaster-recovery-using-vmware-site-recovery-manager.md
 - title: ID 管理
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: プライベート クラウドのアクセスと ID
+    - text: アクセスと ID
       url: concepts-identity.md
+    - text: vCenter の ID ソースを構成する
+      url: configure-identity-source-vcenter.md
     - text: cloudadmin 資格情報のローテーション
       url: rotate-cloudadmin-credentials.md
 - title: Azure VMware Solution を拡張する
@@ -122,8 +114,6 @@ landingContent:
       url: configure-dns-azure-vmware-solution.md
     - text: ポート ミラーリングの構成
       url: configure-port-mirroring-azure-vmware-solution.md
-    - text: GitHub Enterprise Server を構成する
-      url: configure-github-enterprise-server.md
     - text: パブリック インターネット アクセスを有効にする
       url: enable-public-internet-access.md
     - text: vWAN でサイト間 VPN を構成する
@@ -132,6 +122,10 @@ landingContent:
       url: configure-windows-server-failover-cluster.md
     - text: 同じリージョン内の複数のプライベート クラウドを接続する
       url: connect-multiple-private-clouds-same-region.md
+    - text: ストレージ ポリシーを構成する
+      url: configure-storage-policy.md
+    - text: 配置ポリシーを作成する
+      url: create-placement-policy.md
 - title: Azure のネイティブ統合
   linkLists:
   - linkListType: how-to-guide
@@ -204,8 +198,6 @@ landingContent:
       url: https://youtu.be/BoQYvqzb6Y8
     - text: 移行と容量計画
       url: https://youtu.be/NoNG-hkksrA
-    - text: Azure Logic App を使用して vCenter および NSX-T のパスワードをローテーションする
-      url: https://youtu.be/cK1qY3knj88
 - title: Azure VMware Solution リソースを移動する
   linkLists:
   - linkListType: reference

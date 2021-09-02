@@ -7,14 +7,17 @@ ms.topic: article
 ms.date: 03/22/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions, devx-track-azurecli
-ms.openlocfilehash: 796ee38140e72a56f1f22b0594dd904a43ac53c0
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 1480b23f4c213d1c251e47678b235c9f8c8d45df
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865227"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432898"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment の管理アドレス
+> [!NOTE]
+> この記事は、Isolated App Service プランで使用される App Service Environment v2 に関するものです
+> 
 
 App Service Environment (ASE) は、ご使用の Azure Virtual Network (VNet) 内で実行する Azure App Service のシングル テナント デプロイです。  ASE は、VNet 内で実行されますが、サービス管理のために Azure App Service で使用される多数の専用 IP アドレスから依然としてアクセスできます。  ASE の場合、管理トラフィックは、ユーザーによって制御されるネットワークを横断します。 このトラフィックがブロックまたは誤ってルーティングされていると、ASE は中断されます。 ASE ネットワークの依存関係の詳細については、「[App Service Environment のネットワークの考慮事項][networking]」を参照してください。 ASE に関する一般情報については、まず「[Azure App Service Environment の概要][intro]」を参照してください。
 

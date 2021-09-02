@@ -11,12 +11,12 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e2bdaa2c7a7648124fbe0be60e5a0af2f83238f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 2ef5d481cebcdd4c7f08813e8523a03fd45d777b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226563"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768079"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Azure AD Connect 構成設定をインポートおよびエクスポートする 
 
@@ -46,6 +46,9 @@ Azure AD Connect ウィザードから構成が変更されるたびに、新し
 
 > [!NOTE]
 > LocalDB の代わりに SQL Server を使用したり、既定の VSA の代わりに既存のサービス アカウントを使用したりするなど、このページの設定をオーバーライドします。 これらの設定は、構成設定ファイルからインポートされません。 これらは、情報と比較のために用意されています。
+
+>[!NOTE]
+>エクスポートされた JSON ファイルを変更して構成を変更する方法はサポートされていません
 
 ### <a name="import-installation-experience"></a>インストール エクスペリエンスのインポート 
 

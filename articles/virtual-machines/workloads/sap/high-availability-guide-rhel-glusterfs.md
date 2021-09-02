@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: radeltch
-ms.openlocfilehash: 2f312b98af8fdec65f8b1994e744d59bec558ba3
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: bb4552d068183907b24ff2a0c5b7a9dcce593a25
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112281595"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967815"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS
 
@@ -64,7 +64,7 @@ ms.locfileid: "112281595"
 * [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ (この記事)][deployment-guide]
 * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
-* [Red Hat Gluster Storage 用の製品ドキュメント](https://access.redhat.com/documentation/red_hat_gluster_storage/)
+* [Red Hat Gluster Storage 用の製品ドキュメント](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.5)
 * 一般的な RHEL ドキュメント
   * [高可用性アドオンの概要](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [高可用性アドオンの管理](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)

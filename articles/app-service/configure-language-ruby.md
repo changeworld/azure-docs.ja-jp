@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: b71b6867221a2cae6bf5b8751a848413b6f8d20a
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 58e4fb69f5c2567c6d4b4ddc5329d83dd37ee878
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963782"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225822"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service 向けの Linux Ruby アプリを構成する
 
@@ -63,7 +63,7 @@ ENV['WEBSITE_SITE_NAME']
 
 ## <a name="customize-deployment"></a>デプロイのカスタマイズ
 
-[Git リポジトリ](deploy-local-git.md)または[ビルド オートメーションが有効](deploy-zip.md#enable-build-automation)になっている [Zip パッケージ](deploy-zip.md)をデプロイすると、デプロイ後にデプロイ エンジン (Kudu) によって既定で次のステップが自動的に実行されます。
+[Git リポジトリ](deploy-local-git.md)または[ビルド オートメーションが有効](deploy-zip.md#enable-build-automation-for-zip-deploy)になっている [Zip パッケージ](deploy-zip.md)をデプロイすると、デプロイ後にデプロイ エンジン (Kudu) によって既定で次のステップが自動的に実行されます。
 
 1. *Gemfile* が存在するかどうかを確認します。
 1. `bundle clean` を実行します。 
@@ -149,10 +149,8 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="more-resources"></a>その他のリソース
 
-> [!div class="nextstepaction"]
-> [チュートリアル:PostgreSQL を使った Rails アプリ](tutorial-ruby-postgres-app.md)
-
-> [!div class="nextstepaction"]
-> [App Service Linux の FAQ](faq-app-service-linux.yml)
+- [チュートリアル:PostgreSQL を使った Rails アプリ](tutorial-ruby-postgres-app.md)
+- [App Service Linux の FAQ](faq-app-service-linux.yml)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

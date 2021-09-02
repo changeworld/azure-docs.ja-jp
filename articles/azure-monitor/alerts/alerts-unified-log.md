@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 2744a1dd36751175e7bd421210bdb5b92b53dfe5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3eb0ab8ac6ca4c0ceddd9e3ebf84b8c2ddd5a9f4
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456923"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301314"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
@@ -193,7 +193,9 @@ requests
 | 00:15 | TRUE  | アラートが発生し、アクション グループが呼び出されます。 新しいアラートの状態はアクティブです。
 | 00:20 | FALSE | アラートは発生しません。 アクションは呼び出されません。 前のアラートの状態はアクティブのままです。
 
-ステートフル アラートは、インシデントごとに 1 回発生し、解決されます。 この機能は現在、Azure パブリック クラウドでプレビュー段階です。 これを設定するには、「アラートの詳細」セクションの「**アラートを自動的に解決する**」を使用します。
+ステートフル アラートは、インシデントごとに 1 回発生し、解決されます。 アラート ルールは、アラート条件が特定の評価期間で (ログの取り込みの遅延を考慮して) 30 分間満たされない場合、および条件が変動している場合のノイズを減らすために 3 回の連続評価で満たされない場合に解決されます。 たとえば、頻度が 5 分の場合、アラートは 40 分後に解決され、頻度が 1 分の場合、アラートは 32 分後に解決されます。 解決済みの通知が Web フックまたは電子メールで送信され、Azure portal でのアラート インスタンスの状態 (監視状態と呼ばれる) が解決済みに設定されます。
+
+ステートフル アラートは現在、Azure パブリック クラウドでプレビュー段階です。 これを設定するには、「アラートの詳細」セクションの「**アラートを自動的に解決する**」を使用します。
 
 ## <a name="location-selection-in-log-alerts"></a>ログ アラートでの場所の選択
 

@@ -7,15 +7,15 @@ manager: rinarish
 services: azure-communication-services
 ms.author: arturk
 ms.date: 06/30/2021
-ms.topic: conceptual
+ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: 7757ad502799786a37aa3160933148045368ccca
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ae67cf7e4ecb470e95d9e734e26e761282fbc109
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107684"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251071"
 ---
 # <a name="quickstart-use-the-communication-services-calling-sdk"></a>クイック スタート: Communication Services 通話 SDK を使用する
 

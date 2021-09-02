@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: ce8dec215591b469c5593923eb9d5b211ee8ac29
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 554c3b239e3b6d4323595ece62424b8b63e6312e
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114726843"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835621"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub モジュール ID とモジュール ツイン (Python) の概要
 
@@ -203,39 +203,34 @@ ms.locfileid: "114726843"
 
     ```python
     import time
-    import threading
     from azure.iot.device import IoTHubModuleClient
 
-    CONNECTION_STRING = "YourModuleConnectionString"
+    def twin_patch_handler(twin_patch):
+        print("")
+        print("Twin desired properties patch received:")
+        print(twin_patch)
 
 
-    def twin_update_listener(client):
-        while True:
-            patch = client.receive_twin_desired_properties_patch()  # blocking call
-            print("")
-            print("Twin desired properties patch received:")
-            print(patch)
+    def main():
+        print ("Starting the IoT Hub Python sample...")
+        client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
 
-    def iothub_client_sample_run():
+        print ("Waiting for commands, press Ctrl-C to exit")
         try:
-            module_client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
-
-            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(module_client,))
-            twin_update_listener_thread.daemon = True
-            twin_update_listener_thread.start()
+            # Attach the handler to the client
+            client.on_twin_desired_properties_patch_received = twin_patch_handler
 
             while True:
-                time.sleep(1000000)
-
+                time.sleep(1000)
         except KeyboardInterrupt:
             print("IoTHubModuleClient sample stopped")
-
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
+            client.shutdown()
 
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Python sample..." )
-        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
-
-        iothub_client_sample_run()
+        main()
     ```
 
 ## <a name="run-the-apps"></a>アプリの実行

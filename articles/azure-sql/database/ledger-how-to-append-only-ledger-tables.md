@@ -1,27 +1,27 @@
 ---
 title: 追加専用のテーブルを作成して使用する
 description: Azure SQL Database で追加専用の台帳テーブルを作成して使用する方法を説明します。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: f433e56140a199cdb872bc733343a8cf88c818cb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: fede72baa7df89e821e496066090658bda2df80e
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076404"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665847"
 ---
 # <a name="create-and-use-append-only-ledger-tables"></a>追加専用のテーブルを作成して使用する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、米国中西部で使用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
 
 この記事では、Azure SQL Database で[追加専用の台帳テーブル](ledger-append-only-ledger-tables.md)を作成する方法を示します。 次に、追加専用の台帳テーブルに値を挿入した後、データを更新してみます。 最後に、台帳ビューを使用して結果を表示します。 ここでは、ある施設のカード キー アクセス システムの例を使用します。これは、追加専用システムのパターンです。 この例では、追加専用の台帳テーブルとそれに対応する台帳ビューのリレーションシップを実際に見てみましょう。
 

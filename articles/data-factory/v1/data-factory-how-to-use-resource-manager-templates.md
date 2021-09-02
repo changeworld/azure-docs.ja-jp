@@ -7,16 +7,16 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ec2e7d2f80e19d2e001fec0a3949f469b33149d2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f527b33445ed55fbc64a08144a94ba9a05f38092
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957133"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554480"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 
+> この記事は、Data Factory のバージョン 1 に適用されます。
 
 ## <a name="overview"></a>概要
 データ統合のために Azure Data Factory を使用した場合、異なる環境間で同じパターンを何度も使用したり、同じソリューション内で同じタスクを繰り返し実装したりしていることに気づく場合があります。 テンプレートを使用すると、これらのシナリオを簡単に実装、管理することができます。 Azure Data Factory のテンプレートは、再利用や繰り返しを伴うシナリオに最適です。
@@ -39,12 +39,12 @@ Resource Manager テンプレートを使用して Data Factory エンティテ�
 ## <a name="data-factory-templates-on-github"></a>GitHub の Data Factory テンプレート
 GitHub の次の Azure クイック スタート テンプレートもご覧ください。
 
-* [データ ファクトリを作成して Azure Blob Storage から Azure SQL Database にデータをコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
-* [Azure HDInsight クラスターで Hive アクティビティを伴うデータ ファクトリを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
-* [データ ファクトリを作成して Salesforce から Azure BLOB にデータをコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
-* [複数のアクティビティを連結したデータ ファクトリ (FTP サーバーから Azure BLOB にデータをコピーし、Hive スクリプトをオンデマンド HDInsight クラスターで呼び出してデータを変換し、その結果を Azure SQL Database にコピーする) を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
+* [データ ファクトリを作成して Azure Blob Storage から Azure SQL Database にデータをコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-blob-to-sql-copy)
+* [Azure HDInsight クラスターで Hive アクティビティを伴うデータ ファクトリを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-hive-transformation)
+* [データ ファクトリを作成して Salesforce から Azure BLOB にデータをコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-salesforce-to-blob-copy)
+* [複数のアクティビティを連結したデータ ファクトリ (FTP サーバーから Azure BLOB にデータをコピーし、Hive スクリプトをオンデマンド HDInsight クラスターで呼び出してデータを変換し、その結果を Azure SQL Database にコピーする) を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-ftp-hive-blob)
 
-[Azure クイック スタート](https://azure.microsoft.com/documentation/templates/)の Azure Data Factory テンプレートを自由に共有してください。 このリポジトリで共有できるテンプレートを開発する際には、[投稿に関するガイド](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)をご覧ください。
+[Azure クイック スタート](https://azure.microsoft.com/resources/templates/)の Azure Data Factory テンプレートを自由に共有してください。 このリポジトリで共有できるテンプレートを開発する際には、[投稿に関するガイド](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)をご覧ください。
 
 以降のセクションでは、Resource Manager テンプレートでの Data Factory リソースの定義方法について説明します。
 
@@ -89,7 +89,7 @@ GitHub の次の Azure クイック スタート テンプレートもご覧く�
     "location": "East US"
 }
 ```
-dataFactoryName は以下のように "変数" で定義します。
+dataFactoryName は以下のように「変数」で定義します。
 
 ```JSON
 "dataFactoryName": "[concat('<myDataFactoryName>', uniqueString(resourceGroup().id))]",
@@ -107,7 +107,7 @@ dataFactoryName は以下のように "変数" で定義します。
 }
 ```
 
-デプロイする特定のリンクされたサービスの JSON プロパティについて詳しくは、[ストレージのリンクされたサービスに関する記事](data-factory-azure-blob-connector.md#azure-storage-linked-service)または「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」をご覧ください。 "dependsOn" パラメーターは、対応するデータ ファクトリの名前を指定します。 Azure Storage でのリンクされたサービスの定義の例を、次の JSON 定義に示します。
+デプロイする特定のリンクされたサービスの JSON プロパティについて詳しくは、[ストレージのリンクされたサービスに関する記事](data-factory-azure-blob-connector.md#azure-storage-linked-service)または「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」をご覧ください。 「dependsOn」パラメーターは、対応するデータ ファクトリの名前を指定します。 Azure Storage でのリンクされたサービスの定義の例を、次の JSON 定義に示します。
 
 ### <a name="define-datasets"></a>データセットの定義
 
@@ -123,7 +123,7 @@ dataFactoryName は以下のように "変数" で定義します。
     ...
 }
 ```
-デプロイする特定のデータセットの型の JSON プロパティについて詳しくは、[サポートされるデータ ストアに関する記事](data-factory-data-movement-activities.md#supported-data-stores-and-formats)をご覧ください。 "dependsOn" パラメーターは、対応するデータ ファクトリの名前と、ストレージのリンクされたサービスを指定します。 Azure Blob Storage のデータセット型の例を、次の JSON 定義に示します。
+デプロイする特定のデータセットの型の JSON プロパティについて詳しくは、[サポートされるデータ ストアに関する記事](data-factory-data-movement-activities.md#supported-data-stores-and-formats)をご覧ください。 「dependsOn」パラメーターは、対応するデータ ファクトリの名前と、ストレージのリンクされたサービスを指定します。 Azure Blob Storage のデータセット型の例を、次の JSON 定義に示します。
 
 ```JSON
 "type": "datasets",
@@ -169,7 +169,7 @@ dataFactoryName は以下のように "変数" で定義します。
 }
 ```
 
-デプロイする特定のパイプラインおよびアクティビティを定義するための JSON プロパティについて詳しくは、[パイプラインの定義に関する記事](data-factory-create-pipelines.md#pipeline-json)を参照してください。 "dependsOn" パラメーターは、データ ファクトリの名前と、対応するリンクされたサービスまたはデータセットを指定します。 Azure Blob Storage から Azure SQL Database にデータをコピーするパイプラインの例を次の JSON スニペットに示します。
+デプロイする特定のパイプラインおよびアクティビティを定義するための JSON プロパティについて詳しくは、[パイプラインの定義に関する記事](data-factory-create-pipelines.md#pipeline-json)を参照してください。 「dependsOn」パラメーターは、データ ファクトリの名前と、対応するリンクされたサービスまたはデータセットを指定します。 Azure Blob Storage から Azure SQL Database にデータをコピーするパイプラインの例を次の JSON スニペットに示します。
 
 ```JSON
 "type": "datapipelines",

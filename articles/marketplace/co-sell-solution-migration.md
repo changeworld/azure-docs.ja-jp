@@ -1,19 +1,19 @@
 ---
 title: OCP GTM から Microsoft AppSource のパートナー センターへ共同販売ソリューションを移行する
-description: OCP GTM から Microsoft AppSource のパートナー センターへ共同販売ソリューションを移行する方法について説明します。
+description: OCP GTM からパートナー センター (Azure Marketplace) へ共同販売ソリューションを移行します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 05/18/2021
-ms.openlocfilehash: d4eb677b0f55a8ccd2cda33e6026e01238deb9b3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/13/2021
+ms.openlocfilehash: 6ca8c75e5cf6f5290736cf01a20db63a8fb2d077
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971533"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389085"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM からコマーシャル マーケットプレースへの共同販売ソリューションの移行
 
@@ -36,7 +36,7 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>Co-Sell-Ready 状態を達成するための発行の更新
 
-お客様のソリューションを Microsoft の販売者やパートナーが検出できるようにするには、[Co-Sell Ready (共同販売準備完了) の要件](./co-sell-overview.md)を満たす必要があります。 Microsoft 販売者がインセンティブを受け取るためには、ソリューションが、[Incentive-Eligible (インセンティブ対象) 要件](./co-sell-overview.md)を満たしている必要があります。 パートナー センターの [共同販売] タブでこれらの要件を完了します (この記事で後述する[こちらのイメージ](#action-2-merge)を参照してください)。
+お客様のソリューションを Microsoft の販売者やパートナーが検出できるようにするには、[Co-Sell Ready (共同販売準備完了) の要件](./co-sell-overview.md)を満たす必要があります。 Microsoft 販売者が共同販売インセンティブになるには、ソリューションが、[インセンティブ対象要件](./co-sell-overview.md)を満たしている必要があります。 パートナー センターの [共同販売] タブでこれらの要件を完了します (この記事で後述する[こちらのイメージ](#action-2-merge)を参照してください)。
 
 > [!NOTE]
 > コマーシャル マーケットプレースでは、ソリューションは発行エクスペリエンス全体で「オファー」と呼ばれています。
@@ -45,8 +45,8 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 
 ソリューションを OCP GTM からインポートする前に、こちらの手順を実行してください。
 
-1. 会社の[発行元リスト](https://partner.microsoft.com/dashboard/account/v3/publishers/list)にアクセスします。 これには、発行アクセス権を持つアカウント所有者、マネージャー、および開発者が含まれています。 パートナー センターのユーザー ロールの詳細については、[こちら](user-roles.md)を参照してください。
-2. リストに記載されているいずれかの連絡先に連絡し、"*マネージャー*" または "*開発者*" としてコマーシャル マーケットプレースに [ユーザーを追加](https://partner.microsoft.com/dashboard/account/usermanagement)するように依頼します。これは、ソリューションを編集したり発行したりできるのはこれらのロールだけだからです。
+1. 会社の[発行元リスト](https://go.microsoft.com/fwlink/?linkid=2165704)にアクセスします。 これには、発行アクセス権を持つアカウント所有者、マネージャー、および開発者が含まれています。 パートナー センターのユーザー ロールの詳細については、[こちら](user-roles.md)を参照してください。
+2. リストに記載されているいずれかの連絡先に連絡し、"*マネージャー*" または "*開発者*" としてコマーシャル マーケットプレースに [ユーザーを追加](https://go.microsoft.com/fwlink/?linkid=2166003)するように依頼します。これは、ソリューションを編集したり発行したりできるのはこれらのロールだけだからです。
 3. 開発者と協力して、ソリューションを OCP GTM アカウントからコマーシャル マーケットプレースに移動します。
 4. 次のうちどれを実行するかを決定します。
     1. パートナー センターへ移行したい OCP GTM のソリューションがある場合 - "*照会パイプライン、資料、共同販売ステータス、インセンティブを維持するには*" - 選択できるシナリオが 2 つあります。
@@ -66,7 +66,7 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 
 ## <a name="begin-the-migration-of-your-solutions-from-ocp-gtm"></a>OCP GTM からソリューションの移行を開始する
 
-1. [こちら](https://partner.microsoft.com/solutions/migration#)から移行を開始します。
+1. [こちら](https://go.microsoft.com/fwlink/?linkid=2165807)から移行を開始します。
 2. **[概要]** ページを選択し、**こちらをクリックして開始します**。
 
     :::image type="content" source="media/co-sell-migrate/welcome-overveiw.png" alt-text="概要ページが表示される":::
@@ -98,7 +98,7 @@ OCP GTM のソリューションとマージするオファーがコマーシャ
 
 1. コマーシャル マーケットプレースでドラフト オファーを作成します
 
-   1. **[+New Offer]\(+新しいオファー\)** を選択します
+   1. **[+ New Offer]\(+ 新しいオファー\)** を選択します
 
         :::image type="content" source="media/co-sell-migrate/new-offer.png" alt-text="新しいオファーの表示":::
 

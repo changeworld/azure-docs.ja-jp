@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 83e739eb643896de710b5179b78a6305adf84465
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a9a101afad5bfcdd8ca7ec20bc39b3080790a09b
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949267"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720763"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Azure Media Services を使用してビデオ ファイルとオーディオ ファイルを分析する
 
@@ -21,7 +21,7 @@ ms.locfileid: "111949267"
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure Media Services v3 を使うと、Video Indexer でビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 この記事では、これらの分析情報の抽出に使用される Media Services v3 アナライザーのプリセットについて説明します。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。 どのような場合に Video Indexer や Media Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)をご覧ください。
+Azure Media Services v3 を使用すると、Azure Video Analyzer for Media (以前の Video Indexer) でビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 この記事では、これらの分析情報の抽出に使用される Media Services v3 アナライザーのプリセットについて説明します。 より詳細な分析情報が必要な場合は Video Analyzer for Media を直接使用します。 Video Analyzer for Media と Media Services アナライザー プリセットを使用するタイミングについて理解するには、[比較のドキュメント](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)をご確認ください。
 
 オーディオ アナライザーのプリセットには、基本と標準の 2 つのモードがあります。 次の表の違いの説明を参照してください。
 
@@ -29,7 +29,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
 
-重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Video Indexer サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Video Indexer のコンプライアンス、プライバシー、セキュリティについては、Azure の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)で確認できます。 Video Indexer を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
+重要な注意事項として、Video Analyzer for Media の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Analyzer for Media またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Azure Video Analyzer for Media サービスにアップロードして処理と保管を行う前に、ビデオに映っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Azure Video Analyzer for Media のコンプライアンス、プライバシー、セキュリティの詳細については、Azure の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)で確認できます。 Azure Video Analyzer for Media を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
 
 ## <a name="built-in-presets"></a>組み込みのプリセット
 
@@ -414,7 +414,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 #### <a name="visualcontentmoderation"></a>visualContentModeration
 
-visualContentModeration ブロックには、Video Indexer で成人向けコンテンツが含まれる可能性があると判断された時間範囲が含まれます。 visualContentModeration が空の場合、特定された成人向けコンテンツはありません。
+visualContentModeration ブロックには、Video Analyzer for Media で成人向けコンテンツが含まれる可能性があると判断された時間範囲が含まれます。 visualContentModeration が空の場合、特定された成人向けコンテンツはありません。
 
 成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、`IsAdult` 属性に、人間によるレビューの結果が含まれます。
 

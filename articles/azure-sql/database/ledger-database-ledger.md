@@ -1,27 +1,27 @@
 ---
 title: データベース台帳
 description: この記事では、Azure SQL Database の台帳データベースのテーブルと、関連するビューについての情報を提供します。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 01fad48fccb956ab44cd54e67120ac5f7425cacd
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 85ae3c86c98f83499409e024431f83a54622d0f2
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080113"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665898"
 ---
 # <a name="what-is-the-database-ledger"></a>データベース台帳とは
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Azure SQL Database 台帳は現在パブリック プレビュー版であり、米国中西部で利用できます。
+> 現在、Azure SQL Database 台帳はパブリック プレビュー段階であり、西ヨーロッパ、ブラジル南部、および米国中西部で使用できます。
 
 データベース台帳は、Azure SQL Database の台帳機能の一部です。 データベース台帳では、時間と共に変化するデータベースの状態を差分によって把握しつつ、台帳テーブルを更新します。 ブロックチェーンと[マークル ツリーデータ構造](/archive/msdn-magazine/2018/march/blockchain-blockchain-fundamentals)を論理的に使用します。 
 

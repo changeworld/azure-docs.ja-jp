@@ -2,24 +2,24 @@
 title: Azure Communication Services の Chat SDK の概要
 titleSuffix: An Azure Communication Services concept document
 description: Azure Communication Services Chat SDK について説明します。
-author: mikben
-manager: jken
+author: knvsl
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 36b528d7899b2b5cda7c05752a7cbb42dec6adbc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2279761beffa9724a56fe9a4af54787d15a3705a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459298"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258277"
 ---
 # <a name="chat-sdk-overview"></a>Chat SDK の概要 
 
 Azure Communication Services Chat SDK を使用して、アプリケーションに高度なリアルタイム チャットを追加できます。
-    
+
 ## <a name="chat-sdk-capabilities"></a>Chat SDK の機能    
 
 次の一覧は、Communication Services Chat SDK で現在使用できる機能のセットを示しています。  
@@ -41,8 +41,8 @@ Azure Communication Services Chat SDK を使用して、アプリケーション
 |                   | 参加者がチャット スレッドにメッセージを入力中であることを示す通知を受け取る                                         | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 |                   | チャット スレッド内のすべてのメッセージを取得する                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
 |                   | メッセージ コンテンツの一部として Unicode の絵文字を送信する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|                   | チャット メッセージにメタデータを追加する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
-|                   | 入力インジケーター通知に表示名を追加する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
+|                   | チャット メッセージにメタデータを追加する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ❌    | ✔️   |  
+|                   | 入力インジケーター通知に表示名を追加する                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ❌    | ✔️   |  
 |リアルタイムの通知 (独自のシグナリング パッケージで対応**)|  チャット クライアントは、受信メッセージや、チャット スレッドで発生しているその他の操作のリアルタイム更新を取得するためにサブスクライブできます。 リアルタイム通知でサポートされている更新の一覧を確認するには、「[チャットに関する概念](concepts.md#real-time-notifications)」をご覧ください                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
 | Azure Event Grid との統合             | Azure Event Grid で使用可能なチャット イベントを使用して、カスタム通知サービスを接続する、またはそのイベントを Webhook に投稿して、チャットの完了後に CRM レコードを更新するなどのビジネス ロジックを実行する   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
 | レポート </br>(この情報は、Azure portal のお使いの Communication Services リソースの [監視] タブにあります)      | Azure メトリックス エクスプローラーで公開されたメトリックを監視してチャット アプリからの API トラフィックを理解し、アラートを設定して異常を検出する     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  

@@ -2,19 +2,20 @@
 title: Personalizer でマルチスロットを使用する方法
 description: Personalizer でマルチスロットを使用して、サービスによって提供されるコンテンツのレコメンデーションを向上させる方法について説明します。
 services: cognitive-services
-ms.author: edjez
+author: jeffmend
+ms.author: jeffme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 05/24/2021
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: a7c7c1227e0704e77307dce12e0f7687fd9b9f54
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ea1f244b43becd65b3bc85f2e40dc2c029ccbf43
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382262"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829271"
 ---
 # <a name="get-started-with-multi-slot-for-azure-personalizer"></a>Azure Personalizer のマルチスロットの概要
 

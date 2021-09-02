@@ -4,25 +4,27 @@ description: この記事では、サブスクリプション内の複数のワ�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/11/2021
-ms.openlocfilehash: 19cc85751fc5e4a165b646ac89d9d6b6e90c4408
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.date: 06/30/2021
+ms.openlocfilehash: ef7a917b504df521f087e5a2729d5c431e84fd62
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379555"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295905"
 ---
-# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>複数のワークスペースとアプリにまたがるログ クエリを Azure Monitor で実行する
+# <a name="perform-log-queries-in-azure-monitor-that-span-across-workspaces-and-apps"></a>複数のワークスペースとアプリにまたがるログ クエリを Azure Monitor で実行する
 
-Azure Monitor Logs では、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の複数の Log Analytics ワークスペースおよび Application Insights アプリにわたるクエリがサポートされます。 これにより、システム全体のデータを確認できます。
+Azure Monitor ログでは、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の複数の Log Analytics ワークスペースおよび Application Insights アプリにわたるクエリがサポートされます。 これにより、システム全体のデータを確認できます。
+
+[Azure Lighthouse](../../lighthouse/overview.md) 経由で他の Azure Active Directory (Azure AD) テナントのサブスクリプションを管理している場合は、[それらの顧客テナントに作成された Log Analytics のワークスペース](../../lighthouse/how-to/monitor-at-scale.md)をクエリに含めることができます。
 
 複数のワークスペースとアプリに格納されているデータをクエリするには、次の 2 つの方法があります。
+
 1. ワークスペースとアプリの詳細を指定して明示的に行います。 この方法については、この記事で詳しく説明します。
 2. [リソースコンテキスト クエリ](./design-logs-deployment.md#access-mode)を使用して暗黙的に行います。 特定のリソース、リソース グループ、またはサブスクリプションのコンテキストでクエリを実行すると、これらのリソースのデータを含むすべてのワークスペースから関連データがフェッチされます。 アプリに格納されている Application Insights データはフェッチされません。
 
 > [!IMPORTANT]
-> [ワークスペースベースの Application Insights リソースを使用している場合](../app/create-workspace-resource.md)、テレメトリは、その他のすべてのログ データと共に Log Analytics ワークスペースに格納されます。 workspace() 式を使用して、複数のワークスペースにアプリケーションを含むクエリを記述します。 同じワークスペース内に複数のアプリケーションがある場合、クロス ワークスペース クエリは必要ありません。
-
+> [ワークスペース ベースの Application Insights リソース](../app/create-workspace-resource.md)を使用している場合、テレメトリは、その他のすべてのログ データと共に Log Analytics ワークスペースに格納されます。 workspace() 式を使用して、複数のワークスペースのアプリケーションを含むクエリを記述します。 同じワークスペース内に複数のアプリケーションがある場合、クロス ワークスペース クエリは必要ありません。
 
 ## <a name="cross-resource-query-limits"></a>リソース間のクエリの制限 
 

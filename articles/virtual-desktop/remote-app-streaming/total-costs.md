@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 64edffaebf5194e6e8c48466d46cbfc9fd953c92
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 93383fa4b681dd7f0768f5ea30c24e64e9dcb2b9
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798911"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123036593"
 ---
 # <a name="understanding-total-azure-virtual-desktop-deployment-costs"></a>Azure Virtual Desktop のデプロイ コストの合計について
 
@@ -108,8 +108,9 @@ Azure Virtual Desktop をデプロイした後、[Azure Cost Management](../../c
 
 ユーザー アクセス コストは、登録されているサブスクリプションについて、Azure 課金請求書の各請求サイクルに、従量課金コストとその他の Azure 料金と共に表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 デプロイに具体的にどのくらいのコストがかかるのかを知りたい方は、以下のアーティクルを参考にしてください。
 
 - [ライセンスとユーザーごとのアクセス価格について](licensing.md)
+- [Azure Virtual Desktop のユーザーごとのアプリ ストリーミング料金の見積もり](streaming-costs.md)

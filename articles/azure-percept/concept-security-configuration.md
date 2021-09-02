@@ -1,19 +1,19 @@
 ---
-title: Azure Percept のファイアウォール構成とセキュリティに関する推奨事項
+title: Azure Percept のセキュリティの推奨事項
 description: Azure Percept ファイアウォールの構成とセキュリティに関する推奨事項について詳しく説明します
 author: mimcco
-ms.author: mimcco
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 9564160698b1f1bf17fc89ec13b1e292aa3b6098
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 146b39db7aaae2ee043d14d61a7be4f00363c548
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137547"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222337"
 ---
-# <a name="azure-percept-firewall-configuration-and-security-recommendations"></a>Azure Percept のファイアウォール構成とセキュリティに関する推奨事項
+# <a name="azure-percept-security-recommendations"></a>Azure Percept のセキュリティの推奨事項
 
 Azure Percept でのファイアウォールの構成と一般的なセキュリティ ベストプラクティスについては、以下のガイドラインを参照してください。
 

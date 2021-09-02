@@ -3,14 +3,14 @@ title: Azure Automation Update Management を Microsoft Endpoint Configuration M
 description: この記事では、マネージャー クライアントにソフトウェア更新プログラムを展開するために、Update Management を使用して Microsoft Endpoint Configuration Manager を構成する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6889d5058a7ca93e410afa0454e108d79bb70569
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575766"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203905"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>Microsoft Endpoint Configuration Manager と Update Management を統合する
 
@@ -34,9 +34,11 @@ Azure IaaS でホストされているクライアントを既存の Microsoft E
 
 Microsoft Endpoint Configuration Manager から更新プログラムの展開を引き続き管理する場合は、次の手順を行います。 Azure Automation は Microsoft Endpoint Configuration Manager に接続し、Log Analytics ワークスペースに接続されているクライアント コンピューターに更新プログラムを適用します。 更新プログラムの内容は、Microsoft Endpoint Configuration Manager によって展開が管理されているかのように、クライアント コンピューターのキャッシュから利用できます。
 
-1. [ソフトウェア更新プログラムの展開](/configmgr/sum/deploy-use/deploy-software-updates)に関するページで説明されているプロセスを使用して、Microsoft Endpoint Configuration Manager 階層の最上位サイトからソフトウェア更新プログラムの展開を作成します。 標準のデプロイとは異なる構成が必要な唯一の設定は、デプロイ パッケージのダウンロード動作を制御するための **[ソフトウェアの更新をインストールしない]** オプションです。 この動作は、次の手順でスケジュールされた更新プログラムのデプロイを作成することによって、Update Management によって管理されます。
+1. [ソフトウェア更新プログラムの展開](/configmgr/sum/deploy-use/deploy-software-updates)に関するページで説明されているプロセスを使用して、Microsoft Endpoint Configuration Manager 階層の最上位サイトからソフトウェア更新プログラムの展開を作成します。 標準の展開とは異なる方法で構成する必要のある設定は、Endpoint Configuration Manager の **[インストールの期限]** オプションのみです。 Automation Update Management によって更新プログラムの展開のみが開始されるようにするために、これは将来の日付に設定する必要があります。 この設定については、「[手順 4. ソフトウェア更新プログラム グループを展開する](/configmgr/sum/deploy-use/manually-deploy-software-updates#BKMK_4DeployUpdateGroup)」で説明されています。
 
-2. Azure Automation で **[Update Management]** を選択します。 [更新プログラムの展開の作成](deploy-updates.md#schedule-an-update-deployment)に関するページで説明されている手順に従って新しい展開を作成し、 **[種類]** ドロップダウンから **[インポートされたグループ]** を選択して適切な Microsoft Endpoint Configuration Manager コレクションを選択します。 以下の重要な点に注意してください。
+2. Endpoint Configuration Manager で、 **[ユーザー通知]** オプションを構成して、ターゲット マシンで通知が表示されないようにします。 **[すべての通知をソフトウェア センターで非表示にし、ユーザーにも通知しない]** オプションを設定し、ログオンしたユーザーが、スケジュールされた更新プログラムの展開の通知を受けないようにし、それらの更新プログラムを手動で展開できないようにすることをお勧めします。 この設定については、「[手順 4. ソフトウェア更新プログラム グループを展開する](/configmgr/sum/deploy-use/manually-deploy-software-updates#BKMK_4DeployUpdateGroup)」で説明されています。
+
+3. Azure Automation で **[Update Management]** を選択します。 [更新プログラムの展開の作成](deploy-updates.md#schedule-an-update-deployment)に関するページで説明されている手順に従って新しい展開を作成し、 **[種類]** ドロップダウンから **[インポートされたグループ]** を選択して適切な Microsoft Endpoint Configuration Manager コレクションを選択します。 以下の重要な点に注意してください。
 
     a. 選択した Microsoft Endpoint Configuration Manager デバイス コレクションにメンテナンス期間が定義されている場合、コレクションのメンバーは、スケジュールされた展開で定義されている **[期間]** 設定ではなくこれを使用します。
 

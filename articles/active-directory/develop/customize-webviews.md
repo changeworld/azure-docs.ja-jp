@@ -13,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 5c10490437fb12b3f1bf5cc105a3a6e8fcf00430
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a4523634daee427fb86ef288ab68cdc158cfeb0f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419096"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039965"
 ---
-# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>方法:iOS/macOS のブラウザーと WebView のカスタマイズ
+# <a name="customize-browsers-and-webviews-for-iosmacos"></a>iOS/macOS のブラウザーと WebView のカスタマイズ
 
 対話型の認証には Web ブラウザーが必要です。 iOS および macOS 10.15 以降の場合、Microsoft Authentication Library (MSAL) ではシステムの Web ブラウザー (アプリの上部に表示される場合があります) を既定で使用することで、ユーザーのサインインのための対話型認証が行われます。 システム ブラウザーを使用すると、シングル サインオン (SSO) の状態を他のアプリケーションや Web アプリケーションと共有できるという利点があります。
 

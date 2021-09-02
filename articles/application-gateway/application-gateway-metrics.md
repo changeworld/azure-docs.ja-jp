@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/19/2021
 ms.author: azhussai
-ms.openlocfilehash: 615db7e8d53e397755ae318d171dab1eab9ec6c6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 2e448f907e129f628c4614c9df703bf2c39ea47a
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727810"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665099"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
@@ -52,7 +52,7 @@ Application Gateway には、要求と応答に関連するいくつかのタイ
 
   要求の受信、処理、および応答の送信にかかった平均時間。 
 
-  これは、Application Gateway が HTTP 要求の最初のバイトを受信してから、最後の応答バイトがクライアントに送信されるまでの間隔です。 これには、Application Gateway によって行われた処理時間、*バックエンド最終バイト応答時間*、Application Gateway がすべての応答と *クライアント RTT* を送信するのにかかった時間が含まれます。
+  これは、Application Gateway が HTTP 要求の最初のバイトを受信してから、最後の応答バイトがクライアントに送信されるまでの間隔です。 これには、Application Gateway による処理時間、*バックエンド最終バイト応答時間*、Application Gateway がすべての応答を送信するのにかかった時間が含まれます。
 
 - **クライアント RTT**
 

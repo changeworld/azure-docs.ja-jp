@@ -227,8 +227,8 @@
           items:
             - name: AD FS 2.0 を使用する
               href: howto-mfaserver-adfs-2.md
-            - name: Windows Server 2012 R2 AD FS を使用する
-              href: howto-mfaserver-adfs-2012.md
+            - name: Windows Server の AD FS を使用する
+              href: howto-mfaserver-adfs-windows-server.md
         - name: RADIUS 統合
           items:
             - name: リモート デスクトップ ゲートウェイ
