@@ -6,16 +6,16 @@ keywords: データ サイエンス ツール,データ サイエンス仮想マ
 services: machine-learning
 ms.service: data-science-vm
 ms.custom: devx-track-python
-author: timoklimmer
-ms.author: tklimmer
+author: michalmar
+ms.author: mimarusa
 ms.topic: conceptual
-ms.date: 05/12/2021
-ms.openlocfilehash: 3272c2584d03c6f13d2ffb85eb0b37bf3c29000a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/27/2021
+ms.openlocfilehash: a757151d17456c7ee9646bc0730a51f34088b255
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081624"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729191"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Data Science VM 用のディープ ラーニングと AI のフレームワーク
 以下の一覧では、DSVM でのディープ ラーニング フレームワークを示します。
@@ -53,16 +53,16 @@ ms.locfileid: "110081624"
 
 | カテゴリ | 値 |
 |--|--|
-| サポートされるバージョン | 1.8.1 (Ubuntu 18.04、Windows 2019) |
+| サポートされるバージョン | 1.9.0 (Ubuntu 18.04、Windows 2019) |
 | サポートされている DSVM エディション | Windows Server 2019<br>Ubuntu 18.04 |
-| DSVM での構成/インストール方法 | Python、conda 環境 'py38_pytorch' にインストールされます |
+| DSVM での構成/インストール方法 | Python の conda 環境 "py38_default"、"py38_pytorch" にインストールされます |
 | 実行方法 | ターミナル: 適切な環境をアクティブ化した後、Python を実行します。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): 接続した後、サンプル用の PyTorch ディレクトリを開きます。 |
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 | カテゴリ | 値 |
 |--|--|
-| サポートされるバージョン | 2.4 |
+| サポートされるバージョン | 2.5 |
 | サポートされている DSVM エディション | Windows Server 2019<br>Ubuntu 18.04 |
-| DSVM での構成/インストール方法 | Python、conda 環境 'py38_tensorflow' にインストールされます |
+| DSVM での構成/インストール方法 | Python の conda 環境 "py38_default"、"py38_tensorflow" にインストールされます |
 | 実行方法 | ターミナル: 適切な環境をアクティブ化した後、Python を実行します。 <br/> * Jupyter: [Jupyter](provision-vm.md) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) に接続し、サンプル用の TensorFlow ディレクトリを開きます。 |

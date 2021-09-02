@@ -3,16 +3,16 @@ title: Azure Event Hubs に接続する
 description: イベント ハブに接続し、Azure Logic Apps のワークフローにトリガーまたはアクションを追加します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
-ms.date: 05/03/2021
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 07/16/2021
 tags: connectors
-ms.openlocfilehash: 7f82debf0cc09d032b00de8197cf873c01801353
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 079d131cac55c6d7a54547a3720546ab6422f7d5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755587"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473078"
 ---
 # <a name="connect-to-an-event-hub-from-workflows-in-azure-logic-apps"></a>Azure Logic Apps のワークフローからイベント ハブに接続する
 
@@ -135,10 +135,12 @@ Azure Logic Apps では、すべてのワークフローは、必ず[トリガ�
 
 ## <a name="trigger-polling-behavior"></a>ポーリングの動作をトリガーする
 
-Event Hubs トリガーはすべて "*長いポーリング*" のトリガーです。つまり、このトリガーですべてのイベントが処理され、パーティションごとに 30 秒待機すると、イベント ハブに新しいイベントが表示されます。 
+Event Hubs トリガーはすべて、長いポーリングのトリガーです。 この動作は、トリガーが起動されると、そのトリガーはすべてのイベントを処理し、イベント ハブに追加のイベントが表示されるまで 30 秒待つことを示します。 設計上、30 秒以内にイベントが表示されない場合、そのトリガーはスキップされます。 そうでない場合、トリガーはご自身のイベント ハブが空になるまでイベントの読み取りを続けます。 次のトリガーのポーリングは、トリガーのプロパティで設定する繰り返し間隔に基づいて実行されます。
 
 たとえば、4 つのパーティションでトリガーを設定している場合、トリガーがすべてのパーティションのポーリングを完了するまで、この遅延で最大 2 分とられます。 この遅延内でイベントを受信しなかった場合、トリガーの実行はスキップされます。 そうでない場合、トリガーはご自身のイベント ハブが空になるまでイベントの読み取りを続けます。 次のトリガーのポーリングは、トリガーのプロパティで指定する繰り返し間隔に基づいて発生します。
 
+メッセージが表示される特定のパーティションがわかっている場合は、トリガーの最大と最小のパーティション キーを設定することによって、これらのパーティションからのみイベントを読み取るようにトリガーを更新できます。 詳細については、「[Event Hubs トリガーを追加する](#add-trigger)」のセクションを確認してください。
+     
 ## <a name="trigger-checkpoint-behavior"></a>チェックポイントの動作をトリガーする
 
 Event Hubs トリガーがイベント ハブ内の各パーティションからイベントを読み取るときに、トリガーは独自の状態を使用して、ストリーム オフセット (パーティション内のイベント位置) と、トリガーによりイベントが読み取られるパーティションに関する情報を保持します。

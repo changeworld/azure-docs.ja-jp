@@ -7,13 +7,12 @@ ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: bcda4ca252101ed1505f71a1b5f9fe9a0d8d16b9
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 46b8cdc7fa33c8ddd382decb49eaa148093c99fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728394"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742261"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 
@@ -52,7 +51,8 @@ IoT Central により、IoT Edge デバイスで次の機能を使用できる�
   - 各モジュールが応答するコマンド。
   - IoT Edge ゲートウェイ デバイスとダウンストリーム デバイス間の関係。
   - IoT Edge デバイスに格納されていないクラウド プロパティ。
-  - カスタマイズ、ダッシュボード、およびフォーム: ご利用の IoT Central アプリケーションの一部を成します。
+  - UI でのデバイス機能の表示方法を変更するカスタマイズ。
+  - デバイスのビューとフォーム。
 
   詳細については、記事「[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する](./concepts-iot-edge.md)」を参照してください。
 
@@ -69,6 +69,9 @@ IoT Central は、IoT Edge デバイスの種類を次のように分類しま�
 - ダウンストリーム デバイスがあるゲートウェイ デバイス。 ゲートウェイ デバイスとダウンストリーム デバイスは、どちらも IoT Central にプロビジョニングされます
 
 ![IoT Central と IoT Edge の概要](./media/concepts-architecture/gatewayedge.png)
+
+> [!NOTE]
+> 現在 IoT Central では、IoT Edge デバイスをダウンストリーム デバイスとして、IoT Edge ゲートウェイに接続することはできません。 これは、IoT Central に接続するすべてのデバイスが、Device Provisioning Service (DPS) を使用してプロビジョニングされるためです。DPS では、入れ子になった IoT Edge シナリオはサポートされていません。
 
 ### <a name="iot-edge-patterns"></a>IoT Edge のパターン
 
@@ -121,7 +124,7 @@ Azure IoT Central アプリケーションでは、独自の Azure Event Hubs �
 
 ## <a name="batch-device-updates"></a>デバイスの一括更新
 
-Azure IoT Central アプリケーションでは、接続されたデバイスを管理するための[ジョブを作成して実行](howto-run-a-job.md)できます。 これらのジョブを使用すると、デバイスのプロパティや設定を一括更新したり、コマンドを実行したりできます。 たとえば、複数の冷蔵自動販売機のファン速度を上げるジョブを作成できます。
+Azure IoT Central アプリケーションでは、接続されたデバイスを管理するための[ジョブを作成して実行](howto-manage-devices-in-bulk.md)できます。 これらのジョブを使用すると、デバイスのプロパティや設定を一括更新したり、コマンドを実行したりできます。 たとえば、複数の冷蔵自動販売機のファン速度を上げるジョブを作成できます。
 
 ## <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 

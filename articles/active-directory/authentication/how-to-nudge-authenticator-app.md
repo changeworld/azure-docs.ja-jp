@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: mjsantani
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d8599554918af41ead7c862ee2c84f2afd4b18a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: c83c4c60028c77033227411d68aeb576a9b43a46
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786241"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707865"
 ---
 # <a name="how-to-nudge-users-to-set-up-microsoft-authenticator-preview---microsoft-authenticator-app"></a>Microsoft Authenticator をセットアップをするようにユーザーにナッジする方法 (プレビュー) - Microsoft Authenticator アプリ
 
@@ -70,7 +70,7 @@ ms.locfileid: "110786241"
 
 ## <a name="enable-the-nudge-policy"></a>ナッジのポリシーを有効する
 
-ナッジを有効にするには、Graph API または PowerShell コマンドを使用して、認証方法ポリシーを使用する必要があります。 **グローバル管理者** と **認証方法ポリシー管理者** は、ポリシーを更新できます。 
+ナッジを有効にするには、Graph API を使用して、認証方法ポリシーを使用する必要があります。 **グローバル管理者** と **認証方法ポリシー管理者** は、ポリシーを更新できます。 
 
 Graph エクスプローラーを使用してポリシーを構成するには、次の手順を実行します。
 

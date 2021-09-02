@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mbullwin
-ms.openlocfilehash: 3979bb82bfa055cc2a134bf3119097c452ffb855
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec057d625342c2e80478b0555395f6bc5250ee6b
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94364124"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296777"
 ---
-# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Anomaly Detector コンテナーを Azure Container Instances にデプロイする
+# <a name="deploy-an-anomaly-detector-univariate-container-to-azure-container-instances"></a>Anomaly Detector 一変量コンテナーを Azure Container Instances にデプロイする
 
 Cognitive Services [Anomaly Detector](../anomaly-detector-container-howto.md) コンテナーを Azure [Container Instances](../../../container-instances/index.yml) にデプロイする方法について説明します。 この手順では、Anomaly Detector リソースの作成方法を実演します。 次に、関連するコンテナー イメージをプルする方法について説明します。 最後に、ブラウザーからこの 2 つのオーケストレーションを行う機能を取り上げます。 コンテナーを使用することで、開発者の関心をインフラストラクチャの管理から切り離し、アプリケーション開発に専念させることができます。
 

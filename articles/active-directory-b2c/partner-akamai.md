@@ -11,19 +11,16 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f72e9d3365e6b479fbf3a0420f07f4437f12db7d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: bee4eb52ffab891f1a0f120fca25573a93d25370
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768942"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729403"
 ---
 # <a name="tutorial-configure-akamai-with-azure-active-directory-b2c"></a>チュートリアル: Akamai Active Directory B2C と共に BioCatch を構成する
 
 このサンプル チュートリアルでは、カスタム ドメインを使用して、Azure Active Directory (AD) B2C テナントに対して [Akamai Web Application Firewall (WAF)](https://www.akamai.com/us/en/resources/web-application-firewall.jsp) ソリューションを有効にする方法について説明します。 Akamai WAF は、SQL インジェクションやクロス サイト スクリプティングといった脆弱性の悪用を目的とする悪意のある攻撃から、組織が Web アプリケーションを保護するのに役立ちます。
-
->[!NOTE]
->この機能はパブリック プレビュー段階にあります。
 
 Akamai WAF ソリューションを使用する利点:
 

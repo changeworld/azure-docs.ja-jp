@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62a1894fe63bcf24e19671a146cd16bb6fe59b0b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97508103"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "122652114"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 **Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 **handler** 属性には、プロトコル ハンドラー アセンブリ `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` の完全修飾名が含まれている必要があります。
 
-次の [カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack) Azure AD 技術プロファイルには、**AAD-Common** 技術プロファイルが含まれています。 Azure AD 技術プロファイルではプロトコルが指定されていません。これは、プロトコルが **AAD-Common** 技術プロファイルで構成されているためです。
+次の [カスタム ポリシー スターター パック](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) Azure AD 技術プロファイルには、**AAD-Common** 技術プロファイルが含まれています。 Azure AD 技術プロファイルではプロトコルが指定されていません。これは、プロトコルが **AAD-Common** 技術プロファイルで構成されているためです。
  
 - **AAD-UserReadUsingAlternativeSecurityId** および **AAD-UserReadUsingAlternativeSecurityId-NoError** - ディレクトリ内のソーシャル アカウントを検索します。
 - **AAD-UserWriteUsingAlternativeSecurityId** - 新しいソーシャル アカウントを作成します。

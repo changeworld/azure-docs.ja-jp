@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 05/06/2021
-ms.openlocfilehash: 450f4f8d93261412db4963579f8b8525c2028f46
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0d5fb976bfeb496e6c69e7df401ed0a756985475
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482968"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113295886"
 ---
 # <a name="log-analytics-workspace-insights-preview"></a>Log Analytics Workspace Insights (プレビュー)
 
@@ -108,7 +108,7 @@ Log Analytics Workspace Insights にアクセスする方法
 
 ### <a name="health-tab"></a>[正常性] タブ
 
-このタブでは、ワークスペースの正常性状態、それを最後に報告した時刻、操作エラーと警告 (_LogOperation テーブルから取得) を確認できます。
+このタブには、ワークスペースの正常性状態、それを最後に報告した時刻、操作[エラーと警告](../logs/monitor-workspace.md) (_LogOperation テーブルから取得) が表示されます。 [ここ](../logs/monitor-workspace.md#categories)で一覧表示された問題と軽減手順に関する詳細を参照できます。
 
 :::image type="content" source="media/log-analytics-workspace-insights-overview/workspace-health.png" alt-text="ワークスペースの [正常性] タブのスクリーンショット" lightbox="media/log-analytics-workspace-insights-overview/workspace-health.png":::
 
@@ -118,7 +118,7 @@ Log Analytics Workspace Insights にアクセスする方法
 :::image type="content" source="media/log-analytics-workspace-insights-overview/workspace-agents.png" alt-text="ワークスペースの [エージェント] タブのスクリーンショット" lightbox="media/log-analytics-workspace-insights-overview/workspace-agents.png":::
 
 * 操作エラーと警告 - 特にエージェントに関連するエラーと警告です。 エラーと警告はタイトルごとにまとめられ、起こり得るさまざまな問題が見やすくなっていますが、正確な時刻とリソースを表示するよう展開することもできます。 また、“Logs でクエリを実行する” をクリックすると、Logs で _LogOperation テーブルに対するクエリを実行し、生データの確認やさらなる分析を行うことができます。
-* ワークスペース エージェント - 指定期間中にワークスペースへログを送信したエージェントです。 エージェントの種類 (Direct、Gateway、SCOM、SCOM 管理サーバー) と正常性状態を確認できます。 “正常” と表記されているエージェントは、うまく機能しているとは限りません。これは単に、直近の 1 時間にハートビートを送信したことを表しています。 正常性状態の詳細は下部のグリッドに表示されます。
+* ワークスペース エージェント - 指定期間中にワークスペースへログを送信したエージェントです。 エージェントの種類と正常性状態を確認できます。 “正常” と表記されているエージェントは、うまく機能しているとは限りません。これは単に、直近の 1 時間にハートビートを送信したことを表しています。 正常性状態の詳細は下部のグリッドに表示されます。
 * エージェントの活動 - このグリッドには、すべてのエージェントの正常/異常の情報が表示されます。 ここでも、“正常” の表記は単に、直近の 1 時間にエージェントからハートビートが送信されたことを表しています。 詳しい状態を把握するには、グリッドに表示されるトレンドを確認します。このエージェントのハートビート送信数の推移が表示されています。 実際の正常性状態は、例えば、監視しているリソースの振る舞いを把握することではじめて推定できます。例として、コンピューターを特定の時刻に意図的にシャットダウンする場合、それに合わせて、エージェントのハートビートが断続的に止まっているように見えます。
 
 

@@ -3,23 +3,23 @@ title: シナリオ:仮想ネットワークとブランチのカスタム分離
 titleSuffix: Azure Virtual WAN
 description: 一部の VNet およびブランチが相互に到達できないようにするための、Virtual WAN ルーティング シナリオについて説明します。
 services: virtual-wan
-author: wellee
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 04/27/2021
-ms.author: wellee
-ms.openlocfilehash: c5c85d2d24a6e1c49dd2787eeb14caabd0e3f941
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.author: cherylmc
+ms.openlocfilehash: 49e6a65bf14b3d7678a996685efde1b1a2c0a9d3
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579244"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719690"
 ---
 # <a name="scenario-custom-isolation-for-virtual-networks-and-branches"></a>シナリオ:仮想ネットワークとブランチのカスタム分離
 
 Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 仮想ネットワーク (VNet) とブランチの両方のカスタム分離シナリオでは、VNet の特定のセットが別のセットの VNet に到達するのを防ぐことが目標です。 同様に、ブランチ (VPN、ER、またはユーザー VPN) は、特定の VNet のセットへの接続のみが許可されるようにします。
 
-また、Azure Firewall がブランチから VNet への接続とブランチから VNet へのトラフィックを検査する必要があり、VNet 間のトラフィックを検査 **しない** 追加要件も説明します。  
+また、Azure Firewall でブランチから VNet へのトラフィックと VNet からブランチへのトラフィックを検査するが、VNet 間のトラフィックを検査 **しない** 必要があるという追加要件についても説明します。  
 
 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 

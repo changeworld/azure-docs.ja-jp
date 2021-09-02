@@ -2,7 +2,7 @@
 title:Media Services v3 を使用してアップロード、エンコード、ストリーム配信する:Azure Media Services の説明:Azure Media Services v3 を使用してファイルをアップロードし、ビデオをエンコードし、コンテンツをストリーム配信する方法を示すチュートリアルです。
 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
 
-ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 05/25/2021 ms.author: inhenkel
+ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 07/23/2021 ms.author: inhenkel
 ---
 
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>チュートリアル:Media Services v3 を使用してビデオをアップロード、エンコード、ストリーム配信する
@@ -29,11 +29,12 @@ Azure Media Services を使うと、さまざまなブラウザーやデバイ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Visual Studio がインストールされていない場合は、[Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) を入手できます。
-- [Media Services アカウントを作成する](./account-create-how-to.md)<br/>Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
-- 「[Azure CLI で Azure Media Services API にアクセスする](./access-api-howto.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
+- [Visual Studio Code for Windows/macOS/Linux](https://code.visualstudio.com/)、または [Visual Studio 2019 for Windows/Mac](https://visualstudio.microsoft.com/) をインストールします。
+- [.NET 5.0 SDK](https://dotnet.microsoft.com/download) をインストールします。
+- [Media Services アカウントを作成する](./account-create-how-to.md) **API アクセス** の詳細情報 (JSON 形式) をコピーするか、Media Services アカウントに接続するうえで必要な値をこのサンプルで使用する *.env* ファイルの書式に保存しておくようにしてください。
+- [Azure CLI を使用した Azure Media Services API へのアクセス](./access-api-howto.md)に関するページの手順に従い、資格情報を保存します。 これらは、このサンプルで API にアクセスする際や、 *.env* ファイルの書式に入力する際に必要になります。
 
-## <a name="download-and-set-up-the-sample"></a>サンプルをダウンロードして設定する
+## <a name="download-and-configure-the-sample"></a>サンプルをダウンロードして構成する
 
 次のコマンドを使って、ストリーム配信の .NET サンプルが含まれる GitHub リポジトリを、お使いのコンピューターに複製します。  
 
@@ -43,7 +44,7 @@ Azure Media Services を使うと、さまざまなブラウザーやデバイ�
 
 サンプルは、[UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/UploadEncodeAndStreamFiles) フォルダーにあります。
 
-ダウンロードしたプロジェクトに含まれる [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json) を開きます。 [API へのアクセス](./access-api-howto.md)に関するページで取得した資格情報の値に置き換えます。
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>アップロード、エンコード、およびストリーム出力するコードを調べる
 

@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 04/04/2021
+ms.date: 8/20/2021
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9f95fd456a042d41fff94f5520802be1be5f38f3
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 117b2cee63e8defb53e21cf05c76c344006ddae3
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278382"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829323"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI を使用して IoT Hub のメッセージ ルーティングを構成する
 

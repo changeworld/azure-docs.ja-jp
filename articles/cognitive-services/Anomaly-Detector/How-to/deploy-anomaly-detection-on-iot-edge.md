@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fd02fbdd8f6c02ce86a4e0c1ee3eabec69e56c3
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98936266"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296723"
 ---
-# <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>Anomaly Detector モジュールを IoT Edge にデプロイします
+# <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>Anomaly Detector 一変量モジュールを IoT Edge にデプロイする
 
 Cognitive Services [Anomaly Detector](../anomaly-detector-container-howto.md) モジュールを IoT Edge デバイスにデプロイする方法について説明します。 IoT Edge にデプロイされると、このモジュールは、他のモジュールと共にコンテナー インスタンスとして IoT Edge 内で実行されます。 これにより、標準の Docker コンテナー環境で実行されている Anomaly Detector コンテナー インスタンスとまったく同じ API が公開されます。 
 

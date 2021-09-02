@@ -2,17 +2,17 @@
 title: ディスク メトリック
 description: ディスク バースト メトリックの例
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 07/19/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 60486c41ad843cf193ee0648dfcfef66f7668e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d0330996629ec087022e592cc862a428bc02807
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674988"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454581"
 ---
 # <a name="disk-performance-metrics"></a>ディスク パフォーマンス メトリック
 Azure では、仮想マシン (VM) とディスクの動作についての分析情報を提供するメトリックが Azure portal で提供されています。 メトリックは、API 呼び出しを使用して取得することもできます。 この記事は、次の 3 つのサブセクションに分割されています。
@@ -58,7 +58,9 @@ Azure では、仮想マシン (VM) とディスクの動作についての分�
 - **OS ディスクの使用済みバースト IO クレジットの割合**: OS ディスクで使用された IOPS バーストの累積割合。 5 分間隔で出力されます。
 
 ## <a name="storage-io-utilization-metrics"></a>ストレージ IO 使用率メトリック
-次のメトリックは、お使いの仮想マシンとディスクの組み合わせのボトルネックを診断するのに役立ちます。 これらのメトリックは、Premium が有効な VM を使用している場合にのみ使用できます。 これらのメトリックは、Ultra 以外のすべての種類のディスクで使用できます。 
+次のメトリックは、お使いの仮想マシンとディスクの組み合わせのボトルネックを診断するのに役立ちます。 これらのメトリックは、次の構成でのみ使用できます。
+- Premium ストレージをサポートする VM シリーズ上でのみ使用できます。
+- Ultra ディスクには使用できません。これらの VM シリーズ上の他のディスクの種類には、いずれもこれらのメトリックを使用できます。
 
 ディスク IO の上限の診断に役立つメトリック:
 

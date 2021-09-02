@@ -8,12 +8,12 @@ ms.date: 04/09/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: a15a94694f3c0623830650a8b5bbb00dc4c4cb6b
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 8d2198c4c2c2dd100d7bbf88eebc4e521d6ace04
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285515"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747780"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure のリージョンと Availability Zones
 
@@ -38,7 +38,7 @@ Microsoft Azure サービスは、クラウド運用を最適なレベルで推�
 
 ## <a name="regions"></a>リージョン
 
-リージョンは、待ち時間で定義された境界内でデプロイされ、待ち時間の短い専用リージョン ネットワークを介して接続された一連のデータセンターです。 Azure では、複数のリージョンにわたってデプロイしてリージョンをまたがる回復性を提供するなど、必要な場所にアプリケーションをデプロイできる柔軟性があります。 詳細については、「[回復性の柱の概要](/azure/architecture/framework/resiliency/overview)」を参照してください。
+リージョンは、待ち時間で定義された境界内でデプロイされ、待ち時間の短い専用リージョン ネットワークを介して接続された一連のデータセンターです。 Azure では、複数のリージョンにわたってデプロイしてリージョンをまたがる回復性を提供するなど、必要な場所にアプリケーションをデプロイできる柔軟性があります。 詳細については、「[回復性の柱の概要](/azure/architecture/framework/resiliency/principles)」を参照してください。
 
 ## <a name="availability-zones"></a>可用性ゾーン
 
@@ -50,6 +50,9 @@ Azure リージョン内の可用性ゾーンは、障害ドメインと更新�
 
 - **ゾーン サービス** – 特定のゾーン (たとえば、仮想マシン、マネージド ディスク、標準の IP アドレス) にリソースがピンされます。
 - **ゾーン冗長サービス** – Azure プラットフォームが複数のゾーンにわたって自動的にレプリケートされる場合 (ゾーン冗長ストレージ、SQL Database など) はこちらです。
+
+> [!NOTE]
+> Standard SKU パブリック IP アドレスとパブリック IP アドレス プレフィックスの両方のリソースの種類には、"ゾーンなし" オプションもあります。  これにより、お客様は Standard SKU のパブリック IP を利用し、Standard SKU のみが許可されるリソースに関連付けることができますが、冗長性は保証されません。  (Basic から Standard SKU に[アップグレード](https://docs.microsoft.com/azure/virtual-network/public-ip-upgrade-portal)されるすべてのパブリック IP アドレスは、"ゾーンなし" の種類になります)。
 
 Azure での包括的なビジネス継続性を実現するには、Availability Zones と Azure リージョンの組み合わせを使用してアプリケーション アーキテクチャを構築します。 1 つの Azure リージョン内で Availability Zones を使用してアプリケーションとデータを同期的にレプリケートして高可用性を実現し、複数の Azure リージョン全体で非同期的にレプリケートしてディザスター リカバリー保護を実現できます。
  

@@ -1,16 +1,19 @@
 ---
 title: 用語 - Personalizer
 description: Personalizer では、強化学習の用語を使用します。 これらの用語は、Azure portal と API で使用されます。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: cd0d85be5447aad0f2a3c37041e7d5d5d047a468
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdd26d167a94826be4330f878df01cde43e853cb
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91777294"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829921"
 ---
 # <a name="personalizer-terminology"></a>Personalizer の用語
 

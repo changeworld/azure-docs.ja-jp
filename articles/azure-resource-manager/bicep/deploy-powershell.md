@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 27d00d137c2fb178b2bd96732664c08965ce3073
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 2b5540d3b45b77cd39e014605780b98b867498fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634496"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744904"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>Bicep と Azure PowerShell を使用してリソースをデプロイする
 
@@ -75,7 +75,7 @@ PowerShell がインストールされていない場合は、Azure Cloud Shell 
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-ローカルの Bicep ファイルをデプロイするには、デプロイ コマンドで `-TemplateFile` パラメーターを使用します。
+ローカルの Bicep ファイルをデプロイするには、デプロイ コマンドで `-TemplateFile` パラメーターを使用します。 
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -157,7 +157,7 @@ Bicep ファイルをデプロイする前に、Bicep ファイルが環境に�
 
 ## <a name="deploy-template-specs"></a>テンプレート スペックをデプロイする
 
-現在、Azure PowerShell では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。こちらに[例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep)があります。 また、Bicep CLI を使用して Bicep ファイルを ARM テンプレート JSON に組み込み、JSON テンプレートを使用してテンプレート スペックを作成することもできます。
+現在、Azure PowerShell では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。こちらに[例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)があります。 また、Bicep CLI を使用して Bicep ファイルを ARM テンプレート JSON に組み込み、JSON テンプレートを使用してテンプレート スペックを作成することもできます。
 
 ## <a name="deployment-name"></a>デプロイ名
 

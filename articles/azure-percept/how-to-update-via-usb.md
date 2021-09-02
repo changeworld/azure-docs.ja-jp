@@ -1,23 +1,22 @@
 ---
-title: Azure Percept DK を USB-C 接続で更新する
+title: USB-C ケーブル接続で Azure Percept DK を更新する
 description: USB-C ケーブル接続で Azure Percept DK を更新する方法について説明します
-author: EthanChangAED
-ms.author: amiyouss
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: eef23597e6cb8f215fd7ce2374d66ff104cc00bc
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: e40a75f91ebf371d27b541b74ba427f42bc518f3
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226007"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652908"
 ---
-# <a name="update-azure-percept-dk-over-a-usb-c-connection"></a>Azure Percept DK を USB-C 接続で更新する
+# <a name="update-the-azure-percept-dk-over-a-usb-c-cable-connection"></a>USB-C ケーブル接続で Azure Percept DK を更新する
 
 このガイドでは、USB 接続を使用して開発キットのオペレーティング システムとファームウェアを正常に更新する方法について説明します。 この手順で行う操作の概要を次に示します。
-
 1. 更新プログラム パッケージをホスト コンピューターにダウンロードする
 1. 更新プログラム パッケージを開発キットに転送するコマンドを実行する
 1. SSH または DIP スイッチを使用して開発キットを USB モードに設定する
@@ -28,6 +27,7 @@ ms.locfileid: "123226007"
 > USB を使用して開発キットを更新すると、AI モデルとコンテナーを含む、デバイス上の既存のデータがすべて削除されます。
 >
 > すべての手順を順番に実行します。 手順をスキップすると、開発キットが使用できない状態になる可能性があります。
+
 
 ## <a name="prerequisites"></a>前提条件
 

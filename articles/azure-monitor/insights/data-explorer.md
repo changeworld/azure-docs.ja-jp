@@ -1,24 +1,24 @@
 ---
-title: Azure Data Explorer Insights (ADX Insights プレビュー)| Microsoft Docs
+title: Azure Data Explorer Insights (ADX Insights)| Microsoft Docs
 description: この記事では、Azure Data Explorer Insights (ADX Insights) について説明します
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 274d907c4fd8d09e444b938447365a4df64af3e4
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 872c1e29b6c85f24c4e9841dca359a9429b92321
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061634"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458120"
 ---
-# <a name="azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (プレビュー)
+# <a name="azure-data-explorer-insights"></a>Azure Data Explorer Insights
 
-Azure Data Explorer Insights (プレビュー) は、クラスターのパフォーマンス、操作、使用状況、エラーの統合ビューを提供することで、クラスターを包括的に監視できるようにします。
-この記事は、Azure Monitor for Azure Data Explorer (プレビュー) をオンボードして使用する方法を理解するうえで役立ちます。
+Azure Data Explorer Insights は、クラスターのパフォーマンス、操作、使用状況、障害の統合されたビューを提供することによって、クラスターの包括的な監視を可能にします。
+この記事は、Azure Data Explorer Insights をオンボードして使用する方法を理解するために役立ちます。
 
-## <a name="introduction-to-azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (プレビュー) の概要
+## <a name="introduction-to-azure-data-explorer-insights"></a>Azure Data Explorer Insights の概要
 
 エクスペリエンスについて見ていく前に、情報が提供および視覚化される方法を理解する必要があります。
 -    **大規模な分析観点**: クエリ、インジェスト、エクスポート操作のパフォーマンスを簡単に追跡できるように、クラスターの主要メトリックのスナップショット ビューを表示します。
@@ -33,7 +33,7 @@ Azure Monitor から、クラスターの主要なパフォーマンス メト�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. Azure portal の左側のペインで **[モニター]** を選択し、[Insights Hub] セクションで **[Azure Data Explorer クラスター (プレビュー)]** を選択します。
+2. Azure portal の左側のウィンドウから **[監視]** を選択し、[Insights Hub] セクションで **[Azure Data Explorer クラスター]** を選択します。
 
 ![複数のグラフを伴う概要エクスペリエンスのスクリーンショット](./media/data-explorer/insights-hub.png)
 
@@ -77,7 +77,7 @@ Azure Data Explorer クラスターから Azure Data Explorer Insights に直接
 
 1. Azure portal で、 **[Azure Data Explorer クラスター]** を選択します。
 
-2. 一覧から、Azure Data Explorer クラスターを選択します。 [監視] セクションで **[分析情報 (プレビュー)]** を選択します。
+2. 一覧から、Azure Data Explorer クラスターを選択します。 監視セクションで、 **[分析情報]** を選択します。
 
 これらのビューには、Azure Monitor 分析情報ビュー内から Azure Data Explorer クラスターのリソース名を選択してアクセスすることもできます。
 
@@ -114,7 +114,7 @@ Azure Data Explorer Insights では、ログとメトリックを組み合わせ
 
 **[テーブル]** タブには、クラスター内のテーブルの最新および過去のプロパティが表示されます。 最も多くの領域を消費しているテーブルを確認し、増加の過程を、テーブル サイズ、ホット データ、行数で経時的に追跡できます。
 
-**[キャッシュ]** タブでは、実際のクエリのルックバック ウィンドウ パターンを分析し、構成済みのキャッシュ ポリシーと比較できます (テーブルごと)。 最も多くのクエリで使用されているテーブルと、まったく照会されていないテーブルを特定し、キャッシュ ポリシーを適宜調整できます。 特定のテーブルについて、キャッシュ ポリシーの特定の推奨事項を Azure Advisor で取得できます (現時点では、キャッシュに関する推奨事項は、[Azure Advisor メイン ダッシュボード](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) からのみ利用できます)。推奨事項は、過去 30 日間の実際のクエリのルックバック ウィンドウと、少なくとも 95% のクエリに対して最適化されていないキャッシュ ポリシーに基づいています。 Azure Advisor のキャッシュ削減の推奨事項は、"データの制限がある" クラスター (つまり、CPU 使用率とインジェスト使用率が低いにもかかわらず、データ容量が大きいために、スケールインまたはスケールダウンできなかったクラスター) で利用できます。
+**[キャッシュ]** タブでは、実際のクエリのルックバック ウィンドウ パターンを分析し、構成済みのキャッシュ ポリシーと比較できます (テーブルごと)。 最も多くのクエリで使用されているテーブルと、まったく照会されていないテーブルを特定し、キャッシュ ポリシーを適宜調整できます。 特定のテーブルについて、キャッシュ ポリシーの特定の推奨事項を Azure Advisor で取得できます (現時点では、キャッシュに関する推奨事項は、[Azure Advisor メイン ダッシュボード](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) からのみ利用できます)。推奨事項は、過去 30 日間の実際のクエリのルックバック ウィンドウと、少なくとも 95% のクエリに対して最適化されていないキャッシュ ポリシーに基づいています。 Azure Advisor のキャッシュ削減の推奨事項は、"データの制限がある" クラスター (つまり、CPU 使用率とインジェスト使用率が低いにもかかわらず、データ容量が大きいために、スケールインまたはスケールダウンできなかったクラスター) で利用できます。
 
 [![キャッシュの詳細のスクリーンショット](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -148,7 +148,7 @@ Azure Data Explorer Insights では、ログとメトリックを組み合わせ
 
 一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
 
-このセクションは、Azure Data Explorer Insights (プレビュー) を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
+このセクションは、Azure Data Explorer Insights を使用しているときに発生する可能性があるいくつかの一般的な問題の診断とトラブルシューティングに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>サブスクリプション ピッカーに自分のすべてのサブスクリプションが表示されないのはなぜですか。
 

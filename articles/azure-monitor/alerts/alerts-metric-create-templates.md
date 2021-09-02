@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 10/7/2020
+ms.date: 8/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7c0fa91b62696729cba1895f69ee1f36eb661f17
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a4c1d014e6b6c096df4e2dd943131ac6d1de7548
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111972015"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747712"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -95,7 +95,6 @@ Resource Manager テンプレートを使用してアラートを作成するに
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -1018,6 +1017,10 @@ az deployment group create \
     --parameters @multidimensionalstaticmetricalert.parameters.json
 ```
 
+> [!NOTE]
+>
+> ディメンション値として "All" を使用することは、"\*" (現在および将来のすべての値) を選択することと同じです。
+
 
 ## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>複数のディメンションを監視する動的しきい値メトリック アラートのテンプレート
 
@@ -1319,7 +1322,6 @@ Azure Monitor のカスタム メトリックの詳細については、「[Azur
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -1650,7 +1652,6 @@ az deployment group create \
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -2297,7 +2298,6 @@ az deployment group create \
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",
@@ -2939,7 +2939,6 @@ az deployment group create \
             "defaultValue": "GreaterThan",
             "allowedValues": [
                 "Equals",
-                "NotEquals",
                 "GreaterThan",
                 "GreaterThanOrEqual",
                 "LessThan",

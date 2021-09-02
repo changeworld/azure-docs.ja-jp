@@ -1,14 +1,14 @@
 ---
 title: Azure Backup Server V3 RTM でバックアップできる内容
 description: この記事では、Azure Backup Server V3 RTM によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示した保護のマトリックスを示します。
-ms.date: 11/13/2018
+ms.date: 07/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1ec8240844061b9b250a3cbf92ffcc5f2b3f474b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3dfae3e241a5dadd1d49d3d537b46308446d60b8
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986889"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720200"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM の保護マトリックス
 
@@ -38,11 +38,11 @@ ms.locfileid: "98986889"
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|サポートされていません|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 SP2|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Storage Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
-|SQL Server|SQL Server 2019|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3|すべてのデプロイ シナリオ: データベース|
-|SQL Server|SQL Server 2017|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3|すべてのデプロイ シナリオ: データベース|
-|SQL Server|SQL Server 2016 SP2|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
-|SQL Server|SQL Server 2016 SP1|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
-|SQL Server|SQL Server 2016|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
+|SQL Server|SQL Server 2019|物理サーバー <br /><br /> オンプレミス Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3|すべてのデプロイ シナリオ: データベース|
+|SQL Server|SQL Server 2017|物理サーバー <br /><br /> オンプレミス Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3|すべてのデプロイ シナリオ: データベース|
+|SQL Server|SQL Server 2016 SP2|物理サーバー <br /><br /> オンプレミス Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
+|SQL Server|SQL Server 2016 SP1|物理サーバー <br /><br /> オンプレミス Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
+|SQL Server|SQL Server 2016|物理サーバー <br /><br /> オンプレミス Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2014|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2014|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2012 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
@@ -63,12 +63,12 @@ ms.locfileid: "98986889"
 |Exchange|Exchange 2013|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース<br/><br/> ReFS 経由での Exchange のバックアップはサポートされていません |
 |Exchange|Exchange 2010|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース<br/><br/> ReFS 経由での Exchange のバックアップはサポートされていません |
 |Exchange|Exchange 2010|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース<br/><br/> ReFS 経由での Exchange のバックアップはサポートされていません |
-|SharePoint|SharePoint 2016|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /><br />Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /><br />VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、フロント エンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
+|SharePoint|SharePoint 2016|物理サーバー<br /><br />オンプレミス Hyper-V 仮想マシン<br /><br />Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /><br />VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、フロント エンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
 |SharePoint|SharePoint 2013|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、フロント エンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
 |SharePoint|SharePoint 2013|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) - <br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
 |SharePoint|SharePoint 2013|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
-|SharePoint|SharePoint 2010|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー|
-|SharePoint|SharePoint 2010|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー|
+|SharePoint|SharePoint 2010|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべての展開シナリオ):ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint Search、フロントエンド Web サーバー|
+|SharePoint|SharePoint 2010|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべての展開シナリオ):ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint Search、フロントエンド Web サーバー|
 |SharePoint|SharePoint 2010|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2019|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|V3|保護:Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2016|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|V3、V2|保護:Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
@@ -77,8 +77,8 @@ ms.locfileid: "98986889"
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2008 R2 SP1 - Enterprise および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|V3、V2|保護:Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の MABS 保護エージェント|Windows Server 2008 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|サポートされていません|保護:Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi ライセンス版 5.5/6.0/6.5 |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3、V2|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
-|VMware VM|[VMware vSphere ライセンス版 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
-|Linux|[Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) または [VMware](backup-azure-backup-server-vmware.md) のゲストとして実行されている Linux|物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3、V2|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護:仮想マシン全体<br /><br />回復: 仮想マシン全体 <br/><br/> ファイル整合性のあるスナップショットのみがサポートされます。 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
+|VMware VM|[VMware vSphere ライセンス バージョン 6.7 および 7.0](backup-azure-backup-server-vmware.md#vmware-vsphere-67-and-70) |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
+|Linux|[Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) または [VMware](backup-azure-backup-server-vmware.md) のゲストとして実行されている Linux|物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMware 内の Windows VM|V3、V2|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護:仮想マシン全体<br /><br />回復:仮想マシン全体 <br/><br/> ファイルの整合性があるスナップショットのみがサポートされます。 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
 

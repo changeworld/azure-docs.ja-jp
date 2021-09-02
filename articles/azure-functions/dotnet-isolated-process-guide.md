@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 06/01/2021
 ms.custom: template-concept
 recommendations: false
-ms.openlocfilehash: 5f8d78f7080c1505db4a82d9393801ad8418beed
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b427d0b4d94497039f5949115246b7920b0e0116
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751477"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829399"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure において関数を .NET 5.0 で実行するためのガイド
 
@@ -19,7 +19,7 @@ ms.locfileid: "121751477"
 
 | 作業の開始 | 概念| サンプル |
 |--|--|--| 
-| <ul><li>[Visual Studio Code の使用](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vscode)</li><li>[コマンド ライン ツールの使用](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-cli)</li><li>[Visual Studio の使用](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vs)</li></ul> | <ul><li>[ホスティング オプション](functions-scale.md)</li><li>[Monitoring](functions-monitoring.md)</li> | <ul><li>[リファレンスのサンプル](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
+| <ul><li>[Visual Studio Code の使用](create-first-function-vs-code-csharp.md?tabs=isolated-process)</li><li>[コマンド ライン ツールの使用](create-first-function-cli-csharp.md?tabs=isolated-process)</li><li>[Visual Studio の使用](functions-create-your-first-function-visual-studio.md?tabs=isolated-process)</li></ul> | <ul><li>[ホスティング オプション](functions-scale.md)</li><li>[Monitoring](functions-monitoring.md)</li> | <ul><li>[リファレンスのサンプル](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
 
 .NET 5.0 をサポートしたり関数をアウトプロセスで実行したりする必要がない場合は、代わりに [C# クラス ライブラリ関数を開発](functions-dotnet-class-library.md)することをお勧めします。
 

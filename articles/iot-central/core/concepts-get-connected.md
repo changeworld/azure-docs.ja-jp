@@ -7,17 +7,16 @@ ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: fb9c9f460b46f8dec741f4c22460cbe9d44c6a0e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: aebee9b2511e3616a9170d5ed84be3acf391b6ad
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071963"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -30,7 +29,7 @@ ms.locfileid: "110791113"
 IoT Central では、次の 2 つのデバイス登録シナリオがサポートされています。
 
 - *自動登録*。 デバイスは、初めて接続するときに自動的に登録されます。 このシナリオでは、事前登録なしで接続する手段も用意されており、そのようなデバイスを OEM は大量に製造することができます。 OEM が適切なデバイス資格情報を生成し、デバイスを工場で構成することになります。 必要に応じて、データの送信を開始する前にオペレーターによるデバイスの承認を必須とすることもできます。 このシナリオでは、アプリケーションで X.509 または SAS _グループ登録_ を構成する必要があります。
-- *手動登録*。 オペレーターは、 **[デバイス]** ページで個々のデバイスを登録するか、[CSV ファイルをインポート](howto-manage-devices.md#import-devices)してデバイスを一括登録します。 このシナリオでは、X.509 か SAS _グループ登録_、または X.509 か SAS _個別登録_ を使用できます。
+- *手動登録*。 オペレーターは、 **[デバイス]** ページで個々のデバイスを登録するか、[CSV ファイルをインポート](howto-manage-devices-in-bulk.md#import-devices)してデバイスを一括登録します。 このシナリオでは、X.509 か SAS _グループ登録_、または X.509 か SAS _個別登録_ を使用できます。
 
 IoT Central に接続するデバイスは、*IoT プラグ アンド プレイの規則* に従う必要があります。 この規則の 1 つは、デバイスが実装するデバイス モデルの _モデル ID_ を接続時に送信する必要があることです。 モデル ID により、IoT Central アプリケーションはデバイスを適切なデバイス テンプレートに関連付けることができます。
 
@@ -157,9 +156,9 @@ IoT Central アプリケーションは、デバイスから送られたモデ�
 
 ### <a name="bulk-register-devices-in-advance"></a>事前にデバイスを一括登録する
 
-IoT Central アプリケーションに大量のデバイスを登録するには、CSV ファイルを使用して[デバイス ID とデバイス名をインポート](howto-manage-devices.md#import-devices)します。
+IoT Central アプリケーションに大量のデバイスを登録するには、CSV ファイルを使用して[デバイス ID とデバイス名をインポート](howto-manage-devices-in-bulk.md#import-devices)します。
 
-デバイスで認証に SAS トークンを使用している場合は、[IoT Central アプリケーションから CSV ファイルをエクスポート](howto-manage-devices.md#export-devices)します。 エクスポートされた CSV ファイルに、デバイス ID と SAS キーが含まれています。
+デバイスで認証に SAS トークンを使用している場合は、[IoT Central アプリケーションから CSV ファイルをエクスポート](howto-manage-devices-in-bulk.md#export-devices)します。 エクスポートされた CSV ファイルに、デバイス ID と SAS キーが含まれています。
 
 使用するデバイスが X.509 を使って認証を行う場合は、X.509 登録グループにアップロードしたルート証明書または中間証明書を使用して、デバイスの X.509 リーフ証明書を生成します。 インポートしたデバイス ID をリーフ証明書の `CNAME` 値として使用します。
 
@@ -180,7 +179,7 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 1. IoT Central アプリケーションでデバイス テンプレートが既に発行されている場合、デバイスはデバイス テンプレートに関連付けられます。
 1. デバイス テンプレートが IoT Central アプリケーション内でまだ公開されていない場合は、IoT Centralにおいて[パブリック モデル リポジトリ](https://github.com/Azure/iot-plugandplay-models)でデバイス モデルが検索されます。 モデルが見つかると、それを使用して基本のデバイス テンプレートが生成されます。
-1. パブリック モデル リポジトリでモデルが見つからない場合、デバイスは **関連付けなし** としてマークされます。 オペレーターは、デバイスのデバイス テンプレートを作成し、関連付けられていないデバイスを新しいデバイス テンプレートに移行できます。
+1. パブリック モデル リポジトリでモデルが見つからない場合、デバイスは **関連付けなし** としてマークされます。 オペレーターは、デバイスのデバイス テンプレートを作成してから、関連付けられていないデバイスを新しいデバイス テンプレートに移行するか、デバイスが送信するデータに基づいて[デバイス テンプレートを自動生成する](howto-set-up-template.md#autogenerate-a-device-template)ことができます。
 
 次のスクリーンショットは、IoT Central でデバイス テンプレートのモデル ID を表示する方法を示しています。 デバイス テンプレート内でコンポーネントを選択し、 **[ID の編集]** を選択します。
 
@@ -214,11 +213,14 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
     オペレーターは、 **[デバイス]** ページから **[移行]** ボタンを使用して、デバイス テンプレートにデバイスを関連付けることができます。
 
 ## <a name="device-connection-status"></a>デバイス接続の状態
-MQTT プロトコルを使用してデバイスやエッジ デバイスを接続すると、デバイスの "_接続済み_" および "_切断済み_" のイベントが表示されます。 これらのイベントは、デバイスの送信によって送信されるわけではなく、IoT Central で内部的に生成されます。
+
+MQTT プロトコルを使用してデバイスやエッジ デバイスを接続すると、デバイスの "_接続済み_" および "_切断済み_" のイベントが生成されます。 これらのイベントは、デバイスによって送信されるわけではなく、IoT Central で内部的に生成されます。
 
 次の図は、デバイスを接続したときに、接続がどのように時間枠の最後に登録されるかを示しています。 複数の接続および切断のイベントが発生した場合は、IoT Central によって時間枠の終わりに最も近いイベントが登録されます。 たとえば、デバイスが時間枠内で切断および再接続されると、IoT Central によって接続イベントが登録されます。 現在、この時間枠は約 1 分です。
 
 :::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="接続および切断されたイベントのイベント ウィンドウを示す図。" border="false":::
+
+接続されたイベントと切断されたイベントは、デバイスの **[生データ]** ビューで表示できます。:::image type="content" source="media/concepts-get-connected/device-connectivity-events.png" alt-text="デバイス接続イベントを表示するようにフィルターされた生データ ビューを示すスクリーンショット。":::
 
 接続および切断のイベントは、[IoT Central からのエクスポート](howto-export-data.md#set-up-data-export)に含めることができます。 詳細については、[IoT Hub のイベントへの対応に関する記事の、「デバイス接続イベントおよびデバイス切断イベントの制限事項」](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events)を参照してください。
 
@@ -248,7 +250,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | オフライン コマンド | クラウドからデバイスへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| コマンド | ダイレクト メソッド |
+| command | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 

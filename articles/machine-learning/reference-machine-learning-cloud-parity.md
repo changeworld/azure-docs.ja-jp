@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 08/24/2021
+ms.date: 07/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: eef2a1eb5f17864074ac346ac7a89a59d1d59778
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1c26761fe23fb1a7558100dea3cb74d7b078550d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037292"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749499"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Azure Machine Learning ソブリン クラウドの同等性
 
@@ -62,7 +62,7 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 | トレーニングのための Virtual Network (VNet) サポート                                | GA                   | YES                | YES         |
 | 推論のための Virtual Network (VNet) のサポート                               | GA                   | YES                | YES         |
 | エンドポイント認証のスコア付け                                            | パブリック プレビュー       | YES                | YES         |
-| ワークプレース プライベート エンドポイント                                                 | GA  |  GA  |  GA |
+| ワークプレース プライベート エンドポイント                                                 | GA  |  パブリック プレビュー  |  パブリック プレビュー |
 | VNet の背後にある ACI                                                            | パブリック プレビュー       | NO                 | NO          |
 | VNet の背後にある ACR                                                            | GA       | YES                 | YES          |
 | AKS クラスターのプライベート IP                                                  | パブリック プレビュー       | NO                 | NO          |

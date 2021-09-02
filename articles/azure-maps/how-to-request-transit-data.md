@@ -3,24 +3,23 @@ title: Microsoft Azure Maps Mobility Service (プレビュー) を使用して�
 description: Azure Maps Mobility Service (プレビュー) を使用して、都市圏 ID、輸送機関の停留所、ルート、ルートの移動プランなどの公共輸送機関のデータを要求する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 06/23/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 740080d742f535f868b2ae194b24bebe5ac6ac24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a3a2ea2843b9a21c67f886b49001ebaa17fc868
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96906031"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746626"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Azure Maps Mobility Service (プレビュー) を使用して公共輸送機関のデータを要求する 
 
 > [!IMPORTANT]
-> Azure Maps Mobility Service は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> Azure Maps Mobility Services のプレビューは廃止され、2021 年 10 月 5 日以降は使用できず、サポートも停止されます。 他のすべての Azure Maps API およびサービスは、この廃止の発表の影響を受けません。
+> 詳細については、[Azure Maps Mobility のプレビューの廃止](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/)に関するページを参照してください。
 
 
 この記事では、Azure Maps [Mobility Service](/rest/api/maps/mobility) を使用して公共輸送機関のデータを要求する方法について説明します。 輸送データには、停留所、ルート情報、および所要時間の見積もりが含まれます。
@@ -45,19 +44,15 @@ ms.locfileid: "96906031"
 
 それでは、シアトルとタコマの都市圏 ID を取得するための要求を行ってみましょう。 都市圏 ID を要求するには、次の手順を実行します。
 
-1. Postman アプリを起動してください。要求を保存するコレクションを作成しましょう。 Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。  コレクションに名前を付け、 **[作成]** ボタンを選択します。
-
-2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 前の手順で要求の保存場所として作成したコレクションを選択します。 次に、 **[保存]** を選択します。
+1. Postman アプリを開きます。 **[New]\(新規\)** を選択して、要求を作成します。 **[新規作成]** ウィンドウで **[HTTP 要求]** を選択します。 要求の **[要求名]** を入力します。
   
-    ![Postman での要求の作成](./media/how-to-request-transit-data/postman-new.png)
-
-3. [builder]\(ビルダー\) タブで **GET** HTTP メソッドを選択し、次の URL を入力して GET 要求を作成します。 `{subscription-key}` は実際の Azure Maps 主キーに置き換えてください。
+2. [builder]\(ビルダー\) タブで **GET** HTTP メソッドを選択し、次の URL を入力して GET 要求を作成します。 `{subscription-key}` は実際の Azure Maps 主キーに置き換えてください。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/metroArea/id/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126
     ```
 
-4. 要求に成功すると、次の応答が表示されます。
+3. 要求に成功すると、次の応答が表示されます。
 
     ```JSON
     {
@@ -120,7 +115,7 @@ Azure Maps の [Get Nearby Transit](/rest/api/maps/mobility/getnearbytransitprev
 
 [Get Nearby Transit](/rest/api/maps/mobility/getnearbytransitpreview) に対する要求を行うには、次の手順に従います。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Nearby stops**」 (近くの停留所の取得) という名前を付けます。
+1. Postman アプリを開きます。 **[New]\(新規\)** を選択して、要求を作成します。 **[新規作成]** ウィンドウで **[HTTP 要求]** を選択します。 要求の **[要求名]** を入力します。
 
 2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
@@ -229,7 +224,7 @@ Azure Maps [Get Transit Routes API](/rest/api/maps/mobility/gettransitrouteprevi
 
 ファジー検索サービスを要求するには、次の手順に従います。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get location coordinates**」 (位置座標の取得) という名前を付けます。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[新規作成]** ウィンドウで **[HTTP 要求]** を選択します。 要求の **[要求名]** を入力します。
 
 2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
@@ -336,7 +331,7 @@ Azure Maps [Get Transit Routes API](/rest/api/maps/mobility/gettransitrouteprevi
 
 ルートの要求を行うには、次の手順を実行します。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Route info**」 (ルート情報の取得) という名前を付けます。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[新規作成]** ウィンドウで **[HTTP 要求]** を選択します。 要求の **[要求名]** を入力します。
 
 2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
 
@@ -531,7 +526,7 @@ Azure Maps [Get Transit Routes API](/rest/api/maps/mobility/gettransitrouteprevi
 
 Azure Maps の [Get Transit Itinerary](/rest/api/maps/mobility/gettransititinerarypreview) サービスでは、[Get Transit Routes API](/rest/api/maps/mobility/gettransitroutepreview) サービスによって返されるルートの **itinerary ID** を使用して、特定のルートについてのデータを要求することができます。 要求を行うには、次の手順を実行します。
 
-1. Postman で、 **[新しい要求]**  |  **[GET request]\(GET 要求\)** をクリックして、「**Get Transit info**」 (輸送情報の取得) という名前を付けます。
+1. Postman アプリで、 **[New]\(新規\)** を選択して要求を作成します。 **[新規作成]** ウィンドウで **[HTTP 要求]** を選択します。 要求の **[要求名]** を入力します。
 
 2. [ビルダー] タブで、**GET** HTTP メソッドを選択します。 API エンドポイントの次の要求 URL を入力し、 **[送信]** をクリックします。
 

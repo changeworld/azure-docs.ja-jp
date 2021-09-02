@@ -4,16 +4,18 @@ description: Azure CLI を使用して、Azure Blockchain Service 用のブロ�
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 867a51b60afa56005bbb297b345f8a9260160ab8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4742e4ed71c5d7e53d810f1c59e8f465f566d7e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101722638"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122652200"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Azure CLI を使用してブロックチェーン データ マネージャーを構成する
 
 ブロックチェーン データをキャプチャして Azure Event Grid トピックに送信するように、Azure Blockchain Service のブロックチェーン データ マネージャーを構成します。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 ブロックチェーン データ マネージャー インスタンスを構成するには、次のようにします。
 

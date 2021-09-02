@@ -8,15 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
+ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7eff89301fa54312ffef323023100660237185a4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3258baa30d689513ae09ea727ac1db603f8bf5fe
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955343"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720286"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -29,11 +30,60 @@ ms.locfileid: "111955343"
 * バグの修正
 * 非推奨の機能
 
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="additional-live-event-ingest-heartbeat-properties-for-improved-diagnostics"></a>診断を改善するための追加のライブ イベント取り込みハートビート プロパティ
+
+追加のライブ イベント取り込みハートビート プロパティが、Event Grid メッセージに追加されました。 これには、ライブ取り込み中の問題の診断を支援する次の新しいフィールドが含まれます。  **ingestDriftValue** は、ライブ イベントにプッシュするソース取り込みエンコーダーからのネットワーク待機時間を監視する必要があるシナリオで役立ちます。 この値が大きすぎる場合は、ライブ ストリーミング イベントが成功するにはネットワーク待機時間が長すぎることを示している可能性があります。
+
+詳細については、[LiveEventIngestHeartbeat スキーマ](./monitoring/media-services-event-schemas.md#liveeventingestheartbeat)に関するページを参照してください。
+
+### <a name="private-links-support-is-now-ga"></a>プライベート リンクのサポートの一般提供
+
+[プライベート リンク](../../private-link/index.yml)で Media Services を使用するためのサポートが一般提供となり、Azure Government クラウドを含むすべての Azure リージョンで利用できるようになりました。
+Azure Private Link を使用すると、仮想ネットワーク内のプライベート エンドポイント経由で、Azure PaaS サービスと Azure でホストされている顧客が所有するサービスまたはパートナー サービスにアクセスできます。
+仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。
+
+プライベート リンクを使用して Media Services を使用する方法の詳細については、「[プライベート リンクを使用して Media Services とストレージ アカウントを作成する](./security-private-link-how-to.md)」を参照してください。
+
+### <a name="new-us-west-3-region-is-ga"></a>新しい米国西部 3 リージョンの一般提供
+
+米国西部 3 リージョンが一般提供となり、お客様が新しい Media Services アカウントを作成するときに使用できるようになりました。
+
+### <a name="key-delivery-supports-ip-allowlist-restrictions"></a>キー配信で IP 許可リストの制限がサポートされる
+
+キー配信に対する IP 許可リストの制限を使用して、Media Services アカウントを構成できるようになりました。 新しい許可リストの設定は、SDK、ポータル、CLI を介して、Media Services アカウント リソースで使用できます。
+これにより、オペレーターは DRM ライセンスと AES-128 コンテンツ キーの配信を特定の IPv4 範囲に制限できます。
+
+この機能を使用して、DRM ライセンスまたは AES-128 キーのすべてのパブリック インターネット配信を遮断し、プライベート ネットワーク エンドポイントへの配信を制限することもできます。
+
+詳細については、「[IP 許可リストを使用して DRM ライセンスおよび AES キー配信へのアクセスを制限する](./drm-content-protection-key-delivery-ip-allow.md)」という記事を参照してください。
+
+### <a name="new-samples-for-python-and-nodejs-with-typescript"></a>Python および Node.js 用の新しいサンプル (Typescript を使用)
+Azure SDK の最新の Typescript サポートを使用する **Node.js** のサンプルを更新しました。
+
+|サンプル|説明|
+|---|---|
+|[ライブ ストリーミング](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/Live/index.ts)| ライブ ストリーミングの基本的な例。 **警告**: ライブを使用する場合は、すべてのリソースがクリーンアップされていて、ポータルで課金されなくなっていることを確認してください|
+|[HLS と DASH をアップロードしてストリーミングする](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/StreamFilesSample/index.ts)| ソース URL からローカル ファイルまたはエンコードをアップロードするための基本的な例。 サンプルでは、Storage SDK を使用してコンテンツをダウンロードする方法と、プレーヤーにストリーミングする方法が示されています |
+|[Playready と Widevine DRM を使用して HLS と DASH をアップロードしてストリーミングする](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/StreamFilesWithDRMSample/index.ts)| Widevine と PlayReady DRM を使用したエンコードとストリーミングの方法を示しています |
+|[AI をアップロードおよび使用してビデオとオーディオにインデックスを付ける](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/VideoIndexerSample/index.ts)| ビデオおよびオーディオ アナライザーのプリセットを使用して、ビデオまたはオーディオ ファイルからメタデータと分析情報を生成する例 |
+
+
+新しい **Python** のサンプルでは、Azure Functions と Event Grid を使用して顔編集プリセットをトリガーする方法を示します。
+
+|サンプル|説明|
+|---|---|
+|[イベントと関数を使用した顔編集](https://github.com/Azure-Samples/media-services-v3-python/tree/main/VideoAnalytics/FaceRedactorEventBased) | これは、Azure ストレージ アカウントにアクセスするとすぐにビデオで Azure Media Services Face Redactor ジョブをトリガーするイベントベースのアプローチの例です。 このソリューションでは Azure Media Services、Azure 関数、Event Grid、Azure Storage を活用します。 ソリューションの詳細については、[README.md](https://github.com/Azure-Samples/media-services-v3-python/blob/main/VideoAnalytics/FaceRedactorEventBased/README.md) を参照してください |
+
+
 ## <a name="may-2021"></a>2021 年 5 月
 
 ### <a name="availability-zones-default-support-in-media-services"></a>Media Services 内での Availability Zones の既定のサポート
 
 Media Services が [Availability Zones](concept-availability-zones.md) をサポートすることで、同じ Azure リージョン内で、障害から分離された場所を提供するようになりました。  Media Services アカウントは既定でゾーン冗長になりました。追加の構成や設定は必要ありません。 これは、[Availability Zones をサポート](../../availability-zones/az-region.md#azure-regions-with-availability-zones)するリージョンにのみ適用されます
+
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -274,7 +324,7 @@ RTMP ライブ ストリーミングで次の新しいおすすめパートナ�
 - 標準のエンコードでは、時間基準の GOP 設定の使用時、VOD エンコード中、可変フレーム レート (VFR) コンテンツで通常の GOP ペースが維持されるようになりました。  つまり、たとえば、15 fps から 30 fps の範囲で変化する混在フレーム レート コンテンツを送信すると、アダプティブ ビットレート ストリーミング MP4 ファイルへの出力に対して通常の GOP 距離が計算されます。 これにより HLS または DASH 経由で配信するときにトラック間で途切れなく切り替える機能が向上します。 
 -  可変フレーム レート (VFR) ソース コンテンツの AV 同期の向上
 
-### <a name="video-indexer-video-analytics"></a>Video Indexer、ビデオ分析
+### <a name="azure-video-analyzer-for-media-video-analytics"></a>Azure Video Analyzer for Media、ビデオ分析
 
 - VideoAnalyzer プリセットで抽出されたキーフレームがサイズ変更なく、動画の元の解像度で与えられるようになりました。 高解像度のキーフレーム抽出により元の画質が与えられ、Microsoft の Computer Vision サービスと Custom Vision サービスで提供される画像を基盤とする人工知能モデルを活用し、動画からさらに踏み込んだ分析情報を得ることができます。
 
@@ -290,9 +340,9 @@ Media Services v3 で、24 時間 365 日のライブ イベントのライブ �
 
 #### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 Azure Media Services Video Indexer が、これらの従来のメディア プロセッサに取って代わります。
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 提供終了日については、[レガシ コンポーネント](../previous/legacy-components.md)に関する記事を参照してください。 Azure Video Analyzer for Media が、これらの従来のメディア プロセッサに取って代わります。
 
-詳細については、[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer への移行](../previous/migrate-indexer-v1-v2.md)に関する記事をご覧ください。
+詳細については、[Media Indexer および Media Indexer 2 から **Azure Media Services Video Indexer** への移行](../previous/migrate-indexer-v1-v2.md)に関する記事を参照してください。
 
 ## <a name="august-2019"></a>2019 年 8 月
 

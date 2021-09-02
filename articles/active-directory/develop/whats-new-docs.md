@@ -11,12 +11,13 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 37e382b9d547f911d2df47b1297cb967e1c12f12
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 952126148b9c115803d9a535da287586de771861
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725748"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428838"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 

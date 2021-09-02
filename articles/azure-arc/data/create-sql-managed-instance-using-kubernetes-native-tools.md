@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 24abb1ece1d307276be736b384c3e5e3c7d40f2a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: dbc2f2efffcab9800deff27e42e4130061c531d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407491"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741487"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Kubernetes ツールを使用して Azure SQL マネージド インスタンスを作成する
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +29,7 @@ Kubernetes ツールを使用して SQL マネージド インスタンスを作
 
 ## <a name="overview"></a>概要
 
-SQL マネージド インスタンスを作成するには、システム管理者のログインとパスワードを安全に格納するための Kubernetes シークレットと、sqlmanagedinstance カスタム リソース定義に基づいて SQL マネージド インスタンスのカスタム リソースを、作成する必要があります。
+SQL マネージド インスタンスを作成するには、システム管理者のログインとパスワードを安全に格納するための Kubernetes シークレットと、SqlManagedInstance カスタム リソース定義に基づいて SQL マネージド インスタンスのカスタム リソースを作成する必要があります。
 
 ## <a name="create-a-yaml-file"></a>yaml ファイルを作成する
 
@@ -48,8 +47,8 @@ metadata:
   name: sql1-login-secret
 type: Opaque
 ---
-apiVersion: sql.arcdata.microsoft.com/v1alpha1
-kind: sqlmanagedinstance
+apiVersion: sql.arcdata.microsoft.com/v1
+kind: SqlManagedInstance
 metadata:
   name: sql1
   annotations:
@@ -133,7 +132,7 @@ echo -n '<your string to encode here>' | base64
 - コア数の制限値は、課金のために **必要** です。
 - それ以外のリソースの要求と制限は省略可能です。
 - コア数の制限と要求を指定する場合は、正の整数値にする必要があります。
-- コア数の要求を指定する場合は、2 コア以上を指定する必要があります。
+- コア数の要求を指定する場合は、1 コア以上を指定する必要があります。
 - メモリ値の形式は、Kubernetes の表記に従います。  
 - メモリ要求を指定する場合は、2 Gi 以上にする必要があります。
 - 一般的なガイドラインとして、運用環境のユース ケースの場合は、1 コアごとに 4 GB の RAM が必要です。

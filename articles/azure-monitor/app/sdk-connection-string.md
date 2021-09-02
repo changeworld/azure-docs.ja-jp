@@ -7,12 +7,12 @@ ms.author: tilee
 ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: af29de06c4b0f82d6c951d54935a93e77e723177
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 2b4a7ac88f92c830daecf943d6937946c4a89f82
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191355"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297447"
 ---
 # <a name="connection-strings"></a>Connection strings
 
@@ -34,7 +34,7 @@ ms.locfileid: "110191355"
 
 - ファイアウォールの例外またはプロキシのリダイレクト 
 
-    イントラネット Web サーバーの監視が必要な場合、以前のソリューションでは、お使いの構成に個々のサービスエンド ポイントを追加するようにお客様に求めていました。 詳細については、[このページ](../faq.md#can-i-monitor-an-intranet-web-server)を参照してください。 
+    イントラネット Web サーバーの監視が必要な場合、以前のソリューションでは、お使いの構成に個々のサービスエンド ポイントを追加するようにお客様に求めていました。 詳細については、[このページ](../faq.yml#can-i-monitor-an-intranet-web-server-)を参照してください。 
     接続文字列により、この作業の設定が 1 つですみ、より優れた代替方法が提供されます。 プレフィックスとサフィックスを修正するだけで、すべてのエンドポイントを適切なサービスに自動的に設定してリダイレクトすることができます。 
 
 - ソブリン クラウド環境またはハイブリッド クラウド環境
@@ -209,17 +209,22 @@ NetCore config.json:
 
 # <a name="java"></a>[Java](#tab/java)
 
+`applicationinsights.json` 構成ファイルで接続文字列を設定できます。
 
-Java (v2.5.x) の明示的な設定:
-```java
-TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+}
 ```
 
-ApplicationInsights.xml
+詳細については、[接続文字列の構成に関するページ](./java-standalone-config.md#connection-string)をご覧ください。
+
+Application Insights Java 2.x の場合は、`ApplicationInsights.xml` 構成ファイルで接続文字列を設定できます。
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
-    <ConnectionString>InstrumentationKey=00000000-0000-0000-0000-000000000000;</ConnectionString>
+    <ConnectionString>InstrumentationKey=00000000-0000-0000-0000-000000000000</ConnectionString>
 </ApplicationInsights>
 ```
 
@@ -290,7 +295,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 実行時に開始する:
 
 * [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](./azure-vm-vmss-apps.md)
-* [IIS サーバー](./monitor-performance-live-website-now.md)
+* [IIS サーバー](./status-monitor-v2-overview.md)
 * [Azure Web Apps](./azure-web-apps.md)
 
 開発時に開始する:
@@ -300,4 +305,3 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 * [Java](./java-in-process-agent.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
-

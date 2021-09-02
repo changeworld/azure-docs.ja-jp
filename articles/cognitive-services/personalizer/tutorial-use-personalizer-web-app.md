@@ -1,17 +1,20 @@
 ---
 title: Web アプリの使用 - Personalizer
 description: Personalizer ループを使用して C# .NET Web アプリをカスタマイズし、アクション (特徴を伴う) およびコンテキストの特徴に基づいてユーザーに適切なコンテンツを提供します。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c004887e3883ae711974b544510dff16a98d4ef9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8e9ffe2851daaa60a990a03cbc29a47deb28ff8f
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363920"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829224"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>チュートリアル:.NET Web アプリに Personalizer を追加する
 
@@ -42,11 +45,11 @@ Personalizer ループを使用して C# .NET Web アプリをカスタマイズ
 * サラダ
 * ポップコーン
 * コーヒー
-* スープ
+* soup
 
-Personalizer によるアクションについての学習を補助するには、各 Rank API 要求で " _アクションと特徴_ " および " _コンテキストの特徴_ " の両方を送信します。
+Personalizer によるアクションについての学習を補助するには、各 Rank API 要求で "_アクションと特徴_" および "_コンテキストの特徴_" の両方を送信します。
 
-モデルの **特徴** は、Web アプリのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも _ありません_ 。
+モデルの **特徴** は、Web アプリのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも _ありません_。
 
 ### <a name="actions-with-features"></a>アクションと特徴
 
@@ -123,7 +126,7 @@ Personalizer によるアクションについての学習を補助するには�
 コンテキストの特徴は、Personalizer がアクションのコンテキストを理解するのに役立ちます。 このサンプル アプリケーションのコンテキストには次のものが含まれます。
 
 * 時間帯 - 朝、午後、夕方、夜
-* ユーザーの味の好み - 塩味、甘味、苦味、酸味、またはうま味
+* ユーザーの味の好み - 塩味、甘味、苦味、酸味、または風味
 * ブラウザーのコンテキスト - ユーザー エージェント、地理的な場所、参照元
 
 ```csharp
@@ -250,7 +253,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 
 次のいずれかの方法を使用して、HttpRequestFeaturesExample をビルドして実行します。
 
-* Visual Studio 2019: **F5** キーを押す
+* Visual Studio 2019:**F5** キーを押す
 * .NET Core CLI: `dotnet build`、`dotnet run` の順に指定する
 
 Web ブラウザーで Rank 要求と Reward 要求を送信し、その応答と、環境から抽出された HTTP 要求の特徴を確認することができます。
@@ -277,7 +280,7 @@ Web ブラウザーで Rank 要求と Reward 要求を送信し、その応答�
 
 サンプル Web アプリには **C# .NET** サーバーがあります。このサーバーは、特徴のコレクションを管理し、Personalizer のエンドポイントに対する HTTP 呼び出しの送受信を管理します。
 
-サンプル Web アプリでは、 **Knockout フロントエンド クライアント アプリケーション** を使用して特徴をキャプチャし、ボタンのクリックや .NET サーバーへのデータ送信などのユーザー インターフェイス アクションを処理します。
+サンプル Web アプリでは、**Knockout フロントエンド クライアント アプリケーション** を使用して特徴をキャプチャし、ボタンのクリックや .NET サーバーへのデータ送信などのユーザー インターフェイス アクションを処理します。
 
 以下のセクションでは、開発者が Personalizer を使用するために理解しておく必要があるサーバーとクライアントの部分について説明します。
 
@@ -340,7 +343,7 @@ namespace HttpRequestFeaturesExample
 
 ### <a name="select-best-action"></a>最適なアクションを選択する
 
-サーバーの **PersonalizerController.cs** で、 **GenerateRank** サーバー API が Rank API を呼び出すための準備についてまとめます
+サーバーの **PersonalizerController.cs** で、**GenerateRank** サーバー API が Rank API を呼び出すための準備についてまとめます
 
 * Rank 呼び出し用の新しい `eventId` を作成する
 * アクションのリストを取得する
@@ -564,7 +567,7 @@ Rank API で、選択された最適なアクションの **rewardActionId** を
 
 ## <a name="reward-api-collect-information-for-reward"></a>Reward API: 報酬に関する情報を収集する
 
-特徴を計画するのと同様に、[報酬スコア](concept-rewards.md)は慎重に計画しなければなりません。 通常、報酬スコアは 0 から 1 の値にする必要があります。 値は、ユーザーの行動に基づいてクライアント アプリケーションで部分的に計算したり、ビジネス ロジックと目標に基づいてサーバー上で部分的に計算したり _できます_ 。
+特徴を計画するのと同様に、[報酬スコア](concept-rewards.md)は慎重に計画しなければなりません。 通常、報酬スコアは 0 から 1 の値にする必要があります。 値は、ユーザーの行動に基づいてクライアント アプリケーションで部分的に計算したり、ビジネス ロジックと目標に基づいてサーバー上で部分的に計算したり _できます_。
 
 Azure portal で Personalizer リソース用に構成された **報酬の待機時間** 内に、サーバーが Reward API を呼び出さない場合、そのイベントには **既定の報酬** (これも Azure portal で構成されます) が使用されます。
 

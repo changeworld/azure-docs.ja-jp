@@ -12,16 +12,16 @@ ms.date: 05/25/2021
 ms.author: lajanuar
 recommendations: false
 keywords: オンプレミス, Docker, コンテナー, 識別
-ms.openlocfilehash: 93cf53bb53c5a86ff6b4b073105c08c595fcf182
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 680f1f6f1bfddc5bf525ae06b61bcf9098dc850f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480255"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745607"
 ---
 # <a name="install-and-run-translator-containers-preview"></a>Translator コンテナーをインストールして実行する (プレビュー)
 
-  コンテナーを使用すると、独自の環境で Translator サービスの一部の機能を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Translator コンテナーをダウンロード、インストール、実行する方法について学習します。
+  コンテナーを使用すると、独自の環境で Translator サービスのいくつかの機能を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Translator コンテナーをダウンロード、インストール、実行する方法について学習します。
 
 Translator コンテナーを使用すると、堅牢なクラウド機能とエッジの局所性の両方のために最適化された翻訳アプリケーション アーキテクチャを構築できます。
 
@@ -36,7 +36,7 @@ Translator コンテナーを使用すると、堅牢なクラウド機能とエ
 
 開始するには、アクティブな [**Azure アカウント**](https://azure.microsoft.com/free/cognitive-services/)が必要です。  アカウントがない場合は、[**無料アカウントを作成**](https://azure.microsoft.com/free/)できます。
 
-Translator コンテナーを使用するには、次の内容も必要です。
+以下も必要となります。
 
 | 必須 | 目的 |
 |--|--|
@@ -165,7 +165,7 @@ curl -X POST "http://localhost:5000/translate?api-version=3.0&from=en&to=zh-HANS
 
 #### <a name="english-leftrightarrow-german"></a>英語 &leftrightarrow; ドイツ語
 
-Swagger のページ (<http://localhost:5000/swagger/index.html>) に移動する
+Swagger のページ (`<http://localhost:5000/swagger/index.html>`) に移動する
 
 1. **[POST /translate]\(POST /翻訳\)** を選択します
 1. **[試してみる]** を選択します
@@ -277,4 +277,4 @@ namespace TranslateContainer
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ Azure Cognitive Services コンテナーの詳細情報](/azure/cognitive-services/containers/index?context=/azure/cognitive-services/translator/context/context)
+> [ Azure Cognitive Services コンテナーの詳細情報](../../containers/index.yml?context=%2fazure%2fcognitive-services%2ftranslator%2fcontext%2fcontext)

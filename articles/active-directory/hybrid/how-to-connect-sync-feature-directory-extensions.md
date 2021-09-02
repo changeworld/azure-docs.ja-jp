@@ -12,22 +12,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2019
+ms.date: 08/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2415ad3109863a9cd80df413723b317e880a7063
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97976879"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751618"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](/graph/extensibility-overview
 )から使用できます。 使用可能な属性を確認するには、[Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用します。 この機能を使用して、Azure AD に動的グループを作成することもできます。
 
 現在のところ、これらの属性を使用する Microsoft 365 ワークロードはありません。
+
+>[!IMPORTANT]
+>ディレクトリ拡張属性の同期に使用されるカスタム ルールを含む構成をエクスポートし、このルールを Azure AD Connect の新規または既存のインストールにインポートしようとした場合、インポート中にルールは作成されますが、ディレクトリ拡張属性はマップされません。  これを修正するには、ディレクトリ拡張属性を再選択してルールにもう一度関連付けるか、ルールを完全に作成し直す必要があります。
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Azure AD と同期する属性をカスタマイズする
 

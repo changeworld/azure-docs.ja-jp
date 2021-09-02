@@ -2,18 +2,19 @@
 title: オフライン評価方法の使用 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: この記事では、オフライン評価を使用してご利用のアプリの有用性を測定し、学習ループを分析する方法について説明します。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95217acd5c423c71eb75a43ee1e756d6b95b696d
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87132757"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829777"
 ---
 # <a name="offline-evaluation"></a>オフライン評価
 

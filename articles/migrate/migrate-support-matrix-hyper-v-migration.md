@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 14660ca026dc51bc6e722559a28ef4a77361100b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1e203fb70bd13d1ab6681d0b579ffff8458d400d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094566"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721167"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V の移行のサポート マトリックス
 
@@ -31,8 +31,7 @@ ms.locfileid: "110094566"
 | **ホスト オペレーティング システム** | 最新の更新プログラムが適用された Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 これらのオペレーティング システムの Server コア インストールもサポートされていることに注意してください。 |
 | **その他のソフトウェア要件** | .NET Framework 4.7 以降 |
 | **ポート アクセス** |  VM レプリケーション データを送信するための HTTPS ポート 443 での送信接続。
-| **空きディスク領域 (キャッシュ)** |  600 GB |
-| **ディスクの空き領域 (リテンション ディスク)** |  600 GB |
+
 
 
 ## <a name="hyper-v-vms"></a>Hyper-V VM
@@ -41,7 +40,7 @@ ms.locfileid: "110094566"
 | :----------------------------- | :------------------- |
 | **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](../virtual-machines/linux/endorsed-distros.md) オペレーティング システム。 |
 **Windows Server 2003** | Windows Server 2003 を実行している VM では、移行の前に [Hyper-V 統合サービスをインストールする](prepare-windows-server-2003-migration.md)必要があります。 | 
-**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
+**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 20.04、19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
 | **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 移行の前に手動で調整してください。 関連する記事には、その手順が記載されています。 |
 | **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
 | **UEFI ブート**                  | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。  |

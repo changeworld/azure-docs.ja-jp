@@ -9,12 +9,12 @@ ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
 ms.custom: contperf-fy21q3-portal, devx-track-azurecli
-ms.openlocfilehash: db21cf9e4dc28a83b98f58e73db9a5d76f80aef2
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f440518e0d7b4fc347da6455e7f6c06e18633598
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886678"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740073"
 ---
 # <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace イメージ情報を検索する
 
@@ -195,7 +195,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 
 ## <a name="accept-the-terms"></a>使用条件への同意
 
-ライセンス条項を表示し、それらに同意するには、[az vm image accept-terms](/cli/azure/vm/image/terms) コマンドを使用します。 使用条件に同意すると、サブスクリプション内で、プログラムによるデプロイが有効になります。 使用条件に同意する必要があるのは、イメージのサブスクリプションごとに 1 回だけです。 次に例を示します。
+ライセンス条項を表示し、それらに同意するには、[az vm image terms](/cli/azure/vm/image/terms) コマンドを使用します。 使用条件に同意すると、サブスクリプション内で、プログラムによるデプロイが有効になります。 使用条件に同意する必要があるのは、イメージのサブスクリプションごとに 1 回だけです。 次に例を示します。
 
 ```azurecli
 az vm image terms show --urn bitnami:rabbitmq:rabbitmq:latest

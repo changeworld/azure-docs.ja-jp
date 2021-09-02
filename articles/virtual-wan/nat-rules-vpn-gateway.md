@@ -8,19 +8,14 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: fc6c9f6c7c69f92c66706678dd27e082412afa3e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 6613952b5d7811c187123963a6e611602aabb5dc
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539174"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113127692"
 ---
-# <a name="configure-nat-rules-for-your-virtual-wan-vpn-gateway---preview"></a>仮想 WAN VPN ゲートウェイの NAT 規則を構成する - プレビュー
-
-> [!IMPORTANT]
-> NAT 規則は現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="configure-nat-rules-for-your-virtual-wan-vpn-gateway"></a>仮想 WAN VPN ゲートウェイの NAT 規則を構成する
 
 仮想 WAN VPN ゲートウェイを静的な 1 対 1 の NAT 規則を使用して構成できます。 NAT 規則には、IP アドレスの 1 対 1 の変換を設定するメカニズムが用意されています。 NAT を使用して、互換性のないまたは重複する IP アドレスを持つ 2 つの IP ネットワークを相互接続することができます。 代表的なシナリオは、重複する IP を持つブランチが Azure VNet リソースへのアクセスを必要とすることです。
 

@@ -7,14 +7,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: tchladek
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 3b0c1a7bbd2069ce828c0db4b80f047c1cc9faf7
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: d660f63284c3ad5ade04bbd52bcd27c5db3fa946
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114709190"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256830"
 ---
 # <a name="build-a-custom-teams-endpoint"></a>カスタム Teams エンドポイントを構築する
 

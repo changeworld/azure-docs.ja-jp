@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-powershell
 - devx-track-azurecli
 - devx-track-azurepowershell
-ms.openlocfilehash: ce72ed946a9e0d65b671da59682dafb7037673da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d368dd5525ea3696c06a8333f95fec96f4aabed
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738569"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829711"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に PowerShell 関数を作成する
 
@@ -117,7 +117,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
         
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location <REGION> --runtime powershell --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     
     [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドで Azure に関数アプリを作成します。 
@@ -125,7 +125,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     
     ```azurepowershell
-    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime PowerShell -FunctionsVersion 3 -Location 'West Europe'
+    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime PowerShell -FunctionsVersion 3 -Location '<REGION>'
     ```
     
     [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) コマンドレットによって、Azure に関数アプリが作成されます。 

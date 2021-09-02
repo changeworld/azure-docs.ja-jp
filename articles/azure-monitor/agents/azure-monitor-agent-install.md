@@ -4,16 +4,16 @@ description: Azure 仮想マシンと Azure Arc 対応サーバーに Azure Moni
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/17/2020
+ms.date: 07/19/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2ddbbd94b39429d2403e92fea6ba5cebb808af48
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: f787a01cb4e83b05b30a1e802658ed95a983e6a2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845620"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461042"
 ---
-# <a name="install-the-azure-monitor-agent-preview"></a>Azure Monitor エージェントをインストールする (プレビュー)
+# <a name="install-the-azure-monitor-agent"></a>Azure Monitor エージェントのインストール
 この記事では、Azure 仮想マシンと Azure Arc 対応サーバーの両方に [Azure Monitor エージェント](azure-monitor-agent-overview.md) をインストールするために現在使用できるさまざまなオプションについて説明し、エージェントが収集するデータを定義する[データ収集ルールとの関連付け](data-collection-rule-azure-monitor-agent.md)を作成するオプションについても説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -21,9 +21,13 @@ Azure Monitor エージェントをインストールする前に、次の前提
 
 - [マネージド システム ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) が Azure 仮想マシンで有効になっている必要があります。 これは、Azure Arc 対応サーバーでは必要ありません。 [Azure portal でデータ収集ルールを作成して割り当てる](#install-with-azure-portal)プロセスの一部としてエージェントがインストールされている場合は、システム ID が自動的に有効になります。
 - 仮想マシンの仮想ネットワークで [AzureResourceManager サービス タグ](../../virtual-network/service-tags-overview.md)を有効にする必要があります。
+- 仮想マシンは、次の HTTPS エンドポイントにアクセスできる必要があります。
+  - *.ods.opinsights.azure.com
+  - *.ingest.monitor.azure.com
+  - *.control.monitor.azure.com
 
 > [!IMPORTANT]
-> Azure Monitor エージェントでは、ネットワーク プロキシは現在サポートされていません。
+> Azure Monitor エージェントでは現在、ネットワーク プロキシやプライベート リンクをサポートしていません。
 
 ## <a name="virtual-machine-extension-details"></a>仮想マシン拡張機能の詳細
 Azure Monitor エージェントは、次の表に示す詳細で [Azure VM 拡張機能](../../virtual-machines/extensions/overview.md)として実装されます。 この記事で説明されているものを含め、仮想マシン拡張機能をインストールする、どの方法でもインストールできます。
@@ -78,11 +82,11 @@ Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publishe
 次の PowerShell コマンドを使用して Azure Monitor エージェントを Azure Arc 対応サーバーにインストールします。
 # <a name="windows"></a>[Windows](#tab/PowerShellWindowsArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <arc-server-name> -Location <arc-server-location>
 ```
 # <a name="linux"></a>[Linux](#tab/PowerShellLinuxArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <arc-server-name> -Location <arc-server-location>
 ```
 ---
 ## <a name="azure-cli"></a>Azure CLI
@@ -104,11 +108,11 @@ az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Mo
 
 # <a name="windows"></a>[Windows](#tab/CLIWindowsArc)
 ```azurecli
-az connectedmachine machine-extension create --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids <vm-resource-id>
+az connectedmachine extension create --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --machine-name <arc-server-name> --resource-group <resource-group-name> --location <arc-server-location>
 ```
 # <a name="linux"></a>[Linux](#tab/CLILinuxArc)
 ```azurecli
-az connectedmachine machine-extension create --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids <vm-resource-id>
+az connectedmachine extension create --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --machine-name <arc-server-name> --resource-group <resource-group-name> --location <arc-server-location>
 ```
 ---
 
