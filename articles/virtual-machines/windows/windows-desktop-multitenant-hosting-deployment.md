@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 9a2b93a951b9aa2056ee547d8d74c90eb7d96f71
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 04c67fc0f3692e6b30e564593b6245f4a8d297a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983836"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740067"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 マルチテナント ホスティング権限は、Windows 10 (バージョン 1703 以降) でのみ使用できます。
@@ -30,7 +30,7 @@ ms.locfileid: "111983836"
 [Microsoft 管理センター](/microsoft-365/admin/admin-overview/about-the-admin-center)を使用して、ユーザーに Windows 10 のサポートされているライセンスが割り当てられているかどうかを確認できます。
 
 > [!IMPORTANT]
-> Azure で Windows 10 のイメージを使用するには、ユーザーに以下のいずれかのサブスクリプション ライセンスが必要です。 これらのいずれかのサブスクリプション ライセンスがない場合は、[クラウド サービス パートナー](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)を通じて、または [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1) から直接購入できます。
+> Azure で運用ワークロードのために Windows 10 のイメージを使用するには、ユーザーに以下のいずれかのサブスクリプション ライセンスが **必要** です。 これらのいずれかのサブスクリプション ライセンスがない場合は、[クラウド サービス パートナー](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)を通じて、または [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1) から直接購入できます。
 
 **対象となるサブスクリプション ライセンス:**
 

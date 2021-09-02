@@ -8,19 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/30/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21f31a21921953148ae0438cee04d846706161cc
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 51639df9115032beefd04e6eb114c0d62e61ed88
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382931"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "122653392"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して OpenID Connectでのサインアップおよびサインインを設定する
 
-[OpenID Connect](openid-connect.md) は OAuth 2.0 を基盤として作成された認証プロトコルであり、セキュリティで保護されたユーザー サインインに使用できます。 Azure AD B2C では、このプロトコルを使用するほとんどの ID プロバイダーがサポートされています。 この記事では、カスタム OpenID Connect ID プロバイダーをユーザー フローに追加する方法について説明します。
+[OpenID Connect](openid-connect.md) は OAuth 2.0 を基盤として作成された認証プロトコルであり、セキュリティで保護されたユーザー サインインに使用できます。 Azure AD B2C では、このプロトコルを使用するほとんどの ID プロバイダーがサポートされています。 
+
+この記事では、カスタム OpenID Connect ID プロバイダーをユーザー フローに追加する方法について説明します。
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="add-the-identity-provider"></a>ID プロバイダーの追加
 

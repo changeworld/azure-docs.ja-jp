@@ -3,13 +3,12 @@ title: .NET を使用した Application Insights のログ
 description: .NET の ILogger インターフェイスで Application Insights を使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/20/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: 6b0c746ffda97c22dc42a4c2016413a80552d28d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0457656ae06d4a86c8a4151ce8b89d3e42978d74
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461519"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180339"
 ---
 # <a name="application-insights-logging-with-net"></a>.NET を使用した Application Insights のログ
 
@@ -33,9 +32,9 @@ ms.locfileid: "110461519"
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core アプリケーション
 
-Application Insights テレメトリをに ASP.NET Core アプリケーションに追加するには、`Microsoft.ApplicationInsights.AspNetCore` NuGet パッケージを使用します。 これは、[Visual Studio を通して接続済みサービス](/visualstudio/azure/azure-app-insights-add-connected-service)として設定することも、手動で設定することもできます。
+Application Insights テレメトリをに ASP.NET Core アプリケーションに追加するには、`Microsoft.ApplicationInsights.AspNetCore` NuGet パッケージを使用します。 これは、[Visual Studio を介して接続済みサービスとして](/visualstudio/azure/azure-app-insights-add-connected-service)構成することも、手動で構成することもできます。
 
-既定では、[コード](./asp-net-core.md)または[コードレス](./azure-web-apps.md?tabs=netcore#enable-agent-based-monitoring)のアプローチを使用して構成された ASP.NET Core アプリケーションには、Application Insights ログ プロバイダーが登録されています。 登録されているプロバイダーは、重大度が <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> 以上のログ イベントを自動的にキャプチャするように構成されています。 重要度とカテゴリはカスタマイズすることができます。 詳細については、「[ログ記録レベルの制御](#control-logging-level)」を参照してください。
+既定では、[コード](./asp-net-core.md)または[コードレス](./azure-web-apps.md?tabs=netcore#enable-agent-based-monitoring)のアプローチを使用して構成された ASP.NET Core アプリケーションには、Application Insights ログ プロバイダーが登録されています。 登録されているプロバイダーは、重大度が <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> 以上のログ イベントを自動的にキャプチャするように構成されています。 重大度とカテゴリをカスタマイズできます。 詳細については、「[ログ記録レベル](#logging-level)」を参照してください。
 
 1. NuGet パッケージがインストールされていることを確認してください。
 
@@ -83,7 +82,9 @@ Application Insights テレメトリをに ASP.NET Core アプリケーション
     }
     ```
 
-NuGet パッケージがインストールされ、プロバイダーが依存関係の挿入によって登録されているので、アプリをログに記録する準備ができました。 コンストラクターの挿入では、<xref:Microsoft.Extensions.Logging.ILogger> またはジェネリック型の代替である <xref:Microsoft.Extensions.Logging.ILogger%601> のいずれかが必要になります。 これらの実装が解決されると、`ApplicationInsightsLoggerProvider` によってこれらが提供されるようになります。 ログに記録されたメッセージや例外は、Application Insights に送信されます。 たとえば、次のコントローラーの例を考えてみましょう。
+NuGet パッケージがインストールされ、プロバイダーが依存関係の挿入によって登録されているので、アプリをログに記録する準備ができました。 コンストラクターの挿入では、<xref:Microsoft.Extensions.Logging.ILogger> またはジェネリック型の代替である <xref:Microsoft.Extensions.Logging.ILogger%601> のいずれかが必要になります。 これらの実装が解決されると、`ApplicationInsightsLoggerProvider` によってこれらが提供されるようになります。 ログに記録されたメッセージや例外は、Application Insights に送信されます。 
+
+たとえば、次のコントローラーの例を考えてみましょう。
 
 ```csharp
 public class ValuesController : ControllerBase
@@ -110,11 +111,11 @@ public class ValuesController : ControllerBase
 
 ### <a name="capture-logs-within-aspnet-core-startup-code"></a>ASP.NET Core スタートアップ コード内のログをキャプチャする
 
-いくつかのシナリオでは、アプリの起動ルーチンの一部として、要求 - 応答パイプラインで要求を受け入れる準備ができる前に、ログをキャプチャする必要があります。 しかし、`ILogger` の実装は、*Program.cs* や *Startup.cs* の依存関係の挿入からは簡単に利用できません。 詳細については、[.NET でのログ記録: `Main` でログを作成する](/dotnet/core/extensions/logging?tabs=command-line#create-logs-in-main)方法に関するページを参照してください。
+いくつかのシナリオでは、アプリの起動ルーチンの一部として、要求 - 応答パイプラインで要求を受け入れる準備ができる前に、ログをキャプチャする必要があります。 しかし、`ILogger` の実装は、*Program.cs* や *Startup.cs* の依存関係の挿入からは簡単に利用できません。 詳細については、「[.NET でのログの記録: Main でログを作成する](/dotnet/core/extensions/logging?tabs=command-line#create-logs-in-main)」を参照してください。
 
-*Program.cs* と *Startup.cs* からログを記録する場合に適用できる制限がいくつかあります。
+*Program.cs* と *Startup.cs* からログを記録する場合に制限がいくつかあります。
 
-* テレメトリは、[InMemoryChannel](./telemetry-channels.md) テレメトリ チャネルを使用して送信されます。
+* テレメトリは、[InMemoryChannel](./telemetry-channels.md) テレメトリ チャネルを介して送信されます。
 * テレメトリには[サンプリング](./sampling.md)は適用されません。
 * 標準の[テレメトリ初期化子またはプロセッサ](./api-filtering-sampling.md)は使用できません。
 
@@ -153,8 +154,8 @@ namespace WebApplication
                 {
                     // Providing an instrumentation key is required if you're using the
                     // standalone Microsoft.Extensions.Logging.ApplicationInsights package,
-                    // or when you need to capture logs during application startup, for example
-                    // in the Program.cs or Startup.cs itself.
+                    // or when you need to capture logs during application startup, such as
+                    // in Program.cs or Startup.cs itself.
                     builder.AddApplicationInsights(
                         context.Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
 
@@ -170,10 +171,12 @@ namespace WebApplication
 }
 ```
 
-前述のコードでは、`ApplicationInsightsLoggerProvider` に `"APPINSIGHTS_CONNECTIONSTRING"` 接続文字列が設定され、フィルタを適用してログ レベルを <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> に設定しています。
+前のコードでは、`ApplicationInsightsLoggerProvider` は `"APPINSIGHTS_CONNECTIONSTRING"` 接続文字列を使用して構成されています。 フィルターが適用され、ログ レベルが <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> に設定されます。
 
 > [!IMPORTANT]
-> インストルメンテーション キーよりも、[接続文字列](./sdk-connection-string.md?tabs=net)を使用することをお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 接続文字列により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+> インストルメンテーション キーに対して[接続文字列](./sdk-connection-string.md?tabs=net)をお勧めします。 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する *必要* があります。 
+>
+> 接続文字列により、テレメトリ データと関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 #### <a name="example-startupcs"></a>Startup.cs の例
 
@@ -232,7 +235,7 @@ namespace WebApplication
 
 ## <a name="console-application"></a>コンソール アプリケーション
 
-インストール済みパッケージ:
+インストールされているパッケージは次のとおりです。
 
 ```xml
 <ItemGroup>
@@ -275,8 +278,8 @@ namespace ConsoleApp
             }
             finally
             {
-                // Explicitly call Flush() followed by delay is required in Console Apps.
-                // This is to ensure that even if application terminates, telemetry is sent to the back-end.
+                // Explicitly call Flush() followed by Delay, as required in console apps.
+                // This ensures that even if the application terminates, telemetry is sent to the back end.
                 channel.Flush();
 
                 await Task.Delay(TimeSpan.FromMilliseconds(1000));
@@ -287,7 +290,7 @@ namespace ConsoleApp
 
 ```
 
-前の例では、`Microsoft.Extensions.Logging.ApplicationInsights` パッケージが使用されています。 既定では、この構成では、Application Insights にデータを送信するために、"必要最小限" の `TelemetryConfiguration` が使用されます。 必要最小限とは、`InMemoryChannel` が使用されるチャネルであることを示します。 サンプリングも標準の `TelemetryInitializer` もありません。 この動作は、コンソール アプリケーションでは、次の例に示すようにオーバーライドできます。
+前の例では、`Microsoft.Extensions.Logging.ApplicationInsights`パッケージが使用されています。 既定では、この構成により、Application Insights の `InMemoryChannel`チャネルにデータを送信するために、"必要最小限" の `TelemetryConfiguration` 設定が使用されます。 サンプリングも標準の `TelemetryInitializer` インスタンスもありません。 この動作は、コンソール アプリケーションでは、次の例に示すようにオーバーライドできます。
 
 次の追加パッケージをインストールします。
 
@@ -295,7 +298,7 @@ namespace ConsoleApp
 <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.17.0" />
 ```
 
-次のセクションでは、<xref:Microsoft.Extensions.Options.ConfigureOptions%601.Configure(%600)> メソッドを使用して既定の `TelemetryConfiguration` をオーバーライドする方法を示します。 この例では、`ServerTelemetryChannel` とサンプリングを設定します。 カスタム ITelemetryInitializer を TelemetryConfiguration に追加します。
+次のセクションでは、<xref:Microsoft.Extensions.Options.ConfigureOptions%601.Configure(%600)> メソッドを使用して既定の `TelemetryConfiguration` 設定をオーバーライドする方法を示します。 この例では、`ServerTelemetryChannel` とサンプリングを設定します。 これによって、カスタム `TelemetryInitializer` インスタンスが `TelemetryConfiguration` に追加されます。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;
@@ -322,7 +325,7 @@ namespace ConsoleApp
                     {
                         config.TelemetryChannel = channel;
 
-                        // Optional: implement your own TelemetryInitializer and configure it here
+                        // Optional: implement your own TelemetryInitializer instance and configure it here
                         // config.TelemetryInitializers.Add(new MyTelemetryInitializer());
 
                         config.DefaultTelemetrySink.TelemetryProcessorChainBuilder.UseSampling(5);
@@ -342,8 +345,8 @@ namespace ConsoleApp
             }
             finally
             {
-                // Explicitly call Flush() followed by delay is required in Console Apps.
-                // This is to ensure that even if application terminates, telemetry is sent to the back-end.
+                // Explicitly call Flush() followed by Delay, as required in console apps.
+                // This ensures that even if the application terminates, telemetry is sent to the back end.
                 channel.Flush();
 
                 await Task.Delay(TimeSpan.FromMilliseconds(1000));
@@ -353,15 +356,15 @@ namespace ConsoleApp
 }
 ```
 
-## <a name="control-logging-level"></a>ログ記録レベルの制御
+## <a name="logging-level"></a>ログ記録レベル
 
-`ILogger` の実装には、[ログのフィルタリング](/dotnet/core/extensions/logging#how-filtering-rules-are-applied)を適用するための組み込みメカニズムがあります。 これにより、Application Insights プロバイダーなどの、各登録済みプロバイダーに送信されるログを制御できます。 フィルター処理は、構成 (例えば、*appsettings.json* ファイルを使用) またはコードで行うことができます。
+`ILogger` の実装には、[ログのフィルタリング](/dotnet/core/extensions/logging#how-filtering-rules-are-applied)を適用するための組み込みメカニズムがあります。 このフィルタリングにより、Application Insights プロバイダーなどの、各登録済みプロバイダーに送信されるログを制御できます。 フィルター処理は、構成 (たとえば、*appsettings.json* ファイルを使用) またはコードで使用できます。
 
 次の例は、`ApplicationInsightsLoggerProvider` にフィルター ルールを適用する方法を示しています。
 
 ### <a name="create-filter-rules-in-configuration-with-appsettingsjson"></a>appsettings.json を使用して構成でフィルター規則を作成する
 
-`ApplicationInsightsLoggerProvider` には、"ApplicationInsights" という別名が付けられています。 *appsettings.json* の次のセクションでは、Application Insights の既定の <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> ログレベルを、<xref:Microsoft.Extensions.Logging.LogLevel.Error?displayProperty=nameWithType> 以上のレベルで "Microsoft" で始まるログ カテゴリに上書きしています。
+`ApplicationInsightsLoggerProvider` には、"ApplicationInsights" という別名が付けられています。 *appsettings.json* の次のセクションでは、Application Insights の既定の <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> ログ レベルをオーバーライドし、"Microsoft" で始まるカテゴリを <xref:Microsoft.Extensions.Logging.LogLevel.Error?displayProperty=nameWithType> 以上のレベルでログに記録するようにしています。
 
 ```json
 {
@@ -380,7 +383,10 @@ namespace ConsoleApp
 
 ### <a name="create-filter-rules-in-code"></a>コードでフィルター規則を作成する
 
-次のコード スニペットでは、すべてのカテゴリからの "<xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType>" 以上と、"Microsoft" で始まるカテゴリからの "<xref:Microsoft.Extensions.Logging.LogLevel.Error?displayProperty=nameWithType>" 以上が、`ApplicationInsightsLoggerProvider` に送信されるようにログが構成されます。
+次のコード スニペットでは、これらの項目に対して `ApplicationInsightsLoggerProvider` に送信されるログを構成します。
+
+- すべてのカテゴリで <xref:Microsoft.Extensions.Logging.LogLevel.Warning?displayProperty=nameWithType> 以上
+- "Microsoft" で始まるカテゴリで <xref:Microsoft.Extensions.Logging.LogLevel.Error?displayProperty=nameWithType> 以上
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -392,11 +398,12 @@ Host.CreateDefaultBuilder(args)
     });
 ```
 
-この前のコードは、*appsettings.json* の前のセクションと機能的に同様です。 詳細については、「[.NET での構成](/dotnet/core/extensions/configuration)」を参照してください。
 
 ## <a name="logging-scopes"></a>ログのスコープ
 
-`ApplicationInsightsLoggingProvider` では、[ログのスコープ](/dotnet/core/extensions/logging#log-scopes)がサポートされており、スコープは既定で有効にされています。 スコープの型が `IReadOnlyCollection<KeyValuePair<string,object>>` の場合、コレクション内の各キーと値のペアが、カスタム プロパティとして、Application Insights テレメトリに追加されます。 次の例で、ログは `TraceTelemetry` としてキャプチャされ、プロパティに `("MyKey", "MyValue")` が含まれます。
+`ApplicationInsightsLoggingProvider` では、[ログ スコープ](/dotnet/core/extensions/logging#log-scopes)がサポートされます。 スコープは既定で有効になっています。 
+
+スコープの型が `IReadOnlyCollection<KeyValuePair<string,object>>` の場合、コレクション内のキーと値の各ペアが、カスタム プロパティとして、Application Insights テレメトリに追加されます。 次の例で、ログは `TraceTelemetry` としてキャプチャされ、プロパティに `("MyKey", "MyValue")` が含まれます。
 
 ```csharp
 using (_logger.BeginScope(new Dictionary<string, object> { ["MyKey"] = "MyValue" }))
@@ -405,7 +412,7 @@ using (_logger.BeginScope(new Dictionary<string, object> { ["MyKey"] = "MyValue"
 }
 ```
 
-他の型がスコープとして使用されている場合は、それらがアプリケーション情報分析テレメトリのプロパティ "Scope" の下に格納されます。 次の例で、`TraceTelemetry` は、スコープを格納する "Scope" というプロパティがあります。
+他の型がスコープとして使用される場合は、Application Insights テレメトリのプロパティ `Scope` に格納されます。 次の例では、`TraceTelemetry` に、スコープを含む `Scope` と呼ばれるプロパティが設定されます。
 
 ```csharp
     using (_logger.BeginScope("hello scope"))
@@ -418,15 +425,17 @@ using (_logger.BeginScope(new Dictionary<string, object> { ["MyKey"] = "MyValue"
 
 ### <a name="what-are-the-old-and-new-versions-of-applicationinsightsloggerprovider"></a>ApplicationInsightsLoggerProvider の古いバージョンと新しいバージョンとは何ですか?
 
-[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) には組み込みの ApplicationInsightsLoggerProvider (Microsoft.ApplicationInsights.AspNetCore.Logging.ApplicationInsightsLoggerProvider) が含まれており、**ILoggerFactory** 拡張メソッドを使用して有効にしました。 このプロバイダーは、バージョン 2.7.1 からは廃止とマークされています。 次のメジャー バージョンの変更で完全に削除されます。 [Microsoft.ApplicationInsights.AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) パッケージ自体は古くありません。 要求や依存関係などの監視を有効にするために必要です。
+[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) には、組み込みの `ApplicationInsightsLoggerProvider` (`Microsoft.ApplicationInsights.AspNetCore.Logging.ApplicationInsightsLoggerProvider`) インスタンスが含まれており、`ILoggerFactory` 拡張メソッドによって有効化されていました。 このプロバイダーは、バージョン 2.7.1 からは廃止とマークされています。 次のメジャー バージョンの変更で完全に削除される予定です。 
 
-推奨される代替手段は、改善された ApplicationInsightsLoggerProvider (Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider) と、それを有効にするための ILoggerBuilder の拡張メソッドが含まれる、新しいスタンドアロン パッケージ [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) です。
+[Microsoft.ApplicationInsights.AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) パッケージ自体は古くありません。 要求や依存関係などの項目の監視を有効にする必要があります。
 
-[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.7.1 は新しいパッケージへの依存関係を取得し、ILogger のキャプチャを自動的に有効にします。
+代替として提案されるのは、新しいスタンドアロン パッケージ [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) です。これには、改善された `ApplicationInsightsLoggerProvider` インスタンス (`Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider`) と、有効化のために `ILoggerBuilder` に対する拡張メソッドが含まれています。
+
+[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.7.1 は新しいパッケージへの依存関係を取得し、`ILogger` のキャプチャを自動的に有効にします。
 
 ### <a name="why-are-some-ilogger-logs-shown-twice-in-application-insights"></a>一部の ILogger ログが Application Insights に 2 回表示されるのはなぜですか?
 
-`ILoggerFactory` で `AddApplicationInsights` を呼び出すことによって、古い (廃止されている) バージョンの ApplicationInsightsLoggerProvider を有効にした場合、重複が発生する可能性があります。 **Configure** メソッドに次のような行があるかどうかを確認し、ある場合はそれを削除してください。
+`ILoggerFactory` で `AddApplicationInsights` を呼び出して `ApplicationInsightsLoggerProvider` の以前の (古い) バージョンを有効にしている場合、重複が発生する可能性があります。 `Configure` メソッドに次のようなコードがあるかどうかを確認し、ある場合はそれを削除してください。
 
 ```csharp
  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -450,17 +459,15 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.7.1 に更新しており、ILogger からのログが自動的にキャプチャされます。 この機能を完全にオフにするにはどうすればよいですか?
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Microsoft.ApplicationInsights.AspNet SDK バージョン 2.7.1 に更新しており、ILogger からのログが自動的にキャプチャされます。 この機能を完全にオフにするにはどうすればよいですか?
 
-ログ記録をフィルター処理する一般的な方法については、「[ログ記録レベルの制御](#control-logging-level)」セクションをご覧ください。 ApplicationInsightsLoggerProvider をオフにするには、`LogLevel.None` を使用します。
-
-ログの構成の呼び出しで、`builder` が <xref:Microsoft.Extensions.Logging.ILoggingBuilder> の部分:
+ログ記録をフィルター処理する一般的な方法については、「[ログ記録レベル](#logging-level)」セクションをご覧ください。 `ApplicationInsightsLoggerProvider` をオフにするには、ログを構成するための呼び出しで `LogLevel.None` を使用します。 次のコマンドで `builder` は <xref:Microsoft.Extensions.Logging.ILoggingBuilder> です。
 
 ```csharp
 builder.AddFilter<ApplicationInsightsLoggerProvider>("", LogLevel.None);
 ```
 
-*appsettings.json* ファイルの場合:
+*appsettings.json* ファイルの変更内容を次に示します。
 
 ```json
 {
@@ -476,16 +483,16 @@ builder.AddFilter<ApplicationInsightsLoggerProvider>("", LogLevel.None);
 
 ### <a name="why-do-some-ilogger-logs-not-have-the-same-properties-as-others"></a>一部の ILogger ログのプロパティが他と同じではないのはなぜですか?
 
-Application Insights では、他のすべてのテレメトリに使用されるのと同じ TelemetryConfiguration を使用して、ILogger ログのキャプチャと送信が行われます。 ただし、例外があります。 既定では、*Program.cs* または *Startup.cs* からログを記録するときは、TelemetryConfiguration は完全にはセットアップされません。 これらの場所からのログには既定の構成がないため、すべての TelemetryInitializers と TelemetryProcessors は実行されません。
+Application Insights では、他のすべてのテレメトリに使用されるのと同じ `TelemetryConfiguration`情報を使用して、`ILogger` ログのキャプチャと送信が行われます。 ただし、例外があります。 既定では、*Program.cs* または *Startup.cs* からログを記録するとき、`TelemetryConfiguration` は完全には設定されません。 これらの場所からのログには既定の構成がないため、すべての `TelemetryInitializer` インスタンスおよび `TelemetryProcessor` インスタンスは実行されません。
 
 ### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-i-want-to-log-some-additional-custom-telemetry-manually-how-should-i-do-that"></a>スタンドアロン パッケージ Microsoft.Extensions.Logging.ApplicationInsights を使用しており、いくつかの追加カスタム テレメトリを手動でログに記録しようと考えています。 どうすればよいですか?
 
-スタンドアロン パッケージを使用すると、`TelemetryClient` が DI コンテナーに挿入されないので、次に示すように、`TelemetryClient` の新しいインスタンスを作成し、ロガー プロバイダーで使われるものと同じ構成を使用する必要があります。 これにより、カスタム テレメトリと、ILogger からのテレメトリのすべてに、同じ構成が使われることが保証されます。
+スタンドアロン パッケージを使用するとき、`TelemetryClient` は依存関係挿入 (DI) コンテナーに挿入されません。 次のコードに示すように、`TelemetryClient` の新しいインスタンスを作成し、ロガー プロバイダーが使用しているのと同じ構成を使用する必要があります。 これにより、カスタム テレメトリと、`ILogger` のテレメトリのすべてに、同じ構成が使われることが保証されます。
 
 ```csharp
 public class MyController : ApiController
 {
-   // This TelemetryClient can be used to track additional telemetry using TrackXXX() api.
+   // This TelemetryClient instance can be used to track additional telemetry through the TrackXXX() API.
    private readonly TelemetryClient _telemetryClient;
    private readonly ILogger _logger;
 
@@ -500,9 +507,11 @@ public class MyController : ApiController
 > [!NOTE]
 > `Microsoft.ApplicationInsights.AspNetCore` パッケージを使用して Application Insights を有効にする場合は、このコードを変更して、コンストラクター内で直接 `TelemetryClient` を取得します。 例については、[こちらの FAQ](./asp-net-core.md#frequently-asked-questions) をご覧ください。
 
-### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>ILogger ログからはどのような種類の Application Insights テレメトリが生成されますか? または、Application Insights ではどこで ILogger ログを見ることができますか?
+### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-where-can-i-see-ilogger-logs-in-application-insights"></a>ILogger ログからはどのような種類の Application Insights テレメトリが生成されますか? Application Insights ではどこで ILogger ログを見ることができますか?
 
-ApplicationInsightsLoggerProvider では、ILogger ログがキャプチャされて、それから TraceTelemetry が作成されます。 `ILogger` で `Log` メソッドに Exception オブジェクトを渡した場合、TraceTelemetry の代わりに *ExceptionTelemetry* が作成されます。 これらのテレメトリ項目は、ポータル、分析、Visual Studio ローカル デバッガーなど、Application Insights の他の TraceTelemetry または ExceptionTelemetry と同じ場所で見ることができます。
+`ApplicationInsightsLoggerProvider` は、`ILogger` ログをキャプチャし、それから `TraceTelemetry` を作成します。 `Exception` オブジェクトが `ILogger`の `Log` メソッドに渡されると、`TraceTelemetry` の代わりに `ExceptionTelemetry` が作成されます。 
+
+これらのテレメトリ項目は、Azure portal、分析、Visual Studio ローカル デバッガーなど、Application Insights の他の `TraceTelemetry` 項目または `ExceptionTelemetry` 項目と同じ場所で見ることができます。
 
 常に `TraceTelemetry` を送信する場合は、このスニペットを使用します。
 

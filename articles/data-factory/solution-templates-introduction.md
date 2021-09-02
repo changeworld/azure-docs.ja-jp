@@ -2,17 +2,18 @@
 title: テンプレートの概要
 description: 定義済みのテンプレートを使用して Azure Data Factory の使用をすぐに開始する方法について説明します。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.author: susabat
 author: ssabat
 ms.custom: seo-lt-2019
-ms.date: 01/04/2019
-ms.openlocfilehash: a95ef6e04f7a49f33f2bb0551110d7aa0f9bd581
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/04/2021
+ms.openlocfilehash: bfd63e048d2783d84dbc37710851492134b6d0e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905614"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736988"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -24,9 +25,9 @@ ms.locfileid: "107905614"
 
 次の 2 つの方法で、テンプレートから Data Factory パイプラインの作成を開始できます。
 
-1.  [概要] ページで **[Create pipeline from template]\(テンプレートからパイプラインを作成する\)** を選択し、テンプレート ギャラリーを開きます。
+1.  Data Factory のホーム ページの **[その他を参照]** セクションで、 **[パイプラインのテンプレート]** を選択してテンプレート ギャラリーを開きます。
 
-    ![[概要] ページからテンプレート ギャラリーを開く](media/solution-templates-introduction/templates-intro-image1.png)
+    ![[概要] ページからテンプレート ギャラリーを開く](media/doc-common-process/home-page-pipeline-templates-tile.png)
 
 1.  リソース エクスプローラーの [作成者] タブで、[ **+** ] を選択し、 **[Pipeline from template]\(テンプレートのパイプライン\)** を選択してテンプレート ギャラリーを開きます。
 

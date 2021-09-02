@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: dc279ea48472ac86dd9502e37788e8b2aad4f37c
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: f0caaea2296a8981df4717497cb641676b43dea1
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906806"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237077"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
@@ -26,7 +26,7 @@ ms.locfileid: "107906806"
 
 1. 「**修復の手順**」セクションの指示に従ってください。 レコメンデーションごとに、独自の指示のセットがあります。 HTTPS 経由のトラフィックのみを許可するようにアプリケーションを構成するための修復手順のスクリーンショットを次に示します。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="レコメンデーションの手動修復手順" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="レコメンデーションの手動修復手順。" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
 
 1. 完了すると、問題が解決されたかどうかを示す通知が表示されます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "107906806"
 > [!TIP]
 > **修正プログラム** は、特定のレコメンデーションにのみ使用できます。 使用可能な修正プログラムがあるレコメンデーションを確認するには、レコメンデーションの一覧に対して **対応アクション** フィルターを使用します。
 > 
-> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="レコメンデーション リストの上にあるフィルターを使用して、修正プログラムオプションがあるレコメンデーションを見つける":::
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="レコメンデーション リストの上にあるフィルターを使用して、修正プログラム オプションがあるレコメンデーションを見つける。":::
 
 **修正プログラム** を実装するには:
 
@@ -54,7 +54,7 @@ ms.locfileid: "107906806"
 
 1. 確認ボックスで、修復の詳細と影響を確認します。
 
-    ![クイック修復](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
+    ![クイック修正。](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
     > 影響は、 **[修復]** をクリックした後に開かれる **[リソースの修復]** ウィンドウの灰色のボックスに表示されます。 ここには、**修正プログラム** を進めたときに実行される変更内容が表示されます。

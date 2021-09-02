@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 06/11/2021
+ms.date: 07/01/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack
-ms.openlocfilehash: dff2e9c0c1de1b92f0d00d5dc50aeb7dadca348f
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 2da9b19bb0d2bcdf09cb478898590d55398b2cc9
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030901"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180068"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
@@ -46,13 +46,15 @@ ms.locfileid: "112030901"
     * コンピューティング インスタンスを作成します。これにより、SDK が自動的にインストールされ、ML ワークフロー用に事前構成されます。 詳細については、「[Azure Machine Learning コンピューティング インスタンスの作成と管理](how-to-create-manage-compute-instance.md)」を参照してください。 
 
     * SDK の[既定のインストール](/python/api/overview/azure/ml/install#default-install)が含まれる、[`automl` パッケージを自分でインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
+
+    [!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
     
     > [!WARNING]
     > Python 3.8 は `automl` と互換性がありません。 
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
-実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習によって、`classification`、`regression`、`forecasting` というタスクの種類がサポートされています。 [タスクの種類](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)についての詳細情報を参照してください。
+実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習によって、`classification`、`regression`、`forecasting` というタスクの種類がサポートされています。 [タスクの種類](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting)についての詳細情報を参照してください。
 
 次のコードでは、`AutoMLConfig` コンストラクターで `task` パラメーターが使用され、実験の種類が `classification` として指定されています。
 
@@ -71,14 +73,14 @@ automl_config = AutoMLConfig(task = "classification")
 - データは表形式である必要があります。
 - 予測する値、ターゲット列は、データ内にある必要があります。
 
-**リモート実験の場合**、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 AutoML により、リモート コンピューティングでの作業時に [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset) のみが受け入れられます。 
+**リモート実験の場合**、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 自動 ML により、リモート コンピューティングでの作業時に [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset) のみが受け入れられます。 
 
 Azure Machine Learning のデータセットによって、次の機能が公開されます。
 
 * 静的ファイルまたは URL ソースからワークスペースにデータを簡単に転送する。
 * クラウド コンピューティング リソースでの実行時にデータをトレーニング スクリプトで使用できるようにする。 `Dataset` クラスを使用してコンピューティング ターゲットにデータをマウントする例については、[データセットを使ってトレーニングする方法](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)を参照してください。
 
-次のコードにより、Web URL から TabularDataset が作成されます。 ローカル ファイルやデータストアなどの他のソースからデータセットを作成する方法のコード例については、「[TabularDatasets を作成する](how-to-create-register-datasets.md#create-a-tabulardataset)」を参照してください。
+次のコードにより、Web URL から TabularDataset が作成されます。 ローカル ファイルやデータストアなどの他のソースからデータセットを作成する方法のコード例については、「[TabularDataset を作成する](how-to-create-register-datasets.md#create-a-tabulardataset)」を参照してください。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -108,6 +110,22 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 |**20,000&nbsp;行&nbsp;より&nbsp;少ない**| クロス検証アプローチが適用されます。 フォールドの既定の数は行数によって異なります。 <br> **データセットが 1,000 行より少ない場合は**、10 個のフォールドが使用されます。 <br> **行が 1,000 から 20,000 の間の場合は**、3 つのフォールドが使用されます。
 
 現時点では、モデルの評価用に独自の **テストデータ** を提供する必要があります。 モデル評価のために独自のテスト データを取り込むコード例については、[この Jupyter ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)の **テスト** に関するセクションを参照してください。
+
+### <a name="large-data"></a>大きなデータ 
+
+自動 ML でサポートされる限られた数のアルゴリズム数は、大きなデータのトレーニングに対応しており、小さな仮想マシン上でビッグ データのモデルを構築を成功させることができます。 自動 ML ヒューリスティックは、データ サイズ、仮想マシンのメモリ サイズ、実験のタイムアウト、特徴量化設定などのプロパティを利用して、大きなデータのアルゴリズムを適用すべきかどうかを決定します。 [自動 ML でサポートされるモデルについてはこちらを参照してください](#supported-models)。 
+
+* 回帰については、[オンライン勾配降下リグレッサー](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest)および[高速線形リグレッサー](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)に関するページ
+
+* 分類については、[平均化パーセプトロン分類子](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)および[線形 SVM 分類子](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)に関するページ。線形 SVM 分類子には大きなデータ用と小さなデータ用両方のバージョンがあります。
+
+これらのヒューリスティックをオーバーライドする場合は、次の設定を適用します。 
+
+タスク | 設定 | メモ
+|---|---|---
+データ&nbsp;ストリーミング アルゴリズムのブロック | `AutoMLConfig` オブジェクトに `blocked_models`。使用しないモデルを指定します。 | 実行エラーが発生するか実行時間が長くなります
+&nbsp;データ&nbsp;ストリーミング&nbsp;アルゴリズムの使用| `AutoMLConfig` オブジェクトに `allowed_models`。使用するモデルを指定します。| 
+&nbsp;データ&nbsp;ストリーミング&nbsp;アルゴリズムの使用 <br> [(スタジオ UI 実験)](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)|使用するビッグ データ アルゴリズムを除くすべてのモデルをブロックします。 |
 
 ## <a name="compute-to-run-experiment"></a>実験を実行するために計算する
 
@@ -183,7 +201,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 次の表は、サポートされるモデルをタスクの種類別にまとめたものです。 
 
 > [!NOTE]
-> 自動 ML で作成したモデルを [ONNX モデル](concept-onnx.md) としてエクスポートすることを予定している場合、ONNX 形式に変換できるのは * の付いたアルゴリズムだけであることにご注意ください。 [モデルの ONNX への変換](concept-automated-ml.md#use-with-onnx)の詳細についてご確認ください。 <br> <br> また、ONNX では現在、分類と回帰のタスクのみがサポートされていることにもご注意ください。 
+> 自動 ML で作成したモデルを [ONNX モデル](concept-onnx.md)としてエクスポートすることを予定している場合、ONNX 形式に変換できるのは * (アスタリスク) の付いたアルゴリズムだけであることにご注意ください。 [モデルの ONNX への変換](concept-automated-ml.md#use-with-onnx)の詳細についてご確認ください。 <br> <br> また、ONNX では現在、分類と回帰のタスクのみがサポートされていることにもご注意ください。 
 
 分類 | 回帰 | 時系列予測
 |-- |-- |--
@@ -204,6 +222,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ||| Average
 ||| SeasonalAverage
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
+
 ### <a name="primary-metric"></a>主要メトリック
 `primary metric` パラメーターによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
 
@@ -213,14 +232,13 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 |分類 | 回帰 | 時系列予測
 |--|--|--
-|`accuracy`| `spearman_correlation` | `spearman_correlation`
-|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
-|`average_precision_score_weighted` | `r2_score` | `r2_score`
-|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`accuracy`| `spearman_correlation` | `normalized_root_mean_squared_error`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `r2_score`
+|`average_precision_score_weighted` | `r2_score` | `normalized_mean_absolute_error`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | 
 |`precision_score_weighted` |
 
-### <a name="primary-metrics-for-classification-scenarios"></a>分類シナリオの主要メトリック 
-
+#### <a name="metrics-for-classification-scenarios"></a>分類シナリオのメトリック 
 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、小さいデータセット、非常に大きいクラス傾斜 (クラスの不均衡) があるデータセットに対して、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されない可能性があります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動 ML が完了したら、業務上の必要に最も適したメトリックを基準にして、最適なモデルを選ぶことができます。
 
 | メトリック | ユース ケースの例 |
@@ -231,8 +249,8 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 | `norm_macro_recall` | チャーン予測 |
 | `precision_score_weighted` |  |
 
-### <a name="primary-metrics-for-regression-scenarios"></a>回帰シナリオの主要メトリック
-
+#### <a name="metrics-for-regression-scenarios"></a>回帰シナリオのメトリック
+ 
 `r2_score` や `spearman_correlation` などのメトリックは、予測する値の規模が多くの桁数に及ぶ場合に、モデルの品質をより適切に表すことができます。 たとえば、給与の推定では、多くの人の給与は 20,000 ドルから 100,000 ドルですが、一部の給与は 100,000,000 ドルの範囲になり、非常に規模が大きくなります。 
 
 この場合、`normalized_mean_absolute_error` と `normalized_root_mean_squared_error` では、給与が 30,000 ドルの人と、給与が 20,000,000 ドルの人に対して、同じように 20,000 ドルの予測誤差が処理されます。 実際には、20000 ドルと隔たった 20000000 ドルの給与のみ予測することは非常に近く (相対差異は 0.1% で小さい)、一方 20000 ドルと隔たった 30000 ドルを予測することは近くありません (相対差異は 67% で大きい)。 `normalized_mean_absolute_error` と `normalized_root_mean_squared_error` は、予測する値が同じ規模になる場合に便利です。
@@ -244,14 +262,12 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 | `r2_score` | 飛行機の遅延、給与の見積もり、バグの解決時間 |
 | `normalized_mean_absolute_error` |  |
 
-### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>時系列予測シナリオの主要メトリック
-
-上記の回帰の説明を参照してください。
+#### <a name="metrics-for-time-series-forecasting-scenarios"></a>時系列予測シナリオのメトリック
+推奨事項は、回帰シナリオのものと似ています。 
 
 | メトリック | ユース ケースの例 |
 | ------ | ------- |
-| `spearman_correlation` | |
-| `normalized_root_mean_squared_error` | 価格の予測 (予想)、在庫の最適化、需要の予測 |
+| `normalized_root_mean_squared_error` | 価格の予測 (予想)、在庫の最適化、需要の予測 | 
 | `r2_score` | 価格の予測 (予想)、在庫の最適化、需要の予測 |
 | `normalized_mean_absolute_error` | |
 
@@ -353,6 +369,9 @@ automl_classifier = AutoMLConfig(
 スコアに達した後| `experiment_exit_score` を使用すると、指定した主要メトリックのスコアに達した後に実験が完了します。
 
 ## <a name="run-experiment"></a>実験を実行する
+
+> [!WARNING]
+> 同じ構成設定とプライマリ メトリックを使用して実験を複数回実行した場合、各実験の最終的なメトリック スコアおよび生成されるモデルに変動が見られる可能性があります。 自動 ML のアルゴリズムには特有のランダム性があり、実験によって出力されるモデルおよび推奨モデルの最終的なメトリック スコア (精度など) にわずかな変動が生じる可能性があります。 また、モデル名が同じだが、使用されるハイパーパラメーターが異なる結果が表示される可能性もあります。 
 
 自動化された ML の場合は `Experiment` オブジェクトを作成します。これは、実験を実行するために使用される `Workspace` 内の名前付きオブジェクトです。
 
@@ -492,8 +511,6 @@ best_run, model_from_aml = automl_run.get_output()
 print_model(model_from_aml)
 
 ```
-> [!NOTE]
-> 自動 ML のアルゴリズムには特有のランダム性があり、推奨モデルの最終的なメトリック スコア (精度など) にわずかな変動が生じる可能性があります。 自動 ML によって、トレーニングとテストの分割、トレーニングと検証の分割、クロス検証などのデータに対する操作も必要に応じて実行されます。 そのため、同じ構成設定とプライマリ メトリックを使用して実験を複数回実行した場合、これらの要因により、各実験の最終的なメトリック スコアに変動が見られる可能性があります。 
 
 ## <a name="monitor-automated-machine-learning-runs"></a><a name="monitor"></a> 自動機械学習の実行を監視する
 
@@ -519,14 +536,14 @@ RunDetails(run).show()
 
 ```Python
 
-best_run, fitted_model = run.get_output()
+best_run = run.get_best_child()
 print(fitted_model.steps)
 
 model_name = best_run.properties['model_name']
 description = 'AutoML forecast example'
 tags = None
 
-model = remote_run.register_model(model_name = model_name, 
+model = run.register_model(model_name = model_name, 
                                   description = description, 
                                   tags = tags)
 ```
@@ -554,7 +571,5 @@ model = remote_run.register_model(model_name = model_name,
 + [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 
 + [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)についてさらに詳しく学習する。
-
-+ [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。
 
 + [自動 ML 実験のトラブルシューティング](how-to-troubleshoot-auto-ml.md)。 

@@ -1,27 +1,23 @@
 ---
-title: Azure Blob Storage での NFS 3.0 のパフォーマンスに関する考慮事項 (プレビュー) | Microsoft Docs
+title: Azure Blob Storage での NFS 3.0 のパフォーマンスに関する考慮事項 | Microsoft Docs
 description: この記事の推奨事項を使用して、ネットワーク ファイル システム (NFS) 3.0 のストレージ要求のパフォーマンスを最適化します。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.custom: references_regions
-ms.openlocfilehash: 6a5ebed9f6b8bf5ed40829e13bbbcc43b7ebbc8a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e8d024832bf74873fb56a9d41d6d27544aa701f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069546"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725052"
 ---
-# <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項 (プレビュー)
+# <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項
 
-Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 この記事には、ストレージ要求のパフォーマンスを最適化するのに役立つ推奨事項が含まれています。 Azure Blob Storage での NFS 3.0 のサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
-
-> [!NOTE]
-> Azure Blob Storage での NFS 3.0 プロトコルのサポートはパブリック プレビューの段階にあります。 Standard レベルのパフォーマンスを備えた GPV2 ストレージ アカウントと Premium パフォーマンス レベルのブロック BLOB ストレージ アカウントをすべてのパブリック リージョンでサポートします。
+Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 この記事には、ストレージ要求のパフォーマンスを最適化するのに役立つ推奨事項が含まれています。 Azure Blob Storage での NFS 3.0 のサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート](network-file-system-protocol-support.md)」を参照してください。
 
 ## <a name="add-clients-to-increase-throughput"></a>スループット向上のためにクライアントを追加する 
 
@@ -46,11 +42,20 @@ Azure Blob Storage は、ストレージ アカウントのエグレスとイン
 > [!div class="mx-imgBorder"]
 > ![相対パフォーマンス](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
+## <a name="improve-read-ahead-size-to-increase-large-file-read-throughput"></a>先行読み取りサイズを改善して、大きなファイル読み取りスループットを向上させる 
+read_ahead_kb カーネル パラメーターは、特定の読み取り要求を処理した後に読み取る必要がある追加データの量を表します。 このパラメーターを 16 MB に増やして、大きなファイル読み取りスループットを向上させることができます。 
+
+```
+export AZMNT=/your/container/mountpoint
+
+echo 15728640 > /sys/class/bdi/0:$(stat -c "%d" $AZMNT)/read_ahead_kb
+```
+
 ## <a name="avoid-frequent-overwrites-on-data"></a>データが頻繁に上書きされないようにする
 
 新規書き込み操作より、上書き操作の方が完了するまでに時間がかかります。 これは、NFS の上書き操作 (特に、部分的なインプレース ファイル編集) が、読み取り、変更、書き込み操作といういくつかの基になる BLOB 操作を組み合わせたものであるためです。 そのため、頻繁にインプレース編集が必要なアプリケーションは、NFS が有効になっている BLOB ストレージ アカウントには適していません。 
 
-## <a name="deploy-azure-hpc-cache-for-latency-senstive-applications"></a>待機時間に厳密なアプリケーションのための Azure HPC Cache のデプロイ
+## <a name="deploy-azure-hpc-cache-for-latency-sensitive-applications"></a>待機時間に厳密なアプリケーションのための Azure HPC Cache をデプロイする
 
 アプリケーションによっては、高スループットに加えて待機時間の短縮が必要になることがあります。 [Azure HPC Cache](../../hpc-cache/nfs-blob-considerations.md) をデプロイすると、待機時間を大幅に向上させることができます。 [Blob Storage での待ち時間](storage-blobs-latency.md) の詳細を確認してください。 
 
@@ -68,6 +73,6 @@ Azure Blob Storage は、ストレージ アカウントのエグレスとイン
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Blob Storage での NFS 3.0 のサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
+- Azure Blob Storage での NFS 3.0 のサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート](network-file-system-protocol-support.md)」を参照してください。
 
-- 開始するには、「[ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。
+- 開始するには、「[ネットワーク ファイル システム (NFS) 3.0 プロトコルを使用して Blob Storage をマウントする](network-file-system-protocol-support-how-to.md)」を参照してください。

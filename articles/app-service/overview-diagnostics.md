@@ -2,17 +2,15 @@
 title: 診断と解決のツール
 description: Azure portal の診断と解決ツールを使用して Azure App Service でのアプリの問題をトラブルシューティングする方法について説明します。
 keywords: アプリ サービス, azure app service, 診断, サポート, web アプリ, トラブルシューティング, セルフヘルプ
-author: jen7714
 ms.topic: article
 ms.date: 10/18/2019
-ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf044baf233c159ff271221522f0f9faf15cc1ed
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962810"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451590"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要
 
@@ -20,15 +18,15 @@ Web アプリケーションを実行するに当たっては、500 エラーが
 
 このエクスペリエンスはアプリの問題発生時刻が過去 24 時間以内である場合に最も役立ちますが、すべての診断グラフを常に分析に利用できます。
 
-App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](./overview.md#app-service-on-linux)、[App Service Environment](./environment/intro.md)、および [Azure Functions](../azure-functions/functions-overview.md) 上のアプリに対しても機能します。
+App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](./overview.md#app-service-on-linux)、[App Service 環境](./environment/intro.md)、および [Azure Functions](../azure-functions/functions-overview.md) 上のアプリに対しても機能します。
 
 ## <a name="open-app-service-diagnostics"></a>App Service 診断を開く
 
-App Service 診断にアクセスするには、[Azure portal](https://portal.azure.com) 上の App Service Web アプリまたは App Service Environment に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** をクリックします。
+App Service 診断にアクセスするには、[Azure portal](https://portal.azure.com) 上の App Service Web アプリまたは App Service 環境に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** をクリックします。
 
 Azure Functions の場合、関数アプリに移動し、上部ナビゲーションにある **[プラットフォーム機能]** をクリックし、 **[リソース管理]** セクションの **[問題の診断と解決]** を選択します。
 
-App Service 診断のホームページ上で、各ホームページ タイルにあるキーワードを使用して、アプリでの問題を最もよく表しているカテゴリを選択できます。 また、このページでは、Windows アプリ用の **診断ツール** を見つけることができます。 「[Diagnostic tools (only for Windows app) (診断ツール (Windows アプリのみ))](#diagnostic-tools-only-for-windows-app)」をご覧ください。
+App Service 診断のホームページ上で、各ホームページ タイルにあるキーワードを使用して、アプリでの問題を最もよく表しているカテゴリを選択できます。 また、このページでは、**診断ツール** を見つけることもできます。 「[診断ツール](#diagnostic-tools)」のセクションを参照してください。
 
 ![ホームページ](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
@@ -83,21 +81,23 @@ Application Insights の例外と依存関係を表示するには、 **[Web App
 
 ![Application Insights およびトラブルシューティングと次のステップ](./media/app-service-diagnostics/troubleshooting-and-next-steps-8.png)
 
-## <a name="diagnostic-tools-only-for-windows-app"></a>診断ツール (Windows アプリのみ)
+## <a name="diagnostic-tools"></a>診断ツール 
 
 診断ツールには、アプリケーション コードの問題、低速化、接続文字列などを調査できるより高度な診断ツールに加えて、 CPU 使用量、要求、およびメモリの問題を緩和できるプロアクティブ ツールが用意されています。
 
-### <a name="proactive-cpu-monitoring"></a>プロアクティブ CPU 監視
+### <a name="proactive-cpu-monitoring-only-for-windows-app"></a>プロアクティブ CPU 監視 (Windows アプリ専用)
 
 プロアクティブ CPU 監視では、お使いのアプリやアプリの子プロセスにおいて多くの CPU リソースを費やしている場合に対策を取るための、簡単かつ事前対応型の方法を提供しています。 高い CPU 負荷の問題を一時的に緩和するために、予期しない問題の実質的な原因が検出されるまで、独自の CPU しきい値ツールを設定できます。 詳細については、「[Mitigate your CPU problems before they happen (CPU の問題を発生する前に軽減する)](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html)」を参照してください。
 
 ![プロアクティブ CPU 監視](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
-### <a name="auto-healing-and-proactive-auto-healing"></a>自動復旧とプロアクティブ自動復旧
+### <a name="auto-healing"></a>自動復旧 
 
-自動復旧は、アプリで予期しない動作が発生した場合に実行できる軽減策です。 要求数、低速の要求、メモリ制限、および HTTP ステータス コードに基づいて独自のルールを設定し、軽減のアクションをトリガーできます。 ツールを使用して、根本的な原因が見つかるまで、予期しない動作を一時的に軽減します。 詳しくは、「[アプリ サービス診断における新しい自動復旧エクスペリエンスの告知](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)」をご覧ください。
+自動復旧は、アプリで予期しない動作が発生した場合に実行できる軽減策です。 要求数、低速の要求、メモリ制限、および HTTP ステータス コードに基づいて独自のルールを設定し、軽減のアクションをトリガーできます。 ツールを使用して、根本的な原因が見つかるまで、予期しない動作を一時的に軽減します。 ツールは、現在、Windows Web アプリ、Linux Web アプリ、および Linux カスタム コンテナーに対して使用できます。 サポートされている条件と軽減策は、Web アプリの種類によって異なります。 詳細については、「[Announcing the new auto healing experience in app service diagnostics (アプリ サービス診断における新しい自動復旧エクスペリエンスの告知)](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)」と「[Announcing Auto Heal for Linux (Linux の自動復旧の告知)](https://azure.github.io/AppService/2021/04/21/Announcing-Autoheal-for-Azure-App-Service-Linux.html)」を参照してください。
 
 ![自動復旧](./media/app-service-diagnostics/auto-healing-10.png)
+
+### <a name="proactive-auto-healing-only-for-windows-app"></a>プロアクティブ自動復旧 (Windows アプリ専用)
 
 プロアクティブ CPU 監視と同様に、プロアクティブ自動復旧は、アプリの予期しない動作を緩和するためのターンキー ソリューションです。 アプリが復旧不可能な状態であると App Service で判断されると、プロアクティブ自動復旧によってアプリが再起動されます。 詳細については、「[Introducing Proactive Auto Heal (プロアクティブな自動修復の概要)](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html)」を参照してください。
 
