@@ -2,30 +2,36 @@
 title: 画像分析の認知スキル
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search の AI エンリッチメント パイプラインの Image Analysis コグニティブ スキルを使用した画像解析を通じてセマンティック テキストを抽出します。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: d6b32dfedcb5ad5322a32c519084eac3858225ba
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91948937"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861491"
 ---
 # <a name="image-analysis-cognitive-skill"></a>画像分析の認知スキル
 
 **画像分析** スキルは､イメージの内容に基づいて豊富な一群のビジュアル フィーチャーを抽出します｡ たとえば､イメージからキャプションを生成したり､タグを生成したり､セレブリティやランドマークを特定したりできます｡ このスキルでは、[Computer Vision](../cognitive-services/computer-vision/overview.md) Cognitive Services によって提供される機械学習モデルが使用されます。 
 
+**画像分析** は、次の要件を満たす画像で動作します。
+
++ イメージが、JPEG、PNG、GIF、または BMP で提示されている
++ イメージのファイル サイズが 4 メガバイト (MB) 未満である
++ イメージのディメンションが 50 x 50 ピクセルよりも大きい値である
+
 > [!NOTE]
-> 少量 (20 件未満のトランザクション) であれば Azure Cognitive Search で無料で実行できますが、ワークロードが大きい場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> このスキルは Cognitive Services にバインドされており、1 日にインデクサーあたり 20 ドキュメントを超えるトランザクションには[課金対象リソース](cognitive-search-attach-cognitive-services.md)が必要です。 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。
+> 
+> さらに、画像抽出は [Azure Cognitive Search による課金対象](https://azure.microsoft.com/pricing/details/search/)になります。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 
+## <a name="odatatype"></a>@odata.type 
 
-## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Vision.ImageAnalysisSkill 
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
@@ -43,8 +49,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | 入力名      | 説明                                          |
 |---------------|------------------------------------------------------|
 | `image`         | 複合型｡ 現在は "/document/normalized_images" フィールドでのみ機能し､ ```imageAction``` が ```none``` 以外の値に設定されている場合に､Azure BLOB インデクサーによって生成されます。 詳しくは､[サンプル](#sample-output) をご覧ください｡|
-
-
 
 ##  <a name="sample-skill-definition"></a>サンプル スキル定義
 
@@ -86,7 +90,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
         }
 ```
+
 ### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>サンプル インデックス (カテゴリ、説明、顔、およびタグ フィールド専用)
+
 ```json
 {
     "fields": [
@@ -298,7 +304,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 }
 
 ```
+
 ### <a name="sample-output-field-mapping-for-the-above-index"></a>サンプル出力フィールド マッピング (上記のインデックス用)
+
 ```json
     "outputFieldMappings": [
         {
@@ -322,6 +330,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "targetFieldName": "brands"
         }
 ```
+
 ### <a name="variation-on-output-field-mappings-nested-properties"></a>出力フィールドのマッピングのバリエーション (入れ子になったプロパティ)
 
 出力フィールドのマッピングは、単なるランドマークやセレブリティなどの下位レベルのプロパティに定義できます。 この場合、ランドマークを専用に格納するフィールドがインデックス スキーマにあることを確認してください。
@@ -333,6 +342,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "targetFieldName": "celebrities"
         }
 ```
+
 ##  <a name="sample-input"></a>サンプル入力
 
 ```json
@@ -540,6 +550,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="see-also"></a>関連項目
 
++ [画像分析とは](../cognitive-services/computer-vision/overview-image-analysis.md)
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [インデクサーの作成 (REST)](/rest/api/searchservice/create-indexer)

@@ -11,15 +11,15 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/13/2021
+ms.date: 07/14/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ed1107d19e367c053028933559709bea33e6bec9
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: ade0e82131f65183ac9471bb77d0ab0cc92ae285
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577585"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219642"
 ---
 # <a name="certification"></a>認定資格
 
@@ -27,9 +27,17 @@ SAP では、Azure IaaS や BareMetal インフラストラクチャなどの特
 
 NetWeaver (および一部の SAP HANA 認定資格) に関する主要な SAP ノートは、「[SAP Note #1928533 - SAP applications on Azure: Supported products and Azure VM types (SAP ノート #1928533 - Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)](https://launchpad.support.sap.com/#/notes/1928533)」です。
 
-SAP HANA on Azure (L インスタンス) ユニットの SAP HANA の認定記録については、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)のサイトを参照してください。 
+SAP HANA on Azure Large Instances の認定記録については、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)のサイトを参照してください。 
 
-SAP HANA 認定 IaaS プラットフォームのサイトで取り上げられている SAP HANA on Azure (L インスタンス) タイプを使用すると、Microsoft と SAP のお客様は大規模な SAP Business Suite、SAP BW、S/4 HANA、BW/4HANA、または他の SAP HANA ワークロードを Azure にデプロイできます。 このソリューションは、SAP-HANA 認定の専用のハードウェア スタンプ ([SAP HANA テーラード データ センター統合 - TDI](https://scn.sap.com/docs/DOC-63140)) に基づいています。 SAP HANA TDI で構成されたソリューションを実行すると、SAP HANA ベースのすべてのアプリケーション (SAP Business Suite on SAP HANA、SAP BW on SAP HANA、S4/HANA、BW4/HANA など) がハードウェア インフラストラクチャ上で動作します。
+SAP HANA 認定 IaaS プラットフォームのサイトで取り上げられている SAP HANA on Azure (Large Instances) タイプを使用すると、Microsoft と SAP のお客様は次をデプロイできます。
+
+- 大規模な SAP Business Suite
+- SAP BW
+- S/4 HANA
+- BW/4HANA
+- Azure 内の他の SAP HANA ワークロード。 
+
+このソリューションは、SAP-HANA 認定の専用のハードウェア スタンプ ([SAP HANA テーラード データ センター統合 - TDI](https://scn.sap.com/docs/DOC-63140)) に基づいています。 SAP HANA TDI で構成されたソリューションを実行すると、上記のすべての SAP HANA ベースのアプリケーションがハードウェア インフラストラクチャで動作します。
 
 VM で SAP HANA を実行する場合と比較すると、このソリューションにはメモリ ボリュームが大幅に増加するという利点が提供されます。 
 
@@ -42,7 +50,12 @@ VM で SAP HANA を実行する場合と比較すると、このソリューシ�
 - HANA ワークロード用の SAP HANA データベース インスタンスは SAP HANA on Azure (L インスタンス) で実行されます。 L インスタンス スタンプは Azure ネットワークに接続されるので、VM で実行されるソフトウェアは HANA L インスタンスで実行される HANA インスタンスとやり取りできます。
 - SAP HANA on Azure (L インスタンス) のハードウェアは、SUSE Linux Enterprise Server または Red Hat Enterprise Linux がプレインストールされた IaaS で提供される専用のハードウェアです。 仮想マシンと同様に、オペレーティング システムの更新とメンテナンスはお客様が行います。
 - HANA のインストール、または HANA L インスタンスのユニットで SAP HANA を実行するために必要なその他のコンポーネントのインストールはお客様が行います。 SAP HANA on Azure の個々の継続的な運用と管理もお客様が行います。
-- ここで説明するソリューション以外にも、SAP HANA on Azure (L インスタンス) に接続する Azure サブスクリプションに他のコンポーネントをインストールできます。 例として、SAP HANA データベースとの (直接) 通信を可能にするコンポーネント (ジャンプ サーバー、RDP サーバー、SAP HANA Studio、SAP BI シナリオ向け SAP Data Services、ネットワーク監視ソリューションなど) が挙げられます。
+- また、Azure サブスクリプションには、SAP HANA on Azure (Large Instances) に接続する他のコンポーネントをインストールすることもできます。 たとえば、次のような SAP HANA データベースとの通信を可能にするコンポーネントなどがあります。        
+    - ジャンプ サーバー
+    - RDP サーバー
+    - SAP HANA Studio
+    - SAP BI シナリオ向けの SAP Data Services
+    - ネットワーク監視ソリューション。
 - Azure 内と同様に、HANA L インスタンスは高可用性とディザスター リカバリー機能をサポートします。
 
 ## <a name="next-steps"></a>次の手順

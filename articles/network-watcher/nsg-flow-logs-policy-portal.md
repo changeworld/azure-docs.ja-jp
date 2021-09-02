@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 8da1130809c1802f4db963f4b4b000a848e9abaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e0ab4a22665741abb7ed4ab2569d1b55e090457
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98011103"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688551"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>クイック スタート: Azure Policy を使用した NSG フロー ログのデプロイと管理 
 
@@ -134,5 +134,6 @@ Azure Network Watcher は地域サービスです。 これらのパラメータ
 
 ## <a name="next-steps"></a>次の手順 
 
+-   [Traffic Analytics の組み込みポリシー](./traffic-analytics-policy-portal.md)について学習します
 -   この [チュートリアル](./quickstart-configure-network-security-group-flow-logs-from-arm-template.md)では、ARM テンプレートを使用してフローログとトラフィック解析を展開することでさらに詳しく します。
 -   [Network Watcher ](./index.yml)の詳細

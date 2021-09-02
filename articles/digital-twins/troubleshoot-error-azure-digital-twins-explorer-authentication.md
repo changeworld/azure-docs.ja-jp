@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: a91053f9a21aebf1a99c35a3a982fd3ad5514d04
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef78f1dd6089201744de19900738ebcc6e5f70db
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475657"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468674"
 ---
 # <a name="authentication-failed"></a>認証に失敗しました
 
@@ -29,7 +29,7 @@ Azure Digital Twins Explorer アプリケーションを設定して実行した
 
 このエラーは、Azure Digital Twins インスタンスで必要な Azure のロールベースのアクセス制御 (Azure RBAC) のアクセス許可が Azure アカウントに設定されていない場合にも、発生するおそれがあります。 インスタンス内のデータにアクセスするには、読み取りまたは管理を行おうとしているインスタンスで、それぞれ、**Azure Digital Twins データ リーダー** または **Azure Digital Twins データ所有者** のロールが必要です。 
 
-Azure Digital Twins のセキュリティとロールの詳細については、"[Azure Digital Twins ソリューションのセキュリティの概念](concepts-security.md)" に関する記事を参照してください。
+Azure Digital Twins のセキュリティとロールの詳細については、[Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)に関する記事を参照してください。
 
 ## <a name="solutions"></a>ソリューション
 
@@ -63,7 +63,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 ## <a name="next-steps"></a>次のステップ
 
 新しい Azure Digital Twins インスタンスを作成して認証するための設定手順を確認してください。
-* [方法: インスタンスと認証を設定する (CLI)](how-to-set-up-instance-cli.md)
+* [インスタンスと認証を設定する (CLI)](how-to-set-up-instance-cli.md)
 
 Azure Digital Twins のセキュリティとアクセス許可の詳細を確認します。
-* [概念:Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)
+* [Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)

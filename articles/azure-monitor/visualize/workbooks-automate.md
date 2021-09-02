@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 48766e51e3408e11c264b77c43b066f3fedc6c28
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d48cefcae16829bc0a58cdb4f4a43f52d78f8460
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080508"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751404"
 ---
 # <a name="programmatically-manage-workbooks"></a>プログラムでブックを管理する
 
@@ -193,7 +193,7 @@ ms.locfileid: "110080508"
 | `workbookType` | ブックが表示されるギャラリー。 サポートされる値には、workbook、`tsg`、Azure Monitor などがあります。 |
 | `workbookSourceId` | ブックを関連付けるリソース インスタンスの ID。 新しいブックは、このリソース インスタンスに関連して表示されます (たとえば、 _[ブック]_ の下にあるリソースの目次内)。 自分のブックを Azure Monitor のブック ギャラリーに表示したい場合は、リソース ID ではなく文字列 _Azure Monitor_ を使用します。 |
 | `workbookId` | このブック インスタンスの一意の GUID。 新しい GUID を自動的に作成するには、 _[newGuid()]_ を使用します。 |
-| `kind` | 作成されるブックを共有とプライベートのいずれにするかを指定するために使用します。 共有ブックには値 _shared_ を使用し、プライベート ブックには _user_ を使用します。 |
+| `kind` | 作成されるブックを共有するかどうかの指定に使用します。 すべての新しいブックで、値 _shared_ が使用されます。 |
 | `location` | ブックの作成先となる Azure の場所。 リソース グループと同じ場所に作成するには、 _[resourceGroup().location]_ を使用します |
 | `serializedData` | ブックで使用されるコンテンツまたはペイロードが格納されます。 ブック UI で Resource Manager テンプレートを使用して値を取得します |
 
@@ -307,4 +307,4 @@ Azure ブック用に Azure Resource Manager テンプレートをエクスポ�
 
 ## <a name="next-steps"></a>次のステップ
 
-新しい[ストレージ分析情報エクスペリエンス](../insights/storage-insights-overview.md)を強化するためにブックがどのように使用されているかを確認してください。
+新しい[ストレージ分析情報エクスペリエンス](../../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)を強化するためにブックがどのように使用されているかを確認してください。

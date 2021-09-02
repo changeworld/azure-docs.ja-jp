@@ -7,15 +7,15 @@ manager: GrantMeStrength
 services: azure-communication-services
 ms.author: jken
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: 57a0f077b51be026a0a3fc9cdc95e65bb2c924a9
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 4a190e67b04adc858045d32159ad83e430699d30
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253781"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259000"
 ---
 # <a name="call-recording-api-quickstart"></a>Call Recording API クイックスタート
 

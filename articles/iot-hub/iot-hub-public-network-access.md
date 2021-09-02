@@ -6,21 +6,21 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: ece547ac7032e4629a2df48c34b0412ecdc15f54
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/07/2021
+ms.openlocfilehash: a729cd14c2f65b7ff4ab478f9efd25e13a1170b4
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072120"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515597"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>IoT ハブのパブリック ネットワーク アクセスの管理
 
 [VNet 内の IoT ハブのプライベート エンドポイント](virtual-network-support.md)のみにアクセスを制限するには、パブリック ネットワーク アクセスを無効にします。 そうするには、Azure portal または `publicNetworkAccess` API を使用します。 ポータルまたは `publicNetworkAccess` API を使用してパブリック アクセスを許可することもできます。
 
-## <a name="turn-off-public-network-access-using-azure-portal"></a>Azure portal を使用してパブリック ネットワーク アクセスを無効にする
+## <a name="turn-off-public-network-access-using-the-azure-portal"></a>Azure portal を使用してパブリック ネットワーク アクセスを無効にする
 
-1. [Azure portal](https://portal.azure.com) にアクセスします。
+1. [Azure portal](https://portal.azure.com) に移動します
 2. IoT Hub に移動します。 **[リソース グループ]** に移動し、適切なグループを選択して、ご自分の IoT Hub を選択します。
 3. 左側のメニューで **[ネットワーキング]** を選択します。
 4. [Allow public network access to]\(パブリック ネットワーク アクセスを許可する\) で、 **[無効]** を選択します
@@ -30,7 +30,7 @@ ms.locfileid: "110072120"
 
 パブリック ネットワーク アクセスを有効にするには、 **[すべてのネットワーク]** 、 **[保存]** の順に選択します。
 
-### <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>パブリック ネットワーク アクセスを無効にした後の IoT Hub へのアクセス
+### <a name="accessing-the-iot-hub-after-disabling-the-public-network-access"></a>パブリック ネットワーク アクセスを無効にした後の IoT Hub へのアクセス
 
 パブリック ネットワーク アクセスを無効にした後、IoT Hub には、[その VNet プライベート エンドポイントから Azure プライベート リンクを使用して](virtual-network-support.md)アクセスする必要があります。 この制限には、Azure portal からのアクセスも含まれます。なぜなら、IoT Hub サービスの API 呼び出しは、お使いのブラウザーと資格情報を使用して直接行われるからです。
 

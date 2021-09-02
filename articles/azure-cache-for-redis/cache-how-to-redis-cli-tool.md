@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 81327bd5fc76d14d60d26bd912da8de054e5308d
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7c46ae96de44b191009a86552799488cb770c7e4
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833962"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112233531"
 ---
 # <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis での Redis コマンドライン ツールの使用
 
@@ -47,9 +47,9 @@ Azure Cache for Redis は、既定で TLS ポート (6380) のみが有効化さ
 
     **stunnel GUI Start** を実行してサーバーを起動する
 
-    タスクバーにある stunnel サーバーのアイコンを右クリックして､**Show Log Window** をクリックします｡
+    タスク バーにある stunnel サーバーのアイコンを右クリックして､ **[Show Log Window]\(ログ ウィンドウの表示\)** を選択します｡
 
-    stunnel ログ ウィンドウのメニューで **Configuration** > **Edit Configuration** をクリックして現在の構成ファイルを開きます｡
+    stunnel ログ ウィンドウのメニューで **[構成]**  >  **[Edit Configuration]\(構成の編集\)** を選択して現在の構成ファイルを開きます｡
 
     **Service definitions** の部分に以下の *redis-cli.exe* 用のエントリを追加します｡ `yourcachename` の部分は実際のキャッシュ名に置き換えてください｡ 
 
@@ -62,7 +62,7 @@ Azure Cache for Redis は、既定で TLS ポート (6380) のみが有効化さ
 
     構成ファイルを保存して閉じます｡ 
   
-    stunnel ログ ウィンドウのメニューで **Configuration** > **Reload Configuration** をクリックします｡
+    stunnel ログ ウィンドウのメニューで **[構成]**  >  **[Reload Configuration]\(構成の再読み込み\)** を選択します｡
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>Redis コマンドライン ツールで接続する

@@ -4,15 +4,16 @@ description: Azure Data Factory のマッピング データ フローを作成�
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: eaf36cc2690b3c0f8922c05432b3197b4ff30d9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/05/2021
+ms.openlocfilehash: 1ab0a225cc38290ef8f42eb8375ddc2f1f67c677
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93026056"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735360"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory のデータ フローを作成する
 
@@ -20,11 +21,11 @@ ms.locfileid: "93026056"
 
 ADF の Mapping Data Flow は、コーディングなしでデータを大規模に変換する方法を提供します。 データ フロー デザイナーで一連の変換を構築することで、データ変換ジョブを設計できます。 任意の数のソースの変換から始め、その後にデータ変換手順を実行します。 次に、データ フローをシンクで完了して、結果を宛先に書き込みます。
 
-Azure portal で新しい V2 データ ファクトリを作成することから始めます。 新しいファクトリを作成したら、[作成者と監視] タイルをクリックして、Data Factory UI を起動します。
+Azure portal で新しい V2 データ ファクトリを作成することから始めます。 新しいファクトリを作成した後、[Open Azure Data Factory Studio (Azure Data Factory Studio を開く)] タイルで [開く] を選択し、Data Factory UI を起動します。
 
 ![スクリーンショットに、[新しいデータ ファクトリ] ペインが示され、[バージョン] に [V2] が選択されています。](media/data-flow/v2portal.png "データ フロー作成")
 
-Data Factory UI が表示されたら、サンプル データ フローを使用できます。 サンプルは、ADF テンプレート ギャラリーから入手できます。 ADF で、"テンプレートからパイプライン" を作成し、テンプレート ギャラリーから [データ フロー] カテゴリを選択します。
+Data Factory UI が表示されたら、サンプル データ フローを使用できます。 サンプルは、ADF テンプレート ギャラリーから入手できます。 ADF で、ホームページの [Discover more (さらに検出)] セクションで [パイプラインのテンプレート] タイルを選択し、テンプレート ギャラリーから [データ フロー] カテゴリを選択します。
 
 ![スクリーンショットに、選択されたデータ フローを使用したデータ変換がある [Data Flow] タブが示されています。](media/data-flow/template.png "データ フロー作成")
 

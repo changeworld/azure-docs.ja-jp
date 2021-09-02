@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 08/03/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 33d8bb83b172e913abc13804d61c9b158e86e78c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 4d98ebbebbb25e2ab903e06162114f8fa026fbda
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768510"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121781190"
 ---
 # <a name="cli-v2-yaml-schemas"></a>CLI (v2) YAML スキーマ
 
@@ -63,8 +63,8 @@ Azure CLI の拡張機能である Azure Machine Learning CLI (v2) では、特�
 - | -
 [マネージド オンライン (リアルタイム)](reference-yaml-deployment-managed-online.md) | https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 [マネージド バッチ](reference-yaml-deployment-managed-batch.md) | https://azuremlschemas.azureedge.net/latest/batchDeployment.schema.json
-[Kubernetes (k8s) オンライン (リアルタイム)](reference-yaml-deployment-k8s-online.md) | https://azuremlschemas.azureedge.net/latest/k8sOnlineDeployment.schema.json
+[Kubernetes (k8s) オンライン (リアルタイム)](reference-yaml-deployment-k8s-online.md) | https://azuremlschemas.azureedge.net/latest/k8sOnelineDeployment.schema.json
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [CLI (v2) をインストールして使用する](how-to-configure-cli.md)

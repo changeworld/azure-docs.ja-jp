@@ -1,22 +1,22 @@
 ---
-title: リダイレクト URI (応答 URL) に関する制限 | Azure
+title: リダイレクト URI (応答 URL) に関する制限 | Azure AD
 titleSuffix: Microsoft identity platform
 description: Microsoft の ID プラットフォームによって適用される、リダイレクト URI (応答 URL) 形式に関する制約と制限についての説明。
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 11/23/2020
+ms.date: 06/23/2021
 ms.topic: conceptual
 ms.subservice: develop
-ms.custom: aaddev
+ms.custom: contperf-fy21q4-portal, aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9484973e724246db76ccc927437fccf2c4c7be1
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582810"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966466"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>リダイレクト URI (応答 URL) に関する制約と制限
 
@@ -27,6 +27,10 @@ ms.locfileid: "99582810"
 * リダイレクト URL は、スキーム `https` で始まる必要があります。 [localhost リダイレクト URI には例外](#localhost-exceptions)がいくつかあります。
 
 * リダイレクト URI では大文字と小文字が区別されます。 大文字と小文字の区別は、実行中のアプリケーションの URL パスの場合と一致している必要があります。 たとえば、そのパス `.../abc/response-oidc` の一部としてアプリケーションが含まれている場合に、リダイレクト URL 内で `.../ABC/response-oidc` と指定しないでください。 Web ブラウザーでは大文字と小文字を区別を区別するものとしてパスが処理されるため、`.../abc/response-oidc` に関連付けられている cookie は、大文字と小文字が一致しない `.../ABC/response-oidc` URL にリダイレクトされた場合に除外される可能性があります。
+
+* パス セグメントのないリダイレクト URI により、応答内の URI の末尾にスラッシュが追加されます。 https://contoso.com 、 http://localhost:7071 などの URI については、 https://contoso.com/ 、 http://localhost:7071/ がそれぞれ返されます。 これは、応答モードがクエリまたはフラグメントの場合にのみ適用されます。
+
+* パス セグメントを含むリダイレクト URI の場合は、末尾のスラッシュは追加されません。 (例: https://contoso.com/abc 、 https://contoso.com/abc/response-oidc が応答内で使用されます)
 
 ## <a name="maximum-number-of-redirect-uris"></a>リダイレクト URI の最大数
 
@@ -76,7 +80,7 @@ ms.locfileid: "99582810"
 
 :::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="許可されていない HTTP ベースのループバック リダイレクト URI を示す Azure portal のエラー ダイアログ":::
 
-`127.0.0.1` ループバック アドレスで `http` スキームを使用するリダイレクト URI を追加するには、現在のところ[アプリケーション マニフェスト](reference-app-manifest.md)で [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) 属性を変更する必要があります。
+`127.0.0.1` ループバック アドレスで `http` スキームを使用するリダイレクト URI を追加するには、現在のところアプリケーション マニフェストで [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) 属性を変更する必要があります。
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>リダイレクト URI のワイルドカードに関する制限事項
 
@@ -84,9 +88,9 @@ ms.locfileid: "99582810"
 
 ワイルドカード URI は、現在、個人用 Microsoft アカウントと職場または学校のアカウントにサインインするように構成されているアプリの登録ではサポートされていません。 ただし、組織の Azure AD テナントで、職場または学校のアカウントにのみサインインするように構成されているアプリの場合は、ワイルドカード URI が許可されます。
 
-職場または学校のアカウントにサインインするアプリの登録に、ワイルドカードを含むリダイレクト URI を追加するには、Azure portal の [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) で、アプリケーション マニフェスト エディターを使用します。 マニフェスト エディターを使用して、ワイルドカードを含むリダイレクト URI を設定することも可能ですが、[RFC 6749 のセクション 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) に準拠し、絶対 URI のみを使用することが *強く* 推奨されます。
+職場または学校のアカウントにサインインするアプリの登録に、ワイルドカードを含むリダイレクト URI を追加するには、Azure portal の **[アプリの登録]** で、アプリケーション マニフェスト エディターを使用します。 マニフェスト エディターを使用して、ワイルドカードを含むリダイレクト URI を設定することも可能ですが、RFC 6749 のセクション 3.1.2 に準拠することを *強く* お勧めします。 絶対 URI のみを使用するようにしてください。
 
-シナリオ上、許可される最大制限を超えるリダイレクト URI が必要な場合は、ワイルドカードを含むリダイレクト URI を追加する代わりに、[次の状態パラメーター アプローチ](#use-a-state-parameter)を検討してください。
+シナリオ上、許可される最大制限を超えるリダイレクト URI が必要な場合は、ワイルドカードを含むリダイレクト URI を追加する代わりに、次の状態パラメーター アプローチを検討してください。
 
 #### <a name="use-a-state-parameter"></a>状態パラメーターを使用する
 

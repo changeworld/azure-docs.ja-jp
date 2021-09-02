@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: 9cef8babd11ea6a0ed4ffc965ed52164c9abe43d
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d733e42d6a415ec6ccbe5ee85f66dd11a87591d4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866987"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770145"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Java アプリケーションを Azure VM と仮想マシン スケール セット上の JBoss EAP に移行する方法
 
@@ -110,6 +110,8 @@ MTA では、Oracle WebLogic Server などのサードパーティ製エンタ�
 | Java アプリケーション | - | - | &#x2714; | &#x2714; | - | - | - |
 
 <sup>1</sup> 現在、この移行パスについてのルールは MTA から提供されていませんが、Red Hat のコンサルティングが、任意のソース プラットフォームから JBoss EAP 7 への移行を支援できます。
+
+:::image type="content" source="./media/jboss-cli-image.png" alt-text="画像では、CLI ウィンドウの出力が示されています。":::
 
 MTA の[システム要件](https://access.redhat.com/documentation/en/migration_toolkit_for_applications/5.0/html-single/introduction_to_the_migration_toolkit_for_applications/index#system_requirements_getting-started-guide)を確認することもできます。
 

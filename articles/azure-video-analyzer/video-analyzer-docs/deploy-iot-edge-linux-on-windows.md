@@ -2,13 +2,13 @@
 title: IoT Edge for Linux on Windows にデプロイする - Azure
 description: この記事では、IoT Edge for Linux on Windows デバイスにデプロイする方法に関するガイダンスを取り上げます。
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 2907318f7d1c49c4aea247880a9880e724b46ca6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: e80721375cf4b0c912fe47ec76c2cebe92359f90
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387463"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743650"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>IoT Edge for Linux on Windows (EFLOW) デバイスにデプロイする
 
@@ -25,19 +25,17 @@ ms.locfileid: "110387463"
 
 このドキュメントの全体的な流れを次に示します。EFLOW がインストールされている Windows デバイスで Azure Video Analyzer を実行する準備が、簡単な 5 つの手順ですべて整います。
 
-![IoT Edge for Linux on Windows (EFLOW) の図](./media/deploy-iot-edge-linux-on-windows/eflow.png)
+![IoT Edge for Linux on Windows (E FLOW) の図。](./media/deploy-iot-edge-linux-on-windows/eflow.png)
 
-1. Windows デバイスに [EFLOW をインストール](../../iot-edge/how-to-install-iot-edge-on-windows.md)します。 
+1. PowerShell を使用して、Windows デバイスに [EFLOW をインストール](../../iot-edge/how-to-install-iot-edge-on-windows.md)します。
 
-    1. Windows PC を使用している場合、[Windows Admin Center](/windows-server/manage/windows-admin-center/overview) 開始ページにある接続の一覧に、Windows Admin Center を実行している PC を表すローカル ホスト接続が表示されます。 
-    1. その他の管理対象のサーバー、PC、またはクラスターもここに表示されます。
-    1. Windows Admin Center を使用して、ローカル デバイスまたはリモート マネージド デバイス上に、Azure EFLOW をインストールして管理できます。 このガイドでは、ローカル ホスト接続が、Azure IoT Edge for Linux on Windows のデプロイにおけるターゲット デバイスとして使用されました。 そのため、localhost も IoT Edge デバイスとして表示されています。
 
-    ![デプロイ手順 - Windows Admin Center](./media/deploy-iot-edge-linux-on-windows/windows-admin-center.png) 
-1. IoT Edge デバイスをクリックしてそれに接続すると、[概要] タブと [コマンド シェル] タブが表示されます。[コマンド シェル] タブでは、エッジ デバイスに対するコマンドを実行できます。
+1. EFLOW を設定したら、コマンド `Connect-EflowVm` を PowerShell (管理者特権) に入力して接続します。 これで、PowerShell 内に EFLOW VM を制御する bash ターミナルが表示されます。ここでは、Top や Nano などのユーティリティを含む Linux コマンドを実行できます。 
 
-    ![デプロイ手順 - Azure IoT Edge Manager](./media/deploy-iot-edge-linux-on-windows/azure-iot-edge-manager.png)
-1. コマンド シェルに移動して次のコマンドを入力します。
+    > [!TIP] 
+    > EFLOW VM を終了するには、ターミナル内に「`exit`」と入力します。
+
+1. PowerShell を使用して EFLOW VM にログインし、次のコマンドを入力します。
 
     `bash -c "$(curl -sL https://aka.ms/ava-edge/prep_device)"`
 
@@ -51,18 +49,22 @@ ms.locfileid: "110387463"
     * `/var/media`
 
     /home/localedgeuser/samples/input フォルダーにあるビデオ ファイル (*.mkv) に注目してください。これらが分析対象の入力ファイルとなります。 
-1. エッジ デバイスの設定とハブへの登録が完了し、適切なフォルダー構造が作成された状態で実行することに成功したら、次に、別途以下の Azure リソースを設定し、AVA モジュールをデプロイします。 
-
-    * ストレージ アカウント
-    * Azure Media Services アカウント
+1. エッジ デバイスの設定とハブへの登録が完了し、適切なフォルダー構造が作成された状態で実行することに成功したら、次に、別途以下の Azure リソースを設定し、AVA モジュールをデプロイします。 次のデプロイ テンプレートで、リソースの作成が行われます。
 
     [![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
+    
+    デプロイには約 20 分かかります。 完了すると、次のような特定の Azure リソースが Azure サブスクリプションにデプロイされます。
+
+    * Video Analyzer アカウント - このクラウド サービスは、Video Analyzer エッジ モジュールの登録、録画されたビデオの再生、およびビデオ分析に使用されます。
+    * ストレージ アカウント - 録画されたビデオとビデオ分析の格納用です。
+    * マネージド ID - これは、上記のストレージ アカウントへのアクセスを管理するために使用されるユーザー割り当てマネージド ID です。
+    * IoT Hub - IoT アプリケーションと IoT Edge モジュール、さらにそれが管理するデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。
 
     テンプレートで、エッジ デバイスが必要かどうかの確認を求められたら、前にデバイスと IoT ハブの両方を作成したので、[Use and existing edge device]\(既存のエッジ デバイスを使用する\) オプションを選択します。 さらに、その後の手順では、IoT ハブの名前と IoT Edge デバイスの ID の入力を求められます。  
     
     ![既存のデバイスを使用する](./media/deploy-iot-edge-linux-on-windows/use-existing-device.png) 
 
-    完了したら、IoT Edge デバイスのコマンド シェルに再度ログオンして、次のコマンドを実行します。
+    完了したら、EFLOW VM に再度ログオンして、次のコマンドを実行します。
 
     **`sudo iotedge list`**
 

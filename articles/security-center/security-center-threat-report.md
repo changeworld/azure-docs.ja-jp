@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: ec6d227059c3f4fd1285f224e13169a2479bc65f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b2a867c99e79b2ddfe9053589a1ebac9ab569490
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438235"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237023"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center の脅威インテリジェンス レポート
 
@@ -52,11 +52,11 @@ Security Center には、攻撃の種類に応じて 3 種類の脅威レポー�
 1. アラートを選択します。 
     アラートの詳細ページが開き、アラートの詳細が表示されます。 次に示すのは、 **[Ransomware indicators detected]\(検出されたランサムウェア インジケーター\)** アラート詳細ページです。
 
-    [![[Ransomware indicators detected]\(検出されたランサムウェア インジケーター\) アラート詳細ページ](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
+    [![[Ransomware indicators detected]\(検出されたランサムウェア インジケーター\) アラート詳細ページ。](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
 
 1. レポートへのリンクを選択すると、既定のブラウザーで PDF が開きます。
 
-    [![[Potentially Unsafe Action]\(安全でない可能性があるアクション\) アラート詳細ページ](media/security-center-threat-report/threat-intelligence-report.png)](media/security-center-threat-report/threat-intelligence-report.png#lightbox)
+    [![[Potentially Unsafe Action]\(安全でない可能性があるアクション\) アラート詳細ページ。](media/security-center-threat-report/threat-intelligence-report.png)](media/security-center-threat-report/threat-intelligence-report.png#lightbox)
 
     PDF レポートをダウンロードすることもできます。 
 

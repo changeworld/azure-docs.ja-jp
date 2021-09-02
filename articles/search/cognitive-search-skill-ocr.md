@@ -2,18 +2,17 @@
 title: OCR 認知スキル
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のエンリッチメント パイプラインで光学式文字認識 (OCR) を使用して、イメージ ファイルからテキストを抽出します。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 12b6c8e71052d8d821d4b253d5f921bbff82e02d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/12/2021
+ms.openlocfilehash: b0ed1860abe3d8a85e87e2bf2746812e1ca67d2e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473880"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860304"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
@@ -32,10 +31,10 @@ ms.locfileid: "110473880"
 + .TIFF
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> このスキルは Cognitive Services にバインドされており、1 日にインデクサーあたり 20 ドキュメントを超えるトランザクションには[課金対象リソース](cognitive-search-attach-cognitive-services.md)が必要です。 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。
+> 
+> さらに、画像抽出は [Azure Cognitive Search による課金対象](https://azure.microsoft.com/pricing/details/search/)になります。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
-
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -209,6 +208,8 @@ Text Merger の一般的なユース ケースとしては､ドキュメント�
 ```
 
 ## <a name="see-also"></a>関連項目
+
++ [光学式文字認識とは](../cognitive-services/computer-vision/overview-ocr.md)
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [TextMerger スキル](cognitive-search-skill-textmerger.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

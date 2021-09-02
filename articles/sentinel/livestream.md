@@ -13,16 +13,21 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/14/2020
+ms.date: 07/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a711cca01431346896ac5d0aee5dce8524ed721f
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84783165"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202498"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Azure Sentinel でハンティング ライブストリームを使用して脅威を検出する
+
+> [!IMPORTANT]
+>
+> - クロスリソース クエリのエクスペリエンス (以下のマークされた項目を参照) は、現在 **プレビュー段階** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+>
 
 ハンティング ライブストリームを使用して、イベントの発生時に新たに作成したクエリをテストしたり、一致が見つかった場合にセッションから通知を取得したり、必要に応じて調査を開始したりできるようにする対話型セッションを作成します。 どのような Log Analytics クエリを使用したライブストリーム セッションでも、すばやく作成できます。
 
@@ -61,7 +66,10 @@ ms.locfileid: "84783165"
 1. **[Livestream]\(ライブストリーム\)** ウィンドウで、次を実行します。
     
     - クエリからライブストリームを開始した場合は、クエリを確認し、必要があれば変更を加えてください。
-    - ゼロからライブストリームの作成を開始した場合は、クエリを作成します。 
+    - ゼロからライブストリームの作成を開始した場合は、クエリを作成します。
+
+    > [!NOTE]
+    > ライブストリームでは、Azure Data Explorer 内のデータの **クロスリソース クエリ** (プレビュー段階) がサポートされています。 [**クロスリソース クエリの詳細をご確認ください**](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md#cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer)。
 
 1. コマンド バーで、 **[再生]** を選択します。
     

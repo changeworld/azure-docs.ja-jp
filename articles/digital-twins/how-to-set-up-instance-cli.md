@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d44e73b7d4c2988fb26c947100faac2ebcbe8f8f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6f64791df0c564183900fd75c718ac4e5f9d0976
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474596"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468846"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure Digital Twins インスタンスと認証を設定する (CLI)
 
@@ -21,8 +21,8 @@ ms.locfileid: "110474596"
 この記事では、**新しい Azure Digital Twins インスタンスを設定する** 手順 (インスタンスの作成と認証の設定を含む) について説明します。 この記事を完了すると、Azure Digital Twins インスタンスのプログラミングを開始する準備が完了します。
 
 この記事のこのバージョンでは、CLI を使用して、これらの手順を 1 つずつ手動で実行します。
-* Azure portal を使用してこれらの手順を手動で実行するには、この記事のポータル バージョンである[方法: インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md)  に関するページを参照してください。
-* デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、この記事のスクリプト化バージョンである[方法: インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md)  に関するページを参照してください。
+* これらの手順を Azure portal から手動で実行するには、[インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md) にあるこのアーティクルのポータル バージョンを参照してください。
+* デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、[インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md) にあるこのアーティクルのスクリプト化バージョンを参照してください。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "110474596"
 * デプロイのためのリージョン。 Azure Digital Twins をサポートしているリージョンを確認するには、「[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)」を参照してください。
 * インスタンスの名前。 サブスクリプションのリージョンに、指定した名前がすでに使用されている別の Azure Digital Twins インスタンスがある場合は、別の名前を選択するように求められます。
 
-次のコマンドでこれらの値を使用してインスタンスを作成します。
+これらの値を使用して、[az dt command](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) コマンドでインスタンスを作成します。
 
 ```azurecli-interactive
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> --resource-group <your-resource-group> --location <region>
@@ -101,7 +101,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
 * [az dt reference](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)
-* [概念: Azure Digital Twins CLI コマンド セット](concepts-cli.md)
+* [Azure Digital Twins CLI コマンド セット](concepts-cli.md)
 
 または、認証コードを使用してクライアント アプリケーションをインスタンスに接続する方法を確認します。
-* [方法: アプリ認証コードを作成する](how-to-authenticate-client.md)
+* [アプリ認証コードを作成する](how-to-authenticate-client.md)

@@ -4,24 +4,24 @@ description: Excel に Log Analytics クエリを取り込み、Excel 内で結�
 ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
-ms.date: 11/03/2020
-ms.openlocfilehash: f2834e9bd91ecbbf32e0321179c2359862a5b605
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/10/2021
+ms.openlocfilehash: 7cfe8ac2badd292b73b77dd13d7e7ca4bf24a428
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041112"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474127"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>Log Analytics と Excel を統合する
 
-M クエリと Log Analytics API を使用して、Azure Monitor Log Analytics と Microsoft Excel を統合できます。 この統合により、結果の合計量が 61 MiB を超えない限り、最大 500,000 レコードを Excel に送信できます。
+M クエリと Log Analytics API を使用して、Azure Monitor Log Analytics と Microsoft Excel を統合できます。 この統合により、特定の数のレコードと MB のデータを送信できるようになります。 これらの制限は、Azure portal のセクションにある [Azure Monitor Log Analytics ワークスペースの制限](../service-limits.md#log-analytics-workspaces)に関するページに記載されています。 
 
 > [!NOTE]
 > Excel はローカル クライアント アプリケーションであるため、大量のデータ セットを処理する際のパフォーマンスと機能は、ローカルのハードウェアとソフトウェアの制限に影響されます。
 
 ## <a name="create-your-m-query-in-log-analytics"></a>Log Analytics で M クエリを作成する 
 
-1. 通常どおり、Log Analytics で **クエリを作成して実行します**。 ユーザー インターフェイスで 1 万件のレコード制限に達しても心配はありません。  ‘ago’ 関数や UI タイム ピッカーなどの相対日付を使用することをお勧めします。これにより、Excel で適切なデータ セットが更新されます。
+1. 通常どおり、Log Analytics で **クエリを作成して実行します**。 ユーザー インターフェイスでレコードの制限数に達しても心配はいりません。  ‘ago’ 関数や UI タイム ピッカーなどの相対日付を使用することをお勧めします。これにより、Excel で適切なデータ セットが更新されます。
   
 2. **クエリをエクスポートします**。クエリとその結果に問題がなければ、Log Analytics の *[エクスポート]* メニューの下にある **[Power BI へエクスポート (M Query)]** メニュー選択を使用して M にクエリをエクスポートします。
 

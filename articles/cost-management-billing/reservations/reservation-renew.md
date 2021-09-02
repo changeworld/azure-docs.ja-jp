@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/05/2020
 ms.author: banders
-ms.openlocfilehash: bf7945c56fc05c33ae3cfed1c67085b3b28f847f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b038ab5a937105d3fb625f6b17dd71b0073b7080
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690512"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726984"
 ---
 # <a name="automatically-renew-reservations"></a>予約を自動的に更新する
 
@@ -61,7 +61,7 @@ Azure portal > **[予約]** に移動します。
 期限切れになる予約に次のいずれかの変更を加えると、予約の更新が取り消されます。
 
 - Split
-- Merge
+- マージする
 - 1 つのアカウントから別のアカウントに予約を譲渡する
 - WebDirect サブスクリプションからエンタープライズ契約 (EA) サブスクリプションまたはその他の購入方法に予約を譲渡する
 - 登録を更新する
@@ -84,6 +84,8 @@ Azure では、次の場合に更新が処理されない可能性がありま�
 上記のいずれかの条件が発生し、更新が非アクティブになると、電子メール通知が送信されます。
 
 ## <a name="renewal-notification"></a>更新の通知
+
+更新通知電子メールは、有効期限の30日前に送信され、有効期限日にもう一度送信されます。 送信電子メール アドレスは `azure-noreply@microsoft.com` です。 差出人セーフ リストまたは許可リストに電子メールアドレスを追加することができます。
 
 購入方法に応じて、電子メールが送信されるユーザーは異なります。
 

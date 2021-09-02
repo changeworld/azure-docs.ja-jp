@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: 6e59d0065dfa74979bf3bbc72458bda516e3b641
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28c4e7ce7b6910ec1950350ee301e16fa54d4c02
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669987"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461608"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -154,7 +154,7 @@ VM を選択した後に、仮想マシンの ACU に注意を向けてくださ
 - ネットワーク パフォーマンスを向上させるには、[高速ネットワーク](../../../virtual-network/create-vm-accelerated-networking-cli.md)で仮想マシンを使用してください。
 - 特定の Linux ディストリビューションについては、[TRIM/UNMAP サポート](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support)を有効にすることを検討してください。
 - 個別の仮想マシン上に [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) をインストールします。
-- Linux では、既定では大型のページは有効になっていません。 大型のページを有効にすることを検討し、Oracle DB で `use_large_pages = ONLY` を設定します。 これは、パフォーマンスの向上に役立ちます。 詳細については、 [こちら](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)で確認できます。
+- Linux では、既定では大型のページは有効になっていません。 大型のページを有効にすることを検討し、Oracle DB で `use_large_pages = ONLY` を設定します。 これは、パフォーマンスの向上に役立ちます。 詳細については、「[USE_LARGE_PAGES](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)」を参照してください。
 
 ### <a name="disk-types-and-configurations"></a>ディスクの種類と構成
 

@@ -10,45 +10,49 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/11/2021
 ms.topic: how-to
-ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack
-ms.openlocfilehash: c5e5461163b28ff53e77121a8e48dc478887ea6c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
+ms.openlocfilehash: 06dc1a34f35434019d1b992c12502577aa470360
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081067"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653493"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する
 
 仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースとコンピューティング環境を保護します。 この記事では、完全な仮想ネットワークを構成する方法を示すシナリオ例を使用します。
 
-この記事は、Azure Machine Learning ワークフローをセキュリティで保護する手順を説明する全 5 パートからなるシリーズのパート 1 です。 まずは、この概要に関する記事を読み、概念を理解しておくことを強くお勧めします。 
-
-このシリーズの他の記事は次のとおりです。
-
-**1.VNet の概要** > [2.ワークスペースをセキュリティで保護する](how-to-secure-workspace-vnet.md) > [3.トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md) > [4.推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md) > [5.Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
+> [!TIP]
+> この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
+>
+> * [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
+> * [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+> * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+> * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+> * [カスタム DNS を使用する](how-to-custom-dns.md)
+> * [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、次のトピックについて理解していることを前提としています。
 + [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)
 + [IP ネットワーク](../virtual-network/public-ip-addresses.md)
-+ [Azure Private Link](how-to-configure-private-link.md)
++ [プライベート エンドポイントを持つ Azure Machine Learning ワークスペース](how-to-configure-private-link.md)
 + [ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md)
 + [ネットワーク ファイアウォール](../firewall/overview.md)
 ## <a name="example-scenario"></a>シナリオ例
 
 このセクションでは、プライベート IP アドレスを使用して Azure Machine Learning の通信をセキュリティで保護するために、一般的なネットワーク シナリオがどのように設定されるかについて説明します。
 
-次の表では、VNet ありと VNet なしのネットワークの両方で、サービスがどのように Azure Machine Learning ネットワークの異なる部分にアクセスするかを比較しています。
+次の表は、VNet がある場合とない場合で、サービスが Azure Machine Learning ネットワークのさまざまな部分にアクセスする方法を比較したものです。
 
 | シナリオ | ワークスペース | 関連付けられているリソース | トレーニングのコンピューティング環境 | 推論のコンピューティング環境 |
 |-|-|-|-|-|-|
 |**仮想ネットワークなし**| パブリック IP | パブリック IP | パブリック IP | パブリック IP |
 |**仮想ネットワーク内のリソースをセキュリティで保護**| プライベート IP (プライベート エンドポイント) | パブリック IP (サービス エンドポイント) <br> **または** <br> プライベート IP (プライベート エンドポイント) | プライベート IP | プライベート IP  | 
 
-* **ワークスペース** - VNet からプライベート エンドポイントを作成して、ワークスペース上の Private Link に接続します。 プライベート エンドポイントは、複数のプライベート IP アドレスを使用してワークスペースを VNet に接続します。
+* **ワークスペース** - ワークスペースのプライベート エンドポイントを作成します。 プライベート エンドポイントは、複数のプライベート IP アドレスを使用してワークスペースを VNet に接続します。
 * **関連するリソース** - サービス エンドポイントまたはプライベート エンドポイントを使用して、Azure storage、Azure Key Vault、Azure Container Service などのワークスペース リソースに接続します。
     * **サービス エンドポイント** は、仮想ネットワークの ID を Azure サービスに提供します。 ご利用の仮想ネットワークでサービス エンドポイントを有効にしたら、仮想ネットワーク規則を追加して、Azure サービス リソースへのアクセスを仮想ネットワークに限定することができます。 サービス エンドポイントは、パブリック IP アドレスを使用します。
     * **プライベート エンドポイント** は、Azure Private Link を使用するサービスに安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。
@@ -56,7 +60,7 @@ ms.locfileid: "112081067"
 * **推論のコンピューティング アクセス** - プライベート IP アドレスを使用して、Azure Kubernetes Services (AKS) コンピューティング クラスターにアクセスします。
 
 
-次の 5 つのセクションでは、前述のネットワーク シナリオをセキュリティで保護する方法について説明します。 ネットワークをセキュリティで保護するには、次のことを行う必要があります。
+次のセクションでは、前述のネットワーク シナリオをセキュリティで保護する方法について説明します。 ネットワークをセキュリティで保護するには、次のことを行う必要があります。
 
 1. [**ワークスペースと関連するリソース**](#secure-the-workspace-and-associated-resources)をセキュリティで保護します。
 1. [**トレーニング環境**](#secure-the-training-environment)をセキュリティで保護します。
@@ -69,7 +73,7 @@ ms.locfileid: "112081067"
 ワークスペースと関連するリソースをセキュリティで保護するには、次の手順に従います。 これらの手順により、サービスが仮想ネットワークで通信できるようになります。
 
 1. [Private Link が有効なワークスペース](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)を作成し、VNet とワークスペース間の通信を有効にします。
-1. __サービス エンドポイント__ または __プライベート エンドポイント__ の "_どちらか_" を使用して、次のサービスを仮想ネットワークに追加します。 また、信頼された Microsoft サービスによるこれらのサービスへのアクセスを許可する必要があります。
+1. __サービス エンドポイント__ または __プライベート エンドポイント__ の "_どちらか_" を使用して、次のサービスを仮想ネットワークに追加します。 また、信頼された Microsoft サービスによるこれらのサービスへのアクセスを許可します。
     
     | サービス | エンドポイント情報 | 信頼できる情報を許可する |
     | ----- | ----- | ----- |
@@ -85,7 +89,7 @@ ms.locfileid: "112081067"
 ### <a name="limitations"></a>制限事項
 
 仮想ネットワーク内のワークスペースと関連するリソースをセキュリティで保護するには、次の制限があります。
-- Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
+- Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート エンドポイントで Azure Machine Learning ワークスペースを使用することはできません。
 - すべてのリソースは同じ VNet の背後に配置する必要があります。 ただし、同じ VNet 内の複数のサブネットは許容されます。
 
 ## <a name="secure-the-training-environment"></a>トレーニング環境をセキュリティで保護する
@@ -95,7 +99,7 @@ ms.locfileid: "112081067"
 トレーニング環境をセキュリティで保護するには、次の手順に従います。
 
 1. トレーニング ジョブを実行するために、Azure Machine Learning [コンピューティング インスタンスとコンピューター クラスターを仮想ネットワークに](how-to-secure-training-vnet.md#compute-instance)作成します。
-1. [Azure Batch サービスからの受信通信を許可](how-to-secure-training-vnet.md#mlcports)して、Batch サービスがコンピューティング リソースにジョブを送信できるようにします。 
+1. 管理サービスがコンピューティング リソースにジョブを送信できるように、[受信通信を許可](how-to-secure-training-vnet.md#required-public-internet-access)します。 
 
 ![マネージド コンピューティング クラスターとインスタンスをセキュリティで保護する方法を示すアーキテクチャ図](./media/how-to-network-security-overview/secure-training-environment.png)
 
@@ -109,7 +113,7 @@ ms.locfileid: "112081067"
 
 1. プライベート エンドポイントを使用して、クライアントから Azure Machine Learning ワークスペースにトレーニング ジョブが送信されます。
 
-1. Azure Batch サービスはワークスペースからジョブを受信し、コンピューティング リソースを使用してプロビジョニングされたパブリック ロード バランサーを介して、トレーニング ジョブがコンピューティング環境に送信されます。 
+1. Azure Batch サービスは、ワークスペースからジョブを受信します。 そして、コンピューティング リソースのパブリック ロード バランサーを介して、トレーニング ジョブをコンピューティング環境に送信します。 
 
 1. コンピューティング リソースはジョブを受信し、トレーニングが開始されます。 コンピューティング リソースは、セキュリティで保護されたストレージ アカウントにアクセスしてトレーニング ファイルをダウンロードし、出力をアップロードします。
 
@@ -143,7 +147,7 @@ ms.locfileid: "112081067"
 
 プライベート エンドポイントを使用して VNet の背後にあるワークスペースをセキュリティで保護しながら、パブリック インターネット経由のアクセスを許可することができます。 初期構成は、[ワークスペースと関連するリソースをセキュリティで保護する](#secure-the-workspace-and-associated-resources)場合と同じです。 
 
-プライベート リンクを使用してワークスペースをセキュリティで保護した後、[パブリック アクセスを有効](how-to-configure-private-link.md#enable-public-access)にします。 その後、パブリック インターネットと VNet の両方からこのワークスペースにアクセスできます。
+プライベート エンドポイントを使用してワークスペースをセキュリティで保護した後、[パブリック アクセスを有効](how-to-configure-private-link.md#enable-public-access)にします。 その後、パブリック インターネットと VNet の両方からこのワークスペースにアクセスできます。
 
 ### <a name="limitations"></a>制限事項
 
@@ -152,7 +156,7 @@ ms.locfileid: "112081067"
 
 [ワークスペースをセキュリティで保護する](#secure-the-workspace-and-associated-resources) > [トレーニング環境をセキュリティで保護する](#secure-the-training-environment) > [推論環境をセキュリティで保護する](#secure-the-inferencing-environment) > **Studio の機能を有効にする** > [ファイアウォール設定を構成する](#configure-firewall-settings)
 
-ストレージが VNet 内にある場合は、まず追加の構成手順を実行して、[Studio](overview-what-is-machine-learning-studio.md) ですべての機能を有効にする必要があります。 既定では、次の機能が無効になっています。
+ストレージが VNet 内にある場合、スタジオで完全な機能を有効にするためには、追加の構成手順を使用する必要があります。 既定では、次の機能が無効になっています。
 
 * スタジオでのデータのプレビュー
 * デザイナーでのデータの視覚化
@@ -160,15 +164,18 @@ ms.locfileid: "112081067"
 * AutoML 実験の送信
 * ラベル付けプロジェクトの開始
 
-VNet 内部ですべての Studio 機能を有効にするには、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)」を参照してください。 Studio は、サービス エンドポイントまたはプライベート エンドポイントを使用するストレージ アカウントをサポートしています。
+すべてのスタジオ機能を有効にするには、[仮想ネットワークで Azure Machine Learning スタジオを使用する](how-to-enable-studio-virtual-network.md)を参照してください。
 
 ### <a name="limitations"></a>制限事項
 
-[ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling)は、仮想ネットワークの背後でセキュリティ保護された既定のストレージ アカウントをサポートしていません。 ML によるデータのラベル付けには、既定以外のストレージ アカウントを使用する必要があります。 既定以外のストレージ アカウントは、仮想ネットワークの背後でのセキュリティ保護が可能です。 
+[ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling)は、仮想ネットワークの背後にある既定のストレージ アカウントをサポートしていません。 代わりに、既定以外のストレージ アカウントを使用して、ML によるデータのラベル付けを行います。 
+
+> [!TIP]
+> 既定のストレージ アカウントでない限り、データのラベル付けに使用されるアカウントは、仮想ネットワークの背後で保護できます。 
 
 ## <a name="configure-firewall-settings"></a>ファイアウォール設定を構成する
 
-ファイアウォールを構成して、Azure Machine Learning ワークスペース リソースとパブリック インターネットへのアクセスを制御します。 Azure Firewall をお勧めしますが、他のファイアウォール製品を使用してネットワークを保護することもできます。 ファイアウォール経由の通信を許可する方法について不明な点がある場合は、使用しているファイアウォールのドキュメントを参照してください。
+ファイアウォールを構成して、Azure Machine Learning ワークスペース リソースとパブリック インターネット間のトラフィックを制御します。 Azure Firewall を推奨しますが、他のファイアウォール製品を使用することもできます。 
 
 ファイアウォール設定の詳細については、[ファイアウォールの内側でのワークスペースの使用](how-to-access-azureml-behind-firewall.md)に関するページを参照してください。
 
@@ -180,11 +187,11 @@ VNet 内部ですべての Studio 機能を有効にするには、「[Azure 仮
 
 ## <a name="next-steps"></a>次の手順
 
-この記事は、全 5 パートからなる仮想ネットワーク シリーズのパート 1 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
+この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 
-* [パート 2: 仮想ネットワークの概要](how-to-secure-workspace-vnet.md)
-* [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
-* [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-* [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
-
-名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。
+* [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
+* [トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
+* [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+* [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [カスタム DNS を使用する](how-to-custom-dns.md)
+* [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)

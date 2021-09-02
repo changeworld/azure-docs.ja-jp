@@ -4,12 +4,12 @@ description: Azure ファイル共有をバックアップする際のサポー�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f812eb5793dd2c83cfd1e867d79fe6d6530912e
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370990"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113485745"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure ファイル共有のバックアップのサポート マトリックス
 
@@ -40,7 +40,7 @@ Azure ファイル共有のバックアップは、以下を **除く** すべ�
 | Standard                                           | サポートされています |
 | Large                                              | サポートされています |
 | Premium                                            | サポートされています |
-| Azure File 同期サービスに接続されているファイル共有 | サポートされています |
+| Azure File Sync サービスに接続されているファイル共有 | サポートされています |
 
 ## <a name="protection-limits"></a>保護の制限
 

@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 03abe4e4e098d46060e33ba114872905e54a443f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85760971b8f4eb8bfbb431193636532a498d7236
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96317064"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665603"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Azure Key Vault でのプライベート リンクの構成の問題を診断する
 
@@ -279,7 +279,7 @@ fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
 また、`A` レコードの値 (IP アドレス) は、[キー コンテナーのプライベート IP アドレス](#find-the-key-vault-private-ip-address-in-the-virtual-network)である必要があります。 `A` レコードが見つかっても、含まれる IP アドレスが正しくない場合は、間違った IP アドレスを削除して新しい IP アドレスを追加する必要があります。 `A` レコード全体を削除し、新しいレコードを追加することをお勧めします。
 
 >[!NOTE]
-> `A` レコードを削除または変更しても、TTL (Time To Live) の値の有効期限がまだ切れていない可能性があるため、コンピューターが古い IP アドレスに解決される場合があります。 TTL には常に、60 秒 (1 分) 以上で 600 秒 (10 分) 以下の値を指定することをお勧めします。 大きすぎる値を指定した場合、クライアントが障害から回復するのに時間がかかりすぎることがあります。
+> `A` レコードを削除または変更しても、TTL (Time To Live) の値の有効期限がまだ切れていない可能性があるため、コンピューターが古い IP アドレスに解決される場合があります。 TTL には常に、10 秒以上で 600 秒 (10 分) 以下の値を指定することを推奨します。 大きすぎる値を指定した場合、クライアントが障害から回復するのに時間がかかりすぎることがあります。
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>複数の仮想ネットワークに対する DNS の解決
 

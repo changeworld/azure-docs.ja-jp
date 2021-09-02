@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/10/2021
+ms.date: 06/17/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1be64850cba80602c13e30c2545470767963251
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: da0d7c9812575ce6b957e70dbe4f8bc165f39315
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963549"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113138731"
 ---
 # <a name="federation-with-samlws-fed-identity-providers-for-guest-users-preview"></a>ゲスト ユーザー向けの SAML/WS-Fed ID プロバイダーとのフェデレーション (プレビュー)
 
@@ -62,7 +62,7 @@ SAML/WS-Fed IdP フェデレーションのゲスト ユーザーは、テナン
 ## <a name="limitations"></a>制限事項
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD での DNS 検証済みドメイン
-フェデレーションを行うドメインは、Azure AD で DNS 検証済み ***でない*** ことが必要です。 アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントは DNS で検証されないため、それらとのフェデレーションを設定できます。
+管理されていない (電子メール検証済みまたは「バイラル」な) Azure AD テナントなど、Azure AD で DNS 検証されていないドメインと SAML/WS-Fed IdP フェデレーションを設定できます。 ただし、Azure AD のマネージド ドメインに対する SAML/WS-Fed IdP のフェデレーションをブロックし、ネイティブのAzure AD マネージド ドメイン機能を採用しています。 Azure AD で DNS 検証済みのドメインと SAML/WS-Fed IdP フェデレーションを設定しようとすると、Microsoft Azure portal や PowerShell でエラーが表示されます。
 
 ### <a name="signing-certificate-renewal"></a>署名証明書の更新
 IdP の設定でメタデータ URL を指定した場合、署名証明書が有効期限切れになると、Azure AD によって自動的に更新されます。 ただし、証明書が有効期限切れになる前に何らかの理由でローテーションされた場合、またはメタデータ URL を指定しなかった場合には、Azure AD による更新はできません。 この場合、署名証明書を手動で更新する必要があります。
@@ -75,7 +75,7 @@ IdP の設定でメタデータ URL を指定した場合、署名証明書が�
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 ### <a name="can-i-set-up-samlws-fed-idp-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>アンマネージド (電子メールで検証済み) テナントが存在するドメインとの SAML/WS-Fed IdP フェデレーションを設定できますか。 
-はい。 ドメインが検証されておらず、テナントで[管理者の引き継ぎ](../enterprise-users/domains-admin-takeover.md)が実施されていない場合は、そのドメインとのフェデレーションを設定できます。 アンマネージドまたは電子メールで検証済みのテナントは、ユーザーが B2B の招待を利用したとき、または現時点で存在しないドメインを使用して Azure AD のセルフサービス サインアップを実行したときに作成されます。 これらのドメインとのフェデレーションを設定できます。 Azure portal で、または PowerShell を使用して、DNS で検証済みのドメインとのフェデレーションを設定しようとすると、エラーが表示されます。
+はい。 ドメインが検証されておらず、テナントで[管理者の引き継ぎ](../enterprise-users/domains-admin-takeover.md)が実施されていない場合は、そのドメインとのフェデレーションを設定できます。 アンマネージドまたは電子メールで検証済みのテナントは、ユーザーが B2B の招待を利用したとき、または現時点で存在しないドメインを使用して Azure AD のセルフサービス サインアップを実行したときに作成されます。 これらのドメインと SAML/WS-Fed IdP のフェデレーションを設定できます。
 ### <a name="if-samlws-fed-idp-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>SAML/WS-Fed IdP フェデレーションと電子メールのワンタイム パスコード認証の両方が有効な場合、どちらの方法が優先されますか。
 パートナー組織との SAML/WS-Fed IdP フェデレーションが確立すると、その組織に属する新しいゲスト ユーザーに対して、電子メールのワンタイム パスコード認証よりもこちらが優先されます。 SAML/WS-Fed IdP フェデレーションを設定する前にゲスト ユーザーがワンタイム パスコード認証を使用して招待を利用した場合、彼らは引き続きワンタイム パスコード認証を使用することになります。
 ### <a name="does-samlws-fed-idp-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>SAML/WS-Fed IdP フェデレーションは、部分的に同期されたテナントに起因するサインインの問題に対応していますか。
@@ -122,7 +122,7 @@ SAML/WS-Fed IdP フェデレーションを設定しても、お客様からの�
 Azure AD B2B は、以下に示す特定の要件を伴う SAML プロトコルを使用する IdP とフェデレーションを行うように構成できます。 ご利用の SAML IdP と Azure AD の間に信頼を設定する方法の詳細については、「[シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する](../hybrid/how-to-connect-fed-saml-idp.md)」を参照してください。  
 
 > [!NOTE]
-> SAML/WS-Fed IdP フェデレーションのターゲット ドメインは Azure AD で DNS によって検証できません。 詳細については、「[制限事項](#limitations)」のセクションを参照してください。
+> SAML/WS-Fed IdP フェデレーションのターゲット ドメインは、Azure AD の DNS によって検証されていない必要があります。 詳細については、「[制限事項](#limitations)」のセクションを参照してください。
 
 #### <a name="required-saml-20-attributes-and-claims"></a>必須の SAML 2.0 属性および要求
 サード パーティの IdP に構成する必要がある特定の属性と要求の要件を次の各表に示します。 フェデレーションを設定するには、IdP からの SAML 2.0 応答において以下の属性が受け取られる必要があります。 これらの属性は、オンライン セキュリティ トークン サービスの XML ファイルにリンクするか手動で入力することによって、構成できます。

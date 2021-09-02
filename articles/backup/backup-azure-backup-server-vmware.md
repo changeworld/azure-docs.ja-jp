@@ -2,17 +2,20 @@
 title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
-ms.date: 05/24/2020
-ms.openlocfilehash: 12374393d0f94c567a68f1e28b6479e0747f3d40
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/27/2021
+ms.openlocfilehash: d734b9852da54c13d498cfd4a60caf007735d2f6
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084594"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722576"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
 この記事では、Azure Backup Server (MABS) を使用して、VMware ESXi ホスト/vCenter Server 上で実行されている VMware VM を Azure にバックアップする方法について説明します。
+
+>[!Note]
+>MABS v3 更新プログラム 2 のリリースにより、VMware 7.0 VM もバックアップできるようになりました。
 
 この記事では、以下の方法について説明します。
 
@@ -33,6 +36,13 @@ MABS は、VMware 仮想マシンのバックアップ時に次の機能を提�
 - MABS は、ローカル ディスク、ネットワーク ファイル システム (NFS)、またはクラスター ストレージに格納されている VM を保護します。
 - MABS は、負荷分散のために移行された VM を保護します。VM が負荷分散のために移行されると、MABS は VM の保護を自動的に検出し、継続します。
 - MABS では、VM 全体を復旧することなく Windows VM からファイルやフォルダーを回復でき、これにより、必要なファイルを迅速に回復できます。
+
+## <a name="support-matrix"></a>サポート マトリックス
+
+| MABS のバージョン | バックアップ用にサポートされている VMware VM バージョン |
+| --- | --- |
+| MABS v3 UR2 | VMware サーバー 7.0、6.7、6.5、または 6.0 (ライセンス版) |
+| MABS v3 UR1 | VMware サーバー 6.7、6.5、6.0、または 5.5 (ライセンス版) |
 
 ## <a name="prerequisites-and-limitations"></a>前提条件と制限事項
 
@@ -160,7 +170,7 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
 次の表は、作成するユーザー アカウントに割り当てる必要がある権限を示しています。
 
-| vCenter 6.5 ユーザー アカウントの権限                          | vCenter 6.7 ユーザー アカウントの権限                            |
+| vCenter 6.5 ユーザー アカウントの権限                          | vCenter 6.7 (以降) のユーザー アカウントの権限                            |
 |----------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | [データストア クラスタ].[データストア クラスタの設定]                           | [データストア クラスタ].[データストア クラスタの設定]                           |
 | Datastore.AllocateSpace                                                    | Datastore.AllocateSpace                                                    |
@@ -401,9 +411,9 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 ## <a name="vmware-parallel-backups"></a>VMware の並列バックアップ
 
 >[!NOTE]
-> この機能は、MABS V3 UR1 に適用されます。
+> この機能は、MABS V3 UR1 (以降) に適用される機能。
 
-以前のバージョンの MABS では、並列バックアップは保護グループ間でのみ実行されていました。 MABS V3 UR1 では、1 つの保護グループ内のすべての VMware VM バックアップが並列化され、VM のバックアップが高速になります。 すべての VMware デルタ レプリケーション ジョブが並列で実行されます。 既定では、並列で実行されるジョブの数は 8 に設定されます。
+以前のバージョンの MABS では、並列バックアップは保護グループ間でのみ実行されていました。 MABS V3 UR1 (以降) では、1 つの保護グループ内のすべての VMware VM バックアップが並列化され、VM のバックアップをよりすばやく行えます。 すべての VMware デルタ レプリケーション ジョブが並列で実行されます。 既定では、並列で実行されるジョブの数は 8 に設定されます。
 
 次に示すように、レジストリ キーを使用してジョブの数を変更できます (既定では存在しません。自分で追加する必要があります)。
 
@@ -413,9 +423,9 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 > [!NOTE]
 > ジョブの数をより大きい値に変更できます。 ジョブの数を 1 に設定すると、レプリケーション ジョブは順次実行されます。 数値を大きくするには、VMware のパフォーマンスを考慮する必要があります。 使用されるリソースの数と VMWare vSphere Server で必要となる追加の使用量を検討し、並列で実行するデルタ レプリケーション ジョブの数を決定します。 また、この変更は、新しく作成された保護グループにのみ影響します。 既存の保護グループについては、別の VM を一時的に保護グループに追加する必要があります。 これにより、保護グループの構成が更新されます。 手順が完了したら、この VM を保護グループから削除できます。
 
-## <a name="vmware-vsphere-67"></a>VMware vSphere 6.7
+## <a name="vmware-vsphere-67-and-70"></a>VMware vSphere 6.7 および 7.0
 
-vSphere 6.7 をバックアップするには、次の操作を行います。
+vSphere 6.7 および 7.0, をバックアップするには、以下を行います。
 
 - MABS サーバーで TLS 1.2 を有効にする
 
@@ -447,9 +457,9 @@ Windows Registry Editor Version 5.00
 ## <a name="exclude-disk-from-vmware-vm-backup"></a>VMware VM バックアップからディスクを除外する
 
 > [!NOTE]
-> この機能は、MABS V3 UR1 に適用されます。
+> この機能は、MABS V3 UR1 (以降) に適用される機能。
 
-MABS V3 UR1 では、VMware VM のバックアップから特定のディスクを除外できます。 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` に構成スクリプト **ExcludeDisk.ps1** があります。
+MABS V3 UR1 (以降) では、VMware VM のバックアップから特定のディスクを除外できます。 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` に構成スクリプト **ExcludeDisk.ps1** があります。
 
 ディスクの除外を構成するには、次の手順に従います。
 

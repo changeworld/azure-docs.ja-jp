@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 659f62cb8e42a4e2aba2e51dfcfee9826a614923
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034522"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588330"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) での制限
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 この記事では、Azure Database for MySQL フレキシブル サーバー サービスで制限事項について説明します。 MySQL データベース エンジンでの[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html)も適用されます。 リソース (コンピューティング、メモリ、ストレージ) レベルの詳細については、[コンピューティングとストレージ](concepts-compute-storage.md)の記事を参照してください。
@@ -59,7 +61,7 @@ MySQL サービスでは、基になるファイル システムに直接アク�
 - `SELECT ... INTO OUTFILE`:サービスではサポートされていません。
 
 ### <a name="supported"></a>サポートされています
-- `LOAD DATA INFILE` はサポートされていますが、`[LOCAL]` パラメーターで UNC パス (SMB を介してマウントされた Azure ストレージ) を指定する必要があります。
+- `LOAD DATA INFILE` はサポートされていますが、`[LOCAL]` パラメーターで UNC パス (SMB を介してマウントされた Azure ストレージ) を指定する必要があります。 さらに、MySQL クライアント バージョン 8.0 以上を使用している場合は、接続文字列に `-–local-infile=1` パラメーターを含める必要があります。
 
 ## <a name="functional-limitations"></a>機能制限
 

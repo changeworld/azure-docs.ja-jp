@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/04/2021
-ms.openlocfilehash: 812c7871a6fd9501164530f0e9feee92f275426b
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 586c6988372d6ae6310367ba6a3c0c2f0fa4d9e0
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526490"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090549"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Azure Purview での接続のトラブルシューティング
 
@@ -63,7 +63,7 @@ Azure Purview で、Azure BLOG ストレージや Azure SQL Database などの�
 > [!IMPORTANT]
 > _[Deny public network access]\(パブリック ネットワーク アクセスを拒否する\)_ を使用して、データベースを Azure SQL データベースとして含む複数のデータ ソースをスキャンすると、失敗します。 プライベート エンドポイントを使用してこれらのデータ ソースをスキャンするには、代わりに単一のデータ ソースを登録するオプションを使用します。
 
-セルフホステッド統合ランタイムの設定の詳細については、[プライベート ネットワーク内、Vnet 内、プライベート エンドポイントの背後におけるプライベート エンドポイントの取り込みとソースのスキャン](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources-in-private-networks-vnets-and-behind-private-endpoints)に関するセクションを参照してください
+セルフホステッド統合ランタイムの設定については、[Ingestion のプライベート エンドポイントとスキャン ソース](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources)を参照してください。
 
 Azure Purview で新しい資格情報を作成する方法の詳細については、[Azure Purview でのソース認証のための資格情報](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)に関するページを参照してください
 

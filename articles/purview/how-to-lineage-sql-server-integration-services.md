@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/30/2021
-ms.openlocfilehash: aa4fb6b7870831d0f24b0a7071cbf0dfd2431c14
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 2bdcdf79ee28bf6a3c233decd6dceafce74276ef
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294560"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258367"
 ---
 # <a name="how-to-get-lineage-from-sql-server-integration-services-ssis-into-azure-purview"></a>SQL Server Integration Services (SSIS) から Azure Purview にデータ系列を取り込む方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "114294560"
 | Azure Blob Storage | はい |
 | Azure Data Lake Storage Gen1 | はい |
 | Azure Data Lake Storage Gen2 | はい |
-| Azure File Storage | はい |
+| Azure Files | はい |
 | Azure SQL Database \* | はい |
 | Azure SQL Managed Instance \*| はい |
 | Azure Synapse Analytics \* | はい |

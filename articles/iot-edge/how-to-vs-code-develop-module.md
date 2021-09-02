@@ -5,16 +5,16 @@ services: iot-edge
 keywords: ''
 author: kgremban
 ms.author: kgremban
-ms.date: 08/07/2019
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 496a1225d5e9554fc661e0c93ce82a13f6aa11d5
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: cb0c6bd32c2bb1087635ee9ae61c0c569d3575f2
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904030"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862223"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -53,7 +53,7 @@ Windows、macOS、または Linux を実行しているコンピューターま�
 
 - Node.js:[Node.js](https://nodejs.org)。 また、[Yeoman](https://www.npmjs.com/package/yo) と [Azure IoT Edge Node.js Module Generator](https://www.npmjs.com/package/generator-azure-iot-edge-module) もインストールする必要があります。
 
-- Java:[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) と [Maven](https://maven.apache.org/)。 JDK インストールを指すように [`JAVA_HOME` 環境変数を設定する](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)必要があります。
+- Java:[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-support-on-azure) と [Maven](https://maven.apache.org/)。 JDK インストールを指すように [`JAVA_HOME` 環境変数を設定する](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)必要があります。
 
 モジュール イメージを作成してデプロイするには、モジュール イメージを作成する Docker とモジュール イメージを保持するコンテナー レジストリが必要です。
 
@@ -69,7 +69,7 @@ C でモジュールを開発している場合を除き、IoT Edge ソリュー
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
-   
+
 > [!NOTE]
 > 現在、iotedgehubdev では、Python 3.8 と互換性のない docker-py ライブラリが使用されています。
 >
@@ -109,6 +109,8 @@ Visual Studio Code は、指定された情報を取得し、IoT Edge ソリュ�
 
 - **.env** ファイルには環境変数の一覧が表示されます。 レジストリが Azure Container Registry の場合、Azure Container Registry のユーザー名とパスワードがあります。
 
+  運用環境シナリオでは、.env ファイルの代わりにサービス プリンシパルを使用してコンテナー レジストリへのアクセスを提供することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
+
   > [!NOTE]
   > 環境ファイルは、モジュールのイメージ リポジトリを指定した場合にのみ作成されます。 localhost の既定値を受け入れてローカルでテストおよびデバッグする場合は、環境変数を宣言する必要はありません。
 
@@ -139,16 +141,20 @@ Visual Studio Code は、指定された情報を取得し、IoT Edge ソリュ�
 
 C#、Node.js、または Java で開発している場合、モジュールでは、メッセージを開始、実行、ルーティングできるように既定のモジュール コード内で **ModuleClient** オブジェクトを使用する必要があります。 また、モジュールがメッセージを受信したときに対処するために、既定の入力チャネル **input1** も使用します。
 
-### <a name="set-up-iot-edge-simulator-for-iot-edge-solution"></a>IoT Edge ソリューション用に IoT Edge シミュレーターを設定する
+### <a name="set-up-iot-edge-simulator"></a>IoT Edge シミュレーターの設定
 
-開発用マシン上では、IoT Edge シミュレーターを起動できます。IoT Edge セキュリティ デーモンをインストールして、IoT Edge ソリューションを実行できるようにする必要はありません。
+IoT Edge モジュールを実行およびデバッグするには、IoT Edge 環境が必要です。 開発用マシンでは、完全な IoT Edge セキュリティ デーモンとランタイムを実行する代わりに、IoT Edge シミュレーターを使用できます。 デバイスをシミュレートして複数のモジュールを含むソリューションをデバッグすることも、1 つのモジュール アプリケーションをシミュレートすることもできます。
+
+オプション 1: IoT Edge ソリューションをシミュレートします。
 
 1. 左側の **[エクスプローラー]** タブで、 **[Azure IoT Hub]** セクションを展開します。 IoT Edge デバイス ID を右クリックし、 **[Setup IoT Edge Simulator]\(IoT Edge シミュレーターの設定\)** を選択して、デバイスの接続文字列を使用してシミュレーターを起動します。
 1. 統合ターミナルで進捗の詳細を確認すると、IoT Edge シミュレーターが正常に設定されたことがわかります。
 
-### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>シングル モジュール アプリ用に IoT Edge シミュレーターを設定する
+オプション 2: シングル IoT Edge モジュールをシミュレーションします。
 
-シミュレーターを設定して起動するには、コマンド **[Azure IoT Edge: Start IoT Edge Hub Simulator for Single Module]\(Azure IoT Edge: シングル モジュール用の IoT Edge Hub シミュレーターを起動\)** を Visual Studio Code のコマンド パレットから実行します。 メッセージが表示されたら、既定のモジュール コードの値 **input1** (または使用しているコードの同等の値) をアプリケーションの入力名として使用します。 このコマンドは **iotedgehubdev** CLI をトリガーしてから、IoT Edge シミュレーターとテスト用ユーティリティ モジュール コンテナーを起動します。 シミュレーターがシングル モジュール モードで正しく起動された場合は、統合ターミナルで以下の出力を確認できます。 メッセージの送信に役立つ `curl` コマンドも表示されます。 これは後で使用します。
+1. Visual Studio Code のコマンド パレットから、コマンド **[Azure IoT Edge: シングル モジュール用の IoT Edge Hub シミュレーターを起動]** を実行します。
+1. モジュールでテストする入力の名前を指定します。 既定のサンプル コードを使用している場合は、値 **input1** を使用します。
+1. このコマンドは **iotedgehubdev** CLI をトリガーしてから、IoT Edge シミュレーターとテスト用ユーティリティ モジュール コンテナーを起動します。 シミュレーターがシングル モジュール モードで正しく起動された場合は、統合ターミナルで以下の出力を確認できます。 メッセージの送信に役立つ `curl` コマンドも表示されます。 これは後で使用します。
 
    ![シングル モジュール アプリ用に IoT Edge シミュレーターを設定する](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
@@ -160,6 +166,8 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 ### <a name="debug-module-in-launch-mode"></a>起動モードでモジュールをデバッグする
 
+シミュレーターが正常に開始されたら、モジュール コードをデバッグできます。
+
 1. お使いの開発言語の要件に従ってデバッグ用の環境を準備し、モジュール内にブレークポイントを設定して、使用するデバッグ構成を選択します。
    - **C#**
      - Visual Studio Code 統合ターミナルで、ディレクトリを ***&lt;対象のモジュール名&gt;*** フォルダーに変更し、次のコマンドを実行して .NET Core アプリケーションをビルドします。
@@ -170,7 +178,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `Program.cs` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ _&lt;your module name&gt;_ Local Debug (.NET Core)]\(<モジュール名> のローカル デバッグ (.NET Core)\)** を選択します。
+     - 左側のメニューからデバッグ アイコンを選択するか、`Ctrl+Shift+D` と入力して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (.NET Core)]\(<モジュール名> のローカル デバッグ (.NET Core)\)** を選択します。
 
         > [!NOTE]
         > .NET Core `TargetFramework` が `launch.json` 内のプログラム パスと一致しない場合は、Visual Studio Code がこのプログラムを正常に起動できるように .csproj ファイル内の `TargetFramework` に合わせて `launch.json` 内のプログラム パスを手動で更新する必要があります。
@@ -184,11 +192,11 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `app.js` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ _&lt;your module name&gt;_ Local Debug (Node.js)]\(<モジュール名> のローカル デバッグ (Node.js)\)** を選択します。
+     - 左側のメニューからデバッグ アイコンを選択するか、`Ctrl+Shift+D` と入力して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Node.js)]\(<モジュール名> のローカル デバッグ (Node.js)\)** を選択します。
    - **Java**
      - `App.java` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ _&lt;your module name&gt;_ Local Debug (Java)]\(<モジュール名> のローカル デバッグ (Java)\)** を選択します。
+     - 左側のメニューからデバッグ アイコンを選択するか、`Ctrl+Shift+D` と入力して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Java)]\(<モジュール名> のローカル デバッグ (Java)\)** を選択します。
 
 1. **[デバッグの開始]** をクリックするか **F5** キーを押して、デバッグ セッションを開始します。
 

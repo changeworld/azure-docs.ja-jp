@@ -12,14 +12,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 002304f06e97aa04b3c15548e524c931c69ec6d6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648817"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031736"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
+# <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
 Azure Active Directory (Azure AD) を使用して、アプリを承認した後に受信する応答トークン内のロール要求の要求の種類をカスタマイズできます。
 

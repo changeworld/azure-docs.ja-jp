@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/06/2021
+ms.date: 07/15/2021
 ms.author: b-juche
-ms.openlocfilehash: 2b920b7a5794e1ee56b8ccc2c1d3aef45a1b5fe2
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a12df50ac6fe2e1dc2bf793316538a90ba0f901d
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483823"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361337"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する
 
@@ -31,10 +31,11 @@ NFSv4.1 クライアントの暗号化には、次の要件が適用されます
 
 * Kerberos チケット発行を容易にする Active Directory Domain Services (AD DS) または Azure Active Directory Domain Services (AADDS) 接続 
 * クライアントと Azure NetApp Files NFS サーバーの両方の IP アドレスに対する DNS A/PTR レコードの作成
-* Linux クライアント  
-    この記事では、RHEL および Ubuntu クライアントに関するガイダンスを提供します。  他のクライアントも同様の構成手順で動作します。 
-* NTP サーバー アクセス  
-    一般的に使用される、Active Directory ドメイン コントローラー (AD DC) のいずれかのドメイン コントローラーを使用できます。
+* Linux クライアント: この記事では、RHEL および Ubuntu クライアントに関するガイダンスを提供します。  他のクライアントも同様の構成手順で動作します。 
+* NTP サーバー アクセス: Active Directory ドメイン コントローラー (AD DC) の一般的に使用されるいずれかのドメイン コントローラーを使用できます。
+* ユーザー アカウントのユーザー プリンシパル名が `$` 記号で終る (user$@REALM.COM など) ことが "*ない*" ようにしてください。 <!-- Not using 'contoso.com' in this example; per Mark, A customers REALM namespace may be different from their AD domain name space. -->   
+    [グループ マネージド サービス アカウント](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts) (gMSA) の場合、そのアカウントを Azure NetApp Files Kerberos 機能で使用するには、ユーザー プリンシパル名から末尾の `$` を削除しておく必要があります。
+
 
 ## <a name="create-an-nfs-kerberos-volume"></a>NFS Kerberos ボリュームを作成する
 

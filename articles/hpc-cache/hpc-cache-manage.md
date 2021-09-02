@@ -4,14 +4,14 @@ description: Azure portal または Azure CLI を使用して Azure HPC Cache �
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 07/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: a831aa7b2f3b0d438d9db8fefa3d26428fea3680
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cd4dcb4bac5f2876db9af194abc5835c1d0f5a3c
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862599"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586979"
 ---
 # <a name="manage-your-cache"></a>キャッシュを管理する
 
@@ -33,6 +33,9 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 * [ **[削除]**](#delete-the-cache) - キャッシュを完全に破棄します
 
 これらのオプションの詳細については、以下をご覧ください。
+
+> [!TIP]
+> また、個々のストレージ ターゲットを管理できます。詳細については、「[ストレージ ターゲットの管理](manage-storage-targets.md)」を参照してください。
 
 キャッシュ管理タスクをデモンストレーションする[ビデオ](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)を視聴するには、次の画像をクリックしてください。
 
@@ -247,14 +250,6 @@ $
 
 ---
 
-## <a name="cache-metrics-and-monitoring"></a>キャッシュのメトリックと監視
-
-概要ページには、キャッシュのスループット、1 秒あたりの操作数、待機時間など、いくつかの基本的なキャッシュ統計情報のグラフが表示されます。
-
-![サンプル キャッシュについて前述の統計情報を示している、3 つの折れ線グラフのスクリーンショット](media/hpc-cache-overview-stats.png)
-
-これらのグラフは、Azure の組み込みの監視および分析ツールの一部です。 その他のツールとアラートは、ポータルのサイドバーにある **[監視]** という見出しの下にあるページから利用できます。 詳細については、[Azure 監視のドキュメント](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)のポータルに関するセクションを参照してください。
-
 ## <a name="view-warnings"></a>警告の表示
 
 キャッシュが異常な状態になった場合は、 **[警告]** ページを確認してください。 このページに表示されるキャッシュ ソフトウェアから送られる通知は、その状態を理解するのに役立ちます。
@@ -271,5 +266,5 @@ $
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure のメトリックと統計ツール](../azure-monitor/index.yml)について確認する
+* [統計を使用してキャッシュを監視する](metrics.md)
 * [Azure HPC Cache に関する支援](hpc-cache-support-ticket.md)を依頼する

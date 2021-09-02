@@ -4,12 +4,12 @@ description: Azure ストレージ アカウントを使用して転送パイプ
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: c966600b0ca9d65cf533c3c2f0aca211c84917bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a82bee4c0750004db11753c56f06b2ef19badf1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780777"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722482"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -434,11 +434,12 @@ az resource delete \
   * パイプライン実行が完了していない可能性があります。 エクスポート実行またはインポート実行には時間がかかることがあります。 
   * パイプラインに関するその他の問題については、Azure Container Registry チームにエクスポート実行またはインポート実行のデプロイ[関連付け ID](../azure-resource-manager/templates/deployment-history.md) を提示してください。
 * **物理的に分離された環境でイメージをプルするときの問題**
-  * 物理的に分離された環境でイメージをプルしようとしたときに、外部レイヤーまたは mcr.microsoft.com の解決試行に関するエラーが表示された場合、非再頒布可能レイヤーがイメージ マニフェストに含まれている可能性があります。 物理的に分離された環境の性質上、これらのイメージのプルに失敗することはよくあります。 イメージ マニフェストに外部レジストリへの参照がないかどうかをチェックすることによって、これに該当するかどうかを確認できます。 該当する場合、そのイメージに対するエクスポート パイプライン実行をデプロイする前に、非再頒布可能レイヤーをパブリック クラウド ACR にプッシュする必要があります。 これを行う方法については、「[非再頒布可能レイヤーをレジストリにプッシュするにはどうすればよいですか?](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)」を参照してください。
+  * 物理的に分離された環境でイメージをプルしようとしたときに、外部レイヤーまたは mcr.microsoft.com の解決試行に関するエラーが表示された場合、非再頒布可能レイヤーがイメージ マニフェストに含まれている可能性があります。 物理的に分離された環境の性質上、これらのイメージのプルに失敗することはよくあります。 イメージ マニフェストに外部レジストリへの参照がないかどうかをチェックすることによって、これに該当するかどうかを確認できます。 該当する場合、そのイメージに対するエクスポート パイプライン実行をデプロイする前に、非再頒布可能レイヤーをパブリック クラウド ACR にプッシュする必要があります。 これを行う方法については、「[非再頒布可能レイヤーをレジストリにプッシュするにはどうすればよいですか?](./container-registry-faq.yml#how-do-i-push-non-distributable-layers-to-a-registry-)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-1 つのコンテナー イメージをパブリック レジストリまたは別のプライベート レジストリから Azure コンテナー レジストリにインポートするには、[az acr import][az-acr-import] コマンド リファレンスを参照してください。
+* 1 つのコンテナー イメージをパブリック レジストリまたは別のプライベート レジストリから Azure コンテナー レジストリにインポートするには、[az acr import][az-acr-import] コマンド リファレンスを参照してください。
+* ネットワーク制限があるコンテナー レジストリから[エクスポート パイプラインの作成をブロック](data-loss-prevention.md)する方法について説明します。
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

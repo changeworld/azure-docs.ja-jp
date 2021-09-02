@@ -3,12 +3,12 @@ title: Azure Application Insights での作業 | Microsoft Docs
 description: Application Insights での FAQ。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: c889c0890f8e6d193b7e36a525470fc18bef494d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3c74add1d426a6d1e383ed90388bb319a8244e05
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060834"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616318"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -160,7 +160,7 @@ ASP.NET Core アプリケーションの場合は、[ASP.NET Core の依存関�
 ![Application Insights リソースを開いて、[サーバー] をクリック](./media/how-do-i/121-servers.png)
 
 ### <a name="if-you-see-no-performance-counter-data"></a>パフォーマンス カウンターのデータが表示されない場合
-* **IIS サーバー** の場合。 [Status Monitor をインストール](./monitor-performance-live-website-now.md)します。
+* **IIS サーバー** の場合。 [Azure Monitor Application Insights Agent をインストールします](./status-monitor-v2-overview.md)。
 * **Azure Web サイト** - パフォーマンス カウンターはまだサポートしていません。 Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
 * **Unix サーバー** - [collectd をインストール](java-2x-collectd.md)します。
 

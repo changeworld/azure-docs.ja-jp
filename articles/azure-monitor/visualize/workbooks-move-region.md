@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
-ms.openlocfilehash: d58d9ab48fa16fb5258f097ed4567e539e21c72c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cbdc2a43cc4fa3ce18a2ede52a115fd6de580c5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100601131"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471581"
 ---
 # <a name="move-an-azure-workbook-to-another-region"></a>Azure ブックを別のリージョンに移動する
 
@@ -25,7 +25,7 @@ ms.locfileid: "100601131"
 
 * ターゲット リージョンでブックがサポートされていることを確認します。
 
-* これらの手順は、Azure Monitor およびほとんどの種類のリソースに保存されている共有ブック (`microsoft.insights/workbooks`) とプライベート ブック (`microsoft.insights/myworkbooks`) の両方に適用されます。
+* これらの手順は、Azure Monitor および大部分のリソース タイプに保存されているブック (`microsoft.insights/workbooks`) に適用されます。
 
   ただし、Application Insights のリソースの種類専用にリンクされたブックの場合、それらのブックは、Application Insights リソースが保存されている Azure リージョンに格納されます。
 
