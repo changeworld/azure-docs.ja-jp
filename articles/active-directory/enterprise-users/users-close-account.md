@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aadf4cb638c1b9c16df934a9ee3c0a992a3e8a7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 14a2dea0445a866f7c352eedf64d631d83b1b0f0
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748675"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864409"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>アンマネージド Azure AD 組織の職場または学校アカウントを削除する
 
@@ -32,7 +32,7 @@ ms.locfileid: "108748675"
 
 ご自身のアカウントを削除するには、事前に次の項目を確認しておく必要があります。
 
-* ご自身がアンマネージド Azure AD 組織のユーザーであることを確認してください。 マネージド組織のユーザーの場合、自分のアカウントを削除することはできません。 マネージド組織のユーザーがアカウントを削除する必要がある場合は、管理者に連絡する必要があります。 ご自身がアンマネージド組織のユーザーかどうかを確認する方法については、「[アンマネージド テナントからユーザーを削除する](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)」を参照してください。
+* ご自身がアンマネージド Azure AD 組織のユーザーであることを確認してください。 マネージド組織のユーザーの場合、自分のアカウントを削除することはできません。 マネージド組織のユーザーがアカウントを削除する必要がある場合は、管理者に連絡する必要があります。 ご自身がアンマネージド組織のユーザーかどうかを確認する方法については、「[アンマネージド テナントからユーザーを削除する](/power-automate/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)」を参照してください。
 
 * 保持する必要があるすべてのデータを保存します。 エクスポート要求を送信する方法については、「[Accessing and exporting system-generated logs for Unmanaged Tenants (アンマネージド テナントのシステム生成ログへのアクセスとエクスポート)](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)」を参照してください。
 
@@ -56,5 +56,5 @@ ms.locfileid: "108748675"
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)
-- [アンマネージド テナントからユーザーを削除する](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [アンマネージド テナントからユーザーを削除する](/power-automate/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
 - [アンマネージド テナントのシステム生成ログへのアクセスとエクスポート](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

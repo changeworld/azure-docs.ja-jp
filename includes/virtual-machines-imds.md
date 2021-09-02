@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 323e6960a111d8227c14cf38046807ad6c1cada6
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 29f5e96c18220f0bbdec5f91107c9220fc2fba0b
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122261280"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123355315"
 ---
 Azure Instance Metadata Service (IMDS) によって、現在実行中の仮想マシン インスタンスに関する情報が提供されます。 これを使用して、仮想マシンの管理と構成を行うことができます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、[エンドポイント カテゴリの概要](#endpoint-categories)に関するページを参照してください。
@@ -259,7 +259,7 @@ IMDS はバージョン管理されており、HTTP 要求での API バージ�
 
 ### <a name="swagger"></a>Swagger
 
-IMDS の完全な Swagger 定義は、 https://github.com/Azure/azure-rest-api-specs/blob/master/specification/imds/data-plane/readme.md で入手できます。
+IMDS の完全な Swagger 定義は、 https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/readme.md で入手できます。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 

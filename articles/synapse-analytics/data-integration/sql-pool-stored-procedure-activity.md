@@ -8,16 +8,16 @@ author: linda33wj
 ms.author: jingwang
 ms.reviewer: jrasnick
 ms.date: 05/13/2021
-ms.openlocfilehash: f7f697b9df78c44efb7a266d1a92bdd9ffe31753
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 4c1f12d4e61f254f753f3feb59ca46997f88b751
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112967693"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257064"
 ---
 # <a name="transform-data-by-using-sql-pool-stored-procedure-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics で SQL プール ストアド プロシージャ アクティビティを使用してデータを変換する
 
-<Token>**適用対象:** ![サポート対象外](../media/applies-to/no.png)Azure Data Factory ![サポート対象](../media/applies-to/yes.png)Azure Synapse Analytics</Token> 
+[!INCLUDE[appliesto-xxx-asa-md](../../data-factory/includes/appliesto-xxx-asa-md.md)]
 
 [パイプライン](../../data-factory/concepts-pipelines-activities.md)のデータ変換アクティビティを使用して、生データを予測や分析情報に変換し、処理します。 この記事は、データ変換とサポートされている変換アクティビティの概要を説明する、[データ変換](../../data-factory/transform-data.md)に関する記事に基づいています。
 

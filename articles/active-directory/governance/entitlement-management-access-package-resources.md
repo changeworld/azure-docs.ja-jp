@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a275b1c43f8a7c5526209f943e48a1d943eca149
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 389bf4438fa31b0c1174441cd62f814f18b271d2
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713686"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729518"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
@@ -109,7 +109,7 @@ ms.locfileid: "109713686"
 
 ## <a name="add-an-application-resource-role"></a>アプリケーションのリソース ロールを追加する
 
-ユーザーにアクセス パッケージが割り当てられている場合は、Azure AD で、Azure AD エンタープライズ アプリケーション (SaaS アプリケーションと、Azure AD との間で認証連携された組織のアプリケーションの両方を含む) へのアクセスを、ユーザーに自動的に割り当てることができます。 フェデレーション シングル サインオンを使用して Azure AD と統合されるアプリケーションでは、Azure AD で、アプリケーションに割り当てられたユーザーに対するフェデレーション トークンが発行されます。
+ユーザーにアクセス パッケージが割り当てられている場合は、Azure AD で、Azure AD エンタープライズ アプリケーション (SaaS アプリケーションと、Azure AD と統合されている組織のアプリケーションの両方を含む) へのアクセスをユーザーに自動的に割り当てることができます。 フェデレーション シングル サインオンを使用して Azure AD と統合されるアプリケーションでは、Azure AD で、アプリケーションに割り当てられたユーザーに対するフェデレーション トークンが発行されます。
 
 アプリケーションには複数のロールを割り当てることができます。 アプリケーションをアクセス パッケージに追加する場合、そのアプリケーションに複数のロールがある場合は、それらのユーザーに適切なロールを指定する必要があります。 アプリケーションを開発している場合、これらのロールをアプリケーションに追加する方法の詳細については、「[方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する](../develop/active-directory-enterprise-app-role-management.md)」を参照してください。
 

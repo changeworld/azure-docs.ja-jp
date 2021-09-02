@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 7577ca4b8a1d7db7ea99aadfef4fd2a445b66425
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7254ed303e45c69f291aa5c7a06f63390aaed162
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90932606"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750267"
 ---
 # <a name="list-the-azure-arc-enabled-postgresql-hyperscale-server-groups-created-in-an-azure-arc-data-controller"></a>Azure Arc データ コントローラーに作成されている Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの一覧を表示する
 
@@ -24,10 +24,11 @@ ms.locfileid: "90932606"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="from-cli-with-azdata"></a>CLI から azdata を使用する
+## <a name="from-cli-with-azure-cli-extension-az"></a>Azure CLI 拡張機能 (az) を使用して CLI から
+
 コマンドの一般的な形式は次のとおりです。
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 次のような出力が返されます。
@@ -38,8 +39,8 @@ postgres01  Ready    2
 postgres02  Ready    2
 ```
 このコマンドで使用できるパラメーターの詳細については、次を実行してください。
-```console
-azdata arc postgres server list --help
+```azurecli
+az postgres arc-server list --help
 ```
 
 ## <a name="from-cli-with-kubectl"></a>CLI から kubectl を使用する

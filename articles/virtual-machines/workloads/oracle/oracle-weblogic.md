@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: rezar
-ms.openlocfilehash: 59bae8bfea29ee458288751209ffc860b5b9ce9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b84cb11211c3a51bd463ad7081963298f8ec357e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956003"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450828"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Virtual Machines で Oracle WebLogic Server を実行するためのソリューションとは
 
@@ -31,7 +31,7 @@ Azure WLS ソリューションは、Java アプリケーションをできる�
 
 _これらのオファーはライセンス持ち込み型です_。 ここでは、Oracle で既に適切なライセンスを取得していること、および Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
 
-このオファーでは、基本イメージ (WebLogic Server 14 や JDK 11 on Oracle Linux 7.6 など) を使用して、さまざまなオペレーティング システム、Java、および WLS バージョンをサポートしています。 これらの基本イメージは、Azure で単独で使用することもできます。 基本イメージは、カスタマイズされた複雑な Azure デプロイを必要とする顧客に適しています。 現在の基本イメージ セットは、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)から入手できます。
+このオファーでは、基本イメージ (WebLogic Server 14 や JDK 11 on Oracle Linux 7.6 など) を使用して、さまざまなオペレーティング システム、Java、および WLS バージョンをサポートしています。 これらの基本イメージは、Azure で単独で使用することもできます。 基本イメージは、カスタマイズされた複雑な Azure デプロイを必要とする顧客に適しています。 基本イメージの現在のセットは、[Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1) で入手できます。
 
 _これらのオファーを開発しているエンジニアリング チームと密接に連携しながら移行シナリオに取り組むことに関心がある場合は、_ [マーケットプレース オファーの概要ページ](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)の [[CONTACT ME]\(お問い合わせ\)](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) ボタンを選択してください。 プログラム マネージャー、アーキテクト、エンジニアからすぐに連絡があり、密接なコラボレーションが開始されます。 移行シナリオで共同作業を行う機会は、オファーの開発が現在進められている場合でも無料です。
 

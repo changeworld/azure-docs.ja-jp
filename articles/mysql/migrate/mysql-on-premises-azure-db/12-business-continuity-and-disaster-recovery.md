@@ -1,5 +1,5 @@
 ---
-title: 'MySQL オンプレミスから Azure Database for MySQL への移行ガイド: 事業継続とディザスター リカバリー (BCDR)'
+title: 'オンプレミスの MySQL を Azure Database for MySQL に移行する: 事業継続とディザスター リカバリー (BCDR)'
 description: あらゆるミッション クリティカルなシステムと同様に、バックアップと復元は、ディザスター リカバリー (BCDR) 戦略とともに、システム設計全体の重要な部分です。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 4785c49c456b0008f0ec4c67cdee55d8118c76a9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 35ab4f952b2e8082f4923926f11698fef352c8f8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082890"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296221"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-business-continuity-and-disaster-recovery-bcdr"></a>MySQL オンプレミスから Azure Database for MySQL への移行ガイド: 事業継続とディザスター リカバリー (BCDR)
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-business-continuity-and-disaster-recovery-bcdr"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する: 事業継続とディザスター リカバリー (BCDR)
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +32,7 @@ ms.locfileid: "112082890"
 
 Azure Database for MySQL では、既定で 7 日間の自動バックアップがサポートされています。 これを現在の最大値である 35 日に変更することが適切な場合があります。 この値を 35 日に変更した場合、割り当てられたストレージの 1 倍を超える追加のバックアップ ストレージに対し料金が発生する点に注意してください。
 
-「[Azure Database for MySQL でのバックアップと復元](/azure/mysql/concepts-backup)」の記事で説明されているように、データベース バックアップ機能には現在いくつかの制限があります。 実装する必要がある追加の戦略を決定する際には、これらについて理解しておくことが重要です。
+「[Azure Database for MySQL でのバックアップと復元](../../concepts-backup.md)」の記事で説明されているように、データベース バックアップ機能には現在いくつかの制限があります。 実装する必要がある追加の戦略を決定する際には、これらについて理解しておくことが重要です。
 
 注意すべき項目には次のものがあります。
 
@@ -41,21 +43,21 @@ Azure Database for MySQL では、既定で 7 日間の自動バックアップ�
 - 最大 16 TB を許容するレベルでは、バックアップはスナップショット ベースで行われます
 
     > [!NOTE]
-    > [一部のリージョン](/azure/mysql/concepts-pricing-tiers#storage)では、最大 16 TB のストレージはまだサポートされていません。
+    > [一部のリージョン](../../concepts-pricing-tiers.md#storage)では、最大 16 TB のストレージはまだサポートされていません。
 
 ### <a name="restore"></a>復元
 
 サーバーの作成時に冗長性 (ローカルまたは geo) を構成する必要があります。 ただし、geo リストアを実行でき、復元プロセス中にこれらのオプションを変更できます。 復元操作を実行すると、接続が一時的に停止する可能性があり、すべてのアプリケーションが復元プロセス中にダウンします。
 
-データベースの復元中に、データベースの外部にあるすべてのサポート項目を復元する必要があります。 移行プロセスを確認してください。 詳細については、「[復元後のタスクの実行](/azure/mysql/concepts-backup#perform-post-restore-tasks)」を参照してください。
+データベースの復元中に、データベースの外部にあるすべてのサポート項目を復元する必要があります。 移行プロセスを確認してください。 詳細については、「[復元後のタスクの実行](../../concepts-backup.md#perform-post-restore-tasks)」を参照してください。
 
 ## <a name="read-replicas"></a>読み取りレプリカ
 
-[読み取りレプリカ](/azure/mysql/concepts-read-replicas)を使用すると、MySQL の読み取りスループットを向上させ、地域ユーザーのパフォーマンスを向上させ、ディザスター リカバリーを実装することができます。 1 つ以上の読み取りレプリカを作成する場合は、プライマリ サーバーと同じコンピューティングとストレージに追加料金が適用されることに注意してください。
+[読み取りレプリカ](../../concepts-read-replicas.md)を使用すると、MySQL の読み取りスループットを向上させ、地域ユーザーのパフォーマンスを向上させ、ディザスター リカバリーを実装することができます。 1 つ以上の読み取りレプリカを作成する場合は、プライマリ サーバーと同じコンピューティングとストレージに追加料金が適用されることに注意してください。
 
 ## <a name="deleted-servers"></a>削除されたサーバー
 
-管理者や悪意のあるユーザーが Azure portal で、または自動メソッドを使用してサーバーを削除した場合、すべてのバックアップと読み取りレプリカが削除されます。 Azure Database for MySQL リソース グループに[リソース ロック](/azure/azure-resource-manager/management/lock-resources)を作成して、追加の削除防止レイヤーをインスタンスに加えることが重要です。
+管理者や悪意のあるユーザーが Azure portal で、または自動メソッドを使用してサーバーを削除した場合、すべてのバックアップと読み取りレプリカが削除されます。 Azure Database for MySQL リソース グループに[リソース ロック](../../../azure-resource-manager/management/lock-resources.md)を作成して、追加の削除防止レイヤーをインスタンスに加えることが重要です。
 
 ## <a name="regional-failure"></a>リージョンの障害
 
@@ -66,7 +68,7 @@ Azure Database for MySQL では、既定で 7 日間の自動バックアップ�
 
 ### <a name="load-balancers"></a>ロード バランサー
 
-アプリケーションが世界中の多数の異なるインスタンスから構成されている場合は、一部のクライアントを更新できなくなる可能性があります。 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) または [Application Gateway](/azure/application-gateway/overview) を利用して、シームレスなフェールオーバー機能を実装します。 これらのツールは、便利で時間の節約になりますが、リージョンのフェールオーバー機能には必要ありません。
+アプリケーションが世界中の多数の異なるインスタンスから構成されている場合は、一部のクライアントを更新できなくなる可能性があります。 [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) または [Application Gateway](../../../application-gateway/overview.md) を利用して、シームレスなフェールオーバー機能を実装します。 これらのツールは、便利で時間の節約になりますが、リージョンのフェールオーバー機能には必要ありません。
 
 ## <a name="wwi-scenario"></a>WWI のシナリオ
 
@@ -119,6 +121,8 @@ WWI では、読み取りレプリカのフェールオーバー機能をテス�
 
 - 迅速なフェールオーバーを行えるようにアプリケーションの負荷分散戦略を実装します。  
 
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Security](./13-security.md)

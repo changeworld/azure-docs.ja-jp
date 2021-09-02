@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: bdaad591effc2ef9e5d682dd9a80d994a9e1c34d
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: cd6f2de9d440309662ef47a950f6c1331e30d5fb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733414"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221096"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>チュートリアル:Bastion を構成し、Windows VM に接続する
 
@@ -72,16 +72,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 | パブリック IP アドレスの SKU |  Standard  |
 | 割り当て  | 静的 |
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
-
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
-Azure portal にサインインします。
-
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion ホストの作成
 
 このセクションでは、VNet で Bastion オブジェクトを作成する方法について説明します。 これは、VNet 内の VM に対するセキュリティで保護された接続を作成するために必要です。
 
+1. [Azure portal](https://ms.portal.azure.com) にサインインします。
 1. 検索で「**Bastion**」と入力します。
 1. [サービス] の **[Bastion]** をクリックします。
 1. [Bastion] ページで、 **[+ 作成]** をクリックして **[Bastion の作成]** ページを開きます。

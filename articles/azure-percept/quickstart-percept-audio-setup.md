@@ -1,19 +1,19 @@
 ---
-title: Azure Percept Audio をセットアップする
+title: Azure Percept Audio デバイスを設定する
 description: Azure Percept Audio デバイスを Azure Percept DK に接続する方法について説明します。
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: 03cab112681536708496c35e4440e463d1522406
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 8b6ec3ba8473be8e924d3c4b8ae17ccbdcf6568f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108191"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221837"
 ---
-# <a name="azure-percept-audio-setup"></a>Azure Percept Audio の設定
+# <a name="set-up-the-azure-percept-audio-device"></a>Azure Percept Audio デバイスを設定する
 
 Azure Percept Audio は、Azure Percept DK ですぐに使用できます。 特別な設定は必要ありません。
 

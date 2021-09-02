@@ -1,15 +1,15 @@
 ---
 title: Azure セキュリティ ベンチマーク v1 の規制コンプライアンスの詳細
 description: Azure セキュリティ ベンチマーク v1 規制コンプライアンスの組み込みイニシアティブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7316fb059eb1fef8a7fcc44fe670e6cbb2c32cd5
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 8fd470306d5eb5b3b7538bc422f2a3e703637630
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606539"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111439"
 ---
 # <a name="details-of-the-azure-security-benchmark-v1-regulatory-compliance-built-in-initiative"></a>Azure セキュリティ ベンチマーク v1 規制コンプライアンスの組み込みイニシアティブの詳細
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: cbfbbfaea3954afd2a77090acb140c41e0b93052
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 9cef8babd11ea6a0ed4ffc965ed52164c9abe43d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290638"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866987"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Java アプリケーションを Azure VM と仮想マシン スケール セット上の JBoss EAP に移行する方法
 
@@ -54,20 +54,20 @@ Azure Marketplace のオファーと共に、EAP on Azure を体験するため�
 
 - **JBoss EAP のインストール** - JBoss EAP 用の Red Hat Subscription Management (RHSM) エンタイトルメントがある Red Hat アカウントが必要です。 このエンタイトルメントにより、Red Hat によるテストと認定が済んだ JBoss EAP バージョンをダウンロードすることができます。  EAP エンタイトルメントがない場合は、[Red Hat Developer Subscription for Individuals](https://developers.redhat.com/register) を使用して無料の開発者サブスクリプションにサインアップできます。 登録されると、[Red Hat カスタマー ポータル](https://access.redhat.com/management/)で必要な資格情報 (プール ID) を確認できます。
 
-- **RHEL のオプション** - 従量課金制 (PAYG) またはサブスクリプション持ち込み (BYOS) のどちらかを選択します。 BYOS の場合は、ソリューション テンプレートを使用して Marketplace オファーをデプロイする前に、[Red Hat Cloud Access](https://access.redhat.com/) [RHEL Gold Image](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/) をアクティブにする必要があります。 [こちらの手順](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)に従って、Microsoft Azure で使用するために RHEL Gold イメージを有効にします。
+- **RHEL のオプション** - 従量課金制 (PAYG) またはサブスクリプション持ち込み (BYOS) のどちらかを選択します。 BYOS の場合は、ソリューション テンプレートを使用して Marketplace オファーをデプロイする前に、[Red Hat Cloud Access](https://access.redhat.com/) [RHEL Gold Image](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/) をアクティブにする必要があります。 [こちらの手順](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide)に従って、Microsoft Azure で使用するために RHEL Gold イメージを有効にします。
 
 - **[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/overview)** 。
 
 - **Java ソース コードと [Java Development Kit (JDK) のバージョン](https://www.oracle.com/java/technologies/javase-downloads.html)**
 
-- **[JBoss EAP 7.2 に基づく Java アプリケーション](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/development_guide/index#become_familiar_with_java_enterprise_edition_8)** または **[JBoss EAP 7.3 に基づく Java アプリケーション](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html-single/development_guide/index#get_started_developing_applications)** .
+- **[JBoss EAP 7.2 に基づく Java アプリケーション](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/development_guide/index)** または **[JBoss EAP 7.3 に基づく Java アプリケーション](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html-single/development_guide/index#get_started_developing_applications)** .
 
-**RHEL のオプション** - PAYG または BYOS を選択します。 BYOS の場合は、Azure Marketplace オファーを使用するために [Red Hat Cloud Access](https://access.redhat.com/documentation/red_hat_subscription_management/1/html-single/red_hat_cloud_access_reference_guide/index) RHEL Gold Image をアクティブ化する必要があります。 BYOS オファーは、Azure portal の [プライベート オファー] セクションに表示されます。 
+**RHEL のオプション** - PAYG または BYOS を選択します。 BYOS の場合は、Azure Marketplace オファーを使用するために [Red Hat Cloud Access](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index) RHEL Gold Image をアクティブ化する必要があります。 BYOS オファーは、Azure portal の [プライベート オファー] セクションに表示されます。 
 
 **製品のバージョン**
 
-* [JBoss EAP 7.2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/)
-* [JBoss EAP 7.3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/)
+* [JBoss EAP 7.2](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2)
+* [JBoss EAP 7.3](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3)
 * [RHEL 7.7](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux77-ARM)
 * [RHEL 8.0](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux80-ARM)
 
@@ -110,8 +110,6 @@ MTA では、Oracle WebLogic Server などのサードパーティ製エンタ�
 | Java アプリケーション | - | - | &#x2714; | &#x2714; | - | - | - |
 
 <sup>1</sup> 現在、この移行パスについてのルールは MTA から提供されていませんが、Red Hat のコンサルティングが、任意のソース プラットフォームから JBoss EAP 7 への移行を支援できます。
-
-:::image type="content" source="./media/jboss-cli-image.png" alt-text="画像では、CLI ウィンドウの出力が示されています。":::
 
 MTA の[システム要件](https://access.redhat.com/documentation/en/migration_toolkit_for_applications/5.0/html-single/introduction_to_the_migration_toolkit_for_applications/index#system_requirements_getting-started-guide)を確認することもできます。
 
@@ -161,7 +159,7 @@ WEB-INF/jboss-web.xml または WEB-INF/web.xml、あるいはその両方のフ
 * 接続プールの構成
 * Java Database Connectivity (JDBC) ドライバーの JAR ファイルはどこで見つかりますか
 
-詳細については、JBoss EAP のドキュメントの [JBoss EAP DataSources](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/datasource_management) に関する記事を参照してください。
+詳細については、JBoss EAP のドキュメントの [JBoss EAP DataSources](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3html/configuration_guide/datasource_management) に関する記事を参照してください。
 
 ### <a name="determine-whether-and-how-the-file-system-is-used"></a>ファイル システムが使用されているかどうかとその使用方法を判断する
 
@@ -220,20 +218,20 @@ JMS 永続ストアが構成されている場合は、それらの構成を把�
 
 移行を支援できるツールがあります。
 
-* [移行に関してアプリケーションを分析するための Red Hat Application Migration Toolkit](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/migration_guide/index#use_windup_to_analyze_applications_for_migration)。
-* [サーバー構成を移行するための JBoss Server Migration Tool](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/migration_guide/index#migration_tool_server_migration_tool)
+* [移行に関してアプリケーションを分析するための Red Hat Application Migration Toolkit](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/migration_guide/index#use_windup_to_analyze_applications_for_migration)。
+* [サーバー構成を移行するための JBoss Server Migration Tool](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/migration_guide/index#migration_tool_server_migration_tool)
 
-サーバーの構成を古い JBoss EAP バージョンから新しい JBoss EAP バージョンに移行するには、[JBoss Server Migration Tool](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/migration_guide/index#migrate_server_migration_tool_option) を使用すること、または[管理 CLI 移行操作](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/migration_guide/index#migrate__migrate_operation_option)を利用して手動で移行を実行することができます。
+サーバーの構成を古い JBoss EAP バージョンから新しい JBoss EAP バージョンに移行するには、[JBoss Server Migration Tool](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/migration_guide/index#migrate_server_migration_tool_option) を使用すること、または[管理 CLI 移行操作](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/migration_guide/index#migrate__migrate_operation_option)を利用して手動で移行を実行することができます。
 
 ### <a name="run-red-hat-application-migration-toolkit"></a>Red Hat Application Migration Toolkit を実行する
 
 [対話型モードで JBoss Server Migration Tool を実行する](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html-single/using_the_jboss_server_migration_tool/index#migration_tool_server_run_interactive_mode)ことができます。 既定では、JBoss Server Migration Tool は対話形式で実行されます。 このモードを使用すると、移行するサーバー構成を正確に選択できます。
 
-[非対話型モードで JBoss Server Migration Tool を実行する](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/using_the_jboss_server_migration_tool/index#migration_tool_server_run_noninteractive_mode)こともできます。 このモードでは、プロンプトなしで実行できます。
+[非対話型モードで JBoss Server Migration Tool を実行する](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/using_the_jboss_server_migration_tool/running_the_server_migration_tool#migration_tool_server_run_noninteractive_mode)こともできます。 このモードでは、プロンプトなしで実行できます。
 
 ### <a name="review-the-result-of-jboss-server-migration-toolkit-execution"></a>JBoss サーバー移行ツールキットの実行結果を確認する
 
-移行が完了したら、*EAP_HOME/standalone/configuration/* ディレクトリと *EAP_HOME/domain/configuration/* ディレクトリで、移行されたサーバー構成ファイルを確認します。 詳細については、「[Reviewing the Results of JBoss Server Migration Tool Execution (JBoss Server Migration Tool の実行結果の確認)](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/using_the_jboss_server_migration_tool/index#migration_tool_server_results)」を参照してください。
+移行が完了したら、*EAP_HOME/standalone/configuration/* ディレクトリと *EAP_HOME/domain/configuration/* ディレクトリで、移行されたサーバー構成ファイルを確認します。 詳細については、「[Reviewing the Results of JBoss Server Migration Tool Execution (JBoss Server Migration Tool の実行結果の確認)](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/using_the_jboss_server_migration_tool/running_the_server_migration_tool#migration_tool_server_results)」を参照してください。
 
 ### <a name="expose-the-application"></a>アプリケーションを公開する
 

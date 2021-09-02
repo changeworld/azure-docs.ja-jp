@@ -1,20 +1,20 @@
 ---
-title: Azure Percept Audio 音声アシスタント アプリケーション ウィンドウに戻る
+title: Azure Percept Studio で音声アシスタント アプリケーションを見つける
 description: この記事では、以前に作成した音声アシスタント アプリケーション ウィンドウに戻る方法について説明します。
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c106c7f892ab003380288eb8c2d5e0a62ac8da93
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9c639c7d6f50b4d0396423c2e49274436d6e0308
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781310"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222892"
 ---
-# <a name="return-to-your-voice-assistant-application-window-in-azure-percept-studio"></a>Azure Percept Studio で音声アシスタント アプリケーション ウィンドウに戻る
+# <a name="find-your-voice-assistant-application-in-azure-percept-studio"></a>Azure Percept Studio で音声アシスタント アプリケーションを見つける
 
 このハウツー ガイドでは、以前に作成した音声アシスタント アプリケーションに戻る方法を説明します。
 

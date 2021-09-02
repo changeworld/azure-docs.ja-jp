@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: 31fd56299fb88a0f30843dade782743085ffe852
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 06/30/2021
+ms.author: rifox
+ms.openlocfilehash: 86ab1bc1b9612c663076e5ed55ae5531317906f2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560518"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078448"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -409,12 +409,6 @@ CallDirection callDirection = call.getCallDirection();
 boolean muted = call.isMuted();
 ```
 
-現在の通話が記録されているかどうかを確認するには、`isRecordingActive` プロパティを調べます。
-
-```java
-boolean recordingActive = call.isRecordingActive();
-```
-
 アクティブな動画ストリームを調べるには、`localVideoStreams` コレクションを確認します。
 
 ```java
@@ -430,7 +424,21 @@ Context appContext = this.getApplicationContext();
 call.mute(appContext).get();
 call.unmute(appContext).get();
 ```
+### <a name="change-the-volume-of-the-call"></a>通話の音量を変更する
+    
+通話中は、ユーザーが電話のハードウェア音量キーを使用して通話ボリュームを変更できるようにする必要があります。
+これを行うには、通話が行われるアクティビティで `setVolumeControlStream` メソッドをストリーム型 `AudioManager.STREAM_VOICE_CALL` と共に使用します。
+この場合、ハードウェアの音量キー (音量スライダーに表示される電話アイコンまたは類似のもの) を使用して通話の音量を変更できますが、アラーム、メディア、システム全体の音量などの他のサウンド プロファイルの音量は変更されません。 詳細については、「[音声出力の変更の処理 | Android 開発者](https://developer.android.com/guide/topics/media-apps/volume-and-earphones)」を確認してください。
+    
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ...
+    setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
+}
+```
 
+    
 ### <a name="start-and-stop-sending-local-video"></a>ローカル動画の送信を開始および停止する
 
 動画を開始するには、`deviceManager` オブジェクトの `getCameraList` API を使用して、カメラを列挙する必要があります。 次に、目的のカメラを渡して `LocalVideoStream` の新しいインスタンスを作成し、それを引数として `startVideo` API に渡します。
@@ -668,6 +676,95 @@ VideoStreamRendererView uiView = previewRenderer.createView(new RenderingOptions
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 ```
+
+## <a name="record-calls"></a>通話を記録する
+> [!WARNING]
+> ACS Calling Android SDK のバージョン 1.1.0 およびベータ リリース バージョン 1.1.0-beta.1 までは、`isRecordingActive` および `addOnIsRecordingActiveChangedListener` は `Call` オブジェクトの一部になっています。 新しいベータ リリースでは、これらの API は、以下に説明するように `Call` の拡張機能として移動されています。
+
+> [!NOTE]
+> この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling Android SDK の "ベータ" リリースを使用してください
+
+通話記録は、コア `Call` API の拡張機能です。 まず、記録機能 API オブジェクトを取得する必要があります。
+
+```java
+RecordingFeature callRecordingFeature = call.api(RecordingFeature.class);
+```
+
+次に、通話が記録されているかどうかを確認するために、`callRecordingFeature` の `isRecordingActive` プロパティを調べます。 `boolean` を返します。
+
+```java
+boolean isRecordingActive = callRecordingFeature.isRecordingActive();
+```
+
+また、変更の記録をサブスクライブすることもできます。
+
+```java
+private void handleCallOnIsRecordingChanged(PropertyChangedEvent args) {
+    boolean isRecordingActive = callRecordingFeature.isRecordingActive();
+}
+
+callRecordingFeature.addOnIsRecordingActiveChangedListener(handleCallOnIsRecordingChanged);
+
+```
+
+アプリケーションから記録を開始する場合は、まず「[通話録音の概要](../../../../concepts/voice-video-calling/call-recording.md)」に従って通話記録を設定する手順を実行してください。
+
+サーバーで通話録音を設定したら、Android アプリケーションで通話から `ServerCallId` 値を取得し、それをサーバーに送信して録音プロセスを開始する必要があります。 `ServerCallId` 値は、`getInfo()` を使用してクラス オブジェクト内に見つけることができる `CallInfo` クラスの `getServerCallId()` を使用して見つけることができます。
+
+```java
+try {
+    String serverCallId = call.getInfo().getServerCallId().get();
+    // Send serverCallId to your recording server to start the call recording.
+} catch (ExecutionException | InterruptedException e) {
+} catch (UnsupportedOperationException unsupportedOperationException) {
+}
+```
+
+サーバーから録音が開始されると、イベント `handleCallOnIsRecordingChanged` がトリガーされ、`callRecordingFeature.isRecordingActive()` の値が `true` になります。
+
+通話録音を停止する場合は、通話録音を開始するのと同じように、`ServerCallId` を取得し、これを録音サーバーに送信して、録音サーバーが通話録音を停止できるようにする必要があります。
+
+```java
+try {
+    String serverCallId = call.getInfo().getServerCallId().get();
+    // Send serverCallId to your recording server to stop the call recording.
+} catch (ExecutionException | InterruptedException e) {
+} catch (UnsupportedOperationException unsupportedOperationException) {
+}
+```
+
+サーバーから録音が停止されると、イベント `handleCallOnIsRecordingChanged` がトリガーされ、`callRecordingFeature.isRecordingActive()` の値が `false` になります。
+
+
+## <a name="call-transcription"></a>通話の文字起こし
+> [!WARNING]
+> ACS Calling Android SDK のバージョン 1.1.0 およびベータ リリース バージョン 1.1.0-beta.1 までは、`isTranscriptionActive` および `addOnIsTranscriptionActiveChangedListener` は `Call` オブジェクトの一部になっています。 新しいベータ リリースでは、これらの API は、以下に説明するように `Call` の拡張機能として移動されています。
+    
+> [!NOTE]
+> この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling Android SDK の "ベータ" リリースを使用してください
+
+通話の文字起こしは、コア `Call` API の拡張機能です。 まず、文字起こし機能 API オブジェクトを取得する必要があります。
+
+```java
+TranscriptionFeature callTranscriptionFeature = call.api(TranscriptionFeature.class);
+```
+
+次に、通話が文字起こしされているかどうかを確認するために、`callTranscriptionFeature` の `isTranscriptionActive` プロパティを調べます。 `boolean` を返します。
+
+```java
+boolean isTranscriptionActive = callTranscriptionFeature.isTranscriptionActive();
+```
+
+文字起こしの変更をサブスクライブすることもできます。
+
+```java
+private void handleCallOnIsTranscriptionChanged(PropertyChangedEvent args) {
+    boolean isTranscriptionActive = callTranscriptionFeature.isTranscriptionActive();
+}
+
+callTranscriptionFeature.addOnIsTranscriptionActiveChangedListener(handleCallOnIsTranscriptionChanged);
+
+```    
 
 ## <a name="eventing-model"></a>イベント モデル
 値が変更されたときに通知を受け取るように、ほとんどのプロパティとコレクションをサブスクライブすることができます。

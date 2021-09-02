@@ -5,15 +5,15 @@ author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 11/19/2020
+ms.date: 07/14/2021
 ms.author: nanditav
-ms.reviewer: jrasnick
-ms.openlocfilehash: 71249534c6a088088213659b5a45e042229721c7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: cc57f4af28aad79b9348cbbb4e939825daba06ea
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813184"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203564"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics ワークスペースの暗号化
 
@@ -44,12 +44,12 @@ Azure サービスの最初の暗号化レイヤーは、プラットフォー�
 
 ## <a name="workspace-encryption-configuration"></a>ワークスペースの暗号化構成
 
-ワークスペースの作成時に、カスタマー マネージド キーを使用してワークスペースの二重暗号化を有効にするように構成できます。 新しいワークスペースを作成するときに、[Security]\(セキュリティ\) タブの [Enable double encryption using a customer-managed key]\(カスタマー マネージド キーを使用して二重暗号化を有効にする\) オプションを選択します。 キー識別子の URI を入力するか、ワークスペースと **同じリージョン** 内のキー コンテナーの一覧から選択することができます。 キー コンテナー自体の **消去保護を有効にする** 必要があります。
+ワークスペースの作成時に、カスタマー マネージド キーを使用してワークスペースの二重暗号化を有効にするように構成できます。 新しいワークスペースを作成するときに、[セキュリティ] タブの [Enable double encryption using a customer-managed key]\(カスタマー マネージド キーを使用して二重暗号化を有効にする\) オプションを選択します。 キー識別子の URI を入力するか、ワークスペースと **同じリージョン** 内のキー コンテナーの一覧から選択することができます。 キー コンテナー自体の **消去保護を有効にする** 必要があります。
 
 > [!IMPORTANT]
 > 二重暗号化の構成設定は、ワークスペースの作成後は変更できません。
 
-:::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="この図は、カスタマー マネージド キーを使用した二重暗号化をワークスペースで有効にするために選択する必要があるオプションを示しています。":::
+:::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="この図は、カスタマー マネージド キーを使用した二重暗号化をワークスペースで有効にするために選択する必要があるオプションを示しています。" lightbox="./media/workspaces-encryption/workspaces-encryption.png":::
 
 ### <a name="key-access-and-workspace-activation"></a>キー アクセスとワークスペースのアクティブ化
 
@@ -68,14 +68,14 @@ Azure サービスの最初の暗号化レイヤーは、プラットフォー�
 
 (二重暗号化を有効にして) ワークスペースが作成された後、ワークスペースはアクティブ化に成功するまで "保留中" の状態のままになります。 すべての機能を使用するには、ワークスペースをアクティブにする必要があります。 たとえば、新しい専用 SQL プールを作成できるのは、アクティブ化が成功した場合にのみです。 ワークスペース マネージド ID にキー コンテナーへのアクセス権を付与し、ワークスペース Azure portal バナーのアクティブ化リンクをクリックします。 アクティブ化が正常に完了すると、ワークスペースはすぐに使用できるようになり、その内部のすべてのデータがカスタマー マネージド キーで確実に保護されます。 既に説明したように、アクティブ化に成功するには、キー コンテナーで消去保護が有効になっている必要があります。
 
-:::image type="content" source="./media/workspaces-encryption/workspace-activation.png" alt-text="この図は、ワークスペースのアクティブ化リンクを含むバナーを示しています。":::
+:::image type="content" source="./media/workspaces-encryption/workspace-activation.png" alt-text="この図は、ワークスペースのアクティブ化リンクを含むバナーを示しています。" lightbox="./media/workspaces-encryption/workspace-activation.png":::
 
 
 ### <a name="manage-the-workspace-customer-managed-key"></a>ワークスペースのカスタマー マネージド キーを管理する 
 
 データの暗号化に使用するカスタマー マネージド キーは、Azure portal の **[暗号化]** ページから変更できます。 ここでも、キー識別子を使用して新しいキーを選択するか、ワークスペースと同じリージョン内でユーザーがアクセス権を持つキー コンテナーから選択することができます。 以前に使用したものとは別のキー コンテナー内のキーを選択する場合は、新しいキー コンテナーに対する "Get"、"Wrap"、"Unwrap" のアクセス許可をワークスペース マネージド ID に付与します。 ワークスペースは、新しいキー コンテナーへのアクセス権を検証し、ワークスペース内のすべてのデータが新しいキーで再暗号化されます。
 
-:::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="この図は、Azure portal のワークスペースの暗号化セクションを示しています。":::
+:::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="この図は、Azure portal のワークスペースの暗号化セクションを示しています。" lightbox="./media/workspaces-encryption/workspace-encryption-management.png":::
 
 >[!IMPORTANT]
 >ワークスペースの暗号化キーを変更する場合、ワークスペース内のキーを新しいキーに置き換えるまで、キーを保持します。 これにより、新しいキーを使用して再暗号化する前に、古いキーを使用してデータの暗号化を解除できるようになります。

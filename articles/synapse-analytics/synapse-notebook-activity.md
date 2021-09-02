@@ -10,12 +10,12 @@ ms.date: 05/19/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d103e52ec4a2ba105c6eb5c756ac450a15d7538e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9c021b8b0aec025458179ffb4859c351572762ee
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745026"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186985"
 ---
 # <a name="transform-data-by-running-a-synapse-notebook"></a>Synapse Notebook を実行してデータを変換する
 
@@ -57,7 +57,7 @@ Synapse ノートブック アクティビティは、Synapse パイプライン
 
 ---
 
-Azure Data Factory によりパラメーター セルが検索され、その値が実行時に渡されるパラメーターの既定値として使用されます。 実行エンジンにより、既定値を上書きするために、入力パラメーターを含んだ新しいセルがパラメーター セルの下に追加されます。 パラメーター セルが指定されていない場合、挿入されたセルがノートブックの上部に挿入されます。
+Azure Data Factory によりパラメーター セルが検索され、その値が実行時に渡されるパラメーターの既定値として使用されます。 実行エンジンにより、既定値を上書きするために、入力パラメーターを含んだ新しいセルがパラメーター セルの下に追加されます。 
 
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>パイプラインからパラメーター値を割り当てる

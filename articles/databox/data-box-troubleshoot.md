@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06f0408587cc7c5533bdb852f7ad4f59094a33da
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92124678"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220261"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
 
@@ -31,9 +31,10 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 | コンテナーまたは共有のサイズ制限 | コンテナーまたは共有内のデータの合計が、Azure の制限を超えています。   |エラー一覧をダウンロードします。 <br> コンテナーまたは共有内のデータの総量を削減します。 [詳細については、こちらを参照してください](#container-or-share-size-limit-errors)。|
 | オブジェクトまたはファイルのサイズ制限 | コンテナーまたは共有内のオブジェクトまたはファイルが、Azure の制限を超えています。|エラー一覧をダウンロードします。 <br> コンテナーまたは共有内のファイルのサイズを削減します。 [詳細については、こちらを参照してください](#object-or-file-size-limit-errors)。 |    
 | データまたはファイルの種類 | データの形式またはファイルの種類がサポートされていません。 |エラー一覧をダウンロードします。 <br> ページ BLOB またはマネージド ディスクの場合は、データが 512 バイト アラインであり、事前に作成されたフォルダーにコピーされていることを確認します。 [詳細については、こちらを参照してください](#data-or-file-type-errors)。 |
+| フォルダーまたはファイルの内部エラー | ファイルまたはフォルダーに内部エラーがあります。 |エラー一覧をダウンロードします。 <br> ファイルを削除し、もう一度コピーします。 フォルダーの場合は、ファイルの名前を変更するか、ファイルを追加または削除することで変更します。 エラーは 30 分以内に解消されます。  [詳細については、こちらを参照してください](#folder-or-file-internal-errors)。 |
 | BLOB またはファイルの重大ではないエラー  | BLOB またはファイルの名前が Azure の名前付け規則に従っていないか、ファイルの種類がサポートされていません。 | これらの BLOB またはファイルはコピーされない場合、または名前を変更される場合があります。 [これらのエラーを修正する方法](#non-critical-blob-or-file-errors)。 |
 
-\* 最初の 4 つのエラー カテゴリは重大なエラーであり、発送準備に進む前に修正する必要があります。
+\* 最初の 5 つのエラー カテゴリは重大なエラーであり、発送準備に進む前に修正する必要があります。
 
 
 ## <a name="container-or-share-name-errors"></a>コンテナーまたは共有の名前のエラー
@@ -119,8 +120,8 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 - エラー ログから、この問題があるフォルダーを特定し、そのフォルダー内のファイルが 5 TiB 未満であることを確認します。
 - 5 TiB の制限は、大きなファイル共有を許可しているストレージ アカウントには適用されません。 ただし、注文時に大きなファイル共有が構成されている必要があります。 
   - [Microsoft サポート](data-box-disk-contact-microsoft-support.md)に連絡して、新しい配送先住所ラベルを要求してください。
-  - [ストレージ アカウントで大きなファイル共有を有効にします。](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
-  - [ストレージ アカウントのファイル共有を拡張](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares)し、クォータを 100 TiB に設定します。
+  - [ストレージ アカウントで大きなファイル共有を有効にします](../storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account)
+  - [ストレージ アカウントのファイル共有を拡張](../storage/files/storage-how-to-create-file-share.md#expand-existing-file-shares)し、クォータを 100 TiB に設定します。
   
   
 ## <a name="object-or-file-size-limit-errors"></a>オブジェクトまたはファイルのサイズ制限のエラー
@@ -176,6 +177,11 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 **推奨される解決方法:** シンボリック リンクは、通常、リンク、パイプ、および他のそのようなファイルです。 リンクを削除するか、またはリンクを解決してデータをコピーします。
 
+## <a name="folder-or-file-internal-errors"></a>フォルダーまたはファイルの内部エラー
+
+**エラーの説明:** ファイルまたはフォルダーが内部エラー状態にあります。
+
+**推奨される解決策:** ファイルの場合は、ファイルを削除し、もう一度コピーします。 フォルダーの場合は、フォルダーを変更します。 フォルダーの名前を変更します。または、フォルダーにファイルを追加するか、フォルダーからファイルを削除します。 このエラーは、30 分以内に自然に解消されます。 エラーが引き続き発生する場合は、Microsoft サポートに問い合わせてください。
 
 ## <a name="non-critical-blob-or-file-errors"></a>BLOB またはファイルの重大ではないエラー
 

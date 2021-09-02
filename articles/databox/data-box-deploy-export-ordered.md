@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9506ce3f01f5500bab81e8e90c57761bef75805
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789197"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254594"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する
 
@@ -274,6 +274,11 @@ Data Box によってソース ストレージ アカウントからデータが
 
 ![Data Box エクスポート注文、データ コピー完了](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
 
+Azure Storage から Data Box へのデータのエクスポートが失敗する場合があります。 アーカイブされた BLOB のエクスポートはサポートされていないため、BLOB がアーカイブ BLOB でないことを確認します。 
+
+> [!NOTE]
+> アーカイブ BLOB の場合には、それらの BLOB を Azure Storage アカウントから Data Box にエクスポートする前にリハイドレートする必要があります。 詳細については、[アーカイブ BLOB のリハイドレート]( ../storage/blobs/storage-blob-rehydration.md)に関するページを参照してください。
+
 デバイスが使用できない場合は、通知されます。 デバイスが使用可能な場合は、Microsoft が配送用のデバイスを特定し、配送の準備をします。 デバイスの準備中に、次のアクションが実行されます。
 
 * デバイスに関連付けられているストレージ アカウントごとに SMB 共有が作成されます。
@@ -311,7 +316,7 @@ Data Box によってソース ストレージ アカウントからデータが
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure File storage for export  -->
+   <!-- FileList/prefix/Share list for Azure Files for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>

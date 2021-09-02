@@ -15,12 +15,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb8d0150bafe795f2b23fa18581adc60d091aaf2
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8428f9ce69bc58a206eb5c60b3602ffbb17f7c19
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078835"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225664"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上の SQL Server バージョンのインプレース変更
 
@@ -108,7 +108,7 @@ SQL Server のバージョンを変更した後、Azure portal を使用して S
 :::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="バージョンの確認":::
 
 > [!NOTE]
-> SQL IaaS Agent 拡張機能に既に登録している場合は、[RP から登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)してから、[SQL VM リソースを再度登録](sql-agent-extension-manually-register-single-vm.md#register-with-extension)して、VM にインストールされている SQL Server の正しいバージョンとエディションを検出できるようにします。 これにより、この VM に関連付けられているメタデータと請求先情報が更新されます。
+> SQL IaaS Agent 拡張機能に既に登録している場合は、[RP から登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)してから、[SQL VM リソースを再度登録](sql-agent-extension-manually-register-single-vm.md#full-mode)して、VM にインストールされている SQL Server の正しいバージョンとエディションを検出できるようにします。 これにより、この VM に関連付けられているメタデータと請求先情報が更新されます。
 
 ## <a name="remarks"></a>解説
 

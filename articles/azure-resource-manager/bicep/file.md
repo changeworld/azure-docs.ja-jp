@@ -2,13 +2,13 @@
 title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: a9dcb83b54a665a71c8f1095a682c9dabcafd039
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/02/2021
+ms.openlocfilehash: 5401aebb0b0a82a04a2b78f9af1dc6d133915c0b
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026688"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286630"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
@@ -297,6 +297,10 @@ output storageEndpoint object = stg.properties.primaryEndpoints
 出力の名前を、パラメーター、変数、モジュール、またはリソースと同じにすることはできません。
 
 詳細については、[Bicep の出力](./outputs.md)に関する記事を参照してください。
+
+## <a name="whitespace"></a>空白
+
+Bicep ファイルを作成する際、スペースとタブは無視されます。 ただし改行には、[オブジェクト](./data-types.md#objects)や[配列](./data-types.md#arrays)の宣言などでセマンティックな意味があります。
 
 ## <a name="comments"></a>説明
 

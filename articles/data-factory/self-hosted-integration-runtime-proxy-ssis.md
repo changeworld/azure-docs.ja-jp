@@ -8,12 +8,12 @@ author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/19/2021
-ms.openlocfilehash: ff0dc37b70861dae8cddb77ef984c27109eefc15
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d015c5182b51c655d45365a2f45a9f9d08db582b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747416"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835630"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
@@ -51,7 +51,7 @@ ms.locfileid: "121747416"
   
   PostgreSQL、MySQL、Oracle などの他のデータベース システム用の OLEDB/ODBC/ADO.NET ドライバーを使用する場合は、それらの Web サイトから 64 ビット版をダウンロードできます。
 - パッケージで Azure Feature Pack のデータ フロー コンポーネントを使用する場合は、セルフホステッド IR がインストールされているのと同じマシンに [SQL Server 2017 用の Azure Feature Pack をダウンロードしてインストールします](https://www.microsoft.com/download/details.aspx?id=54798) (まだインストールしていない場合)。
-- セルフホステッド IR がインストールされているのと同じコンピューターに、[64 ビット版の Visual C++ (VC) ランタイムをダウンロードしてインストールします](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) (まだ行っていない場合)。
+- セルフホステッド IR がインストールされているのと同じコンピューターに、[64 ビット版の Visual C++ (VC) ランタイムをダウンロードしてインストールします](https://www.microsoft.com/en-us/download/details.aspx?id=40784) (まだ行っていない場合)。
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>オンプレミスのタスクで Windows 認証を有効にする
 

@@ -1,16 +1,19 @@
 ---
 title: 見習いモード - Personalizer
 description: 見習いモードを使用して、コードを変更せずにモデルの信頼度を高める方法について説明します。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: d61c6be050c07de46613efae66cb32f2fa0d395f
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: aabda26cd2a1dea7205c8432f11af35e3f20b0e1
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107201"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830875"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>見習いモードを使用して、既存のアプリケーションに影響を与えずに Personalizer をトレーニングする
 

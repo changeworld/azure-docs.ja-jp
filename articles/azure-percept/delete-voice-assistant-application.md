@@ -1,20 +1,20 @@
 ---
 title: Azure Percept Audio 音声アシスタント アプリケーションを削除する
 description: この記事では、以前に作成した音声アシスタント アプリケーションを削除する方法について説明します。
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0b62ba69695606e04e7044109818c18d30ca21c1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e7f9f9dd0bf1caead19151eb8081e967963fae9a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779400"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224965"
 ---
-# <a name="delete-your-voice-assistant-application"></a>音声アシスタント アプリケーションを削除する
+# <a name="delete-your-azure-percept-audio-voice-assistant-application"></a>Azure Percept Audio 音声アシスタント アプリケーションを削除する
 
 これらの手順では、Azure Percept Audio デバイスから音声アシスタント アプリケーションを削除する方法について説明します。
 

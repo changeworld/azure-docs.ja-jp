@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4eac73f756268af21cbb97c8c5c2bf53c2322bc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4973dabe12f56105ab0eefdac485311d8f4df10b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733689"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864292"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -61,6 +61,7 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 | Azure AD 登録済み | フェデレーション/マネージド | 最新の Windows/ダウンレベルの Windows | 永続的/非永続的 | 適用外 |
 
 <sup>1</sup> **最新の Windows**  デバイスは、Windows 10、Windows Server 2016 バージョン 1803 以降、および Windows Server 2019 を表します。
+
 <sup>2</sup> **ダウンレベルの Windows** デバイスは、Windows 7、Windows 8.1、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 を表します。 Windows 7 のサポート情報については、「[Windows 7 のサポート終了が近づいています](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)」を参照してください。 Windows Server 2008 R2 のサポート情報については、「[Windows Server 2008 のサポート終了に備える](https://www.microsoft.com/cloud-platform/windows-server-2008)」を参照してください。
 
 <sup>3</sup> **フェデレーション** ID インフラストラクチャ環境は、AD FS やその他のサードパーティ IDP などの ID プロバイダーを備えた環境を表します。

@@ -6,14 +6,15 @@ ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
 ms.date: 06/04/2021
-ms.openlocfilehash: 5c6ddce8d50da1660bfcba8b29bb032b56197bb8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c0b7dff4ac6f19b4abcf27ccf98cd8d57b270e21
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725450"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111505"
 ---
 # <a name="run-the-emulator-on-docker-for-linux-preview"></a>Docker for Linux 上でエミュレーターを実行する (プレビュー)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB Linux Emulator は、開発目的で Azure Cosmos DB サービスをエミュレートするローカル環境を提供します。 現時点では、Linux エミュレーターは SQL API のみをサポートしています。 Azure Cosmos DB Emulator を使用すると、ローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 Azure Cosmos DB Linux Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。 この記事では、macOS および Linux 環境にエミュレーターをインストールして使用する方法について説明します。
 

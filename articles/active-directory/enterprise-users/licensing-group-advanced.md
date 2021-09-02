@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe851cc39ab8856133a5ac24508bc9b6df53a8f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 00b0585e19a4a081502a6b93b79be7ed293a4b1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782333"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750529"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -76,7 +76,7 @@ Microsoft サービスの中には、すべての場所では利用できない�
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>グループ ライセンスと共存する直接ライセンス
 
-ユーザーがグループからライセンスを継承する場合、ユーザーのプロパティでライセンス割り当てを直接削除または変更することはできません。 グループ内のライセンスの割り当てのみを変更することができ、変更はすべてのユーザーに反映されます。 ただし、ユーザーに対して同じ製品ライセンスを直接、グループライセンス割り当てによって割り当てることができます。 このように、他のユーザーに影響を与えずに、1 人のユーザーに対してのみ製品の追加サービスを有効にすることができます。
+ユーザーがグループからライセンスを継承する場合、ユーザーのプロパティでライセンス割り当てを直接削除または変更することはできません。 グループ内のライセンスの割り当てのみを変更することができ、変更はすべてのユーザーに反映されます。 グループ ライセンス割り当てのライセンスを持つユーザーに追加機能を割り当てる必要がある場合は、別のグループを作成して、追加の機能をそのユーザーに割り当てる必要があります。
 
 直接割り当てられたライセンスは削除できます。また、ユーザーの継承されたライセンスに影響しません。 グループから Office 365 Enterprise E3 ライセンスを継承するユーザーについて考えてみましょう。
 

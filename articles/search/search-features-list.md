@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: fca6e59d3aa5b95db0b9ad28f652226ae2eb30ba
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: f25f67839c0bf859e020859db60027d9a5b2db91
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556531"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729149"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search の機能
 
@@ -23,7 +23,7 @@ Azure Cognitive Search は、フルテキスト検索エンジン、検索イン
 
 | カテゴリ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 特徴 |
 |-------------------|----------|
-| データ ソース | 検索インデックスは、JSON ドキュメントとして送信されていれば、すべてのソースからのテキストを受け入れることができます。 <br/><br/> [**インデクサー**](search-indexer-overview.md)では、サポートされている Azure データ ソースからのデータ インジェストが自動化され、JSON のシリアル化が処理されます。 [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md)、または [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) に接続して、プライマリ データ ストア内の検索可能なコンテンツを抽出します。 Azure Blob インデクサーは、"*ドキュメント クラッキング*" を実行して、Microsoft Office、PDF、HTML ドキュメントなどの [主要なファイル形式からテキストを抽出](search-howto-indexing-azure-blob-storage.md)することができます。 |
+| データ ソース | 検索インデックスは、JSON ドキュメントとして送信されていれば、すべてのソースからのテキストを受け入れることができます。 <br/><br/> [**インデクサー**](search-indexer-overview.md)は、プライマリ データ ストア内の検索可能なコンテンツを抽出するために、サポートされているデータ ソースからのデータ インポートを自動化する機能です。 インデクサーでは、JSON シリアル化が自動的に処理されます。 [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure BLOB ストレージ](search-howto-indexing-azure-blob-storage.md)を含む[さまざまなデータ ソース](search-data-sources-gallery.md)に接続できます。 |
 | 階層データ構造と入れ子になったデータ構造 | [**複合型**](search-howto-complex-data-types.md)とコレクションでは、検索インデックス内の事実上すべての種類の JSON 構造をモデル化できます。 一対多と多対多のカーディナリティは、コレクション、複合型、および複合型のコレクションを通じてネイティブに表現できます。|
 | Linguistic Analysis | アナライザーは、インデックス作成および検索操作中のテキスト処理に使用するコンポーネントです。 既定では、汎用の標準 Lucene アナライザーを使用するか、言語アナライザー、ユーザーが構成したカスタム アナライザー、または必要な形式でトークンを生成する別の定義済みアナライザーで既定をオーバーライドすることができます。 <br/><br/>Lucene または Microsoft の [**言語アナライザー**](index-add-language-analyzers.md)は、動詞の時制や名詞の性、不規則な複数形の名詞 (例: 'mouse' と 'mice')、二重複合語、(スペースを使用しない言語の) 改行などをインテリジェントに処理するために使用されます。 <br/><br/>[**カスタム字句アナライザー**](index-add-custom-analyzers.md)は、発音照合や正規表現などの複雑なクエリ形式で使用されます。<br/><br/> |
 

@@ -187,6 +187,8 @@
           items:
             - name: 概要
               href: automation-dsc-overview.md
+            - name: Linux の望ましい状態を構成する - PowerShell
+              href: dsc-linux-powershell.md
             - name: State Configuration の概要
               href: automation-dsc-getting-started.md
             - name: State Configuration を有効にする

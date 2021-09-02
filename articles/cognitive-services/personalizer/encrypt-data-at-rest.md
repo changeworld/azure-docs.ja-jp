@@ -2,19 +2,19 @@
 title: Personalizer サービスによる保存データの暗号化
 titleSuffix: Azure Cognitive Services
 description: Microsoft からは Microsoft が管理する暗号化キーが提供されます。また、カスタマー マネージド キー (CMK) と呼ばれている独自のキーで自分の Cognitive Services サブスクリプションを管理することをお客様に許可します。 この記事では、Personalizer での保存データの暗号化と、CMK を有効化および管理する方法について説明します。
-author: erindormier
+author: jeffmend
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: egeaney
-ms.openlocfilehash: 1a27199930587c1a096dd99462ebd0c9d65054ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jeffme
+ms.openlocfilehash: d6d4aaa9b6a04614fdae4f794da9153a03031727
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100524065"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829759"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>Personalizer サービスによる保存データの暗号化
 

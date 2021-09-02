@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 08/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 3158d4fae313afcb1fef69ba7a2728df4d235175
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 522c9e590f1f63a12bd4f52f56eac0798ba78aa7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525338"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729229"
 ---
 # <a name="linux-concurrency-best-practices-for-azure-netapp-files---session-slots-and-slot-table-entries"></a>Azure NetApp Files の Linux コンカレンシーのベスト プラクティス - セッション スロットとスロット テーブル エントリ
 
@@ -48,7 +48,7 @@ NFSv3 には、クライアントとサーバーの間のコンカレンシー�
 
 詳細については、「[Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス](performance-oracle-single-volumes.md)」を参照してください。
 
-`sunrpc.max_tcp_slot_table_entries` tunable は、接続レベルのチューニング パラメーターです。  *ベスト プラクティスとして、この値を 1 接続あたり 128 以下に設定し、環境全体で 3,000 スロットを超えないようにしてください。*
+`sunrpc.max_tcp_slot_table_entries` tunable は、接続レベルのチューニング パラメーターです。  "*ベスト プラクティスとして、この値を 1 接続あたり 128 以下に設定し、環境全体で 10,000 スロットを超えないようにしてください。* "
 
 ### <a name="examples-of-slot-count-based-on-concurrency-recommendation"></a>コンカレンシーの推奨に基づくスロット数の例 
 
@@ -109,7 +109,7 @@ NFSv3 には、クライアントとサーバーの間のコンカレンシー�
         * クライアントからサーバーに対して同時に発行できる要求は 1 つの接続あたり 8 以下です。
         * サーバーがこの 1 つの接続から同時に受け入れることができる要求は 128 以下です。
 
-NFSv3 を使用する場合、*ストレージ エンドポイントのスロット数をまとめて 2,000 以下に維持する必要があります*。 多数のネットワーク接続にまたがってアプリケーションがスケールアウトされる場合は、`sunrpc.max_tcp_slot_table_entries` の接続あたりの値を 128 以下に設定するのが最適です (`nconnect`と HPC の場合は全般的に、EDA の場合は特に)。  
+NFSv3 を使用する場合、"*ストレージ エンドポイントのスロット数をまとめて 10,000 以下に維持する必要があります*"。 多数のネットワーク接続にまたがってアプリケーションがスケールアウトされる場合は、`sunrpc.max_tcp_slot_table_entries` の接続あたりの値を 128 以下に設定するのが最適です (`nconnect`と HPC の場合は全般的に、EDA の場合は特に)。  
 
 ### <a name="how-to-calculate-the-best-sunrpcmax_tcp_slot_table_entries"></a>最適な `sunrpc.max_tcp_slot_table_entries` を計算する方法 
 
@@ -129,7 +129,7 @@ NFSv3 を使用する場合、*ストレージ エンドポイントのスロッ
 
 ### <a name="how-to-calculate-concurrency-settings-by-connection-count"></a>接続数によるコンカレンシー設定の計算方法
 
-たとえば、ワークロードが EDA ファームであり、200 クライアントからすべて同じストレージ エンドポイントに対してワークロードを駆動する場合 (ストレージ エンドポイントはストレージの IP アドレスです)、必要な I/O レートを計算し、ファーム全体でコンカレンシーを分割します。
+たとえば、ワークロードが EDA ファームであり、1,250 のクライアントからすべて同じストレージ エンドポイントに対してワークロードを駆動する場合 (ストレージ エンドポイントはストレージの IP アドレスです)、必要な I/O レートを計算し、ファーム全体でコンカレンシーを分割します。
 
 平均操作サイズが 256 KiB、平均待機時間が 10 ms を使用してワークロードが 4,000 MiB/s あると仮定します。 コンカレンシーを計算するには、次の数式を使用します。
 
@@ -139,7 +139,7 @@ NFSv3 を使用する場合、*ストレージ エンドポイントのスロッ
  
 `(160 = 16,000 × 0.010)`
 
-200 クライアントのニーズがある場合、4,000 MiB/s を達成するには `sunrpc.max_tcp_slot_table_entries` をクライアントあたり 2 に設定するのが安全です。  ただし、推奨スロット数の上限である 2,000 を超えないように、クライアントあたりの数を 4 または 8 に設定して余裕を持たせることもできます。 
+1,250 のクライアントのニーズがある場合、4,000 MiB/s を達成するには `sunrpc.max_tcp_slot_table_entries` をクライアントあたり 2 に設定するのが安全です。  ただし、推奨スロット数の上限である 10,000 を超えないように、クライアントあたりの数を 4 または 8 に設定して余裕を持たせることもできます。 
 
 ### <a name="how-to-set-sunrpcmax_tcp_slot_table_entries-on-the-client"></a>クライアント上に `sunrpc.max_tcp_slot_table_entries` を設定する方法
 
@@ -266,5 +266,9 @@ Wireshark を使用すると、対象のあるパケットは次のとおりで�
 
 ## <a name="next-steps"></a>次のステップ  
 
+* [Azure NetApp Files 用の Linux のダイレクト I/O のベスト プラクティス](performance-linux-direct-io.md)
+* [Azure NetApp Files 用の Linux ファイルシステム キャッシュのベスト プラクティス](performance-linux-filesystem-cache.md)
 * [Azure NetApp Files 用の Linux NFS マウント オプションのベスト プラクティス](performance-linux-mount-options.md)
+* [Linux NFS 先読みのベスト プラクティス](performance-linux-nfs-read-ahead.md)
+* [Azure 仮想マシン SKU のベスト プラクティス](performance-virtual-machine-sku.md) 
 * [Linux のパフォーマンス ベンチマーク](performance-benchmarks-linux.md) 

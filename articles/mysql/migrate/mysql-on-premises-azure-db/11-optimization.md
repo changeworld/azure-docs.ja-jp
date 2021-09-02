@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 最適化'
+title: 'オンプレミスの MySQL を Azure Database for MySQL に移行する: 最適化'
 description: サーバーのパフォーマンス監視には、監査ログとアクティビティ ログに加えて、Azure メトリックスを使用することもできます。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: c207e4981adc64d92804c97a69225eacb89e2fac
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 4a1f279ad8eb81891a184700b1076bcec89b92e8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082899"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296203"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-optimization"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 最適化
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-optimization"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する: 最適化
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -24,7 +26,7 @@ ms.locfileid: "112082899"
 
 ## <a name="monitoring-hardware-and-query-performance"></a>ハードウェアとクエリのパフォーマンスの監視
 
-サーバーのパフォーマンス監視には、監査ログとアクティビティ ログに加えて、[Azure メトリックス](/azure/azure-monitor/platform/data-platform-metrics)を使用することもできます。 Azure メトリックスは 1 分に 1 回の頻度で提供され、それに基づいたアラートを構成できます。 監視できるメトリックの種類の詳細については、「[Azure Database for MySQL での監視](/azure/mysql/concepts-monitoring)」を参照してください。
+サーバーのパフォーマンス監視には、監査ログとアクティビティ ログに加えて、[Azure メトリックス](../../../azure-monitor/essentials/data-platform-metrics.md)を使用することもできます。 Azure メトリックスは 1 分に 1 回の頻度で提供され、それに基づいたアラートを構成できます。 監視できるメトリックの種類の詳細については、「[Azure Database for MySQL での監視](../../concepts-monitoring.md)」を参照してください。
 
 前述のとおり、cpu\_percent や memory\_percent などのメトリックを監視することは、データベース レベルのアップグレードを決定する際に重要になる可能性があります。 値が一貫して高い場合、レベルのアップグレードが必要であることを示している可能性があります。
 
@@ -38,12 +40,12 @@ AzureDiagnostics
 | where Category == 'MySqlSlowLogs'
 | project TimeGenerated, LogicalServerName\_s, 
 event\_class\_s, start\_time\_t , q uery\_time\_d, 
-sql\_text\_s | top 5 by query\_time\_d desc
+sql\_text\_s| top 5 by query\_time\_d desc
 ```
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 
-Azure には、サーバー監視の基本的な側面に加えて、アプリケーションのクエリ パフォーマンスを監視するためのツールが用意されています。 クエリを修正または改善すると、クエリのスループットが大幅に向上する可能性があります。 [Query Performance Insight ツール](/azure/mysql/concepts-query-performance-insight)を使用して、実行時間の最も長いクエリを分析し、これらの項目をキャッシュできるかどうか (設定された期間内に確定される場合)、またはクエリを変更してパフォーマンスを向上できるかどうかを決定します。
+Azure には、サーバー監視の基本的な側面に加えて、アプリケーションのクエリ パフォーマンスを監視するためのツールが用意されています。 クエリを修正または改善すると、クエリのスループットが大幅に向上する可能性があります。 [Query Performance Insight ツール](../../concepts-query-performance-insight.md)を使用して、実行時間の最も長いクエリを分析し、これらの項目をキャッシュできるかどうか (設定された期間内に確定される場合)、またはクエリを変更してパフォーマンスを向上できるかどうかを決定します。
 
 `slow\_query\_log` を、MySQL ログ ファイルの低速なクエリを表示するように設定できます (既定ではオフ)。 `long\_query\_time` サーバー パラメーターを使用すると、クエリ時間が長い (既定値は 10 秒) ことをユーザーに警告できます。
 
@@ -83,6 +85,8 @@ WWI ビジネスおよびアプリケーション ユーザーは、データベ
 
   - ユーザーまたはアプリケーションのニーズが変化した場合にリージョンの移動を検討します。  
 
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ビジネス継続性とディザスター リカバリー (BCDR)](./12-business-continuity-and-disaster-recovery.md)

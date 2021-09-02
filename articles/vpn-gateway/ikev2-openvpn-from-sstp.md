@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/04/2021
 ms.author: alzam
-ms.openlocfilehash: c9b6671a2baa807d8def27a78d7776eb6fec2c1a
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: af136cab65034be5cd0f3ec18d22492a826678d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559432"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749213"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
 
-ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 この記事は、Resource Manager デプロイ モデルに適用され、OpenVPN プロトコルまたは IKEv2 に移行することによって、SSTP の 128 というコンカレント接続制限を克服する方法について説明します。
+ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 この記事は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に適用され、OpenVPN プロトコルまたは IKEv2 に移行することによって、SSTP の 128 というコンカレント接続制限を克服する方法について説明します。
 
 ## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S で使用されるプロトコル
 
@@ -31,7 +31,7 @@ ms.locfileid: "111559432"
 
 
 >[!NOTE]
->P2S 用 IKEv2 および OpenVPN は、Resource Manager デプロイ モデルでのみ使用できます。 これらは、クラシック デプロイ モデルでは使用できません。 Basic ゲートウェイ SKU では、IKEv2 と OpenVPN プロトコルはサポートされません。 Basic SKU を使用している場合は、運用 SKU 仮想ネットワーク ゲートウェイを削除して再作成する必要があります。
+>P2S 用 IKEv2 および OpenVPN は、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)でのみ使用できます。 これらは、クラシック デプロイ モデルでは使用できません。 Basic ゲートウェイ SKU では、IKEv2 と OpenVPN プロトコルはサポートされません。 Basic SKU を使用している場合は、運用 SKU 仮想ネットワーク ゲートウェイを削除して再作成する必要があります。
 >
 
 ## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>SSTP から IKEv2 または OpenVPN に移行する

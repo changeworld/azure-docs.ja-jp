@@ -2,18 +2,19 @@
 title: '機能: アクションとコンテキスト - Personalizer'
 titleSuffix: Azure Cognitive Services
 description: Personalizer では、ランキングでより良い提案を行う目的で、フィーチャー、つまり、アクションとコンテキストに関する情報が利用されます。 フィーチャーは非常に包括的になることがあれば、ある項目に固有となることもあります。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: f49abd4ca1cc1ccdcb7ba2b0fab3bad953dede5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ef7d0146d1636a863941f4deb317149aeb48faf
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100380544"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830938"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 

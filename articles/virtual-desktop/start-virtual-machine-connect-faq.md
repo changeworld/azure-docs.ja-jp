@@ -3,23 +3,19 @@ title: Azure Virtual Desktop Start VM on Connect のよくあるご質問 - Azur
 description: Start VM on Connect 機能の使用に関してよく寄せられる質問とベスト プラクティスです。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 07/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c973b3a78e90786fa46db858de00ecf63bace5fd
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e57202fbbfcf40ed38cb9bed51a78c6a66a19bba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755773"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728462"
 ---
-# <a name="start-vm-on-connect-faq-preview"></a>Start VM on Connect のよくあるご質問 (プレビュー)
+# <a name="start-vm-on-connect-faq"></a>Start VM on Connect のよくあるご質問
 
-> [!IMPORTANT]
-> 現在、接続時に仮想マシンを起動機能はパブリック プレビューの段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-この記事では、Azure Virtual Desktop ホスト プール用 Start Virtual Machine (VM) on Connect (プレビュー) 機能についてよくある質問について説明します。
+この記事では、Azure Virtual Desktop ホスト プール用 Start Virtual Machine (VM) on Connect 機能についてのよくある質問について説明します。
 
 ## <a name="are-vms-automatically-deallocated-when-a-user-stops-using-them"></a>VM は、ユーザーが使用を停止したときに自動的に割り当てが解除されますか?
 
@@ -46,6 +42,6 @@ ms.locfileid: "111755773"
 
 ## <a name="next-steps"></a>次の手順
 
-Start VM on Connect を構成する方法については、「[接続時に仮想マシンを起動 (プレビュー)](start-virtual-machine-connect.md)」をご覧ください。
+Start VM on Connect を構成する方法については、「[接続時に仮想マシンを起動](start-virtual-machine-connect.md)」をご覧ください。
 
-Azure Virtual Desktop に関する一般的な質問がある場合は、一般的な[よくあるご質問](faq.md)を確認してください。
+Azure Virtual Desktop に関する一般的な質問がある場合は、一般的な[よくあるご質問](faq.yml)を確認してください。

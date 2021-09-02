@@ -1,18 +1,20 @@
 ---
 title: オープン ハブを介して SAP Business Warehouse からデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) から、サポートされているシンク データ ストアへデータをコピーする方法について説明します。
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 04/02/2021
-ms.openlocfilehash: a45de693f6818966eaf79fc8f636b27e8cb0c1da
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: c2d28438595ac46471b68724b46498fd2ef1e124
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788285"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257416"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 
@@ -188,6 +190,7 @@ SAP BW Open Hub からデータをコピーするために、コピー アクテ
 | excludeLastRequest | 最後の要求のレコードを除外するかどうか。 | いいえ (既定値は **true**)。 |
 | baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値 **より大きい** データのみが取得されます。  | いいえ |
 | customRfcReadTableFunctionModule | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。 <br/> カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して Data Factory に返す方法を定義できます。 カスタム関数モジュールでは、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、Data Factory で使用される既定のインターフェイスです。 | いいえ |
+| sapDataColumnDelimiter | 出力データを分けるために SAP RFC に渡される、区切り記号として使用される 1 文字。 | いいえ |
 
 >[!TIP]
 >オープン ハブ テーブルには、1 つの要求 ID によって生成されたデータのみが含まれています。たとえば、常に完全な読み込みを行い、テーブル内の既存のデータを上書きする場合や、DTP はテストのために 1 回のみ実行する場合は、データを外へコピーするため、忘れずに "excludeLastRequest" オプションをオフにします。

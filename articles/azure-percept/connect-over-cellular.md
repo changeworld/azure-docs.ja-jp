@@ -1,20 +1,20 @@
 ---
 title: Azure Percept を 5G または LTE ネットワークで接続する
 description: この記事では、5G または LTE ネットワークを使用して Azure Percept DK を接続する方法について説明します。
-author: mimcco
-ms.author: mimcco
+author: juhaluoto
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 07/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7388a50951137b45821bc80f2290900a00550395
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 202bec8182cc2ae04e9fadffe01977150ea93dda
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071534"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222315"
 ---
-# <a name="connect-the-azure-percept-dk-over-5g-or-lte-networks"></a>5G または LTE ネットワークを使用して Azure Percept DK を接続する
+# <a name="connect-azure-percept-over-5g-or-lte-networks"></a>Azure Percept を 5G または LTE ネットワークで接続する
 
 5G または LTE ネットワークを使用して Edge AI デバイスを接続する利点は数多くあります。 Edge AI が最も効果を発揮するのは、スマート シティ、自律走行車、農業など、Wi-Fi および LAN 接続に制限のある場所です。 さらに、5G または LTE ネットワークは、Wi-Fi よりも優れたセキュリティを実現します。 最後に、Edge で AI を実行する IoT デバイスを使用すると、5G または LTE ネットワーク上の帯域幅を最適化できます。 この場合、ほとんどのデータがデバイスで処理され、必要な情報だけがクラウドに送信されます。 現在、Azure Percept DK は 5G または LTE ネットワークに直接接続できません。 ただし、組み込みのイーサネットと Wi-Fi 機能を使用すると、5G または LTE ゲートウェイに接続できます。 この記事では、その仕組みについて説明します。
 

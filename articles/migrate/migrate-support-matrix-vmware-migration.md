@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 2cd15836e69ca5174822de95e3fced3a9659096f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6365499aff4508e40d8e2aa2ed61471f4fbff2fe
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971078"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721261"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -27,7 +27,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 
 [この記事](server-migrate-overview.md)を参照し、あなたが使用したい方法の詳細を確認してください。
 
-## <a name="agentless-migration"></a>エージェントレス型移行 
+## <a name="agentless-migration"></a>エージェントレス型移行
 
 このセクションでは、エージェントレス VMware VM を Azure に移行する際の要件の概要を示します。
 
@@ -43,17 +43,17 @@ VMware VM は、次のいくつかの方法で移行できます。
 
 
 
-### <a name="vm-requirements-agentless"></a>VM の要件 (エージェントレス) 
+### <a name="vm-requirements-agentless"></a>VM の要件 (エージェントレス)
 
 次の表は、VMware VM のエージェントレス移行の要件をまとめたものです。
 
 **サポート** | **詳細**
 --- | ---
 **サポートされているオペレーティング システム** | Azure でサポートされている [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](../virtual-machines/linux/endorsed-distros.md) オペレーティング システムを移行できます。
-**Azure での Windows VM** | 場合によっては、移行前に VM に[いくつかの変更を加える](prepare-for-migration.md#verify-required-changes-before-migrating)必要があります。 
-**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 8、7.9、7.8、7.7、7.6、7.5、7.4、7.0、6.x <br/> - Cent OS 8、7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 11、12、15 SP0、15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8、9 <br/> Oracle Linux 6、7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
-**Linux ブート** | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。
-**UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。 
+**Azure での Windows VM** | 場合によっては、移行前に VM に[いくつかの変更を加える](prepare-for-migration.md#verify-required-changes-before-migrating)必要があります。
+**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 8、7.9、7.8、7.7、7.6、7.5、7.4、7.0、6.x <br/> - Cent OS 8、7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 11、12、15 SP0、15 SP1 <br/>- Ubuntu 20.04、19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8、9 <br/> Oracle Linux 6、7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
+**ブートの要件** | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。
+**UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。
 **ディスク サイズ** | Gen 1 VM と Gen 2 VM の場合は最大 2 TB の OS ディスク。データ ディスクの場合は 32 TB。
 **ディスクの制限** |  VM あたり最大 60 台のディスク。
 **暗号化されたディスクまたはボリューム** | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。
@@ -67,18 +67,20 @@ VMware VM は、次のいくつかの方法で移行できます。
 **チーミングされた NIC** | サポートされていません。
 **IPv6** | サポートされていません。
 **ターゲット ディスク** | VM は、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
-**同時レプリケーション** | 1 つのアプライアンスがある vCenter Server ごとに最大 300 の VM を同時にレプリケートします。 追加の[スケールアウト アプライアンス](./how-to-scale-out-for-migration.md)がデプロイされている場合、vCenter Server ごとに最大 500 の VM を同時にレプリケートします。 
-**Azure VM エージェントの自動インストール (Windows および Linux エージェント)** | Windows Server 2008 R2 以降でサポートされています。 <br/> RHEL6、RHEL7、CentOS7、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 でサポートされています。 
+**同時レプリケーション** | 1 つのアプライアンスがある vCenter Server ごとに最大 300 の VM を同時にレプリケートします。 追加の[スケールアウト アプライアンス](./how-to-scale-out-for-migration.md)がデプロイされている場合、vCenter Server ごとに最大 500 の VM を同時にレプリケートします。
+**Azure VM エージェントの自動インストール (Windows および Linux エージェント)** | Windows Server 2008 R2 以降でサポートされています。 <br/> RHEL6、RHEL7、CentOS7、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04、Ubuntu 19.04、Ubuntu 19.10、Ubuntu 20.04 でサポートされています。
 
 > [!Note]
-> Linux VM の場合は、Microsoft Azure Linux エージェント (waagent) を正常にインストールするために次のパッケージがインストールされていることを確認します。
+> インターネット接続に加えて、Linux VM の場合は、Microsoft Azure Linux エージェント (waagent) を正常にインストールするために次のパッケージがインストールされていることを確認します。
 >- Python 2.6+
+>- Python-setuptool
+>- systemmd
 >- OpenSSL 1.0+
 >- OpenSSH 5.3+
 >- ファイルシステム ユーティリティ: sfdisk、fdisk、mkfs、parted
 >- パスワード ツール: chpasswd、sudo
 >- テキスト処理ツール: sed、grep
->- ネットワーク ツール: ip-route 
+>- ネットワーク ツール: ip-route
 >- ソース VM で rc.local サービスを有効にする
 
 > [!TIP]
@@ -97,10 +99,10 @@ VMware VM は、次のいくつかの方法で移行できます。
 **[デバイス]** | **接続**
 --- | ---
 アプライアンス | ポート 443 で、レプリケートされたデータを Azure にアップロードしたり、レプリケーションや移行のために Azure Migrate と通信を行ったりするためのアウトバウンド接続。
-vCenter サーバー | ポート 443 で、アプライアンスがレプリケーションを調整 (スナップショットの作成、データのコピー、スナップショットのリリース) するためのインバウンド接続
-vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナップショットからデータをレプリケートするためのインバウンド接続。
+vCenter サーバー | ポート 443 で、アプライアンスがレプリケーションの調整 (スナップショットの作成、データのコピー、スナップショットのリリース) を行えるようにするためのインバウンド接続。
+vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナップショットからデータをレプリケートするためのインバウンド接続。 ESXi ホストからの送信ポート 902。
 
-## <a name="agent-based-migration"></a>エージェントベースの移行 
+## <a name="agent-based-migration"></a>エージェントベースの移行
 
 
 このセクションでは、エージェントベース移行の要件について概要を説明します。
@@ -128,7 +130,7 @@ vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナ�
 **ネットワークとストレージ** | 最新情報については、Site Recovery の[ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#network)と[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#storage)の前提条件を確認してください。 Azure Migrate の場合も、ネットワークとストレージの要件は同じです。
 **Azure の要件** | 最新情報については、Site Recovery に使用する [Azure ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)の要件を確認してください。 VMware の移行に関する要件は、Azure Migrate の場合も同じです。
 **モビリティ サービス** | 移行対象となる各 VM に、Mobility Service エージェントがインストールされている必要があります。
-**UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。 
+**UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。
 **UEFI - セキュア ブート**         | 移行はサポートされません。
 **ターゲット ディスク** | VM は、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
 **ディスク サイズ** | Gen 1 VM の場合は最大 2 TB の OS ディスク、Gen 2 VM の場合は最大 4 TB の OS ディスク。データ ディスクの場合は 32 TB。
@@ -166,21 +168,21 @@ VM | VM 上で実行される Mobility Service は、レプリケーション管
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件
 
-(エージェントレスまたはエージェントベースの移行を使用して) Azure にレプリケートされたオンプレミス VM はすべて、この表にまとめられている Azure VM の要件を満たしている必要があります。 
+(エージェントレスまたはエージェントベースの移行を使用して) Azure にレプリケートされたオンプレミス VM はすべて、この表にまとめられている Azure VM の要件を満たしている必要があります。
 
-**コンポーネント** | **必要条件** 
+**コンポーネント** | **必要条件**
 --- | --- | ---
-ゲスト オペレーティング システム | 移行のためにサポートされている VMware VM オペレーティン グシステムを検証します。<br/> サポートされているオペレーティング システム上で実行されているすべてのワークロードを移行できます。 
-ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。 
-オペレーティング システムのディスク サイズ | 最大 2,048 GB。 
-オペレーティング システムのディスク数 | 1 
-データ ディスク数 | 64 以下。 
+ゲスト オペレーティング システム | 移行のためにサポートされている VMware VM オペレーティン グシステムを検証します。<br/> サポートされているオペレーティング システム上で実行されているすべてのワークロードを移行できます。
+ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。
+オペレーティング システムのディスク サイズ | 最大 2,048 GB。
+オペレーティング システムのディスク数 | 1
+データ ディスク数 | 64 以下。
 データ ディスク サイズ | 最大 32 TB
 ネットワーク アダプター | 複数のアダプターがサポートされます。
-共有 VHD | サポートされていません。 
-FC ディスク | サポートされていません。 
+共有 VHD | サポートされていません。
+FC ディスク | サポートされていません。
 BitLocker | サポートされていません。<br/><br/> マシンを移行する前に、BitLocker を無効にする必要があります。
-VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。<br/><br/> マシン名の最初と最後は、文字か数字とする必要があります。 
+VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。<br/><br/> マシン名の最初と最後は、文字か数字とする必要があります。
 移行後の接続 - Windows | 移行後に、Windows が実行されている Azure VM に接続するには:<br/><br/> - 移行前に、オンプレミス VM で RDP を有効にします。<br/><br/> TCP と UDP の規則が **[パブリック]** プロファイルに追加されていることを確認し、 **[Windows ファイアウォール]**  >  **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間 VPN アクセスの場合は、RDP を有効にし、 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** で **ドメイン ネットワークとプライベート ネットワーク** の RDP を許可します。<br/><br/> さらに、オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細については、こちらを参照してください](prepare-for-migration.md)。
 移行後の接続 - Linux | 移行後に、SSH を使用して Azure VM に接続するには:<br/><br/> 移行前に、オンプレミスのマシンで、Secure Shell サービスが [開始] に設定されていることと、ファイアウォール規則で SSH 接続が許可されていることを確認します。<br/><br/> フェールオーバー後の Azure VM で、フェールオーバーされた VM とその接続先の Azure サブネットのネットワーク セキュリティ グループ規則について、SSH ポートへの受信接続を許可します。<br/><br/> さらに、VM のパブリック IP アドレスを追加します。  
 

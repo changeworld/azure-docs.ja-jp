@@ -1,17 +1,17 @@
 ---
 title: Azure Percept Audio のボタンと LED の状態
 description: Azure Percept Audio のボタンと LED の状態について詳しく説明します
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/03/2021
-ms.openlocfilehash: 15c76d9729f64867d11e8d91be2be3c9c47c531f
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 04ee60d6ebe9c84d77ea7e5ead140f7930b8cfe4
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066758"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224555"
 ---
 # <a name="azure-percept-audio-button-and-led-states"></a>Azure Percept Audio のボタンと LED の状態
 

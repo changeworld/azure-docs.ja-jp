@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 1084951d63d8d7766dcf275336340e7ec93a7e9d
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: bdc1822422f3e8ff7a9ca63b7bcf4627cd0e8470
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729844"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>デバイス ツインの使用 (Node.js)
 
@@ -233,8 +233,8 @@ ms.locfileid: "107890620"
 
 詳細については、次のリソースをご覧ください。
 
-* [IoT Hub の概要](quickstart-send-telemetry-node.md)に関するチュートリアルでデバイスからテレメトリを送信する。
+* [IoT Hub の概要](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)に関するチュートリアルでデバイスからテレメトリを送信する。
 
 * デバイス ツインの必要なプロパティを使用してデバイスを構成する: [必要なプロパティを使用してデバイスを構成する](tutorial-device-twins.md)方法のチュートリアル、
 
-* [ダイレクト メソッドの使用](quickstart-control-device-node.md)に関するチュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
+* [ダイレクト メソッドの使用](./quickstart-control-device.md?pivots=programming-language-nodejs)に関するクイックスタートで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。

@@ -1,20 +1,20 @@
 ---
-title: Azure Percept DK に関する問題のトラブルシューティング
+title: Azure Percept DK デバイスのトラブルシューティング
 description: Azure Percept DK と IoT Edge の一般的な問題に対するトラブルシューティングのヒントを入手する
-author: mimcco
-ms.author: mimcco
+author: juniem
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.custom: template-how-to
-ms.openlocfilehash: caea6bbd8ebcf3dbe2d6f8b45174326a5ba4f169
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: e644732a90652b1672dc77bfc6db86d7a6b7295a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066739"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221073"
 ---
-# <a name="azure-percept-dk-troubleshooting"></a>Azure Percept DK のトラブルシューティング
+# <a name="troubleshoot-the-azure-percept-dk-device"></a>Azure Percept DK デバイスのトラブルシューティング
 
 このトラブルシューティング記事の目的は、Azure Percept DK ユーザーが開発キットに関する一般的な問題を迅速に解決できるようにすることです。 追加のサポートが必要な場合のログの収集に関するガイダンスも提供します。
 
@@ -47,7 +47,6 @@ ms.locfileid: "122066739"
 |*OOBE ログ* - セットアップ エクスペリエンスの詳細を記録します。|セットアップ エクスペリエンス中に問題が検出されたときに収集します。|```sudo journalctl -u oobe -b```|
 |*edgeAgent logs* - デバイス上で実行されているすべてのモジュールのバージョン番号を記録します。|1 つ以上のモジュールが動作していない場合に収集します。|```sudo iotedge logs edgeAgent```|
 |*モジュール コンテナー ログ* - 特定の IoT Edge モジュール コンテナーの詳細を記録します|モジュールに問題が検出されたときに収集します|```sudo iotedge logs [container name]```|
-|*Wi-Fi アクセス ポイント ログ* - 開発キットの Wi-Fi アクセス ポイントへの接続に関する詳細を記録します。|開発キットの Wi-Fi アクセス ポイントへの接続時に問題が検出されたときに収集します。|```sudo journalctl -u hostapd.service```|
 |*ネットワーク ログ* -Wi-Fi サービスとネットワーク スタックをカバーするログのセット。|Wi-Fi またはネットワークの問題が検出されたときに収集します。|```sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd > network_log.txt```<br><br>```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version && rpm -q ztpd > system_ver.txt```<br><br>両方のコマンドを実行します。 各コマンドによって複数のログが収集され、1 つの出力に格納されます。|
 
 ## <a name="troubleshooting-commands"></a>コマンドのトラブルシューティング
@@ -57,7 +56,7 @@ Azure IoT Edge コマンドの詳細については、[Azure IoT Edge デバイ�
 
 |機能         |使用する場合                    |command                 |
 |------------------|----------------------------|---------------------------|
-|開発キットのソフトウェア バージョンを確認します。|開発キットにあるソフトウェアのバージョンを確認する必要があるときに、いつでも使用できます。|```cat /etc/adu-version```|
+|開発キットのソフトウェア バージョンを確認します。|開発キットにあるソフトウェアのバージョンを確認する必要があるときに、いつでも使用できます。|```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version```|
 |開発キットの温度を確認します|開発キットがオーバーヒートしていると思われる場合に使用します。|```cat /sys/class/thermal/thermal_zone0/temp```|
 |開発キットのテレメトリ ID を確認します|開発キットの一意のテレメトリ ID を知る必要がある場合に使用します。|```sudo azure-device-health-id```|
 |IoT Edge の状態を確認します|クラウドに接続している IoT Edge モジュールに問題がある場合に使用します。|```sudo iotedge check```|

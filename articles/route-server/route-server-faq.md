@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: article
 ms.date: 06/07/2021
 ms.author: duau
-ms.openlocfilehash: f76c996f75dce0ea1f6aae8dc8c86ac80f6006a5
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 8deecdc043a7a39f77e96e8be5eb8bb8ef4f6191
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253868"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322930"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (プレビュー) に関する FAQ
 
@@ -24,6 +24,10 @@ ms.locfileid: "123253868"
 ## <a name="what-is-azure-route-server"></a>Azure Route Server とは何ですか。
 
 Azure Route Server は、ネットワーク仮想アプライアンス (NVA) と仮想ネットワークの間のルーティングを簡単に管理できる、フル マネージド サービスです。
+
+## <a name="why-does-azure-route-server-require-a-public-ip-address"></a>Azure Route Server にパブリック IP アドレスが必要なのはなぜですか。
+
+Azure Router Server では、Route Server の構成を管理するバックエンド サービスへの接続を確保する必要があるため、パブリック IP アドレスが必要になります。 
 
 ### <a name="is-azure-route-server-just-a-vm"></a>Azure Route Server は単なる VM ですか。
 
@@ -48,10 +52,6 @@ Azure Route Server では、Border Gateway Protocol (BGP) のみがサポート�
 
 ### <a name="does-azure-route-server-store-customer-data"></a>Azure Route Server では、顧客データは保存されますか。
 いいえ。 Azure Route Server が行うのは、BGP ルートを NVA と交換し、それらを仮想ネットワークに伝達することのみです。
-
-### <a name="why-does-azure-route-server-require-a-public-ip-address"></a>Azure Route Server にパブリック IP アドレスが必要なのはなぜですか。
-
-Azure Router Server では、Route Server の構成を管理するバックエンド サービスへの接続を確保する必要があるため、パブリック IP アドレスが必要になります。 
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>Azure Route Server が複数の NVA から同じルートを受け取る場合、どのように処理されますか。
 

@@ -1555,6 +1555,8 @@
           href: prodpad-tutorial.md
         - name: productboard
           href: productboard-tutorial.md
+        - name: 生産性
+          href: productive-tutorial.md
         - name: Profit.co
           href: profitco-saml-app-tutorial.md
         - name: Projectplace
@@ -1973,6 +1975,8 @@
           href: tas-tutorial.md
         - name: Taskize Connect
           href: taskize-connect-tutorial.md
+        - name: Teachme Biz
+          href: teachme-biz-tutorial.md
         - name: Teamgo
           href: teamgo-tutorial.md
         - name: Teamphoria

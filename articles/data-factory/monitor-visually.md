@@ -5,14 +5,15 @@ author: minhe-msft
 ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: bcc10ccde73f5036e50d1717528933a49ccd69cd
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 07/30/2021
+ms.openlocfilehash: 81649565955d1de031e4eefca548c5d58f7e28c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904948"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730154"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory を視覚的に監視する
 
@@ -95,7 +96,19 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 ![アクティビティ実行の一覧とユーザー プロパティの列](media/monitor-visually/view-user-properties.png)
 
+
 ## <a name="rerun-pipelines-and-activities"></a>パイプラインとアクティビティの再実行
+ 
+ コンテナー アクティビティの再実行動作は次のとおりです。
+ 
+- `Wait` - アクティビティは以前と同様に動作します。
+- `Set Variable` - アクティビティは以前と同様に動作します。
+- `Filter` - アクティビティは以前と同様に動作します。
+- `Until` アクティビティは、式を評価し、条件が満たされるまでループします。 再実行ルールに基づいて、内側のアクティビティはスキップされる場合があります。
+- `Foreach` アクティビティは、受け取った項目に対して常にループします。 再実行ルールに基づいて、内側のアクティビティはスキップされる場合があります。
+- `If and switch` - 条件は常に評価されます。 再実行ルールに基づいて、内側のアクティビティはスキップされる場合があります。
+- `Execute pipeline activity` - 子パイプラインがトリガーされますが、再実行ルールに基づいて、子パイプライン内のすべてのアクティビティが依然としてスキップされる場合があります。
+
 
 以前に実行されたパイプラインを最初から再実行するには、特定のパイプラインの実行にマウス ポインターを合わせ、 **[再実行]** を選択します。 複数のパイプラインを選択した場合、 **[再実行]** ボタンを使用して、それらをすべて実行できます。
 

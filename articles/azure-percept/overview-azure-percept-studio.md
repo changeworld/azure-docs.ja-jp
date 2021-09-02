@@ -1,18 +1,18 @@
 ---
 title: Azure Percept Studio の概要
 description: Azure Percept Studio について説明します。
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: e6f9641179a9c2490dcb65316a80b4ba7fd4b639
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57edfff026e58c292394a0b790af4dedc42d61d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567697"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221954"
 ---
 # <a name="azure-percept-studio-overview"></a>Azure Percept Studio の概要
 

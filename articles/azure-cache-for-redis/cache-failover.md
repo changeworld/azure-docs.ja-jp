@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 91c62faf53bd0a0f81322316e5225579eaa6ca9d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 69ddda7bd88218a3667b16bfdc9fa33aa5349ff6
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813052"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573942"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis のフェールオーバーと修正プログラムの適用
 
@@ -19,7 +19,7 @@ ms.locfileid: "111813052"
 
 この記事では、次の情報を確認します。  
 
-- フェールオーバーとは何か。
+- フェールオーバーとは
 - 修正プログラムの適用中にフェールオーバーがどのように発生するか。
 - 回復性があるクライアント アプリケーションを構築する方法。
 
@@ -78,12 +78,6 @@ Azure Cache for Redis サービスでは、お使いのキャッシュを最新�
 
 ほとんどのクライアント ライブラリは、構成されている場合、キャッシュへの再接続を試みます。 ただし、予期しないバグによってライブラリ オブジェクトが回復不能な状態になることがあります。 エラーが事前構成された時間を超えて続く場合は、接続オブジェクトを再作成する必要があります。 Microsoft.NET やその他のオブジェクト指向言語では、アプリケーションの再起動を必要としない接続の再作成は [Lazy\<T\> パターン](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)を使用して実現できます。
 
-### <a name="how-do-i-make-my-application-resilient"></a>アプリケーションの回復性を高める方法
-
-フェールオーバーを完全に回避することは不可能なので、お使いのクライアント アプリケーションで、接続の中断時と要求の失敗時の回復性を記述します。 ほとんどのクライアント ライブラリは自動的にキャッシュ エンドポイントに再接続できますが、少数は失敗した要求を再試行します。 アプリケーションのシナリオによっては、バックオフによる再試行ロジックが理にかなっている場合があります。
-
-クライアント アプリケーションの回復性をテストするには、接続が切断された場合の手動トリガーとして、[再起動](cache-administration.md#reboot)を使用します。 また、キャッシュに[更新をスケジュール](cache-administration.md#schedule-updates)することをお勧めします。 管理サービスに、指定した週の時間枠の間に Redis のランタイム修正プログラムを適用するように指示します。 通常これらの時間枠は、発生の可能性のある事柄を回避する、クライアント アプリケーションのトラフィックが少ない時間です。
-
 ### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>計画メンテナンスを前もって通知できますか?
 
 Azure Cache for Redis では、発行と購読を担う [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) という名前のチャンネルで、計画されている更新の約 30 秒前に通知を発行できるようになりました。 通知はランタイム通知です。 これらは、計画されている更新の間などでキャッシュまたはバッファー コマンドを迂回させる目的で回路遮断器を利用できるアプリケーション向けとして特別に作られています。 数日前または数時間前に通知できるメカニズムではありません。
@@ -96,6 +90,22 @@ Azure Cache for Redis では、発行と購読を担う [AzureRedisEvents](https
 - お使いのアプリケーションのインスタンスのサイズまたは数をスケーリングしました。
 
 このような変更では、1 分未満の接続の問題が発生する可能性があります。 お使いのクライアント アプリケーションからは、Azure Cache for Redis サービスに加え、他の外部のネットワークのリソースにも接続できなくなる場合があります。
+
+## <a name="build-in-resiliency"></a>回復性を組み込む
+
+フェールオーバーを完全に回避することはできません。 接続の中断や要求の失敗への回復性を備えるようにクライアント アプリケーションを作成してください。 ほとんどのクライアント ライブラリは自動的にキャッシュ エンドポイントに再接続できますが、少数は失敗した要求を再試行します。 アプリケーションのシナリオによっては、バックオフによる再試行ロジックが理にかなっている場合があります。
+
+### <a name="how-do-i-make-my-application-resilient"></a>アプリケーションの回復性を高める方法
+
+回復性があるクライアントを作成するには、これらの設計パターン、特にサーキット ブレーカー パターンや再試行パターンを参照してください。
+
+- [信頼性パターン - クラウド設計パターン](/azure/architecture/framework/resiliency/reliability-patterns#resiliency)
+- [Azure サービスの再試行ガイダンス - クラウド アプリケーションのベスト プラクティス](/azure/architecture/best-practices/retry-service-specific)
+- [エクスポネンシャル バックオフを含む再試行を実装する](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)
+
+クライアント アプリケーションの回復性をテストするには、接続が切断された場合の手動トリガーとして、[再起動](cache-administration.md#reboot)を使用します。
+
+加えて、キャッシュに対する[更新のスケジュール設定](cache-administration.md#schedule-updates)で、毎週の時間枠を指定して Redis ランタイムのパッチを適用することをお勧めします。 通常これらの時間枠は、発生の可能性のある事柄を回避する、クライアント アプリケーションのトラフィックが少ない時間です。
 
 ## <a name="next-steps"></a>次のステップ
 

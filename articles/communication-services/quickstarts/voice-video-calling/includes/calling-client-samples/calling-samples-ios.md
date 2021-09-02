@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: 8e95261da4bd8f6082d567f90e17cf236b8fe7f1
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 06/30/2021
+ms.author: rifox
+ms.openlocfilehash: aaf99113e3d7fd1190266976e9475e33272d338c
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560519"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078500"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -576,6 +576,84 @@ try! localRenderer!.createView(withOptions: CreateViewOptions(scalingMode: Scali
 // [Synchronous] dispose rendering view
 localRenderer.dispose()
 
+```
+
+## <a name="record-calls"></a>通話を記録する
+> [!WARNING]
+> ACS Calling iOS SDK のバージョン 1.1.0 およびベータ リリース バージョン 1.1.0-beta.1 までは、`isRecordingActive` は `Call` オブジェクトの一部になっていて、`didChangeRecordingState` は `CallDelegate` デリゲートの一部になっています。 新しいベータ リリースでは、これらの API は、以下に説明するように `Call` の拡張機能として移動されています。
+> [!NOTE]
+> この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling iOS SDK の "ベータ" リリースを使用してください
+
+通話記録は、コア `Call` API の拡張機能です。 まず、記録機能 API オブジェクトを取得する必要があります。
+
+```swift
+let callRecordingFeature = call.api(RecordingFeature.self)
+```
+
+次に、通話が記録されているかどうかを確認するために、`callRecordingFeature` の `isRecordingActive` プロパティを調べます。 `Bool` を返します。
+
+```swift
+let isRecordingActive = callRecordingFeature.isRecordingActive;
+```
+
+イベント `didChangeRecordingState` を使用してクラスに `RecordingFeatureDelegate` デリゲートを実装することにより、録音の変更をサブスクライブすることもできます。
+
+```swift
+callRecordingFeature.delegate = self
+
+// didChangeRecordingState is a member of RecordingFeatureDelegate
+public func recordingFeature(_ recordingFeature: RecordingFeature, didChangeRecordingState args: PropertyChangedEventArgs) {
+    let isRecordingActive = recordingFeature.isRecordingActive
+}
+```
+
+アプリケーションから記録を開始する場合は、まず「[通話録音の概要](../../../../concepts/voice-video-calling/call-recording.md)」に従って通話記録を設定する手順を実行してください。
+
+サーバーで通話録音を設定したら、iOS アプリケーションで通話から `ServerCallId` 値を取得し、それをサーバーに送信して録音プロセスを開始する必要があります。 `ServerCallId` 値は、`getInfo()` を使用してクラス オブジェクト内に見つけることができる `CallInfo` クラスの `getServerCallId()` を使用して見つけることができます。
+
+```swift
+let serverCallId = call.info.getServerCallId(){ (serverId, error) in }
+// Send serverCallId to your recording server to start the call recording.
+```
+
+サーバーから録音が開始されると、イベント `didChangeRecordingState` がトリガーされ、`recordingFeature.isRecordingActive` の値が `true` になります。
+
+通話録音を停止する場合は、通話録音を開始するのと同じように、`ServerCallId` を取得し、これを録音サーバーに送信して、録音サーバーが通話録音を停止できるようにする必要があります。
+
+```swift
+let serverCallId = call.info.getServerCallId(){ (serverId, error) in }
+// Send serverCallId to your recording server to stop the call recording.
+```
+
+サーバーから録音が停止されると、イベント `didChangeRecordingState` がトリガーされ、`recordingFeature.isRecordingActive` の値が `false` になります。
+
+## <a name="call-transcription"></a>通話の文字起こし
+> [!WARNING]
+> ACS Calling iOS SDK のバージョン 1.1.0 およびベータ リリース バージョン 1.1.0-beta.1 までは、`isTranscriptionActive` は `Call` オブジェクトの一部になっていて、`didChangeTranscriptionState` は `CallDelegate` デリゲートの一部になっています。 新しいベータ リリースでは、これらの API は、以下に説明するように `Call` の拡張機能として移動されています。
+> [!NOTE]
+> この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling iOS SDK の "ベータ" リリースを使用してください
+
+通話の文字起こしは、コア `Call` API の拡張機能です。 まず、文字起こし機能 API オブジェクトを取得する必要があります。
+
+```swift
+let callTranscriptionFeature = call.api(TranscriptionFeature.self)
+```
+
+次に、通話が文字起こしされているかどうかを確認するために、`callTranscriptionFeature` の `isTranscriptionActive` プロパティを調べます。 `Bool` を返します。
+
+```swift
+let isTranscriptionActive = callTranscriptionFeature.isTranscriptionActive;
+```
+
+イベント `didChangeTranscriptionState` を使用してクラスに `TranscriptionFeatureDelegate` 文字起こしを実装することにより、文字起こしの変更をサブスクライブすることもできます。
+
+```swift
+callTranscriptionFeature.delegate = self
+
+// didChangeTranscriptionState is a member of TranscriptionFeatureDelegate
+public func transcriptionFeature(_ transcriptionFeature: TranscriptionFeature, didChangeTranscriptionState args: PropertyChangedEventArgs) {
+    let isTranscriptionActive = transcriptionFeature.isTranscriptionActive
+}
 ```
 
 ## <a name="subscribe-to-notifications"></a>通知に登録する

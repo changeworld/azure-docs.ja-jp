@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 825fb15d9c3a0a0a44a77d3feec767adc0368add
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: a2906145e135f1b2e683ed757efde07ce1d5dd65
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279192"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296575"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -80,9 +80,6 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
     ![[プライベート エンドポイントの作成 (プレビュー)] ページの [基本] タブを示すスクリーンショット。](../media/private-link-service-4.png)
 
 このブレードを使用することで、任意の Azure リソース用のプライベート エンドポイントを作成できます。 ドロップダウン メニューを使用してリソースの種類を選択し、自分のディレクトリ内のリソースを選択することも、リソース ID を使用して任意の Azure リソースに接続することもできます。 [プライベート DNS ゾーンと統合する] オプションはそのままにします。  
-
-![現在のブレードを使用したプライベート エンドポイントの追加を示すスクリーンショット。](../media/private-link-service-3.png)
-![[プライベート エンドポイントの作成 (プレビュー)] ページの例を示すスクリーンショット。](../media/private-link-service-4.png)
 
 プライベート エンドポイントを作成する際は、接続を承認する必要があります。 作成しているプライベート エンドポイントの接続先となるリソースが自分のディレクトリ内にある場合は、十分なアクセス許可を持っていれば、自分で接続要求を承認することができます。別のディレクトリ内にある Azure リソースに接続する場合は、そのリソースの所有者が接続要求を承認するまで待つ必要があります。
 
@@ -243,7 +240,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 * キー コンテナーの A レコードがプライベート DNS ゾーンから欠落していないことを確認します。 
     1. [プライベート DNS ゾーン] ページに移動します。 
     2. [概要] をクリックし、キー コンテナーの簡易名 (fabrikam など) の A レコードがあることを確認します。 サフィックスは指定しないでください。
-    3. スペルを確認し、A レコードを作成または修正します。 TTL には 3600 (1 時間) を使用できます。 
+    3. スペルを確認し、A レコードを作成または修正します。 TTL には 600 (10 分) を使用できます。
     4. 指定したプライベート IP アドレスが正しいことを確認します。 
     
 * A レコードの IP アドレスが正しいことを確認します。 

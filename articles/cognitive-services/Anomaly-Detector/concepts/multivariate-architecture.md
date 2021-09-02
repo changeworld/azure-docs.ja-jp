@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
-ms.openlocfilehash: 4d379cfe01dcbd88531b98a32b45e0b30f6adeef
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9de0a774ab2464d3b59ee8875453255e92ea5c45
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318838"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297246"
 ---
-# <a name="predictive-maintenance-solution-with-anomaly-detector-multivariate"></a>Anomaly Detector の多変量を使用する予測メンテナンス ソリューション
+# <a name="predictive-maintenance-solution-with-anomaly-detector-multivariate"></a>Anomaly Detector (多変量) を使用する予測メンテナンス ソリューション
 
 多くの異なる業界では、リスクを軽減し、機器からのデータを処理することによってアクションにつながる分析情報を得るために、予測メンテナンス ソリューションが必要です。 予測メンテナンスでは、オンライン監視を実行して機器の状態を評価します。 目標は、機器のパフォーマンスが低下したり、故障したりする前にメンテナンスを行うことです。
 
@@ -47,4 +47,4 @@ ms.locfileid: "107318838"
 ## <a name="next-steps"></a>次のステップ
 
 - [クイックスタート](../quickstarts/client-libraries-multivariate.md)。
-- [ベスト プラクティス](../concepts/best-practices-multivariate.md): この記事は、Multivariate API で使用するために推奨されるパターンに関するものです。
+- [ベスト プラクティス](../concepts/best-practices-multivariate.md): この記事は、多変量 API で使用するために推奨されるパターンに関するものです。

@@ -17,19 +17,19 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c731648c144d4b25896260e5cf276a97b9e731
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e21e22e231ea5998cf15c7b2982180da91fe49aa
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965763"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733432"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
 Azure Active Directory (Azure AD) のアクティビティ ログを複数のエンドポイントにルーティングして、長期の保持期間とデータの分析情報を得ることができます。 この機能では次のことができます。
 
 * データを長期間保持するには、Azure AD アクティビティ ログを Azure ストレージ アカウントにアーカイブします。
-* Azure AD アクティビティ ログを Azure イベント ハブにストリーム配信して、Splunk や QRadar などの一般的なセキュリティ情報およびイベント管理 (SIEM) ツールを使用して分析することができます。
+* Azure AD アクティビティ ログを Azure イベント ハブにストリーム配信して、Splunk、QRadar、Azure Sentinel などの一般的なセキュリティ情報およびイベント管理 (SIEM) ツールを使用して分析することができます。
 * Azure AD アクティビティ ログをイベント ハブにストリーミングすることで、独自のカスタム ログ ソリューションと統合することができます。
 * Azure AD アクティビティ ログを Azure Monitor ログに送信して、接続データに対する高度な視覚化、監視、およびアラートを有効にします。
 
@@ -53,10 +53,10 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 この機能を使用するには、次が必要です。
 
 * Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。
-* Azure portal で Azure AD の監査ログにアクセスするための Azure AD Free、Basic、Premium 1 または Premium 2 の[ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)。 
+* Azure portal で Azure AD の監査ログにアクセスするための Azure AD Free、Basic、Premium 1 または Premium 2 の[ライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。 
 * Azure AD テナント。
 * Azure AD テナントの "**グローバル管理者**" または "**セキュリティ管理者**" であるユーザー。
-* Azure portal で Azure AD のサインイン ログにアクセスするための Azure AD Premium 1 または Premium 2 の[ライセンス](https://azure.microsoft.com/pricing/details/active-directory/)。 
+* Azure portal で Azure AD のサインイン ログにアクセスするための Azure AD Premium 1 または Premium 2 の[ライセンス](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。 
 
 監査ログのデータをルーティングする場所によっては、次のいずれかが必要です。
 

@@ -123,6 +123,14 @@
           href: tag-support.md
         - name: Azure Resource Graph クエリ
           href: ./resource-graph-samples.md
+    - name: プライベート リンク アクセス
+      items:
+        - name: 作成 - ポータル
+          href: create-private-link-access-portal.md
+        - name: 作成 - REST
+          href: create-private-link-access-rest.md
+        - name: 管理 - REST
+          href: manage-private-link-access-rest.md
     - name: リソース グループの管理
       items:
         - name: Azure portal

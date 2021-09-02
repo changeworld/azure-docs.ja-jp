@@ -2,18 +2,19 @@
 title: フィーチャーの評価 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: Azure portal から、Personalizer リソースで評価を実行すると、Personalizer により、モデルに影響を与えているコンテキストとアクションのフィーチャーに関する情報が提供されます。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: c0e47a2943cf8c934d201f76aefc41868adf0b25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d504293da96ea6f0c22c2a54563b39b92e4485e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87127725"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831019"
 ---
 # <a name="feature-evaluation"></a>特徴の評価
 
