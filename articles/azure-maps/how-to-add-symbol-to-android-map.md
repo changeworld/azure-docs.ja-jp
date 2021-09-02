@@ -228,7 +228,7 @@ val layer = SymbolLayer(
 
 Azure Maps Android SDK には、既定のマーカー アイコンの定義済みの色のバリエーション セットが付属しています。 たとえば、`marker-red` をシンボル レイヤーの `iconImage` オプションに渡して、そのレイヤーにマーカー アイコンの赤色のバージョンを表示することができます。
 
-::: zone pivot=&quot;programming-language-java-android&quot;
+::: zone pivot="programming-language-java-android"
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
