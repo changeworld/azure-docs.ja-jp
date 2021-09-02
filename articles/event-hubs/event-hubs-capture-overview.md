@@ -3,15 +3,17 @@ title: ストリーミング イベントをキャプチャする - Azure Event 
 description: この記事では、Azure Event Hubs でイベントのストリーミングをキャプチャするキャプチャ機能の概要を示します。
 ms.topic: article
 ms.date: 02/16/2021
-ms.openlocfilehash: d3153c4d82cfbdf232d1834db8f26462f893961b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fbc151b7dafe5c2f29f0101122b3936ae162a734
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375096"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735261"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする
 Azure Event Hubs を利用すると、Event Hubs のストリーミング データをご自分で選択した Gen 1 または Gen 2 の [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) アカウントに自動的に配信できます。その際、時間やサイズの間隔を柔軟に指定できます。 Capture の設定は手軽で、実行しても管理コストは発生しません。また、Event Hubs の Standard レベルでの[スループット ユニット数](event-hubs-scalability.md#throughput-units)または Premium レベルでの[処理ユニット数](event-hubs-scalability.md#processing-units)に応じて、自動的にスケーリングされます。 Event Hubs Capture はストリーミング データを Azure に読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
+
+:::image type="content" source="./media/event-hubs-features/capture.png" alt-text="Event Hubs のデータの Azure Storage または Azure Data Lake Storage へのキャプチャを示す図":::
 
 > [!NOTE]
 > Azure Data Lake Storage **Gen 2** を使用するように Event Hubs Capture を構成することは、Azure Blob Storage を使用するように構成することと同じです。 詳細については、[Event Hubs Capture の構成](event-hubs-capture-enable-through-portal.md)に関する記事をご覧ください。 
@@ -79,7 +81,7 @@ Azure Blob Storage へのネイティブ サポートを使用できるため、
 
 [Apache Drill: Azure Blob Storage プラグイン][Apache Drill: Azure Blob Storage Plugin]
 
-キャプチャされたファイルに簡単にクエリするには、コンテナーを使用して Apache Drill を有効にした状態で VM を作成および実行して Azure Blob Storage にアクセスできます。 次の例を参照してください: [Event Hubs Capture を使用した大規模なストリーミング](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture)。
+キャプチャされたファイルに簡単にクエリするには、コンテナーを使用して Apache Drill を有効にした状態で VM を作成および実行して Azure Blob Storage にアクセスできます。 次の例を参照してください: [Event Hubs Capture を使用した大規模なストリーミング](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture-databricks-delta)。
 
 ### <a name="use-apache-spark"></a>Apache Spark を使用する
 

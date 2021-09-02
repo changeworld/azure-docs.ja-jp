@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6208066f324fed289e59b63d88f2302c60fb2db1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6ec4457eeb60029783981824b93d2eadfaa1271b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459610"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866321"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>条件付きアクセス: クラウド アプリ、アクション、認証コンテキスト
 
@@ -40,7 +40,7 @@ ms.locfileid: "114459610"
 - Azure Event Hubs
 - Azure Service Bus
 - [Azure SQL Database と Azure Synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
-- Dynamics CRM Online
+- Common Data Service
 - Microsoft Application Insights Analytics
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure Management](#microsoft-azure-management)
@@ -48,12 +48,12 @@ ms.locfileid: "114459610"
 - Microsoft Cloud App Security
 - Microsoft Commerce Tools Access Control Portal
 - Microsoft Commerce Tools Authentication Service
-- Microsoft Flow
 - Microsoft フォーム
 - Microsoft Intune
 - [Microsoft Intune Enrollment](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
-- Microsoft PowerApps
+- Microsoft Power Apps
+- Microsoft Power Automate
 - Microsoft Search in Bing
 - Microsoft StaffHub
 - Microsoft Stream
@@ -85,7 +85,6 @@ Office 365 スイートにより、これらのサービスを一度にすべて
 
 Office 365 クライアント アプリには、次の主要なアプリケーションが含まれています。
 
-   - Microsoft Flow
    - Microsoft フォーム
    - Microsoft Stream
    - Microsoft To-Do
@@ -98,7 +97,8 @@ Office 365 クライアント アプリには、次の主要なアプリケー�
    - Office Online
    - Office.com
    - OneDrive
-   - PowerApps
+   - Power Automate
+   - Power Apps
    - Skype for Business Online
    - Sway
 
@@ -175,7 +175,7 @@ Microsoft Azure の管理アプリケーションには、複数のサービス�
 
 アプリケーションでの認証コンテキストの使用の詳細については、次の記事を参照してください。
 
-- [SharePoint サイトを保護するための Microsoft Information Protection 秘密度ラベル](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option)
+- [SharePoint サイトを保護するための Microsoft Information Protection 秘密度ラベル](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option&preserve-view=true)
 - [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
 - [カスタム アプリケーション](../develop/developer-guide-conditional-access-authentication-context.md)
 

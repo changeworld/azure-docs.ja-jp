@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 36f05d2803d4ac347ef9dc8bf8e840e3f4a63cac
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e12a4226357160e2269034136a2df9c671b66313
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761488"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734075"
 ---
 Text Analytics 用の固有表現認識機能からは、次の一般的な (非識別) エンティティ カテゴリが返されます。 たとえば、`/entities/recognition/general` エンドポイントに要求を送信する場合などです。
 
@@ -32,7 +32,7 @@ Text Analytics 用の固有表現認識機能からは、次の一般的な (非
 | [電話番号](#category-phonenumber) | 電話番号です。 |
 | [Email](#category-email) | メール アドレス。 |
 | [URL](#category-url) | Web サイトへの URL。 |
-| [IP](#category-ip) | ネットワーク IP アドレス。 |
+| [IPAddress](#category-ipaddress) | ネットワーク IP アドレス。 |
 | [DateTime](#category-datetime) | 日付と時刻。 |
 | [Quantity](#category-quantity) | 数値的測定値と単位。 |
 
@@ -515,7 +515,7 @@ Text Analytics 用の固有表現認識機能からは、次の一般的な (非
    :::column-end:::
 :::row-end:::
 
-### <a name="category-ip"></a>カテゴリ:IP
+### <a name="category-ipaddress"></a>カテゴリ: IPAddress
 
 このカテゴリには、次のエンティティが含まれます。
 
@@ -523,7 +523,7 @@ Text Analytics 用の固有表現認識機能からは、次の一般的な (非
     :::column span="":::
         **エンティティ**
 
-        IP
+        IPAddress
 
     :::column-end:::
     :::column span="2":::

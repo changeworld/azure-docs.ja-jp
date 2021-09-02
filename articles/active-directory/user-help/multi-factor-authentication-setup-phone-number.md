@@ -1,6 +1,6 @@
 ---
-title: モバイル デバイスを 2 要素認証方法として設定する - Azure Active Directory | Microsoft Docs
-description: モバイル デバイスを 2 要素認証方法として設定する方法について説明します。
+title: モバイル デバイスを 2 段階認証方法として設定する - Azure Active Directory | Microsoft Docs
+description: モバイル デバイスを 2 段階認証方法として設定する方法について説明します。
 services: active-directory
 author: curtand
 manager: daveba
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6cf133c08d7f554ffe991941740326a2e1e4292
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91530257"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728178"
 ---
-# <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>モバイル デバイスを 2 要素認証方法として設定する
+# <a name="set-up-a-mobile-device-as-your-two-step-verification-method"></a>モバイル デバイスを 2 段階認証方法として設定する
 
-ご利用のモバイル デバイスを 2 要素認証方法として動作するように設定できます。 携帯電話で、確認コードを含むテキスト メッセージを受信するか、電話で確認コードを受け取ることができます。
+ご利用のモバイル デバイスを 2 段階認証方法として動作するように設定できます。 携帯電話で、確認コードを含むテキスト メッセージを受信するか、電話で確認コードを受け取ることができます。
 
 >[!Note]
 > 認証用電話オプションが灰色表示される場合、検証に電話番号またはテキスト メッセージを使用することを組織が許可していない可能性があります。 この場合、別の方法を選択するか、管理者に支援を要請する必要があります。
@@ -41,7 +41,7 @@ ms.locfileid: "91530257"
     ![[追加のセキュリティ確認] ページの [アプリ パスワード] 領域](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >古いアプリでアプリ パスワードを使用する方法の詳細については、「[アプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)」を参照してください。 2 要素認証をサポートしていない古いアプリを引き続き使用する場合のみ、アプリ パスワードを使用する必要があります。
+    >古いアプリでアプリ パスワードを使用する方法の詳細については、「[アプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)」を参照してください。 2 段階認証をサポートしていない古いアプリを引き続き使用する場合のみ、アプリ パスワードを使用する必要があります。
 
 5. **[Done]** を選択します。
 
@@ -62,18 +62,18 @@ ms.locfileid: "91530257"
     ![[追加のセキュリティ確認] ページの [アプリ パスワード] 領域](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
     >[!Note]
-    >古いアプリでアプリ パスワードを使用する方法の詳細については、「[アプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)」を参照してください。 2 要素認証をサポートしていない古いアプリを引き続き使用する場合のみ、アプリ パスワードを使用する必要があります。
+    >古いアプリでアプリ パスワードを使用する方法の詳細については、「[アプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)」を参照してください。 2 段階認証をサポートしていない古いアプリを引き続き使用する場合のみ、アプリ パスワードを使用する必要があります。
 
 5. **[Done]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-2 要素認証方法を設定した後、方法の追加、設定とアプリ パスワードの管理、サインインを行うことができます。また、2 要素認証に関連する一般的な問題についてサポートを受けることもできます。
+2 段階認証方法を設定した後、方法の追加、設定とアプリ パスワードの管理、サインインを行うことができます。また、2 段階認証に関連する一般的な問題についてサポートを受けることもできます。
 
-- [2 要素認証方法の設定を管理する](multi-factor-authentication-end-user-manage-settings.md)
+- [2 段階認証方法の設定を管理する](multi-factor-authentication-end-user-manage-settings.md)
 
 - [アプリ パスワードの管理](multi-factor-authentication-end-user-app-passwords.md)
 
-- [2 要素認証を使用してサインインする](multi-factor-authentication-end-user-signin.md)
+- [2 段階認証を使用したサインイン](multi-factor-authentication-end-user-signin.md)
 
-- [2 要素認証のサポートを受ける](multi-factor-authentication-end-user-troubleshoot.md)
+- [2 段階認証のサポートを受ける](multi-factor-authentication-end-user-troubleshoot.md)

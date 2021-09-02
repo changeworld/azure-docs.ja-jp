@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 1e46601858ece67efa2bca9543083da8a0e2cc79
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 6a371d3a9edf537e78f5a889139a053cb925518f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861987"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770835"
 ---
 # <a name="estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure CognitiveSearch サービスのコストの見積りと管理を行う
 
@@ -88,12 +88,12 @@ Azure Cognitive Search サービスをデータと同じリージョンに作成
 | ドキュメント解析、テキスト抽出 | Free |
 | ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成** で、[imageAction](/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出の料金については、[価格ページ](https://azure.microsoft.com/pricing/details/search/)をご覧ください。 |
 | Cognitive Services に基づく[組み込みのスキル](cognitive-search-predefined-skills.md) | Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。 インデクサーごとに 1 日あたり 20 件のドキュメントを無料で処理できます。 大きなワークロードやより頻繁なワークロードにはキーが必要です。 |
-| エンリッチメントを追加しない[組み込みのスキル](cognitive-search-predefined-skills.md) | なし。 課金対象でないユーティリティ スキルには、条件付き、シェ―パー、テキスト結合、テキスト分割が含まれます。 課金への影響はありません。また、Cognitive Services キーの要件も、20 件のドキュメント制限もありません。 |
+| エンリッチメントを追加しない[組み込みのスキル](cognitive-search-predefined-skills.md) | [なし] : 課金対象でないユーティリティ スキルには、条件付き、シェ―パー、テキスト結合、テキスト分割が含まれます。 課金への影響はありません。また、Cognitive Services キーの要件も、20 件のドキュメント制限もありません。 |
 | カスタム スキル | カスタム スキルは、自分が提供する機能です。 カスタム スキルを使用した場合のコストは、カスタム コードで他の従量制サービスを呼び出しているかどうかによって決まります。  カスタム スキルでは、Cognitive Services キー要件や、20 件のドキュメント制限はありません。|
 | [カスタム エンティティの参照](cognitive-search-skill-custom-entity-lookup.md) | Azure Cognitive Search によって測定されます。 詳細については、[価格ページ](https://azure.microsoft.com/pricing/details/search/#pricing)を参照してください。 |
 
 > [!TIP]
-> [増分エンリッチ (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) は、スキルセットに行われた変更の影響を受けないエンリッチメントをキャッシュして再利用することにより、スキルセット処理のコストを削減します。 キャッシュには Azure Storage が必要です ([価格](/pricing/details/storage/blobs/)を参照してください)。ただし、既存のエンリッチメントを再利用できる場合は、スキルセットの実行の累積コストが低くなります。
+> [増分エンリッチ (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) は、スキルセットに行われた変更の影響を受けないエンリッチメントをキャッシュして再利用することにより、スキルセット処理のコストを削減します。 キャッシュには Azure Storage が必要です ([価格](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください)。ただし、既存のエンリッチメントを再利用できる場合は、スキルセットの実行の累積コストが低くなります。
 
 ## <a name="tips-for-managing-costs"></a>コスト管理のヒント
 

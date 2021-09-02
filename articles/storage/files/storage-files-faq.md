@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 47400f8e359f8f5f7a05119eb91106b318a0e798
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 34a8d0d732863f5fe40056f25460269f131fbf7c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729580"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866501"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -440,9 +440,7 @@ ms.locfileid: "113729580"
 
 * <a id="share-snapshot-price"></a>
 **共有スナップショットにかかるコストを教えてください。**  
-     共有スナップショットの容量に関して、プレビュー期間中は料金は発生しません。 Standard ストレージのエグレスとトランザクションのコストが適用されます。 一般公開後は、共有スナップショットの容量とトランザクションの料金が、サブスクリプションに対して課金されます。
-     
-     共有スナップショットは、本質的に増分です。 基本の共有スナップショットは、共有そのものです。 それ以降の共有スナップショットはすべて増分であり、先行する共有スナップショットとの差分のみが格納されます。 変更されたコンテンツに対してのみ、課金されます。 共有に 100 GiB のデータがあり、最新の共有スナップショットの後に 5 GiB だけが変更された場合、共有スナップショットは追加の 5 GiB のみを消費し、課金は 105 GiB に対して行われます。 トランザクションおよび標準エグレスの課金の詳細については、[課金に関するページ](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。
+    共有スナップショットは、本質的に増分です。 基本の共有スナップショットは、共有そのものです。 それ以降の共有スナップショットはすべて増分であり、先行する共有スナップショットとの差分のみが格納されます。 変更されたコンテンツに対してのみ、課金されます。 共有に 100 GiB のデータがあり、最新の共有スナップショットの後に 5 GiB だけが変更された場合、共有スナップショットは追加の 5 GiB のみを消費し、課金は 105 GiB に対して行われます。 トランザクションおよび標準エグレスの課金の詳細については、[課金に関するページ](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。
 
 ## <a name="scale-and-performance"></a>スケールとパフォーマンス
 * <a id="files-scale-limits"></a>
