@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5ba7c9505e49b8d0b35ee592bb0c3bafafad416a
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 077b247b4d8f40cc84b491ba26d78cd614ce15bf
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319397"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105419"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor でのロール、アクセス許可、セキュリティ
 
@@ -24,7 +24,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 ### <a name="monitoring-reader"></a>Monitoring Reader
 監視閲覧者の役割が割り当てられている場合は、サブスクリプション内の監視データすべてを表示できますが、リソースを変更したり、監視リソースに関連する設定を編集したりすることはできません。 この役割は、次の作業を行う必要がある、サポート エンジニア、運用エンジニアなどの組織内のユーザーに適しています。
 
-* ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
+* ポータルに監視ダッシュボードを表示する。
 * [Azure アラート](alerts/alerts-overview.md)に定義されているアラート ルールを表示する。
 * [Azure Monitor REST API](/rest/api/monitor/metrics)、[PowerShell コマンドレット](powershell-samples.md)、または[クロスプラットフォーム CLI](cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
@@ -48,7 +48,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 ### <a name="monitoring-contributor"></a>Monitoring Contributor
 監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージド サービス プロバイダーのメンバーに適しています。
 
-* 共有ダッシュボードとして監視ダッシュボードを発行する。
+* ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
 * リソースの[診断設定](essentials/diagnostic-settings.md)を設定する。\*
 * サブスクリプションの[ログ プロファイル](essentials/activity-log.md#legacy-collection-methods)を設定する。\*
 * [Azure アラート](alerts/alerts-overview.md)を使用して、アラート ルール アクティビティと設定を指定する。

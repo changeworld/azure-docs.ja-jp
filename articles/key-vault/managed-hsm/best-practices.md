@@ -2,19 +2,19 @@
 title: Azure Key Vault Managed HSM を使用しているときのベスト プラクティス
 description: このドキュメントでは、Key Vault を使用するためのいくつかのベスト プラクティスについて説明します。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.author: ambapat
-ms.openlocfilehash: a7cccecc47973d372453ce86d0d5d12c8d773b3a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/21/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 99a313f64e9f5bafd13dbbf45a6881e1c6e2f275
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413971"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459698"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>Managed HSM を使用しているときのベスト プラクティス
 
@@ -44,6 +44,13 @@ Managed HSM は、暗号化キーを保護するクラウド サービスです�
 
 - [論理的な削除](soft-delete-overview.md)は、既定で有効になります。 7 日間から 90 日間までの保有期間を選択できます。
 - HSM またはキーが直ちに完全に削除されないようにするには、消去保護をオンにします。 消去保護がオンにされている場合、HSM またはキーは、保有日数が経過するまで、キーは削除された状態のままになります。
+
+## <a name="generate-and-import-keys-from-on-premise-hsm"></a>キーを生成してオンプレミスの HSM からインポートする
+
+> [!NOTE]
+> 作成されたキーまたは Managed HSM にインポートされたキーはエクスポートできません。
+
+- 長期的な移植性とキーの持続性を確保するには、オンプレミスの HSM でキーを生成し、[それを Managed HSM にインポート](hsm-protected-keys-byok.md)します。 キーのコピーが、将来の使用のためにオンプレミスの HSM に安全に格納されます。
 
 ## <a name="next-steps"></a>次のステップ
 

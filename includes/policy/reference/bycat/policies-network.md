@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 9bac29c031e2d265932f545e51829cee34e95f7d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: d4369b2b61b3811690a73abee402c79bdcab2aef
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605854"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100362"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[カスタムの IPsec/IKE ポリシーをすべての Azure 仮想ネットワーク ゲートウェイ接続に適用する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |このポリシーでは、すべての Azure 仮想ネットワーク ゲートウェイ接続がカスタム インターネット プロトコル セキュリティ (Ipsec) またはインターネット キー交換 (IKE) ポリシーを使用することを確認します。 サポートされているアルゴリズムとキーの強度については、[https://aka.ms/AA62kb0](../../../../articles/vpn-gateway/vpn-gateway-about-compliance-crypto.md) をご覧ください。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
+|[カスタムの IPsec/IKE ポリシーをすべての Azure 仮想ネットワーク ゲートウェイ接続に適用する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |このポリシーでは、すべての Azure 仮想ネットワーク ゲートウェイ接続がカスタム インターネット プロトコル セキュリティ (Ipsec) またはインターネット キー交換 (IKE) ポリシーを使用することを確認します。 サポートされているアルゴリズムとキーの強度については、[https://aka.ms/AA62kb0](/azure/vpn-gateway/vpn-gateway-about-compliance-crypto#what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy) をご覧ください。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
 |[\[プレビュー\]: すべてのインターネット トラフィックはデプロイされた Azure Firewall を介してルーティングする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |一部のサブネットが次世代のファイアウォールで保護されていないことを Azure Security Center で確認しました。 Azure Firewall またはサポートされている次世代のファイアウォールを使用してアクセスを制限することにより、潜在的な脅威からサブネットを保護してください |AuditIfNotExists、Disabled |[3.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
 |[App Service は仮想ネットワーク サービス エンドポイントを使用する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |このポリシーは、仮想ネットワーク サービス エンドポイントを使用するように構成されていないすべての App Service を監査します。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json) |
 |[Azure VPN ゲートウェイで 'Basic' SKU を使用しないでください](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345b6c3-24bd-4c93-9bbb-7e5e49a17b78) |このポリシーでは、VPN ゲートウェイが 'Basic' SKU を使用していないことを確認します。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_BasicSKU_Audit.json) |

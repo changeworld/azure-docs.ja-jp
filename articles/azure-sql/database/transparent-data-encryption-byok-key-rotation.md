@@ -11,13 +11,13 @@ ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 03/12/2019
-ms.openlocfilehash: 9c43cb7bb60b758230664571fd7d7e592009fff2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 06/23/2021
+ms.openlocfilehash: c14d209f5f4b846b51a99ac875e2304129b4e765
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667186"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090279"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Transparent Data Encryption (TDE) 保護機能をローテーションする
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -32,6 +32,9 @@ ms.locfileid: "110667186"
 
 > [!IMPORTANT]
 > ロールオーバー後に以前のバージョンのキーは削除しないでください。 キーがロール オーバーされると、古いデータベース バックアップなど、一部のデータは引き続き以前のキーで暗号化されます。
+
+> [!NOTE]
+> この記事は、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics (専用 SQL プール (旧 SQL DW)) に適用されます。 Synapse ワークスペース内の専用 SQL プールの透過的データ暗号化に関するドキュメントについては、[Azure Synapse Analytics の暗号化](../../synapse-analytics/security/workspaces-encryption.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

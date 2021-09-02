@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f14ae211e13c299807c6f1c43e8be11752fce008
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 6dc1b5ae3e885231a0d80ade2b8477a66e85d62d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418336"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456242"
 ---
 # <a name="troubleshoot-azure-disk-pools-preview"></a>Azure ディスク プール (プレビュー) のトラブルシューティング
 
@@ -29,6 +29,12 @@ ms.locfileid: "122418336"
 "**更新中**" とは、リソースが更新中であることを意味します。 通常、これは、デプロイ時、またはディスクや LUN の追加などの更新プログラムの適用時に発生します。
 
 "**停止 (割り当て解除)** " とは、リソースが停止しており、その基礎となるリソースの割り当てが解除されていることを意味します。 リソースを再起動して、ディスク プールまたは iSCSI ターゲットを復旧することができます。
+
+## <a name="recover-a-disk-pool-or-an-iscsi-target"></a>ディスク プールまたは iSCSI ターゲットを復旧する
+
+まず、ディスク プールを停止し、再起動します。 次に、ディスク プールと iSCSI ターゲットの状態を確認します。 それらが復旧した場合、ディスク プールにアクセスできない状態が 24 時間を超えている場合を除き、ディスク プールに接続されている Azure VMware クラスターは自動的に復旧します。 24 時間を超える時間が経過した場合は、Azure サポートに連絡して、ディスク プールに関連付けられているアクセスできないデータストアを強制的に切断する必要があります。 その後は、VS クラスターをディスク プールに再接続し、データストアを構成することができます。
+
+このプロセスの後もディスク プールが復旧しない場合は、Azure サポートに連絡し、受け取ったエラー メッセージの追跡 ID を伝えてください。
 
 ## <a name="common-failure-codes-when-deploying-a-disk-pool"></a>ディスク プールをデプロイするときの一般的なエラー コード
  
@@ -49,6 +55,6 @@ ms.locfileid: "122418336"
 |GoalStateApplicationTimeoutError     |ディスク プール インフラストラクチャがリソース プロバイダーに応答しなくなったときに発生します。 デプロイを再試行してください。 問題が解決しない場合は、Azure サポートに連絡し、エラーの追跡 ID を伝えてください。         |
 |OngoingOperationInProgress     |ディスク プールで操作が進行中です。 その操作が完了するまで待ってから、デプロイを再試行してください。         |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ディスク プール (プレビュー) を管理する](disks-pools-manage.md)

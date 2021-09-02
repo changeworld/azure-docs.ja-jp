@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 2703e5f92ad0756ece8088c4948170ea13fa0e06
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: c0e63d0aee60ae81c14fa8971369c3a50f9b2bde
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683445"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461402"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>IoT Edge の透過的なゲートウェイを経由してデバイスを接続する方法
 
@@ -29,7 +29,7 @@ IoT Edge では、[*透過的* と *変換* のゲートウェイ パターン](
 
 - 有効な Azure サブスクリプション Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-- **カスタム アプリケーション** テンプレートから[作成された IoT Central アプリケーション](howto-create-iot-central-application.md)。 詳細については、「[IoT Central アプリケーションを作成する](howto-create-iot-central-application.md)」を参照してください。
+- **カスタム アプリケーション** テンプレートから [作成された IoT Central アプリケーション](howto-create-iot-central-application.md)。 詳細については、「[IoT Central アプリケーションを作成する](howto-create-iot-central-application.md)」を参照してください。
 
 この記事の手順を実行するには、次のファイルをコンピューターにダウンロードします。
 
@@ -70,7 +70,7 @@ IoT Edge では、[*透過的* と *変換* のゲートウェイ パターン](
 
 :::image type="content" source="media/how-to-connect-iot-edge-transparent-gateway/device-template-relationship.png" alt-text="IoT Edge ゲートウェイ デバイス テンプレートと、サーモスタット ダウンストリーム デバイス テンプレートの関係を示すスクリーンショット。":::
 
-前のスクリーンショットは、モジュールが定義されていない IoT Edge ゲートウェイ デバイス テンプレートを示しています。 IoT Edge ランタイムによって、ダウンストリーム デバイスから IoT Central にメッセージが転送されるため、透過的なゲートウェイにはモジュールは必要ありません。 テレメトリの送信、プロパティの同期、またはコマンドの処理をゲートウェイ自体で行う必要がある場合、既定のコンポーネントで、またはモジュールでこれらの機能を定義できます。
+前のスクリーンショットは、モジュールが定義されていない IoT Edge ゲートウェイ デバイス テンプレートを示しています。 IoT Edge ランタイムによって、ダウンストリーム デバイスから IoT Central にメッセージが転送されるため、透過的なゲートウェイにはモジュールは必要ありません。 ゲートウェイ自体でテレメトリを送信したり、プロパティを同期したり、コマンドを処理したりする必要がある場合は、これらの機能をルート コンポーネントまたはモジュールで定義できます。
 
 クラウドのプロパティとビューで必要なものがあれば、ゲートウェイとダウンストリーム デバイスのテンプレートを発行する前に追加します。
 

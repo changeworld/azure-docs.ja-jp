@@ -6,16 +6,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: da7d617ab92ed0e9c7564813006e3a0c044a48b6
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 14ac7953654941de176bf74bd38787b33b9c864c
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195760"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225762"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Node.js アプリを構成する
 
-Node.js アプリは、必要なすべての NPM 依存関係と共にデプロイする必要があります。 App Service 展開エンジンは、[Git リポジトリ](deploy-local-git.md)をデプロイするとき、または[ビルド自動化が有効になっている](deploy-zip.md#enable-build-automation) [Zip パッケージ](deploy-zip.md)をデプロイするときに、`npm install --production` を自動的に実行します。 ただし、[FTP/S](deploy-ftp.md) を使用してファイルをデプロイする場合、必要なパッケージを手動でアップロードする必要があります。
+Node.js アプリは、必要なすべての NPM 依存関係と共にデプロイする必要があります。 App Service 展開エンジンは、[Git リポジトリ](deploy-local-git.md)をデプロイするとき、または[ビルド自動化が有効になっている](deploy-zip.md#enable-build-automation-for-zip-deploy) [Zip パッケージ](deploy-zip.md)をデプロイするときに、`npm install --production` を自動的に実行します。 ただし、[FTP/S](deploy-ftp.md) を使用してファイルをデプロイする場合、必要なパッケージを手動でアップロードする必要があります。
 
 このガイドでは、App Service にデプロイする Node.js 開発者向けに主要な概念と手順を説明します。 Azure App Service を使用したことがない場合は、まず、[Node.js クイック スタート](quickstart-nodejs.md)と [MongoDB を使った Node.js のチュートリアル](tutorial-nodejs-mongodb-app.md)に従ってください。
 
@@ -119,7 +119,7 @@ app.listen(port, () => {
 
 ## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
 
-Git を使用するか、[ビルドの自動化を有効](deploy-zip.md#enable-build-automation)にした zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
+Git を使用するか、[ビルドの自動化を有効](deploy-zip.md#enable-build-automation-for-zip-deploy)にした zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
 
 1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
 1. フラグを指定せずに `npm install` を実行します。これには、npm `preinstall` スクリプトと `postinstall` スクリプトが含まれ、`devDependencies` のインストールも行われます。
@@ -241,7 +241,7 @@ process.env.NODE_ENV
 
 ## <a name="run-gruntbowergulp"></a>Grunt/Bower/Gulp を実行する
 
-既定では、App Service のビルド自動化によって、Node.js アプリが Git を介して、または[ビルド自動化が有効になっている](deploy-zip.md#enable-build-automation) Zip デプロイを介してデプロイされることが認識されると、`npm install --production` が実行されます。 アプリで、Grunt、Bower、Gulp など、一般的な自動化ツールのいずれかが必要な場合、それを実行する[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。
+既定では、App Service のビルド自動化によって、Node.js アプリが Git を介して、または[ビルド自動化が有効になっている](deploy-zip.md#enable-build-automation-for-zip-deploy) Zip デプロイを介してデプロイされることが認識されると、`npm install --production` が実行されます。 アプリで、Grunt、Bower、Gulp など、一般的な自動化ツールのいずれかが必要な場合、それを実行する[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。
 
 リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 次に例を示します。
 
@@ -387,3 +387,7 @@ Application Insights を使用すると、コードを変更することなく�
 > [App Service Linux の FAQ](faq-app-service-linux.yml)
 
 ::: zone-end
+
+または、その他のリソースを参照してください:
+
+[環境変数とアプリ設定のリファレンス](reference-app-settings.md)

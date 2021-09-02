@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 75ee1ca92fb687975dabe0011ce8a95b8c03172b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e62937a4240448f85cc7ab147d642b29bb0a2a9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723087"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226059"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -66,20 +66,20 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 
 ### <a name="java-se"></a>Java SE
 
-Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#rest)を参照してください。 
+Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/publish/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-warjarear-packages)を参照してください。 
 
 > [!NOTE]
 >  App Service でアプリケーションを識別して実行するには、.jar アプリケーションの名前を `app.jar` にする必要があります。 (上記で説明した) Maven プラグインを使用すると、デプロイ中にアプリケーションの名前が自動的に変更されます。 JAR の名前を *app.jar* に変更しない場合は、.jar アプリを実行するコマンドが含まれるシェル スクリプトをアップロードできます。 ポータルの構成セクションで [[スタートアップ ファイル]](/azure/app-service/faq-app-service-linux#built-in-images) テキスト ボックスにこのスクリプトの絶対パスを貼り付けます。 スタートアップ スクリプトは、配置先のディレクトリからは実行されません。 そのため、スタートアップ スクリプトでファイルを参照するには、常に絶対パスを使用します (例: `java -jar /home/myapp/myapp.jar`)。
 
 ### <a name="tomcat"></a>Tomcat
 
-.war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-war-file)を参照してください。
+.war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-warjarear-packages)を参照してください。
 
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP
 
-.war ファイルを JBoss にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-war-file)を参照してください。
+.war ファイルを JBoss にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-warjarear-packages)を参照してください。
 
 .ear ファイルをデプロイするには、[FTP を使用](deploy-ftp.md)します。 アプリケーションの構成で定義されているコンテキスト ルートに、.ear アプリケーションがデプロイされます。 たとえば、アプリのコンテキスト ルートが `<context-root>myapp</context-root>` の場合は、`/myapp` パスでサイトを閲覧できます (`http://my-app-name.azurewebsites.net/myapp`)。 Web アプリがルート パスで提供されるようにするには、アプリでコンテキスト ルートがルート パスに設定されていることを確認します (`<context-root>/</context-root>`)。 詳細については、「[Setting the context root of a web application (Web アプリケーションのコンテキスト ルートの設定)](https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html)」を参照してください。
 

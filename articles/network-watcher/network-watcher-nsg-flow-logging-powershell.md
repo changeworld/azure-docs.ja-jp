@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c3685928544d3e3edee9a864c004cae7f595eaef
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 79a48f479bedfbe7ecbe5199c7af08a3321badd7
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678308"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100412"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>PowerShell を使用したネットワーク セキュリティ グループのフローのログの構成
 
@@ -31,6 +31,11 @@ ms.locfileid: "110678308"
 ネットワーク セキュリティ グループ フロー ログは、ネットワーク セキュリティ グループを介して IP トラフィックの送信と受信に関する情報を表示できるようにする Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信、受信フロー、フロー (送信元/送信先 IP、送信元/送信先ポート、プロトコル) についての 5 組の情報が適用される NIC、トラフィックが許可されているか、拒否されているかを示しています。
 
 さまざまなバージョンの AzPowerShell のすべての NSG フロー ログ コマンドの詳細な仕様については、[こちら](/powershell/module/az.network/#network-watcher)を参照してください
+
+> [!NOTE]
+> - このドキュメントで使用されているコマンド [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) および [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) には、Network Watcher のリソース グループに追加の "閲覧者" アクセス許可が必要です。 また、これらのコマンドは古いものであり、間もなく非推奨となる可能性があります。
+> - 代わりに、新しい [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) コマンドと [Set-AzNetworkWatcherFlowLog](/powershell/module/az.network/set-aznetworkwatcherflowlog) コマンドを使用することが推奨されます。
+> - 新しい [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) コマンドには、柔軟性のために 4 つのバリアントが用意されています。 このコマンドの "Location <String>" バリアントを使用する場合は、Network Watcher のリソース グループに追加の "閲覧者" アクセス許可が必要になります。 その他のバリアントの場合、追加のアクセス許可は必要ありません。 
 
 ## <a name="register-insights-provider"></a>Insights プロバイダーの登録
 
@@ -75,7 +80,7 @@ Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
 Traffic Analytics とフロー ログを無効にするには、次の例を使用します。
 
 ```powershell
-#Disable Traffic Analaytics by removing -EnableTrafficAnalytics property
+#Disable Traffic Analytics by removing -EnableTrafficAnalytics property
 Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 2 -WorkspaceResourceId $workspaceResourceId -WorkspaceGUID $workspaceGUID -WorkspaceLocation $workspaceLocation
 
 #Disable Flow Logging

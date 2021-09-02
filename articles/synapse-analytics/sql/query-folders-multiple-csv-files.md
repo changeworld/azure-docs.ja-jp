@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a91ca96e69ae5408a3232513eea3ba1443c97064
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462629"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253600"
 ---
 # <a name="query-folders-and-multiple-files"></a>クエリ フォルダーと複数のファイル  
 
@@ -26,7 +26,7 @@ ms.locfileid: "96462629"
 
 最初の手順として、クエリを実行する **データベースを作成** します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、この記事のサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
-フォルダー *csv/taxi* を使用してサンプル クエリを実行します。 これには、2016 年 7 月から 2018 年 6 月までの NYC のタクシーのデータ (イエロー タクシーの運行記録) が含まれています。 *csv/taxi* のファイルには、次のパターンを使用して、年月に従って名前が付けられます: yellow_tripdata_<year>-<month>.csv
+フォルダー *csv/taxi* を使用してサンプル クエリを実行します。 これには、2016 年 7 月から 2018 年 6 月までの NYC のタクシーのデータ (イエロー タクシーの運行記録) が含まれています。 *csv/taxi* のファイルには、次のパターンを使用して、年月に従って名前が付けられます: yellow_tripdata_\<year>-\<month>.csv
 
 ## <a name="read-all-files-in-folder"></a>フォルダー内のすべてのファイルを読み取る
 

@@ -1,5 +1,5 @@
 ---
-title: マップでのポイント データのクラスタリング | Microsoft Azure Maps
+title: Web SDK でのポイント データのクラスタリング | Microsoft Azure Maps
 description: マップでポイント データをクラスター化する方法について説明します。 Azure Maps Web SDK を使用してデータをクラスター化し、クラスターのマウス イベントに応答して、クラスター集計を表示する方法を確認してください。
 author: rbrundritt
 ms.author: richbrun
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 70b1ac01c2019b4ce74895b67cb79f5e93226b64
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608359"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091863"
 ---
-# <a name="clustering-point-data"></a>ポイント データのクラスタリング
+# <a name="clustering-point-data-in-the-web-sdk"></a>Web SDK でのポイント データのクラスタリング
 
 多数のデータ ポイントをマップ上に視覚化すると、データ ポイントが互いに重なり合うことがあります。 重なり合うと、マップが読み取れなくなり、使用が困難になる可能性があります。 ポイント データのクラスタリングは、互いに近いポイント データを結合し、単一のクラスター化されたデータ ポイントとしてマップ上に表現するプロセスです。 ユーザーがマップにズーム インすると、クラスターは個々のデータ ポイントに分解します。 大量のデータ ポイントを操作する場合は、クラスタリング プロセスを使用して、ユーザー エクスペリエンスを向上させます。
 

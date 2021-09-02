@@ -7,19 +7,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 6954ce289cb3cf219f8c4024a112411fd60d70e0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/25/2021
+ms.openlocfilehash: f452aa6ababd338ccc86b7c7c40854367ed46e41
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310667"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460626"
 ---
-# <a name="create-and-manage-api-keys-for-authentication-to-azure-cognitive-search"></a>Azure Cognitive Search に対する認証用に API キーを作成して管理する
+# <a name="use-api-keys-for-azure-cognitive-search-authentication"></a>Azure Cognitive Search の認証に API キーを使用する
 
-検索サービスに接続する場合は、対象のサービス用に特別に生成された読み取り専用の API キーがすべての要求に含まれている必要があります。 この API キーは、その検索サービス エンドポイントへの受信アクセスを認証するための唯一のメカニズムであり、すべての要求で必要です。 
+Cognitive Search の主要な認証方法として API キーが使用されています。 インデックスの作成やクエリを実行する要求など、検索サービスへの受信要求の場合、API キーが唯一の認証オプションになります。 一部の送信要求シナリオ、特にインデクサーを含む要求の場合、Azure Active Directory の ID とロールを使用できます。
 
-+ [REST ソリューション](search-get-started-rest.md)では、`api-key` は通常、要求ヘッダーで指定されます
+API キーは、サービスの作成時に生成されます。 要求に有効な API キーを渡すことは、その要求が承認済みクライアントからのものであることの証明と見なされます。 キーには 2 つの種類があります。 "*管理者キー*" は、サービスに対する書き込みアクセス許可を伝達し、システム情報のクエリを実行する権限を付与するものです。 "*クエリ キー*" は、読み取りアクセス許可を伝達し、特定のインデックスのクエリを実行するためにアプリで使用できるものです。 
+
+> [!NOTE]
+> Azure のロールベースのアクセス制御 (RBAC) を使用したデータ プレーン操作の承認は、現在プレビュー段階にあります。 このプレビュー機能を使用すると、API キーを[検索用の Azure ロール](search-security-rbac.md)で補完または置き換えることができます。 
+
+## <a name="using-api-keys-in-search"></a>検索での API キーの使用
+
+検索サービスに接続する場合は、対象のサービス用に特別に生成された API キーがすべての要求に含まれている必要があります。
+
++ [REST ソリューション](search-get-started-rest.md)では、通常、API キーは要求のヘッダーで指定されます
 
 + [.NET ソリューション](search-howto-dotnet-sdk.md)では、キーが多くの場合に構成設定として指定され、[AzureKeyCredential](/dotnet/api/azure.azurekeycredential) として渡されます
 
@@ -89,13 +98,13 @@ API キーとは、要求ごとに検索サービスに渡される、ランダ�
 
 ## <a name="secure-api-keys"></a>API キーをセキュリティ保護する
 
-[ロールに基づいたアクセス許可](search-security-rbac.md)により、キーの削除や読み取りは可能ですが、ユーザー定義のパスワードでキーを置き換えたり、検索操作にアクセスするためのプライマリ認証方法として Active Directory を使用したりすることはできません。 
+[ロールの割り当て](search-security-rbac.md)によって、キーの読み取りと管理を実行できるユーザーが決まります。 次のロールのメンバーは、キーの表示と再生成が可能です: 所有者、共同作成者、[Search Service 共同作成者](../role-based-access-control/built-in-roles.md#search-service-contributor)。 閲覧者ロールは API キーにアクセスできません。
 
-キーのセキュリティは、ポータルまたはリソース マネージャーのインターフェイス (PowerShell またはコマンドライン インターフェイス) でアクセスを制限することによって確保されます。 前述のように、サブスクリプションの管理者はすべての API キーを表示および再生成できます。 用心のために、ロールの割り当てを調べて、管理キーへのアクセス権を持つユーザーを確認してください。
+サブスクリプション管理者はすべての API キーを表示および再生成できます。 用心のために、ロールの割り当てを調べて、管理キーへのアクセス権を持つユーザーを確認してください。
 
-+ サービス ダッシュボードで、 **[アクセス制御 (IAM)]** をクリックし、次に **[ロールの割り当て]** タブをクリックして、サービスのロールの割り当てを表示します。
-
-次のロールのメンバーは、キーの表示と再生成が可能です: 所有者、投稿者、[Search Service の共同作成者](../role-based-access-control/built-in-roles.md#search-service-contributor)
+1. Azure portal で検索サービス ページを開きます。
+1. 左のナビゲーション ペインで、 **[アクセス制御 (IAM)]** を選択し、 **[ロールの割り当て]** タブを選択します。
+1. **[スコープ]** を **[このリソース]** に設定し、サービスのロールの割り当てを表示します。
 
 ## <a name="see-also"></a>関連項目
 

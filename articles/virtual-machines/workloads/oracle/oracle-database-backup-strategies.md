@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 8a1eb1c21663e0294cd384daa0ba644adf78007a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbe0fe6d0dadea6e99b406f2de6e16ed4d667741
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673210"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461540"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Azure Linux VM での Oracle Database のバックアップ戦略
 
@@ -103,7 +103,7 @@ Azure ファイル共有は、Recovery Services コンテナーに対する Azur
 
 #### <a name="azure-files-nfs-v41-preview"></a>Azure Files NFS v4.1 (プレビュー)
 
-Azure ファイル共有は、ネットワーク ファイル システム (NFS) v4.1 プロトコルを使用して Linux ディストリビューションにマウントできます。 プレビュー段階では、サポートされる機能にはいくつかの制限があり、これらは[こちら](../../../storage/files/storage-files-how-to-mount-nfs-shares.md)に記載されています。 
+Azure ファイル共有は、ネットワーク ファイル システム (NFS) v4.1 プロトコルを使用して Linux ディストリビューションにマウントできます。 プレビュー段階では、サポートされる機能にはいくつかの制限があります。 詳細については、[Azure NFS ファイル共有 (プレビュー) のマウント](../../../storage/files/storage-files-how-to-mount-nfs-shares.md)に関するページを参照してください。 
 
 プレビュー段階では、Azure Files NFS v4.1 はまた、次の[リージョン](../../../storage/files/storage-files-how-to-mount-nfs-shares.md)に制限されています。
 - 米国東部 (LRS および ZRS)
@@ -120,7 +120,7 @@ Azure ファイル共有は、SMB カーネル クライアントを使用して
 
 Azure Files SMB は、すべての Azure リージョンで一般提供されており、NFS v3.0 と v4.1 のプロトコルと同じパフォーマンス特性を示しているため、現時点では、Azure Linux VM へのバックアップ ストレージ メディアを提供するための推奨される方法となっています。  
 
-SMB 2.1 と SMB 3.0 という 2 つのバージョンの SMB がサポートされており、後者は転送中の暗号化をサポートしているため後者が推奨されます。 ただし、Linux カーネルのバージョンによって SMB 2.1 と 3.0 のサポートが異なるため、[こちら](../../../storage/files/storage-how-to-use-files-linux.md)の表を確認してご使用のアプリケーションで SMB 3.0 がサポートされていることを確認する必要があります。 
+SMB 2.1 と SMB 3.0 という 2 つのバージョンの SMB がサポートされており、後者は転送中の暗号化をサポートしているため後者が推奨されます。 ただし、Linux カーネルのバージョンによって、SMB 2.1 と 3.0 のサポートに違いがあります。 詳細については、「[SMB Azure ファイル共有を Linux でマウントする](../../../storage/files/storage-how-to-use-files-linux.md)」を参照し、アプリケーションが SMB 3.0 をサポートしていることを確認してください。 
 
 Azure Files はマルチユーザー ファイル共有サービスとして設計されているため、バックアップ ストレージ メディアとしてより適したものにするために調整する必要があるいくつかの特性があります。 キャッシュをオフにすることと、作成されたファイルのユーザーとグループの ID を設定することをお勧めします。
 
@@ -152,5 +152,3 @@ Azure Backup は、[拡張された事前スクリプトと事後スクリプト
 - [Oracle Database の作成のクイックスタート](oracle-database-quick-create.md)
 - [Azure Files への Oracle Database のバックアップ](oracle-database-backup-azure-storage.md)
 - [Azure Backup サービスを使用した Oracle Database のバックアップ](oracle-database-backup-azure-backup.md)
-
-

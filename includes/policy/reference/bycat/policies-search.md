@@ -2,20 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5562b5b22caf39fe60e733140a4c0932adc50f95
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 3dcd09e0651ff30b72974924e7f4444e28f768fd
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388669"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123103625"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Cognitive Search サービスでは、プライベート リンクをサポートする SKU を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa049bf77-880b-470f-ba6d-9f21c530cf83) |Azure Cognitive Search 用のサポートされる SKU を使用すると、Azure Private Link により、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート リンク プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 Search サービスにプライベート エンドポイントをマッピングすると、データ漏えいのリスクが削減されます。 詳細については、[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePrivateLinkSupportedResource_Deny.json) |
 |[Azure Cognitive Search サービスではパブリック ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fee980b6d-0eca-4501-8d54-f6290fd512c3) |パブリック ネットワーク アクセスを無効にすると、パブリック インターネットに Azure Cognitive Search サービスが確実に露出されなくなるのでセキュリティが向上します。 プライベート エンドポイントを作成すると、Search サービスの露出を制限できます。 詳細については、[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePublicNetworkAccessDisabled_Deny.json) |
+|[Azure Cognitive Search サービスではカスタマー マネージド キーを使用して保存データを暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76a56461-9dc0-40f0-82f5-2453283afa2f) |Azure Cognitive Search サービスでカスタマー マネージド キーを使用した保存時の暗号化を有効にすると、保存データの暗号化で使用されるキーをさらに制御できるようになります。 この機能は、多くの場合、キー コンテナーを使用してデータ暗号化キーを管理するための特別なコンプライアンス要件を持つ顧客に適用できます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_CMK_Audit.json) |
 |[Azure Cognitive Search サービスはプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fda3595-9f2b-4592-8675-4231d6fa82fe) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 Private Link プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 プライベート エンドポイントを Azure Cognitive Search にマッピングすると、データ漏えいのリスクが軽減されます。 プライベート リンクの詳細については、[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md) を参照してください。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_PrivateEndpoints_Audit.json) |
 |[パブリック ネットワーク アクセスを無効にするよう Azure Cognitive Search サービスを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9cee519f-d9c1-4fd9-9f79-24ec3449ed30) |Azure Cognitive Search サービスのパブリック ネットワーク アクセスを無効にして、パブリック インターネット経由でアクセスできないようにします。 これにより、データ漏えいのリスクを軽減することができます。 詳細については、[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md) を参照してください。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_PublicNetworkAccessDisabled_Modify.json) |
 |[プライベート DNS ゾーンを使用するよう Azure Cognitive Search サービスを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbc14a67-53e4-4932-abcc-2049c6706009) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンを自分の仮想ネットワークにリンクして、Azure Cognitive Search Service サービスを解決します。 詳細については、[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_PrivateDNSZone_DeployIfNotExists.json) |

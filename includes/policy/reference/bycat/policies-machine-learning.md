@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bc51f7380d698957258b4dce23c5dcea8c18380d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 7543663d732946f94f02dbfa22764b38cfc42521
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605835"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100734"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure Machine Learning ワークスペースは、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |カスタマー マネージド キーを使用して、Azure Machine Learning ワークスペース データの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/azureml-workspaces-cmk](../../../../articles/machine-learning/how-to-create-workspace-template.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
+|[Azure Machine Learning ワークスペースは、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |カスタマー マネージド キーを使用して、Azure Machine Learning ワークスペース データの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/azureml-workspaces-cmk](/azure/machine-learning/how-to-create-workspace-template#deploy-an-encrypted-workspace") をご覧ください。 |Audit、Deny、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 |[Azure Machine Learning ワークスペースではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 Private Link プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 プライベート エンドポイントを Azure Machine Learning ワークスペースにマッピングすると、データ漏えいのリスクが軽減されます。 プライベート リンクの詳細については、[https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link](../../../../articles/machine-learning/how-to-configure-private-link.md) を参照してください。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateEndpoint_Audit.json) |
 |[Azure Machine Learning ワークスペースではユーザー割り当てマネージド ID を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0c7d88-c7de-45b8-ac49-db49e72eaa78) |ユーザー割り当てマネージド ID を使用して、Azure ML ワークスペースと関連付けられているリソース、Azure Container Registry、KeyVault、Storage、および App Insights へのアクセスを管理します。 既定では、関連付けられているリソースにアクセスするために、システムによって割り当てられたマネージド ID が Azure ML ワークスペースで使用されます。 ユーザー割り当てのマネージド ID を使用すると、Azure リソースとして ID を作成し、その ID のライフサイクルを保守することができます。 詳細については、[https://docs.microsoft.com/azure/machine-learning/how-to-use-managed-identities?tabs=python](../../../../articles/machine-learning/how-to-use-managed-identities.md?tabs=python) をご覧ください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_UAIEnabled_Audit.json) |
 |[\[プレビュー\]: 指定された Azure Machine Learning コンピューティングで許可されるモジュール作成者を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c70b02-63dd-11ea-bc55-0242ac130003) |指定された Azure Machine Learning コンピューティングで許可されるモジュール作成者を指定します。ワークスペースで割り当てることができます。 詳細については、[https://aka.ms/amlpolicydoc](../../../../articles/machine-learning/policy-reference.md) を参照してください。 |enforceSetting、無効 |[3.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedModuleAuthors_EnforceSetting.json) |

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203ea5bb372c3afc77eb62508d1c95dc5f00bb4b
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: c5d12c45554897a9acfef1d32a2216d1eb410133
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315725"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459577"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>カスタム承認ワークフローをセルフサービス サインアップに追加する
 
@@ -28,7 +28,9 @@ ms.locfileid: "108315725"
 - 手動レビューをトリガーします。 要求が承認された場合、承認システムは Microsoft Graph を使用してユーザー アカウントをプロビジョニングします。 承認システムは、アカウントが作成されたことをユーザーに通知することもできます。
 
 > [!IMPORTANT]
-> **2021 年の下半期から**、Google の [Web ビュー サインイン サポートが非推奨になります](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
+>
+> - **2021 年 7 月 12 日以降**、Azure AD の B2B のお客様が、カスタムまたは基幹業務アプリケーションのセルフサービス サインアップで使用するために新しい Google の統合をセットアップした場合、認証がシステム Web ビューに移動されるまで、Google ID を使用した認証が機能しなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
+> - **2021 年 9 月 30 日より**、Google は[埋め込みの Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="register-an-application-for-your-approval-system"></a>承認システム用のアプリケーションを登録する
 
@@ -84,7 +86,7 @@ ms.locfileid: "108315725"
 4. **[ユーザー フロー]** を選択し、API コネクタを有効にするユーザー フローを選択します。
 5. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
 
-   - **ID プロバイダーを使用してサインインした後**:承認状態 API コネクタを選択します。たとえば、 _[Check approval status]\(承認状態の確認\)_ を選択します。
+   - **サインアップ中の ID プロバイダーとのフェデレーションの後**: 承認状態 API コネクタ ( _[承認状態の確認]_ など) を選択します。
    - **ユーザーを作成する前**:承認要求 API コネクタを選択します。たとえば、 _[要求の承認]_ を選択します。
 
    ![API をユーザー フローに追加する](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)

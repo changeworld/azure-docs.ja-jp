@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 573868d8dc637afcab1970d0e41ed2ed0830808d
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 191c76c6ec67112df71d8d5525b2c5938627b3d6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538846"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458540"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを使用してモデルをトレーニングする 
 
@@ -31,7 +31,7 @@ Azure Machine Learning データセットにより、[ScriptRunConfig](/python/a
 
 データセットを作成し、それを使用してトレーニングするには、以下が必要です。
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
@@ -126,7 +126,7 @@ run.wait_for_completion(show_output=True)
 * 入力データセットをコンピューティング先にマウントする。
 
 > [!Note]
-> カスタム Docker ベース イメージを使用している場合は、データセットのマウントを機能させるための依存関係として、`apt-get install -y fuse` 経由で fuse をインストールする必要があります。 [カスタム ビルド イメージを構築](how-to-deploy-custom-docker-image.md#build-a-custom-base-image)する方法を確認してください。
+> カスタム Docker ベース イメージを使用している場合は、データセットのマウントを機能させるための依存関係として、`apt-get install -y fuse` 経由で fuse をインストールする必要があります。 [カスタム ビルド イメージを構築](./how-to-deploy-custom-container.md)する方法を確認してください。
 
 ノートブックの例については、[データ入出力を使用してトレーニング実行を構成する方法](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)に関する記事を参照してください。
 
@@ -228,17 +228,14 @@ with open(mounted_input_path, 'r') as f:
 
 任意の形式のファイルをダウンロードしたりマウントしたりすることは、Azure BLOB ストレージ、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットに対してサポートされています。 
 
-データセットを **マウント** する場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 
+データセットを **マウント** する場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 データ サイズがコンピューティング ディスクのサイズを超えると、ダウンロードできません。 このシナリオでは、処理時にスクリプトで使用されるデータ ファイルのみが読み込まれるため、マウントすることをお勧めします。
 
-データセットを **ダウンロード** するとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 
+データセットを **ダウンロード** するとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 データセットによって参照されるファイルのすべてがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。 マルチノードのダウンロードについては、[調整を回避する方法](#troubleshooting)を参照してください。 
 
 > [!NOTE]
 > ダウンロード パス名は、Windows OS の場合は英数字で 255 文字を超えないようにしてください。 Linux OS の場合、ダウンロード パス名は英数字で 4,096 文字を超えないようにしてください。 また、Linux OS の場合、ファイル名 (ダウンロード パス `/path/to/file/{filename}` の最後のセグメント) は英数字で 255 文字を超えないようにしてください。
 
-データセットによって参照されるファイルのすべてがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。 データ サイズがコンピューティング ディスクのサイズを超えると、ダウンロードできません。 このシナリオでは、処理時にスクリプトで使用されるデータ ファイルのみが読み込まれるため、マウントすることをお勧めします。
-
 次のコードを実行すると、`dataset` が `mounted_path` の一時ディレクトリにマウントされます
-
 
 ```python
 import tempfile
@@ -297,6 +294,18 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
   * アウトバウンド [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)規則がなく、`azureml-sdk>=1.12.0` を使用している場合は、`azureml-dataset-runtime` とその依存関係を更新して、特定のマイナー バージョンの最新版にします。または、それを実行で使用している場合は、修正プログラムを含む最新パッチが適用されるように、お使いの環境を再作成します。 
   * `azureml-sdk<1.12.0` を使用している場合は、最新バージョンにアップグレードします。
   * アウトバウンド NSG 規則がある場合は、サービス タグ `AzureResourceMonitor` のすべてのトラフィックを許可するアウトバウンド規則があることを確認します。
+
+**データセットの初期化に失敗しました: ThrottlingException によって StreamAccessException が発生しました**
+
+マルチノード ファイルのダウンロードの場合は、すべてのノードが Azure Storage サービスからファイル データセット内のすべてのファイルをダウンロードしようとする可能性があり、それによって調整エラーが発生します。 調整を回避するには、まず環境変数 `AZUREML_DOWNLOAD_CONCURRENCY` を、CPU コアの数を 8 倍してノードの数で割った値に設定します。 この環境変数の値を設定するには何らかの実験が必要になる可能性があるため、上記のガイダンスは開始点にすぎません。
+
+次の例では、32 個のコアと 4 つのノードを前提にしています。
+
+```python
+from azureml.core.environment import Environment 
+myenv = Environment(name="myenv")
+myenv.environment_variables = {"AZUREML_DOWNLOAD_CONCURRENCY":64}
+```
 
 ### <a name="azurefile-storage"></a>AzureFile ストレージ
 

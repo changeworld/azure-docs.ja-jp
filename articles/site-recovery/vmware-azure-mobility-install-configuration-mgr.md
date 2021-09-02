@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: edab60c800aee772ed95980515e8d381c96a2bb6
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: fc9ba0bc4586983048e9e39f96b3e11d27c06053
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110576709"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253545"
 ---
 # <a name="automate-mobility-service-installation"></a>モビリティ サービスのインストールを自動化する
 
@@ -275,7 +275,7 @@ fi
 Install()
 {
     echo "Perform Installation." >> /tmp/MobSvc/sccm.log
-    ./install -q -d ${INSTALL_DIR} -r MS -v VmWare
+    ./install -q -d ${INSTALL_DIR} -r Agent -v VmWare
     RET_VAL=$?
     echo "Installation Returncode: $RET_VAL" >> /tmp/MobSvc/sccm.log
     if [ $RET_VAL -eq 0 ]; then
