@@ -1,18 +1,18 @@
 ---
 title: アプリケーション ゲートウェイと Azure Firewall を使用してアプリケーションをインターネットに公開する
 description: アプリケーション ゲートウェイと Azure Firewall を使用してアプリケーションをインターネットに公開する方法
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5183fe6560e0276efb3f9db85628a814abfe9e45
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: e87ccabeb2d0e0cd837a835c5ac637bebc68b8b4
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791726"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861956"
 ---
 # <a name="expose-applications-to-the-internet-using-application-gateway-and-azure-firewall"></a>アプリケーション ゲートウェイと Azure Firewall を使用してアプリケーションをインターネットに公開する
 
@@ -24,9 +24,9 @@ ms.locfileid: "110791726"
 
 ## <a name="define-variables"></a>変数の定義
 
-「[Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)](./how-to-deploy-in-azure-virtual-network.md)」の指示に従い、作成したリソース グループと仮想ネットワークに対して変数を定義します。 実際の環境に基づいて値をカスタマイズします。
+「[Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)](./how-to-deploy-in-azure-virtual-network.md)」の指示に従い、作成したリソース グループと仮想ネットワークに対して変数を定義します。 実際の環境に基づいて値をカスタマイズします。  SPRING_APP_PRIVATE_FQDN を定義したら、URI から 'https' を削除します。
 
-```
+```bash
 SUBSCRIPTION='subscription-id'
 RESOURCE_GROUP='my-resource-group'
 LOCATION='eastus'
@@ -36,11 +36,11 @@ APPLICATION_GATEWAY_SUBNET_NAME='app-gw-subnet'
 APPLICATION_GATEWAY_SUBNET_CIDR='10.1.2.0/24'
 ```
 
-## <a name="login-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure CLI にログインし、アクティブなサブスクリプションを選択します。
+Azure CLI にサインインし、アクティブなサブスクリプションを選択します。
 
-```
+```azurecli
 az login
 az account set --subscription ${SUBSCRIPTION}
 ```
@@ -49,7 +49,7 @@ az account set --subscription ${SUBSCRIPTION}
 
 作成する **Azure Application Gateway** は、Azure Spring Cloud サービス インスタンスと同じ仮想ネットワーク、または Azure Spring Cloud サービス インスタンスとピアリングされた仮想ネットワークに参加します。 最初に、`az network vnet subnet create` を使用して、仮想ネットワーク内にアプリケーション ゲートウェイ用の新しいサブネットを作成し、さらに `az network public-ip create` を使用して、アプリケーション ゲートウェイのフロントエンドとしてパブリック IP アドレスを作成します。
 
-```
+```azurecli
 APPLICATION_GATEWAY_PUBLIC_IP_NAME='app-gw-public-ip'
 az network vnet subnet create \
     --name ${APPLICATION_GATEWAY_SUBNET_NAME} \
@@ -68,7 +68,7 @@ az network public-ip create \
 
 `az network application-gateway create` を使用してアプリケーション ゲートウェイを作成し、バックエンド プール内のサーバーとしてアプリケーションのプライベート完全修飾ドメイン名 (FQDN) を指定します。 次に、バックエンド プールのホスト名を使用するように、`az network application-gateway http-settings update` を使用して HTTP 設定を更新します。
 
-```
+```azurecli
 APPLICATION_GATEWAY_NAME='my-app-gw'
 APPLICATION_GATEWAY_PROBE_NAME='my-probe'
 APPLICATION_GATEWAY_REWRITE_SET_NAME='my-rewrite-set'
@@ -119,7 +119,7 @@ az network application-gateway rule update \
 
 Azure によってアプリケーション ゲートウェイが作成されるのに最大 30 分かかる場合があります。 作成後、`az network application-gateway show-backend-health` を使用してバックエンドの正常性を確認します。  これにより、アプリケーション ゲートウェイがプライベート FQDN を介してアプリケーションに到達するかどうかが検証されます。
 
-```
+```azurecli
 az network application-gateway show-backend-health \
     --name ${APPLICATION_GATEWAY_NAME} \
     --resource-group ${RESOURCE_GROUP}
@@ -127,7 +127,7 @@ az network application-gateway show-backend-health \
 
 出力により、バックエンド プールが正常な状態であることが示されます。
 
-```
+```output
 {
   "backendAddressPools": [
     {
@@ -152,7 +152,7 @@ az network application-gateway show-backend-health \
 
 `az network public-ip show` を使用して、アプリケーション ゲートウェイのパブリック IP アドレスを取得します。
 
-```
+```azurecli
 az network public-ip show \
     --resource-group ${RESOURCE_GROUP} \
     --name ${APPLICATION_GATEWAY_PUBLIC_IP_NAME} \
@@ -162,7 +162,7 @@ az network public-ip show \
 
 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
-  ![パブリック IP のアプリ](media/spring-cloud-expose-apps-gateway-az-firewall/app-gateway-public-ip.png)
+![パブリック IP のアプリ](media/spring-cloud-expose-apps-gateway-az-firewall/app-gateway-public-ip.png)
 
 ## <a name="see-also"></a>関連項目
 

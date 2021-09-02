@@ -3,12 +3,15 @@ title: Azure VMware Solution の制限
 description: Azure VMware Solution の制限。
 ms.topic: include
 ms.date: 03/24/2021
-ms.openlocfilehash: ce0f346c66c7eb982f0891b82e710affdcc956a8
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 02840f5d74a1490b0af71933f795385b70467d7b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109719008"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014615"
 ---
 <!-- Used in /azure/azure-resource-manager/management/azure-subscription-service-limits.md and concepts-networking.md -->
 
@@ -17,9 +20,9 @@ Azure VMware Solution の上限を次の表に示します。
 | **リソース** | **制限** |
 | :-- | :-- |
 | プライベート クラウドあたりのクラスター数 | 12 |
-| クラスターごとのノードの最小数 | 3 |
-| クラスターごとのノードの最大数 | 16 |
-| プライベート クラウドあたりのノード数 | 96 |
+| クラスターごとのホストの最小数 | 3 |
+| クラスターごとのホストの最大数 | 16 |
+| プライベート クラウドあたりのホスト数 | 96 |
 | プライベート クラウドあたりの vCenter 数 | 1  |
 | HCX サイトのペアリング数 | Advanced エディションの場合は 3、Enterprise エディションの場合は 10 |
 | AVS ExpressRoute にリンクされるプライベート クラウドの最大数 | 4<br />実際にリンクされるプライベート クラウドの最大数は、使用される仮想ネットワーク ゲートウェイによって決まります。  詳細については、「[ExpressRoute の仮想ネットワーク ゲートウェイについて](../../expressroute/expressroute-about-virtual-network-gateways.md)」を参照してください | 

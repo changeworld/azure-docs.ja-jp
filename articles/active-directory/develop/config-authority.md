@@ -13,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af729767467d2dc950fb7a559fec4d0a81d07cab
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96169445"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029185"
 ---
-# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>ハウツー: さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
+# <a name="configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
 
 この記事では、Azure Active Directory (Azure AD)、企業-消費者間 (B2C)、ソブリン クラウド、ゲスト ユーザーなどのさまざまな機関向けに、iOS および macOS 用の Microsoft Authentication Library アプリを構成する方法について説明します。  この記事では、一般に、ID プロバイダーとしての機関を考えてみましょう。
 

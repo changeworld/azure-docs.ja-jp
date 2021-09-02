@@ -2,19 +2,18 @@
 title: DPM および MABS の Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、DPM および MABS からオフラインで初期バックアップ データをシード処理することができます。
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.openlocfilehash: 568baf7351555511b58dba59bec404688a646126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96752551"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730293"
 ---
-# <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM および MABS の Azure Data Box を使用したオフライン シード処理 (プレビュー)
+# <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs"></a>DPM および MABS の Azure Data Box を使用したオフライン シード処理
 
 > [!NOTE]
-> この機能は、Data Protection Manager (DPM) 2019 UR2 以降に適用されます。<br><br>
-> この機能は現在、Microsoft Azure Backup Server (MABS) でプレビュー段階にあります。 MABS でのオフライン シード処理に Azure Data Box を使用することに関心をお持ちの場合は、[systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) にご連絡ください。
+> この機能は、Data Protection Manager (DPM) 2019 UR2 (以降) と MABS v3 UR2 (以降) に適用されます。
 
 この記事では、Azure Data Box を使用して、DPM および MABS から Azure Recovery Services コンテナーに初期バックアップ データをオフラインでシード処理する方法について説明します。
 
@@ -215,11 +214,17 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 
 エラーが確実に上記の[問題](#issue)が原因で発生していることを確認するには、次のいずれかの手順を行います。
 
-#### <a name="step-1"></a>ステップ 1
+#### <a name="step-1"></a>手順 1
 
-オフライン バックアップの構成時に、DPM または MABS コンソールに次のエラー メッセージが表示されるかどうかを確認します。
+オフライン バックアップの構成時に、DPM または MABS コンソールに次のエラー メッセージのいずれかが表示されるかどうかを確認します。
 
-![Azure Recovery Services エージェント](./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png)
+**このサーバーの認証情報を Azure にアップロードできなかったため、現在の Azure アカウントのオフライン バックアップ ポリシーを作成できません。(ID: 100242)**
+
+:::image type="content" source="./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png" alt-text="Azure Recovery Services エージェント。":::
+
+**Import ジョブの状態を調べるクエリを実行し、Recovery Services コンテナーにバックアップ データを移行するために必要な Azure に対するサービス呼び出しを行えません。(ID:100230)**
+
+:::image type="content" source="./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent-error-screen.png" alt-text="Azure Recovery Services エージェントのエラー画面のスクリーンショット。":::
 
 #### <a name="step-2"></a>手順 2.
 

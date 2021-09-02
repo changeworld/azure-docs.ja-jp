@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 210be7199f5f28773c2dbbf913e4914918e7eeeb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/09/2021
+ms.openlocfilehash: 7c4a2958f8629b224cecf1e92fd0efcff6b1fdd6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087924"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182181"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -23,7 +23,9 @@ ms.locfileid: "110087924"
 
 > [!IMPORTANT]
 > 記載されている機能は、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
-> 
+>
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 > [!TIP]
 > Microsoft の脅威ハンティング チームは、クエリ、プレイブック、ブック、およびノートブックを [Azure Sentinel コミュニティ](https://github.com/Azure/Azure-Sentinel) に投稿します。これには、ユーザーのチームが適応して使用できる特定の[ハンティング クエリ](https://github.com/Azure/Azure-Sentinel)などが含まれます。
@@ -31,8 +33,222 @@ ms.locfileid: "110087924"
 > ユーザーも投稿することができます。 [Azure Sentinel Threat Hunters GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/wiki)にぜひご参加ください。
 >
 
+## <a name="august-2021"></a>2021 年 8 月
+
+- [高度なインシデント検索 (パブリック プレビュー)](#advanced-incident-search-public-preview)
+- [ランサムウェアの Fusion 検出 (パブリック プレビュー)](#fusion-detection-for-ransomware-public-preview)
+- [UEBA データ用のウォッチリスト テンプレート](#watchlist-templates-for-ueba-data-public-preview)
+- [ファイル イベントの正規化スキーマ (パブリック プレビュー)](#file-event-normalization-schema-public-preview)
+- [ドキュメントの新事項: ベスト プラクティス ガイダンス](#new-in-docs-best-practice-guidance)
+
+### <a name="advanced-incident-search-public-preview"></a>高度なインシデント検索 (パブリック プレビュー)
+
+既定では、インシデントの検索は、**インシデント ID**、**タイトル**、**タグ**、**所有者**、および **製品名** の値に対してのみ実行されます。 Azure Sentinel では、アラートの詳細、説明、エンティティ、戦術など、より多くのデータを検索するための[高度な検索オプション](investigate-cases.md#search-for-incidents)が提供されるようになりました。
+
+次に例を示します。
+
+:::image type="content" source="media/tutorial-investigate-cases/advanced-search.png" alt-text="[インシデント] ページの高度な検索オプションのスクリーンショット。":::
+
+詳細については、「[インシデントの検索](investigate-cases.md#search-for-incidents)」を参照してください。
+
+### <a name="fusion-detection-for-ransomware-public-preview"></a>ランサムウェアの Fusion 検出 (パブリック プレビュー)
+
+Azure Sentinel では、ランサムウェア アクティビティについて新しい Fusion 検出が提供されて、**ランサムウェア アクティビティ検出に関連する可能性のある複数のアラート** というタイトルのインシデントが生成されるようになりました。
+
+アラートがランサムウェア アクティビティに関連付けられている可能性があり、これらが特定の期間に発生し、攻撃の実行および防御回避の段階に関連付けられているときに、インシデントが生成されます。 インシデントに示されているアラートを使用して、攻撃者がホストまたはデバイスに侵入し、検出を回避するために使用する可能性がある手法を分析します。
+
+サポートされているデータ コネクタとして、以下があります。
+
+- [Azure Defender (Azure Security Center)](connect-azure-security-center.md)
+- [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md)
+- [Microsoft Defender for Identity](connect-azure-atp.md)
+- [Microsoft Cloud App Security](connect-cloud-app-security.md)
+- [Azure Sentinel のスケジュールされた分析ルール](detect-threats-built-in.md#scheduled)
+
+詳細については、「[ランサムウェア アクティビティ検出に関連する可能性のある複数のアラート](fusion.md#multiple-alerts-possibly-related-to-ransomware-activity-detected-public-preview)」を参照してください。
+
+### <a name="watchlist-templates-for-ueba-data-public-preview"></a>UEBA データ用のウォッチリスト テンプレート (パブリックプレビュー)
+
+Azure Sentinel で提供されるようになった UEBA データ用の組み込みのウォッチリスト テンプレートは、環境に合わせてカスタマイズし、調査中に使用することができます。
+
+UEBA ウォッチリストにデータが入力されると、そのデータを分析ルールに関連付けて、それをエンティティ ページや調査グラフに洞察として表示したり、カスタム使用を作成して VIP や機密性の高いユーザーを追跡したりすることができます。
+
+ウォッチリスト テンプレートの現在の内容を以下に示します。
+
+- **VIP ユーザー**。 組織で大きな影響値を持つ従業員のユーザー アカウントの一覧。
+- **退職した従業員**。 退職した、または退職しようとしている従業員のユーザー アカウントの一覧。
+- **サービス アカウント**。 サービス アカウントとその所有者の一覧。
+- **ID 相関関係**。 同じ人物の所属下にある、関連するユーザー アカウントの一覧。
+- **価値の高い資産**。 組織の中で重要な価値を持つデバイス、リソース、または他の資産の一覧。
+- **ネットワーク マッピング**。 IP サブネットとそれぞれの組織コンテキストの一覧。
+
+詳細については、[テンプレートを使用して新しいウォッチリストを作成する](watchlists.md#create-a-new-watchlist-using-a-template-public-preview)とに[組み込みウォッチリスト スキーマ](watchlist-schemas.md)に関するページをご覧ください。
+
+
+
+### <a name="file-event-normalization-schema-public-preview"></a>ファイル イベントの正規化スキーマ (パブリック プレビュー)
+
+Azure Sentinel Information Model (ASIM) でサポートされるようになったファイル イベント正規化スキーマは、ファイルやドキュメントの作成、変更、削除などのファイルのアクティビティを記述するために使用されます。 ファイル イベントは、オペレーティング システム、Azure Files などのファイル ストレージ システム、Microsoft SharePoint などのドキュメント管理システムによって報告されます。
+
+詳細については、次を参照してください。
+
+- [Azure Sentinel ファイル イベント正規化スキーマ リファレンス (パブリック プレビュー)](file-event-normalization-schema.md)
+- [正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)
+
+
+### <a name="new-in-docs-best-practice-guidance"></a>ドキュメントの新事項: ベスト プラクティス ガイダンス
+
+お客様やサポート チームからの多数の要求に応じて、一連のベストプラクティス ガイダンスを当社のドキュメントに追加しました。
+
+詳細については、次を参照してください。
+
+- [Azure Sentinel をデプロイするための前提条件](prerequisites.md)
+- [Azure Sentinel のベスト プラクティス](best-practices.md)
+- [Azure Sentinel ワークスペース アーキテクチャのベスト プラクティス](best-practices-workspace-architecture.md)
+- [Azure Sentinel ワークスペース アーキテクチャを設計する](design-your-workspace-architecture.md)
+- [Azure Sentinel のサンプル ワークスペースの設計](sample-workspace-designs.md)
+- [データ収集のベスト プラクティス](best-practices-data.md)
+
+> [!TIP]
+> ドキュメント全体で追加されたガイダンスについては、関連する概念と方法に関する記事を参照してください。 詳細については、「[その他のベスト プラクティス リファレンス](best-practices.md#additional-best-practice-references)」を参照してください。
+>
+
+## <a name="july-2021"></a>2021 年 7 月
+
+- [Microsoft 脅威インテリジェンス照合分析 (パブリック プレビュー)](#microsoft-threat-intelligence-matching-analytics-public-preview)
+- [Azure Sentinel の情報テーブルで Azure AD データを使用する (パブリック プレビュー)](#use-azure-ad-data-with-azure-sentinels-identityinfo-table-public-preview)
+- [API を介した地理位置情報データを使用したエンティティの強化 (パブリック プレビュー)](#enrich-entities-with-geolocation-data-via-api-public-preview)
+- [ADX クロスリソース クエリのサポート (パブリック プレビュー)](#support-for-adx-cross-resource-queries-public-preview)
+- [ウォッチリストは一般提供中です](#watchlists-are-in-general-availability)
+- [データ レジデンシーをより多くの地域でサポート](#support-for-data-residency-in-more-geos)
+- [Azure Defender コネクタでの双方向同期 (パブリック プレビュー)](#bidirectional-sync-in-azure-defender-connector-public-preview)
+
+
+### <a name="microsoft-threat-intelligence-matching-analytics-public-preview"></a>Microsoft 脅威インテリジェンス照合分析 (パブリック プレビュー)
+
+Azure Sentinel では、Microsoft が生成した脅威インテリジェンス データをログと照合する、組み込みの **Microsoft 脅威インテリジェンス照合分析** ルールが提供されるようになりました。 このルールで生成される忠実度の高いアラートとインシデントには、適切な重大度が、検出されたログのコンテキストに基づいて付けられています。 一致が検出されると、インジケーターは Azure Sentinel 脅威インテリジェンス リポジトリにも発行されます。
+
+**Microsoft 脅威インテリジェンス照合分析** ルールは、現在、次のログ ソースに対するドメイン インジケーターと一致しています。
+
+- [CEF](connect-common-event-format.md)
+- [DNS](connect-dns.md)
+- [Syslog](connect-syslog.md)
+
+詳細については、「[照合分析を使用した脅威の検出 (パブリックプレビュー)](work-with-threat-indicators.md#detect-threats-using-matching-analytics-public-preview)」を参照してください。
+
+### <a name="use-azure-ad-data-with-azure-sentinels-identityinfo-table-public-preview"></a>Azure Sentinel の情報テーブルで Azure AD データを使用する (パブリック プレビュー)
+
+攻撃者は多くの場合、組織独自のユーザーとサービス アカウントを使用するため、アナリストにとっては、ユーザー ID や特権など、それらのユーザー アカウントに関するデータが調査中に重要です。
+
+これで、Azure Sentinel ワークスペースで [UEBA を有効に](enable-entity-behavior-analytics.md)すると、Azure AD データも Log Analytics の新しい **IdentityInfo** テーブルに同期されるようになりました。 Azure AD と **IdentifyInfo** テーブルの間の同期化によって、ユーザー メタデータ、グループ情報、各ユーザーに割り当てられた Azure AD ロールなど、ユーザー プロファイル データのスナップショットが作成されます。
+
+調査中には、また、組織の分析ルールを微調整して偽陽性を減らすために、**IdentityInfo** テーブルを使用します。
+
+詳細については、『UEBA エンリッチメント リファレンス』の「[IdentityInfo テーブル](ueba-enrichments.md#identityinfo-table-public-preview)」と「[UEBA データを使用して擬陽性を分析する](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)」を参照してください。
+
+### <a name="enrich-entities-with-geolocation-data-via-api-public-preview"></a>API を介した地理位置情報データを使用したエンティティの強化 (パブリック プレビュー)
+
+Azure Sentinel では、地理位置情報を使用してデータを強化する API が提供されるようになりました。 その地理位置情報データを使用して、セキュリティ インシデントの分析と調査を行うことができます。
+
+詳細については、「[REST API を介して地理位置情報データで Azure Sentinel のエンティティを強化する (パブリック プレビュー)](geolocation-data-api.md)」と「[Azure Sentinel でエンティティを使用してデータを分類および分析する](entities-in-azure-sentinel.md)」を参照してください。
+
+
+### <a name="support-for-adx-cross-resource-queries-public-preview"></a>ADX クロスリソース クエリのサポート (パブリック プレビュー)
+
+Azure Sentinel での検索エクスペリエンスでは、[ADX クロスリソース クエリ](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md#cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer)がサポートされるようになりました。
+ 
+Log Analytics は Azure Sentinel で分析を実行するためのプライマリ データ ストレージの場所ですが、コスト、保有期間、または他の要因のためにデータを格納する際に ADX が必要になる場合があります。 この機能により、お客様は、より広範なデータセットを探して、[Azure Sentinel 検索エクスペリエンス](hunting.md)(検索クエリ、[ライブストリーム](livestream.md)、Log Analytics 検索ページなど) で結果を確認できます。
+
+ADX クラスターに格納されているデータのクエリを実行するには、adx () 関数を使用して ADX クラスター、データベース名、および目的のテーブルを指定します。 それから他のテーブルのように、出力に対してクエリを実行できます。 詳細について上でリンクしたページを参照してください。
+
+
+
+
+### <a name="watchlists-are-in-general-availability"></a>ウォッチリストは一般提供中です
+
+[ウォッチリスト](watchlists.md)機能は現在一般提供されています。 ウォッチリストを使用してアラートをビジネス データで強化し、アクセス イベントを照合するための許可リストやブロック リストを作成し、脅威を調査してアラートの疲労を軽減しましょう。
+
+### <a name="support-for-data-residency-in-more-geos"></a>データ レジデンシーをより多くの地域でサポート
+
+Azure Sentinel では、次の追加地域で完全データ レジデンシーがサポートされるようになりました。
+
+ブラジル、ノルウェー、南アフリカ、韓国、ドイツ、アラブ首長国連邦 (UAE)、スイス。
+
+データ レジデンシーが[サポートされている地域の完全な一覧](quickstart-onboard.md#geographical-availability-and-data-residency)を参照してください。
+
+### <a name="bidirectional-sync-in-azure-defender-connector-public-preview"></a>Azure Defender コネクタでの双方向同期 (パブリック プレビュー)
+
+Azure Defender コネクタでは現在、アラートの状態の Defender と Azure Sentinel の間の双方向同期がサポートされています。 Defender アラートを含む Sentinel インシデントを閉じると、アラートは Defender ポータルでも自動的に閉じます。
+
+この「[更新された Azure Defender コネクタの詳細](connect-azure-security-center.md)」を参照してください。
+
+## <a name="june-2021"></a>2021 年 6 月
+
+- [正規化と Azure Sentinel Information Model のアップグレード](#upgrades-for-normalization-and-the-azure-sentinel-information-model)
+- [更新されたサービス間コネクタ](#updated-service-to-service-connectors)
+- [分析ルールのエクスポートとインポート (パブリック プレビュー)](#export-and-import-analytics-rules-public-preview)
+- [アラート エンリッチメント: アラートの詳細 (パブリック プレビュー)](#alert-enrichment-alert-details-public-preview)
+- [プレイブックに関するその他のヘルプ](#more-help-for-playbooks)
+- [新しいドキュメントの再編成](#new-documentation-reorganization)
+
+### <a name="upgrades-for-normalization-and-the-azure-sentinel-information-model"></a>正規化と Azure Sentinel Information Model のアップグレード
+
+Azure Sentinel Information Model を使用すると、ソースに依存しないコンテンツの使用と作成ができます。これにより、Azure Sentinel ワークスペース内のデータの分析が簡単になります。
+
+今月の更新では、正規化に関するドキュメントを強化し、新たなレベルの詳細と完全 DNS、プロセス イベント、認証正規化スキーマを提供しています。
+
+詳細については、次を参照してください。
+
+- [正規化と Azure Sentinel Information Model (ASIM)](normalization.md)(更新版)
+- [Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md) (新登場)
+- [Azure Sentinel データ正規化スキーマ リファレンス](normalization-schema.md)
+- [Azure Sentinel DNS 正規化スキーマ リファレンス (パブリック プレビュー)](dns-normalization-schema.md) (新登場)
+- [Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)](process-events-normalization-schema.md)(新登場)
+- [Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)](registry-event-normalization-schema.md)(新登場)
+
+
+### <a name="updated-service-to-service-connectors"></a>更新されたサービス間コネクタ
+
+最もよく使用されている 2 つのコネクタが、メジャー アップグレードされました。
+
+- [Windows セキュリティ イベント コネクタ (パブリック プレビュー)](connect-windows-security-events.md)は、新しい Azure Monitor エージェント (AMA) に基づくため、取り込むデータを選択する柔軟性がはるかに高く、最小限のコストで最大限の可視性を実現できます。
+
+- 現在、[Azure アクティビティ ログ コネクタ](connect-azure-activity.md)は診断設定パイプラインに基づいており、より完全なデータが提供され、取り込み遅延が大幅に減り、パフォーマンスと信頼性が向上します。
+
+アップグレードは自動で行なわれません。 これらのコネクタのユーザーに、新しいバージョンを有効にしていただきます。
+
+### <a name="export-and-import-analytics-rules-public-preview"></a>分析ルールのエクスポートとインポート (パブリック プレビュー)
+
+Azure Sentinel デプロイをコードとして管理および制御する一環として、分析ルールを JSON 形式の Azure Resource Manager (ARM) テンプレート ファイルへエクスポートし、それらのルールを同様のファイルにインポートできます。 **Scheduled** だけでなく、すべての種類の[分析ルール](detect-threats-built-in.md)を ARM テンプレートにエクスポートできます。 テンプレート ファイルにはルールの情報が、そのクエリから、それに割り当てられた MITRE ATT&CK 戦術まで、すべて含まれます。
+
+詳細については、「[ARM テンプレート間で分析ルールをエクスポートおよびインポートします](import-export-analytics-rules.md)」を参照してください。
+
+### <a name="alert-enrichment-alert-details-public-preview"></a>アラート エンリッチメント: アラートの詳細 (パブリック プレビュー)
+
+エンティティ マッピングとカスタム詳細を使用してアラートの内容を強化するだけでなく、アラートが提示および表示される方法 (拡張機能、インシデント別) を、それぞれのコンテンツに基づいてカスタマイズできるようになりました。 他のアラート エンリッチメント機能と同様に、これは[分析ルール ウィザード](detect-threats-custom.md)で構成できます。
+
+詳細については、「[Azure Sentinel でアラートの詳細をカスタマイズする](customize-alert-details.md)」を参照してください。
+
+
+### <a name="more-help-for-playbooks"></a>プレイブックに関するその他のヘルプ
+
+2 つの新しいドキュメントが、プレイブックの作成や操作を始めたり、より快適に行うのに役立ちます。
+- [Azure Sentinel に対するプレイブックの認証](authenticate-playbooks-to-sentinel.md)は、Logic Apps ベースのプレイブックが Azure Sentinel に接続して情報にアクセスできるさまざまな認証方法と、それぞれを使用する適切な場合を理解するのに役立ちます。
+- [プレイブックでトリガーとアクションを使用する](playbook-triggers-actions.md)では、**インシデント トリガー** と **アラート トリガー** の違いと、いつ使用するのかについて説明し、[カスタムの詳細](playbook-triggers-actions.md#work-with-custom-details)の情報にアクセスする方法など、インシデントに対応してプレイブックで実行できるさまざまなアクションの一部を示しています。
+
+プレイブック ドキュメントでは、マルチテナント MSSP シナリオにも明示的に対応しています。
+
+### <a name="new-documentation-reorganization"></a>新しいドキュメントの再編成
+
+今月は [Azure Sentinel ドキュメント](index.yml)を再編成し、よくある顧客体験を取り上げた直感的なカテゴリに再構成しました。 フィルター処理されたドキュメント検索と更新されたランディング ページを使用して、Azure Sentinel ドキュメントを検索してください。
+
+:::image type="content" source="media/whats-new/new-docs.png" alt-text="新しい Azure Sentinel ドキュメントの再編成。" lightbox="media/whats-new/new-docs.png":::
+
+
 ## <a name="may-2021"></a>2021 年 5 月
 
+- [Azure Sentinel PowerShell モジュール](#azure-sentinel-powershell-module)
+- [アラート グループの機能強化](#alert-grouping-enhancements)
 - [Azure Sentinel のソリューション (パブリック プレビュー)](#azure-sentinel-solutions-public-preview)
 - [Continuous Threat Monitoring for SAP ソリューション (パブリック プレビュー)](#continuous-threat-monitoring-for-sap-solution-public-preview)
 - [脅威インテリジェンスの統合 (パブリック プレビュー)](#threat-intelligence-integrations-public-preview)
@@ -43,6 +259,27 @@ ms.locfileid: "110087924"
 - [[Hunting]\(ハンティング\) ダッシュボード (パブリック プレビュー)](#hunting-dashboard-public-preview)
 - [インシデント チーム - Microsoft Teams での共同作業 (パブリック プレビュー)](#azure-sentinel-incident-team---collaborate-in-microsoft-teams-public-preview)
 - [ゼロ トラスト (TIC3.0) ブック](#zero-trust-tic30-workbook)
+
+
+### <a name="azure-sentinel-powershell-module"></a>Azure Sentinel PowerShell モジュール
+
+毎日の運用タスクを自動化するための Azure Sentinel PowerShell モジュール GA として正式リリースされました。
+
+ダウンロードはこちらから: [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.SecurityInsights/)。
+
+詳細については、PowerShell のドキュメントをご覧ください: [Az.SecurityInsights](/powershell/module/az.securityinsights/)
+
+### <a name="alert-grouping-enhancements"></a>アラート グループの機能強化
+
+分析ルールを構成してアラートを、特定のエンティティの種類に一致したときだけでなく、特定のアラート名、重大度、または構成されたエンティティの他のカスタム詳細と一致したときにも、1 つのインシデントにグループ化できるようになりました。 
+
+分析ルール ウィザードの **[インシデントの設定]** タブで、アラートのグループ化を有効にし、 **[Group alerts into a single incident if the selected entity types and details match]\(選択したエンティティの種類と詳細が一致する場合にアラートを 1 つのインシデントにグループ化する\)** オプションを選択します。 
+
+次に、エンティティの種類と、照合させたい関連する詳細を選択します。
+
+:::image type="content" source="media/whats-new/alert-grouping-details.png" alt-text="エンティティの詳細を照合してアラートをグループ化します。":::
+
+詳細については、「[アラートのグループ化](detect-threats-custom.md#alert-grouping)」を参照してください。
 
 ### <a name="azure-sentinel-solutions-public-preview"></a>Azure Sentinel のソリューション (パブリック プレビュー)
 
@@ -62,7 +299,7 @@ SAP ログを Azure Sentinel に取り込むには、お使いの SAP 環境に 
 
 ### <a name="threat-intelligence-integrations-public-preview"></a>脅威インテリジェンスの統合 (パブリック プレビュー)
 
-既知の脅威を検出して優先順位を付けるセキュリティ アナリストの能力を高めるために、Azure Sentinel には、[脅威インテリジェンスのフィードを使用](import-threat-intelligence.md)する方法がいくつか用意されています。
+既知の脅威を検出して優先順位を付けるセキュリティ アナリストの能力を高めるために、Azure Sentinel には、[脅威インテリジェンスのフィードを使用](./understand-threat-intelligence.md)する方法がいくつか用意されています。
 
 新たに提供されている数多くの統合脅威インテリジェンス プラットフォーム (TIP、Threat Intelligence Platform) 製品の 1 つを使用し、TAXII サーバーに接続して STIX に適合したあらゆる脅威インテリジェンス ソースを活用できるほか、[Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) と直接やり取りするあらゆるカスタム ソリューションを利用できるようになりました。
 
@@ -72,7 +309,7 @@ SAP ログを Azure Sentinel に取り込むには、お使いの SAP 環境に 
 
 ### <a name="fusion-over-scheduled-alerts-public-preview"></a>スケジュールされたアラートに対する Fusion (パブリック プレビュー)
 
-機械学習の相関分析エンジンである **Fusion** でマルチステージ攻撃を検出できるようになりました。他のデータ ソースからインポートされたアラートに加え、一連の[スケジュール化された分析ルール](tutorial-detect-threats-custom.md)から生成されるアラートが、その相関分析の中で使用されます。
+機械学習の相関分析エンジンである **Fusion** でマルチステージ攻撃を検出できるようになりました。他のデータ ソースからインポートされたアラートに加え、一連の [スケジュール化された分析ルール](detect-threats-custom.md)から生成されるアラートが、その相関分析の中で使用されます。
 
 詳細については、「[Azure Sentinel の高度なマルチステージ攻撃の検出](fusion.md)」を参照してください。
 
@@ -134,7 +371,7 @@ Microsoft Teams では、最も妥当なデータをチームに提供できる�
 - ナビゲーション用に選択可能な GUI ボタンを備えた、TIC 3.0 セキュリティ機能と連携する 75 を超えるコントロール カードを使用できます。
 - 自動化、人工知能、機械学習、クエリ/アラート生成、視覚化、カスタマイズされたレコメンデーション、および各ドキュメントの参照によって、スタッフ配置が強化されるように設計されています。
 
-詳細については、「[チュートリアル: データの視覚化と監視](tutorial-monitor-your-data.md)」を参照してください。
+詳細については、「[データの視覚化と監視](monitor-your-data.md)」を参照してください。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -161,7 +398,7 @@ Azure Policy を使用すると、Azure Sentinel に取り込むログを持つ�
 
 :::image type="content" source="media/tutorial-investigate-cases/incident-timeline.png" alt-text="[インシデント] の [タイムライン] タブ":::
 
-詳細については、「[チュートリアル:Azure Sentinel でインシデントを調査する](tutorial-investigate-cases.md)」を参照してください。
+詳細については、「[チュートリアル:Azure Sentinel でインシデントを調査する](investigate-cases.md)」を参照してください。
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -186,11 +423,11 @@ Azure Sentinel ユーザーは、新しい [Azure Monitor 機能](https://techco
 
     また、:::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false"::: **[更新]** ボタンを選択してブックを手動で更新した場合も、間隔が再起動されます。
 
-詳細については、「[チュートリアル: データの視覚化と監視](tutorial-monitor-your-data.md)」と [Azure Monitor のドキュメント](../azure-monitor/visualize/workbooks-overview.md)を参照してください。
+詳細については、「[ データの視覚化と監視](monitor-your-data.md)」と [Azure Monitor のドキュメント](../azure-monitor/visualize/workbooks-overview.md)を参照してください。
 
 ### <a name="new-detections-for-azure-firewall"></a>Azure Firewall の新しい検出
 
-Azure Sentinel の[分析](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats)領域に、すぐに使用できる Azure Firewall のいくつかの検出が追加されました。 これらの新しい検出機能により、既知の IOC に関連するインターネット ドメイン名または IP アドレスに対して内部ネットワーク上のコンピューターがクエリを実行したり接続したりすると、検出ルール クエリで定義されているように、セキュリティ チームはアラートを受け取ることができます。
+Azure Sentinel の[分析](./understand-threat-intelligence.md)領域に、すぐに使用できる Azure Firewall のいくつかの検出が追加されました。 これらの新しい検出機能により、既知の IOC に関連するインターネット ドメイン名または IP アドレスに対して内部ネットワーク上のコンピューターがクエリを実行したり接続したりすると、検出ルール クエリで定義されているように、セキュリティ チームはアラートを受け取ることができます。
 
 新しい検出には次のものが含まれます。
 
@@ -240,12 +477,12 @@ Azure Sentinel ブックを印刷できるようになりました。これに�
 
 :::image type="content" source="media/whats-new/print-workbook.png" alt-text="ブックを印刷するか、PDF として保存します。":::
 
-詳細については、「[チュートリアル: データの視覚化と監視](tutorial-monitor-your-data.md)」を参照してください。
+詳細については、「[データの視覚化と監視](monitor-your-data.md)」を参照してください。
 
 ### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>インシデント フィルターと並べ替えの設定がセッションに保存されるようになりました (パブリック プレビュー)
 
 製品の他の領域に移動している間も、インシデントのフィルターと並べ替えが Azure Sentinel セッション全体にわたって保存されるようになりました。
-まだ同じセッション内にいる限り、Azure Sentinel の[インシデント](tutorial-investigate-cases.md)領域に戻ると、そこから離れたときとまったく同じ状態でフィルターと並べ替えが表示されます。
+まだ同じセッション内にいる限り、Azure Sentinel の[インシデント](investigate-cases.md)領域に戻ると、そこから離れたときとまったく同じ状態でフィルターと並べ替えが表示されます。
 
 > [!NOTE]
 > Azure Sentinel を終了するか、ブラウザーを更新した後は、インシデントのフィルターと並べ替えは保存されません。
@@ -271,222 +508,6 @@ Azure Policy ベースのコネクタを次の Azure サービスで使用でき
 
 お客様は、引き続き特定のインスタンスに対して手動でログを送信することができ、ポリシー エンジンを使用する必要はありません。
 
-## <a name="february-2021"></a>2021 年 2 月
-
-- [Cybersecurity Maturity Model Certification (CMMC) ブック](#cybersecurity-maturity-model-certification-cmmc-workbook)
-- [サードパーティのデータ コネクタ](#third-party-data-connectors)
-- [エンティティ ページの UEBA 分析情報 (パブリック プレビュー)](#ueba-insights-in-the-entity-page-public-preview)
-- [インシデント検索の改善 (パブリック プレビュー)](#improved-incident-search-public-preview)
-
-### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Cybersecurity Maturity Model Certification (CMMC) ブック
-
-Azure Sentinel CMMC ブックには、Microsoft のセキュリティ製品、Office 365、Teams、Intune、Windows 仮想デスクトップなど、Microsoft ポートフォリオ全体にわたり、CMMC コントロールに合わせてログ クエリを表示するためのメカニズムが用意されています。
-
-CMMC ブックを使用すると、セキュリティ アーキテクト、エンジニア、セキュリティ オペレーション アナリスト、マネージャー、IT プロフェッショナルは、クラウド ワークロードのセキュリティ体制に関する状況認識を可視化することができます。 また、それぞれの CMMC 要件およびプラクティスに合わせて Microsoft 製品の選択、設計、デプロイ、構成を行うための推奨事項もあります。
-
-CMMC に準拠する必要がない場合でも、CMMC ブックを使用すると、セキュリティ オペレーション センターの構築、アラートの開発、脅威の視覚化、ワークロードの状況認識を実現できます。
-
-Azure Sentinel **ブック** 領域で、CMMC ブックにアクセスします。 **[テンプレート]** を選択し、**CMMC** を検索します。
-
-:::image type="content" source="media/whats-new/cmmc-guide-toggle.gif" alt-text="CMMC ブック ガイドのオンとオフの切り替え" lightbox="media/whats-new/cmmc-guide-toggle.gif":::
-
-
-詳細については、次を参照してください。
-
-- [Azure Sentinel Cybersecurity Maturity Model Certification (CMMC) ブック](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524)
-- [チュートリアル: データの視覚化と監視](tutorial-monitor-your-data.md)
-
-
-### <a name="third-party-data-connectors"></a>サードパーティのデータ コネクタ
-
-サードパーティ統合のコレクションは増え続け、過去 2 か月間で 30 個のコネクタが追加されています。 リンクを次に示します。
-
-- [Agari のフィッシング対策とブランド保護](connect-agari-phishing-defense.md)
-- [Akamai セキュリティ イベント](connect-akamai-security-events.md)
-- [Active Directory 用の Alsid](connect-alsid-active-directory.md)
-- [Apache HTTP Server](connect-apache-http-server.md)
-- [Aruba ClearPass](connect-aruba-clearpass.md)
-- [Blackberry CylancePROTECT](connect-data-sources.md)
-- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
-- [Cisco Firepower eStreamer](connect-data-sources.md)
-- [Cisco Meraki](connect-cisco-meraki.md)
-- [Cisco Umbrella](connect-cisco-umbrella.md)
-- [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
-- [ESET Enterprise Inspector](connect-data-sources.md)
-- [ESET Security Management Center](connect-data-sources.md)
-- [Google Workspace (旧 G Suite)](connect-google-workspace.md)
-- [Imperva WAF Gateway](connect-imperva-waf-gateway.md)
-- [Juniper SRX](connect-juniper-srx.md)
-- [Netskope](connect-data-sources.md)
-- [NXLog DNS ログ](connect-nxlog-dns.md)
-- [NXLog Linux Audit](connect-nxlog-linuxaudit.md)
-- [Onapsis Platform](connect-data-sources.md)
-- [Proofpoint On Demand Email Security (POD)](connect-proofpoint-pod.md)
-- [Qualys Vulnerability Management ナレッジ ベース](connect-data-sources.md)
-- [Salesforce Service Cloud](connect-salesforce-service-cloud.md)
-- [SonicWall ファイアウォール](connect-data-sources.md)
-- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
-- [Squid Proxy](connect-squid-proxy.md)
-- [Symantec Endpoint Protection](connect-data-sources.md)
-- [Thycotic Secret Server](connect-thycotic-secret-server.md)
-- [Trend Micro XDR](connect-data-sources.md)
-- [VMware ESXi](connect-vmware-esxi.md)
-
-### <a name="ueba-insights-in-the-entity-page-public-preview"></a>エンティティ ページの UEBA 分析情報 (パブリック プレビュー)
-
-Azure Sentinel エンティティの詳細ページには、[分析情報ウィンドウ](identify-threats-with-entity-behavior-analytics.md#entity-insights)が提供されています。これには、エンティティに関する行動分析情報が表示され、異常とセキュリティの脅威をすばやく特定するのに役立ちます。
-
-[UEBA を有効](ueba-enrichments.md)にし、4 日以上の期間を選択した場合、この分析情報ウィンドウには、UEBA 分析情報の次の新しいセクションも含まれます。
-
-|Section  |説明  |
-|---------|---------|
-|**UEBA Insights\(UEBA 分析情報\)**     | 異常なユーザー アクティビティの概要を示します。 <br>- 地理的な場所、デバイス、環境にまたがっている<br>- ユーザー独自の履歴と比較して時間と頻度の範囲を越えている <br>- ピアの動作比較した場合 <br>- 組織の動作と比較した場合     |
-|**User Peers Based on Security Group Membership\(セキュリティ グループのメンバーシップに基づくユーザー ピア\)**     |   Azure AD セキュリティ グループのメンバーシップに基づいてユーザー ピアを一覧表示し、同様のアクセス許可を共有する他のユーザーの一覧をセキュリティ オペレーション チームに提供します。  |
-|**User Access Permissions to Azure Subscription\(Azure サブスクリプションへのユーザーのアクセス許可\)**     |     Azure サブスクリプションへのユーザーのアクセス許可を直接、または Azure AD グループまたはサービス プリンシパルを介して表示します。   |
-|**Threat Indicators Related to The User\(ユーザーに関連する脅威インジケーター\)**     |  ユーザーのアクティビティで表される、IP アドレスに関連する既知の脅威のコレクションを一覧表示します。 脅威は、脅威の種類とファミリ別に一覧表示され、Microsoft の脅威インテリジェンス サービスによって強化されています。       |
-|     |         |
-
-### <a name="improved-incident-search-public-preview"></a>インシデント検索の改善 (パブリック プレビュー)
-
-Azure Sentinel インシデント検索エクスペリエンスが改善され、特定の脅威を調査するときにインシデント間をすばやく移動できるようになりました。
-
-Azure Sentinel でインシデントを検索するときに、インシデントの次の詳細によって検索できるようになりました。
-
-- ID
-- タイトル
-- 製品
-- 所有者
-- タグ
-
-## <a name="january-2021"></a>2021 年 1 月
-
-- [分析ルール ウィザード: クエリの編集エクスペリエンスの向上 (パブリック プレビュー)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
-- [Az.SecurityInsights PowerShell モジュール (パブリック プレビュー)](#azsecurityinsights-powershell-module-public-preview)
-- [SQL データベース コネクタ](#sql-database-connector)
-- [Dynamics 365 コネクタ (パブリック プレビュー)](#dynamics-365-connector-public-preview)
-- [インシデント コメントの改善](#improved-incident-comments)
-- [専用の Log Analytics クラスター](#dedicated-log-analytics-clusters)
-- [ロジック アプリのマネージド ID](#logic-apps-managed-identities)
-- [分析ルールのプレビュー グラフによるルール調整の改善](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
-
-
-### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>分析ルール ウィザード:クエリの編集エクスペリエンスの向上 (パブリック プレビュー)
-
-Azure Sentinel のスケジュールされた分析ルールウィザードで、クエリの作成と編集に関して次のような機能強化が行われました。
-
--   拡張可能な編集ウィンドウにより、クエリを表示する画面のスペースが増えました。
--   クエリ コードでキーワードが強調表示されるようになりました。
--   オートコンプリートのサポートが拡張されました。
--   リアルタイムのクエリ検証。 クエリ内のエラーが、スクロール バー上の赤いブロックと、 **[ルールのロジックを設定]** タブ名の赤い点として表示されるようになりました。 また、エラーのあるクエリを保存することはできません。
-
-詳細については、「[チュートリアル:脅威を検出するためのカスタム分析規則を作成する](tutorial-detect-threats-custom.md)」を参照してください。
-### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az.SecurityInsights PowerShell モジュール (パブリック プレビュー)
-
-Azure Sentinel では、新しい [Az.SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell モジュールがサポートされるようになりました。
-
-**Az.SecurityInsights** モジュールでは、状態、重大度、所有者などを変更するためのインシデントとのやり取り、インシデントへのコメントやラベルの追加、ブックマークの作成など、一般的な Azure Sentinel ユース ケースがサポートされます。
-
-CI/CD パイプラインには、[Azure Resource Manager (ARM)](../azure-resource-manager/templates/index.yml) を使用することをお勧めしますが、**Az.SecurityInsights** モデルは、デプロイ後のタスクに役立ち、SOC オートメーションを対象としています。  たとえば、SOC オートメーションには、データ コネクタの構成、分析ルールの作成、分析ルールへのオートメーション アクションの追加などが含まれる場合があります。
-
-使用可能なコマンドレットの完全な一覧と説明、パラメーターの説明、例などの詳細については、[Az.SecurityInsights PowerShell のドキュメント](/powershell/module/az.securityinsights/)を参照してください。
-
-### <a name="sql-database-connector"></a>SQL データベース コネクタ
-
-Azure Sentinel では、Azure SQL データベース コネクタが提供されるようになりました。これを使用すると、データベースの監査と診断ログを Azure Sentinel にストリーミングし、すべてのインスタンス内のアクティビティを継続的に監視できます。
-
-Azure SQL は、アップグレード、修正プログラムの適用、バックアップ、監視などのほとんどのデータベース管理機能をユーザーの介入なしで処理する、フル マネージドの PaaS (サービスとしてのプラットフォーム) データベース エンジンです。
-
-詳細については、「[Azure SQL データベースの診断と監査のログを接続する](connect-azure-sql-logs.md)」を参照してください。
-
-### <a name="dynamics-365-connector-public-preview"></a>Dynamics 365 コネクタ (パブリック プレビュー)
-
-Azure Sentinel では、Microsoft Dynamics 365 用のコネクタが提供されるようになりました。これにより、Dynamics 365 アプリケーションのユーザー、管理者、サポート アクティビティ ログを Azure Sentinel に収集できます。 このデータを使用すると、実行されているデータ処理アクション全体を監査し、考えられるセキュリティ違反を分析することができます。
-
-詳細については、「[Dynamics 365 アクティビティログを Azure Sentinel に接続する](connect-dynamics-365.md)」を参照してください。
-
-### <a name="improved-incident-comments"></a>インシデント コメントの改善
-
-アナリストは、インシデント コメントを使用して、インシデントで共同作業を行い、プロセスや手順を手動で、またはプレイブックの一部として文書化します。 
-
-インシデント コメントの作成エクスペリエンスが改善されたことにより、コメントの書式設定や、既存のコメントの編集または削除を行うことができるようになりました。
-
-詳細については、「[Microsoft セキュリティ アラートからインシデントを自動的に作成する](create-incidents-from-alerts.md)」を参照してください。
-### <a name="dedicated-log-analytics-clusters"></a>専用の Log Analytics クラスター
-
-Azure Sentinel では、デプロイ オプションとして専用の Log Analytics クラスターがサポートされるようになりました。 次の場合には、専用クラスターを検討することお勧めします。
-
-- Azure Sentinel ワークスペースに **1 日あたり 1 TB 以上を取り込む**
-- Azure 登録に **複数の Azure Sentinel ワークスペースがある**
-
-専用クラスターを使用すると、カスタマー マネージド キー、ロックボックス、二重暗号化、より高速のワークスペース間クエリ (同じクラスター上に複数のワークスペースがある場合) などの機能を使用できます。
-
-詳細については、「[Azure Monitor ログ専用クラスター](../azure-monitor/logs/logs-dedicated-clusters.md)」を参照してください。
-
-### <a name="logic-apps-managed-identities"></a>ロジック アプリのマネージド ID
-
-Azure Sentinel では、Azure Sentinel Logic Apps コネクタのマネージド ID がサポートされるようになりました。これにより、余分な ID を作成する代わりに、Azure Sentinel で操作するためのアクセス許可を特定のプレイブックに直接付与することができます。
-
-- **マネージド ID を使用しない場合**、Logic Apps コネクタを Azure Sentinel 上で実行するには、Azure Sentinel RBAC の役割を持つ個別の ID が必要です。 個別の ID には、Azure AD ユーザーまたはサービス プリンシパル (Azure AD に登録済みのアプリケーションなど) を指定できます。
-
-- **ロジック アプリでマネージド ID のサポートを有効にする** と、ロジック アプリが Azure AD に登録され、オブジェクト ID が提供されます。 Azure Sentinel のオブジェクト ID を使用して、Azure Sentinel ワークスペースでロジック アプリに Azure RBAC の役割を割り当てます。 
-
-詳細については、次を参照してください。
-
-- [Azure Logic Apps でのマネージド ID を使用した認証](../logic-apps/create-managed-service-identity.md)に関する記事
-- [Azure Sentinel Logic Apps コネクタのドキュメント](/connectors/azuresentinel) 
-
-### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>分析ルールのプレビュー グラフによるルール調整の改善 (パブリック プレビュー)
-
-Azure Sentinel では、分析ルールをより適切に調整できるようになりました。これは、精度の向上やノイズの減少に役立ちます。
-
-**[ルールのロジックを設定]** タブで分析ルールを編集すると、右側に **[Results simulation]\(結果のシミュレーション\)** 領域が表示されます。 
-
-**[Test with current data]\(現在のデータでテストする\)** を選択して、Azure Sentinel で、最後の 50 回について分析ルールのシミュレーションを実行します。 評価された未加工のイベント データに基づいて、ルールによって生成された平均アラート数を表示するグラフが生成されます。 
-
-詳細については、「[ルールのクエリ ロジックを定義して設定を構成する](tutorial-detect-threats-custom.md#define-the-rule-query-logic-and-configure-settings)」を参照してください。
-
-## <a name="december-2020"></a>2020 年 12 月
-
-- [80 の新しい組み込みハンティング クエリ](#80-new-built-in-hunting-queries)
-- [Log Analytics エージェントの改善](#log-analytics-agent-improvements)
-
-### <a name="80-new-built-in-hunting-queries"></a>80 の新しい組み込みハンティング クエリ
- 
-Azure Sentinel の組み込みハンティング クエリを利用すると、SOC アナリストは、現在の検出の対象範囲内にあるギャップを埋めて、新しいハンティング リードを開始できます。
-
-Azure Sentinel のこの更新には、MITRE ATT&CK フレームワーク マトリックス全体にわたる対象範囲を提供する新しいハンティング クエリが含まれます。
-
-- **コレクション**
-- **コマンドとコントロール**
-- **資格情報へのアクセス**
-- **検出**
-- **実行**
-- **流出**
-- **影響**
-- **初期アクセス**
-- **永続化**
-- **特権エスカレーション**
-
-追加されたハンティング クエリは、ご使用の環境で疑わしいアクティビティを検出しやすくなるように設計されています。 正当なアクティビティや悪意がある可能性のあるアクティビティが返される場合もありますが、ハンティングを導くのに役立ちます。 
-
-これらのクエリを実行した後、結果に自信がある場合は、それらを分析ルールに変換するか、既存または新規のインシデントにハンティング結果を追加することができます。
-
-追加されたすべてのクエリは、Azure Sentinel の [ハンティング] ページから利用できます。 詳細については、「[Azure Sentinel で脅威を検出する](hunting.md)」を参照してください。
-
-### <a name="log-analytics-agent-improvements"></a>Log Analytics エージェントの改善
-
-Azure Sentinel ユーザーは、Log Analytics エージェントの次の改善機能を利用することができます。
-
-- CentOS 8、RedHat 8、SUSE Linux 15 など、**より多くのオペレーティング システムをサポート**。
-- Python 2 に加えて、**Python 3 をサポート**
-
-Azure Sentinel では、Log Analytics エージェントを使用して、Windows セキュリティ イベント、Syslog イベント、CEF ログなどのイベントをワークスペースに送信します。
-
-> [!NOTE]
-> Log Analytics エージェントは、OMS エージェントまたは Microsoft Monitoring Agent (MMA) と呼ばれる場合もあります。 
-> 
-
-詳細については、[Log Analytics のドキュメント](../azure-monitor/agents/log-analytics-agent.md)および [Log Analytics エージェントのリリース ノート](https://github.com/microsoft/OMS-Agent-for-Linux/releases)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -494,4 +515,4 @@ Azure Sentinel では、Log Analytics エージェントを使用して、Window
 >[Azure Sentinel をオンボードする](quickstart-onboard.md)
 
 > [!div class="nextstepaction"]
->[アラートの視覚化](quickstart-get-visibility.md)
+>[アラートの視覚化](get-visibility.md)

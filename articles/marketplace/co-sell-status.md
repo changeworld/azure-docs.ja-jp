@@ -7,19 +7,19 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 03/17/2021
-ms.openlocfilehash: 586d2f8a887f6da39111d2e3f01744952cd9a1c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/13/2021
+ms.openlocfilehash: 3d2048f643da5f9cdd77b95f2a992efef74a77e9
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133315"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114388081"
 ---
 # <a name="verify-co-sell-status-of-a-commercial-marketplace-offer"></a>コマーシャル マーケットプレース プランの共同販売ステータスを確認する
 
 パートナー センターのコマーシャル マーケットプレース プログラムにあるプランの **[オファーの概要]** ページで、プランの共同販売ステータスを確認できます。
 
-## <a name="verify-co-sell-status"></a>共同販売の状態を確認する
+## <a name="verify-co-sell-status"></a>共同販売ステータスを確認する
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
@@ -33,11 +33,11 @@ ms.locfileid: "108133315"
 | ------------ | ------------- |
 | 共同販売の準備が未完了 | [共同販売の準備完了ステータスの最小要件](co-sell-requirements.md#requirements-for-co-sell-ready-status)が満たされていません。 |
 | 共同販売の準備完了 | [共同販売の準備完了ステータスの要件](co-sell-requirements.md#requirements-for-co-sell-ready-status)がすべて満たされています。 |
-| Azure IP 共同販売インセンティブ対象 | [これらの追加の要件](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentivized-status)に加えて、共同販売の準備完了の要件が満たされています。 |
-| Business Applications 共同販売インセンティブ対象 | このステータスは、[ISV コネクト プログラム](business-applications-isv-program.md)の Dynamics 365 と Power Apps のプランに適用されます。[このステータスの要件](co-sell-requirements.md#requirements-for-business-applications-co-sell-incentivized-status)がすべて満たされていることを示します。 |
+| Azure IP 共同販売インセンティブ | [これらの追加の要件](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentive-status)に加えて、共同販売の準備完了の要件が満たされています。 |
+| Business Applications 共同販売インセンティブ | このステータスは、[ISV コネクト プログラム](business-applications-isv-program.md)の Dynamics 365 と Power Apps のプランに適用されます。[このステータスの要件](co-sell-requirements.md#requirements-for-business-applications-co-sell-incentive-status)がすべて満たされていることを示します。 |
 |||
 
 ## <a name="next-steps"></a>次のステップ
 
-- 共同販売の要件の詳細については、[共同販売の準備完了の要件](co-sell-requirements.md)に関するページを参照してください。
-- プランを共同販売用に構成するには、「[コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)」を参照してください。
+- 共同販売の要件については、[共同販売の準備完了の要件](co-sell-requirements.md)に関するページを参照してください。
+- 共同販売のためのプランの構成については、「[コマーシャル マーケットプレース プランの共同販売を構成する](co-sell-configure.md)」を参照してください。

@@ -3,14 +3,14 @@ title: 診断ログの有効化
 description: 診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: b12b3db9266284509e88cef85a33a1a43b500907
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: b7bf1d7353917808fca222a7027dda74f89aff70
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075485"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736096"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -104,7 +104,9 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 
 **[Detailed Error Logging]\(詳細なエラー ログ記録\)** または **[失敗した要求のトレース]** で、 **[オン]** を選択し、 **[保存]** を選択します。
 
-どちらの種類のログも、App Service ファイル システムに格納されます。 最大 50 件のエラー (ファイル/フォルダー) が保持されます。 HTML ファイルの数が 50 を超えた場合、古い順に 26 エラーが自動的に削除されます。
+どちらの種類のログも、App Service ファイル システムに格納されます。 最大 50 件のエラー (ファイル/フォルダー) が保持されます。 HTML ファイルの数が 50 を超えた場合、古い順にエラー ファイルが自動的に削除されます。
+
+既定では、失敗した要求のトレース機能では、400 から 600 までの HTTP ステータス コードで失敗した要求のログをキャプチャします。 カスタム ルールを指定するには、*web.config* ファイルの `<traceFailedRequests>` セクションをオーバーライドします。
 
 ## <a name="add-log-messages-in-code"></a>コードでログ メッセージを追加する
 
@@ -190,14 +192,14 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | AppServiceEnvironmentPlatformLogs | はい | 該当なし | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
 | AppServiceAuditLogs | はい | はい | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
 | AppServiceFileAuditLogs | はい | はい | TBA | TBA | サイト コンテンツに行われたファイルの変更。**Premium レベル以上でのみ使用可能** |
-| AppServiceAppLogs | ASP .NET および Tomcat <sup>1</sup> | ASP .NET および Tomcat <sup>1</sup> | Java SE および Tomcat Blessed Images <sup>2</sup> | Java SE および Tomcat Blessed Images <sup>2</sup> | アプリケーション ログ |
+| AppServiceAppLogs | ASP.NET および Tomcat <sup>1</sup> | ASP.NET および Tomcat <sup>1</sup> | Java SE および Tomcat Blessed Images <sup>2</sup> | Java SE および Tomcat Blessed Images <sup>2</sup> | アプリケーション ログ |
 | AppServiceIPSecAuditLogs  | はい | はい | はい | はい | IP ルールからの要求 |
 | AppServicePlatformLogs  | TBA | はい | はい | はい | コンテナーの操作ログ |
 | AppServiceAntivirusScanAuditLogs | はい | はい | はい | はい | Microsoft Defender を使用する [ウイルス対策のスキャン ログ](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)。**Premium レベルでのみ使用可能** | 
 
-<sup>1</sup> Tomcat アプリの場合は、アプリ設定に "TOMCAT_USE_STARTUP_BAT" を追加し、それを false または 0 に設定します。 "*最新の*" Tomcat バージョンであり、かつ *java.util.logging* を使用する必要があります。
+<sup>1</sup> Tomcat アプリの場合は、アプリ設定に `TOMCAT_USE_STARTUP_BAT` を追加し、それを `false` または `0` に設定します。 "*最新の*" Tomcat バージョンであり、かつ *java.util.logging* を使用する必要があります。
 
-<sup>2</sup> Java SE アプリの場合は、アプリ設定に "$WEBSITE_AZMON_PREVIEW_ENABLED" を追加し、それを true または 1 に設定します。
+<sup>2</sup> Java SE アプリの場合は、アプリ設定に `WEBSITE_AZMON_PREVIEW_ENABLED` を追加し、それを `true` または `1` に設定します。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
 * [Azure Monitor でログにクエリを実行する](../azure-monitor/logs/log-query-overview.md)

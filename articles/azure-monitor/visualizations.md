@@ -2,15 +2,15 @@
 title: Azure Monitor からのデータを視覚化する | Microsoft Docs
 description: Azure Monitor に格納されたメトリックとログ データを視覚化するために使用可能な方法の概要を提供します。
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 01/25/2021
-ms.openlocfilehash: 1da3f75fb95488d45a3f29284bdc8c7424b6bc9a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+author: rboucher
+ms.author: robb
+ms.date: 07/28/2021
+ms.openlocfilehash: 4a98a44cd56691947536779103f55b4e713c74df
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459107"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724608"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -85,6 +85,9 @@ ms.locfileid: "110459107"
 
 ![Grafana 視覚化のスクリーンショット。](media/visualizations/grafana.png)
 
+> [!IMPORTANT]
+> Internet Explorer ブラウザーと古い Microsoft Edge ブラウザーは、Grafana と互換性がありません。Microsoft Edge を含む Chromium ベースのブラウザーを使用する必要があります。 [Grafana でサポートされているブラウザー](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-web-browsers)に関するページを参照してください。
+
 ### <a name="advantages"></a>長所
 - 高度な視覚化。
 - データ ソースの充実したエコシステム。
@@ -95,6 +98,15 @@ ms.locfileid: "110459107"
 - Azure の統合はなし。 Azure Resource Manager からダッシュボードとモデルを管理できない。
 - 追加の Grafana インフラストラクチャをサポートするためのコストまたは Grafana クラウドの追加コスト。
 
+## <a name="azure-monitor-partners"></a>Azure Monitor パートナー
+いくつかの [Azure Monitor パートナー](./partners.md)から、視覚化機能が提供されている可能性があります。 このリンクから、Microsoft による評価済みのパートナーの一覧を参照できます。 
+
+### <a name="advantages"></a>長所
+- 時間の節約になる、すぐに使用できる視覚化が用意されていることがあります
+
+### <a name="limitations"></a>制限事項
+- 追加のコストが発生する可能性があります
+- パートナー オファリングを調査して評価する時間がかかります
 
 ## <a name="build-your-own-custom-application"></a>独自のカスタム アプリケーションのビルド
 Azure Monitor のメトリック データとログ データには、その API を通じ、任意の REST クライアントを使用してアクセスできます。これにより、独自のカスタム Web サイトとアプリケーションを構築できます。
@@ -105,7 +117,6 @@ Azure Monitor のメトリック データとログ データには、その API
 
 ### <a name="disadvantages"></a>短所
 - 多くのエンジニア リング作業が必要。
-
 
 ## <a name="azure-monitor-views"></a>Azure Monitor ビュー
 
@@ -140,4 +151,3 @@ Azure Monitor のメトリック データとログ データには、その API
 - [ログ データの Power BI へのインポート](./visualize/powerbi.md)について学習します。
 - [Grafana Azure Monitor データ ソース プラグイン](./visualize/grafana-plugin.md)について学習します。
 - [Azure Monitor のビュー](visualize/view-designer.md)について学習します。
-

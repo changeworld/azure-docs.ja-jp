@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 82d4fae022d2d97bb2285e556c4050fcb3cca562
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5c567e5bf64fdfcda9d6600fdcf5aa15c1a34f25
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779311"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112957"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB Cassandra API アカウントにデータを移行する
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -34,11 +34,11 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. **[リソースの作成]** を選択し、Azure Marketplace で "**Striim**" を検索します。 最初のオプションを選択し、 **[作成]** します。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Striim の Marketplace 項目を見つける":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. 次に、Striim インスタンスの構成プロパティを入力します。 Striim 環境が仮想マシンにデプロイされます。 **[基本]** ウィンドウから、**VM ユーザー名**、**VM パスワード** を入力します (このパスワードは、VM への SSH 接続に使用されます)。 ご使用の **サブスクリプション**、**リソース グループ**、および Striim をデプロイする **場所の詳細** を選択します。 完了したら、 **[OK]** を選択します。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Striim の基本設定を構成する":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Striim の基本設定を構成する":::
 
 
 1. **[Striim Cluster settings]\(Striim クラスターの設定\)** ウィンドウで、Striim のデプロイの種類と仮想マシンのサイズを選択します。
@@ -53,7 +53,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. **[Striim access settings]\(Striim のアクセス設定\)** ウィンドウで、Striim UI にログインするために使用する **[Public IP address]\(パブリック IP アドレス\)** (既定の値を選択)、 **[Domain name for Striim]\(Striim のドメイン名\)** 、 **[Admin password]\(管理者パスワード\)** を構成します。 VNET とサブネットを構成します (既定の値を選択)。 詳細を入力したら、 **[OK]** を選択して続行します。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Striim のアクセス設定":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Striim のアクセス設定":::
 
 1. Azure はデプロイを検証し、すべてが適切であることを確認します。検証の完了までには数分かかります。 検証が完了したら、 **[OK]** を選択します。
   
@@ -81,11 +81,11 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. Azure portal でデプロイした Striim インスタンスに移動します。 上部メニュー バーの **[接続]** ボタンを選択し、 **[SSH]** タブから **[VM ローカル アカウントを使用してログインする]** フィールドに URL をコピーします。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png" alt-text="SSH URL を取得する":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png" alt-text="SSH URL を取得する":::
 
 1. 新しいターミナル ウィンドウを開き、Azure portal からコピーした SSH コマンドを実行します。 この記事では、MacOS でターミナルを使用しますが、PuTTY または Windows コンピューター上の別の SSH クライアントを使用して、同様の手順を実行できます。 プロンプトが表示されたら、**yes** と入力して続行し、前の手順で仮想マシンに対して設定した **パスワード** を入力します。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png" alt-text="Striim VM に接続する":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png" alt-text="Striim VM に接続する":::
 
 1. 次に、新しいターミナル タブを開いて、前にダウンロードした **ojdbc8.jar** ファイルをコピーします。 次の SCP コマンドを使用して、jar ファイルをローカル コンピューターから Azure で実行されている Striim インスタンスの tmp フォルダーにコピーします。
 
@@ -94,7 +94,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
    scp ojdbc8.jar striimdemo@striimdemo.westus.cloudapp.azure.com:/tmp
    ```
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png" alt-text="ローカル コンピューターから Striim に Jar ファイルをコピーする":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png" alt-text="ローカル コンピューターから Striim に Jar ファイルをコピーする":::
 
 1. 次に、Striim インスタンスへの SSH 接続を実行したウィンドウに戻り、sudo としてログインします。 次のコマンドを使用して、**ojdbc8.jar** ファイルを **/tmp** ディレクトリから、Striim インスタンスの **lib** ディレクトリに移動します。
 
@@ -105,7 +105,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
    chmod +x ojdbc8.jar
    ```
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png" alt-text="Jar ファイルを lib フォルダーに移動する":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png" alt-text="Jar ファイルを lib フォルダーに移動する":::
 
 
 1. 同じターミナル ウィンドウで次のコマンドを実行して、Striim サーバーを再起動します。
@@ -125,17 +125,17 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. 次に、Azure に戻り、Striim VM のパブリック IP アドレスをコピーします。 
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png" alt-text="Striim VM の IP アドレスをコピーする":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png" alt-text="Striim VM の IP アドレスをコピーする":::
 
 1. Striim の Web UI に移動するために、ブラウザーで新しいタブを開き、パブリック IP をコピーし、その後に9080 を指定します。 **admin** ユーザー名と、Azure portal で指定した管理者パスワードを使用してサインインします。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Striim にサインインする":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Striim にサインインする":::
 
 1. これで、Striim のホーム ページが表示されます。 3 つの異なるウィンドウ (**ダッシュボード**、**アプリ**、**SourcePreview**) があります。 [ダッシュボード] ウィンドウでは、リアルタイムでデータを移動し、視覚化することができます。 [アプリ] ウィンドウには、ストリーミング データ パイプライン (データ フロー) が含まれています。 このページの右側には SourcePreview があります。ここでは、データを移動する前にプレビューすることができます。
 
 1. **[アプリ]** ウィンドウを選択します。今はこのウィンドウに焦点を当てます。 Striim について学ぶために使用できるさまざまなサンプル アプリがありますが、この記事では、独自のものを作成します。 右上隅にある **[アプリの追加]** ボタンを選択します。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png" alt-text="Striim アプリを追加する":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png" alt-text="Striim アプリを追加する":::
 
 1. Striim アプリケーションを作成するには、いくつかの異なる方法があります。 このシナリオでは、 **[最初から行う]** を選択します。
 

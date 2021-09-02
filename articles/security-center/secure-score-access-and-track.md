@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 02/25/2021
-ms.openlocfilehash: 50ab34a73a7709a47efdf6904acf005cd5db9da5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9373806b87144005407861b2043799f0c62ce982
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753595"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237907"
 ---
 # <a name="access-and-track-your-secure-score"></a>セキュリティで保護されたスコアにアクセスして追跡する
 
@@ -48,7 +48,7 @@ ms.locfileid: "111753595"
 
 スコアには、Secure Scores API を使用してアクセスできます。 この API メソッドを使用すると、データに対してクエリを実行したり、一定期間のセキュリティ スコアをレポートする独自のメカニズムを構築したりするための柔軟性が得られます。 たとえば、[Secure Scores API](/rest/api/securitycenter/securescores) を使用して、特定のサブスクリプションのスコアを取得できます。 また、[Secure Score Controls API](/rest/api/securitycenter/securescorecontrols) を使用して、サブスクリプションのセキュリティ コントロールと現在のスコアを一覧表示できます。
 
-![API を使用して 1 つのセキュリティ スコアを取得する](media/secure-score-security-controls/single-secure-score-via-api.png)
+![API を使用して 1 つのセキュア スコアを取得する。](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 Secure Scores API を使用して構築されたツールの例については、[GitHub コミュニティのセキュリティ スコアの領域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)を参照してください。 
 
@@ -105,7 +105,7 @@ Pro アカウントを使用している Power BI ユーザーの場合は、 **
 - **[リソースの概要]** - リソースの正常性に関する概要データが提供されます。
 - **[Secure Score Summary]\(セキュリティ スコアの概要\)** - スコアの進捗状況に関する集計データが提供されます。 スコアの変化を確認するには、[Secure score over time per subscription]\(サブスクリプションごとの経時的なセキュリティ スコア\) グラフを使用します。 スコアが大幅に変化した場合は、[detected changes that may affect your secure score]\(検出された変更の中でセキュリティ スコアに影響する可能性のあるもの\) の表を調べ、変更の原因となった可能性のある変更を確認します。 この表は、削除されたリソース、新しくデプロイされたリソース、または推奨事項のいずれかについてセキュリティの状態が変化したリソースを示しています。
 
-:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="経時的なセキュリティ スコアを追跡し、変更を調査するためのオプションの [Secure Score Over Time]\(経時的なセキュリティ スコア\) Power BI ダッシュボード":::
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="経時的なセキュア スコアを追跡し、変更を調査するためのオプションの [Secure Score Over Time]\(経時的なセキュア スコア\) Power BI ダッシュボード。":::
 
 
 ## <a name="next-steps"></a>次のステップ

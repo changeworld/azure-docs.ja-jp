@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 73144611e835ac1bea20ab92212e52941af84eef
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2c1f967e596b4ba19d121f3c0332259b92f78d06
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463743"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730613"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの作成および管理
 
@@ -52,6 +52,38 @@ ms.locfileid: "110463743"
 6. セルフホステッド統合ランタイムが正常に登録されると、次のウィンドウが表示されます。
 
    :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="正常に登録":::
+
+## <a name="networking-requirements"></a>ネットワーク要件
+
+セルフホステッド統合ランタイム マシンは、正常に動作するために複数のリソースに接続する必要があります。
+
+* セルフホステッド統合ランタイムを使用してスキャンするソース。
+* Purview リソースのための資格情報を格納するために使用されている任意の Azure Key Vault。
+* Purview によって作成されたマネージド ストレージ アカウント リソースとイベント ハブ リソース。
+
+マネージ ストレージ リソースとイベント ハブ リソースは、サブスクリプション内の Purview リソースの名前が含まれるリソース グループで見つかります。 Azure Purview により、これらのリソースを使用して、他の多くのものと共にスキャンの結果が取り込まれるので、セルフホステッド統合ランタイムはこれらのリソースに直接接続できる必要があります。
+
+企業およびマシンのファイアウォールの通過を許可する必要があるドメインとポートを以下に示します。
+
+> [!NOTE]
+> "\<managed Purview storage account>" と示されているドメインについては、Purview リソースに関連付けられているマネージド ストレージ アカウントの名前を追加します。 このリソースはポータルで見つけることができます。 リソース グループで managed-rg-\<your Purview Resource name> という名前のグループを検索します。 たとえば、managed-rg-contosoPurview のようなものです。 このリソース グループのストレージ アカウントの名前を使用します。
+> 
+> "\<managed Event Hub resource>" と示されているドメインについては、Purview リソースに関連付けられているマネージド イベント ハブの名前を追加します。 これは、マネージド ストレージ アカウントと同じリソース グループで見つかります。
+
+| ドメイン名                  | 送信ポート | 説明                              |
+| ----------------------------- | -------------- | ---------------------------------------- |
+| `*.servicebus.windows.net` | 443            | グローバル インフラストラクチャ Purview により、スキャンを実行するために使用されます。 専用のリソースがないため、ワイルドカードが必要です。 |
+| `<managed Event Hub resource>.servicebus.windows.net` | 443            | これは、Purview により、関連付けられている Service Bus と接続するために使用されます。 これは、上記のドメインを許可することによってカバーされますが、プライベート エンドポイントを使用している場合は、この単一のドメインへのアクセスをテストする必要があります。|
+| `*.frontend.clouddatahub.net` | 443            | グローバル インフラストラクチャ Purview により、スキャンを実行するために使用されます。 専用のリソースがないため、ワイルドカードが必要です。 |
+| `<managed Purview storage account>.core.windows.net`          | 443            | セルフホステッド統合ランタイムにより、マネージド Azure ストレージ アカウントに接続するために使用されます。|
+| `<managed Purview storage account>.queue.core.windows.net` | 443            | スキャン プロセスを実行するために Purview によって使用されるキュー。 |
+| `<your Key Vault Name>.vault.azure.net` | 443           | 資格情報が Azure Key Vault に格納されている場合に必要です。 |
+| `download.microsoft.com` | 443           | SHIR の更新の場合は省略可能。 |
+| さまざまなドメイン | ドメインに依存          | SHIR の接続先である他のソースのドメイン。 |
+  
+  
+> [!IMPORTANT]
+> ほとんどの環境では、DNS が正しく構成されていることを確認する必要もあります。 確認するには、お使いの SHIR マシンから **nslookup** を使用して、上記の各ドメインへの接続を調べます。 各 nslookup から、リソースの IP が返される必要があります。 [プライベート エンドポイント](catalog-private-link.md)を使用している場合は、パブリック IP ではなく、プライベート IP が返される必要があります。 IP が返されない場合、またはプライベート エンドポイントを使用しているときにパブリック IP が返される場合は、DNS と VNET の関連付け、またはプライベート エンドポイントと VNET のピアリングに、対処する必要があります。
 
 ## <a name="manage-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの管理
 

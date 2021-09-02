@@ -1,16 +1,19 @@
 ---
 title: 使用する状況と方法 - Personalizer
 description: Personalizer は、エクスペリエンスの向上、業績の向上、または生産性の向上を実現するために、表示する適切な項目、アクション、または製品をアプリケーションが選択できるあらゆる状況で適用できます。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 87179950c33a6facb59ce499aa0ae393e53fb37f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc8b0a09212c54ae1e0328e5d1dbfd6d8f213981
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91777226"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830191"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Personalizer を使用する状況と方法
 

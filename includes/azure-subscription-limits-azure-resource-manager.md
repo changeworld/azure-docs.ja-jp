@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2021
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 12571cb0a34df67eab67eb9ebb45c64a95e90bf5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 1197b15f313746c0a8542bfadeb4e0123818fca8
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761600"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575636"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -24,6 +24,7 @@ ms.locfileid: "111761600"
 | サブスクリプションあたりのタグ数<sup>1</sup> |50 |
 | サブスクリプションあたりの一意のタグの計算<sup>1</sup> | 80,000 |
 | 場所あたりの[サブスクリプション レベルのデプロイ](../articles/azure-resource-manager/templates/deploy-to-subscription.md)数 | 800<sup>2</sup> |
+| [サブスクリプションレベルのデプロイ](../articles/azure-resource-manager/templates/deploy-to-subscription.md)の場所 | 10 |
 
 <sup>1</sup>サブスクリプションにはタグを最大で 50 個直接適用することができます。 ただし、サブスクリプション内のリソース グループとリソースに適用する場合には、サブスクリプションに無制限にタグを含めることができます。 リソースまたはリソース グループあたりのタグの数は、50 に制限されています。 サブスクリプションに存在する[一意のタグ名と値のリスト](/rest/api/resources/tags)が Resource Manager から返されるのは、タグの数が 80,000 以下の場合に限られます。 タグの数が 80,000 を超える場合でも、タグでリソースを検出することはできます。
 

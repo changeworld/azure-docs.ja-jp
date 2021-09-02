@@ -2,14 +2,14 @@
 title: プライベート エンドポイント
 description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 07/06/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a44d6d31edb6329c11103e99f0b21aa1ea686ca3
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: aac0fc7b25a43130a157540825395e9eb8c9e4c5
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678325"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301152"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
@@ -24,7 +24,7 @@ Azure Backup で[プライベート エンドポイント](../private-link/priva
 - コンテナーに対してプライベート エンドポイントが作成されると、コンテナーはロックダウンされます。 そのコンテナーのプライベート エンドポイントを含むネットワーク以外のネットワークからは、そのコンテナーに (バックアップと復元のために) アクセスできません。 コンテナーのすべてのプライベート エンドポイントが削除されると、そのコンテナーはすべてのネットワークからアクセスできるようになります。
 - Backup 用のプライベート エンドポイント接続には、ストレージ用に Azure Backup で使用されるものなど、サブネットで合計 11 個のプライベート IP が使用されます。 一部の Azure リージョンでは、この数がさらに多い場合があります (最大 25)。 そのため、Backup 用のプライベート エンドポイントを作成する場合は、十分な数のプライベート IP を用意することをお勧めします。
 - Recovery Services コンテナーは Azure Backup と Azure Site Recovery (の両方) に使用されますが、この記事では、Azure Backup だけのためにプライベート エンドポイントを使用する場合について説明します。
-- Azure Active Directory では、現在、プライベート エンドポイントがサポートされていません。 したがって、Azure Active Directory がリージョンで機能するために必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。
+- Backup のプライベート エンドポイントには、Azure Active Directory (Azure AD) へのアクセスは含めません。また、同様のことを個別に確認する必要があります。 したがって、Azure AD がリージョンで機能するために必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。
 - ネットワーク ポリシーが適用されている仮想ネットワークは、プライベート エンドポイント用にサポートされません。 続行する前に、[ネットワーク ポリシーを無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。
 - Recovery Services リソース プロバイダーをサブスクリプションに 2020 年 5 月 1 日より前に登録した場合は、再登録する必要があります。 プロバイダーを再登録するには、Azure portal のサブスクリプションに移動し、左側のナビゲーションバーで **[リソース プロバイダー]** に移動し、 **[Microsoft.RecoveryServices]** を選択し、 **[再登録]** を選択します。
 - コンテナーでプライベート エンドポイントが有効になっている場合、SQL および SAP HANA データベース バックアップの[リージョンをまたがる復元](backup-create-rs-vault.md#set-cross-region-restore)はサポートされていません。
@@ -38,6 +38,9 @@ Azure Backup で[プライベート エンドポイント](../private-link/priva
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Azure VM バックアップ**                                         | VM バックアップでは、どの IP または FQDN へのアクセスも許可する必要はありません。 そのため、ディスクのバックアップと復元のためにプライベート エンドポイントは必要ありません。  <br><br>   ただし、プライベート エンドポイントを含むコンテナーからのファイルの復旧は、コンテナーのプライベート エンドポイントを含む仮想ネットワークに制限されます。 <br><br>    ACL に記載されたアンマネージド ディスクを使用する場合は、ディスクが格納されているストレージ アカウントで、**信頼された Microsoft サービス** へのアクセスが許可されていることを確認してください。 |
 | **Azure Files バックアップ**                                      | Azure Files バックアップは、ローカル ストレージ アカウントに格納されます。 そのため、バックアップと復元にプライベート エンドポイントは必要ありません。 |
+
+>[!Note]
+>プライベート エンドポイントは、DPM および MABS サーバーではサポートされていません。 
 
 ## <a name="get-started-with-creating-private-endpoints-for-backup"></a>Backup 用のプライベート エンドポイントの作成の概要
 
@@ -536,26 +539,33 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-Q. 既存のバックアップ コンテナー用にプライベート エンドポイントを作成できますか?<br>
-A. いいえ。プライベート エンドポイントは、新しいバックアップ コンテナーに対してのみ作成できます。 そのため、コンテナーには、保護されている項目があってはなりません。 実際に、プライベート エンドポイント作成前にコンテナーに項目を保護することはできません。
+### <a name="can-i-create-a-private-endpoint-for-an-existing-backup-vaultbr"></a>既存のバックアップ コンテナー用にプライベート エンドポイントを作成できますか?<br>
 
-Q. コンテナーに項目を保護しようとしましたが失敗し、コンテナーには保護された項目がまだ含まれていません。 このコンテナーのプライベート エンドポイントを作成できますか?<br>
-A. いいえ。コンテナーに項目を保護しようとしたことが過去にあってはなりません。
+いいえ。プライベート エンドポイントは、新しいバックアップ コンテナーに対してのみ作成できます。 そのため、コンテナーには、保護されている項目があってはなりません。 実際に、プライベート エンドポイント作成前にコンテナーに項目を保護することはできません。
 
-Q. バックアップと復元のためにプライベート エンドポイントを使用しているコンテナーがあります。 保護されているバックアップ項目がある場合でも、このコンテナーのプライベート エンドポイントを後で追加または削除できますか?<br>
-A. はい。 コンテナーのプライベート エンドポイントと、そのコンテナーに保護されているバックアップ項目を既に作成済みの場合、必要に応じて、後でプライベート エンドポイントを追加または削除できます。
+### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-create-private-endpoints-for-this-vaultbr"></a>コンテナーに項目を保護しようとしましたが失敗し、コンテナーには保護された項目がまだ含まれていません。 このコンテナーのプライベート エンドポイントを作成できますか?<br>
 
-Q. Azure Backup のプライベート エンドポイントを Azure Site Recovery にも使用することはできますか?<br>
-A. いいえ。Backup のプライベート エンドポイントは、Azure Backup にのみ使用できます。 Azure Site Recovery 用の新しいプライベート エンドポイントを作成する必要があります (そのサービスでサポートされている場合)。
+いいえ。コンテナーに項目を保護しようとしたことが過去にあってはなりません。
 
-Q. この記事にある手順の 1 つを実行しないまま続行し、データ ソースを保護しました。 それでもプライベート エンドポイントを使用できますか?<br>
-A. 記事の手順に従わずに項目の保護まで続行した場合、コンテナーでプライベート エンドポイントを使用できなくなる可能性があります。 このため、項目の保護に進む前に、このチェックリストを参照することをお勧めします。
+### <a name="i-have-a-vault-thats-using-private-endpoints-for-backup-and-restore-can-i-later-add-or-remove-private-endpoints-for-this-vault-even-if-i-have-backup-items-protected-to-itbr"></a>バックアップと復元のためにプライベート エンドポイントを使用しているコンテナーがあります。 保護されているバックアップ項目がある場合でも、このコンテナーのプライベート エンドポイントを後で追加または削除できますか?<br>
 
-Q. Azure プライベート DNS ゾーンや統合されたプライベート DNS ゾーンを使用するのではなく、独自の DNS サーバーを使用できますか?<br>
-A. はい。独自の DNS サーバーを使用できます。 ただし、このセクションで提示されているように、必要なすべての DNS レコードを確実に追加してください。
+はい。 コンテナーのプライベート エンドポイントと、そのコンテナーに保護されているバックアップ項目を既に作成済みの場合、必要に応じて、後でプライベート エンドポイントを追加または削除できます。
 
-Q. この記事の手順に従った後に、使用しているサーバーで追加の手順を実行する必要がありますか?<br>
-A. この記事で詳しく説明されているプロセスに従った後、バックアップと復元にプライベート エンドポイントを使用するために追加の作業を行う必要はありません。
+### <a name="can-the-private-endpoint-for-azure-backup-also-be-used-for-azure-site-recoverybr"></a>Azure Backup のプライベート エンドポイントを Azure Site Recovery にも使用することはできますか?<br>
+
+いいえ。Backup のプライベート エンドポイントは、Azure Backup にのみ使用できます。 Azure Site Recovery 用の新しいプライベート エンドポイントを作成する必要があります (そのサービスでサポートされている場合)。
+
+### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-private-endpointsbr"></a>この記事にある手順の 1 つを実行しないまま続行し、データ ソースを保護しました。 それでもプライベート エンドポイントを使用できますか?<br>
+
+記事の手順に従わずに項目の保護まで続行した場合、コンテナーでプライベート エンドポイントを使用できなくなる可能性があります。 このため、項目の保護に進む前に、このチェックリストを参照することをお勧めします。
+
+### <a name="can-i-use-my-own-dns-server-instead-of-using-the-azure-private-dns-zone-or-an-integrated-private-dns-zonebr"></a>Azure プライベート DNS ゾーンや統合されたプライベート DNS ゾーンを使用するのではなく、独自の DNS サーバーを使用できますか?<br>
+
+はい。独自の DNS サーバーを使用できます。 ただし、このセクションで提示されているように、必要なすべての DNS レコードを確実に追加してください。
+
+### <a name="do-i-need-to-perform-any-additional-steps-on-my-server-after-ive-followed-the-process-in-this-articlebr"></a>この記事の手順に従った後に、使用しているサーバーで追加の手順を実行する必要がありますか?<br>
+
+この記事で詳しく説明されているプロセスに従った後、バックアップと復元にプライベート エンドポイントを使用するために追加の作業を行う必要はありません。
 
 ## <a name="next-steps"></a>次のステップ
 

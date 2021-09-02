@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 07/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b6ea85cfaf32ab9ba2c04c40befbe1fbf8ce915
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97387056"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445473"
 ---
 # <a name="display-controls"></a>表示コントロール
 
@@ -124,17 +124,15 @@ ms.locfileid: "97387056"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| ValidationTechnicalProfile | 1:n | 参照元の技術プロファイルの要求表示の一部またはすべてを検証するために使用する技術プロファイル。 |
+| ValidationClaimsExchangeTechnicalProfile | 1:n | 参照元の技術プロファイルの要求表示の一部またはすべてを検証するために使用する技術プロファイル。 |
 
-**ValidationTechnicalProfile** 要素には、次の属性が含まれています。
+**ValidationClaimsExchangeTechnicalProfile** 要素には、次の属性が含まれています。
 
-| 属性 | 必須 | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | はい | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
-|ContinueOnError|いいえ| この検証技術プロファイルでエラーが発生した場合に、後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。 |
-|ContinueOnSuccess | いいえ | この検証技術プロファイルが成功した場合に、後続の検証プロファイルの検証を続行するかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` で、以降の検証プロファイルの処理が続行されることを意味します。 |
+| TechnicalProfileReferenceId | はい | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
 
-**ValidationTechnicalProfile** 要素には、次の要素が含まれています。
+**ValidationClaimsExchangeTechnicalProfile** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |

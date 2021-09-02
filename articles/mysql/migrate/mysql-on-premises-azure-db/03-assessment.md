@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 評価'
+title: 'オンプレミスの MySQL を Azure Database for MySQL に移行する: 評価'
 description: MySQL ワークロードの移行に進む前に、多くのことについて評価を行う必要があります。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 9d7dc8626e86e7ab93c7a6e76cc426c3904147c2
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 4510cbe04181da7badb10c61bd510bed084580e8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082987"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284264"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-assessment"></a>オンプレミスの MySQL から Azure Database for MySQL への移行ガイド: 評価
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-assessment"></a>オンプレミスの MySQL を Azure Database for MySQL に移行する: 評価
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -82,19 +84,19 @@ MyISAM のデータベースとテーブルは、InnoDB のテーブルに変換
 
 ```dotnetcli
     SELECT 
-        tab.table_schema,   
-        tab.table_name,   
-        tab.engine as engine_type,   
-        tab.auto_increment,   
-        tab.table_rows,   
-        tab.create_time,   
-        tab.update_time,   
-        tco.constraint_type 
-    FROM information_schema.tables tab   
-    LEFT JOIN information_schema.table_constraints tco   
-        ON (tab.table_schema = tco.table_schema   
-            AND tab.table_name = tco.table_name   
-            )   
+        tab.table_schema,
+        tab.table_name,
+        tab.engine as engine_type,
+        tab.auto_increment,
+        tab.table_rows,
+        tab.create_time,
+        tab.update_time,
+        tco.constraint_type
+    FROM information_schema.tables tab
+    LEFT JOIN information_schema.table_constraints tco
+        ON (tab.table_schema = tco.table_schema
+            AND tab.table_name = tco.table_name
+            )
     WHERE  
         tab.table_schema NOT IN ('mysql', 'information_schema', 'performance_
 schema', 'sys')  
@@ -176,7 +178,7 @@ ExpressRoute が既に存在する場合は、他のアプリケーションに�
 
 ### <a name="azure-migrate"></a>Azure Migrate
 
-[Azure Migrate](/azure/migrate/migrate-services-overview) では MySQL データベース ワークロードの直接的な移行はサポートされていませんが、仮想マシンまたはハードウェア ベースのコンピューターのどちらでホストされている場合でも、どのようなユーザーやアプリケーションがデータを使用しているのか管理者がわからない場合に使用できます。 [依存関係の分析](/azure/migrate/concepts-dependency-visualization)は、MySQL ワークロードがホストされているマシンに監視エージェントをインストールして実行することで実現できます。 エージェントにより、設定した期間 (1 か月など) についての情報が収集されます。 依存関係データを分析し、データベースに対して行われている不明な接続を見つけることができます。 接続データは、保留中の移行を通知する必要があるアプリケーションの所有者を特定するのに役立つことがあります。
+[Azure Migrate](../../../migrate/migrate-services-overview.md) では MySQL データベース ワークロードの直接的な移行はサポートされていませんが、仮想マシンまたはハードウェア ベースのコンピューターのどちらでホストされている場合でも、どのようなユーザーやアプリケーションがデータを使用しているのか管理者がわからない場合に使用できます。 [依存関係の分析](../../../migrate/concepts-dependency-visualization.md)は、MySQL ワークロードがホストされているマシンに監視エージェントをインストールして実行することで実現できます。 エージェントにより、設定した期間 (1 か月など) についての情報が収集されます。 依存関係データを分析し、データベースに対して行われている不明な接続を見つけることができます。 接続データは、保留中の移行を通知する必要があるアプリケーションの所有者を特定するのに役立つことがあります。
 
 アプリケーションとユーザー接続データの依存関係分析に加えて、Azure Migrate を使用すると、[Hyper-V、VMware、または物理サーバー](../../../migrate/migrate-appliance-architecture.md)を分析し、適切な移行先環境を提案するのに役立つデータベース ワークロードの使用パターンを提供することもできます。
 
@@ -192,9 +194,9 @@ Linux ワークロードでは、[Microsoft Monitoring Agent (MMA)](../../../azu
 
   - **Basic**: 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。
 
-  - **汎用**: バランスのとれたコンピューティングおよびメモリとスケーラブルな I/O スループットが必要なほとんどのビジネス ワークロード。
+  - **General Purpose**: バランスのとれたコンピューティングおよびメモリとスケーラブルな I/O スループットが必要なほとんどのビジネス ワークロード。
 
-  - **メモリ最適化**: トランザクション処理時間の短縮とコンカレンシーの向上のためにインメモリ パフォーマンスが必要なハイ パフォーマンス データベース ワークロード。
+  - **メモリ最適化**: トランザクション処理時間の短縮とコンカレンシーの向上のためにインメモリ パフォーマンスが必要なハイパフォーマンス データベース ワークロード。
 
 レベルの決定は、データ ワークロードの RTO と RPO の要件によって影響を受ける可能性があります。 データ ワークロードで 4 TB を超えるストレージが必要な場合は、追加の手順が必要です。 最大 16 TB のストレージを[サポートするリージョン](../../concepts-pricing-tiers.md#storage)を確認して選択します。
 
@@ -207,7 +209,7 @@ Linux ワークロードでは、[Microsoft Monitoring Agent (MMA)](../../../azu
 |---------|------|
 | **Basic** | 開発用コンピューター。1 TB 未満のストレージで高パフォーマンスを必要としない場合。 |
 | **汎用** | Basic レベルで提供できるものより多くの IOPS が必要だが、ストレージは 16 TB 未満、メモリは 4 GB 未満の場合。 |
-| **メモリ最適化** | 多くのメモリまたはキャッシュ、および高コンカレンシーの innodb_buffer_pool_instances、大きな BLOB サイズ、レプリケーション用に多くのスレーブを持つシステムなどのバッファー関連サーバー構成を利用するデータ ワークロード。 |
+| **メモリ最適化** | 多くのメモリまたはキャッシュ、および高コンカレンシーの innodb_buffer_pool_instances、大きな BLOB サイズ、多くのレプリケーション コピーがあるシステムなどのバッファー関連サーバー構成を利用するデータ ワークロード。 |
 
 ### <a name="costs"></a>コスト
 
@@ -217,28 +219,28 @@ WWI MySQL データ ワークロード全体を評価した後、WWI は少な�
 
 | リソース | 説明 | Quantity | [コスト] |
 |----------|-------------|----------|------|
-| **コンピューティング (汎用)** | 4 仮想コア、20 GB                   | 1 @ $0.351/時                                               | $3074.76/年 |
-| **Storage**                   | 5 GB                              | 12 x 150 @ $0.115                                           | $207/年     |
-| **Backup**                    | プロビジョニングされたストレージの最大 100% | プロビジョニングされたサーバー ストレージの 100% までは追加コストなし      | $0.00/年    |
-| **読み取りレプリカ**              | 1 秒のリージョン レプリカ           | コンピューティング + ストレージ                                           | $3281.76/年 |
-| **Network**                   | < 5 GB/月エグレス                | Free                                                        |               |
-| **合計**                     |                                   |                                                             | $6563.52/年 |
+| **コンピューティング (汎用)** | 4 仮想コア、20 GB                  | 1 @ $0.351/時                                              | $3074.76/年 |
+| **Storage**                   | 5 GB                             | 12 x 150 @ $0.115                                          | $207/年     |
+| **Backup**                    | プロビジョニングされたストレージの最大 100%| プロビジョニングされたサーバー ストレージの 100% までは追加コストなし     | $0.00/年    |
+| **読み取りレプリカ**              | 1 秒のリージョン レプリカ          | コンピューティング + ストレージ                                          | $3281.76/年 |
+| **Network**                   | < 5 GB/月エグレス               | Free                                                       |               |
+| **合計**                     |                                  |                                                            | $6563.52/年 |
 
-初期コストを確認した後、WWI の CIO は、3 年よりはるかに長い期間 Azure を使用することを確認しました。 追加の \~$4K/年を節約するため、3 年間の[予約インスタンス](../../concept-reserved-pricing.md)を使用することを決定しました。
+初期コストを確認した後、WWI の CIO は、3 年よりはるかに長い期間 Azure を使用することを確認しました。 追加の年間 \~$4K を節約するため、3 年間の[予約インスタンス](../../concept-reserved-pricing.md)を使用することを決定しました。
 
 | リソース | 説明 | Quantity | [コスト] |
 |----------|-------------|----------|------|
-| **コンピューティング (汎用)** | 4 仮想コア                          | 1 @ $0.1375/時                                               | $1204.5/年 |
-| **Storage**                   | 5 GB                              | 12 x 150 @ $0.115                                            | $207/年    |
-| **Backup**                    | プロビジョニングされたストレージの最大 100% | プロビジョニングされたサーバー ストレージの 100% までは追加コストなし       | $0.00/年   |
-| **Network**                   | < 5 GB/月エグレス                | Free                                                         |              |
-| **読み取りレプリカ**              | 1 秒のリージョン レプリカ           | コンピューティング + ストレージ                                            | $1411.5/年 |
-| **合計**                     |                                   |                                                              | $2823/年   |
+| **コンピューティング (汎用)** | 4 仮想コア                          | 1 @ $0.1375/時                                              | $1204.5/年 |
+| **Storage**                   | 5 GB                              | 12 x 150 @ $0.115                                           | $207/年    |
+| **Backup**                    | プロビジョニングされたストレージの最大 100% | プロビジョニングされたサーバー ストレージの 100% までは追加コストなし      | $0.00/年   |
+| **Network**                   | < 5 GB/月エグレス                | Free                                                        |              |
+| **読み取りレプリカ**              | 1 秒のリージョン レプリカ           | コンピューティング + ストレージ                                           | $1411.5/年 |
+| **合計**                     |                                   |                                                             | $2823/年   |
 
 上の表に示すように、総保有コスト (TCO) ではバックアップ、ネットワーク エグレス、読み取りレプリカを考慮する必要があります。 追加されるデータベースが多いほど、ストレージと生成されるネットワーク トラフィックだけが、考慮すべき追加のコストベースの要因になります。
 
 > [!NOTE]
-> 上記の見積もりには、[ExpressRoute](/azure/expressroute/expressroute-introduction)、[Azure App Gateway](/azure/application-gateway/overview)、[Azure Load Balancer](/azure/load-balancer/load-balancer-overview)、アプリケーション層の [App Service](/azure/app-service/overview) のコストは含まれていません。
+> 上記の見積もりには、[ExpressRoute](../../../expressroute/expressroute-introduction.md)、[Azure App Gateway](../../../application-gateway/overview.md)、[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md)、アプリケーション層の [App Service](../../../app-service/overview.md) のコストは含まれていません。
 >
 > 上記の価格は、常に変わる可能性があり、リージョンによって異なります。
 
@@ -255,7 +257,7 @@ Azure Database for MySQL に移行する場合、Secure Sockets Layer (SSL) ベ�
 
 ## <a name="wwi-scenario"></a>WWI のシナリオ
 
-WWI は、MySQL のデータ資産に関する情報を収集することで評価を開始しました。 次の情報を集めることができました。
+WWI は、次の表に示すように、MySQL のデータ資産に関する情報を収集することで評価を開始しました。
 
 | 名前 | source | DB エンジン | サイズ | IOPS | Version | 所有者 | ダウンタイム |
 |------|--------|-----------|------|------|---------|-------|----------|
@@ -282,6 +284,8 @@ WWI は、MySQL のデータ資産に関する情報を収集することで評�
   - ダウンタイムの要件を把握します。
 
   - アプリケーションの変更に対応します。
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Planning](./04-planning.md)

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 0f3f9e7f4566800bdea6871cae1c5bafb3b37b95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a00475eacdeb741eca20d4a6c43282df9cfd17d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90931326"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741453"
 ---
 # <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale でサポートされている Postgres のバージョン
 
@@ -33,7 +33,7 @@ ms.locfileid: "90931326"
 ## <a name="how-to-create-a-particular-version-in-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale で特定のバージョンを作成する方法
 作成時に、 _--engine-version_ パラメーターを渡すことによって、作成するバージョンを指定できます。 バージョン情報が指定されていない場合、既定では Postgres バージョン 12 のサーバー グループが作成されます。
 
-## <a name="how-do-be-notified-when-other-versions-are-available"></a>他のバージョンが利用可能になったときに通知を受け取る方法
+## <a name="how-can-i-be-notified-when-other-versions-are-available"></a>他のバージョンが利用可能になったときに通知を受け取る方法
 この記事に戻ってきてください。 必要に応じて更新されます。 また、Kubernetes クラスターの Arc データ コントローラーにあるカスタム リソース定義 (CRD) の種類を一覧表示することもできます。
 次のコマンドを実行します。
 ```console

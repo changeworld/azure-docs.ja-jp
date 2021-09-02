@@ -9,17 +9,19 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.topic: overview
-ms.date: 02/20/2020
-ms.openlocfilehash: 4d0f4bf0f0617fa2fc00a62d65b94dbf29f36688
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/01/2021
+ms.openlocfilehash: 68d462a93d891c25602bb305417ddeb64f5f02a1
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725383"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123317284"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Azure Database Migration Service とは何ですか。
 
 Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージド サービスです (オンライン移行)。
+
+[!INCLUDE [database-migration-services-sql-mi-sql-vm](../../includes/database-migration-services-sql-mi-sql-vm.md)]
 
 ## <a name="migrate-databases-to-azure-with-familiar-tools"></a>使い慣れたツールによる Azure へのデータベースの移行
 

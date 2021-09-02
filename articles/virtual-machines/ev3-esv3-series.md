@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: e96c54fb5e0bab71a68bd6a9749a358843b76a0c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5920a7c0aecd02e4d5b7bbcac9c5254a14d7f192
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083316"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751677"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 および Esv3 シリーズ
 
@@ -32,13 +32,13 @@ Ev3 シリーズの VM は Intel® ハイパー スレッディング テクノ�
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大 NIC/ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|
-| Standard_E2_v3  | 2  | 16  | 50   | 4  | 3000/46/23     | 2/1000  |
+| Standard_E2_v3<sup>1</sup>  | 2  | 16  | 50   | 4  | 3000/46/23     | 2/1000  |
 | Standard_E4_v3  | 4  | 32  | 100  | 8  | 6000/93/46     | 2/2000  |
 | Standard_E8_v3  | 8  | 64  | 200  | 16 | 12000/187/93   | 4/4000  |
 | Standard_E16_v3 | 16 | 128 | 400  | 32 | 24000/375/187  | 8/8000  |
@@ -48,6 +48,7 @@ Ev3 シリーズの VM は Intel® ハイパー スレッディング テクノ�
 | Standard_E64_v3 | 64 | 432 | 1600 | 32 | 96000/1000/500 | 8/30000 |
 | Standard_E64i_v3 <sup>2</sup> | 64 | 432 | 1600 | 32 | 96000/1000/500 | 8/30000 |
 
+<sup>1</sup> 高速ネットワークは、1 つの NIC にのみ適用できます。 
 <sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
 ## <a name="esv3-series"></a>Esv3-series
@@ -62,13 +63,13 @@ Esv3 シリーズの VM は Intel® ハイパー スレッディング テクノ
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | バースト キャッシュが有効な一時ストレージのスループット:IOPS/MBps<sup>3</sup> | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps |  バースト キャッシュが無効なディスクのスループット:IOPS/MBps<sup>3</sup>| 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_E2s_v3                | 2  | 16  | 32  | 4  | 4000/32 (50)       | 4000/100    | 3200/48    | 4000/100 | 2/1000 |
+| Standard_E2s_v3<sup>4</sup>                | 2  | 16  | 32  | 4  | 4000/32 (50)       | 4000/100    | 3200/48    | 4000/100 | 2/1000 |
 | Standard_E4s_v3 <sup>1</sup>   | 4  | 32  | 64  | 8  | 8000/64 (100)      | 8000/200    | 6400/96    | 8000/200 | 2/2000 |
 | Standard_E8s_v3 <sup>1</sup>   | 8  | 64  | 128 | 16 | 16000/128 (200)    | 16000/400   | 12800/192  | 16000/400 | 4/4000 |
 | Standard_E16s_v3 <sup>1</sup>  | 16 | 128 | 256 | 32 | 32000/256 (400)    | 32000/800   | 25600/384  | 32000/800 | 8/8000 |
@@ -78,11 +79,11 @@ Esv3 シリーズの VM は Intel® ハイパー スレッディング テクノ
 | Standard_E64s_v3 <sup>1</sup>  | 64 | 432 | 864 | 32 | 128000/1024 (1600) | 128000/2000 | 80000/1200 | 80000/2000 | 8/30000 |
 | Standard_E64is_v3 <sup>2</sup> | 64 | 432 | 864 | 32 | 128000/1024 (1600) | 128000/2000 | 80000/1200 | 80000/2000 | 8/30000 |
 
-<sup>1</sup> [コア数を制限したサイズも提供しています](./constrained-vcpu.md)。
+<sup>1</sup> [コア数を制限したサイズも提供しています](./constrained-vcpu.md)。<br>
+<sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。<br>
+<sup>3</sup> Dsv3 シリーズの VM では、ディスクのパフォーマンスを[バースト](./disk-bursting.md)でき、一度に最大 30 分間バーストを最大にしておくことができます。<br>
+<sup>4</sup> 高速ネットワークは、1 つの NIC にのみ適用できます。 
 
-<sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
-
-<sup>3</sup> Dsv3 シリーズの VM では、ディスクのパフォーマンスを[バースト](./disk-bursting.md)でき、一度に最大 30 分間バーストを最大にしておくことができます。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

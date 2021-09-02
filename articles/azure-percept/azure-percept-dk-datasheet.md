@@ -1,17 +1,17 @@
 ---
 title: Azure Percept DK のデータシート
 description: 詳細なデバイス仕様については、Azure Percept DK のデータシートを確認してください
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 47a9c707dbe0bb4276512cdd364ef679c7c6aa3c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2ec8e46dc881b48e4f885aa2237fae063c9d4305
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097194"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222430"
 ---
 # <a name="azure-percept-dk-datasheet"></a>Azure Percept DK のデータシート
 

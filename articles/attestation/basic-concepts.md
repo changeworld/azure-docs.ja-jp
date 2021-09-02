@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 47231ecab14ab9d1705d1015c0de4a035a10a02e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 5ac431f489f279ea09407e1a34c234911d71f12f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112417309"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259734"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -21,7 +21,7 @@ ms.locfileid: "112417309"
 
 ## <a name="json-web-token-jwt"></a>JSON Web トークン (JWT)
 
-[JSON Web トークン](https://jwt.io/) (JWT) は、当事者間で情報を JavaScript Object Notation (JSON) オブジェクトとして安全に転送するためのオープン標準 [RFC7519](https://tools.ietf.org/html/rfc7519) の手法です。 この情報はデジタル署名されているため、検証して信頼することができます。 JWT の署名には、シークレットを使用するか、公開/秘密キーの組を使用します。
+[JSON Web トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) (JWT) は、当事者間で情報を JavaScript Object Notation (JSON) オブジェクトとして安全に転送するためのオープン標準 [RFC7519](https://tools.ietf.org/html/rfc7519) の手法です。 この情報はデジタル署名されているため、検証して信頼することができます。 JWT の署名には、シークレットを使用するか、公開/秘密キーの組を使用します。
 
 ## <a name="json-web-key-jwk"></a>JSON Web Key (JWK)
 

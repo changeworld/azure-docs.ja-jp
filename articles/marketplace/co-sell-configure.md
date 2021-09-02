@@ -7,17 +7,17 @@ ms.topic: how-to
 author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: d38123aef6ac51423b90fa06d720574bb595bb14
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/13/2021
+ms.openlocfilehash: 74bc41fb84f63f4705da95f80d6f27dea009ea43
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133459"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866737"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーの共同販売を構成する
 
-この記事では、コマーシャル マーケットプレース オファーの **[Microsoft と共同販売する]** タブを構成する方法について説明します。 このタブでの情報提供は完全にオプションですが、[Co-sell Ready (共同販売の準備完了) および IP Co-sell Incentivized (IP 共同販売インセンティブ対象) 状態](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)を実現するために必要です。 提供された情報は、顧客のニーズに対するその適合度を評価する際にお客様のオファーの詳細を確認するために Microsoft のセールス チームによって使用されます。 この情報は、顧客が直接入手できるものではありません。 共同販売の詳細については、[Microsoft 販売者およびパートナーとの共同販売の概要](./co-sell-overview.md)および [Microsoft との共同販売](https://partner.microsoft.com/membership/co-sell-with-microsoft)に関するページを参照してください。
+この記事では、コマーシャル マーケットプレース オファーの **[Microsoft と共同販売する]** タブを構成する方法について説明します。 このタブでの提供の情報は完全にオプションですが、[共同販売の準備完了および IP 共同販売インセンティブ ステータス](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)を達成する必要があります。 提供された情報は、顧客のニーズに対するその適合度を評価する際にお客様のオファーの詳細を確認するために Microsoft のセールス チームによって使用されます。 この情報は、顧客が直接入手できるものではありません。 共同販売の詳細については、[Microsoft 販売者およびパートナーとの共同販売の概要](./co-sell-overview.md)および [Microsoft との共同販売](https://partner.microsoft.com/membership/co-sell-with-microsoft)に関するページを参照してください。
 
 共同販売オプションは、次のオファーの種類で利用できます。
 
@@ -25,7 +25,7 @@ ms.locfileid: "108133459"
 - Azure Container
 - Azure Virtual Machine
 - コンサルティング サービス
-- Dynamics 365 for Customer Engagement および PowerApps
+- Dynamics 365 for Customer Engagement & Power Apps
 - Dynamics 365 for Operations
 - Dynamics 365 Business Central
 - IoT Edge モジュール
@@ -93,7 +93,7 @@ ms.locfileid: "108133459"
 サポートされているファイルの種類は .pdf、.ppt、.pptx、.doc、.docx、.xls、.xlsx、.jpg、.png、.mp4 です。 次の表 2 に、いくつかのドキュメントのテンプレートを示します。
 
 > [!NOTE]
-> "共同販売の準備完了" 状態を実現するには、**ソリューション/オファーを 1 ページにまとめた文書** および **ソリューション/オファーのピッチ デッキ** が必要です。 オファーによっては、これらは、Azure IP 共同販売インセンティブの対象になるための前提条件でもあります。 "Azure IP 共同販売インセンティブ対象" の状態には、参照アーキテクチャの図も必要です。 この表で説明しているその他のドキュメントは省略可能ですが、推奨されています。
+> "共同販売の準備完了" 状態を実現するには、**ソリューション/オファーを 1 ページにまとめた文書** および **ソリューション/オファーのピッチ デッキ** が必要です。 これらはまた、一部のオファーが Azure IP 共同販売インセンティブになるための前提条件でもあります。 Azure IP 共同販売インセンティブ ステータスには、参照アーキテクチャ図も必要です。 この表で説明しているその他のドキュメントは省略可能ですが、推奨されています。
 
 ***表 2: 共同販売をサポートするドキュメント***
 
@@ -104,7 +104,7 @@ ms.locfileid: "108133459"
 | *Customer case study (お客様のケース スタディ)* (省略可能)| [ケーススタディ テンプレート](https://aka.ms/GTM_Case_Study_Template)を使用して、顧客のケース スタディを作成します。 この情報は、お客様と Microsoft が以前のケースでお客様のオファーを適切に展開した方法を潜在顧客に示します。 |
 | *Verifiable customer wins (検証可能なお客様の成功事例)* (省略可能) | お客様のオファーが展開された後の顧客の成功の具体的な例を提供します。 |
 | *Channel pitch deck (チャネル ピッチ デッキ)* (省略可能) | チャネル リセラーがお客様のオファーの詳細を理解し、そのセールス チームがそれを販売する準備ができるようにするための情報を含むスライド デッキ。 このデッキには通常、エレベーター ピッチ、対象顧客に関する情報、顧客に確認する質問、話の要点、および動画、ドキュメント、サポート情報のリンクが含まれています。 |
-| *参照アーキテクチャの図* ("Azure IP 共同販売インセンティブ対象" の状態に必要) | お客様のオファー、またそのオファーと Microsoft のクラウド サービスとの関係を表す図。 オファーが "Azure IP 共同販売インセンティブ対象" 状態の技術要件をどのようにして満たしているかを示す場合もあります。 [参照アーキテクチャ図の詳細](reference-architecture-diagram.md)。 |
+| *参照アーキテクチャ図* (Azure IP 共同販売インセンティブ ステータスに必要) | お客様のオファー、またそのオファーと Microsoft のクラウド サービスとの関係を表す図。 これはまた、オファーが Azure IP 共同販売インセンティブ ステータスの技術的な要件をどれだけ満たしているかを示している可能性があります。 [参照アーキテクチャ図の詳細](reference-architecture-diagram.md)。 |
 | *Other documents (その他のドキュメント)* (省略可能) | お客様のオファー、組織、他のオファーとの差別化要因について Microsoft のセールス チームやチャネル リセラーが理解できるように、最大 5 つの追加ドキュメントまたは動画をアップロードできます。 |
 |||
 

@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: 27ed450f436ef75799eb9ca3d5d3e6fd67240785
-  ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+  ms.openlocfilehash: 2c154a084f91a988231dd46d22ca51611dabcec9
+  ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/23/2021
-  ms.locfileid: "112522367"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123305370"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
       url: dms-overview.md
   - linkListType: get-started
     links:
+    - text: Azure Data Studio を使用して移行する
+      url: migration-using-azure-data-studio.md
     - text: データベース移行シナリオの状態
       url: resource-scenario-status.md
     - text: 前提条件の概要

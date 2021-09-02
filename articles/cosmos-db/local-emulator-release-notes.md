@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 31b051c37d4fbf1c73c8711e3e9a330cacc1c26d
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 23abc9cd391548a4a97622e6cb7110de828498f2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904354"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180262"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,18 @@ ms.locfileid: "107904354"
 |**開始するには**|[Azure Cosmos DB Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2142-12-august-2021"></a>2.14.2 (2021 年 8 月 12 日)
+
+ - このリリースでは、ローカルの Data Explorer コンテンツが最新 Azure Portal バージョンに更新され、Linux Cosmos エミュレーターの Docker イメージのベースがリセットされます。
+
+### <a name="2141-18-june-2021"></a>2.14.1 (2021 年 6 月 18 日)
+
+ - このリリースでは、エミュレーターの起動時間が短縮され、ディスク上のデータのフットプリントが削減されます。 この新しい最適化は、"/EnablePreview" 引数によってアクティブ化されます。
+
+### <a name="2140-15-june-2021"></a>2.14.0 (2021 年 6 月 15 日)
+
+ - このリリースでは、ローカルの Data Explorer コンテンツが最新 Azure Portal バージョンに更新されます。このリリースでは、JSON ファイルのアップロード機能を使用して、複数のドキュメント項目をインポートする際の既知の問題に対処しています。
 
 ### <a name="21113-21-april-2021"></a>2.11.13 (2021 年 4 月 21 日)
 

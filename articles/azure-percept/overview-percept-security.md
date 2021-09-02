@@ -1,20 +1,20 @@
 ---
-title: Azure Percept セキュリティの概要
+title: Azure Percept のセキュリティ
 description: Azure Percept セキュリティの詳細
 author: mimcco
-ms.author: mimcco
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 93884fb87f87651054ffff0a04c4910de634a5eb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cfee4f14b5e7f135c7bbe609b5f3453b5fce8589
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567646"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221944"
 ---
-# <a name="azure-percept-security-overview"></a>Azure Percept セキュリティの概要
+# <a name="azure-percept-security"></a>Azure Percept のセキュリティ
 
 Azure Percept デバイスはハードウェア Root of Trust (信頼の基点) に基づいて設計されています。 この組み込みセキュリティは、推論データと機密性の高いセンサー (カメラやマイクなど) との保護に役立つほか、Azure Percept Studio サービスでのデバイスの認証と認可を可能にします。
 

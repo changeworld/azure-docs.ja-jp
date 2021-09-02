@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db1878c2760cfcaa157d0ef233bb1931a5f310b3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9acbe5d7b57906c894021ec4e4f83633433b3c3b
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970907"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228617"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -82,7 +82,7 @@ ms.locfileid: "111970907"
 
 アクセス レビューを作成または実行する、全体管理者またはユーザー管理者以外のユーザーごとに、有効な Azure AD Premium (P2) ライセンスが必要です。 詳細については、[アクセス レビューのライセンス要件](access-reviews-overview.md)に関するページを参照してください。
 
-[エンタイトルメント ライフサイクル管理](entitlement-management-overview.md)や Privileged Identity Management など、Identity Governance のその他の機能も必要になる場合があります。 その場合、関連するライセンスも必要になることがあります。 詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+[エンタイトルメント ライフサイクル管理](entitlement-management-overview.md)や Privileged Identity Management など、Identity Governance のその他の機能も必要になる場合があります。 その場合、関連するライセンスも必要になることがあります。 詳細については、「[Azure Active Directory の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)」をご覧ください。
 
 ## <a name="plan-the-access-reviews-deployment-project"></a>アクセス レビューのデプロイ プロジェクトの計画
 

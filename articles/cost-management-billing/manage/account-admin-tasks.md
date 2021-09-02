@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6868739d5b2350d5ac29e12f48278348ee7204a8
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027970"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437448"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portal でのアカウント管理者のタスク
 
@@ -25,6 +25,11 @@ ms.locfileid: "97027970"
 - Azure イン オープン プラン サブスクリプションにクレジットを追加する
 
 これらのすべてのタスクを実行するには、アカウント管理者である必要があります。
+
+## <a name="accounts-portal-is-retiring"></a>アカウント ポータルは廃止される
+
+アカウント ポータルは廃止され、ユーザーは 2021 年 12 月 31 日までに Azure portal にリダイレクトされます。 アカウント ポータルでサポートされている機能は、Azure portal に移行されます。 この記事では、Azure portal で最も一般的な操作のいくつかを実行する方法について説明します。
+
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>サブスクリプションの支払い方法に移動する
 

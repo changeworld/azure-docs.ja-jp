@@ -1,5 +1,5 @@
 ---
-title: SAP HANA on Azure (L インスタンス) 向け追加のネットワーク要件 | Microsoft Docs
+title: SAP HANA on Azure (Large Instances) 向けのその他のネットワーク要件 | Microsoft Docs
 description: 必要になる可能性がある、SAP HANA on Azure Large Instances の追加のネットワーク要件について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 6/3/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 214a73e2e23478c98fb646248ba938e35d7b5108
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: a91f2116eb7eb2e6d7908e5c8c4e5171fff8c294
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421780"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361074"
 ---
-# <a name="additional-network-requirements-for-large-instances"></a>L インスタンス向け追加のネットワーク要件
+# <a name="other-network-requirements-for-large-instances"></a>Large Instances 向けのその他のネットワーク要件
 
 この記事では、SAP HANA on Azure Large Instances をデプロイするときに必要になる可能性のある他のネットワーク要件について説明します。
 
@@ -35,9 +35,9 @@ ms.locfileid: "111421780"
 
 IP アドレスまたはサブネットを追加することが必要な場合があります。 IP アドレスまたはサブネットを追加するには、Azure portal、PowerShell、Azure CLI のいずれかを使用します。
 
-集約した範囲を新たに作成するのではなく、新しい IP アドレス範囲を新しい範囲として仮想ネットワーク アドレス空間に追加します。 この変更を Microsoft に送信します。 これにより、ご利用のクライアントでその新しい IP アドレス範囲から、HANA Large Instances に接続できます。 追加する新しい仮想ネットワーク アドレス空間を取得するために、Azure サポート要求を開くことができます。 確認を受け取ったら、「[HANA L インスタンスへの Azure VM の接続](hana-connect-azure-vm-large-instances.md)」で説明されている手順を実行します。 
+新しい IP アドレス範囲を新しい範囲として仮想ネットワーク アドレス空間に追加します。 集約した範囲を新たに作成しないでください。 この変更を Microsoft に送信します。 これにより、ご利用のクライアントでその新しい IP アドレス範囲から、HANA Large Instances に接続できます。 追加する新しい仮想ネットワーク アドレス空間を取得するために、Azure サポート要求を開くことができます。 確認を受け取ったら、「[HANA L インスタンスへの Azure VM の接続](hana-connect-azure-vm-large-instances.md)」で説明されている手順を実行します。 
 
-Azure portal から追加のサブネットを作成するには、[Azure portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関する記事をご覧ください。 PowerShell からサブネットを作成するには、[PowerShell を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関する記事をご覧ください。
+Azure portal から別のサブネットを作成するには、[Azure portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関する記事を参照してください。 PowerShell からサブネットを作成するには、[PowerShell を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関する記事をご覧ください。
 
 ## <a name="add-virtual-networks"></a>仮想ネットワークの追加
 
@@ -55,7 +55,9 @@ SAP HANA on Microsoft サービス管理にお問い合わせください。 別
 
 ## <a name="delete-a-subnet"></a>サブネットの削除
 
-仮想ネットワーク サブネットを削除するには、Azure portal、PowerShell、または Azure CLI を使用できます。 Azure 仮想ネットワークの IP アドレス範囲またはアドレス空間の範囲が集約されている場合、Microsoft でアクションを実行する必要はありません (ただし、削除したサブネットを含む BGP ルート アドレス空間は、仮想ネットワークから引き続き伝達されていることに注意してください)。Azure 仮想ネットワークのアドレス範囲またはアドレス空間が複数の IP アドレス範囲として定義されている場合があります。 これらの範囲のいずれかが、削除したサブネットに割り当てられていることがあります。 それを仮想ネットワーク アドレス空間から削除してください。 次に、SAP HANA on Microsoft サービス管理に、SAP HANA on Azure Large Instances が通信を許可されている範囲からそれを削除するように通知します。
+仮想ネットワーク サブネットを削除するには、Azure portal、PowerShell、または Azure CLI を使用できます。 Azure 仮想ネットワークの IP アドレス範囲またはアドレス空間の範囲が集約されている場合、Microsoft でアクションを実行する必要はありません (削除したサブネットを含む BGP ルート アドレス空間は依然として仮想ネットワークから伝播されています)。 
+
+Azure 仮想ネットワークのアドレス範囲またはアドレス空間を複数の IP アドレス範囲として定義した可能性があります。 これらの範囲のいずれかが、削除したサブネットに割り当てられていることがあります。 それを仮想ネットワーク アドレス空間から削除してください。 次に、SAP HANA on Microsoft サービス管理に、SAP HANA on Azure Large Instances が通信を許可されている範囲からそれを削除するように通知します。
 
 詳細については、「[サブネットの削除](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet)」を参照してください。
 
@@ -67,7 +69,11 @@ SAP HANA on Microsoft サービス管理により、SAP HANA on Azure Large Inst
 
 仮想ネットワークの削除後、Azure サポート要求を開き、削除する IP アドレス空間範囲を指定します。
 
-必ずすべてのものを削除してください。 ExpressRoute 接続、仮想ネットワーク ゲートウェイ、仮想ネットワーク ゲートウェイのパブリック IP、仮想ネットワークを削除します。
+必ずすべてのものを削除してください。 次を削除します。
+- ExpressRoute 接続
+- 仮想ネットワーク ゲートウェイ
+- 仮想ネットワーク ゲートウェイのパブリック IP
+- 仮想ネットワーク
 
 ## <a name="delete-an-expressroute-circuit"></a>ExpressRoute 回線の削除
 

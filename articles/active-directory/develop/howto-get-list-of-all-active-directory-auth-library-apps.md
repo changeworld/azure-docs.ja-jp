@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/22/2021
 ms.author: shermanouko
-ms.custom: aaddev
+ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 7f4dfaaaaae39245c54c8ee3fc7879fd58b8ea9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d9c0f9787360ed599d586295181ef359fdff293
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725761"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418669"
 ---
 # <a name="how-to-get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>方法: テナントで ADAL を使用しているアプリの一覧を取得する
 
@@ -58,7 +58,7 @@ ADAL を使用しているアプリを特定した後、下に示すアプリケ
 
 [!INCLUDE [application type](includes/adal-msal-migration.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 MSAL の詳細、たとえば使用情報や、さまざまなプログラミング言語とアプリケーションの種類で使用できるライブラリについては、こちらを参照してください。
 

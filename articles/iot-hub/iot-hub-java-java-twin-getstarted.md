@@ -2,7 +2,6 @@
 title: Azure IoT Hub デバイス ツインの使用 (Java) | Microsoft Docs
 description: Azure IoT Hub デバイス ツインを使用してタグを追加し、IoT Hub クエリを使用する方法。 Java 用 Azure IoT device SDK を使用してデバイス アプリを実装し、タグの追加と IoT Hub のクエリを実行するサービス アプリを実装します。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -10,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 53a82ba545fa1709d1b79f3ff6b18f1817736bb7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 044eb2543c2476cd53d73e78a6ac810b2bafa1ca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217858"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748405"
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -408,6 +407,6 @@ ms.locfileid: "102217858"
 
 詳細については、次のリソースをご覧ください。
 
-* [IoT Hub の概要](quickstart-send-telemetry-java.md)に関するチュートリアルでデバイスからテレメトリを送信する。
+* [IoT Hub の概要](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java)に関するチュートリアルでデバイスからテレメトリを送信する。
 
-* 「[ダイレクト メソッドの使用](quickstart-control-device-java.md)」チュートリアルで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。
+* [ダイレクト メソッドの使用](./quickstart-control-device.md?pivots=programming-language-java)に関するクイックスタートで、デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど)。

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2020
+ms.date: 08/17/2021
 ms.author: memildin
-ms.openlocfilehash: 432729417a65376533d9ecc201f2f6f52376cc58
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 86edda1fa9aff73a5f6daca1494a81ab94aa9e3b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099405"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322907"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure Security Center 上の SQL 情報保護ポリシー
  
@@ -31,10 +31,7 @@ SQL 情報保護の[データの検出と分類メカニズム](../azure-sql/dat
 
 Security Center 内の情報保護ポリシー オプションには、ラベルと情報の種類の定義済みセットが用意されおり、分類エンジンの既定値として機能します。 次に示すように、組織のニーズに応じてポリシーをカスタマイズできます。
 
-> [!IMPORTANT]
-> Azure テナントの情報保護ポリシーをカスタマイズするには、テナントのルート管理グループに対する管理特権が必要です。 詳細については、「[テナント全体の可視性を付与および要求する](tenant-wide-permissions-management.md)」を参照してください。
-
-:::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="SQL 情報の保護ポリシーを示しているページ":::
+:::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="SQL 情報の保護ポリシーを示しているページ。":::
  
 
 
@@ -60,7 +57,7 @@ Security Center の **[価格と設定]** ページで、 **[SQL information pro
 > [!NOTE]
 > このオプションは、テナントレベルのアクセス許可を持つユーザーに対してのみ表示されます。 [テナント全体のアクセス許可を自分に付与します](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself)。
 
-:::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Azure Security Center の [価格と設定] ページから SQL 情報保護ポリシーへのアクセス":::
+:::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Azure Security Center の [価格と設定] ページから SQL 情報保護ポリシーへのアクセス。":::
 
 
 
@@ -72,7 +69,7 @@ Security Center の推奨事項である "SQL データベースの機密デー�
 
 1. Security Center の **[推奨事項]** ページで、"**SQL データベースの機密データを分類する必要があります**" という推奨事項を検索します。
 
-    :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="SQL 情報保護ポリシーへのアクセスを提供する推奨事項の検索":::
+    :::image type="content" source="./media/security-center-info-protection-policy/sql-sensitive-data-recommendation.png" alt-text="SQL 情報保護ポリシーへのアクセスを提供する推奨事項の検索。":::
 
 1. [推奨事項の詳細] ページで、 **[正常]** または **[異常]** タブからデータベースを選択します。
 
@@ -88,13 +85,13 @@ Security Center の推奨事項である "SQL データベースの機密デー�
 
 1. Azure portal から Azure SQL を開きます。
 
-    :::image type="content" source="./media/security-center-info-protection-policy/open-azure-sql.png" alt-text="Azure portal から Azure SQL を開く":::
+    :::image type="content" source="./media/security-center-info-protection-policy/open-azure-sql.png" alt-text="Azure portal から Azure SQL を開く。":::
 
 1. 任意のデータベースを選択します。
 
 1. メニューの **[セキュリティ]** 領域で、 **[データ検出と分類]** ページ (1) を開き、 **[構成]** (2) を選択します。
 
-    :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-azure-sql.png" alt-text="Azure SQL から SQL 情報保護ポリシーを開く":::
+    :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-azure-sql.png" alt-text="Azure SQL から SQL 情報保護ポリシーを開く。":::
 
 --- 
 
@@ -105,11 +102,11 @@ Security Center の推奨事項である "SQL データベースの機密デー�
 
 1. **[情報の種類を管理する]** を選択します。
 
-    :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="情報保護ポリシーの情報の種類を管理する":::
+    :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="情報保護ポリシーの情報の種類を管理する。":::
 
 1. 新しい種類を追加するには、 **[情報の種類を作成する]** を選択します。 情報の種類の名前、説明、検索パターン文字列を構成できます。 検索パターン文字列では、オプションで、ワイルドカード文字 ('%' 文字を使用) を含むキーワードを使用できます。自動検出エンジンでは、このキーワードを使用して、列のメタデータに基づいてデータベース内の機密データが識別されます。
  
-    :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="情報保護ポリシーの新しい情報の種類を構成する":::
+    :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="情報保護ポリシーの新しい情報の種類を構成する。":::
 
 1. 追加の検索パターン文字列の追加、既存の文字列の一部の無効化、または説明の変更により、組み込みの情報の種類を変更することもできます。 
 
@@ -129,11 +126,19 @@ Security Center の推奨事項である "SQL データベースの機密デー�
 
 定義されているラベルと情報の種類が含まれる JSON ファイルをダウンロードし、任意のエディターでファイルを編集して、更新されたファイルをインポートすることができます。 
 
-:::image type="content" source="./media/security-center-info-protection-policy/export-import.png" alt-text="情報保護ポリシーのエクスポートとインポート":::
+:::image type="content" source="./media/security-center-info-protection-policy/export-import.png" alt-text="情報保護ポリシーのエクスポートとインポート。":::
 
 > [!NOTE]
 > ポリシー ファイルをインポートするには、テナント レベルのアクセス許可が必要です。 
 
+
+## <a name="permissions"></a>アクセス許可
+
+Azure テナントの情報保護ポリシーをカスタマイズするには、テナントのルート管理グループに対して次のアクションが必要です。
+  - Microsoft.Security/informationProtectionPolicies/read
+  - Microsoft.Security/informationProtectionPolicies/write 
+
+詳細については、「[テナント全体の可視性を付与および要求する](tenant-wide-permissions-management.md)」を参照してください。
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>Azure PowerShell を使用した SQL 情報保護の管理
 

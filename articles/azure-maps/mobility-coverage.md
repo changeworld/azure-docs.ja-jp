@@ -7,20 +7,18 @@ ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2552b9ee4ba37ad6062229958557d81e871fbe5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904756"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733411"
 ---
 # <a name="azure-maps-mobility-services-preview-coverage"></a>Azure Maps Mobility Service (プレビュー) の対象範囲
 
 > [!IMPORTANT]
-> Azure Maps Mobility Service は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
+> Azure Maps Mobility Services のプレビューは廃止され、2021 年 10 月 5 日以降は使用できず、サポートも停止されます。 他のすべての Azure Maps API およびサービスは、この廃止の発表の影響を受けません。
+> 詳細については、[Azure Maps Mobility のプレビューの廃止](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/)に関するページを参照してください。
 
 Azure Maps [Mobility Service](/rest/api/maps/mobility) では、輸送経路を指定したり、公共輸送機関の最寄りの停留所を検索したりするなど、公共輸送機関機能を利用できるため、アプリケーションの開発時間が短縮されます。 ユーザーは、輸送の停留所、路線、スケジュールに関する詳細情報を取得できます。 Mobility Service では、ユーザーは停留所や路線の配置、停留所、路線、サービス エリアのアラート、公共輸送機関のリアルタイム到着アラートやサービス アラートを取得することもできます。 さらに、Mobility Service は、マルチモーダルな旅行計画オプションでルーティング機能を提供します。 マルチモードの旅行計画では、徒歩、自転車、公共輸送機関の選択肢がすべて 1 つの旅行に組み込まれます。 ユーザーはまた、段階式で詳しいマルチモードの旅程にアクセスできます。
 

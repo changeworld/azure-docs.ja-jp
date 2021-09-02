@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: article
 ms.date: 06/07/2021
 ms.author: duau
-ms.openlocfilehash: 848134fec184febcdc5cde722fbec8e55d149d14
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f76c996f75dce0ea1f6aae8dc8c86ac80f6006a5
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747997"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253868"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (プレビュー) に関する FAQ
 
@@ -31,11 +31,11 @@ Azure Route Server は、ネットワーク仮想アプライアンス (NVA) と
 
 ### <a name="how-many-route-servers-can-i-create-in-a-virtual-network"></a>仮想ネットワークにはいくつのルート サーバーを作成できますか。
 
-VNet 内に作成できるルート サーバーは 1 つだけです。 これは、*RouteServerSubnet* という名前の指定されたサブネットにデプロイする必要があります。
+仮想ネットワーク内に作成できるルート サーバーは 1 つだけです。 これは、*RouteServerSubnet* という名前の専用サブネットにデプロイする必要があります。
 
-### <a name="does-azure-route-server-support-vnet-peering"></a>Azure Route Server では VNet ピアリングがサポートされていますか。
+### <a name="does-azure-route-server-support-virtual-network-peering"></a>Azure Route Server では仮想ネットワーク ピアリングがサポートされていますか。
 
-はい。 Azure Route Server をホスティングしている VNet を別の VNet にピアリングし、後者の VNet でリモート ゲートウェイの使用を有効にした場合、Azure Route Server はその VNet のアドレス空間を学習し、ピアリングされたすべての NVA に送信します。 また、ピアリングされた VNet 内の VM のルーティング テーブルに、NVA からのルートがプログラミングされます。 
+はい。Azure Route Server をホストしている仮想ネットワークを別の仮想ネットワークにピアリングし、2 番目の仮想ネットワークでリモート ゲートウェイの使用を有効にした場合、Azure Route Server は、その仮想ネットワークのアドレス空間を学習し、ピアリングされたすべての NVA に送信します。 また、NVA から、ピアリングされた仮想ネットワーク内の VM のルーティング テーブルへのルートがプログラミングされます。 
 
 
 ### <a name="what-routing-protocols-does-azure-route-server-support"></a><a name = "protocol"></a>Azure Route Server ではどのようなルーティング プロトコルがサポートされていますか。
@@ -48,6 +48,10 @@ Azure Route Server では、Border Gateway Protocol (BGP) のみがサポート�
 
 ### <a name="does-azure-route-server-store-customer-data"></a>Azure Route Server では、顧客データは保存されますか。
 いいえ。 Azure Route Server が行うのは、BGP ルートを NVA と交換し、それらを仮想ネットワークに伝達することのみです。
+
+### <a name="why-does-azure-route-server-require-a-public-ip-address"></a>Azure Route Server にパブリック IP アドレスが必要なのはなぜですか。
+
+Azure Router Server では、Route Server の構成を管理するバックエンド サービスへの接続を確保する必要があるため、パブリック IP アドレスが必要になります。 
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>Azure Route Server が複数の NVA から同じルートを受け取る場合、どのように処理されますか。
 
@@ -72,11 +76,15 @@ Azure Route Server では、Border Gateway Protocol (BGP) のみがサポート�
 
 いいえ。Azure Route Server でサポートされる ASN は、16 ビット (2 バイト) のみです。
 
+### <a name="can-i-configure-a-user-defined-route-udr-in-the-azurerouteserver-subnet"></a>AzureRouteServer サブネットでユーザー定義ルート (UDR) を構成できますか。
+
+いいえ。Azure Route Server では、AzureRouteServer サブネットでの UDR の構成はサポートされていません。
+
 ### <a name="can-i-peer-two-route-servers-in-two-peered-virtual-networks-and-enable-the-nvas-connected-to-the-route-servers-to-talk-to-each-other"></a>2 つのピアリングされた仮想ネットワーク内の 2 つのルート サーバーをピアリングし、ルート サーバーに接続されている NVA が互いに通信可能となるようにできますか? 
 
 ***トポロジ: NVA1 -> RouteServer1 -> (VNet ピアリング経由) -> RouteServer2 -> NVA2***
 
-いいえ。Azure Route Server では、データ トラフィックは転送されません。 NVA を介したトランジット接続を有効にするには、NVA 間の直接接続 (IPsec トンネルなど) を設定し、ルート サーバーを利用して動的なルート伝達を行います。 
+いいえ。Azure Route Server では、データ トラフィックは転送されません。 NVA を介したトランジット接続を有効にするには、NVA 間の直接接続 (IPsec トンネルなど) を設定し、動的なルート伝達にルート サーバーを使用します。 
 
 ## <a name="route-server-limits"></a><a name = "limitations"></a>Route Server の制限
 
@@ -87,9 +95,9 @@ Azure Route Server には、(デプロイごとに) 次の制限があります�
 | サポートされている BGP ピアの数 | 8 |
 | 各 BGP ピアで Azure Route Server にアドバタイズできるルートの数 | 200 |
 | Azure Route Server で ExpressRoute または VPN ゲートウェイにアドバタイズできるルートの数 | 200 |
-| Azure Route Server で対応できる、仮想ネットワークの最大 VM 数 (ピアリングしている VNet の数を含む) | 6000 |
+| Azure Route Server で対応できる、仮想ネットワークの最大 VM 数 (ピアリングされた仮想ネットワークの数を含む) | 6000 |
 
-NVA によって制限より多くのルートが公開された場合、BGP セッションは削除されます。 ゲートウェイと Azure Route Server にこれが発生した場合は、オンプレミス ネットワークから Azure への接続が失われます。 詳しくは、「[Azure 仮想マシンのルーティングに関する問題を診断する](../virtual-network/diagnose-network-routing-problem.md)」をご覧ください。
+NVA によって制限より多くのルートが公開された場合、BGP セッションは削除されます。 ゲートウェイと Azure Route Server の間で BGP セッションが削除された場合、オンプレミス ネットワークから Azure への接続は失われます。 詳しくは、「[Azure 仮想マシンのルーティングに関する問題を診断する](../virtual-network/diagnose-network-routing-problem.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,17 +2,28 @@
 title: Azure VMware Solution のプラットフォーム更新プログラム
 description: Azure VMware Solution のプラットフォーム更新プログラムについて説明します。
 ms.topic: reference
-ms.date: 05/26/2021
-ms.openlocfilehash: 38cd183b783989f6a682b68e92e490354b032750
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 07/23/2021
+ms.openlocfilehash: 01667e4a22dc220e9895071d047210e8487ff2bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538066"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750090"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Azure VMware Solution のプラットフォーム更新プログラム
 
 Azure VMware Solution の重要な更新プログラムが 2021 年 3 月から適用されます。 メンテナンスのタイムラインが記載された通知が Azure Service Health 経由で届きます。 詳細については、「[ホストのメンテナンスとライフサイクル管理](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management)」を参照してください。
+
+## <a name="july-23-2021"></a>2021 年 7 月 23 日
+
+すべての新しい Azure VMware Solution プライベート クラウドは、NSX-T バージョン [!INCLUDE [nsxt-version](includes/nsxt-version.md)] でデプロイされます。 既存のプライベート クラウドの NSX-T バージョンは、2021 年 9 月までに NSX-T [!INCLUDE [nsxt-version](includes/nsxt-version.md)] リリースにアップグレードされます。
+ 
+計画メンテナンスの日時が記載された電子メールが届きます。 アップグレードを再スケジュールできます。 電子メールには、アップグレードされたコンポーネントの詳細や、ワークロード、プライベート クラウドへのアクセス、その他の Azure サービスへの影響についても記載されています。 
+
+この NSX-T バージョンの詳細については、「[VMware NSX-T データ センター [!INCLUDE [nsxt-version](includes/nsxt-version.md)] リリース ノート」を参照してください](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/rn/VMware-NSX-T-Data-Center-312-Release-Notes.html)。
+
+
+
 
 ## <a name="may-25-2021"></a>2021 年 5 月 25 日
 VMware セキュリティ アドバイザリ [VMSA-2021-0010](https://www.vmware.com/security/advisories/VMSA-2021-0010.html) によると、VMware ESXi と vSphere Client (HTML5) の複数の脆弱性が VMware にレポートされています。 
@@ -25,7 +36,7 @@ VMware セキュリティ アドバイザリ [VMSA-2021-0010](https://www.vmware
  
 Azure VMware Solution サービスは、プライベート クラウドの vCenter サーバーに重要な更新プログラムを適用するために、2021 年 5 月 23 日までメンテナンス作業を行います。  プライベート クラウドのメンテナンスのタイムラインが記載された通知が、Azure Service Health 経由で届きます。
  
-この間、VMware vCenter は使用できなくなり、VM を管理 (停止、開始、作成、または削除) できなくなります。 プライベート クラウドでこの期間中に、プライベート クラウドのスケールアップ、新しいネットワークの作成など、その他のアクティビティを計画しないことをお勧めします。
+この間、VMware vCenter は使用できなくなり、VM を管理 (停止、開始、作成、または削除) できなくなります。 プライベート クラウドでこの期間中に、プライベート クラウドの拡大、新しいネットワークの作成など、その他のアクティビティを計画しないことをお勧めします。
  
 プライベート クラウドで実行されているワークロードには影響しません。
 

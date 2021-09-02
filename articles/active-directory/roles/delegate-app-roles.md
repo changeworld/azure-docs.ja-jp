@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dd14da92eedc14a3da8e9eb0a29b08d96acd204
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 26373d9bfb0c946f412358c16b97f882e2cfba53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790785"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439126"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory でアプリ登録のアクセス許可を委任する
 
@@ -61,9 +61,12 @@ Azure AD の既定では、すべてのユーザーがアプリケーション�
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>エンタープライズ アプリケーションに所有者を割り当てるには
 
 1. 組織のアプリケーション管理者またはクラウド アプリケーション管理者に適合するアカウントを使用して、[Azure AD 組織](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
-1. 組織の[アプリの登録ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)で、アプリを選択して、アプリの [概要] ページを開きます。
+1. 組織の[エンタープライズ アプリケーションのページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)で、アプリを選択して、アプリの [概要] ページを開きます。
 1. **[所有者]** を選択して、アプリの所有者の一覧を表示します。
 1. **[追加]** を選択し、アプリに追加する所有者を 1 人以上選択します。
+
+> [!NOTE]
+> ユーザー設定の [[Azure AD 管理ポータルへのアクセスを制限する]](../fundamentals/users-default-permissions.md) が [はい] に設定されている場合、管理者以外のユーザーは自分が所有するアプリケーションを Azure portal を使用して管理できません。
 
 > [!IMPORTANT]
 > ユーザーおよびサービス プリンシパルは、アプリケーション登録の所有者になることができます。 エンタープライズ アプリケーションの所有者になることができるのはユーザーのみです。 グループはいずれの所有者としても割り当てることはできません。
@@ -96,7 +99,7 @@ Azure AD には、すべてのアプリケーションに対する Azure AD で�
 
 アプリケーション管理の委任のためにカスタム ロールを作成して使用する場合のヒント:
 - カスタム ロールは、Azure portal の最新のアプリ登録ブレードでのみアクセス権を付与します。 レガシ アプリ登録ブレードではアクセス権は付与されません。
-- [Azure AD 管理ポータルへのアクセスを制限する] ユーザー設定が [はい] に設定されている場合、カスタム ロールは Azure portal へのアクセス権を付与しません。
+- [[Azure AD 管理ポータルへのアクセスを制限する]](../fundamentals/users-default-permissions.md) ユーザー設定が [はい] に設定されている場合、カスタム ロールは Azure portal へのアクセス権を付与しません。
 - ロールの割り当てを使用してユーザーがアクセス権を持っているアプリ登録は、アプリの登録ページの [すべてのアプリケーション] タブにのみ表示されます。 これらは [所有しているアプリケーション] タブには表示されません。
 
 カスタム ロールの基本の詳細については、[カスタム ロールの概要](custom-overview.md)に関するページと、[カスタム ロールの作成](custom-create.md)方法と[ロールの割り当て](custom-assign-powershell.md)方法に関するページを参照してください。

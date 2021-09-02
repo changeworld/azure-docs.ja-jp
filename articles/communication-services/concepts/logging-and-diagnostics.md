@@ -2,19 +2,19 @@
 title: Communication Services のログ
 titleSuffix: An Azure Communication Services concept document
 description: Azure Communication Services のログについて説明します
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b8f263a1fefd3a75333f540f1f6e8e5ec1c6870b
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: b894fc7155f1b95ee7ed90b11b158efac9323c51
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112259"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258145"
 ---
 # <a name="communication-services-logs"></a>Communication Services のログ
 

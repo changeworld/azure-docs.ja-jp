@@ -7,12 +7,12 @@ ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: cddc7b931bf59412d4a7ec8e6b0eecfe148f3d5e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: dcbbe63754bdcfc4ded249720b58940e0c219bf9
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749278"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861558"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault と Azure Policy を統合する
 
@@ -35,7 +35,7 @@ ms.locfileid: "107749278"
 
 ## <a name="available-built-in-policy-definitions"></a>使用できる "組み込み" ポリシー定義
 
-Key Vault には、キー、証明書、シークレット オブジェクトを管理するために使用できる一連のポリシーが作成されています。 これらのポリシーは "組み込み" であるため、有効にするためにカスタム JSON を記述する必要がなく、Azure portal で割り当てのために使用できます。 組織のニーズに合わせて特定のパラメーターをカスタマイズすることもできます。
+Key Vault には、キー コンテナーとそのキー、証明書、シークレット オブジェクトを管理するために使用できる一連のポリシーが作成されています。 これらのポリシーは "組み込み" であるため、有効にするためにカスタム JSON を記述する必要がなく、Azure portal で割り当てのために使用できます。 組織のニーズに合わせて特定のパラメーターをカスタマイズすることもできます。
 
 # <a name="certificate-policies"></a>[証明書ポリシー](#tab/certificates)
 
@@ -58,7 +58,7 @@ Key Vault には、キー、証明書、シークレット オブジェクトを
 
 ### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>証明書は、指定の統合された証明機関によって発行される必要がある (プレビュー)
 
-Key Vault によって統合された証明機関 (Digicert または GlobalSign) を使用していて、これらのプロバイダーのいずれかまたは両方をユーザーに使用させる場合は、選択を監査または適用するためにこのポリシーを使用できます。 このポリシーは、キー コンテナー内での自己署名証明書の作成を監査または拒否するためにも使用できます。
+Key Vault によって統合された証明機関 (Digicert または GlobalSign) を使用していて、これらのプロバイダーのいずれかまたは両方をユーザーに使用させる場合は、選択を監査または適用するためにこのポリシーを使用できます。 このポリシーは、証明書の発行ポリシーで選択された CA と、キー コンテナーで定義された CA プロバイダーを評価します。 このポリシーは、キー コンテナー内での自己署名証明書の作成を監査または拒否するためにも使用できます。
 
 ### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>証明書は、指定の統合されていない証明機関によって発行される必要がある (プレビュー)
 
@@ -159,6 +159,20 @@ HSM は、キーを格納するハードウェア セキュリティ モジュ�
 
 キー コンテナー内でのシークレットの最長有効期間を日単位で指定して、組織のコンプライアンス要件を管理します。 設定したしきい値よりも有効期間が長いシークレットは、準拠していないとしてマークされます。 また、このポリシーを使用して、指定した最長有効期間よりも長い有効期限が設定されている新しいシークレットの作成をブロックすることもできます。
 
+# <a name="key-vault-policies"></a>[Key Vault ポリシー](#tab/keyvault)
+
+### <a name="key-vault-should-use-a-virtual-network-service-endpoint"></a>Key Vault で仮想ネットワーク サービス エンドポイントを使用する必要がある
+
+このポリシーは、仮想ネットワーク サービス エンドポイントを使用するように構成されていないすべての Key Vault を監査します。
+
+### <a name="resource-logs-in-key-vault-should-be-enabled"></a>Key Vault のリソース ログを有効にする必要がある
+
+リソース ログが有効になっていることを監査します。 これにより、セキュリティ インシデントが発生した場合やお使いのネットワークが侵害された場合に、調査目的で使用するアクティビティ証跡を再作成できます
+
+### <a name="key-vaults-should-have-purge-protection-enabled"></a>キー コンテナーで消去保護が有効になっている必要がある
+
+悪意でキー コンテナーが削除されると、データが完全に失われる可能性があります。 組織内の悪意のある内部関係者が、キー コンテナーの削除と消去を実行できるおそれがあります。 消去保護では、論理的に削除されたキー コンテナーに必須の保有期間を適用することによって、内部関係者の攻撃から組織を保護します。 組織や Microsoft の内部にいるどのユーザーも、論理的な削除の保有期間中にキー コンテナーを消去することはできなくなります。
+
 ---
 
 ## <a name="example-scenario"></a>シナリオ例
@@ -240,3 +254,4 @@ HSM は、キーを格納するハードウェア セキュリティ モジュ�
 
 - [Azure Policy サービス](../../governance/policy/overview.md)の詳細を確認する
 - Key Vault のサンプルを参照する:[Key Vault の組み込みのポリシー定義](../../governance/policy/samples/built-in-policies.md#key-vault)
+- [キー コンテナーの Azure セキュリティ ベンチマーク ガイダンス](/security/benchmark/azure/baselines/key-vault-security-baseline?source=docs#network-security)について確認する

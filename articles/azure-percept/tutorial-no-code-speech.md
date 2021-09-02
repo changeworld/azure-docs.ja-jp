@@ -1,20 +1,20 @@
 ---
-title: Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する
+title: Azure Percept Studio でコードなしの音声アシスタントを作成する
 description: コーディングなしで音声ソリューションを作成し、Azure Percept DK にデプロイする方法について説明します。
-author: philmea
-ms.author: philmea
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 441d0b4b76e0c543bd82c5546e0ca89250e418e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0ceb71b5caaf17c485d4f4bd649e6b68d7c72a5d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748171"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224049"
 ---
-# <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する
+# <a name="create-a-no-code-voice-assistant-in-azure-percept-studio"></a>Azure Percept Studio でコードなしの音声アシスタントを作成する
 
 このチュートリアルでは、Azure Percept DK と Azure Percept Audio で使用する音声アシスタントをテンプレートから作成します。 音声アシスタントのデモは [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 内で動作し、音声で制御される選りすぐりの仮想オブジェクトを含んでいます。 オブジェクトを制御するには、まずキーワード (デバイスを目覚めさせる単語または短いフレーズ) を発話し、続けてコマンドを発話します。 それぞれのテンプレートは、具体的な一連のコマンドに応答します。
 

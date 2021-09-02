@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: 0930024a791fe8b76c90e8ab4249a070b22a1c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68ae3735fc1f58ebbf8d7afd6a098e7520880058
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98898038"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228758"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 

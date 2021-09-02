@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932fc71617846f2839767546a8fac00a3d16008c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2b34eafac248bc0fd06076550e784a061573a712
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792257"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734500"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>スコープ付きロールを管理単位に割り当てる
 
@@ -52,7 +52,7 @@ Role  |  説明
 次のセキュリティ プリンシパルは、管理単位スコープ付きのロールに割り当てることができます。
 
 * ユーザー
-* ロール割り当て可能クラウド グループ (プレビュー)
+* ロール割り当て可能な Azure AD グループ
 * サービス プリンシパル名 (SPN)
 
 ## <a name="assign-a-scoped-role"></a>スコープ付きロールを割り当てる
@@ -61,9 +61,9 @@ Azure portal、PowerShell、または Microsoft Graph を使用して、スコ�
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. Azure portal で、**Azure AD** に移動します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 
-1. **[管理単位]** を選択し、ユーザー ロール スコープの割り当て先にする管理単位を選択します。 
+1. **[Azure Active Directory]**  >  **[管理単位]** を選択し、ユーザー ロール スコープの割り当て先にする管理単位を選択します。 
 
 1. 左側のペインで、 **[ロールと管理者]** を選択して、利用可能なすべてのロールを一覧表示します。
 
@@ -118,9 +118,9 @@ Azure portal、PowerShell、または Microsoft Graph を使用して、スコ�
 
 [Azure AD の管理単位セクション](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)に、管理単位スコープを使用して作成されたすべてのロール割り当てを表示できます。 
 
-1. Azure portal で、**Azure AD** に移動します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 
-1. 左側のペインで **[管理単位]** を選択し、表示するロール割り当ての一覧の管理単位を選択します。 
+1. **[Azure Active Directory]**  >  **[管理単位]** を選択し、表示するロール割り当ての一覧の管理単位を選択します。 
 
 1. **[ロールと管理者]** を選択し、ロールを開いて管理単位内の割り当てを表示します。
 
@@ -149,5 +149,5 @@ Body
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クラウド グループを使用してロールの割り当てを管理する](groups-concept.md)
-- [クラウド グループに割り当てられるロールをトラブルシューティングする](groups-faq-troubleshooting.md)
+- [Azure AD グループを使用してロールの割り当てを管理する](groups-concept.md)
+- [グループに割り当てられている Azure AD ロールをトラブルシューティングする](groups-faq-troubleshooting.yml)

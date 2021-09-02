@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: f401c143f1f5a9352b56b80f9e473bd7fa819245
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: a4b433ed7a2eb0a2a9367f921e63091a823df37d
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968256"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862314"
 ---
 # <a name="azure-monitor-network-insights"></a>Azure Monitor Network Insights
 
@@ -108,9 +108,19 @@ Application Gateway の依存関係ビューには、フロントエンド IP �
 
 ![[診断ツールキット] タブを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
-## <a name="onboarded-resources"></a>オンボード リソース 
+## <a name="availability-of-resources"></a>リソースの可用性 
 
-オンボード リソースには、組み込みのブックと依存関係ビューがあります。 現在、オンボード リソースは、Virtual WAN、Application Gateway、Load Balancer、ExpressRoute です。
+既定では、すべてのネットワーク リソースがネットワークの分析情報に表示されます。 お客様は、リソースの種類をクリックして、リソースの正常性とメトリック (利用可能な場合)、サブスクリプションの詳細、場所などを表示できます。ネットワーク リソースのサブセットは "_オンボード_" されています。 オンボードされたリソースの場合、お客様はリソース固有のトポロジ ビューと組み込みのメトリック ブックにアクセスできます。 これらのすぐに使えるエクスペリエンスにより、リソース メトリックの探索と問題のトラブルシューティングが簡単になります。  
+
+オンボードされているリソースは次のとおりです。 
+* Virtual WAN
+* Application Gateway
+* Load Balancer
+* ExpressRoute
+* Private Link
+* NAT Gateway
+* パブリック IP
+* NIC
 
 ## <a name="troubleshooting"></a>トラブルシューティング 
 一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。

@@ -7,18 +7,18 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 07/19/2021
 ms.author: erhopf
-ms.openlocfilehash: 4a78e233a41bf3b6682f52bac912528d6bcab76c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: deb5db6f205c02812330539c403fbe7b80d4784c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816338"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747524"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Cognitive Services の診断ログを有効にする
 
-このガイドでは、Azure Cognitive Service の診断ログを有効にするための詳細な手順について説明します。 これらのログでは、問題の識別やデバッグに使用されるリソースの操作に関する豊富で頻繁なデータが提供されます。 続行する前に、少なくとも 1 つの Cognitive Service ([Bing Web Search](./bing-web-search/overview.md)、[Speech Services](./speech-service/overview.md)、[LUIS](./luis/what-is-luis.md) など) へのサブスクリプションを持つ Azure アカウントが必要です。
+このガイドでは、Azure Cognitive Service の診断ログを有効にするための詳細な手順について説明します。 これらのログでは、問題の識別やデバッグに使用されるリソースの操作に関する豊富で頻繁なデータが提供されます。 続行する前に、少なくとも 1 つの Cognitive Service ([音声サービス](./speech-service/overview.md)や [LUIS](./luis/what-is-luis.md) など) へのサブスクリプションを持つ Azure アカウントが必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,8 @@ ms.locfileid: "107816338"
 * [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
 
 > [!NOTE]
-> その他の構成オプションも使用できます。 詳細については、[Azure リソースからのログ データの収集と使用](../azure-monitor/essentials/platform-logs-overview.md)に関するページを参照してください。
+> * その他の構成オプションも使用できます。 詳細については、[Azure リソースからのログ データの収集と使用](../azure-monitor/essentials/platform-logs-overview.md)に関するページを参照してください。
+> * 診断ログの "トレース" は、[カスタムの質問と回答](./qnamaker/how-to/get-analytics-knowledge-base.md?tabs=v2)にのみ使用できます。
 
 ## <a name="enable-diagnostic-log-collection"></a>診断ログの収集を有効にする  
 
@@ -37,7 +38,7 @@ ms.locfileid: "107816338"
 > [!NOTE]
 > PowerShell または Azure CLI を使用してこの機能を有効にするには、[Azure リソースからのログ データの収集と使用](../azure-monitor/essentials/platform-logs-overview.md)に関するページに示されている手順を使用します。
 
-1. Azure Portal に移動します。 次に、Cognitive Services リソースを見つけて選択します。 たとえば、Bing Web Search へのサブスクリプションを選択します。   
+1. Azure Portal に移動します。 次に、Cognitive Services リソースを見つけて選択します。 たとえば、音声サービスのサブスクリプションです。   
 2. 次に、左側のナビゲーション メニューから、 **[監視]** を見つけて **[診断設定]** を選択します。 この画面には、このリソースに対して前に作成したすべての診断設定が含まれています。
 3. 前に作成したリソースで使用したいものが存在する場合は、ここでそれを選択できます。 それ以外の場合は、 **[+ Add diagnostic setting] (+ 診断設定の追加)** を選択します。
 4. 設定の名前を入力します。 次に、 **[ストレージ アカウントへのアーカイブ]** および **[Log Analytics への送信]** を選択します。

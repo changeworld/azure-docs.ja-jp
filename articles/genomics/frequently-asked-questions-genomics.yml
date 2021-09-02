@@ -4,18 +4,18 @@ metadata:
   titleSuffix: Microsoft Genomics
   description: 技術情報、SLA、料金など、Microsoft Genomics サービスの使用に関連する一般的な質問の回答を得ることができます。
   services: genomics
-  author: grhuynh
+  author: vigunase
   manager: cgronlun
-  ms.author: grhuynh
+  ms.author: vigunase
   ms.service: genomics
   ms.topic: troubleshooting
   ms.date: 12/07/2017
-  ms.openlocfilehash: 0060ebfc207c6f0027e1387f859c71a917bf7b1b
-  ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+  ms.openlocfilehash: 053835683a94f20a8d91cce969fe94f7e66e5556
+  ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/09/2021
-  ms.locfileid: "113559071"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123258603"
 title: 'Microsoft Genomics: よく寄せられる質問'
 summary: "この記事には、Microsoft Genomics に関連するよく寄せられる質問が記載されています。 Microsoft Genomics サービスの詳細については、「[Microsoft Genomics とは](overview-what-is-genomics.md)」を参照してください。 トラブルシューティングの詳細については、「[Troubleshooting Guide](troubleshooting-guide-genomics.md)」(トラブルシューティング ガイド) を参照してください。 \n"
 sections:

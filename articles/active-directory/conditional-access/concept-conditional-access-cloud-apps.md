@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adb0073ca5d8bfb822d7ac47d7e7f770d18423ca
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 6208066f324fed289e59b63d88f2302c60fb2db1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514803"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459610"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>条件付きアクセス: クラウド アプリ、アクション、認証コンテキスト
 
@@ -175,7 +175,7 @@ Microsoft Azure の管理アプリケーションには、複数のサービス�
 
 アプリケーションでの認証コンテキストの使用の詳細については、次の記事を参照してください。
 
-- [SharePoint サイトを保護するための Microsoft Information Protection 秘密度ラベル](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option&preserve-view=true)
+- [SharePoint サイトを保護するための Microsoft Information Protection 秘密度ラベル](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#more-information-about-the-dependencies-for-the-authentication-context-option)
 - [Microsoft Cloud App Security](/cloud-app-security/session-policy-aad?branch=pr-en-us-2082#require-step-up-authentication-authentication-context)
 - [カスタム アプリケーション](../develop/developer-guide-conditional-access-authentication-context.md)
 
