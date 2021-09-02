@@ -5,18 +5,18 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 333f9572e9bf5a24e7c9ac230b10f74adf5be7de
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 6023ea4178e451a0b5807c4561ea9810e7bbbc66
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963800"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225798"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
 この記事では、[Azure App Service](overview.md) で Python アプリが実行される方法、既存のアプリを Azure に移行する方法、および必要に応じて App Service の動作をカスタマイズする方法について説明します。 Python アプリは、必要なすべての [pip](https://pypi.org/project/pip/) モジュールと共にデプロイする必要があります。
 
-App Service の展開エンジンは、[Git リポジトリ](deploy-local-git.md)や[ビルド オートメーションが有効な](deploy-zip.md#enable-build-automation) [ZIP パッケージ](deploy-zip.md)をデプロイする際に、自動的に仮想環境を起動し、`pip install -r requirements.txt` を実行します。
+App Service の展開エンジンは、[Git リポジトリ](deploy-local-git.md)や[ビルド オートメーションが有効な](deploy-zip.md#enable-build-automation-for-zip-deploy) [ZIP パッケージ](deploy-zip.md)をデプロイする際に、自動的に仮想環境を起動し、`pip install -r requirements.txt` を実行します。
 
 このガイドでは、App Service の組み込み Linux コンテナーを使用する Python 開発者のために、主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、まず [Python クイックスタート](quickstart-python.md)と [PostgreSQL を使った Python のチュートリアル](tutorial-python-postgresql-app.md)に従ってください。
 
@@ -431,13 +431,9 @@ Django アプリを使用してデータベースの移行を実行しようと�
 
 - **"Fatal SSL Connection is Required (致命的: SSL 接続が必要です)" というメッセージが表示される**: アプリ内からリソース (データベースなど) へのアクセスに使用したユーザー名とパスワードを確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="more-resources"></a>その他のリソース:
 
-> [!div class="nextstepaction"]
-> [チュートリアル:PostgreSQL を使った Python アプリ](tutorial-python-postgresql-app.md)
-
-> [!div class="nextstepaction"]
-> [チュートリアル:プライベート コンテナー リポジトリからデプロイする](tutorial-custom-container.md?pivots=container-linux)
-
-> [!div class="nextstepaction"]
-> [App Service Linux の FAQ](faq-app-service-linux.yml)
+- [チュートリアル:PostgreSQL を使った Python アプリ](tutorial-python-postgresql-app.md)
+- [チュートリアル:プライベート コンテナー リポジトリからデプロイする](tutorial-custom-container.md?pivots=container-linux)
+- [App Service Linux の FAQ](faq-app-service-linux.yml)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

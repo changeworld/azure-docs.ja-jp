@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0916d4107fdcf97875d1c6a428bbfa75164a65
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0947f9924e97532b087940ecde08e8a0f8d7e005
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068508"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449108"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Azure Active Directory スマート ロックアウトを使用してユーザー アカウントを攻撃から保護する
 
@@ -90,7 +90,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 *ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。*
 
-スマート ロックアウトをテストする際、Azure AD 認証サービスの地理的分散および負荷分散の性質により、サインイン要求はさまざまなデータセンターによって処理される可能性があります。 そのシナリオでは、ロックアウトはそれぞれの Azure AD データセンターによって個別に追跡されるため、ロックアウトを発生させるために、定義されたロックアウトしきい値よりも多くの試行回数が必要になる場合があります。 ロックアウトが発生する前にユーザーが各データ センターにアクセスする場合、そのユーザーの不正試行回数は (*threshold_limit * datacenter_count*) です。
+スマート ロックアウトをテストする際、Azure AD 認証サービスの地理的分散および負荷分散の性質により、サインイン要求はさまざまなデータセンターによって処理される可能性があります。 そのシナリオでは、ロックアウトはそれぞれの Azure AD データセンターによって個別に追跡されるため、ロックアウトを発生させるために、定義されたロックアウトしきい値よりも多くの試行回数が必要になる場合があります。 完全にロックアウトされるまでのユーザーの最大不正試行回数は (*threshold_limit * datacenter_count*) です。
 
 ## <a name="next-steps"></a>次のステップ
 

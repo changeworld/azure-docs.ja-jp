@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 03/15/2021
+ms.date: 08/30/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8cfe26f3f1718acde32c34f00b0f50a79b963d35
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b5406fa20d0ca01f75e23e2bf1c7836943c4833e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114594306"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226337"
 ---
 イベント ハブでは、イベント ハブに送信されたイベントのシーケンスを 1 つまたは複数のパーティションにまとめて整理します。 新しいイベントが到着すると、このシーケンスの末尾に追加されます。 
 

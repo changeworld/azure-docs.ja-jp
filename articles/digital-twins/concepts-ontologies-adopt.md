@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73b115ad6f49d943c423c7490df347afce7c5869
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e31ee4ed9b7baa074f59bc615b9044cbf314a47d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668424"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438516"
 ---
 # <a name="adopting-an-industry-ontology"></a>業界オントロジの採用
 
-空白のページから開始するよりも、オープンソースの DTDL オントロジから開始した方が簡単な場合があるため、Microsoft は、特定分野の専門家と提携してオントロジを発行しています。これらは、広く受け入れられている業界の規則を表し、さまざまな顧客のユース ケースをサポートします。 
+空白のページから始めるより、オープンソースの DTDL オントロジから開始した方が簡単な場合があるため、Microsoft は、特定分野の専門家と提携してオントロジを発行しています。 これらのオントロジは、広く受け入れられている業界の規則を表しており、さまざまな顧客のユース ケースをサポートします。 
 
-結果として、業界標準に基づいて学習または構築された、あるいはそれを直接使用する、一連のオープンソースの DTDL ベースのオントロジが提供されます。 このオントロジは、ダウンストリームの開発者のニーズを満たすように設計されており、業界で広く採用または拡張される可能性があります。
+その結果、業界標準から学習するか、それに基づいて構築されるか、またはそれを直接使用する、オープンソースの DTDL ベースの一連のオントロジが提供されます。 これらのオントロジは、ダウンストリームの開発者のニーズを満たすように設計されているため、業界で広く採用され、さらに拡張される可能性があります。
 
 現時点では、Microsoft はパートナーと協力して、[スマート ビル](#realestatecore-smart-building-ontology)、[スマート シティ](#smart-cities-ontology)、[エネルギー グリッド](#energy-grid-ontology)のオントロジを開発しました。これにより、これらの業界標準に基づいてモデリングするための共通基盤が提供され、新たに考案する必要がなくなります。 
 
@@ -50,7 +50,7 @@ Microsoft は、[Open Agile Smart Cities (OASC)](https://oascities.org/) およ�
 
 *このオントロジは次のリポジトリから入手してください:* [エネルギー グリッド用の Digital Twins Definition Language (DTDL) オントロジ](https://github.com/Azure/opendigitaltwins-energygrid/)。
 
-このオントロジは、エネルギーのユース ケース (グリッド資産の監視、停電と影響の分析、シミュレーション、予測メンテナンス) に対応するデジタル ツイン ソリューションの開発を加速させ、エネルギー グリッドのデジタル変革と近代化を促進するソリューション プロバイダーを支援するために作成されました。 これは、エネルギー グリッド資産管理、電力システム運用モデリング、物理的エネルギー商品市場のグローバル標準である [Common Information Model (CIM)](https://cimug.ucaiug.org/) を手直ししたものです。
+このオントロジは、ソリューション プロバイダーがエネルギーのユース ケース (グリッド資産の監視、停電と影響の分析、シミュレーション、予測メンテナンス) のためのデジタル ツイン ソリューションの開発を加速させ、エネルギー グリッドのデジタル変革と最新化を可能にするように支援するために作成されました。 これは、エネルギー グリッド資産管理、電力システム運用モデリング、物理的エネルギー商品市場のグローバル標準である [Common Information Model (CIM)](https://cimug.ucaiug.org/) から適応されています。
 
 オントロジと、その使用方法、参加方法について詳しくは、このオントロジの GitHub のリポジトリ ([Azure/opendigitaltwins-energygrid](https://github.com/Azure/opendigitaltwins-energygrid/)) を参照してください。 
 
@@ -58,6 +58,6 @@ Microsoft は、[Open Agile Smart Cities (OASC)](https://oascities.org/) およ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 仕様に合うように業界標準のオントロジを拡張する方法について学習します。"[概念: 業界のオントロジの拡張](concepts-ontologies-extend.md)" に関する記事。
+* 仕様を満たすように業界標準のオントロジを拡張する方法の詳細について学習します。[業界のオントロジの拡張](concepts-ontologies-extend.md)に関する記事。
 
 * または、オントロジに基づいてモデルを開発するためのパスを続行します。[モデル開発パスでのオントロジ戦略の使用](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)に関する記事。

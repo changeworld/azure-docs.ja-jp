@@ -5,21 +5,23 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: azfuncdf
-ms.openlocfilehash: bf50f0bdc3c8e654a3d2f780bb7f0c32533948eb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bbeb730b0e22bd555f06514870448a229fccfbc6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465802"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438103"
 ---
 # <a name="durable-functions-storage-providers"></a>Durable Functions ストレージ プロバイダー
 
 Durable Functions は、信頼性の高い実行を実現するために、関数パラメーター、戻り値、その他の状態を永続ストレージに自動的に保存します。 Durable Functions の既定の構成では、このランタイム状態は Azure Storage (クラシック) アカウントに保存されます。 ただし、代替の永続ストレージ プロバイダーを使用するように Durable Functions v2.0 以上を構成できます。
 
-Durable Functions は、内部で [Durable Task Framework](https://github.com/Azure/durabletask) (DTFx) によって支援される一連の Azure Functions トリガーおよびバインディングです。 DTFx では、Durable Functions によって使用される Azure Storage プロバイダーなど、さまざまなバックエンド ストレージ プロバイダーがサポートされています。 Durable Functions **v 2.4.3** 以降では、ユーザーは、Azure Storage プロバイダー以外の DTFx ストレージ プロバイダーを使用するように関数アプリを構成できます。
+Durable Functions は、内部で [Durable Task Framework](https://github.com/Azure/durabletask) (DTFx) によって支援される一連の Azure Functions トリガーおよびバインディングです。 DTFx では、Durable Functions によって使用される Azure Storage プロバイダーなど、さまざまなバックエンド ストレージ プロバイダーがサポートされています。 Durable Functions **v2.5.0** より、ユーザーはその関数アプリを、Azure Storage プロバイダー以外の DTFx ストレージ プロバイダーを使用するように構成できます。
 
 > [!NOTE]
 > Azure Storage 以外のストレージ プロバイダーの使用を選択する場合、慎重に行う必要があります。 Azure で実行されるほとんどの関数アプリでは、Durable Functions に対して既定の Azure Storage プロバイダーを使用する必要があります。 ただし、代替のストレージ プロバイダーを使用するかどうか決定するとき、考慮する必要がある重要なコスト、スケーラビリティ、データ管理のトレードオフがあります。 この記事では、これらの多くのトレードオフについて詳しく説明します。
+>
+> また現在、データをあるストレージ プロバイダーから別のストレージ プロバイダーに移行できないことにも注意してください。 新しいストレージ プロバイダーを使用する場合は、その新しいストレージ プロバイダーで構成された新しいアプリを作成する必要があります。
 
 Durable Functions での使用のために、2 つの代替 DTFx ストレージ プロバイダー (_Netherite_ ストレージ プロバイダーと _Microsoft SQL Server (MSSQL)_ ストレージ プロバイダー) が開発されました。 この記事では、サポートされる 3 つすべてのプロバイダーについて説明し、それらを比較します。また、それらの使用を開始する方法について基本的な情報を提供します。
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 04/07/2021
-ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 65288730cafaa39507eeab4ed2e3d29267080262
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011153"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310486"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Hyperscale (Citus) SQL API の関数
 
@@ -657,61 +657,6 @@ SELECT * from citus_remote_connection_stats();
  citus_worker_1 | 5432 | postgres      |                        3
 (1 row)
 ```
-
-### <a name="master_drain_node"></a>master\_drain\_node
-
-master\_drain\_node() 関数は、指定されたノードから [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table) で `shouldhaveshards` が true に設定されている他のノードにシャードを移動します。 この関数は、サーバー グループからノードを削除してノードの物理サーバーをオフにする前に呼び出します。
-
-#### <a name="arguments"></a>引数
-
-**nodename:** ドレインされるノードのホスト名の名前。
-
-**nodeport:** ドレインされるノードのポート番号。
-
-**shard\_transfer\_mode:** (省略可能) レプリケーションの方法として、PostgreSQL 論理レプリケーションを使用するか、ワーカー間の COPY コマンドを使用するかを指定します。 指定できる値は、
-
-> -   `auto`:論理レプリケーションが可能な場合はレプリカ ID を必要とします。それ以外の場合は、レガシの動作を使用します (例: シャード修復の場合は、PostgreSQL 9.6)。 これが既定値です。
-> -   `force_logical`:テーブルにレプリカ ID がない場合でも、論理レプリケーションを使用します。 レプリケーション中は、テーブルに対して UPDATE/DELETE ステートメントを同時に実行することはできません。
-> -   `block_writes`:主キーまたはレプリカ ID がないテーブルには、COPY (書き込みをブロックします) を使用します。
-
-**rebalance\_strategy:** (省略可能) [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table) 内の戦略の名前。
-この引数を省略した場合、関数では、表に示されているように既定の戦略が選択されます。
-
-#### <a name="return-value"></a>戻り値
-
-該当なし
-
-#### <a name="example"></a>例
-
-1 つのノードを削除する一般的な手順を次に示します (例として、標準的な PostgreSQL ポートの "10.0.0.1")。
-
-1.  ノードをドレインします。
-
-    ```postgresql
-    SELECT * from master_drain_node('10.0.0.1', 5432);
-    ```
-
-2.  コマンドが終了するまで待機します
-
-3.  ノードを削除します
-
-複数のノードをドレインする場合は、代わりに [rebalance_table_shards](#rebalance_table_shards) を使用することをお勧めします。 こうすることで、Hyperscale (Citus) による事前の計画が可能となり、シャードを最小回数で移動できます。
-
-1.  削除する各ノードに対して次を実行します。
-
-    ```postgresql
-    SELECT * FROM master_set_node_property(node_hostname, node_port, 'shouldhaveshards', false);
-    ```
-
-2.  [rebalance_table_shards](#rebalance_table_shards) を使用して一度にすべてのドレインを実行します
-
-    ```postgresql
-    SELECT * FROM rebalance_table_shards(drain_only := true);
-    ```
-
-3.  ドレインの再調整が終了するまで待機します
-
-4.  ノードを削除します
 
 ### <a name="replicate_table_shards"></a>replicate\_table\_shards
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f344b0f4dd93b921abc0c1c95c18c54e4486716
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 81e40a295d9572fb38a1289d4bdf661095b9ca7a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951895"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449125"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -188,6 +188,9 @@ Azure AD パスワード保護プロキシ サービスをインストールす�
     ```powershell
     Import-Module AzureADPasswordProtection
     ```
+    
+    > [!WARNING]
+    > 64 ビット バージョンの PowerShell を使用する必要があります。 PowerShell (x86) では、特定のコマンドレットが動作しない可能性があります。
 
 1. Azure AD パスワード保護プロキシ サービスが実行されていることを確認するには、次の PowerShell コマンドを使用します。
 

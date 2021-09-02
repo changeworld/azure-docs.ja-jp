@@ -1,20 +1,20 @@
 ---
-title: Azure Percept Vision とビジョン モジュールに関する問題をトラブルシューティングする
+title: Azure Percept Vision とビジョン モジュールのトラブルシューティング
 description: ビジョン AI のプロトタイプ作成エクスペリエンスで多く見られるいくつかの問題をトラブルシューティングするためのヒントを紹介します。
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 79a9147fde164a672d310a7dea6fb6166ed3a1f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6bc06ed6850c247641423ef365a86dd9d8aec90a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751373"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225977"
 ---
-# <a name="vision-solution-troubleshooting"></a>ビジョン ソリューションのトラブルシューティング
+# <a name="troubleshoot-azure-percept-vision-and-vision-modules"></a>Azure Percept Vision とビジョン モジュールのトラブルシューティング
 
 この記事では、Azure Percept Studio でコーディングなしのビジョン ソリューションのトラブルシューティングに関する情報を説明します。
 

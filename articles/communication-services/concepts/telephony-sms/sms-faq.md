@@ -6,15 +6,15 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/26/2021
-ms.topic: reference
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: cd35ccc7399580c0bc83d8668ea932c3a800f700
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: fcbff4d8f6122681e9947f83b02dff1ae6d60835
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290562"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251177"
 ---
 # <a name="sms-faq"></a>SMS に関する FAQ
 
@@ -57,3 +57,7 @@ Azure Communication Services は、SMS での長いメッセージの送受信�
 
 
 はい。1 つの要求を複数の受信者に送信できます。 複数の受信者にメッセージを送信するには、こちらの[クイックスタート](../../quickstarts/telephony-sms/send.md?pivots=programming-language-csharp)に従います。
+
+##  <a name="i-received-a-http-status-202-from-the-send-sms-api-but-the-sms-didnt-reach-my-phone-what-do-i-do-now"></a>SMS 送信 API から HTTP の状態 202 を受信しましたが、SMS が電話に届きませんでした。次はどうすればよいですか?
+
+サービスによって返された 202 は、メッセージが送信のためにキューに入れられ、配信されなかったことを示します。 この[クイックスタート](../../quickstarts/telephony-sms/handle-sms-events.md)を使用して配信レポート イベントにサブスクライブし、トラブルシューティングします。 イベントが構成されたら、配信レポートの "deliveryStatus" フィールドを調べて、配信の成功または失敗を確認してください。

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: 06d72e0a8953e6f22faebb6da2bc607fe5ebfad0
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 124c5fba529d39a675f92642413d4305c58debda
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112239543"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101456"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "112239543"
 
 ### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLI
 
-[Azure CLI を使用した Azure Cosmos DB アカウントの作成](manage-with-cli.md#create-an-azure-cosmos-db-account)に関する記事を参照してください。
+[Azure CLI を使用した Azure Cosmos DB アカウントの作成](sql/manage-with-cli.md#create-an-azure-cosmos-db-account)に関する記事を参照してください。
 
 ### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
@@ -62,7 +62,7 @@ ms.locfileid: "112239543"
 
 ### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLI
 
-[Azure CLI を使用したリージョンの追加または削除](manage-with-cli.md#add-or-remove-regions)に関する記事を参照してください。
+[Azure CLI を使用したリージョンの追加または削除](sql/manage-with-cli.md#add-or-remove-regions)に関する記事を参照してください。
 
 ### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
@@ -78,7 +78,7 @@ ms.locfileid: "112239543"
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
-[Azure CLI を使用した複数書き込みリージョンの有効化](manage-with-cli.md#enable-multiple-write-regions)に関する記事を参照してください。
+[Azure CLI を使用した複数書き込みリージョンの有効化](sql/manage-with-cli.md#enable-multiple-write-regions)に関する記事を参照してください。
 
 ### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
@@ -164,7 +164,7 @@ ms.locfileid: "112239543"
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
-[Azure CLI を使用した自動フェールオーバーの有効化](manage-with-cli.md#enable-automatic-failover)に関する記事を参照してください。
+[Azure CLI を使用した自動フェールオーバーの有効化](sql/manage-with-cli.md#enable-automatic-failover)に関する記事を参照してください。
 
 ### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
@@ -195,7 +195,7 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
-[Azure CLI を使用したフェールオーバー優先度の設定](manage-with-cli.md#set-failover-priority)に関する記事を参照してください。
+[Azure CLI を使用したフェールオーバー優先度の設定](sql/manage-with-cli.md#set-failover-priority)に関する記事を参照してください。
 
 ### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
@@ -227,7 +227,7 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 
-[Azure CLI を使用した手動フェールオーバーのトリガー](manage-with-cli.md#trigger-manual-failover)に関する記事を参照してください。
+[Azure CLI を使用した手動フェールオーバーのトリガー](sql/manage-with-cli.md#trigger-manual-failover)に関する記事を参照してください。
 
 ### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
@@ -238,4 +238,4 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 Azure Cosmos アカウント、データベース、コンテナーの管理方法に関する詳細と例については、次の記事をお読みください。
 
 * [Azure PowerShell を使用した Azure Cosmos DB の管理](manage-with-powershell.md)
-* [Azure CLI を使用した Azure Cosmos DB の管理](manage-with-cli.md)
+* [Azure CLI を使用した Azure Cosmos DB の管理](sql/manage-with-cli.md)

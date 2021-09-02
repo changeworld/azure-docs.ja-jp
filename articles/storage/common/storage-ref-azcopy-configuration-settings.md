@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 4fcbcf145dc417d2a7f78913e70429c3929cd902
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: edd90071125c65b7d4af3d0065e92b30f35e5f65
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508990"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114436955"
 ---
 # <a name="azcopy-v10-configuration-settings-azure-storage"></a>AzCopy v10 の構成設定 (Azure Storage)
 
@@ -37,6 +37,8 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 | AZCOPY_CONCURRENCY_VALUE | 同時に行える要求の数を指定します。 この変数を使用すると、スループットを向上させることができます。 コンピューターの CPU が 5 個未満の場合、この変数の値は `32` に設定されます。 それ以外の場合、既定値は CPU の数に 16 を掛けた数です。 この変数の最大の既定値は `3000` ですが、この値は手動で高い値または低い値に設定できます。 「[コンカレンシーを向上させる](storage-use-azcopy-optimize.md#increase-concurrency)」を参照してください。 |
 | AZCOPY_CONCURRENT_FILES | 同時に転送を開始するファイルの数を制御することによって、同時に進行中となるファイルの (概算の) 数をオーバーライドします。 |
 | AZCOPY_CONCURRENT_SCAN | スキャン中に使用される並列処理の (最大) 次数を制御します。 Azure Files または BLOB とローカル ファイル システムを含む、並列化された列挙子にのみ影響します。 |
+| AZCOPY_CONTENT_TYPE_MAP  | オペレーティング システムによって定義されている 1 つ以上の既定の MIME の種類のマッピングをオーバーライドします。 この変数を、いずれかのマッピングを定義する JSON ファイルのパスに設定します。  JSON ファイルの例の内容を次に示します。 <br><br> {<br>&nbsp;&nbsp;"MIMETypeMapping": { <br>&nbsp;&nbsp;&nbsp;&nbsp;".323": "text/h323",<br>&nbsp;&nbsp;&nbsp;&nbsp;".aaf": "application/octet-stream",<br>&nbsp;&nbsp;&nbsp; ".aca": "application/octet-stream",<br>&nbsp;&nbsp;&nbsp;&nbsp;".accdb": "application/msaccess",<br>&nbsp;&nbsp;&nbsp;&nbsp;  }<br>}
+|
 | AZCOPY_DEFAULT_SERVICE_API_VERSION | AzCopy が Azure Stack などのカスタム環境に対応できるように、サービス API のバージョンをオーバーライドします。 |
 | AZCOPY_DISABLE_HIERARCHICAL_SCAN | Azure BLOB がコピー元の場合にのみ適用されます。 同時スキャンの方が高速ですが、階層型一覧表示 API が使用されるため、IO またはコストが増加する可能性があります。 パフォーマンスを犠牲にしてコストを節約するには、"true" を指定します。 |
 | AZCOPY_JOB_PLAN_LOCATION | ディスクがいっぱいにならないように、(進行状況の追跡と再開に使用される) ジョブ プラン ファイルの格納場所をオーバーライドします。 |
@@ -62,7 +64,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 AzCopy v10 のプロキシ設定を構成するには、`HTTPS_PROXY` 環境変数を設定します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | コマンド プロンプトでは、`set HTTPS_PROXY=<proxy IP>:<proxy port>` を使用します<br> PowerShell では、`$env:HTTPS_PROXY="<proxy IP>:<proxy port>"` を使用します|
 | **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
