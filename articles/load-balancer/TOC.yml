@@ -33,6 +33,8 @@
       href: tutorial-multi-availability-sets-portal.md
     - name: Load Balancer でのポート転送の構成
       href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: 複数の IP 構成の負荷分散
+      href: load-balancer-multiple-ip.md
     - name: リージョン間のロード バランサー
       items:
         - name: リージョン間ロード バランサーの作成 - ポータル
@@ -150,8 +152,6 @@
       href: load-balancer-distribution-mode.md
     - name: 複数の IP 構成の使用
       items:
-        - name: ポータル
-          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell

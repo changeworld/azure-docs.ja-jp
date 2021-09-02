@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 6/10/2020
-ms.openlocfilehash: 6f4c4bd62fa1e3dbad7e5dbc6bea8e2b396b968a
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: b17d8408f7c0cb456a2eed5ab49f36d259cf5ecd
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444545"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254816"
 ---
 # <a name="what-are-the-azure-iot-support-and-help-options"></a>Azure IoT のサポートとヘルプのオプションとは何ですか。
 
@@ -68,26 +68,6 @@ Stack Overflow に新しい質問を送信する場合は、次のいずれか�
  - [Azure Time Series Insights](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
  - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
  - [Azure Percept](https://stackoverflow.com/questions/tagged/azure-percept)
-
-## <a name="submit-feedback-on-azure-feedback"></a>Azure フィードバックでフィードバックを送信する
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
-</div>
-
-新機能を要求するには、Azure フィードバックに投稿します。 開発しているアプリケーションで Azure IoT サービスをいっそう適切に動作させるためのアイデアを共有します。
-
-| サービス                       | Azure フィードバックの URL |
-|-------------------------------|---------------|
-| Azure IoT (Hub、DPS、SDK)                    | https://feedback.azure.com/forums/321918-azure-iot |
-| Azure IoT Central             | https://feedback.azure.com/forums/911455-azure-iot-central |
-| Azure IoT デバイス カタログ      | https://feedback.azure.com/forums/916948-azure-iot-device-catalog |
-| Azure IoT Edge                | https://feedback.azure.com/forums/907045-azure-iot-edge |
-| Azure IoT ソリューション アクセラレータ | https://feedback.azure.com/forums/916438-azure-iot-solution-accelerators |
-| Azure Maps                 | https://feedback.azure.com/forums/909172-azure-maps |
-| Azure Time Series Insights | https://feedback.azure.com/forums/906859-azure-time-series-insights |
-| Azure Digital Twins | https://feedback.azure.com/forums/916621-azure-digital-twins |
-| Azure Sphere | https://feedback.azure.com/forums/915433-azure-sphere |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>更新プログラムと新しいリリースに関する最新情報を入手する
 

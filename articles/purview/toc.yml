@@ -239,19 +239,19 @@ items:
         items:
           - name: プライベート エンドポイント
             items:
-              - name: Azure Purview プライベート エンドポイントの概要
+              - name: プライベート エンドポイントの概要
                 href: catalog-private-link.md
-              - name: プライベートかつ安全な Purview アカウントへの接続
+              - name: Purview アカウントとポータル用のネットワークを分離する
                 href: catalog-private-link-account-portal.md
-              - name: プライベートかつ安全なデータ ソースのスキャン
+              - name: スキャン用にネットワークを分離する
                 href: catalog-private-link-ingestion.md
-              - name: プライベートかつ安全な Azure Purview への接続とデータ ソースのスキャン
+              - name: エンド ツー エンドのネットワークの分離
                 href: catalog-private-link-end-to-end.md
-              - name: Azure Purview プライベート エンドポイントの DNS 構成
+              - name: プライベート エンドポイントの DNS を構成する
                 href: catalog-private-link-name-resolution.md
-              - name: Azure Purview プライベート エンドポイントのトラブルシューティング ガイド
+              - name: プライベート エンドポイントのトラブルシューティング
                 href: catalog-private-link-troubleshoot.md
-              - name: Azure Purview プライベート エンドポイントに関する FAQ
+              - name: プライベート エンドポイントの FAQ
                 href: catalog-private-link-faqs.md
           - name: Azure ポリシーの例外
             href: create-purview-portal-faq.md

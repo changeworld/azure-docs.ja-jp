@@ -1,17 +1,17 @@
 ---
 title: Azure Monitor 用の Azure Resource Graph のサンプル クエリ
 description: Azure Monitor 用の Azure Resource Graph のサンプル クエリで、リソースの種類とテーブルを使用して Azure Monitor 関連のリソースとプロパティにアクセスする方法を示しています。
-ms.date: 08/09/2021
+ms.date: 08/31/2021
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: f7b7de70a84028c0f26b547cd1dd18889a21aa6b
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 12ba6d7f891acc3f025ab4e5b9c3306bcb49704c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861243"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318316"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-monitor"></a>Azure Monitor 用の Azure Resource Graph のサンプル クエリ
 

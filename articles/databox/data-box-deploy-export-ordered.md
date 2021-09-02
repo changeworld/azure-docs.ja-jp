@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: d9506ce3f01f5500bab81e8e90c57761bef75805
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 1151981eb96862493eb6a1740e46845c98f7e2ea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254594"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752008"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する
 
@@ -316,7 +316,7 @@ Azure Storage から Data Box へのデータのエクスポートが失敗す�
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure Files for export  -->
+   <!-- FileList/prefix/Share list for Azure File storage for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>

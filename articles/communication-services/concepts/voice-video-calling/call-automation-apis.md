@@ -7,14 +7,14 @@ manager: anvalent
 services: azure-communication-services
 ms.author: jken
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e45e18271ef26d1968f3d1ba28d4cf2d59fa8448
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 0e4d9c737147685b20c5f83295ac5533efdab448
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253679"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254077"
 ---
 # <a name="call-automation-overview"></a>通話の自動化の概要
 

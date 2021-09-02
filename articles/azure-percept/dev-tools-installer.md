@@ -1,5 +1,5 @@
 ---
-title: Azure Percept Dev Tools Pack Installer の概要
+title: Azure Percept 開発ツールをインストールする
 description: Dev Tools Pack Installer を使用して Azure Percept による高度な開発を促進する方法について説明します。
 author: mimcco
 ms.author: mimcco
@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 49d5a6ed7b23169e655a02cdbb14df52a6e82231
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 88d93b98b9bd456c5529bff67fbef98b9e792ba0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099787"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729203"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Dev Tools Pack Installer の概要
 

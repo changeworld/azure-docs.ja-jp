@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: 22e5bc0aa411fd4561094fc41d5d3e55a5dcdeb8
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/05/2021
+ms.openlocfilehash: f9ca1bbb2bc8556f972a55720b874b08587b06f1
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542819"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594962"
 ---
 # <a name="configure-a-solution-template-plan"></a>ソリューション テンプレート プランを構成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "111542819"
 
 このオファー内で同じ種類のプランが複数作成されていて、それらの間で技術的な構成が同じである場合は、別のプランの技術的な構成を再利用できます。 このプランが公開された後にこの設定を変更することはできません。
 
-技術的な構成を再利用するには
+技術的な構成を再利用するには:
 
 1. **[This plan reuses the technical configuration from another plan of the same type]\(このプランでは同じ種類の別のプランの技術的な構成を再利用する\)** チェック ボックスをオンにします。
 1. 表示された一覧から、目的の基本プランを選択します。
@@ -99,7 +99,7 @@ ms.locfileid: "111542819"
 **[プランの概要]** タブの **[アクション]** 列に表示されるアクションは、プランの状態によって異なり、たとえば次のようになります。
 
 - プランの状態が **[下書き]** の場合、 **[アクション]** 列のリンクは **[ドラフトの削除]** になります。
-- プランの状態が **[ライブ]** の場合、 **[アクション]** 列のリンクは、 **[プランの販売の停止]** または **[プライベート対象ユーザーの同期]** のいずれかになります。 **[Sync private audience]\(プライベート対象ユーザーの同期)** リンクにより、オファーに対して行われた可能性のあるその他の更新を発行することなく、プライベートの対象ユーザーだけに変更が発行されます。
+- プランの状態が **[ライブ]** の場合、 **[アクション]** 列のリンクは **[Stop distribution]\(配布の停止\)** または **[Sync private audience]\(プライベート対象ユーザーの同期\)** のいずれかになります。 **[Sync private audience]\(プライベート対象ユーザーの同期)** リンクにより、オファーに対して行われた可能性のあるその他の更新を発行することなく、プライベートの対象ユーザーだけに変更が発行されます。
 - このオファーに対して別のプランを作成するには、 **[プランの概要]** タブの上部にある **[+ 新しいプランの作成]** を選択します。 次に、「[Azure アプリケーション オファーのプランを作成する方法](azure-app-plans.md)」の手順を繰り返します。 それ以外の場合は、プランの作成が完了したら、次のセクションの「次のステップ」に進んでください。
 
 ## <a name="next-steps"></a>次のステップ

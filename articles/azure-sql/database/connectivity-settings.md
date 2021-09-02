@@ -9,14 +9,14 @@ ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: mathoma, vanto
-ms.date: 07/06/2020
+ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4de2ad883e0daa4a0be0e1da8060b783af5713ff
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 77b629f5fb354ee94d06055999ece59aea05e592
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110699862"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750142"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "110699862"
 
 接続設定は、次のスクリーンショットに示すように、 **[ファイアウォールと仮想ネットワーク]** ブレードからアクセスできます。
 
- ![接続設定ウィンドウのスクリーンショット。][1]
+:::image type="content" source="media/single-database-create-quickstart/manage-connectivity-settings.png" alt-text="SQL サーバーの Azure portal のファイアウォールと仮想ネットワークの設定のスクリーンショット":::
 
 > [!NOTE]
 > これらの設定は、適用後すぐに有効になります。 各設定の要件を満たしていない場合、顧客の接続が失われるおそれがあります。
@@ -121,6 +121,10 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 Error 47072
 Login failed with invalid TLS version
 ```
+
+## <a name="set-the-minimal-tls-version-in-azure-portal"></a>Azure portal で最小 TLS バージョンを設定する
+
+[Azure portal](https://portal.azure.com) で **SQL Server** リソースにアクセスします。 **[セキュリティ]** 設定で、 **[ファイアウォールと仮想ネットワーク]** を選択します。 サーバーに関連付けられているすべての SQL データベースに必要な **[TLS の最小バージョン]** を選択し、 **[保存]** を選択します。
 
 ## <a name="set-the-minimal-tls-version-via-powershell"></a>PowerShell を使用して最小 TLS バージョンを設定する
 
@@ -225,5 +229,4 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 - サーバーの接続ポリシーの変更方法については、「[conn-policy](/cli/azure/sql/server/conn-policy)」を参照してください。
 
 <!--Image references-->
-[1]: media/single-database-create-quickstart/manage-connectivity-settings.png
 [2]: media/single-database-create-quickstart/manage-connectivity-flowchart.png

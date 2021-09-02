@@ -3,12 +3,12 @@ title: 推奨セキュリティ プラクティス
 description: Azure Lighthouse を使用する場合、セキュリティとアクセス制御を考慮することが重要です。
 ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 897f09c41d550d6200cc3d78743bb3b010f2c402
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419305"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768267"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
@@ -19,7 +19,7 @@ ms.locfileid: "103419305"
 
 ## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication を必須とする
 
-[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (2 段階認証) には、複数の認証ステップを要求することで、攻撃者によるアカウントへのアクセスを阻止する効果があります。 管理テナント内のすべてのユーザー (委任された顧客のリソースにアクセスできるユーザーを含む) について、Multi-Factor Authentication を必須としてください。
+[Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (2 段階認証) には、複数の認証ステップを要求することで、攻撃者によるアカウントへのアクセスを阻止する効果があります。 管理テナント内のすべてのユーザー (委任された顧客のリソースにアクセスできるユーザーを含む) について、Azure AD Multi-Factor Authentication を必須としてください。
 
 顧客にも、そのテナントに Azure AD Multi-Factor Authentication の導入を求めることをお勧めします。
 

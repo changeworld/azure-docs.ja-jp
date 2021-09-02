@@ -3,12 +3,12 @@ title: Azure Policy を使用して VM 作成時のバックアップを自動�
 description: Azure Policy を使用して、特定のスコープで作成されたすべての VM のバックアップを自動的に有効化する方法を説明する記事
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe70ba544bb75cee7faf3a4eb3aa2f5ef440909e
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707304"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300612"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure Policy を使用して VM 作成時のバックアップを自動的に有効にする
 
@@ -20,13 +20,13 @@ ms.locfileid: "101707304"
 
 アプリケーション チーム間のバックアップを管理する中央バックアップ チームが組織にある場合は、このポリシーを使用して、管理対象の VM と同じサブスクリプションと場所にある既存の中央 Recovery Services コンテナーへのバックアップを構成できます。 このポリシーのスコープから、特定のタグを含む VM を **除外** できます。
 
-## <a name="policy-2---preview-configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>ポリシー 2 - [プレビュー] 特定のタグが付いた VM の、同じ場所にある既存の Recovery Services コンテナーへのバックアップを構成する
+## <a name="policy-2---configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>ポリシー 2 - 特定のタグが付いた VM の、同じ場所にある既存の Recovery Services コンテナーへのバックアップを構成する
 このポリシーは、上記のポリシー 1 と同様に機能しますが、唯一の違いは、このポリシーを使用すると、特定のタグを含む VM をこのポリシーのスコープに **含める** ことができる点です。 
 
-## <a name="policy-3---preview-configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>ポリシー 3 - [プレビュー] 特定のタグが付いていない VM の、既定のポリシーでの新しい Recovery Services コンテナーへのバックアップを構成する
+## <a name="policy-3---configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>ポリシー 3 - 特定のタグが付いていない VM の、既定のポリシーでの新しい Recovery Services コンテナーへのバックアップを構成する
 アプリケーションを専用のリソース グループに編成し、それらを同じコンテナーによってバックアップする場合は、このポリシーを使用すると、このアクションを自動的に管理できます。 このポリシーのスコープから、特定のタグを含む VM を **除外** できます。
 
-## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>ポリシー 4 - [プレビュー] 特定のタグが付いた VM の、既定のポリシーでの新しい Recovery Services コンテナーへのバックアップを構成する
+## <a name="policy-4---configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>ポリシー 4 - 特定のタグが付いた VM の、既定のポリシーでの新しい Recovery Services コンテナーへのバックアップを構成する
 このポリシーは、上記のポリシー 3 と同様に機能しますが、唯一の違いは、このポリシーを使用すると、特定のタグを含む VM をこのポリシーのスコープに **含める** ことができる点です。 
 
 上記に加えて、Azure Backup には、[監査のみの](../governance/policy/concepts/effects.md#audit)ポリシー (**仮想マシンに対して Azure Backup を有効にする必要がある**) も用意されています。 このポリシーにより、バックアップが有効になっていない仮想マシンが特定されますが、これらの VM のバックアップは自動的には構成されません。 これは、単に VM の全体的なコンプライアンスを評価しようとしていて、すぐに対処する予定はない場合に便利です。
@@ -40,8 +40,6 @@ ms.locfileid: "101707304"
 * ポリシー 1 と 2 では、管理グループのスコープは、現在サポートされていません。
 
 * ポリシー 1 と 2 では、指定されたコンテナーと、バックアップ用に構成された VM は、異なるリソース グループに属することができます。
-
-* ポリシー 1、2、3、4 は現在、国内クラウドでは使用できません。
 
 * ポリシー 3 と 4 は、一度に 1 つのサブスクリプション (またはサブスクリプション内のリソース グループ) に割り当てることができます。
 

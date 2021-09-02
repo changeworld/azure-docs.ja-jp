@@ -6,12 +6,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 11/24/2020
 ms.author: apimpm
-ms.openlocfilehash: ca7bd70bbf99a6d0079717a7a02328b11528d2e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da8b462eba7b5f68e345ffe5e73bd4096831935f
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96839702"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114713060"
 ---
 # <a name="get-api-analytics-in-azure-api-management"></a>Azure API Management で API 分析を取得する
 
@@ -25,6 +25,9 @@ Azure API Management には、API の組み込み分析が用意されていま�
 * サブスクリプション
 * ユーザー
 * Requests
+
+> [!NOTE]
+> 地理的な場所の値は、IP アドレス マッピングに基づく近似値です。
 
 :::image type="content" source="media/howto-use-analytics/analytics-report-portal.png" alt-text="ポータルでのタイムライン分析":::
 
@@ -46,7 +49,7 @@ Azure portal を使用して、API Management インスタンスの分析デー�
 
 ## <a name="analytics---rest-api"></a>分析 - REST API
 
-API Management REST API の[レポート](/rest/api/apimanagement/2019-12-01/reports)操作を使用して、API Management インスタンスの分析データを取得し、フィルター処理します。
+API Management REST API の[レポート](/rest/api/apimanagement/2020-12-01/reports)操作を使用して、API Management インスタンスの分析データを取得し、フィルター処理します。
 
 使用可能な操作は、API、地理的な場所、API 操作、製品、要求、サブスクリプション、時間、またはユーザーごとにレポート レコードを返します。
 

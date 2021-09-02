@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4b3a06d2d441c918c4c109d9dc624ebfa1cd4c97
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 44205bc628a839dd28cd574dbd19a22e9856d999
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120828"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719409"
 ---
 # <a name="media-reserved-units"></a>メディア占有ユニット
 
@@ -43,7 +43,7 @@ Azure Media Services を使用してメディア占有ユニット (MRU) を管�
 
 ## <a name="considerations"></a>考慮事項
 
-* Media Services v3 または Video Indexer によってトリガーされる音声分析とビデオ分析ジョブの場合は、アカウントに 10 個の S3 ユニットをプロビジョニングすることを強くお勧めします。 10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
+* Media Services v3 または Azure Video Analyzer for Media によってトリガーされる音声分析とビデオ分析のジョブの場合は、アカウントに 10 個の S3 ユニットをプロビジョニングすることを強くお勧めします。 10 個を超える S3 の MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
 * MRU のないエンコード タスクの場合、タスクがキューに格納された状態で費やすことができる時間に上限はなく、一度に 1 つのタスクしか実行されません。
 
 ## <a name="billing"></a>課金

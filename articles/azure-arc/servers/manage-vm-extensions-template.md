@@ -1,15 +1,15 @@
 ---
 title: Azure Resource Manager テンプレートを使用して VM 拡張機能を有効にする
 description: この記事では、Azure Resource Manager テンプレートを使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 04/13/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ad2cd02393404b419bc7028e54571d2db285982
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: f1ea92383242cb5b1b1a1d09f33f947ff07113c5
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802452"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389809"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM テンプレートを使用して VM 拡張機能を有効にする
 
@@ -558,7 +558,7 @@ Azure Defender 統合スキャナー拡張機能を使用するため、Windows 
       },
       "resources": [
         {
-          "type": "resourceType/providers/WindowsAgent.AzureSecurityCenter",
+          "type": "Microsoft.HybridCompute/machines/providers/serverVulnerabilityAssessments",
           "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
           "apiVersion": "[parameters('apiVersionByEnv')]"
         }
@@ -595,7 +595,7 @@ Azure Defender 統合スキャナー拡張機能を使用するため、Windows 
       },
       "resources": [
         {
-          "type": "resourceType/providers/LinuxAgent.AzureSecurityCenter",
+          "type": "Microsoft.HybridCompute/machines/providers/serverVulnerabilityAssessments",
           "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
           "apiVersion": "[parameters('apiVersionByEnv')]"
         }

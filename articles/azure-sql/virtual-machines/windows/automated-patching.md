@@ -16,12 +16,12 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd1d81362534f4de7357ebbbc6877aa7c3f72f2e
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 44dae9d8c8bc5ee3896bfc65340dfeee7679d54e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434752"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223186"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 仮想マシンでの SQL Server の自動修正 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -110,9 +110,6 @@ $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -Mainte
 s
 Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
-
-> [!IMPORTANT]
-> 拡張機能がまだインストールされていない場合、インストールすると、SQL Server が再起動されます。
 
 この例に基づいて、対象の Azure VM への実際の影響を次の表に示します。
 

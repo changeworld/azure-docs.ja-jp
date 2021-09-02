@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: 940813f12d542715db47781731144a75e854a98e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aede2f01b7a38637767c6278e913b9bb2cf1a950
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019569"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586133"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>Azure Stream Analytics の継続的インテグレーションと継続的デプロイ (CI/CD)
 
@@ -30,7 +30,7 @@ Stream Analytics の CI/CD パイプラインは、このガイドの手順に�
 
 2. Azure Stream Analytics プロジェクトを Git リポジトリなどのソース管理システムにコミットします。
 
-3. [Azure Stream Analytics CI/CD ツール](cicd-tools.md)を使用してプロジェクトを作成し、デプロイ用の Azure リソース管理テンプレートを生成します。
+3. [Azure Stream Analytics CI/CD ツール](cicd-tools.md)を使用してプロジェクトをビルドし、デプロイ用の Azure Resource Manager テンプレートを生成します。
 
 4. 品質の回帰を確認するための[自動スクリプト テスト](cicd-tools.md#automated-test)を実行します。
 

@@ -2,13 +2,13 @@
 title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 226c3d08903385a1df97d83209762452a70ed816
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.date: 07/27/2021
+ms.openlocfilehash: ef23abb7ba25675ce267fb6a4b0e273a1cc445a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565650"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722744"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>暗号化された Azure 仮想マシンのバックアップと復元
 
@@ -44,9 +44,9 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 ### <a name="limitations"></a>制限事項
 
-- 同じサブスクリプションとリージョン内で ADE により暗号化された VM をバックアップして復元することができます。
+- 同じサブスクリプション内で ADE により暗号化された VM をバックアップして復元できます。
 - Azure Backup では、スタンドアロン キーを使用して暗号化された VM がサポートされます。 VM を暗号化するために使用された証明書の一部であるキーは、現在サポートされていません。
-- Recovery Services のバックアップ コンテナーとして、同じサブスクリプションとリージョン内で ADE により暗号化された VM をバックアップして復元することができます。
+- Azure Backup では、リージョンをまたがる復元がサポートされており、暗号化された Azure VM を Azure のペアになっているリージョンに復元できます。 詳細については、「[サポート マトリックス](./backup-support-matrix.md#cross-region-restore)」を参照してください。
 - ADE で暗号化された VM は、ファイルまたはフォルダー レベルで復旧することはできません。 ファイルとフォルダーを復元するには、VM 全体を復旧する必要があります。
 - VM を復元する場合、ADE で暗号化された VM に[既存の VM を置き換える](backup-azure-arm-restore-vms.md#restore-options)オプションを使用することはできません。 このオプションは、暗号化されていないマネージド ディスクに対してのみサポートされています。
 

@@ -7,12 +7,12 @@ ms.author: dahellem
 ms.date: 5/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: db195f845a9e2f19108b0e40d569d76939dd6b6b
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: b191bdb1303ae0210573d295ffb5b371cc81ddfb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111373079"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748605"
 ---
 # <a name="ingesting-opc-ua-data-with-azure-digital-twins"></a>Azure Digital Twins を使用した OPC UA データの取り込み
 
@@ -63,7 +63,7 @@ OPC UA サーバーのデータを Azure Digital Twins に送るには、異な�
 * [Azure IoT Edge に OPC Publisher をインストールするためのステップバイステップ ガイド](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
 * [Linux に IoT Edge をインストールする](../iot-edge/how-to-install-iot-edge.md) 
 * [GitHub の OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher)
-* [OPC Publisher の構成](../iot-accelerators/howto-opc-publisher-configure.md)
+* [OPC Publisher の構成](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 
 ### <a name="set-up-opc-ua-server"></a>OPC UA サーバーの設定
 
@@ -163,7 +163,7 @@ OPC UA サーバーのデータを IoT Hub に取り込むには、OPC Publisher
 
 #### <a name="install-iot-edge-container"></a>IoT Edge コンテナーのインストール
 
-[Linux に IoT Edge をインストールする](../virtual-machines/linux/use-remote-desktop.md)手順に従います。
+[Linux に IoT Edge をインストールする](../iot-edge/how-to-install-iot-edge.md)手順に従います。
 
 インストールが完了したら、次のコマンドを実行してインストールの状態を確認します。
 
@@ -263,7 +263,7 @@ az iot hub monitor-events -n <iot-hub-instance> -t 0
 ```
 
 > [!TIP]
-> [Azure IoT Explorer](../iot-pnp/howto-use-iot-explorer.md) を使用して IoT Hub メッセージを監視することもできます。
+> [Azure IoT Explorer](../iot-fundamentals/howto-use-iot-explorer.md) を使用して IoT Hub メッセージを監視することもできます。
 
 #### <a name="verify-completion"></a>完了の確認
 
@@ -288,7 +288,7 @@ OPC UA サーバーから Azure IoT Hub にデータが送られるようにな�
 
 ### <a name="create-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスの作成
 
-まず、[インスタンスと認証を設定する方法](how-to-set-up-instance-portal.md)のガイダンスを使用して、新しい Azure Digital Twins インスタンスをデプロイします。
+まず、「[インスタンスと認証を設定する](how-to-set-up-instance-portal.md)」のガイダンスを使用して、新しい Azure Digital Twins インスタンスをデプロイします。
 
 ### <a name="upload-model-and-create-twin"></a>モデルのアップロードとツインの作成
 
@@ -358,23 +358,18 @@ OPC UA ノードから IoT Hub にデータが送信され、Azure Digital Twins
 
 このセクションでは、「[前提条件](#prerequisites)」でダウンロードした Azure 関数を発行します。この関数では、OPC UA データを処理し、Azure Digital Twins を更新します。
 
-#### <a name="step-1-open-the-function-in-visual-studio"></a>手順 1: Visual Studio で関数を開く
+1. ローカル コンピューターにダウンロードされた [OPC UA to Azure Digital Twins](https://github.com/Azure-Samples/opcua-to-azure-digital-twins) プロジェクトに移動し、*Azure Functions/OPCUAFunctions* フォルダーに移動します。 Visual Studio で **OPCUAFunctions.sln** ソリューションを開きます。
+2. プロジェクトを Azure 内の関数アプリに発行します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#publish-to-azure)」を参照してください。
 
-ローカル コンピューターにダウンロードされた [OPC UA to Azure Digital Twins](https://github.com/Azure-Samples/opcua-to-azure-digital-twins) プロジェクトに移動し、*Azure Functions/OPCUAFunctions* フォルダーに移動します。 Visual Studio で **OPCUAFunctions.sln** ソリューションを開きます。
+#### <a name="configure-the-function-app"></a>Function App を構成する
 
-#### <a name="step-2-publish-the-function"></a>手順 2: 関数を発行する
+次に、Azure Digital Twins インスタンスにアクセスできるように、関数に **アクセス ロールを割り当て** て、**アプリケーション設定を構成** します。
 
-関数プロジェクトを Azure 内の関数アプリに発行します。
+[!INCLUDE [digital-twins-configure-function-app.md](../../includes/digital-twins-configure-function-app.md)]
 
-それを行う方法については、「データを処理するために関数を設定する方法」に関する記事の「*[関数アプリを Azure に発行する](how-to-create-azure-function.md#publish-the-function-app-to-azure)*」セクションを参照してください。
+#### <a name="add-application-settings"></a>アプリケーションの設定を追加する
 
-#### <a name="step-3-configure-the-function-app"></a>手順 3: 関数アプリを構成する
-
-Azure Digital Twins インスタンスにアクセスできるように、関数に **アクセス ロールを割り当て** て、**アプリケーション設定を構成** します。 それを行う方法については、"データを処理するために関数を設定する方法" に関する記事の「*[関数アプリのセキュリティ アクセスを設定する](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)*」セクションを参照してください。
-
-#### <a name="step-4-add-application-settings"></a>手順 4: アプリケーション設定を追加する
-
-環境を完全に設定するには、さらにいくつかのアプリケーション設定を追加する必要があります。 [Azure portal](https://portal.azure.com) に移動し、ポータルの検索バーで名前を検索して、新しく作成した Azure 関数に移動します。
+環境と Azure 関数を完全に設定するには、さらにいくつかのアプリケーション設定を追加する必要があります。 [Azure portal](https://portal.azure.com) に移動し、ポータルの検索バーで名前を検索して、新しく作成した Azure 関数に移動します。
 
 関数の左側のナビゲーション メニューから [構成] を選択します。 **[+ 新しいアプリケーション設定]** ボタンを使用して、新しい設定の作成を開始します。
 
@@ -395,7 +390,7 @@ Azure Digital Twins インスタンスにアクセスできるように、関数
 
 ### <a name="create-event-subscription"></a>イベント サブスクリプションの作成
 
-最後に、関数アプリと ProcessOPCPublisherEventsToADT 関数を IoT Hub に接続するイベント サブスクリプションを作成します。 このイベント サブスクリプションは、関数を介してゲートウェイ デバイスから IoT Hub にデータが送られた後、Azure Digital Twins が更新されるために必要です。
+最後に、関数アプリと *ProcessOPCPublisherEventsToADT* 関数を IoT Hub に接続するイベント サブスクリプションを作成します。 このイベント サブスクリプションは、関数を介してゲートウェイ デバイスから IoT Hub にデータが送られた後、Azure Digital Twins が更新されるために必要です。
 
 手順については、Azure Digital Twins の "*チュートリアル: エンドツーエンドのソリューションを接続する* の「[IoT ハブを Azure 関数に接続する](tutorial-end-to-end.md#connect-the-iot-hub-to-the-azure-function)」で使用されているのと同じ手順に従ってください。
 
@@ -405,9 +400,18 @@ Azure Digital Twins インスタンスにアクセスできるように、関数
 
 この手順の後、必要なすべてのコンポーネントをインストールして実行してください。 データが OPC UA シミュレーション サーバーから Azure IoT Hub を介して Azure Digital Twins インスタンスに送られます。 
 
+### <a name="verify-completion"></a>完了の確認
+
+このセクションでは、OPC UA データを Azure Digital Twins に接続する Azure 関数を設定しました。 次のチェックリストを完了したことを確認してください。
+> [!div class="checklist"]
+> * *opcua-mapping.json* ファイルを作成し、Blob Storage コンテナーにインポートした。 
+> * サンプル関数 *ProcessOPCPublisherEventsToADT* を Azure の関数アプリに発行した。
+> * Azure Functions アプリに 3 つの新しいアプリケーション設定を追加した。
+> * IoT Hub イベントを関数アプリに送信するイベント サブスクリプションを作成した。
+
 次のセクションでは、イベントを監視してすべてが正常に動作していることを確認するために実行できるいくつかの Azure CLI コマンドを示します。
 
-### <a name="verify-and-monitor"></a>確認と監視
+## <a name="verify-and-monitor"></a>確認と監視
 
 このセクションのコマンドは、[Azure Cloud Shell](https://shell.azure.com) または[ローカルの Azure CLI](/cli/azure/install-azure-cli) で実行できます。
 
@@ -425,16 +429,6 @@ az webapp log tail –name <function-name> --resource-group <resource-group-name
 
 :::image type="content" source="media/how-to-ingest-opcua-data/adt-explorer-2.png" alt-text="Azure Digital Twins Explorer を使用してツイン プロパティの更新を監視するスクリーンショット":::
 
-### <a name="verify-completion"></a>完了の確認
-
-このセクションでは、OPC UA データを Azure Digital Twins に接続する Azure 関数を設定しました。 次のチェックリストを完了したことを確認してください。
-> [!div class="checklist"]
-> * *opcua-mapping.json* ファイルを作成し、Blob Storage コンテナーにインポートした。 
-> * サンプル関数 ProcessOPCPublisherEventsToADT を Azure の関数アプリに発行した。
-> * Azure Functions アプリに 3 つの新しいアプリケーション設定を追加した。
-> * IoT Hub イベントを関数アプリに送信するイベント サブスクリプションを作成した。
-> * Azure CLI コマンドを使用して最終的なデータ フローを確認した
-
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、シミュレートされた OPC UA サーバーのデータを Azure Digital Twins に取り込み、デジタル ツインのプロパティを更新するための、完全なデータ フローを設定しました。
@@ -444,6 +438,6 @@ az webapp log tail –name <function-name> --resource-group <resource-group-name
 * [Azure IoT Edge に OPC Publisher をインストールするためのステップバイステップ ガイド](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
 * [Linux に IoT Edge をインストールする](../iot-edge/how-to-install-iot-edge.md) 
 * [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher)
-* [OPC Publisher の構成](../iot-accelerators/howto-opc-publisher-configure.md)
+* [OPC Publisher の構成](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 * [UANodeSetWebViewer](https://github.com/barnstee/UANodesetWebViewer) 
 * [OPCUA2DTDL](https://github.com/khilscher/OPCUA2DTDL)

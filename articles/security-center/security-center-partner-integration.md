@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 3d7bed3847465c48914453a3fd167384e1c180b6
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099252"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435824"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -40,7 +40,7 @@ Security Center では、次の脆弱性分析も提供しています：
 ## <a name="how-security-solutions-are-integrated"></a>セキュリティ ソリューションを統合するしくみ
 Security Center からデプロイされている Azure セキュリティ ソリューションは自動的に接続されます。 オンプレミスまたは他のクラウドで実行されているコンピューターなど、その他のセキュリティ データ ソースも接続できます。
 
-[![パートナー ソリューションの統合](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
+:::image type="content" source="./media/security-center-partner-integration/security-solutions-page.png" alt-text="パートナー ソリューションの統合。" lightbox="./media/security-center-partner-integration/security-solutions-page.png":::
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>統合された Azure セキュリティ ソリューションとその他のデータ ソースの管理
 
@@ -54,7 +54,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 **[接続済みソリューション]** セクションには、Security Center に現在接続されているセキュリティ ソリューションが含まれます。 また、各ソリューションの正常性状態も表示されます。  
 
-![接続済みソリューション](./media/security-center-partner-integration/connected-solutions.png)
+![接続済みのソリューション。](./media/security-center-partner-integration/connected-solutions.png)
 
 パートナー ソリューションの状態は、次のいずれかになります。
 
@@ -75,7 +75,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
    - **Delete solution (ソリューションを削除する)**
    - **構成**
 
-   ![パートナー ソリューションの詳細](./media/security-center-partner-integration/partner-solutions-detail.png)
+   ![パートナー ソリューションの詳細。](./media/security-center-partner-integration/partner-solutions-detail.png)
 
 
 ### <a name="discovered-solutions"></a>検出されたソリューション
@@ -91,7 +91,7 @@ Security Center は、Azure で実行されていても Security Center に接�
 
 **[データ ソースの追加]** セクションには、接続できるその他の使用可能なデータ ソースが表示されます。 このようなソースのいずれかからデータを追加する手順については、 **[追加]** をクリックしてください。
 
-![データ ソース](./media/security-center-partner-integration/add-data-sources.png)
+![データ ソース:](./media/security-center-partner-integration/add-data-sources.png)
 
 
 

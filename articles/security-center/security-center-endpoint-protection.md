@@ -2,36 +2,31 @@
 title: Azure Security Center での Endpoint Protection の推奨事項
 description: Endpoint Protection ソリューションを検出し、正常と識別する方法。
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 2730a2f5-20bc-4027-a1c2-db9ed0539532
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/29/2019
+ms.date: 07/21/2021
 ms.author: memildin
-ms.openlocfilehash: 1ce20deed8b26dc5f5bebf4656dd3f1c370d766f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 841d52b53fd492f1b9f6760deba438f68a47d004
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561230"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470714"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Security Center での Endpoint Protection の評価と推奨事項
 
 Azure Security Center は、Endpoint Protection ソリューションの[サポートされる](security-center-services.md#endpoint-supported)バージョンの正常性評価を提供します。 この記事では、Security Center で次の 2 つの推奨事項を生成するシナリオについて説明します。
 
-* **仮想マシンに Endpoint Protection ソリューションをインストールする**
-* **マシンの Endpoint Protection の正常性の問題を解決する**
+- [Endpoint Protection をマシンにインストールする必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/4fb67663-9ab9-475d-b026-8c544cced439)
+- [Endpoint Protection の正常性の問題を、お使いのコンピューターで解決する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/37a3689a-818e-4a0e-82ac-b1392b9bb000)
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center は、[Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) が実行され、結果が **AMServiceEnabled: Fasle の場合に、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。False**
+- Security Center は、[Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) が実行され、結果が **AMServiceEnabled: Fasle** の場合に、**Endpoint Protection をマシンにインストールする** ことを推奨します
 
-* Security Center は、[Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) が実行され、次のいずれかが発生した場合に、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
+- Security Center は、[Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) が実行され、次のいずれかが発生した場合に、**マシンで Endpoint Protection の正常性の問題を解決する** ことを推奨します。
 
   * 次のプロパティのいずれかが false である場合。
 
@@ -49,9 +44,9 @@ Azure Security Center は、Endpoint Protection ソリューションの[サポ�
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Security Center では、**SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** をインポートし、**Get-MProtComputerStatus** を実行して、その結果が **AMServiceEnabled = false** の場合は、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨しています。
+* Security Center は、**SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** をインポートし、**Get-MProtComputerStatus** を実行して、その結果が **AMServiceEnabled = false** の場合に、**Endpoint Protection をマシンにインストールする** ことを推奨します。
 
-* Security Center は、**Get-MprotComputerStatus** が実行され、次のいずれかが発生した場合に、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
+* Security Center は、**Get-MprotComputerStatus** が実行され、次のいずれかが発生した場合に、**マシンの Endpoint Protection の正常性の問題を解決する** ことを推奨します。
 
   * 次のプロパティの少なくとも 1 つが false である。
 
@@ -69,14 +64,14 @@ Azure Security Center は、Endpoint Protection ソリューションの[サポ�
 
 ## <a name="trend-micro"></a>Trend Micro
 
-* Security Center は、次のいずれかのチェックが満たされていない場合、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。
+* Security Center は、次のいずれかのチェックが満たされていない場合に、**Endpoint Protection をマシンにインストールする** ことを推奨します。
     - **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** が存在する
     - **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** が存在する
     - インストール フォルダーに **dsa_query.cmd** ファイルがある
     - **Component.AM.mode: on - Trend Micro Deep Security Agent detected** で **dsa_query.cmd** 結果が実行されている
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
-Security Center は、次のいずれかのチェックが満たされていない場合、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。
+Security Center は、次のいずれかのチェックが満たされていない場合に、**Endpoint Protection をマシンにインストールする** ことを推奨します。
 
 - **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 - **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
@@ -86,7 +81,7 @@ Security Center は、次のいずれかのチェックが満たされていな�
 - **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 - **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Security Center は、次のいずれかのチェックが満たされていない場合、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
+Security Center は、次のいずれかのチェックが満たされていない場合に、**マシンの Endpoint Protection の正常性の問題を解決する** ことを推奨します。
 
 - Symantec バージョン 12 以上のチェック:レジストリの場所:**HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" - 値 "PRODUCTVERSION"**
 - リアルタイム保護の状態のチェック: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
@@ -101,12 +96,12 @@ Security Center は、次のいずれかのチェックが満たされていな�
 
 ## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee Endpoint Protection for Windows
 
-Security Center は、次のいずれかのチェックが満たされていない場合、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。
+Security Center は、次のいずれかのチェックが満たされていない場合に、**Endpoint Protection をマシンにインストールする** ことを推奨します。
 
 - **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** が存在する
 - **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
-Security Center は、次のいずれかのチェックが満たされていない場合、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
+Security Center は、次のいずれかのチェックが満たされていない場合に、**マシンの Endpoint Protection の正常性の問題を解決する** ことを推奨します。
 
 - McAfee バージョン:**HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
 - シグネチャのバージョンの検索:**HKLM:\Software\McAfee\AVSolution\DS\DS - 値 "dwContentMajorVersion"**
@@ -115,12 +110,12 @@ Security Center は、次のいずれかのチェックが満たされていな�
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>Linux 向け McAfee エンドポイント セキュリティの脅威防止 
 
-Security Center は、次のいずれかのチェックが満たされていない場合、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。
+Security Center は、次のいずれかのチェックが満たされていない場合に、**Endpoint Protection をマシンにインストールする** ことを推奨します。
 
 - ファイル **/opt/isec/ens/threatprevention/bin/isecav** が存在する
 - **"/opt/isec/ens/threatprevention/bin/isecav --version"** の出力:**McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
 
-Security Center は、次のいずれかのチェックが満たされていない場合、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
+Security Center は、次のいずれかのチェックが満たされていない場合に、**マシンの Endpoint Protection の正常性の問題を解決する** ことを推奨します。
 
 - **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** から **Quick scan, Full scan** が返され、両方のスキャンが <= 7 日間
 - **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** から **DAT and engine Update time** が返され、両方が <= 7 日間
@@ -128,11 +123,11 @@ Security Center は、次のいずれかのチェックが満たされていな�
 
 ## <a name="sophos-antivirus-for-linux"></a>Linux 向け Sophos Antivirus 
 
-Security Center は、次のいずれかのチェックが満たされていない場合、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。
+Security Center は、次のいずれかのチェックが満たされていない場合に、**Endpoint Protection をマシンにインストールする** ことを推奨します。
 - ファイル **/opt/sophos-av/bin/savdstatus** が終了する。あるいは、カスタマイズされた場所 **"readlink $(which savscan)"** を探す
 - **"/opt/sophos-av/bin/savdstatus --version"** から Sophos 名 = **Sophos Anti-Virus and Sophos version >= 9** が返される
 
-Security Center は、次のいずれかのチェックが満たされていない場合、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
+Security Center は、次のいずれかのチェックが満たされていない場合に、**マシンの Endpoint Protection の正常性の問題を解決する** ことを推奨します。
 - **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** から値が返される
 - **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" から値が返される
 - **"/opt/sophos-av/bin/savdstatus --lastupdate"** から lastUpdate (<= 7 日間でなければならない) が返される 

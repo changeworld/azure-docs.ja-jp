@@ -1,28 +1,28 @@
 ---
 title: ドキュメント抽出の認知技術
 titleSuffix: Azure Cognitive Search
-description: エンリッチメント パイプライン内のファイルからコンテンツを抽出します。 このスキルは現在、パブリック プレビューの段階です。
+description: エンリッチメント パイプライン内のファイルからコンテンツを抽出します。
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 08/12/2021
 ms.author: chalton
-ms.openlocfilehash: 681900e2d2175e3e52a906072ae0b31a835cd1c8
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 02d3431ecc7a5c460be75885fd786b3b4c4d276f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483661"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860568"
 ---
 # <a name="document-extraction-cognitive-skill"></a>ドキュメント抽出の認知技術
 
 **ドキュメント抽出** スキルでは、エンリッチメント パイプライン内のファイルからコンテンツが抽出されます。 これにより、通常であれば他のスキルによって生成される可能性のあるファイルでのスキルセット実行の前に発生する、ドキュメント抽出ステップを利用できます。
 
 > [!NOTE]
-> 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、およびインデックス作成のドキュメント解析ステージの一部としての画像抽出に対しては、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> このスキルは Cognitive Services にバインドされておらず、Cognitive Services キー要件はありません。
+> このスキルは、テキストと画像を抽出します。 テキスト抽出は無料です。 画像抽出は、[Azure Cognitive Search による課金対象](https://azure.microsoft.com/pricing/details/search/)となります。 無料の検索サービスでは、1 日あたりインデクサーごとに 20 トランザクションのコストが吸収されるため、クイックスタート、チュートリアル、小規模の作業を無料で完了できます。 Basic、Standard、およびそれ以上の場合、画像抽出は課金対象となります。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格については、[価格のページ](https://azure.microsoft.com/pricing/details/search/)で説明されています。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.DocumentExtractionSkill
@@ -45,7 +45,7 @@ DocumentExtractionSkill を使用すると、次の形式のドキュメント�
 
 | 構成パラメーター   | 使用できる値 | 説明 |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | 埋め込み画像またはデータ セット内の画像ファイルを無視するには、`none` に設定します。 これは既定値です。 <br/>[認知技術を使用した画像分析](cognitive-search-concept-image-scenarios.md)の場合、ドキュメント解析の一部として正規化された画像の配列をスキルで作成するには、`generateNormalizedImages` に設定します。 このアクションを実行するには、`parsingMode` を `default` に設定し、`dataToExtract` を `contentAndMetadata` に設定する必要があります。 正規化された画像は、一様な画像出力をもたらす追加処理を参照します。画像出力は、ビジュアル検索の結果に画像を含めるときに一貫性のあるレンダリングを促進するために、サイズと回転を調整されます (たとえば、[JFK のデモ](https://github.com/Microsoft/AzureSearch_JFK_Files)で見られるような、グラフ コントロール内の同一サイズの写真)。 このオプションを使用すると、各画像に対してこの情報が生成されます。  <br/>`generateNormalizedImagePerPage` に設定した場合は、PDF ファイルの処理が異なり、埋め込み画像が抽出されるのではなく、各ページが画像としてレンダリングされ、それに応じて正規化されます。  PDF 以外のファイルの種類は、`generateNormalizedImages` が設定されている場合と同じように処理されます。
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | 埋め込み画像またはデータ セット内の画像ファイルを無視するには、`none` に設定します。 これは既定値です。 <br/>[コグニティブ スキルを使用した画像分析](cognitive-search-concept-image-scenarios.md)の場合、[ドキュメント解析](search-indexer-overview.md#document-cracking)の一部として正規化された画像の配列をスキルで作成するには、`generateNormalizedImages` に設定します。 このアクションを実行するには、`parsingMode` を `default` に設定し、`dataToExtract` を `contentAndMetadata` に設定する必要があります。 正規化された画像は、一様な画像出力をもたらす追加処理を参照します。画像出力は、ビジュアル検索の結果に画像を含めるときに一貫性のあるレンダリングを促進するために、サイズと回転を調整されます (たとえば、[JFK のデモ](https://github.com/Microsoft/AzureSearch_JFK_Files)で見られるような、グラフ コントロール内の同一サイズの写真)。 このオプションを使用すると、各画像に対してこの情報が生成されます。  <br/>`generateNormalizedImagePerPage` に設定した場合は、PDF ファイルの処理が異なり、埋め込み画像が抽出されるのではなく、各ページが画像としてレンダリングされ、それに応じて正規化されます。  PDF 以外のファイルの種類は、`generateNormalizedImages` が設定されている場合と同じように処理されます。
 | `normalizedImageMaxWidth` | 50 - 10000 の範囲の整数 | 生成された正規化画像の最大幅 (ピクセル単位)。 既定値は 2000 です。 | 
 | `normalizedImageMaxHeight` | 50 - 10000 の範囲の整数 | 生成された正規化画像の最大の高さ (ピクセル単位)。 既定値は 2000 です。 |
 

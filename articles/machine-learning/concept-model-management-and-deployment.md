@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 author: jpe316
 ms.author: jordane
-ms.date: 03/17/2020
+ms.date: 07/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 88a2dc2e38861cff540cfa1fcdc0b3f6e9651b04
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 0ef4715bb854905f8076ee116f672eee2d33a059
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439910"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860810"
 ---
 # <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps: Azure Machine Learning を使用したモデルの管理、デプロイ、系列追跡、監視
 
@@ -39,6 +39,7 @@ Azure Machine Learning で提供される MLOps 機能は次のとおりです�
 - **運用および ML 関連の問題について ML アプリケーションを監視する**。 トレーニングと推論の間でのモデル入力の比較、モデル固有のメトリックの調査、および ML インフラストラクチャに関する監視とアラートの提供を行います。
 - **Azure Machine Learning と Azure Pipelines を使用して、エンド ツー エンドの ML ライフサイクルを自動化する**。 パイプラインの使用により、頻繁にモデルを更新し、新しいモデルをテストし、他のアプリケーションやサービスとともに新しい ML モデルを継続的にロールアウトすることができます。
 
+MLOps の詳細については、「[Machine Learning DevOps (MLOps)](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-mlops)」を参照してください。
 ## <a name="create-reproducible-ml-pipelines"></a>再現可能な ML パイプラインを作成する
 
 Azure Machine Learning から ML パイプラインを使用して、モデルのトレーニング プロセスに関連するすべての手順をまとめることができます。
@@ -94,9 +95,9 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 
 ### <a name="use-models"></a>モデルを使用する
 
-トレーニング済みの機械学習モデルは、クラウド上またはローカルで、Web サービスとしてデプロイされます。 また、Azure IoT Edge デバイスにモデルをデプロイすることもできます。 デプロイでは、推論に CPU、GPU、またはフィールド プログラマブル ゲート アレイ (FPGA) を使用します。 Power BI からのモデルを使用することもできます。
+トレーニング済みの機械学習モデルは、クラウド上またはローカルで、Web サービスとしてデプロイされます。 デプロイでは、推論に CPU、GPU、またはフィールド プログラマブル ゲート アレイ (FPGA) を使用します。 Power BI からのモデルを使用することもできます。
 
-モデルを Web サービスまたは IoT Edge デバイスとして使用する場合は、次の項目を指定します。
+モデルを Web サービスとして使用する場合は、次の項目を指定します。
 
 * サービス/デバイスに送信されたデータのスコア付けに使用されるモデル。
 * エントリ スクリプト。 このスクリプトは、要求を受け入れ、モデルを使用してデータにスコアを付け、応答を返します。
@@ -105,7 +106,7 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 
 また、ターゲット デプロイ プラットフォームの構成も提供します。 たとえば、Azure Kubernetes Service をデプロイするときの VM ファミリの種類、使用可能なメモリ、およびコアの数です。
 
-イメージが作成されると、Azure Machine Learning で必要なコンポーネントも追加されます。 たとえば、Web サービスを実行し、IoT Edge を操作するために必要なアセットです。
+イメージが作成されると、Azure Machine Learning で必要なコンポーネントも追加されます。 たとえば、Web サービスを実行するために必要なアセットです。
 
 #### <a name="batch-scoring"></a>バッチ スコアリング
 Batch スコアリングは、ML パイプライン経由でサポートされます。 詳細については、[ビッグ データでのバッチ予測](./tutorial-pipeline-batch-scoring-classification.md)に関するページをご覧ください。
@@ -135,12 +136,6 @@ Azure Kubernetes Service にデプロイする場合は、制御されたロー�
 * エンドポイント構成のトラフィックの割合を更新することによりエンドポイントのバージョンを切り替えます。
 
 詳細については、[ML モデルの制御されたロールアウト](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)に関するページを参照してください。
-
-#### <a name="iot-edge-devices"></a>IoT Edge デバイス
-
-**Azure IoT Edge モジュール** を介してモデルを IoT デバイスで使用することができます。 IoT Edge モジュールはハードウェア デバイスに展開されるため、デバイス上で推論、つまりモデルのスコアリングを使用できます。
-
-詳細については、「[モデルのデプロイ](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="analytics"></a>Analytics
 

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 3394754f2829018f7862b3775f8ab2cb2d07d005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b76ffc9c0c8d061e63636f40f696cc41a1238b1a
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98051362"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437776"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続が必要
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。 Standard Internal Load Balancer は送信接続を提供しないため、代わりに標準のPublic Load Balancer を作成するためのソリューションを提供します。
@@ -58,7 +58,7 @@ Azure Az モジュールがインストールされているかどうかを確�
   
 次のコマンドを使用してこのスクリプトを実行します。
 
-`Install-Script -Name AzurePublicLBUpgrade`
+`Install-Script -Name AzureLBUpgrade`
 
 このコマンドでは、必要な Az モジュールもインストールされます。  
 
@@ -84,18 +84,18 @@ Azure Az モジュールがインストールされていて、それらをア�
     **例**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newrgName &quot;test_userInput3_rg&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
+   AzureLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newrgName &quot;test_userInput3_rg&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standard Load Balancer のバックエンド プールに VM を追加する
 
-まず、スクリプトによって、Basic Public Load Balancer から移行された正確な構成で新しい Standard Public Load Balancer が正常に作成されたことを再確認します。 この確認は Azure portal から行うことができます。
+まず、スクリプトによって、Basic Internal Load Balancer から移行された正確な構成で新しい Standard Public Load Balancer が正常に作成されたことを再確認します。 この確認は Azure portal から行うことができます。
 
 手動テストとして、必ず少量のトラフィックを Standard Load Balancer 経由で送信してください。
   
 新しく作成された Standard Public Load Balancer のバックエンド プールに VM を追加する方法に関するいくつかのシナリオと、それぞれについての推奨事項を次に示します。
 
-* **以前の Basic Public Load Balancer のバックエンド プールから、新しく作成された Standard Public Load Balancer のバックエンド プールに既存の VM を移動する。**
+* **以前の Basic Internal Load Balancer のバックエンド プールから、新しく作成された Standard Public Load Balancer のバックエンド プールに既存の VM を移動する**。
     1. このクイック スタートのタスクを実行するには、[Azure portal](https://portal.azure.com) にサインインする必要があります。
  
     1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧から **新しく作成された Standard Load Balancer** を選択します。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 965e7c92e17d5ba689fccc0ee6eb321fe2a36695
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ee09191069c05ae67eb84ee15d739cd101de8ef0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138082"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460472"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 シリーズの仮想マシンの概要 
 
@@ -59,7 +59,7 @@ VM 自体に、pNUMA 0 と 16 が予約されているという認識はあり�
 | Orchestrator のサポート        | CycleCloud、Batch、AKS。[クラスター構成オプション](../../sizes-hpc.md#cluster-configuration-options)  |
 
 > [!NOTE] 
-> Windows Server 2012 R2 は、64 個を超える (仮想または物理) コアを備えた HBv2 およびその他の VM ではサポートされていません。 詳細については、[こちら](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)を参照してください。
+> Windows Server 2012 R2 は、64 個を超える (仮想または物理) コアを備えた HBv2 およびその他の VM ではサポートされていません。 詳細については、[Windows Server 上の Hyper-V でサポートされている Windows ゲスト オペレーティング システム](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

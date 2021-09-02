@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2021
 ms.author: bwren
-ms.openlocfilehash: 5c8256e453763d9cd2fdc18687df3064552dcf2b
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 00014d4a7f2829ec6836473d03ae0b25f388a903
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289536"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286474"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor メトリックの概要
 Azure Monitor メトリックは、[監視対象のリソース](../monitor-reference.md)から時系列データベースに数値データを収集する Azure Monitor の機能です。 メトリックは、一定の間隔で収集される数値であり、特定の時刻におけるシステムの何らかの特性を表しています。 Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 メトリック エクスプローラーを使用すると、対話形式で分析することができます。値がしきい値を超えるときにアラートで事前に通知したり、ブックやダッシュボードで視覚化したりすることができます。
@@ -133,6 +133,9 @@ Azure のほとんどのリソースでは、プラットフォーム メトリ�
 > [!NOTE]
 > 長期的な傾向を見るために、[Azure Monitor リソースのプラットフォーム メトリックを Log Analytics ワークスペースに送信](./resource-logs.md#send-to-azure-storage)できます。
 
+
+> [!NOTE]
+> 上記のとおり、Azure のほとんどのリソースでは、プラットフォーム メトリックは 93 日間保存されます。 ただし、([メトリック] タイルで) 1 つのグラフでクエリを実行できるデータは 30 日までです。 この制限は、ログ ベースのメトリックには適用されません。 空のグラフが表示される場合、またはグラフにメトリック データの一部のみが表示される場合は、日時指定の開始日と終了日の間隔が、30 日を超えていないことを確認します。 30 日間の間隔を選択したら、グラフを[パン](./metrics-charts.md#pan)して完全なリテンション期間を表示できます。
 
 
 

@@ -1,19 +1,20 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) を大規模に使用する場合の考慮事項 - Azure
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: このトピックでは、Azure Video Analyzer for Media (旧称 Video Indexer) を大規模に使用する場合の考慮事項について説明します。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: how-to
+ms.subservice: azure-video-analyzer-media
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: bfad40e55deae4ebad930907221517ae3ef4e5f4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8784b82c59575a569730949d71473027cd30479a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387720"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734159"
 ---
 # <a name="things-to-consider-when-using-video-analyzer-for-media-at-scale"></a>Video Analyzer for Media を大規模に使用する場合の考慮事項
 
@@ -48,21 +49,11 @@ URL を使用してビデオをアップロードする場合は、メディア 
 > [!TIP]
 > upload video API の省略可能なパラメーター `videoUrl` を使用します。
 
-URL を使用してビデオをアップロードする方法の例については、[この例](upload-index-videos.md#code-sample)をご覧ください。 または、[AzCopy](../../storage/common/storage-use-azcopy-v10.md) を使用して、迅速かつ確実にコンテンツをストレージ アカウントに取得し、そこから [SAS URL](../../storage/common/storage-sas-overview.md) を使用してコンテンツを Video Analyzer for Media に送信できます。
+URL を使用してビデオをアップロードする方法の例については、[この例](upload-index-videos.md#code-sample)をご覧ください。 または、[AzCopy](../../storage/common/storage-use-azcopy-v10.md) を使用して、迅速かつ確実にコンテンツをストレージ アカウントに取得し、そこから [SAS URL](../../storage/common/storage-sas-overview.md) を使用してコンテンツを Video Analyzer for Media に送信できます。 Video Analyzer for Media では、"*読み取り専用*" の SAS URL を使用することをお勧めします。
 
-## <a name="increase-media-reserved-units-if-needed"></a>必要に応じてメディア占有ユニットを増やす
+## <a name="automatic-scaling-of-media-reserved-units"></a>メディア占有ユニットの自動スケーリング 
 
-通常、Video Analyzer for Media の使用を開始したときの概念実証段階では、コンピューティング能力はそれほど必要ありません。 インデックスを作成する必要のあるビデオの大規模なアーカイブを作成し、そのユース ケースに適したペースでプロセスを実行するには、Video Analyzer for Media の使用量をスケール アップする必要があります。 したがって、現在のコンピューティング能力が十分でない場合は、使用するコンピューティング リソースの数を増やすことを検討する必要があります。
-
-Azure Media Services でコンピューティング能力と並列処理を向上させるには、メディア[占有ユニット](../../media-services/latest/concept-media-reserved-units.md) (RU) に注意する必要があります。 RU は、メディア処理タスクのパラメーターを決定するコンピューティング ユニットです。 RU の数は、各アカウントで同時に処理できるメディア タスクの数に影響を与え、その種類によって処理速度が決まります。また、インデックス作成が複雑な場合は、1 つのビデオに複数の RU が必要になることがあります。 RU がビジー状態になると、別のリソースが利用可能になるまで、新しいタスクがキューに保持されます。
-
-処理を効率的に実行し、リソースが一時的にアイドル状態になるのを防ぐために、Video Indexer には自動スケール システムが用意されています。これにより、処理量が少ないときは RU がスピン ダウンし、ラッシュ時間 (最大で、すべての RU が完全に使用される) には RU がスピン アップします。 この機能を有効にするには、アカウント設定で[自動スケールをオンにする](manage-account-connected-to-azure.md#autoscale-reserved-units)か、または [Update-Paid-Account-Azure-Media-Services API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services) を使用します。
-
-:::image type="content" source="./media/considerations-when-use-at-scale/second-consideration.jpg" alt-text="Video Analyzer for Media を大規模に使用する場合の 2 番目の考慮事項":::
-
-:::image type="content" source="./media/considerations-when-use-at-scale/reserved-units.jpg" alt-text="AMS 占有ユニット":::
-
-インデックス作成の時間と低スループットを最小限に抑えるには、種類 S3 の 10 RU を使用することをお勧めします。 後で、より多くのコンテンツや高い同時実行性をサポートするようにスケール アップするために、さらにリソースが必要な場合は、[サポート システム (有料アカウントのみ) を使用して](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)、より多くの RU の割り当てを要求できます。
+2021 年 8 月 1 日以降、Azure Video Analyzer for Media (旧称 Video Indexer) では、[Azure Media Services](../../media-services/latest/media-services-overview.md) (AMS) による[占有ユニット](../../media-services/latest/concept-media-reserved-units.md) (MRU) の自動スケーリングが有効になりました。その結果、Azure Video Analyzer for Media を使用してそれらを管理する必要がなくなります。 これにより、自動スケーリングされるビジネス ニーズに応じて、多くの場合では価格を下げることができるなど、価格の最適化が可能になります。 
 
 ## <a name="respect-throttling"></a>調整を考慮する
 

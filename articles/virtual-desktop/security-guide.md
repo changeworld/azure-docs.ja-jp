@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e09f3c8f4691eaf978e0b5245626508e4aa2b961
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5c9421397b6e5fbfe8688e5ceeff6056de25674a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746863"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862331"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
@@ -195,7 +195,40 @@ Windows Defender Credential Guard では、VBS を使用してシークレット
 - Windows Server 2016
 - Windows Server 2019
 - Windows 10 Enterprise
-- Windows 10 Enterprise マルチセッション
+- Windows 10 (Enterprise マルチセッション)
+
+## <a name="windows-defender-application-control"></a>Windows Defender Application Control
+
+次のオペレーティング システムでは、Azure Virtual Desktop で Windows Defender Application Control を使用することができます。
+
+- Windows Server 2016
+- Windows Server 2019
+- Windows 10 Enterprise
+- Windows 10 (Enterprise マルチセッション)
+
+>[!NOTE]
+>Windows Defender Access Control を使用する際、デバイス レベルのポリシーのみをターゲットにすることをお勧めします。 個々のユーザーへのポリシーをターゲットにすることもできますが、いったんポリシーが適用されると、デバイス上のすべてのユーザーに均等に影響します。
+
+## <a name="ip-virtualization"></a>IP 仮想化
+
+Windows Server 2019 で IP 仮想化を使用する場合は、次の手順に従ってください。
+
+1. 管理者用の Windows PowerShell ウィンドウで、次のキーの名前を変更します。 
+```powershell
+Rename-Item HKLM:\SYSTEM\ControlSet001\Services\WinSock2\Parameters\AppId_Catalog\2C69D9F1 Backup_2C69D9F1
+```
+>[!NOTE]
+>キーを削除しても同じことを達成できますが、名前を変更すると、必要に応じてより簡単に元に戻すことができます。 これは、既定で存在するデータです。
+>       
+>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\WinSock2\Parameters\AppId_Catalog\2C69D9F1\
+>AppFullPath: C:\Windows\System32\svchost.exe\
+>PermittedLspCategories: 0x40000000
+
+2. VM を再起動します。
+
+3. **gpedit.msc** を開き、次に **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[アプリケーションの互換性]** に移動して、IP 仮想化機能を有効にします。 **[リモート デスクトップの IP 仮想化を有効にする]** ポリシーを有効にし、次にポリシーで使用する IP アドレスを指定します。
+
+4. VM を再起動します。
 
 ## <a name="next-steps"></a>次のステップ
 
