@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6e0bb7949e6f528925eb66c1148662720b144e06
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 2431ba1b59ae1f9891affe510e098d41fe166797
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060356"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711872"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet とファイアウォールの背後にあるストレージ アカウントに対して監査を書き込む
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ VNet の概念やベスト プラクティスなどの詳細については、�
 > [!div class="checklist"]
 >
 > * 汎用 v2 ストレージ アカウント。 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、[汎用 v2 ストレージ アカウントにアップグレードします](../../storage/common/storage-account-upgrade.md)。 詳細については、「[ストレージ アカウントの種類](../../storage/common/storage-account-overview.md#types-of-storage-accounts)」を参照してください。
-> * ストレージ アカウントは、[論理 SQL サーバー](logical-servers.md)と同じサブスクリプションで、かつ同じ場所にある必要があります。
+> * ストレージ アカウントは、[論理 SQL サーバー](logical-servers.md)と同じテナントで、かつ同じ場所にある必要があります (サブスクリプションは別でもかまいません)。
 > * Azure ストレージ アカウントには `Allow trusted Microsoft services to access this storage account` が必要です。 これをストレージ アカウントの **ファイアウォールと仮想ネットワーク** に設定します。
 > * 選択したストレージ アカウントに対する `Microsoft.Authorization/roleAssignments/write` アクセス許可が必要です。 詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 

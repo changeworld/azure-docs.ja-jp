@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 06/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 8a4a9834b35055fbd5be4fd50f1d5413d5e54a35
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 13d020ed0ea6310f49cbe37555fc2a9048b9f042
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111758224"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465388"
 ---
 # <a name="use-azure-marketplace-image-to-create-vm-image-for-your-azure-stack-edge-pro-gpu"></a>Azure Marketplace イメージを使用して Azure Stack Edge Pro GPU の VM イメージを作成する
 
@@ -45,7 +45,7 @@ Azure Stack Edge で Azure Marketplace イメージを使用する前に、次�
 
 ここで、使用する Azure Marketplace イメージを特定します。 Azure Marketplace には、たくさん VM イメージがホストされています。 
 
-検索条件に一致する最も一般的な Marketplace イメージを見つけるには、次のコマンドを実行します。  
+検索条件に一致する最も一般的に使用されている Marketplace イメージを見つけるには、次のコマンドを実行します。  
 
 ```azurecli
 az vm image list --all [--publisher <Publisher>] [--offer <Offer>] [--sku <SKU>]
@@ -137,7 +137,9 @@ PS /home/user>
  
 :::image type="content" source="media/azure-stack-edge-create-virtual-machine-marketplace-image/marketplace-image-1.png" alt-text="Marketplace イメージの一覧":::
 
-最も一般的なイメージの URN の一覧を次に示します。 特定の OS の最新バージョンのみが必要な場合は、URN のバージョン番号を "latest" に置き換えることができます (例: "MicrosoftWindowsServer:WindowsServer:2019-Datacenter:Latest")。 
+### <a name="commonly-used-marketplace-images"></a>一般的に使用されている Marketplace イメージ
+
+最も一般的に使用されているいくつかのイメージの URN の一覧を次に示します。 特定の OS の最新バージョンのみが必要な場合は、URN のバージョン番号を "latest" に置き換えることができます (例: "MicrosoftWindowsServer:WindowsServer:2019-Datacenter:Latest")。 
 
 
 | OS              | SKU                                     | Version               | URN                                                                                       |

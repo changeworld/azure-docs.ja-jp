@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 34be4920b343117ed895313c45a66e54b2de9ab3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: df4476177175fd5aadc57c3d68bedc97531aee0c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950581"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448498"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-users-and-roles"></a>IoT Central REST API を使用してユーザーとロールを管理する方法
 
@@ -183,6 +183,8 @@ PUT https://{your app subdomain}.azureiotcentral.com/api/users/user-001?api-vers
 }
 ```
 
+また、REST API 呼び出しにサービス プリンシパル認証を使用する必要がある場合に役立つサービス プリンシパル ユーザーを追加することもできます。 詳細については、[サービス プリンシパル ユーザーの追加または更新](/rest/api/iotcentral/1.0/users/create#add-or-update-a-service-principal-user)に関するページを参照してください。
+
 ### <a name="change-the-role-of-a-user"></a>ユーザーのロールを変更する
 
 ユーザーに割り当てられているロールを変更するには、次の要求を使用します。 この例では、前に取得したビルダー ロールの ID を使用します。
@@ -228,4 +230,4 @@ DELETE https://{your app subdomain}.azureiotcentral.com/api/users/user-001?api-v
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API を使用してユーザーとロールを管理する方法を学習しました。お勧めする次のステップは、[REST API を使用した IoT Central アプリケーションの管理](/learn/modules/manage-iot-central-apps-with-rest-api/)です。
+これで REST API を使用してユーザーとロールを管理する方法を学習したので、推奨される次のステップは「[IoT Central REST API を使用してデバイスを制御する方法](howto-control-devices-with-rest-api.md)」です。

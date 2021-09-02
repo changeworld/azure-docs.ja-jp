@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2478ec3f0e8608e1dd868745fca2c323677fadce
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: bef6439ae51c6e15f7be997758acbbd3722ae4ff
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729850"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223265"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -253,7 +253,7 @@ ARR には、サーフェスが Z ファイティングになるかどうかを�
 
 ## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>ネイティブの C++ アプリでのマルチパス ステレオ レンダリングを使用したグラフィックス成果物
 
-場合によっては、[**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) を呼び出した後にローカル コンテンツに対してマルチパス ステレオ レンダリング モードを使用する C++ のカスタム ネイティブ アプリ (別個のパスに左と右の目がレンダリングされる) で、ドライバーのバグが発生することがあります。 このバグによって、不明確なラスタライズによるエラーが発生し、ローカル コンテンツの個々の三角形や三角形の一部がランダムに非表示になります。 パフォーマンス上の理由から、**SV_RenderTargetArrayIndex** を使用するなど、より新しいシングルパス ステレオ レンダリング手法でローカル コンテンツをレンダリングすることをお勧めします。
+場合によっては、[**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image-openxr) を呼び出した後にローカル コンテンツに対してマルチパス ステレオ レンダリング モードを使用する C++ のカスタム ネイティブ アプリ (別個のパスに左と右の目がレンダリングされる) で、ドライバーのバグが発生することがあります。 このバグによって、不明確なラスタライズによるエラーが発生し、ローカル コンテンツの個々の三角形や三角形の一部がランダムに非表示になります。 パフォーマンス上の理由から、**SV_RenderTargetArrayIndex** を使用するなど、より新しいシングルパス ステレオ レンダリング手法でローカル コンテンツをレンダリングすることをお勧めします。
 
 ## <a name="conversion-file-download-errors"></a>変換ファイルのダウンロード エラー
 

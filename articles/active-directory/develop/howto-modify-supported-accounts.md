@@ -13,14 +13,14 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 3ae6616263de605d5910f244423b9e7ffc036c5d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c89cb9c43ae274170e0cedb01b1908a874b7317e
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079793"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039950"
 ---
-# <a name="how-to-modify-the-accounts-supported-by-an-application"></a>アプリケーションでサポートされているアカウントを変更する方法
+# <a name="modify-the-accounts-supported-by-an-application"></a>アプリケーションによってサポートされるアカウントを変更する
 
 アプリケーションを Microsoft ID プラットフォームに登録するときに、アプリケーションにアクセスできるユーザー (アカウントの種類) を指定しました。 たとえば、組織内のアカウントを指定した場合、それは "*シングルテナント*" アプリです。 また、(自分の組織を含む) 任意の組織内のアカウントを指定した場合、それは "*マルチテナント*" アプリです。
 

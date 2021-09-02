@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights のクラシック リソース�
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3d6092d694d1c99ff7755dfcbec5c0edbfb7567f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3eea51b69bbb1138ac7c5418370759d1777b482c
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077304"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361839"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>ワークスペースベースの Application Insights リソースに移行する
 
@@ -26,7 +26,7 @@ ms.locfileid: "110077304"
 * [カスタマー マネージド キー (CMK)](../logs/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
 * [Azure Private Link](../logs/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
 * [Profiler およびスナップショット デバッガー向けの Bring Your Own Storage (BYOS)](./profiler-bring-your-own-storage.md) では、保存時の暗号化ポリシー、有効期間管理ポリシー、および Application Insights Profiler およびスナップショット デバッガーに関連付けられているすべてのデータのネットワーク アクセスを完全に制御できます。 
-* [容量予約レベル](../logs/manage-cost-storage.md#pricing-model)を利用すると、従量課金制の料金と比較して 25% も節約できます。 
+* [コミットメント レベル](../logs/manage-cost-storage.md#pricing-model)を使用すると、従量課金制の料金と比較して 30% も節約できます。 
 * Log Analytics ストリーミング インジェストにより、データ インジェストがより高速になります。
 
 ## <a name="migration-process"></a>移行プロセス
@@ -49,8 +49,11 @@ ms.locfileid: "110077304"
 
     - 既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](../logs/quick-create-workspace.md)を参照してください。
     
-- ワークスペースベースのリソースでは、連続エクスポートはサポートされていないため、無効にする必要があります。
+- **連続エクスポートはワークスペース ベースのリソースではサポートされていない** ため、無効にする必要があります。
 移行が完了したら、[診断設定](../essentials/diagnostic-settings.md)を使用して、ストレージ アカウントへのデータのアーカイブまたは Azure Event Hubs へのストリーミングを構成できます。  
+
+    > [!CAUTION]
+    > 診断設定では、連続エクスポートとは異なるエクスポート形式またはスキーマを使用するため、移行によって Stream Analytics との既存の統合はすべて中断されます。
 
 - Log Analytics ワークスペースの **[全般]**  >  **[使用量と推定コスト]**  >  **[データ保持]** で、現在のデータ保持設定を確認してください。 この設定は、Application Insights リソースを移行した後、新たに取り込まれるデータが格納される期間に影響します。 現在、Application Insights データを既定の 90 日より長く格納していて、その長い保持期間を維持する場合は、ワークスペースのデータ保持設定を調整しなければならないことがあります。
 

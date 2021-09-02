@@ -5,14 +5,14 @@ author: miag
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 05/11/2021
 ms.author: miag
-ms.openlocfilehash: 4d5a518bc517b950f5366ba53eadb7284121a5e3
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 34b83376a555b5fd06947049f959badc9a1aed67
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866410"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731080"
 ---
 # <a name="iot-hub-support-for-managed-identities"></a>IoT Hub でのマネージド ID のサポート 
 
@@ -273,7 +273,7 @@ IoT Hub の[ファイルのアップロード](iot-hub-devguide-file-upload.md)�
     > マネージド ID を使用するファイルのアップロードのためにストレージ アカウントを IoT Hub に保存する前に、上記の手順を完了して、マネージド ID に適切なアクセスを割り当てる必要があります。 ロールの割り当てが反映されるまで数分お待ちください。 
  
 5. ご使用の IoT Hub のリソース ページで、 **[ファイルのアップロード]** タブに移動します。
-6. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、必要に応じて **[ファイル通知の設定]、[SAS TTL]、[既定の TTL]、[最大配信回数]** を構成します。 優先する認証の種類を選択し、 **[保存]** をクリックします。 この手順でエラーが発生した場合は、一時的にストレージ アカウントを設定して、**すべてのネットワーク** からのアクセスを許可してから、再試行してください。 ファイルのアップロードの構成が完了したら、ストレージ アカウントでファイアウォールを構成できます。
+6. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、必要に応じて **[ファイル通知の設定]、[SAS TTL]、[既定の TTL]、[最大配信回数]** を構成します。 優先する認証の種類を選択し、 **[保存]** をクリックします。
 
     :::image type="content" source="./media/iot-hub-managed-identity/file-upload.png" alt-text="msi を使用する IoT Hub のファイルのアップロード":::
 

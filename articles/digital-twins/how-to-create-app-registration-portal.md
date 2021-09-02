@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 17f671a945c569d5492f84967a81931606d4cea1
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 55f8c0008a055f5703ffe563fe7925446246f134
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110989516"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466169"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-portal"></a>Azure Digital Twins で使用するアプリ登録を作成する (ポータル)
 
 [!INCLUDE [digital-twins-create-app-registration-selector.md](../../includes/digital-twins-create-app-registration-selector.md)]
 
-Azure Digital Twins インスタンスを使用する場合、「[チュートリアル: クライアント アプリをコーディングする](tutorial-code.md)」で作成されたカスタム クライアント アプリなどのクライアント アプリケーションを使用して、そのインスタンスを操作することが一般的です。 これらのアプリケーションを操作するためには、Azure Digital Twins で認証する必要があります。また、アプリで使用できる [認証メカニズム](how-to-authenticate-client.md)には、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **アプリの登録** が含まれます。
+Azure Digital Twins インスタンスを使用する場合、「[クライアント アプリをコーディングする](tutorial-code.md)」で作成されたカスタム クライアント アプリなどのクライアント アプリケーションを使用して、そのインスタンスを操作することが一般的です。 これらのアプリケーションを操作するためには、Azure Digital Twins で認証する必要があります。また、アプリで使用できる [認証メカニズム](how-to-authenticate-client.md)には、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **アプリの登録** が含まれます。
 
 これは、すべての認証シナリオで必要とされるわけではありません。 ただし、アプリの登録が必要な認証方法またはコード サンプルを使用している場合は、この記事で [Azure portal](https://portal.azure.com) を使用した設定方法を確認できます。 また、アプリの登録を使用して認証するために必要な[重要な値を収集](#collect-important-values)する方法についても説明します。
 
@@ -50,13 +50,13 @@ Azure Digital Twins インスタンスを使用する場合、「[チュート�
 
 ## <a name="collect-important-values"></a>重要な値を収集する
 
-次に、アプリの登録を使用してクライアント アプリケーションを認証するために必要な、アプリの登録に関する重要な値を収集します。 これらの値には次の値が含まれます。
+次に、アプリの登録に関する重要な値を収集します。これらは、アプリの登録を使用してクライアント アプリケーションを認証するために必要となります。 これらの値には次の値が含まれます。
 * **リソース名**
 * **クライアント ID**
 * **テナント ID**
 * **クライアント シークレット**
 
-Azure Digital Twins を使用する場合、**リソース名** は `http://digitaltwins.azure.net` になります。
+Azure Digital Twins に使用する場合、**リソース名** は `http://digitaltwins.azure.net` になります。
 
 次のセクションでは、他の値を見つける方法について説明します。
 
@@ -151,4 +151,4 @@ Azure Digital Twins を使用する場合、**リソース名** は `http://digi
 この記事では、クライアント アプリケーションを Azure Digital Twins API で認証するために使用できる Azure AD アプリの登録を設定しました。
 
 次に、認証メカニズムについて、アプリの登録を使用するものと、使用しないものについて確認します。
-* [方法: アプリ認証コードを作成する](how-to-authenticate-client.md)
+* [アプリ認証コードを作成する](how-to-authenticate-client.md)

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f99439ae71f8a66b9fc36b32603681e62f2224a9
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91576644"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968250"
 ---
 # <a name="override-materials-during-model-conversion"></a>モデル変換中に素材をオーバーライドする
 
@@ -186,7 +186,8 @@ Azure Remote Rendering で使用するためにモデルを変換する場合は
             "alphaClipThreshold": { "type": "number" },
             "useVertexColor": { "type" : "boolean" },
             "isDoubleSided": { "type" : "boolean" },
-            "ignoreTextureMaps": { "$ref" : "#/definitions/listOfMaps" }
+            "ignoreTextureMaps": { "$ref" : "#/definitions/listOfMaps" },
+            "transparencyWriteDepth": {"type" : "boolean" }
         },
         "required": ["name"],
         "additionalProperties" : false

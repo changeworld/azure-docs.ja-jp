@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 14a357bf5f7fece43ce72b58142aa0047213bfab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 41afd3cf3720c5fa86acf75acadc07e60fa2f3cc
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737466"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968847"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>AzureData Lake Storage Gen2 のアクセス制御リスト (ACL)
 
@@ -343,7 +343,7 @@ OID が表示されます。
 
 ### <a name="can-i-set-the-acl-of-a-container"></a>コンテナーの ACL を設定できますか。
 
-いいえ。 コンテナーに ACL がありません。 ただし、コンテナーのルート ディレクトリの ACL を設定できます。 すべてのコンテナーにはルート ディレクトリがあり、コンテナーと同じ名前を共有します。 たとえば、コンテナーに `my-container` という名前が付けられている場合、ルート ディレクトリの名前は `myContainer/` になります。 
+いいえ。 コンテナーに ACL がありません。 ただし、コンテナーのルート ディレクトリの ACL を設定できます。 すべてのコンテナーにはルート ディレクトリがあり、コンテナーと同じ名前を共有します。 たとえば、コンテナーに `my-container` という名前が付けられている場合、ルート ディレクトリの名前は `my-container/` になります。 
 
 Azure Storage REST API には [Set Container ACL](/rest/api/storageservices/set-container-acl)という操作が含まれていますが、この操作を使用してコンテナーの ACL またはコンテナーのルート ディレクトリを設定することはできません。 その代わりに、その操作は、コンテナー内の BLOB が[パブリックにアクセス可能かどうか](anonymous-read-access-configure.md)を示します。 
 

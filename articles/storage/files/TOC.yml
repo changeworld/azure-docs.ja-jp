@@ -59,6 +59,8 @@
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: よく寄せられる質問
       href: storage-files-faq.md
+    - name: Azure Files の新機能
+      href: files-whats-new.md
 - name: 操作方法ガイド
   items:
     - name: 配置

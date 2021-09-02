@@ -2,69 +2,144 @@
 title: プライベート リンクを使用してプライベート エンドポイントを設定する
 description: コンテナー レジストリにプライベート エンドポイントを設定し、ローカル仮想ネットワークでプライベート リンク経由のアクセスを有効にします。 プライベート リンク アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
-ms.date: 03/31/2021
-ms.openlocfilehash: d3c7c573b0ffc08a85f5cbe5cc62d3f7c052f0af
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/14/2021
+ms.openlocfilehash: 25a45f0e1f4115fce623deef919368ecdf479ead
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781435"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471505"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure Private Link を使用して Azure Container Registry にプライベートで接続する
-
 
 [Azure Private Link](../private-link/private-link-overview.md) を利用し、レジストリ エンドポイントに仮想ネットワーク プライベート IP アドレスを割り当てることでレジストリへのアクセスを制限します。 仮想ネットワーク上のクライアントとレジストリのプライベート エンドポイント間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンクを経由することで、パブリック インターネットにさらされないようにします。 また、Private Link を使用すると、[Azure ExpressRoute](../expressroute/expressroute-introduction.MD) プライベート ピアリングまたは [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を介して、オンプレミスからのプライベート レジストリへのアクセスを有効にすることもできます。
 
 設定がレジストリの割り当てられたプライベート IP アドレスに解決されるように、レジストリのプライベート エンドポイント用に [DNS 設定を構成する](../private-link/private-endpoint-overview.md#dns-configuration)ことができます。 DNS 構成では、ネットワーク内のクライアントとサービスは、レジストリの完全修飾ドメイン名 (*myregistry.azurecr.io* など) で引き続きレジストリにアクセスできます。 
 
-この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 現時点では、1 つのレジストリに対して最大 10 個のプライベート エンドポイントを設定できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のレベル](container-registry-skus.md)に関するページを参照してください。
+この記事では、Azure portal (推奨) または Azure CLI を使用して、レジストリのプライベート エンドポイントを構成する方法について説明します。 この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のレベル](container-registry-skus.md)に関するページを参照してください。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
+> [!NOTE]
+> 現時点では、1 つのレジストリに対して最大 10 個のプライベート エンドポイントを設定できます。 
+
 ## <a name="prerequisites"></a>前提条件
 
+* プライベート エンドポイントを設定する仮想ネットワークとサブネット。 必要に応じて、[新しい仮想ネットワークとサブネットを作成](../virtual-network/quick-create-portal.md)してください。
+* テストのために、仮想ネットワークに VM を設定することをお勧めします。 レジストリにアクセスするためのテスト仮想マシンを作成する手順については、「[Docker 対応仮想マシンの作成](container-registry-vnet.md#create-a-docker-enabled-virtual-machine)」を参照してください。 
 * この記事の Azure CLI の手順を使用する場合は、Azure CLI バージョン 2.6.0 以降をお勧めします。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。 または、[Azure Cloud Shell](../cloud-shell/quickstart.md) で実行します。
 * コンテナー レジストリがまだない場合は、1 つ作成し (Premium レベルが必要)、Microsoft Container Registry から `mcr.microsoft.com/hello-world` などのサンプル パブリック イメージを[インポート](container-registry-import-images.md)します。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。
-* 別の Azure サブスクリプションのプライベート リンクを使用してレジストリ アクセスを構成するには、そのサブスクリプションで Azure Container Registry のリソース プロバイダーを登録する必要があります。 次に例を示します。
 
-  ```azurecli
-  az account set --subscription <Name or ID of subscription of private link>
+### <a name="register-container-registry-resource-provider"></a>コンテナー レジストリ リソース プロバイダーを登録する
 
-  az provider register --namespace Microsoft.ContainerRegistry
-  ``` 
+別の Azure サブスクリプションまたはテナント内のプライベート リンクを使用してレジストリ アクセスを構成するには、そのサブスクリプションで Azure Container Registry の[リソース プロバイダーを登録する](../azure-resource-manager/management/resource-providers-and-types.md)必要があります。 Azure portal、Azure CLI、またはその他のツールを使用します。
 
-この記事の Azure CLI 例では、次の環境変数を使用します。 ご利用の環境に適した値に置き換えてください。 すべての例は、Bash シェル用に書式設定されています。
+例:
+
+```azurecli
+az account set --subscription <Name or ID of subscription of private link>
+
+az provider register --namespace Microsoft.ContainerRegistry
+``` 
+
+## <a name="set-up-private-endpoint---portal-recommended"></a>プライベート エンドポイントを設定する - ポータル (推奨)
+
+レジストリを作成するときにプライベート エンドポイントを設定するか、または既存のレジストリにプライベート エンドポイントを追加します。 
+
+### <a name="create-a-private-endpoint---new-registry"></a>プライベート エンドポイントの作成 - 新しいレジストリ
+
+1. ポータルでレジストリを作成するとき、 **[基本]** タブの **[SKU]** で **[Premium]** を選択します。
+1. **[ネットワーク]** タブを選択します。
+1. **[ネットワーク接続]** で **[プライベート エンドポイント]** を選択し、 **[+ 追加]** を選択します。
+1. 次の情報を入力または選択します。
+
+    | 設定 | 値 |
+    | ------- | ----- |
+    | サブスクリプション | サブスクリプションを選択します。 |
+    | Resource group | 既存のグループの名前を入力するか、新しいものを作成します。|
+    | 名前 | 一意の名前を入力します。 |
+    | レジストリのサブリソース |**レジストリ** を選択します|
+    | **ネットワーク** | |
+    | 仮想ネットワーク| プライベート エンドポイントの仮想ネットワークを選択します。 例: *myDockerVMVNET*。 |
+    | Subnet | プライベート エンドポイントのサブネットを選択します。 例: *myDockerVMSubnet*。 |
+    |**プライベート DNS の統合**||
+    |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
+    |プライベート DNS ゾーン |*(新規) privatelink.azurecr.io* を選択します |
+    |||
+1. 残りのレジストリ設定を構成し、 **[確認と作成]** を選択します。
+  
+:::image type="content" source="media/container-registry-private-link/private-link-create-portal.png" alt-text="プライベート エンドポイントを使用してレジストリを作成する":::
+
+
+
+これで、プライベート リンクが構成され、使用できるようになりました。
+
+### <a name="create-a-private-endpoint---existing-registry"></a>プライベート エンドポイントの作成 - 既存のレジストリ
+
+1. ポータルで、自分のコンテナー レジストリに移動します。
+1. **[設定]** で **[ネットワーク]** を選択します。
+1. **[プライベート エンドポイント]** タブで **[+ プライベートエンドポイント]** を選択します。
+    :::image type="content" source="media/container-registry-private-link/private-endpoint-existing-registry.png" alt-text="レジストリにプライベート エンドポイントを追加する":::
+
+1. **[基本]** タブで、次の情報を入力または選択します。
+
+    | 設定 | 値 |
+    | ------- | ----- |
+    | **プロジェクトの詳細** | |
+    | サブスクリプション | サブスクリプションを選択します。 |
+    | Resource group | 既存のグループの名前を入力するか、新しいものを作成します。|
+    | **インスタンスの詳細** |  |
+    | 名前 | 名前を入力します。 |
+    |リージョン|リージョンを選択します。|
+    |||
+1. **次へ:リソース** を選択します。
+1. 次の情報を入力または選択します。
+
+    | 設定 | 値 |
+    | ------- | ----- |
+    |接続方法  | この例では、 **[マイ ディレクトリ内の Azure リソースに接続する]** を選択します。|
+    | サブスクリプション| サブスクリプションを選択します。 |
+    | リソースの種類 | **[Microsoft.ContainerRegistry/registries]** を選択します。 |
+    | リソース |レジストリの名前を選択します|
+    |ターゲット サブリソース |**レジストリ** を選択します|
+    |||
+1. **次へ:構成** を選択します。
+1. 次の情報を入力または選択します。
+
+    | 設定 | 値 |
+    | ------- | ----- |
+    |**ネットワーク**| |
+    | 仮想ネットワーク| プライベート エンドポイントの仮想ネットワークを選択します。 |
+    | Subnet | プライベート エンドポイントのサブネットを選択します。 |
+    |**プライベート DNS の統合**||
+    |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
+    |プライベート DNS ゾーン |*(新規) privatelink.azurecr.io* を選択します |
+    |||
+
+1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
+1. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
+
+### <a name="confirm-endpoint-configuration"></a>エンドポイント構成を確認する
+
+プライベート エンドポイントが作成されると、ポータルの **[プライベート エンドポイント]** 設定にプライベート ゾーンの DNS 設定が表示されます。
+
+1. ポータルで、コンテナー レジストリに移動し、 **[設定]、[ネットワーク]** の順に選択します。
+1. **[プライベート エンドポイント]** タブで、作成したプライベートエンドポイントを選択します。 
+1. **[DNS の構成]** を選択します。
+1. リンク設定とカスタム DNS 設定を確認します。
+
+:::image type="content" source="media/container-registry-private-link/private-endpoint-overview.png" alt-text="ポータルのエンドポイント DNS 設定":::
+## <a name="set-up-private-endpoint---cli"></a>プライベート エンドポイントを設定する - CLI
+
+この記事の Azure CLI 例では、次の環境変数を使用します。 プライベート エンドポイントを設定するには、既存のコンテナー レジストリ、仮想ネットワーク、サブネットの名前が必要になります。 ご利用の環境に適した値に置き換えてください。 すべての例は、Bash シェル用に書式設定されています。
 
 ```bash
 REGISTRY_NAME=<container-registry-name>
 REGISTRY_LOCATION=<container-registry-location> # Azure region such as westeurope where registry created
-RESOURCE_GROUP=<resource-group-name>
-VM_NAME=<virtual-machine-name>
+RESOURCE_GROUP=<resource-group-name> # Resource group for your existing virtual network and subnet
+NETWORK_NAME=<virtual-network-name>
+SUBNET_NAME=<subnet-name>
 ```
-
-[!INCLUDE [Set up Docker-enabled VM](../../includes/container-registry-docker-vm-setup.md)]
-
-## <a name="set-up-private-link---cli"></a>プライベート リンクを設定する - CLI
-
-### <a name="get-network-and-subnet-names"></a>ネットワークとサブネットの名前を取得する
-
-まだない場合は、プライベート リンクを設定するための仮想ネットワークとサブネットの名前が必要になります。 この例では、VM とレジストリのプライベート エンドポイントに同じサブネットを使用します。 しかし、多くのシナリオでは、別のサブネットにエンドポイントを設定します。 
-
-VM を作成するときに、既定では Azure によって仮想ネットワークが同じリソース グループに作成されます。 仮想ネットワークの名前は仮想マシンの名前に基づいています。 たとえば、仮想マシンに *myDockerVM* という名前を付ける場合、既定の仮想ネットワーク名は *myDockerVMVNET* で、サブネット名は *myDockerVMSubnet* です。 [az network vnet list][az-network-vnet-list] コマンドを実行して、環境変数にこれらの値を設定します。
-
-```azurecli
-NETWORK_NAME=$(az network vnet list \
-  --resource-group $RESOURCE_GROUP \
-  --query '[].{Name: name}' --output tsv)
-
-SUBNET_NAME=$(az network vnet list \
-  --resource-group $RESOURCE_GROUP \
-  --query '[].{Subnet: subnets[0].name}' --output tsv)
-
-echo NETWORK_NAME=$NETWORK_NAME
-echo SUBNET_NAME=$SUBNET_NAME
-```
-
 ### <a name="disable-network-policies-in-subnet"></a>サブネットでネットワーク ポリシーを無効にする
 
 プライベート エンドポイントのサブネットで、ネットワーク セキュリティ グループなどの[ネットワーク ポリシーを無効にします](../private-link/disable-private-endpoint-network-policy.md)。 [az network vnet subnet update][az-network-vnet-subnet-update] を使用して、サブネット構成を更新します。
@@ -128,7 +203,7 @@ az network private-endpoint create \
 
 ### <a name="get-endpoint-ip-configuration"></a>エンドポイントの IP 構成を取得する
 
-DNS レコードを構成するには、プライベート エンドポイントの IP 構成を取得します。 この例でのプライベート エンドポイントのネットワーク インターフェイスには、コンテナー レジストリの 2 つのプライベート IP アドレスが関連付けられています。1 つはレジストリ自体用で、もう 1 つはレジストリのデータ エンドポイント用です。 
+DNS レコードを構成するには、プライベート エンドポイントの IP 構成を取得します。 この例でのプライベート エンドポイントのネットワーク インターフェイスには、コンテナー レジストリの 2 つのプライベート IP アドレスが関連付けられています。1 つはレジストリ自体用で、もう 1 つはレジストリのデータ エンドポイント用です。 レジストリが geo レプリケートされている場合は、各レプリカに追加の IP アドレスが関連付けられます。
 
 最初に [az network private endpoint show][az-network-private-endpoint-show] を実行し、ネットワーク インターフェイス ID について、プライベート エンドポイントにクエリを実行します。
 
@@ -140,7 +215,7 @@ NETWORK_INTERFACE_ID=$(az network private-endpoint show \
   --output tsv)
 ```
 
-次の [az network nic show][az-network-nic-show] コマンドでは、コンテナー レジストリとレジストリのデータ エンドポイント用のプライベート IP アドレスが取得されます。
+次の [az network nic show][az-network-nic-show] コマンドでは、コンテナー レジストリとレジストリのデータ エンドポイント用のプライベート IP アドレスと FQDN を取得します。
 
 ```azurecli
 REGISTRY_PRIVATE_IP=$(az network nic show \
@@ -166,17 +241,27 @@ DATA_ENDPOINT_FQDN=$(az network nic show \
   --output tsv)
 ```
 
-> [!NOTE]
-> レジストリが [geo レプリケート](container-registry-geo-replication.md)されている場合、レジストリ レプリカごとに追加のデータ エンドポイントを照会します。
+#### <a name="additional-endpoints-for-geo-replicas"></a>geo レプリカの追加のエンドポイント
 
+レジストリが [geo レプリケート](container-registry-geo-replication.md)されている場合、レジストリ レプリカごとに追加のデータ エンドポイントを照会します。 たとえば、*eastus* リージョンでは、次のようになります。 
+
+```azurecli
+REPLICA_LOCATION=eastus
+GEO_REPLICA_DATA_ENDPOINT_PRIVATE_IP=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REPLICA_LOCATION'].privateIpAddress" \
+  --output tsv) 
+
+GEO_REPLICA_DATA_ENDPOINT_FQDN=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REPLICA_LOCATION'].privateLinkConnectionProperties.fqdns" \
+  --output tsv)
+```
 ### <a name="create-dns-records-in-the-private-zone"></a>プライベート ゾーンに DNS レコードを作成する
 
 次のコマンドでは、レジストリ エンドポイントとそのデータ エンドポイントのプライベート ゾーンに DNS レコードを作成します。 たとえば、*westeurope* リージョンに *myregistry* という名前のレジストリがある場合、エンドポイント名は `myregistry.azurecr.io` と `myregistry.westeurope.data.azurecr.io` になります。 
 
-> [!NOTE]
-> レジストリが [geo レプリケートされている](container-registry-geo-replication.md)場合、レプリカのデータ エンドポイント IP ごとに追加の DNS レコードを作成します。
-
-まず、[az network private-dns record-set a create][az-network-private-dns-record-set-a-create] を実行し、レジストリ エンドポイントとデータ エンドポイント用の空の A レコード セットを作成します。
+まず、[az network private-dns record-set a create][az-network-private-dns-record-set-a-create] を実行して、レジストリ エンドポイントとデータ エンドポイント用の空の A レコード セットを作成します。
 
 ```azurecli
 az network private-dns record-set a create \
@@ -191,7 +276,7 @@ az network private-dns record-set a create \
   --resource-group $RESOURCE_GROUP
 ```
 
-[az network private-dns record-set a add-record][az-network-private-dns-record-set-a-add-record] コマンドを実行し、レジストリ エンドポイントとデータ エンドポイント用の A レコードを作成します。
+[az network private-dns record-set a add-record][az-network-private-dns-record-set-a-add-record] コマンドを実行して、レジストリ エンドポイントとデータ エンドポイント用の A レコードを作成します。
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -208,86 +293,22 @@ az network private-dns record-set a add-record \
   --ipv4-address $DATA_ENDPOINT_PRIVATE_IP
 ```
 
-これで、プライベート リンクが構成され、使用できるようになりました。
+#### <a name="additional-records-for-geo-replicas"></a>geo レプリカの追加のレコード
 
-## <a name="set-up-private-link---portal"></a>プライベート リンクを設定する - ポータル
+レジストリが geo レプリケートされている場合は、レプリカごとに追加の DNS 設定を作成します。 この例では、*eastus* リージョンで続行します。
 
-レジストリを作成するときにプライベート リンクを設定するか、既存のレジストリにプライベート リンクを追加します。 次の手順では、仮想ネットワークとサブネットがテスト用の VM で既に設定されていることを前提としています。 [新しい仮想ネットワークとサブネットを作成する](../virtual-network/quick-create-portal.md)こともできます。
+```azurecli
+az network private-dns record-set a create \
+  --name ${REGISTRY_NAME}.${REPLICA_LOCATION}.data \
+  --zone-name privatelink.azurecr.io \
+  --resource-group $RESOURCE_GROUP
 
-### <a name="create-a-private-endpoint---new-registry"></a>プライベート エンドポイントの作成 - 新しいレジストリ
-
-1. ポータルでレジストリを作成するとき、 **[基本]** タブの **[SKU]** で **[Premium]** を選択します。
-1. **[ネットワーク]** タブを選択します。
-1. **[ネットワーク接続]** で **[プライベート エンドポイント]** を選択し、 **[+ 追加]** を選択します。
-1. 次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    | サブスクリプション | サブスクリプションを選択します。 |
-    | Resource group | 既存のグループの名前を入力するか、新しいものを作成します。|
-    | 名前 | 一意の名前を入力します。 |
-    | サブリソース |**レジストリ** を選択します|
-    | **ネットワーク** | |
-    | 仮想ネットワーク| *myDockerVMVNET* など、仮想マシンがデプロイされている仮想ネットワークを選択します。 |
-    | Subnet | 仮想マシンがデプロイされている *myDockerVMSubnet* などのサブネットを選択します。 |
-    |**プライベート DNS の統合**||
-    |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
-    |プライベート DNS ゾーン |*(新規) privatelink.azurecr.io* を選択します |
-    |||
-1. 残りのレジストリ設定を構成し、 **[確認および作成]** を選択します。
-
-  ![プライベート エンドポイントを使用してレジストリを作成する](./media/container-registry-private-link/private-link-create-portal.png)
-
-### <a name="create-a-private-endpoint---existing-registry"></a>プライベート エンドポイントの作成 - 既存のレジストリ
-
-1. ポータルで、自分のコンテナー レジストリに移動します。
-1. **[設定]** で **[ネットワーク]** を選択します。
-1. **[プライベート エンドポイント]** タブで **[+ プライベートエンドポイント]** を選択します。
-1. **[基本]** タブで、次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    | **プロジェクトの詳細** | |
-    | サブスクリプション | サブスクリプションを選択します。 |
-    | Resource group | 既存のグループの名前を入力するか、新しいものを作成します。|
-    | **インスタンスの詳細** |  |
-    | 名前 | 名前を入力します。 |
-    |リージョン|リージョンを選択します。|
-    |||
-5. **次へ:リソース** を選択します。
-6. 次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    |接続方法  | **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。|
-    | サブスクリプション| サブスクリプションを選択します。 |
-    | リソースの種類 | **[Microsoft.ContainerRegistry/registries]** を選択します。 |
-    | リソース |レジストリの名前を選択します|
-    |ターゲット サブリソース |**レジストリ** を選択します|
-    |||
-7. **次へ:構成** を選択します。
-8. 次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    |**ネットワーク**| |
-    | 仮想ネットワーク| *myDockerVMVNET* など、仮想マシンがデプロイされている仮想ネットワークを選択します。 |
-    | Subnet | 仮想マシンがデプロイされている *myDockerVMSubnet* などのサブネットを選択します。 |
-    |**プライベート DNS の統合**||
-    |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
-    |プライベート DNS ゾーン |*(新規) privatelink.azurecr.io* を選択します |
-    |||
-
-1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
-2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
-
-プライベート エンドポイントが作成された後、ポータルの **[プライベート エンドポイント]** ページにプライベート ゾーンの DNS 設定が表示されます。
-
-1. ポータルで、コンテナー レジストリに移動し、 **[設定]、[ネットワーク]** の順に選択します。
-1. **[プライベート エンドポイント]** タブで、作成したプライベートエンドポイントを選択します。
-1. **[概要]** ページで、リンク設定とカスタム DNS 設定を確認します。
-
-  ![エンドポイントの DNS 設定](./media/container-registry-private-link/private-endpoint-overview.png)
+az network private-dns record-set a add-record \
+  --record-set-name ${REGISTRY_NAME}.${REPLICA_LOCATION}.data \
+  --zone-name privatelink.azurecr.io \
+  --resource-group $RESOURCE_GROUP \
+  --ipv4-address $GEO_REPLICA_DATA_ENDPOINT_PRIVATE_IP
+```
 
 これで、プライベート リンクが構成され、使用できるようになりました。
 
@@ -295,28 +316,24 @@ az network private-dns record-set a add-record \
 
 さまざまなシナリオで、パブリック ネットワークからのレジストリ アクセスを無効にします。 この構成により、仮想ネットワークの外にいるクライアントがレジストリ エンドポイントに到達するのを防ぐことができます。 
 
-### <a name="disable-public-access---cli"></a>パブリック アクセスを無効にする - CLI
-
-Azure CLI を使用してパブリック アクセスを無効にするには、[az acr update][az-acr-update] を実行し、`--public-network-enabled` を `false` に設定します。 
-
-> [!NOTE]
-> `public-network-enabled` 引数には、Azure CLI 2.6.0 以降が必要です。 
-
-```azurecli
-az acr update --name $REGISTRY_NAME --public-network-enabled false
-```
-
-
 ### <a name="disable-public-access---portal"></a>パブリック アクセスを無効にする - ポータル
 
 1. ポータルで、コンテナー レジストリに移動し、 **[設定] > [ネットワーク]** の順に選択します。
 1. **[パブリック アクセス]** タブの **[Allow public network access]\(パブリック ネットワーク アクセスを許可する\)** で、 **[無効]** を選択します。 次に、 **[保存]** を選択します。
 
+### <a name="disable-public-access---cli"></a>パブリック アクセスを無効にする - CLI
+
+Azure CLI を使用してパブリック アクセスを無効にするには、[az acr update][az-acr-update] を実行し、`--public-network-enabled` を `false` に設定します。 
+
+```azurecli
+az acr update --name $REGISTRY_NAME --public-network-enabled false
+```
+
 ## <a name="validate-private-link-connection"></a>プライベート リンク接続を確認する
 
 プライベート エンドポイントのサブネット内のリソースがプライベート IP アドレスを使用してレジストリに接続され、適切なプライベート DNS ゾーンの統合が行われていることを確認する必要があります。
 
-プライベート リンク接続を確認するには、仮想ネットワークに設定した仮想マシンに SSH 接続します。
+プライベート リンク接続を検証するには、仮想ネットワークに設定した仮想マシンに接続します。
 
 `nslookup` や `dig` などのユーティリティを実行し、プライベート リンク経由でレジストリの IP アドレスを検索します。 次に例を示します。
 
@@ -362,7 +379,7 @@ xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
 
 ### <a name="registry-operations-over-private-link"></a>プライベート リンク経由のレジストリ操作
 
-また、サブネット内の仮想マシンからレジストリ操作を実行できることを確認します。 仮想マシンへの SSH 接続を行い、[az acr login][az-acr-login] を実行してレジストリにログインします。 VM の構成によっては、次のコマンドの前に `sudo` を付けることが必要になる場合があります。
+ネットワーク内の仮想マシンからレジストリ操作を実行できることも確認します。 仮想マシンへの SSH 接続を行い、[az acr login][az-acr-login] を実行してレジストリにログインします。 VM の構成によっては、次のコマンドの前に `sudo` を付けることが必要になる場合があります。
 
 ```bash
 az acr login --name $REGISTRY_NAME
@@ -410,15 +427,16 @@ az acr private-endpoint-connection list \
 > [!IMPORTANT]
 > 新しいレプリカを後で追加する場合、そのリージョンでデータ エンドポイントの新しい DNS レコードを手動で追加する必要があります。 たとえば、場所 northeurope で *myregistry* のレプリカを作成する場合、`myregistry.northeurope.data.azurecr.io` のレコードを追加します。
 
-DNS レコードの作成に必要な FQDN とプライベート IP アドレスは、プライベート エンドポイントのネットワーク インターフェイスに関連付けられます。 この情報を取得するには、Azure CLI またはポータルを使用します。
+DNS レコードの作成に必要な FQDN とプライベート IP アドレスは、プライベート エンドポイントのネットワーク インターフェイスに関連付けられます。 これらの情報は、Azure portal または Azure CLI を使用して取得できます。
 
+* ポータルで、プライベート エンドポイントに移動し、 **[DNS の構成]** を選択します。 
 * Azure CLI を使用して、[az network nic show][az-network-nic-show] コマンドを実行します。 コマンドの例については、この記事で前述した「[エンドポイントの IP 構成を取得する](#get-endpoint-ip-configuration)」を参照してください。
-
-* ポータルで、プライベート エンドポイントに移動し、 **[DNS の構成]** を選択します。
 
 DNS レコードを作成したら、レジストリの FQDN がそれぞれのプライベート IP アドレスに適切に解決されることを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+ポータルでリソースをクリーンアップするには、リソース グループに移動します。 リソース グループが読み込まれたら、 **[リソース グループの削除]** をクリックして、リソース グループとそこに格納されているリソースを削除します。
 
 すべての Azure リソースを同じリソース グループ内に作成し、それらが不要になった場合は、1 つの [az group delete](/cli/azure/group) コマンドを使用してリソースを削除することもできます。
 
@@ -426,11 +444,11 @@ DNS レコードを作成したら、レジストリの FQDN がそれぞれの�
 az group delete --name $RESOURCE_GROUP
 ```
 
-ポータルでリソースをクリーンアップするには、リソース グループに移動します。 リソース グループが読み込まれたら、 **[リソース グループの削除]** をクリックして、リソース グループとそこに格納されているリソースを削除します。
-
 ## <a name="next-steps"></a>次のステップ
 
 * Private Link の詳細については、[Azure Private Link](../private-link/private-link-overview.md) に関するドキュメントを参照してください。
+
+* プライベート エンドポイントにルーティングされる仮想ネットワーク内の DNS 設定を確認するには、`--vnet` パラメーターを指定して [az acr check-health](/cli/azure/acr#az_acr_check_health) コマンドを実行します。 詳細については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。 
 
 * クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
 

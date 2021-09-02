@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 06/11/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 3bf83c31c10245cb64a047c9d856489a4e0ce71a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 0248491ed8a2fb8459565306249f95b1af92cf09
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030757"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588900"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>スタジオ UI を使用してコード不要の自動 ML トレーニングを設定する 
 
@@ -30,7 +30,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
 * Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。 
 
@@ -114,7 +114,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
     **[次へ]** を選択します。
 
-1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、[classification]\(分類\)、[regression]\(回帰\)、または [forecasting]\(予測\) のタスクの種類を選択します。 [サポートされるタスクの種類](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)に関する記事を参照してください。
+1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、[classification]\(分類\)、[regression]\(回帰\)、または [forecasting]\(予測\) のタスクの種類を選択します。 [サポートされるタスクの種類](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting)に関する記事を参照してください。
 
     1. **[分類]** については、ディープ ラーニングを有効にすることもできます。
     
@@ -175,10 +175,13 @@ Included | トレーニングに含める列を指定します。
 
 ### <a name="view-training-run-details"></a>トレーニング実行の詳細の表示
 
-完成したモデルのいずれかをドリルダウンして、 **[モデル]** タブのモデルの概要や、 **[視覚化]** タブのパフォーマンス メトリック グラフなど、トレーニングの実行の詳細を表示します。[グラフの詳細については、こちらを参照してください](how-to-understand-automated-ml.md)。
+完成したモデルのいずれかをドリル ダウンして、トレーニング実行の詳細を表示します。 **[モデル]** タブでは、モデルの概要や、選択したモデルに使用されるハイパー パラメーターなどの詳細が表示されます。 
 
-[![イテレーションの詳細](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+[![ハイパーパラメーターの詳細](media/how-to-use-automated-ml-for-ml-models/hyperparameter-button.png)](media/how-to-use-automated-ml-for-ml-models/hyperparameter-details.png)
 
+ **[メトリック]** タブには、モデル固有のパフォーマンス メトリック グラフも表示されます。[グラフの詳細を確認](how-to-understand-automated-ml.md)してください。
+
+![イテレーションの詳細](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
 [データ変換] タブには、このモデルを生成するために適用されたデータ前処理、特徴エンジニアリング、スケーリング手法、機械学習アルゴリズムの図が表示されます。
 

@@ -10,12 +10,12 @@ metadata:
   author: malopMSFT
   ms.author: allensu
   ms.date: 09/16/2019
-  ms.openlocfilehash: 3b6123c6878b01673818980f58643272f6fbd2e0
-  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+  ms.openlocfilehash: 9788f2595e991120b1dbc6d005eb1e504cad13a2
+  ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/27/2021
-  ms.locfileid: "108073559"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123310941"
 landingContent:
 - title: Azure Private Link について
   linkLists:
@@ -23,6 +23,10 @@ landingContent:
     links:
     - text: Private Link とは
       url: private-link-overview.md
+  - linkListType: learn
+    links:
+    - text: Azure Private Link の概要
+      url: /learn/modules/introduction-azure-private-link/
   - linkListType: video
     links:
     - text: Private Link を使用して Azure PaaS リソースをセキュリティで保護する

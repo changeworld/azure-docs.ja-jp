@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 07/26/2021
 ms.author: banders
-ms.openlocfilehash: 1e9e5582c95183a5e832950c5ac0b154cdef8362
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6654098b7fe2b212ac87d4ae52feaed128579dc5
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088122"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711348"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Azure サブスクリプションの課金所有権を Microsoft 顧客契約で使用するために譲渡する
 
@@ -181,7 +181,7 @@ Azure Marketplace 製品は、それぞれのサブスクリプションとと�
 
 ### <a name="azure-reservations-transfer"></a>Azure 予約の譲渡
 
-マイクロソフト エンタープライズ契約 (EA) サブスクリプションまたは Microsoft 顧客契約を移転する場合でも、Azure 予約は、自動的にはサブスクリプションと共に移動しません。 予約を移動するように [Azure サポートに連絡](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)してください。
+マイクロソフト エンタープライズ契約 (EA) サブスクリプションまたは Microsoft 顧客契約を譲渡する場合、Azure 予約によって、サブスクリプションと共に自動的に移動されます。
 
 ### <a name="access-to-azure-services"></a>Azure サービスへのアクセス
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/11/2021
 ms.author: radeltch
-ms.openlocfilehash: c2fc3d5a4bdc11cbee2d394248c886bc561c9057
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bbc8ccf445a9fb45e2dc91041287d6ca47653a2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746202"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966882"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -66,7 +66,7 @@ ms.locfileid: "121746202"
 * [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
-* [Red Hat Gluster Storage 用の製品ドキュメント](https://access.redhat.com/documentation/red_hat_gluster_storage/)
+* [Red Hat Gluster Storage 用の製品ドキュメント](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.5)
 * [Pacemaker クラスターでの SAP Netweaver](https://access.redhat.com/articles/3150081)
 * 一般的な RHEL ドキュメント
   * [高可用性アドオンの概要](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)

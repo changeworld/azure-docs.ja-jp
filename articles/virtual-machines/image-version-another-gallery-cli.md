@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: bc4af87ca560c19af47a877d05a34a33c74a67bb
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 1ae8d59934bdcd0dc2dcf2178f61f7bcaa3e5fc8
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111437930"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205288"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Azure CLI を使用して別のギャラリーからイメージをコピーする
 
@@ -75,7 +75,7 @@ az sig image-version show \
 
 ## <a name="create-the-image-definition"></a>イメージ定義の作成 
 
-ソース イメージ バージョンのイメージ定義と一致するイメージ定義を作成する必要があります。 [az sig image definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show) を使用して、新しいギャラリーでイメージ定義を再作成するために必要なすべての情報を確認できます。
+オペレーティング システム、オペレーティング システムの状態、およびソース イメージ バージョンを含むイメージ定義の Hyper-V の世代に一致するイメージ定義を作成する必要があります。 [az sig image definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show) を使用して、新しいギャラリーでイメージ定義を再作成するために必要なすべての情報を確認できます。
 
 ```azurecli-interactive
 az sig image-definition show \
@@ -129,6 +129,10 @@ az sig image-definition create \
    --hyper-v-generation V1 \
    --os-state specialized 
 ```
+
+> [!NOTE]
+> サードパーティ イメージに由来するイメージを含むイメージ定義の場合、プラン情報は、サードパーティ イメージのプラン情報と正確に一致している必要があります。 イメージ定義にプラン情報を含めるには、イメージ定義を作成するときに、`--plan-name`、`--plan-product`、および `--plan-publisher` を追加します。
+>
 
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成

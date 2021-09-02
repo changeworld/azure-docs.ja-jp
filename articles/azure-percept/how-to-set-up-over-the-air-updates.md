@@ -1,20 +1,20 @@
 ---
 title: 更新を無線でデプロイするように Azure IoT Hub を設定する
 description: Azure Percept DK に更新を無線でデプロイするように Azure IoT Hub を構成する方法について説明します
-author: mimcco
-ms.author: mimcco
+author: EthanChangAED
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 81697efc7832adf62d26c751d1e6e93070c2579b
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 26e53511cfab9444a9d5a9c4dcd868be07b40e16
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684075"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224354"
 ---
-# <a name="how-to-set-up-azure-iot-hub-to-deploy-over-the-air-updates-to-your-azure-percept-dk"></a>Azure Percept DK に更新を無線でデプロイするように Azure IoT Hub を設定する方法
+# <a name="set-up-azure-iot-hub-to-deploy-over-the-air-updates"></a>更新を無線でデプロイするように Azure IoT Hub を設定する
 
 無線での更新を使用して、Azure Percept DK を安全で最新の状態に保ちます。 簡単なわずかな手順で、Device Update for IoT Hub を使用して Azure 環境を設定し、Azure Percept DK に最新の更新をデプロイできます。
 

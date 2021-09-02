@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 06/16/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
-ms.openlocfilehash: b4589f451894e328a27b67ac19be4ea91374bee5
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 2b8e8c73286eb058f5fcd183ac43998801a0ebe8
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579956"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038432"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
+# <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
 この記事では、ロール ベースのアクセス制御で使用できる、新しい Azure Active Directory (Azure AD) のアプリケーションとサービス プリンシパルを作成する方法について説明します。 リソースへのアクセスや変更を行う必要があるアプリケーション、ホステッド サービス、または自動化されたツールがある場合は、アプリの ID を作成できます。 この ID は、サービス プリンシパルと呼ばれます。 リソースへのアクセスはサービス プリンシパルに割り当てられているロールによって制限されるため、どのリソースに、どのレベルでアクセスできるかを制御することができます。 セキュリティ上の理由から、自動化ツールにはユーザー ID でのログインを許可するのではなく、常にサービス プリンシパルを使用することを推奨します。
 

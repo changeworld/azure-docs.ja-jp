@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 532ac3b60f90a3d587a57ad8ea9663a6cfad3d90
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: c1fda4eb853e97b7a5b85beebe162ab3869e4a68
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109645131"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "113798910"
 ---
 Azure ファイル共有は、Azure ストレージ アカウントのクラウドに格納されます。
 ここでは、また別のレベルのパフォーマンスに関する考慮事項が適用されます。
@@ -34,7 +34,7 @@ Azure ファイル共有は、Azure ストレージ アカウントのクラウ�
 > [!CAUTION]
 > 上限が 100 TiB の Azure ファイル共有を作成する場合、その共有で使用できるのは、ローカル冗長ストレージまたはゾーン冗長ストレージの冗長オプションのみとなります。 100 TiB のファイル共有を使用する場合は、事前にご自分のストレージ冗長のニーズを検討してください。
 
-既定では、Azure ファイル共有は引き続き 5 TiB の上限で作成されます。 新しいストレージ アカウントを作成しているので、[上限が 100 TiB の Azure ファイル共有を許容するストレージ アカウントを作成するためのガイドライン](../articles/storage/files/storage-files-how-to-create-large-file-share.md)に必ず従ってください。
+既定では、Azure ファイル共有は引き続き 5 TiB の上限で作成されます。 大きなファイル共有を作成するには、「[Azure ファイル共有を作成する](../articles/storage/files/storage-how-to-create-file-share.md)」の手順に従ってください。
 
 ストレージ アカウントをデプロイする際のもう 1 つの考慮事項は、使用する Azure ストレージの冗長性です。 詳細については、「[Azure Storage 冗長オプション](../articles/storage/common/storage-redundancy.md)」を参照してください。
 

@@ -7,42 +7,35 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/12/2020
+ms.date: 06/18/2021
 ms.author: aahi
-ms.openlocfilehash: 2deb67f5a569ed6283bfe4a99bef795ffbf13bac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 47a7059e21f1c9b9d6d72644bc08c62b66afc772
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164344"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339856"
 ---
 ## <a name="install-the-container"></a>コンテナーをインストールする
 
 Text Analytics for Health コンテナーをインストールして実行するには、複数の方法があります。 
 
 - [Azure portal](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare) を使用して Text Analytics リソースを作成し、Docker を使用してコンテナーを取得します。
+- Docker を搭載した Azure VM を使用して、コンテナーを実行します。 [Azure 上の Docker](../../../docker/index.yml) に関するページを参照してください。
 - 次の PowerShell と Azure CLI のスクリプトを使用して、リソースのデプロイとコンテナーの構成を自動化します。
 
 ### <a name="run-the-container-locally"></a>コンテナーをローカルで実行する
 
-コンテナー イメージをダウンロードした後に独自の環境でコンテナーを実行するには、そのイメージ ID を検索します。
- 
-```bash
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
-
-次の `docker run` コマンドを実行します。 次のプレースホルダーを実際の値に置き換えてください。
+コンテナー イメージをダウンロードした後に独自の環境でコンテナーを実行するには、次の `docker run` コマンドを実行します。 次のプレースホルダーを実際の値に置き換えてください。
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
 | **{API_KEY}** | 自分の Text Analytics リソースのキー。 それは、Azure portal で、お使いのリソースの **[キーとエンドポイント]** ページで見つけることができます。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | Text Analytics API にアクセスするためのエンドポイント。 それは、Azure portal で、お使いのリソースの **[キーとエンドポイント]** ページで見つけることができます。 | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
-| **{IMAGE_ID}** | コンテナーのイメージ ID。 | `1.1.011300001-amd64-preview` |
-| **{INPUT_DIR}** | コンテナーの入力ディレクトリ。 | Windows: `C:\healthcareMount` <br> Linux/MacOS: `/home/username/input` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \
---mount type=bind,src={INPUT_DIR},target=/output {IMAGE_ID} \
+mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare:latest \
 Eula=accept \
 rai_terms=accept \
 Billing={ENDPOINT_URI} \
@@ -52,8 +45,7 @@ Logging:Disk:Format=json
 
 このコマンドは、次の操作を行います。
 
-- 入力ディレクトリがホスト コンピューター上に存在することを前提としています
-- コンテナー イメージから Text Analytics for Health コンテナーを実行します
+- コンテナー イメージの *Text Analytics for health* コンテナーを実行します
 - 6 つの CPU コアと 12 ギガバイト (GB) のメモリを割り当てます
 - TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます
 - 使用許諾契約 (Eula) と責任ある AI (RAI) の条項に同意します
@@ -73,7 +65,7 @@ http://<serverURL>:5000/demo
 次の cURL 要求の例を使用し、`serverURL` 変数を適切な値に置き換えて、デプロイしたコンテナーにクエリを送信します。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 

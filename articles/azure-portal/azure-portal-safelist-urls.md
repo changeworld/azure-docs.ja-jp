@@ -1,24 +1,27 @@
 ---
-title: ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する
-description: これらの URL をプロキシ サーバー バイパスに追加して、Azure portal やそのサービスと通信を行います
-ms.date: 04/10/2020
+title: ファイアウォールまたはプロキシ サーバーで Azure portal の URL を許可する
+description: ご利用のネットワークと Azure portal およびそのサービスとの間の接続性を最適化するために、それらの URL を許可リストに追加することをお勧めします。
+ms.date: 06/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7d9c8222ee85c0c16ec1e1926335ac06e0389797
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70e2f55a381c38b0a4244f742b7b2c51e6ca81f6
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745878"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112516363"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する
+# <a name="allow-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>ファイアウォールまたはプロキシ サーバーで Azure portal の URL を許可する
 
-Azure portal の URLl のセキュリティ制限をバイパスするようにオンプレミスのセキュリティデバイスを構成することができます。 この構成により、ローカルまたはワイドエリアネットワークと Azure クラウドの間のパフォーマンスと接続性が向上します。
+ご利用のネットワークと Azure portal およびそのサービスとの間の接続性を最適化するために、Azure portal の特定の URL を許可リストに追加することをお勧めします。 そうすることにより、ローカルまたはワイドエリアネットワークと Azure クラウドの間のパフォーマンスと接続性が向上します。
 
-ネットワーク管理者は、多くの場合、プロキシサーバー、ファイアウォール、またはその他のデバイスを展開します。 これらのデバイスはセキュリティで保護されており、ユーザーがインターネットにアクセスする方法を制御できます。 ユーザーを保護するように設計されたルールは、ビジネスに関連する正当なインターネットトラフィックをブロックまたは低速化する場合があります。 このトラフィックには、お互いと Azure 間の通信が含まれます。 ご利用のネットワークと Azure portal およびそのサービスとの間の接続性を最適化するために、Azure portal の URL をセーフリストに追加することをお勧めします。
+プロキシ サーバーやファイアウォールなどのデバイスがネットワーク管理者によってデプロイされていることは少なくありません。これらのデバイスによって、ユーザーのインターネット アクセスに対するセキュリティと制御を向上させることができます。 ユーザーを保護するように設計されたルールは、ビジネスに関連する正当なインターネットトラフィックをブロックまたは低速化する場合があります。 たとえば、以下に記載した URL で行われるユーザーと Azure との間の通信が、そのようなトラフィックに該当します。
+
+> [!TIP]
+> これらのドメインに対するネットワーク接続の問題を診断するうえで役立つ情報については、 https://portal.azure.com/selfhelp をご覧ください。
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>プロキシのバイパス対象となる Azure portal の URL
 
-Azure portal 用にセーフリストに追加する URL エンドポイントは、組織がデプロイされている Azure クラウドに固有のものです。 これらのエンドポイントへのネットワークトラフィックで制限をバイパスできるようにするには、クラウドを選択します。 次に、プロキシサーバーまたはファイアウォールに URL の一覧を追加します。
+Azure portal に対して許可する URL エンドポイントは、組織がデプロイされている Azure クラウドによって異なります。 それらのエンドポイントへのネットワーク トラフィックを許可し、制限をバイパスするには、ご利用のクラウドを選択し、記載されている一連の URL をプロキシ サーバーまたはファイアウォールに追加してください。 他の Microsoft 製品やサービスに関連する URL を追加することもできますが、ここに記載されている URL 以外にポータル関連の URL を追加することは推奨されません。
 
 #### <a name="public-cloud"></a>[パブリック クラウド](#tab/public-cloud)
 
@@ -28,7 +31,6 @@ Azure portal 用にセーフリストに追加する URL エンドポイント�
 *.applicationinsights.io
 *.azure.com
 *.azure.net
-*.azurefd.net
 *.azure-api.net
 *.azuredatalakestore.net
 *.azureedge.net
@@ -73,5 +75,3 @@ Azure portal 用にセーフリストに追加する URL エンドポイント�
 
 > [!NOTE]
 > これらのエンドポイントへのトラフィックには、標準的な TCP ポートが使用されます (HTTP では 80、HTTPS では 443)。
->
->

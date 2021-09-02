@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/23/2021
+ms.date: 08/21/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 8c1b7ea859bb3f8819fbffc9568da4c9289979f5
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 40d82ea916a647dc927e4420058d208c3fd18973
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669459"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111013"
 ---
 # <a name="quickstart-add-an-application-to-your-tenant"></a>クイック スタート: テナントにアプリケーションを追加する
 
@@ -47,10 +47,9 @@ Azure AD テナントにアプリケーションを追加するには、次の�
 1. [Azure portal](https://portal.azure.com) の **[Azure サービス]** ペインで、 **[エンタープライズ アプリケーション]** を選択します。 **[すべてのアプリケーション]** ウィンドウが開き、Azure AD テナントのアプリケーションのランダム サンプルが表示されます。
 2. **[エンタープライズ アプリケーション]** ペインで、 **[新しいアプリケーション]** を選択します。
 3. **[Azure AD ギャラリーの参照]** ペインが開き、クラウド プラットフォーム、オンプレミス アプリケーション、および注目のアプリケーションのタイルが表示されます。 **[注目のアプリケーション]** セクションに一覧表示されているアプリケーションには、フェデレーション シングル サインオン (SSO) とプロビジョニングをサポートしているかどうかを示すアイコンがあります。
-4. レガシ アプリのギャラリー エクスペリエンスに戻ります: **[アプリケーションの追加] ページ** の上部にあるバナーで、 **[You're in the new and improved app gallery experience. Click here to switch back to the legacy app gallery experience]\(これは、改善された新しいアプリ ギャラリー エクスペリエンスです。レガシ アプリ ギャラリー エクスペリエンスに戻すには、ここをクリックしてください\)** というリンクを選択します。
     ![名前またはカテゴリーでアプリを検索する](media/add-application-portal/browse-gallery.png)
-5. 追加するアプリケーションはギャラリーで参照できます。または、検索ボックスに名前を入力してアプリケーションを検索します。 次に、結果からアプリケーションを選択します。
-6. 次の手順は、アプリケーションの開発者がシングル サインオン (SSO) を実装した方法によって異なります。 シングル サインオンは、4 つの方法でアプリ開発者が実装できます。 その 4 つの方法とは、SAML、OpenID Connect、パスワード、リンクです。 アプリを追加するときは、スクリーンショットに示されているように、特定の SSO 実装を使用しているアプリのみをフィルター処理して表示するように選択できます。 たとえば、SSO を実装する一般的な標準は、Security Assertion Markup Language (SAML) と呼ばれます。 もう 1 つの一般的な標準は、OpenId Connect (OIDC) と呼ばれています。 これらの標準を使用して SSO を構成する方法は異なるため、追加するアプリによって実装される SSO の種類をメモしてください。
+4. 追加するアプリケーションはギャラリーで参照できます。または、検索ボックスに名前を入力してアプリケーションを検索します。 次に、結果からアプリケーションを選択します。
+5. 次の手順は、アプリケーションの開発者がシングル サインオン (SSO) を実装した方法によって異なります。 シングル サインオンは、4 つの方法でアプリ開発者が実装できます。 その 4 つの方法とは、SAML、OpenID Connect、パスワード、リンクです。 アプリを追加するときは、スクリーンショットに示されているように、特定の SSO 実装を使用しているアプリのみをフィルター処理して表示するように選択できます。 たとえば、SSO を実装する一般的な標準は、Security Assertion Markup Language (SAML) と呼ばれます。 もう 1 つの一般的な標準は、OpenId Connect (OIDC) と呼ばれています。 これらの標準を使用して SSO を構成する方法は異なるため、追加するアプリによって実装される SSO の種類をメモしてください。
 
     - アプリの開発者が SSO に **OIDC 標準** を使用している場合は、 **[サインアップ]** を選択します。 設定ページが表示されます。 次に、OIDC ベースのシングル サインオンの設定に関するクイックスタートに進んでください。
     :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="OIDC ベースの SSO アプリの追加を示すスクリーンショット。":::

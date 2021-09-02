@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミス MySQL の Azure Database for MySQL への移行ガイド: MySQL Workbench を使用したデータ移行'
+title: 'オンプレミスの MySQL から Azure Database for MySQL への移行: MySQL Workbench を使用したデータ移行'
 description: セットアップ ガイドのすべての手順に従って、次の手順をサポートするための環境を作成します。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 485a377decee390701cb43a99bd47e96f29f1f55
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 2b3dc8702251a6fcc53386cb17cbe44a45e59db2
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082930"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292973"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-data-migration-with-mysql-workbench"></a>オンプレミス MySQL の Azure Database for MySQL への移行ガイド: MySQL Workbench を使用したデータ移行
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-data-migration-with-mysql-workbench"></a>オンプレミスの MySQL から Azure Database for MySQL への移行: MySQL Workbench を使用したデータ移行
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +34,7 @@ ms.locfileid: "112082930"
 
 ## <a name="configuring-server-parameters-target"></a>サーバー パラメーターの構成 (ターゲット)
 
-Azure Database for MySQL へのインポート プロセスを開始する前に、サーバー パラメーターを確認します。 サーバー パラメーターを取得して設定するには、[Azure portal](/azure/mysql/howto-server-parameters) を使用するか、[MySQL 用の Azure PowerShell コマンドレット](/azure/mysql/howto-configure-server-parameters-using-powershell)を呼び出します。
+Azure Database for MySQL へのインポート プロセスを開始する前に、サーバー パラメーターを確認します。 サーバー パラメーターを取得して設定するには、[Azure portal](../../howto-server-parameters.md) を使用するか、[MySQL 用の Azure PowerShell コマンドレット](../../howto-configure-server-parameters-using-powershell.md)を呼び出します。
 
 次の PowerShell スクリプトを実行して、すべてのパラメーターを取得します。
 
@@ -50,7 +52,7 @@ Get-AzMySqlConfiguration -ResourceGroupName $rgName -ServerName $serverName
 - mysql ツールで同じことを行うには、[CA ルート証明書](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)を c:\\temp にダウンロードします (このディレクトリを作成します)。
 
     > [!NOTE]
-    > 証明書は変更される場合があります。 最新の証明書情報については、「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](/azure/mysql/howto-configure-ssl)」を参照してください。
+    > 証明書は変更される場合があります。 最新の証明書情報については、「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](../../howto-configure-ssl.md)」を参照してください。
     
 - コマンド プロンプトで次を実行します。必ずトークンを更新してください。
 
@@ -66,7 +68,7 @@ mysql --host {servername}.mysql.database.azure.com --database mysql --user
 
 - `max\_allowed\_packet` – 長い行によるオーバーフローの問題を防ぐために、 パラメーターを `1073741824` (つまり 1 GB) またはデータベース内の行の最大サイズに設定します。 プルアウト (または読み取り) が必要な大きな BLOB 行がある場合は、このパラメーターの調整を検討してください。
 
-- `innodb\_buffer\_pool\_size` – 移行中に、サーバーをポータルの価格レベルから 32 仮想コア メモリ最適化 SKU にスケールアップし、innodb\_buffer\_pool\_size を増やします。 innodb\_buffer\_pool\_size は、Azure Database for MySQL サーバーのコンピューティングをスケールアップしないと増やすことができません。 レベルでの最大値については、「[Azure Database for MySQL でのサーバー パラメーター](/azure/mysql/concepts-server-parameters#innodb_buffer_pool_size)」を参照してください。 メモリ最適化 32 仮想コア システムの最大値は `132070244352` です。
+- `innodb\_buffer\_pool\_size` – 移行中に、サーバーをポータルの価格レベルから 32 仮想コア メモリ最適化 SKU にスケールアップし、innodb\_buffer\_pool\_size を増やします。 innodb\_buffer\_pool\_size は、Azure Database for MySQL サーバーのコンピューティングをスケールアップしないと増やすことができません。 階層の最大値については、「[Azure Database for MySQL でのサーバー パラメーター](../../concepts-server-parameters.md#innodb_buffer_pool_size)」を参照してください。 メモリ最適化 32 仮想コア システムの最大値は `132070244352` です。
 
 - `innodb\_io\_capacity` & `innodb\_io\_capacity\_max` - 移行速度の最適化のために IO 使用率を向上させるには、パラメーターを `9000` に変更します。
 
@@ -109,11 +111,11 @@ Update-AzMySqlConfiguration -Name log\_bin\_trust\_function\_creators
 
 - \*\*[管理]\*\* で \*\*[データ エクスポート]\*\* を選択します。 **reg\_app** スキーマを選択します。
 
-- **[エクスポートするオブジェクト]** で、 **[ストアド プロシージャと関数のダンプ]** 、 **[イベントのダンプ]** 、 **[トリガーのダンプ]** を選択します。
+- **[エクスポートするオブジェクト]** で、 **[Dump Stored Procedures and Functions]\(ストアド プロシージャと関数のダンプ\)** 、 **[Dump Events]\(イベントのダンプ\)** および **[Dump Triggers]\(トリガーのダンプ\)** を選択します。
 
 - **[エクスポート オプション]** で、 **[自己完結型ファイルへのエクスポート]** を選択します。
 
-- **[スキーマの作成を含める]** チェック ボックスもオンにします。 次の図を参照して、正しい mysqldump 構成を確認してください。
+- **[スキーマの作成を含める]** チェックボックスも選択します。 次の図を参照して、正しい mysqldump 構成を確認してください。
 
     ![スキーマの作成を含める](./media/image6.jpg)
 
@@ -127,7 +129,7 @@ Update-AzMySqlConfiguration -Name log\_bin\_trust\_function\_creators
 
 - **[エクスポートの進行状況]** タブを選択します。
 
-- **[エクスポートの開始]** を選択すると、MySQL Workbench によって `mysqldump` ツールが呼び出されます。
+- **[エクスポートの開始]** を選択すると、MySQL Workbench が `mysqldump` ツールを呼び出します。
 
 - 新しく作成したエクスポート スクリプトを開きます。
 
@@ -150,7 +152,7 @@ Update-AzMySqlConfiguration -Name log\_bin\_trust\_function\_creators
 
     - **[SSL]** タブを選択します。
 
-    - SSL CA ファイルの場合は、**BaltimoreCyberTrustRoot.crt.cer** キー ファイルを参照します。
+    - SSL CA ファイルの場合は **、BaltimoreCyberTrustRoot.crt.cer** キー ファイルを参照します。
 
     - **[テスト接続]** を選択し、接続が完了していることを確認します。
 
@@ -160,7 +162,7 @@ Update-AzMySqlConfiguration -Name log\_bin\_trust\_function\_creators
 
         **MySQL 接続ダイアログ ボックスが表示されます。**
 
-- **[ファイル] -\>[SQL スクリプトを開く]** を選択します。
+- **[ファイル] - \>[SQL スクリプトを開く]** を選択します。
 
 - ダンプ ファイルを参照し、 **[開く]** を選択します。
 
@@ -180,7 +182,7 @@ Update-AzMySqlConfiguration -Name log\_bin\_trust\_function\_creators
 
 ## <a name="revert-server-parameters"></a>サーバー パラメーターを元に戻す
 
-次のパラメーターは、Azure Database for MySQL ターゲット インスタンス上で変更できます。 これらのパラメーターは、Azure portal を使用するか、[MySQL 用 Azure PowerShell コマンドレット](/azure/mysql/howto-configure-server-parameters-using-powershell)を使用して設定できます。
+次のパラメーターは、Azure Database for MySQL ターゲット インスタンス上で変更できます。 これらのパラメーターは、Azure portal を使用するか、[MySQL 用 Azure PowerShell コマンドレット](../../howto-configure-server-parameters-using-powershell.md)を使用して設定できます。
 
 ```
 $rgName = "YourRGName";
@@ -215,6 +217,8 @@ az webapp restart -g $rgName -n $app\_name
 ```
 オンプレミスを Azure Database for MySQL に移行できました\!  
 
+
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [移行後の管理](./10-post-migration-management.md)

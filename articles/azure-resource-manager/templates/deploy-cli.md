@@ -2,13 +2,13 @@
 title: Azure CLI とテンプレートを使用してリソースをデプロイする
 description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
-ms.date: 05/07/2021
-ms.openlocfilehash: 4507fe743674ac8c7ee45b53adb1e4cc543289d5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/15/2021
+ms.openlocfilehash: 8ecb8bb2e6b24571d91e97157ff91ba931b0719d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951160"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296775"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM テンプレートと Azure CLI でリソースをデプロイする
 
@@ -235,6 +235,19 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 ```
 
 オブジェクトに渡す JSON を二重引用符で囲みます。
+
+変数を使用してパラメーター値を格納できます。 Bash では、変数をすべてのパラメーター値に設定し、それをデプロイ コマンドに追加します。
+
+```azurecli-interactive
+params="prefix=start suffix=end"
+
+az deployment group create \
+  --resource-group testgroup \
+  --template-file <path-to-template> \
+  --parameters $params
+``` 
+
+しかし、Windows コマンド プロンプト (CMD) または PowerShell で Azure CLI を使用する場合は、変数を JSON 文字列に設定します。 引用符をエスケープします (`$params = '{ \"prefix\": {\"value\":\"start\"}, \"suffix\": {\"value\":\"end\"} }'`)。
 
 ### <a name="parameter-files"></a>パラメーター ファイル
 

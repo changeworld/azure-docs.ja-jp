@@ -7,14 +7,14 @@ manager: soricos
 services: azure-communication-services
 ms.author: apistrak
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: tutorial
 ms.service: azure-communication-services
-ms.openlocfilehash: 7aac7cd4c0fbe6154536b02c01cf427fee6910cf
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: a3317e483320c55eca6b2ee7edcb4b6671fec7f9
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107408"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256282"
 ---
 # <a name="sign-an-http-request"></a>HTTP 要求に署名する
 

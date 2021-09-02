@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 8a4d6ab98bd126d2b8ec98650821d191dec4ed6d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 37a916ca07a1767855b32b79ccb35722cc389f65
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771411"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830992"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>Azure Blob Storage の監視に関するベスト プラクティス
 
@@ -188,6 +188,7 @@ Azure Synapse を使用すると、サーバーレス SQL プールを作成し�
 ## <a name="see-also"></a>関連項目
 
 - [Azure Blob Storage の監視](monitor-blob-storage.md)。
+- [Azure Blob Storage 監視データのリファレンス](monitor-blob-storage-reference.md)
 - [チュートリアル: Azure Data Explorer と Azure Monitor で Kusto クエリを使用する](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)。
 - [Azure Monitor でログ クエリの使用を開始する](../../azure-monitor/logs/get-started-queries.md)。
 

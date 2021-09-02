@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で発生した�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 7a2a95a25bc42de9f4c93200d4fdd1e5d558549a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8ffa633479189ad8391d4c03c59113dc957d77e6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377435"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667137"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
@@ -218,7 +218,7 @@ Invoke-DurableActivity -FunctionName 'FlakyFunction' -RetryOptions $retryOptions
 
 前の例のアクティビティ関数呼び出しでは、自動再試行ポリシーを構成するためのパラメーターを使用します。 自動再試行ポリシーをカスタマイズするために、次のようないくつかのオプションがあります。
 
-* **最大試行回数**: 再試行の最大数。
+* **最大試行回数**: 試行が行われる最大回数。 1 を設定した場合、再試行は行われません。
 * **1 回目の再試行の間隔**: 1 回目の再試行の前に待つ時間。
 * **バックオフ係数**: バックオフの増加率を決定するために使用される係数。 既定値は 1 です。
 * **最大再試行間隔**: 再試行の間に待つ最長時間。

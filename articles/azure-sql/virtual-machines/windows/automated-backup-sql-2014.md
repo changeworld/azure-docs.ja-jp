@@ -15,12 +15,12 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cad63eaa8e548e48e76bba63e5ba70358b34cd99
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ff04f3595cbcba7a5bfc1c5c5e9564a862cb32de
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731980"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223730"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 仮想マシンの自動バックアップ (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -100,28 +100,6 @@ PowerShell を使用して自動バックアップを構成できます。 開�
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
-### <a name="install-the-sql-server-iaas-extension"></a>SQL Server IaaS 拡張機能のインストール
-SQL Server 仮想マシンを Azure portal からプロビジョニングした場合は、SQL Server IaaS 拡張機能は既にインストールされています。 これがお使いの仮想マシンにインストール済みかどうかを確認するには、**Get-AzVM** コマンドを呼び出して **Extensions** プロパティを調べます。
-
-```powershell
-$vmname = "vmname"
-$resourcegroupname = "resourcegroupname"
-
-(Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions
-```
-
-SQL Server IaaS Agent 拡張機能がインストールされている場合、それは "SqlIaaSAgent" または "SQLIaaSExtension" と表示されます。 また、拡張機能の **ProvisioningState** も "Succeeded" と表示されるはずです。
-
-インストールされていない場合、またはプロビジョニングに失敗した場合は、次のコマンドを使ってインストールできます。 VM 名とリソース グループのほかに、VM が配置されているリージョン ( **$region**) を指定する必要があります。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](licensing-model-azure-hybrid-benefit-ahb-change.md)」を参照してください。 
-
-```powershell
-New-AzSqlVM  -Name $vmname `
-    -ResourceGroupName $resourcegroupname `
-    -Location $region -LicenseType <PAYG/AHUB>
-```
-
-> [!IMPORTANT]
-> 拡張機能がまだインストールされていない場合、拡張機能をインストールすると、SQL Server が再起動されます。
 
 ### <a name="verify-current-settings"></a><a id="verifysettings"></a> 現在の設定の確認
 

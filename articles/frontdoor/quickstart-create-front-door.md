@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 74b7c16904c86751076d40056027999fe44cb868
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 30bcdce70ce15e7f960d8d04b3796a04f59b1ec2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727869"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039274"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>クイック スタート:グローバル Web アプリケーションの高可用性を実現するフロント ドアを作成する
 
@@ -135,7 +135,7 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
     :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="フロント ドアにルールを追加する":::
 
    >[!WARNING]
-   > Front Door 内の各フロントエンド ホストに、既定のパス (`\*`) が関連付けられたルーティング規則があることを確認する **必要があります**。 つまり、すべてのルーティング規則について、既定のパス (`\*`) で定義された各フロントエンド ホストに対するルーティング規則が少なくとも 1 つは存在する必要があります。 そうなっていないと、エンド ユーザーのトラフィックが正しくルーティングされない可能性があります。
+   > Front Door 内の各フロントエンド ホストに、既定のパス (`/*`) が関連付けられたルーティング規則があることを確認する **必要があります**。 つまり、すべてのルーティング規則について、既定のパス (`/*`) で定義された各フロントエンド ホストに対するルーティング規則が少なくとも 1 つは存在する必要があります。 そうなっていないと、エンド ユーザーのトラフィックが正しくルーティングされない可能性があります。
 
 1. **[確認および作成]** 、 **[作成]** の順に選択します。
 

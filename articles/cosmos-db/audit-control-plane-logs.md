@@ -4,14 +4,14 @@ description: リージョンの追加、スループットの更新、リージ�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 08/13/2021
 ms.author: sngun
-ms.openlocfilehash: 6f3e408343fc75d6587d1a67a0179edf13d56e36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ce2d934c335099d07bbe5621a8aa363bf97583c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658250"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182446"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB コントロール プレーン操作を監査する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -68,17 +68,17 @@ Azure portal を使用して、コントロール プレーン操作の診断ロ
    | where TimeGenerated >= ago(1h)
    ```
 
-次のスクリーンショットでは、Azure Cosmos アカウントの整合性レベルが変更されたときのログがキャプチャされています。
+   次のスクリーンショットでは、Azure Cosmos アカウントの整合性レベルが変更されたときのログがキャプチャされています。 結果の `activityId_g` 値は、操作のアクティビティ ID とは異なります。
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="VNet が追加されたときのコントロール プレーンのログ":::
+   :::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="VNet が追加されたときのコントロール プレーンのログ":::
 
-次のスクリーンショットは、Cassandra アカウントのキースペースまたはテーブルが作成されたとき、およびスループットが更新されたときにログをキャプチャします。 次のスクリーンショットに示すように、データベースやコンテナーでの作成と更新の操作に関するコントロール プレーンのログは、個別にログに記録されます。
+   次のスクリーンショットは、Cassandra アカウントのキースペースまたはテーブルが作成されたとき、およびスループットが更新されたときにログをキャプチャします。 次のスクリーンショットに示すように、データベースやコンテナーでの作成と更新の操作に関するコントロール プレーンのログは、個別にログに記録されます。
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="スループットが更新されたときのコントロール プレーンのログ":::
+   :::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="スループットが更新されたときのコントロール プレーンのログ":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>特定の操作に関連付けられている ID を識別する
 
-さらにデバッグする場合は、アクティビティ ID の使用または操作のタイムスタンプにより、**アクティビティ ログ** 内の特定の操作を特定できます。 タイムスタンプは、アクティビティ ID が明示的に渡されていない一部の Resource Manager クライアントに使用されます。 アクティビティ ログには、操作が開始された ID の詳細が示されます。 次のスクリーンショットは、アクティビティ ID を使用し、アクティビティ ログでその ID に関連付けられている操作を検索する方法を示しています。
+さらにデバッグする場合は、`activityId_g` の使用または操作のタイムスタンプにより、**アクティビティ ログ** 内の特定の操作を特定できます。 タイムスタンプは、アクティビティ ID が明示的に渡されていない一部の Resource Manager クライアントに使用されます。 アクティビティ ログには、操作が開始された ID の詳細が示されます。 次のスクリーンショットは、`activityId_g` を使用し、アクティビティ ログでそれに関連付けられている操作を見つけ出す方法を示しています。
 
 :::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="アクティビティ ID を使用して操作を検索する":::
 
