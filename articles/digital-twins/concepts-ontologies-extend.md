@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: edadf3ad7e86572c758a90fd35a941024b0aa60e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4051f8fe4b338f223b36c3a87ebcc3e3d3e51979
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475759"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472975"
 ---
 # <a name="extending-ontologies"></a>オントロジの拡張 
 
@@ -30,7 +30,7 @@ DTDL ベースの RealEstateCore オントロジでは、Space 階層を使用�
 
 :::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="RealEstateCore の Space 階層の一部を示す図。Space、Room、ConferenceRoom、Office の要素が表示されます。"::: 
 
-RealEstateCore オントロジの詳細については、"[概念: 業界標準のオントロジの採用](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)" に関する記事を参照してください。
+RealEstateCore オントロジの詳細については、[業界標準のオントロジの採用](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)に関するページを参照してください。
 
 ## <a name="extending-the-realestatecore-space-hierarchy"></a>RealEstateCore の Space 階層の拡張 
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Arc 対応 Kubernetes の組み込みポリシー定義
 description: Azure Arc 対応 Kubernetes の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.service: azure-arc
 author: mlearned
 ms.author: mlearned
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ae3cd47cbdddc8d2a455768477c91cdf68612051
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5edfce80289f85228bcfb245a891445e832a9dc4
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608686"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101420"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes の Azure Policy 組み込み定義
 

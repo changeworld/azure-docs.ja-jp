@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7aa866706a181014e104f7f9e7f8cded520f4ac9
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152274"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711829"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File Storage を使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
@@ -60,6 +60,8 @@ Cloud Shell では Azure File Storage を使用してセッション間でファ
 Cloud Shell では、指定されたサブスクリプション内のストレージ アカウントで Azure ファイル共有が使用されます。 アクセス許可が継承されるため、サブスクリプションに対する十分なアクセス権を持つユーザーは、サブスクリプションに含まれるすべてのストレージ アカウントとファイル共有にアクセスできます。
 
 ユーザーは、ストレージ アカウントまたはサブスクリプション レベルでアクセス許可を設定することによって、各自のファイルへのアクセスをロックダウンする必要があります。
+
+Cloud Shell のストレージ アカウントには、Cloud Shell のユーザーがホーム ディレクトリで作成したファイルが格納され、これにはアクセス トークンや資格情報などの機密情報が含まれる場合があります。
 
 ## <a name="supported-storage-regions"></a>サポートされているストレージ リージョン
 現在のリージョンを確認するには、Bash で `env` を実行して変数 `ACC_LOCATION` を見つけるか、PowerShell から `$env:ACC_LOCATION` を実行します。 ファイル共有には、`$Home` ディレクトリの永続化に使用できる 5 GB のイメージが割り当てられます。

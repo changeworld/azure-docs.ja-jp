@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 56ee24985da57c6da76638b659e5a07e68d0f516
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2e808ee2d36237a830877e7f043656ce9189bd89
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788949"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461281"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>IoT Central REST API を使用してデバイスを制御する方法
 
@@ -33,9 +33,9 @@ IoT Central REST API のリファレンス ドキュメントについては、�
 
 ## <a name="components-and-modules"></a>コンポーネントとモジュール
 
-コンポーネントを使用して、デバイスの機能をグループ化して再利用できます。 コンポーネントとデバイス モデルについて詳しくは、「[IoT プラグ アンド プレイ モデリング ガイド](../../iot-pnp/concepts-modeling-guide.md)」を参照してください。
+コンポーネントを使用して、デバイスの機能をグループ化して再利用できます。 コンポーネントとデバイス モデルについて詳しくは、「[IoT プラグ アンド プレイ モデリング ガイド](../../iot-develop/concepts-modeling-guide.md)」を参照してください。
 
-すべてのデバイス テンプレートでコンポーネントが使用されるわけではありません。 次のスクリーンショットは、単純な [サーモスタット](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-2.json)のデバイス テンプレートを示しています。このテンプレートでは、すべての機能が **既定のコンポーネント** と呼ばれる 1 つのインターフェイスで定義されています。
+すべてのデバイス テンプレートでコンポーネントが使用されるわけではありません。 次のスクリーンショットは、単純な [サーモスタット](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-2.json)のデバイス テンプレートを示しています。ここでは、すべての機能が **ルート コンポーネント** と呼ばれる 1 つのインターフェイスで定義されています。
 
 :::image type="content" source="media/howto-control-devices-with-rest-api/thermostat-device.png" alt-text="コンポーネントを使用しない単純なサーモスタット デバイスを示すスクリーンショット。":::
 
@@ -485,4 +485,4 @@ GET https://{your app subdomain}.azureiotcentral.com/api/devices/temperature-con
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API を使用してデバイスを制御する方法を学習しました。お勧めする次のステップは、[REST API を使用した IoT Central アプリケーションの管理](/learn/modules/manage-iot-central-apps-with-rest-api/)です。
+これで REST API を使用してデバイスを制御する方法を学習したので、推奨される次のステップは [IoT Central REST API を使用してジョブを作成および管理する方法](howto-manage-jobs-with-rest-api.md)を学習することです。

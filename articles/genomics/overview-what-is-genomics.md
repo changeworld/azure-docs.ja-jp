@@ -3,18 +3,18 @@ title: Microsoft Genomics とは
 titleSuffix: Microsoft Genomics
 description: Microsoft Genomics を使用すると、Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を利用して、ゲノム シーケンシングを強化できます。ここではその方法を説明します。
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
-ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fecfb66395eb181484fd7f66eb39cb0b603dcc71
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73498809"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256390"
 ---
 # <a name="what-is-microsoft-genomics"></a>Microsoft Genomics とは
 Microsoft Genomics は、二次的な分析のために Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を提供します。 このサービスは ISO の認定を受け、HIPAA の法規に準拠しており、ゲノム シーケンシングのニーズに対する価格の予測を可能にします。 クイックスタート、チュートリアル、ドキュメントを読んで、Microsoft Genomics サービスの使用方法および API との統合方法を学習しましょう。

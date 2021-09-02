@@ -3,18 +3,18 @@ title: バージョン リリース履歴
 titleSuffix: Microsoft Genomics
 description: 修正プログラムおよび新しい機能に関する Microsoft Genomics Python クライアントの更新のリリース履歴。
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 8bcf14b64b5e6417c3a1d90fd36651350efac879
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 3023f01b9a9ccbc3a56c509b1edc86885f2af41e
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551724"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255692"
 ---
 # <a name="version-release-history"></a>バージョン リリース履歴
 Microsoft Genomics チームは、修正プログラムおよび新しい機能のために Microsoft Genomics Python クライアントを更新します。 

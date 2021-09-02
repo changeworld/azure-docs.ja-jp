@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/18/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: adbf8c229c598557ff4a91c3f8e120d92a5801c0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: c9aa909c262caf2e5019fe45317988b98d859759
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746153"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255965"
 ---
 | カテゴリ | データ ストア | ソースとしてサポート | シンクとしてサポート | [Azure IR](../concepts-integration-runtime.md#azure-integration-runtime) がサポート | [セルフホステッド IR](../concepts-integration-runtime.md#self-hosted-integration-runtime) がサポート |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -28,7 +28,7 @@ ms.locfileid: "111746153"
 | &nbsp; |[Azure Database for MySQL](../connector-azure-database-for-mysql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Database for PostgreSQL](../connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Databricks Delta Lake](../connector-azure-databricks-delta-lake.md) |✓ |✓ |✓ |✓ |
-| &nbsp; |[Azure File Storage](../connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure Files](../connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Database](../connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Managed Instance](../../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Synapse Analytics](../connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |

@@ -1,27 +1,27 @@
 ---
 title: コンテナーの不変性ポリシーを構成する
 titleSuffix: Azure Storage
-description: コンテナーにスコープ設定されている不変性ポリシーを構成する方法について説明します。 不変性ポリシーでは、データを消去不可、変更不可の状態で格納することによって、Blob Storage の WORM (Write Once, Read Many) のサポートが提供されます。
+description: コンテナーにスコープ設定されている不変性ポリシーを構成する方法について説明します。 不変ポリシーでは、データを消去不可、変更不可の状態で格納することによって、Blob Storage の WORM (Write Once, Read Many) のサポートが提供されます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/22/2021
+ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9accd34601ed900ff7600485b1b3007054c4202a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1cdc40b8aebe2d80553a23deec3990d4349ebd79
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779087"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255608"
 ---
 # <a name="configure-immutability-policies-for-containers"></a>コンテナーの不変性ポリシーを構成する
 
-Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once Read Many) 状態で保存できます。 WORM の状態では、ユーザーが指定した間隔でデータを変更したり削除したりすることはできません。 BLOB データに不変性ポリシーを構成することにより、上書きや削除からデータを保護することができます。 不変性ポリシーには、時間ベースの保持ポリシーと訴訟ホールドが含まれています。 Blob Storage の不変性ポリシーの詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
+Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once, Read Many) 状態で保存できます。 WORM の状態では、ユーザーが指定した期間、データを変更および削除できません。 BLOB データに不変ポリシーを構成することにより、上書きや削除からデータを保護することができます。 不変ポリシーには、時間ベースの保持ポリシーと訴訟ホールドが含まれています。 Blob Storage の不変ポリシーの詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
 
-不変性ポリシーは、個々の BLOB バージョン (プレビュー) またはコンテナーのいずれかにスコープ設定できます。 この記事では、コンテナーレベルの不変性ポリシーを構成する方法について説明します。 バージョンレベルの不変性ポリシーを構成する方法については、「[BLOB バージョンに対する不変性ポリシーを構成する (プレビュー)](immutable-policy-configure-version-scope.md)」を参照してください。
+不変ポリシーは、個々の BLOB バージョン (プレビュー) またはコンテナーのいずれかにスコープ設定できます。 この記事では、コンテナーレベルの不変性ポリシーを構成する方法について説明します。 バージョンレベルの不変性ポリシーを構成する方法については、「[BLOB バージョンに対する不変性ポリシーを構成する (プレビュー)](immutable-policy-configure-version-scope.md)」を参照してください。
 
 ## <a name="configure-a-retention-policy-on-a-container"></a>コンテナーの保持ポリシーを構成する
 
@@ -32,11 +32,11 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 Azure portal を使用して時間ベースの保持ポリシーをコンテナーに対して構成するには、次の手順に従います。
 
 1. 目的のコンテナーに移動します。
-1. 右側の **[詳細]** ボタンを選択し、 **[アクセス ポリシー]** を選択します。
+1. 右側の **[その他]** ボタンを選択し、 **[アクセス ポリシー]** を選択します。
 1. **[Immutable blob storage]\(不変 BLOB ストレージ\)** セクションで、 **[ポリシーの追加]** を選択します。
 1. **[ポリシーの種類]** フィールドで、 **[Time-based retention]\(時間ベースの保持\)** を選択し、保持期間を日単位で指定します。
 1. コンテナー スコープでポリシーを作成するには、 **[Enable version-level immutability]\(バージョンレベルの不変性を有効にする\)** チェック ボックスをオフにします。
-1. 必要に応じて、 **[Allow additional protected appends]\(保護された追加をさらに許可する\)** を選択して、不変ポリシーによって保護されている追加 BLOB への書き込みを有効にします。 詳細については、[保護された追加 BLOB の書き込みの許可](immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)に関するページを参照してください。
+1. 必要に応じて、 **[その他の保護された追加を許可する]** を選択して、不変ポリシーによって保護されている BLOB を追加する書き込みを有効にします。 詳細については、「[保護された追加 BLOB の書き込みを許可する](immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)」を参照してください。
 
     :::image type="content" source="media/immutable-policy-configure-container-scope/configure-retention-policy-container-scope.png" alt-text="コンテナーにスコープ設定されている不変性ポリシーの構成方法を示すスクリーンショット":::
 
@@ -71,15 +71,15 @@ az storage container immutability-policy \
 
 ## <a name="modify-an-unlocked-retention-policy"></a>ロック解除された保持ポリシーを変更する
 
-ロック解除された時間ベースの保持ポリシーを変更して、保持間隔を短縮または延長し、コンテナー内の追加 BLOB への追加の書き込みを許可することができます。 ロック解除されたポリシーを削除することもできます。
+ロック解除された時間ベースの保持ポリシーを変更して、保持間隔を短縮または延長し、コンテナー内の追加 BLOB への追加の書き込みを許可することができます。 また、ロック解除されたポリシーを削除することもできます。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 ロック解除された時間ベースの保持ポリシーを Azure portal で変更するには、次の手順に従います。
 
 1. 目的のコンテナーに移動します。
-1. **[詳細]** ボタンを選択し、 **[アクセス ポリシー]** を選択します。
-1. **[Immutable blob versions]\(不変 BLOB バージョン\)** セクションで、既存のロック解除されたポリシーを見つけます。 **[詳細]** ボタンを選択し、メニューから **[編集]** を選択します。
+1. **[その他]** ボタンを選択し、 **[アクセス ポリシー]** を選択します。
+1. **[Immutable blob versions]\(不変 BLOB バージョン\)** セクションで、既存のロック解除されたポリシーを見つけます。 **[その他]** ボタンを選択し、メニューから **[編集]** を選択します。
 1. ポリシーの新しい保持間隔を指定します。 **[Allow additional protected appends]\(保護された追加をさらに許可する\)** を選択して、保護された追加 BLOB への書き込みを許可することもできます。
 
     :::image type="content" source="media/immutable-policy-configure-container-scope/modify-retention-policy-container-scope.png" alt-text="ロック解除された時間ベースの保持ポリシーの変更方法を示すスクリーンショット":::
@@ -151,7 +151,7 @@ az storage container immutability-policy \
 Azure portal でポリシーをロックするには、次の手順を実行します。
 
 1. ロック解除されたポリシーがあるコンテナーにアクセスします。
-1. **[Immutable blob versions]\(不変 BLOB バージョン\)** セクションで、既存のロック解除されたポリシーを見つけます。 **[詳細]** ボタンを選択し、メニューから **[ポリシーのロック]** を選択します。
+1. **[Immutable blob versions]\(不変 BLOB バージョン\)** セクションで、既存のロック解除されたポリシーを見つけます。 **[その他]** ボタンを選択し、メニューから **[Lock policy]\(ポリシーのロック\)** を選択します。
 1. ポリシーをロックすることを確認します。
 
 :::image type="content" source="media/immutable-policy-configure-container-scope/lock-retention-policy.png" alt-text="Azure portal で時間ベースの保持ポリシーをロックする方法を示すスクリーンショット":::
@@ -200,7 +200,7 @@ az storage container immutability-policy lock /
 Azure portal を使用してコンテナーの訴訟ホールドを構成するには、次の手順に従います。
 
 1. 目的のコンテナーに移動します。
-1. **[詳細]** ボタンを選択し、 **[アクセス ポリシー]** を選択します。
+1. **[その他]** ボタンを選択し、 **[アクセス ポリシー]** を選択します。
 1. **[Immutable blob versions]\(不変 BLOB バージョン\)** セクションで、 **[ポリシーの追加]** を選択します。
 1. ポリシーの種類として **[訴訟ホールド]** を選択して、 **[OK]** を選択します。
 
@@ -208,7 +208,7 @@ Azure portal を使用してコンテナーの訴訟ホールドを構成する�
 
 :::image type="content" source="media/immutable-policy-configure-container-scope/retention-policy-legal-hold-container-scope.png" alt-text="時間ベースの保持ポリシーと訴訟ホールドの両方が構成されたコンテナーを示すスクリーンショット":::
 
-訴訟ホールドをクリアするには、 **[アクセス ポリシー]** ダイアログに移動し、 **[詳細]** ボタンを選択して、 **[削除]** を選択します。
+訴訟ホールドをクリアするには、 **[アクセス ポリシー]** ダイアログに移動し、 **[その他]** ボタンを選択して、 **[削除]** を選択します。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -257,6 +257,6 @@ az storage container legal-hold clear /
 ## <a name="next-steps"></a>次のステップ
 
 - [不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)
-- [不変 BLOB データの時間ベースの保持ポリシー](immutable-time-based-retention-policy-overview.md)
+- [不変 BLOB データに対する時間ベースの保持ポリシー](immutable-time-based-retention-policy-overview.md)
 - [不変 BLOB データに対する法的な保持](immutable-legal-hold-overview.md)
 - [BLOB バージョンに対する不変性ポリシーを構成する (プレビュー)](immutable-policy-configure-version-scope.md)

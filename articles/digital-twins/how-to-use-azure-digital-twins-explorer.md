@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9d029c3392ad5b5472173d17db17a113526d4f3a
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 22ad40dadf36b711bde4b7af7e8b24b09610ab89
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111811508"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459506"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>Azure Digital Twins Explorer を使用する (プレビュー)
 
@@ -39,7 +39,7 @@ ms.locfileid: "111811508"
 
 ## <a name="query-your-digital-twin-graph"></a>デジタル ツイン グラフでクエリを実行する
 
-**[クエリ エクスプローラー]** パネルを使用すると、グラフに対して[クエリ](concepts-query-language.md)を実行できます。
+**[クエリ エクスプローラー]** パネルを使用すると、グラフに対して [クエリ](concepts-query-language.md)を実行できます。
 
 :::image type="content" source="media/how-to-use-azure-digital-twins-explorer/query-explorer-panel.png" alt-text="Azure Digital Twins Explorer のスクリーンショット。[クエリ エクスプローラー] パネルが強調表示されています。" lightbox="media/how-to-use-azure-digital-twins-explorer/query-explorer-panel.png":::
 
@@ -406,7 +406,7 @@ Azure Digital Twins Explorer を開くと、環境で使用可能なすべての
 
 ## <a name="importexport-graph"></a>グラフのインポート/エクスポート
 
-**[ツイン グラフ]** パネルには、グラフ機能を[インポート](#import-graph)および[エクスポート](#export-graph-and-models)するオプションがあります。
+**[ツイン グラフ]** パネルには、グラフ機能を [インポート](#import-graph)および [エクスポート](#export-graph-and-models)するオプションがあります。
 
 ### <a name="import-graph"></a>グラフのインポート
 
@@ -485,7 +485,7 @@ Azure Digital Twins で、インポートするグラフのプレビューが表
 
 `https://explorer.digitaltwins.azure.net/?tid=00a000aa-00a0-00aa-0a0aa000aa00&eid=ADT-instance.api.wcus.digitaltwins.azure.net`
 
-受信者が表示された Azure Digital Twins Explorer ウィンドウでインスタンスを表示するには、Azure アカウントにログインし、インスタンスへの **Azure Digital Twins データ リーダー** アクセス権を持っている必要があります (Azure Digital Twins のロールの詳細については、[概念: セキュリティ](concepts-security.md)に関する記事を参照してください)。 受信者がグラフとデータに変更を加えるには、インスタンスに対する **Azure Digital Twins データ所有者** ロールを持っている必要があります。
+受信者が結果の Azure Digital Twins Explorer ウィンドウでインスタンスを表示するには、自分の Azure アカウントにログインし、そのインスタンスへの **Azure Digital Twins データ リーダー** アクセス権を持っている必要があります (Azure Digital Twins ロールの詳細については、[セキュリティ](concepts-security.md)に関するページを参照)。 受信者がグラフとデータに変更を加えるには、インスタンスに対する **Azure Digital Twins データ所有者** ロールを持っている必要があります。
 
 ### <a name="link-with-a-query"></a>クエリを含むリンク
 
@@ -524,5 +524,5 @@ Azure Digital Twins Explorer のいくつかの高度な設定オプションを
 ## <a name="next-steps"></a>次の手順 
 
 Azure Digital Twins のツイングラフ用のクエリの作成について学習します。 
-* [概念:クエリ言語](concepts-query-language.md)
-* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)
+* [クエリ言語](concepts-query-language.md)
+* [ツイン グラフにクエリを実行する](how-to-query-graph.md)

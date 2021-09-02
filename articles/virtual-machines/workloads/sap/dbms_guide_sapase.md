@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 430af1dfcbd9c7faabfca2f3f5b80b3b3106a889
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74d5bee95ae91eb11f249518f49b711d9649db01
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675796"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467658"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
 
@@ -188,7 +188,7 @@ HADR ユーザー ガイドでは、2 ノードの SAP ASE "Always-on" ソリュ
 > Azure でサポートされている構成は、Floating IP なしで Fault Manager を使用することだけです。  Floating IP Address メソッドは、Azure では機能しません。 
 
 ### <a name="third-node-for-disaster-recovery"></a>ディザスター リカバリーのための 3 番目のノード
-ローカルの高可用性のために SAP ASE Always-On を使用する以外に、構成を別の Azure リージョンの非同期にレプリケートされたノードに拡張することが必要になる場合があります。 このようなシナリオのドキュメントは、[こちら](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)を参照してください。
+ローカルの高可用性のために SAP ASE Always-On を使用する以外に、構成を別の Azure リージョンの非同期にレプリケートされたノードに拡張することが必要になる場合があります。 詳細については、[Suse 12.3 への Sybase 16.3 パッチ レベル 3 Always-on および DR のインストール手順](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)に関するページを参照してください。
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE データベース暗号化と SSL 
 SAP Software Provisioning Manager (SWPM) には、インストール時にデータベースを暗号化するオプションが用意されています。  暗号化を使用する場合は、SAP Full Database Encryption を使用することをお勧めします。  詳細については、次のドキュメントを参照してください。
@@ -245,7 +245,6 @@ SAP システムをホストする Azure Virtual Machine が AD や DNS に接�
 > 
 > 
 
-DNS 名の詳細については、[こちら][virtual-machines-azurerm-versus-azuresm] をご覧ください。
 
 SAP プロファイル パラメーター icm/host_name_full を Azure VM のリンクの DNS 名に設定すると、リンクは次のようになる場合があります。
 

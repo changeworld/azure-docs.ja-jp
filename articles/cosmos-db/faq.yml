@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/01/2019
   ms.author: sngun
   ms.custom: seodec18
-  ms.openlocfilehash: 8ded857f617ab61f6914635f41642b86c1848861
-  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+  ms.openlocfilehash: 945947dc1ed0b0cb5d9537e3456825fe20170c9e
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122321787"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123106225"
 title: Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -127,7 +127,7 @@ sections:
   - question: >
       主キーとは
     answer: >
-      主キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 主キーを配布するときには十分な注意が必要です。 プライマリ主キーとセカンダリ主キーは、[Azure portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#list-account-keys)」を参照してください。
+      主キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 主キーを配布するときには十分な注意が必要です。 プライマリ主キーとセカンダリ主キーは、[Azure portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](sql/manage-with-cli.md#list-account-keys)」を参照してください。
   - question: >
       PreferredLocations として設定できるリージョンを教えてください。
     answer: >

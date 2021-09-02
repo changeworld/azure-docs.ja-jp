@@ -1,17 +1,17 @@
 ---
 title: Azure Monitor 用の組み込みポリシー定義
 description: Azure Monitor 用の Azure Policy 組み込みポリシー定義の一覧を示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 89348fe2ba16d2100eb1e1e80cc06b481b0c9b13
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 9eb2eab40f1acc95d47958fa62c323efb7a32fad
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607294"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123104540"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-monitor"></a>Azure Monitor 用の Azure Policy 組み込み定義
 

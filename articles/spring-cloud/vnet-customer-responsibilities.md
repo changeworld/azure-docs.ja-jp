@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 525f5930f82c0a595c4f1070a7714c45445a9f14
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: fbcf185aa48e7fc4333b128f21b4664106043064
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015364"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256419"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>VNET での Azure Spring Cloud の実行に関するお客様の責任
 
@@ -42,7 +42,7 @@ Azure Spring Cloud サービスのリソース要件の一覧を次に示しま�
 | *:9000 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:9000 | TCP:9000         | 基になる Kubernetes クラスターの管理。 |                                                              |
 | *:123 *または* ntp.ubuntu.com:123                                | UDP: 123          | Linux ノードでの NTP 時刻の同期。  |                                                              |
 | *.azure.io:443 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureContainerRegistry:443 | TCP:443          | Azure Container Registry。                 | [仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md) *Azure Container Registry* を有効にすることで置き換えることができます。 |
-| *.core.windows.net:443 および *.core.windows.net:445 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - Storage:443 および Storage:445 | TCP:443、TCP:445 | Azure File Storage                        | [仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md) *Azure Storage* を有効にすることで置き換えることができます。 |
+| *.core.windows.net:443 および *.core.windows.net:445 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - Storage:443 および Storage:445 | TCP:443、TCP:445 | Azure Files                        | [仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md) *Azure Storage* を有効にすることで置き換えることができます。 |
 | *.servicebus.windows.net:443 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - EventHub:443 | TCP:443          | Azure Event Hub。                          | [仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md) *Azure Event Hubs* を有効にすることで置き換えることができます。 |
 
 

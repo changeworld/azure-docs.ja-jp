@@ -11,12 +11,12 @@ ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 9923a2bd2e36975fe1af77fddb4bb484a4eb87c6
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 5e0590dd524c516b2c6b909184de1f2d65f0074c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217775"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257045"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark Utilities の概要
 
@@ -51,7 +51,7 @@ Azure AD とワークスペースの MSI が ADLS Gen2 アカウントにアク�
 
 Synapse Spark を使用して ADLS Gen2 のデータにアクセスするには、次の URL を使用します。
 
-<code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
+`abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path>`
 
 ### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob Storage へのアクセスを構成する  
 
@@ -69,7 +69,7 @@ Azure Blob Storage アカウントにリンクされたサービスを新しく�
 
 Synapse Spark を使用して Azure Blob Storage のデータにアクセスするには、次の URL を使用します。
 
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+`wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path>`
 
 コード例はこちらです。
 
