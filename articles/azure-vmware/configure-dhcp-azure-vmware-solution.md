@@ -1,45 +1,54 @@
 ---
-title: Azure VMware Solution で DHCP を構成して管理する
-description: Azure VMware Solution のプライベート クラウド向けに DHCP を作成して管理する方法について説明します。
+title: Azure VMware Solution 用の DHCP の構成
+description: NSX-T Manager を使用して DHCP サーバーをホストするか、サードパーティの外部 DHCP サーバーを使用して、DHCP を構成する方法について説明します。
 ms.topic: how-to
-ms.custom: contperf-fy21q2
-ms.date: 05/17/2021
-ms.openlocfilehash: 28fb995cbc91d6e350e8d295c1f57d62c706e59e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: contperf-fy21q2, contperf-fy22q1
+ms.date: 07/13/2021
+ms.openlocfilehash: d781a7cc0ced6df4f5ad1e562a78f00e023ea10a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110104767"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323624"
 ---
-# <a name="configure-and-manage-dhcp-in-azure-vmware-solution"></a>Azure VMware Solution で DHCP を構成して管理する
+# <a name="configure-dhcp-for-azure-vmware-solution"></a>Azure VMware Solution 用の DHCP の構成
 
-プライベート クラウド環境で実行されるアプリケーションとワークロードには、IP アドレスを割り当てるための DHCP サービスが必要です。  この記事では、Azure VMware Solution で DHCP を作成して管理する 2 つの方法について説明します。
+[!INCLUDE [dhcp-dns-in-azure-vmware-solution-description](includes/dhcp-dns-in-azure-vmware-solution-description.md)]
 
-- NSX-T を使用して DHCP サーバーをホストする場合は、[DHCP サーバーを作成](#create-a-dhcp-server)し、[そのサーバーにリレー](#create-dhcp-relay-service)する必要があります。 DHCP サーバーを作成するときは、さらにネットワーク セグメントを追加し、DHCP IP アドレスの範囲を指定します。   
+このハウツー記事では、次の2つの方法のいずれかで、NSX-T Manager を使用して Azure VMware Solution 用の DHCP を構成します。 
 
-- ネットワークでサードパーティの外部 DHCP サーバーを使用する場合は、[DHCP リレー サービスを作成](#create-dhcp-relay-service)する必要があります。 NSX-T とサードパーティのどちらを使用して DHCP サーバーをホストする場合でも、DHCP サーバーへのリレーを作成するときに、DHCP IP アドレスの範囲を指定する必要があります。
+- [ NSX-T で DHCP サーバーをホストする](#use-nsx-t-to-host-your-dhcp-server)
+
+- [サードパーティの外部 DHCP サーバー](#use-a-third-party-external-dhcp-server)
+
+>[!TIP]
+>NSX-T 操作の簡略化されたビューを使用して DHCP を構成する場合は、「[Azure VMware Solution 用の DHCP の構成](configure-dhcp-azure-vmware-solution.md)」を参照してください。
+
 
 >[!IMPORTANT]
+>2021 年 7 月 1 日以降に作成されたクラウドの場合、ご使用の環境の既定の第 1 層ゲートウェイで DHCP を構成するには、NSX-T 操作の簡略化されたビューを使用する必要があります。
+>
 >DHCP サーバーがオンプレミスのデータセンターにある場合、VMware HCX L2 ストレッチ ネットワーク上の仮想マシン (VM) に対して DHCP は機能しません。  NSX では、既定ですべての DHCP 要求が L2 ストレッチを通過するときにブロックされます。 解決策については、「[L2 拡張 VMware HCX ネットワークで DHCP を構成する](configure-l2-stretched-vmware-hcx-networks.md)」の手順をご覧ください。
 
 
-## <a name="create-a-dhcp-server"></a>DHCP サーバーを作成する
+## <a name="use-nsx-t-to-host-your-dhcp-server"></a>NSX-T を使用して DHCP サーバーをホストする
+NSX-T を使用して DHCP サーバーをホストする場合は、DHCP サーバーとリレー サービスを作成します。 次に、ネットワーク セグメントを追加し、DHCP IP アドレスの範囲を指定します。
 
-NSX-T を使用して DHCP サーバーをホストする場合は、DHCP サーバーを作成します。 次に、ネットワーク セグメントを追加し、DHCP IP アドレスの範囲を指定します。
+### <a name="create-a-dhcp-server"></a>DHCP サーバーを作成する
 
 1. NSX-T Manager で、 **[ネットワーク]**  >  **[DHCP]** を選択してから、 **[サーバーの追加]** を選択します。
 
-1. **[サーバーの種類]** で **[DHCP]** を選択し、サーバー名と IP アドレスを入力してから、 **[保存]** を選択します。
+1. **[サーバーの種類]** で **[DHCP]** を選択し、サーバー名と IP アドレスを入力して、 **[保存]** を選択します。
 
-   :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="DHCP サーバーの追加" border="true":::
+   :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="NSX-T Manager に DHCP サーバーを追加する方法を示すスクリーンショット。" border="true":::
 
 1. **[第 1 層ゲートウェイ]** を選択し、第 1 層ゲートウェイの縦方向の省略記号を選択してから、 **[編集]** を選択します。
 
-   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="使用するゲートウェイの選択" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="DHCP サーバーを使用するために第 1 層ゲートウェイを編集する方法を示すスクリーンショット。" border="true":::
 
 1. **[No IP Allocation Set]\(IP 割り当てセットなし\)** を選択して、サブネットを追加します。
 
-   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="サブネットの追加" border="true":::
+   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="DHCP サーバーを使用するために第 1 層ゲートウェイにサブネットを追加する方法を示すスクリーンショット。" border="true":::
 
 1. **[種類]** で、 **[DHCP ローカル サーバー]** を選択します。 
    
@@ -51,24 +60,56 @@ NSX-T を使用して DHCP サーバーをホストする場合は、DHCP サー
 
 [!INCLUDE [add-network-segment-steps](includes/add-network-segment-steps.md)]
 
+### <a name="specify-the-dhcp-ip-address-range"></a>DHCP IP アドレスの範囲を指定する
+ 
+DHCP サーバーへのリレーを作成するときは、DHCP IP アドレスの範囲も指定します。
 
-## <a name="create-dhcp-relay-service"></a>DHCP リレー サービスの作成
+>[!NOTE]
+>IP アドレス範囲は、サブスクリプションやオンプレミス ネットワークにある他の仮想ネットワークで使用されている IP 範囲と重複しないようにする必要があります。
 
-サードパーティの外部 DHCP サーバーを使用する場合は、DHCP リレー サービスを作成する必要があります。 NSX-T Manager で DHCP IP アドレスの範囲も指定します。 
+1. NSX-T Manager で、 **[ネットワーク]**  >  **[セグメント]** を選択します。 
+   
+1. セグメント名の縦方向の省略記号を選択し、 **[編集]** を選択します。
+   
+1. **[Set Subnets]\(サブネットの設定\)** を選択して、サブネットの DHCP IP アドレスを指定します。 
+   
+   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="DHCP サーバーを使用するための DHCP IP アドレスを指定するようにサブネットを設定する方法を示すスクリーンショット。" border="true":::
+      
+1. 必要に応じてゲートウェイ IP アドレスを変更し、DHCP 範囲 IP を入力します。 
+      
+   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="DHCP サーバーを使用するためのゲートウェイ IP アドレスと DHCP 範囲を示すスクリーンショット。" border="true":::
+      
+1. **[適用]** 、 **[保存]** の順に選択します。 DHCP サーバー プールがセグメントに割り当てられます。
+      
+   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="DHCP サーバーを使用するために、DHCP サーバー プールがセグメントに割り当てられていることを示すスクリーンショット。" border="true":::
+
+
+## <a name="use-a-third-party-external-dhcp-server"></a>サードパーティの外部 DHCP サーバーを使用する
+
+サードパーティの外部 DHCP サーバーを使用する場合は、NSX-T Manager に DHCP リレー サービスを作成します。 DHCP IP アドレスの範囲も指定します。
+
+
+>[!IMPORTANT]
+>2021 年 7 月 1 日以降に作成されたクラウドの場合、ご使用の環境の既定の第 1 層ゲートウェイで DHCP を構成するには、NSX-T 操作の簡略化されたビューを使用する必要があります。
+
+
+### <a name="create-dhcp-relay-service"></a>DHCP リレー サービスの作成
+
+非 NSX ベースの DHCP サービスには、DHCP リレーを使用します。 たとえば、Azure VMware Solution、Azure IaaS、またはオンプレミスで DHCP を実行している VM があるとします。
 
 1. NSX-T Manager で、 **[ネットワーク]**  >  **[DHCP]** を選択してから、 **[サーバーの追加]** を選択します。
 
-1. **[サーバーの種類]** で **[DHCP Relay]\(DHCP リレー\)** を選択し、サーバー名と IP アドレスを入力してから、 **[保存]** を選択します。
+1. **[サーバーの種類]** で **[DHCP Relay]\(DHCP リレー\)** を選択し、サーバー名と IP アドレスを入力して、 **[保存]** を選択します。
 
-   :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP リレー サービスの作成" border="true":::
+   :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="NSX-T Manager で DHCP リレー サービスを作成する方法を示すスクリーンショット。" border="true":::
 
 1. **[第 1 層ゲートウェイ]** を選択し、第 1 層ゲートウェイの縦方向の省略記号を選択してから、 **[編集]** を選択します。
 
-   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="第 1 層ゲートウェイの編集" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="第 1 層ゲートウェイを編集する方法を示すスクリーンショット。" border="true":::
 
 1. IP アドレスの割り当てを定義するには、 **[No IP Allocation Set]\(IP 割り当てセットなし\)** を選択します。
 
-   :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="IP アドレスの割り当ての編集" border="true":::
+   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="第 1 層ゲートウェイにサブネットを追加する方法を示すスクリーンショット。" border="true":::
 
 1. **[種類]** で、 **[DHCP サーバー]** を選択します。 
    
@@ -77,7 +118,12 @@ NSX-T を使用して DHCP サーバーをホストする場合は、DHCP サー
 1. もう一度 **[保存]** を選択し、 **[編集を閉じる]** を選択します。
 
 
-## <a name="specify-the-dhcp-ip-address-range"></a>DHCP IP アドレスの範囲を指定する
+### <a name="specify-the-dhcp-ip-address-range"></a>DHCP IP アドレスの範囲を指定する
+
+DHCP サーバーへのリレーを作成するときは、DHCP IP アドレスの範囲も指定します。
+
+>[!NOTE]
+>IP アドレス範囲は、サブスクリプションやオンプレミス ネットワークにある他の仮想ネットワークで使用されている IP 範囲と重複しないようにする必要があります。
 
 1. NSX-T Manager で、 **[ネットワーク]**  >  **[セグメント]** を選択します。 
    
@@ -85,19 +131,17 @@ NSX-T を使用して DHCP サーバーをホストする場合は、DHCP サー
    
 1. **[Set Subnets]\(サブネットの設定\)** を選択して、サブネットの DHCP IP アドレスを指定します。 
    
-   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="ネットワーク セグメント" border="true":::
+   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="DHCP IP アドレスを指定するようにサブネットを設定する方法を示すスクリーンショット。" border="true":::
       
 1. 必要に応じてゲートウェイ IP アドレスを変更し、DHCP 範囲 IP を入力します。 
       
-   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="サブネットの編集" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="ゲートウェイ IP アドレスと DHCP 範囲を示すスクリーンショット。" border="true":::
       
 1. **[適用]** 、 **[保存]** の順に選択します。 DHCP サーバー プールがセグメントに割り当てられます。
       
-   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="セグメントに割り当てられた DHCP サーバープール" border="true":::
+   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="DHCP サーバー プールがセグメントに割り当てられていることを示すスクリーンショット。" border="true":::
 
 
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
-
-Azure VMware Solution VM から非 NSX-T DHCP サーバーに DHCP 要求を送信する場合は、セキュリティ セグメント プロファイルを作成します。 解決策については、「[L2 拡張 VMware HCX ネットワークで DHCP を構成する](configure-l2-stretched-vmware-hcx-networks.md)」の手順をご覧ください。
-
+Azure VMware Solution VM から非 NSX-T DHCP サーバーに DHCP 要求を送信するには、「[L2 拡張 VMware HCX ネットワークで DHCP を構成する](configure-l2-stretched-vmware-hcx-networks.md)」を参照してください。

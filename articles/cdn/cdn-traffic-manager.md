@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: a003becba0bc1e42d8fe0c0c5b199402a430a8e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3eea73559fdf00e8c74f58ea51b1efce5eac694d
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034760"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651295"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数のエンドポイント間でのフェールオーバー
 

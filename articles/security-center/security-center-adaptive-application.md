@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: f8d0871f07168e0d7a2fbda90df4209ab7e5a28e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9f1fdfeadd56b070c942c023a7373b43363a1916
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748501"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734967"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -44,11 +44,11 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
-|サポートされているマシン:|![Yes](./media/icons/yes-icon.png) Windows および Linux を実行する Azure と Azure 以外のマシン<br>![Yes](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml) マシン|
+|サポートされているマシン:|:::image type="icon" source="./media/icons/yes-icon.png"::: Windows および Linux が実行されている Azure および Azure 以外のマシン<br>:::image type="icon" source="./media/icons/yes-icon.png"::: [Azure Arc](../azure-arc/index.yml) マシン|
 |必要なロールとアクセス許可:|**セキュリティ閲覧者** および **閲覧者** のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを表示できます<br>**共同作成者** および **セキュリティ管理者** のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを編集できます|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 
@@ -61,7 +61,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 1. Azure Defender ダッシュボードを開き、高度な保護領域から **[適応型アプリケーション制御]** を選択します。
 
-    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Azure ダッシュボードから適応型アプリケーション制御を開く" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Azure ダッシュボードから適応型アプリケーション制御を開きます。" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     **[適応型アプリケーション制御]** ページが開き、VM が次のタブにグループ化されます。
 
@@ -87,13 +87,13 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 1. **[推奨]** タブを開きます。推奨される許可リストがあるマシンのグループが表示されます。
 
-   ![[推奨] タブ](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
+   ![[推奨] タブ。](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
 1. グループを選びます。 
 
 1. 新しい規則を構成するには、この **[アプリケーションの制御に関する規則の構成]** ページのさまざまなセクションとその内容を確認します。これは、特定のマシンのグループに固有のものです。
 
-   ![新しい規則を構成する](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
+   ![新しい規則を構成します。](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
    1. **マシンの選択** - 既定では、識別されたグループ内のすべてのマシンが選択されます。 いずれかの選択を解除すると、それらはこの規則から除外されます。
    
@@ -127,7 +127,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
    1. **[規則の追加]** を選択します。
 
-      ![カスタム規則を追加する](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
+      ![カスタム規則を追加します。](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
    1. 既知の安全なパスを定義する場合は、 **[規則の種類]** を [パス] に変更して、1 つのパスを入力します。 パスにはワイルドカードを含めることができます。
    
@@ -150,7 +150,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
     このウィンドウには、グループの名前 (変更可能)、OS の種類、場所、およびその他の関連する詳細が表示されます。
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="適応型アプリケーション制御の [グループ設定] ページ" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="適応型アプリケーション制御の [グループ設定] ページ。" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
 1. 必要に応じて、グループの名前やファイルの種類の保護モードを変更します。
 
@@ -183,13 +183,13 @@ Security Center の機械学習で、以前は許可されていなかった、�
 
 1. さらに調査するには、グループを選択します。
 
-   ![最近のアラート](./media/security-center-adaptive-application/recent-alerts.png)
+   ![最近のアラート。](./media/security-center-adaptive-application/recent-alerts.png)
 
 1. 詳細および影響を受けるマシンのリストを表示するには、アラートを選択します。
 
     アラート ページには、アラートの詳細が表示され、脅威を軽減するための推奨事項と共に **[アクションの実行]** リンクが表示されます。
 
-    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="適応型アプリケーション制御アラートの開始時刻":::
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="適応型アプリケーション制御アラートの開始時刻。":::
 
     > [!NOTE]
     > 適応型アプリケーション制御では、12 時間ごとにイベントが計算されます。 アラート ページに表示される [アクティビティの開始時刻] は、疑わしいプロセスがアクティブだった時間では **なく**、適応型アプリケーション制御によってアラートが作成された時刻です。
@@ -238,12 +238,12 @@ REST API から使用できる関数をいくつか以下に示します。
 ## <a name="faq---adaptive-application-controls"></a>FAQ - 適応型アプリケーション制御
 
 - [アプリケーション制御を強制するためのオプションはありますか。](#are-there-any-options-to-enforce-the-application-controls)
-- [お勧めアプリケーションに Qualys アプリが表示されるのはなぜですか?](#why-do-i-see-a-qualys-app-in-my-recommendeded-applications)
+- [お勧めアプリケーションに Qualys アプリが表示されるのはなぜですか?](#why-do-i-see-a-qualys-app-in-my-recommended-applications)
 
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>アプリケーション制御を強制するためのオプションはありますか。
 現時点では、利用できる強制オプションはありません。 適応型アプリケーション制御では、安全なものとして定義したもの以外のアプリケーションが実行されると、**セキュリティ アラート** が表示されることを想定しています。 これらにはさまざまな利点があり (「[適応型アプリケーション制御の利点とは](#what-are-the-benefits-of-adaptive-application-controls)」)、このページに示すように高度なカスタマイズが可能です。
 
-### <a name="why-do-i-see-a-qualys-app-in-my-recommendeded-applications"></a>お勧めアプリケーションに Qualys アプリが表示されるのはなぜですか?
+### <a name="why-do-i-see-a-qualys-app-in-my-recommended-applications"></a>お勧めアプリケーションに Qualys アプリが表示されるのはなぜですか?
 [Azure Defender for servers](defender-for-servers-introduction.md) には、お使いのマシンの脆弱性スキャンが追加費用なしで含まれています。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 このスキャナーの詳細およびデプロイ方法の手順については、「[Defender の統合された脆弱性評価ソリューション](deploy-vulnerability-assessment-vm.md)」を参照してください。
 
 Security Center にスキャナーをデプロイするときにアラートが生成されないようにするには、適応型アプリケーション制御の推奨許可リストに、すべてのコンピューターのスキャナーが含まれていることを確認します。 

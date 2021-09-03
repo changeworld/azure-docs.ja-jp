@@ -11,28 +11,28 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/19/2021
+ms.date: 07/21/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 547e48e9cecb672c5274bc001178b2ea2aaf47af
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: fee1aab009bdbf84acf1a73244d6686db50e4e3f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577653"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450708"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure の SAP HANA (L インスタンス) のアーキテクチャ
 
 この記事では、SAP HANA on Azure Large Instances (BareMetal インフラストラクチャとも呼ばれます) をデプロイするためのアーキテクチャについて説明します。 
 
-大まかに言うと、SAP HANA on Azure (L インスタンス) ソリューションでは、仮想マシン (VM) 上に SAP アプリケーション レイヤーがあります。 データベース レイヤーは、Azure IaaS VM と同じ Azure リージョンに配置された SAP 認定 HANA L インスタンス上にあります。
+大まかに言うと、SAP HANA on Azure (L インスタンス) ソリューションでは、仮想マシン (VM) 上に SAP アプリケーション レイヤーがあります。 データベース レイヤーは、SAP 認定の HANA L インスタンス (HLI) 上にあります。 HLI は、Azure IaaS VM と同じ Azure リージョンに配置されます。
 
 > [!NOTE]
 > SAP アプリケーション レイヤーは、SAP データベース管理システム (DBMS) レイヤーと同じ Azure リージョンにデプロイします。 この規則は、Azure 上の SAP ワークロードに関して公開されている情報で明確に文書化されています。 
 
 ## <a name="architectural-overview"></a>アーキテクチャの概要
 
-SAP HANA on Azure (L インスタンス) の全体的なアーキテクチャでは、SAP TDI 認定のハードウェア構成が提供されます。 このハードウェアは、SAP HANA データベース用の仮想化されていない、ベア メタルの高パフォーマンス サーバーです。 また、SAP アプリケーション レイヤーのリソースをニーズに合わせてスケーリングするための Azure の柔軟性も提供されます。
+SAP HANA on Azure (L インスタンス) の全体的なアーキテクチャでは、SAP TDI 認定のハードウェア構成が提供されます。 このハードウェアは、SAP HANA データベース用の仮想化されていない、ベア メタルの高パフォーマンス サーバーです。 SAP アプリケーション レイヤーのリソースをニーズに合わせてスケーリングするための柔軟性も提供されます。
 
 ![SAP HANA on Azure (L インスタンス) のアーキテクチャの概要](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -49,7 +49,7 @@ SAP HANA on Azure (L インスタンス) の全体的なアーキテクチャで
   -  [Windows 仮想マシンにおける SAP の使用](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [Azure 仮想マシンにおける SAP ソリューションの使用](get-started.md)
 
-- **左**: Azure L インスタンス スタンプの SAP HANA TDI 認定ハードウェアを示します。 HANA L インスタンス ユニットでは、オンプレミスから Azure への接続と同じテクノロジを使用して、Azure サブスクリプションの仮想ネットワークに接続します。 2019 年 5 月に、ExpressRoute ゲートウェイを使用せずに HANA L インスタンス ユニットと Azure VM の間の通信を可能にする最適化を導入しました。 この最適化は、ExpressRoute FastPath と呼ばれ、前の図で赤い線で示されています。
+- **左**: Azure L インスタンス スタンプの SAP HANA TDI 認定ハードウェアを示します。 HANA L インスタンス ユニットでは、オンプレミス サーバーから Azure への接続に使用されるものと同じテクノロジを使用して、Azure サブスクリプションの仮想ネットワークに接続します。 2019 年 5 月に、ExpressRoute ゲートウェイを使用せずに HANA L インスタンス ユニットと Azure VM の間の通信を可能にする最適化を導入しました。 この最適化は、ExpressRoute FastPath と呼ばれ、前の図で赤い線で示されています。
 
 ## <a name="components-of-the-azure-large-instance-stamp"></a>Azure L インスタンス スタンプのコンポーネント
 
@@ -61,7 +61,9 @@ Azure L インスタンス スタンプ自体は次のコンポーネントを�
 
 ## <a name="tenants"></a>テナント
 
-L インスタンス スタンプのマルチテナント インフラストラクチャ内では、分離されたテナントとしてお客様の環境がデプロイされます。 テナントのデプロイ時に、Azure 加入契約内で Azure サブスクリプションに名前を付けます。 これが、HANA L インスタンスの課金対象となる Azure サブスクリプションになります。 これらのテナントには Azure サブスクリプションとの 1 対 1 の関係があります。 ネットワークについては、異なる Azure サブスクリプションに属する異なる仮想ネットワークから、1 つの Azure リージョン内の 1 つのテナントにデプロイされた HANA L インスタンス ユニットにアクセスできます。 それらの Azure サブスクリプションが同じ Azure 加入契約に属している必要があります。
+L インスタンス スタンプのマルチテナント インフラストラクチャ内では、分離されたテナントとしてお客様の環境がデプロイされます。 テナントのデプロイ時に、Azure 加入契約内で Azure サブスクリプションに名前を付けます。 これが、HANA L インスタンスの課金対象となる Azure サブスクリプションになります。 これらのテナントには Azure サブスクリプションとの 1 対 1 の関係があります。 
+
+ネットワークについては、異なる Azure サブスクリプションに属する異なる仮想ネットワークから、1 つの Azure リージョン内の 1 つのテナントにデプロイされた HANA L インスタンスにアクセスできます。 それらの Azure サブスクリプションが同じ Azure 加入契約に属している必要があります。
 
 ## <a name="availability-across-regions"></a>リージョン全体での可用性
 

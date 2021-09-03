@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: ef6b23cf7564cff57f398c76162f9c25efac7075
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 19e10b43fbf0dac05da531570376b77d22840312
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081282"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324574"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -134,7 +134,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 * クラスター作成後、VNet を拡張する場合、元の cidr の外でサブネットを追加する前に、クラスターを更新する必要があります (マネージド クラスター操作があれば、それを実行しますが、ノード プール操作は数に入りません)。 元々は許可していましたが、エージェント プールを追加すると AKS でエラーが出るようになっています。 クラスターを調整する方法がわからない場合、サポート チケットを提出してください。 
 * Calico ネットワーク ポリシーはサポートされていません。 
 * Azure ネットワーク ポリシーはサポートされていません。
-* Kube-proxy からは隣接する cidr が 1 つ求められ、3 つの最適化にそれが使用されます。 詳細については、この [K.E.P](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) と [こちら](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)の --cluster-cidr を参照してください。 azure cni では、最初のノード プールのサブネットが kube-proxy に与えられます。 
+* Kube-proxy からは隣接する cidr が 1 つ求められ、3 つの最適化にそれが使用されます。 詳細については、この [K.E.P](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) と [こちら](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)の --cluster-cidr を参照してください。 Azure cni では、最初のノード プールのサブネットが kube-proxy に与えられます。 
 
 専用サブネットを持つノード プールを作成するには、ノード プールを作成する際に、サブネットのリソース ID を追加パラメーターとして渡します。
 
@@ -411,7 +411,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ノード プールを作成するときに、テイント、ラベル、タグをそのノード プールに追加できます。 テイント、ラベル、タグを追加すると、そのノード プール内のすべてのノードもそのテイント、ラベル、タグを取得します。
 
 > [!IMPORTANT]
-> ノードへの テイント、ラベル、タグの追加は、`az aks nodepool` を使用してノードプール全体に対して行う必要があります。 `kubectl` を使用して、テイント、ラベル、またはタグをノード プール内の個々のノードに適用する ことはお勧めできません。  
+> ノードへの テイント、ラベル、タグの追加は、`az aks nodepool` を使用してノードプール全体に対して行う必要があります。 `kubectl` を使用して、テイント、ラベル、またはタグをノード プール内の個々のノードに適用することはお勧めしません。  
 
 ### <a name="setting-nodepool-taints"></a>ノード プールのテイントの設定
 
@@ -959,7 +959,7 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
-[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md
 [az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create
 [node-image-upgrade]: node-image-upgrade.md
 [fips]: /azure/compliance/offerings/offering-fips-140-2

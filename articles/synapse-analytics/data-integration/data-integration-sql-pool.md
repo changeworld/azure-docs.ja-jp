@@ -9,12 +9,12 @@ ms.subservice: pipeline
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79f0b1a6942f141f0a2d2d38adc5875d82e86d50
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: aa11979d205693cb730cda64debd4430dbb0b43f
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567623"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541970"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>専用 SQL プールにデータを取り込む
 
@@ -22,9 +22,11 @@ ms.locfileid: "107567623"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure ストレージ アカウント**: "*ソース*" データ ストアとして Azure Data Lake Storage Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/common/storage-account-create.md)」を参照してください。
-* **Azure Synapse Analytics**:専用 SQL プールを "*シンク*" データ ストアとして使用します。 Azure Synapse Analytics インスタンスをお持ちでない場合、[専用 SQL プールの作成](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページでその作成手順を参照してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+- **Azure ストレージ アカウント**: "*ソース*" データ ストアとして Azure Data Lake Storage Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/common/storage-account-create.md)」を参照してください。
+- **Azure Synapse Analytics**:専用 SQL プールを "*シンク*" データ ストアとして使用します。 
+    - 既存の Synapse ワークスペースがない場合は、「[Synapse ワークスペースの作成](../get-started-create-workspace.md)」を参照してください。
+    - 既存の専用 SQL プールがない場合は、 「[専用 SQL プールを作成する](../get-started-analyze-sql-pool.md#create-a-dedicated-sql-pool)」を参照してください。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -34,7 +36,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 1. **[外部接続]** で、 **[リンクされたサービス]** を選択します。
 1. リンクされたサービスを追加するには、 **[新規]** を選択します。
 1. リストから [Azure Data Lake Storage Gen2] タイルを選択し、 **[続行]** を選択します。
-1. ご利用の認証資格情報を入力します。 アカウント キー、サービス プリンシパル、およびマネージド ID が現在サポートされている認証の種類です。 [接続のテスト] を選択して、ご利用の資格情報が正しいことを確認します。 入力し終えたら **[作成]** を選択します。
+1. ご利用の認証資格情報を入力します。 アカウント キー、サービス プリンシパル、およびマネージド ID が現在サポートされている認証の種類です。 [テスト接続] を選択して、ご利用の資格情報が正しいことを確認します。 入力し終えたら **[作成]** を選択します。
 1. 手順 3 から 5 を繰り返します。ただし、[Azure Data Lake Storage Gen2] ではなく、[Azure Synapse Analytics] タイルを選択し、対応する接続資格情報を入力します。 Azure Synapse Analytics では、SQL 認証、マネージド ID、およびサービス プリンシパルが現在サポートされています。
 
 ## <a name="create-pipeline"></a>パイプラインの作成

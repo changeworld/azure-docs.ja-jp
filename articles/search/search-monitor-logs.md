@@ -7,21 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 01/27/2021
+ms.openlocfilehash: 5643f9a8bb1caec8d264ba5dfba9913d5d13b2ec
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581615"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414847"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Cognitive Search 用のログ データを収集して分析する
 
 診断または操作ログでは、Azure Cognitive Search の詳細な操作に関する分析情報が提供され、サービスの正常性とプロセスの監視に役立ちます。 内部的には、システム情報をバックエンドに短期間 (約 30 日) 保存します。これは、サポート チケットを提出した場合の調査と分析に十分な期間です。 ただし、操作データを自分で管理したい場合は、診断設定を構成して、ログ情報が収集される場所を指定する必要があります。
 
-診断ログは、[Azure Monitor](../azure-monitor/index.yml) との統合を通じて有効になります。 
-
-診断ログを設定するときに、ストレージ メカニズムを指定するように求められます。 次の表では、データを収集して保持するためのオプションの一覧を示します。
+診断ログは、[Azure Monitor](../azure-monitor/index.yml) とのバックエンド統合を通じて有効になります。 診断ログを設定するときに、ストレージを永続化するためのストレージ オプションを指定するように求められます。 次の表に、オプションを列挙します。
 
 | リソース | 使用目的 |
 |----------|----------|
@@ -55,9 +53,9 @@ ms.locfileid: "106581615"
 
 1. 設定を保存します。
 
-1. ログ記録を有効にしたら、検索サービスを使用してログとメトリックの生成を始めます。 ログに記録されたイベントとメトリックが使用できるようになるまでには時間がかかります。
+1. ログ記録を有効にすると、検索サービスによるログとメトリックの生成が開始されます。 ログに記録されたイベントとメトリックが使用できるようになるまで、少し時間がかかる場合があります。
 
-Log Analytics の場合、データが使用可能になるまで数分かかり、その後は、Kusto クエリを実行してデータを取得できます。 詳細については、[クエリ要求の監視](search-monitor-logs.md)に関する記事をご覧ください。
+Log Analytics の場合、データが使用可能になるまで数分待つことを想定してください。その後、Kusto クエリを実行してデータを取得できます。 詳細については、[クエリ要求の監視](search-monitor-logs.md)に関する記事をご覧ください。
 
 Blob Storage の場合は、コンテナーが Blob Storage に表示されるまで 1 時間かかります。 1 時間ごと、コンテナーごとに、1 つの BLOB があります。 コンテナーは、ログ記録または測定するアクティビティが発生した場合にのみ作成されます。 データをストレージ アカウントにコピーすると、データは JSON 形式でフォーマットされ、次の 2 つのコンテナーに置かれます。
 
@@ -70,7 +68,9 @@ Blob Storage の場合は、コンテナーが Blob Storage に表示される�
 
 1. **[監視]** で **[ログ]** を選択します。
 
-1. クエリ ウィンドウに「**AzureMetrics**」と入力します。 この単純なクエリを実行して、このテーブルに収集されているデータを把握します。 テーブル全体をスクロールして、メトリックと値を表示します。 上部に表示されているレコード数に注意してください。サービスでメトリックの収集がしばらく行われている場合は、時間間隔を調整して、管理しやすいデータ セットを取得できます。
+1. クエリ ウィンドウで、「**AzureMetrics**」と入力し、スコープ (検索サービス) と時間範囲を確認した後、 **[実行]** をクリックして、このテーブルで収集されたデータを理解します。
+
+   テーブル全体をスクロールして、メトリックと値を表示します。 上部に表示されているレコード数に注意してください。 サービスでメトリックの収集がしばらく行われている場合は、時間間隔を調整して、管理しやすいデータ セットを取得できます。
 
    ![AzureMetrics テーブル](./media/search-monitor-usage/azuremetrics-table.png "AzureMetrics テーブル")
 
@@ -112,7 +112,7 @@ AzureDiagnostics
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')
-| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| summarize Count=count(), AvgLatency=avg(durationMs) by bin(TimeGenerated, 1h), OperationName
 | render timechart
 ```
 

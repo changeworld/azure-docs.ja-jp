@@ -7,15 +7,15 @@ manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/07/2021
+ms.date: 06/25/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal,subject-rbac-steps
-ms.openlocfilehash: 95ac82bfbdef8843f3eb4fc10cea7a0309d9eb89
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: e6a06c2a2a525e89fd6d7ab61f983f2b91c1cc8a
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656851"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989005"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる
 
@@ -42,8 +42,6 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 上部にある検索ボックスで、アクセス権を付与するスコープを検索します。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、または特定のリソースを検索します。
-
-    ![Azure portal でのリソース グループの検索を示すスクリーンショット。](./media/shared/rg-portal-search.png)
 
 1. そのスコープの特定のリソースをクリックします。
 
@@ -124,8 +122,6 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
 1. 上部にある検索ボックスで、アクセス権を付与するスコープを検索します。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、または特定のリソースを検索します。
 
-    ![Azure portal でのリソース グループの検索 (プレビュー エクスペリエンス) を示すスクリーンショット。](./media/shared/rg-portal-search.png)
-
 1. そのスコープの特定のリソースをクリックします。
 
     リソース グループの例を次に示します。
@@ -144,13 +140,13 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
 1. **[ロールの割り当て]** タブをクリックして、このスコープのロールの割り当てを表示します。
 
-1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** をクリックします。
+1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** の順にクリックします。
 
     ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
     ![[追加] > [ロールの割り当ての追加] メニュー (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/add-role-assignment-menu-preview.png)
 
-    [ロールの割り当て] ページが開きます。
+    [ロールの割り当ての追加] ページが開きます。
 
 ## <a name="step-3-select-the-appropriate-role-preview"></a>手順 3: 適切なロールを選択する (プレビュー)
 
@@ -158,7 +154,7 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
     ロールは、名前または説明で検索できます。 種類とカテゴリでロールをフィルター処理することもできます。
 
-   ![[ロールの選択] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/role-assignments-portal/roles.png)
+   ![[ロール] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/roles.png)
 
 1. **[詳細]** 列で **[表示]** をクリックして、ロールに関する詳細を表示します。
 
@@ -170,21 +166,21 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
 1. **[メンバー]** タブで、 **[ユーザー、グループ、またはサービス プリンシパル]** を選択して、選択したロールを 1 つ以上の Azure AD ユーザー、グループ、またはサービス プリンシパル (アプリケーション) に割り当てます。
 
-   ![[メンバーの追加] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/role-assignments-portal/members.png)
+   ![[メンバー] タブが表示された [ロールの割り当ての追加] ページ (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/members.png)
 
-1. **[メンバーの追加]** をクリックします。
+1. **[メンバーの選択]** をクリックします。
 
 1. ユーザー、グループ、またはサービス プリンシパルを検索して選択します。
 
-    **[選択]** ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索できます。
+    **[選択]** ボックスに表示名またはメール アドレスを入力してディレクトリを検索できます。
 
-   ![[メンバーの選択] ウィンドウを使用したメンバーの追加 (プレビュー エクスペリエンス) を示すスクリーンショット。](./media/role-assignments-portal/select-principal.png)
+   ![[メンバーの選択] ペイン (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/select-members.png)
 
 1. **[保存]** をクリックして、メンバーの一覧にユーザー、グループ、またはサービス プリンシパルを追加します。
 
 1. 選択したロールを 1 つ以上のマネージド ID に割り当てるには、 **[マネージド ID]** を選択します。
 
-1. **[メンバーの追加]** をクリックします。
+1. **[メンバーの選択]** をクリックします。
 
 1. **[マネージド ID の選択]** ウィンドウで、種類が [[システム割り当てマネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) であるか、[[ユーザー割り当てマネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) であるかを選択します。
 

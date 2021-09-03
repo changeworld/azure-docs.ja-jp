@@ -4,14 +4,14 @@ description: AKS と Azure Container Registry で Helm を使用して、クラ�
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 03/15/2021
+ms.date: 07/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 248b91be60f4da3ce7dd10212a9db69377651ccb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cc060b0b23cbcef0551ec2660856d453b8a3b0e2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071544"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454150"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>クイック スタート:Helm を使用して Azure Kubernetes Service (AKS) で開発する
 
@@ -88,30 +88,11 @@ Kubernetes クラスターにローカルで接続するには、Kubernetes の�
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
-このクイックスタートでは、[Node.js アプリケーションの例][example-nodejs]を使用します。 GitHub からアプリケーションを複製し、`dev-spaces/samples/nodejs/getting-started/webfrontend` ディレクトリに移動します。
+このクイックスタートでは、[Azure Vote アプリケーション][azure-vote-app]を使用します。 GitHub からアプリケーションを複製し、`azure-vote` ディレクトリに移動します。
 
 ```console
-git clone https://github.com/Azure/dev-spaces
-cd dev-spaces/samples/nodejs/getting-started/webfrontend
-```
-
-## <a name="create-a-dockerfile"></a>Dockerfile を作成する
-
-以下のコマンドを使用して、新しい *Dockerfile* ファイルを作成します。
-
-```dockerfile
-FROM node:latest
-
-WORKDIR /webfrontend
-
-COPY package.json ./
-
-RUN npm install
-
-COPY . .
-
-EXPOSE 80
-CMD ["node","server.js"]
+git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
+cd azure-voting-app-redis/azure-vote/
 ```
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>サンプル アプリケーションをビルドして ACR にプッシュする
@@ -119,36 +100,75 @@ CMD ["node","server.js"]
 上記の Dockerfile を使用して [az acr build][az-acr-build] コマンドを実行し、イメージをビルドしてレジストリにプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します (この場合は現在のディレクトリです)。
 
 ```azurecli
-az acr build --image webfrontend:v1 \
+az acr build --image azure-vote-front:v1 \
   --registry MyHelmACR \
   --file Dockerfile .
 ```
+
+> [!NOTE]
+> コンテナー イメージを ACR にインポートするだけでなく、Helm グラフを ACR にインポートすることもできます。 詳細については、「[Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル][acr-helm]」を参照してください。
 
 ## <a name="create-your-helm-chart"></a>Helm グラフを作成する
 
 `helm create` コマンドを使用して Helm グラフを生成します。
 
 ```console
-helm create webfrontend
+helm create azure-vote-front
 ```
 
-*webfrontend/values.yaml* を更新します。
-* 前の手順でメモしたレジストリの loginServer を *myhelmacr.azurecr.io* のように置き換えます。
-* `image.repository` を `<loginServer>/webfrontend` に変更します。
-* `service.type` を `LoadBalancer` に変更します。
+*azure-vote-front/Chart.yaml* を更新して、`https://charts.bitnami.com/bitnami` チャート リポジトリから *redis* グラフの依存関係を追加し、`appVersion` を `v1` に更新します。 次に例を示します。
+
+```yml
+apiVersion: v2
+name: azure-vote-front
+description: A Helm chart for Kubernetes
+
+dependencies:
+  - name: redis
+    version: 14.7.1
+    repository: https://charts.bitnami.com/bitnami
+
+...
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application.
+appVersion: v1
+```
+
+`helm dependency update` を使用して、Helm グラフの依存関係を更新します。
+
+```console
+helm dependency update azure-vote-front
+```
+
+*azure-vote-front/values.yaml* を更新します。
+* イメージの詳細、コンテナー ポート、デプロイ名を設定する *redis* セクションを追加します。
+* フロントエンド部分を *Redis* のデプロイに接続するための *backendName* を追加します。
+* *image.repository* を `<loginServer>/azure-vote-front` に変更します。
+* *image.tag* を `v1` に変更します。
+* *service.type* を *LoadBalancer* に変更します。
 
 次に例を示します。
 
 ```yml
-# Default values for webfrontend.
+# Default values for azure-vote-front.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+backendName: azure-vote-backend-master
+redis:
+  image:
+    registry: mcr.microsoft.com
+    repository: oss/bitnami/redis
+    tag: 6.0.8
+  fullnameOverride: azure-vote-backend
+  auth:
+    enabled: false
 
 image:
-  repository: myhelmacr.azurecr.io/webfrontend
+  repository: myhelmacr.azurecr.io/azure-vote-front
   pullPolicy: IfNotPresent
+  tag: "v1"
 ...
 service:
   type: LoadBalancer
@@ -156,15 +176,20 @@ service:
 ...
 ```
 
-*webfrontend/Chart.yaml* の`appVersion` を `v1` に更新します。 次に例を示します。
+*Redis* のデプロイの名前を渡すため、`env` セクションを *azure-vote-front/templates/deployment.yaml* に追加します。
 
 ```yml
-apiVersion: v2
-name: webfrontend
 ...
-# This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application.
-appVersion: v1
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: REDIS
+            value: {{ .Values.backendName }}
+...
 ```
 
 ## <a name="run-your-helm-chart"></a>Helm グラフを実行する
@@ -172,18 +197,17 @@ appVersion: v1
 `helm install` コマンドを使用して、Helm グラフを使用してアプリケーションをインストールします。
 
 ```console
-helm install webfrontend webfrontend/
+helm install azure-vote-front azure-vote-front/
 ```
 
 サービスからパブリック IP アドレスが返されるまで数分かかります。 `kubectl get service` コマンドと `--watch` 引数を使用して、進行状況を監視します。
 
 ```console
-$ kubectl get service --watch
-
-NAME                TYPE          CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
+$ kubectl get service azure-vote-front --watch
+NAME               TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
+azure-vote-front   LoadBalancer   10.0.18.228   <pending>       80:32021/TCP   6s
 ...
-webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
+azure-vote-front   LoadBalancer   10.0.18.228   52.188.140.81   80:32021/TCP   2m6s
 ```
 
 ブラウザーで `<EXTERNAL-IP>` を使用して自分のアプリケーションのロード バランサーに移動して、サンプル アプリケーションを確認します。
@@ -213,10 +237,11 @@ Helm の使用方法の詳細については、Helm のドキュメントを参�
 [az-group-delete]: /cli/azure/group#az_group_delete
 [az aks get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [az aks install-cli]: /cli/azure/aks#az_aks_install_cli
-[example-nodejs]: https://github.com/Azure/dev-spaces/tree/master/samples/nodejs/getting-started/webfrontend
+[azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [helm]: https://helm.sh/
 [helm-documentation]: https://helm.sh/docs/
 [helm-existing]: kubernetes-helm.md
 [helm-install]: https://helm.sh/docs/intro/install/
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[acr-helm]: ../container-registry/container-registry-helm-repos.md

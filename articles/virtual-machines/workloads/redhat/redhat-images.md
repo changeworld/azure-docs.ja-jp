@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 970e0931556a787b461b8c614b41fd88271bdf1c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694684"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469122"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 
@@ -101,7 +101,7 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 ## <a name="rhel-8-image-types"></a>RHEL 8 イメージの種類
 
 >[!NOTE]
-> Red Hat では、Grubby を使用し、RHEL 8+ のカーネル コマンド ライン パラメーターを構成することを推奨しています。 詳細は[こちら](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)をご覧ください。
+> Red Hat では、Grubby を使用し、RHEL 8+ のカーネル コマンド ライン パラメーターを構成することを推奨しています。 詳細については、Red Hat Enterprise Linux 8 の「[Chapter 5. Configuring kernel command-line parameters (第 5 章 カーネルのコマンドライン パラメーターの構成)](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)」を参照してください。
 
 次に、RHEL 8 イメージの種類の詳細を示します。
 

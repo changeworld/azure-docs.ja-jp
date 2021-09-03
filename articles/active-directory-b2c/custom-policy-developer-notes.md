@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/07/2021
+ms.date: 06/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 295dfa5a02ce3f46049805339a4f7918ce20361e
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 36e0b286cc073f5c6843f1bab59af5a811cbf281
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565196"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112452928"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の開発者向けのメモ
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C の[ユーザー フローとカスタム ポリシ�
 ## <a name="terms-for-features-in-public-preview"></a>パブリック プレビュー段階の機能に対する使用条件
 
 - パブリック プレビュー機能の使用は、評価目的のみで使用することが推奨されています。
-- サービス レベル アグリーメント (SLA) はパブリック プレビュー機能には適用されません。
+- [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/active-directory-b2c) はパブリック プレビュー機能には適用されません。
 - パブリック プレビュー機能に対するサポート要求は、通常のサポート チャネルを通じて提出できます。
 
 ## <a name="user-flows"></a>ユーザー フロー

@@ -8,12 +8,12 @@ author: ejarvi
 ms.author: ejarvi
 ms.date: 03/19/2020
 ms.collection: linux
-ms.openlocfilehash: 7b383c4fdc0d1b5a04c100a574b814938ed83f2b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2b589f24c5338dde503d21a71fcbb9863f8da5b4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087780"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734580"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -136,6 +136,8 @@ v1.1 スキーマは推奨されており、Azure Active Directory (AAD) のプ�
 
 ### <a name="property-values"></a>プロパティ値
 
+注: すべてのプロパティ値は大文字と小文字が区別されます。
+
 | 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
@@ -158,7 +160,7 @@ v1.1 スキーマは推奨されており、Azure Active Directory (AAD) のプ�
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-スキーマ v1.1 に基づくテンプレートのデプロイの例については、Azure クイックスタート テンプレートの [201-encrypt-running-linux-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad) を参照してください。
+スキーマ v1.1 に基づくテンプレートのデプロイの例については、Azure クイックスタート テンプレートの [encrypt-running-linux-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm-without-aad) を参照してください。
 
 スキーマ v0.1 に基づくテンプレートのデプロイの例については、Azure クイックスタート テンプレートの [encrypt-running-linux-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-linux-vm) を参照してください。
 

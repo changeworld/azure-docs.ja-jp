@@ -2,14 +2,14 @@
 title: Azure VM バックアップのサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
-ms.date: 06/02/2021
+ms.date: 08/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: be9db68720f8af1fa3c00e3919b1acd7a63969c0
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: af008e8f14e3df60f0ce48a23cb32d45716645d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410263"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728915"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -153,7 +153,8 @@ Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](ht
 [スポット VM](../virtual-machines/spot-vms.md) | サポートされていません。 Azure Backup では、Spot VM が通常の Azure VM として復元されます。
 [Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | サポートされています<br></br>[[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用して Azure VM を復元していると、復元は成功しますが、Azure VM を専用ホストで復元できません。 これをするためには、ディスクとして復元することをお勧めします。 テンプレートを使用して[ディスクとして復元](backup-azure-arm-restore-vms.md#restore-disks)しているときに、VM を専用ホストに作成してから、ディスクを接続します。<br></br>これは、[リージョンをまたがる復元](backup-azure-arm-restore-vms.md#cross-region-restore)を実行しているときのセカンダリ リージョンでは適用されません。
 スタンドアロン Azure VM の Windows 記憶域スペース構成 | サポートされています
-[Azure VM スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | 単一の Azure VM をバックアップおよび復元するための、統一されたオーケストレーション モデルと柔軟なオーケストレーション モデルの両方でサポートされます。
+[Azure VM スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | 単一の Azure VM のバックアップと復元のために、柔軟なオーケストレーション モデルでサポートされます。
+マネージド ID を使用して復元する | マネージド Azure VM についてはサポートされます。クラシックとアンマネージド Azure VM についてはサポートされません。  <br><br> リージョンをまたがる復元は、マネージド ID ではサポートされていません。 <br><br> 現在、これは、すべての Azure パブリックおよび各国のクラウド リージョンで使用できます。   <br><br> [詳細については、こちらを参照してください](backup-azure-arm-restore-vms.md#restore-vms-with-managed-identities)。
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
@@ -164,7 +165,7 @@ Azure VM のデータ ディスク数 | 最大 32 のディスクを使用した
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
 暗号化されたディスク | サポートされています。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイルまたはフォルダー レベルで復旧することはできません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。
-書き込みアクセラレータが有効になっているディスク | 2020 年 11 月 23 日の時点では、限定された数のサブスクリプションに対して、韓国中部 (KRC) および南アフリカ北部 (SAN) リージョンでのみサポートされています (限定プレビュー)。 これらのサポートされるサブスクリプションでは、Azure Backup により、バックアップ中に Write Accelarted (WA) が有効になっているディスクを使用する仮想マシンがバックアップされます。<br><br>サポートされていないリージョンでは、WA が有効になっている仮想マシンのスナップショットを作成するために、VM でインターネット接続が必要です。<br><br> **重要な注意**: これらのサポートされないリージョンでは、WA ディスクを使用する仮想マシンは、正常なバックアップのためにインターネット接続を必要とします (これらのディスクがバックアップから除外されている場合でも)。
+書き込みアクセラレータが有効になっているディスク | 現時点では、WA ディスク バックアップを使用する Azure VM は、すべての Azure パブリック リージョンでプレビュー段階です。 <br><br> (クォータを超過しており、GA までこれ以上承認済みリストは変更できません) <br><br> WA ディスクは除外されるので、スナップショットにはサポートされていないサブスクリプションの WA ディスクのスナップショットは含まれません。 <br><br>**重要** <br> WA ディスクを使用する仮想マシンは、正常なバックアップを行うためにインターネット接続を必要とします (これらのディスクがバックアップから除外されている場合でも)。
 重複除去された VM/ディスクのバックアップと復元 | Azure Backup では、重複除去はサポートされていません。 詳細については、こちらの[記事](./backup-support-matrix.md#disk-deduplication-support)を参照してください <br/> <br/>  - Azure Backup では、Recovery Services コンテナー内の VM 全体で重複除去されることはありません <br/> <br/>  - 復元中に重複除去状態の VM がある場合、コンテナーで形式が認識されないため、ファイルを復元することはできません。 ただし、完全な VM 復元は正常に実行できます。
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。
@@ -229,7 +230,7 @@ Backup では、次の表にまとめられているように、バックアッ�
 **マシン** | **MABS または DPM に圧縮 (TCP)** | **コンテナーに圧縮 (HTTPS)**
 --- | --- | ---
 オンプレミスの Windows マシン (DPM または MABS なし) | NA | ![はい][green]
-Azure VM | N/A | NA
+Azure VM | NA | NA
 オンプレミス VM または Azure VM (DPM あり) | ![はい][green] | ![はい][green]
 オンプレミス VM または Azure VM (MABS あり) | ![はい][green] | ![はい][green]
 

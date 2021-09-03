@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 08/06/2021
 ms.author: victorh
-ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7b8dd13c5d2c3c080ca20115dfc41b23dd6e545e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109511"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725379"
 ---
 # <a name="deploy-a-security-partner-provider"></a>セキュリティ パートナー プロバイダーのデプロイ
 
@@ -69,6 +69,9 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 
 サード パーティ プロバイダーで仮想ハブの VPN Gateway へのトンネルを設定するには、ハブへのアクセス権が必要です。 これを行うには、サービス プリンシパルをサブスクリプションまたはリソース グループに関連付け、アクセス権を付与します。 次に、ポータルを使用して、これらの資格情報をサード パーティに付与する必要があります。
 
+> [!NOTE]
+> サードパーティのセキュリティ プロバイダーにより、ユーザーに代わって VPN サイトが作成されます。 この VPN サイトは、Azure portal には表示されません。
+
 ### <a name="create-and-authorize-a-service-principal"></a>サービス プリンシパルを作成および承認する
 
 1. Azure Active Directory (AD) サービス プリンシパルを作成します。リダイレクト URL はスキップできます。 
@@ -103,6 +106,8 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 
    :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="セキュリティ構成":::
 5. さらに、組織により、仮想ネットワークとブランチ オフィスでパブリック IP 範囲が使用されている場合は、**プライベート トラフィック プレフィックス** を使用してこれらの IP プレフィックスを明示的に指定する必要があります。 パブリック IP アドレスのプレフィックスは、個別に、または集合として指定できます。
+
+   プライベート トラフィックのプレフィックスに RFC1918 以外のアドレスを使用する場合は、RFC1918 以外のプライベート トラフィックに対して SNAT を無効にするように、ファイアウォールの SNAT ポリシーを構成することが必要な場合があります。 既定では、Azure Firewall によって RFC1918 以外のすべてのトラフィックに SNAT が行われます。
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>サード パーティのサービス経由のブランチまたは VNet のインターネット トラフィック
 

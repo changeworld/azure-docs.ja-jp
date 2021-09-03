@@ -3,12 +3,12 @@ title: Azure Application Gateway を使用して Azure VMware Solution 上の We
 description: Azure VMware Solution で実行されている Web アプリを安全に公開するために Azure Application Gateway を構成します。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1b9f55386c2900660ddee209d0aea95e7bac610a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 407dd74b708006ffe2fb125a16cff4e220efc1fe
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739619"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322995"
 ---
 # <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 
@@ -35,7 +35,7 @@ ms.locfileid: "121739619"
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Azure VMware Solution の Web アプリケーションを使用して Application Gateway を検証するために使用されるテスト シナリオを示す図。" border="false":::
 
-Application Gateway インスタンスは、専用サブネットのハブにデプロイされます。 これは Azure パブリック IP アドレスを保持します。 仮想ネットワーク用に [Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md) をアクティブ化することをお勧めします。 Web サーバーは、NSX T0 および T1 ゲートウェイの背後にある Azure VMware Solution プライベート クラウドでホストされています。 Azure VMware Solution では、[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) を使用して、ハブとオンプレミスのシステムとの通信が可能になります。
+Application Gateway インスタンスは、Azure パブリック IP アドレスを持つ専用サブネット内のハブにデプロイされます。 仮想ネットワーク用に [Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md) をアクティブ化することをお勧めします。 Web サーバーは、NSX T0 および T1 ゲートウェイの背後にある Azure VMware Solution プライベート クラウドでホストされています。 さらに、Azure VMware Solution では、[ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) を使用して、ハブとオンプレミスのシステムとの通信が可能になります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -73,7 +73,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
 12. タグを追加し、 **[次へ: 確認と作成 >]** を選択します。
 
-13. Application Gateway に対して検証が実行されます。成功した場合は、 **[作成]** を選択してデプロイします。
+13. Application Gateway で検証が実行されます。 成功した場合は、 **[作成]** を選択してデプロイします。
 
 ## <a name="configuration-examples"></a>構成の例
 
@@ -168,7 +168,7 @@ Application Gateway インスタンスは、専用サブネットのハブにデ
 
     :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="HTTP 設定の構成を示す [HTTP 設定の追加] ページのスクリーンショット。":::
 
-5. 左側のメニューの **[規則]** セクションで規則を作成します。 以前に作成したリスナーに各ルールを関連付けます。 次に、メインのバックエンド プールと HTTP 設定を構成します。 **[追加]** を選択します。
+5. 左側のメニューの **[ルール]** セクションでルールを作成し、以前に作成したリスナーに各ルールを関連付けます。 次に、メインのバックエンド プールと HTTP 設定を構成して、 **[追加]** を選択します。
 
     :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="バックエンド ターゲットにルーティング規則を構成するための [ルーティング規則の追加] ページのスクリーンショット。":::
 

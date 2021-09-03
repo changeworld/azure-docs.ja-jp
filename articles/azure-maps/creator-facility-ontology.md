@@ -7,14 +7,13 @@ ms.date: 06/14/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philMea
 zone_pivot_groups: facility-ontology-schema
-ms.openlocfilehash: 63e9702f8bebb449518002e18a824c65d81fab80
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c08faefc795fd65c71163bd9f8c24a1f8cd939f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076458"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725613"
 ---
 # <a name="facility-ontology"></a>施設オントロジー
 
@@ -62,7 +61,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 :::zone pivot="facility-ontology-v1"
 
-| プロパティ           | 種類                        | 必須 | 説明                                                  |
+| プロパティ           | Type                        | 必須 | 説明                                                  |
 |--------------------|-----------------------------|----------|--------------------------------------------------------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -85,7 +84,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 :::zone pivot="facility-ontology-v2"
 
-| プロパティ           | 種類                        | 必須 | 説明                                                  |
+| プロパティ           | Type                        | 必須 | 説明                                                  |
 |--------------------|-----------------------------|----------|--------------------------------------------------------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -111,7 +110,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 **ジオメトリの種類**: 多角形
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -130,7 +129,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 **ジオメトリの種類**: 多角形
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -148,7 +147,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 **ジオメトリの種類**: MultiPolygon
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -168,14 +167,13 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 **ジオメトリの種類**: MultiPolygon
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
 |`categoryId`        | [category.Id](#category)      |true      | [`category`](#category) 地物の ID。|
 |`occupants`         | [directoryInfo.Id](#directoryinfo) の配列 |    false |    [directoryInfo](#directoryinfo) 地物の ID。 地物内の 1 つまたは複数の居住者を表すために使用されます。 |
 |`addressId`         | [directoryInfo.Id](#directoryinfo)  | true     | [directoryInfo](#directoryinfo) 地物の ID。 地物の住所を表すために使用されます。|
-|`addressRoomNumber`         |  [directoryInfo.Id](#directoryinfo)| true     | ユニットの部屋、ユニット、アパートメント、またはスイートの番号。|
 |`name` |    string |    false |    ローカル言語による地物の名前。 許容される最大の長さは 1,000 です。 |
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。 許容される最大の長さは 1,000 です。 |
 |`nameAlt` |    string |    false |   地物に使用される代替名。  許容される最大の長さは 1,000 です。|
@@ -191,7 +189,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 :::zone pivot="facility-ontology-v1"
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -210,7 +208,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 :::zone pivot="facility-ontology-v2"
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -233,7 +231,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 :::zone pivot="facility-ontology-v1"
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -250,7 +248,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 :::zone pivot="facility-ontology-v2"
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -266,7 +264,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 **ジオメトリの種類**: なし
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -278,7 +276,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 |`name` |    string |    false |    ローカル言語による地物の名前。  許容される最大の長さは 1,000 です。|
 |`nameSubtitle` |    string |    false |   地物の `name` の下に表示されるサブタイトル。 名前を別の言語で表示するためなどに使用できます。 許容される最大の長さは 1,000 です。 |
 |`nameAlt` |    string |    false |   地物に使用される代替名。 許容される最大の長さは 1,000 です。 |
-|`phoneNumber` |    string |    false |    電話番号。 |
+|`phoneNumber` |    string |    false |    電話番号。 許容される最大の長さは 1,000 です。 |
 |`website` |    string |    false |  Web サイトの URL。 許容される最大の長さは 1,000 です。 |
 |`hoursOfOperation` |    string |    false |   [オープン ストリート マップ仕様](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification)に従ったテキストとしての営業時間。 許容される最大の長さは 1,000 です。 |
 
@@ -288,7 +286,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 **ジオメトリの種類**: MultiPoint
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -305,7 +303,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 **ジオメトリの種類**: LinearMultiString
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -324,7 +322,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 **ジオメトリの種類**: MultiPolygon
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生した ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | 地物を別のデータセット内 (内部データベース内など) の別の地物と関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -345,7 +343,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 :::zone pivot="facility-ontology-v1"
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生したカテゴリの元の ID。 許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | カテゴリを別のデータセット内 (内部データベース内など) の別のカテゴリと関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|
@@ -357,7 +355,7 @@ Facility 2.0 には、[Azure Maps サービス](https://aka.ms/AzureMaps)の fac
 
 :::zone pivot="facility-ontology-v2"
 
-| プロパティ  | 種類 | 必須 | 説明 |
+| プロパティ  | Type | 必須 | 説明 |
 |-----------|------|----------|-------------|
 |`originalId`        | string     |true      | クライアント データから派生したカテゴリの元の ID。  許容される最大の長さは 1,000 です。|
 |`externalId`        | string     |true      | カテゴリを別のデータセット内 (内部データベース内など) の別のカテゴリと関連付けるためにクライアントによって使用される ID。 許容される最大の長さは 1,000 です。|

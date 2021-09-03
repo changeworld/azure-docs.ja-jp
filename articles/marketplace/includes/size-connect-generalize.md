@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 7d94bd0a4a9fb50cb211fd227c3022a46beef502
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: b1eb954626570d7feb2af7fe0980e4f7a10e70c6
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527545"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280053"
 ---
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 
@@ -23,11 +23,9 @@ Azure Marketplace のすべてのイメージは汎用的な方法で再利用�
 Windows OS ディスクは、[sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) ツールを使用して一般化されます。 後で OS を更新または再構成する場合は、sysprep を再び実行する必要があります。
 
 > [!WARNING]
-> 更新プログラムが自動的に実行される可能性があるため、sysprep を実行した後、デプロイされるまでは VM をオフにしてください。 このシャットダウンで、以降の更新プログラムによるオペレーティング システムまたはインストール済みサービスへのインスタンス固有の変更が行われなくなります。 sysprep の実行に関する詳細については、[VHD を一般化する手順](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)に関する記事を参照してください。
+> 更新プログラムが自動的に実行される可能性があるため、sysprep を実行した後、デプロイされるまでは VM をオフにしてください。 このシャットダウンで、以降の更新プログラムによるオペレーティング システムまたはインストール済みサービスへのインスタンス固有の変更が行われなくなります。 sysprep の実行の詳細については、[Windows VM の一般化](../../virtual-machines/generalize.md#windows)に関するページを参照してください。
 
 ### <a name="for-linux"></a>Linux の場合
-
-次のプロセスでは、Linux VM を一般化して別の VM として再デプロイします。 詳細については、「[仮想マシンまたは VHD のイメージを作成する方法](../../virtual-machines/linux/capture-image.md)」を参照してください。 「キャプチャしたイメージから VM を作成する」というセクションに達したら止めることができます。
 
 1. Azure Linux エージェントを削除します。
     1. SSH クライアントを使って Linux VM に接続します。

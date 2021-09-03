@@ -2,26 +2,24 @@
 title: ホストでの暗号化を使用してエンドツーエンドの暗号化を有効にする - Azure portal - マネージド ディスク
 description: ホストでの暗号化を使用して、Azure マネージド ディスク (Azure portal) でエンドツーエンドの暗号化を有効にします。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 07/22/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad053a0e97a8efa50fbb01798e639fb33e769bef
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: bd1c2d9a9d428a765a9b621652aa23fdec94f212
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078775"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456405"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Azure portal を使用して、ホストでの暗号化を使用したエンドツーエンドの暗号化を有効にする
 
-ホストでの暗号化を有効にすると、VM ホスト上の格納データは、保存時に暗号化され、暗号化された状態でストレージ サービスに送られます。 ホストでの暗号化や、他のマネージド ディスクの暗号化の種類に関する説明は、次の情報をご覧ください。
+ホストでの暗号化を有効にすると、VM ホスト上の格納データは、保存時に暗号化され、暗号化された状態でストレージ サービスに送られます。 ホストでの暗号化とその他のマネージド ディスクの暗号化の概要については、「[ホストでの暗号化 - ご利用の VM データのエンドツーエンド暗号化](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)」を参照してください。
 
-* Linux: [ホストでの暗号化 - ご利用の VM データのエンドツーエンド暗号化](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
-
-* Windows: [ホストでの暗号化 - ご利用の VM データのエンドツーエンド暗号化](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+エンドツーエンド暗号化を有効にすると、一時ディスクとエフェメラル OS ディスクは保存時に、プラットフォーム マネージド キーを使用して暗号化されます。 OS とデータ ディスクのキャッシュは、ディスクの暗号化の種類として選択したものに応じて、カスタマー マネージド キーまたはプラットフォーム マネージド キーのいずれかを使用して保存時に暗号化されます。 たとえば、ディスクがカスタマー マネージド キーで暗号化されている場合、そのディスクのキャッシュはカスタマー マネージド キーで暗号化されます。ディスクがプラットフォーム マネージド キーで暗号化されている場合、そのディスクのキャッシュはプラットフォーム マネージド キーで暗号化されます。
 
 ## <a name="restrictions"></a>制限
 
@@ -58,6 +56,28 @@ VM または VMSS に対して EncryptionAtHost プロパティを使用する�
 > [!IMPORTANT]
 > [提供されたリンク](https://aka.ms/diskencryptionupdates)を使用して Azure portal にアクセスする必要があります。 現時点では、このリンクを使用しないと、ホストでの暗号化がパブリックの Azure portal に表示されません。
 
+## <a name="deploy-a-vm-with-platform-managed-keys"></a>プラットフォーム マネージド キーを使用して VM をデプロイする
+
+1. [Azure portal](https://aka.ms/diskencryptionupdates) にサインインします。
+1. 「**Virtual Machines**」で検索し、 **[+ 追加]** を選択して、VM を作成します。
+1. 新しい仮想マシンを作成し、適切なリージョンとサポートされている VM サイズを選択します。
+1. 必要に応じて **[基本]** ペインで他の値を入力した後、 **[ディスク]** ペインに進みます。
+
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="[仮想マシンの作成] の [基本] ペインのスクリーンショット、リージョンと VM サイズが強調されています。":::
+
+1. **[ディスク]** ペインで **[ホストでの暗号化]** を選択します。
+1. 必要に応じて、残りの選択を行います。
+
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/host-based-encryption-platform-keys.png" alt-text="[仮想マシンの作成] の [ディスク] ペインのスクリーンショット、[ホストでの暗号化] が強調されています。":::
+
+1. VM のデプロイ プロセスを完了し、ご使用の環境に合った選択を行います。
+
+ホストでの暗号化を有効にした VM をデプロイしたので、ディスクのキャッシュはプラットフォーム マネージド キーを使用して暗号化されます。
+
+## <a name="deploy-a-vm-with-customer-managed-keys"></a>カスタマー マネージド キーを使用して VM をデプロイする
+
+あるいは、カスタマー マネージド キーを使用してディスク キャッシュを暗号化することもできます。
+
 ### <a name="create-an-azure-key-vault-and-disk-encryption-set"></a>Azure Key Vault とディスク暗号化セットを作成する
 
 機能が有効になったら、Azure Key Vault とディスク暗号化セットを設定する必要があります (まだ行っていない場合)。
@@ -68,20 +88,32 @@ VM または VMSS に対して EncryptionAtHost プロパティを使用する�
 
 これで Azure Key Vault とディスク暗号化セットが設定できたので、VM をデプロイすれば、ホストでの暗号化を実行できます。
 
+1. [Azure portal](https://aka.ms/diskencryptionupdates) にサインインします。
 1. 「**Virtual Machines**」で検索し、 **[+ 追加]** を選択して、VM を作成します。
 1. 新しい仮想マシンを作成し、適切なリージョンとサポートされている VM サイズを選択します。
-1. 必要に応じて **[基本]** ブレードでその他の値を入力した後、 **[ディスク]** ブレードに進みます。
+1. 必要に応じて **[基本]** ペインで他の値を入力した後、 **[ディスク]** ペインに進みます。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="[仮想マシンの作成] の [基本] ブレードのスクリーンショット、リージョンと VM サイズが強調表示されています。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="[仮想マシンの作成] の [基本] ペインのスクリーンショット、リージョンと VM サイズが強調されています。":::
 
-1. **[ディスク]** ブレードの **[ホストでの暗号化]** で **[はい]** を選択します。
+1. **[ディスク]** ペインの **[SSE encryption type]\(SSE 暗号化の種類\)** で **[Encryption at-rest for customer-managed key]\(カスタマー マネージド キーを使用した保存時の暗号化\)** を選択してから、ディスク暗号化セットを選択します。
+1. **[ホストでの暗号化]** を選択します。
 1. 必要に応じて、残りの選択を行います。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="仮想マシンの作成のディスク ブレードのスクリーンショット、ホストでの暗号化が強調表示されています。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png" alt-text="[仮想マシンの作成] の [ディスク] ブレードのスクリーンショット、[ホストでの暗号化] が強調され、カスタマー マネージド キーが選択されています。":::
 
 1. VM のデプロイ プロセスを完了し、ご使用の環境に合った選択を行います。
 
-これで、ホストでの暗号化を有効にした VM をデプロイしました。それに関連付けられているすべてのディスクが、ホストでの暗号化を使用して暗号化されます。
+これで、ホストでの暗号化を有効にした VM をデプロイしました。
+
+## <a name="disable-host-based-encryption"></a>ホスト ベースの暗号化を無効にする
+
+最初に、VM の割り当てが解除されていることを確認します。VM の割り当てが解除されていない場合は、ホストでの暗号化を無効にできません。
+
+1. VM で **[ディスク]** を選択し、 **[追加の設定]** を選択します。
+
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-host-based-encryption-additional-settings.png" alt-text="VM の [ディスク] ペインのスクリーンショット、[追加の設定] が強調されています。":::
+
+1. **[ホストでの暗号化]** で **[いいえ]** を選択して、 **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

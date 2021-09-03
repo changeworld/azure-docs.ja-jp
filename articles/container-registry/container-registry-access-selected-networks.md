@@ -2,13 +2,13 @@
 title: パブリック レジストリ アクセスの構成
 description: 選択したパブリック IP アドレスまたはアドレス範囲から Azure Container Registry へのアクセスを有効にする IP ルールを構成します。
 ms.topic: article
-ms.date: 03/08/2021
-ms.openlocfilehash: 00912f0e66c84feff40e6439d59ccdfa82a4ab6a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/30/2021
+ms.openlocfilehash: cb48a91190f352154a2f0af1e02dcd3e36f436d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785838"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722512"
 ---
 # <a name="configure-public-ip-network-rules"></a>パブリック IP ネットワーク ルールを構成する
 
@@ -108,15 +108,32 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
+### <a name="access-behind-https-proxy"></a>HTTPS プロキシの内側のアクセス
+
 パブリック ネットワーク ルールが設定されている場合、またはレジストリへのパブリック アクセスが拒否された場合は、許可されていないパブリック ネットワークからレジストリにログインしようとすると失敗します。 プロキシのアクセス ルールが設定されていない場合も、HTTPS プロキシの内側からクライアントにアクセスすることはできません。 `Error response from daemon: login attempt failed with status: 403 Forbidden` や `Looks like you don't have access to registry` のようなエラー メッセージが表示されます。
 
 これらのエラーは、ネットワーク アクセス ルールで許可されている HTTPS プロキシを使用しているにも関わらず、プロキシがクライアント環境で適切に構成されていない場合にも発生する可能性があります。 Docker クライアントと Docker デーモンの両方がプロキシの動作用に構成されていることを確認します。 詳細については、Docker ドキュメントの [HTTP/HTTPS プロキシ](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)に関するページを参照してください。
 
+### <a name="access-from-azure-pipelines"></a>Azure Pipelines からのアクセス
+
+特定の IP アドレスへのアクセスが制限されている Azure コンテナー レジストリで Azure Pipelines を使用した場合、パイプラインからのアウトバウンド IP アドレスが固定されていないため、パイプラインでレジストリにアクセスできない可能性があります。 既定では、パイプラインにより、IP アドレスのセットが変化する仮想マシン プール上の Microsoft ホステッド [エージェント](/azure/devops/pipelines/agents/agents)を使用して、ジョブが実行されます。
+
+回避策の 1 つは、パイプラインの実行に使用されるエージェントを、Microsoft ホステッドからセルフホステッドに変更することです。 お客様が管理する [Windows](/azure/devops/pipelines/agents/v2-windows) または [Linux](/azure/devops/pipelines/agents/v2-linux) マシン上で実行されるセルフホステッド エージェントを使用すると、パイプラインのアウトバウンド IP アドレスをお客様が制御するので、このアドレスをレジストリ IP アクセス ルールに追加することができます。
+
+### <a name="access-from-aks"></a>AKS からのアクセス
+
+特定の IP アドレスへのアクセスが制限されている Azure コンテナー レジストリで Azure Kubernetes Service (AKS) を使用する場合、既定では固定の AKS IP アドレスを構成できません。 AKS クラスターからのエグレス IP アドレスはランダムに割り当てられます。
+
+AKS クラスターがレジストリにアクセスできるようにするには、次のオプションがあります。
+
+* Azure Basic Load Balancer を使用している場合は、AKS クラスターに対して[静的 IP アドレス](../aks/egress.md)を設定します。 
+* Azure Standard Load Balancer を使用している場合は、クラスターからの[エグレス トラフィックの制御](../aks/limit-egress-traffic.md)に関するガイダンスを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure コンテナー レジストリ用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
 * クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
+* トラブルシューティングに関する他のガイダンスについては、「[レジストリに関するネットワークの問題のトラブルシューティング](container-registry-troubleshoot-access.md)」を参照してください。
 
 [az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az_acr_network_rule_add

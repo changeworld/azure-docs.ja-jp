@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6e5de3cdec7a9c503f4b7bf7056bd62f1ddf682d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e1348040bb496448d85c8d1bec3b9621025bf22
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594021"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653595"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
@@ -19,12 +19,13 @@ App Service (Web Apps、API Apps、または Mobile Apps) では、アプリは�
 
 特定のリージョン (西ヨーロッパなど) の App Service プランを作成する場合、一連のコンピューティング リソースはそのリージョンのそのプランに対して作成されます。 この App Service プランに入れたアプリは、App Service プランで定義されたとおりにこれらのコンピューティング リソースで実行されます。 各 App Service プランは以下を定義します。
 
+- オペレーティング システム (Windows、Linux)
 - リージョン (米国西部、米国東部など)
 - VM インスタンスの数
 - VM インスタンスのサイズ (小、中、大)
 - 価格レベル (Free、Shared、Basic、Standard、Premium、PremiumV2、PremiumV3、Isolated)
 
-App Service プランの "_価格レベル_" は、取得する App Service の機能とプランの価格を決定します。 価格レベルにはいくつかのカテゴリがあります。
+App Service プランの "_価格レベル_" は、取得する App Service の機能とプランの価格を決定します。 App Service プランで使用できる価格レベルは、作成時に選択したオペレーティング システムによって異なります。 価格レベルにはいくつかのカテゴリがあります。
 
 - **共有コンピューティング**: 2 つの基本レベルである **Free** と **Shared** は、他のお客様のアプリを含む他の App Service アプリと同じ Azure VM 上でアプリを実行します。 これらのレベルは共有リソースで実行される各アプリに CPU クォータを割り当て、リソースはスケールアウトできません。
 - **専用のコンピューティング**: **Basic**、**Standard**、**Premium**、**PremiumV2**、**PremiumV3** の各レベルの場合、アプリは専用の Azure VM 上で実行されます。 同じ App Service プラン内のアプリのみが同じコンピューティング リソースを共有します。 レベルが高いほど、スケールアウトに使用できる VM インスタンスが多くなります。

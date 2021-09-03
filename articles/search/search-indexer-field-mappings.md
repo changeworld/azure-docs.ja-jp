@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: fb3a77291d8b24d5774094533f8c214f1527d771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: e1af69db6f70d5a6a977c6e3fa715e84cbc2673b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99430447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734965"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Cognitive Search インデクサーを使用したフィールドのマッピングと変換
 
@@ -28,8 +28,10 @@ Azure Cognitive Search インデクサーを使用すると、入力データが
 * インデックス フィールドに複数のデータ ソースのデータを入力し、データ ソースはそれぞれ異なるフィールド名が使用されています。
 * Base64 エンコードまたはデータのデコードが必要な場合。 フィールド マッピングは、Base64 エンコードおよびデコードの関数など、**マッピング関数** をいくつかサポートしています。
 
+インデクサーのフィールド マッピングは、データ フィールドをインデックス フィールドにマップする簡単な方法であり、軽量のデータ変換の機能も備えています。 より複雑なデータでは、インデックス作成に適した形式に変換するための前処理が必要になる場合があります。 1 つのオプションとして [Azure Data Factory](../data-factory/index.yml) を検討することができます。
+
 > [!NOTE]
-> インデクサーのフィールド マッピングは、データ フィールドをインデックス フィールドにマップする簡単な方法であり、軽量のデータ変換の機能も備えています。 より複雑なデータでは、インデックス作成に適した形式に変換するための前処理が必要になる場合があります。 1 つのオプションとして [Azure Data Factory](../data-factory/index.yml) を検討することができます。
+> フィールド マッピングは、検索インデックスにのみ適用されます。 [ナレッジ ストア](knowledge-store-concept-intro.md)を作成するインデクサーの場合、フィールド マッピングは無視されます。
 
 ## <a name="set-up-field-mappings"></a>フィールド マッピングの設定
 

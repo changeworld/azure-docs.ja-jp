@@ -7,24 +7,19 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f3f29ae1ab868a96e6f70ed964f79c47bc591c4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 812b6add11ac032eb6dffea7de54111574393cf9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92373906"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733493"
 ---
 # <a name="upload-logs-to-azure-monitor"></a>ログを Azure Monitor にアップロードする
 
 定期的に、ログをエクスポートしてから、Azure にアップロードできます。 ログをエクスポートおよびアップロードすると、Azure 内でデータ コントローラー、SQL マネージド インスタンス、および PostgreSQL Hyperscale サーバー グループのリソースも作成および更新されます。
-
-> [!NOTE] 
-> プレビュー期間中は、Azure Arc 対応データ サービス利用のコストは発生しません。
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -124,7 +119,6 @@ SET WORKSPACE_SHARED_KEY=<primarySharedKey>
 ```console
 $Env:WORKSPACE_SHARED_KEY='<primarySharedKey>'
 ```
-```
 ::: zone-end
 
 
@@ -216,24 +210,27 @@ echo $SPN_AUTHORITY
 
  Azure Arc 対応 SQL マネージド インスタンスと Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのログをアップロードするには、以下の CLI コマンドを実行します。
 
-1. [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用して、Azure Arc データ コントローラーにログインします。
+1. Azure (`az`) CLI と `arcdata` 拡張機能を使用して、Azure Arc データ コントローラーにログインします。
 
-   ```console
-   azdata login
+   ```azurecli
+   az arcdata login
    ```
 
    画面の指示に従って、名前空間、管理者のユーザー名、およびパスワードを設定します。 
 
 1. 指定したファイルにすべてのログをエクスポートします。
 
-   ```console
-   azdata arc dc export --type logs --path logs.json
+> [!NOTE]
+> コマンド `az arcdata dc export` を使用して使用状況および課金情報、メトリック、ログをエクスポートするには、今のところ SSL 検証をバイパスする必要があります。  SSL 検証をバイパスするように求めるメッセージが表示されます。または、プロンプトを表示しないように環境変数 `AZDATA_VERIFY_SSL=no` を設定できます。  現在、データ コントローラー エクスポート API に対して SSL 証明書を構成する方法はありません。
+
+   ```azurecli
+   az arcdata dc export --type logs --path logs.json
    ```
 
 2. Azure Monitor のログ分析ワークスペースにログをアップロードします。
 
-   ```console
-   azdata arc dc upload --path logs.json
+   ```azurecli
+   az arcdata dc upload --path logs.json
    ```
 
 ## <a name="view-your-logs-in-azure-portal"></a>Azure portal でログを表示する
@@ -256,9 +253,9 @@ echo $SPN_AUTHORITY
 
 お好きなテキスト エディターまたはコード エディターで、ファイルに次のスクリプトを追加し、.sh (Linux/Mac)、.cmd、.bat、.ps1 などのスクリプト実行可能ファイルとして保存します。
 
-```console
-azdata arc dc export --type metrics --path metrics.json --force
-azdata arc dc upload --path metrics.json
+```azurecli
+az arcdata dc export --type logs --path logs.json --force
+az arcdata dc upload --path logs.json
 ```
 
 スクリプト ファイルを実行可能にする

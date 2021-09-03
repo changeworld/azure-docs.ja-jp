@@ -3,12 +3,12 @@ title: Azure VMware Solution の cloudadmin 資格情報のローテーション
 description: Azure VMware Solution プライベート クラウドの vCenter Server および NSX-T Manager の資格情報をローテーションする方法について説明します。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 27d6c75046010d680734018d65f54eacbb520ae3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 884e3f09e429fff39c0dfafcb5d0c9a7b4915e03
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747588"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324774"
 ---
 # <a name="rotate-the-cloudadmin-credentials-for-azure-vmware-solution"></a>Azure VMware Solution の cloudadmin 資格情報のローテーション
 
@@ -18,7 +18,7 @@ ms.locfileid: "121747588"
 
 ## <a name="prerequisites"></a>前提条件
 
-HCX、vRealize Orchestrator、vRealize Operations Manager、VMware Horizon などの接続済みサービスに cloudadmin の資格情報を使用している場合、パスワードを更新すると接続が停止します。  パスワードのローテーションを開始する前に、これらのサービスを停止します。 そうしないと、これらのサービスでは古い資格情報を使用して継続的に呼び出しが行なわれるため、vCenter CloudAdmin と NSX-T 管理者のアカウントが一時的にロックされることがあります。  接続済みサービスに個別のアカウントを設定する方法の詳細については、[アクセスと ID の概念](./concepts-identity.md)に関する記事を参照してください。
+HCX、vRealize Orchestrator、vRealize Operations Manager、VMware Horizon などの接続済みサービスに cloudadmin の資格情報を使用している場合、パスワードを更新すると接続が停止します。  このため、パスワードのローテーションを開始する前に、これらのサービスを停止します。 そうしないと、これらのサービスでは古い資格情報を使用して継続的に呼び出しが行なわれるため、vCenter CloudAdmin と NSX-T 管理者のアカウントが一時的にロックされることがあります。  接続済みサービスに個別のアカウントを設定する方法の詳細については、[アクセスと ID の概念](./concepts-identity.md)に関する記事を参照してください。
 
 ## <a name="reset-your-azure-vmware-solution-cloudadmin-credentials"></a>Azure VMware Solution cloudadmin の資格情報をリセットする
 

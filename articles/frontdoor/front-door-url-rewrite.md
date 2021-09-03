@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: eb5b4ab8a23a374aec54d65dd5390ab3fec3e905
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aedc6e92b02cf81003ecf4b40a5096bf80c7448
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91445485"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441048"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 書き換え (カスタム転送パス)
 Azure Front Door を使用すると、バックエンドに転送する要求を作成するときに使用するオプションの **カスタム転送パス** を構成することで、URL 書き換えを行うことができます。 既定では、カスタム転送パスが指定されていない場合、Front Door により、転送された要求で使用される URL に受信 URL パスがコピーされます。 転送された要求で使用されるホスト ヘッダーは、選択されたバックエンド用に構成されています。 その機能と構成方法については、「[バックエンド ホスト ヘッダー](front-door-backend-pool.md#hostheader)」をご覧ください。
@@ -48,6 +48,10 @@ URL 書き換えの強力な部分としては、カスタム転送パスによ�
 | www\.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
 | www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
 | www\.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
+
+> [!NOTE]
+> Azure Front Door では、静的パスから別の静的パスへの URL 書き換えのみがサポートされます。 一致しないパスの保持は、Azure Front Door Standard/Premium SKU でサポートされます。 詳細については、「[一致しないパスを保持する](standard-premium/concept-rule-set-url-redirect-and-rewrite.md#preserve-unmatched-path)」を参照してください。
+> 
 
 ## <a name="optional-settings"></a>オプション設定
 所定のルーティング規則設定に指定できる、追加のオプション設定もあります。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2021
 ms.author: b-juche
-ms.openlocfilehash: f62c22c5615b1494ad8c1ebb966db9f1c25a8df7
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 445920e1846e668f0baa3567111f169fd6dd7508
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441997"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232522"
 ---
 # <a name="linux-nfs-mount-options-best-practices-for-azure-netapp-files"></a>Azure NetApp Files 用の Linux NFS マウント オプションのベスト プラクティス
 
@@ -36,7 +36,7 @@ ms.locfileid: "111441997"
 | `nconnect` なし | 8 時間 |
 | `nconnect=8`  | 5.5 時間 | 
 
-両方のテスト セットで同じ E32-8_v4 仮想マシンと RHEL 8.3 を使用しており、先行読み取りは 15 MiB に設定されています。
+両方のテスト セットで同じ E32-8_v4 仮想マシンと RHEL 8.3 を使用しており、先読みは 15 MiB に設定されています。
 
 `nconnect` を使用する場合は、次の規則にご注意ください。
 
@@ -90,7 +90,7 @@ sudo vi /etc/fstab
 10.23.1.4:/HN1-shared/shared /hana/shared  nfs   rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys  0  0
 ```
  
-また、たとえば、SAS Viya では、256 KiB の読み取りと書き込みのサイズが推奨され、[SAS GRID](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/606973/highlight/true#M17740) では、NFS マウントの先行読み取りを増やして読み取りパフォーマンスを向上させる一方で、`r/wsize` が 64 KiB に制限されます。  <!-- For more information on readahead, see the article “NFS Readahead”. --> 
+また、たとえば、SAS Viya では、256 KiB の読み取りと書き込みのサイズが推奨され、[SAS GRID](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/606973/highlight/true#M17740) では、NFS マウントの先読みを増やして読み取りパフォーマンスを向上させる一方で、`r/wsize` が 64 KiB に制限されます。 詳細については、[Azure NetApp Files の NFS 先読みのベスト プラクティス](performance-linux-nfs-read-ahead.md)に関するページを参照してください。
 
 `rsize` と `wsize` の使用には以下の考慮事項が適用されます。
 
@@ -138,5 +138,9 @@ NFS では緩やかな整合性モデルを使用します。 アプリケーシ
 
 ## <a name="next-steps"></a>次のステップ  
 
+* [Azure NetApp Files の Linux ダイレクト I/O のベスト プラクティス](performance-linux-direct-io.md)
+* [Azure NetApp Files の Linux ファイルシステム キャッシュのベスト プラクティス](performance-linux-filesystem-cache.md)
 * [Azure NetApp Files 用の Linux の同時実行のベスト プラクティス](performance-linux-concurrency-session-slots.md)
+* [Linux NFS 先読みのベスト プラクティス](performance-linux-nfs-read-ahead.md)
+* [Azure 仮想マシン SKU のベスト プラクティス](performance-virtual-machine-sku.md) 
 * [Linux のパフォーマンス ベンチマーク](performance-benchmarks-linux.md) 

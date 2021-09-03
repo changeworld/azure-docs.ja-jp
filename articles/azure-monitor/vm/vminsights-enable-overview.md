@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa656b974a89924a2ce029a7c5e38b4d9f68f6b7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102634160"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440091"
 ---
 # <a name="enable-vm-insights-overview"></a>VM insights の有効化の概要
 
@@ -37,6 +37,8 @@ VM insights では、次のマシンがサポートされています。
 - Azure 仮想マシン スケール セット
 - Azure Arc に接続されたハイブリッド仮想マシン
 
+> [!IMPORTANT]
+> 仮想マシンのイーサネット デバイスが 9 文字を超える場合、VM の分析情報では認識されず、データは InsightsMetrics テーブルに送信されません。 エージェントは、[他のソース](../agents/agent-data-sources.md)からデータを収集します。
 
 ## <a name="supported-azure-arc-machines"></a>サポートされている Azure Arc マシン
 VM insights は、Arc 拡張サービスが利用可能なリージョンの Azure Arc 対応サーバーで使用できます。 Arc エージェントのバージョン 0.9 以降を実行している必要があります。

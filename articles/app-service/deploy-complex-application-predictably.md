@@ -1,16 +1,16 @@
 ---
 title: ARM で予測したアプリを展開する
-description: Azure リソース管理テンプレートと PowerShell スクリプトを使用して、複数の Azure App Service アプリを 1 つのユニットとして予測どおりにデプロイする方法について説明します。
+description: Azure Resource Manager テンプレートと PowerShell スクリプトを使用して、複数の Azure App Service アプリを 1 つのユニットとして予測どおりにデプロイする方法について説明します。
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 636b6d7a15e80e725cadbfb07ed1dd0c5ef0347e
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 757c76482062679c7ad8470a2423754cbc64c213
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888682"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566518"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
 このチュートリアルでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
@@ -29,7 +29,7 @@ ms.locfileid: "111888682"
 このチュートリアルでは、次のツールを使用します。 ここはツールについて包括的に説明するための場所ではないため、簡単な説明と詳細情報へのリンクを紹介するにとどめて、エンド ツー エンドのシナリオに準拠します。 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure リソース マネージャー テンプレート (JSON)
-たとえば、Azure App Service でアプリを作成するたびに、Azure Resource Manager では、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。 [Azure Marketplace](../marketplace/index.yml) の複雑なテンプレートには、データベース、ストレージ アカウント、App Service プラン、アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。 Azure リソース マネージャー テンプレートの詳細については、 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/syntax.md)
+たとえば、Azure App Service でアプリを作成するたびに、Azure Resource Manager では、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。 [Azure Marketplace](../marketplace/index.yml) の複雑なテンプレートには、データベース、ストレージ アカウント、App Service プラン、アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。 Azure Resource Manager テンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/syntax.md)に関するページを参照してください
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 最新の SDK では、JSON エディターにおけるリソース マネージャー テンプレートのサポートが強化されました。 これを使用すると、リソース グループ テンプレートを一からすばやく作成したり、既存の JSON テンプレート (ダウンロードしたギャラリー テンプレートなど) を開いて変更したりできます。また、パラメーター ファイルを設定したり、Azure リソース グループのソリューションから直接リソース グループをデプロイしたりすることもできます。

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: a34bdfe55d2200176d6f6c7fde389c19dc26cfa5
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 4b06a8808826c5b11ecc2c54824db65f37d3b50f
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536473"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431404"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure アプリケーション オファーの Azure マネージド アプリケーションを計画する
 
@@ -32,7 +32,7 @@ Azure アプリケーションのマネージド アプリケーション プラ
 | ------------ | ------------- |
 | Azure サブスクリプション | マネージド アプリケーションを顧客のサブスクリプションにデプロイする必要があるが、アプリケーションはサード パーティが管理できます。 |
 | 請求/メータリング | リソースは、顧客の Azure サブスクリプションで提供されます。 従量課金制の支払モデルを使用する VM は Microsoft 経由で顧客が処理し、顧客の Azure サブスクリプション経由で請求されます。 <br><br> ライセンス持ち込み VM の場合、顧客サブスクリプションで発生するインフラストラクチャ コストを Microsoft が請求しますが、ユーザーが顧客に対して直接ソフトウェア ライセンス料金を処理します。 |
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<br> • [Azure VM の技術資産を作成する](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)。<br> • [Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。 |
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 詳細については、次を参照してください。<br> * [Azure VM の技術資産を作成する](./azure-vm-create-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 用)。<br> *  [Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。 |
 | 顧客の利用状況属性 | すべての新しい Azure アプリケーション オファーには、[Azure パートナーの顧客の使用状況の属性 GUID](azure-partner-customer-usage-attribution.md) も含まれている必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の使用状況の属性](azure-partner-customer-usage-attribution.md)」をご覧ください。 |
 | 展開パッケージ | お客様がプランをデプロイできるようにするデプロイ パッケージが必要になります。 同じ技術的構成が必要なプランを複数作成する場合は、同じパッケージを使用できます。 詳細については、次のセクションの「デプロイ パッケージ」を参照してください。 |
 |||
@@ -46,7 +46,7 @@ Azure アプリケーションのマネージド アプリケーション プラ
 
 すべての Azure アプリケーションで、.zip アーカイブのルート フォルダーに次の 2 つのファイルが含まれている必要があります。
 
-- [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)または対応する [GitHub:Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
+- [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template) という名前の Resource Manager テンプレート ファイル。 このテンプレートでは、顧客の Azure サブスクリプションにデプロイするリソースが定義されます。 Resource Manager テンプレートの例については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/)または対応する [GitHub:Azure Resource Manager クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates) リポジトリをご覧ください。
 - [createUiDefinition.json](../azure-resource-manager/managed-applications/create-uidefinition-overview.md) という名前の、Azure アプリケーション作成エクスペリエンス用のユーザー インターフェイス定義。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
 
 サポートされる最大ファイル サイズは次のとおりです。

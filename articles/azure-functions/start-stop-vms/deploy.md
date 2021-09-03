@@ -3,19 +3,27 @@ title: Start/Stop VMs v2 (プレビュー) のデプロイ
 description: この記事では、Azure サブスクリプションで Azure VM の Start/Stop VMs v2 (プレビュー) 機能をデプロイする方法について説明します。
 services: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/29/2021
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 726af0d36c543936076d1fa529e5527d166d5bbc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c0b3984629376f11692b727bb28b34c15708c596
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073236"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733477"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Start/Stop VMs v2 (プレビュー) のデプロイ
 
 Start/Stop VMs v2 (プレビュー) 機能をインストールするには、このトピックの手順を順番に実行します。 セットアップ プロセスが完了したら、要件に合わせてカスタマイズするスケジュールを構成します。
 
+> [!NOTE]
+> デプロイ中に問題が発生した場合、Start/Stop VMs v2 (プレビュー) を使用しているときに問題が発生します。または、関連する質問がある場合、[GitHub](https://github.com/microsoft/startstopv2-deployments/issues) で問題を送信できます。 このプレビュー バージョンでは、[Azure サポート サイト](https://azure.microsoft.com/support/options/)から Azure サポート インシデントを提出することはできません。 
+
+## <a name="permissions-considerations"></a>アクセス許可に関する考慮事項
+デプロイの前および最中に、次の点に留意してください。
++   このソリューションでは、Start/Stop v2 のデプロイに対する適切なロールベースのアクセス制御 (RBAC) のアクセス許可を持つユーザーが、Start/Stop v2 のスコープで仮想マシンのスケジュールを追加、削除、管理することができます。 この動作は仕様です。 実際には、仮想マシンに対する RBAC アクセス許可を直接持たないユーザーでも、仮想マシンを管理している Start/Stop v2 ソリューションを変更するための RBAC アクセス許可を持っていれば、その仮想マシンに対する開始、停止、自動停止の操作を作成できます。
++ Start/Stop v2 ソリューションにアクセスできるすべてのユーザーが、Start/Stop v2 アプリケーションで使用される Application Insights インスタンスに保存されているコスト、節約、操作履歴、その他のデータを見ることができます。
++ Start/Stop v2 ソリューションを管理するときは、Start/Stop v2 ソリューションに対するユーザーのアクセス許可を考慮する必要があります (特に、ターゲット仮想マシンを直接変更するアクセス許可をユーザーが持っていない場合)。
 ## <a name="deploy-feature"></a>機能をデプロイする
 
 デプロイは、[こちらの](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md) Start/Stop VMs v2 の GitHub 組織から開始されます。 この機能は、サブスクリプション内のすべてのリソース グループにわたるすべての VM を、そのサブスクリプション内の 1 つのデプロイから管理することを目的としていますが、組織の運用モデルまたは要件に基づいて、別のインスタンスをインストールすることもできます。 また、複数のサブスクリプション全体で VM を一元的に管理するように構成することもできます。
@@ -49,6 +57,12 @@ Start/Stop VMs v2 (プレビュー) 機能をインストールするには、�
 1. 通知ウィンドウで **[リソース グループに移動]** を選択します。 次のような画面が表示されます。
 
     :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="Start/Stop VMs テンプレートのデプロイ リソース一覧":::
+
+> [!NOTE]
+> 関数アプリとストレージアカウントの名前付け形式が変更されました。 グローバルな一意性を保証するため、ランダムで一意の文字列が、これらのリソースの名前に追加されるようになりました。
+
+> [!NOTE]
+> お客様がトラブルシューティングのためにサポート チームに連絡してきたときにより良く支援できるよう、運用およびハートビートのテレメトリが収集されています。 また、サービスの有効性を判断できるよう、仮想マシンでサービスが動作した時間と、仮想マシンが再通知された期間を確認するため、仮想マシンのイベント履歴も収集されています。
 
 ## <a name="enable-multiple-subscriptions"></a>複数のサブスクリプションを有効にする
 

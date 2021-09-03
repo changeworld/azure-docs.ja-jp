@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b45af43c9a5c76169deaef08c91ea7a9e8670c1
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: c44336e41c173cffad28a52bed3c29ec13df497f
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371707"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112323162"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>セキュリティで保護された接続を確保するために安全な転送を要求する
 
@@ -29,7 +29,9 @@ Azure Policy には、ストレージ アカウントに対して安全な転送
 ストレージ アカウントに対して安全な転送が求められている場合、暗号化なしの SMB 経由で Azure ファイル共有に接続しても失敗します。 セキュリティで保護されていない接続の例としては、暗号化なしの SMB 2.1 または SMB 3.x 経由の接続を挙げることができます。
 
 > [!NOTE]
-> Azure Storage ではカスタム ドメイン名の HTTPS はサポートされないため、カスタム ドメイン名を使用している場合、このオプションは適用されません。 また、クラシック ストレージ アカウントはサポートされていません。
+> Azure Storage ではカスタム ドメイン名の HTTPS はサポートされないため、カスタム ドメイン名を使用している場合、このオプションは適用されません。
+> 
+> このセキュリティで保護された転送設定は、TCP には適用されません。 セキュリティで保護されていない、TCP を使用した Azure Blob Storage での NFS 3.0 プロトコルのサポートによる接続は成功します。  
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>Azure portal で安全な転送を要求する
 

@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 1166585c7291c4fe0d78cbc9540e3f08f985db6c
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 3e2b9ab4eaf794e5cf64861d7c641b82f18b64dc
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107590197"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201388"
 ---
 | リソース | 制限 | Note |
 | --- | --- | --- |
@@ -38,9 +38,9 @@ ms.locfileid: "107590197"
 | コンカレント WebSocket 接続 |中規模のゲートウェイ 20k<sup>2</sup><br> 大規模のゲートウェイ 50k<sup>2</sup>| |
 | URL の最大長|32KB| |
 | HTTP/2 向けヘッダーの最大サイズ |16 KB| |
-| 最大ファイル アップロード サイズ (標準) |2 GB | |
-| 最大ファイル アップロード サイズ (WAF) |中規模の V1 WAF ゲートウェイ、100 MB<br>大規模の V1 WAF ゲートウェイ、500 MB<br>V2 WAF、750 MB| |
-| WAF の本文サイズの制限 (ファイルがない場合)|128 KB||
+| ファイル アップロードの最大サイズ (Standard SKU) |V2 - 4 GB<br>V1 - 2 GB | |
+| ファイル アップロードの最大サイズ (WAF SKU) |V1 中規模 - 100 MB<br>V1 大規模 - 500 MB<br>V2 - 750 MB<br>V2 (CRS 3.2 以降を使用) - 4 GB| |
+| WAF の本文サイズの制限 (ファイルがない場合)|V1 または V2 (CRS 3.1 以前を使用) - 128 KB<br>V2 (CRS 3.2 以降を使用) - 2 MB| |
 | WAF カスタム規則の最大数|100||
 | Application Gateway あたりの最大 WAF 除外数|40||
 

@@ -7,23 +7,22 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 118c91ec204a2e207b28343fe0535c67b89b03b7
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927449"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433348"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
 
-Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内のサブネットに Azure App Service をデプロイしたものです。
-
 > [!NOTE]
-> 各 App Service Environment には仮想 IP (VIP) があり、これを使用して App Service Environment と通信できます。
+> この記事は、Isolated App Service プランで使用される App Service Environment v2 に関するものです
+> 
 
-App Service Environment (ASE) をデプロイするには、次の 2 つの方法があります。
+Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内のサブネットに Azure App Service をデプロイしたものです。 App Service Environment (ASE) をデプロイするには、次の 2 つの方法があります。
 
-- 外部 IP アドレスの VIP を使用する。外部 ASE と呼ばれます。
+- 外部の公開 IP アドレスの VIP を使用する。外部 ASE と呼ばれます。
 - 内部 IP アドレスの VIP を使用する。内部エンドポイントは内部ロード バランサー (ILB) であるため、ILB ASE と呼ばれます。
 
 この記事では、外部 ASE を作成する方法について説明します。 ASE の概要については、[App Service Environment の概要][Intro]に関するページをご覧ください。 ILB ASE の作成方法について詳しくは、[ILB ASE の作成と使用][MakeILBASE]に関するページをご覧ください。

@@ -7,26 +7,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 5cd9438eecc973524d8e5f7218ad0c92ab627f87
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 01/27/2021
+ms.openlocfilehash: 5e9e09508591e2b6e58b6bae17df281c23a5129d
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559880"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414793"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Cognitive Search の操作とアクティビティを監視する
 
-この記事では、Azure Cognitive Search の監視の概念とツールの概要について説明します。 総合的な監視を行うため、組み込みの機能と Azure Monitor のようなアドオン サービスを組み合わせて使用することができます。
+この記事では、Azure Cognitive Search の監視の概念とツールの概要について説明します。 総体的な監視のために、組み込みの機能と Azure Monitor のようなアドオン サービスを組み合わせて使用する必要があります。
 
 要するに、以下の追跡を行うことができます。
 
-* サービス: 正常性または可用性とサービス構成の変更。
-* ストレージ: 使用済みと使用可能の両方、サービス層で許可されているクォータに対する各コンテンツの種類の数。
+* 検索サービス: 正常性とサービス構成の変更。
+* ストレージ使用量: 両方が使用され、入手可能。
+* インデックス、インデクサー、その他のオブジェクトに対するオブジェクトの制限。各種類の数は、サービス レベルで[許可される最大値](search-limits-quotas-capacity.md)に対する相対値です。
 * クエリ アクティビティ: ボリューム、待機時間、調整されたまたは削除されたクエリ。 ログに記録されるクエリ要求には、[Azure Monitor](#add-azure-monitor) が必要です。
 * インデックス作成アクティビティ: Azure Monitor を使用した[診断ログ](#add-azure-monitor)が必要。
 
-検索サービスでは、ユーザー単位の認証がサポートされていないため、ログでは ID 情報は見つかりません。
+検索サービスではユーザー単位の認証はサポートされないため、ログではユーザー ID 情報は見つかりません。
 
 ## <a name="built-in-monitoring"></a>組み込みの監視
 
@@ -48,9 +49,9 @@ Azure Cognitive Search は、サービスの正常性とクエリのメトリッ
 
 <a name="monitoring-apis"> </a>
 
-### <a name="apis-useful-for-monitoring"></a>監視に役立つ API
+### <a name="rest-apis-useful-for-monitoring"></a>監視に役立つ REST API
 
-次の API を使用して、ポータルの [監視] タブと [使用状況] タブにあるのと同じ情報を取得できます。
+[Postman](search-get-started-rest.md) と次の API を使用して、ポータルの [監視] タブと [使用状況] タブにあるのと同じ情報を取得できます。 システム情報を取得するには、[管理 API キー](search-security-api-keys.md) を指定する必要があります。
 
 * [サービス統計情報の取得](/rest/api/searchservice/get-service-statistics)
 * [インデックス統計の取得](/rest/api/searchservice/get-index-statistics)

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: b90ca39d7bf01b84400464240bb581a5e7bc922a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc42882a15b70d7d656decebf8c7b2346c516c6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602385"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734884"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -33,12 +33,12 @@ ms.locfileid: "104602385"
 
 アラートのサンプルを作成するには:
 
-1. **セキュリティ管理者** または **サブスクリプション共同作成者** のロールを持つユーザーで、アラート ページのツールバーから **[アラートのサンプルの作成]** を選択します。
+1. **サブスクリプション共同作成者** ロールを持つユーザーとして、アラート ページのツール バーから **[アラートのサンプルの作成]** を選択します。
 1. サブスクリプションを選択します。
 1. アラートを表示する関連する Azure Defender プラン (複数可) を選択します。 
 1. **[アラートのサンプルの作成]** を選択します。
 
-    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="Azure Security Center でアラートのサンプルを作成する手順":::
+    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="Azure Security Center でアラートのサンプルを作成する手順。":::
     
     アラート のサンプルが作成されていることを知らせる通知が表示されます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "104602385"
 
     数分後に、[セキュリティ アラート] ページにアラートが表示されます。 また、Azure Security Center セキュリティ アラート (接続された SIEM、電子メール通知など) を受信するように構成した他の場所にも表示されます。
 
-    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="セキュリティ アラートの一覧でのアラートのサンプル":::
+    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="セキュリティ アラートの一覧でのアラートのサンプル。":::
 
     > [!TIP]
     > このアラートは、シミュレートされたリソースを対象とします。

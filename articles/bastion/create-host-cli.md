@@ -5,20 +5,24 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 07/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4944ae62bda23f33aa30011314826beb499ac791
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 055d895419e8f1e54b30a440c906c3b3e3251078
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534756"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113643417"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure CLI を使用して Azure Bastion ホストを作成する
 
 この記事では、Azure CLI を使用して Azure Bastion ホストを作成する方法について示します。 お使いの仮想ネットワークに Azure Bastion サービスをプロビジョニングすると、同じ仮想ネットワークのすべての VM でシームレスに RDP/SSH をご利用いただけます。 Azure Bastion デプロイは、サブスクリプションやアカウント、仮想マシン単位ではなく、仮想ネットワーク単位です。
 
-必要に応じて、[Azure portal](./tutorial-create-host-portal.md) を使用するか、[Azure PowerShell](bastion-create-host-powershell.md) を使用して、Azure Bastion ホストを作成できます。
+任意で、次の方法を使用して Azure Bastion ホストを作成できます。
+* [Azure Portal](./tutorial-create-host-portal.md)
+* [Azure PowerShell](bastion-create-host-powershell.md)
+
+[!INCLUDE [Note about SKU limitations for preview.](../../includes/bastion-preview-sku-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,8 +30,8 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 [!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
- >[!NOTE]
- >現時点では、Azure プライベート DNS ゾーンでの Azure Bastion の使用はサポートされていません。 開始する前に、Bastion リソースをデプロイする予定の仮想ネットワークが、プライベート DNS ゾーンにリンクされていないことをご確認ください。
+ > [!NOTE]
+ > 現時点では、Azure プライベート DNS ゾーンでの Azure Bastion の使用はサポートされていません。 開始する前に、Bastion リソースをデプロイする予定の仮想ネットワークが、プライベート DNS ゾーンにリンクされていないことをご確認ください。
  >
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion ホストの作成
@@ -37,7 +41,9 @@ Azure サブスクリプションを持っていることを確認します。 A
 > [!NOTE]
 > 例に示すように、すべてのコマンドで `--resource-group` と共に `--location` パラメーターを使用すると、リソースが確実にまとめてデプロイされます。
 
-1. 仮想ネットワークと Azure Bastion サブネットを作成します。 名前の値として **AzureBastionSubnet** を使用して Azure Bastion サブネットを作成する必要があります。 この値によって、Azure でリソースをデプロイするサブネットを把握できます。 これはゲートウェイ サブネットとは異なります。 /27 またはそれより大きいサブネットを使用する必要があります (/27、/26 など)。 ルート テーブルまたは委任なしで **AzureBastionSubnet** を作成します。 **AzureBastionSubnet** でネットワーク セキュリティ グループを使用する場合、[NSG の使用](bastion-nsg.md)に関する記事を参照してください。
+1. 仮想ネットワークと Azure Bastion サブネットを作成します。 名前の値として **AzureBastionSubnet** を使用して Azure Bastion サブネットを作成する必要があります。 この値によって、Azure でリソースをデプロイするサブネットを把握できます。 これは VPN ゲートウェイ サブネットとは異なります。
+
+   [!INCLUDE [Note about BastionSubnet size.](../../includes/bastion-subnet-size.md)]
 
    ```azurecli-interactive
    az network vnet create --resource-group MyResourceGroup --name MyVnet --address-prefix 10.0.0.0/16 --subnet-name AzureBastionSubnet --subnet-prefix 10.0.0.0/24 --location northeurope

@@ -1,14 +1,14 @@
 ---
 title: ポリシー適用除外の構造の詳細
 description: Azure Policy でイニシアティブまたは定義の評価からリソースを除外するために使用されるポリシー適用除外の定義について説明します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: ecf956d7507dfa2168e4f2591e4b661423801365
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 4c38f872a17869b957bce415204042582454dfd9
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091737"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324838"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy 適用除外の構造
 

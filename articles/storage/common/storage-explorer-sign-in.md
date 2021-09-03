@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: chuye
-ms.openlocfilehash: 26ce15bfe474f96aaef17f186f56e36ce42b7239
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7ef07280d65f3533e1def6475e40a65b16f0f6c3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950534"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324657"
 ---
 # <a name="sign-in-to-storage-explorer"></a>Storage Explorer にサインインする
 
@@ -50,7 +50,7 @@ Azure アカウント全体を削除する場合は、アカウントの横に�
 
 **[設定] (左側の歯車アイコン)**  >  **[アプリケーション]**  >  **[サインイン]** で、 **[サインイン方法の選択]** 設定を探します。 次の 3 つのオプションがあります。
 - **[Default Web Browser]\(既定の Web ブラウザー\)** : OS の **既定の Web ブラウザー** でサインインが実行されます。 このオプションが推奨されています。
-- **[Integrated Sign-In]\(統合サインイン\)** : Storage Explorer のウィンドウでサインインが実行されます。 このオプションは、一度に複数の Microsoft アカウント (MSA) を使用してログインする場合に便利です。 このオプションを選択した場合、一部の CA ポリシーで問題が発生する可能性があります。
+- **[Integrated Sign-In]\(統合サインイン\)** : Storage Explorer のウィンドウでサインインが実行されます。 **既定の Web ブラウザー** を使用したサインインに問題がある場合は、このオプションが役立つことがあります。
 - **[Device Code Flow]\(デバイス コード フロー\)** : Storage Explorer によって、ブラウザー ウィンドウに入力するコードが提供されます。 このオプションは推奨されません。 デバイス コード フローは、多くの CA ポリシーと互換性がありません。
 
 ## <a name="troubleshooting-sign-in-issues"></a>サインインの問題のトラブルシューティング

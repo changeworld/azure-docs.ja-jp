@@ -9,14 +9,14 @@ ms.topic: reference
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, bonova, danil
-ms.date: 3/16/2021
+ms.date: 8/18/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 8c3ab997aeb179754e4c365dc41b795cf5c3bdc7
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 005984260532ddf0a349380f290a65313e371336
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528560"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397102"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -470,8 +470,8 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 
 クロス インスタンス Service Broker メッセージ交換は、Azure SQL Managed Instance 間でのみサポートされます。
 
-- `CREATE ROUTE`: `CREATE ROUTE` を `LOCAL` 以外の `ADDRESS` または別の Azure SQL Managed Instance の DNS 名で使用することはできません。
-- `ALTER ROUTE`: `ALTER ROUTE` を `LOCAL` 以外の `ADDRESS` または別の Azure SQL Managed Instance の DNS 名で使用することはできません。
+- `CREATE ROUTE`: `CREATE ROUTE` を `LOCAL` 以外の `ADDRESS` または別の Azure SQL Managed Instance の DNS 名で使用することはできません。 ポートは常に 4022 です。
+- `ALTER ROUTE`: `ALTER ROUTE` を `LOCAL` 以外の `ADDRESS` または別の Azure SQL Managed Instance の DNS 名で使用することはできません。 ポートは常に 4022 です。
 
 トランスポート セキュリティはサポートされていますが、ダイアログ セキュリティはサポートされていません。
 - `CREATE REMOTE SERVICE BINDING` はサポートされていません。
@@ -491,6 +491,8 @@ Service Broker は既定で有効になっており、無効にできません�
   - `remote data archive`
   - `remote proc trans`
   - `scan for startup procs`
+- 次の [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) オプションは無視され、影響はありません。 
+  - `Ole Automation Procedures`
 - `sp_execute_external_scripts` はサポートされていません。 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples) に関するセクションをご覧ください。
 - `xp_cmdshell` はサポートされていません。 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql) に関する記事をご覧ください。
 - `Extended stored procedures` はサポートされておらず、これには `sp_addextendedproc` および `sp_dropextendedproc` が含まれます。 この機能は SQL Server では非推奨になる予定のため、サポートされません。 詳細については、[拡張ストアド プロシージャ](/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming)に関するページを参照してください。

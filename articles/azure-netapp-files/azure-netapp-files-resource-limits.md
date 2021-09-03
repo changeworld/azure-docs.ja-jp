@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 07/28/2021
 ms.author: b-juche
-ms.openlocfilehash: b5abb26a5a96b73f06f25661c62061f664069ee3
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 06be68fb1de224bbbcad13e71e7f4069e44f8309
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903490"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725551"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -31,6 +31,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 
 |  リソース  |  既定の制限  |  サポート要求による調整の可否  |
 |----------------|---------------------|--------------------------------------|
+|  [リージョンごとのサブスクリプションあたり容量クォータ](#regional-capacity-quota)   |  25 TiB  |  はい  |
 |  サブスクリプションあたりの Azure リージョンごとの NetApp アカウント数  |  10    |  はい   |
 |  NetApp アカウントあたりの容量プールの数   |    25     |   はい   |
 |  サブスクリプションあたりのボリュームの数   |    500     |   はい   |
@@ -93,9 +94,39 @@ Azure NetApp Files ボリュームには、*maxfiles* という制限があり�
 
 ボリューム クォータが 20 TiB 以上の場合は、maxfiles の制限を 5 億に増やすことができます。 <!-- ANF-11854 --> 
 
+## <a name="regional-capacity-quota"></a>リージョンごとの容量クォータ
+
+Azure NetApp Files には容量に基づくリージョンごとの制限があります。 各サブスクリプションの Standard 容量の制限は、すべてのサービス レベルで、リージョンあたり 25 TiB です。   
+
+次のように特定の **サービスとサブスクリプションの制限 (クォータ)** サポート チケットを送信することにより、容量の増加を要求できます。
+
+1. ポータルで **[サポートとトラブルシューティング]** に移動し、サポート リクエスト プロセスを開始します。  
+
+    ![[サポートとトラブルシューティング] メニューを示すスクリーンショット。](../media/azure-netapp-files/support-troubleshoot-menu.png)   
+
+2.  **[サービスとサブスクリプションの制限 (クォータ)]** の問題の種類を選択し、関連するすべての詳細を入力します。
+
+    ![[サービスとサブスクリプションの制限] メニューを示すスクリーンショット。](../media/azure-netapp-files/service-subscription-limits-menu.png)   
+
+3. [詳細] タブの **[詳細を入力]** リンクをクリックし、 **[サブスクリプションあたりの TiB]** のクォータの種類を選択します。   
+
+    ![[詳細] タブの [詳細を入力] リンクを示すスクリーンショット。](../media/azure-netapp-files/support-details.png)   
+
+    ![[クォータの詳細] ウィンドウを示すスクリーンショット。](../media/azure-netapp-files/support-quota-details.png)   
+
+4.  [サポート方法] ページで、 **[Severity Level B – Moderate impact]\(重大度レベル B –中程度の影響\)** を選択します。  
+
+    ![[サポート方法] ウィンドウを示すスクリーンショット。](../media/azure-netapp-files/support-method-severity.png)   
+
+5. 要求プロセスを完了して、要求を発行します。 
+ 
+チケットが送信された後、要求は Azure 容量管理チームに送信されて処理されます。 通常、2 営業日以内に応答を受け取ります。 Azure 容量管理チームから、大量の要求の処理について連絡を受け取る場合があります。
+ 
+リージョンごとの容量クォータを増やしても、課金は増えません。 課金は、プロビジョニング済みの容量プールに基づいて引き続き行われます。
+
 ## <a name="request-limit-increase"></a>上限の引き上げを要求する<a name="limit_increase"></a> 
 
-上記の表から調整可能な上限を引き上げるように、Azure サポート要求を作成できます。 
+「[リソース制限](#resource-limits)」の表から調整可能な上限を引き上げるように、Azure サポート リクエストを作成できます。 
 
 Azure portal ナビゲーション プレーンから: 
 

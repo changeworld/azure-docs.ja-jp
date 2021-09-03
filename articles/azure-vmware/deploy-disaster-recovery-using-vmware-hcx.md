@@ -3,12 +3,12 @@ title: VMware HCX でディザスター リカバリーをデプロイする
 description: VMware HCX Disaster Recovery を使用して、仮想マシン (VM) のディザスター リカバリーをデプロイする方法を説明します。 また、Azure VMware Solution を復旧用サイトおよび復旧データ保存先サイトとして使用する方法も説明します。
 ms.topic: how-to
 ms.date: 06/10/2021
-ms.openlocfilehash: 51ca0b13286b32cf208ad9c5ee1e4c25b26a966b
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: f08f1c1ccff0387c5750a355f83de02e1dcd8e09
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112021609"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113430990"
 ---
 # <a name="deploy-disaster-recovery-using-vmware-hcx"></a>VMware HCX でディザスター リカバリーをデプロイする
 
@@ -43,15 +43,15 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
 1. ソース サイトで **vSphere クライアント** にログインし、**HCX プラグイン** にアクセスします。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/hcx-vsphere.png" alt-text="vSphere の HCX オプション" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/hcx-vsphere.png" alt-text="vSphere Web クライアントの HCX オプションを示すスクリーンショット。" border="true":::
 
 1. **[ディザスター リカバリー]** 領域に入り、 **[VM の保護]** を選択します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="[PROTECT VMS]\(VM の保護\) の選択" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="vSphere Web クライアントの [ディザスター リカバリー] ダッシュボードを示すスクリーンショット。" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
 
 1. ソースとリモートのサイトを選択します。 この場合、リモート サイトは、Azure VMware Solution プライベート クラウドにする必要があります。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machines.png" alt-text="VM の保護のウィンドウ" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machines.png" alt-text="[HCX: Protected Virtual Machines]\(HCX 保護されている仮想マシン\) ウィンドウを示すスクリーンショット。" border="true":::
 
 1. 必要に応じて、**既定のレプリケーション** オプションを選択します。
 
@@ -71,21 +71,21 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
    - **スナップショットの数:** 構成されたスナップショット間隔内のスナップショットの合計数です。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png" alt-text="VM 保護のオプション" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png" alt-text="[Protect Virtual Machines]\(仮想マシンのレプリケーションの保護\) のレプリケーション オプションを示すスクリーンショット。" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png":::
 
 1. 一覧から VM を 1 つ以上選択し、必要に応じてレプリケーション オプションを構成します。
 
    既定では、VM は、[既定のレプリケーション オプション] で構成されているグローバル設定ポリシーを継承します。 選択した VM の各ネットワーク インターフェイスに対して、リモート **ネットワーク ポート グループ** を構成し、 **[完了]** を選択して、保護プロセスを開始します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/network-interface-options.png" alt-text="ネットワーク インターフェイスのオプション" border="true" lightbox="./media/disaster-recovery-virtual-machines/network-interface-options.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/network-interface-options.png" alt-text="[Protect Virtual Machines]\(仮想マシンの保護\) のネットワーク インターフェイス オプションを示すスクリーンショット。" border="true" lightbox="./media/disaster-recovery-virtual-machines/network-interface-options.png":::
 
 1. 同じディザスター リカバリー領域で、選択した VM それぞれについて、プロセスを監視します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png" alt-text="保護の進行状況の監視" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png" alt-text="[Protect Virtual Machines]\(仮想マシンの保護\) の保護の監視の進行状況を示すスクリーンショット。" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png":::
 
 1. VM が保護された後は、 **[スナップショット]** タブで、さまざまなスナップショットを参照できます。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="スナップショットの一覧" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="[Protect Virtual Machines]\(仮想マシンの保護\) のスナップショット一覧を示すスクリーンショット。" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
 
    黄色の三角形は、スナップショットと仮想マシンがテスト復旧操作でテストされていないことを意味します。
 
@@ -96,21 +96,21 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 1. Azure VMware Solution のプライベート クラウドであるリモート サイトで **vSphere クライアント** にログインします。 
 1. **HCX プラグイン** 内の [ディザスター リカバリー] 領域で、任意の VM の縦方向の省略記号を選択して、操作メニューを表示してから、 **[VM のテスト復旧]** を選択します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="[Test Recover VM]\(VM のテスト復旧\) の選択" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="[Test Recovery VM]\(VM のテスト復旧\) メニュー オプションを示すスクリーンショット。" border="true":::
 
 1. テストのオプションと、VM のさまざまな状態をテストするために使用するスナップショットを選択します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="スナップショットの選択とテストの選択" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="テストする [Replica Snapshot instance]\(レプリカ スナップショット インスタンス\) を示すスクリーンショット。" border="true":::
 
 1. **テスト** の選択後、復旧操作が開始されます。
 
 1. 終了したら、Azure VMware Solution プライベートクラウドの vCenter で、新しい VM を確認できます。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/verify-test-recovery.png" alt-text="復旧操作の確認" border="true" lightbox="./media/disaster-recovery-virtual-machines/verify-test-recovery.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/verify-test-recovery.png" alt-text="復旧操作の確認の概要を示すスクリーンショット。" border="true" lightbox="./media/disaster-recovery-virtual-machines/verify-test-recovery.png":::
 
 1. VM やそこで実行されている任意のアプリケーションに対してテストを行った後は、クリーンアップを実行して、テスト インスタンスを削除します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png" alt-text="テスト インスタンスのクリーンアップ" border="true" lightbox="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png" alt-text="クリーンアップ テスト インスタンスを示すスクリーンショット。" border="true" lightbox="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png":::
 
 ## <a name="recover-vms"></a>VM の復旧
 
@@ -120,11 +120,11 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
 1. 復旧する VM を一覧から選択し、 **[アクション]** メニューを開いて、 **[VM を復旧する]** を選択します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="VM の復旧" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="[Recover VMs]\(VM を復旧する\) メニュー オプションを示すスクリーンショット。" border="true":::
 
 1. 各インスタンスの復旧オプションを構成し、 **[復旧]** を選択して復旧操作を開始します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines-confirm.png" alt-text="VM の復旧の確認" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines-confirm.png" alt-text="ターゲット サイトへの VM の復旧の確認を示すスクリーンショット。" border="true":::
 
 1. 復旧操作が完了すると、新しい VM がリモートの vCenter Server インベントリに表示されます。
 
@@ -138,11 +138,11 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 1. 一覧から、ソース サイトにレプリケートする VM を選択し、 **[アクション]** メニューを開いて **[反転]** を選択します。 
 1. **[反転]** を選択してレプリケーションを開始します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="保護操作の下の [反転] アクションの選択" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="[Reverse]\(反転\) メニュー オプションを示すスクリーンショット。" border="true":::
 
 1. 各 VM の詳細セクションで監視します。
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/review-reverse-operation.png" alt-text="反転アクションの結果の確認" border="true" lightbox="./media/disaster-recovery-virtual-machines/review-reverse-operation.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/review-reverse-operation.png" alt-text="反転アクションの結果を示すスクリーンショット。" border="true" lightbox="./media/disaster-recovery-virtual-machines/review-reverse-operation.png":::
 
 ## <a name="disaster-recovery-plan-automation"></a>ディザスター リカバリー プランの自動化
 

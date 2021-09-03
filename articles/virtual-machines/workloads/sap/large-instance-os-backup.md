@@ -1,6 +1,6 @@
 ---
 title: SAP HANA on Azure (Large Instances) のオペレーティング システムのバックアップと復元 | Microsoft Docs
-description: SAP HANA on Azure (Large Instances) のオペレーティング システムのバックアップと復元を実行します
+description: SAP HANA on Azure (Large Instances) のオペレーティング システムのバックアップと復元を実行する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: Ajayan1008
@@ -11,32 +11,33 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 06/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7cd7210ceec1297431ab5929d2733c8b4d164d71
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 5685f7932b49f8af57faf159a51a8cb634128337
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110575256"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217487"
 ---
 # <a name="os-backup-and-restore"></a>OS のバックアップと復元
 
-このドキュメントでは、オペレーティング システム ファイル レベルのバックアップと復元を実行する手順について説明します。 この手順は、特定のパラメーター (Type I または Type II、リビジョン 3 以降、場所など) によって異なります。お使いのリソースのこれらのパラメータの正確な値を取得するには、Microsoft Operations にお問い合わせください。
+この記事では、オペレーティング システム (OS) のファイルレベルのバックアップと復元を実行する手順について説明します。 この手順は、Type I、Type II、リビジョン 3 以上、保存先などのパラメーターによって異なります。 リソースのこれらのパラメーターの値を取得するには、Microsoft Operations にお問い合わせください。
 
 ## <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>リビジョン 3 スタンプの Type II SKU の OS バックアップと復元
 
-次の情報は、リビジョン 3 の HANA Large Instances の **Type II SKU** に対してオペレーティング システム ファイル レベルのバックアップと復元を実行する手順について説明しています。
+次の情報は、HANA Large Instances リビジョン 3 の **Type II SKU** に対してオペレーティング システム ファイルレベルのバックアップと復元を実行する手順について説明しています。
 
 >[!Important]
-> **この記事は、リビジョン 4 HANA L インスタンス スタンプでの Type II SKU のデプロイには適用されません。** リビジョン 4 HANA L インスタンス スタンプにデプロイされている Type II HANA L インスタンス ユニットのブート LUN は、Type I SKU が既にリビジョン 3 スタンプにあるため、ストレージ スナップショットを使用してバックアップできます。
+> **この記事は、リビジョン 4 HANA L インスタンス スタンプでの Type II SKU のデプロイには適用されません。** リビジョン 4 HANA Large Instance スタンプにデプロイされている Type II HANA Large Instance のブート LUN は、ストレージ スナップショットを使用してバックアップできます。これは、既にリビジョン 3 スタンプにある Type I SKU にも当てはまります。
 
 
 >[!NOTE]
 >OS バックアップ スクリプトは、サーバーにプレインストールされている ReaR ソフトウェアを使用します。  
 
-Microsoft `Service Management` チームによるプロビジョニングが完了すると、既定では、サーバーは、オペレーティング システムの背後でファイル システム レベルのバックアップを実行する 2 つのバックアップ スケジュールで構成されます。 次のコマンドを使用して、バックアップ ジョブのスケジュールを確認できます。
+Microsoft サービス管理チームによるプロビジョニングが完了すると、サーバーは、既定では OS のファイルシステム レベルのバックアップを実行する 2 つのスケジュールで構成されます。 次のコマンドを使用して、バックアップ ジョブのスケジュールを確認できます。
+
 ```
 #crontab –l
 ```
@@ -44,9 +45,9 @@ Microsoft `Service Management` チームによるプロビジョニングが完�
 ```
 #crontab -e
 ```
-### <a name="how-to-take-a-manual-backup"></a>手動バックアップを実行する方法
+### <a name="take-a-manual-backup"></a>手動バックアップの取得
 
-OS ファイル システムのバックアップは、既に **cron ジョブ** を使用してスケジュールされています。 ただし、オペレーティング システムのファイル レベル バックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
+OS ファイル システムのバックアップは、既に **cron ジョブ** を使用してスケジュールされています。 ただし、オペレーティング システムのファイルレベルのバックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
 
 ```
 #rear -v mkbackup
@@ -56,7 +57,7 @@ OS ファイル システムのバックアップは、既に **cron ジョブ**
 ![方法](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
 
 
-### <a name="how-to-restore-a-backup"></a>バックアップを復元する方法
+### <a name="restore-a-backup"></a>バックアップを復元する
 
 バックアップから、完全バックアップまたは個々のファイルを復元できます。 復元するには、次のコマンドを使用します。
 
@@ -76,22 +77,25 @@ OS ファイル システムのバックアップは、既に **cron ジョブ**
 
 ![コマンド プロンプト ウィンドウのスクリーンショット。復元を確認できます。](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
-### <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>ReaR ツールをインストールして構成を変更する方法 
+### <a name="install-the-rear-tool-and-change-the-configuration"></a>ReaR ツールをインストールして構成を変更する 
 
-Relax-and-Recover (ReaR) パッケージは、HANA L インスタンスの **Type II SKU** に **プレインストール** されているため、ユーザーは何もする必要がありません。 オペレーティング システムのバックアップのために、ReaR の使用を直接開始することができます。
-ただし、パッケージを自分でインストールする必要がある場合は、記載されている手順に従って、ReaR ツールをインストールして構成することができます。
+Relax-and-Recover (ReaR) パッケージは、HANA Large Instances の **Type II SKU** に **プレインストール** されています。 お客様が対処する必要ありません。 オペレーティング システムのバックアップには、直接、ReaR ツールの使用を開始できます。
+
+ただし、パッケージを自分でインストールする必要がある場合は、次の手順に従って、ReaR ツールをインストールして構成することができます。
 
 **ReaR** バックアップ パッケージをインストールするには、以下のコマンドを使用します。
 
-**SLES** オペレーティング システムでは、次のコマンドを使用します。
+**SLES** オペレーティング システムの場合、次のコマンドを使用します。
 ```
 #zypper install <rear rpm package>
 ```
-**RHEL** オペレーティング システムでは、次のコマンドを使用します。 
+**RHEL** オペレーティング システムの場合、次のコマンドを使用します。 
+
 ```
 #yum install rear -y
 ```
 ReaR ツールを構成するには、 */etc/rear/local.conf* ファイルの **OUTPUT_URL** パラメーターと **BACKUP_URL** パラメーターを更新する必要があります。
+
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso
@@ -109,42 +113,54 @@ BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/cra
 
 ## <a name="os-backup-and-restore-for-all-other-skus"></a>他のすべての SKU の OS のバックアップと復元
 
-次の情報は、リビジョン 3 の HANA Large Instances の **Type II SKU** を除くすべてのリビジョンのすべての SKU に対してオペレーティング システム ファイル レベルのバックアップと復元を実行する手順について説明しています。
+次の情報は、リビジョン 3 の HANA Large Instances の **Type II SKU** を除くすべてのリビジョンのすべての SKU に対してオペレーティング システムのファイルレベルでのバックアップと復元を実行する手順について説明しています。
 
-### <a name="how-to-take-a-manual-backup"></a>手動バックアップを実行する方法
+### <a name="take-a-manual-backup"></a>手動バックアップの取得
 
-[GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) から最新の Microsoft Snapshot Tools for SAP HANA を入手し、`crontab` に `--type=boot` フラグを指定して定期的に実行されるように構成します。 これにより、定期的に OS がバックアップされるようになります。 次の例は、Type-I SKU OS バックアップの `/etc/crontab` の cron スケジュールを示しています。
+「[Azure アプリケーション整合性スナップショット ツールとは](../../../azure-netapp-files/azacsnap-introduction.md)」で始まる一連の記事で説明されている最新の Microsoft Snapshot Tools for SAP HANA を入手し、次の記事を参照して構成とテストを行います。
 
-```
-30 00 * * *  ./azure_hana_backup --type=boot --boottype=TypeI --prefix=dailyboot --frequncy=15min --retention=28
-```
+- [Azure アプリケーション整合性スナップショット ツールを構成する](../../../azure-netapp-files/azacsnap-cmd-ref-configure.md)
+- [Azure アプリケーション整合性スナップショット ツールをテストする](../../../azure-netapp-files/azacsnap-cmd-ref-test.md) 
 
-次の例は、Type-II SKU OS バックアップの `/etc/crontab` の cron スケジュールを示しています。
+「`crontab`Azure アプリケーション整合性スナップショット ツールを使用してバックアップする[」の説明に従って ](../../../azure-netapp-files/azacsnap-cmd-ref-backup.md) を介して定期的に実行します。 
 
-```
-30 00 * * *  ./azure_hana_backup --type=boot --boottype=TypeII --prefix=dailyboot --frequency=15min --retention=28
-```
+詳細については、次のリファレンスを参照してください。
 
-その他のリファレンス
-- [ストレージ スナップショットのセットアップ](hana-backup-restore.md#set-up-storage-snapshots)
-- [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) の Microsoft Snapshot Tools for SAP HANA ガイド。
+- [Azure アプリケーション整合性スナップショット ツールをインストールする](../../../azure-netapp-files/azacsnap-installation.md)
+- [Azure アプリケーション整合性スナップショット ツールを構成する](../../../azure-netapp-files/azacsnap-cmd-ref-configure.md)
+- [Azure アプリケーション整合性スナップショット ツールをテストする](../../../azure-netapp-files/azacsnap-cmd-ref-test.md)
+- [Azure アプリケーション整合性スナップショット ツールを使用してバックアップする](../../../azure-netapp-files/azacsnap-cmd-ref-backup.md)
+- [Azure アプリケーション整合性スナップショット ツールを使用して詳細を取得する](../../../azure-netapp-files/azacsnap-cmd-ref-details.md)
+- [Azure アプリケーション整合性スナップショット ツールを使用して削除する](../../../azure-netapp-files/azacsnap-cmd-ref-delete.md)
+- [Azure アプリケーション整合性スナップショット ツールを使用して復元する](../../../azure-netapp-files/azacsnap-cmd-ref-restore.md)
+- [Azure アプリケーション整合性スナップショット ツールを使用したディザスター リカバリー](../../../azure-netapp-files/azacsnap-disaster-recovery.md)
+- [Azure アプリケーション整合性スナップショット ツールのトラブルシューティング](../../../azure-netapp-files/azacsnap-troubleshoot.md)
+- [Azure アプリケーション整合性スナップショット ツールを使用するためのヒントとテクニック](../../../azure-netapp-files/azacsnap-tips.md)
 
-### <a name="how-to-restore-a-backup"></a>バックアップを復元する方法
 
-OS 自体から復元操作を実行することはできません。 これについては、Microsoft Operations にサポート チケットを送信してください。 復元操作では、HLI インスタンスが電源オフ状態になっている必要があるため、適宜スケジュールしてください。
+### <a name="restore-a-backup"></a>バックアップを復元する
+
+OS 自体から復元操作を実行することはできません。 Microsoft Operations にサポート チケットを送信する必要があります。 復元操作の場合、HANA Large Instance (HLI) が電源オフ状態になっている必要があるため、適宜スケジュールしてください。
 
 ### <a name="managed-os-snapshots"></a>マネージド OS スナップショット
 
-Azure では、HLI リソースの OS バックアップを自動的に作成できます。 これらのバックアップは 1 日 1 回作成され、3 つの最新のバックアップが Azure で保持されます。 これは、次のリージョンのすべてのお客様に対しては既定で有効になっています。
+Azure では、HLI リソースの OS バックアップを自動的に作成できます。 これらのバックアップは 1 日 1 回作成され、最新のバックアップが最大 3 つまで Azure で保持されます。 これらのバックアップは、次のリージョンのすべてのお客様に対しては既定で有効になっています。
 - 米国西部
 - オーストラリア東部
 - オーストラリア南東部
 - 米国中南部
 - 米国東部 2
 
-次のリージョンでは、この機能を部分的に利用できます。
+次のリージョンについては、この機能を部分的に利用できます。
 - 米国東部
 - 北ヨーロッパ
 - 西ヨーロッパ
 
-この機能によって作成されるバックアップの頻度または保有期間を変更することはできません。 HLI リソースに異なる OS バックアップ戦略が必要な場合は、Microsoft Operations にサポート チケットを送信して、この機能を無効にしてから、このドキュメントの前のセクションで説明した手順を使用して OS のバックアップを作成するように Microsoft Snapshot Tools for SAP HANA を構成します。
+この機能によって作成されるバックアップの頻度または保有期間を変更することはできません。 HLI リソースに異なる OS バックアップ戦略が必要な場合は、Microsoft Operations にサポート チケットを送信して、この機能をオプトアウトすることができます。 次に、前のセクション「[手動バックアップを実行する](#take-a-manual-backup)」で説明した手順を使用して OS のバックアップをとるように Microsoft Snapshot Tools for SAP HANA を構成します。
+
+## <a name="next-steps"></a>次のステップ
+
+HANA Large Instances の kdump を有効にする方法について説明します。
+
+> [!div class="nextstepaction"]
+> [SAP HANA on Azure Large Instances の kdump](hana-large-instance-enable-kdump.md)

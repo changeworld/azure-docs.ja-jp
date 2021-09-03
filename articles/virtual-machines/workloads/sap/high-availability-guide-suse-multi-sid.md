@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 74606909a0bc87caa6acfb0eaf35c05cf35b1858
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d60ea09896d42fa43a650e210ed3c19d3a99ef4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676935"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450638"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -47,9 +47,9 @@ ms.locfileid: "101676935"
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
 [suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
-[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
-[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-file-server-md%2Fazuredeploy.json
+[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
+[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-file-server-md%2Fazuredeploy.json
 
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
@@ -238,8 +238,8 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
    クラスターにデプロイする追加の SAP システム用のファイル システムで、ファイル `/etc/auto.direct` を更新します。  
 
-   * NFS ファイル サーバーを使用する場合は、[こちら](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation)の手順に従ってください
-   * Azure NetApp Files を使用する場合は、[こちら](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation)の手順に従ってください 
+   * NFS ファイル サーバーを使用する場合は、[SLES 上の SAP NetWeaver 用の Azure VM の高可用性](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation)に関するページにある指示に従ってください
+   * Azure NetApp Files を使用する場合は、[Azure NetApp Files を使用した SLES 上の SAP NW 用の Azure VM の高可用性](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation)に関するページにある指示に従ってください
 
    新しく追加した共有をマウントするには、`autofs` サービスを再起動する必要があります。  
 

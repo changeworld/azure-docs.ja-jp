@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 680563e0688d11e02f79f3c184b38d5a80bafeb0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 01d8f23331525443a9f83245b8eec2b402e92d6e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480359"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443024"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する
 
@@ -29,11 +29,11 @@ ms.locfileid: "110480359"
 
 ## <a name="considerations"></a>考慮事項
 
+* 拡張グループ機能を使用して LDAP を有効にできるのは、ボリュームの作成時のみです。 この機能は、既存のボリューム上でさかのぼって有効にすることはできません。  
+
 * 拡張グループを使用する LDAP は、Active Directory Domain Services (ADDS) または Azure Active Directory ドメインサービス (AADDS) でのみサポートされます。 OpenLDAP またはその他のサードパーティの LDAP ディレクトリサービスはサポートされていません。 
 
 * Azure Active Directory Domain Services (AADDS) を使用している場合は、TLS 経由の LDAP を有効に *しない* でください。  
-
-* 拡張グループ機能を使用して LDAP を有効にすると、LDAP が有効になっている [Kerberos ボリューム](configure-kerberos-encryption.md)では、LDAP ユーザーのファイル所有権が正しく表示されません。 LDAP ユーザーによって作成されたファイルまたはディレクトリは、実際の LDAP ユーザーではなく、既定で `root` が所有者として設定されます。 ただし、`root` アカウントでは、コマンド `chown <username> <filename>` を使用してファイルの所有権を手動で変更できます。 
 
 * ボリュームを作成した後で、LDAP オプションの設定 (有効または無効) を変更することはできません。  
 

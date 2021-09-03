@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーに Power BI を使って接続
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 5/25/2021
+ms.date: 06/30/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 579f97deaadf8005d7a7986ff3b032909c28972e
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: a956d5e3be0a5f92e22dcd1536339ff5244e19dc
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496563"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213357"
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続
 
@@ -37,10 +37,12 @@ Azure でサーバーを作成して、表形式モデルを展開すると、�
     
     [混合ストレージ モード](/power-bi/transform-model/desktop-composite-models)の Power BI モデルがある場合は、 **[ライブ接続]** オプションが **[[DirectQuery]](/power-bi/connect-data/desktop-directquery-datasets-azure-analysis-services)** オプションに置き換えられます。 モデルがインポートから混在ストレージ モードに切り替えられた場合、ライブ接続も自動的に DirectQuery にアップグレードされます。
 
-5. メッセージが表示されたら、ログイン資格情報を入力します。 
+5. 資格情報の入力を求めるメッセージが表示されたら、**Microsoft アカウント** を選択し、 **[サインイン]** をクリックします。 
+
+    :::image type="content" source="media/analysis-services-connect-pbi/aas-sign-in.png" alt-text="Azure AS にサインインする":::
 
    > [!NOTE]
-   > ワンタイムパスコード (OTP) アカウントはサポートされていません。 
+   > Windows 基本認証はサポートされていません。 
 
 6. **[ナビゲーター]** で、サーバーを展開し、接続先のモデルまたはパースペクティブを選択してから **[接続]** をクリックします。 モデルまたはパースペクティブをクリックすると、そのビューのすべてのオブジェクトが表示されます。
 
@@ -55,7 +57,7 @@ Azure でサーバーを作成して、表形式モデルを展開すると、�
 
 システムのパフォーマンスを確保するために、Azure Analysis Services に対して Power BI レポートによって発行されるすべてのクエリに、メモリ制限が強制されます。Azure Analysis Services サーバー上で構成されている[クエリ メモリ制限](/analysis-services/server-properties/memory-properties?view=azure-analysis-services-current&preserve-view=true)は関係ありません。 クエリがメモリを集中的に消費しすぎる場合は、クエリまたはクエリの計算を簡素化することを検討する必要があります。
 
-|                                                           | 要求メモリ制限 |
+|クエリの種類| 要求メモリ制限 |
 |-----------------------------------------------------------|----------------------|
 | Power BI からのライブ接続                            | 10 GB  |
 | 共有ワークスペースの Power BI レポートからの DirectQuery  | 1 GB   |

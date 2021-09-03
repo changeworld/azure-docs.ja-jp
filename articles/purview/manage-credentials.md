@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 61f10707231e88130cffbfffa1c06f33084bfbbd
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 14b11cca3eca6f3d0b89889a4eb1abf3f04f5715
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792146"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487653"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview でのソース認証用の資格情報
 
@@ -77,7 +77,7 @@ Purview マネージド ID へのアクセス権の割り当てを行う前に�
 
 :::image type="content" source="media/manage-credentials/akv-permission-model.png" alt-text="Azure Key Vault アクセス許可モデル"::: 
 
-### <a name="option-1---assign-access-using-using-key-vault-access-policy"></a>オプション 1 - Key Vault アクセス ポリシーを使用してアクセス権を割り当てる  
+### <a name="option-1---assign-access-using-key-vault-access-policy"></a>オプション 1 - Key Vault アクセス ポリシーを使用してアクセス権を割り当てる  
 
 ご利用の Azure Key Vault リソース内のアクセス許可モデルが **コンテナー アクセス ポリシー** に設定されている場合にのみ、次の手順に従います。
 

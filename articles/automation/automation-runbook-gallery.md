@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2df019888d293cd8a25a34e6f0f4e7dd215c6a41
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 1f7a3f31ed67817252f7ba33b9f4a83ef8ccd5c6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030635"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455624"
 ---
 # <a name="use-existing-runbooks-and-modules"></a>既存の Runbook とモジュールを使用する
 
@@ -57,6 +57,9 @@ PowerShell ギャラリーから直接インポートできるのは、Azure por
 PowerShell モジュールには、Runbook で使用できるコマンドレットが含まれています。 Azure Automation でインストールできる既存のモジュールは [PowerShell ギャラリー](https://www.powershellgallery.com)から入手できます。 このギャラリーは Azure portal から起動できます。また、モジュールを Azure Automation に直接インストールするか、手動でダウンロードしてインストールすることができます。
 
 インポートするモジュールを Azure portal で探すこともできます。 Automation Account 用のモジュールは、 **[共有リソース]** の下の **[モジュール ギャラリー]** に表示されます。
+
+> [!IMPORTANT] 
+> Az モジュールを使用して実行するように設計されたスクリプトには、キーワード "AzureRm" を含めないでください。 たとえコメントであっても、このキーワードを含めると、AzureRm が読み込まれ、Az モジュールと競合する可能性があります。
 
 ## <a name="common-scenarios-available-in-the-powershell-gallery"></a>PowerShell ギャラリーで使用できる一般的なシナリオ
 

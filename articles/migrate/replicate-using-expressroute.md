@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: e26434ae1ff2f9d8829d3665807f7d9916233833
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: c16b4a91f297621fa96e0e18f816d77e9f3b4e2a
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792240"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322406"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Azure Migrate: Server Migration を使用して ExpressRoute 経由でデータをレプリケートする
 
@@ -170,48 +170,67 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
 - カスタム DNS を使用している場合は、カスタム DNS の設定を確認し、DNS 構成が正しいことを確認します。 ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](../private-link/private-endpoint-overview.md#dns-configuration)を参照してください。 
 - Azure 提供の DNS サーバーを使用する場合は、このガイドを参考に、[、さらに ](./troubleshoot-network-connectivity.md#validate-the-private-dns-zone) のトラブルシューティングを行います 。   
 
+### <a name="configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-expressroute-private-peering-connectivity"></a>Azure Migrate アプライアンス上でプロキシ バイパス ルールを構成する (ExpressRoute プライベート ピアリング接続の場合) 
+プロキシ バイパスの場合は、次のようにキャッシュ ストレージ アカウントのプロキシ バイパス ルールを追加できます。 
+- _storageaccountname_.blob.core.windows.net.
+
+> [!Important]
+>  Azure Migrate はインターネットへのアクセスを必要とする別のストレージ アカウントを使用するため、*.blob.core.windows.net をバイパスしないでください。 このストレージ アカウント (ゲートウェイ ストレージ アカウント) は、レプリケートされる VM に関する状態情報を格納する目的でのみ使用されます。 ゲートウェイ ストレージ アカウントを見つけるには、Azure Migrate プロジェクトのリソース グループ内のストレージ アカウント名でプレフィックス _**gwsa**_ を探します。 
+
 ## <a name="replicate-data-by-using-an-expressroute-circuit-with-microsoft-peering"></a>ExpressRoute 回線を使用して Microsoft ピアリングでデータをレプリケートする
 
 Microsoft ピアリングまたは既存のパブリック ピアリング ドメイン (新しい ExpressRoute 接続では非推奨) を使用して、ExpressRoute 回線経由でレプリケーション トラフィックをルーティングできます。
 
 ![Microsoft ピアリングを使用したレプリケーションを示す図。](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-レプリケーション データが Microsoft ピアリング回線を通る場合でも、Azure Migrate とのその他の通信 (コントロール プレーン) についてはオンプレミス サイトからのインターネット接続が必要になります。 他のいくつかの URL には、ExpressRoute 経由ではアクセスできません。 レプリケーション アプライアンスまたは Hyper-V ホストは、レプリケーション プロセスを調整するために URL にアクセスする必要があります。 [VMware エージェントレス移行](./migrate-appliance.md#public-cloud-urls)または[エージェントベース移行](./migrate-replication-appliance.md)の移行シナリオに基づいて、URL の要件を確認します。
+レプリケーション データが Microsoft ピアリング回線を通る場合でも、コントロール プレーン トラフィックと、ExpressRoute 経由ではアクセスできないその他の URL についてはオンプレミス サイトからのインターネット接続が必要になります。 レプリケーション アプライアンスまたは Hyper-V ホストは、レプリケーション プロセスを調整するために URL にアクセスする必要があります。 [VMware エージェントレス移行](./migrate-appliance.md#public-cloud-urls)または[エージェントベース移行](./migrate-replication-appliance.md)の移行シナリオに基づいて、URL の要件を確認します。 
 
-オンプレミス サイトでプロキシを使用し、レプリケーション トラフィックに対して ExpressRoute を使用する場合は、オンプレミス アプライアンス上で、関連する URL に対してプロキシ バイパスを構成します。
-
-### <a name="configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-vmware-agentless-migrations"></a>Azure Migrate アプライアンス上でプロキシ バイパス ルールを構成する (VMware エージェントレス移行の場合)
-
-1. リモート デスクトップ経由で Azure Migrate アプライアンスにサインインします。
-1. メモ帳を使用して、*C:/ProgramData/MicrosoftAzure/Config/appliance.json* ファイルを開きます。
-1. そのファイルで、`"EnableProxyBypassList": "false"` という行を `"EnableProxyBypassList": "true"` に変更します。 変更を保存し、アプライアンスを再起動します。
-1. 再起動後、アプライアンス構成マネージャーを開くと、Web アプリの UI にプロキシ バイパス オプションが表示されます。 以下の URL をプロキシ バイパス リストに追加します。
-
-    - .*.vault.azure.net
-    - .*.servicebus.windows.net
-    - .*.discoverysrv.windowsazure.com
-    - .*.migration.windowsazure.com
-    - .*.hypervrecoverymanager.windowsazure.com
-    - .*.blob.core.windows.net
-
-### <a name="configure-proxy-bypass-rules-on-the-replication-appliance-for-agent-based-migrations"></a>レプリケーション アプライアンス上でプロキシ バイパス ルールを構成する (エージェントベース移行の場合)
-
-構成サーバーとプロセス サーバー上でプロキシ バイパス リストを構成するには:
-
-1. システム ユーザーのコンテキストにアクセスするための [PsExec ツール](/sysinternals/downloads/psexec)をダウンロードします。
-1. 次のコマンド行を実行して、システム ユーザーのコンテキストで Internet Explorer を開きます: `psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`。
-1. Internet Explorer でプロキシの設定を追加します。
-1. バイパスの一覧に、*.blob.core.windows.net、*.hypervrecoverymanager.windowsazure.com、*.backup.windowsazure.com という URL を追加します。 
-
-上記のバイパス ルールにより、レプリケーション トラフィックは ExpressRoute を経由し、管理通信はインターネットのプロキシを経由するようになります。
-
-また、次の BGP コミュニティのルート フィルター内でルートをアドバタイズして、Azure Migrate レプリケーション トラフィックがインターネットではなく ExpressRoute 回線を経由するようにする必要もあります。
+ Microsoft ピアリング経由でレプリケーション データを転送する場合は、Azure Storage エンドポイントのルートをアドバタイズするようにルート フィルターを構成します。 これが、ターゲット Azure リージョンのリージョン BGP コミュニティ (移行用リージョン) となります。 Microsoft ピアリング経由でコントロール プレーン トラフィックをルーティングするには、必要に応じて他のパブリック エンドポイントのルートをアドバタイズするようにルート フィルターを構成します。  
 
 - ソース Azure リージョンのリージョン BGP コミュニティ (Azure Migrate プロジェクト リージョン)
 - ターゲット Azure リージョンのリージョン BGP コミュニティ (移行用リージョン)
 - Azure Active Directory の BGP コミュニティ (12076:5060)
 
 詳細については、[ルート フィルター](../expressroute/how-to-routefilter-portal.md)と、[ExpressRoute の BGP コミュニティ](../expressroute/expressroute-routing.md#bgp)の一覧に関するページを参照してください。
+
+### <a name="proxy-configuration-for-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリングのためのプロキシ構成
+
+アプライアンスがインターネット接続にプロキシを使用する場合、特定の URL に対してプロキシ バイパスを構成して、それらが Microsoft ピアリング回線経由でルーティングされるようにすることが必要な場合があります。 
+
+#### <a name="configure-proxy-bypass-rules-for-expressroute-microsoft-peering-on-the-azure-migrate-appliance-for-vmware-agentless-migrations"></a>Azure Migrate アプライアンス上で ExpressRoute Microsoft ピアリングのためのプロキシ バイパス ルールを構成する (VMware エージェントレス移行の場合)
+
+1. リモート デスクトップ経由で Azure Migrate アプライアンスにサインインします。
+2.  メモ帳を使用して、*C:/ProgramData/MicrosoftAzure/Config/appliance.json* ファイルを開きます。
+3. そのファイルで、`"EnableProxyBypassList": "false"` という行を `"EnableProxyBypassList": "true"` に変更します。 変更を保存し、アプライアンスを再起動します。
+4. 再起動後、アプライアンス構成マネージャーを開くと、Web アプリの UI にプロキシ バイパス オプションが表示されます。 
+5. レプリケーション トラフィックの場合は、".*.blob.core.windows.net" に対してプロキシ バイパス ルールを構成できます。 必要に応じて、他のコントロール プレーン エンドポイントに対してプロキシ バイパス ルールを構成できます。 たとえば、次のエンドポイントが該当します。 
+
+    - .*.vault.azure.net
+    - .*.servicebus.windows.net
+    - .*.discoverysrv.windowsazure.com
+    - .*.migration.windowsazure.com
+    - .*.hypervrecoverymanager.windowsazure.com
+
+> [!Note]
+> 以下の URL には ExpressRoute 経由でアクセスできないため、インターネット接続が必要です。*.portal.azure.com、*.windows.net、*.msftauth.net、*.msauth.net、*.microsoft.com、*.live.com、*.office.com、*.microsoftonline.com、*.microsoftonline-p.com、*.microsoftazuread-sso.com、management.azure.com、 *.services.visualstudio.com (オプション)、aka.ms/* (オプション)、download.microsoft.com/download
+
+
+#### <a name="configure-proxy-bypass-rules-expressroute-microsoft-peering-on-the-replication-appliance-for-agent-based-migrations"></a>レプリケーション アプライアンス上で ExpressRoute Microsoft ピアリングのためのプロキシ バイパス ルールを構成する (エージェントベース移行の場合)
+
+構成サーバーとプロセス サーバー上でプロキシ バイパス リストを構成するには:
+
+1. システム ユーザーのコンテキストにアクセスするための [PsExec ツール](/sysinternals/downloads/psexec)をダウンロードします。
+2. 次のコマンド行を実行して、システム ユーザーのコンテキストで Internet Explorer を開きます: `psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`。
+3. Internet Explorer でプロキシの設定を追加します。
+4. レプリケーション トラフィックの場合は、".*.blob.core.windows.net" に対してプロキシ バイパス ルールを構成できます。 必要に応じて、他のコントロール プレーン エンドポイントに対してプロキシ バイパス ルールを構成できます。 たとえば、次のエンドポイントが該当します。 
+
+    - .*.backup.windowsazure.com
+    - .*.hypervrecoverymanager.windowsazure.com
+
+Azure Storage エンドポイントに対してバイパス ルールを構成することで、レプリケーション トラフィックは ExpressRoute を経由し、コントロール プレーン通信はインターネットのプロキシを経由するようになります。 
+
+> [!Note]
+> 以下の URL には ExpressRoute 経由でアクセスできないため、インターネット接続が必要です。*.portal.azure.com、*.windows.net、*.msftauth.net、*.msauth.net、*.microsoft.com、*.live.com、*.office.com、*.microsoftonline.com、*.microsoftonline-p.com、*.microsoftazuread-sso.com、management.azure.com、 *.services.visualstudio.com (オプション)、aka.ms/* (オプション)、download.microsoft.com/download、dev.mysql.com
 
 ## <a name="next-steps"></a>次の手順
 

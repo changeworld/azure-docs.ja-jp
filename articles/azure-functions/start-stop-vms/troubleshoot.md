@@ -3,14 +3,14 @@ title: VM の開始/停止のトラブルシューティング (プレビュー)
 description: この記事では、Azure VM の VM の開始/停止 (プレビュー) 機能を使用して、発生した問題をトラブルシューティングする方法について説明します。
 services: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/31/2021
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 587dddfde930bb64aa21f2e24c26d815e60ab9b0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2908f9a8383897ae0bda162e6f980e02d6c81bc1
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791692"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966991"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>VM の開始/停止 (プレビュー) に関する一般的な問題のトラブルシューティング
 
@@ -65,3 +65,5 @@ Azure Functions とロジック アプリの監視の詳細を確認してくだ
 * [Azure Functions の監視を構成する方法](../../azure-functions/configure-monitoring.md)。
 
 * [ロジック アプリの監視](../../logic-apps/monitor-logic-apps.md)。
+
+* デプロイ中に問題が発生した場合は、Start/Stop VMs v2 (プレビュー) を使用しているときの問題が発生しています。関連する質問がある場合は、[GitHub](https://github.com/microsoft/startstopv2-deployments/issues) に問題を送信できます。 このプレビュー バージョンでは、[Azure サポート サイト](https://azure.microsoft.com/support/options/)から Azure サポート インシデントを提出することはできません。 

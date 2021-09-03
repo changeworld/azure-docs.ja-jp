@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 3e6c4b73e8aeb26c6ac4025ef3c07fb4f8d48eaf
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d5e405447a93f23f4845a018a74229aacbbad09c
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308644"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302124"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>読み取り OCR Docker コンテナーを構成する
 
@@ -41,6 +41,9 @@ ms.locfileid: "107308644"
 |いいえ|Storage:ObjectStore:AzureBlob:ConnectionString| v3.x コンテナーのみ。 Azure BLOB ストレージの接続文字列。 |
 |いいえ|Storage:TimeToLiveInDays| v3.x コンテナーのみ。 結果の有効期限 (日数)。 この設定によって、システムが認識結果をクリアするタイミングが指定されます。 既定値は 2 日 (48 時間) です。これは、その期間より長く存続するすべての結果は、正常に取得されるとは限らないことを意味します。 |
 |いいえ|Task:MaxRunningTimeSpanInMinutes| v3.x コンテナーのみ。 1 つの要求の最大実行時間。 既定値は 60 分です。 |
+|いいえ|EnableSyncNTPServer| v3.x コンテナーのみ。 NTP サーバーの同期メカニズムを有効にして、システム時間と予想されるタスク実行時間の同期を確保します。 これには、外部のネットワーク トラフィックが必要であることに注意してください。 既定では、 `true`です。 |
+|いいえ|NTPServerAddress| v3.x コンテナーのみ。 時刻同期用 NTP サーバー。 既定では、 `time.windows.com`です。 |
+|いいえ|Mounts::Shared| v3.x コンテナーのみ。 認識結果を格納するためのローカル フォルダー。 既定値は、`/share` です。 Azure Blob Storage を使用せずにコンテナーを実行する場合は、認識結果を保存するのに十分な領域を確保するために、このフォルダーにボリュームをマウントすることをお勧めします。 |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 

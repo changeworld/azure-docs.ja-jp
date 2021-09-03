@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 351c959a4d3b6cc53064b9d1b65c1282647f308e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/17/2021
+ms.openlocfilehash: e4e6af7e0fd475d60c38a021d2cefec4cbc39de3
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605401"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397297"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの制限
 
@@ -30,16 +30,16 @@ ms.locfileid: "105605401"
 | B1ms                 | 1      | 2 GiB       | 50              | 47                   |
 | B2s                  | 2      | 4 GiB       | 100             | 97                   |
 | **汎用**  |        |             |                 |                      |
-| D2s_v3               | 2      | 8 GiB       | 214             | 211                  |
-| D4s_v3               | 4      | 16 GiB      | 429             | 426                  |
-| D8s_v3               | 8      | 32 GiB      | 859             | 856                  |
-| D16s_v3              | 16     | 64 GiB      | 1718            | 1715                 |
-| D32s_v3              | 32     | 128 GiB     | 3437            | 3434                 |
+| D2s_v3               | 2      | 8 GiB       | 859             | 856                  |
+| D4s_v3               | 4      | 16 GiB      | 1719            | 1716                 |
+| D8s_v3               | 8      | 32 GiB      | 3438            | 3435                 |
+| D16s_v3              | 16     | 64 GiB      | 5000            | 4997                 |
+| D32s_v3              | 32     | 128 GiB     | 5000            | 4997                 |
 | D48s_v3              | 48     | 192 GiB     | 5000            | 4997                 |
 | D64s_v3              | 64     | 256 GiB     | 5000            | 4997                 |
 | **メモリ最適化** |        |             |                 |                      |
-| E2s_v3               | 2      | 16 GiB      | 1718            | 1715                 |
-| E4s_v3               | 4      | 32 GiB      | 3437            | 3434                 |
+| E2s_v3               | 2      | 16 GiB      | 1719            | 1716                 |
+| E4s_v3               | 4      | 32 GiB      | 3438            | 3433                 |
 | E8s_v3               | 8      | 64 GiB      | 5000            | 4997                 |
 | E16s_v3              | 16     | 128 GiB     | 5000            | 4997                 |
 | E32s_v3              | 32     | 256 GiB     | 5000            | 4997                 |
@@ -47,7 +47,7 @@ ms.locfileid: "105605401"
 | E64s_v3              | 64     | 432 GiB     | 5000            | 4997                 |
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
-> FATAL:  sorry, too many clients already
+> FATAL:  sorry, too many clients already. (致命的: 申し訳ありません。クライアントが多すぎます。)
 
 > [!IMPORTANT]
 > 最適なエクスペリエンスを得るために、pgBouncer のような接続プーラーを使用して、接続を効率的に管理することをお勧めします。
@@ -96,7 +96,7 @@ PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリ�
 
 - Postgres 10 以前はサポートされていません。 以前のバージョンの Postgres が必要な場合は、 [単一サーバー](../overview-single-server.md) オプションを使用することをお勧めします。
 - 現時点では、拡張機能のサポートは Postgres `contrib` 拡張機能に限定されています。
-- 現時点では、VNET 内のデータベースサーバーや、バースト可能のサーバーには、組み込みの PgBouncer 接続プーラーを使用できません。
+- 現時点では、バースト可能のサーバーには、組み込みの PgBouncer 接続プーラーを使用できません。
 
 ### <a name="stopstart-operation"></a>停止/開始操作
 

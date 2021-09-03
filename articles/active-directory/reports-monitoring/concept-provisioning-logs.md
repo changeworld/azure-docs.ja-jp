@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory のプロビジョニング ログ (プレビュー) | Microsoft Docs
+title: Azure Active Directory のプロビジョニング ログ | Microsoft Docs
 description: Azure Active Directory のプロビジョニング ログの概要。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 4/25/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42a1ea52c9de3332c2b73b5c03e203f6d6694c49
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: d110abaf9621b638d698bef08d579a5ab2c4285f
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017393"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113362073"
 ---
-# <a name="provisioning-logs-in-azure-active-directory-preview"></a>Azure Active Directory のプロビジョニング ログ (プレビュー)
+# <a name="provisioning-logs-in-azure-active-directory"></a>Azure Active Directory のプロビジョニング ログ
 
 IT 管理者は、IT 環境がどのように動作しているかを知る必要があります。 システムの正常性に関する情報を使用すると、潜在的な問題に対処する必要があるかどうか、およびその方法を評価できます。 
 

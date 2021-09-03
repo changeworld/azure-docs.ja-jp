@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/02/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: c0c170fefe85393fb3c8b443a96aaddbb98eb65e
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 0ae0fa18c2d3d223435656d871bd0d5be00627e4
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528324"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113356953"
 ---
 ### <a name="on-demand-bursting-preview"></a>オンデマンド バースト (プレビュー)
 
@@ -69,9 +69,17 @@ Premium SSD の場合、クレジットベースのバーストは、P20 以下�
 VM レベルのバーストでは、バーストのクレジットベース モデルのみが使用され、これをサポートするすべての VM で既定で有効になっています。
 
 サポートされている次のサイズでは、Azure パブリック クラウド内のすべてのリージョンで、VM レベルでのバーストが有効になっています。 
+- [Dsv4 シリーズ](../articles/virtual-machines/dv4-dsv4-series.md)
+- [Dasv4 シリーズ](../articles/virtual-machines/dav4-dasv4-series.md)
+- [Ddsv4 シリーズ](../articles/virtual-machines/ddv4-ddsv4-series.md)
+- [Esv4 シリーズ](../articles/virtual-machines/ev4-esv4-series.md)
+- [Easv4 シリーズ](../articles/virtual-machines/eav4-easv4-series.md)
+- [Edsv4 シリーズ](../articles/virtual-machines/edv4-edsv4-series.md)
+- [B シリーズ](../articles/virtual-machines/sizes-b-series-burstable.md)
+- [Fsv2 シリーズ](../articles/virtual-machines/fsv2-series.md)
+- [Dsv3 シリーズ](../articles/virtual-machines/dv3-dsv3-series.md)
+- [Esv3 シリーズ](../articles/virtual-machines/ev3-esv3-series.md)
 - [Lsv2 シリーズ](../articles/virtual-machines/lsv2-series.md)
-- [Dv3 および Dsv3 シリーズ](../articles/virtual-machines/dv3-dsv3-series.md)
-- [Ev3 および Esv3 シリーズ](../articles/virtual-machines/ev3-esv3-series.md)
 
 ## <a name="bursting-flow"></a>バースティングのフロー
 
@@ -121,7 +129,7 @@ VM レベルのバーストでは、バーストのクレジットベース モ�
     - 最大バースト MB/秒:1,280
 - P50 OS ディスク
     - プロビジョニングされる MB/秒:250 
-- 2 つの P10 データ ディスク 
+- 2 台の P50 データ ディスク 
     - プロビジョニングされる MB/秒:250
 
  最初の起動の後、VM 上でアプリケーションが実行され、重要度の低いワークロードが発生します。 このワークロードでは、すべてのディスクに均等に分散される 30 MB/秒が必要です。

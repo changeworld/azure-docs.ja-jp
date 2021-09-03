@@ -1,6 +1,6 @@
 ---
 title: Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
 services: azure-arc
 ms.service: azure-arc
@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 12631adea948c6a59f935ba409dcc925268c6319
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 727c792daa20c392a87f7c57100b72ae79a971f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412261"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733501"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループの構成を表示する
 
@@ -155,12 +155,12 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-5ccd02e6   193
 
    それらはそれぞれ、3 つのノード/ポッド(1 コーディネーターと 2 ワーカー) で実行されます。
 
-- **azdata を使用する:**
+- **Azure CLI (az) の場合:**
 
 次のコマンドを実行します。 出力には、kubectl で示される同様の情報が示されます。
 
-   ```console
-   azdata arc postgres server list
+   ```azurecli
+   az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 
    `output
    Name        State    Workers
@@ -237,7 +237,7 @@ Events:               <none>
 ```
 
 >[!NOTE]
->2020 年 10 月のリリースより前では、前の例の `Workers` は `Shards` でした。 詳細については、「[リリースノート - Azure Arc 対応データ サービス (プレビュー)](release-notes.md)」を参照してください。
+>2020 年 10 月のリリースより前では、前の例の `Workers` は `Shards` でした。 詳細については、「[リリース ノート - Azure Arc 対応データ サービス (プレビュー)](release-notes.md)」を参照してください。
 
 先述の `servergroup` の説明のいくつかの特定の重要ポイントに注目してみましょう。 それにより、このサーバー グループについて何がわかりますか?
 
@@ -281,18 +281,18 @@ Events:               <none>
    >  State:              Ready
    > ```
 
-**azdata を使用する:**
+**Azure CLI (az) の場合:**
 
 コマンドの一般的な形式は次のとおりです。
 
-```console
-azdata arc postgres server show -n <server group name>
+```azurecli
+az postgres arc-server show -n <server group name>  --k8s-namespace <namespace> --use-k8s
 ```
 
 次に例を示します。
 
-```console
-azdata arc postgres server show -n postgres02
+```azurecli
+az postgres arc-server show -n postgres02 --k8s-namespace <namespace> --use-k8s
 ```
 
 kubectl によって返されるものとよく似た形式と内容で、以下の出力が返されます。
@@ -367,4 +367,4 @@ kubectl によって返されるものとよく似た形式と内容で、以下
 - [ストレージ構成について確認する](storage-configuration.md)
 - [データベース インスタンスを監視する方法を確認する](monitor-grafana-kibana.md)
 - [Azure Arc 対応の PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する](using-extensions-in-postgresql-hyperscale-server-group.md)
-- [Azure Arc 対応の PostgreSQL Hyperscale サーバー グループのセキュリティを構成する](configure-security-postgres-hyperscale.md)
+- [Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのセキュリティを構成する](configure-security-postgres-hyperscale.md)

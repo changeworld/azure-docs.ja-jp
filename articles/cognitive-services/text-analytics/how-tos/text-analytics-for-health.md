@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 06/18/2021
 ms.author: aahi
-ms.openlocfilehash: 37dd6eddc302062d756df79a03bd13cfc8c881e1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5b1883b06ae234ed8a4f9adf949cf26919f7b877
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757177"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550158"
 ---
-# <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
+# <a name="how-to-use-text-analytics-for-health"></a>方法: Text Analytics for Health を使用する
 
 > [!IMPORTANT] 
-> Text Analytics for Health は、"現状のまま"、"保証なしで" 提供されるプレビュー機能です。 そのため、Text Analytics for Health (プレビュー) は、運用環境に実装またはデプロイして使用しないでください。 Text Analytics for Health は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、マイクロソフトからはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、Text Analytics for Health の使用に関するすべての責任を持ちます。 お客様は [UMLS Metathesaurus 使用許諾契約書付録](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html)または将来の同等のリンクに対して設定された条項に基づいて、使用する予定のすべてのソース ボキャブラリを個別にライセンスする必要があります。 お客様は、地理的または他の適用される制限を含め、これらのライセンス条項に準拠する責任を負います。
+> Text Analytics for Health は、"現状のまま"、"保証なしで" 提供される機能です。 Text Analytics for Health は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、マイクロソフトからはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、Text Analytics for Health の使用に関するすべての責任を持ちます。 お客様は [UMLS Metathesaurus 使用許諾契約書付録](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html)または将来の同等のリンクに対して設定された条項に基づいて、使用する予定のすべてのソース ボキャブラリを個別にライセンスする必要があります。 お客様は、地理的または他の適用される制限を含め、これらのライセンス条項に準拠する責任を負います。
 
 
 Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストからの、関連する医療情報の抽出とラベル付けが行われる、Text Analytics API サービスの機能です。  このサービスを利用するには、次の 2 つの方法があります。 
@@ -94,17 +94,15 @@ Text Analytics クライアント ライブラリの最新のプレリリース�
 
 ### <a name="preparation"></a>準備
 
-Text Analytics for Health を使用すると、処理するテキストの量が少ない方が、高い品質の結果を得られます。 これは、大きなテキスト ブロックの方がよい結果が得られる、キー フレーズ抽出のような他の Text Analytics の機能とは対照的です。 これらの操作から最善の結果を得るには、必要に応じて入力を再構成することを検討します。
-
 JSON ドキュメントは、次の形式である必要があります: ID、テキスト、および言語。 
 
-ドキュメントのサイズは、ドキュメントごとに 5120 文字未満でなければなりません。 1 つのコレクションで許可されるドキュメントの最大数については、概念の下にある[データ制限](../concepts/data-limits.md?tabs=version-3)に関する記事を参照してください。 コレクションは、要求の本文で送信されます。
+ドキュメントのサイズは、ドキュメントごとに 5120 文字未満でなければなりません。 1 つのコレクションで許可されるドキュメントの最大数については、概念の下にある[データ制限](../concepts/data-limits.md?tabs=version-3)に関する記事を参照してください。 コレクションは、要求の本文で送信されます。 テキストがこの制限を超える場合は、テキストを別の要求に分割することを検討してください。 最良の結果を得るには、テキストを文単位で分割してください。
 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>ホストされた非同期 Web API に対する API 要求を作成する
 
-コンテナーとホストされた Web API の両方について、POST 要求を作成する必要があります。 [Postman](text-analytics-how-to-call-api.md)、cURL コマンド、または [Text Analytics for Health のホストされた API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Health)の **API テスト コンソール** を使用して、POST 要求をすばやく作成し、目的のリージョンのホストされた Web API に送信することができます。 API v3.1-preview.5 エンドポイントでは、`loggingOptOut` ブール型クエリ パラメーターを使用して、トラブルシューティングのためにログ記録を有効にできます。  要求クエリで指定されていない場合、既定値は TRUE です。
+コンテナーとホストされた Web API の両方について、POST 要求を作成する必要があります。 [Postman](text-analytics-how-to-call-api.md)、cURL コマンド、または [Text Analytics for Health のホストされた API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Health)の **API テスト コンソール** を使用して、POST 要求をすばやく作成し、目的のリージョンのホストされた Web API に送信することができます。 API v3.1 エンドポイントでは、`loggingOptOut` ブール型クエリ パラメーターを使用して、トラブルシューティングのためにログ記録を有効にできます。  要求クエリで指定されていない場合、既定値は TRUE です。
 
-POST 要求を `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs` に送信します。次に示すのは、Text Analytics for Health API 要求の POST 本文に添付される JSON ファイルの例です。
+POST 要求を `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/health/jobs` に送信します。次に示すのは、Text Analytics for Health API 要求の POST 本文に添付される JSON ファイルの例です。
 
 ```json
 example.json
@@ -124,20 +122,20 @@ example.json
 
 この POST 要求は非同期操作にジョブを送信するために使用されるので、応答オブジェクトにテキストはありません。  ただし、ジョブと出力の状態を確認するための GET 要求を行うには、応答ヘッダーの operation-location KEY 値が必要です。  POST 要求の応答ヘッダーの operation-location KEY 値の例を次に示します。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/health/jobs/<jobID>`
 
 ジョブの状態を確認するには、POST 応答の operation-location KEY ヘッダー値の URL に対して GET 要求を行います。  ジョブの状態を反映するには、次の状態が使用されます: `NotStarted`、`running`、`succeeded`、`failed`、`rejected`、`cancelling`、`cancelled`。  
 
-`NotStarted` または `running` 状態のジョブは、GET 要求と同じ URL に対する DELETE HTTP 呼び出しを使用して取り消すことができます。  DELETE 呼び出しの詳細については、[Text Analytics for Health のホストされた API のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/CancelHealthJob)に関するページを参照してください。
+`NotStarted` または `running` 状態のジョブは、GET 要求と同じ URL に対する DELETE HTTP 呼び出しを使用して取り消すことができます。  DELETE 呼び出しの詳細については、[Text Analytics for Health のホストされた API のリファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/CancelHealthJob)に関するページを参照してください。
 
 GET 要求の応答の例を次に示します。  出力を取得に使用できるのは `expirationDateTime` (ジョブが作成されてから 24 時間) が経過するまでです。それを過ぎると、出力は消去されます。
 
 ```json
 {
-    "jobId": "be437134-a76b-4e45-829e-9b37dcd209bf",
-    "lastUpdateDateTime": "2021-03-11T05:43:37Z",
-    "createdDateTime": "2021-03-11T05:42:32Z",
-    "expirationDateTime": "2021-03-12T05:42:32Z",
+    "jobId": "69081148-055b-4f92-977d-115df343de69",
+    "lastUpdateDateTime": "2021-07-06T19:06:03Z",
+    "createdDateTime": "2021-07-06T19:05:41Z",
+    "expirationDateTime": "2021-07-07T19:05:41Z",
     "status": "succeeded",
     "errors": [],
     "results": {
@@ -219,14 +217,14 @@ GET 要求の応答の例を次に示します。  出力を取得に使用で�
                         "length": 13,
                         "text": "intravenously",
                         "category": "MedicationRoute",
-                        "confidenceScore": 1.0
+                        "confidenceScore": 0.99
                     },
                     {
                         "offset": 73,
                         "length": 7,
                         "text": "120 min",
                         "category": "Time",
-                        "confidenceScore": 0.94
+                        "confidenceScore": 0.98
                     }
                 ],
                 "relations": [
@@ -274,7 +272,7 @@ GET 要求の応答の例を次に示します。  出力を取得に使用で�
             }
         ],
         "errors": [],
-        "modelVersion": "2021-03-01"
+        "modelVersion": "2021-05-15"
     }
 }
 ```
@@ -285,7 +283,7 @@ GET 要求の応答の例を次に示します。  出力を取得に使用で�
 [Postman を使用](text-analytics-how-to-call-api.md)するか、次の cURL 要求の例を使用して、デプロイしたコンテナーにクエリを送信します。`serverURL` 変数は適切な値に置き換えます。  コンテナーへの URL での API のバージョンは、ホストされた API とは異なることに注意してください。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 

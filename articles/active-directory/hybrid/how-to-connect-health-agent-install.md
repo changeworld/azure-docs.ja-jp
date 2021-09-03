@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 08aad681160a4f0d369fd312ba58c3ea6c7e8780
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 31dd21a7c525bd1e5dc659b611f72c2c33c6f043
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454125"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725781"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -42,7 +42,7 @@ ms.locfileid: "110454125"
 | 送信トラフィックの TLS 検査がフィルター処理されているか無効になっている。 | ネットワーク層で送信トラフィックの TLS 検査または終了が設定されている場合、エージェントの登録手順またはデータのアップロード操作が失敗する可能性があります。 詳細については、[TLS 検査の設定](/previous-versions/tn-archive/ee796230(v=technet.10))に関するページを参照してください。 |
 | サーバー上のファイアウォール ポートでエージェントが実行されている。 |エージェントが Azure AD Connect Health サービス エンドポイントと通信できるように、次のファイアウォール ポートが開いている必要があります。 <br /><li>TCP ポート 443</li><li>TCP ポート 5671</li> <br />エージェントの最新バージョンでは、ポート 5671 は必要ありません。 ポート 443 のみが必要になるように、最新バージョンにアップグレードしてください。 詳細については、「[ハイブリッド ID で必要なポートとプロトコル](./reference-connect-ports.md)」を参照してください。 |
 | Internet Explorer のセキュリティ強化が有効になっている場合に、指定された Web サイトを許可する。  |Internet Explorer のセキュリティ強化が有効になっている場合は、エージェントをインストールするサーバーで次の Web サイトを許可します。<br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>Azure AD によって信頼されている組織のフェデレーション サーバー (たとえば、https:\//sts.contoso.com)</li> <br />詳細については、[Internet Explorer の構成方法](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)に関するページを参照してください。 ネットワークにプロキシがある場合は、この表の最後に示されている注意を参照してください。|
-| PowerShell バージョン 4.0 以降がインストールされている。 | Windows Server 2012 には、PowerShell バージョン 3.0 が含まれています。 このバージョンは、エージェントには十分では "*ありません*"。</br></br> Windows Server 2012 R2 以降には、要件を満たす最新バージョンの PowerShell が含まれています。|
+| PowerShell バージョン 5.0 以降がインストールされている。 | Windows Server 2016 には、PowerShell バージョン 5.0 が含まれています。 
 |FIPS (Federal Information Processing Standards) が無効になっている。|Azure AD Connect Health エージェントで FIPS はサポートされていません。|
 
 > [!IMPORTANT]
@@ -174,7 +174,7 @@ PowerShell ウィンドウが開き、エージェント登録プロセスが開
 3. 右側の **[現在のログをフィルター]** を選択します。
 4. **[イベント ソース]** で **[AD FS の監査]** を選択します。
 
-    監査ログの詳細については、「[操作に関する質問](reference-connect-health-faq.md#operations-questions)」を参照してください。
+    監査ログの詳細については、「[操作に関する質問](/azure/active-directory/hybrid/reference-connect-health-faq#operations-questions)」を参照してください。
 
     ![[現在のログをフィルター] ウィンドウを示すスクリーンショット。 [イベント ソース] フィールドで "AD FS の監査" が選択されています。](./media/how-to-connect-health-agent-install/adfsaudit.png)
 
@@ -407,5 +407,5 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)
 * [Azure AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)
-* [Azure AD Connect Health の FAQ](reference-connect-health-faq.md)
+* [Azure AD Connect Health の FAQ](reference-connect-health-faq.yml)
 * [Azure AD Connect Health のバージョン履歴](reference-connect-health-version-history.md)

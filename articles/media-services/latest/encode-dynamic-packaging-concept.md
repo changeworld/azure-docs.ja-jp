@@ -9,59 +9,97 @@ ms.workload: media
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: c2ffda7400109e16cf1110a4e14ecbc3604a7ecf
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: acc993f5690fbc250659830b52099f8d3d966421
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492309"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322167"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Microsoft Azure Media Services は、多くのメディア ソース ファイル形式をエンコードするために使用できます。 これは、コンテンツ保護の有無に関係なく、さまざまなストリーミング プロトコルを介して配信され、すべての主要なデバイス (iOS デバイスや Android デバイスなど) に到達します。 これらのクライアントは、さまざまなプロトコルを認識します。 たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスでは、HLS と MPEG DASH がサポートされます。
+Azure Media Services では、HLS および MPEG DASH ストリーミング プロトコル形式でコンテンツを配信する組み込みの配信元サーバーとパッケージ機能が提供されます。 AMS では、[ストリーミング エンドポイント](stream-streaming-endpoint-concept.md)は、これらの一般的な形式を使用したアダプティブ ビットレート ストリーミングをサポートするクライアント プレーヤーに、フォーマットされた HLS および DASH コンテンツを送信する "配信元" サーバーとして機能します。 また、ストリーミング エンドポイントでは、すべての主要なデバイス (iOS デバイスや Android デバイスなど) に到達するために、Just-In-Time やコンテンツ保護を有効または無効にしたダイナミック パッケージなどの多くの機能もサポートされています。 
+
+現在市場にあるほとんどのブラウザーとモバイル デバイスでは、HLS または DASH のストリーミング プロトコルがサポートおよび認識されています。 たとえば、iOS ではストリームを HTTP ライブ ストリーミング (HLS) 形式で配信する必要があり、Android デバイスでは、HLS に加えて特定のモデルで (または Android デバイス用のアプリケーション レベル プレーヤーの [Exoplayer](https://exoplayer.dev/) を使用して) MPEG DASH がサポートされます。
 
 Media Services では、[ストリーミング エンドポイント](stream-streaming-endpoint-concept.md) (配信元) は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 "*ダイナミック パッケージ*" は、すべてのストリーミング エンドポイントに標準で付属する機能です。
 
+Just-In-Time パッケージには、次の利点があります。
+
+* すべてのファイルを標準の MP4 ファイル形式で格納できます
+* 静的にパッケージ化された HLS 形式と DASH 形式の複数のコピーを BLOB ストレージに格納する必要がないため、格納されるビデオ コンテンツの量が減り、ストレージの全体的なコストが削減されます
+* カタログ内の静的コンテンツを再パッケージ化することなく、時間の経過と共に進化する新しいプロトコルの更新と仕様の変更をすぐに利用できます
+* ストレージ内の同じ MP4 ファイルを使用して、暗号化と DRM の有無に関係なくコンテンツを配信できます
+* 単純な資産レベル フィルターまたはグローバル フィルターを使用してマニフェストを動的フィルター処理または変更して、特定のトラック、解像度、言語を削除したり、コンテンツの再エンコードや再レンダリングを行わずに、同じ MP4 ファイルから短いハイライト クリップを提供したりすることができます。 
+
 ## <a name="to-prepare-your-source-files-for-delivery"></a>ソース ファイルをデリバリー用に準備するには
 
-ダイナミック パッケージを活用するには、中間 (ソース) ファイルを一連の複数ビットレート MP4 (ISO Base Media 14496-12) ファイルに[エンコード](encode-concept.md)する必要があります。 エンコードされた MP4 を含む[資産](assets-concept.md)と、Media Services のダイナミック パッケージで必要とされるストリーミング構成ファイルが必要です。 この一連の MP4 ファイルから、ダイナミック パッケージを使用することで、以下に説明するストリーミング メディア プロトコルを介してビデオを配信することができます。
+ダイナミック パッケージを活用するには、中間 (ソース) ファイルを一連の単一または複数のビットレート MP4 (ISO Base Media 14496-12) ファイルに[エンコード](encode-concept.md)する必要があります。 エンコードされた MP4 を含む[資産](assets-concept.md)と、Media Services のダイナミック パッケージで必要とされるストリーミング構成ファイルが必要です。 この一連の MP4 ファイルから、ダイナミック パッケージを使用することで、以下に説明するストリーミング メディア プロトコルを介してビデオを配信することができます。
+
+通常は、Azure Media Services の標準エンコーダーを使用して、コンテンツに対応したエンコード プリセットまたはアダプティブ ビットレート プリセットを使用することによって、このコンテンツを生成します。  どちらの場合も、ストリーミングおよび動的パッケージに対応した一連の MP4 ファイルが生成されます。  または、外部サービス、オンプレミス、または独自の VM またはサーバーレス関数アプリでエンコードすることもできます。 外部でエンコードされたコンテンツは、アダプティブ ビットレート ストリーミング形式のエンコード要件を満たしている場合、ストリーミング用の資産にアップロードできます。 ストリーミング用に事前にエンコードされた MP4 をアップロードするプロジェクトの例については、.NET SDK サンプルの「[Stream Existing Mp4 ファイル](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)」を参照してください。
+
 
 Azure Media Services のダイナミック パッケージでは、MP4 コンテナー形式のビデオおよびオーディオ ファイルのみがサポートされています。 Dolby などの代替コーデックを使用するときは、オーディオ ファイルを MP4 コンテナーにエンコードする必要もあります。  
 
 > [!TIP]
-> MP4 およびストリーミング構成ファイルを取得する方法の 1 つは、[Media Services を使用してお使いの中間ファイルをエンコードする](#encode-to-adaptive-bitrate-mp4s)ことです。 
+> MP4 およびストリーミング構成ファイルを取得する方法の 1 つは、[Media Services を使用してお使いの中間ファイルをエンコードする](#encode-to-adaptive-bitrate-mp4s)ことです。  [コンテンツ対応エンコード プリセット](encode-content-aware-concept.md)を使用して、コンテンツに最適なアダプティブ ストリーミング レイヤーと設定を生成することをお勧めします。 [VideoEncoding フォルダーの .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding) を使用したエンコードのコード サンプルを参照してください 
 
-エンコードされた資産内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、MPEG DASH、またはスムーズ ストリーミング) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
+エンコードされた資産内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](stream-streaming-locators-concept.md)を使用して資産を公開し、適切な HLS および DASH ストリーミング URL をビルドする必要があります。 URL の format クエリで使用されるプロトコルを変更することで、サービスでは適切なストリーミング マニフェスト (HLS、MPEG DASH) が配信されます。
 
-その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
+その結果、保存と課金の対象となるのは、単一のストレージ形式 (MP4) のファイルのみです。Media Services では、クライアント プレーヤーからの要求に応じて適切な HLS または DASH マニフェストを生成して提供します。
 
 Media Services 動的暗号化を使用してコンテンツを保護する場合は、「[ストリーミング プロトコルと暗号化の種類](drm-content-protection-concept.md#streaming-protocols-and-encryption-types)」を参照してください。
 
-### <a name="hls-protocol"></a>HLS プロトコル
+## <a name="deliver-hls"></a>HLS を配信する
+### <a name="hls-dynamic-packaging"></a>HLS ダイナミック パッケージ
 
-ストリーミング クライアントは、次の HLS 形式を指定できます。
+ストリーミング クライアントは、次の HLS 形式を指定できます。 最新のプレーヤーおよび iOS デバイスとの互換性のために CMAF 形式を使用することをお勧めします。  レガシ デバイスの場合は、format クエリ文字列を変更するだけで、v4 と v3 の形式も使用できます。
 
-|Protocol|例|
-|---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
+|Protocol| [書式設定文字列]| 例|
+|---|---|---|
+|HLS CMAF (推奨)| format=m3u8-cmaf | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
+|HLS V4 |  format=m3u8-aapl | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
+|HLS V3 | format=m3u8-aapl-v3 | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
+
 
 > [!NOTE]
 > Apple の以前のガイドラインでは、低帯域幅ネットワークのフォールバックではオーディオのみのストリームを提供することを推奨していました。  現在、Media Services エンコーダーではオーディオのみのトラックが自動的に生成されます。Apple のガイドラインでは、特に Apple TV の配信では、オーディオのみのトラックを "*含めない*" ように定められています。  プレーヤーが既定でオーディオのみのトラックを含めないようにするには、HLS でオーディオのみの再生を削除する "audio-only=false" タグを URL に使用するか、または単に HLS-V3 を使用することをお勧めします。 たとえば、「 `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)` 」のように入力します。
 
-### <a name="mpeg-dash-protocol"></a>MPEG-DASH プロトコル
+
+### <a name="hls-packing-ratio-for-vod"></a>VOD のための HLS 圧縮率
+
+以前の HLS 形式のために VOD コンテンツの圧縮率を制御するには、.ism ファイルの **fragmentsPerHLSSegment** メタデータ タグを設定して、古い v3 および v4 の HLS 形式マニフェストから配信される TS セグメントの既定の 3:1 の圧縮率を制御することができます。 この設定変更では、圧縮率を調整するために、ストレージ内の .ism ファイルを直接変更する必要があります。
+
+**fragmentsPerHLSSegment** を 1 に設定した .ism サーバー マニフェストの例を示します。 
+``` xml
+   <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+   <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+      <head>
+         <meta name="formats" content="mp4" />
+         <meta name="fragmentsPerHLSSegment" content="1"/>
+      </head>
+      <body>
+         <switch>
+         ...
+         </switch>
+      </body>
+   </smil>
+```
+
+## <a name="deliver-dash"></a>DASH を配信する
+### <a name="dash-dynamic-packaging"></a>DASH ダイナミック パッケージ
 
 ストリーミング クライアントは、次の MPEG-DASH 形式を指定できます。
 
-|Protocol|例|
-|---|---|
-|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|Protocol| [書式設定文字列]| 例|
+|---|---|---|
+|MPEG-DASH CMAF (推奨)| format=mpd-time-cmaf | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|MPEG-DASH CSF (レガシ)| format=mpd-time-csf | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
 
-### <a name="smooth-streaming-protocol"></a>スムーズ ストリーミング プロトコル
+## <a name="deliver-smooth-streaming-manifests"></a>スムーズ ストリーミング マニフェストを配信する
+### <a name="smooth-streaming-dynamic-packaging"></a>スムーズ ストリーミング ダイナミック パッケージ
 
 ストリーミング クライアントは、次のスムーズ ストリーミング形式を指定できます。
 
@@ -81,6 +119,11 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 1. 中間ファイルを H.264/AAC MP4 アダプティブ ビットレート セットに[エンコード](#encode-to-adaptive-bitrate-mp4s)します。
 
     エンコードされたファイルが既にあり、ファイルをコピーしてストリーミングするだけであれば、[CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) および [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) API を使用します。 結果として、ストリーミング マニフェスト (.ism ファイル) を含む新しい MP4 ファイルが作成されます。
+
+    さらに、アダプティブ ビットレート ストリーミングの適切な設定 (通常は 2 秒の GOP、キー フレームの距離 2 秒 (最小および最大)、固定ビットレート (CBR) モード エンコード) を使用してエンコードされている限り、事前にエンコードされたファイルで .ism と .ismc ファイルを生成できます。  
+
+    既存のエンコード済み MP4 ファイルからストリーミングするために .ism (サーバー マニフェスト) と .ismc (クライアント マニフェスト) を生成する方法の詳細については、[既存の MP4 をストリーミングする .NET SDK サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)を参照してください。
+
 1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 [ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成して発行します。
 1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、*ストリーミング エンドポイント* が行います。
     
@@ -94,11 +137,13 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 [Media Services を使用してビデオをエンコードする方法](encode-concept.md)の例については、以下の記事を参照してください。
 
+* [コンテンツに対応したエンコードを使用する](encode-content-aware-concept.md)。
 * [組み込みのプリセットを使用して HTTPS の URL をエンコードする](job-input-from-http-how-to.md)。
 * [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)。
 * [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](transform-custom-presets-how-to.md)。
+* [.NET を使用して標準エンコーダーでエンコードするためのコード サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding)
 
-「Standard Encoder の[形式およびコーデック](encode-media-encoder-standard-formats-reference.md)」のリストを参照してください。
+サポートされる標準エンコーダー入力の[形式およびコーデック](encode-media-encoder-standard-formats-reference.md)のリストを参照してください。
 
 ## <a name="live-streaming-workflow"></a>ライブ ストリーミング ワークフロー
 
@@ -169,7 +214,7 @@ Media Services ダイナミック パッケージでは現在、[ドルビー �
 
 ## <a name="manifests"></a>マニフェスト
 
-Media Services の *ダイナミック パッケージ* では、HLS、MPEG-DASH、Smooth Streaming のストリーミング クライアント マニフェストが、URL 内の形式セレクターに基づいて動的に生成されます。  
+Media Services の "*ダイナミック パッケージ*" では、HLS、MPEG-DASH、スムーズ ストリーミングのストリーミング クライアント マニフェストが、URL 内の **format** クエリに基づいて動的に生成されます。  
 
 マニフェスト ファイルには、トラックの種類 (オーディオ、ビデオ、またはテキスト)、トラック名、開始時刻と終了時刻、ビットレート (品質)、トラック言語、プレゼンテーション ウィンドウ (固定時間のスライディング ウィンドウ)、ビデオ コーデック (FourCC) などの、ストリーミング メタデータが含まれます。 また、次に再生可能なビデオ フラグメントとその場所の情報を通知して、次のフラグメントを取得するようにプレイヤーに指示します。 フラグメント (またはセグメント) とは、ビデオ コンテンツの実際の "チャンク" です。
 
@@ -298,15 +343,17 @@ DASH マニフェストの場合は、オーディオ説明をシグナル通知
 
 HLS v7 以降 `(format=m3u8-cmaf)` では、オーディオ説明トラックをシグナル通知する際に、そのプレイリストに `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` が含まれます。
 
+
+
 #### <a name="example"></a>例
 
 詳細については、[オーディオ説明トラックをシグナル通知する方法](signal-descriptive-audio-howto.md)に関するページを参照してください。
 
-## <a name="dynamic-manifest"></a>動的マニフェスト
+## <a name="dynamic-manifest-filtering"></a>動的マニフェスト フィルター
 
 プレーヤーに送信されるトラック数、形式、ビットレート、およびプレゼンテーション時間枠を制御するために、Media Services ダイナミック パッケージャーで動的フィルターを使用できます。 詳細については、[ダイナミック パッケージャーでの事前フィルター処理マニフェスト](filters-dynamic-manifest-concept.md)に関するページを参照してください。
 
-## <a name="dynamic-encryption"></a>動的な暗号化
+## <a name="dynamic-encryption-for-drm"></a>DRM の動的暗号化
 
 "*動的暗号化*" を使用すると、AES-128 または次の 3 つの主要なデジタル著作権管理 (DRM) システムのいずれかを用いて、ライブまたはオンデマンドのコンテンツを動的に暗号化できます。コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM ライセンスを配信するためのサービスも提供しています。 詳細については、[動的暗号化](drm-content-protection-concept.md)に関するページを参照してください。
 
