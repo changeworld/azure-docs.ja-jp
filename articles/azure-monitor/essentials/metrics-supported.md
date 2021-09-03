@@ -120,7 +120,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
 |BackendDuration|はい|バックエンド要求の期間|ミリ秒|Average|バックエンド要求の期間 (ミリ秒)|Location、Hostname|
-|容量|はい|容量|Percent|Average|ApiManagement サービスの使用状況メトリック|場所|
+|Capacity|はい|容量|Percent|Average|ApiManagement サービスの使用状況メトリック|場所|
 |Duration|はい|ゲートウェイ要求の全体の期間|ミリ秒|Average|ゲートウェイ要求の全体の期間 (ミリ秒単位)|Location、Hostname|
 |EventHubDroppedEvents|はい|破棄された EventHub イベント数|Count|合計|キューのサイズ制限に達したためスキップされたイベントの数|場所|
 |EventHubRejectedEvents|はい|拒否された EventHub イベント数|Count|合計|拒否された EventHub イベントの数 (誤った構成または未承認)|場所|
