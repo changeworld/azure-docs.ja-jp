@@ -2,13 +2,13 @@
 title: Azure Arc 上の App Service
 description: App Service と Azure オペレーター向け Azure Arc との 統合の概要。
 ms.topic: article
-ms.date: 05/03/2021
-ms.openlocfilehash: bbdb7fb1426a5c63e579929806caa1b2008f11eb
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 08/17/2021
+ms.openlocfilehash: bd5e257d48ec009ccb79696f4c299fd93568f1c9
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590092"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397333"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>Azure Arc の App Service、Functions、および Logic Apps (プレビュー)
 
@@ -62,7 +62,7 @@ Arc 対応 Kubernetes クラスターに App Service 拡張機能がインスト
 
 アプリを作成するには、事前に App Service Kubernetes 環境リソースが必要です。 これにより、カスタムの場所にあるアプリに共通する構成 (既定の DNS サフィックスなど) が可能になります。
 
-カスタムの場所に作成できる Kubernetes 環境リソースは 1 つだけです。 ほとんどの場合、アプリを作成してデプロイする開発者は、リソースを直接認識する必要はありません。 指定されたカスタムの場所 ID から直接推論できます。 ただし、Azure Resource Manager テンプレートを定義する場合、すべてのプラン リソースは環境のリソース ID を直接参照する必要があります。 プランと指定した環境のカスタムの場所の値が一致している必要があります。
+カスタムの場所 1 つに作成できる Kubernetes 環境リソースは 1 つだけです。 ほとんどの場合、アプリを作成してデプロイする開発者は、リソースを直接認識する必要はありません。 指定されたカスタムの場所 ID から直接推論できます。 ただし、Azure Resource Manager テンプレートを定義する場合、すべてのプラン リソースは環境のリソース ID を直接参照する必要があります。 プランと指定した環境のカスタムの場所の値が一致している必要があります。
 
 ## <a name="faq-for-app-service-functions-and-logic-apps-on-azure-arc-preview"></a>Azure Arc の App Service、Functions、および Logic Apps (プレビュー) に関する FAQ
 
@@ -73,8 +73,10 @@ Arc 対応 Kubernetes クラスターに App Service 拡張機能がインスト
 - [どの App Service 機能がサポートされていますか?](#which-app-service-features-are-supported)
 - [ネットワーク機能はサポートされていますか?](#are-networking-features-supported)
 - [マネージド ID はサポートされていますか?](#are-managed-identities-supported)
+- [スケーリングの制限はありますか?](#are-there-any-scaling-limits)
 - [どのようなログが収集されますか?](#what-logs-are-collected)
 - [プロバイダー登録エラーが発生した場合はどうすればよいですか?](#what-do-i-do-if-i-see-a-provider-registration-error)
+- [ARM64 で動作しているクラスターに、Application のサービスの拡張機能をデプロイできますか?](#can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster)
 
 ### <a name="how-much-does-it-cost"></a>料金はどのくらいですか。
 
@@ -104,6 +106,10 @@ FTP のデプロイはサポートされていません。 現時点では、`az
 
 いいえ。 Azure Arc で実行している場合、アプリにマネージド ID を割り当てることはできません。アプリで別の Azure リソースを操作するために ID が必要な場合は、代わりに[アプリケーション サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)の使用を検討してください。
 
+### <a name="are-there-any-scaling-limits"></a>スケーリングの制限はありますか?
+
+Azure Arc を使用する Kubernetes 上の Azure App Service によってデプロイされたすべてのアプリケーションは、基盤となる Kubernetes クラスターの制限内でスケーリングできます。  基盤となる Kubernetes クラスターにおいて使用可能なコンピューティング リソース (主に CPU とメモリ) が不足すると、アプリケーションがスケーリングできるのは、Kubernetes において使用可能なリソースでスケジュールできるアプリケーションのインスタンス数までに限られます。
+
 ### <a name="what-logs-are-collected"></a>どのようなログが収集されますか?
 
 システム コンポーネントとアプリケーションの両方のログが標準出力に書き込まれます。 どちらのログの種類も、標準の Kubernetes ツールを使用して分析用に収集できます。 また、[Log Analytics ワークスペース](../azure-monitor/logs/log-analytics-overview.md)を使用して App Service クラスター拡張機能を構成し、そのワークスペースにすべてのログを送信することもできます。
@@ -113,6 +119,10 @@ FTP のデプロイはサポートされていません。 現時点では、`az
 ### <a name="what-do-i-do-if-i-see-a-provider-registration-error"></a>プロバイダー登録エラーが発生した場合はどうすればよいですか?
 
 Kubernetes 環境リソースを作成するときに、一部のサブスクリプションで、"登録済みのリソース プロバイダーが見つかりませんでした" というエラーが表示される場合があります。 エラーの詳細に、有効と見なされる一連の場所と API バージョンが含まれていることがあります。 この場合、サブスクリプションを Microsoft.Web プロバイダーに再登録することが必要である可能性があります。この操作は、既存のアプリケーションや API には影響しません。 再登録するには、Azure CLI を使用して `az provider register --namespace Microsoft.Web --wait` を実行します。 次に、Kubernetes 環境コマンドを再試行します。
+
+### <a name="can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster"></a>ARM64 で動作しているクラスターに、Application のサービスの拡張機能をデプロイできますか。
+
+ARM64 で動作しているクラスターは現在サポートしていません。  
 
 ## <a name="next-steps"></a>次の手順
 

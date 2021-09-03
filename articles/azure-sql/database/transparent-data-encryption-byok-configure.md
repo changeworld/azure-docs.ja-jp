@@ -11,21 +11,24 @@ ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 03/12/2019
-ms.openlocfilehash: df531a38d7a38141ee07a88ddce77a2e85c2cd98
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/23/2021
+ms.openlocfilehash: 56ac53d8c7b1361e01a5ca72478c68f6db15873f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413593"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090297"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と Azure CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-この記事では、Azure SQL Database または Azure Synapse Analytics で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) のサポートのため、Azure Key Vault と統合される TDE の詳細については、[Azure Key Vault のユーザー管理キーを使用する TDE](transparent-data-encryption-byok-overview.md) に関するページを参照してください。
+この記事では、Azure SQL Database または Azure Synapse Analytics で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) のサポートのため、Azure Key Vault と統合される TDE の詳細については、[Azure Key Vault のユーザー管理キーを使用する TDE](transparent-data-encryption-byok-overview.md) に関するページを参照してください。 
 
 > [!NOTE] 
 > Azure SQL では、マネージド HSM に格納されている RSA キーを TDE プロテクターとして使用できるようになりました。 この機能は **パブリック プレビュー** 段階にあります。 Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、FIPS 140-2 レベル 3 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 [マネージド HSM](../../key-vault/managed-hsm/index.yml) の詳細を参照してください。
+
+> [!NOTE]
+> この記事は、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (専用 SQL プール (以前の SQL DW)) に適用されます。 Synapse ワークスペース内の専用 SQL プールの Transparent Data Encryption に関するドキュメントについては、[Azure Synapse Analytics の暗号化](../../synapse-analytics/security/workspaces-encryption.md)に関する記事を参照してください。
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell の前提条件
 
@@ -91,7 +94,7 @@ Managed HSM 上のサーバーにアクセス許可を追加するには、"Mana
 > キー コンテナー名とキー名を組み合わせた長さは 94 文字以下である必要があります。
 
 > [!TIP]
-> Key Vault の KeyId の例: <br/>https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Key Vault の KeyId の例: `https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h`
 >
 > Managed HSM の KeyId の例:<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
@@ -159,7 +162,7 @@ az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group 
 ```
 
 > [!TIP]
-> 次の手順のために新しいキーのキー URI または keyID を保持します (例: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h )
+> 次の手順のために新しいキーのキー URI または keyID を保持します (例: `https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h` )
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Key Vault キーをサーバーに追加し、TDE 保護機能を設定する
 

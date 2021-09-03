@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/06/2021
 ms.author: v-doeris
-ms.openlocfilehash: 0036dcb5a87ea6b36c6deea3760ff24aa7c7bd8d
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.custom: has-adal-ref
+ms.openlocfilehash: a67f493666c458637a2cd48b7e0d78e0bcf59862
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431883"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418769"
 ---
 # <a name="how-to-migrate-a-javascript-app-from-adaljs-to-msaljs"></a>JavaScript アプリを ADAL.js から MSAL.js に移行する方法
 
@@ -472,7 +473,7 @@ npm start
 </tr>
 </table>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [MSAL.js API リファレンス](https://azuread.github.io/microsoft-authentication-library-for-js/ref/)
 - [MSAL.js コード サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples)

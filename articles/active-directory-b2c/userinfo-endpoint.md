@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2021
+ms.date: 07/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c060a029b1cdbdd890ced96cab732966cb652de0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94b00fb293913e5501bd70ecb782304c56314ed9
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500582"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113430126"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo エンドポイント
 
@@ -132,7 +132,7 @@ UserInfo エンドポイントは、[OpenID Connect 標準](https://openid.net/s
         }
         ```
     
-1.  **UserInfoAuthorization** 技術プロファイルの OutputClaims 要素は、アクセス トークンから読み取る属性を指定します。 **ClaimTypeReferenceId** は、要求の種類への参照です。 オプションの **PartnerClaimType** は、アクセス トークンで定義されている要求の名前です。
+1.  **UserInfoAuthorization** 技術プロファイルの OutputClaims 要素は、アクセス トークンから読み取る属性を指定します。 **ClaimTypeReferenceId** は、要求の種類への参照です。 省略可能な **PartnerClaimType** は、アクセス トークンで定義されている要求の名前です。
 
 
 
@@ -266,6 +266,43 @@ Authorization: Bearer <your access token>
     "signInNames.emailAddress": "john.s@contoso.com"
 }
 ```
+
+## <a name="provide-optional-claims"></a>省略可能な要求を指定する
+
+アプリにその他の要求を指定するには、次の手順を実行します。
+
+1. [ユーザー属性を追加してユーザー入力をカスタマイズします](configure-user-input.md)。
+1. [証明書利用者ポリシーの技術プロファイル](relyingparty.md#technicalprofile)の OutputClaims 要素を、指定する要求を使用して変更します。 `DefaultValue` 属性を使用して既定値を設定します。 また、`{Context:CorrelationId}` など、[要求リゾルバー](claim-resolver-overview.md)に対する既定値も設定できます。 既定値を強制的に使用するには、`AlwaysUseDefaultValue` 属性を `true` に設定します。 次の例では、既定値の city 要求を追加しています。
+    
+    ```xml
+    <RelyingParty>
+      ...
+      <TechnicalProfile Id="PolicyProfile">
+        ...
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="city" DefaultValue="Berlin" />
+        </OutputClaims>
+        ...
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
+  
+1. UserInfoIssuer 技術プロファイルの InputClaims 要素を、指定する要求を使用して変更します。 `PartnerClaimType` 属性を使用して、アプリに返す要求の名前を変更します。 次の例では、city 要求を追加し、一部の要求の名前を変更しています。
+
+    ```xml
+    <TechnicalProfile Id="UserInfoIssuer">
+      ...
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" />
+        <InputClaim ClaimTypeReferenceId="city" />
+        <InputClaim ClaimTypeReferenceId="givenName" />
+        <InputClaim ClaimTypeReferenceId="surname" PartnerClaimType="familyName" />
+        <InputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+        <InputClaim ClaimTypeReferenceId="signInNames.emailAddress" PartnerClaimType="email" />
+      </InputClaims>
+      ...
+    </TechnicalProfile>
+    ```
 
 ## <a name="next-steps"></a>次の手順
 

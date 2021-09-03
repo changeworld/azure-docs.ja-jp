@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2021
-ms.openlocfilehash: 348cd594ae515503c870c1b96eb64aa7117ea26b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/7/2021
+ms.openlocfilehash: 92361142fa2ac7758b16e26faa5e5df8f1da9bf6
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786756"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113506873"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの BLOB ストレージと Azure Data Lake Gen2 出力
 
@@ -67,5 +67,5 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [マネージド ID (プレビュー) を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する](blob-output-managed-identity.md)
+* [マネージド ID を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する](blob-output-managed-identity.md)
 * [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)

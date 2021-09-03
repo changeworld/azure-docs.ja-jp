@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 1b4cdf019b8f7384bc0a57964b1e0a35ea132ac5
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: ae6e4f523eb67d6ff92a3d94107a8e8fa154770a
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "113027366"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598645"
 ---
 別のデプロイ スロットから構成を複製する場合、複製された構成を編集することができます。 構成要素には、スワップを経ても内容が反映される (スロット固有でない) ものもあれば、スワップ後に同じスロットに残されている (スロット固有の) ものもあります。 次の一覧では、スロットのスワップ時に変更される設定を示します。
 
@@ -24,6 +24,7 @@ ms.locfileid: "113027366"
 * ハイブリッド接続 *
 * サービス エンドポイント *
 * Azure Content Delivery Network *
+* パスのマッピング
 
 アスタリスク (*) 記号付きの機能は、スワップされない予定です。 
 
@@ -39,7 +40,6 @@ ms.locfileid: "113027366"
 * 診断設定
 * クロスオリジン リソース共有 (CORS)
 * 仮想ネットワークの統合
-* パスのマッピング
 * マネージド ID
 * サフィックス _EXTENSION_VERSION で終わる設定
 

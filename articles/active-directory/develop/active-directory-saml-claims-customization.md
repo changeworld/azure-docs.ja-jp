@@ -13,14 +13,14 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f0f943475fc397acf61c51fc3dc34cc9efdb1cfb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f7d3b52f5f2cac470c8833a22a67f2324f7be705
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450569"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033863"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
+# <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
 現在、Microsoft ID プラットフォームによるシングル サインオン (SSO) は、Azure AD アプリ ギャラリー内の事前統合済みアプリケーションと、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでサポートされています。 ユーザーが Microsoft ID プラットフォームで SAML 2.0 プロトコルを使ってアプリケーションへのユーザー認証を行うと、Microsoft ID プラットフォームは、(HTTP POST を使用して) アプリケーションにトークンを送信します。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、"*要求*" と呼ばれる、ユーザーに関する情報が含まれています。
 

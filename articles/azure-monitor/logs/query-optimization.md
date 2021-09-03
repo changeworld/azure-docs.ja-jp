@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 7b5412b2ca738f5d2099521062e37afcff90e938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6612d365250a48d9532c0ef331d011c719b95666
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047334"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321650"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -23,6 +23,10 @@ Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) 
 - スロットルまたは拒否される可能性が低くなります。
 
 ダッシュボード、アラート、Logic Apps、Power BI など、繰り返し集中的に使用されるクエリには、特に注意を払う必要があります。 このような場合に効果のないクエリが及ぼす影響はかなり大きくなります。
+
+最適化されたクエリに関する詳細なビデオ チュートリアルはこちらです。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4NUH0]
 
 ## <a name="query-performance-pane"></a>クエリ パフォーマンス ペイン
 Log Analytics でクエリを実行した後、クエリ結果の上にある下矢印をクリックすると、クエリ パフォーマンス ペインが表示されます。ここには、クエリのいくつかのパフォーマンス指標の結果が示されます。 これらの各パフォーマンス指標については、次のセクションで説明します。

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 07/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 176c36ee5c3addf655503e3a371767764e0d9968
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a7041f343eec34f16f4cfd7b32ae56157963dd09
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738055"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439362"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -34,7 +34,7 @@ ms.locfileid: "108738055"
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | stringComparison | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayControl](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
+**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayControl](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
@@ -718,6 +718,44 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
   - **emailAddress**: joe@outlook.com
 - 出力要求:
     - **domain**: outlook.com
+
+## <a name="setclaimifbooleansmatch"></a>SetClaimIfBooleansMatch
+
+ブール型の要求が `true` または `false` であることを確認します。 「はい」の場合は、`outputClaimIfMatched` 入力パラメーターに存在する値を使用して出力要求を設定します。
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | claimToMatch | string | チェックする要求の種類。 Null 値の場合は例外がスローされます。 |
+| InputParameter | matchTo | string | `claimToMatch` 入力要求と比較する値。 指定できる値: `true` または `false`。  |
+| InputParameter | outputClaimIfMatched | string | 入力要求が `matchTo` 入力パラメーターと等しい場合に設定する値。 |
+| OutputClaim | outputClaim | string | `claimToMatch` 入力要求が `matchTo` 入力パラメーターと等しい場合、この出力要求には `outputClaimIfMatched` 入力パラメーターの値が含まれます。 |
+
+たとえば、以下の要求変換では **hasPromotionCode** 要求の値が `true` と等しいかどうかがチェックされます。 「はい」の場合は、値を *Promotion code not found* に戻します。
+
+```xml
+<ClaimsTransformation Id="GeneratePromotionCodeError" TransformationMethod="SetClaimIfBooleansMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="hasPromotionCode" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="true" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="Promotion code not found." />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="promotionCode" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **claimToMatch**: true
+- 入力パラメーター:
+    - **matchTo**: true
+    - **outputClaimIfMatched**: "Promotion code not found."
+- 出力要求:
+    - **outputClaim**: "Promotion code not found."
 
 ## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
 

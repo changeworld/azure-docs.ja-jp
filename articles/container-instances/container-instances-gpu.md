@@ -3,12 +3,12 @@ title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: 6ffe4840d024c1e1f551966d05673c4ba83e1259
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cff887f434230fbc24dfbe27b1f14a463d00cf5d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764065"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728910"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -63,9 +63,12 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 
 * **CUDA ドライバー** - GPU リソースがあるコンテナー インスタンスは、NVIDIA CUDA ドライバーとコンテナーのランタイムを使用して事前にプロビジョニングされているため、CUDA ワークロード用に開発されたコンテナー イメージを使用できます。
 
-  現時点では、CUDA 9.0 のみがサポートされています。 たとえば、次の基本イメージを Docker ファイルで使用できます。
+  現時点では、CUDA 9.0 のみがサポートされています。 たとえば、次の基本イメージを Dockerfile で使用できます。
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+
+  > [!NOTE]
+  > Docker Hub からのパブリック コンテナー イメージを使用するときの信頼性を向上させるには、プライベート Azure コンテナー レジストリにイメージをインポートして管理し、プライベートに管理された基本イメージを使用するように Dockerfile を更新します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
     
 ## <a name="yaml-example"></a>YAML の例
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/31/2020
+ms.date: 07/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07094e399f153f56746a931a4a100b3c0d38f92f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30d16b2042e2bfc8e11824fe64cf709413fd05d8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772078"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218387"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
 
@@ -123,7 +123,7 @@ HANA Large Instance ユニットの概要だけでなく、特定のユニット
 
 ![Azure portal での HLI プロパティの上部](./media/hana-li-portal/portal-properties-top.png)
 
-最初のいくつかのデータ項目は、概要画面で既に見たものです。 しかし、データの重要な部分は ExpressRoute 回線 ID です。この ID は、最初にデプロイされたユニットが引き渡し時に取得されました。 サポート ケースによっては、そのデータを求められることがあります。 重要なデータ エントリは、スクリーンショットの下部に示されています。 表示されるデータは、HANA Large Instance スタック内のご自分の **テナント** に対してストレージを分離する NFS ストレージ ヘッドの IP アドレスです。 この IP アドレスは、[ストレージ スナップショット バックアップの構成ファイル](./hana-backup-restore.md#set-up-storage-snapshots)を編集するときにも必要です。 
+最初のいくつかのデータ項目は、概要画面で既に見たものです。 しかし、データの重要な部分は ExpressRoute 回線 ID です。この ID は、最初にデプロイされたユニットが引き渡し時に取得されました。 サポート ケースによっては、そのデータを求められることがあります。 重要なデータ エントリは、スクリーンショットの下部に示されています。 表示されるデータは、HANA Large Instance スタック内のご自分の **テナント** に対してストレージを分離する NFS ストレージ ヘッドの IP アドレスです。 この IP アドレスは、[Azure アプリケーション整合性スナップショット ツールの構成](../../../azure-netapp-files/azacsnap-cmd-ref-configure.md)を編集するときにも必要です。 
 
 プロパティ ウィンドウを下にスクロールすると、ご自分の HANA Large Instance ユニットの一意のリソース ID や、デプロイに割り当てられたサブスクリプション ID のような、その他のデータが表示されます。
 

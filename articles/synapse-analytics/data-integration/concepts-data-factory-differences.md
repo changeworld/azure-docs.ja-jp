@@ -6,15 +6,15 @@ author: kromerm
 ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 08/25/2021
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 638b78f0304a9bbba8521ed523dffa1deda03c7c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 46a94faaf3159f93cce34f2d6816185af62f286f
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480799"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966897"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics と Azure Data Factory のデータ統合
 
@@ -33,11 +33,10 @@ Azure Synapse Analytics の Synapse パイプラインやデータ フローな�
 |                          | Time to Live | ✓ | ✗ |
 | **パイプライン アクティビティ** | SSIS パッケージ アクティビティ | ✓ | ✗ |
 |                          | Power Query アクティビティのサポート | ✓ | ✗ |
-| **テンプレート ギャラリーとナレッジ センター** | ソリューション テンプレート | ✓<br>"<small>*Azure Data Factory のテンプレート ギャラリー*" | ✓<br>"<small>*Synapse ワークスペースのナレッジ センター*" |
+| **テンプレート ギャラリーとナレッジ センター** | ソリューション テンプレート | ✓<br>"<small>*Azure Data Factory のテンプレート ギャラリー*" | ✓<br><small>*Synapse ワークスペースのナレッジ センター* |
 | **Git リポジトリの統合** | Git 統合 | ✓ | ✓ |
 | **Monitoring**           | データ フローについての Spark ジョブの監視 | ✗ | ✓<br>"<small>*Synapse Spark プールを活用する*" |
 |                          | Azure Monitor との統合 | ✓ | ✗ |
-| **系列** | Purview へのパイプラインの系列データの公開をサポート  | ✓ | ✗ |  
 
 > [!Note]
 > **Time to Live** は Azure Integration Runtime の設定で、これを使用すると、データ フロー実行後の一定期間、Spark クラスターで "*ウォーム状態を維持*" することができます。

@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 30c214e4268f12bad59755ffe92e22686e16e115
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5ecd5d345244d97e1040205a12d101e9477078a5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734780"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -29,7 +29,7 @@ VMware VM のディザスター リカバリー | オンプレミス VMware VM �
 
 ## <a name="on-premises-virtualization-servers"></a>オンプレミスの仮想化サーバー
 
-**[サーバー]** | **必要条件** | **詳細**
+**サーバー** | **必要条件** | **詳細**
 --- | --- | ---
 vCenter Server | バージョン 7.0 およびバージョン 6.7、6.5、6.0、または 5.5 での後続の更新プログラム | ディザスター リカバリーのデプロイでは vCenter サーバーを使用することをお勧めします。
 vSphere ホスト | バージョン 7.0 およびバージョン 6.7、6.5、6.0、または 5.5 での後続の更新プログラム | vSphere ホストと vCenter サーバーはプロセス サーバーと同じネットワーク内に存在することが推奨されます。 既定では、プロセス サーバーは構成サーバーで実行されます。 [詳細については、こちらを参照してください](vmware-physical-azure-config-process-server-overview.md)。
@@ -111,17 +111,19 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 16.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.4.0-21-generic から 4.4.0-194-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-123-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1098-azure|
 16.04 LTS | [9.38](https://support.microsoft.com/help/4590304/) | 4.4.0-21-generic ～ 4.4.0-190-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic ～ 4.15.0-118-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure ～ 4.15.0-1096-azure|
 |||
-18.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.15.0-20-generic から 4.15.0-140-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-65-generic </br> 5.3.0-19-generic から 5.3.0-72-generic </br> 5.4.0-37-generic から 5.4.0-70-generic </br> 4.15.0-1009-azure から 4.15.0-1111-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1035-azure </br> 5.4.0-1020-azure から 5.4.0-1043-azure|
+18.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.15.0-20-generic から 4.15.0-140-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-65-generic </br> 5.3.0-19-generic から 5.3.0-72-generic </br> 5.4.0-37-generic から 5.4.0-70-generic </br> 4.15.0-1009-azure から 4.15.0-1111-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1035-azure </br> 5.4.0-1020-azure から 5.4.0-1043-azure </br> 4.15.0-1114-azure </br> 4.15.0-143-generic </br> 5.4.0-1047-azure </br> 5.4.0-73-generic </br> 4.15.0-1115-azure </br> 4.15.0-144-generic </br> 5.4.0-1048-azure </br> 5.4.0-74-generic |
 18.04 LTS | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 4.15.0-20-generic から 4.15.0-135-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-65-generic </br> 5.3.0-19-generic から 5.3.0-70-generic </br> 5.4.0-37-generic から 5.4.0-59-generic</br> 5.4.0-60-generic から 5.4.0-65-generic </br> 4.15.0-1009-azure から 4.15.0-1106-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1035-azure </br> 5.4.0-1020-azure から 5.4.0-1039-azure|
 18.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.15.0-20-generic から 4.15.0-129-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-63-generic </br> 5.3.0-19-generic から 5.3.0-69-generic </br> 5.4.0-37-generic から 5.4.0-59-generic</br> 4.15.0-1009-azure から 4.15.0-1103-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1035-azure </br> 5.4.0-1020-azure から 5.4.0-1035-azure|
 18.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.15.0-20-generic から 4.15.0-123-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-63-generic </br> 5.3.0-19-generic から 5.3.0-69-generic </br> 5.4.0-37-generic から 5.4.0-53-generic</br> 4.15.0-1009-azure から 4.15.0-1099-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1035-azure </br> 5.4.0-1020-azure から 5.4.0-1031-azure|
 18.04 LTS | [9.38](https://support.microsoft.com/help/4590304/) | 4.15.0-20-generic から 4.15.0-118-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-61-generic </br> 5.3.0-19-generic から 5.3.0-67-generic </br> 5.4.0-37-generic から 5.4.0-48-generic</br> 4.15.0-1009-azure から 4.15.0-1096-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1036-azure </br> 5.3.0-1007-azure から 5.3.0-1035-azure </br> 5.4.0-1020-azure から 5.4.0-1026-azure|
 |||
-20.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)| 5.4.0-26-generic から 5.4.0-60-generic </br> -generic 5.4.0-1010-azure から 5.4.0-1043-azure </br> 5.8.0-29-generic から 5.8.0-48-generic|
-20.04 LTS |[9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)| 5.4.0-26-generic から 5.4.0-65 </br> -generic 5.4.0-1010-azure から 5.4.0-1039-azure </br> 5.8.0-29-generic から 5.8.0-43-generic </br>
-20.04 LTS |[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0-26-generic から 5.4.0-59 </br> -generic 5.4.0-1010-azure から 5.4.0-1035-azure </br> 5.8.0-29-generic から 5.8.0-34-generic|
+20.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)| 5.4.0-26-generic から 5.4.0-60-generic </br> -generic 5.4.0-1010-azure から 5.4.0-1043-azure </br> 5.4.0-1047-azure </br> 5.4.0-73-generic </br> 5.4.0-1048-azure </br> 5.4.0-74-generic |
+20.04 LTS |[9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)| 5.4.0-26-generic から 5.4.0-65 </br> -generic 5.4.0-1010-azure から 5.4.0-1039-azure |
+20.04 LTS |[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0-26-generic から 5.4.0-59 </br> -generic 5.4.0-1010-azure から 5.4.0-1035-azure |
 20.04 LTS |[9.39](https://support.microsoft.com/help/4597409/) | 5.4.0-26-generic から 5.4.0-53 </br> -generic 5.4.0-1010-azure から 5.4.0-1031-azure
 20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic から 5.4.0-48 </br> -generic 5.4.0-1010-azure から 5.4.0-1026-azure
+
+**注: Ubuntu 20.04 では、最初にカーネル 5.8 のサポートをロールアウトしました。* ただし、このカーネルのサポートに関する問題が見つかりました。そのため、当面サポートに関する声明でこれらのカーネルは編集されています。 
 
 ### <a name="debian-kernel-versions"></a>Debian カーネルのバージョン
 
@@ -146,7 +148,7 @@ Debian 10 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-fo
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.47-azure |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.56-azure |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.44-azure |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.38-azure|
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.39](https://support.microsoft.com/help/4597409/) | すべての [SUSE 12 SP1、SP2,SP3、SP4、SP5 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.43-azure </br> 4.12.14-16.7-azure から 4.12.14-16.34-azure |
@@ -156,7 +158,7 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5) | [9.38](https://s
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15、SP1、SP2 | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.38-azure
+SUSE Linux Enterprise Server 15、SP1、SP2 | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.47-azure
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.35-azure
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.29-azure
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.39](https://support.microsoft.com/help/4597409/)  | 既定で、すべての [SUSE 15、SP1、SP2 ストック カーネル](https://www.suse.com/support/kb/doc/?id=000019587)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure から 4.12.14-8.47-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure から 5.3.18-18.21-azure
@@ -239,7 +241,7 @@ FIPS 暗号化 | いいえ
 ゲスト/サーバー iSCSI | 移行の場合 - はい<br/>ディザスター リカバリーの場合 - いいえ、iSCSI は接続されたディスクとして VM にフェールバックされます
 ゲスト/サーバー SMB 3.0 | いいえ
 ゲスト/サーバー RDM | はい<br/><br/> 物理サーバー = 該当なし
-ゲスト/サーバー ディスク > 1 TB | はい。ディスクは 1,024 MB 以上である必要があります。<br/><br/>マネージド ディスクにレプリケートする場合は最大 8,192 GB (9.26 バージョン以降)<br></br> ストレージ アカウントにレプリケートする場合は最大 4,095 GB
+ゲスト/サーバー ディスク > 1 TB | はい。ディスクは 1,024 MB 以上である必要があります。<br/><br/>マネージド ディスクにレプリケートする場合は最大 32,767 GB (9.41 バージョン以降)<br></br> ストレージ アカウントにレプリケートする場合は最大 4,095 GB
 4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | いいえ
 4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | いいえ
 ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB | はい
@@ -302,6 +304,7 @@ Azure にレプリケートされたオンプレミス VM は、この表にま�
 オペレーティング システムのディスク数 | 1 </br> ブート パーティションとシステム パーティションが異なるディスク上にある場合はサポートされていません | サポートされていない場合、確認は失敗します。
 データ ディスク数 | 64 以下。 | サポートされていない場合、確認は失敗します。
 データ ディスク サイズ | マネージド ディスクにレプリケートする場合は最大 32,767 GB (9.41 バージョン以降)<br> ストレージ アカウントにレプリケートする場合は最大 4,095 GB </br> 最小ディスク サイズ要件 - 1024 MB 以上| サポートされていない場合、確認は失敗します。
+RAM | ASR ドライバーは RAM の 6% を消費します。
 ネットワーク アダプター | 複数のアダプターがサポートされます。 |
 共有 VHD | サポートされていません。 | サポートされていない場合、確認は失敗します。
 FC ディスク | サポートされていません。 | サポートされていない場合、確認は失敗します。

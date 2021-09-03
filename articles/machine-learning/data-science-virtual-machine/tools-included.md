@@ -10,12 +10,12 @@ ms.author: tklimmer
 ms.topic: reference
 ms.date: 05/12/2021
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 63269512a33ce2743d1082001525030c85bc8a4a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ba7006c9dc266819e4c965ae3a72fc0f78506056
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462890"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113649983"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine に含まれるツール
 
@@ -32,7 +32,7 @@ Data Science Virtual Machine では、最も有用なデータ サイエンス �
 | [NVidia システム管理インターフェイス (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface) | <span class='green-check'>&#9989;</span> | <span class='green-check'>&#9989;</span> | [DSVM 上の nvidia-smi](./dsvm-tools-deep-learning-frameworks.md#nvidia-system-management-interface-nvidia-smi) |
 | [PyTorch](https://pytorch.org) | <span class='green-check'>&#9989;</span> | <span class='green-check'>&#9989;</span> | [DSVM 上の PyTorch](./dsvm-tools-deep-learning-frameworks.md#pytorch) |
 | [TensorFlow](https://www.tensorflow.org) | <span class='green-check'>&#9989;</span></br> | <span class='green-check'>&#9989;</span></br> | [DSVM 上の TensorFlow](./dsvm-tools-deep-learning-frameworks.md#tensorflow) |
-| [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) との統合 (R、Python) | <span class='green-check'>&#9989;</span></br> (Python SDK、サンプル) | <span class='green-check'>&#9989;</span></br> (Python または R SDK、CLI、サンプル) | [Azure ML SDK](./dsvm-tools-data-science.md#azure-machine-learning-sdk-for-python) |
+| [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) との統合 (Python) | <span class='green-check'>&#9989;</span></br> (Python SDK、サンプル) | <span class='green-check'>&#9989;</span></br> (Python SDK、CLI、サンプル) | [Azure ML SDK](./dsvm-tools-data-science.md#azure-machine-learning-sdk-for-python) |
 | [XGBoost](https://github.com/dmlc/xgboost) | <span class='green-check'>&#9989;</span></br> (CUDA のサポート) | <span class='green-check'>&#9989;</span></br> (CUDA のサポート) | [DSVM 上の XGBoost](./dsvm-tools-data-science.md#xgboost) |
 | [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | <span class='green-check'>&#9989;</span> | <span class='green-check'>&#9989;</span></br> | [DSVM 上の Vowpal Wabbit](./dsvm-tools-data-science.md#vowpal-wabbit) |
 | [Weka](https://www.cs.waikato.ac.nz/ml/weka/) | <span class='red-x'>&#10060;</span> | <span class='red-x'>&#10060;</span> |  |

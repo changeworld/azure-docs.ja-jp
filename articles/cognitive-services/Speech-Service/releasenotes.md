@@ -3,20 +3,18 @@ title: リリース ノート - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech サービスの機能リリース、改善、バグ修正、既知の問題の時系列ログ。
 services: cognitive-services
-author: oliversc
 manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
-ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: a3991645c747bf229acd5f320282663c41b03fe3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db2c4e50b4de7a680b114582baf1361ee4d75fb8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724526"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768816"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
 
