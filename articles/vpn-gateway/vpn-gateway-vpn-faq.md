@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: 56f10ec6178281deaa529e5c94f1cd4b565a381c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0551cf435b732b621ad5493914251afd67f18882
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746611"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707143"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -60,7 +60,7 @@ VPN の種類がルート ベースのゲートウェイを使用してサイト
 
 ## <a name="privacy"></a><a name="privacy"></a>プライバシー
 
-### <a name="does-the-vpn-service-store-customer-data"></a>VPN サービスによって顧客データは保存されますか?
+### <a name="does-the-vpn-service-store-or-process-customer-data"></a>VPN サービスによって顧客データは保存または処理されますか?
 
 いいえ。
 
@@ -77,6 +77,10 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>ルートベース (動的ルーティング) ゲートウェイとは何ですか。
 
 ルート ベースのゲートウェイは、ルート ベースの VPN を実装したものです。 ルート ベースの VPN は、「ルート」を使用して、IP 転送やルーティング テーブルを使用してパケットを対応するトンネル インターフェイスに直接送信します。 その後、トンネル インターフェイスではトンネルの内部または外部でパケットを暗号化または復号します。 ルート ベースの VPN に向けたポリシーまたはトラフィック セレクターは任意の環境間 (またはワイルドカード) として構成されます。
+
+### <a name="can-i-specify-my-own-policy-based-traffic-selectors"></a>独自のポリシー ベースのトラフィック セレクターを指定できますか?
+
+はい。トラフィック セレクターは、[New-AzIpsecTrafficSelectorPolicy](/powershell/module/az.network/new-azipsectrafficselectorpolicy) PowerShell コマンドを使用して、接続の *trafficSelectorPolicies* 属性で定義できます。 指定したトラフィック セレクターを有効にする場合は、[ポリシー ベースのトラフィック セレクターを使用する](vpn-gateway-connect-multiple-policybased-rm-ps.md#enablepolicybased)オプションが有効になっている必要があります。
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>ポリシー ベースの VPN ゲートウェイをルート ベースに更新できますか。
 
@@ -245,6 +249,10 @@ ExpressRoute に接続されているブランチと、サイト間 VPN 接続�
 ### <a name="can-i-configure-forced-tunneling"></a>強制トンネリングを構成できますか。
 
 はい。 [強制トンネリングについて](vpn-gateway-about-forced-tunneling.md)を参照してください。
+
+## <a name="nat"></a><a name="nat"></a>NAT
+
+[!INCLUDE [vpn-gateway-faq-nat-include](../../includes/vpn-gateway-faq-nat-include.md)]
 
 ## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>クロスプレミス接続と VM
 

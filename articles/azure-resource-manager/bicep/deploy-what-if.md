@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/01/2021
 ms.author: tomfitz
-ms.openlocfilehash: 157db0aa85fe086e656cfc98c7b94527416350d0
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 42e4198f2597ca3708e58bbc7a25545eab96b8c6
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027751"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634588"
 ---
 # <a name="bicep-deployment-what-if-operation"></a>Bicep デプロイの What-If 操作
 
@@ -196,7 +196,7 @@ Azure CLI の場合は、`--result-format` パラメーターを使用します�
 
 ### <a name="set-up-environment"></a>環境を設定する
 
-what-if がどのように動作するか見るため、いくつかのテストを実行してみましょう。 まず、[仮想ネットワークを作成する Bicep ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.bicep)をデプロイします。 この仮想ネットワークを使用して、what-if により変更がどのように報告されるかをテストします。 Bicep ファイルのコピーをダウンロードします。
+what-if がどのように動作するか見るため、いくつかのテストを実行してみましょう。 まず、[仮想ネットワークを作成する Bicep ファイル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-before.bicep)をデプロイします。 この仮想ネットワークを使用して、what-if により変更がどのように報告されるかをテストします。 Bicep ファイルのコピーをダウンロードします。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -224,7 +224,7 @@ az deployment group create \
 
 ### <a name="test-modification"></a>変更をテストする
 
-デプロイが完了すると、what-if 操作をテストできる状態になります。 ここでは、[仮想ネットワークを変更する Bicep ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.bicep)をデプロイします。 元のタグのうち 1 つが存在せず、サブネットが削除され、アドレス プレフィックスが変更されています。 Bicep ファイルのコピーをダウンロードします。
+デプロイが完了すると、what-if 操作をテストできる状態になります。 ここでは、[仮想ネットワークを変更する Bicep ファイル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-after.bicep)をデプロイします。 元のタグのうち 1 つが存在せず、サブネットが削除され、アドレス プレフィックスが変更されています。 Bicep ファイルのコピーをダウンロードします。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

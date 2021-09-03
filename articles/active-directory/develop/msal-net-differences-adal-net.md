@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/09/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ea83d0098eaa44ffa6510a5f0fc8cea18115815c
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 7b7f94b5e71719b53e724c76f9604f40ba7990e2
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112970390"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419048"
 ---
 # <a name="differences-between-adalnet-and-msalnet-apps"></a>ADAL.NET アプリと MSAL.NET アプリの違い
 
@@ -227,7 +227,7 @@ var scopes = new [] { ResourceId+"/.default" };
 
 クライアント資格情報フローの場合、`/.default` スコープも渡します。 このスコープにより、管理者がアプリケーションの登録で同意したアプリレベルのすべてのアクセス許可が、Azure AD に示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [アプリを ADAL から MSAL に移行する](msal-net-migration.md)
 [MSAL.NET を使用するために ADAL.NET 機密クライアント アプリを移行する](msal-net-migration-confidential-client.md)

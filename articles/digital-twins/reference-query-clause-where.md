@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 58c0d35178c2683bd2626ad0b9d9209c2819e463
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f9be1425ae614c266f17a95668faf7fb9d21d2f1
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789481"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492831"
 ---
 # <a name="azure-digital-twins-query-language-reference-where-clause"></a>Azure Digital Twins クエリ言語リファレンス: WHERE 句
 

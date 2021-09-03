@@ -7,17 +7,17 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 05/07/2021
-ms.openlocfilehash: 35bcff2615ab9b31f077a13c1cae7fbe38518575
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.date: 08/06/2021
+ms.openlocfilehash: f930c52c4b913e9411c6f619231fb50d0bb6cc5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109628250"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733394"
 ---
 # <a name="configure-export-policy-for-nfs-or-dual-protocol-volumes"></a>NFS またはデュアル プロトコル ボリュームのエクスポート ポリシーを構成する
 
-NFS プロトコル (NFSv3 および NFSv4.1) またはデュアル プロトコル (NFSv3 および SMB) を使用する Azure NetApp Files ボリュームへのアクセスを制御するために、エクスポート ポリシーを構成できます。 
+NFS プロトコル (NFSv3 および NFSv4.1) またはデュアル プロトコル (NFSv3 と SMB、または NFSv4.1 と SMB) を使用する Azure NetApp Files ボリュームへのアクセスを制御するために、エクスポート ポリシーを構成できます。 
 
 最大 5 つのエクスポートポリシー ルールを作成できます。
 
@@ -48,6 +48,16 @@ NFS プロトコル (NFSv3 および NFSv4.1) またはデュアル プロトコ
 
       ![エクスポート ポリシー](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
+    * **chown モード**: ファイルとディレクトリの所有権管理機能の設定に応じて、所有権変更モードを変更できます。  次の 2 つのオプションを使用できます。   
+
+      * `Restricted` (既定値) - ルート ユーザーのみがファイルとディレクトリの所有権を変更できます。
+      * `Unrestricted` - ルート以外のユーザーは、自身が所有するファイルとディレクトリの所有権を変更できます。  
+
+        **`Chown Mode`** の設定には、登録の要件と考慮事項が適用されます。 [Unix のアクセス許可の構成と所有権モードの変更](configure-unix-permissions-change-ownership-mode.md)に関する記事の手順に従ってください。  
+
+      ![所有権変更モード オプションを示すスクリーンショット。](../media/azure-netapp-files/chown-mode-export-policy.png) 
+
 ## <a name="next-steps"></a>次のステップ 
 * [ボリュームをマウントまたはマウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Unix のアクセス許可を構成して所有権モードを変更する](configure-unix-permissions-change-ownership-mode.md) 
 * [スナップショットを管理する](azure-netapp-files-manage-snapshots.md)

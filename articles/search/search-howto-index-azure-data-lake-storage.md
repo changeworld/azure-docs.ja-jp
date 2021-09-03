@@ -1,25 +1,24 @@
 ---
-title: Azure Data Lake Storage Gen2 からコンテンツとメタデータをプルするようにインデクサーを構成する方法
+title: Azure Data Lake Storage Gen2 からのデータのインデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: Azure Data Lake Storage Gen2 でコンテンツとメタデータのインデックスを作成する方法について説明します。
-manager: luisca
+description: Azure Cognitive Search でのフルテキスト検索用にコンテンツとメタデータのインデックス作成を自動化するように Azure Data Lake Storage Gen2 インデクサーを設定します。
 author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/17/2021
-ms.openlocfilehash: 0d5feeb8098016e126e243305babab9746343504
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e0364b3242a0be3e4704ade75f2514c8c63aa779
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752479"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983232"
 ---
-# <a name="how-to-configure-an-indexer-to-pull-content-and-metadata-from-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 からコンテンツとメタデータをプルするようにインデクサーを構成する方法
+# <a name="index-data-from-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 からのデータのインデックスを作成する
 
-Azure ストレージ アカウントを設定するときに、[階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)を有効にするオプションがあります。 これにより、アカウント内のコンテンツのコレクションを、ディレクトリと入れ子になったサブディレクトリの階層にまとめることができます。 階層型名前空間を有効にすることによって、[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) を有効にすることができます。
+この記事では、コンテンツを抽出して Azure Cognitive Search で検索できるようにするために、Azure Data Lake Storage Gen2 インデクサーを構成する方法について説明します。 このワークフローでは、Azure Cognitive Search に検索インデックスを作成し、Azure Data Lake Storage Gen2 から抽出された既存のコンテンツと共にその検索インデックスを読み込みます。
 
-この記事では、Azure Data Lake Storage Gen2 に含まれるドキュメントのインデックス作成を開始する方法について説明します。
+Azure Data Lake Storage Gen2 は Azure Storage を通じて入手できます。 Azure ストレージ アカウントを設定するときに、[階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)を有効にするオプションがあります。 これにより、アカウント内のコンテンツのコレクションを、ディレクトリと入れ子になったサブディレクトリの階層にまとめることができます。 階層型名前空間を有効にすることによって、[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) を有効にすることができます。
 
 ## <a name="supported-access-tiers"></a>サポートされているアクセス層
 
@@ -338,7 +337,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 インデックス作成中に通常発生するエラーには、サポートされていないコンテンツの種類、コンテンツの欠落、BLOB のサイズ超過などがあります。
 
-既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 `excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップできます。 ただし、エラーが発生した場合でもインデックスの作成を継続し、後から個々のドキュメントをデバッグすることができます。 インデクサーのエラーの詳細については、「[インデクサーの一般的な問題のトラブルシューティング](search-indexer-troubleshooting.md)」および「[インデクサーのエラーと警告](cognitive-search-common-errors-warnings.md)」を参照してください。
+既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 `excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップできます。 ただし、エラーが発生した場合でもインデックスの作成を継続し、後から個々のドキュメントをデバッグすることができます。 インデクサーのエラーの詳細については、[インデクサーのトラブルシューティング ガイド](search-indexer-troubleshooting.md)および[インデクサーのエラーと警告](cognitive-search-common-errors-warnings.md)に関するページを参照してください。
 
 ### <a name="respond-to-errors"></a>エラーに応答する
 

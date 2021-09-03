@@ -10,15 +10,15 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: 0d7d4dda75fba86bf5d624ea277b8866490ea608
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a69cb5e2a4563f96fb18979ff8aefdf805e94d7f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291192"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729553"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway クラシックから Resource Manager への移行
-VPN Gateway は クラシック モデル から Resource Manager デプロイ モデルに移行できるようになりました。 詳細については、Azure Resource Manager の[機能と利点](../azure-resource-manager/management/overview.md)をご覧ください。 この記事では、従来のデプロイメントから新しい Resource Manager ベースモデルへの移行方法について説明します。 
+VPN Gateway をクラシックから [Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に移行できるようになりました。 詳細については、Azure Resource Manager の[機能と利点](../azure-resource-manager/management/overview.md)をご覧ください。 この記事では、従来のデプロイメントから新しい Resource Manager ベースモデルへの移行方法について説明します。 
 
 VPN Gateway は、クラシックから Resource Manager への VNet の移行の一部として移行されます。 この移行では、一度に 1つの VNet が移行されます。 移行に必要な追加のツールや前提条件はありません。 移行手順は既存の VNet の移行と同じで、詳細は[IaaS リソースの移行](../virtual-machines/migration-classic-resource-manager-ps.md)に関するページに記載されています。 移行中にデータ パスのダウンタイムはないため、既存のワークロードは引き続き動作し、移行中にオンプレミスの接続が失われることはありません。 VPN Gateway に関連付けられているパブリック IP アドレスは、移行プロセス中も変更されません。 そのため、移行後にオンプレミスのルーターを再構成する必要はありません。  
 

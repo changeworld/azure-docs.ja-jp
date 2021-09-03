@@ -1,14 +1,14 @@
 ---
 title: Azure Policy でのスコープについて
 description: Azure Resource Manager でのスコープの概念と、それがどのように Azure Policy に適用されて、Azure Policy がどのリソースを評価するかが制御されるしくみについて説明します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c198d2d2961b6d9e10a3b78481183cba7f7197ca
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: b83acebe3f24b7dac1c506a598c641035132fb30
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167738"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321949"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Azure Policy でのスコープについて
 

@@ -4,12 +4,12 @@ description: Azure VMware Solution への VPN (IPsec IKEv1 および IKEv2) サ�
 ms.topic: how-to
 ms.custom: contperf-fy22q1
 ms.date: 06/30/2021
-ms.openlocfilehash: fc2f62549a9a06122b77e0e8864c029cb6af8029
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: f3ed10e2a67e40fe8f1124a88fd8e11b24b71986
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515218"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324999"
 ---
 # <a name="configure-a-site-to-site-vpn-in-vwan-for-azure-vmware-solution"></a>vWAN for Azure VMware Solution でサイト間 VPN を構成する
 
@@ -72,7 +72,7 @@ ms.locfileid: "122515218"
 
    :::image type="content" source="../../includes/media/virtual-wan-tutorial-site-include/site-links.png" alt-text="[リンク] タブが開いている [VPN サイトの作成] ページを示すスクリーンショット。" lightbox="../../includes/media/virtual-wan-tutorial-site-include/site-links.png":::
 
-1. **[確認および作成]** を選択します。 
+1. **[確認と作成]** を選択します。 
 
 1. 目的の仮想ハブに移動し、 **[ハブの関連付け]** の選択を解除して VPN サイトをハブに接続します。
  
@@ -151,7 +151,7 @@ ms.locfileid: "122515218"
 
    1. オンプレミスの VPN デバイスに構成を適用します。
 
-   構成ファイルの詳細については、「[VPN デバイス構成ファイルについて](../virtual-wan/virtual-wan-site-to-site-portal.md#config-file)」を参照してください。
+   構成ファイルの詳細については、「[VPN デバイス構成ファイルについて](../virtual-wan/virtual-wan-site-to-site-portal.md#about-the-vpn-device-configuration-file)」を参照してください。
 
 1. Virtual WAN ハブで Azure VMware Solution ExpressRoute に修正プログラムを適用します。 
 

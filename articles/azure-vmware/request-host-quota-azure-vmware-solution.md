@@ -3,27 +3,30 @@ title: Azure VMware Solution のホスト クォータを要求する
 description: Azure VMware Solution のホスト クォータまたは容量を要求する方法について説明します。 また、Azure VMware Solution の既存のプライベート クラウドにさらに多くのホストをリクエストすることもできます。
 ms.topic: how-to
 ms.custom: contperf-fy21q3
-ms.date: 05/13/2021
-ms.openlocfilehash: ceb32d7e09e6c595a6cddf844c713093253b8994
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.date: 08/06/2021
+ms.openlocfilehash: 92ebc79193525802c1e7c7ede9287e3300799a10
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421654"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322455"
 ---
 # <a name="request-host-quota-for-azure-vmware-solution"></a>Azure VMware Solution のホスト クォータを要求する
 
-この記事では、[Azure VMware Solution](introduction.md) のホスト クォータまたは容量を要求します。 ホストを割り当ててもらうためのサポート チケットを送信します。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのホストを割り当てる必要がある場合は、同じプロセスに従います。
+この記事では、[Azure VMware Solution](introduction.md) のホスト クォータまたは容量を要求します。 新しいデプロイの場合も既存のものの場合も、ホストを割り当ててもらうためのサポート チケットを送信します。 
+
+Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのホストを割り当てる必要がある場合は、同じプロセスに従います。
 
 >[!IMPORTANT]
->要求する数によっては、ホストの割り当てに数日かかることがあります。  そのため、クォータの引き上げを頻繁に要求しなくて済むように、プロビジョニングに必要な分を要求してください。
+>要求された数によっては、ホストの割り当てに最長で 5 営業日かかることがあります。  そのため、クォータの引き上げを頻繁に要求しなくて済むように、プロビジョニングに必要な分を要求してください。
 
 ## <a name="eligibility-criteria"></a>対象となる条件
 
-Azure サブスクリプションの Azure アカウントが必要です。 Azure サブスクリプションは、次のいずれかの条件に従っている必要があります。
+次のいずれかの条件に準拠する Azure サブスクリプションの Azure アカウントが必要です。
 
 - Microsoft との [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) に従ったサブスクリプション。
 - 既存のクラウド ソリューション プロバイダー (CSP) のもとで Azure がコントラクトまたは Azure プランを提供している、CSP によって管理されているサブスクリプション。
+- Microsoft との [Modern Commerce 契約](../cost-management-billing/understand/mca-overview.md)。
 
 ## <a name="request-host-quota-for-ea-customers"></a>EA のお客様用のホスト クォータをリクエストする
 
@@ -62,11 +65,11 @@ CSP は [Microsoft パートナー センター](https://partner.microsoft.com)�
 
    1. **パートナー センター** で、 **[CSP]** を選択して、 **[顧客]** 領域にアクセスします。
    
-      :::image type="content" source="media/enable-azure-vmware-solution/csp-customers-screen.png" alt-text="Microsoft パートナー センターの [顧客] 領域" lightbox="media/enable-azure-vmware-solution/csp-customers-screen.png":::
+      :::image type="content" source="media/pre-deployment/csp-customers-screen.png" alt-text="Microsoft パートナー センター顧客領域を示すスクリーンショット。" lightbox="media/pre-deployment/csp-customers-screen.png":::
    
    1. 目的の顧客を選択し、 **[製品の追加]** を選択します。
    
-      :::image type="content" source="media/enable-azure-vmware-solution/csp-partner-center.png" alt-text="Microsoft パートナー センター" lightbox="media/enable-azure-vmware-solution/csp-partner-center.png":::
+      :::image type="content" source="media/pre-deployment/csp-partner-center.png" alt-text="Microsoft パートナー センター で選択された Azure プランを示すスクリーンショット。" lightbox="media/pre-deployment/csp-partner-center.png":::
    
    1. **[Azure プラン]** を選択し、 **[カートに追加]** を選択します。 
    
@@ -105,5 +108,4 @@ CSP は [Microsoft パートナー センター](https://partner.microsoft.com)�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure VMware Solution をデプロイするには、サブスクリプションに[リソース プロバイダーを登録](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)してサービスを有効にしておく必要があります。   
-
+Azure VMware Solution をデプロイするには、サブスクリプションに[リソース プロバイダーを登録](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)してサービスを有効にしておく必要があります。   

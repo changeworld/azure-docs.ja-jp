@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0fe61e5ef36064234b65da4d059f02beed18f9a6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ec462d04402f20d801c43cebd7f4561eb6177f1c
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745711"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707122"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal で MSIX アプリのアタッチを設定する
 
@@ -21,7 +21,7 @@ ms.locfileid: "111745711"
 
 MSIX アプリ アタッチを構成するために必要な項目を次に示します。
 
-- 機能する Windows Virtual Desktop のデプロイ。 Azure Virtual Desktop (クラシック) のデプロイ方法については、「[Azure Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Azure Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
+- 機能する Azure Virtual Desktop のデプロイ。 Azure Virtual Desktop (クラシック) のデプロイ方法については、「[Azure Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Azure Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
 - 少なくとも 1 つのアクティブなセッション ホストが含まれている Azure Virtual Desktop ホスト プール。
 - MSIX パッケージ化ツール。
 - MSIX のパッケージされたアプリケーションは、ファイル共有にアップロードされる MSIX イメージに展開されます。
@@ -222,4 +222,4 @@ MSIX パッケージをホスト プールから削除するには、次のよ�
 役に立つその他の記事を次に示します。
 
 - [MSIX アプリのアタッチの用語集](app-attach-glossary.md)
-- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.md)
+- [MSIX アプリ アタッチに関するごよくある質問](app-attach-faq.yml)

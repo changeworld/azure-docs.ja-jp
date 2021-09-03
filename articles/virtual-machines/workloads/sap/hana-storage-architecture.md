@@ -11,23 +11,23 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/10/2020
+ms.date: 07/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f862299dfb677a4b459611050832f602ff5598eb
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 15ce4cabc1a9bc44fcd6cc00a365007900ff4ebe
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412495"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968541"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (Large Instances) のストレージ アーキテクチャ
 
 この記事では、SAP HANA on Azure Large Instance (別称 BareMetal Infrastructure) をデプロイするためのストレージ アーキテクチャについて説明します。 
 
-SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP 推奨ガイドラインに従い、クラシック デプロイ モデルで SAP HANA によって構成されます。 ガイドラインの詳細は、[SAP HANA のストレージの要件](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)に関するドキュメントをご覧ください。
+SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP 推奨ガイドラインに従い、クラシック デプロイ モデルで SAP HANA によって構成されます。 ガイドラインの詳細は、[SAP HANA のストレージの要件](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf)に関するドキュメントをご覧ください。
 
-Type I クラスの HANA Large Instance は、メモリ容量の 4 倍のストレージ容量があります。 Type II クラスの HANA Large Instance ユニットはこれと異なり、HANA トランザクション ログのバックアップを保存する用途に合わせたボリュームを備えています。 詳細については、[SAP HANA on Azure (L インスタンス) のインストールと構成](hana-installation.md)に関する記事をご覧ください。
+HANA Large Instances の Type I クラスには、ストレージ ボリュームの 4 倍のメモリ ボリュームが装備されています。 一方、HANA Large Instances の Type II クラスには、HANA トランザクション ログのバックアップを格納するためのボリュームが装備されています。 詳細については、[SAP HANA on Azure (L インスタンス) のインストールと構成](hana-installation.md)に関する記事をご覧ください。
 
 ストレージの割り当ては、次の表をご覧ください。 表には、異なる種類の HANA Large Instance ユニットに用意されているボリュームの大まかな容量を記載しています。
 
@@ -121,9 +121,9 @@ HANA L インスタンス ユニットで複数のアクティブな SAP HANA �
 他のバリエーションもあります。 
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
-HANA Large Instance のストレージでは、ディスクにデータを保存するときに透過的暗号化を行います。 2018 年年末以前のデプロイでは、ボリュームを暗号化することを選択できました。 そうしたくない場合は、ボリュームをオンラインで暗号化するよう依頼することができます。 暗号化されていないボリュームから暗号化されたボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
+HANA Large Instance のストレージでは、ディスクにデータを保存するときに透過的暗号化を行います。 2018 年末以前のデプロイでは、ボリュームを暗号化できました。 そうしたくない場合は、ボリュームをオンラインで暗号化できました。 暗号化されていないボリュームから暗号化されたボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
 
-Type I クラスの SKU では、ブート LUN を含むボリュームを暗号化します。 リビジョン 3 の HANA Large Instance スタンプのうち、HANA Large Instance の Type II クラスの SKU を使用するものは、OS で採用している方法で、ブート LUN を暗号化する必要があります。 Type II ユニットを使用するリビジョン 4 の HANA Large Instance スタンプでは、ブート LUN を含むボリュームを、不使用時に既定で暗号化します。 
+HANA Large Instance の SKU の Type I クラスでは、ブート LUN を含むボリュームが暗号化されます。 SKU の Type II クラスを使用するリビジョン 3 の HANA Large Instance スタンプでは、OS の方法でブート LUN を暗号化する必要があります。 SKU の Type II クラスを使用するリビジョン 4 の HANA Large Instance スタンプでは、ブート LUN が格納されているボリュームは、保存時に既定で暗号化されます。 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>HANA L インスタンス上のさらに大きい HANA インスタンスに対する必要な設定
 

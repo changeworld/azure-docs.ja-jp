@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 8315c2fa094f1d12a788d42a336cb01feb58c6c9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 89230372c641168c1aff4fade8475a48f1a95e04
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450278"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112428780"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -442,6 +442,9 @@ Windows ベースのコンピューターにインストールされているロ
 
 
 ### <a name="generalize-a-vhd"></a>VHD の一般化
+
+>[!NOTE]
+> 既存の Azure VM から汎用イメージを作成する場合は、sysprep を実行する前に VM 拡張機能を削除することをお勧めします。
 
 >[!NOTE]
 > 次の手順で `sysprep.exe` を実行した後、VM をオフにします。 Azure でそれからイメージを作成するまでは再びオンにしないでください。
