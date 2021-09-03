@@ -2,18 +2,18 @@
 title: タスクを実行するためにタスクの依存関係を作成する
 description: MapReduce に見られるようなビッグ データのワークロードを Azure Batch で処理することを目的として、他のタスクの完了に依存するタスクを作成します。
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 06/29/2021
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: ef05a98fffc3c0684ad0fa29f2f9f039b388f5ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cd5e0bc97d37e4daf76bee66c8b4de4698b7aca
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97803937"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126520"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>タスクの依存関係を作成して、他のタスクに依存するタスクを実行する
 
-Batch のタスク依存関係を使用し、コンピューティング ノードで 1 つ以上の親タスクが完了した後に実行されるようにスケジューリングされたタスクを作成します。 たとえば、並列実行される複数の独立したタスクを使って 3D ムービーの各フレームをレンダリングするジョブを作成できます。 最後のタスク ("マージ タスク") では、すべてのフレームが正常にレンダリングされた後にのみ、そのレンダリング済みのフレームをマージしてムービーを完成させます。
+Batch のタスク依存関係を使用し、コンピューティング ノードで 1 つ以上の親タスクが完了した後に実行されるようにスケジューリングされたタスクを作成します。 たとえば、並列実行される複数の独立したタスクを使って 3D ムービーの各フレームをレンダリングするジョブを作成できます。 最後のタスクでは、すべてのフレームが正常にレンダリングされた後にのみ、そのレンダリング済みのフレームをマージしてムービーを完成させます。 つまり、最後のタスクは、その前の親タスクに依存します。
 
 タスクの依存関係は、たとえば次のようなシナリオで役立ちます。
 
@@ -22,9 +22,7 @@ Batch のタスク依存関係を使用し、コンピューティング ノー�
 - 各タスクが次のタスクの開始前に完了している必要がある、レンダリング前およびレンダリング後プロセス。
 - 下流のタスクが上流タスクの出力に依存する、その他すべてのジョブ。
 
-既定では、依存タスクは、親タスクが正常に完了した後にのみ実行されるようにスケジューリングされます。 既定の動作をオーバーライドし、親タスクが失敗したときにタスクを実行する、[依存関係アクション](#dependency-actions)を任意で指定できます。
-
-## <a name="task-dependencies-with-batch-net"></a>Batch .NET でのタスクの依存関係
+既定では、依存タスクは、親タスクが正常に完了した後にのみ実行されるようにスケジューリングされます。 既定の動作をオーバーライドし、親タスクが失敗しても依存タスクを実行する、[依存関係アクション](#dependency-actions)を任意で指定できます。
 
 この記事では、[Batch .NET](/dotnet/api/microsoft.azure.batch) ライブラリを使用したタスクの依存関係の構成方法について説明します。 まず、ジョブで[タスクの依存関係を有効にする](#enable-task-dependencies)方法を説明した後、[依存関係を伴うタスクを構成する](#create-dependent-tasks)方法を紹介します。 親が失敗した場合に依存タスクを実行する、依存関係アクションを指定する方法についても説明します。 最後に、Batch でサポートされる [依存関係のシナリオ](#dependency-scenarios) について取り上げます。
 
@@ -92,7 +90,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 
 ### <a name="one-to-many"></a>一対多
 
-一対多の依存関係では、タスクは複数の親タスクの完了に依存します。 この依存関係を作成するには、[CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) プロパティに値を設定する際、[TaskDependencies.OnIds](/dotnet/api/microsoft.azure.batch.taskdependencies.onids) 静的メソッドにタスク ID のコレクションを渡します。
+一対多の依存関係では、タスクは複数の親タスクの完了に依存します。 この依存関係を作成するには、[CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) プロパティに値を設定する際、[TaskDependencies.OnIds](/dotnet/api/microsoft.azure.batch.taskdependencies.onids) 静的メソッドに特定のタスク ID のコレクションを渡します。
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -107,17 +105,21 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 },
 ```
 
+> [!IMPORTANT]
+> 親タスク ID の合計長が 64000 文字を超える場合、依存タスクの作成は失敗します。 多数の親タスクを指定するには、代わりにタスク ID 範囲の使用を検討してください。
+
 ### <a name="task-id-range"></a>タスク ID の範囲
 
-親タスクの範囲への依存関係では、タスクは ID が特定の範囲内にあるタスクの完了に依存します。
-この依存関係を作成するには、[CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) プロパティに値を設定するときに、その範囲の最初のタスク ID と最後のタスク ID を [TaskDependencies](/dotnet/api/microsoft.azure.batch.taskdependencies.onidrange) 静的メソッドに渡します。
+親タスクの範囲への依存関係では、タスクは、指定した特定の範囲内に ID があるタスクの完了に依存します。
+
+この依存関係を作成するには、[CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) プロパティに値を設定する際に、範囲の最初のタスク ID と最後のタスク ID を [TaskDependencies.OnIdRange](/dotnet/api/microsoft.azure.batch.taskdependencies.onidrange) 静的メソッドに指定します。
 
 > [!IMPORTANT]
 > 依存関係にタスク ID の範囲を使用した場合、その範囲によって選択されるのは、整数値を表す ID を持つタスクだけです。 たとえば、範囲 `1..10` ではタスク `3` と `7` が選択されますが、`5flamingoes` は選択されません。
 >
-> 範囲の依存関係を評価するときに先頭のゼロは重要ではないため、`4`、`04`、`004` の文字列識別子を持つタスクはすべて範囲 *内* になり、それらはすべてタスク `4` として扱われます。そのため、最初に完了したものが依存関係を満たします。
+> 範囲の依存関係を評価するときに先頭のゼロは重要ではないため、`4`、`04`、`004` の文字列識別子を持つタスクはすべて範囲 "*内*" になります。それらはすべてタスク `4` として扱われるため、最初に完了したものが依存関係を満たします。
 >
-> 範囲内のすべてのタスクが、正常に完了するか、または **Satisfy** に設定された [依存関係アクション](#dependency-actions)に指定されているエラーで終了することによって、依存関係を満たしている必要があります。
+> 依存タスクが実行するためには、範囲内のすべてのタスクが、正常に完了するか、または **Satisfy** に設定された[依存関係アクション](#dependency-actions)に指定されているエラーで終了することによって、依存関係を満たしている必要があります。
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -139,9 +141,9 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 ## <a name="dependency-actions"></a>依存関係アクション
 
-既定では、依存タスクまたは一連の依存タスク は、親タスクが正常に完了した後にのみ実行されます。 シナリオによっては、親タスクが失敗した後でも依存タスクを実行したい場合があります。 依存関係アクションを指定すると、既定の動作をオーバーライドできます。
+既定では、依存タスクまたは一連の依存タスク は、親タスクが正常に完了した後にのみ実行されます。 シナリオによっては、親タスクが失敗した後でも依存タスクを実行したい場合があります。 依存タスクが実行対象かどうかを示す "*依存関係アクション*" を指定することで、既定の動作をオーバーライドできます。
 
-依存関係アクションは、親タスクの成功または失敗に基づいて、依存タスクを実行対象にするかどうかを指定します。 たとえば、依存タスクが、上流タスクの完了によって得られるデータを待機しているとします。 上流タスクが失敗しても、古いデータを使用して依存タスクを実行できる場合があります。 その場合は、依存関係アクションで、親タスクの失敗にかかわらずタスクを実行対象にするよう指定できます。
+たとえば、依存タスクが、上流タスクの完了によって得られるデータを待機しているとします。 上流タスクが失敗しても、古いデータを使用して依存タスクを実行できる場合があります。 その場合は、依存関係アクションで、親タスクの失敗にかかわらずタスクを実行対象にするよう指定できます。
 
 依存関係アクションは、親タスクの終了条件に基づきます。 次のどの終了条件に対しても依存関係アクションを指定できます。
 
@@ -151,9 +153,9 @@ new CloudTask("4", "cmd.exe /c echo 4")
 - **ExitCodeRanges** プロパティで定義された範囲内の終了コードでタスクが終了したとき。
 - 既定のケースで、**ExitCodes** および **ExitCodeRanges** で定義されていない終了コードでタスクが終了した、または前処理エラーでタスクが終了し、**PreProcessingError** プロパティが設定されていない、またはファイルのアップロード エラーでタスクが失敗し、**FileUploadError** プロパティが設定されていない場合。 
 
-.NET の場合、これらの条件の詳細については、[ExitConditions](/dotnet/api/microsoft.azure.batch.exitconditions) クラスを参照してください。
+.NET の場合、これらの条件は [ExitConditions](/dotnet/api/microsoft.azure.batch.exitconditions) クラスのプロパティとして定義されます。
 
-.NET で依存関係アクションを指定するには、終了条件の [ExitOptions.DependencyAction](/dotnet/api/microsoft.azure.batch.exitoptions.dependencyaction) プロパティを次のいずれかに設定します。
+依存関係アクションを指定するには、終了条件の [ExitOptions.DependencyAction](/dotnet/api/microsoft.azure.batch.exitoptions.dependencyaction) プロパティを次のいずれかに設定します。
 
 - **Satisfy**:指定したエラーで親タスクが終了した場合に依存タスクが実行対象になります。
 - **ブロック**: 依存タスクは実行できないことを示します。

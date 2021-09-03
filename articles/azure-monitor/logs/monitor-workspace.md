@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 3058488a3c97c5a99fe0c22a7e1e3fec05c873d4
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: 4f127245ea36a7183603f5115739d317282ea686
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421078"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113009526"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースの正常性を監視する
 Azure Monitor で Log Analytics ワークスペースのパフォーマンスと可用性を維持するには、発生する問題を事前に検出できるようにする必要があります。 この記事では、[Operation](/azure/azure-monitor/reference/tables/operation) テーブル内のデータを使用して、Log Analytics ワークスペースの正常性を監視する方法について説明します。 このテーブルはすべての Log Analytics ワークスペースに含まれているもので、その中にはお使いのワークスペースで発生したエラーと警告が入っています。 "警告" および "エラー" レベルの問題についてアラートを作成することをお勧めします。
@@ -53,7 +53,7 @@ Azure Monitor ログでは、問題が発生したワークスペース内の [O
 
  
 #### <a name="operation-data-collection-stopped"></a>操作: データ収集の停止  
-1 日の上限に達したため、データ収集が停止しました。
+"1 日あたりの無料データの上限に達したため、データ コレクションが停止しました。 取り込みの状態 = クォータ超過"
 
 過去 7 日間で、ログ収集が 1 日に設定された上限に達しました。 この上限は、ワークスペースが "Free レベル" に設定されているか、このワークスペースに 1 日の収集上限が構成されているときに設定されます。
 設定された上限に達すると、その日のデータ収集が自動的に停止され、次の収集日にのみ再開されます。 
@@ -61,36 +61,34 @@ Azure Monitor ログでは、問題が発生したワークスペース内の [O
 推奨アクション: 
 *   _LogOperation テーブルで、収集停止イベントと収集再開イベントを確認します。</br>
 `_LogOperation | where TimeGenerated >= ago(7d) | where Category == "Ingestion" | where Operation has "Data collection"`
-*   "データ収集の停止" 操作イベントの[アラートを作成](./manage-cost-storage.md#alert-when-daily-cap-reached)します。このアラートにより、収集の上限に達したときに通知を受け取ることができます。
+*   "データ収集の停止" 操作イベントの[アラートを作成](./manage-cost-storage.md#alert-when-daily-cap-is-reached)します。このアラートにより、収集の上限に達したときに通知を受け取ることができます。
 *   1 日の収集上限に達した後に収集されたデータは失われます。[Workspace Insights] ブレードを使用して、各ソースからの使用率を確認します。 または、[データの 1 日の最大ボリュームを管理する](./manage-cost-storage.md#manage-your-maximum-daily-data-volume) \ 収集率パターンに合わせて[価格レベルを変更する](./manage-cost-storage.md#changing-pricing-tier)こともできます。 
-* データ収集率は 1 日ごとに計算され、翌日の開始時にリセットされます。"データ収集の再開" 操作イベントの[アラートを作成](./manage-cost-storage.md#alert-when-daily-cap-reached)することで、収集再開イベントを監視することもできます。
+* データ収集率は 1 日ごとに計算され、翌日の開始時にリセットされます。"データ収集の再開" 操作イベントの[アラートを作成](./manage-cost-storage.md#alert-when-daily-cap-is-reached)することで、収集再開イベントを監視することもできます。
 
 #### <a name="operation-ingestion-rate"></a>操作: インジェスト率
-インジェスト率の上限に近づいているか、上限を超えました。
-
- インジェスト率が 80% を超えましたが、この時点では問題はありません。 しきい値を超えて収集されたデータは破棄されることに注意してください。 </br>
+"データ インジェスト ボリューム率がワークスペースのしきい値 (1 分あたり {0:0.00} MB) を超え、データが削除されました。" 
 
 推奨アクション:
 *   _LogOperation テーブルでインジェスト率イベントを確認します (`_LogOperation | where TimeGenerated >= ago(7d) | where Category == "Ingestion" | where Operation has "Ingestion rate"`)。 
   注: しきい値を超え続けている間の、ワークスペースの 6 時間ごとの操作テーブル。 
-*   "データ収集の停止" 操作イベントの[アラートを作成](./manage-cost-storage.md#alert-when-daily-cap-reached)します。このアラートにより、上限に達したときに通知を受け取ることができます。
+*   "データ収集の停止" 操作イベントの[アラートを作成](./manage-cost-storage.md#alert-when-daily-cap-is-reached)します。このアラートにより、上限に達したときに通知を受け取ることができます。
 *   インジェスト率が 100% に達している間に収集されたデータは破棄され、失われます。 
 
 [Workspace Insights] ブレードで使用パターンを確認し、それらの削減を試みます。</br>
 詳細情報: </br>
 [Azure Monitor サービスの制限](../service-limits.md#data-ingestion-volume-rate) </br>
-[Azure Monitor ログの使用量とコストを管理する](./manage-cost-storage.md#alert-when-daily-cap-reached)  
+[Azure Monitor ログの使用量とコストを管理する](./manage-cost-storage.md#alert-when-daily-cap-is-reached)  
 
  
 #### <a name="operation-maximum-table-column-count"></a>操作: テーブルの最大列数
-カスタム フィールド数が上限に達しました。
+"種類が \<**table name**\> のデータが削除されました。フィールド数 \<**new fields count**\> がデータ種別ごとのカスタム フィールド数の上限 \<**current field count limit**\> を超えたためです。" 
 
 推奨アクション: カスタム テーブルの場合、クエリでの[データの解析](./parse-text.md)に移ることができます。
 
 #### <a name="operation-field-content-validation"></a>操作: フィールドの内容の検証
-取り込まれるデータのフィールドの 1 つが 32 Kb を超えていたため、切り詰められました。
+" 種類が \<**table name**\> である次のフィールドの値 \<**field name**\> が、最大許容サイズ \<**field size limit**\> バイトに切り捨てられました。 必要に応じて入力を調整してください。" 
 
-Log Analytics では、取り込まれるフィールドのサイズが 32 Kb に制限されており、これより大きいサイズのフィールドは 32Kb にトリミングされます。 トリミング プロセスによって重要な情報が削除される可能性があるため、32Kb を超えるフィールドを送信しないようにすることをお勧めします。 
+上限を超えたフィールドが Azure ログによって処理され、許容されるフィールド制限まで切り捨てられました。 データ損失が発生するため、許容される制限を超えるフィールドの送信はお勧めしません。 
 
 推奨アクション: 影響を受けるデータの種類のソースを確認します。
 *   データが HTTP データ コレクター API を介して送信されている場合は、データを分割してから取り込むようにコードまたはスクリプトを変更する必要があります。
@@ -100,6 +98,8 @@ Log Analytics では、取り込まれるフィールドのサイズが 32 Kb �
 
 ### <a name="data-collection"></a>データ コレクション
 #### <a name="operation-azure-activity-log-collection"></a>操作: Azure アクティビティ ログの収集
+"サブスクリプションへのアクセスが失われました。 \<**subscription id**\> サブスクリプションが \<**tenant id**\> Azure Active Directory テナントにあることを確認します。 サブスクリプションが他のテナントに移されてもサービスには影響しませんが、テナントの情報が反映されるまでに最大で 1 時間かかります。 '"
+
 説明: 別のテナントへのサブスクリプションの移動など、状況によっては、Azure アクティビティ ログがワークスペースに送信されなくなることがあります。 このような状況では、この記事で説明するプロセスに従って、サブスクリプションを再接続する必要があります。
 
 推奨アクション: 
@@ -111,6 +111,8 @@ Log Analytics では、取り込まれるフィールドのサイズが 32 Kb �
 
 ### <a name="agent"></a>エージェント
 #### <a name="operation-linux-agent"></a>操作: Linux エージェント
+"OMS 設定からの連続した 2 つの構成適用が失敗しました"
+
 ポータルの構成設定が変更されました。
 
 推奨アクション: この問題は、エージェントが新しい構成設定を取得する際に問題が発生した場合に発生します。 この問題を軽減するには、エージェントを再インストールする必要があります。 _LogOperation テーブルでエージェント イベントを確認します。</br>

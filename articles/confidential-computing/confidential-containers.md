@@ -8,12 +8,12 @@ ms.date: 2/11/2020
 ms.author: amgowda
 ms.service: container-service
 ms.subservice: confidential-computing
-ms.openlocfilehash: 280f75e8d18d16dd76d0730a90755774af34d6f6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 35bf2fc96f93d1eed2b15c4ea87aa1f2a3aaa0a5
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933578"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002890"
 ---
 # <a name="confidential-containers"></a>機密コンテナー
 
@@ -59,7 +59,7 @@ ms.locfileid: "105933578"
 
 ### <a name="fortanix"></a>Fortanix
 
-[Fortanix](https://www.fortanix.com/) では、開発者はポータルと CLI ベースのエクスペリエンスを選択し、コンテナー化されたアプリケーションを取り込んで、アプリケーションを変更または再コンパイルすることなく、それらを SGX 対応の機密コンテナーに変換できます。 Fortanix により、既存のアプリケーション、新しいエンクレーブ ネイティブ アプリケーション、事前パッケージ済みアプリケーションなど、幅広いアプリケーションのセットを実行して管理するための柔軟性が提供されます。 ユーザーは、[Confidential Computing Manager](https://em.fortanix.com/) UI または [REST API](https://www.fortanix.com/api/em/) を使用し、Azure Kubernetes Service の[クイック スタート](https://support.fortanix.com/hc/en-us/articles/360049658291-Fortanix-Confidential-Container-on-Azure-Kubernetes-Service) ガイドに従って、機密コンテナーを作成できます。
+[Fortanix](https://www.fortanix.com/) では、開発者はポータルと CLI ベースのエクスペリエンスを選択し、コンテナー化されたアプリケーションを取り込んで、アプリケーションを変更または再コンパイルすることなく、それらを SGX 対応の機密コンテナーに変換できます。 Fortanix により、既存のアプリケーション、新しいエンクレーブ ネイティブ アプリケーション、事前パッケージ済みアプリケーションなど、幅広いアプリケーションのセットを実行して管理するための柔軟性が提供されます。 ユーザーは、[Confidential Computing Manager](https://em.fortanix.com/) UI または [REST API](https://www.fortanix.com/api/em/) を使用し、Azure Kubernetes Service の[クイック スタート](https://fortanix.com/blog/2020/10/fortanix-confidential-containers-on-microsoft-azure-kubernetes-service-aks/) ガイドに従って、機密コンテナーを作成できます。
 
 ![Fortanix のデプロイ プロセス](./media/confidential-containers/fortanix-confidential-containers-flow.png)
 
@@ -89,6 +89,15 @@ AKS のサンプル アプリケーションとデプロイについては、[�
 
 Occlum では AKS デプロイがサポートされています。 さまざまなサンプル アプリでのデプロイの手順については、[こちら](https://github.com/occlum/occlum/blob/master/docs/azure_aks_deployment_guide.md)を参照してください
 
+### <a name="marblerun"></a>Marblerun
+
+[Marblerun](https://marblerun.sh/) は、機密コンテナーのオーケストレーション フレームワークです。 これによって SGX 対応 Kubernetes での機密サービスの実行とスケーリングが簡単になります。 Marblerun では、クラスターでのサービスの検証、それらのシークレットの管理、それらの間でのエンクレーブからエンクレーブへの mTLS 接続の確立といった定型タスクを扱います。 また、Marblerun によって、機密コンテナーのクラスターが単純な JSON で定義されたマニフェストに準拠することも保証されます。 マニフェストは、リモート構成証明を介して外部クライアントによって検証できます。 
+
+![Marblerun のフロー](./media/confidential-containers/marblerun-workflow.png)
+
+簡単に言えば、Marblerun によって、1 つのエンクレーブの機密性、整合性、検証可能性のプロパティが、Kubernetes クラスターに拡張されます。 
+
+Marblerun では、Graphene、Occlum、および EGo によって作成された機密コンテナーがサポートされます。 各 SDK の例は[こちら](https://www.marblerun.sh/docs/examples/)にあります。 Marblerun は、Kubernetes 上で、既存のクラウドネイティブ ツールと共に実行するように構築されています。 使いやすい CLI と Helm チャートが付属しています。 AKS 上の機密コンピューティング ノードに対して最上級のサポートが提供されます。 Marblerun を AKS にデプロイする方法の詳細については、[こちら](https://www.marblerun.sh/docs/deployment/cloud/)をご覧ください。
 
 ## <a name="confidential-containers-demo"></a>機密コンテナーのデモ
 機密コンテナーを使用した機密医療のデモをご覧ください。 サンプルは[こちら](/azure/architecture/example-scenario/confidential/healthcare-inference)から入手できます。 

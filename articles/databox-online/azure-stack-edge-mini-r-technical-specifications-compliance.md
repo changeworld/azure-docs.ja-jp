@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 06/29/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f57e7f25a9e34a88c9ae279083a2cf1d9be2ff1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8b2da6b75ec495fe96b0c65e312a91d0dd30a2d2
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099426"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091503"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R の技術仕様
 
@@ -138,10 +138,10 @@ Azure Stack Edge Mini R デバイスには、電源装置によって充電さ�
 
 |     仕様             |     説明                                                          |
 |--------------------------------|--------------------------------------------------------------------------|
-|     温度範囲          |     0 – 43° C (運用時)                                              |
+|     温度範囲          |     0 – 40° C (運用時)                                              |
 |     振動                  |     MIL-STD-810 Method 514.7*<br> Procedure I CAT 4, 20                  |
 |     衝撃                      |     MIL-STD-810 Method 516.7*<br> Procedure IV, Logistic                 |
-|     高度                   |     運用時: 10,000 フィート<br> 非運用時:40,000 フィート          |
+|     高度                   |     運用時:   15,000 フィート<br> 非運用時:40,000 フィート          |
 
 "**すべての参照は MIL-STD-810G Change 1 (2014) です*"
 

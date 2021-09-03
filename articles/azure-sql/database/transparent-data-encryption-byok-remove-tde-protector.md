@@ -11,13 +11,13 @@ ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 02/24/2020
-ms.openlocfilehash: f98dcdd9c1a479703c82c01b4fd240507ea355de
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/23/2021
+ms.openlocfilehash: 6d3027afae6b1d4121582014bb2b525ba2fd2c44
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784466"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090261"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用した Transparent Data Encryption (TDE) 保護機能の削除
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -32,10 +32,10 @@ ms.locfileid: "107784466"
 
 Key Vault で TDE 保護機能を削除したら、最大 10 分ですべての暗号化されたデータベースで、対応するエラー メッセージを使用してすべての接続の拒否が開始され、状態が [[アクセス不可]](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector) に変更されることに注意してください。
 
-このハウツー ガイドでは、侵害のあったインシデント対応後の望ましい結果に応じた次の 2 つの方法を説明します。
+このハウツー ガイドでは、侵害インシデント対応の後でデータベースが **アクセスされない** ようにする方法を説明します。
 
-- Azure SQL Database /Azure Synapse Analytics 内のデータベースを **アクセス不可** にする
-- Azure SQL Database/Azure Synapse Analytics 内のデータベースを **アクセス不可** にする
+> [!NOTE]
+> この記事は、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (専用 SQL プール (以前の SQL DW)) に適用されます。 Synapse ワークスペース内の専用 SQL プールの Transparent Data Encryption に関するドキュメントについては、[Azure Synapse Analytics の暗号化](../../synapse-analytics/security/workspaces-encryption.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
