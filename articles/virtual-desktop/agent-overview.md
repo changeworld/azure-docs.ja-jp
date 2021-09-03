@@ -1,21 +1,21 @@
 ---
-title: Windows Virtual Desktop エージェントの概要
-description: Windows Virtual Desktop エージェントと更新プロセスの概要。
+title: Azure Virtual Desktop エージェントの概要
+description: Azure Virtual Desktop エージェントと更新プロセスの概要。
 author: Sefriend
 ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 1965f95ab69e0f0f6b15fa41bf46fec63c74699a
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 61716993bc4c9f3da4ad606789f050a280a94817
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632207"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754649"
 ---
-# <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Windows Virtual Desktop エージェントの概要
+# <a name="get-started-with-the-azure-virtual-desktop-agent"></a>Azure Virtual Desktop エージェントの概要
 
-Windows Virtual Desktop サービス フレームワークには、リモート デスクトップ クライアント、サービス、仮想マシンという 3 つの主要コンポーネントがあります。 この仮想マシンは、Windows Virtual Desktop エージェントとエージェント ブートローダーがインストールされている顧客サブスクリプションに存在します。 エージェントは、サービスと仮想マシンの間の中間コミュニケーターとして機能し、接続を可能にします。 そのため、エージェントのインストール、更新、または構成で問題が発生した場合、仮想マシンはサービスに接続できません。 エージェント ブートローダーは、エージェントを読み込む実行可能ファイルです。 
+Azure Virtual Desktop サービス フレームワークには、リモート デスクトップ クライアント、サービス、仮想マシンという 3 つの主要コンポーネントがあります。 この仮想マシンは、Azure Virtual Desktop エージェントとエージェント ブートローダーがインストールされている顧客サブスクリプションに存在します。 エージェントは、サービスと仮想マシンの間の中間コミュニケーターとして機能し、接続を可能にします。 そのため、エージェントのインストール、更新、または構成で問題が発生した場合、仮想マシンはサービスに接続できません。 エージェント ブートローダーは、エージェントを読み込む実行可能ファイルです。 
 
 この記事では、エージェントのインストールと更新のプロセスの概要を示します。
 
@@ -25,29 +25,29 @@ Windows Virtual Desktop サービス フレームワークには、リモート 
 
 ## <a name="initial-installation-process"></a>初期インストール プロセス
 
-Windows Virtual Desktop エージェントは、2 つの方法のいずれかで初期インストールされます。 Azure portal と Azure Marketplace で仮想マシン (VM) をプロビジョニングすると、エージェントとエージェント ブートローダーが自動的にインストールされます。 PowerShell を使用して VM をプロビジョニングする場合、[PowerShell で Windows Virtual Desktop ホスト プールを作成する](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)ときに、エージェントとエージェント ブートローダーの .msi ファイルを手動でダウンロードする必要があります。 エージェントがインストールされると、Windows Virtual Desktop サイドバイサイド スタックと Geneva Monitoring エージェントがインストールされます。 このサイドバイサイド スタック コンポーネントは、ユーザーがサーバーからクライアントへの逆方向の接続を安全に確立するために必要です。 Geneva Monitoring エージェントは、エージェントの正常性を監視します。 この 3 つのコンポーネントは、エンドツーエンドのユーザー接続を正常に機能させるためにどれも不可欠です。
+Azure Virtual Desktop エージェントは、2 つの方法のいずれかで初期インストールされます。 Azure portal と Azure Marketplace で仮想マシン (VM) をプロビジョニングすると、エージェントとエージェント ブートローダーが自動的にインストールされます。 PowerShell を使用して VM をプロビジョニングする場合、[PowerShell で Azure Virtual Desktop ホスト プールを作成する](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool)ときに、エージェントとエージェント ブートローダーの .msi ファイルを手動でダウンロードする必要があります。 エージェントがインストールされると、Azure Virtual Desktop サイドバイサイド スタックと Geneva Monitoring エージェントがインストールされます。 このサイドバイサイド スタック コンポーネントは、ユーザーがサーバーからクライアントへの逆方向の接続を安全に確立するために必要です。 Geneva Monitoring エージェントは、エージェントの正常性を監視します。 この 3 つのコンポーネントは、エンドツーエンドのユーザー接続を正常に機能させるためにどれも不可欠です。
 
 >[!IMPORTANT]
->Windows Virtual Desktop エージェント、サイドバイサイド スタック、Geneva Monitoring エージェントを正常にインストールするために、[[必要な URL リスト]](safe-url-list.md#virtual-machines) にリストされているすべての URL のブロックを解除する必要があります。 これらの URL のブロックの解除は、Windows Virtual Desktop サービスを使用するために必須です。
+>Azure Virtual Desktop エージェント、サイドバイサイド スタック、Geneva Monitoring エージェントを正常にインストールするために、[[必要な URL リスト]](safe-url-list.md#virtual-machines) にリストされているすべての URL のブロックを解除する必要があります。 これらの URL のブロックの解除は、Azure Virtual Desktop サービスを使用するために必須です。
 
 ## <a name="agent-update-process"></a>エージェントの更新プロセス
 
-更新プログラムが利用可能になるたびに、Windows Virtual Desktop サービスによってエージェントが更新されます。 エージェントの更新には、新しい機能や以前の問題の修正を含めることができます。 VM が接続を失ったり、セキュリティを損なったりしないように、常に最新の安定したバージョンのエージェントがインストールされている必要があります。 Windows Virtual Desktop エージェントの初期バージョンがインストールされると、エージェントは Windows Virtual Desktop サービスに対してクエリを定期的に実行して、エージェント、スタック、または監視コンポーネントの使用可能な新しいバージョンがないか確認します。 いずれかのコンポーネントの新しいバージョンが既にデプロイされている場合は、更新されたコンポーネントがフライト システムによって自動的にインストールされます。
+更新プログラムが利用可能になるたびに、Azure Virtual Desktop サービスによってエージェントが更新されます。 エージェントの更新には、新しい機能や以前の問題の修正を含めることができます。 VM が接続を失ったり、セキュリティを損なったりしないように、常に最新の安定したバージョンのエージェントがインストールされている必要があります。 Azure Virtual Desktop エージェントの初期バージョンがインストールされると、エージェントは Azure Virtual Desktop サービスに対してクエリを定期的に実行して、エージェント、スタック、または監視コンポーネントの使用可能な新しいバージョンがないか確認します。 いずれかのコンポーネントの新しいバージョンが既にデプロイされている場合は、更新されたコンポーネントがフライト システムによって自動的にインストールされます。
 
-エージェントの新しいバージョンは、5 日の期間内に一定間隔ですべての Azure サブスクリプションにデプロイされます。 これらの更新期間は "フライト" と呼ばれます。 1 回のフライトで、1 つのブローカー リージョン内のすべての VM でエージェントの更新が受信されるまでに、24 時間かかります。 このため、フライトが発生した場合、ホスト プール内の VM では異なるタイミングでエージェントの更新を受け取ることがあります。 また、VM が異なるリージョンにある場合は、5 日の期間内の異なる日に更新される可能性があります。 フライトによって、すべてのサブスクリプション内のすべての VM エージェントが、デプロイ期間の終了までに更新されます。 Windows Virtual Desktop のフライト システムでは、エージェントの更新における安定性と品質を確保することによって、サービスの信頼性を向上させます。
+エージェントの新しいバージョンは、5 日の期間内に一定間隔ですべての Azure サブスクリプションにデプロイされます。 これらの更新期間は "フライト" と呼ばれます。 1 回のフライトで、1 つのブローカー リージョン内のすべての VM でエージェントの更新が受信されるまでに、24 時間かかります。 このため、フライトが発生した場合、ホスト プール内の VM では異なるタイミングでエージェントの更新を受け取ることがあります。 また、VM が異なるリージョンにある場合は、5 日の期間内の異なる日に更新される可能性があります。 フライトによって、すべてのサブスクリプション内のすべての VM エージェントが、デプロイ期間の終了までに更新されます。 Azure Virtual Desktop のフライト システムでは、エージェントの更新における安定性と品質を確保することによって、サービスの信頼性を向上させます。
 
 
 留意すべきその他の重要な点:
 
-- エージェントの更新は、Windows Virtual Desktop インフラストラクチャのビルドの更新とはつながっていません。 Windows Virtual Desktop インフラストラクチャが更新されるときに、エージェントが一緒に更新されるという意味ではありません。
+- エージェントの更新は、Azure Virtual Desktop インフラストラクチャのビルドの更新と連動していません。 Azure Virtual Desktop インフラストラクチャが更新されても、エージェントが一緒に更新されるわけではありません。
 - ホスト プール内の VM は異なるタイミングでエージェントの更新を受け取る可能性があるため、フライトの問題とエージェントの更新の失敗の違いを理解できる必要があります。 **[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** で VM のイベント ログにアクセスし、"ID 3277" というラベルのイベントが表示される場合は、エージェントの更新が機能しなかったことを意味します。 このイベントが表示されない場合、VM は別のフライトにあり、後で更新されます。
 - Geneva Monitoring エージェントが最新バージョンに更新されると、新しい Monitoring エージェントの新しいタスクを作成する前に、古い Geneva タスクが検出され、無効になります。 最新バージョンの Monitoring エージェントに問題があり、修正のために以前のバージョンに戻す必要がある場合に備えて、以前のバージョンの Monitoring エージェントは削除されません。 最新バージョンに問題がある場合は、古い Monitoring エージェントが再び有効になり、監視データの配信が続行されます。 更新前にインストールした最後のモニターよりも古いすべてのバージョンのモニターが VM から削除されます。
 - VM では、同時に 3 つのバージョンのサイドバイサイド スタックが保持されます。 これにより、更新プログラムで問題が発生した場合にすばやく回復できます。 スタックが更新されるたびに、最も古いバージョンのスタックが VM から削除されます。
 
-エージェントの更新には通常、新しい VM では 2 分から 3 分かかります。これによって VM が接続を失うことや、シャットダウンされることはありません。 この更新プロセスは、Windows Virtual Desktop (クラシック) と最新バージョンの Windows Virtual Desktop with Azure Resource Manager の両方に適用されます。
+エージェントの更新には通常、新しい VM では 2 分から 3 分かかります。これによって VM が接続を失うことや、シャットダウンされることはありません。 この更新プロセスは、Azure Virtual Desktop (クラシック) と、Azure Resource Manager を含む最新バージョンの Azure Virtual Desktop の両方に適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Windows Virtual Desktop エージェントについて理解を深めたので、こちらのリソースが役に立ちます。
+Azure Virtual Desktop エージェントについて理解を深めたので、こちらのリソースが役に立ちます。
 
-- エージェントまたは接続に関連する問題が発生した場合は、[Windows Virtual Desktop エージェントの問題のトラブルシューティング ガイド](troubleshoot-agent.md)に関する記事を参照してください。
+- エージェントまたは接続に関連する問題が発生した場合は、[Azure Virtual Desktop エージェントの問題のトラブルシューティング ガイド](troubleshoot-agent.md)に関する記事を参照してください。

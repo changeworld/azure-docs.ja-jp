@@ -1,15 +1,15 @@
 ---
 title: Kubernetes 用の Azure Policy の概要
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。
-ms.date: 05/13/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5319504a0e25531ce77ebc06748bb360c0cbc171
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 20b3362823644ab478e2069fbc610079820302c3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112202780"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323079"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -72,7 +72,7 @@ Azure Policy アドオンを使用する場合の一般的な推奨事項を次�
 - Azure Policy アドオンでは、3 つの Gatekeeper コンポーネント (監査ポッドのレプリカが 1 つ、Webhook ポッドのレプリカが 2 つ) を実行する必要があります。 クラスター内での Kubernetes リソースとポリシー割り当ての数が増えるにつれて、監査および適用の操作が必要となり、これらのコンポーネントによってさらに多くのリソースを消費されます。
 
   - 最大 20 の制約を持つ 1 つのクラスター内のポッド数が 500 を下回る場合: コンポーネントごとに 2 つの vCPU と 350 MB のメモリ。
-  - 最大 40 の制約を持つ 1 つのクラスター内のポッド数が 500 を上回る場合:コンポーネントごとに 3 つの vCPU と 600 MB のメモリ。
+  - 最大 40 の制約を持つ 1 つのクラスター内のポッド数が 500 を上回る場合: コンポーネントごとに 3 つの vCPU と 600 MB のメモリ。
 
 - Windows ポッド [セキュリティ コンテキスト](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods)をサポートしていません。
   そのため、Windows ポッドでは、ルート特権の禁止など、一部の Azure Policy 定義をエスカレートすることができず、Linux ポッドにのみ適用されます。

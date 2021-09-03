@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/16/2020
+ms.date: 07/01/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccd3de1b05c416ea25f7636c683f887dccc76898
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 4fcd11f88cb25ef3afb199b147856d0a0140e44c
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713794"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491985"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求設定を変更する
 
@@ -141,7 +141,7 @@ ms.locfileid: "109713794"
 1. すべての接続済み組織を選択したら、 **[選択]** をクリックします。
 
     > [!NOTE]
-    > 選択した接続済み組織のすべてのユーザーは、このアクセス パッケージを要求できます。 これには、組織に関連付けられている Azure AD 内のすべてのサブドメインのユーザーが含まれます。ただし、それらのドメインが Azure B2B の許可リストまたは拒否リストによってブロックされている場合を除きます。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../external-identities/allow-deny-list.md)」を参照してください。
+    > 選択した接続済み組織のすべてのユーザーは、このアクセス パッケージを要求できます。 これには、組織に関連付けられている Azure AD 内のすべてのサブドメインのユーザーが含まれます。ただし、それらのドメインが Azure B2B の許可リストまたはブロック リストによってブロックされている場合を除きます。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](../external-identities/allow-deny-list.md)」を参照してください。
 
 1. 承認を要求する場合は、「[Azure AD エンタイトルメント管理でアクセス パッケージの承認設定を変更する](entitlement-management-access-package-approval-policy.md)」の手順を使用して、承認設定を構成します。
  
@@ -198,11 +198,17 @@ ms.locfileid: "109713794"
 
 1. **[次へ]** をクリックします。
 
-1. アクセス パッケージへのアクセスを要求するときに、追加情報を提供するように要求元に要求する場合、「[Azure AD エンタイトルメント管理でアクセス パッケージの承認および要求元情報 (プレビュー) 設定を変更する](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview)」の手順を使用して、要求元情報を構成します (プレビュー)。
+1. アクセス パッケージへのアクセスを要求するときに、追加情報を提供するように要求元に要求する場合、「[Azure AD エンタイトルメント管理でアクセス パッケージの承認および要求元情報設定を変更する](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval)」の手順を使用して、要求元情報を構成します。
 
 1. ライフサイクルの設定を構成します。
 
 1. ポリシーを編集する場合は、**[更新]** をクリックします。 新しいポリシーを追加する場合は、**[作成]** をクリックします。
+
+## <a name="prevent-requests-from-users-with-incompatible-access-preview"></a>互換性のないアクセス権を持つユーザーからの要求を防ぐ (プレビュー)
+
+要求可能なユーザーのポリシー チェックに加えて、グループや別のアクセス パッケージによって既に何らかのアクセス権を持っているユーザーが過度なアクセス権を取得しないように、さらにアクセスを制限する場合があります。
+
+既に別のアクセス パッケージを割り当てられているか、グループのメンバーであるユーザーがアクセス パッケージを要求できないように構成するには、[アクセス パッケージに対する職務の分離の確認を構成する](entitlement-management-access-package-incompatible.md)方法の手順を使用してください。
 
 ## <a name="next-steps"></a>次の手順
 

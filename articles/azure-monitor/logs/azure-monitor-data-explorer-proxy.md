@@ -6,12 +6,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: a800f78df26ce76144994bb9da2cac6271323eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 498fc101f257b05d24826cead8906b513ec34ccd
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419424"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324531"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ
 Azure Monitor では、Azure Data Explorer、[Application Insights](../app/app-insights-overview.md)、および [Log Analytics](../logs/data-platform-logs.md) 間のクロスサービス クエリがサポートされています。 それにより、Log Analytics または Application Insights ツールを使用して Azure Data Explorer クラスターに対してクエリを実行し、それをクロスサービス クエリで参照することができます。 この記事では、クロスサービス クエリを作成する方法について説明します。
@@ -55,6 +55,15 @@ union customEvents, CL1 | take 10
 
 > [!Tip]
 > 次の短縮形を使用できます。*ClusterName*/*InitialCatalog*。 たとえば、`adx('help/Samples')` は `adx('help.kusto.windows.net/Samples')` に変換されます。
+
+>[!Note]
+> 
+>* union の代わりに [`join` 演算子](/azure/data-explorer/kusto/query/joinoperator)を使用するには、Azure Data Explorer クラスター内のデータを Log Analytics ワークスペースと結合するための [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) を使用する必要があります。
+>* 次の例のように、Hint.remote={Log Analytics ワークスペースの方向} を使用します。
+>```kusto
+>AzureDiagnostics
+>| join hint.remote=left adx("cluster=ClusterURI").AzureDiagnostics on (ColumnName)
+>```
 
 ## <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>一方のテナントの Azure Data Explorer クラスターのデータを他方の Azure Monitor リソースと結合する
 

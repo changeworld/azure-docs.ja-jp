@@ -6,15 +6,15 @@ author: kromerm
 ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 46a94faaf3159f93cce34f2d6816185af62f286f
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 314c52384910728c0250101e72501de0ae0b89a1
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966897"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555004"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics と Azure Data Factory のデータ統合
 
@@ -37,6 +37,7 @@ Azure Synapse Analytics の Synapse パイプラインやデータ フローな�
 | **Git リポジトリの統合** | Git 統合 | ✓ | ✓ |
 | **Monitoring**           | データ フローについての Spark ジョブの監視 | ✗ | ✓<br>"<small>*Synapse Spark プールを活用する*" |
 |                          | Azure Monitor との統合 | ✓ | ✗ |
+| **系列** | Purview へのパイプラインの系列データの公開をサポート  | ✓ | ✗ |  
 
 > [!Note]
 > **Time to Live** は Azure Integration Runtime の設定で、これを使用すると、データ フロー実行後の一定期間、Spark クラスターで "*ウォーム状態を維持*" することができます。

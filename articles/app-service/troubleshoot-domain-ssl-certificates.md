@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ba266c5a4ec5ffb84ee02e9c1904423f01d333e5
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: aca2e73b6abbdce6447034e14d0457958f1b800e
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670913"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964502"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング
 
@@ -35,14 +35,14 @@ TLS バインディングを追加するときに、次のエラー メッセー
 
 #### <a name="cause"></a>原因
 
-この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの SSL バインディングが複数ある場合に発生することがあります。 たとえば、アプリ A に、古い証明書を持つ IP ベースの SSL があり、 アプリ B に、同じ IP アドレスの新しい証明書を持つ IP ベースの SSL がある場合です。 新しい証明書でアプリの TLS バインディングを更新すると、別のアプリで同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
+この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの TLS/SSL バインドが複数ある場合に発生する可能性があります。 たとえば、アプリ A に、古い証明書にバインドされた IP ベースの TLS/SSL があるとします。 アプリ B に、同じ IP アドレスの新しい証明書にバインドされた IP ベースの TLS/SSL があるとします。 新しい証明書でアプリの TLS バインディングを更新すると、別のアプリで同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
 
 #### <a name="solution"></a>解決策 
 
 この問題を解決するには、次のいずれかの方法を使用します。
 
-- アプリで、古い証明書を使用している IP ベースの SSL バインディングを削除します。 
-- 新しい証明書を使用する、新しい IP ベースの SSL バインディングを作成します。
+- 古い証明書を使用しているアプリで、IP ベースの TLS/SSL のバインドを削除します。 
+- 新しい証明書を使用する、新しい IP ベースの TLS/SSL バインドを作成します。
 
 ### <a name="you-cant-delete-a-certificate"></a>証明書を削除できない 
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 31c5be9ce48ffea8ebd23e893e2d77e6365d2327
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4d0197e76659e864ab0f5553317b64b2d74b867d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467668"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725471"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の整合性レベル
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "110467668"
 
 ## <a name="consistency-levels-and-azure-cosmos-db-apis"></a>整合性レベルと Azure Cosmos DB API
 
-Azure Cosmos DB は、一般的なデータベース用のワイヤ プロトコルに対応する API をネイティブにサポートしています。 これらは、MongoDB、Apache Cassandra、Gremlin、および Azure Table Storage などです。 Gremlin API および Table API を使用する場合、Azure Cosmos アカウントに構成されている既定の整合性レベルが使用されます。 Cassandra API または MongoDB 用 API と Azure Cosmos DB の整合性レベルの間の整合性レベルのマッピングの詳細については、[Cassandra API の整合性マッピング](cassandra-consistency.md)および [MongoDB 用 API の整合性マッピング](mongodb-consistency.md)に関する記事を参照してください。
+Azure Cosmos DB は、一般的なデータベース用のワイヤ プロトコルに対応する API をネイティブにサポートしています。 これらは、MongoDB、Apache Cassandra、Gremlin、および Azure Table Storage などです。 Gremlin API および Table API を使用する場合、Azure Cosmos アカウントに構成されている既定の整合性レベルが使用されます。 Cassandra API または MongoDB 用 API と Azure Cosmos DB の整合性レベルの間の整合性レベルのマッピングの詳細については、[Cassandra API の整合性マッピング](cassandra/apache-cassandra-consistency-mapping.md)および [MongoDB 用 API の整合性マッピング](mongodb/consistency-mapping.md)に関する記事を参照してください。
 
 ## <a name="scope-of-the-read-consistency"></a>読み取り整合性のスコープ
 
@@ -43,6 +43,9 @@ Azure Cosmos DB は、一般的なデータベース用のワイヤ プロトコ
 ## <a name="configure-the-default-consistency-level"></a>既定の整合性レベルを構成する
 
 Azure Cosmos アカウントの既定の整合性レベルはいつでも構成できます。 自分のアカウントに構成されている既定の整合性レベルは、そのアカウントのすべての Azure Cosmos データベースおよびコンテナーに適用されます。 コンテナーまたはデータベースに対して発行されるすべての読み取りとクエリでは、指定された整合性レベルが既定で使用されます。 詳しくは、[既定の整合性レベルを構成する](how-to-manage-consistency.md#configure-the-default-consistency-level)方法についての記事をご覧ください。 また、特定の要求に対して既定の整合性レベルをオーバーライドすることもできます。詳細については、「[既定の整合性レベルをオーバーライドする](how-to-manage-consistency.md?#override-the-default-consistency-level)」を参照してください。
+
+> [!TIP]
+> 既定の整合性レベルのオーバーライドは、SDK クライアント内の読み取りにのみ適用されます。 既定で厳密な整合性を使用するように構成されたアカウントでも、データの書き込みとレプリケートは、アカウントの各リージョンに対して同期的に実行されます。 SDK クライアント インスタンスまたは要求が、セッションの整合性または弱い整合性でこれをオーバーライドした場合、読み取りは単一のレプリカを使用して実行されます。 詳細については、「[整合性レベルとスループット](consistency-levels.md#consistency-levels-and-throughput)」を参照してください。
 
 > [!IMPORTANT]
 > 既定の整合性レベルを変更した後、SDK インスタンスを再作成する必要があります。 これは、アプリケーションを再起動することによって行うことができます。 これにより、SDK で新しい既定の一貫性レベルが使用されるようになります。

@@ -10,12 +10,12 @@ ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e514154b650ec2baaa8ebc547d54ad744ed1971b
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 0bac6465ec392ac8d397f1210299c27c3a25c81e
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888484"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552318"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
@@ -113,7 +113,7 @@ Azure ストレージ アカウントなど、すべての Resource Manager リ�
 Azure portal を使用して Azure ストレージ アカウントを作成するには、以下の手順のようにします。
 
 1. 左側のポータル メニューで **[ストレージ アカウント]** を選択して、ストレージ アカウントの一覧を表示します。
-1. **[ストレージ アカウント]** ページで、 **[新規]** を選択します。
+1. **[ストレージ アカウント]** ページで、 **[作成]** を選択します。
 
 新しいストレージ アカウントのオプションは、 **[ストレージ アカウントを作成する]** ページのタブにまとめられています。 次のセクションでは、各タブとそのオプションについて説明します。
 
@@ -126,7 +126,7 @@ Azure portal を使用して Azure ストレージ アカウントを作成す�
 | Section | フィールド | 必須または省略可能 | 説明 |
 |--|--|--|--|
 | プロジェクトの詳細 | サブスクリプション | 必須 | 新しいストレージ アカウントのサブスクリプションを選択します。 |
-| プロジェクトの詳細 | Resource group | 必須 | このストレージ アカウント用に新しいリソース グループを作成するか、既存のものを選択します。 詳細については、「[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。 |
+| プロジェクトの詳細 | リソース グループ | 必須 | このストレージ アカウント用に新しいリソース グループを作成するか、既存のものを選択します。 詳細については、「[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。 |
 | インスタンスの詳細 | ストレージ アカウント名 | 必須 | ストレージ アカウント用に一意の名前を選択します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 |
 | インスタンスの詳細 | リージョン | 必須 | ストレージ アカウントの適切なリージョンを選択します。 詳細については、「[Azure のリージョンと Availability Zones](../../availability-zones/az-overview.md)」をご覧ください。<br /><br />ストレージ アカウントまたは冗長構成の種類によっては、サポートされていないリージョンがあります。 詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。<br /><br />リージョンの選択は、課金に影響を与える可能性があります。 詳細については、「[ストレージ アカウントの課金](storage-account-overview.md#storage-account-billing)」を参照してください。 |
 | インスタンスの詳細 | パフォーマンス | 必須 | 汎用 v2 ストレージ アカウント (既定) の場合は、 **[Standard]** パフォーマンスを選択します。 Microsoft は、ほとんどのシナリオにこのアカウントの種類をお勧めします。 詳細については、「[ストレージ アカウントの種類](storage-account-overview.md#types-of-storage-accounts)」を参照してください。<br /><br />待機時間を短くする必要があるシナリオの場合は、 **[Premium]** を選択します。 **[Premium]** を選択した後、作成する Premium ストレージ アカウントの種類を選択します。 次の種類の Premium ストレージ アカウントを使用できます。 <ul><li>[ブロック BLOB](../blobs/storage-blob-performance-tiers.md)</li><li>[ファイル共有](../files/storage-files-planning.md#management-concepts)</li><li>[ページ BLOB](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
@@ -150,9 +150,9 @@ Azure portal を使用して Azure ストレージ アカウントを作成す�
 | セキュリティ | ストレージ アカウント キーへのアクセスを有効にする (プレビュー) | 省略可能 | この設定を有効にすると、クライアントは、アカウント アクセス キーまたは Azure Active Directory (Azure AD) アカウントのいずれかを使用して、ストレージ アカウントへの要求を承認できます (既定)。 この設定を無効にすると、アカウント アクセス キーによる承認はできなくなります。 詳細については、[Azure ストレージ アカウントの共有キーによる認可の禁止](shared-key-authorization-prevent.md)に関するページを参照してください。 |
 | セキュリティ | TLS の最小バージョン | 必須 | ストレージ アカウントへの受信要求に対するトランスポート層セキュリティ (TLS) の最小バージョンを選択します。 既定値は TLS バージョン 1.2 です。 既定値に設定すると、TLS 1.0 または TLS 1.1 を使用して行われた受信要求は拒否されます。 詳細については、「[ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する](transport-layer-security-configure-minimum-version.md)」を参照してください。 |
 | Data Lake Storage Gen2 | 階層型名前空間を有効にする | 省略可能 | このストレージ アカウントを Azure Data Lake Storage Gen2 ワークロードに使用するには、階層型名前空間を構成します。 詳細については、「[Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)」を参照してください。 |
-| BLOB ストレージ | Enable network file share (NFS) v3 (preview) (NFS (ネットワーク ファイル共有) v3 を有効にする (プレビュー)) | 省略可能 | NFS v3 により、オブジェクト ストレージのスケールで Linux ファイル システムの互換性が得られます。また、Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスのコンピューターから Blob Storage にコンテナーをマウントできます。 詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](../blobs/network-file-system-protocol-support.md)」を参照してください。 |
+| BLOB ストレージ | Enable network file share (NFS) v3 (NFS (ネットワーク ファイル共有) v3 を有効にする) | 省略可能 | NFS v3 により、オブジェクト ストレージのスケールで Linux ファイル システムの互換性が得られます。また、Linux クライアントは、Azure 仮想マシン (VM) またはオンプレミスのコンピューターから Blob Storage にコンテナーをマウントできます。 詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート](../blobs/network-file-system-protocol-support.md)」を参照してください。 |
 | BLOB ストレージ | アクセス層 | 必須 | BLOB アクセス層を使用すると、使用方法に基づいて、最もコスト効率の高い方法で BLOB データを格納できます。 頻繁にアクセスされるデータには、ホット層 (既定値) を選択します。 頻繁にアクセスされないデータには、クール層を選択します。 詳細については、「[Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ](../blobs/storage-blob-storage-tiers.md)」を参照してください。 |
-| Azure Files | 大型ファイル共有を有効にする | 省略可能 | ファイル共有用に Premium ストレージ アカウントでのみ使用できます。 詳細については、「[Standard ファイル共有を最大 100 TiB にまたがることができるようにする](../files/storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)」を参照してください。 |
+| Azure Files | 大型ファイル共有を有効にする | 省略可能 | LRS または ZRS 冗長性を使用する標準のファイル共有でのみ使用できます。 |
 | テーブルとキュー | Enable support for customer-managed keys (カスタマー マネージド キーのサポートを有効にする) | 省略可能 | テーブルとキューでカスタマー マネージド キーのサポートを有効にするには、ストレージ アカウントを作成するときにこの設定を選択する必要があります。 詳細については、「[テーブルとキューのカスタマーマネージド キーがサポートされるアカウントを作成する](account-encryption-key-create.md)」を参照してください。 |
 
 ### <a name="networking-tab"></a>[ネットワーク] タブ

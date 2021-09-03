@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: how-to
 ms.date: 05/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0041299031934bd76e4ef0700d2e75e2d61516cd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 494ff350866d8de1386a5fd98539f0e3e5ff2c3f
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745472"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126304"
 ---
 # <a name="add-components-on-the-portal"></a>ポータルでコンポーネントを追加する
 
@@ -65,7 +65,7 @@ ms.locfileid: "108745472"
 | 完成した製品                                   | 1          | 顧客向け製品、個別 | 該当なし                                              |
 | 完成した製品 (**取り外し可能な周辺機器** あり) | 2 以上  | 顧客向け製品、個別 | 周辺機器 / 個別または統合              |
 | 完成した製品 (**統合コンポーネント** あり)  | 2 以上  | 顧客向け製品、個別 | 適切な種類を選択 / 個別または統合 |
-| ソリューション対応開発キット                             | 2 以上  | 顧客向け製品、個別 | 適切な種類を選択 / 個別または統合 |
+| ソリューション対応開発キット                             | 1 つ以上  | 顧客向け製品または開発ボード、個別または統合| 適切な種類を選択 / 個別または統合 |
 
 ## <a name="example-component-usage"></a>コンポーネントの使用例
 

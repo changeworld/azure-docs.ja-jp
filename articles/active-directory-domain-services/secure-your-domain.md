@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 07/21/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f344496bab8f2864c8ccbdff4f98b57e1d6f432
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: fe8f41c2ecf92034f81f2332aabee5a55df66a92
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613260"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439256"
 ---
 # <a name="harden-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインの強化
 
@@ -50,6 +50,7 @@ ms.locfileid: "110613260"
 1. 次の設定に対して **[有効]** または **[無効]** をクリックします。
    - **TLS 1.2 のみモード**
    - **NTLM 認証**
+   - **オンプレミスからのパスワード同期**
    - **オンプレミスからの NTLM パスワード同期**
    - **RC4 暗号化**
    - **Kerberos 防御**
@@ -64,6 +65,10 @@ ms.locfileid: "110613260"
 - 割り当てが **[拒否]** の場合、TLS 1.2 が必要ない場合、コンプライアンスにより Azure AD DS インスタンスが作成されず、TLS 1.2 が必要になるまで Azure AD DS インスタンスを更新できません。
 
 ![コンプライアンス設定のスクリーンショット](media/secure-your-domain/policy-tls.png)
+
+## <a name="audit-ntlm-failures"></a>NTLM の失敗を監査する
+
+NTLM パスワード同期を無効にするとセキュリティが向上しますが、多くのアプリケーションとサービスは、それを使用しないで動作するようには設計されていません。 たとえば、DNS サーバー管理や RDP など、リソースに IP アドレスを使用して接続しようとすると、アクセスが拒否されて失敗します。 NTLM パスワード同期を無効にし、アプリケーションまたはサービスが想定どおりに動作していない場合は、 **[ログオン/ログオフ]**  >  **[ログオンの監査]** イベント カテゴリのセキュリティ監査を有効にすることで、NTLM 認証の失敗を確認できます。この場合、NTLM は、イベントの詳細で **認証パッケージ** として指定されます。 詳細については、「[Azure Active Directory Domain Services でセキュリティ監査を有効にする](security-audit-events.md)」をご覧ください。
 
 ## <a name="use-powershell-to-harden-your-domain"></a>PowerShell を使用してドメインを強化する
 

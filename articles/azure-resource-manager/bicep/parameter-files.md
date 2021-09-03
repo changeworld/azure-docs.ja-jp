@@ -4,13 +4,13 @@ description: Bicep ファイルのデプロイ中に値を渡すためのパラ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: eab3052b55b1dc1033139c734605e72b5494b174
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 06/16/2021
+ms.openlocfilehash: 4628b7d6a04bdec2a7ec4273536bf895dc23a5d9
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027009"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292233"
 ---
 # <a name="create-bicep-parameter-file"></a>Bicep のパラメーター ファイルを作成する
 
@@ -35,31 +35,7 @@ ms.locfileid: "111027009"
 }
 ```
 
-パラメーター ファイルではパラメーターの値がプレーンテキストとして格納されることに注意してください。 この方法は、リソース SKU など、機密性の高くない値に適しています。 プレーンテキストは、パスワードなどの機密性の高い値には適していません。 機密性の高い値を含むパラメーターを渡す必要がある場合は、キー コンテナーに値を格納します。 その後、パラメーター ファイル内でキー コンテナーを参照します。 機密性の高い値はデプロイ中に安全に取得されます。
-
-次のパラメーター ファイルには、プレーンテキスト値と、キー コンテナーに格納されている機密性の高い値が含まれています。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "<first-parameter-name>": {
-      "value": "<first-value>"
-    },
-    "<second-parameter-name>": {
-      "reference": {
-        "keyVault": {
-          "id": "<resource-id-key-vault>"
-        },
-        "secretName": "<secret-name>"
-      }
-    }
-  }
-}
-```
-
-キー コンテナーの値の使用に関する詳細は、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください。
+パラメーター ファイルではパラメーターの値がプレーンテキストとして格納されることに注意してください。 この方法は、リソース SKU など、機密性の高くない値に適しています。 プレーンテキストは、パスワードなどの機密性の高い値には適していません。 機密性の高い値を含むパラメーターを渡す必要がある場合は、キー コンテナーに値を格納します。 機密性の高い値は、パラメーター ファイルに追加するのではなく、[getSecret 関数](bicep-functions-resource.md#getsecret)を使用して取得します。 詳細については、「[Bicep デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](key-vault-parameter.md)」を参照してください。
 
 ## <a name="define-parameter-values"></a>パラメーター値を定義する
 
@@ -224,4 +200,4 @@ PowerShell コマンドのパラメーターのいずれかと同じ名前のパ
 ## <a name="next-steps"></a>次のステップ
 
 - Bicep ファイルでパラメーターを定義する方法の詳細については、「[Bicep のパラメーター](./parameters.md)」を参照してください。
-- キー コンテナーの値の使用に関する詳細は、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください。
+- 機密性の高い値を取得する方法については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください。

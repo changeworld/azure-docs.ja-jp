@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 47902f17662dea8205d02e6a49e447b8467c9870
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 9c8aa6aa30cae55d4a317eea7acad475b8e70b97
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673722"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324655"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -371,7 +371,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 Azure プラットフォーム イメージを使用している場合は、*imageReference* を変更してイメージを更新することができます (詳しくは、[REST API のドキュメント](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 
 >[!NOTE]
-> プラットフォーム イメージでは、イメージ参照バージョンに "最新" を指定することが一般的です。 作成、スケール アウト、再イメージ化を行うと、VM が使用可能な最新バージョンで作成されます。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味 **しません**。 OS の自動アップグレードを実現する単独の機能が、現在プレビュー段階となっています。 詳しくは、[OS アップグレードのドキュメント](virtual-machine-scale-sets-automatic-upgrade.md)をご覧ください。
+> プラットフォーム イメージでは、イメージ参照バージョンに "最新" を指定することが一般的です。 作成、スケール アウト、再イメージ化を行うと、VM が使用可能な最新バージョンで作成されます。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味 **しません**。 別の機能によって、OS の自動更新が提供されます。 詳しくは、[OS アップグレードのドキュメント](virtual-machine-scale-sets-automatic-upgrade.md)をご覧ください。
 
 カスタム イメージを使用している場合は、*imageReference* ID を更新してイメージを更新することができます (詳しくは、[REST API のドキュメント](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 

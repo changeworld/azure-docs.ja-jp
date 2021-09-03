@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48888f9ca840888310aebcc82d38d2af351a8611
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 9fc7a8d5b27da251f13f2c9dfeffa03f7cdbd149
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277896"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114452561"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -38,6 +38,9 @@ Automation が Runbook と DSC コンパイル ジョブを実行すると、モ
 含まれるモジュールとコマンドレットの数が多いため、サポートされていない呼び出しを行うコマンドレットを事前に把握することは困難です。 一般的に、コマンドレットのうち、昇格されたアクセス権を必要とするもの、パラメーターとして資格情報を必要とするもの、ネットワークに関連するものには問題が見られます。 AIPService PowerShell モジュールの [Connect-AipService](/powershell/module/aipservice/connect-aipservice) や DNSClient モジュールの [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname) など、フルスタックのネットワーク操作を実行するコマンドレットは、サンドボックスではサポートされません。
 
 これらは、サンドボックスに関する既知の制限事項です。 推奨される対処法は、[Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) をデプロイすること、または [Azure Functions](../../azure-functions/functions-overview.md) を使用することです。
+
+> [!IMPORTANT] 
+> Az モジュールを使用して実行するように設計されたスクリプトには、キーワード "AzureRm" を含めないでください。 たとえコメントであっても、このキーワードを含めると、AzureRm が読み込まれ、Az モジュールと競合する可能性があります。
 
 ## <a name="default-modules"></a>既定のモジュール
 
