@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: ca91e7298486cc92ae8a4444869f0b71c91ae2ab
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: be1ffdecb727426f914a74970a720f4f19e51824
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034231"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322381"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) についてよく寄せられる質問
 
@@ -63,17 +63,20 @@ Azure Front Door では、HTTP、HTTPS、HTTP/2 がサポートされます。
 
 HTTP/2 プロトコルのサポートを利用できるのは、Azure Front Door に接続しているクライアントだけです。 バックエンド プール内のバックエンドへの通信は、HTTP/1.1 を介して実行されます。 HTTP/2 のサポートは既定で有効です。
 
-### <a name="what-resources-are-supported-today-as-part-of-origin-group"></a>現在、配信元グループの一部としてどのようなリソースがサポートされていますか?
+### <a name="what-resources-are-supported-today-as-part-of-an-origin-group"></a>現在、配信元グループの一部としてどのようなリソースがサポートされていますか。
 
-配信元グループは、Storage、Web アプリ、Kubernetes インスタンス、またはパブリック接続があるその他の任意のカスタム ホスト名で構成できます。 Azure Front Door では、配信元がパブリック IP またはパブリックに解決可能な DNS ホスト名のいずれかで定義されている必要があります。 配信元グループのメンバーは、パブリック接続がある限り、複数のゾーンやリージョンにまたがって、または Azure の外部に存在することができます。
+配信元グループは、次の 2 種類の配信元で構成することができます。
+
+- パブリック配信元には、ストレージ アカウント、App Service アプリ、Kubernetes インスタンスのほか、パブリック接続を備えたあらゆるカスタム ホスト名が含まれます。 これらの配信元は、パブリック IP アドレスまたはパブリックに解決可能な DNS ホスト名を介して定義する必要があります。 配信元グループのメンバーは、パブリック接続がある限り、複数の可用性ゾーンやリージョンにまたがって、または Azure の外部にでもデプロイすることができます。 パブリック配信元は、Azure Front Door の Standard レベルと Premium レベルでサポートされます。
+- [Private Link 配信元](concept-private-link.md)は、Azure Front Door (Premium) を使用している場合に利用できます。
 
 ### <a name="what-regions-is-the-service-available-in"></a>このサービスは、どのリージョンで利用できますか?
 
 Azure Front Door はグローバル サービスであり、特定の Azure リージョンには関連付けられていません。 Front Door を作成するときに指定する必要がある唯一の場所はリソース グループです。 この場所は基本的にはリソース グループのメタデータを格納する場所を指定しています。 Front Door リソース自体はグローバル リソースとして作成され、構成はすべてのエッジ ロケーションにグローバルにデプロイされます。 
 
-### <a name="where-are-the-edge-locations-for-azure-front-door"></a>Azure Front Door のエッジ ローケーションはどこですか?
+### <a name="where-are-the-edge-locations-for-azure-front-door"></a>Azure Front Door のエッジ ロケーションはどこにありますか。
 
-Azure Front Door のエッジ ロケーションの全一覧については、[Azure Front Door のエッジ ロケーション](edge-locations.md)に関する記事を参照してください。
+Azure Front Door のすべてのエッジ ロケーションのリストは、[Azure Front Door のエッジ ロケーション](edge-locations.md)に関する記事でご覧いただけます。
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front Door はアプリケーション専用のデプロイですか、それとも複数の顧客と共有されますか?
 
@@ -141,7 +144,7 @@ Front Door のフロントエンド エニーキャスト IP は、通常は変�
 ほとんどのルール エンジン構成の更新は、20 分以内に完了します。 更新が完了するとすぐにルールが有効になります。 
 
  > [!Note]  
-  > ほとんどのカスタム TLS/SSL 証明書の更新は、グローバルにデプロイされるまでに約 30 分かかります。
+  > ほとんどのカスタム TLS/SSL 証明書の更新は、グローバルにデプロイされるまでに数分から 1 時間かかります。
 
 ルートやバックエンド プールに対する更新はシームレスであり、ダウンタイムは発生しません (新しい構成が正しい場合)。 また、"Azure Front Door マネージド" から "独自の証明書の使用" に、またはその逆に切り替える場合を除き、証明書の停止が発生することはありません。
 
@@ -150,7 +153,9 @@ Front Door のフロントエンド エニーキャスト IP は、通常は変�
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure Front Door は仮想ネットワーク内で負荷分散またはトラフィックのルーティングができますか?
 
-Azure Front Door (AFD) には、トラフィックをルーティングするために、パブリック IP またはパブリックに解決可能な DNS 名が必要です。 Azure Front Door は、仮想ネットワーク内のリソースに直接ルーティングすることはできません。 この問題は、パブリック IP を持つ Application Gateway または Azure Load Balancer を使用することで解決できます。
+Azure Front Door (Standard) には、トラフィックをルーティングするために、パブリック IP またはパブリックに解決可能な DNS 名が必要です。 Azure Front Door は、仮想ネットワーク内のリソースに直接ルーティングすることはできません。 この問題は、パブリック IP を持つ Application Gateway または Azure Load Balancer を使用することで解決できます。
+
+Azure Front Door (Premium) は、[Private Link の配信元](concept-private-link.md)へのトラフィックのルーティングをサポートします。
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front Door でのさまざまなタイムアウトおよび制限とは何ですか?
 
@@ -158,7 +163,7 @@ Azure Front Door (AFD) には、トラフィックをルーティングするた
 
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Front Door ルール エンジンに追加された後、ルールが有効になるまでにどれくらいの時間がかかりますか?
 
-ほとんどのルール エンジン構成の更新は、20 分以内に完了します。 更新が完了するとすぐにルールが有効になります。 
+ほとんどのルール エンジンは、20 分以内に構成の更新が完了します。 更新が完了するとすぐにルールが有効になります。 
 
 ### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-front-door-behind-my-azure-cdn"></a>Azure CDN を Front Door プロファイルの背後に構成したり、Front Door を Azure CDN の背後に構成したりすることはできますか?
 

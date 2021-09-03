@@ -1,18 +1,18 @@
 ---
 title: Azure Percept 音声モジュールのインターフェイス ワークフロー
 description: Azure Percept 音声モジュールのワークフローと使用可能なメソッドについて説明します
-author: mimcco
-ms.author: mimcco
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 7/19/2021
 ms.custom: template-concept
-ms.openlocfilehash: 7ac6a2e02dacb63ebe36d6c16c7a39e370751033
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8dec6a6c4162225b4f5e9ddf3ce74b739fd39562
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725540"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222817"
 ---
 # <a name="azure-percept-speech-module-interface-workflow"></a>Azure Percept 音声モジュールのインターフェイス ワークフロー
 

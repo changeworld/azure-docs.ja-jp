@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: 7612732f01075759d76c2bce5e8c710afc676642
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9e68df70afdc0f8e35ec862d9f9570dd13306191
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132865"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466057"
 ---
 # <a name="end-to-end-security-in-azure"></a>Azure のエンドツーエンド セキュリティ
 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。
@@ -64,7 +64,7 @@ ms.locfileid: "108132865"
 | [Azure Front Door](../../frontdoor/front-door-overview.md) | Microsoft グローバル エッジ ネットワークを使用してセキュリティで保護された高速でスケーラビリティの高い Web アプリを作成するための、スケーラブルなグローバル エントリポイントです。 |
 | [Azure Firewall](../../firewall/overview.md) | Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 組み込みの高可用性とクラウドの無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。 |
 | [Azure Key Vault](../../key-vault/general/overview.md) | トークン、パスワード、証明書、API キー、およびその他のシークレットのセキュリティで保護されたシークレット ストアです。 Key Vault を、データの暗号化に使用される暗号化キーの作成と制御に使用することもできます。 |
-| [Key Vault Managed HSM (プレビュー)](../../key-vault/managed-hsm/overview.md) | 標準準拠のフル マネージド、高可用性、シングル テナント クラウド サービスです。これにより、FIPS 140-2 レベル 3 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 |
+| [Key Vault Managed HSM](../../key-vault/managed-hsm/overview.md) | 標準準拠のフル マネージド、高可用性、シングル テナント クラウド サービスです。これにより、FIPS 140-2 レベル 3 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 |
 | [Azure Private Link](../../private-link/private-link-overview.md) | お使いの仮想ネットワーク内のプライベート エンドポイント経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナーのサービスにアクセスできるようになります。 |
 | [Azure Application Gateway](../../application-gateway/overview.md) | Web トラフィックの高度なロード バランサーです。これにより、Web アプリケーションへのトラフィックを管理できるようになります。 Application Gateway では、URI パスやホスト ヘッダーなど、HTTP 要求の追加属性に基づいてルーティングを決定できます。 |
 | [Azure Service Bus](../../service-bus-messaging/service-bus-messaging-overview.md) | メッセージ キューと、パブリッシュとサブスクライブのトピックが備わったフル マネージド エンタープライズ メッセージ ブローカーです。 Service Bus は、アプリケーションとサービスを相互に分離するために使用されます。 |

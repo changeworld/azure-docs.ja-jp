@@ -1,31 +1,33 @@
 ---
-title: Azure Logic Apps のコネクタ
-description: Azure Logic Apps で、コネクタを使用して自動化されたワークフローを構築する方法の概要。 さまざまなトリガー、アクション、コネクタの動作について説明します。
+title: Azure Logic Apps のコネクタの概要
+description: コネクタと、それが Azure Logic Apps を使用して自動化された統合ワークフローを迅速かつ簡単に構築するためにどのように役立つかについて説明します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/20/2021
+ms.date: 07/01/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e6841afabe36667070ca595810c423c61db03837
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f8db25d79784b1a2ca2b63ace57f729271271a43
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377041"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218873"
 ---
-# <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
+# <a name="about-connectors-in-azure-logic-apps"></a>Azure Logic Apps のカスタム コネクタの概要
 
-Azure Logic Apps では、"*コネクタ*" を使用して、他のアプリ、サービス、システム、プロトコル、プラットフォームからデータやイベントなどのリソースにすばやくアクセスできます。 コネクタを使用すると、クラウド ベース、オンプレミス、ハイブリッド環境にまたがる情報を使用、処理、統合するロジック アプリ ワークフローを、多くの場合はコードをまったく記述することなく構築できます。
+Azure Logic Apps を使用してワークフローを構築する場合、"*コネクタ*" を使用して他のアプリ、サービス、システム、プロトコル、プラットフォームのデータ、イベント、リソースにすばやく簡単にアクセスすることができます (多くの場合、コードを書く必要はありません)。 コネクタには、ワークフローのステップとして使用できる事前構築済みの操作が用意されています。 Azure Logic Apps には、使用できる数多くのコネクタが用意されています。 アクセス対象のリソースに使用できるコネクタがない場合は、一般的な HTTP 操作を使用してサービスと通信するか、[カスタム コネクタを作成する](#custom-apis-and-connectors)ことができます。
 
-実際のワークフローで使用する数百のコネクタから選択できます。 そのため、このドキュメントでは、Logic Apps 向けのよく使用されている一般的ないくつかのコネクタに焦点を絞ります。 Logic Apps、Microsoft Power Automate、Microsoft Power Apps 全体のコネクタに関する完全な情報については、[コネクタのドキュメント](/connectors)を確認してください。 価格については、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)および [Logic Apps の価格の詳細](https://azure.microsoft.com/pricing/details/logic-apps/)に関するページを確認してください。
+この概要では、コネクタの概要、一般的なしくみ、Azure Logic Apps でよく使用される一般的なコネクタについて説明します。 詳細については、次のドキュメントを確認してください。
 
-> [!NOTE]
-> ワークフローをコネクタのないサービスまたは API と統合するには、HTTP などのプロトコル経由でそのサービスを呼び出すか、または[カスタム コネクタを作成する](#custom-apis-and-connectors)ことができます。
+* [Azure Logic Apps、Microsoft Power Automate、Microsoft Power Apps のコネクタの概要](/connectors)
+* [Azure Logic Apps のコネクタ リファレンス](/connectors/connector-reference/connector-reference-logicapps-connectors)
+* [Azure Logic Apps の価格および課金モデル](../logic-apps/logic-apps-pricing.md)
+* [Azure Logic Apps の価格の詳細](https://azure.microsoft.com/pricing/details/logic-apps/)
 
 ## <a name="what-are-connectors"></a>コネクタとは
 
-コネクタは、ロジック アプリのワークフローでタスクを実行するために使用する "*トリガー*" と "*アクション*" を提供します。 各トリガーとアクションのプロパティを構成できます。 一部のトリガーとアクションでは、ご自分のワークフローで特定のサービスまたはシステムにアクセスできるように、[接続を作成して構成する](#connection-configuration)必要があります。
+コネクタとは、技術的には、基礎となるサービスによって Azure Logic Apps との通信に使用される API のプロキシまたはラッパーです。 このコネクタには、ワークフローでタスクを実行するために使用する操作が用意されています。 操作は、構成できるプロパティがある "*トリガー*" または "*アクション*" として使用できます。 トリガーとアクションの中には、たとえば、ユーザー アカウントへのアクセスを認証するために、まず[基礎となるサービスやシステムへの接続を作成し、構成する](#connection-configuration)必要があるものもあります。
 
 ### <a name="triggers"></a>トリガー
 
@@ -44,7 +46,7 @@ Azure Logic Apps では、"*コネクタ*" を使用して、他のアプリ、�
 
 ## <a name="connector-categories"></a>コネクタのカテゴリ
 
-Logic Apps では、ほとんどのトリガーとアクションが "*組み込み*" バージョンまたは "*マネージド コネクタ*" バージョンのどちらかで使用できます。 少数のトリガーとアクションが、両方のバージョンで利用できます。 使用できるバージョンは、マルチテナント ロジック アプリと (現在[シングルテナントの Azure Logic Apps](../logic-apps/single-tenant-overview-compare.md) でのみ使用可能な) シングルテナント ロジック アプリのどちらを作成するかによって異なります。
+Logic Apps では、ほとんどのトリガーとアクションが "*組み込み*" バージョンまたは "*マネージド コネクタ*" バージョンのどちらかで使用できます。 両方のバージョンで使用できるトリガーとアクションは少数です。 使用できるバージョンは、マルチテナント ロジック アプリと (現在[シングルテナントの Azure Logic Apps](../logic-apps/single-tenant-overview-compare.md) でのみ使用可能な) シングルテナント ロジック アプリのどちらを作成するかによって異なります。
 
 [組み込みのトリガーとアクション](built-in.md)は Logic Apps ランタイムでネイティブに実行され、接続を作成する必要はなく、次の種類のタスクを実行します。
 
@@ -119,7 +121,7 @@ Office 365 Outlook など、繰り返しの接続ベースのトリガーでは�
 
 * DST が有効になったときに、ワークフローが引き続き予定時刻に実行されるように、繰り返しを手動で調整します。 そうしないと、開始時刻が DST の開始時には 1 時間先に、DST の終了時には 1 時間前にシフトされます。 詳細および例については、「[夏時間と標準時間での繰り返し](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)」を確認してください。
 
-* **繰り返し** トリガーを使用している場合は、タイム ゾーン、開始日時を指定します。 また、 **[設定時刻 (時間)]** および **[設定時刻 (分)]** プロパティ ( **[日]** と **[週]** の頻度でのみ使用可能) で、後続の繰り返しを実行する特定の時刻を構成します。 ただし、一部の時間枠では、時間がシフトするときに引き続き問題が発生することがあります。
+* **繰り返し** トリガーを使用している場合は、タイム ゾーン、開始日、開始時刻を指定します。 また、 **[設定時刻 (時間)]** および **[設定時刻 (分)]** プロパティ ( **[日]** と **[週]** の頻度でのみ使用可能) で、後続の繰り返しを実行する特定の時刻を構成します。 ただし、一部の時間枠では、時間がシフトするときに引き続き問題が発生することがあります。
 
 * 繰り返しが必ず行われるように、**繰り返し** トリガーの代わりに [**スライディング ウィンドウ** トリガー](connectors-native-sliding-window.md)を使用することを検討してください。
 
@@ -133,7 +135,7 @@ Azure 仮想ネットワーク内のリソースに直接アクセスする必�
 
 ISE 内で作成されたカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE がホストされている Azure 仮想ネットワークに接続されているオンプレミス データ ソースに直接アクセスできます。 そのため、ISE 内のロジック アプリでは、ほとんどの場合、それらのリソースと通信するときにデータ ゲートウェイは不要です。 ISE の外部で作成したカスタム コネクタがあり、オンプレミス データ ゲートウェイを必要とする場合、ISE 内のロジック アプリから、それらのコネクタを使用できます。
 
-Logic Apps デザイナーでは、組み込みのトリガーとアクションまたは ISE でロジック アプリに使用するマネージド コネクタを参照すると、組み込みのトリガーとアクションでは **CORE** ラベルが表示されるに対して、特に ISE で動作するように設計されたマネージド コネクタでは **ISE** ラベルが表示されます。
+Logic Apps デザイナーでは、組み込みのトリガーとアクションまたは ISE でロジック アプリに使用するマネージド コネクタを参照すると、組み込みのトリガーとアクションでは **CORE** ラベルが表示されるに対して、ISE で動作するように設計されたマネージド コネクタでは **ISE** ラベルが表示されます。
 
 :::row:::
     :::column:::
@@ -184,4 +186,4 @@ Logic Apps デザイナーでは、組み込みのトリガーとアクション
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Logic Apps から呼び出しできるカスタム API の作成](/logic-apps/logic-apps-create-api-app)
+> [Logic Apps から呼び出しできるカスタム API の作成](../logic-apps/logic-apps-create-api-app.md)

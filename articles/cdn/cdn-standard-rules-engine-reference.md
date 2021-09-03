@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 07/31/2021
 ms.author: allensu
-ms.openlocfilehash: 1a0f4456f38939632026645500dd48acbf7dbc88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fcb16f44aed90f483be80c64d31781f54203de6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93242210"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733256"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN の Standard ルール エンジン リファレンス
 
@@ -41,10 +41,7 @@ Azure Content Delivery Network (Azure CDN) の [Standard ルール エンジン]
 
 ## <a name="limits-and-pricing"></a>制限と価格 
 
-各 Azure CDN エンドポイントには、最大 25 個のルールを含めることができます。 各ルールには、最大で 10 個の一致条件と 5 つのアクションを含めることができます。 ルール エンジンの価格は、次のディメンションに従います。 
-- ルール: ルールごとに 1 か月あたり $1 
-- 処理された要求数: 要求 100 万件あたり $0.60
-- 最初の 5 つのルールは無料のまま
+ルールの制限については、[CDN スケールの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#content-delivery-network-limits)に関する記事を参照してください。 ルール エンジンの価格については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」を参照してください。
 
 ## <a name="syntax"></a>構文
 

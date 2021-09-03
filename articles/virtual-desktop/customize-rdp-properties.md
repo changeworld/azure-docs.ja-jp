@@ -7,19 +7,19 @@ ms.date: 10/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 545d748d521d623bdbaa21ccafd8c52c6508bf03
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 481b81edb0ee5709e712f213036fa8df53aca7c4
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750265"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287926"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル (RDP) プロパティをカスタマイズする
 
 >[!IMPORTANT]
 >この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)を参照してください。
 
-マルチ モニター エクスペリエンスやオーディオ リダイレクトなど、ホスト プールのリモート デスクトップ プロトコル (RDP) のプロパティをカスタマイズすると、ニーズに基づいてユーザーに最適なエクスペリエンスを提供できます。 Azure portal を使用するか、**Update-AzWvdHostPool** コマンドレットで *-CustomRdpProperty* パラメーターを使用して、Azure Virtual Desktop の RDP プロパティをカスタマイズできます。
+マルチ モニター エクスペリエンスやオーディオ リダイレクトなど、ホスト プールのリモート デスクトップ プロトコル (RDP) のプロパティをカスタマイズすると、ニーズに基づいてユーザーに最適なエクスペリエンスを提供できます。 既定の RDP ファイルのプロパティを変更する場合は、Azure portal を使用するか、**Update-AzWvdHostPool** コマンドレットで *-CustomRdpProperty* パラメーターを使用して、Azure Virtual Desktop の RDP プロパティをカスタマイズできます。
 
 サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)」を参照してください。
 
@@ -29,14 +29,15 @@ RDP ファイルには、既定で次のプロパティがあります。
 
 |RDP プロパティ|デスクトップと RemoteApp の両方|
 |---|---|
-|マルチモニター モード|無効|
+|マルチモニター モード|Enabled|
 |ドライブ リダイレクト有効|ドライブ、クリップボード、プリンター、COM ポート、スマート カード、デバイス、usbdevicestore|
 |リモート オーディオ モード|ローカルで再生|
 |VideoPlayback|Enabled|
 |EnableCredssp|Enabled|
 
 >[!NOTE]
->マルチモニター モードは、デスクトップ アプリ グループにのみ適用され、RemoteApp アプリ グループでは無視されます。
+>- マルチモニター モードは、デスクトップ アプリ グループに対してのみ有効になり、RemoteApp アプリ グループの場合は無視されます。
+>- 既定の RDP ファイルのプロパティは、すべて Azure Portal で公開されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -132,8 +133,8 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 特定のホスト プールの RDP プロパティをカスタマイズしたので、Azure Virtual Desktop クライアントにサインインして、それらをユーザー セッションの一部としてテストできます。 次の攻略ガイドでは、選択したクライアントを使用してセッションに接続する方法を説明します。
 
-- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10.md)
-- [Web クライアントに接続する](connect-web.md)
-- [Android クライアントに接続する](connect-android.md)
-- [macOS クライアントに接続する](connect-macos.md)
-- [iOS クライアントに接続する](connect-ios.md)
+- [Windows デスクトップ クライアントを使用して接続する](./user-documentation/connect-windows-7-10.md)
+- [Web クライアントに接続する](./user-documentation/connect-web.md)
+- [Android クライアントに接続する](./user-documentation/connect-android.md)
+- [macOS クライアントに接続する](./user-documentation/connect-macos.md)
+- [iOS クライアントに接続する](./user-documentation/connect-ios.md)

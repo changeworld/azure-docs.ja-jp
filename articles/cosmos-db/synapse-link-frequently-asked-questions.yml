@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/30/2020
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: 49c8546ebe4c06135c4a7848a46385643fbfbd2e
-  ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+  ms.openlocfilehash: ce507f756b766869960a06bd00a8b6ea98711205
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/22/2021
-  ms.locfileid: "111907455"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114442924"
 title: Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -26,6 +26,10 @@ sections:
   - question: >
       Azure Synapse Link はすべての Azure Cosmos DB API でサポートされますか?
     answer: "Azure Synapse Link は、Azure Cosmos DB SQL (Core) API と、Azure Cosmos DB の MongoDB 用 API に対してのみサポートされます。 \n"
+  - question: >
+      Azure Synapse Link は Azure Cosmos DB サーバーレスでサポートされますか?
+    answer: >
+      現在、サーバーレス アカウントで Synapse Link 機能を有効にすることはできません。
   - question: >
       Azure Synapse Link は複数リージョンの Azure Cosmos DB アカウントに対してサポートされますか?
     answer: >
@@ -41,9 +45,6 @@ sections:
       分析ストアはすべての Azure Cosmos DB リージョンでサポートされていますか?
     answer: >
       はい。
-  - question: >
-      Azure Synapse Link が有効になっているアカウントでは、バックアップと復元はサポートされますか?
-    answer: "分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 \n\nデータベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB によって、コンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](./online-backup-and-restore.md)されます。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。 \n"
   - question: >
       Azure Cosmos DB アカウントに対して Azure Synapse Link 機能を無効にすることはできますか?
     answer: >
@@ -154,6 +155,14 @@ sections:
 
 
       Synapse サーバーレス SQL プールを使用するときは、アカウント キーが格納される SQL 資格情報を事前に作成し、OPENROWSET 関数でそれらを参照すれば、Azure Cosmos DB 分析ストアに対してクエリを実行できます。 詳細については、[Azure Synapse Link でのサーバーレス SQL プールを使用したクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)に関する記事を参照してください。
+  - question: >
+      Azure Synapse Link ではカスタマー マネージド キーを使用できますか?
+    answer: >
+      はい、Azure Synapse Link では、Azure Cosmos DB アカウントのマネージド ID を使用したカスタマー マネージド キーの構成がサポートされています。 同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 詳細については、[Azure Cosmos DB アカウントのマネージド ID を使用したカスタマー マネージド キーの構成](how-to-setup-cmk.md#using-managed-identity)に関する記事を参照してください。
+  - question: >
+      Azure Synapse Link では、Azure Synapse マネージド仮想ネットワークとのネットワークの分離が提供されますか?
+    answer: >
+      はい、トランザクションおよび分析ストア内のデータへのネットワーク アクセスを個別に制御できます。 ネットワークの分離は、Azure Synapse ワークスペースのマネージド仮想ネットワーク内で、ストアごとに別個のマネージド プライベート エンドポイントを使用して行われます。 詳細については、[分析ストアのプライベート エンドポイントを構成する](analytical-store-private-endpoints.md)方法に関する記事を参照してください。
 - name: Synapse ランタイム
   questions:
   - question: >

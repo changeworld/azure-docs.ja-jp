@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 9fb40048a57955fc6a8e4a4e73361f545380f84e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 666dfb22036c3d7f1d88515f4b8118eaf133db8c
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971544"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594961"
 ---
 # <a name="configure-a-managed-application-plan"></a>マネージド アプリケーション プランを構成する
 
@@ -194,7 +194,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 **[プランの概要]** タブの **[アクション]** 列に表示されるアクションは、プランの状態によって異なり、たとえば次のようになります。
 
 - プランの状態が **[下書き]** の場合、 **[アクション]** 列のリンクは **[ドラフトの削除]** になります。
-- プランの状態が **[ライブ]** の場合、 **[アクション]** 列のリンクは、 **[プランの販売の停止]** または **[プライベート対象ユーザーの同期]** のいずれかになります。 **[Sync private audience]\(プライベート対象ユーザーの同期)** リンクにより、オファーに対して行われた可能性のあるその他の更新を発行することなく、プライベートの対象ユーザーだけに変更が発行されます。
+- プランの状態が **[ライブ]** の場合、 **[アクション]** 列のリンクは **[Stop distribution]\(配布の停止\)** または **[Sync private audience]\(プライベート対象ユーザーの同期\)** のいずれかになります。 **[Sync private audience]\(プライベート対象ユーザーの同期)** リンクにより、オファーに対して行われた可能性のあるその他の更新を発行することなく、プライベートの対象ユーザーだけに変更が発行されます。
 - このオファーに対して別のプランを作成するには、 **[プランの概要]** タブの上部にある **[+ 新しいプランの作成]** を選択します。 次に、「[Azure アプリケーション オファーのプランを作成する方法](azure-app-plans.md)」の手順を繰り返します。 それ以外の場合は、プランの作成が完了したら、次のセクションの「次のステップ」に進んでください。
 
 ## <a name="next-steps"></a>次のステップ

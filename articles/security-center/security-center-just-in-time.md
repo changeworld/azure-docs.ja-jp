@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 977284ba735eef4f02907d63ee1ae65332d7990f
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: dff90bc02ef9ee20284adb895eb05e765bdfba72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778442"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734871"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する
 
@@ -36,7 +36,7 @@ JIT の動作と基になるロジックの詳細については、[Just-In-Time
 |リリース状態:|一般公開 (GA)|
 |価格:|[サーバー用 Azure Defender](defender-for-servers-introduction.md) が必要|
 |サポートされている VM:|:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Resource Manager を使用してデプロイされた VM。<br>:::image type="icon" source="./media/icons/no-icon.png"::: クラシック デプロイ モデルを使用してデプロイされた VM。 [これらのデプロイ モデルの詳細](../azure-resource-manager/management/deployment-models.md)。<br>:::image type="icon" source="./media/icons/no-icon.png"::: [Azure Firewall Manager](../firewall-manager/overview.md) によって制御される Azure Firewall によって保護されている VM|
-|必要なロールとアクセス許可:|**閲覧者** と **セキュリティ閲覧者** ロールは、JIT の状態とパラメーターの両方を表示できます。<br>JIT で動作するカスタム ロールを作成するには、「[JIT を構成して使用するために必要なアクセス許可は何ですか?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)」を参照してください。<br>VM への JIT アクセスを要求する必要があり、他の JIT 操作を実行しないユーザーに対して、最小特権のロールを作成するには、Security Center GitHub コミュニティ ページにある [Set-JitLeastPrivilegedRole スクリプト](https://github.com/Azure/Azure-Security-Center/tree/main/Powershell%20scripts/JIT%20Scripts/JIT%20Custom%20Role)を使用します。|
+|必要なロールとアクセス許可:|**閲覧者** と **セキュリティ閲覧者** ロールは、JIT の状態とパラメーターの両方を表示できます。<br>JIT で動作するカスタム ロールを作成するには、「[JIT を構成して使用するために必要なアクセス許可は何ですか?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)」を参照してください。<br>VM への JIT アクセスを要求する必要があり、他の JIT 操作を実行しないユーザーに対して、最小特権のロールを作成するには、Security Center GitHub コミュニティ ページにある [Set-JitLeastPrivilegedRole スクリプト](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)を使用します。|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
@@ -333,6 +333,13 @@ Just-In-Time VM アクセス機能は、Azure Security Center API から使用�
 
 ---
 
+
+
+
+
+
+
+
 ## <a name="audit-jit-access-activity-in-security-center"></a>Security Center から JIT アクセス アクティビティを監査する
 
 ログ検索を使用して VM アクティビティについての情報が得ることができます。 ログを表示するには:
@@ -348,6 +355,11 @@ Just-In-Time VM アクセス機能は、Azure Security Center API から使用�
    アクティビティ ログによって、その VM に対する前回の操作、時刻、日付、サブスクリプションがフィルター処理されて表示されます。
 
 1. ログ情報をダウンロードするには、 **[CSV としてダウンロードする]** を選択します。
+
+
+
+
+
 
 
 

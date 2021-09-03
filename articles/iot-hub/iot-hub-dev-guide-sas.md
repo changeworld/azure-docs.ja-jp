@@ -2,7 +2,6 @@
 title: SAS トークンを使用して IoT Hub へのアクセスを制御する |Microsoft Docs
 description: Shared Access Signature トークンを使用して、デバイスアプリとバックエンド アプリの IoT Hub へのアクセスを制御する方法。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -16,12 +15,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 0724a1281475ffc9cbeaa4480bd45aa69f9d4857
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: aec64f22cf0af9de9b99c914d972f45f3dfefe1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967811"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728802"
 ---
 # <a name="control-access-to-iot-hub-using-shared-access-signatures-and-security-tokens"></a>Shared Access Signature とセキュリティ トークンを使用して IoT Hub へのアクセスを制御する
 
@@ -362,13 +361,13 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 IoT Hub の [ID レジストリ](iot-hub-devguide-identity-registry.md)を使用して、デバイス/モジュールごとのセキュリティ資格情報とアクセス制御を[トークン](iot-hub-dev-guide-sas.md#security-tokens)により構成できます。 IoT ソリューションにすでにカスタム ID レジストリや認証スキームがある場合、*トークン サービス* を作成してこのインフラストラクチャを IoT Hub と統合することを検討してください。 この方法により、ソリューションで他の IoT 機能を使用できます。
 
-トークン サービスはカスタム クラウド サービスの 1 つです。 このサービスは、**DeviceConnect** または **ModuleConnect** アクセス許可が指定された IoT Hub *共有アクセス ポリシー* を使用して、*デバイスを対象とする* トークンまたは *モジュールを対象とする* トークンを作成します。 これらのトークンにより、デバイスとモジュールは IoT Hub に接続できるようになります。
+トークン サービスはカスタム クラウド サービスの 1 つです。 これにより、**DeviceConnect** アクセス許可が指定された IoT Hub の "*共有アクセス ポリシー*" を使用して、"*デバイス スコープ*" または "*モジュール スコープ*" のトークンが作成されます。 これらのトークンにより、デバイスとモジュールは IoT Hub に接続できるようになります。
 
 ![Steps of the token service pattern](./media/iot-hub-devguide-security/tokenservice.png)
 
 トークン サービス パターンの主な手順を次に示します。
 
-1. IoT Hub 共有アクセス ポリシーを作成し、IoT Hub に対する **DeviceConnect** または **ModuleConnect** アクセス許可を指定します。 このポリシーは、[Azure portal](https://portal.azure.com) またはプログラムで作成できます。 トークン サービスは、このポリシーを使用して、作成されるトークンに署名します。
+1. IoT Hub に対する **DeviceConnect** アクセス許可を指定して、IoT Hub の共有アクセス ポリシーが作成されます。 このポリシーは、[Azure portal](https://portal.azure.com) またはプログラムで作成できます。 トークン サービスは、このポリシーを使用して、作成されるトークンに署名します。
 
 2. IoT Hub にアクセスする必要があるデバイス/モジュールは、トークン サービスに署名付きトークンを要求します。 デバイスは、カスタム ID レジストリ/認証スキームで認証し、トークン サービスがトークンの作成に使用するデバイス/モジュール ID を特定できます。
 
@@ -416,6 +415,6 @@ IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 
 
 この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご覧ください。
 
-* [Azure IoT Hub を使ってみる](quickstart-send-telemetry-node.md)
+* [Azure IoT Hub を使ってみる](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 * [IoT Hub を使用した C2D メッセージの送信方法](iot-hub-csharp-csharp-c2d.md)
 * [IoT Hub の D2C メッセージの処理方法](tutorial-routing.md)

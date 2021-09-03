@@ -2,14 +2,14 @@
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/18/2019
+ms.date: 08/13/2021
 ms.author: rogarana
-ms.openlocfilehash: ffb07220267a2c192b4aad2405185c80bd9abbc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f22094b86018f318e82b2e0a7e31ef6854562734
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94523931"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122261165"
 ---
 Azure 仮想マシンには複数のデータ ディスクを接続できます。 VM のデータ ディスクのスケーラビリティとパフォーマンスの目標に基づいて、パフォーマンスとキャパシティの要件を満たすために必要なディスクの数と種類を決定します。
 
@@ -25,8 +25,8 @@ Azure 仮想マシンには複数のデータ ディスクを接続できます�
 > | Standard マネージド ディスク | 50,000 |
 > | Standard SSD マネージド ディスク | 50,000 |
 > | Premium マネージド ディスク | 50,000 |
-> | Standard_LRS スナップショット | 50,000 |
-> | Standard_ZRS スナップショット | 50,000 |
+> | Standard_LRS スナップショット | 75,000 |
+> | Standard_ZRS スナップショット | 75,000 |
 > | マネージド イメージ | 50,000 |
 
 **Standard ストレージ アカウントの場合:** Standard ストレージ アカウントには、20,000 IOPS という最大合計要求レートがあります。 Standard ストレージ アカウントの仮想マシン ディスク全体の合計 IOPS は、この制限を超えることはできません。
