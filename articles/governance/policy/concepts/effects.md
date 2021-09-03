@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 04/19/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6025451779ba04b3a20307d35ca8a939c7762d64
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 22838cd661e64d4a85debfb4c5ce556a142dc2c2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474372"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324854"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -172,6 +172,12 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
   - _ResourceGroup_ の場合は、**if** 条件リソースのリソース グループまたは **ResourceGroupName** で指定されたリソース グループに制限されます。
   - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。
   - 既定値は _ResourceGroup_ です。
+- **EvaluationDelay** (省略可能)
+  - 関連リソースの存在を評価する必要があるタイミングを指定します。 遅延は、リソースの作成または更新要求の結果である評価のみに使用されます。
+  - 使用できる値は `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure`、または ISO 8601 期間の 10 から 360 分の間です。
+  - _AfterProvisioning_ 値では、ポリシー規則の IF 条件で評価されたリソースのプロビジョニング結果が検査されます。 結果に関係なく、プロビジョニングが完了した後に `AfterProvisioning` が実行されます。 プロビジョニングに 6 時間より長くかかると、_Afterprovisioning_ の評価の遅延を判断するときにエラーとして扱われます。
+  - 既定値は `PT10M` (10 分間) です。
+  - 評価の遅延を長く指定すると、リソースの記録されたコンプライアンス状態が次の[評価のトリガー](../how-to/get-compliance-data.md#evaluation-triggers)まで更新されない場合があります。
 - **ExistenceCondition** (省略可能)
   - 指定されない場合、**type** の関連リソースは効果を満たしているため、監査はトリガーされません。
   - **if** 条件のポリシー規則と同じ言語が使用されますが、それぞれの関連リソースに対して個別に評価されます。
@@ -267,7 +273,7 @@ AuditIfNotExists と同様に、DeployIfNotExists ポリシー定義は条件が
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists の評価
 
-DeployIfNotExists は、リソースプロバイダーによって、サブスクリプションまたはリソースの作成または更新要求が処理され、成功を示す状態コードが返されてから約 15 分後に実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。 デプロイの時間は、テンプレートに含まれるリソースの複雑さによって異なります。
+DeployIfNotExists は、リソース プロバイダーによって、サブスクリプションまたはリソースの作成または更新要求が処理され、成功を示す状態コードが返されてから、構成可能な遅延後に実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。 デプロイの時間は、テンプレートに含まれるリソースの複雑さによって異なります。
 
 評価サイクル中は、リソースを照合する DeployIfNotExists 効果があるポリシー定義は非準拠としてマークされ、リソースに対するアクションは実行されません。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。
 
@@ -293,6 +299,12 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - _ResourceGroup_ の場合は、**if** 条件リソースのリソース グループまたは **ResourceGroupName** で指定されたリソース グループに制限されます。
   - _Subscription_ の場合は、関連リソースのサブスクリプション全体を検索します。
   - 既定値は _ResourceGroup_ です。
+- **EvaluationDelay** (省略可能)
+  - 関連リソースの存在を評価する必要があるタイミングを指定します。 遅延は、リソースの作成または更新要求の結果である評価のみに使用されます。
+  - 使用できる値は `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure`、または ISO 8601 期間の 0 から 360 分の間です。
+  - _AfterProvisioning_ 値では、ポリシー規則の IF 条件で評価されたリソースのプロビジョニング結果が検査されます。 結果に関係なく、プロビジョニングが完了した後に `AfterProvisioning` が実行されます。 プロビジョニングに 6 時間より長くかかると、_Afterprovisioning_ の評価の遅延を判断するときにエラーとして扱われます。
+  - 既定値は `PT10M` (10 分間) です。
+  - 評価の遅延を長く指定すると、リソースの記録されたコンプライアンス状態が次の[評価のトリガー](../how-to/get-compliance-data.md#evaluation-triggers)まで更新されない場合があります。
 - **ExistenceCondition** (省略可能)
   - 指定されない場合、**type** の関連リソースは効果を満たすため、デプロイはトリガーされません。
   - **if** 条件のポリシー規則と同じ言語が使用されますが、それぞれの関連リソースに対して個別に評価されます。
@@ -308,6 +320,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 既定値は _ResourceGroup_ です。
 - **Deployment** (必須)
   - このプロパティは `Microsoft.Resources/deployments` PUT API に渡されるため、完全なテンプレートのデプロイを含める必要があります。 詳細については、[Deployments REST API](/rest/api/resources/deployments) をご覧ください。
+  - テンプレート内で入れ子になっている `Microsoft.Resources/deployments` では、複数のポリシー評価間の競合を避けるために、固有の名前を使用する必要があります。 `[concat('NestedDeploymentName-', uniqueString(deployment().name))]` を使用すると、入れ子になったデプロイの一部として親デプロイの名前を使用できます。
 
   > [!NOTE]
   > **Deployment** プロパティ内のすべての関数が、ポリシーではなくテンプレートのコンポーネントとして評価されます。 例外は、ポリシーからテンプレートに値を渡す **parameters** プロパティです。 このセクションのテンプレート パラメーター名の **value** は、この値渡しを実行するために使用されます (DeployIfNotExists の例の _fullDbName_ を参照)。
@@ -327,6 +340,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
     "details": {
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
+        "evaluationDelay": "AfterProvisioning",
         "roleDefinitionIds": [
             "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
@@ -489,7 +503,7 @@ Modify では次の操作がサポートされています。
 
 - リソース タグの追加、置換、または削除。 タグに関して、ターゲット リソースがリソース グループでない限り、Modify ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。
 - 仮想マシンと仮想マシン スケール セットのマネージド ID の種類 (`identity.type`) の値の追加または置換。
-- 特定のエイリアスの値の追加または置換 (プレビュー)。
+- 特定のエイリアスの値の追加または置換。
   - `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` を使用します
     Modify で使用できるエイリアスの一覧を取得するには、Azure PowerShell **4.6.0** 以降で上記を使用します。
 

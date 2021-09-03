@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 63b02b66b68e40ae9ae209979d6464d97c30caf3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9a5191533b336d9d0cbefcf9b58f56d6648a60df
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967910"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456156"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>サービス要求が失敗しました。 状態:403 (許可されていません)
 
@@ -86,12 +86,12 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 #### <a name="fix-issues"></a>問題を修正する
 
-これが説明とは異なる表示になっている場合は、"[アプリ登録を作成する方法](./how-to-create-app-registration-portal.md)" に関するページを参照して、アプリ登録を設定する方法の手順に従います。
+これが説明とは異なる表示になっている場合は、「[アプリの登録を作成する](./how-to-create-app-registration-portal.md)」で説明されているアプリ登録の設定方法に関する手順のようにします。
 
 ## <a name="next-steps"></a>次のステップ
 
 新しい Azure Digital Twins インスタンスを作成して認証するための設定手順を確認してください。
-* [方法: インスタンスと認証を設定する (CLI)](how-to-set-up-instance-cli.md)
+* [インスタンスと認証を設定する (CLI)](how-to-set-up-instance-cli.md)
 
 Azure Digital Twins のセキュリティとアクセス許可の詳細を確認します。
-* [概念:Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)
+* [Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)

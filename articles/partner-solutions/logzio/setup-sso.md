@@ -4,14 +4,14 @@ description: Azure と Logz.io の統合にシングル サインオンをセッ
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 08/17/2021
+ms.date: 07/28/2021
 ms.author: tomfitz
-ms.openlocfilehash: 04a2616e46f526e9601e102c8ecb4104b6595164
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 6ca8cfa3b41ef3cdc6a4030980bc73679b9635aa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428586"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779354"
 ---
 # <a name="set-up-logzio-single-sign-on"></a>Logz.io のシングル サインオンをセットアップする
 
@@ -59,7 +59,7 @@ Logz.io リソース内で Security Assertion Markup Language (SAML) の SSO 機
 
    :::image type="content" source="./media/sso-setup/properties.png" alt-text="シングル サインオンのプロパティ。":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SSO に関する問題を解決するには、[トラブルシューティング](troubleshoot.md)に関する記事を参照してください。
 - Logz.ioの 統合を作成するために、「[クイック スタート: Azure portal で Logz.io リソースを作成する](create.md)」を参照してください。

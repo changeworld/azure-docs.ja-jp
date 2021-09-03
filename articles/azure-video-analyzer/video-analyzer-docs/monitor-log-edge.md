@@ -2,13 +2,13 @@
 title: 監視とログ記録 - Azure
 description: この記事では、Azure Video Analyzer での監視とログ記録の概要について説明します。
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: d7f048aecd89d75ad7bff728bc8a4ddebc8f515a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 7938a68272378cf592fff17be0c4dfef2ca0e3f3
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110387944"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604867"
 ---
 # <a name="monitor-and-log-on-iot-edge"></a>IoT Edge の監視とログオン
 
@@ -392,31 +392,38 @@ Video Analyzer モジュールからメトリックを収集できるように�
    * `MediaPipeline`:RTSP 対応カメラとの接続を確立するのが難しいなどの問題をトラブルシューティングするときに、分析情報が提供される可能性がある詳細なログです。
    
 ### <a name="generating-debug-logs"></a>デバッグ ログの生成
+場合によっては、Azure サポートによる問題の解決を支援するため、上で説明したものより詳細なログを生成することが必要になる場合があります。 これらのログを生成するには:  
 
-場合によっては、Azure サポートによる問題の解決を支援するため、上で説明したものより詳細なログを生成することが必要になる場合があります。 これらのログを生成するには:
+1. [Azure portal](https://portal.azure.com) にサインインし、IoT ハブに移動します。
+1. 左側のペインで、 **[IoT Edge]** を選択します。
+1. デバイスの一覧で、ターゲット デバイスの ID を選択します。
+1. ペインの上部にある **[モジュールの設定]** を選択します。
 
-1. `createOptions` を使用して、[モジュール ストレージをデバイス ストレージにリンク](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage)します。 クイックスタートから[配置マニフェスト テンプレート](https://github.com/Azure-Samples/azure-video-analyzer-iot-edge-csharp/blob/master/src/edge/deployment.template.json)を見ると、次のようなコードがあります。
+   ![Azure portal の [モジュールの設定] ボタンのスクリーンショット。](media/troubleshoot/set-modules.png)
 
-   ```json
-   "createOptions": {
-     …
-     "Binds": [
-       "/var/local/videoAnalyzer/:/var/lib/videoAnalyzer/"
-     ]
-    }
-   ```
+1. **[IoT Edge モジュール]** セクションで、 **[avaedge]** を探して選択します。
+1. **[モジュール ID ツイン]** を選択します。 編集可能なペインが開きます。
+1. **[desired key]\(必要なキー\)** の下に、次のキーと値のペアを追加します。
 
-   このコードにより、Edge モジュールはデバイス ストレージ パス `/var/local/videoAnalyzer/` にログを書き込むことができます。 
+   `"DebugLogsDirectory": "/var/lib/videoanalyzer/logs"`
 
- 1. モジュールに次の `desired` プロパティを追加します。
+   > [!NOTE]
+   > このコマンドにより、エッジ デバイスとコンテナーの間でログ フォルダーがバインドされます。 デバイス上の別の場所にあるログを収集するには、次のようにします。
+   >
+   > 1. **[バインド]** セクションでデバッグ ログの場所のバインドを作成し、 **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** と **$DEBUG _LOG_LOCATION** を目的の場所 `/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION` に置き換えます。
+   > 2. 次のコマンドを使用します。 **$DEBUG _LOG_LOCATION** は、前の手順で使用した場所に置き換えます: `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`
 
-    `"debugLogsDirectory": "/var/lib/videoAnalyzer/debuglogs/"`
+1. **[保存]** を選びます。
 
-これにより、モジュールからデバイス ストレージ パス `/var/local/videoAnalyzer/debuglogs/` に、バイナリ形式のデバッグ ログが書き込まれます。 これらのログを Azure サポートと共有できます。
+これにより、モジュールからデバイス ストレージ パス `/var/local/videoAnalyzer/debuglogs/` に、バイナリ形式のデバッグ ログが書き込まれます。 これらのログを Azure サポートと共有できます。  
+
+**[モジュール ID ツイン]** の値を _null_ に設定すると、ログ収集を停止できます。 **[モジュール ID ツイン]** ページに戻り、次の内容をパラメーターとして更新します。
+
+   `"DebugLogsDirectory": ""`
 
 ## <a name="faq"></a>よく寄せられる質問
 
-質問がある場合は、[監視とメトリックに関する FAQ](faq-edge.md#monitoring-and-metrics) を参照してください。
+質問がある場合は、[監視とメトリックに関する FAQ](faq-edge.yml#monitoring-and-metrics) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

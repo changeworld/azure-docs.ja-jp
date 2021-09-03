@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でマネージド ID を使用す�
 services: container-service
 ms.topic: article
 ms.date: 05/12/2021
-ms.openlocfilehash: a5bf71a654afd122aad682df732e5a6c9dcd9538
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: dbc02f8b65235a47fc523665ea6337774a6eb557
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476196"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321983"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -35,8 +35,8 @@ AKS では、組み込みのサービスとアドオンに対して複数のマ�
 
 | ID                       | 名前    | 使用事例 | 既定のアクセス許可 | 独自の ID を使用する
 |----------------------------|-----------|----------|
-| コントロール プレーン | 非表示 | イングレス ロード バランサーと AKS マネージド パブリック IP、Cluster Autoscaler 操作など、クラスター リソースを管理する目的で AKS コントロール プレーン コンポーネントによって使用されます | ノード リソース グループの共同作成者ロール | サポートされています
-| kubelet | AKS クラスター名 - agentpool | Azure Container Registry (ACR) を使用した認証 | NA (kubernetes v1.15+ 用) | サポート (プレビュー)
+| コントロール プレーン | AKS クラスター名 | イングレス ロード バランサーと AKS マネージド パブリック IP、クラスター オートスケーラー、Azure ディスクおよびファイル CSI ドライバーなど、クラスター リソースを管理する目的で AKS コントロール プレーン コンポーネントによって使用されます | ノード リソース グループの共同作成者ロール | サポートされています
+| kubelet | AKS クラスター名 - agentpool | Azure Container Registry (ACR) を使用した認証 | NA (kubernetes v1.15+ 用) | サポートされています
 | アドオン | AzureNPM | ID は必要ありません | NA | いいえ
 | アドオン | AzureCNI ネットワーク監視 | ID は必要ありません | NA | いいえ
 | アドオン | azure-policy (ゲートキーパー) | ID は必要ありません | NA | いいえ
@@ -82,7 +82,8 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 > [!NOTE]
-> システム割り当てまたはユーザー割り当ての ID がマネージド ID に更新されたら、ノードで `az aks nodepool upgrade --node-image-only` を実行し、マネージド ID への更新を完了します。
+> 更新後、クラスターのコントロール プレーンとアドオン ポッドはマネージド ID を使用するように切り替わりますが、kubelet は agentpool がアップグレードされるまでサービス プリンシパルを使用し続けます。 ノードで `az aks nodepool upgrade --node-image-only` を実行して、マネージド ID への更新を完了します。 
+
 
 ## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>AKS クラスターに対してシステムで割り当てられたマネージド ID を取得して使用する
 
@@ -127,8 +128,7 @@ az aks show -g <RGName> -n <ClusterName> --query "identity"
 Azure CLI バージョン 2.15.1 以降がインストールされている必要があります。
 
 ### <a name="limitations"></a>制限事項
-* Azure Government は現在サポートされていません。
-* Azure China 21Vianet は現在サポートされていません。
+* Azure Government の US DoD 中部、US DoD 東部、US Gov アイオワは現在サポートされていません。
 
 マネージド ID をまだ持っていない場合は、[az identity CLI][az-identity-create] などを使用して作成してください。
 
@@ -170,7 +170,7 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 \
     --enable-managed-identity \
-    --assign-identity <identity-id> \
+    --assign-identity <identity-id>
 ```
 
 独自のマネージド ID を使用して正常にクラスターが作成されると、次の userAssignedIdentities プロファイル情報が含まれています。
@@ -189,39 +189,18 @@ az aks create \
  },
 ```
 
-## <a name="bring-your-own-kubelet-mi-preview"></a>ユーザー自身の kubelet MI を使う (プレビュー)
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+## <a name="bring-your-own-kubelet-mi"></a>ユーザー自身の kubelet MI を使う
 
 kubelet ID を使用すると、クラスターの作成前に、既存の ID にアクセス権を付与できます。 この機能により、事前に作成されたマネージド ID を使用した ACR への接続などのシナリオが可能になります。
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure CLI バージョン 2.21.1 以降がインストールされている必要があります。
-- aks-preview バージョン 0.5.10 以降がインストールされている必要があります。
+- Azure CLI バージョン 2.26.0 以降がインストールされている必要があります。
 
 ### <a name="limitations"></a>制限事項
 
 - ユーザー割り当てのマネージド クラスターでのみ機能します。
-- Azure China 21Vianet は現在サポートされていません。
-
-まず、Kubelet ID の機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n CustomKubeletIdentityPreview
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/CustomKubeletIdentityPreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+- Azure China 21Vianet の中国東部および中国北部は現在サポートされていません。
 
 ### <a name="create-or-obtain-managed-identities"></a>マネージド ID を作成または取得する
 
@@ -292,7 +271,7 @@ az aks create \
     --service-cidr 10.2.0.0/24 \
     --enable-managed-identity \
     --assign-identity <identity-id> \
-    --assign-kubelet-identity <kubelet-identity-id> \
+    --assign-kubelet-identity <kubelet-identity-id>
 ```
 
 独自の kubelet マネージ ID を使用してクラスターを正常に作成すると、次の出力が含まれます。

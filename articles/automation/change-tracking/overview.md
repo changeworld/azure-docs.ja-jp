@@ -3,14 +3,14 @@ title: Azure Automation の変更履歴とインベントリの概要
 description: この記事では、環境内のソフトウェアや Microsoft サービスの変更を特定するのに役立つ、Change Tracking とインベントリの機能について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 05/06/2021
+ms.date: 06/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 062e4cdeae9560bc5be58d8245390d4a538f5722
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 27328ae64eabf9a5894d9bfc4ebbb2d0217d7a18
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783911"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465887"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -20,7 +20,7 @@ ms.locfileid: "109783911"
 - Linux ソフトウェア (パッケージ)
 - Windows ファイルと Linux ファイル
 - Windows レジストリ キー
-- Microsoft サービス
+- Windows サービス
 - Linux デーモン
 
 > [!NOTE]
@@ -29,14 +29,14 @@ ms.locfileid: "109783911"
 変更履歴とインベントリでは、[Azure Security Center のファイルの整合性の監視 (FIM)](../../security-center/security-center-file-integrity-monitoring.md) を使用して、オペレーティング システム、アプリケーション ファイル、および Windows レジストリが調査されます。 これらのエンティティは FIM で監視されますが、変更履歴とインベントリでネイティブに追跡されます。
 
 - ソフトウェアの変更
-- Microsoft サービス
+- Windows サービス
 - Linux デーモン
 
 変更履歴とインベントリに含まれる機能をすべて有効にすると、追加料金が発生する可能性があります。 続行する前に、[Automation の価格](https://azure.microsoft.com/pricing/details/automation/)と [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)を確認してください。
 
 変更履歴とインベントリでは、Azure Monitor ログにデータが転送され、収集されたデータが Log Analytics ワークスペースに格納されます。 ファイルの整合性の監視 (FIM) 機能は、**Azure Defender for servers** が有効な場合にのみ使用できます。 詳細については、Azure Security Center の[価格](../../security-center/security-center-pricing.md)を参照してください。 FIM では、変更履歴とインベントリのデータを格納するために作成されたものと同じ Log Analytics ワークスペースにデータがアップロードされます。 正確な使用量を把握するために、リンクされた Log Analytics ワークスペースを監視することが推奨されています。 Azure Monitor ログのデータ使用量を分析する方法の詳細については、[使用量とコストの管理](../../azure-monitor/logs/manage-cost-storage.md)に関するページを参照してください。
 
-Log Analytics ワークスペースに接続されているマシンでは、[Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)を使用して、監視対象サーバーにインストールされているソフトウェア、Microsoft サービス、Windows のレジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントから Azure Monitor ログに送信されます。 Azure Monitor ログでは、受信したデータにロジックが適用され、記録されて分析可能になります。
+Log Analytics ワークスペースに接続されているマシンでは、[Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)を使用して、監視対象サーバーにインストールされているソフトウェア、Windows サービス、Windows のレジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントから Azure Monitor ログに送信されます。 Azure Monitor ログでは、受信したデータにロジックが適用され、記録されて分析可能になります。
 
 > [!NOTE]
 > Change Tracking とインベントリでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[Azure でのワークスペースのマッピング](../how-to/region-mappings.md)に関する記事をご覧ください。 リージョン マッピングは、Automation アカウントとは別のリージョンの VM を管理する機能には影響しません。
@@ -67,7 +67,7 @@ Log Analytics ワークスペースに接続されているマシンでは、[Lo
 
 変更履歴とインベントリは、Log Analytics エージェントの要件を満たすすべてのオペレーティング システムでサポートされます。 Log Analytics エージェントで現在サポートされている Windows および Linux オペレーティング システムのバージョンの一覧については、「[サポートされるオペレーティング システム](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)」を参照してください。
 
-TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)」を参照してください。
+TLS 1.2 のクライアント要件を理解するには、「[Azure Automation 用の TLS 1.2](../automation-managing-data.md#tls-12-for-azure-automation)」を参照してください。
 
 ### <a name="python-requirement"></a>Python の要件
 
@@ -150,7 +150,7 @@ Change Tracking とインベントリを使用すると、Windows レジスト�
 | Windows レジストリ | 50 分 |
 | Windows ファイル | 30 分 |
 | Linux ファイル | 約 15 分 |
-| Microsoft サービス | 10 秒から 30 分</br> 既定値は30 分 |
+| Windows サービス | 10 秒から 30 分</br> 既定値は30 分 |
 | Linux デーモン | 5 分 |
 | Windows ソフトウェア | 30 分 |
 | Linux ソフトウェア | 5 分 |
@@ -168,11 +168,11 @@ Change Tracking とインベントリを使用すると、Windows レジスト�
 
 変更履歴とインベントリを使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です (環境によって異なります)。 Log Analytics ワークスペースの使用量と推定コスト機能を使用して、Change Tracking とインベントリによって取り込まれたデータを使用状況グラフに表示できます。 このデータ ビューを使用して、データの使用量を評価し、それが請求にどのように影響しているかを判断します。 「[ご自分の使用量を理解してコストを見積もる](../../azure-monitor/logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)」を参照してください。
 
-### <a name="microsoft-service-data"></a>Microsoft サービス データ
+### <a name="windows-services-data"></a>Windows サービスのデータ
 
-Microsoft サービスに対する既定の収集の頻度は 30 分です。 **[設定の編集]** にある **[Microsoft サービス]** タブのスライダーを使用して、頻度を構成できます。
+Windows サービスに対する既定の収集の頻度は 30 分です。 **[設定の編集]** にある **[Windows サービス]** タブのスライダーを使用して、頻度を構成できます。
 
-![Microsoft サービス スライダー](./media/overview/windowservices.png)
+![Windows サービスのスライダー](./media/overview/windowservices.png)
 
 パフォーマンスを最適化するために、Log Analytics エージェントでは変更の追跡のみが行われます。 大きいしきい値を設定すると、サービスがその元の状態に戻った場合に変更が検出されない可能性があります。 頻度を小さな値に設定すると、そうしないと検出されなかった可能性がある変更をキャッチすることができます。
 

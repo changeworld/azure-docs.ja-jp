@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b34194c0b9afa622d6ae751752092ed3f750f0b
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 3603bd100fe5d9b471d67896c98de4c0547c8ebb
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285756"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551256"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>トラブルシューティング:オンプレミスの Azure AD パスワード保護
 
@@ -326,7 +326,7 @@ Test-AzureADPasswordProtectionDCAgentHealth コマンドレットは、個別に
 
 ### <a name="basic-dc-agent-health-tests"></a>基本的な DC エージェントの正常性テスト
 
-次のテストはすべて個別に実行でき、受け入れません。 簡単な説明
+次のテストはすべて個別に実行でき、パラメーターを受け付けません。 各テストの簡単な説明を次の表に示します。
 
 |DC エージェントの正常性テスト|説明|
 | --- | :---: |

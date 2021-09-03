@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 3786ac149847c61974fb079409d7d18beb16bdd8
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: e61a7084a0dd05468716c7f94fb85b6968faf558
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536796"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126556"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -19,29 +19,81 @@ Event Grid に送信されたイベントに応答するには、関数トリガ
 
 セットアップと構成の詳細については、[概要](./functions-bindings-event-grid.md)を参照してください。
 
+> [!NOTE]
+> Event Grid トリガーは、内部ロード バランサーの App Service Environment ではネイティブにサポートされません。 このトリガーで使用される HTTP 要求は、仮想ネットワークへのゲートウェイなしでは関数アプリに届きません。
+
 ## <a name="example"></a>例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 HTTP トリガーの例については、「[HTTP エンドポイントへのイベントの受信](../event-grid/receive-events.md)」を参照してください。
 
+### <a name="version-3x"></a>バージョン 3.x
+
+次の例は、`CloudEvent` にバインドする Functions 3.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
+
+```cs
+using Azure.Messaging;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public static class CloudEventTriggerFunction
+    {
+        [FunctionName("CloudEventTriggerFunction")]
+        public static void Run(
+            ILogger logger,
+            [EventGridTrigger] CloudEvent e)
+        {
+            logger.LogInformation("Event received {type} {subject}", e.Type, e.Subject);
+        }
+    }
+}
+```
+
+次の例は、`EventGridEvent` にバインドする Functions 3.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Azure.Messaging.EventGrid;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public static class EventGridEventTriggerFunction
+    {
+        [FunctionName("EventGridEventTriggerFunction")]
+        public static void Run(
+            ILogger logger,
+            [EventGridTrigger] EventGridEvent e)
+        {
+            logger.LogInformation("Event received {type} {subject}", e.EventType, e.Subject);
+        }
+    }
+}
+```
+
 ### <a name="c-2x-and-higher"></a>C# (2.x 以降)
 
 次の例は、`EventGridEvent` にバインドする[ C# 関数](functions-dotnet-class-library.md)を示したものです。
 
 ```cs
-using Microsoft.Azure.EventGrid.Models;
+using System;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 using Microsoft.Extensions.Logging;
 
 namespace Company.Function
 {
-    public static class EventGridTriggerCSharp
+    public static class EventGridTriggerDemo
     {
-        [FunctionName("EventGridTest")]
-        public static void EventGridTest([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+        [FunctionName("EventGridTriggerDemo")]
+        public static void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
         {
             log.LogInformation(eventGridEvent.Data.ToString());
         }
@@ -71,54 +123,6 @@ namespace Company.Function
         public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
         {
             log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-        }
-    }
-}
-```
-
-### <a name="version-3x-preview"></a>Version 3.x (プレビュー)
-
-次の例は、`CloudEvent` にバインドする Functions 3.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
-
-```cs
-using Azure.Messaging;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-
-namespace Azure.Extensions.WebJobs.Sample
-{
-    public static class CloudEventTriggerFunction
-    {
-        [FunctionName("CloudEventTriggerFunction")]
-        public static void Run(
-            ILogger logger,
-            [EventGridTrigger] CloudEvent e)
-        {
-            logger.LogInformation("Event received {type} {subject}", e.Type, e.Subject);
-        }
-    }
-}
-```
-
-次の例は、`EventGridEvent` にバインドする Functions 3.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Azure.Messaging.EventGrid;
-using Microsoft.Extensions.Logging;
-
-namespace Azure.Extensions.WebJobs.Sample
-{
-    public static class EventGridEventTriggerFunction
-    {
-        [FunctionName("EventGridEventTriggerFunction")]
-        public static void Run(
-            ILogger logger,
-            [EventGridTrigger] EventGridEvent e)
-        {
-            logger.LogInformation("Event received {type} {subject}", e.EventType, e.Subject);
         }
     }
 }
@@ -404,9 +408,10 @@ Azure Functions 2.x では、Event Grid トリガーに次のパラメーター�
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`- すべてのイベントの種類に共通するフィールドのプロパティを定義します。
 
 > [!NOTE]
-> Functions 1.x では、`Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` にバインドしようとした場合、コンパイラに「非推奨」メッセージが表示され、代わりに `Microsoft.Azure.EventGrid.Models.EventGridEvent` 使用するよう推奨されます。 新しい種類を使用するには、[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet パッケージを参照し、`EventGridEvent` の種類名の先頭に `Microsoft.Azure.EventGrid.Models` を付けることによって完全修飾します。
+> `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` にバインドしようとした場合、コンパイラに "非推奨" メッセージが表示され、代わりに `Microsoft.Azure.EventGrid.Models.EventGridEvent` を使用するように推奨されます。 新しい種類を使用するには、[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet パッケージを参照し、`EventGridEvent` の種類名の先頭に `Microsoft.Azure.EventGrid.Models` を付けることによって完全修飾します。
 
-### <a name="additional-types"></a>その他の型 
+### <a name="additional-types"></a>その他の型
+
 3\.0.0 以降のバージョンの Event Grid 拡張機能を使用するアプリでは、[Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 名前空間の `EventGridEvent` 型を使用します。 また、[Azure. Messaging](/dotnet/api/azure.messaging.cloudevent) 名前空間の `CloudEvent` 型にバインドすることもできます。
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
@@ -421,7 +426,7 @@ Azure Functions 2.x では、Event Grid トリガーに次のパラメーター�
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`- すべてのイベントの種類に共通するフィールドのプロパティを定義します。
 
 > [!NOTE]
-> Functions 1.x では、`Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` にバインドしようとした場合、コンパイラに「非推奨」メッセージが表示され、代わりに `Microsoft.Azure.EventGrid.Models.EventGridEvent` 使用するよう推奨されます。 新しい種類を使用するには、[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet パッケージを参照し、`EventGridEvent` の種類名の先頭に `Microsoft.Azure.EventGrid.Models` を付けることによって完全修飾します。 C# スクリプト関数で NuGet パッケージを参照する方法については、「[NuGet パッケージを使用する](functions-reference-csharp.md#using-nuget-packages)」をご覧ください
+> `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` にバインドしようとした場合、コンパイラに "非推奨" メッセージが表示され、代わりに `Microsoft.Azure.EventGrid.Models.EventGridEvent` を使用するように推奨されます。 新しい種類を使用するには、[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet パッケージを参照し、`EventGridEvent` の種類名の先頭に `Microsoft.Azure.EventGrid.Models` を付けることによって完全修飾します。 C# スクリプト関数で NuGet パッケージを参照する方法については、「[NuGet パッケージを使用する](functions-reference-csharp.md#using-nuget-packages)」をご覧ください
 
 ### <a name="additional-types"></a>その他の型 
 3\.0.0 以降のバージョンの Event Grid 拡張機能を使用するアプリでは、[Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 名前空間の `EventGridEvent` 型を使用します。 また、[Azure. Messaging](/dotnet/api/azure.messaging.cloudevent) 名前空間の `CloudEvent` 型にバインドすることもできます。

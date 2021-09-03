@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: feb6462fef89a73a8e7a1d0df6808f0c58817b35
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a959a7b424a855f47a2e128b5c77727d21a9e0aa
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982162"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449779"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps"></a>Azure Static Web Apps 用にローカル開発環境を設定する
 
-Azure Static Web Apps サイトには、クラウドに発行されると、同じアプリケーションであるかのように連携して動作する多くのサービスがあります。 次のようなサービスがあります。
+Azure Static Web Apps サイトでは、クラウドに発行されると、同じアプリケーションであるかのように連携して動作する多くのサービスがリンクされます。 次のようなサービスがあります。
 
 - 静的 Web アプリ
 - Azure Functions API
@@ -63,6 +63,9 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 - **既存の Azure Static Web Apps サイト**: お持ちでない場合は、[vanilla-api](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate) スターター アプリから開始してください。
 - **npm を含む [Node.js](https://nodejs.org)** : [npm](https://www.npmjs.com/) へのアクセスを含む [Node.js LTS](https://nodejs.org) バージョンを実行します。
 - **[Visual Studio Code](https://code.visualstudio.com/)** : API アプリケーションのデバッグに使用されますが、CLI には必要ありません。
+
+> [!NOTE]
+> [API をローカルに使用](add-api.md#run-the-frontend-and-api-locally)して `swa` を実行するには、Azure Functions Core Tools が必要です。
 
 ## <a name="get-started"></a>作業開始
 

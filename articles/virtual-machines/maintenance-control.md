@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 290a1e8da4e9b3e8eff171ab2d5837bfc9c381b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b85614bce6ddaee98a271e3bf7f34fd3e0301580
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552424"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369431"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>メンテナンス コントロールによるプラットフォームの更新の管理 
 
@@ -24,13 +24,13 @@ ms.locfileid: "102552424"
 メンテナンス コントロールを使用すると、次のことができます。
 - 更新プログラムを 1 つの更新プログラム パッケージにまとめる。
 - 最大 35 日間待機して更新プログラムを適用する。 
-- メンテナンス スケジュールを構成するか、[Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)を使用して、プラットフォームの更新を自動化します。
+- メンテナンス スケジュールを構成して、プラットフォームの更新を自動化する。
 - メンテナンス構成が、複数のサブスクリプションやリソース グループ全体で機能するようにする。 
 
 ## <a name="limitations"></a>制限事項
 
 - VM は、[専用ホスト](./dedicated-hosts.md)上にあるか、[分離された VM サイズ](isolation.md)を使用して作成される必要があります。
-- メンテナンス スケジュールが宣言されている場合、その期間は 2 時間以上であることが必要です。
+- メンテナンス期間は 2 時間以上に設定する必要があります。 メンテナンス期間は、顧客が更新を開始してから完了するまでの時間です。 
 - 35 日後に、更新プログラムが自動的に適用されます。
 - ユーザーは、**リソース共同作成者** のアクセス権を持っている必要があります。
 

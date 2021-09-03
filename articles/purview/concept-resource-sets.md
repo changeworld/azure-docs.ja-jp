@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 330a6e54ee88781f71c4a861051aab94f8eef81f
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.date: 07/23/2021
+ms.openlocfilehash: 6c51a118b0581759f456b243b6dde25890b36f39
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587903"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668478"
 ---
 # <a name="understanding-resource-sets"></a>リソース セットについて
 
@@ -27,7 +27,7 @@ ms.locfileid: "107587903"
 
 ## <a name="how-azure-purview-detects-resource-sets"></a>Azure Purview がリソース セットを検出する方法
 
-Azure Purview では、Azure Blob Storage、ADLS Gen1、および ADLS Gen2 でのリソース セットの検出がサポートされています。
+Azure Purview では、Azure Blob Storage、ADLS Gen1、ADLS Gen2、Azure Files、Amazon S3 でのリソース セットの検出がサポートされています。
 
 Azure Purview では、スキャン時に自動的にリソース セットが検出されます。 この機能は、スキャンによって取り込まれたすべてのデータを調べ、定義済みのパターンのセットと比較します。
 
@@ -104,7 +104,7 @@ Azure Purview では、資産グループをリソース セットに一致さ�
 
 ## <a name="customizing-resource-set-grouping-using-pattern-rules"></a>パターン ルールを使用したリソース セットのグループ化のカスタマイズ
 
-Azure Purview は、ストレージ アカウントをスキャンするときに、定義済みパターンのセットを使用して、資産のグループがリソース セットであるかどうかを判断します。 場合によっては、Azure Purview のリソース セットのグループ化がデータ資産を正確に反映しないことがあります。 次のような問題が発生するおそれがあります。
+Azure Purview では、ストレージ アカウントをスキャンするときに、一連の定義済みパターンを使用して、資産のグループがリソース セットであるかどうかを判断します。 場合によっては、Azure Purview のリソース セットのグループ化がデータ資産を正確に反映しないことがあります。 次のような問題が発生するおそれがあります。
 
 - 資産をリソース セットとして誤ってマークする
 - 資産を間違ったリソース セットに配置する

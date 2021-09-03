@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターをセキュリティで保護する
 description: Azure Service Fabric クラスターのセキュリティ シナリオと、その実装に使用できる多様なテクノロジについて説明します。
 ms.topic: conceptual
 ms.date: 08/14/2018
-ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: feeb6bf0844dc9f0d835d934b148484010979441
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96573070"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034051"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 
@@ -30,9 +30,9 @@ Azure で実行するクラスターおよび Windows で実行するスタン�
 
 ### <a name="node-to-node-certificate-security"></a>ノード間の証明書セキュリティ
 
-Service Fabric では、クラスターを作成するときにノード タイプの構成で指定した X.509 サーバー証明書を使用します。 これらの証明書の概要とその入手または作成方法はこの記事の最後に記載されています。
+Service Fabric では、クラスターを作成するときにノード タイプの構成で指定した X.509 サーバー証明書を使用します。 証明書セキュリティは、Azure portal、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用して設定できます。 これらの証明書の概要とその入手または作成方法はこの記事の最後に記載されています。
 
-証明書セキュリティは、Azure Portal、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用して、クラスターを作成する際に設定します。 Service Fabric SDK の既定の動作では、有効期限が最も先の証明書がデプロイおよびインストールされます。従来の動作では、手動で開始されるロールオーバーを許可するために、プライマリおよびセカンダリの証明書の定義が認められていました。新しい機能でなく、従来の機能を使用することは推奨されません。 使用されるプライマリ証明書は、有効期限が最も先であり、[クライアントとノードの間のセキュリティ](#client-to-node-security)に設定した管理用クライアント証明書および読み取り専用クライアント証明書とは異なるものである必要があります。
+Service Fabric SDK の既定の動作では、有効期限が最も先の証明書がデプロイおよびインストールされます。 このプライマリ証明書は、[クライアントとノードの間のセキュリティ](#client-to-node-security)のために設定する管理用クライアント証明書と読み取り専用クライアント証明書とは異なる必要があります。 SDK の従来の動作では、手動で開始されるロールオーバーを許可するために、プライマリおよびセカンダリの証明書の定義が認められていましたが、これを新しい機能よりも優先して使用することは推奨されません。 
 
 Azure 用にクラスターで証明書セキュリティを設定する方法については、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)」を参照してください。
 
@@ -67,11 +67,9 @@ Azure 用にクラスターで証明書セキュリティを設定する方法�
 
 ### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Azure でのクライアントとノードの間の Azure Active Directory セキュリティ
 
-Azure AD は組織 (テナントと呼ばれます) を有効にしてアプリケーションに対するユーザー アクセスを管理します。 アプリケーションは、Web ベースのサインイン UI を持つアプリケーションと、ネイティブ クライアントのエクスペリエンスを持つアプリケーションに分けられます。 まだテナントを作成していない場合は、まず [Azure Active Directory テナントを取得する方法][active-directory-howto-tenant]に関するページをお読みください。
+組織 (テナントと呼ばれます) は Azure Active Directory (Azure AD) を使用して、アプリケーションへのユーザー アクセスを管理できます。 アプリケーションは、Web ベースのサインイン UI を持つアプリケーションと、ネイティブ クライアントのエクスペリエンスを持つアプリケーションに分けられます。 まだテナントを作成していない場合は、まず [Azure Active Directory テナントを取得する方法][active-directory-howto-tenant]に関するページをお読みください。
 
-Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer][service-fabric-visualizing-your-cluster] や [Visual Studio][service-fabric-manage-application-in-visual-studio] など、いくつかのエントリ ポイントから管理機能にアクセスできます。 このため、クラスターへのアクセスを制御するには、2 つの Azure AD アプリケーション (Web アプリケーションとネイティブ アプリケーション) を作成します。
-
-Azure で実行されているクラスターの場合、Azure Active Directory (Azure AD) を使用して管理エンドポイントへのアクセスをセキュリティで保護することもできます。 必要な Azure AD アーティファクトを作成する方法と、クラスターを作成するときにそれらに値を設定する方法については、[クライアントを認証するための Azure AD の設定](service-fabric-cluster-creation-setup-aad.md)に関するページを参照してください。
+Azure で実行されているクラスターでは、Azure AD を使用して管理エンドポイントへのアクセスをセキュリティで保護することもできます。 Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer][service-fabric-visualizing-your-cluster] や [Visual Studio][service-fabric-manage-application-in-visual-studio] など、いくつかのエントリ ポイントから管理機能にアクセスできます。 このため、クラスターへのアクセスを制御するには、2 つの Azure AD アプリケーション (Web アプリケーションとネイティブ アプリケーション) を作成します。 必要な Azure AD アーティファクトを作成する方法と、クラスターを作成するときにそれらに値を設定する方法については、[クライアントを認証するための Azure AD の設定](service-fabric-cluster-creation-setup-aad.md)に関するページを参照してください。
 
 ## <a name="security-recommendations"></a>セキュリティに関する推奨事項
 
