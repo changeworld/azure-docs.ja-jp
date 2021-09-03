@@ -1,20 +1,20 @@
 ---
-title: Azure Percept DK セットアップ エクスペリエンス中に発生した問題をトラブルシュートする
+title: Azure Percept DK セットアップ エクスペリエンスのトラブルシューティング
 description: セットアップ エクスペリエンス中に多く見られるいくつかの問題について、トラブルシューティングするためのヒントを紹介します
-author: mimcco
-ms.author: mimcco
+author: SillyKeith
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: troubleshooting
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: df99c356ad82704f7fbd5e40ef6c382e429ad5b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 40b7289b3c6fd841a0af9b9a61f66906e0dfa028
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725526"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226836"
 ---
-# <a name="azure-percept-dk-setup-experience-troubleshooting-guide"></a>Azure Percept DK セットアップ エクスペリエンスのトラブルシューティング ガイド
+# <a name="troubleshoot-the-azure-percept-dk-setup-experience"></a>Azure Percept DK セットアップ エクスペリエンスのトラブルシューティング
 
 [Azure Percept DK セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md)中に多く見られる一般的な問題の回避策については、下の表を参照してください。 問題が解決しない場合は、Azure カスタマー サポートにお問い合わせください。
 
