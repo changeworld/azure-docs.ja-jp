@@ -7,19 +7,23 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
-ms.date: 04/12/2021
-ms.openlocfilehash: 3d30bb733245c0519b73d66653b8d09cb9a4b4b9
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 07/26/2021
+ms.openlocfilehash: f31aa44237e0312d08a43155db867192d83a57ef
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528182"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722013"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF および CommonSecurityLog フィールドのマッピング
 
 下記の表では、Common Event Format (CEF) のフィールド名を、Azure Sentinel の CommonSecurityLog で使用する名前にマップしています。これらの表は、Azure Sentinel で CEF データ ソースを操作するときに役立つ場合があります。
 
 詳細については、「[Common Event Format を使用して外部ソリューションを接続する](connect-common-event-format.md)」を参照してください。
+
+> [!NOTE]
+> Log Analytics に [CEF データを取り込む](connect-common-event-format.md#prerequisites)ためには、Azure Sentinel ワークスペースが必要です。
+>
 
 ## <a name="a---c"></a>A から C
 

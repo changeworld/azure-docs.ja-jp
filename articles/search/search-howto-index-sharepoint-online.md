@@ -1,35 +1,31 @@
 ---
-title: SharePoint Online インデクサーを構成する (プレビュー)
+title: SharePoint Online からのデータのインデックスを作成する (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search でドキュメント ライブラリのコンテンツのインデックス作成を自動化するように SharePoint Online インデクサーを設定します。
-manager: luisca
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: ea65011a27b7dab65ea75b5365bdcdf2be67d8b2
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 61e9787c0a85ad412d3e70cfb2452d288a48d36a
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747133"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983052"
 ---
-# <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Cognitive Search で SharePoint Online のインデックス作成を構成する方法 (プレビュー)
+# <a name="index-data-from-sharepoint-online"></a>SharePoint Online からのデータのインデックスを作成する
 
 > [!IMPORTANT] 
-> SharePoint Online のサポートは現在、**限定的なパブリック プレビュー** の段階です。 限定的なプレビューへのアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に入力して行うことができます。
->
-> プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-> 
-> [REST API バージョン 2020-06-30-Preview](search-api-preview.md) で、この機能を提供しています。 現時点では、ポータルと SDK によるサポートはありません。
+> SharePoint Online のサポートは、現在パブリック プレビュー段階にあり、[追加の使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)が適用されます。 この機能への[アクセスの要求](https://aka.ms/azure-cognitive-search/indexer-preview)を行い、アクセスが有効になったら、[プレビュー REST API (2020-06-30-preview 以降)](search-api-preview.md) を使用してコンテンツのインデックスを作成します。 現時点で、ポータルによるサポートは制限されており、.NET SDK によるサポートはありません。
+
+この記事では、Azure Cognitive Search を使用して、SharePoint Online ドキュメント ライブラリに格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) の Azure Cognitive Search インデックスを作成する方法を説明します。 まず、インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
 
 > [!NOTE]
 > SharePoint Online では、ユーザーごとのアクセスをドキュメント レベルで決定する詳細な認可モデルがサポートされています。 SharePoint Online インデクサーによってこれらのアクセス許可が検索インデックスに設定されることはありません。Cognitive Search では、ドキュメントレベルの認可がサポートされていません。 SharePoint Online からのインデックスがドキュメントに付けられ、検索サービスに設定される場合、そのインデックスに読み取りアクセスできる誰もがコンテンツを利用できます。 ドキュメントレベルのアクセス許可が必要な場合、セキュリティ フィルターを調べ、権限のないコンテンツの結果を減らしてください。 詳細については、[Active Directory ID を使用してセキュリティをトリミングする](search-security-trimming-for-azure-search-with-aad.md)方法に関するページを参照してください。
 
-この記事では、Azure Cognitive Search を使用して、SharePoint Online ドキュメント ライブラリに格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) の Azure Cognitive Search インデックスを作成する方法を説明します。 まず、インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
-
 ## <a name="functionality"></a>機能
+
 Azure Cognitive Search のインデクサーは、データ ソースから検索可能なデータとメタデータを抽出するクローラーです。 SharePoint Online インデクサーは、SharePoint Online サイトに接続し、1 つ以上のドキュメント ライブラリにあるドキュメントのインデックスを作成します。 インデクサーには以下の機能があります。
 + 1 つ以上の SharePoint Online ドキュメント ライブラリにあるコンテンツのインデックスを作成する。
 + Azure Cognitive Search サービスと同じテナントに属する SharePoint Online ドキュメント ライブラリにあるコンテンツのインデックスを作成する。 インデクサーは、Azure Cognitive Search サービスとは異なるテナントに属する SharePoint サイトでは機能しません。 

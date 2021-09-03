@@ -10,15 +10,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/27/2021
+ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e21443d6f04d693f64d92b71f3f616d1083bf82
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 34de5fbfbccd84c716684d1f98a16c4d0a5e6344
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146241"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322139"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
 
@@ -84,52 +84,107 @@ IBM Db2 LUW 11.5 では、4 KB のセクター サイズに対するサポート
 
 SAP NetWeaver Applications 用の IBM Db2 は、SAP サポート ノート [1928533] に記載されているすべての VM の種類でサポートされています。  IBM Db2 データベースを実行するために推奨される VM ファミリは、大規模なマルチテラバイト データベース向けの Esd_v4/Eas_v4/Es_v3 および M/M_v2 シリーズです。 M シリーズの書き込みアクセラレータを有効にすると、IBM Db2 のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 
 
-以下に、小さな規模から大きな規模までの、SAP on Db2 デプロイのさまざまなサイズと使用のベースライン構成を示します。 この一覧は Azure Premium Storage に基づいています。 ただし、Azure Ultra Disk は Db2 でも完全にサポートされており、同様に使用できます。 容量、バースト スループット、バースト IOPS を使用して、Ultra Disk の構成を定義します。 /db2/<SID>/log_dir の IOPS を 5000 IOPS あたりで制限できます。 
+以下に、小さな規模から大きな規模までの、SAP on Db2 デプロイのさまざまなサイズと使用のベースライン構成を示します。 この一覧は Azure Premium Storage に基づいています。 ただし、Azure Ultra Disk は Db2 でも完全にサポートされており、同様に使用できます。 容量、バースト スループット、バースト IOPS を使用して、Ultra Disk の構成を定義します。 /db2/```<SID>```/log_dir の IOPS を 5000 IOPS あたりで制限できます。 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>極小規模の SAP システム: データベース サイズ 50 - 200 GB: 例の Solution Manager
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
-|vCPU: 4 |/db2/<SID>/sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
-|RAM: 32 GiB |/db2/<SID>/saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
-| |/db2/<SID>/log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
-| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
+|vCPU: 4 |/db2/```<SID>```/sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
+|RAM: 32 GiB |/db2/```<SID>```/saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
+| |/db2/```<SID>```/log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
+| |/db2/```<SID>```/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小規模の SAP システム: データベース サイズ 200 - 750 GB: 小規模の Business Suite
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU: 16 |/db2/<SID>/sapdata |P15 |4 |4,400  |500  |1.024  |14,000  |680  |256 KB |ReadOnly |
-|RAM: 128 GiB |/db2/<SID>/saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
-| |/db2/<SID>/log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
-| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
+|vCPU: 16 |/db2/```<SID>```/sapdata |P15 |4 |4,400  |500  |1.024  |14,000  |680  |256 KB |ReadOnly |
+|RAM: 128 GiB |/db2/```<SID>```/saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/db2/```<SID>```/log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
+| |/db2/```<SID>```/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中規模の SAP システム: データベース サイズ 500 - 1000 GB: 小規模の Business Suite
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU: 32 |/db2/<SID>/sapdata |P30 |2 |10,000  |400  |2.048  |10,000  |400  |256 KB |ReadOnly |
-|RAM: 256 GiB |/db2/<SID>/saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
-| |/db2/<SID>/log_dir |P20 |2 |4,600  |300  |1.024  |7,000  |340  |64 KB ||
-| |/db2/<SID>/offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
+|vCPU: 32 |/db2/```<SID>```/sapdata |P30 |2 |10,000  |400  |2.048  |10,000  |400  |256 KB |ReadOnly |
+|RAM: 256 GiB |/db2/```<SID>```/saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
+| |/db2/```<SID>```/log_dir |P20 |2 |4,600  |300  |1.024  |7,000  |340  |64 KB ||
+| |/db2/```<SID>```/offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大規模の SAP system: データベース サイズ 750 - 2000 GB: Business Suite
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
-|vCPU: 64 |/db2/<SID>/sapdata |P30 |4 |20,000  |800  |4.096  |20,000  |800  |256 KB |ReadOnly |
-|RAM: 504 GiB |/db2/<SID>/saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
-| |/db2/<SID>/log_dir |P20 |4 |9,200  |600  |2.048  |14,000  |680  |64 KB ||
-| |/db2/<SID>/offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
+|vCPU: 64 |/db2/```<SID>```/sapdata |P30 |4 |20,000  |800  |4.096  |20,000  |800  |256 KB |ReadOnly |
+|RAM: 504 GiB |/db2/```<SID>```/saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
+| |/db2/```<SID>```/log_dir |P20 |4 |9,200  |600  |2.048  |14,000  |680  |64 KB ||
+| |/db2/```<SID>```/offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
 
 #### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>大規模のマルチテラバイト SAP システム: データベース サイズ 2 TB+:Global Business Suite システム
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
-|vCPU: 128 |/db2/<SID>/sapdata |P40 |4 |30,000  |1.000  |8.192  |30,000  |1.000  |256 KB |ReadOnly |
-|RAM: 2,048 GiB |/db2/<SID>/saptmp |P20 |2 |4,600  |300  |1.024  |7,000  |340  |128 KB ||
-| |/db2/<SID>/log_dir |P30 |4 |20,000  |800  |4.096  |20,000  |800  |64 KB |WriteAccelerator |
-| |/db2/<SID>/offline_log_dir |P30 |1 |5,000  |200  |1.024  |5,000  |200  || |
+|vCPU: 128 |/db2/```<SID>```/sapdata |P40 |4 |30,000  |1.000  |8.192  |30,000  |1.000  |256 KB |ReadOnly |
+|RAM: 2,048 GiB |/db2/```<SID>```/saptmp |P20 |2 |4,600  |300  |1.024  |7,000  |340  |128 KB ||
+| |/db2/```<SID>```/log_dir |P30 |4 |20,000  |800  |4.096  |20,000  |800  |64 KB |WriteAccelerator |
+| |/db2/```<SID>```/offline_log_dir |P30 |1 |5,000  |200  |1.024  |5,000  |200  || |
+
+
+### <a name="using-azure-netapp-files"></a>Azure NetApp Files の使用
+Azure NetApp Files (ANF) に基づく NFS v4.1 ボリュームの使用は、Suse または Red Hat Linux ゲスト OS でホストされている IBM Db2 でサポートされています。 次のように、少なくとも 4 つの異なるボリュームを作成する必要があります。
+
+- saptmp1、sapmnt、usr_sap、```<sid>```_home、db2```<sid>```_home、db2_software 用の共有ボリューム
+- sapdata1 から sapdatan までのための 1 つのデータ ボリューム
+- redo ログ ディレクトリ用の 1 つのログ ボリューム
+- ログのアーカイブとバックアップ用の 1 つのボリューム
+
+使用する可能性がある 5 つ目のボリュームとして、スナップショットを作成してスナップショットを Azure BLOB ストアに格納するために使用する、より長期的なバックアップに使用する ANF ボリュームが考えられます。
+
+構成は、次に示すようになる場合があります。
+
+![ANF を使用した Db2 構成の例](./media/dbms_guide_ibm/anf-configuration-example.png)
+
+
+パフォーマンス レベルと ANF でホストされるボリュームのサイズは、パフォーマンス要件に基づいて選択する必要があります。 ただし、データとログ ボリュームには Ultra Performance レベルを使用することをお勧めします。 データとログ ボリュームに、ブロック ストレージと共有ストレージの種類を組み合わせることはサポートされていません。
+
+マウント オプションについては、これらのボリュームのマウントは、次のようになることがあります (```<SID>``` および ```<sid>``` は、ご使用の SAP システムの SID で置換する必要があります)。
+
+```
+vi /etc/idmapd.conf   
+ # Example
+ [General]
+ Domain = defaultv4iddomain.com
+ [Mapping]
+ Nobody-User = nobody
+ Nobody-Group = nobody
+
+mount -t nfs -o rw,hard,sync,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.17.10.4:/db2shared /mnt 
+mkdir -p /db2/Software /db2/AN1/saptmp /usr/sap/<SID> /sapmnt/<SID> /home/<sid>adm /db2/db2<sid> /db2/<SID>/db2_software
+mkdir -p /mnt/Software /mnt/saptmp  /mnt/usr_sap /mnt/sapmnt /mnt/<sid>_home /mnt/db2_software /mnt/db2<sid>
+umount /mnt
+
+mount -t nfs -o rw,hard,sync,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.17.10.4:/db2data /mnt
+mkdir -p /db2/AN1/sapdata/sapdata1 /db2/AN1/sapdata/sapdata2 /db2/AN1/sapdata/sapdata3 /db2/AN1/sapdata/sapdata4
+mkdir -p /mnt/sapdata1 /mnt/sapdata2 /mnt/sapdata3 /mnt/sapdata4
+umount /mnt
+
+mount -t nfs -o rw,hard,sync,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.17.10.4:/db2log /mnt 
+mkdir /db2/AN1/log_dir
+mkdir /mnt/log_dir
+umount /mnt
+
+mount -t nfs -o rw,hard,sync,rsize=1048576,wsize=1048576,sec=sys,vers=4.1,tcp 172.17.10.4:/db2backup /mnt
+mkdir /db2/AN1/backup
+mkdir /mnt/backup
+mkdir /db2/AN1/offline_log_dir /db2/AN1/db2dump
+mkdir /mnt/offline_log_dir /mnt/db2dump
+umount /mnt
+```
+
+>[!NOTE]
+> マウント オプション hard と sync が必要です
 
 
 ### <a name="backuprestore"></a>バックアップ/復元
@@ -172,9 +227,9 @@ Windows 上の Db2 デプロイについては、[Azure Accelerated Networking](
 
 
 ### <a name="specifics-for-linux-deployments"></a>Linux デプロイの特記事項
-ディスクあたりの現在の IOPS クォータが十分である限り、単一のディスクにすべてのデータベース ファイルを格納できます。 ここで、データ ファイルとトランザクション ログ ファイルは、常に異なるディスク/VHD に分離する必要があります。
+ディスクあたりの現在の IOPS クォータが十分である限り、単一のディスクにすべてのデータベース ファイルを格納できます。 ここで、データ ファイルとトランザクション ログ ファイルは、常に異なるディスクに分離する必要があります。
 
-または、1 つの Azure VHD の IOPS または I/O スループットが十分でない場合は、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントに記載されているとおり、LVM (Logical Volume Manager) または MDADM を使用して複数のディスクにまたがる大きな論理ディスクを 1 つ作成できます。
+1 つの Azure VHD の IOPS または I/O スループットが十分でない場合は、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントに記載されているとおり、LVM (Logical Volume Manager) または MDADM を使用して複数のディスクにまたがる大きな論理ディスクを 1 つ作成できます。
 Sapdata と saptmp ディレクトリに対する Db2 ストレージ パスを含むディスクについては、512 KB の物理ディスクのセクター サイズを指定する必要があります。
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
@@ -182,8 +237,6 @@ Sapdata と saptmp ディレクトリに対する Db2 ストレージ パスを�
 
 ### <a name="other"></a>その他
 IBM Database を使用した VM のデプロイについては、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントに記載されている、Azure 可用性セットや SAP の監視などの他のすべての一般的な領域が適用されます。
-[767598]:https://launchpad.support.sap.com/#/notes/767598 [773830]:https://launchpad.support.sap.com/#/notes/773830 [826037]:https://launchpad.support.sap.com/#/notes/826037 [965908]:https://launchpad.support.sap.com/#/notes/965908 [1031096]:https://launchpad.support.sap.com/#/notes/1031096 [1114181]:https://launchpad.support.sap.com/#/notes/1114181 [1139904]:https://launchpad.support.sap.com/#/notes/1139904 [1173395]:https://launchpad.support.sap.com/#/notes/1173395 [1245200]:https://launchpad.support.sap.com/#/notes/1245200 [1409604]:https://launchpad.support.sap.com/#/notes/1409604 [1558958]:https://launchpad.support.sap.com/#/notes/1558958 [1585981]:https://launchpad.support.sap.com/#/notes/1585981 [1588316]:https://launchpad.support.sap.com/#/notes/1588316 [1590719]:https://launchpad.support.sap.com/#/notes/1590719 [1597355]:https://launchpad.support.sap.com/#/notes/1597355 [1605680]:https://launchpad.support.sap.com/#/notes/1605680 [1619720]:https://launchpad.support.sap.com/#/notes/1619720 [1619726]:https://launchpad.support.sap.com/#/notes/1619726 [1619967]:https://launchpad.support.sap.com/#/notes/1619967 [1750510]:https://launchpad.support.sap.com/#/notes/1750510 [1752266]:https://launchpad.support.sap.com/#/notes/1752266 [1757924]:https://launchpad.support.sap.com/#/notes/1757924 [1757928]:https://launchpad.support.sap.com/#/notes/1757928 [1758182]:https://launchpad.support.sap.com/#/notes/1758182 [1758496]:https://launchpad.support.sap.com/#/notes/1758496 [1772688]:https://launchpad.support.sap.com/#/notes/1772688 [1814258]:https://launchpad.support.sap.com/#/notes/1814258 [1882376]:https://launchpad.support.sap.com/#/notes/1882376 [1909114]:https://launchpad.support.sap.com/#/notes/1909114 [1922555]:https://launchpad.support.sap.com/#/notes/1922555 [1928533]:https://launchpad.support.sap.com/#/notes/1928533 [1941500]:https://launchpad.support.sap.com/#/notes/1941500 [1956005]:https://launchpad.support.sap.com/#/notes/1956005 [1973241]:https://launchpad.support.sap.com/#/notes/1973241 [1984787]:https://launchpad.support.sap.com/#/notes/1984787 [1999351]:https://launchpad.support.sap.com/#/notes/1999351 [2002167]:https://launchpad.support.sap.com/#/notes/2002167 [2015553]:https://launchpad.support.sap.com/#/notes/2015553 [2039619]:https://launchpad.support.sap.com/#/notes/2039619 [2069760]:https://launchpad.support.sap.com/#/notes/2069760 [2121797]:https://launchpad.support.sap.com/#/notes/2121797 [2134316]:https://launchpad.support.sap.com/#/notes/2134316 [2171857]:https://launchpad.support.sap.com/#/notes/2171857 [2178632]:https://launchpad.support.sap.com/#/notes/2178632 [2191498]:https://launchpad.support.sap.com/#/notes/2191498 [2233094]:https://launchpad.support.sap.com/#/notes/2233094 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
-
 
 ## <a name="next-steps"></a>次の手順
 記事を読む 
@@ -191,6 +244,53 @@ IBM Database を使用した VM のデプロイについては、「[SAP ワー�
 - [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)
 
 
+[767598]:https://launchpad.support.sap.com/#/notes/767598
+[773830]:https://launchpad.support.sap.com/#/notes/773830
+[826037]:https://launchpad.support.sap.com/#/notes/826037
+[965908]:https://launchpad.support.sap.com/#/notes/965908
+[1031096]:https://launchpad.support.sap.com/#/notes/1031096
+[1114181]:https://launchpad.support.sap.com/#/notes/1114181
+[1139904]:https://launchpad.support.sap.com/#/notes/1139904
+[1173395]:https://launchpad.support.sap.com/#/notes/1173395
+[1245200]:https://launchpad.support.sap.com/#/notes/1245200
+[1409604]:https://launchpad.support.sap.com/#/notes/1409604
+[1558958]:https://launchpad.support.sap.com/#/notes/1558958
+[1585981]:https://launchpad.support.sap.com/#/notes/1585981
+[1588316]:https://launchpad.support.sap.com/#/notes/1588316
+[1590719]:https://launchpad.support.sap.com/#/notes/1590719
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
+[1605680]:https://launchpad.support.sap.com/#/notes/1605680
+[1619720]:https://launchpad.support.sap.com/#/notes/1619720
+[1619726]:https://launchpad.support.sap.com/#/notes/1619726
+[1619967]:https://launchpad.support.sap.com/#/notes/1619967
+[1750510]:https://launchpad.support.sap.com/#/notes/1750510
+[1752266]:https://launchpad.support.sap.com/#/notes/1752266
+[1757924]:https://launchpad.support.sap.com/#/notes/1757924
+[1757928]:https://launchpad.support.sap.com/#/notes/1757928
+[1758182]:https://launchpad.support.sap.com/#/notes/1758182
+[1758496]:https://launchpad.support.sap.com/#/notes/1758496
+[1772688]:https://launchpad.support.sap.com/#/notes/1772688
+[1814258]:https://launchpad.support.sap.com/#/notes/1814258
+[1882376]:https://launchpad.support.sap.com/#/notes/1882376
+[1909114]:https://launchpad.support.sap.com/#/notes/1909114
+[1922555]:https://launchpad.support.sap.com/#/notes/1922555
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1941500]:https://launchpad.support.sap.com/#/notes/1941500
+[1956005]:https://launchpad.support.sap.com/#/notes/1956005
+[1973241]:https://launchpad.support.sap.com/#/notes/1973241
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2039619]:https://launchpad.support.sap.com/#/notes/2039619
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
+[2121797]:https://launchpad.support.sap.com/#/notes/2121797
+[2134316]:https://launchpad.support.sap.com/#/notes/2134316
+[2171857]:https://launchpad.support.sap.com/#/notes/2171857
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2233094]:https://launchpad.support.sap.com/#/notes/2233094
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -351,7 +451,7 @@ IBM Database を使用した VM のデプロイについては、「[SAP ワー�
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
-[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
+[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json

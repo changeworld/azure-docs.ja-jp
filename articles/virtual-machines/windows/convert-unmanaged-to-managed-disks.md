@@ -7,16 +7,17 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 64d5f46d167b0707c2257f29c5d5cb1950aaa046
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 7b1c270f83565e2968e6677f07b81968dcf61ac7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029210"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734585"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクからマネージド ディスクに変換します
 
-非管理対象ディスクを使用する既存の Windows 仮想マシン (VM) を所有している場合、[Azure Managed Disks](../managed-disks-overview.md) サービスを使用して、マネージド ディスクを使用するように VM を変換できます。 このプロセスでは、OS ディスクと接続されたすべてのデータ ディスクの両方を変換します。
+非管理対象ディスクを使用する既存の Windows 仮想マシン (VM) を所有している場合、[Azure Managed Disks](../managed-disks-overview.md) サービスを使用して、マネージド ディスクを使用するように VM を変換できます。 このプロセスでは、オペレーティング システム (OS) ディスクと、アタッチされたすべてのデータ ディスクの両方を変換します。
+
 
  
 
@@ -88,8 +89,11 @@ ms.locfileid: "112029210"
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-変換中にエラーが発生する場合、または以前の変換の問題のために VM がエラー状態になっている場合は、`ConvertTo-AzVMManagedDisk` コマンドレットをもう一度実行します。 通常再試行するだけで状況が好転します。
-変換前に、すべての VM の拡張機能が "プロビジョニング成功" 状態にあることを確認してください。そのようになっていないとエラー コード 409 で変換に失敗します。
+- 変換前に、すべての VM の拡張機能が "プロビジョニング成功" 状態にあることを確認してください。そのようになっていないとエラー コード 409 で変換に失敗します。
+- 変換中にエラーが発生する場合、または以前の変換の問題のために VM がエラー状態になっている場合は、`ConvertTo-AzVMManagedDisk` コマンドレットをもう一度実行します。 通常再試行するだけで状況が好転します。
+- Linux VM をマネージド ディスクに変換する場合は、最新バージョンの Azure Linux エージェントを使用します。 Azure Linux エージェントのバージョン "2.2.0" 以前を使用している操作は、失敗する可能性があります。 一般化された VM または従来の可用性セットに属している VM での変換の実行も、サポートされていません。
+- "SnapshotCountExceeded" エラーで変換が失敗する場合は、一部のスナップショットを削除してから、操作を再試行してください。
+
 
 ## <a name="convert-using-the-azure-portal"></a>Azure portal を使用して変換する
 

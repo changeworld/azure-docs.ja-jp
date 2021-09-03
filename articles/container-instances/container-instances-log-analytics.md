@@ -3,12 +3,12 @@ title: リソース ログの収集と分析
 description: Azure Container Instances のコンテナー グループからリソース ログとイベント データを Azure Monitor ログに送信する方法について説明します
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: e46a1df65a4cfe5d10a58704aff485aa2834b55f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0c95535c80425abb8bdc904132581531b8cdd24e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763921"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029065"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
@@ -146,6 +146,53 @@ ContainerInstanceLog_CL
 | where (ContainerGroup_s == "mycontainergroup001")
 | where (TimeGenerated > ago(1h))
 ```
+
+## <a name="log-schema"></a>ログのスキーマ
+
+> [!NOTE]
+> 下の一覧に示した列の一部はスキーマの一部としてのみ存在し、ログ内にはデータが生成されません。 これらの列には、下の説明で "Empty" と示されています。
+
+### <a name="containerinstancelog_cl"></a>ContainerInstanceLog_CL
+
+|Column|種類|説明|
+|-|-|-|
+|Computer|string|Empty|
+|ContainerGroup_s|string|レコードに関連付けられているコンテナー グループの名前|
+|ContainerID_s|string|レコードに関連付けられているコンテナーの一意識別子|
+|ContainerImage_s|string|レコードに関連付けられているコンテナー イメージの名前|
+|Location_s|string|レコードに関連付けられているリソースの場所|
+|Message|string|(該当する場合) コンテナーからのメッセージ|
+|OSType_s|string|コンテナーが基づいているオペレーティング システムの名前|
+|RawData|string|Empty|
+|ResourceGroup|string|レコードが関連付けられているリソース グループの名前|
+|Source_s|string|ログ コンポーネント "LoggingAgent" の名前|
+|SubscriptionId|string|レコードが関連付けられているサブスクリプションの一意識別子|
+|TimeGenerated|DATETIME|イベントに対応する要求を処理する Azure サービスによってイベントが生成されたときのタイムスタンプ|
+|Type|string|テーブルの名前|
+|_ResourceId|string|レコードが関連付けられているリソースの一意識別子|
+|_SubscriptionId|string|レコードが関連付けられているサブスクリプションの一意識別子|
+
+### <a name="containerevent_cl"></a>ContainerEvent_CL
+
+|Column|種類|説明|
+|-|-|-|
+|Computer|string|Empty|
+|ContainerGroupInstanceId_g|string|レコードに関連付けられているコンテナー グループの一意識別子|
+|ContainerGroup_s|string|レコードに関連付けられているコンテナー グループの名前|
+|ContainerName_s|string|レコードに関連付けられているコンテナーの名前|
+|Count_d|real|最後のポーリング以降にイベントが発生した回数|
+|FirstTimestamp_t|DATETIME|イベントが最初に発生したときのタイムスタンプ|
+|Location_s|string|レコードに関連付けられているリソースの場所|
+|Message|string|(該当する場合) コンテナーからのメッセージ|
+|OSType_s|string|コンテナーが基づいているオペレーティング システムの名前|
+|RawData|string|Empty|
+|Reason_s|string|Empty|
+|ResourceGroup|string|レコードが関連付けられているリソース グループの名前|
+|SubscriptionId|string|レコードが関連付けられているサブスクリプションの一意識別子|
+|TimeGenerated|DATETIME|イベントに対応する要求を処理する Azure サービスによってイベントが生成されたときのタイムスタンプ|
+|Type|string|テーブルの名前|
+|_ResourceId|string|レコードが関連付けられているリソースの一意識別子|
+|_SubscriptionId|string|レコードが関連付けられているサブスクリプションの一意識別子|
 
 ## <a name="next-steps"></a>次のステップ
 

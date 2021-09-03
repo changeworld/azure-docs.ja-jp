@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: article
-ms.date: 05/05/2021
+ms.date: 08/17/2021
 ms.author: memildin
-ms.openlocfilehash: e6582aedbc8357715f4e49cc8d5a780859ef3929
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: a3dc221ff4fa1caebad9dea601e208280b928558
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062077"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322912"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
@@ -29,7 +29,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 セキュリティ スコアは、Azure portal のページにパーセント値として表示されますが、基になる値も明確に示されます。
 
-:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="ポータルに表示された全体的なセキュリティ スコア":::
+:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="ポータルに表示された全体的なセキュリティ スコア。":::
 
 セキュリティを強化するには、スコアを上げるために必要な未処理のアクションについて Security Center の推奨事項に関するページを参照してください。 各推奨事項には、特定の問題を修復するための手順が含まれています。
 
@@ -47,7 +47,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 ### <a name="example-scores-for-a-control"></a>コントロールのスコアの例
 
-:::image type="content" source="./media/secure-score-security-controls/remediate-vulnerabilities-control.png" alt-text="セキュリティ コントロール システム更新プログラムの適用" lightbox="./media/secure-score-security-controls/remediate-vulnerabilities-control.png":::
+:::image type="content" source="./media/secure-score-security-controls/remediate-vulnerabilities-control.png" alt-text="セキュリティ コントロール システム更新プログラムの適用。" lightbox="./media/secure-score-security-controls/remediate-vulnerabilities-control.png":::
 
 
 次の点に注意してください。
@@ -67,9 +67,9 @@ Security Center は、セキュリティの問題について、リソース、�
 
 |メトリック|式と例|
 |-|-|
-|**セキュリティ コントロールの現在のスコア**|<br>![セキュリティ コントロールのスコアを計算するための式](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>セキュリティ スコアは、個々のセキュリティ コントロールを基にしています。 コントロールの現在のスコアは、コントロール内の推奨事項によって影響を受ける各リソースを基にしています。 各コントロールの現在のスコアは、コントロール *内* でリソースの状態を測定したものです。<br>![セキュリティ コントロールの現在のスコアを計算するときに使用される値を示すヒント](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>この例では、最大スコア 6 は、正常なリソースと異常なリソースの合計値である 78 で割ることになります。<br>6 / 78 = 0.0769<br>これを正常なリソースの数 (4) で乗算すると、次に示す現在のスコアになります。<br>0.0769 * 4 = **0.31**<br><br>|
+|**セキュリティ コントロールの現在のスコア**|<br>![セキュリティ コントロールのスコアを計算するための式。](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>セキュリティ スコアは、個々のセキュリティ コントロールを基にしています。 コントロールの現在のスコアは、コントロール内の推奨事項によって影響を受ける各リソースを基にしています。 各コントロールの現在のスコアは、コントロール *内* でリソースの状態を測定したものです。<br>![セキュリティ コントロールの現在のスコアを計算するときに使用される値を示すヒント](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>この例では、最大スコア 6 は、正常なリソースと異常なリソースの合計値である 78 で割ることになります。<br>6 / 78 = 0.0769<br>これを正常なリソースの数 (4) で乗算すると、次に示す現在のスコアになります。<br>0.0769 * 4 = **0.31**<br><br>|
 |**セキュリティ スコア**<br>1 つのサブスクリプション|<br>![サブスクリプションのセキュリティ スコアを計算するための式](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![すべてのコントロールを有効にした単一サブスクリプションのセキュア スコア](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>この例では、すべてのセキュリティ コントロールを適用可能な 1 つのサブスクリプションがあります (潜在的な最大スコアは 60 ポイントです)。 スコアには取得可能な 60 ポイントのうち 28 ポイントが示され、残りの 32 ポイントは、セキュリティ コントロールの "潜在的な増加スコア" の数値に反映されます。<br>![コントロールの一覧と潜在的な増加スコア](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**セキュリティ スコア**<br>複数のサブスクリプション|<br>![複数のサブスクリプションのセキュリティ スコアを計算するための式](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>複数のサブスクリプションに対して結合されたスコアを計算する場合、Security Center には各サブスクリプションの "*重み*" が含まれます。 サブスクリプションの相対的な重みは、リソースの数などの要素に基づいて Security Center によって決定されます。<br>各サブスクリプションの現在のスコアは、1 つのサブスクリプションの場合と同じ方法で計算されますが、式に示されているように重みが適用されます。<br>複数のサブスクリプションを表示する場合、セキュリティ スコアは、すべての有効なポリシー内のすべてのリソースを評価し、各セキュリティ コントロールの最大スコアに対するその組み合わせの影響をグループ化します。<br>![すべてのコントロールが有効な複数のサブスクリプションのセキュリティ スコア](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>結合されたスコアは平均では **ありません**。これは、すべてのサブスクリプションのすべてのリソースの状態の体制を評価したものです。<br>ここでも、[推奨事項] ページにアクセスして、取得可能なポイントを追加すると、現在のスコア (24) と利用可能な最大スコア (60) の差を確認できます。|
+|**セキュリティ スコア**<br>複数のサブスクリプション|<br>![複数のサブスクリプションのセキュリティ スコアを計算するための式。](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>複数のサブスクリプションに対して結合されたスコアを計算する場合、Security Center には各サブスクリプションの "*重み*" が含まれます。 サブスクリプションの相対的な重みは、リソースの数などの要素に基づいて Security Center によって決定されます。<br>各サブスクリプションの現在のスコアは、1 つのサブスクリプションの場合と同じ方法で計算されますが、式に示されているように重みが適用されます。<br>複数のサブスクリプションを表示する場合、セキュリティ スコアは、すべての有効なポリシー内のすべてのリソースを評価し、各セキュリティ コントロールの最大スコアに対するその組み合わせの影響をグループ化します。<br>![すべてのコントロールが有効な複数のサブスクリプションのセキュリティ スコア](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>結合されたスコアは平均では **ありません**。これは、すべてのサブスクリプションのすべてのリソースの状態の体制を評価したものです。<br>ここでも、[推奨事項] ページにアクセスして、取得可能なポイントを追加すると、現在のスコア (24) と利用可能な最大スコア (60) の差を確認できます。|
 
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>セキュリティ スコアの計算に含まれる推奨事項
@@ -80,7 +80,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 プレビューの推奨事項の例を次に示します。
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="プレビュー フラグが設定された推奨事項":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="プレビュー フラグが設定された推奨事項。":::
 
 ## <a name="improve-your-secure-score"></a>セキュリティ スコアを向上させる
 
@@ -124,12 +124,13 @@ Security Center の既定のセキュリティ イニシアティブは業界の
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、セキュリティ スコアと新しいセキュリティ コントロールについて説明しました。 関連資料については、次の記事をご覧ください。
+この記事では、セキュリティ スコアと含まれるセキュリティ コントロールについて説明しました。 
+
+> [!div class="nextstepaction"]
+> [セキュア スコアにアクセスして追跡する](secure-score-access-and-track.md)
+
+関連資料については、次の記事をご覧ください。
 
 - [推奨事項のさまざまな要素に関する詳細](security-center-recommendations.md)
 - [推奨事項を修復する方法を確認する](security-center-remediate-recommendations.md)
 - [セキュリティ スコアを使用してプログラムで作業するための GitHub ベースのツールを表示する](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)
-
-
-> [!div class="nextstepaction"]
-> [セキュア スコアにアクセスして追跡する](secure-score-access-and-track.md)

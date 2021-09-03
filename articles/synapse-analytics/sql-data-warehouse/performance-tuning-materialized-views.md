@@ -7,15 +7,15 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 08/17/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: 7500490115ed360e838dc30038e3e8e602b33449
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1eb42cc923ea5acd23165e9dfa778e35748e4d2e
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081643"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323593"
 ---
 # <a name="performance-tune-with-materialized-views"></a>マテリアライズドビューを使用したパフォーマンスのチューニング
 
@@ -46,7 +46,7 @@ Azure Synapse の専用 SQL プールでは、標準ビューと具体化され�
 
 - JOIN や集計関数を含んだ複雑なクエリの実行時間が短縮されます。 クエリが複雑であればあるほど、実行時間を短縮できる可能性が大きくなります。 利点が最大限に活かされるのは、クエリの計算コストが大きく、かつその結果得られるデータ セットが小さいケースです。  
 - 専用 SQL プールのオプティマイザーでは、クエリの実行プランを改善するために、デプロイされている具体化されたビューが自動的に使用されます。  このプロセスは、ユーザーからは透過的に行われ、クエリの実行速度を向上させます。また、マテリアライズドビューを直接参照する必要もありません。
-- ビューのメンテナンスが少なくて済みます。  ベース テーブルからのすべての増分データ変更は、同期的な方法で自動的にマテリアライズドビューに追加されます。  この設計によって、マテリアライズドビューに対するクエリから、ベース テーブルに直接照会した場合と同じデータを得ることができます。
+- ビューのメンテナンスが少なくて済みます。  ベース テーブルからのすべての増分データ変更は、同期的な方法で自動的に具体化されたビューに追加されます。つまり、ベース テーブルと具体化されたビューの両方が同じトランザクションで更新されます。  この設計によって、マテリアライズドビューに対するクエリから、ベース テーブルに直接照会した場合と同じデータを得ることができます。  
 - ベース テーブルとは異なり、マテリアライズドビューのデータは分散させることができます。  
 - マテリアライズドビューのデータには、高可用性と回復性の点で、通常のテーブルのデータと同じ利点が確保されています。  
 
@@ -56,7 +56,7 @@ Azure Synapse の専用 SQL プールでは、標準ビューと具体化され�
 
 - ベース テーブル内のデータ変更で自動的かつ同期的にデータが更新されます。 ユーザーによる操作は不要です。
 - 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) に関するページを参照してください。
-- クエリに固有のマテリアライズドビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest&preserve-view=true)」を参照してください。
+- クエリに固有のマテリアライズドビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest)」を参照してください。
 
 ## <a name="common-scenarios"></a>一般的なシナリオ  
 

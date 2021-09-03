@@ -1,7 +1,7 @@
 ---
 title: トークン キャッシュのシリアル化 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library for .NET (MSAL.NET) を使用したトークン キャッシュのシリアル化および顧客によるシリアル化について説明します。
+description: Microsoft Authentication Library for .NET (MSAL.NET) を使用したトークン キャッシュのシリアル化およびカスタム シリアル化について説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -9,36 +9,289 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 06/25/2021
 ms.author: jmprieur
-ms.reviewer: saeeda
+ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 60ce3d32ffa20fc9117890528eac053d1af9fdf2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5149150ab1ad04852683e005495a2aae8b0218b8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583910"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469838"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
-[トークンは、取得](msal-acquire-cache-tokens.md)後に Microsoft Authentication Library (MSAL) でキャッシュされます。  アプリケーション コードでは、別のメソッドでトークンを取得する前に、キャッシュからトークンを取得しようとする必要があります。  この記事では、MSAL.NET でのトークン キャッシュの既定のシリアル化とカスタムのシリアル化について説明します。
 
-この記事は MSAL.NET 3.x 用です。 MSAL.NET 2.x に関心がある場合は、「[Token cache serialization in MSAL.NET 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Token-cache-serialization-2x)」(MSAL.NET 2.x でのトークン キャッシュのシリアル化) を参照してください。
+Microsoft Authentication Library (MSAL) によって[取得されたトークン](msal-acquire-cache-tokens.md)は、キャッシュに格納されます。 パブリック クライアント アプリケーション (デスクトップまたはモバイル アプリ) では、別の方法でトークンを取得する前に、キャッシュからトークンを取得する必要があります。 機密クライアント アプリケーションの取得方法によって、キャッシュ自体が管理されます。 この記事では、MSAL.NET でのトークン キャッシュの既定のシリアル化とカスタムのシリアル化について説明します。
 
-## <a name="default-serialization-for-mobile-platforms"></a>モバイル プラットフォーム用の既定のシリアル化
+## <a name="quick-summary"></a>簡単な概要
 
-MSAL.NET では、既定でメモリ内のトークン キャッシュが提供されています。 プラットフォームの一部としてセキュリティで保護されたストレージをユーザーが使用できるプラットフォーム用に、既定でシリアル化が提供されています。 これは、ユニバーサル Windows プラットフォーム (UWP)、Xamarin.iOS、Xamarin.Android の場合です。
+次のようにすることが推奨されます。
+- Web アプリと Web API では、["Microsoft.Identity.Web" のトークン キャッシュ シリアライザー](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)を使用します。 それらにより、トークンを格納するための分散型データベースまたはキャッシュ システムも提供されます。
+  - ASP.NET Core の [Web アプリ](scenario-web-app-call-api-overview.md)と [Web API](scenario-web-api-call-api-overview.md) では、ASP.NET Core での上位レベル API として Microsoft.Identity.Web を使用します。
+  - ASP.NET クラシック、.NET Core、.NET Framework では、Microsoft.Identity.Web で提供されている [MSAL 用のトークン キャッシュ シリアル化アダプター]()で、MSAL.NET を直接使用します。 
+- (ファイル システムを使用してトークンを格納できる) デスクトップ アプリケーションでは、[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache) と MSAL.Net を使用します。
+- モバイル アプリケーション (Xamarin.iOS、Xamarin.Android、ユニバーサル Windows プラットフォーム) では、キャッシュは MSAL.NET によって自動的に処理されるので、何も行いません。これらのプラットフォームにはセキュリティ保護されたストレージがあります。
 
-> [!Note]
-> Xamarin.Android プロジェクトを MSAL.NET 1.x から MSAL.NET 3.x に移行する場合は、Visual Studio デプロイによってローカル ストレージの復元がトリガーされるときに、キャッシュされた古いトークンが返されることを回避するために、プロジェクトに `android:allowBackup="false"` を追加することをお勧めします。 [問題 #659](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/659#issuecomment-436181938) を参照してください。
+## <a name="aspnet-core-web-apps-and-web-apis"></a>[ASP.NET Core Web アプリと Web API](#tab/aspnetcore)
 
-## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Windows デスクトップ アプリと Web アプリ/Web API 用のカスタムのシリアル化
+[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) ライブラリでは、トークン キャッシュのシリアル化を含む NuGet パッケージ [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) が提供されています。
+
+| 拡張メソッド | 説明  |
+| ---------------- | ------------ |
+| `AddInMemoryTokenCaches` | メモリ内トークン キャッシュのシリアル化。 この実装は、サンプルにおいて非常に有用です。 また、Web アプリの再起動時にトークン キャッシュが失われても構わない場合は、実稼働アプリケーションにも適しています。 `AddInMemoryTokenCaches` は `MsalMemoryTokenCacheOptions` 型の省略可能なパラメーターを受け取ります。これにより、キャッシュ エントリが使用されていない場合に限り、期限切れになるまでの期間を指定できます。
+| `AddSessionTokenCaches` | トークン キャッシュは、ユーザー セッションにバインドされています。 このオプションは、ID トークンに多くの要求が含まれている場合は、Cookie が大きくなりすぎるため適していません。
+| `AddDistributedTokenCaches` | トークン キャッシュは ASP.NET Core `IDistributedCache` 実装に対するアダプターであるため、分散メモリ キャッシュ、Redis キャッシュ、分散 NCache、または SQL Server キャッシュから選択できます。 `IDistributedCache` の実装の詳細については、「[分散メモリ キャッシュ](/aspnet/core/performance/caching/distributed)」を参照してください。
+
+
+ASP.NET Core アプリケーション内の [Startup](/aspnet/core/fundamentals/startup) クラスの [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) メソッドでメモリ内キャッシュを使用するコードの例を次に示します。
+
+```CSharp
+#using Microsoft.Identity.Web
+```
+
+```CSharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+ const string scopesToRequest = "user.read";
+  
+  public void ConfigureServices(IServiceCollection services)
+  {
+   // code before
+   services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+           .AddMicrosoftIdentityWebApp(Configuration)
+             .EnableTokenAcquisitionToCallDownstreamApi(new string[] { scopesToRequest })
+                .AddInMemoryTokenCaches();
+   // code after
+  }
+  // code after
+}
+```
+
+キャッシュの観点からは、このコードは ASP.NET Core Web API に似ています
+
+
+可能な分散キャッシュの例を次に示します。
+
+```C#
+// or use a distributed Token Cache by adding
+   services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+           .AddMicrosoftIdentityWebApp(Configuration)
+             .EnableTokenAcquisitionToCallDownstreamApi(new string[] { scopesToRequest }
+               .AddDistributedTokenCaches();
+
+// and then choose your implementation
+
+// For instance the distributed in memory cache (not cleared when you stop the app)
+services.AddDistributedMemoryCache()
+
+// Or a Redis cache
+services.AddStackExchangeRedisCache(options =>
+{
+ options.Configuration = "localhost";
+ options.InstanceName = "SampleInstance";
+});
+
+// Or even a SQL Server token cache
+services.AddDistributedSqlServerCache(options =>
+{
+ options.ConnectionString = _config["DistCache_ConnectionString"];
+ options.SchemaName = "dbo";
+ options.TableName = "TestCache";
+});
+```
+
+その使用法は、フェーズ [2-2 トークン キャッシュ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)の [ASP.NET Core Web アプリのチュートリアル](/aspnet/core/tutorials/first-mvc-app/)で説明しています。
+
+## <a name="non-aspnet-core-web-apps-and-web-apis"></a>[ASP.NET Core 以外の Web アプリと Web API](#tab/aspnet)
+
+MSAL.NET を使用する場合でも、Microsoft.Identity.Web に含まれるトークン キャッシュ シリアライザーを利用できます 
+
+### <a name="referencing-the-nuget-package"></a>NuGet パッケージの参照
+
+MSAL.NET に加えて、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet パッケージをプロジェクトに追加します
+
+### <a name="configuring-the-token-cache"></a>トークン キャッシュの構成
+
+次のコードでは、メモリ内の十分にパーティション分割されたトークン キャッシュをアプリに追加する方法を示します。
+
+```CSharp
+#using Microsoft.Identity.Web
+#using Microsoft.Identity.Client
+```
+
+```CSharp
+
+ private static IConfidentialClientApplication app;
+
+ public static async Task<IConfidentialClientApplication> BuildConfidentialClientApplication()
+ {
+  if (app== null)
+  {
+     // Create the confidential client application
+     app= ConfidentialClientApplicationBuilder.Create(clientId)
+       // Alternatively to the certificate you can use .WithClientSecret(clientSecret)
+       .WithCertificate(certDescription.Certificate)
+       .WithLegacyCacheCompatibility(false)
+       .WithTenantId(tenant)
+       .Build();
+
+     // Add an in-memory token cache. Other options available: see below
+     app.AddInMemoryTokenCaches();
+   }
+   return clientapp;
+  }
+```
+
+### <a name="available-serialization-technologies"></a>利用できるシリアル化テクノロジ
+
+#### <a name="in-memory-token-cache"></a>メモリ内トークン キャッシュ
+
+```CSharp 
+     // Add an in-memory token cache
+     app.AddInMemoryTokenCaches();
+```
+
+#### <a name="distributed-in-memory-token-cache"></a>分散メモリ内トークン キャッシュ
+
+```CSharp 
+     // In memory distributed token cache
+     app.AddDistributedTokenCaches(services =>
+     {
+       // In net462/net472, requires to reference Microsoft.Extensions.Caching.Memory
+       services.AddDistributedMemoryCache();
+     });
+```
+
+#### <a name="sql-server"></a>[データベースのインポート]
+
+```CSharp 
+     // SQL Server token cache
+     app.AddDistributedTokenCaches(services =>
+     {
+      services.AddDistributedSqlServerCache(options =>
+      {
+       // In net462/net472, requires to reference Microsoft.Extensions.Caching.Memory
+
+       // Requires to reference Microsoft.Extensions.Caching.SqlServer
+       options.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TestCache;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+       options.SchemaName = "dbo";
+       options.TableName = "TestCache";
+
+       // You don't want the SQL token cache to be purged before the access token has expired. Usually
+       // access tokens expire after 1 hour (but this can be changed by token lifetime policies), whereas
+       // the default sliding expiration for the distributed SQL database is 20 mins. 
+       // Use a value which is above 60 mins (or the lifetime of a token in case of longer lived tokens)
+       options.DefaultSlidingExpiration = TimeSpan.FromMinutes(90);
+      });
+     });
+```
+
+#### <a name="redis-cache"></a>Redis Cache
+
+```CSharp 
+     // Redis token cache
+     app.AddDistributedTokenCaches(services =>
+     {
+       // Requires to reference Microsoft.Extensions.Caching.StackExchangeRedis
+       services.AddStackExchangeRedisCache(options =>
+       {
+         options.Configuration = "localhost";
+         options.InstanceName = "Redis";
+       });
+      });
+```
+
+#### <a name="cosmos-db"></a>Cosmos DB
+
+```CSharp 
+      // Cosmos DB token cache
+      app.AddDistributedTokenCaches(services =>
+      {
+        // Requires to reference Microsoft.Extensions.Caching.Cosmos (preview)
+        services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
+        {
+          cacheOptions.ContainerName = Configuration["CosmosCacheContainer"];
+          cacheOptions.DatabaseName = Configuration["CosmosCacheDatabase"];
+          cacheOptions.ClientBuilder = new CosmosClientBuilder(Configuration["CosmosConnectionString"]);
+          cacheOptions.CreateIfNotExists = true;
+        });
+       });
+```
+
+### <a name="disabling-legacy-token-cache"></a>レガシ トークン キャッシュの無効化
+MSAL には、特にレガシ ADAL キャッシュと対話する機能を有効にするための内部コードがいくつかあります。 MSAL と ADAL がサイド バイ サイドで使用されていない (したがって、レガシ キャッシュが使用されていない) 場合、関連するレガシ キャッシュ コードは必要ありません。 MSAL [4.25.0](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/releases/tag/4.25.0) により、レガシ ADAL キャッシュ コードを無効にして、キャッシュ使用パフォーマンスを向上させる機能が追加されます。 レガシ キャッシュを無効にする前と後のパフォーマンスの比較については、pull request [#2309](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/pull/2309) を参照してください。 次のようにアプリケーション ビルダーで `.WithLegacyCacheCompatibility(false)` を呼び出します。
+
+```csharp
+var app = ConfidentialClientApplicationBuilder
+    .Create(clientId)
+    .WithClientSecret(clientSecret)
+    .WithLegacyCacheCompatibility(false)
+    .Build();
+```
+
+### <a name="samples"></a>サンプル
+
+- .NET Framework および .NET Core アプリケーションでのトークン キャッシュ シリアライザーの使用方法については、こちらのサンプル [ConfidentialClientTokenCache](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/tree/master/ConfidentialClientTokenCache) を参照してください 
+- 次のサンプルは、同じ手法を使用する ASP.NET Web アプリです: https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect ([WebApp/Utils/MsalAppBuilder.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Utils/MsalAppBuilder.cs) を参照)
+
+## <a name="desktop-apps"></a>[デスクトップ アプリ](#tab/desktop)
+
+デスクトップ アプリケーションでは、クロス プラットフォーム トークン キャッシュを使用することをお勧めします。
+
+#### <a name="cross-platform-token-cache-msal-only"></a>クロス プラットフォーム トークン キャッシュ (MSAL のみ)
+
+MSAL.NET では、Microsoft.Identity.Client.Extensions.Msal という名前の別のライブラリでクロス プラットフォーム トークン キャッシュが提供されています。そのソース コードは、 https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet から入手できます。
+
+##### <a name="referencing-the-nuget-package"></a>NuGet パッケージの参照
+
+[Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/) NuGet パッケージを、プロジェクトに追加します。
+
+##### <a name="configuring-the-token-cache"></a>トークン キャッシュの構成
+
+詳細については、https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache を参照してください。 クロス プラットフォーム トークン キャッシュを使用する例を次に示します。
+
+```csharp
+ var storageProperties =
+     new StorageCreationPropertiesBuilder(Config.CacheFileName, Config.CacheDir)
+     .WithLinuxKeyring(
+         Config.LinuxKeyRingSchema,
+         Config.LinuxKeyRingCollection,
+         Config.LinuxKeyRingLabel,
+         Config.LinuxKeyRingAttr1,
+         Config.LinuxKeyRingAttr2)
+     .WithMacKeyChain(
+         Config.KeyChainServiceName,
+         Config.KeyChainAccountName)
+     .Build();
+
+ IPublicClientApplication pca = PublicClientApplicationBuilder.Create(clientId)
+    .WithAuthority(Config.Authority)
+    .WithRedirectUri("http://localhost")  // make sure to register this redirect URI for the interactive login 
+    .Build();
+    
+
+// This hooks up the cross-platform cache into MSAL
+var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties );
+cacheHelper.RegisterCache(pca.UserTokenCache);
+         
+```
+
+## <a name="mobile-apps"></a>[モバイル アプリ](#tab/mobile)
+
+MSAL.NET では、既定でメモリ内のトークン キャッシュが提供されています。 プラットフォームの一部としてセキュリティで保護されたストレージをユーザーが使用できる次のプラットフォーム用に、既定でシリアル化が提供されています: ユニバーサル Windows プラットフォーム (UWP)、Xamarin.iOS、Xamarin.Android。
+
+## <a name="write-your-own-cache"></a>[独自のキャッシュを作成する](#tab/custom)
+
+独自のトークン キャッシュ シリアライザーを記述する場合は、MSAL.NET によって、.NET Framework および .NET Core サブプラットフォームでのカスタム トークン キャッシュ シリアル化が提供されています。 キャッシュへのアクセスが行われた場合にイベントが発生し、アプリでは、キャッシュをシリアル化するか逆シリアル化するかを選択できます。 ユーザーを処理する機密クライアント アプリケーション (ユーザーにサインインして Web API を呼び出す Web アプリと、ダウンストリームの Web API を呼び出す Web API) 上には、多くのユーザーがいる場合があり、ユーザーは並列で処理されます。 セキュリティとパフォーマンス上の理由から、ユーザーごとに 1 つのキャッシュをシリアル化することをお勧めします。 シリアル化イベントでは、処理されたユーザーの ID に基づいてキャッシュ キーが計算され、そのユーザーのトークン キャッシュがシリアル化/逆シリアル化されます。
 
 モバイル プラットフォーム (UWP、Xamarin.iOS、Xamarin.Android) ではカスタムのシリアル化を使用できません。 MSAL では、これらのプラットフォームに対して安全性とパフォーマンスに優れたシリアル化メカニズムを既に定義しています。 ただし、.NET デスクトップおよび .NET Core アプリケーションのアーキテクチャにはさまざまなものがあり、MSAL では汎用的なシリアル化メカニズムを実装できません。 たとえば、Web サイトでは Redis Cache にトークンが格納され、デスクトップ アプリでは暗号化ファイルにトークンが格納されたりする場合があります。 したがって、追加設定なしに使用できるシリアル化は提供されていません。 .NET デスクトップまたは .NET Core で永続的なトークン キャッシュ アプリケーションを入手するには、シリアル化をカスタマイズします。
 
 トークン キャッシュのシリアル化では、次のクラスとインターフェイスが使用されます。
 
-- `ITokenCache` では、トークン キャッシュのシリアル化要求をサブスクライブするイベントと、キャッシュをさまざまな形式 (ADAL v3.0、MSAL 2.x、および MSAL 3.x = ADAL v5.0) でシリアル化または逆シリアル化するメソッドを定義します。
+- `ITokenCache` では、トークン キャッシュのシリアル化要求をサブスクライブするイベントと、キャッシュをさまざまな形式 (ADAL v3.0、MSAL 2.x、および MSAL 3.x = ADAL v5.0) でシリアル化または逆シリアル化するメソッドが定義されています。
 - `TokenCacheCallback` は、シリアル化を処理できるようにイベントに渡されるコールバックです。 `TokenCacheNotificationArgs` の型の引数で呼び出されます。
 - `TokenCacheNotificationArgs` では、アプリケーションの `ClientId` と、トークンを使用できるユーザーへの参照のみを提供します。
 
@@ -51,7 +304,15 @@ MSAL.NET では、既定でメモリ内のトークン キャッシュが提供�
 
 [パブリック クライアント アプリケーション](msal-client-applications.md) (デスクトップ) と[機密クライアント アプリケーション](msal-client-applications.md) (Web アプリ/Web API、デーモン アプリ) のどちらに対してトークン キャッシュのシリアル化を作成しているかに応じて、戦略は異なります。
 
-### <a name="token-cache-for-a-public-client"></a>パブリック クライアント用のトークン キャッシュ
+### <a name="custom-token-cache-for-a-web-app-or-web-api-confidential-client-application"></a>Web アプリまたは Web API 用のカスタム トークン キャッシュ (機密クライアント アプリケーション)
+
+Web アプリまたは Web API では、キャッシュでセッション、Redis Cache、SQL データベース、または Cosmos DB データベースを利用できます。 Web アプリまたは Web API では、アカウントごとに 1 つのトークン キャッシュを保持します。 
+- Web アプリの場合、トークン キャッシュは、アカウント ID によってキー指定されている必要があります。
+- Web API の場合、アカウントは、API の呼び出しに使用されるトークンのハッシュによって、キー指定されている必要があります。
+
+トークン キャッシュ シリアライザーの例は、[Microsoft.Identity.Web/TokenCacheProviders](https://github.com/AzureAD/microsoft-identity-web/tree/master/src/Microsoft.Identity.Web/TokenCacheProviders) で提供されています。
+
+### <a name="custom-token-cache-for-a-desktop-or-mobile-app-public-client-application"></a>デスクトップ アプリまたはモバイル アプリ用のカスタム トークン キャッシュ (パブリック クライアント アプリケーション)
 
 MSAL.NET v2.x 以降では、パブリック クライアント用のトークン キャッシュをシリアル化するための複数のオプションが用意されています。 キャッシュは、MSAL.NET 形式にのみシリアル化することができます (この統一形式のキャッシュは、MSAL およびプラットフォーム間で共通です)。  また、ADAL V3 の[レガシ](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) トークン キャッシュのシリアル化をサポートすることもできます。
 
@@ -269,63 +530,7 @@ namespace CommonCacheMsalV3
 }
 ```
 
-### <a name="token-cache-for-a-web-app-confidential-client-application"></a>Web アプリ (機密クライアント アプリケーション) 用のトークンのキャッシュ
-
-Web アプリまたは Web API では、キャッシュでセッション、Redis Cache、またはデータベースを利用できます。 Web アプリまたは Web API では、アカウントごとに 1 つのトークン キャッシュを保持する必要があります。 
-
-Web アプリの場合、トークン キャッシュは、アカウント ID によってキー指定されている必要があります。
-
-Web API の場合、アカウントは、API の呼び出しに使用されるトークンのハッシュによって、キー指定されている必要があります。
-
-MSAL.NET では、.NET Framework および .NET Core サブプラットフォーム上でカスタム トークン キャッシュのシリアル化が提供されます。 キャッシュへのアクセスが行われた場合にイベントが発生し、アプリでは、キャッシュをシリアル化するか逆シリアル化するかを選択できます。 ユーザーを処理する機密クライアント アプリケーション (ユーザーにサインインして Web API を呼び出す Web アプリと、ダウンストリームの Web API を呼び出す Web API) 上には、多くのユーザーがいる場合があり、ユーザーは並列で処理されます。 セキュリティとパフォーマンス上の理由から、ユーザーごとに 1 つのキャッシュをシリアル化することをお勧めします。 シリアル化イベントでは、処理されたユーザーの ID に基づいてキャッシュ キーが計算され、そのユーザーのトークン キャッシュがシリアル化/逆シリアル化されます。
-
-[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) ライブラリでは、トークン キャッシュのシリアル化を含むプレビュー NuGet パッケージ [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) が提供されています。
-
-| 拡張メソッド | Microsoft.Identity.Web のサブ名前空間 | 説明  |
-| ---------------- | --------- | ------------ |
-| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | メモリ内トークン キャッシュのシリアル化。 この実装は、サンプルにおいて非常に有用です。 また、Web アプリの再起動時にトークン キャッシュが失われても構わない場合は、実稼働アプリケーションにも適しています。 `AddInMemoryTokenCaches` は `MsalMemoryTokenCacheOptions` 型の省略可能なパラメーターを受け取ります。これにより、キャッシュ エントリが使用されていない場合に限り、期限切れになるまでの期間を指定できます。
-| `AddSessionTokenCaches` | `TokenCacheProviders.Session` | トークン キャッシュは、ユーザー セッションにバインドされています。 このオプションは、ID トークンに多くの要求が含まれている場合は、Cookie が大きくなりすぎるため適していません。
-| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | トークン キャッシュは ASP.NET Core `IDistributedCache` 実装に対するアダプターであるため、分散メモリ キャッシュ、Redis キャッシュ、分散 NCache、または SQL Server キャッシュから選択できます。 `IDistributedCache` 実装の詳細については、 https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache を参照してください。
-
-ASP.NET Core アプリケーション内の [Startup](/aspnet/core/fundamentals/startup) クラスの [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) メソッドでメモリー内キャッシュを使用する例を次に示します。
-
-```C#
-// or use a distributed Token Cache by adding
-    services.AddSignIn(Configuration);
-    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
-            .AddInMemoryTokenCaches();
-```
-
-使用可能な分散キャッシュの例:
-
-```C#
-// or use a distributed Token Cache by adding
-    services.AddSignIn(Configuration);
-    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
-            .AddDistributedTokenCaches();
-
-// and then choose your implementation
-
-// For instance the distributed in memory cache (not cleared when you stop the app)
-services.AddDistributedMemoryCache()
-
-// Or a Redis cache
-services.AddStackExchangeRedisCache(options =>
-{
- options.Configuration = "localhost";
- options.InstanceName = "SampleInstance";
-});
-
-// Or even a SQL Server token cache
-services.AddDistributedSqlServerCache(options =>
-{
- options.ConnectionString = _config["DistCache_ConnectionString"];
- options.SchemaName = "dbo";
- options.TableName = "TestCache";
-});
-```
-
-その使用法は、フェーズ [2-2 トークン キャッシュ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)の [ASP.NET Core Web アプリのチュートリアル](/aspnet/core/tutorials/first-mvc-app/)で説明しています。
+---
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -333,5 +538,5 @@ services.AddDistributedSqlServerCache(options =>
 
 | サンプル | プラットフォーム | 説明|
 | ------ | -------- | ----------- |
-|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | デスクトップ (WPF) | Microsoft Graph API を呼び出す Windows デスクトップ .NET (WPF) アプリケーション。 ![トポロジの図。Desktop App WPF TodoListClient はトークンを対話形式で取得することで Azure A D に流れます。また、Microsoft Graph に流れます。](media/msal-net-token-cache-serialization/topology.png)|
+|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | デスクトップ (WPF) | Microsoft Graph API を呼び出す Windows デスクトップ .NET (WPF) アプリケーション。 ![トポロジの図。Desktop App WPF TodoListClient はトークンを対話形式で取得することで Azure AD に流れます。また、Microsoft Graph に流れます。](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | デスクトップ (コンソール) | Azure AD v1.0 アプリケーション (ADAL.NET を使用) から Microsoft ID プラットフォーム アプリケーション (MSAL.NET を使用) への移行を示す一連の Visual Studio ソリューション。 特に、「[トークン キャッシュの移行](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)」を参照してください。|

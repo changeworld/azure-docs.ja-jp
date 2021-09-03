@@ -3,13 +3,13 @@ title: ビデオを使用して推論メタデータを記録およびストリ�
 description: このチュートリアルでは、Azure Video Analyzer を使用してビデオと推論メタデータをクラウドに記録し、ビジュアル推論メタデータを使用して記録を再生する方法について説明します。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 05/12/2021
-ms.openlocfilehash: 89aef5db89110ee7e12a313820f8f62d0b010faf
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/01/2021
+ms.openlocfilehash: 3122ea07fdab20c93ed4720d0c43f180cce5306d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755171"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779328"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>チュートリアル: ビデオを使用して推論メタデータを記録およびストリーム配信する
   
@@ -132,7 +132,7 @@ src/edge/deployment.yolov3.template.json を開きます。 **modules** セク�
 1. 次に、**livePipelineSet** と **pipelineTopologyDelete** の各ノードで、**topologyName** の値が、上記パイプライン トポロジ内の **name** プロパティの値と一致していることを確認します。
 
     `"pipelineTopologyName" : "CVRHttpExtensionObjectTracking"`
-1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json)を開き、videoName を確認します。これは `sample-cvr-with-inference-metadata` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。  
+1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-and-objectTracking/topology.json)を開き、videoName を確認します。これは `sample-cvr-with-inference-metadata` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。  
 
 1. HTTP 拡張ノードの設定を確認します。
 
@@ -143,7 +143,8 @@ src/edge/deployment.yolov3.template.json を開きます。 **modules** セク�
     }
   ```
 
-ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 ライブ ビデオのフレーム レートが 30 フレーム/秒の場合は、推論のために毎秒少なくとも 2 個のフレームを HTTP サーバーに送信する必要があることを意味します。したがって、`maximumSamplesPerSecond` は 2 に設定されます。
+ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 AI モデルには、処理用の最大 FPS があります。これは、`maximumSamplesPerSecond` に設定する必要がある最も高い値です。
+
 
 ## <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 
@@ -384,12 +385,11 @@ body セクションには、出力場所に関する情報が含まれていま
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/video-playback.png" alt-text="ビデオ再生のスクリーンショット":::
 
-> [!NOTE]
-> ビデオのソースはカメラ フィードをシミュレートするコンテナーだったので、ビデオのタイム スタンプは、ライブ パイプラインをアクティブにした時点と、非アクティブ化した時点に関連しています。
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-他のチュートリアルに取り組む場合は、作成したリソースをそのまま残します。 それ以外の場合は、Azure portal にアクセスして、ご利用のリソース グループに移動し、このチュートリアルで使用したリソース グループを選択して、それらのリソース グループを削除してください。
+[!INCLUDE [prerequisites](./includes/common-includes/clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
