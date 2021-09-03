@@ -1,5 +1,5 @@
 ---
-title: Azure のストレージ サービス内のデータに接続する
+title: スタジオ UI を使用してデータ ストレージに接続する
 titleSuffix: Azure Machine Learning
 description: データストアとデータセットを作成し、Azure Machine Learning スタジオを使用して Azure のストレージ サービス内のデータに安全に接続します。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 09/22/2020
+ms.date: 07/06/2021
 ms.custom: data4ml
-ms.openlocfilehash: b85be179fa12e29ef17fe9fa488b22c3d8a3c69b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8764f237d3e5304df95357cb770738e32d8395dd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785117"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441884"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデータに接続する
 
@@ -37,7 +37,7 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
 - [Azure Machine Learning スタジオ](https://ml.azure.com/)へのアクセス。
 
@@ -85,8 +85,11 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。
 1. **[次へ]** を選択して、 **[データストアとファイルの選択]** フォームを開きます。 このフォームでは、作成後にデータセットを保存する場所を選択し、データセットに使用するデータ ファイルを選択します。
     1. データが仮想ネットワーク内にある場合は、検証のスキップを有効にします。 [仮想ネットワークの分離とプライバシー](how-to-enable-studio-virtual-network.md)について理解を深める。
-    1. 表形式データセットの場合は、'timeseries' 特性を指定して、データセットに対する時間に関連する操作を有効にできます。 [timeseries 特性をデータセットに追加する](how-to-monitor-datasets.md#studio-dataset)方法を確認してください。
+
 1. **[次へ]** を選択して **[Settings and preview]/(設定とプレビュー/)** および **[Schema]\(スキーマ\)** フォームを設定します。これらのフォームはファイルの種類に基づいてインテリジェントに設定され、これらのフォームで、作成前にデータセットを構成することができます。 
+    1.  [Settings and preview]/(設定とプレビュー/) フォームでは、データに複数行のデータが含まれるかどうかを指定できます。 
+    1. [スキーマ] フォームでは、日付または時刻列に **Timestamp** 型を選択することで、TabularDataset に時刻コンポーネントがあることを指定できます。 
+        1. データが時間枠などのサブセットに書式設定され、それらのサブセットをトレーニングに使用する場合は、**パーティションのタイムスタンプ** 型を選択します。 これにより、データセットに対する時系列操作が有効になります。 [データセット内のパーティションをトレーニングに活用する](how-to-monitor-datasets.md?tabs=azure-studio#create-target-dataset)方法の詳細をご確認ください。
 1. **[次へ]** を選択して、 **[詳細の確認]** フォームを確認します。 選択内容を確認し、データセットについてのオプションのデータ プロファイルを作成します。 [データ プロファイル](#profile)についてさらに理解を深める。
 1. **[作成]** を選択して、データセットの作成を完了します。
 
