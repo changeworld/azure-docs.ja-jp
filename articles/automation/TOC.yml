@@ -12,26 +12,18 @@
       href: whats-new-archive.md
 - name: クイックスタート
   items:
-    - name: Automation アカウントを作成する - ポータル
-      href: automation-quickstart-create-account.md
-    - name: PowerShell Runbook を作成する
-      href: automation-quickstart-create-runbook.md
+    - name: Automation アカウントを作成する - Azure portal
+      href: quickstarts/create-account-portal.md
     - name: マシンの Desired State Configuration を有効にする
-      href: automation-quickstart-dsc-configuration.md
+      href: quickstarts/dsc-configuration.md
 - name: チュートリアル
   items:
-    - name: グラフィカル Runbook を作成する
-      href: learn/automation-tutorial-runbook-graphical.md
-    - name: PowerShell Runbook を作成する
-      href: learn/automation-tutorial-runbook-textual-powershell.md
-    - name: PowerShell Workflow Runbook を作成する
-      href: learn/automation-tutorial-runbook-textual.md
-    - name: Python Runbook を作成する
-      href: learn/automation-tutorial-runbook-textual-python2.md
-    - name: Python 3 Runbook を作成する
-      href: learn/automation-tutorial-runbook-textual-python-3.md
     - name: PowerShell Runbook でマネージド ID を使用する
       href: learn/powershell-runbook-managed-identity.md
+    - name: PowerShell Workflow Runbook を作成する
+      href: learn/automation-tutorial-runbook-textual.md
+    - name: Python 3 Runbook を作成する
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: 概念
   items:
     - name: Automation アカウントの認証の概要
