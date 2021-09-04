@@ -195,11 +195,11 @@
           href: howto-private-link.md
         - name: リソースへのアクセス管理 - スポーク VNet P2S
           href: manage-secure-access-resources-spoke-p2s.md
-    - name: 正常性の監視
+    - name: 監視
       items:
         - name: Virtual WAN の監視
           href: monitor-virtual-wan.md
-        - name: Virtual WAN に関する Azure Monitor の分析情報
+        - name: Azure Monitor Insights
           href: azure-monitor-insights.md
 - name: リファレンス
   items:

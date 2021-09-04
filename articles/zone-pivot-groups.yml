@@ -252,6 +252,16 @@ groups:
     title: JavaScript
   - id: programming-language-curl
     title: REST
+- id: programming-languages-cs-cpp-py
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-twenty-three
   title: プログラミング言語
   prompt: プログラミング言語または CLI を選択する
@@ -1273,9 +1283,9 @@ groups:
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
 metadata:
-  ms.openlocfilehash: 1e0342c1c36d88218ca7ad9daccb7a9e1ea7e9fa
-  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+  ms.openlocfilehash: 6043c9ad329e91e258a57df19cb0a6e4ccb3ac93
+  ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2021
-  ms.locfileid: "114730994"
+  ms.lasthandoff: 09/04/2021
+  ms.locfileid: "123471446"

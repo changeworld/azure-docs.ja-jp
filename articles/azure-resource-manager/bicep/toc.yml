@@ -22,13 +22,10 @@
     - name: Microsoft Learn - Bicep
       href: learn-bicep.md
 - name: 方法
-  expanded: true
   items:
     - name: Author
-      expanded: true
       items:
         - name: リソース
-          expanded: true
           items:
             - name: リソースの宣言
               href: resource-declaration.md
