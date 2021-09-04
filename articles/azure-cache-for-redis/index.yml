@@ -9,12 +9,12 @@ metadata:
   author: yegu-ms
   ms.author: yegu
   ms.date: 12/16/2019
-  ms.openlocfilehash: c46932ac1a2237801453da4b02333a0d5d403813
-  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+  ms.openlocfilehash: 4960c8b24740a16b6bf8e914a3aee9bd8fc1add0
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/27/2021
-  ms.locfileid: "123109318"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123428976"
 landingContent:
 - title: Azure Cache for Redis について
   linkLists:
@@ -24,8 +24,6 @@ landingContent:
       url: cache-overview.md
   - linkListType: video
     links:
-    - text: ベスト プラクティス
-      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
     - text: パフォーマンスの向上
       url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
     - text: セキュリティ キャッシュ

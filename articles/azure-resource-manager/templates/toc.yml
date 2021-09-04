@@ -407,6 +407,14 @@
         - name: 機密性の高い値を渡す
           displayname: key vault
           href: key-vault-parameter.md
+    - name: テンプレートのエクスポート
+      items:
+        - name: Azure CLI
+          href: export-template-cli.md
+        - name: ポータル
+          href: export-template-portal.md
+        - name: PowerShell
+          href: export-template-powershell.md
     - name: テンプレートのテスト
       items:
         - name: ツールキットのテスト
@@ -431,12 +439,6 @@
           href: add-template-to-azure-pipelines.md
         - name: デプロイ - GitHub Actions
           href: deploy-github-actions.md
-    - name: テンプレートのプロパティの確認
-      items:
-        - name: テンプレートをエクスポートする
-          href: export-template-portal.md
-        - name: リソースを探索する
-          href: view-resources.md
     - name: オーサリング ツールを使用する
       items:
         - name: Visual Studio

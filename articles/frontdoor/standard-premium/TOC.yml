@@ -39,6 +39,8 @@
           href: concept-rule-set-actions.md
         - name: URL リダイレクトと URL 書き換え
           href: concept-rule-set-url-redirect-and-rewrite.md
+    - name: geo フィルタリング
+      href: geo-filtering.md
     - name: 正常性プローブ
       href: concept-health-probes.md
     - name: Private Link
