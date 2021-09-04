@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Route Server (プレビュー) とは
+    - name: Azure Route Server とは何ですか。
       href: overview.md
 - name: クイックスタート
   items:
@@ -50,10 +50,10 @@
     - name: ネットワークのブログ
       href: 'https://azure.microsoft.com/blog/topics/networking/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/'
+      href: 'https://azure.microsoft.com/pricing/route-server'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=routeserver'
     - name: SLA
-      href: 'https://azure.microsoft.com/support/legal/sla/'
+      href: 'https://azure.microsoft.com/support/legal/sla/route-server/v1_0/'
