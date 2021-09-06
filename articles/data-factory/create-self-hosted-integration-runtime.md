@@ -136,7 +136,7 @@ Azure Data Factory の UI を使用してセルフホステッド IR を作成�
 
 ### <a name="set-up-a-self-hosted-ir-on-an-azure-vm-via-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure VM にセルフホステッド IR をセットアップする
 
-[セルフホステッド IR の作成テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime)を使用して、Azure 仮想マシンでのセルフホステッド IR のセットアップを自動化できます。 このテンプレートを使用すると、Azure 仮想ネットワーク内で完全に機能するセルフホステッド IR を簡単に作成できます。 ノード数を 2 以上に設定している限り、IR には高可用性とスケーラビリティの機能があります。
+[セルフホステッド IR の作成テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vms-with-selfhost-integration-runtime)を使用して、Azure 仮想マシンでのセルフホステッド IR のセットアップを自動化できます。 このテンプレートを使用すると、Azure 仮想ネットワーク内で完全に機能するセルフホステッド IR を簡単に作成できます。 ノード数を 2 以上に設定している限り、IR には高可用性とスケーラビリティの機能があります。
 
 ### <a name="set-up-an-existing-self-hosted-ir-via-local-powershell"></a>ローカル PowerShell を使用して既存のセルフホステッド IR をセットアップする
 
