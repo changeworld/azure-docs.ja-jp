@@ -9,24 +9,26 @@ metadata:
   ms.topic: landing-page
   author: duongau
   ms.author: duau
-  ms.date: 03/02/2021
-  ms.openlocfilehash: f235d7118ce207d793c4ba03d357e2db09662c1f
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.date: 09/01/2021
+  ms.openlocfilehash: 6b9e50b0ac6cb8272f6e8f6d1366d480c53d2d49
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101677977"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123424836"
 landingContent:
-- title: Azure Route Server (プレビュー) について
+- title: Azure Route Server について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Route Server (プレビュー) とは
+    - text: Azure Route Server とは何ですか。
       url: overview.md
 - title: はじめに
   linkLists:
   - linkListType: tutorial
     links:
+    - text: Route Server を作成して構成する - Portal
+      url: quickstart-configure-route-server-portal.md
     - text: ルート サーバーを作成して構成する - PowerShell
       url: quickstart-configure-route-server-powershell.md
     - text: ルート サーバーを作成して構成する - CLI

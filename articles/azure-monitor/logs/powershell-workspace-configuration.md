@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ed34e8f253c2d53a850b082f22774722e6143189
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: a1b0c77646b8b57a2b1175367d6a9e91388f4874
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314717"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322986"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell を使用して Azure Monitor の Log Analytics ワークスペースを作成および構成する
 この記事では、Azure Monitor で Log Analytics ワークスペースを作成および構成する方法を示す 2 つのコード サンプルについて説明します。  

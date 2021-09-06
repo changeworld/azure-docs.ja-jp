@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 03/19/2021
-ms.openlocfilehash: 05512c247f26dc8e6d41876bc3a09acdd278caac
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/30/2021
+ms.openlocfilehash: 4a0ebea8d0fb8d5b9ae5fa78004c071a348615e4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731207"
 ---
 # <a name="create-a-saas-offer"></a>SaaS オファーを作成する
 
@@ -54,6 +54,9 @@ ms.locfileid: "111559270"
    + オファーの無料サブスクリプションを提供するには、 **[今すぐ入手 (無料)]** を選択します。 次に、表示される **[オファーの URL]** ボックスに、顧客が [Azure Active Directory (Azure AD) を使用したワンクリック認証](azure-ad-saas.md)で試用版を入手できる (*http* または *https* で始まる) URL を入力します。 たとえば、「 `https://contoso.com/saas-app` 」のように入力します。
    + 30 日間の無料試用版を提供するには、 **[無料試用版]** を選択し、表示される **[試用版 URL]** ボックスに、顧客が [Azure Active Directory (Azure AD) を使用したワンクリック認証](azure-ad-saas.md)で試用版を入手できる (*http* または *https* で始まる) URL を入力します。 たとえば、「 `https://contoso.com/trial/saas-app` 」のように入力します。
    + 潜在顧客からオファーの購入について連絡を受けるには、 **[問い合わせ]** を選択します。
+
+    > [!NOTE]
+    > 状況が変化した場合、コマーシャル マーケットプレース オファーを通じて、公開された掲載専用オファーを販売に変換できますが、公開された取引可能オファーを掲載専用オファーに変換することはできません。 代わりに、新しい掲載専用オファーを作成し、公開された取引可能オファーの配布を停止する必要があります。
 
 ## <a name="enable-a-test-drive-optional"></a>体験版を有効にする (省略可能)
 

@@ -5,13 +5,13 @@ author: HJToland3
 ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/08/2018
-ms.openlocfilehash: e1bb16d8c5c35419d5d6d7e7908c3995138c8ed0
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 08/18/2021
+ms.openlocfilehash: 3e795b62e9576e4d98a23293f5b22c5008af2e11
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360408"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397662"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure Database for MySQL の移行パートナー
 
@@ -23,7 +23,8 @@ Azure Database for MySQL ソリューションを広くサポートするため�
 
 | Partner | 説明 | リンク | ビデオ |
 |---------|-------------|-------|--------|
-| ![SNP Technologies][1] |**SNP Technologies**<br>SNP Technologies は、将来のビジネス向けの安全性と信頼性の高いソリューションを構築している、クラウド専用のサービス プロバイダーです。 同社は、お客様のビジネスにとって本当の価値を生み出すことを信条としています。 SNP Technologies は、構想から実行まで顧客と共通の目的を共有して、その投資を利益に変えます。|[Web サイト][snp_website]<br>[Twitter][snp_twitter]<br>[連絡先][snp_contact] | |
+| ![Devart][1] |**Devart**<br>1997 年に設立された Devart は、最も人気のあるデータベース サーバー向けのデータベース管理ソフトウェア、ALM ソリューション、およびデータ プロバイダーの主要デベロッパーの一角です。 dbForge Studio for MySQL は、テスト サーバーにデータを転送したり、データベース全体を新しい実稼働サーバーに完全移行したりするための機能を提供します。|[Web サイト][devart_website]<br>[Twitter][devart_twitter]<br>[YouTube][devart_youtube]<br>[連絡先][devart_contact] | |
+| ![SNP Technologies][2] |**SNP Technologies**<br>SNP Technologies は、将来のビジネス向けの安全性と信頼性の高いソリューションを構築している、クラウド専用のサービス プロバイダーです。 同社は、お客様のビジネスにとって本当の価値を生み出すことを信条としています。 SNP Technologies は、構想から実行まで顧客と共通の目的を共有して、その投資を利益に変えます。|[Web サイト][snp_website]<br>[Twitter][snp_twitter]<br>[連絡先][snp_contact] | |
 | ![Pragmatic Works][3] |**Pragmatic Works**<br>Pragmatic Works は、データ管理とパフォーマンス、ビジネス インテリジェンス、ビッグ データ、Power BI、および Azure に関する高度な専門知識を備えたトレーニングおよびコンサルティング会社です。 SQL Server とクラウド管理のデータの最適化と効率の向上を重視しています。|[Web サイト][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[YouTube][pragmatic-works_youtube]<br>[連絡先][pragmatic-works_contact] | |
 | ![Infosys][4] |**Infosys**<br>Infosys は、最新のデジタル サービスとコンサルティングの世界的リーダーです。 30 年以上にわたってグローバル企業のシステムを管理してきた経験を持つ Infosys は、AI 搭載コアを保有する組織が変更の実施を優先順位付けできるようにしています。 こうすることで、顧客のデジタル化を専門的に支援します。 さらに、Infosys は、アジャイルなデジタル化を大規模に企業に提供して、前例のないレベルのパフォーマンスと顧客満足を実現します。|[Web サイト][infosys_website]<br>[Twitter][infosys_twitter]<br>[YouTube][infosys_youtube]<br>[連絡先][infosys_contact] | |
 | ![credativ][5] |**credativ**<br>credativ は、独立したコンサルティングおよびサービス企業です。 1999 年以来、同社はビジネス アプリケーションでのオープン ソース ソフトウェアの実装および運用を対象として包括的なサービスとテクニカル サポートを提供しています。 この広範囲にわたるサービスには、戦略的なコンサルティング、音声による技術的なアドバイス、正規のトレーニング、あらゆる IT ニーズに対応する 1 日あたり最大で 24 時間の個別対応のサポートが含まれます。|[Marketplace][credativ_marketplace]<br>[Web サイト][credativ_website]<br>[Twitter][credative_twitter]<br>[YouTube][credativ_youtube]<br>[連絡先][credativ_contact] | |
@@ -34,14 +35,15 @@ Azure Database for MySQL ソリューションを広くサポートするため�
 Microsoft の他のパートナーの詳細については、[Microsoft パートナー サイト](https://partner.microsoft.com/)を参照してください。
 
 <!--Image references-->
-[1]: ./media/partner-migration-mysql/SNP_Logo.png
-[2]: ./media/partner-migration-mysql/DB_Best_logo.png
+[1]: ./media/partner-migration-mysql/devart-logo.png
+[2]: ./media/partner-migration-mysql/SNP_Logo.png
 [3]: ./media/partner-migration-mysql/PW-logo-text-CMYK1000.png
 [4]: ./media/partner-migration-mysql/InfosysLogo.png
 [5]: ./media/partner-migration-mysql/credativ_round_logo2.png
 [6]: ./media/partner-migration-mysql/Pactera_logo_small2.png
 
 <!--Website links -->
+[devart_website]:https://www.devart.com//
 [snp_website]:https://www.snp.com//
 [pragmatic-works_website]:https://pragmaticworks.com//
 [infosys_website]:https://www.infosys.com/
@@ -56,11 +58,13 @@ Microsoft の他のパートナーの詳細については、[Microsoft パー�
 <!--Press links-->
 
 <!--YouTube links-->
+[devart_youtube]:https://www.youtube.com/user/DevartSoftware
 [pragmatic-works_youtube]:https://www.youtube.com/user/PragmaticWorks
 [infosys_youtube]:https://www.youtube.com/user/Infosys
 [credativ_youtube]:https://www.youtube.com/channel/UCnSnr6_TcILUQQvAwlYFc8A
 
 <!--Twitter links-->
+[devart_twitter]:https://twitter.com/DevartSoftware
 [snp_twitter]:https://twitter.com/snptechnologies
 [pragmatic-works_twitter]:https://twitter.com/PragmaticWorks
 [infosys_twitter]:https://twitter.com/infosys
@@ -68,6 +72,7 @@ Microsoft の他のパートナーの詳細については、[Microsoft パー�
 [pactera_twitter]:https://twitter.com/Pactera?s=17
 
 <!--Contact links-->
+[devart_contact]:https://www.devart.com/company/contact.html
 [snp_contact]:mailto:sachin@snp.com
 [pragmatic-works_contact]:mailto:marketing@pragmaticworks.com
 [infosys_contact]:https://www.infosys.com/contact/

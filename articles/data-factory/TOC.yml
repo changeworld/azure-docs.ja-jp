@@ -794,6 +794,8 @@ items:
         items:
           - name: Data Factory を Azure Purview に接続する
             href: connect-data-factory-to-azure-purview.md
+          - name: セキュリティで保護された Azure Purview アカウントへのアクセス
+            href: ./how-to-access-secured-purview-account.md
           - name: Purview を使用した ADF でのデータの検出と探索
             href: how-to-discover-explore-purview-data.md
       - name: シナリオ

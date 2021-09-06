@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory でグループからロールの割り当てを削除する | Microsoft Docs
-description: ID 管理を委任するためのカスタム Azure AD ロールをプレビューします。 Azure portal、PowerShell、または Graph API で Azure ロールを管理します。
+title: Azure Active Directory でグループからロールの割り当てを削除する
+description: Azure portal、PowerShell、または Microsoft Graph API を使用して、Azure Active Directory のグループからロールの割り当てを削除します。
 services: active-directory
 author: rolyon
 manager: daveba
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 05/14/2021
+ms.date: 07/30/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c56c6597e7ff2553089b62cabb84b24168b7cabf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: add87a653c977c1378feeaa6d204a7bce0184431
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085728"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732328"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Azure Active Directory でグループからロールの割り当てを削除する
 
@@ -28,16 +28,16 @@ ms.locfileid: "110085728"
 
 - Azure AD Premium P1 または P2 ライセンス
 - 特権ロール管理者または全体管理者
-- PowerShell を使用する場合の AzureADPreview モジュール
+- PowerShell を使用する場合は、AzureAD モジュール
 - Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
 詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 
-1. **[ロールと管理者]**  >  **" _<ロール名>_ "** の順に選択します。
+1. **[Azure Active Directory]**  >  **[ロールと管理者]**  > <*ロール名*> を選択します。
 
 1. ロールの割り当てを削除するグループを選択し、 **[割り当ての削除]** を選択します。
 
@@ -115,5 +115,5 @@ DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クラウド グループを使用してロールの割り当てを管理する](groups-concept.md)
-- [クラウド グループに割り当てられているロールのトラブルシューティング](groups-faq-troubleshooting.md)
+- [Azure AD グループを使用してロールの割り当てを管理する](groups-concept.md)
+- [グループに割り当てられている Azure AD ロールをトラブルシューティングする](groups-faq-troubleshooting.yml)

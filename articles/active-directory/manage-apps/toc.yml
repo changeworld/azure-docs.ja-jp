@@ -144,6 +144,16 @@
           href: migrate-application-authentication-to-azure-active-directory.md
         - name: AD FS アプリケーション アクティビティ レポートの使用
           href: migrate-adfs-application-activity.md
+        - name: Okta から Azure AD にアプリケーションを移行する
+          items:
+            - name: Okta から Azure AD にアプリケーションを移行する
+              href: migrate-applications-from-okta-to-azure-active-directory.md
+            - name: Okta サインオン ポリシーを Azure AD の条件付きアクセスに移行する
+              href: migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md
+            - name: Okta 同期プロビジョニングを Azure AD Connect ベースの同期に移行する
+              href: migrate-okta-sync-provisioning-to-azure-active-directory.md
+            - name: Okta フェデレーションを Azure AD マネージド認証に移行する
+              href: migrate-okta-federation-to-azure-active-directory.md
     - name: レガシ アプリのセキュリティ保護
       items:
         - name: Azure AD を使用した安全なハイブリッド アクセス

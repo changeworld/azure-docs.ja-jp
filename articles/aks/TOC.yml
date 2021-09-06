@@ -144,6 +144,8 @@
       items:
         - name: AKS クラスターのスケーリング
           href: scale-cluster.md
+        - name: スケールダウン モードでノードを停止/割り当て解除する (プレビュー)
+          href: scale-down-mode.md
         - name: AKS クラスターを停止する
           href: start-stop-cluster.md
         - name: 計画メンテナンスを使用する (プレビュー)
@@ -359,7 +361,31 @@
         - name: サービス メッシュについて
           href: servicemesh-about.md
         - name: Open Service Mesh AKS アドオン (プレビュー)
-          href: servicemesh-osm-about.md
+          items:
+            - name: OSM の概要
+              href: open-service-mesh-about.md
+            - name: OSM AKS アドオンをデプロイする
+              href: open-service-mesh-deploy-add-on.md
+            - name: OSM クライアント バイナリをダウンロードする
+              href: open-service-mesh-binary.md
+            - name: OSM のチュートリアル
+              items:
+                - name: 新しいアプリケーションのデプロイを管理する
+                  href: open-service-mesh-deploy-new-application.md
+                - name: 既存のアプリケーションのデプロイを管理する
+                  href: open-service-mesh-deploy-existing-application.md
+                - name: Azure Application Gateway イングレス コントローラーの使用
+                  href: open-service-mesh-azure-application-gateway-ingress.md
+                - name: NGINX イングレスの使用
+                  href: open-service-mesh-nginx-ingress.md
+                - name: Prometheus、Grafana、Jaeger を使用して監視を構成する
+                  href: open-service-mesh-open-source-observability.md
+            - name: Azure Monitor を構成する
+              href: open-service-mesh-azure-monitor.md
+            - name: OSM のトラブルシューティング
+              href: open-service-mesh-troubleshoot.md
+            - name: OSM を無効にする
+              href: open-service-mesh-disable-add-on.md
     - name: DevOps
       items:
         - name: Ansible を使用した AKS クラスターの作成

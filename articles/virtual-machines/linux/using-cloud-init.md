@@ -7,14 +7,14 @@ ms.subservice: extensions
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 07/29/2021
 ms.author: srijangupta
-ms.openlocfilehash: 406793d1e28f48a007cdf92ef87042e6f79bcbde
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: be1bf712d91aaaff460ff2dcc4a899f8b8a089be
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208151"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741765"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init 構成は、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -38,68 +38,65 @@ cloud-init が Azure 上の動作保証済み Linux ディストリビューシ�
 ### <a name="canonical"></a>Canonical
 | 発行元 / バージョン| プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical 20.04 |UbuntuServer |18.04-LTS |latest |はい | はい |
+|Canonical 20.04 |UbuntuServer |20.04-LTS |latest |はい | はい |
 |Canonical 18.04 |UbuntuServer |18.04-LTS |latest |はい | はい |
-|Canonical 16.04|UbuntuServer |16.04 LTS |latest |はい | はい |
-|Canonical 14.04|UbuntuServer |14.04.5-LTS |latest |はい | はい |
+
 
 ### <a name="rhel"></a>RHEL
-| 発行元 / バージョン | プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
+| 発行元 / バージョン| プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい | はい - 次のパッケージ バージョンからサポート:*18.2-1.el7_6.2*|
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | はい (注: これはプレビュー イメージであり、**必ず** 今後は使用停止してください。これは 2020 年 9 月 1 日に削除されます) | 該当なし |
-|RedHat 7.7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | はい | はい - 次のパッケージ バージョンからサポート:*18.5-6.el7*|
-|RedHat 7.7 (Gen2)|RHEL | 77-gen2 | 7.7.2020051913 | はい | はい - 次のパッケージ バージョンからサポート:*18.5-6.el7*|
-|RedHat 7.7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | はい | はい - 次のパッケージ バージョンからサポート:*18.5-6.el7*|
-|RedHat 7.7 (Gen2)|RHEL | 7lvm-gen2 | 7.7.2020051922  | はい | はい - 次のパッケージ バージョンからサポート:*18.5-6.el7*|
-|RedHat 7.7 (Gen1) |rhel-byos | rhel-lvm77 | 7.7.20200416 | はい  | はい - 次のパッケージ バージョンからサポート:*18.5-6.el7*|
-|RedHat 8.1 (Gen1) |RHEL |8.1-ci |8.1.2020042511 | はい (注: これはプレビュー イメージであり、すべての RHEL 8.1 イメージで cloud-init がサポートされたら、これは 2020 年 8 月 1 日に削除されます) | いいえ、2020 年 6 月の完全サポートを予定しています|
-|RedHat 8.1 (Gen2) |RHEL |81-ci-gen2 |8.1.2020042524 | はい (注: これはプレビュー イメージであり、すべての RHEL 8.1 イメージで cloud-init がサポートされたら、これは 2020 年 8 月 1 日に削除されます) | いいえ、2020 年 6 月の完全サポートを予定しています |
+|RedHat 7 |RHEL |7.7、7.8、7_9 |latest |はい | はい |
+|RedHat 8 |RHEL |8.1、8.2、8_3、8_4 |latest |はい | はい |
 
-* すべての RedHat: RHEL 7.8 と 8.2 (Gen1 と Gen2) のイメージは、cloud-init を使用してプロビジョニングされます。
+* Gen1 イメージと Gen2 イメージの両方を含む、RHEL 7 (バージョン 7.7) および RHEL 8 (バージョン 8.1) 以降の他のすべての RedHat SKU は、cloud-init を使用してプロビジョニングされます。 RHEL 6 イメージでは cloud-init はサポートされていません。 
+
 
 ### <a name="centos"></a>CentOS
-
-| 発行元 / バージョン | プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
+ 発行元 / バージョン| プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |はい (注: これはプレビュー イメージであり、**必ず** 今後は使用停止してください。これは 2020 年 9 月 1 日に削除されます) | 該当なし |
-|OpenLogic 7.7 |CentOS | 7.7 |7.7.2020062400 |はい | はい - 次のパッケージ バージョンからサポート: `18.5-6.el7.centos.5`|
-|OpenLogic 7.7 (Gen2) |CentOS | 7_7-gen2 |7.7.2020062401 |はい | はい - 次のパッケージ バージョンからサポート: `18.5-6.el7.centos.5`|
-|OpenLogic 7.7 |CentOS-HPC | 7.7 |7.6.2020062600 |はい | はい - 次のパッケージ バージョンからサポート: `18.5-6.el7.centos.5`|
-|OpenLogic 7.7 (Gen2) |CentOS-HPC | 7_7-gen2 |7.6.2020062601 |はい | はい - 次のパッケージ バージョンからサポート: `18.5-6.el7.centos.5`|
-|OpenLogic 8.1 |CentOS | 8_1 |8.1.2020062400 |はい | はい - 次のパッケージ バージョンからサポート: `18.5-7.el8_1.1`|
-|OpenLogic 8.1 (Gen2) |CentOS | 8_1-gen2 |8.1.2020062401 |はい | はい - 次のパッケージ バージョンからサポート: `18.5-7.el8_1.1`|
-|OpenLogic 8.1 |CentOS-HPC | 8_1 |8.1.2020062400 |はい | はい - 次のパッケージ バージョンからサポート: `18.5-7.el8_1.1`|
-|OpenLogic 8.1 (Gen2) |CentOS-HPC:8_1-gen2 | 8_1-gen2 |8.1.2020062401 |はい | はい - 次のパッケージ バージョンからサポート: `18.5-7.el8_1.1`|
+|OpenLogic 7 |CentOS |7.7、7.8、7.9 |latest |はい | はい |
+|OpenLogic 8 |CentOS |8.1、8.2、8.3 |latest |はい | はい |
 
-* すべての OpenLogic:CentOS 7.8 と 8.2 (Gen1 と Gen2) のイメージは、cloud-init を使用してプロビジョニングされます。
+* Gen1 イメージと Gen2 イメージの両方を含む、CentOS 7 (バージョン 7.7) および CentOS 8 (バージョン 8.1) 以降の他のすべての CentOS SKU は、cloud-init を使用してプロビジョニングされます。 CentOS 6.10、7.4、7.5、7.6 の各イメージでは cloud-init はサポートされていません。 
+
+> [!NOTE]
+> OpenLogic は Rogue Wave Software になっています 
+
+
 
 ### <a name="oracle"></a>Oracle
 
-| 発行元 / バージョン | プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
+ 発行元 / バージョン| プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01| プレビュー イメージ (注: これはプレビュー イメージであり、すべての Oracle 7.7 イメージで cloud-init がサポートされると、これは削除されます。2020 年の中頃に通知があります) | いいえ。次のパッケージがプレビュー段階です:*18.5-3.0.1.el7*
+|Oracle 7 |Oracle Linux |77、78、ol79 |latest |はい | はい |
+|Oracle 8 |Oracle Linux |81、ol82、ol83-lvm、ol84-lvm |latest |はい | はい |
+
+* Gen1 イメージと Gen2 イメージの両方を含む、Oracle 7 (バージョン 7.7) および Oracle 8 (バージョン 8.1) 以降の他のすべての Oracle SKU は、cloud-init を使用してプロビジョニングされます。
+
 
 ### <a name="suse-sles"></a>SUSE SLES
-これらの SLES イメージは、cloud-init を使用してプロビジョニングするように更新されました。Gen2 イメージのバリエーションも更新されました。
-* suse:sles-15-sp1-{basic/byos/hpc/hpc-byos/chost-byos}:gen1:2020.06.10
-* suse:sles-sap-15-sp1:gen1:2020.06.10
-* suse:sles-sap-15-sp1-byos:gen1:2020.06.10
-* suse:manager-proxy-4-byos:gen1:2020.06.10
-* suse:manager-server-4-byos:gen1:2020.06.10
-* suse:sles-{byos/sap/sap-byos}:15:2020.06.10
-* suse:sles-12-sp5:gen1:2020.06.10
-* suse:sles-12-sp5{-byos/basic/hpc-byos/hpc}:gen1:2020.06.10
-* suse:sles-{byos/sap/sap-byos}:12-sp4:2020.06.10
-* suse:sles-{byos/sap/sap-byos}:12-sp3:2020.06.10
-* suse:sles-{byos/sap/sap-byos}:12-sp2:2020.06.10
+
+ 発行元 / バージョン| プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+| SUSE 15 |SLES (SUSE Linux Enterprise Server) |sp1、sp2、sp3 |latest |はい | はい |
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sp5 |latest |はい | はい |
+
+* Gen1 イメージと Gen2 イメージの両方を含む、SLES 15 (sp1) および SLES 12 (sp5) 以降の他のすべての SUSE SKU は、cloud-init を使用してプロビジョニングされます。
+* さらに、次のイメージも cloud-init でプロビジョニングされます。
+
+
+ 発行元 / バージョン| プラン | SKU/バージョン
+|:--- |:--- |:---
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sles-{byos/sap/sap-byos}:12-sp4:2020.06.10
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sles-{byos/sap/sap-byos}:12-sp3:2020.06.10
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sles-{byos/sap/sap-byos}:12-sp2:2020.06.10
+| SUSE 15 |SLES (SUSE Linux Enterprise Server) |manager-proxy-4-byosgen1:2020.06.10
+| SUSE 15 |SLES (SUSE Linux Enterprise Server) |manager-server-4-byos:gen1:2020.06.10
 
 
 ### <a name="debian"></a>Debian
 | 発行元 / バージョン | プラン | SKU | Version | cloud-init 対応イメージ | Azure での cloud-init パッケージ サポート|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| debian (Gen1) |debian-10 | 10-cloudinit |cloud-init-preview| はい (注: これはプレビュー イメージであり、**必ず** 今後は使用停止してください。これは 2021 年 1 月 1 日に削除されます) | いいえ、プレビュー段階です。 |
-| debian (Gen2) |debian-10 | 10-cloudinit-gen2 |cloud-init-preview| はい (注: これはプレビュー イメージであり、**必ず** 今後は使用停止してください。これは 2021 年 1 月 1 日に削除されます) | いいえ、プレビュー段階です。 |
 | debian (Gen1) |debian-10 | 10-cloudinit |10:0.20201013.422| はい | はい - 次のパッケージ バージョンからサポート: `20.2-2~deb10u1` |
 | debian (Gen2) |debian-10 | 10-cloudinit-gen2 |0.20201013.422| はい | はい - 次のパッケージ バージョンからサポート: `20.2-2~deb10u1` |
 
@@ -116,6 +113,9 @@ cloud-init では Azure 拡張機能を処理できないため、拡張機能�
 VM を作成する際、プロビジョニング時に Azure CLI `--custom-data` スイッチを指定しないと、cloud-init または WALA では、VM をプロビジョニングして既定値でデプロイを完了するために必要な最低限の VM プロビジョニング パラメーターが取得されます。  `--custom-data` スイッチを指定して cloud-init の構成を参照した場合、カスタム データに含まれているものはすべて、VM 起動時に cloud-init で利用可能になります。
 
 VM に適用される cloud-init の構成には時間制限がなく、タイムアウトによってデプロイが失敗することはありません。これは WALA には当てはまりません。カスタム データを処理するように WALA の既定値を変更した場合、VM のプロビジョニング合計時間は許容値の 40 分を超えることはできません。超えた場合、VM Create は失敗します。
+
+## <a name="cloud-init-vm-provisioning-without-a-udf-driver"></a>UDF ドライバーを使用しない cloud-init VM のプロビジョニング  
+cloud-init 21.2 以降では、cloud-init を使用して UDF ドライバーを使わずに Azure で VM をプロビジョニングすることができます。 イメージで UDF ドライバーを使用できない場合は、Azure Instance Metadata Service で使用できるメタデータが、VM をプロビジョニングするために cloud init によって使用されます。 このオプションは、SSH キーと[ユーザー データ](../user-data.md)に対してのみ機能することに注意してください。 プロビジョニングの間にパスワードまたはカスタム データを VM に渡すには、UDF ドライバーを使用する必要があります。
 
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>cloud-init 対応の仮想マシンのデプロイ
 cloud-init 対応の仮想マシンのデプロイは簡単であり、デプロイの間に cloud-init が有効なディストリビューションを参照するだけです。  Linux ディストリビューションのメンテナンス担当者は、cloud-init を有効にし、Azure で発行された基本イメージに cloud-init を統合する必要があります。 デプロイするイメージが cloud-init 対応であることを確認した後は、Azure CLI を使ってイメージをデプロイできます。 

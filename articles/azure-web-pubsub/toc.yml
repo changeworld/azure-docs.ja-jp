@@ -34,7 +34,7 @@
       items:
         - name: Azure Functions で通知アプリを構築する
           href: tutorial-serverless-notification.md
-        - name: Azure Functions でチャット アプリを構築する
+        - name: クライアント認証を使用してリアルタイム チャット アプリを構築する
           href: quickstart-serverless.md
     - name: メッセージの発行とサブスクライブ
       href: tutorial-pub-sub-messages.md
@@ -85,6 +85,8 @@
       items:
         - name: JSON WebSocket サブプロトコル
           href: reference-json-webpubsub-subprotocol.md
+        - name: Protobuf WebSocket サブプロトコル
+          href: reference-protobuf-webpubsub-subprotocol.md
     - name: Azure Web PubSub の CloudEvents 拡張機能
       href: reference-cloud-events.md
     - name: Functions のトリガーとバインド

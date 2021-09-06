@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: ddb42dde242bb9c3f33a6dc3f8f52a147367f295
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e3710613b0a2622b20329ed383d5f818b01f6fee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744639"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection の参照アーキテクチャ
 
@@ -66,7 +66,7 @@ Azure でパブリック IP アドレスをホストし、バックエンド配�
 
 ![オンプレミスのリソースの保護](./media/reference-architectures/ddos-on-prem.png)
 
-インターネットからのトラフィックを受信する Web アプリがある場合は、Application Gateway の背後で Web アプリをホストし、SQL インジェクションや Slowloris などのレイヤー 7 の Web 攻撃に対して WAF を使用して保護することができます。 アプリケーションのバックエンド配信元は、VPN 経由で接続されているオンプレミス環境に配置されます。 
+インターネットからのトラフィックを受信する Web アプリがある場合は、Application Gateway の背後で Web アプリをホストし、SQL インジェクションなどのレイヤー 7 の Web 攻撃に対して WAF を使用して保護することができます。 アプリケーションのバックエンド配信元は、VPN 経由で接続されているオンプレミス環境に配置されます。 
 
 オンプレミス環境のバックエンド リソースは、パブリック インターネットに公開されません。 AppGW/WAF パブリック IP のみがインターネットに公開され、アプリケーションの DNS 名がそのパブリック IP アドレスにマップされます。 
 

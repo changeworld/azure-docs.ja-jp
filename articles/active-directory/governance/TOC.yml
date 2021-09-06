@@ -132,22 +132,14 @@
               href: review-your-access.md
             - name: アクセス レビューを完了する
               href: complete-access-review.md
-        - name: Azure AD ロール
+        - name: Azure AD ロールおよび Azure リソース ロール
           items:
             - name: アクセス レビューの作成
-              href: ../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-            - name: アクセスのレビュー
-              href: ../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+              href: ../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+            - name: アクセス レビューの実行
+              href: ../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
             - name: アクセス レビューを完了する
-              href: ../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-        - name: Azure リソース ロール
-          items:
-            - name: アクセス レビューの作成
-              href: ../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-            - name: アクセスのレビュー
-              href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
-            - name: アクセス レビューを完了する
-              href: ../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+              href: ../privileged-identity-management/pim-complete-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
 - name: リファレンス
   expanded: true
   items:

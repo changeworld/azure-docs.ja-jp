@@ -8,17 +8,17 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 09/17/2020
-ms.openlocfilehash: 729939f9dfe4c995f92513117d9a2631333bc19d
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 06/18/2021
+ms.openlocfilehash: 7f9d9d854513427fd02b47beb084edbcb70ea527
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110631219"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742094"
 ---
 **コンピューティング ターゲットは、各トレーニング ジョブで順に再利用できます。** たとえば、リモート VM をワークスペースにアタッチした後、複数のジョブでそれを再利用できます。 機械学習パイプラインの場合は、各コンピューティング ターゲットに対して、適切な[パイプライン ステップ](/python/api/azureml-pipeline-steps/azureml.pipeline.steps)を使用します。
 
-ほとんどのジョブのトレーニング コンピューティング ターゲットには、次のいずれかのリソースを使用できます。 一部のリソースは、自動機械学習、機械学習パイプライン、またはデザイナーで使用することができません。
+ほとんどのジョブのトレーニング コンピューティング ターゲットには、次のいずれかのリソースを使用できます。 一部のリソースは、自動機械学習、機械学習パイプライン、またはデザイナーで使用することができません。 Azure Databricks は、ローカル実行および機械学習パイプライン用のトレーニング リソースとして使用できますが、他のトレーニング用のリモート ターゲットとしては使用できません。
 
 |トレーニング &nbsp;ターゲット|[自動機械学習](../articles/machine-learning/concept-automated-ml.md) | [Machine Learning パイプライン](../articles/machine-learning/concept-ml-pipelines.md) | [Azure Machine Learning デザイナー](../articles/machine-learning/concept-designer.md)
 |----|:----:|:----:|:----:|
@@ -31,6 +31,8 @@ ms.locfileid: "110631219"
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-attach-compute-targets.md#adla) | &nbsp; | はい | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/how-to-attach-compute-targets.md#hdinsight) | &nbsp; | はい | &nbsp; |
 |[Azure Batch](../articles/machine-learning/how-to-attach-compute-targets.md#azbatch) | &nbsp; | はい | &nbsp; |
+|[Azure Kubernetes Service](../articles/machine-learning/how-to-attach-compute-targets.md#kubernetes) (プレビュー) | はい | はい | はい |
+|[Azure Arc 対応 Kubernetes](../articles/machine-learning/how-to-attach-compute-targets.md#kubernetes) (プレビュー) | はい | はい | はい |
 
 > [!TIP]
 > コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを[停止または再起動](../articles/machine-learning/how-to-create-manage-compute-instance.md#manage)する前に、[ターミナルを使用して](../articles/machine-learning/how-to-access-terminal.md)少なくとも 1 GB から 2 GB をクリアしてください。

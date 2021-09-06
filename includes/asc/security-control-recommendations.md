@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 06/14/2021
+ms.date: 08/17/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 4b3d3b99854a6b4b090e7a36474ccecdf42aa20a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 49b5ed53aef4de5282e1be0d02df897e8b9921aa
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062076"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322911"
 ---
 <table class="tg">
 <thead>
@@ -23,57 +23,57 @@ ms.locfileid: "112062076"
 <tbody>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">10</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">MFA の有効化</p></strong>ユーザーの認証にパスワードのみを使用する場合、攻撃ベクトルの可能性が残っています。 パスワード強度が弱いか、パスワードがどこかで流出していた場合、そのユーザー名とパスワードでサインインしようとしている人物がユーザー本人であるかどうかはわかりません。<br><a href="https://www.microsoft.com/security/business/identity/mfa">MFA</a> を有効にすると、アカウントのセキュリティが強化され、しかもユーザーはそれまでと同様、シングル サインオン (SSO) でほとんどすべてのアプリケーションに対して認証を行うことができます。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">MFA の有効化</p></strong>Security Center では多要素認証 (MFA) を重要視しています。 これらの推奨事項を使用して、サブスクリプションのユーザーをセキュリティで保護します。 <br>MFA を有効にし、推奨事項に準拠するには、セキュリティの既定値、ユーザーごとの割り当て、条件付きアクセス ポリシーの 3 つの方法があります。 これらのオプションの詳細については、<a href="/azure/security-center/security-center-identity-access">サブスクリプションでの MFA 実施の管理</a>に関する記事を参照してください。</td>
     <td class="tg-lboi"; width=55%>-サブスクリプションに対する所有者アクセス許可を持つアカウントに対して、MFA を有効にする必要があります<br />-サブスクリプションに対する所有者アクセス許可を持つアカウントに対して、MFA を有効にする必要があります<br />- サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある<br />- サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">8</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">管理ポートのセキュリティ保護</p></strong>ブルート フォース攻撃は、管理ポートを標的にして、VM へのアクセスを取得します。 ポートは常に開放している必要はないため、1 つの軽減策は、Just-In-Time ネットワーク アクセス制御、ネットワーク セキュリティ グループ、仮想マシン ポート管理を使用してポートへの露出を削減することです。<br>多くの IT 組織は、ネットワークから送られてくる SSH 通信をブロックしないため、攻撃者は、感染したシステム上の RDP ポートが攻撃者のコマンドに返されてサーバーを制御できるようにする暗号化トンネルを作成することができます。 攻撃者は、Windows リモート管理サブシステムを使用して、お使いの環境全体を横断し、盗んだ資格情報を使用して、ネットワーク上の他のリソースにアクセスすることができます。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">管理ポートのセキュリティ保護</p></strong>ブルートフォース攻撃では、管理ポートがしばしば標的になります。 これらの推奨事項と、<a href="/azure/security-center/just-in-time-explained">Just-In-Time VM アクセス</a>や<a href="/azure/virtual-network/network-security-groups-overview">ネットワーク セキュリティ グループ</a>などのツールを使用して露出を減らします。</td>
     <td class="tg-lboi"; width=55%>- インターネットに接続されている仮想マシンをネットワーク セキュリティ グループで保護する必要がある<br />- 仮想マシンの管理ポートは、Just-In-Time ネットワーク アクセス制御によって保護されている必要があります<br />- お使いの仮想マシンの管理ポートを閉じておく必要があります</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">6</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">システムの更新プログラムの適用</p></strong>システムの更新プログラムにより、組織は、運用効率を維持し、セキュリティ脆弱性を軽減し、エンド ユーザーにより安定した環境を提供することができます。 更新プログラムを適用しないと、修正プログラムが脆弱性に適用されないままになるため、環境は攻撃を受けやすくなります。 このような脆弱性は悪用され、データ損失、データ流出、ランサムウェア、リソースの不正使用を引き起こす可能性があります。 システムの更新プログラムを展開するには、<a href="/azure/automation/update-management/overview">Update Management ソリューション</a>を使用して仮想マシンの修正プログラムと更新プログラムを管理します。 更新プログラムの管理は、ソフトウェア リリースの展開と保守を制御するプロセスです。</td>
-    <td class="tg-lboi"; width=55%>- お使いのマシンで Log Analytics エージェントの正常性の問題を解決する必要がある<br />- Log Analytics エージェントを Linux ベースの Azure Arc マシンにインストールする必要がある<br />- 仮想マシンに Log Analytics エージェントをインストールする必要がある<br />- 仮想マシン スケール セットに Log Analytics エージェントをインストールする必要がある<br />- Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要がある<br />- Virtual Machine Scale Sets にシステムの更新プログラムをインストールする必要があります<br />- お使いのマシンにシステムの更新プログラムをインストールする必要があります<br />- システム更新プログラムをマシンにインストールする必要がある (更新センターを利用)</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">システムの更新プログラムの適用</p></strong>更新プログラムを適用しないと、修正プログラムが脆弱性に適用されないままになるため、環境は攻撃を受けやすくなります。 これらの推奨事項を使用して、運用効率を維持し、セキュリティ脆弱性を軽減し、より安定した環境をエンド ユーザーに提供することができます。 システムの更新プログラムを展開するには、<a href="/azure/automation/update-management/overview">Update Management ソリューション</a>を使用してマシンの修正プログラムと更新プログラムを管理します。</td>
+    <td class="tg-lboi"; width=55%>- Log Analytics エージェントを Linux ベースの Azure Arc マシンにインストールする必要がある<br />- 仮想マシンに Log Analytics エージェントをインストールする必要がある<br />- 仮想マシン スケール セットに Log Analytics エージェントをインストールする必要がある<br />- Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要がある<br />- Virtual Machine Scale Sets にシステムの更新プログラムをインストールする必要があります<br />- お使いのマシンにシステムの更新プログラムをインストールする必要があります<br />- システム更新プログラムをマシンにインストールする必要がある (更新センターを利用)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">6</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">脆弱性の修復</p></strong>脆弱性は、脅威アクターが、リソースの機密性、可用性、または整合性を侵害するために利用する可能性のある弱点です。 <a href="/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt">脆弱性の管理</a>により、組織の露出の削減、エンドポイントの攻撃対象領域の強化、組織の回復力の向上、リソースの攻撃対象領域の縮小を実現できます。 脅威と脆弱性の管理機能は、ソフトウェアとセキュリティの構成の誤りを可視化し、軽減のための推奨事項を提示します。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">脆弱性の修復</p></strong>Security Center に含まれる複数の脆弱性評価スキャナーによって、マシン、データベース、コンテナー レジストリをチェックし、脅威アクターに付け込まれる可能性がある脆弱性の有無を調べます。 これらの推奨事項を使用して、これらのスキャナーを有効にし、検出結果を確認してください。<br><a href="/azure/security-center/deploy-vulnerability-assessment-vm">マシン</a>、<a href="/azure/security-center/defender-for-sql-on-machines-vulnerability-assessment">SQL サーバー</a>、<a href="/azure/security-center/defender-for-container-registries-usage">コンテナー レジストリ</a>のスキャンの詳細を確認してください。</td>
     <td class="tg-lboi"; width=55%>- 脆弱性評価ソリューションを仮想マシンで有効にする必要がある<br />- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要がある<br />- コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある<br />- Azure Container Registry イメージの脆弱性を修復する必要がある (Qualys を利用)<br />- 仮想マシンの脆弱性を修復する必要がある</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">4</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">転送中のデータの暗号化</p></strong> データは、コンポーネント、場所、またはプログラムの間で転送される場合、"転送中" になります。 転送中のデータを保護しない組織は、中間者攻撃、傍受、セッション ハイジャックの影響を受けやすくなります。 データの交換には、SSL/TLS プロトコルを使用する必要があり、VPN を使用することをおすすめします。 インターネットを介して Azure 仮想マシンとオンプレミスの場所の間で暗号化されたデータを送信する場合、<a href="/azure/vpn-gateway/vpn-gateway-about-vpngateways">Azure VPN Gateway</a> などの仮想ネットワーク ゲートウェイを使用して、暗号化されたトラフィックを送信できます。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">転送中のデータの暗号化</p></strong>これらの推奨事項を使用して、コンポーネント、拠点、またはプログラム間を移動するデータをセキュリティで保護します。 そのようなデータは、中間者攻撃、盗聴、セッション ハイジャックの影響を受けやすいものです。</td>
     <td class="tg-lboi"; width=55%>- API アプリには、HTTPS を介してのみアクセスできるようにする必要があります<br />- MySQL データベース サーバーでは [SSL 接続を強制する] を有効にする必要があります<br />- PostgreSQL データベース サーバーでは [SSL 接続を強制する] を有効にする必要があります<br />- API アプリでは FTPS を必須とする必要があります<br />- 関数アプリでは FTPS を必須とする必要があります<br />- Web アプリでは FTPS を必須とする必要があります<br />- Function App には、HTTPS を介してのみアクセスできるようにする必要があります<br />- Redis Cache に対してセキュリティで保護された接続のみを有効にする必要があります<br />- ストレージ アカウントへの安全な転送を有効にする必要があります<br />- API アプリ用に TLS を最新バージョンに更新する必要があります<br />- 関数アプリ用に TLS を最新バージョンに更新する必要があります<br />- Web アプリ用に TLS を最新バージョンに更新する必要があります<br />- Web アプリケーションには、HTTPS を介してのみアクセスできるようにする必要があります</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">4</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">承認されていないネットワーク アクセスの制限</p></strong>組織内のエンドポイントは、仮想ネットワークからサポートされている Azure サービスへの直接接続を提供します。 サブネット内の仮想マシンはすべてのリソースと通信できます。 サブネット内のリソース間の通信を制御するには、ネットワーク セキュリティ グループを作成して、それをサブネットに関連付けます。 組織は、インバウンド規則とアウトバウンド規則を作成することにより、不正なトラフィックを制限および防止することができます。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">承認されていないネットワーク アクセスの制限</p></strong>Azure には、ネットワーク全体のアクセスが最高のセキュリティ標準を満たすように設計された一連のツールが用意されています。<br>これらの推奨事項を使用して、<a href="/azure/security-center/security-center-adaptive-network-hardening">Security Center のアダプティブ ネットワーク セキュリティ強化</a>の設定を管理する、関連するすべての PaaS サービスに対して <a href="/azure/private-link/private-link-overview">Azure Private Link</a> が構成済みであることを確認する、仮想ネットワークで <a href="/azure/firewall/overview">Azure Firewall</a> を有効にするなどの対策を講じます。</td>
     <td class="tg-lboi"; width=55%>- アダプティブ ネットワーク強化の推奨事項をインターネットに接続する仮想マシンに適用する必要があります<br />- 仮想マシンに関連付けられたネットワーク セキュリティ グループでは、すべてのネットワーク ポートを制限する必要がある<br />- App Configuration ではプライベート リンクを使用する必要がある<br />- Azure Cache for Redis は仮想ネットワーク内に存在しなければならない<br />- Azure Event Grid ドメインではプライベート リンクを使用する必要がある<br />- Azure Event Grid トピックではプライベート リンクを使用する必要がある<br />- Azure Machine Learning ワークスペースではプライベート リンクを使用する必要がある<br />- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要がある<br />- Azure SignalR Service ではプライベート リンクを使用する必要がある<br />- Azure Spring Cloud ではネットワークの挿入を使用する必要がある<br />- コンテナー レジストリでは無制限のネットワーク アクセスを許可しない<br />- コンテナー レジストリではプライベート リンクを使用する必要がある<br />- コンテナーは許可されたポートでのみリッスンする必要がある<br />- CORS で、必ずしもすべてのリソースに API アプリへのアクセスを許可しないようにする必要があります<br />- CORS で、必ずしもすべてのリソースに Function App へのアクセスを許可しないようにする必要があります<br />- CORS で Web アプリケーションへのアクセスをすべてのリソースには許可しない<br />- キー コンテナーでファイアウォールを有効にする必要がある<br />- インターネットに接続されている仮想マシンをネットワーク セキュリティ グループで保護する必要がある<br />-お使いの仮想マシンでの IP 転送を無効にする必要があります<br />- Kubernetes Services Management API サーバーは、制限付きアクセスで構成されている必要がある<br />- キー コンテナー用にプライベート エンドポイントを構成する必要がある<br />- MariaDB サーバーに対してプライベート エンドポイントを有効にする必要があります<br />- MySQL サーバーに対してプライベート エンドポイントを有効にする必要があります<br />- PostgreSQL サーバーに対してプライベート エンドポイントを有効にする必要があります<br />- MariaDB サーバーでは、公衆ネットワーク アクセスを無効にする必要がある<br />- MySQL サーバーでは、公衆ネットワーク アクセスを無効にする必要がある<br />- PostgreSQL サーバーでは、公衆ネットワーク アクセスを無効にする必要がある<br />- サービスは許可されたポートでのみリッスンする必要がある<br />- ストレージ アカウントではプライベート リンク接続を使用する必要がある<br />- ストレージ アカウントでは、仮想ネットワーク ルールを使用してネットワーク アクセスを制限する必要がある<br />- ホスト ネットワークとポートの使用を制限する必要がある<br />- 仮想ネットワークは、Azure Firewall によって保護する必要がある<br />- VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">4</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">保存時の暗号化の有効化</p></strong><a href="/azure/security/fundamentals/encryption-atrest">保存時の暗号化</a>は、格納されているデータのデータ保護を提供します。 保存データに対する攻撃として、データが格納されているハードウェアへの物理的なアクセスを取得しようとする試みがあります。 Azure では、対称暗号化を使用して、大量の保存データの暗号化と暗号化解除を行います。 データがストレージに書き込まれるときに、対称暗号化キーを使用してデータが暗号化されます。 その暗号化キーは、メモリで、データを使用する準備として暗号化の解除を行うためにも使用されます。 キーは、ID ベースのアクセス制御と監査ポリシーが適用される、セキュリティで保護された場所に保存する必要があります。 このようなセキュリティで保護された場所の 1 つが、Azure Key Vault です。 攻撃者は、暗号化されたデータを取得しても、暗号化キーを取得しなければ、暗号を解読できず、データにアクセスすることはできません。</td>
-    <td class="tg-lboi"; width=55%>- 仮想マシンでディスク暗号化を適用する必要があります<br />- Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要があります<br />- SQL データベースで Transparent Data Encryption を有効にする必要があります</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">保存時の暗号化の有効化</p></strong>これらの推奨事項を使用して、格納されているデータの保護に関する構成ミスを減らします。</td>
+    <td class="tg-lboi"; width=55%>- Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要があります<br />- SQL データベースで Transparent Data Encryption を有効にする必要があります<br />- コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">4</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">アクセスおよびアクセス許可の管理</p></strong>セキュリティ プログラムの中核となるのは、ユーザーがそのジョブを実行するために必要なアクセスを付与しても、それ以上の権利を付与しないことです。つまり、<a href="/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小限の特権モデル</a>に従う必要があります。<br>リソースへのアクセスを制御するには、<a href="/azure/role-based-access-control/overview">Azure ロールベースのアクセス制御 (Azure RBAC)</a> を使用してロールの割り当てを作成します。 ロールの割り当ては、次の 3 つの要素で構成されます。<br>- <strong>セキュリティ プリンシパル</strong>: ユーザーがアクセスを要求するオブジェクト<br>- <strong>ロールの定義</strong>: ユーザーのアクセス許可<br>- <strong>スコープ</strong>: アクセス許可が適用される一連のリソース</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">アクセスおよびアクセス許可の管理</p></strong>セキュリティ プログラムの中核となるのは、ユーザーがそのジョブを実行するために必要なアクセスを付与しても、それ以上の権利を付与しないことです。つまり、最小限の特権モデルに従う必要があります。 これらの推奨事項を使用して、ID とアクセスの要件を管理します。</td>
     <td class="tg-lboi"; width=55%>- Linux マシンに対する認証では SSH キーを要求する必要がある<br />- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要がある<br />- 特権エスカレーションを含むコンテナーは避ける必要がある<br />- 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある<br />- 非推奨のアカウントをサブスクリプションから削除する必要がある<br />- 非推奨のアカウントをサブスクリプションから削除する必要がある<br />- 所有者アクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある<br />- 所有者アクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある<br />- 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある<br />- 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある<br />- 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある<br />- 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある<br />- 関数アプリでクライアント証明書 (着信クライアント証明書) を有効にする必要がある<br />- ゲスト構成拡張機能をマシンにインストールする必要がある<br />- コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある<br />- コンテナーで最小限の特権を持つ Linux 機能を適用する必要がある<br />- API アプリではマネージド ID を使用する必要がある<br />- 関数アプリではマネージド ID を使用する必要がある<br />- Web アプリではマネージド ID を使用する必要がある<br />- 特権コンテナーの使用を避ける必要がある<br />- Kubernetes Services ではロールベースのアクセス制御を使用する必要がある<br />- コンテナーをルート ユーザーとして実行しない<br />- Service Fabric クラスターでは、クライアント認証に Azure Active Directory のみを使用する必要があります<br />-サブスクリプションを保護するには、管理証明書ではなくサービス プリンシパルを使用する必要があります<br />- ストレージ アカウントのパブリック アクセスを禁止する必要がある<br />- ポッドの HostPath ボリューム マウントの使用を既知のリストに制限して、侵害されたコンテナーからのノード アクセスを制限する必要がある<br />- 仮想マシンのゲスト構成拡張機能はシステム割り当てマネージド ID を使用してデプロイする必要がある</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">4</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">セキュリティ構成の修復</p></strong>正しく構成されていない IT 資産は、攻撃の対象となる危険性が高くなります。 資産を展開するときに基本的な強化アクションを忘れてしまいがちですが、期限を満たす必要があります。 インフラストラクチャでのセキュリティ構成の誤りは、オペレーティング システムやネットワーク アプライアンスからクラウド リソースまでどのレベルでも起こり得ることです。<br>Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 組織にとって重要な関連する "コンプライアンス パッケージ" (標準とベースライン) を構成した場合、何らかのギャップがあると、セキュリティの推奨事項が表示されます。これには、CCEID と、セキュリティへの潜在的な影響に関する説明が含まれます。<br>一般的に使用されるパッケージは、<a href="/azure/security/benchmarks/introduction">Azure セキュリティ ベンチマーク</a>と <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure Foundations Benchmark バージョン 1.1.0</a> です。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">セキュリティ構成の修復</p></strong>正しく構成されていない IT 資産は、攻撃の対象となる危険性が高くなります。 これらの推奨事項を使用して、インフラストラクチャ全体で識別された構成ミスを修正します。</td>
     <td class="tg-lboi"; width=55%>- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要がある<br />- お使いのマシンで Log Analytics エージェントの正常性の問題を解決する必要がある<br />- Log Analytics エージェントを Linux ベースの Azure Arc マシンにインストールする必要がある<br />- 仮想マシンに Log Analytics エージェントをインストールする必要がある<br />- 仮想マシン スケール セットに Log Analytics エージェントをインストールする必要がある<br />- Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要がある<br />- コンテナーの AppArmor プロファイルのオーバーライドまたは無効化を制限する必要がある<br />- Kubernetes Services では、ポッドのセキュリティ ポリシーを定義する必要がある (非推奨)<br />- SQL データベースでは脆弱性の検出結果を解決する必要がある<br />- マシン上の SQL サーバーでは脆弱性の検出結果を解決する必要がある<br />- コンテナーのセキュリティ構成の脆弱性を修復する必要があります<br />- Linux マシンのセキュリティ構成の脆弱性を修復する必要がある (ゲスト構成を利用)<br />- お使いのマシンでセキュリティ構成の脆弱性を修復する必要があります<br />- Virtual Machine Scale Sets のセキュリティ構成の脆弱性を修復する必要があります<br />- Windows マシンのセキュリティ構成の脆弱性を修復する必要がある (ゲスト構成を利用)<br />- SQL Managed Instance で脆弱性評価を有効にする必要があります<br />- SQL サーバーで脆弱性評価を有効にする必要があります</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">3</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">適応型アプリケーション制御の適用</p></strong>適応型アプリケーション制御 (AAC) は、自動化されたインテリジェントなエンドツーエンドのソリューションであり、これによって、Azure マシンと Azure 以外のマシンで実行可能なアプリケーションを制御できます。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。<br>Security Center では、機械学習を利用して、マシン グループの既知の安全なアプリケーションのリストを作成します。<br>承認されたアプリケーションのリストを作成するというこの革新的なアプローチにより、管理の複雑さを生じることなくセキュリティを強化することができます。<br>AAC は、特定のアプリケーション セットを実行する必要がある専用サーバーに特に関係があります。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">適応型アプリケーション制御の適用</p></strong>適応型アプリケーション制御は、どのアプリケーションをマシンで実行できるかを制御するための、インテリジェントで、自動化された、エンドツーエンドのソリューションです。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。</td>
     <td class="tg-lboi"; width=55%>- 安全なアプリケーションの定義のために適応型アプリケーション制御をマシンで有効にする必要がある<br />- 適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある<br />- お使いのマシンで Log Analytics エージェントの正常性の問題を解決する必要がある<br />- Log Analytics エージェントを Linux ベースの Azure Arc マシンにインストールする必要がある<br />- 仮想マシンに Log Analytics エージェントをインストールする必要がある<br />- Log Analytics エージェントを Windows ベースの Azure Arc マシンにインストールする必要がある</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">2</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Azure の高度なネットワーク ソリューションを使用したアプリケーションの保護</p></strong></td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Azure の高度なネットワーク ソリューションを使用したアプリケーションの保護</p></strong>Azure の高度なネットワーク ソリューションには、<a href="/azure/ddos-protection/ddos-protection-overview"></a>Azure DDoS Protection</a>、<a href="/azure/web-application-firewall/overview"></a>Azure Web Application Firewall</a>、<a href="/azure/governance/policy/concepts/policy-for-kubernetes"></a>Azure Policy Add-on for Kubernetes</a> が含まれます。 これらの推奨事項を使用して、アプリケーションがこれらのツールやその他の手段によって保護されていることを確認します。</td>
     <td class="tg-lboi"; width=55%>- Azure DDoS Protection Standard を有効にする必要がある<br />- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要がある<br />- コンテナーの CPU とメモリの制限を強制する必要がある<br />- Application Gateway に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある<br />- Azure Front Door Service サービスに対して Web Application Firewall (WAF) を有効にする必要がある</td>
   </tr>
   <tr>
@@ -98,7 +98,7 @@ ms.locfileid: "112062076"
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">0</p></strong></td>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Advanced Threat Protection の有効化</p></strong></td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">AzureDefender を有効にする</p></strong>これらの推奨事項を使用して、いずれかの <a href="/azure/security-center/azure-defender">Azure Defender</a> プランを有効にします。</td>
     <td class="tg-lboi"; width=55%>-Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある<br />- Azure Defender for App Service を有効にする必要がある<br />- Azure Defender for Azure SQL Database サーバーを有効にする必要がある<br />- コンテナー レジストリ用 Azure Defender を有効にする必要がある<br />- Azure Defender for DNS を有効にする必要がある<br />- Azure Defender for Key Vault を有効にする必要がある<br />- Azure Defender for Kubernetes を有効にする必要がある<br />- Azure Defender for Resource Manager を有効にする必要がある<br />- サーバー用 Azure Defender を有効にする必要がある<br />- マシン上の Azure Defender for SQL サーバーを有効にする必要がある<br />- Azure Defender for Storage を有効にする必要がある</td>
   </tr>
 </tbody>

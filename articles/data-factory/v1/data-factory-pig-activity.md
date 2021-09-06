@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 85c34bfc306b49bb826a342846bf5e4557e3052f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ad970076449bbd74ed22f2688b314b6a5a3aba98
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786364"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396820"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -21,8 +21,8 @@ ms.locfileid: "104786364"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ML Studio (クラシック) の Batch Execution アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [ML Studio (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)

@@ -93,22 +93,14 @@
           href: groups-audit.md
     - name: アクセスのレビュー
       items:
-        - name: Azure AD ロール
+        - name: Azure AD ロールおよび Azure リソース ロール
           items:
             - name: アクセス レビューの作成
-              href: pim-how-to-start-security-review.md
-            - name: アクセスのレビュー
-              href: pim-how-to-perform-security-review.md
+              href: pim-create-azure-ad-roles-and-resource-roles-review.md
+            - name: アクセス レビューの実行
+              href: pim-perform-azure-ad-roles-and-resource-roles-review.md
             - name: アクセス レビューを完了する
-              href: pim-how-to-complete-review.md
-        - name: Azure ロール
-          items:
-            - name: アクセス レビューの作成
-              href: pim-resource-roles-start-access-review.md
-            - name: アクセスのレビュー
-              href: pim-resource-roles-perform-access-review.md
-            - name: アクセス レビューを完了する
-              href: pim-resource-roles-complete-access-review.md
+              href: pim-complete-azure-ad-roles-and-resource-roles-review.md
     - name: Azure AD ロールの検出と分析情報
       href: pim-security-wizard.md
     - name: Azure サブスクリプションを管理するためにアクセス権を昇格させる

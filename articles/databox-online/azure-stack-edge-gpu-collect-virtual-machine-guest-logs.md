@@ -6,20 +6,24 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 07/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 7ffb96cdc3fbb561009b7f545a3b9a1da9eef729
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: 1c25ea8c35b81169119b0f10025b36319d4dc2c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421006"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744615"
 ---
 # <a name="collect-vm-guest-logs-on-an-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで VM ゲスト ログを収集する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro GPU デバイスで VM プロビジョニング エラーを診断するには、失敗した仮想マシンのゲスト ログを確認します。 この記事では、サポート パッケージ内の VM のゲスト ログを収集する方法について説明します。
+
+> [!NOTE]
+> また、Azure portal で仮想マシンのアクティビティ ログを監視することもできます。 詳細については、[デバイスでの VM アクティビティの監視](azure-stack-edge-gpu-monitor-virtual-machine-activity.md)に関する記事を参照してください。
+
 
 ## <a name="collect-vm-guest-logs-in-support-package"></a>サポート パッケージで VM ゲスト ログを収集する
 
@@ -48,4 +52,5 @@ Azure Stack Edge Pro GPU デバイスで障害が発生した仮想マシンの�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack Edge Pro GPU での VM プロビジョニングのトラブルシューティング](azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md)
+- [VM アクティビティ ログの監視](azure-stack-edge-gpu-monitor-virtual-machine-activity.md)。
+- [Azure Stack Edge Pro GPU での VM プロビジョニングのトラブルシューティング](azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md)。

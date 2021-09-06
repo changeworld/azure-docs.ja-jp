@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c22465ab66e1425139a8440a2b4ca9e0e5e539a
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419016"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397356"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -62,7 +62,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
@@ -83,7 +83,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -99,7 +99,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 **コマンド**
 
-|ツール|command|
+|ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
@@ -136,16 +136,14 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 既定では、Azure DHCP サーバーにより、Azure ネットワーク インターフェイスの[プライマリ IP 構成](#primary)のプライベート IPv4 アドレスが、仮想マシンのオペレーティング システム内のネットワーク インターフェイスに割り当てられます。 必要がない限り、仮想マシンのオペレーティング システム内のネットワーク インターフェイスの IP アドレスを手動で設定しないでください。
 
-> [!WARNING]
-> 仮想マシンのオペレーティング システム内でネットワーク インターフェイスのプライマリ IP アドレスとして設定されている IPv4 アドレスが、Azure 内で仮想マシンにアタッチされているプライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられたプライベート IPv4 アドレスと異なる場合は、仮想マシンへの接続が失われます。
+ただし、仮想マシンのオペレーティング システム内のネットワーク インターフェイスの IP アドレスを手動で設定することが必要な場合もあります。 たとえば、Azure の仮想マシンに複数の IP アドレスを追加するときは、Windows オペレーティング システムのプライマリとセカンダリの IP アドレスを、手動で設定する必要があります。 Linux 仮想マシンの場合、セカンダリ IP アドレスを手動で設定することだけが必要です。 詳細については、「[VM オペレーティング システムに IP アドレスを追加する](virtual-network-multiple-ip-addresses-portal.md#os-config)」を参照してください。 IP 構成に割り当てられているアドレスを変更する必要がある場合は、次のようにすることをお勧めします。
 
-ただし、仮想マシンのオペレーティング システム内のネットワーク インターフェイスの IP アドレスを手動で設定することが必要な場合もあります。 たとえば、Azure の仮想マシンに複数の IP アドレスを追加するときは、Windows オペレーティング システムのプライマリとセカンダリの IP アドレスを、手動で設定する必要があります。 Linux 仮想マシンの場合、セカンダリ IP アドレスを手動で設定することだけが必要な場合があります。 詳細については、「[VM オペレーティング システムに IP アドレスを追加する](virtual-network-multiple-ip-addresses-portal.md#os-config)」を参照してください。 IP 構成に割り当てられているアドレスを変更する必要がある場合は、次のようにすることをお勧めします。
-
-1. 仮想マシンが Azure の DHCP サーバーからアドレスを受け取っていることを確認してください。 確認できたら、IP アドレスの割り当てをオペレーティング システム内の DHCP に戻してから仮想マシンを再起動します。
-2. 仮想マシンを停止します (割り当て解除)。
-3. Azure 内で IP 構成の IP アドレスを変更します。
-4. 仮想マシンを開始します。
-5. オペレーティング システム内のセカンダリ IP アドレス (および Windows 内のプライマリ IP アドレス) を、Azure での設定と一致するように、[手動で構成](virtual-network-multiple-ip-addresses-portal.md#os-config)します。
+1. 仮想マシンが Azure の DHCP サーバーからプライマリ IP アドレスを受け取っていることを確認してください。 Linux VM を実行している場合は、オペレーティング システムでこのアドレスを設定しないでください。
+2. 変更する IP 構成を削除します。
+3. 設定する新しいアドレスを使用して、新しい IP 構成を作成します。
+4. オペレーティング システム内のセカンダリ IP アドレス (および Windows 内のプライマリ IP アドレス) を、Azure での設定と一致するように、[手動で構成](virtual-network-multiple-ip-addresses-portal.md#os-config)します。 Linux の OS ネットワーク構成でプライマリ IP アドレスを手動で設定しないでください。設定して構成を再び読み込むと、インターネットに接続できなくなる場合があります。
+5. ゲスト オペレーティング システムでネットワーク構成を再読み込みします。 これを行うには、システムを再起動するか、NetworkManager を実行している Linux システムで「nmcli con down "System eth0 && nmcli con up "System eth0"」を実行します。
+6. ネットワークの設定が正しいことを確認します。 システムのすべての IP アドレスの接続をテストします。
 
 この手順に従うと、Azure 内と、仮想マシンのオペレーティング システム内で、ネットワーク インターフェイスに割り当てられるプライベート IP アドレスは同じままです。 サブスクリプションのどの仮想マシンに、オペレーティング システム内で IP アドレスを手動設定したかを追跡するには、Azure の[タグ](../azure-resource-manager/management/tag-resources.md)を仮想マシンに追加することを検討します。 たとえば、"IP address assignment: Static" のようなタグを使います。 このようにすると、オペレーティング システムで IP アドレスを手動設定した仮想マシンを、サブスクリプション内で簡単に見つけることができます。
 

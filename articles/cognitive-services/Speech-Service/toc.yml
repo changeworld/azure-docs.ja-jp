@@ -330,6 +330,8 @@
       href: keyword-recognition-guidelines.md
     - name: リージョンのサポート
       href: keyword-recognition-region-support.md
+- name: 言語識別
+  href: language-identification.md
 - name: シナリオの詳細
   items:
     - name: 会話のシナリオ
@@ -531,6 +533,8 @@
           href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/speech-service/context/context
         - name: カスタマー マネージド キーを使用する
           href: speech-encryption-of-data-at-rest.md
+        - name: 音声カスタマイズ リソースをバックアップおよび復旧する方法
+          href: resiliency-and-recovery-plan.md
 - name: デバイス
   items:
     - name: Speech Devices のドキュメント

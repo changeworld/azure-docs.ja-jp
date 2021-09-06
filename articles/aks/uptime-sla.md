@@ -5,20 +5,20 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 288e1b9e361bd8c0cf41e4bb86fcfce15dda8ac9
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 77bdfb4ed75b9287b911a6b0d2742c235b37e297
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166399"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325071"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
-アップタイム SLA は、クラスターに対して利用料金に基づく高い SLA を実現するためのオプションの機能です。 アップタイム SLA は、[可用性ゾーン][availability-zones]を使用するクラスターに対しては Kubernetes API サーバー エンドポイントの 99.95% の可用性を保証し、可用性ゾーンを使用しないクラスターに対しては 99.9% の可用性を保証します。 AKS は、更新ドメインおよび障害ドメイン全体でマスター ノード レプリカを使用して、SLA 要件が満たされるようにします。
+アップタイム SLA は、利用料金に応じて AKS クラスターの SLA を向上させるサービス レベルです。 アップタイム SLA があるクラスターは、AKS REST API の Paid サービス レベルとも見なされ、コントロール プレーン リソースの増量に加えて、クラスターの負荷に合わせて自動的にスケーリングされます。 アップタイム SLA は、[可用性ゾーン][availability-zones]を使用するクラスターに対しては Kubernetes API サーバー エンドポイントの 99.95% の可用性を保証し、可用性ゾーンを使用しないクラスターに対しては 99.9% の可用性を保証します。 AKS は、更新ドメインおよび障害ドメイン全体でマスター ノード レプリカを使用して、SLA 要件が満たされるようにします。
 
-コンプライアンス要件を満たす SLA が必要なお客様や、SLA をエンドユーザーに拡張する必要があるお客様は、この機能を有効にする必要があります。 アップタイム SLA の向上によるメリットが得られる重要なワークロードを持つお客様にもメリットがあります。 可用性ゾーンでアップタイム SLA 機能を使用すると、Kubernetes API サーバーのアップタイムの可用性を高めることができます。
+AKS では、コントロール プレーン コンポーネントの可用性を確保するために、実稼働ワークロードでアップタイム SLA の使用を推奨しています。 対照的に、Free サービス レベルのクラスターは、レプリカが少なく、コントロール プレーンのリソースが限られており、実稼働ワークロードには適していません。
 
-お客様は今まで通り、サービス レベル目標 (SLO) が 99.5% の無制限の無料クラスターを作成することができ、必要に応じて、優先の SLO または SLA アップタイムを選択できます。
+お客様は今まで通り、サービス レベル目標 (SLO) が 99.5% の無料クラスターを個数無制限で作成し、優先 SLO を選択することができます。 
 
 > [!IMPORTANT]
 > エグレス ロックダウンを使用するクラスターの場合、[エグレス トラフィックの制限](limit-egress-traffic.md)に関するページを参照して、適切なポートを開きます。

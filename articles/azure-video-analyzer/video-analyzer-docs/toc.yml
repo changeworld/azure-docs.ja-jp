@@ -161,8 +161,8 @@
       href: visual-studio-code-extension.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/updates/?category=media'
+    - name: Azure サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
     - name: 対応リージョン

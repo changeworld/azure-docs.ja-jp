@@ -76,6 +76,8 @@ items:
         href: concept-asset-normalization.md
       - name: よく寄せられる質問
         href: ./frequently-asked-questions.yml
+      - name: アップグレードされた Purview アカウント
+        href: concept-account-upgrade.md
   - name: 操作方法ガイド
     items:
       - name: コレクションの作成と管理

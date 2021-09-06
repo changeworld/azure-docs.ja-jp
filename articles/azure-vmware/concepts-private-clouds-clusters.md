@@ -3,12 +3,12 @@ title: 概念 - プライベート クラウドとクラスター
 description: Azure VMware Solution ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: 7b32752e368f9aac003a45f96f7c0477e9221481
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 97f31c18fd753c89f2201fddfff4d31c8501bae2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089616"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122324317"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution のプライベート クラウドとクラスターの概念
 
@@ -16,7 +16,7 @@ Azure VMware Solution は、VMware を使用したプライベート クラウ�
 
 プライベート クラウドでは、次のものを使用するクラスターなどを運用できます。
 
-- VMware ESXi ハイパーバイザーを使用してプロビジョニングされた専用のベアメタル サーバー ノード 
+- VMware ESXi ハイパーバイザーを使用してプロビジョニングされた専用のベアメタル サーバー ホスト 
 - ESXi と vSAN を管理する vCenter Server 
 - vSphere ワークロード VM 用の VMware NSX-T ソフトウェア定義ネットワーク  
 - VSphere ワークロード VM 用の VMware vSAN データストア  
@@ -27,7 +27,7 @@ Azure VMware Solution は、VMware を使用したプライベート クラウ�
 
 図に示すのは、開発および運用環境用に 2 個のプライベート クラウドを使用する、単一の Azure サブスクリプションです。 これらのプライベート クラウドにはそれぞれ、2 つのクラスターがあります。 
 
-:::image type="content" source="media/hosts-clusters-private-clouds-final.png" alt-text="顧客サブスクリプションに含まれる 2 個のプライベード クラウドを示す画像。":::
+:::image type="content" source="media/concepts/hosts-clusters-private-clouds-final.png" alt-text="開発と運用の各環境を表す 2 つのプライベート クラウドを含む単一の Azure サブスクリプションを示す図。" border="false":::
 
 ## <a name="hosts"></a>Hosts
 
@@ -85,7 +85,7 @@ Azure VMware Solution プライベート クラウドに関する概念を理解
 
 - [Azure VMware Solution におけるネットワークと相互接続性の概念](concepts-networking.md)
 - [Azure VMware Solution のストレージの概念](concepts-storage.md)
-- [Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
+- [Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)
 
 <!-- LINKS - internal -->
 [concepts-networking]: ./concepts-networking.md

@@ -2,19 +2,20 @@
 title: Azure Data Factory でカスタム イベント トリガーを作成する
 description: Azure Data Factory で、Event Grid に発行されたカスタム イベントに応答してパイプラインを実行するトリガーを作成する方法について説明します。
 ms.service: data-factory
+ms.subservice: orchestration
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: d91e1f52f0844317b049086489bda25c079ee9be
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 2a454f2f81e048511725e7a9f3269bdd9b5bcd49
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634295"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396636"
 ---
-# <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory-preview"></a>Azure Data Factory でカスタム イベント トリガーを作成してパイプラインを実行する (プレビュー)
+# <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory"></a>Azure Data Factory でカスタム イベント トリガーを作成してパイプラインを実行する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -93,6 +94,39 @@ Data Factory は、イベントが [Event Grid イベント スキーマ](../eve
 
 1. パラメーターを入力したら、 **[OK]** を選択します。
 
+## <a name="advanced-filtering"></a>高度なフィルター処理
+
+カスタム イベント トリガーでは、[Event Grid の高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)と同様の高度なフィルター処理機能がサポートされています。 これらの条件付きフィルターを使用すると、イベント ペイロードの _値_ に基づいてパイプラインをトリガーできます。 たとえば、イベント ペイロードに _Department という名前のフィールドがあり、_Department_ が _Finance_ の場合にのみパイプラインをトリガーするとします。 _date_ フィールドにはリスト [1, 2, 3, 4, 5] を、_month_ フィールドの __not__ 条件にはリスト [11, 12] を、_tag_ フィールドは ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] のいずれかを含む、というように複雑なロジックを指定することもできます。
+
+ :::image type="content" source="media/how-to-create-custom-event-trigger/custom-event-5-advanced-filters.png" alt-text="顧客イベント トリガーの高度なフィルターの設定のスクリーンショット":::
+
+カスタム イベント トリガーでは現在、[高度なフィルター処理演算子](../event-grid/event-filtering.md#advanced-filtering)の __一部__ が Event Grid でサポートされています。 次のフィルター条件がサポートされています。
+
+* NumberIn
+* NumberNotIn
+* NumberLessThan
+* NumberGreaterThan
+* NumberLessThanOrEquals
+* NumberGreaterThanOrEquals
+* BoolEquals です。
+* StringContains
+* StringBeginsWith
+* StringEndsWith
+* StringIn
+* StringNotIn
+
+**[+ 新規]** をクリックして、新しいフィルター条件を追加します。 
+
+さらに、カスタム イベント トリガーは、次を含む[イベント グリッドと同じ](../event-grid/event-filtering.md#limitations)制限に従います。
+
+* カスタム イベント トリガーごとに、すべてのフィルターで 5 つの高度なフィルターと 25 のフィルター値
+* 文字列値あたり 512 文字
+* in 演算子および not in 演算子の値は 5 つ
+* `john.doe@contoso.com` のように、キーに `.` (ドット) 文字を含めることはできません。 現時点では、エスケープ文字を含むキーはサポートされていません。
+* 複数のフィルターで同じキーを使用できます。
+
+Data Factory は、[Event Grid API](../event-grid/whats-new.md) の最新の _GA_ バージョンに依存しています。 新しい API バージョンが GA 段階になると、Data Factory では、より高度なフィルター処理演算子のサポートが拡張されます。
+
 ## <a name="json-schema"></a>JSON スキーマ
 
 次の表に、カスタム イベント トリガーに関連するスキーマ要素の概要を示します。
@@ -101,12 +135,13 @@ Data Factory は、イベントが [Event Grid イベント スキーマ](../eve
 |---|----------------------------|---|---|---|
 | `scope` | イベント グリッド トピックの Azure Resource Manager リソース ID。 | String | Azure Resource Manager ID | はい |
 | `events` | このトリガーを起動するイベントの種類。 | 文字列の配列    |  | はい。少なくとも 1 つの値が必要です。 |
-| `subjectBeginsWith` | `subject` フィールドは、トリガーを起動するために指定されたパターンで始まる必要があります。 たとえば、*factories* を指定すると、*factories* で始まるイベント サブジェクトに対してのみトリガーが起動されます。 | String   | | いいえ |
+| `subjectBeginsWith` | `subject` フィールドは、トリガーを起動するために指定されたパターンで始まる必要があります。 たとえば、*factories は、*factories* で始まるイベント サブジェクトに対してのみトリガーを発動させます。 | String   | | いいえ |
 | `subjectEndsWith` | `subject` フィールドは、トリガーを起動するために指定されたパターンで終わる必要があります。 | String   | | いいえ |
+| `advancedFilters` | それぞれフィルター条件を指定する JSON BLOB のリスト。 各 BLOB は `key`、`operatorType`、`values` を指定します。 | JSON BLOB のリスト | | いいえ |
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-Azure Data Factory では、承認されていないアクセスを禁止するために Azure RBAC が使用されます。 正常に機能するには、Data Factory で、以下を行うためのアクセス権が必要です。
+Azure Data Factory では、Azure ロールベースのアクセス制御 (RBAC) を使用して未認可のアクセスを禁止します。 正常に機能するには、Data Factory で、以下を行うためのアクセス権が必要です。
 - イベントをリッスンする。
 - イベントから更新をサブスクライブする。
 - カスタム イベントにリンクされているパイプラインをトリガーする。

@@ -7,12 +7,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88a4281d564b7061e831a66b35e768e6377a0115
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368763"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397309"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -21,8 +21,8 @@ ms.locfileid: "100368763"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ML Studio (クラシック) の Batch Execution アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [ML Studio (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -48,6 +48,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
 ## <a name="walkthrough"></a>チュートリアル
 ### <a name="sample-table-and-stored-procedure"></a>サンプル テーブルとストアド プロシージャ
+
 1. SQL Server Management Studio などのツールを使って Azure SQL Database に以下の **テーブル** を作成します。 datetimestamp 列は、対応する ID が生成された日付と時刻です。
 
     ```SQL
@@ -61,11 +62,12 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
     CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
     GO
     ```
-    Id は一意の識別子で、datetimestamp 列は、対応する ID が生成された日時です。
+    `Id` は一意の識別子で、`datetimestamp` 列は、対応する ID が生成された日時です。
     
     ![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
 
     このサンプルでは、ストアド プロシージャは、Azure SQL Database にあります。 ストアド プロシージャが Azure Synapse Analytics と SQL Server Database にある場合の方法は似ています。 SQL Server データベースの場合は、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)をインストールする必要があります。
+    
 2. **sampletable** にデータを挿入する、次の **ストアド プロシージャ** を作成します。
 
     ```SQL

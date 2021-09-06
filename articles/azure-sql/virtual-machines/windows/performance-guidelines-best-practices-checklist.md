@@ -16,12 +16,12 @@ ms.date: 06/01/2021
 ms.author: dpless
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: daca233044af362ad64d396f56e7a64441ac8f5d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 474954faebe62138e234f5bb7a7c1bee7bdcf95b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180579"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397174"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>チェックリスト: Azure VM 上の SQL Server のベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,6 +47,7 @@ Azure VM で SQL Server を実行する場合の VM サイズに関するベス�
 - ミッション クリティカルおよびデータ ウェアハウスのワークロードには、より高いメモリと仮想コアの比率を検討します。 
 - SQL Server のパフォーマンスが最適になるように SQL Server の設定とストレージ オプションが構成されているため、Azure 仮想マシンのマーケットプレース イメージを使用します。 
 - ターゲット ワークロードのパフォーマンス特性を収集し、それらを使用してお客様のビジネスに適した VM サイズを決定します。
+- [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) の [SKU レコメンデーション](/sql/dma/dma-sku-recommend-sql-db) ツールを使用して、既存の SQL Server ワークロードに適した VM サイズを確認します。
 
 詳細については、包括的な [VM サイズのベスト プラクティス](performance-guidelines-best-practices-vm-size.md)に関するページを参照してください。 
 

@@ -1020,6 +1020,8 @@
           href: ./domain-joined/ldap-sync.md
         - name: 転送中の二重暗号化
           href: ./domain-joined/encryption-in-transit.md
+        - name: 可用性ゾーンを使用する
+          href: ./hdinsight-use-availability-zones.md
     - name: 操作方法ガイド
       items:
         - name: 資格情報の管理に ID ブローカーを使用する
@@ -1054,3 +1056,7 @@
               href: ./domain-joined/domain-joined-authentication-issues.md
             - name: DomainNotFound でクラスターの作成が失敗する
               href: ./domain-joined/troubleshoot-domainnotfound.md
+- name: Azure Synapse の統合
+  items:
+    - name: Hive メタストアを Synapse Spark と共有する
+      href: share-hive-metastore-with-synapse.md

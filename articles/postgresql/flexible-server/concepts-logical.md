@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/10/2021
-ms.openlocfilehash: e3e468b774503b42fd46e66492f09982e8d1d9a6
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 07/30/2021
+ms.openlocfilehash: e23eaead0d9c8dd162d73176330f620a9ee8e737
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745101"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの論理レプリケーションと論理デコード
 
@@ -21,7 +21,7 @@ ms.locfileid: "111982270"
 Azure Database for PostgreSQL - フレキシブル サーバーでは、次の論理データの抽出とレプリケーションの手法がサポートされています。
 1. **論理レプリケーション**
    1. データ オブジェクトをレプリケートする、PostgreSQL の[ネイティブ論理レプリケーション](https://www.postgresql.org/docs/12/logical-replication.html)を使用する。 論理レプリケーションを使用すると、テーブル レベルのデータ レプリケーションなど、データ レプリケーションをきめ細かく制御できます。
-   <!--- 2. Using [pglogical](https://github.com/2ndQuadrant/pglogical) extension that provides logical streaming replication and additional capabilities such as copying initial schema of the database, support for TRUNCATE, ability to replicate DDL etc. -->
+   2. 論理ストリーミング レプリケーションと、データベースの初期スキーマのコピー、TRUNCATE のサポート、DDL のレプリケート機能などの追加機能を提供する [pglogical](https://github.com/2ndQuadrant/pglogical) 拡張機能を使用する。 
 2. 先書きログ (WAL) の内容を [デコード](https://www.postgresql.org/docs/12/logicaldecoding-explanation.html)することで実施される **論理デコード**。 
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>論理レプリケーションと論理デコードの比較
@@ -41,18 +41,22 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、次の�
 * データベース内のすべてのテーブルから変更を抽出します 
 * PostgreSQL のインスタンス間でデータを直接送信することはできません。
 
+>[!NOTE]
+> 現在、フレキシブル サーバーではリージョンをまたがる読み取りレプリカはサポートされていません。 ワークロードの種類によっては、リージョンをまたがるディザスター リカバリー (DR) のために論理レプリケーション機能を使用することができます。
+
 ## <a name="pre-requisites-for-logical-replication-and-logical-decoding"></a>論理レプリケーションと論理デコードの前提条件
 
 1. ポータルのサーバー パラメーターのページに移動します。
 2. サーバー パラメーター `wal_level` を `logical` に設定します。
-<!---
-3. If you want to use pglogical extension, search for the `shared_preload_libaries` parameter, and select `pglogical` from the drop-down box. Also update `max_worker_processes` parameter value to at least 16. -->
-3. 変更を保存し、サーバーを再起動して `wal_level` の変更を適用します。
-4. PostgreSQL のインスタンスで、接続しているリソースからのネットワーク トラフィックが許可されていることを確認します。
-5. 管理者ユーザーのレプリケーションのアクセス許可を付与します。
+3. pglogical 拡張機能を使用する場合は、`shared_preload_libaries` パラメーターを見つけて、ドロップダウン ボックスから `pglogical` を選択します。
+4. `max_worker_processes` パラメーターの値を 16 以上に更新します。 そうしないと、`WARNING: out of background worker slots` などの問題が発生する可能性があります。
+5. 変更を保存し、サーバーを再起動して `wal_level` の変更を適用します。
+6. PostgreSQL のインスタンスで、接続しているリソースからのネットワーク トラフィックが許可されていることを確認します。
+7. 管理者ユーザーのレプリケーションのアクセス許可を付与します。
    ```SQL
    ALTER ROLE <adminname> WITH REPLICATION;
    ```
+8. 使用しているロールに、レプリケートするスキーマに対する[特権](https://www.postgresql.org/docs/current/sql-grant.html)があることを確認する必要があります。 そうしないと、`Permission denied for schema` などのエラーが発生する可能性があります。 
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>論理レプリケーションと論理デコードの使用
 
@@ -99,52 +103,51 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、次の�
 
 [論理レプリケーション](https://www.postgresql.org/docs/current/logical-replication.html)の詳細については、PostgreSQL のドキュメントを参照してください。
 
-<!---
-### pglogical extension
+### <a name="pglogical-extension"></a>pglogical 拡張機能
 
-Here is an example of configuring pglogical at the provider database server and the subscriber. Please refer to pglogical extension documentation for more details. Also make sure you have performed pre-requisite tasks listed above.
+プロバイダー データベース サーバーとサブスクライバーで pglogical を構成する例を次に示します。 詳細については、pglogical 拡張機能のドキュメントを参照してください。 また、上で示した前提条件のタスクを実行してある必要があります。
 
-1. Install pglogical extension in the database in both the provider and the subscriber database servers.
+1. プロバイダーとサブスクライバー両方のデータベース サーバーのデータベースに、pglogical 拡張機能をインストールします。
     ```SQL
    \C myDB
    CREATE EXTENSION pglogical;
    ```
-2. At the **provider** (source/publisher) database server, create the provider node.
+2. **プロバイダー** (ソースとパブリッシャー) のデータベース サーバーで、プロバイダー ノードを作成します。
    ```SQL
    select pglogical.create_node( node_name := 'provider1', 
    dsn := ' host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
    ```
-3. Create a replication set.
+3. レプリケーション セットを作成します。
    ```SQL
    select pglogical.create_replication_set('myreplicationset');
    ```
-4. Add all tables in the database to the replication set.
+4. データベース内のすべてのテーブルをレプリケーション セットに追加します。
    ```SQL
    SELECT pglogical.replication_set_add_all_tables('myreplicationset', '{public}'::text[]);
    ```
 
-   As an alternate method, ou can also add tables from a specific schema (for example, testUser) to a default replication set.
+   別の方法として、ou は特定のスキーマ (testUser など) から既定のレプリケーション セットにテーブルを追加することもできます。
    ```SQL
    SELECT pglogical.replication_set_add_all_tables('default', ARRAY['testUser']);
    ```
 
-5. At the **subscriber** database server, create a subscriber node.
+5. **サブスクライバー** のデータベース サーバーで、サブスクライバー ノードを作成します。
    ```SQL
    select pglogical.create_node( node_name := 'subscriber1', 
    dsn := ' host=mySubscriberServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPasword' );
    ```
-6. Create a subscription to start the synchronization and the replication process.
+6. サブスクリプションを作成して、同期とレプリケーションのプロセスを開始します。
     ```SQL
    select pglogical.create_subscription (
    subscription_name := 'subscription1',
    replication_sets := array['myreplicationset'],
    provider_dsn := 'host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
    ```
-7. You can then verify the subscription status.
+7. その後、サブスクリプションの状態を確認できます。
    ```SQL
    SELECT subscription_name, status FROM pglogical.show_subscription_status();
    ```
--->
+
 ### <a name="logical-decoding"></a>論理デコード
 論理デコードは、ストリーミング プロトコルまたは SQL インターフェイスを介して使用できます。 
 
@@ -227,7 +230,6 @@ pg_replication_slots ビューの「active」列には、コンシューマー�
 ```SQL
 SELECT * FROM pg_replication_slots;
 ```
-
 値が大きくなって通常のしきい値を超えたときに通知を受け取るには、フレキシブル サーバーのメトリック **Maximum Used Transaction IDs (使用されるトランザクション ID の最大数)** および **Storage Used (使用済みストレージ)** に [アラートを設定します](howto-alert-on-metrics.md)。 
 
 ## <a name="limitations"></a>制限事項

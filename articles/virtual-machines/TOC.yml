@@ -356,15 +356,9 @@
         - name: 概要
           displayName: 'Dedicated hosts, ADH'
           href: dedicated-hosts.md
-        - name: CLI
-          displayName: 'Dedicated hosts, ADH'
-          href: ./linux/dedicated-hosts-cli.md
-        - name: ポータル
-          displayName: 'Dedicated hosts, ADH'
-          href: dedicated-hosts-portal.md
-        - name: PowerShell
-          displayName: 'Dedicated hosts, ADH'
-          href: ./windows/dedicated-hosts-powershell.md
+        - name: 操作方法
+          displayName: dedicated adh
+          href: dedicated-hosts-how-to.md
     - name: Azure スポット仮想マシン
       items:
         - name: 概要
@@ -776,8 +770,6 @@
           href: ./linux/no-agent.md
         - name: Linux エージェントのプロビジョニングを無効にする
           href: ./linux/disable-provisioning.md
-        - name: VM をマネージド イメージにキャプチャする
-          href: ./linux/capture-image.md
     - name: Windows カスタム イメージ
       items:
         - name: アップロードする VHD を準備する
@@ -801,89 +793,35 @@
         - name: 概要
           displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
           href: ./shared-image-galleries.md
-        - name: CLI
+        - name: ギャラリーの作成
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: create-gallery.md
+        - name: ギャラリーを共有する
+          href: share-gallery.md
+        - name: ポータルで VM をキャプチャする
+          href: capture-image-portal.md
+        - name: イメージを作成する
+          displayName: 'VM, image, VHD, storage account'
+          href: image-version.md
+        - name: VM の作成
           items:
-            - name: ギャラリーの作成
+            - name: 一般化されたイメージ
               displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: shared-images-cli.md
-            - name: イメージを作成する
-              items:
-                - name: VM から
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-vm-cli.md
-                - name: マネージド ディスクまたはスナップショットから
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-snapshot-cli.md
-                - name: マネージド イメージの複製
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-managed-image-cli.md
-                - name: 別のギャラリーからコピーする
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-another-gallery-cli.md
-            - name: VM の作成
-              items:
-                - name: 一般化されたイメージ
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: vm-generalized-image-version-cli.md
-                - name: 専用イメージ
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: vm-specialized-image-version-cli.md
-            - name: イメージ リソースを更新する
+              href: vm-generalized-image-version.md
+            - name: 専用イメージ
               displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: update-image-resources-cli.md
-            - name: 共有のためのアプリの登録
-              items:
-                - name: Linux
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-                  href: ./linux/share-images-across-tenants.md
-                - name: Windows
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-                  href: ./windows/share-images-across-tenants.md
-        - name: PowerShell
+              href: vm-specialized-image-version.md
+        - name: イメージ リソースを更新する
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: update-image-resources.md
+        - name: 共有のためのアプリの登録
           items:
-            - name: ギャラリーの作成
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: shared-images-powershell.md
-            - name: イメージ バージョンを作成する
-              items:
-                - name: VM から
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, version'
-                  href: image-version-vm-powershell.md
-                - name: マネージド ディスクまたはスナップショットから
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, managed disk, snapshot'
-                  href: image-version-snapshot-powershell.md
-                - name: マネージド イメージの複製
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, clone, copy'
-                  href: image-version-managed-image-powershell.md
-                - name: 別のギャラリーからコピーする
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, copy, clone'
-                  href: image-version-another-gallery-powershell.md
-            - name: VM の作成
-              items:
-                - name: 一般化されたイメージ
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, generalized'
-                  href: vm-generalized-image-version-powershell.md
-                - name: 専用イメージ
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, specialized'
-                  href: vm-specialized-image-version-powershell.md
-                - name: イメージ リソースを更新する
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: update-image-resources-powershell.md
-                - name: 共有のためのアプリの登録
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: windows/share-images-across-tenants.md
-        - name: ポータル
-          items:
-            - name: ギャラリー、イメージ、VM の作成
-              items:
-                - name: Linux
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, create'
-                  href: ./linux/shared-images-portal.md
-                - name: Windows
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, create'
-                  href: ./windows/shared-images-portal.md
-            - name: ポータルで VM をキャプチャする
-              href: capture-image-portal.md
+            - name: Linux
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+              href: ./linux/share-images-across-tenants.md
+            - name: Windows
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+              href: ./windows/share-images-across-tenants.md
         - name: リソース マネージャーのテンプレート
           items:
             - name: Shared Image Gallery を作成する

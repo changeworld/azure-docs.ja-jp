@@ -18,6 +18,9 @@ highlightedContent:
     - title: Azure Media Services (v3) について
       itemType: overview
       url: ./latest/media-services-overview.md
+    - title: Azure Media Services (v2) について
+      itemType: overview
+      url: ./previous/media-services-overview.md
     - title: Azure Media Services (v3) の概念
       itemType: concept
       url: ./latest/concepts-overview.md
@@ -112,13 +115,13 @@ conceptualContent:
           text: 顔の検出と編集
     - title: プロトコルと仕様
       links:
-        - url: media-services-specifications-live-timed-metadata.md
+        - url: ./previous/media-services-specifications-live-timed-metadata.md
           itemType: concept
           text: ライブ ストリーミングでの時間指定メタデータ (RTMP および Smooth Streaming)
-        - url: media-services-specifications-ms-sstr-amendment-hevc.md
+        - url: ./previous/media-services-specifications-ms-sstr-amendment-hevc.md
           itemType: concept
           text: HEVC のための Smooth Streaming プロトコル (MS-SSTR) の変更
-        - url: media-services-fmp4-live-ingest-overview.md
+        - url: ./previous/media-services-fmp4-live-ingest-overview.md
           itemType: concept
           text: Smooth Streaming 取り込みプロトコル
     - title: v2 API からの移行

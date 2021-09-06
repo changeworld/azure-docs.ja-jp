@@ -4,12 +4,12 @@ description: Azure App Service で受信および送信 IP アドレスがどの
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 1dda487d23c9f955aea8e35d16e5a560a890a173
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: ea667fcfe70e109038d74e7c1fa0281bbc2b20bb
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834482"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397796"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -51,7 +51,7 @@ nslookup <app-name>.azurewebsites.net
 
 - アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
 - リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
-- アプリを下位レベル (**Basic**、**Standard**、および **Premium**) と **Premium V2** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
+- アプリを下位レベル (**Basic**、**Standard**、および **Premium**)、**Premium V2**、**PremiumV3** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
 
 アプリが使用できるすべての可能な送信 IP アドレスは、価格レベルに関係なく、`possibleOutboundIpAddresses` プロパティを調べるか、Azure portal の **[プロパティ]** ブレードの **[追加の送信 IP アドレス]** で確認できます。 「[IP アドレスを見つける](#find-outbound-ips)」を参照してください。
 
@@ -80,6 +80,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```azurepowershell
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).PossibleOutboundIpAddresses
 ```
+
+## <a name="get-a-static-outbound-ip"></a>静的送信 IP を取得する
+仮想ネットワーク NAT ゲートウェイを使用して、静的パブリック IP アドレス経由でトラフィックを送信すると、アプリからの送信トラフィックの IP アドレスを制御できます。 [リージョン VNet 統合](/azure/app-service/web-sites-integrate-with-vnet)は、**Standard**、**Premium**、**PremiumV2** および **PremiumV3** App Service プランのみで使用できます。 このセットアップの詳細については、[NAT ゲートウェイの統合](./networking/nat-gateway-integration.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

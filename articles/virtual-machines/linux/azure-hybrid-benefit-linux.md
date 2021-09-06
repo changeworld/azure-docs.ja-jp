@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 5b81883b8c9556500ec6b6bd994d50a1f4202808
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 72bf18bee387dc0602f543161afc20c73c2e4144
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949908"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741799"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典を Linux 仮想マシンに適用する方法
 
@@ -64,18 +64,39 @@ Red Hat の特典の使用を開始するには:
 
 ### <a name="suse-customers"></a>SUSE のお客様
 
+SUSE の Azure ハイブリッド特典は、次のものをお持ちのお客様が利用できます。
+
+- Azure で使用する資格のある未使用の SUSE サブスクリプション。
+- Azure に移動する必要がある、オンプレミスを使用するための 1 つ以上のアクティブな SUSE サブスクリプション。
+- Azure で使用するために SUSE カスタマー センターでアクティブ化した購入済みのサブスクリプション。 
+
+> [!IMPORTANT]
+> Azure で使用する正しいサブスクリプションを選択していることを確認します。
+
 SUSE の特典の使用を開始するには:
 
-1. SUSE Public Cloud プログラムに登録します。
-1. Azure portal または Azure CLI を使用して、新しく作成した VM に特典を適用します。
-1. 特典を受けた VM を別の更新ソースに登録します。
+1. SUSE または SUSE ディストリビューターから購入したサブスクリプションを、[SUSE カスタマー センター](https://scc.suse.com)に登録します。
+2. SUSE カスタマー センターでサブスクリプションをアクティブにします。
+3. 特典を受け取っている VM を SUSE カスタマー センターに登録して、SUSE カスタマー センターから更新プログラムを取得します。
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>Azure portal で特典を有効または無効にする
 
-既存の VM に対する特典を有効にするには、左側の **[構成]** オプションに移動し、そこに記載されている手順に従ってください。 VM の作成エクスペリエンス中に、新しい VM の特典を有効にすることもできます。
+Azure portal では、既存の VM で特典を有効にしたり、VM の作成時に新しい VM で特典を有効にしたりできます。
 
-### <a name="azure-portal-example-to-enable-the-benefit-during-creation-of-vm"></a>VM の作成中に特典を有効にする Azure portal の例:
-1. [Microsoft Azure portal](https://portal.azure.com/) に移動します。
+### <a name="enable-the-benefit-for-an-existing-vm-in-the-azure-portal"></a>Azure portal で既存の VM の特典を有効にする
+
+既存の VM で特典を有効にするには:
+
+1. [Azure portal](https://portal.azure.com/) にアクセスします。
+1. 変換を適用する仮想マシンのページを開きます。
+1. 左側の **[構成]** オプションに移動します。 [ライセンス] セクションが表示されます。 AHB 変換を有効にするには、[はい] ラジオ ボタンをオンにし、[確認] チェックボックスをオンにします。
+![作成後の AHB の [構成] ブレード](./media/azure-hybrid-benefit/create-configuration-blade.png)
+
+### <a name="enable-the-benefit-when-you-create-the-vm-in-the-azure-portal"></a>Azure portal で VM を作成するときに特典を有効にする
+
+VM を作成するときに特典を有効にするには (SUSE のワークフローは、ここで示す RHEL の例と同じです):
+
+1. [Azure portal](https://portal.azure.com/) にアクセスします。
 1. ポータルの [仮想マシンの作成] ページに移動します。
  ![VM の作成中の AHB](./media/azure-hybrid-benefit/create-vm-ahb.png)
 1. AHB 変換を有効にし、クラウド アクセス ライセンスを使用するためのチェックボックスをオンにします。
@@ -83,13 +104,6 @@ SUSE の特典の使用を開始するには:
 1. 次の一連の手順に従って、仮想マシンを作成します。
 1. **[構成]** ブレードを確認すると、オプションが有効になっていることがわかります。 
 ![作成後の AHB の [構成] ブレード](./media/azure-hybrid-benefit/create-configuration-blade.png)
-
-### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-vm"></a>既存の VM の特典を有効にする Azure portal の例:
-1. [Microsoft Azure portal](https://portal.azure.com/) に移動します。
-1. 変換を適用する仮想マシンのページを開きます。
-1. 左側の **[構成]** オプションに移動します。 [ライセンス] セクションが表示されます。 AHB 変換を有効にするには、[はい] ラジオ ボタンをオンにし、[確認] チェックボックスをオンにします。
-![作成後の AHB の [構成] ブレード](./media/azure-hybrid-benefit/create-configuration-blade.png)
-
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Azure CLI で特典を有効または無効にする
 
@@ -172,11 +186,16 @@ Red Hat サブスクリプションのコンプライアンス、ソフトウェ
 
 ### <a name="suse"></a>SUSE
 
+Azure ハイブリッド特典を使用しているお客様は、クラウド更新インフラストラクチャを、それらの VM にソフトウェア更新プログラムとパッチを提供する 3 つのオプションのいずれかに移行する必要があります。
+- [SUSE カスタマー センター](https://scc.suse.com)
+- SUSE マネージャー
+- SUSE リポジトリ ミラーリング ツール (RMT) 
+
 SLES VM での Azure ハイブリッド特典の使用方法について、および SLES PAYG から BYOS への移行または SLES BYOS から PAYG への移行については、「[SUSE Linux Enterprise and Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)」 (SUSE Linux Enterprise と Azure ハイブリッド特典) を参照してください。 
 
 ## <a name="azure-hybrid-benefit-on-reserved-instances"></a>予約インスタンスの Azure ハイブリッド特典 
 
-Azure の予約 (Azure Reserved Virtual Machine Instances) を使用すると、複数の製品に対するプランを 1 年分または 3 年分コミットすることで、コストを削減できます。 詳細については、[こちらの予約インスタンス](../../cost-management-billing/reservations/save-compute-costs-reservations.md)を参照してください。 Azure ハイブリッド特典は、[予約仮想マシンインスタンス (RI)](/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation) で使用できます。 
+Azure の予約 (Azure Reserved Virtual Machine Instances) を使用すると、複数の製品に対するプランを 1 年分または 3 年分コミットすることで、コストを削減できます。 詳細については、[こちらの予約インスタンス](../../cost-management-billing/reservations/save-compute-costs-reservations.md)を参照してください。 Azure ハイブリッド特典は、[予約仮想マシンインスタンス (RI)](../../cost-management-billing/reservations/save-compute-costs-reservations.md#charges-covered-by-reservation) で使用できます。 
 
 これは、RI を使用して割引料金でコンピューティング コストを購入した場合、RHEL および SUSE のライセンス コストに AHB 特典を適用できることを意味しています。 RI インスタンスに AHB 特典を適用する手順は、通常の VM の場合とまったく同じです。
 ![RI 向け AHB](./media/azure-hybrid-benefit/reserved-instances.png)
@@ -198,13 +217,13 @@ A:Red Hat Cloud Access サブスクリプションの登録が、Red Hat から 
 
 A:いいえ、できません。 Azure ハイブリッド特典では、従量課金制のイメージでの変換のみがサポートされています。
 
-*Q:オンプレミス (Azure Migrate、Azure Site Recovery、またはそれ以外の方法で) から Azure に独自の RHEL イメージをアップロードしました。これらのイメージの課金を BYOS から PAYG に変換することはできますか。*
+*Q: オンプレミスから (Azure Migrate、Azure Site Recovery、またはそれ以外の方法で) Azure に独自の RHEL または SLES イメージをアップロードしました。これらのイメージの課金を BYOS から PAYG に変換することはできますか。*
 
 A:いいえ、できません。 Azure ハイブリッド特典機能は、現在、Azure Marketplace の RHEL および SLES イメージでのみ使用できます。 
 
-*Q:オンプレミス (Azure Migrate、Azure Site Recovery、またはそれ以外の方法で) から Azure に独自の RHEL イメージをアップロードしました。Azure ハイブリッド特典の特典を得るために何かを行う必要がありますか。*
+*Q: オンプレミスから (Azure Migrate、Azure Site Recovery、またはそれ以外の方法で) Azure に独自の RHEL または SLES イメージをアップロードしました。Azure ハイブリッド特典の特典を得るために何かを行う必要がありますか。*
 
-A:いいえ、必要ありません。 アップロードした RHEL イメージは既に BYOS と見なされており、Azure インフラストラクチャのコストに対してのみ課金されます。 オンプレミス環境の場合と同じように、RHEL サブスクリプションのコストについて責任を負います。 
+A:いいえ、必要ありません。 アップロードした RHEL または SLES イメージは既に BYOS と見なされており、Azure インフラストラクチャのコストに対してのみ課金されます。 オンプレミス環境の場合と同じように、RHEL サブスクリプションのコストについて責任を負います。 
 
 *Q:Azure Marketplace の RHEL および SLES の SAP イメージからデプロイされた VM で Azure ハイブリッド特典を使用できますか。*
 

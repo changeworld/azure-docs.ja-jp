@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 06/09/2021
+ms.date: 07/07/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 0c01e797d74cd058bed94ee3bf8d52b927fd36cc
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 053f1372067284e2b2d10bac508156b6ef38e4af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889809"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014620"
 ---
 | リソース | 制限 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -31,6 +31,7 @@ ms.locfileid: "111889809"
 | サービス インスタンスあたりの API の最大数<sup>8</sup> | 50 |
 | サービス インスタンスあたりの API 管理操作の最大数<sup>8</sup> | 1,000 |
 | 最大合計要求時間<sup>8</sup> | 30 秒 |
+| 要求ペイロードの最大サイズ<sup>8</sup> | 1 GiB |
 | バッファー処理されたペイロードの最大サイズ<sup>8</sup> | 2 MiB |
 | 要求 URL の最大サイズ<sup>9</sup> | 4,096 バイト |
 | URL パスのセグメントの最大長<sup>10</sup> | 260 文字 |
@@ -48,4 +49,4 @@ ms.locfileid: "111889809"
 <sup>8</sup>この制限は、従量課金レベルにのみ適用されます。 他のレベルについては、これらのカテゴリに制限はありません。<br/>
 <sup>9</sup>従量課金レベルにのみ適用されます。 最大 2,048 バイト長のクエリ文字列を含みます。<br/>
 <sup>10</sup> この制限を増やすには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。<br/>
-<sup>11</sup>セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみサポートされています。 この制限は、[セルフホステッド ゲートウェイ リソース](/rest/api/apimanagement/2019-12-01/gateway)の数に適用されます。 この制限を引き上げるには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 セルフホステッド ゲートウェイ リソースに関連付けられるノード (またはレプリカ) の数は、Premium レベルでは無制限であり、Developer レベルでは単一のノードに制限されることに注意してください。
+<sup>11</sup>セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみサポートされています。 この制限は、[セルフホステッド ゲートウェイ リソース](/rest/api/apimanagement/2020-06-01-preview/gateway)の数に適用されます。 この制限を引き上げるには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 セルフホステッド ゲートウェイ リソースに関連付けられるノード (またはレプリカ) の数は、Premium レベルでは無制限であり、Developer レベルでは単一のノードに制限されることに注意してください。

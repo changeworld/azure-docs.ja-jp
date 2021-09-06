@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 644a0d645abb186731ddb1f408cd36e5b9ba3c3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73e20cfcdd0c56f2136b4ce658f7d2d2bed53022
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780023"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397315"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -22,8 +22,8 @@ ms.locfileid: "104780023"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop Streaming アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ML Studio (クラシック) の Batch Execution アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [ML Studio (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)

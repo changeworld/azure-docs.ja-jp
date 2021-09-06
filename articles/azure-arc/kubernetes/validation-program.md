@@ -1,5 +1,5 @@
 ---
-title: Azure Arc 対応 Kubernetes 検証プログラム
+title: Azure Arc 対応 Kubernetes の検証
 services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
@@ -8,14 +8,14 @@ author: shashankbarsin
 ms.author: shasb
 description: Kubernetes ディストリビューションの Arc 検証プログラムについて説明します
 keywords: Kubernetes, Arc, Azure, K8s, 検証
-ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d8e48a6e9dc5d8d95dacb649fb0748e4ae4daa5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121373"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742675"
 ---
-# <a name="azure-arc-validation-program"></a>Azure Arc 検証プログラム
+# <a name="azure-arc-enabled-kubernetes-validation"></a>Azure Arc 対応 Kubernetes の検証
 
 Azure Arc 対応 Kubernetes は、すべての Cloud Native Computing Foundation (CNCF) 認定 Kubernetes クラスターで動作します。 また、Azure Arc チームは、主要な業界の Kubernetes オファリング プロバイダーと協力して、それらの Kubernetes ディストリビューションで Azure Arc 対応 Kubernetes を検証しています。 これらのプロバイダーによって将来リリースされる Kubernetes ディストリビューションのメジャーおよびマイナー バージョンは、Azure Arc 対応 Kubernetes との互換性が検証されます。
 
@@ -32,7 +32,7 @@ Microsoft が提供する次の Kubernetes ディストリビューションお�
 
 | プロバイダー名 | ディストリビューション名 | Version |
 | ------------ | ----------------- | ------- |
-| RedHat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4.5](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html)、[4.6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html)、[4.7](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
+| RedHat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4.5.41 以降](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html)、[4.6.35 以降](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html)、[4.7.18 以降](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
 | VMware       | [Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes バージョン: v1.17.5 |
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1.19](https://ubuntu.com/kubernetes/docs/1.19/components) |
 | SUSE Rancher      | [Rancher Kubernetes Engine](https://rancher.com/products/rke/) | RKE CLI バージョン: [v 1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4)、Kubernetes バージョン: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6))、[1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14))、[1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |

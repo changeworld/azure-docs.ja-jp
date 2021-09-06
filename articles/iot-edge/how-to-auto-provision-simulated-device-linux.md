@@ -7,12 +7,12 @@ ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b380e9501ebed8f2830c09ddb00d40467b9b22a1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d667b2429c7911353df98795f7116d47f8f15d8a
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735160"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397431"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux で TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -270,49 +270,45 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 IoT Edge ランタイムに TPM へのアクセス権を付与するには、systemd 設定をオーバーライドして、`iotedge` サービスに root 特権を付与します。 サービス権限を昇格したくない場合は、次の手順を使用して、TPM へのアクセス権を手動で付与することもできます。
 
-1. デバイスで、TPM ハードウェア モジュールへのファイル パスを探してローカル変数として保存します。
-
-   ```bash
-   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
-   ```
-
-2. IoT Edge ランタイムに tpm0 へのアクセス権を付与する新しいルールを作成します。
+1. IoT Edge ランタイムに tpm0 と tpmrm0 へのアクセス権を付与する新しいルールを作成します。 
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
    ```
 
-3. 規則ファイルを開きます。
+2. 規則ファイルを開きます。
 
    ```bash
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. 次のアクセス情報を規則ファイルにコピーします。
+3. 次のアクセス情報を規則ファイルにコピーします。 4\.12 よりも前のカーネルを使用するデバイスには `tpmrm0` が存在しない場合があります。 tpmrm0 が存在しないデバイスでは、そのルールは安全に無視されます。
 
    ```input
    # allow iotedge access to tpm0
    KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="iotedge", MODE="0600"
+   KERNEL=="tpmrm0", SUBSYSTEM=="tpmrm", OWNER="iotedge", MODE="0600"
    ```
 
-5. ファイルを保存して終了します。
+4. ファイルを保存して終了します。
 
-6. udev system をトリガーして、新しい規則を評価します。
+5. udev system をトリガーして、新しい規則を評価します。
 
    ```bash
-   /bin/udevadm trigger $tpm
+   /bin/udevadm trigger --subsystem-match=tpm --subsystem-match=tpmrm
    ```
 
-7. 規則が正常に適用されたことを確認します。
+6. 規則が正常に適用されたことを確認します。
 
    ```bash
-   ls -l /dev/tpm0
+   ls -l /dev/tpm*
    ```
 
    成功した場合の出力は、次のようになります。
 
    ```output
-   crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
+   crw------- 1 iotedge root 10, 224 Jul 20 16:27 /dev/tpm0
+   crw------- 1 iotedge root 10, 224 Jul 20 16:27 /dev/tpmrm0
    ```
 
    適切なアクセス許可が適用されない場合は、コンピューターを再起動して udev を更新してみてください。
@@ -325,52 +321,48 @@ IoT Edge ランタイムは、デバイスの TPM へのアクセスを仲介す
 
 TPM へのアクセス権を付与するには、systemd 設定をオーバーライドして、`aziottpm` サービスに root 特権を付与します。 サービス権限を昇格したくない場合は、次の手順を使用して、TPM へのアクセス権を手動で付与することもできます。
 
-1. デバイスで、TPM ハードウェア モジュールへのファイル パスを探してローカル変数として保存します。
-
-   ```bash
-   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
-   ```
-
-2. IoT Edge ランタイムに tpm0 へのアクセス権を付与する新しいルールを作成します。
+1. IoT Edge ランタイムに tpm0 と tpmrm0 へのアクセス権を付与する新しいルールを作成します。 
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
    ```
 
-3. 規則ファイルを開きます。
+2. 規則ファイルを開きます。
 
    ```bash
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. 次のアクセス情報を規則ファイルにコピーします。
+3. 次のアクセス情報を規則ファイルにコピーします。 4\.12 よりも前のカーネルを使用するデバイスには `tpmrm0` が存在しない場合があります。 tpmrm0 が存在しないデバイスでは、そのルールは安全に無視されます。
 
    ```input
-   # allow aziottpm access to tpm0
-   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   # allow aziottpm access to tpm0 and tpmrm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0660"
+   KERNEL=="tpmrm0", SUBSYSTEM=="tpmrm", OWNER="aziottpm", MODE="0660"
    ```
 
-5. ファイルを保存して終了します。
+4. ファイルを保存して終了します。
 
-6. udev system をトリガーして、新しい規則を評価します。
+5. udev system をトリガーして、新しい規則を評価します。
 
    ```bash
-   /bin/udevadm trigger $tpm
+   /bin/udevadm trigger --subsystem-match=tpm --subsystem-match=tpmrm
    ```
 
-7. 規則が正常に適用されたことを確認します。
+6. 規則が正常に適用されたことを確認します。
 
    ```bash
-   ls -l /dev/tpm0
+   ls -l /dev/tpm*
    ```
 
    成功した場合の出力は、次のようになります。
 
    ```output
-   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 aziottpm root 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 aziottpm root 10, 224 Jul 20 16:27 /dev/tpmrm0
    ```
 
-   適切なアクセス許可が適用されない場合は、コンピューターを再起動して udev を更新してみてください。
+   適切なアクセス許可が適用されない場合は、コンピューターを再起動して udev を更新してみてください。 
 :::moniker-end
 <!-- end 1.2 -->
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: b8e70b1450aa7c121c88e508667dc37ad01d212e
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 618fc8258c2e34c482b6c11cac469de503fa0179
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536885"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742668"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートの構成
 
@@ -19,6 +19,10 @@ ms.locfileid: "111536885"
 
 > [!NOTE]
 > Azure Cache for Redis では、クラシック デプロイ モデルと Azure Resource Manager 仮想ネットワークの両方がサポートされています。
+>
+
+> [!IMPORTANT]
+> Azure Cache for Redis では Azure Private Link がサポートされるようになっており、これにより、ネットワーク アーキテクチャが簡素化され、Azure 内のエンドポイント間の接続がセキュリティで保護されます。 仮想ネットワーク内のサブネットでプライベート IP アドレスが割り当てられているプライベート エンドポイント経由で、仮想ネットワークから Azure Cache インスタンスに接続できます。 Azure Private Link はすべてのレベルで提供されており、Azure Policy のサポートと、簡略化された NSG ルール管理が含まれます。 詳細については、[Private Link に関するドキュメント](cache-private-link.md)のページを参照してください。 VNet に挿入されたキャッシュを Private Link に移行するには、[こちら](cache-vnet-migration.md)を参照してください。
 >
 
 ## <a name="set-up-virtual-network-support"></a>仮想ネットワーク サポートの設定

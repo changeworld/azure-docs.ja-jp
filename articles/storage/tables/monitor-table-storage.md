@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b10e1d1c903f306668e051633467ba15079dcaca
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 448a646b4fd615967e63c6d13b16940441478971
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664327"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739043"
 ---
 # <a name="monitoring-azure-table-storage"></a>Azure Table Storage の監視
 
@@ -64,7 +64,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 ## <a name="creating-a-diagnostic-setting"></a>診断設定の作成
 
-診断設定を作成するには、Azure portal、PowerShell、Azure CLI、または Azure Resource Manager テンプレートを使用します。 
+診断設定を作成するには、Azure portal、PowerShell、Azure CLI、Azure Resource Manager テンプレート、Azure Policy のいずれかを使用します。 
 
 一般的なガイダンスについては、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../../azure-monitor/essentials/diagnostic-settings.md)に関するページを参照してください。
 
@@ -261,6 +261,10 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 ### <a name="template"></a>[テンプレート](#tab/template)
 
 診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+診断設定を作成するには、ポリシー定義を使用します。 これにより、作成または更新されたすべてのアカウントに対して、確実に診断設定が作成されるようになります。 「[Azure Storage 用の Azure Policy 組み込み定義](../common/policy-reference.md)」をご覧ください。
 
 ---
 
@@ -474,6 +478,10 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 ```
 
 ### <a name="template"></a>[テンプレート](#tab/template)
+
+該当なし。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
 該当なし。
 

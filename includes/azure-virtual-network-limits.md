@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: d31e52763ed69303ee6ea9bf44fd85403c810179
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 8ae8608592ee540e227e0b23ef708b605647a667
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111993557"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593685"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
@@ -76,8 +76,8 @@ ms.locfileid: "111993557"
 | NIC あたりのルール数 (1 つの NIC のすべての IP にわたる) | 300                           |
 | フロントエンド IP 構成              | 600                           |
 | バックエンド プールのサイズ                       | 1,000 IP 構成、単一仮想ネットワーク |
-| ロード バランサーあたりのバックエンド リソース数 <sup>1<sup> | 1,200                   |
-| 高可用性ポート                 | 内部フロント エンドごとに 1 個       |
+| ロード バランサーあたりのバックエンド リソース数 <sup>1<sup> | 1,200                 |
+| 高可用性ポートのルール            | 内部フロント エンドごとに 1 個       |
 | Load Balancer あたりのアウトバウンド規則数        | 600                           |
 | VM ごとのロード バランサー                   | 2 (パブリックに 1 つおよび内部に 1 つ)   |
 

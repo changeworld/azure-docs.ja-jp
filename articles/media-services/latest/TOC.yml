@@ -2,8 +2,11 @@
   href: ./index.yml
 - name: 概要
   items:
-    - name: Media Services について
+    - name: Media Services v3 について
       href: media-services-overview.md
+    - name: Media Services v2 のドキュメント
+      href: ../previous/media-services-overview.md
+      displayName: 'media services v2, v2, version 2'
     - name: リリース ノート
       href: release-notes.md
       displayName: 'Release Notes, notes, updates, announcements, deprecations'

@@ -124,6 +124,8 @@
       items:
         - name: JetStream DR をデプロイする
           href: deploy-disaster-recovery-using-jetstream.md
+        - name: Zerto DR をデプロイする
+          href: deploy-zerto-disaster-recovery.md
         - name: ディザスター リカバリー用に VMware HCX をデプロイする
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: ディザスター リカバリー用に VMware SRM をデプロイする
@@ -156,9 +158,9 @@
           href: deploy-vm-content-library.md
         - name: 障害復旧
           items:
-            - name: VMware SRM を使用してディザスター リカバリーをデプロイする
+            - name: ディザスター リカバリー用の VMware SRM
               href: disaster-recovery-using-vmware-site-recovery-manager.md
-            - name: VMware HCX を使用してディザスター リカバリーをデプロイする
+            - name: ディザスター リカバリー用の VMware HCX
               href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: VMware HCX アプライアンスをアップグレードする
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'

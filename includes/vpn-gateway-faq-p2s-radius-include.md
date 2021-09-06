@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d0d0bbd1cea6d1af016aa46569171bd2bcd8ac4f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6bead4346bdb23dd725fa474ef1bd8a982d2b61a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110721679"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336173"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -24,6 +24,9 @@ RADIUS 認証は VpnGw1、VpnGw2、VpnGw3 の 3 つの SKU でサポートされ
 ### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>クラシック デプロイ モデルでは RADIUS 認証がサポートされていますか。
  
 いいえ。 クラシック デプロイ モデルでは、RADIUS 認証がサポートされていません。
+
+### <a name="what-is-the-timeout-period-for-radius-requests-sent-to-the-radius-server"></a>RADIUS サーバーに送信される RADIUS 要求のタイムアウト期間はどのくらいですか。
+RADIUS 要求は 30 秒後にタイムアウトになるように設定されています。 ユーザー定義のタイムアウト値は現在、サポートされていません。
  
 ### <a name="are-3rd-party-radius-servers-supported"></a>サードパーティ製の RADIUS サーバーはサポートされていますか。
 

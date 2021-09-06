@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel ワークスペースの大規模な管理を行う
 description: Azure Lighthouse を使用すると、委任された顧客リソース全体で Azure Sentinel を効果的に管理できます。
-ms.date: 03/02/2021
+ms.date: 08/16/2021
 ms.topic: how-to
-ms.openlocfilehash: c72dcdd190acfaf3db0b5c9feb1a30b00c63a94d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 44efc4afeb3ea238b5a8a29d8f12a7bfb4f6d621
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077828"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324025"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -38,6 +38,9 @@ Azure Sentinel を使用してサービスとしてのセキュリティ オフ�
 
 > [!NOTE]
 > 別の[リージョン](../../availability-zones/az-overview.md#regions)にある委任されたリソースを管理することができます。 ただし、[各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。
+
+> [!IMPORTANT]
+> すべてのワークスペースが顧客テナントに作成されている場合、管理テナントのサブスクリプションには、Microsoft.SecurityInsights および Microsoft.OperationalInsights リソース プロバイダーも[登録する](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)必要があります。
 
 ## <a name="granular-azure-role-based-access-control-azure-rbac"></a>詳細な Azure ロールベースのアクセス制御 (Azure RBAC)
 
@@ -92,5 +95,5 @@ Office 365 データ コネクタのセットアップが完了したら、ワ�
 
 - [Azure Sentinel](../../sentinel/overview.md) について学習します。
 - [Azure Sentinel の価格ページ](https://azure.microsoft.com/pricing/details/azure-sentinel/)を確認します。
+- Azure Sentinel 環境のデプロイおよび初期構成タスクを高速化するためのプロジェクトである [Azure Sentinel All in One](https://github.com/Azure/Azure-Sentinel/tree/master/Tools/Sentinel-All-In-One) について説明します。
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
-

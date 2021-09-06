@@ -238,58 +238,44 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: インスタンス ID について
           href: virtual-machine-scale-sets-instance-ids.md
-    - name: イメージの使用
-      displayName: 'SIG, AMI, image'
+    - name: Shared Image Gallery
       items:
-        - name: Shared Image Gallery
+        - name: 概要
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ../virtual-machines/shared-image-galleries.md
+        - name: ギャラリーの作成
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ../virtual-machines/create-gallery.md
+        - name: ギャラリーを共有する
+          href: ../virtual-machines/share-gallery.md
+        - name: イメージを作成する
+          displayName: 'VM, image, VHD, storage account'
+          href: ../virtual-machines/image-version.md
+        - name: ポータルで VM をキャプチャする
+          href: ../virtual-machines/capture-image-portal.md
+        - name: スケール セットの作成
           items:
             - name: PowerShell
               items:
-                - name: ギャラリーの作成
-                  href: ../virtual-machines/shared-images-powershell.md
-                - name: イメージを作成する
-                  items:
-                    - name: VM から
-                      href: ../virtual-machines/image-version-vm-powershell.md
-                    - name: マネージド イメージから移行する
-                      href: ../virtual-machines/image-version-managed-image-powershell.md
-                    - name: 別のギャラリーからコピーする
-                      href: ../virtual-machines/image-version-another-gallery-powershell.md
-                - name: スケール セットの作成
-                  items:
-                    - name: 専用イメージ
-                      href: instance-specialized-image-version-powershell.md
-                    - name: 一般化されたイメージ
-                      href: instance-generalized-image-version-powershell.md
-                - name: イメージ リソースを更新する
-                  href: ../virtual-machines/update-image-resources-powershell.md
+                - name: 専用イメージ
+                  href: instance-specialized-image-version-powershell.md
+                - name: 一般化されたイメージ
+                  href: instance-generalized-image-version-powershell.md
             - name: CLI
               items:
-                - name: ギャラリーの作成
-                  href: ../virtual-machines/shared-images-cli.md
-                - name: イメージを作成する
-                  items:
-                    - name: VM から
-                      href: ../virtual-machines/image-version-vm-cli.md
-                    - name: マネージド イメージから移行する
-                      href: ../virtual-machines/image-version-managed-image-cli.md
-                    - name: 別のギャラリーからコピーする
-                      href: ../virtual-machines/image-version-another-gallery-cli.md
-                - name: スケール セットの作成
-                  items:
-                    - name: 専用イメージ
-                      href: instance-specialized-image-version-cli.md
-                    - name: 一般化されたイメージ
-                      href: instance-generalized-image-version-cli.md
-                - name: イメージ リソースを更新する
-                  href: ../virtual-machines/update-image-resources-cli.md
-            - name: 共有イメージのトラブルシューティングを行う
-              href: ../virtual-machines/troubleshooting-shared-images.md
-            - name: カスタマー マネージド キーの使用
-              displayName: 'SSE, CMK, encrypt'
-              href: ../virtual-machines/image-version-encryption.md
-            - name: 共有のためのアプリの登録
-              href: share-images-across-tenants.md
+                - name: 専用イメージ
+                  href: instance-specialized-image-version-cli.md
+                - name: 一般化されたイメージ
+                  href: instance-generalized-image-version-cli.md
+        - name: イメージ リソースを更新する
+          href: ../virtual-machines/update-image-resources.md
+        - name: 共有イメージのトラブルシューティングを行う
+          href: ../virtual-machines/troubleshooting-shared-images.md
+        - name: カスタマー マネージド キーの使用
+          displayName: 'SSE, CMK, encrypt'
+          href: ../virtual-machines/image-version-encryption.md
+        - name: 共有のためのアプリの登録
+          href: share-images-across-tenants.md
     - name: テンプレートの作成
       items:
         - name: スケール セット テンプレートを確認する
@@ -343,15 +329,12 @@
         - name: スケール セット テンプレートを変換してマネージド ディスクを使用する
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: 専用ホストの使用
+          displayName: 'sole-tenant, sole tenant, isolated, isolation'
           items:
             - name: 概要
               href: ../virtual-machines/dedicated-hosts.md
-            - name: CLI
-              href: ../virtual-machines/linux/dedicated-hosts-cli.md
-            - name: PowerShell
-              href: ../virtual-machines/windows/dedicated-hosts-powershell.md
-            - name: ポータル
-              href: ../virtual-machines/dedicated-hosts-portal.md
+            - name: 操作方法
+              href: ../virtual-machines/dedicated-hosts.md
         - name: Azure スポット仮想マシン
           href: use-spot.md
         - name: Linux 向け Azure ハイブリッド特典

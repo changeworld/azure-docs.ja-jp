@@ -17,14 +17,7 @@
       href: configure-hybrid-cluster.md
     - name: Databricks を使用して Spark クラスターをデプロイする
       href: deploy-cluster-databricks.md
-- name: 概念
-  items:
-    - name: よく寄せられる質問
-      displayName: 'cost, region, monitor, backup'
-      href: faq.md
-    - name: マネージド インスタンスと Azure Cosmos DB Cassandra API
-      href: compare-cosmosdb-managed-instance.md
-- name: 操作方法ガイド
+- name: チュートリアル
   items:
     - name: 移行
       items:
@@ -36,6 +29,15 @@
           items:
             - name: Apache Spark の使用
               href: spark-migration.md
+- name: 概念
+  items:
+    - name: よく寄せられる質問
+      displayName: 'cost, region, monitor, backup'
+      href: faq.md
+    - name: マネージド インスタンスと Azure Cosmos DB Cassandra API
+      href: compare-cosmosdb-managed-instance.md
+- name: 操作方法ガイド
+  items:
     - name: Azure CLI で管理する
       displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md

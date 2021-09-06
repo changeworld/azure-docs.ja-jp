@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: da22991b9a1c4b69d3a3d6eb6f76b0925a6ad3d4
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d9566564c168e37477d8a0a8238c93dfb8be054d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107800147"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336321"
 ---
 | リソース                                                                                                           | 制限                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,6 +26,9 @@ ms.locfileid: "107800147"
 | Open Service Mesh (OSM) AKS アドオン プレビュー                                                                          | Kubernetes クラスターのバージョン: 1.19 以上<sup>1</sup><br />クラスターあたりの OSM コントローラー数: 1<sup>1</sup><br />OSM コントローラーあたりのポッド数: 500<sup>1</sup><br />OSM によって管理される Kubernetes サービス アカウント数: 50<sup>1</sup> |
 
 <sup>1</sup>AKS 用 OSM アドオンはプレビュー段階であり、一般提供 (GA) 前にさらに改良される予定です。 プレビュー段階では、記載されている制限の範囲内で使用することをお勧めします。<br />
+
+> [!IMPORTANT]
+> 実稼働ワークロードと、パフォーマンス/ロード テスト用のワークロードに対しては、アップタイム SLA のサービス レベルを有効にすることをお客様にお勧めしています。 アップタイム SLA のサービス レベルは、Kubernetes コントロール プレーンの自動スケールを有効にするものであり、[アップタイム SLA](../articles/aks/uptime-sla.md) 内にあって実稼働ワークロードを含むクラスターをサポートするために必要です。
 
 <!-- LINKS - Internal -->
 

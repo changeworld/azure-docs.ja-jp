@@ -515,7 +515,10 @@
                   href: flexible-server/concepts-intelligent-tuning.md
         - name: レプリケーション
           href: flexible-server/concepts-logical.md
-          displayName: logical decoding
+    - name: トラブルシューティング
+      items:
+        - name: CLI エラーのトラブルシューティング
+          href: flexible-server/how-to-troubleshoot-cli-errors.md
     - name: 操作方法ガイド
       items:
         - name: サーバーを管理する
