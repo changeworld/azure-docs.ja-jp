@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 04/21/2021
-ms.openlocfilehash: ab71dc6f02c87997a680722e3553f2739c378dc4
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 08/02/2021
+ms.openlocfilehash: 2a838d2c1206cbc1a73e00d3ff41337400a08676
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371290"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742074"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化
 
@@ -36,6 +36,9 @@ Azure Machine Learning は、モデルをトレーニングし、推論を実行
 * そのサブスクリプションで以前にクラスターを作成していない場合に、Azure Machine Learning コンピューティング クラスターでローカル スクラッチ ディスクの暗号化を開始します。 それ以外の場合は、コンピューティング クラスターのスクラッチ ディスクの暗号化を有効にするためにサポート チケットを作成する必要があります。 
 * 実行間でローカル スクラッチ ディスクをクリーンアップします
 * Key Vault を使用して、ストレージ アカウント、コンテナー レジストリ、SSH アカウントの資格情報を実行層からコンピューティング クラスターに安全に渡します。
+
+> [!TIP]
+> `hbi_workspace` フラグは、転送中の暗号化には影響せず、保存時の暗号化だけです。
 
 ### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 
@@ -59,7 +62,7 @@ Azure Machine Learning では、メトリックとメタデータは Azure Cosmo
 
 * Microsoft.MachineLearning と Microsoft.DocumentDB リソース プロバイダーをサブスクリプションに登録します (まだ行っていない場合)。
 
-* Azure Machine Learning ワークスペースを作成するときは、次のパラメーターを使用します。 SDK、CLI、REST API、および Resource Manager のテンプレートでは、両方のパラメーターが必須であり、サポートされています。
+* Azure Machine Learning ワークスペースを作成するときは、次のパラメーターを使用します。 SDK、Azure CLI、REST API、Resource Manager テンプレートでは、両方のパラメーターが必須であり、サポートされています。
 
     * `resource_cmk_uri`:このパラメーターは、[キーのバージョン情報](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)を含む、キー コンテナー内のカスタマー マネージド キーの完全なリソース URI です。 
 
@@ -120,11 +123,11 @@ Azure Container Instance にモデルをデプロイするときにキーを使�
 
 ### <a name="machine-learning-compute"></a>Machine Learning コンピューティング
 
-Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。 
+**コンピューティング クラスター** Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。 
 
-各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 `hbi_workspace` パラメーターが `TRUE` に設定されているワークスペースでは、ディスクは既定で暗号化されます。 この環境は、実行中だけ有効期間が短く、暗号化のサポートはシステム管理キーのみに制限されています。
+各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 `hbi_workspace` パラメーターを `TRUE` に設定してワークスペースを作成した場合、一時ディスクが暗号化されます。 この環境は有効期間が短く (実行中だけ)、暗号化のサポートはシステム管理キーのみに制限されています。
 
-コンピューティング インスタンスの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 コンピューティング インスタンスのローカル一時ディスクは、`hbi_workspace` パラメーターが `TRUE` に設定されているワークスペースの Microsoft マネージド キーで暗号化されています。
+**コンピューティング インスタンス** コンピューティング インスタンスの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 `hbi_workspace` パラメーターを `TRUE` に設定してワークスペースを作成した場合、コンピューティング インスタンスのローカル一時ディスクは Microsoft マネージド キーで暗号化されます。 カスタマー マネージド キーの暗号化は、OS と一時ディスクについてはサポートされていません。
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
@@ -146,11 +149,11 @@ Azure Machine Learning では、さまざまな Azure Machine Learning マイク
 
 ### <a name="microsoft-collected-data"></a>Microsoft が収集したデータ
 
-Microsoft は、リソース名 (データセット名や機械学習の実験名など)、または診断目的でのジョブ環境変数など、ユーザー以外を識別する情報を収集する場合があります。 このようなデータはすべて、Microsoft が所有するサブスクリプションでホストされているストレージに Microsoft が管理するキーを使用して保存され、[Microsoft の標準のプライバシー ポリシーとデータ処理規格](https://privacy.microsoft.com/privacystatement)に従います。
+Microsoft は、リソース名 (データセット名や機械学習の実験名など)、または診断目的でのジョブ環境変数など、ユーザー以外を識別する情報を収集する場合があります。 このようなデータはすべて、Microsoft が所有するサブスクリプションでホストされているストレージに Microsoft が管理するキーを使用して保存され、[Microsoft の標準のプライバシー ポリシーとデータ処理規格](https://privacy.microsoft.com/privacystatement)に従います。 このデータは、ワークスペースと同じリージョン内に保持されます。
 
 また、機密情報 (アカウント キー シークレットなど) を環境変数に保存しないこともお勧めしています。 環境変数は、Microsoft によってログに記録され、暗号化され、保存されます。 同様に、[run_id](/python/api/azureml-core/azureml.core.run%28class%29) に名前を付けるときは、ユーザー名や秘密のプロジェクト名などの機密情報を含めないようにしてください。 この情報は、Microsoft サポート エンジニアがアクセスできるテレメトリ ログに表示されることがあります。
 
-ワークスペースのプロビジョニング中に `hbi_workspace` パラメーターを `TRUE` に設定して、収集される診断データをオプトアウトすることができます。 この機能は、AzureML Python SDK、CLI、REST API、または Azure Resource Manager のテンプレートを使用する場合にサポートされます。
+ワークスペースのプロビジョニング中に `hbi_workspace` パラメーターを `TRUE` に設定して、収集される診断データをオプトアウトすることができます。 この機能は、AzureML Python SDK、Azure CLI、REST API、Azure Resource Manager テンプレートを使用する場合にサポートされます。
 
 ## <a name="using-azure-key-vault"></a>Azure Key Vault の使用
 

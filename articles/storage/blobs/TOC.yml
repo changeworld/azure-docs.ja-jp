@@ -172,7 +172,7 @@ items:
                 href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: ネットワーク ルーティング設定の構成
                 href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: データの保護
+          - name: データ保護
             items:
               - name: 概要
                 href: data-protection-overview.md
@@ -291,6 +291,8 @@ items:
             href: storage-blob-pageblob-overview.md
           - name: 静的な Web サイト
             href: storage-blob-static-website.md
+          - name: Blob Storage 機能のサポート
+            href: storage-feature-support-in-storage-accounts.md
       - name: 方法
         items:
           - name: ストレージ アカウントの作成と管理
@@ -474,8 +476,12 @@ items:
                     href: archive-rehydrate-to-online-tier.md
                   - name: BLOB リハイドレートでイベントを処理する
                     href: archive-rehydrate-handle-event.md
-          - name: オブジェクト レプリケーションの構成
-            href: object-replication-configure.md
+          - name: オブジェクト レプリケーションを管理する
+            items:
+              - name: オブジェクト レプリケーション ポリシーを構成する
+                href: object-replication-configure.md
+              - name: テナント間のオブジェクト レプリケーションを防止する
+                href: object-replication-prevent-cross-tenant-policies.md
           - name: コンカレンシーの管理
             href: concurrency-manage.md
           - name: ストレージ エミュレーターを使用する
@@ -634,6 +640,8 @@ items:
                 href: ../common/storage-explorer-direct-link.md
               - name: Storage Explorer のセキュリティ
                 href: ../common/storage-explorer-security.md
+              - name: Storage Explorer の論理的な削除
+                href: ../common/storage-explorer-soft-delete.md
               - name: Storage Explorer BLOB のバージョン管理
                 href: ../common/storage-explorer-blob-versioning.md
               - name: Storage Explorer の Azure Blob Storage の管理
@@ -757,7 +765,7 @@ items:
               - name: マルチプロトコル アクセス
                 href: data-lake-storage-multi-protocol-access.md
               - name: サポートされている BLOB ストレージ機能
-                href: data-lake-storage-supported-blob-storage-features.md
+                href: storage-feature-support-in-storage-accounts.md
               - name: サポート対象の Azure サービス
                 href: data-lake-storage-supported-azure-services.md
               - name: サポートされるオープン ソース プラットフォーム

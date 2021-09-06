@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 08/16/2021
 ms.author: zxue
-ms.openlocfilehash: 45752add8b55761a656193d2815e469f115af148
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
-ms.translationtype: HT
+ms.openlocfilehash: de49e9d9ea3968f09fac7e3938c7c29290f619f1
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780854"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397825"
 ---
 # <a name="get-access-token-for-azure-api-for-fhir-using-azure-cli"></a>Azure CLI を使用して Azure API for FHIR のアクセス トークンを取得する
 
@@ -40,4 +40,4 @@ curl -X GET --header "Authorization: Bearer $token" https://<FHIR ACCOUNT NAME>.
 この記事では、Azure CLI を使用して Azure API for FHIR のアクセス トークンを取得する方法を学習しました。 Postman を使用して FHIR API にアクセスする方法を学習するには、Postman のチュートリアルに進んでください。
 
 >[!div class="nextstepaction"]
->[Postman を使用して FHIR API にアクセスする](access-fhir-postman-tutorial.md)
+>[Postman を使用して FHIR サービスにアクセスする](../fhir/using-postman.md)

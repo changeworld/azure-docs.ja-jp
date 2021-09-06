@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: 09001b1df4c0b9d3ac2a90601a467ec5397c941c
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: ec395bfaf8b4d2bba235b1ce99c909b5cb81c51b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405130"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397864"
 ---
 ## <a name="model-id-announcement"></a>モデル ID のアナウンス
 
@@ -38,11 +38,11 @@ await client.open();
 }
 ```
 
-## <a name="implement-telemetry-properties-and-commands"></a>テレメトリ、プロパティ、およびコマンドを実装する
+## <a name="use-components"></a>コンポーネントを使う
 
-[IoT プラグ アンド プレイ モデルのコンポーネントの概要](../articles/iot-develop/concepts-modeling-guide.md)に関するページで説明されているように、デバイス ビルダーは、コンポーネントを使用してデバイスを記述するかどうかを決定する必要があります。 コンポーネントを使用する場合、デバイスはこのセクションで説明されている規則に従う必要があります。
+[IoT プラグ アンド プレイ モデルのコンポーネントの概要](../articles/iot-develop/concepts-modeling-guide.md)に関するページで説明されているように、デバイス ビルダーは、コンポーネントを使用してデバイスを記述するかどうかを決定する必要があります。 コンポーネントを使用する場合、デバイスは次のセクションで説明されている規則に従う必要があります。
 
-### <a name="telemetry"></a>テレメトリ
+## <a name="telemetry"></a>テレメトリ
 
 既定のコンポーネントには、特別なプロパティは必要ありません。
 
@@ -60,7 +60,7 @@ async function sendTelemetry(deviceClient, data, index, componentName) {
 }
 ```
 
-### <a name="read-only-properties"></a>読み取り専用プロパティ
+## <a name="read-only-properties"></a>読み取り専用プロパティ
 
 既定のコンポーネントからのプロパティの報告には、特別なコンストラクトは必要ありません。
 
@@ -131,11 +131,11 @@ deviceTwin.properties.reported.update(patchThermostat1Info, function (err) {
 }
 ```
 
-### <a name="writable-properties"></a>書き込み可能なプロパティ
+## <a name="writable-properties"></a>書き込み可能なプロパティ
 
 これらのプロパティは、デバイスから設定するか、ソリューションから更新することができます。 ソリューションからプロパティを更新すると、クライアントでは `Client` または `ModuleClient` でコールバックとして通知を受け取ります。 IoT プラグ アンド プレイ規則に従うために、デバイスからサービスに対して、プロパティが正常に受信されたことを通知する必要があります。
 
-#### <a name="report-a-writable-property"></a>書き込み可能なプロパティを報告する
+### <a name="report-a-writable-property"></a>書き込み可能なプロパティを報告する
 
 デバイスから書き込み可能なプロパティが報告された場合は、規則に定義されている `ack` 値を含める必要があります。
 
@@ -208,7 +208,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 }
 ```
 
-#### <a name="subscribe-to-desired-property-updates"></a>必要なプロパティの更新をサブスクライブする
+### <a name="subscribe-to-desired-property-updates"></a>必要なプロパティの更新をサブスクライブする
 
 サービスでは、接続されたデバイスで通知をトリガーする目的のプロパティを更新できます。 この通知には、更新を識別するバージョン番号など、更新された目的のプロパティが含まれます。 デバイスでは、報告されたプロパティと同じ `ack` メッセージで応答する必要があります。
 
@@ -320,7 +320,7 @@ const desiredPropertyPatchListener = (deviceTwin, componentNames) => {
 }
 ```
 
-### <a name="commands"></a>コマンド
+## <a name="commands"></a>コマンド
 
 既定のコンポーネントは、サービスから呼び出されたときに、コマンド名を受け取ります。
 
@@ -345,7 +345,7 @@ const commandHandler = async (request, response) => {
 client.onDeviceMethod('thermostat1*reboot', commandHandler);
 ```
 
-#### <a name="request-and-response-payloads"></a>要求と応答のペイロード
+### <a name="request-and-response-payloads"></a>要求と応答のペイロード
 
 コマンドでは、型を使用して、要求と応答のペイロードを定義します。 デバイスでは、受け取った入力パラメーターを逆シリアル化し、応答をシリアル化する必要があります。 ペイロードで定義された複合型を使用してコマンドを実装する例を次に示します。
 

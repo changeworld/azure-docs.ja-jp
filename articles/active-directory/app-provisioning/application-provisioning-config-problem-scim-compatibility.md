@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 0e369a6ab857b95035b0aaca28525e54e15835e8
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f74e9a4f99523e26feb703f5ed2bedf33366f8d6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783263"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738940"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -50,71 +50,40 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="後の動作への SCIM フラグ。":::
 
-* 次の URL を使用して PATCH の動作を更新し、SCIM コンプライアンスを確保します (たとえば、ブール値としての active、適切なグループ メンバーシップの削除)。 この動作は、現在、フラグを使用している場合にのみ使用できますが、今後数か月以内に既定の動作になる予定です。 このプレビュー フラグは現在、オンデマンド プロビジョニングでは機能しません。 
+次の URL を使用して PATCH の動作を更新し、SCIM へのコンプライアンスを確保します。 このフラグによって、次の動作が変更されます。                
+- ユーザーを無効にするために行われる要求
+- 単一値の文字列属性を追加するための要求
+- 複数の属性を置き換える要求
+- グループのメンバーを削除する要求        
+                                                                                     
+この動作は、現在、フラグを使用している場合にのみ使用できますが、今後数か月以内に既定の動作になる予定です。 このプレビュー フラグは現在、オンデマンド プロビジョニングでは機能しません。 
   * **URL (SCIM Compliant):** aadOptscim062020
   * **SCIM RFC 参照:** 
-    * https://tools.ietf.org/html/rfc7644#section-3.5.2
-  * **動作:**
+    * https://tools.ietf.org/html/rfc7644#section-3.5.2    
+
+次に示すのは、同期エンジンによって現在送信されている内容と、機能フラグを有効にした後で送信される要求の概要を比較するときに役立つ要求の例です。 
+                           
+**ユーザーを無効にするために行われる要求:**
+
+**機能フラグなし**
   ```json
-   PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
-   {
+  {
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
     "Operations": [
         {
-            "op": "remove",
-            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+            "op": "Replace",
+            "path": "active",
+            "value": "False"
         }
     ]
-   }
+}
+  ```
 
-    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
-    ],
-    "Operations": [
-        {
-            "op": "add",
-            "path": "members",
-            "value": [
-                {
-                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
-                }
-            ]
-        }
-    ]
-    } 
-
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
-    "schemas": [
-        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
-    ],
-    "Operations": [
-        {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].value",
-            "value": "someone@contoso.com"
-        },
-        {
-            "op": "replace",
-            "path": "emails[type eq \"work\"].primary",
-            "value": true
-        },
-        {
-            "op": "replace",
-            "value": {
-                "active": false,
-                "userName": "someone"
-            }
-        }
-    ]
-    }
-
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
+**機能フラグあり**
+  ```json
+  {
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
@@ -125,23 +94,153 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
             "value": false
         }
     ]
-    }
+}
+  ```
 
-    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
-    {
+**単一値の文字列属性を追加するために行われる要求:**
+
+**機能フラグなし**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "Add",
+            "path": "nickName",
+            "value": [
+                {
+                    "value": "Babs"
+                }
+            ]
+        }
+    ]
+}   
+  ```
+
+**機能フラグあり**
+  ```json
+  {
     "schemas": [
         "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
     "Operations": [
         {
             "op": "add",
-            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
-            "value": "Tech Infrastructure"
+            "value": {
+                "nickName": "Babs"
+            }
         }
     ]
-    }
-   
+}
   ```
+
+**複数の属性を置き換える要求:**
+
+**機能フラグなし**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "Replace",
+            "path": "displayName",
+            "value": "Pvlo"
+        },
+        {
+            "op": "Replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "TestBcwqnm@test.microsoft.com"
+        },
+        {
+            "op": "Replace",
+            "path": "name.givenName",
+            "value": "Gtfd"
+        },
+        {
+            "op": "Replace",
+            "path": "name.familyName",
+            "value": "Pkqf"
+        },
+        {
+            "op": "Replace",
+            "path": "externalId",
+            "value": "Eqpj"
+        },
+        {
+            "op": "Replace",
+            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber",
+            "value": "Eqpj"
+        }
+    ]
+}
+  ```
+
+**機能フラグあり**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "TestMhvaes@test.microsoft.com"
+        },
+        {
+            "op": "replace",
+            "value": {
+                "displayName": "Bjfe",
+                "name.givenName": "Kkom",
+                "name.familyName": "Unua",
+                "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber": "Aklq"
+            }
+        }
+    ]
+} 
+  ```
+
+**グループのメンバーを削除するために行われる要求:**
+
+**機能フラグなし**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "Remove",
+            "path": "members",
+            "value": [
+                {
+                    "value": "u1091"
+                }
+            ]
+        }
+    ]
+} 
+  ```
+
+**機能フラグあり**
+  ```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "remove",
+            "path": "members[value eq \"7f4bc1a3-285e-48ae-8202-5accb43efb0e\"]"
+        }
+    ]
+}
+  ```
+
 
   * **ダウングレード URL:** ギャラリー以外のアプリケーションで新しい SCIM 準拠の動作が既定になったら、次の URL を使用して、SCIM に準拠していない以前の動作にロールバックすることができます。AzureAdScimPatch2017
   

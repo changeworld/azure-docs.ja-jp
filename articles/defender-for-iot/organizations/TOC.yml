@@ -39,8 +39,11 @@
           displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment, DL20, EL300, R340, enterprise, SMB, corporate'
           href: how-to-identify-required-appliances.md
         - name: ネットワークをセットアップする
-          displayName: 'passive, browsers, setup, deployment, network access, TAP, switch, mirroring, firewall, SPAN, tunnel, monitoring, tuning, QOS, QoS, Quality of Service'
+          displayName: 'passive, browsers, setup, deployment, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning, QOS, QoS, Quality of Service, LDAP, tunnel'
           href: how-to-set-up-your-network.md
+        - name: 証明書をデプロイする
+          displayName: 'SSL, TLS, PKI, Locally-signed, CA-signed'
+          href: how-to-deploy-certificates.md
         - name: ソフトウェアをインストールする
           displayName: 'tunnel, setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports'
           href: how-to-install-software.md
@@ -71,7 +74,7 @@
     - name: ユーザーとユーザー アクセスの管理
       items:
         - name: ユーザーの作成と管理
-          displayName: 'Active Directory, roles, permissions, password'
+          displayName: 'Active Directory, roles, permissions, password, LDAP'
           href: how-to-create-and-manage-users.md
         - name: グローバル ユーザー アクセス制御の定義
           href: how-to-define-global-user-access-control.md

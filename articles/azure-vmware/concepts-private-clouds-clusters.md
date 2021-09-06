@@ -2,13 +2,13 @@
 title: 概念 - プライベート クラウドとクラスター
 description: Azure VMware Solution ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 97f31c18fd753c89f2201fddfff4d31c8501bae2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/25/2021
+ms.openlocfilehash: 6e068462cada0a324d646766574e05414ad92772
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122324317"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968511"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution のプライベート クラウドとクラスターの概念
 
@@ -45,7 +45,7 @@ Azure VMware Solution は、VMware を使用したプライベート クラウ�
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>ホストのメンテナンスとライフサイクル管理
 
-Azure VMware Solution のプライベート クラウドの利点の 1 つは、管理者に代わってプラットフォームのメンテナンスが行われることです。  VMware のソフトウェア (ESXi、vCenter、vSAN) のライフサイクル管理は Microsoft が行います。 NSX-T アプライアンスのライフサイクル管理、Tier-0 ゲートウェイ作成や North-South ルーティング有効化などのネットワーク構成のブートストラップも、Microsoft が行います。 NSX-T の SDN 構成、つまり、ネットワークのセグメント、分散ファイアウォールのルール、Tier-1 ゲートウェイ、ロード バランサーの構成はユーザーが行います。 
+
 
 [!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
 

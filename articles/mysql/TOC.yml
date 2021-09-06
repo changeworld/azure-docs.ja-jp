@@ -588,6 +588,8 @@
           items:
             - name: 接続エラーのトラブルシューティング
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+            - name: CLI エラーのトラブルシューティング
+              href: flexible-server/how-to-troubleshoot-cli-errors.md
 - name: 移行
   items:
     - name: オンプレミスの MySQL から Azure Database for MySQL にデータを移行する

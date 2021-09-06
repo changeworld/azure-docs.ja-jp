@@ -52,6 +52,8 @@
           href: how-to-choose-offer.md
         - name: プロビジョニングされたスループットとサーバーレスのいずれかを選択
           href: throughput-serverless.md
+        - name: プロビジョニングされたスループットのスケーリングに関するベスト プラクティス
+          href: scaling-provisioned-throughput-best-practices.md
     - name: セキュリティ
       items:
         - name: セキュリティの概要

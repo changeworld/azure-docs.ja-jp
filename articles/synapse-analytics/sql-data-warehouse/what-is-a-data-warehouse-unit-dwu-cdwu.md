@@ -11,16 +11,16 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 4335c861656af3a626fdbf0c92af7b2ee62a46a7
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 749d122ead1d2458b59fc0277a74a96bb6d29ce6
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539162"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324011"
 ---
 # <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) 用の Data Warehouse ユニット
 
-最適な Data Warehouse ユニット (DWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
+このドキュメントでは、価格とパフォーマンスを最適化するために Data Warehouse ユニット (DWU) の最適な数を選択する際の推奨事項と、ユニットの数を変更する方法を示します。
 
 ## <a name="what-are-data-warehouse-units"></a>Data Warehouse ユニットとは
 

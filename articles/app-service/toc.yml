@@ -315,6 +315,10 @@
           href: webjobs-sdk-get-started.md
         - name: WebJobs SDK の使用
           href: webjobs-sdk-how-to.md
+    - name: 高可用性
+      items:
+        - name: 高可用性の構成
+          href: how-to-zone-redundancy.md
 - name: リファレンス
   items:
     - name: データの監視
@@ -376,16 +380,18 @@
           href: troubleshoot-performance-degradation.md
         - name: ドメインと証明書に関する問題のトラブルシューティング
           href: troubleshoot-domain-ssl-certificates.md
-        - name: よく寄せられる質問
-          items:
-            - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
-              href: faq-availability-performance-application-issues.yml
-            - name: デプロイに関する FAQ
-              href: faq-deployment.yml
-            - name: オープンソース テクノロジに関する FAQ
-              href: faq-open-source-technologies.yml
-            - name: 構成と管理に関する FAQ
-              href: faq-configuration-and-management.yml
+    - name: よく寄せられる質問
+      items:
+        - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
+          href: faq-availability-performance-application-issues.yml
+        - name: デプロイに関する FAQ
+          href: faq-deployment.yml
+        - name: オープンソース テクノロジに関する FAQ
+          href: faq-open-source-technologies.yml
+        - name: 構成と管理に関する FAQ
+          href: faq-configuration-and-management.yml
+        - name: App Service on Linux
+          href: faq-app-service-linux.yml
     - name: IP アドレスの変更
       items:
         - name: 受信 IP アドレス

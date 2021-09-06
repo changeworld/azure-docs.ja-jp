@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーションのプロビジョニングの新機能
 description: Azure Active Directory アプリケーションのプロビジョニングの新規および更新されたドキュメント。
-ms.date: 06/02/2021
+ms.date: 08/03/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,47 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: 77f09b6285a5fcb3539c377b65d333141384c81e
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 23d3c074ee1a4cb07b4770b27ee1ead145bae28a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409039"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732405"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory アプリケーションのプロビジョニング新機能
 
 Azure Active Directory アプリケーションのプロビジョニングに関するドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 プロビジョニング サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory で属性マッピングの式を記述するためのリファレンス](functions-for-customizing-application-data.md)
+- [Microsoft Graph API を使用してプロビジョニングを構成する](application-provisioning-configuration-api.md)
+- [Azure Active Directory で自動ユーザー プロビジョニングの展開を計画する](plan-auto-user-provisioning.md)
+- [Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画](plan-cloud-hr-provision.md)
+- [Azure Active Directory でのアプリケーション プロビジョニングの既知の問題](known-issues.md)
+- [Azure AD ECMA Connector Host 汎用 SQL コネクタのチュートリアル](tutorial-ecma-sql-connector.md)
+- [Azure Active Directory でのアプリのプロビジョニングとは](user-provisioning.md)
+- [ECMA Connector Host に関する問題のトラブルシューティング](on-premises-ecma-troubleshoot.md)
+- [Azure AD ECMA コネクタ ホストで使用するために Microsoft Identity Manager コネクタをエクスポートする](on-premises-migrate-microsoft-identity-manager.md)
+- [SCIM 対応アプリへの Azure AD オンプレミス アプリケーションのプロビジョニング](on-premises-scim-provisioning.md)
+- [Azure AD ECMA Connector Host の汎用 SQL コネクタの構成](on-premises-sql-connector-configure.md)
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Microsoft Graph API を使用してプロビジョニングを構成する](application-provisioning-configuration-api.md)
+- [Application Provisioning で式ビルダーを使用する方法を理解する](expression-builder.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory でのアプリケーションのプロビジョニングのしくみ](how-provisioning-works.md)
+- [Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画](plan-cloud-hr-provision.md)
+- [Azure Active Directory のプロビジョニングと Workday の統合方法](workday-integration-reference.md)
+
 
 ## <a name="may-2021"></a>2021 年 5 月
 

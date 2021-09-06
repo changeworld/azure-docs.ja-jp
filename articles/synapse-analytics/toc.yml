@@ -76,6 +76,8 @@ items:
           - name: Azure データ エクスプローラーに接続する
             href: quickstart-connect-azure-data-explorer.md
             displayName: quickstart
+          - name: パートナー ソリューション
+            href: ./partner/browse-partners.md
         '-name': null
       - name: 概念
         items:
@@ -1240,6 +1242,8 @@ items:
             href: ./catalog-and-governance/quickstart-connect-azure-purview.md
       - name: 操作方法ガイド
         items:
+          - name: セキュリティで保護された Azure Purview アカウントへのアクセス
+            href: ./catalog-and-governance/how-to-access-secured-purview-account.md
           - name: Azure Purview を使用した Synapse でのデータの検出、接続、調査
             href: ./catalog-and-governance/how-to-discover-connect-analyze-azure-purview.md
   - name: 操作方法
@@ -1304,14 +1308,14 @@ items:
       - name: パートナー
         items:
           - name: Business intelligence
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/business-intelligence.md
           - name: データ統合
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-data-integration.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/data-integration.md
           - name: データ管理
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/data-management.md
           - name: 機械学習と AI
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/machine-learning-ai.md
           - name: システム統合
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/system-integration.md
           - name: サードパーティ アプリケーションとの互換性の問題
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/compatibility-issues.md

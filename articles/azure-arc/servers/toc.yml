@@ -6,6 +6,8 @@
       href: overview.md
     - name: Connected Machine エージェントの新機能
       href: agent-release-notes.md
+    - name: Connected Machine エージェントのリリース ノートのアーカイブ
+      href: agent-release-notes-archive.md
 - name: クイックスタート
   items:
     - name: Arc 対応サーバー エージェントを有効にする

@@ -153,8 +153,6 @@
                   href: database/xevent-code-ring-buffer.md
     - name: 共有の利用方法
       items:
-        - name: クォータの増加を要求
-          href: database/quota-increase-request.md
         - name: エラスティック ジョブを使用したジョブの自動化
           href: database/job-automation-overview.md
         - name: SQL Agent を使用したジョブの自動化
@@ -479,6 +477,8 @@
               href: database/private-endpoint-overview.md
             - name: VNet エンドポイント
               href: database/vnet-service-endpoint-rule-overview.md
+            - name: サーバーの役割
+              href: database/security-server-roles.md
         - name: データベース シャーディング
           items:
             - name: データベース シャーディング
@@ -1422,6 +1422,8 @@
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: トラブルシューティング
       items:
+        - name: デプロイ中の容量エラー
+          href: capacity-errors-troubleshoot.md
         - name: 接続エラー
           href: database/troubleshoot-common-errors-issues.md
         - name: 一般的な接続に関する問題
@@ -1430,6 +1432,8 @@
           href: database/database-import-export-hang.md
         - name: トランザクション ログ エラー
           href: database/troubleshoot-transaction-log-errors-issues.md
+        - name: クォータの増加を要求
+          href: database/quota-increase-request.md
     - name: サービスの更新情報
       items:
         - name: SSL ルート証明書の期限切れ

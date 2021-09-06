@@ -156,6 +156,8 @@
               href: backup-azure-linux-app-consistent.md
             - name: 選択的ディスク バックアップ
               href: selective-disk-backup-restore.md
+            - name: データベース整合性スナップショットに Azure VM バックアップを使用する
+              href: backup-azure-linux-database-consistent-enhanced-pre-post.md
         - name: 復元
           items:
             - name: Azure VM の復元について

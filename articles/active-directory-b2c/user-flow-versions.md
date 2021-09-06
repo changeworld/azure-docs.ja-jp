@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/22/2021
+ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4b47a311513a1216555583b64095d4bc46e4b48e
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: ff22ed8c1ef96d1839767ac56a7215737ae18c14
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895903"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323816"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー バージョン
 
@@ -27,7 +27,7 @@ Azure Active Directory B2C (Azure AD B2C) のユーザー フローは、ユー�
 >- **推奨** ユーザー フローは、一般提供されている、最新機能を備えた次世代のユーザー フローです。 これらには、レガシ **V1**、**V1.1**、**V2** バージョンのすべての機能が組み込まれています。 今後は、**推奨** ユーザー フローが保守および更新されます。 これらの新しい推奨ユーザー フローに移動すると、新機能がリリースされる度にアクセスできるようになります。
 >- **標準 (レガシ)** ユーザー フロー (以前の **V1**) は、レガシ ユーザー フローです。 これらのバージョンのユーザー フローは保守または更新されないため、特定のビジネス ニーズがない限り使用しないことをお勧めします。
 >
->すべてのレガシ プレビュー ユーザー フロー (v1.1 および V2) は、**2021 年 8 月 1 日** までに非推奨となる予定です。 可能な限り、最新の機能と更新プログラムをいつでも利用できるように、できるだけ早く [**推奨** バージョンに切り替える](#how-to-switch-to-a-recommended-user-flow)ことを強くお勧めします。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。*
+>パブリック クラウドでは、すべてのレガシ プレビュー ユーザー フロー (V1.1 および V2) は非推奨です。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。*
 
 ## <a name="recommended-user-flows"></a>推奨ユーザー フロー
 
@@ -85,4 +85,4 @@ Azure Active Directory B2C (Azure AD B2C) のユーザー フローは、ユー�
 
 ### <a name="will-microsoft-still-support-my-legacy-v2-or-v11-user-flow-policy"></a>Microsoft では、現在使用しているレガシ V2 または v1.1 のユーザー フロー ポリシーは引き続きサポートされますか?
 
-パブリック クラウドでは、すべてのレガシ プレビュー ユーザー フロー (V1.1 および V2) が、2021 年 8 月 1 日までに非推奨となる予定です。 可能な限り、最新の機能と更新プログラムをいつでも利用できるように、できるだけ早く [**推奨** バージョンに切り替える](#how-to-switch-to-a-recommended-user-flow)ことを強くお勧めします。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。*
+パブリック クラウドでは、すべてのレガシ プレビュー ユーザー フロー (V1.1 および V2) は非推奨です。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。*

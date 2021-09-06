@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/17/2021
 ms.author: b-juche
-ms.openlocfilehash: e6bc27674cadc8798afa3f9f9297b0d573d7ce64
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 30b00320e9273ecb010239d66a3c056d3f95f332
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071060"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397694"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
@@ -30,7 +30,7 @@ Azure NetApp Files のいくつかの機能では、Active Directory 接続が�
 * あらかじめ容量プールを設定しておく必要があります。 「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。   
 * サブネットが Azure NetApp Files に委任されている必要があります。 「[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)」を参照してください。
 
-## <a name="requirements-for-active-directory-connections"></a>Active Directory 接続の要件
+## <a name="requirements-and-considerations-for-active-directory-connections"></a><a name="requirements-for-active-directory-connections"></a>Active Directory 接続の要件と考慮事項
 
 * Active Directory (AD) 接続を構成できるのは、サブスクリプションごとおよびリージョンごとに 1 つだけです。   
 
@@ -39,6 +39,8 @@ Azure NetApp Files のいくつかの機能では、Active Directory 接続が�
     AD 接続は、それが作成された NetApp アカウントを介してのみ表示されます。 ただし、共有 AD 機能を有効にすると、同じサブスクリプションおよび同じリージョン内の NetApp アカウントが、いずれかの NetApp アカウントで作成された AD サーバーを使用できるようになります。 「[同じサブスクリプションとリージョンにある複数の NetApp アカウントを AD 接続にマップする](#shared_ad)」を参照してください。 この機能を有効にすると、同じサブスクリプションおよび同じリージョンにあるすべての NetApp アカウントの AD 接続を確認できるようになります。 
 
 * 使用する管理者アカウントは、指定する組織単位 (OU) パスにマシン アカウントを作成できる必要があります。  
+
+* Azure NetApp Files で使用されている Active Directory ユーザー アカウントのパスワードを変更する場合は必ず、[[Active Directory 接続]](#create-an-active-directory-connection) で構成されているパスワードを更新してください。 そうしないと、新しいボリュームを作成できなくなり、セットアップによっては既存のボリュームへのアクセスも影響を受ける場合があります。  
 
 * 適切なポートは、該当する Windows Active Directory (AD) のサーバーで開く必要があります。  
     必要なポートは次のとおりです。 
@@ -118,7 +120,6 @@ Azure NetApp Files では、以下の追加の考慮事項が適用されます�
 * Azure NetApp Files では、`user` と `resource forest` の種類がサポートされています。
 * 同期の種類では、`All` または `Scoped` を選択できます。   
     `Scoped` を選択した場合、SMB 共有にアクセスするための正しい Azure AD グループが選択されていることを確認してください。  不明な場合は、`All` の同期の種類を使用できます。
-* Enterprise または Premium SKU を使用する必要があります。 Standard SKU はサポートされていません。
 
 Active Directory 接続を作成する場合は、次のような AADDS の詳細を確認してください。
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Data Factory を使って予測データ パイプラインを作成する
-description: Azure Data Factory と Azure Machine Learning Studio (クラシック) を使用して予測パイプラインを作成する方法について説明します。
+description: Azure Data Factory と ML Studio (クラシック) を使用して予測パイプラインを作成する方法について説明します。
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 2773ab2a7caa1eb4d198495a3ebe4ef0c14a5a32
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a613a48f1787c456885aabb0012efb4d71829aae
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785514"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396850"
 ---
-# <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Azure Machine Learning スタジオ (クラシック) と Azure Data Factory を使用して予測パイプラインを作成する
+# <a name="create-predictive-pipelines-using-ml-studio-classic-and-azure-data-factory"></a>ML Studio (クラシック) と Azure Data Factory を使用して予測パイプラインを作成する
 
 > [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md)
@@ -22,8 +22,8 @@ ms.locfileid: "104785514"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [ML Studio (クラシック) の Batch Execution アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [ML Studio (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -32,10 +32,10 @@ ms.locfileid: "104785514"
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での Machine Learning を使用したデータ変換](../transform-data-using-machine-learning.md)に関するページを参照してください。
 
-### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック)
-[Azure Machine Learning Studio (classic)](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、デプロイできます。 大まかに次の 3 つの手順で行われます。
+### <a name="ml-studio-classic"></a>ML Studio (クラシック)
+[ML Studio (クラシック)](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、デプロイできます。 大まかに次の 3 つの手順で行われます。
 
-1. **トレーニング実験を作成する**。 この手順を行うには、Azure Machine Learning スタジオ (クラシック) を使用します。 スタジオ (クラシック) は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
+1. **トレーニング実験を作成する**。 この手順を実行するには、ML Studio (クラシック) を使用します。 スタジオ (クラシック) は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
 2. **トレーニング実験を予測実験に変換する**。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
 3. **Web サービスとしてデプロイする**。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
 
@@ -47,19 +47,19 @@ Data Factory サービスでは、データを移動して変換するデータ 
 Azure Data Factory サービスについては、[Azure Data Factory の概要](data-factory-introduction.md)と [Azure Data Factory を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline.md)に関するページを参照してください。
 
 ### <a name="data-factory-and-machine-learning-studio-classic-together"></a>Data Factory と Machine Learning スタジオ (クラシック) の併用
-Azure Data Factory を使用すると、公開された [Azure Machine Learning Studio (classic)][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内で **バッチ実行アクティビティ** を使用すると、スタジオ (クラシック) Web サービスを呼び出して、データの予測を一括で行うことができます。 詳細については、バッチ実行アクティビティを使用した、Azure Machine Learning スタジオ (クラシック) Web サービスの呼び出しに関するセクションを参照してください。
+Azure Data Factory を使用すると、公開された [ML Studio (クラシック)][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内で **バッチ実行アクティビティ** を使用すると、スタジオ (クラシック) Web サービスを呼び出して、データの予測を一括で行うことができます。 詳細については、Batch Execution アクティビティを使用した ML Studio (クラシック) Web サービスの呼び出しに関するセクションを参照してください。
 
 時間の経過と共に、スタジオ (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 次の手順を実行することで、Data Factory パイプラインからスタジオ (クラシック) モデルを再トレーニングできます。
 
 1. 予測実験ではなく、トレーニング実験を Web サービスとして発行します。 前のシナリオで予測実験を Web サービスとして公開したのと同様にこの手順をスタジオ (クラシック) で行います。
 2. スタジオ (クラシック) バッチ実行アクティビティを使用して、トレーニング実験用 Web サービスを呼び出します。 基本的には、スタジオ (クラシック) バッチ実行アクティビティを使用して、トレーニング Web サービスとスコア付け Web サービスの両方を呼び出すことができます。
 
-再トレーニングを実行したら、**Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](data-factory-azure-ml-update-resource-activity.md)」をご覧ください。
+再トレーニングを実行したら、**ML Studio (クラシック) の更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](data-factory-azure-ml-update-resource-activity.md)」をご覧ください。
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>バッチ実行アクティビティを使用して Web サービスを呼び出す
 Azure Data Factory を使用してデータの移動と処理を調整した後、スタジオ (クラシック) を使用してバッチを実行します。 大まかな手順を以下に示します。
 
-1. Azure Machine Learning スタジオ (クラシック) のリンクされたサービスを作成します。 以下の値が必要になります。
+1. ML Studio (クラシック) のリンクされたサービスを作成する 以下の値が必要になります。
 
    1. **要求 URI** 。 要求 URI は、Web サービス ページで **[Batch 実行]** リンクをクリックするとわかります。
    2. 発行されたスタジオ (クラシック) Web サービス用の **API キー**。 API キーは、発行した Web サービスをクリックするとわかります。
@@ -358,7 +358,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 {
   "name": "MLWithSqlReaderSqlWriter",
   "properties": {
-    "description": "Azure Machine Learning Studio (classic) model with sql azure reader/writer",
+    "description": "ML Studio (classic) model with sql azure reader/writer",
     "activities": [
       {
         "name": "MLSqlReaderSqlWriterActivity",
@@ -411,7 +411,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 #### <a name="web-service-requires-multiple-inputs"></a>Web サービスで複数の入力が必要である
 Web サービスで複数の入力を受け取る場合は、**webServiceInput** プロパティを使用せずに、**webServiceInputs** プロパティを使用します。 **webServiceInputs** から参照されているデータセットもアクティビティの **inputs** に含める必要があります。
 
-Azure Machine Learning スタジオ (クラシック) の実験では、Web サービスの入力および出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズすることができます。 webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。 バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、スタジオ (クラシック) エンドポイントで必要なマッピングを確認することができます。
+ML Studio (クラシック) の実験では、Web サービスの入出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズできます。 webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。 バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、スタジオ (クラシック) エンドポイントで必要なマッピングを確認することができます。
 
 ```JSON
 {
@@ -454,7 +454,7 @@ Azure Machine Learning スタジオ (クラシック) の実験では、Web サ�
 ```
 
 #### <a name="web-service-does-not-require-an-input"></a>Web サービスに入力が必要ではない
-Azure Machine Learning スタジオ (クラシック) バッチ実行 Web サービスを使用すると、R や Python のスクリプトなど、入力が必要ではない任意のワークフローを実行できます。 また、GlobalParameters を公開しない Reader モジュールを使用して構成する方法を実験することもできます。 この場合、AzureMLBatchExecution アクティビティは次のように構成されます。
+ML Studio (クラシック) のバッチ実行 Web サービスを使用すると、R や Python のスクリプトなど、入力が必要ではない任意のワークフローを実行できます。 また、GlobalParameters を公開しない Reader モジュールを使用して構成する方法を実験することもできます。 この場合、AzureMLBatchExecution アクティビティは次のように構成されます。
 
 ```JSON
 {
@@ -481,7 +481,7 @@ Azure Machine Learning スタジオ (クラシック) バッチ実行 Web サー
 ```
 
 #### <a name="web-service-does-not-require-an-inputoutput"></a>Web サービスに入力/出力が必要ではない
-Azure Machine Learning スタジオ (クラシック) バッチ実行 Web サービスに Web サービスの出力を構成しない場合があります。 この例では、Web サービスの入力も出力ありません。また、GlobalParameters も構成されていません。 アクティビティ自体に構成されている出力があっても、webServiceOutput として出力されません。
+ML Studio (クラシック) のバッチ実行 Web サービスに Web サービスの出力を構成しない場合があります。 この例では、Web サービスの入力も出力ありません。また、GlobalParameters も構成されていません。 アクティビティ自体に構成されている出力があっても、webServiceOutput として出力されません。
 
 ```JSON
 {
@@ -505,7 +505,7 @@ Azure Machine Learning スタジオ (クラシック) バッチ実行 Web サー
 ```
 
 #### <a name="web-service-uses-readers-and-writers-and-the-activity-runs-only-when-other-activities-have-succeeded"></a>Web サービスはリーダーとライターを使用し、他のアクティビティが成功した場合にのみアクティビティを実行する
-Azure Machine Learning スタジオ (クラシック) Web サービスのリーダーおよびライター モジュールは、GlobalParameters あり、またはなしで構成できます。 ただし、いくつかのアップストリーム処理が完了した場合のみデータセットの依存関係を使用してサービスを呼び出すパイプラインに、サービス呼び出しを埋め込むことができます。 また、この方法を使用して、バッチ実行が完了した後に別のアクションをトリガーすることもできます。 この場合、Web サービスの入力または出力として指定せずに、アクティビティの入力と出力を使用する依存関係を表現することができます。
+ML Studio (クラシック) の Web サービスのリーダーおよびライター モジュールは、GlobalParameters あり、またはなしで構成できます。 ただし、いくつかのアップストリーム処理が完了した場合のみデータセットの依存関係を使用してサービスを呼び出すパイプラインに、サービス呼び出しを埋め込むことができます。 また、この方法を使用して、バッチ実行が完了した後に別のアクションをトリガーすることもできます。 この場合、Web サービスの入力または出力として指定せずに、アクティビティの入力と出力を使用する依存関係を表現することができます。
 
 ```JSON
 {
@@ -545,7 +545,7 @@ Azure Machine Learning スタジオ (クラシック) Web サービスのリー�
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>更新リソース アクティビティを使用してモデルを更新する
-再トレーニングを実行したら、**Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](data-factory-azure-ml-update-resource-activity.md)」をご覧ください。
+再トレーニングを実行したら、**ML Studio (クラシック) の更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](data-factory-azure-ml-update-resource-activity.md)」をご覧ください。
 
 ### <a name="reader-and-writer-modules"></a>リーダーとライター モジュール
 Web サービス パラメーターの使用を伴う一般的なシナリオとして、Azure SQL のリーダーとライターを使用するシナリオがあります。 リーダー モジュールは、スタジオ (クラシック) 外部のデータ管理サービスからデータを実験に読み込むために使用します。 ライター モジュールは、実験のデータをスタジオ (クラシック) 外部のデータ管理サービスに保存するために使用します。
@@ -557,14 +557,14 @@ Azure BLOB と Azure SQL のリーダー/ライターの詳細については、
 
 **A:** はい。 詳しくは、「 **リーダー モジュールを使用して Azure BLOB の複数のファイルからデータを読み取る** 」をご覧ください。
 
-## <a name="azure-machine-learning-studio-classic-batch-scoring-activity"></a>Azure Machine Learning スタジオ (クラシック) バッチ スコアリング アクティビティ
-**AzureMLBatchScoring** アクティビティを使用して Azure Machine Learning スタジオ (クラシック) と統合している場合は、最新の **AzureMLBatchExecution** アクティビティを使用することをお勧めします。
+## <a name="ml-studio-classic-batch-scoring-activity"></a>ML Studio (クラシック) のバッチ スコアリング アクティビティ
+**AzureMLBatchScoring** アクティビティを使用して ML Studio (クラシック) と統合している場合は、最新の **AzureMLBatchExecution** アクティビティを使用することをお勧めします。
 
 AzureMLBatchExecution アクティビティは、Azure SDK および Azure PowerShell の 2015 年 8 月のリリースで導入されました。
 
 AzureMLBatchScoring アクティビティを引き続き使用する場合は、このセクションを読んでください。
 
-### <a name="azure-machine-learning-studio-classic-batch-scoring-activity-using-azure-storage-for-inputoutput"></a>入力/出力に Azure Storage を使用する Azure Machine Learning スタジオ (クラシック) バッチ スコアリング アクティビティ
+### <a name="ml-studio-classic-batch-scoring-activity-using-azure-storage-for-inputoutput"></a>入力/出力に Azure Storage を使用する ML Studio (クラシック) のバッチ スコアリング アクティビティ
 
 ```JSON
 {
@@ -628,7 +628,7 @@ Web サービス パラメーターの値を指定するには、パイプライ
 >
 
 ## <a name="see-also"></a>参照
-* [Azure ブログの投稿:Azure Data Factory と Azure Machine Learning の概要](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
+* [Azure ブログの投稿: Azure Data Factory と ML Studio (クラシック) の概要](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 

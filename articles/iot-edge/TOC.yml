@@ -267,6 +267,8 @@
           href: troubleshoot-common-errors.md
 - name: 関連項目
   items:
+    - name: ランタイム モジュール環境変数
+      href: 'https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md'
     - name: PowerShell 関数
       items:
         - name: IoT Edge for Linux on Windows
