@@ -88,7 +88,7 @@ ms.locfileid: "106442543"
 
 ## <a name="understand-connectivity-modes"></a>接続モードを理解する
 
-| 接続モード | [説明] |
+| 接続モード | 説明 |
 | ----------------- | ----------- |
 | 完全に接続済み | GitOps 構成の伝達、Azure Policy および Gatekeeper ポリシーの適用、Azure Monitor でのワークロードのメトリックとログの収集において、エージェントと Azure との通信は、ほとんど遅延がなく一貫して行われます。 |
 | 半接続済み | `clusteridentityoperator` によってプルダウンされた MSI 証明書は、証明書の有効期限が切れるまで最大 90 日有効です。 有効期限が切れると、Azure Arc 対応 Kubernetes リソースの動作は停止します。 クラスター上で Azure Arc のすべての機能を再アクティブ化するには、Azure Arc 対応 Kubernetes リソースとエージェントを削除して作成し直します。 90 日の期間中、少なくとも 30 日ごとに 1 回はクラスターに接続してください。 |
