@@ -250,7 +250,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | `error` | 発生したエラーの種類を分類するために使用できるエラー コード文字列。 これはエラーへの対応にも使用できます。 |
 | `error_description` | エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
