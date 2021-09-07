@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 2fa13f931801c08fd450e889744b1eb49638ca80
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: af71ff52ead86c0cdeea307e736c36ac27536bfa
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206498"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029942"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL クエリの使用を開始する
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -194,3 +194,6 @@ Azure Cosmos DB の SQL クエリ言語の重要な側面について理解す�
 - [Azure Cosmos DB の概要](../introduction.md)
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT 句](sql-query-select.md)
+- Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](../estimate-ru-with-capacity-planner.md)に関するページを参照してください

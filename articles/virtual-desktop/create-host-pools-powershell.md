@@ -1,31 +1,31 @@
 ---
-title: PowerShell を使用して Azure Virtual Desktop のホスト プールを作成する - Azure
-description: PowerShell コマンドレットを使用して Azure Virtual Desktop にホスト プールを作成する方法。
+title: Azure Virtual Desktop ホスト プールを作成する - Azure
+description: PowerShell または Azure CLI を使用して Azure Virtual Desktop にホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/02/2020
+ms.date: 07/23/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 0b0822bf7653a076e579a0bec1cbfcc926d4c7b9
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: dbd48f8ff2b3da5cec432f6b1fba7d272621535c
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651130"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100830"
 ---
-# <a name="create-a-azure-virtual-desktop-host-pool-with-powershell"></a>PowerShell を使用して Azure Virtual Desktop のホスト プールを作成する
+# <a name="create-an-azure-virtual-desktop-host-pool-with-powershell-or-the-azure-cli"></a>PowerShell または Azure CLI を使用して Azure Virtual Desktop ホスト プールを作成する
 
 >[!IMPORTANT]
 >この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)を参照してください。
 
 ホスト プールは、Azure Virtual Desktop テナント環境内にある 1 つ以上の同一の仮想マシンをまとめたものです。 各ホスト プールは、複数の RemoteApp グループ、1 つのデスクトップ アプリ グループ、および複数のセッション ホストに関連付けることができます。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="create-a-host-pool"></a>ホスト プールを作成する
 
-この記事では、「[PowerShell モジュールを設定する](powershell-module.md)」の手順に従っていることを前提としています。
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-## <a name="use-your-powershell-client-to-create-a-host-pool"></a>PowerShell クライアントを使用してホスト プールを作成する
+まだ行っていない場合は、[PowerShell モジュールのセットアップ](powershell-module.md)に関する記事の手順に従ってください。
 
 次のコマンドレットを実行して Azure Virtual Desktop 環境にサインインします。
 
@@ -35,7 +35,7 @@ New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -W
 
 このコマンドレットにより、ホスト プール、ワークスペース、およびデスクトップ アプリ グループが作成されます。 さらに、デスクトップ アプリ グループがワークスペースに登録されます。 このコマンドレットを使用してワークスペースを作成するか、既存のワークスペースを使用することができます。
 
-次のコマンドレットを実行して、セッション ホストがホスト プールに参加することを承認する登録トークンを作成し、それをローカル コンピューター上の新しいファイルに保存します。 -ExpirationHours パラメーターを使用して、登録トークンが有効である時間の長さを指定できます。
+次のコマンドレットを実行して、セッション ホストがホスト プールに参加することを承認する登録トークンを作成し、それをローカル コンピューター上の新しいファイルに保存します。 *-ExpirationTime* パラメーターを使用して、登録トークンが有効である時間の長さを指定できます。
 
 >[!NOTE]
 >トークンの有効期限は 1 時間以上、1 か月以内にする必要があります。 この制限を超えて *-ExpirationTime* を設定した場合、コマンドレットではトークンが作成されません。
@@ -68,6 +68,31 @@ New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop 
 $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname>
 ```
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+まだ行っていない場合は、Azure CLI 用に環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+サインインした後、[az desktopvirtualization hostpool create](/cli/azure/desktopvirtualization#az_desktopvirtualization_hostpool_create) コマンドを使用して新しいホスト プールを作成し、必要に応じて、セッション ホストをホスト プールに参加させるための登録トークンを作成します。
+
+```azurecli
+az desktopvirtualization hostpool create --name "MyHostPool" \
+   --resource-group "MyResourceGroup" \
+   --location "MyLocation" \
+   --host-pool-type "Pooled" \
+   --load-balancer-type "BreadthFirst" \
+   --max-session-limit 999 \
+   --personal-desktop-assignment-type "Automatic" \
+   --registration-info expiration-time="2022-03-22T14:01:54.9571247Z" registration-token-operation="Update" \
+   --sso-context "KeyVaultPath" \
+   --description "Description of this host pool" \
+   --friendly-name "Friendly name of this host pool" \
+   --tags tag1="value1" tag2="value2"
+```
+
+---
+
 ## <a name="create-virtual-machines-for-the-host-pool"></a>ホスト プールの仮想マシンを作成する
 
 ここで、Azure Virtual Desktop ホスト プールに参加できる Azure 仮想マシンを作成できます。
@@ -76,6 +101,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 - [Azure ギャラリー イメージから仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [マネージド イメージから仮想マシンを作成する](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [アンマネージド イメージから仮想マシンを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 >[!NOTE]
 >ホスト OS として Windows 7 を使用して仮想マシンをデプロイしている場合、作成と展開のプロセスは若干異なります。 詳細については、「[Azure Virtual Desktop で Windows 7 仮想マシンをデプロイする](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)」を参照してください。

@@ -9,12 +9,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 04/16/2021
-ms.openlocfilehash: 51711cbbd66e52ccf0b47c4e1db5ecc5883ff959
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e37a6dcd6cd536e3702294e45a1aa3ffd2c75a24
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637832"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099371"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>マッピング データ フローのデバッグ モード
 
@@ -28,7 +28,7 @@ Azure Data Factory マッピング データ フローのデバッグ モード�
 
 ![[デバッグ] スライダー の場所を示すスクリーンショット 2](media/data-flow/debug-button-4.png)
 
-スライダーを有効にすると、使用する統合ランタイム構成を選択するように求めるメッセージが表示されます。 AutoResolveIntegrationRuntime を選択した場合は、既定の 60 分の Time to Live が設定された一般的なコンピューティングの 8 個のコアを持つクラスターがスピンアップされます。 セッションのタイムアウトまでのアイドル時間を増やす場合は、より高い TTL 設定を選択できます。 データ フロー統合ランタイムの詳細については、[データ フローのパフォーマンス](concepts-data-flow-performance.md#ir)に関するページを参照してください。
+スライダーを有効にすると、使用する統合ランタイム構成を選択するように求めるメッセージが表示されます。 AutoResolveIntegrationRuntime を選択した場合は、既定の 60 分の Time to Live が設定された一般的なコンピューティングの 8 個のコアを持つクラスターがスピンアップされます。 セッションのタイムアウトまでのアイドル時間を増やす場合は、より高い TTL 設定を選択できます。 データ フロー統合ランタイムの詳細については、「[Integration Runtime のパフォーマンス](concepts-integration-runtime-performance.md)」を参照してください。
 
 ![デバッグ IR の選択](media/data-flow/debug-new-1.png "デバッグ IR の選択")
 

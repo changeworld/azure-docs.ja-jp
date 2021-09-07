@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 08/27/2021
 ms.author: tisande
-ms.openlocfilehash: 95e6c74ad03cae30a2b7b6544a490ef86e92e900
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 490510e3b1a46b21123a7cd519a7bf8cb81021d6
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206448"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123109205"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB での結合
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -255,7 +255,40 @@ JOIN 句の便利な点は、クロス積からタプルを生成できる点で
     ]
 ```
 
-クエリに JOIN とフィルターがある場合は、クエリの一部を[サブクエリ](sql-query-subquery.md#optimize-join-expressions)として書き直して、パフォーマンスを向上させることができます。
+## <a name="subqueries-instead-of-joins"></a>JOIN の代わりにサブクエリを使用
+
+クエリに JOIN とフィルターがある場合は、クエリの一部を[サブクエリ](sql-query-subquery.md#optimize-join-expressions)として書き直して、パフォーマンスを向上させることができます。 場合によっては、JOIN をまったく使用する必要がなく、クエリのパフォーマンスが向上するように、サブクエリまたは [ARRAY_CONTAINS](sql-query-array-contains.md) を使用できます。
+
+たとえば、familyName、子供の givenName、子供の firstName、ペットの givenName を投影した前のクエリについて考えてみます。 このクエリでは、ペットの名前をフィルター処理するだけで、返す必要がない場合は、`ARRAY_CONTAINS` または[サブクエリ](sql-query-subquery.md)を使用して、`givenName = "Shadow"` でペットを確認できます。
+
+### <a name="query-rewritten-with-array_contains"></a>ARRAY_CONTAINS で書き換えられるクエリ
+
+```sql
+    SELECT 
+        f.id AS familyName,
+        c.givenName AS childGivenName,
+        c.firstName AS childFirstName
+    FROM Families f
+    JOIN c IN f.children
+    WHERE ARRAY_CONTAINS(c.pets, {givenName: 'Shadow'})
+```
+
+### <a name="query-rewritten-with-subquery"></a>サブクエリを使用したクエリの書き換え
+
+```sql
+    SELECT 
+        f.id AS familyName,
+        c.givenName AS childGivenName,
+        c.firstName AS childFirstName
+    FROM Families f
+    JOIN c IN f.children
+    WHERE EXISTS (
+    SELECT VALUE n
+    FROM n IN c.pets
+    WHERE n.givenName = "Shadow"
+    )
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 

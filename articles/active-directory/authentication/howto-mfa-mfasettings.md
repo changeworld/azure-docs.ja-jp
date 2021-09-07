@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 340c9f549d1d60a19867ea4de58834d921871854
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: d5aa2a2eba1cf6123d81813cab00d2ac7c5309b4
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015346"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835369"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -151,11 +151,9 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 ユーザーが MFA プロンプトの電話を受ける場合は、発信者番号や音声案内など、ユーザーのエクスペリエンスを構成できます。
 
-米国では、MFA 発信者番号を構成していない場合、Microsoft からの音声通話は次の番号から発信されます。 スパム フィルターを使用する場合は、必ずこれらの番号を除外してください。
+北米では、MFA 発信者番号を構成していない場合、Microsoft からの音声通話は次の番号から発信されます。 スパム フィルターを使用する場合は、必ずこれらの番号を除外してください。
 
-* *+1 (866) 539 4191*
 * *+1 (855) 330 8653*
-* *+1 (877) 668 6536*
 
 > [!NOTE]
 > 公衆電話網経由で Azure AD Multi-Factor Authentication の電話がかけられた場合、発信者番号をサポートしていない通信事業者を通じてルーティングされることがあります。 このため、発信者番号は、Azure AD Multi-Factor Authentication が常にそれを送信しているにもかかわらず保証されません。 このことは、Azure AD Multi-Factor Authentication から提供される電話とテキスト メッセージの両方に当てはまります。 テキスト メッセージが Azure AD Multi-Factor Authentication からのものかどうかを確認する必要がある場合、[SMS メッセージを送る際に使用される SMS ショート コード](multi-factor-authentication-faq.yml#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users-)に関するページを参照してください。

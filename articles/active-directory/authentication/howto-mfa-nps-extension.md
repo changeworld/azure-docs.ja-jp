@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 08/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 252eb72358f93b72ca31dd834b704b0044713854
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 10489579d95628399e94bad5dcab256a3df4bf74
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323119"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309881"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication と既存のネットワーク ポリシー サーバー (NPS) インフラストラクチャの統合
 
@@ -32,7 +32,9 @@ Azure AD Multi-Factor Authentication の NPS 拡張機能を使用する場合�
 1. **NAS/VPN サーバー**: VPN クライアントから受信した要求を RADIUS 要求に変換して NPS サーバーに送信します。
 2. **NPS サーバー**: Active Directory Domain Service (AD DS) に接続して RADIUS 要求のプライマリ認証を行います。成功したら、インストール済みの任意の拡張機能に要求を渡します。  
 3. **NPS 拡張機能**: セカンダリ認証のために Azure AD Multi-Factor Authentication への要求をトリガーします。 応答を受信したら、MFA チャレンジが成功していた場合は、Azure STS が発行した MFA クレームを含むセキュリティ トークンを NPS サーバーに提供して認証要求を完了します。
-4. **Azure AD MFA**: Azure Active Directory (Azure AD) と通信してユーザーの詳細を取得し、ユーザーに構成されている検証メソッドを使用してセカンダリ認証を行います。
+   >[!NOTE]
+   >MFA 要件を満たすには、ユーザーが既定の認証方法にアクセスできる必要があります。 別の方法を選択することはできません。 既定の認証方法は、テナント認証方法と MFA ポリシーで無効になっている場合でも使用されます。
+1. **Azure AD MFA**: Azure Active Directory (Azure AD) と通信してユーザーの詳細を取得し、ユーザーに構成されている検証メソッドを使用してセカンダリ認証を行います。
 
 次の図に、この認証要求フローの概要を示します。
 

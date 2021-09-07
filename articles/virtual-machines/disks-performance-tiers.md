@@ -8,14 +8,16 @@ ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6d13f5927e31fc7f8cf412f6bba6088360af610d
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 783299359b1b7b9cbe75fd36f534ac18563c0fee
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356223"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123102929"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Azure PowerShell モジュールまたは Azure CLI を使用してパフォーマンス レベルを変更します
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [!INCLUDE [virtual-machines-disks-performance-tiers-intro](../../includes/virtual-machines-disks-performance-tiers-intro.md)]
 
@@ -23,8 +25,16 @@ ms.locfileid: "113356223"
 
 [!INCLUDE [virtual-machines-disks-performance-tiers-restrictions](../../includes/virtual-machines-disks-performance-tiers-restrictions.md)]
 
-## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>ベースライン レベルよりも高いレベルで空のデータ ディスクを作成する
+## <a name="prerequisites"></a>前提条件
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+最新の [Azure CLI](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにサインインします。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+最新の [Azure PowerShell バージョン](/powershell/azure/install-az-ps)をインストールし、`Connect-AzAccount` を使用して Azure アカウントにサインインします。
+
+---
+
+## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>ベースライン レベルよりも高いレベルで空のデータ ディスクを作成する
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
@@ -34,8 +44,6 @@ diskName=<yourDiskNameHere>
 diskSize=<yourDiskSizeHere>
 performanceTier=<yourDesiredPerformanceTier>
 region=westcentralus
-
-az login
 
 az account set --subscription $subscriptionId
 
@@ -73,9 +81,25 @@ New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGro
 ```
 ---
 
-## <a name="update-the-tier-of-a-disk"></a>ディスクのレベルを更新する
+## <a name="update-the-tier-of-a-disk-without-downtime"></a>ダウンタイムなしでディスクのレベルを更新する
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="prerequisites"></a>前提条件
+
+ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションの機能を有効にしてください。
+
+1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name LiveTierChange
+    ```
+ 
+1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name LiveTierChange
+    ```
 
 ```azurecli
 resourceGroupName=<yourResourceGroupNameHere>
@@ -86,6 +110,20 @@ az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションの機能を有効にしてください。
+
+1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
+
+    ```azurepowershell
+     Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+    ```
+ 
+1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
+
+    ```azurepowershell
+    Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+    ```
 
 ```azurepowershell
 $resourceGroupName='yourResourceGroupName'
@@ -114,77 +152,6 @@ $disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
 $disk.Tier
 ```
 ---
-
-## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>ダウンタイムなしでディスクのパフォーマンス レベルを変更する (プレビュー)
-
-ダウンタイムなしでパフォーマンス レベルを変更することもできるため、レベルを変更するために VM の割り当てを解除したり、ディスクをデタッチしたりする必要はありません。
-
-### <a name="prerequisites"></a>前提条件
-
-ご使用のディスクが「[ダウンタイムなしでパフォーマンス レベルを変更する (プレビュー)](#change-performance-tier-without-downtime-preview)」セクションに記載されている要件を満たしている必要があります。そうでない場合は、パフォーマンス レベルを変更するとダウンタイムが発生します。
-
-ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、お使いのサブスクリプションに対してこの機能を有効にしてください。
-
-1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
-
-    ```azurecli
-    az feature register --namespace Microsoft.Compute --name LiveTierChange
-    ```
- 
-1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
-
-    ```azurecli
-    az feature show --namespace Microsoft.Compute --name LiveTierChange
-    ```
-
-### <a name="update-the-performance-tier-of-a-disk-without-downtime-via-azure-cli"></a>Azure CLI を使用してダウンタイムなしでディスクのパフォーマンス レベルを更新する
-
-次のスクリプトでは、ベースライン レベルよりも高いディスク レベルが更新されます。 `<yourResourceGroupNameHere>`、`<yourDiskNameHere>`、および `<yourDesiredPerformanceTier>` を置き換えてから、スクリプトを実行してください。
-
-```azurecli
-resourceGroupName=<yourResourceGroupNameHere>
-diskName=<yourDiskNameHere>
-performanceTier=<yourDesiredPerformanceTier>
- 
-az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
-```
-
-### <a name="update-the-performance-tier-of-a-disk-without-downtime-via-arm-template"></a>ARM テンプレートを使用してダウンタイムなしでディスクのパフォーマンス レベルを更新する
-
-次のスクリプトは、サンプル テンプレート [CreateUpdateDataDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json) を使用して、ベースライン レベルよりも高いディスクのレベルを更新します。 `<yourSubScriptionID>`、`<yourResourceGroupName>`、`<yourDiskName>`、`<yourDiskSize>`、`<yourDesiredPerformanceTier>` を置き換えてから、スクリプトを実行します。
-
- ```cli
-subscriptionId=<yourSubscriptionID>
-resourceGroupName=<yourResourceGroupName>
-diskName=<yourDiskName>
-diskSize=<yourDiskSize>
-performanceTier=<yourDesiredPerformanceTier>
-region=EastUS2EUAP
-
- az login
-
- az account set --subscription $subscriptionId
-
- az group deployment create -g $resourceGroupName \
---template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
---parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
-```
-
-## <a name="confirm-your-disk-has-changed-tiers"></a>ディスクのレベルが変更されたことを確認する
-
-パフォーマン スレベルの変更は、完了までに最大 15 分かかる場合があります。 ディスクのレベルが変更されたことを確認するには、次の方法のいずれかを使用します。
-
-### <a name="azure-resource-manager"></a>Azure Resource Manager
-
-```cli
-az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli
-az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
-```
 
 ## <a name="next-steps"></a>次のステップ
 
