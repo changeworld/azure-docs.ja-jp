@@ -4,12 +4,12 @@ description: この記事では、Azure VMware Solution サブスクリプショ
 ms.custom: subject-moving-resources
 ms.topic: how-to
 ms.date: 04/26/2021
-ms.openlocfilehash: 02f35efe90d4670c4ab38155f129ec0d61c1b03d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b4541bf1cf13a8b4c090365c31c2403685a69c7f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966705"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322229"
 ---
 # <a name="move-azure-vmware-solution-subscription-to-another-subscription"></a>Azure VMware Solution サブスクリプションを別のサブスクリプションに移動する
 
@@ -39,15 +39,15 @@ ms.locfileid: "111966705"
 
    :::image type="content" source="media/move-subscriptions/move-resources-subscription-target.png" alt-text="ターゲット リソースのスクリーンショット。":::
 
-1. 移動することを選択したリソースの検証を確認します。  これにより、移動対象として選択したすべてのリソースが検証されます。 選択したリソースの検証中、[検証状態] に **[検証を保留しています]** が表示されます。 
+1. 移動することを選択したリソースの検証を確認します。 検証中、状態に **[検証を保留しています]** が表示されます。 
 
    :::image type="content" source="media/move-subscriptions/pending-move-resources-subscription-target.png" alt-text="移動するリソースを示すスクリーンショット。":::
 
 1. 検証が成功したら、 **[次へ]** を選択してプライベート クラウドの移行を開始します。
 
-   :::image type="content" source="media/move-subscriptions/move-resources-succeeded.png" alt-text="[成功] の検証状態を示すスクリーンショット。":::
+   :::image type="content" source="media/move-subscriptions/move-resources-succeeded.png" alt-text=" &quot;成功&quot; の検証状態を示すスクリーンショット。":::
 
-1. 「関連付けられているツールとスクリプトは、それらを更新して新しいリソース ID を使用するまで機能しない旨を理解している」ことを示すチェックボックスをオンにします。 次に、 **[移動]** を選択します。
+1. 「関連付けられているツールとスクリプトは、それらを更新して新しいリソース ID を使用するまで機能しない旨を理解している」ことを示すチェック ボックスをオンにします。 次に、 **[移動]** を選択します。
 
    :::image type="content" source="media/move-subscriptions/review-move-resources-subscription-target.png" alt-text="移動対象として選択したリソースの概要を示すスクリーンショット。":::
 

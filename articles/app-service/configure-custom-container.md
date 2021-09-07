@@ -2,15 +2,15 @@
 title: カスタム コンテナーを構成する
 description: Azure App Service でカスタム コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 22a953058084b4f828160cc9ba99c14a5313c9fb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b812495d1046ffc1b9435c0dc2684dd61af89beb
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747782"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865075"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -34,8 +34,8 @@ ms.locfileid: "121747782"
 
 カスタム Windows イメージの場合は、必要なフレームワークに合った適切な[親イメージ (ベース イメージ)](https://docs.docker.com/develop/develop-images/baseimages/)を選択する必要があります。
 
-- .NET Framework のアプリをデプロイするには、Windows Server Core [長期サービス チャネル (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
-- .NET Core のアプリをデプロイするには、Windows Server Nano [半期サービス チャネル (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) リリースに基づく親イメージを使用します。 
+- .NET Framework のアプリをデプロイするには、Windows Server 2019 Core [長期サービス チャネル (LTSC)](/windows-server/get-started/servicing-channels-comparison#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
+- .NET Core のアプリをデプロイするには、Windows Server 2019 Nano [半期サービス チャネル (SAC)](/windows-server/get-started/servicing-channels-comparison#semi-annual-channel) リリースに基づく親イメージを使用します。 
 
 アプリの起動中は、親イメージのダウンロードに多少の時間がかかります。 ただし、Azure App Service にあらかじめキャッシュされている次のいずれかの親イメージを使用することで、起動時間を短縮することができます。
 

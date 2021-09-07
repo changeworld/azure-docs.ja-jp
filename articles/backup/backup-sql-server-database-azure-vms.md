@@ -2,13 +2,13 @@
 title: コンテナーから複数の SQL Server VM をバックアップする
 description: この記事では、Recovery Services コンテナーから Azure Backup を使用して Azure 仮想マシン上の SQL Server データベースをバックアップする方法について説明します
 ms.topic: conceptual
-ms.date: 05/28/2021
-ms.openlocfilehash: 3a6792fe5146df9babc906edec1fc12aa4b3e1cb
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 08/20/2021
+ms.openlocfilehash: 834737c9773b9efead12ef8033852d25ae706062
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672322"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099095"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Recovery Services コンテナーから複数の SQL Server VM をバックアップする
 
@@ -30,6 +30,8 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 1. SQL Server インスタンスをホストする VM として、同じリージョンおよびサブスクリプションの [Recovery Services コンテナー](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)を特定または作成する。
 1. VM が[ネットワーク接続](backup-sql-server-database-azure-vms.md#establish-network-connectivity)を備えていることを確認する。
+1. VM に [Azure 仮想マシン エージェント](../virtual-machines/extensions/agent-windows.md)がインストールされていることを確認します。
+1. VM に .NET 4.5.2 バージョン以降がインストールされていることを確認します。
 1. SQL Server データベースが、[Azure Backup のためのデータベースの命名に関するガイドライン](#database-naming-guidelines-for-azure-backup)に従っていることを確認する。
 1. SQL Server VM 名とリソース グループ名とを組み合わせた長さが、Azure Resource Manager VM の場合は 84 文字、クラシック VM の場合は 77 文字を超えないようにしてください。 この制限は、一部の文字がサービスによって予約されていることに起因します。
 1. データベースに対して有効になっているバックアップ ソリューションが他にないことをチェックする。 データベースをバックアップする前に、他のすべての SQL Server バックアップを無効にします。
@@ -84,7 +86,7 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 
 次の FQDN を使用することで、サーバーから必要なサービスへのアクセスを許可することもできます。
 
-| サービス    | アクセスするドメイン名                             | ポート
+| サービス    | アクセスするドメイン名                             | Port
 | -------------- | ------------------------------------------------------------ | ---
 | Azure Backup  | `*.backup.windowsazure.com`                             | 443
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` <br><br> `*.blob.storage.azure.net` | 443
@@ -96,18 +98,22 @@ Azure VM 上の SQL Server データベースをバックアップする場合�
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure Backup のためのデータベースの命名に関するガイドライン
 
-データベースの名前に次の要素を使用しないでください。
+- データベースの名前に次の要素を使用しないでください。
 
-* 末尾および先頭のスペース
-* 末尾の感嘆符 (!)
-* 終わり角かっこ (])
-* セミコロン ';'
-* スラッシュ '/'
+  - 末尾および先頭のスペース
+  - 末尾の感嘆符 (!)
+  - 終わり角かっこ (])
+  - セミコロン (;)
+  - スラッシュ (/)
 
-サポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 詳細については、「 [Table サービス データ モデルについて](/rest/api/storageservices/understanding-the-table-service-data-model)」を参照してください。
+- サポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 詳細については、「 [Table サービス データ モデルについて](/rest/api/storageservices/understanding-the-table-service-data-model)」を参照してください。
+
+- 同じ SQL インスタンス上の大文字と小文字が異なる複数のデータベースはサポートされません。
+
+-   保護の構成後の SQL データベースの大文字と小文字の変更はサポートされません。
 
 >[!NOTE]
->名前に "+" や "&" などの特殊文字が含まれるデータベースに対する **保護の構成** 操作はサポートされていません。 データベース名を変更するか、これらのデータベースを適切に保護できる **自動保護** を有効にできます。
+>名前に '+' や '&' などの特殊文字が含まれるデータベースに対する **保護の構成** 操作はサポートされていません。 データベース名を変更するか、これらのデータベースを適切に保護できる **自動保護** を有効にできます。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

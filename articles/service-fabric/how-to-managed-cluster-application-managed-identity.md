@@ -1,18 +1,18 @@
 ---
-title: Service Fabric マネージド クラスター ノード上でアプリケーション マネージド ID を構成して使用する
-description: ARM テンプレートでデプロイされた Azure Service Fabric マネージド クラスター上でアプリケーション マネージド ID を構成して使用する方法について説明します。
+title: Microsoft Azure Service Fabric マネージド クラスター上でマネージド ID を持つアプリケーションを構成して使用する
+description: Azure Resource Manager (ARM) テンプレートでデプロイされた Microsoft Azure Service Fabric マネージド クラスター上で、マネージド ID を持つアプリケーションを構成して使用する方法について説明します。
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 4e488f9ebb78208617ca59fdb88dbec454de10e1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 8/23/2021
+ms.openlocfilehash: 5007f17754572c03ff820ecda1bb09f6e8a8020e
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958277"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864751"
 ---
-# <a name="deploy-a-service-fabric-application-with-managed-identity"></a>マネージド ID を使用した Service Fabric アプリケーションをデプロイする
+# <a name="deploy-an-application-with-managed-identity-to-a-service-fabric-managed-cluster"></a>マネージド ID を使用してアプリケーションを Microsoft Azure Service Fabric マネージド クラスターにデプロイする
 
-マネージド ID を持つ Service Fabric アプリケーションをデプロイするには、Azure Resource Manager からアプリケーションをデプロイする必要があり、通常は Azure Resource Manager テンプレートを使用します。 Azure Resource Manager から Service Fabric アプリケーションをデプロイする方法の詳細については、「[アプリケーションとサービスを Azure Resource Manager のリソースとして管理する](service-fabric-application-arm-resource.md)」を参照してください。
+マネージド ID を持つ Service Fabric アプリケーションをデプロイするには、Azure Resource Manager からアプリケーションをデプロイする必要があり、通常は Azure Resource Manager テンプレートを使用します。 Service Fabric アプリケーションを Azure Resource Manager を介してデプロイする方法の詳細については、「[Azure Resource Manager を使用してアプリケーションを管理対象クラスターにデプロイする](how-to-managed-cluster-app-deployment-template.md)」を参照してください。
 
 > [!NOTE] 
 > 
@@ -195,6 +195,5 @@ Service Fabric アプリケーションが [Azure リソース用のマネージ
     これは、前述の ID からサービスへのマッピングと同等ですが、サービス定義の観点からのものになります。 ID は、アプリケーション マニフェストで宣言されているように、ここではフレンドリ名 (`WebAdmin`) で参照されます。
 
 ## <a name="next-steps"></a>次のステップ
-
-* [サービス コードから Service Fabric アプリケーションのマネージド ID を活用する](./how-to-managed-identity-service-fabric-app-code.md)
-* [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセス権を付与する](./how-to-grant-access-other-resources.md)
+* [サービス コードから Service Fabric アプリケーションのマネージド ID を活用する](how-to-managed-identity-service-fabric-app-code.md)
+* [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセス権を付与する](how-to-grant-access-other-resources.md)

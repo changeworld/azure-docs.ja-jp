@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 00b119d993b549340467bf3892f3ffc5cf7b76dd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8228c3cedf58b389b93a516c4a372a38b33c0e4d
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755442"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028541"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -392,3 +392,6 @@ WHERE CONTAINS(company.headquarters.country, "United")
 
 - [インデックス作成ポリシー](index-policy.md)
 - [インデックス作成ポリシーを管理する方法](how-to-manage-indexing-policy.md)
+- Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

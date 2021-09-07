@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: 9f998115b2fb0b787af38e8cce660fd7d32f3527
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c83e8a93d41cde3c7a3debbbcfa9d3522ffe2939
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765560"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396961"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーでの読み取りレプリカ
 
@@ -119,9 +119,10 @@ GTID を構成するために、次のサーバー パラメーターを使用�
 
 |**サーバー パラメーター**|**説明**|**既定値**|**値**|
 |--|--|--|--|
-|`gtid_mode`|トランザクションを識別するために GTID を使用するかどうかを示します。 モード間の変更は、一度に 1 つのステップで昇順でのみ実行できます (例: `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`:新規とレプリケーションのトランザクションの両方が匿名である必要があります <br> `OFF_PERMISSIVE`:新しいトランザクションは匿名です。 レプリケートされたトランザクションは、匿名または GTID トランザクションのいずれかにすることができます。 <br> `ON_PERMISSIVE`:新しいトランザクションは GTID トランザクションです。 レプリケートされたトランザクションは、匿名または GTID トランザクションのいずれかにすることができます。 <br> `ON`:新規およびレプリケートされたトランザクションは、どちらも GTID トランザクションである必要があります。|
-|`enforce_gtid_consistency`|トランザクション セーフな方法でログに記録できるステートメントのみを実行できるようにすることで、GTID の一貫性を強制的に適用します。 GTID レプリケーションを有効にする前に、この値を `ON` に設定する必要があります。 |`OFF`|`OFF`:すべてのトランザクションが GTID の一貫性に違反することが許可されます。  <br> `ON`:すべてのトランザクションが GTID の一貫性に違反することが許可されません。 <br> `WARN`:すべてのトランザクションは GTID の一貫性に違反することが許可されますが、警告が生成されます。 | 
+|`gtid_mode`|トランザクションを識別するために GTID を使用するかどうかを示します。 モード間の変更は、一度に 1 つのステップで昇順でのみ実行できます (例: `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF*`|`OFF`:新規とレプリケーションのトランザクションの両方が匿名である必要があります <br> `OFF_PERMISSIVE`:新しいトランザクションは匿名です。 レプリケートされたトランザクションは、匿名または GTID トランザクションのいずれかにすることができます。 <br> `ON_PERMISSIVE`:新しいトランザクションは GTID トランザクションです。 レプリケートされたトランザクションは、匿名または GTID トランザクションのいずれかにすることができます。 <br> `ON`:新規およびレプリケートされたトランザクションは、どちらも GTID トランザクションである必要があります。|
+|`enforce_gtid_consistency`|トランザクション セーフな方法でログに記録できるステートメントのみを実行できるようにすることで、GTID の一貫性を強制的に適用します。 GTID レプリケーションを有効にする前に、この値を `ON` に設定する必要があります。 |`OFF*`|`OFF`:すべてのトランザクションが GTID の一貫性に違反することが許可されます。  <br> `ON`:すべてのトランザクションが GTID の一貫性に違反することが許可されません。 <br> `WARN`:すべてのトランザクションは GTID の一貫性に違反することが許可されますが、警告が生成されます。 | 
 
+**高可用性機能が有効になっている Azure Database for MySQL フレキシブル サーバーの場合、既定値は `ON` に設定されています*
 > [!NOTE]
 >
 > * いったん GTID を有効になると、無効に戻すことはできません。 GTID をオフにする必要がある場合は、サポートにお問い合わせください。 

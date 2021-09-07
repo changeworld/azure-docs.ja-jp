@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: ba75af247888a2404619ec0a3db3b0a5d3310502
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1e909273ae2413a67da6e3975e5a2bc50a68685d
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142425"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186823"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service の一般的な問題に関するトラブルシューティング ガイド
 
@@ -73,7 +73,7 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 * ASP.NET の "利用可能なサーバーがありません" というエラー [#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET の "接続がアクティブではありません。サービスにデータを送信できません。" というエラー [#324](https://github.com/Azure/azure-signalr/issues/324)
-* "https://<API endpoint> に対する HTTP 要求の発行中にエラーが発生しました。 このエラーは、HTTPS の場合に HTTP.SYS でサーバー証明書が正しく構成されていないことが原因と考えられます。 このエラーは、クライアントとサーバーの間でセキュリティ バインドが一致していないことが原因の場合もあります。"
+* "`https://<API endpoint>` に対する HTTP 要求の発行中にエラーが発生しました。 このエラーは、HTTPS の場合に HTTP.SYS でサーバー証明書が正しく構成されていないことが原因と考えられます。 このエラーは、クライアントとサーバーの間でセキュリティ バインドが一致していないことが原因の場合もあります。"
 
 ### <a name="root-cause"></a>根本原因
 
@@ -428,33 +428,33 @@ service.AddSingleton<ThreadPoolStarvationDetector>();
 
 <a name="view_request"></a>
 
-* クライアントからの送信要求はどのように表示するのでしょうか。
+### <a name="how-to-view-the-outgoing-request-from-the-client"></a>クライアントからの送信要求はどのように表示するのでしょうか。
+
 たとえば、ASP.NET Core の例を見てみます (ASP.NET の例は同様です)。
-    * ブラウザーから:
 
-        例として Chrome を使用すると、**F12** キーを使用してコンソール ウィンドウを開き、 **[ネットワーク]** タブに切り替えることができます。まったく最初からネットワークをキャプチャするには、**F5** キーを使用して、ページを最新の情報に更新することが必要な場合があります。
+* ブラウザーから: Chrome を例として使用すると、**F12** キーを押してコンソール ウィンドウを開き、 **[ネットワーク]** タブに切り替えます。操作の最初からネットワークをキャプチャするために、**F5** キーを使用してページを更新することをお勧めします。
 
-        :::image type="content" source="./media/signalr-howto-troubleshoot-guide/chrome-network.gif" alt-text="Chrome でのネットワーク表示":::
+    :::image type="content" source="./media/signalr-howto-troubleshoot-guide/chrome-network.gif" alt-text="Chrome でのネットワーク表示":::
 
-    * C# クライアントから:
+* C# クライアントから:
 
-        [Fiddler](https://www.telerik.com/fiddler) を使用してローカル Web トラフィックを表示できます。 WebSocket トラフィックは、Fiddler 4.5 以降でサポートされています。
+    [Fiddler](https://www.telerik.com/fiddler) を使用してローカル Web トラフィックを表示できます。 WebSocket トラフィックは、Fiddler 4.5 以降でサポートされています。
 
-        :::image type="content" source="./media/signalr-howto-troubleshoot-guide/fiddler-view-network-inline.png" alt-text="Fiddler でのネットワークの表示" lightbox="./media/signalr-howto-troubleshoot-guide/fiddler-view-network.png":::
+    :::image type="content" source="./media/signalr-howto-troubleshoot-guide/fiddler-view-network-inline.png" alt-text="Fiddler でのネットワークの表示" lightbox="./media/signalr-howto-troubleshoot-guide/fiddler-view-network.png":::
 
 <a name="restart_connection"></a>
 
-* クライアント接続はどのように再開するのでしょうか。
+### <a name="how-to-restart-client-connection"></a>クライアント接続はどのように再開するのでしょうか。
     
-    以下に、*常に再試行* の戦略を採用した接続再開ロジックを含む [サンプル コード](https://github.com/Azure/azure-signalr/tree/dev/samples)を示します。
+以下に、*常に再試行* の戦略を採用した接続再開ロジックを含む [サンプル コード](https://github.com/Azure/azure-signalr/tree/dev/samples)を示します。
 
-    * [ASP.NET Core C# クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
+* [ASP.NET Core C# クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 
-    * [ASP.NET Core JavaScript クライアント](https://github.com/Azure/azure-signalr/blob/release/1.0.0-preview1/samples/ChatSample/wwwroot/index.html#L164)
+* [ASP.NET Core JavaScript クライアント](https://github.com/Azure/azure-signalr/blob/dev/samples/ChatSample/ChatSample.Net50/wwwroot/index.html#L171)
 
-    * [ASP.NET C# クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
+* [ASP.NET C# クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
-    * [ASP.NET JavaScript クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+* [ASP.NET JavaScript クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
 [トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 

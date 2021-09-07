@@ -1,18 +1,18 @@
 ---
-title: Service Fabric マネージド クラスターでアプリケーション シークレットを使用する
-description: Azure Service Fabric アプリケーション シークレットについて、およびマネージド クラスターでの使用に必要な情報を収集する方法について説明します
+title: Microsoft Azure Service Fabric マネージド クラスターにアプリケーション シークレットをデプロイする
+description: Microsoft Azure Service Fabric アプリケーション シークレットと、それらをマネージド クラスターにデプロイする方法について説明します
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 820fb2a116ba5343a2f2126950a7f5d5896ddee3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 8/23/2021
+ms.openlocfilehash: 81fbd254f6aee216661e720a73c97e89351a9fad
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950113"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867347"
 ---
-# <a name="use-application-secrets-in-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターでアプリケーション シークレットを使用する
+# <a name="deploy-application-secrets-to-a-service-fabric-managed-cluster"></a>Microsoft Azure Service Fabric マネージド クラスターにアプリケーション シークレットをデプロイする
 
-シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。 この記事では、Azure Key Vault を使用して、Service Fabric マネージド クラスター用のキーとシークレットを管理します。 ただし、アプリケーションでのシークレットの " *使用* " はクラウド プラットフォームに依存しないので、クラスターでホストされている任意の場所にアプリケーションをデプロイできます。
+シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。 Azure Key Vault を使用して、Microsoft Azure Service Fabric マネージド クラスターのキーとシークレットを管理し、この記事に利用することをお勧めします。 ただし、アプリケーションでのシークレットの " *使用* " はクラウド プラットフォームに依存しないので、クラスターでホストされている任意の場所にアプリケーションをデプロイできます。
 
 サービスの構成設定を管理する方法として、[サービス構成パッケージ][config-package]を使用することが推奨されます。 構成パッケージはバージョン管理されており、正常性の検証と自動ロールバックを含む管理されたローリング アップグレードによって更新可能です。 グローバル サービスの停止の可能性が低減されるため、グローバル構成をお勧めします。 暗号化されたシークレットも例外ではありません。 Service Fabric には、証明書の暗号化を使用して、構成パッケージの Settings.xml ファイル内の値を暗号化および暗号化解除する機能が組み込まれています。
 
@@ -45,11 +45,11 @@ ms.locfileid: "111950113"
 マネージド クラスターの場合、3 つの値が必要になります。2 つは Azure Key Vault からのもので、1 つはノードのローカル ストア名として決定します。
 
 パラメーター: 
-* ソース コンテナー: これは 
+* `Source Vault`: これは 
     * 例: /subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1
-* 証明書 URL: これは完全なオブジェクト識別子であり、大文字と小文字は区別されず、変更できません
+* `Certificate URL`: これは完全なオブジェクト識別子であり、大文字と小文字は区別されず、変更できません
     * https://mykeyvault1.vault.azure.net/secrets/{secretname}/{secret-version}
-* 証明書ストア: 証明書が配置されるノード上のローカル証明書ストアです
+* `Certificate Store`: 証明書が配置されるノード上のローカル証明書ストアです
     * ノード上の証明書ストア名。例: "MY"
 
 Service Fabric マネージド クラスターでは、ノードにバージョン固有のシークレットを追加するための 2 つの方法がサポートされています。

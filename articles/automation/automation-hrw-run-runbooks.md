@@ -3,15 +3,15 @@ title: Hybrid Runbook Worker での Azure Automation Runbook の実行
 description: この記事では、Hybrid Runbook Worker を利用し、ローカル データセンターまたはその他のクラウド プロバイダーのコンピューターで Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/27/2021
+ms.date: 08/12/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ef4c688fbe41db046b77d45090d77200d1c782cf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5f27f9366b388c090ca689a2011c777973b8a894
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725683"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968055"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -27,7 +27,12 @@ Hybrid Runbook Worker で実行される Runbook を作成するときは、work
 
 Azure Automation による Hybrid Runbook Worker でのジョブの処理は、Azure サンドボックスで実行されるジョブとは異なります。 実行時間の長い Runbook がある場合、起こりうる再起動に対して回復性があることを確認します。 ジョブの動作の詳細については、「[Hybrid Runbook Worker ジョブ](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)」を参照してください。
 
-Hybrid Runbook Worker のジョブは、Windows ではローカルの **システム** アカウントで実行され、Linux では **nxautomation** アカウントで実行されます。 Linux の場合、Runbook モジュールが格納されている場所に **nxautomation** アカウントがアクセスできることを確認します。 [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときは、`Scope` パラメーターに対して AllUsers を指定し、**nxautomation** アカウントがアクセスできるようにします。 Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](/powershell/scripting/whats-new/what-s-new-in-powershell-70)」を参照してください。
+Hybrid Runbook Worker のジョブは、Windows ではローカルの **システム** アカウントで実行され、Linux では **nxautomation** アカウントで実行されます。 Linux の場合、Runbook モジュールが格納されている場所に **nxautomation** アカウントがアクセスできることを確認します。 **nxautomation** アカウントのアクセスを保証するには、次の手順を実行します。
+
+- [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときは、`AllUsers` を `Scope` パラメーターに対して必ず指定します。
+- Linux でのパッケージのインストールに `pip install`、`apt install`、またはその他の方法を使用する場合、すべてのユーザーにパッケージがインストールされていることを確認してください。 たとえば、「 `sudo -H pip install <package_name>` 」のように指定します。
+
+Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](/powershell/scripting/whats-new/what-s-new-in-powershell-70)」を参照してください。
 
 ## <a name="configure-runbook-permissions"></a>Runbook のアクセス許可を構成する
 
@@ -315,7 +320,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 gpg --clear-sign <runbook name>
 ```
 
-署名された Runbook は **<runbook name>.asc** という名前になります。
+署名された Runbook は **\<runbook name>.asc** という名前になります。
 
 署名された Runbook を Azure Automation にアップロードし、標準の Runbook のように実行できるようになります。
 

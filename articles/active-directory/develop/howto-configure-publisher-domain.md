@@ -13,14 +13,14 @@ ms.date: 06/23/2021
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: contperf-fy21q4, aaddev
-ms.openlocfilehash: 43fef26f3006120cb62676bfd5675c1e79b849d4
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 7cf9918216c70bcbabf9c64c9b0ebf91c02b45fd
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579974"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029244"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain"></a>方法:アプリケーションの発行元ドメインを構成する
+# <a name="configure-an-applications-publisher-domain"></a>アプリケーションの発行元ドメインを構成する
 
 アプリケーションの発行元ドメインは、ユーザーに情報の送信先を知らせるために[アプリケーションの同意プロンプト](application-consent-experience.md)でユーザーに表示されます。 2019 年 5 月 21 日の後に登録されたマルチテナント アプリケーションのうち、発行元ドメインのないアプリケーションは **未検証** として表示されます。 マルチテナント アプリケーションは、1 つの組織ディレクトリの外部にあるアカウントをサポートするアプリケーションです。たとえば、すべての Azure AD アカウントをサポートするか、またはすべての Azure AD アカウントと個人の Microsoft アカウントをサポートします。
 
@@ -61,7 +61,7 @@ ms.locfileid: "112579974"
 
 アプリがテナントで登録されている場合は、選択するタブとして **[確認済みドメインの選択]** と **[新しいドメインの確認]** の 2 つが表示されます。
 
-アプリがテナントで登録されていない場合は、アプリケーションの新しいドメインを検証するためのオプションのみが表示されます。
+ドメインがテナントで登録されていない場合は、アプリケーションの新しいドメインを検証するためのオプションのみが表示されます。
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>アプリの新しいドメインを検証するには
 

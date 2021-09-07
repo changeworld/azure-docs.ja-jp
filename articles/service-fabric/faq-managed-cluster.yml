@@ -6,14 +6,14 @@ metadata:
   ms.author: micraft
   author: craftyhouse
   ms.service: service-fabric
-  ms.date: 7/14/2021
+  ms.date: 8/23/2021
   ms.custom: references_regions
-  ms.openlocfilehash: 6b77924cd499eec27175eba1f690c2429420c625
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: de8cf3599c35ed9069800353a38c46d353eab53a
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253385"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122864985"
 title: Service Fabric マネージド クラスターに関してよく寄せられる質問
 summary: Service Fabric マネージド クラスターについてよく寄せられる質問 (FAQ) とその回答を示します。
 sections:
@@ -42,7 +42,7 @@ sections:
   - question: >
       Basic SKU と Standard SKU のクラスターでは何が違いますか?
     answer: >
-      Basic SKU クラスターを使用すると、ほとんどの構成が Service Fabric リソース プロバイダーによって提供されます。 Basic SKU クラスターは、テスト環境および運用前環境での使用が意図されています。 Standard SKU クラスターを使用すると、ユーザーがニーズを満たすようにクラスターを構成できます。 詳細については、「[Service Fabric マネージド クラスターの SKU](./overview-managed-cluster.md#service-fabric-managed-cluster-skus)」を参照してください。
+      Basic SKU クラスターは、テスト環境および運用前環境で最小限の構成の変更をサポートして使用することが意図されています。 Standard SKU クラスターを使用すると、ユーザーがニーズを満たすようにクラスターを構成できます。 詳細については、「[Service Fabric マネージド クラスターの SKU](./overview-managed-cluster.md#service-fabric-managed-cluster-skus)」を参照してください。
   - question: >
       予定されている機能や推奨機能はどこで確認できますか?
     answer: "[マネージド クラスター](https://github.com/microsoft/service-fabric/projects/17)に関する当社の GitHub プロジェクトをご覧ください      \n"
@@ -55,11 +55,18 @@ sections:
   - question: >
       内部専用のロード バランサーを使用することはできますか?
     answer: >
-      現在、内部専用のロード バランサーを使用することはできません。 ネットワーク セキュリティ グループ (NSG) の規則をロックダウンし、不要な受信および送信トラフィックをブロックすることをお勧めします。
+      これは、2021-07-01-preview リリースでサポートされています。 「[Service Fabric マネージド クラスターのネットワーク設定を構成する](./how-to-managed-cluster-networking.md#byolb)」を参照してください。
+  - question: >
+      IPv6 を有効にしたいのですが、可能ですか?
+    answer: >
+      これは、2021-07-01-preview リリースでサポートされています。 「[Service Fabric マネージド クラスターのネットワーク設定を構成する](./how-to-managed-cluster-networking.md#ipv6)」を参照してください。
+  - question: >
+      Microsoft Azure Service Fabric マネージド クラスターに既存の VNet を使用したいのですが、できますか?
+    answer: >
+      これは、2021-07-01-preview リリースでサポートされています。 「[Service Fabric マネージド クラスターのネットワーク設定を構成する](./how-to-managed-cluster-networking.md#byolb)」を参照してください。
   - question: >
       クラスターを自動スケーリングできますか?
-    answer: >
-      自動スケーリングは現在サポートされていません。
+    answer: "現在、自動スケールは利用できません。 詳細については、[マネージド クラスター](https://github.com/microsoft/service-fabric/projects/17)に関する当社の GitHub プロジェクトをご覧ください。 \n"
   - question: >
       可用性ゾーンをまたいでクラスターをデプロイできますか?
     answer: >

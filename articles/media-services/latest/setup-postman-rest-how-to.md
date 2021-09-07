@@ -13,18 +13,22 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1266e10f6d8bf69c6e72a236ecde27623ad1cf12
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: b96a2ad95d126feaa8def5a2cddea4702ff823ff
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281459"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "122653484"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API 呼び出し用に Postman を構成する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 この記事では、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
+この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 これは学習ツールとして提供されており、実稼働アプリケーションでは推奨されません。 実稼働アプリケーションでは、サポート対象のクライアント SDK を使用する必要があります。これには、Azure Resource Manager の再試行ポリシーが組み込まれています。
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]
+
+この記事では、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
 
 開発を開始する前に、[Media Services v3 API を使用した開発](media-services-apis-overview.md)に関するページを確認してください。
 

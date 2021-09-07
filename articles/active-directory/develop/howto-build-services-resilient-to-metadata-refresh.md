@@ -13,14 +13,14 @@ ms.date: 04/21/2021
 ms.author: jmprieur
 ms.reviewer: marsma, shermanouko
 ms.custom: aaddev
-ms.openlocfilehash: 8eb9db4d89f6d3c517afb57d6343387343ac5325
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 2c7d4fdbcd27b4b8d7097d7a6978f80f5eb7fca4
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108167052"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033248"
 ---
-# <a name="how-to-build-services-that-are-resilient-to-azure-ads-openid-connect-metadata-refresh"></a>方法: Azure AD の OpenID Connect メタデータの更新に対して回復性のあるサービスを構築する
+# <a name="build-services-that-are-resilient-to-azure-ads-openid-connect-metadata-refresh"></a>Azure AD の OpenID Connect メタデータの更新に対して回復性のあるサービスを構築する
 
 保護された Web API では、アクセス トークンを検証する必要があります。 Web アプリでも ID トークンの検証が行われます。 トークンの検証には複数の部分があり、トークンがアプリケーションに属しているかどうか、信頼された ID プロバイダー (IDP) によって発行されているかどうか、有効期間がまだ範囲内で、改ざんされていないかどうかが確認されます。 特別な検証もできます。 たとえば、アプリでは署名が検証され、署名キー (トークンに埋め込まれている場合) が信頼されていることと、トークンが再生されていないことが確認される必要があります。 署名キーがトークンに埋め込まれていない場合は、ID プロバイダー (検出またはメタデータ) から取得する必要があります。 実行時にキーを動的に取得する必要がある場合もあります。
 

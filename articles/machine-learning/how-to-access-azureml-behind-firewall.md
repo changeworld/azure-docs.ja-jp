@@ -1,7 +1,7 @@
 ---
-title: ファイアウォールを使用する
+title: ネットワークの着信トラフィックおよび送信トラフィックを構成する
 titleSuffix: Azure Machine Learning
-description: Azure Firewall を使用して Azure Machine Learning ワークスペースへのアクセスを制御します。 ファイアウォールの通過を許可する必要があるホストについて説明します。
+description: セキュリティで保護された Azure Machine Learning ワークスペースを使用するときに必要な受信および送信ネットワーク トラフィックを構成する方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ author: jhirono
 ms.reviewer: larryfr
 ms.date: 08/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 790b5a3e34d36d674511507bc5e9ed452c5ba74e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bcc1a9fdd930a8c9dd85604528a276f9de8d6e8
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745302"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123113108"
 ---
-# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
+# <a name="configure-inbound-and-outbound-network-traffic"></a>ネットワークの着信トラフィックおよび送信トラフィックを構成する
 
-この記事では、Azure Firewall を構成して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御する方法について説明します。 Azure Machine Learning のセキュリティ保護の詳細については、[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)に関するページを参照してください。
+この記事では、仮想ネットワーク (VNet) の Azure Machine Learning ワークスペースをセキュリティで保護する場合のネットワーク通信の要件について説明します。 これには、Azure Firewall を構成して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御する方法が含まれます。 Azure Machine Learning のセキュリティ保護の詳細については、[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)に関するページを参照してください。
 
 > [!NOTE]
 > この記事の情報は、プライベート エンドポイントとサービス エンドポイントのどちらを使用するかにかかわらず、Azure Machine Learning ワークスペースに適用されます。
@@ -60,7 +60,7 @@ ms.locfileid: "121745302"
 
 1. 次のサービス タグ __への__、またサービス タグ __からの__ トラフィックを許可する __ネットワーク規則__ を追加します。
 
-    | サービス タグ | プロトコル | Port |
+    | サービス タグ | Protocol | ポート |
     | ----- |:-----:|:-----:|
     | AzureActiveDirectory | TCP | * |
     | AzureMachineLearning | TCP | 443 |
@@ -99,6 +99,14 @@ ms.locfileid: "121745302"
 
 1. Azure Kubernetes Service (AKS) にデプロイされたモデルへの送信トラフィックを制限するには、[Azure Kubernetes Service でのエグレス トラフィックの制限](../aks/limit-egress-traffic.md)に関するページおよび [Azure Kubernetes Service への ML モデルのデプロイ](how-to-deploy-azure-kubernetes-service.md#connectivity)に関するページを参照してください。
 
+### <a name="azure-kubernetes-services"></a>Azure Kubernetes Services
+
+Azure Machine Learning で Azure Kubernetes Service を使用する場合は、次のトラフィックを許可する必要があります。
+
+* 「[Azure Kubernetes Service (AKS) でエグレス トラフィックを制限する](../aks/limit-egress-traffic.md)」で説明されている AKS の受信または送信の一般的な要件。
+* mcr.microsoft.com への __送信__。
+* AKS クラスターにモデルをデプロイする場合は、「[ML モデルを Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md#connectivity)」記事のガイダンスを使用してください。
+
 ### <a name="diagnostics-for-support"></a>サポート用の診断
 
 Microsoft サポートを使用しているときに診断情報を収集する必要がある場合は、次の手順を使用します。
@@ -111,6 +119,7 @@ Microsoft サポートを使用しているときに診断情報を収集する�
     + **dc.services.visualstudio.com**
 
     Azure Monitor ホストの IP アドレスの一覧については、「[Azure Monitor で使用される IP アドレス](../azure-monitor/app/ip-addresses.md)」を参照してください。
+
 ## <a name="other-firewalls"></a>その他のファイアウォール
 
 このセクションのガイダンスは一般的なもので、各ファイアウォールには独自の用語や特定の構成があります。 ご質問がある場合は、使用しているファイアウォールのドキュメントを確認してください。
@@ -149,19 +158,19 @@ Microsoft サポートを使用しているときに診断情報を収集する�
 
 | **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
-| コンピューティング クラスター/インスタンス | \*.batchai.core.windows.net | \*.batchai.core.usgovcloudapi.net |\*.batchai.ml.azure.cn |
 | コンピューティング クラスター/インスタンス | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | コンピューティング インスタンス | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
 | コンピューティング インスタンス | \*.instances.azureml.ms |  |  |
+| Azure Storage アカウント | \*.blob.core.windows.net</br>\*.table.core.windows.net</br>\*.queue.core.windows.net | \*.blob.core.usgovcloudapi.net</br>\*.table.core.usgovcloudapi.net</br>\*.queue.core.usgovcloudapi.net | \*blob.core.chinacloudapi.cn</br>\*.table.core.chinacloudapi.cn</br>\*.queue.core.chinacloudapi.cn |
+| Azure Key Vault | \*.vault.azure.net | \*.vault.usgovcloudapi.net | \*.vault.azure.cn |
 
 > [!IMPORTANT]
 > ファイアウォールでは、__TCP__ ポート __18881、443、8787__ 経由での \*.instances.azureml.ms との通信を許可する必要があります。
 
-**Azure Machine Learning によって使用される関連リソース**
+**Azure Machine Learning によって管理される Docker イメージ**
 
 | **次のために必須:** | **Azure Public** | **Azure Government** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
-| Azure Storage アカウント | core.windows.net | core.usgovcloudapi.net | core.chinacloudapi.cn |
 | Azure Container Registry | azurecr.io | azurecr.us | azurecr.cn |
 | Microsoft Container Registry | mcr.microsoft.com | mcr.microsoft.com | mcr.microsoft.com |
 | Azure Machine Learning の事前構築済みイメージ | azurearctest.azurecr.io | azurearctest.azurecr.io | azurearctest.azurecr.io |
@@ -204,9 +213,13 @@ AKS にデプロイされたモデルへのアクセスの制限については�
 | ---- | ---- |
 | **cloud.r-project.org** | CRAN パッケージをインストールするときに使用されます。 |
 
-### <a name="azure-kubernetes-services-hosts"></a>Azure Kubernetes Service のホスト
+### <a name="azure-kubernetes-services"></a>Azure Kubernetes Services
 
-AKS が通信する必要があるホストの詳細については、[Azure Kubernetes Service でのエグレス トラフィックの制限](../aks/limit-egress-traffic.md)に関するページおよび [Azure Kubernetes Service への ML モデルのデプロイ](how-to-deploy-azure-kubernetes-service.md#connectivity)に関するページを参照してください。
+Azure Machine Learning で Azure Kubernetes Service を使用する場合は、次のトラフィックを許可する必要があります。
+
+* 「[Azure Kubernetes Service (AKS) でエグレス トラフィックを制限する](../aks/limit-egress-traffic.md)」で説明されている AKS の受信または送信の一般的な要件。
+* mcr.microsoft.com への __送信__。
+* AKS クラスターにモデルをデプロイする場合は、「[ML モデルを Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md#connectivity)」記事のガイダンスを使用してください。
 
 ### <a name="visual-studio-code-hosts"></a>Visual Studio Code のホスト
 
@@ -220,7 +233,7 @@ AKS が通信する必要があるホストの詳細については、[Azure Kub
 |  **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | セットアップ スクリプトを通じてコンピューティング インスタンスにインストールされている VS Code サーバー ビットを取得するために使用されます。|
 | **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** |コンピューティング インスタンスにインストールされている Websocket サーバー ビットを取得するために使用されます。 Websocket サーバーは、Visual Studio Code クライアント (デスクトップ アプリケーション) から、コンピューティング インスタンスで実行されている Visual Studio Code サーバーに要求を送信するために使用されます。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 

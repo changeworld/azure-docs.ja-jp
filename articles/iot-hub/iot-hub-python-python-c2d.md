@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 815bef577db7891e742944a9d76679086bba028c
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 85d87666f138338d96d541ac38331e906565aaf1
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289620"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835360"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Python)
 
@@ -61,7 +61,6 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 1. **SimulatedDevice.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
 
     ```python
-    import threading
     import time
     from azure.iot.device import IoTHubDeviceClient
 
@@ -74,50 +73,51 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-1. 受信したメッセージをコンソールに出力するための次の関数を追加します。
+1. 受信したメッセージをコンソールに出力するために使用される次の関数を定義します。
 
     ```python
-    def message_listener(client):
+    def message_handler(message):
         global RECEIVED_MESSAGES
-        while True:
-            message = client.receive_message()
-            RECEIVED_MESSAGES += 1
-            print("\nMessage received:")
+        RECEIVED_MESSAGES += 1
+        print("")
+        print("Message received:")
 
-            #print data and both system and application (custom) properties
-            for property in vars(message).items():
-                print ("    {0}".format(property))
+        # print data from both system and application (custom) properties
+        for property in vars(message).items():
+            print ("    {}".format(property))
 
-            print( "Total calls received: {}".format(RECEIVED_MESSAGES))
-            print()
+        print("Total calls received: {}".format(RECEIVED_MESSAGES))
     ```
 
 1. クライアントを初期化してクラウドからデバイスへのメッセージの受信を待機する次のコードを追加します。
 
     ```python
-    def iothub_client_sample_run():
-        try:
-            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+    def main():
+        print ("Starting the Python IoT Hub C2D Messaging device sample...")
 
-            message_listener_thread = threading.Thread(target=message_listener, args=(client,))
-            message_listener_thread.daemon = True
-            message_listener_thread.start()
+        # Instantiate the client
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+
+        print ("Waiting for C2D messages, press Ctrl-C to exit")
+        try:
+            # Attach the handler to the client
+            client.on_message_received = message_handler
 
             while True:
                 time.sleep(1000)
-
         except KeyboardInterrupt:
-            print ( "IoT Hub C2D Messaging device sample stopped" )
+            print("IoT Hub C2D Messaging device sample stopped")
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
+            client.shutdown()
     ```
 
 1. 次の main 関数を追加します。
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the Python IoT Hub C2D Messaging device sample..." )
-        print ( "Waiting for C2D messages, press Ctrl-C to exit" )
-
-        iothub_client_sample_run()
+        main()
     ```
 
 1. **SimulatedDevice.py** ファイルを保存し、閉じます。

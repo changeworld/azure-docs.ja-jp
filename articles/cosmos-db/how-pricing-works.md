@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 4ae981ed39276d7b4a3a338c0ab822afd2d8e456
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/26/2021
+ms.openlocfilehash: 407e5935771b6b6c0b351d75d0a0d7c734eaa556
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373477"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038027"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB の価格モデル
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,6 +55,9 @@ Azure Cosmos DB の[予約容量](cosmos-db-reserved-capacity.md)は、リソー
 
 Azure Cosmos DB リソースのコストの最適化について詳しくは、以下の記事をご覧ください。
 
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 * [開発とテストのための最適化](optimize-dev-test.md)について確認する
 * [Azure Cosmos DB の課金内容の確認](understand-your-bill.md)の詳細について学習します
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します

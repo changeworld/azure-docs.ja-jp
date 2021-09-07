@@ -5,19 +5,18 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 4f2f0678b421ac6965b2848cc25564b4e95c7c6b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: df82f61559a2ede3da477118f090f664e3389437
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567066"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "122653185"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -29,11 +28,13 @@ ms.locfileid: "107567066"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関する記事や、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページや、[テレメトリの送信](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
 
   * 有効な Azure サブスクリプション
   * サブスクリプションの IoT Hub
   * IoT Hub にメッセージを送信するクライアント アプリケーション
+
+* [Node.js](https://nodejs.org) バージョン 10.6 以降。 ノードのバージョンを確認するには、`node --version` を実行します。
 
 * [Git のダウンロード](https://www.git-scm.com/downloads)
 
@@ -58,7 +59,7 @@ az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGr
 IoT Hub は、いくつかの既定のアクセス ポリシーを使用して作成されます。 そのようなポリシーの 1 つとして **サービス** ポリシーがあります。これは、サービスが IoT Hub のエンドポイントを読み書きするのに十分なアクセス許可を提供します。 サービス ポリシーに準拠する IoT Hub の接続文字列を取得するには、次のコマンドを実行します。
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIotHub --policy-name service
+az iot hub connection-string show --hub-name YourIotHub --policy-name service
 ```
 
 接続文字列は次のようになります。
