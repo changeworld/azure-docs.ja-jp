@@ -1,17 +1,17 @@
 ---
-title: 概要 - シングルテナント Azure Logic Apps
+title: Azure Logic Apps でのシングルテナントとマルチテナントの比較
 description: Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境 (ISE) の違いについて説明します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, ladolan, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 07/13/2021
-ms.openlocfilehash: bf8140c67e9f572ed9da6672e67966772267f822
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.date: 08/18/2021
+ms.openlocfilehash: 61dbf2f83ad135cfdef6fffcc3a8c162d0a4c0cd
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767024"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111455"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境の比較
 
@@ -38,7 +38,7 @@ Azure Logic Apps を初めて使用する場合は、次のドキュメントを
 
 ## <a name="logic-app-standard-resource"></a>ロジック アプリ (Standard) リソース
 
-**ロジック アプリ (Standard)** のリソースの種類では、再設計されたシングルテナント Azure Logic Apps ランタイムが使用されています。 このコンテナー化されたランタイムでは [Azure Functions 拡張性モデル](../azure-functions/functions-bindings-register.md)が使用されます。また、Azure Functions ランタイムの拡張機能としてホストされています。 この設計により、ロジック アプリ ワークフローの移植性、柔軟性、パフォーマンス向上に加え、Azure Functions プラットフォームと Azure App Service エコシステムから継承されたその他の機能と利点が提供されます。
+**ロジック アプリ (Standard)** のリソースの種類では、再設計されたシングルテナント Azure Logic Apps ランタイムが使用されています。 このランタイムには [Azure Functions 機能拡張モデル](../azure-functions/functions-bindings-register.md)が使用されており、Azure Functions ランタイムの拡張機能としてホストされます。 この設計により、ロジック アプリ ワークフローの移植性、柔軟性、パフォーマンス向上に加え、Azure Functions プラットフォームと Azure App Service エコシステムから継承されたその他の機能と利点が提供されます。
 
 たとえば、Azure Functions アプリとその関数を実行できる場所であればどこでも、シングルテナント ベースのロジック アプリとそのワークフローを実行できます。 Azure Functions アプリで複数の関数をホストできるのと同様に、Standard のリソースの種類では、複数のワークフローをホストできるリソース構造が導入されています。 1 対多のマッピングでは、同じロジック アプリとテナント内のワークフローによってコンピューティングと処理リソースが共有され、その近接性によってパフォーマンスが向上します。 この構造は、ロジック アプリのリソースとワークフローの間に 1 対 1 のマッピングがある **ロジック アプリ (従量課金)** のリソースとは異なります。
 
@@ -55,7 +55,7 @@ Azure Logic Apps を初めて使用する場合は、次のドキュメントを
 
 **ロジック アプリ (Standard)** のリソースの種類を使用してロジック アプリを作成する場合は、シングルテナント サービス環境だけでなく、Azure 関数アプリとその関数を実行できる場所であればどこでもワークフローを実行できます。
 
-たとえば、Visual Studio Code を **Azure Logic Apps (Standard)** 拡張機能と共に使用すると、Azure にデプロイせずに、開発環境で "*ローカルに*" ワークフローを開発、ビルド、および実行できます。 コンテナーが必要なシナリオの場合は、ロジック アプリをコンテナー化し、コンテナーとしてデプロイできます。
+たとえば、Visual Studio Code を **Azure Logic Apps (Standard)** 拡張機能と共に使用すると、Azure にデプロイせずに、開発環境で "*ローカルに*" ワークフローを開発、ビルド、および実行できます。 シナリオでコンテナーが必要な場合は、[Azure Arc 対応 Logic Apps を使用してシングルテナント ベースのロジック アプリを作成します](azure-arc-enabled-logic-apps-create-deploy-workflows.md)。 詳細については、「[Azure Arc 対応 Logic Apps とは](azure-arc-enabled-logic-apps-overview.md)」をご覧ください。
 
 Azure 内で実行されている既存のりソースに対して開発を行う必要があるマルチテナント モデルと比較すると、これらの機能によって大幅な改善と大きなメリットを得ることができます。 また、**ロジック アプリ (従量課金)** のリソースのデプロイを自動化するためのマルチテナント モデルは、アプリとインフラストラクチャの両方のリソース プロビジョニングを結合して処理する Azure Resource Manager テンプレート (ARM テンプレート) に完全に基づいています。
 
@@ -182,20 +182,25 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
     作成機能は現在 Visual Studio Code でのみ使用できますが、既定では有効になっていません。 これらのコネクタを作成するには、[自分のプロジェクトを拡張バンドルベース (Node.js) から NuGet パッケージベース (.NET) に切り替え](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring)ます。 詳細については、[あらゆる場所で実行される Azure Logic Apps - 組み込みコネクタの拡張機能](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)に関するページを参照してください。
 
-  * 統合アカウントを使わずに、Liquid 操作と XML 操作に B2B アクションを使用することができます。 これらのアクションを使用するには、Liquid マップ、XML マップ、または XML スキーマが必要です。これらは、Azure portal でのそれぞれのアクションを通じてアップロードすることも、Visual Studio Code プロジェクトの **Artifacts** フォルダーに、それぞれの **Maps** および **Schemas** フォルダーを使用して追加することもできます。
+  * 統合アカウントを使わずに、Liquid 操作と XML 操作に以下のアクションを使用できます。 実行できる操作には次のアクションが含まれます。
 
-  * ロジック アプリがクラウド接続ランタイム エンドポイントに要求を送信するために使用できる Shared Access Signature (SAS) 接続文字列字列が Azure Logic Apps サービスによって生成されるため、**ロジック アプリ (Standard)** リソースはどこでも実行できます。 Azure にデプロイするときにこれらの値を Azure Key Vault に簡単に格納できるように、Logic Apps サービスによりこれらの接続文字列が他のアプリケーション設定と共に保存されます。
+    * XML: **XML の変換** と **XML の検証**
+
+    * Liquid: **JSON から JSON への変換**、**JSON からテキストへの変換**、**XML から JSON への変換**、**XML からテキストへの変換**
+
+    > [!NOTE]
+    > シングルテナント Azure Logic Apps (Standard) でこれらのアクションを使用するには、Liquid マップ、XML マップ、または XML スキーマが必要です。 これらの成果物は Azure portal で、ロジック アプリのリソース メニューの **[成果物]** ( **[スキーマ]** セクションと **[マップ]** セクションが含まれます) からアップロードできます。 または、Visual Studio Code プロジェクトの **[成果物]** フォルダーで **[マップ]** フォルダーと **[スキーマ]** フォルダーをそれぞれ使用して、これらの成果物を追加することもできます。 その後、"*同じロジック アプリ リソース*" 内の複数のワークフローで、これらの成果物を使用できます。
+
+  * Azure Logic Apps によって、ロジック アプリでクラウド接続ランタイム エンドポイントに要求を送信するために使用できる Shared Access Signature (SAS) 接続文字列が生成されるため、**ロジック アプリ (Standard)** リソースはどこでも実行できます。 Azure Logic Apps サービスによって、これらの接続文字列が他のアプリケーション設定とともに保存されるため、Azure にデプロイするときにこれらの値を Azure Key Vault に簡単に格納できます。
 
     > [!NOTE]
     > 既定では、**ロジック アプリ (Standard)** リソースには、実行時に接続を認証するために自動的に有効にされる [システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。 この設定を表示するには、ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。
-
-* ステートレス ワークフローはメモリ内でのみ実行されます。これにより、実行履歴やアクション間のデータが外部ストレージに保持されないため、処理時間が短縮され、応答が速くなり、スループットが向上し、実行にかかるコストも少なくなります。 必要に応じて、デバッグを容易にするために実行履歴を有効にすることができます。 詳細については、[ステートフルとステートレス ワークフローの比較](#stateful-stateless)に関する記事を参照してください。
 
 * Visual Studio Code 開発環境でローカルにロジック アプリとそのワークフローを実行、テスト、デバッグできます。
 
   ロジック アプリを実行してテストする前に、ワークフローの **workflow.json** ファイル内にブレークポイントを追加して使用することで、デバッグをより簡単に行うことができます。 しかし、ブレークポイントは、現時点ではトリガーではなく、アクションに対してのみサポートされます。 詳細については、[Visual Studio Code でのシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#manage-breakpoints)に関するページを参照してください。
 
-* ロジック アプリとそのワークフローを Visual Studio Code から、Azure やコンテナーなどのさまざまなホスティング環境に直接発行またはデプロイします。
+* ロジック アプリとそのワークフローを Visual Studio Code から、Azure や Azure Arc 対応 Logic Apps などのさまざまなホスティング環境に直接発行またはデプロイします。
 
 * Azure サブスクリプションとロジック アプリの設定でサポートされている場合は、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用してロジック アプリに対して診断ログとトレース機能を有効にします。
 
@@ -233,13 +238,15 @@ Azure 内で実行されている既存のりソースに対して開発を行�
       >
       > マルチテナント モードと同様に、(たとえば、ポータルの Azure Functions エクスペリエンスを通じて) このキーを更新すると、無効なキーが原因で関数アクションは機能しなくなります。 この問題を解決するには、呼び出す関数への接続を再作成するか、新しいキーを使用してアプリの設定を更新する必要があります。
 
-    * 組み込みの [インライン コード アクション](logic-apps-add-run-inline-code.md)は、**インライン コード操作** に名前が変更され、統合アカウントは不要になり、[制限が更新](logic-apps-limits-and-config.md)されました。
+    * 組み込みアクションの [インライン コード](logic-apps-add-run-inline-code.md)は、**インライン コード操作** に名前が変更され、統合アカウントは不要になり、[制限が更新](logic-apps-limits-and-config.md)されました。
 
     * 組み込みアクションである [[Azure Logic Apps - Choose a Logic App workflow]\([Azure Logic Apps] - [ロジック アプリ ワークフローを選択する]\)](logic-apps-http-endpoint.md) は、 **[Workflow Operations - Invoke a workflow in this workflow app]\([ワークフロー操作] - [このワークフロー アプリでワークフローを呼び出す]\)** になりました。
 
-    * [統合アカウントに対する組み込みの B2B トリガーとアクション](../connectors/managed.md#integration-account-connectors)の一部は使用できません。たとえば、**フラット ファイル** のエンコードやデコード アクションです。
+    * [統合アカウントに対する組み込みのトリガーとアクション](../connectors/managed.md#integration-account-connectors)の一部は使用できません。たとえば、**フラット ファイル** のエンコードやデコード アクションです。
 
     * 現在、[カスタムのマネージド コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)はサポートされていません。 ただし、Visual Studio Code を使用する場合は、"*カスタムの組み込み操作*" を作成できます。 詳細については、[Visual Studio Code を使用したシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring)に関するページを参照してください。
+
+* XML 変換では、マップからのアセンブリ参照のサポートは現在使用できません。 また、現在は XSLT 1.0 のみがサポートされています。
 
 * **Visual Studio Code でのデバッグのブレークポイント**: ワークフローの **workflow.json** ファイル内にブレークポイントを追加して使用することはできますが、ブレークポイントは現時点ではトリガーではなく、アクションに対してのみサポートされます。 詳細については、[Visual Studio Code でのシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#manage-breakpoints)に関するページを参照してください。
 

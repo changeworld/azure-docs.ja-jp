@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 3b6ed39c11e3f90b986ef904ff3f8e9ff3158d0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc202359e90024ee73c3041013eef9c2da814045
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574171"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835831"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -37,6 +37,7 @@ ms.locfileid: "103574171"
 
 ## <a name="limits-and-limitations"></a>制限と制限事項
 * **サポートされているのはルート ベースの VPN ゲートウェイのみです。** ルート ベースの [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を使用する必要があります。 「[複数のポリシーベース VPN デバイスへの接続](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)」で説明されているように、"ポリシーベース トラフィック セレクタ" に VPN 接続が設定されているルートベースの VPN ゲートウェイを使用することもできます。
+* **ExpressRoute と VPN Gateway が共存する構成は、Basic SKU ではサポートされていません**。
 * **Azure VPN Gateway の AS 番号は 65515 に設定する必要があります。** Azure VPN Gateway は、BGP ルーティング プロトコルをサポートします。 ExpressRoute と Azure VPN を連動させるには、Azure VPN Gateway の自律システム番号を既定値 65515 のままで維持する必要があります。 以前に 65515 以外の AS 番号を選択し、設定を 65515 に変更する場合、設定を適用するには VPN Gateway をリセットする必要があります。
 * **ゲートウェイ サブネットは /27 またはそれより短いプレフィックス** (/26、/25 など) でなければなりません。そうでないと、ExpressRoute 仮想ネットワーク ゲートウェイを追加するときに、エラー メッセージが表示されます。
 * **デュアルスタック VNet での共存はサポートされていません。** ExpressRoute IPv6 サポートとデュアルスタック ExpressRoute ゲートウェイを使用している場合、VPN Gateway とは共存できません。

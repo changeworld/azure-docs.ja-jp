@@ -13,12 +13,12 @@ ms.date: 07/23/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: johngarland, mamarxen, ianbe, marsma
-ms.openlocfilehash: cc636c60ee88d69e263ae5a2d9d599e2230184cd
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 4dcdb90daa9bb8cd1df79ec399eb9372fca02c61
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122206353"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037191"
 ---
 # <a name="authorization-basics"></a>承認の基本
 
@@ -59,6 +59,8 @@ ms.locfileid: "122206353"
 ABAC の利点の 1 つは、ルールと条件の評価によってよりきめ細かい動的なアクセス制御を実現でき、非常に具体的なロールと RBAC 割り当てを大量に作成せずに済むことです。
 
 Azure Active Directory で ABAC を実現する 1 つの方法は、[動的グループ](../enterprise-users/groups-create-rule.md)を使用することです。 動的グループを使用すると、管理者は必要な値を持つ特定のユーザー属性に基づいて、ユーザーをグループに動的に割り当てることができます。  たとえば、作成者グループを作成して、作成者という役職を持つすべてのユーザーを作成者グループに動的に割り当てることができます。  動的グループを承認のための RBAC と組み合わせて使用して、ロールをグループにマップし、ユーザーをグループに動的に割り当てることができます。
+
+[Azure ABAC](../../role-based-access-control/conditions-overview.md) は、現在利用できる ABAC ソリューションの一例です。 Azure ABAC は、Azure RBAC を基盤としたものであり、特定のアクションのコンテキストにおける属性に基づいたロールの割り当て条件を追加することにより構築されます。 
 
 ## <a name="implementing-authorization"></a>承認の実装
 

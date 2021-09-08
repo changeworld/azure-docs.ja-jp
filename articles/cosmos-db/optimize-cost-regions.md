@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/23/2020
-ms.openlocfilehash: a559a51feafa310a4645282dc6368f520fc6b972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/26/2021
+ms.openlocfilehash: 0cd4174cf937fa8e2cda96237a09e8cb4f5270e4
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96459618"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029145"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -49,3 +49,6 @@ ms.locfileid: "96459618"
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
 * [クエリ コストの最適化](./optimize-cost-reads-writes.md)の詳細について学習します
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積り](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

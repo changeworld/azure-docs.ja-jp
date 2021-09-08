@@ -1,20 +1,21 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) のウィジェットをアプリに埋め込む
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: Azure Video Analyzer for Media (旧称 Video Indexer) のウィジェットをアプリに埋め込む方法について説明します。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 737efbd67ab0dc89178136c0d792aaf622f886d0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9203c666e88ba3f050bf0acda9116c9dd8dd4421
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110386853"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429300"
 ---
 # <a name="embed-video-analyzer-for-media-widgets-in-your-apps"></a>Video Analyzer for Media のウィジェットをアプリに埋め込む
 
@@ -226,8 +227,8 @@ Azure Media Player 以外のビデオ プレーヤーを使用する場合、通
         function jumpTo(evt) {
           var origin = evt.origin || evt.originalEvent.origin;
         
-          // Validate that the event comes from the videobreakdown domain.
-          if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
+          // Validate that the event comes from the videoindexer domain.
+          if ((origin === "https://www.videoindexer.ai") && evt.data.time !== undefined){
                 
             // Call your player's "jumpTo" implementation.
             playerInstance.currentTime = evt.data.time;

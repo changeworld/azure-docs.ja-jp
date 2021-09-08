@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ada4235539c96fee6969f9731c1b5a63934e825
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: ba229ed81cd5ece4a6013654a11c21740c00c844
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115617"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254065"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
@@ -67,7 +67,7 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 
 共有スナップショットは増分的に保存されますが、共有を復元するために保持する必要があるのは最新の共有スナップショットだけです。 共有スナップショットを削除すると、その共有スナップショットに固有のデータのみが削除されます。 アクティブなスナップショットには、(共有スナップショットが作成された時点の) データを参照して元の場所または別の場所に復元するために必要な情報がすべて含まれます。 項目レベルで復元することができます。
 
-スナップショットは、5 TB の共有制限にカウントされません。 合計領域のうち共有スナップショットが占有する領域に制限はありません。 ストレージ アカウントの制限は、引き続き適用されます。
+スナップショットのサイズは、共有サイズの上限に対してカウントされません。 合計領域のうち共有スナップショットが占有する領域に制限はありません。 ストレージ アカウントの制限は、引き続き適用されます。
 
 ## <a name="limits"></a>制限
 

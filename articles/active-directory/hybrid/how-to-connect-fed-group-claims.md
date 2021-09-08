@@ -9,15 +9,15 @@ ms.subservice: hybrid
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/27/2019
+ms.date: 08/31/2021
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 868d1280179d63bd07b7e01d5e807339439c02f0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 0621cc58b5cf76505de5e1f914114ad601e7a9bf
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163609"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123316185"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory を使ってアプリケーションに対するグループ要求を構成する
 
@@ -31,6 +31,7 @@ Azure Active Directory では、アプリケーション内で使用するユー
 >
 > - オンプレミスから同期される sAMAccountName およびセキュリティ識別子 (SID) の属性の使用に関するサポートは、AD FS およびその他の ID プロバイダーからの既存のアプリケーションの移動を有効にするように設計されています。 Azure AD 内で管理されるグループには、これらの要求を発行するために必要な属性は含まれていません。
 > - 大規模な組織では、ユーザーがメンバーになっているグループ数が、Azure Active Directory によってトークンに追加される制限を超える可能性があります。 SAML トークンの場合は 150 グループ、JWT の場合は 200 グループです。 これは、予期しない結果につながります。 ユーザーが多数のグループ メンバーシップを保有している場合は、オプションを使用して、要求で出力されるグループをアプリケーションの関連するグループに制限することをお勧めします。
+> - トークンが暗黙的なフローを通じて発行される場合、グループ要求には 5 グループの制限があります。 ユーザーが 5 つ以上のグループに属している場合にのみ、暗黙的なフローを介して要求されたトークンに "hasgroups":true 要求があります。
 > - 新規のアプリケーション開発の場合、またはアプリケーションをそれに合わせて構成できる場合および入れ子になったグループのサポートが必要ない場合は、アプリ内承認がグループではなく、アプリケーション ロールに基づくようにすることをお勧めします。  これにより、トークンに入力する必要がある情報の量が制限され、安全性が高まり、アプリの構成からユーザーの割り当てが分離されます。
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>AD FS およびその他の ID プロバイダーから移行するアプリケーションに対するグループ要求

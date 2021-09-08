@@ -17,12 +17,12 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 032a8fddb836146a5e902b168ab5aea9763bdc31
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: a5fbc6789fe83f07e0a22239e93a08eb9bd8cf4f
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112376607"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830767"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 
@@ -61,6 +61,9 @@ ms.locfileid: "112376607"
 ### <a name="how-can-i-access-this-property"></a>このプロパティにアクセスするにはどうすればよいですか?
 
 [Microsoft Graph](/graph/overview#whats-in-microsoft-graph) API のリソースの種類 [signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true) によって **lastSignInDateTime** プロパティが表示されます。   
+
+> [!NOTE]
+> signInActivity Graph API エンドポイントは、米国政府機関 GCC High 環境ではまだサポートされていません。
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Get-AzureAdUser コマンドレットで LastSignInDateTime プロパティを使用できますか?
 

@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: aebee9b2511e3616a9170d5ed84be3acf391b6ad
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 0609b2e39576850665937246afa6954f2580d195
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071963"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449605"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -65,7 +65,6 @@ X.509 証明書を使用してデバイスをアプリケーションに接続�
 テストの場合にのみ、次のユーティリティを使用して、ルート証明書、中間証明書、およびデバイス証明書を生成できます。
 
 - [Azure IoT Device Provisioning Device SDK 用ツール](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): X.509 の証明書とキーの生成および検証に使用できる一連の Node.js ツールです。
-- DevKit デバイスを使用している場合、この[コマンドライン ツール](https://aka.ms/iotcentral-docs-dicetool)では、証明書を検証するために IoT Central アプリケーションに追加できる CA 証明書が生成されます。
 - [サンプルとチュートリアルに使用するテスト CA 証明書の管理](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md): 次の作業を目的とした、一連の PowerShell スクリプトと Bash スクリプトです。
   - 証明書チェーンを作成します。
   - IoT Central アプリケーションにアップロードする .cer ファイルとして証明書を保存します。
@@ -250,7 +249,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | オフライン コマンド | クラウドからデバイスへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| command | ダイレクト メソッド |
+| コマンド | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 

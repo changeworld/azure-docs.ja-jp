@@ -6,7 +6,7 @@ author: curtand
 manager: daveba
 ms.author: curtand
 ms.reviewer: krbain
-ms.date: 12/02/2020
+ms.date: 09/01/2021
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c253e75c7924a05c940b1d09b6f0c3fd281f696
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 891cc34cc3c9cde7d1bc87df289508881d772586
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056948"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437312"
 ---
 # <a name="what-is-enterprise-user-management"></a>エンタープライズ ユーザー管理の概要
 

@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 0842552aa3e5e172a7aa725d07c9a83b63da6667
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 81d4d17b4efdc1dd7d59cb566f8a9ef2e6742aac
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745295"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966768"
 ---
 # <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Azure Arc 対応機械学習を構成する (プレビュー)
 
@@ -27,7 +27,7 @@ Azure Arc 対応機械学習を使用すると、Azure Arc 対応 Kubernetes ク
 
 Azure Arc 対応機械学習では、次のトレーニング シナリオがサポートされています。
 
-* 2.0 CLI を使用したモデルのトレーニング
+* CLI (v2) を使用したモデルのトレーニング
   * 分散トレーニング
   * ハイパーパラメーターのスイープ
 * Azure Machine Learning Python SDK を使用したモデルのトレーニング
@@ -48,7 +48,7 @@ Azure Arc 対応機械学習では、次のトレーニング シナリオがサ
 
 ## <a name="deploy-azure-machine-learning-extension"></a>Azure Machine Learning 拡張機能の展開
 
-Azure Arc 対応 Kubernetes には、Azure ポリシー、監視、機械学習など、さまざまなエージェントをインストールできるクラスター拡張機能があります。 Azure Machine Learning では、Kubernetes クラスターに Azure Machine Learning エージェントを展開するために、*Microsoft.AzureML.Kubernetes* クラスター拡張機能を使用する必要があります。 Azure Machine Learning 拡張機能をインストールしたら、クラスターを Azure Machine Learning ワークスペースに接続し、トレーニングに使用できます。
+Azure Arc 対応 Kubernetes には、Azure Policy 定義、監視、機械学習など、さまざまなエージェントをインストールできるクラスター拡張機能があります。 Azure Machine Learning では、Kubernetes クラスターに Azure Machine Learning エージェントを展開するために、*Microsoft.AzureML.Kubernetes* クラスター拡張機能を使用する必要があります。 Azure Machine Learning 拡張機能をインストールしたら、クラスターを Azure Machine Learning ワークスペースに接続し、トレーニングに使用できます。
 
 `k8s-extension` Azure CLI 拡張機能を使用して、Azure Arc 対応 Kubernetes クラスターに Azure Machine Learning 拡張機能を展開します。
 
@@ -309,11 +309,11 @@ else:
 
 ## <a name="next-steps"></a>次のステップ
 
-- [2.0 CLI を使用したモデルのトレーニング](how-to-train-cli.md)
+- [CLI (v2) を使用したモデルのトレーニング](how-to-train-cli.md)
 - [トレーニングの実行を構成して送信する](how-to-set-up-training-targets.md)
 - [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 - [Scikit-learn を使用してモデルをトレーニングする](how-to-train-scikit-learn.md)
 - [TensorFlow モデルをトレーニングする](how-to-train-tensorflow.md)
 - [PyTorch モデルのトレーニング](how-to-train-pytorch.md)
 - [Azure Machine Learning パイプラインを使用してトレーニングする](how-to-create-machine-learning-pipelines.md)
-- [送信プロキシ サーバーを使用したオンプレミスでのモデルのトレーニング](../azure-arc/kubernetes/quickstart-connect-cluster.md#5-connect-using-an-outbound-proxy-server)
+- [送信プロキシ サーバーを使用したオンプレミスでのモデルのトレーニング](../azure-arc/kubernetes/quickstart-connect-cluster.md#4a-connect-using-an-outbound-proxy-server)

@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7173477e01faddb3c8aa3c18dc2781ef21dee012
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 61f57e0ee0f1df5b66526a190e583c72ecde7151
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740158"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965385"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコルを使用して Blob Storage をマウントする
 
@@ -106,6 +106,7 @@ Linux システムにディレクトリを作成してから、コンテナー�
 |`EROFS ("Read-only file system"`) |このエラーは、クライアントが次の操作を試みたときに発生する可能性があります。<li>アクティブなリースを保持している BLOB に書き込むか、BLOB を削除する。<li>アクティブな WORM (Write Once, Read Many) ポリシーを持つコンテナー内にある BLOB に書き込むか、BLOB を削除する。 |
 |`NFS3ERR_IO/EIO ("Input/output error"`) |このエラーは、クライアントがアーカイブ アクセス層に格納されている BLOB への読み取り、書き込み、または属性の設定を試みた場合に発生する可能性があります。 |
 |`OperationNotSupportedOnSymLink` エラー| このエラーは、BLOB または Azure Data Lake Storage Gen2 API を介した書き込み操作中に返される可能性があります。 これらの API を使用して、NFS 3.0 を使用して作成されたシンボリック リンクへの書き込みや削除を行うことはできません。 シンボリック リンクを操作する際は、必ず NFS v3 エンドポイントを使用してください。 |
+|`mount: /mnt/test: bad option;`| **sudo apt install nfs-common** を使用して、nfs ヘルパー プログラムをインストールします。|
 
 ## <a name="see-also"></a>関連項目
 

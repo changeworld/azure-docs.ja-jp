@@ -1,18 +1,18 @@
 ---
 title: Azure Storage 用の Azure Resource Graph のサンプル クエリ
 description: Azure Storage 用のサンプル Azure Resource Graph クエリでは、リソースの種類とテーブルを使用して Azure Storage 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: bbe1bf5d4a0896435f9292756af2ff2a55ed673a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: e0371408959c3e840022629a0a3e9e8ea242540a
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303176"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541245"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-storage"></a>Azure Storage 用の Azure Resource Graph のサンプル クエリ
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/25/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 32f9df410dabf1902e9a7d9aadbf47288bfa90f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c245fef005be5937887a3b8af1a5264e6520a6e8
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798240"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967785"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して SAML ID プロバイダー オプションを構成する
 
@@ -219,6 +219,32 @@ Azure AD B2C では、既定で `AllowCreate` プロパティが省略されま�
 </samlp:AuthnRequest>
 ```
 
+### <a name="force-authentication"></a>認証を強制する
+
+SAML 認証要求で `ForceAuthN` プロパティを指定することにより、外部の SAML IDP に対し、ユーザーによる認証の実施を促すことを強制できます。 ID プロバイダーがこのプロパティをサポートしている必要があります。
+
+`ForceAuthN` プロパティはブーリアン値の `true` または `false` を取ります。 Azure AD B2C の既定値では、 ForceAuthN の値は `false` に設定されています。 その後 (たとえば OIDC で `prompt=login` を使用して) セッションをリセットした場合は、ForceAuthN の値が `true` に設定されます。 メタデータ項目を下のように設定すると、外部 IDP に対するすべての要求で、この値の使用を強制できます。
+
+次の例では `ForceAuthN` プロパティを `true` に設定します。
+
+```xml
+<Metadata>
+  ...
+  <Item Key="ForceAuthN">true</Item>
+  ...
+</Metadata>
+```
+
+次の例では、認証要求の `ForceAuthN` プロパティを示しています。
+
+
+```xml
+<samlp:AuthnRequest AssertionConsumerServiceURL="https://..."  ...
+                    ForceAuthN="true">
+  ...
+</samlp:AuthnRequest>
+```
+
 ### <a name="include-authentication-context-class-references"></a>認証コンテキスト クラスの参照を含める
 
 SAML 認可要求には、認可要求のコンテキストを指定する **AuthnContext** 要素を含めることができます。 この要素には、認証コンテキスト クラスの参照を含めることができます。これにより、ユーザーに提示する認証メカニズムが SAML ID プロバイダーに通知されます。
@@ -248,7 +274,7 @@ SAML 認可要求には、認可要求のコンテキストを指定する **Aut
 
 ## <a name="include-custom-data-in-the-authorization-request"></a>認可要求にカスタム データを含める
 
-必要に応じて、Azure AD BC と ID プロバイダーの両方によって合意されたプロトコル メッセージ拡張機能要素を含めることができます。 拡張機能は、XML 形式で表示されます。 CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内に XML データを追加することで、拡張機能要素を含めます。 拡張機能要素がサポートされているかどうかは、ID プロバイダーのドキュメントを確認してください。
+必要に応じて、Azure AD BC と ID プロバイダーの両方によって合意されたプロトコル メッセージ拡張機能要素を含めることができます。 拡張機能は、XML 形式で表示されます。 CDATA 要素 `<![CDATA[Your Custom XML]]>` 内に XML データを追加することで、拡張機能要素を含めます。 拡張機能要素がサポートされているかどうかは、ID プロバイダーのドキュメントを確認してください。
 
 次の例では、拡張機能データの使用方法を示します。
 
@@ -262,6 +288,9 @@ SAML 認可要求には、認可要求のコンテキストを指定する **Aut
             </ext:MyCustom>]]></Item>
 </Metadata>
 ```
+
+> [!NOTE]
+> SAML の仕様では、拡張データは名前空間で修飾された XML (たとえば、上のサンプルの urn:ext:custom) である必要があり、SAML 固有の名前空間であってはなりません。
 
 SAML プロトコル メッセージ拡張機能を使用する場合、SAML 応答は次の例のようになります。
 
@@ -381,7 +410,7 @@ SAML ID プロバイダーとのフェデレーションの構成とデバッグ
 * ID プロバイダーによってエラー メッセージが返されるかどうかを確認します。
 * アサーション セクションが暗号化されているかどうかを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Application Insights](troubleshoot-with-application-insights.md) を使用してカスタム ポリシーに関する問題を診断する方法について説明します。 
 

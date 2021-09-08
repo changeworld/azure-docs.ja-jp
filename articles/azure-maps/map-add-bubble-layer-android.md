@@ -1,20 +1,20 @@
 ---
 title: Android マップへのバブル レイヤーの追加 | Microsoft Azure Maps
 description: マップ上のポイントを固定サイズの円としてレンダリングする方法について説明します。 この目的で Azure Maps Android SDK を使用してバブル レイヤーを追加し、カスタマイズする方法を参照してください。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: c3f4dc33347a7e4397a2cd53ecc56d87ed155378
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: ef4d397520e375059cfcfaca0786bafbb41ccc1e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093519"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430632"
 ---
 # <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>マップにバブル レイヤーを追加する (Android SDK)
 

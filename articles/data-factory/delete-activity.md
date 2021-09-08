@@ -1,22 +1,24 @@
 ---
 title: Azure Data Factory の Delete アクティビティ
-description: Azure Data Factory の Delete アクティビティを使用して、さまざまなファイル ストア内のファイルを削除する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Azure Synapse Analytics の Delete アクティビティを使用して、さまざまなファイル ストア内のファイルを削除する方法について説明します。
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 569e42643642a435ba8fbd56f11d7ffcbea9249e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/24/2021
+ms.openlocfilehash: f185df57226f438a8f40ef6889f1945b21b8540b
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065172"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252936"
 ---
-# <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
+# <a name="delete-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics の Delete アクティビティ
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 Azure Data Factory の Delete アクティビティを使用して、オンプレミス ストレージ ストアやクラウド ストレージ ストアからファイルやフォルダーを削除することができます。 このアクティビティを使用して、必要なくなったときにファイルをクリーンアップしたりアーカイブしたりします。
 
@@ -29,7 +31,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 
 -   将来復元する必要が生じた場合に備えて、Delete アクティビティを使用して削除する前に、ファイルをバックアップする。
 
--   Data Factory が、ストレージ ストアからフォルダーまたはファイルを削除するための書き込み権限を持っていることを確認する。
+-   そのサービスが、ストレージ ストアからフォルダーまたはファイルを削除するための書き込み権限を持っていることを確認する。
 
 -   同時に書き込まれているファイルを削除していないことを確認する。 
 
@@ -40,7 +42,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 -   [Azure BLOB Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure File Storage](connector-azure-file-storage.md)
+-   [Azure Files](connector-azure-file-storage.md)
 -   [ファイル システム](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
@@ -142,7 +144,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>時間でパーティション分割されたフォルダーまたはファイルを定期的にクリーンアップする
 
-時間でパーティション分割されたフォルダーまたはファイルを定期的にクリーンアップするためのパイプラインを作成することができます。  たとえば、フォルダー構造は `/mycontainer/2018/12/14/*.csv` のようになります。  スケジュール トリガーから ADF システム変数を利用して、それぞれのパイプライン実行でどのフォルダーまたはファイルを削除すべきかを識別できます。 
+時間でパーティション分割されたフォルダーまたはファイルを定期的にクリーンアップするためのパイプラインを作成することができます。  たとえば、フォルダー構造は `/mycontainer/2018/12/14/*.csv` のようになります。  スケジュール トリガーからサービス システム変数を利用すると、それぞれのパイプライン実行でどのフォルダーまたはファイルを削除すべきかを識別できます。 
 
 #### <a name="sample-pipeline"></a>サンプル パイプライン
 
@@ -765,6 +767,6 @@ Copy アクティビティによって使用されるデータ宛先のデータ
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory でのファイルの移動方法の詳細について説明します。
+Azure Data Factory および Synapse パイプラインでのファイルの移動の詳細について確認する。
 
--   [Azure Data Factory のデータのコピー ツール](copy-data-tool.md)
+-   [データのコピー ツール](copy-data-tool.md)

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 8220afc8020e5a6a4ba77c46a98ee3c220c3f37e
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 709732e996e0ffda7c3ae7f2f1199522c0b22e51
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675318"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256631"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
 
@@ -279,6 +279,13 @@ Azure Database for MySQL サーバーを再起動した後のウォームアッ�
 ### <a name="time_zone"></a>time_zone
 
 初期デプロイの時点で、Azure for MySQL サーバーにはタイム ゾーン情報のシステム テーブルが含まれていますが、これらのテーブルには値が設定されていません。 タイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `mysql.az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。 ストアド プロシージャを呼び出す方法とグローバル レベルまたはセッション レベルのタイム ゾーンを設定する方法については、[Azure portal](howto-server-parameters.md#working-with-the-time-zone-parameter) または [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) の記事を参照してください。
+
+### <a name="binlog_expire_logs_seconds"></a>binlog_expire_logs_seconds 
+
+Azure Database for MySQL では、このパラメーターは、サービスがバイナリ ログ ファイルを消去するまでに待機する秒数を指定します。
+
+バイナリ ログには、テーブルの作成操作やテーブル データの変更などのデータベースの変更を記述する "イベント" が含まれます。 また、変更を加えた可能性のあるステートメントのイベントも含まれます。 バイナリ ログは、主にレプリケーション操作とデータの復旧操作の 2 つの目的で使用されます。  通常、バイナリ ログは、ハンドルがサービス、バックアップ、またはレプリカ セットから解放されるとすぐに消去されます。 複数のレプリカの場合、最も遅いレプリカが変更を読み取るまで待機してから消去されます。 バイナリ ログをより長期間保持するには、binlog_expire_logs_seconds パラメーターを構成します。 binlog_expire_logs_seconds が既定値の 0 に設定されている場合、バイナリ ログは、ハンドルが解放されるとすぐに消去されます。 binlog_expire_logs_seconds が 0 を超える場合、設定された秒数待機してから消去されます。 Azure Database for MySQL の場合、バックアップおよび読み取りレプリカでのバイナリ ファイルの消去などのマネージド機能は内部で処理されます。 Azure Database for MySQL サービスからデータ出力をレプリケートする場合は、レプリカによってプライマリから変更が読み取られる前にバイナリ ログが消去されるのを回避するために、プライマリでこのパラメーターを設定する必要があります。 binlog_expire_logs_seconds に大きな値を設定すると、バイナリ ログがすぐに消去されず、ストレージの課金が増加する可能性があります。 
+
 
 ## <a name="non-configurable-server-parameters"></a>構成不可能なサーバー パラメーター
 

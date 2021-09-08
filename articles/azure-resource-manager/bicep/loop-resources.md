@@ -4,41 +4,25 @@ description: Bicep ファイルでループと配列を使用して、リソー�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/19/2021
-ms.openlocfilehash: 3185d6bac1e20e1d29c4f55b0a4e954b5ae35499
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 08/30/2021
+ms.openlocfilehash: 1b044b4ae3f5d73ad535d44153ea3d47023aeaaa
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634885"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225310"
 ---
 # <a name="resource-iteration-in-bicep"></a>Bicep でのリソースの繰り返し
 
-この記事では、Bicep ファイルでリソースの複数のインスタンスを作成する方法について説明します。 ファイルの `resource` セクションにループを追加し、デプロイするリソースの数を動的に設定することができます。 また、Bicep ファイルで構文を繰り返さないようにします。
+この記事では、Bicep ファイルでリソースの複数のインスタンスを作成する方法について説明します。 `resource` 宣言にループを追加して、デプロイするリソース数を動的に設定することができます。 これにより、Bicep ファイルで構文を繰り返さないようにします。
 
-[プロパティ](loop-properties.md)、[変数](loop-variables.md)、および[出力](loop-outputs.md)でもループを使用できます。
+[モジュール](loop-modules.md)、[プロパティ](loop-properties.md)、[変数](loop-variables.md)、[出力](loop-outputs.md)でもループを使用できます。
 
 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](conditional-resource-deployment.md)に関する記述を参照してください。
 
 ## <a name="syntax"></a>構文
 
 ループを使用すると、次の方法で複数のリソースを宣言できます。
-
-- 配列の反復処理。
-
-  ```bicep
-  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
-    <resource-properties>
-  }]
-  ```
-
-- 配列の要素の反復処理。
-
-  ```bicep
-  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
-    <resource-properties>
-  }]
-  ```
 
 - ループ インデックスの使用。
 
@@ -48,11 +32,33 @@ ms.locfileid: "122634885"
   }]
   ```
 
+  詳細については、「[ループ インデックス](#loop-index)」を参照してください。
+
+- 配列の反復処理。
+
+  ```bicep
+  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
+    <resource-properties>
+  }]
+  ```
+
+  詳細については、[ループ配列](#loop-array)に関するページを参照してください。
+
+- 配列とインデックスの反復処理。
+
+  ```bicep
+  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
+    <resource-properties>
+  }]
+  ```
+
+  詳細については、「[ループ配列とインデックス](#loop-array-and-index)」を参照してください。
+
 ## <a name="loop-limits"></a>ループの制限
 
-Bicep ファイルのループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。 Bicep ファイルをデプロイするには、最新バージョンの [Bicep ツール](install.md)をインストールします。
+Bicep ファイルのループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。
 
-## <a name="resource-iteration"></a>リソースの反復
+## <a name="loop-index"></a>ループ インデックス
 
 次の例では、`storageCount` パラメーターで指定されているストレージ アカウントの数を作成します。
 
@@ -71,6 +77,8 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in 
 ```
 
 ストレージ アカウント リソース名の作成にインデックス `i` が使用されていることに注意してください。
+
+## <a name="loop-array"></a>ループ配列
 
 次の例では、`storageNames` パラメーターで指定された名前ごとに 1 つのストレージ アカウントを作成します。
 
@@ -94,6 +102,49 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for name 
 
 デプロイされたリソースから値を返す場合は、[output セクション](loop-outputs.md)内でループを使用できます。
 
+## <a name="loop-array-and-index"></a>ループ配列とインデックス
+
+次の例では、ストレージ アカウントを定義するときに、配列要素とインデックス値の両方を使用します。
+
+```bicep
+param storageAccountNamePrefix string
+
+var storageConfigurations = [
+  {
+    suffix: 'local'
+    sku: 'Standard_LRS'
+  }
+  {
+    suffix: 'geo'
+    sku: 'Standard_GRS'
+  }
+]
+
+resource storageAccountResources 'Microsoft.Storage/storageAccounts@2021-02-01' = [for (config, i) in storageConfigurations: {
+  name: '${storageAccountNamePrefix}${config.suffix}${i}'
+  location: resourceGroup().location
+  properties: {
+    supportsHttpsTrafficOnly: true
+    accessTier: 'Hot'
+    encryption: {
+      keySource: 'Microsoft.Storage'
+      services: {
+        blob: {
+          enabled: true
+        }
+        file: {
+          enabled: true
+        }
+      }
+    }
+  }
+  kind: 'StorageV2'
+  sku: {
+    name: config.sku
+  }
+}]
+```
+
 ## <a name="resource-iteration-with-condition"></a>条件を使用したリソースの反復処理
 
 次の例は、フィルター処理されたリソース ループと組み合わされた、入れ子になったループを示しています。 フィルターは、ブール値として評価される式である必要があります。
@@ -110,7 +161,7 @@ resource parentResources 'Microsoft.Example/examples@2020-06-06' = [for parent i
 }]
 ```
 
-フィルターは、モジュール ループでもサポートされます。
+フィルターは、[モジュール ループ](loop-modules.md)でもサポートされます。
 
 ## <a name="deploy-in-batches"></a>バッチ処理でのデプロイ
 
@@ -118,7 +169,7 @@ resource parentResources 'Microsoft.Example/examples@2020-06-06' = [for parent i
 
 あるリソースの種類のすべてのインスタンスを同時に更新したくない場合があるかもしれません。 たとえば、運用環境を更新するとき、一度に特定の数だけ更新されるように更新時間をずらす必要がある場合があります。 その場合、インスタンスのサブセットをまとめてバッチ処理し、同時にデプロイされるように指定できます。 他のインスタンスは、そのバッチが完了するまで待機します。
 
-リソースのインスタンスを順次デプロイするには、[batchSize デコレータ](./file.md#resource-and-module-decorators)を追加します。 値には、一度にデプロイするインスタンスの数を設定します。 ループ内の前のインスタンスへの依存関係が作成されるので、前のバッチが完了するまで次のバッチは実行されません。
+リソースのインスタンスを順次デプロイするには、[batchSize デコレータ](./file.md#resource-and-module-decorators)を追加します。 値には、同時にデプロイするインスタンスの数を設定します。 ループ内の前のインスタンスへの依存関係が作成されるので、前のバッチが完了するまで次のバッチは実行されません。
 
 ```bicep
 param rgLocation string = resourceGroup().location
@@ -133,6 +184,8 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in 
   kind: 'Storage'
 }]
 ```
+
+純粋に順次デプロイを行う場合は、バッチ サイズを 1 に設定します。
 
 ## <a name="iteration-for-a-child-resource"></a>子リソースの反復処理
 
@@ -182,24 +235,10 @@ resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2021-02-01
 }]
 ```
 
-## <a name="example-templates"></a>サンプル テンプレート
-
-次の例は、リソースまたはプロパティの複数のインスタンスを作成するための一般的なシナリオを示しています。
-
-|Template  |説明  |
-|---------|---------|
-|[ループ ストレージ](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopstorage.bicep) |名前にインデックス番号を含む複数のストレージ アカウントをデプロイします。 |
-|[シリアル ループ ストレージ](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopserialstorage.bicep) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |
-|[配列を使用したループ ストレージ](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopstoragewitharray.bicep) |複数のストレージ アカウントをデプロイします。 名前には、配列からの値が含まれます。 |
-
 ## <a name="next-steps"></a>次のステップ
 
 - ループのその他の使用方法については、以下を参照してください。
-  - [Bicep ファイルでのプロパティの反復処理](loop-properties.md)
-  - [Bicep ファイルでの変数の反復処理](loop-variables.md)
-  - [Bicep ファイルでの出力の反復処理](loop-outputs.md)
-- Bicep ファイルのセクションの詳細については、「[Bicep ファイルの構造と構文について](file.md)」を参照してください。
-- 複数のリソースをデプロイする方法については、「[Bicep モジュールの使用](modules.md)」を参照してください。
+  - [Bicep でのプロパティの繰り返し](loop-properties.md)
+  - [Bicep での変数の繰り返し](loop-variables.md)
+  - [Bicep での出力の繰り返し](loop-outputs.md)
 - ループで作成されたリソースへの依存関係を設定する方法については、「[リソースの依存関係を設定する](./resource-declaration.md#set-resource-dependencies)」を参照してください。
-- PowerShell を使用してデプロイする方法については、「[Bicep と Azure PowerShell を使用してリソースをデプロイする](deploy-powershell.md)」を参照してください。
-- Azure CLI を使用してデプロイする方法については、「[Bicep と Azure CLI を使用してリソースをデプロイする](deploy-cli.md)」を参照してください。

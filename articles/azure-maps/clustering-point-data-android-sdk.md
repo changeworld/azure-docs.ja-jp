@@ -1,20 +1,20 @@
 ---
 title: Android SDK でのポイント データのクラスタリング | Microsoft Azure Maps
 description: マップでポイント データをクラスター化する方法について説明します。 Azure Maps Android SDK を使用してデータをクラスター化し、クラスター マウス イベントに応答して、クラスター集計を表示する方法を確認します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/23/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 81de84dd517babecf696bd2e4c906074f95f41a4
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: a6b9de675c32c893e872d23835c856a0fe6c49d3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113095138"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429822"
 ---
 # <a name="clustering-point-data-in-the-android-sdk"></a>Android SDK でのポイント データのクラスタリング
 

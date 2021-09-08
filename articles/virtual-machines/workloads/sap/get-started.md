@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/09/2021
+ms.date: 08/26/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2761262950c2a10709ccfa37b35a2d3e4c556359
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 305f7b964bfd084bf1fa245d436c431cde1b9104
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903489"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110330"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -80,6 +80,22 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 このセクションでは、SAP データ ソースへの Microsoft Power BI の統合と、SAP BW への Azure Data Factory の統合に関するドキュメントを紹介します。
 
 ## <a name="change-log"></a>変更履歴
+- 2021 年 8 月 26 日: Azure Fence Agent 用のロール定義 JSON を修正するために、[Azure の RHEL での Pacemaker のセットアップ](./high-availability-guide-rhel-pacemaker.md)、および [Azure の SLES での Pacemaker のセットアップ](./high-availability-guide-suse-pacemaker.md)に関するページを変更
+- 2021 年 8 月 17 日: ANF でホストされる NFS ボリュームを使用した IBM Db2 のサポートを導入するために、「[SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ](./dbms_guide_ibm.md)」、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」、「[Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ](./sap-planning-supported-configurations.md)」の各ページを変更
+- 2021 年 8 月 2 日: エンキュー サーバーの障害をシミュレートするテスト シナリオの動作 (ENSA1/ENSA2) を明確にするために、[SAP アプリケーション用の SLES 上の Azure VM での SAP NW の高可用性](./high-availability-guide-suse.md)、[ANF を使用した SLES 上の Azure VM での SAP NW の高可用性](./high-availability-guide-suse-netapp-files.md)、[SAP アプリケーション用の RHEL 上の Azure VM での SAP NW の高可用性](./high-availability-guide-rhel.md)、[ANF を使用した RHEL 上の Azure VM での SAP NW の高可用性](./high-availability-guide-rhel-netapp-files.md)に関するページを変更     
+- 2021 年 8 月 11 日: クラスター リソースの持続性、移行のしきい値、および順序の制約を調整するために、[SAP アプリケーション用の RHEL 上の Azure VM での SAP NW の高可用性](./high-availability-guide-rhel.md)、[ANF を使用した RHEL 上の Azure VM での SAP NW の高可用性](./high-availability-guide-rhel-netapp-files.md)、[RHEL マルチ SID 上の Azure VM での SAP NW の高可用性ガイド](./high-availability-guide-rhel-multi-sid.md)に関するページを変更  
+- 2021 年 8 月 11 日: [Azure 上の SAP IQ を使用した SAP BW-Near Line Storage (NLS) 実装ガイド](./sap-iq-deployment-guide.md)のリリース 
+- 2021 年 7 月 29 日: 「[SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性](./high-availability-guide-windows-netapp-files-smb.md)」および「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」に、ASCS/SCS および DBMS 用の結合された 2 ノード Windows クラスターを導入 
+- 2021 年 7 月 26 日: [Azure の RHEL での Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)と [Azure の SLES での Pacemaker の設定](./high-availability-guide-suse-pacemaker.md)に関するページを変更し、ロールの割り当て手順を、Azure Fence Agent の設定について説明するセクションの RBAC ドキュメントへのリンクに置き換える
+- 2021 年 7 月 22 日: ASCS クラスター リソース (ENSA2 のみ) の `failure-timeout` を削除するために、[SAP アプリケーション用の RHEL 上の Azure VM での SAP NW の高可用性](./high-availability-guide-rhel.md)、[ANF を使用した RHEL 上の Azure VM での SAP NW の高可用性](./high-availability-guide-rhel-netapp-files.md)、[RHEL マルチ SID 上の Azure VM での SAP NW の高可用性ガイド](./high-availability-guide-rhel-multi-sid.md)に関するページを変更
+- 2021 年 7 月 16 日: より合理化されたナビゲーションのために SAP on Azure のドキュメントの目次 (TOC) を再構築
+- 2021 年 7 月 2 日: azacsnap ツールと HANA Large Instances のバックアップおよび復元の重複コンテンツを削除するために、「[HANA Large Instances での SAP HANA のバックアップと復元](./hana-backup-restore.md)」を変更
+- 2021 年 7 月 2 日: 2 つのノード Pacemaker クラスターでのフェンスの競争を回避する方法と KB へのリンクを追加し、`fence_kdump` によるオプションの STONITH 構成を使用する場合のフェールオーバーの遅延を減らす方法を説明するために、[Azure の RHEL での Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)に関するページを変更
+- 2021 年 7 月 1 日: [HLI で利用可能な SKU](./hana-available-skus.md)に関するページに、新しく認定された HANA Large Instances SKU を追加 
+- 2021 年 6 月 30 日: 推奨 SAP プロファイル パラメーターのセクションを追加するために、[WSFC と Azure NetApp Files (SMB) を使用した SAP ASCS/SCS の HA ガイド](./high-availability-guide-windows-netapp-files-smb.md)に関するページを変更 
+- 2021 年 6 月 29 日: fence_kdump を使用したオプションの stonith 構成を追加するために、[Azure の RHEL での Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)に関するページを変更
+- 2021 年 6 月 28 日: SAP ホスト名の長さの制限を回避するために SMB サーバー (コンピューター アカウント) プレフィックスを 8 文字以下にする必要があるというステートメントを追加するように、[WSFC と Azure NetApp Files (SMB) を使用した SAP ASCS/SCS の HA ガイド](./high-availability-guide-windows-netapp-files-smb.md)に関するページを変更
+- 2020 年 6 月 17 日: HANA リソース作成コマンド (RHEL 8.x) から meta キーワードを削除するように、「[RHEL 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)」を変更
 - 2021 年 6 月 9 日: 「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」の M192 ---_ v2 の VM SKU 名を修正
 - 2021 年 5 月 26 日: [SLES 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-suse.md)、[RHEL で ANF を使用した SAP HANA スケールアップの HA](./sap-hana-high-availability-netapp-files-red-hat.md)、および [RHEL 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関する記事を変更し、ANF 上で HANA を実行するために OS を準備するための構成を追加  
 - 2021 年 5 月 13 日: [Azure の SLES での Pacemaker のセットアップ](./high-availability-guide-suse-pacemaker.md)に関する記事を変更し、リソース エージェント azure-events の動作を明確化 
@@ -144,7 +160,7 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 - 2020 年 8 月 4 日:パラメーター `enque/encni/set_so_keepalive` の使用を明確にするために、[WFCS とファイル共有における SAP NW HA](./sap-high-availability-installation-wsfc-file-share.md)、[WFCS と共有ディスクにおける SAP NW HA](./sap-high-availability-installation-wsfc-shared-disk.md)、[Azure VM における SAP NW の HA](./high-availability-guide.md)、[SLES 上の Azure VM での SAP NW の HA](./high-availability-guide-suse.md)、[ANF を使用した SLES 上の Azure VM での SAP NW の HA](./high-availability-guide-suse-netapp-files.md)、[SLES マルチ SID 上の Azure VM での SAP NW の HA ガイド](./high-availability-guide-suse-multi-sid.md)、[RHEL 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-rhel.md)、[ANF を使用した RHEL 上の Azure VM での SAP NW の HA](./high-availability-guide-rhel-netapp-files.md)、[RHEL マルチ SID 上の Azure VM での SAP NW の HA ガイド](./high-availability-guide-rhel-multi-sid.md)に関するページを更新
 - 2020 年 7 月 23 日:SAP HANA Large Instances 予約を購入する前に知っておくべきことと、その購入方法について説明する記事「[Azure 予約を使用して SAP HANA Large Instances に保存する](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)」を追加
 - 2020 年 7 月 16 日:[展開ガイド](deployment-guide.md)で Azure PowerShell を使用して SAP 用の新しい VM 拡張機能をインストールする方法を説明
-- 2020 年 7 月 4 日:[SAP ソリューション向け Azure Monitor (プレビュー)](./azure-monitor-overview.md) のリリース
+- 2020 年 7 月 4 日: [Azure Monitor for SAP Solutions (プレビュー)](./monitor-sap-on-azure.md) のリリース
 - 2020 年 7 月 1 日:ドキュメント「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」での、Azure Premium Storage バースト機能に基づく低コストのストレージ構成の提案 
 - 2020 年 6 月 24 日:新しい改善された Azure フェンス エージェントと、Azure フェンス エージェントに基づく、デバイス向けの回復性の高い STONITH 構成のリリースに関する、「[Azure での SLES に対する Pacemaker の設定](./high-availability-guide-suse-pacemaker.md)」での変更。 
 - 2020 年 6 月 24 日:回復性の高い STONITH 構成のリリースに関する、「[Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)」での変更。

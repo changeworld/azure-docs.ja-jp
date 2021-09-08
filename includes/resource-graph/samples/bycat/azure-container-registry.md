@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c7e2384538aa2f90c54feaa0cef1ebea54e7964b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: ea7d773d95a1175c4bd34971b0b3c5da5df5b392
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309472"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536272"
 ---
 ### <a name="list-container-registry-vulnerability-assessment-results"></a>コンテナー レジストリ脆弱性評価結果を一覧表示する
 

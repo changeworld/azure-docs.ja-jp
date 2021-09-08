@@ -2,13 +2,13 @@
 title: Azure への SQL Server データベースのバックアップ
 description: この記事では、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: b6daf631248958948e799b20284d84a1e59e5dfe
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 08/20/2021
+ms.openlocfilehash: aae8493579c96607c5623bb04495ec21c99cf667
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518866"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101441"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -18,6 +18,9 @@ ms.locfileid: "107518866"
 2. 15 分間の RPO (回復ポイントの目標) と頻繁に行われるログのバックアップ
 3. 特定の時点に復旧 (1 秒まで)
 4. 個々のデータベース レベルのバックアップと復旧
+
+>[!Note]
+>Azure VM の SQL データベースにおけるスナップショットベースのバックアップは現在プレビュー段階です。 このユニークなオファリングは、RTO を向上させ、サーバーへの影響を小さくするスナップショットの利点と、RPO を低くするための頻繁なログ バックアップの利点を組み合わせたものです。 ご質問またはアクセスについては、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。
 
 現在サポートされているバックアップと復元のシナリオを確認するには、[サポートマトリックス](sql-support-matrix.md#scenario-support)を参照してください。
 

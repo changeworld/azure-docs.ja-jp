@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
 keywords: オンプレミス, Docker, コンテナー, 識別
-ms.openlocfilehash: 5f8e0c17fd7f76ddb28072e292bbe4ae39dab64c
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 700e49f1fb635cc93797c5b39463dc3d76018c7e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326479"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480968"
 ---
 # <a name="install-and-run-form-recognizer-v21-preview-containers"></a>Form Recognizer v2.1-preview コンテナーのインストールと実行
 
@@ -625,5 +625,3 @@ Azure Cognitive Services コンテナーは、計測または課金エンドポ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Form Recognizer コンテナーの構成設定](form-recognizer-container-configuration.md) 
-* [Form Recognizer コンテナー イメージ タグ](../../../cognitive-services/containers/container-image-tags.md?tabs=current#form-recognizer)
-* [Cognitive Services コンテナーのサポート ページとリリース ノート](../../../cognitive-services/containers/container-image-tags.md?tabs=current#form-recognizer)

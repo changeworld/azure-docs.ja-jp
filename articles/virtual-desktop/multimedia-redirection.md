@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 574a10f6ef79ff3d40f5d62e49db9ebf198d2a79
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: d479dbc34bd8c08ebc471de74be1558f6dccc6e1
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272320"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273251"
 ---
 # <a name="multimedia-redirection-for-azure-virtual-desktop-preview"></a>Azure Virtual Desktop のマルチメディア リダイレクト (プレビュー)
 
@@ -32,11 +32,9 @@ Azure Virtual Desktop のマルチメディア リダイレクトを使用する
 
 1. [Windows PC 上の Teams のハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 または Windows 10 IoT Enterprise デバイスに [Windows デスクトップ クライアントをインストールします](./user-documentation/connect-windows-7-10.md#install-the-windows-desktop-client)。 バージョン 1.2.2222 以降のクライアントをインストールすると、クライアント デバイスにマルチメディア リダイレクト プラグイン (MsMmrDVCPlugin.dll) もインストールされます。 更新プログラムと新しいバージョンの詳細については、「[Windows Desktop クライアントの新機能](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)」を参照してください。
 
-2. [インサイダー グループ用にクライアント コンピューターを構成します](create-host-pools-azure-marketplace.md)。
+2. [ユーザーのホスト プールを作成します](create-host-pools-azure-marketplace.md)。
 
-3. [マルチメディア リダイレクター サービス](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk)および必要なブラウザー拡張を仮想マシン (VM) にインストールします。
-
-4. ユーザーが Insiders プログラムにアクセスできるようにクライアント コンピューターを構成します。 Insider グループのクライアントを構成するには、次のレジストリ情報を設定します。
+3. ユーザーが Insiders プログラムにアクセスできるようにクライアント コンピューターを構成します。 Insider グループのクライアントを構成するには、次のレジストリ情報を設定します。
 
    - **キー**: HKLM\\Software\\Microsoft\\MSRDC\\Policies
    - **種類**: REG_SZ
@@ -45,7 +43,7 @@ Azure Virtual Desktop のマルチメディア リダイレクトを使用する
 
    Insiders プログラムの詳細については、[管理者向け Windows デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin#configure-user-groups)に関するページを参照してください。
 
-5. [MSI インストーラー (MsMmrHostMri)](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk) を使用して、インターネット ブラウザー用のマルチメディア リダイレクト拡張機能を Azure VM にインストールします。 Azure Virtual Desktop のマルチメディア リダイレクトでは、Microsoft Edge および Google Chrome のみが現在サポートされています。
+4. [MSI インストーラー (MsMmrHostMri)](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk) を使用して、インターネット ブラウザー用のマルチメディア リダイレクト拡張機能を Azure VM にインストールします。 Azure Virtual Desktop のマルチメディア リダイレクトでは、Microsoft Edge および Google Chrome のみが現在サポートされています。
 
 ## <a name="managing-group-policies-for-the-multimedia-redirection-browser-extension"></a>マルチメディア リダイレクト ブラウザー拡張機能のグループ ポリシーの管理
 
@@ -103,13 +101,14 @@ Google Chrome で拡張機能を手動で実行するには、次のスクリー
 
 | アイコンの状態  | 定義  |
 |-----------------|-----------------|
-| [状態が適用されていない既定の Azure Virtual Desktop プログラム アイコン。](/media/icon-default.png) | 状態が適用されていない既定のアイコンの外観。 |
-| [マルチメディア リダイレクトが機能していないことを示す、赤い四角形に x が付いた Azure Virtual Desktop プログラム アイコン。](/media/icon-disconnect.png) | 内部に "X" が付いた赤い四角形は、クライアントがマルチメディア リダイレクトに接続できなかったことを意味します。 |
-| [マルチメディア リダイレクトが動作中であることを示す、内部にチェック マークが付いた緑色の四角形が表示された Azure Virtual Desktop プログラム アイコン。](/media/icon-connect.png) | 内側にチェック マークが付いた緑色の四角形は、クライアントがマルチメディア リダイレクトに正常に接続されたことを意味します。 |
+| ![状態が適用されていない既定の Azure Virtual Desktop プログラム アイコン。](./media/icon-default.png) | 状態が適用されていない既定のアイコンの外観。 |
+| ![マルチメディア リダイレクトが機能していないことを示す、赤い四角形に x が付いた Azure Virtual Desktop プログラム アイコン。](./media/icon-disconnect.png) | 内部に "X" が付いた赤い四角形は、クライアントがマルチメディア リダイレクトに接続できなかったことを意味します。 |
+| ![マルチメディア リダイレクトが動作中であることを示す、内部にチェック マークが付いた緑色の四角形が表示された Azure Virtual Desktop プログラム アイコン。](./media/icon-connect.png) | 内側にチェック マークが付いた緑色の四角形は、クライアントがマルチメディア リダイレクトに正常に接続されたことを意味します。 |
 
 アイコンを選択すると、すべての Web サイトでマルチメディア リダイレクトを有効または無効にできるチェック ボックスを含むポップアップ メニューが表示されます。 また、サービスの各コンポーネントのバージョン番号も一覧表示されます。
 
-## <a name="send-feedback-during-public-preview"></a>パブリック プレビュー中にフィードバックを送信する
+## <a name="support-during-public-preview"></a>パブリック プレビュー中のサポート
+Microsoft サポートでは、パブリック プレビュー中のマルチメディア リダイレクトの問題を処理しません。
 
 問題が発生した場合は、クライアントと VM ホストの両方のフィードバック ハブでお知せください。
 

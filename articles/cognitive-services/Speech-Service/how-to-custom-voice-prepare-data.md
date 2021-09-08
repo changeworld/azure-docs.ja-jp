@@ -3,19 +3,19 @@ title: Custom Voice 用にデータを準備する方法 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声サービスを使用して自社ブランドに合わせたカスタム音声を作成します。 スタジオでの録音と関連するスクリプトを提供すると、このサービスは、録音された音声に合わせて調整された一意の音声モデルを生成します。 この音声は、お使いの製品、ツール、アプリケーションでの音声の合成に使用します。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: lajanuar
-ms.openlocfilehash: 74f23dd6a7629e98189f73ebc305755d70f3c7a1
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 3736e0a1200367e3f0e39bffc213cf369d3983b5
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068992"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536465"
 ---
 # <a name="prepare-training-data"></a>トレーニング データの準備
 

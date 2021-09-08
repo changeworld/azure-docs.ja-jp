@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: fcb9fd9f0539b42d9253db783fd5da840f358e66
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 7c6bba2084247d76a79de9ae9efb1b3ea356a5c4
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960726"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221502"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
 
@@ -47,7 +47,7 @@ Azure のサンプルのいくつかのファイルを使用します。 Node.JS
 git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
 ```
 
-## <a name="install-the-packages"></a>パッケージのインストール
+## <a name="install-the-nodejs-packages"></a>Node.js パッケージをインストールする
 
 ### <a name="install-azurearm-mediaservices"></a>@azure/arm-mediaservices のインストール
 
@@ -96,11 +96,12 @@ npm install @azure/ms-rest-nodeauth@"^3.0.0"
 
 ## <a name="connect-to-nodejs-client-using-typescript"></a>TypeScript を使用して Node.js クライアントに接続する
 
-
-
 ### <a name="sample-env-file"></a>サンプルの *.env* ファイル
 
 このファイルの内容を、" *.env*" という名前のファイルにコピーします。 これは、作業リポジトリのルートに格納されている必要があります。 これらは、ポータルの Media Services アカウントの [API アクセス] ページから取得した値です。
+
+*.env* ファイルへの入力に必要な値にアクセスするため、[API へのアクセス](./access-api-howto.md)に関するハウツー記事を確認することをお勧めします。
+このサンプルの環境変数ファイルに入力するのに必要な値を取得するには、Azure portal か CLI を使用します。
 
 " *.env*" ファイルを作成したら、サンプルの使用を開始できます。
 
@@ -137,7 +138,7 @@ DRM_SYMMETRIC_KEY="add random base 64 encoded string here"
 cd AMSv3Samples
 ```
 
-2. *packages.json* ファイルに使用されているパッケージをインストールします。
+2. *package.json* ファイルで使用されるパッケージをインストールします。
 
 ```
 npm install 

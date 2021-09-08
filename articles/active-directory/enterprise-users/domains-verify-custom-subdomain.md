@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/18/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4acf01a6672d17e62b6ebf5c6f43c8d6145f95a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 36347a8367cd5e2f99f6da2cb97023b3647f8afa
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739316"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438680"
 ---
 # <a name="change-subdomain-authentication-type-in-azure-active-directory"></a>Azure Active Directory でのサブドメイン認証の種類の変更
 

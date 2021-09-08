@@ -11,18 +11,25 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/21/2021
-ms.openlocfilehash: c8f8699d58d26c745be8cb1207a88cdad6857f1a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/01/2021
+ms.openlocfilehash: e891ab3812c78e8878a0e4341b8fa6b671a7af14
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752183"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223711"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) をデプロイできます。 この記事では、[Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) の最新リリースで導入された新機能と機能強化に関連するドキュメントの変更をまとめます。 
+
+## <a name="september-2021"></a>2021 年 9 月
+
+| [変更点] | 詳細 |
+| --- | --- |
+| **SQL IaaS 拡張機能のフル モードで再起動が不要に** | [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に SQL Server VM を[フル モード](sql-agent-extension-manually-register-single-vm.md#full-mode)で登録するときでも、SQL Server サービスの再起動は不要になりました。 | 
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 

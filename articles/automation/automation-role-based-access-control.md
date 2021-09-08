@@ -4,15 +4,15 @@ description: この記事では、Azure ロールベースのアクセス制御 
 keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/15/2021
+ms.date: 08/26/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5484f1fb798022e59e71f153d087a880bca5c983
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 30bc4a306eecf8be3177fb045f9904d775cab9bd
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113032563"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215000"
 ---
 # <a name="manage-role-permissions-and-security"></a>ロールのアクセス許可とセキュリティの管理
 
@@ -27,6 +27,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 | 所有者 |Automation アカウント内のすべてのリソースおよびアクションへのアクセスは、所有者ロールによって許可されます。Automation アカウントを管理するためのアクセス権を他のユーザー、グループ、アプリケーションに付与することもできます。 |
 | Contributor |Automation アカウントに対する他のユーザーのアクセス許可に変更を加えることを除くすべての作業は共同作成者ロールで行うことができます。 |
 | Reader |閲覧者ロールでは、Automation アカウントのすべてのリソースを表示できますが、それらに変更を加えることはできません。 |
+| Automation 共同作成者 | Automation 共同作成者ロールを使用すると、Automation アカウントに対する他のユーザーのアクセス許可を変更する以外の、Automation アカウント内のすべてのリソースを管理できます。 |
 | Automation Operator |Automation オペレーター ロールでは、Runbook の名前とプロパティの表示、Automation アカウント内のすべての Runbook のジョブの作成と管理を実行できます。 ご利用の Automation アカウントのリソース (資格情報アセットや Runbook など) を閲覧したり改変したりできないよう保護したうえで、同じ組織のメンバーにのみ、それらの Runbook の実行を許可する必要がある場合、このロールを活用できます。 |
 |Automation ジョブ オペレーター|Automation ジョブ オペレーター ロールでは、Automation アカウント内のすべての Runbook のジョブの作成と管理を実行できます。|
 |Automation Runbook オペレーター|Automation Runbook オペレーター ロールでは、Runbook の名前とプロパティを表示できます。|
@@ -67,6 +68,23 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 |**アクション**  |**説明**  |
 |---------|---------|
 |Microsoft.Automation/automationAccounts/read|Automation アカウントのすべてのリソースの表示。 |
+
+### <a name="automation-contributor"></a>Automation 共同作成者
+
+Automation 共同作成者は、アクセス権以外の、Automation アカウント内のすべてのリソースを管理できます。 次の表は、このロールに付与されるアクセス許可を示しています。
+
+|**アクション**  |**説明**  |
+|---------|---------|
+|Microsoft.Automation/automationAccounts/*|Automation アカウントのあらゆる種類のリソースの作成と管理。|
+|Microsoft.Authorization/*/read|ロールとロール割り当ての読み取り。|
+|Microsoft.Resources/deployments/*|リソース グループ デプロイの作成と管理。|
+|Microsoft.Resources/subscriptions/resourceGroups/read|リソース グループ デプロイの読み取り。|
+|Microsoft.Support/*|サポート チケットの作成と管理。|
+
+> [!NOTE]
+> Automation 共同作成者ロールを使用すると、マネージド ID を使用する (ターゲット リソースに対して適切なアクセス許可が設定されている場合) か、実行アカウントを使用して、任意のリソースにアクセスできます。 Automation 実行アカウントは、既定では、そのサブスクリプションに対する共同作成者権限で構成されます。 最小特権の原則に従って、Runbook を実行するのに必要なアクセス許可のみを慎重に割り当てます。 たとえば、Automation アカウントが Azure VM の開始または停止にのみ必要な場合は、その実行アカウントまたはマネージド ID に割り当てられるアクセス許可は、VM の開始または停止のためのみのものである必要があります。 同様に、Runbook が BLOB ストレージから読み取りを行う場合は、読み取り専用アクセス許可を割り当てます。
+> 
+> アクセス許可を割り当てる場合は、マネージド ID に割り当てられた Azure ロール ベースのアクセス制御 (RBAC) を使用することをお勧めします。 システムまたはユーザー割り当てのマネージド ID の使用について、その有効期間中の管理とガバナンスを含む、[ベスト アプローチ](../active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations.md)に関する推奨事項をご確認ください。
 
 ### <a name="automation-operator"></a>Automation Operator
 
@@ -273,9 +291,11 @@ Microsoft は、Log Analytics 共同作成者ロールから Automation アカ�
    ```json
    {
     "properties": {
-        "roleName": "Automation account Contributor (custom)",
+        "roleName": "Automation Account Contributor (Custom)",
         "description": "Allows access to manage Azure Automation and its resources",
-        "type": "CustomRole",
+        "assignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ],
         "permissions": [
             {
                 "actions": [
@@ -292,9 +312,6 @@ Microsoft は、Log Analytics 共同作成者ロールから Automation アカ�
                 "dataActions": [],
                 "notDataActions": []
             }
-        ],
-        "assignableScopes": [
-            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
         ]
       }
    }

@@ -5,17 +5,16 @@ ms.topic: conceptual
 services: automation
 ms.subservice: dsc
 ms.date: 08/31/2021
-ms.openlocfilehash: 600fdfafa64e0827ac023ae01810ec54bdaa95fe
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: e4352c5c2cca0391e4e795b537af16c28ded6f6e
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438500"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123354393"
 ---
 # <a name="configure-linux-desired-state-with-azure-automation-state-configuration-using-powershell"></a>Azure Automation State Configuration で PowerShell を使用して Linux をあるべき状態に構成する
 
 このチュートリアルでは、PowerShell を使用して Azure Automation State Configuration を Azure Linux 仮想マシンに適用して、これがあるべき状態に準拠しているかどうかを確認します。 あるべき状態は、apache2 サービスがノード上に存在するかどうかを識別することです。
-
 Azure Automation State Configuration を使うと、マシンの構成を指定し、時間が経過してもそのマシンが指定した状態を保つようにすることができます。 State Configuration の詳細については、[Azure Automation State Configuration の概要](./automation-dsc-overview.md)に関するページをご覧ください。
 
 このチュートリアルでは、以下の内容を学習します。
@@ -421,7 +420,7 @@ Get-AzAutomationDscNodeReport `
 
    正常に削除された場合、出力は次のようになります: `Get-AzAutomationModule : The module was not found. Module name: nx.`。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、PowerShell を使用して Azure Automation State Configuration を Azure Linux VM に適用して、これがあるべき状態に準拠しているかどうかを確認しました。 構成の生成に関する詳細については、以下を参照してください。
 

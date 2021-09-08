@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 04/07/2021
 ms.topic: include
-ms.openlocfilehash: d14274c43c3241a4c091ee004747c1ad8e12968b
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 24f466e7c9a9e5630510f73652fcf515540bee10
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111896370"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646751"
 ---
 Azure Defender では、コンテナー化された環境に対するリアルタイムの脅威の防止が提供され、疑わしいアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
 
@@ -22,7 +22,7 @@ Azure Defender では、さまざまなレベルで脅威の防止が提供さ�
     >[!IMPORTANT]
     > 仮想マシン スケール セットで実行されている Azure Kubernetes Service クラスターへの Log Analytics エージェントのインストールは、現在サポートされていません。
 
-    クラスター レベルのアラートの一覧については、[アラートのリファレンス表](../articles/security-center/alerts-reference.md#alerts-containerhost)を参照してください。
+    ホスト レベルのアラートの一覧については、[アラートのリファレンス表](../articles/security-center/alerts-reference.md#alerts-containerhost)に関するページを参照してください。
 
 
 * **クラスター レベル (Azure Defender for Kubernetes が提供)** - クラスター レベルでは、脅威の防止は Kubernetes の監査ログの分析に基づいています。 この **エージェントレス型** 監視を有効にするには、Azure Defender を有効にします。 クラスターがオンプレミスまたは別のクラウド プロバイダー上にある場合は、[Arc 対応 Kubernetes と Azure Defender 拡張機能](../articles/security-center/defender-for-kubernetes-azure-arc.md)を有効にします。

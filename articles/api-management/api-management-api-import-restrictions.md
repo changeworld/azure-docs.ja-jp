@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 3205d4c4c6d8d7d821cb65400a4c1f19d6484005
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: c5f1509a5d037e5866ed86266693e955bdca2d6f
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226536"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186427"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 
@@ -34,6 +34,7 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 ### <a name="general"></a><a name="open-api-general"> </a>全般
 
 -   パスとクエリの両方の間で必要なパラメーターは、一意の名前が必要です。 (OpenAPI では、パラメーター名は、パス、クエリ、ヘッダーなどの場所でのみ一意である必要があります。 ただし、API Management では、パスのパラメーターとクエリのパラメーターの両方によって操作を区別できます (これは OpenAPI ではサポートされていません)。 このため、URL テンプレート　全体の中で、パラメーターの名前を一意にする必要があります。)
+- API Management にインラインでインポートする場合、OpenAPI 仕様の最大許容サイズは 4 MB です。 API Management サービスからアクセスできる場所の URL 経由で OpenAPI ドキュメントが提供される場合、このサイズ制限は適用されません。
 -   `\$ref` ポインターは、外部ファイルを参照できません。
 -   サポートされている拡張機能は `x-ms-paths` と `x-servers` のみです。
 -   カスタム拡張子は、インポート時に無視され、エクスポートでは保存されず、保持もされません。

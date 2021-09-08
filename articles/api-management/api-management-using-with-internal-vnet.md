@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b0f67862352f2354dbdb5439542229dbee67ae00
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 84d290558d781b592a114b3f3f5658d1ceebe115
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107489"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221218"
 ---
 # <a name="connect-to-an-internal-virtual-network-using-azure-api-management"></a>Azure API Management を使用して内部仮想ネットワークに接続する 
 Azure Virtual Network (VNET) では、Azure API Management からさまざまな VPN テクノロジを使用して接続を確立することで、インターネットからはアクセスできない API を管理することができます。 API Management は、[外部](./api-management-using-with-vnet.md)モードまたは内部モードでデプロイすることができます。 この記事では、API Management を内部 VNET モードでデプロイする方法について説明します。
@@ -73,7 +73,7 @@ API Management サービスが VNET にデプロイされている場合は、[�
 | Virtual IP address | 説明 |
 | ----- | ----- |
 | **プライベート仮想 IP アドレス** | API Management によって委任されたサブネットの範囲内から割り当てられる、負荷分散された IP アドレスです。これを介して、`gateway`、`portal`、`management`、`scm` の各エンドポイントにアクセスできます。 |  
-| **パブリック仮想 IP アドレス** | `port 3443` を介した `management` エンドポイントへのコントロール プレーン トラフィックに "*のみ*" 使用されます。 [ApiManagement][ServiceTags] サービス タグにロック ダウンすることができます。 |  
+| **パブリック仮想 IP アドレス** | `port 3443` を介した `management` エンドポイントへのコントロール プレーン トラフィックに使用されます。 [ApiManagement][ServiceTags] サービス タグにロック ダウンすることができます。 [None]\(なし\) および [External]\(外部\) の VNet 構成では、受信ランタイム API トラフィックに使用されます。 また、すべての VNet 構成で、インターネット上の送信ランタイム トラフィックにも使用されます。 |  
 
 ![内部 VNET が構成されている API Management ダッシュボード][api-management-internal-vnet-dashboard]
 

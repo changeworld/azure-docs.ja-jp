@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5c601d81053979108ab7c49dee5b1bccbb33bf53
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d85222c1e64cd3d5d25ec7837a1ce5b512850741
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464012"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864391"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -173,7 +173,7 @@ WamDefaultAuthority: organizations
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
    - 理由:検出の実行中に操作がタイムアウトになりました。
    - 解決策:システム コンテキストで `https://enterpriseregistration.windows.net` にアクセスできることを確認します。 詳細については、[ネットワーク接続の要件](hybrid-azuread-join-managed-domains.md#prerequisites)に関するセクションを参照してください。
-- **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
+- **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c003d/-2145648579)
    - 理由:一般的な領域検出エラー。 STS からドメインの種類 (管理対象/フェデレーション) を判別できませんでした。
    - 解決策:この後のサブエラーを確認して詳細を調べます。
 
@@ -387,7 +387,7 @@ WamDefaultAuthority: organizations
 
 | サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解像度 |
 | --- | --- | --- | --- |
-| DirectoryError | AADSTS90002:Tenant <UUID> not found.\(テナントが見つかりません\)。 This error may happen if there are no active subscriptions for the tenant.\(このエラーは、テナントにアクティブなサブスクリプションがない場合に発生することがあります。\) Check with your subscription administrator.\(サブスクリプション管理者にご確認ください。\) | SCP オブジェクト内のテナント ID が正しくありません。 | SCP オブジェクトが正しい Azure AD テナント ID で構成されていることと、アクティブなサブスクリプションがテナントに存在することを確認します。 |
+| DirectoryError | AADSTS90002:Tenant `UUID` not found.\(テナントが見つかりません\)。 This error may happen if there are no active subscriptions for the tenant.\(このエラーは、テナントにアクティブなサブスクリプションがない場合に発生することがあります。\) Check with your subscription administrator.\(サブスクリプション管理者にご確認ください。\) | SCP オブジェクト内のテナント ID が正しくありません。 | SCP オブジェクトが正しい Azure AD テナント ID で構成されていることと、アクティブなサブスクリプションがテナントに存在することを確認します。 |
 | DirectoryError | The device object by the given ID is not found.\(指定された ID のデバイス オブジェクトが見つかりませんでした。\) | 同期参加で予期されるエラーです。 デバイス オブジェクトが AD から Azure AD に同期されていません。 | Azure AD Connect の同期が完了するのを待ち、同期完了後に次の参加を試みると問題が解決します。 |
 | AuthenticationError | The verification of the target computer's SID\(ターゲット コンピューターの SID の検証\) | Azure AD デバイスの証明書が、同期参加時に BLOB に署名するために使用された証明書と一致しません。 通常このエラーは、同期がまだ完了していないことを示します。 |  Azure AD Connect の同期が完了するのを待ち、同期完了後に次の参加を試みると問題が解決します。 |
 
@@ -616,7 +616,7 @@ PRT の取得時に AAD CloudAP プラグインによって記録されたログ
 
 ---
 
-**AADSTS50034: ユーザー アカウント <Account> が <tenant id> ディレクトリに存在しない**
+**AADSTS50034: ユーザー アカウント `Account` が `tenant id` ディレクトリに存在しない**
 
 理由: 
 -  テナント内のユーザー アカウントを AAD が検出できません。
@@ -669,7 +669,7 @@ PRT の取得時に AAD CloudAP プラグインによって記録されたログ
 2. 再現が完了したら、このツールを実行してシナリオを再現します。 プロセスを終了します。
 3. Fiddler トレースの場合、ポップアップ表示される証明書の要求を受け入れます。
 4. トレース ファイルを保護するためのパスワードの入力が、ウィザードによって求められます。 パスワードを指定します。
-5. 最後に、収集したすべてのログが格納されているフォルダーを開きます。 通常、%LOCALAPPDATA%\ElevatedDiagnostics\<numbers> のようなフォルダーにあります
+5. 最後に、収集したすべてのログが格納されているフォルダーを開きます。 通常、%LOCALAPPDATA%\ElevatedDiagnostics\numbers のようなフォルダーにあります
 7. 収集されたログはすべて latest.cab に含まれています。サポートに連絡して、その内容を伝えます。
 
 **ネットワーク トレース**

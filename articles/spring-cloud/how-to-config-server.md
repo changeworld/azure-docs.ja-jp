@@ -7,12 +7,12 @@ ms.author: karler
 author: karlerickson
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 123cc401d03a802c0a390f88cfc727893f165364
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 0de08976f0391c995004265ac1b1a33cf4a5c491
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015452"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835789"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -101,10 +101,11 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 | `default-label` | いいえ     | Git リポジトリの既定のラベルは、リポジトリの "*ブランチ名*"、"*タグ名*"、"*コミット ID*" のいずれかにする必要があります。 |
 | `search-paths`  | いいえ     | Git リポジトリのサブディレクトリを検索するために使用される文字列の配列。 |
 | `username`      | いいえ     | Git リポジトリ サーバーへのアクセスに使用されるユーザー名。Git リポジトリ サーバーで `Http Basic Authentication` がサポートされている場合は "_必須_"。 |
-| `password`      | いいえ     | Git リポジトリ サーバーへのアクセスに使用されるパスワード。Git リポジトリ サーバーで `Http Basic Authentication` がサポートされている場合は "_必須_"。 |
+| `password`      | いいえ     | Git リポジトリ サーバーへのアクセスに使用されるパスワードまたは個人用アクセス トークン。Git リポジトリ サーバーで `Http Basic Authentication` がサポートされている場合は "_必須_"。 |
 
 > [!NOTE]
-> 多くの `Git` リポジトリ サーバーで、HTTP 基本認証のパスワードではなく、トークンの使用がサポートされています。 GitHub などの一部のリポジトリでは、トークンを無期限に保持できます。 しかし、一部の Git リポジトリ サーバー (Azure DevOps を含む) では、強制的にトークンの有効期限を数時間に設定しています。 トークンの有効期限が切れるリポジトリでは、Azure Spring Cloud でトークンベースの認証を使用しないでください。
+> 多くの `Git` リポジトリ サーバーで、HTTP 基本認証のパスワードではなく、トークンの使用がサポートされています。 一部のリポジトリでは、トークンを無期限に保持できます。 しかし、一部の Git リポジトリ サーバー (Azure DevOps Server を含む) では、強制的にトークンの有効期限を数時間に設定しています。 トークンの有効期限が切れるリポジトリでは、Azure Spring Cloud でトークンベースの認証を使用しないでください。
+> Github のパスワード認証のサポートが削除されたため、Github ではパスワード認証の代わりに個人用アクセス トークンを使用する必要があります。 詳細については、[トークン認証](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)に関するページをご覧ください。
 
 ### <a name="git-repositories-with-pattern"></a>パターンを使用する Git リポジトリ
 
@@ -122,7 +123,7 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 | `repos."default-label"`            | いいえ             | Git リポジトリの既定のラベルは、リポジトリの "*ブランチ名*"、"*タグ名*"、"*コミット ID*" のいずれかにする必要があります。 |
 | `repos."search-paths`"             | いいえ             | Git リポジトリのサブディレクトリを検索するために使用される文字列の配列。 |
 | `repos."username"`                 | いいえ             | Git リポジトリ サーバーへのアクセスに使用されるユーザー名。Git リポジトリ サーバーで `Http Basic Authentication` がサポートされている場合は "_必須_"。 |
-| `repos."password"`                 | いいえ             | Git リポジトリ サーバーへのアクセスに使用されるパスワード。Git リポジトリ サーバーで `Http Basic Authentication` がサポートされている場合は "_必須_"。 |
+| `repos."password"`                 | いいえ             | Git リポジトリ サーバーへのアクセスに使用されるパスワードまたは個人用アクセス トークン。Git リポジトリ サーバーで `Http Basic Authentication` がサポートされている場合は "_必須_"。 |
 | `repos."private-key"`              | いいえ             | Git リポジトリにアクセスするための SSH 秘密キー。URI が *git@* または *ssh://* で始まる場合は "_必須_"。 |
 | `repos."host-key"`                 | いいえ             | Git リポジトリ サーバーのホスト キーには、`host-key-algorithm` で対応されているアルゴリズム プレフィックスを含めないでください。 |
 | `repos."host-key-algorithm"`       | いいえ             | ホスト キー アルゴリズム。*ssh-dss*、*ssh-rsa*、*ecdsa-sha2-nistp256*、*ecdsa-sha2-nistp384*、*ecdsa-sha2-nistp521* のいずれかを指定する必要があります。 `host-key` が存在する場合にのみ "*必須*"。 |
@@ -167,7 +168,8 @@ SSH を使用するプライベート Git リポジトリを設定するため�
     ![[認証の編集] ペインの基本認証](media/spring-cloud-tutorial-config-server/basic-auth.png)
 
     > [!CAUTION]
-    > GitHub など、一部の Git リポジトリ サーバーでは、**基本認証** に *personal-token* や *access-token* (パスワードなど) が使用されます。 その種のトークンは、有効期限切れになることがないため、Azure Spring Cloud でパスワードとして使用できます。 ただし、Bitbucket や Azure DevOps などの他の Git リポジトリ サーバーでは、*access-token* が 1 時間または 2 時間以内に期限切れになります。 つまり、それらのリポジトリ サーバーを Azure Spring Cloud で使用する場合、このオプションは非現実的です。
+    > 一部の Git リポジトリ サーバーでは、**基本認証** に *personal-token* や *access-token* (パスワードなど) が使用されます。 その種のトークンは、有効期限切れになることがないため、Azure Spring Cloud でパスワードとして使用できます。 ただし、Bitbucket や Azure DevOps Server などの他の Git リポジトリ サーバーでは、*access-token* が 1 時間または 2 時間以内に期限切れになります。 つまり、それらのリポジトリ サーバーを Azure Spring Cloud で使用する場合、このオプションは非現実的です。
+    > Github のパスワード認証のサポートが削除されたため、Github ではパスワード認証の代わりに個人用アクセス トークンを使用する必要があります。 詳細については、[トークン認証](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)に関するページをご覧ください。
 
     * **SSH**: **[既定のリポジトリ]** セクションの **[URI]** ボックスにリポジトリの URI を貼り付けてから、 **[認証]** ("鉛筆" アイコン) ボタンを選択します。 **[認証の編集]** ペインの **[認証の種類]** ボックスの一覧から **[SSH]** を選択し、**秘密キー** を入力します。 必要に応じて、**ホスト キー** と **ホスト キー アルゴリズム** を指定します。 Config Server リポジトリには公開キーを含めるようにしてください。 **[OK]** を選択し、 **[適用]** を選択して、Config Server インスタンスの設定を完了します。
 

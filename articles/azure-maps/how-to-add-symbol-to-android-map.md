@@ -1,20 +1,20 @@
 ---
 title: Android マップにシンボル レイヤーを追加する | Microsoft Azure Maps
 description: マップにマーカーを追加する方法について説明します。 データ ソースのポイントベースのデータを含むシンボル レイヤーを、Azure Maps Android SDK を使用して追加する例を参照してください。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: f2aaf03f4314386615fabfe65ca47132543577fa
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 5d0b2e3f04f56b8a379ddbf36c2d9d20dad09d83
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091701"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429768"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>シンボル レイヤーを追加する (Android SDK)
 
@@ -228,7 +228,7 @@ val layer = SymbolLayer(
 
 Azure Maps Android SDK には、既定のマーカー アイコンの定義済みの色のバリエーション セットが付属しています。 たとえば、`marker-red` をシンボル レイヤーの `iconImage` オプションに渡して、そのレイヤーにマーカー アイコンの赤色のバージョンを表示することができます。
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,

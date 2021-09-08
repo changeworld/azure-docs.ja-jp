@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8e883c92e2ce8d64c30aeb6c8a747c18935d36e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 525ae8e08965a63b79ed23a706795472743a00c2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748908"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222549"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -101,14 +101,19 @@ New Supported Version List
 
 たとえば、*kube-apiserver* が *1.17* の場合は、その *kube-apiserver* と共に `kubectl` の *1.16* から *1.18* を使用できます。
 
+`kubectl` をインストールまたは最新バージョンに更新するには、以下を実行します。
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-`kubectl` のバージョンをインストールまたは更新するには、`az aks install-cli` を実行します。
+```azurecli
+az aks install-cli
+```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-`kubectl` のバージョンをインストールまたは更新するには、[Install-AzAksKubectl][install-azakskubectl] を実行します。
-
+```powershell
+Install-AzAksKubectl -Version latest
+```
 ---
 
 ## <a name="release-and-deprecation-process"></a>リリースと非推奨のプロセス
@@ -252,5 +257,4 @@ AKS でサポートされていないマイナー バージョンについては
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az_aks_get_versions
 [preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[install-azakskubectl]: /powershell/module/az.aks/install-azakskubectl
 [get-azaksversion]: /powershell/module/az.aks/get-azaksversion

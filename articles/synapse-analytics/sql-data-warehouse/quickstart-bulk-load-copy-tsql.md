@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 2b41342ab7d267c37b8e68fdbcaa9d570034ac17
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e23d2f82da833c4613a243bdef268d3fd44aa92c
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568439"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538293"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>クイック スタート:COPY ステートメントを使用してデータを一括読み込みする
 
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>次のステップ
 
-- データ読み込みのベスト プラクティスについては、[データ読み込みのベスト プラクティス](./guidance-for-loading-data.md)に関するページを参照してください。
+- データ読み込みのベスト プラクティスについては、[データ読み込みのベスト プラクティス](../sql/data-loading-best-practices.md)に関するページを参照してください。
 - データ読み込みのリソースを管理する方法については、[ワークロードの分離](./quickstart-configure-workload-isolation-tsql.md)に関するページを参照してください。

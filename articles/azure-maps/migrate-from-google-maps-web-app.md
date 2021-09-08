@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Google マップから Web アプリを移行する | Microsoft Azure Maps
 description: Google Maps から Microsoft Azure Maps に Web アプリを移行する方法についてのチュートリアルです。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: f034d5e4edd1e99605f3620cdf99084ae8c4ea86
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8d429785c87b7dbbbd4ea8eb4c6a24fea021b214
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437213"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439562"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>チュートリアル:Google Maps から Web アプリを移行する
 

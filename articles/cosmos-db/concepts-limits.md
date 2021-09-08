@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: a33b7fb26b06b9a89b7e4f16699441fd9a5bbd0b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 17ec535c03cd007a44fdd0b9633667f0e4343181
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738375"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034536"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -284,6 +284,9 @@ Cosmos DB の中心概念である[グローバル分散](distribute-data-global
 * [Azure Cosmos DB Cassandra API を使ってみる](cassandra/manage-data-dotnet.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](table/create-table-dotnet.md)
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)

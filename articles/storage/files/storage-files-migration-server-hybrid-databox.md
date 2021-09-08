@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 5b888ca7655f4de267ed89229559e4b0b1785f6c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 1fc3f423c1ca02c6acb995ab4469d7d33607000f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113799498"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255542"
 ---
 # <a name="migrate-data-offline-to-azure-file-sync-with-azure-data-box"></a>Azure Data Box を使用して Azure File Sync にオフラインでデータを移行する
 
@@ -95,11 +95,11 @@ ms.locfileid: "113799498"
 
 ## <a name="phase-4-copy-files-onto-your-data-box"></a>フェーズ 4: ファイルを Data Box にコピーする
 
-Data Box が届いたら、NAS アプライアンスから認識できる経路にそれを設定する必要があります。 注文した Data Box の種類のセットアップ ドキュメントに従ってください。
+Data Box が届いたら、NAS アプライアンスから認識できる経路にそれをセットアップする必要があります。 注文した Data Box の種類のセットアップ ドキュメントに従ってください。
 
-* [Data Box を設定します](../../databox/data-box-quickstart-portal.md)。
-* [Data Box Disk を設定します](../../databox/data-box-disk-quickstart-portal.md)。
-* [Data Box Heavy を設定します](../../databox/data-box-heavy-quickstart-portal.md)。
+* [Data Box のセットアップ](../../databox/data-box-quickstart-portal.md)。
+* [Data Box Disk のセットアップ](../../databox/data-box-disk-quickstart-portal.md)。
+* [Data Box Heavy のセットアップ](../../databox/data-box-heavy-quickstart-portal.md)。
 
 Data Box の種類によっては、Data Box コピー ツールが使用できる場合があります。 現時点では、これらは完全な忠実性でファイルをコピーするものではないため、Azure ファイル共有への移行にはお勧めしません。 代わりに Robocopy を使用してください。
 
@@ -108,19 +108,19 @@ Data Box が届くと、注文時に指定したストレージ アカウント�
 * ファイルが Premium の Azure ファイル共有に配置される場合は、Premium の "ファイル ストレージ" のストレージ アカウントごとに 1 つの SMB 共有が存在します。
 * ファイルが Standard ストレージ アカウントに配置される場合、Standard の (GPv1 および GPv2) ストレージ アカウントごとに 3 つの SMB 共有が存在します。 `_AzFiles` で終わるファイル共有のみが、移行に関連します。 すべてのブロックおよびページの BLOB 共有を無視します。
 
-Azure Data Box のドキュメントの手順に従います。
+Azure Data Box のドキュメントの手順に従ってください。
 
 1. [Data Box に接続します](../../databox/data-box-deploy-copy-data.md)。
 1. データを Data Box にコピーします。
 1. [Azure にアップロードするために Data Box を準備します](../../databox/data-box-deploy-picked-up.md)。
 
-リンク先の Data Box ドキュメントには、Robocopy コマンドが指定されています。 このコマンドは、ファイルとフォルダーの完全な忠実性の保持には適していません。 代わりに次のコマンドを使用します。
+リンク先の Data Box ドキュメントには、Robocopy コマンドが指定されています。 このコマンドは、ファイルとフォルダーの完全な忠実性を維持するのには適していません。 代わりに次のコマンドを使用します。
 
 [!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-5-deploy-the-azure-file-sync-cloud-resource"></a>フェーズ 5: Azure File Sync クラウド リソースをデプロイする
 
-このガイドの手順を続行する前に、すべてのファイルが適切な Azure ファイル共有に到達するまで待ちます。 Data Box データの発送と取り込みの処理には時間がかかります。
+このガイドを続行する前に、すべてのファイルが適切な Azure ファイル共有に到達するまで待ちます。 Data Box データの発送と取り込みの処理には時間がかかります。
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
@@ -160,7 +160,7 @@ Azure Data Box のドキュメントの手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事は、詳細なオプションとベスト プラクティスを理解するうえで役立ちます。 また、トラブルシューティングに役立つ情報も提供します。 これらの記事には、必要に応じて [Azure ファイル共有のドキュメント](storage-files-introduction.md)へのリンクが含まれています。
+Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事は、詳細なオプションおよびベスト プラクティスの理解に役立ちます。 また、トラブルシューティングに役立つ情報も提供します。 これらの記事には、必要に応じて [Azure ファイル共有のドキュメント](storage-files-introduction.md)へのリンクが含まれています。
 
 * [移行の概要](storage-files-migration-overview.md)
 * [Azure File Sync のデプロイの計画](../file-sync/file-sync-planning.md)

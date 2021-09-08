@@ -13,14 +13,14 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7874224304f5466c8b166c1e5bd709b915a5d325
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 44b7d541809bc3bd8657fcc4ec626e35ef0b19c1
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322360"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829453"
 ---
-# <a name="embedded-sing-up-or-sign-in-experience"></a>埋め込みのサインアップまたはサインイン エクスペリエンス
+# <a name="embedded-sign-up-or-sign-in-experience"></a>埋め込みのサインアップまたはサインイン エクスペリエンス
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 

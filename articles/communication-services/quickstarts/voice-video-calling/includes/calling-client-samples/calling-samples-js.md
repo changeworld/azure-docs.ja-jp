@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 06/30/2021
 ms.author: rifox
-ms.openlocfilehash: b251218593ddef69fc38520b5ff9e46ec7c8291f
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 1bba08e751afa5e3cd5c51401ca92e3b5bd9def1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "123078473"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123454275"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,6 +29,7 @@ npm install @azure/communication-calling --save
 Communication Services Web Calling SDK は、`https` 経由で使用する必要があります。 ローカル開発の場合は、`localhost` またはローカルの "file:" を使用します。
 
 ## <a name="documentation-support"></a>ドキュメントによるサポート
+- [リリース ノート](https://github.com/Azure/Communication/blob/master/releasenotes/acs-javascript-calling-library-release-notes.md)
 - [問題やバグを GitHub で報告する](https://github.com/Azure/Communication/issues)
 - [サンプル アプリケーション](../../../../samples/overview.md)
 - [API リファレンス](/javascript/api/azure-communication-services/@azure/communication-calling/?preserve-view=true&view=azure-communication-services-js)

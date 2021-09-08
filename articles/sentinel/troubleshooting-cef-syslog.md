@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2021
 ms.author: bagol
-ms.openlocfilehash: 141d26871db37375968e86be9374d41383d0d236
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 18166bc22f34fe8bd4757ffd3a0d468c6a75b23c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430020"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122868406"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>CEF または Syslog データ コネクタのトラブルシューティング
 
@@ -299,7 +299,7 @@ Syslog サーバー (rsyslog または syslog-ng) は、関連する構成ファ
 
 Azure Sentinel に取り込むファシリティと重要度のログ レベルに関する詳細を追加するようにしてください。 構成プロセスには約 20 分かかる場合があります。
 
-詳細については、[デプロイ スクリプトの説明](connect-cef-agent.md#deployment-script-explained)に関するページと、[Azure portal で Syslog を構成する](/azure/azure-monitor/agents/data-sources-syslog)方法に関するページを参照してください。
+詳細については、[デプロイ スクリプトの説明](connect-cef-agent.md#deployment-script-explained)に関するページと、[Azure portal で Syslog を構成する](/azure/azure-monitor/agents/data-sources-syslog.md)方法に関するページを参照してください。
 
 
 **たとえば、rsyslog サーバーの場合** は、次のコマンドを実行して、Syslog 転送の現在の設定を表示し、構成ファイルへの変更を確認します。

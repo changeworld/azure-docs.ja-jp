@@ -1,15 +1,15 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: lajanuar
-ms.openlocfilehash: 46ff694c8f49e09316da0be63fe0060424b425b5
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 13a2f40b978442c45fcc6c2574181534c8b4acd2
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071849"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543510"
 ---
 GitHub で、すべての <a href="https://aka.ms/speech/github-python">Speech SDK Python サンプル</a>を表示またはダウンロードします。 

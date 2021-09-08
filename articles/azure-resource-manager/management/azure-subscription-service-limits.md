@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: 952b5521a16ebc955e71319efe1f0b2bc48e47a9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d3af7c035518ace6abca01b9e9e3867c49d4330
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014616"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099386"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -335,10 +335,6 @@ Media Services v2 (レガシ) に固有の制限については、「[Media Serv
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
-## <a name="purview-limits"></a>Purview の制限
-
-Azure Purview のクォータの最新の値については、 [Azure Purview のクォータに関するページ](../../purview/how-to-manage-quotas.md)を参照してください
-
 ### <a name="traffic-manager-limits"></a>Traffic Manager の制限
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
@@ -362,6 +358,10 @@ Azure Purview のクォータの最新の値については、 [Azure Purview �
 ## <a name="notification-hubs-limits"></a>Notification Hubs の制限
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
+
+## <a name="purview-limits"></a>Purview の制限
+
+Azure Purview のクォータの最新の値については、[Azure Purview のクォータに関するページ](../../purview/how-to-manage-quotas.md)を参照してください。
 
 ## <a name="service-bus-limits"></a>Service Bus の制限
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 05/10/2021
-ms.openlocfilehash: 1bbbf7266fdcac552972f563e0d958bf035de984
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 68c657b7e8e045b8756bc2db8de2b4024b7530b8
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751348"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256495"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -411,7 +411,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - 同じ Azure リージョン内の 2 つのサーバーまたはインスタンス間で、フェールオーバー グループを作成することはできません。
 - フェールオーバー グループの名前を変更することはできません。 グループを削除し、別の名前で再作成する必要があります。
 - データベース名の変更は、フェールオーバー グループ内のインスタンスに対してはサポートされていません。 データベース名を変更するには、フェールオーバー グループを一時的に削除する必要があります。
-- システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。
+- システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 したがって、システム データベースのオブジェクトに依存するシナリオでは、オブジェクトをセカンダリ インスタンスで手動で作成する必要があります。また、プライマリ インスタンスで行われた変更があれば、手動で同期を保つ必要があります。 唯一の例外は SQL Managed Instance のサービス マスター キー (SMK) で、これはフェールオーバー グループの作成時にセカンダリ インスタンスに自動的にレプリケートされます。 ただし、プライマリ インスタンスでの SMK のその後の変更は、セカンダリ インスタンスにレプリケートされません。
 
 ## <a name="programmatically-managing-failover-groups"></a>フェールオーバー グループのプログラムによる管理
 

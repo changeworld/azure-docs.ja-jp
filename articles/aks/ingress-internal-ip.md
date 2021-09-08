@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで内部のプライ
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: 8f500da443489619111200542dfc69a3850a4ed2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b95ae084fa3dd5b2d5308dece2612ab9cbe99a82
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751514"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099080"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部の仮想ネットワークにイングレス コントローラーを作成する
 
@@ -31,11 +31,13 @@ ms.locfileid: "121751514"
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
-また、この記事では、ACR が統合された既存の AKS クラスターがあることを前提としています。 ACR が統合された AKS クラスターを作成する方法の詳細については、[Azure Kubernetes Service からの Azure Container Registry による認証][aks-integrated-acr]に関する記事を参照してください。
+また、このアーティクルでは、[統合された ACR][aks-integrated-acr] を持つ既存の AKS クラスターがあることを前提としています。
 
 ## <a name="import-the-images-used-by-the-helm-chart-into-your-acr"></a>Helm Chart で使用されるイメージを ACR にインポートする
 
-この記事では、3 つのコンテナー イメージに依存する [NGINX イングレス コントローラー Helm Chart][ingress-nginx-helm-chart] を使用します。 これらのイメージを ACR にインポートするには、`az acr import` を使用します。
+プライベート ネットワークで AKS クラスターを使用する場合、クラスター内で使用されるコンテナー イメージの出所を管理する必要がよくあります。 詳細は、「[Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス][aks-container-best-practices]」を参照してください。  この要件をサポートし、完全性を確保するために、このアーティクルの例は、[NGINX イングレス コントローラーの Helm グラフ][ingress-nginx-helm-chart]で使用される 3 つのコンテナー イメージを ACR にインポートすることに依存しています。
+
+これらのイメージを ACR にインポートするには、`az acr import` を使用します。
 
 ```azurecli
 REGISTRY_NAME=<REGISTRY_NAME>
@@ -416,3 +418,4 @@ kubectl delete namespace ingress-basic
 [ingress-nginx-helm-chart]: https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
 [aks-integrated-acr]: cluster-container-registry-integration.md?tabs=azure-cli#create-a-new-aks-cluster-with-acr-integration
 [acr-helm]: ../container-registry/container-registry-helm-repos.md
+[aks-container-best-practices]: operator-best-practices-container-image-management.md

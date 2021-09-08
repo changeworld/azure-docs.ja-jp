@@ -5,29 +5,38 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: ccee8017bce3109cc6d47bbeb225ca7c1edf5d66
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: d6d5b5bf1cba2ebb2def30b15f3a70dea91e5ff7
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201944"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272603"
 ---
 # <a name="design-your-private-link-setup"></a>Private Link のセットアップ設計
 
-Azure Monitor Private Link のセットアップを設定する前に、ネットワーク トポロジ、特に DNS ルーティング トポロジを検討してください。
+Azure Monitor Private Link を設定する前に、ネットワーク トポロジ、特に DNS ルーティング トポロジを検討してください。
 「[しくみ](./private-link-security.md#how-it-works)」で説明されているように、Private Link の設定はすべての Azure Monitor リソースへのトラフィックに影響します。 これは特に、Application Insights リソースに当てはまります。 この設定は、プライベート エンドポイントに接続されているネットワークだけでなく、同じ DNS を共有している他のすべてのネットワークにも影響します。
 
-> [!NOTE]
-> 最もシンプルで最も安全なのは次のアプローチです。
-> 1. 単一のプライベート エンドポイントと単一の AMPLS を指定して、単一の Private Link 接続を作成します。 ネットワークがピアリングされている場合は、共有 (またはハブ) VNet 上に Private Link 接続を作成します。
-> 2. "*すべての*" Azure Monitor リソース (Application Insights コンポーネントおよび Log Analytics ワークスペース) をその AMPLS に追加します。
-> 3. ネットワーク エグレス トラフィックを可能な限りブロックします。
+最もシンプルで最も安全なのは次のアプローチです。
+1. 単一のプライベート エンドポイントと単一の AMPLS を指定して、単一の Private Link 接続を作成します。 ネットワークがピアリングされている場合は、共有 (またはハブ) VNet 上に Private Link 接続を作成します。
+2. "*すべての*" Azure Monitor リソース (Application Insights コンポーネントおよび Log Analytics ワークスペース) をその AMPLS に追加します。
+3. ネットワーク エグレス トラフィックを可能な限りブロックします。
 
-何らかの理由で単一の Private Link と単一の Azure Monitor Private Link Scope (AMPLS) を使用できない場合、次善の方法は、分離ネットワーク用に分離された Private Link 接続を作成することです。 スポーク VNet を使用している (または連携できる) 場合は、「[Azure のハブスポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)」のガイダンスに従います。 次に、関連するスポーク VNet で、Private Link の設定を個別にセットアップします。 DNS ゾーンを他のスポーク ネットワークと共有すると DNS がオーバーライドされるため、**必ず DNS ゾーンも分離** してください。
 
 ## <a name="plan-by-network-topology"></a>ネットワーク トポロジ別の計画
-### <a name="hub-spoke-networks"></a>ハブスポーク ネットワーク
-ハブスポーク トポロジでは、ハブ (メイン) VNet に Private Link を設定し、各スポーク VNet には設定しないことにより、DNS オーバーライドの問題を回避できます。 このセットアップは特に、スポーク VNet で使用される Azure Monitor リソースが共有されている場合に合理的です。 
+
+### <a name="guiding-principle-avoid-dns-overrides-by-using-a-single-ampls"></a>基本原則: 単一の AMPLS を使用して DNS のオーバーライドを回避する
+一部のネットワークは、複数の VNet または接続された他のネットワークで構成されます。 これらのネットワークで同じ DNS を共有している場合は、これらのいずれかで Private Link を設定すると、DNS が更新され、すべてのネットワークのトラフィックに影響します。
+
+次の図では、VNet 10.0.1.x が最初に AMPLS1 に接続され、Azure Monitor のグローバル エンドポイントがその範囲の IP にマップされます。 その後、VNet 10.0.2.x が AMPLS2 に接続され、"**同じグローバル エンドポイント**" の DNS マッピングがその範囲の IP でオーバーライドされます。 これらの VNet はピアリングされていないため、最初の VNet はこれらのエンドポイントに接続できません。
+
+この競合を回避するには、DNS ごとに AMPLS オブジェクトを 1 つだけ作成します。
+
+![複数の VNet での DNS オーバーライドの図](./media/private-link-security/dns-overrides-multiple-vnets.png)
+
+
+### <a name="hub-and-spoke-networks"></a>ハブアンドスポーク ネットワーク
+ハブアンドスポーク ネットワークでは、各スポーク VNet 上ではなくハブ (メイン) ネットワーク上に設定された単一の Private Link 接続を使用する必要があります。 
 
 ![ハブアンドスポークのシングル PE](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
@@ -35,17 +44,37 @@ Azure Monitor Private Link のセットアップを設定する前に、ネッ�
 > たとえば、各 VNet が限られた一連の監視リソースにアクセスできるようにするために、スポーク VNet 用に個別の Private Link を作成することをお勧めします。 このような場合は、VNet ごとに専用のプライベート エンドポイントと AMPLS を作成できますが、**DNS がオーバーライドされないように、同じ DNS ゾーンが共有されていないことも確認する必要があります**。
 
 ### <a name="peered-networks"></a>ピアリングされたネットワーク
-ネットワーク ピアリングは、ハブスポーク以外のさまざまなトポロジで使用されます。 このようなネットワークは、互いの IP アドレスに到達でき、多くの場合は同一の DNS を共有しています。 このような場合、推奨事項はハブスポークに似ています。他のすべての (関連する) ネットワークから到達される単一のネットワークを選択し、そのネットワーク上で Private Link 接続を設定します。 複数のプライベート エンドポイントや AMPLS オブジェクトを作成しないでください。これは、最終的には DNS に含まれる最後のセットのみが適用されるためです。
+ネットワーク ピアリングは、ハブスポーク以外のさまざまなトポロジで使用されます。 このようなネットワークは、互いの IP アドレスに到達でき、多くの場合は同一の DNS を共有しています。 このような場合は、もう一度、他のネットワークからアクセス可能なネットワーク上に単一のプライベート リンクを作成することをお勧めします。 複数のプライベート エンドポイントや AMPLS オブジェクトを作成することは避けてください。これは、最終的には DNS に含まれる最後のセットのみが適用されるためです。
 
 ### <a name="isolated-networks"></a>分離ネットワーク
-#<a name="if-your-networks-arent-peered-you-must-also-separate-their-dns-in-order-to-use-private-links-once-thats-done-you-can-create-a-private-link-for-one-or-many-network-without-affecting-traffic-of-other-networks-that-means-creating-a-separate-private-endpoint-for-each-network-and-a-separate-ampls-object-your-ampls-objects-can-link-to-the-same-workspacescomponents-or-to-different-ones"></a>ネットワークがピアリングされていない場合は、**プライベート リンクを使用するために DNS も分離する必要があります**。 分離が完了したら、他のネットワークのトラフィックには影響を与えずに、1 つの (または多くの) ネットワークに対してプライベート リンクを作成できます。 これは、ネットワークごとに個別のプライベート エンドポイントと、個別の AMPLS オブジェクトを作成することを意味します。 AMPLS オブジェクトは、同じワークスペースやコンポーネントにリンクすることも、異なるワークスペースやコンポーネントにリンクすることもできます。
+ネットワークがピアリングされていない場合は、**プライベート リンクを使用するために DNS も分離する必要があります**。 その後、ネットワークごとに個別のプライベート エンドポイントと、個別の AMPLS オブジェクトを作成します。 AMPLS オブジェクトは、同じワークスペースやコンポーネントにリンクすることも、異なるワークスペースやコンポーネントにリンクすることもできます。
 
 ### <a name="testing-locally-edit-your-machines-hosts-file-instead-of-the-dns"></a>ローカルでのテスト: DNS ではなくマシンのホスト ファイルを編集する 
-オール オア ナッシングの動作のローカル バイパスとして、Private Link のレコードで DNS を更新するのではなく、選択したマシンのホスト ファイルを編集して、それらのマシンのみが Private Link エンドポイントに要求を送信するようにすることができます。
+ネットワーク上の他のクライアントに影響を与えずにプライベート リンクをローカルでテストするには、プライベート エンドポイントを作成するときに DNS を更新しないようにしてください。 代わりに、お使いのマシン上の hosts ファイルを編集して、Private Link エンドポイントに要求が送信されるようにします。
 * Private Link を設定しますが、プライベート エンドポイントに接続する際は、DNS と自動統合 **しない** ことを選択します (手順 5b)。
 * マシンのホスト ファイルで関連するエンドポイントを構成します。 マッピングが必要な Azure Monitor エンドポイントを確認するには、「[エンドポイントの DNS 設定の確認](./private-link-configure.md#reviewing-your-endpoints-dns-settings)」を参照してください。
 
 このアプローチは、運用環境にはお勧めしません。
+
+## <a name="control-how-private-links-apply-to-your-networks"></a>プライベート リンクをネットワークに適用する方法を制御する
+(2021 年 8 月に導入された) Private Link アクセス モードを使用すると、プライベート リンクがネットワーク トラフィックに与える影響を制御できます。 これらの設定は、AMPLS オブジェクト (接続されているすべてのネットワークに影響が及びます)、またはそこに接続されている特定のネットワークに適用できます。
+
+適切なアクセス モードを選択すると、ネットワーク トラフィックに悪影響が及びます。 これらの各モードは、インジェストとクエリに対して個別に設定できます。
+
+* プライベートのみ - VNet は、Private Link リソース (AMPLS 内のリソース) のみに到達できます。 これは最も安全な作業モードであり、データ流出を防ぎます。 これを実現するために、AMPLS の外部にある Azure Monitor リソースへのトラフィックはブロックされます。
+![AMPLS の "プライベートのみ" アクセス モードの図](./media/private-link-security/ampls-private-only-access-mode.png)
+* オープン - VNet は、Private Link リソースと、AMPLS にないリソースの両方に到達できます (それらが[公衆ネットワークからのトラフィックを受け入れる場合](./private-link-design.md#control-network-access-to-your-resources))。 "オープン" アクセス モードでは、データ流出を防ぐことはできませんが、Private Link の他の恩恵が得られます。つまり、Private Link リソースへのトラフィックは、プライベート エンドポイントを介して送信され、検証され、Microsoft バックボーン経由で送信されます。 "オープン" モードは、混合モードの作業 (一部のリソースにパブリックにアクセスし、他のリソースにプライベート リンクを介してアクセスする)、または段階的なオンボーディング プロセス中に役立ちます。
+![AMPLS の "オープン" アクセス モードの図](./media/private-link-security/ampls-open-access-mode.png) アクセス モードは、インジェストとクエリに対して個別に設定されます。 たとえば、インジェストには "プライベートのみ" モードを設定しつつ、クエリには "オープン" モードを設定することができます。
+
+> [!NOTE]
+> アクセス モードを選択する場合は注意してください。"プライベートのみ" アクセス モードを使用すると、AMPLS にないリソースへのトラフィックが、サブスクリプションやテナントに関係なく、同じ DNS を共有するすべてのネットワークでブロックされます。 すべての Azure Monitor リソースを AMPLS に追加できない場合は、"オープン" モードを使用し、適切なリソースを選んで AMPLS に追加することをお勧めします。 すべての Azure Monitor リソースを AMPLS に追加した後で "プライベートのみ" モードに切り替えると、最大のセキュリティを確保できます。
+
+### <a name="setting-access-modes-for-specific-networks"></a>特定のネットワークのアクセス モードの設定
+AMPLS リソースに設定されたアクセス モードは、すべてのネットワークに影響します。ただし、特定のネットワークに対してこれらの設定をオーバーライドすることができます。
+
+次の図では、VNet1 は "オープン" モードを使用し、VNet2 は "プライベートのみ" モードを使用しています。 その結果、VNet1 からの要求は、Workspace1 と Component2 にはプライベート リンク経由で到達でき、Component3 にはプライベート リンクを経由せずに到達できます (それが[公衆ネットワークからのトラフィックを受け入れる場合](./private-link-design.md#control-network-access-to-your-resources))。 これに対して、VNet2 の要求は Component3 に到達できません。 
+![混合アクセス モードの図](./media/private-link-security/ampls-mixed-access-modes.png)
+
 
 ## <a name="consider-ampls-limits"></a>AMPLS の制限を考慮する
 AMPLS オブジェクトには次の制限があります。
@@ -64,9 +93,33 @@ AMPLS オブジェクトには次の制限があります。
 
 
 ## <a name="control-network-access-to-your-resources"></a>リソースへのネットワーク アクセスを制御する
-Log Analytics ワークスペースや Application Insights コンポーネントは、公衆ネットワーク、つまりリソースの AMPLS に接続されていないネットワークからのアクセスを受け入れるように設定することも、ブロックするように設定することもできます。
-この細分性により、ワークスペースごとにニーズに応じてアクセスを設定できます。 たとえば、ネットワークに接続された Private Link (つまり、特定の VNet) 経由のインジェストのみを受け入れ、パブリックであれプライベートであれすべてのネットワークからのクエリを受け入れるように選択することができます。 公衆ネットワークからのクエリをブロックすると、接続されている AMPLS の外部のクライアント (マシン、SDK など) はそのリソース内のデータに対してクエリを実行できないことにご注意ください。 このデータには、ログ、メトリック、ライブ メトリック ストリームへのアクセスと、ブック、ダッシュボード、クエリ API ベースのクライアント エクスペリエンス、Azure portal の分析情報などの上に構築されたエクスペリエンスが含まれます。 Azure portal の外部で実行され、Log Analytics データに対してクエリを実行するエクスペリエンスも、この設定の影響を受けます。
+Log Analytics ワークスペースまたは Application Insights コンポーネントは、次のように設定できます。
+* 公衆ネットワーク (リソースの AMPLS に接続されていないネットワーク) からのインジェストを受け入れるかブロックする。
+* 公衆ネットワーク (リソースの AMPLS に接続されていないネットワーク) からのクエリを受け入れるかブロックする。
 
+この細分性により、ワークスペースごとにニーズに応じてアクセスを設定できます。 たとえば、インジェストは Private Link で接続されたネットワーク (つまり、特定の VNet) 経由でのみ受け入れつつ、クエリは公衆であれプライベートであれあらゆるネットワークから受け入れるように選択することができます。 
+
+公衆ネットワークからのクエリをブロックすると、接続されている AMPLS の外部のクライアント (マシン、SDK など) はそのリソース内のデータに対してクエリを実行できなくなります。 このデータには、ログ、メトリック、およびライブ メトリック ストリームが含まれます。 公衆ネットワークからのクエリをブロックすると、これらのクエリを実行するすべてのエクスペリエンス (ブック、ダッシュボード、Azure portal 内の分析情報、Azure portal の外部から実行されるクエリなど) に影響が及びます。
+
+### <a name="exceptions"></a>例外
+
+#### <a name="diagnostic-logs"></a>診断ログ
+[[診断設定]](../essentials/diagnostic-settings.md) を使用してワークスペースにアップロードされたログとメトリックは、セキュリティで保護されたプライベート Microsoft チャネルを経由し、これらの設定によって制御されることはありません。
+
+#### <a name="azure-resource-manager"></a>Azure Resource Manager
+前に説明したようなアクセスの制限は、リソースのデータに適用されます。 ただし、これらのアクセス設定をオンまたはオフにするなどの構成の変更は、Azure Resource Manager で管理されます。 これらの設定を制御するには、適切なロール、アクセス許可、ネットワーク制御、監査を使用して、リソースへのアクセスを制限する必要があります。 詳細については、[Azure Monitor のロール、アクセス許可、およびセキュリティ](../roles-permissions-security.md)に関するページを参照してください
+
+> [!NOTE]
+> Azure Resource Management (ARM) API を介して送信されたクエリでは、Azure Monitor プライベート リンクを使用できません。 これらのクエリは、ターゲット リソースが公衆ネットワークからのクエリを許可している ([ネットワークの分離] ブレードまたは [CLI を使用](./private-link-configure.md#set-resource-access-flags)して設定します) 場合にのみ実行できます。
+>
+> 次のエクスペリエンスについては、ARM API を介してクエリが実行されることが確認されています。
+> * Sentinel
+> * LogicApp コネクタ
+> * Update Management ソリューション
+> * ソリューションの変更の追跡
+> * VM Insights
+> * Container Insights
+> * Log Analytics の [ワークスペースの概要] ブレード (ソリューション ダッシュボードを表示)
 
 ## <a name="application-insights-considerations"></a>Application Insights の考慮事項
 * 監視対象のワークロードをホストしているリソースをプライベート リンクに追加する必要があります。 例については、「[Azure Web アプリでプライベート エンドポイントを使用する](../../app-service/networking/private-endpoint.md)」を参照してください。
@@ -97,7 +150,7 @@ Log Analytics ワークスペースや Application Insights コンポーネン�
 独自のストレージ アカウントを接続する方法の詳細については、[ログ取り込み用の顧客所有ストレージ アカウント](private-storage.md)に関する記事を参照してください。
 
 ### <a name="automation"></a>Automation
-Update Management、Change Tracking、Inventory などの、Automation アカウントを必要とする Log Analytics ソリューションを使用する場合は、Automation アカウント用に個別の Private Link を設定する必要もあります。 詳細は、「[Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する](../../automation/how-to/private-link-security.md)」を参照してください。
+Automation アカウント (Update Management、Change Tracking、Inventory など) を必要とする Log Analytics ソリューションを使用する場合は、Automation アカウント用にプライベート リンクを作成する必要もあります。 詳細は、「[Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する](../../automation/how-to/private-link-security.md)」を参照してください。
 
 > [!NOTE]
 > 一部の製品や Azure portal エクスペリエンスでは Azure Resource Manager を介してデータに対してクエリが実行されるため、Private Link 設定がその Resource Manager にも適用されていない限り、Private Link 経由ではデータに対してクエリを実行できません。 これを回避するには、「[リソースへのネットワーク アクセスの制御](./private-link-design.md#control-network-access-to-your-resources)」の説明に従い、公衆ネットワークからのクエリを受け入れるようにリソースを構成できます (インジェストは Private Link ネットワークのみに制限しておくことができます)。

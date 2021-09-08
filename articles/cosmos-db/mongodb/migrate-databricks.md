@@ -6,13 +6,13 @@ ms.author: shwetn
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/29/2021
-ms.openlocfilehash: 437dd6f1b47694d9abb32d4e72ecc23a175d9337
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 3af5168a664fe18f9fc57877aee864f89ffa4d03
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779527"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029913"
 ---
 # <a name="migrate-data-from-mongodb-to-an-azure-cosmos-db-api-for-mongodb-account-by-using-azure-databricks"></a>Azure Databricks を使用して MongoDB から MongoDB 用 Azure Cosmos DB API アカウントにデータを移行する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -171,8 +171,13 @@ MongoDB 用 Cosmos DB API データベースに対する操作について、165
 
 データを移行した後、Azure Cosmos DB に接続してデータを管理することができます。 また、インデックス作成ポリシーの最適化、既定の整合性レベルの更新、Azure Cosmos DB アカウントのグローバル分散の構成など、移行後の他の手順に従うこともできます。 詳細については、「[移行後の最適化](post-migration-optimization.md)」を参照してください。
 
+## <a name="additional-resources"></a>その他のリソース
+
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
+
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB の MongoDB 用 API でのインデックス作成を管理する](mongodb-indexing.md)
-
 * [操作の要求ユニットの料金を調べる](find-request-unit-charge-mongodb.md)

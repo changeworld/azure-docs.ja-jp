@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 06/14/2021
-ms.openlocfilehash: 0fa4491f9d4fa955dfc9be7033e4eab9137b5672
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d8b5d8141410143385cd950ae4e0ecb59d61d422
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294982"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478340"
 ---
 # <a name="cognitive-services-docs-whats-new-for-may-1-2021---may-31-2021"></a>Cognitive Services ドキュメント: 2021 年 5 月 1 日から 2021 年 5 月 31 日までの更新情報
 
@@ -77,7 +77,7 @@ ms.locfileid: "114294982"
 
 上記の期間中、Cognitive Services ドキュメントへのご協力をいただいた方々です。 よろしくお願いいたします。 [新機能ランディング ページ](index.yml)の「参加する」にあるリンクに従って投稿する方法について説明します。
 
-- [enzocanoo](https://github.com/enzocanoo) - Enzo Cano (2)
+- [enzocanoo](https://github.com/enzocano) - Enzo Cano (2)
 - [hyoshioka0128](https://github.com/hyoshioka0128) - Hiroshi Yoshioka (2)
 - [sassdawe](https://github.com/sassdawe) - DavidSass (1)
 - [SzymonSel](https://github.com/SzymonSel) - Szymon Seliga (1)

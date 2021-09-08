@@ -1,16 +1,16 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/04/2021
-ms.author: lajanuar
-ms.openlocfilehash: da985c405dde8b66e8562abd8689acaba405b60f
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 67fc77b58d484c9fbb85029f0222e0d352e17428
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071839"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543492"
 ---
 意図認識を実行するには、LUIS プレビュー ポータルを使用して、LUIS アカウントとプロジェクトを作成する必要があります。 このクイックスタートでは、[インテント認識が使用可能なリージョンに](../../../regions.md#intent-recognition) LUIS サブスクリプションが必要です。 音声サービスのサブスクリプションは "*不要*" です。
 

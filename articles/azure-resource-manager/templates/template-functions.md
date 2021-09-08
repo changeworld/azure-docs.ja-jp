@@ -2,13 +2,13 @@
 title: テンプレート関数
 description: 値の取得、文字列および数値の処理、デプロイ情報の取得のために、Azure Resource Manager テンプレート (ARM テンプレート) で使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: 012e570a769e8ea969d0c527a71053f55ecdf5a9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/31/2021
+ms.openlocfilehash: a094bfca418cfb2ab28fd0c80b19e580cab76024
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959411"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310369"
 ---
 # <a name="arm-template-functions"></a>ARM テンプレート関数
 
@@ -176,6 +176,7 @@ Resource Manager には、オブジェクトを操作する関数が複数用意
 * [listSecrets](template-functions-resource.md#list)
 * [list*](template-functions-resource.md#list)
 * [pickZones](template-functions-resource.md#pickzones)
+* [providers (非推奨)](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) - リソース グループへのデプロイでのみ使用できます。
 * [resourceId](template-functions-resource.md#resourceid) - 任意のスコープで使用できますが、有効なパラメーターはスコープに応じて変わります。

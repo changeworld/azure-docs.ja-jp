@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/15/2021
-ms.openlocfilehash: 6029e571cc1f2d9fe50b2d163a711a89827f2bfd
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.date: 08/30/2021
+ms.openlocfilehash: 2131e74935ee831925dbe307a79c26909078e575
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201941"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313986"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory-or-synapse-pipelines"></a>Azure Data Factory や Synapse パイプラインを使用して Azure Synapse Analytics のデータをコピー、変換する
 
@@ -45,13 +45,36 @@ ms.locfileid: "122201941"
 > [!IMPORTANT]
 > Azure Integration Runtime を使ってデータをコピーする場合は、Azure サービスが[論理 SQL サーバー](../azure-sql/database/logical-servers.md)にアクセスできるように[サーバーレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)を構成します。
 > セルフホステッド統合ランタイムを使用してデータをコピーする場合は、適切な IP 範囲を許可するようにファイアウォールを構成します。 この範囲には、Azure Synapse Analytics への接続に使用されるマシンの IP が含まれています。
-
 ## <a name="get-started"></a>はじめに
 
 > [!TIP]
 > 最高のパフォーマンスを実現するには、PolyBase または COPY ステートメントを使用して、Azure Synapse Analytics にデータを読み込みます。 詳細については、「[PolyBase を使用して Azure Synapse Analytics にデータを読み込む](#use-polybase-to-load-data-into-azure-synapse-analytics)」および [COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込む](#use-copy-statement)方法に関するセクションを参照してください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](load-azure-sql-data-warehouse.md)に関する記事をご覧ください。
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-an-azure-synapse-analytics-linked-service-using-ui"></a>UI を使用して Azure Synapse Analytics のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Synapse Analytics のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Synapse を検索し、Azure Synapse Analytics コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-sql-data-warehouse/azure-sql-data-warehouse-connector.png" alt-text="Azure Synapse Analytics コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-sql-data-warehouse/configure-azure-sql-data-warehouse-linked-service.png" alt-text="Azure Synapse Analytics のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 以下のセクションでは、Azure Synapse Analytics コネクタに固有の Data Factory と Synapse パイプライン エンティティを定義するプロパティについて詳しく説明します。
 
@@ -923,20 +946,20 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binary                                | Byte[]                         |
-| bit                                   | ブール型                        |
+| bit                                   | Boolean                        |
 | char                                  | String, Char[]                 |
 | date                                  | DateTime                       |
 | Datetime                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | Datetimeoffset                        | DateTimeOffset                 |
-| Decimal                               | Decimal (10 進数型)                        |
+| Decimal                               | Decimal                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
 | Float                                 | Double                         |
 | image                                 | Byte[]                         |
 | INT                                   | Int32                          |
-| money                                 | Decimal (10 進数型)                        |
+| money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |
-| numeric                               | Decimal (10 進数型)                        |
+| numeric                               | Decimal                        |
 | nvarchar                              | String, Char[]                 |
 | real                                  | Single                         |
 | rowversion                            | Byte[]                         |
@@ -945,7 +968,7 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | smallmoney                            | Decimal                        |
 | time                                  | TimeSpan                       |
 | tinyint                               | Byte                           |
-| UNIQUEIDENTIFIER                      | GUID                           |
+| UNIQUEIDENTIFIER                      | Guid                           |
 | varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
 

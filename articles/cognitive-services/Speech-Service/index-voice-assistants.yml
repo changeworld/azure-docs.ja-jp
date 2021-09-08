@@ -5,18 +5,18 @@ metadata:
   title: 音声アシスタントのドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: laujan
+  author: PatrickFarley
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: lajanuar
-  ms.openlocfilehash: dcb166064aa3c83d298ad04363047bee2efd6f98
-  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+  ms.author: pafarley
+  ms.openlocfilehash: 4d2864282c722b2096f1791e85d40488a26a537e
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122068551"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123537172"
 landingContent:
 - title: 音声アシスタントについて
   linkLists:

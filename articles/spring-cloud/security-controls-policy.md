@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Spring Cloud に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ba29617c09dc034e89566e99bc033829043dfb3d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8dfbf2dcc0c6163480b0f11fce3de0a67362f8fa
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123109830"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476065"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-spring-cloud"></a>Azure Spring Cloud 用の Azure Policy 規制コンプライアンス コントロール
 

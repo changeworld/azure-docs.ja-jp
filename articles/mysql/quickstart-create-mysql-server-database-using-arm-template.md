@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/19/2020
-ms.openlocfilehash: 2e9589063d5a094161a8eef09d0968c0679d58bd
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3d2750c607c8fe370122988d3836e00230ef0f21
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643367"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423990"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MySQL サーバーを作成する
 
@@ -187,7 +187,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 Azure portal から [ARM テンプレートをエクスポート](../azure-resource-manager/templates/export-template-portal.md)できます。 テンプレートをエクスポートするには、次の 2 とおりの方法があります。
 
 - [リソース グループまたはリソースからのエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)。 このオプションでは、既存のリソースから新しいテンプレートを生成します。 エクスポートされたテンプレートは、リソース グループの現在の状態の "スナップショット" です。 リソース グループ全体、またはそのリソース グループ内の特定のリソースをエクスポートできます。
-- [デプロイ前または履歴からのエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment)。 このオプションでは、デプロイに使用されたテンプレートのそのままのコピーを取得します。
+- [デプロイ前または履歴からのエクスポート](../azure-resource-manager/templates/export-template-portal.md#download-template-before-deployment)。 このオプションでは、デプロイに使用されたテンプレートのそのままのコピーを取得します。
 
 テンプレートをエクスポートすると、MySQL サーバー リソースの ```"properties":{ }``` セクションに、セキュリティ上の理由から ```administratorLogin``` と ```administratorLoginPassword``` が含まれていないことがわかります。 テンプレートをデプロイする前に、これらのパラメーターをテンプレートに追加する **必要があります**。そうしないと、テンプレートは失敗します。
 

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Google Maps から Web サービスを移行する | Microsoft Azure Maps
 description: Web サービスを Google Maps から Microsoft Azure Maps に移行する方法に関するチュートリアルです。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/23/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f1220d7368eb0bca48364dc239944a95d29be276
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 33bb2f240c46ac7e2192c84dbfd46906a6cc88f4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112578885"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429678"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>チュートリアル:Google マップから Web サービスを移行する
 

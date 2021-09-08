@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 268993dcdd2250037ebcfa1640bc4e54f82c926f
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: f72ac3b3a799b97883586e5c2eebc4a42119ae6f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575534"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255705"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>仮想マシン スケール セットで使用されるロード バランサーを更新または削除する
 
@@ -109,7 +109,7 @@ NAT プールを削除するには、まず、スケール セットから削除
 1. 左側のメニューで、**[すべてのリソース]** を選択します。 リソースの一覧から **[MyLoadBalancer]** を選択します。
 1. **[設定]** で、**[フロントエンド IP の構成]** を選択します。 その後、 **[追加]** を選択します。
 1. **[フロントエンド IP アドレスの追加]** ページで値を入力し、 **[OK]** を選択します。
-1. 新しい負荷分散規則が必要な場合は、このチュートリアルの[ステップ 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) と[ステップ 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) に従ってください。
+1. 新しい負荷分散規則が必要な場合は、[Azure Load Balancer の規則の管理 - Azure portal](manage-rules-how-to.md) に関するページを参照してください。
 1. 必要に応じて、新しく作成したフロントエンド IP 構成を使用して、インバウンド NAT 規則の新しいセットを作成します。 前のセクションで例を確認できます。
 
 ## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>1 つの Load Balancer の背後に複数の Virtual Machine Scale Sets

@@ -3,19 +3,19 @@ title: Speech コンテナーをインストールする
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換の helm チャートの構成オプションについて説明します。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/05/2020
-ms.author: lajanuar
-ms.openlocfilehash: 3181702921e0673a5b707cd0564d08a9c30bc1dd
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 0726b01ea082df91d426a66d36f7ad5f83babba4
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122261545"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646559"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>音声テキスト変換 (サブチャート: charts/speechToText)
 

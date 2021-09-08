@@ -1,15 +1,15 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: lajanuar
-ms.openlocfilehash: e37649ba5d9aa726251a0c53eff108fd96984546
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: c3fb355293b3411207b5f448d435c69e16dba651
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071832"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543487"
 ---
 ## <a name="prerequisites"></a>前提条件
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 93bfb515c46413400ecd47105de378c7b677cecd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 44601c97a873138bcd152de2450fe6d98be814df
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564962"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122423359"
 ---
 ## <a name="prepare-your-repository"></a>リポジトリを準備する
 
@@ -34,6 +34,6 @@ Azure App Service ビルド サーバーから自動ビルドを取得するに�
 デプロイをカスタマイズするには、 *.deployment* ファイルをリポジトリのルートに含めます。 詳細については、[デプロイのカスタマイズ](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)に関するページおよび「[Custom deployment script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
 
 > [!NOTE]
-> Visual Studio で開発する場合は、[Visual Studio にリポジトリを自動作成](/azure/devops/repos/git/creatingrepo?tabs=visual-studio)させてください。 プロジェクトは Git を使用してすぐにデプロイできます。
+> Visual Studio を使用する場合は、[Visual Studio にリポジトリを自動作成](/azure/devops/repos/git/creatingrepo?tabs=visual-studio)させてください。 すぐに、Git を使用してプロジェクトをデプロイできるようになります。
 >
 

@@ -1,18 +1,20 @@
 ---
 title: Azure SQL Managed Instance のデータをコピーして変換する
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory を使用して、Azure SQL Managed Instance のデータをコピーして変換する方法について説明します。
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: da1dbfc43aa8dccda8cca53b33923e2fee730d12
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 2fe779877c42935977b5fecb26bd3fe2c1428a33
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789732"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313963"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure SQL Managed Instance のデータをコピーして変換する
 
@@ -35,9 +37,6 @@ ms.locfileid: "110789732"
 - ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。 SQL MI ソースからの並列コピーを選択することもできます。詳細については、[SQL MI からの並列コピー](#parallel-copy-from-sql-mi)に関するセクションを参照してください。
 - シンクとして、ソース スキーマに基づいて、宛先テーブルが存在しない場合はこれを自動的に作成する。テーブルにデータを追加するか、コピー中にカスタム ロジックを使用してストアド プロシージャを呼び出す。
 
->[!NOTE]
-> SQL Managed Instance の [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は現在、このコネクタではサポートされていません。 回避するには、セルフホステッド統合ランタイム経由で[汎用 ODBC コネクタ](connector-odbc.md)と SQL Server ODBC ドライバーを使用できます。 詳細については、「[Always Encrypted の使用](#using-always-encrypted)」セクションを参照してください。 
-
 ## <a name="prerequisites"></a>前提条件
 
 SQL Managed Instance の[パブリック エンドポイント](../azure-sql/managed-instance/public-endpoint-overview.md)にアクセスするために、Azure Data Factory のマネージド Azure Integration Runtime を使用できます。 パブリック エンドポイントを有効にするだけでなく、ネットワーク セキュリティ グループでのパブリック エンドポイント トラフィックも許可して、Azure Data Factory が確実にデータベースに接続できるようにしてください。 詳細については、[このガイダンス](../azure-sql/managed-instance/public-endpoint-configure.md)を参照してください。
@@ -47,6 +46,30 @@ SQL Managed Instance のプライベート エンドポイントにアクセス�
 ## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-an-azure-sql-managed-instance-using-ui"></a>UI を使用して Azure SQL Managed Instance のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で SQL Managed Instance のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. SQL を検索し、Azure SQL Server Managed Instance コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-sql-managed-instance/azure-sql-managed-instance-connector.png" alt-text="Azure SQL Server Managed Instance コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-sql-managed-instance/configure-azure-sql-managed-instance-linked-service.png" alt-text="SQL Managed Instance のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 以降のセクションでは、SQL Managed Instance コネクタに固有の Azure Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -62,7 +85,11 @@ SQL Managed Instance のリンクされたサービスでは、次のプロパ�
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Azure Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | tenant | ドメイン名やテナント ID など、アプリケーションが存在するテナントの情報を指定します。 これは、Azure portal の右上隅をマウスでポイントすることで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | azureCloudType | サービス プリンシパル認証用に、ご利用の Azure AD アプリケーションが登録されている Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| alwaysEncryptedSettings | マネージド ID またはサービス プリンシパルを使用して、SQL サーバーに格納されている機密データを保護する Always Encrypted を有効にするために必要な **alwaysencryptedsettings** 情報を指定します。 詳細については、この表の後にある JSON の例および「[Always Encrypted の使用](#using-always-encrypted)」を参照してください。 指定されていない場合、既定の always encrypted 設定は無効になります。 |いいえ |
 | connectVia | この[統合ランタイム](concepts-integration-runtime.md)は、データ ストアに接続するために使用されます。 マネージド インスタンスにパブリック エンドポイントがあり、Azure Data Factory からそれにアクセスできるようにする場合は、セルフホステッド統合ランタイムまたは Azure 統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |はい |
+
+> [!NOTE]
+> SQL Managed Instance の [**Always Encrypted**](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver15&preserve-view=true) は、データ フローではサポートされていません。 
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
 
@@ -106,6 +133,32 @@ SQL Managed Instance のリンクされたサービスでは、次のプロパ�
                     "type": "LinkedServiceReference" 
                 }, 
                 "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**例 3: Always Encrypted で SQL 認証を使用する**
+
+```json
+{
+    "name": "AzureSqlMILinkedService",
+    "properties": {
+        "type": "AzureSqlMI",
+        "typeProperties": {
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+        },
+        "alwaysEncryptedSettings": {
+            "alwaysEncryptedAkvAuthType": "ServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
             }
         },
         "connectVia": {
@@ -708,27 +761,27 @@ IncomingStream sink(allowSchemaDrift: true,
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |ブール型 |
+| bit |Boolean |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal (10 進数型) |
+| Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | INT |Int32 |
-| money |Decimal (10 進数型) |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal (10 進数型) |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal (10 進数型) |
+| smallmoney |Decimal |
 | sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
@@ -744,32 +797,19 @@ IncomingStream sink(allowSchemaDrift: true,
 
 ## <a name="using-always-encrypted"></a>Always Encrypted の使用
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して Azure SQL Managed Instance との間でデータをコピーする場合は、セルフホステッド統合ランタイムを介して[汎用 ODBC コネクタ](connector-odbc.md)および SQL Server ODBC ドライバーを使用します。 この Azure SQL Managed Instance コネクタでは、現在、Always Encrypted はサポートされていません。 
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して SQL Server との間でデータをコピーする場合は、次の手順に従います。 
 
-具体的には次のとおりです。
+1. [列マスター キー (CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) を [Azure Key Vault](../key-vault/general/overview.md) に保存します。 詳細については、[Azure Key Vault を使用して Always Encrypted を構成する方法](../azure-sql/database/always-encrypted-azure-key-vault-configure.md?tabs=azure-powershell)に関する記事を参照してください
 
-1. セルフホステッド統合ランタイムを設定します (存在しない場合)。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
+2. [列マスター キー (CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) が格納されているキー コンテナーへのアクセス権を付与します。 必要なアクセス許可については、こちらの[記事](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true#key-vaults)を参照してください。
 
-2. SQL Server 用の 64 ビット ODBC ドライバーを[こちら](/sql/connect/odbc/download-odbc-driver-for-sql-server)からダウンロードし、Integration Runtime コンピューターにインストールします。 このドライバーがどのように機能するかについて詳しくは、「[SQL Server 用 ODBC ドライバーと共に Always Encrypted を使用する](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider)」を参照してください。
+3. リンク サービスを作成して SQL データベースに接続し、マネージド ID またはサービス プリンシパルを使用して "Always Encrypted" 機能を有効にします。 
 
-3. SQL データベースに接続するために、ODBC データ型を使用してリンクされたサービスを作成します。以下のサンプルを参照してください。
-
-    - **SQL 認証** を使用するには: 以下のように ODBC 接続文字列を指定し、ユーザー名とパスワードを設定するための **基本** 認証を選択します。
-
-        ```
-        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
-        ```
-
-    - Azure 仮想マシンでセルフホステッド統合ランタイムを実行する場合、Azure VM の ID で **マネージド ID の認証** を使用できます。 
-
-        1. 同じ[前提条件](#managed-identity)に従って、マネージド ID のデータベース ユーザーを作成し、データベースに適切なロールを付与します。
-        2. リンクされたサービスで、次のように ODBC 接続文字列を指定し、**匿名** 認証を選択します。接続文字列自体では `Authentication=ActiveDirectoryMsi` と示されます。
-
-        ```
-        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>; Authentication=ActiveDirectoryMsi;
-        ```
-
-4. これに応じて、データセットとコピー アクティビティを ODBC データ型で作成します。 詳細については [ODBC コネクタ](connector-odbc.md)に関する記事をご覧ください。
+>[!NOTE]
+>SQL Server の [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) では、次のシナリオがサポートされています。 
+>1. ソース データ ストアまたはシンク データ ストアのいずれかで、キー プロバイダー認証の種類としてマネージド ID またはサービス プリンシパルを使用する。
+>2. ソース データ ストアとシンク データ ストアの両方で、キー プロバイダー認証の種類としてマネージド ID を使用する。
+>3. ソース データ ストアとシンク データ ストアの両方で、キー プロバイダー認証の種類として同じサービス プリンシパルを使用する。
 
 ## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページをご覧ください。

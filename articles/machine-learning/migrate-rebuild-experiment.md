@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: 7059990f56cfa0f3eae9a10f3a7d3760095a1e83
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 9d39047d995d6b387b8cc73ef53c7d584e8d41b4
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868424"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123474470"
 ---
 # <a name="rebuild-a-studio-classic-experiment-in-azure-machine-learning"></a>スタジオ (クラシック) の実験を Azure Machine Learning で再構築します。
 
@@ -51,7 +51,7 @@ Azure Machine Learning では、ビジュアル グラフは **パイプライ�
 
 1. パラメーターを調整します。
     
-    各モジュールを選択し、右側にある [モジュールの設定] パネルでパラメーターを調整します。 そのパラメーターを使用して、スタジオ (クラシック) の実験の機能を再作成します。 各モジュールの詳細については、[モジュールのリファレンス](/algorithm-module-reference/module-reference.md)に関するページを参照してください。
+    各モジュールを選択し、右側にある [モジュールの設定] パネルでパラメーターを調整します。 そのパラメーターを使用して、スタジオ (クラシック) の実験の機能を再作成します。 各モジュールの詳細については、[モジュールのリファレンス](/azure/machine-learning/algorithm-module-reference/module-reference)に関するページを参照してください。
 
 ## <a name="submit-a-run-and-check-results"></a>実行および確認の結果を送信する
 

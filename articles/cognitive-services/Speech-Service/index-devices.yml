@@ -5,18 +5,18 @@ metadata:
   title: Speech Devices のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: laujan
+  author: PatrickFarley
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
-  ms.author: lajanuar
-  ms.openlocfilehash: 4bd8afaf2efd4b48c2c2cd26f198436d9d29dcad
-  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+  ms.author: pafarley
+  ms.openlocfilehash: 4d1f1b0644fbc8e951893183be75c3996995e1f1
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122068636"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123544039"
 landingContent:
 - title: Speech Devices SDK について
   linkLists:

@@ -3,17 +3,17 @@ title: Azure portal を使用して WebSocket API をインポートする | Mic
 titleSuffix: ''
 description: API Management における WebSocket をサポートする方法、WebSocket API の追加、WebSocket の制限について説明します。
 ms.service: api-management
-author: v-hhunter
-ms.author: v-hhunter
+author: dlepow
+ms.author: danlep
 ms.topic: how-to
-ms.date: 06/02/2021
+ms.date: 08/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 887e1257ef5585e99da1922aa840761ebcb7aa05
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b3eb368184eceeabc6af46bac8ca08254560e252
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439775"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097872"
 ---
 # <a name="import-a-websocket-api-preview"></a>WebSocket API をインポートする (プレビュー)
 
@@ -36,7 +36,7 @@ API Management の WebSocket API ソリューションを使用すると、API M
 ## <a name="prerequisites"></a>前提条件
 
 - 既存の API Management インスタンスがある。 [まだない場合は、作成してください](get-started-create-service-instance.md)。
-- [WebSocket API](https://www.websocket.org/echo.html)。
+- WebSocket API。 
 
 ## <a name="websocket-passthrough"></a>WebSocket パススルー
 
@@ -77,7 +77,9 @@ WebSocket パススルー中に、クライアント アプリケーションは
     |----------------|-------|
     | 表示名 | WebSocket API を表示するときに使用する名前。 |
     | 名前 | WebSocket API の未加工の名前。 表示名を入力すると自動的に設定されます。 |
-    | WebSocket URL | Websocket 名のベース URL。 例: ws://example.com/your-socket-name |
+    | WebSocket URL | Websocket 名のベース URL。 例: *ws://example.com/your-socket-name* |
+    | URL スキーム | 既定値を受け入れます |
+    | API URL サフィックス| この API Management インスタンスでこの特定の API を識別するための URL サフィックスを追加します。 この APIM インスタンス内で一意である必要があります。 |
     | 製品 | WebSocket API を製品に関連付け、発行します。 |
     | ゲートウェイ | WebSocket API を既存のゲートウェイに関連付けます。 |
  
@@ -92,13 +94,24 @@ WebSocket パススルー中に、クライアント アプリケーションは
 
     :::image type="content" source="./media/websocket-api/test-websocket-api.png" alt-text="API テストの例":::
 
-1. **[接続]** をクリックします。
+1. **[Connect]** をクリックします。
 1. **[出力]** に接続状態を表示します。
 1. **[ペイロード]** に値を入力します。 
 1. **[送信]** をクリックします。
 1. **[出力]** に受信メッセージを表示します。
 1. 前の手順を繰り返して、さまざまなペイロードをテストします。
 1. テストが完了したら、 **[切断]** を選択します。
+
+## <a name="view-metrics-and-logs"></a>メトリックとログを表示する
+
+API Management と Azure Monitor の標準機能を使用して、WebSocket API を[監視](api-management-howto-use-azure-monitor.md)します。
+
+* Azure Monitor の API メトリックを表示する
+* 必要に応じて、診断設定を有効にし、API Management のゲートウェイ ログを収集して表示します。これには、WebSocket API の操作が含まれます
+
+たとえば、次のスクリーンショットは、**ApiManagementGatewayLogs** テーブルからのコード `101` が含まれる最近の WebSocket API の応答を示したものです。 これらの結果では、TCP から WebSocket プロトコルへの要求の切り替えが正常に行われたことが示されています。
+
+:::image type="content" source="./media/websocket-api/query-gateway-logs.png" alt-text="WebSocket API 要求のクエリ ログ":::
 
 ## <a name="limitations"></a>制限事項
 

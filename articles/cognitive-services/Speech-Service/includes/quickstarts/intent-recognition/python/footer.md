@@ -1,16 +1,16 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: lajanuar
-ms.openlocfilehash: 9718f26a7a1b551fb59e85569d302bb23d06bd8e
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 471a5030b6c0cd694c763e88d1b1abb7e3b40b58
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071842"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543505"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で Python サンプルを探索する](https://aka.ms/speech/github-python)

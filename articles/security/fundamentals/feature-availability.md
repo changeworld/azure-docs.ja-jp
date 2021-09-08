@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 08/15/2021
-ms.openlocfilehash: 46e97cf7bb2fd3f54988f1643d047cc19e3fa82e
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: b2b02e37c07baf51c7dc0405cd1c689ec5fd01e4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195202"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429156"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
@@ -128,7 +128,7 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 
 | 機能 | Azure | Azure Government  |
 | ----- | ----- | ---- |
-|- [オートメーション ルール](../../sentinel/automate-incident-handling-with-automation-rules.md) | パブリック プレビュー | 利用不可 |
+|- [オートメーション ルール](../../sentinel/automate-incident-handling-with-automation-rules.md) | パブリック プレビュー | パブリック プレビュー |
 |- [Bring Your Own ML (BYO-ML)](../../sentinel/bring-your-own-ml.md) | パブリック プレビュー | パブリック プレビュー |
 | - [クロステナントまたはクロスワークスペース インシデント ビュー](../../sentinel/multiple-workspace-view.md) |パブリック プレビュー | パブリック プレビュー |
 | - [エンティティ分析情報](../../sentinel/enable-entity-behavior-analytics.md) | GA | パブリック プレビュー |
@@ -307,7 +307,7 @@ Azure Defender for IoT を使用すると、IoT/OT デバイス全体にわた�
 | [脅威インテリジェンスの自動更新](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | GA | GA |
 | **SIEM、SOAR、XDR を使用して、IT とセキュリティを統合する** |  |  |
 | - [アラート情報を転送する](../../defender-for-iot/how-to-forward-alert-information-to-partners.md) | GA | GA |
-| - [Azure Defender for IoT を使用して Sentinel を構成する](../../defender-for-iot/how-to-configure-with-sentinel.md) | GA | 利用不可 |
+| - [Azure Defender for IoT を使用して Sentinel を構成する](../../defender-for-iot/how-to-configure-with-sentinel.md) | パブリック プレビュー | 利用不可 |
 | - [SOC システム](../../defender-for-iot/integration-splunk.md) | GA | GA |
 | - [チケット発行システムと CMDB (サービスを開始)](../../defender-for-iot/integration-servicenow.md) | GA | GA |
 | - [センサーのプロビジョニング](../../defender-for-iot/how-to-manage-sensors-on-the-cloud.md) | GA | GA |

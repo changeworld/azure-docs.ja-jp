@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2c585177831e34f6cf9f565ec16acac7df72b435
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: f309bd9e75abdaace892273c0ef74e79cad80c80
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309631"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535162"
 ---
 ### <a name="count-resources-that-have-ip-addresses-configured-by-subscription"></a>サブスクリプションで構成されている IP アドレスを持つリソースの数
 

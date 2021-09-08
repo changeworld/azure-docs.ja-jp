@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 4720056254c3983f8b63c7ed2c46d55e4eabc7d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6169d3b0f99b2044fbe6076283e176d4dc1a76a7
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722026"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272441"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device"></a>Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする
 
@@ -112,7 +112,7 @@ Azure IoT Edge for Linux on Windows でサポートされているプロビジ�
 
    インストール コマンドに `INSTALLDIR="<FULLY_QUALIFIED_PATH>"` パラメーターと `VHDXDIR="<FULLY_QUALIFIED_PATH>"` パラメーターを追加することで、IoT Edge for Linux on Windows のカスタム インストールと VHDX ディレクトリを指定できます。
 
-1. まだ設定されていない場合は、ターゲット デバイスでの実行ポリシーを `AllSigned` に設定します。 現在の実行ポリシーは、管理者特権の PowerShell プロンプトで次のコマンドを使用して確認できます。
+1. ターゲット デバイスの実行ポリシーがまだ `AllSigned` に設定されていない場合、これを設定します。 現在の実行ポリシーは、管理者特権の PowerShell プロンプトで次のコマンドを使用して確認できます。
 
    ```powershell
    Get-ExecutionPolicy -List
@@ -130,16 +130,25 @@ Azure IoT Edge for Linux on Windows でサポートされているプロビジ�
    Deploy-Eflow
    ```
 
-   `Deploy-Eflow` コマンドは、デプロイをカスタマイズするのに役立つオプションのパラメーターを受け取ります。
+   >[!TIP]
+   >既定では `Deploy-Eflow` コマンドを実行すると、1 GB の RAM、1 つの仮想 CPU コア、16 GB のディスク領域を持つ Linux 仮想マシンを作成します。 ですが、VM に必要なリソースは、デプロイするワークロードに大きく左右されます。 ワークロードを処理するのに十分なメモリがなければ、VM は起動に失敗します。
+   >
+   >`Deploy-Eflow` コマンドのオプションでパラメーターを指定することで、仮想マシンで使用できるリソースをカスタマイズできます。
+   >
+   >たとえば下のコマンドでは、4 つの仮想 CPU コア、4 GB の RAM、20 GB のディスク領域を持つ仮想マシンを作成します。
+   >
+   >   ```powershell
+   >   Deploy-Eflow -cpuCount 4 -memoryInMB 4096 -vmDiskSize 20
+   >   ```
+   >
+   >使用できるすべてのオプション パラメーターについては、「[IoT Edge for Linux on Windows 用の PowerShell 関数](reference-iot-edge-for-linux-on-windows-functions.md#deploy-eflow)」を参照してください。
 
    GPU をデプロイに割り当てて、GPU アクセラレーション対応の Linux モジュールを有効にできます。 これらの機能にアクセスするには、「[Azure IoT Edge for Linux on Windows 用の GPU アクセラレーション](gpu-acceleration.md)」に詳述されている前提条件をインストールする必要があります。
 
    GPU パススルーを使用するには、`Deploy-Eflow` コマンドに **gpuName**、**gpuPassthroughType**、**gpuCount** の各パラメーターを追加する必要があります。 使用できるすべてのオプション パラメーターについては、「[IoT Edge for Linux on Windows 用の PowerShell 関数](reference-iot-edge-for-linux-on-windows-functions.md#deploy-eflow)」を参照してください。
 
    >[!WARNING]
-   >ハードウェア デバイスのパススルーを有効にすると、セキュリティ リスクが高まる可能性があります。 該当する場合は、GPU ベンダーが提供する、デバイスのリスク軽減ドライバーをお勧めします。 詳細については、「[Discrete Device Assignment を使用したグラフィックス デバイスのデプロイ](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)」を参照してください。
-
-
+   >ハードウェア デバイスのパススルーを有効にすると、セキュリティ上のリスクが増える可能性があります。 該当する場合は、GPU ベンダーが提供する、デバイスのリスク軽減ドライバーをお勧めします。 詳細については、「[Discrete Device Assignment を使用したグラフィックス デバイスのデプロイ](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)」を参照してください。
 
 1. ライセンス条項に同意するには、「Y」と入力します。
 
@@ -206,7 +215,7 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
    ![準仮想化の GPU が有効になっている構成設定。](./media/how-to-install-iot-edge-on-windows/gpu-passthrough-paravirtualization.png)
 
    >[!WARNING]
-   >ハードウェア デバイスのパススルーを有効にすると、セキュリティ リスクが高まる可能性があります。 該当する場合は、GPU ベンダーが提供する、デバイスのリスク軽減ドライバーをお勧めします。 詳細については、「[Discrete Device Assignment を使用したグラフィックス デバイスのデプロイ](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)」を参照してください。
+   >ハードウェア デバイスのパススルーを有効にすると、セキュリティ上のリスクが増える可能性があります。 該当する場合は、GPU ベンダーが提供する、デバイスのリスク軽減ドライバーをお勧めします。 詳細については、「[Discrete Device Assignment を使用したグラフィックス デバイスのデプロイ](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)」を参照してください。
 
    設定に問題がなければ、 **[次へ]** を選択します。
 
@@ -261,7 +270,7 @@ Provision-EflowVm -provisioningType ManualConnectionString -devConnString "<CONN
 
 1. デバイスの登録後、IoT Hub から取得した **デバイスの接続文字列** を指定します。
 
-1. **[選択した方法でプロビジョニングする]** を選択します。
+1. **[Provisioning with the selected method]\(選択した方法でプロビジョニングする\)** を選択します。
 
    ![デバイスの接続文字列を貼り付けた後、[Provisioning with the selected method]\(選択した方法でプロビジョニング\) を選択する](./media/how-to-install-iot-edge-on-windows/provisioning-with-selected-method-connection-string.png)
 
@@ -300,7 +309,7 @@ Provision-EflowVm -provisioningType ManualX509 -iotHubHostname "<HUB HOSTNAME>" 
    * **証明書ファイル**: デバイス ID 証明書をアップロードします。証明書は仮想マシンに移動されて、デバイスのプロビジョニングに使用されます。
    * **秘密キー ファイル**: 秘密キー ファイルをアップロードします。キーは仮想マシンに移動されて、デバイスのプロビジョニングに使用されます。
 
-1. **[選択した方法でプロビジョニングする]** を選択します。
+1. **[Provisioning with the selected method]\(選択した方法でプロビジョニングする\)** を選択します。
 
 1. プロビジョニングが完了したら、 **[完了]** を選択します。 メイン ダッシュボードに自動的に戻ります。 これで、種類が `IoT Edge Devices` の新しいデバイスが一覧に表示されるはずです。 IoT Edge デバイスを選択して、それに接続できます。 **[Overview]\(概要\)** ページでは、デバイスの **[IoT Edge Module List]\(IoT Edge モジュール一覧\)** と **[IoT Edge Status]\(IoT Edge の状態\)** を見ることができます。
 
@@ -355,6 +364,8 @@ IoT Edge for Linux on Windows が IoT Edge デバイスに正常にインスト�
    * **[IoT Edge Status]\(IoT Edge の状態\)** セクションにはサービスの状態が表示され、 **[active (running)]\(アクティブ (実行中)\)** と報告されるはずです。
 
 ---
+
+新しい IoT Edge デバイスを作成すると、Azure portal で状態コード `417 -- The device's deployment configuration is not set` が表示されます。 これは正常な状態であり、デバイスにモジュールをデプロイできる状態であることを表します。
 
 ## <a name="next-steps"></a>次のステップ
 

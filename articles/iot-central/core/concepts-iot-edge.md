@@ -3,19 +3,19 @@ title: Azure IoT Edge および Azure IoT Central | Microsoft Docs
 description: IoT Central アプリケーションで Azure IoT Edge を使用する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/19/2021
+ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 0b1cf7d0dbf7456d01f6530355e6943c8ead54db
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 15d6da6b5fe458e34847469faf230222f20efb38
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014923"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273141"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -23,6 +23,7 @@ Azure IoT Edge により、クラウドの分析とカスタム ビジネス ロ
 
 この記事では、次の内容について説明します。
 
+* IoT Central での IoT Edge のゲートウェイ パターン。
 * IoT Edge デバイスが IoT Central アプリケーションに接続される方法。
 * IoT Central を使用して IoT Edge デバイスを管理する方法。
 
@@ -30,33 +31,72 @@ IoT Edge の詳細については、「[Azure IoT Edge とは](../../iot-edge/ab
 
 ## <a name="iot-edge"></a>IoT Edge
 
+![Azure IoT Central と Azure IoT Edge](./media/concepts-iot-edge/iotedge.png)
+
 IoT Edge は、次の 3 つのコンポーネントで構成されます。
 
 * *IoT Edge モジュール*: Azure サービス、パートナー サービス、またはカスタム コードを実行するコンテナーです。 モジュールは、IoT Edge デバイスにデプロイされ、そのデバイスでローカルに実行されます。 詳細については、「[Azure IoT Edge モジュールについて](../../iot-edge/iot-edge-modules.md)」を参照してください。
 * *IoT Edge ランタイム*: 個々の IoT Edge デバイス上で動作し、各デバイスにデプロイされたモジュールを管理します。 ランタイムは、"*IoT Edge エージェント*" と "*IoT Edge ハブ*" という 2 つの IoT Edge モジュールで構成されます。 詳細については、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](../../iot-edge/iot-edge-runtime.md)」を参照してください。
 * *クラウドベースのインターフェイス*: IoT Edge デバイスをリモートから監視して管理します。 IoT Central はクラウド インターフェイスの例です。
 
+IoT Central により、IoT Edge デバイスで次の機能を使用できるようになります。
+
+* 次のような IoT Edge デバイスの機能を記述するデバイス テンプレート。
+  * 配置マニフェストのアップロード機能。これは、デバイスのマニフェストを管理するのに役立ちます。
+  * IoT Edge デバイスで実行されるモジュール。
+  * 各モジュールが送信するテレメトリ。
+  * 各モジュールによって報告されるプロパティ。
+  * 各モジュールが応答するコマンド。
+  * IoT Edge ゲートウェイ デバイスとダウンストリーム デバイス間の関係。
+  * IoT Edge デバイスに格納されていないクラウド プロパティ。
+  * UI でのデバイス機能の表示方法を変更するカスタマイズ。
+  * デバイスのビューとフォーム。
+* Azure IoT のデバイス プロビジョニング サービスを使用して大規模に IoT Edge デバイスをプロビジョニングする機能。
+* ルールとアクション。
+* カスタム ダッシュボードと分析。
+* IoT Edge デバイスからのテレメトリの連続データ エクスポート。
+
 次のものを IoT Edge デバイスにすることができます。
 
 * モジュールで構成されるスタンドアロン デバイス。
 * ダウンストリーム デバイスが接続される "*ゲートウェイ デバイス*"。
 
-## <a name="iot-edge-as-a-gateway"></a>ゲートウェイとしての IoT Edge
+![IoT Central と IoT Edge の概要](./media/concepts-iot-edge/gatewayedge.png)
 
-IoT Edge デバイスは、ネットワーク上の他のダウンストリーム デバイスと IoT Central アプリケーションの間の接続を提供するゲートウェイとして動作できます。
+ゲートウェイ デバイスは次のうちいずれかになります。
 
-ゲートウェイには、次の 2 つのパターンがあります。
-
-* "*透過的ゲートウェイ*" パターンでは、IoT Central のように動作する IoT Edge ハブ モジュールによって、IoT Central に登録されているデバイスからの接続が処理されます。 メッセージは、間にゲートウェイが存在しないかのように、ダウンストリーム デバイスから IoT Central に渡されます。
+* *透過的ゲートウェイ* では、IoT Central のように動作する IoT Edge ハブ モジュールによって、IoT Central に登録されているデバイスからの接続が処理されます。 メッセージは、間にゲートウェイが存在しないかのように、ダウンストリーム デバイスから IoT Central に渡されます。
 
     > [!NOTE]
     > 現在 IoT Central では、IoT Edge デバイスをダウンストリーム デバイスとして、IoT Edge の透過的なゲートウェイに接続することはできません。 これは、IoT Central に接続するすべてのデバイスが、Device Provisioning Service (DPS) を使用してプロビジョニングされるためです。DPS では、入れ子になった IoT Edge シナリオはサポートされていません。
 
-* "*変換ゲートウェイ*" パターンでは、それ自体では IoT Central に接続できないデバイスが、代わりにカスタム IoT Edge モジュールに接続されます。 IoT Edge デバイス内のモジュールにより、ダウンストリーム デバイスからの受信メッセージが処理されて、IoT Central に転送されます。
+* *変換ゲートウェイ* では、それ自体では IoT Central に接続できないデバイスが、代わりにカスタム IoT Edge モジュールに接続されます。 IoT Edge デバイス内のモジュールにより、ダウンストリーム デバイスからの受信メッセージが処理されて、IoT Central に転送されます。
 
-透過的と変換のゲートウェイ パターンは、相互に排他的ではありません。 1 つの IoT Edge デバイスが、透過的ゲートウェイと変換ゲートウェイの両方として機能できます。
+1 つの IoT Edge デバイスが、透過的ゲートウェイと変換ゲートウェイの両方として機能できます。
 
 IoT Edge のゲートウェイ パターンの詳細については、「[IoT Edge デバイスをゲートウェイとして使用する方法](../../iot-edge/iot-edge-as-gateway.md)」を参照してください。
+
+## <a name="iot-edge-patterns"></a>IoT Edge のパターン
+
+IoT Central は、次の IoT Edge デバイス パターンをサポートしています。
+
+### <a name="iot-edge-as-leaf-device"></a>リーフ デバイスとしての IoT Edge
+
+![リーフ デバイスとしての IoT Edge](./media/concepts-iot-edge/edgeasleafdevice.png)
+
+IoT Edge デバイスは、IoT Central にプロビジョニングされ、ダウンストリーム デバイスとそれらのテレメトリは、IoT Edge デバイスからのものとして表されます。 IoT Edge デバイスに接続されているダウンストリーム デバイスは、IoT Central にはプロビジョニングされません。
+
+### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>ID を使用してダウンストリーム デバイスに接続されている IoT Edge ゲートウェイ デバイス
+
+![IoT Edge とダウンストリーム デバイス ID](./media/concepts-iot-edge/edgewithdownstreamdeviceidentity.png)
+
+IoT Edge デバイスは、IoT Edge デバイスに接続されているダウンストリーム デバイスと共に IoT Central にプロビジョニングされます。 ゲートウェイ経由でダウンストリーム デバイスをプロビジョニングするためのランタイム サポートは、現在サポートされていません。
+
+### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge ゲートウェイによって提供される ID を使用してダウンストリーム デバイスに接続されている IoT Edge ゲートウェイ デバイス
+
+![ID を使用しない IoT Edge とダウンストリーム デバイス](./media/concepts-iot-edge/edgewithoutdownstreamdeviceidentity.png)
+
+IoT Edge デバイスは、IoT Edge デバイスに接続されているダウンストリーム デバイスと共に IoT Central にプロビジョニングされます。 現時点で IoT Central には、ID を提供し、ダウンストリーム デバイスをプロビジョニングするためのゲートウェイのランタイム サポートはありません。 独自の ID 変換モジュールを使用すると、IoT Central はこのパターンをサポートできます。
 
 ### <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>ゲートウェイおよびモジュールとのダウンストリーム デバイスのリレーションシップ
 

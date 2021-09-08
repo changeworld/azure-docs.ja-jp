@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2b0c4676ca7d085e5fbe042dd2a23fe0ae42db9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3188f303d7e2945341267c9ea4598682e4d7964
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778931"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426249"
 ---
 # <a name="text-translation-rest-api"></a>Text Translation REST API
 
@@ -32,7 +32,7 @@ Text Translation は、Azure Translator サービスのクラウドベースの�
 | [**dictionary/examples**](v3-0-dictionary-lookup.md) | **POST** | 用語がコンテキストでどのように使用されるかを返します。 |
 
 > [!div class="nextstepaction"]
-> [Azure portal で Translator リソースを作成する](/translator-how-to-signup.md)
+> [Azure portal で Translator リソースを作成する](../translator-how-to-signup.md)
 
 > [!div class="nextstepaction"]
 > [クイックスタート: REST API とプログラミング言語](../quickstart-translator.md)

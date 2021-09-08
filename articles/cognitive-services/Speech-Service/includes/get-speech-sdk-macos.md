@@ -1,15 +1,15 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: lajanuar
-ms.openlocfilehash: 83521bb46909f807a3a3c3632d667556a08a4703
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: e4377b4c69f484f1e248f7aa74731b9fbe956d52
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067788"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540008"
 ---
 MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 

@@ -1,27 +1,29 @@
 ---
 title: データを SQL Server 間でコピー、および変換する
-description: Azure Data Factory を使用してオンプレミスまたは Azure VM の SQL Server データベースとの間でデータをコピーおよび変換する方法を説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインを使用して、オンプレミスまたは Azure VM の SQL Server データベースとの間でデータをコピーおよび変換する方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 05/26/2021
-ms.openlocfilehash: 084af91fe294ab52591bc5ef9bf22ffe941637ea
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 48c6232678adceed0bc239ff788f8a191d9d88c2
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110781805"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304706"
 ---
-# <a name="copy-and-transform-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して SQL Server をコピー元またはコピー先としてデータをコピーして変換する
+# <a name="copy-and-transform-data-to-and-from-sql-server-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して SQL Server との間でデータをコピーおよび変換する
 
 > [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-sqlserver-connector.md)
 > * [現在のバージョン](connector-sql-server.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、SQL Server Database との間でデータをコピーする方法、および Data Flow を使用して SQL Server Database のデータを変換する方法について説明します。  Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Data Factory および Azure Synapse パイプラインで Copy アクティビティを使用して、SQL Server データベースとの間でデータをコピーし、Data Flow を使用して SQL Server データベースのデータを変換する方法について説明します。  詳細については、[Azure Data Factory](introduction.md) または [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -43,8 +45,6 @@ SQL Server データベースから、サポートされている任意のシン
 
 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-express-localdb) はサポートされていません。
 
->[!NOTE]
->SQL Server の [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は現在、このコネクタではサポートされていません。 回避するには、[汎用 ODBC コネクタ](connector-odbc.md)と SQL Server ODBC ドライバーを使用できます。 ODBC ドライバーのダウンロードおよび接続文字列の構成については、[このガイダンス](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver)に従ってください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,7 +54,31 @@ SQL Server データベースから、サポートされている任意のシン
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-次のセクションでは、SQL Server データベース コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
+## <a name="create-a-sql-server-linked-service-using-ui"></a>UI を使用して SQL Server のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で SQL Server のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. SQL を検索し、SQL Server コネクタを選択します。
+
+    :::image type="content" source="media/connector-sql-server/sql-server-connector.png" alt-text="SQL Server コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-sql-server/configure-sql-server-linked-service.png" alt-text="SQL Server のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、SQL Server データベース コネクタに固有の Data Factory および Synapse パイプライン エンティティの定義に使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -65,8 +89,12 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
 | type | type プロパティを **SqlServer** に設定する必要があります。 | はい |
 | connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な **connectionString** 情報を指定します。 以下のサンプルを参照してください。<br/>また、Azure Key Vault にパスワードを格納することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
 | userName |Windows 認証を使用しする場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
-| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドは、Azure Data Factory で安全に格納するために **SecureString** としてマークします。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 安全に保存するには、このフィールドを **SecureString** としてマークします。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |いいえ |
+| alwaysEncryptedSettings | マネージド ID またはサービス プリンシパルを使用して、SQL サーバーに格納されている機密データを保護する Always Encrypted を有効にするために必要な **alwaysencryptedsettings** 情報を指定します。 詳細については、この表の後にある JSON の例および「[Always Encrypted の使用](#using-always-encrypted)」を参照してください。 指定されていない場合、既定の always encrypted 設定は無効になります。 |いいえ |
 | connectVia | この[統合ランタイム](concepts-integration-runtime.md)は、データ ストアに接続するために使用されます。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+> [!NOTE]
+> SQL Server の [**Always Encrypted**](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver15&preserve-view=true) は、データ フローではサポートされていません。 
 
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached" (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
@@ -134,7 +162,33 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
         }
-     }
+    }
+}
+```
+
+**例 4: Always Encrypted を使用する**
+
+```json
+{
+    "name": "SqlServerLinkedService",
+    "properties": {
+        "type": "SqlServer",
+        "typeProperties": {
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+        },
+        "alwaysEncryptedSettings": {
+            "alwaysEncryptedAkvAuthType": "ServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
 }
 ```
 
@@ -305,7 +359,7 @@ SQL Server にデータをコピーするには、コピー アクティビテ�
 | storedProcedureTableTypeParameterName |ストアド プロシージャで指定されたテーブル型のパラメーター名。  |いいえ |
 | sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |いいえ |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前と値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
-| writeBatchSize |SQL テーブルに挿入する "*バッチあたりの*" 行数。<br/>使用可能な値は、行数の場合整数です。 既定では、Azure Data Factory により行のサイズに基づいて適切なバッチ サイズが動的に決定されます。 |いいえ |
+| writeBatchSize |SQL テーブルに挿入する "*バッチあたりの*" 行数。<br/>使用可能な値は、行数の場合整数です。 既定では行のサイズに基づいて、サービスにより適切なバッチ サイズが動的に決定されます。 |いいえ |
 | writeBatchTimeout |このプロパティは、タイムアウトする前に一括挿入操作の完了を待つ時間を指定します。<br/>使用可能な値は期間に対する値です。 たとえば "00:30:00" (30 分) を指定できます。 値を指定しなかった場合、タイムアウトの既定値は "02:00:00" です。 |いいえ |
 | maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
@@ -388,15 +442,15 @@ SQL Server コネクタでは、コピー アクティビティの際に、デ�
 
 ![パーティションのオプションのスクリーンショット](./media/connector-sql-server/connector-sql-partition-options.png)
 
-パーティション分割でのコピーを有効にすると、コピー アクティビティによってユーザーの SQL Server ソースに対して並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、SQL Server からデータの一部を取得します。
+パーティション分割でのコピーを有効にすると、コピー アクティビティによってユーザーの SQL Server ソースに対して並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、SQL Server からデータの一部を取得します。
 
 特に、自分の SQL Server から大量のデータを読み込む場合は、データのパーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 | シナリオ                                                     | 推奨設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 物理パーティションに分割された大きなテーブル全体から読み込む。        | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行中に、Data Factory によって物理パーティションが自動的に検出され、パーティションごとにデータがコピーされます。 <br><br/>テーブルに物理パーティションがあるかどうかを確認するには、[こちらのクエリ](#sample-query-to-check-physical-partition)を参照してください。 |
-| 物理パーティションがなく、データ パーティション分割用の整数または日時の列がある大きなテーブル全体から読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**パーティション列** (省略可能):データのパーティション分割に使用される列を指定します。 指定されていない場合は、インデックスまたは主キー列が使用されます。<br/>**パーティションの上限** と **パーティションの下限** (省略可能):パーティションのストライドを決定する場合に指定します。 これは、テーブル内の行のフィルター処理用ではなく、テーブル内のすべての行がパーティション分割されてコピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br><br>たとえば、パーティション列 "ID" の値の範囲が 1 ～ 100 で、下限を 20 に、上限を 80 に設定し、並列コピーを 4 にした場合、Data Factory によって 4 つのパーティションでデータが取得されます。ID の範囲は、それぞれ、20 以下、21 ～ 50、51 ～ 80、81 以上となります。 |
-| 物理パーティションがなく、データ パーティション分割用の整数列または日付/日時列がある大量のデータを、カスタム クエリを使用して読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。<br>**パーティションの上限** と **パーティションの下限** (省略可能):パーティションのストライドを決定する場合に指定します。 これは、テーブル内の行のフィルター処理用ではなく、クエリ結果のすべての行がパーティション分割されてコピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br><br>実行中に、Data Factory によって `?AdfRangePartitionColumnName` が各パーティションの実際の列名および値の範囲に置き換えられ、SQL Server に送信されます。 <br>たとえば、パーティション列 "ID" の値の範囲が 1 ～ 100 で、下限を 20 に、上限を 80 に設定し、並列コピーを 4 にした場合、Data Factory によって 4 つのパーティションでデータが取得されます。ID の範囲は、それぞれ、20 以下、21 ～ 50、51 ～ 80、81 以上となります。 <br><br>さまざまなシナリオのサンプル クエリを次に示します。<br> 1.テーブル全体に対してクエリを実行する: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2.列の選択と追加の where 句フィルターが含まれるテーブルからのクエリ: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3.サブクエリを使用したクエリ: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4.サブクエリにパーティションがあるクエリ: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| 物理パーティションに分割された大きなテーブル全体から読み込む。        | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行中に、サービスによって物理パーティションが自動的に検出され、パーティションごとにデータがコピーされます。 <br><br/>テーブルに物理パーティションがあるかどうかを確認するには、[こちらのクエリ](#sample-query-to-check-physical-partition)を参照してください。 |
+| 物理パーティションがなく、データ パーティション分割用の整数または日時の列がある大きなテーブル全体から読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**パーティション列** (省略可能):データのパーティション分割に使用される列を指定します。 指定されていない場合は、主キー列が使用されます。<br/>**パーティションの上限** と **パーティションの下限** (省略可能):パーティションのストライドを決定する場合に指定します。 これは、テーブル内の行のフィルター処理用ではなく、テーブル内のすべての行がパーティション分割されてコピーされます。 指定されていない場合は、Copy アクティビティによって値が自動検出されます。最小値と最大値によっては時間がかかることがあります。 上限と下限を指定することをお勧めします。 <br><br>たとえば、パーティション列「ID」の値の範囲が 1 ～ 100 で、下限を 20 に、上限を 80 に設定し、並列コピーを 4 にした場合、サービスによって 4 つのパーティションでデータが取得されます。ID の範囲は、それぞれ、20 以下、21 ～ 50、51 ～ 80、81 以上となります。 |
+| 物理パーティションがなく、データ パーティション分割用の整数列または日付/日時列がある大量のデータを、カスタム クエリを使用して読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br>**パーティション列**: データのパーティション分割に使用される列を指定します。<br>**パーティションの上限** と **パーティションの下限** (省略可能):パーティションのストライドを決定する場合に指定します。 これは、テーブル内の行のフィルター処理用ではなく、クエリ結果のすべての行がパーティション分割されてコピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br><br>実行中に、`?AdfRangePartitionColumnName` が各パーティションの実際の列名および値の範囲に置き換えられ、SQL Server に送信されます。 <br>たとえば、パーティション列「ID」の値の範囲が 1 ～ 100 で、下限を 20 に、上限を 80 に設定し、並列コピーを 4 にした場合、サービスによって 4 つのパーティションでデータが取得されます。ID の範囲は、それぞれ、20 以下、21 ～ 50、51 ～ 80、81 以上となります。 <br><br>さまざまなシナリオのサンプル クエリを次に示します。<br> 1.テーブル全体に対してクエリを実行する: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2.列の選択と追加の where 句フィルターが含まれるテーブルからのクエリ: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3.サブクエリを使用したクエリ: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4.サブクエリにパーティションがあるクエリ: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 パーティション オプションを使用してデータを読み込む場合のベスト プラクティス:
@@ -458,11 +512,11 @@ SQL Server にデータをコピーするときは、さまざまな書き込み
 - [上書き](#overwrite-the-entire-table): 毎回ディメンション テーブル全体を再度読み込みたい。
 - [カスタム ロジックでの書き込み](#write-data-with-custom-logic): 宛先テーブルへの最終挿入の前に追加の処理が必要である。
 
-Azure Data Factory で構成する方法およびベスト プラクティスについては、対応するセクションを参照してください。
+構成方法とベスト プラクティスについては、対応するセクションを参照してください。
 
 ### <a name="append-data"></a>データを追加する
 
-データの追加は、この SQL Server シンク コネクタの既定の動作です。 Azure Data Factory では、テーブルに効率的に書き込むために一括挿入が実行されます。 コピー アクティビティで、それに応じてソースとシンクを構成できます。
+データの追加は、この SQL Server シンク コネクタの既定の動作です。 サービスでは、テーブルに効率的に書き込むために一括挿入が実行されます。 コピー アクティビティで、それに応じてソースとシンクを構成できます。
 
 ### <a name="upsert-data"></a>データをアップサートする
 
@@ -470,7 +524,7 @@ Azure Data Factory で構成する方法およびベスト プラクティスに
 
 コピー アクティビティでは現在、データベース一時テーブルへのデータの読み込みはネイティブでサポートされていません。 複数のアクティビティを組み合わせて設定するための高度な方法があります。[SQL Database の一括 upsert シナリオの最適化](https://github.com/scoriani/azuresqlbulkupsert)に関するページを参照してください。 以下に、永続的テーブルをステージングとして使用する例を示します。
 
-例として、Azure Data Factory で、**コピー アクティビティ** と **ストアド プロシージャ アクティビティ** を連結させたパイプラインを作成できます。 前者では、ソース ストアから SQL Server ステージング テーブル (たとえば、データセット内のテーブル名 **UpsertStagingTable**) にデータがコピーされます。 次に、後者によってストアド プロシージャが呼び出され、ステージング テーブルのソース データがターゲット テーブルにマージされて、ステージング テーブルがクリーンアップされます。
+例として、**Copy アクティビティ** と **ストアド プロシージャ アクティビティ** を連結させたパイプラインを作成できます。 前者では、ソース ストアから SQL Server ステージング テーブル (たとえば、データセット内のテーブル名 **UpsertStagingTable**) にデータがコピーされます。 次に、後者によってストアド プロシージャが呼び出され、ステージング テーブルのソース データがターゲット テーブルにマージされて、ステージング テーブルがクリーンアップされます。
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
@@ -497,7 +551,7 @@ END
 
 ### <a name="overwrite-the-entire-table"></a>テーブル全体を上書きする
 
-コピー アクティビティ シンクで **preCopyScript** プロパティを構成できます。 この場合、実行されるコピー アクティビティごとに、Azure Data Factory で最初にスクリプトが実行されます。 次に、コピーが実行されてデータが挿入されます。 たとえば、テーブル全体を最新のデータで上書きするには、ソースから新しいデータを一括で読み込む前に、すべてのレコードを最初に削除するスクリプトを指定します。
+コピー アクティビティ シンクで **preCopyScript** プロパティを構成できます。 この場合、実行される Copy アクティビティごとに、サービスで最初にスクリプトが実行されます。 次に、コピーが実行されてデータが挿入されます。 たとえば、テーブル全体を最新のデータで上書きするには、ソースから新しいデータを一括で読み込む前に、すべてのレコードを最初に削除するスクリプトを指定します。
 
 ### <a name="write-data-with-custom-logic"></a>カスタム ロジックでデータを書き込む
 
@@ -538,7 +592,7 @@ SQL Server データベースにデータをコピーするときに、ユーザ
     END
     ```
 
-3. Azure Data Factory で、コピー アクティビティの **SQL シンク** セクションを次のように定義します。
+3. コピー アクティビティの **SQL シンク** セクションを次のように定義します。
 
     ```json
     "sink": {
@@ -559,7 +613,7 @@ SQL Server データベースにデータをコピーするときに、ユーザ
 マッピング データ フローでデータを変換する場合、SQL Server Database からテーブルの読み取りと書き込みを実行できます。 詳細については、マッピング データ フローの[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> オンプレミスの SQL Server にアクセスするには、プライベート エンドポイントを使用して Azure Data Factory [マネージド Virtual Network](managed-virtual-network-private-endpoint.md) を使用する必要があります。 詳細な手順については、この[チュートリアル](tutorial-managed-virtual-network-on-premise-sql-server.md)を参照してください。
+> オンプレミスの SQL Server にアクセスするには、プライベート エンドポイントを使用して、Azure Data Factory または Synapse ワークスペースの[マネージド仮想ネットワーク](managed-virtual-network-private-endpoint.md)を使用する必要があります。 詳細な手順については、この[チュートリアル](tutorial-managed-virtual-network-on-premise-sql-server.md)を参照してください。
 
 ### <a name="source-transformation"></a>ソース変換
 
@@ -616,33 +670,33 @@ IncomingStream sink(allowSchemaDrift: true,
 
 ## <a name="data-type-mapping-for-sql-server"></a>SQL Server のデータ型のマッピング
 
-SQL Server との間でデータをコピーするとき、SQL Server のデータ型から Azure Data Factory の中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+SQL Server との間でデータをコピーするとき、SQL Server のデータ型から Azure Data Factory の中間データ型への、以下のマッピングが使用されます。 Data Factory を実装する Synapse パイプラインでは、同じマッピングが使用されます。  コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| SQL Server のデータ型 | Azure Data Factory の中間データ型 |
+| SQL Server のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |ブール型 |
+| bit |Boolean |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal (10 進数型) |
+| Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | INT |Int32 |
-| money |Decimal (10 進数型) |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal (10 進数型) |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal (10 進数型) |
+| smallmoney |Decimal |
 | sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
@@ -666,21 +720,20 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 
 ## <a name="using-always-encrypted"></a>Always Encrypted の使用
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して SQL Server との間でデータをコピーする場合は、セルフホステッド統合ランタイムを介して[汎用 ODBC コネクタ](connector-odbc.md)および SQL Server ODBC ドライバーを使用します。 この SQL Server コネクタでは Always Encrypted は現在サポートされていません。 
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して SQL Server との間でデータをコピーする場合は、次の手順に従います。 
 
-具体的には次のとおりです。
+1. [列マスター キー (CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) を [Azure Key Vault](../key-vault/general/overview.md) に保存します。 詳細については、[Azure Key Vault を使用して Always Encrypted を構成する方法](../azure-sql/database/always-encrypted-azure-key-vault-configure.md?tabs=azure-powershell)に関する記事を参照してください
 
-1. セルフホステッド統合ランタイムを設定します (存在しない場合)。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
+2. [列マスター キー (CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) が格納されているキー コンテナーへのアクセス権を付与します。 必要なアクセス許可については、こちらの[記事](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true#key-vaults)を参照してください。
 
-2. SQL Server 用の 64 ビット ODBC ドライバーを[こちら](/sql/connect/odbc/download-odbc-driver-for-sql-server)からダウンロードし、Integration Runtime コンピューターにインストールします。 このドライバーがどのように機能するかについては、「[SQL Server 用 ODBC ドライバーと共に Always Encrypted を使用する](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider)」を参照してください。
+3. リンク サービスを作成して SQL データベースに接続し、マネージド ID またはサービス プリンシパルを使用して "Always Encrypted" 機能を有効にします。 
 
-3. SQL データベースに接続するための、ODBC のデータ型を持つリンクされたサービスを作成します。 SQL 認証を使用するには、次のように ODBC 接続文字列を指定し、ユーザー名とパスワードを設定するための **基本** 認証を選択します。
 
-    ```
-    Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
-    ```
-
-4. これに応じて、データセットとコピー アクティビティを ODBC のデータ型で作成します。 詳細については [ODBC コネクタ](connector-odbc.md)に関する記事をご覧ください。
+>[!NOTE]
+>SQL Server の [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) では、次のシナリオがサポートされています。 
+>1. ソース データ ストアまたはシンク データ ストアのいずれかで、キー プロバイダー認証の種類としてマネージド ID またはサービス プリンシパルを使用する。
+>2. ソース データ ストアとシンク データ ストアの両方で、キー プロバイダー認証の種類としてマネージド ID を使用する。
+>3. ソース データ ストアとシンク データ ストアの両方で、キー プロバイダー認証の種類として同じサービス プリンシパルを使用する。
 
 ## <a name="troubleshoot-connection-issues"></a>接続の問題のトラブルシューティング
 
@@ -702,4 +755,4 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のコンピューターから SQL Server Management Studio を使用します。 たとえば `"<machine>.<domain>.corp.<company>.com,1433"` です。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページをご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

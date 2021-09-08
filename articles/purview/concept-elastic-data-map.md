@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 14890cfe7d7cd7d84642a24f1527c0732fb58622
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 80706316490cde805ef19b0f1c90f2870dc195ab
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122398068"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445791"
 ---
 # <a name="elastic-data-map-in-azure-purview"></a>Azure Purview のエラスティック データ マップ
 
@@ -36,7 +36,7 @@ Azure Purview のすべてのアカウントには、1 つの容量ユニット�
 - 資産を編集して、説明、用語集の用語などのビジネス メタデータを追加する
 - 検索結果ページに結果を返すキーワード検索。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>記憶域
 
 ストレージは、データ マップの 2 番目のコンポーネントであり、技術、ビジネス、操作、セマンティック メタデータが含まれます。
 

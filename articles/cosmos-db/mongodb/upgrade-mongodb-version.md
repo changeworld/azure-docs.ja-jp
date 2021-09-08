@@ -4,15 +4,15 @@ description: 既存の Azure Cosmos DB の MongoDB 用 API アカウントに使
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 751b5546313247b80d6e6701aa6945938cc40a50
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a90a5d7ad7696844f735a1bed2f618846758fff3
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778887"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035812"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>MongoDB 用 Azure Cosmos DB API アカウントの API バージョンをアップグレードする
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -102,3 +102,6 @@ ms.locfileid: "121778887"
 - サポート対象およびサポート対象外の [MongoDB バージョン 4.0 の機能](feature-support-40.md)について確認します。
 - サポート対象およびサポート対象外の [MongoDB バージョン 3.6 の機能](feature-support-36.md)について確認します。
 - 詳細については、[Mongo 3.6 バージョンの機能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)を参照してください。
+- Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積り](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください

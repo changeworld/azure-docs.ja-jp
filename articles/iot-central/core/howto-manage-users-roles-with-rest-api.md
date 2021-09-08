@@ -3,16 +3,16 @@ title: Azure IoT Central 内で REST API を使用してユーザーとロール
 description: IoT Central REST API を使用してアプリケーション内でユーザーとロールを管理する方法
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df4476177175fd5aadc57c3d68bedc97531aee0c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 97f97206b5071824f8bde8733d208078ddaf72bb
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448498"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473318"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-users-and-roles"></a>IoT Central REST API を使用してユーザーとロールを管理する方法
 

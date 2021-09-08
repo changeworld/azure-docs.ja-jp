@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 3ad91e8a275fca61dfc70cdf98c84984ac08f754
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: e2cdcf3b42fbb71751644efbaa394c51d2f861fc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862657"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258320"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>Azure NFS ファイル共有に関する問題のトラブルシューティングを行います
 
@@ -40,7 +40,7 @@ idmapping が無効になっており、再度有効にするものがないこ�
 - 共有のマウントを解除します
 - # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping を使用して idmapping を無効にします。
 - 共有を再度マウントします。
-- rsync を実行する場合は、無効なディレクトリ名またはファイル名が使用されていないディレクトリから、"—numeric-ids" 引数を指定した rsync を実行します。
+- rsync を実行する場合は、無効なディレクトリ名やファイル名が使用されていないディレクトリから、"—numeric-ids" 引数を指定して rsync を実行します。
 
 ## <a name="unable-to-create-an-nfs-share"></a>NFS 共有を作成できない
 

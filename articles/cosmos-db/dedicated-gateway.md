@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 08/30/2021
 ms.author: tisande
-ms.openlocfilehash: 7cc6acc29cf8019bf65d3495cfd8a00a87da11bc
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 8c253abdfc8ded8ab5507d482640d78e6d4469c8
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112914249"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226598"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Azure Cosmos DB 専用ゲートウェイ - 概要 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -67,7 +67,7 @@ Azure Cosmos DB アカウントに接続するには、次の 3 通りのやり�
 
 専用ゲートウェイ クラスターは、Core (SQL) API アカウントでプロビジョニングできます。 専用ゲートウェイ クラスターには最大 5 つのノードを含め、いつでもノードを追加または削除できます。 アカウント内のすべての専用ゲートウェイ ノードは、 [同じ接続文字列 を共有します](how-to-configure-integrated-cache.md#configuring-the-integrated-cache)。
 
-専用ゲートウェイ ノードは、互いに独立しています。 複数の専用ゲートウェイ ノードをプロビジョニングする場合、任意の 1 つのノードで任意の要求をルーティングできます。 さらに、各ノードには、他のノードとは別のキャッシュがあります。 各ノード内のキャッシュされたデータは、その特定のノードから最近[書き込まれたか読み取られた](integrated-cache.md#item-cache) データによって異なります。 つまり、項目またはクエリが 1 つのノードにキャッシュされている場合、必ずしも他のノードにキャッシュされるとは限りません。
+専用ゲートウェイ ノードは、互いに独立しています。 複数の専用ゲートウェイ ノードをプロビジョニングする場合、任意の 1 つのノードで任意の要求をルーティングできます。 さらに、各ノードには、他のノードとは別の統合キャッシュがあります。 各ノード内のキャッシュされたデータは、その特定のノードから最近[書き込まれたか読み取られた](integrated-cache.md#item-cache) データによって異なります。 つまり、項目またはクエリが 1 つのノードにキャッシュされている場合、必ずしも他のノードにキャッシュされるとは限りません。
 
 開発では、1 つのノードから開始することをお勧めしますが、実稼働環境では、高可用性を確保するために 3 つ以上のノードをプロビジョニングする必要があります。 [統合キャッシュ を使用して専用ゲートウェイ クラスターをプロビジョニングする方法について説明します](how-to-configure-integrated-cache.md)。 複数の専用ゲートウェイ ノードをプロビジョニングすると、専用ゲートウェイ クラスターは、専用ゲートウェイ ノードの 1 つが使用できない場合でも、引き続き要求をルーティングし、キャッシュされたデータを提供できます。
 
@@ -100,6 +100,28 @@ Azure Cosmos DB アカウントに接続するには、次の 3 通りのやり�
 - 専用ゲートウェイは、SQL API アカウントでのみサポートされています。
 - [IP ファイアウォール](how-to-configure-firewall.md)または[プライベート リンク](how-to-configure-private-endpoints.md)が構成されている Azure Cosmos DB アカウントに専用ゲートウェイをプロビジョニングすることはできません。
 - [利用可能なゾーン](high-availability.md#availability-zone-support)が有効になっている Azure Cosmos DB アカウントに専用ゲートウェイをプロビジョニングすることはできません。
+- 専用ゲートウェイ経由でルーティングされるデータ プレーン要求は、[ロールベースのアクセス制御 (RBAC)](how-to-setup-rbac.md) を使用して認証することはできません
+
+## <a name="supported-regions"></a>サポートされているリージョン
+
+専用ゲートウェイは、パブリック プレビュー段階であり、一部の Azure リージョンではまだサポートされません。 パブリック プレビューの間に、新しく容量を追加していく予定です。 専用ゲートウェイが一般提供となった時点では、リージョンの制限を設ける予定はありません。
+
+サポート対象 Azure リージョンの最新の一覧を次に示します。
+
+| **南北アメリカ** | **ヨーロッパおよびアフリカ**  | **アジア太平洋**  |
+| ------------ | -------- | ----------- | 
+| ブラジル南部      | フランス中部    | オーストラリア中部 |
+| カナダ中部  | フランス南部    | オーストラリア中部 2 |
+| カナダ東部     | ドイツ北部   | オーストラリア南東部 |
+| 米国中部     | ドイツ中西部   | インド中部 |
+| 米国東部     | 北ヨーロッパ   | 東アジア |
+| 米国東部 2     | スイス北部   | 西日本 |
+| 米国中北部     | 英国南部   | 韓国中部 |
+| 米国中南部     | 英国西部   | 韓国南部 |
+| 米国中西部     | 西ヨーロッパ   | 東南アジア |
+| 米国西部     |   | アラブ首長国連邦中部 |
+| 米国西部 2     |    | インド西部 |
+
 
 ## <a name="next-steps"></a>次の手順
 
@@ -108,3 +130,6 @@ Azure Cosmos DB アカウントに接続するには、次の 3 通りのやり�
 - [統合キャッシュ](integrated-cache.md)
 - [統合キャッシュの構成](how-to-configure-integrated-cache.md)
 - [統合キャッシュのよくあるご質問](integrated-cache-faq.md)
+- Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

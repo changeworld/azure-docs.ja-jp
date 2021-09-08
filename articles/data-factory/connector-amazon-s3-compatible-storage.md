@@ -7,13 +7,13 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 05/11/2021
-ms.openlocfilehash: 12d7080a9f000df1f2e7469defef820cd4231e1b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 98191eb2e958510fe01fc5a02e0490bf7c2d41ae
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638181"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306999"
 ---
 # <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon S3 対応ストレージからのデータのコピー
 
@@ -47,7 +47,32 @@ Amazon S3 のアクセス許可の完全な一覧については、[ポリシー
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-amazon-s3-compatible-storage-using-ui"></a>UI を使用して Amazon S3 対応ストレージのリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Amazon S3 対応ストレージのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用して新しいリンク サービスを作成します。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用して新しいリンク サービスを作成します。":::
+
+2. Amazon を検索し、Amazon S3 対応ストレージ コネクタを選択します。
+
+   :::image type="content" source="media/connector-amazon-s3-compatible-storage/amazon-s3-compatible-storage-connector.png" alt-text="Amazon S3 対応ストレージ コネクタを選択します。":::    
+
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+   :::image type="content" source="media/connector-amazon-s3-compatible-storage/configure-amazon-s3-compatible-storage-linked-service.png" alt-text="Amazon S3 対応ストレージのリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細 
 
 以下のセクションで、Amazon S3 対応ストレージに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 

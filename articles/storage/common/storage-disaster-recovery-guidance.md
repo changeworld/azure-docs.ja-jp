@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 383757cf20c7ac508aa396b947640c3a1221052d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 29392d17d31926f7ae261bad96b53623b3c5a36a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749316"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470510"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -67,7 +67,8 @@ Azure Storage での冗長性の詳細については、「[Azure Storage の冗
 
 お客様が管理するアカウントのフェールオーバーでは、何らかの理由でプライマリが使用できなくなった場合、ストレージ アカウント全体をセカンダリ リージョンにフェールオーバーすることができます。 セカンダリ リージョンへのフェールオーバーを強制的に実行すると、クライアントは、フェールオーバー完了後にセカンダリ エンドポイントへのデータの書き込みを開始することができます。 フェールオーバーには、通常、約 1 時間かかります。
 
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+> [!NOTE]
+> この機能は、階層型名前空間 (Azure Data Lake Storage Gen2) を持つアカウントではまだサポートされていません。 詳細については、「[Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](../blobs/data-lake-storage-supported-blob-storage-features.md)」を参照してください。
 
 ### <a name="how-an-account-failover-works"></a>アカウントのフェールオーバーのしくみ
 

@@ -8,32 +8,36 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fecf2ea565343ad2f91471ba1be98df513b55478
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: e8b469eb7eb94ad5454f79c4c4893597670867ac
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115702"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969510"
 ---
 # <a name="mount-smb-azure-file-share-on-windows"></a>SMB Azure ファイル共有を Windows でマウントする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
 
 Azure ファイル共有がホストされている Azure リージョンの外の Azure ファイル共有 (オンプレミスの共有、他の Azure リージョン内の共有など) をパブリック エンドポイント経由で使用するために、OS は SMB 3.x をサポートする必要があります。 それより前のバージョンの、SMB 2.1 しかサポートされない Windows からパブリック エンドポイント経由で Azure ファイル共有をマウントすることはできません。
 
-| Windows のバージョン | SMB のバージョン | SMB チャンネルの最大暗号化 |
+| Windows のバージョン | SMB のバージョン | Azure Files SMB マルチチャネル | SMB チャンネルの最大暗号化 |
 |-|-|-|-|
-| Windows 10 バージョン 21H1 | SMB 3.1.1 | AES-256-GCM |
-| Windows Server 半期チャネル (バージョン 21H1) | SMB 3.1.1 | AES-256-GCM |
-| Windows Server 2019 | SMB 3.1.1 | AES-128-GCM |
-| Windows 10<br />バージョン: 1607、1809、1909、2004、20H2 | SMB 3.1.1 | AES-128-GCM |
-| Windows Server 半期チャネル<br />バージョン: 2004 および 20H2 | SMB 3.1.1 | AES-128-GCM |
-| Windows Server 2016 | SMB 3.1.1 | AES-128-GCM |
-| Windows 10 バージョン 1507 | SMB 3.0 | AES-128-GCM |
-| Windows 8.1 | SMB 3.0 | AES-128-CCM |
-| Windows Server 2012 R2 | SMB 3.0 | AES-128-CCM |
-| Windows Server 2012 | SMB 3.0 | AES-128-CCM |
-| Windows 7<sup>1</sup> | SMB 2.1 | サポートされていません |
-| Windows Server 2008 R2<sup>1</sup> | SMB 2.1 | サポートされていません |
+| Windows Server 2022 | SMB 3.1.1 | Yes | AES-256-GCM |
+| Windows 10 バージョン 21H1 | SMB 3.1.1 | KB5003690 以降はサポート | AES-256-GCM |
+| Windows Server バージョン 20H2 | SMB 3.1.1 | KB5003690 以降はサポート | AES-128-GCM |
+| Windows 10、バージョン 20H2 | SMB 3.1.1 | KB5003690 以降はサポート | AES-128-GCM |
+| Windows Server バージョン 2004 | SMB 3.1.1 | KB5003690 以降はサポート | AES-128-GCM |
+| Windows 10 バージョン 2004 | SMB 3.1.1 | KB5003690 以降はサポート | AES-128-GCM |
+| Windows Server 2019 | SMB 3.1.1 | KB5003703 以降はサポート | AES-128-GCM |
+| Windows 10 Version 1809 | SMB 3.1.1 | KB5003703 以降はサポート | AES-128-GCM |
+| Windows Server 2016 | SMB 3.1.1 | KB5004238 以降はサポート | AES-128-GCM |
+| Windows 10 Version 1607 | SMB 3.1.1 | KB5004238 以降はサポート | AES-128-GCM |
+| Windows 10 バージョン 1507 | SMB 3.1.1 | KB5004249 以降はサポート | AES-128-GCM |
+| Windows Server 2012 R2 | SMB 3.0 | いいえ | AES-128-CCM |
+| Windows 8.1 | SMB 3.0 | いいえ | AES-128-CCM |
+| Windows Server 2012 | SMB 3.0 | いいえ | AES-128-CCM |
+| Windows Server 2008 R2<sup>1</sup> | SMB 2.1 | いいえ | サポートなし |
+| Windows 7<sup>1</sup> | SMB 2.1 | いいえ | サポートされていません |
 
 <sup>1</sup>Windows 7 および Windows Server 2008 R2 に対する Microsoft の通常のサポートは終了しました。 [拡張セキュリティ更新 (ESU) プログラム](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)を介してのみ、セキュリティ更新プログラムの追加サポートを購入できます。 これらのオペレーティング システムから移行することを強くお勧めします。
 

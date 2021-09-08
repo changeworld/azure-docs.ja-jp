@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: 92d1c5babc2daacdd0b0687a5ff779fcd4272e71
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 7dc82a163a9365532b21af447b823659bf40c71f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577072"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225326"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Deployment Planner のコスト見積もりを確認する 
 
@@ -65,7 +65,10 @@ DR コストの合計は、レプリケーションと DR ドリルという 2 �
 **[Replication cost]\(レプリケーション コスト\)** :レプリケーション時に発生するコストです。 ストレージ、ネットワーク、Azure Site Recovery ライセンスのコストが含まれます。 
 
 **[DR-Drill cost]\(DR ドリル コスト\)** :DR ドリル時に発生するコストです。 DR ドリル中は、Azure Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。
-1 年間の合計 DR ドリル期間 = DR ドリル数 x 各 DR ドリル期間 (日) の平均 DR ドリル コスト (月ごと) = 合計 DR ドリル コスト / 12
+
+1.  1 年間の合計 DR ドリル期間 = DR ドリル数 x 各 DR ドリル期間 (日)
+
+2.  平均 DR ドリル コスト (月ごと) = 合計 DR ドリル コスト / 12
 
 ### <a name="storage-cost-table"></a>ストレージ コスト テーブル:
 このテーブルには、レプリケーションと DR ドリルに関して発生する Premium ストレージと Standard ストレージのコストが、割引を適用した場合と適用しない場合とに分けて表示されます。

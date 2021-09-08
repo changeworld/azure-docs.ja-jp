@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ea564f87f3aaad9d4641a4f86b67cc274a0fcd1b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 66e18185c451ebb09bda97c3c3fcd132dd896930
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305527"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535509"
 ---
 ### <a name="active-service-health-event-subscription-impact"></a>Active Service Health イベント サブスクリプションの影響
 

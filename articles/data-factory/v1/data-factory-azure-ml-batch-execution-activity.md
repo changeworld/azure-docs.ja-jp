@@ -1,20 +1,20 @@
 ---
 title: Azure Data Factory を使って予測データ パイプラインを作成する
-description: Azure Data Factory と ML Studio (クラシック) を使用して予測パイプラインを作成する方法について説明します。
+description: Azure Data Factory と Machine Learning Studio (クラシック) を使用して予測パイプラインを作成する方法について説明します。
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a613a48f1787c456885aabb0012efb4d71829aae
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: d4a930677f4760ae5f2d77dd4f148097ae67f465
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396850"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598016"
 ---
-# <a name="create-predictive-pipelines-using-ml-studio-classic-and-azure-data-factory"></a>ML Studio (クラシック) と Azure Data Factory を使用して予測パイプラインを作成する
+# <a name="create-predictive-pipelines-using-machine-learning-studio-classic-and-azure-data-factory"></a>Machine Learning スタジオ (クラシック) と Azure Data Factory を使用して予測パイプラインを作成する
 
 > [!div class="op_single_selector" title1="変換アクティビティ"]
 > * [Hive アクティビティ](data-factory-hive-activity.md)
@@ -32,7 +32,7 @@ ms.locfileid: "122396850"
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[Data Factory での Machine Learning を使用したデータ変換](../transform-data-using-machine-learning.md)に関するページを参照してください。
 
-### <a name="ml-studio-classic"></a>ML Studio (クラシック)
+### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (クラシック)
 [ML Studio (クラシック)](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、デプロイできます。 大まかに次の 3 つの手順で行われます。
 
 1. **トレーニング実験を作成する**。 この手順を実行するには、ML Studio (クラシック) を使用します。 スタジオ (クラシック) は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。

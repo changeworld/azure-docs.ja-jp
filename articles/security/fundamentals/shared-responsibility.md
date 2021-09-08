@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2021
+ms.date: 08/31/2021
 ms.author: terrylan
-ms.openlocfilehash: 5d9d3878c34bd203b6c14b45e1196245ef8524f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14d53d3f58c1bbdb03a5ac510f6a2e44157906f9
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99548951"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272115"
 ---
 # <a name="shared-responsibility-in-the-cloud"></a>クラウドにおける共同責任
 
@@ -29,7 +29,7 @@ ms.locfileid: "99548951"
 ## <a name="division-of-responsibility"></a>責任の分担
 オンプレミスのデータセンターでは、お客様がスタック全体を所有します。 クラウドに移行すると、責任の一部は Microsoft に移譲されます。 次の図は、スタックのデプロイの種類に応じて、お客様と Microsoft の間の責任の範囲を示しています。
 
-![責任領域](./media/shared-responsibility/shared-responsibility.png)
+:::image type="content" source="media/shared-responsibility/shared-responsibility.svg" alt-text="責任ゾーンを示す図。" border="false":::
 
 すべてのクラウド デプロイの種類において、データと ID を所有するのはあなたです。 お客様にはデータと ID、オンプレミス リソース、お客様が制御するクラウド コンポーネント (サービスの種類によって異なります) を保護する責任があります。
 
@@ -45,7 +45,7 @@ ms.locfileid: "99548951"
 
 次の図は、リソースが限られているために多くのセキュリティ責任が満たされていない従来のアプローチを示しています。 クラウド対応のアプローチでは、日々のセキュリティ責任をクラウド プロバイダーにシフトし、お客様のリソースを再割り当てすることができます。
 
-![クラウド時代のセキュリティ上の利点](./media/shared-responsibility/cloud-enabled-security.png)
+:::image type="content" source="media/shared-responsibility/cloud-enabled-security.svg" alt-text="クラウド時代のセキュリティ上の利点を示す図。" border="false":::
 
 クラウド対応のアプローチでは、クラウドベースのセキュリティ機能を活用して有効性を高め、クラウド インテリジェンスを使用して脅威の検出と応答時間を向上させることもできます。 クラウド プロバイダーに責任をシフトすることで、セキュリティの適用範囲を広げることができるため、これまでセキュリティに費やしてきたリソースと予算を、事業のその他の優先事項に割り当てることができます。
 

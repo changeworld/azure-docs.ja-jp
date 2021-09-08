@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 353ba2f51f93056547cbd9bb21455f277828e5c5
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: dd63a04616848acfb3971a97f8363498e6ba4e55
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253348"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835744"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure Digital Twins でのエンドポイントとルートの管理
 
@@ -432,6 +432,9 @@ API を使用して、カスタム フィルターを記述できます。 フ�
 | Content type | データ値のコンテンツ タイプ | `datacontenttype = '<content-type>'` | コンテンツ タイプは`application/json` です。 |
 | 仕様バージョン | 使用しているイベント スキーマのバージョン | `specversion = '<version>'` | バージョンは `1.0` である必要があります。 これは、CloudEvents スキーマ バージョン 1.0 を示しています。 |
 | 通知本文 | 通知の `data` フィールドの任意のプロパティを参照します | `$body.<property>` | 通知の例については、「[イベント通知](concepts-event-notifications.md)」をご覧ください。 `data` フィールドの任意のプロパティは、`$body` を使用して参照できます
+
+>[!NOTE]
+> Azure Digital Twins では現在、配列内のフィールドに基づくイベントのフィルタリングはサポートされていません。 これには、[デジタル ツインの変更通知](concepts-event-notifications.md#digital-twin-change-notifications)の `patch` セクション内のプロパティを条件とするフィルタリングも含まれます。
 
 上記のデータへの参照によって返される値としては、次のデータ型がサポートされています。
 

@@ -3,19 +3,19 @@ title: カスタム ニューラル音声の概要 - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: カスタム ニューラル音声は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/18/2021
-ms.author: lajanuar
-ms.openlocfilehash: 155c62791426ceafde70c173370d4056a6b8956c
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 32bdd0db2008d9f5b49bab26033f57c9e5e59847
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068976"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540741"
 ---
 # <a name="get-started-with-custom-neural-voice"></a>カスタム ニューラル音声の概要
 

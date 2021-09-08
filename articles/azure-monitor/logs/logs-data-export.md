@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: c0eea1c7f041899d5c00062de2cbf35f83b9d53b
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 741f2cc4176914417b02bacc9911988a41c5827d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662088"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427302"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -538,7 +538,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>サポート対象外のテーブル
 サポート対象外のテーブルがデータ エクスポート ルールに含まれている場合、構成は成功しますが、そのテーブルのデータはエクスポートされません。 そのテーブルが後でサポートされるようになると、その時点でテーブルのデータがエクスポートされます。
 
-存在しないテーブルがデータ エクスポート ルールに含まれている場合、"Table <tableName> does not exist in the workspace (テーブル <tableName> がワークスペースに存在しません)" エラーで失敗します。
+存在しないテーブルがデータ エクスポート ルールに含まれている場合、"Table \<tableName\> does not exist in the workspace (テーブル \<tableName\> がワークスペースに存在しません)" エラーで失敗します。
 
 
 ## <a name="supported-tables"></a>サポート対象のテーブル

@@ -5,13 +5,13 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2021
-ms.openlocfilehash: 055b933834c3cf112742d011a7f34205a07c5e04
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/17/2021
+ms.openlocfilehash: 79a64a7eb1e06fef3c9e534a69324faaf9f23107
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746564"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867536"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でのマッピング データ フローにおけるコネクタと形式に関する問題をトラブルシューティングする
 
@@ -102,7 +102,7 @@ ADF データ フローでは、Cosmos DB または JSON ソースで map デー
 #### <a name="cause"></a>原因
 Cosmos DB と JSON では、これらはスキーマ フリー接続です。関連する Spark コネクタではサンプル データを使用してスキーマが推論され、そのスキーマが Cosmos DB/JSON 送信元スキーマとして使用されます。 スキーマを推論するとき、Cosmos DB/JSON Spark コネクタでは、オブジェクト データは map データ型ではなく構造体としてのみ推論できます。そのため、map 型を直接サポートすることはできません。
 
-#### <a name="recommendation"></a>推奨 
+#### <a name="recommendation"></a>推奨事項 
 この問題を解決するには、次の例と手順を参照して、Cosmos DB/JSON ソースのスクリプト (DSL) を手動で更新し、map データ型がサポートされるようにします。
 
 **例**:
@@ -119,14 +119,14 @@ Cosmos DB と JSON では、これらはスキーマ フリー接続です。関
 
 map 型のサポート:
 
-|型 |map 型のサポートの有無   |コメント|
+|Type |map 型のサポートの有無   |コメント|
 |-------------------------|-----------|------------|
 |Excel、CSV  |いいえ      |どちらも、プリミティブ型の表形式データ ソースであるため、map 型をサポートする必要はありません。 |
-|Orc、Avro |はい |なし。|
+|Orc、Avro |はい |[なし] :|
 |JSON|はい |map 型を直接サポートすることはできません。このセクションの推奨事項に従って、ソース プロジェクションでスクリプト (DSL) を更新してください。|
 |Cosmos DB |はい |map 型を直接サポートすることはできません。このセクションの推奨事項に従って、ソース プロジェクションでスクリプト (DSL) を更新してください。|
 |Parquet |はい |現在、Parquet データセットでは複合データ型がサポートされていないため、map 型を取得するには、データフロー Parquet ソースの下にある "インポート プロジェクション" を使用する必要があります。|
-|XML |いいえ |なし。|
+|XML |いいえ |[なし] :|
 
 ### <a name="consume-json-files-generated-by-copy-activities"></a>コピー アクティビティによって生成された JSON ファイルを使用する
 
@@ -761,12 +761,62 @@ Snowflake のクエリでエラーが発生した場合は、次の手順に従�
     
 1. Snowflake の SQL クエリは、テストと検証が終了したら、データ フローの Snowflake ソースで直接使用することができます。
 
+### <a name="the-expression-type-does-not-match-the-column-data-type-expecting-variant-but-got-varchar"></a>式の型が列のデータ型と一致しません。VARIANT が必要ですが、VARCHAR が取得されました 
+
+#### <a name="symptoms"></a>現象
+
+Snowflake テーブルにデータを書き込もうとすると、次のエラーが発生する場合があります。
+
+`java.sql.BatchUpdateException: SQL compilation error: Expression type does not match column data type, expecting VARIANT but got VARCHAR`
+
+#### <a name="cause"></a>原因
+
+入力データの列の型は文字列ですが、これは Snowflake シンクの関連する列の VARIANT 型と異なります。
+
+複雑なスキーマ (配列/マップ/構造体) のデータを新しい Snowflake テーブルに格納すると、データ フローの型は、その物理的な型である VARIANT に自動的に変換されます。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/physical-type-variant.png" alt-text="テーブル内の VARIANT 型を示すスクリーンショット。"::: 
+
+次の図に示すように、関連する値は JSON 文字列として格納されます。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/json-string.png" alt-text="格納されている JSON 文字列を示すスクリーンショット。"::: 
+
+#### <a name="recommendation"></a>推奨事項
+
+Snowflake VARIANT は、構造体、マップ、配列のいずれかの型のデータ フロー値のみを受け取ります。 入力データ列の値が JSON、XML、その他の文字列の場合は、次のいずれかのオプションを使用してこの問題を解決します。
+
+- **オプション-1**: 入力データ列の値を構造体、マップ、または配列型に変換するために、Snowflake をシンクとして使用する前に、[解析変換](./data-flow-parse.md)を使用します。次に例を示します。
+
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/parse-transformation.png" alt-text="解析変換を示すスクリーンショット。"::: 
+
+    > [!Note]
+    > VARIANT 型の Snowflake 列の値は、Spark では既定で文字列として読み取られます。
+
+- **オプション-2**: Snowflake サーバー (`https://{accountName}.azure.snowflakecomputing.com/`、{accountName} を自分のアカウント名に置き換える) にログインして、Snowflake ターゲット テーブルのスキーマを変更します。 各手順でクエリを実行して、次の手順を適用します。
+    1. VARCHAR を含む新しい列を 1 つ作成して、値を格納します。 <br/>
+        ```SQL
+        alter table tablename add newcolumnname varchar;
+        ```    
+    1. VARIANT の値を新しい列にコピーします。 <br/>
+    
+        ```SQL
+        update tablename t1 set newcolumnname = t1."details"
+        ```
+    1. 使用していない VARIANT 列を削除します。 <br/>
+        ```SQL
+        alter table tablename drop column "details";
+        ```
+    1. 新しい列の名前を古い名前に変更します。 <br/>
+        ```SQL
+        alter table tablename rename column newcolumnname to "details";
+        ```
+
 ## <a name="next-steps"></a>次のステップ
 トラブルシューティングの詳細について、次のリソースを参照してください。
 
 *  [Azure Data Factory でマッピング データ フローをトラブルシューティングする](data-flow-troubleshoot-guide.md)
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)

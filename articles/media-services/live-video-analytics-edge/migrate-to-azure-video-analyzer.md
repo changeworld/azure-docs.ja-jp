@@ -3,12 +3,12 @@ title: Live Video Analytics から Azure Video Analyzer への移行
 description: Live Video Analytics から Azure Video Analyzer に移行する方法について説明します。
 ms.topic: how-to
 ms.date: 08/16/2021
-ms.openlocfilehash: a2225e25685bb9177851379fd86b59c986ff28f0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 452b3430dd1e0eafbfe35166339e42bcbfe1f47b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326440"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471698"
 ---
 # <a name="how-to-migrate-from-live-video-analytics-to-azure-video-analyzer"></a>Live Video Analytics から Azure Video Analyzer に移行する方法
 
@@ -332,7 +332,7 @@ Live Video Analytics で使用されるメディア グラフ トポロジと、
 | gRPC 拡張機能を使用した継続的なビデオ記録と推論 | [cvr-with-grpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json) | [cvr-with-grpcExtension](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/cvr-with-grpcExtension/topology.json) |
 | HTTP 拡張機能を使用した継続的なビデオ記録と推論 | [cvr-with-httpExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-httpExtension/2.0/topology.json) | [cvr-with-httpExtension](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/cvr-with-httpExtension/topology.json) |
 | モーション検出を使用した継続的なビデオ記録             | [cvr-with-motion](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-motion/2.0/topology.json) | [cvr-with-motion](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/cvr-with-motion/topology.json) |
-| 外部 AI からのイベントに基づく [Azure Video Analyzer Video/Assets] へのイベント ベースのビデオ記録 | [evr-grpcExtension-assets](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-grpcExtension-assets) | [evr-grpcExtension-video-sink](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/evr-grpcExtension-video-sinkhttps://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/evr-grpcExtension-video-sink) |
+| 外部 AI からのイベントに基づく [Azure Video Analyzer Video/Assets] へのイベント ベースのビデオ記録 | [evr-grpcExtension-assets](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-grpcExtension-assets) | [evr-grpcExtension-video-sink](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/evr-grpcExtension-video-sink) |
 | 外部 AI からのイベントに基づく [Azure Video Analyzer ビデオまたはアセット] へのイベント ベースのビデオ記録 | [evr-httpExtension-assets](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-httpExtension-assets) | [evr-httpExtension-video-sink](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/evr-httpExtension-video-sink) |
 | 外部推論エンジンによって検出された特定のオブジェクトに基づいた [アセットまたはビデオ シンク] へのイベント ベースのビデオ記録 | [evr-hubMessages-assets](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/2.0/topology.json) | [evr-hubMessages-video-sink](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json) |
 | IoT Edge Hub を介して送信されたメッセージに基づいたファイルへのイベント ベースのビデオ記録 | [evr-hubMessage-files](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/2.0/topology.json) | [evr-hubMessage-file-sink](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-hubMessage-file-sink/topology.json) |

@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/29/2021
+ms.date: 09/05/2021
 ms.author: memildin
-ms.openlocfilehash: 8549734a643c97771681f2e90a1dad2e2c7ed7a3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: dee498ea30bc31fa0193f6bbff3c01261260d03b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749149"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537762"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Security Center での追加の脅威の防止
 組み込みの [Azure Defender の保護](azure-defender.md)に加えて、Azure Security Center によって次の脅威の防止機能も提供されています。
@@ -28,16 +28,6 @@ Security Center が疑わしいネットワーク アクティビティに対し
 - 仮想マシンのネットワーク エグレス トラフィックが、外部 ID ソリューションによってブロックされていない。
 
 Azure ネットワーク レイヤー アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azurenetlayer)に関するページを参照してください。
-
-
->[!NOTE]
-> これらの分析では、Microsoft Cloud App Security が利用されています。 これらの分析を活用するには、Cloud App Security ライセンスをアクティブにする必要があります。 Cloud App Security ライセンスをお持ちの場合、これらのアラートは既定で有効になります。 アラートを無効にするには、次のようにします。
->
-> 1. Security Center のメニューから、 **[価格と設定]** を選択します。
-> 1. 変更するサブスクリプションを選択します。
-> 1. **[Integrations]\(統合\)** を選択します。
-> 1. **[私のデータに Microsoft Cloud App Security がアクセスすることを許可します]** チェック ボックスをオフにして、 **[保存]** を選択します。
-
 
 >[!NOTE]
 > Security Center では、そのリソースと同じ地域でセキュリティ関連の顧客データが格納されます。 Microsoft によってまだリソースの地域に Security Center がデプロイされていない場合、米国でデータが格納されます。 Cloud App Security が有効になっている場合、この情報は、Cloud App Security の地域の場所のルールに従って格納されます。 詳細については、[非リージョン サービスのデータ ストレージ](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
@@ -86,4 +76,4 @@ Azure DDoS Protection アラートの一覧については、[アラートのリ
 * [Azure Security Center のすべてのアラートの参照テーブル](alerts-reference.md)
 * [Security alerts in Azure Security Center](security-center-alerts-overview.md)
 * [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)
-* [継続的に Security Center データをエクスポートする](continuous-export.md)
+* [Security Center のデータを連続的にエクスポートする](continuous-export.md)

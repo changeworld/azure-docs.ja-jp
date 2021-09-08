@@ -5,16 +5,17 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: bdd47962b56324f9832070b13644b5489ee38989
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 91230df3223f1227e2126ad48beaba781a3c28cc
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727234"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214968"
 ---
 # <a name="use-azure-private-link-to-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に接続する
 
-[Azure Private Link](../../private-link/private-link-overview.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS (サービスとしてのプラットフォーム) サービスを仮想ネットワークに安全にリンクできます。 多くのサービスでは、リソースごとにエンドポイントを設定するだけです。 ただし、Azure Monitor は、相互に連携してワークロードを監視する、相互接続されたさまざまなサービスの集まりです。 
+[Azure Private Link](../../private-link/private-link-overview.md) を使用すると、プライベート エンドポイントを使用することにより、Azure PaaS (サービスとしてのプラットフォーム) リソースを仮想ネットワークに安全にリンクできます。 Azure Monitor は、相互に連携してワークロードを監視する、相互接続されたさまざまなサービスの集まりです。 Azure Monitor Private Link は、監視ネットワークの境界を定義して、プライベート エンドポイントを Azure Monitor リソースのセットに接続します。 このセットは、Azure Monitor Private Link スコープ (AMPLS) と呼ばれています。
+
 
 ## <a name="advantages"></a>長所
 
@@ -30,19 +31,21 @@ Private Link を使用すると、次のことができます。
 
 ## <a name="how-it-works"></a>しくみ
 
-Azure Monitor Private Link スコープ (AMPLS) によって、プライベート エンドポイント (およびそれらが含まれている VNet) が 1 つ以上の Azure Monitor リソース (Log Analytics ワークスペースと Application Insights コンポーネント) に接続されます。
+### <a name="overview"></a>概要
+Azure Monitor Private Link スコープによって、プライベート エンドポイント (およびそれらが含まれている VNet) が 1 つ以上の Azure Monitor リソース (Log Analytics ワークスペースと Application Insights コンポーネント) に接続されます。
 
 ![基本的なリソース トポロジの図](./media/private-link-security/private-link-basic-topology.png)
 
 * VNet のプライベート エンドポイントを使用すると、これらのエンドポイントのパブリック IP を使用するのではなく、ネットワークのプールのプライベート IP を介して Azure Monitor エンドポイントに接続することができます。 これにより、不要な送信トラフィックへの VNet を開かなくても、Azure Monitor リソースを使用し続けることができます。 
-* プライベート エンドポイントから Azure Monitor リソースへのトラフィックは、パブリック ネットワークにルーティングされるのではなく、Microsoft Azure のバックボーンを経由します。 
+* プライベート エンドポイントから Azure Monitor リソースへのトラフィックは、パブリック ネットワークにルーティングされるのではなく、Microsoft Azure のバックボーンを経由します。
+* 優先アクセス モードを使用して、Azure Monitor Private Link リソースへのトラフィックのみを許可するか、Private Link リソースと Private Link 以外のリソース (AMPLS 外のリソース) の両方へのアクセスを許可するように、Private Link スコープを構成できます。
 * パブリック ネットワークからの取り込みとクエリを許可または拒否するように、各ワークスペースまたはコンポーネントを構成できます。 これによりリソース レベルの保護が提供されるため、特定のリソースへのトラフィックを制御できます。
 
 > [!NOTE]
-> 1 つの Azure Monitor リソースは複数の AMPLS に属することはできますが、1 つの VNet を複数の AMPLS に接続することはできません。 
+> VNet は、1 つの AMPLS にのみ接続できます。これには、Private Link 経由で到達できる最大 50 のリソースがリストされています。
 
-### <a name="azure-monitor-private-links-and-your-dns-its-all-or-nothing"></a>Azure Monitor Private Link と DNS: 全か無か
-一部の Azure Monitor サービスでは、グローバル エンドポイントが使用されます。つまり、ワークスペースまたはコンポーネントを対象とする要求が処理されます。 Private Link 接続を設定すると、トラフィックを Private Link 経由で送信するために、Azure Monitor エンドポイントをプライベート IP にマップするように DNS が更新されます。 グローバル エンドポイントに関しては、(1 つのリソースに対してでも) Private Link を設定すると、すべてのリソースへのトラフィックに影響します。 つまり、特定のコンポーネントまたはワークスペースのみの Private Link 接続を作成することはできません。
+### <a name="azure-monitor-private-link-relies-on-your-dns"></a>Azure Monitor Private Link と DNS の依存関係
+Private Link 接続を設定すると、トラフィックをその Private Link 経由で送信するため、Azure Monitor エンドポイントをプライベート IP にマップするように DNS ゾーンが設定されます。 Azure Monitor では、リソース固有のエンドポイントと、複数のワークスペース/コンポーネントに対するトラフィックを処理するリージョン エンドポイントまたはグローバル エンドポイントの両方が使用されます。 リージョン エンドポイントおよびグローバル エンドポイントについては、Private Link を設定すると (単一のリソースであっても)、**すべての** リソースに対するトラフィックを制御する DNS マッピングが影響を受けます。 つまり、1 つの Private Link を設定するだけで、すべてのワークスペースまたはコンポーネントに対するトラフィックが影響を受ける可能性があります。
 
 #### <a name="global-endpoints"></a>グローバル エンドポイント
 最も重要なことですが、下のグローバル エンドポイントへのトラフィックは Private Link 経由で送信されます。
@@ -53,18 +56,25 @@ Azure Monitor Private Link スコープ (AMPLS) によって、プライベー�
 
 AMPLS に追加されない Application Insights リソースへのトラフィックは、Private Link 検証に合格せず、失敗します。
 
-![全か無かの動作の図](./media/private-link-security/all-or-nothing.png)
-
 #### <a name="resource-specific-endpoints"></a>リソース固有のエンドポイント
-クエリ エンドポイントを除くすべての Log Analytics エンドポイントがワークスペース固有です。 そのため、特定の Log Analytics ワークスペースに Private Link を作成しても、他のワークスペースへのインジェスト (または他の) トラフィックには影響しません。ここでは、引き続きパブリック Log Analytics エンドポイントが使用されます。 ただし、すべてのクエリは Private Link を介して送信されます。
+クエリ エンドポイントを除くすべての Log Analytics エンドポイントがワークスペース固有です。 そのため、特定の Log Analytics ワークスペースに Private Link を作成しても、他のワークスペースへのインジェストには影響せず、パブリック エンドポイントが引き続き使用されます。
 
-### <a name="azure-monitor-private-link-applies-to-all-networks-that-share-the-same-dns"></a>Azure Monitor Private Link は、同じ DNS を共有しているすべてのネットワークに適用されます
-一部のネットワークは、複数の VNet または接続された他のネットワークで構成されます。 これらのネットワークで同じ DNS を共有している場合は、これらのいずれかで Private Link を設定すると、DNS が更新され、すべてのネットワークのトラフィックに影響します。 上記の "全か無か" の動作のため、これに注意することが特に重要です。
 
-![複数の VNet での DNS オーバーライドの図](./media/private-link-security/dns-overrides-multiple-vnets.png)
+> [!NOTE]
+> 同一の DNS を共有するすべてのネットワークに対して、1 つの AMPLS のみを作成してください。 複数の AMPLS リソースを作成すると、Azure Monitor DNS エンドポイントが互いにオーバーライドされ、既存の環境が破壊されます。
 
-上の図では、VNet 10.0.1.x が最初に AMPLS1 に接続され、Azure Monitor のグローバル エンドポイントがその範囲の IP にマッピングされます。 その後、VNet 10.0.2.x が AMPLS2 に接続され、"*同じグローバル エンドポイント*" の DNS マッピングがその範囲の IP でオーバーライドされます。 これらの VNet はピアリングされていないため、最初の VNet はこれらのエンドポイントに接続できません。
+### <a name="private-link-access-modes-private-only-vs-open"></a>Private Link のアクセス モード: Private Only と Open
+「[Azure Monitor Private Link と DNS の依存関係](#azure-monitor-private-link-relies-on-your-dns)」で説明されているように、同一の DNS を共有するすべてのネットワークに対して、1 つの AMPLS リソースのみを作成する必要があります。 その結果、1 つのグローバル DNS またはリージョン DNS を使用する組織では、実際には 1 つの Private Link で、すべてのグローバル ネットワークまたはリージョン ネットワーク全体のすべての Azure Monitor リソースへのトラフィックを管理することになります。
 
+2021 年 9 月より前に作成された Private Link の場合、これは次のことを意味します。 
+* ログ インジェストは、その AMPLS 内のリソースに対してのみ機能します。 他のすべてのリソースへのインジェストは、サブスクリプションまたはテナントに関係なく、同じ DNS を共有するすべてのネットワークで拒否されます。
+* クエリの動作はよりオープンで、AMPLS に含まれないリソースに対してもクエリ要求が到達できます。 これは、AMPLS に含まれないリソースに対する顧客のクエリが中断されるのを回避し、リソース中心のクエリで完全な結果セットを返せるようにすることを意図したものでした。
+
+しかし、この動作は、一部の顧客には制限が厳しすぎ (AMPLS に含まれないリソースへのインジェストが中断されるため)、一部の顧客には制限が緩すぎ (AMPLS に含まれないリソースに対するクエリの実行が許可されるため) て、混乱を招きやすいことが判明しました。
+
+このため、2021 年 9 月以降に作成された Private Link では、Private Link がネットワーク トラフィックに与える影響を明示的に設定する、新しい必須の AMPLS 設定が設けられています。 新しい AMPLS リソースを作成しようとすると、インジェストとクエリに関して個別に目的のアクセス モードを選択するように要求されます。 
+* Private Only モード - Private Link リソースに対するトラフィックのみを許可します
+* Open モード - AMPLS 内のリソースと通信するのには Private Link を使用しますが、他のリソースに対するトラフィックも引き続き許可されます。 詳細については、「[プライベート リンクをネットワークに適用する方法を制御する](./private-link-design.md#control-how-private-links-apply-to-your-networks)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - [Private Link のセットアップ設計](private-link-design.md)

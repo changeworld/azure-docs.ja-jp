@@ -1,15 +1,15 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
-ms.author: lajanuar
-ms.openlocfilehash: d7ec710032c7085a2bc496a66709cc2ff793ff09
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 5a761794e8f66f55e3ea9cbb2e6df282b675ea4f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067786"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540024"
 ---
 :::row:::
     :::column span="3":::

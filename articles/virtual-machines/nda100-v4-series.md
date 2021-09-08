@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: iafinder
-ms.openlocfilehash: 7a129c8b4c03ea4ff71255f18f0637ef57aa060a
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: d323338ba5b323db5ea1a144fe1010962407f3b9
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586367"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423612"
 ---
 # <a name="nd-a100-v4-series"></a>ND A100 v4-シリーズ
 
@@ -42,17 +42,20 @@ ND A100 v4 シリーズは、単一の仮想マシン (VM) と 8 つの NVIDIA �
 InfiniBand: サポートされています, GPUDirect RDMA, 8 x 200 Gigabit HDR<br>
 Nvidia NVLink Interconnect:サポートされています<br>
 <br>
+ND A100 v4 シリーズは次のカーネル バージョンをサポートしています。 <br>
+CentOS 7.9 HPC: 3.10.0-1160.24.1.el7.x86_64 <br>
+Ubuntu 18.04: 5.4.0-1043-azure <br>
+Ubuntu 20.04: 5.4.0-1046-azure <br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD): GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大ネットワーク帯域幅 | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_ND96asr_v4 | 96 | 900 | 6000 | 8 A100 40 GB GPUs (NVLink 3.0) | 40 | 32 | 80,000 / 800 | 24,000 Mbps | 8 |
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)] <br>
 
-ND A100 v4 シリーズは次のカーネル バージョンをサポートしています。 
-- CentOS 7.9 HPC: 3.10.0-1160.24.1.el7.x86_64 <br>
-- Ubuntu 18.04: 5.4.0-1043-azure <br>
-- Ubuntu 20.04: 5.4.0-1046-azure <br>
+
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)] <br>
 
 ## <a name="other-sizes"></a>その他のサイズ
 

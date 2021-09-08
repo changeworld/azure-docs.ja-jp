@@ -1,7 +1,7 @@
 ---
 title: 画像のラベル付けとテキストのラベル付け
 titleSuffix: Azure Machine Learning
-description: 画像またはテキストにラベル付けするプロジェクトを作成して実行する方法について説明します。 支援付き機械学習ラベル付け、つまり人間参加型 (Human in the loop) のラベル付けを使用して、このタスクを補助します。
+description: データのラベル付けツールを使用して、画像にラベルを付けるか、テキストにラベルを付けします。 支援付き機械学習ラベル付け、つまり人間参加型 (Human in the loop) のラベル付けを使用して、このタスクを補助します。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.custom: data4ml
-ms.openlocfilehash: 54ed2504063cc3a0479d37127888ccb727fbd671
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c29e3dbbcb892127fc89963866dab684fe45095f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736583"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108536"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする
 
@@ -293,7 +293,7 @@ ML によるラベル付けを開始するために必要なラベル付けさ�
 
 これらの問題が発生した場合は、次のヒントを参考にしてください。
 
-|問題  |解決方法  |
+|問題  |解像度  |
 |---------|---------|
 |BLOB データストアに作成されたデータセットしか使用できない。     |  これは、現在のリリースの既知の制限です。       |
 |作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される。     | ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。         |

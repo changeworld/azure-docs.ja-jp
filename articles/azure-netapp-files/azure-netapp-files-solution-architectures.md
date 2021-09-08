@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 08/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 326a0a43d8571c0acecbbffadf1ab21b267798a2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc5d979c0c89c6f331e6b48fa1ffba30b5a91eb2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743787"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122970323"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -53,7 +53,7 @@ ms.locfileid: "121743787"
 ### <a name="file-sharing-and-global-file-caching"></a>ファイル共有とグローバル ファイル キャッシュ
 
 * [Build Your Own Azure NFS?Wrestling Linux File Shares into Cloud](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares) (独自の Azure NFS の構築: Linux ファイル共有をクラウドに移行する)
-* [グローバル ファイル キャッシュ / Azure NetApp Files のデプロイ](https://youtu.be/91LKb1qsLIM)
+* [Globally Distributed Enterprise File Sharing with Azure NetApp Files and NetApp Global File Cache](https://f.hubspotusercontent20.net/hubfs/525875/NA-580-0521-Architecture-Doc-R3.pdf) (Azure NetApp Files と NetApp Global File Cache による、グローバルに配布されるエンタープライズ ファイル共有)
 * [Azure NetApp Files のクラウド コンプライアンス](https://cloud.netapp.com/hubfs/Cloud%20Compliance%20for%20Azure%20NetApp%20Files%20-%20November%202020.pdf)
 
 ### <a name="sql-server"></a>SQL Server
@@ -90,6 +90,7 @@ ms.locfileid: "121743787"
 
 * [SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ - Azure Virtual Machines](../virtual-machines/workloads/sap/dbms_guide_oracle.md#oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux)
 * [Azure NetApp Files を使用して SAP AnyDB (Oracle 19c) をデプロイする](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
+* [Azure NetApp Files を使用した、SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ](../virtual-machines/workloads/sap/dbms_guide_ibm.md#using-azure-netapp-files)
 
 ### <a name="sap-iq-nls"></a>SAP IQ-NLS
 

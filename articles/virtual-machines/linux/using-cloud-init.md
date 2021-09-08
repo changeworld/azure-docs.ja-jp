@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: srijangupta
-ms.openlocfilehash: be1bf712d91aaaff460ff2dcc4a899f8b8a089be
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e62653a7b48ac22f4482974696ad14c13b39a88
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741765"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698857"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
+
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init 構成は、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
 
 VM のプロビジョニングとは、指定した VM Create のパラメーター値 (ホスト名、ユーザー名、パスワードなど) が Azure によって渡され、VM の起動時に使用できるようにするプロセスのことです。 "プロビジョニング エージェント" によって、これらの値を使用して VM が構成され、完了時に報告されます。 

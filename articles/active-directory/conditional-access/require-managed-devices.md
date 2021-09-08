@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11b58954eefda67f981d618b04ab2bd69fa6b43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e39a6bbde587e543afcb10cb910a675bf4c69fc
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93077763"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867563"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -31,6 +31,7 @@ ms.locfileid: "93077763"
 - **[Azure Active Directory の条件付きアクセス](./overview.md)** - この記事は、条件付きアクセスと関連する用語の概念的な概要を説明しています。
 - **[Azure Active Directory のデバイス管理の概要](../devices/overview.md)** - この記事は、組織の管理下にあるデバイスを取得する際に使用できるさまざまなオプションの概要を説明しています。 
 - **Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[Windows 10 Accounts 拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
+- **Windows 10 バージョン 1809 以降** で Firefox (**Firefox 91** 以降) をサポートするには、[Windows SSO](https://support.mozilla.org/en-US/kb/windows-sso) を構成します。
 
 >[!NOTE] 
 > Azure AD デバイスベースの条件付きアクセス ポリシーを使用して、最初のデバイス認証後に最適な実施を行うことをお勧めします。 これには、デバイスが準拠していない場合のセッションの終了とデバイス コード フローが含まれます。

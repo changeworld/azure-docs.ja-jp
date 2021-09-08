@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: f623a5012ebd02ddf55b41541bb66cc34eaa4de8
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 62e7f1b770db05f4dcd5d84cdc5f6a769566a4bd
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461235"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867590"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -86,6 +86,12 @@ Azure Kubernetes Service では、さまざまな Kubernetes バージョンを�
 
 既存の AKS クラスターを **アタッチする** 場合、現在サポートされているすべての AKS バージョンがサポートされています。
 
+> [!IMPORTANT]
+> 現在、Azure Machine Learning では、AKS バージョン **1.21.x** へのモデルのデプロイはサポートされません
+
+> [!IMPORTANT]
+> Azure Kubernetes Service では、[Blobfuse FlexVolume ドライバー](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md) (バージョン 1.16 以下の場合) および [Blob CSI ドライバー](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md) (バージョン 1.17 以上の場合) が使用されます。 そのため、クラスターのバージョンに合った正しい blobfuse 方式にデプロイするためには、クラスターのアップグレード後、[Web サービスを更新](how-to-deploy-update-web-service.md)または再デプロイすることが重要です。
+
 > [!NOTE]
 > サポートが終了した古いクラスターがあるエッジ ケースがある場合があります。 この場合、アタッチ操作を行うとエラーが返され、現在サポートされているバージョンが一覧表示されます。
 >
@@ -128,7 +134,7 @@ Result
 1.16.13
 ```
 
-**利用可能なバージョンをプログラムで確認する** には、[Container Service Client - List Orchestrators](/rest/api/container-service/container-service-client/list-orchestrators) REST API を使用します。 使用可能なバージョンを見つけるには、`orchestratorType` が `Kubernetes` になっているエントリを確認します。 関連付けられている `orchestrationVersion` エントリには、ワークスペースに **アタッチ** できるバージョンが含まれています。
+**利用可能なバージョンをプログラムで確認する** には、Container Service Client - List Orchestrators REST API を使用します。 使用可能なバージョンを見つけるには、`orchestratorType` が `Kubernetes` になっているエントリを確認します。 関連付けられている `orchestrationVersion` エントリには、ワークスペースに **アタッチ** できるバージョンが含まれています。
 
 Azure Machine Learning を使用してクラスターを **作成** するときに使用される既定のバージョンを見つけるには、`orchestratorType` が `Kubernetes`、`default` が `true` になっているエントリを見つけます。 関連付けられている `orchestratorVersion` 値が既定のバージョンです。 次の JSON スニペットは、エントリの例を示しています。
 

@@ -2,21 +2,22 @@
 title: Service Fabric 管理対象クラスター ノード タイプに仮想マシン スケール セット拡張機能を追加する
 description: Service Fabric 管理対象クラスター ノード タイプに仮想マシン スケール セット拡張機能を追加する方法
 ms.topic: article
-ms.date: 5/10/2021
-ms.openlocfilehash: 0c0aac8d7804caeb6c08657b1ed36c45958a0ea5
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.date: 8/02/2021
+ms.openlocfilehash: 8755eb7551dd7f7e572632ee50eb57467f675822
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113033697"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866393"
 ---
-# <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type"></a>Service Fabric 管理対象クラスター ノード タイプに仮想マシン スケール セット拡張機能を追加する
+# <a name="virtual-machine-scale-set-extension-support-on-service-fabric-managed-cluster-node-types"></a>Service Fabric 管理対象クラスター ノード タイプでの仮想マシン スケール セット拡張機能のサポート
 
-Service Fabric 管理対象クラスター内の各ノード タイプは、仮想マシン スケール セットによって提供されます。 これにより、Service Fabric 管理対象クラスター ノード タイプに[仮想マシン スケール セット拡張機能](../virtual-machines/extensions/overview.md)を追加できます。
+Service Fabric 管理対象クラスター内の各ノード タイプは、仮想マシン スケール セットによって提供されます。 これにより、Service Fabric 管理対象クラスター ノード タイプに[仮想マシン スケール セット拡張機能](../virtual-machines/extensions/overview.md)を追加できます。 拡張機能は、Azure VM でのデプロイ後の構成と自動化を提供する小さなアプリケーションです。 Azure プラットフォームでは、VM の構成、監視、セキュリティ、およびユーティリティのアプリケーションを対象とする多くの拡張機能をホストします。 公開元は、アプリケーションを取得し、それを拡張機能にまとめて、インストールを簡略化します。 ユーザーは必須パラメーターを指定するだけで済みます。 
 
-[Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) PowerShell コマンドを使用して、仮想マシン スケール セット拡張機能をノード タイプに追加できます。
+## <a name="add-a-virtual-machine-scale-set-extension"></a>仮想マシン スケール セット拡張機能の追加
+[Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) PowerShell コマンドを使用して、仮想マシン スケール セット拡張機能を Service Fabric 管理対象クラスター ノード タイプに追加できます。
 
-または、Azure Resource Manager テンプレート内の Service Fabric 管理対象クラスター ノード タイプで仮想マシン スケール セット拡張機能を使用することもできます。次に例を示します。
+または、Azure Resource Manager テンプレート内の Service Fabric 管理対象クラスター ノード タイプに仮想マシン スケール セット拡張機能を追加することもできます。次に例を示します。
 
 ```json
 {
