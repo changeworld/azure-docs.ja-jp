@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: 7d8f014b752d4ff0838195671ef8c919a164ebef
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: b6b422236b122244d18f0d000329b67213f36a0f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868428"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479033"
 ---
 # <a name="migrate-execute-r-script-modules-in-studio-classic"></a>スタジオで R スクリプトの実行モジュールを移行する (クラシック)
 
@@ -33,7 +33,7 @@ Azure Machine Learning デザイナーが Linux 上で実行されるように�
 
 |機能|Studio (クラシック)|Azure Machine Learning デザイナー|
 |---|---|---|
-|スクリプト インターフェイス|`maml.mapInputPort` と `maml.mapOutputPort`|関数インターフェイス|
+|スクリプト インターフェイス|`maml.mapInputPort` および `maml.mapOutputPort`|関数インターフェイス|
 |プラットフォーム|Windows|Linux|
 |インターネットにアクセス可能 |いいえ|はい|
 |メモリ|14 GB|コンピューティング SKU に依存|
@@ -87,7 +87,7 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=data.set)) 
 } 
 ```
-詳細については、デザイナーの [R スクリプトの実行モジュール リファレンス](/algorithm-module-reference/execute-r-script.md)に関するページを参照してください。
+詳細については、デザイナーの [R スクリプトの実行モジュール リファレンス](/azure/machine-learning/algorithm-module-reference/execute-r-script)に関するページを参照してください。
 
 ### <a name="install-r-packages-from-the-internet"></a>インターネットから R パッケージをインストールする
 

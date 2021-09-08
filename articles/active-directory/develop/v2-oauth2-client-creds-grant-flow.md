@@ -12,12 +12,12 @@ ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 594b04c96ddbc166c7c3f95b7b04ebc1b1a3784b
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 301a386c9c9a21cf1f988ee62c19ca7cc60e7a39
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223439"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430002"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -58,7 +58,7 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 
 この ACL ベースの認証パターンを有効にするために、Azure AD では、アプリケーションが別のアプリケーションのトークンを取得することを認可されている必要はありません。 そのため、`roles` 要求なしにアプリ専用トークンを発行できます。 API を公開するアプリケーションは、トークンを受け入れるために、アクセス許可チェックを実装する必要があります。
 
-アプリケーションに対するロールのないアプリケーション専用のアクセス トークンをアプリケーションが取得できないようにするには、[ユーザー割り当て要件がアプリに対して有効になるようにします](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 これにより、ロールが割り当てられていないユーザーとアプリケーションは、このアプリケーションのトークンを取得できなくなります。 
+アプリケーションに対するロールのないアプリケーション専用のアクセス トークンをアプリケーションが取得できないようにするには、[ユーザー割り当て要件がアプリに対して有効になるようにします](../manage-apps/add-application-portal-configure.md#configure-app-properties)。 これにより、ロールが割り当てられていないユーザーとアプリケーションは、このアプリケーションのトークンを取得できなくなります。
 
 ### <a name="application-permissions"></a>アプリケーションのアクセス許可
 
@@ -114,7 +114,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 管理者がアプリケーションにアクセス許可を承認すると、成功応答は次のようになります。
 
 ```HTTP
-GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=12345&admin_consent=True
+GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
 | パラメーター | 説明 |

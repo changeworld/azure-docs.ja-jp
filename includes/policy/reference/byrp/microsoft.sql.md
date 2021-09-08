@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 537820e30ed3860e9b9dd23ea9c68acdb502fa57
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 1201ed2629c9c42d0954e74c2c8ee8b6f804dfed
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123106704"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478836"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -26,7 +26,7 @@ ms.locfileid: "123106704"
 |[Azure SQL データベース サーバーの診断設定を Log Analytics ワークスペースに構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ea8a143-05e3-4553-abfe-f56bef8b0b70) |Azure SQL Database サーバーの監査ログを有効にして、この監査を持たない SQL Server が作成または更新されたときに、Log Analytics ワークスペースにログをストリーミングします |DeployIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DataConnectosSqServerLogs_PolicyAssignment.json) |
 |[公衆ネットワーク アクセスを無効にするように Azure SQL サーバーを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F28b0b1e5-17ba-4963-a7a4-5a1ab4400a0b) |公衆ネットワーク アクセス プロパティを無効にすると、パブリック接続がシャットダウンされ、Azure SQL Server にプライベート エンドポイントからのみアクセスできるようになります。 この構成により、Azure SQL Server のすべてのデータベースへの公衆ネットワーク アクセスが無効になります。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_PublicNetworkAccess_Modify.json) |
 |[プライベート エンドポイント接続が有効になるように Azure SQL サーバーを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e8ca470-d980-4831-99e6-dc70d9f6af87) |プライベート エンドポイント接続を使用すると、仮想ネットワーク内のプライベート IP アドレスを介した Azure SQL Database へのプライベート接続が可能になります。 この構成により、セキュリティ体制が向上し、Azure のネットワークツールとシナリオがサポートされます。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_PrivateEndpoint_DeployIfNotExists.json) |
-|[監査を有効にするように SQL Server を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4c68484-132f-41f9-9b6d-3e4b1cb55036) |SQL アセットに対して実行された操作が確実にキャプチャされるようにするには、SQL サーバーで監査が有効になっている必要があります。 これは、規制標準に準拠するために必要になる場合があります。 |DeployIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Deploy.json) |
+|[監査を有効にするように SQL Server を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4c68484-132f-41f9-9b6d-3e4b1cb55036) |SQL アセットに対して実行された操作が確実にキャプチャされるようにするには、SQL サーバーで監査が有効になっている必要があります。 これは、規制標準に準拠するために必要になる場合があります。 |DeployIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Deploy.json) |
 |[デプロイ - Log Analytics ワークスペースにストリーム配信されるように SQL Database の診断設定を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb79fa14e-238a-4c2d-b376-442ce508fc84) |SQL Database の診断設定をデプロイして、この診断設定がない SQL Database が作成または更新されたときに、リソース ログが Log Analytics ワークスペースにストリーム配信されるようにします。 |DeployIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DataConnectosSqlLogs_PolicyAssignment.json) |
 |[SQL サーバーで Advanced Data Security をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6134c3db-786f-471e-87bc-8f479dc890f6) |このポリシーを使用して、SQL サーバーでの Advanced Data Security を有効にすることができます。 これには、脅威の検出と脆弱性評価の有効化が含まれます。 SQL サーバーと同じリージョンとリソース グループにストレージ アカウントが自動的に作成され、スキャン結果が "sqlva" プレフィックスを付けて保存されます。 |DeployIfNotExists |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAdvancedDataSecurity_Deploy.json) |
 |[Azure SQL Database の診断設定をイベント ハブにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9a7c7a7d-49e5-4213-bea8-6a502b6272e0) |Azure SQL Database の診断設定をデプロイして、この診断設定がない Azure SQL Database が作成または更新されたときにリージョンのイベント ハブにストリーム配信します。 |DeployIfNotExists |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDB_DiagnosticsLog_Deploy.json) |
