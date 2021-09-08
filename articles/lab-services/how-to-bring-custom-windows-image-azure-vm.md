@@ -3,12 +3,12 @@ title: Azure Lab Services - Azure 仮想マシンから Windows カスタム イ
 description: Azure 仮想マシンから Windows カスタム イメージを取り込む方法について説明します。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 465d3c128e68e1c8a0d72f51bcf5f354da9d6818
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: dc946e770f719ad76fd0c46d5fe418a937f17867
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122831379"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452269"
 ---
 # <a name="bring-a-windows-custom-image-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Windows カスタム イメージを取り込む
 
@@ -32,7 +32,7 @@ ms.locfileid: "122831379"
 
 ## <a name="import-the-custom-image-into-a-shared-image-gallery"></a>カスタム イメージを共有イメージ ギャラリーにインポートする
 
-1. 共有イメージ ギャラリーで、[イメージ定義を作成する](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)か、既存のイメージ定義を選択します。
+1. 共有イメージ ギャラリーで、[イメージ定義を作成する](../virtual-machines/image-version.md)か、既存のイメージ定義を選択します。
      - **VM の世代** として **[Gen 1]** を選択します。
      - **オペレーティング システムの状態** に対して **特殊化されたイメージ** を作成するのか **一般化されたイメージ** を作成するのかを選択します。
 
@@ -40,7 +40,7 @@ ms.locfileid: "122831379"
     
     既存のイメージ定義を使用して、カスタム イメージの新しいバージョンを作成することも選択できます。
     
-1. [イメージ バージョンを作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-version)。
+1. [イメージ バージョンを作成します](../virtual-machines/image-version.md)。
     - **[バージョン番号]** プロパティで使用する形式は *MajorVersion.MinorVersion.Patch* です。   
     - **[ソース]** で、 **[ディスクやスナップショット]** をドロップダウン リストから選択します。
     - **[OS ディスク]** プロパティで、前の手順で作成した Azure VM のディスクを選択します。

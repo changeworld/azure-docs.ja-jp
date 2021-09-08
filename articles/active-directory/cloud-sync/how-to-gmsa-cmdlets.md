@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64eb6e15c2c53a8c82b51027471192de4e3679f2
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 5fc33aaa51a687cc6f9df8aea494d5790dad22a2
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634323"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306159"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-gmsa-powershell-cmdlets"></a>Azure AD Connect クラウド プロビジョニング エージェント gMSA PowerShell コマンドレット
 
@@ -73,7 +73,7 @@ ms.locfileid: "122634323"
 |PasswordWriteBack|Azure AD Connect の [PasswordWriteBack](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-password-writeback) アクセス許可を参照してください|
 |HybridExchangePermissions|Azure AD Connect の [HybridExchangePermissions](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-exchange-hybrid-deployment) アクセス許可を参照してください|
 |ExchangeMailPublicFolderPermissions| Azure AD Connect の [ExchangeMailPublicFolderPermissions](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-exchange-mail-public-folders) アクセス許可を参照してください|
-|CloudHR| [Descendant User objects]\(ユーザーの子孫オブジェクト\) に対して [フル コントロール] を適用し、[このオブジェクトとすべての子オブジェクト] に対して [Create/delete User objects]\(ユーザー オブジェクトの作成または削除\) を適用します|
+|CloudHR| [このオブジェクトとすべての子オブジェクト] に対して [Create/delete User objects]\(ユーザー オブジェクトの作成または削除\) を適用します|
 |すべて|上のすべてのアクセス許可が追加されます。|
 
 AADCloudSyncPermissions を次のいずれかの方法で使用できます。

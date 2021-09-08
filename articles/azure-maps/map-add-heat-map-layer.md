@@ -1,20 +1,18 @@
 ---
 title: マップにヒート マップ レイヤーを追加する | Microsoft Azure Maps
 description: ヒート マップを作成する方法について説明します。 Azure Maps Web SDK を使用し、ヒート マップ レイヤーをマップに追加する方法について説明します。 ヒート マップ レイヤーをカスタマイズする方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0145460746665756f007c50845a279743dc60ae1
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 181cd714f85195157b767062cac99caadd32e817
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666322"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432758"
 ---
 # <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する
 
@@ -60,7 +58,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='単純なヒート マップ レイヤー' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/gQqdQB/'>Simple Heat Map Layer</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='単純なヒート マップ レイヤー' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/gQqdQB/'>Simple Heat Map Layer</a>」Pen を表示します。
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>ヒート マップ レイヤーをカスタマイズする
@@ -89,7 +87,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='ヒート マップ レイヤーのオプション' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Heat Map Layer Options</a>」Pen を表示します。
+<iframe height='700' scrolling='no' title='ヒート マップ レイヤーのオプション' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WYPaXr/'>Heat Map Layer Options</a>」Pen を表示します。
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>一貫性のあるズーム可能なヒート マップ
@@ -102,7 +100,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="一貫性のあるズーム可能なヒート マップ" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="一貫性のあるズーム可能なヒート マップ" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によるペンの<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一貫性のあるズーム可能なヒート マップ</a>をご覧ください。
 </iframe>
 

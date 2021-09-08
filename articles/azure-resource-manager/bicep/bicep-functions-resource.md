@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 9b97170e3ff434d40007e46952a52335e5f900b3
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: a83c0f442e88bc2fe0320fe8affe5b114a28a897
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228809"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123314328"
 ---
 # <a name="resource-functions-for-bicep"></a>Bicep のリソース関数
 
@@ -20,6 +20,7 @@ Azure Resource Manager には、Bicep ファイルでリソース値を取得す
 * [getSecret](#getsecret)
 * [list*](#list)
 * [pickZones](#pickzones)
+* [providers (非推奨)](#providers)
 * [reference](#reference)
 * [resourceId](#resourceid)
 * [subscriptionResourceId](#subscriptionresourceid)
@@ -476,6 +477,10 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 | notSupportedType | array | [] |
 
 ゾーンに対して null を指定するか、別のゾーンに仮想マシンを割り当てるかを決定するために、pickZones からの応答を使用することができます。
+
+## <a name="providers"></a>providers
+
+**providers 関数は非推奨となりました。** これの使用は推奨されていません。 この関数を使用してリソース プロバイダーの API バージョンを取得した場合は、テンプレートで特定の API バージョンを指定することをお勧めします。 動的に返された API バージョンを使用すると、プロパティがバージョン間で変更された場合にテンプレートが破損する可能性があります。
 
 ## <a name="reference"></a>reference
 

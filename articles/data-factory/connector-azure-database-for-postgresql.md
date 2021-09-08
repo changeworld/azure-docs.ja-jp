@@ -1,18 +1,20 @@
 ---
 title: Azure Database for PostgreSQL のデータのコピーと変換
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する方法について説明します。
-ms.author: jianleishen
-author: jianleishen
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 02/25/2021
-ms.openlocfilehash: d7d5ac30549667a6806b9f0c45328c0662a2e47e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: b74588bf1a8f5aacabc273fb9a473a8cb4f1154d
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785369"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123314149"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する
 
@@ -35,6 +37,30 @@ ms.locfileid: "109785369"
 ## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-azure-database-for-postgresql-using-ui"></a>UI を使用して Azure database for PostgreSQL へのリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure database for PostgreSQL のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用して新しいリンク サービスを作成します。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用して新しいリンク サービスを作成します。":::
+
+2. PostgreSQL を検索し、Azure database for PostgreSQL コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-database-for-postgresql/azure-database-for-postgresql-connector.png" alt-text="Azure database for PostgreSQL コネクタを選択します。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-database-for-postgresql/configure-azure-database-for-postgresql-linked-service.png" alt-text="Azure database for PostgreSQL へのリンク サービスを構成する。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 以下のセクションでは、Azure Database for PostgreSQL コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -173,7 +199,7 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **AzurePostgreSQLSink** に設定する必要があります | はい |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Azure Database for PostgreSQL に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |
-| writeMethod | Azure Database for PostgreSQL にデータを書き込むために使用するメソッド。<br>使用できる値は、以下のとおりです。**CopyCommand** (プレビューであり、パフォーマンスがより高い)、**BulkInsert** (既定)。 | いいえ |
+| writeMethod | Azure Database for PostgreSQL にデータを書き込むために使用するメソッド。<br>使用できる値は、**CopyCommand** (規定値で、パフォーマンスがより高い)、**BulkInsert** です。 | いいえ |
 | writeBatchSize | バッチごとに Azure Database for PostgreSQL に読み込まれる行の数。<br>許可される値は行数を表す整数です。 | いいえ (既定値は 1,000,000) |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br>Timespan 文字列を値として使用できます。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ (既定値は 00:30:00) |
 

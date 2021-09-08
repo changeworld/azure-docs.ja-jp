@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 08/03/2020
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: b2766495c89b9be1a89e0648bcec83c160c1e0a8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e25fa98e2ca43b6697de6290ad122b6585b6a072
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479445"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186031"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-signalr-resources"></a>Azure SignalR リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する
 Azure SignalR Service では、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID では、Azure Virtual Machines (VMs)、Function Apps、Virtual Machine Scale Sets などのサービスで実行されているアプリケーションから Azure SignalR Service リソースへのアクセスを、Azure AD 資格情報を使用して承認することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。
@@ -50,7 +50,7 @@ VM 上の Azure リソースのマネージド ID を有効にする方法につ
     ![ツール バーの [追加] ボタン](./media/authenticate/role-assignments-add-button.png)
 
 1. **[ロールの割り当ての追加]** ページで、次の手順を実行します。
-    1. ロールとして、 **[SignalR アプリ サーバー]** を選択します。 これが **Azure Functions アプリ** にも適用されることに注意してください。
+    1. ロールとして、 **[SignalR Service 所有者]** を選択します。
     1. ロールの割り当て先となる **セキュリティ プリンシパル** (ユーザー、グループ、サービス プリンシパル) を検索して見つけます。
     1. **[保存]** を選択して、ロールの割り当てを保存します。 
 

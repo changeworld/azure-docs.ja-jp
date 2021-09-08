@@ -3,18 +3,38 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 006f0a51da933336a354b275bb882e5538832741
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 0e39cd3b9f06620f2004a2afbc869fe22de04468
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444310"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272886"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
 この記事では、オンプレミスの VMware 仮想マシン (VM) の Azure へのディザスター リカバリーをデプロイするときに生じる可能性があるよくある質問に回答します。
 
 ## <a name="general"></a>全般
+
+### <a name="how-do-i-use-the-classic-experience-in-the-recovery-services-vault-rather-than-the-preview-experience"></a>Recovery Services コンテナーで、プレビュー エクスペリエンスではなくクラシック エクスペリエンスを使用するにはどうすればよいですか? 
+
+Azure Site Recovery レプリケーション アプライアンスを使用して VMware 仮想マシンを保護するための信頼性の高い新たな方法は、現在[パブリック プレビュー](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094)段階にあります。 新しい Recovery Services コンテナーが作成されると、既定でプレビュー エクスペリエンスが選択されます。 
+
+エクスペリエンスを変更するには、次の手順に従います。 
+
+1. Azure portal でコンテナーを開きます。 
+2. **[作業の開始]** セクションで、 **[Site Recovery]** を選択します。 
+3. このページの上部にあるバナーをクリックします。 
+
+    [![VMware スタックの変更手順 1](./media/vmware-azure-common-questions/change-stack-step-1.png)](./media/vmware-azure-common-questions/change-stack-step-1.png#lightbox)
+
+4. エクスペリエンス セレクション ブレードが表示されます。 構成サーバーを使用する場合はクラシック エクスペリエンスを選択して、 **[OK]** をクリックします。 そうでない場合は、ペインを閉じます。 
+
+    [![VMware スタックの変更手順 2](./media/vmware-azure-common-questions/change-stack-step-2.png)](./media/vmware-azure-common-questions/change-stack-step-2.png#lightbox)
+
+> [!NOTE]
+> 一度エクスペリエンスの種類をプレビューからクラシックに切り替えると、同じ Recovery Services コンテナーで再び切り替えることはできない点に注意してください。 この変更を保存する前に、目的のエクスペリエンスが選択されていることを確認してください。
+
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリーには何が必要ですか?
 

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Android アプリを移行する | Microsoft Azure Maps
 description: Google Maps から Microsoft Azure Maps に Android アプリを移行する方法についてのチュートリアルです。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 95f24173f584cd6ac6e97ccae053706ff5b8f2cf
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3c41a7b8efad5ab0235adb396d0170f5385e21c6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091467"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437816"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>チュートリアル:Google Maps から Android アプリを移行する
 
@@ -546,7 +546,7 @@ baseContext.resources.updateConfiguration(
 
 Azure Maps には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 1 つ目は、言語と地域ビューの情報を `AzureMaps` クラスに渡す方法です。 この方法では、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用します。 つまり、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域のビューが設定されます。 この例では、&quot;fr-FR&quot; 言語コードを使用してフランス語を設定しています。
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 static {

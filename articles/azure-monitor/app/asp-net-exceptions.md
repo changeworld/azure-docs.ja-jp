@@ -4,12 +4,12 @@ description: 要求テレメトリと共に ASP.NET アプリから例外を取�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/19/2021
-ms.openlocfilehash: d81881318f6bbfa5c44b9cd947cf408cefa766ae
-ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+ms.openlocfilehash: 5ad103890d481db18c3df9633bf3b58186136e93
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113616246"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431552"
 ---
 # <a name="diagnose-exceptions-in-web-apps-with-application-insights"></a>Application Insights を使用した Web アプリの例外の診断
 
@@ -77,11 +77,11 @@ Application Insights には、監視対象のアプリケーションの障害�
 
 アプリに固有の診断データを取得するには、独自のテレメトリ データを送信するコードを挿入します。 カスタムのテレメトリまたはログ データは、要求、ページ ビュー、およびその他の自動収集されたデータと共に、診断検索に表示されます。
 
-<xref:Microsoft.ApplicationInsights.TelemetryClient?displayProperty=fullName> を使用すると、いくつかの API が利用できます。
+<xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient?displayProperty=fullName> を使用すると、いくつかの API が利用できます。
 
-* <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackEvent%2A?displayProperty=nameWithType> は通常、使用パターンを監視するために使用されますが、送信されるデータは診断検索の **カスタム イベント** の下にも表示されます。 イベントには名前が付けられるほか、文字列のプロパティや数値のメトリックが付与され、それらを元に[診断検索の結果をフィルター処理](./diagnostic-search.md)できます。
-* <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackTrace%2A?displayProperty=nameWithType> は、POST 情報などの長いデータを送信できます。
-* <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackException%2A?displayProperty=nameWithType> は、Application Insights に例外の詳細 (スタック トレースなど) を送信します。
+* <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient.TrackEvent%2A?displayProperty=nameWithType> は通常、使用パターンを監視するために使用されますが、送信されるデータは診断検索の **カスタム イベント** の下にも表示されます。 イベントには名前が付けられるほか、文字列のプロパティや数値のメトリックが付与され、それらを元に[診断検索の結果をフィルター処理](./diagnostic-search.md)できます。
+* <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient.TrackTrace%2A?displayProperty=nameWithType> は、POST 情報などの長いデータを送信できます。
+* <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient.TrackException%2A?displayProperty=nameWithType> は、Application Insights に例外の詳細 (スタック トレースなど) を送信します。
 
 これらのイベントを表示するには、左側のメニューから [[検索]](./diagnostic-search.md) を開き、 **[イベントの種類]** ドロップダウン メニューを選択し、 **[カスタム イベント]** 、 **[トレース]** 、または **[例外]** を選択します。
 
@@ -180,7 +180,7 @@ Web ページにコンテンツ配信ネットワークまたはその他のド�
 > [!NOTE]
 > `TelemetryClient` は、一度インスタンス化された後、アプリケーションの有効期間にわたって再利用されることが推奨されています。
 
-[.NET の依存関係の挿入 (DI)](/dotnet/core/extensions/dependency-injection) と適切な .NET SDK があって、さらに Application Insights を DI 用に正しく構成すれば、コンストラクターのパラメーターとして <xref:Microsoft.ApplicationInsights.TelemetryClient> を要求することができます。
+[.NET の依存関係の挿入 (DI)](/dotnet/core/extensions/dependency-injection) と適切な .NET SDK があって、さらに Application Insights を DI 用に正しく構成すれば、コンストラクターのパラメーターとして <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient> を要求することができます。
 
 ```csharp
 public class ExampleController : ApiController
@@ -211,7 +211,7 @@ void Application_Error(object sender, EventArgs e)
 }
 ```
 
-前の例の `_telemetryClient` は、クラススコープの <xref:Microsoft.ApplicationInsights.TelemetryClient> 型変数です。
+前の例の `_telemetryClient` は、クラススコープの <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient> 型変数です。
 
 ## <a name="mvc"></a>MVC
 

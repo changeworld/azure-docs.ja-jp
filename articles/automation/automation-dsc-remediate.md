@@ -9,16 +9,16 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: 98164c20af2a5d6ae7ccac43331a2876c23ccfb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7988f8b72a6621897c656e12595a3fe68665535
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500174"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429840"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>非準拠の Azure Automation State Configuration サーバーを修復する
 
-サーバーが Azure Automation State Configuration に登録されるとき、構成モードが `ApplyOnly`、`ApplyandMonitor`、または `ApplyAndAutoCorrect` に設定されます。 モードが `ApplyAndAutoCorrect` に設定されていない場合、何らかの理由で準拠状態から逸脱したサーバーは、手動で修正されるまで非準拠のままです。
+サーバーが Azure Automation State Configuration に登録されるとき、構成モードが `ApplyOnly`、`ApplyAndMonitor`、または `ApplyAndAutoCorrect` に設定されます。 モードが `ApplyAndAutoCorrect` に設定されていない場合、何らかの理由で準拠状態から逸脱したサーバーは、手動で修正されるまで非準拠のままです。
 
 Azure コンピューティングでは、ユーザーが仮想マシン内でスクリプトを実行できるようにする実行コマンドという機能が提供されています。
 このドキュメントでは、構成ドリフトを手動で補正する場合のこの機能のサンプル スクリプトを提供します。

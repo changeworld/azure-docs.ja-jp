@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5e06d8dc5f7a7269cf2bb294663965b3cf2c0094
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 73ff2c609438ead1e1fa42468e97be801a76e7e2
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963435"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450289"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM テンプレート デプロイの What-If 操作
 
@@ -151,7 +151,7 @@ what-if 操作では、6 種類の異なる変更が一覧表示されます。
 PowerShell のデプロイ コマンドでは、`-WhatIfResultFormat` パラメーターを使用します。 プログラム オブジェクト コマンドでは、`ResultFormat` パラメーターを使用します。
 
 Azure CLI の場合は、`--result-format` パラメーターを使用します。
- 
+
 次の結果では、2 つの異なる出力形式が示されています。
 
 - 完全なリソース ペイロード
@@ -321,7 +321,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 ## <a name="confirm-deletion"></a>削除の確定
 
-what-if 操作では、[デプロイ モード](deployment-modes.md)の使用がサポートされています。 完全モードに設定すると、テンプレートに含まれていないリソースは削除されます。 次の例では、[リソースが定義されていないテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)を完全モードでデプロイします。
+what-if 操作では、[デプロイ モード](deployment-modes.md)の使用がサポートされています。 完全モードに設定すると、テンプレートに含まれていないリソースは削除されます。 次の例では、[リソースが定義されていないテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/azuredeploy.json)を完全モードでデプロイします。
 
 テンプレートをデプロイする前に変更のプレビューを表示するには、デプロイ コマンドで confirm スイッチ パラメーターを使用します。 変更が期待どおりの場合は、デプロイを完了すると応答します。
 
@@ -332,7 +332,7 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
   -Mode Complete `
   -Confirm `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/azuredeploy.json"
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -342,7 +342,7 @@ az deployment group create \
   --resource-group ExampleGroup \
   --mode Complete \
   --confirm-with-what-if \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/azuredeploy.json"
 ```
 
 ---

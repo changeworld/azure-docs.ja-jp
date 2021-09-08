@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/04/2019
+ms.date: 08/21/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397b55bccde5781de5b9e53922e31281b3ec855c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ee3ff6fc063de5eebd4a7cc300fdc0a5ceeba560
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749147"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038392"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>アプリケーションに対してテナント全体の管理者の同意を付与する
 
@@ -46,7 +46,10 @@ ms.locfileid: "121749147"
 1. 管理者の同意の付与を許可するロールで [Azure portal](https://portal.azure.com) にサインインします (「[前提条件](#prerequisites)」参照)。
 2. **[Azure Active Directory]** を選択し、 **[エンタープライズ アプリケーション]** を選択します。
 3. テナント全体の管理者の同意を付与するアプリケーションを選択します。
-4. **[アクセス許可]** を選択し、 **[管理者の同意の付与]** をクリックします。
+4. **[アクセス許可]** を選択し、 **[管理者の同意の付与]** をクリックします。 この例では、10,000ft Plans アプリケーションを使用します。
+
+   :::image type="content" source="media/grant-tenant-wide-admin-consent/grant-tenant-wide-admin-consent.png" alt-text="テナント全体の管理者の同意を付与する方法を示すスクリーンショット。":::
+
 5. アプリケーションに必要なアクセス許可を慎重に確認します。
 6. アプリケーションで必要なアクセス許可に同意する場合は、同意を付与します。 そうでない場合は、 **[キャンセル]** をクリックするか、ウィンドウを閉じます。
 

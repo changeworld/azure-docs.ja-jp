@@ -4,12 +4,12 @@ description: Azure Resource Manager のすべてのリソース プロバイダ�
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dae2c2c3af6da9b946ce6e81260f4c124c474a42
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc33b3354f5cd2a4a0e2f03c1e0d46a05c205211
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727191"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540183"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
 
@@ -100,7 +100,7 @@ ms.locfileid: "121727191"
 | Microsoft.HardwareSecurityModules | [Azure の専用 HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft.HealthcareApis | [Azure API for FHIR](../../healthcare-apis/fhir/index.yml) |
-| Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
+| Microsoft.HybridCompute | [Azure Arc 対応サーバー](../../azure-arc/servers/index.yml) |
 | Microsoft.HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.HybridNetwork  | [Network Function Manager](../../network-function-manager/index.yml) |
 | Microsoft.ImportExport | [Azure Import/Export](../../import-export/storage-import-export-service.md) |
@@ -109,8 +109,8 @@ ms.locfileid: "121727191"
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
 | Microsoft.Intune | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
-| Microsoft.Kubernetes | [Azure Stack HCI の Azure Kubernetes Service](/azure-stack/aks-hci/) |
-| Microsoft.KubernetesConfiguration | [Azure Stack HCI の Azure Kubernetes Service](/azure-stack/aks-hci/) |
+| Microsoft.Kubernetes | [Azure Arc 対応 Kubernetes](../../azure-arc/kubernetes/index.yml) |
+| Microsoft.KubernetesConfiguration | [Azure Arc 対応 Kubernetes](../../azure-arc/kubernetes/index.yml) |
 | Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |

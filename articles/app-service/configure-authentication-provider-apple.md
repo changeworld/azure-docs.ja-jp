@@ -4,12 +4,12 @@ description: App Service または Azure Functions アプリ用の ID プロバ�
 ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
-ms.openlocfilehash: 01216b7527fd6479f43c3bf0b9d4abeb60d06435
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 4b123b0711954e45108b934622f0fabab5be15e0
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093051"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259341"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>Sign in with Apple プロバイダーを使用してサインインするように、App Service または Azure Functions アプリを構成する (プレビュー)
 
@@ -81,7 +81,7 @@ _注: Apple では、有効期限が作成 (または nbf) 日から 6 か月を
 ### <a name="sign-the-client-secret-jwt"></a>クライアント シークレット JWT に署名する
 前にダウンロードした `.p8` ファイルを使用して、クライアント シークレット JWT に署名します。 このファイルは [PCKS#8 ファイル](https://en.wikipedia.org/wiki/PKCS_8)であり、PEM 形式の秘密署名キーが含まれています。 JWT の作成と署名に使用できるライブラリは多数あります。 
 
-JWT トークンの作成と署名のためにオンラインで利用可能なさまざまな種類のオープンソース ライブラリがあります。 JWT トークンの生成の詳細については、jwt.io を参照してください。 たとえば、クライアント シークレットを生成する方法の 1 つとして、[NuGet の Microsoft.IdentityModel.Tokens パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/)をインポートし、以下に示す少量の C# コードを実行する方法があります。
+JWT トークンの作成と署名のためにオンラインで利用可能なさまざまな種類のオープンソース ライブラリがあります。 JWT トークン生成の詳細は、[JSON Web Token (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) に関する記事をご覧ください。 たとえば、クライアント シークレットを生成する方法の 1 つとして、[NuGet の Microsoft.IdentityModel.Tokens パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/)をインポートし、以下に示す少量の C# コードを実行する方法があります。
 
 ```csharp
 using Microsoft.IdentityModel.Tokens;

@@ -3,17 +3,17 @@ title: IoT Central でユーザー設定を管理する | Microsoft Docs
 description: IoT Central アプリケーションで、言語やテーマの変更など、アプリケーションのユーザー設定を管理する方法。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 12/23/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f0290241e8051a221e75e1e72789178c8bfdbb3d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6b470bac6d7cab5468566db33e05519624dacff7
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772389"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479384"
 ---
 # <a name="manage-your-personal-application-preferences"></a>アプリケーションのユーザー設定を管理する
 

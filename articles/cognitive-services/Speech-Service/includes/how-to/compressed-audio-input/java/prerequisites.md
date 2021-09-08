@@ -1,15 +1,15 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
-ms.author: lajanuar
-ms.openlocfilehash: a17c2da5a1b12ca81c48a914f00040802e2de408
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 633fdc6f8e5cad57ddeae08155bcbe1dd6ed1dfe
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122264923"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646457"
 ---
 圧縮オーディオの処理は、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、Speech SDK では GStreamer バイナリはコンパイルおよびリンクされません。 代わりに、Android では事前構築済みのバイナリを使用する必要があります。 事前構築済みのライブラリをダウンロードするには、「[Android 開発用のインストール](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)」を参照してください。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: bagol
-ms.openlocfilehash: 965de895cbe7e030ff009ba11a0947048ce8b4c1
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f2f99e7c9a901b6e76b3d4bbe87967527f836d1b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252606"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864345"
 ---
 # <a name="recovering-from-systemic-identity-compromise"></a>システムの ID 侵害からの復旧
 
@@ -104,7 +104,7 @@ ms.locfileid: "122252606"
 詳細については、Microsoft のセキュリティに関するドキュメントを参照してください。
 
 - [Microsoft のセキュリティ ドキュメント](/security/)
-- [Azure セキュリティに関するドキュメント](../index.yml)
+- [Azure のセキュリティのドキュメント](../index.yml)
 
 ## <a name="investigate-your-environment"></a>環境を調査する
 
@@ -157,7 +157,7 @@ Microsoft のセキュリティ サービスでは、詳細な調査のために
 |**すべてのクラウド環境**    |       - クラウド内の特権アクセス権を確認し、不要なアクセス許可があれば削除します<br>    - Privileged Identity Management (PIM) を実装します<br>    - 強化中に管理アクセスを制限する条件付きアクセス ポリシーを設定します      |
 |**すべてのオンプレミス環境**     |       - オンプレミスの特権アクセスを確認し、不要なアクセス許可を削除します<br>   - 組み込みグループのメンバーシップを減らします<br>    - Active Directory の委任を確認します<br>    - 階層 0 環境を強化し、階層 0 の資産にアクセスできるユーザーを制限します      |
 |**すべてのエンタープライズ アプリケーション**     | 次の操作を許可する、委任されたアクセス許可および同意付与を確認します。 <br><br>  - 特権ユーザーおよびロールの変更 <br>- すべてのメールボックスの読み取りまたはアクセス <br>- 他のユーザーの代理としての電子メールの送信または転送 <br>- OneDrive または SharePoint サイトのすべてのコンテンツへのアクセス <br>- ディレクトリの読み取り/書き込みができるサービス プリンシパルの追加      |
-|**Microsoft 365 環境**     |次を含む、Microsoft 365 環境のアクセスと構成の設定を確認します。 <br>- SharePoint Online の共有 <br>- Microsoft Teams <br>- PowerApps <br>- Microsoft OneDrive for Business          |
+|**Microsoft 365 環境**     |次を含む、Microsoft 365 環境のアクセスと構成の設定を確認します。 <br>- SharePoint Online の共有 <br>- Microsoft Teams <br>- Power Apps <br>- Microsoft OneDrive for Business          |
 | **環境内のユーザー アカウントを確認する**   |- 不要になったゲスト ユーザー アカウントを確認して削除します。 <br>- 委任、メールボックス フォルダーのアクセス許可、ActiveSync モバイル デバイス登録、受信トレイ規則、Outlook on the Web のオプションについて、電子メールの構成を確認します。 <br>- アプリケーション偽装の権限を確認し、レガシ認証の使用をできるだけ減らします。 <br>- MFA が適用されていることと、すべてのユーザーについて MFA とセルフサービス パスワード リセット (SSPR) 両方の連絡先情報が正しいことを検証します。         |
 |     |         |
 
@@ -201,7 +201,7 @@ Azure Active Directory サインイン ログによって、多要素認証が�
 
 次の表では、調査で Azure Active Directory のログを使用するその他の方法について説明します。
 
-|方法  |説明  |
+|メソッド  |説明  |
 |---------|---------|
 |**危険なサインイン イベントを分析する**     |  Azure Active Directory および Identity Protection プラットフォームでは、攻撃者が生成した SAML トークンの使用に関連するリスク イベントが生成される可能性があります。 <br><br>このようなイベントには、 *[unfamiliar properties]\(見慣れないプロパティ\)* 、 *[匿名 IP アドレス]* 、 *[あり得ない移動]* などのラベルが付けられます。 <br><br>管理者特権を持つアカウントに関連付けられているすべてのリスク イベント (自動的に却下または修復された可能性があるものも含む) を詳しく分析することをお勧めします。 たとえば、ユーザーの MFA が成功したことにより、リスク イベントや匿名 IP アドレスが自動的に修復される場合があります。 <br><br>すべての認証イベントが Azure AD に表示されるように、[ADFS Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md) を使用してください。 |
 |**ドメイン認証プロパティを検出する**     |  攻撃者がドメイン認証ポリシーを操作しようとすると、Azure Active Directory 監査ログに記録され、統合監査ログに反映されます。 <br><br> 統合監査ログ、Azure AD 監査ログ、および SIEM 環境で、 **[ドメイン認証の設定]** によって関連付けられたイベントを確認し、一覧表示されるすべてのアクティビティが予期され計画されたものであることを確かめます。   |

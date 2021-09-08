@@ -6,13 +6,13 @@ author: MRayermannMSFT
 ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
-ms.author: chuye
-ms.openlocfilehash: 7ef07280d65f3533e1def6475e40a65b16f0f6c3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.author: marayerm
+ms.openlocfilehash: 92447c4d0c8d0a1fac6e59a11a81dc7beae52516
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324657"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451473"
 ---
 # <a name="sign-in-to-storage-explorer"></a>Storage Explorer にサインインする
 

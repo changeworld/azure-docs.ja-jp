@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 2c8665217aa1f6bcf73caa59e6b7e35ffe193699
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 26ac697767be4023b166b8d751bdbac331dde6a6
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638967"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304233"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 
@@ -51,6 +51,30 @@ Teradata Vantage から、サポートされている任意のシンク デー�
 ## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-teradata-using-ui"></a>UI を使用して Teradata のリンク サービスを作成する
+
+次の手順で、Azure portal の UI を使用して Teradata のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの Manage タブに移動して、[Linked Services]\(リンク サービス\)、[New]\(新規\) を順にクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI で新しいリンク サービスを作成する。":::
+
+2. Teradata を検索して Teradata コネクタを選択します。
+
+    :::image type="content" source="media/connector-teradata/teradata-connector.png" alt-text="Teradata コネクタを選択する。":::    
+
+1. サービスの詳細を設定し、接続をテストし、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-teradata/configure-teradata-linked-service.png" alt-text="Teradata のリンク サービスを設定する。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、Teradata コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

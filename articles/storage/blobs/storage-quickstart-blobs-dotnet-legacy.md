@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb3f0c0995679425be63e4b6b00713b456e6be42
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f4c87e418ecaaed61a92ab70bcf5aef3a6e0b040
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964959"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470942"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11
 
@@ -37,8 +37,6 @@ ms.locfileid: "111964959"
 * [ライブラリ ソース コード](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [サンプル](/samples/browse/?products=azure-blob-storage)
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

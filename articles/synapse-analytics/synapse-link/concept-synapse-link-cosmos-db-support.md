@@ -10,12 +10,12 @@ ms.date: 06/02/2021
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: f3cd12c6c2e03dbf68a70cac13a75cde0847a593
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 8400a479b45770570c43ec906a192bf4f05a71a0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019037"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110396"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
 
@@ -61,4 +61,5 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB 用の Synapse Link に接続する](../quickstart-connect-synapse-link-cosmos-db.md)方法を確認する
-* [Spark を使用して Cosmos DB 分析ストアにクエリを実行する方法を確認する](how-to-query-analytical-store-spark.md)
+* [Spark 3 を使用して Cosmos DB 分析ストアにクエリを実行する方法を確認する](how-to-query-analytical-store-spark-3.md)
+* [Spark 2 を使用して Cosmos DB 分析ストアにクエリを実行する方法を確認する](how-to-query-analytical-store-spark.md)

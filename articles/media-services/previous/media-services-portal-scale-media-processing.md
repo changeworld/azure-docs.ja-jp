@@ -3,7 +3,7 @@ title: Azure Portal を使用したメディア処理のスケール設定 | Mic
 description: このチュートリアルでは、Azure Portal を使用したメディア処理のスケール設定の手順について説明します。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali
 manager: femila
 editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 08/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 49c3899b912a88605e9269cdb1c34c7e18ed5247
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1040ffa8bc3af3734a5c37961676b0914f72e991
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103009727"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835873"
 ---
 # <a name="change-the-reserved-unit-type"></a>予約ユニットの種類の変更
 
@@ -36,19 +36,15 @@ ms.locfileid: "103009727"
 
 ## <a name="overview"></a>概要
 
-Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、以下から選択できます:**S1**、**S2**、**S3**。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。
-
-予約ユニットの種類を指定するだけでなく、**予約ユニット** (RU) を使用したアカウントのプロビジョニングを指定することもできます。 プロビジョニングされた RU の数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。
-
->[!NOTE]
->RU は、Azure Media Indexer を使用するインデックス作成ジョブを含む、すべてのメディア処理を並列化するために動作します。 ただし、エンコードとは異なり、インデックス作成ジョブでは高速予約ユニットを使用した高速処理は行われません。
+既定では、メディア占有ユニットを使用する必要がなくなり、Azure Media Services でサポートされなくなりました。 互換性のために、現在の Azure portal には、MRU を管理およびスケーリングするためのオプションがあります。 ただし既定では、エンコードのコンカレンシーやパフォーマンスを制御するために設定した MRU 構成は使用されません。
 
 > [!IMPORTANT]
 > メディア処理のスケール設定の詳細については、 [概要](media-services-scale-media-processing-overview.md) に関するトピックを必ず確認してください。
-> 
-> 
 
 ## <a name="scale-media-processing"></a>メディア処理のスケール設定
+>[!NOTE]
+>MRU を選択しても、Azure Media Services V3 のコンカレンシーやパフォーマンスに影響はありません。 
+
 予約ユニットの種類と予約ユニットの数を変更するには、以下の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。

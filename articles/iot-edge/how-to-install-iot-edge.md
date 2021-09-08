@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/28/2021
 ms.author: kgremban
-ms.openlocfilehash: 0f0cf8f4ce8f82964a69635debacea772c4310da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5ed9768f8cb1a6279eeb97a73d508a41984ef160
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750764"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214343"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Azure IoT Edge for Linux をインストールまたはアンインストールする
 
@@ -416,6 +416,8 @@ IoT Edge デバイス上で実行されているすべてのモジュールを�
    ```bash
    sudo iotedge list
    ```
+
+新しい IoT Edge デバイスを作成すると、Azure portal で状態コード `417 -- The device's deployment configuration is not set` が表示されます。 これは正常な状態であり、デバイスにモジュールをデプロイできる状態であることを表します。
 
 ## <a name="offline-or-specific-version-installation-optional"></a>オフラインまたは特定のバージョンのインストール (省略可能)
 

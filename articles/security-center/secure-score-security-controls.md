@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: article
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.author: memildin
-ms.openlocfilehash: a3dc221ff4fa1caebad9dea601e208280b928558
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: de0983d981aa4bc229f29e151c37cda0be90cdec
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322912"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434694"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 

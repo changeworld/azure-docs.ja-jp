@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 03/17/2021
-ms.openlocfilehash: 73cfb11f914edf2034f18bb581473a23774818c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 9e35ae73304fa6eb06bc1d4a363c8009e870a861
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638846"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307895"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Cloud for Customer (C4C) からデータをコピーする
 
@@ -39,6 +39,31 @@ SAP Cloud for Customer のデータを、サポートされる任意のシンク
 ## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-sap-cloud-for-customer-using-ui"></a>UI を使用して SAP Cloud for Customer にリンクされたサービスを作成する
+
+次の手順を使用して、Azure portal UI で SAP Cloud for Customer にリンクされたサービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用して新しいリンクされたサービスを作成します。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用して新しいリンクされたサービスを作成します。":::
+
+2. SAP を検索して、SAP Cloud for Customer コネクタを選択します。
+
+   :::image type="content" source="media/connector-sap-cloud-for-customer/sap-cloud-for-customer-connector.png" alt-text="SAP Cloud for Customer コネクタを選択します。":::    
+
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンクされたサービスを作成します。
+
+   :::image type="content" source="media/connector-sap-cloud-for-customer/configure-sap-cloud-for-customer-linked-service.png" alt-text="SAP Cloud for Customer にリンクされたサービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、SAP Cloud for Customer コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

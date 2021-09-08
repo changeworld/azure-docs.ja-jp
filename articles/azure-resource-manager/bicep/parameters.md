@@ -4,13 +4,13 @@ description: Bicep ファイルでパラメーターを定義する方法につ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 8701d437a34d364ff6f6e2d58cbf84dc28a79798
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: 901e95708be75ebd4415c90dbd51eeb46ba492c4
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634213"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450253"
 ---
 # <a name="parameters-in-bicep"></a>Bicep のパラメーター
 
@@ -85,9 +85,7 @@ param demoParam string = 'Contoso'
 param demoParam string = 'Contoso'
 ```
 
-既定値を指定した式を使用できます。 パラメーター セクションでは、[reference](bicep-functions-resource.md#reference) 関数も、いずれの [list](bicep-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイムの状態を取得します。パラメーターが解決されるとき、デプロイの前に実行することはできません。
-
-他のパラメーター プロパティと共に式を使用することはできません。
+既定値を指定した式を使用できます。 他のパラメーター プロパティと共に式を使用することはできません。 パラメーター セクションでは、[reference](bicep-functions-resource.md#reference) 関数も、いずれの [list](bicep-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイムの状態を取得します。パラメーターが解決されるとき、デプロイの前に実行することはできません。
 
 ```bicep
 param location string = resourceGroup().location
@@ -95,10 +93,7 @@ param location string = resourceGroup().location
 
 別のパラメーター値を使用して既定値を作成できます。 次のテンプレートを使用すると、サイト名からホスト プラン名が作成されます。
 
-```bicep
-param siteName string = 'site${uniqueString(resourceGroup().id)}'
-param hostingPlanName string = '${siteName}-plan'
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterswithfunctions.bicep":::
 
 ## <a name="length-constraints"></a>長さの制限
 
@@ -154,62 +149,8 @@ resource keyvault 'Microsoft.KeyVault/vaults@2019-09-01' = {
 
 次の例は、オブジェクトであるパラメーターを示しています。 既定値は、オブジェクトの予想されるプロパティを示しています。 これらのプロパティは、デプロイするリソースを定義するときに使用されます。
 
-```bicep
-param vNetSettings object = {
-  name: 'VNet1'
-  location: 'eastus'
-  addressPrefixes: [
-    {
-      name: 'firstPrefix'
-      addressPrefix: '10.0.0.0/22'
-    }
-  ]
-  subnets: [
-    {
-      name: 'firstSubnet'
-      addressPrefix: '10.0.0.0/24'
-    }
-    {
-      name: 'secondSubnet'
-      addressPrefix: '10.0.1.0/24'
-    }
-  ]
-}
-resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' = {
-  name: vNetSettings.name
-  location: vNetSettings.location
-  properties: {
-    addressSpace: {
-      addressPrefixes: [
-        vNetSettings.addressPrefixes[0].addressPrefix
-      ]
-    }
-    subnets: [
-      {
-        name: vNetSettings.subnets[0].name
-        properties: {
-          addressPrefix: vNetSettings.subnets[0].addressPrefix
-        }
-      }
-      {
-        name: vNetSettings.subnets[1].name
-        properties: {
-          addressPrefix: vNetSettings.subnets[1].addressPrefix
-        }
-      }
-    ]
-  }
-}
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterobject.bicep":::
 
-## <a name="example-templates"></a>サンプル テンプレート
-
-次の例は、パラメーターを使用するためのシナリオを示しています。
-
-|Template  |説明  |
-|---------|---------|
-|[既定値のための関数を含むパラメーター](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/parameterswithfunctions.bicep) | パラメーターの既定値を定義する際の Bicep 関数の使用方法を説明します。 この Bicep ファイルではリソースをデプロイしません。 パラメーターの値を作成して、その値を返します。 |
-|[パラメーター オブジェクト](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/parameterobject.bicep) | パラメーターのオブジェクトの使用方法を示します。 この Bicep ファイルではリソースをデプロイしません。 パラメーターの値を作成して、その値を返します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

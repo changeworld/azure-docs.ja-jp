@@ -11,17 +11,71 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/13/2021
+ms.date: 8/27/2021
 ms.author: gunnarc
-ms.openlocfilehash: 478a5599c32f237eabd65830b70db5731c3b8ab5
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 770d781b7430dcd98ea60eae310be9e4a8c8844c
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069478"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187435"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="august-2021-guest-os"></a>2021 年 8 月 ゲスト OS
+
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 21-08 |  [5005030]  |  最新の累積的な更新プログラム (LCU) | [6.34] | 2021 年 8 月 10 日 |
+|  Rel 21-08 |  [5005036]  |  IE の累積的な更新プログラム | [2.113]、[3.100]、[4.93] | 2021 年 8 月 10 日 |
+|  Rel 21-08 |  [5004238]  |  最新の累積的な更新プログラム (LCU) | [5.58] | 2021 年 7 月 13 日 |
+|  Rel 21-08 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | [2.113] | 2021 年 2 月 16 日 |
+|  Rel 21-08 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | [2.113] | 2021 年 6 月 8 日 |
+|  Rel 21-08 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | [4.93] | 2021 年 2 月 16 日 |
+|  Rel 21-08 |  [4578956]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | [4.93] | 2021 年 2 月 16 日 |
+|  Rel 21-08 |  [4578950]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | [3.100] | 2021 年 2 月 16 日 |
+|  Rel 21-08 |  [4578954]  |  . .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | [3.100] | 2021 年 2 月 16 日 |
+|  Rel 21-08 |  [5004335]  |  . NET Framework 3.5 と 4.7.2 の累積的な更新プログラム  | [6.34] | 2021 年 8 月 10 日 |
+|  Rel 21-08 |  [5005088]  |  マンスリー ロールアップ  | [2.113] | 2021 年 8 月 10 日 |
+|  Rel 21-08 |  [5005099]  |  マンスリー ロールアップ  | [3.100] | 2021 年 8 月 10 日 |
+|  Rel 21-08 |  [5005076]  |  マンスリー ロールアップ  | [4.93] | 2021 年 8 月 10 日 |
+|  Rel 21-08 |  [5001401]  |  サービス スタック更新プログラム  | [3.100] | 2021 年 4 月 13 日 |
+|  Rel 21-08 |  [5001403]  |  サービス スタック更新プログラム  | [4.93] | 2021 年 4 月 13 日 |
+|  Rel 21-08 OOB |  [4578013]  |  スタンドアロンのセキュリティ更新プログラム  | [4.93] | 2020 年 8 月 19 日 |
+|  Rel 21-08 |  [5001402]  |  サービス スタック更新プログラム  | [5.58] | 2021 年 4 月 13 日 |
+|  Rel 21-08 |  [5004378]  |  サービス スタック更新プログラム  | [2.113] | 2021 年 7 月 13 日 |
+|  Rel 21-08 |  [5005112]  |  サービス スタック更新プログラム  | [6.34] | 2021 年 8 月 10 日 |
+|  Rel 21-08 |  [4494175]  |  マイクロコード  | [5.58] | 2020 年 9 月 1 日 |
+|  Rel 21-08 |  [4494174]  |  マイクロコード  | [6.34] | 2020 年 9 月 1 日 |
+
+[5005030]: https://support.microsoft.com/kb/5005030
+[5005036]: https://support.microsoft.com/kb/5005036
+[5004238]: https://support.microsoft.com/kb/5004238
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[5004335]: https://support.microsoft.com/kb/5004335
+[5005088]: https://support.microsoft.com/kb/5005088
+[5005099]: https://support.microsoft.com/kb/5005099
+[5005076]: https://support.microsoft.com/kb/5005076
+[5001401]: https://support.microsoft.com/kb/5001401
+[5001403]: https://support.microsoft.com/kb/5001403
+[4578013]: https://support.microsoft.com/kb/4578013
+[5001402]: https://support.microsoft.com/kb/5001402
+[5004378]: https://support.microsoft.com/kb/5004378
+[5005112]: https://support.microsoft.com/kb/5005112
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+[2.113]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.100]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.93]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.58]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.34]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="july-2021-guest-os"></a>2021 年 7 月のゲスト OS
 

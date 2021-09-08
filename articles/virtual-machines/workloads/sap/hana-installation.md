@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 7/16/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cfd57400eb50651dd7d908dad4c50ab94760286a
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 37eff4049973c208ebe70ef452f121109f0c92ed
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114404967"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435836"
 ---
 # <a name="install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成
 
@@ -150,7 +150,7 @@ Azure 仮想ネットワークを設計し、それらの仮想ネットワー�
 
 ## <a name="storage"></a>記憶域
 
-SAP HANA Large Instances のストレージ レイアウトは、SAP が推奨するガイドラインに従って、SAP HANA on Azure サービス管理によって構成されます。 これらのガイドラインについては、「[SAP HANA Storage Requirements (SAP HANA ストレージ要件)](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」に記載されています。 
+SAP HANA Large Instances のストレージ レイアウトは、SAP が推奨するガイドラインに従って、SAP HANA on Azure サービス管理によって構成されます。 これらのガイドラインについては、「[SAP HANA Storage Requirements (SAP HANA ストレージ要件)](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf)」に記載されています。 
 
 各種 HANA L インスタンス SKU で提供されるさまざまなボリュームのおおよそのサイズについては、「[SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](hana-overview-architecture.md)」をご覧ください。
 

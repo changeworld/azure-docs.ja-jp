@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: lajanuar
-ms.openlocfilehash: fc08bea2700e1b9abaed6c4b8ce29b0ce10f8956
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 0c914429cc98aa06421658b862367b03ce527802
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122070625"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540939"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 

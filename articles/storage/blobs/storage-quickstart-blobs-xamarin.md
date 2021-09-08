@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b502bbc56d6c9521ec736150fbc0046ff78125
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ceb941f361cd719e48726799db25d726764933f9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642492"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470546"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイックスタート: Azure Blob Storage クライアント ライブラリ v12 と Xamarin
 
@@ -33,8 +33,6 @@ Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用�
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
 * [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
 * [サンプル](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

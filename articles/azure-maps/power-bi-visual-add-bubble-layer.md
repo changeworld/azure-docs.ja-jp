@@ -1,20 +1,20 @@
 ---
 title: Azure Maps Power BI ビジュアルにバブル レイヤーを追加する | Microsoft Azure Maps
 description: この記事では、Power BI 用の Microsoft Azure Maps ビジュアルでバブル レイヤーを使用する方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc463a69dc0823e14b08e9fd056f3876e1ba9984
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896227"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430452"
 ---
 # <a name="add-a-bubble-layer"></a>バブル レイヤーを追加する
 

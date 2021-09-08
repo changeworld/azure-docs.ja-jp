@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 06/25/2021
 ms.author: aahi
-ms.openlocfilehash: bad25e569077a7503be64fffc85501a2550db96c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4d56b29311c7c74d8e331b7730e88aca4e8968a9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747551"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473445"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services コンテナー イメージ タグとリリース ノート
 
@@ -105,47 +105,6 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
-
----
-
-## <a name="form-recognizer"></a>Form Recognizer
-
-Form Recognizer 機能は、以下の 7 つのコンテナーによってサポートされています。
-
-| コンテナー名 | イメージの完全修飾名 |
-|---|---|
-| **レイアウト** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout |
-| **名刺** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/businesscard |
-| **身分証明書** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/id-document |
-| **Receipt** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/receipt |
-| **請求書** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/invoice |
-| **カスタム API** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/custom-api |
-| **カスタムの教師あり** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/custom-supervised |
-
-[Form Recognizer][fr-containers] コンテナー イメージは `mcr.microsoft.com` コンテナー レジストリ シンジケートにあります。 これらは `azure-cognitive-services/form-recognizer` リポジトリ内にあります。
-
-コンテナー イメージには、次のタグを利用できます。
-
-# <a name="latest-version"></a>[最新バージョン](#tab/current)
-
-`v2.1` のリリース ノート:
-
-Form Recognizer コンテナーは、現在、限定的なプレビュー段階にあります。 これらを使用するには、[オンライン リクエスト](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7en2Ais5pxKtso_Pz4b1_xUNlpBU1lFSjJUMFhKNzVHUUVLN1NIOEZETiQlQCN0PWcu)を送信し、承認を受ける必要があります。
-
-| コンテナー | タグ |
-|------------|:------|
-| **レイアウト**| &bullet; `latest` </br> &bullet; `2.1-preview` </br> &bullet; `2.1.0.016140001-08108749-amd64-preview`|
-| **名刺** | &bullet; `latest` </br> &bullet; `2.1-preview` </br> &bullet; `2.1.016190001-amd64-preview`  </br> &bullet; `2.1.016320001-amd64-preview`  |
-| **身分証明書** | &bullet; `latest` </br> &bullet; `2.1-preview`</br>&bullet; `2.1.016190001-amd64-preview`</br>&bullet; `2.1.016320001-amd64-preview` |
-| **Receipt**| &bullet; `latest` </br> &bullet; `2.1-preview`</br>&bullet; `2.1.016190001-amd64-preview`</br>&bullet; `2.1.016320001-amd64-preview` |
-| **請求書**| &bullet; `latest` </br> &bullet; `2.1-preview`</br>&bullet; `2.1.016190001-amd64-preview`</br>&bullet; `2.1.016320001-amd64-preview` |
-| **カスタム API** | &bullet; `latest` </br> &bullet;`2.1-distroless-20210622013115034-0cc5fcf6`</br>&bullet; `2.1-preview`|
-| **カスタムの教師あり**| &bullet; `latest` </br> &bullet; `2.1-distroless-20210622013149174-0cc5fcf6`</br>&bullet; `2.1-preview`|
-
-# <a name="previous-versions"></a>[以前のバージョン](#tab/previous)
-
-> [!IMPORTANT]
-> Form Recognizer v1.0 コンテナーは廃止されました。
 
 ---
 

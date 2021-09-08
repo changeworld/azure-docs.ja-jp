@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0042d12941107c4704364dc261f95d3521b8208f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f73951e34ada242dd70b9e9f99839d3072a52f76
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464150"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223750"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
@@ -220,7 +220,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `redirect_uri`  | required  | authorization_code の取得に使用された同じ redirect_uri 値。 |
 | `grant_type` | required   | 承認コード フローでは `authorization_code` を指定する必要があります。   |
 | `code_verifier` | 推奨  | authorization_code を取得するために使用されたのと同じ code_verifier。 承認コード付与要求で PKCE が使用された場合は必須です。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 |
-| `client_secret` | 機密 Web アプリには必須 | アプリ登録ポータルで作成した、アプリケーションのシークレット。 client_secret をデバイスや Web ページに確実に保存することはできないため、ネイティブ アプリやシングル ページ アプリではアプリケーションのシークレットを使用しないでください。 Web アプリや Web API では client_secret をサーバー側で安全に保存する機能が備わっており、必ず指定する必要があります。  ここで説明されているすべてのパラメーターと同様に、クライアント シークレットは、送信前に URL エンコードする必要があります。これは、通常、SDK によって実行される手順です。 URI エンコードの詳細については、[URI の一般構文の仕様](https://tools.ietf.org/html/rfc3986#page-12)に関する記事を参照してください。 |
+| `client_secret` | 機密 Web アプリには必須 | アプリ登録ポータルで作成した、アプリケーションのシークレット。 client_secret をデバイスや Web ページに確実に保存することはできないため、ネイティブ アプリやシングル ページ アプリではアプリケーションのシークレットを使用しないでください。 Web アプリや Web API では client_secret をサーバー側で安全に保存する機能が備わっており、必ず指定する必要があります。  ここで説明されているすべてのパラメーターと同様に、クライアント シークレットは、送信前に URL エンコードする必要があります。これは、通常、SDK によって実行される手順です。 URI エンコードの詳細については、[URI の一般構文の仕様](https://tools.ietf.org/html/rfc3986#page-12)に関する記事を参照してください。  [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) に従って、代わりに Authorization ヘッダーで資格情報を提供する基本認証パターンもサポートされています。 |
 
 ### <a name="request-an-access-token-with-a-certificate-credential"></a>証明書資格情報を使用してアクセス トークンを要求する
 

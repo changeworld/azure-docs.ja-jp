@@ -1,16 +1,16 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
-ms.author: lajanuar
-ms.openlocfilehash: 2fe98566c459a8e4c30df5d8e0d6a5040be13284
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 8e9666d2d944fe87767084129549476a09902fef
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068023"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540655"
 ---
 このクイックスタートでは、Speech Devices SDK for Linux を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription.md)デバイスとして使用する方法について説明します。 現在、[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。
 

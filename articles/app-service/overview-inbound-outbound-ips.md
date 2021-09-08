@@ -4,12 +4,12 @@ description: Azure App Service で受信および送信 IP アドレスがどの
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ea667fcfe70e109038d74e7c1fa0281bbc2b20bb
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e4913ad840c847c4ce571f07f971922858e40393
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397796"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472238"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -29,7 +29,7 @@ App Service プランをデプロイ単位間で移動することは許可さ�
 
 - アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
 - リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
-- 証明書の更新中などに既存の IP ベースの TLS/SSL バインドを削除する ([証明書の更新](configure-ssl-certificate.md#renew-certificate)に関する記事を参照してください)。
+- 証明書の更新中などに既存の IP ベースの TLS/SSL バインドを削除する ([証明書の更新](configure-ssl-certificate.md#renew-an-expiring-certificate)に関する記事を参照してください)。
 
 ## <a name="find-the-inbound-ip"></a>受信 IP を検索する
 

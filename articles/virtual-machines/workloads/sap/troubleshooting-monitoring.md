@@ -16,12 +16,12 @@ ms.author: madhukan
 ms.custom:
 - H1Hack27Feb2017
 - contperf-fy21q4
-ms.openlocfilehash: 3c77fe23b7ce058f31a216c5991b7129c3ac99fe
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 4d0977cd408c0a8fdcff16ad01c4c72203e72c40
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579830"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969716"
 ---
 # <a name="monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (Large Instances) を監視する
 
@@ -75,7 +75,7 @@ tar  -czvf health_check_logs.tar.gz /var/log/health_check
 
 ## <a name="azure-monitor-for-sap-solutions"></a>SAP ソリューション向け Azure Monitor
 
-Azure Monitor for SAP Solutions を使用すると、前述したすべてのリソースを含め、さまざまなリソースを監視できます。 Azure Monitor for SAP Solutions は Azure ネイティブのツールです。 Azure のインフラストラクチャやデータベースから 1 か所にデータを収集して、それらを視覚的に関連付けることで、トラブルシューティングを迅速化することができます。 詳細については、「[Azure Monitor for SAP Solutions](../../../virtual-machines/workloads/sap/azure-monitor-overview.md)」を参照してください。
+Azure Monitor for SAP Solutions を使用すると、前述したすべてのリソースを含め、さまざまなリソースを監視できます。 Azure Monitor for SAP Solutions は Azure ネイティブのツールです。 Azure のインフラストラクチャやデータベースから 1 か所にデータを収集して、それらを視覚的に関連付けることで、トラブルシューティングを迅速化することができます。 詳細については、[Azure での SAP の監視](../../../virtual-machines/workloads/sap/monitor-sap-on-azure.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

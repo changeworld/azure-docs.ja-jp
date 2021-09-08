@@ -8,19 +8,19 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: d3b956803e9a796c49288f90873e88c3b69f1c7b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 1f07907d3a4f421fa9f7a03c48d5f74496a1d45a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502897"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303078"
 ---
 # <a name="find-errors-and-resume-jobs-by-using-log-and-plan-files-in-azcopy"></a>AzCopy でログとプラン ファイルを使用してエラーの検出とジョブの再開を行う
 
 AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。 この記事は、ログを使用してエラーを診断し、プラン ファイルを使用してジョブを再開するのに役立ちます。 また、この記事では、ログとプラン ファイルの詳細レベルと既定の格納場所を変更してそれらを構成する方法についても説明します。
 
 > [!NOTE]
-> AzCopy の使用の開始に役立つコンテンツを探している場合は、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。
+> AzCopy の使用の開始に役立つコンテンツを探している場合は、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。 この記事は、AzCopy のバージョンのうち、現在サポートしている **V10** を対象としています。 古いバージョンの AzCopy を使用する必要がある場合は、[古いバージョンの AzCopy の使用](storage-use-azcopy-v10.md#previous-version)に関する記事をご覧ください。
 
 ## <a name="log-and-plan-files"></a>ログとプラン ファイル
 
@@ -74,8 +74,7 @@ azcopy jobs show <job-id> --with-status=Failed
 失敗したジョブまたは取り消されたジョブを再開するには、次のコマンドを使用します。 このコマンドでは、SAS トークンと共に識別子を使用します。SAS トークンは、セキュリティ上の理由で、永続的ではないためです。
 
 ```
-azcopy jobs resume <job-id> --source-sas="<sas-token>"
-azcopy jobs resume <job-id> --destination-sas="<sas-token>"
+azcopy jobs resume <job-id> --source-sas="<sas-token>" --destination-sas="<sas-token>"
 ```
 
 > [!TIP]
@@ -87,7 +86,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | PowerShell:`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -99,7 +98,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | PowerShell:`$env:AZCOPY_LOG_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

@@ -1,20 +1,20 @@
 ---
 title: Android マップへの線レイヤーの追加 | Microsoft Azure Maps
 description: マップに線を追加する方法について説明します。 Azure Maps Android SDK を使用し、マップに線レイヤーを追加したり、シンボルやカラー グラデーションで線をカスタマイズしたりする例について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ff071d03e00a0380d1ab6642828b0940931d3302
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ce8733fdc6e6fd22414df944e35fa3609668e653
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097450"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438464"
 ---
 # <a name="add-a-line-layer-to-the-map-android-sdk"></a>マップに線レイヤーを追加する (Android SDK)
 

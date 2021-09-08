@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/09/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6931f33c303e1e42af75b34cb7a72d7a37c702cd
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: ae8cdb3b6f470d8dd9f1500d5dd0af51d594b8e8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598191"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432290"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで既存のオファーを更新する
 
@@ -57,6 +57,9 @@ ms.locfileid: "113598191"
 1. プランの名前、説明、または対象ユーザーの利用可能性を変更したら、 **[下書きの保存]** を選択します。
 1. 更新を発行する準備ができたら、 **[Review and publish] (確認して発行)** を選択します。 **[[Review and publish]\(確認と発行)](review-publish-offer.md)** ページが開いて、更新の完了状態が表示されます。
 1. 発行用に更新されたプランを送信するには、 **[発行]** を選択します。 更新されたオファーのプレビュー バージョンのレビューと承認が可能になったら、メールが送信されます。
+
+> [!NOTE]
+> プライベート プランを発行する場合は、後でその可視性をパブリックに変更できます。 ただし、パブリック プランを発行した後に、その可視性をプライベートに変更することはできません。
 
 ## <a name="update-image-versions-for-an-existing-vm-offer"></a>既存の VM オファーのイメージ バージョンを更新する
 

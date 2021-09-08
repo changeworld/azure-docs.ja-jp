@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: acd1b6c8e5c1be76b29c93fddc57c799aef0a526
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 282df705e8a98a7c236cfff549447cdd36017df8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046705"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431442"
 ---
 # <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>VM insights Dependency Agent をアップグレードする方法
 
@@ -47,7 +47,7 @@ Dependency Agent VM 拡張機能を使用して、Windows VM 上のエージェ�
 
 2. 次のコマンドを実行します。
 
-    ```dos
+    ```cmd
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
     ```
 
@@ -63,7 +63,11 @@ Linux 上の以前のバージョンの Dependency Agent からのアップグ�
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 
-2. root としてコマンド `sh InstallDependencyAgent-Linux64.bin -s` を実行します。 
+2. root として次のコマンドを実行します。
+
+    ```bash
+    InstallDependencyAgent-Linux64.bin -s
+    ```
 
 Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、 */var/opt/microsoft/dependency-agent/log* にあります。 
 

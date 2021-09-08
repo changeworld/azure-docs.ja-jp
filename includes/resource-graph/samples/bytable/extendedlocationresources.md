@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 283fff5d2c9df863173f2d2e42c12cd399c14c00
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: a0eb7b8f6ee177d2dd485ab8aac8ae3205feec22
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308823"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535919"
 ---
 ### <a name="get-enabled-resource-types-for-azure-arc-enabled-custom-locations"></a>Azure Arc 対応のカスタムの場所に対して有効になっているリソースの種類を取得する
 

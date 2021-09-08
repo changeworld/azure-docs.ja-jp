@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 02/11/2021
-ms.openlocfilehash: 40e48cade82f8ffc808303dd43cb0d5f9ff5fe86
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 20022df3080b18a93746b61bafc3bcbc0e9e44b7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984430"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424890"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:ARM テンプレートを使用して、Azure Database for PostgreSQL - Single Server を作成する
 
@@ -179,7 +179,7 @@ read -p "Press [ENTER] to continue: "
 Azure portal から [ARM テンプレートをエクスポート](../azure-resource-manager/templates/export-template-portal.md)できます。 テンプレートをエクスポートするには、次の 2 とおりの方法があります。
 
 - [リソース グループまたはリソースからのエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)。 このオプションでは、既存のリソースから新しいテンプレートを生成します。 エクスポートされたテンプレートは、リソース グループの現在の状態の "スナップショット" です。 リソース グループ全体、またはそのリソース グループ内の特定のリソースをエクスポートできます。
-- [デプロイ前または履歴からのエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment)。 このオプションでは、デプロイに使用されたテンプレートのそのままのコピーを取得します。
+- [デプロイ前または履歴からのエクスポート](../azure-resource-manager/templates/export-template-portal.md#download-template-before-deployment)。 このオプションでは、デプロイに使用されたテンプレートのそのままのコピーを取得します。
 
 テンプレートをエクスポートすると、PostgreSQL サーバー リソースの ```"properties":{ }``` セクションに、セキュリティ上の理由から ```administratorLogin``` と ```administratorLoginPassword``` が含まれていないことがわかります。 テンプレートをデプロイする前に、これらのパラメーターをテンプレートに追加する **必要があります**。そうしないと、テンプレートは失敗します。
 

@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 07/07/2021
 ms.author: mbullwin
-ms.openlocfilehash: 02aa150960436317a8307998eb91883e906249ed
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 9668c25c4674505df30877f0a303614065fac94a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114342469"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123453447"
 ---
 [リファレンスのドキュメント](/dotnet/api/overview/azure/ai.metricsadvisor-readme-pre) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.MetricsAdvisor) | [サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md)
 
@@ -149,7 +149,7 @@ Metrics Advisor では、複数の種類のデータ ソースがサポートさ
 `connection_String` を、実際の SQL Server 接続文字列に置き換え、`query` を、1 つのタイムスタンプでデータを返すクエリに置き換えます。 また、カスタム データに基づいて `DataFeedMetric` と `DataFeedDimension` の値を調整する必要もあります。
 
 > [!IMPORTANT]
-> クエリからは、各タイムスタンプで、ディメンションの各組み合わせに対して多くても 1 つのレコードが返される必要があります。 また、クエリによって返されるすべてのレコードで、タイムスタンプが同じになっている必要があります。 Metrics Advisor によってタイムスタンプごとにこのクエリが実行され、データが取り込まれます。 詳細と例については、[有効なクエリの記述方法に関するチュートリアル](../../tutorials/write-a-valid-query.md)を参照してください。
+> クエリからは、各タイムスタンプで、ディメンションの各組み合わせに対して多くても 1 つのレコードが返される必要があります。 また、クエリによって返されるすべてのレコードで、タイムスタンプが同じになっている必要があります。 Metrics Advisor によってタイムスタンプごとにこのクエリが実行され、データが取り込まれます。 詳細と例については、「[チュートリアル: 有効なクエリを記述する](../../tutorials/write-a-valid-query.md)」を参照してください。
 
 
 ```csharp
@@ -178,7 +178,14 @@ var dataFeedSchema = new DataFeedSchema(dataFeedMetrics)
 var ingestionStartTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
 var dataFeedIngestionSettings = new DataFeedIngestionSettings(ingestionStartTime);
 
-var dataFeed = new DataFeed(dataFeedName, dataFeedSource, dataFeedGranularity, dataFeedSchema, dataFeedIngestionSettings);
+var dataFeed = new DataFeed()
+{
+    Name = dataFeedName,
+    DataSource = dataFeedSource,
+    Granularity = dataFeedGranularity,
+    Schema = dataFeedSchema,
+    IngestionSettings = dataFeedIngestionSettings,
+};
 
 Response<string> response = await adminClient.CreateDataFeedAsync(dataFeed);
 

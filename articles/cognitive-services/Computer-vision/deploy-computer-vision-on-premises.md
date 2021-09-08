@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aahi
-ms.openlocfilehash: 36091c62814cffd78c5f8132e01820070968af52
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 18099d4de55423bdef2a5c05f3aecfa34a653bd0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284943"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426366"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes と Helm と共に Computer Vision コンテナーを使用する
 
@@ -372,7 +372,7 @@ Azure Kubernetes Service (AKS) での Helm を使用したアプリケーショ�
 [azure-cli]: /cli/azure/install-azure-cli
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
-[helm-install]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-install]: https://helm.sh/docs/intro/install/
 [helm-install-cmd]: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
 [helm-charts]: https://helm.sh/docs/topics/charts/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

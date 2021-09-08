@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/21/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2793cd0e3b2d43a2a227cd170d1173c536b41098
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9441cb178769b7d8cad6e60d0bf411c4c38710c5
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725417"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473462"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,9 +24,9 @@ Azure Cosmos DB では、データのバックアップが一定の間隔で自�
 * **継続的バックアップ モード** – このモードは、Azure Cosmos DB アカウントの作成時に選択します。 このモードを使用すると、過去 30 日以内の任意の時点に復元できます。 詳細については、[継続的バックアップ モードの概要](continuous-backup-restore-introduction.md)と、[Azure portal](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli)、または [Azure Resource Manager](provision-account-continuous-backup.md#provision-arm-template) を使用した継続的バックアップのプロビジョニングに関する記事をご覧ください。
 
   > [!NOTE]
-  > 新しいアカウントを継続的バックアップで構成した場合は、Azure portal、PowerShell、または CLI を使用して、セルフサービス復元を行うことができます。 アカウントを継続的モードで構成した場合は、定期的モードに切り替えて戻すことはできません。 現在定期的バックアップモードである既存のアカウントを、継続的モードに変更することはできません。  
+  > 新しいアカウントを継続的バックアップで構成した場合は、Azure portal、PowerShell、または CLI を使用して、セルフサービス復元を行うことができます。 アカウントを継続的モードで構成した場合は、定期的モードに切り替えて戻すことはできません。
 
-Azure Synapse Link が有効なアカウントのバックアップと復元には、分析ストア データは含まれません。 Synapse Link が有効になっている場合、Azure Cosmos DB がトランザクション ストア内のデータを、スケジュールされたバックアップ間隔で引き続き自動的にバックアップします。 現時点では、分析ストア内のデータの自動バックアップと復元はサポートされていません。
+Azure Synapse Link が有効なアカウントのバックアップと復元には、分析ストア データは含まれません。 Synapse Link が有効になっている場合、トランザクション ストア内のデータは、Azure Cosmos DB によって、スケジュールされたバックアップ間隔で引き続き自動的にバックアップされます。 現時点では、分析ストア内のデータの自動バックアップと復元はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

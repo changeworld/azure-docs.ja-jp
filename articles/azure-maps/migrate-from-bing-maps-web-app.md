@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Bing 地図から Web アプリを移行する | Microsoft Azure Maps
 description: Bing 地図から Microsoft Azure Maps に Web アプリを移行する方法についてのチュートリアルです。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 9/10/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 8726f6211ef792064e9e180a8c2e34383eeb6d53
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: adec0b04e82d0a00b2f95b6b4f7980f628b93a7a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441574"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439634"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>チュートリアル:Bing 地図から Web アプリを移行する
 
@@ -77,7 +77,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
 | GeoJSON サポート          | ✓                                                                                      |
 | GeoXML サポート           | ✓ [空間 IO モジュール](how-to-use-spatial-io-module.md)                                                                                     |
 | Well-Known Text サポート  | ✓                                                                                      |
-| カスタム マップ スタイル        | Partial                                                                                |
+| カスタム マップ スタイル        | 一部サポート                                                                                |
 
 Azure Maps には、その機能を拡張する [Web SDK 用のオープンソース モジュール](open-source-projects.md#open-web-sdk-modules)が他にも数多く存在します。
 

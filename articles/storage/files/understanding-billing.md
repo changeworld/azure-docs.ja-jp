@@ -4,15 +4,15 @@ description: Azure ファイル共有のプロビジョニングおよび従量�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9d0079ac85980f97a0241780b23e639e2359c65d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 420cce0d30d9619fa39bb2eec5605c8941f015f3
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787223"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864499"
 ---
 # <a name="understand-azure-files-billing"></a>Azure Files の課金について
 Azure Files には、プロビジョニングと従量課金制という 2 つの異なる課金モデルが用意されています。 プロビジョニング モデルは Premium ファイル共有でのみ使用できます。これは、**FileStorage** ストレージ アカウントの種類でデプロイされたファイル共有です。 従量課金制モデルは Standard ファイル共有でのみ使用できます。Standard ファイル共有は、**汎用バージョン 2 (GPv2)** ストレージ アカウントの種類でデプロイされたファイル共有です。 この記事では、Azure Files の毎月の請求書を理解できるように、両方のモデルがどのように機能するかについて説明します。
@@ -27,6 +27,13 @@ Azure Files には、プロビジョニングと従量課金制という 2 つ�
 :::row-end:::
 
 Azure Files の価格については、[「Azure Files の料金」ページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
+
+## <a name="applies-to"></a>適用対象
+| ファイル共有の種類 | SMB | NFS |
+|-|:-:|:-:|
+| Standard ファイル共有 (GPv2)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Standard ファイル共有 (GPv2)、GRS/GZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 ## <a name="storage-units"></a>ストレージ ユニット    
 Azure Files では、ストレージ容量を表すために基数 2 の測定単位が使用されます。KiB、MiB、GiB、TiB です。 お使いのオペレーティング システムでは、同じ測定単位またはカウント システムが使用されている場合もそうでない場合もあります。
@@ -52,7 +59,7 @@ Azure Files ではストレージ容量の予約ができ、ストレージ利�
 
 - **容量のサイズ**: 予約できる容量のサイズは 10 TiB か 100 TiB です。予約容量が大きい方が大きな割引を受けられます。 複数の予約容量を購入することもできます。その場合、ワークロードの条件に合わせて、サイズの異なる容量を組み合わせられます。 たとえば、製品の展開に 120 TiB のファイル共有を使用する場合、100 TiB 1 つと 10 TiB 2 つを予約すれば、必要な容量をカバーできます。
 - **期間**: 購入できる予約容量の期間は 1 年または 3 年です。予約期間が長い方が大きな割引を受けられます。 
-- **レベル**: 容量予約ができる Azure Files のレベル。 現在、容量予約ができる Azure Files のレベルはホットとクールです。
+- **レベル**: 容量予約ができる Azure Files のレベル。 現在、容量予約ができる Azure Files のレベルは Premium、ホット、クールです。
 - **場所**: 容量予約ができる Azure リージョン。 容量予約は、一部の Azure リージョンで利用できます。
 - **冗長性**: 容量予約ができるストレージの冗長性。 容量予約は、LRS、ZRS、GRS、GZRS など、Azure Files でサポートしているすべての冗長性に対応しています。
 
@@ -63,38 +70,44 @@ Azure Files ではストレージ容量の予約ができ、ストレージ利�
 ## <a name="provisioned-model"></a>プロビジョニング モデル
 Azure Files では、Premium ファイル共有にプロビジョニング モデルが使用されます。 プロビジョニング ビジネス モデルでは、使用量に基づいて請求されるのではなく、Azure Files サービスにストレージ要件を事前に指定します。 これはオンプレミスでハードウェアを購入する場合と似ています。この場合、特定の量のストレージを使用する Azure ファイル共有をプロビジョニングするときに、使用するかどうかに関係なく、そのストレージの料金を支払います。オンプレミスの物理メディアにかかるコストを支払い始めるのが、領域を使い始めるときではないことと同じです。 オンプレミスの物理メディアを購入する場合とは異なり、プロビジョニング ファイル共有は、ストレージと IO のパフォーマンス特性に応じて動的にスケールアップまたはスケールダウンすることができます。
 
-Premium ファイル共有をプロビジョニングするときは、ワークロードに必要な GiB 数を指定します。 プロビジョニングする GiB ごとに、固定比率で追加の IOPS とスループットを使用できるようになります。 保証されているベースライン IOPS に加えて、各 Premium ファイル共有はベスト エフォート ベースでバーストをサポートしています。 IOPS とスループットの数式は次のとおりです。
-
-- ベースライン IOPS = 400 + 1 * プロビジョニング済み GiB。 (最大 100,000 IOPS まで)。
-- バースト限度 = MAX(4000, 3 * ベースライン IOPS)。
-- エグレス レート = 60 MiB/s + 0.06 * プロビジョニング済み GiB。
-- イングレス レート = 40 MiB/s + 0.04 * プロビジョニング済み GiB
-
 プロビジョニングされたファイル共有のサイズはいつでも引き上げることができますが、引き下げは最後の引き上げから 24 時間後にのみ行うことができます。 クォータの拡大なしで 24 時間経過した後は、再び拡大するまで、共有クォータを何回でも縮小できます。 IOPS/スループットのスケールの変更は、プロビジョニングされたサイズの変更後、数分以内に有効になります。
 
 プロビジョニングされた共有のサイズを、使用されている GiB 未満に縮小できます。 これを行った場合、データは失われませんが、使用されているサイズに対して引き続き課金され、使用されているサイズではなく、プロビジョニングされた共有のパフォーマンス (ベースライン IOPS、スループット、およびバースト IOPS) を受け取ります。
 
+### <a name="provisioning-method"></a>プロビジョニング方法
+Premium ファイル共有をプロビジョニングするときは、ワークロードに必要な GiB 数を指定します。 プロビジョニングする GiB ごとに、固定比率で追加の IOPS とスループットを使用できるようになります。 保証されているベースライン IOPS に加えて、各 Premium ファイル共有はベスト エフォート ベースでバーストをサポートしています。 IOPS とスループットの数式は次のとおりです。
+
+| Item | 値 |
+|-|-|
+| ファイル共有の最小サイズ | 100 GiB |
+| プロビジョニングの単位 | 1 GiB |
+| ベースライン IOPS 式 | `MIN(400 + 1 * ProvisionedGiB, 100000)` |
+| バースト限度 | `MIN(MAX(4000, 3 * BaselineIOPS), 100000)` |
+| バースト クレジット | `BurstLimit * 3600` |
+| イングレス レート | `40 MiB/sec + 0.04 * ProvisionedGiB` |
+| エグレス レート | `60 MiB/sec + 0.06 * ProvisionedGiB` |
+
 次の表は、プロビジョニングされた共有サイズについてのこれらの式の例をいくつか示しています。
 
-|容量 (GiB) | ベースライン IOPS | バースト IOPS | エグレス (MiB/秒) | イングレス (MiB/秒) |
-|---------|---------|---------|---------|---------|
-|100         | 500     | 最大 4,000     | 66   | 44   |
-|500         | 900     | 最大 4,000  | 90   | 60   |
-|1,024       | 1,424   | 最大 4,000   | 122   | 81   |
-|5,120       | 5,520   | 最大 15,360  | 368   | 245   |
-|10,240      | 10,640  | 最大 30,720  | 675   | 450   |
-|33,792      | 34,192  | 最大 100,000 | 2,088 | 1,392   |
-|51,200      | 51,600  | 最大 100,000 | 3,132 | 2,088   |
-|102,400     | 100,000 | 最大 100,000 | 6,204 | 4,136   |
+| 容量 (GiB) | ベースライン IOPS | バースト IOPS | バースト クレジット | イングレス (MiB/秒) | エグレス (MiB/秒) |
+|-|-|-|-|-|-|
+| 100 | 500 | 最大 4,000 | 14,400,000 | 44 | 66 |
+| 500 | 900 | 最大 4,000 | 14,400,000 | 60 | 90 |
+| 1,024 | 1,424 | 最大 4,000 | 14,400,000 | 81 | 122 |
+| 5,120 | 5,520 | 最大 15,360 | 55,296,000 | 245 | 368 |
+| 10,240 | 10,640 | 最大 30,720 | 110,592,000 | 450 | 675 |
+| 33,792 | 34,192 | 最大 100,000 | 360,000,000 | 1,392 | 2,088 |
+| 51,200 | 51,600 | 最大 100,000 | 360,000,000 | 2,088 | 3,132 |
+| 102,400 | 100,000 | 最大 100,000 | 360,000,000 | 4,136 | 6,204 |
 
-ファイル共有の実効パフォーマンスは、他の多くの要因の中でも特にマシン ネットワークの制限、使用可能なネットワーク帯域幅、IO サイズ、並列処理の影響を受けます。 たとえば、8 KiB の読み取り/書き込み IO サイズでの内部テストに基づいて、SMB 経由で Premium ファイル共有に接続された、SMB マルチチャネルが有効になっていない単一の Windows 仮想マシン (*Standard F16s_v2*) は 20K の読み取り IOPS と 15K の書き込み IOPS を実現できます。 512 MiB の読み取り/書き込み IO サイズでは、同じ VM は 1.1 GiB/秒の送信スループットと 370 MiB/秒の受信スループットを実現できます。 Premium 共有で SMB マルチチャネルが有効になっている場合は、同じクライアントで 最大 \~3 倍のパフォーマンスを達成できます。 最大のパフォーマンス スケールを達成するには、[SMB マルチチャネルを有効にし](storage-files-enable-smb-multichannel.md)、負荷を複数の VM に分散します。 一般的なパフォーマンスの問題と回避策については、「[SMB マルチチャネルのパフォーマンス](storage-files-smb-multichannel-performance.md)」と[トラブルシューティング ガイド](storage-troubleshooting-files-performance.md)に関する記事を参照してください。
+ファイル共有の実効パフォーマンスは、他の多くの要因の中でも特にマシン ネットワークの制限、使用可能なネットワーク帯域幅、IO サイズ、並列処理の影響を受けます。 たとえば、8 KiB の読み取り/書き込み IO サイズでの内部テストに基づいて、SMB 経由で Premium ファイル共有に接続された、SMB マルチチャネルが有効になっていない単一の Windows 仮想マシン (*Standard F16s_v2*) は 20K の読み取り IOPS と 15K の書き込み IOPS を実現できます。 512 MiB の読み取り/書き込み IO サイズでは、同じ VM は 1.1 GiB/秒の送信スループットと 370 MiB/秒の受信スループットを実現できます。 Premium 共有で SMB マルチチャネルが有効になっている場合は、同じクライアントで 最大 \~3 倍のパフォーマンスを達成できます。 最大のパフォーマンス スケールを達成するには、[SMB マルチチャネルを有効にし](files-smb-protocol.md#smb-multichannel)、負荷を複数の VM に分散します。 よくあるパフォーマンスの問題と回避策については「[SMB マルチチャネルのパフォーマンス](storage-files-smb-multichannel-performance.md)」と[トラブルシューティングのガイド](storage-troubleshooting-files-performance.md)を参考にしてください。
 
 ### <a name="bursting"></a>バースト
-ピーク時の需要に対応するためにワークロードで追加のパフォーマンスが必要な場合、共有は、バースト クレジットを使用して共有のベースライン IOPS の限度を超えて、需要を満たすために必要な共有パフォーマンスを提供できます。 Premium ファイル共有は、IOPS を最大 4,000 または最大 3 倍のいずれか大きい方の値までバーストできます。 バーストは自動化され、クレジット システムに基づいて動作します。 バーストはベスト エフォートで動作し、バースト限度は保証されるものではなく、ファイル共有は、最大 60 分間、その限度 "*まで*" バーストできます。
+ピーク時の需要に対応するためにワークロードで追加のパフォーマンスが必要な場合、共有は、バースト クレジットを使用して共有のベースライン IOPS の限度を超えて、需要を満たすために必要な共有パフォーマンスを提供できます。 Premium ファイル共有は、IOPS を最大 4,000 または最大 3 倍のいずれか大きい方の値までバーストできます。 バーストは自動化され、クレジット システムに基づいて動作します。 バーストはベスト エフォート型のサービスであり、最大値の実現を保証していません。
 
 クレジットは、ファイル共有のトラフィックがベースライン IOPS を下回るたびに、バースト バケットに蓄積されます。 たとえば、100 GiB 共有は 500 ベースライン IOPS を備えています。 共有の実際のトラフィックが特定の 1 秒間で 100 IOPS だった場合は、未使用の 400 IOPS がバースト バケットに補充されます。 同様に、アイドル状態の 1 TiB 共有では、1,424 IOPS でバースト クレジットが発生します。 これらのクレジットは、後で操作がベースライン IOPS を超えたときに使用されます。
 
-共有は、ベースライン IOPS を超え、バースト バケット内にクレジットがあるときは常に、最大許可ピーク バースト率でバーストします。 クレジットが残っている限り、共有は最大 60 分間バーストを継続できますが、これは発生したバースト クレジットの数に基づきます。 ベースライン IOPS を超えた IO のそれぞれが 1 つのクレジットを消費し、すべてのクレジットが消費されると、共有はベースライン IOPS に戻ります。
+共有は、ベースライン IOPS を超え、バースト バケット内にクレジットがあるときは常に、最大許可ピーク バースト率でバーストします。 共有では、クレジットが残っている限りバーストを継続でき、ここでいうクレジットは累積バースト クレジットを指します。 ベースライン IOPS を超えた IO のそれぞれが 1 つのクレジットを消費し、すべてのクレジットが消費されると、共有はベースライン IOPS に戻ります。
 
 共有のクレジットには次の 3 つの状態があります。
 
@@ -127,8 +140,8 @@ Standard ファイル共有を作成するときに、トランザクション�
 
 | 操作の種類 | 書き込みトランザクション | 一覧表示トランザクション | 読み取りトランザクション | その他トランザクション | 削除トランザクション |
 |-|-|-|-|-|-|
-| 管理操作 | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li></ul> | <ul><li>`ListShares`</li></ul> | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | | <ul><li>`DeleteShare`</li></ul> |
-| データ操作 | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`SetShareACL`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
+| 管理操作 | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li><li>`SetShareACL`</li></ul> | <ul><li>`ListShares`</li></ul> | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | | <ul><li>`DeleteShare`</li></ul> |
+| データ操作 | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
 
 > [!Note]  
 > NFS 4.1 は、プロビジョニング課金モデルを使用する Premium ファイル共有でのみ使用できます。トランザクションは Premium ファイル共有の課金に影響しません。

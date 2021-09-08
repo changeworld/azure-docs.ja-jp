@@ -4,15 +4,15 @@ description: Azure IoT Central アプリケーションから Azure Event Hubs�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/25/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 1a6a5a98b6989526908e464a314d271dd07c19d8
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 8235da7781ec55a90c81fca3a6393e5d1eda5c2f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110586256"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481202"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする (レガシ)
 
@@ -555,7 +555,7 @@ Blob Storage の場合は、最後のものが書き込まれてから以降の�
 
 "*デバイス*" と "*デバイス テンプレート*" のストリームが有効になっているプレビュー アプリケーションに既存のデータ エクスポートがある場合は、**2020 年 6 月 30 日** までにそのエクスポートを更新してください。 この要件は、Azure Blob Storage、Azure Event Hubs、および Azure Service Bus へのエクスポートに適用されます。
 
-2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 この日付より前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。この時点で、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](/rest/api/iotcentral/2021-04-30preview/devices/get)、[デバイス プロパティ](/rest/api/iotcentral/2021-04-30preview/devices/getproperties)、[デバイス クラウド プロパティ](/rest/api/iotcentral/2021-04-30preview/devices/getcloudproperties)および[デバイス テンプレート](/rest/api/iotcentral/2021-04-30preview/devicetemplates/get)のオブジェクトと一致します。
+2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 この日付より前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。この時点で、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](/rest/api/iotcentral/1.0/devices/get)、[デバイス プロパティ](/rest/api/iotcentral/1.0/devices/get-properties)、および[デバイス テンプレート](/rest/api/iotcentral/1.0/device-templates/get)のオブジェクトと一致します。
 
 **デバイス** については、古いデータ形式と新しいデータ形式の間で主に次のような違いがあります。
 - デバイスの `@id` は削除され、`deviceId` の名前は `id` に変更されます 

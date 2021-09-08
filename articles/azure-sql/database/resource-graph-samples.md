@@ -1,19 +1,19 @@
 ---
 title: Azure SQL Database 用の Azure Resource Graph サンプル クエリ
 description: Azure SQL Database 用のサンプル Azure Resource Graph クエリでは、リソースの種類とテーブルを使用して Azure SQL Database 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: MashaMSFT
 ms.author: mathoma
 ms.service: sql-database
 ms.subservice: service-overview
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 9e346873c7a593eddd2725033dd17bd43b98e22e
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 1dbac02a6ca038db4736170b1833c056d4d73afe
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318298"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537654"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-sql-database"></a>Azure SQL Database 用の Azure Resource Graph サンプル クエリ
 

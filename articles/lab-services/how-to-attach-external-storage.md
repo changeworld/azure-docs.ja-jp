@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 9d59e8eab9aff857991a886838cc1063a36de00c
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: dc0f2a4f51fb12c61d0e1e16cb23d030a5dc9cc6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112120107"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969276"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>Lab Services で 外部ファイル ストレージを使用する
 
@@ -51,11 +51,11 @@ Azure Files 共有にプライベート エンドポイントを使用する場�
 Azure Files 共有に接続された VM を作成するには、こちらの手順に従ってください。
 
 1. [Azure Storage アカウント](../storage/files/storage-how-to-create-file-share.md)を作成します。 **[接続方法]** ページで、**パブリック エンドポイント** または **プライベート エンドポイント** を選択します。
-2. プライベート メソッドを選択した場合は、仮想ネットワークからファイル共有にアクセスできるようにするために、[プライベート エンドポイント](../private-link/tutorial-private-endpoint-storage-portal.md)を作成します。 [プライベート DNS ゾーン](../dns/private-dns-privatednszone.md)を作成するか、既存のものを使用します。 プライベート Azure DNS ゾーンでは、仮想ネットワーク内での名前解決が提供されます。
-3. [Azure ファイル共有](../storage/files/storage-how-to-create-file-share.md)を作成します。 ファイル共有には、ストレージ アカウントのパブリック ホスト名を指定してアクセスできます。
+2. プライベート メソッドを選択した場合は、仮想ネットワークからファイル共有にアクセスできるようにするために、[プライベート エンドポイント](../private-link/tutorial-private-endpoint-storage-portal.md)を作成します。
+3. [Azure ファイル共有](../storage/files/storage-how-to-create-file-share.md)を作成します。 パブリック エンドポイントを使用している場合、ファイル共有には、ストレージ アカウントのパブリック ホスト名を指定してアクセスできます。  プライベート エンドポイントを使用している場合、ファイル共有にはプライベート IP アドレスを使用して到達できます。  
 4. Azure ファイル共有をテンプレート VM にマウントします。
     - [Windows](../storage/files/storage-how-to-use-files-windows.md)
-    - [Linux](../storage/files/storage-how-to-use-files-linux.md)。 学生用 VM でのマウントの問題を回避するには、次のセクションを参照してください。
+    - [Linux](../storage/files/storage-how-to-use-files-linux.md)。 学生用 VM でのマウントの問題を回避するには、「[Linux で Azure Files を使用する](#use-azure-files-with-linux)」を参照してください。
 5. テンプレート VM を[発行](how-to-create-manage-template.md#publish-the-template-vm)します。
 
 > [!IMPORTANT]
@@ -65,6 +65,7 @@ Azure Files 共有に接続された VM を作成するには、こちらの手�
 
 既定の手順を使用して Azure Files 共有をマウントした場合、テンプレートが発行されると、学生用 VM ではファイル共有が消えたように見えます。 次の変更したスクリプトでは、この問題に対処しています。  
 
+パブリック エンドポイントを使用したファイル共有の場合
 ```bash
 #!/bin/bash
 
@@ -88,6 +89,34 @@ fi
 sudo chmod 600 /etc/smbcredentials/$storage_account_name.cred
 
 sudo bash -c "echo ""//$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name cifs nofail,vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino"" >> /etc/fstab"
+sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name -o vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino
+```
+
+プライベート エンドポイントを使用したファイル共有の場合
+```bash
+#!/bin/bash
+
+# Assign variables values for your storage account and file share
+storage_account_name=""
+storage_account_ip=""
+storage_account_key=""
+fileshare_name=""
+
+# Do not use 'mnt' for mount directory.
+# Using ‘mnt’ will cause issues on student VMs.
+mount_directory="prm-mnt" 
+
+sudo mkdir /$mount_directory/$fileshare_name
+if [ ! -d "/etc/smbcredentials" ]; then
+    sudo mkdir /etc/smbcredentials
+fi
+if [ ! -f "/etc/smbcredentials/$storage_account_name.cred" ]; then
+    sudo bash -c "echo ""username=$storage_account_name"" >> /etc/smbcredentials/$storage_account_name.cred"
+    sudo bash -c "echo ""password=$storage_account_key"" >> /etc/smbcredentials/$storage_account_name.cred"
+fi
+sudo chmod 600 /etc/smbcredentials/$storage_account_name.cred
+
+sudo bash -c "echo ""//$storage_account_ip/$fileshare_name /$mount_directory/$fileshare_name cifs nofail,vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino"" >> /etc/fstab"
 sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name -o vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino
 ```
 
