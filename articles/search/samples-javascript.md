@@ -59,7 +59,7 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | 次の記事のソース コード。"[クイック スタート:JavaScript で検索インデックスを作成する](search-get-started-javascript.md)" のような記事。 この記事では、サンプル データを使用して検索インデックスを作成、読み込み、クエリするための基本的なワークフローについて説明します。 |
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?languages=javascript&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> [サンプル ブラウザー](/samples/browse/?languages=javascript&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを GitHub 内で検索してください。
 
 ## <a name="other-samples"></a>その他のサンプル
 
