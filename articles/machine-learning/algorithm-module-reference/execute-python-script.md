@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.custom: devx-track-python
+ms.custom: devx-track-python, has-adal-ref
 author: likebupt
 ms.author: keli19
 ms.date: 06/15/2021
-ms.openlocfilehash: 668e44b8192ef5dcfde4e932741f81ecbc35b5ca
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: fe98144b204c0baa22bc17972162799b6f341675
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236177"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831361"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -95,7 +95,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 ## <a name="upload-files"></a>ファイルをアップロードする
 Python スクリプトの実行モジュールでは、[Azure Machine Learning Python SDK](/python/api/azureml-core/azureml.core.run%28class%29#upload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
 
-次の例は、Python スクリプトの実行モジュールでイメージ ファイルをアップロードする方法を示しています。
+次の例は、Python スクリプトの実行モジュールで実行レコードにイメージ ファイルをアップロードする方法を示しています。
 
 ```Python
 
@@ -135,6 +135,46 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 > [!div class="mx-imgBorder"]
 > ![アップロードされた画像のプレビュー](media/module/upload-image-in-python-script.png)
+
+また、次のコードを使用して、任意のデータストアにファイルをアップロードすることもできます。 プレビューできるのは、ストレージ アカウント内のファイルのみです。
+```Python
+import pandas as pd
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be None.
+#   Param<dataframe1>: a pandas.DataFrame
+#   Param<dataframe2>: a pandas.DataFrame
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+
+    from matplotlib import pyplot as plt
+    import os
+
+    plt.plot([1, 2, 3, 4])
+    plt.ylabel('some numbers')
+    img_file = "line.png"
+
+    # Set path
+    path = "./img_folder"
+    os.mkdir(path)
+    plt.savefig(os.path.join(path,img_file))
+
+    # Get current workspace
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    ws = run.experiment.workspace
+    
+    # Get a named datastore from the current workspace and upload to specified path
+    from azureml.core import Datastore 
+    datastore = Datastore.get(ws, datastore_name='workspacefilestore')
+    datastore.upload(path)
+
+    return dataframe1,
+```
+
 
 ## <a name="how-to-configure-execute-python-script"></a>Execute Python Script を構成する方法
 

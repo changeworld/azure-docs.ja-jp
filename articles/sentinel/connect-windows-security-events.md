@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2021
 ms.author: yelevin
-ms.openlocfilehash: d83672894f511696cfc2520aaee3e7932508b6c2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 133d5e01de4f5fe511677fc5226eb0aede258eab
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322887"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252286"
 ---
 # <a name="connect-to-windows-servers-to-collect-security-events"></a>セキュリティ イベントを収集するために Windows サーバーに接続する
 
@@ -103,7 +103,7 @@ Windows セキュリティ イベントを Azure Sentinel で収集するには�
 
 # <a name="log-analytics-agent-legacy"></a>[Log Analytics エージェント (レガシ)](#tab/LAA)
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[セキュリティ イベント]** をクリックし、右下にある **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。 その後、 **[Instructions]\(手順\)** タブで画面の指示に従い、このセクションの残りの作業を行います。
+1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[セキュリティ イベント]** を選択し、詳細ペインの **[コネクタ ページを開く]** を選択します。 その後、 **[Instructions]\(手順\)** タブで画面の指示に従い、このセクションの残りの作業を行います。
 
 1. コネクタ ページの **[前提条件]** セクションに記載された適切なアクセス許可があることを確認します。
 
@@ -111,13 +111,13 @@ Windows セキュリティ イベントを Azure Sentinel で収集するには�
 
     Azure Virtual Machines の場合:
     
-    1. **[Azure Windows 仮想マシンにエージェントをインストールする]** をクリックし、下に表示されるリンクをクリックします。
-    1. 接続する各仮想マシンについて、その名前を右側に表示されるリストでクリックし、 **[接続]** をクリックします。
+    1. **[Install agent on Azure Windows Virtual Machine]\(Azure 仮想マシンにエージェントをインストールする\)** を選択し、下に表示されるリンクを選択します。
+    1. 接続する各仮想マシンについて、その名前を右側に表示されるリストで選択し、**[接続]** を選択します。
 
     Azure 以外の Windows マシンの場合 (物理マシン、オンプレミスの仮想マシン、別のクラウドの仮想マシン):
 
-    1. **[Azure 以外の Windows マシンにエージェントをインストールする]** をクリックし、下に表示されるリンクをクリックします。
-    1. 右側の **[Windows コンピューター]** に表示される適切なダウンロード リンクをクリックします。
+    1. **[Azure 以外の Windows マシンにエージェントをインストールする]** を選択し、下に表示されるリンクを選択します。
+    1. 右側の **[Windows コンピューター]** に表示される適切なダウンロード リンクを選択します。
     1. ダウンロードした実行可能ファイルを使用して、目的の Windows システムにエージェントをインストールし、前述のダウンロード リンクの下に表示される **[ワークスペース ID とキー]** を使用してその構成を行います。
 
     > [!NOTE]
@@ -130,13 +130,13 @@ Windows セキュリティ イベントを Azure Sentinel で収集するには�
 
 1. ストリーム配信するイベント セット (すべて、一般、最小) を選択します。 最小および共通のイベント セットに [含まれるイベント ID の一覧](#event-id-reference)を参照してください。
 
-1. **[Update]** をクリックします。
+1. **[更新]** を選択します。
 
 1. Windows セキュリティ イベントに Log Analytics 内の関連スキーマを使用するには、クエリ ウィンドウで「`SecurityEvent`」と入力します。
 
 # <a name="azure-monitor-agent-new"></a>[Azure Monitor エージェント (新)](#tab/AMA)
 
-1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[Windows セキュリティ イベント (プレビュー)]** をクリックし、右下にある **[コネクタ ページを開く]** ボタンをクリックします。 その後、 **[Instructions]\(手順\)** タブで画面の指示に従い、このセクションの残りの作業を行います。
+1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[Windows セキュリティ イベント (プレビュー)]** を選択し、右下にある **[コネクタ ページを開く]** ボタンを選択します。 その後、 **[Instructions]\(手順\)** タブで画面の指示に従い、このセクションの残りの作業を行います。
 
 1. コネクタ ページの **[前提条件]** セクションに記載された適切なアクセス許可があることを確認します。
 
@@ -252,7 +252,7 @@ Azure Sentinel はセキュリティ イベント データに機械学習 (ML) 
 
 1. **セキュリティ イベント** または **Windows セキュリティ イベント** データ コネクタを使用して、RDP ログイン データ (イベント ID 4624) を収集している必要があります。 イベント セットを Azure Sentinel にストリーミングするには、"None" 以外の[イベント セット](#event-id-reference)を選択するか、このイベント ID を含むデータ収集ルールを作成します。
 
-1. Azure Sentinel ポータルから、 **[Analytics]\(分析\)** をクリックし、 **[Rule templates]\(規則のテンプレート\)** タブをクリックします。 **[(Preview) Anomalous RDP Login Detection]\((プレビュー) 異常な RDP ログイン検出\)** 規則を選択し、 **[状態]** スライダーを **[有効]** に移動します。
+1. Azure Sentinel ポータルで、 **[分析]** を選択した後、 **[規則のテンプレート]** タブを選択します。 **[(Preview) Anomalous RDP Login Detection]\((プレビュー) 異常な RDP ログイン検出\)** 規則を選択し、 **[状態]** スライダーを **[有効]** に移動します。
 
     > [!NOTE]
     > 機械学習アルゴリズムでは、ユーザー動作のベースライン プロファイルを作成するために 30 日間分のデータが必要であるため、インシデントを検出する前に、30 日間の Windows セキュリティ イベント データの収集を許可する必要があります。

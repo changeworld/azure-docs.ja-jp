@@ -1,15 +1,15 @@
 ---
 title: カナダ連邦 PBMM に関する規制コンプライアンスの詳細
 description: カナダ連邦 PBMM 規制コンプライアンスの組み込みイニシアティブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: bf393f082d08da17b8fb986b16dc5a139f3317f6
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: a42a97410f7147215abaafc50e4e434b993dbdb1
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110116"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475118"
 ---
 # <a name="details-of-the-canada-federal-pbmm-regulatory-compliance-built-in-initiative"></a>カナダ連邦 PBMM 規制コンプライアンスの組み込みイニシアティブの詳細
 
@@ -107,7 +107,7 @@ ms.locfileid: "123110116"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[一覧に含まれる仮想マシン イメージに対して Log Analytics エージェントを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |定義された一覧に仮想マシン イメージがなく、エージェントがインストールされていない場合は、仮想マシンを非準拠として報告します。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
+|[一覧に含まれる仮想マシン イメージに対して Log Analytics エージェントを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F32133ab0-ee4b-4b44-98d6-042180979d50) |定義されている一覧に仮想マシン イメージがなく、エージェントがインストールされていない場合、仮想マシンを非準拠として報告します。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_Audit.json) |
 |[一覧に含まれる仮想マシン イメージの仮想マシン スケール セットでは Log Analytics エージェントを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5c3bc7b8-a64c-4e08-a9cd-7ff0f31e1138) |定義された一覧に仮想マシン イメージがなく、エージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_OSImage_VMSS_Audit.json) |
 |[仮想マシンは、指定されたワークスペースに接続する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff47b5582-33ec-4c5c-87c0-b010a6b2e917) |ポリシーまたはイニシアティブ割り当てで指定されている Log Analytics ワークスペースに仮想マシンがログを記録していない場合、それらを非準拠として報告します。 |AuditIfNotExists、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalytics_WorkspaceMismatch_VM_Audit.json) |
 

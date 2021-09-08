@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a2656d5c23a465856eee1e84d2c4f6900b21ec41
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 655294aaf575dd828c3be6f135984eaf8c851fb6
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477470"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479762"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールのベスト プラクティス
 
@@ -127,7 +127,7 @@ EXEC sp_describe_first_result_set N'
 結果セットは次のとおりです。
 
 |is_hidden|column_ordinal|name|system_type_name|max_length|
-|----------------|---------------------|----------|--------------------|-------------------||
+|----------------|---------------------|----------|--------------------|-------------------|
 |0|1|vendor_id|varchar(8000)|8000|
 |0|2|pickup_datetime|datetime2(7)|8|
 |0|3|passenger_count|INT|4|

@@ -1,0 +1,218 @@
+---
+title: 容量予約グループから仮想マシンの関連付けを削除する (プレビュー)
+description: 容量予約グループから仮想マシンを削除する方法について説明します。
+author: vargupt
+ms.author: vargupt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 08/09/2021
+ms.reviewer: cynthn, jushiman
+ms.custom: template-how-to
+ms.openlocfilehash: 2f5537ec3ad34e3f0ad7eff32d32762ed6fedef3
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273297"
+---
+# <a name="remove-a-vm-association-from-a-capacity-reservation-group-preview"></a>容量予約グループから VM の関連付けを削除する (プレビュー)
+
+この記事では、容量予約グループへの VM の関連付けを削除する手順について説明します。 容量予約の詳細については、[概要について説明した記事](capacity-reservation-overview.md)を参照してください。 
+
+VM と基になる容量予約の両方で容量が論理的に消費されるため、Azure では、あいまいな割り当て状態や予期しないエラーを回避するために、このプロセスにいくつかの制約を課しています。  
+
+割り当てを変更する方法は 2 つあります。 
+- オプション 1: 仮想マシンの割り当てを解除し、容量予約グループのプロパティを変更して、必要に応じて仮想マシンを再起動する
+- オプション 2: 予約数量をゼロに更新した後、容量予約グループのプロパティを変更する
+
+> [!IMPORTANT]
+> 容量予約は現在、パブリック プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+## <a name="register-for-capacity-reservation"></a>容量予約に登録する 
+
+容量予約機能を使用する前に、[プレビュー版を利用するためにサブスクリプションを登録する](capacity-reservation-overview.md#register-for-capacity-reservation)必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
+
+
+## <a name="deallocate-the-vm"></a>VM の割り当てを解除する
+
+1 つ目のオプションは、仮想マシンの割り当てを解除し、容量予約グループのプロパティを変更して、必要に応じて VM を再起動することです。 
+
+### <a name="api"></a>[API](#tab/api1)
+
+1. VM の割り当てを解除する
+
+    ```rest
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/deallocate?api-version=2021-04-01
+    ```
+
+1. VM を更新して容量予約グループとの関連付けを削除する
+    
+    ```rest
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/update?api-version=2021-04-01
+    ```
+    要求本文で、`capacityReservationGroup` プロパティを空に設定して、グループへの VM の関連付けを削除します。
+
+    ```json
+     {
+    "location": "eastus",
+    "properties": {
+        "capacityReservation": {
+            "capacityReservationGroup": {
+                "id":""
+            }
+        }
+    }
+    }
+    ```
+
+### <a name="portal"></a>[ポータル](#tab/portal1)
+
+<!-- no images necessary if steps are straightforward --> 
+
+1. [Azure portal](https://portal.azure.com) を開きます。
+1. 対象の仮想マシンに移動して、 **[概要]** を選択します。
+1. **[停止]** を選択します。 
+    1. 状態が *[停止済み (割り当て解除)]* に変わると、VM の割り当てが解除されていることがわかります。
+    1. プロセスのこの時点では、VM は容量予約グループに関連付けられたままになります。これは容量予約の `virtualMachinesAssociated` プロパティに反映されます。 
+1. **[構成]** を選択します。
+1. **[Capacity Reservation Group]\(容量予約グループ\)** の値を *[なし]* に設定します。
+    - これで VM と容量予約グループの関連付けがなくなります。 
+
+### <a name="powershell"></a>[PowerShell](#tab/powershell1)
+
+1. 仮想マシンの割り当てを解除する
+
+    ```powershell-interactive
+    Stop-AzVM
+    -ResourceGroupName "myResourceGroup"
+    -Name "myVM"
+    ```
+
+    状態が **[停止済み (割り当て解除)]** に変わると、仮想マシンの割り当てが解除されます。
+
+1. `CapacityReservationGroupId` プロパティを空にすることで、VM を更新して容量予約グループとの関連付けを削除します。
+
+    ```powershell-interactive
+    $VirtualMachine =
+    Get-AzVM
+    -ResourceGroupName "myResourceGroup"
+    -Name "myVM"
+    
+    Update-AzVM
+    -ResourceGroupName "myResourceGroup"
+    -VM $VirtualMachine
+    -CapacityReservationGroupId " "
+    ```
+
+詳細については、Azure PowerShell のコマンド [Stop-AzVM](/powershell/module/az.compute/stop-azvm)、[Get-AzVM](/powershell/module/az.compute/get-azvm)、[Update-AzVM](/powershell/module/az.compute/update-azvm) に移動します。
+
+--- 
+<!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
+
+
+## <a name="update-the-reserved-quantity-to-zero"></a>予約数量をゼロに更新する 
+
+2 つ目のオプションでは、予約数量をゼロに更新した後、容量予約グループのプロパティを変更することが伴います。
+
+このオプションは、仮想マシンの割り当てを解除できず、かつ予約が不要になった場合に適しています。 たとえば、容量予約を作成して、大規模なデプロイ中に容量を一時的に確保することができます。 完了すると、予約は不要になります。 
+
+### <a name="api"></a>[API](#tab/api2)
+
+1. 予約数量をゼロに更新する 
+
+    ```rest
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/CapacityReservationGroups/{CapacityReservationGroupName}/CapacityReservations/{CapacityReservationName}?api-version=2021-04-01
+    ```
+
+    要求本文に、次の内容を含めます。
+    
+    ```json
+    {
+    "sku":
+        {
+        "capacity": 0
+        }
+    }
+    ```
+    
+    上記は `capacity` プロパティが 0 に設定されていることに注目してください。
+
+1. VM を更新して容量予約グループとの関連付けを削除する
+
+    ```rest
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{VirtualMachineName}/update?api-version=2021-04-01
+    ```
+
+    要求本文で、`capacityReservationGroup` プロパティを空に設定して、関連付けを削除します。
+    
+    ```json
+    {
+    "location": "eastus",
+    "properties": {
+        "capacityReservation": {
+            "capacityReservationGroup": {
+                "id":""
+            }
+        }
+    }
+    } 
+    ```
+
+### <a name="portal"></a>[ポータル](#tab/portal2)
+
+<!-- no images necessary if steps are straightforward --> 
+
+1. [Azure portal](https://portal.azure.com) を開きます。
+1. 容量予約グループに移動して、 **[概要]** を選択します。
+1. **[予約]** を選択します。 
+1. ページ上部の **[Manage Reservation]\(予約の管理\)** を選択します。 
+1. *[予約の管理]* ブレードで、次のようにします。
+    1. **[インスタンス]** フィールドに「`0`」と入力します。
+    1. **[保存]** を選びます。 
+1. 対象の仮想マシンに移動して、 **[構成]** を選択します。
+1. **[Capacity Reservation Group]\(容量予約グループ\)** の値を *[なし]* に設定します。
+    - これで VM と容量予約グループの関連付けがなくなることに注目してください。
+
+### <a name="powershell"></a>[PowerShell](#tab/powershell2)
+
+>[!NOTE]
+> `Update-AzCapacityReservation` コマンドは、プレビュー段階にある間は使用できません。 既存の容量予約を変更するには、`New-AzCapacityReservation` を使用します。
+
+1. 予約数量をゼロに更新する
+
+    ```powershell-interactive
+    New-AzCapacityReservation
+    -ResourceGroupName "myResourceGroup"
+    -Location "eastus"
+    -Zone "1"
+    -ReservationGroupName "myCapacityReservationGroup"
+    -Name "myCapacityReservation"
+    -Sku "Standard_D2s_v3"
+    -CapacityToReserve 0
+    ```
+
+1. `CapacityReservationGroupId` プロパティを空にすることで、VM を更新して容量予約グループとの関連付けを削除します。
+
+    ```powershell-interactive
+    $VirtualMachine =
+    Get-AzVM
+    -ResourceGroupName "myResourceGroup"
+    -Name "myVM"
+    
+    Update-AzVM
+    -ResourceGroupName "myResourceGroup"
+    -VM $VirtualMachine
+    -CapacityReservationGroupId " "
+    ```
+
+詳細については、Azure PowerShell のコマンド [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)、[Get-AzVM](/powershell/module/az.compute/get-azvm)、[Update-AzVM](/powershell/module/az.compute/update-azvm) に移動します。
+
+--- 
+<!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
+
+
+## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"]
+> [スケール セットを容量予約グループに関連付ける方法について確認する](capacity-reservation-associate-virtual-machine-scale-set.md)

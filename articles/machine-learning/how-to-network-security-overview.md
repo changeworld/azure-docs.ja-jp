@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 06/11/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 06dc1a34f35434019d1b992c12502577aa470360
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: f68550d6e72f0c2bd162c10d1d5340edcca61f6f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653493"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039026"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する
@@ -89,7 +89,7 @@ ms.locfileid: "114653493"
 ### <a name="limitations"></a>制限事項
 
 仮想ネットワーク内のワークスペースと関連するリソースをセキュリティで保護するには、次の制限があります。
-- Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート エンドポイントで Azure Machine Learning ワークスペースを使用することはできません。
+- Azure China 21Vianet リージョンでは、プライベート エンドポイントで Azure Machine Learning ワークスペースを使用することはできません。
 - すべてのリソースは同じ VNet の背後に配置する必要があります。 ただし、同じ VNet 内の複数のサブネットは許容されます。
 
 ## <a name="secure-the-training-environment"></a>トレーニング環境をセキュリティで保護する

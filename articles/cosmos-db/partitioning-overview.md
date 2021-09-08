@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/12/2021
-ms.openlocfilehash: b461b424a8b0d52533da824353abc2b24ec465a6
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.date: 08/26/2021
+ms.openlocfilehash: 43f722bf102566cf737e43732bf1ab3c39fdecc1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113666269"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032575"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割と水平スケーリング
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -136,3 +136,6 @@ Azure Cosmos DB で[複数項目の ACID トランザクション](database-tran
 * [Azure Cosmos コンテナーのスループットをプロビジョニングする](how-to-provision-container-throughput.md)方法を確認する。
 * [Azure Cosmos データベースのスループットをプロビジョニングする](how-to-provision-database-throughput.md)方法を確認する。
 * [Azure Cosmos DB でデータのモデル化とパーティショニングを行う](/learn/modules/model-partition-data-azure-cosmos-db/)方法の学習モジュールを見る。
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

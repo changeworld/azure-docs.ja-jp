@@ -4,23 +4,23 @@ titleSuffix: Azure Digital Twins
 description: Azure portal を使用して、クライアント アプリ向けの認証オプションとして Azure AD アプリの登録を作成する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 10/13/2020
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 55f8c0008a055f5703ffe563fe7925446246f134
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: da935038599b86d9c86a1f55071d4b4d1ea4ce16
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114466169"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223058"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-portal"></a>Azure Digital Twins で使用するアプリ登録を作成する (ポータル)
 
 [!INCLUDE [digital-twins-create-app-registration-selector.md](../../includes/digital-twins-create-app-registration-selector.md)]
 
-Azure Digital Twins インスタンスを使用する場合、「[クライアント アプリをコーディングする](tutorial-code.md)」で作成されたカスタム クライアント アプリなどのクライアント アプリケーションを使用して、そのインスタンスを操作することが一般的です。 これらのアプリケーションを操作するためには、Azure Digital Twins で認証する必要があります。また、アプリで使用できる [認証メカニズム](how-to-authenticate-client.md)には、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **アプリの登録** が含まれます。
+Azure Digital Twins インスタンスを使用する場合、「[クライアント アプリをコーディングする](tutorial-code.md)」で作成されたカスタム クライアント アプリなどのクライアント アプリケーションを使用して、そのインスタンスを操作することが一般的です。 これらのアプリケーションを操作するには、Azure Digital Twins で認証する必要があります。また、アプリで使用できる [認証メカニズム](how-to-authenticate-client.md)には、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) の **アプリの登録** が関与します。
 
-これは、すべての認証シナリオで必要とされるわけではありません。 ただし、アプリの登録が必要な認証方法またはコード サンプルを使用している場合は、この記事で [Azure portal](https://portal.azure.com) を使用した設定方法を確認できます。 また、アプリの登録を使用して認証するために必要な[重要な値を収集](#collect-important-values)する方法についても説明します。
+アプリの登録は、認証シナリオによっては必要ありません。 ただし、アプリの登録が必要な認証方法またはコード サンプルを使用している場合は、この記事で [Azure portal](https://portal.azure.com) を使用した設定方法を確認できます。 また、アプリの登録を使用して認証するために必要な[重要な値を収集](#collect-important-values)する方法についても説明しています。
 
 ## <a name="azure-ad-app-registrations"></a>Azure AD アプリの登録
 
@@ -50,7 +50,7 @@ Azure Digital Twins インスタンスを使用する場合、「[クライア�
 
 ## <a name="collect-important-values"></a>重要な値を収集する
 
-次に、アプリの登録に関する重要な値を収集します。これらは、アプリの登録を使用してクライアント アプリケーションを認証するために必要となります。 これらの値には次の値が含まれます。
+次に、アプリの登録に関する重要な値を収集します。これらは、アプリの登録を使用してクライアント アプリケーションを認証するのに必要となります。 これらの値には次の値が含まれます。
 * **リソース名**
 * **クライアント ID**
 * **テナント ID**
@@ -97,7 +97,7 @@ Azure Digital Twins に使用する場合、**リソース名** は `http://digi
 
 :::image type="content" source="media/how-to-create-app-registration/add-permission.png" alt-text="[API のアクセス許可] メニュー オプションと [アクセス許可の追加] ボタンが強調表示されている Azure portal のアプリ登録のスクリーンショット。":::
 
-次の *[API アクセス許可の要求]* ページで、 *[所属する組織で使用している API]* タブに切り替えて、"*Azure digital twins*" を検索します。 検索結果から "_**Azure Digital Twins**_" を選択して、Azure Digital Twins API に対するアクセス許可の割り当てを進めます。
+次の *[API アクセス許可の要求]* ページで、 *[所属する組織で使用している API]* タブに切り替えて、"*Azure digital twins*" を検索します。 検索結果から _**Azure Digital Twins**_ を選択して、Azure Digital Twins API に対するアクセス許可の割り当てを続けます。
 
 :::image type="content" source="media/how-to-create-app-registration/request-api-permissions-1.png" alt-text="Azure Digital Twins が表示された Azure portal の [API アクセス許可の要求] ページの検索結果のスクリーンショット。":::
 
@@ -131,7 +131,7 @@ Azure Digital Twins に使用する場合、**リソース名** は `http://digi
 
 ## <a name="other-possible-steps-for-your-organization"></a>組織でのその他の考えられる手順
 
-アプリ登録を正常に設定するには、サブスクリプションの所有者または管理者からの追加のアクションが組織で必要になる可能性があります。 必要な手順は、組織の具体的な設定によって異なることがあります。
+アプリの登録を正常に設定するには、サブスクリプションの所有者または管理者からの追加のアクションが組織で必要になる可能性があります。 必要な手順は、組織の具体的な設定によって異なることがあります。
 
 サブスクリプションの所有者または管理者による実行が必要になる可能性がある一般的な潜在的なアクティビティのいくつかを次に示します。 これらの操作は、Azure portal の [Azure AD アプリ登録](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)のページから実行できます。
 * アプリ登録に対する管理者の同意を付与する。 組織では、サブスクリプション内のすべてのアプリ登録について、Azure AD で *[管理者の同意が必要]* がグローバルに有効になっている可能性があります。 その場合は、有効にするアプリ登録について、アプリ登録の *[API のアクセス許可]* ページで所有者/管理者がユーザーの会社に対してこのボタンを選択する必要があります。

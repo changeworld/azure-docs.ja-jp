@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 7ca6fdf685da74b8b0e10875a2bd16d66a7b4c60
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: e757dac8cb7b81c5a1a24a7008f3eb453a7f977d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020308"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221559"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium ファイル共有を使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -120,7 +120,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 クラスターに多数の投票がある場合は、ビジネス ニーズに最適な[クォーラム ソリューション](hadr-cluster-quorum-configure-how-to.md)を構成します。 詳細については、[SQL Server VM でのクォーラム](hadr-windows-server-failover-cluster-overview.md#quorum)に関する記事をご覧ください。 
 
-## <a name="validate-cluster"></a>クラスターの検証
+## <a name="validate-cluster"></a>クラスターを検証する
 
 UI または PowerShell を使用して、クラスターを検証します。
 
@@ -191,7 +191,7 @@ PowerShell を使用してクラスターを検証するには、いずれかの
 
 ## <a name="register-with-the-sql-vm-rp"></a>SQL VM RP への登録
 
-ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)で SQL IaaS Agent 拡張機能 (RP) に登録します。このモードは、現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
+ポータルから SQL Server VM を管理するには、それを[軽量管理モード](sql-agent-extension-manually-register-single-vm.md#lightweight-mode)で SQL IaaS Agent 拡張機能 (RP) に登録します。このモードは、現時点では、FCI と Azure VM 上の SQL Server でサポートされている唯一のモードです。 
 
 PowerShell を使用して軽量モードで SQL Server VM を登録します (-LicenseType は `PAYG` または `AHUB` にできます)。
 
@@ -213,7 +213,10 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 - Microsoft 分散トランザクション コーディネーター (MSDTC) は、Windows Server 2016 以前ではサポートされていません。 
 - Filestream は、Premium ファイル共有のフェールオーバー クラスターではサポートされていません。 Filestream を使用するには、[記憶域スペース ダイレクト](failover-cluster-instance-storage-spaces-direct-manually-configure.md)または [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)を代わりに使用して、クラスターをデプロイします。
 - [軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)での SQL IaaS Agent 拡張機能への登録のみがサポートされています。 
-- [スパース ファイルの制限のため Azure Files では](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)、現在、データベース スナップショットはサポートされていません。  
+- [スパース ファイルの制限のため Azure Files では](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)、現在、データベース スナップショットはサポートされていません。
+- データベース スナップショットはサポートされていないため、ユーザー データベースの CHECKDB は CHECKDB WITH TABLOCK に戻ります。 TABLOCK では実行されるチェックが制限されます。DBCC CHECKCATALOG はデータベースに対して実行されず、Service Broker データは検証されません。
+- MASTER および MSDB データベースの CHECKDB はサポートされていません。 
+- インメモリ OLTP 機能を使用するデータベースは、Premium ファイル共有を使用してデプロイされたフェールオーバー クラスター インスタンスではサポートされていません。 ビジネスでインメモリ OLTP が必要な場合は、代わりに [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)または[記憶域スペース ダイレクト](failover-cluster-instance-storage-spaces-direct-manually-configure.md)を使用して FCI をデプロイすることを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

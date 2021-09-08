@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C の構成要素を使用して Angular アプリケーションで認証を有効にする
-description: Angular アプリケーションでユーザーをサインインおよびサインアップする Azure Active Directory B2C の構成要素。
+description: Azure Active Directory B2C の構成要素を使用して、Angular アプリケーションでのユーザーのサインインとサインアップを行います。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,31 +11,31 @@ ms.date: 07/29/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 6c8ab2ced9dc81594e13f574060050ade1b6e09a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 100fed96c2a7adaa0d0934ab316db1d70bffdcb9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778846"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220815"
 ---
-# <a name="enable-authentication-in-your-own-angular-application-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して独自の Angular アプリケーションで認証を有効にする
+# <a name="enable-authentication-in-your-own-angular-application-by-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して独自の Angular アプリケーションで認証を有効にする
 
 この記事では、独自の Angular シングルページ アプリケーション (SPA) に Azure Active Directory B2C (Azure AD B2C) 認証を追加する方法について説明します。 Angular アプリケーションを [MSAL for Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/master/lib/msal-angular) 認証ライブラリと統合する方法について説明します。 
 
-この記事は、[サンプル Angular SPA アプリケーションでの認証の構成](./configure-authentication-sample-angular-spa-app.md)に関する記事と共に使用してください。その際は、サンプルの Angular アプリを独自の Angular アプリに置き換えてください。 この記事の手順を完了すると、アプリケーションで Azure AD B2C を使用したサインインが受け入れられます。
+この記事と併せて、[サンプルの Angular シングルページ アプリケーションでの認証の構成](./configure-authentication-sample-angular-spa-app.md)に関する関連記事も使用します。 サンプルの Angular アプリを、独自の Angular アプリに置き換えてください。 この記事の手順を完了すると、アプリケーションで Azure AD B2C によるサインインが受け付けられるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 
-[サンプル Angular SPA アプリケーションでの認証の構成](configure-authentication-sample-angular-spa-app.md)に関する記事の前提条件と統合の手順を確認します。
+[サンプルの Angular シングルページ アプリケーションでの認証の構成](configure-authentication-sample-angular-spa-app.md)に関する記事の前提条件と統合の手順を確認します。
 
 ## <a name="create-an-angular-app-project"></a>Angular アプリ プロジェクトの作成
 
-既存の Angular アプリ プロジェクトを使用するか、新しいプロジェクトを作成することができます。 新しいプロジェクトを作成するには、次のコマンドを実行します。 
+既存の Angular アプリ プロジェクトを使用するか、新しいプロジェクトを作成することができます。 新しいプロジェクトを作成するには、次のコマンドを実行します。
 
-次のコマンドは:
+これらのコマンドにより、次のことが行われます。
 
-1. npm パッケージ マネージャーを使用して [Angular CLI](https://angular.io/cli) をインストールします。
-1. ルーティング モジュールを使用して [Angular ワークスペースを作成](https://angular.io/cli/new)します。 アプリ名は `msal-angular-tutorial` で、これは、`contoso-car-service` のような任意の有効な Angular アプリ名に変更できます。
+1. npm パッケージ マネージャーを使用して [Angular CLI](https://angular.io/cli) がインストールされます。
+1. ルーティング モジュールを使用して [Angular ワークスペースが作成](https://angular.io/cli/new)されます。 アプリの名前は `msal-angular-tutorial` です。 これは、`contoso-car-service` のような任意の有効な Angular アプリ名に変更できます。
 1. アプリ ディレクトリ フォルダーに移動します。
 
 ```
@@ -46,7 +46,7 @@ cd msal-angular-tutorial
 
 ## <a name="install-the-dependencies"></a>依存関係をインストールする
 
-アプリケーションに [MSAL ブラウザー](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/master/lib/msal-browser)と [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/master/lib/msal-angular) ライブラリをインストールするには、コマンド シェルで次のコマンドを実行します。
+アプリケーションに [MSAL Browser](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/master/lib/msal-browser) ライブラリと [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/master/lib/msal-angular) ライブラリをインストールするには、コマンド シェルで次のコマンドを実行します。
 
 ```
 npm install @azure/msal-browser @azure/msal-angular
@@ -58,21 +58,19 @@ npm install @azure/msal-browser @azure/msal-angular
 npm install @angular/material @angular/cdk
 ```
 
-## <a name="add-the-authentication-components"></a>認証コンポーネントの追加
+## <a name="add-the-authentication-components"></a>認証コンポーネントを追加する
 
-サンプル コードは、次のコンポーネントで構成されています。 
+サンプルのコードは、次のコンポーネントで構成されています。 
 
-|コンポーネント  |型  |説明  |
+|コンポーネント  |Type  |説明  |
 |---------|---------|---------|
-| auth-config.ts| 定数 | Azure AD B2C ID プロバイダーと Web API サービスに関する情報を含む構成ファイル。 Angular アプリでは、この情報を使用して Azure AD B2C との信頼関係を確立し、ユーザーのサインインとサインアウトを行い、トークンを取得して検証します。 |
-| app.module.ts| [Angular モジュール](https://angular.io/guide/architecture-modules)| アプリケーションの各部品が連携するしくみについて説明します。 これは、アプリケーションのブートストラップと起動に使用されるルート モジュールです。 このチュートリアルでは、いくつかのコンポーネントを *app.module.ts* モジュールに追加し、MSAL 構成オブジェクトを使用して MSAL ライブラリを開始します。  |
-| app-routing.module.ts | [Angular ルーティング モジュール](https://angular.io/tutorial/toh-pt5) | ブラウザーの URL を解釈し、対応するコンポーネントを読み込んでナビゲーションを有効にします。  このチュートリアルでは、ルーティング モジュールにいくつかのコンポーネントを追加し、[MSAL Guard](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/msal-guard.md) でコンポーネントを保護します。 保護されたコンポーネントにアクセスできるのは、許可されているユーザーのみです。   |
-| app.component.* | [Angular コンポーネント](https://angular.io/guide/architecture-components) | `ng new` コマンドにより、ルート コンポーネントを持つ Angular プロジェクトが作成されました。 このチュートリアルでは、上部のナビゲーション バーをホストするようにアプリ コンポーネントを変更します。 ナビゲーション バーには、サインインやサインアウトなど、さまざまなボタンが含まれます *app.component.ts* クラスにより、サインインとサインアウトのイベントが処理されます。  |
-| home.component.* | [Angular コンポーネント](https://angular.io/guide/architecture-components)|このチュートリアルでは、*home* コンポーネントを追加して、匿名アクセスのホーム ページをレンダリングします。 このコンポーネントは、ユーザーがサインインしているかどうかを確認する方法を示しています。  |
+| auth-config.ts| 定数 | この構成ファイルには、Azure AD B2C ID プロバイダーと Web API サービスに関する情報が含まれます。 Angular アプリでは、この情報を使用して Azure AD B2C との信頼関係を確立し、ユーザーのサインインとサインアウトを行い、トークンを取得して検証します。 |
+| app.module.ts| [Angular モジュール](https://angular.io/guide/architecture-modules)| このコンポーネントには、アプリケーションの各部品が連携するしくみが記述されています。 これは、アプリケーションのブートストラップと開始に使用されるルート モジュールです。 このチュートリアルでは、いくつかのコンポーネントを *app.module.ts* モジュールに追加し、MSAL 構成オブジェクトを使用して MSAL ライブラリを開始します。  |
+| app-routing.module.ts | [Angular ルーティング モジュール](https://angular.io/tutorial/toh-pt5) | このコンポーネントにより、ブラウザーの URL が解釈され、対応するコンポーネントが読み込まれることで、ナビゲーションが有効になります。 このチュートリアルでは、ルーティング モジュールにいくつかのコンポーネントを追加し、[MSAL Guard](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/msal-guard.md) でコンポーネントを保護します。 保護されたコンポーネントにアクセスできるのは、許可されているユーザーのみです。   |
+| app.component.* | [Angular コンポーネント](https://angular.io/guide/architecture-components) | `ng new` コマンドにより、ルート コンポーネントを持つ Angular プロジェクトが作成されました。 このチュートリアルでは、上部のナビゲーション バーをホストするように *app* コンポーネントを変更します。 ナビゲーション バーには、サインイン ボタンやサインアウト ボタンなど、さまざまなボタンが含まれます。 `app.component.ts` クラスによって、サインインとサインアウトのイベントが処理されます。  |
+| home.component.* | [Angular コンポーネント](https://angular.io/guide/architecture-components)|このチュートリアルでは、*home* コンポーネントを追加して、匿名アクセス用のホーム ページをレンダリングします。 このコンポーネントは、ユーザーがサインインしているかどうかを確認する方法を示しています。  |
 | profile.component.* | [Angular コンポーネント](https://angular.io/guide/architecture-components) | このチュートリアルでは、*profile* コンポーネントを追加して、ID トークン要求を読み取る方法を学びます。 |
 | webapi.component.* | [Angular コンポーネント](https://angular.io/guide/architecture-components)| このチュートリアルでは、*webapi* コンポーネントを追加して、Web API を呼び出す方法を学びます。 |
-
-
 
 次のコンポーネントをアプリに追加するには、次の Angular CLI コマンドを実行します。 `generate component` コマンドにより、次の処理が実行されます。
 
@@ -87,7 +85,7 @@ ng generate component webapi
 
 ## <a name="add-the-app-settings"></a>アプリ設定を追加する
 
-Azure AD B2C ID プロバイダーと Web API の設定は、`auth-config.ts` ファイルに格納されています。 *src/app* フォルダーに、次のコードを含む *auth-config.ts* という名前のファイルを作成します。 次に、「[3.1 Angular サンプルを構成する](configure-authentication-sample-angular-spa-app.md#31-configure-the-angular-sample)」の説明に従って設定を変更します。
+Azure AD B2C ID プロバイダーと Web API の設定は、*auth-config.ts* ファイルに格納されています。 *src/app* フォルダーに、次のコードを含む *auth-config.ts* という名前のファイルを作成します。 次に、「[3.1 Angular サンプルを構成する](configure-authentication-sample-angular-spa-app.md#31-configure-the-angular-sample)」の説明に従って設定を変更します。
 
 ```typescript
 import { LogLevel, Configuration, BrowserCacheLocation } from '@azure/msal-browser';
@@ -144,23 +142,23 @@ export const loginRequest = {
 };
 ```
 
-## <a name="initiate-the-authentication-libraries"></a>認証ライブラリを開始する
+## <a name="start-the-authentication-libraries"></a>認証ライブラリを開始する
 
-パブリック クライアント アプリケーションは、アプリケーション シークレットを安全に維持するために信頼されていないため、クライアント シークレットも含んでいません。 *src/app* フォルダーで、*app.module.ts* を開き、次の変更を加えます。
+パブリック クライアント アプリケーションは、アプリケーション シークレットが安全に保たれるという保証がないので、クライアント シークレットを保持していません。 *src/app* フォルダーの *app.module.ts* を開き、次のように変更します。
 
-1. MSAL および MSAL ブラウザー ライブラリをインポートします。
+1. MSAL Angular ライブラリと MSAL Browser ライブラリをインポートします。
 1. Azure AD B2C 構成モジュールをインポートします。
 1. `HttpClientModule` をインポートします。 HTTP クライアントは Web API の呼び出しに使用されます。
 1. Angular HTTP インターセプターをインポートします。 MSAL では、インターセプターを使用して、ベアラー トークンを HTTP の Authorization ヘッダーに挿入します。
 1. 必須の Angular マテリアルを追加します。
-1. 複数アカウントのパブリック クライアント アプリケーション オブジェクトを使用して MSAL のインスタンスを作成します。 MSAL の初期化では、次のものが渡されます。
-    1. *auth-config.ts* 構成オブジェクト
-    1. ルーティング ガード構成オブジェクト
-    1. MSAL インターセプター構成オブジェクト。 インターセプター クラスは、既知の保護されたリソースに対して Angular の [HttpClient](https://angular.io/api/common/http/HttpClient) を使用する送信要求のためにトークンを自動的に取得します。
-1. `HTTP_INTERCEPTORS`、および `MsalGuard` [Angular プロバイダー](https://angular.io/guide/providers)を構成します。  
+1. 複数アカウントのパブリック クライアント アプリケーション オブジェクトを使用して、MSAL のインスタンスを作成します。 MSAL の初期化では、次のものが渡されます。
+    1. *auth-config.ts* 用の構成オブジェクト。
+    1. ルーティング ガード用の構成オブジェクト。
+    1. MSAL インターセプター用の構成オブジェクト。 インターセプター クラスにより、既知の保護されたリソースに対して Angular の [HttpClient](https://angular.io/api/common/http/HttpClient) クラスを使用する送信要求のためのトークンが、自動的に取得されます。
+1. `HTTP_INTERCEPTORS` および `MsalGuard` [Angular プロバイダー](https://angular.io/guide/providers)を構成します。  
 1. `MsalRedirectComponent` を [Angular ブートストラップ](https://angular.io/guide/bootstrapping)に追加します。
 
-*src/app* フォルダーで、*app.module.ts* を編集して、下のコード スニペットで示している次の変更を加えます。 変更には "*Changes start here*" (変更ここから) および "*Changes end here*" (変更ここまで) のフラグが付きます。 変更が完了すると、コードは次のコード スニペットのようになります。
+*src/app* フォルダーの *app.module.ts* を編集して、次のコード スニペットで示すように変更します。 変更箇所は、"Changes start here" (変更ここから) および "Changes end here" (変更ここまで) というフラグで示されています。 
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -209,7 +207,7 @@ import { MatTableModule } from '@angular/material/table';
     // Import the HTTP client. 
     HttpClientModule,
 
-    // Initiate the MSAL library with the MSAL config object
+    // Initiate the MSAL library with the MSAL configuration object
     MsalModule.forRoot(new PublicClientApplication(msalConfig),
       {
         // The routing guard configuration. 
@@ -250,11 +248,9 @@ export class AppModule { }
 
 ## <a name="configure-routes"></a>ルートを構成する
 
-ここでは、Angular アプリケーションのルートを構成します。 ユーザーがページ上のリンクを選択してシングルページ アプリケーション内を移動するか、アドレス バーに URL を入力すると、このルートによって URL が Angular コンポーネントにマップされます。 Angular ルーティングの [canActivate](https://angular.io/api/router/CanActivate) インターフェイスでは、MSAL Guard を使用して、ユーザーがサインインしているかどうかを確認します。 ユーザーがサインインしていない場合、MSAL ではユーザーを Azure AD B2C に誘導して認証します。
+ここでは、Angular アプリケーションのルートを構成します。 ユーザーがページ上のリンクを選択してシングルページ アプリケーション内を移動するか、アドレス バーに URL を入力すると、このルートによって URL が Angular コンポーネントにマップされます。 Angular ルーティングの [canActivate](https://angular.io/api/router/CanActivate) インターフェイスでは、MSAL Guard を使用して、ユーザーがサインインしているかどうかが確認されます。 ユーザーがサインインしていない場合、ユーザーは MSAL によって認証のために Azure AD B2C に誘導されます。
 
-*src/app* フォルダーで、*app-routing.module.ts* を編集して、下のコード スニペットで示している次の変更を加えます。 変更には "*Changes start here*" (変更ここから) および "*Changes end here*" (変更ここまで) のフラグが付きます。 
-
-変更が完了すると、コードは次のコード スニペットのようになります。
+*src/app* フォルダーの *app-routing.module.ts* を編集して、下のコード スニペットで示されているように変更します。 変更箇所は、"Changes start here" (変更ここから) および "Changes end here" (変更ここまで) というフラグで示されています。 
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -269,13 +265,13 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    // The profile component is protected with MSAL guard.
+    // The profile component is protected with MSAL Guard.
     canActivate: [MsalGuard]
   },
   {
     path: 'webapi',
     component: WebapiComponent,
-    // The profile component is protected with MSAL guard.
+    // The profile component is protected with MSAL Guard.
     canActivate: [MsalGuard]
   },
   {
@@ -302,10 +298,12 @@ export class AppRoutingModule { }
 
 ## <a name="add-the-sign-in-and-sign-out-buttons"></a>サインインとサインアウトのボタンを追加する
 
-ここでは、サインインとサインアウトのボタンを *app* コンポーネントに追加します。 *src/app* フォルダーで、*app.component.ts* を開き、次の変更を加えます。
+ここでは、サインインとサインアウトのボタンを *app* コンポーネントに追加します。 *src/app* フォルダーの *app.component.ts* ファイルを開き、次のように変更します。
 
 1. 必要なコンポーネントをインポートします。
-1. [OnInit メソッド](https://angular.io/api/core/OnInit)を実装するようにクラスを変更します。 `OnInit` メソッドは、[MSAL MsalBroadcastService](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/events.md) の監視可能イベント `inProgress$` をサブスクライブします。 ユーザーの操作の状態を知るには、特に、操作が完了したことを確認するには、このイベントを使用します。 MSAL アカウント オブジェクトを操作する前に、`InteractionStatus` プロパティが `InteractionStatus.None` を返すことを確認してください。 `subscribe` イベントでは、`setLoginDisplay` メソッドを呼び出して、ユーザーが認証されているかどうかを確認します。
+1. クラスを変更して [OnInit メソッド](https://angular.io/api/core/OnInit)を実装します。 `OnInit` メソッドは、[MSAL MsalBroadcastService](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/events.md) の監視可能イベント `inProgress$` をサブスクライブします。 ユーザーの操作の状態を知るには、特に、操作が完了したことを確認するには、このイベントを使用します。 
+
+   MSAL アカウント オブジェクトを操作する前に、`InteractionStatus` プロパティから `InteractionStatus.None` が返されることを確認します。 `subscribe` イベントでは、`setLoginDisplay` メソッドを呼び出して、ユーザーが認証されているかどうかを確認します。
 1. クラス変数を追加します。
 1. 認可フローを開始する `login` メソッドを追加します。
 1. ユーザーをサインアウトさせる `logout` メソッドを追加します。 
@@ -373,7 +371,7 @@ export class AppComponent implements OnInit{
 }
 ```
 
-*src/app* フォルダーで、*app.component.html* を編集して、次の変更を加えます。
+*src/app* フォルダーの *app.component.html* を編集して、次のように変更します。
 
 1. プロファイル コンポーネントと Web API コンポーネントへのリンクを追加します。
 1. クリック イベント属性が `login()` メソッドに設定されたログイン ボタンを追加します。 このボタンは、`loginDisplay` クラス変数が `false` の場合にのみ表示されます。
@@ -414,9 +412,7 @@ export class AppComponent implements OnInit{
 
 ## <a name="handle-the-app-redirects"></a>アプリ リダイレクトの処理 
 
-MSAL でリダイレクトを使用する場合、[app-redirect](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/redirects.md) ディレクティブを *index.html* に追加することが必須です。 *src* フォルダーで、*index.html* を編集します。 
-
-変更が完了すると、コードは次のコード スニペットのようになります。
+MSAL でリダイレクトを使用する場合は、[app-redirect](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/redirects.md) ディレクティブを *index.html* に追加する必要があります。 *src* フォルダーの *index.html* を、次のコード スニペットに示すように編集します。
 
 ```html
 <!doctype html>
@@ -437,9 +433,9 @@ MSAL でリダイレクトを使用する場合、[app-redirect](https://github.
 </html>
 ```
 
-## <a name="set-app-css-optional"></a>アプリの CSS の設定 (オプション)
+## <a name="set-app-css-optional"></a>アプリの CSS を設定する (省略可能)
 
-*/src* フォルダーの *styles.css* ファイルを次の CSS スニペットで更新します。 
+*/src* フォルダーの *styles.css* ファイルを、次の CSS スニペットで更新します。 
 
 ```css
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
@@ -450,18 +446,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ```
 
 > [!TIP]
-> この時点で、アプリを実行してサインイン エクスペリエンスをテストできます。 アプリケーションを実行するには、「[Angular アプリケーションの実行](#run-the-angular-application)」を参照してください。
+> この時点で、アプリを実行してサインイン エクスペリエンスをテストできます。 アプリを実行するには、「[Angular アプリケーションを実行する](#run-the-angular-application)」を参照してください。
 
 ## <a name="check-if-a-user-is-authenticated"></a>ユーザーが認証されているかどうかの確認
 
-`home.component` では、ユーザーが認証されているかどうかを確認する方法を示します。 *src/app/home* フォルダーで、*home.component.ts* を次のコード スニペットで更新します。 
-
+*home.component* ファイルでは、ユーザーが認証されているかどうかを確認する方法が示されています。 *src/app/home* フォルダーの *home.component.ts* を、次のコード スニペットで更新します。 
 
 コード:
 
 1. [MSAL MsalBroadcastService](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/events.md) の監視可能イベント `msalSubject$` および `inProgress$` をサブスクライブします。 
-1. `msalSubject$` により、認証の結果がブラウザー コンソールに書き込まれます。
-1. `inProgress$` により、ユーザーが認証されているかどうかが確認されます。 `getAllAccounts()` からは、1 つまたは複数のオブジェクトが返されます。
+1. `msalSubject$` イベントにより、認証の結果がブラウザー コンソールに書き込まれることを確認します。
+1. `inProgress$` イベントにより、ユーザーが認証されているかどうかがチェックされることを確認します。 `getAllAccounts()` メソッドからは、1 つまたは複数のオブジェクトが返されます。
 
 
 ```typescript
@@ -519,14 +514,14 @@ export class HomeComponent implements OnInit {
 
 ## <a name="read-the-id-token-claims"></a>ID トークン要求の読み取り
 
-`profile.component` では、ユーザーの ID トークン要求にアクセスする方法を示します。 *src/app/profile* フォルダーで、*profile.component.ts* を次のコード スニペットで更新します。 
+*profile.component* ファイルでは、ユーザーの ID トークン要求にアクセスする方法が示されています。 *src/app/profile* フォルダーの *profile.component.ts* を、次のコード スニペットで更新します。 
 
 コード:
 
 1. 必要なコンポーネントをインポートします。
 1. [MSAL MsalBroadcastService](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/events.md) の監視可能イベント `inProgress$` をサブスクライブします。 このイベントによってアカウントが読み込まれ、ID トークン要求が読み取られます。
-1. `checkAndSetActiveAccount` メソッドでは、アクティブなアカウントを確認および設定します。 これは、アプリで複数の Azure AD B2C ユーザー フローまたはカスタム ポリシーを操作する場合によく見られます。
-1. `getClaims` メソッドでは、アクティブな MSAL アカウント オブジェクトから ID トークン要求を取得します。 次に、それらを `dataSource` 配列に追加します。 この配列は、コンポーネントのテンプレートのバインドを使用してユーザーにレンダリングされます。
+1. `checkAndSetActiveAccount` メソッドにより、アクティブなアカウントがチェックされて設定されることを確認します。 このアクションは、アプリで複数の Azure AD B2C ユーザー フローまたはカスタム ポリシーを操作する場合によく見られます。
+1. `getClaims` メソッドにより、アクティブな MSAL アカウント オブジェクトから ID トークン要求が取得されることを確認します。 その後、このメソッドで、要求が `dataSource` 配列に追加されます。 この配列は、コンポーネントのテンプレートのバインドを使用してユーザーにレンダリングされます。
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -600,7 +595,7 @@ export class Claim {
 }
 ``` 
 
-*src/app/profile* フォルダーで、*profile.component.html* を次の HTML スニペットで更新します。 
+*src/app/profile* フォルダーの *profile.component.html* を、次の HTML スニペットで更新します。 
 
 ```html
 <h1>ID token claims:</h1>
@@ -626,27 +621,27 @@ export class Claim {
 
 ## <a name="call-a-web-api"></a>Web API を呼び出す
 
-[トークンベースの認可 Web API](enable-authentication-web-api.md) を呼び出すには、アプリが有効なアクセス トークンを持っている必要があります。 [MsalInterceptor](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/msal-interceptor.md) プロバイダーは、既知の保護されたリソースに対して Angular の [HttpClient](https://angular.io/api/common/http/HttpClient) を使用する送信要求のためにトークンを自動的に取得します。
+[トークンベースの承認 Web API](enable-authentication-web-api.md) を呼び出すには、有効なアクセス トークンがアプリにある必要があります。 [MsalInterceptor](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/msal-interceptor.md) プロバイダーにより、既知の保護されたリソースに対して Angular の [HttpClient](https://angular.io/api/common/http/HttpClient) クラスを使用する送信要求のためのトークンが、自動的に取得されます。
 
 > [!IMPORTANT]
-> (*app.module.ts* クラスの) MSAL 初期化メソッドでは、`protectedResourceMap` オブジェクトを使用して、必要なアプリ スコープを持つ Web API などの保護されたリソースをマップします。 コードで別の Web API を呼び出す必要がある場合は、対応するスコープを持つ Web API URI、Web API HTTP メソッドを `protectedResourceMap` オブジェクトに追加します。 詳細については、[保護されたリソース マップ](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/master/lib/msal-angular/docs/v2-docs/msal-interceptor.md#protected-resource-map)に関する記事を参照してください。
+> MSAL 初期化メソッド (`app.module.ts` クラス内) により、`protectedResourceMap` オブジェクトを使用して、必要なアプリ スコープを持つ Web API などの保護されたリソースがマップされます。 コードで別の Web API を呼び出す必要がある場合は、対応するスコープを持つ Web API URI と Web API HTTP メソッドを、`protectedResourceMap` オブジェクトに追加します。 詳細については、「[Protected Resource Map (保護されたリソース マップ)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/master/lib/msal-angular/docs/v2-docs/msal-interceptor.md#protected-resource-map)」を参照してください。
 
 
 [HttpClient](https://angular.io/api/common/http/HttpClient) オブジェクトで Web API を呼び出すと、[MsalInterceptor](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/msal-interceptor.md) プロバイダーで次の手順が実行されます。
 
 1. Web API エンドポイントで必要なアクセス許可 (スコープ) を持つアクセス トークンを取得します。 
-1. HTTP 要求の Authorization ヘッダー内で、次の形式を使用してベアラー トークンとしてアクセス トークンを渡します。
+1. この形式を使用して、HTTP 要求の Authorization ヘッダーでベアラー トークンとしてアクセス トークンを渡します。
 
-```http
-Authorization: Bearer <access-token>
-```
+   ```http
+   Authorization: Bearer <access-token>
+   ```
 
-`webapi.component` は、Web API を呼び出す方法を示しています。 *src/app/webapi* フォルダーで、*webapi.component.ts* を次のコード スニペットで更新します。  
+*webapi.component* ファイルでは、Web API を呼び出す方法が示されています。 *src/app/webapi* フォルダーの *webapi.component.ts* を、次のコード スニペットで更新します。  
 
-コード例を次に示します。
+コード:
 
-1. Angular の [HttpClient](https://angular.io/guide/http) を使用して Web API を呼び出します。
-1. `auth-config` クラスの `protectedResources.todoListApi.endpoint` を読み取ります。 この要素では、Web API URI を指定します。 MSAL インターセプターでは、Web API URI に基づいて、対応するスコープを持つアクセス トークンを取得します。 
+1. Angular の [HttpClient](https://angular.io/guide/http) クラスを使用して、Web API を呼び出します。
+1. `auth-config` クラスの `protectedResources.todoListApi.endpoint` 要素を読み取ります。 この要素では、Web API URI を指定します。 MSAL インターセプターでは、Web API URI に基づいて、対応するスコープを持つアクセス トークンを取得します。 
 1. Web API からプロファイルを取得し、`profile` クラス変数を設定します。
 
 ```typescript
@@ -684,7 +679,7 @@ export class WebapiComponent implements OnInit {
 }
 ```
 
-*src/app/webapi* フォルダーで、*webapi.component.html* を次の HTML スニペットで更新します。 コンポーネントのテンプレートにより、Web API から返された `name` がレンダリングされます。 ページの下部に、Web API のアドレスがテンプレートによってレンダリングされます。
+*src/app/webapi* フォルダーで、*webapi.component.html* を次の HTML スニペットで更新します。 コンポーネントのテンプレートにより、Web API から返された名前がレンダリングされます。 ページの下部に、Web API のアドレスがテンプレートによってレンダリングされます。
 
 ```html
 <h1>The web API returns:</h1>
@@ -707,7 +702,7 @@ export class WebapiComponent implements OnInit {
 }
 ```
 
-## <a name="run-the-angular-application"></a>Angular アプリケーションを実行します。
+## <a name="run-the-angular-application"></a>Angular アプリケーションを実行する
 
 
 次のコマンドを実行します。
@@ -716,19 +711,19 @@ export class WebapiComponent implements OnInit {
 npm start
 ```
 
-コンソール ウィンドウには、アプリケーションがホストされている場所のポート番号が表示されます。
+コンソール ウィンドウには、アプリケーションがホストされている場所のポートの番号が表示されます。
 
 ```console
 Listening on port 4200...
 ```
 
 > [!TIP]
-> または、[VS Code デバッガー](https://code.visualstudio.com/docs/editor/debugging)を使用して `npm start` コマンドを実行します。 VS Code の組み込みデバッガーを使用すると、編集、コンパイル、デバッグのループを加速できます。
+> または、`npm start` コマンドを実行するために、[Visual Studio Code デバッガー](https://code.visualstudio.com/docs/editor/debugging)を使用します。 デバッガーを使用すると、編集、コンパイル、デバッグのループを加速できます。
 
 アプリケーションを表示するには、ブラウザーで `http://localhost:4200` に移動します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure AD B2C を使用した独自の Angular アプリケーションでの認証オプション](enable-authentication-angular-spa-app-options.md)を構成する
-* [独自の Web API で認証を有効にする](enable-authentication-web-api.md)
+* [Azure AD B2C を使用した独自の Angular アプリケーションでの認証オプションを構成する](enable-authentication-angular-spa-app-options.md)
+* [ユーザー自身の Web API で認証を有効にする](enable-authentication-web-api.md)

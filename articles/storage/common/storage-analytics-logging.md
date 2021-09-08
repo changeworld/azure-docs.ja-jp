@@ -9,12 +9,12 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d48ab6223485807400b6749bcf72691261405495
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c536e8749ce41f51f161d9659beca3ab0ccd30ae
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134557"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032255"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -59,6 +59,9 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 - エラー コード 304 (変更されていません) で失敗した GET 要求
 
   その他の失敗した匿名要求は一切記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。
+  
+> [!NOTE]
+> Storage Analytics では、データ プレーンへの内部呼び出しをすべてログに記録します。 Azure Storage リソース プロバイダーからの呼び出しもログに記録されます。 これらの要求を識別するには、要求 URL でクエリ文字列 `<sk=system-1>` を探します。
 
 ## <a name="how-logs-are-stored"></a>ログの保存方法
 

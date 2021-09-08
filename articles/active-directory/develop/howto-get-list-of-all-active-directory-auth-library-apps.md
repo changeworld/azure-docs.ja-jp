@@ -13,14 +13,14 @@ ms.date: 07/22/2021
 ms.author: shermanouko
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 9d9c0f9787360ed599d586295181ef359fdff293
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 07f6c7f481e815e788b22782f01ad9369bd2c9f6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418669"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039698"
 ---
-# <a name="how-to-get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>方法: テナントで ADAL を使用しているアプリの一覧を取得する
+# <a name="get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>テナントで ADAL を使用しているアプリの一覧を取得する
 
 Active Directory 認証ライブラリ (ADAL) のサポートは 2022 年 6 月 30 日に終了します。 既存の OS バージョンで ADAL を使用しているアプリは引き続き動作しますが、テクニカル サポートとセキュリティ更新プログラムは終了します。 継続的なセキュリティ更新プログラムがなければ、ADAL を使用しているアプリは、最新のセキュリティ攻撃パターンに対してますます脆弱になります。 この記事では、Azure Monitor ブックを使用して、テナントで ADAL を使用するすべてのアプリの一覧を取得する方法について説明します。
 
@@ -58,7 +58,7 @@ ADAL を使用しているアプリを特定した後、下に示すアプリケ
 
 [!INCLUDE [application type](includes/adal-msal-migration.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 MSAL の詳細、たとえば使用情報や、さまざまなプログラミング言語とアプリケーションの種類で使用できるライブラリについては、こちらを参照してください。
 

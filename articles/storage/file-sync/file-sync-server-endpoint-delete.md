@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 6/01/2021
 ms.author: mtalasila
 ms.subservice: files
-ms.openlocfilehash: 597a3dfce5d647359b23e732f74dc6949078c000
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: b608100ab9ec1706e65cd4930b00ef163218f64d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798958"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258700"
 ---
 # <a name="deprovision-your-azure-file-sync-server-endpoint"></a>Azure File Sync サーバー エンドポイントのプロビジョニング解除
 
@@ -57,13 +57,13 @@ Azure File Sync では、毎日、一時的な VSS スナップショットを�
 
 最新のデータがクラウドにあることを確実にするためには、最終同期アップロード セッションの完了を待機する必要があります。 
 
-同期セッションの状態を確認するには、ローカル サーバーで **イベント ビューアー** を開きます。 利用統計情報イベント ログ **(アプリケーションとサービス\Microsoft\FileSync\Agent)** にアクセスします。 VSS アップロード セッションを手動で開始した後に、'sync direction' = upload、'HResult' = 0、'PerItemErrorCount' = 0 の 9102 イベントが発生していることを確認します。
+同期セッションの状態を確認するには、ローカル サーバーで **イベント ビューアー** を開きます。 利用統計情報イベント ログ **(アプリケーションとサービス\Microsoft\FileSync\Agent)** にアクセスします。 VSS アップロード セッションを手動で開始した後に、"sync direction" = upload、"HResult" = 0、"PerItemErrorCount" = 0 の 9102 イベントが発生していることを確認します。
 
 ![最終同期セッションが完了したかどうかの確認のスクリーンショット。](media/file-sync-server-endpoint-delete/event-viewer.png)
 
-'PerItemErrorCount' が 0 より大きい場合、ファイルの同期は失敗しています。**FileSyncErrorsReport.ps1** を使用して、同期が失敗しているファイルを確認してください。この PowerShell スクリプトは通常、Azure File Sync エージェントがインストールされているサーバーの次のパスにあります: **C:\Program Files\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1**
+"PerItemErrorCount" が 0 より大きい場合、ファイルの同期は失敗しています。**FileSyncErrorsReport.ps1** を使用して、同期が失敗しているファイルを確認してください。この PowerShell スクリプトは通常、Azure File Sync エージェントがインストールされているサーバーの次のパスにあります: **C:\Program Files\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1**
 
-これらのファイルが重要でない場合は、サーバー エンドポイントを削除できます。 これらのファイルが重要である場合は、エラーを修正し、'sync direction' = upload、'HResult' = 0、'PerItemErrorCount' = 0 の 9102 イベントがもう 1 回発生するまで待ってから、サーバー エンドポイントを削除します。
+これらのファイルが重要でない場合は、サーバー エンドポイントを削除できます。 これらのファイルが重要である場合は、エラーを修正し、"sync direction" = upload、"HResult" = 0、"PerItemErrorCount" = 0 の 9102 イベントがもう 1 回発生するまで待ってから、サーバー エンドポイントを削除します。
 
 ## <a name="scenario-2-you-intend-to-delete-your-server-endpoint-and-stop-using-this-specific-azure-file-share"></a>シナリオ 2: サーバー エンドポイントを削除し、この特定の Azure ファイル共有の使用を中止することを意図している
 
@@ -81,7 +81,7 @@ Azure File Sync では、毎日、一時的な VSS スナップショットを�
 
 **Invoke-StorageSyncFileRecall** PowerShell コマンドレットを使用し、**SyncGroupName** パラメーターを指定してすべてのファイルをリコールします。 
 ```powershell
-Invoke-StorageSyncFileRecall  -SyncGroupName “samplesyncgroupname”
+Invoke-StorageSyncFileRecall -SyncGroupName "samplesyncgroupname"
 ```
 このコマンドレットの実行が完了したら、次のセクションに進むことができます。
 
@@ -102,13 +102,13 @@ Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -Storag
 ### <a name="wait-for-a-final-sync-session-to-complete"></a>最終同期セッションの完了を待機する
 ローカル サーバー上でデータが最新であることを確認するには、最終同期アップロード セッションの完了を待機する必要があります。 
 
-これを確認するには、ローカル サーバーで **イベント ビューアー** にアクセスします。 利用統計情報イベント ログ **(アプリケーションとサービス\Microsoft\FileSync\Agent)** にアクセスします。 クラウド変更検出の終了日時よりも後に、'sync direction' = download、'HResult' = 0、'PerItemErrorCount' = 0 の 9102 イベントが発生していることを確認します。
+これを確認するには、ローカル サーバーで **イベント ビューアー** にアクセスします。 利用統計情報イベント ログ **(アプリケーションとサービス\Microsoft\FileSync\Agent)** にアクセスします。 クラウド変更検出の終了日時よりも後に、"sync direction" = download、"HResult" = 0、"PerItemErrorCount" = 0 の 9102 イベントが発生していることを確認します。
 
 ![最終同期セッションが完了したかどうかの確認のスクリーンショット。](media/file-sync-server-endpoint-delete/event-viewer.png)
 
-'PerItemErrorCount' が 0 より大きい場合、ファイルの同期は失敗しています。**FileSyncErrorsReport.ps1** を使用して、同期が失敗しているファイルを確認してください。この PowerShell スクリプトは通常、Azure File Sync エージェントがインストールされているサーバーの次のパスにあります: **C:\Program Files\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1**
+"PerItemErrorCount" が 0 より大きい場合、ファイルの同期は失敗しています。**FileSyncErrorsReport.ps1** を使用して、同期が失敗しているファイルを確認してください。この PowerShell スクリプトは通常、Azure File Sync エージェントがインストールされているサーバーの次のパスにあります: **C:\Program Files\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1**
 
-これらのファイルが重要でない場合は、サーバー エンドポイントを削除できます。 これらのファイルが重要である場合は、エラーを修正し、'sync direction' = download、'HResult' = 0、'PerItemErrorCount' = 0 の 9102 イベントがもう 1 回発生するまで待ってから、サーバー エンドポイントを削除します。
+これらのファイルが重要でない場合は、サーバー エンドポイントを削除できます。 これらのファイルが重要である場合は、エラーを修正し、"sync direction" = download、"HResult" = 0、"PerItemErrorCount" = 0 の 9102 イベントがもう 1 回発生するまで待ってから、サーバー エンドポイントを削除します。
 
 ## <a name="next-steps"></a>次の手順
 * [Azure File Sync トポロジの変更](./file-sync-modify-sync-topology.md)

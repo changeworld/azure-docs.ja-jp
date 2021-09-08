@@ -7,13 +7,13 @@ ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
-ms.date: 07/31/2020
-ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/01/2021
+ms.openlocfilehash: 8f37c25eb627442e18fbcc688c0db20369f872a4
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721465"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123474488"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>チュートリアル:ライブ ビデオ分析ゲートウェイ モジュールの変更とビルド
 

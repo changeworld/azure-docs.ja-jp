@@ -3,17 +3,17 @@ title: Azure IoT Central のテレメトリ、プロパティ、およびコマ�
 description: Azure IoT Central デバイス テンプレートを使用すると、実装する必要のある、デバイスのテレメトリ、プロパティ、およびコマンドを指定できます。 デバイスが IoT Central と交換できるデータの形式について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 2f76be3bd5a2688e91f63da5da137492190b2ccb
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 3c30662a9ca85265f43e78ad9dd3f33c70c167a5
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789078"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479942"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
 

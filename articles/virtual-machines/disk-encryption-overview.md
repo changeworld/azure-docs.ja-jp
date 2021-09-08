@@ -8,18 +8,18 @@ ms.author: mbaldwin
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 1acfd3d1a4c358e22b3371960ff358f647afe339
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: efc0626c0c5f2c9333e5459d7fb7ce6aa2865cc4
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063658"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105185"
 ---
 # <a name="overview-of-managed-disk-encryption-options"></a>マネージド ディスク暗号化オプションの概要
 
 マネージド ディスクに使用できる暗号化には、Azure Disk Encryption (ADE)、Server-Side Encryption (SSE)、ホストでの暗号化など、いくつかの種類があります。
 
-- **Azure Disk Encryption** は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 ADE では、Linux の機能または Windows の [BitLocker](https://en.wikipedia.org/wiki/BitLocker) 機能を使用して、Azure 仮想マシン (VM) の OS およびデータ ディスクのボリュームを暗号化します。 ADE は、ディスクの暗号化キーとシークレットを制御および管理できるように、Azure Key Vault と統合されています。  詳細については、「[Linux VM に対する Azure Disk Encryption](./linux/disk-encryption-overview.md)」または「[Windows VM 用の Azure Disk Encryption](./windows/disk-encryption-overview.md)」を参照してください。
+- **Azure Disk Encryption** は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 ADE では、Linux の [DM-Crypt](https://wikipedia.org/wiki/Dm-crypt) 機能または Windows の [BitLocker](https://wikipedia.org/wiki/BitLocker) 機能を使用して、Azure 仮想マシン (VM) の OS およびデータ ディスクのボリュームを暗号化します。 ADE は、ディスクの暗号化キーとシークレットを制御および管理できるように、Azure Key Vault と統合されています。  詳細については、「[Linux VM に対する Azure Disk Encryption](./linux/disk-encryption-overview.md)」または「[Windows VM 用の Azure Disk Encryption](./windows/disk-encryption-overview.md)」を参照してください。
 
 - **Server-Side Encryption** (保存時の暗号化または Azure Storage 暗号化とも呼ばれます) により、Azure マネージド ディスク (OS およびデータ ディスク) 上の格納データはクラウドに保持されるときに自動的に暗号化されます。  詳細については、「[Azure Disk Storage のサーバー側暗号化](./disk-encryption.md)」を参照してください。
 

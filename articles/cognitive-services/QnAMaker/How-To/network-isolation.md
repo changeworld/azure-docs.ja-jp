@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2021
-ms.openlocfilehash: 91bfa04c9fab179cf3935e703f13004f3aadd170
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: eb00a9fa81b6fadd999c6c824ff7be06f76c8f4a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220064"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221770"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定
 
@@ -110,9 +110,9 @@ Cognitive Search インスタンスは、QnA Maker リソースの作成後、�
      > [!div class="mx-imgBorder"]
      > [ ![サブネット フィールドが設定されたプライベート エンドポイントの作成の UI ウィンドウのスクリーンショット]( ../media/network-isolation/subnet.png) ](  ../media/network-isolation/subnet.png#lightbox)
 
-    5. 通常の App Service の VNET 統合を有効にします。 既に VNET にアクセスできるため、ASE では、この手順をスキップできます。
-        - App Service の **[ネットワーク]** セクションに移動し、 **[VNet 統合]** を開きます。
-        - 手順 2 で作成した専用 App Service VNet のサブネット (appservicevnet) にリンクします。
+5. 通常の App Service の VNET 統合を有効にします。 既に VNET にアクセスできるため、ASE では、この手順をスキップできます。
+    - App Service の **[ネットワーク]** セクションに移動し、 **[VNet 統合]** を開きます。
+    - 手順 2 で作成した専用 App Service VNet のサブネット (appservicevnet) にリンクします。
     
      > [!div class="mx-imgBorder"]
      > [ ![VNET 統合 UI のスクリーンショット]( ../media/network-isolation/integration.png) ](  ../media/network-isolation/integration.png#lightbox)

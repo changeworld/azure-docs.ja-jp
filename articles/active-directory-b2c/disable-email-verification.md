@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 08/25/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0f70c8d501a7d56f4bc29e0f2b065760cad625e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7aab8497baa5c6b9a53a98ed76e6760fa54ffb0
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97585022"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864436"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で顧客のサインアップ時のメール検証を無効にする
 
@@ -44,7 +44,7 @@ ms.locfileid: "97585022"
 1. 上部のメニューにある **[ディレクトリとサブスクリプション]** フィルターを使用して、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[ユーザー フロー]** を選択します。
-1. メールの検証を無効にするユーザー フローを選択します。 たとえば、*B2C_1_signinsignup* です。
+1. メールの検証を無効にするユーザー フローを選択します。
 1. **[Page layouts]\(ページ レイアウト\)** を選択します。
 1. **[ローカル アカウント サインアップ ページ]** を選択します。
 1. **[ユーザー属性]** で **[メール アドレス]** を選択します。

@@ -1,18 +1,18 @@
 ---
 title: Azure Attestation 用の組み込みポリシー定義
 description: Azure Attestation 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: reference
 ms.service: attestation
 author: msmbaldwin
 ms.author: mbaldwin
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 95c114a00bcc8448c5a706cd03a923e7fec08932
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 81fa83d729f4c8c3e3e7eeaf1e8b9ca3bef782a0
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123107594"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480223"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-attestation"></a>Azure Attestation 用の Azure Policy 組み込み定義
 

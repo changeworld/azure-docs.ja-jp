@@ -2,13 +2,13 @@
 title: Azure Functions 言語ランタイムのサポート ポリシー
 description: Azure Functions 言語ランタイムのサポート ポリシーについて説明します
 ms.topic: conceptual
-ms.date: 06/14/2021
-ms.openlocfilehash: c9a6b7346311106080fd57ad9428648a8332c79a
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.date: 08/17/2021
+ms.openlocfilehash: b3b5f7cf108fd18ed450a6837a5dd35ceb83dc60
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114219198"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303969"
 ---
 # <a name="language-runtime-support-policy"></a>言語ランタイムのサポート ポリシー
 
@@ -24,23 +24,27 @@ Azure Functions ランタイムは、オペレーティング システム、Azu
 
 ### <a name="retirement-phase"></a>提供終了フェーズ
 
-* __フェーズ 1:__ 言語バージョンの有効期限の終了日に、その言語バージョンを対象とする新しい関数アプリを作成できなくなります。 既存の関数アプリについては、この日から少なくとも 60 日間、引き続きその言語バージョンで実行できます。また、更新も行われます。 このフェーズ中に、影響を受ける関数アプリの言語バージョンを、サポートされているバージョンにアップグレードすることを強くお勧めしています。
+言語バージョンの有効期限の終了日以降は、その言語バージョンを対象とする新しい関数アプリを作成できなくなります。
 
-* __フェーズ 2__: 言語の有効期限の終了日から 60 日が経過した時点で、プラットフォーム上でのこの言語バージョンを対象とする関数アプリの動作が保証されなくなります。 
+言語の有効期限を過ぎると、廃止された言語バージョンを使用する関数アプリは、新機能、セキュリティ パッチ、パフォーマンス最適化の対象ではなくなります。 ただし、これらの関数アプリを引き続きプラットフォームで実行することはできます。 
+
+> [!IMPORTANT]
+>影響を受ける関数アプリの言語バージョンを、サポートされているバージョンにアップグレードすることを強くお勧めします。   
+>サポートされていない言語バージョンを使用して関数アプリを実行している場合は、関数アプリのサポートを受ける前にアップグレードする必要があります。
 
 
 ## <a name="retirement-policy-exceptions"></a>提供終了ポリシーの例外
 
 上記の提供終了ポリシーには、例外がいくつかあります。 ここでは、言語の有効期限の終了日が近い、または終了日に達した言語のうち、さらに通知が届くまでは、プラットフォーム上でのサポートが継続されるものを紹介します。 これらの言語バージョンの更新や修正プログラムの適用については、有効期限の終了日に達した時点で行われません。 この理由から、これらの言語バージョン上で関数アプリを開発して実行することはお勧めしません。
 
-|言語バージョン                        |EOL 日         |提供終了予定日|
+|言語バージョン                        |EOL 日         |提供終了日|
 |-----------------------------------------|-----------------|----------------|
 |.NET 5|2022 年 2 月|TBA|
-|Node 6|2019 年 4 月 30 日|TBA| 
-|ノード 8|2019 年 12 月 31 日|TBA| 
-|ノード 10|2021 年 4 月 30 日|TBA| 
-|PowerShell Core 6| 2020 年 9 月 4 日|TBA|
-|Python 3.6 |2021 年 12 月 23 日|TBA| 
+|Node 6|2019 年 4 月 30 日|2022 年 2 月 28 日| 
+|ノード 8|2019 年 12 月 31 日|2022 年 2 月 28 日| 
+|ノード 10|2021 年 4 月 30 日|2022 年 9 月 30 日| 
+|PowerShell Core 6| 2020 年 9 月 4 日|2022 年 9 月 30 日|
+|Python 3.6 |2021 年 12 月 23 日|2022 年 9 月 30 日| 
  
 
 ## <a name="language-version-support-timeline"></a>言語バージョン サポートのタイムライン
@@ -54,10 +58,10 @@ Azure Functions ランタイムは、オペレーティング システム、Azu
 
 ## <a name="configuring-language-versions"></a>言語バージョンの構成
 
-|言語                         | 構成ガイド         |
+|Language                         | 構成ガイド         |
 |-----------------------------------------|-----------------|
 |C# (クラス ライブラリ) |([リンク](./functions-dotnet-class-library.md#supported-versions))|
-|ノード |([リンク](./functions-reference-node.md#setting-the-node-version))|
+|Node |([リンク](./functions-reference-node.md#setting-the-node-version))|
 |PowerShell |([リンク](./functions-reference-powershell.md#changing-the-powershell-version))|
 |Python |([リンク](./functions-reference-python.md#python-version))|
  

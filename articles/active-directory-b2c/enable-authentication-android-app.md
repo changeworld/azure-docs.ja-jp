@@ -10,39 +10,39 @@ ms.topic: reference
 ms.date: 07/06/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.custom: b2c-support
-ms.openlocfilehash: f4a20474ed309403b418022a356db3366fda4b04
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.custom: b2c-support, has-adal-ref
+ms.openlocfilehash: 1e21be821a495dae95b0bc45b47aef4345802f38
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113300972"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186193"
 ---
-# <a name="enable-authentication-in-your-own-android-application-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して独自の Android アプリケーションで認証を有効にする
+# <a name="enable-authentication-in-your-own-android-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の Android アプリで認証を有効にする
 
 この記事では、独自の Android モバイル アプリケーションに Azure Active Directory B2C (Azure AD B2C) 認証を追加する方法について説明します。 
 
-この記事は、[サンプル Android アプリケーションでの認証の構成](./configure-authentication-sample-android-app.md)に関する記事と共に使用してください。その際は、サンプル Android アプリを独自の Android アプリに置き換えてください。 この記事の手順を完了すると、Azure AD B2C を使用したサインインをアプリケーションが受け付けるようになります。
+この記事は、「[Azure Active Directory B2C を使用してサンプル Android アプリケーションで認証を構成する](./configure-authentication-sample-android-app.md)」に関する記事と共に使用してください。その際は、サンプル Android アプリを独自の Android アプリに置き換えてください。 この記事の手順を完了すると、アプリケーションで、Azure AD B2C を使用したサインインが受け付けられるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 
-[サンプル Android アプリケーションで認証を構成する](configure-authentication-sample-android-app.md)方法に関する記事の前提条件と統合の手順を確認します。
+「[Azure Active Directory B2C を使用してサンプル Android アプリケーションで認証を構成する](configure-authentication-sample-android-app.md)」の前提条件と統合の手順を確認します。
 
 ## <a name="create-an-android-app-project"></a>Android アプリ プロジェクトを作成する
 
-Android アプリケーションがまだない場合は、これらの手順に従って新しいプロジェクトを設定します。
+Android アプリケーションがまだない場合は、以下を実行して新しいプロジェクトを設定します。
 
-1. Android Studio を開き、 **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
-2. **[Basic Activity]\(基本アクティビティ\)** を選択し、**[Next]\(次へ\)** を選択します。
-3. アプリケーションに名前を付けます。
-4. パッケージ名を保存しておきます。 後ほど、Azure portal でそれを入力します。
-5. 言語を **[Kotlin]** から **[Java]** に変更します。
-6. **[最低 API レベル]** を **API 19** 以上に設定し、 **[完了]** を選択します。
-7. プロジェクト ビューのドロップダウンで **[プロジェクト]** を選択して、ソースとソース以外のプロジェクト ファイルを表示し、**app/build.gradle** を開いて、`targetSdkVersion` を `28` に設定します。
+1. Android Studio で、 **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
+1. **[Basic Activity]\(基本アクティビティ\)** を選択し、 **[Next]\(次へ\)** を選択します。
+1. アプリケーションに名前を付けます。
+1. パッケージ名を保存しておきます。 後ほど、Azure portal でそれを入力します。
+1. 言語を **[Kotlin]** から **[Java]** に変更します。
+1. **[最低 API レベル]** を **API 19** 以上に設定し、 **[完了]** を選択します。
+1. プロジェクト ビューのドロップダウン リストで **[Project]\(プロジェクト\)** を選択して、ソースとソース以外のプロジェクト ファイルを表示し、**app/build.gradle** を開いて、**targetSdkVersion** を **28** に設定します。
 
-## <a name="install-the-dependencies"></a>依存関係をインストールする
+## <a name="step-1-install-the-dependencies"></a>ステップ 1: 依存関係をインストールする
 
-Android Studio のプロジェクト ウィンドウで、**app** > **build.gradle** の順に移動し、以下を追加します。
+Android Studio のプロジェクト ウィンドウで、**app** > **build.gradle** に移動し、以下を追加します。
 
 ```gradle
 apply plugin: 'com.android.application'
@@ -75,7 +75,7 @@ packagingOptions{
 ```
 
 
-## <a name="add-the-authentication-components"></a>認証コンポーネントを追加する
+## <a name="step-2-add-the-authentication-components"></a>ステップ 2: 認証コンポーネントを追加する
 
 [サンプル コード](configure-authentication-sample-android-app.md#step-3-get-the-android-mobile-app-sample)は、次のコンポーネントで構成されています。 サンプル Android アプリから独自のアプリにこれらのコンポーネントを追加します。 
 
@@ -85,28 +85,28 @@ packagingOptions{
 | B2CModeFragment | Fragment クラス| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/java/com/azuresamples/msalandroidkotlinapp/B2CModeFragment.kt) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/java/com/azuresamples/msalandroidapp/B2CModeFragment.java)| フラグメントは、メイン アクティビティ内の Azure AD B2C ユーザー インターフェイスを使用したサインインのモジュール部分を表します。 認証コードの大半は、このフラグメントに含まれています。 |
 | fragment_b2c_mode.xml | フラグメント レイアウト| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/res/layout/fragment_b2c_mode.xml) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/res/layout/fragment_b2c_mode.xml) | B2CModeFragment フラグメント コンポーネントのユーザー インターフェイスの構造を定義します。 |
 | B2CConfiguration| クラス| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/java/com/azuresamples/msalandroidkotlinapp/B2CConfiguration.kt) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/java/com/azuresamples/msalandroidapp/B2CConfiguration.java)| Azure AD B2C ID プロバイダーに関する情報は、構成ファイルに含まれています。 モバイル アプリでは、この情報を使用して Azure AD B2C との信頼関係を確立し、ユーザーのサインインとサインアウトを行い、トークンを取得して検証します。 その他の構成設定については、auth_config_b2c.json ファイルを参照してください。  | 
-|auth_config_b2c.json | JSON ファイル| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/res/raw/auth_config_b2c.json) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/res/raw/auth_config_b2c.json)| Azure AD B2C ID プロバイダーに関する情報は、構成ファイルに含まれています。 モバイル アプリでは、この情報を使用して Azure AD B2C との信頼関係を確立し、ユーザーのサインインとサインアウトを行い、トークンを取得して検証します。 その他の構成設定については、B2CConfiguration クラスを参照してください。 | 
+|auth_config_b2c.json | JSON ファイル| [Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin/blob/master/app/src/main/res/raw/auth_config_b2c.json) [Java](https://github.com/Azure-Samples/ms-identity-android-java/blob/master/app/src/main/res/raw/auth_config_b2c.json)| Azure AD B2C ID プロバイダーに関する情報は、構成ファイルに含まれています。 モバイル アプリでは、この情報を使用して Azure AD B2C との信頼関係を確立し、ユーザーのサインインとサインアウトを行い、トークンを取得して検証します。 その他の構成設定については、B2CConfiguration クラスを参照してください。 |
+| | | 
 
-## <a name="configure-your-android-app"></a>お使いの Android アプリを構成する
+## <a name="step-3-configure-your-android-app"></a>ステップ 3: Android アプリを構成する
 
-[認証コンポーネントを追加](#add-the-authentication-components)したら、Azure AD B2C 設定を使用して Android アプリを構成します。 Azure AD B2C ID プロバイダー設定の構成は、auth_config_b2c.json ファイルと B2CConfiguration クラスで行います。 
+[認証コンポーネントを追加](#step-2-add-the-authentication-components)したら、Azure AD B2C 設定を使用して Android アプリを構成します。 Azure AD B2C ID プロバイダー設定の構成は、*auth_config_b2c.json* ファイルと B2CConfiguration クラスで行います。 
 
-[サンプル モバイル アプリを構成](configure-authentication-sample-android-app.md#step-5-configure-the-sample-mobile-app)する方法に関するガイダンスに従ってください。
+ガイダンスについては、「[サンプル モバイル アプリを構成する](configure-authentication-sample-android-app.md#step-5-configure-the-sample-mobile-app)」を参照してください。
 
-## <a name="set-the-redirect-uri"></a>リダイレクト URI を設定する
+## <a name="step-4-set-the-redirect-uri"></a>ステップ 4: リダイレクト URI を設定する
 
-このセクションでは、Azure AD B2C のトークン応答をアプリケーションがどこでリッスンするかを構成します。 
-
+アプリケーションで Azure AD B2C のトークン応答をリッスンする場所を構成します。 
 
 1. 新しい開発署名ハッシュを生成します。 これは開発環境ごとに変わります。
     
-    Windows オペレーティング システム:
+    Windows の場合:
     
     ```
     keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
     ```
     
-    IOS オペレーティング システム:
+    iOS の場合:
     
     ```dotnetcli
     keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64
@@ -118,9 +118,9 @@ packagingOptions{
     keytool -exportcert -alias SIGNATURE_ALIAS -keystore PATH_TO_KEYSTORE | openssl sha1 -binary | openssl base64
     ```
 
-    アプリの署名について詳しくは、[Android アプリの署名](https://developer.android.com/studio/publish/app-signing)に関するページをご確認ください。 
+    アプリの署名について詳しくは、[Android アプリの署名](https://developer.android.com/studio/publish/app-signing)に関するページを参照してください。 
 
-1. **app** > **src** > **main** > **AndroidManifest.xml** で、以下の `BrowserTabActivity` アクティビティをアプリケーション本文に追加します。
+1. **app** > **src** > **main** > **AndroidManifest.xml** を選択し、以下の `BrowserTabActivity` アクティビティをアプリケーションの本体に追加します。
     
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -139,12 +139,12 @@ packagingOptions{
 1. `Signature_Hash` を、自分が生成したハッシュに置き換えます。
 1. `Package_Name` を、自分の Android パッケージの名前に置き換えます。
  
-これらの手順に従い、モバイル アプリの登録をアプリのリダイレクト URI で更新します。
+モバイル アプリの登録をアプリのリダイレクト URI で更新するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録]** を選択し、「[2.3 モバイル アプリを登録する](configure-authentication-sample-android-app.md#23-register-the-mobile-app)」で登録したアプリケーションを選択します。
+1. **Azure AD B2C** を検索して選択します。
+1. **[アプリの登録]** を選択し、「[手順 2.3 モバイル アプリを登録する](configure-authentication-sample-android-app.md#step-23-register-the-mobile-app)」で登録したアプリケーションを選択します。
 1. **[認証]** を選択します。
 1. **[Android]** で **[URI の追加]** を選択します。
 1. **[パッケージ名]** と **[署名ハッシュ]** を入力します。
@@ -154,13 +154,13 @@ packagingOptions{
 
 #### <a name="kotlin"></a>[Kotlin](#tab/kotlin)
 
-サンプル Android のリダイレクト URL:
+サンプル Android のリダイレクト URL は次のようになります。
 
 ```
 msauth://com.azuresamples.msalandroidkotlinapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D
 ```
 
-次の XML スニペットが示すように、インテント フィルターにも同じパターンが使用されます。
+次の XML スニペットで示されているように、インテント フィルターにも同じパターンが使用されます。
 
 ```xml
 <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
@@ -180,13 +180,13 @@ msauth://com.azuresamples.msalandroidkotlinapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D
 
 #### <a name="java"></a>[Java](#tab/java)
 
-サンプル Android のリダイレクト URL:
+サンプル Android のリダイレクト URL は次のようになります。
 
 ```
 msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D
 ```
 
-次の XML スニペットが示すように、インテント フィルターにも同じパターンが使用されます。
+次の XML スニペットで示されているように、インテント フィルターにも同じパターンが使用されます。
 
 ```xml
 <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
@@ -206,15 +206,15 @@ msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D
 
 --- 
 
-## <a name="code-building-blocks"></a>コードの構成要素
+## <a name="step-5-customize-your-code-building-blocks"></a>ステップ 5: コードの構成要素をカスタマイズする
 
 このセクションでは、Android アプリの認証を可能にするコードの構成要素について説明します。 次の表は、B2CModeFragment のメソッドと、コードのカスタマイズ方法の一覧です。 
 
-### <a name="instantiate-a-public-client-application"></a>パブリック クライアント アプリケーションをインスタンス化する
+### <a name="step-51-instantiate-a-public-client-application"></a>ステップ 5.1: パブリック クライアント アプリケーションをインスタンス化する
 
-パブリック クライアント アプリケーションには、アプリケーション シークレットが安全に保たれるという保証がなく、クライアント シークレットは預けられません。 [onCreate](https://developer.android.com/reference/android/app/Fragment#onCreate(android.os.Bundle)) または [onCreateView](https://developer.android.com/reference/android/app/Fragment#onCreateView(android.view.LayoutInflater,%20android.view.ViewGroup,%20android.os.Bundle)) で、MultipleAccountPublicClientApplication オブジェクトを使用して MSAL のインスタンスを作成します。
+パブリック クライアント アプリケーションは、アプリケーション シークレットが安全に保管されると信頼されておらず、そこにクライアント シークレットは置かれません。 [onCreate](https://developer.android.com/reference/android/app/Fragment#onCreate(android.os.Bundle)) または [onCreateView](https://developer.android.com/reference/android/app/Fragment#onCreateView(android.view.LayoutInflater,%20android.view.ViewGroup,%20android.os.Bundle)) で、MultipleAccountPublicClientApplication オブジェクトを使用して MSAL のインスタンスを作成します。
 
-`MultipleAccountPublicClientApplication` クラスは、複数のアカウントが同時にサインインできるようにする MSAL ベースのアプリを作成するために使用されます。 これにより、複数の Azure AD B2C ユーザー フローまたはカスタム ポリシーを使用したサインインが可能となります。 たとえば、ユーザーは、[サインアップまたはサインイン](add-sign-up-and-sign-in-policy.md) ユーザー フローを使用してサインインし、その後、[プロファイル編集](add-profile-editing-policy.md)ユーザー フローを実行します。 
+`MultipleAccountPublicClientApplication` クラスは、複数のアカウントが同時にサインインできるようにする MSAL ベースのアプリを作成するために使用されます。 このクラスにより、複数の Azure AD B2C ユーザー フローまたはカスタム ポリシーを使用したサインインが可能となります。 たとえば、ユーザーは、[サインアップまたはサインイン](add-sign-up-and-sign-in-policy.md) ユーザー フローを使用してサインインし、その後、[プロファイル編集](add-profile-editing-policy.md)ユーザー フローを実行します。 
 
 次のコード スニペットは、`auth_config_b2c.json` 構成 JSON ファイルを使用して MSAL ライブラリを初期化する方法を示しています。
 
@@ -264,9 +264,9 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(
 
 --- 
 
-### <a name="load-accounts"></a>アカウントを読み込む
+### <a name="step-52-load-accounts"></a>ステップ 5.2: アカウントを読み込む
 
-アプリはフォアグラウンドになると、既存のアカウントを読み込んで、ユーザーがサインイン済みかどうかを判断します。  この方法を使用して UI を認証状態で更新します。 たとえば、サインアウト ボタンを有効または無効にします。
+アプリはフォアグラウンドになると、既存のアカウントを読み込んで、ユーザーがサインイン済みかどうかを判断します。 この方法を使用して UI を認証状態で更新します。 たとえば、サインアウト ボタンを有効または無効にできます。
 
 アカウントを読み込む方法を次のコード スニペットに示します。
 
@@ -316,11 +316,11 @@ private void loadAccounts() {
 
 --- 
 
-### <a name="interactive-authorization-request"></a>対話型承認要求
+### <a name="step-53-start-an-interactive-authorization-request"></a>ステップ 5.3: 対話型承認要求を開始する
 
-対話型承認要求は、ユーザーがサインアップまたはサインインを求められるフローです。 `runUserFlowButton` クリック イベントの構成は、`initializeUI` メソッドで行います。 ユーザーによって **[ユーザー フローを実行します]** ボタンが選択されると、アプリはユーザーを Azure AD B2C に誘導してサインイン フローを実行します。 
+対話型承認要求は、ユーザーがサインアップまたはサインインを求められるフローです。 `runUserFlowButton` クリック イベントの構成は、`initializeUI` メソッドで行います。 ユーザーが **[ユーザー フローを実行します]** ボタンを選択すると、ユーザーはアプリによって Azure AD B2C に誘導され、サインイン フローが実行されます。 
 
-`runUserFlowButton.setOnClickListener` メソッドにより、承認要求の関連データを使用して `AcquireTokenParameters` オブジェクトが準備されます。 その後、ユーザーはサインアップ フローまたはサインイン フローを実行するよう、`acquireToken` メソッドによって求められます。 
+`runUserFlowButton.setOnClickListener` メソッドにより、承認要求に関する関連データを使用して `AcquireTokenParameters` オブジェクトが準備されます。 その後、ユーザーはサインアップ フローまたはサインイン フローを実行するよう、`acquireToken` メソッドによって求められます。 
 
 次のコード スニペットは、対話型承認要求の開始方法を示しています。 
 
@@ -356,16 +356,16 @@ b2cApp.acquireToken(parameters);
 --- 
 
  
-### <a name="interactive-authorization-request-callback"></a>対話型承認要求のコールバック
+### <a name="step-54-make-an-interactive-authorization-request-callback"></a>ステップ 5.4: 対話型承認要求のコールバックを行う
 
-ユーザーが承認フローを完了 (成功または失敗) すると、結果が `getAuthInteractiveCallback()` コールバック メソッドに返されます。 
+ユーザーが成功または失敗で承認フローを完了した後、`getAuthInteractiveCallback()` コールバック メソッドに結果が返されます。 
 
 このコールバック メソッドによって `AuthenticationResult` オブジェクトが渡されるか、`MsalException` オブジェクトにエラー メッセージが渡されます。 このメソッドを使用して以下を実行します。
 
-- サインイン完了後の情報でモバイル アプリの UI を更新する
-- アカウント オブジェクトを再読み込みする
-- アクセス トークンを使用して Web API サービスを呼び出す
-- 認証エラーを処理する
+- サインイン完了後の情報でモバイル アプリの UI を更新します。
+- アカウント オブジェクトを再度読み込みます。
+- アクセス トークンを使用して Web API サービスを呼び出します。
+- 認証エラーを処理します。
 
 次のコード スニペットは、対話型認証コールバックの使用例を示しています。
 
@@ -390,7 +390,7 @@ private val authInteractiveCallback: AuthenticationCallback
             val B2C_PASSWORD_CHANGE = "AADB2C90118"
             if (exception.message!!.contains(B2C_PASSWORD_CHANGE)) {
                 txt_log!!.text = """
-                    The user clicks the 'Forgot Password' link in a sign-up or sign-in user flow.
+                    Users click the 'Forgot Password' link in a sign-up or sign-in user flow.
                     Your application needs to handle this error code by running a specific user flow that resets the password.
                     """.trimIndent()
                 return
@@ -434,7 +434,7 @@ private AuthenticationCallback getAuthInteractiveCallback() {
         public void onError(MsalException exception) {
             final String B2C_PASSWORD_CHANGE = "AADB2C90118";
             if (exception.getMessage().contains(B2C_PASSWORD_CHANGE)) {
-                logTextView.setText("The user clicks the 'Forgot Password' link in a sign-up or sign-in user flow.\n" +
+                logTextView.setText("Users click the 'Forgot Password' link in a sign-up or sign-in user flow.\n" +
                         "Your application needs to handle this error code by running a specific user flow that resets the password.");
                 return;
             }
@@ -461,25 +461,25 @@ private AuthenticationCallback getAuthInteractiveCallback() {
 
 --- 
 
-## <a name="call-a-web-api"></a>Web API を呼び出す
+## <a name="step-6-call-a-web-api"></a>ステップ 6: Web API を呼び出す
 
-[トークンベースの承認 Web API](enable-authentication-web-api.md) を呼び出すには、有効なアクセス トークンがアプリにある必要があります。 アプリによって次の手順が実行されます。
+[トークンベースの承認 Web API](enable-authentication-web-api.md) を呼び出すには、有効なアクセス トークンがアプリにある必要があります。 アプリでは以下が実行されます。
 
 
-1. Web API エンドポイントに対する必要なアクセス許可 (スコープ) があるアクセス トークンを取得します。
-1. HTTP 要求の Authorization ヘッダー内で、この形式を使用してベアラー トークンとしてアクセス トークンを渡します。
+1. Web API エンドポイントで必要なアクセス許可 (スコープ) を持つアクセス トークンを取得します。
+1. この形式を使用して、HTTP 要求の Authorization ヘッダーでベアラー トークンとしてアクセス トークンを渡します。
 
 ```http
 Authorization: Bearer <access-token>
 ```
 
-ユーザーが[対話形式でサインイン](#interactive-authorization-request)すると、アプリは `getAuthInteractiveCallback` コールバック メソッド内でアクセス トークンを取得します。 連続する Web API 呼び出しの場合は、このセクションで説明するように、トークンをサイレントに取得するプロシージャを使用します。 
+ユーザーが[対話形式でサインイン](#step-53-start-an-interactive-authorization-request)すると、アプリは `getAuthInteractiveCallback` コールバック メソッド内でアクセス トークンを取得します。 連続する Web API 呼び出しの場合は、このセクションで説明するように、トークンをサイレントに取得するプロシージャを使用します。 
 
-Web API を呼び出す前に、Web API エンドポイントに対する適切なスコープで `acquireTokenSilentAsync` メソッドを呼び出します。 MSAL ライブラリによって次の手順が実行されます。
+Web API を呼び出す前に、Web API エンドポイントに対する適切なスコープで `acquireTokenSilentAsync` メソッドを呼び出します。 MSAL ライブラリによって以下のことが行われます。
 
-1. 要求されたスコープのアクセス トークンをトークン キャッシュから取り込むことを試みます。 トークンが存在する場合は、そのトークンが返されます。 
+1. 要求されたスコープを持つアクセス トークンをトークン キャッシュから取り込むことを試みます。 トークンが存在する場合は、そのトークンが返されます。 
 1. トークンがトークン キャッシュに存在しない場合、MSAL は更新トークンを使用して新しいトークンを取得しようと試みます。 
-1. 更新トークンが存在しないか期限切れになっている場合は、例外が返されます。 [対話形式でのサインイン](#interactive-authorization-request)をユーザーに求めることをお勧めします。  
+1. 更新トークンが存在しないか期限切れになっている場合は、例外が返されます。 [対話形式でのサインイン](#step-53-start-an-interactive-authorization-request)をユーザーに求めることをお勧めします。  
 
 次のコード スニペットは、アクセス トークンの取得方法を示しています。
 
@@ -656,7 +656,7 @@ private void callWebAPI(IAuthenticationResult authenticationResult) throws Excep
 
 ### <a name="add-permission-to-perform-network-operations"></a>ネットワーク操作を実行するためのアクセス許可を追加する
 
-アプリケーションでネットワーク操作を実行するには、マニフェストに次のアクセス許可を含める必要があります。 詳細については、「[ネットワークに接続する](https://developer.android.com/training/basics/network-ops/connecting)」を参照してください。
+アプリケーションでネットワーク操作を実行するには、マニフェストに次のアクセス許可を追加する必要があります。 詳細については、「[ネットワークに接続する](https://developer.android.com/training/basics/network-ops/connecting)」を参照してください。
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET"/>
@@ -664,5 +664,6 @@ private void callWebAPI(IAuthenticationResult authenticationResult) throws Excep
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Android アプリケーションで認証オプションを構成する](enable-authentication-android-app-options.md)
-* [独自の Web API で認証を有効にする](enable-authentication-web-api.md)
+具体的には、次の方法を学習します。
+* [Azure AD B2C を使用して Android アプリで認証オプションを構成する](enable-authentication-android-app-options.md)
+* [Azure AD B2C を使用して独自の Web API で認証を有効にする](enable-authentication-web-api.md)

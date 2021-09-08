@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: e9117ce75c17a1d45d5479520372de5bbcb47074
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db88b0250a52ea96a116097469e43e1f0c26ece2
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637937"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306049"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Azure Data Factory を使用して Hive からデータをコピーおよび変換する 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,6 +40,32 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
+## <a name="create-a-linked-service-to-hive-using-ui"></a>UI を使用して Hive へのリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Hive へのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用して新しいリンク サービスを作成します。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用して新しいリンク サービスを作成します。":::
+
+2. Hive を検索して、Hive コネクタを選択します。
+
+    :::image type="content" source="media/connector-hive/hive-connector.png" alt-text="Hive コネクタを選択します。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-hive/configure-hive-linked-service.png" alt-text="Hive へのリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+
+
 次のセクションでは、Hive コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
@@ -50,7 +76,7 @@ Hive のリンクされたサービスでは、次のプロパティがサポー
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Hive** | はい |
 | host | Hive サーバーの IP アドレスまたはホスト名。複数のホストは ';' で区切ります (serviceDiscoveryMode が有効な場合のみ)。  | はい |
-| port | Hive サーバーがクライアント接続のリッスンに使用する TCP ポート。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | はい |
+| port | Hive サーバーがクライアント接続のリッスンに使用する TCP ポート。 Azure HDInsight に接続する場合は、port で 443 を指定します。 | はい |
 | serverType | Hive サーバーの種類。 <br/>使用できる値は、以下のとおりです。**HiveServer1**、**HiveServer2**、**HiveThriftServer**。 | いいえ |
 | thriftTransportProtocol | Thrift レイヤーで使用するトランスポート プロトコル。 <br/>使用できる値は、以下のとおりです。**Binary**、**SASL**、**HTTP**。 | いいえ |
 | authenticationType | Hive サーバーへのアクセスに使用する認証方法。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService**。 Kerberos 認証は現在サポートされていません。 | はい |

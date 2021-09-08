@@ -4,23 +4,23 @@ titleSuffix: Azure Digital Twins
 description: CLI を使用して、クライアント アプリ向けの認証オプションとして Azure AD アプリの登録を作成する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 5/13/2021
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a42a09af845bce160689718fb74eb393409740d3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c9f69d33c89fba209ecf7ad76bc1aa8e2b6b666
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437932"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224897"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-cli"></a>Azure Digital Twins で使用するアプリの登録を作成する (CLI)
 
 [!INCLUDE [digital-twins-create-app-registration-selector.md](../../includes/digital-twins-create-app-registration-selector.md)]
 
-Azure Digital Twins インスタンスを使用する場合、カスタム クライアント アプリや [Azure Digital Twins Explorer](quickstart-azure-digital-twins-explorer.md) のようなサンプルなどのクライアント アプリケーションを使用してそのインスタンスを操作することが一般的です。 これらのアプリケーションを操作するためには、Azure Digital Twins で認証する必要があります。また、アプリで使用できる [認証メカニズム](how-to-authenticate-client.md)には、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **アプリの登録** が含まれます。
+Azure Digital Twins インスタンスを使用する場合、カスタム クライアント アプリや [Azure Digital Twins Explorer](quickstart-azure-digital-twins-explorer.md) のようなサンプルなどのクライアント アプリケーションを使用してそのインスタンスを操作することが一般的です。 これらのアプリケーションを操作するには、Azure Digital Twins で認証する必要があります。また、アプリで使用できる [認証メカニズム](how-to-authenticate-client.md)には、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) の **アプリの登録** が関与します。
 
-これは、すべての認証シナリオで必要とされるわけではありません。 ただし、アプリの登録が必要な認証方法またはコード サンプルを使用している場合は、この記事で [Azure CLI](/cli/azure/what-is-azure-cli) を使用した設定方法を確認できます。 また、アプリの登録を使用して認証するために必要な[重要な値を収集](#collect-important-values)する方法についても説明します。
+アプリの登録は、認証シナリオによっては必要ありません。 ただし、アプリの登録が必要な認証方法またはコード サンプルを使用している場合は、この記事で [Azure CLI](/cli/azure/what-is-azure-cli) を使用した設定方法を確認できます。 また、アプリの登録を使用して認証するために必要な[重要な値を収集](#collect-important-values)する方法についても説明しています。
 
 ## <a name="azure-ad-app-registrations"></a>Azure AD アプリの登録
 
@@ -65,7 +65,7 @@ Azure Digital Twins インスタンスを使用する場合、カスタム ク�
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] アイコンが強調表示されている [Azure Cloud Shell] のスクリーンショット。":::
 
-マシン上の **manifest.json** ファイルに移動し、[開く] を選択します。 これにより、Cloud Shell ストレージのルートにファイルがアップロードされます。
+マシン上の **manifest.json** ファイルに移動し、[開く] を選択します。 こうすることで、Cloud Shell ストレージのルートにファイルがアップロードされます。
 
 ## <a name="create-the-registration"></a>登録を作成する
 
@@ -81,7 +81,7 @@ Azure Digital Twins インスタンスを使用する場合、カスタム ク�
 az ad app create --display-name <app-registration-name> --available-to-other-tenants false --reply-urls http://localhost --native-app --required-resource-accesses "@manifest.json"
 ```
 
-コマンドによって、作成したアプリの登録に関する情報が出力されます。 
+コマンドの出力は、作成したアプリの登録に関する情報です。 
 
 ## <a name="verify-success"></a>成功を確認する
 
@@ -93,7 +93,7 @@ Azure portal を使用して、アプリの登録が正常に作成されたこ�
 
 ## <a name="collect-important-values"></a>重要な値を収集する
 
-次に、アプリの登録に関する重要な値を収集します。これらは、アプリの登録を使用してクライアント アプリケーションを認証するために必要となります。 これらの値には次の値が含まれます。
+次に、アプリの登録に関する重要な値を収集します。これらは、アプリの登録を使用してクライアント アプリケーションを認証するのに必要となります。 これらの値には次の値が含まれます。
 * **リソース名**
 * **クライアント ID**
 * **テナント ID**
@@ -125,7 +125,7 @@ Azure Digital Twins に使用する場合、**リソース名** は `http://digi
 az ad app credential reset --id <client-ID> --append
 ```
 
-このコマンドに省略可能なパラメーターを追加して、資格情報の説明、終了日、その他の詳細を指定することもできます。 このコマンドとその追加パラメーターの詳細については、[az ad app credential reset のドキュメント](/cli/azure/ad/app/credential?view=azure-cli-latest&preserve-view=true#az_ad_app_credential_reset)を参照してください。
+このコマンドに省略可能なパラメーターを追加して、資格情報の説明、終了日、その他の詳細を指定することもできます。 このコマンドとそのパラメーターの詳細については、[az ad app credential reset のドキュメント](/cli/azure/ad/app/credential?view=azure-cli-latest&preserve-view=true#az_ad_app_credential_reset)を参照してください。
 
 このコマンドによって、作成されたクライアント シークレットに関する情報が出力されます。 認証にクライアント シークレットが必要な場合に使用するために、`password` の値をコピーします。
 
@@ -136,7 +136,7 @@ az ad app credential reset --id <client-ID> --append
 
 ## <a name="other-possible-steps-for-your-organization"></a>組織でのその他の考えられる手順
 
-アプリ登録を正常に設定するには、サブスクリプションの所有者または管理者からの追加のアクションが組織で必要になる可能性があります。 必要な手順は、組織の具体的な設定によって異なることがあります。
+アプリの登録を正常に設定するには、サブスクリプションの所有者または管理者からの追加のアクションが組織で必要になる可能性があります。 必要な手順は、組織の具体的な設定によって異なることがあります。
 
 サブスクリプションの所有者または管理者による実行が必要になる可能性がある一般的な潜在的なアクティビティのいくつかを次に示します。
 * アプリ登録に対する管理者の同意を付与する。 組織では、サブスクリプション内のすべてのアプリ登録について、Azure AD で **[管理者の同意が必要]** がグローバルに有効になっている可能性があります。 その場合、所有者/管理者は、追加の委任されたアクセス許可またはアプリケーションのアクセス許可を付与する必要がある場合があります。

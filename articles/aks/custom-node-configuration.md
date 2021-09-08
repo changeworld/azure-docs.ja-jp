@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a280a191d25a2d41173b30c56447b1ece7077206
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d9b3a6d3a5178354cced3cd5e4a49f7113ecdce
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728162"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220019"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Azure Kubernetes Service (AKS) ノード プールのノード構成をカスタマイズする (プレビュー)
 
@@ -68,6 +68,8 @@ az extension update --name aks-preview
 | `imageGcLowThreshold` | 0 から 100、`imageGcHighThreshold` 以下 | 80 | イメージ ガベージ コレクションを実行できるようになる、ディスク使用量の割合。 ガベージ コレクションをトリガー **できる** 最小ディスク使用量。 |
 | `topologyManagerPolicy` | none、best-effort、restricted、single-numa-node | なし | NUMA ノードの配置を最適化します。詳細については、[こちら](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/)をご覧ください。 Kubernetes v1.18 以降のみに該当します。 |
 | `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | なし | 安全でない sysctls パターンまたは安全でない sysctl パターンの許容リスト。 | 
+| `containerLogMaxSizeMB` | メガバイト (MB) 単位のサイズ | 10 MB | 回転される前のコンテナー ログ ファイルの最大サイズ (例: 10 MB)。 | 
+| `containerLogMaxFiles` | ≥ 2 | 5 | コンテナーに表示できるコンテナー ログ ファイルの最大数。 | 
 
 ### <a name="linux-os-custom-configuration"></a>Linux OS カスタム構成
 

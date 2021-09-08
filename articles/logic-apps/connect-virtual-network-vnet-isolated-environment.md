@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 08/11/2021
-ms.openlocfilehash: 3b715c15eb889d04c87a654fd68b802a53e7af01
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1a7af136633b096f8bcda08466822549f922b35
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721942"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536961"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure 仮想ネットワークに接続する
 
@@ -156,7 +156,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
   * [ISE リージョンのコネクタの Azure IP アドレス。このダウンロード ファイルで入手できます](https://www.microsoft.com/download/details.aspx?id=56519)
   * [App Service Environment の管理アドレス](../app-service/environment/management-addresses.md)  
   * [Azure Traffic Manager の管理アドレス](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
-  * [Azure API Management コントロール プレーンの IP アドレス](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+  * [Azure API Management コントロール プレーンの IP アドレス](../api-management/api-management-using-with-vnet.md#control-plane-ip-addresses)
 
 * サービス エンドポイント
 
@@ -168,7 +168,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
    
    * [Azure App Service の依存関係](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
    * [Azure キャッシュ サービスの依存関係](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
-   * [Azure API Management の依存関係](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
+   * [Azure API Management の依存関係](../api-management/api-management-using-with-vnet.md#network-configuration)
 
 <a name="create-environment"></a>
 

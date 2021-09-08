@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d4037e66e653bc6e958020a5ef8722f2febb53d0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f7bf21933f7b9eae40794ef67be48dd3bad2a9b6
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772182"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473696"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
 
@@ -128,7 +128,7 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 このコマンドの出力は、作成したキー コンテナーのプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
 * **name**:この例では、名前は ContosoKeyVault です。 この名前を他の Key Vault コマンドに使用できます。
-* **vaultUri**: この例では、URI は https://contosokeyvault.vault.azure.net です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+* **vaultUri**: この例では、URI は `https://contosokeyvault.vault.azure.net` です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。 現在のところ、誰も承認されていません。
 

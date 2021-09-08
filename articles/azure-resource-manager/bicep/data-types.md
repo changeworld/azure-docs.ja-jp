@@ -2,13 +2,13 @@
 title: Bicep のデータ型
 description: Bicep で使用可能なデータ型について説明します
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 31f2c6e979acb3b0b622bc63ffb8a2845179491d
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/30/2021
+ms.openlocfilehash: f520e314aff783a78e1656c16721f0fb8504215b
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026865"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221683"
 ---
 # <a name="data-types-in-bicep"></a>Bicep のデータ型
 
@@ -32,6 +32,23 @@ Bicep 内では、こちらのデータ型を使用できます。
 
 配列内の各項目は、[any 型](bicep-functions-any.md)によって表現されます。 各項目が同じデータ型である配列、または異なるデータ型を保持する配列を指定できます。
 
+次の例は、整数の配列およびさまざまな型の配列を示したものです。
+
+```bicep
+var integerArray = [
+  1
+  2
+  3
+]
+
+var mixedArray = [
+  resourceGroup().name
+  1
+  true
+  'example string'
+]
+```
+
 Bicep の配列は 0 が基準です。 次の例では、`exampleArray[0]` は 1 に評価され、`exampleArray[2]` は 3 に評価されます。 インデクサーのインデックス自体が別の式である場合があります。 式 `exampleArray[index]` は 2 に評価されます。 整数インデクサーは、配列型の式でのみ使用できます。
 
 ```bicep
@@ -41,40 +58,6 @@ var exampleArray = [
   1
   2
   3
-]
-```
-
-Bicep では、文字列ベースのインデクサーを使用できます。
-
-```bicep
-param environment string = 'prod'
-
-var environmentSettings = {
-  dev: {
-    name: 'dev'
-  }
-  prod: {
-    name: 'prod'
-  }
-}
-```
-
-式 environmentSettings['dev'] は次のオブジェクトに評価されます。
-
-```bicep
-{
-  name: 'dev'
-}
-```
-
-次の例は、さまざまな型を持つ配列を示します。
-
-```bicep
-var mixedArray = [
-  resourceGroup().name
-  1
-  true
-  'example string'
 ]
 ```
 
@@ -113,21 +96,38 @@ param exampleObject object = {
 }
 ```
 
-オブジェクトのプロパティにアクセスするために、プロパティ アクセサーが使用されます。 これらは、`.` 演算子を使用して構築されます。 次に例を示します。
+オブジェクトのプロパティにアクセスするために、プロパティ アクセサーが使用されます。 これらは、`.` 演算子を使用して構築されます。
 
 ```bicep
-var x = {
-  y: {
-    z: 'Hello`
-    a: true
+var a = {
+  b: 'Dev'
+  c: 42
+  d: {
+    e: true
   }
-  q: 42
 }
+
+output result1 string = a.b // returns 'Dev' 
+output result2 int = a.c // returns 42
+output result3 bool = a.d.e // returns true
 ```
 
-前の宣言を行うと、式 x.y.z はリテラル文字列の "Hello" に評価されます。 同様に、式 x.q は整数リテラルの 42 に評価されます。
-
 プロパティ アクセサーは、オブジェクト型のパラメーターや変数、オブジェクト リテラルなど、任意のオブジェクトとともに使用できます。 オブジェクト型以外の式でプロパティ アクセサーを使用すると、エラーが発生します。
+
+`[]` 構文を使用してプロパティにアクセスすることもできます。 次の例では、`Development` が返されます。
+
+```bicep
+var environmentSettings = {
+  dev: {
+    name: 'Development'
+  }
+  prod: {
+    name: 'Production'
+  }
+}
+
+output accessorResult string = environmentSettings['dev'].name
+```
 
 ## <a name="strings"></a>文字列
 
@@ -139,7 +139,7 @@ param exampleString string = 'test value'
 
 次の表に、円記号 (`\`) 文字でエスケープする必要がある予約文字のセットを示します。
 
-| エスケープ シーケンス | 表される値 | メモ |
+| エスケープ シーケンス | 表される値 | Notes |
 |:-|:-|:-|
 | \\ | \ ||
 | \' | ' ||

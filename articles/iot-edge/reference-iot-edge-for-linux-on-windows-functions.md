@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a5af992bdfe3bb97383d3c8ed1ccd0e57dd1efb7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8429ed368e8465c45137e555444a18b8a66769dd
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732861"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123271955"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>IoT Edge for Linux on Windows 用の PowerShell 関数
 
@@ -81,7 +81,7 @@ PowerShell ディレクトリに **AzureEflow** フォルダーがない場合�
 | acceptOptionalTelemetry | **Yes** または **No** |  省略可能なテレメトリを受け入れまたは拒否し、テレメトリのプロンプトをバイパスするためのショートカット。 |
 | cpuCount | 1 からデバイスの CPU コア数の範囲の整数値 |  VM の CPU コア数。<br><br>**既定値**: 1 仮想コア。 |
 | memoryInMB | 1024 からデバイスの空きメモリの最大容量の範囲の整数値 |VM に割り当てられたメモリ。<br><br>**既定値**: 1024 MB。 |
-| vmDiskSize | 8 GB から 256 GB | 容量可変の仮想ハード ディスクの最大ディスク サイズ。<br><br>**既定値**: 16 GB。 |
+| vmDiskSize | 8 GB から 256 GB | 容量可変の仮想ハード ディスクの最大ディスク サイズ。<br><br>**既定値**: 10 GB。 |
 | vswitchName | 仮想スイッチの名前 |  EFLOW VM に割り当てられた仮想スイッチの名前。 |
 | vswitchType | **内部** または **外部** | EFLOW VM に割り当てられた仮想スイッチの種類。 |
 | ip4Address | DHCP サーバー スコープの範囲内の IPv4 アドレス | EFLOW VM の静的 IPv4 アドレス。 "_注: ICS の既定のスイッチでのみサポートされています_"。 |
@@ -176,7 +176,7 @@ Get-EflowVM | Select -ExpandProperty VmConfiguration | Format-List
 
 | パラメーター | 指定可能な値 | 説明 |
 | --------- | --------------- | -------- |
-| コマンドを使用します | String | VM で実行されるコマンド。 |
+| command | String | VM で実行されるコマンド。 |
 | ignoreError | なし |  このフラグを指定した場合、コマンドからのエラーが無視されます。 |
 
 詳細については、コマンド `Get-Help Invoke-EflowVmCommand -full` を使用してください。

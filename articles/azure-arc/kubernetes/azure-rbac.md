@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes クラスターでの承認チェックに Azure RBAC を使用します。
-ms.openlocfilehash: b4c8d6f4f7abcd9090a0b4aaa69038b75a4aa1b1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2607f82e0935ead0b6013bae963e22616c340b80
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479601"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105041"
 ---
 # <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Azure Active Directory と Azure Arc 対応 Kubernetes クラスターの統合
 
@@ -52,27 +52,29 @@ Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/
 1. 新しい Azure AD アプリケーションを作成し、その `appId` 値を取得します。 この値は、後の手順で `serverApplicationId` として使用されます。
 
     ```azurecli
-    az ad app create --display-name "<clusterName>Server" --identifier-uris "https://<clusterName>Server" --query appId -o tsv
+    CLUSTERNAME="<clusterName>"
+    SERVER_APP_ID=$(az ad app create --display-name "${CLUSTERNAME}Server" --identifier-uris "https://${CLUSTERNAME}Server" --query appId -o tsv)
+    echo $SERVER_APP_ID
     ```
 
 1. アプリケーションのグループ メンバーシップ要求を更新します。
 
     ```azurecli
-    az ad app update --id <serverApplicationId> --set groupMembershipClaims=All
+    az ad app update --id "${SERVER_APP_ID}" --set groupMembershipClaims=All
     ```
 
 1. サービス プリンシパルを作成し、その `password` フィールド値を取得します。 この値は、後ほどクラスターでこの機能を有効にするときに `serverApplicationSecret` として必要になります。
 
     ```azurecli
-    az ad sp create --id <serverApplicationId>
-    az ad sp credential reset --name <serverApplicationId> --credential-description "ArcSecret" --query password -o tsv
+    az ad sp create --id "${SERVER_APP_ID}"
+    SERVER_APP_SECRET=$(az ad sp credential reset --name "${SERVER_APP_ID}" --credential-description "ArcSecret" --query password -o tsv)
     ```
 
-1. アプリケーションに API のアクセス許可を付与します。
+1. アプリケーションに "サインインとユーザー プロファイルの読み取り" API のアクセス許可を付与します。
 
     ```azurecli
-    az ad app permission add --id <serverApplicationId> --api 00000003-0000-0000-c000-000000000000 --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope
-    az ad app permission grant --id <serverApplicationId> --api 00000003-0000-0000-c000-000000000000
+    az ad app permission add --id "${SERVER_APP_ID}" --api 00000003-0000-0000-c000-000000000000 --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope
+    az ad app permission grant --id "${SERVER_APP_ID}" --api 00000003-0000-0000-c000-000000000000
     ```
 
     > [!NOTE]
@@ -85,26 +87,27 @@ Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/
 1. 新しい Azure AD アプリケーションを作成し、その `appId` 値を取得します。 この値は、後の手順で `clientApplicationId` として使用されます。
 
     ```azurecli
-    az ad app create --display-name "<clusterName>Client" --native-app --reply-urls "https://<clusterName>Client" --query appId -o tsv
+    CLIENT_APP_ID=$(az ad app create --display-name "${CLUSTERNAME}Client" --native-app --reply-urls "https://${CLUSTERNAME}Client" --query appId -o tsv)
+    echo $CLIENT_APP_ID
     ```
 
 2. このクライアント アプリケーション用のサービス プリンシパルを作成します。
 
     ```azurecli
-    az ad sp create --id <clientApplicationId>
+    az ad sp create --id "${CLIENT_APP_ID}"
     ```
 
 3. サーバー アプリケーションの `oAuthPermissionId` 値を取得します。
 
     ```azurecli
-    az ad app show --id <serverApplicationId> --query "oauth2Permissions[0].id" -o tsv
+    az ad app show --id "${SERVER_APP_ID}" --query "oauth2Permissions[0].id" -o tsv
     ```
 
 4. クライアント アプリケーションに必要なアクセス許可を付与します。
 
     ```azurecli
-    az ad app permission add --id <clientApplicationId> --api <serverApplicationId> --api-permissions <oAuthPermissionId>=Scope
-    az ad app permission grant --id <clientApplicationId> --api <serverApplicationId>
+    az ad app permission add --id "${CLIENT_APP_ID}" --api "${SERVER_APP_ID}" --api-permissions <oAuthPermissionId>=Scope
+    az ad app permission grant --id "${CLIENT_APP_ID}" --api "${SERVER_APP_ID}"
     ```
 
 ## <a name="create-a-role-assignment-for-the-server-application"></a>サーバー アプリケーション用のロールの割り当てを作成する
@@ -133,15 +136,13 @@ Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/
 2. 次のコマンドを実行して、新しいカスタム ロールを作成します。
 
     ```azurecli
-    az role definition create --role-definition ./accessCheck.json
+    ROLE_ID=$(az role definition create --role-definition ./accessCheck.json --query id -o tsv)
     ```
 
-3. 上記のコマンドの出力から、`id` フィールドの値を保存します。 このフィールドは、後の手順で `roleId` として使用されます。
-
-4. 作成したロールを使用して、サーバー アプリケーションに `assignee` としてロールの割り当てを作成します。
+3. 作成したロールを使用して、サーバー アプリケーションに `assignee` としてロールの割り当てを作成します。
 
     ```azurecli
-    az role assignment create --role <roleId> --assignee <serverApplicationId> --scope /subscriptions/<subscription-id>
+    az role assignment create --role "${ROLE_ID}" --assignee "${SERVER_APP_ID}" --scope /subscriptions/<subscription-id>
     ```
 
 ## <a name="enable-azure-rbac-on-the-cluster"></a>クラスターで Azure RBAC を有効にする
@@ -149,7 +150,7 @@ Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/
 次のコマンドを実行して、Arc 対応 Kubernetes クラスターで Azure ロールベースのアクセス制御 (RBAC) を有効にします。
 
 ```console
-az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features azure-rbac --app-id <serverApplicationId> --app-secret <serverApplicationSecret>
+az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features azure-rbac --app-id "${SERVER_APP_ID}" --app-secret "${SERVER_APP_SECRET}"
 ```
     
 > [!NOTE]

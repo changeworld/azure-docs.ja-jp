@@ -1,5 +1,5 @@
 ---
-title: PIM での電子メール通知 - Azure Active Directory | Microsoft Docs
+title: Privileged Identity Management (PIM) のメール通知 - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) でのメール通知について説明します。
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 06/30/2021
+ms.date: 08/24/2021
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18aa1e49ad3f87ab3e222f250354c2bc5e2aca16
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 68fac3501cd13dd4766c519185459c9ef89b6299
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749080"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311223"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
@@ -37,6 +37,21 @@ Azure AD ロールと Azure リソース ロールの両方に関して Privileg
 これらの電子メールの件名行には、**PIM** というプレフィックスが付けられます。 次に例を示します。
 
 - PIM:Alain Charon にバックアップ リーダー ロールが永続的に割り当てられました
+
+## <a name="email-timing-for-activation-approvals"></a>アクティブ化承認の電子メールのタイミング
+
+ユーザーが各自のロールをアクティブにし、ロールの設定で承認が必要な場合、承認者は承認ごとに次の 2 通の電子メールを受け取ります。
+
+- ユーザーのアクティブ化要求を承認または拒否する要求 (要求承認エンジンによって送信されます)
+- ユーザーの要求が承認された (要求承認エンジンによって送信されます)
+
+また、グローバル管理者と特権ロール管理者は、各承認で次の電子メールを受信します。
+
+- ユーザーのロールがアクティブ化された (Privileged Identity Management によって送信されます)
+
+要求承認エンジンによって送信される最初の 2 つの電子メールは、遅延する場合があります。 現在、電子メールの 90% は 3 分から 10 分かかりますが、1% のお客様については、最大で 15 分ほどになる可能性があります。
+
+最初の電子メールが送信される前に Azure portal で承認要求が承認されると、最初の電子メールはトリガーされなくなり、他の承認者が承認要求の電子メールで通知されることはありません。 他の承認者に電子メールが届かないように見えるかもしれませんが、想定されている動作です。
 
 ## <a name="notifications-for-azure-ad-roles"></a>Azure AD ロールに関する通知
 
@@ -77,22 +92,7 @@ Azure AD ロールに関する週間 Privileged Identity Management サマリー
 
 **[Overview of your top roles]\(上位ロールの概要\)** セクションには、各ロールの永続管理者と有資格管理者の合計数に基づいて、組織内の上位 5 つのロールが一覧表示されます。 **[アクションの実行]** リンクをクリックすると、[[検出と分析情報]](pim-security-wizard.md) が開き、そこから永続管理者を有資格管理者に一括変換することができます。
 
-## <a name="email-timing-for-activation-approvals"></a>アクティブ化承認の電子メールのタイミング
-
-ユーザーが各自のロールをアクティブにし、ロールの設定で承認が必要な場合、承認者は承認ごとに次の 2 通の電子メールを受け取ります。
-
-- ユーザーのアクティブ化要求を承認または拒否する要求 (要求承認エンジンによって送信されます)
-- ユーザーの要求が承認された (要求承認エンジンによって送信されます)
-
-また、グローバル管理者と特権ロール管理者は、各承認で次の電子メールを受信します。
-
-- ユーザーのロールがアクティブ化された (Privileged Identity Management によって送信されます)
-
-要求承認エンジンによって送信される最初の 2 つの電子メールは、遅延する場合があります。 現在、電子メールの 90% は 3 分から 10 分かかりますが、1% のお客様については、最大で 15 分ほどになる可能性があります。
-
-最初の電子メールが送信される前に Azure portal で承認要求が承認されると、最初の電子メールはトリガーされなくなり、他の承認者が承認要求の電子メールで通知されることはありません。 他の承認者に電子メールが届かないように見えるかもしれませんが、想定されている動作です。
-
-## <a name="pim-emails-for-azure-resource-roles"></a>Azure リソース ロール向けの PIM 電子メール
+## <a name="notifications-for-azure-resource-roles"></a>Azure リソース ロール向けの通知
 
 Privileged Identity Management は、Azure リソース ロールに関して次のイベントが発生したときに所有者とユーザー アクセス管理者に電子メールを送信します。
 
@@ -113,6 +113,25 @@ Privileged Identity Management は、Azure リソース ロールに関して次
 ユーザーに架空の Contoso 組織の Azure リソース ロールが割り当てられたときに送信される電子メールの例を次に示します。
 
 ![Azure リソース ロールに関する新しい Privileged Identity Management 電子メール](./media/pim-email-notifications/email-resources-new.png)
+
+## <a name="notifications-for-privileged-access-groups"></a>特権アクセス グループ向けの通知
+
+特権アクセス グループの割り当てで次のイベントが発生した場合にのみ、Privileged Identity Management によって所有者にメールが送信されます。
+
+- 所有者ロールまたはメンバー ロールの割り当てが承認待ちのとき
+- 所有者ロールまたはメンバー ロールが割り当てられたとき
+- 所有者ロールまたはメンバー ロールの期限切れが近づいているとき
+- 所有者ロールまたはメンバー ロールが延長資格を得たとき
+- 所有者ロールまたはメンバー ロールがエンド ユーザーによって更新されたとき
+- 所有者ロールまたはメンバー ロールのアクティブ化要求が完了したとき
+
+特権アクセス グループ ロールの割り当てで次のイベントが発生した場合にのみ、Privileged Identity Management によってエンド ユーザーにメールが送信されます。
+
+- ユーザーに所有者ロールまたはメンバー ロールが割り当てられたとき
+- ユーザーの所有者ロールまたはメンバー ロールの有効期限が切れたとき
+- ユーザーの所有者ロールまたはメンバー ロールの有効期限が延長されたとき
+- ユーザーの所有者ロールまたはメンバー ロールのアクティブ化要求が完了したとき
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: a877ee39c2d5a3760df50ebb3575793d1500de96
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0430217ab8c2f113127c6a2e519d9e394fc3d3e7
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795534"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318683"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Azure Cache for Redis でデータをインポートまたはエクスポートする
 
@@ -73,7 +73,12 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 2. **[ストレージ コンテナーの選択]** を選択し、必要なストレージ アカウントを選択します。 ストレージ アカウントは、キャッシュと同じサブスクリプションおよびリージョン内にある必要があります。
 
    > [!IMPORTANT]
-   > エクスポートが機能するページ BLOB は、クラシック ストレージ アカウントと Resource Manager ストレージ アカウントの両方でサポートされています。 現時点では BLOB ストレージ アカウントではサポートされていません。 詳細については、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」を参照してください。
+   >
+   > - エクスポートが機能するページ BLOB は、クラシック ストレージ アカウントと Resource Manager ストレージ アカウントの両方でサポートされています。
+   > - Azure Cache for Redis では、ADLS Gen2 ストレージ アカウントへのエクスポートはサポートされていません。
+   > - 現時点では BLOB ストレージ アカウントではサポートされていません。
+   >
+   > 詳細については、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」を参照してください。
    >
 
     ![ストレージ アカウント](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
@@ -154,7 +159,7 @@ Import/Export では、Azure Cache for Redis へのデータの取り込みと A
 
 左側の **[データのインポート]** または **[データのエクスポート]** に、操作を開始しないまま留まっている時間が 15 分を超えると、次の例のようなエラー メッセージのエラーが発生します。
 
-```output
+```azcopy
 The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
 ```
 

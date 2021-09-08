@@ -1,18 +1,18 @@
 ---
 title: Azure Database for PostgreSQL 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Database for PostgreSQL に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e3b61c9b425a75744f7a42864e68b465d4b50e22
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e7b1857bc5e143c7244e89c7696b37fb9c83f79c
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123097997"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475092"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 用の Azure Policy 規制コンプライアンス コントロール
 

@@ -5,18 +5,18 @@ description: Azure Kubernetes Service (AKS) で Kubernetes のロールベース
 services: container-service
 ms.topic: article
 ms.date: 03/17/2021
-ms.openlocfilehash: 0d5171e9e9a5d7f033ff615a3f1205b8dc93966f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 571a0153bfe56a6d3b92700eb0e40f457cf92ffc
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769555"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097949"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service で Kubernetes のロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する
 
-Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにサインインします。 また、ユーザーの ID またはグループ メンバーシップに基づいて、クラスター リソースへのアクセスを制限するように Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を構成することもできます。
+Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにサインインします。 認証されると、ユーザーの ID またはグループ メンバーシップに基づいて、名前空間やクラスター リソースへのアクセスを管理するために、組み込みの Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用できます。
 
-この記事では、AKS クラスターで Kubernetes RBAC を使用して名前空間とクラスター リソースへのアクセスを制御するために、Azure AD グループのメンバーシップを使用する方法を示します。 Azure AD でグループとユーザーの例が作成され、リソースを作成および表示するために適切な権限を付与するため AKS クラスター内に Role と RoleBinding が作成されます。
+この記事では、Azure AD グループのメンバーシップに基づいて、AKS クラスターで Kubernetes RBAC を使用してアクセスを制御する方法を示します。 Azure AD でグループとユーザーの例が作成され、リソースを作成および表示するために適切な権限を付与するため AKS クラスター内に Role と RoleBinding が作成されます。
 
 ## <a name="before-you-begin"></a>開始する前に
 

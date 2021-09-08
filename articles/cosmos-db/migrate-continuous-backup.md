@@ -4,16 +4,16 @@ description: Azure Cosmos DB では現在、定期モードから継続モード
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/17/2021
+ms.date: 08/26/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: 286caa42fd095a5a273c164d860154e88bc38748
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: f9708a9287ee8ff40de6044249e35ad26b938316
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397391"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039308"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>Azure Cosmos DB アカウントを定期バックアップ モードから継続的バックアップ モードに移行する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -50,7 +50,7 @@ ms.locfileid: "122397391"
 
 アカウントを定期バックアップから継続的バックアップ モードに移行するには、次の手順を使用します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 1. Azure Cosmos DB アカウントに移動して、 **[機能]** ペインを開きます。 **[Continuous Backup]\(継続的バックアップ\)** を選択し、 **[Enable]\(有効化\)** を選択します。
 
@@ -191,12 +191,16 @@ t1 より前の時点に復元する場合は、定期バックアップ アカ�
 #### <a name="since-the-continuous-backup-mode-is-now-ga-would-you-still-recommend-restoring-a-copy-of-your-account-and-try-migration-on-the-copy-before-deciding-to-migrate-the-production-account"></a>継続的バックアップ モードの一般提供が開始されましたが、引き続き、実稼働アカウントの移行を決定する前にアカウントのコピーを復元し、そのコピーで移行を試すことを推奨しますか?
 実稼働アカウントを移行する前に、継続的バックアップ モードの機能をテストして、予想どおりに動作することを確認することをお勧めします。 移行は一方向の操作であり、元に戻すことができないためです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 継続的バックアップ モードの詳細については、次の記事を参照してください。
 
 * [ポイントインタイム リストアを使用した継続的バックアップ モードの概要](continuous-backup-restore-introduction.md)
 
-* [継続的バックアップ モードのリソース モデル](continuous-backup-restore-resource-model.md)
+* [継続的バックアップ モードのリソース モデル。](continuous-backup-restore-resource-model.md)
 
-* [Azure portal](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli)、または [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template) を使用したアカウントの復元
+* [Azure portal](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli)、または [Azure Resource Manager](restore-account-continuous-backup.md#restore-arm-template) を使用してアカウントを復元します。
+
+Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+   * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+   * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

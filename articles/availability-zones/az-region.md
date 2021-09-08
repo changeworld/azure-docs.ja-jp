@@ -8,12 +8,12 @@ ms.date: 08/04/2021
 ms.author: prsandhu
 ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 6271fcb1702d14913578f6cc535b1dd74ba3205b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3973941a5fbceb58ed265f2594661c8365c618d9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750376"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480248"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
 
@@ -120,6 +120,7 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 
 |     製品                                                    | 回復性             |
 |-----------------------------------------------------------------|:----------------------------:|
+|     [App Service](../app-service/how-to-zone-redundancy.md)                                    | :large_blue_diamond:  |
 |     [App Service Environment](../app-service/environment/zone-redundancy.md)                                    | :large_blue_diamond:  |
 |     [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md)                      | :large_blue_diamond:  |
 |     [Azure API Management](../api-management/zone-redundancy.md)                      | :large_blue_diamond:  |
@@ -142,7 +143,7 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)                                         | :large_blue_diamond:  |
 |     Azure SQL: [仮想マシン](../azure-sql/database/high-availability-sla.md)                                  | :large_blue_diamond:  |
 |     [Azure Web アプリケーション ファイアウォール](../firewall/deploy-availability-zone-powershell.md)                              | :large_blue_diamond:  |
-|     [コンテナー レジストリ](../container-registry/zone-redundancy.md)                                          | :large_blue_diamond:  |
+|     [Container Registry](../container-registry/zone-redundancy.md)                                          | :large_blue_diamond:  |
 |     [Event Grid](../event-grid/overview.md)                                                  | :large_blue_diamond:  |
 |     [Network Watcher](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
 |     Network Watcher: [Traffic Analytics](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | :large_blue_diamond:  |
