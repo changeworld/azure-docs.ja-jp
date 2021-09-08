@@ -49,7 +49,7 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [クイックスタート](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/quickstart) | [クイック スタート:Java と REST で検索インデックスを作成する方法](search-get-started-java.md)に関する記事のソース コード。 このサンプルは、Java SDK 用に更新されていません。 ここでは、REST API を呼び出します。 |
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?languages=java&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> [サンプル ブラウザー](/samples/browse/?languages=java&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを GitHub 内で検索してください。
 
 ## <a name="other-samples"></a>その他のサンプル
 
