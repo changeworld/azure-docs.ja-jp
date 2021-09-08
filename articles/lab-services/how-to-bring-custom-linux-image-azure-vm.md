@@ -3,18 +3,18 @@ title: Azure Lab Services - Azure 仮想マシンから Linux カスタム イ�
 description: Azure 仮想マシンから Linux カスタム イメージを取り込む方法について説明します。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: d0ddde1be7792e5bc4c0c58c50945aa27920d889
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: edb1620b0051e82df3994982eb069e78e22777bf
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830965"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450937"
 ---
 # <a name="bring-a-linux-custom-image-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Linux カスタム イメージを取り込む
 
 この記事の手順では、[Azure 仮想マシン (VM)](https://azure.microsoft.com/services/virtual-machines/) から起動するカスタム イメージをインポートする方法について説明します。 この方法では、Azure VM 上にイメージを設定し、そのイメージを Azure Lab Services 内で使用できるように共有イメージ ギャラリーにインポートします。 この方法でカスタム イメージを作成する前に、「[カスタム イメージの推奨される作成方法](approaches-for-custom-image-creation.md)」を読んで、自分のシナリオに最適な方法を判断してください。
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
 この記事の手順を完了するには、学校の Azure サブスクリプションで Azure VM を作成するためのアクセス許可が必要です。
 
@@ -34,7 +34,7 @@ ms.locfileid: "122830965"
 
 ## <a name="import-the-custom-image-into-a-shared-image-gallery"></a>カスタム イメージを共有イメージ ギャラリーにインポートする
 
-1. 共有イメージ ギャラリーで、[イメージ定義を作成する](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)か、既存のイメージ定義を選択します。
+1. 共有イメージ ギャラリーで、[イメージ定義を作成する](../virtual-machines/image-version.md)か、既存のイメージ定義を選択します。
      - **VM の世代** として **[Gen 1]** を選択します。
      - **オペレーティング システムの状態** に対して **特殊化されたイメージ** を作成するのか **一般化されたイメージ** を作成するのかを選択します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "122830965"
     
     既存のイメージ定義を使用して、カスタム イメージの新しいバージョンを作成することも選択できます。
     
-1. [イメージ バージョンを作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-version)。
+1. [イメージ バージョンを作成します](../virtual-machines/image-version.md)。
     - **[バージョン番号]** プロパティで使用する形式は *MajorVersion.MinorVersion.Patch* です。 
     - **[ソース]** で、 **[ディスクやスナップショット]** をドロップダウン リストから選択します。
     - **[OS ディスク]** プロパティで、前の手順で作成した Azure VM のディスクを選択します。
