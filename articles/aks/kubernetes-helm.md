@@ -151,7 +151,7 @@ my-nginx-ingress    default     1           2019-11-22 10:08:06.048477 -0600 CST
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、[helm uninstall][helm-cleanup] コマンドを使用し、前の `helm list` コマンドで見つかったリリース名を指定します。
+Helm チャートをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、[helm uninstall][helm-cleanup] コマンドを使用し、前の `helm list` コマンドで見つかったリリース名を指定します。
 
 ```console
 helm uninstall my-nginx-ingress
