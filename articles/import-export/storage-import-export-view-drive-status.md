@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 08/24/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ad107daa5d1a90e3416777375f47640359f10f37
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176149"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867266"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure Import/Export ジョブの状態を表示する
 
@@ -43,7 +43,7 @@ ms.locfileid: "102176149"
 |:--- |:--- |
 | 作成 | ジョブが作成された後、ジョブの状態は **Creating** (作成) に設定されます。 ジョブが **Creating** 状態である間、Import/Export サービスはドライブがデータ センターにまだ配送されていないものと見なします。 ジョブはこの状態に最大 2 週間留まることができ、その後はサービスによって自動的に削除されます。 |
 | 発送 | パッケージを発送したら、Azure Portal で追跡情報を更新する必要があります。  これにより、ジョブは **Shipping** (発送) 状態になります。 ジョブは、**Shipping** 状態に最大 2 週間留まります。 
-| 受取済み | すべてのドライブがデータ センターで受け取られると、ジョブの状態は **Received** (受取済み) に設定されます。 |
+| 受取済み | すべてのドライブがデータ センターで受け取られると、ジョブの状態は **Received** (受取済み) に設定されます。</br>データセンターで注文処理が完了すると、運送業者がデバイスを配送した後、ジョブの状態が 1 から 3 営業日後に変化する場合があります。 |
 | 転送 | 少なくとも 1 つのドライブの処理が開始されると、ジョブの状態は **Transferring** (転送) に設定されます。 詳しくは、「[ドライブの状態を表示する](#view-drive-status)」をご覧ください。 |
 | 梱包 | すべてのドライブの処理が完了してから、ドライブがユーザーに返送されるまでの間、ジョブの状態は **梱包** に設定されます。 |
 | 完了 | すべてのドライブがユーザーに返送され、ジョブがエラーなく完了すると、ジョブは **Completed** (完了) に設定されます。 **Completed** 状態になってから 90 日が経過すると、ジョブは自動的に削除されます。 |

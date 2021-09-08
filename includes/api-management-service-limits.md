@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 07/07/2021
+ms.date: 08/20/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 053f1372067284e2b2d10bac508156b6ef38e4af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d3317bafa2ff03e83bd79e9a3efa0ecfaffd4124
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014620"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122752753"
 ---
 | リソース | 制限 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -33,10 +33,10 @@ ms.locfileid: "122014620"
 | 最大合計要求時間<sup>8</sup> | 30 秒 |
 | 要求ペイロードの最大サイズ<sup>8</sup> | 1 GiB |
 | バッファー処理されたペイロードの最大サイズ<sup>8</sup> | 2 MiB |
-| 要求 URL の最大サイズ<sup>9</sup> | 4,096 バイト |
+| 要求 URL の最大サイズ<sup>9</sup> | 16384 バイト |
 | URL パスのセグメントの最大長<sup>10</sup> | 260 文字 |
 | [検証ポリシー](../articles/api-management/validation-policies.md)によって使用される API スキーマの最大サイズ<sup>10</sup> | 4 MB |
-| [コンテンツ検証ポリシー](../articles/api-management/validation-policies.md#validate-content)内の要求または応答本文の最大サイズ | 100 KB |
+| [コンテンツ検証ポリシー](../articles/api-management/validation-policies.md#validate-content) <sup>10</sup> 内の要求または応答本文の最大サイズ | 100 KB |
 | セルフホステッド ゲートウェイの最大数<sup>11</sup> | 25 |
 
 <sup>1</sup> スケーリングの制限は、価格レベルによって変わります。 価格レベルと、価格レベルのスケーリング制限については、「[API Management の価格](https://azure.microsoft.com/pricing/details/api-management/)」を参照してください。<br/>

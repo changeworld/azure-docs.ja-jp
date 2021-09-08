@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 5faf675d4e5d188840b3e9ab457ec28829f52dc0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 20e9920921afe1eae8babb76212a6de7ea2e1321
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778966"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251853"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Azure Active Directory (Azure AD) データを Azure Sentinel に接続する
 
@@ -62,7 +62,7 @@ Azure Sentinel の組み込みコネクタを使用して、[Azure Active Direct
 
 1. データ コネクタ ギャラリーで、 **[Azure Active Directory]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
-1. Azure Sentinel にストリーミングする種類のログの隣のチェック ボックス (上記を参照) をオンにして、 **[接続]** をクリックします。
+1. Azure Sentinel にストリーミングする種類のログの隣のチェック ボックス (上記を参照) をオンにして、 **[接続]** を選択します。
 
 ## <a name="find-your-data"></a>データの検索
 

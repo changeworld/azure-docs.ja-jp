@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 65b703a4f193e6b1197c3c8f2cb03ffbc349471b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 03fb94571e5e41a99688bf912cab36fa10edd2a4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741855"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867527"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -118,7 +118,7 @@ SMB MultiChannel の使用時、チャンネル数が 4 を超える場合、パ
 
 ### <a name="workaround"></a>回避策
 
-- Premium ファイル共有の場合は、[FileStorage アカウントで SMB マルチチャネルを有効にします](storage-files-enable-smb-multichannel.md)。
+- プレミアム ファイル共有では、[SMB マルチャンネルを有効にします](files-smb-protocol.md#smb-multichannel)。
 - より大きなコアの VM を取得すれば、スループットの向上に役立つ可能性があります。
 - 複数の VM からクライアント アプリケーションを実行すると、スループットが向上します。
 - 可能な場合は、REST API を使用します。
@@ -201,16 +201,6 @@ I/O 集中型ワークロードのために、Azure ファイル共有へのア�
 ### <a name="workaround"></a>回避策
 
 - 使用可能な[修正プログラム](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1)をインストールします。
-
-## <a name="smb-multichannel-option-not-visible-under-file-share-settings"></a>SMB マルチチャネル オプションは、ファイル共有の設定に表示されません。 
-
-### <a name="cause"></a>原因
-
-サブスクリプションが機能に登録されていないか、リージョンとアカウントの種類がサポートされていません。
-
-### <a name="solution"></a>解決策
-
-サブスクリプションが SMB マルチチャネル機能に登録されていることを確認してください。 [[概要]](storage-files-enable-smb-multichannel.md#getting-started) を参照してください。アカウントの概要ページで、アカウントの種類が FileStorage (Premium ファイル アカウント) であることを確認してください。 
 
 ## <a name="smb-multichannel-is-not-being-triggered"></a>SMB マルチチャネルはトリガーされません。
 

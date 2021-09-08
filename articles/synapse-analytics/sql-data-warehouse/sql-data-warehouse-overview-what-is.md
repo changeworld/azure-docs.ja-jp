@@ -2,20 +2,20 @@
 title: 専用 SQL プール (以前の SQL DW) とは
 description: Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) は、Azure Synapse Analytics のエンタープライズ データ ウェアハウジング機能です。
 services: synapse-analytics
-author: mlee3gsd
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
-ms.date: 11/04/2019
-ms.author: martinle
+ms.date: 01/22/2021
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4323f41cbc7440c79b2842bb3f128705a22d1dd4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685227"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435368"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) とは
 

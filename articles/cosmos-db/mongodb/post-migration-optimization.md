@@ -4,15 +4,15 @@ description: このドキュメントでは、MongoDB から Azure Cosmos DB の
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: d627fc4e35a4438926b14159fdfd424361601ad3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6dbcb5e65c99c2009602d660e3cd0cc9e22efdbf
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778901"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031569"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API 使用時の移行後の最適化手順
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -89,6 +89,9 @@ Azure Cosmos DB では、5 つの[整合性レベル](../consistency-levels.md)�
 
 ## <a name="next-steps"></a>次のステップ
 
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
 * [Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)
 * [Studio 3T を使用して Azure Cosmos DB アカウントに接続する](connect-using-mongochef.md)
 * [Azure Cosmos DB の MongoDB 用 API を使用して読み取りをグローバルに配布する方法](readpreference-global-distribution.md)

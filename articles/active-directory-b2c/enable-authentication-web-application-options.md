@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C を使用して Web アプリケーション オプションを有効にする
-description: いくつかの方法を使用して、Web アプリケーション オプションの使用を有効にします。
+title: Azure Active Directory B2C を使用して Web アプリ認証オプションを有効にする
+description: この記事では、Web アプリの認証オプションを有効にするいくつかの方法について説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,27 +11,33 @@ ms.date: 08/12/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 126bdd850d29d716433b7854c71d02269b95ec2e
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 50cdb5f171614c138427b358f2418b8b81751457
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067969"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220334"
 ---
-# <a name="configure-authentication-options-in-a-web-application-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Web アプリケーションで認証オプションを構成する 
+# <a name="enable-authentication-options-in-a-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して Web アプリの認証オプションを有効にする 
 
-この記事では、Web アプリケーションの Azure Active Directory B2C (Azure AD B2C) 認証エクスペリエンスをカスタマイズおよび拡張する方法について説明します。 開始する前に、[サンプル Web アプリケーションでの認証の構成](configure-authentication-sample-web-app.md)に関する記事、または[独自の Web アプリケーションでの認証の有効化](enable-authentication-web-application.md)に関する記事の内容を理解しておくことが重要です。
+この記事では、Web アプリケーションの Azure Active Directory B2C (Azure AD B2C) 認証エクスペリエンスの有効化、カスタマイズ、および拡張を行う方法について説明します。 
+
+開始する前に、次の記事をよく理解しておくことが重要です。 
+* [サンプル Web アプリで認証を構成する](configure-authentication-sample-web-app.md)
+* [独自の Web アプリで認証を有効にする](enable-authentication-web-application.md)。
 
 [!INCLUDE [active-directory-b2c-app-integration-custom-domain](../../includes/active-directory-b2c-app-integration-custom-domain.md)]
 
-認証 URL でカスタム ドメインとテナント ID を使用するには、[カスタム ドメインを有効にする](custom-domain.md)方法に関するページのガイダンスに従ってください。 プロジェクト ルート フォルダーで、`appsettings.json` ファイルを開きます。 このファイルには、Azure AD B2C ID プロバイダーに関する情報が含まれています。 
+認証 URL でカスタム ドメインとテナント ID を使用するには、[カスタム ドメインを有効にする](custom-domain.md)方法に関するページのガイダンスに従ってください。 プロジェクトのルート フォルダーで、*appsettings.json* ファイルを開きます。 このファイルには、Azure AD B2C ID プロバイダーに関する情報が含まれています。
+
+*appsettings.json* ファイルで、次の操作を行います。
 
 - `Instance` エントリをカスタム ドメインで更新します。
 - `Domain` エントリを自分の[テナント ID](tenant-management.md#get-your-tenant-id) で更新します。 詳しくは、「[テナント ID を使用する](custom-domain.md#optional-use-tenant-id)」をご覧ください。
 
 次の JSON は、変更前のアプリ設定を示しています。 
 
-```JSon
+```JSON
 "AzureAdB2C": {
   "Instance": "https://contoso.b2clogin.com",
   "Domain": "tenant-name.onmicrosoft.com",
@@ -41,7 +47,7 @@ ms.locfileid: "122067969"
 
 次の JSON は、変更後のアプリ設定を示しています。 
 
-```JSon
+```JSON
 "AzureAdB2C": {
   "Instance": "https://login.contoso.com",
   "Domain": "00000000-0000-0000-0000-000000000000",
@@ -53,7 +59,7 @@ ms.locfileid: "122067969"
 
 Microsoft ID プラットフォーム API の `AddMicrosoftIdentityWebAppAuthentication` メソッドを使用すると、開発者は高度な認証シナリオ用のコードを追加したり、OpenIdConnect イベントをサブスクライブしたりできます。 たとえば、OnRedirectToIdentityProvider をサブスクライブすると、アプリから Azure AD B2C に送信される認証要求をカスタマイズできます。
 
-高度なシナリオをサポートするには、`Startup.cs` を開き、`ConfigureServices` 関数で `AddMicrosoftIdentityWebAppAuthentication` を次のコード スニペットに置き換えます。 
+高度なシナリオをサポートするには、*Startup.cs* ファイルを開き、`ConfigureServices` 関数で `AddMicrosoftIdentityWebAppAuthentication` を次のコード スニペットに置き換えます。 
 
 ```csharp
 // Configuration to sign-in users with Azure AD B2C
@@ -69,7 +75,7 @@ services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
 });
 ```
 
-上記のコードでは、*OnRedirectToIdentityProviderFunc* メソッドへの参照を含む OnRedirectToIdentityProvider イベントを追加しています。 `Startup.cs` クラスに、次のコード スニペットを追加します。
+上のコードでは、`OnRedirectToIdentityProviderFunc` メソッドへの参照を含む OnRedirectToIdentityProvider イベントを追加しています。 `Startup.cs` クラスに、次のコード スニペットを追加します。
 
 ```csharp
 private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -81,14 +87,13 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 }
 ```
 
-コンテキスト パラメーターを使用して、コントローラーと *OnRedirectToIdentityProvider* 関数の間でパラメーターを渡すことができます。 
-
+コンテキスト パラメーターを使用して、コントローラーと `OnRedirectToIdentityProvider` 関数の間でパラメーターを渡すことができます。 
 
 [!INCLUDE [active-directory-b2c-app-integration-login-hint](../../includes/active-directory-b2c-app-integration-login-hint.md)]
 
 1. カスタム ポリシーを使用している場合は、[直接サインインの設定](direct-signin.md#prepopulate-the-sign-in-name)に関する記事の説明に従って、必要な入力要求を追加します。 
 1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
-1. *OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
+1. `OnRedirectToIdentityProvider` 関数に次のコード行を追加します。
     
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -104,7 +109,7 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 1. 外部 ID プロバイダーのドメイン名を確認します。 詳細については、「[サインインをソーシャル プロバイダーにリダイレクトする](direct-signin.md#redirect-sign-in-to-a-social-provider)」を参照してください。 
 1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
-1. *OnRedirectToIdentityProviderFunc* 関数で、*OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
+1. `OnRedirectToIdentityProviderFunc` 関数で、`OnRedirectToIdentityProvider` 関数に次のコード行を追加します。
     
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -121,7 +126,7 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 1. [言語のカスタマイズを構成します](language-customization.md)。
 1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
-1. *OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
+1. `OnRedirectToIdentityProvider` 関数に次のコード行を追加します。
 
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -137,7 +142,7 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 1. [ContentDefinitionParameters](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) 要素を構成します。
 1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
-1. *OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
+1. `OnRedirectToIdentityProvider` 関数に次のコード行を追加します。
     
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -154,7 +159,7 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 1. 「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。
 1. カスタム ポリシーで、[ID トークン ヒントの技術プロファイル](id-token-hint.md)を定義します。
-1. *OnRedirectToIdentityProvider* 関数に次のコード行を追加します。
+1. `OnRedirectToIdentityProvider` 関数に次のコード行を追加します。
     
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -169,13 +174,13 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
     
 ## <a name="account-controller"></a>アカウント コントローラー
 
-**サインイン**、**サインアップ**、または **サインアウト** アクションをカスタマイズする場合は、独自のコントローラーを作成することをお勧めします。 独自のコントローラーを使用すると、コントローラーと認証ライブラリの間でパラメーターを渡すことができます。 `AccountController` は `Microsoft.Identity.Web.UI` NuGet パッケージの一部であり、サインインおよびサインアウト アクションを処理します。 その実装は、[Microsoft Identity Web ライブラリ](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs)で確認できます。 
+*SignIn*、*SignUp*、または *SignOut* アクションをカスタマイズする場合は、独自のコントローラーを作成することをお勧めします。 独自のコントローラーを使用すると、コントローラーと認証ライブラリの間でパラメーターを渡すことができます。 `AccountController` は、サインインおよびサインアウト アクションを処理する `Microsoft.Identity.Web.UI` NuGet パッケージの一部です。 その実装は、[Microsoft Identity Web ライブラリ](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs)で確認できます。 
 
 ### <a name="add-the-account-controller"></a>アカウント コントローラーを追加する
 
-Visual Studio プロジェクトで、**Controllers** フォルダーを右クリックし、新しい **コントローラー** を追加します。 **[MVC コントローラー - 空]** を選択し、**MyAccountController.cs** という名前を指定します。
+Visual Studio プロジェクトで、*Controllers* フォルダーを右クリックし、新しい **コントローラー** を追加します。 **[MVC - Empty Controller]\(MVC - 空のコントローラー\)** を選択し、**MyAccountController.cs** という名前を指定します。
 
-次のコード スニペットは、**SignIn** アクションでのカスタム `MyAccountController` を示しています。
+次のコード スニペットは、*SignIn* アクションでのカスタム `MyAccountController` を示しています。
 
 ```csharp
 using System;
@@ -210,7 +215,7 @@ namespace mywebapp.Controllers
 }
 ```
 
-`_LoginPartial.cshtml` ビューで、コントローラーへのサインイン リンクを変更します
+*_LoginPartial.cshtml* ビューで、コントローラーへのサインイン リンクを変更します。
 
 ```html
 <form method="get" asp-area="MicrosoftIdentity" asp-controller="MyAccount" asp-action="SignIn">
@@ -240,7 +245,7 @@ public IActionResult SignUp([FromRoute] string scheme)
 }
 ```
 
-`_LoginPartial.cshtml` ビューで、サインアップやプロファイルの編集など、他のすべての認証リンクに対して `asp-controller` 値を `MyAccountController` に変更します。
+*_LoginPartial.cshtml* ビューで、サインアップやプロファイルの編集など、他のすべての認証リンクに対して `asp-controller` 値を `MyAccountController` に変更します。
 
 ### <a name="pass-custom-parameters"></a>カスタム パラメーターを渡す
 
@@ -258,7 +263,7 @@ public IActionResult SignIn([FromRoute] string scheme)
 }
 ```
 
-「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了します。 次に、`OnRedirectToIdentityProvider` メソッドで、カスタム パラメーターを読み取ります。
+「[高度なシナリオをサポートする](#support-advanced-scenarios)」の手順を完了してから、`OnRedirectToIdentityProvider` メソッドでカスタム パラメーターを読み取ります。
 
 ```csharp
 private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -345,9 +350,12 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 ## <a name="role-based-access-control"></a>ロール ベースのアクセス制御
 
-[ASP.NET Core での認可](/aspnet/core/security/authorization/introduction)では、[ロールベースの認可](/aspnet/core/security/authorization/roles)、[クレームベースの認可](/aspnet/core/security/authorization/claims)、または[ポリシーベースの認可](/aspnet/core/security/authorization/policies)を使用して、ユーザーが保護されたリソースへのアクセスを承認されているかどうかを確認できます。
+[ASP.NET Core での承認](/aspnet/core/security/authorization/introduction)では、次のいずれかの方法を使用して、保護されたリソースへのアクセスがユーザーに許可されているかどうかを確認できます。 
+* [ロール ベースの承認](/aspnet/core/security/authorization/roles) 
+* [Claims-Based Authorization](/aspnet/core/security/authorization/claims) 
+* [ポリシー ベースの承認](/aspnet/core/security/authorization/policies)
 
-*ConfigureServices* メソッドで、認可モデルを追加する *AddAuthorization* メソッドを追加します。 次の例では、`EmployeeOnly` という名前のポリシーを作成します。 このポリシーでは、クレームの `EmployeeNumber` が存在することを確認します。 クレームの値は、1、2、3、4、5 のいずれかの ID である必要があります。
+`ConfigureServices` メソッドで、承認モデルを追加する `AddAuthorization` メソッドを追加します。 次の例では、`EmployeeOnly` という名前のポリシーを作成します。 このポリシーでは、`EmployeeNumber` 要求が存在することを確認するためのチェックを実行します。 要求の値は、1、2、3、4、5 のいずれかの ID である必要があります。
 
 ```csharp
 services.AddAuthorization(options =>
@@ -357,9 +365,9 @@ services.AddAuthorization(options =>
     });
 ```
 
-ASP.NET Core での認可は、[AuthorizeAttribute](/aspnet/core/security/authorization/simple) とそのさまざまなパラメーターで制御されます。 最も基本的な形式では、コントローラー、アクション、または Razor ページに `[Authorize]` 属性を適用すると、そのコンポーネントの認証済みユーザーにアクセスが制限されます。
+ASP.NET Core での承認を制御するには、[AuthorizeAttribute](/aspnet/core/security/authorization/simple) とそのさまざまなパラメーターを使用します。 最も基本的な形式では、コントローラー、アクション、または Razor ページに `Authorize` 属性を適用すると、そのコンポーネントの認証済みユーザーにアクセスが制限されます。
 
-ポリシーは、ポリシー名と共に `[Authorize]` 属性を使用することでコントローラーに適用されます。 次のコードでは、`Claims` アクションへのアクセスを、`EmployeeOnly` ポリシーによって承認されたユーザーに制限します。
+コントローラーにポリシーを適用するには、`Authorize` 属性とポリシー名を使用します。 次のコードでは、`Claims` アクションへのアクセスが、`EmployeeOnly` ポリシーによって許可されたユーザーに制限されます。
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -369,6 +377,6 @@ public IActionResult Claims()
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- 詳細情報: [ASP.NET Core での認可の概要](/aspnet/core/security/authorization/introduction)
+- 承認の詳細については、「[ASP.NET Core での承認の概要](/aspnet/core/security/authorization/introduction)」を参照してください。

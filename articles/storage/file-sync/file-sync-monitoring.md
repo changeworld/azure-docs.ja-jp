@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cb1f793e9abad7c28b91da5c3028483637c53740
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 4f339427a7839e3b622b2d33bf3ef8bd137d39dc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722032"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258431"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 

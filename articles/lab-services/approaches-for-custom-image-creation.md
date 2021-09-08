@@ -3,12 +3,12 @@ title: Azure Lab Services - ラボ用のカスタム イメージを作成する
 description: ラボ用のカスタム イメージを作成する方法について説明します。
 ms.date: 07/27/2021
 ms.topic: article
-ms.openlocfilehash: 94a86ab6668300d736d17e52aaeaa0e615adf637
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 621456c910b5137ed14a77d8d2cfeb9664910fa9
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829192"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450647"
 ---
 # <a name="recommended-approaches-for-creating-custom-images"></a>カスタム イメージを作成するための推奨される方法
 この記事では、カスタム イメージを作成するための次の推奨される方法について説明します。
@@ -52,8 +52,9 @@ Azure VM からカスタム イメージを取り込む手順の概要を次に�
 
 1. Windows または Linux Marketplace イメージを使用して [Azure VM](https://azure.microsoft.com/services/virtual-machines/) を作成します。
 1. Azure VM に接続し、追加のソフトウェアをインストールします。 また、ラボに必要なその他のカスタマイズを行うこともできます。
-1. イメージのセットアップが完了したら、[VM のイメージを共有イメージ ギャラリーに保存](../virtual-machines/image-version-vm-powershell.md)します。 この手順の一環として、イメージの定義とバージョンも作成する必要があります。
+1. イメージのセットアップが完了したら、[VM のイメージを共有イメージ ギャラリーに保存](../virtual-machines/image-version.md)します。 この手順の一環として、イメージの定義とバージョンも作成する必要があります。
 1. カスタム イメージをギャラリーに保存した後は、イメージを使用して新しいラボを作成できます。 
+
 
 手順は、カスタム Windows または Linux イメージを作成するかどうかによって異なります。 詳細な手順については、次の記事を参照してください。
 

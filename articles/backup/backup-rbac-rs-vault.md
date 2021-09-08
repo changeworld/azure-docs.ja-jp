@@ -4,12 +4,12 @@ description: Azure ロールベースのアクセス制御を使用して、Reco
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdde385ca49a61a8fb2c2bba81311035dca3e324
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613444"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215191"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure ロール ベースのアクセス制御を使用して Azure Backup 復旧ポイントを管理する
 
@@ -86,10 +86,10 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | 管理操作 | 必要なロール | リソース |
 | --- | --- | --- |
 | Azure ファイル共有のバックアップの有効化 | Backup Contributor |Recovery Services コンテナー |
-| |ストレージ アカウント | 共同作成者ストレージ アカウント リソース |
+| | ストレージ アカウントのバックアップ共同作成者 | ストレージ アカウント リソース |
 | VM のオンデマンド バックアップ | Backup Operator | Recovery Services コンテナー |
 | ファイル共有の復元 | Backup Operator | Recovery Services コンテナー |
-| | Storage Account Contributor | 復元元と復元先のファイル共有が存在するストレージ アカウント リソース |
+| | ストレージ アカウントのバックアップ共同作成者 | 復元元と復元先のファイル共有が存在するストレージ アカウント リソース |
 | 個々のファイルの復元 | Backup Operator | Recovery Services コンテナー |
 | |Storage Account Contributor|復元元と復元先のファイル共有が存在するストレージ アカウント リソース |
 | 保護の停止 |Backup Contributor | Recovery Services コンテナー |

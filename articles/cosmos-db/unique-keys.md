@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 08/26/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 9eb2b916bfe6c73a1535afb077b04fbb081dd5f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 951f641c9bded27929a1308d7dfe826a797ae08f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685722"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037143"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB の一意キー制約
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,3 +59,6 @@ ms.locfileid: "98685722"
 
 * [論理パーティション](partitioning-overview.md)の詳細を確認する
 * コンテナーの作成時に[一意キーを定義する方法](how-to-define-unique-keys.md)を確認する
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU を使用した要求ユニットの見積り](convert-vcore-to-request-unit.md)に関するページを参照してください。 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積り](estimate-ru-with-capacity-planner.md)に関するページを参照してください

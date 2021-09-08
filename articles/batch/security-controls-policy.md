@@ -1,18 +1,18 @@
 ---
 title: Azure Batch 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Batch に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: JnHs
 ms.author: jenhayes
 ms.service: batch
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f0e747a4894c9ef812e449f6894c0001f070f6ba
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d5e6e1954ef4a5704fd96c85724ad338723eeecb
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102459"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470233"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-batch"></a>Azure Batch 用の Azure Policy 規制コンプライアンス コントロール
 

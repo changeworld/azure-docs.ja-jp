@@ -9,12 +9,12 @@ ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 442eef44f727ce7ef6059fa0bdfbf440c0345a09
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: f1eae19bda4fae0744483a647eed47104e366e52
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114727154"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867050"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -65,7 +65,7 @@ Azure portal を使用してストレージ アカウントを作成するには
 
 FileStorage ストレージ アカウントを作成するには、確実に **[パフォーマンス]** オプション ボタンを *[Premium]* に設定し、 **[Premium アカウントの種類]** ドロップダウン リストで **[ファイル共有]** を選択します。
 
-:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="[Premium] が選択された [パフォーマンス] オプション ボタンと、ファイル ストレージが選択されたアカウントの種類のスクリーンショット。":::
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="[Premium] が選択された [パフォーマンス] オプション ボタンと、FileStorage が選択されたアカウントの種類のスクリーンショット。":::
 
 その他の基本フィールドは、ストレージ アカウントの選択とは無関係です。
 - **ストレージ アカウント名**: 作成するストレージ アカウントリソースの名前。 この名前はグローバルに一意である必要がありますが、任意の名前を使用できます。 SMB 経由で Azure ファイル共有をマウントするときに、ストレージ アカウント名がサーバー名として使用されます。
@@ -180,7 +180,7 @@ az storage account create \
 1. **[概要]** を選択し、 **[最新の情報に更新]** を選択します。
 1. **[容量の共有]** を選択し、 **[100 TiB]** を選択して **[保存]** を選択します。
 
-    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="[ファイル共有] ブレードで [100 TiB] の共有が強調表示されている Azure ストレージ アカウントのスクリーンショット。":::
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="[ファイル共有] ブレードで [100 TiB] の共有が強調されているストレージ アカウントのスクリーンショット。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 既存のアカウントで大きなファイル共有を有効にするには、次のコマンドを使用します。 `<yourStorageAccountName>` と `<yourResourceGroup>` を実際の情報に置き換えます。
@@ -231,7 +231,7 @@ Standard ファイル共有は、Standard の層であるトランザクショ�
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) コマンドレットを使用して Azure ファイル共有を作成できます。 次の PowerShell コマンドは、前述の Azure PowerShell を使用したストレージ アカウントの作成セクションで定義されているように、変数 `$resourceGroupName` と `$storageAccountName` が設定されていることを前提としています。 
 
-次の例では、`-AccessTier` パラメーターを使用して、明示的な層でファイル共有を作成します。 そのためには、例に示されているように、プレビューの Az.Storage モジュールを使用する必要があります。 GA の Az.Storage モジュールを使用しているため、または、このコマンドを含めていないために、層が指定されていない場合、Standard ファイル共有の既定の層はトランザクション最適化です。
+次の例では、`-AccessTier` パラメーターを使用して、明示的な層でファイル共有を作成します。 層が指定されていない場合、Standard ファイル共有の既定の層はトランザクション最適化です。
 
 > [!Important]  
 > Premium ファイル共有の場合、`-QuotaGiB` パラメーターでは、ファイル共有のプロビジョニング済みのサイズが参照されます。 ファイル共有のプロビジョニング済みサイズは、使用量に関係なく、課金の対象となる容量です。 Standard ファイル共有は、プロビジョニング済みサイズではなく、使用量に基づいて課金されます。

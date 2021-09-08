@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 09e39f658d0504dc8539f24c79853e03c5555f1b
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 85293f72525426cecebc75495f87044c7546d092
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113231100"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471752"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -137,7 +137,7 @@ sudo systemctl edit iotedge
 
 ```ini
 [Service]
-Environment="https_proxy=<proxy URL>"
+Environment=https_proxy=<proxy URL>
 ```
 
 サービス マネージャーを更新して、IoT Edge 用の新しい構成を選択します。
@@ -173,7 +173,7 @@ sudo systemctl edit aziot-edged
 
 ```ini
 [Service]
-Environment="https_proxy=<proxy URL>"
+Environment=https_proxy=<proxy URL>
 ```
 
 バージョン 1.2 以降の IoT Edge では、IoT Hub または IoT Hub Device Provisioning Service でのデバイスのプロビジョニングを処理するために、IoT ID サービスが使用されます。 ターミナルでエディターを開き、IoT ID サービス デーモンを構成します。
@@ -186,7 +186,7 @@ sudo systemctl edit aziot-identityd
 
 ```ini
 [Service]
-Environment="https_proxy=<proxy URL>"
+Environment=https_proxy=<proxy URL>
 ```
 
 サービス マネージャーを更新して、新しい構成を選択します。

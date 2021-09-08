@@ -4,23 +4,33 @@ description: 変数を作成するときに、反復するための Bicep 変数
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 429a15c222e47bab29b314b0d11f7e077281b635
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 08/30/2021
+ms.openlocfilehash: bf182379c9cc10db11e451f908df552a16520b45
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635004"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225201"
 ---
 # <a name="variable-iteration-in-bicep"></a>Bicep での変数の反復処理
 
-この記事では、Bicep ファイルで 1 つの変数に対して複数の値を作成する方法について説明します。 `variables` セクションにループを追加し、デプロイ時に変数の項目数を動的に設定できます。 また、Bicep ファイルで構文を繰り返さないようにします。
+この記事では、Bicep ファイルで 1 つの変数に対して複数の値を作成する方法について説明します。 `variables` 宣言にループを追加し、変数の項目数を動的に設定できます。 これにより、Bicep ファイルで構文を繰り返さないようにします。
 
-[リソース](loop-resources.md)、[リソース内のプロパティ](loop-properties.md)、および[出力](loop-outputs.md)でもコピーを使用できます。
+[モジュール](loop-modules.md)、[リソース](loop-resources.md)、[リソース内のプロパティ](loop-properties.md)、[出力](loop-outputs.md)でもコピーを使用できます。
 
 ## <a name="syntax"></a>構文
 
 ループを使用すると、次の方法で複数の変数を宣言できます。
+
+- ループ インデックスの使用。
+
+  ```bicep
+  var <variable-name> = [for <index> in range(<start>, <stop>): {
+    <properties>
+  }]
+  ```
+
+  詳細については、「[ループ インデックス](#loop-index)」を参照してください。
 
 - 配列の反復処理。
 
@@ -31,7 +41,9 @@ ms.locfileid: "122635004"
 
   ```
 
-- 配列の要素の反復処理。
+  詳細については、[ループ配列](#loop-array)に関するページを参照してください。
+
+- 配列とインデックスの反復処理。
 
   ```bicep
   var <variable-name> = [for <item>, <index> in <collection>: {
@@ -39,19 +51,11 @@ ms.locfileid: "122635004"
   }]
   ```
 
-- ループ インデックスの使用。
-
-  ```bicep
-  var <variable-name> = [for <index> in range(<start>, <stop>): {
-    <properties>
-  }]
-  ```
-
 ## <a name="loop-limits"></a>ループの制限
 
-Bicep ファイルのループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。 Bicep ファイルをデプロイするには、最新バージョンの [Bicep ツール](install.md)をインストールします。
+Bicep ファイルのループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。 
 
-## <a name="variable-iteration"></a>変数の反復処理
+## <a name="loop-index"></a>ループ インデックス
 
 次の例では、文字列値の配列を作成する方法を示します。
 
@@ -121,23 +125,69 @@ output arrayResult array = objectArray
 ]
 ```
 
-## <a name="example-templates"></a>サンプル テンプレート
+## <a name="loop-array"></a>ループ配列
 
-次の例では、1 つの変数に対して複数の値を作成するための一般的なシナリオを示します。
+次の例では、パラメーターとして渡された配列に対してループ処理を行います。 パラメーターから、必要な形式のオブジェクトが変数によって構築されます。
 
-|Template  |説明  |
-|---------|---------|
-|[ループ変数](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopvariables.bicep) | 変数を反復する方法を示します。 |
-|[Multiple security rules](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/multiplesecurityrules.bicep) |ネットワーク セキュリティ グループに複数のセキュリティ規則をデプロイします。 セキュリティ規則はパラメーターから構築されます。 パラメーターについては、[複数の NSG パラメーター ファイル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/multiplesecurityrules.parameters.json)に関するページを参照してください。 |
+```bicep
+@description('An array that contains objects with properties for the security rules.')
+param securityRules array = [
+  {
+    name: 'RDPAllow'
+    description: 'allow RDP connections'
+    direction: 'Inbound'
+    priority: 100
+    sourceAddressPrefix: '*'
+    destinationAddressPrefix: '10.0.0.0/24'
+    sourcePortRange: '*'
+    destinationPortRange: '3389'
+    access: 'Allow'
+    protocol: 'Tcp'
+  }
+  {
+    name: 'HTTPAllow'
+    description: 'allow HTTP connections'
+    direction: 'Inbound'
+    priority: 200
+    sourceAddressPrefix: '*'
+    destinationAddressPrefix: '10.0.1.0/24'
+    sourcePortRange: '*'
+    destinationPortRange: '80'
+    access: 'Allow'
+    protocol: 'Tcp'
+  }
+]
+
+
+var securityRulesVar = [for rule in securityRules: {
+  name: rule.name
+  properties: {
+    description: rule.description
+    priority: rule.priority
+    protocol: rule.protocol
+    sourcePortRange: rule.sourcePortRange
+    destinationPortRange: rule.destinationPortRange
+    sourceAddressPrefix: rule.sourceAddressPrefix
+    destinationAddressPrefix: rule.destinationAddressPrefix
+    access: rule.access
+    direction: rule.direction
+  }
+}]
+
+resource netSG 'Microsoft.Network/networkSecurityGroups@2020-11-01' = {
+  name: 'NSG1'
+  location: resourceGroup().location
+  properties: {
+    securityRules: securityRulesVar
+  }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 
 - ループのその他の使用方法については、以下を参照してください。
-  - [Bicep ファイルでのリソースの反復処理](loop-resources.md)
-  - [Bicep ファイルでのプロパティの反復処理](loop-properties.md)
-  - [Bicep ファイルでの出力の反復処理](loop-outputs.md)
-- Bicep ファイルのセクションの詳細については、「[Bicep ファイルの構造と構文について](file.md)」を参照してください。
-- 複数のリソースをデプロイする方法については、「[Bicep モジュールの使用](modules.md)」を参照してください。
+  - [Bicep でのリソースの繰り返し](loop-resources.md)
+  - [Bicep でのモジュールの反復処理](loop-modules.md)
+  - [Bicep でのプロパティの繰り返し](loop-properties.md)
+  - [Bicep での出力の繰り返し](loop-outputs.md)
 - ループで作成されたリソースへの依存関係を設定する方法については、「[リソースの依存関係を設定する](./resource-declaration.md#set-resource-dependencies)」を参照してください。
-- PowerShell を使用してデプロイする方法については、「[Bicep と Azure PowerShell を使用してリソースをデプロイする](deploy-powershell.md)」を参照してください。
-- Azure CLI を使用してデプロイする方法については、「[Bicep と Azure CLI を使用してリソースをデプロイする](deploy-cli.md)」を参照してください。

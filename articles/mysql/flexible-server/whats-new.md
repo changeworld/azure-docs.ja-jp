@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: 231622c5333875d1051bbdd2c17951c994b6f4d0
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 74b81b095ef969715313c79c90821a8c8e8aaf1d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122270955"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098252"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) の新機能
 
@@ -46,6 +46,10 @@ Azure Database for MySQL - フレキシブル サーバーのこのリリース�
 
   サービスのポイントインタイム リストア エクスペリエンスにより、お客様は可用性ゾーンを構成できるようになりました。データベース サーバーとスタンバイ アプリケーションを同じゾーンに併置することで、待機時間が短縮され、お客様はディザスター リカバリーの状況や "ゾーンダウン" シナリオに対してより適切に準備できるようになりました。 [詳細については、こちらを参照してください](https://aka.ms/standby-selection)。
 
+- **プライベート プレビューで使用可能な validate_password と caching_sha2_password プラグイン**
+
+  フレキシブル サーバーで、プライベート プレビューでの validate_password と caching_sha2_password プラグインの有効化がサポートされるようになりました。 メールの問い合わせ先は AskAzureDBforMySQL@service.microsoft.com です
+
 - **4 つの追加の Azure リージョンで利用可能**
 
   Azure Database for MySQL - フレキシブル サーバーのパブリック プレビューが、次の Azure リージョンでご利用いただけるようになりました。[詳細](overview.md#azure-regions)。
@@ -61,6 +65,13 @@ Azure Database for MySQL - フレキシブル サーバーのこのリリース�
   - 次のリージョンでは、同一ゾーン高可用性サーバーを作成できません: インド中部、東アジア、韓国中部、南アフリカ北部、スイス北部。
   - まれなシナリオにおいて、HA フェールオーバー後に、プライマリ サーバーが read_only モードになります。 この問題を解決するには、サーバー パラメーターのブレードで「read_only」値を OFF に更新します。
   - [コンピューティングとストレージ] ブレードでコンピューティングのスケーリングが正常に完了した後、IOPS が既定の SKU にリセットされます。 この問題を回避するには、コンピューティングのデプロイとその後の IOPS のリセット後に、[コンピューティングとストレージ] ブレードで IOPS を再スケールして (以前設定されていた) 必要な値に戻します。
+  - 同じゾーンの HA を有効または展開しようとすると、次のリージョンでデプロイに失敗します 
+      - インド中部
+      - 東アジア
+      - 韓国中部
+      - 南アフリカ北部
+      - スイス北部
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -200,7 +211,7 @@ Azure Database for MySQL の使用に関する質問や提案がある場合は�
 
 - Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
-- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
+- フィードバックの提供や、新しい機能の要求は、AskAzureDBforMySQL@service.microsoft.com までメールでお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

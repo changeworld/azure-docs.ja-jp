@@ -8,12 +8,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 2a454f2f81e048511725e7a9f3269bdd9b5bcd49
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 046d94202769845f58c7f528bddb37e29e0c312a
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396636"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514427"
 ---
 # <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory"></a>Azure Data Factory でカスタム イベント トリガーを作成してパイプラインを実行する
 
@@ -121,7 +121,7 @@ Data Factory は、イベントが [Event Grid イベント スキーマ](../eve
 
 * カスタム イベント トリガーごとに、すべてのフィルターで 5 つの高度なフィルターと 25 のフィルター値
 * 文字列値あたり 512 文字
-* in 演算子および not in 演算子の値は 5 つ
+* in と not in 演算子の 5 つの値
 * `john.doe@contoso.com` のように、キーに `.` (ドット) 文字を含めることはできません。 現時点では、エスケープ文字を含むキーはサポートされていません。
 * 複数のフィルターで同じキーを使用できます。
 
@@ -135,7 +135,7 @@ Data Factory は、[Event Grid API](../event-grid/whats-new.md) の最新の _GA
 |---|----------------------------|---|---|---|
 | `scope` | イベント グリッド トピックの Azure Resource Manager リソース ID。 | String | Azure Resource Manager ID | はい |
 | `events` | このトリガーを起動するイベントの種類。 | 文字列の配列    |  | はい。少なくとも 1 つの値が必要です。 |
-| `subjectBeginsWith` | `subject` フィールドは、トリガーを起動するために指定されたパターンで始まる必要があります。 たとえば、*factories は、*factories* で始まるイベント サブジェクトに対してのみトリガーを発動させます。 | String   | | いいえ |
+| `subjectBeginsWith` | `subject` フィールドは、トリガーを起動するために指定されたパターンで始まる必要があります。 たとえば、_factories_ は、*factories* で始まるイベント サブジェクトに対してのみトリガーを発動させます。 | String   | | いいえ |
 | `subjectEndsWith` | `subject` フィールドは、トリガーを起動するために指定されたパターンで終わる必要があります。 | String   | | いいえ |
 | `advancedFilters` | それぞれフィルター条件を指定する JSON BLOB のリスト。 各 BLOB は `key`、`operatorType`、`values` を指定します。 | JSON BLOB のリスト | | いいえ |
 

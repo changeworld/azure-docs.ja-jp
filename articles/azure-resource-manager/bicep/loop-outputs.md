@@ -4,23 +4,33 @@ description: 反復するための Bicep 出力ループを使用して、デプ
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: cc931b7e0d65804892176a2965f87022a2becb7b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/30/2021
+ms.openlocfilehash: 67c4a99dbdb370202e4bbf080f32c626b71093b1
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026753"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123213825"
 ---
 # <a name="output-iteration-in-bicep"></a>Bicep での出力の反復処理
 
 この記事では、Bicep ファイルで 1 つの出力に対して複数の値を作成する方法について説明します。 ファイルの `output` セクションにループを追加し、デプロイ中に複数の項目を動的に返すことができます。
 
-[リソース](loop-resources.md)、[リソース内のプロパティ](loop-properties.md)、および[変数](loop-variables.md)でも、ループを使用できます。
+[モジュール](loop-modules.md)、[リソース](loop-resources.md)、[リソース内のプロパティ](loop-properties.md)、[変数](loop-variables.md)でも、ループを使用できます。
 
 ## <a name="syntax"></a>構文
 
-ループを使用すると、次の方法でデプロイ中に複数の項目を返すことができます。
+ループを使用すると、次の方法でデプロイ中に項目を返すことができます。
+
+- ループ インデックスの使用。
+
+  ```bicep
+  output <output-name> array = [for <index> in range(<start>, <stop>): {
+    <properties>
+  }]
+  ```
+
+  詳細については、「[ループ インデックス](#loop-index)」を参照してください。
 
 - 配列の反復処理。
 
@@ -31,7 +41,7 @@ ms.locfileid: "111026753"
 
   ```
 
-- 配列の要素の反復処理。
+- 配列とインデックスの反復処理。
 
   ```bicep
   output <output-name> array = [for <item>, <index> in <collection>: {
@@ -39,19 +49,13 @@ ms.locfileid: "111026753"
   }]
   ```
 
-- ループ インデックスの使用。
-
-  ```bicep
-  output <output-name> array = [for <index> in range(<start>, <stop>): {
-    <properties>
-  }]
-  ```
+  詳細については、「[ループ配列とインデックス](#loop-array-and-index)」を参照してください。
 
 ## <a name="loop-limits"></a>ループの制限
 
-Bicep ファイルのループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。 Bicep ファイルをデプロイするには、最新バージョンの [Bicep ツール](install.md)をインストールします。
+Bicep ファイルのループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。 
 
-## <a name="output-iteration"></a>出力の反復処理
+## <a name="loop-index"></a>ループ インデックス
 
 次の例では、可変数のストレージ アカウントが作成され、各ストレージ アカウントのエンドポイントが返されます。
 
@@ -61,7 +65,7 @@ param storageCount int = 2
 
 var baseNameVar = 'storage${uniqueString(resourceGroup().id)}'
 
-resource baseName 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in range(0, storageCount): {
+resource stg 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in range(0, storageCount): {
   name: '${i}${baseNameVar}'
   location: rgLocation
   sku: {
@@ -70,7 +74,7 @@ resource baseName 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in ran
   kind: 'Storage'
 }]
 
-output storageEndpoints array = [for i in range(0, storageCount): reference('${i}${baseNameVar}').primaryEndpoints.blob]
+output storageEndpoints array = [for i in range(0, storageCount): stg[i].properties.primaryEndpoints.blob]
 ```
 
 出力には、次の値を含む配列が返されます。
@@ -90,7 +94,7 @@ param storageCount int = 2
 
 var baseNameVar = 'storage${uniqueString(resourceGroup().id)}'
 
-resource baseName 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in range(0, storageCount): {
+resource stg 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in range(0, storageCount): {
   name: '${i}${baseNameVar}'
   location: rgLocation
   sku: {
@@ -100,9 +104,9 @@ resource baseName 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in ran
 }]
 
 output storageInfo array = [for i in range(0, storageCount): {
-  id: reference('${i}${baseNameVar}', '2021-02-01', 'Full').resourceId
-  blobEndpoint: reference('${i}${baseNameVar}').primaryEndpoints.blob
-  status: reference('${i}${baseNameVar}').statusOfPrimary
+  id: stg[i].id
+  blobEndpoint: stg[i].properties.primaryEndpoints.blob
+  status: stg[i].properties.statusOfPrimary
 }]
 ```
 
@@ -111,19 +115,21 @@ output storageInfo array = [for i in range(0, storageCount): {
 ```json
 [
   {
-    "id": "Microsoft.Storage/storageAccounts/0storagecfrbqnnmpeudi",
+    "id": "/subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.Storage/storageAccounts/0storagecfrbqnnmpeudi",
     "blobEndpoint": "https://0storagecfrbqnnmpeudi.blob.core.windows.net/",
     "status": "available"
   },
   {
-    "id": "Microsoft.Storage/storageAccounts/1storagecfrbqnnmpeudi",
+    "id": "/subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.Storage/storageAccounts/1storagecfrbqnnmpeudi",
     "blobEndpoint": "https://1storagecfrbqnnmpeudi.blob.core.windows.net/",
     "status": "available"
   }
 ]
 ```
 
-この例では、リソース モジュールまたはモジュール コレクションへの直接参照が出力ループでサポートされていないため、配列インデックスを使用します。
+## <a name="loop-array-and-index"></a>ループ配列とインデックス
+
+この例では、配列とインデックスの両方の要素を使用します。
 
 ```bicep
 param rgLocation string = resourceGroup().location
@@ -156,15 +162,15 @@ output stgOutput array = [for (name, i) in stgNames: {
 [
   {
     "name": "demostg1",
-    "resourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/demostg1"
+    "resourceId": "/subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.Storage/storageAccounts/demostg1"
   },
   {
     "name": "demostg2",
-    "resourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/demostg2"
+    "resourceId": "/subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.Storage/storageAccounts/demostg2"
   },
   {
     "name": "demostg3",
-    "resourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/demostg3"
+    "resourceId": "/subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.Storage/storageAccounts/demostg3"
   }
 ]
 ```
@@ -172,11 +178,9 @@ output stgOutput array = [for (name, i) in stgNames: {
 ## <a name="next-steps"></a>次のステップ
 
 - ループのその他の使用方法については、以下を参照してください。
-  - [Bicep ファイルでのリソースの反復処理](loop-resources.md)
-  - [Bicep ファイルでのプロパティの反復処理](loop-properties.md)
-  - [Bicep ファイルでの変数の反復処理](loop-variables.md)
-- Bicep ファイルのセクションの詳細については、「[Bicep ファイルの構造と構文について](file.md)」を参照してください。
-- 複数のリソースをデプロイする方法については、「[Bicep モジュールの使用](modules.md)」を参照してください。
+  - [Bicep でのリソースの繰り返し](loop-resources.md)
+  - [Bicep でのモジュールの反復処理](loop-modules.md)
+  - [Bicep でのプロパティの繰り返し](loop-properties.md)
+  - [Bicep での変数の繰り返し](loop-variables.md)
 - ループで作成されたリソースへの依存関係を設定する方法については、「[リソースの依存関係を設定する](./resource-declaration.md#set-resource-dependencies)」を参照してください。
-- PowerShell を使用してデプロイする方法については、「[Bicep と Azure PowerShell を使用してリソースをデプロイする](deploy-powershell.md)」を参照してください。
-- Azure CLI を使用してデプロイする方法については、「[Bicep と Azure CLI を使用してリソースをデプロイする](deploy-cli.md)」を参照してください。
+

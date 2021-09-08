@@ -1,19 +1,19 @@
 ---
-title: マスター VHD イメージを準備してカスタマイズする - Azure
-description: Azure Virtual Desktop のマスター イメージを準備、カスタマイズし、Azure にアップロードする方法。
+title: Azure Virtual Desktop の VHD イメージの準備とカスタマイズ - Azure
+description: Azure Virtual Desktop イメージを準備、カスタマイズし、Azure にアップロードする方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8e893a95337801db4ee35cfdc00e2d97f8d12db6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3153fed07575c0eeaf3e062e18e80f08e8269344
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114285842"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835225"
 ---
-# <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
+# <a name="prepare-and-customize-a-vhd-image-for-azure-virtual-desktop"></a>Azure Virtual Desktop の VHD イメージの準備とカスタマイズ
 
 この記事では、仮想マシン (VM) を作成してそこにソフトウェアをインストールする方法など、マスター仮想ハード ディスク (VHD) イメージを準備して Azure にアップロードする方法を説明します。 これらの手順は、組織の既存のプロセスで使用できる Azure Virtual Desktop 固有の構成に対するものです。
 

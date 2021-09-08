@@ -5,16 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 07/05/2021
 ms.author: mimart
-ms.openlocfilehash: f21c0a37d169885e60ae9dea34663dc0a86e161f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7196d4596a3e67f1482fe2955a933fbf9efc8d47
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723287"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227802"
 ---
 サインアウト フローには、次の手順が含まれます。
 
 1. アプリから、ユーザーがサインアウトします。
 1. アプリによってそのセッション オブジェクトがクリアされ、認証ライブラリによってそのトークン キャッシュがクリアされます。
-1. アプリによってユーザーが Azure AD B2C ログアウト エンドポイントに移動し、Azure AD B2C セッションが終了されます。
+1. アプリによってユーザーが Azure AD B2C サインアウト エンドポイントに移動し、Azure AD B2C セッションが終了されます。
 1. ユーザーが再びアプリにリダイレクトされます。

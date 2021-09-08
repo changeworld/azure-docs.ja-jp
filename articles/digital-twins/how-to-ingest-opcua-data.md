@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure OPC UA データを Azure Digital Twins に取り込む手順
 author: danhellem
 ms.author: dahellem
-ms.date: 5/20/2021
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b191bdb1303ae0210573d295ffb5b371cc81ddfb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b93e9a16e7ea083f5117ebff4883a50db28e134a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748605"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224595"
 ---
 # <a name="ingesting-opc-ua-data-with-azure-digital-twins"></a>Azure Digital Twins を使用した OPC UA データの取り込み
 
@@ -45,7 +45,7 @@ OPC UA サーバーのデータを Azure Digital Twins に送るには、異な�
 | --- | --- |
 | OPC UA サーバー | OPC UA データをシミュレートする [Prosys](https://www.prosysopc.com/products/opc-ua-simulation-server/) または [Kepware](https://www.kepware.com/en-us/products/#KEPServerEX) の OPC UA サーバー。 |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) | IoT Edge は、ローカルの Linux ゲートウェイ デバイスにインストールされる IoT Hub サービスです。 OPC Publisher モジュールを実行して IoT Hub にデータを送信するために必要です。 |
-| [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) | これは、Azure Industrial IoT チームによって構築された IoT Edge モジュールです。 このモジュールでは、OPC UA サーバーに接続し、ノード データを Azure IoT Hub に送信します。 |
+| [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) | このコンポーネントは、Azure Industrial IoT チームによって構築された IoT Edge モジュールです。 このモジュールでは、OPC UA サーバーに接続し、ノード データを Azure IoT Hub に送信します。 |
 | [Azure IoT Hub](../iot-hub/about-iot-hub.md) | OPC Publisher では、OPC UA テレメトリを Azure IoT Hub に送信します。 そこから、Azure 関数を使用してデータを処理し、Azure Digital Twins に取り込むことができます。 |
 | Azure Digital Twins | 現実世界のモノ、場所、ビジネス プロセス、人のデジタル表現を作成できるプラットフォーム。 |
 | [Azure 関数](../azure-functions/functions-overview.md) | カスタム Azure 関数を使用して、Azure IoT Hub 内の適切なツインへのテレメトリのフローと Azure Digital Twins のプロパティを処理します。 |
@@ -80,7 +80,7 @@ Prosys ソフトウェアには、シンプルな仮想リソースが必要で�
 
 :::image type="content" source="media/how-to-ingest-opcua-data/create-windows-virtual-machine-1.png" alt-text="Windows 仮想マシン設定の [基本] タブが表示された Azure portal のスクリーンショット。" lightbox="media/how-to-ingest-opcua-data/create-windows-virtual-machine-1.png":::
 
-VM には、インターネット経由で到達できる必要があります。 このチュートリアルでは、単純化するため、すべてのポートを開き、VM にパブリック IP アドレスを割り当てることができます。 これは、仮想マシン設定の **[ネットワーク]** タブで行います。
+VM には、インターネット経由で到達できる必要があります。 このチュートリアルでは、単純化するため、すべてのポートを開き、VM にパブリック IP アドレスを割り当てることができます。 仮想マシン設定の **[ネットワーク]** タブで、これを行うことができます。
 
 :::image type="content" source="media/how-to-ingest-opcua-data/create-windows-virtual-machine-2.png" alt-text="Windows 仮想マシン設定の [ネットワーク] タブが表示された Azure portal のスクリーンショット。":::
 
@@ -133,7 +133,7 @@ Azure IoT Hub インスタンスを作成した後、インスタンスの左側
 
 プロンプトに従って新しいデバイスを作成します。 
 
-デバイスが作成されたら、 **[プライマリ接続文字列]** または **[セカンダリ接続文字列]** のいずれかの値をコピーします。 これは、後でエッジ デバイスを設定するときに必要になります。
+デバイスが作成されたら、 **[プライマリ接続文字列]** または **[セカンダリ接続文字列]** のいずれかの値をコピーします。 この値は、後でエッジ デバイスを設定するときに必要になります。
 
 :::image type="content" source="media/how-to-ingest-opcua-data/iot-edge-2.png" alt-text="IoT Edge デバイスの接続文字列が表示された Azure portal のスクリーンショット。":::
 
@@ -209,7 +209,7 @@ admin@gateway:~$ sudo iotedge check
 
 約 15 秒後、ゲートウェイ デバイスで `iotedge list` コマンドを実行すると、IoT Edge デバイスで実行されているすべてのモジュールが一覧表示されます。 OPCPublisher モジュールが稼働していることがわかります。
 
-:::image type="content" source="media/how-to-ingest-opcua-data/iotedge-list.png" alt-text="iotedge list の結果を示すスクリーンショット。":::
+:::image type="content" source="media/how-to-ingest-opcua-data/iotedge-list.png" alt-text="IoT Edge の一覧の結果を示すスクリーンショット。":::
 
 最後に、`/iiotedge` ディレクトリに移動して *publishednodes.json* ファイルを作成します。 ファイル内の ID は、[前に OPC サーバーから収集した](#install-opc-ua-simulation-software) `NodeId` 値と一致する必要があります。 ファイルは、次のようになります。
 
@@ -250,9 +250,9 @@ admin@gateway:~$ sudo iotedge check
 sudo iotedge logs OPCPublisher -f
 ```
 
-このコマンドを実行すると、OPC Publisher のログが出力されます。 すべてが正しく構成され、実行されている場合は、次のような内容が表示されます。
+このコマンドを実行すると、OPC Publisher のログが出力されます。 すべてが正しく構成され、実行されている場合は、次のようなスクリーンショットが表示されます。
 
-:::image type="content" source="media/how-to-ingest-opcua-data/iotedge-logs.png" alt-text="ターミナルの iotedge ログを示すスクリーンショット。左側に診断情報フィールドの列があり、右側に値の列があります。":::
+:::image type="content" source="media/how-to-ingest-opcua-data/iotedge-logs.png" alt-text="ターミナルの IoT Edge ログを示すスクリーンショット。左側に診断情報フィールドの列があり、右側に値の列があります。":::
 
 これで、データが OPC UA サーバーから IoT Hub に送られているはずです。
 

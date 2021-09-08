@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e3710613b0a2622b20329ed383d5f818b01f6fee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 429702adaccf5731292192f1b3cb6a7d42859a00
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744639"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867581"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection の参照アーキテクチャ
 
@@ -90,7 +90,7 @@ AppGW/WAF を含む仮想ネットワークで DDoS Protection Standard が有�
 
 
 > [!NOTE]
-> パブリック IP を使用する仮想ネットワーク内での PowerApps 用 Azure App Service 環境または API 管理は、どちらもネイティブにはサポートされていません。
+> パブリック IP を使用する仮想ネットワーク内での Azure App Service Environment for Power Apps 環境または API 管理は、どちらもネイティブにはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

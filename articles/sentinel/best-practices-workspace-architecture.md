@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 7a477122e9a0642233a5bac7a1884818f216d2f3
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 085b9a187ce574c5138867f7a2ce929218717c37
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252325"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253825"
 ---
 # <a name="azure-sentinel-workspace-architecture-best-practices"></a>Azure Sentinel ワークスペース アーキテクチャのベスト プラクティス
 
@@ -25,6 +25,9 @@ Azure Sentinel ワークスペース デプロイを計画するときに、Log 
 - さまざまなシナリオのコストへの影響
 
 詳細については、「[Azure Sentinel ワークスペース アーキテクチャを設計する](design-your-workspace-architecture.md)」および一般的なシナリオの「[サンプル ワークスペースの設計](sample-workspace-designs.md)」、および「[デプロイ前のアクティビティと Azure Sentinel のデプロイの前提条件](prerequisites.md)」を参照してください。
+
+詳細については、「[Architecting SecOps for Success: Best Practices for Deploying Azure Sentinel](https://youtu.be/DyL9MEMhqmI)」という動画を参照してください。
+
 
 ## <a name="tenancy-considerations"></a>テナントに関する考慮事項
 
@@ -44,7 +47,7 @@ Azure Sentinel ワークスペース デプロイを計画するときに、Log 
 [Azure Lighthouse](../lighthouse/how-to/onboard-customer.md) を使用すると、別々のテナント内の複数の Azure Sentinel インスタンスを管理するのに役立ちます。
 
 > [!NOTE]
-> [パートナー データ コネクタ](partner-data-connectors.md)は通常、API またはエージェント コレクションに基づいているため、特定の Azure AD テナントには接続されません。
+> [パートナー データ コネクタ](data-connectors-reference.md)は通常、API またはエージェント コレクションに基づいているため、特定の Azure AD テナントには接続されません。
 >
 
 

@@ -5,12 +5,12 @@ ms.service: container-service
 ms.custom: subject-monitoring
 ms.date: 07/29/2021
 ms.topic: reference
-ms.openlocfilehash: 4dfbe6ba3e8bb64e2fdf41a06932f84fb1b7be94
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: d2c945d975b158131abb99b421622d5dd9d58477
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253563"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472418"
 ---
 # <a name="monitoring-aks-data-reference"></a>AKS データの監視に関するリファレンス
 
@@ -57,7 +57,7 @@ AKS の監視データの収集と分析の詳細については、[AKS の監�
 
 | カテゴリ                | 説明 |
 |:---|:---|
-| cluster-autoscale       | 予想できないことのある AKS クラスターのスケールアップまたはスケールダウンの理由を理解できます。 この情報は、クラスター内で興味深い事象が発生した可能性のある期間を関連付けるのにも役立ちます。 |
+| cluster-autoscaler       | 予想できないことのある AKS クラスターのスケールアップまたはスケールダウンの理由を理解できます。 この情報は、クラスター内で興味深い事象が発生した可能性のある期間を関連付けるのにも役立ちます。 |
 | guard                   | マネージド Azure Active Directory および Azure RBAC の監査。 マネージド Azure AD の場合、これにはトークン入力とユーザー情報出力が含まれます。Azure RBAC の場合は、アクセス レビューの入力と出力が含まれます。 |
 | kube-apiserver          | API サーバーからのログ。 |
 | kube-audit              | get、list、create、update、delete、patch、post を含む、各監査イベントの監査ログ データ。 |

@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 7/1/2021
 ms.author: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c04dffcad178694f4f2548f38aa4c1d512c6fe60
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 936eb725836b8191aa35045d37882c859c9c058a
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322989"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449173"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 共有イメージ ギャラリー内のイメージはスナップショットとして格納されるので、サーバー側暗号化によって自動的に暗号化されます。 サーバー側暗号化には、利用可能な最強のブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)が使用されます。 サーバー側暗号化は、FIPS 140-2 にも準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:Next Generation (暗号化 API: 次世代)](/windows/desktop/seccng/cng-portal)」を参照してください。
 
@@ -28,7 +30,7 @@ ms.locfileid: "122322989"
 
 この記事においては、イメージをレプリケートする各リージョンにディスク暗号化セットが既に用意されている必要があります。
 
-- カスタマー マネージド キーのみを使用する場合は、[Azure portal](./disks-enable-customer-managed-keys-portal.md) または [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation) を使用してサーバー側の暗号化でカスタマー マネージド キーを有効にする方法に関する記事を参照してください。
+- カスタマー マネージド キーのみを使用する場合は、[Azure portal](./disks-enable-customer-managed-keys-portal.md) または [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation) を使用してサーバー側の暗号化でカスタマー マネージド キーを有効にする方法に関する記事を参照してください。
 
 - (二重暗号化のために) プラットフォーム マネージドおよびユーザー マネージドの両方のキーを使用する場合は、[Azure portal](./disks-enable-double-encryption-at-rest-portal.md) または [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md) を使用して保存時の二重暗号化を有効にする方法に関する記事を参照してください。
 
@@ -98,7 +100,7 @@ New-AzGalleryImageVersion `
 
 ### <a name="create-a-vm"></a>VM の作成
 
-共有イメージ ギャラリーから仮想マシン (VM) を作成し、カスタマー マネージド キーを使用してそのディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version-powershell.md)または[特殊化](vm-specialized-image-version-powershell.md)された VM を作成する場合と同じです。 拡張パラメーター セットを使用し、`Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` を VM 構成に追加します。
+共有イメージ ギャラリーから仮想マシン (VM) を作成し、カスタマー マネージド キーを使用してそのディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version.md)または[特殊化](vm-specialized-image-version.md)された VM を作成する場合と同じです。 拡張パラメーター セットを使用し、`Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` を VM 構成に追加します。
 
 データ ディスクの場合は、[Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) を使用するときに `-DiskEncryptionSetId $setID` パラメーターを追加します。
 
@@ -142,7 +144,7 @@ az sig image-version create \
 
 ### <a name="create-the-vm"></a>VM の作成
 
-共有イメージ ギャラリーから VM を作成し、カスタマー マネージド キーを使用してディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version-cli.md)または[特殊化](vm-specialized-image-version-cli.md)された VM を作成する場合と同じです。 `--os-disk-encryption-set` パラメーターに暗号化セットの ID を指定して追加するだけです。 データ ディスクの場合は、そのデータ ディスクのディスク暗号化セットのスペース区切りリストを指定して `--data-disk-encryption-sets` を追加します。
+共有イメージ ギャラリーから VM を作成し、カスタマー マネージド キーを使用してディスクを暗号化することができます。 構文は、イメージから[一般化](vm-generalized-image-version.md)または[特殊化](vm-specialized-image-version.md)された VM を作成する場合と同じです。 `--os-disk-encryption-set` パラメーターに暗号化セットの ID を指定して追加するだけです。 データ ディスクの場合は、そのデータ ディスクのディスク暗号化セットのスペース区切りリストを指定して `--data-disk-encryption-sets` を追加します。
 
 
 ## <a name="portal"></a>ポータル

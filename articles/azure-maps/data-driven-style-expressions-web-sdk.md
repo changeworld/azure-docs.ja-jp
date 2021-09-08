@@ -1,20 +1,20 @@
 ---
 title: Azure Maps Web SDK でのデータ ドリブンのスタイルの式 | Microsoft Azure Maps
 description: データドリブンのスタイルの式について説明します。 Azure Maps Web SDK でこれらの式を使用し、マップ内のスタイルを調整する方法を確認してください。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 4/4/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 851f7865553d45d8d4c4d1f86171d79a89dd8996
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 7875184456d03e08abb6168793fc9021bd953a0d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091827"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438518"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 

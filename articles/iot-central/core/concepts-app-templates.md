@@ -3,16 +3,16 @@ title: Azure IoT Central のアプリケーション テンプレートとは | 
 description: Azure IoT Central のアプリケーション テンプレートを使用すると、IoT ソリューションの開発に着手することができます。
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 12/19/2020
+ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: f11a033fc1cd97786e540773f5b8e6ca0a08106b
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 26f9c41b23353343c5533c83db59320698824233
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182861"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470888"
 ---
 # <a name="what-are-application-templates"></a>アプリケーション テンプレートとは
 

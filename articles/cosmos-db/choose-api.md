@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/12/2021
-ms.openlocfilehash: 451e03c8557f224dce118866932307b32bfbfd56
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8e512c06901a533ef381bc389def45f07e8a028d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735440"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101999"
 ---
 # <a name="choose-an-api-in-azure-cosmos-db"></a>Azure Cosmos DB で API を選択する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB は、最新のアプリ開発に対応するフル マネージドの NoSQL データベースです。 Azure Cosmos DB では、管理、更新、パッチ適用が自動的に行われるため、ユーザー側でのデータベース管理が不要になります。 また、アプリケーションのニーズに対応して需要に容量を一致させるコスト効果の高いサーバーレスおよび自動スケーリング オプションにより、容量管理が処理されます。
 
@@ -47,6 +48,12 @@ MongoDB、Cassandra、Gremlin、Table 用の API では、オープンソース 
 
 Oracle、DynamoDB、HBase などの他のデータベースから移行する場合や、最新のテクノロジを使用してアプリをビルドする場合は、SQL API を使用することをお勧めします。 SQL API では分析がサポートされ、運用と分析のワークロード間でパフォーマンスを分離できます。
 
+### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>MongoDB 用 API への移行のための容量計画
+
+既存のデータベース クラスターから Azure Cosmos DB SQL API への移行のための容量計画を行おうとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のシャード化およびレプリケートされたデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページをご覧ください。 
+    * 現在のデータベース ワークロードの通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページをご覧ください
+
 ## <a name="api-for-mongodb"></a>MongoDB 用 API
 
 この API では、BSON 形式を使用してドキュメント構造にデータを格納します。 MongoDB ワイヤ プロトコルと互換性がありますが、ネイティブ MongoDB に関するコードは使用されません。 この API は、スケーリング、高可用性、geo レプリケーション、複数の書き込み場所、自動および透過的なシャード管理、運用および分析ストア間の透過的なレプリケーションなどの Azure Cosmos DB の機能の使用を損なうことなく、より広範な MongoDB エコシステムとスキルを使用する場合に最適です。
@@ -54,6 +61,12 @@ Oracle、DynamoDB、HBase などの他のデータベースから移行する場
 接続文字列を変更するだけで、MongoDB 用 API で既存の MongoDB アプリを使用できます。 mongodump と mongorestore などのネイティブ MongoDB ツールまたは Azure Database Migration ツールを使用して、既存のデータを移動できます。 MongoDB シェル、[MongoDB Compass](mongodb/connect-using-compass.md)、[Robo3T](mongodb/connect-using-robomongo.md) などのツールを使用すると、クエリを実行し、ネイティブ MongoDB の場合と同様にデータを操作できます。
 
 MongoDB 用 API は、MongoDB サーバー バージョン 4.0、3.6、3.2 と互換性があります。 最高のパフォーマンスと全機能のサポートが提供されるため、サーバー バージョン 4.0 をお勧めします。 詳細については、[MongoDB 用 API](mongodb/mongodb-introduction.md) に関する記事を参照してください。
+
+### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>MongoDB 用 API への移行のための容量計画
+
+既存のデータベース クラスターから Azure Cosmos DB MongoDB 用 API への移行のための容量計画を行おうとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページをご覧ください 
+    * 現在のデータベース ワークロードの通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](./mongodb/estimate-ru-capacity-planner.md)に関するページをご覧ください
 
 ## <a name="cassandra-api"></a>Cassandra API
 
@@ -80,3 +93,6 @@ Azure Table Storage 用に作成されたアプリケーションを Table API �
 * [Azure Cosmos DB Cassandra API を使ってみる](cassandra/manage-data-dotnet.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
+* Azure Cosmos DB への移行のための容量計画を行おうとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページをご覧ください 
+    * 現在のデータベース ワークロードの通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページをご覧ください

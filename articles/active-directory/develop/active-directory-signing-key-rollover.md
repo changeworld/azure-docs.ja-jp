@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 8/16/2021
+ms.date: 09/03/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7277f3751abd528862021a72e77a631f4bb0d5da
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f6073ac0da9163756be353c2ed695dfb20430160
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253075"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469394"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでの署名キーのロールオーバー
 この記事では、セキュリティ トークンに署名するために Microsoft ID プラットフォームで使用される公開キーに関して、知っておく必要があることについて説明します。 これらのキーは定期的にロールオーバーされ、緊急時にはすぐにロールオーバーされる可能性があることにご注意ください。 Microsoft ID プラットフォームを使用するすべてのアプリケーションは、キーのロールオーバー プロセスをプログラムで処理できる必要があります。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
@@ -44,7 +44,6 @@ OpenID Connect Discovery ドキュメントとフェデレーション メタデ
 * [Visual Studio 2013 を使用して作成された、リソースを保護する Web アプリケーション](#vs2013)
 * Visual Studio 2013 を使用して作成された、リソースを保護する Web API
 * [Visual Studio 2012 を使用して作成された、リソースを保護する Web アプリケーション](#vs2012)
-* [Visual Studio 2010/2008 または Windows Identity Foundation を使用して作成された、リソースを保護する Web アプリケーション](#vs2010)
 * [その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された、リソースを保護する Web アプリケーション/API](#other)
 
 このガイダンスは、次のアプリケーションには適用 **されません** 。
@@ -287,20 +286,6 @@ Microsoft から提供されたコード サンプルまたはチュートリア
    ```
 2. **\<add thumbprint="">** 設定で、どれか 1 文字を別の文字に置き換えて拇印の値を変更します。 **Web.config** ファイルを保存します。
 3. アプリケーションをビルドし、実行します。 サインイン プロセスを完了できる場合、アプリケーションではディレクトリのフェデレーション メタデータ ドキュメントから必要な情報をダウンロードすることによってキーが正しく更新されています。 サインインで問題が発生する場合は、[Microsoft ID プラットフォームを使用した Web アプリケーションへのサインオンの追加](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)に関する記事を読むか、次のコード サンプルをダウンロードして調べることによって、アプリケーションの変更が正しいことを確認してください: [Multi-Tenant Cloud Application for Azure Active Directory (Azure Active Directory 向けのマルチテナント クラウド アプリケーション)](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)。
-
-### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Visual Studio 2008/2010 および .NET 3.5 用 Windows Identity Foundation (WIF) v1.0 で作成された、リソースを保護する Web アプリケーション
-WIF v1.0 でアプリケーションを作成した場合、新しいキーを使用するようにアプリケーションの構成を自動的に更新するメカニズムは用意されていません。
-
-* "*最も簡単な方法*" は、WIF SDK に含まれている FedUtil ツールを使用することです。このツールでは、最新のメタデータ ドキュメントを取得し、構成を更新できます。
-* System 名前空間に最新バージョンの WIF が含まれている .NET 4.5 にアプリケーションを更新する。 その後、 [発行者名レジストリの検証 (VINR)](/previous-versions/dotnet/framework/windows-identity-foundation/validating-issuer-name-registry) を使用して、アプリケーションの構成の自動更新を実行できます。
-* このガイダンスの末尾にある手順に従って、手動ロールオーバーを実行します。
-
-FedUtil を使用して構成を更新する手順は、次のようになります。
-
-1. Visual Studio 2008 または 2010 をデプロイしてあるマシンに WIF v1.0 SDK がインストールされていることを確認します。 インストールされていない場合は、[ここからダウンロード](https://www.microsoft.com/download/details.aspx?id=17331) できます。
-2. Visual Studio でソリューションを開き、該当するプロジェクトを右クリックして、 **[Update federation metadata (フェデレーション メタデータの更新)]** を選択します。 このオプションが表示されない場合は、FedUtil と WIF v1.0 SDK の少なくともどちらかがインストールされていません。
-3. プロンプトで **[更新]** を選択してフェデレーション メタデータの更新を開始します。 アプリケーションがホストされているサーバー環境にアクセスできる場合は、FedUtil の [メタデータの自動更新スケジューラ](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))を使用することもできます。
-4. **[完了]** をクリックして更新プロセスを完了します。
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された、リソースを保護する Web アプリケーション/API
 その他何らかのライブラリを使用している場合またはサポートされているプロトコルを手動で実装した場合、OpenID Connect Discovery ドキュメントまたはフェデレーション メタデータ ドキュメントから確実にキーが取得されるようそのライブラリまたは実装内容を再確認する必要があります。 この点はたとえば、自分が記述したコードやライブラリのコードから、OpenID のディスカバリー ドキュメントまたはフェデレーション メタデータ ドキュメントの呼び出しを検索することによって確認できます。

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: cdbfd69da09bb3f55f0cdf87bb545e2c6bb40a79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dfc0601dddddd89559d2a7bb28d6f3d86dcdf40c
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779054"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272369"
 ---
 # <a name="configure-your-private-link"></a>プライベート リンクを構成する
 プライベート リンクを構成するには、いくつかの手順を実行する必要があります。 
@@ -20,9 +20,10 @@ ms.locfileid: "121779054"
 
 この記事では、Azure portal でそれを行う方法を説明し、プロセスを自動化するための Azure Resource Manager (ARM) テンプレートの例を示します。 
 
-## <a name="create-a-private-link-connection"></a>プライベート リンク接続を作成する
+## <a name="create-a-private-link-connection-through-the-azure-portal"></a>Azure portal を使用して Private Link 接続を作成する
+このセクションでは、Azure portal を介してプライベート リンクを設定するプロセスを、ステップごとに確認します。 コマンド ラインまたは Azure Resource Manager テンプレート (ARM テンプレート) を使用して Private Link を作成および管理する方法については、「[API とコマンド ラインの使用](#use-apis-and-command-line)」を参照してください。
 
-まず、Azure Monitor Private Link Scope リソースを作成します。
+### <a name="create-an-azure-monitor-private-link-scope"></a>Azure Monitor Private Link スコープを作成する
 
 1. Azure portal で **[リソースの作成]** に移動して、「**Azure Monitor Private Link Scope**」を検索します。
 
@@ -94,7 +95,7 @@ Azure Monitor リソース (Log Analytics ワークスペースと Application I
 ## <a name="configure-access-to-your-resources"></a>リソースへのアクセスを構成する
 ここまでは、ネットワークの構成について説明しましたが、監視対象リソース (Log Analytics ワークスペースと Application Insights コンポーネント) へのネットワーク アクセスを構成する方法についても検討する必要があります。
 
-Azure portal に移動します。 リソースのメニューの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このページで、プライベート リンクを介してリソースに接続できるネットワークと、他のネットワークがそれに接続できるかどうかの両方を制御します。
+Azure Portal にアクセスします。 リソースのメニューの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このページで、プライベート リンクを介してリソースに接続できるネットワークと、他のネットワークがそれに接続できるかどうかの両方を制御します。
 
 
 > [!NOTE]
@@ -115,81 +116,51 @@ Azure portal に移動します。 リソースのメニューの左側に、 **
 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープの外側のクライアント (コンピューター、SDK など) は、リソースのデータのクエリを実行できません。 このデータには、ログ、メトリック、ライブ メトリック ストリームへのアクセスと、ブック、ダッシュボード、クエリ API ベースのクライアント エクスペリエンス、Azure portal の分析情報などの上に構築されたエクスペリエンスが含まれます。 Azure portal の外部で実行され、Log Analytics データにクエリを発行するエクスペリエンスも、プライベート リンク VNET 内で実行する必要があります。
 
 
-### <a name="exceptions"></a>例外
-
-#### <a name="diagnostic-logs"></a>診断ログ
-[[診断設定]](../essentials/diagnostic-settings.md) を使用してワークスペースにアップロードされたログとメトリックは、セキュリティで保護されたプライベート Microsoft チャネルを経由し、これらの設定によって制御されることはありません。
-
-#### <a name="azure-resource-manager"></a>Azure Resource Manager
-前に説明したようなアクセスの制限は、リソースのデータに適用されます。 ただし、これらのアクセス設定をオンまたはオフにするなどの構成の変更は、Azure Resource Manager で管理されます。 これらの設定を制御するには、適切なロール、アクセス許可、ネットワーク制御、監査を使用して、リソースへのアクセスを制限する必要があります。 詳細については、[Azure Monitor のロール、アクセス許可、およびセキュリティ](../roles-permissions-security.md)に関するページを参照してください
-
-また、特定のエクスペリエンス (LogicApp コネクタ、Update Management ソリューション、ソリューション ダッシュボードが表示されるポータルの [ワークスペースの概要] ブレードなど) では、Azure Resource Manager を通じてデータのクエリが実行されるため、プライベート リンクの設定が Resource Manager にも適用されない限り、データをクエリできません。
-
-
-## <a name="review-and-validate-your-private-link-setup"></a>自分の Private Link セットアップを確認および検証する
-
-### <a name="reviewing-your-endpoints-dns-settings"></a>エンドポイントの DNS 設定の確認
-作成したプライベート エンドポイントには今、次の 5 つの DNS ゾーンが構成されているはずです。
-
-* privatelink-monitor-azure-com
-* privatelink-oms-opinsights-azure-com
-* privatelink-ods-opinsights-azure-com
-* privatelink-agentsvc-azure-automation-net
-* privatelink-blob-core-windows-net
-
-> [!NOTE]
-> これらのゾーンのそれぞれで、特定の Azure Monitor エンドポイントが VNet の IP プールからのプライベート IP にマップされます。 以下の画像に示されている IP アドレスは単なる例です。 実際の構成では、代わりに、独自のネットワークからのプライベート IP が表示されるはずです。
-
-#### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-azure-com
-このゾーンでカバーされるのは、Azure Monitor によって使用されるグローバル エンドポイントです。つまり、これらのエンドポイントによって、すべてのリソース (特定のものではなく) を考慮して要求が処理されます。 このゾーンには、次のようにマップされたエンドポイントが必要です。
-* `in.ai` - Application Insights インジェスト エンドポイント (グローバルおよびリージョン両方のエントリ)
-* `api` - Application Insights および Log Analytics API エンドポイント
-* `live` - Application Insights ライブ メトリック エンドポイント
-* `profiler` - Application Insights プロファイラー エンドポイント
-* `snapshot` - Application Insights スナップショット エンドポイント[![プライベート DNS ゾーン monitor-azure-com のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-oms-opinsights-azure-com
-このゾーンでカバーされるのは、OMS エンドポイントへのワークスペース固有のマッピングです。 このプライベート エンドポイントに接続されている AMPLS にリンクされた各ワークスペースのエントリが表示されます。
-[![プライベート DNS ゾーン oms-opinsights-azure-com のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ods-opinsights-azure-com
-このゾーンでカバーされるのは、ODS エンドポイント (Log Analytics のインジェスト エンドポイント) へのワークスペース固有のマッピングです。 このプライベート エンドポイントに接続されている AMPLS にリンクされた各ワークスペースのエントリが表示されます。
-[![プライベート DNS ゾーン ods-opinsights-azure-com のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-azure-automation-net
-このゾーンでカバーされるのは、エージェント サービス オートメーション エンドポイントへのワークスペース固有のマッピングです。 このプライベート エンドポイントに接続されている AMPLS にリンクされた各ワークスペースのエントリが表示されます。
-[![プライベート DNS ゾーン エージェント svc-azure-automation-net。](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
-
-#### <a name="privatelink-blob-core-windows-net"></a>privatelink-blob-core-windows-net
-このゾーンには、グローバル エージェントのソリューション パック ストレージ アカウントへの接続性が構成されます。 これにより、エージェントは、新規または更新されたソリューション パック (管理パックとも呼ばれます) をダウンロードできます。 使用するワークスペースの数に関係なく、Log Analytics エージェントを処理するのに必要なエントリは 1 つだけです。
-[![プライベート DNS ゾーン blob-core-windows-net のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
-> [!NOTE]
-> このエントリは、2021 年 4 月 19 日以降 (または、Azure ソブリン クラウドでは、2021 年 6 月から) 作成された Private Link セットアップにのみ追加されます。
-
-
-### <a name="validating-you-are-communicating-over-a-private-link"></a>プライベート リンクを介して通信が行われていることの検証
-* 自分の要求がプライベート エンドポイントを介して送信されたことを検証するために、ネットワーク追跡ツール (またはご利用のブラウザー) を使用してそれらを確認できます。 たとえば、ご利用のワークスペースまたはアプリケーションに対してクエリを試みる場合は、API エンドポイントにマップされたプライベート IP に要求が送信されることを確認します。この例では、*172.17.0.9* です。
-
-    注: ブラウザーによっては、他の DNS 設定が使用されます (「[ブラウザーの DNS 設定](./private-link-design.md#browser-dns-settings)」を参照してください)。 目的の DNS 設定が適用されていることを確認します。
-
-* (AMPLS 経由で接続されていない) パブリック ネットワークからの要求がワークスペースまたはコンポーネントによって受信されていないことを確認するには、「[リソースへのアクセスを構成する](#configure-access-to-your-resources)」で説明されているように、リソースのパブリック インジェストとクエリ フラグを *[いいえ]* に設定します。
-
-* ご利用の保護されたネットワーク上のクライアントから、`nslookup` を、ご利用の DNS ゾーンに一覧表示されている任意のエンドポイントに対して使用します。 それは、既定で使用されるパブリック IP ではなく、マップされたプライベート IP に、DNS サーバーによって解決される必要があります。
-
-
 ## <a name="use-apis-and-command-line"></a>API とコマンド ラインの使用
 
 前に説明したプロセスは、Azure Resource Manager テンプレート、REST、コマンド ライン インターフェイスを使用して自動化できます。
 
+### <a name="create-and-manage-azure-monitor-private-link-scopes-ampls"></a>Azure Monitor プライベート リンク スコープ (AMPLS) を作成および管理する
 プライベート リンク スコープを作成して管理するには、[REST API](/rest/api/monitor/privatelinkscopes(preview)/private%20link%20scoped%20resources%20(preview)) または [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope) を使用します。
 
-ワークスペースまたはコンポーネントでネットワーク アクセス フラグを管理するには、[Log Analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace)または [Application Insights コンポーネント](/cli/azure/ext/application-insights/monitor/app-insights/component)でフラグ `[--ingestion-access {Disabled, Enabled}]` と `[--query-access {Disabled, Enabled}]` を使用します。
+#### <a name="create-ampls-with-open-access-modes---cli-example"></a>オープン アクセス モードで AMPLS を作成する - CLI の例
+次の CLI コマンドを実行すると、クエリとインジェストのアクセス モードの両方が Open に設定された、"my-scope" という名前の新しい AMPLS リソースが作成されます。
+```
+az resource create -g "my-resource-group" --name "my-scope" --api-version "2021-07-01-preview" --resource-type Microsoft.Insights/privateLinkScopes --properties "{\"accessModeSettings\":{\"queryAccessMode\":\"Open\", \"ingestionAccessMode\":\"Open\"}}"
+```
 
-### <a name="example-azure-resource-manager-template-arm-template"></a>Azure Resource Manager テンプレートの例 (ARM テンプレート)
+#### <a name="create-ampls-with-mixed-access-modes---powershell-example"></a>混合アクセス モードで AMPLS を作成する - PowerShell の例
+次の PowerShell スクリプトを実行すると、クエリ アクセス モードが Open で、インジェスト アクセス モードが PrivateOnly に設定されている (つまり、AMPLS 内のリソースへのインジェストのみを許可する)、"my-scope" という名前の新しい AMPLS リソースが作成されます。
+
+```
+# scope details
+$scopeSubscriptionId = "ab1800bd-ceac-48cd-...-..."
+$scopeResourceGroup = "my-resource-group"
+$scopeName = "my-scope"
+$scopeProperties = @{
+    accessModeSettings = @{
+        queryAccessMode     = "Open"; 
+        ingestionAccessMode = "PrivateOnly"
+    } 
+}
+
+# login
+Connect-AzAccount
+
+# select subscription
+Select-AzSubscription -SubscriptionId $scopeSubscriptionId
+
+# create private link scope resource
+$scope = New-AzResource -Location "Global" -Properties $scopeProperties -ResourceName $scopeName -ResourceType "Microsoft.Insights/privateLinkScopes" -ResourceGroupName $scopeResourceGroup -ApiVersion "2021-07-01-preview" -Force
+```
+
+#### <a name="create-ampls---azure-resource-manager-template-arm-template"></a>AMPLS の作成 - Azure Resource Manager テンプレート (ARM テンプレート)
 次の Azure Resource Manager テンプレートでは、以下のものが作成されます。
 * "my-scope" という名前のプライベート リンク スコープ (AMPLS)
 * "my-workspace" という名前の Log Analytics ワークスペース
 * "my-scope" AMPLS にスコープ付きリソースを追加します ("my-workspace-connection" という名前)
+> [!NOTE]
+> 次の ARM テンプレートでは、AMPLS アクセス モードを設定することができない、古いバージョンの API が使用されています。 次のテンプレートを使用した場合、結果の AMPLS は QueryAccessMode="Open" と IngestionAccessMode="PrivateOnly" に設定されています。これは、AMPLS の内外のリソース上でのクエリの実行は許可される一方で、インジェストは、Private Link リソースのみに到達するよう制限されることを意味します。
 
 ```
 {
@@ -242,6 +213,85 @@ Azure portal に移動します。 リソースのメニューの左側に、 **
     ]
 }
 ```
+
+### <a name="set-ampls-access-flags---powershell-example"></a>AMPLS のアクセス フラグの設定 - PowerShell の例
+AMPLS でアクセス モード フラグを設定するには、次の PowerShell スクリプトを使用できます。 次のスクリプトを実行すると、フラグが Open に設定されます。 プライベート専用モードを使用するには、値 "PrivateOnly" を使用します。
+
+```
+# scope details
+$scopeSubscriptionId = "ab1800bd-ceac-48cd-...-..."
+$scopeResourceGroup = "my-resource-group-name"
+$scopeName = "my-scope"
+
+# login
+Connect-AzAccount
+
+# select subscription
+Select-AzSubscription -SubscriptionId $scopeSubscriptionId
+
+# get private link scope resource
+$scope = Get-AzResource -ResourceType Microsoft.Insights/privateLinkScopes -ResourceGroupName $scopeResourceGroup -ResourceName $scopeName -ApiVersion "2021-07-01-preview"
+
+# set access mode settings
+$scope.Properties.AccessModeSettings.QueryAccessMode = "Open";
+$scope.Properties.AccessModeSettings.IngestionAccessMode = "Open";
+$scope | Set-AzResource -Force
+```
+
+### <a name="set-resource-access-flags"></a>リソース アクセス フラグを設定する
+ワークスペースまたはコンポーネント アクセス フラグを管理するには、[Log Analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace)または [Application Insights コンポーネント](/cli/azure/ext/application-insights/monitor/app-insights/component)でフラグ `[--ingestion-access {Disabled, Enabled}]` と `[--query-access {Disabled, Enabled}]` を使用します。
+
+
+## <a name="review-and-validate-your-private-link-setup"></a>自分の Private Link セットアップを確認および検証する
+
+### <a name="reviewing-your-endpoints-dns-settings"></a>エンドポイントの DNS 設定の確認
+作成したプライベート エンドポイントには今、次の 5 つの DNS ゾーンが構成されているはずです。
+
+* privatelink-monitor-azure-com
+* privatelink-oms-opinsights-azure-com
+* privatelink-ods-opinsights-azure-com
+* privatelink-agentsvc-azure-automation-net
+* privatelink-blob-core-windows-net
+
+> [!NOTE]
+> これらのゾーンのそれぞれで、特定の Azure Monitor エンドポイントが VNet の IP プールからのプライベート IP にマップされます。 以下の画像に示されている IP アドレスは単なる例です。 実際の構成では、代わりに、独自のネットワークからのプライベート IP が表示されるはずです。
+
+#### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-azure-com
+このゾーンでカバーされるのは、Azure Monitor によって使用されるグローバル エンドポイントです。つまり、これらのエンドポイントによって、すべてのリソース (特定のものではなく) を考慮して要求が処理されます。 このゾーンには、次のようにマップされたエンドポイントが必要です。
+* `in.ai` - Application Insights インジェスト エンドポイント (グローバルおよびリージョン両方のエントリ)
+* `api` - Application Insights および Log Analytics API エンドポイント
+* `live` - Application Insights ライブ メトリック エンドポイント
+* `profiler` - Application Insights プロファイラー エンドポイント
+* `snapshot` - Application Insights スナップショット エンドポイント[![プライベート DNS ゾーン monitor-azure-com のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-oms-opinsights-azure-com
+このゾーンでカバーされるのは、OMS エンドポイントへのワークスペース固有のマッピングです。 このプライベート エンドポイントに接続されている AMPLS にリンクされた各ワークスペースのエントリが表示されます。
+[![プライベート DNS ゾーン oms-opinsights-azure-com のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ods-opinsights-azure-com
+このゾーンでカバーされるのは、ODS エンドポイント (Log Analytics のインジェスト エンドポイント) へのワークスペース固有のマッピングです。 このプライベート エンドポイントに接続されている AMPLS にリンクされた各ワークスペースのエントリが表示されます。
+[![プライベート DNS ゾーン ods-opinsights-azure-com のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-azure-automation-net
+このゾーンでカバーされるのは、エージェント サービス オートメーション エンドポイントへのワークスペース固有のマッピングです。 このプライベート エンドポイントに接続されている AMPLS にリンクされた各ワークスペースのエントリが表示されます。
+[![プライベート DNS ゾーン エージェント svc-azure-automation-net。](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
+
+#### <a name="privatelink-blob-core-windows-net"></a>privatelink-blob-core-windows-net
+このゾーンには、グローバル エージェントのソリューション パック ストレージ アカウントへの接続性が構成されます。 これにより、エージェントは、新規または更新されたソリューション パック (管理パックとも呼ばれます) をダウンロードできます。 使用するワークスペースの数に関係なく、Log Analytics エージェントを処理するのに必要なエントリは 1 つだけです。
+[![プライベート DNS ゾーン blob-core-windows-net のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
+> [!NOTE]
+> このエントリは、2021 年 4 月 19 日以降 (または、Azure ソブリン クラウドでは、2021 年 6 月から) 作成された Private Link セットアップにのみ追加されます。
+
+
+### <a name="validating-you-are-communicating-over-a-private-link"></a>プライベート リンクを介して通信が行われていることの検証
+* 自分の要求がプライベート エンドポイントを介して送信されたことを検証するために、ネットワーク追跡ツール (またはご利用のブラウザー) を使用してそれらを確認できます。 たとえば、ご利用のワークスペースまたはアプリケーションに対してクエリを試みる場合は、API エンドポイントにマップされたプライベート IP に要求が送信されることを確認します。この例では、*172.17.0.9* です。
+
+    注: ブラウザーによっては、他の DNS 設定が使用されます (「[ブラウザーの DNS 設定](./private-link-design.md#browser-dns-settings)」を参照してください)。 目的の DNS 設定が適用されていることを確認します。
+
+* (AMPLS 経由で接続されていない) パブリック ネットワークからの要求がワークスペースまたはコンポーネントによって受信されていないことを確認するには、「[リソースへのアクセスを構成する](#configure-access-to-your-resources)」で説明されているように、リソースのパブリック インジェストとクエリ フラグを *[いいえ]* に設定します。
+
+* ご利用の保護されたネットワーク上のクライアントから、`nslookup` を、ご利用の DNS ゾーンに一覧表示されている任意のエンドポイントに対して使用します。 それは、既定で使用されるパブリック IP ではなく、マップされたプライベート IP に、DNS サーバーによって解決される必要があります。
+
 
 ## <a name="next-steps"></a>次のステップ
 

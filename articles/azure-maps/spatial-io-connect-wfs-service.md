@@ -6,14 +6,13 @@ ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: f50685a2e25d33f7caa614480817ea0040191cf8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c870767c63c265c13e18f527d20954f8e72abae5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747707"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437708"
 ---
 # <a name="connect-to-a-wfs-service"></a>WFS サービスへの接続
 
@@ -40,7 +39,7 @@ Web Feature Service (WFS) とは空間データに対してクエリを実行す
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Simple WFS example (単純な WFS の例)' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>単純な WFS の例</a>」を参照してください。
+<iframe height='700' scrolling='no' title='Simple WFS example (単純な WFS の例)' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>単純な WFS の例</a>」を参照してください。
 </iframe>
 
 ## <a name="supported-filters"></a>サポートされているフィルター
@@ -82,7 +81,7 @@ WFS 標準の仕様では、OGC フィルターが使用されます。 次の�
 
 <br/>
 
-<iframe height='500' scrolling='no' title= 'WFS filter examples (WFS フィルターの例)' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS フィルターの例</a>」を参照してください。
+<iframe height='500' scrolling='no' title= 'WFS filter examples (WFS フィルターの例)' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS フィルターの例</a>」を参照してください。
 </iframe>
 
 ## <a name="wfs-service-explorer"></a>WFS サービス エクスプローラー
@@ -91,7 +90,7 @@ WFS 標準の仕様では、OGC フィルターが使用されます。 次の�
 
 <br/>
 
-<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS サービス エクスプローラー' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS サービス エクスプローラー</a>」を参照してください。
+<iframe height='700' scrolling='no' title= 'WFS サービス エクスプローラー' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS サービス エクスプローラー</a>」を参照してください。
 </iframe>
 
 非 CORS 対応のエンドポイントでホストされている WFS サービスにアクセスするには、次に示すように、WFS クライアントの `proxyService` オプションに CORS 対応のプロキシ サービスを渡します。 

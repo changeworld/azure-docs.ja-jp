@@ -2,14 +2,13 @@
 title: Azure Service Bus を使用したパフォーマンス向上のためのベスト プラクティス
 description: Service Bus を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。
 ms.topic: article
-ms.date: 03/09/2021
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 2171ccd6657bcda2df25e76f48cee23d0f8a48a7
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 08/30/2021
+ms.openlocfilehash: d7bd692809504bb16607a431e879f0abfff953cb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111886684"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225248"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
@@ -114,7 +113,7 @@ AMQP は、Service Bus への接続を維持するため、最も効率的です
 次の注意事項はすべての SDK に当てはまります。
 
 > [!NOTE]
-> 接続の確立は費用のかかる操作です。この操作は、同じファクトリとクライアント オブジェクトを複数の操作に再利用することで回避できます。 これらのクライアントオブジェクトは、同時実行の非同期操作のために、複数のスレッドから安全に使用できます。
+> 接続の確立は費用のかかる操作です。この操作は、同じファクトリまたはクライアント オブジェクトを複数の操作に再利用することで回避できます。 これらのクライアントオブジェクトは、同時実行の非同期操作のために、複数のスレッドから安全に使用できます。
 
 ## <a name="concurrent-operations"></a>同時実行の操作
 送信、受信、削除などの操作には、時間がかかります。 この時間には、Service Bus サービスが操作を処理するための時間や、要求と応答の待機時間が含まれます。 時間あたりの操作数を増やすには、操作を同時に実行する必要があります。

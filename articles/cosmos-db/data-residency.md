@@ -7,20 +7,21 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 63892e4ed71ec435a7068c9c68b9981a71205fb1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 869b28c8c65c402936dcb7b7641a6e4af8db3f47
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725467"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100941"
 ---
 # <a name="how-to-meet-data-residency-requirements-in-azure-cosmos-db"></a>Azure Cosmos DB のデータ所在地の要件を満たす方法
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB では、[所在地の要件](https://azure.microsoft.com/global-infrastructure/data-residency/)を満たすために、データとバックアップを 1 つのリージョンに保持するように構成できます。
 
 ## <a name="residency-requirements-for-data"></a>データの所在地の要件
 
-Azure Cosmos DB では、リージョン間のデータ レプリケーションを明示的に構成する必要があります。 [Azure portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account)、[Azure CLI](scripts/cli/common/regions.md) を使用して geo レプリケーションを構成する方法について学習してください。 データ所在地の要件を満たすために、特定のリージョンから望ましくないリージョンへのデータ レプリケーションを防ぐことができる Azure ポリシーを作成できます。
+Azure Cosmos DB では、リージョン間のデータ レプリケーションを明示的に構成する必要があります。 [Azure portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account)、[Azure CLI](scripts/cli/common/regions.md) を使用して geo レプリケーションを構成する方法について学習してください。 データ所在地の要件を満たすために、特定のリージョンから望ましくないリージョンへのデータ レプリケーションを防ぐことができる Azure Policy の定義を作成できます。
 
 ## <a name="residency-requirements-for-backups"></a>バックアップの所在地の要件
 

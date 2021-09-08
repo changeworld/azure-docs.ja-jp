@@ -3,12 +3,12 @@ title: Azure Lab Services - 物理ラボ環境から Windows カスタム イメ
 description: 物理ラボ環境から Windows カスタム イメージを取り込む方法について説明します。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 8c33f9579da2a0b7e3a58bd00b99d392fce07d28
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b838517a82ea0d6fb9437ff52c2b7a16098ee3ad
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748369"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451423"
 ---
 # <a name="bring-a-windows-custom-image-from-a-physical-lab-environment"></a>物理ラボ環境からの Windows カスタム イメージの取り込み
 
@@ -69,7 +69,7 @@ VHD のサイズ変更と VHDX への変換を支援するために、次の Pow
     Azure portal のマネージド ディスクの **[サイズおよびパフォーマンス]** タブでは、ディスク サイズを変更できます。 前に説明したように、サイズは 128 GB を "*超えない*" ようにしてください。
 
 1. 共有イメージ ギャラリーで、イメージの定義とバージョンを作成します。
-    1. [イメージの定義を作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)。  
+    1. [イメージの定義を作成します](../virtual-machines/image-version.md)。  
      - **VM の世代** として **[Gen 1]** を選択します。
      - **オペレーティング システムの状態** に対して **特殊化されたイメージ** を作成するのか **一般化されたイメージ** を作成するのかを選択します。
      
@@ -77,7 +77,7 @@ VHD のサイズ変更と VHDX への変換を支援するために、次の Pow
     
     既存のイメージ定義を使用して、カスタム イメージの新しいバージョンを作成することも選択できます。
     
-1. [イメージ バージョンを作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-version)。
+1. [イメージ バージョンを作成します](../virtual-machines/image-version.md)。
     - **[バージョン番号]** プロパティで使用する形式は *MajorVersion.MinorVersion.Patch* です。   Lab Services を使用してラボを作成してカスタム イメージを選択すると、最新バージョンのイメージが自動的に使用されます。  最新バージョンは、MajorVersion、MinorVersion、Patch の順で最高値に基づいて選択されます。
     - **[ソース]** で、 **[ディスクやスナップショット]** をドロップダウン リストから選択します。
     - **[OS ディスク]** プロパティで、前の手順で作成したディスクを選択します。

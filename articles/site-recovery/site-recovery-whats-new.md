@@ -3,12 +3,12 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: a9e0d9c462c494fdc1d0c50bc4faf3694f3b4cd7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2b733f4e525f2f47df7afde0ddc308430ae05d0b
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721846"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215318"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -22,17 +22,45 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
-[ロールアップ 56](https://support.microsoft.com/en-us/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
+[ロールアップ 57](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094) | 9.44.6068.1 | 5.1.6899.0 | 9.44.6068.1 | 5.1.6899.0 | 2.0.9236.0
+[ロールアップ 56](https://support.microsoft.com/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
 [ロールアップ 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 9.42.5941.1 | 5.1.6692.0 | 9.42.5941.1 | 5.1.6692.0  | 2.0.9208.0
 [ロールアップ 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [ロールアップ 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [ロールアップ 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
-[ロールアップ 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
-[ロールアップ 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
-[ロールアップ 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
+
+## <a name="updates-august-2021"></a>更新プログラム (2021 年 8 月)
+
+### <a name="update-rollup-57"></a>更新プログラム ロールアップ 57
+
+[更新プログラム ロールアップ 57](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094) では、以下の更新が提供されます。
+
+> [!NOTE]
+> 更新プログラムのロールアップでは、VMware から Azure への保護のパブリック プレビューの更新プログラムのみが提供されます。 このリリースでは、他の修正や機能強化は行われていません。
+> プレビュー エクスペリエンスを設定するには、新規セットアップを実行し、新しい Recovery Services コンテナーを使用する必要があります。 既存のアーキテクチャから新しいアーキテクチャに更新することはサポートされていません。
+
+今回のパブリック プレビューでは、VMware マシンを保護するための現行のアーキテクチャが全面的に見直されています。
+- 新しいアーキテクチャと導入された変更について[説明](https://docs.microsoft.com/azure/site-recovery/vmware-azure-architecture-preview)します。
+- 前提条件を確認し、次の[手順](https://docs.microsoft.com/azure/site-recovery/deploy-vmware-azure-replication-appliance-preview)に従って ASR レプリケーション アプライアンスを設定します。
+- VMware マシンの[レプリケーションを有効](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication-tutorial-preview)にします。
+- ASR レプリケーション アプライアンスの[自動アップグレード](https://docs.microsoft.com/azure/site-recovery/upgrade-mobility-service-preview)と[スイッチ](https://docs.microsoft.com/azure/site-recovery/switch-replication-appliance-preview)の機能を確認してください。
+
+
+### <a name="update-rollup-56"></a>更新プログラム ロールアップ 56
+
+[更新プログラム ロールアップ 56](https://support.microsoft.com/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (ロールアップ ナレッジ ベースの記事で詳しく説明されています)。
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (ロールアップ ナレッジ ベースの記事で詳しく説明されています)。
+
+**Azure Site Recovery Service** | レプリケーションと再保護操作の有効化が 46% 高速になるように機能強化が行われました。
+**Azure Site Recovery ポータル** | 世界中の任意の 2 つの Azure リージョン間でレプリケーションを有効にできるようになりました。 お客様は、レプリケーションを自身の大陸内に限定されることなく有効にできるようになりました。
+
 
 ## <a name="updates-july-2021"></a>更新プログラム (2021 年 7 月)
 

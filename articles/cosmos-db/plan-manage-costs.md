@@ -6,13 +6,13 @@ ms.author: sngun
 ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/05/2021
-ms.openlocfilehash: c8589911e4424afe1ff2f5dbed32c375cb29c706
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/26/2021
+ms.openlocfilehash: f954be4b5ce82bf84bc99fcdab253c48fccf9933
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095736"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226990"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB のコストを計画および管理する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -35,9 +35,20 @@ Cost Management のコスト分析では、ほとんどの種類の Azure アカ
 
 Azure Cosmos DB は、プロビジョニングされたスループットとサーバーレスの 2 つの異なる容量モードで利用できます。 どちらのモードでもまったく同じデータベース操作を実行できますが、これらの操作に対する課金方法は異なります。
 
+### <a name="capacity-planning"></a>容量計画
+
+Azure Cosmos DB に移行するにあたっては、コストを見積もる手段として容量計画を有効活用できる場合があります。 既存のデータベース クラスターから Azure Cosmos DB への移行を計画している場合は、既存のデータベース クラスターに関する情報を容量計画に利用できます。
+* 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+
+![4 コア SKU の 3 つのレプリカを含むレプリカ セットを Azure Cosmos DB に移行する](media/convert-vcore-to-request-unit/one-replica-set.png)
+
+* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+
 ### <a name="estimate-provisioned-throughput-costs"></a>プロビジョニングされたスループット コストを見積もる
 
-プロビジョニングされたスループット モードで Azure Cosmos DB を使用する予定の場合は、Azure Cosmos アカウントでリソースを作成する前に、[Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/) を使用してコストを見積もってください。 Capacity Calculator は、ワークロードに必要なスループットとコストの見積もりを取得するために使用されます。 コストとパフォーマンスを最適化するうえで、ワークロードにとって適切な量のプロビジョニング済みスループット、つまり[要求ユニット (RU/秒)](request-units.md) を使用して Azure Cosmos データベースとコンテナーを構成することが不可欠です。 コスト見積もりを取得するには、API の種類、リージョンの数、項目のサイズ、1 秒あたりの読み取り/書き込み要求数、合計格納データなどの詳細を入力する必要があります。 Capacity Calculator の詳細については、[見積もり](estimate-ru-with-capacity-planner.md)に関する記事を参照してください。
+プロビジョニングされたスループット モードで Azure Cosmos DB を使用する予定の場合は、Azure Cosmos アカウントでリソースを作成する前に、[Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/) を使用してコストを見積もってください。 Capacity Calculator は、ワークロードに必要なスループットとコストの見積もりを取得するために使用されます。 容量計算ツールは現在、SQL API、Cassandra API、MongoDB 用 API でのみ使用できます。
+
+コストとパフォーマンスを最適化するうえで、ワークロードにとって適切な量のプロビジョニング済みスループット、つまり[要求ユニット (RU/秒)](request-units.md) を使用して Azure Cosmos データベースとコンテナーを構成することが不可欠です。 コスト見積もりを取得するには、API の種類、リージョンの数、項目のサイズ、1 秒あたりの読み取り/書き込み要求数、合計格納データなどの詳細を入力する必要があります。 Capacity Calculator の詳細については、[見積もり](estimate-ru-with-capacity-planner.md)に関する記事を参照してください。
 
 次のスクリーンショットは、Capacity Calculator の利用によるスループットとコストの見積もりを示しています。
 
@@ -107,7 +118,7 @@ Azure Cosmos DB でリソースを使用するとコストが発生します。 
 
 Azure Cosmos DB のコストをコスト分析で表示するには、次の操作を行います。
 
-1. [Azure Portal ](https://portal.azure.com)にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal でスコープを開き、メニューから **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 コスト分析で別のスコープに切り替えるには、 **[スコープ]** を選択します。
 
@@ -149,6 +160,9 @@ Azure Cosmos DB のコストをコスト分析で表示するには、次の操�
 
 Azure Cosmos DB での課金のしくみの詳細については、以下の記事を参照してください。
 
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 * [Azure Cosmos DB の価格モデル](how-pricing-works.md)
 * [Azure Cost Management を使用してクラウドへの投資を最適化する](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)方法について説明します。
 * [コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を使用してコストを管理する方法について詳細に説明します。

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスター用のサービス �
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 128e2d38b002369381c860dbd94dbd93b278682d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 72cc0c6ab369b035df8c4a29c89be74fa9102cc5
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743927"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101519"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の資格情報を更新またはローテーションする
 
@@ -97,7 +97,7 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>新しいサービス プリンシパル資格情報で AKS クラスターを更新する
 
 > [!IMPORTANT]
-> 大規模なクラスターでは、新しいサービス プリンシパルによる AKS クラスターの更新が完了するまでに、時間がかかることがあります。
+> 大規模なクラスターでは、新しいサービス プリンシパルによる AKS クラスターの更新が完了するまでに、時間がかかることがあります。 クラスターの更新中やアップグレード中の中断を最小限に抑えるために、[ノード サージ アップグレード設定][node-surge-upgrade]を確認してカスタマイズすることを検討してください。
 
 既存のサービス プリンシパル資格情報の更新を選択したか、サービス プリンシパルの作成を選択したかに関係なく、ここで [az aks update-credentials][az-aks-update-credentials] コマンドを使用して、新しい資格情報で AKS クラスターを更新します。 *--service-principal* と *--client-secret* の変数が使用されます。
 
@@ -142,3 +142,4 @@ az aks update-credentials \
 [az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az_ad_sp_credential_list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset
 [node-image-upgrade]: ./node-image-upgrade.md
+[node-surge-upgrade]: upgrade-cluster.md#customize-node-surge-upgrade

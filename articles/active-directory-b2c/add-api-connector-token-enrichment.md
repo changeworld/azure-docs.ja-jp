@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/04/2021
+ms.date: 08/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 524315a0fa07b6c965d473688942c6e69be38494
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 20473d6a5dcbdc826605d46928a7bfbb90792e0e
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779211"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186067"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>API コネクタを使用して外部ソースからの要求でトークンを強化する
 
@@ -92,7 +92,6 @@ Content-type: application/json
  "objectId": "ab3ec3b2-a435-45e4-b93a-56a005e88bb7",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
- "objectId": "ab3ec3b2-a435-45e4-b93a-56a005e88bb7",
  "client_id": "231c70e8-8424-48ac-9b5d-5623b9e4ccf3",
  "step": "PreTokenIssuance",
  "ui_locales":"en-US"
@@ -106,7 +105,7 @@ API に送信される要求は、ユーザーに定義した情報によって�
 カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_CustomAttribute** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、[Azure AD B2C でカスタム属性を定義する方法](user-flow-custom-attributes.md)に関するページを参照してください。
 
 また、これらの要求は通常、この手順のすべての要求で送信されます。
-- **UI ロケール ('ui_locales')** - デバイスで構成されているエンド ユーザーのロケール。 これを API で使用して、国際化された応答を返すことができます。
+- **UI ロケール ('ui_locales')** - デバイスに構成されているエンドユーザーのロケール。 これを API で使用して、国際化された応答を返すことができます。
 - **ステップ ('step')** - API コネクタが呼び出されたユーザー フロー上のステップまたはポイント。 この手順の値は ` です。
 - **クライアント ID ('client_id')** - エンド ユーザーがユーザー フローで認証しているアプリケーションの `appId` 値。 これは、アクセス トークンのリソース アプリケーションの `appId` では *ありません*。
 - **objectId** - ユーザーの識別子。 これを使用して、ダウンストリーム サービスに対して、ユーザーに関する情報のクエリを実行できます。
@@ -150,7 +149,7 @@ Content-type: application/json
 | version     | String | はい      | API のバージョン。                                                    |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | **アプリケーション要求** として選択されている場合は、トークンで返すことができます。                                        |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | `_<extensions-app-id>_` は *省略可能* であり、要求に含める必要はありません。 **アプリケーション要求** として選択されている場合は、トークンで返すことができます。  |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | `_<extensions-app-id>_` は "*省略可能*" であり、要求に含める必要はありません。 **アプリケーション要求** として選択されている場合は、トークンで返すことができます。  |
 
 ::: zone-end
 
@@ -323,7 +322,8 @@ REST API をデプロイした後、`REST-GetProfile` 技術プロファイル�
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
+1. ポータルのツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択して、Azure AD テナントを含むディレクトリを使っていることを確認します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択し、変更した次のポリシー ファイルをアップロードします。*TrustFrameworkBase.xml* および *TrustFrameworkExtensions.xml*、*SignUpOrSignin.xml*、*ProfileEdit.xml*、および *PasswordReset.xml*。 
@@ -397,7 +397,7 @@ REST API をデプロイした後、`REST-GetProfile` 技術プロファイル�
 
 ::: zone-end
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ::: zone pivot="b2c-user-flow"
 

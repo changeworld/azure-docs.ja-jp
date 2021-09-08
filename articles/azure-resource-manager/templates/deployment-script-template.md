@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 08/25/2021
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ac1afe3658db60297735e897d69caa463358a4c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ece3693fa183ba31de569e7db632c3d294c10437
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318389"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187183"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトを使用する
 
@@ -38,43 +38,45 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 > [!IMPORTANT]
 > スクリプト実行とトラブルシューティングには、ストレージ アカウントとコンテナー インスタンスが必要です。 既存のストレージ アカウントを指定するオプションがあります。指定しない場合は、コンテナー インスタンスと共にストレージ アカウントがスクリプト サービスによって自動的に作成されます。 自動的に作成された 2 つのリソースは、通常、デプロイ スクリプトの実行が終了状態になったときにスクリプト サービスによって削除されます。 リソースが削除されるまでは、リソースに対して請求が行われます。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 
-> [!IMPORTANT]
-> deploymentScripts リソース API バージョン 2020-10-01 では、[OnBehalfofTokens(OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md) がサポートされています。 OBO を使用することにより、デプロイ スクリプト サービスは、デプロイ プリンシパルのトークンを使用して、デプロイ スクリプトを実行するための基になるリソースを作成します。これには、Azure Container Instance、Azure Storage アカウント、およびマネージド ID のロール割り当てが含まれます。 以前の API バージョンでは、これらのリソースを作成するためにマネージド ID が使用されています。
-> 現在は、Azure サインインの再試行ロジックがラッパー スクリプトに組み込まれています。 デプロイ スクリプトを実行する同じテンプレートでアクセス許可を付与する場合。 マネージド ID のロール割り当てがレプリケートされるまで、デプロイ スクリプト サービスによって、10 秒間隔で 10 分間サインインが試行されます。
+> [!NOTE]
+> 現在は、Azure サインインの再試行ロジックがラッパー スクリプトに組み込まれています。 デプロイ スクリプトと同じテンプレートでアクセス許可を付与する場合、マネージド ID のロール割り当てがレプリケートされるまで、デプロイ スクリプト サービスによって、10 秒間隔で 10 分間サインインが試行されます。
 
 ## <a name="configure-the-minimum-permissions"></a>最低限のアクセス許可を構成する
 
-デプロイ スクリプト API バージョン 2020-10-01 以降では、デプロイ プリンシパルを使用して、デプロイ スクリプト リソースの実行に必要な基になるリソース (ストレージ アカウントと Azure コンテナー インスタンス) を作成します。 スクリプトで Azure に対する認証を行い、Azure 固有のアクションを実行する必要がある場合は、スクリプトにユーザー割り当てマネージド ID を指定することをお勧めします。 マネージド ID に、スクリプト内の操作を完了するために必要なアクセス権がある必要があります。
+デプロイ スクリプトの API バージョン 2020-10-01 以降では、デプロイ スクリプトの実行に 2 つのプリンシパルが関係します。
 
-最小特権のアクセス許可を構成するには、次のことが必要です。
+- **デプロイ プリンシパル** (テンプレートのデプロイに使用されるプリンシパル): デプロイ スクリプト リソースの実行に必要な基になるリソース (ストレージ アカウントと Azure コンテナー インスタンス) の作成には、このプリンシパルが使用されます。 最小限の特権のアクセス許可を構成するには、次のプロパティを含んだカスタム ロールをデプロイ プリンシパルに割り当てます。
 
-- 次のプロパティを持つカスタム ロールをデプロイ プリンシパルに割り当てます。
+    ```json
+    {
+      "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
+      "description": "Configure least privilege for the deployment principal in deployment script",
+      "type": "customRole",
+      "IsCustom": true,
+      "permissions": [
+        {
+          "actions": [
+            "Microsoft.Storage/storageAccounts/*",
+            "Microsoft.ContainerInstance/containerGroups/*",
+            "Microsoft.Resources/deployments/*",
+            "Microsoft.Resources/deploymentScripts/*"
+          ],
+        }
+      ],
+      "assignableScopes": [
+        "[subscription().id]"
+      ]
+    }
+    ```
 
-  ```json
-  {
-    "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
-    "description": "Configure least privilege for the deployment principal in deployment script",
-    "type": "customRole",
-    "IsCustom": true,
-    "permissions": [
-      {
-        "actions": [
-          "Microsoft.Storage/storageAccounts/*",
-          "Microsoft.ContainerInstance/containerGroups/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/deploymentScripts/*"
-        ],
-      }
-    ],
-    "assignableScopes": [
-      "[subscription().id]"
-    ]
-  }
-  ```
+    Azure Storage と Azure Container Instance のリソース プロバイダーが登録されていない場合は、`Microsoft.Storage/register/action` と `Microsoft.ContainerInstance/register/action` も追加する必要があります。
 
-  Azure Storage と Azure Container Instance のリソース プロバイダーが登録されていない場合は、`Microsoft.Storage/register/action` と `Microsoft.ContainerInstance/register/action` も追加する必要があります。
+- **デプロイ スクリプト プリンシパル**: このプリンシパルが必要になるのは、デプロイ スクリプトが Azure に対して認証を行い、Azure CLI または PowerShell を呼び出す必要がある場合のみです。 デプロイ スクリプト プリンシパルの指定には 2 とおりの方法があります。
 
-- マネージド ID を使用する場合は、デプロイ プリンシパルに、マネージ ID リソースに割り当てられた **マネージド ID オペレーター** ロール (組み込みロール) が必要です。
+  - `identity` プロパティにユーザー割り当てマネージド ID を指定します (「[サンプル テンプレート](#sample-templates)」を参照)。 指定された場合、スクリプト サービスは、デプロイ スクリプトの呼び出し前に `Connect-AzAccount -Identity` を呼び出します。 マネージド ID に、スクリプト内の操作を完了するために必要なアクセス権がある必要があります。 現在、`identity` プロパティにサポートされているのは、ユーザー割り当てマネージド ID のみです。 別の ID でログインするには、この箇条書きの 2 つ目の方法を使用してください。
+  - サービス プリンシパルの資格情報を安全な環境変数として渡したうえで、デプロイ スクリプトから [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) または [az login](/cli/azure/reference-index?view=azure-cli-latest#az_login&preserve-view=true) を呼び出します。
+
+  マネージド ID を使用する場合は、デプロイ プリンシパルに、マネージ ID リソースに割り当てられた **マネージド ID オペレーター** ロール (組み込みロール) が必要です。
 
 ## <a name="sample-templates"></a>サンプル テンプレート
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 3cecb6a9a45aa3413e43fb9099a258ed2ef21a3a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 83835941ae2ec1f45eab7de25d862034069770f2
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862459"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123213894"
 ---
 ## <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a><a name="locations"></a>地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応。
 次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
@@ -27,7 +27,7 @@ ms.locfileid: "121862459"
 | **インド** | インド西部、インド中部、インド南部 |チェンナイ、チェンナイ 2、ムンバイ、ムンバイ 2、プネ |
 | **日本** | 西日本、東日本 |大阪、東京、東京 2 |
 | **オセアニア** | オーストラリア東部、オーストラリア南東部 |オークランド、メルボルン、パース、シドニー、シドニー 2 |
-| **韓国** | 韓国中部、韓国南部 |釜山、ソウル|
+| **韓国** | 韓国中部、韓国南部 |釜山、ソウル、ソウル 2|
 | **アラブ首長国連邦** | アラブ首長国連邦中部、アラブ首長国連邦北部 | ドバイ、ドバイ 2 |
 | **南アフリカ** | 南アフリカ西部、南アフリカ北部 |ケープタウン、ヨハネスブルグ |
 | **南アメリカ** | ブラジル南部 |ボゴタ、カンピナス、リオデジャネイロ、サンパウロ、サンパウロ 2 |

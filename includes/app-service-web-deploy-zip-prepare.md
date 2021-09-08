@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54a29bb1cc92347d9a2578a4f0ec9febb22553ac
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85570131"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225473"
 ---
-## <a name="create-a-project-zip-file"></a>プロジェクトの ZIP ファイルを作成する
+## <a name="create-a-project-zip-package"></a>プロジェクトの ZIP パッケージを作成する
 
 >[!NOTE]
-> ファイルを ZIP ファイルでダウンロードした場合は、まずファイルを抽出します。 たとえば、GitHub から ZIP ファイルをダウンロードした場合、そのファイルをそのままデプロイすることはできません。 GitHub では、入れ子になったディレクトリが追加されますが、これらは App Service と連携しません。 
+> ファイルを ZIP パッケージでダウンロードした場合は、まずファイルを抽出します。 たとえば、GitHub から ZIP パッケージをダウンロードした場合、そのファイルをそのままデプロイすることはできません。 GitHub では、入れ子になったディレクトリが追加されますが、これらは App Service と連携しません。 
 >
 
 ローカル ターミナル ウィンドウで、アプリ プロジェクトのルート ディレクトリに移動します。 

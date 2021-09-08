@@ -4,23 +4,97 @@ description: Bicep リソースのアクセス演算子とプロパティ アク
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/29/2021
-ms.openlocfilehash: addf6f552d6c409c77a11d666b8b9ade619ca8f2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: b5eebb9b5dd6d39ae790b8fda7133e94ecd0cdb5
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746621"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224279"
 ---
 # <a name="bicep-accessor-operators"></a>Bicep アクセサー演算子
 
-アクセサー演算子は、オブジェクトの子のリソースとプロパティにアクセスするために使用されます。 また、プロパティ アクセサーを使用していくつかの関数を使用することもできます。
+アクセサー演算子は、子リソース、オブジェクトのプロパティ、配列の要素にアクセスするために使われます。 また、プロパティ アクセサーを使用していくつかの関数を使用することもできます。
 
 | 演算子 | 名前 |
 | ---- | ---- |
+| `[]` | [インデックス アクセサー](#index-accessor) |
+| `.`  | [関数アクセサー](#function-accessor) |
 | `::` | [入れ子になったリソース アクセサー](#nested-resource-accessor) |
 | `.`  | [プロパティ アクセサー](#property-accessor) |
-| `.`  | [関数アクセサー](#function-accessor) |
+
+## <a name="index-accessor"></a>インデックス アクセサー
+
+`array[index]`
+
+`object['index']`
+
+配列内の要素を取得するには、`[index]` を使用し、インデックスの整数を指定します。
+
+次の例では、配列内の要素を取得します。
+
+```bicep
+var arrayVar = [
+  'Coho'
+  'Contoso'
+  'Fabrikan'
+]
+
+output accessorResult string = arrayVar[1]
+``` 
+
+例の出力を次に示します。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ---- |
+| accessorResult | string | 'Contoso' |
+
+また、インデックス アクセサーを使用して、名前指定によりオブジェクト プロパティを取得することもできます。 インデックスには、整数ではなく、文字列を使用する必要があります。 次の例では、オブジェクトのプロパティを取得します。
+
+```bicep
+var environmentSettings = {
+  dev: {
+    name: 'Development'
+  }
+  prod: {
+    name: 'Production'
+  }
+}
+
+output accessorResult string = environmentSettings['dev'].name
+```
+
+例の出力を次に示します。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ---- |
+| accessorResult | string | 'Development' |
+
+## <a name="function-accessor"></a>関数アクセサー
+
+`resourceName.functionName()`
+
+[getSecret](bicep-functions-resource.md#getsecret) と [list*](bicep-functions-resource.md#list)の 2 つの関数は、アクセサー演算子による関数の呼び出しに対応しています。 これら 2 つの関数は、アクセサー演算子をサポートする唯一の関数です。
+
+### <a name="example"></a>例
+
+次の例では、既存のキー コンテナーを参照し、`getSecret` を使用してモジュールにシークレットを渡します。
+
+```bicep
+resource kv 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
+  name: kvName
+  scope: resourceGroup(subscriptionId, kvResourceGroup )
+}
+
+module sql './sql.bicep' = {
+  name: 'deploySQL'
+  params: {
+    sqlServerName: sqlServerName
+    adminLogin: adminLogin
+    adminPassword: kv.getSecret('vmAdminPassword')
+  }
+}
+```
 
 ## <a name="nested-resource-accessor"></a>入れ子になったリソース アクセサー
 
@@ -86,7 +160,7 @@ output outputQ int = x.q
 
 例の出力を次に示します。
 
-| 名前 | 型 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ---- |
 | `outputZ` | string | 'Hello' |
 | `outputQ` | 整数 (integer) | 42 |
@@ -107,32 +181,6 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2020-06-01' = {
 
 // Use property accessor to get value
 output ipFqdn string = publicIp.properties.dnsSettings.fqdn
-```
-
-## <a name="function-accessor"></a>関数アクセサー
-
-`resourceName.functionName()`
-
-[getSecret](bicep-functions-resource.md#getsecret) と [list*](bicep-functions-resource.md#list)の 2 つの関数は、アクセサー演算子による関数の呼び出しに対応しています。 これら 2 つの関数は、アクセサー演算子をサポートする唯一の関数です。
-
-### <a name="example"></a>例
-
-次の例では、既存のキー コンテナーを参照し、`getSecret` を使用してモジュールにシークレットを渡します。
-
-```bicep
-resource kv 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
-  name: kvName
-  scope: resourceGroup(subscriptionId, kvResourceGroup )
-}
-
-module sql './sql.bicep' = {
-  name: 'deploySQL'
-  params: {
-    sqlServerName: sqlServerName
-    adminLogin: adminLogin
-    adminPassword: kv.getSecret('vmAdminPassword')
-  }
-}
 ```
 
 ## <a name="next-steps"></a>次のステップ

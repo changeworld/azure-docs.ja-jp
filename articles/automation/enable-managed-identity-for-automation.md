@@ -3,15 +3,15 @@ title: Azure Automation アカウントのシステム割り当てマネージ�
 description: この記事では、Azure Automation アカウントのマネージド ID を設定する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/24/2021
+ms.date: 08/12/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6d381abcc13a5b91d32b4e444e01909c83300e7b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 882a55d017ed23dc7abbc9096e38f70abb41c425
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737192"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214292"
 ---
 # <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Azure Automation アカウントのシステム割り当てマネージド ID を使用する (プレビュー)
 
@@ -68,7 +68,7 @@ $automationAccount = "automationAccountName"
 
 ### <a name="enable-using-the-azure-portal"></a>Azure portal を使用した有効化
 
-次の手順を実行します。
+次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -119,7 +119,7 @@ $output
 }
 ```
 
-複数のユーザー割り当て ID が定義されている場合に、それらを保持してシステム割り当て ID のみを削除するには、コンマ区切りリストを使用してそれぞれのユーザー割り当て ID を指定する必要があります。 以下の例では、HTTP **PATCH** メソッドを使用しています。
+複数のユーザー割り当て ID が定義されている場合にそれらを保持し、システム割り当て ID のみを削除するには、コンマ区切りリストを使用してそれぞれのユーザー割り当て ID を指定する必要があります。 以下の例では、HTTP **PATCH** メソッドを使用しています。
 
 ```json
 { 
@@ -256,6 +256,8 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 Azure Key Vault など、Azure AD によって保護されているその他のリソースにアクセスするために、Automation アカウントはそのシステム割り当てマネージド ID を使用してトークンを取得できます。 これらのトークンは、アプリケーションの特定のユーザーを表すものではありません。 代わりに、それらは、リソースにアクセスしているアプリケーションを表します。 たとえば、今回の場合、トークンは Automation アカウントを表します。
 
 システム割り当てマネージド ID を認証に使用するには、その ID を使用する予定の Azure リソースに対する ID のアクセスを先に設定します。 このタスクを完了するには、ターゲットの Azure リソース上でその ID に適切な役割を割り当てます。
+
+最小特権の原則に従って、Runbook を実行するのに必要なアクセス許可のみを慎重に割り当てます。 たとえば、Automation アカウントが Azure VM の開始または停止を行うためにのみ必要な場合は、その実行アカウントまたはマネージド ID に割り当てられるアクセス許可は、VM の開始または停止のためのみのものである必要があります。 同様に、Runbook が BLOB ストレージから読み取りを行う場合は、読み取り専用アクセス許可を割り当てます。この例では、Azure PowerShell を使用して、共同作成者を割り当てる方法を示します
 
 この例では、Azure PowerShell を使用して、サブスクリプションの共同作成者ロールをターゲットの Azure リソースに割り当てる方法を示します。 共同作成者ロールは例として使用されます。ご自身のケースに必要な場合と不要な場合があります。
 

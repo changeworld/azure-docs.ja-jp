@@ -1,19 +1,22 @@
 ---
-title: Azure Data Factory を使用して HTTP ソースからデータをコピーする
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HTTP ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+title: HTTP ソースからデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの HTTP ソースからサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: c04bf94b26535ec7791bfd0c2354432aaa6fc98e
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 4463c3ffb8deaf0a88b978b39f3a52c83f3f8304
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485029"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303865"
 ---
-# <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
+# <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して HTTP エンドポイントからデータをコピーする
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-http-connector.md)
@@ -21,7 +24,7 @@ ms.locfileid: "109485029"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、HTTP エンドポイントからデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
+この記事では、Azure Data Factory および Azure Synapse で Copy アクティビティを使用して、HTTP エンドポイントからデータをコピーする方法について説明します。 この記事は、Copy アクティビティの概要を説明する [Copy アクティビティ](copy-activity-overview.md)に関する記事に基づいています。
 
 この HTTP コネクタ、[REST コネクタ](connector-rest.md)および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
@@ -45,7 +48,7 @@ HTTP ソースから、サポートされている任意のシンク データ �
 - HTTP 応答をそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用して解析する。
 
 > [!TIP]
-> Data Factory で HTTP コネクタを構成する前に、データ取得のために HTTP 要求をテストするには、ヘッダーおよび本文の要件に関する API 仕様を確認してください。 Postman や Web ブラウザーのようなツールを使用して検証することができます。
+> HTTP コネクタを構成する前に、データ取得のために HTTP 要求をテストするには、ヘッダーおよび本文の要件に関する API 仕様を確認してください。 Postman や Web ブラウザーのようなツールを使用して検証することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +58,31 @@ HTTP ソースから、サポートされている任意のシンク データ �
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-次のセクションでは、HTTP コネクタに固有の Data Factory エンティティの定義に使用できるプロパティについて詳しく説明します。
+## <a name="create-a-linked-service-to-an-http-source-using-ui"></a>UI を使用して HTTP ソースのリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で HTTP ソースのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. HTTP を検索し、HTTP コネクタを選択します。
+
+    :::image type="content" source="media/connector-http/http-connector.png" alt-text="HTTP コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-http/configure-http-linked-service.png" alt-text="HTTP のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、HTTP コネクタに固有のエンティティの定義に使用できるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -77,7 +104,7 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | userName | HTTP エンドポイントにアクセスするために使用するユーザー名。 | はい |
-| password | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
+| password | ユーザー (**userName** 値) のパスワード。 安全に保存するには、このフィールドを **SecureString** 型としてマークします。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
 
 **例**
 
@@ -111,7 +138,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 でエンコードされた証明書データ。 | **embeddedCertData** または **certThumbprint** のいずれかを指定します。 |
 | certThumbprint | セルフホステッド統合ランタイム マシンの証明書ストアにインストールされている証明書の拇印。 セルフホステッド型の統合ランタイムが **connectVia** プロパティで指定されている場合にのみ適用されます。 | **embeddedCertData** または **certThumbprint** のいずれかを指定します。 |
-| password | 証明書に関連付けられているパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
+| password | 証明書に関連付けられているパスワード。 安全に保存するには、このフィールドを **SecureString** 型としてマークします。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
 
 認証に **certThumbprint** を使用し、証明書がローカル コンピューターの個人用ストアにインストールされている場合は、セルフホステッド統合ランタイムに読み取りアクセス許可を付与します。
 
@@ -304,7 +331,7 @@ HTTP では、形式ベースのコピー ソースの `storeSettings` 設定に
 ## <a name="legacy-models"></a>レガシ モデル
 
 >[!NOTE]
->次のモデルは、下位互換性のために引き続きそのままサポートされます。 今後は、上のセクションで説明した新しいモデルを使用することをお勧めします。ADF オーサリング UI は、新しいモデルを生成するように切り替えられています。
+>次のモデルは、下位互換性のために引き続きそのままサポートされます。 今後は、上記のセクションで説明した新しいモデルを使用することをお勧めします。作成 UI は、新しいモデルを生成するように切り替えられています。
 
 ### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
@@ -401,4 +428,4 @@ HTTP では、形式ベースのコピー ソースの `storeSettings` 設定に
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

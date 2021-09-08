@@ -1,40 +1,45 @@
 ---
 title: 問題を高度な診断クエリでトラブルシューティングする (SQL API)
 titleSuffix: Azure Cosmos DB
-description: Azure Cosmos DB に格納されているデータをトラブルシューティングするために、診断ログに対してクエリを実行する方法について説明します - SQL API
+description: Azure Cosmos DB に格納されているデータをトラブルシューティングするために、診断ログに対してクエリを実行する方法について説明します - SQL API。
 author: StefArroyo
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2021
 ms.author: esarroyo
-ms.openlocfilehash: f45aa0833a7e2f2dd32943c28bfe677e03e93edd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 16c4fe809fc411a9d6eec89ed7ceeb04dce317d2
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733175"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097775"
 ---
-# <a name="troubleshoot-issues-with-advanced-diagnostics-queries-for-sql-core-api"></a>SQL (Core) API の問題を高度な診断クエリでトラブルシューティングする
+# <a name="troubleshoot-issues-with-advanced-diagnostics-queries-for-the-sql-core-api"></a>SQL (Core) API の問題を高度な診断クエリでトラブルシューティングする
 
-[!INCLUDE[appliesto-all-apis-except-table](includes/appliesto-all-apis-except-table.md)]sdf
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [SQL (Core) API](cosmos-db-advanced-queries.md)
 > * [MongoDB API](mongodb/diagnostic-queries-mongodb.md)
 > * [Cassandra API](cassandra/diagnostic-queries-cassandra.md)
-> * [Gremlin API](queries-gremlin.md)
+> * [Gremlin API](graph/diagnostic-queries-gremlin.md)
 >
 
-この記事では、**AzureDiagnostics (レガシ)** と **リソース固有 (プレビュー)** テーブルに送信される診断ログを使用して、Azure Cosmos DB アカウントの問題のトラブルシューティングに役立つ、より高度なクエリを記述する方法について説明します。
+この記事では、**Azure Diagnostics (レガシ)** テーブルと **リソース固有 (プレビュー)** テーブルに送信される診断ログを使用して、Azure Cosmos DB アカウントに関する問題のトラブルシューティングに役立つ、より高度なクエリを作成する方法について説明します。
 
-Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテーブルに書き込まれるので、ユーザーはクエリを実行するカテゴリを指定する必要があります。 ご自分の要求のフルテキスト クエリを表示する場合は、[この記事に従って](cosmosdb-monitor-resource-logs.md#full-text-query)、この機能を有効にする方法を確認してください。
+Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテーブルに書き込まれます。 クエリを実行するカテゴリをユーザーが指定します。 要求のフルテキスト クエリを確認したい場合は、「[Azure の診断設定を使用して Azure Cosmos DB データを監視する](cosmosdb-monitor-resource-logs.md#full-text-query)」で、この機能を有効にする方法を参照してください。
 
-[リソース固有テーブル](cosmosdb-monitor-resource-logs.md#create-setting-portal)の場合、データはリソースのカテゴリごとに個別のテーブルに書き込まれます。 これにより、データを非常に簡単に操作できるようになり、スキーマも検出しやすくなり、インジェストの待ち時間とクエリ時間の両方でパフォーマンスが向上するため、このモードをお勧めします。
+[リソース固有テーブル](cosmosdb-monitor-resource-logs.md#create-setting-portal)の場合、データはリソースのカテゴリごとに個別のテーブルに書き込まれます。 次の理由から、このモードをお勧めします。
+
+- データの扱いがはるかに容易である。 
+- スキーマが見つけやすい。
+- インジェストの待ち時間とクエリ時間の両方でパフォーマンスが向上する。
 
 ## <a name="common-queries"></a>一般的なクエリ
+一般的なクエリは、リソース固有のテーブルと Azure Diagnostics のテーブルに表示されます。
 
-- 要求ユニットの消費量順に並べられた特定の時間枠の上位 N(10) のクエリ
+### <a name="top-n10-queries-ordered-by-request-unit-ru-consumption-in-a-specific-time-frame"></a>要求ユニット (RU) の消費量順に並べられた特定の時間枠の上位 N(10) のクエリ
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
 
@@ -65,7 +70,7 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
    ```    
 ---
 
-- 特定の時間枠に調整された要求 (statusCode = 429) 
+### <a name="requests-throttled-statuscode--429-in-a-specific-time-window"></a>特定の時間枠に調整された要求 (statusCode = 429) 
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
 
@@ -92,7 +97,7 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
    ```    
 ---
 
-- 応答時間が最も長いクエリ (サーバー応答のペイロード サイズ)
+### <a name="queries-with-the-largest-response-lengths-payload-size-of-the-server-response"></a>応答時間が最も長いクエリ (サーバー応答のペイロード サイズ)
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
 
@@ -122,7 +127,7 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
    ```    
 ---
 
-- 物理パーティション別の RU 消費量 (レプリカ セット内のすべてのレプリカ)
+### <a name="ru-consumption-by-physical-partition-across-all-replicas-in-the-replica-set"></a>物理パーティション別の RU 消費量 (レプリカ セット内のすべてのレプリカ)
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
 
@@ -151,7 +156,7 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
    ```    
 ---
 
-- 論理パーティション別の RU 消費量 (レプリカ セット内のすべてのレプリカ)
+### <a name="ru-consumption-by-logical-partition-across-all-replicas-in-the-replica-set"></a>論理パーティション別の RU 消費量 (レプリカ セット内のすべてのレプリカ)
 
 # <a name="resource-specific"></a>[リソース固有](#tab/resource-specific)
 
@@ -181,6 +186,5 @@ Azure Diagnostics テーブルの場合、すべてのデータが 1 つのテ�
 ---
 
 ## <a name="next-steps"></a>次のステップ
-* Cosmos DB の診断設定を作成する方法の詳細については、[診断設定の作成](cosmosdb-monitor-resource-logs.md)に関する記事を参照してください。
-
-* Azure portal、CLI、または PowerShell を使用して診断設定を作成する方法の詳細については、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../azure-monitor/essentials/diagnostic-settings.md)に関する記事を参照してください。
+* Azure Cosmos DB の診断設定を作成する方法について詳しくは、[診断設定の作成](cosmosdb-monitor-resource-logs.md)に関するページを参照してください。
+* Azure portal、Azure CLI、または PowerShell を使用して診断設定を作成する方法の詳細については、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../azure-monitor/essentials/diagnostic-settings.md)に関するページを参照してください。

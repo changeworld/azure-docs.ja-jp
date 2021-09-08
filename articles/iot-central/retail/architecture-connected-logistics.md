@@ -6,14 +6,14 @@ ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: conceptual
-ms.date: 10/20/2019
+ms.date: 08/18/2021
 ms.custom: mqtt
-ms.openlocfilehash: d1e17dce80c313bf726451c36ec06dd393549600
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce619c0dfbd21313413a17cf94b5e4029a0d739d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832421"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438176"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central のコネクテッド ロジスティクス アプリケーション テンプレートのアーキテクチャ
 

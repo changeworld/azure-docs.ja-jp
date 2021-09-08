@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/12/2019
+ms.date: 08/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbdd0dc8914847c5502dc79635293fd685d071f9
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: e2e1ce1e2935f97176e238c899a929019b26ba6d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613442"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475352"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定
 
@@ -38,7 +38,8 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 ## <a name="run-the-application-in-visual-studio"></a>Visual Studio でアプリケーションを実行する
 
 1. サンプル アプリケーションのプロジェクト フォルダーにある **active-directory-b2c-wpf.sln** ソリューションを Visual Studio で開きます。
-2. **F5** キーを押してアプリケーションをデバッグします。
+2. [NuGet パッケージを復元します](/nuget/consume-packages/package-restore)。
+3. **F5** キーを押してアプリケーションをデバッグします。
 
 ## <a name="sign-in-using-your-account"></a>自分のアカウントを使用してサインインする
 

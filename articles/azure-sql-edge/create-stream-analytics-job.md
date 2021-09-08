@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f5059352793adf7cd3e8635d270ba85a3014758
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656344"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434216"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge でデータ ストリーミング ジョブを作成する 
 
@@ -104,7 +104,7 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
 3. CREATE EXTERNAL DATA SOURCE を使用して、外部データ ソースを作成します。 次に例を示します。
 
     * *LocalSQLOutput* という名前の外部データ ソースを作成します。
-    * 外部データ ソースを識別します (LOCATION = '<vendor>://<server>[:<port>]'). この例では、Azure SQL Edge のローカル インスタンスを指しています。
+    * 外部のデータ ソースを識別します (`LOCATION = '<vendor>://<server>[:<port>]'`)。 この例では、Azure SQL Edge のローカル インスタンスを指しています。
     * 前に作成した資格情報を使用します。
 
     ```sql

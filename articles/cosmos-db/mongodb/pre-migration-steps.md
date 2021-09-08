@@ -4,15 +4,15 @@ description: このドキュメントでは、MongoDB から Cosmos DB にデー
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/17/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: c871dbdc8d668b7f4e6f9c84d7b94e292d7f8d00
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 80bb166925964624dc4a4b9811989ab15a5cfe9a
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778896"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035676"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -80,6 +80,12 @@ ms.locfileid: "121778896"
 * 専用 vs 共有スループット
 
 詳細については、次のセクションを参照してください。
+
+### <a name="capacity-planning"></a>容量計画
+
+Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+* 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
 
 ### <a name="considerations-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用する場合の考慮事項
 
@@ -155,7 +161,8 @@ Azure Cosmos DB のデータ資産を計画する前に、次の Azure Cosmos DB
    |オンライン|[Azure Database Migration Service](../../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します <br/>&bull; 大規模なデータセットに適し、ライブ変更のレプリケーションを処理します <br/>&bull; 他の MongoDB ソースでのみ機能します|
    |オフライン|[Azure Database Migration Service](../../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します <br/>&bull; 大規模なデータセットに適し、ライブ変更のレプリケーションを処理します <br/>&bull; 他の MongoDB ソースでのみ機能します|
    |オフライン|[Azure Data Factory](../../data-factory/connector-azure-cosmos-db.md)|&bull; セットアップが簡単で、さまざまなソースをサポートします <br/>&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します <br/>&bull; 大規模なデータセットに適しています <br/>&bull; チェックポイントがなく、移行の途中で問題が発生した場合、移行プロセスを全部やり直す必要があります<br/>&bull; 配信不能キューがなく、エラーが含まれるファイルがいくつかあると、移行プロセス全体が停止することがあります <br/>&bull; 特定のデータ ソースの読み取りスループットを向上させるためのカスタム コードが必要です|
-   |オフライン|[既存の Mongo ツール (mongodump、mongorestore、Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; セットアップと統合が簡単 <br/>&bull; スロットルのカスタム処理が必要です|
+   |オフライン|[既存の Mongo ツール (mongodump、mongorestore、Studio3T)](tutorial-mongotools-cosmos-db.md)|&bull; セットアップと統合が簡単 <br/>&bull; スロットルのカスタム処理が必要です|
+   |オフライン/オンライン|[Azure Databricks と Spark](migrate-databricks.md)|&bull; 移行速度とデータ変換を完全に制御 <br/>&bull; カスタム コーディングが必要|
     
    * リソースをオフラインで移行することが可能な場合は、以下の図を参考に適切な移行ツールを選択してください。
 
@@ -195,7 +202,16 @@ Azure Cosmos DB のデータ資産を計画する前に、次の Azure Cosmos DB
 * 移行後の最適なガイドについては、[こちら](post-migration-optimization.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [Database Migration Service を使用してお使いの MongoDB データを Cosmos DB に移行する。](../../dms/tutorial-mongodb-cosmos-db.md) 
+
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
+* MongoDB 用 Azure Cosmos DB API に移行する
+   * [MongoDB ネイティブ ツールを使用したオフライン移行](tutorial-mongotools-cosmos-db.md)
+   * [Azure Database Migration Service (DMS) を使用したオフライン移行](../../dms/tutorial-mongodb-cosmos-db.md)
+   * [Azure Database Migration Service (DMS) を使用したオンライン移行](../../dms/tutorial-mongodb-cosmos-db-online.md)
+   * [Azure Databricks と Spark を使用したオフライン/オンライン移行](migrate-databricks.md)
+* [移行後のガイド](post-migration-optimization.md) - Azure Cosmos DB API for MongoDB に移行した後の最適化手順
 * [Azure Cosmos のコンテナーとデータベースにスループットをプロビジョニングする](../set-throughput.md)
 * [Azure Cosmos DB でのパーティション分割](../partitioning-overview.md)
 * [Azure Cosmos DB でのグローバル分散](../distribute-data-globally.md)

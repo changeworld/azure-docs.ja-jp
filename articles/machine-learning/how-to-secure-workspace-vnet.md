@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/04/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
-ms.openlocfilehash: 071306d550422f60f8bf8d6e8b442badce221287
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6d7faa793b296259968eb54980fe8ff8e32514f2
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739135"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105506"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning ワークスペースをセキュリティで保護する
 
@@ -67,6 +67,10 @@ ms.locfileid: "121739135"
 * Azure Machine Learning ワークスペースに、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)が含まれている必要があります。
 
 ## <a name="limitations"></a>制限事項
+
+### <a name="azure-storage-account"></a>Azure Storage アカウント
+
+Azure Machine Learning ワークスペースと Azure ストレージ アカウントがどちらもプライベート エンドポイントを使用して VNet に接続する場合、その両方が同じサブネット内に存在する必要があります。
 
 ### <a name="azure-container-registry"></a>Azure Container Registry
 
@@ -272,6 +276,10 @@ validate=False)
 
 > [!IMPORTANT]
 > __VPN ゲートウェイ__ または __ExpressRoute__ を使用する場合は、オンプレミスのリソースと VNet 内のリソース間での名前解決の仕組みを計画する必要があります。 詳細については、[カスタム DNS サーバーの使用](how-to-custom-dns.md)に関する記事を参照してください。
+
+## <a name="workspace-diagnostics"></a>ワークスペース診断
+
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

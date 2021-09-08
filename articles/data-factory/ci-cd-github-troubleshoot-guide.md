@@ -1,18 +1,21 @@
 ---
 title: ADF での CI-CD、Azure DevOps、および GitHub の問題のトラブルシューティング
+titleSuffix: Azure Data Factory & Azure Synapse
 description: さまざまな方法を使用して、ADF での CI-CD の問題のトラブルシューティングを行います。
 author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
+ms.subservice: ci-cd
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 04/27/2021
-ms.openlocfilehash: 72f58258f427c5a9414bd7627d4d121c6a89c365
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 06/27/2021
+ms.openlocfilehash: 8f94e6b0e4afd06a68263efb0d78f3962bbd8560
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060860"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866402"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF での CI-CD、Azure DevOps、および GitHub の問題のトラブルシューティング 
 
@@ -24,13 +27,13 @@ ms.locfileid: "112060860"
 
 - ADF でのソース管理については、「[Azure Data Factory のソース管理](source-control.md)」を参照してください。 
 - ADF での DevOps CI-CD の詳細については、「[Azure Data Factory における継続的インテグレーションとデリバリー](continuous-integration-deployment.md)」を参照してください。
- 
+
 ## <a name="common-errors-and-messages"></a>一般的なエラーとメッセージ
 
 ### <a name="connect-to-git-repository-failed-due-to-different-tenant"></a>テナントが異なるため、Git リポジトリへの接続に失敗しました
 
 #### <a name="issue"></a>問題
-    
+
 HTTP ステータス 401 のような認証の問題が発生することがあります。 特に、ゲストアカウントを持つテナントが複数ある場合は、問題がさらに複雑になる可能性があります。
 
 #### <a name="cause"></a>原因
@@ -65,7 +68,7 @@ CI/CD パイプラインは次のエラーで失敗します。
 
 CI/CD リリース パイプラインが次のエラーで失敗しています。
 
-`
+```output
 2020-07-06T09:50:50.8716614Z There were errors in your deployment. Error code: DeploymentFailed.
 2020-07-06T09:50:50.8760242Z ##[error]At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.
 2020-07-06T09:50:50.8771655Z ##[error]Details:
@@ -73,7 +76,7 @@ CI/CD リリース パイプラインが次のエラーで失敗しています�
 2020-07-06T09:50:50.8774148Z ##[error]DataFactoryPropertyUpdateNotSupported: Updating property type is not supported.
 2020-07-06T09:50:50.8775530Z ##[error]Check out the troubleshooting guide to see if your issue is addressed: https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment#troubleshooting
 2020-07-06T09:50:50.8776801Z ##[error]Task failed while creating or updating the template deployment.
-`
+```
 
 #### <a name="cause"></a>原因
 
@@ -81,10 +84,10 @@ CI/CD リリース パイプラインが次のエラーで失敗しています�
 
 #### <a name="recommendation"></a>推奨
 
-- 以下の CI/CD のベスト プラクティスを参照してください。
+- [CI/CD のベスト プラクティス](continuous-integration-deployment.md#best-practices-for-cicd)を参照してください
 
-    https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
 - 統合ランタイムは頻繁に変更されることはなく、CI/CD 内のすべてのステージで類似しているため、Data Factory は CI/CD のすべてのステージで同じ名前と型の統合ランタイムを使用すると想定します。 名前と型およびプロパティが異なる場合は、ソースとターゲットの統合ランタイム構成が一致していることを確認してから、リリース パイプラインをデプロイしてください。
+
 - すべてのステージで統合ランタイムを共有する場合は、共有の統合ランタイムを含めるためだけに三項ファクトリを使用することを検討してください。 この共有ファクトリは、すべての環境で、リンクされた統合ランタイムの種類として使用できます。
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>参照が無効なため、ドキュメントの作成または更新に失敗しました
@@ -182,11 +185,11 @@ Azure Resource Manager では、テンプレート サイズは 4 MB に制限�
 #### <a name="cause"></a>原因
 
 * ADF に OAuth が構成されていません。 
-* URL が正しく構成されていません。
+* URL が正しく構成されていません。 repoConfiguration は [FactoryGitHubConfiguration](/dotnet/api/microsoft.azure.management.datafactory.models.factorygithubconfiguration?view=azure-dotnet&preserve-view=true) 型でなければなりません
 
-##### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方法 
 
-最初に、ADF への OAuth アクセスを許可します。 次に、正しい URL を使用して Git Enterprise に接続する必要があります。 構成は、顧客組織に設定する必要があります。 たとえば、ADF はまず *https://hostname/api/v3/search/repositories?q=user%3<customer credential>....* 試行し、失敗します。 その後、 *https://hostname/api/v3/orgs/<org>/<repo>...* を試行し、成功します。 
+最初に、ADF への OAuth アクセスを許可します。 次に、正しい URL を使用して Git Enterprise に接続する必要があります。 構成は、顧客組織に設定する必要があります。 たとえば、ADF はまず *https://hostname/api/v3/search/repositories?q=user%3&lt;customer credential&gt;....* を試行し、失敗します。 その後、 *https://hostname/api/v3/orgs/&lt;org&gt;/&lt; repo&gt;...* を試行し、成功します。  
  
 ### <a name="cannot-recover-from-a-deleted-data-factory"></a>削除されたデータ ファクトリから復旧できない
 
@@ -247,20 +250,50 @@ CI/CD でのグローバル パラメーターで説明されているように�
 ### <a name="extra--left--displayed-in-published-json-file"></a>発行された JSON ファイルに左の "[" が余分に表示される
 
 #### <a name="issue"></a>問題
-DevOps を使用して ADF を発行すると、左の "[" がもう 1 つ表示されます。 ADF によって DevOps の ARMTemplate に、左の "[" がもう 1 つ自動的に追加されます。 
+DevOps を使用して ADF を発行すると、左の "[" がもう 1 つ表示されます。 ADF によって DevOps の ARMTemplate に、左の "[" がもう 1 つ自動的に追加されます。 JSON ファイルに "[[" のような式が表示されます。
 
 #### <a name="cause"></a>原因
 [ は ARM 用に予約された文字であるため、"[" をエスケープするために追加の [ が自動的に追加されます。
 
 #### <a name="resolution"></a>解決方法
 これは、CI/CD の ADF 発行プロセス時の通常の動作です。
+ 
+### <a name="perform-cicd-during--progressqueued-stage-of-pipeline-run"></a>パイプライン実行の進捗/キューに登録されている段階で **CI/CD** を実行します
+
+#### <a name="issue"></a>問題
+パイプライン実行の進捗/キューに登録されている段階で CI/CD を実行する必要があります。
+
+#### <a name="cause"></a>原因
+パイプラインが進行中またはキューに登録されている場合は、最初にパイプラインとアクティビティを監視する必要があります。 次に、パイプラインが終了するまで待機するか、パイプラインの実行をキャンセルするかを選択できます。 
+ 
+#### <a name="resolution"></a>解決方法
+**SDK**、**Azure Monitor**、[ADF Monitor](./monitor-visually.md) を使ってパイプラインを監視できます。 次の操作は、[ADF CI/CD ベスト プラクティス](./continuous-integration-deployment.md#best-practices-for-cicd)を参考にできます。 
+
+### <a name="perform-unit-testing-during-adf-development-and-deployment"></a>ADF の開発とデプロイ時に **単体テスト** を行います
+
+#### <a name="issue"></a>問題
+ADF パイプラインの開発およびデプロイ中に単体テストを実行します。
+
+#### <a name="cause"></a>原因
+開発とデプロイのサイクル中に、パイプラインの単体テストを行ってから、パイプラインを手動または自動で発行できます。 テストの自動化により、再現性が保証され、より短い時間でより多くのテストを実行できます。 デプロイ前にすべての ADF パイプラインを自動的に再テストすることにより、回帰エラーからの保護を行うことができます。 自動テストは CI/CD ソフトウェア開発アプローチの重要なコンポーネントです。Azure Data Factory の CI/CD デプロイ パイプラインに自動テストを含めることで、品質を大幅に向上させることができます。 長期的には、テストされた ADFパイプライン成果物を再利用してコストと時間を節約します。  
+ 
+#### <a name="resolution"></a>解像度
+顧客にはさまざまなスキル セットによる異なる単体テストの要件がある場合があるため、通常は、次の手順に従います。
+
+1. Azure DevOps CI/CD をセットアップするか、.NET/PYTHON/REST タイプの SDK ドリブン テスト戦略を開発します。
+2. CI/CD の場合は、すべてのスクリプトを含むビルド成果物を作成し、リリース パイプラインにリソースをデプロイします。 SDK ドリブンなアプローチでは、Python で PyTest を使ってテスト ユニットを開発したり、.NET SDK を使って C# **Nunit** を開発したりします。
+3. 単体テストは、リリース パイプラインの一部として、または ADF Python/PowerShell/.NET/REST SDK とは別に実行します。 
+
+たとえば、ファイル内の重複部分を削除し、キュレーションされたファイルをテーブルとしてデータベースに格納するとします。 パイプラインをテストするには、Azure DevOps を使用して CI/CD プロジェクトを設定します。
+開発したパイプラインをデプロイするテスト パイプライン ステージを設定します。 テーブル データが期待どおりのものであることを確認するために、テスト ステージを構成して、Python テストを実行します。 CI/CD を使用していない場合は、**Nunit** を使用して、必要なテストでデプロイされたパイプラインをトリガーします。 結果に問題がなければ、最後にパイプラインを運用データ ファクトリに公開できます。 
+
 
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングの詳細について、次のリソースを参照してください。
 
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Data Factory に関する Stack overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)

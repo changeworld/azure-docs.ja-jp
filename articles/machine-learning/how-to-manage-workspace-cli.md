@@ -10,19 +10,19 @@ author: Blackmist
 ms.date: 04/02/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7181a82cd8dcfc74caa860ef0570793582f55b27
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 65445d67f87e5c10aef6f7e8b7e20e0908271a21
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183155"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034602"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Azure CLI を使用して Azure Machine Learning ワークスペースを管理する
 
 この記事では、Azure CLI を使用して Azure Machine Learning ワークスペースを作成および管理する方法について説明します。 Azure CLI には、Azure リソースを管理するためのコマンドが用意されています。また、オートメーションに重点を置くことで、Azure で迅速に作業できるように設計されています。 CLI の機械学習拡張機能には、Azure Machine Learning リソースを操作するためのコマンドが用意されています。
 
 > [!NOTE]
-> この記事の例では、1.0 CLI と 2.0 CLI の両方のバージョンを参照します。 機械学習 2.0 CLI は現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
+> この記事の例では、1.0 CLI と CLI (v2) の両方のバージョンを参照します。 機械学習 CLI (v2) は現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -121,7 +121,7 @@ az ml workspace create -w <workspace-name>
                        --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
 ```
 
-# <a name="bring-existing-resources-20-cli---preview"></a>[既存のリソースを持ち込む (2.0 CLI - プレビュー)](#tab/bringexistingresources2)
+# <a name="bring-existing-resources-cli-v2---preview"></a>[既存のリソースを持ち込む (CLI (v2) - プレビュー)](#tab/bringexistingresources2)
 
 CLI を使用して既存の関連リソースを取り込むときに新しいワークスペースを作成するには、まず、構成ファイル内でワークスペースを構成する方法を定義する必要があります。
 
@@ -206,9 +206,9 @@ az ml workspace create -w <workspace-name>
 
 これらのコマンドの使用方法の詳細については、[CLI リファレンス ページ](/cli/azure/ml(v1)/workspace)をご覧ください。
 
-# <a name="20-cli---preview"></a>[2.0 CLI - プレビュー](#tab/vnetpleconfigurationsv2cli)
+# <a name="cli-v2---preview"></a>[CLI (v2) - プレビュー](#tab/vnetpleconfigurationsv2cli)
 
-2\.0 CLI を使用してご自身のワークスペースのプライベート ネットワーク接続を設定するには、ワークスペース構成ファイルを拡張して、プライベート リンク エンドポイント リソースの詳細を追加します。
+CLI (v2) を使用してご自身のワークスペースのプライベート ネットワーク接続を設定するには、ワークスペース構成ファイルを拡張して、プライベート リンク エンドポイント リソースの詳細を追加します。
 
 ```yaml workspace.yml
 name: azureml888
@@ -238,16 +238,13 @@ az ml workspace create -w <workspace-name> -g <resource-group-name> --file works
 
 ---
 
-> [!IMPORTANT]
-> Azure Government リージョンでは、プライベート エンドポイントで Azure Machine Learning ワークスペースを使用することはできません。
-
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>カスタマー マネージド キーと High Business Impact ワークスペース
 
 ワークスペースのメタデータは、既定で Microsoft が管理する Azure Cosmos DB インスタンスに格納されます。 このデータは Microsoft のマネージド キーで暗号化されます。 Microsoft のマネージド キーを使用する代わりに、独自のキーを指定することもできます。 これにより、ご自身の Azure サブスクリプション内に、お使いのデータを格納するための追加のリソース セットが作成されます。
 
 暗号化用の独自のキーを持ち込むときに作成されるリソースの詳細については、[Azure Machine Learning を使用したデータの暗号化](./concept-data-encryption.md#azure-cosmos-db)に関するページをご覧ください。
 
-以下の CLI コマンドは、暗号化にカスタマー マネージド キーを使用するワークスペースを、1.0 CLI バージョンおよび 2.0 CLI バージョンを使って作成する例を示しています。
+以下の CLI コマンドは、暗号化にカスタマー マネージド キーを使用するワークスペースを、1.0 CLI バージョンおよび CLI (v2) バージョンを使って作成する例を示しています。
 
 # <a name="10-cli"></a>[1.0 CLI](#tab/vnetpleconfigurationsv1cli)
 
@@ -263,7 +260,7 @@ az ml workspace create -w <workspace-name>
                        --hbi-workspace
 ```
 
-# <a name="20-cli---preview"></a>[2.0 CLI - プレビュー](#tab/vnetpleconfigurationsv2cli)
+# <a name="cli-v2---preview"></a>[CLI (v2) - プレビュー](#tab/vnetpleconfigurationsv2cli)
 
 `customer_managed_key` パラメーターと、それに含まれる `key_vault` パラメーターおよび `key_uri` パラメータを使って、コンテナー内のキーのリソース ID と URI を指定します。
 

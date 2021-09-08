@@ -1,18 +1,17 @@
 ---
 title: 'Azure ExpressRoute: 監視、メトリック、およびアラート'
 description: Azure 全体のすべてのメトリック、アラート、診断ログを一元的に管理できる Azure Monitor を使用した、Azure ExpressRoute の監視、メトリクス、およびアラートについて説明します。
-services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.author: duau
-ms.openlocfilehash: 44ddf54aac61ab00009e7e2cc820b38074c5e8c3
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: abcec496f6bf3fdcd42dcffa66ecfb67533c7052
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725784"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449497"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute の監視、メトリック、およびアラート
 
@@ -42,22 +41,22 @@ ms.locfileid: "107725784"
 
 |**メトリック**|**カテゴリ**|**ディメンション**|**機能**|
 | --- | --- | --- | --- |
-|ARP の可用性|可用性|<ui><li>ピア (プライマリ/セカンダリの ExpressRoute ルーター)</ui></li><ui><li> ピアリングの種類 (プライベート/パブリック/Microsoft)</ui></li>|ExpressRoute|
-|BGP の可用性|可用性|<ui><li> ピア (プライマリ/セカンダリの ExpressRoute ルーター)</ui></li><ui><li> ピアリングの種類</ui></li>|ExpressRoute|
-|BitsInPerSecond (受信ビット数/秒)|トラフィック|<ui><li> ピアリングの種類 (ExpressRoute)</ui></li><ui><li>リンク (ExpressRoute Direct)</ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct</li><ui><li>ExpressRoute ゲートウェイの接続</ui></li>|
-|BitsOutPerSecond (送信ビット数/秒)|トラフィック| <ui><li>ピアリングの種類 (ExpressRoute)</ui></li><ui><li> リンク (ExpressRoute Direct) |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li><ui><li>ExpressRoute ゲートウェイの接続</ui></li>|
-|CPU 使用率|パフォーマンス| <ui><li>インスタンス</ui></li>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|1 秒あたりのパケット数|パフォーマンス| <ui><li>インスタンス</ui></li>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|ピアにアドバタイズされたルートの数 |可用性| <ui><li>インスタンス</ui></li>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|ピアから学習したルートの数 |可用性| <ui><li>インスタンス</ui></li>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|ルート変更の頻度 |可用性| <ui><li>インスタンス</ui></li>|ExpressRoute 仮想ネットワーク ゲートウェイ|
+|ARP の可用性|可用性|<ul><li>ピア (プライマリ/セカンダリの ExpressRoute ルーター)</li><li> ピアリングの種類 (プライベート/パブリック/Microsoft)</li></ul>|ExpressRoute|
+|BGP の可用性|可用性|<ul><li> ピア (プライマリ/セカンダリの ExpressRoute ルーター)</li><li> ピアリングの種類</li></ul>|ExpressRoute|
+|BitsInPerSecond (受信ビット数/秒)|トラフィック|<ul><li> ピアリングの種類 (ExpressRoute)</li><li>リンク (ExpressRoute Direct)</li></ul>|<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute ゲートウェイの接続</li></ul>|
+|BitsOutPerSecond (送信ビット数/秒)|トラフィック| <ul><li>ピアリングの種類 (ExpressRoute)</li><li> リンク (ExpressRoute Direct)</li></ul> |<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute ゲートウェイの接続</li></ul>|
+|CPU 使用率|パフォーマンス| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
+|1 秒あたりのパケット数|パフォーマンス| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
+|ピアにアドバタイズされたルートの数 |可用性| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
+|ピアから学習したルートの数 |可用性| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
+|ルート変更の頻度 |可用性| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
 |仮想ネットワーク内の VM の数 |可用性| 該当なし |ExpressRoute 仮想ネットワーク ゲートウェイ|
-|GlobalReachBitsInPerSecond|トラフィック|<ui><li>ピアリングされた回線 Skey (サービス キー)</ui></li>|Global Reach|
-|GlobalReachBitsOutPerSecond|トラフィック|<ui><li>ピアリングされた回線 Skey (サービス キー)</ui></li>|Global Reach|
+|GlobalReachBitsInPerSecond|トラフィック|<ul><li>ピアリングされた回線 Skey (サービス キー)</li></ul>|Global Reach|
+|GlobalReachBitsOutPerSecond|トラフィック|<ul><li>ピアリングされた回線 Skey (サービス キー)</li></ul>|Global Reach|
 |AdminState|物理的な接続性|Link|ExpressRoute Direct|
 |LineProtocol|物理的な接続性|Link|ExpressRoute Direct|
-|RxLightLevel|物理的な接続性|<ui><li>リンク</ui></li><ui><li>レーン</ui></li>|ExpressRoute Direct|
-|TxLightLevel|物理的な接続性|<ui><li>リンク</ui></li><ui><li>レーン</ui></li>|ExpressRoute Direct|
+|RxLightLevel|物理的な接続性|<ul><li>Link</li><li>レーン</li></ul>|ExpressRoute Direct|
+|TxLightLevel|物理的な接続性|<ul><li>Link</li><li>レーン</li></ul>|ExpressRoute Direct|
 >[!NOTE]
 >*GlobalGlobalReachBitsInPerSecond* と *GlobalGlobalReachBitsOutPerSecond* の使用は、少なくとも 1 つの Global Reach 接続が確立されている場合にのみ表示されます。
 >

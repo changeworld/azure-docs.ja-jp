@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 08/23/2021
 ms.custom: amqp, devx-track-js
-ms.openlocfilehash: f8cf2faac9914b7b9fafd8355c2070c5d3a6f0e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2028bed00624526c021668076c4d7feaba7aa07c
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751981"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830110"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要
 
@@ -123,7 +123,7 @@ ms.locfileid: "121751981"
 ノード add.js を使用してこれを実行します。 これにより、デバイス ID とモジュール ID の各接続文字列を取得できます。
 
 > [!NOTE]
-> IoT ハブの ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID とモジュール ID のみが格納されます。 ID レジストリには、セキュリティ資格情報として使用されるデバイス ID とキーが格納されます。 ID レジストリには、そのデバイスのアクセスを無効にするために使用できる各デバイスの有効/無効フラグも格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 モジュール ID 用の有効/無効フラグはありません。 詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide-identity-registry.md)をご覧ください。
+> IoT ハブの ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID とモジュール ID のみが格納されます。 ID レジストリには、セキュリティ資格情報として使用されるデバイス ID とキーが格納されます。 ID レジストリには、そのデバイスのアクセスを無効にするために使用できる各デバイスの有効/無効フラグも格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 モジュール ID 用の有効/無効フラグはありません。 詳細は、「[IoT Hub 開発者ガイドの IoT Hub への ID レジストリの理解](iot-hub-devguide-identity-registry.md)」を参照してください。
 
 ## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>Node.js デバイス SDK を使用してモジュール ツインを更新する
 
@@ -136,7 +136,7 @@ ms.locfileid: "121751981"
 2. 前述の手順で行ったように、デバイス コードのディレクトリを作成し、NPM を使用してこれを初期化して、デバイス SDK (**npm install -S azure-iot-device-amqp\@modules-preview**) をインストールします。
 
    > [!NOTE]
-   > npm install コマンドが遅くなったように感じる場合があります。 パッケージ リポジトリから多数のコードがプルダウンされます。
+   > npm install コマンドが遅くなったように感じる場合があります。 パッケージ リポジトリから大量のコードがプル ダウンされますので、しばらくお待ちください。
 
    > [!NOTE]
    > json の解析中に npm ERR! レジストリ エラーが発生したというエラーが表示されたら、 そのエラーは無視できます。 json の解析中に npm ERR! レジストリ エラーが発生したというエラーが表示されたら、 そのエラーは無視できます。

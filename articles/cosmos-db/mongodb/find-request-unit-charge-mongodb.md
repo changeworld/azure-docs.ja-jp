@@ -6,14 +6,14 @@ ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 08/26/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b3a43805e77157b875948ca093c5f04935ffe68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c2ad6ef764fa13a6876f1727314d5a7944ce7d31
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778905"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035217"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API で実行された操作の要求ユニット使用量を確認する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -97,3 +97,6 @@ RU 使用量を最適化する方法については、次の記事をご覧く�
 * [Azure Cosmos DB における要求ユニットとスループット](../request-units.md)
 * [Azure Cosmos DB でのプロビジョニングされたスループット コストを最適化する](../optimize-cost-throughput.md)
 * [Azure Cosmos DB でのクエリ コストを最適化する](../optimize-cost-reads-writes.md)
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください

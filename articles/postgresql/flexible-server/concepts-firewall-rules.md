@@ -1,71 +1,77 @@
 ---
-title: ファイアウォール規則 - Azure Database for PostgreSQL - フレキシブル サーバー
-description: この記事では、ファイアウォール規則を使用して、パブリック ネットワーク展開オプションを備えた Azure Database for PostgreSQL - フレキシブル サーバーに接続する方法について説明します。
+title: Azure Database for PostgreSQL - フレキシブル サーバーにおけるファイアウォール規則
+description: この記事では、ファイアウォール規則を使用して、パブリック ネットワーク デプロイ オプションを備えた Azure Database for PostgreSQL - フレキシブル サーバーに接続する方法について説明します。
 author: gennadNY
 ms.author: gennadyk
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: f1946f1a0483b2627018c32cf99ec503ed2cf5f5
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: bdda8163bacd596eafab2a9b2d10d914012a3efb
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114732233"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866870"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーにおけるファイアウォール規則
-Azure Database for PostgreSQL - フレキシブル サーバーを実行するときに、2 つの主要なネットワーク オプション選択できます。 これらのオプションは、プライベート アクセス (VNet 統合) とパブリック アクセス (許可されている IP アドレス) です。 パブリック アクセスの場合、フレキシブル サーバーにはパブリック エンドポイントを介してアクセスされます。
-パブリック アクセス オプションが選択されている場合、Azure Database for PostgreSQL サーバーは既定でセキュリティ保護されるため、どの IP ホストがアクセスを許可されるかを指定するまで、データベース サーバーへのすべてのアクセスが阻止されます。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
-ファイアウォールを構成するには、受け入れ可能な IP アドレスの範囲を指定するファイアウォール規則を作成します。 ファイアウォール規則はサーバー レベルで作成できます。
-**ファイアウォール規則**:この規則により、クライアントは、Azure Database for PostgreSQL サーバー全体、つまり、同じ論理サーバー内のすべてのデータベースにアクセスできるようになります。 サーバー レベルのファイアウォール規則を構成するには、Azure Portal または Azure CLI コマンドを使用します。 サーバー レベルのファイアウォール規則を作成するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
+Azure Database for PostgreSQL - フレキシブル サーバーを実行しているとき、主なネットワーク オプションとして次の 2 つがあります。 これらのオプションは、プライベート アクセス (仮想ネットワーク統合)とパブリック アクセス (許可されている IP アドレス) です。 
 
-## <a name="firewall-overview"></a>ファイアウォールの概要
-既定では、ファイアウォールによって Azure Database for PostgreSQL サーバーへのすべてのアクセスがブロックされます。 このサーバーに別のコンピューターやクライアントまたはアプリケーションからアクセスするには、サーバーへのアクセスを有効にするために、サーバー レベルのファイアウォール規則を 1 つ以上指定する必要があります。 許可されるパブリック IP アドレス範囲を指定するには、ファイアウォール規則を使用します。 Azure Portal Web サイト自体へのアクセスは、ファイアウォール規則の影響は受けません。
-次の図に示すように、インターネットや Azure からの接続試行は、PostgreSQL データベースに到達する前に、まずファイアウォールを通過する必要があります。
+パブリック アクセスを使用すると、Azure Database for PostgreSQL サーバーへのアクセスはパブリック エンドポイント経由となります。 既定では、ファイアウォールによってサーバーへのすべてのアクセスがブロックされます。 サーバーにアクセスできる IP ホストを指定するには、サーバー レベルの *ファイアウォール規則* を作成します。 ファイアウォール規則は、許可されるパブリック IP アドレス範囲を指定します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
 
-:::image type="content" source="../media/concepts-firewall-rules/1-firewall-concept.png" alt-text="ファイアウォールのしくみを示すサンプル フロー":::
+Microsoft Azure portal または Azure CLI コマンドを使用してファイアウォール規則を作成できます。 サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
 
-## <a name="connecting-from-the-internet"></a>インターネットからの接続
-サーバー レベルのファイアウォール規則は、同じ Azure Database for PostgreSQL サーバー上のすべてのデータベースに適用されます。 要求のソース IP アドレスがサーバー レベルのファイアウォール規則で指定されているいずれかの範囲内にある場合は、接続が許可され、そうでない場合は拒否されます。 たとえば、アプリケーションが PostgreSQL の JDBC ドライバーで接続している場合、ファイアウォールによって接続がブロックされているときに接続しようとすると、次のエラーが発生する可能性があります。
+サーバー レベルのファイアウォール規則は、同じ Azure Database for PostgreSQL サーバー上のすべてのデータベースに適用されます。 ルールは、Azure portal の Web サイトへのアクセスに影響しません。
+
+以下の図のとおり、インターネットや Azure からの接続試行は、PostgreSQL データベースに到達する前に、ファイアウォールを通過する必要があります。
+
+:::image type="content" source="../media/concepts-firewall-rules/1-firewall-concept.png" alt-text="ファイアウォールのしくみの概要を示す図。":::
+
+## <a name="connect-from-the-internet"></a>インターネットからの接続
+要求のソース IP アドレスがサーバーレベルのファイアウォール規則で指定されたいずれかの IP アドレス範囲内にある場合は、接続が許可されます。 それ以外の場合は拒否されます。 
+
+たとえば、アプリケーションが PostgreSQL の Java Database Connectivity (JDBC) ドライバーで接続している場合、ファイアウォールが接続をブロックしているため、次のエラーが発生する可能性があります。
+
 > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:FATAL: no pg\_hba.conf entry for host "123.45.67.890", user "adminuser", database "postgresql", SSL
 
-## <a name="connecting-from-azure"></a>Azure からの接続
-任意のアプリケーションまたはサービスの発信 IP アドレスを見つけ、これらの個々の IP アドレスまたは範囲へのアクセスを明示的に許可することをお勧めします。 たとえば、Azure App Service の発信 IP アドレスを見つけることも、仮想マシンまたはその他のリソースに関連付けられているパブリック IP を使用することもできます (サービス エンドポイントを介した仮想マシンのプライベート IP との接続の詳細については、以下を参照してください)。 
+## <a name="connect-from-azure"></a>Azure から接続する
+任意のアプリケーションまたはサービスの発信 IP アドレスを見つけ、これらの個々の IP アドレスまたは範囲へのアクセスを明示的に許可することをお勧めします。 例えば、Azure App Service アプリの発信 IP アドレスを見つけたり、仮想マシンに結びついているパブリック IP アドレスを利用したりすることができます。 
 
-ご使用の Azure サービスに対して固定の発信 IP アドレスが使用できない場合は、すべての Azure データセンターの IP アドレスからの接続を有効にすることを検討できます。 この設定は、Azure portal から **[接続のセキュリティ]** ウィンドウで、 **[Azure サービスへのアクセス許可]** オプションを **[オン]** にし、 **[保存]** を押すことで設定できます。 Azure CLI からは、ファイアウォール規則の設定で開始アドレスと終了アドレスを 0.0.0.0 にすることで同じことができます。 接続試行がファイアウォール規則によって拒否された場合、その試行は Azure Database for PostgreSQL サーバーに到達しません。
+ご使用の Azure サービスに対して固定の発信 IP アドレスが使用できない場合は、Azure データセンターのすべての IP アドレスからの接続を有効にすることを検討します。
+
+1. Azure portal の **[ネットワーク]** ペインで、 **[Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する]** チェックボックスを選択します。 
+1. **[保存]** を選択します。 
 
 > [!IMPORTANT]
-> **[Azure サービスへのアクセス許可]** オプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
-> 
+> **[Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する]** オプションを選択すると、他の顧客のサブスクリプションからの接続を含め、Azure サービスからのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、サインインおよびユーザーのアクセス許可が制限されていることを確認してください。 
 
-:::image type="content" source="../media/concepts-firewall-rules/allow-azure-services.png" alt-text="ポータルで [Azure サービスへのアクセスを許可] を構成する":::
-## <a name="programmatically-managing-firewall-rules"></a>ファイアウォール規則のプログラムによる管理
-ファイアウォール規則は、Azure Portal に加え、Azure CLI を使用してプログラムで管理することができます。
+:::image type="content" source="./media/concepts-firewall-rules/allow-public-access.png" alt-text="ポータルで Azure サービスへのアクセスを許可する選択を示すスクリーンショット。":::
 
+## <a name="programmatically-manage-firewall-rules"></a>プログラムによってファイアウォール規則を管理する
+ファイアウォール規則は、Microsoft Azure portal の使用に加え、Azure CLI を使用してプログラムで管理することができます。 
 
-## <a name="troubleshooting-firewall-issues"></a>ファイアウォールの問題のトラブルシューティング
-Microsoft Azure Database for PostgreSQL サーバー サービスに期待どおりにアクセスできない場合は、次の点を検討してください。
+Azure CLI から、開始アドレスと終了アドレスが 0.0.0.0 のファイアウォール規則設定では、ポータルの **[Azure 内の任意の Azure サービスからこのサーバーへのパブリック アクセスを許可する]** オプションに相当します。 接続試行がファイアウォール規則によって拒否された場合、そのアプリは Azure Database for PostgreSQL サーバーに到達しません。
 
-* **許可一覧に変更が反映されない:** Azure Database for PostgreSQL サーバーのファイアウォール構成に対する変更が反映されるまで最大 5 分間の遅延が発生する場合があります。
+## <a name="troubleshoot-firewall-problems"></a>ファイアウォールの問題のトラブルシューティング
+Azure Database for PostgreSQL サーバーに期待どおりにアクセスできない場合は、次の可能性を検討してください。
 
-* **ログインが許可されない、または正しくないパスワードが使用された:** Azure Database for PostgreSQL サーバーでは、ログインのアクセス許可がないか、使用したパスワードが正しくない場合、Azure Database for PostgreSQL サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、サーバーへの接続を試行する機会をクライアントに提供するだけです。そのため、各クライアントは、必要なセキュリティ資格情報を提供する必要があります。
+* **許可リストに対する変更がまだ有効にされていない**: Azure Database for PostgreSQL サーバーのファイアウォール構成に対する変更には、最大で 5 分かかる場合があります。
 
-   たとえば、JDBC クライアントを使用すると、次のエラーが表示されることがあります。
-   > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:FATAL: password authentication failed for user "yourusername"
+* **サインインが許可されない、または正しくないパスワードが使用された**: Azure Database for PostgreSQL サーバーでは、サインインのアクセス許可がないか、パスワードが正しくない場合、サーバーへの接続は拒否されます。 ファイアウォール設定を作成しても、クライアントはサーバーへの接続を試行できるようになるだけです。 各クライアントは、必要なセキュリティ資格情報を提供する必要があることに変わりはありません。
 
-* **動的 IP アドレス:** 動的 IP アドレス指定によるインターネット接続を使用しており、ファイアウォールの通過に問題が発生している場合は、次の解決策のいずれかをお試しください。
+  たとえば、JDBC クライアントの認証が失敗した場合、次のエラーが表示される場合があります。
 
-   * Azure Database for PostgreSQL サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせ、ファイアウォール規則として、その IP アドレス範囲を追加してください。
+  > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:FATAL: password authentication failed for user "yourusername"
 
-   * 代わりに、クライアント コンピューター用に静的 IP アドレスを取得し、ファイアウォール規則としてその静的 IP アドレス範囲を追加してください。
+* **ファイアウォールが動的 IP アドレスを許可しない:** 動的 IP アドレス指定によるインターネット接続を使用しており、ファイアウォールの通過に問題が発生している場合は、次の解決策のいずれかをお試しください。
 
-  
+  * Azure Database for PostgreSQL サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせます。 その後、ファイアウォール規則としてその IP アドレス範囲を追加します。
 
+  * 代わりに、クライアント コンピューター用に静的 IP アドレスを取得し、ファイアウォール規則としてその静的 IP アドレス範囲を追加してください。
 
-* **ファイアウォール規則が IPv6 形式で使用できない:** ファイアウォール規則は IPv4 形式である必要があります。 IPv6 形式でファイアウォール規則を指定すると、検証エラーが表示されます。
+* **ファイアウォール規則が IPv6 形式で使用できない**: ファイアウォール規則は IPv4 形式である必要があります。 IPv6 形式でファイアウォール規則を指定すると、検証エラーが返されます。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Portal を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理](how-to-manage-firewall-portal.md)
+* [Microsoft Azure portal を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理](how-to-manage-firewall-portal.md)
 * [Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理](how-to-manage-firewall-cli.md)

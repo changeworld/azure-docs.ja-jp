@@ -9,14 +9,14 @@ ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 9/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f40e3478a10a1a141e02510d88f4564062ff2ce5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 894d16e1a72243bee9aff1fff2778ec75c2af6ec
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752180"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227154"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>SQL IaaS Agent 拡張機能への自動登録
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "121752180"
 Azure portal で自動登録機能を有効にすると、Azure Virtual Machines (VM) 上の既存および今後のすべての SQL Server は軽量モードで [SQL IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に自動的に登録されます。 
 
 この記事では、自動登録機能を有効にする方法について説明します。 また、SQL IaaS Agent 拡張機能に [1 つの VM を登録する](sql-agent-extension-manually-register-single-vm.md)ことや、[複数の VM を一括で登録する](sql-agent-extension-manually-register-vms-bulk.md)こともできます。 
+
+> [!NOTE]
+> 2021 年 9 月以降は、SQL IaaS 拡張機能をフル モードで登録しても、SQL Server サービスを再起動する必要はありません。 
 
 ## <a name="overview"></a>概要
 

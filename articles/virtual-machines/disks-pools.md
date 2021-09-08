@@ -8,12 +8,12 @@ ms.date: 07/23/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b0dfb510ecf1722f1b8df9289a864ecd519be055
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: ea06b3c4fdf9be626df99f4a06f4190ce86df4b3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653149"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433280"
 ---
 # <a name="azure-disk-pools-preview"></a>Azure ディスク プール (プレビュー)
 
@@ -32,7 +32,7 @@ Azure リソースである Azure ディスク プール (プレビュー) を�
 プレビューのディスク プールには、次の制限があります。
 
 - ディスク プールに追加できるのは、Premium SSD または Ultra Disk のみです。
-- [ゾーン冗長ストレージ (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview) を使用するディスクは現在サポートされていません。 
+- [ゾーン冗長ストレージ (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) を使用するディスクは現在サポートされていません。 
 
 ### <a name="regional-availability"></a>リージョン別の提供状況
 

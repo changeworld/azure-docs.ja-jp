@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/01/2020
-ms.openlocfilehash: cae8c1564d9ba03d48f5ac8dcc1eb23b36589df4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 98458a624a9c0d713e518e3fda442b8e45209d25
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733172"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123036508"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>オンプレミスまたはクラウドのデータを Azure Cosmos DB に移行するためのオプション
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,6 +41,9 @@ ms.locfileid: "121733172"
 
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 
+容量計画に関するサポートが必要な場合は、[Azure Cosmos DB キャパシティ プランナーで RU/s を見積もる方法に関するガイド](estimate-ru-with-capacity-planner.md)を読むことを検討してください。 
+* 仮想コアまたはサーバー ベースのプラットフォームから移行するのに、要求ユニットを見積もる方法のガイドが必要な場合は、[仮想コアから RU/s を見積もる方法に関するガイド](estimate-ru-with-capacity-planner.md)を読むことを検討してください。
+
 |移行の種類|解決策|サポートされているソース|サポート対象|考慮事項|
 |---------|---------|---------|---------|---------|
 |オフライン|[データ移行ツール](import-data.md)| &bull;JSON/CSV ファイル<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;Table Storage<br/>&bull;AWS DynamoDB<br/>&bull;Azure Blob Storage|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB Tables API<br/>&bull;JSON ファイル |&bull; セットアップが簡単で、さまざまなソースをサポートします。 <br/>&bull; 大規模なデータセットには適していません。|
@@ -53,6 +56,20 @@ ms.locfileid: "121733172"
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
 
+[移行前ガイド](mongodb/pre-migration-steps.md)の説明に従って、移行の計画を立てます。 
+* 容量計画に関するサポートが必要な場合は、[Azure Cosmos DB キャパシティ プランナーで RU/s を見積もる方法に関するガイド](estimate-ru-with-capacity-planner.md)を読むことを検討してください。 
+* 仮想コアまたはサーバー ベースのプラットフォームから移行するのに、要求ユニットを見積もる方法のガイドが必要な場合は、[仮想コアから RU/s を見積もる方法に関するガイド](convert-vcore-to-request-unit.md)を読むことを検討してください。
+
+移行準備を終えて移行ツールを使用するときは、下に挙げる詳細なガイドを利用できます
+* [MongoDB ネイティブ ツールによるオフライン移行](mongodb/tutorial-mongotools-cosmos-db.md)
+* [Azure Database Migration Service (DMS) によるオフライン移行](../dms/tutorial-mongodb-cosmos-db.md)
+* [Azure Database Migration Service (DMS) によるオンライン移行](../dms/tutorial-mongodb-cosmos-db-online.md)
+* [Azure Databricks と Spark によるオフライン/オンライン移行](mongodb/migrate-databricks.md)
+
+移行を終えたら、[移行後ガイド](mongodb/post-migration-optimization.md)の説明に従って Azure Cosmos DB のデータ資産を最適化します。
+
+現在のソリューションから Azure Cosmos DB API for MongoDB への移行様式を下にまとめます。
+
 |移行の種類|解決策|サポートされているソース|サポート対象|考慮事項|
 |---------|---------|---------|---------|---------|
 |オンライン|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB|MongoDB 用 Azure Cosmos DB API |&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します。 <br/>&bull; 大規模なデータセットに適し、ライブ変更のレプリケーションを処理します。 <br/>&bull; 他の MongoDB ソースでのみ機能します。|
@@ -61,6 +78,8 @@ ms.locfileid: "121733172"
 |オフライン|[既存の Mongo ツール (mongodump、mongorestore、Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|MongoDB | MongoDB 用 Azure Cosmos DB API| &bull; セットアップと統合が簡単です。 <br/>&bull; スロットルのカスタム処理が必要です。|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API
+
+容量計画に関するサポートが必要な場合は、[Azure Cosmos DB キャパシティ プランナーで RU/s を見積もる方法に関するガイド](estimate-ru-with-capacity-planner.md)を読むことを検討してください。 
 
 |移行の種類|解決策|サポートされているソース|サポート対象|考慮事項|
 |---------|---------|---------|---------|---------|
@@ -85,6 +104,9 @@ SQL API、Mongo API、Cassandra API 以外の API については、API の既�
 
 ## <a name="next-steps"></a>次のステップ
 
+* Azure Cosmos DB への移行のための容量計画を立てる場合。
+    * 既存のデータベース クラスターの仮想コアとサーバーの数しか分からない場合は、[仮想コアと仮想 CPU を使用して要求ユニットを見積もる方法](convert-vcore-to-request-unit.md)に関する記事を読みます 
+    * 現在のデータベース ワークロードの通常の要求量が分かる場合は、[Azure Cosmos DB キャパシティ プランナーを使用して要求ユニットを見積もる方法](estimate-ru-with-capacity-planner.md)に関する記事を読みます
 * [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。 
 * Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](./create-sql-api-spark.md)に関する記事をご覧ください。  
 * 大規模な移行に関して別途支援が必要な場合は、問題のタイプに "General Advisory (一般的な勧告)" を、問題のサブタイプに "Large (TB+) migrations (大規模な (TB 以上の) 移行)" を選択してサポート チケットを開き、Azure Cosmos DB 製品チームに連絡します。

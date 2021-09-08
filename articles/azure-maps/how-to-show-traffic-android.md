@@ -1,20 +1,20 @@
 ---
 title: Android マップに交通情報データを表示する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップに交通情報データを表示する方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 012fdf6e35b0b0c27f8ad9afe10b5f70709fcc64
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 34d5db3b9c7a1f5829850d999cf94fc1a13c167a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093564"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437744"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>マップに交通情報データを表示する (Android SDK)
 

@@ -1,14 +1,25 @@
 ---
-ms.openlocfilehash: d7780da3ad23c0c157284839c5063c6c015a42a6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 57d211a7a080cc07d30a5810c4e1660c575acff3
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121800879"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123078547"
 ---
 この記事では、これまでにリリースされた Azure Active Directory Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 
 
 Microsoft では、エージェントの最新バージョンと 1 つ前のバージョンを直接サポートしています。
+
+## <a name="download-link"></a>ダウンロード リンク
+最新バージョンのエージェントは、[このリンク](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller)からダウンロードできます。
+
+## <a name="115840"></a>1.1.584.0 
+
+2021 年 8 月 20 日 - ダウンロード開始
+
+### <a name="fixed-issues"></a>修正された問題
+
+- ドメインの名前が変更された場合、イベント ログに「指定されたキャストが無効です」というエラーが表示され、パスワード ハッシュ同期が失敗するバグを修正しました。 これは、以前のビルドからの回帰です。
 
 ## <a name="115820"></a>1.1.582.0
 
@@ -16,7 +27,6 @@ Microsoft では、エージェントの最新バージョンと 1 つ前のバ�
 
 >[!NOTE] 
 >これは Azure AD Connect のセキュリティ更新プログラム リリースです。 このリリースで[こちらの CVE](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) に記載されている脆弱性に対処します。 この脆弱性に関する詳細については、CVE を参照してください。
->このリリースは[こちらのリンク](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller)からダウンロードできます。
 
 ## <a name="113590"></a>1.1.359.0
 
@@ -49,7 +59,7 @@ Microsoft では、エージェントの最新バージョンと 1 つ前のバ�
 ### <a name="fixed-issues"></a>修正された問題
 -    スコープ グループがスコープ外になったときに検疫を防止
 -   スコープ フィルターが構成されている場合 - PHS ジョブはスコープ内のユーザーに対してのみ動作するようになりました
--   アップグレード中にエージェントがハングすることがある
+-   アップグレード中にエージェントが時々応答しない
 -   OU スコープ使用時における入れ子になった OU 内のオブジェクトの初期同期
 -   Repair-AADCloudSyncToolsAccount の堅牢性を向上
 -   OU スコープ フィルターでの大量のメモリ使用量を削減

@@ -3,12 +3,12 @@ title: Azure コンテナー レジストリを別のリージョンに移動す
 description: Azure コンテナー レジストリの設定とデータを別の Azure リージョンに手動で移動します。
 ms.topic: article
 ms.date: 06/08/2021
-ms.openlocfilehash: 4e0afb418fbb0b33330c3fb82fd04370f0c3ee99
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e2bc00287923a95e2e4d3698b22c4c2ca65bebc6
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286314"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835891"
 ---
 # <a name="manually-move-a-container-registry-to-another-region"></a>コンテナー レジストリを別のリージョンに手動で移動する
 
@@ -20,7 +20,6 @@ Azure リージョン間での Azure コンテナー レジストリの移動が
 * テンプレートを使用して別の Azure リージョン内でレジストリをデプロイする
 * ソース レジストリからターゲット レジストリにレジストリ コンテンツをインポートする
 
-
 [!INCLUDE [container-registry-geo-replication-include](../../includes/container-registry-geo-replication-include.md)]
 
 ## <a name="prerequisites"></a>前提条件
@@ -31,8 +30,10 @@ Azure CLI
 
 ## <a name="considerations"></a>考慮事項
 
-* この記事の手順を使用して、レジストリを、同じサブスクリプション内の別のリージョンに移動します。 レジストリを別の Azure サブスクリプションまたは Active Directory テナントに移動するには、さらに構成が必要です。 
-* Resource Manager テンプレートをエクスポートして使用すると、多くのレジストリ設定を再作成するのに役立ちます。 テンプレートを編集して追加の設定を構成したり、作成後にターゲット レジストリを更新したりできます。
+* この記事の手順を使用して、レジストリを、同じサブスクリプション内の別のリージョンに移動します。 レジストリを別の Azure サブスクリプションまたは同じ Active Directory テナントに移動するには、さらに構成が必要な場合があります。
+* Resource Manager テンプレートをエクスポートして使用すると、多くのレジストリ設定を再作成するのに役立ちます。 テンプレートを編集してさらに設定を構成したり、作成後にターゲット レジストリを更新したりできます。
+* 現在、Azure Container Registry によって、異なる Active Directory テナントへのレジストリの移動はサポートされていません。 この制限は、[カスタマー マネージド キー](container-registry-customer-managed-keys.md)で暗号化されたレジストリと暗号化されていないレジストリの両方に適用されます。
+* レジストリを移動できない場合は、この記事で説明されているように、新しいレジストリを作成し、設定を手動で作成し直して、[ターゲット レジストリ にレジストリ コンテンツをインポート](#import-registry-content-in-target-registry)します。
 
 ## <a name="export-template-from-source-registry"></a>ソース レジストリからテンプレートをエクスポートする 
 
@@ -106,7 +107,7 @@ az deployment group --resource-group myResourceGroup \
 * Azure CLI コマンド [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) および [az acr repository tags](/cli/azure/acr/repository#az_acr_repository_show_tags)、または Azure PowerShell の同等のコマンドを使用すると、ご自身のソース レジストリのコンテンツを列挙できます。
 * 個々の成果物に対してインポート コマンドを実行するか、成果物の一覧に対してコマンドが実行されるようにスクリプトを作成します。
 
-次のサンプル Azure CLI スクリプトは、ソース リポジトリとタグを列挙して、成果物をターゲット レジストリにインポートします。 必要に応じて、特定のリポジトリまたはタグをインポートします。
+次のサンプル Azure CLI スクリプトでは、ソース リポジトリとタグが列挙されて、成果物が同じ Azure サブスクリプションのターゲット レジストリにインポートされます。 必要に応じて、特定のリポジトリまたはタグをインポートします。 異なるサブスクリプションまたはテナント内のレジストリからインポートするには、「[コンテナー レジストリにコンテナー イメージをインポートする](container-registry-import-images.md)」の例を参照してください。
 
 ```azurecli
 #!/bin/bash
@@ -127,6 +128,8 @@ for repo in $REPO_LIST; do
     done
 done
 ```
+
+
 
 ## <a name="verify-target-registry"></a>ターゲット レジストリを確認する
 

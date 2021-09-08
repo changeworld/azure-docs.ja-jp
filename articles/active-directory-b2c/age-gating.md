@@ -11,12 +11,12 @@ ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f7aac30ec8cb5aa2707217183a7612f4eb5b27c3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f0502f11c9a6e900ae8f25209b6897f8384c2773
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322366"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777758"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で年齢制限を有効にする
 
@@ -44,7 +44,8 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 ユーザー フローで年齢制限を使うには、追加のプロパティが含まれるようにテナントを構成する必要があります。
 
 1. 年齢制御のプレビューを試すには、[このリンク](https://portal.azure.com/?Microsoft_AAD_B2CAdmin_agegatingenabled=true#blade/Microsoft_AAD_B2CAdmin/TenantManagementMenuBlade/overview)を使用します。
-1. 上部メニューの **[ディレクトリ + サブスクリプション]** フィルターを選択して、Azure AD B2C テナントを含むディレクトリを使っていることを確認します。 テナントが含まれるディレクトリを選択します。
+1. ポータルのツールバーにある **[Directories + subscriptions (ディレクトリ + サブスクリプション)]** アイコンを選択して、Azure AD B2C テナントを含むディレクトリを使っていることを確認します。
+1. **[Portal settings | Directories + subscriptions (ポータルの設定 | ディレクトリ + サブスクリプション)]** ページで Azure AD B2C ディレクトリを **[Directory name (ディレクトリ名)]** リストで見つけ、 **[Switch (スイッチ)]** を選択します。
 1. Azure portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. 左側のメニューで、テナントの **[プロパティ]** を選択します。
 1. **[年齢制御]** で、 **[構成]** を選択します。

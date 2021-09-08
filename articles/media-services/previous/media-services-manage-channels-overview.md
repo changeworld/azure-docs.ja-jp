@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 243c3dcf9c76bcedffb6e1f531dfd85ea479edcf
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: fa80ff7a418b0f1d49285aad872cfd411037b721
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114706287"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430182"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services を使用したライブ ストリーミングの概要
 
@@ -163,7 +163,7 @@ Media Services においてライブ ストリーミング コンテンツの処
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>関連トピック
-[Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](../media-services-fmp4-live-ingest-overview.md)
+[Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)
 
 [Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)
 

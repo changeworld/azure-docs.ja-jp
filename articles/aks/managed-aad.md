@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 353fdd952ed4b2baa8920f1e15fb0dc0f44264ba
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 7a5bea7e555bf4f388a06668b2e349045692a941
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122202072"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106628"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
-AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエンスを簡素化するように設計されています。これまでユーザーは、クライアント アプリとサーバー アプリを作成し、Azure AD テナントでディレクトリの読み取りアクセス許可を付与する必要がありました。 新しいバージョンでは、クライアント アプリとサーバー アプリは AKS リソース プロバイダーで管理されます。
+AKS マネージド Azure AD 統合は、Azure AD の統合プロセスを簡素化します。 これまではユーザーがクライアント アプリとサーバー アプリを作成し、Azure AD テナントでディレクトリの読み取りアクセス許可を付与する必要がありました。 新しいバージョンでは、クライアント アプリとサーバー アプリは AKS リソース プロバイダーで管理されます。
 
 ## <a name="azure-ad-authentication-overview"></a>Azure AD 認証の概要
 
@@ -50,7 +50,7 @@ kubelogin --version
 
 ## <a name="before-you-begin"></a>開始する前に
 
-クラスターには、Azure AD グループが必要です。 このグループは、クラスターの管理アクセス許可を付与する、クラスターの管理者グループとして必要です。 既存の Azure AD グループを使用することも、新しい Azure AD グループを作成することもできます。 Azure AD グループのオブジェクト ID を記録します。
+クラスターには、Azure AD グループが必要です。 このグループは、クラスターの管理アクセス許可を付与する、クラスターの管理者グループとして登録されます。 既存の Azure AD グループを使用することも、新しい Azure AD グループを作成することもできます。 Azure AD グループのオブジェクト ID を記録します。
 
 ```azurecli-interactive
 # List existing groups in the directory
@@ -100,7 +100,7 @@ az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Azure AD が有効なクラスターへのアクセス
 
-次の手順を実行するには、[Azure Kubernetes Service クラスター ユーザー](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)組み込みロールが必要です。
+Azure AD によって定義されたグループを使用してクラスターにアクセスするには、あらかじめ [Azure Kubernetes Service クラスター ユーザー](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)組み込みロールが必要です。
 
 クラスターにアクセスするためのユーザー資格情報を取得します。
  

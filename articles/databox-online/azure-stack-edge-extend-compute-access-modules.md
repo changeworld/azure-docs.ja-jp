@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: dbbd43d07bbb07e13f2e0301e15d73ee727a86fd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2b4b509e359976fcf8ff0c47270c814a203fcbdd
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461241"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108335"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro でコンピューティング ネットワークを有効にする
 
@@ -62,7 +62,7 @@ Azure Stack Edge Pro デバイスに Web サーバー アプリ モジュール�
 3. **[IoT Edge のカスタム モジュール]** ブレードで、以下の手順を実行します。
 
     1. デプロイする Web サーバー アプリ モジュールの **名前** を指定します。
-    2. お使いのモジュール イメージの **イメージ URI** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 この場合は、`nginx:stable` によって、パブリック [Docker リポジトリ](https://hub.docker.com/_/nginx/)から、(stable としてタグ付けされた) 安定した nginx イメージがプルされます。
+    2. お使いのモジュール イメージの **イメージ URI** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 この場合 `mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` は、公開されている `mcr.microsoft.com` レジストリから nginx イメージ (1.15.5-alpine とタグ付けされている) をプルします。
     3. **[コンテナーの作成オプション]** ボックスで、次のサンプル コードを貼り付けます。  
 
         ```

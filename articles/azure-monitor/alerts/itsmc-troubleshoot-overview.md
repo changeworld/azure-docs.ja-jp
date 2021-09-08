@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 16b6675a7b9796405376540b87efbaaa2a991890
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d6e41cd80e27fe673d04592c61e590c09645619e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081120"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430362"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>IT Service Management Connector での問題のトラブルシューティング
 
@@ -100,7 +100,7 @@ Service Map を使用している場合は、次の例に示すように、IT Se
 **原因**:この現象には、いくつかの原因が考えられます。
 
 * テンプレートは [アクションの定義] ドロップダウンの一部として表示されず、"テンプレートの構成を取得できません。詳細については、コネクタ ログを参照してください" というエラー メッセージが表示されます。
-* アクションの定義の一部として既定のフィールドのドロップダウンに値が表示されず、"次のフィールドの値が見つかりません: <field names>" というエラー メッセージが表示されます。
+* アクションの定義の一部として既定のフィールドのドロップダウンに値が表示されず、"次のフィールドの値が見つかりません: \<field names\>" というエラー メッセージが表示されます。
 * インシデントおよびイベントが、ServiceNow で作成されていません。
 
 **解決方法**: 

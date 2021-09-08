@@ -3,12 +3,12 @@ title: Azure Active Directory を使用して Event Grid 発行クライアン�
 description: この記事では、Azure Active Directory を使用して Azure Event Grid の発行クライアントを認証する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: b15febf10316406489d3f5bad7fc1085624ee96a
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 6572c85fd13803372caa2c614a32cdc5f30b055e
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662256"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038093"
 ---
 # <a name="authentication-and-authorization-with-azure-active-directory-preview"></a>Azure Active Directory を使用した認証と承認 (プレビュー)
 この記事では、Azure Active Directory (Azure AD) を使用して Azure Event Grid の発行クライアントを認証する方法について説明します。
@@ -30,11 +30,11 @@ Event Grid の発行クライアントの認証には、大きく分けて 2 つ
  
 Event Grid SDK を使用している場合、アクセス トークンの取得をどのように実装するか、また Event Grid へのすべての要求にそれをどのように含めるかといった詳細については、[Event Grid データプレーン SDK](#publish-events-using-event-grids-client-sdks) が行うため、ユーザーがこれについて心配する必要はありません。 
 
-### <a name="high-level-steps"></a>大まかな手順
-トピック、ドメイン、またはパートナーの名前空間にイベントを送信する際に Azure AD 認証を使用するようクライアントを準備するには、次の手順を実行します。
+### <a name="client-configuration-steps-to-use-azure-ad-authentication"></a>Azure AD 認証を使用するためのクライアントの構成手順
+トピック、ドメイン、またはパートナーの名前空間にイベントを送信する際に Azure AD 認証を使用するようクライアントを構成するには、次の手順を実行します。
 
 1. 認証に使用するセキュリティ プリンシパルを作成または使用します。 [マネージド ID](#authenticate-using-a-managed-identity) または[アプリケーション サービス プリンシパル](#authenticate-using-a-security-principal-of-a-client-application)を使用することができます。
-2. **EventGrid データ送信者[ロールをセキュリティ プリンシパルに割り当て、](#assign-permission-to-a-security-principal-to-publish-events)セキュリティ プリンシパルにアクセス許可を付与してイベントを発行** します。
+2. **EventGrid データ送信者 [ロールをセキュリティ プリンシパルに割り当て、](#assign-permission-to-a-security-principal-to-publish-events)セキュリティ プリンシパルにアクセス許可を付与してイベントを発行** します。
 3. Event Grid SDK を使用して、Event Grid にイベントを発行します。
 
 ## <a name="authenticate-using-a-managed-identity"></a>マネージド ID を使用して認証する

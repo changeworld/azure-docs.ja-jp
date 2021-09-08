@@ -1,20 +1,20 @@
 ---
 title: Android マップにイメージ レイヤーを追加する | Microsoft Azure Maps
 description: マップに画像を追加する方法について説明します。 Azure Maps Android SDK を使用し、固定の座標セット上でイメージ レイヤーやオーバーレイ画像をカスタマイズする方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 4c11a1275b94eebba33819ae6c9ffeb313a3ce0b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d90771a639cbd904c3c61412b511d764d2d37ae8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463106"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432740"
 ---
 # <a name="add-an-image-layer-to-a-map-android-sdk"></a>マップにイメージ レイヤーを追加する (Android SDK)
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7ac3cbc5c8be5ef417e54b29f1bc85f5546071f2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d26459080e57f8998b40c181306ca10508ad4749
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181446"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099227"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -53,7 +53,7 @@ AKS クラスターの IP アドレス計画は、仮想ネットワーク、ノ
 | 仮想ネットワーク | Azure の仮想ネットワークは、/8 と同じサイズが可能ですが、構成される IP アドレスの個数は 65,536 に制限されています。 アドレス空間を構成する前に、他の仮想ネットワーク内のサービスとの通信を含め、ネットワークのすべてのニーズを考慮に入れてください。 たとえば、大きすぎるアドレス空間を構成すると、ネットワーク内の他のアドレス空間と重複する問題が発生する可能性があります。|
 | Subnet | クラスターにプロビジョニングされている可能性のあるノード、ポッド、すべての Kubernetes、および Azure のリソースを収容するのに十分な大きさである必要があります。 たとえば、内部に Azure Load Balancer をデプロイする場合は、そのフロントエンド IP は、パブリック IP ではなく、クラスター サブネットから割り当てられています。 アップグレード操作や今後のスケーリングのニーズも、サブネットのサイズで考慮される必要があります。<p />アップグレード操作用の追加のノードを含む *最小の* サブネットのサイズの計算には、`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)` を使用します。<p/>たとえば、50 のノードから構成されるクラスターは、`(51) + (51  * 30 (default)) = 1,581` (/21 以上) です。<p/>たとえば、追加でノードを 10 増やす用意がされている 50 のノードのクラスターは、`(61) + (61 * 30 (default)) = 1,891` (/21 以上) です。<p>クラスターを作成するときにノードごとの最大ポッド数を指定しないと、ノードごとの最大ポッド数は *30* に設定されます。 必要な最小 IP アドレス数はその値に基づきます。 別の最大値に基づいて最小 IP アドレス要件を計算する場合、[how to configure the maximum number of pods per node (ノードごとの最大ポッド数の構成方法)](#configure-maximum---new-clusters) を参照して、クラスターをデプロイするときにこの値を設定します。 |
 | Kubernetes サービスのアドレス範囲 | この範囲は、この仮想ネットワーク上のネットワーク要素、またはこの仮想ネットワークに接続されているネットワーク要素では使用しないでください。 サービスのアドレスの CIDR は、/12 より小さくする必要があります。 この範囲は、さまざまな AKS クラスター間で再利用できます。 |
-| Kubernetes DNS サービスの IP アドレス | クラスター サービス検索で使用される、Kubernetes サービスのアドレス範囲内の IP アドレス。 アドレス範囲内の最初の IP アドレス (.1 など) は使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。 |
+| Kubernetes DNS サービスの IP アドレス | クラスター サービス検索で使用される、Kubernetes サービスのアドレス範囲内の IP アドレス。 アドレス範囲内の最初の IP アドレスは使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。 |
 | Docker ブリッジ アドレス | Docker ブリッジのネットワーク アドレスは、すべての Docker インストールに存在する既定の *docker0* ブリッジのネットワーク アドレスを表します。 *docker0* ブリッジは AKS クラスターまたはポッド自体では使用されませんが、AKS クラスター内の *docker ビルド* などのシナリオを引き続きサポートするには、このアドレスを設定する必要があります。 Docker ブリッジのネットワーク アドレスの CIDR を選択する必要があります。そうしないと、他の CIDR と競合する可能性のあるサブネットが Docker によって自動的に選択されます。 ネットワーク上の残りの CIDR と競合しないアドレス空間を選択する必要があります。これには、クラスターのサービス CIDR とポッド CIDR が含まれます。 既定値は 172.17.0.1/16 です。 この範囲は、さまざまな AKS クラスター間で再利用できます。 |
 
 ## <a name="maximum-pods-per-node"></a>ノードごとの最大ポッド数
@@ -109,7 +109,7 @@ AKS クラスターを作成するときに、Azure CNI ネットワーク用に
 
 技術的には、クラスターと同じ仮想ネットワーク内のサービス アドレス範囲を指定できますが、お勧めはしません。 重複する IP アドレス範囲を使うと、予期しない動作になる可能性があります。 詳細については、この記事の [FAQ](#frequently-asked-questions) のセクションを参照してください。 Kubernetes サービスについて詳しくは、Kubernetes ドキュメントの「[Services][services]」(サービス) をご覧ください。
 
-**Kubernetes DNS サービスの IP アドレス**:クラスターの DNS サービスの IP アドレス。 *[Kubernetes service address range]\(Kubernetes サービス アドレスの範囲\)* 内に含まれるアドレスを指定する必要があります。 アドレス範囲内の最初の IP アドレス (.1 など) は使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。
+**Kubernetes DNS サービスの IP アドレス**:クラスターの DNS サービスの IP アドレス。 *[Kubernetes service address range]\(Kubernetes サービス アドレスの範囲\)* 内に含まれるアドレスを指定する必要があります。 アドレス範囲内の最初の IP アドレスは使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。
 
 **Docker ブリッジのアドレス**:Docker ブリッジのネットワーク アドレスは、すべての Docker インストールに存在する既定の *docker0* ブリッジのネットワーク アドレスを表します。 *docker0* ブリッジは AKS クラスターまたはポッド自体では使用されませんが、AKS クラスター内の *docker ビルド* などのシナリオを引き続きサポートするには、このアドレスを設定する必要があります。 Docker ブリッジのネットワーク アドレスの CIDR を選択する必要があります。そうしないと、他の CIDR と競合する可能性のあるサブネットが Docker によって自動的に選択されます。 ネットワーク上の残りの CIDR と競合しないアドレス空間を選択する必要があります。これには、クラスターのサービス CIDR とポッド CIDR が含まれます。
 

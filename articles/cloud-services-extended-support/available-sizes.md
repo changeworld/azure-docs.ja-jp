@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: e49cb32c198cf3279dbad5491075138115efd951
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8075176302e81788b3b180501c951c27ee4105eb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743579"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434162"
 ---
 # <a name="available-sizes-for-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) に利用可能なサイズ
 
@@ -21,8 +21,6 @@ ms.locfileid: "121743579"
 
 | SKU ファミリ |  ACU/コア | 
 |---|---|
-| [A5-7](../virtual-machines/sizes-previous-gen.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#a-series)| 100 |
-|[A8 ～ A11](../virtual-machines/sizes-previous-gen.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#a-series---compute-intensive-instances) | 225* |
 |[Av2](../virtual-machines/av2-series.md) | 100 | 
 |[D](../virtual-machines/sizes-previous-gen.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#d-series) | 160 | 
 |[Dv2](../virtual-machines/dv2-dsv2-series.md) | 160 - 190* |
@@ -70,5 +68,5 @@ ms.locfileid: "121743579"
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.yml)を確認します。
+- Cloud Services (延長サポート) の[よく寄せられる質問](faq.yml)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。

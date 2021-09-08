@@ -3,16 +3,16 @@ title: Azure IoT Central での REST API を使用したデバイスの管理
 description: IoT Central REST API を使用してアプリケーションでデバイスを制御する方法
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/01/2020
+ms.date: 08/28/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2e808ee2d36237a830877e7f043656ce9189bd89
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 471a9e0fd68678b0fc09c05bb47ad40affb7d9f9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461281"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470168"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>IoT Central REST API を使用してデバイスを制御する方法
 

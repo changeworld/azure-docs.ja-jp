@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 - contperf-fy21q4
-ms.openlocfilehash: f0c07da859ae34a030058ee2c99d2c7b72378f5d
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 2e39a2dcdf0f6e3b56665ca7be415c567ca770e8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113135629"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866294"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -111,6 +111,7 @@ IoT Hub により、その他の運用上の制限が適用されます。
 | IoT Edge の自動デプロイ<sup>1</sup> | デプロイあたり 50 モジュール。 有料の SKU ハブあたり 100 デプロイ (多層デプロイを含む)。 無料の SKU ハブあたり 10 デプロイ。 |
 | ツイン<sup>1</sup> | 必要なプロパティ セクションと報告されたプロパティ セクションの最大サイズはそれぞれ 32 KB です。 タグ セクションの最大サイズは 8 KB です。 |
 | 共有アクセス ポリシー | 共有アクセス ポリシーの最大数は 16 です。 |
+| 送信ネットワーク アクセスを制限する | FQDN の許容最大数は 20 です。 |
 | x509 CA 証明書 | IoT Hub に登録可能な x509 CA 証明書の最大数は 25 です。 |
 
 <sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。

@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 07/05/2021
 ms.author: mimart
-ms.openlocfilehash: 3d4bb5ff840a2f4ee5c4c33e2cc51dfe440866a7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ebc113e993eadc41c2b1c58c9130908727101a6f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778851"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227691"
 ---
 認証が完了した後、ユーザーがアプリと対話すると、保護された Web API が呼び出されます。 その Web API では、[ベアラー トークン](https://datatracker.ietf.org/doc/html/rfc6750)認証が使用されます。 ベアラー トークンは、アプリによって Azure AD B2C から取得されたアクセス トークンです。 アプリでは、HTTPS 要求の Authorization ヘッダーでトークンを渡します。 
     

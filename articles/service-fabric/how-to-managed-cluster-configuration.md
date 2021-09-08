@@ -2,13 +2,13 @@
 title: Service Fabric マネージド クラスターを構成する
 description: OS の自動アップグレード、NSG ルールなどのために Service Fabric マネージド クラスターを構成する方法について説明します。
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 5fd2736917517f20d3d093492c6011d6fcf716cf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 8/23/2021
+ms.openlocfilehash: 5be6422af6a1611bb8978ff4f0b76122cb146eb7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067440"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864355"
 ---
 # <a name="service-fabric-managed-cluster-configuration-options"></a>Service Fabric マネージド クラスターの構成オプション
 
@@ -16,7 +16,8 @@ ms.locfileid: "110067440"
 
 * ノードの種類に[仮想マシン スケール セット拡張機能](how-to-managed-cluster-vmss-extension.md)を追加する
 * クラスターの[可用性ゾーンのスパン](how-to-managed-cluster-availability-zones.md)を構成する
-* クラスターの [NSG ルールおよびその他のネットワーク オプション](how-to-managed-cluster-networking.md)を構成する
+* クラスターの[ネットワーク設定](how-to-managed-cluster-networking.md)を構成する
+* [大規模な仮想マシン スケール セット](how-to-managed-cluster-large-virtual-machine-scale-sets.md)のノード タイプを構成する
 * クラスター ノードの種類で[マネージド ID](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) を構成する
 * クラスター ノードに対して[自動 OS アップグレード](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)を有効にする
 * クラスター ノードで [OS とデータ ディスクの暗号化](how-to-enable-managed-cluster-disk-encryption.md)を有効にする

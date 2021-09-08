@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 07/01/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 567c9172317a15ef2b3bd18e46909fb444d34c65
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 52de257461c796f7a477091801f4bdc52f46f5c8
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113214633"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101534"
 ---
 # <a name="claims-mapping-policy-type"></a>要求のマッピング ポリシーの種類
 
@@ -270,6 +270,9 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 ソースが transformation の場合、**TransformationID** 要素も、この要求の定義に含める必要があります。
 
 ID 要素により、ソースのどのプロパティが要求の値を提供するかが特定されます。 次の表は、ソースの各値に対して有効な ID の値を示しています。
+
+> [!WARNING]
+> 現在、ユーザー オブジェクトで利用可能な複数値要求のソースは、AADConnect から同期された複数値の拡張属性のみです。  その他のプロパティ (OtherMails、タグなど) は複数値ではありますが、ソースとして選択されたときに生成される値は 1 つだけです。
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3:ソースごとに有効な ID 値
 

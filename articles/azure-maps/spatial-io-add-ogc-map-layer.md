@@ -6,13 +6,12 @@ ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-ms.openlocfilehash: 387521e07108aeb101361c3720ea6347ded58c75
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 43fec3aacb1bc22566f4e918166f5e004110a563
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735864"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437690"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Open Geospatial Consortium (OGC) のマップ レイヤーを追加する
 
@@ -54,7 +53,7 @@ ms.locfileid: "121735864"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC マップ レイヤーの例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC マップ レイヤーの例</a>」を参照してください。
+<iframe height='700' scrolling='no' title='OGC マップ レイヤーの例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC マップ レイヤーの例</a>」を参照してください。
 </iframe>
 
 ## <a name="ogc-map-layer-options"></a>OGC マップ レイヤーのオプション
@@ -63,7 +62,7 @@ ms.locfileid: "121735864"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC マップ レイヤーのオプション' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC マップ レイヤー オプション</a>」を参照してください。
+<iframe height='700' scrolling='no' title='OGC マップ レイヤーのオプション' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC マップ レイヤー オプション</a>」を参照してください。
 </iframe>
 
 ## <a name="ogc-web-map-service-explorer"></a>OGC Web Map Service エクスプローラー
@@ -72,7 +71,7 @@ ms.locfileid: "121735864"
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web Map Service エクスプローラー' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen 「<a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web Map Service エクスプローラー</a>」を参照してください。
+<iframe height='750' scrolling='no' title='OGC Web Map Service エクスプローラー' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen 「<a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web Map Service エクスプローラー</a>」を参照してください。
 </iframe>
 
 プロキ シサービスを使用するためのマップ設定を指定することもできます。 プロキシ サービスを使用すると、CORS が有効になっていないドメインにホストされているリソースを読み込むことができます。

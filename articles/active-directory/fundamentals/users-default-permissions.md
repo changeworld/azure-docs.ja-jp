@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db47b66a08ebe1c8a053995d0d8d8d810ae6b564
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 45d03495d0866674352de35c337303a92ff3263b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746082"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835189"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
@@ -56,7 +56,8 @@ Microsoft 365 グループを作成する機能 | このオプションを [い�
 Azure AD 管理ポータルへのアクセスを制限する | <p>このオプションを [いいえ] に設定すると、管理者以外の管理者が Azure AD 管理ポータルを使用して Azure AD リソースの読み取りと管理を行うことができます。 [はい] の場合、管理者以外はすべて、管理ポータルでの Azure AD データへのアクセスが制限されます。</p><p>**注**: この設定では、PowerShell または他のクライアント (Visual Studio など) を使用した Azure AD データへのアクセスは制限されません。[はい] に設定した場合、特定の非管理者ユーザーに Azure AD 管理ポータルを使用する権限を付与するには、ディレクトリ閲覧者ロールなどの管理ロールを割り当ててください。</p><p>**注**: この設定は、グループまたはアプリケーションの所有者である、管理者以外のユーザーが、Azure portal を使用して自分が所有しているリソースを管理できないようにします。</p><p>このロールでは、メンバー ユーザーが既定で所有している (ゲストとサービス プリンシパルは所有していない) 基本的なディレクトリ情報を読み取ることができます。</p>
 他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 このフラグを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、このフラグを $false に設定することは推奨されません。
 
->![注] 平均的なユーザーは、Azure AD へのアクセスにポータルだけを使用し、自分のリソースへのアクセスに PowerShell や CLI は使用しないと想定されています。 現在、ユーザーの既定のアクセス許可へのアクセスを制限することは、ユーザーが Azure portal 内でディレクトリにアクセスしようとした場合にだけ行われます。
+>[!NOTE]
+>一般ユーザーは、Azure AD へのアクセスにポータルだけを使用し、自分のリソースへのアクセスに PowerShell や CLI は使用しないと想定されています。 現在、ユーザーの既定のアクセス許可へのアクセスを制限することは、ユーザーが Azure portal 内でディレクトリにアクセスしようとした場合にだけ行われます。
 
 ## <a name="restrict-guest-users-default-permissions"></a>ゲスト ユーザーの既定のアクセス許可を制限する
 
@@ -132,6 +133,9 @@ Guests user access restrictions (Preview) (ゲスト ユーザーのアクセス
 
 #### <a name="owned-groups"></a>所有するグループ
 ユーザーは、所有するグループで次のアクションを実行できます。
+
+> [!NOTE]
+> 動的グループの所有者は、グループ メンバーシップ ルールを編集するために、グローバル管理者、グループ管理者、Intune 管理者、またはユーザー管理者ロールを持っている必要があります。 詳細は、「[Azure Active Directory で動的グループを作成または更新する](../enterprise-users/groups-create-rule.md)」を参照してください。
 
 | **アクション** | **説明** |
 | --- | --- |
