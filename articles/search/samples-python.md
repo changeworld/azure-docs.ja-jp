@@ -53,4 +53,4 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)  | 「[例:Python を使用してカスタム スキルを作成する](cognitive-search-custom-skill-python.md)」のソース コード。 この記事では、インデクサーおよびスキルセットと Azure Machine Learning のディープ ラーニング モデルの統合について説明します。 |
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?languages=python&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> [サンプル ブラウザー](/samples/browse/?languages=python&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを GitHub 内で検索してください。
