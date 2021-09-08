@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 2a847d44f1c178aa5756b81e54ebdf6e961ab1d8
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 256ae289b86ec2c16b850f16d379700dc69c2f6f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594681"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424638"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder"></a>Azure Image Builder で Windows VM を作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 この記事では、Azure VM Image Builder を使用して、カスタマイズされた Windows イメージを作成する方法について説明します。 この記事の例では、イメージのカスタマイズに[カスタマイザー](../linux/image-builder-json.md#properties-customize)を使用します。
 - PowerShell (ScriptUri) - [PowerShell スクリプト](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)をダウンロードし、実行します。
@@ -29,7 +31,7 @@ ms.locfileid: "113594681"
 - identity - ビルド中に使用するために Azure Image Builder の ID を提供します
 
 
-`buildTimeoutInMinutes` を指定することもできます。 既定値は 240 分で、実行時間の長いビルド用にビルド時間を長くすることができます。
+`buildTimeoutInMinutes` を指定することもできます。 既定値は 240 分で、実行時間の長いビルド用にビルド時間を長くすることができます。 許容される最小値は 6 分です。これより小さい値を指定すると、エラーが発生します。
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json) です。 
 
@@ -82,10 +84,10 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-サブスクリプション ID の変数を作成します。 `az account show | grep id` を使用してこれを取得できます。
+サブスクリプション ID の変数を作成します。
 
 ```azurecli-interactive
-subscriptionID=<Your subscription ID>
+subscriptionID=$(az account show --query id --output tsv)
 ```
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 このリソース グループは、イメージ構成テンプレート成果物およびイメージを格納するために使用されます。
@@ -101,14 +103,14 @@ Image Builder は、指定された[ユーザー ID](../../active-directory/mana
 ## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>ユーザー割り当てマネージド ID を作成し、アクセス許可を付与する 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located
-idenityName=aibBuiUserId$(date +'%s')
-az identity create -g $imageResourceGroup -n $idenityName
+identityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $identityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName --query clientId -o tsv)
 
 # get the user identity URI, needed for the template
-imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 
 # download preconfigured role definition example
 curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
@@ -186,7 +188,7 @@ az resource create \
 az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
+    -n helloImageTemplateWin01
 ```
 
 ## <a name="start-the-image-build"></a>イメージのビルドを開始する
