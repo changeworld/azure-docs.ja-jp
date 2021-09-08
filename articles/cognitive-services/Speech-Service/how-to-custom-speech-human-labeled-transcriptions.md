@@ -3,19 +3,19 @@ title: ヒューマン ラベル付け文字起こしのガイドライン - Spe
 titleSuffix: Azure Cognitive Services
 description: 単語が削除されたり、誤って置き換えられたりする場合など、音声認識の精度を向上させるには、音声データと共にヒューマン ラベル付け文字起こしを使用します。 ヒューマン ラベル付け文字起こしとは、音声ファイルを逐語的に文字起こしたものです。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: lajanuar
-ms.openlocfilehash: 2983f34f4dfd80ed34f3aed95870369d4c97f7a3
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 562c603fbf549af3877a6aa408456845ad9c886e
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067458"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538815"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>ヒューマン ラベル付け文字起こしの作成方法
 

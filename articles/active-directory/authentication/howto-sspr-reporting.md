@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa33a4641de1d630883a225814b2fb3d59ef9946
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 6b0cb321abdd3aa1221e62a1efc953943d00afa0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285972"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541461"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -174,7 +174,7 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * [SSPR と MFA の使用状況と分析情報のレポート](./howto-authentication-methods-activity.md)
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービス パスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービス パスワード リセットの登録。](https://support.microsoft.com/account-billing/register-the-password-reset-verification-method-for-a-work-or-school-account-47a55d4a-05b0-4f67-9a63-f39a43dbe20a)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)

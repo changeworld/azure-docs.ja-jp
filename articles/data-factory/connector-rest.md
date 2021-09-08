@@ -1,19 +1,22 @@
 ---
-title: Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
-description: Azure Data Factory パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの REST ソースからサポートされているシンク データ ストアへ、またはサポートされているデータ ストアから REST シンクへデータをコピーする方法について説明します。
+title: Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーおよび変換する
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの REST ソースからサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから REST シンクにデータをコピーし、Data Flow を使用してデータを変換する方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.author: jianleishen
-ms.openlocfilehash: 24269fcfe7c60140c3d0fe9497eefeba71338bd7
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/30/2021
+ms.author: makromer
+ms.openlocfilehash: 16bb4ac7062c39ad57becce4d5280ed227160690
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487081"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311573"
 ---
-# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
+# <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーおよび変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory の Copy アクティビティを使用して、REST エンドポイントとの間でデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
@@ -45,6 +48,30 @@ REST ソースから、サポートされている任意のシンク データ �
 ## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-rest-linked-service-using-ui"></a>UI を使用して REST のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で REST のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. REST を検索し、REST コネクタを選択します。
+
+    :::image type="content" source="media/connector-rest/rest-connector.png" alt-text="REST コネクタを選択します。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-rest/configure-rest-linked-service.png" alt-text="REST のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、REST コネクタに固有の Data Factory エンティティの定義に使用できるプロパティについて詳しく説明します。
 
@@ -132,7 +159,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 }
 ```
 
-### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースの認証にマネージド ID を使用する
+### <a name="use-system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> システム割り当てマネージド ID 認証を使用する
 
 **authenticationType** プロパティを **ManagedServiceIdentity** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
 
@@ -151,6 +178,39 @@ REST のリンクされたサービスでは、次のプロパティがサポー
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-user-assigned-managed-identity-authentication"></a>ユーザー割り当てマネージド ID 認証を使用する
+**authenticationType** プロパティを **ManagedServiceIdentity** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| aadResourceId | 承認を要求しようとしている AAD リソースを指定します。例: `https://management.core.windows.net`。| はい |
+| 資格情報 | 資格情報オブジェクトとしてユーザー割り当てマネージド ID を指定します。 | はい |
+
+
+**例**
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint e.g. https://www.example.com/>",
+            "authenticationType": "ManagedServiceIdentity",
+            "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }    
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -376,6 +436,57 @@ REST からのデータ コピーについては、次のプロパティがサ�
         }
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+REST は、統合データセットとインライン データセットの両方のデータ フローでサポートされています。
+
+### <a name="source-transformation"></a>ソース変換
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| requestMethod | HTTP メソッド。 使用できる値は **GET** と **POST** です。 | はい |
+| relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 HTTP コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[relative URL specified in dataset]` | いいえ |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、データの書き込みのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ |
+| requestInterval | 異なる要求間の間隔時間 (ミリ秒単位)。 要求間隔の値は、[10, 60000] の間の数値にする必要があります。 |  いいえ |
+| QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 | いいえ |
+
+### <a name="sink-transformation"></a>シンク変換
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、データの書き込みのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ |
+| requestInterval | 異なる要求間の間隔時間 (ミリ秒単位)。 要求間隔の値は、[10, 60000] の間の数値にする必要があります。 |  いいえ |
+| httpCompressionType | 最適な圧縮レベルでデータを送信するときに使用する HTTP 圧縮の種類。 使用できる値は **none** と **gzip** です。 | いいえ |
+| writeBatchSize | バッチごとに REST シンクに書き込むレコードの数。 既定値は 10000 です。 | いいえ |
+
+削除、挿入、更新、アップサートの各メソッドと、CRUD 操作のために REST シンクに送信する相対行データを設定できます。
+
+![データ フロー REST シンク](media/data-flow/data-flow-sink.png)
+
+## <a name="sample-data-flow-script"></a>データ フロー スクリプトのサンプル
+
+シンクの前に行の変更変換を使用して、REST シンクで実行するアクションの種類 (挿入、更新、アップサート、削除) を ADF に指示します。
+
+```
+AlterRow1 sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    rowRelativeUrl: 'periods',
+    insertHttpMethod: 'PUT',
+    deleteHttpMethod: 'DELETE',
+    upsertHttpMethod: 'PUT',
+    updateHttpMethod: 'PATCH',
+    timeout: 30,
+    requestFormat: ['type' -> 'json'],
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> sink1
 ```
 
 ## <a name="pagination-support"></a>改ページ位置の自動調整のサポート

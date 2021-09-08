@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bcef8c0aed68ed7169e650ab4a68567bc600e86f
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 0fcc840d691a683a0e2adaa3288959deea71b26d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303175"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536307"
 ---
 ### <a name="find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group"></a>リソース グループ上の特定の大文字と小文字が区別されないタグを含んだストレージ アカウントを検索する
 

@@ -5,18 +5,18 @@ metadata:
   title: 音声翻訳のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: laujan
+  author: PatrickFarley
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 04/13/2020
-  ms.author: lajanuar
-  ms.openlocfilehash: 77745279d51d80e3fa129967c830b978c4a7396d
-  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+  ms.author: pafarley
+  ms.openlocfilehash: 1866fb72ab2e7d47a1d025325f5e4c3bbd2b4221
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122068565"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123543886"
 landingContent:
 - title: 音声翻訳について
   linkLists:

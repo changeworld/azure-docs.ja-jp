@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: b60fc4b1fc20c455c2c409f544a8af16f1dbf8d1
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9870ff7f2033372e63de80138b2f37b3896eb4e6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107509006"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427608"
 ---
 # <a name="optimize-the-performance-of-azcopy-with-azure-storage"></a>Azure Storage で AzCopy のパフォーマンスを最適化する
 
@@ -83,7 +83,7 @@ AzCopy が操作を完了したときに作成するログ エントリの数を
 
 `AZCOPY_CONCURRENCY_VALUE` 環境変数を設定することにより、スループットを向上させることができます。 この変数は、同時に発生することができる要求の数を指定します。  
 
-コンピューターの CPU が 5 個未満の場合、この変数の値は `32` に設定されます。 それ以外の場合、既定値は CPU の数に 16 を掛けた数です。 この変数の最大の既定値は `3000` ですが、この値は手動で高い値または低い値に設定できます。 
+コンピューターの CPU が 5 個未満の場合、この変数の値は `32` に設定されます。 それ以外の場合、既定値は CPU の数に 16 を掛けた数です。 この変数の最大の既定値は `300` ですが、この値は手動で高い値または低い値に設定できます。 
 
 | オペレーティング システム | コマンド  |
 |--------|-----------|

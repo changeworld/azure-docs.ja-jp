@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/03/2021
+ms.date: 08/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3eeed53c16bbd6b2c1170512606472ac5329b126
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aa60cf86a8bc59b9eed2adc8ac0ba2cfb89be584
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733763"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835612"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
@@ -155,6 +155,7 @@ ms.locfileid: "121733763"
 
 - 複数のサインアップ リンクのサポートが追加されました。
 - ポリシーで定義されている述語規則に従った、ユーザー入力の検証のサポートが追加されました。
+- [[サインイン オプション]](sign-in-options.md) が [電子メール] に設定されている場合、サインイン ヘッダーには "Sign in with your sign in name"(サインイン名でサインインする) と表示されます。 username フィールドには、"サインイン名" が表示されます。 詳細については、[ローカライズ](localization-string-ids.md#sign-up-or-sign-in-page-elements)に関する記事を参照してください。
 
 **1.2.0**
 
