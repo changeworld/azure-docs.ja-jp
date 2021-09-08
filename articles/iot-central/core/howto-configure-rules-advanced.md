@@ -3,16 +3,16 @@ title: ワークフローを使用して Azure IoT Central アプリケーショ
 description: このハウツー記事では、作成者として、IoT Central アプリケーションを他のクラウド サービスと統合するためのルールとアクションを構成する方法について説明します。 高度なルールを作成するには、Power Automate または Azure Logic Apps で IoT Central コネクタを使用します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/12/2020
+ms.date: 08/26/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9cbcfa355198b94a60242503745f5cfc183e170d
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: b90e96975dadc1f7fb168345aa89b98bb6a22b9c
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683758"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473588"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>ワークフローを使用して Azure IoT Central アプリケーションを他のクラウド サービスと統合する
 

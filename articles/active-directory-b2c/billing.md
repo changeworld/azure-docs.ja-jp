@@ -7,20 +7,29 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/28/2021
+ms.date: 08/26/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 623799b894846034dcf3f58a4bd6e53c56d526df
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 7b0b5a35a85a8b0564112d62401c722e65505f2e
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690493"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186229"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
 Azure Active Directory B2C (Azure AD B2C) の価格は、1 か月間に認証アクティビティを行った一意のユーザーの数である、月間アクティブ ユーザー数 (MAU) に基づいています。 この課金モデルは、Azure AD B2C テナントと [Azure AD ゲスト ユーザー コラボレーション (B2B)](../active-directory/external-identities/external-identities-pricing.md) の両方に適用されます。 MAU の課金は、無料レベルと柔軟で予測可能な価格を提供することによってコストを削減するのに役立ちます。 この記事では、MAU の課金、サブスクリプションへの Azure AD B2C テナントのリンク、および価格レベルの変更について説明します。
+
+## <a name="mau-overview"></a>MAU の概要
+
+月間アクティブ ユーザー (MAU) は、ある特定の月に認証を行う一意のユーザーです。 ある特定の月に複数回認証を実行するユーザーは、1 MAU としてカウントされます。 同月中、MAU の 2 回目以降の認証について、お客様が課金されることはありません。非アクティブ ユーザーについても同様です。 認証の例を次に示します。
+
+- ユーザーによる対話型のアクティブ サインイン。たとえば、[サインアップやサインイン](add-sign-up-and-sign-in-policy.md)、[セルフサービス パスワード リセット](add-password-reset-policy.md)、[プロファイルの編集](add-profile-editing-policy.md)のほか、あらゆるタイプの[ユーザー フロー](user-flow-overview.md)または[カスタム ポリシー](custom-policy-overview.md)を通じて行うサインインが該当します。
+- 非対話型のパッシブ サインイン。たとえば[シングル サインオン (SSO)](session-behavior.md) のほか、認可コード フロー、トークン更新、[リソース所有者のパスワード資格情報 (ROPC)](add-ropc-policy.md) など、あらゆるタイプのトークン取得が該当します。
+
+音声や SMS の多要素認証 (MFA) を使用して認証の確実性を高めることを選んだ場合、サインインが成功したかどうかに関係なく、その月に試行された MFA ごとにワールドワイドな固定料金が引き続き課金されます。 
 
 > [!IMPORTANT]
 > この記事には価格の詳細は含まれていません。 使用量の課金と価格の最新情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」を参照してください。 Azure AD B2C サービスが利用できる地域とユーザー データの格納場所に関する詳細については、[Azure AD B2C の利用可能なリージョンとデータの保存場所](data-residency.md)に関するページも参照してください。

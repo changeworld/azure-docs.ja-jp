@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 2d68a74332ef77694d44597e6f879858fa0051bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 808f7a23a0be389703f2a805407b6ce725ce920a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726225"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315554"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>物理サーバーの検出および評価のサポート マトリックス 
 
@@ -34,6 +34,10 @@ ms.locfileid: "121726225"
 
 **物理サーバーの展開:** 物理サーバーは、スタンドアロンにすることも、クラスターにデプロイすることもできます。
 
+**サーバーの種類:** ベアメタル サーバー、オンプレミスまたは他のクラウド (AWS、GCP、Xen など) で実行されている仮想化サーバー。
+>[!Note]
+> 現在、Azure Migrate では、準仮想化サーバーの検出はサポートされていません。 
+
 **オペレーティング システム:** すべての Windows および Linux オペレーティング システムを、移行のために評価することができます。
 
 **アクセス許可:**
@@ -46,7 +50,7 @@ ms.locfileid: "121726225"
 - 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。 
 - リモート管理ユーザー グループが存在しない場合は、ユーザー アカウントを次のグループに追加します: **WinRMRemoteWMIUsers_** 。
 - このアカウントには、サーバーとの CIM 接続を作成し、[こちら](migrate-appliance.md#collected-data---physical)で示されている WMI クラスから必要な構成とパフォーマンス メタデータをプルするために、アプライアンスにこれらのアクセス許可が必要です。
-- 場合によっては、これらのグループにアカウントを追加しても、WMI クラスから必要なデータが返されないことがあります。それは、[UAC](/windows/win32/wmisdk/user-account-control-and-wmi) によって、アカウントがフィルター処理される可能性があるためです。 この UAC フィルター処理を克服するには、ターゲット サーバー上の CIMV2 名前空間およびサブ名前空間に対する必要なアクセス許可をユーザー アカウントが持っている必要があります。 [こちら](troubleshoot-appliance.md#access-is-denied-when-connecting-to-physical-servers-during-validation)の手順に従って、必要なアクセス許可を有効にすることができます。
+- 場合によっては、これらのグループにアカウントを追加しても、WMI クラスから必要なデータが返されないことがあります。それは、[UAC](/windows/win32/wmisdk/user-account-control-and-wmi) によって、アカウントがフィルター処理される可能性があるためです。 この UAC フィルター処理を克服するには、ターゲット サーバー上の CIMV2 名前空間およびサブ名前空間に対する必要なアクセス許可をユーザー アカウントが持っている必要があります。 [こちら](troubleshoot-appliance.md#access-is-denied-error-occurs-when-you-connect-to-physical-servers-during-validation)の手順に従って、必要なアクセス許可を有効にすることができます。
 
     > [!Note]
     > Windows Server 2008 および 2008 R2 の場合は、サーバー上に WMF 3.0 がインストールされていることを確認してください。

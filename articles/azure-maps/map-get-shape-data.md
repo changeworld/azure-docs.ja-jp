@@ -6,14 +6,13 @@ ms.author: v-stharr
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: 2ef479a4e1bd4a10a2a62c82de384338b1f016a7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ae9683140eb1a3faf685bb3ffe2ee299313eabe3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751412"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435008"
 ---
 # <a name="get-shape-data"></a>図形データを取得する
 
@@ -36,7 +35,7 @@ function getDrawnShapes() {
 
 <br/>
 
-<iframe height="686" title="図形データを取得する" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>Get shape data</a>」Pen を参照してください。
+<iframe height="686" title="図形データを取得する" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>Get shape data</a>」Pen を参照してください。
 </iframe>
 
 

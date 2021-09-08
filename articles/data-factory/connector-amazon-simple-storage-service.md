@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 03/17/2021
-ms.openlocfilehash: 3f6ad09e7d52ca56dcb1eb06827513f03c8581e7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 16b157e9a26a1a512d4d0ef94db1816210f8cf16
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637818"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304659"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
@@ -54,6 +54,30 @@ Amazon S3 のアクセス許可の完全な一覧については、[ポリシー
 ## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
+
+## <a name="create-an-amazon-simple-storage-service-s3-linked-service-using-ui"></a>UI を使用して Amazon Simple Storage Service (S3) のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Amazon S3 のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Amazon を検索し、Amazon S3 コネクタを選択します。
+
+    :::image type="content" source="media/connector-amazon-simple-storage-service/amazon-simple-storage-service-connector.png" alt-text="Amazon S3 コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-amazon-simple-storage-service/configure-amazon-simple-storage-service-linked-service.png" alt-text="Amazon S3 のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 以下のセクションで、Amazon S3 に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 

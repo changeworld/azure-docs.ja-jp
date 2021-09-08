@@ -1,20 +1,18 @@
 ---
 title: マップに線レイヤーを追加する | Microsoft Azure Maps
 description: マップに線を追加する方法について説明します。 Azure Maps Web SDK を使用し、マップに行レイヤーを追加したり、シンボルやカラー グラデーションで行をカスタマイズしたりする例について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 08/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: fedf1bc37661100404106859d3aef52b3eddf06d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8c2a0bd9a6923d0ad03a64c90db6832d4ea34145
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048139"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437078"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>マップに線レイヤーを追加する
 
@@ -44,7 +42,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップに線を追加する' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/qomaKv/'>Add a line to a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに線を追加する' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/qomaKv/'>Add a line to a map</a>」Pen を表示します。
 </iframe>
 
 線レイヤーは、「[LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)」と「[データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)」を使用してスタイルを指定できます。
@@ -55,7 +53,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="線に沿って矢印を表示する" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="線に沿って矢印を表示する" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/drBJwX/'>Show arrow along line</a>」Pen を表示します。
 </iframe>
 
@@ -66,11 +64,11 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>ストロークのグラデーションを線に追加する
 
-線に 1 つのストロークの色を適用できます。 さらに、線を色のグラデーションで塗りつぶして、1 つの線分から次の線分への遷移を示すこともできます。 たとえば、線のグラデーションを使用して、時間と距離の変化やオブジェクトを接続した線のさまざまな温度を表すことができます。 線にこのフィーチャーを適用するためには、データ ソースで `lineMetrics` オプションが `true` に設定されている必要があります。それにより、色のグラデーション式を線の `strokeColor` オプションに渡すことができます。 ストロークのグラデーション式は、計算済みのメトリックを式に公開する `['line-progress']` データ式を参照する必要があります。
+線に 1 つのストロークの色を適用できます。 さらに、線を色のグラデーションで塗りつぶして、1 つの線分から次の線分への遷移を示すこともできます。 たとえば、線のグラデーションを使用して、時間と距離の変化やオブジェクトを接続した線のさまざまな温度を表すことができます。 線にこの機能を適用するためには、データ ソースで `lineMetrics` オプションが `true` に設定されている必要があります。それにより、色のグラデーション式を線の `strokeColor` オプションに渡すことができます。 ストロークのグラデーション式は、計算済みのメトリックを式に公開する `['line-progress']` データ式を参照する必要があります。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="ストロークのグラデーションのある線" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="ストロークのグラデーションのある線" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>Line with Stroke Gradient</a>」Pen を表示します。
 </iframe>
 
@@ -80,7 +78,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='線レイヤーのオプション' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/GwLrgb/'>Line Layer Options</a>」Pen を表示します。
+<iframe height='700' scrolling='no' title='線レイヤーのオプション' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/GwLrgb/'>Line Layer Options</a>」Pen を表示します。
 </iframe>
 
 ## <a name="next-steps"></a>次のステップ

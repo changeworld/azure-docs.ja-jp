@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e26a375ebdc97026de09511b0bc0f11fe073e41
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 58c956b48c26e4614dd15cd8c4bca657409d2678
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280124"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123467636"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する
 
@@ -31,8 +31,6 @@ ms.locfileid: "106280124"
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
 - [Node.js](https://nodejs.org/en/download/)。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>設定
 

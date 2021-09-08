@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 9/01/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 619c29b2c28c04e1cbf4d4dcda8fe3048234e7dd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 828f4bc269e5d7ec5b0d46c473d2abbf2c200222
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752177"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220617"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して管理を自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,6 +31,9 @@ ms.locfileid: "121752177"
 SQL Server IaaS Agent 拡張機能 (SQLIaaSExtension) は、管理タスクを自動化するために Azure 仮想マシン (VM) 上の SQL Server で実行されます。 
 
 この記事では、この拡張機能の概要について説明します。 SQL Server IaaS 拡張機能を Azure VM 上の SQL Server にインストールする方法については、[自動インストール](sql-agent-extension-automatic-registration-all-vms.md)、 [単一の VM の登録](sql-agent-extension-manually-register-single-vm.md)、または [VM の一括登録](sql-agent-extension-manually-register-vms-bulk.md) に関する記事を参照してください。 
+
+> [!NOTE]
+> 2021 年 9 月以降は、SQL IaaS 拡張機能をフル モードで登録しても、SQL Server サービスを再起動する必要はありません。 
 
 ## <a name="overview"></a>概要
 
@@ -85,9 +88,9 @@ SQL Server IaaS Agent 拡張機能には、SQL Server VM を管理するため�
 
 次の 3 つの管理モードによる SQL IaaS 拡張機能の登録を選択できます。 
 
-- **軽量** モードでは、拡張機能バイナリが VM にコピーされますが、エージェントはインストールされず、SQL Server サービスは再起動されません。 軽量モードでは、SQL Server のライセンスの種類とエディションの変更のみがサポートされ、ポータルの管理が制限されます。 このオプションは、複数のインスタンスがあるか、フェールオーバー クラスター インスタンス (FCI) に参加している SQL Server VM に使用します。 簡易モードは、[自動登録](sql-agent-extension-automatic-registration-all-vms.md)機能を使用する場合、または手動登録時に管理の種類が指定されていない場合の既定の管理モードです。 軽量モードを使用する場合、メモリまたは CPU への影響はなく、また関連コストはありません。 最初に軽量モードで SQL Server VM を登録してから、予定メンテナンス期間中にフル モードにアップグレードすることをお勧めします。 
+- **軽量** モードでは、拡張機能バイナリが VM にコピーされますが、エージェントはインストールされません。 軽量モードでは、SQL Server のライセンスの種類とエディションの変更 "_のみ_" がサポートされ、ポータルの管理が制限されます。 このオプションは、複数のインスタンスがあるか、フェールオーバー クラスター インスタンス (FCI) に参加している SQL Server VM に使用します。 簡易モードは、[自動登録](sql-agent-extension-automatic-registration-all-vms.md)機能を使用する場合、または手動登録時に管理の種類が指定されていない場合の既定の管理モードです。 軽量モードを使用する場合、メモリまたは CPU への影響はなく、また関連コストはありません。 
 
-- **フル** モードでは、SQL IaaS Agent が VM にインストールされてすべての機能が提供されますが、SQL Server サービスを再起動する必要があり、またシステム管理者権限が必要です。 単一のインスタンスがある SQL Server VM を管理する場合に使用します。 フル モードでは、メモリと CPU に与える影響が最小の 2 つの Windows サービスがインストールされます。これらは、タスク マネージャーを通して監視できます。 完全管理モードの使用に関連するコストはありません。 
+- **フル** モードでは、SQL IaaS Agent が VM にインストールされてすべての機能が提供されます。 単一のインスタンスがある SQL Server VM を管理する場合に使用します。 フル モードでは、メモリと CPU に与える影響が最小の 2 つの Windows サービスがインストールされます。これらは、タスク マネージャーを通して監視できます。 完全管理モードの使用に関連するコストはありません。 システム管理者のアクセス許可が必要です。 2021 年 9 月以降は、SQL Server VM をフル管理モードで登録したときでも、SQL Server サービスを再起動する必要はありません。 
 
 - **NoAgent** モードは Windows Server 2008 にインストールされた SQL Server 2008 および SQL Server 2008 R2 の専用モードです。 NoAgent モードを使用する場合、メモリまたは CPU への影響はありません。 NoAgent 管理モードの使用に関連するコストはありません。SQL Server は再起動されず、エージェントは VM にインストールされません。 
 
@@ -102,11 +105,11 @@ Azure PowerShell を次のように使用して、SQL Server IaaS Agent の現�
 
 ## <a name="installation"></a>インストール
 
-SQL Server VM を SQL Server IaaS Agent 拡張機能に登録し、仮想マシン リソースとは "_別の_" リソースである、**SQL 仮想マシン** "_リソース_" をサブスクリプション内に作成します。 拡張機能から SQL Server VM を登録解除すると、**SQL 仮想マシン** "_リソース_" は削除されますが、実際の仮想マシンは削除されません。
+SQL Server VM を SQL Server IaaS Agent 拡張機能に登録し、仮想マシン リソースとは "_別_ の" リソースである、[**SQL 仮想マシン** "_リソース_"](manage-sql-vm-portal.md) をサブスクリプション内に作成します。 拡張機能から SQL Server VM を登録解除すると、**SQL 仮想マシン** "_リソース_" は削除されますが、実際の仮想マシンは削除されません。
 
-Azure portal を介して SQL Server VM の Azure Marketplace イメージをデプロイすると、その SQL Server VM が自動的に拡張機能に登録されます。 ただし、Azure 仮想マシンに SQL Server を自分でインストールすること、またはカスタム VHD から Azure 仮想マシンをプロビジョニングすることを選択する場合は、機能面の利点を活用できるようにするために、SQL Server VM を SQL IaaS Agent 拡張機能に登録する必要があります。 
+Azure portal を介して SQL Server VM の Azure Marketplace イメージをデプロイすると、その SQL Server VM が自動的に拡張機能にフル モードで登録されます。 ただし、Azure 仮想マシンに SQL Server を自分でインストールすること、またはカスタム VHD から Azure 仮想マシンをプロビジョニングすることを選択する場合は、機能面の利点を活用できるようにするために、SQL Server VM を SQL IaaS Agent 拡張機能に登録する必要があります。 
 
-軽量モードで拡張機能を登録すると、バイナリはコピーされますが、エージェントは VM にインストールされません。 拡張機能が完全管理モードにアップグレードされると、エージェントは VM にインストールされます。 
+軽量モードで拡張機能を登録すると、バイナリはコピーされますが、エージェントは VM にインストールされません。 拡張機能がフル管理モードでインストールされると、エージェントは VM にインストールされます。 
 
 拡張機能に登録する方法は 3 つあります。 
 - [サブスクリプション内の現在の VM および今後の VM をすべて自動登録する場合](sql-agent-extension-automatic-registration-all-vms.md)
@@ -125,7 +128,7 @@ SQL Server の名前付きインスタンスを使用するには、Azure 仮想
    1. SQL IaaS Agent 拡張機能から SQL Server VM の[登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)します。 
    1. SQL Server VM 内で SQL Server を完全にアンインストールします。
    1. SQL Server VM 内の名前付きインスタンスで SQL Server をインストールします。 
-   1. [SQL IaaS Agent 拡張機能に VM を登録します](sql-agent-extension-manually-register-single-vm.md#register-with-extension)。 
+   1. [SQL IaaS Agent 拡張機能に VM を登録します](sql-agent-extension-manually-register-single-vm.md#full-mode)。 
 
 ## <a name="verify-status-of-extension"></a>拡張機能の状態を確認する
 
@@ -166,6 +169,7 @@ SQL IaaS Agent 拡張機能では、以下のみがサポートされます。
 
 
 ## <a name="in-region-data-residency"></a>リージョンのデータ所在地
+
 Azure SQL 仮想マシンと SQL IaaS Agent 拡張機能では、デプロイされているリージョンから顧客データを移動または保存することはできません。
 
 ## <a name="next-steps"></a>次のステップ

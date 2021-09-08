@@ -3,20 +3,20 @@ title: テナント モデルを作成する (プレビュー) - Speech サー�
 titleSuffix: Azure Cognitive Services
 description: Microsoft 365 データを使用する、セキュリティとコンプライアンスが確保されたテナント モデル (Custom Speech with Microsoft 365 data) を自動的に生成し、組織固有の用語に最適な音声認識を提供します。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0076364d0075573571e76cf230b4920763bb6e2c
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: ffc4292a519084f6e5e7729ebe56c77d69750c3d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072551"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535547"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>チュートリアル:テナント モデルを作成する (プレビュー)
 

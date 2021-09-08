@@ -5,15 +5,15 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 06/25/2021
+ms.date: 08/24/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: a7035cff720b7eee4467f355a533a19f059c4baa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b64cf919c0197ccc8e7128a045db0eee27356c78
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014617"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123355311"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -27,7 +27,7 @@ ms.locfileid: "122014617"
 | ポリシーあたりのカスタム Web アプリケーション ファイアウォール規則数 | 100 |
 | サブスクリプションあたりの Web アプリケーション ファイアウォール | 100 |
 | カスタム規則ごとの Web アプリケーション ファイアウォールの一致条件 | 10 |
-| 一致条件ごとの Web アプリケーション ファイアウォール IP アドレスの範囲 | 600 |
+| カスタム ルールごとの Web アプリケーション ファイアウォール IP アドレスの範囲 | 600 |
 | 一致条件ごとの Web アプリケーション ファイアウォール文字列の一致する値 | 10 |
 | Web アプリケーション ファイアウォール文字列の一致する値の長さ | 256 |
 | Web アプリケーション ファイアウォールの POST 本文のパラメーター名の長さ | 256 |
@@ -55,7 +55,7 @@ ms.locfileid: "122014617"
 | 1 つのキャッシュ削除呼び出しにおける URL 数 | 100 | 100 |
 | ポリシーあたりのカスタム Web アプリケーション ファイアウォール規則数 | 100 | 100 |
 | カスタム規則ごとの Web アプリケーション ファイアウォールの一致条件 | 10 | 10 |
-| 一致条件ごとの Web アプリケーション ファイアウォール IP アドレスの範囲 | 600 | 600 |
+| カスタム ルールごとの Web アプリケーション ファイアウォール IP アドレスの範囲 | 600 | 600 |
 | 一致条件ごとの Web アプリケーション ファイアウォール文字列の一致する値 | 10 | 10 |
 | Web アプリケーション ファイアウォール文字列の一致する値の長さ | 256 | 256 |
 | Web アプリケーション ファイアウォールの POST 本文のパラメーター名の長さ | 256 | 256 |

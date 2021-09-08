@@ -1,24 +1,27 @@
 ---
-title: Azure Data Factory での Parquet 形式
-description: このトピックでは、Azure Data Factory で Parquet 形式を処理する方法について説明します。
+title: Parquet 形式
+titleSuffix: Azure Data Factory & Azure Synapse
+description: このトピックでは、Azure Data Factory および Azure Synapse Analytics パイプラインで Parquet 形式を処理する方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/27/2020
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 8cd9259b92da17d2879fd8e4de31bca5c5346752
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 58dfe48ca6b0f9cdf1db1f4342e1ee19b5c4c9ce
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097824"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255011"
 ---
-# <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
+# <a name="parquet-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での Parquet 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 **Parquet ファイルの解析または Parquet 形式でのデータの書き込み** を行う場合は、この記事に従ってください。 
 
-Parquet 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[File System](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。
+Parquet 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -160,7 +163,7 @@ Parquet 複合データ型 (MAP、LIST、STRUCT など) は、現在、コピー
 > [!IMPORTANT]
 > オンプレミスとクラウドのデータ ストアの間など、セルフホステッド統合ランタイムを利用したコピーでは、Parquet ファイルを **そのまま** コピーしない場合は、**64-bit JRE 8 (Java Runtime Environment) または OpenJDK** と **Microsoft Visual C++ 2010 再頒布可能パッケージ** を IR マシンにインストールする必要があります。 詳細については、次の段落をご確認ください。
 
-Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
+Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、サービスは最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 
 - **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
 - **OpenJDK の使用方法**:IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
@@ -171,7 +174,7 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 
 ![セルフホステッド IR 上での JVM ヒープ サイズの設定](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-例: 変数 `_JAVA_OPTIONS` を設定して、値 `-Xms256m -Xmx16g` を指定します。 フラグ `Xms` では、Java 仮想マシン (JVM) の初期メモリ割り当てプールを指定します。`Xmx` では、最大メモリ割り当てプールを指定します。 これは、JVM 起動時のメモリ量が `Xms`、使用可能なメモリ量が最大で `Xmx` であることを意味します。 既定では、ADF では、最小で 64MB、最大で 1G が使用されます。
+例: 変数 `_JAVA_OPTIONS` を設定して、値 `-Xms256m -Xmx16g` を指定します。 フラグ `Xms` では、Java 仮想マシン (JVM) の初期メモリ割り当てプールを指定します。`Xmx` では、最大メモリ割り当てプールを指定します。 これは、JVM 起動時のメモリ量が `Xms`、使用可能なメモリ量が最大で `Xmx` であることを意味します。 既定では、サービスにより最小で 64MB、最大で 1G が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

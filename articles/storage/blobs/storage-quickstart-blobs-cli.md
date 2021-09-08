@@ -10,18 +10,16 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dae51f8c343fa5adcf724cd3ef6db1c8a4058cf7
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: d58a1db58c669bf17c4708e73f658b721376adcf
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900721"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472922"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 
 Azure CLI は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 ブラウザーで、Azure Cloud Shell を使用して操作することができます。 また、macOS、Linux、または Windows 上にインストールし、コマンド ラインから実行することもできます。 このクイック スタートでは、Azure CLI を使用して、Azure Blob Storage との間でデータをアップロードおよびダウンロードする方法を説明します。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

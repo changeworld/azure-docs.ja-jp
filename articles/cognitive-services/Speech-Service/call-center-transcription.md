@@ -3,19 +3,19 @@ title: コール センターの文字起こし - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換の一般的なシナリオは、インタラクティブ ボイス レスポンス (IVR) など、さまざまなシステムから入ってくる大量の電話データを文字に起こすことです。 Speech サービスと Unified 音声モデルを使用すると、企業は、音声取り込みシステムで高品質の文字起こしが可能になります。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: lajanuar
-ms.openlocfilehash: 1cf4c6111c18a9c0b79bc898a89b24717bb9f438
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 0c1e1ca9b38c342d469c7d4ea1589b48038c95db
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069368"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538869"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
 

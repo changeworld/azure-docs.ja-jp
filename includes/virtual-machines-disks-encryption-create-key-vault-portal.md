@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/15/2021
+ms.date: 08/25/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e05dd70ab0919ca4429cee15ecfc9d6ac9ee627
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 6a8a503f5357ec69a1bab007f4ae2849582fed3b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122264919"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835595"
 ---
 ディスクにカスタマー マネージド キーを設定する作業を初めて実行するときは、特定の順序でリソースを作成する必要があります。 最初に、Azure キー コンテナーの作成と設定を行う必要があります。
 
@@ -60,11 +60,8 @@ Azure キー コンテナーとキーを作成したら、Azure RBAC ロール�
 
 1. **ディスク暗号化セット** を検索して選択します。
 1. **[ディスク暗号化セット]** ペインで、 **[+ 作成]** を選択します。
-
-    ![ディスク暗号化ポータルのメイン画面のスクリーンショット。 [追加] ボタンが強調表示されています](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
-
 1. リソース グループを選択し、暗号化セットに名前を付け、キー コンテナーと同じリージョンを選択します。
-1. **[暗号化の種類]** で、 **[カスタマー マネージド キーを使用した保存時の暗号化]** を選択します。
+1. **[SSE Encryption type (SSE 暗号化の種類)]** で、 **[Encryption at-rest with a customer-managed key (カスタマー マネージド キーを使用した保存時の暗号化)]** を選択します。
 
     > [!NOTE]
     > 特定の種類の暗号化を使用してディスク暗号化セットを作成すると、そのセットを変更することはできません。 別の種類の暗号化を使用したい場合は、新しいディスク暗号化セットを作成する必要があります。
@@ -72,6 +69,7 @@ Azure キー コンテナーとキーを作成したら、Azure RBAC ロール�
 1. **[クリックしてキーを選択します]** を選択します。
 1. 以前に作成したキー コンテナーとキー、およびバージョンを選択します。
 1. **[選択]** を選択します。
+1. [カスタマー マネージド キーの自動ローテーション](../articles/virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)を有効にする場合は、 **[Auto key rotation (自動キー ローテーション)]** を選択します。
 1. **[確認および作成]** 、 **[作成]** の順に選択します。
 
-    ![ディスク暗号化作成ペインのスクリーンショット。 サブスクリプション、リソース グループ、ディスク暗号化セット名、リージョン、キー コンテナーとキーのセレクターが表示されています。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
+    :::image type="content" source="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png" alt-text="ディスク暗号化作成ペインのスクリーンショット。サブスクリプション、リソース グループ、ディスク暗号化セット名、リージョン、キー コンテナーとキーのセレクターが表示されています。" lightbox="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png":::

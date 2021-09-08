@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 75a659f9927c186e313b4f1d40b8c8e236ba091d
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 805299da7c74b18cb95c6dc87e1a0462c7f1664b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302844"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424206"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Azure portal を使用してプライベート ピアリングに対する IPv6 サポートを追加する (プレビュー)
 
@@ -61,6 +61,9 @@ IPv6 プライベート ピアリングを使用する Azure リソースの既�
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
+    
+>[!NOTE]
+> If you have an existing gateway that is not zone-redundant (meaning it is Standard, High Performance, or Ultra Performance SKU), you will need to delete and [recreate the gateway](expressroute-howto-add-gateway-portal-resource-manager.md#create-the-virtual-network-gateway) using any SKU and a Standard, Static public IP address.
 
 ## Create a connection to a new virtual network
 

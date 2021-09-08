@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: 32a47a34d9a4c8562dd1cec44f5a2ec519cb1a7f
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 19065a8a0bc828c30997edd05e9b268657e0fcb1
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107984436"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221515"
 ---
 証明書をまだ持っていない場合は、自己署名証明書を使用できます。 自己署名証明書は、証明機関 (CA) によって署名されていないセキュリティ証明書であり、CA によって署名された証明書のセキュリティ保証を提供するものではありません。 
 
@@ -45,11 +45,11 @@ macOS では、キーチェーン アクセスで[証明書アシスタント](h
 
 1. [Mac 上でキーチェーン アクセスで自己署名証明書を作成する](https://support.apple.com/guide/keychain-access/kyca8916/mac)方法の手順に従ってください。
 1. Mac 上のキーチェーン アクセス アプリで、作成した証明書を選択します。
-1. **[ファイル]**  >  **[項目のエクスポート]** を選択します。
+1. **[ファイル]**  >  **[Export Items (項目のエクスポート)]** を選択します。
 1. 証明書を保存するファイル名を選択します。 たとえば、**self-signed-certificate.p12** など。
-1. **[ファイル形式]** については、**PEM (p12)** を選択します。
+1. **[ファイル形式]** には、**Personal Information Exchange (p12)** を選択します。
 1. **[保存]** を選択します。
-1. **パスワード** を入力し、パスワードを **確認** します。
-1. ファイル拡張子を `.pfx` に置き換えます。 たとえば、**self-signed-certificate.pfx** など。
+1. **[パスワード]** と **[Verify (確認)]** の欄にパスワードを入力します。
+1. ファイル拡張子を .pfx に置き換えます。 たとえば、**self-signed-certificate.pfx** など。
 
 ---

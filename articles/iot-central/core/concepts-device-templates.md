@@ -3,17 +3,17 @@ title: Azure IoT Central のテンプレートとは | Microsoft Docs
 description: Azure IoT Central のデバイス テンプレートを使用すると、アプリケーションに接続されているデバイスの動作を指定できます。 デバイス テンプレートによって、デバイスで実装しなければならないテレメトリ、プロパティ、コマンドが指定されます。 デバイス テンプレートではまた、オペレーターが使用するフォームやビューなどの IoT Central のデバイス用の UI も定義します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: b2122dc50b265c31c1c21c2758e343ec88384a8b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d0e5f563e61cec96e67dd998e969a34a8da3615f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114474058"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481238"
 ---
 # <a name="what-are-device-templates"></a>デバイス テンプレートとは
 

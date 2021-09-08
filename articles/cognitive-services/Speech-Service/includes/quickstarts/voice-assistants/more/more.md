@@ -1,15 +1,15 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
-ms.author: lajanuar
-ms.openlocfilehash: 6ebcfa4adbffaab794e0ec5f8a261ef6ec04b730
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 2dabccc020fa4187825f94d6b39134844daab05f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122262387"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646750"
 ---
 ## <a name="additional-language-and-platform-support"></a>言語とプラットフォームのその他のサポート
 

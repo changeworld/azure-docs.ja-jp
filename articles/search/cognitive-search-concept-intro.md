@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: ab899a58bab3c4e37b6aa66669f0e060fb7e7e28
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 73a1ae771ba3e3e5876b2efd3914b9e38ab0e426
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737636"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222360"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
@@ -75,7 +75,7 @@ AI エンリッチメントは、Azure Cognitive Services が利用できるリ�
 
 ## <a name="enrichment-steps"></a>エンリッチメントの手順 <a name="enrichment-steps"></a>
 
-エンリッチメント パイプラインは、"[*スキルセット*](cognitive-search-working-with-skillsets.md)" を含む "[*インデクサー*](search-indexer-overview.md)" で構成されます。 スキルセットではエンリッチメントの手順が定義されており、インデクサーによってスキルセットが駆動されます。 インデクサーを構成するときに、エンリッチされたコンテンツを[検索インデックス](search-what-is-an-index.md)または[ナレッジ ストア](knowledge-store-concept-intro.md)に送信する出力フィールド マッピングなどのプロパティを含めることができます。
+エンリッチメント パイプラインは、"[*スキルセット*](cognitive-search-working-with-skillsets.md)" を含む "[*インデクサー*](search-indexer-overview.md)" で構成されます。 スキルセットではエンリッチメントの手順が定義されており、インデクサーによってスキルセットが駆動されます。 インデクサーの設定を行うとき、エンリッチしたコンテンツを[検索インデックス](search-what-is-an-index.md)に送信する出力フィールド マッピングや、[ナレッジ ストア](knowledge-store-concept-intro.md)のデータ構造を決めるプロジェクションのようなプロパティを設定できます。
 
 インデックスを作成した後は、[Azure Cognitive Search でサポートされているすべての種類のクエリ](search-query-overview.md)を使用して検索を要求し、コンテンツにアクセスできます。
 
@@ -143,5 +143,7 @@ Azure Cognitive Search では、インデクサーによって作成された出
 
 + [クイック スタート: ポータルにおける AI エンリッチメントのチュートリアル](cognitive-search-quickstart-blob.md)
 + [チュートリアル: AI エンリッチメント REST API について学習する](cognitive-search-tutorial-blob.md)
-+ [ナレッジ ストア](knowledge-store-concept-intro.md)
-+ [REST でナレッジ ストアを作成する](knowledge-store-create-rest.md)
++ [スキルセットの概念](cognitive-search-working-with-skillsets.md)
++ [ナレッジ ストアの概念](knowledge-store-concept-intro.md)
++ [スキルセットを作成する](cognitive-search-defining-skillset.md)
++ [ナレッジ ストアの作成](knowledge-store-create-rest.md)

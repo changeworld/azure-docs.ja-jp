@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: ba1f3e9ca68f44927c1d163a8d02c63c7b2f3b0c
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 347293a0cd8647df110c10d9a94c99a978f36041
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598479"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424656"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -82,11 +82,11 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) コマンドにより、Azure VM 拡張機能を既存の VM に対して実行できます。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して Custom Script 拡張機能を実行します。 例のリソース グループ名、VM 名、および実行するスクリプト (https:\//raw.githubusercontent.com/me/project/hello.sh) を実際の情報に置き換えます。 
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name customScript `
-  --publisher Microsoft.Azure.Extensions `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name customScript \
+  --publisher Microsoft.Azure.Extensions \
   --settings '{"fileUris": ["https://raw.githubusercontent.com/me/project/hello.sh"],"commandToExecute": "./hello.sh"}'
 ```
 

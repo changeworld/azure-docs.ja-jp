@@ -6,19 +6,19 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 51ec14ff1df2c8fb450804c22b3211904e5f3a37
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: ea9f57364d6b7cca884f87c36623a73bbcb37ae6
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112371573"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186877"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Device Update for IoT Hub への更新プログラムのインポート - スキーマおよびその他の情報
 Device Update for IoT Hub に更新プログラムにインポートする場合は、まず、[概念](import-concepts.md)と[攻略ガイド](import-update.md) を必ず確認しておいてください。 インポート マニフェストの構築時に使用されるスキーマの詳細と、関連するオブジェクトの情報に関心がある場合は、以下を参照してください。
 
 ## <a name="import-manifest-schema"></a>インポート マニフェスト スキーマ
 
-| 名前 | 型 | 説明 | 制限 |
+| 名前 | Type | 説明 | 制限 |
 | --------- | --------- | --------- | --------- |
 | UpdateId | `UpdateId` オブジェクト | 更新プログラム ID。 |
 | UpdateType | string | 更新の種類: <br/><br/> * 参照エージェントを使用してパッケージベースの更新を実行する場合は、`microsoft/apt:1` を指定します。<br/> * 参照エージェントを使用してイメージベースの更新を実行する場合は、`microsoft/swupdate:1` を指定します。<br/> * サンプル エージェント シミュレーターを使用する場合は、`microsoft/simulator:1` を指定します。<br/> * カスタム エージェントを開発する場合は、カスタムの種類を指定します。 | 形式: <br/> `{provider}/{type}:{typeVersion}`<br/><br/> 最大 32 文字 |
@@ -30,7 +30,7 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
 
 ## <a name="updateid-object"></a>UpdateId オブジェクト
 
-| 名前 | 型 | 説明 | 制限 |
+| 名前 | Type | 説明 | 制限 |
 | --------- | --------- | --------- | --------- |
 | プロバイダー | string | 更新プログラム ID のプロバイダー部分 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
 | 名前 | string | 更新プログラム ID の名前部分 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
@@ -38,7 +38,7 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
 
 ## <a name="file-object"></a>File オブジェクト
 
-| 名前 | 型 | 説明 | 制限 |
+| 名前 | Type | 説明 | 制限 |
 | --------- | --------- | --------- | --------- |
 | ファイル名 | string | ファイルの名前 | 255 文字以内でなければなりません。 更新プログラム内で一意である必要があります |
 | SizeInBytes | Int64 | ファイルのサイズ (バイト単位)。 | 個々のファイルあたり最大 800 MB、または更新プログラムあたり合計で 800 MB |
@@ -46,14 +46,14 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
 
 ## <a name="compatibilityinfo-object"></a>CompatibilityInfo オブジェクト
 
-| 名前 | 型 | 説明 | 制限 |
+| 名前 | Type | 説明 | 制限 |
 | --- | --- | --- | --- |
 | DeviceManufacturer | string | 更新プログラムと互換性があるデバイスの製造元。 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
 | DeviceModel | string | 更新プログラムと互換性があるデバイスのモデル。 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
 
 ## <a name="hashes-object"></a>Hashes オブジェクト
 
-| 名前 | 必須 | 型 | 説明 |
+| 名前 | 必須 | Type | 説明 |
 | --------- | --------- | --------- | --------- |
 | Sha256 | True | string | SHA-256 アルゴリズムを使用した、ファイルの Base64 エンコード ハッシュ。 |
 
@@ -81,6 +81,77 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
     },
   ]
 }
+```
+
+## <a name="oauth-authorization-when-calling-import-apis"></a>インポート API を呼び出す際の OAuth 認可
+
+**azure_auth**
+
+Azure Active Directory OAuth2 Flow Type: oauth2 Flow: any 
+
+認可 URL: https://login.microsoftonline.com/common/oauth2/authorize
+
+**スコープ**
+
+| 名前 | Description |
+| --- | --- |
+| `https://api.adu.microsoft.com/user_impersonation` | ユーザー アカウントの借用 |
+| `https://api.adu.microsoft.com/.default`  | クライアント資格情報フロー |
+
+
+**アクセス許可**
+
+Azure AD アプリケーションを使用してユーザーのサインイン処理を行う場合、スコープには /user_impersonation が含まれている必要があります。 
+
+Azure Device Update API を使用するためのアクセス許可を ([Azure AD アプリケーション] ビューの [API のアクセス許可] タブで) Azure AD アプリに追加する必要があります。 Azure Device Update ([所属する組織で使用している API] にあります) への API アクセス許可を要求し、委任された user_impersonation アクセス許可を付与してください。
+
+ADU は、Azure AD でサポートされているいずれかのフローを使用してトークンを受け入れ、ユーザー、アプリケーション、またはマネージド ID のトークンを取得します。 ただし、別途 Azure AD アプリケーションのセットアップが必要なフローもあります。 
+
+* パブリック クライアント フローでは、モバイル フローとデスクトップ フローを有効にする必要があります。
+* 暗黙的フローでは、Web プラットフォームを追加し、承認エンドポイントの [アクセス トークン] を選択する必要があります。
+
+**Azure CLI を使用する例:**
+
+```azurecli
+az login
+
+az account get-access-token --resource 'https://api.adu.microsoft.com/'
+```
+
+**PowerShell MSAL ライブラリを使用してトークンを取得する例:**
+
+_ユーザーの資格情報を使用する_ 
+
+```powershell
+$clientId = '<app_id>’
+$tenantId = '<tenant_id>’
+$authority = "https://login.microsoftonline.com/$tenantId/v2.0"
+$Scope = 'https://api.adu.microsoft.com/user_impersonation'
+
+Get-MsalToken -ClientId $clientId -TenantId $tenantId -Authority $authority -Scopes $Scope
+```
+
+_ユーザーの資格情報とデバイス コードを使用する_
+
+```powershell
+$clientId = '<app_id>’
+$tenantId = '<tenant_id>’
+$authority = "https://login.microsoftonline.com/$tenantId/v2.0"
+$Scope = 'https://api.adu.microsoft.com/user_impersonation'
+
+Get-MsalToken -ClientId $clientId -TenantId $tenantId -Authority $authority -Scopes $Scope -Interactive -DeviceCode
+```
+
+_アプリの資格情報を使用する_
+
+```powershell
+$clientId = '<app_id>’
+$tenantId = '<tenant_id>’
+$cert = '<client_certificate>'
+$authority = "https://login.microsoftonline.com/$tenantId/v2.0"
+$Scope = 'https://api.adu.microsoft.com/.default'
+
+Get-MsalToken -ClientId $clientId -TenantId $tenantId -Authority $authority -Scopes $Scope -ClientCertificate $cert
 ```
 
 ## <a name="next-steps"></a>次のステップ

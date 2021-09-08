@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/10/2021
-ms.openlocfilehash: a6ff17795cfb65ddc5dc8b3bf8c55d3d8084efc8
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.date: 08/25/2021
+ms.openlocfilehash: 74a438088e3e6c751785387580488efa17e82385
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228880"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035399"
 ---
 # <a name="how-to-get-lineage-from-azure-synapse-analytics-into-azure-purview"></a>Azure Synapse Analytics から Azure Purview に系列を取得する方法
 
@@ -22,7 +22,8 @@ ms.locfileid: "122228880"
 
 現在、Azure Purview は、次の Azure Synapse パイプライン アクティビティからランタイムの系列をキャプチャします。
 
-- [[データのコピー]](../data-factory/copy-activity-overview.md)
+- [[データのコピー]](../data-factory/copy-activity-overview.md?context=/azure/synapse-analytics/context/context)
+- [データ フロー](../data-factory/concepts-data-flow-overview.md?context=/azure/synapse-analytics/context/context)
 
 > [!IMPORTANT]
 > ソースまたは宛先でサポートされていないデータ ストレージ システムが使用されている場合、Azure Purview は系列を削除します。
@@ -33,7 +34,7 @@ ms.locfileid: "122228880"
 
 ### <a name="step-1-connect-azure-synapse-workspace-to-your-purview-account"></a>手順 1: Azure Synapse ワークスペースを自分の Purview アカウントに接続する
 
-Azure Sysnpase ワークスペースを Purview に接続できます。また、この接続により、Azure Synapse が系列情報を Purview にプッシュできるようになります。 「[Azure Purview アカウントを Synapse に接続する](../synapse-analytics/catalog-and-governance/quickstart-connect-azure-purview.md)」の手順に従ってください。 包括的に系列を追跡するために、複数の Azure Synapse ワークスペースを 1 つの Azure Purview アカウントに接続できます。
+Azure Synapse ワークスペースを Purview に接続できます。また、この接続により、Azure Synapse が系列情報を Purview にプッシュできるようになります。 「[Synapse ワークスペースを Azure Purview に接続する](../synapse-analytics/catalog-and-governance/quickstart-connect-azure-purview.md)」のステップに従います。 包括的に系列を追跡するために、複数の Azure Synapse ワークスペースを 1 つの Azure Purview アカウントに接続できます。
 
 ### <a name="step-2-run-pipeline-in-azure-synapse-workspace"></a>手順 2: Azure Synapse ワークスペースでパイプラインを実行する
 

@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 077b247b4d8f40cc84b491ba26d78cd614ce15bf
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 43cb35324df2ee3e02da136924da5e0162491b9f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105419"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540255"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor でのロール、アクセス許可、セキュリティ
 
@@ -165,8 +165,8 @@ New-AzRoleDefinition -Role $role
    $role.Name = "Monitoring Event Hub Listener"
    $role.Description = "Can get the key to listen to an event hub streaming monitoring data."
    $role.Actions.Clear()
-   $role.Actions.Add("Microsoft.ServiceBus/namespaces/authorizationrules/listkeys/action")
-   $role.Actions.Add("Microsoft.ServiceBus/namespaces/Read")
+   $role.Actions.Add("Microsoft.EventHub/namespaces/authorizationrules/listkeys/action")
+   $role.Actions.Add("Microsoft.EventHub/namespaces/Read")
    $role.AssignableScopes.Clear()
    $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySBNameSpace")
    New-AzRoleDefinition -Role $role 

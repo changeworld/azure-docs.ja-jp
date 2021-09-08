@@ -1,16 +1,16 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 44ff9049f31a220d8a459f682597b437203a5c4d
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: afcf87ad782307b8f2210b544eabe49aa34ab7e3
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071812"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543451"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 

@@ -10,14 +10,16 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: mimckitt
-ms.openlocfilehash: 64c80ec32b0fe151daa24628a22c27fce4c5f21b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8bf4c2842f6ec3cecc6e6cc014bb225115a1655f
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768231"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450415"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM のカスタム イメージを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 このチュートリアルでは、Azure 仮想マシンの独自のカスタム イメージを作成します。 学習内容は次のとおりです。
 
@@ -41,7 +43,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 共有イメージ ギャラリー機能には、次のような複数のリソースの種類があります。
 
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 

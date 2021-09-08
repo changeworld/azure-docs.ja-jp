@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: cf65fcfe297cfbff60490b165771095e6d3b402a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c64d2e683ade2413e9c548ea548b2e1a6e0efef6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733652"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542964"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -156,7 +156,7 @@ az aks show \
 
 ```bash
 # Retrieve your IP address
-CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+CURRENT_IP=$(dig +short "myip.opendns.com" "@resolver1.opendns.com")
 # Add to AKS approved list
 az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 ```

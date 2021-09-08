@@ -8,14 +8,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de888e76e9ba27fa653905084193e6f8e25d2a81
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369228"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315383"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portal を使用して Azure カスタム ロールを作成または更新する
 
@@ -48,9 +48,9 @@ Azure には、カスタム ロールに含めることができる何千もの�
 
     次のスクリーンショットは、サブスクリプションに対して開かれている [アクセス制御 (IAM)] ページを示しています。
 
-    ![サブスクリプションの [アクセス制御 (IAM)] ページ](./media/custom-roles-portal/access-control-subscription.png)
+    ![サブスクリプションの [アクセス制御 (IAM)] ページ](./media/shared/sub-access-control.png)
 
-1. **[役割]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
+1. **[ロール]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
 
 1. 請求閲覧者ロールなど、複製するロールを検索します。
 
@@ -176,13 +176,13 @@ Azure には、カスタム ロールに含めることができる何千もの�
 
     検索文字列に基づいて、リソース プロバイダー カードの一覧が表示されます。 リソース プロバイダーが Azure サービスにどのようにマップされるかを示す一覧については、「[Azure サービスのリソース プロバイダー ](../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。
 
-    ![リソース プロバイダーが含まれた [アクセス許可の追加] ペイン](./media/custom-roles-portal/add-permissions-provider.png)
+    ![リソース プロバイダーが含まれた [アクセス許可の追加] ペイン](./media/shared/add-permissions-provider.png)
 
 1. **[Microsoft Billing]** など、カスタム ロールに追加するアクセス許可を持つ可能性のあるリソース プロバイダー カードをクリックします。
 
     検索文字列に基づいて、そのリソース プロバイダーの管理アクセス許可の一覧が表示されます。
 
-    ![[アクセス許可の追加] の一覧](./media/custom-roles-portal/add-permissions-list.png)
+    ![[アクセス許可の追加] の一覧](./media/shared/add-permissions-list.png)
 
 1. データ プレーンに適用されるアクセス許可を検索する場合は、 **[データ アクション]** をクリックします。 それ以外の場合は、アクションの切り替えを **[アクション]** のままにして、管理プレーンに適用されるアクセス許可を一覧表示します。 管理プレーンとデータ プレーンの違いの詳細については、「[管理操作とデータ操作](role-definitions.md#management-and-data-operations)」を参照してください。
 
@@ -241,7 +241,9 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="step-5-assignable-scopes"></a>手順 5:割り当て可能なスコープ
 
-**[Assignable scopes]\(割り当て可能なスコープ\)** タブで、サブスクリプションやリソース グループなど、カスタム ロールを割り当て可能な場所を指定します。 選択した開始方法によっては、[アクセス制御 (IAM)] ページを開いたスコープがこのタブに表示される場合があります。 割り当て可能なスコープをルート スコープ ("/") に設定することはサポートされていません。 現時点では、割り当て可能なスコープとして管理グループを追加することはできません。
+**[割り当て可能なスコープ]** タブで、管理グループ、サブスクリプション、リソース グループなど、カスタム ロールを割り当てることができる場所を指定します。 選択した開始方法によっては、[アクセス制御 (IAM)] ページを開いたスコープがこのタブに既に表示されている場合があります。
+
+ 割り当て可能なスコープに定義できる管理グループは 1 つだけです。 割り当て可能なスコープへの管理グループの追加は、現在プレビュー段階です。 割り当て可能なスコープをルート スコープ ("/") に設定することはサポートされていません。
 
 1. **[割り当て可能なスコープの追加]** をクリック て、[割り当て可能なスコープの追加] ペインを開きます。
 

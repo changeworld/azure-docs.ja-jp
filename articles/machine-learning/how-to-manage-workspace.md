@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 2d0d0f70f5a610e77169685a716282bcc0456cab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc0cdbcb85470fb9f1e0eb4d4bf6cc43c3ae4e23
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729824"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034421"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>ポータルまたは Python SDK を使用して Azure Machine Learning ワークスペースを管理する
 
@@ -372,6 +372,10 @@ ws.delete(delete_dependent_resources=False, no_wait=False)
 * **Azure ポータル**: 
   * SDK または Azure portal で共有リンクからワークスペースに直接移動する場合、拡張機能のサブスクリプション情報を含む標準の **[概要]** ページは表示できません。 このシナリオでは、別のワークスペースに切り替えることもできません。 別のワークスペースを表示するには、[Azure Machine Learning Studio](https://ml.azure.com) に直接移動し、そのワークスペース名を検索します。
   * すべての資産 (データセット、実験、コンピューティングなど) は、[Azure Machine Learning Studio](https://ml.azure.com) でのみ使用できます。 Azure portal から使用することは "*できません*"。
+
+### <a name="workspace-diagnostics"></a>ワークスペース診断
+
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
 
 ### <a name="resource-provider-errors"></a>リソース プロバイダーのエラー
 

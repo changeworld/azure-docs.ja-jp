@@ -3,19 +3,19 @@ title: Audio Content Creation - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Audio Content Creation は、Microsoft のテキスト読み上げ出力をご使用のアプリや製品に合わせてカスタマイズしたり微調整したりするためのオンライン ツールです。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.author: lajanuar
-ms.openlocfilehash: bcee11f937095433335700d9867ffb63dc33e640
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 2e5942ccbb9e7acf090e5b538dfbb70b1c84762f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066256"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538635"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
@@ -103,7 +103,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ```xml
 <speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="en-US">
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)">
     Welcome to use Audio Content Creation <break time="10ms" />to customize audio output for your products.
     </voice>
 </speak>

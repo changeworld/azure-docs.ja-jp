@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: d5d2d3a844d417b12ae2899cd5ce3d998731aab6
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 37e6573e1bc26bc79477cf532ef442964f760985
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860822"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226778"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -113,9 +113,12 @@ ms.locfileid: "121860822"
   > [!IMPORTANT]
   > 既定では、ストレージ アカウントは汎用 v1 アカウントです。 ワークスペースの作成後に、[これを汎用 v2 にアップグレード](../storage/common/storage-account-upgrade.md)することができます。 汎用 v2 にアップグレードした後は、ストレージ アカウントで階層型名前空間を有効にしないでください。
 
-  既存の Azure Storage アカウントを使用する場合は、種類 BlobStorage や Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの _既定の_ ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+  既存の Azure Storage アカウントを使用する場合は、種類 BlobStorage や Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの "_既定の_" ストレージ アカウントでは、Premium Storage も階層型名前空間もサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
   
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで **遅延読み込み** されます。
+
+    > [!NOTE]
+    > サブスクリプションの設定で、配下のリソースにタグを追加することが要求されている場合、Azure Machine Learning によって作成される Azure Container Registry (ACR) でエラーが発生します。Microsoft が ACR にタグを設定することはできないためです。
 
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/):モデルに関する監視情報を格納します。
 

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c9b954776c33fedc3a770bc0aab0185ad595aff
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 50ddfbbcf86459c21d5a61ad2b8282da9c76208b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219740"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429084"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -95,7 +95,7 @@ Azure AD B2C をご利用のお客様で、カスタムまたは基幹業務ア�
 **サービス カテゴリ:** MS Graph  
 **製品の機能:** 開発者エクスペリエンス
  
-MS Graph のアプリケーション認証方法のポリシーを使用すると、IT 管理者がアプリケーションのパスワード シークレットの資格情報に有効期限を付けたり、シークレットの使用を完全にブロックすることができるようになります。 ポリシーは、既定の設定ではテナント全体に適用することができ、さらに特定のアプリケーションやサービス プリンシパルに適用することもできます。 [詳細については、こちらを参照してください](/graph/api/resources/policy-overview?view=graph-rest-1.0)。
+MS Graph のアプリケーション認証方法のポリシーを使用すると、IT 管理者がアプリケーションのパスワード シークレットの資格情報に有効期限を付けたり、シークレットの使用を完全にブロックすることができるようになります。 ポリシーは、既定の設定ではテナント全体に適用することができ、さらに特定のアプリケーションやサービス プリンシパルに適用することもできます。 [詳細については、こちらを参照してください](/graph/api/resources/policy-overview?view=graph-rest-beta)。
  
 ---
 
@@ -306,7 +306,7 @@ Azure AD のモビリティ (MDM/MAM) 構成に対する Microsoft Graph のサ�
 **サービス カテゴリ:** ユーザー アクセス管理  
 **製品の機能:** エンタイトルメント管理
  
-Azure AD エンタイトルメント管理のアクセス パッケージ要求フローで、カスタム質問を作成できるようになりました。 この機能を使用することで、ユーザーはアクセス パッケージ ポリシーでカスタム質問を設定することができるようになります。 これらの質問は申請者に対して表示され、このユーザーはアクセス要求プロセスの一部として回答を入力することができます。 承認者はこれらの回答を確認することができ、アクセス要求についてより良い判断を下すための情報として役立てることができます。 [詳細については、こちらを参照してください](../governance/entitlement-management-access-package-create.md#add-requestor-information-to-an-access-package)。
+Azure AD エンタイトルメント管理のアクセス パッケージ要求フローで、カスタム質問を作成できるようになりました。 この機能を使用することで、ユーザーはアクセス パッケージ ポリシーでカスタム質問を設定することができるようになります。 これらの質問は申請者に対して表示され、このユーザーはアクセス要求プロセスの一部として回答を入力することができます。 承認者はこれらの回答を確認することができ、アクセス要求についてより良い判断を下すための情報として役立てることができます。 [詳細については、こちらを参照してください](../governance/entitlement-management-access-package-create.md)。
 
 ---
 

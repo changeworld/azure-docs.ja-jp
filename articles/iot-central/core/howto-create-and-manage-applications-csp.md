@@ -5,14 +5,14 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/11/2020
+ms.date: 08/28/2021
 ms.topic: how-to
-ms.openlocfilehash: fc7d5e806f6f08619e0c18397aab2558e492c9cb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: acbaa73fe51bd1de51084d0ec2752702ae96c66a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735182"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469961"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central アプリケーションを CSP ポータルから作成して管理する
 

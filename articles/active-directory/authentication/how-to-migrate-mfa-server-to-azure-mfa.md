@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eff0705208442c09b859c09ac975e044528f833
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 4415e7ce86d2beb9e2903f23d0b6fa9ac7d3ec04
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397757"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597835"
 ---
 # <a name="migrate-from-azure-mfa-server-to-azure-multi-factor-authentication"></a>Azure MFA Server から Azure Multi-Factor Authentication に移行する
 
@@ -112,7 +112,7 @@ RADIUS クライアントに NPS を使用する場合は制限があるため�
 - ユーザーは、NPS 拡張機能を使用する前に、Azure AD MFA に登録する必要があります。 そうしないと、拡張機能はユーザーの認証に失敗し、ヘルプ デスクの呼び出しが生成される場合があります。
 - NPS 拡張機能で MFA が呼び出されると、MFA 要求がユーザーの既定の MFA メソッドに送信されます。 
   - サインインはサードパーティのアプリケーションで行うため、視覚的な通知 (MFA が必要であり、要求がデバイスに送信された旨を通知) がユーザーに表示される可能性は低くなります。
-  - MFA の要件を満たすには、MFA の要件の確認中に、ユーザーが既定の認証方法にアクセスできる必要があります。 
+  - MFA の要件を満たすには、MFA の要件の確認中に、ユーザーが既定の認証方法にアクセスできる必要があります。 別の方法を選択することはできません。 既定の認証方法は、テナント認証方法と MFA ポリシーで無効になっている場合でも使用されます。
   - ユーザーは、[セキュリティ情報] ページで既定の MFA メソッドを変更できます (aka.ms/mysecurityinfo)。
 - RADIUS クライアントで使用可能な MFA メソッドは、RADIUS アクセス要求を送信するクライアント システムによって制御されます。
   - パスワードを入力した後にユーザー入力が必要になる MFA メソッドは、RADIUS を使用したアクセス チャレンジ応答をサポートするシステムでのみ使用できます。 入力方式には、OTP、ハードウェア OATH トークン、または Microsoft Authenticator アプリケーションなどがあります。

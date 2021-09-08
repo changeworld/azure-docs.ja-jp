@@ -1,15 +1,15 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
-ms.author: lajanuar
-ms.openlocfilehash: cdf9b7132b6509b936d7a3c4d0d41a23933ef389
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 138b6f1b0b20ac85c9800daf40d3c82e81e24d0a
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068970"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539065"
 ---
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -23,7 +23,7 @@ class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 (事前登録されたユーザー プロファイルを使用して特定の参加者を識別しない場合は、この手順を省略できます。)
 
-ユーザー プロファイルを登録する場合は、最初の手順で会話の参加者の声紋を作成して、一意の話者として識別できるようにします。 声紋を作成するための入力 `.wav` 音声ファイルは、16 ビット、16 kHz のサンプル レート、およびシングル チャンネル (モノラル) 形式である必要があります。 各オーディオ サンプルの推奨される長さは、30 秒間から 2 分間です。 オーディオ サンプルが短かすぎると、話者を認識するときの精度が低下します。 一意の音声プロファイルを作成するため、`.wav` ファイルは **1 人の** 音声のサンプルである必要があります。
+ユーザー プロファイルを登録する場合は、最初の手順で会話の参加者の声紋を作成して、一意の話者として識別できるようにします。 声紋を作成するための入力 `.wav` 音声ファイルは、16 ビット、16 kHz のサンプル レート、およびシングル チャンネル (モノラル) 形式である必要があります。 各オーディオ サンプルの推奨される長さは、30 秒間から 2 分間です。 オーディオ サンプルが短すぎると、話者を認識するときの精度が低下します。 一意の音声プロファイルを作成するため、`.wav` ファイルは **1 人の** 音声のサンプルである必要があります。
 
 次の例は、JavaScript で [REST API を使用](https://aka.ms/cts/signaturegenservice)して声紋を作成する方法を示しています。 `subscriptionKey`、`region`、およびサンプル `.wav` ファイルのパスを実際の情報に置き換える必要があることに注意してください。
 

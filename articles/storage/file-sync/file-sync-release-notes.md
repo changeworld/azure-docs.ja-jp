@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/24/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 89d6597bd37ee61b5c42199b660fd2be80fc793a
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: fbd02fb70a16250d427afc2f60343ad6758ea8dc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824661"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258681"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。

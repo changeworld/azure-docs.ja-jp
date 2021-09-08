@@ -10,20 +10,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a44666d8378b13f7ac8498ae4256507705ffc42b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: adb5ac550ad998f807918d20f59048882c9a8565
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723408"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470582"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>暗号化スコープの作成と管理
 
 暗号化スコープを使用すると、個々の BLOB またはコンテナー レベルで暗号化を管理できます。 暗号化スコープを使用すると、異なる顧客が所有する、同じストレージ アカウントに存在するデータの間にセキュリティで保護された境界を作成できます。 暗号化スコープの詳細については、[Blob Storage の暗号化スコープ](encryption-scope-overview.md)に関する記事を参照してください。
 
 この記事では、暗号化スコープを作成する方法について説明します。 また、BLOB またはコンテナーを作成するときに暗号化スコープを指定する方法についても説明します。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>暗号化スコープの作成
 

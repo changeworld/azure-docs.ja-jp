@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a68ec9868e5a441dbfd11f97bc8f169df246598
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: fe26f8f61acbbf454cd2eb2928fdcab0f0bc7e47
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633737"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866969"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を管理する
 
@@ -80,7 +80,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 
 ## <a name="get-acls"></a>ACL を取得する
 
-`az storage fs access show` コマンドを使用して、**ディレクトリ** の ACL を取得します。
+[az storage fs access show](/cli/azure/storage/fs#az_storage_fs_show) コマンドで **ディレクトリ** の ACL を取得します。
 
 この例では、ディレクトリの ACL を取得して、その ACL をコンソールに出力します。
 
@@ -88,7 +88,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-`az storage fs access show` コマンドを使用して、**ファイル** のアクセス許可を取得します。 
+[az storage fs access show](/cli/azure/storage/fs#az_storage_fs_show) コマンドで **ファイル** のアクセス許可を取得します。 
 
 この例では、ファイルの ACL を取得して、その ACL をコンソールに出力します。
 
@@ -115,7 +115,7 @@ ACL を "*設定*" する場合は、所有ユーザーのエントリ、所有�
 
 ### <a name="set-an-acl"></a>ACL を設定する
 
-`az storage fs access set` コマンドを使用して、**ディレクトリ** の ACL を設定します。 
+[az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) コマンドで **ディレクトリ** の ACL を設定します。 
 
 この例では、所有ユーザー、所有グループ、またはその他のユーザーのディレクトリに ACL を設定し、その ACL をコンソールに出力します。
 
@@ -129,7 +129,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-`az storage fs access set` コマンドを使用して、**ファイル** の ACL を設定します。 
+[az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) コマンドで **ファイル** の ACL を設定します。 
 
 この例では、所有ユーザー、所有グループ、またはその他のユーザーのファイルに ACL を設定し、その ACL をコンソールに出力します。
 
@@ -172,7 +172,7 @@ ACL を更新するには、更新したい ACL エントリを含む新しい A
 
 ### <a name="update-an-acl"></a>ACL を更新する
 
-`az storage fs access set` コマンドを使用して、このアクセス許可を設定することもできます。 
+この権限を設定するには、[az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) コマンドを使用する方法もあります。 
 
 ディレクトリまたはファイルの ACL を更新するには、`-permissions` パラメーターを短縮形の ACL に設定します。
 

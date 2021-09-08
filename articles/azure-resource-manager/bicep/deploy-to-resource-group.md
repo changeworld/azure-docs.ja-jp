@@ -2,13 +2,13 @@
 title: Bicep を使用してリソースをリソース グループにデプロイする
 description: Bicep ファイルでリソースをデプロイする方法について説明します。 複数のリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 4d68d0d28763c21574a3fd4f2f4c57561759e51e
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: 57e6814a8d7acd5c35995e037c2fd0c1c6804819
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634478"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426942"
 ---
 # <a name="resource-group-deployments-with-bicep-files"></a>Bicep ファイルを使用したリソース グループへのデプロイ
 
@@ -191,7 +191,7 @@ output output string = mgName
 
 リソースをターゲット リソース グループにデプロイするには、テンプレートの`resources` セクションにそれらのリソースを定義します。 次のテンプレートでは、デプロイ操作で指定されているリソース グループにストレージ アカウントが作成されます。
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/get-started-with-bicep-files/add-output/azuredeploy.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/samples/create-storage-account/azuredeploy.bicep":::
 
 ## <a name="deploy-to-multiple-resource-groups"></a>複数のリソース グループにデプロイする
 
@@ -305,5 +305,5 @@ resource newRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
 他のスコープについて確認するには、以下を参照してください。
 
 * [サブスクリプションへのデプロイ](deploy-to-subscription.md)
-* [管理グループのデプロイ](deploy-to-management-group.md)
+* [管理グループへのデプロイ](deploy-to-management-group.md)
 * [テナントへのデプロイ](deploy-to-tenant.md)

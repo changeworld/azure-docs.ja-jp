@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: dce33ff6ea1aef45059cc5535d7e6b5e1dc270ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 494c60b054585754d3caf90a73f504494e21c341
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736319"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537951"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Power BI を使用してナレッジ ストアに接続する
 
@@ -75,7 +75,7 @@ ms.locfileid: "121736319"
    ![データ型を変更する](media/knowledge-store-connect-power-bi/powerbi-change-type.png "データ型を変更する")
 
 1. *[hotelReviewsSsPages]* を選択し、手順 9. と手順 10. を繰り返して列を削除し、 *[コンテンツ]* を展開します。
-1. *[Content.SentimentScore]* のデータ型を **[小数]** に変更します。
+
 1. *[hotelReviewsSsKeyPhrases]* を選択し、手順 9. と手順 10. を繰り返して列を削除し、 *[コンテンツ]* を展開します。 このテーブルについては、データ型を変更しません。
 
 1. コマンド バーで、 **[閉じて適用する]** をクリックします。

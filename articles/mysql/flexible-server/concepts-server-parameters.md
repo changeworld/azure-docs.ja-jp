@@ -6,17 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: d64dc4f3c034279aee7401503bbb60883c9ed4e7
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 43f544cb2782fc80dd574a1d8c425283c51a0ed3
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492241"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256474"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーのサーバー パラメーター
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
 > [!IMPORTANT]
-> Azure Database for MySQL フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 この記事では、Azure Database for MySQL フレキシブル サーバーでサーバー パラメーターを構成するための考慮事項とガイドラインを示します。
 
@@ -103,7 +105,7 @@ max_connection の値は、サーバーのメモリ サイズによって決ま�
 > ERROR 1040 (08004):Too many connections (接続が多すぎます)
 
 > [!IMPORTANT]
-> 最適なエクスペリエンスを得るために、ProxySQL のような接続プーラーを使用して、接続を効率的に管理することをお勧めします。
+>最適なエクスペリエンスを得るために、ProxySQL のような接続プーラーを使用して、接続を効率的に管理することをお勧めします。
 
 MySQL への新しいクライアント接続を作成するには時間がかかり、一度確立されると、アイドル状態のときでも、これらの接続によってデータベース リソースが消費されます。 ほとんどのアプリケーションでは、短時間の接続を多数要求します。これにより、この状況が悪化します。 結果として、実際のワークロードに使用できるリソースが少なくなるため、パフォーマンスが低下します。 アイドル状態の接続を減らして既存の接続を再利用する接続プーラーは、これを回避するのに役立ちます。 ProxySQL の設定については、[ブログ投稿](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)を参照してください。
 
@@ -122,6 +124,12 @@ MySQL への新しいクライアント接続を作成するには時間がか�
 ### <a name="time_zone"></a>time_zone
 
 初期デプロイの時点で、Azure for MySQL フレキシブル サーバーにはタイム ゾーン情報のシステム テーブルが含まれていますが、これらのテーブルには値が設定されていません。 タイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `mysql.az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。 ストアド プロシージャを呼び出す方法とグローバル レベルまたはセッション レベルのタイム ゾーンを設定する方法については、[Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) または [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) の記事を参照してください。
+
+### <a name="binlog_expire_logs_seconds"></a>binlog_expire_logs_seconds 
+
+Azure Database for MySQL では、このパラメーターは、サービスがバイナリ ログ ファイルを消去するまでに待機する秒数を指定します。
+
+バイナリ ログには、テーブルの作成操作やテーブル データの変更などのデータベースの変更を記述する "イベント" が含まれます。 また、変更を加えた可能性のあるステートメントのイベントも含まれます。 バイナリ ログは、主にレプリケーション操作とデータの復旧操作の 2 つの目的で使用されます。  通常、バイナリ ログは、ハンドルがサービス、バックアップ、またはレプリカ セットから解放されるとすぐに消去されます。 複数のレプリカの場合、最も遅いレプリカが変更を読み取るまで待機してから消去されます。 バイナリ ログをより長期間保持するには、binlog_expire_logs_seconds パラメーターを構成します。 binlog_expire_logs_seconds が既定値の 0 に設定されている場合、バイナリ ログは、ハンドルが解放されるとすぐに消去されます。 binlog_expire_logs_seconds が 0 を超える場合、設定された秒数待機してから消去されます。 Azure Database for MySQL の場合、バックアップおよび読み取りレプリカでのバイナリ ファイルの消去などのマネージド機能は内部で処理されます。 Azure Database for MySQL サービスからデータ出力をレプリケートする場合は、レプリカによってプライマリから変更が読み取られる前にバイナリ ログが消去されるのを回避するために、プライマリでこのパラメーターを設定する必要があります。 binlog_expire_logs_seconds に大きな値を設定すると、バイナリ ログがすぐに消去されず、ストレージの課金が増加する可能性があります。 
 
 ## <a name="non-modifiable-server-parameters"></a>変更不可のサーバー パラメーター
 

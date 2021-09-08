@@ -7,13 +7,13 @@ ms.subservice: iot-central-retail
 ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
-ms.date: 10/06/2020
-ms.openlocfilehash: 4e55e1a0e5fabf3c4119855180c05f77e16ca820
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 09/01/2021
+ms.openlocfilehash: 52447010cb43cbe088fdaa71e8ee3f0043b64dbc
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765217"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469943"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>チュートリアル:Azure IoT Central でビデオ分析 (物体とモーションの検出) アプリケーションを作成する (OpenVINO&trade;)
 

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Bing 地図から Azure Maps に移行する | Microsoft Azure Maps
 description: Bing 地図から Microsoft Azure Maps に移行する方法に関するチュートリアル。 ガイダンスでは、Azure Maps の API と SDK への切り替え方法について説明します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/17/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4be7bc555578c4abeaa65c6433da3e285b9235b2
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 074a21174798b53ee10c27e620d6227d1aacec98
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786567"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429696"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>チュートリアル:Bing 地図から Azure Maps に移行する
 
@@ -63,10 +63,10 @@ Azure Maps は、Web アプリケーションやモバイル アプリケーシ�
 | 位置情報 (フォワード ジオコーディングと逆ジオコーディング) | ✓                  |
 | 最適化旅程ルート            | 対応予定            |
 | Snap to Road                         | ✓                  |
-| Spatial Data Services (SDS)           | Partial            |
+| Spatial Data Services (SDS)           | 一部サポート            |
 | タイム ゾーン                             | ✓                  |
 | トラフィック インシデント                     | ✓                  |
-| 構成ドリブン マップ             | N/A                |
+| 構成ドリブン マップ             | 該当なし                |
 
 Bing 地図では、基本的なキーベースの認証が提供されます。 Azure Maps には、基本的なキーベースの認証と、高度なセキュリティで保護された Azure Active Directory 認証の両方が用意されています。
 

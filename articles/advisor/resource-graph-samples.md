@@ -1,15 +1,15 @@
 ---
 title: Azure Advisor 用の Azure Resource Graph のサンプル クエリ
 description: Azure Advisor 用のサンプル Azure Resource Graph クエリでは、リソースの種類とテーブルを使用して Azure Advisor 関連のリソースとプロパティにアクセスする方法を示します。
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 71010cd64afc93ac1a5949275b05b69e12dc74b5
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 959f1fe33f088826a803ee3125f842d99d42f3a8
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309345"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543093"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-advisor"></a>Azure Advisor 用の Azure Resource Graph のサンプル クエリ
 

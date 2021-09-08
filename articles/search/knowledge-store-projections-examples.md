@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: aeb236b0b016cd86b492ce5bf0f64b14d1443fca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6daaf2f3f9521a61307eb8017abce72a47047333
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737604"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537933"
 ---
 # <a name="define-projections-in-a-knowledge-store"></a>ナレッジ ストアでのプロジェクションを定義する
 
@@ -35,7 +35,7 @@ ms.locfileid: "121737604"
     "description": "Skillset that enriches blob data found in "merged_content". The enrichment granularity is a document.",
     "skills": [
         {
-            "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+            "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
             "name": "#1",
             "description": null,
             "context": "/document/merged_content",

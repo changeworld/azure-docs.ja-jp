@@ -3,19 +3,19 @@ title: Speech Studio の概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Speech Studio は、アプリケーションで Azure 音声サービスの機能を構築および統合するための UI ベースのツールのセットです。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.author: lajanuar
-ms.openlocfilehash: 6042a129308b7be478b2bd1a45379ad56f62aca6
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 229a94d0a7140c98e0a8240311257ee45ecea276
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067060"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538398"
 ---
 # <a name="what-is-speech-studio"></a>Speech Studio とは
 

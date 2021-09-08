@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/04/2021
 ms.author: bagol
-ms.openlocfilehash: 525def5e69317597664b54bc68505ae3f19d228e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: dc2c1b6ed2d40e7d1af82b3c62f378bfd046a94c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179370"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254112"
 ---
 # <a name="migrate-to-azure-sentinel-from-an-existing-siem"></a>既存の SIEM から Azure Sentinel に移行する
 
@@ -153,7 +153,7 @@ Azure Sentinel でクラウド データなどのデータを分析し、生成�
 
 次の表では、推奨 "*されない*" サイド バイ サイド構成と、その理由の詳細について説明します。
 
-|方法  |説明  |
+|Method  |説明  |
 |---------|---------|
 |**Azure Sentinel のログをレガシ SIEM に送信する**     |  この方法では、オンプレミスの SIEM のコストとスケールの課題が引き続き残ります。 <br><br>Azure Sentinel でのデータ インジェストに対して、レガシ SIEM のストレージ コストと共に料金を支払います。また、Azure Sentinel の SIEM および SOAR 検出、分析、ユーザー エンティティ行動分析 (UEBA)、AI、または調査および自動化ツールを利用できません。       |
 |**レガシ SIEM から Azure Sentinel にログを送信する**     |   この方法では Azure Sentinel のすべての機能が提供されますが、組織は 2 つの異なるデータ インジェスト ソースに対して引き続き料金を支払います。 このモデルでは、アーキテクチャの複雑さが増すだけでなく、コストが高くなる可能性があります。     |
@@ -182,7 +182,7 @@ Azure Sentinel でクラウド データなどのデータを分析し、生成�
 
     - **[Syslog](connect-data-sources.md#syslog)、[Common Event Format (CEF)](connect-data-sources.md#common-event-format-cef)、または [REST API](connect-data-sources.md#rest-api-integration)** を使用して、他のデータ ソースを接続します。
 
-        詳細については、「[Azure Sentinel パートナー データ コネクタ](partner-data-connectors.md)」および「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。
+        詳細については、[Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md)および「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。
 
 > [!TIP]
 > - 無料のデータ ソースのみに制限することで、お客様にとって重要なデータでテストする能力を制限できます。 テスト時には、無料と有料の両方のデータ コネクタからのデータ インジェストを制限して、テスト結果を最大限に活用することを検討してください。

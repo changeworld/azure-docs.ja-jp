@@ -6,23 +6,23 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 07/18/2021
+ms.date: 08/24/2021
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 41cf392fb4b50c06e6af1f20e0c53570589b4090
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cc568964c3f961cad63591ea14885fb23eea03da
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779445"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187617"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (.NET)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-このチュートリアルでは、.NET ファイル アップロード サンプルを使用して、IoT Hub のファイル アップロード機能を使用する方法について説明します。 
+このチュートリアルでは、IoT Hub のファイル アップロード機能を Azure IoT .NET デバイスおよびサービス SDK で使用する方法を紹介します。
 
-[デバイスから IoT ハブにテレメトリを送信する方法](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)のクイックスタートと [IoT Hub で cloud-to-device メッセージを送信する方法](iot-hub-csharp-csharp-c2d.md)のチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングと cloud-to-device メッセージの基本的な機能が示されています。 [IoT Hub を使用したメッセージ ルーティングの構成](tutorial-routing.md)に関するチュートリアルでは、デバイスからクラウドへのメッセージを Microsoft Azure Blob ストレージに確実に格納する方法について説明しています。 ただし、一部のシナリオでは、デバイスが送信するデータを、IoT Hub が受け付けるデバイスからクラウドへの比較的小さなメッセージには簡単にマップできません。 次に例を示します。
+[デバイスから IoT ハブにテレメトリを送信する方法](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)のクイックスタートと [IoT Hub で cloud-to-device メッセージを送信する方法](iot-hub-csharp-csharp-c2d.md)のチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングと cloud-to-device メッセージの基本的な機能が示されています。 [IoT Hub を使用したメッセージ ルーティングの構成](tutorial-routing.md)に関するチュートリアルでは、デバイスからクラウドへのメッセージを Microsoft Azure BLOB ストレージに確実に格納する方法について説明しています。 ただし、一部のシナリオでは、デバイスが送信するデータを、IoT Hub が受け付けるデバイスからクラウドへの比較的小さなメッセージには簡単にマップできません。 次に例を示します。
 
 * イメージを含む大きなファイル
 
@@ -34,14 +34,18 @@ ms.locfileid: "121779445"
 
 これらのファイルは通常、[Azure Data Factory](../data-factory/introduction.md) や [Hadoop](../hdinsight/index.yml) スタックなどのツールを使用してクラウドでバッチ処理されます。 ただし、デバイスからファイルをアップロードする必要がある場合は、IoT Hub のセキュリティと信頼性を利用できます。 このチュートリアルでは、その方法を説明します。
 
+このチュートリアルの最後に、次の 2 つの .NET コンソール アプリを実行します。
+
+* **FileUploadSample**。 このデバイス アプリは、IoT Hub によって提供されている SAS URI を使用してストレージにファイルをアップロードします。 このアプリは、前提条件でダウンロードした Azure IoT C# サンプル リポジトリから実行します。
+
+* **ReadFileUploadNotification**。 このサービス アプリは、IoT ハブからのファイル アップロード通知を受信します。 このアプリは、ユーザーが作成します。
+
 > [!NOTE]
 > IoT Hub は、Azure IoT device SDK を通して、多数のデバイス プラットフォームと言語 (C、Java、Python、JavaScript を含む) をサポートしています。 Azure IoT Hub にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot)を参照してください。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
-
-* Visual Studio Code
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
 
@@ -69,54 +73,214 @@ ms.locfileid: "121779445"
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-include-associate-storage.md)]
 
-## <a name="examine-the-application"></a>アプリケーションを調べる
+## <a name="upload-file-from-a-device-app"></a>デバイス アプリからのファイルのアップロード
 
-Visual Studio Code で、ダウンロードした .NET サンプルの中の *azure-iot-samples-csharp-master\iot-hub\Samples\device˶FileUploadSample* フォルダーを開きます。 フォルダーには *parameters.cs* という名前のファイルが含まれています。 そのファイルを開くと、パラメーター *p* は必須であり、デバイス接続文字列が含まれていることがわかります。 この接続文字列は、デバイスの登録時にコピーして保存したものです。 パラメーター *t* は、トランスポート プロトコルを変更したい場合に指定できます。 既定のプロトコルは mqtt です。 *program.cs* ファイルには *main* 関数が含まれています。 *FileUploadSample.cs* ファイルにはプライマリ サンプル ロジックが含まれています。 *TestPayload.txt* は、BLOB コンテナーにアップロードするファイルです。
+この記事では、事前にダウンロードした Azure IoT C# サンプル リポジトリのサンプルをデバイス アプリとして使用します。 以下のファイルは、Visual Studio、Visual Studio Code、またはテキスト エディターを使用して開くことができます。  
 
-## <a name="run-the-application"></a>アプリケーションの実行
+このサンプルは、Azure IoT C# サンプルを解凍したフォルダーの下にある、**azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample** にあります。
+
+**FileUpLoadSample.cs** のコードを確認してください。 このファイルには、メインのサンプル ロジックが含まれています。 IoT Hub デバイス クライアントを作成した後、デバイスからファイルをアップロードするための標準的な 3 つの手順が実行されます。
+
+1. このコードは、デバイス クライアントの **GetFileUploadSasUriAsync** メソッドを呼び出し、IoT ハブから SAS URI を取得します。
+
+    ```csharp
+    var fileUploadSasUriRequest = new FileUploadSasUriRequest
+    {
+        BlobName = fileName
+    };
+
+    // Lines removed for clarity
+
+    FileUploadSasUriResponse sasUri = await _deviceClient.GetFileUploadSasUriAsync(fileUploadSasUriRequest);
+    Uri uploadUri = sasUri.GetBlobUri();
+    ```
+
+1. このコードでは、SAS URI を使用してファイルを Azure Storage にアップロードします。 このサンプルでは、SAS URI を使用して Azure Storage ブロック BLOB クライアントを作成し、ファイルをアップロードします。
+
+    ```csharp
+    var blockBlobClient = new BlockBlobClient(uploadUri);
+    await blockBlobClient.UploadAsync(fileStreamSource, new BlobUploadOptions());
+    ```
+
+1. このコードは、アップロードが完了したことを IoT ハブに通知します。 これにより、アップロードに関連するリソース (SAS URI) を解放してもよいことが、IoT ハブに通知されます。 ファイルのアップロード通知が有効になっている場合、IoT ハブからバックエンド サービスに通知メッセージが送信されます。
+
+    ```csharp
+    var successfulFileUploadCompletionNotification = new FileUploadCompletionNotification
+    {
+        // Mandatory. Must be the same value as the correlation id returned in the sas uri response
+        CorrelationId = sasUri.CorrelationId,
+    
+        // Mandatory. Will be present when service client receives this file upload notification
+        IsSuccess = true,
+    
+        // Optional, user defined status code. Will be present when service client receives this file upload notification
+        StatusCode = 200,
+    
+        // Optional, user-defined status description. Will be present when service client receives this file upload notification
+        StatusDescription = "Success"
+    };
+    
+    await _deviceClient.CompleteFileUploadAsync(successfulFileUploadCompletionNotification);
+    ```
+
+**parameter.cs** ファイルを調べると、以下のことがわかります:
+
+- このサンプルでは、デバイスの接続文字列を取るパラメーター *p* を渡す必要があります。 
+
+- 既定では、デバイス サンプルは MQTT プロトコルを使用して、IoT Hub と通信します。 このトランスポート プロトコルは、パラメーター *t* を使用することで変更できます。 この選択に関係なく、Azure BLOB クライアントでは、ファイルを Azure ストレージにアップロードするプロトコルとして、常に HTTPS が使用されることに注意してください。
+
+## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
+
+この記事では、IoT ハブからファイル アップロード通知メッセージを受信するバックエンド サービスを作成しました。 ファイル アップロード通知メッセージを受信するサービスには、**サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
+## <a name="receive-a-file-upload-notification"></a>ファイル アップロードの通知の受信
+
+このセクションでは、IoT ハブからファイル アップロードの通知メッセージを受信する C# コンソール アプリを作成します。
+
+1. コマンド ウィンドウを開いて、プロジェクトを作成するフォルダーに移動します。 **ReadFileUploadNotifications** という名前のフォルダーを作成し、そのフォルダーへのディレクトリを変更します。
+
+    ```cmd/sh
+    mkdir ReadFileUploadNotification
+    cd ReadFileUploadNotification
+    ```
+
+1. 次のコマンドを実行して、C# コンソール プロジェクトを作成します。 コマンドを実行すると、**Program.cs** ファイルと **ReadFileUploadNotification.csproj** ファイルがフォルダーに格納されます。
+
+    ```cmd/sh
+    dotnet new console --language c#
+    ```
+
+1. 次のコマンドを実行して、**Microsoft.Azure.Devices** パッケージをプロジェクト ファイルに追加します。 このパッケージは、.Azure IoT .NET service SDK です。
+
+    ```cmd/sh
+    dotnet add package Microsoft.Azure.Devices
+    ```
+
+1. **Program.cs** ファイルを開き、ファイルの先頭に次のステートメントを追加します。
+
+    ```csharp
+    using Microsoft.Azure.Devices;
+    ```
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダー `{iot hub connection string}` の値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。
+
+    ```csharp
+    static ServiceClient serviceClient;
+    static string connectionString = "{iot hub connection string}";
+    ```
+
+1. **Program** クラスに次のメソッドを追加します。
+
+    ```csharp
+    private async static void ReceiveFileUploadNotificationAsync()
+    {
+        var notificationReceiver = serviceClient.GetFileNotificationReceiver();
+        Console.WriteLine("\nReceiving file upload notification from service");
+        while (true)
+        {
+            var fileUploadNotification = await notificationReceiver.ReceiveAsync();
+            if (fileUploadNotification == null) continue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Received file upload notification: {0}", 
+              string.Join(", ", fileUploadNotification.BlobName));
+            Console.ResetColor();
+            await notificationReceiver.CompleteAsync(fileUploadNotification);
+        }
+    }
+    ```
+
+    この受信パターンは、クラウドからデバイスへのメッセージをデバイス アプリから受信するために使用するものと同じであることに注意してください。
+
+1. 最後に、**Main** メソッドの行を以下に置き換えます。
+
+    ```csharp
+    Console.WriteLine("Receive file upload notifications\n");
+    serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
+    ReceiveFileUploadNotificationAsync();
+    Console.WriteLine("Press Enter to exit\n");
+    Console.ReadLine();
+    ```
+    
+## <a name="run-the-applications"></a>アプリケーションの実行
 
 これで、アプリケーションを実行する準備が整いました。
 
-1. Visual Studio Code でターミナル ウィンドウを開きます。
-1. 次のコマンドを入力します。
+1. まず、IoT ハブからのファイル アップロード通知を受け取るために、サービス アプリを実行します。 **ReadFileUploadNotification** フォルダー内のコマンド プロンプトで、以下のコマンドを実行します。 
+
+    ```cmd/sh
+    dotnet restore
+    dotnet run
+    ```
+    
+    アプリが起動し、IoT ハブからのファイル アップロード通知を待機します。
+
+    ```cmd/sh
+    Receive file upload notifications
+
+
+    Receiving file upload notification from service
+    Press Enter to exit
+    ```
+
+
+
+1. 次に、デバイス アプリを実行して、ファイルを Azure Storage にアップロードします。 新しいコマンド プロンプトを開き、フォルダーを Azure IoT C# サンプルを解凍した下にある **azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample** フォルダーに変更します。 次のコマンドを実行します。 2 つ目のコマンドにある `{Your device connection string}` プレースホルダーの値を、先ほど「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」でコピーしたデバイス接続文字列に置き換えます。
+
     ```cmd/sh
     dotnet restore
     dotnet run --p "{Your device connection string}"
     ```
+    
+    アップロードが完了した後のデバイス アプリからの出力は次の通りです。
+    
+    ```cmd/sh
+      Uploading file TestPayload.txt
+      Getting SAS URI from IoT Hub to use when uploading the file...
+      Successfully got SAS URI (https://contosostorage.blob.core.windows.net/contosocontainer/MyDevice%2FTestPayload.txt?sv=2018-03-28&sr=b&sig=x0G1Baf%2BAjR%2BTg3nW34zDNKs07p6dLzkxvZ3ZSmjIhw%3D&se=2021-05-04T16%3A40%3A52Z&sp=rw) from IoT Hub
+      Uploading file TestPayload.txt using the Azure Storage SDK and the retrieved SAS URI for authentication
+      Successfully uploaded the file to Azure Storage
+      Notified IoT Hub that the file upload succeeded and that the SAS URI can be freed.
+      Time to upload file: 00:00:01.5077954.
+      Done.
+    ```
+    
+1. サービス アプリに、ファイル アップロードの通知を受信したと表示されていることに注意してください。
 
-出力は次のようになります。
-
-```cmd/sh
-  Uploading file TestPayload.txt
-  Getting SAS URI from IoT Hub to use when uploading the file...
-  Successfully got SAS URI (https://contosostorage.blob.core.windows.net/contosocontainer/MyDevice%2FTestPayload.txt?sv=2018-03-28&sr=b&sig=x0G1Baf%2BAjR%2BTg3nW34zDNKs07p6dLzkxvZ3ZSmjIhw%3D&se=2021-05-04T16%3A40%3A52Z&sp=rw) from IoT Hub
-  Uploading file TestPayload.txt using the Azure Storage SDK and the retrieved SAS URI for authentication
-  Successfully uploaded the file to Azure Storage
-  Notified IoT Hub that the file upload succeeded and that the SAS URI can be freed.
-  Time to upload file: 00:00:01.5077954.
-  Done.
-```
+    ```cmd/sh
+    Receive file upload notifications
+    
+    
+    Receiving file upload notification from service
+    Press Enter to exit
+    
+    Received file upload notification: myDeviceId/TestPayload.txt
+    ```
 
 ## <a name="verify-the-file-upload"></a>ファイルのアップロードを確認する
 
-次の手順を実行して *TestPayload.txt* がコンテナーにアップロードされたことを確認します。
+ポータルを使用して、構成したストレージ コンテナーにアップロードされたファイルを表示できます。
 
-1. ストレージ アカウントの左ペインで、 **[データ ストレージ]** の下の **[コンテナー]** を選択します。
-1. *TestPayload.txt* をアップロードしたコンテナーを選択します。
+1. Azure portal のストレージ アカウントに移動します。
+1. ストレージ アカウントの左ペインで、 **[コンテナー]** を選択します。
+1. ファイルをアップロードしたコンテナーを選択します。
 1. デバイスにちなんだ名前のフォルダーを選択します。
-1. *TestPayload.txt* を選択します。
-1. ファイルをダウンロードして、その内容をローカルで表示します。
+1. ファイルをアップロードした BLOB を選択します。 この記事では、**TestPayload.txt** という名前の BLOB です。  
 
-## <a name="next-steps"></a>次のステップ
+    :::image type="content" source="./media/iot-hub-csharp-csharp-file-upload/view-uploaded-file.png" alt-text="アップロードされたファイルを Azure portal で選択しているスクリーンショット。":::
 
-このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 IoT Hub の機能やシナリオを次の記事で引き続き調べることができます。
+1. 開いたページで BLOB のプロパティを表示します。 **[ダウンロード]** を選択 してファイルをダウンロードし、その内容をローカルで表示できます。
 
-* [プログラムによる IoT Hub の作成](iot-hub-rm-template-powershell.md)
+## <a name="next-steps"></a>次の手順
 
-* [C SDK の概要](iot-hub-device-sdk-c-intro.md)
+このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 この機能をさらに詳しく知るには、以下の記事を参考にしてください。
+
+* [IoT Hub を使用したファイル アップロードの概要](iot-hub-devguide-file-upload.md)
+
+* [IoT Hub ファイルのアップロードを構成する](iot-hub-configure-file-upload.md)
+
+* [Azure Blob Storage のドキュメント](/azure/storage/blobs/storage-blobs-introduction)
+
+* [Azure Blob Storage API リファレンス](/azure/storage/blobs/reference)
 
 * [Azure IoT SDK](iot-hub-devguide-sdks.md)
-
-IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
-
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)

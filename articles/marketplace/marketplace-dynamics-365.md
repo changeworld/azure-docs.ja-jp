@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: de9f88d7505f91c9075167a5adf81e3e5463cf0b
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f83fb2b1dbcadf9d40431c7670a1d8618557b047
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178132"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866959"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>Microsoft Dynamics 365 オファーを計画する
 
-この記事では、コマーシャル マーケットプレースの Microsoft AppSource に含まれる Dynamics 365 オファーのさまざまなオプションと機能について説明します。 AppSource には、Microsoft 365、Dynamics 365、PowerApps、Power BI 上に構築される、またはそれらを拡張するオファーが含まれています。
+この記事では、コマーシャル マーケットプレースの Microsoft AppSource に含まれる Dynamics 365 オファーのさまざまなオプションと機能について説明します。 AppSource には、Microsoft 365、Dynamics 365、Power Apps、Power BI 上に構築される、またはそれらを拡張するオファーが含まれています。
 
 最初に、[パートナー センター](./create-account.md)でコマーシャル マーケットプレース アカウントを作成してコマーシャル マーケットプレース プログラムに登録します。 また、[公開プロセスとガイドライン](/office/dev/store/submit-to-appsource-via-partner-center)を確認します。
 

@@ -2,19 +2,19 @@
 title: Speech サービス
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/06/2019
-ms.author: lajanuar
-ms.openlocfilehash: 23b7ebaf45d7bbc00be13b3a01838ce5a7817628
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 00cefb1956088b55db0d80ca7c7df3f3aabd19ba
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071538"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543982"
 ---
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 

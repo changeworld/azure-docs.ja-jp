@@ -1,16 +1,16 @@
 ---
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2020
-ms.author: lajanuar
-ms.openlocfilehash: 2c134e409643951a5594c276dd34da23535543f9
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 74ddfac57de8a45ea24a2ff0901cfa572e2f0021
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066242"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537835"
 ---
 **対話**
 - コマンドと制御のシナリオ向けです。

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: duau
-ms.openlocfilehash: fd890c8e8d72609d109fa466e260dd7315fd553b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: c6f06df11e0e17f37d7cfcbba6ed4fb8c224f824
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441224"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029863"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
@@ -48,7 +48,7 @@ ExpressRoute Direct を利用する前に、まず、サブスクリプション
 
 1. サブスクリプションで、**リソース プロバイダー** に関して、**Microsoft.Network** プロバイダーに **登録** 状態が表示されていることを確認します。 登録されているプロバイダーの一覧に、Microsoft.Network リソース プロバイダーが存在しない場合は、それを追加します。
 
-ExpressRoute Direct の使用開始後、選択したピアリングの場所に利用可能なポートが見つからない場合は、ExpressRouteDirect@microsoft.com にメールを送信してインベントリの追加を依頼してください。
+ExpressRoute Direct の使用開始後、選択したピアリングの場所に利用可能なポートが見つからない場合は、サポート リクエストを記録してインベントリの追加を依頼してください。
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>サービス プロバイダーを使用する ExpressRoute と ExpressRoute Direct
 

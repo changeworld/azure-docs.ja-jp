@@ -4,15 +4,15 @@ description: デバイスからクラウドへのファイルのアップロー�
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/23/2020
+ms.date: 08/23/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 1cca508e213d132f96a131f1b0029c13e1b67c47
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 029571010d80aa6249d91f3d678e273cc5a44279
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760789"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468008"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>ファイルをデバイスからクラウドにアップロードする
 

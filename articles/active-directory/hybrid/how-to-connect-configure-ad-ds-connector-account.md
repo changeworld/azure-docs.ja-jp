@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 08/20/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2acad2519fbf29aec72b97095318b4131207f91
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 76f765a8255f47215cb03426d139a88aa5d31544
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464550"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305142"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -36,7 +36,7 @@ Azure AD Connect の高速インストールでは、自動的に生成された
 | 機能 | アクセス許可 |
 | --- | --- |
 | ms-DS-ConsistencyGuid 機能 |「[設計概念 - sourceAnchor としての ms-DS-ConsistencyGuid の使用](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」に記載された ms-DS-ConsistencyGuid 属性に対する読み取りと書き込みのアクセス許可。 | 
-| パスワード ハッシュの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
+| パスワード ハッシュの同期 |<li>ディレクトリの変更のレプリケート - 基本的な読み取り専用に必要</li>  <li>ディレクトリの変更をすべてにレプリケート |
 | Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への読み取りと書き込みのアクセス許可。 |
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
 | パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/tutorial-enable-sspr-writeback.md)」に記載された属性への読み取りと書き込みのアクセス許可。 |
@@ -146,6 +146,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |グループの子孫オブジェクト| 
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |ユーザーの子孫オブジェクト| 
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り |連絡先の子孫オブジェクト| 
+|Allow|AD DS コネクタ アカウント|ディレクトリの変更のレプリケート|このオブジェクトのみ (ドメインのルート)|
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>MS-DS-Consistency-Guid のアクセス許可の構成 
@@ -253,7 +254,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |グループの子孫オブジェクト| 
 |Allow |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |連絡先の子孫オブジェクト| 
 
-### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Exchange メールのパブリック フォルダーのアクセス許可 (プレビュー) 
+### <a name="permissions-for-exchange-mail-public-folders"></a>Exchange メールのパブリック フォルダーのアクセス許可
 Exchange メールのパブリック フォルダー機能を使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
 
 ``` powershell
