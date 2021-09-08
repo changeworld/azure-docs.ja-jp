@@ -145,7 +145,7 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | [説明] |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | key1 |いいえ |string |キーの名前です。 |
 | value1 |いいえ |int、boolean、string、object、または array |キーの値。 |
