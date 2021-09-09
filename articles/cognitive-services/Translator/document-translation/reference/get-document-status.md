@@ -67,7 +67,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ### <a name="successful-get-document-status-response"></a>成功したドキュメント状態の取得の応答
 
-|名前|Type|[説明]|
+|名前|Type|説明|
 |--- |--- |--- |
 |path|string|ドキュメントまたはフォルダーの場所。|
 |createdDateTimeUtc|string|操作が作成された日時。|
