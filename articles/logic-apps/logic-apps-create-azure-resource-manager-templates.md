@@ -25,7 +25,7 @@ Azure Logic Apps には、ロジック アプリの作成だけでなく、デ�
 Azure Resource Manager テンプレートの詳細については、これらのトピックを参照してください。
 
 * [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/template-syntax.md)
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
