@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 06/10/2021
 adobe-target: true
 ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 0d4c85ec1075e3925fa5657783ffce618faaa6ea
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a5bc3ebfb58a41761b4a41439b6482592c58a7b0
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760155"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037313"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>クイックスタート: Azure Machine Learning の利用を開始するために必要なワークスペース リソースを作成する
 
@@ -44,10 +44,10 @@ Azure Machine Learning は、自分のコンピューターにインストール
 この開発環境を他のチュートリアルやクイックスタートで使用するための "*コンピューティング インスタンス*" を作成します。
 
 1. 前のセクションの **[ワークスペースに移動]** を選択していない場合は、ここで [Azure Machine Learning スタジオ](https://ml.azure.com)にサインインし、自分のワークスペースを選択します。
-1. 左側の **[管理]** で、 **[コンピューティング]** を選択します。
+1. 左側にある **[コンピューティング]** を選択します。
 1. **[新規]** を選択して、新しいコンピューティング インスタンスを作成します。
-1. 最初のページはすべて既定値のままとし、 **[次へ]** を選択します。
-1. 名前を付けて **[作成]** を選択します。
+1. 名前を入力し、最初のページはすべて既定値のままとします。
+1. **[作成]** を選択します。
  
 約 2 分後、コンピューティング インスタンスの **状態** が "*作成中*" から "*実行中*" に変わります。  以上で準備は完了です。  
 
@@ -86,6 +86,10 @@ Azure Machine Learning は、自分のコンピューターにインストール
 * スタジオの **[Assets]\(アセット\)** セクションでは、ジョブを実行する過程で作成したアセットを追跡できます。  新しいワークスペースの場合、これらのセクションには、まだ何も表示されません。
 
 * スタジオの **[管理]** セクションは、先ほどコンピューティング リソースを作成する際に使用しました。  このセクションで、ワークスペースにリンクするデータや外部サービスを作成したり管理したりすることもできます。  
+
+### <a name="workspace-diagnostics"></a>ワークスペース診断
+
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
 
 ## <a name="clean-up-resources"></a><a name="clean-up"></a>リソースをクリーンアップする
 

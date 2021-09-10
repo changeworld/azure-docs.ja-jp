@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 2c37f49478e5c762e72fd8569828853e29ba07f5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 105f3e55999d433f4d9a160ef93d789b23200dfe
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737569"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251928"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel とは
 
@@ -43,7 +43,11 @@ Azure Sentinel は、既存のさまざまな Azure サービスを基に構築�
 
 ## <a name="connect-to-all-your-data"></a>すべてのデータに接続する
 
-Azure Sentinel をオンボードするには、まず[セキュリティ ソースに接続する](connect-data-sources.md)必要があります。 Azure Sentinel には、Microsoft 365 Defender (旧 Microsoft Threat Protection) ソリューションや、Office 365、Azure AD、Microsoft Defender for Identity (旧 Azure ATP)、Microsoft Cloud App Security を含む Microsoft 365 ソースなど、すぐに使用できる、かつリアルタイムの統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。 
+Azure Sentinel をオンボードするには、まず[セキュリティ ソースに接続する](connect-data-sources.md)必要があります。 
+
+Azure Sentinel には、Microsoft 365 Defender (旧 Microsoft Threat Protection) ソリューションや、Office 365、Azure AD、Microsoft Defender for Identity (旧 Azure ATP)、Microsoft Cloud App Security を含む Microsoft 365 ソースなど、すぐに使用できる、かつリアルタイムの統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。 
+
+詳細については、「[データ コネクタを見つける](data-connectors-reference.md)」を参照してください。
 
 ![データ コレクター](./media/collect-data/collect-data-page.png)
 

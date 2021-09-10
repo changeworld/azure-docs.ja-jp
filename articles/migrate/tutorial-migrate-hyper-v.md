@@ -9,12 +9,12 @@ ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 2f92733fd440ebe9b9c6bc1c22de7c2bc8412599
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: aa745b9a5c19f45563b6fe30b80f67a776660d39
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464971"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272423"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する
 
@@ -266,8 +266,8 @@ Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、�
     - オンプレミス マシンのレプリケーションを停止します。
     - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントからマシンを削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
     - VM のレプリケーション状態情報をクリーンアップします。
-1. Azure VM の [Windows](../virtual-machines/extensions/agent-windows.md) または [Linux](../virtual-machines/extensions/agent-linux.md) エージェントを、移行されたマシンにインストールします。
-1. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
+1. [Azure VM での Windows のライセンス認証に関する問題を確認し、トラブルシューティングします。](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
+1. ホスト名、データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
 1. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
 1. 移行された Azure VM インスタンスにトラフィックを切り替えます。
 1. ローカル VM インベントリからオンプレミスの VM を削除します。

@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4d6757b85e248562a5af845b5748fbeb99b0f4b8
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5b883801779732da01dcf0ea1048920142afbf95
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388645"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123103593"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
+|[Azure Media Services アカウントで公衆ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8bfe3603-0888-404a-87ff-5c1b6b4cc5e3) |公衆ネットワーク アクセスを無効にすると、パブリック インターネットに Media Services リソースが露出されなくなるため、セキュリティが向上します。 プライベート エンドポイントを作成することで、Media Services リソースの露出を制限できます。 詳細については、[https://aka.ms/mediaservicesprivatelinkdocs](../../../../articles/media-services/latest/security-private-link-how-to.md) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Media%20Services/MediaServices_PublicNetworkAccess_Audit.json) |
 |[Azure Media Services アカウントでは、Private Link をサポートする API を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa77d8bb4-8d22-4bc1-a884-f582a705b480) |Media Services アカウントは、プライベート リンクをサポートする API を使用して作成する必要があります。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Media%20Services/MediaServices_RequirePrivateLinkSupport_Audit.json) |
 |[レガシ v2 API へのアクセスを許可する Azure Media Services アカウントをブロックする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fccf93279-9c91-4143-a841-8d1f21505455) |Media Services レガシ v2 API は、Azure Policy を使用して管理できない要求を許可します。 2020-05-01 API 以降を使用して作成された Media Services リソースは、レガシ v2 API へのアクセスをブロックします。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Media%20Services/MediaServices_BlockRestV2_Audit.json) |
 |[Azure Media Services コンテンツ キー ポリシーではトークン認証を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdaccf7e4-9808-470c-a848-1c5b582a1afb) |コンテンツ キー ポリシーは、コンテンツ キーにアクセスするために満たす必要がある条件を定義します。 トークン制限により、認証サービス (Azure Active Directory など) からの有効なトークンを持つユーザーしかコンテンツ キーにアクセスできなくなります。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Media%20Services/ContentKeyPolicies_RequireTokenAuth_Audit.json) |

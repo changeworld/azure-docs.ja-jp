@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa934ea2dc29004057ffbd3bad7c5f7b5afe935
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 91ed308ecbeeb839dfddb78c0151e2c8aafd0d3b
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114594585"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123123175"
 ---
 このクイックスタートでは、Windows 用の Azure Communication Services Calling SDK を使用して、1:1 のビデオ通話を開始する方法について説明します。
 
@@ -161,8 +161,7 @@ private async void InitCallAgentAndDeviceManager()
     deviceManager = await callClient.GetDeviceManager();
 
     CommunicationTokenCredential token_credential = new CommunicationTokenCredential("<USER_ACCESS_TOKEN>");
-    callClient = new CallClient();
-
+    
     CallAgentOptions callAgentOptions = new CallAgentOptions()
     {
         DisplayName = "<DISPLAY_NAME>"
@@ -334,5 +333,7 @@ private async void HangupButton_Click(object sender, RoutedEventArgs e)
 コードは、Visual Studio でビルドして実行できます。 ソリューションのプラットフォームに関しては、`ARM64`、`x64`、`x86` がサポートされる点に注意してください。 
 
 発信ビデオ通話を行うには、テキスト フィールドにユーザー ID を指定し、[`Start Call`]\(通話を開始\) ボタンをクリックします。 
+
+注: エコー ボットではビデオ ストリーミングがサポートされていないので、`8:echo123` を呼び出すとビデオ ストリームが停止します。 
 
 ユーザー ID の詳細については、[ユーザー アクセス トークン](../../../access-tokens.md)のガイドを参照してください。 

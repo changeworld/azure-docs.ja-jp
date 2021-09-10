@@ -2,14 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 10/18/2020
+ms.date: 08/18/2021
 ms.author: glenga
-ms.openlocfilehash: 99ae35aca485ac928f7c5ef9f98295eed4bc1245
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87f43ebd24cdc7b2cf4163c835e713eb39a52a85
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99500099"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829712"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>関数用の関連 Azure リソースを作成する
 
@@ -39,20 +39,20 @@ ms.locfileid: "99500099"
 
     ---
 
-1. `westeurope` リージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。
+1. 選択したリージョンに `AzureFunctionsQuickstart-rg` という名前のリソース グループを作成します。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     
     ```azurecli
-    az group create --name AzureFunctionsQuickstart-rg --location westeurope
+    az group create --name AzureFunctionsQuickstart-rg --location <REGION>
     ```
  
-    [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。`az account list-locations` コマンドから返される利用可能なリージョンを使用してください。
+    [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 上記のコマンドで、[az account list-locations](/cli/azure/account#az_account_list_locations) コマンドから返された使用可能なリージョン コードを使用して、`<REGION>` を自分の近くのリージョンに置き換えます。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
     ```azurepowershell
-    New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
+    New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location <REGION>
     ```
 
     [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドレットから返される利用可能なリージョンを使用してください。
@@ -64,7 +64,7 @@ ms.locfileid: "99500099"
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli
-    az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
+    az storage account create --name <STORAGE_NAME> --location <REGION> --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
     [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドでストレージ アカウントを作成します。 
@@ -72,7 +72,7 @@ ms.locfileid: "99500099"
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
     ```azurepowershell
-    New-AzStorageAccount -ResourceGroupName AzureFunctionsQuickstart-rg -Name <STORAGE_NAME> -SkuName Standard_LRS -Location westeurope
+    New-AzStorageAccount -ResourceGroupName AzureFunctionsQuickstart-rg -Name <STORAGE_NAME> -SkuName Standard_LRS -Location <REGION>
     ```
 
     [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドレットでストレージ アカウントを作成します。

@@ -84,6 +84,8 @@
       href: automation-manage-api-management.md
     - name: API のインポートに関する制限事項
       href: api-management-api-import-restrictions.md
+    - name: 仮想ネットワークの概要
+      href: virtual-network-concepts.md
     - name: セルフホステッド ゲートウェイの概要
       href: self-hosted-gateway-overview.md
     - name: 可観測性
@@ -92,6 +94,8 @@
       href: devops-api-development-templates.md
     - name: 論理的な削除
       href: soft-delete.md
+    - name: コンピューティング プラットフォーム
+      href: compute-infrastructure.md
 - name: 操作方法ガイド
   items:
     - name: API の定義

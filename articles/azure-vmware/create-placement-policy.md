@@ -2,13 +2,13 @@
 title: 配置ポリシーを作成する (プレビュー)
 description: Azure VMware Solution で配置ポリシーを作成して、クラスター内のホスト上の仮想マシン (VM) の配置を Azure portal を介して制御する方法について説明します。
 ms.topic: how-to
-ms.date: 8/16/2021
-ms.openlocfilehash: 267c58382e0272ba6121ae762f48b1ef08973c61
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.date: 8/18/2021
+ms.openlocfilehash: 85146ce86dea0d3cfa7397cdaae6fefc8cf4a23b
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323311"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967545"
 ---
 # <a name="create-a-placement-policy-in-azure-vmware-solution-preview"></a>Azure VMware Solution で配置ポリシーを作成する (プレビュー)
 
@@ -17,7 +17,7 @@ ms.locfileid: "122323311"
 
 Azure VMware Solution では、プライベート クラウド内のクラスターは管理対象リソースです。 結果的に、cloudadmin ロールは、Distributed Resource Scheduler (DRS) ルールの管理など、vSphere クライアントからクラスターに対して特定の変更を行うことはできません。
 
-Azure VMware Solution の配置ポリシーを使用すると、クラスター内のホスト上の仮想マシン (VM) の配置を Azure portal を介して制御できます。 配置ポリシーを作成すると、指定した vSphere クラスターに DRS ルールが含まれます。 また、Azure VMware Solution の運用との相互運用性のための追加のロジックも組み込まれます。
+配置ポリシー機能は、すべての Azure VMware Solution リージョンで利用できます。  配置ポリシーを使用すると、クラスター内のホスト上の仮想マシン (VM) の配置を Azure portal を介して制御できます。 配置ポリシーを作成すると、指定した vSphere クラスターに DRS ルールが含まれます。 また、Azure VMware Solution の運用との相互運用性のための追加のロジックも組み込まれます。
 
 配置ポリシーには、少なくとも 5 つの必須の構成要素があります。 
 
@@ -63,11 +63,7 @@ Azure VMware Solution の配置ポリシーを使用すると、クラスター�
 - **VM とホスト間の非アフィニティ** のポリシーは、定義されたもの以外のホストで、指定した VM の実行を試みるように DRS に指示します。
 
 
-
-
 ## <a name="considerations"></a>考慮事項
-
-
 
 ### <a name="cluster-scale-in"></a>クラスターのスケールイン
 
@@ -85,6 +81,8 @@ VM 間のポリシーを作成するときに DRS ルールの競合が検出さ
 
 
 ## <a name="create-a-placement-policy"></a>配置ポリシーを作成する
+
+作成できるポリシーの数に定義された制限はありません。 ただし、配置の制約が多いほど、vSphere DRS でクラスター内の仮想マシンを効果的に移動し、ワークロードに必要なリソースを提供することが難しくなります。      
 
 [ポリシーの種類](#placement-policy-types)の要件を必ず確認してください。
 
@@ -105,18 +103,22 @@ VM 間のポリシーを作成するときに DRS ルールの競合が検出さ
    >[!WARNING]
    >ポリシーを無効にした場合、ポリシーと基になる DRS ルールは作成されますが、ポリシーを有効にするまでポリシーのアクションは無視されます。 
 
-   :::image type="content" source="media/placement-policies/create-placement-policy-vm-vm-affinity-1.png" alt-text="配置ポリシーのオプションを示すスクリーンショット。" lightbox="media/placement-policies/create-placement-policy-vm-vm-affinity-1.png":::   
+   :::image type="content" source="media/placement-policies/create-placement-policy-vm-host-affinity-1.png" alt-text="配置ポリシーのオプションを示すスクリーンショット。" lightbox="media/placement-policies/create-placement-policy-vm-host-affinity-1.png":::   
 
-1. 種類として **[VM-Host affinity]\(VM とホスト間のアフィニティ\)** または **[VM-Host anti-affinity]\(VM とホスト間の非アフィニティ\)** を選択した場合、ポリシーでホストを選択する必要があります。 **[+ Add hosts]\(+ ホストの追加\)** と、クラスターに含めるホストを選択します。 複数のホストを選択できます。
+1. 種類として **[VM-Host affinity]\(VM とホスト間のアフィニティ\)** または **[VM-Host anti-affinity]\(VM とホスト間の非アフィニティ\)** を選択した場合は、 **[+ ホストの追加]** を選択してポリシーに含めるホストを選択します。 複数のホストを選択できます。
 
-   :::image type="content" source="media/placement-policies/create-placement-policy-vm-host-affinity-2.png" alt-text="選択するホストの一覧を示すスクリーンショット。":::
+   >[!NOTE]
+   >[Select hosts]\(ホストの選択\) ペインには、ホストに関連付けられている VM とホスト間ポリシーの数と、それらの関連付けられているポリシーに含まれる VM の合計数が表示されます。
+   >
+   >:::image type="content" source="media/placement-policies/hosts-associated-policies-vms.png" alt-text="ホストに関連付けられている VM-Host ポリシーの数と、それらに関連付けられているポリシーに含まれる VM の数を示すスクリーンショット。":::
+
 
 1. **[+ Add virtual machines]\(+ 仮想マシンの追加\)** と、ポリシーに含める VM を選択します。 複数の VM を選択できます。
 
    :::image type="content" source="media/placement-policies/create-placement-policy-vm-vm-affinity-2.png" alt-text="選択する VM の一覧を示すスクリーンショット。":::
-
+   
    >[!NOTE]
-   >[Select hosts]\(ホストの選択\) ペインには、ホストに関連付けられている VM とホスト間ポリシーの数と、それらの関連付けられているポリシーに含まれる VM の合計数が表示されます。
+   >[Select hosts]\(ホストの選択\) ペインには、ホストに関連付けられている VM とホスト間ポリシーの数と、それらの関連付けられているポリシーに含まれる VM の合計数が表示されます。 
 
 1. 必要な VM の追加が完了したら、 **[Add virtual machines]\(仮想マシンの追加\)** を選択します。 
 
@@ -166,7 +168,7 @@ VM 間のポリシーを作成するときに DRS ルールの競合が検出さ
 
    :::image type="content" source="media/placement-policies/edit-placement-policy.png" alt-text="配置ポリシー内のリソースを編集する方法を示すスクリーンショット。" lightbox="media/placement-policies/edit-placement-policy.png":::
 
-   - 既存のリソースを削除するには、削除する 1 つ以上のリソースを選択します。 **[Unassign]\(割り当て解除\)** を選択します。これにより、一覧からリソースが削除されます。
+   - 既存のリソースを削除するには、削除する 1 つ以上のリソースを選択して、 **[割り当て解除]** を選択します。 
 
       :::image type="content" source="media/placement-policies/edit-placement-policy-unassign.png" alt-text="配置ポリシーから既存リソースを削除する方法を示すスクリーンショット。":::
 
@@ -199,3 +201,25 @@ VM 間のポリシーを作成するときに DRS ルールの競合が検出さ
 cloudadmin ロールの所有者は、クラスターの [構成] タブの [VM/Host Rules]\(VM/ホストのルール\) で、配置ポリシーによって作成された DRS ルールを表示できますが、編集することはできません。 これにより、DRS ルールが競合状態であるかどうかなど、追加情報を表示できます。
 
 さらに、クラスターの [監視] タブから、推奨事項やエラーなど、さまざまな DRS ルールの運用を監視できます。
+
+
+## <a name="faqs"></a>FAQ
+
+### <a name="are-these-the-same-as-drs-affinity-rules"></a>これらは DRS アフィニティ ルールと同じですか?
+場合によります。 vSphere DRS は現在の一連のポリシーを実装しますが、Microsoft ではこのエクスペリエンスを簡素化しました。 VM グループやホスト グループの変更は、特にホストが本質的に一時的なものであり、クラウド環境では置き換えられる可能性があるため、複雑な操作となっています。 オンプレミス環境の vSphere インベントリでホストが置き換えられた場合、vSphere 管理者はホスト グループを修正して、目的の VM-Host 配置制約が有効なままであることを確認する必要があります。 ホストがローテーションまたは変更されると、Azure VMware Solution の配置ポリシーによってホスト グループが更新されます。 同様に、クラスターでスケーリングすると、該当する場合、ホスト グループが自動的に更新されます。 これにより、顧客のホスト グループを管理するオーバーヘッドが解消されます。
+
+
+### <a name="as-this-is-an-existing-functionality-available-in-vcenter-why-cant-i-use-it-directly"></a>vCenter で利用可能な既存の機能であるにも関わらず、直接使用できないのはなぜしょうか 
+
+Azure VMware Solution は、Azure で VMware プライベート クラウドを提供します。 このマネージド VMware インフラストラクチャでは、Microsoft がプライベート クラウド内のクラスター、ホスト、データストア、および分散仮想スイッチを管理します。 同時に、テナントは、プライベート クラウドにデプロイされたワークロードの管理を担当します。 そのため、プライベート クラウドを管理するテナントには、オンプレミス展開に対して VMware 管理者が[持つような特権はありません](concepts-identity.md)。 
+
+さらに、vSphere 特権に必要な細分性が無い場合、プライベート クラウド上のワークロードの配置を管理する際にいくつかの課題が生じます。 たとえば、アフィニティやアンチアフィニティのルールを定義するためにオンプレミスで一般的に使用されている vSphere DRS のルールは、そのままでは VMware Cloud 環境では使用できません。これは、それらのルールの一部によってプライベート クラウドの日常的な運用がブロックされる可能性があるためです。 配置ポリシーは、Azure VMware Solution ポータルを使用してこれらの規則を定義する方法を提供するため、DRS ルールを使用する必要性を回避することができます。 シンプルな操作性と組み合わさることによって、ルールが日常的なインフラストラクチャの保守や運用活動に影響を与えないようにします。 
+
+
+###  <a name="what-caveats-should-i-know-about"></a>他に知っておくべき注意事項はありますか
+
+VM-Host の **MUST** ルールはメンテナンス操作をブロックするため、サポートされません。 
+
+VM-Host の **SHOULD** ルールは優先的なルールであり、vSphere DRS は可能な範囲でルールに対応します。 場合によっては、ワークロードで必要なリソースを確保できるようにするために、vSphere DRS から VM-Host の **SHOULD** ルールの対象となる VM に対して vMotion が使用されることがあります。 これは vSphere DRS の標準の動作であり、配置ポリシー機能によって、基になる vSphere DRS の動作が変更されることはありません。
+
+競合するルールを作成すると、それらの競合が vCenter に表示され、新しく定義されたルールが有効にならない場合があります。 これは vSphere DRS の標準の動作であり、そのログは vCenter で確認することができます。

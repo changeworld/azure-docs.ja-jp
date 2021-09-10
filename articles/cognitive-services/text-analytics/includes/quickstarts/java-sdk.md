@@ -6,26 +6,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/15/2021
+ms.date: 08/17/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 58503476a3c17fdaff3c33585210dc762812b539
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3284cef03ce899a096816ba23736d29fdc228eb5
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114593661"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864953"
 ---
 <a name="HOLTop"></a>
 
+# <a name="version-32-preview1"></a>[バージョン 3.2-preview.1](#tab/version-3-2)
+
+[v3.2-preview.1 リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics) | [v3.2-preview パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.2.0-beta.1) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics/src/samples)
+
 # <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics/src/samples)
-
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-stable) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ---
 
@@ -33,6 +33,7 @@ ms.locfileid: "114593661"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) バージョン 8 以降
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成</a>し、キーとエンドポイントを取得します。  デプロイされたら、 **[リソースに移動]** をクリックします。
     * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -42,9 +43,36 @@ ms.locfileid: "114593661"
 
 ### <a name="add-the-client-library"></a>クライアント ライブラリを追加する
 
+# <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
+
+好みの IDE または開発環境で Maven プロジェクトを作成します。 次に、自分のプロジェクトの *pom.xml* ファイルに次の依存関係を追加します。 [その他のビルド ツール](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.2.0-beta.1)の実装構文はオンラインで確認できます。
+
+```xml
+<dependencies>
+     <dependency>
+        <groupId>com.azure</groupId>
+        <artifactId>azure-ai-textanalytics</artifactId>
+        <version>5.2.0-beta.1</version>
+    </dependency>
+</dependencies>
+```
+
+このバージョンの Text Analytics API に含まれる機能:
+
+* センチメント分析
+* 意見マイニング
+* 言語検出
+* エンティティの認識
+* エンティティ リンク設定
+* 個人が特定される情報の認識
+* キー フレーズの抽出
+* 非同期メソッド
+* Text Analytics for Health
+* テキストの概要作成
+
 # <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-好みの IDE または開発環境で Maven プロジェクトを作成します。 次に、自分のプロジェクトの *pom.xml* ファイルに次の依存関係を追加します。 [その他のビルド ツール](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.7)の実装構文はオンラインで確認できます。
+好みの IDE または開発環境で Maven プロジェクトを作成します。 次に、自分のプロジェクトの *pom.xml* ファイルに次の依存関係を追加します。 [その他のビルド ツール](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0)の実装構文はオンラインで確認できます。
 
 ```xml
 <dependencies>
@@ -56,32 +84,23 @@ ms.locfileid: "114593661"
 </dependencies>
 ```
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+このバージョンの Text Analytics API に含まれる機能:
 
-好みの IDE または開発環境で Maven プロジェクトを作成します。 次に、自分のプロジェクトの *pom.xml* ファイルに次の依存関係を追加します。 [その他のビルド ツール](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)の実装構文はオンラインで確認できます。
-
-```xml
-<dependencies>
-     <dependency>
-        <groupId>com.azure</groupId>
-        <artifactId>azure-ai-textanalytics</artifactId>
-        <version>5.0.0</version>
-    </dependency>
-</dependencies>
-```
-
-> [!TIP]
-> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java) にあり、このクイックスタートのコード例が含まれています。 
+* センチメント分析
+* 意見マイニング
+* 言語検出
+* エンティティの認識
+* エンティティ リンク設定
+* 個人が特定される情報の認識
+* キー フレーズの抽出
+* 非同期メソッド
+* Text Analytics for Health
 
 ---
 
 `TextAnalyticsSamples.java` という名前で Java ファイルを作成します。 そのファイルを開き、次の `import` ステートメントを追加します。
 
-# <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
-
-
 ```java
-
 import com.azure.ai.textanalytics.TextAnalyticsAsyncClient;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.ai.textanalytics.models.*;
@@ -95,23 +114,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.Arrays;
 import com.azure.core.util.Context;
 import com.azure.core.util.polling.SyncPoller;
-import com.azure.ai.textanalytics.util.AnalyzeHealthcareEntitiesResultCollection;
-import com.azure.ai.textanalytics.util.AnalyzeHealthcareEntitiesPagedIterable;
+
+import com.azure.core.util.polling.LongRunningOperationStatus;
+import com.azure.ai.textanalytics.util.*;
+import com.azure.core.http.rest.PagedResponse;
 ```
-
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-```java
-import com.azure.core.credential.AzureKeyCredential;
-import com.azure.ai.textanalytics.models.*;
-import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
-import com.azure.ai.textanalytics.TextAnalyticsClient;
-```
-
----
-
-
-
 
 java ファイルで新しいクラスを追加し、次のように Azure リソースのキーとエンドポイントを追加します。
 
@@ -126,54 +133,27 @@ public class TextAnalyticsSamples {
 
 クラスに次の main メソッドを追加します。 ここで呼び出されるメソッドは、後で定義します。
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
-
 ```java
 public static void main(String[] args) {
     //You will create these methods later in the quickstart.
     TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
-
-    sentimentAnalysisWithOpinionMiningExample(client)
-    detectLanguageExample(client);
-    recognizeEntitiesExample(client);
-    recognizeLinkedEntitiesExample(client);
-    recognizePiiEntitiesExample(client);
-    extractKeyPhrasesExample(client);
-}
-```
-
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-```java
-public static void main(String[] args) {
-    //You will create these methods later in the quickstart.
-    TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
-
     sentimentAnalysisExample(client);
+    sentimentAnalysisWithOpinionMiningExample(client);
     detectLanguageExample(client);
     recognizeEntitiesExample(client);
+    recognizePiiEntitiesExample(client);
     recognizeLinkedEntitiesExample(client);
     extractKeyPhrasesExample(client);
-        AnalyzeOperationExample(client)
+    analyzeOperationExample(client);
 }
 ```
-
----
 
 
 ## <a name="object-model"></a>オブジェクト モデル
 
 Text Analytics クライアントは、キーを使用して Azure に対して認証を行う `TextAnalyticsClient` オブジェクトであり、テキストを単一の文字列またはバッチとして受け取る機能を提供します。 テキストは、同期的または非同期的に API に送信できます。 応答オブジェクトには、送信する各ドキュメントの分析情報が格納されます。 
 
-## <a name="code-examples"></a>コード例
-
-* [クライアントを認証する](#authenticate-the-client)
-* [感情分析](#sentiment-analysis) 
-* [オピニオン マイニング](#opinion-mining)
-* [言語検出](#language-detection)
-* [名前付きエンティティの認識](#named-entity-recognition-ner)
-* [エンティティ リンク設定](#entity-linking)
-* [キー フレーズ抽出](#key-phrase-extraction)
+[!INCLUDE [text-analytics-character-limits](../character-limits.md)]
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -193,14 +173,9 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
-
-> [!NOTE]
-> バージョン `3.1`:
-> * 感情分析には、オプションのフラグでオピニオン マイニング分析が含まれます。 
-> * オピニオン マイニングには、アスペクトおよびオピニオン レベルのセンチメントが含まれます。 
-
 前に作成したクライアントを受け取る `sentimentAnalysisExample()` という新しい関数を作成し、その `analyzeSentiment()` 関数を呼び出します。 返される `AnalyzeSentimentResult` オブジェクトには、成功した場合は `documentSentiment` および `sentenceSentiments` が含まれ、そうでない場合は `errorMessage` が含まれます。 
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -240,38 +215,40 @@ Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.7
 
 オピニオン マイニングを使用した感情分析を行うために、`sentimentAnalysisWithOpinionMiningExample()` という名前の新しい関数を作成します。この関数は、先ほど作成したクライアントを受け取り、設定オプション オブジェクト `AnalyzeSentimentOptions` で `analyzeSentiment()` 関数を呼び出すものです。 返される `AnalyzeSentimentResult` オブジェクトには、成功した場合は `documentSentiment` および `sentenceSentiments` が含まれ、そうでない場合は `errorMessage` が含まれます。 
 
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
+
 
 ```java
- static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
- {
-     // The document that needs be analyzed.
-     String document = "Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.";
+static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
+{
+    // The document that needs be analyzed.
+    String document = "Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.";
 
-     System.out.printf("Document = %s%n", document);
+    System.out.printf("Document = %s%n", document);
 
-     AnalyzeSentimentOptions options = new AnalyzeSentimentOptions().setIncludeOpinionMining(true);
-     final DocumentSentiment documentSentiment = client.analyzeSentiment(document, "en", options);
-     SentimentConfidenceScores scores = documentSentiment.getConfidenceScores();
-     System.out.printf(
-             "Recognized document sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
-             documentSentiment.getSentiment(), scores.getPositive(), scores.getNeutral(), scores.getNegative());
+    AnalyzeSentimentOptions options = new AnalyzeSentimentOptions().setIncludeOpinionMining(true);
+    final DocumentSentiment documentSentiment = client.analyzeSentiment(document, "en", options);
+    SentimentConfidenceScores scores = documentSentiment.getConfidenceScores();
+    System.out.printf(
+            "Recognized document sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
+            documentSentiment.getSentiment(), scores.getPositive(), scores.getNeutral(), scores.getNegative());
 
 
-     documentSentiment.getSentences().forEach(sentenceSentiment -> {
-         SentimentConfidenceScores sentenceScores = sentenceSentiment.getConfidenceScores();
-         System.out.printf("\tSentence sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
-                 sentenceSentiment.getSentiment(), sentenceScores.getPositive(), sentenceScores.getNeutral(), sentenceScores.getNegative());
-         sentenceSentiment.getOpinions().forEach(opinion -> {
-             TargetSentiment targetSentiment = opinion.getTarget();
-             System.out.printf("\t\tTarget sentiment: %s, target text: %s%n", targetSentiment.getSentiment(),
-                     targetSentiment.getText());
-             for (AssessmentSentiment assessmentSentiment : opinion.getAssessments()) {
-                 System.out.printf("\t\t\t'%s' assessment sentiment because of \"%s\". Is the assessment negated: %s.%n",
-                         assessmentSentiment.getSentiment(), assessmentSentiment.getText(), assessmentSentiment.isNegated());
-             }
-         });
-     });
- }
+    documentSentiment.getSentences().forEach(sentenceSentiment -> {
+        SentimentConfidenceScores sentenceScores = sentenceSentiment.getConfidenceScores();
+        System.out.printf("\tSentence sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
+                sentenceSentiment.getSentiment(), sentenceScores.getPositive(), sentenceScores.getNeutral(), sentenceScores.getNegative());
+        sentenceSentiment.getOpinions().forEach(opinion -> {
+            TargetSentiment targetSentiment = opinion.getTarget();
+            System.out.printf("\t\tTarget sentiment: %s, target text: %s%n", targetSentiment.getSentiment(),
+                    targetSentiment.getText());
+            for (AssessmentSentiment assessmentSentiment : opinion.getAssessments()) {
+                System.out.printf("\t\t\t'%s' assessment sentiment because of \"%s\". Is the assessment negated: %s.%n",
+                        assessmentSentiment.getSentiment(), assessmentSentiment.getText(), assessmentSentiment.isNegated());
+            }
+        });
+    });
+}
 ```
 
 ### <a name="output"></a>出力
@@ -289,52 +266,14 @@ Recognized document sentiment: negative, positive score: 0.010000, neutral score
             'negative' assessment sentiment because of "helpful". Is the assessment negated: true.
 ```
 
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-前に作成したクライアントを受け取る `sentimentAnalysisExample()` という新しい関数を作成し、その `analyzeSentiment()` 関数を呼び出します。 返される `AnalyzeSentimentResult` オブジェクトには、成功した場合は `documentSentiment` および `sentenceSentiments` が含まれ、そうでない場合は `errorMessage` が含まれます。 
-
-```java
-static void sentimentAnalysisExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "I had the best day of my life. I wish you were there with me.";
-
-    DocumentSentiment documentSentiment = client.analyzeSentiment(text);
-    System.out.printf(
-        "Recognized document sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
-        documentSentiment.getSentiment(),
-        documentSentiment.getConfidenceScores().getPositive(),
-        documentSentiment.getConfidenceScores().getNeutral(),
-        documentSentiment.getConfidenceScores().getNegative());
-
-    for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
-        System.out.printf(
-            "Recognized sentence sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
-            sentenceSentiment.getSentiment(),
-            sentenceSentiment.getConfidenceScores().getPositive(),
-            sentenceSentiment.getConfidenceScores().getNeutral(),
-            sentenceSentiment.getConfidenceScores().getNegative());
-        }
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
-Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
-Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
-```
-
----
-
 ## <a name="language-detection"></a>言語検出
 
 前に作成したクライアントを受け取る `detectLanguageExample()` という新しい関数を作成し、その `detectLanguage()` 関数を呼び出します。 返される `DetectLanguageResult` オブジェクトには、成功した場合は検出された第一言語と検出されたその他の言語の一覧が含まれ、そうでない場合は `errorMessage` が含まれます。 この例は、バージョン 3.0 と 3.1 の API 共通です。
 
 > [!Tip]
 > 場合によっては、入力に基づいて言語を明確に区別するのが困難なことがあります。 `countryHint` パラメーターを使用して、2 文字の国番号を指定できます。 API の既定では、既定の countryHint として "US" が使用されます。この動作を削除するには、この値を空の文字列に設定して (`countryHint = ""`)、このパラメーターをリセットします。 別の既定値を設定するには、`TextAnalyticsClientOptions.DefaultCountryHint` プロパティを設定し、クライアントの初期化中に渡します。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -358,14 +297,9 @@ Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 
 ## <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
-
-> [!NOTE]
-> バージョン `3.1`:
-> * NER には、個人情報を検出するための専用のメソッドが含まれます。 
-> * エンティティ リンク設定は、NER から切り離された要求です。
-
 前に作成したクライアントを受け取る `recognizeEntitiesExample()` という新しい関数を作成し、その `recognizeEntities()` 関数を呼び出します。 返される `CategorizedEntityCollection` オブジェクトには、成功した場合は `CategorizedEntity` の一覧が含まれ、そうでない場合は `errorMessage` が含まれます。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -399,6 +333,8 @@ Recognized entity: last week, entity category: DateTime, entity sub-category: Da
 
 前に作成したクライアントを受け取る `recognizePiiEntitiesExample()` という新しい関数を作成し、その `recognizePiiEntities()` 関数を呼び出します。 返される `PiiEntityCollection` オブジェクトには、成功した場合は `PiiEntity` の一覧が含まれ、そうでない場合は `errorMessage` が含まれます。 また、入力テキスト内の識別可能なエンティティがすべて `*****` で置き換えられた編集後のテキストも含まれています。
 
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
+
 ```java
 static void recognizePiiEntitiesExample(TextAnalyticsClient client)
 {
@@ -420,45 +356,7 @@ Redacted Text: My SSN is ***********
 Recognized Personally Identifiable Information entity: 859-98-0987, entity category: U.S. Social Security Number (SSN), entity subcategory: null, confidence score: 0.650000.
 ```
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-> [!NOTE]
-> バージョン `3.0`:
-> * NER には、個人情報を検出するための専用のメソッドが含まれます。 
-> * エンティティ リンク設定は、NER から切り離された要求です。
-
-前に作成したクライアントを受け取る `recognizeEntitiesExample()` という新しい関数を作成し、その `recognizeEntities()` 関数を呼び出します。 返される `CategorizedEntityCollection` オブジェクトには、成功した場合は `CategorizedEntity` の一覧が含まれ、そうでない場合は `errorMessage` が含まれます。
-
-```java
-static void recognizeEntitiesExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "I had a wonderful trip to Seattle last week.";
-
-    for (CategorizedEntity entity : client.recognizeEntities(text)) {
-        System.out.printf(
-            "Recognized entity: %s, entity category: %s, entity sub-category: %s, score: %s.%n",
-            entity.getText(),
-            entity.getCategory(),
-            entity.getSubcategory(),
-            entity.getConfidenceScore());
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61.
-Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.82.
-Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
-```
-
----
-
 ## <a name="entity-linking"></a>エンティティ リンク設定
-
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 前に作成したクライアントを受け取る `recognizeLinkedEntitiesExample()` という新しい関数を作成し、その `recognizeLinkedEntities()` 関数を呼び出します。 返される `LinkedEntityCollection` オブジェクトには、成功した場合は `LinkedEntity` の一覧が含まれ、そうでない場合は `errorMessage` が含まれます。 リンクされたエンティティは一意に識別されるため、同じエンティティの出現は、`LinkedEntityMatch` オブジェクトの一覧として `LinkedEntity` オブジェクトの下にグループ化されます。
 
@@ -518,68 +416,11 @@ Matches:
 Text: Altair 8800, Score: 0.88, Offset: 11, Length: 116
 ```
 
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-前に作成したクライアントを受け取る `recognizeLinkedEntitiesExample()` という新しい関数を作成し、その `recognizeLinkedEntities()` 関数を呼び出します。 返される `LinkedEntityCollection` オブジェクトには、成功した場合は `LinkedEntity` の一覧が含まれ、そうでない場合は `errorMessage` が含まれます。 リンクされたエンティティは一意に識別されるため、同じエンティティの出現は、`LinkedEntityMatch` オブジェクトの一覧として `LinkedEntity` オブジェクトの下にグループ化されます。
-
-```java
-static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, " +
-        "to develop and sell BASIC interpreters for the Altair 8800. " +
-        "During his career at Microsoft, Gates held the positions of chairman, " +
-        "chief executive officer, president and chief software architect, " +
-        "while also being the largest individual shareholder until May 2014.";
-
-    System.out.printf("Linked Entities:%n");
-    for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
-        System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
-            linkedEntity.getName(),
-            linkedEntity.getDataSourceEntityId(),
-            linkedEntity.getUrl(),
-            linkedEntity.getDataSource());
-        System.out.printf("Matches:%n");
-        for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getMatches()) {
-            System.out.printf("Text: %s, Score: %.2f%n",
-            linkedEntityMatch.getText(),
-            linkedEntityMatch.getConfidenceScore());
-        }
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Linked Entities:
-Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
-Matches:
-Text: Altair 8800, Score: 0.88
-Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
-Matches:
-Text: Bill Gates, Score: 0.63
-Text: Gates, Score: 0.63
-Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
-Matches:
-Text: Paul Allen, Score: 0.60
-Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
-Matches:
-Text: Microsoft, Score: 0.55
-Text: Microsoft, Score: 0.55
-Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
-Matches:
-Text: April 4, Score: 0.32
-Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
-Matches:
-Text: BASIC, Score: 0.33
-```
-
----
-
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 
 前に作成したクライアントを受け取る `extractKeyPhrasesExample()` という新しい関数を作成し、その `extractKeyPhrases()` 関数を呼び出します。 返される `ExtractKeyPhraseResult` オブジェクトには、成功した場合はキー フレーズの一覧が含まれ、そうでない場合は `errorMessage` が含まれます。 この例は、バージョン 3.0 と 3.1 の API 共通です。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)
@@ -605,9 +446,11 @@ veterinarian
 
 ## <a name="extract-health-entities"></a>ヘルス エンティティの抽出
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
+[!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
 
 Text Analytics を使用して、テキストからヘルスケア エンティティを抽出する非同期要求を実行できます。 次のサンプルでは、基本的な例を示しています。 より高度なサンプルについては、[GitHub ](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeHealthcareEntities.java) を参照してください。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 
 ```java
@@ -660,6 +503,15 @@ static void healthExample(TextAnalyticsClient client){
 }
 ```
 
+`main()` メソッドで、上記のコード例を呼び出します。 
+
+```java
+public static void main(String[] args) {
+    TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
+    healthExample(client);
+}
+```
+
 ### <a name="output"></a>output
 
 ```console
@@ -680,15 +532,7 @@ Relation type: FrequencyOfMedication.
     Entity text: twice daily, category: Frequency, role: Frequency.
 ```
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-この機能はバージョン 3.0 では使用できません。
-
----
-
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>分析操作で API を非同期的に使用する
-
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 分析操作を使用して、NER、キー フレーズ抽出、感情分析、および PII 検出の非同期バッチ要求を実行できます。 次のサンプルは、1 つの操作の基本的な例を示しています。 より高度なサンプルについては、[GitHub ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md) を参照してください。
 
@@ -696,81 +540,83 @@ Relation type: FrequencyOfMedication.
 
 `beginAnalyzeBatchActions()` 関数を呼び出す `analyzeBatchActionsExample()` という名前の新しい関数を作成します。 この操作の実行には時間がかかり、結果に対してポーリングされます。
 
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
+
 ```java
 static void analyzeActionsExample(TextAnalyticsClient client){
-        List<TextDocumentInput> documents = new ArrayList<>();
-        documents.add(new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen."));
+    List<TextDocumentInput> documents = new ArrayList<>();
+    documents.add(new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen."));
 
 
-        SyncPoller<AnalyzeActionsOperationDetail, AnalyzeActionsResultPagedIterable> syncPoller =
-                client.beginAnalyzeActions(documents,
-                        new TextAnalyticsActions().setDisplayName("Example analyze task")
-                                .setRecognizeEntitiesActions(new RecognizeEntitiesAction())
-                                .setExtractKeyPhrasesActions(
-                                        new ExtractKeyPhrasesAction().setModelVersion("latest")),
-                        new AnalyzeActionsOptions().setIncludeStatistics(false),
-                        Context.NONE);
+    SyncPoller<AnalyzeActionsOperationDetail, AnalyzeActionsResultPagedIterable> syncPoller =
+            client.beginAnalyzeActions(documents,
+                    new TextAnalyticsActions().setDisplayName("Example analyze task")
+                            .setRecognizeEntitiesActions(new RecognizeEntitiesAction())
+                            .setExtractKeyPhrasesActions(
+                                    new ExtractKeyPhrasesAction().setModelVersion("latest")),
+                    new AnalyzeActionsOptions().setIncludeStatistics(false),
+                    Context.NONE);
 
-        // Task operation statistics details
-        while (syncPoller.poll().getStatus() == LongRunningOperationStatus.IN_PROGRESS) {
-            final AnalyzeActionsOperationDetail operationDetail = syncPoller.poll().getValue();
-            System.out.printf("Action display name: %s, Successfully completed actions: %d, in-process actions: %d,"
-                            + " failed actions: %d, total actions: %d%n",
-                    operationDetail.getDisplayName(), operationDetail.getSucceededCount(),
-                    operationDetail.getInProgressCount(), operationDetail.getFailedCount(),
-                    operationDetail.getTotalCount());
-        }
+    // Task operation statistics details
+    while (syncPoller.poll().getStatus() == LongRunningOperationStatus.IN_PROGRESS) {
+        final AnalyzeActionsOperationDetail operationDetail = syncPoller.poll().getValue();
+        System.out.printf("Action display name: %s, Successfully completed actions: %d, in-process actions: %d,"
+                        + " failed actions: %d, total actions: %d%n",
+                operationDetail.getDisplayName(), operationDetail.getSucceededCount(),
+                operationDetail.getInProgressCount(), operationDetail.getFailedCount(),
+                operationDetail.getTotalCount());
+    }
 
-        syncPoller.waitForCompletion();
+    syncPoller.waitForCompletion();
 
-        Iterable<PagedResponse<AnalyzeActionsResult>> pagedResults = syncPoller.getFinalResult().iterableByPage();
-        for (PagedResponse<AnalyzeActionsResult> perPage : pagedResults) {
-            System.out.printf("Response code: %d, Continuation Token: %s.%n", perPage.getStatusCode(),
-                    perPage.getContinuationToken());
-            for (AnalyzeActionsResult actionsResult : perPage.getElements()) {
-                System.out.println("Entities recognition action results:");
-                for (RecognizeEntitiesActionResult actionResult : actionsResult.getRecognizeEntitiesResults()) {
-                    if (!actionResult.isError()) {
-                        for (RecognizeEntitiesResult documentResult : actionResult.getDocumentsResults()) {
-                            if (!documentResult.isError()) {
-                                for (CategorizedEntity entity : documentResult.getEntities()) {
-                                    System.out.printf(
-                                            "\tText: %s, category: %s, confidence score: %f.%n",
-                                            entity.getText(), entity.getCategory(), entity.getConfidenceScore());
-                                }
-                            } else {
-                                System.out.printf("\tCannot recognize entities. Error: %s%n",
-                                        documentResult.getError().getMessage());
+    Iterable<PagedResponse<AnalyzeActionsResult>> pagedResults = syncPoller.getFinalResult().iterableByPage();
+    for (PagedResponse<AnalyzeActionsResult> perPage : pagedResults) {
+        System.out.printf("Response code: %d, Continuation Token: %s.%n", perPage.getStatusCode(),
+                perPage.getContinuationToken());
+        for (AnalyzeActionsResult actionsResult : perPage.getElements()) {
+            System.out.println("Entities recognition action results:");
+            for (RecognizeEntitiesActionResult actionResult : actionsResult.getRecognizeEntitiesResults()) {
+                if (!actionResult.isError()) {
+                    for (RecognizeEntitiesResult documentResult : actionResult.getDocumentsResults()) {
+                        if (!documentResult.isError()) {
+                            for (CategorizedEntity entity : documentResult.getEntities()) {
+                                System.out.printf(
+                                        "\tText: %s, category: %s, confidence score: %f.%n",
+                                        entity.getText(), entity.getCategory(), entity.getConfidenceScore());
                             }
+                        } else {
+                            System.out.printf("\tCannot recognize entities. Error: %s%n",
+                                    documentResult.getError().getMessage());
                         }
-                    } else {
-                        System.out.printf("\tCannot execute Entities Recognition action. Error: %s%n",
-                                actionResult.getError().getMessage());
                     }
+                } else {
+                    System.out.printf("\tCannot execute Entities Recognition action. Error: %s%n",
+                            actionResult.getError().getMessage());
                 }
+            }
 
-                System.out.println("Key phrases extraction action results:");
-                for (ExtractKeyPhrasesActionResult actionResult : actionsResult.getExtractKeyPhrasesResults()) {
-                    if (!actionResult.isError()) {
-                        for (ExtractKeyPhraseResult documentResult : actionResult.getDocumentsResults()) {
-                            if (!documentResult.isError()) {
-                                System.out.println("\tExtracted phrases:");
-                                for (String keyPhrases : documentResult.getKeyPhrases()) {
-                                    System.out.printf("\t\t%s.%n", keyPhrases);
-                                }
-                            } else {
-                                System.out.printf("\tCannot extract key phrases. Error: %s%n",
-                                        documentResult.getError().getMessage());
+            System.out.println("Key phrases extraction action results:");
+            for (ExtractKeyPhrasesActionResult actionResult : actionsResult.getExtractKeyPhrasesResults()) {
+                if (!actionResult.isError()) {
+                    for (ExtractKeyPhraseResult documentResult : actionResult.getDocumentsResults()) {
+                        if (!documentResult.isError()) {
+                            System.out.println("\tExtracted phrases:");
+                            for (String keyPhrases : documentResult.getKeyPhrases()) {
+                                System.out.printf("\t\t%s.%n", keyPhrases);
                             }
+                        } else {
+                            System.out.printf("\tCannot extract key phrases. Error: %s%n",
+                                    documentResult.getError().getMessage());
                         }
-                    } else {
-                        System.out.printf("\tCannot execute Key Phrases Extraction action. Error: %s%n",
-                                actionResult.getError().getMessage());
                     }
+                } else {
+                    System.out.printf("\tCannot execute Key Phrases Extraction action. Error: %s%n",
+                            actionResult.getError().getMessage());
                 }
             }
         }
     }
+}
 ```
 
 この例をアプリケーションに追加した後、`main()` メソッドで呼び出します。
@@ -797,8 +643,70 @@ Key phrases extraction action results:
 
 分析操作を使用して、NER、キー フレーズ抽出、感情分析、PII の検出を実行することもできます。 GitHub の[分析のサンプル](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeActionsAsync.java)を参照してください。
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+## <a name="text-summarization"></a>テキストの概要作成
 
-この機能はバージョン 3.0 では使用できません。
+# <a name="version-32-preview1"></a>[バージョン 3.2-preview.1](#tab/version-3-2)
+
+Text Analytics を使用すると、大量のテキストを要約できます。 このメソッドは非同期であり、長時間の操作が終了すると上位の文が返されます。
+
+```java
+static void summarizationExample(TextAnalyticsClient client) {
+    List<String> documents = new ArrayList<>();
+    documents.add(
+            "The extractive summarization feature in Text Analytics uses natural language processing techniques "
+            + "to locate key sentences in an unstructured text document. "
+            + "These sentences collectively convey the main idea of the document. This feature is provided as an API for developers. "
+            + "They can use it to build intelligent solutions based on the relevant information extracted to support various use cases. "
+            + "In the public preview, extractive summarization supports several languages. "
+            + "It is based on pretrained multilingual transformer models, part of our quest for holistic representations. "
+            + "It draws its strength from transfer learning across monolingual and harness the shared nature of languages "
+            + "to produce models of improved quality and efficiency.");
+
+    SyncPoller<AnalyzeActionsOperationDetail, AnalyzeActionsResultPagedIterable> syncPoller =
+            client.beginAnalyzeActions(documents,
+                    new TextAnalyticsActions().setDisplayName("{tasks_display_name}")
+                            .setExtractSummaryActions(
+                                    new ExtractSummaryAction()),
+                    "en",
+                    new AnalyzeActionsOptions());
+
+    syncPoller.waitForCompletion();
+
+    syncPoller.getFinalResult().forEach(actionsResult -> {
+        System.out.println("Extractive Summarization action results:");
+        for (ExtractSummaryActionResult actionResult : actionsResult.getExtractSummaryResults()) {
+            if (!actionResult.isError()) {
+                for (ExtractSummaryResult documentResult : actionResult.getDocumentsResults()) {
+                    if (!documentResult.isError()) {
+                        System.out.println("\tExtracted summary sentences:");
+                        for (SummarySentence summarySentence : documentResult.getSentences()) {
+                            System.out.printf(
+                                    "\t\t Sentence text: %s, length: %d, offset: %d, rank score: %f.%n",
+                                    summarySentence.getText(), summarySentence.getLength(),
+                                    summarySentence.getOffset(), summarySentence.getRankScore());
+                        }
+                    } else {
+                        System.out.printf("\tCannot extract summary sentences. Error: %s%n",
+                                documentResult.getError().getMessage());
+                    }
+                }
+            } else {
+                System.out.printf("\tCannot execute Extractive Summarization action. Error: %s%n",
+                        actionResult.getError().getMessage());
+            }
+        }
+    });
+}
+```
+
+この例をアプリケーションに追加した後、`main()` メソッドで呼び出します。
+
+```java
+summarizationExample(client);
+```
+
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
+
+この機能はバージョン 3.1 では使用できません。
 
 ---

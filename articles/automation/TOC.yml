@@ -14,11 +14,13 @@
   items:
     - name: Automation アカウントを作成する - Azure portal
       href: quickstarts/create-account-portal.md
+    - name: マネージド ID を有効にする - Azure portal
+      href: quickstarts/enable-managed-identity.md
     - name: マシンの Desired State Configuration を有効にする
       href: quickstarts/dsc-configuration.md
 - name: チュートリアル
   items:
-    - name: PowerShell Runbook でマネージド ID を使用する
+    - name: マネージド ID を使用して PowerShell Runbook を作成する
       href: learn/powershell-runbook-managed-identity.md
     - name: PowerShell Workflow Runbook を作成する
       href: learn/automation-tutorial-runbook-textual.md

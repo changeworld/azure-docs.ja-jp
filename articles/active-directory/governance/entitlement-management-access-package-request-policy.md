@@ -16,12 +16,12 @@ ms.date: 07/01/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fcd11f88cb25ef3afb199b147856d0a0140e44c
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: 4ea285c078061ed6009aff8dfd1c17b1f0528b9a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113491985"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967251"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求設定を変更する
 
@@ -158,6 +158,9 @@ ms.locfileid: "113491985"
     アクセス パッケージを作成した後は、そのアクセス パッケージに特定の内部および外部ユーザーを直接割り当てることができます。 外部ユーザーを指定する場合、ゲスト ユーザー アカウントがディレクトリ内に作成されます。 ユーザーの直接割り当てについては、[アクセス パッケージに対する割り当ての表示、追加、削除](entitlement-management-access-package-assignments.md)に関する記事を参照してください。
 
 1. [[要求の有効化]](#enable-requests) セクションまでスキップします。
+
+> [!NOTE]
+> ユーザーをアクセス パッケージに割り当てる際、管理者は、そのユーザーが既存のポリシー要件に基づいてそのアクセス パッケージの対象となっていることを確認する必要があります。 そうしない場合、ユーザーはアクセス パッケージに正常に割り当てられません。 ユーザー リクエストの承認を必要とするポリシーがアクセス パッケージに含まれている場合、指定された承認者による必要な承認を得ずに、ユーザーを直接アクセス パッケージに割り当てることはできません。
 
 
 ## <a name="open-and-edit-an-existing-policy-of-request-settings"></a>要求設定の既存ポリシーを開いて編集する

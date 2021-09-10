@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: e7ff59c3c6ba75321c63db81d34ea4c7d46a841a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db2eb3bf906ffebe67489ab83cb7e13595b601d5
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748626"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112756"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>クイックスタート: コンフィデンシャル コンピューティング ノードを含む AKS クラスターを Azure CLI を使用してデプロイする
 
@@ -145,6 +145,9 @@ kube-system     sgx-device-plugin-xxxx     1/1     Running
 これで、テスト アプリケーションをデプロイする準備ができました。 
 
 *hello-world-enclave.yaml* という名前のファイルを作成し、次の YAML マニフェストを貼り付けます。 このサンプル アプリケーション コードは、[Open Enclave プロジェクト](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)にあります。 このデプロイでは、*confcom* アドオンがデプロイ済みであることを前提としています。
+
+> [!NOTE]
+> 次の例では、パブリック コンテナー イメージを Docker Hub からプルします。 匿名の pull request を行うのではなく、Docker Hub アカウントを使用して認証するようにプル シークレットを設定することをお勧めします。 パブリック コンテンツを操作するときの信頼性を向上させるために、プライベートの Azure Container Registry にイメージをインポートして管理します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
 
 ```yaml
 apiVersion: batch/v1

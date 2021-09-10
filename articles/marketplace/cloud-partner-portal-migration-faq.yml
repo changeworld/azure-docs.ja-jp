@@ -8,12 +8,12 @@ metadata:
   author: keferna
   ms.author: keferna
   ms.date: 07/14/2020
-  ms.openlocfilehash: bf27d686edd4324419a06e696eed27a64c66a32d
-  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+  ms.openlocfilehash: 4015d78469f08450d81495f61800f68f980b9b02
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/10/2021
-  ms.locfileid: "113595891"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122866344"
 title: Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 summary: >
   Cloud パートナー ポータルはパートナー センターに切り替えられました。 パートナー センターでは、[Microsoft AppSource](https://appsource.microsoft.com/) または [Azure Marketplace](https://azuremarketplace.microsoft.com/) での新しいオファーの公開、および Cloud パートナー ポータルから移行された既存のオファーの管理のために、合理化されて統合されたエクスペリエンスが提供されています。 Cloud パートナー ポータルのすべての機能を、パートナー センターで利用できます。 この記事では、これに関してよく寄せられる質問に回答します。
@@ -120,7 +120,7 @@ sections:
 
       | Dynamics 365 Business Central | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[Dynamics 365 for Business Central オファーの作成](dynamics-365-business-central-offer-setup.md)に関するページを参照してください。 |
 
-      | Dynamics 365 for Customer Engagement および PowerApps | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Customer Engagement & PowerApps オファーの作成](dynamics-365-customer-engage-offer-setup.md)」を参照してください。 |
+      | Dynamics 365 for Customer Engagement & Power Apps | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Customer Engagement & Power Apps オファーの作成](dynamics-365-customer-engage-offer-setup.md)」を参照してください。 |
 
       | Dynamics 365 for Operations | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Operations オファーの作成](./dynamics-365-operations-offer-setup.md)」を参照してください。 |
 

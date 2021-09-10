@@ -12,12 +12,12 @@ ms.date: 06/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36e0b286cc073f5c6843f1bab59af5a811cbf281
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 33389224bcc4abf05ffbb261e23409eb95896781
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112452928"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220865"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の開発者向けのメモ
 
@@ -74,7 +74,7 @@ Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプ
 |機能  |ユーザー フロー  |カスタム ポリシー  |Notes  |
 |---------|:---------:|:---------:|---------|
 [SP 開始](saml-service-provider.md) | NA | GA | POST とリダイレクトのバインディング。 |
-[IDP 開始](saml-service-provider-options.md#identity-provider-initiated-flow) | NA | GA | ID プロバイダーは Azure AD B2C です。  |
+[IDP 開始](saml-service-provider-options.md#configure-idp-initiated-flow) | NA | GA | ID プロバイダーは Azure AD B2C です。  |
 
 ## <a name="user-experience-customization"></a>ユーザー エクスペリエンスのカスタマイズ
 
@@ -123,7 +123,7 @@ Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプ
 |[OAuth2](oauth2-technical-profile.md) | NA | GA | たとえば、[Google](identity-provider-google.md)、[GitHub](identity-provider-github.md)、[Facebook](identity-provider-facebook.md) などです。|
 |[OAuth1](oauth1-technical-profile.md) | NA | GA | たとえば、「[Twitter](identity-provider-twitter.md)」とします。 |
 |[OpenID Connect](openid-connect-technical-profile.md) | GA | GA | たとえば、[Azure AD](identity-provider-azure-ad-single-tenant.md) などです。  |
-|[SAML2](identity-provider-generic-saml.md) | NA | GA | たとえば、[Salesforce](identity-provider-salesforce-saml.md) や [AD FS] などです。(identity-provider-adfs.md) |
+|[SAML2](identity-provider-generic-saml.md) | NA | GA | たとえば、[Salesforce](identity-provider-salesforce-saml.md) と [AD-FS](identity-provider-adfs.md) などです。 |
 | WSFED | NA | NA | |
 
 ### <a name="api-connectors"></a>API コネクタ
@@ -185,5 +185,5 @@ Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD B2C に使用可能な Microsoft Graph 操作](microsoft-graph-operations.md)を確認します
+- [Azure AD B2C に使用可能な Microsoft Graph 操作](microsoft-graph-operations.md)を確認します。
 - [カスタム ポリシーについて、およびユーザー フローとの違い](custom-policy-overview.md)について学習します。

@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 08/10/2021
 ms.author: duau
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 7242749958d12b8d93f667b91ed005096d75f1e4
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 0c93edf2d7d017ea857e4e8ac915818a3b7f1d02
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538720"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311372"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>チュートリアル:ExpressRoute 回線に仮想ネットワークを接続する
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "111538720"
 
 * ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクすることができます。 Premium アドオンを使用すると、選択した帯域幅に応じて、10 を超える仮想ネットワークを ExpressRoute 回線に接続することもできます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。
 
-* ExpressRoute 回線からターゲットの ExpressRoute 仮想ネットワークゲートウェイへの接続を作成するために、ローカルまたはピアリングされた仮想ネットワークからアドバタイズされるアドレス空間の数は、**200** 個以下である必要があります。 接続が正常に作成されたら、ローカルまたはピアリングされた仮想ネットワークに最大 1,000 個のアドレス空間をさらに追加できます。
+* ExpressRoute 回線からターゲットの ExpressRoute 仮想ネットワーク ゲートウェイへの接続を作成するために、ローカルまたはピアリングされた仮想ネットワークからアドバタイズされるアドレス空間の数は **200** 個以下である必要があります。 接続が正常に作成されたら、ローカルまたはピアリングされた仮想ネットワークに最大 1,000 個のアドレス空間をさらに追加できます。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -199,6 +199,30 @@ $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -Resour
 $connection.ExpressRouteGatewayBypass = $True
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ``` 
+
+> [!NOTE]
+> [接続モニター](how-to-configure-connection-monitor.md)を使用して、トラフィックが FastPath を使用して宛先に到達していることを確認できます。
+>
+
+## <a name="enroll-in-expressroute-fastpath-features-preview"></a>ExpressRoute の FastPath 機能に登録する (プレビュー)
+
+FastPath の仮想ネットワーク ピアリングのサポートは、現在パブリック プレビュー中です。
+
+### <a name="fastpath-and-virtual-network-peering"></a>FastPath と仮想ネットワーク ピアリング
+
+FastPath と仮想ネットワーク ピアリングを使用すると、ローカルまたはピアリングされた仮想ネットワーク内の VM に対して ExpressRoute 接続を直接有効にすることができ、データ パス内の ExpressRoute 仮想ネットワーク ゲートウェイはバイパスされます。
+
+このプレビューに登録するには、ターゲットの Azure サブスクリプションで次の Azure PowerShell コマンドを実行します。
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName ExpressRouteVnetPeeringGatewayBypass -ProviderNamespace Microsoft.Network
+```
+
+> [!NOTE] 
+> ターゲット サブスクリプションで FastPath 用に構成されたすべての接続が、このプレビューに登録されます。 実稼働サブスクリプションでこのプレビューを有効にすることはお勧めしません。
+> FastPath が既に構成されていて、プレビュー機能への登録を希望される場合は、次の手順を実行する必要があります。
+> 1. 上の Azure PowerShell コマンドを使用して、FastPath プレビュー機能に登録します。
+> 1. ターゲット接続で FastPath を無効にしてから再度有効にします。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

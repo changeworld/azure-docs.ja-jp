@@ -2,27 +2,27 @@
 title: Azure Communication Services の通話録音の概要
 titleSuffix: An Azure Communication Services concept document
 description: 通話録音機能と API の概要について説明します。
-author: joseys
+author: GrantMeStrength
 manager: anvalent
 services: azure-communication-services
-ms.author: joseys
+ms.author: jken
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 898346d69b656656c93889002109bae0f15b2dbc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fef4972271046f7435140fd2d9ba3d18c7c3b11c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464339"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254756"
 ---
 # <a name="calling-recording-overview"></a>通話録音の概要
 
 [!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
 > [!NOTE]
-> 通話録音機能は現在のところ、米国リージョンで作成された Communication Services リソースにのみ利用できます。
+> 通話レコーディングは、米国、英国、ヨーロッパ、アジア、およびオーストラリアのリージョンで作成された Communication Services リソースで使用できます。
 
 通話録音機能には、録音を開始、停止、一時停止、再開するための一連の API が用意されています。 これらの API には、サーバー側ビジネス ロジックから、またはユーザーの操作によってトリガーされるイベントを介してアクセスできます。 録音されたメディアの出力は MP4 Audio+Video 形式で行われます。これは Teams がメディアの記録に使用するのと同じ形式です。 メディアとメタデータに関連した通知は Event Grid から出力されます。 録音は、任意の長期保管用ソリューションに取得および移動するために、組み込みの一時ストレージに 48 時間保存されます。 
 

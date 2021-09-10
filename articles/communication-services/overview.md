@@ -1,23 +1,25 @@
 ---
 title: Azure Communication Services とは
 description: Azure Communication Services を使用して、リアルタイム通信により充実したユーザー エクスペリエンスを実現する方法について説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 12e0c9c277bbf162797d52692add208ce921569b
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 4e8ec31fc28014e404ae69f2746eb02099e83842
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360921"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967847"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure Communication Services とは
 
-Azure Communication Services はクラウドベースのサービスです。用意されている REST API およびクライアント ライブラリ SDK を利用することで、通信を手軽にアプリケーションに組み込むことができます。 通信技術 (メディアのエンコードやリアルタイム ネットワークなど) の専門家でなくても、アプリケーションに通信機能を追加できます。 Azure Communication Services では、さまざまな通信形式がサポートされています。
+Azure Communication Services はクラウドベースのサービスです。用意されている REST API およびクライアント ライブラリ SDK を利用することで、通信を手軽にアプリケーションに組み込むことができます。 通信技術 (メディアのエンコードやリアルタイム ネットワークなど) の専門家でなくても、アプリケーションに通信機能を追加できます。 この機能は、Azure for Government でもサポートされています。
+
+Azure Communication Services では、さまざまな通信形式がサポートされています。
 
 1. 音声およびビデオによる通話
 1. リッチ テキスト チャット

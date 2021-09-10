@@ -10,12 +10,12 @@ ms.date: 08/10/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: ff04d43e72d4eca9800b330d5a4721ba951c85f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2a061e5db3e4a6b6aef193449abcd41d0b8eaf76
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627644"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097537"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Apache Spark を使用して Azure Cosmos DB から専用 SQL プールにデータをコピーする
 
@@ -101,4 +101,5 @@ SELECT  [productCode]
 クエリでは、グラフ モードで次の結果を表示します。[![Spark から SQL への手順 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
-* [Apache Spark を使用して Azure Cosmos DB 分析ストアのクエリを実行する](./how-to-query-analytical-store-spark.md)
+* [Apache Spark 3 を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する](./how-to-query-analytical-store-spark-3.md)
+* [Apache Spark 2 を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する](./how-to-query-analytical-store-spark.md)

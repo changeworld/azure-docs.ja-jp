@@ -3,15 +3,15 @@ title: Azure Virtual Desktop リモート アプリ ストリーミングとは 
 description: Azure Virtual Desktop リモート アプリ ストリーミングの概要。
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/14/2021
+ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 88bc4c94612a69be8a9d7aad7bbad983b687235a
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: e1ff4cba43c1e57c39b5e47e2485a262f66bbb5f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798923"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032982"
 ---
 # <a name="what-is-azure-virtual-desktop-remote-app-streaming"></a>Azure Virtual Desktop リモート アプリ ストリーミングとは
 
@@ -27,13 +27,15 @@ Azure Virtual Desktop に慣れていない (またはアプリの仮想化全�
 
 - カスタム アプリ。 Azure Virtual Desktop でサポートされるアプリの種類と、それらを顧客に提供する方法については、[Azure Virtual Desktop でカスタム アプリをホストする方法](custom-apps.md)に関する記事を参照してください。
 
-- ドメイン参加資格情報。 Azure Virtual Desktop と互換性のある ID 管理システムをまだ持ってない場合は、ホスト プールの ID 管理を設定する必要があります。
+- ドメイン参加資格情報。 Azure Virtual Desktop と互換性のある ID 管理システムをまだお持ちでない場合は、ホスト プールの ID 管理を設定する必要があります。 詳細については、「[マネージド ID を設定する](identities.md)」を参照してください。
 
 - Azure サブスクリプション。 まだサブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
 ## <a name="get-started"></a>作業の開始
 
-これで準備ができたので、Azure Virtual Desktop のデプロイを設定する方法を見てみましょう。
+これで準備ができたので、Azure Virtual Desktop のデプロイを設定する方法を見てみましょう。 成功できるように設定するための、2 つのオプションがあります。 手動または自動でデプロイを設定できます。 次の 2 つのセクションでは、これら 2 つの方法の違いについて説明します。
+
+### <a name="set-up-azure-virtual-desktop-manually"></a>Azure Virtual Desktop の手動設定
 
 デプロイは、次のチュートリアルに従って手動で設定できます。
 
@@ -44,6 +46,13 @@ Azure Virtual Desktop に慣れていない (またはアプリの仮想化全�
 3. [サービスの更新プログラムを検証するためのホスト プールを作成する](../create-validation-host-pool.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 
 4. [サービス アラートを設定する](../set-up-service-alerts.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+
+### <a name="set-up-azure-virtual-desktop-automatically"></a>Azure Virtual Desktop の自動設定
+
+自動プロセスを使用する場合は、作業の開始機能を使用して、デプロイを設定することができます。 詳細については、次の記事を参照してください。
+
+- 「[作業の開始機能を使用して Azure Virtual Desktop をデプロイする](../getting-started-feature.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)」 (これらの手順に従うときは、「[Azure AD DS または AD DS が使用されているサブスクリプションの場合](../getting-started-feature.md#for-subscriptions-with-azure-ad-ds-or-ad-ds)」の手順に従ってください。 この方法を使用すると、ID 管理とアプリの互換性が向上し、ID 関連のインフラストラクチャ コストを微調整することもできます。 まだ Azure AD DS または AD DS がないサブスクリプション向けの方法では、これらの利点は得られません)。
+- [作業の開始機能のトラブルシューティング](../troubleshoot-getting-started.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 
 ## <a name="customize-and-manage-azure-virtual-desktop"></a>Azure Virtual Desktop のカスタマイズと管理
 
@@ -58,6 +67,7 @@ Azure Virtual Desktop の設定後は、組織または顧客のニーズに合�
 - [事業継続とディザスター リカバリー プランを設定する](../disaster-recovery.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 - [Azure Automation を使用してセッション ホストをスケーリングする](../set-up-scaling-script.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 - [ユニバーサル印刷を設定する](/universal-print/fundamentals/universal-print-getting-started)
+- [Start VM on Connect 機能を設定する](../start-virtual-machine-connect.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 
 ## <a name="get-to-know-your-azure-virtual-desktop-deployment"></a>Azure Virtual Desktop のデプロイについての理解を深める
 
@@ -69,7 +79,9 @@ Azure Virtual Desktop デプロイの作成と管理に不可欠な概念を理�
 - [Azure Monitor for Azure Virtual Desktop の用語集](../azure-monitor-glossary.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 - [エンタープライズ向け Azure Virtual Desktop](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 - [デプロイ コストの合計を見積もる](total-costs.md)
+- [ユーザーごとのアプリ ストリーミング コストを見積もる](streaming-costs.md)
 - [アーキテクチャに関する推奨事項](architecture-recs.md)
+- [Start VM on Connect のよくあるご質問](../start-virtual-machine-connect-faq.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ metadata:
   author: keferna
   ms.author: keferna
   ms.date: 10/01/2020
-  ms.openlocfilehash: 49109c47e6c066122ef59ac37193a06562b35ab0
-  ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+  ms.openlocfilehash: 08e196f4cc0e8adf0df67bbfdb7fc8ba18b0f269
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/11/2021
-  ms.locfileid: "113603566"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122866425"
 title: リード構成でよくある問題と問題解決
 summary: >
   この記事では、コマーシャル マーケットプレース オファーのリード管理でよく寄せられる質問に回答します。 パートナー センターでカスタマー リレーションシップ マネジメント (CRM) システムのリードを構成するときに発生することがあるエラーも取り上げます。
@@ -74,7 +74,7 @@ sections:
   - question: >
       Azure テーブルをリードのターゲットとして構成しました。 新しいコマーシャル マーケットプレースのリードが送信されるたびに通知を受け取ることはできますか?
     answer: >
-      はい。 [Azure テーブルを使用したリード管理の構成](partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)に関するページの手順に従い、Azure テーブルにリードが追加された場合にメールを送信する Microsoft フローを設定します。
+      はい。 [Azure テーブルを使用したリード管理の構成](partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)に関するページの手順に従い、Azure テーブルにリードが追加された場合にメールを送信する Power Automate を使用して新しいフローを設定します。
   - question: >
       リードのターゲットとして Salesforce を構成したのですが、リードが見つからないのはなぜですか?
     answer: >

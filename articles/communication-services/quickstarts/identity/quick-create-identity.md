@@ -3,18 +3,18 @@ title: クイック スタート - テスト用の Azure Communication Services 
 titleSuffix: An Azure Communication Services quickstart
 description: サンプルとトラブルシューティングに使用するため、 Azure portal で ID とアクセス トークン ツールを使用する方法について説明します。
 author: manoskow
-manager: jken
+manager: chpalm
 services: azure-communication-services
 ms.author: manoskow
 ms.date: 07/19/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 20984666878b94a914770b8afd17ad8f3fdd3ff1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d61fb99787bc2e934ce2f1abc9bedff0c21bc64d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481808"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251108"
 ---
 # <a name="quickstart-quickly-create-azure-communication-services-access-tokens-for-testing"></a>クイック スタート - テスト用の Azure Communication Services アクセス トークン をすばやく作成する
 
@@ -32,7 +32,11 @@ ms.locfileid: "114481808"
 
 アクセス トークンのスコープを選択します。 なし、1 つ、または複数を選択できます。 **[生成]** をクリックします。
 
-ID と、対応するユーザー アクセス トークンが生成されます。 これらの文字列をコピーし、[サンプル アプリ](https://docs.microsoft.com/azure/communication-services/samples/overview)やそのほかのテスト シナリオで使用できます。
+![ID とアクセス トークンのスコープを選択します。](../media/quick-create-identity-choose-scopes.png)
+
+ID と、対応するユーザー アクセス トークンが生成されます。 これらの文字列をコピーし、[サンプル アプリ](../../samples/overview.md)やそのほかのテスト シナリオで使用できます。
+
+![ID とアクセス トークンが生成され、有効期限が表示されます。](../media/quick-create-identity-generated.png)
 
 ## <a name="next-steps"></a>次のステップ
 

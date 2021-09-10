@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: quickstart
-ms.date: 03/24/2021
+ms.date: 08/27/2021
 ms.custom: template-quickstart, devx-track-azurecli
-ms.openlocfilehash: f12b9f785063b8fa6fec4bc8cd4011d65110b7fe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 30f521567f06eab04aceee462ffc44b817b63333
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749882"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187705"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure データ ファクトリを作成する
 
@@ -72,20 +72,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-Azure データ ファクトリを作成するには、[az datafactory factory create](/cli/azure/datafactory#az_datafactory_create) コマンドを実行します。
+Azure データ ファクトリを作成するには、[az datafactory create](/cli/azure/datafactory#az_datafactory_create) コマンドを実行します。
 
 ```azurecli
-az datafactory factory create --resource-group ADFQuickStartRG \
+az datafactory create --resource-group ADFQuickStartRG \
     --factory-name ADFTutorialFactory
 ```
 
 > [!IMPORTANT]
 > `ADFTutorialFactory` は、グローバルに一意のデータ ファクトリ名に置き換えてください (ADFTutorialFactorySP1127 など)。
 
-作成したデータ ファクトリは、[az datafactory factory show](/cli/azure/datafactory#az_datafactory_factory_show) コマンドを使用して確認できます。
+作成したデータ ファクトリは、[az datafactory show](/cli/azure/datafactory#az_datafactory_factory_show) コマンドを使用して確認できます。
 
 ```azurecli
-az datafactory factory show --resource-group ADFQuickStartRG \
+az datafactory show --resource-group ADFQuickStartRG \
     --factory-name ADFTutorialFactory
 ```
 
@@ -102,17 +102,14 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 1. 作業ディレクトリに、この内容の JSON ファイルを作成し、前の手順で取得した実際の接続文字列を追加します。 このファイルに `AzureStorageLinkedService.json` という名前を付けます。
 
-   ```json
-   {
-       "type":"AzureStorage",
-           "typeProperties":{
-           "connectionString":{
-           "type": "SecureString",
-           "value":"DefaultEndpointsProtocol=https;AccountName=adfquickstartstorage;AccountKey=K9F4Xk/EhYrMBIR98rtgJ0HRSIDU4eWQILLh2iXo05Xnr145+syIKNczQfORkQ3QIOZAd/eSDsvED19dAwW/tw==;EndpointSuffix=core.windows.net"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.windows.net"
+        }
+    }
+    ```
 
 1. [az datafactory linked-service create](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create) コマンドを使用して、`AzureStorageLinkedService` という名前のリンク サービスを作成します。
 
@@ -124,26 +121,24 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 1. 作業ディレクトリに、この内容の JSON ファイルを `InputDataset.json` という名前で作成します。
 
-   ```json
-   {
-       "type": 
-           "AzureBlob",
-           "linkedServiceName": {
-               "type":"LinkedServiceReference",
-               "referenceName":"AzureStorageLinkedService"
-               },
-           "annotations": [],
-           "type": "Binary",
-           "typeProperties": {
-               "location": {
-                   "type": "AzureBlobStorageLocation",
-                   "fileName": "emp.txt",
-                   "folderPath": "input",
-                   "container": "adftutorial"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "emp.txt",
+                "folderPath": "input",
+                "container": "adftutorial"
+            }
+        }
+    }
+    ```
 
 1. [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) コマンドを使用して、`InputDataset` という名前の入力データセットを作成します。
 
@@ -155,26 +150,23 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 1. 作業ディレクトリに、この内容の JSON ファイルを `OutputDataset.json` という名前で作成します。
 
-   ```json
-   {
-       "type": 
-           "AzureBlob",
-           "linkedServiceName": {
-               "type":"LinkedServiceReference",
-               "referenceName":"AzureStorageLinkedService"
-               },
-           "annotations": [],
-           "type": "Binary",
-           "typeProperties": {
-               "location": {
-                   "type": "AzureBlobStorageLocation",
-                   "fileName": "emp.txt",
-                   "folderPath": "output",
-                   "container": "adftutorial"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "folderPath": "output",
+                "container": "adftutorial"
+            }
+        }
+    }
+    ```
 
 1. [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) コマンドを使用して、`OutputDataset` という名前の出力データセットを作成します。
 
@@ -190,57 +182,57 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 1. 作業ディレクトリに、この内容の JSON ファイルを `Adfv2QuickStartPipeline.json` という名前で作成します。
 
-   ```json
-   {
-       "name": "Adfv2QuickStartPipeline",
-       "properties": {
-           "activities": [
-               {
-                   "name": "CopyFromBlobToBlob",
-                   "type": "Copy",
-                   "dependsOn": [],
-                   "policy": {
-                       "timeout": "7.00:00:00",
-                       "retry": 0,
-                       "retryIntervalInSeconds": 30,
-                       "secureOutput": false,
-                       "secureInput": false
-                   },
-                   "userProperties": [],
-                   "typeProperties": {
-                          "source": {
-                           "type": "BinarySource",
-                           "storeSettings": {
-                               "type": "AzureBlobStorageReadSettings",
-                               "recursive": true
-                           }
-                       },
-                       "sink": {
-                           "type": "BinarySink",
-                           "storeSettings": {
-                               "type": "AzureBlobStorageWriteSettings"
-                           }
-                       },
-                       "enableStaging": false
-                   },
-                   "inputs": [
-                       {
-                           "referenceName": "InputDataset",
-                           "type": "DatasetReference"
-                       }
-                   ],
-                   "outputs": [
-                       {
-                           "referenceName": "OutputDataset",
-                           "type": "DatasetReference"
-                       }
-                   ]
-               }
-           ],
-           "annotations": []
-       }
-   }
-   ```
+    ```json
+    {
+        "name": "Adfv2QuickStartPipeline",
+        "properties": {
+            "activities": [
+                {
+                    "name": "CopyFromBlobToBlob",
+                    "type": "Copy",
+                    "dependsOn": [],
+                    "policy": {
+                        "timeout": "7.00:00:00",
+                        "retry": 0,
+                        "retryIntervalInSeconds": 30,
+                        "secureOutput": false,
+                        "secureInput": false
+                    },
+                    "userProperties": [],
+                    "typeProperties": {
+                        "source": {
+                            "type": "BinarySource",
+                            "storeSettings": {
+                                "type": "AzureBlobStorageReadSettings",
+                                "recursive": true
+                            }
+                        },
+                        "sink": {
+                            "type": "BinarySink",
+                            "storeSettings": {
+                                "type": "AzureBlobStorageWriteSettings"
+                            }
+                        },
+                        "enableStaging": false
+                    },
+                    "inputs": [
+                        {
+                            "referenceName": "InputDataset",
+                            "type": "DatasetReference"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "referenceName": "OutputDataset",
+                            "type": "DatasetReference"
+                        }
+                    ]
+                }
+            ],
+            "annotations": []
+        }
+    }
+    ```
 
 1. [az datafactory pipeline create](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) コマンドを使用して、`Adfv2QuickStartPipeline` という名前のパイプラインを作成します。
 

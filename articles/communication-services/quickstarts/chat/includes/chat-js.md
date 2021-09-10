@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 63653bb72c278a330101503dbaf2959b7e0eb39f
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.author: rifox
+ms.openlocfilehash: e8afed5b318a3a6601d90fcd235476174e40e358
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201498"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967919"
 ---
 ## <a name="sample-code"></a>サンプル コード
 このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat) にあります。
@@ -243,18 +243,23 @@ threadId で識別されるスレッドにメッセージを送信するには�
 
 - 送信者の表示名を指定するには、`senderDisplayName` を使用します。
 - 'text' や 'html' などのメッセージの種類を指定するには、`type` を使用します。
+- メッセージと共に送信する追加データを含めるには、必要に応じて `metadata` を使用します。 このフィールドは、開発者がチャット メッセージ機能を拡張し、ユース ケースに応じたカスタム情報を追加するためのメカニズムを提供します。 たとえば、メッセージ内でファイル リンクを共有する場合、'hasAttachment:true' をメタデータに追加することで、受信者のアプリケーションがそれを解析して適切に表示できます。
 
 `SendChatMessageResult` は、メッセージの送信から返された応答です。ここには ID (メッセージの一意の ID) が含まれています。
 
 ```JavaScript
 const sendMessageRequest =
 {
-  content: 'Hello Geeta! Can you share the deck for the conference?'
+  content: 'Please take a look at the attachment'
 };
 let sendMessageOptions =
 {
   senderDisplayName : 'Jack',
-  type: 'text'
+  type: 'text',
+  metadata: {
+    'hasAttachment': 'true',
+    'attachmentUrl': 'https://contoso.com/files/attachment.docx'
+  }
 };
 const sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 const messageId = sendChatMessageResult.id;

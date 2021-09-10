@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34de5fbfbccd84c716684d1f98a16c4d0a5e6344
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 4e63e2603b6625c7eaee602b107c2d01c40a8ac8
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322139"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830668"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
 
@@ -55,11 +55,15 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM Db2 for LUW 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための IBM Db2 for Linux, UNIX, and Windows 構成ガイドライン
 ### <a name="storage-configuration"></a>ストレージの構成
-SAP ワークロード用の Azure Storage の種類の概要については、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を参照してください。すべてのデータベース ファイルは、Azure ブロック ストレージのマウントされたディスクに保存する必要があります (Windows: NTFS、Linux: xfs、または ext3)。 あらゆる種類のネットワーク ドライブまたは次の Azure サービスのようなリモート共有は、データベース ファイルに対してサポートされて **いません**。 
+SAP ワークロード用の Azure Storage の種類の概要については、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を参照してください。すべてのデータベース ファイルは、Azure ブロック ストレージのマウントされたディスクに保存する必要があります (Windows: NTFS、Linux: xfs、または ext3)。 表示されるシナリオの Azure サービスのようなリモート共有ボリュームは、Db2 データベース ファイルではサポートされて **いません**。 
 
-* [Microsoft Azure File Service](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
+* すべてのゲスト OS の [Microsoft Azure ファイル サービス](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
+* Windows ゲスト OS で実行されている Db2 の [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)。 
+
+表示されるシナリオの Azure サービスのようなリモート共有ボリュームは、Db2 データベース ファイルでサポートされています。 
+ 
+* Azure NetApp Files でホストされている NFS 共有上で、Linux ゲスト OS ベースの Db2 データとログ ファイルをホストすることはサポートされています。
 
 「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイの考慮事項](dbms_guide_general.md)」に記載されているステートメントは、Azure Page BLOB Storage をベースとするディスクまたは Managed Disks を使用した Db2 DBMS のデプロイにも適用されます。
 

@@ -10,16 +10,22 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: ce04187cb513712998b6c4ba26d5210bb56ca5df
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b7292206aacbbca5c8e76ce573dc6fd0b3e32578
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453758"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835758"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="image-tagging-language-expansion"></a>画像のタグ付け言語の拡張
+
+画像のタグ付け機能の[最新バージョン (v3.2)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) では、50 言語のタグがサポートされるようになりました。 詳細については、[言語サポート](language-support.md)に関するページを参照してください。
 
 ## <a name="may-2021"></a>2021 年 5 月
 

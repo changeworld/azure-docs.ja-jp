@@ -1,14 +1,14 @@
 ---
 title: 'クイックスタート: Defender for IoT マイクロ エージェントをインストールする (プレビュー)'
 description: このクイックスタートでは、Defender マイクロ エージェントをインストールして認証する方法について説明します。
-ms.date: 06/27/2021
+ms.date: 08/26/2021
 ms.topic: quickstart
-ms.openlocfilehash: e77ebaf3ab99fc88d3d0138edf3c815b63507e6c
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 857c0a6a9682d4b15362d75523d2aa08a1c8461e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195552"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965642"
 ---
 # <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>クイックスタート: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
 
@@ -48,10 +48,11 @@ Defender for IoT モジュールをインストールする前に、IoT Hub に�
     sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
     ```
 
-1. 追加したリポジトリからのパッケージの一覧を次のコマンドで更新します。
+1. Microsoft GPG 公開キーをインストールします。
 
     ```bash
-    sudo apt-get update
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
     ```
 
 Debian および Ubuntu ベースの Linux ディストリビューションに Defender マイクロ エージェント パッケージをインストールするには、次のコマンドを使用します。
@@ -60,21 +61,21 @@ Debian および Ubuntu ベースの Linux ディストリビューションに 
 sudo apt-get install defender-iot-micro-agent 
 ```
 
-## <a name="micro-agent-authentication-methods"></a>マイクロ エージェントの認証方法 
+## <a name="micro-agent-authentication-methods"></a>マイクロ エージェントの認証方法
 
-Defender for IoT マイクロ エージェントを認証するために使用される 2 つのオプションは、次のとおりです。 
+Defender for IoT マイクロ エージェントを認証するために使用される 2 つのオプションは、次のとおりです。
 
-- モジュール ID の接続文字列。 
+- モジュール ID の接続文字列。
 
 - 証明書。
 
 ### <a name="authenticate-using-a-module-identity-connection-string"></a>モジュール ID の接続文字列を使用した認証
 
-この記事の「[前提条件](#prerequisites)」が満たされていることを確認し、これらの手順を開始する前にモジュール ID を作成してください。 
+この記事の「[前提条件](#prerequisites)」が満たされていることを確認し、これらの手順を開始する前にモジュール ID を作成してください。
 
 #### <a name="get-the-module-identity-connection-string"></a>モジュール ID の接続文字列を取得する
 
-IoT Hub からモジュール ID の接続文字列を取得するには、次のようにします。 
+IoT Hub からモジュール ID の接続文字列を取得するには、次のようにします。
 
 1. IoT Hub に移動し、お使いのハブを選択します。
 
@@ -118,13 +119,13 @@ IoT Hub からモジュール ID の接続文字列を取得するには、次�
 
 1. [これらの手順](../../iot-hub/tutorial-x509-scripts.md)に従って、証明書を入手します。
 
-1. PEM でエンコードされた証明書の公開部分と秘密キーを、Defender エージェント ディレクトリの `certificate_public.pem` および `certificate_private.pem` という名前のファイル内に配置します。 
+1. PEM でエンコードされた証明書の公開部分と秘密キーを、Defender エージェント ディレクトリの `certificate_public.pem` および `certificate_private.pem` という名前のファイル内に配置します。
 
-1. 適切な接続文字列を `connection_string.txt` ファイル内に配置します。 接続文字列は次のようになります。 
+1. 適切な接続文字列を `connection_string.txt` ファイル内に配置します。 接続文字列は次のようになります。
 
-    `HostName=<the host name of the iot hub>;DeviceId=<the id of the device>;ModuleId=<the id of the module>;x509=true` 
+    `HostName=<the host name of the iot hub>;DeviceId=<the id of the device>;ModuleId=<the id of the module>;x509=true`
 
-    この文字列は、認証用に証明書が指定されることを想定するように、defender エージェントに警告します。 
+    この文字列は、認証用に証明書が指定されることを想定するように、defender エージェントに警告します。
 
 1. 次のコマンドを使用して、サービスを再起動します。  
 
@@ -145,10 +146,10 @@ IoT Hub からモジュール ID の接続文字列を取得するには、次�
 1. サービスが安定していることを確認するには、サービスが `active` であり、プロセスの稼働時間が適切であることを確認します
 
     :::image type="content" source="media/quickstart-standalone-agent-binary-installation/active-running.png" alt-text="サービスが安定していてアクティブであることを確認します。":::
- 
-## <a name="testing-the-system-end-to-end"></a>システムをエンド ツー エンドでテストする 
 
-デバイスにトリガー ファイルを作成することによって、システムをエンド ツー エンドでテストできます。 トリガー ファイルによってエージェントでベースライン スキャンが行われ、ファイルがベースライン違反として検出されます。 
+## <a name="testing-the-system-end-to-end"></a>システムをエンド ツー エンドでテストする
+
+デバイスにトリガー ファイルを作成することによって、システムをエンド ツー エンドでテストできます。 トリガー ファイルによってエージェントでベースライン スキャンが行われ、ファイルがベースライン違反として検出されます。
 
 次のコマンドを使用して、ファイル システムにファイルを作成します。
 
@@ -156,15 +157,15 @@ IoT Hub からモジュール ID の接続文字列を取得するには、次�
 sudo touch /tmp/DefenderForIoTOSBaselineTrigger.txt 
 ```
 
-ハブでベースライン検証エラーの推奨が発生します (CIS-debian-9-DEFENDER_FOR_IOT_TEST_CHECKS-0.0 の `CceId`)。 
+ハブでベースライン検証エラーの推奨が発生します (CIS-debian-9-DEFENDER_FOR_IOT_TEST_CHECKS-0.0 の `CceId`)。
 
 :::image type="content" source="media/quickstart-standalone-agent-binary-installation/validation-failure.png" alt-text="ハブで発生するベースライン検証エラーの推奨。" lightbox="media/quickstart-standalone-agent-binary-installation/validation-failure-expanded.png":::
 
-ハブに推奨が表示されるまでに最大 1 時間かかります。 
+ハブに推奨が表示されるまでに最大 1 時間かかります。
 
-## <a name="micro-agent-versioning"></a>マイクロ エージェントのバージョン管理 
+## <a name="micro-agent-versioning"></a>マイクロ エージェントのバージョン管理
 
-特定のバージョンの Defender IoT マイクロ エージェントをインストールするには、次のコマンドを実行します。 
+特定のバージョンの Defender IoT マイクロ エージェントをインストールするには、次のコマンドを実行します。
 
 ```bash
 sudo apt-get install defender-iot-micro-agent=<version>

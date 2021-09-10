@@ -5,12 +5,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 5b6e83909d3a8ccd224169e1571def422c7456c4
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: b422bbad06b419f35e8f4a1107c60e4312abba4d
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006331"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304032"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Azure Monitor の診断設定用の Resource Manager テンプレートのサンプル
 この記事には、Azure リソースの診断設定を作成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
@@ -127,6 +127,9 @@ Azure リソースの診断設定を作成するには、`<resource namespace>/p
 
 ## <a name="diagnostic-setting-for-azure-key-vault"></a>Azure Key Vault の診断設定 
 次のサンプルでは、`Microsoft.KeyVault/vaults/providers/diagnosticSettings` 型のリソースをテンプレートに追加して Azure Key Vault の診断設定を作成します。
+
+> [!IMPORTANT]
+> Azure Key Vault の場合、イベント ハブはキー コンテナーと同じリージョンにある必要があります。
 
 ### <a name="template-file"></a>テンプレート ファイル
 

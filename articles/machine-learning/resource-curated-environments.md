@@ -10,39 +10,39 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.date: 07/08/2021
-ms.openlocfilehash: cb78928badb067731f6e4fbed75a01346409b70a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: bf67c2a23bf78960723efa37ea9bdc8f80c0c774
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451052"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304718"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning のキュレーションされた環境
 
 この記事では、Azure Machine Learning のキュレーション環境の一覧を示します。 キュレートされた環境は Azure Machine Learning から提供され、既定でお使いのワークスペースで利用できます。 Azure Machine Learning SDK の最新バージョンを使用したキャッシュ済みの Docker イメージでサポートされるため、実行準備コストが削減され、デプロイ時間を短縮できます。 このような環境を使用すれば、さまざまな機械学習フレームワークをすぐに使い始めることができます。
 
 > [!NOTE]
-> このリストは、2021 年 7 月の時点で更新されています。 環境とその依存関係の最新のリストを取得するには、[Python SDK](how-to-use-environments.md)、[CLI](/cli/azure/ml/environment?view=azure-cli-latest&preserve-view=true#az_ml_environment_list)、または Azure Machine Learning [スタジオ](how-to-manage-environments-in-studio.md)を使用してください。 詳細については、[環境に関する記事](how-to-use-environments.md#use-a-curated-environment)を参照してください。 この新しいセットのリリース後、以前のキュレーションされた環境は非表示になりますが、引き続き使用することができます。 
+> このリストは、2021 年 8 月時点の情報で更新されています。 環境とその依存関係の最新のリストを取得するには、[Python SDK](how-to-use-environments.md)、[CLI](/cli/azure/ml/environment?view=azure-cli-latest&preserve-view=true#az_ml_environment_list)、または Azure Machine Learning [スタジオ](how-to-manage-environments-in-studio.md)を使用してください。 詳細については、[環境に関する記事](how-to-use-environments.md#use-a-curated-environment)を参照してください。 この新しいセットのリリース後、以前のキュレーションされた環境は非表示になりますが、引き続き使用することができます。 
 
 ## <a name="pytorch"></a>PyTorch
 
-**名前** - AzureML-pytorch-1.7-ubuntu18.04-py37-cuda11-gpu  
+**名前** - AzureML-pytorch-1.9-ubuntu18.04-py37-cuda11-gpu  
 **説明** - AzureML Python SDK と追加の python パッケージを含む PyTorch を使用したディープ ラーニング用の環境。  
 **Dockerfile の構成** - 個人用ワークフローに合わせて、次の Dockerfile をカスタマイズできます。
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210615.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.1-cudnn8-ubuntu18.04:20210806.v1
 
-ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/pytorch-1.7
+ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/pytorch-1.9
 
 # Create conda environment
 RUN conda create -p $AZUREML_CONDA_ENVIRONMENT_PATH \
     python=3.7 \
-    pip=20.2.4 \
-    pytorch=1.7.1 \
-    torchvision=0.8.2 \
-    torchaudio=0.7.2 \
-    cudatoolkit=11.0 \
+    pip=21.2.1 \
+    pytorch=1.9.0 \
+    torchvision=0.10.0 \
+    torchaudio=0.9.0 \
+    cudatoolkit=11.1.1 \
     nvidia-apex=0.1.0 \
     -c anaconda -c pytorch -c conda-forge
 
@@ -57,10 +57,10 @@ RUN HOROVOD_WITH_PYTORCH=1 \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.30.0' \
-                'azureml-defaults==1.30.0' \
-                'azureml-mlflow==1.30.0' \
-                'azureml-telemetry==1.30.0' \
+                'azureml-core==1.33.0' \
+                'azureml-defaults==1.33.0' \
+                'azureml-mlflow==1.33.0' \
+                'azureml-telemetry==1.33.0' \
                 'tensorboard==2.4.0' \
                 'tensorflow-gpu==2.4.1' \
                 'onnxruntime-gpu>=1.7,<1.8' \
@@ -78,7 +78,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 **Dockerfile の構成** - 個人用ワークフローに合わせて、次の Dockerfile をカスタマイズできます。
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210806.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/lightgbm
 
@@ -104,10 +104,10 @@ RUN HOROVOD_WITH_TENSORFLOW=1 \
                 'distributed~=2021.6.0' \
                 'dask-ml~=1.9.0' \
                 'adlfs~=0.7.0' \
-                'azureml-core==1.30.0' \
-                'azureml-defaults==1.30.0' \
-                'azureml-mlflow==1.30.0' \
-                'azureml-telemetry==1.30.0'
+                'azureml-core==1.33.0' \
+                'azureml-defaults==1.33.0' \
+                'azureml-mlflow==1.33.0' \
+                'azureml-telemetry==1.33.0'
 
 # This is needed for mpi to locate libpython
 ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
@@ -119,7 +119,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 **Dockerfile の構成** - 個人用ワークフローに合わせて、次の Dockerfile をカスタマイズできます。
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210615.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210806.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/sklearn-0.24.1
 
@@ -137,10 +137,10 @@ RUN pip install 'matplotlib>=3.3,<3.4' \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.30.0' \
-                'azureml-defaults==1.30.0' \
-                'azureml-mlflow==1.30.0' \
-                'azureml-telemetry==1.30.0' \
+                'azureml-core==1.33.0' \
+                'azureml-defaults==1.33.0' \
+                'azureml-mlflow==1.33.0' \
+                'azureml-telemetry==1.33.0' \
                 'scikit-learn==0.24.1'
 
 # This is needed for mpi to locate libpython
@@ -154,7 +154,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 **Dockerfile の構成** - 個人用ワークフローに合わせて、次の Dockerfile をカスタマイズできます。
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210615.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210806.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/tensorflow-2.4
 
@@ -173,12 +173,13 @@ RUN HOROVOD_WITH_TENSORFLOW=1 \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.30.0' \
-                'azureml-defaults==1.30.0' \
-                'azureml-mlflow==1.30.0' \
-                'azureml-telemetry==1.30.0' \
+                'azureml-core==1.33.0' \
+                'azureml-defaults==1.33.0' \
+                'azureml-mlflow==1.33.0' \
+                'azureml-telemetry==1.33.0' \
                 'tensorboard==2.4.0' \
                 'tensorflow-gpu==2.4.1' \
+                'tensorflow-datasets==4.3.0' \
                 'onnxruntime-gpu>=1.7,<1.8' \
                 'horovod[tensorflow-gpu]==0.21.3'
 
@@ -194,8 +195,8 @@ AutoML を使用する Azure ML パイプライン トレーニング ワーク�
 | --- | --- | --- |
 |AzureML-AutoML | CPU | いいえ |
 |AzureML-AutoML-DNN | CPU | はい |
-| AzureML-AutoML-GPU | GPU | いいえ |
-| AzureML-AutoML-DNN-GPU | GPU | はい |
+| AzureML-AutoML-GPU | GPU | No |
+| AzureML-AutoML-DNN-GPU | GPU | Yes |
 
 AutoML と Azure ML パイプラインの詳細については、「[Python の Azure Machine Learning パイプラインで自動 ML を使用する](how-to-use-automlstep-in-pipelines.md)」を参照してください。
 

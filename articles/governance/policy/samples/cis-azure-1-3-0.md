@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark 1.3.0 の規制コンプライアンスの詳細
 description: CIS Microsoft Azure Foundations Benchmark 1.3.0 規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 5b116bcaeb96c4c98ab5cb95c1d35b14f0c9266e
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 0d433943b49dfcca45d98e46b3521e11953f45c9
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606459"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112207"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-130-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure Foundations Benchmark 1.3.0 規制コンプライアンスの組み込みイニシアチブの詳細
 
@@ -191,7 +191,7 @@ ms.locfileid: "122606459"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[ストレージ アカウントでは、暗号化にカスタマー マネージド キーを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fac406b-40ca-413b-bf8e-0bf964659c25) |カスタマー マネージド キーを使用して、より柔軟にストレージ アカウントをセキュリティで保護します。 カスタマー マネージド キーを指定すると、データを暗号化するキーへのアクセスを保護および制御するために、そのキーが使用されます。 カスタマー マネージド キーを使用すると、キー暗号化キーのローテーションを制御したり、データを暗号的に消去したりするための追加機能が提供されます。 |Audit、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountCustomerManagedKeyEnabled_Audit.json) |
+|[ストレージ アカウントでは、暗号化にカスタマー マネージド キーを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fac406b-40ca-413b-bf8e-0bf964659c25) |カスタマー マネージド キーを使用して、より柔軟に BLOB とファイル ストレージ アカウントをセキュリティで保護します。 カスタマー マネージド キーを指定すると、データを暗号化するキーへのアクセスを保護および制御するために、そのキーが使用されます。 カスタマー マネージド キーを使用すると、キー暗号化キーのローテーションを制御したり、データを暗号的に消去したりするための追加機能が提供されます。 |Audit、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountCustomerManagedKeyEnabled_Audit.json) |
 
 ## <a name="database-services"></a>データベース サービス
 

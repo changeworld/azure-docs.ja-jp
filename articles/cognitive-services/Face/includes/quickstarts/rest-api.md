@@ -9,18 +9,18 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 87871be12310782abe172fe308782825ba8e09d0
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 6520c9514ee8fbf950437026c1d2712683e58151
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109858186"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442238"
 ---
 Face REST API を使用して顔認識を開始します。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
 Face REST API を使用して、次のことを行います。
 
-* [画像内の顔を検出する](#detect-faces-in-an-image)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [似た顔を探す](#find-similar-faces)
 
 > [!NOTE]
@@ -29,13 +29,14 @@ Face REST API を使用して、次のことを行います。
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 * [PowerShell バージョン 6.0 以降](/powershell/scripting/install/installing-powershell-core-on-windows)、または同様のコマンド ライン アプリケーション。
 
 
-## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
+## <a name="detect-and-analyze-faces"></a>顔を検出して分析する
 
 Face API を呼び出して、顔の属性データを画像から取得するには、次のようなコマンドを使用します。 まず、テキスト エディターにコードをコピーしてください。実行する前に、コマンドの一部に変更を加える必要があります。
 
@@ -175,7 +176,7 @@ Face API を呼び出して、顔の属性データを画像から取得する�
 
 ### <a name="detect-faces-for-comparison"></a>比較の対象となる顔を検出する
 
-最初に画像内の顔を検出してから、それらを比較する必要があります。 「[顔を検出する](#detect-faces-in-an-image)」セクションで行ったように、このコマンドを実行します。 この検出方法は、比較操作のために最適化されています。 前のセクションほど詳細には顔の属性を抽出せず、また、別の検出モデルを使用しています。
+最初に画像内の顔を検出してから、それらを比較する必要があります。 「[検出して分析する](#detect-and-analyze-faces)」セクションで行ったように、このコマンドを実行します。 この検出方法は、比較操作のために最適化されています。 前のセクションほど詳細には顔の属性を抽出せず、また、別の検出モデルを使用しています。
 
 :::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" ID="detect_for_similar":::
 

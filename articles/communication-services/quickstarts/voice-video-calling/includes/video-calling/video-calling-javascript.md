@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: e8a00161e9619a27b371ed80a61d7b3ea5d3e9c6
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.author: rifox
+ms.openlocfilehash: 98e4f5aa5cf817ea16fb7337e809c49bf418b12f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112535835"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251588"
 ---
 Communication Services Calling SDK を使用して 1 対 1 のビデオ通話をアプリに追加することによって、Azure Communication Services の使用を開始します。 このクイックスタートでは、JavaScript 用の Azure Communication Services Calling SDK を使用して、ビデオ通話を開始および応答する方法について説明します。
 
@@ -31,11 +31,8 @@ mkdir calling-quickstart && cd calling-quickstart
 ```
 ### <a name="install-the-package"></a>パッケージをインストールする
 `npm install` コマンドを使用して、JavaScript 用の Azure Communication Services Calling SDK をインストールします。
-
 > [!IMPORTANT]
 > このクイックスタートでは、Azure Communication Services Calling SDK バージョン `1.1.0-beta.1` を使用します。 
-
-
 ```console
 npm install @azure/communication-common --save
 npm install @azure/communication-calling@1.1.0-beta.1 --save
@@ -51,277 +48,378 @@ npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-d
 
 コードは次のとおりです。
 ```html
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Communication Client - 1:1 Video Calling Sample</title>
-</head>
-
-<body>
-    <h4>Azure Communication Services</h4>
-    <h1>1:1 Video Calling Quickstart</h1>
-    <input 
-    id="callee-id-input"
-    type="text"
-    placeholder="Who would you like to call?"
-    style="margin-bottom:1em; width: 200px;"
-    />
-
-    <div>
-    <button id="call-button" type="button" disabled="true">
-        start call
-    </button>
-        &nbsp;
-    <button id="hang-up-button" type="button" disabled="true">
-        hang up
-    </button>
-        &nbsp;
-    <button id="start-Video" type="button" disabled="true">
-        start video
-    </button>
-        &nbsp;
-    <button id="stop-Video" type="button" disabled="true">
-        stop video
-    </button>     
-    </div>
-
-    <div>Local Video</div>
-    <div style="height:200px; width:300px; background-color:black; position:relative;">
-      <div id="myVideo" style="background-color: black; position:absolute; top:50%; transform: translateY(-50%);">
-      </div>     
-    </div>
-    <div>Remote Video</div>
-    <div style="height:200px; width:300px; background-color:black; position:relative;"> 
-      <div id="remoteVideo" style="background-color: black; position:absolute; top:50%; transform: translateY(-50%);">
-      </div>
-    </div>
-
-    <script src="./bundle.js"></script>
-</body>
+    <head>
+        <title>Azure Communication Services - Calling Web SDK</title>
+    </head>
+    <body>
+        <h4>Azure Communication Services - Calling Web SDK</h4>
+        <input id="user-access-token"
+            type="text"
+            placeholder="User access token"
+            style="margin-bottom:1em; width: 500px;"/>
+        <button id="initialize-call-agent" type="button">Initialize Call Agent</button>
+        <br>
+        <br>
+        <input id="callee-acs-user-id"
+            type="text"
+            placeholder="Enter callee's ACS user identity in format: '8:acs:resourceId_userId'"
+            style="margin-bottom:1em; width: 500px; display: block;"/>
+        <button id="start-call-button" type="button" disabled="true">Start Call</button>
+        <button id="hangup-call-button" type="button" disabled="true">Hang up Call</button>
+        <button id="accept-call-button" type="button" disabled="true">Accept Call</button>
+        <button id="start-video-button" type="button" disabled="true">Start Video</button>
+        <button id="stop-video-button" type="button" disabled="true">Stop Video</button>
+        <br>
+        <br>
+        <div id="connectedLabel" style="color: #13bb13;" hidden>Call is connected!</div>
+        <br>
+        <div id="remoteVideoContainer" style="width: 40%;" hidden>Remote participants' video streams:</div>
+        <br>
+        <div id="localVideoContainer" style="width: 30%;" hidden>Local video stream:</div>
+        <!-- points to the bundle generated from client.js -->
+        <script src="./bundle.js"></script>
+    </body>
 </html>
 ```
 
-このクイックスタートのアプリケーション ロジックを格納するために、`client.js` という名前のファイルを自分のプロジェクトのルート ディレクトリに作成します。 通話クライアントをインポートし、DOM 要素に対する参照を取得するために、次のコードを追加します。
-
-```JavaScript
-import { CallClient, CallAgent, VideoStreamRenderer, LocalVideoStream } from "@azure/communication-calling";
-import { AzureCommunicationTokenCredential } from '@azure/communication-common';
-
-let call;
-let callAgent;
-const calleeInput = document.getElementById("callee-id-input");
-const callButton = document.getElementById("call-button");
-const hangUpButton = document.getElementById("hang-up-button");
-const stopVideoButton = document.getElementById("stop-Video");
-const startVideoButton = document.getElementById("start-Video");
-
-let placeCallOptions;
-let deviceManager;
-let localVideoStream;
-let rendererLocal;
-let rendererRemote;
-```
-## <a name="object-model"></a>オブジェクト モデル
+## <a name="acs-calling-web-sdk-object-model"></a>ACS Calling Web SDK オブジェクト モデル
 
 Azure Communication Services Calling SDK の主な機能のいくつかは、次のクラスとインターフェイスによって処理されます。
 
-| 名前      | 説明 | 
-| :---        |    :----   |
-| CallClient  | CallClient は、Calling SDK へのメイン エントリ ポイントです。      |
-| CallAgent  | CallAgent は、通話を開始および管理するために使用します。        |
-| DeviceManager | DeviceManager は、メディア デバイスの管理に使用します。    |
-| AzureCommunicationTokenCredential | AzureCommunicationTokenCredential クラスによって、CallAgent のインスタンス化に使用する CommunicationTokenCredential インターフェイスが実装されます。        |
+| 名前                                | 説明                                                                                                                              |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `CallClient`                        | Calling SDK へのメイン エントリ ポイント。                                                                                                 |
+| `AzureCommunicationTokenCredential` | `callAgent` のインスタンス化に使用される `CommunicationTokenCredential` インターフェイスを実装します。                                       |
+| `CallAgent`                         | 通話を開始および管理するために使用されます。                                                                                                          |
+| `DeviceManager`                     | メディア デバイスを管理するために使用されます。                                                                                                            |
+| `Call`                              | 通話を表すために使用します                                                                                                              |
+| `LocalVideoStream`                  | ローカル システム上のカメラ デバイスのローカル ビデオ ストリームを作成するために使用します。                                                          |
+| `RemoteParticipant`                 | 通話のリモート参加者を表すために使用します                                                                                   |
+| `RemoteVideoStream`                 | リモート参加者からのリモート ビデオ ストリームを表すために使用します。        
 
-## <a name="authenticate-the-client-and-access-devicemanager"></a>クライアントを認証し、DeviceManager にアクセスする
-
-自分のリソースの **有効なユーザー アクセス トークンに <USER_ACCESS_TOKEN> を置き換える必要があります**。 まだトークンを入手していない場合は、[ユーザー アクセス トークンに関するドキュメント](../../../access-tokens.md)を参照してください。 
-
-`CallClient` を使用して、`CallAgent` インスタンスを `CommunicationUserCredential` で初期化します。これにより、電話をかりたり受けたりすることができるようになります。 
-
-`DeviceManager` にアクセスするには、先に callAgent インスタンスを作成する必要があります。 その後、`CallClient` インスタンスで `getDeviceManager` メソッドを使用すると、`DeviceManager` を取得できます。
-
-`client.js` に次のコードを追加します。
-
+このクイックスタートのアプリケーション ロジックを格納するために、`client.js` という名前のファイルを自分のプロジェクトのルート ディレクトリに作成します。 次のコードを client.js に追加します。
 ```JavaScript
-async function init() {
-    const callClient = new CallClient();
-    const tokenCredential = new AzureCommunicationTokenCredential("<USER ACCESS TOKEN>");
-    callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
-    
-    // Receive an incoming call
-    // To handle incoming calls you need to listen to the `incomingCall` event of `callAgent`. Once there is an incoming call, you need to enumerate local cameras and construct 
-    // a `LocalVideoStream` instance to send a video stream to the other participant. You also need to subscribe to `remoteParticipants` to handle remote video streams. You can 
-    // accept or reject the call through the `incomingCall` instance. 
-    callAgent.on('incomingCall', async e => {
-        const videoDevices = await deviceManager.getCameras();
-        const videoDeviceInfo = videoDevices[0];
-        localVideoStream = new LocalVideoStream(videoDeviceInfo);
-        localVideoView();
+// Make sure to install the necessary dependencies
+const { CallClient, VideoStreamRenderer, LocalVideoStream } = require('@azure/communication-calling');
+const { AzureCommunicationTokenCredential } = require('@azure/communication-common');
+const { AzureLogger, setLogLevel } = require("@azure/logger");
+// Set the log level and output
+setLogLevel('verbose');
+AzureLogger.log = (...args) => {
+    console.log(...args);
+};
 
-        stopVideoButton.disabled = false;
-        callButton.disabled = true;
-        hangUpButton.disabled = false;
+// Calling web sdk objects
+let callAgent;
+let deviceManager;
+let call;
+let incomingCall;
+let localVideoStream;
+let localVideoStreamRenderer;
 
-        const addedCall = await e.incomingCall.accept({videoOptions: {localVideoStreams:[localVideoStream]}});
-        call = addedCall;
+// UI widgets
+let userAccessToken = document.getElementById('user-access-token');
+let calleeAcsUserId = document.getElementById('callee-acs-user-id');
+let initializeCallAgentButton = document.getElementById('initialize-call-agent');
+let startCallButton = document.getElementById('start-call-button');
+let hangUpCallButton = document.getElementById('hangup-call-button');
+let acceptCallButton = document.getElementById('accept-call-button');
+let startVideoButton = document.getElementById('start-video-button');
+let stopVideoButton = document.getElementById('stop-video-button');
+let connectedLabel = document.getElementById('connectedLabel');
+let remoteVideoContainer = document.getElementById('remoteVideoContainer');
+let localVideoContainer = document.getElementById('localVideoContainer');
 
-        subscribeToRemoteParticipantInCall(addedCall);  
-    });
-    
-    // Subscribe to call updates
-    // You need to subscribe to the event when the remote participant ends the call to dispose of video renderers and toggle button states. 
-    callAgent.on('callsUpdated', e => {
-        e.removed.forEach(removedCall => {
-            // dispose of video renders
-            rendererLocal.dispose();
-            rendererRemote.dispose();
-            // toggle button states
-            hangUpButton.disabled = true;
-            callButton.disabled = false;
-            stopVideoButton.disabled = true;
-        })
-    })
+/**
+ * Using the CallClient, initialize a CallAgent instance with a CommunicationUserCredential which will enable us to make outgoing calls and receive incoming calls. 
+ * You can then use the CallClient.getDeviceManager() API instance to get the DeviceManager.
+ */
+initializeCallAgentButton.onclick = async () => {
+    try {
+        const callClient = new CallClient(); 
+        tokenCredential = new AzureCommunicationTokenCredential(userAccessToken.value.trim());
+        callAgent = await callClient.createCallAgent(tokenCredential)
+        // Set up a camera device to use.
+        deviceManager = await callClient.getDeviceManager();
+        await deviceManager.askDevicePermission({ video: true });
+        await deviceManager.askDevicePermission({ audio: true });
+        // Listen for an incoming call to accept.
+        callAgent.on('incomingCall', async (args) => {
+            try {
+                incomingCall = args.incomingCall;
+                acceptCallButton.disabled = false;
+                startCallButton.disabled = true;
+            } catch (error) {
+                console.error(error);
+            }
+        });
 
-    deviceManager = await callClient.getDeviceManager();
-    callButton.disabled = false;
-}
-
-init();
-```
-## <a name="place-a-11-outgoing-video-call-to-a-user"></a>1 名のユーザーに対して 1 対 1 のビデオ通話を発信する
-
-`callButton` がクリックされたときに通話を開始するイベント リスナーを追加します。
-
-まずは、deviceManager の `getCameraList` API を使用して、ローカル カメラを列挙する必要があります。 このクイックスタートでは、コレクションの最初のカメラを使用します。 カメラを選択すると、LocalVideoStream インスタンスが作成され、`videoOptions` の中で localVideoStream 配列の項目として call メソッドに渡されます。 通話がつながると、相手方に対するビデオ ストリームの送信が自動的に始まります。 
-
-```JavaScript
-callButton.addEventListener("click", async () => {
-    const videoDevices = await deviceManager.getCameras();
-    const videoDeviceInfo = videoDevices[0];
-    localVideoStream = new LocalVideoStream(videoDeviceInfo);
-    placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-
-    localVideoView();
-    stopVideoButton.disabled = false;
-    startVideoButton.disabled = true;
-
-    const userToCall = calleeInput.value;
-    call = callAgent.startCall(
-        [{ communicationUserId: userToCall }],
-        placeCallOptions
-    );
-
-    subscribeToRemoteParticipantInCall(call);
-
-    hangUpButton.disabled = false;
-    callButton.disabled = true;
-});
-```  
-`LocalVideoStream` のレンダリングには、`VideoStreamRenderer` の新しいインスタンスを作成したうえで、非同期の `createView` メソッドを使用して新しい `VideoStreamRendererView` インスタンスを作成する必要があります。 その後、任意の UI 要素に `view.target` をアタッチできます。 
-
-```JavaScript
-async function localVideoView() {
-    rendererLocal = new VideoStreamRenderer(localVideoStream);
-    const view = await rendererLocal.createView();
-    document.getElementById("myVideo").appendChild(view.target);
-}
-```
-リモート参加者は全員、通話インスタンスの `remoteParticipants` コレクションを通じて利用できます。 新しいリモート参加者が通話に追加されると通知される `remoteParticipantsUpdated` イベントをリッスンする必要があります。 また、`remoteParticipants` のビデオ ストリームをサブスクライブするためには、そのコレクションを反復処理して、それぞれをサブスクライブする必要があります。 
-
-```JavaScript
-function subscribeToRemoteParticipantInCall(callInstance) {
-    callInstance.on('remoteParticipantsUpdated', e => {
-        e.added.forEach( p => {
-            subscribeToParticipantVideoStreams(p);
-        })
-    }); 
-    callInstance.remoteParticipants.forEach( p => {
-        subscribeToParticipantVideoStreams(p);
-    })
-}
-```
-追加されたリモート参加者のビデオ ストリームを処理するためには、`videoStreamsUpdated` イベントをサブスクライブする必要があります。 現在の通話の `remoteParticipants` コレクションを処理しながら、`videoStreams` コレクションを検査することで、各参加者のストリームをリストできます。
-
-```JavaScript
-function subscribeToParticipantVideoStreams(remoteParticipant) {
-    remoteParticipant.on('videoStreamsUpdated', e => {
-        e.added.forEach(v => {
-            handleVideoStream(v);
-        })
-    });
-    remoteParticipant.videoStreams.forEach(v => {
-        handleVideoStream(v);
-    });
-}
-```
-`remoteVideoStream` をレンダリングするには、`isAvailableChanged` イベントをサブスクライブする必要があります。 `isAvailable` プロパティが `true` に変更された場合、リモート参加者はストリームを送信しています。 リモート ストリームの使用可否が変わるたびに、`Renderer` 全体を破棄するか、特定の `RendererView` を破棄するか、それらを保持するかを選択できますが、これによって空の動画フレームが表示されます。
-```JavaScript
-function handleVideoStream(remoteVideoStream) {
-    remoteVideoStream.on('isAvailableChanged', async () => {
-        if (remoteVideoStream.isAvailable) {
-            remoteVideoView(remoteVideoStream);
-        } else {
-            rendererRemote.dispose();
-        }
-    });
-    if (remoteVideoStream.isAvailable) {
-        remoteVideoView(remoteVideoStream);
+        startCallButton.disabled = false;
+        initializeCallAgentButton.disabled = true;
+    } catch(error) {
+        console.error(error);
     }
 }
-```
-`RemoteVideoStream` のレンダリングには、`VideoStreamRenderer` の新しいインスタンスを作成したうえで、非同期の `createView` メソッドを使用して新しい `VideoStreamRendererView` インスタンスを作成する必要があります。 その後、任意の UI 要素に `view.target` をアタッチできます。 
 
-```JavaScript
-async function remoteVideoView(remoteVideoStream) {
-    rendererRemote = new VideoStreamRenderer(remoteVideoStream);
-    const view = await rendererRemote.createView();
-    document.getElementById("remoteVideo").appendChild(view.target);
+/**
+ * Place a 1:1 outgoing video call to a user
+ * Add an event listener to initiate a call when the `startCallButton` is clicked:
+ * First you have to enumerate local cameras using the deviceManager `getCameraList` API.
+ * In this quickstart we're using the first camera in the collection. Once the desired camera is selected, a
+ * LocalVideoStream instance will be constructed and passed within `videoOptions` as an item within the
+ * localVideoStream array to the call method. Once your call connects it will automatically start sending a video stream to the other participant. 
+ */
+startCallButton.onclick = async () => {
+    try {
+        const localVideoStream = await createLocalVideoStream();
+        const videoOptions = localVideoStream ? { localVideoStreams: [localVideoStream] } : undefined;
+        call = callAgent.startCall([{ communicationUserId: calleeAcsUserId.value.trim() }], { videoOptions });
+        // Subscribe to the call's properties and events.
+        subscribeToCall(call);
+    } catch (error) {
+        console.error(error);
+    }
 }
-```
 
-## <a name="end-the-current-call"></a>現在の通話を終了する
-`hangUpButton` がクリックされたときに現在の通話を終了するイベント リスナーを追加します。
-```JavaScript
-hangUpButton.addEventListener("click", async () => {
-    // dispose of the renderers
-    rendererLocal.dispose();
-    rendererRemote.dispose();
+/**
+ * Accepting an incoming call with video
+ * Add an event listener to accept a call when the `acceptCallButton` is clicked:
+ * After subscrigin to the `CallAgent.on('incomingCall')` event, you can accept the incoming call.
+ * You can pass the local video stream which you want to use to accept the call with.
+ */
+acceptCallButton.onclick = async () => {
+    try {
+        const localVideoStream = await createLocalVideoStream();
+        const videoOptions = localVideoStream ? { localVideoStreams: [localVideoStream] } : undefined;
+        call = await incomingCall.accept({ videoOptions });
+        // Subscribe to the call's properties and events.
+        subscribeToCall(call);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Subscribe to a call obj.
+// Listen for property changes and collection udpates.
+subscribeToCall = (call) => {
+    try {
+        // Inspect the initial call.id value.
+        console.log(`Call Id: ${call.id}`);
+        //Subsribe to call's 'idChanged' event for value changes.
+        call.on('idChanged', () => {
+            console.log(`Call Id changed: ${call.id}`); 
+        });
+
+        // Inspect the initial call.state value.
+        console.log(`Call state: ${call.state}`);
+        // Subscribe to call's 'stateChanged' event for value changes.
+        call.on('stateChanged', async () => {
+            console.log(`Call state changed: ${call.state}`);
+            if(call.state === 'Connected') {
+                connectedLabel.hidden = false;
+                acceptCallButton.disabled = true;
+                startCallButton.disabled = true;
+                hangUpCallButton.disabled = false;
+                startVideoButton.disabled = false;
+                stopVideoButton.disabled = false;
+            } else if (call.state === 'Disconnected') {
+                connectedLabel.hidden = true;
+                startCallButton.disabled = false;
+                hangUpCallButton.disabled = true;
+                startVideoButton.disabled = true;
+                stopVideoButton.disabled = true;
+                console.log(`Call ended, call end reason={code=${call.callEndReason.code}, subCode=${call.callEndReason.subCode}}`);
+            }   
+        });
+
+        call.localVideoStreams.forEach(async (lvs) => {
+            localVideoStream = lvs;
+            await displayLocalVideoStream();
+        });
+        call.on('localVideoStreamsUpdated', e => {
+            e.added.forEach(async (lvs) => {
+                localVideoStream = lvs;
+                await displayLocalVideoStream();
+            });
+            e.removed.forEach(lvs => {
+               removeLocalVideoStream();
+            });
+        });
+        
+        // Inspect the call's current remote participants and subscribe to them.
+        call.remoteParticipants.forEach(remoteParticipant => {
+            subscribeToRemoteParticipant(remoteParticipant);
+        });
+        // Subscribe to the call's 'remoteParticipantsUpdated' event to be
+        // notified when new participants are added to the call or removed from the call.
+        call.on('remoteParticipantsUpdated', e => {
+            // Subscribe to new remote participants that are added to the call.
+            e.added.forEach(remoteParticipant => {
+                subscribeToRemoteParticipant(remoteParticipant)
+            });
+            // Unsubscribe from participants that are removed from the call
+            e.removed.forEach(remoteParticipant => {
+                console.log('Remote participant removed from the call.');
+            });
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Subscribe to a remote participant obj.
+// Listen for property changes and collection udpates.
+subscribeToRemoteParticipant = (remoteParticipant) => {
+    try {
+        // Inspect the initial remoteParticipant.state value.
+        console.log(`Remote participant state: ${remoteParticipant.state}`);
+        // Subscribe to remoteParticipant's 'stateChanged' event for value changes.
+        remoteParticipant.on('stateChanged', () => {
+            console.log(`Remote participant state changed: ${remoteParticipant.state}`);
+        });
+
+        // Inspect the remoteParticipants's current videoStreams and subscribe to them.
+        remoteParticipant.videoStreams.forEach(remoteVideoStream => {
+            subscribeToRemoteVideoStream(remoteVideoStream)
+        });
+        // Subscribe to the remoteParticipant's 'videoStreamsUpdated' event to be
+        // notified when the remoteParticiapant adds new videoStreams and removes video streams.
+        remoteParticipant.on('videoStreamsUpdated', e => {
+            // Subscribe to new remote participant's video streams that were added.
+            e.added.forEach(remoteVideoStream => {
+                subscribeToRemoteVideoStream(remoteVideoStream)
+            });
+            // Unsubscribe from remote participant's video streams that were removed.
+            e.removed.forEach(remoteVideoStream => {
+                console.log('Remote participant video stream was removed.');
+            })
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/**
+ * Subscribe to a remote participant's remote video stream obj.
+ * You have to subscribe to the 'isAvailableChanged' event to render the remoteVideoStream. If the 'isAvailable' property
+ * changes to 'true', a remote participant is sending a stream. Whenever availability of a remote stream changes
+ * you can choose to destroy the whole 'Renderer', a specific 'RendererView' or keep them, but this will result in displaying blank video frame.
+ */
+subscribeToRemoteVideoStream = async (remoteVideoStream) => {
+    // Create a video stream renderer for the remote video stream.
+    let videoStreamRenderer = new VideoStreamRenderer(remoteVideoStream);
+    let view;
+    const renderVideo = async () => {
+        try {
+            // Create a renderer view for the remote video stream.
+            view = await videoStreamRenderer.createView();
+            // Attach the renderer view to the UI.
+            remoteVideoContainer.hidden = false;
+            remoteVideoContainer.appendChild(view.target);
+        } catch (e) {
+            console.warn(`Failed to createView, reason=${e.message}, code=${e.code}`);
+        }   
+    }
+    
+    remoteVideoStream.on('isAvailableChanged', async () => {
+        // Participant has switched video on.
+        if (remoteVideoStream.isAvailable) {
+            await renderVideo();
+
+        // Participant has switched video off.
+        } else {
+            if (view) {
+                view.dispose();
+                view = undefined;
+            }
+        }
+    });
+
+    // Participant has video on initially.
+    if (remoteVideoStream.isAvailable) {
+        await renderVideo();
+    }
+}
+
+// Start your local video stream.
+// This will send your local video stream to remote participants so they can view it.
+startVideoButton.onclick = async () => {
+    try {
+        const localVideoStream = await createLocalVideoStream();
+        await call.startVideo(localVideoStream);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Stop your local video stream.
+// This will stop your local video stream from being sent to remote participants.
+stopVideoButton.onclick = async () => {
+    try {
+        await call.stopVideo(localVideoStream);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/**
+ * To render a LocalVideoStream, you need to create a new instance of VideoStreamRenderer, and then
+ * create a new VideoStreamRendererView instance using the asynchronous createView() method.
+ * You may then attach view.target to any UI element. 
+ */
+// Create a local video stream for your camera device
+createLocalVideoStream = async () => {
+    const camera = (await deviceManager.getCameras())[0];
+    if (camera) {
+        return new LocalVideoStream(camera);
+    } else {
+        console.error(`No camera device found on the system`);
+    }
+}
+// Display your local video stream preview in your UI
+displayLocalVideoStream = async () => {
+    try {
+        localVideoStreamRenderer = new VideoStreamRenderer(localVideoStream);
+        const view = await localVideoStreamRenderer.createView();
+        localVideoContainer.hidden = false;
+        localVideoContainer.appendChild(view.target);
+    } catch (error) {
+        console.error(error);
+    } 
+}
+// Remove your local video stream preview from your UI
+removeLocalVideoStream = async() => {
+    try {
+        localVideoStreamRenderer.dispose();
+        localVideoContainer.hidden = true;
+    } catch (error) {
+        console.error(error);
+    } 
+}
+
+// End the current call
+hangUpCallButton.addEventListener("click", async () => {
     // end the current call
     await call.hangUp();
-    // toggle button states
-    hangUpButton.disabled = true;
-    callButton.disabled = false;
-    stopVideoButton.disabled = true;
 });
-```
+```                                                          
 
-## <a name="start-and-end-video-during-the-call"></a>通話中にビデオを開始および終了する
-[stop video]\(ビデオの停止\) ボタンを対象とするイベント リスナーを追加し、`localVideoStream` のレンダラーを破棄することによって、通話中にビデオを停止できます。 
- ```JavaScript
-stopVideoButton.addEventListener("click", async () => {
-    await call.stopVideo(localVideoStream);
-    rendererLocal.dispose();
-    startVideoButton.disabled = false;
-    stopVideoButton.disabled = true;
-});
-```
-[start video]\(ビデオの開始\) ボタンを対象とするイベント リスナーを追加すると、現在の通話中に停止したビデオの使用を再開できます。 
-```JavaScript
-startVideoButton.addEventListener("click", async () => {
-    await call.startVideo(localVideoStream);
-    localVideoView();
-    stopVideoButton.disabled = false;
-    startVideoButton.disabled = true;
-});
-```
 ## <a name="run-the-code"></a>コードの実行
 アプリをビルドして実行するには、`webpack-dev-server` を使用します。 次のコマンドを実行して、ローカルの Web サーバーにアプリケーション ホストをバンドルします。
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
 ```
-ブラウザーを開き、http://localhost:8080/ に移動します。 次のように表示されます。
+ブラウザーを開き、2つのタブで http://localhost:8080/ に移動します。 次が表示されます。:::image type="content" source="../../media/javascript/1-on-1-video-calling-a.png" alt-text="1 対 1 のビデオ通話のページ - a":::
 
-:::image type="content" source="../../media/javascript/1-on-1-video-calling.png" alt-text="1 対 1 のビデオ通話のページ":::
+1 番目のタブで、有効なユーザー アクセス トークンを入力し、もう一方のタブで別の有効なユーザー アクセス トークンを入力します (使用可能なトークンがまだない場合は、[ユーザー アクセス トークンのドキュメント](../../../access-tokens.md)を参照してください)。
+両方のタブで、[Initialize Call Agent] ボタンをクリックします。 次が表示されます。:::image type="content" source="../../media/javascript/1-on-1-video-calling-b.png" alt-text="1 対 1 のビデオ通話のページ - b":::
 
-1 対 1 のビデオ通話を発信するときは、テキスト フィールドにユーザー ID を指定し、[start call]\(通話の開始\) ボタンをクリックします。
+1 番目のタブで、2 番目のタブの ACS ユーザー ID を入力し、[Start Call] ボタンをクリックします。 1 番目のタブで 2 番目のタブへの発信が開始され、2 番目のタブの [Accept Call] ボタンが有効になります。:::image type="content" source="../../media/javascript/1-on-1-video-calling-c.png" alt-text="1 対 1 のビデオ通話のページ - c":::
+
+2 番目のタブで、[Accept Call] ボタンをクリックすると、通話が応答されて接続されます。 次が表示されます。:::image type="content" source="../../media/javascript/1-on-1-video-calling-d.png" alt-text="1 対 1 のビデオ通話のページ - d":::
+
+両方のタブが 1 対 1 のビデオ通話に正常に接続されました。 どちらのタブでも、互いのオーディオを聞き、互いのビデオ ストリームを見ることができます。

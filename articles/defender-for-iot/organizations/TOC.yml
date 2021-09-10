@@ -23,6 +23,8 @@
 - name: チュートリアル
   expanded: false
   items:
+    - name: Azure Defender for IoT の試用版のセットアップ
+      href: tutorial-onboarding.md
     - name: Splunk を統合する
       href: tutorial-splunk.md
     - name: ServiceNow を統合する

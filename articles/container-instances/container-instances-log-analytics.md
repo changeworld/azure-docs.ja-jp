@@ -3,12 +3,12 @@ title: リソース ログの収集と分析
 description: Azure Container Instances のコンテナー グループからリソース ログとイベント データを Azure Monitor ログに送信する方法について説明します
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: 0c95535c80425abb8bdc904132581531b8cdd24e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4c43d16c7df7ef54e401966e0c114de4d79cbdac
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029065"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112067"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
@@ -52,6 +52,9 @@ Azure Container Instances が Log Analytics ワークスペースにデータを
 
 Azure CLI でデプロイするには、[az container create][az-container-create] コマンドで `--log-analytics-workspace` パラメーターと `--log-analytics-workspace-key` パラメーターを指定します。 次のコマンドを実行する前に、2 つのワークスペースの値を前の手順で取得した値に置き換えます (また、リソース グループ名を更新します)。
 
+> [!NOTE]
+> 次の例では、パブリック コンテナー イメージを Docker Hub からプルします。 匿名の pull request を行うのではなく、Docker Hub アカウントを使用して認証するようにプル シークレットを設定することをお勧めします。 パブリック コンテンツを操作するときの信頼性を向上させるために、プライベートの Azure Container Registry にイメージをインポートして管理します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
+
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
@@ -64,6 +67,9 @@ az container create \
 ### <a name="deploy-with-yaml"></a>YAML でのデプロイ
 
 YAML でコンテナー グループをデプロイしたい場合にはこの方法を使用します。 次の YAML は、1 つのコンテナーが含まれたコンテナー グループを定義します。 YAML を新しいファイルにコピーしてから、`LOG_ANALYTICS_WORKSPACE_ID` と `LOG_ANALYTICS_WORKSPACE_KEY` を前の手順で取得した値に置き換えます。 ファイルを **deploy-aci.yaml** として保存します。
+
+> [!NOTE]
+> 次の例では、パブリック コンテナー イメージを Docker Hub からプルします。 匿名の pull request を行うのではなく、Docker Hub アカウントを使用して認証するようにプル シークレットを設定することをお勧めします。 パブリック コンテンツを操作するときの信頼性を向上させるために、プライベートの Azure Container Registry にイメージをインポートして管理します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
 
 ```yaml
 apiVersion: 2019-12-01

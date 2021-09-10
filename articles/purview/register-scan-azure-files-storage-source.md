@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/22/2021
-ms.openlocfilehash: 39e720f35a591ac7075b5723f3e577151e698371
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: dbb29fea5253bbd00e66f0ed3d123ddc38533b8e
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605150"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256449"
 ---
 # <a name="register-and-scan-azure-files"></a>Azure Files の登録とスキャン
 
@@ -33,7 +33,7 @@ csv、tsv、psv、ssv などのファイルの種類では、次のロジック�
 
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
 
-現在、Azure File Storage の認証を設定する方法は 1 つだけです。
+現在、Azure ファイル共有の認証を設定する方法は 1 つだけです。
 
 - アカウント キー
 

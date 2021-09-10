@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c71a0ddece95eb7d6a651da9c307912a1a24c800
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 52a1931ec567d03d0beaaf9180532a91ff6bed07
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795603"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259470"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
 
@@ -61,7 +61,7 @@ Azure ストレージ アカウントをデプロイした後、ファイル共�
 
     ![ファイル共有の追加ボタンを選択する](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. 新しいファイル共有に「_afsfileshare_」と名付けます。 **[クォータ]** に「1」と入力し、 **[作成]** を選択します。 クォータは最大で 5 TiB にすることができますが、このチュートリアルでは 1 GB しか必要ありません。
+1. 新しいファイル共有に「_afsfileshare_」と名付けます。 **[クォータ]** に「5120」と入力し、 **[作成]** を選択します。 クォータは最大で 100 TiB にすることができますが、このチュートリアルで必要なのは 5 TiB のみです。
 
     ![新しいファイル共有に名前とクォータを指定する](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
@@ -97,7 +97,7 @@ Azure ストレージ アカウントをデプロイした後、ファイル共�
    1. **[ディスク]** タブの **[ディスクのオプション]** は、既定値のままにしておきます。
    1. **[データ ディスク]** で **[新しいディスクを作成し接続する]** を選択します。
 
-   1. このチュートリアルで **1 GB** に変更してかまわない **[サイズ (GiB)]** 以外は、既定の設定を使用します。
+   1. このチュートリアルでは、 **1 GiB** に変更してかまわない **[サイズ (GiB)]** 以外は、既定の設定を使用します。
 
       ![データ ディスクの詳細](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
@@ -156,7 +156,7 @@ Windows Server 2016 Datacenter VM で、サーバー マネージャーが自動
 
     ![データ ディスク](media/storage-sync-files-extend-servers/your-disk.png)
 
-1. **Msft Virtual Disk** という名前の 1 GB のディスクを右クリックし、 **[新しいボリューム]** を選択します。
+1. **Msft Virtual Disk** という名前の 1 GiB のディスクを右クリックし、 **[新しいボリューム]** を選択します。
 1. ウィザードを完了します。 既定の設定を使用し、割り当てられたドライブ文字をメモします。
 1. **［作成］** を選択します
 1. **[閉じる]** を選択します。

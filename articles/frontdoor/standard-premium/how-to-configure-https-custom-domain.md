@@ -6,14 +6,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 06/10/2021
+ms.date: 08/26/2021
 ms.author: amsriva
-ms.openlocfilehash: 0e8c597037ac769c293a2f04cb2e300658db93b4
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 79674febe7f43f8ae57d8c0420d6c8500506506e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005233"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965676"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>Azure portal を使用して Front Door Standard/Premium SKU (プレビュー) のカスタム ドメインで HTTPS を構成する
 
@@ -86,7 +86,7 @@ Azure Key Vault アカウント内の証明書にアクセスするには、Azur
 
 1. Key Vault アカウントで、[設定] の下の **[アクセス ポリシー]** を選択します。 次に、 **[新規作成]** を選択して新しいポリシーを作成します。
 
-1. **[プリンシパルの選択]** で、**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** を検索し、**[Microsoft.AzureFrontDoor-Cdn]** を選択します。 **[選択]** をクリックします。
+1. **[プリンシパルの選択]** で、「**205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**」を検索し、 **[Microsoft.AzureFrontDoor-Cdn]** を選択します。 **[選択]** をクリックします。
 
 1. **[シークレットのアクセス許可]** で **[取得]** を選択して、Front Door に証明書の取得を許可します。
 

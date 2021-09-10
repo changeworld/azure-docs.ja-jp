@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 07/12/2021
 ms.author: cherylmc
 ms.custom: contperf-fy2q1-portal
-ms.openlocfilehash: f23a21bdba5602dad2e38ee931a5e754f0607cde
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 1b77f214033e1b76e408855d8fb4d284d235acdd
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730595"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309840"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion とは
 
@@ -28,7 +28,7 @@ Bastion は、プロビジョニングされる仮想ネットワーク内のす
 * **Azure portal で直接 RDP および SSH を使用する:** シングル クリックのシームレスなエクスペリエンスを使用して、Azure portal 内で直接 RDP および SSH セッションに接続できます。
 * **TLS 経由のリモート セッションと RDP または SSH のファイアウォール トラバーサル:** Azure Bastion は、ローカル デバイスに自動的にストリーミングされる HTML5 ベースの Web クライアントを使用します。 ポート 443 で TLS を経由して RDP または SSH セッションに接続するので、企業ファイアウォールを安全にトラバースできます。
 * **Azure VM ではパブリック IP が不要:** Azure Bastion は、お使いの Azure 仮想マシンのプライベート IP を使用してその VM への RDP または SSH 接続を開きます。 仮想マシンのパブリック IP は必要ありません。
-* **NSG を管理する手間はなし:** Azure Bastion は、Azure が提供するフル マネージド プラットフォーム PaaS サービスで、安全な RDP または SSH 接続を提供するよう内部で強化されています。 Azure Bastion サブネットに NSG を適用する必要はありません。 Azure Bastion はプライベート IP 経由で仮想マシンに接続するため、Azure Bastion からの RDP または SSH のみを許可するよう構成できます。 これで、お使いの仮想マシンへの安全な接続が必要になるたびに NSG を管理する手間がなくなります。
+* **[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) を管理する手間はなし:** Azure Bastion は、Azure が提供するフル マネージド プラットフォーム PaaS サービスで、安全な RDP または SSH 接続を提供するよう内部で強化されています。 Azure Bastion サブネットに NSG を適用する必要はありません。 Azure Bastion はプライベート IP 経由で仮想マシンに接続するため、Azure Bastion からの RDP または SSH のみを許可するよう構成できます。 これで、お使いの仮想マシンへの安全な接続が必要になるたびに NSG を管理する手間がなくなります。
 * **ポート スキャンからの保護:** お使いの仮想マシンをパブリック インターネットに公開する必要がないため、この VM は、仮想ネットワーク外部の悪意のあるユーザーによるポート スキャンから保護されます。
 * **ゼロデイ攻撃から保護する。一元的な強化:** Azure Bastion は、フル プラットフォームマネージド PaaS サービスです。 これは仮想ネットワークの境界に配置されるため、その仮想ネットワーク内の各仮想マシンを強化することについて心配する必要はありません。 Azure プラットフォームは、Azure Bastion を強化して常に最新の状態にしておくことで、ゼロデイ攻撃から保護します。
 

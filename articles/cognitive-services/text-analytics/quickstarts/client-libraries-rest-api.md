@@ -8,37 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/08/2021
+ms.date: 08/25/2021
 ms.author: aahi
 keywords: テキスト マイニング, センチメント分析, テキスト分析
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 69026d9abd8e0f3a978d9c327e9cb9c2e0140d04
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 8eeac06c4db34a7aa2452ae9fda51890ac1b91a1
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113565780"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864862"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-and-rest-api"></a>クイックスタート: Text Analytics クライアント ライブラリおよび REST API を使用する
 
 この記事では、Text Analytics クライアントライブラリおよび REST API の概要について説明します。 テキスト マイニングのサンプル コードを試すには、こちらの手順に従います。
 
-* センチメント分析
-* 意見マイニング
-* 言語検出
-* エンティティの認識
-* 個人が特定される情報の認識
-* キー フレーズの抽出
-
 
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新の安定バージョンは `3.1` です。
->    * 必ず、使用するバージョンの手順にのみ従ってください。
-> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
-> * Text Analytics for Health または非同期操作を使用する場合は、Github で [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)、または [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 用の例を参照してください。
+> * このクイックスタートでは、API の v3.1 と v3.2 (プレビュー) のバージョンのみを対象とします。
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
@@ -49,7 +39,8 @@ ms.locfileid: "113565780"
 > [!IMPORTANT]
 > * Text Analytics API の最新の安定バージョンは `3.1` です。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
-Text Analytics for Health または非同期操作を使用する場合は、Github で [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)、または [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 用の例を参照してください。
+> * また、クライアント ライブラリの最新プレビュー バージョンを使用して、抽出要約を使用することもできます。 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeExtractiveSummarization.java) の次のサンプルを参照してください。
+
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
@@ -70,9 +61,7 @@ Text Analytics for Health または非同期操作を使用する場合は、Git
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * Text Analytics API の最新の安定バージョンは `3.1` です。
->    * 必ず、使用するバージョンの手順にのみ従ってください。
-> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。 Text Analytics for Health または非同期操作を使用する場合は、Github で [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)、[Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)、または [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) 用の例を参照してください。
+> * このクイックスタートでは、API の v3.1 と v3.2 (プレビュー) のバージョンのみを対象とします。
 
 [!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 

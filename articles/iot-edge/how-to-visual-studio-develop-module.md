@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 manager: lizross
 ms.author: kgremban
-ms.date: 07/19/2021
+ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 69ac8ca51fb4bf418af3569e2d294053c1956134
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: e7ded6eb8b3e8ee44594e75eb22b920c4e0649b6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447433"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037593"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
@@ -48,7 +48,7 @@ Visual Studio 2019 の準備ができたら、次のツールとコンポーネ�
 
 * モジュール イメージを作成して実行するために、開発用マシンに [Docker Community Edition](https://docs.docker.com/install/) をダウンロードしてインストールします。 開発しているモジュールの種類に応じて、Linux コンテナー モードまたは Windows コンテナー モードで実行するように Docker CE を設定する必要があります。
 
-* [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) をインストールして、IoT Edge ソリューションをデバッグ、実行、テストするようにローカルの開発環境を設定します。 [Python (2.7/3.6+) と Pip](https://www.python.org/) をインストールした後、ターミナルで次のコマンドを実行して **iotedgehubdev** パッケージをインストールします。 Azure IoT EdgeHub Dev Tool のバージョンが 0.3.0 より大きいことを確認します。
+* [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) をインストールして、IoT Edge ソリューションをデバッグ、実行、テストするようにローカルの開発環境を設定します。 [Python (3.5/3.6/3.7/3.8) と Pip](https://www.python.org/) をインストールした後、ターミナルで次のコマンドを実行して **iotedgehubdev** パッケージをインストールします。 Azure IoT EdgeHub Dev Tool のバージョンが 0.3.0 より大きいことを確認します。
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -103,7 +103,7 @@ Visual Studio の IoT Edge プロジェクト テンプレートでは、IoT Edg
 
 1. **[新しいプロジェクトの作成]** ページで、**Azure IoT Edge** を検索します。 IoT Edge デバイスのプラットフォームとアーキテクチャに一致するプロジェクトを選択し、 **[次へ]** をクリックします。
 
-   ![新しいプロジェクトの作成](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/create-new-project.png" alt-text="新しいプロジェクトを作成":::
 
 1. **[新しいプロジェクトの構成]** ページで、プロジェクトの名前を入力し、場所を指定して、 **[作成]** を選択します。
 
@@ -122,6 +122,18 @@ Visual Studio の IoT Edge プロジェクト テンプレートでは、IoT Edg
 プロジェクト フォルダーには、そのプロジェクトに含まれるすべてのモジュールの一覧が含まれています。 現時点で表示されるモジュールは 1 つだけですが、さらに追加できます。 プロジェクトへのモジュールの追加の詳細については、この記事で後述する「[複数のモジュールのビルドとデバッグ](#build-and-debug-multiple-modules)」セクションを参照してください。
 
 プロジェクト フォルダーには、`deployment.template.json` という名前のファイルも含まれています。 このファイルは、IoT Edge デプロイ マニフェストのテンプレートです。これにより、デバイス上で実行されるモジュールと、相互に通信する方法が定義されます。 デプロイ マニフェストの詳細については、[モジュールをデプロイしてルートを確立する方法](module-composition.md)に関するページを参照してください。 このデプロイ テンプレートを開いた場合、**edgeAgent** と **edgeHub** の2 つのランタイム モジュールと、この Visual Studio プロジェクト内で作成したカスタム モジュールが含まれていることを確認できます。 **SimulatedTemperatureSensor** という名前の 4 番目のモジュールも含まれています。 この既定のモジュールでは、モジュールのテストに使用できるシミュレートされたデータが生成されます。必要ない場合は削除します。 シミュレートされた温度センサーの仕組みについては、[SimulatedTemperatureSensor.csproj のソース コード](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)を確認してください。
+
+### <a name="set-iot-edge-runtime-version"></a>IoT Edge ランタイム バージョンを設定する
+
+IoT Edge 拡張機能は、デプロイ アセットを作成するときに、IoT Edge ランタイムの最新の安定バージョンを既定として使用します。 現在、最新の安定バージョンはバージョン 1.2 です。 1\.1 の長期サポート バージョンまたはそれより前の 1.0 バージョンを実行しているデバイスのモジュールを開発している場合は、Visual Studio の IoT Edge ランタイム バージョンを更新して一致させます。
+
+1. ソリューション エクスプローラーで、プロジェクト名を右クリックし、 **[Set IoT Edge Runtime version]\(IoT Edge ランタイム バージョンの設定\)** を選択します。
+
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/set-iot-edge-runtime-version.png" alt-text="プロジェクト名を右クリックし、[Set IoT Edge Runtime version]\(IoT Edge ランタイム バージョンの設定\) を選択します。":::
+
+1. ドロップダウン メニューを使用して、IoT Edge デバイスが実行されているランタイム バージョンを選択し、 **[OK]** を選択して変更を保存します。
+
+1. 新しいランタイム バージョンで配置マニフェストを再生成します。 プロジェクト名を右クリックし、 **[Generate Deployment for IoT Edge]\(IoT Edge の配置の生成\)** を選択します。
 
 ## <a name="develop-your-module"></a>モジュールの開発
 
@@ -234,7 +246,7 @@ IoT edgeHub 開発ツールは、ローカルでの開発およびデバッグ �
     ```
 
    >[!NOTE]
-   >この記事では、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、「[コンテナー レジストリへのアクセスを管理する](production-checklist.md#manage-access-to-your-container-registry)」を参照してください。
+   >この記事では、開発とテストのシナリオに便利な、Azure Container Registry の管理者ログイン資格情報を使用します。 運用環境のシナリオに向けて準備ができたら、サービス プリンシパルのような最小限の特権で認証できるオプションを使用することをお勧めします。 詳細については、[[コンテナー レジストリへのアクセスを管理する]](production-checklist.md#manage-access-to-your-container-registry) を参照してください。
 
 1. **ソリューション エクスプローラー** でプロジェクト フォルダーを右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、各モジュールの Docker イメージをビルドしてプッシュします。
 

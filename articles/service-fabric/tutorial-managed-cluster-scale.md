@@ -2,14 +2,14 @@
 title: Service Fabric マネージド クラスターをスケールアウトする
 description: このチュートリアルでは、Service Fabric マネージド クラスターのノード タイプをスケールアウトする方法について説明します。
 ms.topic: tutorial
-ms.date: 5/10/2021
+ms.date: 8/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e2bd57925ddb78dcfe23742b35c1490584558f8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 938c163f4b27706999f7fe32f7935d4d7877c96b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666879"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864972"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster"></a>チュートリアル: Service Fabric マネージド クラスターをスケールアウトする
 
@@ -35,7 +35,7 @@ ms.locfileid: "110666879"
 スケーリングしたいノード タイプのノード数を増減させるには、インスタンス数を変更します。 ノード タイプの名前は、クラスター デプロイの Azure Resource Manager テンプレート (ARM テンプレート) または Service Fabric Explorer で確認できます。  
 
 > [!NOTE]
-> ノード タイプがプライマリである場合、ノード数を 3 未満 (Basic SKU クラスターの場合) や 5 未満 (Standard SKU クラスターの場合) にすることはできません。
+> プライマリ ノード タイプの場合、ノード数を 3 未満 (Basic SKU クラスターの場合) や 5 未満 (Standard SKU クラスターの場合) にすることはできません。
 
 ```powershell
 $resourceGroup = "myResourceGroup"

@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 08/24/2021
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 1d96bb01cde5edbe4bff06de43d66b785da9cd98
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6a5f21153936313a209bb5971c1a7c6bd7a9e973
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748401"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969390"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure Resource Manager テンプレートを使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -49,7 +49,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 **subscriptionId**: このフィールドは、テンプレートのデプロイ先となるサブスクリプションに自動的に設定されます。 このフィールドは自動的に設定されるため、パラメーター ファイルには存在しません。
 
-**IoTHubName_in**: このフィールドは、IoT ハブのベース名です。これが randomValue と連結されてグローバルに一意になります。
+**IoTHubName_in**: このフィールドは、IoT ハブのベース名です。これは、グローバルに一意になるように randomValue と連結されます。
 
 **location**:このフィールドは、デプロイ先となる Azure リージョンです ("westus" など)。
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: a215100ebc858d2f6f7e154ea81ed5e006d3d9a4
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: c2cdd4009261306357bc9d840afa83bc1ebf40df
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252236"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111637"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -36,26 +36,31 @@ Azure Database for MySQL フレキシブル サーバーは、データベース
 - ゾーン冗長の高可用性
 - マネージド メンテナンス期間
 
+フレキシブル サーバーの最新情報については、[Azure Database for MySQL - フレキシブル サーバーの新機能](whats-new.md)に関するページを参照してください。
+
 ![フレキシブル サーバーの概念図](media/overview/1-flexible-server-conceptual-diagram.png) 
+
+## <a name="free-12-month-offer"></a>12 か月間の無料プラン
+
+[Azure 無料アカウント](https://azure.microsoft.com/free/)を使用すると、フレキシブル サーバーを 12 か月無料で使用できます。1 か月あたりの上限は次のとおりです。
+* **Burstable B1MS インスタンスを 750 時間**。これは、データベース インスタンスを毎月十分に継続実行できるだけの時間です。
+* **32 GB** のストレージと **32 GB** のバックアップ ストレージ。 
+
+このプランを利用して、Azure Database for MySQL - フレキシブル サーバーを使用するアプリケーションを開発し、デプロイできます。 Azure 無料アカウントを使用して、フレキシブル サーバーを無料で作成および使用する方法について詳しくは、[こちらのチュートリアル](how-to-deploy-on-azure-free-account.md)を参照してください。 
 
 ## <a name="high-availability-within-and-across-availability-zones"></a>可用性ゾーン内および可用性ゾーン間での高可用性
 
-フレキシブル サーバー デプロイ モデルは、単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性をサポートするように設計されています。 このアーキテクチャでは、コンピューティングとストレージが分離されます。 データベース エンジンは Linux 仮想マシン上で実行され、データ ファイルはリモートの Azure Premium Storage 上に配置されます。 ストレージには、データベース ファイルの 3 つのローカル冗長同期コピーが保持され、常にデータの持続性が確保されます。
+Azure Database for MySQL フレキシブル サーバー (プレビュー) では、自動フェールオーバーによる高可用性を構成できます。 高可用性ソリューションは、障害によってコミットされたデータが失われることがないように、またアプリケーションの全体的な稼働時間が増加するように設計されています。高可用性が構成されている場合、フレキシブル サーバーでは、スタンバイ レプリカが自動的にプロビジョニングされ、管理されます。 高可用性アーキテクチャ モデルには、次の 2 つがあります。 
 
-1 つの可用性ゾーン内では、計画的なイベントまたは計画外のイベントによってサーバーがダウンした場合、サービスによって次の自動化された手順を使用してサーバーの高可用性が維持されます。
+- **ゾーン冗長の高可用性 (HA):** このオプションは、複数の可用性ゾーンにわたってインフラストラクチャの完全な分離と冗長性を実現する場合に適しています。 最高レベルの可用性が提供されますが、複数のゾーンにわたってアプリケーションの冗長性を構成する必要があります。 ゾーン冗長 HA は、可用性ゾーン内のインフラストラクチャ障害に対して最高レベルの可用性を実現する必要があり、可用性ゾーン全体の待機時間を許容できる場合に推奨されます。 ゾーン冗長 HA は、リージョンが複数の Availability Zones をサポートし、ゾーン冗長 Premium ファイル共有を使用できる  [Azure リージョンのサブセット](overview.md#azure-regions) で使用できます。 
 
-1. 新しいコンピューティング VM がプロビジョニングされます。
-2. データ ファイルを含むストレージが新しい仮想マシンにマップされます
-3. 新しい仮想マシンで MySQL データベース エンジンがオンラインになります。
-4. サーバーで接続を受け入れる準備が整うと、クライアント アプリケーションは再接続できます。
+:::image type="content" source="./media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="ゾーン冗長 HA":::
 
-:::image type="content" source="media/overview/2-flexible-server-architecture.png" alt-text="単一ゾーンの高可用性の概念の図":::
+- **同一ゾーンの高可用性 (HA):** このオプションは、プライマリ サーバーとスタンバイ サーバーの両方が同じ可用性ゾーンに含まれ、ネットワーク待機時間が短いインフラストラクチャの冗長性に適しています。 ゾーン間でアプリケーションの冗長性を構成せずに高可用性を実現します。 単一の可用性ゾーン内で、ネットワーク待機時間が最も短い最高レベルの可用性を実現する必要がある場合は、同一ゾーン HA が推奨されます。 同一ゾーン HA は、Azure Database for MySQL フレキシブル サーバーを作成できる[すべての  Azure リージョン](overview.md#azure-regions)で使用できます。 
 
-ゾーン冗長の高可用性が構成されている場合、サービスによって同じ Azure リージョン内の可用性ゾーン間でホット スタンバイ サーバーがプロビジョニングおよび管理されます。 データ損失をゼロにするために、ソース サーバー上でのデータの変更は、スタンバイ サーバーに同期的にレプリケートされます。 ゾーン冗長の高可用性により、計画済みまたは計画外のフェールオーバー イベントがトリガーされると、スタンバイ サーバーが直ちにオンラインになり、受信トランザクションを処理できるようになります。 一般的なフェールオーバー時間は 60 秒から 120 秒です。 これにより、サービスでは、高可用性がサポートされ、特定の Azure リージョンにおける単一の可用性ゾーンの障害に耐えることができる向上した回復性が提供されます。
+:::image type="content" source="./media/concepts-high-availability/flexible-server-overview-same-zone-ha.png" alt-text="同じ冗長高可用性":::
 
 詳細については、[高可用性の概念](concepts-high-availability.md)に関するページを参照してください。
-
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="ゾーン冗長の高可用性の概念の図":::
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>マネージド メンテナンス期間によるパッチの自動適用
 
@@ -87,7 +92,7 @@ Azure Database for MySQL フレキシブル サーバーに接続するには、
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
 
-フレキシブル サーバー サービスは、次の 3 つの SKU レベルで使用できます: Burstable、General Purpose、Memory Optimized。 Burstable レベルは、完全なコンピューティング能力を継続的には必要としない低コストの開発およびコンカレンシーの低いワークロードに最適です。 General Purpose および Memory Optimized は、高いコンカレンシー、スケール、予測可能なパフォーマンスを必要とする運用ワークロードに適しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールをシームレスに調整することができます。 ストレージのスケーリングはオンラインであり、ストレージの自動拡張がサポートされています。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 消費したリソースについてだけ支払います。 
+フレキシブル サーバー サービスは、次の 3 つの SKU レベルで使用できます: Burstable、General Purpose、Memory Optimized。 Burstable レベルは、完全なコンピューティング能力を継続的には必要としない低コストの開発およびコンカレンシーの低いワークロードに最適です。 General Purpose および Memory Optimized は、高いコンカレンシー、スケール、予測可能なパフォーマンスを必要とする運用ワークロードに適しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールをシームレスに調整することができます。 ストレージのスケーリングはオンラインであり、ストレージの自動拡張がサポートされています。 フレキシブル サーバーを使用すると、ストレージに関係なく、無償の IOPS 制限を超えて最大 20K IOPS まで追加の IOPS をプロビジョニングできます。 この機能を使用すると、ワークロードの要件に基づいてプロビジョニングされる IOPS の数をいつでも増減できます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 消費したリソースについてだけ支払います。 
 
 詳細については、[コンピューティングとストレージの概念](concepts-compute-storage.md)に関する記事を参照してください。
 
@@ -106,7 +111,7 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 データイン レプリケーションでは、外部の MySQL サーバーから Azure Database for MySQL フレキシブル サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン内、Azure Database for MySQL Single Server、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。 データイン レプリケーションは、バイナリ ログ (binlog) ファイルの位置ベースに基づいています。 データイン レプリケーションの使用を検討する主なシナリオは次のとおりです。
 * ハイブリッド データ同期
 * 複数のクラウドの同期
-* 最小限のダウンタイムでのフレキシブル サーバーへの移行
+* [最小限のダウンタイムでのフレキシブル サーバーへの移行](../../mysql/howto-migrate-single-flexible-minimum-downtime.md)
 
 詳細については、[データイン レプリケーションの概念](concepts-data-in-replication.md)に関する記事を参照してください。
 
@@ -121,9 +126,9 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 
 フレキシブル サーバー サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 データ (バックアップを含む) と、クエリの実行中に作成される一時ファイルは暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます (既定)。
 
-サービスでは、既定で適用されるトランスポート層セキュリティを使用して、動作中のデータが暗号化されます。 フレキシブル サーバーでは、トランスポート層セキュリティ (TLS 1.2) を使用した暗号化された接続のみがサポートされ、TLS 1.0 と TLS 1.1 を使用した受信接続はすべて拒否されます。
+サービスでは、既定で適用されるトランスポート層セキュリティを使用して、動作中のデータが暗号化されます。 フレキシブル サーバーは、トランスポート層セキュリティ (TLS 1.2) を使用した暗号化接続を既定でサポートしており、TLS 1.0 と TLS 1.1 を使用した受信接続はすべて拒否されます。 require_secure_transport サーバー パラメーターを設定することで、SSL 強制を無効にすることができ、また、サーバーの最小 tls_version を設定できます。
 
-詳細については、[フレキシブル サーバーへの暗号化された接続の使用方法](https://docs.mongodb.com/manual/tutorial/configure-ssl)に関する記事を参照してください。
+詳細については、[フレキシブル サーバーへの暗号化された接続の使用方法](how-to-connect-tls-ssl.md)に関する記事を参照してください。
 
 フレキシブル サーバーを使用すると、[Azure 仮想ネットワーク](../../virtual-network/virtual-networks-overview.md) (VNet 統合) を使用してサーバーに完全にプライベートでアクセスできます。 Azure Virtual Network 内のサーバーには、プライベート IP アドレスを介してのみアクセスおよび接続できます。 VNet 統合では、パブリック アクセスが拒否され、パブリック エンドポイントを使用してサーバーに到達できません。
 
@@ -131,7 +136,7 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
-フレキシブル サーバー サービスには、組み込みのパフォーマンス監視機能とアラート機能が搭載されています。 すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 このサービスを使用すると、リソースの使用状況を監視するためのホスト サーバー メトリックが公開され、遅いクエリのログを構成できます。 これらのツールを使用すると、ワークロードをすばやく最適化し、最適なパフォーマンスが得られるようにサーバーを構成することができます。
+フレキシブル サーバー サービスには、組み込みのパフォーマンス監視機能とアラート機能が搭載されています。 すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 このサービスを使用すると、リソースの使用状況を監視するためのホスト サーバー メトリックが公開され、遅いクエリのログを構成できます。 これらのツールを使用すると、ワークロードをすばやく最適化し、最適なパフォーマンスが得られるようにサーバーを構成することができます。 さらに、コミュニティ監視ツール ([MySQL フレキシブル サーバーでの Percona Monitoring and Management](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545) など) を使用でき、これらのツールと統合することができます。 
 
 詳細については、[監視の概念](concepts-monitoring.md)に関する記事を参照してください。
 
@@ -146,35 +151,37 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 ### <a name="online-or-minimal-downtime-migrations"></a>オンラインの移行または最小限のダウンタイムの移行
 初期シード処理では、mydumper/myloader の整合性バックアップ/復元でデータイン レプリケーションを使用します。 詳細については、[チュートリアル: 最小限のダウンタイムでの Azure Database for MySQL - シングル サーバーから Azure Database for MySQL – フレキシブル サーバーへの移行](../../mysql/howto-migrate-single-flexible-minimum-downtime.md)に関する記事のステップ バイ ステップの手順を参照してください
 
+5 つの簡単な手順で Azure Database for MySQL - 単一サーバーからフレキシブル サーバーに移行するには、[こちらのブログ](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/migrate-from-azure-database-for-mysql-single-server-to-flexible/ba-p/2674057)を参照してください。
+
 詳細については、[Azure Database for MySQL の移行ガイド](../../mysql/migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md)に関する記事を参照してください
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
 Azure でワークロードを実行する利点の 1 つは、グローバルに展開できることです。 Azure Database for MySQL フレキシブル サーバーは、現在、次の Azure リージョンで提供されています。
 
-| Region | 可用性 | ゾーン冗長 HA |
-| --- | --- | --- |
-| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: |
-| Brazil South | :heavy_check_mark: | :x: |
-| カナダ中部 | :heavy_check_mark: | :x: |
-| 米国中部 | :heavy_check_mark: | :x: |
-| 米国東部 | :heavy_check_mark: | :heavy_check_mark: |
-| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| フランス中部 | :heavy_check_mark: | :heavy_check_mark:|
-| ドイツ中西部 | :heavy_check_mark: | :x: |
-| Japan East | :heavy_check_mark: | :heavy_check_mark: |
-| 韓国中部 | :heavy_check_mark: | :x: |
-| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
-| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
-| スイス北部 | :heavy_check_mark: | :x: |
-| 英国南部 | :heavy_check_mark: | :heavy_check_mark: |
-| 米国西部 | :heavy_check_mark: | :x: |
-| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
-| オーストラリア南東部 | :heavy_check_mark: | :x: |
-| 南アフリカ北部 | :heavy_check_mark: | :x: |
-| 東アジア (香港) | :heavy_check_mark: | :x: |
-| インド中部 | :heavy_check_mark: | :x: |
+| Region | 可用性 | 同一ゾーン HA | ゾーン冗長 HA |
+| --- | --- | --- | --- |
+| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Brazil South | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 米国中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 米国東部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| フランス中部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:|
+| ドイツ中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 韓国中部 | :heavy_check_mark: | :x: | :x: |
+| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| スイス北部 | :heavy_check_mark: | :x: | :x: |
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 米国西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| オーストラリア南東部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 南アフリカ北部 | :heavy_check_mark: | :x: | :x: |
+| 東アジア (香港) | :heavy_check_mark: | :x: | :x: |
+| インド中部 | :heavy_check_mark: | :x: | :x: |
 
 ## <a name="contacts"></a>連絡先
 

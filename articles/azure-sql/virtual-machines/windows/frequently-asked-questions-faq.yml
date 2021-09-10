@@ -13,14 +13,14 @@ metadata:
   ms.topic: troubleshooting
   ms.tgt_pltfrm: vm-windows-sql-server
   ms.workload: iaas-sql-server
-  ms.date: 08/05/2019
+  ms.date: 9/01/2021
   ms.author: mathoma
-  ms.openlocfilehash: afc126a44fec520f4451787c0e8b350a292c2fca
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 6b6b6ae343e5ac641e1fb855c7ca7d466fd91ba8
+  ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114440693"
+  ms.lasthandoff: 08/30/2021
+  ms.locfileid: "123221429"
 title: Azure VM における SQL Server についてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -92,7 +92,7 @@ sections:
       はい。 [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)を有効にすることによって、従量課金制 (PAYG) のギャラリー イメージをライセンス持ち込み (BYOL) に簡単に切り替えることができます。  詳細については、[SQL Server VM のライセンス モデルを変更する方法](licensing-model-azure-hybrid-benefit-ahb-change.md)に関するページを参照してください。 現在のところ、この機能はパブリック クラウドと Azure Government クラウドのお客様のみが利用できます。
   - question: >
       ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。
-    answer: "いいえ。 [ライセンス モデルの変更](licensing-model-azure-hybrid-benefit-ahb-change.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、ご利用の SQL Server VM を SQL IaaS Agent 拡張機能に登録するには、[SQL IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md)が前提条件です。SQL IaaS 拡張機能を \"_完全_\" モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される _軽量_ モードでインストールするか、メンテナンス期間中であれば _完全_ モードでインストールしてください。 _軽量_ モードでインストールされた SQL IaaS 拡張機能はいつでも _完全_ モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 \n"
+    answer: "いいえ。 [ライセンス モデルの変更](licensing-model-azure-hybrid-benefit-ahb-change.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。  \n"
   - question: >
       クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか?
     answer: いいえ。 クラシック VM では、ライセンス モデルの変更はサポートされていません。 VM を Azure Resource Manager モデルに移行し、SQL IaaS Agent 拡張機能に登録できます。 VM を SQL IaaS Agent 拡張機能に登録すると、VM 上でライセンス モデルを変更できるようになります。
@@ -191,17 +191,16 @@ sections:
     answer: はい。 お客様がご自身の SQL Server VM を拡張機能に登録する必要があるのは、Azure Marketplace の SQL Server イメージを使用せずに自分で SQL Server をインストールした場合やカスタム VHD を購入した場合です。 すべての種類のサブスクリプション (Direct、Enterprise Agreement、Cloud Solution Provider) で所有されているVM は、SQL IaaS Agent 拡張機能に登録できます。
   - question: >
       SQL IaaS Agent 拡張機能への登録時の既定の管理モードは何ですか?
-    answer: >
-      SQL IaaS Agent 拡張機能に登録する際の既定の管理モードは、"*軽量*" です。 拡張機能への登録時に SQL Server 管理プロパティが設定されていない場合、モードは軽量として設定され、SQL Server サービスは再起動されません。 最初に軽量モードで SQL IaaS Agent 拡張機能に登録してから、予定メンテナンス期間中にフルにアップグレードすることをお勧めします。 同様に、[自動登録機能](sql-agent-extension-automatic-registration-all-vms.md)を使用する場合は、既定の管理も軽量になります。
+    answer: "SQL IaaS Agent 拡張機能に登録する際の既定の管理モードは、\"*軽量*\" です。 拡張機能への登録時に SQL Server 管理プロパティが設定されていない場合、モードは軽量として設定されます。  [自動登録機能](sql-agent-extension-automatic-registration-all-vms.md)を使用している場合の既定の管理モードも軽量モードになります。 \n"
   - question: >
       SQL IaaS Agent 拡張機能に登録するための前提条件は何ですか?
-    answer: VM に SQL Server がインストールされている必要があるという点を除き、SQL IaaS Agent 拡張機能に登録する際の前提条件はありません。 SQL IaaS Agent 拡張機能が完全モードでインストールされている場合は、SQL Server サービスが再起動されるため、メンテナンス期間中に実行することをお勧めします。
+    answer: VM に SQL Server がインストールされている必要があるという点を除き、SQL IaaS Agent 拡張機能に登録する際の前提条件はありません。
   - question: >
       SQL IaaS Agent 拡張機能に登録すると、VM にエージェントがインストールされますか?
     answer: "はい。完全管理モードで SQL IaaS Agent 拡張機能に登録すると、VM にエージェントが インストールされます。 軽量モードまたは NoAgent モードで登録する場合は、そうではありません。 \n\n軽量モードで SQL IaaS Agent 拡張機能に登録すると、SQL IaaS Agent 拡張機能の \"*バイナリ*\" のみが VM にコピーされます。この場合、エージェントはインストールされません。 これらのバイナリは、管理モードが完全にアップグレードされた際、エージェントのインストールに使用されます。\n"
   - question: >
       SQL IaaS Agent 拡張機能に登録すると、自分の VM 上の SQL Server が再起動されますか?
-    answer: これは、登録時に指定されたモードによって異なります。 軽量または NoAgent モードが指定されている場合、SQL Server サービスは再起動されません。 ただし、管理モードを完全に指定すると、SQL Server サービスが再起動されます。 自動登録機能では、SQL Server VM が軽量モードで登録されます。ただし、Windows Server のバージョンが 2008 の場合、SQL Server VM は NoAgent モードで登録されます。
+    answer: 2021 年 9 月以降、[フル管理モード](sql-agent-extension-manually-register-single-vm.md)で [SQL IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に登録する際は、SQL Server サービスの再起動が不要になりました。
   - question: "SQL IaaS Agent 拡張機能に登録する場合、軽量と NoAgent の各管理モードではどのような違いがありますか? \n"
     answer: "NoAgent 管理モードは、Windows Server 2008 上の SQL Server 2008 と SQL Server 2008 R2 で唯一使用可能な管理モードです。 以後のすべてのバージョンの Windows Server で使用可能な 2 つの管理モードとして軽量モードと完全モードがあります。 \n\nNoAgent モードでは、SQL Server のバージョンとエディションのプロパティをお客様が設定する必要があります。 軽量モードでは、VM が照会され、SQL Server インスタンスのバージョンとエディションが確認されます。\n"
   - question: >
@@ -215,7 +214,7 @@ sections:
     answer: いいえ。 NoAgent モードでは、管理モードを完全または軽量にアップグレードすることはできません。 これは Windows Server 2008 の技術的な制限です。 最初に OS を Windows Server 2008 R2 以上にアップグレードする必要があります。その後、フル管理モードにアップグレードできます。
   - question: >
       SQL Server IaaS 拡張機能を軽量モードから完全モードにアップグレードできますか?
-    answer: はい。 管理モードを軽量から完全にアップグレードするには、Azure PowerShell または Azure portal を使用します。 実行すると、SQL Server サービスの再起動がトリガーされます。
+    answer: はい。 管理モードを軽量から完全にアップグレードするには、Azure PowerShell または Azure portal を使用します。
   - question: >
       SQL Server IaaS 拡張機能を完全モードから NoAgent または軽量管理モードにダウングレードすることはできますか?
     answer: "いいえ。 SQL Server IaaS 拡張機能の管理モードのダウングレードはサポートされていません。 管理モードを完全モードから軽量モードまたは NoAgent モードにダウングレードすることはできません。また、軽量モードから NoAgent モードにダウングレードすることもできません。 \n\n管理モードを完全管理から変更するには、SQL 仮想マシン \"_リソース_\" を削除して SQL IaaS Agent 拡張機能から SQL Server VM の [登録を解除](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)し、別の管理モードでその SQL Server VM を SQL IaaS Agent 拡張機能に再登録します。\n"

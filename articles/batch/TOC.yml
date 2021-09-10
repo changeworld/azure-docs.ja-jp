@@ -165,6 +165,8 @@
         - name: パブリック IP アドレスのないプールを作成する
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: エフェメラル OS ディスク ノードを持つプールを作成する
+          href: create-pool-ephemeral-os-disk.md
         - name: プールで拡張機能を使用する
           href: create-pool-extensions.md
         - name: マネージド ID の構成

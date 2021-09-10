@@ -6,12 +6,12 @@ ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: fbbb9837a54d323b568e42c90132c799c3927c30
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8d349a0faa2cfc97f029e496b9bd92b1e5057018
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414533"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867505"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する
 
@@ -108,8 +108,8 @@ DNS サーバーを使用するかどうかを決定する際は、以下の点�
 
 クラスター vserver が左側に示され、IP アドレスが中央と右側に示されています。 図に示すように、A レコードとポインターを使用して各クライアントのアクセス ポイントを構成します。
 
-![クラスターのラウンド ロビン DNS のダイアグラム - 画像の後に詳細の代替テキスト リンクが続く](media/fxt-cluster-config/fxt-rrdns-diagram.png)
-[詳細なテキストの説明](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
+:::image type="complex" source="media/fxt-cluster-config/fxt-rrdns-diagram.png" alt-text="クラスターのラウンドロビン DNS 構成を示す図。":::
+   <この図は 3 つのカテゴリの要素間の接続を示しています。1 つの vserver (左側)、3 つの IP アドレス (中央の列)、3 つのクライアント インターフェイス (右側の列) です。 左側で "vserver1" というラベルが付いた 1 つの円が、IP アドレス: 10.0.0.10、10.0.0.11、10.0.0.12 のラベルが付いた 3 つの円を指し示す矢印で結ばれています。 vserver 円から 3 つの IP の円への矢印には、"A" というキャプションがあります。 各 IP アドレスの円は、クライアント インターフェイスのラベルが付いた円と 2 つの矢印で結ばれています。 IP 10.0.0.10 の円は "vs1-client-IP-10" とつながり、IP 10.0.0.11 の円は "vs1-client-IP-11" とつながり、IP 10.0.0.12 の円は "vs1-client-IP-11" とつながっています。 IP アドレスの円とクライアント インターフェイスの円の間をつないでいるのは、2 つの矢印です。一方の矢印は "PTR" のラベルが付いていて、IP アドレスの円からクライアント インターフェイスの円を指しており、もう一方の矢印は "A" のラベルが付いていて、クライアント インターフェイスの円から IP アドレスの円を指しています。 > :::image-end:::
 
 クライアントに接続する IP アドレスには、クラスターによる内部使用のための一意の名前がそれぞれ必要です。 (この図では、わかりやすくするためにクライアント IP に vs1-client-IP-* という名前が付いていますが、運用環境では client* のような簡潔なものがおそらく使用されます。)
 

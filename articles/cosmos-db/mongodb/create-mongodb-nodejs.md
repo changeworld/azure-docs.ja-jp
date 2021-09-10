@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 08/26/2021
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 962b0cfe0458b6671a161c833272936d4ff7f1b8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5c96f5017886c7eed6e6d581636b972c9be76026
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785805"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031390"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>クイック スタート:既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -250,6 +250,10 @@ git commit -m "configured MongoDB connection string"
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure Cloud Shell を使用して Azure Cosmos DB MongoDB API アカウントを作成し、MEAN.js アプリを作成、実行してそのアカウントにユーザーを追加する方法について説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。
+
+Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+  * 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+  * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
 > [MongoDB データを Azure Cosmos DB にインポートする](../../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

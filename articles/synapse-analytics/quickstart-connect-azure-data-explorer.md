@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee9d137973bfa4eeb28bc6526437e76e781f3199
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f45bc134c656701ff02beca464ac00fdf222f88
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92172272"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830205"
 ---
 # <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Apache Spark for Azure Synapse Analytics を使用して Azure Data Explorer に接続する
 
@@ -57,6 +57,8 @@ Azure Data Explorer データベースをワークスペースに接続するに
 1. **[Linked]\(リンク済み\)** タブの **[Azure Data Explorer]** セクションに、Azure Data Explorer のクラスターとデータベースが表示されます。
 
     ![クラスターの参照を示すスクリーンショット。](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
+
+1. ノートブックからリンク サービスを操作するには、それをワークスペースに発行する必要があります。 ツールバーの **[発行]** をクリックし、保留中の変更を確認して **[OK]** をクリックします。
 
     > [!NOTE]
     > 最新のリリースでは、Azure Data Explorer データベースに対する Azure AD アカウントのアクセス許可に基づいて、データベース オブジェクトの内容が設定されます。 Apache Spark ノートブックや統合ジョブを実行すると、リンク サービスにおける資格情報 (サービス プリンシパルなど) が使用されます。

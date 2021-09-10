@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c8a93ce59927144ce02edb8c1193406a29b18530
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 578ff0997375b62b3fd5a90ec44967ead1b9cd63
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112913781"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253801"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -113,10 +113,10 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 **'unstructured_data_path'**
 
 データへのパスを確立する unstructured_data_path には、絶対パスまたは相対パスを指定できます。
-- '\<prefix>://\<storage_account_path>/\<storage_path>' という形式の絶対パスを使用すると、ユーザーがファイルを直接読み取ることができるようになります。
-- '<storage_path>' という形式の相対パスは、`DATA_SOURCE` パラメーターと一緒に使用する必要があり、`EXTERNAL DATA SOURCE` に定義された<storage_account_path> の場所にあるファイル パターンを指定します。 
+- `\<prefix>://\<storage_account_path>/\<storage_path>` 形式の絶対パスを使用すると、ユーザーがファイルを直接読み取ることができるようになります。
+- `<storage_path>` 形式の相対パスは、`DATA_SOURCE` パラメーターと一緒に使用する必要があり、`EXTERNAL DATA SOURCE` に定義された <storage_account_path> の場所にあるファイル パターンを指定します。 
 
-以下に、特定の外部データ ソースにリンクする、関連する <storage account path> 値を示します。 
+以下に、特定の外部データ ソースにリンクする、関連する \<storage account path> 値を示します。 
 
 | 外部データ ソース       | Prefix | ストレージ アカウント パス                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |

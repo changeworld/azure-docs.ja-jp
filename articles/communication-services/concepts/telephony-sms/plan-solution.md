@@ -7,15 +7,15 @@ manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 150daaa834cefbb3f74e6711fea500138774f2de
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 23be7352c1a9b8ca5e0ec60240cf29c863926a20
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111089"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255066"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
 
@@ -71,12 +71,12 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 
 次の表は、各種電話番号の入手先のほか、電話番号の種類に関連付けられている着信通話と発信通話、SMS 機能を示しています。
 
-|番号の種類| 番号の入手先 | 発信先                                        | 着信元                                    |メッセージの送信先       | メッセージの受信元 |
+|番号の種類| 番号の入手先 | 発信先                                        | 着信元*                                    |メッセージの送信先       | メッセージの受信元 |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
 | ローカル (固定)  | US                 | 米国、カナダ、イギリス、ドイツ、フランスなど* *| 米国、カナダ、イギリス、ドイツ、フランスなど* * |使用不可| 使用不可 |
 | フリーダイヤル | US                 | US                                                   | US                                                    |US                | US |
 
-\* 通話の宛先と価格について詳しくは、[価格のページ](../pricing.md)を参照してください。
+*現時点では、テレフォニー チャネル ボットに割り当てられている Microsoft の番号への通話のみを受信できます。 テレフォニー チャネルの詳細については[こちら](/azure/bot-service/bot-service-channel-connect-telephony)を参照してください。**通話の宛先と価格についての詳細は、[価格に関するページ](../pricing.md)を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

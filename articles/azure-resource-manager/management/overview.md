@@ -2,14 +2,14 @@
 title: Azure Resource Manager の概要
 description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
 ms.topic: overview
-ms.date: 03/25/2021
+ms.date: 08/27/2021
 ms.custom: contperf-fy21q1,contperf-fy21q3-portal
-ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ecb9c163728536b56d119ffa5d67aa6650dbc7e7
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608546"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106501"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
@@ -62,6 +62,8 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 ![管理レベル](./media/overview/scope-levels.png)
 
 これらのスコープ レベルのいずれかに管理設定を適用します。 選択するレベルで、設定の適用範囲が決まります。 上位レベルの設定が下位レベルに継承されます。 たとえば、サブスクリプションに[ポリシー](../../governance/policy/overview.md)を適用すると、そのポリシーはサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループにポリシーを適用すると、そのポリシーはリソース グループとそのすべてのリソースに適用されます。 ただし、別のリソース グループにそのポリシー割り当てはありません。
+
+ID とアクセスの管理の詳細については、[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) に関するページを参照してください。
 
 テンプレートは、テナント、管理グループ、サブスクリプション、またはリソース グループにデプロイすることができます。
 

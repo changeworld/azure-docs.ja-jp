@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/26/2021
+ms.date: 08/25/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ff3c052e2e9e745c59947cda43d12b46786fbd62
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: ff38cf413f6e1812c72d410c31088b965af1b3dd
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707581"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123213930"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
@@ -48,11 +48,11 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
     * 必要に応じて、[前のチュートリアルを完了して Azure AD SSPR を有効にしてください](tutorial-enable-sspr.md)。
 * Azure AD Connect の現在のバージョンを使用して構成された既存のオンプレミスの AD DS 環境。
     * 必要に応じて、[簡易](../hybrid/how-to-connect-install-express.md)または[カスタム](../hybrid/how-to-connect-install-custom.md)設定を使用して Azure AD Connect を構成してください。
-    * パスワード ライトバックを使用するには、ドメイン コントローラーが Windows Server 2012 以降である必要があります。
+    * パスワード ライトバックを使用するには、ドメイン コントローラーが Windows Server 2016 以降である必要があります。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Azure AD Connect に対するアカウントのアクセス許可を構成する
 
-Azure AD Connect を使用すると、オンプレミスの AD DS 環境と Azure AD の間でユーザー、グループ、資格情報を同期できます。 通常は、オンプレミスの AD DS ドメインに参加している Windows Server 2012 以降のコンピューターに Azure AD Connect をインストールします。
+Azure AD Connect を使用すると、オンプレミスの AD DS 環境と Azure AD の間でユーザー、グループ、資格情報を同期できます。 通常は、オンプレミスの AD DS ドメインに参加している Windows Server 2016 以降のコンピューターに Azure AD Connect をインストールします。
 
 SSPR のライトバックを正しく操作するには、Azure AD Connect で指定されたアカウントに適切なアクセス許可とオプションが設定されている必要があります。 現在どのアカウントが使用されているかわからない場合は、Azure AD Connect を開き、 **[現在の構成を表示]** オプションを選択します。 アクセス許可を追加する必要があるアカウントが、 **[同期されたディレクトリ]** の下に表示されます。 このアカウントには、次のアクセス許可とオプションを設定する必要があります。
 

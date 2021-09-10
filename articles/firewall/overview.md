@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 07/15/2021
+ms.date: 08/06/2021
 ms.author: victorh
-ms.openlocfilehash: 0b5812b5a562b20d1e0224a038e3572767130333
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2f17bb2d89f47f731fde8fb396aa0343716a99d4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441221"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864468"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -64,7 +64,7 @@ Azure Firewall には、次の既知の問題があります。
 |Availability Zones は、デプロイ時にのみ構成できます。|Availability Zones は、デプロイ時にのみ構成できます。 ファイアウォールがデプロイされた後、Availability Zones を構成することはできません。|これは仕様です。|
 |受信接続での SNAT|DNAT に加えて、ファイアウォールのパブリック IP アドレスを使用した (受信) 接続は SNAT によっていずれかのファイアウォールのプライベート IP に変換されます。 対称的なルーティングを実現するために、現在このような要件が (アクティブ/アクティブ NVA に対しても) 適用されます。|HTTP/S の元の送信元を保持するには、[XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) ヘッダーを使用することを検討します。 たとえば、ファイアウォールの直前に [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) や [Azure Application Gateway](../application-gateway/rewrite-http-headers-url.md) などのサービスを使用します。 Azure Front Door とチェーンの一部としてファイアウォールに WAF を追加することもできます。
 |SQL の FQDN のフィルター処理がプロキシ モードでのみサポートされる (ポート 1433)|Azure SQL Database、Azure Synapse Analytics、Azure SQL Managed Instance の場合:<br><br>SQL の FQDN のフィルター処理は、プロキシ モードのみでサポートされます (ポート 1433)。<br><br>Azure SQL IaaS の場合:<br><br>標準以外のポートを使っている場合は、アプリケーション ルールでそれらのポートを指定できます。|リダイレクト モードの SQL (Azure 内から接続する場合の既定) では、代わりに Azure Firewall ネットワーク ルールの一部として SQL サービス タグを使ってアクセスをフィルター処理できます。
-|TCP ポート 25 でアウトバウンド トラフィックが許可されない| TCP ポート 25 を使用するアウトバウンド SMTP 接続はブロックされます。 ポート 25 は主に、認証されていないメール配信で使用されます。 仮想マシンでは、これがプラットフォームの既定の動作となります。 詳細については、「[Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)」を参照してください。 ただし、仮想マシンとは異なり、Azure Firewall でこの機能を有効にすることは現在できません。 注: 認証済み SMTP (ポート 587) または 25 以外のポートでの SMTP を許可するには、アプリケーション ルールではなく、必ずネットワーク ルールを構成してください。現時点では、SMTP の検査がサポートされません。|SMTP のトラブルシューティング記事に記載されている推奨される方法に従ってメールを送信してください。 または、送信 SMTP アクセスを必要とする仮想マシンを、ファイアウォールへの既定のルートから除外します。 代わりに、インターネットへの直接のアウトバウンド アクセスを構成します。
+|TCP ポート 25 でアウトバウンド SMTP トラフィックがブロックされている|TCP ポート 25 の外部ドメイン (`outlook.com` や `gmail.com` など) に直接送信されるアウトバウンド電子メール メッセージは Azure Firewall によってブロックされます。 これは、Azure での既定のプラットフォーム動作です。 |認証済みの SMTP リレー サービスを使用してください。これは、通常は TCP ポート 587 を経由して接続しますが、他のポートもサポートします。  詳細については、[Azure でのアウトバウンド SMTP 接続問題のトラブルシューティング](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)に関するページを参照してください。 現在、Azure Firewall はアウトバウンド TCP 25 を使用してパブリック IP と通信できる場合がありますが、動作は保証されておらず、すべてのサブスクリプションの種類でサポートされているわけではありません。 仮想ネットワーク、VPN、Azure ExpressRoute のようなプライベート IP の場合、Azure Firewall は TCP ポート 25 のアウトバウンド接続をサポートしています。
 |SNAT ポートの枯渇|Azure Firewall では現在、バックエンドの仮想マシン スケール セット インスタンス 1 つにつき、パブリック IP アドレスごとに 1,024 個のポートがサポートされます。 既定では、2 つの仮想マシン スケール セット インスタンスがあります。|これは SLB の制限であり、Microsoft は現在、この制限の引き上げを検討しています。 その間、SNAT 枯渇の影響を受けやすいデプロイについては、パブリック IP アドレスを最低でも 5 つ使用して Azure Firewall のデプロイを構成するようをお勧めします。 そうすれば、使用できる SNAT ポートは 5 倍になります。 ダウンストリームのアクセス許可を簡素化するために、IP アドレス プレフィックスから割り当ててください。|
 |強制トンネリングが有効になっている場合、DNAT はサポートされない|強制トンネリングが有効になった状態でデプロイされているファイアウォールは、非対称ルーティングのため、インターネットからの受信アクセスをサポートできません。|これは、非対称ルーティングのための仕様です。 受信接続のリターン パスは、確立された接続が検出されていないオンプレミスのファイアウォールを経由します。
 |FTP サーバーの構成によっては、複数のパブリック IP アドレスがあるファイアウォールでは、アウトバウンド パッシブ FTP が機能しないことがあります。|パッシブ FTP は、コントロールとデータのチャネルに対して異なる接続を確立します。 複数のパブリック IP アドレスを持つファイアウォールは、送信データを送信するときに、ソース IP アドレスとしてパブリック IP アドレスの 1 つをランダムに選択します。 データ チャネルとコントロール チャネルとで異なる送信元 IP アドレスが使用されていると、FTP サーバーの構成によっては FTP が失敗することがあります。|明示的な SNAT 構成が計画されています。 その間は、異なる送信元 IP アドレスからのデータ チャネルとコントロール チャネルを受け入れるように FTP サーバーを構成することができます ([IIS の例](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)を参照)。 ただし、このケースでは、1 つの IP アドレスを使用することを検討してください。|

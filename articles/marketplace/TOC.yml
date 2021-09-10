@@ -41,7 +41,7 @@
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: ライセンスの管理
       href: isv-app-license.md
-    - name: プライベート オファー
+    - name: プライベート プラン
       href: private-plans.md
     - name: プランと価格
       href: plans-pricing.md
@@ -341,6 +341,10 @@
               href: power-bi-app-technical-configuration.md
             - name: 補足コンテンツ
               href: power-bi-app-supplemental-content.md
+    - name: Power BI ビジュアル オファー
+      items:
+        - name: パートナー センターへの移行に関する FAQ
+          href: power-bi-visual-faq.yml
     - name: SaaS オファー
       items:
         - name: オファーを計画する

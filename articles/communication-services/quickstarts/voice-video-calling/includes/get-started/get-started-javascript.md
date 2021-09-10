@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: f394448f0b488f468ce09c13d036585db032bda9
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1f027dd3dfb812e9a700810972d2b019810dc41c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112535613"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251525"
 ---
 このクイックスタートでは、JavaScript 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
 
@@ -124,8 +124,10 @@ submitToken.addEventListener("click", async () => {
 callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
+    // To call an ACS communication user, use {communicationUserId: 'ACS_USER_ID'}.
+    // To call echobot, use {id: '8:echo123'}.
     call = callAgent.startCall(
-        [{ id: userToCall }],
+        [{ communicationUserId: userToCall }],
         {}
     );
     // toggle button states
@@ -164,4 +166,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 :::image type="content" source="../../media/javascript/calling-javascript-app-2.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
 
-発信 VOIP 通話を行うには、有効なユーザー アクセス トークンとユーザー ID を対応するテキスト フィールドに指定し、 **[Start Call]\(通話の開始\)** ボタンをクリックします。 `8:echo123` を呼び出すとエコー ボットに接続されます。これは、オーディオ デバイスを起動し、デバイスが機能していることを確認する場合に役立ちます。
+発信 VOIP 通話を行うには、有効なユーザー アクセス トークンとユーザー ID を対応するテキスト フィールドに指定し、 **[Start Call]\(通話の開始\)** ボタンをクリックします。
+
+`8:echo123` を呼び出すとエコー ボットに接続されます。これは、オーディオ デバイスを起動し、デバイスが機能していることを確認する場合に役立ちます。 `{id: '8:echo123'}` を CallAgent.startCall() API に渡してエコーボットを呼び出します。
+ACS 通信のユーザーを呼び出すには、`{communicationUserId: 'ACS_USER_ID'}` を `CallAgent.startCall()` API に渡します。

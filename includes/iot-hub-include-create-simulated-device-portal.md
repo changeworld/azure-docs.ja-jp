@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 91b6f1ed06fbf1f5575650f96f4622b3df9ca083
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28c3ccbd7dc0aae27cd64c0c213869cf968c0a9f
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98187058"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969357"
 ---
 <!-- This is the instructions for creating a simulated device you can use for testing routing.-->
 
@@ -25,7 +25,7 @@ ms.locfileid: "98187058"
 
 3. リソースの一覧から目的の IoT ハブを選択します。 このチュートリアルでは、**ContosoTestHub** を使います。 [ハブ] ウィンドウで **[IoT デバイス]** を選びます。
 
-4. **[+新規]** を選択します。 [デバイスの追加] ウィンドウで、デバイス ID を入力します。 このチュートリアルでは、**Contoso-Test-Device** を使います。 キーは空のままにし、**[キーの自動生成]** をオンにします。 **[デバイスを IoT Hub に接続]** を有効にします。 **[保存]** を選択します。
+4. **[IoT デバイス]** ペインの **[+Add Device]\(+デバイスの追加\)** を選択します。 [デバイスの追加] ウィンドウで、デバイス ID を入力します。 このチュートリアルでは、**Contoso-Test-Device** を使います。 キーは空のままにし、**[キーの自動生成]** をオンにします。 **[デバイスを IoT Hub に接続]** を有効にします。 **[保存]** を選択します。
 
    ![[デバイスの追加] 画面](./media/iot-hub-include-create-simulated-device-portal/add-device.png)
 

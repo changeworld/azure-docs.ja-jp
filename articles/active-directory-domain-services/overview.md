@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 04/28/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 5854d8cecd1de8121b6129d86a70c1f5ad9518f2
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 8c390593778917bef45b20d27e11e1b642b194c6
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175390"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303570"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは
 
-Azure Active Directory Domain Services (AD DS) には、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、ライトウェイト ディレクトリ アクセス プロトコル (LDAP)、Kerberos または NTLM 認証など) が用意されています。 クラウドでドメイン コントローラー (DC) のデプロイ、管理、修正プログラムの適用を行わなくても、これらのドメイン サービスを使用することができます。
+Azure Active Directory Domain Services (Azure AD DS) では、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、ライトウェイト ディレクトリ アクセス プロトコル (LDAP)、Kerberos/NTLM 認証など) が提供されます。 クラウドでドメイン コントローラー (DC) のデプロイ、管理、修正プログラムの適用を行わなくても、これらのドメイン サービスを使用することができます。
 
 Azure AD DS マネージド ドメインを使用すると、最新の認証方法を使用できない、またはディレクトリ参照のたびにオンプレミスの AD DS 環境にアクセスすることが望ましくないレガシ アプリケーションをクラウドで実行できます。 クラウドで AD DS 環境を管理することなく、オンプレミス環境からマネージド ドメインに、これらのレガシ アプリケーションをリフト アンド シフトすることができます。
 

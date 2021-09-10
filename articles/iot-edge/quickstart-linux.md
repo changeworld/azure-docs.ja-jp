@@ -2,19 +2,18 @@
 title: Linux 上に Azure IoT Edge デバイスを作成するクイック スタート | Microsoft Docs
 description: このクイックスタートでは、Linux で IoT Edge デバイスを作成した後、Azure portal から事前作成されたコードをリモートで展開する方法を学習します。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/07/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cdc5dd2df0dc6ac682d37aea3328545fcb7e5ad2
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: d06a4af7d9280eb3bab076ff103968d94fd38839
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728610"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215392"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする
 
@@ -279,6 +278,8 @@ Azure Marketplace から初めてのモジュールをデプロイするには�
 
 1. デバイスの一覧でターゲット デバイスのデバイス ID を選択します。
 
+   新しい IoT Edge デバイスを作成すると、状態コード `417 -- The device's deployment configuration is not set` が Azure portal に表示されます。 この状態は正常であり、デバイスでモジュールのデプロイを受け取る準備ができていることを意味します。
+
 1. 上部のバーで **[モジュールの設定]** を選択します。
 
    ![[モジュールの設定] の選択を示すスクリーンショット。](./media/quickstart/select-set-modules.png)
@@ -394,7 +395,7 @@ az group list
 
 このクイック スタートでは、IoT Edge デバイスを作成し、Azure IoT Edge クラウド インターフェイスを使用してコードをデバイスにデプロイしました。 その環境に関する生データを生成するテスト デバイスができあがりました。
 
-次の手順では、ビジネス ロジックを実行する IoT Edge モジュールの作成を開始できるように、ローカル開発環境を設定します。
+次のチュートリアルでは、Azure portal からデバイスのアクティビティと正常性を監視する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [Linux デバイス用の IoT Edge モジュールの開発を始める](tutorial-develop-for-linux.md)
+> [IoT Edge デバイスを監視する](tutorial-monitor-with-workbooks.md)

@@ -3,12 +3,12 @@ title: Azure Video Analyzer を使用してライブ ビデオでオブジェク
 description: このクイックスタートでは、Azure Video Analyzer 使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードでオブジェクトが線を越えたことを検出する方法を示します。
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.openlocfilehash: 0b87d80c5dcc7a72bf940cac3573ee5e68964022
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 7257562626b17c8f61479eb1ba4d51fea52d3c91
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604663"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123185959"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>チュートリアル: ライブ ビデオでオブジェクトが仮想線を越えたことを検出する
 
@@ -113,7 +113,7 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
    }
 ```
 
-ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 ライブ ビデオのフレーム レートが 30 フレーム/秒の場合は、推論のために毎秒少なくとも 2 個のフレームを HTTP サーバーに送信する必要があることを意味します。 AI モデルには、処理用の最大 FPS があります。これは、`maximumSamplesPerSecond` に設定する必要がある最も高い値です。
+ここで、`skipSamplesWithoutAnnotation` は `false` に設定されています。これは、推論結果があるかどうかにかかわらず、拡張ノードではすべてのフレームをダウンストリームのオブジェクト トラッカー ノードに渡す必要があるためです。 オブジェクト トラッカーを使用すると、約 15 フレームにわたってオブジェクトを追跡できます。 AI モデルには、処理用の最大 FPS があります。これは、`maximumSamplesPerSecond` に設定する必要がある最も高い値です。
 
 また、ライン クロッシング ノードのパラメーター プレースホルダー `linecrossingName` と `lineCoordinates` も確認してください。 これらのパラメーターには既定値が用意されていますが、operations.json ファイルを使用してこれらを上書きします。 operations.json ファイルの他のパラメーターをトポロジに渡す方法 (rtsp url) を確認してください。  
 
@@ -251,6 +251,9 @@ HTTP 拡張プロセッサ ノードは、0 番目、15 番目、30 番目、...
 * 超えられた `clockwiseTotal` の数。
 * 超えられた `counterclockwiseTotal` の数。
 * `direction` には、このイベントの方向が含まれています。
+
+> [!NOTE] 
+> このチュートリアルのワンクリック デプロイを使用して Azure リソースをデプロイした場合は、Standard DS1 仮想マシンが作成されます。 ただし、YOLO のように多くのリソースを消費する AI モデルから正確な結果を得るには、VM サイズの増加が必要な場合があります。 [VM のサイズを変更](../../virtual-machines/windows/resize-vm.md)し、要件に基づいて vCPU の数とメモリを増やします。 次に、ライブ パイプラインを再アクティブ化して推論を表示します。
 
 ## <a name="customize-for-your-own-environment"></a>独自の環境に合わせてカスタマイズする
 

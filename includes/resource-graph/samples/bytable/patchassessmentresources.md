@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1b1c91ac00a359b9fc33ebacca26c2e2ebfae5e3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2e2695f2c2b193e77b286b30b5300aa09d099358
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456847"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308864"
 ---
 ### <a name="count-of-os-update-installation-done"></a>OS 更新プログラムのインストールが完了した回数
 
-過去 7 日間にマシンに対して実行された OS 更新プログラムのインストール実行の状態の一覧を返します
+過去 7 日間にマシンに対して実行された OS 更新プログラムのインストール実行の状態の一覧を返します。
 
 ```kusto
 PatchAssessmentResources
@@ -50,7 +50,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type !has 'softwarepatch
 
 ### <a name="list-available-os-updates-for-all-your-machines-grouped-by-update-category"></a>更新プログラム カテゴリ別にグループ化されたすべてのマシンで使用可能な OS 更新プログラムを一覧表示する
 
-マシンの保留中の OS の一覧を返します
+マシンの保留中の OS の一覧を返します。
 
 ```kusto
 PatchAssessmentResources
@@ -85,7 +85,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type !has 'softwarepatch
 
 ### <a name="list-of-linux-os-update-installation-done"></a>Linux OS 更新プログラムのインストールが完了した一覧
 
-過去 7 日間にマシンに対して実行された Windows Server OS 更新プログラムのインストール実行の状態の一覧を返します
+過去 7 日間にマシンに対して実行された Linux Server OS 更新プログラムのインストール実行の状態の一覧を返します。
 
 ```kusto
 PatchAssessmentResources
@@ -122,7 +122,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type has 'softwarepatche
 
 ### <a name="list-of-windows-server-os-update-installation-done"></a>Windows Server OS 更新プログラムのインストールが完了したものの一覧
 
-過去 7 日間にマシンに対して実行された Windows Server OS 更新プログラムのインストール実行の状態の一覧を返します
+過去 7 日間にマシンに対して実行された Windows Server OS 更新プログラムのインストール実行の状態の一覧を返します。
 
 ```kusto
 PatchAssessmentResources

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7bdc0008baa1ee03c11aeeba03485fd7cd09e6f9
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612519"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969818"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate 検出および評価を使用して Hyper-V で実行されているサーバーを検出する
 
@@ -138,13 +138,14 @@ SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 Azure Migrate には軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスによって、サーバー検出が実行され、サーバーの構成とパフォーマンス メタデータが Azure Migrate に送信されます。 アプライアンスは、プロジェクトからダウンロードできる VHD ファイルをデプロイすることで設定できます。
 
 > [!NOTE]
-> なんらかの理由で、テンプレートを使用してアプライアンスを設定できない場合は、既存の Windows Server 2016 サーバー上で PowerShell スクリプトを使用して設定できます。 [詳細については、こちらを参照してください](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。
+> なんらかの理由で、テンプレートを使用してアプライアンスを設定できない場合は、既存の Windows Server 2016 サーバー上で PowerShell スクリプトを使用して設定できます。 [詳細については、こちらを参照してください](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/>
+> VHD テンプレートを使用してアプライアンスをデプロイする方法は、Azure Government クラウドではサポートされません。 Azure Government クラウド用のアプライアンスをデプロイする方法について[詳細をご覧ください](/azure/migrate/deploy-appliance-script-government)。
 
 このチュートリアルでは、次のように、Hyper-V 環境で実行されているサーバーにアプライアンスを設定します。
 
 1. アプライアンス名を指定し、ポータルでプロジェクト キーを生成します。
 1. Azure portal から圧縮された Hyper-V VHD をダウンロードします。
-1. アプライアンスを作成し、Azure Migrate: Discovery and Assessment に接続できることを確認します。
+1. アプライアンスを作成し、それが Azure Migrate: 検出および評価に接続できることを確認します。
 1. 初回のアプライアンス構成を行い、プロジェクト キーを使用してプロジェクトに登録します。
 
 ### <a name="1-generate-the-project-key"></a>1.プロジェクト キーを生成する
@@ -224,11 +225,11 @@ Azure Migrate には軽量の Azure Migrate アプライアンスが使用され
       - サポートされるのは HTTP プロキシのみです。
       - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
     - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**: Azure Migrate: Discovery and Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+    - **更新プログラムのインストール**: Azure Migrate の検出および評価によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\) > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
 
     ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)

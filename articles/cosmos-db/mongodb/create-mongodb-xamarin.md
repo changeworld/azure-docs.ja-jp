@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/09/2020
+ms.date: 08/26/2021
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 699dc5a3f069d3f8a8a3c20d9daa2d5cf9432c1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0d086592a372cc583c4929a897e42d9882a68545
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785797"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033814"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイックスタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -204,6 +204,10 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 ## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Xamarin.Forms アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。
+
+Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+* 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB の MongoDB 用 API で構成された Azure Cosmos DB にデータをインポートする](../../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

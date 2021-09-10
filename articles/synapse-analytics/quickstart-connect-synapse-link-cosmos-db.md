@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 7d77431f5caa1a2ac67428326dcd6d4ce75a4a93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6d89fd1aa0cb0047057340dd85ec1c0d318016b7
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625842"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106792"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB 用の Azure Synapse Link に接続する
 
@@ -68,4 +68,5 @@ Azure Cosmos DB データベースは、[Azure Cosmos DB] セクションの **[
 ## <a name="next-steps"></a>次のステップ
 
 * [Synapse と Azure Cosmos DB の間でサポートされている内容について学習する](./synapse-link/concept-synapse-link-cosmos-db-support.md)
-* [Azure Synapse Analytics 用の Apache Spark を使用して分析ストアに対してクエリを実行する方法を学習する](synapse-link/how-to-query-analytical-store-spark.md)
+* [Azure Synapse Analytics 用の Apache Spark 3 を使用して分析ストアに対してクエリを実行する方法を学習する](synapse-link/how-to-query-analytical-store-spark-3.md)
+* [Azure Synapse Analytics 用の Apache Spark 2 を使用して分析ストアに対してクエリを実行する方法を学習する](synapse-link/how-to-query-analytical-store-spark.md)

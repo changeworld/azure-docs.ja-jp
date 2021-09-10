@@ -1,22 +1,22 @@
 ---
 title: Azure Data Factory の新機能
-description: この新機能のページでは、Azure Data Factory の新機能と機能強化について説明します。
+description: このページでは、Azure Data Factory の新機能と最近の機能強化について説明します。 Azure Data Factory は、ETL (抽出、変換、読み込み)、ELT (抽出、読み込み、変換)、データ統合という複雑なハイブリッド プロジェクト用に構築されたマネージド クラウド サービスです。
 author: pennyzhou-msft
 ms.author: xupzhou
-ms.reviewer: xupzhou
 ms.service: data-factory
+ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: fe4c5fb72ce3cd32e14bad211683e01ac6edf3ab
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 7509be190afd0354f730f72dd97c5b5a118f20dd
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114342628"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187345"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Azure Data Factory の新機能
 
-Azure Data Factory には継続的に改善が施されています。 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
+Azure Data Factory サービスには継続的に改善が施されています。 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
 - 最新のリリース
 - 既知の問題
@@ -24,7 +24,30 @@ Azure Data Factory には継続的に改善が施されています。 常に最
 - 非推奨の機能
 - 変更の計画
 
-このページは毎月更新されるため、定期的にご確認ください。 
+このページは毎月更新されるため、定期的にアクセスしてご確認ください。 
+
+## <a name="august-2021"></a>2021 年 8 月
+<br>
+<table>
+<tr><td><b>サービス カテゴリ</b></td><td><b>サービスの機能強化</b></td><td><b>詳細</b></td></tr>
+  <tr><td><b>継続的インテグレーションと継続的デリバリー (CI/CD)</b></td><td>Azure Government と Azure China での GitHub サポートによる CICD の向上</td><td>米国政府向け Azure およびAzure China で GitHub のサポートが追加されました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/cicd-improvements-with-github-support-in-azure-government-and/ba-p/2686918">詳細情報</a></td></tr>
+<tr><td rowspan=2><b>データの移動</b></td><td>Azure Data Factory において、Azure Cosmos DB の MongoDB 用 API コネクタでバージョン 3.6 と 4.0 がサポートされます</td><td>Azure Data Factory Cosmos DB の MongoDB 用 API コネクタで、サーバー バージョン 3.6 と 4.0 がサポートされるようになりました。<br><a href="connector-azure-cosmos-db-mongodb-api.md">詳細情報</a></td></tr>
+<tr><td>COPY ステートメントを使用した Azure Synapse Analytics へのデータ読み込みの強化</td><td>Azure Data Factory Azure Synapse Analytics コネクタで、ステージング コピーと、 *.* を COPY ステートメントの wildcardFilename として使用するコピー ソースがサポートされるようになりました。<br><a href="connector-azure-sql-data-warehouse.md#use-copy-statement">詳細情報</a></td></tr>
+<tr><td><b>データ フロー</b></td><td>データ フローで REST エンドポイントをソースおよびシンクとして利用できます</td><td>Azure Data Factory と Azure Synapse Analytics のデータ フローで、JSON と XML の両方のペイロードが完全にサポートされるソースおよびシンクとして REST エンドポイントがサポートされるようになりました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/rest-source-and-sink-now-available-for-data-flows/ba-p/2596484">詳細情報</a></td></tr>
+<tr><td><b>Integration Runtime</b></td><td>セルフホステッド統合ランタイムの診断ツールが利用可能になりました</td><td>セルフホステッド統合ランタイム用の診断ツールは、ユーザー エクスペリエンスを向上させ、ユーザーによる潜在的な問題の検出を支援するように設計されています。 このツールでは、セルフホステッド統合ランタイム マシンで一連のテスト シナリオが実行されます。すべてのシナリオには、よくある問題に対する典型的な正常性チェック ケースが含まれています。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/diagnostic-tool-for-self-hosted-integration-runtime/ba-p/2634905">詳細情報</a></td></tr>
+<tr><td><b>オーケストレーション</b></td><td>高度なフィルター処理オプションを含むカスタム イベント トリガーが一般提供されました</td><td>Event Grid にポストされたカスタム トピックに応答するトリガーを作成できるようになりました。 さらに、高度なフィルター処理を利用して、応答するイベントを細かく制御できます。<br><a href="how-to-create-custom-event-trigger.md">詳細情報</a></td></tr>
+</table>
+
+## <a name="july-2021"></a>2021 年 7 月
+<br>
+<table>
+<tr><td><b>サービス カテゴリ</b></td><td><b>サービスの機能強化</b></td><td><b>詳細</b></td></tr>
+<tr><td><b>データの移動</b></td><td>ADF のデータ コピー ツールでメタデータ駆動型のデータ インジェスト パイプラインを 10 分以内に取得します (パブリック プレビュー)</td><td>これにより、10 分以内に、データ コピー ツールでメタデータ駆動型アプローチを使用して大規模なデータ コピー パイプラインを作成できます (パブリック プレビュー)。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/get-metadata-driven-data-ingestion-pipelines-on-adf-within-10/ba-p/2528219">詳細情報</a></td></tr>
+<tr><td><b>データ フロー</b></td><td>データ フロー変換関数に新しいマップ関数が追加されました</td><td>データ エンジニアがマップのデータ型と複雑なマップ構造を簡単に生成、読み取り、および更新できるように、データ フロー変換関数の新しいセットが追加されました。<br><a href="data-flow-expression-functions.md#map-functions">詳細情報</a></td></tr>
+<tr><td><b>Integration Runtime</b></td><td>Azure Data Factory のマネージド VNET で 5 つの新しいリージョンが利用可能になりました (パブリック プレビュー)</td><td>これらの 5 つの新しいリージョン (中国東部 2、中国北部 2、US Gov アリゾナ、US Gov テキサス、US Gov バージニア) は、Azure Data Factory のマネージド仮想ネットワークで利用できます (パブリック プレビュー)。<br><a href="managed-virtual-network-private-endpoint.md#azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions">詳細情報</a></td></tr>
+<tr><td rowspan=2><b>開発者の生産性</b></td><td>ADF ホームページが再設計されて、いくつかのセッションが追加されました</td><td>Data Factory のホームページが再設計されて、コントラストとリフロー機能が改善されました。 さらに、データ統合体験で生産性を向上させるためのいくつかのセクションがホームページに追加されました。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">詳細情報</a></td></tr>
+<tr><td>Azure Data Factory Studio の新しいランディング ページ</td><td>Azure portal の Data Factory ブレードのランディング ページ。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">詳細情報</a></td></tr>
+</table>
 
 ## <a name="june-2021"></a>2021 年 6 月
 <br>
@@ -47,8 +70,3 @@ Azure Data Factory には継続的に改善が施されています。 常に最
 - [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 - [Twitter](https://twitter.com/AzDataFactory?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
 - [ビデオ](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/featured)
-
-
-
-
-

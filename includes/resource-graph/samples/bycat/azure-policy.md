@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/09/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b31b0a1699d4de01f3f09f7689dec380458ee649
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 06337438a60b0f94c4ee8a77f238b2b16c859126
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860627"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309452"
 ---
 ### <a name="compliance-by-policy-assignment"></a>ポリシーの割り当て別のコンプライアンス
 
@@ -125,7 +125,7 @@ Search-AzGraph -Query "PolicyResources | where type =~ 'Microsoft.PolicyInsights
 
 ### <a name="list-all-non-compliant-resources"></a>準拠していないリソースを一覧表示する
 
-リソースの種類別に、コンプライアンスの状態、コンプライアンスの割合、およびリソースの数を表示します。
+`NonCompliant` 状態であるすべてのリソースの種類の一覧を提供します。
 
 ```kusto
 PolicyResources

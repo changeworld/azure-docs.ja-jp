@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 3db33f994c70d2c471ec8147672be5704406157d
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 8f653f8e41d45310cf6d90aebf0484b2a0ea7360
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765373"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272981"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -193,13 +193,14 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
 ## <a name="complete-the-migration"></a>移行を完了する
 
 1. 移行が完了したら、VM を右クリックして、 **[レプリケーションの停止]** を選択します。 これで、オンプレミスのマシンのレプリケーションが停止し、VM のレプリケーション状態情報がクリーンアップされます。
-2. Windows VM および Linux の VM エージェントは、移行中に自動的にインストールされます。 マシンに Linux OS がある場合は、Linux VM エージェントのインストールが適切に行われるように、移行マシンで Azure VM Linux エージェントの[要件](../virtual-machines/extensions/agent-linux.md#requirements)を確認します。
-3. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
-4. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
-5. 移行された Azure VM インスタンスにトラフィックを切り替えます。
-6. ローカル VM インベントリからオンプレミスの VM を削除します。
-7. ローカル バックアップからオンプレミスの VM を削除します。
-8. Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。
+1. Windows VM および Linux の VM エージェントは、移行中に自動的にインストールされます。
+1. [Azure VM での Windows のライセンス認証に関する問題を確認し、トラブルシューティングします。](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
+1. ホスト名、データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
+1. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
+1. 移行された Azure VM インスタンスにトラフィックを切り替えます。
+1. ローカル VM インベントリからオンプレミスの VM を削除します。
+1. ローカル バックアップからオンプレミスの VM を削除します。
+1. Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。
 
 ## <a name="post-migration-best-practices"></a>移行後のベスト プラクティス
 

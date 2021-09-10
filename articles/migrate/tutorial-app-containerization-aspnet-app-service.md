@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 07/02/2021
 ms.author: rahugup
-ms.openlocfilehash: 674fcd1fc7ad6035278448b46528cc939b5e8a6e
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: fd0a7d3e1af6bb0a0dad10f9a92194b495b13b91
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294642"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253109"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-app-service"></a>ASP.NET アプリのコンテナー化と Azure App Service への移行
 
@@ -138,11 +138,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **[サインイン]** をクリックして Azure アカウントにログインします。
 
 1. Azure で認証するには、デバイス コードが必要です。 [サインイン] をクリックすると、デバイス コードを含むモーダルが開きます。
-2. **[コードのコピーとサインイン]** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure サインイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
+2. **[Copy code & sign in]\(コードのコピーとサインイン\)** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure サインイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
 
     ![デバイス コードを示すモーダル。](./media/tutorial-containerize-apps-aks/login-modal.png)
 
-3. 新しいタブで、デバイス コードを貼り付け、Azure アカウントの資格情報を使用してサインインを完了します。 サインインが完了したら、ブラウザー タブを閉じて、App Containerization ツールの Web インターフェイスに戻ることができます。
+3. 新しいタブで、デバイス コードを貼り付け、Azure アカウントの資格情報を使用してサインインを完了します。 サインインが完了したら、[ブラウザー] タブを閉じて、App Containerization ツールの Web インターフェイスに戻ることができます。
 4. 使用する **Azure テナント** を選択します。
 5. 使用する **Azure サブスクリプション** を指定します。
 
@@ -227,7 +227,7 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
          - Azure Key Vault がない場合、または新しい Key Vault を作成する場合は、 **[Azure Key Vault の新規作成]** をクリックして、ツールからの作成を選択できます。
          - このツールを使用すると、Key Vault を通じてシークレットを管理するために必要なアクセス許可が、自動的に割り当てられます。
 
-3. **Azure ファイル共有を指定する**: ディレクトリまたはフォルダーをさらに追加し、永続ストレージとして Azure ファイル共有オプションを選択した場合は、デプロイ プロセス中に Azure Migrate: App Containerization ツールで使用される Azure ファイル共有を指定します。 ツールでは、Azure ファイル共有用に構成されたアプリケーション ディレクトリまたはフォルダーをコピーし、デプロイ中にこれらをアプリケーション コンテナーにマウントします。 
+3. **Azure ファイル共有を指定する**: ディレクトリまたはフォルダーをさらに追加し、永続ストレージとして Azure ファイル共有オプションを選択した場合は、デプロイ プロセス中に Azure Migrate: App Containerization ツールで使用される Azure ファイル共有を指定します。 ツールでは Azure Files 用に構成されたアプリケーション ディレクトリまたはフォルダーをコピーし、デプロイ中にこれらをアプリケーション コンテナーにマウントします。 
 
      - Azure ファイル共有がない場合、または新しい Azure ファイル共有を作成する場合は、 **[Create new Storage Account and file share]\(新しいストレージ アカウントとファイル共有の作成\)** をクリックすることで、ツールから作成できます。  
 

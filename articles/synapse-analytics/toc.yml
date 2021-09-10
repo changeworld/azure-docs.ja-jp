@@ -599,7 +599,7 @@ items:
             href: ./spark/apache-spark-notebook-concept.md
           - name: パッケージの管理
             href: ./spark/apache-spark-azure-portal-add-libraries.md
-          - name: 監視ツール
+          - name: Apache Spark アプリケーションを監視する
             href: monitoring/how-to-monitor-spark-applications.md
       - name: 操作方法ガイド
         items:
@@ -645,14 +645,18 @@ items:
                 href: ./spark/apache-spark-history-server.md
               - name: Spark アプリケーションの監視
                 href: monitoring/apache-spark-applications.md
-              - name: Spark プールの監視
+              - name: Apache Spark プールの監視
                 href: monitoring/how-to-monitor-spark-pools.md
-              - name: Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
+              - name: API を使用して Apache Spark アプリケーションのメトリックを収集する
                 href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
-              - name: Prometheus と Grafana を使用した Apache Spark アプリケーション レベルのメトリックの監視
+              - name: Prometheus と Grafana を使用して Apache Spark アプリケーションのメトリックを監視する
                 href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
-              - name: Azure Log Analytics を使用したメトリックおよびログの収集と視覚化 (プレビュー)
+              - name: Azure Log Analytics を使用して Apache Spark アプリケーションを監視する (プレビュー)
                 href: ./spark/apache-spark-azure-log-analytics.md
+              - name: Azure Storage アカウントを使用して Apache Spark アプリケーションのログとメトリックを収集する
+                href: ./spark/azure-synapse-diagnostic-emitters-azure-storage.md
+              - name: Azure Event Hubs を使用して Apache Spark アプリケーションのログとメトリックを収集する
+                href: ./spark//azure-synapse-diagnostic-emitters-azure-eventhub.md
           - name: データ ソース
             items:
               - name: Azure Cosmos DB Spark 3

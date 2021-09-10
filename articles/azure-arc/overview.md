@@ -3,12 +3,12 @@ title: Azure Arc の概要
 description: Azure Arc とは何か、そしてお客様が Azure の他のサービスや機能を使用してハイブリッド リソースの管理とガバナンスを実現するうえでどのように役立つかについて説明します。
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: b67c01f666916508946b49b0ad45d7151ed179ef
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 878e1b9166a10a071d3870edcc70d1775fbcd914
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287301"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867127"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc の概要
 
@@ -30,7 +30,7 @@ Azure Arc は、マルチクラウドとオンプレミスの管理プラット�
 * サーバー - Windows または Linux を実行するマシン (物理マシンと仮想マシンの両方)。
 * Kubernetes クラスター - 複数の Kubernetes ディストリビューションをサポート。
 * Azure データ サービス - Azure SQL Managed Instance および PostgreSQL Hyperscale サービス。
-* SQL Server - あらゆる場所からインスタンスを登録します。
+* SQL Server - 任意の場所からインスタンスを [Azure Arc 対応サーバー上の SQL Server](/sql/sql-server/azure-arc/overview) に登録します。
 
 ## <a name="what-does-azure-arc-deliver"></a>Azure Arc で実現できること
 
@@ -48,7 +48,7 @@ Azure Arc の主な機能は次のとおりです。
 
 * あたかも Azure で実行しているかのように、Kubernetes 環境で [Azure データ サービス](../azure-arc/kubernetes/custom-locations.md) (具体的には Azure SQL Managed Instance と Azure Database for PostgreSQL Hyperscale) を実行し、アップグレードと更新、セキュリティ、監視などのメリットを活かす。 エラスティック スケールを使用し、Azure への継続的な接続が得られなくても、アプリケーションのダウンタイムを発生させずに更新プログラムを適用する。
 
-* [Azure Arc 対応 Kubernetes](./kubernetes/overview.md) クラスターの上に[カスタムの場所](./kubernetes/custom-locations.md)を作成し、Azure サービス インスタンスをデプロイするためのターゲットの場所として使用する。 [Azure Arc 対応 Data Services](./data/deploy-data-controller-direct-mode.md)、[Azure Arc 上の App Services](../app-service/overview-arc-integration.md) (Web、関数、ロジック アプリを含む) および [Kubernetes 上の Event Grid](../event-grid/kubernetes/overview.md) の Azure サービス クラスター拡張機能をデプロイする。
+* [Azure Arc 対応 Kubernetes](./kubernetes/overview.md) クラスターの上に[カスタムの場所](./kubernetes/custom-locations.md)を作成し、Azure サービス インスタンスをデプロイするためのターゲットの場所として使用する。 [Azure Arc 対応 Data Services](./data/create-data-controller-direct-azure-portal.md)、[Azure Arc 上の App Services](../app-service/overview-arc-integration.md) (Web、関数、ロジック アプリを含む) および [Kubernetes 上の Event Grid](../event-grid/kubernetes/overview.md) の Azure サービス クラスター拡張機能をデプロイする。
 
 * Azure portal、Azure CLI、Azure PowerShell、Azure REST API のどれを使用していても、統合されたエクスペリエンスで Azure Arc 対応リソースを表示する。
 
@@ -78,14 +78,16 @@ Arc 対応 Kubernetes で使用されるすべての Azure サービス (Azure S
 
 ### <a name="azure-arc-enabled-data-services"></a>Azure Arc 対応データ サービス
 
-現在のプレビュー フェーズでは、追加費用なしで Azure Arc 対応データ サービスをご利用いただけます。
+詳細については、[Azure の価格のページ](https://azure.microsoft.com/pricing/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Arc 対応サーバーの詳細については、次の[概要](./servers/overview.md)を参照してください
+* Azure Arc 対応サーバーの詳細については、次の[概要](./servers/overview.md)を参照してください
 
-* Arc 対応 Kubernetes の詳細については、次の[概要](./kubernetes/overview.md)を参照してください
+* Azure Arc 対応 Kubernetes の詳細については、次の[概要](./kubernetes/overview.md)を参照してください
 
-* Arc 対応データ サービスの詳細については、次の[概要](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/)を参照してください
+* Azure Arc 対応データ サービスの詳細については、次の[概要](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/)を参照してください
 
-* [概念実証のジャンプスタート](https://azurearcjumpstart.io/azure_arc_jumpstart/)に関するページから Arc 対応サービスを体験します
+* Azure Arc 対応サーバーでの SQL Server の詳細については、次の[概要](/sql/sql-server/azure-arc/overview)を参照してください
+
+* [概念実証のジャンプスタート](https://azurearcjumpstart.io/azure_arc_jumpstart/)に関するページから Azure Arc 対応サービスを体験します

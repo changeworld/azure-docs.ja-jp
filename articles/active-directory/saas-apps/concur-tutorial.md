@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/26/2020
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 006d30839e16ea303b684fb0ee1be7f40dcbdfb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34b18de633d586b6b32bc11b4eb6cb1a65928550
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736961"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222626"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur の統合
 
@@ -37,8 +37,9 @@ ms.locfileid: "98736961"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Concur では、**SP** によって開始される SSO がサポートされます
-* Concur では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Concur では、**SP** Initiated SSO がサポートされます。
+* Concur では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* Concur では、[自動化されたユーザー プロビジョニング](concur-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-concur-from-the-gallery"></a>ギャラリーからの Concur の追加
 
@@ -134,6 +135,8 @@ Concur に対する Azure AD SSO を構成してテストするには、次の�
 ### <a name="create-concur-test-user"></a>Concur のテスト ユーザーを作成する
 
 このセクションでは、B. Simon というユーザーを Concur に作成します。 Concur では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Concur にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+
+Concur では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./concur-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

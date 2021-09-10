@@ -6,25 +6,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/15/2021
+ms.date: 08/17/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 817f282f167277c90ecfc19e11dd9312640c8bbf
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 2b4a3a8049c7d6752c581200277a21d794a248c9
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122442246"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864884"
 ---
 <a name="HOLTop"></a>
 
+# <a name="version-32-preview1"></a>[バージョン 3.2-preview.1](#tab/version-3-2)
+
+[v3.2-preview リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.2-preview パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.2.0-beta.1) | [v3.2-preview サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+
 # <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
-[v3.1 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [v3.1 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0) | [v3.1 サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
-
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-[v3 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3.1 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0) | [サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 ---
 
@@ -44,21 +44,39 @@ ms.locfileid: "122442246"
 
 Visual Studio IDE を使用して新しい .NET Core コンソール アプリを作成します。 1 つの C# ソース ファイル (*program.cs*) を含んだ "Hello World" プロジェクトが作成されます。
 
+# <a name="version-32-preview1"></a>[バージョン 3.2-preview.1](#tab/version-3-2)
+
+**ソリューション エクスプローラー** でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択して `Azure.AI.TextAnalytics` を検索します。 **[プレリリースを含める]** がオンになっていることを確認します。 バージョン `5.2.0-beta.1` を選択し、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
+
+このバージョンの Text Analytics API に含まれる機能:
+
+* センチメント分析
+* 意見マイニング
+* 言語検出
+* エンティティの認識
+* エンティティ リンク設定
+* 個人が特定される情報の認識
+* キー フレーズの抽出
+* 非同期メソッド
+* Text Analytics for Health
+* テキストの概要作成
+
 # <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 **ソリューション エクスプローラー** でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択して `Azure.AI.TextAnalytics` を検索します。 バージョン `5.1.0` を選択し、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
 
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
+このバージョンの Text Analytics API に含まれる機能:
 
-**ソリューション エクスプローラー** でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択して `Azure.AI.TextAnalytics` を検索します。 バージョン `5.0.0` を選択し、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
-
-
-> [!TIP]
-> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs) にあり、このクイックスタートのコード例が含まれています。 
-
+* センチメント分析
+* 意見マイニング
+* 言語検出
+* エンティティの認識
+* エンティティ リンク設定
+* 個人が特定される情報の認識
+* キー フレーズの抽出
+* 非同期メソッド
+* Text Analytics for Health
 ---
-
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 *program.cs* ファイルを開き、次の `using` ディレクティブを追加します。
 
@@ -78,7 +96,7 @@ private static readonly AzureKeyCredential credentials = new AzureKeyCredential(
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
-アプリケーションの `Main` メソッドを置き換えます。 ここで呼び出されるメソッドは、後で定義します。
+アプリケーションの `Main` メソッドを置き換えます。 ここで呼び出されるメソッドは、後で定義します。 
 
 ```csharp
 static void Main(string[] args)
@@ -98,46 +116,6 @@ static void Main(string[] args)
 }
 ```
 
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-*program.cs* ファイルを開き、次の `using` ディレクティブを追加します。
-
-```csharp
-using Azure;
-using System;
-using System.Globalization;
-using Azure.AI.TextAnalytics;
-```
-
-アプリケーションの `Program` クラスに、リソースのキーとエンドポイントの変数を作成します。
-
-[!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
-
-```csharp
-private static readonly AzureKeyCredential credentials = new AzureKeyCredential("<replace-with-your-text-analytics-key-here>");
-private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
-```
-
-アプリケーションの `Main` メソッドを置き換えます。 ここで呼び出されるメソッドは、後で定義します。
-
-```csharp
-static void Main(string[] args)
-{
-    var client = new TextAnalyticsClient(endpoint, credentials);
-    // You will implement these methods later in the quickstart.
-    SentimentAnalysisExample(client);
-    LanguageDetectionExample(client);
-    EntityRecognitionExample(client);
-    EntityLinkingExample(client);
-    KeyPhraseExtractionExample(client);
-
-    Console.Write("Press any key to exit.");
-    Console.ReadKey();
-}
-```
-
----
-
 ## <a name="object-model"></a>オブジェクト モデル
 
 Text Analytics クライアントは、キーを使用して Azure に対して認証を行う `TextAnalyticsClient` オブジェクトであり、テキストを単一の文字列またはバッチとして受け取る機能を提供します。 テキストは、同期的または非同期的に API に送信できます。 応答オブジェクトには、送信する各ドキュメントの分析情報が格納されます。 
@@ -146,40 +124,20 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 
 [!INCLUDE [text-analytics-character-limits](../character-limits.md)]
 
-## <a name="code-examples"></a>コード例
-
-* [感情分析](#sentiment-analysis)
-* [意見マイニング](#opinion-mining)
-* [言語検出](#language-detection)
-* [名前付きエンティティの認識](#named-entity-recognition-ner)
-* [エンティティ リンク設定](#entity-linking)
-* [キー フレーズ抽出](#key-phrase-extraction)
-
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
-
 先ほどの main メソッドが、エンドポイントと資格情報を使用して、新しいクライアント オブジェクトを作成していることを確認してください。
 
 ```csharp
 var client = new TextAnalyticsClient(endpoint, credentials);
 ```
 
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-先ほどの main メソッドが、エンドポイントと資格情報を使用して、新しいクライアント オブジェクトを作成していることを確認してください。
-
-```csharp
-var client = new TextAnalyticsClient(endpoint, credentials);
-```
-
----
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
-
 前に作成したクライアントを受け取る `SentimentAnalysisExample()` という新しい関数を作成し、その `AnalyzeSentiment()` 関数を呼び出します。 返される `Response<DocumentSentiment>` オブジェクトには、入力ドキュメント全体のセンチメント ラベルとスコアが含まれます。また、成功した場合は各文の感情分析が含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```csharp
 static void SentimentAnalysisExample(TextAnalyticsClient client)
@@ -220,6 +178,8 @@ Document sentiment: Positive
 ## <a name="opinion-mining"></a>意見マイニング
 
 前に作成したクライアントを受け取る `SentimentAnalysisWithOpinionMiningExample()` という新しい関数を作成し、その `AnalyzeSentimentBatch()` 関数を `AnalyzeSentimentOptions` バッグの `IncludeOpinionMining` オプションで呼び出します。 返される `AnalyzeSentimentResultCollection` オブジェクトには、`Response<DocumentSentiment>` を表す `AnalyzeSentimentResult` のコレクションが含まれます。 `SentimentAnalysis()` と `SentimentAnalysisWithOpinionMiningExample()` の違いは、後者には、個々の文の `SentenceOpinion`、つまり分析されたターゲットおよび関連する評価を示す情報が含まれることです。 エラーが発生した場合は、`RequestFailedException` がスローされます。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```csharp
 static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
@@ -303,57 +263,14 @@ Document sentiment: Positive
 Press any key to exit.
 ```
 
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-前に作成したクライアントを受け取る `SentimentAnalysisExample()` という新しい関数を作成し、その `AnalyzeSentiment()` 関数を呼び出します。 返される `Response<DocumentSentiment>` オブジェクトには、入力ドキュメント全体のセンチメント ラベルとスコアが含まれます。また、成功した場合は各文の感情分析が含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
-
-```csharp
-static void SentimentAnalysisExample(TextAnalyticsClient client)
-{
-    string inputText = "I had the best day of my life. I wish you were there with me.";
-    DocumentSentiment documentSentiment = client.AnalyzeSentiment(inputText);
-    Console.WriteLine($"Document sentiment: {documentSentiment.Sentiment}\n");
-
-    foreach (var sentence in documentSentiment.Sentences)
-    {
-        Console.WriteLine($"\tText: \"{sentence.Text}\"");
-        Console.WriteLine($"\tSentence sentiment: {sentence.Sentiment}");
-        Console.WriteLine($"\tPositive score: {sentence.ConfidenceScores.Positive:0.00}");
-        Console.WriteLine($"\tNegative score: {sentence.ConfidenceScores.Negative:0.00}");
-        Console.WriteLine($"\tNeutral score: {sentence.ConfidenceScores.Neutral:0.00}\n");
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Document sentiment: Positive
-
-        Text: "I had the best day of my life."
-        Sentence sentiment: Positive
-        Positive score: 1.00
-        Negative score: 0.00
-        Neutral score: 0.00
-
-        Text: "I wish you were there with me."
-        Sentence sentiment: Neutral
-        Positive score: 0.21
-        Negative score: 0.02
-        Neutral score: 0.77
-```
-
----
-
 ## <a name="language-detection"></a>言語検出
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
-
-
 前に作成したクライアントを受け取る `LanguageDetectionExample()` という新しい関数を作成し、その `DetectLanguage()` 関数を呼び出します。 返された `Response<DetectedLanguage>` オブジェクトには、検出された言語と共に、その名前と ISO-6391 コードが含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
 
 > [!Tip]
 > 場合によっては、入力に基づいて言語を明確に区別するのが困難なことがあります。 `countryHint` パラメーターを使用して、2 文字の国/地域コードを指定できます。 API の既定では、既定の countryHint として "US" が使用されます。この動作を削除するには、この値を空の文字列に設定して (`countryHint = ""`)、このパラメーターをリセットします。 別の既定値を設定するには、`TextAnalyticsClientOptions.DefaultCountryHint` プロパティを設定し、クライアントの初期化中に渡します。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```csharp
 static void LanguageDetectionExample(TextAnalyticsClient client)
@@ -370,40 +287,12 @@ static void LanguageDetectionExample(TextAnalyticsClient client)
 Language:
         French, ISO-6391: fr
 ```
-
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-
-前に作成したクライアントを受け取る `LanguageDetectionExample()` という新しい関数を作成し、その `DetectLanguage()` 関数を呼び出します。 返された `Response<DetectedLanguage>` オブジェクトには、検出された言語と共に、その名前と ISO-6391 コードが含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
-
-> [!Tip]
-> 場合によっては、入力に基づいて言語を明確に区別するのが困難なことがあります。 `countryHint` パラメーターを使用して、2 文字の国/地域コードを指定できます。 API の既定では、既定の countryHint として "US" が使用されます。この動作を削除するには、この値を空の文字列に設定して (`countryHint = ""`)、このパラメーターをリセットします。 別の既定値を設定するには、`TextAnalyticsClientOptions.DefaultCountryHint` プロパティを設定し、クライアントの初期化中に渡します。
-
-```csharp
-static void LanguageDetectionExample(TextAnalyticsClient client)
-{
-    DetectedLanguage detectedLanguage = client.DetectLanguage("Ce document est rédigé en Français.");
-    Console.WriteLine("Language:");
-    Console.WriteLine($"\t{detectedLanguage.Name},\tISO-6391: {detectedLanguage.Iso6391Name}\n");
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Language:
-        French, ISO-6391: fr
-```
-
-
----
 
 ## <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
-
-
 前に作成したクライアントを受け取る `EntityRecognitionExample()` という新しい関数を作成し、その `RecognizeEntities()` 関数を呼び出して、結果を反復処理します。 返される `Response<CategorizedEntityCollection>` オブジェクトには、検出されたエンティティ `CategorizedEntity` のコレクションが含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```csharp
 static void EntityRecognitionExample(TextAnalyticsClient client)
@@ -435,6 +324,8 @@ Named Entities:
 ## <a name="personally-identifiable-information-pii-recognition"></a>個人を特定できる情報 (PII) の認識
 
 前に作成したクライアントを受け取る `RecognizePIIExample()` という新しい関数を作成し、その `RecognizePiiEntities()` 関数を呼び出して、結果を反復処理します。 返される `PiiEntityCollection` は、検出された PII エンティティの一覧を表します。 エラーが発生した場合は、`RequestFailedException` がスローされます。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```csharp
 static void RecognizePIIExample(TextAnalyticsClient client)
@@ -468,44 +359,11 @@ Text: 859-98-0987, Category: U.S. Social Security Number (SSN), SubCategory: , C
 Text: 800-102-1100, Category: Phone Number, SubCategory: , Confidence score: 0.8
 ```
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-前に作成したクライアントを受け取る `EntityRecognitionExample()` という新しい関数を作成し、その `RecognizeEntities()` 関数を呼び出して、結果を反復処理します。 返される `Response<IReadOnlyCollection<CategorizedEntity>>` オブジェクトには、検出されたエンティティの一覧が含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
-
-```csharp
-static void EntityRecognitionExample(TextAnalyticsClient client)
-{
-    var response = client.RecognizeEntities("I had a wonderful trip to Seattle last week.");
-    Console.WriteLine("Named Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tScore: {entity.ConfidenceScore:F2}\n");
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Named Entities:
-        Text: trip,     Category: Event,        Sub-Category:
-                Score: 0.61
-
-        Text: Seattle,  Category: Location,     Sub-Category: GPE
-                Score: 0.82
-
-        Text: last week,        Category: DateTime,     Sub-Category: DateRange
-                Score: 0.80
-```
-
---- 
-
 ## <a name="entity-linking"></a>エンティティ リンク設定
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
-
 前に作成したクライアントを受け取る `EntityLinkingExample()` という新しい関数を作成し、その `RecognizeLinkedEntities()` 関数を呼び出して、結果を反復処理します。 返される `Response<LinkedEntityCollection>` オブジェクトには、検出されたエンティティ `LinkedEntity` のコレクションが含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。 リンクされたエンティティは一意に識別されるため、同じエンティティの出現は、`LinkedEntityMatch` オブジェクトの一覧として `LinkedEntity` オブジェクトの下にグループ化されます。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```csharp
 static void EntityLinkingExample(TextAnalyticsClient client)
@@ -589,108 +447,11 @@ Linked Entities:
                 Offset: 116
 ```
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-前に作成したクライアントを受け取る `EntityLinkingExample()` という新しい関数を作成し、その `RecognizeLinkedEntities()` 関数を呼び出して、結果を反復処理します。 返される `Response<IReadOnlyCollection<LinkedEntity>>` は、検出されたエンティティの一覧を表します。 エラーが発生した場合は、`RequestFailedException` がスローされます。 リンクされたエンティティは一意に識別されるため、同じエンティティの出現は、`LinkedEntityMatch` オブジェクトの一覧として `LinkedEntity` オブジェクトの下にグループ化されます。
-
-```csharp
-static void EntityLinkingExample(TextAnalyticsClient client)
-{
-    var response = client.RecognizeLinkedEntities(
-        "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, " +
-        "to develop and sell BASIC interpreters for the Altair 8800. " +
-        "During his career at Microsoft, Gates held the positions of chairman, " +
-        "chief executive officer, president and chief software architect, " +
-        "while also being the largest individual shareholder until May 2014.");
-    Console.WriteLine("Linked Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tName: {entity.Name},\tID: {entity.DataSourceEntityId},\tURL: {entity.Url}\tData Source: {entity.DataSource}");
-        Console.WriteLine("\tMatches:");
-        foreach (var match in entity.Matches)
-        {
-            Console.WriteLine($"\t\tText: {match.Text}");
-            Console.WriteLine($"\t\tScore: {match.ConfidenceScore:F2}\n");
-        }
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Linked Entities:
-        Name: Altair 8800,      ID: Altair 8800,        URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
-        Matches:
-                Text: Altair 8800
-                Score: 0.88
-
-        Name: Bill Gates,       ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
-        Matches:
-                Text: Bill Gates
-                Score: 0.63
-
-                Text: Gates
-                Score: 0.63
-
-        Name: Paul Allen,       ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
-        Matches:
-                Text: Paul Allen
-                Score: 0.60
-
-        Name: Microsoft,        ID: Microsoft,  URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
-        Matches:
-                Text: Microsoft
-                Score: 0.55
-
-                Text: Microsoft
-                Score: 0.55
-
-        Name: April 4,  ID: April 4,    URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
-        Matches:
-                Text: April 4
-                Score: 0.32
-
-        Name: BASIC,    ID: BASIC,      URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
-        Matches:
-                Text: BASIC
-                Score: 0.33
-```
-
----
-
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
-
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 前に作成したクライアントを受け取る `KeyPhraseExtractionExample()` という新しい関数を作成し、その `ExtractKeyPhrases()` 関数を呼び出します。 返される `<Response<KeyPhraseCollection>` オブジェクトには、検出されたキー フレーズの一覧が含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
 
-```csharp
-static void KeyPhraseExtractionExample(TextAnalyticsClient client)
-{
-    var response = client.ExtractKeyPhrases("My cat might need to see a veterinarian.");
-
-    // Printing key phrases
-    Console.WriteLine("Key phrases:");
-
-    foreach (string keyphrase in response.Value)
-    {
-        Console.WriteLine($"\t{keyphrase}");
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Key phrases:
-    cat
-    veterinarian
-```
-
-# <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
-
-前に作成したクライアントを受け取る `KeyPhraseExtractionExample()` という新しい関数を作成し、その `ExtractKeyPhrases()` 関数を呼び出します。 返される `<Response<IReadOnlyCollection<string>>` オブジェクトには、検出されたキー フレーズの一覧が含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```csharp
 static void KeyPhraseExtractionExample(TextAnalyticsClient client)
@@ -714,17 +475,22 @@ Key phrases:
     cat
     veterinarian
 ```
-
----
-
 
 ## <a name="extract-health-entities"></a>ヘルス エンティティの抽出
 
 [!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
 
+C# ファイルに次の using ステートメントを追加します (まだ行っていない場合)。
+
+```csharp
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+```
+
 Text Analytics を使用して、テキストからヘルスケア エンティティを抽出する非同期要求を実行できます。 次のサンプルでは、基本的な例を示しています。 より高度なサンプルについては、[GitHub ](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample7_AnalyzeHealthcareEntities.md) を参照してください。
 
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```csharp
 static async Task healthExample(TextAnalyticsClient client)
@@ -789,6 +555,16 @@ static async Task healthExample(TextAnalyticsClient client)
 }
 ```
 
+この例をアプリケーションに追加した後、`await` を使用して `main()` メソッドでを呼び出します。 Analyze 操作は非同期であるため、`Main()` メソッドを `async Task` 型にアップデートする必要があります。
+
+```csharp
+static async Task Main(string[] args)
+{
+    var client = new TextAnalyticsClient(endpoint, credentials);
+    await healthExample(client);
+}
+```
+
 ```console
 Results of Azure Text Analytics "Healthcare Async" Model, version: "2021-05-15"
 
@@ -831,21 +607,14 @@ Results of Azure Text Analytics "Healthcare Async" Model, version: "2021-05-15"
       Associated Entity Category: Frequency
 ```
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
-
-この機能はバージョン 3.0 では使用できません。
-
----
 
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>分析操作で API を非同期的に使用する
-
-# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 
 分析操作を使用して、NER、キー フレーズ抽出、感情分析、および PII 検出の非同期バッチ要求を実行できます。 次のサンプルは、1 つの操作の基本的な例を示しています。 より高度なサンプルについては、[GitHub ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md) を参照してください。
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-次の using ステートメントを C# ファイルに追加します。
+C# ファイルに次の using ステートメントを追加します (まだ行っていない場合)。
 
 ```csharp
 using System.Threading.Tasks;
@@ -855,75 +624,76 @@ using System.Linq;
 
 前に作成したクライアントを受け取る `AnalyzeOperationExample()` という新しい関数を作成し、その `StartAnalyzeBatchActionsAsync()` 関数を呼び出します。 返される操作には、`AnalyzeBatchActionsResult` オブジェクトが含まれます。 実行時間の長い操作であるため、更新する値の `operation.WaitForCompletionAsync()` に `await` します。 `WaitForCompletionAsync()` が完了したら、`operation.Value` でコレクションを更新する必要があります。 エラーが発生した場合は、`RequestFailedException` がスローされます。
 
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
+
 
 ```csharp
 static async Task AnalyzeOperationExample(TextAnalyticsClient client)
+{
+    string inputText = "Microsoft was founded by Bill Gates and Paul Allen.";
+
+    var batchDocuments = new List<string> { inputText };
+
+
+    TextAnalyticsActions actions = new TextAnalyticsActions()
     {
-        string inputText = "Microsoft was founded by Bill Gates and Paul Allen.";
+        RecognizeEntitiesActions = new List<RecognizeEntitiesAction>() { new RecognizeEntitiesAction() },
+        ExtractKeyPhrasesActions = new List<ExtractKeyPhrasesAction>() { new ExtractKeyPhrasesAction() },
+        DisplayName = "Analyze Operation Quick Start Example"
+    };
 
-        var batchDocuments = new List<string> { inputText };
+    AnalyzeActionsOperation operation = await client.StartAnalyzeActionsAsync(batchDocuments, actions);
 
+    await operation.WaitForCompletionAsync();
 
-        TextAnalyticsActions actions = new TextAnalyticsActions()
+    Console.WriteLine($"Status: {operation.Status}");
+    Console.WriteLine($"Created On: {operation.CreatedOn}");
+    Console.WriteLine($"Expires On: {operation.ExpiresOn}");
+    Console.WriteLine($"Last modified: {operation.LastModified}");
+    if (!string.IsNullOrEmpty(operation.DisplayName))
+        Console.WriteLine($"Display name: {operation.DisplayName}");
+    Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
+    Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
+    Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
+
+    await foreach (AnalyzeActionsResult documentsInPage in operation.Value)
+    {
+        RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesResults.FirstOrDefault().DocumentsResults;
+        ExtractKeyPhrasesResultCollection keyPhrasesResults = documentsInPage.ExtractKeyPhrasesResults.FirstOrDefault().DocumentsResults;
+
+        Console.WriteLine("Recognized Entities");
+
+        foreach (RecognizeEntitiesResult result in entitiesResult)
         {
-            RecognizeEntitiesActions = new List<RecognizeEntitiesAction>() { new RecognizeEntitiesAction() },
-            ExtractKeyPhrasesActions = new List<ExtractKeyPhrasesAction>() { new ExtractKeyPhrasesAction() },
-            DisplayName = "Analyze Operation Quick Start Example"
-        };
+            Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
 
-        AnalyzeActionsOperation operation = await client.StartAnalyzeActionsAsync(batchDocuments, actions);
-
-        await operation.WaitForCompletionAsync();
-
-        Console.WriteLine($"Status: {operation.Status}");
-        Console.WriteLine($"Created On: {operation.CreatedOn}");
-        Console.WriteLine($"Expires On: {operation.ExpiresOn}");
-        Console.WriteLine($"Last modified: {operation.LastModified}");
-        if (!string.IsNullOrEmpty(operation.DisplayName))
-            Console.WriteLine($"Display name: {operation.DisplayName}");
-        //Console.WriteLine($"Total actions: {operation.TotalActions}");
-        Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
-        Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
-        Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
-
-        await foreach (AnalyzeActionsResult documentsInPage in operation.Value)
-        {
-            RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesResults.FirstOrDefault().DocumentsResults;
-            ExtractKeyPhrasesResultCollection keyPhrasesResults = documentsInPage.ExtractKeyPhrasesResults.FirstOrDefault().DocumentsResults;
-
-            Console.WriteLine("Recognized Entities");
-
-            foreach (RecognizeEntitiesResult result in entitiesResult)
+            foreach (CategorizedEntity entity in result.Entities)
             {
-                Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
-
-                foreach (CategorizedEntity entity in result.Entities)
-                {
-                    Console.WriteLine($"  Entity: {entity.Text}");
-                    Console.WriteLine($"  Category: {entity.Category}");
-                    Console.WriteLine($"  Offset: {entity.Offset}");
-                    Console.WriteLine($"  Length: {entity.Length}");
-                    Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
-                    Console.WriteLine($"  SubCategory: {entity.SubCategory}");
-                }
-                Console.WriteLine("");
+                Console.WriteLine($"  Entity: {entity.Text}");
+                Console.WriteLine($"  Category: {entity.Category}");
+                Console.WriteLine($"  Offset: {entity.Offset}");
+                Console.WriteLine($"  Length: {entity.Length}");
+                Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
+                Console.WriteLine($"  SubCategory: {entity.SubCategory}");
             }
-
-            Console.WriteLine("Key Phrases");
-            
-            foreach (ExtractKeyPhrasesResult documentResults in keyPhrasesResults)
-            {
-                Console.WriteLine($"  Recognized the following {documentResults.KeyPhrases.Count} Keyphrases:");
-
-                foreach (string keyphrase in documentResults.KeyPhrases)
-                {
-                    Console.WriteLine($"  {keyphrase}");
-                }
-                Console.WriteLine("");
-            }
-            
+            Console.WriteLine("");
         }
+
+        Console.WriteLine("Key Phrases");
+        
+        foreach (ExtractKeyPhrasesResult documentResults in keyPhrasesResults)
+        {
+            Console.WriteLine($"  Recognized the following {documentResults.KeyPhrases.Count} Keyphrases:");
+
+            foreach (string keyphrase in documentResults.KeyPhrases)
+            {
+                Console.WriteLine($"  {keyphrase}");
+            }
+            Console.WriteLine("");
+        }
+        
     }
+}
 ```
 
 この例をアプリケーションに追加した後、`await` を使用して `main()` メソッドでを呼び出します。 Analyze 操作は非同期であるため、`Main()` メソッドを `async Task` 型にアップデートする必要があります。
@@ -932,7 +702,7 @@ static async Task AnalyzeOperationExample(TextAnalyticsClient client)
 static async Task Main(string[] args)
 {
     var client = new TextAnalyticsClient(endpoint, credentials);
-    await AnalyzeOperationExample(client).ConfigureAwait(false);
+    await AnalyzeOperationExample(client);
 }
 ```
 
@@ -967,8 +737,126 @@ Recognized Entities
     SubCategory: 
 ```
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+## <a name="text-summarization"></a>テキストの概要作成
 
-この機能はバージョン 3.0 では使用できません。
+# <a name="version-32-preview1"></a>[バージョン 3.2-preview.1](#tab/version-3-2)
+
+Text Analytics を使用すると、大量のテキストを要約できます。 
+
+C# ファイルに次の using ステートメントを追加します (まだ行っていない場合)。
+
+```csharp
+using System.Threading.Tasks;
+using System.Collections.Generic;
+```
+
+クライアントを引数として受け取る `TextSummarizationExample()` という新しい関数を作成します。 この操作の実行には時間がかかり、結果に対してポーリングされます。 
+
+```csharp
+static async Task TextSummarizationExample(TextAnalyticsClient client)
+{
+    string document = @"The extractive summarization feature in Text Analytics uses natural language processing techniques to locate key sentences in an unstructured text document. 
+        These sentences collectively convey the main idea of the document. This feature is provided as an API for developers. 
+        They can use it to build intelligent solutions based on the relevant information extracted to support various use cases. 
+        In the public preview, extractive summarization supports several languages. It is based on pretrained multilingual transformer models, part of our quest for holistic representations. 
+        It draws its strength from transfer learning across monolingual and harness the shared nature of languages to produce models of improved quality and efficiency." ;
+
+    // Prepare analyze operation input. You can add multiple documents to this list and perform the same
+    // operation to all of them.
+    var batchInput = new List<string>
+    {
+        document
+    };
+
+    TextAnalyticsActions actions = new TextAnalyticsActions()
+    {
+        ExtractSummaryActions = new List<ExtractSummaryAction>() { new ExtractSummaryAction() }
+    };
+
+    // Start analysis process.
+    AnalyzeActionsOperation operation = await client.StartAnalyzeActionsAsync(batchInput, actions);
+    await operation.WaitForCompletionAsync();
+    // View operation status.
+    Console.WriteLine($"AnalyzeActions operation has completed");
+    Console.WriteLine();
+
+    Console.WriteLine($"Created On   : {operation.CreatedOn}");
+    Console.WriteLine($"Expires On   : {operation.ExpiresOn}");
+    Console.WriteLine($"Id           : {operation.Id}");
+    Console.WriteLine($"Status       : {operation.Status}");
+
+    Console.WriteLine();
+    // View operation results.
+    await foreach (AnalyzeActionsResult documentsInPage in operation.Value)
+    {
+        IReadOnlyCollection<ExtractSummaryActionResult> summaryResults = documentsInPage.ExtractSummaryResults;
+
+        foreach (ExtractSummaryActionResult summaryActionResults in summaryResults)
+        {
+            if (summaryActionResults.HasError)
+            {
+                Console.WriteLine($"  Error!");
+                Console.WriteLine($"  Action error code: {summaryActionResults.Error.ErrorCode}.");
+                Console.WriteLine($"  Message: {summaryActionResults.Error.Message}");
+                continue;
+            }
+
+            foreach (ExtractSummaryResult documentResults in summaryActionResults.DocumentsResults)
+            {
+                if (documentResults.HasError)
+                {
+                    Console.WriteLine($"  Error!");
+                    Console.WriteLine($"  Document error code: {documentResults.Error.ErrorCode}.");
+                    Console.WriteLine($"  Message: {documentResults.Error.Message}");
+                    continue;
+                }
+
+                Console.WriteLine($"  Extracted the following {documentResults.Sentences.Count} sentence(s):");
+                Console.WriteLine();
+
+                foreach (SummarySentence sentence in documentResults.Sentences)
+                {
+                    Console.WriteLine($"  Sentence: {sentence.Text}");
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+
+}
+
+```
+
+この例をアプリケーションに追加した後、`await` を使用して `main()` メソッドでを呼び出します。 Analyze 操作は非同期であるため、`Main()` メソッドを `async Task` 型にアップデートする必要があります。
+
+```csharp
+static async Task Main(string[] args)
+{
+    var client = new TextAnalyticsClient(endpoint, credentials);
+    await TextSummarizationExample(client);
+}
+```
+
+### <a name="output"></a>出力
+
+```console
+AnalyzeActions operation has completed
+
+Created On   : 8/17/2021 9:06:07 PM +00:00
+Expires On   : 8/18/2021 9:06:07 PM +00:00
+Id           : 70dc2e88-e930-483e-9d96-1ba5f0f27f18
+Status       : succeeded
+
+Extracted the following 3 sentence(s):
+
+Sentence: The extractive summarization feature in Text Analytics uses natural language processing techniques to locate key sentences in an unstructured text document.
+Sentence: This feature is provided as an API for developers.
+Sentence: They can use it to build intelligent solutions based on the relevant information extracted to support various use cases.
+
+```
+
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
+
+この機能はバージョン 3.1 では使用できません。
 
 ---

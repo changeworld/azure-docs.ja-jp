@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/24/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 23abb7c3d917084d0cc9989bf19dbb76adf0a266
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 8740f7e8b02002e4f55a833074cf34057cddc056
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112967350"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226156"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Cornerstone の統合
 
@@ -41,6 +41,8 @@ ms.locfileid: "112967350"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Cornerstone では、**SP** Initiated SSO がサポートされます。
+
+* Cornerstone では、[自動化されたユーザー プロビジョニング](cornerstone-ondemand-provisioning-tutorial.md)がサポートされます。
 
 * この特定の一覧にある 1 つまたは複数の製品を統合する場合は、ギャラリーから、Cornerstone Single Sign-On アプリを使用する必要があります。
 
@@ -140,6 +142,7 @@ Cornerstone で SSO を構成するには、Cornerstone 実装プロジェクト
 
 このセクションでは、Cornerstone で Britta Simon というユーザーを作成します。 Cornerstone 実装プロジェクト チームと協力して、Cornerstone にユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+Cornerstone Single Sign-On では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./cornerstone-ondemand-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

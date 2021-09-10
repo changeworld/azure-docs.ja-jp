@@ -5,14 +5,14 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 08/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 018b11d53cf201de41f0f6ff9bc4f1f5c7488d7a
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 8ce9dc354ff4ed3f4ff5246ce761a481f220e263
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765320"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186283"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>VMware VM を Azure に移行する (エージェントレス) - PowerShell
 
@@ -154,6 +154,7 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.
  ディスクの種類 | Mandatory | 作成するロード バランサーの名前を指定します。 
  インフラストラクチャの冗長性 | オプション | 次のようにインフラストラクチャ冗長オプションを指定します。 <br/><br/> - **可用性ゾーン**。移行したマシンをリージョン内の特定の可用性ゾーンに固定します。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。 可用性ゾーンを使用するには、(`TargetAvailabilityZone`) パラメーターの可用性ゾーンの値を指定します。 <br/> - **可用性セット**。移行したマシンを可用性セットに配置します。 このオプションを使用するには、選択したターゲット リソース グループに 1 つ以上の可用性セットが必要です。 可用性セットを使用するには、(`TargetAvailabilitySet`) パラメーターの可用性セット ID を指定します。 
  ブート診断ストレージ アカウント | オプション | ブート診断ストレージ アカウントを使用するには、(`TargetBootDiagnosticStorageAccount`) パラメーターに ID を指定します。 <br/> - ブート診断に使用するストレージ アカウントは、VM の移行先と同じサブスクリプションにある必要があります。 <br/> - 既定では、このパラメーターに値は設定されません。 
+ Tags | 省略可能 | 移行した仮想マシン、ディスク、NIC にタグを追加します。 <br/>  仮想マシン、ディスク、NIC にタグを追加するには、(`Tag`) を使用します。 <br/> or <br/> 移行した仮想マシンにタグを追加するには、(`VMTag`) を使用します。<br/> ディスクにタグを追加するには、(`DiskTag`) を使用します。 <br/> ネットワーク インターフェイスにタグを追加するには、(`NicTag`) を使用します。 <br/> たとえば、必要なタグを変数 $tags に追加し、その変数を必要なパラメーターに渡します。  $tags = @{Organization=”Contoso”}
 
 
 
@@ -346,7 +347,9 @@ Virtual Network | オプション | [`TargetNetworkId`] パラメーターを使
 ネットワーク インターフェイス | オプション | [`TargetVMName`] パラメーターを使用して、作成する Azure VM の名前を指定します。 
 可用性ゾーン | オプション | 可用性ゾーンを使用するには、[`TargetAvailabilityZone`] パラメーターに可用性ゾーンの値を指定します。 
 可用性セット | オプション | 可用性セットを使用するには、[`TargetAvailabilitySet`] パラメーターに可用性セット ID を指定します。 
-
+Tags | 省略可能 | タグの更新については、次のパラメーター [`UpdateTag`] または [`UpdateVMTag`]、[`UpdateDiskTag`]、[`UpdateNicTag`] と、タグの更新操作の種類 [`UpdateTagOperation`] または [`UpdateVMTagOperation`]、[`UpdateDiskTagOperation`]、[`UpdateNicTagOperation`] を使用します。   タグの更新操作は、Merge、Delete、Replace の値を受け取ります。 <br/> 仮想マシン、ディスク、NIC にわたってすべてのタグを更新するには、[`UpdateTag`] を使用します。 <br/> 仮想マシンのタグを更新するには、[`UpdateVMTag`] を使用します。 <br/> ディスクのタグを更新するには、[`UpdateDiskTag`] を使用します。 <br/> NIC のタグを更新するには、[`UpdateNicTag`] を使用します。 <br/> 仮想マシン、ディスク、NIC にわたってすべてのタグの操作を更新するには、[`UpdateTagOperation`] を使用します。 <br/>  仮想マシンのタグを更新するには、[`UpdateVMTagOperation`] を使用します。 <br/> ディスクのタグを更新するには、[`UpdateDiskTagOperation`] を使用します。 <br/> NIC のタグを更新するには、[`UpdateNicTagOperation`] を使用します。 <br/> <br/> *replace* オプションを使用すると、既存のタグのセット全体が新しいセットに置き換えられます。 <br/> *merge* オプションを使用すると、新しい名前でタグを追加したり、既存の名前を使用してタグの値を更新したりできます。 <br/> *delete* オプションを使用すると、指定した名前、または名前と値のペアに基づいてタグを選択的に削除できます。 
+ディスク | 省略可能 | OS ディスクの場合: <br/> [`TargetDiskName`] パラメーターを使用して OS ディスクの名前を更新します。  <br/><br/> 複数のディスクを更新する場合: <br/>  [Set-AzMigrateDiskMapping](/powershell/module/az.migrate/set-azmigratediskmapping) を使用してディスク名を変数 *$DiskMapping* に設定し、次に [`DiskToUpdate`] パラメーターを使用して変数を渡します。 <br/> <br/> **注:** [Set-AzMigrateDiskMapping](/powershell/module/az.migrate/set-azmigratediskmapping) で使用するディスク ID は、 [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) コマンドレットを使用して取得したディスクの一意識別子 (UUID) です。 
+NIC 名 | 省略可能 | [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) を使用して変数 *$NICMapping* に NIC 名を設定し、次に [`NICToUpdate`] パラメーターを使用して変数を渡します。
 
 [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) コマンドレットにより、操作の状態を監視するために追跡できるジョブが返されます。
 
@@ -363,13 +366,13 @@ $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $Replicating
 Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic
 ```
 
-次の例では、最初の NIC をプライマリにして、それに静的 IP を割り当てることによって、NIC 構成を更新します。 移行対象の 2 番目の NIC を破棄し、ターゲット VM の名前とサイズを更新します。
+次の例では、最初の NIC をプライマリにして、それに静的 IP を割り当てることによって、NIC 構成を更新します。 移行対象の 2 番目の NIC を破棄し、ターゲット VM の名前とサイズを更新し、NIC 名をカスタマイズします。
 
 ```azurepowershell-interactive
 # Specify the NIC properties to be updated for a replicating VM.
 $NicMapping = @()
-$NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP ###.###.###.### -TargetNicSelectionType Primary
-$NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType DoNotCreate
+$NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP ###.###.###.### -TargetNicSelectionType Primary TargetNicName "ContosoNic_1"
+$NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType DoNotCreate - TargetNicName "ContosoNic_2"
 
 $NicMapping += $NicMapping1
 $NicMapping += $NicMapping2
@@ -378,6 +381,32 @@ $NicMapping += $NicMapping2
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize Standard_DS13_v2 -TargetVMName MyMigratedVM -NicToUpdate $NicMapping
 ```
+
+次の例では、ディスク名をカスタマイズします。
+
+```azurepowershell-interactive
+# Customize the Disk names for a replicating VM
+$OSDisk = Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" 
+$DataDisk1= Set-AzMigrateDiskMapping -DiskID "6000C292-79b9-bbdc-fb8a-f1fa8dbeff84" -DiskName "ContosoDisk_2" 
+$DiskMapping = $OSDisk, $DataDisk1 
+```
+
+```azurepowershell-interactive
+# Update the disk names for a replicating server
+$UpdateJob = Set-AzMigrateServerReplication InputObject $ReplicatingServer DiskToUpdate $DiskMapping 
+ ```
+
+次の例では、レプリケートする VM にタグを追加します。
+
+```azurepowershell-interactive
+# Update all tags across virtual machines, disks, and NICs.
+Set-azmigrateserverreplication UpdateTag $UpdateTag UpdateTagOperation Merge/Replace/Delete
+
+# Update virtual machines tags
+Set-azmigrateserverreplication UpdateVMTag $UpdateVMTag UpdateVMTagOperation Merge/Replace/Delete 
+```
+次の例を使用して、ジョブの状態を追跡します。
+
 ```azurepowershell-interactive
 # Track job status to check for completion
 while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted')){
@@ -388,8 +417,6 @@ while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted
 # Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $UpdateJob.State
 ```
-
-
 
 ## <a name="11-run-a-test-migration"></a>11.テスト移行を実行する
 

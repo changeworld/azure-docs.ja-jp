@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f6f653478dea84ecb3951b4c313f0f7604733b88
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: c3ade548ae31f7f62014d8f41141374aaa73217a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292909"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252298"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -507,6 +507,7 @@ Delta Lake のサポートは、現在、サーバーレス SQL プールでの�
 - 外部テーブルでは、パーティション分割はサポートされていません。 パーティションの除去を利用するには、Delta Lake フォルダーの[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)を使用します。 以下の既知の問題と回避策を参照してください。
 - サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)でこの機能に投票することができます。 [履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
 - サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)には、Azure Synapse Analytics で Apache Spark プールを使用します。
+- Synapse Analytics のサーバーレス SQL プールは、[ブルーム フィルター](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットをサポートしていません。
 - Delta Lake のサポートは、専用 SQL プールでは使用できません。 Delta Lake ファイルのクエリにはサーバーレス プールを使用していることを確認してください。
 
 [Azure Synapse フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=171048)でアイデアや機能強化を提案できます。
@@ -539,46 +540,43 @@ FORMAT='csv', FIELDQUOTE = '0x0b', FIELDTERMINATOR ='0x0b', ROWTERMINATOR = '0x0
 
 ### <a name="partitioning-column-returns-null-values"></a>パーティション分割列から NULL 値が返される
 
-パーティション分割された Delta Lake フォルダーを読み取る `OPENROWSET` 関数でビューを使用している場合は、パーティション分割列の実際の列値の代わりに `NULL` 値を取得することがあります。 `Year` と `Month` のパーティション分割列を参照するビューの例を次に示します。
+**状態**: 解決済み
 
-```sql
-create or alter view test as
-select top 10 * 
-from openrowset(bulk 'https://storageaccount.blob.core.windows.net/path/to/delta/lake/folder',
-                format = 'delta') 
-     with (ID int, Year int, Month int, Temperature float) 
-                as rows
-```
-
-既知の問題により、`WITH` 句を持つ `OPENROWSET` 関数ではパーティション分割列から値を読み取ることができません。 Delta Lake の[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)には、`WITH` 句を含む `OPENROWSET` 関数があってはなりません。 スキーマを明示的に指定しない `OPENROWSET` 関数を使用する必要があります。
-
-**回避策:** ビューで使用される `OPENROWSET` 関数から `WITH` 句を削除します。例:
-
-```sql
-create or alter view test as
-select top 10 * 
-from openrowset(bulk 'https://storageaccount.blob.core.windows.net/path/to/delta/lake/folder',
-                format = 'delta') 
-   --with (ID int, Year int, Month int, Temperature float) 
-                as rows
-```
+**リリース**: 2021 年 8 月
 
 ### <a name="query-failed-because-of-a-topology-change-or-compute-container-failure"></a>トポロジの変更またはコンピューティング コンテナーの障害が原因でクエリが失敗する
 
-データベースの照合順序が `Latin1_General_100_BIN2_UTF8` ではない場合、パーティション分割されたデータ セットに対する Delta Lake クエリが、このエラー メッセージで失敗する可能性があります。 `Latin1_General_100_BIN2_UTF8` の照合順序でデータベースを作成し、既定の照合順序を持つ master データベースや他のデータベースではなく、そのデータベースに対してクエリを実行します。
+**状態**: 解決済み
 
-```sql
-CREATE DATABASE mydb 
-    COLLATE Latin1_General_100_BIN2_UTF8;
-```
-
-master データベースを介して実行されるクエリは、この問題の影響を受けます。 これは、パーティション分割されたデータを読み取るすべてのクエリに該当するわけではありません。 文字列型の列でパーティション分割されたデータセットは、この問題の影響を受けます。
-
-**回避策:** `Latin1_General_100_BIN2_UTF8` データベース照合順序を持つカスタム データベースに対してクエリを実行します。
+**リリース**: 2021 年 8 月
 
 ### <a name="column-of-type-varchar-is-not-compatible-with-external-data-type-parquet-column-is-of-nested-type"></a>"VARCHAR" 型の列は、外部データ型 "Parquet 列が入れ子にされた型" と互換性がありません
 
-WITH 句を指定せずに (自動スキーマ推論を使用)、入れ子になった型の列が含まれる Delta Lake ファイルを読み取ろうとしています。 スキーマの自動推論は、Delta Lake の入れ子になった列では機能しません。
+WITH 句を指定せずに (自動スキーマ推論を使用)、入れ子になった型の列が含まれる Delta Lake ファイルを読み取ろうとしています。
+
+```sql
+SELECT TOP 10 *
+FROM OPENROWSET(
+    BULK 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/data-set-with-complex-type/',
+    FORMAT = 'delta') as rows;
+```
+
+スキーマの自動推論は、Delta Lake の入れ子になった列では機能しません。 FORMAT='parquet' を指定してパスに ** を追加すると、クエリによって何らかの結果が返されることを確認します。
+
+**回避策**: `WITH` 句を使用し、入れ子になった列に `VARCHAR` 型を明示的に割り当てます。 これは、`WITH` 句がパーティション列に対して `NULL` を返すという別の既知の問題があるため、データセットがパーティション分割されている場合には機能しないことに注意してください。 複合型の列を含むパーティション分割されたデータセットは、現在サポートされていません。
+
+### <a name="cannot-parse-field-type-in-json-object"></a>JSON オブジェクト内の "type" フィールドを解析できない
+
+WITH 句を指定せずに (自動スキーマ推論を使用)、入れ子になった型の列が含まれる Delta Lake ファイルを読み取ろうとしています。 
+
+```sql
+SELECT TOP 10 *
+FROM OPENROWSET(
+    BULK 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/data-set-with-complex-type/',
+    FORMAT = 'delta') as rows;
+```
+
+スキーマの自動推論は、Delta Lake の入れ子になった列では機能しません。 FORMAT='parquet' を指定してパスに ** を追加すると、クエリによって何らかの結果が返されることを確認します。
 
 **回避策**: `WITH` 句を使用し、入れ子になった列に `VARCHAR` 型を明示的に割り当てます。 これは、`WITH` 句がパーティション列に対して `NULL` を返すという別の既知の問題があるため、データセットがパーティション分割されている場合には機能しないことに注意してください。 複合型の列を含むパーティション分割されたデータセットは、現在サポートされていません。
 
@@ -608,7 +606,17 @@ Error reading external metadata.
 - Synapse または Databricks クラスターの Apache Spark プールを使用して、Delta Lake フォルダーの内容を読み取ることができることを確認します。 これにより、`_delta_log` ファイルが破損していないことを確認します。
 - `FORMAT='PARQUET'` を指定し、URI パスの末尾に再帰的なワイルドカード `/**` を使用して、データファイルの内容を読み取ることができることを確認します。 すべての Parquet ファイルを読み取ることができる場合、問題は `_delta_log` トランザクション ログ フォルダーにあります。
 
-**回避策:** この問題は、`_UTF8` データベース照合順序を使用している場合に発生する可能性があります。 `master` データベースまたは UTF8 以外の照合順序を持つその他のデータベースに対してクエリを実行してください。 この回避策で問題が解決された場合は、`_UTF8` 照合順序でないデータベースを使用します。
+一般的なエラーと回避策
+
+- `JSON text is not properly formatted. Unexpected character '.'` - 基になる parquet ファイルに、サーバーレス SQL プールでサポートされていないデータ型が含まれている可能性があります。
+
+**回避策:** サポートされていない型を除外する WITH スキーマを使用してみてください。
+
+- `JSON text is not properly formatted. Unexpected character '{'` - データベースの `_UTF8` 照合順序を使用している可能性があります。 
+
+**回避策:** `master` データベースまたは UTF8 以外の照合順序を持つその他のデータベースに対してクエリを実行してみてください。 この回避策で問題が解決された場合は、`_UTF8` 照合順序でないデータベースを使用します。 `WITH` 句の列定義で `_UTF8` 照合順序を指定してください。
+
+**一般的な回避策** - Apache Spark プールを使用して Delta Lake データセットにチェックポイントを作成し、クエリを再実行してみてください。 チェックポイントによってトランザクションの JSON ログ ファイルが集計され、問題が解決する可能性があります。
 
 データセットが有効であり、回避策が役に立たない場合は、サポート チケットを報告し、Azure サポートに再現手順を提供してください。
 - 列の追加または削除やテーブルの最適化などの変更を行わないでください。これにより、Delta Lake トランザクション ログ ファイルの状態が変わる可能性があります。
@@ -618,6 +626,61 @@ Error reading external metadata.
 - コピーした `_delta_log` ファイルの内容を Azure サポートに送信します。
 
 Azure チームは、`delta_log` ファイルの内容を調査し、考えられるエラーとその回避策に関する詳細情報を提供します。
+
+### <a name="resolving-delta-log-on-path--failed-with-error-cannot-parse-json-object-from-log-file"></a>"ログ ファイルから JSON オブジェクトを解析できない" エラーによりパス ... のデルタ ログの解決が失敗する
+
+このエラーは、次の理由またはサポートされていない機能が原因で発生する場合があります。
+- Delta Lake データセットに対する[ブルーム フィルター](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)。 Synapse Analytics のサーバーレス SQL プールは、[ブルーム フィルター](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットをサポートしていません。
+- 統計情報を含む Delta Lake データセットの float 型の列。
+- float 型の列でパーティション分割されたデータセット。
+
+**回避策**: サーバーレス SQL プールを使用して Delta Lake フォルダーを読み取る場合は、[ブルーム フィルターを削除](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index)します。 問題の原因となっている `float` 型の列がある場合は、データセットを再度パーティション分割するか、統計情報を削除する必要があります。
+
+## <a name="security"></a>セキュリティ
+
+### <a name="aad-service-principal-login-failures-when-spi-is-creating-a-role-assignment"></a>SPI によるロールの割り当て作成中の AAD サービス プリンシパルのログイン エラー
+別の SPI を使用してサービス プリンシパル ID または　AAD アプリに対してロールの割り当てを作成する場合や、既に作成してログインに失敗した場合は、次のエラーが発生する可能性があります。
+```
+Login error: Login failed for user '<token-identified principal>'.
+```
+サービス プリンシパルのログインは、SID としてアプリケーション ID を使用して作成する必要があります (オブジェクト ID ではありません)。 サービス プリンシパルには既知の制限があります。これにより、別の SPI やアプリに対してロールの割り当てを作成するときに、Synapse サービスによって Azure AD Graph からアプリケーション ID をフェッチすることができません。  
+
+#### <a name="solution-1"></a>解決策 #1
+Azure portal から [Synapse Studio] > [管理] > [アクセス制御] に移動し、目的のサービス プリンシパルに Synapse 管理者または Synapse SQL 管理者を手動で追加します。
+
+#### <a name="solution-2"></a>解決策 #2
+SQL コードを使用して、適切なログインを手動で作成する必要があります。
+```sql
+use master
+go
+CREATE LOGIN [<service_principal_name>] FROM EXTERNAL PROVIDER;
+go
+ALTER SERVER ROLE sysadmin ADD MEMBER [<service_principal_name>];
+go
+```
+
+#### <a name="solution-3"></a>解決策 #3
+PowerShell を使用して、Synapse 管理者のサービス プリンシパルを設定することもできます。 [Az.Synapse モジュール](/powershell/module/az.synapse)をインストールしておく必要があります。
+この解決策では、`-ObjectId "parameter"` を指定して New-AzSynapseRoleAssignment コマンドレットを使用します。そのパラメーター フィールドには、ワークスペース管理者の Azure サービス プリンシパルの資格情報を使用してアプリケーション ID を指定します (オブジェクト ID ではありません)。 PowerShell スクリプト: 
+```azurepowershell
+$spAppId = "<app_id_which_is_already_an_admin_on_the_workspace>"
+$SPPassword = "<application_secret>"
+$tenantId = "<tenant_id>"
+$secpasswd = ConvertTo-SecureString -String $SPPassword -AsPlainText -Force
+$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $spAppId, $secpasswd
+
+Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant $tenantId
+
+New-AzSynapseRoleAssignment -WorkspaceName "<workspaceName>" -RoleDefinitionName "Synapse Administrator" -ObjectId "<app_id_to_add_as_admin>" [-Debug]
+```
+
+#### <a name="validation"></a>検証
+サーバーレス SQL エンドポイントに接続し、SID `app_id_to_add_as_admin` を使用した外部ログインが作成されていることを確認します。
+```sql
+select name, convert(uniqueidentifier, sid) as sid, create_date
+from sys.server_principals where type in ('E', 'X')
+```
+または、先ほど設定した管理者アプリを使用して、サーバーレス SQL エンドポイントにログインしてみます。
 
 ## <a name="constraints"></a>制約
 

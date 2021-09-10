@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/12/2021
+ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: 000bf1c72854914e4b12dd268f008808d9d08b50
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: b98d59d24ee9b17d2d3f97d3d6e8e05ab232191c
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396826"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214204"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -57,22 +57,22 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **ベルリン** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | ドイツ北部 | 10G | Colt、Equinix、NTT Global DataCenters EMEA|
 | **ボゴタ** | [Equinix BG1](https://www.equinix.com/locations/americas-colocation/colombia-colocation/bogota-data-centers/bg1/) | 4 | 該当なし | 10G | Equinix |
 | **釜山** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | 韓国南部 | 該当なし | LG CNS |
-| **カンピナス** | [Ascenty](https://www.ascenty.com/en/data-centers-en/campinas/) | 3 | ブラジル南部 | 10G、100G | |
+| **カンピナス** | [Ascenty](https://www.ascenty.com/en/data-centers-en/campinas/) | 3 | ブラジル南部 | 10G、100G | Ascenty |
 | **キャンベラ** | [CDC](https://cdcdatacentres.com.au/about-us/) | 1 | オーストラリア中部 | 10G、100G | CDC |
 | **キャンベラ2** | [CDC](https://cdcdatacentres.com.au/about-us/) | 1 | オーストラリア中部 2| 10G、100G | CDC、Equinix |
 | **ケープタウン** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | 南アフリカ西部 | 10G | BCX、Internet Solutions - Cloud Connect、Liquid Telecom、MTN Global Connect、Teraco、Vodacom |
 | **チェンナイ** | Tata Communications | 2 | インド南部 | 10G | BSNL、Global CloudXchange (GCX)、SIFY、Tata Communications、VodafoneIdea |
 | **チェンナイ 2** | Airtel | 2 | インド南部 | 10G | Airtel |
 | **シカゴ** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | 米国中北部 | 10G、100G | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Cologix、Colt、Comcast、Coresite、Equinix、InterCloud、Internet2、Level 3 Communications、Megaport、PacketFabric、PCCW Global Limited、Sprint、Telia Carrier、Verizon、Zayo |
-| **シカゴ 2** | [CoreSite CH1](https://www.coresite.com/data-center/ch1-chicago-il) | 1 | 米国中北部 | 10G、100G | |
+| **シカゴ 2** | [CoreSite CH1](https://www.coresite.com/data-center/ch1-chicago-il) | 1 | 米国中北部 | 10G、100G | CoreSite |
 | **コペンハーゲン** | [Interxion CPH1](https://www.interxion.com/Locations/copenhagen/) | 1 | 該当なし | 10G | Interxion |
 | **ダラス** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | 該当なし | 10G、100G | Aryaka Networks、AT&T NetBond、Cologix、Equinix、Internet2、Level 3 Communications、Megaport、Neutrona Networks、PacketFabric、Telmex Uninet、Telia Carrier、Transtelco、Verizon、Zayo|
 | **デンバー** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | 米国中西部 | 10G、100G | CoreSite、Megaport、PacketFabric、Zayo |
 | **ドバイ** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | アラブ首長国連邦北部 | 該当なし | Etisalat UAE |
-| **ドバイ 2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | アラブ首長国連邦北部 | 該当なし | DE-CIX、du datamena、Equinix、Megaport、Orange、Orixcom |
+| **ドバイ 2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | アラブ首長国連邦北部 | 該当なし | DE-CIX、du datamena、Equinix、GBI、Megaport、Orange、Orixcom |
 | **ダブリン** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 北ヨーロッパ | 10G、100G | CenturyLink Cloud Connect、Colt、eir、Equinix、GEANT、euNetworks、Interxion、Megaport |
-| **ダブリン 2** | [Interxion DUB2](https://www.interxion.com/locations/europe/dublin) | 1 | 北ヨーロッパ | 10G、100G | |
-| **フランクフルト** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | ドイツ中西部 | 10G、100G | AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、DE-CIX、Equinix、euNetworks、GEANT、InterCloud、Interxion、Megaport、NTT Global DataCenters EMEA、Orange、Telia Carrier、T-Systems |
+| **ダブリン 2** | [Interxion DUB2](https://www.interxion.com/locations/europe/dublin) | 1 | 北ヨーロッパ | 10G、100G | Interxion |
+| **フランクフルト** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | ドイツ中西部 | 10G、100G | AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、DE-CIX、Equinix、euNetworks、GBI、GEANT、InterCloud、Interxion、Megaport、NTT Global DataCenters EMEA、Orange、Telia Carrier、T-Systems |
 | **Frankfurt2** | [Equinix FR7](https://www.equinix.com/locations/europe-colocation/germany-colocation/frankfurt-data-centers/fr7/) | 1 | ドイツ中西部 | 10G、100G | Deutsche Telekom AG、Equinix |
 | **ジュネーブ** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | スイス西部 | 10G、100G | Colt、Equinix、Megaport、Swisscom |
 | **香港特別行政区** | [Equinix HK1](https://www.equinix.com/data-centers/asia-pacific-colocation/hong-kong-colocation/hong-kong-data-centers/hk1) | 2 | 東アジア | 10G | Aryaka Networks、British Telecom、CenturyLink Cloud Connect、Chief Telecom、China Telecom Global、China Unicom、Colt、Equinix、InterCloud、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telia Carrier、Verizon |
@@ -94,7 +94,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **モントリオール** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | 該当なし | 10G、100G | Bell Canada、Cologix、Fibrenoire、Megaport、Telus、Zayo |
 | **ムンバイ** | Tata Communications | 2 | インド西部 | 10G | BSNL、DE-CIX、Global CloudXchange (GCX)、Reliance Jio、Sify、Tata Communications、Verizon |
 | **ムンバイ 2** | Airtel | 2 | インド西部 | 10G | Airtel、Sify、Vodafone Idea |
-| **ミュンヘン** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | 該当なし | 10G | DE-CIX、Megaport |
+| **ミュンヘン** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | 該当なし | 10G | Colt、DE-CIX、Megaport |
 | **ニューヨーク** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | 該当なし | 10G、100G | CenturyLink Cloud Connect、Colt、Coresite、DE-CIX、Equinix、InterCloud、Megaport、Packet、Zayo |
 | **ニューポート (ウェールズ)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | 英国西部 | 10G、100G | British Telecom、Colt、Jisc、Level 3 Communications、Next Generation Data |
 | **大阪** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | 西日本 | 10G、100G | AT TOKYO、BBIX、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、Megaport、NTT Communications、NTT SmartConnect、Softbank、Tokai Communications |
@@ -102,8 +102,8 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **パリ** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | フランス中部 | 10G、100G | British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Intercloud、Interxion、Jaguar Network、Megaport、Orange、Telia Carrier、Zayo |
 | **パース** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | 該当なし | 10G | Megaport、NextDC |
 | **Phoenix** | [EdgeConneX PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | 該当なし | 10G、100G | Megaport、Zayo |
-| **プネー** | STT GDC Pune DC1](https://www.sttelemediagdc.in/our-data-centres-in-india) | 2 | インド中部| 10G | |
-| **ケベック シティ** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | カナダ東部 | 10G、100G | Bell Canada、Megaport、Telus |
+| **プネー** | [STT GDC Pune DC1](https://www.sttelemediagdc.in/our-data-centres-in-india) | 2 | Central India| 10G | |
+| **ケベック シティ** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | カナダ東部 | 10G、100G | Bell Canada、Equinix、Megaport、Telus |
 | **ケレタロ (メキシコ)** | [KIO Networks QR01](https://www.kionetworks.com/es-mx/) | 4 | 該当なし | 10G | Transtelco|
 | **クインシー** | [Sabey Datacenter - Building A](https://sabeydatacenters.com/data-center-locations/central-washington-data-centers/quincy-data-center) | 1 | 米国西部 2 | 10G、100G | |
 | **Rio de Janeiro** | [Equinix-RJ2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/rio-de-janeiro-data-centers/rj2/) | 3 | ブラジル南東部 | 10G | Equinix |
@@ -112,20 +112,21 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **サンパウロ 2** | [TIVIT TSM](https://www.tivit.com/en/tivit/) | 3 | ブラジル南部 | 10G、100G | |
 | **シアトル** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | 1 | 米国西部 2 | 10G、100G | Aryaka Networks、Equinix、Level 3 Communications、Megaport、Telus、Zayo |
 | **ソウル** | [KINX Gasan IDC](https://www.kinx.net/?lang=en) | 2 | 韓国中部 | 10G、100G | KINX、KT、LG CNS、LGUplus、Equinix、Sejong Telecom、SK Telecom |
+| **Seoul2** | [KT IDC](https://www.kt-idc.com/eng/introduce/sub1_4_10.jsp#tab) | 2 | 韓国中部 | 該当なし | |
 | **シリコン バレー** | [Equinix SV1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv1/) | 1 | 米国西部 | 10G、100G | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Comcast、Coresite、Equinix、InterCloud、Internet2、IX Reach、Packet、PacketFabric、Level 3 Communications、Megaport、Orange、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
 | **シリコン バレー2** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | 米国西部 | 10G、100G | Colt、Coresite | 
 | **シンガポール** | [Equinix SG1](https://www.equinix.com/data-centers/asia-pacific-colocation/singapore-colocation/singapore-data-center/sg1) | 2 | 東南アジア | 10G、100G | Aryaka Networks、AT&T NetBond、British Telecom、China Mobile International、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
-| **シンガポール 2** | [Global Switch Tai Seng](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | 東南アジア | 10G、100G | China Unicom Global、Colt、Epsilon Global Communications、Equinix、Megaport、PCCW Global Limited、SingTel、Telehouse - KDDI |
+| **シンガポール 2** | [Global Switch Tai Seng](https://www.globalswitch.com/locations/singapore-data-centres/) | 2 | 東南アジア | 10G、100G | CenturyLink Cloud Connect、China Unicom Global、Colt、Epsilon Global Communications、Equinix、Megaport、PCCW Global Limited、SingTel、Telehouse - KDDI |
 | **スタバンゲル** | [Green Mountain DC1](https://greenmountain.no/dc1-stavanger/) | 1 | ノルウェー西部 | 10G、100G |GlobalConnect、Megaport |
 | **ストックホルム** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1 | 該当なし | 10G | Equinix、Telia Carrier |
 | **シドニー** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | オーストラリア東部 | 10G、100G | AARNet、AT&T NetBond、British Telecom、Devoli、Equinix、Kordia、Megaport、NEXTDC、NTT Communications、Optus、Orange、Spark NZ、Telstra Corporation、TPG Telecom、Verizon、Vocus Group NZ |
 | **Sydney2** | [NextDC S1](https://www.nextdc.com/data-centres/s1-sydney-data-centre) | 2 | オーストラリア東部 | 10G、100G | Megaport、NextDC |
 | **台北** | Chief Telecom | 2 | 該当なし | 10G | Chief Telecom、Chunghwa Telecom、FarEasTone |
-| **東京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 東日本 | 10G、100G | Aryaka Networks、AT&T NetBond、BBIX、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Intercloud、Internet Initiative Japan Inc. - IIJ、Megaport、NTT Communications、NTT EAST、Orange、Softbank、Verizon |
+| **東京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 東日本 | 10G、100G | Aryaka Networks、AT&T NetBond、BBIX、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Intercloud、Internet Initiative Japan Inc. - IIJ、Megaport、NTT Communications、NTT EAST、Orange、Softbank、Telehouse - KDDI、Verizon |
 | **東京 2** | [アット東京](https://www.attokyo.com/) | 2 | 東日本 | 10G、100G | AT TOKYO、China Unicom Global、Megaport、Tokai Communications |
 | **トロント** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | カナダ中部 | 10G、100G | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、IX Reach Megaport、Telus、Verizon、Zayo |
 | **トロント 2** | [Allied REIT](https://www.alliedreit.com/property/905-king-st-w/) | 1 | カナダ中部 | 10G、100G | |
-| **Vancouver** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | 該当なし | 10G | Cologix、Megaport、Telus |
+| **Vancouver** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | 該当なし | 10G | Bell Canada、Cologix、Megaport、Telus |
 | **ワシントン DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | 米国東部、米国東部 2 | 10G、100G | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Cologix、Colt、Comcast、Coresite、Equinix、Internet2、InterCloud、Iron Mountain、IX Reach、Level 3 Communications、Megaport、Neutrona Networks、NTT Communications、Orange、PacketFabric、SES、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
 | **ワシントン DC2** | [Coresite VA2](https://www.coresite.com/data-center/va2-reston-va) | 1 | 米国東部、米国東部 2 | 10G、100G | CenturyLink Cloud Connect、Coresite、Intelsat、Megaport、Viasat、Zayo | 
 | **チューリッヒ** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | スイス北部 | 10G、100G | Colt、Equinix、InterCloud、Interxion、Megaport、Swisscom |

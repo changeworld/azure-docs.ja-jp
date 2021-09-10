@@ -6,14 +6,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: bobazile
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 7251e97209e9cca1b4c86a6ab8c829c8f0346525
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 8b2468b13f7093129c137019d8ec7f60e4fd5e4f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674901"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258013"
 ---
 # <a name="list-of-session-border-controllers-certified-for-azure-communication-services-direct-routing"></a>Azure Communication Services ダイレクト ルーティングの認定を受けたセッション ボーダー コントローラーの一覧
 このドキュメントには、Azure Communication Services ダイレクト ルーティングの認定を受けたセッション ボーダー コントローラーの一覧が含まれています。 また、既知の制限事項も含まれています。
@@ -37,8 +37,8 @@ Communication Services ダイレクト ルーティングの SBC 認定プログ
 
 |ベンダー|Product|ソフトウェア バージョン|
 |:--- |:--- |:--- 
+|AudioCodes|Mediant SBC|7.40A
 |Metaswitch|Perimeta SBC|4.9|
-
 
 メジャー バージョンに付与されている認定に注意してください。 つまり、SBC のファームウェアで、メジャー バージョンに続く任意の数字を持つファームウェアはサポートされます。
 
@@ -47,7 +47,7 @@ Communication Services ダイレクト ルーティングの SBC 認定プログ
 ### <a name="conceptual-documentation"></a>概念説明のドキュメント
 
 - [Azure Communication Services での電話番号の種類](./plan-solution.md)
-- [Azure 直接ルーティングを計画する](./sip-interface-infrastructure.md)
+- [Azure 直接ルーティングを計画する](./direct-routing-infrastructure.md)
 - [セッション ボーダー コントローラーをペアリングし、音声ルーティングを構成する](./direct-routing-provisioning.md)
 - [料金](../pricing.md)
 

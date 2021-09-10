@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/25/2021
+ms.date: 08/28/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5149150ab1ad04852683e005495a2aae8b0218b8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 67dbc1ba66f18bb6d779d1185d863541272acd56
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469838"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451711"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 
@@ -82,12 +82,13 @@ public class Startup
              .EnableTokenAcquisitionToCallDownstreamApi(new string[] { scopesToRequest }
                .AddDistributedTokenCaches();
 
-// and then choose your implementation
+// and then choose your implementation of distributed cache
 
 // For instance the distributed in memory cache (not cleared when you stop the app)
-services.AddDistributedMemoryCache()
+services.AddDistributedMemoryCache();
 
 // Or a Redis cache
+// Requires the Microsoft.Extensions.Caching.StackExchangeRedis NuGet package
 services.AddStackExchangeRedisCache(options =>
 {
  options.Configuration = "localhost";
@@ -95,11 +96,22 @@ services.AddStackExchangeRedisCache(options =>
 });
 
 // Or even a SQL Server token cache
+// Requires the Microsoft.Extensions.Caching.SqlServer NuGet package
 services.AddDistributedSqlServerCache(options =>
 {
  options.ConnectionString = _config["DistCache_ConnectionString"];
  options.SchemaName = "dbo";
  options.TableName = "TestCache";
+});
+
+// Or a Cosmos DB cache
+// Requires the Microsoft.Extensions.Caching.Cosmos NuGet package
+services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
+{
+    cacheOptions.ContainerName = Configuration["CosmosCacheContainer"];
+    cacheOptions.DatabaseName = Configuration["CosmosCacheDatabase"];
+    cacheOptions.ClientBuilder = new CosmosClientBuilder(Configuration["CosmosConnectionString"]);
+    cacheOptions.CreateIfNotExists = true;
 });
 ```
 
@@ -118,15 +130,19 @@ MSAL.NET に加えて、[Microsoft.Identity.Web](https://www.nuget.org/packages/
 次のコードでは、メモリ内の十分にパーティション分割されたトークン キャッシュをアプリに追加する方法を示します。
 
 ```CSharp
-#using Microsoft.Identity.Web
-#using Microsoft.Identity.Client
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Client;
+using Microsoft.Extensions.DependencyInjection;
 ```
 
 ```CSharp
 
  private static IConfidentialClientApplication app;
 
- public static async Task<IConfidentialClientApplication> BuildConfidentialClientApplication()
+public static async Task<IConfidentialClientApplication> BuildConfidentialClientApplication(
+  string clientId,
+  CertificateDescription certDescription,
+  string tenant)
  {
   if (app== null)
   {
@@ -139,37 +155,45 @@ MSAL.NET に加えて、[Microsoft.Identity.Web](https://www.nuget.org/packages/
        .Build();
 
      // Add an in-memory token cache. Other options available: see below
-     app.AddInMemoryTokenCaches();
+     app.AddInMemoryTokenCache();
    }
-   return clientapp;
+   return app;
   }
 ```
 
-### <a name="available-serialization-technologies"></a>利用できるシリアル化テクノロジ
+### <a name="available-caching-technologies"></a>使用可能なキャッシュ テクノロジ
+
+`app.AddInMemoryTokenCache();` の代わりに、.NET で提供されている分散型トークン キャッシュなど、さまざまなキャッシュ テクノロジを使用することができます。
 
 #### <a name="in-memory-token-cache"></a>メモリ内トークン キャッシュ
 
+メモリ内トークン キャッシュのシリアル化は、サンプルでは非常に便利です。 また、Web アプリの再起動時にトークン キャッシュが失われても構わない場合は、実稼働アプリケーションにも適しています。
+
 ```CSharp 
      // Add an in-memory token cache
-     app.AddInMemoryTokenCaches();
+     app.AddInMemoryTokenCache();
 ```
 
-#### <a name="distributed-in-memory-token-cache"></a>分散メモリ内トークン キャッシュ
+#### <a name="distributed-caches"></a>分散キャッシュ
+
+`app.AddDistributedTokenCache` を使用している場合、トークン キャッシュは .NET `IDistributedCache` 実装に対するアダプターであるため、分散メモリ キャッシュ、Redis キャッシュ、CosmosDb、または SQL Server キャッシュから選択できます。 `IDistributedCache` の実装の詳細については、「[分散メモリ キャッシュ](/aspnet/core/performance/caching/distributed)」を参照してください。
+
+##### <a name="distributed-in-memory-token-cache"></a>分散メモリ内トークン キャッシュ
 
 ```CSharp 
      // In memory distributed token cache
-     app.AddDistributedTokenCaches(services =>
+     app.AddDistributedTokenCache(services =>
      {
        // In net462/net472, requires to reference Microsoft.Extensions.Caching.Memory
        services.AddDistributedMemoryCache();
      });
 ```
 
-#### <a name="sql-server"></a>[データベースのインポート]
+##### <a name="sql-server"></a>[データベースのインポート]
 
 ```CSharp 
      // SQL Server token cache
-     app.AddDistributedTokenCaches(services =>
+     app.AddDistributedTokenCache(services =>
      {
       services.AddDistributedSqlServerCache(options =>
       {
@@ -189,11 +213,11 @@ MSAL.NET に加えて、[Microsoft.Identity.Web](https://www.nuget.org/packages/
      });
 ```
 
-#### <a name="redis-cache"></a>Redis Cache
+##### <a name="redis-cache"></a>Redis Cache
 
 ```CSharp 
      // Redis token cache
-     app.AddDistributedTokenCaches(services =>
+     app.AddDistributedTokenCache(services =>
      {
        // Requires to reference Microsoft.Extensions.Caching.StackExchangeRedis
        services.AddStackExchangeRedisCache(options =>
@@ -204,13 +228,15 @@ MSAL.NET に加えて、[Microsoft.Identity.Web](https://www.nuget.org/packages/
       });
 ```
 
-#### <a name="cosmos-db"></a>Cosmos DB
+トークンの取得に redis キャッシュのタイムアウトと同じくらいの時間がかかることがある場合は、「[キャッシュ同期の無効化](#disabling-cache-synchronization)」も参照してください。 
+
+##### <a name="cosmos-db"></a>Cosmos DB
 
 ```CSharp 
       // Cosmos DB token cache
-      app.AddDistributedTokenCaches(services =>
+      app.AddDistributedTokenCache(services =>
       {
-        // Requires to reference Microsoft.Extensions.Caching.Cosmos (preview)
+        // Requires to reference Microsoft.Extensions.Caching.Cosmos
         services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
         {
           cacheOptions.ContainerName = Configuration["CosmosCacheContainer"];
@@ -222,6 +248,7 @@ MSAL.NET に加えて、[Microsoft.Identity.Web](https://www.nuget.org/packages/
 ```
 
 ### <a name="disabling-legacy-token-cache"></a>レガシ トークン キャッシュの無効化
+
 MSAL には、特にレガシ ADAL キャッシュと対話する機能を有効にするための内部コードがいくつかあります。 MSAL と ADAL がサイド バイ サイドで使用されていない (したがって、レガシ キャッシュが使用されていない) 場合、関連するレガシ キャッシュ コードは必要ありません。 MSAL [4.25.0](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/releases/tag/4.25.0) により、レガシ ADAL キャッシュ コードを無効にして、キャッシュ使用パフォーマンスを向上させる機能が追加されます。 レガシ キャッシュを無効にする前と後のパフォーマンスの比較については、pull request [#2309](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/pull/2309) を参照してください。 次のようにアプリケーション ビルダーで `.WithLegacyCacheCompatibility(false)` を呼び出します。
 
 ```csharp
@@ -231,6 +258,29 @@ var app = ConfidentialClientApplicationBuilder
     .WithLegacyCacheCompatibility(false)
     .Build();
 ```
+
+### <a name="disabling-cache-synchronization"></a>キャッシュ同期の無効化
+
+MSAL では、既定でキャッシュの読み取りとキャッシュの書き込みの間に、機密クライアント アプリケーション レベルでキャッシュ アクセスがロックされます。 このロックは、キャッシュ シリアライザーがタイムアウトするまでの時間が長い場合に問題となることがあり、Redis キャッシュがこれに該当します。 `WithCacheSynchronization` フラグを false に設定してキャッシュの楽観的ロック戦略を有効にすることで、特に ConfidentialClientApplication オブジェクトが要求間で再利用されるときに、パフォーマンスが向上します。 
+
+```csharp
+var app = ConfidentialClientApplicationBuilder
+    .Create(clientId)
+    .WithClientSecret(clientSecret)
+    .WithCacheSynchronization(false)
+    .Build();
+```
+
+### <a name="monitor-cache-hit-ratios-and-cache-performance"></a>キャッシュ ヒット率とキャッシュ パフォーマンスの監視
+
+MSAL は、[AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata) オブジェクトの一部として、重要なメトリックを公開します。 
+
+| メトリック       | 意味     | アラームをトリガーするタイミング    |
+| :-------------: | :----------: | :-----------: |
+|  `DurationTotalInMs` | MSAL で費やした合計時間 (ネットワーク呼び出しとキャッシュを含む)   | 全体の待機時間が長い場合のアラーム (1 秒以上)。 値はトークン ソースによって異なります。 キャッシュから: 1 回のキャッシュ アクセス。 AAD から: 2 回のキャッシュ アクセス + 1 回の HTTP 呼び出し。 1 回目 (プロセスごと) の呼び出しでは、1 回分の HTTP 呼び出しが追加で発生するため、時間がかかります。 |
+|  `DurationInCacheInMs` | アプリ開発者によってカスタマイズされた、トークン キャッシュの読み込みまたは保存に要した時間 (Redis に保存するなど)。| スパイク時のアラーム。 |
+|  `DurationInHttpInMs`| AAD への HTTP 呼び出しに要した時間。  | スパイク時のアラーム。|
+|  `TokenSource` | トークンのソースを示します。 キャッシュからのトークンの取得が格段に速くなります (例: ～ 700 ms に対して ～ 100 ms)。 キャッシュ ヒット率の監視とアラーム生成に使用できます。 | `DurationTotalInMs` と使用します |
 
 ### <a name="samples"></a>サンプル
 
@@ -539,4 +589,5 @@ namespace CommonCacheMsalV3
 | サンプル | プラットフォーム | 説明|
 | ------ | -------- | ----------- |
 |[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | デスクトップ (WPF) | Microsoft Graph API を呼び出す Windows デスクトップ .NET (WPF) アプリケーション。 ![トポロジの図。Desktop App WPF TodoListClient はトークンを対話形式で取得することで Azure AD に流れます。また、Microsoft Graph に流れます。](media/msal-net-token-cache-serialization/topology.png)|
-|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | デスクトップ (コンソール) | Azure AD v1.0 アプリケーション (ADAL.NET を使用) から Microsoft ID プラットフォーム アプリケーション (MSAL.NET を使用) への移行を示す一連の Visual Studio ソリューション。 特に、「[トークン キャッシュの移行](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)」を参照してください。|
+|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | デスクトップ (コンソール) | Azure AD v1.0 アプリケーション (ADAL.NET を使用) から Microsoft ID プラットフォーム アプリケーション (MSAL.NET を使用) への移行を示す一連の Visual Studio ソリューション。 特に、[トークン キャッシュの移行](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)に関するページと、[機密クライアントのトークン キャッシュ](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/tree/master/ConfidentialClientTokenCache)に関するページを参照してください |
+[ms-identity-aspnet-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) | ASP.NET (net472) | ASP.NET MVC アプリケーションでのトークン キャッシュのシリアル化の例 (MSAL.NET を使用)。 特に、[MsalAppBuilder](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Utils/MsalAppBuilder.cs) に関するページを参照してください

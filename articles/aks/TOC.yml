@@ -132,6 +132,8 @@
           maintainContext: false
     - name: サポートされている Kubernetes バージョン
       href: supported-kubernetes-versions.md
+    - name: Cloud Controller Manager (プレビュー)
+      href: out-of-tree.md
     - name: ホスト OS でのセキュリティ強化
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes Service 診断の概要
