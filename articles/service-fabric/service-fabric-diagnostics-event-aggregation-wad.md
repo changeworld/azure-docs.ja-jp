@@ -294,7 +294,7 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
         }
 ```
 
-パフォーマンス カウンターまたはイベント ログを収集するには、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)」に記載されている例を使用して Resource Manager テンプレートを変更します。 その後、Resource Manager テンプレートを再発行します。
+パフォーマンス カウンターまたはイベント ログを収集するには、「[Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)」に記載されている例を使用して Resource Manager テンプレートを変更します。 その後、Resource Manager テンプレートを再発行します。
 
 ## <a name="collect-performance-counters"></a>パフォーマンス カウンターを収集する
 
