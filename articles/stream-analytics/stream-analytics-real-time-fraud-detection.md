@@ -133,7 +133,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 1. Stream Analytics ジョブを作成するには、[Azure portal](https://portal.azure.com/) に移動します。
 
-2. **[リソースの作成]** を選択し、 **[Stream Analytics ジョブ]** を検索します。 **[Stream Analytics ジョブ]** タイルを選択し、*[作成]** を選択します。
+2. **[リソースの作成]** を選択し、 **[Stream Analytics ジョブ]** を検索します。 **[Stream Analytics ジョブ]** タイルを選択し、**[作成]** を選択します。
 
 3. **[新しい Stream Analytics ジョブ]** フォームで、次の値を入力します。
 
