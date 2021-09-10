@@ -19,7 +19,7 @@ Azure DevTest Labs によって、Azure portal を使用することにより、
 - Azure PowerShell コマンドレット 
 - Azure CLI。
 
-## <a name="use-azure-resource-manager-templates"></a>Azure リソース マネージャー テンプレートの使用
+## <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの使用
 次のサンプルの Resource Manager テンプレートでは、ラボの **DevTest Labs ユーザー** ロールに追加されるユーザーを指定します。 
 
 ```json
