@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      demo_df.write.parquet('abfss://<<TheNameOfAStorageAccountFileSystem>>@<<TheNameOfAStorageAccount>>.dfs.core.windows.net/demodata/demo_df', mode='overwrite')
     ```
 
-    ストレージ エクスプローラーを使用すると、上記で使用したファイルの 2 つの書き込み方法の影響を確認できます。 ファイル システムが指定されていない場合は、既定値が使用されます (ここでは `default>user>trusted-service-user>demo_df`)。 データは指定されたファイル システムの場所に保存されます。
+    Storage Explorer を使用すると、上記で使用したファイルの 2 つの書き込み方法の影響を確認できます。 ファイル システムが指定されていない場合は、既定値が使用されます (ここでは `default>user>trusted-service-user>demo_df`)。 データは指定されたファイル システムの場所に保存されます。
 
     "csv&quot; と &quot;parquet&quot; の両方の形式において、書き込み操作により、パーティション分割された多数のファイルを含むディレクトリが作成されることに注意してください。
 
