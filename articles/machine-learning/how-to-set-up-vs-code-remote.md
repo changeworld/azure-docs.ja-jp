@@ -66,7 +66,7 @@ Visual Studio Code からコンピューティング インスタンスに接続
 ### <a name="compute"></a>Compute
 
 1. **[コンピューティング]** タブを選択します
-1. *[アプリケーション URI]* 列で、接続するコンピューティング インスタンスの **[VS コード]** を選択します。
+1. *[アプリケーション URI]* 列で、接続するコンピューティング インスタンスの **[VS Code]** を選択します。
 
 :::image type="content" source="media/how-to-set-up-vs-code-remote/studio-compute-instance-vs-code-launch.png" alt-text="コンピューティング インスタンスへの接続: VS Code Azure ML スタジオ" lightbox="media/how-to-set-up-vs-code-remote/studio-compute-instance-vs-code-launch.png":::
 
