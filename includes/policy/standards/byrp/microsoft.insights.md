@@ -2,25 +2,25 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4a66d9ebd8306476da99e0deb461052f6482a766
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 796c114dd02164fe45951d67d8ae39799de7aaea
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099594"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479502"
 ---
 ## <a name="australian-government-ism-protected"></a>Australian Government ISM PROTECTED
 
-すべての Azure サービスに対して使用可能な Azure Policy 組み込みを、このコンプライアンス基準に対応させる方法については、[Azure Policy の規制コンプライアンス - Australian Government ISM PROTECTED](../../../../articles/governance/policy/samples/australia-ism.md) に関するページを参照してください。
-このコンプライアンス基準の詳細については、[Australian Government ISM PROTECTED](https://www.cyber.gov.au/acsc/view-all-content/ism) を参照してください。
+To review how the available Azure Policy built-ins for all Azure services map to this compliance standard, see <bpt id="p1">[</bpt>Azure Policy Regulatory Compliance - Australian Government ISM PROTECTED<ept id="p1">](../../../../articles/governance/policy/samples/australia-ism.md)</ept>.
+For more information about this compliance standard, see <bpt id="p1">[</bpt>Australian Government ISM PROTECTED<ept id="p1">](https://www.cyber.gov.au/acsc/view-all-content/ism)</ept>.
 
 |Domain |コントロール ID |コントロールのタイトル |ポリシー<br /><sub>(Azure portal)</sub> |ポリシーのバージョン<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
-|システム監視のためのガイドライン - イベント ログと監査 |582 |ログに記録されるイベント - 582 |[診断設定の監査](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
-|システム監視のためのガイドライン - イベント ログと監査 |1537 |ログに記録されるイベント - 1537 |[診断設定の監査](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
+|システム監視のためのガイドライン - イベント ログと監査 |582 |Events to be logged - 582 |[診断設定の監査](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
+|システム監視のためのガイドライン - イベント ログと監査 |1537 |Events to be logged - 1537 |[診断設定の監査](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
 
 ## <a name="azure-security-benchmark"></a>Azure セキュリティ ベンチマーク
 

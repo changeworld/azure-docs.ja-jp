@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 90fa4736246be2fabc8797a0e77481647ea7c013
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: ee681f05ada3c850863004f6375c726e8b1d6b19
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536448"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305854"
 ---
 ### <a name="count-of-subscriptions-per-management-group"></a>管理グループあたりのサブスクリプションの数
 

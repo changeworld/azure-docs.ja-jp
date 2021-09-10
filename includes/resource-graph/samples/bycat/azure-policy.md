@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 06337438a60b0f94c4ee8a77f238b2b16c859126
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 41981095b367e8beb33509412b3ef60d6b1e6266
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309452"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536139"
 ---
 ### <a name="compliance-by-policy-assignment"></a>ポリシーの割り当て別のコンプライアンス
 

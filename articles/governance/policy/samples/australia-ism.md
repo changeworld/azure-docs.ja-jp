@@ -1,15 +1,15 @@
 ---
 title: Australian Government ISM PROTECTED の規制コンプライアンスの詳細
 description: Australian Government ISM PROTECTED 規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 09/03/2021
+ms.date: 08/27/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b8594d87495d9bb9804d1bd370b0d0388789ded6
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 8a3c28dbcbcc3ae16918e2438d5f1adcf01616f5
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478286"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108859"
 ---
 # <a name="details-of-the-australian-government-ism-protected-regulatory-compliance-built-in-initiative"></a>Australian Government ISM PROTECTED 規制コンプライアンスの組み込みイニシアチブの詳細
 

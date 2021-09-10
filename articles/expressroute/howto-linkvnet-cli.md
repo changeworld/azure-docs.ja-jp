@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: abca04eb60538921191b9c632ef6ef2849f959c5
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 892cf772559b445a6ebb7103ff5a65582700b70f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424908"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864334"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>チュートリアル:CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -172,7 +172,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 ```
 
 > [!NOTE]
-> [接続モニター](how-to-configure-connection-monitor.md)を使用して、トラフィックが FastPath を使用して宛先に到達していることを確認できます。
+> [接続モニター](how-to-configure-connection-monitor.md)を使用して、FastPath を使用してトラフィックが宛先に到達していることを確認できます。
 >
 
 ## <a name="enroll-in-expressroute-fastpath-features-preview"></a>ExpressRoute の FastPath 機能に登録する (プレビュー)
@@ -180,8 +180,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 FastPath の仮想ネットワーク ピアリングのサポートは、現在パブリック プレビュー中です。 登録は Azure PowerShell を通じてのみ可能です。 登録方法については、[FastPath プレビュー機能](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)に関するページを参照してください。
 
 > [!NOTE] 
-> ターゲット サブスクリプションで FastPath 用に構成されたすべての接続が、このプレビューに登録されます。 実稼働サブスクリプションでこのプレビューを有効にすることはお勧めしません。
-> FastPath が既に構成されていて、プレビュー機能への登録を希望される場合は、次の手順を実行する必要があります。
+> FastPath が既に構成されていて、プレビュー機能に登録したい場合は、次の手順を実行する必要があります。
 > 1. 上の Azure PowerShell コマンドを使用して、FastPath プレビュー機能に登録します。
 > 1. ターゲット接続で FastPath を無効にしてから再度有効にします。
 

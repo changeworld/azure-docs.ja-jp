@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d3b4b8b989fc307faae39c8afe1cdf09f2467380
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 698120a0609e1c070348e5b0a6cf3c447bd0b16c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535903"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308848"
 ---
 ### <a name="combine-results-from-two-queries-into-a-single-result"></a>2 つのクエリの結果を結合して 1 つの結果にする
 
@@ -44,9 +44,9 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 ---
 
-### <a name="count-of-subscriptions-per-management-group"></a>Count of subscriptions per management group
+### <a name="count-of-subscriptions-per-management-group"></a>管理グループあたりのサブスクリプションの数
 
-Summarizes the count of subscriptions in each management group.
+各管理グループのサブスクリプションの数の集計します。
 
 ```kusto
 ResourceContainers
@@ -79,9 +79,9 @@ Search-AzGraph -Query "ResourceContainers | where type =~ 'microsoft.management/
 
 ---
 
-### <a name="list-all-management-group-ancestors-for-a-specified-management-group"></a>List all management group ancestors for a specified management group
+### <a name="list-all-management-group-ancestors-for-a-specified-management-group"></a>指定された管理グループのすべての管理グループの先祖を一覧表示する
 
-Provides the management group hierarchy details for the management group specified in the <bpt id="p1">[</bpt>query scope<ept id="p1">](../../../../articles/governance/resource-graph/concepts/query-language.md#query-scope)</ept>. In this example, the management group is named <bpt id="p1">**</bpt>Application<ept id="p1">**</ept>.
+[クエリ スコープ](../../../../articles/governance/resource-graph/concepts/query-language.md#query-scope)で指定された管理グループの管理グループ階層の詳細を提供します。 この例では、管理グループの名前は **Application** です。
 
 ```kusto
 ResourceContainers
@@ -113,9 +113,9 @@ Search-AzGraph -Query "ResourceContainers | where type =~ 'microsoft.management/
 
 ---
 
-### <a name="list-all-management-group-ancestors-for-a-specified-subscription"></a>List all management group ancestors for a specified subscription
+### <a name="list-all-management-group-ancestors-for-a-specified-subscription"></a>指定されたサブスクリプションのすべての管理グループの先祖を一覧表示する
 
-Provides the management group hierarchy details for the subscription specified in the <bpt id="p1">[</bpt>query scope<ept id="p1">](../../../../articles/governance/resource-graph/concepts/query-language.md#query-scope)</ept>. In this example, the subscription GUID is <bpt id="p1">**</bpt>11111111-1111-1111-1111-111111111111<ept id="p1">**</ept>.
+[クエリ スコープ](../../../../articles/governance/resource-graph/concepts/query-language.md#query-scope)で指定されたサブスクリプションの管理グループ階層の詳細を提供します。 この例では、サブスクリプション GUID は **11111111-1111-1111-1111-111111111111** です。
 
 ```kusto
 ResourceContainers
@@ -147,9 +147,9 @@ Search-AzGraph -Query "ResourceContainers | where type =~ 'microsoft.resources/s
 
 ---
 
-### <a name="list-all-subscriptions-under-a-specified-management-group"></a>List all subscriptions under a specified management group
+### <a name="list-all-subscriptions-under-a-specified-management-group"></a>指定された管理グループの下にあるすべてのサブスクリプションを一覧表示する
 
-Provides the name and subscription ID of all subscriptions under the management group specified in the <bpt id="p1">[</bpt>query scope<ept id="p1">](../../../../articles/governance/resource-graph/concepts/query-language.md#query-scope)</ept>. In this example, the management group is named <bpt id="p1">**</bpt>Application<ept id="p1">**</ept>.
+[クエリ スコープ](../../../../articles/governance/resource-graph/concepts/query-language.md#query-scope)で指定された管理グループの下にあるすべてのサブスクリプションの名前とサブスクリプション ID を提供します。 この例では、管理グループの名前は **Application** です。
 
 ```kusto
 ResourceContainers
@@ -257,9 +257,9 @@ Search-AzGraph -Query "Resources | summarize resourceCount=count() by subscripti
 
 ---
 
-### <a name="secure-score-per-management-group"></a>Secure score per management group
+### <a name="secure-score-per-management-group"></a>管理グループ別のセキュリティ スコア
 
-Returns secure score per management group.
+管理グループ別のセキュリティ スコアを返します。
 
 ```kusto
 SecurityResources

@@ -3,19 +3,19 @@ title: Custom Speech 用のデータを準備する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: マイクロソフトの音声認識の正確性をテストする場合、またはカスタム モデルをトレーニングする場合は、オーディオ データとテキスト データが必要です。 このページでは、データ型、使用方法、および管理方法について説明します。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: lajanuar
-ms.openlocfilehash: cd1fbd5d0ae9a917ff96fed0af9c14d4c7fc0a7a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.author: pafarley
+ms.openlocfilehash: 79846dcb5acb50549231d247530512564ae1beea
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256337"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542525"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
