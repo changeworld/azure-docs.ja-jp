@@ -94,7 +94,7 @@ Azure は、そのクラウド コンピューティング プラットフォー
 
 - Azure Storage (Azure BLOB、Queue、Table、File サービスから構成)
 
-- Azure SQL データベース
+- Azure SQL Database
 
 - Azure Cosmos DB
 
