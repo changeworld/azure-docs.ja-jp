@@ -101,7 +101,7 @@ landingContent:
       url: service-bus-diagnostic-logs.md
     - text: メッセージ エンティティの一時停止と再アクティブ化
       url: entity-suspend.md
-    - text: Azure リソース マネージャー テンプレートの使用
+    - text: Azure Resource Manager テンプレートの使用
       url: service-bus-resource-manager-overview.md
     - text: 例外のトラブルシューティング
       url: service-bus-messaging-exceptions.md
