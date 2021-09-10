@@ -4,12 +4,12 @@ description: この記事では、マネージド ID が有効になった Servi
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 7f49a3f97862c3a141ea9376d0ffc9bf510d3e6f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ac383c3d517bbbab2b25c12dc4a06b4fe63e1b89
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782964"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865048"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Service Fabric アプリケーションのマネージド ID に Azure リソースへのアクセス権を付与する
 
@@ -98,5 +98,6 @@ Service Fabric アプリケーションのマネージド ID (この場合はユ
 詳細については、「[コンテナー - アクセス ポリシーの更新](/rest/api/keyvault/vaults/updateaccesspolicy)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+* [マネージド ID を持つ Microsoft Azure Service Fabric アプリケーションをマネージド クラスターにデプロイする](how-to-managed-cluster-application-managed-identity.md)
 * [システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [ユーザー割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

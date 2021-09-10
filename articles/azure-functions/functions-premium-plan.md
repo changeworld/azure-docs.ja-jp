@@ -9,16 +9,19 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: e53089c2287d255fd3dbe6ca7961646e0e3de05a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f2ac7aa7d5078359f747e141971eabeba21eab3e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457426"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968733"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
-Azure Functions の Premium プラン (Elastic Premium プランとも呼ばれます) は、 Function App のホスティング オプションです。 その他のホスティング プラン オプションについては、[ホスティング プランの記事](functions-scale.md)を参照してください。
+Azure Functions Elastic Premium プランは、関数アプリの動的スケール ホスティング オプションです。 その他のホスティング プラン オプションについては、[ホスティング プランの記事](functions-scale.md)を参照してください。
+
+>[!IMPORTANT]
+>Azure Functions は Azure App Service プラットフォームで実行されます。 App Service プラットフォームでは、Premium プラン関数アプリをホストするプランは *Elastic* Premium プランと呼ばれており、`EP1` のような SKU 名があります。 Premium プランで関数アプリを実行することを選択した場合、`EP1` のように "E" で始まる SKU 名を持つプランを必ず作成してください。 `P1V2` (Premium V2 Small プラン) のように "P" で始まる App Service プラン SKU 名は実際には [Dedicated ホスティング プラン](dedicated-plan.md)です。 Dedicated であり、Elastic Premium ではないため、"P" で始まる SKU 名のプランは動的にスケールせず、コストが増えることがあります。 
 
 Premium プランのホスティングでは、関数に次の利点があります。
 
@@ -158,7 +161,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ## <a name="region-max-scale-out"></a>リージョン最大スケール アウト
 
-以下は、1 つのプランでサポートされている最大スケールアウト値をリージョンと OS の構成ごとにまとめたものです。 増加を依頼するには、サポート チケットを開くことができます。
+以下は、1 つのプランでサポートされている最大スケールアウト値をリージョンと OS の構成ごとにまとめたものです。
 
 Functions のリージョン別の可用性の完全な情報については、[Azure の Web サイト](https://azure.microsoft.com/global-infrastructure/services/?products=functions)を参照してください。
 

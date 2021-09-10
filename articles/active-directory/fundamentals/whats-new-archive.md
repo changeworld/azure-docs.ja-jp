@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42a9867f46baf0fb1cae6f53acccef0be3fe9901
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: af8d770752468d96dda51ad642b2e5d29cb6d23b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749195"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537186"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -177,7 +177,7 @@ Azure AD Connect クラウドにより、変換ロジックの大量の処理が
 
 2021 年 1 月には、フェデレーションをサポートする次の 29 個の新しいアプリケーションがアプリ ギャラリーに追加されました。
 
-[mySCView](https://dev.myscview.com/)、[Talentech](https://talentech.com/contact/)、[Bipsync](https://www.bipsync.com/)、[OroTimesheet](https://app.orotimesheet.com/login.php)、[Mio](https://app.m.io/auth/install/microsoft?scopetype=hub)、[Sovelto Easy](https://login.soveltoeasy.fi/)、[Supportbench](https://account.supportbench.net/agent/login/)、[Bienvenue Formation](https://formation.bienvenue.pro/login)、[AIDA Healthcare SSO](https://aidaforparents.com/login/organizations)、[International SOS Assistance 製品](../saas-apps/international-sos-assistance-products-tutorial.md)、[NAVEX One](../saas-apps/navex-one-tutorial.md)、[LabLog](../saas-apps/lablog-tutorial.md)、[Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md)、[EPHOTO DAM](../saas-apps/ephoto-dam-tutorial.md)、[Notion](../saas-apps/notion-tutorial.md)、[Syndio](../saas-apps/syndio-tutorial.md)、[Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md)、[Timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md)、[Nalco E-data](https://www.ecolab.com/)、[Vacancy Filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login)、[Synerise AI Growth Ecosystem](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md)、[Imperva Data Security](../saas-apps/imperva-data-security-tutorial.md)、[Illusive Networks](../saas-apps/illusive-networks-tutorial.md)、[Proware](../saas-apps/proware-tutorial.md)、[Splan Visitor](../saas-apps/splan-visitor-tutorial.md)、[Aruba User Experience Insight](../saas-apps/aruba-user-experience-insight-tutorial.md)、[Contentsquare SSO](../saas-apps/contentsquare-sso-tutorial.md)、[Perimeter 81](../saas-apps/perimeter-81-tutorial.md)、[Burp Suite Enterprise Edition](../saas-apps/burp-suite-enterprise-edition-tutorial.md)
+[mySCView](https://www.myscview.com/)、[Talentech](https://talentech.com/contact/)、[Bipsync](https://www.bipsync.com/)、[OroTimesheet](https://app.orotimesheet.com/login.php)、[Mio](https://app.m.io/auth/install/microsoft?scopetype=hub)、[Sovelto Easy](https://login.soveltoeasy.fi/)、[Supportbench](https://account.supportbench.net/agent/login/)、[Bienvenue Formation](https://formation.bienvenue.pro/login)、[AIDA Healthcare SSO](https://aidaforparents.com/login/organizations)、[International SOS Assistance 製品](../saas-apps/international-sos-assistance-products-tutorial.md)、[NAVEX One](../saas-apps/navex-one-tutorial.md)、[LabLog](../saas-apps/lablog-tutorial.md)、[Oktopost SAML](../saas-apps/oktopost-saml-tutorial.md)、[EPHOTO DAM](../saas-apps/ephoto-dam-tutorial.md)、[Notion](../saas-apps/notion-tutorial.md)、[Syndio](../saas-apps/syndio-tutorial.md)、[Yello Enterprise](../saas-apps/yello-enterprise-tutorial.md)、[Timeclock 365 SAML](../saas-apps/timeclock-365-saml-tutorial.md)、[Nalco E-data](https://www.ecolab.com/)、[Vacancy Filler](https://app.vacancy-filler.co.uk/VFMVC/Account/Login)、[Synerise AI Growth Ecosystem](../saas-apps/synerise-ai-growth-ecosystem-tutorial.md)、[Imperva Data Security](../saas-apps/imperva-data-security-tutorial.md)、[Illusive Networks](../saas-apps/illusive-networks-tutorial.md)、[Proware](../saas-apps/proware-tutorial.md)、[Splan Visitor](../saas-apps/splan-visitor-tutorial.md)、[Aruba User Experience Insight](../saas-apps/aruba-user-experience-insight-tutorial.md)、[Contentsquare SSO](../saas-apps/contentsquare-sso-tutorial.md)、[Perimeter 81](../saas-apps/perimeter-81-tutorial.md)、[Burp Suite Enterprise Edition](../saas-apps/burp-suite-enterprise-edition-tutorial.md)
 
 すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください
 
@@ -3090,7 +3090,7 @@ Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) 
 
 モバイル アプリを組織に登録しているユーザーは、Microsoft Authenticator アプリからの通知に同意するか、モバイル アプリまたはハードウェア トークンからのコードを入力すると、自分のパスワードをリセットできるようになりました。
 
-詳細については、[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](../authentication/concept-sspr-howitworks.md)に関する記事をご覧ください。 ユーザー エクスペリエンスの詳細については、[職場または学校のパスワードのリセットの概要](../user-help/active-directory-passwords-reset-register.md)に関する記事をご覧ください。
+詳細については、[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](../authentication/concept-sspr-howitworks.md)に関する記事をご覧ください。 ユーザー エクスペリエンスの詳細については、[職場または学校のパスワードのリセットの概要](https://support.microsoft.com/account-billing/register-the-password-reset-verification-method-for-a-work-or-school-account-47a55d4a-05b0-4f67-9a63-f39a43dbe20a)に関する記事をご覧ください。
 
 ---
 
@@ -4945,7 +4945,7 @@ Azure AD Terms of Use の管理操作のための Microsoft Graph API が追加�
 
 **種類:** 新機能 **サービス カテゴリ:** マイ アプリ **製品の機能:** SSO
 
-ユーザーが企業ネットワークの外部にいる場合でも、Azure AD 向けの My Apps Sign-in Extension を使用して、内部 URL を使ってアプリケーションにアクセスできるようになりました。 これは、Azure AD アプリケーション プロキシを使用して発行されたすべてのアプリケーションで動作し、アクセス パネル ブラウザー拡張機能もインストールされているブラウザーで動作します。 URL リダイレクト機能は、ユーザーが拡張機能にログインすると自動的に有効になります。 この拡張機能は、[Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)、[Chrome](https://go.microsoft.com/fwlink/?linkid=866367)、[Firefox](https://go.microsoft.com/fwlink/?linkid=866366) でダウンロードして使用できます。
+ユーザーが企業ネットワークの外部にいる場合でも、Azure AD 向けの My Apps Sign-in Extension を使用して、内部 URL を使ってアプリケーションにアクセスできるようになりました。 これは、Azure AD アプリケーション プロキシを使用して発行されたすべてのアプリケーションで動作し、アクセス パネル ブラウザー拡張機能もインストールされているブラウザーで動作します。 URL リダイレクト機能は、ユーザーが拡張機能にログインすると自動的に有効になります。 この拡張機能は、[Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176) や [Chrome](https://go.microsoft.com/fwlink/?linkid=866367) でダウンロードして使用できます。
 
 ---
 

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins 内でモデルを作成、編集、および削除する方法を説明します。
 author: baanders
 ms.author: baanders
-ms.date: 8/13/2021
+ms.date: 8/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c5614ce350a4690aa49268e8598bfc9eb2996d6a
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2e5c137ceb08bd89dc70026639c6191b1c61f42d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253197"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223232"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
@@ -53,15 +53,17 @@ Azure Digital Twins のモデルは DTDL で記述され、 .json ファイル�
 
 モデルを作成したら、Azure Digital Twins インスタンスにアップロードできます。
 
-モデルをアップロードする準備が整ったら、次のコード スニペットを使用できます。
+モデルをアップロードする準備が整ったら、[.NET SDK](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true) に次のコード スニペットを使用します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
-`CreateModels` メソッドが 1 つのトランザクションで複数のファイルを受け入れることを確認します。 次に例を示します。
+1 回のトランザクションで複数のモデルをアップロードすることもできます。 
+
+SDK を使用している場合は、次のように `CreateModels` メソッドを使用して複数のモデル ファイルをアップロードできます。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-モデル ファイルには、1 つ以上のモデルを含めることができます。 この場合、モデルを JSON 配列に配置する必要があります。 次に例を示します。
+[REST API](/rest/api/azure-digitaltwins/) または [Azure CLI](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) を使用している場合は、1 つの JSON ファイルに複数のモデル定義をまとめてアップロードすることで、複数のモデルをアップロードすることもできます。 この場合、次の例のように、ファイル内の JSON 配列にモデルを配置する必要があります。
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 
@@ -254,7 +256,7 @@ REST API 呼び出し [DigitalTwinModels Update](/rest/api/digital-twins/datapla
 5. さらに数分待って、変更がすべて適用されたことを確実にします
 6. モデルを削除します 
 
-モデルを削除するには、[DeleteModel]/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.deletemodel?view=azure-dotnet&preserve-view=true) SDK 呼び出しを使用します。
+モデルを削除するには、次のように [DeleteModel](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.deletemodel?view=azure-dotnet&preserve-view=true) SDK 呼び出しを使用します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 

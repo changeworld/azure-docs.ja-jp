@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4004887a4806a5b8e50429031fb204f4eec5000
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0130379b5c9225329bde1d49c119eaec446d17de
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627967"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112625"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Azure Synapse Analytics で複合データ型を分析する
 
@@ -220,5 +220,6 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Spark を使って Synapse Link for Azure Cosmos DB に対してクエリを実行する方法を確認する](./synapse-link/how-to-query-analytical-store-spark.md)
+* [Spark 3 を使って Synapse Link for Azure Cosmos DB に対してクエリを実行する方法を確認する](./synapse-link/how-to-query-analytical-store-spark-3.md)
+* [Spark 2 を使って Synapse Link for Azure Cosmos DB に対してクエリを実行する方法を確認する](./synapse-link/how-to-query-analytical-store-spark.md)
 * [Parquet の入れ子にされた型に対してクエリを実行する](./sql/query-parquet-nested-types.md)

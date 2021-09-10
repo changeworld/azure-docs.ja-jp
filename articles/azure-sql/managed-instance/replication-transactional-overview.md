@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: mathoma
 ms.date: 05/10/2020
-ms.openlocfilehash: 98aa190e85b0c613b4bf2224c0a3cf6637011de4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7ba5da1b452f411966e40d4ff991bbda9fdb88f7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733329"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867419"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance (プレビュー) でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,13 +37,13 @@ ms.locfileid: "121733329"
   > [!NOTE]
   > Azure SQL Managed Instance のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) を使用している必要があります。
 
-### <a name="components"></a>Components
+### <a name="components"></a>コンポーネント
 
 トランザクション レプリケーションの主要なコンポーネントは、次の図の **パブリッシャー**、**ディストリビューター**、**サブスクライバー** です。  
 
 ![SQL Database を使用したレプリケーション](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL Database | Azure SQL Managed Instance |
+| Role | Azure SQL データベース | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | **発行元** | いいえ | はい |
 | **ディストリビューター** | いいえ | はい|
@@ -61,7 +61,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 - SQL Server 2016 以降
 - SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) または [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) または [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) または [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996) または [SP4 (11.0.7001.0)](https://www.microsoft.com/download/details.aspx?id=56040)
 
    > [!NOTE]
    >
@@ -72,7 +72,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 さまざまな[レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)があります。
 
-| レプリケーション | Azure SQL Database | Azure SQL Managed Instance |
+| レプリケーション | Azure SQL データベース | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | [**標準トランザクション**](/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい |
 | [**スナップショット**](/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|

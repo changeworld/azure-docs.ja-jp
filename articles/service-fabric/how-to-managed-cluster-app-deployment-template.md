@@ -1,17 +1,17 @@
 ---
-title: ARM テンプレートを使用して Service Fabric マネージド クラスター アプリケーションをデプロイする
-description: Azure Resource Manager テンプレートを使用して、アプリケーションを Azure Service Fabric マネージド クラスター にデプロイします。
+title: Azure Resource Manager を使用してアプリケーションを管理対象クラスターにデプロイする
+description: Azure Resource Manager を使用し、Azure Service Fabric マネージド クラスターで Service Fabric アプリケーションをデプロイ、アップグレード、削除する方法を学習する
 ms.topic: how-to
-ms.date: 5/10/2021
+ms.date: 8/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6a40dc23b0eeda4c680d0151b08cb1c8f1a84053
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4e981e58cd5efb1430ab35772ab84428f7482977
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290155"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434522"
 ---
-# <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>ARM テンプレートを使用して Service Fabric マネージド クラスター アプリケーションをデプロイする
+# <a name="manage-application-lifecycle-on-a-managed-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用し、マネージド クラスターでアプリケーション ライフサイクルを管理する
 
 Azure Service Fabric アプリケーションを Service Fabric マネージド クラスターにデプロイするには、複数の選択肢があります。 Azure Resource Manager を使用することをお勧めします。 Resource Manager を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell や Azure CLI を使ってアプリケーションをデプロイして管理する場合と違い、Resource Manager を使用する場合は、クラスターの準備が整うまで待つ必要はありません。アプリケーションの登録、プロビジョニング、およびデプロイをすべて 1 回の手順で実行できます。 クラスターでアプリケーションのライフ サイクルを管理するには、Resource Manager を使用するのが最良の方法です。 詳細については、「[ベスト プラクティス: コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources)」を参照してください。
 
@@ -25,11 +25,11 @@ Resource Manager でアプリケーションをリソースとして管理する
 
 > [!div class="checklist"]
 >
-> * Resource Manager を使用したアプリケーション リソースのデプロイ。
-> * Resource Manager を使用したアプリケーション リソースのアップグレード。
-> * アプリケーション リソースの削除。
+> * Resource Manager を使用して Service Fabric アプリケーション リソースをデプロイします。
+> * Resource Manager を使用して Service Fabric アプリケーション リソースをアップグレードします。
+> * Service Fabric アプリケーション リソース リソースを削除します。
 
-## <a name="deploy-application-resources"></a>アプリケーション リソースのデプロイ
+## <a name="deploy-service-fabric-application-resources"></a>Service Fabric アプリケーション リソース リソースをデプロイする
 
 Resource Manager アプリケーション リソース モデルを使用してアプリケーションとそのサービスをデプロイする手順の概要は次のとおりです。
 1. アプリケーション コードをパッケージ化します。
@@ -38,7 +38,7 @@ Resource Manager アプリケーション リソース モデルを使用して�
 
 詳細については、[アプリケーションのパッケージ化](service-fabric-package-apps.md#create-an-sfpkg)に関する項目を参照してください。
 
-次に、Resource Manager テンプレートを作成し、アプリケーションの詳細情報でパラメーター ファイルを更新し、そのテンプレートを Service Fabric クラスターにデプロイします。 [サンプルを参照してください](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/voting-sample-no-reverse-proxy/ARM-Managed-Cluster)。
+次に、Resource Manager テンプレートを作成し、アプリケーションの詳細情報でパラメーター ファイルを更新し、そのテンプレートを Service Fabric マネージド クラスターにデプロイします。 [サンプルを参照してください](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/voting-sample-no-reverse-proxy/ARM-Managed-Cluster)。
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -84,7 +84,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 
 ### <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
 
-サンプル アプリケーションには、アプリケーションのデプロイに使用できる [Azure Resource Manager テンプレート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)が含まれています。 テンプレート ファイルの名前は、*UserApp.json* と *UserApp.Parameters.json* です。
+サンプル アプリケーションには、アプリケーションのデプロイに使用できる [Azure Resource Manager テンプレート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM-Managed-Cluster)が含まれています。 テンプレート ファイルの名前は、*UserApp.json* と *UserApp.Parameters.json* です。
 
 > [!NOTE]
 > *UserApp.Parameters.json* ファイルを、クラスターの名前で更新する必要があります。
@@ -127,7 +127,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 }
 ```
 
-### <a name="deploy-the-application"></a>アプリケーションの配置
+### <a name="deploy-the-service-fabric-application"></a>Service Fabric アプリケーションをデプロイする
 
 **New-AzResourceGroupDeployment** コマンドレットを実行して、クラスターを含むリソース グループにアプリケーションをデプロイします。
 
@@ -138,12 +138,12 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Resource Manager を使用した Service Fabric アプリケーションのアップグレード
 
 > [!IMPORTANT]
-> ARM JSON 定義を使用してデプロイされているサービスはすべて、対応する ApplicationManifest.xml ファイルの DefaultServices セクションから削除する必要があります。
+> Azure Resource Manager (ARM) テンプレートを使用してデプロイされているサービスはすべて、対応する ApplicationManifest.xml ファイルの DefaultServices セクションから削除する必要があります。
 
 
 次のいずれかの理由により、Service Fabric クラスターに既にデプロイされているアプリケーションをアップグレードする場合があります。
 
-* 新しいサービスがアプリケーションに追加されます。 サービス定義は、サービスがアプリケーションに追加されるときに *service-manifest.xml* と *application-manifest.xml* ファイルに追加する必要があります。 アプリケーションの新しいバージョンを反映するために、[UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) でアプリケーションの種類のバージョンを 1.0.0 から 1.0.1 に変更する必要もあります。
+* 新しいサービスがアプリケーションに追加されます。 サービス定義は、サービスがアプリケーションに追加されるときに *service-manifest.xml* と *application-manifest.xml* ファイルに追加する必要があります。 アプリケーションの新しいバージョンを反映するために、[UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM-Managed-Cluster/UserApp.Parameters.json) でアプリケーションの種類のバージョンを 1.0.0 から 1.0.1 に変更する必要もあります。
 
     ```json
     "applicationTypeVersion": {
@@ -164,9 +164,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
         "value": "1.0.1"
     },
     ```
-## <a name="delete-application-resources"></a>アプリケーション リソースの削除
+## <a name="delete-service-fabric-application-resources"></a>Service Fabric アプリケーション リソース リソースを削除する
+> [!NOTE]
+> 個々のリソースを消去する宣言型の方法がないため、アプリケーションは Azure Resource Manager (ARM) テンプレートで削除できません。
 
-Resource Manager でアプリケーション リソース モデルを使用してデプロイされたアプリケーションを削除するには、次のようにします。
+Resource Manager でアプリケーション リソース モデルを使用してデプロイされた Service Fabric アプリケーションを削除するには、次のようにします。
 
 1. [Get-AzResource](/powershell/module/az.resources/get-azresource) コマンドレットを使用して、アプリケーションのリソース ID を取得します。
 

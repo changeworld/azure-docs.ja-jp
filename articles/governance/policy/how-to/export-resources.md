@@ -4,18 +4,21 @@ description: ポリシー定義やポリシーの割り当てなど、Azure Poli
 ms.date: 08/17/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7eb7cbfcd568eeebcb03979c51d26e8f6231298f
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 170c619d41a416ac337edabcf3d4c0e0b5f24d4e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122325013"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965148"
 ---
 # <a name="export-azure-policy-resources"></a>Azure Policy リソースをエクスポートする
 
 この記事では、既存の Azure Policy リソースをエクスポートする方法について説明します。 リソースのエクスポートは、バックアップには便利で推奨されますが、クラウド ガバナンスおよび [コードとしてのポリシー](../concepts/policy-as-code.md)の扱いに関する重要な手順でもあります。 Azure Policy リソースは、 [Azure portal](#export-with-azure-portal)、 [Azure CLI](#export-with-azure-cli)、 [Azure PowerShell](#export-with-azure-powershell)、およびサポートされている各 SDK を使用してエクスポートできます。
 
 ## <a name="export-with-azure-portal"></a>Azure portal を使用したエクスポート
+
+> [!NOTE]
+> Azure ソブリン クラウドの場合、Azure Policy リソースを Azure portal からエクスポートすることはできません。
 
 Azure portal からポリシー定義をエクスポートするには、次の手順を実行します。
 

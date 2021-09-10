@@ -1,18 +1,18 @@
 ---
-title: Microsoft AppSource (Azure Marketplace) で利用可能な Dynamics 365 for Customer Engagement & PowerApps プランを構成します。
-description: Microsoft AppSource (Azure Marketplace) で利用可能な Dynamics 365 for Customer Engagement & PowerApps プランを構成します。
+title: Microsoft AppSource (Azure Marketplace) で利用可能な Dynamics 365 for Customer Engagement & Power Apps プランを構成します。
+description: Microsoft AppSource (Azure Marketplace) で利用可能な Dynamics 365 for Customer Engagement & Power Apps プランを構成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: b79c4e2763715102688214708fec4481fdfe3a00
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 779b580c38152967d7bbe64bca3455ec304be266
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314861"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864661"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-availability"></a>Dynamics 365 for Customer Engagement & Power Apps プランの構成の利用可能性
 

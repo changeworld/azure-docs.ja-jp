@@ -2,14 +2,14 @@
 title: Azure portal でアカウントを作成する
 description: Azure portal で Azure Batch のアカウントを作成し、大規模な並列ワークロードをクラウドで実行する方法を説明します。
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 08/31/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 745a2fc2e1279d05fa380b7bc053171d20a3fa4c
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 037ada644f60eabf498c59047513f4ad8292f239
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213275"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308697"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -85,7 +85,7 @@ Batch アカウントに適用される [リソース クォータ](batch-quota-
 
 1. **[Subscription]\(サブスクリプション\)** ページに戻って **[Access control (IAM)]\(アクセス制御 \(IAM\)\)** をクリックします。
 
-1. **[Contributor]\(共同作成者\)** か **[Owner]\(所有者\)** のロールを Batch API に割り当てます。 このアカウントは、「**Microsoft Azure Batch**」か「**MicrosoftAzureBatch**」で検索すると見つかります。 (Batch API の Object ID は **f520d84c-3fd3-4cc8-88d4-2ed25b00d27a**、Application ID は **ddbf3205-c6bd-46ae-8127-60eb93363864** です。)
+1. **[Contributor]\(共同作成者\)** か **[Owner]\(所有者\)** のロールを Batch API に割り当てます。 このアカウントは、「**Microsoft Azure Batch**」で検索すると見つかります。 (このアカウントのアプリケーション ID は **ddbf3205-c6bd-46ae-8127-60eb93363864** です)
 
    詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 

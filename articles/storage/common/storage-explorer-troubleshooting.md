@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 2baf8c99161d000b92aa10f02a26018bdb7264f4
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 9015e3ce69042a2e7d96588956becff889827ab3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093879"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225175"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -546,7 +546,7 @@ GitHub に問題を報告するときに、問題の診断に役立つ特定の�
 14. [Copy to File…]\(ファイルへコピー\) をクリックします
 15. エクスポート ウィザードで、次のオプションを選択します
     - Base-64 でエンコードされた X.509
-    - ファイル名の場合は、 C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs を参照してから、これを任意のファイル名で保存できます
+    - ファイル名の場合は、 `C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs` を参照し、任意のファイル名で保存します
 16. 証明書ウィンドウを閉じます
 17. Storage Explorer を開始します
 18. [Edit]\(編集\) > [Configure Proxy]\(プロキシの構成\) に移動します

@@ -3,18 +3,18 @@ title: Azure EA Portal の管理
 description: この記事では、Azure EA Portal で管理者が行う一般的なタスクについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/22/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a973fc9dc9cf4b4fe514ddf987fd2052c46a6e6b
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: bf887ad515f8c4349fcff54d25be1c70a30d018f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112519749"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098321"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -146,6 +146,8 @@ ms.locfileid: "112519749"
 このセクションは、サブスクリプションの所有者が変更される場合にのみ該当します。 サブスクリプションの所有権を変更するうえで、Azure のサポート チケットは必要ありません。 エンタープライズ管理者は、Azure Enterprise portal を使用して、加入契約に含まれるサブスクリプション (選択されたサブスクリプションまたはすべてのサブスクリプション) のアカウント所有権を譲渡できます。 また、必要に応じてサブスクリプションのディレクトリ (テナント) を変更することもできます。 
 
 ただし、EA 管理者が加入契約間でアカウントを転送することはできません。 加入契約間でアカウントを転送するには、サポート リクエストが必要となります。 加入契約間でのアカウントの転送については、「[エンタープライズ アカウントを新しい登録に転送する](ea-transfers.md#transfer-an-enterprise-account-to-a-new-enrollment)」を参照してください。
+
+従量課金制サブスクリプションの管理者は、サブスクリプションのアカウント所有権をこの同じプロセスで EA 登録に譲渡することもできます。
 
 サブスクリプションまたはアカウント所有権の譲渡が完了すると、Microsoft によってアカウント所有者が更新されます。
 

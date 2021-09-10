@@ -4,16 +4,16 @@ description: MongoDB 用 Azure Cosmos DB API リソースでコンテナー、�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 96b5eb636da4fc244f3d5444d3f0498e71810845
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b30ac109a8186f39e29ff96ba797d0b8c98ea41c
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779427"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033367"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-api-for-mongodb-resources"></a>MongoDB 用 Azure Cosmos DB API リソースのデータベース、コンテナー、または自動スケール スループットのプロビジョニング
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -79,3 +79,6 @@ Azure PowerShell を使用すると、すべての Azure Cosmos DB API に対し
 Azure Cosmos DB でのスループットのプロビジョニングについては、次の記事を参照してください。
 
 * [Azure Cosmos DB における要求ユニットとスループット](../request-units.md)
+* Azure Cosmos DB に移行する容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバー数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください

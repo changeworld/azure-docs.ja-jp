@@ -3,13 +3,13 @@ title: プライベート Azure Kubernetes Service クラスターを作成す�
 description: プライベート Azure Kubernetes Service (AKS) クラスターの作成方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 6/14/2021
-ms.openlocfilehash: 0e6e825f448ae97f211d9dace03254651012cadd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 8/30/2021
+ms.openlocfilehash: 39090732df8543fc28d1324882f3817402ad587a
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747845"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214318"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -81,26 +81,6 @@ az aks create \
 * AKS プレビュー バージョン 0.5.19 以降
 * API バージョン 2021-05-01 以降
 
-fqdn-subdomain 機能を使用するには、サブスクリプションで `EnablePrivateClusterFQDNSubdomain` 機能フラグを有効にする必要があります。 
-
-`EnablePrivateClusterFQDNSubdomain` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterFQDNSubdomain"
-```
-
-[az feature list][az-feature-list] コマンドを使用して登録状態を確認できます。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterFQDNSubdomain')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
@@ -122,30 +102,6 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 1. プライベート AKS クラスターをプロビジョニングするときに `--enable-public-fqdn` を指定すると、AKS は、その FQDN の追加の A レコードを Azure パブリック DNS に作成します。 エージェント ノードにより引き続きプライベート DNS ゾーンの A レコードが使用され、API サーバーとの通信のためにプライベート エンドポイントのプライベート IP アドレスが解決されます。
 
 2. `--enable-public-fqdn` と `--private-dns-zone none` の両方を使用した場合、クラスターはパブリック FQDN のみを持ちます。 このオプションを使用する場合、API サーバーの FQDN の名前解決にプライベート DNS ゾーンが作成または使用されることはありません。 API の IP は引き続きプライベートであり、パブリックにルーティングできません。
-
-### <a name="register-the-enableprivateclusterpublicfqdn-preview-feature"></a>`EnablePrivateClusterPublicFQDN` プレビュー機能を登録する
-
-新しい Enable Private Cluster Public FQDN API を使用するには、対象のサブスクリプションで `EnablePrivateClusterPublicFQDN` 機能フラグを有効にする必要があります。
-
-`EnablePrivateClusterPublicFQDN` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterPublicFQDN"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterPublicFQDN')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-### <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>パブリック DNS アドレスがあるプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <private-dns-zone-mode> --enable-public-fqdn
@@ -251,8 +207,6 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitn
 * Azure Container Registry をプライベート AKS で使用できるようにする必要があるカスタマーは、Container Registry 仮想ネットワークをエージェントクラスターの仮想ネットワークとピアリングしてください。
 * 既存の AKS クラスターからプライベートクラスターへの変換はサポートされていません
 * カスタマーのサブネット内でプライベート エンドポイントを削除または変更すると、クラスターが機能しなくなります。 
-* お客様が自身の DNS サーバーで A レコードを更新した後、移行後にポッドが再起動されるまで、これらのポッドによる API サーバーの FQDN は引き続き古い IP に解決されます。 お客様は、コントロール プレーンの移行後に、hostNetwork ポッドと default-DNSPolicy Pod ポッドを再起動する必要があります。
-* コントロール プレーンのメンテナンスの場合、[AKS IP](./limit-egress-traffic.md) が変更される可能性があります。 この場合は、カスタム DNS サーバー上で API サーバーのプライベート IP を指している A レコードを更新し、hostNetwork を使用するカスタム ポッドまたはデプロイを再起動する必要があります。
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider#az_provider_register

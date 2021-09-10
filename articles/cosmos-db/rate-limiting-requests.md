@@ -4,16 +4,17 @@ description: この記事では、開発者向けに、Azure Cosmos DB に対す
 author: plasne
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/07/2021
+ms.date: 08/26/2021
 ms.author: pelasne
-ms.openlocfilehash: f9130808da0f833246e013e56f081b92fa461ac9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0677a3f4180ab429dc51a4e40c969e32e6e8f655
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724465"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098141"
 ---
 # <a name="optimize-your-azure-cosmos-db-application-using-rate-limiting"></a>レート制限を使用して Azure Cosmos DB アプリケーションを最適化する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 この記事では、開発者向けに、Azure Cosmos DB に対する要求をレート制限する方法について説明します。 このパターンを実装すると、ターゲット データベースまたはコンテナーのプロビジョニングされたスループットを超えるワークロードが発生した場合のエラーを減らし、全体的なパフォーマンスを向上させることができます。
 
@@ -160,3 +161,6 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 * [Azure Cosmos DB でのパーティション分割と水平スケーリング](partitioning-overview.md)について理解します。
 * Azure Cosmos DB での[インデックス作成ポリシー](index-policy.md)について理解します。
 * Azure Cosmos DB の[自動スケーリング](provision-throughput-autoscale.md)について理解します。
+* Azure Cosmos DB に移行する容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 既存のデータベース クラスター内の仮想コアとサーバー数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

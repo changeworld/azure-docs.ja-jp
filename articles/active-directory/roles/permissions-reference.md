@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfed2797d0f331becf273b7ed3828aabd8378ebf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e05bfa8a024cb823a552f01e585f1c4843bd6df9
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749031"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866456"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD の組み込みロール
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | [パートナー レベル 2 のサポート](#partner-tier2-support) | 使用しないでください。一般的な使用は想定されていません。 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8 |
 > | [パスワード管理者](#password-administrator) | 管理者以外とパスワード管理者のパスワードをリセットできます。 | 966707d0-3269-4727-9be2-8c3a10f19b9d |
 > | [Power BI 管理者](#power-bi-administrator) | Power BI 製品のすべての側面を管理できます。 | a9ea8996-122f-4c74-9520-8edcd192826c |
-> | [Power Platform 管理者](#power-platform-administrator) | Microsoft Dynamics 365、PowerApps、Microsoft Flow のすべての側面を作成および管理できます。 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc |
+> | [Power Platform 管理者](#power-platform-administrator) | Microsoft Dynamics 365、Power Apps、Power Automate のすべての側面を作成および管理できます。 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc |
 > | [プリンター管理者](#printer-administrator) | プリンターとプリンター コネクタのすべての側面を管理できます。 | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f |
 > | [プリンター技術者](#printer-technician) | プリンターの登録と登録解除、またプリンターの状態の更新を行うことができます。 | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477 |
 > | [特権認証管理者](#privileged-authentication-administrator) | 任意のユーザー (管理者でも管理者以外でも) の認証方法の情報を表示、設定、リセットするためにアクセスできます。 | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13 |
@@ -1489,7 +1489,7 @@ Modern Commerce ユーザー ロールが割り当てられたユーザーは、
 
 ## <a name="power-platform-administrator"></a>Power Platform 管理者
 
-このロールのユーザーは、環境、PowerApps、フロー、データ損失防止ポリシーのすべての側面を作成および管理できます。 さらに、このロールを持つユーザーは、サポート チケットを管理し、サービス正常性を監視できます。
+このロールのユーザーは、環境、Power Apps、フロー、データ損失防止ポリシーのすべての側面を作成および管理できます。 さらに、このロールを持つユーザーは、サポート チケットを管理し、サービス正常性を監視できます。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |

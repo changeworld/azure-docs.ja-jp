@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 32ec83fb1c8de16f589d6a172a7612e5e5866647
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 871cb72c163472dbe3409738199e710300c5057d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768226"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867329"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 [Azure Files](storage-files-introduction.md) はクラウドで、SMB および NFS ファイル システム プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、Azure Files と Azure File Sync のスケーラビリティとパフォーマンスのターゲットについて説明します。
@@ -78,8 +78,8 @@ Azure では、お客様のさまざまなストレージ シナリオに対し�
 |-|-|-|
 | ファイルの最大サイズ | 4 TiB | 4 TiB |
 | 最大同時要求レート | 1,000 IOPS | 最大 8,000<sup>1</sup> |
-| ファイルの最大イングレス | 60 MiB/秒 | 200 MiB/秒 (SMB マルチチャネル プレビューで最大 1 GiB/秒)<sup>2</sup>|
-| ファイルの最大エグレス | 60 MiB/秒 | 300 MiB/秒 (SMB マルチチャネル プレビューで最大 1 GiB/秒)<sup>2</sup> |
+| ファイルの最大イングレス | 60 MiB/秒 | 200 MiB/秒 (SMB マルチチャネルで最大 1 GiB/秒)<sup>2</sup>|
+| ファイルの最大エグレス | 60 MiB/秒 | 300 MiB/秒 (SMB マルチチャネルで最大 1 GiB/秒)<sup>2</sup> |
 | 同時ハンドルの最大数 | 2,000 ハンドル | 2,000 ハンドル  |
 
 <sup>1 読み取りと書き込みの IO に適用 (一般的に IO サイズは 64 KiB 以下)。読み取りと書き込み以外のメタデータ操作の場合、それより低くなることがあります。</sup>

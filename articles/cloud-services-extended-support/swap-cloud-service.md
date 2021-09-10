@@ -8,12 +8,12 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: d9e30d77708ad5ae8c5249a15d28685a56fd0216
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3321152d5d7b753ddca23a8810f0d1ae1b3d4399
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462986"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967023"
 ---
 # <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Azure Cloud Services (拡張サポート) でのデプロイのスワップまたは切り替え
 
@@ -65,33 +65,32 @@ Azure portal でデプロイをスワップするには、次の手順に従い�
 
 ## <a name="rest-api"></a>REST API
 
-REST API を使用して Azure Cloud Services (拡張サポート) で、新しいクラウド サービスのデプロイに切り替えるには、次のコマンドと JSON 構成を使用します。
+[REST API](https://review.docs.microsoft.com/rest/api/compute/load-balancers/swap-public-ip-addresses?branch=net202102) を使用して Azure Cloud Services (拡張サポート) で、新しいクラウド サービスのデプロイに切り替えるには、次のコマンドと JSON 構成を使用します。
 
 ```http
-POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Network/locations/region/setLoadBalancerFrontendPublicIpAddresses?api-version=2020-11-01
+POST https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/westus/setLoadBalancerFrontendPublicIpAddresses?api-version=2021-02-01
 ```
 
 ```json
 {
   "frontendIPConfigurations": [
     {
-    "id": "#LBFE1#",
-    "properties": {
-    "publicIPAddress": {
-    "id": "#PIP2#"
-    }
+      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/lbfe1",
+      "properties": {
+        "publicIPAddress": {
+          "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/publicIPAddresses/pip2"
+        }
       }
     },
-   {
-    "id": "#LBFE2#",
-    "properties": {
-    "publicIPAddress": {
-    "id": "#PIP1#"
-     }
-       }
+    {
+      "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/loadBalancers/lb2/frontendIPConfigurations/lbfe2",
+      "properties": {
+        "publicIPAddress": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pip1"
+        }
+      }
     }
   ]
- }
 }
 ```
 

@@ -4,7 +4,7 @@ metadata:
   description: この記事では、Azure Media Services についてよく寄せられる質問に対する回答を提供します。
   services: media-services
   documentationcenter: ''
-  author: IngridAtMicrosoft
+  author: jiayali-ms
   manager: femila
   editor: ''
   ms.service: media-services
@@ -12,14 +12,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: article
-  ms.date: 03/10/2021
+  ms.date: 08/24/2021
   ms.author: inhenkel
-  ms.openlocfilehash: e8dd8205cc42c4f8ec3946eccdd0f6244e11e7ec
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: 79fba437747c2c9039c0bc8189266fc7b044aa38
+  ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112306072"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122835216"
 title: Media Services v2 のよく寄せられる質問
 summary: >
   [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
@@ -36,8 +36,7 @@ sections:
     answer: >
       URL の "/Manifest" 部分に "(format=m3u8-aapl)" パスを追加して、Apple iOS ネイティブ デバイスでの使用のために HLS コンテンツを返すようストリーミング配信元サーバーに指示します (詳細については、[コンテンツの配信](media-services-deliver-content-overview.md)に関する記事をご覧ください)。
   - question: インデックス作成の規模はどのように設定しますか。
-    answer: >
-      予約ユニットは、エンコーディング タスクとインデックス作成タスクで同じです。 [エンコード予約ユニットの規模の設定方法](media-services-scale-media-processing-overview.md)に関するページの手順に従ってください。 **注:** Indexer のパフォーマンスは、予約ユニットの種類には左右されません。
+    answer: "メディア占有ユニットをスケーリングに使用するために使用される AMS。 この機能はサポートされていません。 \n"
   - question: ビデオをアップロード、エンコード、および公開しました。 ビデオをストリームしようとしても再生できない場合、どんな原因が考えられますか。
     answer: 最も一般的な原因の 1 つは、再生しようとしているストリーミング エンドポイントが **実行中** の状態になっていないことです。
   - question: ライブ ストリーム上で合成は可能ですか。

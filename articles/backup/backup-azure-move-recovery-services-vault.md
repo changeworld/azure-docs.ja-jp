@@ -2,14 +2,14 @@
 title: Azure Backup Recovery Services コンテナーを移動する方法
 description: Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する方法の手順。
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 08/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6de0d6902705ff0edffd5e51e0e8f9abc6378830
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3659bac2382225ca62421c9ef852b181382afd83
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114298091"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101180"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -103,8 +103,63 @@ Recovery Services コンテナーとその関連リソースを別のサブス�
 
 > [!NOTE]
 > クロス サブスクリプション バックアップ (RS コンテナーと保護対象の VM が別のサブスクリプションにある) シナリオは、サポートされていません。 また、ローカル冗長ストレージ (LRS) からグローバル冗長ストレージ (GRS) への (およびその逆の) ストレージ冗長オプションは、コンテナー移動操作中に変更できません。
->
->
+
+## <a name="use-azure-portal-to-back-up-resources-in-recovery-services-vault-after-moving-across-regions"></a>Azure portal を使用して、リージョン間での移動後に Recovery Services コンテナー内のリソースをバックアップする
+
+Azure Resource Mover では、リージョン間での複数のリソースの移動がサポートされています。 リージョン間でリソースを移動している間も、リソースが保護された状態を確実に維持することができます。 Azure Backup では複数のワークロードの保護がサポートされているため、新しいリージョンでも同じ保護レベルを維持するためには、いくつかの手順を行う必要がある場合があります。
+
+そのための詳しい手順を理解するために、以降のセクションを参照してください。
+
+>[!Note]
+>Recovery Services コンテナー間でのバックアップ データの移動は、現在、Azure Backup ではサポートされていません。 新しいリージョンのリソースを保護するためには、新しいリージョン内の新しいまたは既存のコンテナーにそのリソースを登録してバックアップする必要があります。 リージョン間でリソースを移動しているときに、以前のリージョンにある既存の Recovery Services コンテナー内のバックアップ データを、必要に応じて保持または削除することができます。 以前のコンテナー内のデータを保持することにした場合は、それに応じたバックアップ料金が発生します。
+
+### <a name="back-up-azure-virtual-machine-after-moving-across-regions"></a>リージョン間での移動後に Azure 仮想マシンをバックアップする
+
+Recovery Services コンテナーによって保護された Azure 仮想マシン (VM) は、別のリージョンに移動すると、以前のコンテナーにバックアップできなくなります。 以前のコンテナーへのバックアップは、**BCMV2VMNotFound** または [**ResourceNotFound**](/azure/backup/backup-azure-vms-troubleshoot#320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found) というエラーで失敗するようになります。
+
+新しいリージョンの VM を保護するには、これらの手順に従う必要があります。
+
+1. VM を移動する前に、既存のコンテナーのダッシュボードの [ **[バックアップ項目]** タブでその VM を選び](/azure/backup/backup-azure-delete-vault#delete-protected-items-in-the-cloud)、 **[保護の停止]** を選択します。その後、必要に応じてデータを保持または削除します。 データを保持する設定で VM のバックアップ データが停止された場合、復旧ポイントは無期限に維持され、いずれのポリシーにも従いません。 これにより、確実にいつでもバックアップ データを復元できるようになります。
+
+   >[!Note]
+   >以前のコンテナー内のデータを保持すると、バックアップ料金が発生します。 データを保持することによる課金を避けたい場合は、[データの削除オプション](/azure/backup/backup-azure-manage-vms#delete-backup-data)を使用して、保持されているバックアップ データを削除する必要があります。
+
+1. [Azure Resource Mover](/azure/resource-mover/tutorial-move-region-virtual-machines) を使用して、VM を新しいリージョンに移動します。
+
+1. 新しいリージョンの新しいまたは既存の Recovery Services コンテナーで VM の保護を開始します。
+   以前のバックアップから復元する必要がある場合は、バックアップ データを保持するように選択してあれば、引き続き以前の Recovery Services コンテナーから復元することができます。 
+
+上記の手順は、新しいリージョンでもリソースが確実にバックアップされるようにするのに役立つはずです。
+
+### <a name="back-up-azure-file-share-after-moving-across-regions"></a>リージョン間での移動後に Azure ファイル共有をバックアップする
+
+ストレージ アカウントとそこに含まれるファイル共有をリージョン間で移動する場合は、「[Azure ストレージ アカウントを別のリージョンに移動する](/azure/storage/common/storage-account-move)」を参照してください。
+
+>[!Note]
+>Azure ファイル共有をリージョン間でコピーしても、そこに関連付けられているスナップショットは一緒に移動されません。 スナップショット データを新しいリージョンに移動するには、スナップショットの個々のファイルとディレクトリを、[AzCopy](/azure/storage/common/storage-use-azcopy-files#copy-all-file-shares-directories-and-files-to-another-storage-account) を使用して新しいリージョンのストレージ アカウントに移動する必要があります。
+
+現在、Azure Backup には、Azure Files 用の[スナップショット管理ソリューション](/azure/backup/backup-afs#discover-file-shares-and-configure-backup)が用意されています。 つまり、ファイル共有データを手動で Recovery Services コンテナーに移動することはありません。 また、スナップショットはストレージ アカウントと一緒に移動されないため、実質上、すべてのバックアップ (スナップショット) は既存のリージョンにのみ存在し、既存のコンテナーによって保護されることになります。 しかし、これらの手順に従うことによって、新しいリージョンに作成した新しいファイル共有を Azure Backup で確実に保護することができます。
+
+1. 新しいリージョン内の新しいまたは既存の Recovery Services コンテナーで、新しいストレージ アカウントにコピーされた Azure ファイル共有の保護を開始します。  
+
+1. Azure ファイル共有が新しいリージョンにコピーされたら、保護を停止し、元の Azure ファイル共有のスナップショット (および対応する復旧ポイント) を必要に応じて保持または削除するように選択できます。 これは元のコンテナーのダッシュボードの [[バックアップ項目] タブ](/azure/backup/backup-azure-delete-vault#delete-protected-items-in-the-cloud)で、該当するファイル共有を選択することで行うことができます。 データを保持する設定で Azure ファイル共有のバックアップ データが停止された場合、復旧ポイントは無期限に維持され、いずれのポリシーにも従いません。
+   
+   これにより、確実にいつでも以前のコンテナーからスナップショットを復元できるようになります。 
+ 
+### <a name="back-up-sql-server-in-azure-vmsap-hana-in-azure-vm"></a>Azure VM 内の SQL Server または Azure VM 内の SAP HANA をバックアップする
+
+SQL または SAP HANA サーバーが実行されている VM を別のリージョンに移動した場合、それらの VM 内の SQL および SAP HANA データベースは、以前のリージョンのコンテナーにバックアップできなくなります。 Azure VM で実行されている SQL または SAP HANA サーバーを新しいリージョンで保護するには、これらの手順に従う必要があります。
+ 
+1. SQL Server または SAP HANA が実行されている VM を新しいリージョンに移動する前に、それを既存のコンテナーのダッシュボードの [[バックアップ項目] タブ](/azure/backup/backup-azure-delete-vault#delete-protected-items-in-the-cloud)で選択し、バックアップを停止する必要がある "_データベース_" を選びます。 **[保護の停止]** を選択した後、必要に応じてデータを保持または削除します。 データを保持する設定でバックアップ データが停止された場合、復旧ポイントは無期限に維持され、いずれのポリシーにも従いません。 これにより、確実にいつでもバックアップ データを復元できるようになります。
+
+   >[!Note]
+   >以前のコンテナー内のデータを保持すると、バックアップ料金が発生します。 データを保持することによる課金を避けたい場合は、[データの削除オプション](/azure/backup/backup-azure-manage-vms#delete-backup-data)を使用して、保持されているバックアップ データを削除する必要があります。
+
+1. SQL Server または SAP HANA が実行されている VM を、[Azure Resource Mover](/azure/resource-mover/tutorial-move-region-virtual-machines) を使用して新しいリージョンに移動します。
+
+1. 新しいリージョンの新しいまたは既存の Recovery Services コンテナーで VM の保護を開始します。 以前のバックアップから復元する必要がある場合でも、引き続き以前の Recovery Services コンテナーから復元することができます。
+ 
+上記の手順は、新しいリージョンでもリソースが確実にバックアップされるようにするのに役立つはずです。
 
 ## <a name="use-powershell-to-move-recovery-services-vault"></a>PowerShell を使用して Recovery Services コンテナーを移動する
 

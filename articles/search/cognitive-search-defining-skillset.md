@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/15/2021
-ms.openlocfilehash: 5f47eef6d3aeecd64cb3777b1d0858b4904d137d
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 4425a4b7c29bc0f4bc237c021610087c933631d8
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228859"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224035"
 ---
 # <a name="create-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search にスキルセットを作成する
 
@@ -227,6 +227,14 @@ ms.locfileid: "122228859"
 次の例は、テキストのチャンクに含まれる人物、場所、組織、およびその他のエンティティを検出したエンティティ認識スキルの結果を示しています。 検索エクスプローラーで結果を表示すると、スキルによってソリューションに価値が追加されるかどうかを判断するのに役立ちます。
 
 :::image type="content" source="media/cognitive-search-defining-skillset/doc-in-search-explorer.png" alt-text="検索エクスプローラーでのドキュメントのスクリーンショット。":::
+
+## <a name="tips-for-a-first-skillset"></a>最初のスキルセットのヒント
+
++ Blob Storage またはサポートされている別のインデクサー データ ソース内のコンテンツの代表的なサンプルをアセンブルし、**データのインポート** ウィザードを実行すると、スキルセット、インデックス、インデクサー、およびデータ ソース オブジェクトを作成できます。 
+
+  このウィザードでは、インデックスでのフィールドの定義、インデクサーでの出力フィールド マッピングの定義、使用している場合はナレッジ ストアでのプロジェクションなど、初めは難しいいくつかの手順を自動化しています。 OCR や画像解析などの一部のスキルでは、ドキュメントの解析中で分離された画像とテキストの内容を結合するユーティリティ スキルがウィザードによって追加されます。
+
++ または、変換結果を表示するためにクエリを実行できる、スキルセットからインデックスまでのスキルを評価するために必要なすべてのオブジェクト定義の例をすべて提供するスキル Postman コレクションをインポートすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

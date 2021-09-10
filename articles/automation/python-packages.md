@@ -3,15 +3,15 @@ title: Azure Automation で Python 2 パッケージを管理する
 description: この記事では、Azure Automation での Python 2 パッケージの管理方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/17/2020
+ms.date: 08/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: fd830afd5628591019902ca583f9cbc8e2a7ecad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d5cf0a3d577949edd9e8174ef74e5fede96e67e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97683394"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965691"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Automation で Python 2 パッケージを管理する
 
@@ -83,6 +83,9 @@ groups = resource_client.resource_groups.list()
 for group in groups:
     print group.name
 ```
+
+> [!NOTE]
+> Python `automationassets` パッケージは、pypi.org で使用できないので、Windows コンピューターにインポートできません。
 
 ## <a name="develop-and-test-runbooks-offline"></a>Runbook をオフラインで開発してテストする
 

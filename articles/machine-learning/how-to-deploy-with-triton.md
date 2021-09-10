@@ -11,12 +11,12 @@ ms.date: 05/17/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 894b95b1fb00402f9cfed2614639b29ac5412f4b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 559ef637f6deebaad8cc5c57d7503930cde73c08
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446446"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967383"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
@@ -200,6 +200,16 @@ az ml service delete -n triton-densenet-onnx
 [!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=delete-service)]
 
 ---
+
+## <a name="how-to-use-azure-machine-learning-triton-inference-server-container-image"></a>Azure Machine Learning Triton Inference Server コンテナー イメージの使用方法
+
+新しい [CLI(v2)](https://docs.microsoft.com/cli/azure/ml?view=azure-cli-latest) で Azure Machine Learning Triton Inference Server コンテナー イメージを使用する方法について説明します。 下の例では、[オンライン エンドポイントとデプロイ](concept-endpoints.md#what-are-online-endpoints-preview)の概念を使用します。 
+
+1. [Triton シングル モデルをデプロイします](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-managed-online-endpoint.sh)。
+1. [Triton のマルチ モデルをデプロイします](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-multiple-models-online-endpoint.sh)。
+1. [Triton のアンサンブル モデルをデプロイします](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-ensemble-managed-online-endpoint.sh)。
+1. [Triton の例](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/triton)を確認してください。
+
 ## <a name="troubleshoot"></a>トラブルシューティング
 
 * [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md): モデルのデプロイ時に発生する可能性のある一般的なエラーのトラブルシューティングと解決、回避方法について説明します。

@@ -3,16 +3,16 @@ title: Azure IoT Central でのアーキテクチャの概念 | Microsoft Docs
 description: この記事では、Azure IoT Central のアーキテクチャに関連する主要な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 46b8cdc7fa33c8ddd382decb49eaa148093c99fe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 37e4224ae1347647d15959a55d19d2c6487935d7
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742261"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273215"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 
@@ -29,71 +29,11 @@ Azure IoT Central では、デバイスがアプリケーションと交換で�
 
 Azure IoT Central アプリケーションへのデバイスの接続方法の詳細については、[デバイス接続](concepts-get-connected.md)に関するページを参照してください。
 
-## <a name="azure-iot-edge-devices"></a>Azure IoT Edge デバイス
+### <a name="azure-iot-edge-devices"></a>Azure IoT Edge デバイス
 
-[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) を使用して作成されたデバイスと同様に、[Azure IoT Edge デバイス](../../iot-edge/about-iot-edge.md)を IoT Central アプリケーションに接続することもできます。 IoT Edge を使用すると、IoT Central によって管理されている IoT デバイスで、クラウド インテリジェンスやカスタム ロジックを直接実行できます。 IoT Edge ランタイムによって以下が可能となります。
+[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) を使用して作成されたデバイスと同様に、[Azure IoT Edge デバイス](../../iot-edge/about-iot-edge.md)を IoT Central アプリケーションに接続することもできます。 IoT Edge を使用すると、IoT Central によって管理されている IoT デバイスで、クラウド インテリジェンスやカスタム ロジックを直接実行できます。 IoT Edge をゲートウェイとして使用し、他のダウンストリーム デバイスで IoT Central に接続することもできます。
 
-- デバイスにワークロードをインストールし、更新する。
-- デバイス上の IoT Edge のセキュリティ標準を維持する。
-- IoT Edge モジュールの実行状態を絶えず確保する。
-- モジュールの正常性をクラウドにレポートしてリモート監視を可能にする。
-- ダウンストリームのリーフ デバイスと IoT Edge デバイス間、IoT Edge デバイス上のモジュール間、IoT Edge デバイスとクラウド間の通信を管理する。
-
-![Azure IoT Central と Azure IoT Edge](./media/concepts-architecture/iotedge.png)
-
-IoT Central により、IoT Edge デバイスで次の機能を使用できるようになります。
-
-- 次のような IoT Edge デバイスの機能を記述するデバイス テンプレート。
-  - 配置マニフェストのアップロード機能。これは、デバイスのマニフェストを管理するのに役立ちます。
-  - IoT Edge デバイスで実行されるモジュール。
-  - 各モジュールが送信するテレメトリ。
-  - 各モジュールによって報告されるプロパティ。
-  - 各モジュールが応答するコマンド。
-  - IoT Edge ゲートウェイ デバイスとダウンストリーム デバイス間の関係。
-  - IoT Edge デバイスに格納されていないクラウド プロパティ。
-  - UI でのデバイス機能の表示方法を変更するカスタマイズ。
-  - デバイスのビューとフォーム。
-
-  詳細については、記事「[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する](./concepts-iot-edge.md)」を参照してください。
-
-- Azure IoT のデバイス プロビジョニング サービスを使用して大規模に IoT Edge デバイスをプロビジョニングする機能
-- ルールとアクション。
-- カスタム ダッシュボードと分析。
-- IoT Edge デバイスからのテレメトリの連続データ エクスポート。
-
-### <a name="iot-edge-device-types"></a>IoT Edge デバイスの種類
-
-IoT Central は、IoT Edge デバイスの種類を次のように分類します。
-
-- リーフ デバイス。 IoT Edge デバイスはダウンストリームのリーフ デバイスを持つことができますが、それらのデバイスは IoT Central にはプロビジョニングされません。
-- ダウンストリーム デバイスがあるゲートウェイ デバイス。 ゲートウェイ デバイスとダウンストリーム デバイスは、どちらも IoT Central にプロビジョニングされます
-
-![IoT Central と IoT Edge の概要](./media/concepts-architecture/gatewayedge.png)
-
-> [!NOTE]
-> 現在 IoT Central では、IoT Edge デバイスをダウンストリーム デバイスとして、IoT Edge ゲートウェイに接続することはできません。 これは、IoT Central に接続するすべてのデバイスが、Device Provisioning Service (DPS) を使用してプロビジョニングされるためです。DPS では、入れ子になった IoT Edge シナリオはサポートされていません。
-
-### <a name="iot-edge-patterns"></a>IoT Edge のパターン
-
-IoT Central は、次の IoT Edge デバイス パターンをサポートしています。
-
-#### <a name="iot-edge-as-leaf-device"></a>リーフ デバイスとしての IoT Edge
-
-![リーフ デバイスとしての IoT Edge](./media/concepts-architecture/edgeasleafdevice.png)
-
-IoT Edge デバイスは、IoT Central にプロビジョニングされ、ダウンストリーム デバイスとそれらのテレメトリは、IoT Edge デバイスからのものとして表されます。 IoT Edge デバイスに接続されているダウンストリーム デバイスは、IoT Central にはプロビジョニングされません。
-
-#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>ID を使用してダウンストリーム デバイスに接続されている IoT Edge ゲートウェイ デバイス
-
-![IoT Edge とダウンストリーム デバイス ID](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
-
-IoT Edge デバイスは、IoT Edge デバイスに接続されているダウンストリーム デバイスと共に IoT Central にプロビジョニングされます。 ゲートウェイ経由でダウンストリーム デバイスをプロビジョニングするためのランタイム サポートは、現在サポートされていません。
-
-#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>IoT Edge ゲートウェイによって提供される ID を使用してダウンストリーム デバイスに接続されている IoT Edge ゲートウェイ デバイス
-
-![ID を使用しない IoT Edge とダウンストリーム デバイス](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
-
-IoT Edge デバイスは、IoT Edge デバイスに接続されているダウンストリーム デバイスと共に IoT Central にプロビジョニングされます。 ダウンストリーム デバイスに ID を提供するゲートウェイのランタイム サポートおよびダウンストリーム デバイスのプロビジョニングは、現在サポートされていません。 独自の ID 変換モジュールを使用すると、IoT Central はこのパターンをサポートできます。
+詳細については、「[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する](concepts-iot-edge.md)」を参照してください。
 
 ## <a name="cloud-gateway"></a>クラウド ゲートウェイ
 
@@ -128,7 +68,7 @@ Azure IoT Central アプリケーションでは、接続されたデバイス�
 
 ## <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 
-すべての IoT Central アプリケーションには、独自の RBAC システムが組み込まれています。 事前定義済みロールの 1 つを使用して、あるいはカスタム ロールを作成することで、Azure IoT Central アプリケーションの[アクセス ルールを管理者は定義できます](howto-manage-users-roles.md)。 ユーザーにアクセスが許可されるアプリケーションの領域とユーザーが実行できるアクションがロールにより決定されます。
+すべての IoT Central アプリケーションには、独自の RBAC システムが組み込まれています。 事前定義済みロールの 1 つを使用して、あるいはカスタム ロールを作成することで、Azure IoT Central アプリケーションの[アクセス ルールを管理者は定義できます](howto-manage-users-roles.md)。 ユーザーにアクセスが許可されるアプリケーションの領域と実行できることがロールにより決定されます。
 
 ## <a name="security"></a>セキュリティ
 

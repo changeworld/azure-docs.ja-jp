@@ -11,12 +11,12 @@ ms.date: 08/23/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: b05aa59f465eafd65fa111fff811d2f0909f601d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f8d27d30ace8ac29a59df9b77de4b56b5e138f63
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471860"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123185743"
 ---
 # <a name="configure-authentication-in-a-sample-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使ってサンプル web アプリケーションで認証を構成する
 
@@ -72,19 +72,19 @@ ID トークンが有効期限切れになった場合、またはアプリ セ�
 
 ### <a name="step-21-register-the-app"></a>手順 2.1: アプリ を登録する
 
-Web アプリの登録を作成するには、次の手順を実行します。
+Web アプリを登録するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. **Azure AD B2C** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. **[名前]** で、アプリケーションの名前を入力します (*webapp1* など)。
+1. **Name** には、アプリケーションの名前を入力します (たとえば *webapp1*)。
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any identity provider or organizational directory (for authenticating users with user flows)]\((ユーザー フローを使用してユーザーを認証するための) 任意の ID プロバイダーまたは組織のディレクトリのアカウント\)** を選択します。 
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、URL ボックスに「`https://localhost:5001/signin-oidc`」と入力します。
 1. **[アクセス許可]** で、 **[Grant admin consent to openid and offline access permissions]\(OpenID とオフラインのアクセス許可に管理者の同意を与える\)** チェック ボックスをオンにします。
 1. **[登録]** を選択します。
 1. **[概要]** を選択します。
-1. **アプリケーション (クライアント) ID** を記録しておきます。これは、後で Web アプリケーションを構成するときに使用します。
+1. 後に Web アプリケーションを構成するときに使うために、**アプリケーション (クライアント) ID** を記録しておきます。
 
     ![Web アプリケーション ID を記録するための Web アプリの [概要] ページのスクリーンショット。](./media/configure-authentication-sample-web-app/get-azure-ad-b2c-app-id.png)  
 
@@ -105,7 +105,7 @@ Azure AD B2C から直接 ID トークンを要求する Web アプリの場合�
 git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
 ```
 
-パスの合計文字長が 260 以下のフォルダーにサンプル ファイルを展開します。
+パスの全文字列の長さが 260 文字以下となるフォルダーにサンプル ファイルを展開します。
 
 ## <a name="step-4-configure-the-sample-web-app"></a>手順 4: サンプル Web アプリを構成する
 
@@ -135,7 +135,7 @@ git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-op
 ## <a name="step-5-run-the-sample-web-app"></a>手順 5: サンプル Web アプリを実行する
 
 1. プロジェクトをビルドして実行します。
-1. `https://localhost:5001` にアクセスします。 
+1. [https://localhost:5001](https://localhost:5001) に移動します。 
 1. **[サインアップ/イン]** を選択します。
 
     ![プロジェクトの Welcome ページの [サインアップ/イン] ボタンのスクリーンショット。](./media/configure-authentication-sample-web-app/web-app-sign-in.png)

@@ -2,14 +2,14 @@
 title: アーカイブ層のサポート
 description: Azure Backup のアーカイブ層のサポートについて説明します
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 08/31/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ccb85c42685f962da3c9faf098d7847a93f4de74
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 228ab85a0cde5ed37156a5821ad3ac2acd6a7209
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722740"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260782"
 ---
 # <a name="archive-tier-support"></a>アーカイブ層のサポート
 
@@ -37,7 +37,7 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 - この機能は PowerShell を使用して提供されます。
 
 >[!Note]
->Azure VM の SQL Server のアーカイブ アクセス層のサポートが、北ヨーロッパ、インド中部、東南アジア、オーストラリア東部で一般提供されるようになりました。 サポートされているリージョンの詳細な一覧については、[サポート マトリックス](#support-matrix)を参照してください。    <br><br>    Azure VM の SQL Server の残りのリージョンについては、アーカイブ アクセス層のサポートは限定パブリック プレビュー段階です。 Azure Virtual Machines のアーカイブ アクセス層のサポートも、限定パブリック プレビュー段階です。 限定パブリック プレビューにサインアップするには、この[リンク](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u)を使用します。
+>Azure VM 内の SQL Server のアーカイブ層のサポートが複数のリージョンで一般提供されています。 サポートされているリージョンの詳細な一覧については、[サポート マトリックス](#support-matrix)を参照してください。    <br><br>    Azure VM の SQL Server の残りのリージョンについては、アーカイブ アクセス層のサポートは限定パブリック プレビュー段階です。 Azure Virtual Machines のアーカイブ アクセス層のサポートも、限定パブリック プレビュー段階です。 限定パブリック プレビューにサインアップするには、この[リンク](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u)を使用します。
 
 ## <a name="get-started-with-powershell"></a>PowerShell の使用を開始する
 
@@ -211,8 +211,8 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 | ワークロード | プレビュー | 一般公開 |
 | --- | --- | --- |
-| Azure VM の SQL Server | 米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、米国中北部、ブラジル南部、カナダ東部、カナダ中部、西ヨーロッパ、英国南部、英国西部、東アジア、東日本、インド南部 | オーストラリア東部、インド中部、北ヨーロッパ、東南アジア |
-| Azure Virtual Machines | 米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、米国中北部、ブラジル南部、カナダ東部、カナダ中部、西ヨーロッパ、英国南部、英国西部、東アジア、東日本、インド南部、東南アジア、オーストラリア東部、インド中部、北ヨーロッパ | なし |
+| Azure VM の SQL Server | 米国東部、米国中南部、米国中北部、西ヨーロッパ | オーストラリア東部、インド中部、北ヨーロッパ、東南アジア、東アジア、オーストラリア南東部、カナダ中部、ブラジル南部、カナダ東部、フランス中部、フランス南部、東日本、西日本、韓国中部、韓国南部、インド南部、英国西部、英国南部、米国中部、米国東部 2、米国西部、米国西部 2、米国中西部 |
+| Azure Virtual Machines | 米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、米国中北部、ブラジル南部、カナダ東部、カナダ中部、西ヨーロッパ、英国南部、英国西部、東アジア、東日本、インド南部、東南アジア、オーストラリア東部、インド中部、北ヨーロッパ、オーストラリア東南部、フランス中部、フランス南部、西日本、韓国中部、韓国南部 | なし |
 
 ## <a name="error-codes-and-troubleshooting-steps"></a>エラー コードとトラブルシューティングの手順
 

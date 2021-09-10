@@ -1,22 +1,22 @@
 ---
-title: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & PowerApps オファーを作成します。
-description: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & PowerApps オファーを作成します。
+title: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & Power Apps オファーを作成します。
+description: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & Power Apps オファーを作成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: ea640bc4f5b191c3b01ed2a00ecb1d247f1a602d
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 1a4bd560603b16a1a2b9fe0a66bc4f1adce25a73
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112240287"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867473"
 ---
-# <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーを作成する方法
+# <a name="how-to-create-a-dynamics-365-for-customer-engagement--power-apps-offer"></a>Dynamics 365 for Customer Engagement & Power Apps オファーを作成する方法
 
-この記事では、Dynamics 365 for Customer Engagement & PowerApps オファーの作成方法について説明します。 Dynamics 365 のすべてのオファーは、弊社の認定プロセスを通過する必要があります。 試用版エクスペリエンスでは、ユーザーがソリューションをライブの Dynamics 365 環境にデプロイできます。
+この記事では、Dynamics 365 for Customer Engagement & Power Apps オファーの作成方法について説明します。 Dynamics 365 のすべてのオファーは、弊社の認定プロセスを通過する必要があります。 試用版エクスペリエンスでは、ユーザーがソリューションをライブの Dynamics 365 環境にデプロイできます。
 
 開始する前に、[パートナー センター](./create-account.md)でコマーシャル マーケットプレース アカウントを作成し、それがコマーシャル マーケットプレース プログラムに登録されているようにします。
 

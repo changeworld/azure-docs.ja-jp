@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5187f30bd1de87e930e1a2d28ab9c68ec861cff6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5bdae2055f46f6f933325c95b86d427951c6cfbc
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321521"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222663"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway のカスタム エラー ページを作成する
 
@@ -41,9 +41,9 @@ Application Gateway では、既定のエラー ページを表示する代わ�
 - その場所にパブリックでアクセスできる Azure ストレージ BLOB。
 - *.htm または *.html 拡張子タイプ。 
 
-エラー ページのサイズは、1 MB 未満である必要があります。 エラー ページにリンクされているイメージがある場合は、パブリックにアクセスできる絶対 URL か、カスタム エラー ページにインライン base64 でエンコードされたイメージである必要があります。 同じ BLOB の場所に配置されたイメージへの相対リンクは現在サポートされていません。 
+エラー ページのサイズは、1 MB 未満である必要があります。 この HTML ファイルには、内部または外部のイメージ/CSS を参照できます。 外部から参照されるリソースには、パブリック アクセスできる絶対 URL を使用します。 内部イメージ (Base64 でエンコードされたインライン イメージ) または CSS を使用する場合は、HTML ファイルのサイズに注意してください。 同じ BLOB の場所に配置されたファイルへの相対リンクは現在サポートされていません。
 
-エラー ページを指定すると、Application Gateway はストレージ BLOB の場所からそのページをダウンロードし、ローカルの Application Gateway のキャッシュに保存します。 その後、エラー ページは Application Gateway から直接提供されます。 既存のカスタム エラー ページを変更するには、Application Gateway 構成内の別の BLOB の場所を指すようにする必要があります。 Application Gateway は、BLOB の場所を定期的にチェックして新しいバージョンをフェッチすることはありません。
+エラー ページを指定すると、Application Gateway はストレージ BLOB の場所からそのページをダウンロードし、ローカルの Application Gateway のキャッシュに保存します。 その後、その HTML ページはアプリケーション ゲートウェイによって処理され、外部から参照されるリソースはクライアントによって直接フェッチされます。 既存のカスタム エラー ページを変更するには、Application Gateway 構成内の別の BLOB の場所を指すようにする必要があります。 Application Gateway は、BLOB の場所を定期的にチェックして新しいバージョンをフェッチすることはありません。
 
 ## <a name="portal-configuration"></a>ポータル構成
 

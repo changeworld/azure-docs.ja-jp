@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c350d91e04ea284ed91c3afb6912d76ed1e39ab0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6b2066ef94cb87a9ab9c000615c018938cbeddb1
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079699"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220623"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,9 +30,12 @@ ms.locfileid: "112079699"
 
 この記事では、SQL Server VM を手動で一括登録する方法について説明します。 また、[すべての SQL Server VM を自動的に](sql-agent-extension-automatic-registration-all-vms.md)登録したり、[個々の SQL Server VM を手動で](sql-agent-extension-manually-register-single-vm.md)登録したりすることができます。 
 
+> [!NOTE]
+> 2021 年 9 月以降、SQL IaaS 拡張機能へのフル モードでの登録時に、SQL Server サービスを再起動する必要がなくなりました。 
+
 ## <a name="overview"></a>概要
 
-`Register-SqlVMs` コマンドレットを使用すると、指定のサブスクリプションの一覧、リソース グループ、特定の仮想マシンの一覧にあるすべての仮想マシンを登録できます。 このコマンドレットは、仮想マシンを[ライトウェイト管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)で登録し、[レポートとログ ファイル](#output-description)の両方を生成します。 
+`Register-SqlVMs` コマンドレットを使用すると、指定のサブスクリプションの一覧、リソース グループ、特定の仮想マシンの一覧にあるすべての仮想マシンを登録できます。 このコマンドレットが、仮想マシンを[ライトウェイト管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)で登録し、[レポートとログ ファイル](#output-description)の両方を生成します。 
 
 登録プロセスにはリスクがなく、ダウンタイムは発生せず、SQL Server サービスも仮想マシンも再起動されません。 
 
@@ -40,7 +43,7 @@ ms.locfileid: "112079699"
 
 SQL Server VM を拡張機能に登録するには、以下のものが必要になります。 
 
-- [**Microsoft.SqlVirtualMachine** プロバイダーに登録されており](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-resource-provider)、未登録の SQL Server 仮想マシンが含まれる [Azure サブスクリプション](https://azure.microsoft.com/free/)。 
+- [**Microsoft.SqlVirtualMachine** リソース プロバイダーに登録されており](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp)、未登録の SQL Server 仮想マシンが含まれる [Azure サブスクリプション](https://azure.microsoft.com/free/)。 
 - 仮想マシンの登録に使用されるクライアント資格情報は、Azure ロールの **仮想マシンの共同作成者**、**共同作成者**、または **所有者** のいずれかに存在します。 
 - 最新バージョンの [Az PowerShell (5.0 以上)](/powershell/azure/new-azureps-module-az)。 
 

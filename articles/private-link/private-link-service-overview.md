@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a5eeb8fbadda24a811893a02f42b428a8365c5aa
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 50d918cb6cb096674dc5b79d478d37d65422106e
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110261"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186013"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
@@ -97,7 +97,7 @@ Private Link サービスでは、次のプロパティを指定します。
 
 Private Link サービスでは、サービスの公開を制御する **可視性** の設定に 3 つのオプションが用意されています。 可視性の設定により、コンシューマーが対象のサービスに接続できるかどうかが決まります。 次に、制限の最も厳しいオプションから順に可視性の設定オプションを示します。
  
-- **ロールベースのアクセス制御のみ**: ご自身が所有する異なる VNet からプライベートに利用することを目的としたサービスである場合、同じ Active Directory テナントに関連付けられたサブスクリプション内のアクセスの制御メカニズムとして RBAC を使用できます。 
+- **ロールベースのアクセス制御のみ**: ご自身が所有する異なる VNet からプライベートに利用することを目的としたサービスである場合、同じ Active Directory テナントに関連付けられたサブスクリプション内のアクセスの制御メカニズムとして RBAC を使用できます。 注: テナント間の可視性は、RBAC を介して許可されます。
 - **サブスクリプションによる制限**: 複数のテナント間で横断的に利用されるサービスの場合、信頼の置ける限られたサブスクリプションに公開を制限することができます。 承認は、事前承認することができます。
 - **お客様のエイリアスを持つすべてのユーザー**: サービスをパブリックとし、Private Link サービスのエイリアスを持つユーザーであればだれでも接続を要求できるようにしたい場合は、このオプションを選択してください。 
 

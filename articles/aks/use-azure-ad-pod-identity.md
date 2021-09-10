@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で AAD ポッドマネージド ID 
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 44f4415e09ca9e2942eb1da4c69cf98759f737ce
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 1ecf9b45983dbc34938593424644a646dc3d96cb
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253878"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101231"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)
 
@@ -180,6 +180,7 @@ az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSClu
 
 > [!NOTE]
 > AKS クラスターでポッドマネージド ID を有効にすると、*aks-addon-exception* という名前の AzurePodIdentityException が *kube-system* 名前空間に追加されます。 AzurePodIdentityException を使用すると、Node Managed Identity (NMI) サーバーによって傍受されることなく、特定のラベルを持つポッドから Azure Instance Metadata Service (IMDS) エンドポイントにアクセスできます。 *aks-addon-exception* を使用すると、AAD ポッドマネージド ID などの AKS ファーストパーティのアドオンを、AzurePodIdentityException を手動で設定しなくても動作させることができます。 必要に応じて、`az aks pod-identity exception add`、`az aks pod-identity exception delete`、`az aks pod-identity exception update`、または `kubectl` を使用して、AzurePodIdentityException を追加、削除、更新することができます。
+> "POD_IDENTITY_NAME" は [RFC 1123] に定義されている有効な [DNS サブドメイン名]にする必要があります。 
 
 > [!NOTE]
 > `pod-identity add` を使用してポッド ID を割り当てると、Azure CLI はポッド ID (*IDENTITY_RESOURCE_ID*) を介して、マネージド ID オペレーター ロールをクラスター ID に付与しようとします。
@@ -383,3 +384,5 @@ az identity delete -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME}
 [az-identity-create]: /cli/azure/identity#az_identity_create
 [az-managed-identities]: ../active-directory/managed-identities-azure-resources/overview.md
 [az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[RFC 1123]: https://tools.ietf.org/html/rfc1123
+[DNS サブドメイン名]: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-subdomain-names

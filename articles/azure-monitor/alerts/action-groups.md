@@ -5,15 +5,15 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: 26f6b62ece1fcde8ca69ffbb804d9ab24b3c1ac3
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: ff6d911b85558e5efe9cc8302b9cb857cb7a9706
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112455736"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830659"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
-アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
+アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 アクション グループは、アラートがトリガーされたことをユーザーに通知するために Azure Monitor、Service Health、Azure Advisor のアラートで使用されます。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
 
 この記事では、Azure Portal でアクション グループを作成および管理する方法について説明します。
 

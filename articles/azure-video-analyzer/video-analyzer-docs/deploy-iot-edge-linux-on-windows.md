@@ -2,13 +2,13 @@
 title: IoT Edge for Linux on Windows にデプロイする - Azure
 description: この記事では、IoT Edge for Linux on Windows デバイスにデプロイする方法に関するガイダンスを取り上げます。
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: e80721375cf4b0c912fe47ec76c2cebe92359f90
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/25/2021
+ms.openlocfilehash: 18a08d903fc256790799d8c66d400226f8ac48ef
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743650"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968676"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>IoT Edge for Linux on Windows (EFLOW) デバイスにデプロイする
 
@@ -29,6 +29,8 @@ ms.locfileid: "121743650"
 
 1. PowerShell を使用して、Windows デバイスに [EFLOW をインストール](../../iot-edge/how-to-install-iot-edge-on-windows.md)します。
 
+    > [!NOTE]
+    > EFLOW をデプロイする方法が 2 つあり (PowerShell と Windows Admin Center)、仮想マシンをプロビジョニングする方法が 2 つあります (接続文字列を使用した手動プロビジョニングと X.509 証明書を使用した手動プロビジョニング)。 [PowerShell デプロイ](../../iot-edge/how-to-install-iot-edge-on-windows.md#create-a-new-deployment)に従い、[IoT Hub からの接続文字列を使用してコンピューターをプロビジョニング](../../iot-edge/how-to-install-iot-edge-on-windows.md#manual-provisioning-using-the-connection-string)してください。
 
 1. EFLOW を設定したら、コマンド `Connect-EflowVm` を PowerShell (管理者特権) に入力して接続します。 これで、PowerShell 内に EFLOW VM を制御する bash ターミナルが表示されます。ここでは、Top や Nano などのユーティリティを含む Linux コマンドを実行できます。 
 
@@ -39,7 +41,7 @@ ms.locfileid: "121743650"
 
     `bash -c "$(curl -sL https://aka.ms/ava-edge/prep_device)"`
 
-    Azure Video Analyzer モジュールは、エッジ デバイス上で、特権のないローカル ユーザー アカウントを使用して実行されます。 また、アプリケーションの構成データを格納するための特定のローカル フォルダーも必要となります。 最後に、この使用法ガイドでは、分析のためにビデオ フィードをリアルタイムで AVA モジュールに中継する [RTSP シミュレーター](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555)を活用しています。 このシミュレーターは入力として、事前に録画されたビデオ ファイルを input ディレクトリから受け取ります。 
+    Azure Video Analyzer には、アプリケーションの構成データを格納するための特定のローカル フォルダーが必要となります。 最後に、この使用法ガイドでは、分析のためにビデオ フィードをリアルタイムで AVA モジュールに中継する [RTSP シミュレーター](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555)を活用しています。 このシミュレーターは入力として、事前に録画されたビデオ ファイルを input ディレクトリから受け取ります。 
 
     上で使用した prep-device スクリプトにより、これらのタスクが自動化されます。そのため、1 つのコマンドを実行すれば、関連するすべての入力と構成フォルダー、ビデオ入力ファイル、特権付きのユーザー アカウントがシームレスに作成されます。 コマンドが正常に完了すると、次のフォルダーがエッジ デバイス上に作成されます。 
 
@@ -49,6 +51,7 @@ ms.locfileid: "121743650"
     * `/var/media`
 
     /home/localedgeuser/samples/input フォルダーにあるビデオ ファイル (*.mkv) に注目してください。これらが分析対象の入力ファイルとなります。 
+    
 1. エッジ デバイスの設定とハブへの登録が完了し、適切なフォルダー構造が作成された状態で実行することに成功したら、次に、別途以下の Azure リソースを設定し、AVA モジュールをデプロイします。 次のデプロイ テンプレートで、リソースの作成が行われます。
 
     [![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
@@ -71,6 +74,7 @@ ms.locfileid: "121743650"
     次の 4 つのモジュールがエッジ デバイスにデプロイされ、実行されていることがわかります。 リソース作成スクリプトによって、IoT Edge モジュール (edgeAgent と edgeHub)、RTSP ビデオ フィードのシミュレーションを提供する RTSP シミュレーター モジュールと共に、AVA モジュールがデプロイされることに注意してください。
     
     ![デプロイされたモジュール](./media/vscode-common-screenshots/avaedge-module.png)
+    
 1. モジュールのデプロイと設定を終えたら、初めての AVA パイプラインを EFLOW で実行する準備は完了です。 次の手順を実行すると、以下に示すような単純なモーション検出パイプラインを実行し、その結果を視覚化することができます。
 
     ![モーション検出に基づく Video Analyzer](./media/get-started-detect-motion-emit-events/motion-detection.svg)
@@ -83,10 +87,13 @@ ms.locfileid: "121743650"
 
         > [!IMPORTANT]
         > 削除しなかった場合、リソースは引き続きアクティブな状態となり、Azure のコストが発生します。 使用しないリソースは必ず削除してください。
-        
+   
 ## <a name="next-steps"></a>次のステップ
 
 * 関連するビデオをクラウドで記録しながらモーション検出を試します。 [モーション検出とビデオ クリップの記録](detect-motion-record-video-edge-devices.md)に関するクイックスタートの手順に従ってください。
-* [ライブ ビデオの AI](analyze-live-video-use-your-model-http.md#overview) を実行します (前提条件である設定は、上記で既に完了しているのでスキップしてかまいません)。
 * [VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)を使用して、その他のパイプラインを確認します。
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products/)のページで見つけることができます。 プロファイル G、S、または T に準拠しているデバイスを探します。
+* [ライブ ビデオの AI](analyze-live-video-use-your-model-http.md#overview) を実行します (前提条件である設定は、上記で既に完了しているのでスキップしてかまいません)。
+
+    > [!WARNING] 
+    > YOLO など、メモリを集中的に使用する AI モデルの実行を希望する上級ユーザーの場合、EFLOW VM に割り当てるリソースを場合によっては増やす必要があります。 まず、「`exit`」と入力して EFLOW VM を終了し、Windows PowerShell ターミナルに戻ります。 次に、管理者特権の PowerShell でコマンド `Set-EflowVM` を実行します。 コマンドの実行後、PowerShell のプロンプトに従って目的の[パラメーター](../../iot-edge/reference-iot-edge-for-linux-on-windows-functions.md#set-eflowvm)を入力します。たとえば、`cpuCount: 2`, `memoryInMB: 2048` にします。 数分後、Edge モジュールを再デプロイし、ライブ パイプラインを再アクティブ化し、推論を表示します。 接続の問題が発生した場合 (IoT Hub でエラー 137 または 255 が表示されるなど)、この手順を場合によっては再実行する必要があります。 

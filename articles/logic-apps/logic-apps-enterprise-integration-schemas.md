@@ -1,72 +1,88 @@
 ---
-title: スキーマによる XML の検証
-description: Enterprise Integration Pack を備えた Azure Logic Apps で XML ドキュメントを検証するスキーマを追加する
+title: XML を検証するためのスキーマを追加する
+description: Enterprise Integration Pack を使用する Azure Logic Apps で XML ドキュメントを検証するためのスキーマを追加します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 04/27/2021
-ms.openlocfilehash: 39fc84e9a83f7417836c895481da27a0d00cc71f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 08/25/2021
+ms.openlocfilehash: dc55e70e9ceaa9546890b2ed7dd5df0d705b1a92
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137186"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099992"
 ---
-# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps でスキーマを使用して XML を検証する
+# <a name="add-schemas-to-validate-xml-in-azure-logic-apps"></a>Azure Logic Apps で XML を検証するためのスキーマを追加する
 
 ドキュメントが有効な XML を使用していること、Azure Logic Apps のエンタープライズ統合シナリオ用に事前に定義された形式の想定データが含まれていることを確認するために、ロジック アプリにスキーマを使用できます。 スキーマを使用して、ロジック アプリが企業間取引 (B2B) シナリオで交換するメッセージを検証することもできます。
 
-統合アカウントとアーティファクト (スキーマなど) に関連する制限については、[Azure Logic Apps の制限と構成の情報](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)に関する記事を参照してください。
+ロジック アプリを初めて使用する場合は、次のドキュメントを参照してください。
+
+* [Azure Logic Apps とは - リソースの種類とホスト環境](logic-apps-overview.md#resource-type-and-host-environment-differences)
+
+* [シングルテナントの Azure Logic Apps (Standard) で統合ワークフローを作成する](create-single-tenant-workflows-azure-portal.md)
+
+* [シングルテナントのロジック アプリのワークフローを作成する](create-single-tenant-workflows-azure-portal.md)
+
+* [Azure Logic Apps の使用量の測定、課金、各価格モデル](logic-apps-pricing.md)
+
+## <a name="limits"></a>制限
+
+* **Standard** ロジック アプリ リソースには、スキーマ ファイルのサイズに関する制限はありません。
+
+* **従量課金** ロジック アプリ リソースの場合は、統合アカウントの数とスキーマなどの成果物の数に関して制限があります。 詳細については、[Azure Logic Apps の制限と構成の情報](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)に関する記事を参照してください。
+
+  通常、ワークフローで統合アカウントを使用していて、XML を検証する場合は、スキーマを追加するか、そのアカウントにアップロードします。 統合アカウントに含まれていないスキーマを参照またはインポートしている場合は、要素 `xsd:redefine` を使用すると次のエラーが表示されることがあります。
+
+  `An error occurred while processing the XML schemas: ''SchemaLocation' must successfully resolve if <redefine> contains any child other than <annotation>.'.`
+
+  このエラーを解決するには、要素 `xsd:import` または `xsd:include` を `xsd:redefine` の代わりにを使用するか、URI を使用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションをまだお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-* エンタープライズ統合および企業間取引 (B2B) ソリューションのためのスキーマとその他のアーティファクトを格納する[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 
+* **ロジック アプリ (Standard)** のリソースの種類を使用している場合、統合アカウントは必要ありません。 代わりに、Azure portal または Visual Studio Code でロジック アプリ リソースにスキーマを直接追加できます。 その後、"*同じロジック アプリ リソース*" 内の複数のワークフローでこれらのスキーマを使用できます。
 
-  スキーマが [2 MB 以下](#smaller-schema)の場合は、Azure portal からスキーマを統合アカウントに直接追加できます。 ただし、スキーマが 2 MB を超えていて、[スキーマのサイズ制限](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)を超えていない場合は、スキーマを Azure ストレージ アカウントにアップロードできます。 
-  そのスキーマを統合アカウントに追加するには、統合アカウントからストレージ アカウントにリンクする方法があります。 
-  このタスクを実行するには、以下が必要です。 
+* **ロジック アプリ (従量課金)** のリソースの種類を使用している場合は、エンタープライズ統合および企業間 (B2B) ソリューションで使用するスキーマや他の成果物を格納できる[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)が必要です。 このリソースでは、次の要件が満たされている必要があります。
 
-  * スキーマ用の BLOB コンテナーを作成する [Azure ストレージ アカウント](../storage/common/storage-account-overview.md)。 [ストレージ アカウントの作成方法についてはこちら](../storage/common/storage-account-create.md)を参照してください。 
+  * ロジック アプリ リソースと同じ Azure サブスクリプションに関連付けられている。
 
-  * スキーマを格納する BLOB コンテナー。 [BLOB コンテナーの作成方法についてはこちら](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。 
-  後で統合アカウントにスキーマを追加するときに、コンテナーのコンテンツ URI が必要です。
+  * XML 検証アクションを使用する予定のロジック アプリ リソースと同じ場所または Azure リージョンに存在する。
 
-  * [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)。ストレージ アカウントと BLOB コンテナーの管理に使用できます。 
-  Storage Explorer を使用するには、次のいずれかの方法を選択します。
-  
-    * Azure portal でストレージ アカウントを検索して選択します。 
-    ストレージ アカウント メニューから **[Storage Explorer]** を選択します。
+  * スキーマを使用するときに、ロジック アプリ リソースに[リンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)される。
 
-    * デスクトップ バージョンの場合、[Azure Storage Explorer をダウンロードしてインストール](https://www.storageexplorer.com/)します。 
-    次に、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」の手順に従って Storage Explorer をストレージ アカウントに接続します。 
-    詳しくは、「[クイック スタート: Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)」を参照してください。
+    従量課金ロジック アプリのワークフローで使用するスキーマを作成して追加するには、ロジック アプリ リソースはまだ必要ありません。 ただし、ワークフローでそれらのスキーマを使用する準備ができたときは、それらのスキーマを格納するリンクされた統合アカウントがロジック アプリ リソースに必要です。
 
-スキーマの作成時と追加時にロジック アプリは必要ありません。 ただし、スキーマを使用するには、ロジック アプリからそのスキーマを格納する統合アカウントにリンクする必要があります。 [統合アカウントにロジック アプリをリンクする方法についてはこちら](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)を参照してください。 ロジック アプリを用意していない場合は、[ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)を確認してください。
+* スキーマが [2 MB 以下](#smaller-schema)の場合は、Azure portal から "*直接*" スキーマを統合アカウントに追加できます。 一方、スキーマが 2 MB を超えていても、[スキーマのサイズ制限](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)を超えていない場合は、スキーマを Azure ストレージ アカウントにアップロードできます。 そのスキーマを統合アカウントに追加するには、統合アカウントからストレージ アカウントにリンクする方法があります。 このタスクを実行するには、以下が必要です。
+
+    | Item | 説明 |
+    |------|-------------|
+    | [Azure Storage アカウント](../storage/common/storage-account-overview.md) | このアカウントに、スキーマ用の Azure BLOB コンテナーを作成します。 [ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)を確認してください。 |
+    | BLOB コンテナー | このコンテナーに、スキーマをアップロードできます。 また、後で統合アカウントにスキーマを追加するときに、このコンテナーのコンテンツ URI が必要です。 [BLOB コンテナーの作成方法についてはこちら](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。 |
+    | [Azure 記憶域エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md) | このツールを使用すると、ストレージ アカウントと BLOB コンテナーをより簡単に管理できます。 Storage Explorer を使用するには、次の手順を選択します。 <p>- Azure portal で、自分のストレージ アカウントを選択します。 ストレージ アカウント メニューから **[Storage Explorer]** を選択します。 <p>- デスクトップ バージョンの場合、[Azure Storage Explorer をダウンロードしてインストール](https://www.storageexplorer.com/)します。 次に、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」の手順に従って Storage Explorer をストレージ アカウントに接続します。 詳しくは、「[クイック スタート: Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)」を参照してください。  |
+    |||
+
+  従量課金ロジック アプリ リソース用にさらに大きなマップを追加するには、[Azure Logic Apps REST API - Schemas](/rest/api/logic/schemas/create-or-update) を使用することもできます。 ただし、Standard ロジック アプリ リソースの場合は、現在は Azure Logic Apps REST API を使用できません。
+
+<a name="add-schemas"></a>
 
 ## <a name="add-schemas"></a>スキーマを追加する
 
-1. Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
+### <a name="consumption-resource"></a>[従量課金リソース](#tab/consumption-1)
 
-1. 統合アカウントを検索して開くには、Azure のメイン メニューで **[すべてのサービス]** を選択します。 検索ボックスに「integration account」と入力します。 **[統合アカウント]** を選択します。
+1. Azure アカウントの資格情報で [Azure portal](https://portal.azure.com) にサインインします。
 
-   ![統合アカウントの検索](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
+1. Azure のメインの検索ボックスに「`integration accounts`」と入力し、 **[統合アカウント]** を選択します。
 
-1. 次のように、スキーマの追加先となる統合アカウントを選択します。
+1. スキーマを追加する統合アカウントを選択します。
 
-   ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
+1. 統合アカウント メニューで、 **[設定]** の **[スキーマ]** を選択します。
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[スキーマ]** タイルを選択します。
-
-   ![[スキーマ] を選択する](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
-
-1. **[スキーマ]** ページが開いたら、 **[追加]** を選択します。
-
-   ![[追加] の選択](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
+1. **[スキーマ]** ペインのツール バーで、 **[追加]** を選択します。
 
 スキーマ (.xsd) ファイルのサイズに基づいて、[最大 2 MB](#smaller-schema)、または [2 MB を超える最大 8 MB](#larger-schema) のスキーマをアップロードする手順を実行します。
 
@@ -74,10 +90,7 @@ ms.locfileid: "108137186"
 
 ### <a name="add-schemas-up-to-2-mb"></a>最大 2 MB のスキーマを追加する
 
-1. **[スキーマの追加]** で、スキーマの名前を入力します。 
-   **[小さいファイル]** を選択したままにします。 **[スキーマ]** ボックスの横にあるフォルダー アイコンを選択します。 次のように、アップロードするスキーマを検索して選択します。
-
-   ![小さいスキーマをアップロードする](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
+1. **[スキーマの追加]** で、スキーマの名前を入力します。 **[小さいファイル]** を選択したままにします。 **[スキーマ]** ボックスの横にあるフォルダー アイコンを選択します。 アップロードするスキーマを検索して選択します。
 
 1. 準備ができたら、 **[OK]** を選択します。
 
@@ -97,11 +110,11 @@ ms.locfileid: "108137186"
 
 1. BLOB コンテナーのショートカット メニューから **[Set Public Access Level]\(パブリック アクセス レベルの設定\)** を選択します。
 
-   * BLOB コンテナーが少なくともパブリック アクセス権を持っている場合は、 **[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持つコンテナーにアップロードする](#public-access)」の手順を実行します
+   * BLOB コンテナーに少なくともパブリック アクセス権がある場合は、 **[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持つコンテナーにアップロードする](#public-access)」の手順に従います
 
-     ![パブリック アクセス権](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![パブリック アクセス](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * BLOB コンテナーがパブリック アクセス権を持っていない場合は、 **[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持たないコンテナーにアップロードする](#public-access)」の手順を実行します
+   * BLOB コンテナーにパブリック アクセス権がない場合は、 **[キャンセル]** を選択し、このページで後述する「[パブリック アクセス権を持たないコンテナーにアップロードする](#public-access)」の手順に従います
 
      ![パブリック アクセス権なし](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -109,34 +122,27 @@ ms.locfileid: "108137186"
 
 #### <a name="upload-to-containers-with-public-access"></a>パブリック アクセス権を持つコンテナーにアップロードする
 
-1. スキーマをストレージ アカウントにアップロードします。 
-   右側のウィンドウで **[アップロード]** を選択します。
+1. スキーマをストレージ アカウントにアップロードします。 右側のウィンドウで、 **[アップロード]** を選択します。
 
 1. アップロードを完了したら、アップロードしたスキーマを選択します。 ツール バーで **[URL のコピー]** を選択し、スキーマの URL をコピーします。
 
-1. **[スキーマの追加]** ウィンドウが開いている Azure portal に戻ります。 
-   アセンブリの名前を入力します。 
-   **[大きいファイル (2 MB 超)]** を選択します。 
+1. **[スキーマの追加]** ウィンドウが開いている Azure portal に戻ります。 アセンブリの名前を入力します。 **[大きいファイル (2 MB 超)]** を選択します。
 
    **[スキーマ]** ボックスではなく、 **[コンテンツ URI]** ボックスが表示されます。
 
-1. **[コンテンツ URI]** ボックスに、スキーマの URL を貼り付けます。 
-   スキーマの追加を完了します。
+1. **[コンテンツ URI]** ボックスに、スキーマの URL を貼り付けます。 スキーマの追加を完了します。
 
-スキーマのアップロードが完了したら、 **[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[スキーマ]** タイルに、アップロードされたスキーマの数が表示されます。
+スキーマのアップロードが完了したら、 **[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[成果物]** には、アップロードしたスキーマが表示されます。
 
 <a name="no-public-access"></a>
 
 #### <a name="upload-to-containers-without-public-access"></a>パブリック アクセス権を持たないコンテナーにアップロードする
 
-1. スキーマをストレージ アカウントにアップロードします。 
-   右側のウィンドウで **[アップロード]** を選択します。
+1. スキーマをストレージ アカウントにアップロードします。 右側のウィンドウで、 **[アップロード]** を選択します。
 
-1. アップロードが完了したら、スキーマの共有アクセス署名 (SAS) を生成します。 
-   スキーマのショートカット メニューから **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
+1. アップロードが完了したら、スキーマの共有アクセス署名 (SAS) を生成します。 スキーマのショートカット メニューから **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
-1. **[Shared Access Signature]** ウィンドウで **[Generate container-level shared access signature URI]\(コンテナーレベルの共有アクセス署名 URI の生成\)**  >  **[作成]** の順に選択します。 
-   SAS URL が生成されたら、 **[URL]** に進み、 **[コピー]** を選択します。
+1. **[Shared Access Signature]** ウィンドウで **[Generate container-level shared access signature URI]\(コンテナーレベルの共有アクセス署名 URI の生成\)**  >  **[作成]** の順に選択します。 SAS URL が生成されたら、 **[URL]** ボックスの横にある **[コピー]** を選択します。
 
 1. **[スキーマの追加]** ウィンドウが開いている Azure portal に戻ります。 **[大きいファイル]** を選択します。
 
@@ -144,56 +150,95 @@ ms.locfileid: "108137186"
 
 1. **[コンテンツ URI]** ボックスに、前に生成した SAS URI を貼り付けます。 スキーマの追加を完了します。
 
-スキーマのアップロードが完了したら、 **[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[コンポーネント]** の下にある **[スキーマ]** タイルに、アップロードされたスキーマの数が表示されます。
+スキーマのアップロードが完了したら、 **[スキーマ]** 一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[成果物]** には、アップロードしたスキーマが表示されます。
+
+### <a name="standard-resource"></a>[Standard リソース](#tab/standard-1)
+
+#### <a name="azure-portal"></a>Azure portal
+
+1. ロジック アプリ リソースのメニューの **[設定]** で、 **[スキーマ]** を選択します。
+
+1. **[スキーマ]** ペインのツール バーで、 **[追加]** を選択します。
+
+1. **[スキーマの追加]** で、スキーマの一意の名前を入力します。
+
+1. **[スキーマ]** ボックスの横にあるフォルダー アイコンを選択します。 アップロードするスキーマを選択します。
+
+1. 準備ができたら、 **[OK]** を選択します。
+
+   スキーマ ファイルのアップロードが完了すると、 **[スキーマ]** の一覧にスキーマが表示されます。 統合アカウントの **[概要]** ページの **[成果物]** には、アップロードしたスキーマも表示されます。
+
+#### <a name="visual-studio-code"></a>Visual Studio Code
+
+1. ロジック アプリ プロジェクトの構造で、 **[Artifacts]** フォルダーを開き、次に **[Schemas]** フォルダーを開きます。
+
+1. **[Schemas]** フォルダーにスキーマを追加します。
+
+---
 
 ## <a name="edit-schemas"></a>スキーマを編集する
 
 既存のスキーマを更新するには、目的の変更を含む新しいスキーマ ファイルをアップロードする必要があります。 ただし、編集対象の既存のスキーマをまずダウンロードすることができます。
 
-1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> で、統合アカウントをまだ開いていない場合は検索して開きます。
+### <a name="consumption-resource"></a>[従量課金リソース](#tab/consumption-2)
 
-1. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 
-   検索ボックスに「integration account」と入力します。 
-   **[統合アカウント]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、統合アカウントをまだ開いていない場合は開きます。
 
-1. スキーマを更新する統合アカウントを選択します。
+1. 統合アカウント メニューで、 **[設定]** の **[スキーマ]** を選択します。
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[スキーマ]** タイルを選択します。
+1. **[スキーマ]** ペインが開いたら、スキーマを選択します。 最初にスキーマをダウンロードして編集するには、 **[スキーマ]** ペインのツール バーで **[ダウンロード]** を選択して、スキーマを保存します。
 
-1. **[スキーマ]** ページが開いたら、スキーマを選択します。 
-   まずスキーマをダウンロードして編集するには、 **[ダウンロード]** を選択し、スキーマを保存します。
+1. 更新したスキーマをアップロードする準備ができたら、 **[スキーマ]** ペインで更新するスキーマを選択します。 **[スキーマ]** ペインのツール バーで、 **[更新]** を選択します。
 
-1. 更新したスキーマをアップロードする準備ができたら、 **[スキーマ]** ページで更新するスキーマを選択して **[更新]** を選択します。
+1. アップロードする更新済みスキーマを探して選択します。
 
-1. アップロードする更新済みスキーマを探して選択します。 
    スキーマ ファイルのアップロードが完了したら、 **[スキーマ]** 一覧に更新されたスキーマが表示されます。
+
+### <a name="standard-resource"></a>[Standard リソース](#tab/standard-2)
+
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ リソースをまだ開いていない場合は開きます。
+
+1. ロジック アプリ リソースのメニューの **[設定]** で、 **[スキーマ]** を選択します。
+
+1. **[スキーマ]** ペインが開いたら、スキーマを選択します。 最初にスキーマをダウンロードして編集するには、 **[スキーマ]** ペインのツール バーで **[ダウンロード]** を選択して、スキーマを保存します。
+
+1. **[スキーマ]** ペインのツール バーで、 **[追加]** を選択します。
+
+1. **[スキーマの追加]** で、スキーマの一意の名前を入力します。
+
+1. **[スキーマ]** ボックスの横にあるフォルダー アイコンを選択します。 アップロードするスキーマを選択します。
+
+1. 準備ができたら、 **[OK]** を選択します。
+
+   スキーマ ファイルのアップロードが完了したら、 **[スキーマ]** 一覧に更新されたスキーマが表示されます。
+
+---
 
 ## <a name="delete-schemas"></a>スキーマを削除する
 
-1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> で、統合アカウントをまだ開いていない場合は検索して開きます。
+### <a name="consumption-resource"></a>[従量課金リソース](#tab/consumption-3)
 
-1. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 
-   検索ボックスに「integration account」と入力します。 
-   **[統合アカウント]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、統合アカウントをまだ開いていない場合は開きます。
 
-1. スキーマを削除する統合アカウントを選択します。
+1. 統合アカウント メニューで、 **[設定]** の **[スキーマ]** を選択します。
 
-1. 統合アカウントの **[概要]** ページの **[コンポーネント]** で、 **[スキーマ]** タイルを選択します。
-
-1. **[スキーマ]** ページが開いたら、スキーマを選択し、 **[削除]** を選択します。
+1. **[スキーマ]** ペインが開いたら、スキーマを選択し、 **[削除]** を選択します。
 
 1. スキーマの削除を確定するには、 **[はい]** を選択します。
 
-## <a name="limitations"></a>制限事項
+### <a name="standard-resource"></a>[Standard リソース](#tab/standard-3)
 
-通常、ワークフローで統合アカウントを使用していて、XML を検証する場合は、スキーマを追加するか、そのアカウントにアップロードします。 統合アカウントに含まれていないスキーマを参照またはインポートしている場合は、要素 `xsd:redefine` を使用すると次のエラーが表示されることがあります。
+1. [Azure portal](https://portal.azure.com) で、ロジック アプリ リソースをまだ開いていない場合は開きます。
 
-`An error occurred while processing the XML schemas: ''SchemaLocation' must successfully resolve if <redefine> contains any child other than <annotation>.'.`
+1. ロジック アプリ リソースのメニューの **[設定]** で、 **[スキーマ]** を選択します。
 
-このエラーを解決するには、要素 `xsd:import` または `xsd:include` を `xsd:redefine` の代わりにを使用するか、URI を使用する必要があります。
+1. **[スキーマ]** ペインが開いたら、スキーマを選択し、 **[削除]** を選択します。
+
+1. スキーマの削除を確定するには、 **[はい]** を選択します。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md)
-* [マップについての詳細情報](../logic-apps/logic-apps-enterprise-integration-maps.md)
-* [変換についての詳細情報](../logic-apps/logic-apps-enterprise-integration-transform.md)
+* [Azure Logic Apps でワークフロー用の XML を検証する](logic-apps-enterprise-integration-xml-validation.md)
+* [Azure Logic Apps でワークフロー用に XML を変換する](logic-apps-enterprise-integration-transform.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87fd2189222828eef2ff03a82125e0b6dcf7111e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 29b000ee3231361ccdca4c2909e093cdaef6bc04
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179867"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866519"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -76,7 +76,7 @@ Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカ�
 Windows で、PRT は 2 つの主要コンポーネントによって使用されます。
 
 * **Azure AD CloudAP プラグイン**: Windows サインイン中に、Azure AD CloudAP プラグインが、ユーザーから提供された資格情報を使用して Azure AD から PRT を要求します。 また、PRT をキャッシュして、ユーザーがインターネット接続にアクセスできないときのキャッシュ サインインを有効にします。
-* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 でのブラウザー SSO は、Microsoft Edge (ネイティブ) および Chrome ([Windows 10 アカウント](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en)または [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 拡張機能を経由) でサポートされています。
+* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 のブラウザー SSO は Microsoft Edge (ネイティブ)、Chrome ([Windows 10 Accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) または [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 拡張機能経由で) または Mozilla Firefox v 91 以上 ([Windows SSO 設定](https://support.mozilla.org/en-US/kb/windows-sso)経由で) でサポートされています
 
 ## <a name="how-is-a-prt-renewed"></a>PRT はどのように更新されますか?
 
@@ -109,7 +109,7 @@ TPM を使用してこれらのキーをセキュリティで保護すること�
 
 **アプリ トークン**: アプリが WAM 経由でトークンを要求すると、Azure AD は更新トークンとアクセス トークンを発行します。 ただし、WAM はアクセス トークンをアプリに返すだけであり、そのキャッシュ内の更新トークンは、ユーザーのデータ保護アプリケーション プログラミング インターフェイス (DPAPI) キーで暗号化することによってセキュリティで保護します。 WAM は、セッション キーを使用して要求に署名し、さらにアクセス トークンを発行することによって、更新トークンを安全に使用します。 DPAPI キーは、Azure AD 自体で Azure AD ベースの対称キーによってセキュリティで保護されます。 デバイスが DPAPI キーを使用してユーザー プロファイルを復号化する必要がある場合、セッション キーによって暗号化された DPAPI キーを Azure AD が提供し、CloudAP プラグインがこれの復号化を TPM に要求します。 この機能によって、更新トークンのセキュリティ保護の整合性が確保され、アプリケーションで独自の保護メカニズムが実装されるのを回避します。  
 
-**ブラウザーの Cookie**: Windows 10 では、Azure AD はブラウザー SSO を、Internet Explorer および Microsoft Edge ではネイティブに、Google Chrome では Windows 10 アカウント拡張機能を介してサポートします。 Cookie だけでなく Cookie が送信されるエンドポイントも保護するようにセキュリティが構築されています。 ブラウザーの Cookie の保護方法は PRT と同じであり、セッション キーを利用して Cookie に署名することによって保護されます。
+**ブラウザーの Cookie**: Windows 10 の Azure AD では、ブラウザー SSO は Internet Explorer と Microsoft Edge ではネイティブで、Google Chrome では Windows 10 アカウント拡張機能を介して、Mozilla Firefox v 91 以上ではブラウザー設定を介してサポートされます。 Cookie だけでなく Cookie が送信されるエンドポイントも保護するようにセキュリティが構築されています。 ブラウザーの Cookie の保護方法は PRT と同じであり、セッション キーを利用して Cookie に署名することによって保護されます。
 
 ユーザーがブラウザーとの対話を開始すると、ブラウザー (または拡張機能) が COM ネイティブ クライアント ホストを呼び出します。 ネイティブ クライアント ホストは、許可されているドメインのいずれかの配下にあるページであることを確認します。 ブラウザーは nonce を含むその他のパラメーターをネイティブ クライアント ホストに送信できますが、ネイティブ クライアント ホストはホスト名の検証を保証します。 ネイティブ クライアント ホストは PRT Cookie を CloudAP プラグインに要求し、プラグインは TPM で保護されたセッション キーを使用して Cookie を作成し、署名します。 PRT Cookie はセッション キーによって署名されるため、改ざんは非常に困難です。 この PRT Cookie は、Azure AD で発信元デバイスを検証するための要求ヘッダーに含まれます。 Chrome ブラウザーを使用している場合、ネイティブ クライアント ホストのマニフェストで明示的に定義されている拡張機能のみがそれを呼び出すことができ、任意の拡張機能がこれらの要求を行うことを防ぎます。 Azure AD は PRT Cookie を検証したら、セッション Cookie をブラウザーに発行します。 このセッション Cookie には、PRT を使用して発行されたのと同じセッション キーも含まれています。 後続の要求の間、セッション キーが検証されます。このとき、Cookie は事実上デバイスにバインドされ、他の場所からの再生を防ぎます。
 
@@ -199,7 +199,7 @@ Windows 10 では、PRT のパーティション分割されたリストを資�
 | F | Azure AD は PRT Cookie のセッション キー署名を検証し、nonce を検証し、デバイスがテナント内で有効であることを確認し、Web ページの ID トークンと、ブラウザーの暗号化されたセッション Cookie を発行します。 |
 
 > [!NOTE]
-> 上の手順で説明されているブラウザー SSO フローは、Microsoft Edge の InPrivate や Google Chrome の Incognito (Microsoft Accounts 拡張機能の使用時) など、プライベート モードのセッションには該当しません。
+> 上の手順で説明されているブラウザー SSO フローは、Microsoft Edge の InPrivate、Google Chrome のシークレット モード (Microsoft Accounts 拡張機能の使用時)、Mozilla Firefox v 91 以上のプライベート モードなどのプライベート モードのセッションには該当しません
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,14 +2,14 @@
 title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレート (ARM テンプレート) で、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 08/31/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5fb365b1b0a1a77f93f627986902d4ede2752850
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: a728d51025a2bb23e7da681fc6ed5daf162b1315
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228900"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309282"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
@@ -18,6 +18,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
 * [pickZones](#pickzones)
+* [providers (非推奨)](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
 * [resourceId](#resourceid)
@@ -29,17 +30,17 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ## <a name="extensionresourceid"></a>extensionResourceId
 
-`extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
+`extensionResourceId(baseResourceId, resourceType, resourceName1, [resourceName2], ...)`
 
 [拡張リソース](../management/extension-resource-types.md)のリソース ID を返します。これは、その機能に追加する別のリソースに適用されるリソースの種類です。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceId |はい |string |拡張リソースが適用されるリソースのリソース ID。 |
-| resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
-| resourceName1 |はい |string |リソースの名前。 |
+| baseResourceId |はい |string |拡張リソースが適用されるリソースのリソース ID。 |
+| resourceType |はい |string |リソース プロバイダーの名前空間を含む拡張リソースの種類。 |
+| resourceName1 |はい |string |拡張リソースの名前。 |
 | resourceName2 |いいえ |string |次のリソース名セグメント (必要な場合)。 |
 
 さらに他のセグメントがリソースの種類に含まれる場合は、続けてリソース名をパラメーターとして追加します。
@@ -52,7 +53,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 {scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-スコープ セグメントは、拡張されるリソースによって変わります。
+スコープ セグメントは、拡張される基本リソースによって変わります。 たとえば、サブスクリプションの ID には、リソース グループの ID とは異なるセグメントがあります。
 
 拡張リソースが **リソース** に適用される場合、リソース ID は次の形式で返されます。
 
@@ -60,23 +61,27 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-拡張リソースが **リソース グループ** に適用される場合、形式は次のようになります。
+拡張リソースが **リソース グループ** に適用される場合、返される形式は次のようになります。
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-拡張リソースが **サブスクリプション** に適用される場合、形式は次のようになります。
+次のセクションでは、リソース グループでこの関数を使用する例を示します。
+
+拡張リソースが **サブスクリプション** に適用される場合、返される形式は次のようになります。
 
 ```json
 /subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-拡張リソースが **管理グループ** に適用される場合、形式は次のようになります。
+拡張リソースが **管理グループ** に適用される場合、返される形式は次のようになります。
 
 ```json
 /providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
+
+次のセクションでは、管理グループでこの関数を使用する例を示します。
 
 ### <a name="extensionresourceid-example"></a>extensionResourceId の例
 
@@ -119,7 +124,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
@@ -346,7 +351,7 @@ list* の使用例を次の表にまとめています。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | はい | string | ゾーンのサポートについて確認するためのリソースの種類のリソース プロバイダーの名前空間。 |
 | resourceType | はい | string | ゾーンのサポートについて確認するためのリソースの種類。 |
@@ -418,7 +423,7 @@ Azure Availability Zones には、ゾーンとゾーン冗長という異なる�
 
 前の例からの出力は、3 つの配列を返します。
 
-| 名前 | 型 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | サポート対象 | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -463,6 +468,10 @@ Azure Availability Zones には、ゾーンとゾーン冗長という異なる�
 ]
 ```
 
+## <a name="providers"></a>providers
+
+**providers 関数は非推奨となりました。** これの使用は推奨されていません。 この関数を使用してリソース プロバイダーの API バージョンを取得した場合は、テンプレートで特定の API バージョンを指定することをお勧めします。 動的に返された API バージョンを使用すると、プロパティがバージョン間で変更された場合にテンプレートが破損する可能性があります。
+
 ## <a name="reference"></a>reference
 
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
@@ -471,7 +480,7 @@ Azure Availability Zones には、ゾーンとゾーン冗長という異なる�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 現在のテンプレート内のリソースを参照する場合は、パラメーターとしてリソース名のみを指定します。 以前にデプロイされたリソースを参照する場合、またはリソースの名前があいまいな場合は、リソース ID を指定します。 |
 | apiVersion |いいえ |string |指定したリソースの API バージョンです。 **このパラメーターは、同じテンプレート内でリソースがプロビジョニングされない場合に必要です。** 通常、**yyyy-mm-dd** の形式。 リソースに有効な API のバージョンについては、[テンプレート リファレンス](/azure/templates/)を参照してください。 |
@@ -796,7 +805,7 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループまたはサブスクリプションのスコープでデプロイする場合にのみ、この値を指定します。 |
 | resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループのスコープでデプロイする場合にのみ、この値を指定します。 |
@@ -946,7 +955,7 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 型 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -1002,7 +1011,7 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
@@ -1084,7 +1093,7 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |

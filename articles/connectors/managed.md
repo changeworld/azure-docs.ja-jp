@@ -1,25 +1,27 @@
 ---
-title: Azure Logic Apps のマネージド コネクタ
+title: マネージド コネクタの操作
 description: Microsoft が管理するトリガーとアクションを使用することで、Azure Logic Apps を使用して他のアプリ、データ、サービス、システムを統合する自動ワークフローを作成します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 05/16/2021
-ms.openlocfilehash: 9461baebfad58f848b27fe689ed8dbd26c9dd07e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c3010cb1d972bb898fd8346266166bb632191ead
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727094"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259093"
 ---
-# <a name="managed-connectors-for-logic-apps"></a>Logic Apps のマネージド コネクタ
+# <a name="managed-connectors-in-azure-logic-apps"></a>Azure Logic Apps のマネージド コネクタ
 
 [マネージド コネクタ](apis-list.md)により、[組み込みのトリガーとアクション](built-in.md)を使用できない他のサービスやシステムにアクセスする手段が提供されます。 これらのトリガーとアクションを使用すると、データ、アプリ、クラウドベースのサービス、オンプレミスのシステムを統合するワークフローを作成できます。 組み込みのトリガーやアクションと比較して、これらのコネクタの場合は通常、特定のサービスやシステム (Azure Blob Storage、Office 365、SQL、Salesforce、SFTP サーバーなど) に関連付けられます。 Microsoft によって管理され、Azure でホストされているマネージ コネクタでは、通常、まずワークフローからの接続を作成し、ID を認証する必要があります。 繰り返しベースのトリガーと Webhook ベースのトリガーの両方を使用できます。そのため、繰り返しベースのトリガーを使用する場合は、[繰り返しの動作の概要](apis-list.md#recurrence-behavior)を確認してください。
 
-また、Logic Apps には、Azure Service Bus、Azure Functions、Azure Blob、Azure App Services、Azure API Management、SQL、AS2 など、少数のサービス、システム、プロトコル用の組み込み操作も用意されています。 数と範囲は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
+サービス、システム、プロトコルが少数の場合、Azure Logic Apps には、組み込み操作と共に、その[マネージド コネクタ バージョン](managed.md)が用意されています。 使用できる数と範囲は、マルチテナントの Azure Logic Apps で実行される従量課金プランベースのロジック アプリ リソースを作成するか、シングル テナントの Azure Logic Apps で実行する Standard プランベースのロジック アプリ リソースを作成するかによって異なります。 詳細については、[シングルテナントとマルチテナント、および統合サービス環境 (ISE)](../logic-apps/single-tenant-overview-compare.md) に関するページを参照してください。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。
 
-Logic Apps 用の一部のマネージド コネクタは、複数のサブカテゴリに属しています。 たとえば、SAP コネクタは、[エンタープライズ コネクタ](#enterprise-connectors)でもあり[オンプレミス コネクタ](#on-premises-connectors)でもあります。
+たとえば、シングルテナントのロジックアプリを作成する場合は、Azure Service Bus、Azure Event Hubs、SQL Server、MQ で組み込みの操作を使用できます。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 マルチテナント ロジック アプリを作成する場合、Azure Functions、Azure App Services、および Azure API Management の組み込み操作を使用できます。
+
+Azure Logic Apps 内の一部のマネージド コネクタは、複数のサブカテゴリに属しています。 たとえば、SAP コネクタは、[エンタープライズ コネクタ](#enterprise-connectors)でもあり[オンプレミス コネクタ](#on-premises-connectors)でもあります。
 
 * [標準コネクタ](#standard-connectors)では、Azure Blob Storage、Office 365、SharePoint、Salesforce、Power BI、OneDrive など多くのサービスへのアクセスが提供されます。
 * [エンタープライズ コネクタ](#enterprise-connectors)では、SAP、IBM MQ、IBM 3270 などのエンタープライズ システムへのアクセスが提供されます。
@@ -31,11 +33,9 @@ Logic Apps 用の一部のマネージド コネクタは、複数のサブカ�
 
 Azure Logic Apps には、これらのサービスとシステムを使用して自動ワークフローを構築するために、このような一般的な標準コネクタが用意されています。 一部の標準コネクタでは、[オンプレミス システム](#on-premises-connectors)または[統合アカウント](#integration-account-connectors)もサポートされています。
 
-一部の Logic Apps 標準コネクタでは、[オンプレミス システム](#on-premises-connectors)または[統合アカウント](#integration-account-connectors)がサポートされています。
-
 :::row:::
     :::column:::
-        [![Logic Apps 内の Azure Service Bus マネージド コネクタのアイコン][azure-service-bus-icon]][azure-service-bus-doc]
+        [![Azure Service Bus アイコン][azure-service-bus-icon]][azure-service-bus-doc]
         \
         \
         [**Azure Service Bus**][azure-service-bus-doc]
@@ -44,7 +44,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         Logic Apps で最もよく使用されているコネクタを使用して非同期メッセージ、セッション、およびトピック サブスクリプションを管理します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の SQL Server マネージド コネクタのアイコン][sql-server-icon]][sql-server-doc]
+        [![SQL Server アイコン][sql-server-icon]][sql-server-doc]
         \
         \
         [**SQL Server**][sql-server-doc]
@@ -53,7 +53,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         オンプレミスの SQL Server、またはクラウド内の Azure SQL Database に接続して、レコードの管理、ストアド プロシージャの実行、クエリの実行を行えるようにします。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Blog Storage マネージド コネクタのアイコン][azure-blob-storage-icon]][azure-blob-storage-doc]
+        [![Azure Blog Storage アイコン][azure-blob-storage-icon]][azure-blob-storage-doc]
         \
         \
         [**Azure Blob Storage**][azure-blob-storage-doc]
@@ -62,7 +62,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         Azure Storage アカウントに接続して、BLOB コンテンツの作成と管理ができるようにします。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Office 365 Outlook マネージド コネクタのアイコン][office-365-outlook-icon]][office-365-outlook-doc]
+        [![Office 365 Outlook アイコン][office-365-outlook-icon]][office-365-outlook-doc]
         \
         \
         [**Office 365 Outlook**][office-365-outlook-doc]
@@ -73,7 +73,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の STFP-SSH マネージド コネクタのアイコン][sftp-ssh-icon]][sftp-ssh-doc]
+        [![STFP-SSH アイコン][sftp-ssh-icon]][sftp-ssh-doc]
         \
         \
         [**STFP-SSH**][sftp-ssh-doc]
@@ -82,7 +82,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         SSH を使用してインターネットからアクセス可能な SFTP サーバーに接続して、ファイルとフォルダーを操作できるようにします。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の SharePoint Online マネージド コネクタのアイコン][sharepoint-online-icon]][sharepoint-online-doc]
+        [![SharePoint Online アイコン][sharepoint-online-icon]][sharepoint-online-doc]
         \
         \
         [**SharePoint Online**][sharepoint-online-doc]
@@ -91,7 +91,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         SharePoint Online に接続して、ファイル、添付ファイル、フォルダーなどを管理できるようにします。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure キュー マネージド コネクタのアイコン][azure-queues-icon]][azure-queues-doc]
+        [![Azure キュー アイコン][azure-queues-icon]][azure-queues-doc]
         \
         \
         [**Azure キュー**][azure-queues-doc]
@@ -100,7 +100,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         Azure Storage アカウントに接続して、キューとメッセージの作成と管理ができるようにします。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の FTP マネージド コネクタのアイコン][ftp-icon]][ftp-doc]
+        [![FTP アイコン][ftp-icon]][ftp-doc]
         \
         \
         [**FTP**][ftp-doc]
@@ -111,7 +111,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内のファイル システム マネージド コネクタのアイコン][file-system-icon]][file-system-doc]
+        [![ファイル システム アイコン][file-system-icon]][file-system-doc]
         \
         \
         [**ファイル システム**][file-system-doc]
@@ -120,7 +120,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         オンプレミスのファイル共有に接続して、ファイルの作成と管理ができるようにします。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Event Hubs マネージド コネクタのアイコン][azure-event-hubs-icon]][azure-event-hubs-doc]
+        [![Azure Event Hubs アイコン][azure-event-hubs-icon]][azure-event-hubs-doc]
         \
         \
         [**Azure Event Hubs**][azure-event-hubs-doc]
@@ -129,7 +129,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         イベント ハブを通じてイベントを使用したり、発行したりします。 たとえば、ロジック アプリから Event Hubs を使用して出力を取得し、リアルタイム分析プロバイダーに送信できます。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Event Grid マネージド コネクタのアイコン][azure-event-grid-icon]][azure-event-grid-doc]
+        [![Azure Event Grid アイコン][azure-event-grid-icon]][azure-event-grid-doc]
         \
         \
         [**Azure Event Grid**][azure-event-grid-doc]
@@ -138,7 +138,7 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
         Azure やサードパーティのリソースが変更されたときなどに、Event Grid が発行するイベントを監視します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Salesforce マネージド コネクタのアイコン][salesforce-icon]][salesforce-doc]
+        [![Salesforce アイコン][salesforce-icon]][salesforce-doc]
         \
         \
         [**Salesforce**][salesforce-doc]
@@ -150,31 +150,31 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 
 ## <a name="on-premises-connectors"></a>オンプレミス コネクタ
 
-オンプレミス システムへの接続を作成するには、最初に[オンプレミス データ ゲートウェイのダウンロード、インストール、設定][gateway-doc]を行う必要があります。 このゲートウェイは、セキュリティで保護された通信チャネルを提供します。必要なネットワーク インフラストラクチャを設定する必要はありません。 
+オンプレミス システムへの接続を作成するには、最初に[オンプレミス データ ゲートウェイのダウンロード、インストール、設定][gateway-doc]を行う必要があります。 このゲートウェイは、セキュリティで保護された通信チャネルを提供します。必要なネットワーク インフラストラクチャを設定する必要はありません。
 
-次のコネクタは、オンプレミス システムのデータとリソースにアクセスするために Logic Apps で提供され、よく使用されているいくつかの[標準コネクタ](#standard-connectors)です。 オンプレミス コネクタの一覧については、「[サポートされるデータ ソース](../logic-apps/logic-apps-gateway-connection.md#supported-connections)」を参照してください。
+次のコネクタは、オンプレミス システムのデータとリソースにアクセスするために Azure Logic Apps で提供され、よく使用されているいくつかの[標準コネクタ](#standard-connectors)です。 オンプレミス コネクタの一覧については、「[サポートされるデータ ソース](../logic-apps/logic-apps-gateway-connection.md#supported-connections)」を参照してください。
 
 :::row:::
     :::column:::
-        [![Logic Apps 内の Biztalk Server オンプレミス コネクタのアイコン][biztalk-server-icon]][biztalk-server-doc]
+        [![Biztalk Server アイコン][biztalk-server-icon]][biztalk-server-doc]
         \
         \
         [**Biztalk Server**][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内のファイル システム オンプレミス コネクタのアイコン][file-system-icon]][file-system-doc]
+        [![ファイル システム アイコン][file-system-icon]][file-system-doc]
         \
         \
         [**ファイル システム**][file-system-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の IBM Db2 オンプレミス コネクタのアイコン][ibm-db2-icon]][ibm-db2-doc]
+        [![IBM DB2 アイコン][ibm-db2-icon]][ibm-db2-doc]
         \
         \
-        [**IBM Db2**][ibm-db2-doc]
+        [**IBM DB2**][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の IBM Informix オンプレミス コネクタのアイコン][ibm-informix-icon]][ibm-informix-doc]
+        [![IBM Informix アイコン][ibm-informix-icon]][ibm-informix-doc]
         \
         \
         [**IBM Informix**][ibm-informix-doc]
@@ -182,25 +182,25 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の MySQL オンプレミス コネクタのアイコン][mysql-icon]][mysql-doc]
+        [![MySQL アイコン][mysql-icon]][mysql-doc]
         \
         \
         [**MySQL**][mysql-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Oracle DB オンプレミス コネクタのアイコン][oracle-db-icon]][oracle-db-doc]
+        [![Oracle DB アイコン][oracle-db-icon]][oracle-db-doc]
         \
         \
         [**Oracle DB**][oracle-db-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の PostgreSQL オンプレミス コネクタのアイコン][postgre-sql-icon]][postgre-sql-doc]
+        [![PostgreSQL アイコン][postgre-sql-icon]][postgre-sql-doc]
         \
         \
         [**PostgreSQL**][postgre-sql-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の SharePoint Server オンプレミス コネクタのアイコン][sharepoint-server-icon]][sharepoint-server-doc]
+        [![SharePoint Server アイコン][sharepoint-server-icon]][sharepoint-server-doc]
         \
         \
         [**SharePoint Server**][sharepoint-server-doc]
@@ -208,13 +208,13 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の SQL Server オンプレミス コネクタのアイコン][sql-server-icon]][sql-server-doc]
+        [![SQL Server アイコン][sql-server-icon]][sql-server-doc]
         \
         \
         [**SQL Server**][sql-server-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Teradata オンプレミス コネクタのアイコン][teradata-icon]][teradata-doc]
+        [![Teradata アイコン][teradata-icon]][teradata-doc]
         \
         \
         [**Teradata**][teradata-doc]
@@ -225,6 +225,8 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
     :::column-end:::
 :::row-end:::
 
+<a name="integration-account-connectors"></a>
+
 ## <a name="integration-account-connectors"></a>統合アカウント コネクタ
 
 統合アカウント コネクタは、Azure Logic Apps での[企業間 (B2B) 通信シナリオ](../logic-apps/logic-apps-enterprise-integration-overview.md)に特に対応しています。 [統合アカウントを作成](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)し、取引先、契約、マップ、スキーマなどの B2B 成果物を定義したら、統合アカウント コネクタを使用して、メッセージのエンコードとデコード、コンテンツの変換などを行うことができます。
@@ -232,85 +234,44 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 たとえば、Microsoft BizTalk Server を使用する場合、[BizTalk Server オンプレミス コネクタ](#on-premises-connectors)を使用してワークフローからの接続を作成できます。 これで、これらの統合アカウント コネクタを使用して、ワークフローで BizTalk のような操作を拡張または実行できます。
 
 > [!NOTE]
-> 統合アカウント コネクタを使用するには、[ロジック アプリを統合アカウントにリンク](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)しておく必要があります。
-
+> マルチテナント、従量課金プランベースの Azure Logic Apps で統合アカウント コネクタを使用する前に、[ロジック アプリ リソースを統合アカウントにリンクする](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)必要があります。 
 
 :::row:::
     :::column:::
-        [![Logic Apps 内の AS2 のデコード アクションのアイコン][as2-icon]][as2-doc]
+        [![AS2 のデコード アイコン][as2-icon]][as2-doc]
         \
         \
         [**AS2 のデコード**][as2-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の AS2 のエンコード アクションのアイコン][as2-icon]][as2-doc]
+        [![AS2 のエンコード アイコン][as2-icon]][as2-doc]
         \
         \
         [**AS2 のエンコード**][as2-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の EDIFACT のデコード アクションのアイコン][edifact-icon]][edifact-decode-doc]
+        [![EDIFACT のデコード アイコン][edifact-icon]][edifact-decode-doc]
         \
         \
         [**EDIFACT のデコード**][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の EDIFACT のエンコード アクションのアイコン][edifact-icon]][edifact-encode-doc]
+        [![EDIFACT のエンコード アイコン][edifact-icon]][edifact-encode-doc]
         \
         \
         [**EDIFACT のエンコード**][edifact-encode-doc]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
-        [![Logic Apps 内のフラット ファイルのデコード アクションのアイコン][flat-file-decode-icon]][flat-file-decode-doc]
-        \
-        \
-        [**フラット ファイルのデコード**][flat-file-decode-doc]
-    :::column-end:::
-    :::column:::
-        [![Logic Apps 内のフラット ファイルのエンコード アクションのアイコン][flat-file-encode-icon]][flat-file-encode-doc]
-        \
-        \
-        [**フラット ファイルのエンコード**][flat-file-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![Logic Apps 内の統合アカウント アクションのアイコン][integration-account-icon]][integration-account-doc]
-        \
-        \
-        [**統合アカウント**][integration-account-doc]
-    :::column-end:::
-    :::column:::
-        [![Logic Apps 内の Liquid 変換アクションのアイコン][liquid-icon]][json-liquid-transform-doc]
-        \
-        \
-        [**Liquid 変換**][json-liquid-transform-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![Logic Apps 内の X12 のデコード アクションのアイコン][x12-icon]][x12-decode-doc]
+        [![X12 のデコード アイコン][x12-icon]][x12-decode-doc]
         \
         \
         [**X12 のデコード**][x12-decode-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の X12 のエンコード アクションのアイコン][x12-icon]][x12-encode-doc]
+        [![X12 のエンコード アイコン][x12-icon]][x12-encode-doc]
         \
         \
         [**X12 のエンコード**][x12-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![Logic Apps 内の XML 変換アクションのアイコン][xml-transform-icon]][xml-transform-doc]
-        \
-        \
-        [**XML 変換**][xml-transform-doc]
-    :::column-end:::
-    :::column:::
-        [![Logic Apps 内の XML 検証アクションのアイコン][xml-validate-icon]][xml-validate-doc]
-        \
-        \
-        [**XML 検証**][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -320,27 +281,26 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 
 :::row:::
     :::column:::
-        [![Logic Apps 内の IBM 3270 エンタープライズ コネクタのアイコン][ibm-3270-icon]][ibm-3270-doc]
+        [![IBM 3270 アイコン][ibm-3270-icon]][ibm-3270-doc]
         \
         \
-        [**IBM 3270** エンタープライズ コネクタ][ibm-3270-doc]
+        [**IBM 3270**][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の IBM MQ エンタープライズ コネクタのアイコン][ibm-mq-icon]][ibm-mq-doc]
+        [![IBM MQ アイコン][ibm-mq-icon]][ibm-mq-doc]
         \
         \
-        [**IBM MQ** エンタープライズ コネクタ][ibm-mq-doc]
+        [**IBM MQ**][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の SAP エンタープライズ コネクタのアイコン][sap-icon]][sap-connector-doc]
+        [![SAP アイコン][sap-icon]][sap-connector-doc]
         \
         \
-        [**SAP** エンタープライズ コネクタ][sap-connector-doc]
+        [**SAP**][sap-connector-doc]
     :::column-end:::
     :::column:::
     :::column-end:::
 :::row-end:::
-
 
 ## <a name="ise-connectors"></a>ISE コネクタ
 
@@ -351,25 +311,25 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 
 :::row:::
     :::column:::
-        [![Logic Apps 内の AS2 ISE コネクタのアイコン][as2-icon]][as2-doc]
+        [![AS2 ISE アイコン][as2-icon]][as2-doc]
         \
         \
         [**AS2** ISE][as2-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Automation ISE コネクタのアイコン][azure-automation-icon]][azure-automation-doc]
+        [![Azure Automation ISE アイコン][azure-automation-icon]][azure-automation-doc]
         \
         \
         [**Azure Automation** ISE][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Blob Storage ISE コネクタのアイコン][azure-blob-storage-icon]][azure-blob-storage-doc]
+        [![Azure Blob Storage ISE アイコン][azure-blob-storage-icon]][azure-blob-storage-doc]
         \
         \
         [**Azure Blob Storage** ISE][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Cosmos DB ISE コネクタのアイコン][azure-cosmos-db-icon]][azure-cosmos-db-doc]
+        [![Azure Cosmos DB ISE アイコン][azure-cosmos-db-icon]][azure-cosmos-db-doc]
         \
         \
         [**Azure Cosmos DB** ISE][azure-cosmos-db-doc]
@@ -377,25 +337,25 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の Azure Event Hubs ISE コネクタのアイコン][azure-event-hubs-icon]][azure-event-hubs-doc]
+        [![Azure Event Hubs ISE アイコン][azure-event-hubs-icon]][azure-event-hubs-doc]
         \
         \
         [**Azure Event Hubs** ISE][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Event Grid ISE コネクタのアイコン][azure-event-grid-icon]][azure-event-grid-doc]
+        [![Azure Event Grid ISE アイコン][azure-event-grid-icon]][azure-event-grid-doc]
         \
         \
         [**Azure Event Grid** ISE][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure File Storage ISE コネクタのアイコン][azure-file-storage-icon]][azure-file-storage-doc]
+        [![Azure Files ISE アイコン][azure-file-storage-icon]][azure-file-storage-doc]
         \
         \
-        [**Azure File Storage** ISE][azure-file-storage-doc]
+        [**Azure Files** ISE][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Key Vault ISE コネクタのアイコン][azure-key-vault-icon]][azure-key-vault-doc]
+        [![Azure Key Vault ISE アイコン][azure-key-vault-icon]][azure-key-vault-doc]
         \
         \
         [**Azure Key Vault** ISE][azure-key-vault-doc]
@@ -403,25 +363,25 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の Azure Monitor ログ ISE コネクタのアイコン][azure-monitor-logs-icon]][azure-monitor-logs-doc]
+        [![Azure Monitor Logs ISE アイコン][azure-monitor-logs-icon]][azure-monitor-logs-doc]
         \
         \
         [**Azure Monitor ログ** ISE][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Service Bus ISE コネクタのアイコン][azure-service-bus-icon]][azure-service-bus-doc]
+        [![Azure Service Bus ISE アイコン][azure-service-bus-icon]][azure-service-bus-doc]
         \
         \
         [**Azure Service Bus** ISE][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Synapse Analytics ISE コネクタのアイコン][azure-sql-data-warehouse-icon]][azure-sql-data-warehouse-doc]
+        [![Azure Synapse Analytics ISE アイコン][azure-sql-data-warehouse-icon]][azure-sql-data-warehouse-doc]
         \
         \
         [**Azure Synapse Analytics** ISE][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Table Storage ISE コネクタのアイコン][azure-table-storage-icon]][azure-table-storage-doc]
+        [![Azure Table Storage ISE アイコン][azure-table-storage-icon]][azure-table-storage-doc]
         \
         \
         [**Azure Table Storage** ISE][azure-table-storage-doc]
@@ -429,51 +389,51 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の Azure キュー ISE コネクタのアイコン][azure-queues-icon]][azure-queues-doc]
+        [![Azure Queues ISE アイコン][azure-queues-icon]][azure-queues-doc]
         \
         \
         [**Azure キュー** ISE][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の EDIFACT ISE コネクタのアイコン][edifact-icon]][edifact-doc]
+        [![EDIFACT ISE アイコン][edifact-icon]][edifact-doc]
         \
         \
         [**EDIFACT** ISE][edifact-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内のファイル システム ISE コネクタのアイコン][file-system-icon]][file-system-doc]
+        [![File System ISE アイコン][file-system-icon]][file-system-doc]
         \
         \
         [**ファイル システム** ISE][file-system-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の FTP ISE コネクタのアイコン][ftp-icon]][ftp-doc]
+        [![FTP ISE アイコン][ftp-icon]][ftp-doc]
         \
         \
         [**FTP** ISE][ftp-doc]
     :::column-end:::
-:::row-end:::   
+:::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の IBM 3270 ISE コネクタのアイコン][ibm-3270-icon]][ibm-3270-doc]
+        [![IBM 3270 ISE アイコン][ibm-3270-icon]][ibm-3270-doc]
         \
         \
         [**IBM 3270** ISE][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の IBM DB2 ISE コネクタのアイコン][ibm-db2-icon]][ibm-db2-doc]
+        [![IBM DB2 ISE アイコン][ibm-db2-icon]][ibm-db2-doc]
         \
         \
         [**IBM DB2** ISE][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の IBM MQ ISE コネクタのアイコン][ibm-mq-icon]][ibm-mq-doc]
+        [![IBM MQ ISE アイコン][ibm-mq-icon]][ibm-mq-doc]
         \
         \
         [**IBM MQ** ISE][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の SAP ISE コネクタのアイコン][sap-icon]][sap-connector-doc]
+        [![SAP ISE アイコン][sap-icon]][sap-connector-doc]
         \
         \
         [**SAP** ISE][sap-connector-doc]
@@ -481,25 +441,25 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の SFTP-SSH ISE コネクタのアイコン][sftp-ssh-icon]][sftp-ssh-doc]
+        [![SFTP-SSH ISE アイコン][sftp-ssh-icon]][sftp-ssh-doc]
         \
         \
         [**SFTP-SSH** ISE][sftp-ssh-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の SMTP ISE コネクタのアイコン][smtp-icon]][smtp-doc]
+        [![SMTP ISE アイコン][smtp-icon]][smtp-doc]
         \
         \
         [**SMTP** ISE][smtp-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の SQL Server ISE コネクタのアイコン][sql-server-icon]][sql-server-doc]
+        [![SQL Server ISE アイコン][sql-server-icon]][sql-server-doc]
         \
         \
         [**SQL Server** ISE][sql-server-doc]
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の X12 ISE コネクタのアイコン][x12-icon]][x12-doc]
+        [![X12 ISE アイコン][x12-icon]][x12-doc]
         \
         \
         [**X12** ISE][x12-doc]
@@ -595,7 +555,6 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 [wordpress-icon]: ./media/apis-list/wordpress.png
 [youtube-icon]: ./media/apis-list/youtube.png
 
-
 <!--Managed connector doc links-->
 [azure-automation-doc]: /connectors/azureautomation/ "クラウドおよびオンプレミス インフラストラクチャ用のオートメーション ジョブを作成して管理します"
 [azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "Azure Blob Storage コネクタを使用して BLOB コンテナーのファイルを管理します。"
@@ -646,59 +605,16 @@ Azure Logic Apps には、これらのサービスとシステムを使用して
 <!--Integration account connector icons -->
 [as2-icon]: ./media/apis-list/as2.png
 [edifact-icon]: ./media/apis-list/edifact.png
-[flat-file-encode-icon]: ./media/apis-list/flat-file-encoding.png
-[flat-file-decode-icon]: ./media/apis-list/flat-file-decoding.png
-[integration-account-icon]: ./media/apis-list/integration-account.png
-[liquid-icon]: ./media/apis-list/liquid-transform.png
 [x12-icon]: ./media/apis-list/x12.png
-[xml-validate-icon]: ./media/apis-list/xml-validation.png
-[xml-transform-icon]: ./media/apis-list/xsl-transform.png
 
 <!-- Integration account connector docs -->
-
 [as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "AS2 プロトコルを使用するメッセージをエンコードおよびデコードします"
 [edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "EDIFACT プロトコルを使用するメッセージをエンコードおよびデコードします"
 [edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "EDIFACT プロトコルを使用するメッセージをデコードします"
 [edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "EDIFACT プロトコルを使用するメッセージをエンコードします"
-[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
-[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
-[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウント アーティファクトのメタデータを管理します"
-[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "Liquid テンプレートを使用して JSON を変換します"
 [x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "X12 プロトコルを使用するメッセージをエンコードおよびデコードします"
 [x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "X12 プロトコルを使用するメッセージをデコードします"
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 プロトコルを使用するメッセージをエンコードします"
-[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML メッセージ変換します"
-[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML メッセージを検証します"
-
 
 <!--Other doc links-->
 [gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータに接続する"
-
-
-
-<!--Integration account connector icons -->
-[as2-icon]: ./media/apis-list/as2.png
-[edifact-icon]: ./media/apis-list/edifact.png
-[flat-file-encode-icon]: ./media/apis-list/flat-file-encoding.png
-[flat-file-decode-icon]: ./media/apis-list/flat-file-decoding.png
-[integration-account-icon]: ./media/apis-list/integration-account.png
-[liquid-icon]: ./media/apis-list/liquid-transform.png
-[x12-icon]: ./media/apis-list/x12.png
-[xml-validate-icon]: ./media/apis-list/xml-validation.png
-[xml-transform-icon]: ./media/apis-list/xsl-transform.png
-
-<!-- Integration account connector docs -->
-
-[as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "AS2 プロトコルを使用するメッセージをエンコードおよびデコードします"
-[edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "EDIFACT プロトコルを使用するメッセージをエンコードおよびデコードします"
-[edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "EDIFACT プロトコルを使用するメッセージをデコードします"
-[edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "EDIFACT プロトコルを使用するメッセージをエンコードします"
-[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
-[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
-[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウント アーティファクトのメタデータを管理します"
-[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "Liquid テンプレートを使用して JSON を変換します"
-[x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "X12 プロトコルを使用するメッセージをエンコードおよびデコードします"
-[x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "X12 プロトコルを使用するメッセージをデコードします"
-[x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 プロトコルを使用するメッセージをエンコードします"
-[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML メッセージ変換します"
-[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML メッセージを検証します"

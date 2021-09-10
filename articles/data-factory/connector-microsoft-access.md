@@ -1,18 +1,20 @@
 ---
 title: Microsoft Access をコピー元またはコピー先としてデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Access をコピー元またはコピー先としてデータをコピーする方法について説明します。
-ms.author: jianleishen
-author: jianleishen
+ms.author: chez
+author: chez-charlie
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 75159291f383b4d8ed5752cbae0907a6c21c26ec
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: a17d6cf31b94aa2c737335a7c2cc1a746df1d323
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488485"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303218"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Azure Data Factory を使用して Microsoft Access データ ストアをコピー元またはコピー先としてデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,11 +38,36 @@ Microsoft Access ソースのデータをサポートされる任意のシンク
 - データ ストア用の Microsoft Access ODBC ドライバーを統合ランタイム マシンにインストールする。
 
 >[!NOTE]
->Microsoft Access 2016 バージョンの ODBC ドライバーは、このコネクタでは動作しません。 代わりに、ドライバー バージョン 2013 または 2010 を使用してください。
+>Microsoft Access 2016 バージョンの ODBC ドライバーは、このコネクタでは動作しません。 代わりに ODBC ドライバーの Microsoft Access 2013 または 2010 バージョンを使用してください。
 
-## <a name="getting-started"></a>作業の開始
+## <a name="getting-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-microsoft-access-using-ui"></a>UI を使用して Microsoft Access のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Microsoft Access のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンクされたサービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI で新しいリンク サービスを作成する。":::
+
+2. Access を検索し、Microsoft Access コネクタを選択します。
+
+   :::image type="content" source="media/connector-microsoft-access/microsoft-access-connector.png" alt-text="Microsoft Access コネクタを選択します。":::    
+
+
+1. サービスの詳細を設定し、接続をテストし、新しいリンク サービスを作成します。
+
+   :::image type="content" source="media/connector-microsoft-access/configure-microsoft-access-linked-service.png" alt-text="Microsoft Access のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、Microsoft Access コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 

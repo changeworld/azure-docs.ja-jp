@@ -12,16 +12,16 @@ ms.date: 01/16/2020
 ms.author: jhakulin
 zone_pivot_groups: programming-languages-set-two
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0aee0030937a6e11860907e27b775c2671137f71
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 507ade69fc257b52a3fe632fcf652dcd5660d819
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331108"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123104243"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux 用 OpenSSL の構成
 
-1\.9.0 より前の Speech SDK バージョンを使用している場合、[OpenSSL](https://www.openssl.org) はホストシステム バージョンに動的に構成されます。 新しいバージョンの Speech SDK では、OpenSSL (バージョン [1.1.1b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)) は Speech SDK のコア ライブラリに静的にリンクされています。
+1\.9.0 より前の Speech SDK バージョンを使用している場合、[OpenSSL](https://www.openssl.org) はホストシステム バージョンに動的に構成されます。 新しいバージョンの Speech SDK では、OpenSSL は Speech SDK のコア ライブラリに静的にリンクされています。 Speech SDK バージョン 1.9.0 から 1.16.0 まででは、[OpenSSL バージョン 1.1.1b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html) が使用されます。 Speech SDK バージョン 1.17.0 以降では、[Open SSL バージョン 1.1.1k](https://mta.openssl.org/pipermail/openssl-announce/2021-March/000197.html) が使用されます。
 
 確実に接続できるよう、OpenSSL 証明書がシステムにインストールされていることを確認します。 次のコマンドを実行します。
 ```bash
@@ -87,7 +87,7 @@ config.setProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true")?
+speech_config.set_property_by_name("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true")
 ```
 
 ::: zone-end
@@ -129,7 +129,7 @@ config.setProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")?
+speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")
 ```
 
 ::: zone-end

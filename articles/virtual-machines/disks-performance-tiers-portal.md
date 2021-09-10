@@ -2,20 +2,22 @@
 title: Azure portal を利用して Azure マネージド ディスクのパフォーマンスを変更する
 description: Azure portal を利用し、新規と既存のマネージド ディスクのパフォーマンス レベルを変更する方法について説明します。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a82865930a5ed770b742c3d5e8906d4e69be3f64
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: dd7d024b542feb2e15aefb79f2467e7033c180f9
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079410"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106613"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Azure portal を利用してパフォーマンス レベルを変更する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [!INCLUDE [virtual-machines-disks-performance-tiers-intro](../../includes/virtual-machines-disks-performance-tiers-intro.md)]
 
@@ -38,27 +40,11 @@ ms.locfileid: "110079410"
 :::image type="content" source="media/disks-performance-tiers-portal/new-disk-change-performance-tier.png" alt-text="ディスク作成ブレードのスクリーンショット。1 つのディスクが強調表示されています。パフォーマンス レベルのドロップダウンが強調表示されています。" lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::
 
 
-## <a name="existing-disks"></a>既存のディスク
-
-次の手順では、既存のディスクのパフォーマンス レベルを変更する方法を説明しています。
-
-1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. 変更するディスクが含まれる VM に移動します。
-1. VM の割り当てを解除するか、ディスクをデタッチします。
-1. ディスクを選択します
-1. **[Size + Performance]\(サイズおよびパフォーマンス\)** を選択します。
-1. **[パフォーマンス レベル]** ドロップダウンで、ディスクの現在のパフォーマンス レベル以外のレベルを選択します。
-1. **[サイズ変更]** を選択します。
-
-:::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="[Size + Performance]\(サイズおよびパフォーマンス\) ブレードのスクリーンショット。パフォーマンス レベルが強調表示されています。" lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::
-
-### <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>ダウンタイムなしでディスクのパフォーマンス レベルを変更する (プレビュー)
+### <a name="change-the-performance-tier-of-an-existing-disk-without-downtime"></a>ダウンタイムなしで既存のディスクのパフォーマンス レベルを変更する
 
 ダウンタイムなしでパフォーマンス レベルを変更することもできるため、レベルを変更するために VM の割り当てを解除したり、ディスクをデタッチしたりする必要はありません。
 
 ### <a name="prerequisites"></a>前提条件
-
-ご使用のディスクが「[ダウンタイムなしでパフォーマンス レベルを変更する (プレビュー)](#change-performance-tier-without-downtime-preview)」セクションに記載されている要件を満たしている必要があります。そうでない場合は、パフォーマンス レベルを変更するとダウンタイムが発生します。
 
 ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、お使いのサブスクリプションに対してこの機能を有効にしてください。
 

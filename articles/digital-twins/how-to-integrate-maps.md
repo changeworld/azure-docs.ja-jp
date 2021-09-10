@@ -4,22 +4,22 @@ titleSuffix: Azure Digital Twins
 description: Azure Maps フロア ガイドを更新するために、ツイン グラフと Azure Digital Twins の通知を使用できる関数を Azure Functions で作成する方法を確認します。
 author: baanders
 ms.author: baanders
-ms.date: 1/19/2021
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: dd161468cda08a0046f2f46a79a973e4bbf8b49a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 494e4b048fc33a0cd7fcfc6c354a7f757298ebef
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735299"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223481"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
 
 この記事では、Azure Digital Twins のデータを使用し、[Azure Maps](../azure-maps/about-azure-maps.md) を使って "*屋内マップ*" に表示される情報を更新するために必要な手順について説明します。 Azure Digital Twins によって、IoT デバイスの関係のグラフが格納され、テレメトリがさまざまなエンドポイントにルーティングされます。これにより、マップ上の情報オーバーレイを更新するための完全なサービスとなります。
 
-この攻略ガイドでは、以下について説明します。
+このガイドでは、次を説明します。
 
 1. [Azure Functions](../azure-functions/functions-overview.md) の関数にツイン更新イベントを送信するように、Azure Digital Twins インスタンスを構成する。
 2. Azure Maps 屋内マップの地物状態セットを更新するために関数を作成する。
@@ -28,9 +28,9 @@ ms.locfileid: "121735299"
 ### <a name="prerequisites"></a>前提条件
 
 * [エンドツーエンド ソリューションの接続](./tutorial-end-to-end.md)に関するページに従って Azure Digital Twins を操作します。
-    * 追加のエンドポイントとルートを使用して、このツインを拡張します。 また、このチュートリアルでは、関数アプリに別の関数を追加します。 
+    * 追加のエンドポイントとルートを使用して、このツインを拡張します。 また、このチュートリアルでは、関数アプリに別の関数も追加します。 
 * [Azure Maps Creator を使用した屋内マップの作成](../azure-maps/tutorial-creator-indoor-maps.md)に関するページに従って Azure Maps を操作し、"*地物状態セット*" を使用して Azure Maps の屋内マップを作成します。
-    * [地物状態セット](../azure-maps/creator-indoor-maps.md#feature-statesets)は、部屋や機器といったデータセットの地物に割り当てられた動的なプロパティ (状態) のコレクションです。 上記の Azure Maps チュートリアルでは、地物状態セットによって、マップに表示される部屋の状態が格納されます。
+    * [地物状態セット](../azure-maps/creator-indoor-maps.md#feature-statesets)は、部屋や機器といったデータセットの地物に割り当てられた動的なプロパティ (状態) のコレクションです。 上記の Azure Maps チュートリアルでは、地物状態セットが、マップに表示される部屋の状態を格納します。
     * 地物の "*状態セット ID*" と Azure Maps の "*サブスクリプション キー*" が必要になります。
 
 ### <a name="topology"></a>トポロジ
@@ -91,7 +91,7 @@ az functionapp config appsettings set --name <your-function-app-name>  --resourc
 
 ライブ更新温度を表示するには、以下の手順に従います。
 
-1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ([エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照)。 この手順は、「[シミュレーションを構成して実行する](././tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションにあります。
+1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ([エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照)。 この手順の説明は、「[シミュレーションを構成して実行する](././tutorial-end-to-end.md#configure-and-run-the-simulation)」にあります。
 2. [Azure Maps Indoor モジュール](../azure-maps/how-to-use-indoor-module.md)を使用して、Azure Maps Creator で作成された屋内マップをレンダリングします。
     1. Indoor Maps の「[Azure Maps の Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md)」の「[例: Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)」セクションの HTML をローカル ファイルにコピーします。
     1. ローカル HTML ファイルの "*サブスクリプション キー*"、*tilesetId*、*statesetID* を、実際の値に置き換えます。
@@ -103,11 +103,11 @@ az functionapp config appsettings set --name <your-function-app-name>  --resourc
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Azure Digital Twins にマップ情報を格納する
 
-これでマップ情報を更新するためのハードコードされたソリューションが完成したので、Azure Digital Twins のグラフを使用して、屋内マップの更新に必要なすべての情報を格納できます。 これには、各マップと場所の状態セット ID、マップ サブスクリプション ID、および地物 ID がそれぞれ含まれます。 
+これでマップ情報を更新するためのハードコードされたソリューションが完成したので、Azure Digital Twins のグラフを使用して、屋内マップの更新に必要なすべての情報を格納できます。 この情報には、各マップと場所の状態セット ID、マップ サブスクリプション ID、および地物 ID がそれぞれ含まれます。 
 
 この特定の例のソリューションには、状態セット ID とマップ サブスクリプション ID に属性を設定するための各最上レベルの空間の更新、および地物 ID を設定するための各部屋の更新が含まれます。 ツイン グラフを初期化するときにこれらの値を 1 回設定し、ツインの更新イベントごとにそれらの値に対してクエリを実行する必要があります。
 
-トポロジの構成によっては、これら 3 つの属性を、マップの細分性に関連付けてさまざまなレベルで格納できます。
+ご自分のトポロジの構成によっては、これら 3 つの属性を、マップの細分性に関連付けてさまざまなレベルで格納できます。
 
 ## <a name="next-steps"></a>次のステップ
 

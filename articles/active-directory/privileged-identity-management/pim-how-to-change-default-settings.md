@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2021
+ms.date: 08/25/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f843aebfea4e7c5b956d5e150c4e54dffa764a5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 558f8b720992f44a747689cb0e69436507b685c4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749066"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866996"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -94,7 +94,7 @@ Privileged Identity Management により、アクティブ化時およびアク�
 
 ## <a name="require-approval-to-activate"></a>アクティブ化の承認を必須にする
 
-複数の承認者を設定した場合、承認は、承認者が 1 人でも承認または拒否すると直ちに完了します。 少なくとも 2 人のユーザーから承認を要求することはできません。 ロールをアクティブ化するために承認を必須にする場合は、次の手順を実行します。
+複数の承認者を設定した場合、承認は、承認者が 1 人でも承認または拒否すると直ちに完了します。 2 番目以降の承認者からの承認は強制できません。 ロールをアクティブ化するために承認を必須にする場合は、次の手順を実行します。
 
 1. **[アクティブにするには承認が必要です]** チェックボックスをオンにします。
 
@@ -102,11 +102,9 @@ Privileged Identity Management により、アクティブ化時およびアク�
 
     ![承認者を選択するための [ユーザーまたはグループの選択] ペイン](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. 少なくとも 1 人のユーザーを選択し、 **[選択]** をクリックします。 少なくとも 1 人の承認者を選択してください。 特定の承認者が選択されていない場合は、特権ロール管理者または全体管理者が既定の承認者になります。
+1. 少なくとも 1 人のユーザーを選択し、 **[選択]** をクリックします。 少なくとも 1 人の承認者を選択してください。 特定の承認者が選択されていない場合は、特権ロール管理者と全体管理者が既定の承認者になります。
 
-    選択した承認者の一覧に選択内容が表示されます。
-
-1. すべてのロール設定を指定したら、 **[更新]** を選択して変更を保存します。
+1. **[更新]** を選択して変更を保存します。
 
 ## <a name="next-steps"></a>次のステップ
 

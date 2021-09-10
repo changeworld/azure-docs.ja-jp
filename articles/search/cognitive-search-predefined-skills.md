@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: ddf7d6bba58d8eb8a7ad8a52a8e9c51098e71dcc
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 161813b7da42a5697fdb595e6a7050923e28fca2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228903"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038894"
 ---
 # <a name="built-in-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>インデックス作成時にテキストとイメージを処理するための組み込みスキル (Azure Cognitive Search)
 
@@ -30,7 +30,7 @@ ms.locfileid: "122228903"
 | [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md) | このスキルでは、トレーニング済みモデルを使用し、語句の配置、言語規則、他の語句との近さ、ソース データ内での語句の不自然さの程度に基づいて、重要な語句を検出します。 | Cognitive Services ([価格](https://azure.microsoft.com/pricing/details/cognitive-services/)) | 
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | このスキルでは、トレーニング済みモデルを使用し、使用されている言語を検出します (ドキュメントごとに 1 つの言語 ID)。 同じテキスト セグメント内で複数の言語が使用されている場合、出力は、主に使用されている言語の LCID になります。 | Cognitive Services ([価格](https://azure.microsoft.com/pricing/details/cognitive-services/)) | 
 | [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | フィールドのコレクションからのテキストを 1 つのフィールドに統合します。  | 該当なし |
-| [Microsoft.Skills.Text.V3.EntityLinkingSkill](cognitive-search-skill-entity-linking-v3.md) | このスキルは、任意のテキストからリンクされたエンティティの一致を決定するためにトレーニング済みモデルを使用します。 | Cognitive Services ([価格](https://azure.microsoft.com/pricing/details/cognitive-services/)) | 
+| [Microsoft.Skills.Text.V3.EntityLinkingSkill](cognitive-search-skill-entity-linking-v3.md) | このスキルでは、事前トレーニング済みのモデルを使用し、認識されたエンティティに対して Wikipedia の記事へのリンクを生成します。 | Cognitive Services ([価格](https://azure.microsoft.com/pricing/details/cognitive-services/)) | 
 | [Microsoft.Skills.Text.V3.EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md) | このスキルでは、トレーニング済みモデルを使用し、`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"DateTime"`、`"URL"`、`"Email"`、`"PersonType"`、`"Event"`、`"Product"`、`"Skill"`、`"Address"`、`"Phone Number"` および `"IP Address"`の各フィールドのカテゴリの固定したセットに対してエンティティを確立します。 | Cognitive Services ([価格](https://azure.microsoft.com/pricing/details/cognitive-services/)) | 
 | [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | このスキルは、事前トレーニングされたモデルを使用して、特定のテキストから個人情報を抽出します。 また、このスキルには、テキスト内で検出された個人情報エンティティをマスクするためのさまざまなオプションも用意されています。  | Cognitive Services ([価格](https://azure.microsoft.com/pricing/details/cognitive-services/)) | 
 | [Microsoft.Skills.Text.V3.SentimentSkill](cognitive-search-skill-sentiment-v3.md)  | このスキルでは、トレーニング済みのモデルを使用し、レコードごとに文章とドキュメントレベルでサービスによって検出された最も高い信頼度スコアに基づいて、センチメント ラベル ("ネガティブ"、"中立"、"ポジティブ" など) を割り当てます。 | Cognitive Services ([価格](https://azure.microsoft.com/pricing/details/cognitive-services/)) | 

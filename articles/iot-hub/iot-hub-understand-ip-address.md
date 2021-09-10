@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2021
-ms.openlocfilehash: 053ba5b768e9a09eb50f71a8296d42f85a9e4515
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: a2c500072dfd1137f14d7ae663c6736bf6328c33
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861210"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866312"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub の IP アドレス
 
@@ -30,18 +30,18 @@ IoT Hub  パブリック エンドポイントの IP アドレス プレフィ�
 | IoT Hub デバイスのエンドポイントが、使用しているデバイスとネットワーク資産からのみ接続を受信するようにする | [Device-to-cloud](./iot-hub-devguide-messaging.md)、および [cloud-to-device](./iot-hub-devguide-messages-c2d.md) メッセージング、[ダイレクト メソッド](./iot-hub-devguide-direct-methods.md)、[デバイスとモジュールのツイン](./iot-hub-devguide-device-twins.md) および [デバイス ストリーム](./iot-hub-device-streams-overview.md) | 使用しているデバイスとネットワーク資産の IP アドレスからの接続を許可するには、IoT Hub [IP フィルター機能](iot-hub-ip-filtering.md) を使用します ([制限事項](#limitations-and-workarounds)に関するセクションを参照してください)。 | 
 | ルートのカスタム エンドポイント リソース (ストレージ アカウント、Service Bus、およびイベント ハブ) がネットワーク資産からのみアクセス可能であることを確認する | [メッセージ ルーティング](./iot-hub-devguide-messages-d2c.md) | 接続の制限に関するリソースのガイダンスに従います (たとえば、[ファイアウォール規則](../storage/common/storage-network-security.md)、[プライベート リンク](../private-link/private-endpoint-overview.md)、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md) 経由など)。_AzureIoTHub_ サービス タグを使用して IoT Hub IP アドレス プレフィックスを検出し、リソースのファイアウォール構成の IP プレフィックスに対して許可規則を追加します ([制限事項](#limitations-and-workarounds)に関するセクションを参照してください)。 |
 
-
-
 ## <a name="best-practices"></a>ベスト プラクティス
 
-* デバイスのファイアウォール構成で許可規則を追加する場合、[適用されるプロトコルで使用される特定のポート](./iot-hub-devguide-protocols.md#port-numbers)を指定することをお勧めします。
+* IoT ハブの IP アドレスは、予告なしに変更される可能性があります。 中断を最小限に抑えるために、可能な限り、ネットワーキングとファイアウォールの構成には IoT ハブ ホスト名 (例: myhub.azure-devices.net) を使用します。 
 
-* IoT Hub の IP アドレス プレフィックスは変更されることがあります。 これらの変更は、有効になる前に、サービス タグ経由で定期的に発行されます。 そのため、最新のサービス タグを定期的に取得して使用するためのプロセスを開発することが重要です。 このプロセスは、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#service-tags-on-premises) 経由で自動化できます。 Service Tag Discovery API はまだプレビュー段階であり、場合によってはタグと IP アドレスの完全な一覧が生成されないことがあります。 Discovery API が一般提供されるまでは、[ダウンロード可能な JSON 形式で サービス タグ](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を使用することを検討してください。 
+* ドメイン名解決 (DNS) を使用しない制約付き IoT システムの場合、変更を有効にする前に、IoT Hub IP アドレス範囲がサービス タグを使用して定期的に公開されます。 そのため、最新のサービス タグを定期的に取得して使用するためのプロセスを開発することが重要です。 このプロセスは、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#service-tags-on-premises) 経由で自動化できます。 Service Tag Discovery API はまだプレビュー段階であり、場合によってはタグと IP アドレスの完全な一覧が生成されないことがあります。 Discovery API が一般提供されるまでは、[ダウンロード可能な JSON 形式で サービス タグ](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を使用することを検討してください。 
+
 
 * 特定のリージョン内の IoT Hub エンドポイントによって使用される IP プレフィックスを識別するには、*AzureIoTHub.[リージョン名]* タグを使用します。 データセンターのディザスター リカバリーまたは[リージョン内フェールオーバー](iot-hub-ha-dr.md)に対処するには、IoT Hub の geo ペア リージョンの IP プレフィックスへの接続も有効になっていることを確認してください。
 
 * IoT Hub でファイアウォール ルールを設定すると、IoT Hub に対して Azure CLI および PowerShell コマンドを実行するために必要な接続がブロックされる可能性があります。 これを回避するには、クライアントの IP アドレスのプレフィックスに ALLOW ルールを追加し、CLI または PowerShell クライアントが再び IoT Hub と通信できるようにします。  
 
+* デバイスのファイアウォール構成で許可規則を追加する場合、[適用されるプロトコルで使用される特定のポート](./iot-hub-devguide-protocols.md#port-numbers)を指定することをお勧めします。
 
 ## <a name="limitations-and-workarounds"></a>制限事項と回避策
 

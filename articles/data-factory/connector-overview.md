@@ -1,23 +1,26 @@
 ---
-title: Azure Data Factory コネクタの概要
-description: Data Factory でサポートされるコネクタについて説明します。
+title: コネクタの概要
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics パイプラインでサポートされているコネクタについて説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/26/2021
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 1e25ba74eddbb39467fabbd6bfb60d4a2c7d049b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: be49d5563a1e267b6f9be7ad5b4fa4534a56f22c
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793682"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225616"
 ---
-# <a name="azure-data-factory-connector-overview"></a>Azure Data Factory コネクタの概要
+# <a name="azure-data-factory-and-azure-synapse-analytics-connector-overview"></a>Azure Data Factory と Azure Synapse Analytics のコネクタの概要
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory では、コピー、データ フロー、ルックアップ、メタデータの取得、および削除アクティビティを介して、次のデータ ストアおよび形式がサポートされます。 各データ ストアをクリックすると、サポートされている機能と対応する構成の詳細を確認できます。
+Azure Data Factory と Azure Synapse Analytics パイプラインでは、コピー、データ フロー、ルックアップ、メタデータの取得、および削除アクティビティで、次のデータ ストアおよび形式をサポートしています。 各データ ストアをクリックすると、サポートされている機能と対応する構成の詳細を確認できます。
 
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
@@ -25,18 +28,18 @@ Azure Data Factory では、コピー、データ フロー、ルックアップ
 
 ## <a name="integrate-with-more-data-stores"></a>より多くのデータ ストアとの統合
 
-Azure Data Factory は、前述のリストよりも広範なデータ ストアに対して使用できます。 Azure Data Factory の組み込みコネクタの一覧に含まれていないデータ ストアとの間でデータを移動する必要がある場合は、次の拡張可能なオプションがあります。
+Azure Data Factory と Synapse パイプラインでは、前述のリストよりも広範なデータ ストアを使用できます。 サービスの組み込みのコネクタの一覧に含まれていないデータ ストアとの間でデータを移動する必要がある場合の拡張可能ないくつかのオプションは次のとおりです。
 - データベースとデータ ウェアハウスについては、通常、対応する ODBC ドライバを見つけることができ、これと共に[汎用 ODBC コネクタ](connector-odbc.md)を使用することができます。
 - SaaS アプリケーションの場合:
     - RESTful API が提供されている場合は、[汎用 REST コネクタ](connector-rest.md)を使用できます。
     - OData フィードがある場合は、[汎用 OData コネクタ](connector-odata.md)を使用できます。
     - SOAP API が提供されている場合は、[汎用 HTTP コネクタ](connector-http.md)を使用できます。
     - ODBC ドライバーがある場合は、[汎用 ODBC コネクタ](connector-odbc.md)を使用できます。
-- その他の場合は、ADF でサポートされているデータ ストア (Azure Blob/File/FTP/SFTP など) へのデータの読み込み、またはこれらのデータ ストアとしてのデータの公開を行うことができるかどうかを確認し、ADF でそこから取得できるようにします。 [Azure Function](control-flow-azure-function-activity.md)、[カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)、[Databricks](transform-data-databricks-notebook.md)/[HDInsight](transform-data-using-hadoop-hive.md)、[Web アクティビティ](control-flow-web-activity.md)などを使用して、カスタム データ読み込みメカニズムを呼び出すことができます。
+- その他の場合は、サポートされている任意のデータ ストア (Azure Blob、File、FTP、SFTP など) として、データを読み込んだり、データを公開できるかを確認し、そこからサービスに取得させます。 [Azure Function](control-flow-azure-function-activity.md)、[カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)、[Databricks](transform-data-databricks-notebook.md)/[HDInsight](transform-data-using-hadoop-hive.md)、[Web アクティビティ](control-flow-web-activity.md)などを使用して、カスタム データ読み込みメカニズムを呼び出すことができます。
 
 ## <a name="supported-file-formats"></a>サポートされるファイル形式
 
-Azure Data Factory では次のファイル形式がサポートされます。 形式ベースの設定については、各記事を参照してください。
+次のファイル形式がサポートされています。 形式ベースの設定については、各記事を参照してください。
 
 - [Avro 形式](format-avro.md)
 - [バイナリ形式](format-binary.md)

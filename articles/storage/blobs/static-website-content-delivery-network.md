@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: e458f98d82c910ec845ebf951b7f6470b6aba10d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c17fceb267018901975f942f7cfc804f450ead9
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95527328"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867644"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>静的な Web サイトを Azure CDN と統合する
 
@@ -26,7 +26,7 @@ Azure CDN の価格については、[Azure CDN の価格](https://azure.microso
 
 1. Azure portal で自分のストレージ アカウントを探して、アカウントの概要を表示します。
 
-1. **[Blob Service]** メニューで **[Azure CDN]** を選択して、 **[Azure CDN]** ページを開きます。
+1. **[セキュリティとネットワーク]** メニューで **[Azure CDN]** を選択して、 **[Azure CDN]** ページを開きます。
 
     ![CDN エンドポイントを作成する](media/storage-blob-static-website-custom-domain/cdn-storage-new.png)
 

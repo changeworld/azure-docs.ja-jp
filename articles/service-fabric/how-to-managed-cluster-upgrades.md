@@ -2,17 +2,17 @@
 title: Azure Service Fabric マネージド クラスターのアップグレード
 description: Azure Service Fabric マネージド クラスターをアップグレードするためのオプションについて説明します。
 ms.topic: how-to
-ms.date: 06/16/2021
-ms.openlocfilehash: 50af042be1dc69f39e61447901d4d5f07da2a1e7
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 08/23/2021
+ms.openlocfilehash: b30f240325eda83428a19377e63d5a7f37f88169
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112290091"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865057"
 ---
 # <a name="manage-service-fabric-managed-cluster-upgrades"></a>Service Fabric マネージド クラスターのアップグレードの管理
 
-Azure Service Fabric クラスターはお客様が所有するリソースですが、一部は Microsoft によって管理されています。 ここでは、Microsoft が Azure Service Fabric マネージド クラスターを更新するタイミングとその方法を管理する方法について説明します。
+Azure Service Fabric クラスターはお客様が所有するリソースですが、一部は Microsoft によって管理されています。 ここでは、Microsoft が Azure Service Fabric マネージド クラスター ランタイムを更新するタイミングとその方法を管理する方法について説明します。
 
 ## <a name="set-upgrade-mode"></a>アップグレード モードの設定
 
@@ -28,8 +28,8 @@ Azure Service Fabric マネージド クラスターは、Microsoft が[ウェ�
 自動アップグレードでウェーブ デプロイを選択するには、最初に、クラスターに割り当てるウェーブを決定します。
 
 * **ウェーブ 0** (`Wave0`): クラスターは、新しい Service Fabric ビルドがリリースされるとすぐに更新されます。
-* **ウェーブ 1** (`Wave1`): クラスターは、ウェーブ 0 の後に更新され、ベイク時間が許可されます。 これは、ウェーブ 0 から少なくとも 7 日後に発生します。
-* **ウェーブ 2** (`Wave2`): クラスターは最後に更新され、さらに長いベイク時間が許可されます。 これは、ウェーブ 0 から少なくとも 14 日後に発生します。
+* **ウェーブ 1** (`Wave1`): クラスターは、ウェーブ 0 の後に更新され、ベイク時間が許可されます。 ウェーブ 1 は、ウェーブ 0 から少なくとも 7 日後に発生します。
+* **ウェーブ 2** (`Wave2`): クラスターは最後に更新され、さらに長いベイク時間が許可されます。 ウェーブ 2 は、ウェーブ 0 から少なくとも 14 日後に発生します。
 
 ## <a name="set-the-wave-for-your-cluster"></a>クラスターのウェーブを設定する
 
@@ -70,7 +70,7 @@ Resource Manager テンプレートを使用してクラスター アップグ�
 
 #### <a name="automatic-upgrade-with-wave-deployment"></a>ウェーブ デプロイによる自動アップグレード
 
-自動アップグレードとウェーブ デプロイを構成するには、`ClusterUpgradeMode` が `Automatic` に設定され、Resource Manager テンプレートで上記のウェーブ値のいずれかを使用して `upgradeWave` プロパティが定義されていることを確認するか、そのように追加します。
+自動アップグレードとウェーブ デプロイを構成するには、`ClusterUpgradeMode` が `Automatic` に設定され、Resource Manager テンプレートで上記のウェーブ値のいずれかを使用して `clusterUpgradeCadence` プロパティが定義されていることを確認するか、そのように追加します。
 
 ```json
 {
@@ -78,12 +78,12 @@ Resource Manager テンプレートを使用してクラスター アップグ�
 "type": "Microsoft.ServiceFabric/managedClusters",
 "properties": {
         "ClusterUpgradeMode": "Automatic",
-        "upgradeWave": "Wave1",
+        "clusterUpgradeCadence": "Wave1",
         }  
 }
 ```
 
-更新されたテンプレートをデプロイすると、クラスターは、次のアップグレード期間およびその後にわたって、指定されたウェーブに登録されます。
+更新されたテンプレートをデプロイすると、クラスターは、自動アップグレードのために、指定されたウェーブに登録されます。
 
 ## <a name="query-for-supported-cluster-versions"></a>サポートされているクラスター バージョンのクエリ
 

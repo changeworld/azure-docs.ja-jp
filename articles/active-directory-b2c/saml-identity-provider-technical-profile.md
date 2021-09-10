@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/01/2020
+ms.date: 08/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f16de49518e334f2f5e679ce24e24a262a1e231
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29e9341427b74c2395288ac85ee98d8ff44bd02e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98674945"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968202"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML ID プロバイダー技術プロファイルを定義する
 
@@ -169,6 +169,8 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 | IncludeKeyInfo | いいえ | バインディングが `HTTP-POST` に設定されているときに、証明書の公開キーが SAML 認証要求に含まれるかどうかを示します。 指定できる値: `true` または `false`。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 |SingleLogoutEnabled| いいえ| サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-behavior.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。|
+|ForceAuthN| いいえ| SAML 認証要求に ForceAuthN 値を渡し、ユーザーに認証を求めることが外部 SAML IDP に強制されるか判断します。 既定では、初回ログインで Azure AD B2C によって ForceAuthN が false に設定されます。 セッションがリセットされた場合 (OIDC で `prompt=login` を使用するなど)、ForceAuthN 値が `true` に設定されます。 下の画像のようにメタデータ項目を設定すると、外部 IDP へのすべての要求の値が適用されます。  指定できる値: `true` または `false`。|
+
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

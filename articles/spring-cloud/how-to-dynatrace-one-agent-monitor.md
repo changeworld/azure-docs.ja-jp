@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/31/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: cb4b82a37aef2f5e14be1445aa1fcb247ed37e15
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: ea4ce0946239dd6355174674f443a1f29c2b9d06
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123354420"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438878"
 ---
-# <a name="how-to-monitor-azure-spring-cloud-applications-with-dynatrace-java-oneagent-preview"></a>Dynatrace Java OneAgent を使用して Azure Spring Cloud アプリケーションを監視する方法 (プレビュー)
+# <a name="how-to-monitor-azure-spring-cloud-applications-with-dynatrace-java-oneagent"></a>Dynatrace Java OneAgent を使用して Azure Spring Cloud アプリケーションを監視する方法
 
 この記事では、Dynatrace OneAgent を使用して Azure Spring Cloud アプリケーションを監視する方法について説明します。
 
@@ -197,6 +197,6 @@ Azure Spring Cloud の VNet インジェクション インスタンスの場合
 
 アプリケーション専用モードで Dynatrace OneAgent をデプロイするときの制限事項については、[OneAgent のプラットフォームと機能のサポートのマトリックス](https://www.dynatrace.com/support/help/technology-support/oneagent-platform-and-capability-support-matrix)の[クラウド アプリケーションのプラットフォーム](https://www.dynatrace.com/support/help/technology-support/oneagent-platform-and-capability-support-matrix/#cloud-application-platforms)に関するセクションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Spring Cloud で分散トレースを使用する](how-to-distributed-tracing.md)

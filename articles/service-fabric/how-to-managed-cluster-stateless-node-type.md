@@ -2,13 +2,13 @@
 title: ステートレス ノード タイプを使用した Service Fabric マネージド クラスターのデプロイ
 description: Service Fabric マネージド クラスターでステートレス ノード タイプを作成してデプロイする方法について説明します。
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 2e7ebd2ec3098cc90c8fb044472c348c68aed689
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.date: 8/23/2021
+ms.openlocfilehash: 1d6cd328a195e35bd2523fa24aed9153267bd83e
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113033715"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867338"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-with-stateless-node-types"></a>ステートレス ノード タイプを使用した Service Fabric マネージド クラスターのデプロイ
 
@@ -16,7 +16,8 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 
 * プライマリ ノード タイプをステートレスに構成することはできません
 * ステートレス ノード タイプには **2021-05-01** 以降の API バージョンが必要です
-
+* これにより **multipleplacementgroup** プロパティが自動的に **true** に設定されます。詳細については[こちら](how-to-managed-cluster-large-virtual-machine-scale-sets.md)を参照してください。
+* これにより、指定のノード タイプに対して最大 1,000 ノードのサポートが可能になります
 
 サンプル テンプレートを使用できます。[Service Fabric のステートレス ノード タイプのテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 

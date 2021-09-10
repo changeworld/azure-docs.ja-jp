@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/12/2020
-ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/11/2021
+ms.openlocfilehash: 71f320c9144270b157b46a58e2107873439b2227
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94555602"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831343"
 ---
 # <a name="apply-sql-transformation"></a>SQL 変換の適用
 
@@ -61,6 +61,8 @@ on t1.placeID = t3.placeID
 -   ポート 1 では、常に入力が必要です。  
   
 -   空白またはその他の特殊文字を含む列識別子の場合、`SELECT` 句または `WHERE` 句で列を参照するときに、必ず列識別子を角かっこまたは二重引用符で囲んでください。  
+
+-   **[SQL 変換の適用]** の前に **[メタデータの編集]** を使用して列メタデータ (カテゴリまたはフィールド) を指定した場合、 **[SQL 変換の適用]** の出力にはこれらの属性が含まれません。 **[SQL 変換の適用]** 後に列を編集するには、 **[メタデータの編集]** を使用する必要があります。
   
 ### <a name="unsupported-statements"></a>サポートされていないステートメント  
 

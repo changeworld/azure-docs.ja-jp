@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 08/27/2021
-ms.openlocfilehash: cb9be21e998e89ee9f274981d642a93fcc806ab7
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 6a9b251b9895b3d28bdeba59f121b646b7d8cd96
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253485"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123477530"
 ---
 # <a name="backup-and-restore-plan-to-protect-against-ransomware"></a>ランサムウェアから保護するためのバックアップと復元の計画
 
@@ -63,7 +63,7 @@ ms.locfileid: "123253485"
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Azure Backup](/azure/backup/backup-overview) では、データの転送時と保存時の両方で、バックアップ環境にセキュリティが提供されます。 Azure Backup では、次のものを[バックアップできます](/azure/backup/backup-overview.md#what-can-i-back-up)。
+[Azure Backup](/azure/backup/backup-overview) では、データの転送時と保存時の両方で、バックアップ環境にセキュリティが提供されます。 Azure Backup では、次のものを[バックアップできます](/azure/backup/backup-overview#what-can-i-back-up)。
 
 - オンプレミスのファイル、フォルダー、システム状態
 - Windows または Linux VM 全体
@@ -118,7 +118,7 @@ Azure Backup に組み込まれている[セキュリティ機能](/azure/backup
 | --- | --- |
 | (上記の上位 5 つのカテゴリを使用して) 最初にオンラインに戻す必要がある重要なシステムを特定し、それらのシステムの定期的なバックアップの実行を直ちに開始します。 | 攻撃後にできるだけ早く稼働状態に戻すには、現在最も重要な項目を特定します。 |
 | 組織をクラウドに移行します。 <br><br>クラウドへの移行をサポートするため、Microsoft 統合サポート プランを購入するか、Microsoft パートナーと協力することを検討します。 | 自動バックアップとセルフサービス ロールバックを使用してクラウド サービスにデータを移動することで、オンプレミスの露出を減らします。 Microsoft Azure には、ビジネス クリティカルなシステムをバックアップし、バックアップを迅速に復元するための堅牢なツールのセットが用意されています。 <br><br>[Microsoft 統合サポート](https://www.microsoft.com/en-us/msservices/unified-support-solutions)は、いつでも必要なときに役立つクラウド サービス サポート モデルです。 統合サポート: <br><br>必要に応じた問題解決と重大インシデントのエスカレーションを行う 24 時間 365 日対応の指定されたチームが提供されます <br><br>IT 環境の正常性監視を支援し、問題の発生を未然に防止するために積極的に取り組みます |
-| ユーザー データを OneDrive や SharePoint などのクラウド ソリューションに移動して、[バージョン管理とごみ箱の機能](/microsoft-365/enterprise/microsoft-365-malware-and-ransomware-protection.md#sharepoint-online-and-onedrive-for-business-protection-against-ransomware)を利用します。 <br><br>遅延と復旧コストを減らすため、ファイルを自分で回復する方法をユーザーに教育します。   たとえば、ユーザーの OneDrive ファイルがマルウェアに感染した場合、OneDrive 全体を以前の時刻に[復元](https://support.microsoft.com/office/restore-your-onedrive-fa231298-759d-41cf-bcd0-25ac53eb8a15?ui=en-US&rs=en-US&ad=US)できます。 <br><br>ユーザーが自分のファイルを復元できるようにする前に、[Microsoft 365 Defender](/microsoft-365/security/defender/microsoft-365-defender) などの防御戦略を検討してください。 | Microsoft クラウド内のユーザー データは、組み込みのセキュリティおよびデータ管理機能によって保護できます。 <br><br>ユーザーに自分のファイルを復元する方法を教えるのは良いことですが、ユーザーが攻撃の実行に使用されたマルウェアを復元しないように注意する必要があります。 以下を実行する必要があります。 <br><br>攻撃者が排除されたことを確信できるまで、ユーザーがファイルを復元しないようにする <br><br>ユーザーが一部のマルウェアを復元した場合の対策を用意しておく <br><br>Microsoft 365 Defender では、AI による自動アクションとプレイブックを使用して、影響を受ける資産をセキュリティで保護された状態に修復します。 Microsoft 365 Defender では、スイート製品の自動修復機能を活用して、インシデントに関連して影響を受けるすべての資産が可能な限り自動的に修復されるようにします。 |
+| ユーザー データを OneDrive や SharePoint などのクラウド ソリューションに移動して、[バージョン管理とごみ箱の機能](/compliance/assurance/assurance-malware-and-ransomware-protection#sharepoint-online-and-onedrive-for-business-protection-against-ransomware)を利用します。 <br><br>遅延と復旧コストを減らすため、ファイルを自分で回復する方法をユーザーに教育します。   たとえば、ユーザーの OneDrive ファイルがマルウェアに感染した場合、OneDrive 全体を以前の時刻に[復元](https://support.microsoft.com/office/restore-your-onedrive-fa231298-759d-41cf-bcd0-25ac53eb8a15?ui=en-US&rs=en-US&ad=US)できます。 <br><br>ユーザーが自分のファイルを復元できるようにする前に、[Microsoft 365 Defender](/microsoft-365/security/defender/microsoft-365-defender) などの防御戦略を検討してください。 | Microsoft クラウド内のユーザー データは、組み込みのセキュリティおよびデータ管理機能によって保護できます。 <br><br>ユーザーに自分のファイルを復元する方法を教えるのは良いことですが、ユーザーが攻撃の実行に使用されたマルウェアを復元しないように注意する必要があります。 以下を実行する必要があります。 <br><br>攻撃者が排除されたことを確信できるまで、ユーザーがファイルを復元しないようにする <br><br>ユーザーが一部のマルウェアを復元した場合の対策を用意しておく <br><br>Microsoft 365 Defender では、AI による自動アクションとプレイブックを使用して、影響を受ける資産をセキュリティで保護された状態に修復します。 Microsoft 365 Defender では、スイート製品の自動修復機能を活用して、インシデントに関連して影響を受けるすべての資産が可能な限り自動的に修復されるようにします。 |
 | [Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)を実装します。 | Azure セキュリティ ベンチマークは、NIST SP800-53 や CIS Controls v7.1 などの業界ベースのセキュリティ制御フレームワークに基づく Azure 独自のセキュリティ管理フレームワークです。 Azure と Azure サービスを構成してセキュリティ制御を実装する方法に関するガイダンスを組織に提供します。 「[バックアップと回復](/security/benchmark/azure/security-controls-v2-backup-recovery)」を参照してください。 |
 | ビジネス継続性/ディザスター リカバリー (BC/DR) 計画を定期的に実行します。 <br><br>インシデント対応のシナリオをシミュレートします。 攻撃に対する準備として実行する演習は、優先順位が付けられたバックアップと復元の一覧に基づいて計画し、実施する必要があります。 <br><br>「ゼロから回復」のシナリオを定期的にテストして、BC/DR で重要な業務をゼロ機能 (すべてのシステムの停止) からオンラインにすることができるようにします。 | ランサムウェアまたは脅迫攻撃を自然災害と同じ重要性を持つものとして処理することで、ビジネス運営の迅速な回復を保証します。 <br><br>帯域外での従業員と顧客とのコミュニケーション (すべてのメールとチャットが停止したと仮定) を含め、チーム間のプロセスと技術手順を検証する演習を実施します。 |
 | 潜在的なリスクを特定し、予防的な制御とアクションによって調節する方法に対応するため、リスク登録の作成を検討します。 発生する可能性が高く、影響の大きいシナリオとして、ランサムウェアをリスク登録に追加します。 | リスク登録は、リスクが発生する可能性とそのリスクが発生した場合のビジネスに対する重大度に基づいて、リスクに優先順位を付けるのに役立ちます。 <br><br>[Enterprise リスク管理 (ERM)](/compliance/assurance/assurance-risk-management) の評価サイクルを使用して、緩和状態を追跡します。 |
@@ -160,7 +160,7 @@ Azure Backup に組み込まれている[セキュリティ機能](/azure/backup
 3. 元の侵害を調査して修復します ([Microsoft Detection and Response Team (DART)](https://www.microsoft.com/security/blog/2019/03/25/dart-the-microsoft-cybersecurity-team-we-hope-you-never-meet/) に連絡してサポートを受けます)
 4. 得られた教訓と機会に基づいて、バックアップと復元の戦略を更新します (最初に最も大きな影響と最も迅速な実装手順に基づいて優先順位を付けます)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ランサムウェアから保護するためにバックアップと復元の計画を改善する方法について説明しました。 ランサムウェア対策のデプロイに関するベスト プラクティスについては、「[ランサムウェアや脅迫からの迅速な保護](/security/compass/protect-against-ransomware)」を参照してください。
 
@@ -178,7 +178,7 @@ Microsoft 365:
 
 - [ランサムウェア攻撃からの回復](/microsoft-365/security/office-365-security/recover-from-ransomware)
 - [マルウェアおよびランサムウェア対策](/compliance/assurance/assurance-malware-and-ransomware-protection)
-- [Windows 10 PC をランサムウェアから保護する](/windows/protect-your-pc-from-ransomware-08ed68a7-939f-726c-7e84-a72ba92c01c3)
+- [Windows 10 PC をランサムウェアから保護する](https://support.microsoft.com/windows/protect-your-pc-from-ransomware-08ed68a7-939f-726c-7e84-a72ba92c01c3)
 - [SharePoint Online でのランサムウェアの処理](/sharepoint/troubleshoot/security/handling-ransomware-in-sharepoint-online)
 
 Microsoft 365 Defender:

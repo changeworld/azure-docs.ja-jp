@@ -14,14 +14,14 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f5e096f5f313f785311c4a6acbaf87fbfe2a38c
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104095"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034388"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>方法:Android で MSAL を使用してクロスアプリ SSO を有効にする
+# <a name="enable-cross-app-sso-on-android-using-msal"></a>Android で MSAL を使用してクロス アプリ SSO を有効にする
 
 シングル サインオン (SSO) を使用すると、ユーザーは資格情報を一度入力するだけで、その資格情報をアプリケーション間で自動的に機能させることができます。
 

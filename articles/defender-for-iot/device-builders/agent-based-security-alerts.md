@@ -1,16 +1,16 @@
 ---
-title: エージェント ベースのセキュリティ アラート
-description: Defender for IoT デバイスの機能とサービスを使用したセキュリティ アラートと推奨される修復について説明します。
+title: クラシック エージェント ベースのセキュリティ アラート
+description: Defender for IoT のセキュリティ アラートのクラシック バージョン、Defender for IoT device の機能、サービス使用時の推奨解決策について説明します。
 ms.topic: conceptual
-ms.date: 2/16/2021
-ms.openlocfilehash: b586eb4bebfc584e6cec4c27df859dbebb817e2d
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 08/25/2021
+ms.openlocfilehash: 184001243803b64717ac124c116529bab4c4170d
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018357"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968265"
 ---
-# <a name="defender-for-iot-devices-security-alerts"></a>Defender for IoT デバイスのセキュリティ アラート
+# <a name="classic-defender-for-iot-devices-security-alerts"></a>クラシック Defender for IoT デバイスのセキュリティ アラート
 
 Defender for IoT では、高度な分析と脅威インテリジェンスを使用して IoT ソリューションを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。
 さらに、期待されるデバイスの動作の知識に基づいて、カスタム アラートを作成できます。

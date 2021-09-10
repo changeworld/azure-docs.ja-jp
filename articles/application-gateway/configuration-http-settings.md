@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 77f30c26b500f98429039710d84f77b87fb6a654
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: f2fb9d2f6221928f093895914b8fc0082573a8b2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992209"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866267"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>Application Gateway の HTTP 設定の構成
 
@@ -20,9 +20,12 @@ ms.locfileid: "112992209"
 
 ## <a name="cookie-based-affinity"></a>Cookie ベースのアフィニティ
 
-Azure Application Gateway では、ユーザー セッションを維持するために、ゲートウェイで管理される Cookie を使用します。 ユーザーが最初の要求を Application Gateway に送信すると、セッションの詳細を含むハッシュ値を使用して、応答にアフィニティ Cookie が設定されます。これにより、このアフィニティ Cookie を伝送する後続の要求は、持続性を維持するために同じバックエンド サーバーにルーティングされるようになります。 
+Azure Application Gateway では、ユーザー セッションを維持するために、ゲートウェイで管理される Cookie を使用します。 ユーザーが最初の要求を Application Gateway に送信すると、セッションの詳細を含むハッシュ値を使用して、応答にアフィニティ Cookie が設定されます。これにより、このアフィニティ Cookie を伝送する後続の要求は、持続性を維持するために同じバックエンド サーバーにルーティングされるようになります。
 
 この機能は、ユーザー セッションを同じサーバー上に維持する必要があり、ユーザー セッションのセッション状態がサーバー上にローカル保存される場合に便利です。 アプリケーションが Cookie ベースのアフィニティを処理できない場合は、この機能を使用できません。 使用するには、クライアントが Cookie をサポートしている必要があります。
+> [!NOTE]
+> 一部の脆弱性スキャンでは、Application Gateway アフィニティ Cookie にフラグが設定されることがあります。Secure フラグまたは HttpOnly フラグが設定されないためです。 これらのスキャンでは、Cookie のデータが一方向のハッシュで生成されることが考慮されません。 Cookie にはユーザー情報が含まれず、経路指定目的でのみ使用されます。 
+
 
 [Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule)では、[SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 CORS (クロス オリジン リソース共有) 要求のケースで、Cookie をサードパーティのコンテキストで送信する必要がある場合は、*SameSite=None; Secure* 属性を使用する必要があり、HTTPS 経由でのみ送信する必要があります。 それ以外の場合、HTTP のみのシナリオでは、ブラウザーはサードパーティのコンテキストで Cookie を送信しません。 Chrome のこの更新の目的は、セキュリティを強化し、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を回避することです。 
 

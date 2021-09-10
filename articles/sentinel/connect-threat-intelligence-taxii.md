@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2021
 ms.author: yelevin
-ms.openlocfilehash: ce1d2fafd330848c19dc5386fad11d87bfe2670a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1335d10b1fd46b24326636e7caece4583c84f523
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732530"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253530"
 ---
 # <a name="connect-azure-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Azure Sentinel を STIX/TAXII 脅威インテリジェンス フィードに接続する
 
@@ -60,9 +60,9 @@ TAXII サーバーから Azure Sentinel に脅威インジケーターをイン�
 
 1. TAXII サーバーからの脅威インジケーターのインポート先となる **ワークスペース** を選択します。
 
-1. メニューから **[データ コネクタ]** を選択し、コネクタ ギャラリーから **[脅威インテリジェンス - TAXII]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。
+1. メニューから **[データ コネクタ]** を選択し、コネクタ ギャラリーから **[脅威インテリジェンス - TAXII]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** ボタンを選択します。
 
-1. この TAXII サーバー コレクションの **フレンドリ名** と、**API ルート URL**、**コレクション ID**、**ユーザー名** (必要な場合)、**パスワード** (必要な場合) を入力し、インジケーターのグループと必要なポーリング頻度を選択します。 **[追加]** をクリックします。
+1. この TAXII サーバー コレクションの **フレンドリ名** と、**API ルート URL**、**コレクション ID**、**ユーザー名** (必要な場合)、**パスワード** (必要な場合) を入力し、インジケーターのグループと必要なポーリング頻度を選択します。 **[追加]** ボタンを選びます。
 
     :::image type="content" source="media/connect-threat-intelligence-taxii/threat-intel-configure-taxii-servers.png" alt-text="TAXII サーバーを構成する":::
  

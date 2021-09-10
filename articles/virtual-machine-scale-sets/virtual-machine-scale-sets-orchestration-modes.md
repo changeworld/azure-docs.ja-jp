@@ -3,21 +3,24 @@ title: Azure の仮想マシン スケール セットのオーケストレー�
 description: Azure の仮想マシン スケール セットのフレキシブルおよび均一オーケストレーション モードを使用する方法について説明します。
 author: fitzgeraldsteele
 ms.author: fisteele
-ms.topic: how-to
+ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.date: 02/12/2021
+ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex, devx-track-azurepowershell
-ms.openlocfilehash: 638ede086e0b76351642dec56605bbd857e8805a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 7983ae912d29f2a27d35b261d1654205fe503651
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673876"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305072"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>プレビュー: Azure の仮想マシン スケール セットのオーケストレーション モード
 
-仮想マシン スケール セットは、プラットフォームによって管理される仮想マシンの論理グループを提供します。 スケール セットを使用して、仮想マシン構成モデルを作成し、CPU またはメモリの負荷に基づいて追加のインスタンスを自動的に追加または削除し、最新の OS バージョンに自動的にアップグレードします。 従来、スケール セットでは、スケール セットの作成時に提供された VM 構成モデルを使用して仮想マシンを作成できます。スケール セットで管理できるのは、構成モデルに基づいて暗黙的に作成された仮想マシンのみです。
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
+仮想マシン スケール セットは、プラットフォームによって管理される仮想マシンの論理グループを提供します。 スケール セットを使用して、仮想マシン構成モデルを作成し、CPU またはメモリの負荷に基づいて追加のインスタンスを自動的に追加または削除し、最新の OS バージョンに自動的にアップグレードします。 従来、スケール セットでは、スケール セットの作成時に提供された VM 構成モデルを使用して仮想マシンを作成できます。スケール セットで管理できるのは、構成モデルに基づいて暗黙的に作成された仮想マシンのみです。 
 
 スケール セットのオーケストレーション モードを使用すると、スケール セットでの仮想マシン インスタンスの管理方法をより詳細に制御できます。
 
@@ -96,222 +99,71 @@ Virtual Machine Scale Sets では、スケール セットに属するインス�
 ## <a name="a-comparison-of-flexible-uniform-and-availability-sets"></a>フレキシブル、均一、可用性セットの比較
 次の表では、フレキシブル オーケストレーション モード、均一オーケストレーション モード、可用性セットを機能ごとに比較しています。
 
-| 機能 | フレキシブル オーケストレーション (プレビュー) によるサポート対象 | 均一オーケストレーション (一般提供) によるサポート対象 | AvSets (一般提供) によるサポート対象 |
+| 機能  | フレキシブル オーケストレーション (プレビュー) によるサポート対象  | 均一オーケストレーション (一般提供) によるサポート対象  | AvSets (一般提供) によるサポート対象  |
 |-|-|-|-|
-|         仮想マシンのタイプ  | 標準の Azure IaaS VM (Microsoft.compute /virtualmachines)  | スケール セット固有の VM (Microsoft.compute /virtualmachinescalesets/virtualmachines)  | 標準の Azure IaaS VM (Microsoft.compute /virtualmachines)  |
-|         サポートされている SKU  |            D シリーズ、E シリーズ、F シリーズ、A シリーズ、B シリーズ、Intel、AMD  |            すべての SKU  |            すべての SKU  |
-|         可用性ゾーン  |            必要に応じて、すべてのインスタンスが単一の可用性ゾーンに配置されるように指定します |            インスタンスが 1 つ、2 つ、または 3 つの可用性ゾーンに分散して配置されるように指定します  |            サポートされていません  |
-|         VM、NIC、ディスクに対する完全な制御権  |            はい  |            仮想マシン スケール セット VM API による制限付きの制御  |            はい  |
-|         自動スケーリング  |            いいえ  |            はい  |            いいえ  |
-|         特定の障害ドメインへの VM の割り当て  |            はい  |             いいえ   |            いいえ  |
-|         VM インスタンスを削除する際の NIC とディスクの削除  |            いいえ  |            はい  |            いいえ  |
-|         ポリシーのアップグレード (VM スケール セット) |            いいえ  |            自動、ローリング、手動  |            該当なし  |
-|         自動 OS 更新 (VM スケール セット) |            いいえ  |            はい  |            該当なし  |
-|         ゲスト内セキュリティ パッチ  |            はい  |            いいえ  |            はい  |
-|         終了通知 (VM スケール セット) |            いいえ  |            はい  |            該当なし  |
-|         インスタンスの修復 (VM スケール セット) |            いいえ  |            はい   |            該当なし  |
-|         Accelerated Networking  |            はい  |            はい  |            はい  |
-|         スポットのインスタンスと価格   |            はい。スポットと通常、両方の優先度のインスタンスを使用できます  |            はい。インスタンスは、すべてスポットとすべて通常のいずれかにする必要があります  |            いいえ。通常の優先度のインスタンスのみ  |
-|         オペレーティング システムの混在  |            はい。同一のフレキシブル スケール セット内で Linux と Windows が共存できます |            いいえ。インスタンスのオペレーティング システムは同一です  |               はい。同一のフレキシブル スケール セット内で Linux と Windows が共存できます |
-|         アプリケーション正常性の監視  |            アプリケーション正常性拡張機能  |            アプリケーション正常性拡張機能または Azure ロード バランサー プローブ  |            アプリケーション正常性拡張機能  |
-|         Ultra SSD ディスク   |            はい  |            はい。ゾーン デプロイの場合のみ  |            いいえ  |
-|         Infiniband   |            いいえ  |            はい。単一の配置グループのみ  |            はい  |
-|         書き込みアクセラレータ   |            いいえ  |            はい  |            はい  |
-|         近接配置グループ   |            はい  |            はい  |            はい  |
-|         Azure 専用ホスト   |            いいえ  |            はい  |            はい  |
-|         Basic SLB   |            いいえ  |            はい  |            はい  |
-|         Azure Load Balancer Standard SKU |            はい  |            はい  |            はい  |
-|         Application Gateway  |            いいえ  |            はい  |            はい  |
-|         メンテナンス コントロール   |            いいえ  |            はい  |            はい  |
-|         セット内の VM の一覧表示  |            はい  |            はい  |            はい。AvSet 内の VM を一覧表示します  |
-|         Azure アラート  |            いいえ  |            はい  |            はい  |
-|         VM Insights  |            いいえ  |            はい  |            はい  |
-|         Azure Backup  |            はい  |            はい  |            はい  |
-|         Azure Site Recovery  |     いいえ  |            いいえ  |            はい  |
-|         グループに対する既存の VM の追加/削除  |            いいえ  |            いいえ  |            いいえ  |
-
-
-## <a name="register-for-flexible-orchestration-mode"></a>フレキシブル オーケストレーション モードの登録
-フレキシブル オーケストレーション モードで仮想マシン スケール セットをデプロイするには、最初にプレビュー機能に対してサブスクリプションを登録しておく必要があります。 登録が完了するまでに数分かかる場合があります。 登録には、次の Azure PowerShell または Azure CLI コマンドを使用できます。
-
-### <a name="azure-portal"></a>Azure portal
-フレキシブル オーケストレーション モードでスケール セットを作成するサブスクリプションの詳細ページに移動し、メニューから [プレビュー機能] を選択します。 有効にする 2 つのオーケストレーション機能 (_VMOrchestratorSingleFD_ と _VMOrchestratorMultiFD_) を選択し、[登録] ボタンを押します。 機能の登録には最大で 15 分かかる場合があります。
-
-![機能の登録。](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
-
-サブスクリプションに対して機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。 サブスクリプションの [リソース プロバイダー] タブに移動し、[Microsoft.compute] を選択して、[再登録] をクリックします。
-
-![再登録](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
-
-
-### <a name="azure-powershell"></a>Azure PowerShell
-[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName VMOrchestratorSingleFD -ProviderNamespace Microsoft.Compute
-```
-
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute
-```
-
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD
-az feature register --namespace microsoft.compute --name VMOrchestratorSingleFD
-```
-
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
-```
-
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+| 仮想マシンのタイプ  | 標準の Azure IaaS VM (Microsoft.compute /virtualmachines)  | スケール セット固有の VM (Microsoft.compute /virtualmachinescalesets/virtualmachines)  | 標準の Azure IaaS VM (Microsoft.compute /virtualmachines)  |
+| サポートされている SKU  | D シリーズ、E シリーズ、F シリーズ、A シリーズ、B シリーズ、Intel、AMD  | すべての SKU  | すべての SKU  |
+| 可用性ゾーン  | 必要に応じて、すべてのインスタンスが単一の可用性ゾーンに配置されるように指定します  | インスタンスが 1 つ、2 つ、または 3 つの可用性ゾーンに分散して配置されるように指定します  | サポートされていません  |
+| 障害ドメイン - 最大拡散 (Azure によってインスタンスが最大限に拡散されます)  | Yes  | はい  | いいえ  |
+| 障害ドメイン - 固定拡散  | 2-3 FD (リージョンの最大値によって異なります)、ゾーンのデプロイの場合は 1 FD  | 2、3、5 FD。ゾーンのデプロイの場合は 1、5  | 2-3 FD (リージョンの最大値によって異なります)  |
+| 更新ドメイン  | 非推奨。プラットフォームのメンテナンスが FD ごとに実行されました | 5 更新ドメイン  | 最大 20 個の更新ドメイン  |
+| 可用性 SLA  | 現時点では行わない  | 単一配置グループの FD>1 の場合は 99.95%複数のゾーンに分散するインスタンスの場合は 99.99%  | 99.95%  |
+| VM、NIC、ディスクに対する完全な制御権  | はい  | 仮想マシン スケール セット VM API による制限付きの制御  | Yes  |
+| 自動スケーリング (手動、メトリック ベース、スケジュール ベース)  | Yes  | はい  | いいえ  |
+| 特定の障害ドメインへの VM の割り当て  | はい  | いいえ  | いいえ  |
+| VM インスタンスを削除する際の NIC とディスクの自動削除  | Yes  | はい  | いいえ  |
+| ポリシーのアップグレード (VM スケール セット)  | いいえ。アップグレード ポリシーは、作成中に null または [] である必要があります  | 自動、ローリング、手動  | 該当なし  |
+| イメージ ベースの OS の自動更新  | いいえ  | はい  | 該当なし  |
+| ゲスト内セキュリティ パッチ  | はい  | いいえ  | はい  |
+| 終了通知 (VM スケール セット)  | Yes  | はい  | 該当なし  |
+| インスタンスの修復 (VM スケール セット)  | Yes  | はい  | 該当なし  |
+| Accelerated Networking  | いいえ  | はい  | はい  |
+| スポットのインスタンスと価格   | はい。スポットと通常、両方の優先度のインスタンスを使用できます  | はい。インスタンスは、すべてスポットとすべて通常のいずれかにする必要があります  | いいえ。通常の優先度のインスタンスのみ  |
+| オペレーティング システムの混在  | はい。同一のフレキシブル スケール セット内で Linux と Windows が共存できます  | いいえ。インスタンスのオペレーティング システムは同一です  | はい。同一のフレキシブル スケール セット内で Linux と Windows が共存できます  |
+| アプリケーション正常性の監視  | アプリケーション正常性拡張機能  | アプリケーション正常性拡張機能または Azure ロード バランサー プローブ  | アプリケーション正常性拡張機能  |
+| Ultra SSD ディスク   | はい  | はい。ゾーン デプロイの場合のみ  | いいえ  |
+| Infiniband   | いいえ  | はい。単一の配置グループのみ  | はい  |
+| 書き込みアクセラレータ   | いいえ  | はい  | はい  |
+| 近接配置グループ   | はい  | Yes  | はい  |
+| Azure 専用ホスト   | いいえ  | はい  | はい  |
+| Basic SLB   | いいえ  | はい  | はい  |
+| Azure Load Balancer Standard SKU  | はい  | Yes  | はい  |
+| Application Gateway  | はい  | Yes  | はい  |
+| メンテナンス コントロール   | いいえ  | はい  | はい  |
+| セット内の VM の一覧表示  | はい  | はい  | はい。AvSet 内の VM を一覧表示します  |
+| Azure アラート  | いいえ  | はい  | はい  |
+| VM Insights  | いいえ  | はい  | はい  |
+| Azure Backup  | はい  | いいえ  | はい  |
+| Azure Site Recovery  | はい (PowerShell を使用)  | いいえ  | はい  |
+| Service Fabric  | いいえ  | はい  | いいえ  |
+| Azure Kubernetes Service (AKS) / AKE  | いいえ  | はい  | いいえ  |
 
 
 ## <a name="get-started-with-flexible-orchestration-mode"></a>フレキシブル オーケストレーション モードの開始
 
-Azure potal、Azure CLI、Terraform、または REST API を通じて、スケール セットでフレキシブル オーケストレーション モードを開始します。
-
-### <a name="azure-portal"></a>Azure portal
-
-Azure portal を通じてフレキシブル オーケストレーション モードで仮想マシン スケール セットを作成します。
-
-1. [Azure Portal](https://portal.azure.com) にログインします。
-1. 検索バーで、 **[仮想マシン スケール セット]** を検索して選択します。
-1. **[仮想マシン スケール セット]** ページで **[作成]** を選択します。
-1. **[仮想マシン スケール セットの作成]** ページで、 **[オーケストレーション]** セクションを表示します。
-1. **[オーケストレーション モード]** で **[Flexible]\(フレキシブル\)** オプションを選択します。
-1. **[障害ドメイン数]** を設定します。
-1. スケール セットの作成を完了します。 スケール セットを作成する方法の詳細については、[Azure portal でのスケール セットの作成](quick-create-portal.md#create-virtual-machine-scale-set)に関するページを参照してください。
-
-:::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/portal-create-orchestration-mode-flexible.png" alt-text="スケール セット作成時のポータルのオーケストレーション モード":::
-
-次に、フレキシブル オーケストレーション モードのスケール セットに仮想マシンを追加します。
-
-1. 検索バーで **[仮想マシン]** を検索して選択します。
-1. **[仮想マシン]** ページで **[追加]** を選択します。
-1. **[基本]** タブで **[インスタンスの詳細]** セクションを表示します。
-1. **[可用性オプション]** でスケール セットを選択して、フレキシブル オーケストレーション モードのスケール セットに VM を追加します。 同じリージョン、ゾーン、リソース グループ内のスケール セットに仮想マシンを追加できます。
-1. 仮想マシンの作成を完了します。
-
-:::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/vm-portal-orchestration-mode-flexible.png" alt-text="フレキシブル オーケストレーション モードのスケール セットへの VM の追加":::
-
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Azure CLI を使用してフレキシブルの仮想マシン スケール セットを作成します。 次の例は、フレキシブルのスケール セットの作成を示しています。ここでは、障害ドメインの数が 3 に設定された状態で仮想マシンが作成されてフレキシブルのスケール セットに追加されます。
-
-```azurecli-interactive
-vmssflexname="my-vmss-vmssflex"
-vmname="myVM"
-rg="my-resource-group"
-
-az group create -n "$rg" -l $location
-az vmss create -n "$vmssflexname" -g "$rg" -l $location --orchestration-mode flexible --platform-fault-domain-count 3
-az vm create -n "$vmname" -g "$rg" -l $location --vmss $vmssflexname --image UbuntuLTS
-```
-
-### <a name="terraform"></a>Terraform
-Terraform を使用してフレキシブルの仮想マシン スケール セットを作成します。 このプロセスでは、**Terraform Azurerm プロバイダー v2.15.0** 以降が必要です。 次のパラメーターをメモします。
-- ゾーンが指定されていない場合は、リージョンに応じて `platform_fault_domain_count` を 1、2、または 3 に設定できます。
-- ゾーンが指定されている場合は、`the fault domain count` を 1 に設定できます。
-- `single_placement_group` パラメーターは、フレキシブルの仮想マシン スケール セットでは `false` にする必要があります。
-- リージョン デプロイを行う場合、`zones` を指定する必要はありません。
-
-```terraform
-resource "azurerm orchestrated_virtual_machine_scale_set" "tf_vmssflex" {
-name = "tf_vmssflex"
-location = azurerm_resource_group.myterraformgroup.location
-resource_group_name = azurerm_resource_group.myterraformgroup.name
-platform_fault_domain_count = 1
-single_placement_group = false
-zones = ["1"]
-}
-```
-
-
-### <a name="rest-api"></a>REST API
-
-1. 空のスケール セットを作成します。 次のパラメーターが必要です。
-    - API バージョン 2019-12-01 (以上)
-    - フレキシブルのスケール セットを作成する場合、単一の配置グループを `false` にする必要があります
-
-    ```json
-    {
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    "name": "[parameters('virtualMachineScaleSetName')]",
-    "apiVersion": "2019-12-01",
-    "location": "[parameters('location')]",
-    "properties": {
-        "singlePlacementGroup": false,
-        "platformFaultDomainCount": "[parameters('virtualMachineScaleSetPlatformFaultDomainCount')]"
-        },
-    "zones": "[variables('selectedZone')]"
-    }
-    ```
-
-2. 仮想マシンをスケール セットに追加します。
-    1. 前に作成したスケール セットに `virtualMachineScaleSet` プロパティを割り当てます。 VM の作成時に `virtualMachineScaleSet` プロパティを指定する必要があります。
-    1. **copy()** Azure Resource Manager テンプレート関数を使用して、複数の VM を同時に作成できます。 Azure Resource Manager テンプレートでの[リソースの反復処理](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource)に関するページを参照してください。
-
-    ```json
-    {
-    "type": "Microsoft.Compute/virtualMachines",
-    "name": "[concat(parameters('virtualMachineNamePrefix'), copyIndex(1))]",
-    "apiVersion": "2019-12-01",
-    "location": "[parameters('location')]",
-    "copy": {
-        "name": "VMcopy",
-        "count": "[parameters('virtualMachineCount')]"
-        },
-    "dependsOn": [
-        "
-        [resourceID('Microsoft.Compute/virtualMachineScaleSets', parameters('virtualMachineScaleSetName'))]",
-        "
-        [resourceID('Microsoft.Storage/storageAccounts', variables('diagnosticsStorageAccountName'))]",
-        "
-        [resourceID('Microsoft.Network/networkInterfaces', concat(parameters('virtualMachineNamePrefix'), copyIndex(1), '-NIC1'))]"
-        ],
-    "properties": {
-        "virtualMachineScaleSet": {
-            "id": "[resourceID('Microsoft.Compute/virtualMachineScaleSets', parameters('virtualMachineScaleSetName'))]"
-        }
-    }
-    ```
-
-完全な例については、[Azure クイックスタート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-vmss-flexible-orchestration-mode)を参照してください。
+登録し、仮想マシン スケール セットの[フレキシブル オーケストレーション モード](..\virtual-machines\flexible-virtual-machine-scale-sets.md)を開始します。 
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-**フレキシブル オーケストレーションでは、どのくらいのスケーリングがサポートされますか?**
+- **フレキシブル オーケストレーションでは、どのくらいのスケーリングがサポートされますか?**
 
-フレキシブル オーケストレーション モードでは、最大 1,000 個の VM をスケール セットに追加できます。
+    フレキシブル オーケストレーション モードでは、最大 1,000 個の VM をスケール セットに追加できます。
 
-**可用性セットまたは均一オーケストレーションと比較すると、フレキシブル オーケストレーションの可用性はどのくらいですか?**
+- **可用性セットまたは均一オーケストレーションと比較すると、フレキシブル オーケストレーションの可用性はどのくらいですか?**
 
-| 可用性属性  | フレキシブル オーケストレーション  | 均一オーケストレーション  | 可用性セット  |
-|-|-|-|-|
-| 可用性ゾーンをまたいだデプロイ  | いいえ  | はい  | いいえ  |
-| リージョン内における障害ドメインの可用性の保証  | はい。最大 1,000 個のインスタンスをリージョン内の最大 3 つの障害ドメインに分散できます。 障害ドメインの最大数はリージョンによって異なります  | はい。最大 100 個のインスタンス  | はい。最大 200 個のインスタンス  |
-| 配置グループ  | フレキシブル モードでは常に複数の配置グループ (singlePlacementGroup = false) を使用します  | 単一の配置グループまたは複数の配置グループを選択できます | 該当なし  |
-| 更新ドメイン  | なし。メンテナンスまたはホストの更新は障害ドメインごとに行われます  | 最大 5 つの更新ドメイン  | 最大 20 個の更新ドメイン  |
+    | 可用性属性  | フレキシブル オーケストレーション  | 均一オーケストレーション  | 可用性セット  |
+    |-|-|-|-|
+    | 可用性ゾーンをまたいだデプロイ  | いいえ  | はい  | いいえ  |
+    | リージョン内における障害ドメインの可用性の保証  | はい。最大 1,000 個のインスタンスをリージョン内の最大 3 つの障害ドメインに分散できます。 障害ドメインの最大数はリージョンによって異なります  | はい。最大 100 個のインスタンス  | はい。最大 200 個のインスタンス  |
+    | 配置グループ  | フレキシブル モードでは常に複数の配置グループ (singlePlacementGroup = false) を使用します  | 単一の配置グループまたは複数の配置グループを選択できます | 該当なし  |
+    | 更新ドメイン  | なし。メンテナンスまたはホストの更新は障害ドメインごとに行われます  | 最大 5 つの更新ドメイン  | 最大 20 個の更新ドメイン  |
+
+- **障害ドメインの可用性が保証されるインスタンスの絶対最大数はいくつですか。**
+
+    | 機能  | フレキシブル オーケストレーション (プレビュー) によるサポート対象  | 均一オーケストレーション (一般提供) によるサポート対象  | AvSets (一般提供) によるサポート対象  |
+    |-|-|-|-|
+    | 最大インスタンス数 (FD 可用性の保証あり)  | 1000  | 3000  | 200  |
 
 
 ## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>フレキシブル オーケストレーションでのスケール セットのトラブルシューティング

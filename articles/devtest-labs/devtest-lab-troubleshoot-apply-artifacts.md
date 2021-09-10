@@ -4,12 +4,12 @@ description: Azure DevTest Labs の仮想マシンで、成果物を適用する
 ms.topic: article
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6d3f37a942010240835238648c48ad5671ec028d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6258c2e85b708ea9dac1371a40e83a8a6f8e1911
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692433"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031768"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs 仮想マシンに、成果物を適用する場合に生じる問題のトラブルシューティング
 仮想マシンへの成果物の適用は、さまざまな理由で失敗する可能性があります。 この記事では、考えられる原因を特定するのに役立ついくつかの方法について説明します。
@@ -53,7 +53,7 @@ $vm.Properties.canApplyArtifacts
 
 成果物は、事前定義されたタイムアウト期間が経過するまで応答を停止しているように見え、成果物は、**失敗** としてマークされます。
 
-成果物がハングしているように見える場合は、まず、スタックしている場所を確認します。 成果物は、実行中の次の手順のいずれかでブロックできます。
+成果物が応答を停止しているように見える場合は、まず、スタックしている場所を確認します。 成果物は、実行中の次の手順のいずれかでブロックできます。
 
 - **最初の要求中**。 DevTest Labs は、カスタムスクリプト拡張機能 (CSE) の使用を要求する Azure Resource Manager テンプレートを作成します。 そのため、バックグラウンドでリソースグループのデプロイがトリガーされます。 このレベルでエラーが発生すると、問題の VM のリソースグループの **アクティビティログ** の詳細が表示されます。  
     - アクティビティログには、ラボ VM ページのナビゲーションバーからアクセスできます。 それを選択すると、**仮想マシンへの成果物の適用**(アーティファクトの適用操作が直接トリガーされた場合) または **仮想マシンの追加または変更**（成果物の適用操作が VM 作成プロセスの一部であった場合）のいずれかのエントリが表示されます。

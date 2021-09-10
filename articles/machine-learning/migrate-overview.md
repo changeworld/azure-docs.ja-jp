@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/23/2021
-ms.openlocfilehash: dbe9118cd74b81e82343ec13e74dd20cbee12ae7
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 87902df54eccdd7038c8351f4ca1794b013a0f13
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469925"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122868394"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Azure Machine Learning への移行 
 
@@ -82,7 +82,7 @@ Azure Machine Learning に移行するには、次の方法をお勧めします
 
 ## <a name="step-5-cleanup-studio-classic-assets"></a>手順 5: スタジオ (クラシック) アセットをクリーンアップする
 
-1. 追加料金が発生しないように、[スタジオ (クラシック) アセットをクリーンアップします](/azure/machine-learning/classic/export-delete-personal-data-dsr)。 Azure Machine Learning ワークロードの検証が終了するまで、フォールバックできるようにアセットを保持することをお勧めします。
+1. 追加料金が発生しないように、[スタジオ (クラシック) アセットをクリーンアップします](/classic/export-delete-personal-data-dsr.md)。 Azure Machine Learning ワークロードの検証が終了するまで、フォールバックできるようにアセットを保持することをお勧めします。
 
 ## <a name="step-6-review-and-expand-scenarios"></a>手順 6: シナリオを確認して展開する
 

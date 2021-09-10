@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/26/2021
+ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 2642f1e85e12ce0251e9b7bfff84b5d468a342d2
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 29a97d3f68d9b097bfe5c67f0b5832271fa983e1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361407"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031119"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Azure Cosmos DB 統合キャッシュ - 概要 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -177,3 +177,6 @@ LRU ではなく `MaxIntegratedCacheStaleness` を超過したことが原因で
 - [統合キャッシュに関する FAQ](integrated-cache-faq.md)
 - [統合キャッシュの構成](how-to-configure-integrated-cache.md)
 - [専用ゲートウェイ](dedicated-gateway.md)
+- Azure Cosmos DB に移行する容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    - 既存のデータベース クラスター内の仮想コアとサーバー数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

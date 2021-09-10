@@ -2,13 +2,13 @@
 title: Apache Kafka アプリからイベント ハブを使用する - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs での Apache Kafka のサポートに関する情報を提供します。
 ms.topic: article
-ms.date: 09/25/2020
-ms.openlocfilehash: 5402769b00a142551672098829dcf8f3ef6ea670
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.date: 08/30/2021
+ms.openlocfilehash: f0ea6469d17248a0d37a7ababf767d494545fbbb
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122321775"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250638"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs により、独自の Apache Kafka® クラスターを実行する代わりに、既存のほとんどの Apache Kafka クライアント アプリケーションで使用できる、Apache Kafka プロデューサーおよびコンシューマー API と互換性のあるエンドポイントが提供されます。 Event Hubs によって、Apache Kafka のプロデューサーおよびコンシューマー API クライアントのバージョン 1.0 以降がサポートされています。
@@ -46,19 +46,19 @@ Apache Kafka を使用したアプリケーションの構築だけでなく、A
 
 Apache Kafka の商用ディストリビューションの一部のプロバイダーは、Apache Kafka がすべてのメッセージング プラットフォームのニーズに対するワンストップショップであると示唆していますが、実際には、Apache Kafka に、たとえば[競合コンシューマー](/azure/architecture/patterns/competing-consumers) キュー パターンは実装されておらず、単純なオフセット以外でサーバーで評価されたルールに基づいて受信メッセージにサブスクライバーがアクセスできるレベルでの[パブリッシュ - サブスクライブ](/azure/architecture/patterns/publisher-subscriber)はサポートされておらず、メッセージまたはサイドライン障害メッセージによって開始されたジョブのライフサイクルを配信不能キューまで追跡する機能はありません。これらはすべて、多くのエンタープライズ メッセージング シナリオで基本的なものです。
 
-パターン間の違い、およびどのサービスでどのパターンが最もよくカバーされているかを理解するには、「[Azure での非同期メッセージングのオプション](/azure/architecture/guide/technology-choices/messaging)」ガイダンスをご確認ください。 Apache Kafka ユーザーがこれまで Kafka で実現した通信パスは、Event Grid または Service Bus を使用することで、基本的な複雑さが非常に低く、より強力な機能で実現できます。 
+パターン間の違い、およびどのサービスでどのパターンが最もよくカバーされているかを理解するには、「[Azure での非同期メッセージングのオプション](/azure/architecture/guide/technology-choices/messaging)」ガイダンスを参照してください。 Apache Kafka ユーザーがこれまで Kafka で実現した通信パスは、Event Grid または Service Bus を使用することで、基本的な複雑さが非常に低く、より強力な機能で実現できます。 
 
 Apache Kafka インターフェイス用 Event Hubs を介して利用できない Apache Kafka の特定の機能が必要な場合、または実装パターンが [Event Hubs のクォータ](event-hubs-quotas.md)を超える場合は、[ネイティブ Apache Kafka クラスターを Azure HDInsight](../hdinsight/kafka/apache-kafka-introduction.md) で実行することもできます。  
 
 ## <a name="security-and-authentication"></a>セキュリティと認証
-Kafka 用 Event Hubs からイベントを発行または使用するたびに、クライアントでは、Event Hubs リソースへのアクセスが試行されます。 認可されたエンティティを使用してリソースがアクセスされていることを確認する必要があります。 クライアントで Apache Kafka プロトコルを使用している場合、SASL のメカニズムを使用して認証と暗号化のための構成を設定できます。 Kafka 用 Event Hubs を使用するには、TLS 暗号化が必要となります (Event Hubs では転送中のデータがすべて TLS で暗号化されるため)。 これは、構成ファイルで SASL_SSL オプションを指定することによって実現できます。 
+Kafka 用 Event Hubs からイベントを発行または使用するたびに、クライアントでは、Event Hubs リソースへのアクセスが試行されます。 認可されたエンティティを使用してリソースがアクセスされていることを確認する必要があります。 クライアントで Apache Kafka プロトコルを使用している場合、SASL のメカニズムを使用して認証と暗号化のための構成を設定できます。 Event Hubs for Kafka を使用する場合に TLS 暗号化が必要な場合は (Event Hubs で転送されるデータはすべて TLS で暗号化されるため)、構成ファイルに SASL_SSL オプションを指定することで実現できます。 
 
 Azure Event Hubs には、セキュリティで保護されたリソースへのアクセスを承認するためのオプションが複数用意されています。 
 
 - OAuth 2.0
 - Shared Access Signature (SAS)
 
-#### <a name="oauth-20"></a>OAuth 2.0
+### <a name="oauth-20"></a>OAuth 2.0
 Event Hubs は、Azure Active Directory (Azure AD) と連携するため、Azure AD の **OAuth** 2.0 に準拠した一元的な承認サーバーを利用できます。 Azure AD では、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、粒度の細かいアクセス許可をクライアント ID に与えることができます。 protocol に **SASL_SSL** を、mechanism に **OAUTHBEARER** を指定すれば、この機能を Kafka クライアントで使用することができます。 Azure ロールとレベルを使用したアクセスのスコープ設定について詳しくは、[Azure AD によるアクセスの承認](authorize-access-azure-active-directory.md)に関するページを参照してください。
 
 ```properties
@@ -69,7 +69,7 @@ sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginMo
 sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler
 ```
 
-#### <a name="shared-access-signature-sas"></a>Shared Access Signature (SAS)
+### <a name="shared-access-signature-sas"></a>Shared Access Signature (SAS)
 Event Hubs には、**Shared Access Signature (SAS)** も用意されており、Kafka 用 Event Hubs リソースへの委任アクセスを実現することができます。 OAuth 2.0 トークンベースのメカニズムを使用したアクセス承認の方が、SAS よりもセキュリティが高く、使いやすさの点でも有利です。 また、ACL ベースの承認はユーザーが維持、管理する必要がありますが、組み込みロールであれば ACL ベースの承認は必要ありません。 protocol に **SASL_SSL** を、mechanism に **PLAIN** を指定すれば、この機能を Kafka クライアントで使用することができます。 
 
 ```properties
@@ -117,7 +117,7 @@ Event Hubs イベントのペイロードはバイト ストリームであり�
 
 ### <a name="log-compaction"></a>ログの圧縮
 
-Apache Kafka ログの圧縮は、各キーの最後のレコード以外のすべてをパーティションから除去できる機能です。これにより、実質的に Apache Kafka のトピックは、最後に追加された値によって前の値がオーバーライドされるキー値ストアになります。 現在、この機能は Azure Event Hubs では実装されていません。 キー値ストア パターンは、頻繁に更新される場合でも、[Azure Cosmos DB](../cosmos-db/introduction.md) のようなデータベース サービスによってはるかに適切にサポートされます。 詳細については、Event Hubs フェデレーション ガイダンスの[ログ プロジェクション](event-hubs-federation-overview.md#log-projections)に関するトピックをご覧ください。 
+Apache Kafka ログの圧縮は、各キーの最後のレコード以外のすべてをパーティションから除去できる機能です。これにより、実質的に Apache Kafka のトピックは、最後に追加された値によって前の値がオーバーライドされるキー値ストアになります。 現在、この機能は Azure Event Hubs では実装されていません。 キー値ストア パターンは、頻繁に更新される場合でも、[Azure Cosmos DB](../cosmos-db/introduction.md) のようなデータベース サービスによってはるかに適切にサポートされます。 詳細については、「[ログのプロジェクション](event-hubs-federation-overview.md#log-projections)」を参照してください。 
 
 ### <a name="kafka-streams"></a>Kafka Streams
 

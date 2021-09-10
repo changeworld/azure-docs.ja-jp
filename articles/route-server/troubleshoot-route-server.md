@@ -5,21 +5,16 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 83f1e83653c5674988cadcb5b54d3c675ae0b8b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5b40f4e4dfa72eacdcf178dedbc11c969bf7315
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489442"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424674"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Azure Route Server の問題のトラブルシューティング
-
-> [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="connectivity-issues"></a>接続に関する問題
 
@@ -50,6 +45,10 @@ Azure Route Server を仮想ネットワークにデプロイするときは、�
 
 フラッピングの原因として、BGP タイマーの設定が考えられます。 既定では、Azure Route Server のキープアライブ タイマーは 60 秒、停止タイマーは 180 秒に設定されています。
 
+### <a name="why-does-my-on-premises-network-connected-to-azure-vpn-gateway-not-receive-the-default-route-advertised-by-azure-route-server"></a>Azure VPN ゲートウェイに接続されているオンプレミス ネットワークが、Azure Route Server によってアドバタイズされた既定のルートを受信しないのはなぜですか?
+
+Azure VPN ゲートウェイは、Azure Route Server を含む BGP ピアから既定のルートを受け取りますが、他のピアには[既定のルートをアドバタイズしません](../vpn-gateway/vpn-gateway-vpn-faq.md#what-address-prefixes-will-azure-vpn-gateways-advertise-to-me)。 
+
 ### <a name="why-does-my-nva-not-receive-routes-from-azure-route-server-even-though-the-bgp-peering-is-up"></a>BGP ピアリングが稼働しているのに、NVA が Azure Route Server からルートを受信しないのはなぜですか。
 
 Azure Route Server が使用する ASN は 65515 です。 ルート伝達が自動的に行われるように、お使いの NVA に異なる ASN を構成して、NVA と Azure Route Server の間に "eBGP" セッションを確立してください。 NVA と Azure Route Server が仮想ネットワーク内の異なるサブネットにあるため、必ず、BGP 構成で "マルチホップ" を有効にしてください。
@@ -65,6 +64,10 @@ Azure Route Server が使用する ASN は 65515 です。 ルート伝達が自
     NVA のインスタンスが 2 つ以上ある場合は、1 つの NVA インスタンスをアクティブ、その他をパッシブとして指定したければ、異なる NVA インスタンスから同じルートの異なる AS パスをアドバタイズ "*できます*"。
 
 * VM が存在する仮想ネットワークが、お使いの NVA と Azure Route Server をホストするものとは異なる場合は、次のようにします。 2 つの VNet 間で VNet ピアリングが有効になっているか、"*かつ*" VM の VNet で [Use Remote Route Server]\(リモート ルート サーバーを使用する\) が有効になっているかを確認します。
+
+### <a name="why-is-the-equal-cost-multi-path-ecmp-function-of-my-expressroute-turned-off-after-i-deploy-azure-route-server-to-the-virtual-network"></a>Azure Route Server を仮想ネットワークにデプロイすると、ExpressRoute の等コスト マルチパス (ECMP) 機能がオフになるのはなぜですか?
+
+複数の ExpressRoute 接続を介してオンプレミスのネットワークから Azure に同じルートをアドバタイズする場合、通常 ECMP は、Azure からご自分のプレミスに送信されるトラフィックに対して、既定で有効になります。 ただし、ルート サーバーをデプロイした後は、ExpressRoute と Azure Route Server 間の BGP 交換でマルチパス情報が失われ、その結果、Azure からのトラフィックは ExpressRoute 接続の 1 つのみでスキャンされるようになります。 この制限は、今後の Azure Route Server のリリースではなくなる予定です。  
 
 ## <a name="next-steps"></a>次のステップ
 

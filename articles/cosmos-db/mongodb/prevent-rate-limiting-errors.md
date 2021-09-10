@@ -5,14 +5,14 @@ author: gahl-levy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 08/26/2021
 ms.author: gahllevy
-ms.openlocfilehash: 5aa1fd009896a6483794e663a7b6251bd10cef41
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e9067a87887c47229b8bba687535e2730c2ed1b
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778899"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123030905"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>Azure Cosmos DB API for MongoDB の操作のレート制限エラーを回避する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -80,3 +80,7 @@ Azure Cosmos DB API for MongoDB の操作は、コレクションのスループ
 一般的なエラーのトラブルシューティングの詳細については、次の記事を参照してください。
 
 * [Azure Cosmos DB の MongoDB 用 API の一般的な問題のトラブルシューティング](error-codes-solutions.md)
+
+Azure Cosmos DB に移行する容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+* 既存のデータベース クラスター内の仮想コアとサーバー数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください

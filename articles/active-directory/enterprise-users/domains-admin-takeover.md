@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/18/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f036f96b4747fb6b712bf032d6f2ec3cb38e6a
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 38ca8313620eda7c8adad52373aab94bcb151abe
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288034"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425934"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -95,13 +95,16 @@ Azure サービスまたは Microsoft 365 を使って既に組織を管理し�
 
 サポートされているサービス プランは次のとおりです。
 
-- PowerApps Free
-- PowerFlow Free
+- Power Apps 無料
+- Power Automate 無料
 - 個人向け RMS
 - Microsoft Stream
 - Dynamics 365 無料試用版
 
 外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプション経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。 
+
+> [!NOTE]
+> クラウドの境界を越える外部管理者の引き継ぎはサポートされていません (例 Azure Commercial から Azure Government に引き継ぐ)。  そのようなシナリオの場合、別の Azure Commercial テナントへの外部管理者引き継ぎを実行し、このテナントからドメインを削除することをお勧めします。それにより、宛先の Azure Government テナントに正常に検証できます。
 
 管理されていない組織からドメイン名を削除し、目的の組織でその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 
 

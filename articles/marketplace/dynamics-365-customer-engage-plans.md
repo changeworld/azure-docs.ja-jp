@@ -1,18 +1,18 @@
 ---
 title: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & Power Apps プランを作成します。
-description: サードパーティ製のアプリ管理のプランを有効にすることを選択した場合は、Dynamics 365 for Customer Engagement & PowerApps オファーのプランを構成します。
+description: サードパーティ製のアプリ管理のプランを有効にすることを選択した場合は、Dynamics 365 for Customer Engagement & Power Apps オファーのプランを構成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 460a2c071fa07e5f7374409f965f0074182c1722
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 086457e916f3eeef41023efe56cc011e714ab343
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751141"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866330"
 ---
 # <a name="create-dynamics-365-for-customer-engagement--power-apps-plans"></a>Dynamics 365 for Customer Engagement & Power Apps プランの作成
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/18/2020
-ms.openlocfilehash: 03f80ebeb7b30d8c0fe14060335541d77b7523b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/18/2021
+ms.openlocfilehash: 08cf192a650c592d7e5624c556ee8dfc766292fa
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90898630"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831622"
 ---
 # <a name="create-python-model-module"></a>Create Python Model モジュール
 
@@ -46,6 +46,7 @@ Create Python Model モジュールを使用して、Python スクリプトか�
 
 > [!NOTE]
 > スクリプトのサンプル コードのコメントに特に注意を払って、スクリプトがクラス名、メソッド、メソッド シグネチャなどの要件に厳密に従っていることを確認してください。 違反があると、例外が発生します。 
+> **Python モデルの作成** では、sklearn ベースのモデルを **モデルのトレーニング** を利用して作成することだけが可能です。
 
    ２クラス Naive Bayes 分類器の以下のサンプルコードは、一般的な *sklearn* パッケージを使用しています。
 
