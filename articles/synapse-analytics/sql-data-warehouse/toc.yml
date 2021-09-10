@@ -208,7 +208,7 @@
               href: sql-data-warehouse-tables-index.md
             - name: ID
               href: sql-data-warehouse-tables-identity.md
-            - name: メジャー グループ
+            - name: パーティション
               href: sql-data-warehouse-tables-partition.md
             - name: レプリケート テーブル
               href: design-guidance-for-replicated-tables.md
