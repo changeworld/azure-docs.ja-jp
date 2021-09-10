@@ -161,7 +161,7 @@ BLOB ストレージへの接続に使用するクライアント用に、hosts 
 
 ### <a name="use-storage-explorer-for-upload"></a>アップロードに Storage Explorer を使用する
 
-1. ストレージ エクスプローラーを開きます。 **[編集]** に移動し、アプリケーションが **[Azure Stack API を対象にする]** に設定されていることを確認します。
+1. Storage Explorer を開きます。 **[編集]** に移動し、アプリケーションが **[Azure Stack API を対象にする]** に設定されていることを確認します。
 
     ![対象を Azure Stack API に設定する](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/set-target-apis-1.png)
 
