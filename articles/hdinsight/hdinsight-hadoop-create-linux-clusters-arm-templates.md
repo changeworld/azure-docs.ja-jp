@@ -33,7 +33,7 @@ HDInsight テンプレートのサンプルは、「[Azure クイック スタ�
 
 Resource Manager テンプレートの詳細については、次の記事と例を参照してください。
 
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) テンプレート リファレンス
 * [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
