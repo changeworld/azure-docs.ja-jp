@@ -222,7 +222,7 @@ CLI コマンドを使用する場合:
 
 次のコマンドを使用して証明書を管理します。
 
-| [説明] | CLI コマンド |
+| 説明 | CLI コマンド |
 |--|--|
 | 新しい秘密キーと証明書署名要求を生成する | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | 自己署名証明書の生成 | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -232,7 +232,7 @@ CLI コマンドを使用する場合:
 
 証明書、CSR、または秘密キー内の情報を確認する必要がある場合は、次のコマンドを使用します。
 
-| [説明] | CLI コマンド |
+| 説明 | CLI コマンド |
 |--|--|
 | 証明書署名要求 (CSR) を確認する | `openssl req -text -noout -verify -in CSR.csr` |
 | 秘密キーを確認する | `openssl rsa -in privateKey.key -check` |
@@ -240,13 +240,13 @@ CLI コマンドを使用する場合:
 
 秘密キーが証明書と一致しない、またはサイトにインストールした証明書が信頼されていないというエラーが表示された場合は、次のコマンドを使用してエラーを修正します。
 
-| [説明] | CLI コマンド |
+| 説明 | CLI コマンド |
 |--|--|
 | 公開キーの MD5 ハッシュを確認して、CSR または秘密キーの内容と一致していることを確認する | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 証明書とキーを別の形式に変換して、特定の種類のサーバーまたはソフトウェアと互換性を持たせるには、次のコマンドを使用します。
 
-| [説明] | CLI コマンド |
+| 説明 | CLI コマンド |
 |--|--|
 | DER ファイル (.crt .cer .der) を PEM に変換する  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PEM ファイルを DER に変換する | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
