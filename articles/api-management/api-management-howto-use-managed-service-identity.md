@@ -450,5 +450,5 @@ Azure Resource Manager テンプレートを使用してすべての ID を削�
 詳細については、Azure リソースのマネージド ID について学びます。
 
 * [Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)
-* [Azure リソース マネージャーのテンプレート](https://github.com/Azure/azure-quickstart-templates)
+* [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)
 * [ポリシーでのマネージド ID による認証](./api-management-authentication-policies.md#ManagedIdentity)
