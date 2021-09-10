@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/05/2021
+ms.date: 08/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: b8ceea26ed7a5e58e890c4e313b00f1f4f37f4e7
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028745"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967800"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
@@ -164,7 +164,7 @@ Azure Application insights API の ID と キーが作成されたため、ロ�
 
 ## <a name="configure-application-insights-in-production"></a>運用環境で Application Insights を構成する
 
-運用環境のパフォーマンスとユーザー エクスペリエンスを向上させるには、重要ではないメッセージを無視するようにポリシーを構成することが重要です。 重大なエラー メッセージのみを Application Insights に送信するには、次の構成を使用します。 
+運用環境のパフォーマンスとユーザー エクスペリエンスを向上させるには、重要ではないメッセージを無視するようにポリシーを構成することが重要です。 運用環境では、次の構成を使用します。 
 
 1. [TrustFrameworkPolicy](trustframeworkpolicy.md) の `DeploymentMode` 属性を `Production` に設定します。 
 

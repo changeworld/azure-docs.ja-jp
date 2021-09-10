@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: 184c8099c0e86d8f8744948137b344c732bbf7b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 240f87a6b3154995340830e1861c8a76e6e3557f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778391"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259673"
 ---
 # <a name="dependency-analysis"></a>依存関係の分析
 
@@ -71,7 +71,7 @@ ms.locfileid: "104778391"
 
 **要件** | **エージェントレス** | **エージェント ベース**
 --- | --- | ---
-**サポート** | VMware 上のサーバーのみが対象のプレビュー段階です。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。 | 一般提供 (GA) 中。
+**サポート** | VMware 上のサーバーのみ利用できます。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。 | 一般提供 (GA) 中。
 **エージェント** | 分析対象のサーバーにエージェントは必要ありません。 | 分析するオンプレミスのサーバーそれぞれにエージェントが必要です。
 **Log Analytics** | 不要。 | Azure Migrate では、依存関係の分析のために [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)の [Service Map](../azure-monitor/vm/service-map.md) ソリューションを使用します。<br/><br/> Log Analytics ワークスペースをプロジェクトに関連付けます。 ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 ワークスペースは、[Service Map がサポートされている](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。
 **処理** | TCP 接続データをキャプチャします。 検出後は、5 分間隔でデータが収集されます。 | サーバーにインストールされている Service Map エージェントにより、TCP プロセスと、各プロセスの受信/送信接続に関するデータが収集されます。

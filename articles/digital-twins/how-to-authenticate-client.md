@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: クライアント アプリケーションに認証コードを書き込む方法を説明します
 author: baanders
 ms.author: baanders
-ms.date: 10/7/2020
+ms.date: 8/26/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b72455692ebb114792ecf0b5cdff7b8e0930ed85
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1b2465f29ae659f3e255a4843a2abd5f9ab75b2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750875"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224856"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 診断設定を使用したログ記録を有効にし、ログに対してクエリを実行してすぐに表示する方法を確認する。
 author: baanders
 ms.author: baanders
-ms.date: 2/24/2021
+ms.date: 8/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ced6f28bb7174bc3510de9025569646210e87782
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1479e2b6b715e8f80ea9e02b0b57a3995da2bfd9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475708"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219719"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
@@ -65,12 +65,12 @@ Azure Digital Twins を使用すると、サービス インスタンスのロ�
 
 | ログのカテゴリ | 説明 |
 | --- | --- |
-| ADTModelsOperation | モデルに関連するすべての API 呼び出しをログに記録します |
-| ADTQueryOperation | クエリに関連するすべての API 呼び出しをログに記録します |
-| ADTEventRoutesOperation | イベント ルートに関連するすべての API 呼び出しに加え、Azure Digital Twins から Event Grid、Event Hubs、Service Bus などのエンドポイント サービスへのイベントの送信をログに記録します |
+| ADTModelsOperation | モデルに関連するすべての API コールをログに記録する |
+| ADTQueryOperation | クエリに関連するすべての API コールをログに記録する |
+| ADTEventRoutesOperation | イベント ルートに関連するすべての API 呼び出しに加え、Azure Digital Twins から Event Grid、Event Hubs、Service Bus などのエンドポイント サービスへのイベントの送信をログに記録する |
 | ADTDigitalTwinsOperation | 個々のツインに関連する API 呼び出しをすべてログに記録する |
 
-各ログ カテゴリは、書き込み、読み取り、削除、およびアクションの操作で構成されます。  これらは、次のように REST API 呼び出しにマップされます。
+各ログ カテゴリは、書き込み、読み取り、削除、およびアクションの操作で構成されます。 これらのカテゴリは、次のように REST API 呼び出しにマップされます。
 
 | イベントの種類 | REST API の操作 |
 | --- | --- |
@@ -279,7 +279,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
 
 ### <a name="egress-log-schemas"></a>エグレス ログ スキーマ
 
-これは、`Microsoft.DigitalTwins/eventroutes/action` 操作名に固有の `ADTEventRoutesOperation` ログに対するスキーマです。 これらには、例外に関する詳細と、Azure Digital Twins インスタンスに接続されたエグレス エンドポイントに関する API 操作の詳細が含まれます。
+次の例は、`Microsoft.DigitalTwins/eventroutes/action` 操作名に固有の `ADTEventRoutesOperation` ログに対するスキーマです。 これらには、例外に関する詳細と、Azure Digital Twins インスタンスに接続されたエグレス エンドポイントに関する API 操作の詳細が含まれます。
 
 |フィールド名 | データ型 | 説明 |
 |-----|------|-------------|
@@ -353,7 +353,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
 
     :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Azure portal で Azure Digital Twins インスタンスの [ログ] ページが表示されたスクリーンショット。[クエリ] ウィンドウが重ねて表示され、事前構築済みクエリが表示されています。" lightbox="media/troubleshoot-diagnostics/logs.png":::
 
-    これらは、さまざまなログ用に記述された構築済みのサンプル クエリです。 クエリの 1 つを選択してクエリ エディターに読み込み、それを実行してインスタンスのこれらのログを確認できます。
+    これらのクエリは、さまざまなログ用に記述された構築済みのサンプルです。 クエリの 1 つを選択してクエリ エディターに読み込み、それを実行してインスタンスのこれらのログを確認できます。
 
     また、カスタム クエリ コードを記述したり編集したりできる、クエリ エディター ページに直接移動するために何も実行せずに *[クエリ]* ウィンドウを閉じることもできます。
 

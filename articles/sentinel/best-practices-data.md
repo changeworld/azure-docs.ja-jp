@@ -8,16 +8,16 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 30132d08a1094fc2bd4b7423ed787eadf77c2249
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 35b29ae6116e2e040f2383606fa20c5ab6316315
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178724"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253471"
 ---
 #  <a name="data-collection-best-practices"></a>データ収集のベスト プラクティス
 
-このセクションでは、Azure Sentinel データ コネクタを使用してデータを収集するためのベスト プラクティスについて説明します。 詳細については、「[データ ソースの接続](connect-data-sources.md)」、「[Azure Sentinel パートナー データ コネクタ ](partner-data-connectors.md)」、および「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。
+このセクションでは、Azure Sentinel データ コネクタを使用してデータを収集するためのベスト プラクティスについて説明します。 詳細については、「[データ ソースの接続](connect-data-sources.md)」、「[Azure Sentinel データ コネクタ リファレンス](data-connectors-reference.md)」、および「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。
 
 ## <a name="prioritize-your-data-connectors"></a>データ コネクタの優先順位を設定する
 
@@ -25,7 +25,7 @@ ms.locfileid: "122178724"
 
 無料のデータ コネクタにより、Azure Sentinel の価値がすぐに実現されるようになります。その間に、他のデータ コネクタと予算の計画を引き続き行うことができます。
 
-[パートナー](partner-data-connectors.md)および[カスタム](create-custom-connector.md)のデータ コネクタについては、[Syslog](connect-syslog.md) および [CEF](connect-common-event-format.md) コネクタの設定から開始し、Linux ベースのデバイスとともに、優先度の高いものから始めます。
+[パートナー](data-connectors-reference.md)および[カスタム](create-custom-connector.md)のデータ コネクタについては、[Syslog](connect-syslog.md) および [CEF](connect-common-event-format.md) コネクタの設定から開始し、Linux ベースのデバイスとともに、優先度の高いものから始めます。
 
 データ インジェストのコストが高くなるのが早すぎる場合は、[Azure Monitor エージェント](../azure-monitor/agents/azure-monitor-agent-overview.md)を使用して、転送されるログを停止するかフィルター処理します。
 

@@ -5,25 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37feb36e69277002f124b4a909d5bf8f75a4a3f3
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 687e23c7267991eee171e205a537a45546da73b2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666893"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864580"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
-Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウントを作成することなく、独自の Gmail アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。
-
-アプリケーションのサインイン オプションの 1 つとして Google を追加すると、ユーザーは **[サインイン]** ページで、Google へのサインインに使用するメール アドレスを入力するか、 **[サインイン オプション]** を選択してから **[Google アカウントでサインイン]** を選択できます。 どちらの場合も、認証のために Google のサインイン ページにリダイレクトされます。
+Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウントを作成することなく、独自の Gmail アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。 アプリケーションのサインイン オプションの 1 つとして Google を追加すると、ユーザーは **[サインイン]** ページで、Google へのサインインに使用するメール アドレスを入力できます。
 
 ![Google ユーザーのサインイン オプション](media/google-federation/sign-in-with-google-overview.png)
 
@@ -63,7 +61,7 @@ Google ゲスト ユーザーは、テナント情報を含むアプリケーシ
 2021 年の 9 月 30 日より、Google は[埋め込み Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。
 
 Gmail ユーザーに影響を与える既知のシナリオを次に示します。
-- Windows 上の Microsoft アプリ (Teams や PowerApps など) 
+- Windows 上の Microsoft アプリ (Teams や Power Apps など) 
 - [WebView](/windows/communitytoolkit/controls/wpf-winforms/webview) コントロール、[WebView2](/microsoft-edge/webview2/)、または古い WebBrowser コントロールを認証で使用する Windows アプリ。 これらのアプリは、Web アカウント マネージャー (WAM) フローの使用へ移行する必要があります。
 - WebView UI 要素を使用した Android アプリケーション 
 - UIWebView または WKWebview を使用した iOS アプリケーション 
@@ -71,6 +69,7 @@ Gmail ユーザーに影響を与える既知のシナリオを次に示しま�
 
 この変更は以下のものには影響しません。
 - Web アプリ
+- web サイト経由でアクセスされる Microsoft 365 サービス (SharePoint オンライン、Office Web アプリ、Teams Web アプリなど)
 - 認証でシステム Web ビューを使用したモバイルアプリ (iOS の [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)、Android の[カスタム タブ](https://developer.chrome.com/docs/android/custom-tabs/overview/))。  
 - Google Workspace ID (たとえば、Google Workspace との [SAML ベースのフェデレーション](direct-federation.md)を使用している場合)
 
@@ -141,6 +140,7 @@ Google が 2021 年 9 月 30 日にこれらの変更を実施する前に、Mic
 11. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。 アプリケーションの適切な名前を指定します (**Azure AD B2B** など)。 **[Authorized redirect URIs]\(承認されたリダイレクト URI\)** に、次の URI を入力します。
     - `https://login.microsoftonline.com`
     - `https://login.microsoftonline.com/te/<tenant ID>/oauth2/authresp` <br>(`<tenant ID>` はご利用のテナントの ID です)
+    - `https://login.microsoftonline.com/te/<tenant name>.onmicrosoft.com/oauth2/authresp` <br>(`<tenant name>` はご利用のテナント名です)
    
     > [!NOTE]
     > テナント ID を確認するには、[Azure portal](https://portal.azure.com) に移動します。 **[Azure Active Directory]** で **[プロパティ]** を選択し、 **[テナント ID]** をコピーします。
@@ -150,6 +150,8 @@ Google が 2021 年 9 月 30 日にこれらの変更を実施する前に、Mic
 12. **［作成］** を選択します クライアント ID とクライアント シークレットをコピーします。 これらは、Azure portal で ID プロバイダーを追加するときに使用します。
 
     ![OAuth クライアント ID とクライアント シークレットを示すスクリーンショット。](media/google-federation/google-auth-client-id-secret.png)
+
+13. **テスト** の発行ステータスでプロジェクトを終了し、OAuth 同意画面にテスト ユーザーを追加することができます。 または、OAuth の同意画面 で **[アプリの発行]** ボタンを選択して、Google アカウントを持つ任意のユーザーがアプリを使用できます。
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>手順 2:Azure AD で Google フェデレーションを構成する 
 
@@ -173,7 +175,7 @@ Google が 2021 年 9 月 30 日にこれらの変更を実施する前に、Mic
  
    > [!NOTE]
    > クライアント ID とクライアント シークレットは、「手順 1: Google 開発者プロジェクトを構成する」で作成したアプリのものを使用します。 詳細については、「[New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true)」を参照してください。 
- 
+
 ## <a name="how-do-i-remove-google-federation"></a>Google フェデレーションを削除する方法
 
 Google フェデレーション セットアップは削除できます。 そのようにした場合、既に招待を引き換え済みの Google ゲスト ユーザーは、サインインできなくなります。 ただし、[ユーザーの引き換え状態をリセットする](reset-redemption-status.md)ことで、リソースへのアクセスを再度許可することができます。

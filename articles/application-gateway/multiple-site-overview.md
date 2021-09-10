@@ -4,19 +4,19 @@ description: この記事では、Azure Application Gateway による複数サ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 07/20/2020
+ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: 23544743946c42f36a8b82c23713a0794d3bb2a3
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: b2a8c8054096a8d93a3160a3cb5af935276224b1
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860392"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272819"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway の複数サイトのホスト
 
-複数サイトのホストにより、1 つのアプリケーション ゲートウェイの同じポートで複数の Web アプリケーションを構成することができます。 最大で 100 個以上の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 たとえば、contoso.com、fabrikam.com、adatum.com という 3 つのドメインで、アプリケーション ゲートウェイの IP アドレスが示されています。 マルチサイト リスナーを 3 つ作成し、リスナーごとにポートとプロトコル設定を構成します。 
+複数サイトのホスティングでは、パブリックを対象にしたリスナーを使用して、アプリケーション ゲートウェイの同じポートに複数の Web アプリケーションを構成することができます。 最大で 100 個以上の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 たとえば、contoso.com、fabrikam.com、adatum.com という 3 つのドメインで、アプリケーション ゲートウェイの IP アドレスが示されています。 マルチサイト リスナーを 3 つ作成し、リスナーごとにポートとプロトコル設定を構成します。 
 
 マルチサイト リスナーでワイルドカードのホスト名を定義し、リスナー 1 つにつき最大 5 つのホスト名を定義することもできます。 詳細については、[リスナーでのワイルドカードのホスト名](#wildcard-host-names-in-listener-preview)に関する記事を参照してください。
 

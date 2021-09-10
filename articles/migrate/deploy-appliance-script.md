@@ -6,18 +6,18 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: bcd455590e804ad337f25afbd38d729f03ef3dc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5ad806603ea64f643122ebc1f753e52b9d9e4225
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743238"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251436"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>スクリプトを使用してアプライアンスを設定する
 
 VMware 環境で実行されているサーバーの検出、評価、エージェントレス レプリケーション、および Hyper-V 環境で実行されているサーバーの検出と評価に PowerShell スクリプトを使用して [Azure Migrate アプライアンス](./migrate-appliance-architecture.md) をデプロイするには、この記事に従ってください。
-- discovery, assessment and agentless replication of servers running in VMware environment
-- discovery and assessment of servers running in Hyper-V environment.
+- VMware 環境で実行されているサーバーの検出、評価、エージェントレス レプリケーション
+- Hyper-V 環境で実行されているサーバーの検出と評価。
 
 VMware および Hyper-V 上のサーバーに対してアプライアンスをデプロイするには、スクリプトを使用するか、または Azure portal からダウンロードしたテンプレート (OVA/VHD) を使用します。 ダウンロードしたテンプレートを使用してアプライアンスを作成できない場合は、スクリプトの使用が有効です。
 
@@ -61,14 +61,17 @@ Hyper-V | メモリが 16 GB、vCPU が 8 個、ディスク ストレージが�
 
     **ダウンロード** | **ハッシュ値**
     --- | ---
-    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116601) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116601) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > 同じスクリプトを使用して、Azure パブリックまたは Azure Government クラウドに VMware アプライアンスを設定できます。
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
-1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
+1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。
+> [!NOTE]
+> 既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。 Azure Migrate アプライアンスでスクリプトを実行すると、動作中の構成が削除され、新しく定義された構成に置き換えられます。
+
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
@@ -118,14 +121,17 @@ Hyper-V | メモリが 16 GB、vCPU が 8 個、ディスク ストレージが�
 
     **ダウンロード** | **ハッシュ値**
     --- | ---
-    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116657) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116657) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > 同じスクリプトを使用して、Azure パブリックまたは Azure Government クラウドに Hyper-V アプライアンスを設定できます。
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
-1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
+1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。
+> [!NOTE]
+> 既存の Azure Migrate アプライアンスでスクリプトを実行しないようにしてください。 Azure Migrate アプライアンスでスクリプトを実行すると、動作中の構成が削除され、新しく定義された構成に置き換えられます。
+
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。

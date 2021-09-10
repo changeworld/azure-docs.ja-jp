@@ -4,12 +4,12 @@ description: この記事では、Shared Access Signature を使用して Event 
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f647dd21db2920bff01ac5929c527e66f8d7350b
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 18b338f42ecd0f12e361aaf1defcfed22e0aaad7
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708535"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307109"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 
@@ -59,13 +59,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 受信側が同じパラメーターでハッシュを再計算して、発行者が有効な署名キーを所有していることを確認できるように、トークンにはハッシュされていない値が含まれています。
 
-リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、 http://<namespace>.servicebus.windows.net/<entityPath> または `sb://<namespace>.servicebus.windows.net/<entityPath>;` つまり、`http://contoso.servicebus.windows.net/eh1` となります。
+リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、`http://<namespace>.servicebus.windows.net/<entityPath>` または `sb://<namespace>.servicebus.windows.net/<entityPath>` (つまり `http://contoso.servicebus.windows.net/eh1`) です。
 
 URI はパーセント エンコードする必要があります。
 
 署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/eh1` または `http://contoso.servicebus.windows.net` となります。
 
-SAS トークンは、署名文字列で使われている <resourceURI> がプレフィックスになっているすべてのリソースで有効です。
+SAS トークンは、署名文字列で使われている `<resourceURI>` がプレフィックスになっているすべてのリソースで有効です。
 
 > [!NOTE]
 > 共有アクセス ポリシーを使用して、Event Hubs のアクセス トークンを生成します。 詳細については、「[Shared access authorization policy](authorize-access-shared-access-signature.md#shared-access-authorization-policies)」 (共有アクセス承認ポリシー) を参照してください。

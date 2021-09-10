@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループ、サブスクリプション、またはリージョンに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 04/23/2021
-ms.openlocfilehash: f00acadf42c3767814850db59c64ab76b30de2ea
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/30/2021
+ms.openlocfilehash: 614ef51474f789073f35e722733d255818bf3957
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297005"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260880"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -1598,8 +1598,9 @@ ms.locfileid: "114297005"
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
-> [!IMPORTANT]
-> [Recovery Services の移動のガイダンス](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)に関する記事をご覧ください。
+>[!IMPORTANT]
+>- [Recovery Services の移動のガイダンス](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)に関する記事をご覧ください。
+>- [リージョン間でリソースを移動した後に Recovery Services コンテナー内でバックアップを続行する](../../backup/azure-backup-move-vaults-across-regions.md?toc=/azure/azure-resource-manager/toc.json)に関連する記事をご覧ください。
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
@@ -2022,6 +2023,7 @@ ms.locfileid: "114297005"
 > | availablestacks | いいえ | いいえ | いいえ |
 > | billingmeters | いいえ | いいえ | いいえ |
 > | certificates | いいえ | はい | いいえ |
+> | certificates (マネージド) | いいえ | いいえ | いいえ |
 > | connectiongateways | はい | はい | いいえ |
 > | connections | はい | はい | いいえ |
 > | customapis | はい | はい | いいえ |

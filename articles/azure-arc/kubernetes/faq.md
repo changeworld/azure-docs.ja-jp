@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: この記事には、Azure Arc 対応 Kubernetes に関してよく寄せられる質問の一覧が記載されています。
 keywords: Kubernetes, Arc, Azure, コンテナー, 構成, GitOps, faq
-ms.openlocfilehash: 84368cc63bd9aaf1df4fb281395b47a6e886cb7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f678bd23bc4e9e40f718d72ccde8069c36673ac6
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025851"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272927"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>よく寄せられる質問 - Azure Arc 対応 Kubernetes
 
@@ -27,7 +27,9 @@ Azure Arc 対応 Kubernetes を使用すると、Kubernetes クラスターを A
 
 ## <a name="do-i-need-to-connect-my-aks-clusters-running-on-azure-to-azure-arc"></a>Azure で実行されている AKS クラスターを Azure Arc に接続する必要はありますか?
 
-いいえ。 Azure Monitor や Azure Policy (Gatekeeper) を含む Azure Arc 対応 Kubernetes のすべての機能は、AKS (Azure Resource Manager のネイティブ リソース) 上で利用できます。
+Azure Kubernetes Service (AKS) クラスターを Azure Arc に接続する必要があるのは、クラスター上で App Services や Data Services のような Arc 対応サービスを実行する場合のみです。 これは、Arc 対応 Kubernetes の[カスタムの場所](custom-locations.md)の機能を使って行うことができます。 これは、クラスター拡張とカスタムの場所が AKS クラスター上にネイティブに導入されるまでの制限事項です。
+
+カスタムの場所を使用せず、Azure Monitor や Azure Policy (Gatekeeper) などの管理機能のみを使用する場合は、AKS でネイティブに使用できるため、Azure Arc への接続は必要ありません。
     
 ## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>Azure Stack Hub と Azure Stack Edge 上の AKS-HCI クラスターと Kubernetes クラスターを Azure Arc に接続する必要がありますか?
 
@@ -37,7 +39,17 @@ Azure Arc 対応 Kubernetes クラスターが Azure Stack Edge、AKS on Azure S
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>期限切れの Azure Arc 対応 Kubernetes リソースの処理方法は?
 
-Azure Arc 対応 Kubernetes に関連付けられているマネージド サービス ID (MSI) 証明書の有効期限は 90 日です。 この証明書の有効期限が切れると、リソースは `Expired` であると見なされ、このクラスターですべての機能 (構成、監視、ポリシーなど) が停止します。 Kubernetes クラスターが Azure Arc でもう一度機能するようにするには
+Azure Arc 対応の Kubernetes のクラスターに関連付けられているシステム割り当てのマネージド ID は、Azure Arc サービスと通信するために Arc エージェントによってのみ使用されます。 このシステム割り当てのマネージド ID に関連付けられている証明書の有効期限は 90 日間で、エージェントはこの証明書の更新を 46 日目から 90 日目まで試行します。 この証明書の有効期限が切れると、リソースが考慮され、`Expired` とすべての機能 (構成、監視、ポリシーなど) がこのクラスターで動作しなくなります。その後、もう一度クラスターを削除して Azure Arc に接続する必要があります。 そのため、マネージド ID 証明書を確実に更新するには、46 日目から 90 日目までの間、クラスターを少なくとも 1 回はオンラインにすることをお勧めします。
+
+任意のクラスターについて証明書の有効期限が近づいていることを確認するには、次のコマンドを実行します
+
+```console
+az connectedk8s show -n <name> -g <resource-group>
+```
+
+この出力では、`managedIdentityCertificateExpirationTime` の値は、マネージド ID 証明書がいつ期限切れになるか (その証明書の 90 日目のマーク) を示しています。 
+
+`managedIdentityCertificateExpirationTime` の値が過去のタイムスタンプを示している場合、上記の出力における `connectivityStatus` フィールドは `Expired` に設定されます。 そのような場合に、Kubernetes クラスターが Azure Arc でもう一度機能するようにするには
 
 1. クラスター上の Azure Arc 対応 Kubernetes リソースとエージェントを削除します。 
 
@@ -52,7 +64,7 @@ Azure Arc 対応 Kubernetes に関連付けられているマネージド サー
     ```
 
 > [!NOTE]
-> `az connectedk8s delete` を使用すると、クラスター上の構成も削除されます。 `az connectedk8s connect` を実行した後に、手動で、または Azure Policy を使用して、クラスター上で構成を再作成します。
+> `az connectedk8s delete` では、クラスター上の構成とクラスター拡張も削除されます。 `az connectedk8s connect` を実行した後に、手動で、または Azure Policy を使用して、クラスター上で構成とクラスター拡張機能を再作成します。
 
 ## <a name="if-i-am-already-using-cicd-pipelines-can-i-still-use-azure-arc-enabled-kubernetes-and-configurations"></a>CI/CD パイプラインを既に使用している場合でも、Azure Arc 対応 Kubernetes と構成を使用できますか?
 

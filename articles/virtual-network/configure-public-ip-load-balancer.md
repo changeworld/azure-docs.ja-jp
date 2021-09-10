@@ -9,18 +9,16 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 88e67711b71ad80b48a7d5c19377847d0dadd296
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04b1b4b9b9dd859a2f4b4515c2896163b8f9a698
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725946"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038480"
 ---
 # <a name="manage-a-public-ip-address-with-a-load-balancer"></a>ロード バランサーでパブリック IP アドレスを管理する
 
-パブリック ロード バランサーは、TCP および UDP トラフィックをバックエンド プールに分散するためのレイヤー 4 ソリューションです。 ロード バランサーでは、Basic および Standard SKU を使用できます。 
-
-これらの SKU は、パブリック IP アドレスの Basic および Standard SKU に対応しています。
+パブリック ロード バランサーは、TCP および UDP トラフィックをバックエンド プールに分散するためのレイヤー 4 ソリューションです。 ロード バランサーでは、Basic および Standard SKU を使用できます。 これらの SKU は、パブリック IP アドレスの Basic および Standard SKU に対応しています。
 
 ロード バランサーに関連付けられたパブリック IP は、インターネットに接続するフロントエンド IP 構成として機能します。 フロントエンドは、バックエンド プール内のリソースにアクセスするために使用されます。 バックエンド プールのメンバーがインターネットにエグレスするために、フロントエンド IP を使用できます。 
 
@@ -40,8 +38,8 @@ Basic SKU Azure Load Balancer は、可用性オプションと機能セット�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- サブスクリプション内の 2 つの Standard SKU パブリック IP アドレス。 この IP アドレスは、どのリソースにも関連付けることができません。 Standard SKU パブリック IP アドレスの作成の詳細については、「[Azure portal を使用してパブリック IP アドレスを作成する](create-public-ip-portal.md)」を参照してください。
-    - この記事の例では、新しいパブリック IP アドレスに **myStandardPublicIP-1** と **myStandardPublicIP-2** という名前を付けます。
+- サブスクリプション内の 2 つの Standard SKU のパブリック IP アドレス。 この IP アドレスは、どのリソースにも関連付けることができません。 Standard SKU のパブリック IP アドレスの作成の詳細については、[パブリック IP の作成 - Azure portal](create-public-ip-portal.md) に関するページを参照してください。
+    - この記事の例では、新しいパブリック IP アドレスに **myStandardPublicIP-1** および **myStandardPublicIP-2** という名前を付けます。
 - サブスクリプション内のパブリック IP プレフィックス。 パブリック IP プレフィックスの作成の詳細については、「[Azure portal を使用してパブリック IP アドレス プレフィックスを作成する](create-public-ip-prefix-portal.md)」を参照してください。
     - この記事の例では、新しいパブリック IP プレフィックスに **myPublicIPPrefixOutbound** という名前を付けます。
 
@@ -157,7 +155,7 @@ Standard Load Balancer では、送信元ネットワーク アドレス変換 (
 
 ## <a name="caveats"></a>注意事項
 
-* Standard パブリック ロード バランサーでは、フロントエンド パブリック IP またはパブリック IP プレフィックスとして IPv6 アドレスを使用できます。  すべてのデプロイは、IPv4 と IPv6 の両方のフロントエンドを備えるデュアル スタックである必要があります。 NAT64 変換は使用できません。 詳細については、「[Azure で IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)」を参照してください
+* Standard パブリック ロード バランサーでは、フロントエンド パブリック IP またはパブリック IP プレフィックスとして Standard SKU の静的 IPv6 アドレスを使用できます。  すべてのデプロイは、IPv4 と IPv6 の両方のフロントエンドを備えるデュアル スタックである必要があります。 NAT64 変換は使用できません。 詳細については、「[Azure で IPv6 デュアル スタック アプリケーションを展開する - PowerShell](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)」を参照してください (Basic パブリック ロード バランサーは、フロントエンドのパブリック IP として Basic SKU の動的 IPv6 アドレスを使用できます)。
 
 * パブリック ロード バランサーに複数のフロントエンドが割り当てられている場合、特定のバックエンド インスタンスからのフローを特定の IP 上のエグレスに割り当てる方法は存在しません。  詳細については、「[Azure Load Balancer の複数のフロントエンド](../load-balancer/load-balancer-multivip-overview.md)」を参照してください
 ## <a name="next-steps"></a>次のステップ

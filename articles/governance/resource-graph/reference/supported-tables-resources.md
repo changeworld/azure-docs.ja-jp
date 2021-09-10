@@ -1,15 +1,15 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 08/13/2021
+ms.date: 08/31/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 69b8e4bb3400b04da3986f9e40a1c5b5fba3b750
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 330c406ef1d45a3cd72ac7316ca3985d2a6cd647
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067599"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309767"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -29,6 +29,10 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 
 - microsoft.alertsmanagement/alerts
 
+## <a name="desktopvirtualizationresources"></a>desktopvirtualizationresources
+
+- microsoft.desktopvirtualization/hostpools/sessionhosts
+
 ## <a name="extendedlocationresources"></a>extendedlocationresources
 
 このテーブルのサンプル クエリについては、[extendedlocationresources の Resource Graph サンプル クエリ](../samples/samples-by-table.md#extendedlocationresources)に関するページを参照してください。
@@ -45,7 +49,6 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
   - サンプル クエリ: [ゲスト構成ポリシーのスコープにあるコンピューターを数える](../samples/samples-by-category.md#count-machines-in-scope-of-guest-configuration-policies)
   - サンプル クエリ: [非準拠ゲスト構成割り当ての数](../samples/samples-by-category.md#count-of-non-compliant-guest-configuration-assignments)
   - サンプル クエリ: [コンピューターがゲスト構成割り当てに準拠していない理由をすべて見つける](../samples/samples-by-category.md#find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments)
-  - サンプル クエリ: [ゲスト構成の割り当てレポートの詳細を問い合わせる](../samples/samples-by-category.md#query-details-of-guest-configuration-assignment-reports)
 
 ## <a name="healthresources"></a>healthresources
 
@@ -136,6 +139,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Citrix.Services/XenDesktopEssentials (Citrix Virtual Desktops Essentials)
 - conexlink.mycloudit/accounts
 - crypteron.datasecurity/apps
+- dynatrace.observability/monitors
 - GitHub.Enterprise/accounts (GitHub AE)
 - gridpro.evops/accounts
 - gridpro.evops/accounts/eventrules
@@ -243,6 +247,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.CloudTest/images (CloudTest イメージ)
 - Microsoft.CloudTest/pools (CloudTest プール)
 - Microsoft.ClusterStor/nodes (ClusterStor)
+- microsoft.codesigning/codesigningaccounts
 - microsoft.codespaces/plans
 - Microsoft.Cognition/syntheticsAccounts (Synthetics アカウント)
 - Microsoft.CognitiveServices/accounts (Cognitive Services)
@@ -276,6 +281,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
   - サンプル クエリ: [OS の種類別の仮想マシンの数](../samples/samples-by-category.md#count-virtual-machines-by-os-type)
   - サンプル クエリ: [extend を使用して仮想マシン数を OS の種類別にカウントする](../samples/samples-by-category.md#count-virtual-machines-by-os-type-with-extend)
   - サンプル クエリ: [仮想マシンにインストールされているすべての拡張機能を一覧表示する](../samples/samples-by-category.md#list-all-extensions-installed-on-a-virtual-machine)
+  - サンプル クエリ: [実行されていないマシンと最後のコンプライアンス状態を一覧表示する](../samples/samples-by-category.md#list-machines-that-are-not-running-and-the-last-compliance-status)
   - サンプル クエリ: [可用性状態と電源状態別の仮想マシンの一覧と、そのリソース ID およびリソース グループ](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
   - サンプル クエリ: [仮想マシンとそのネットワーク インターフェイスおよびパブリック IP を一覧表示する](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
   - サンプル クエリ: [降順の名前で順序付けられたすべての仮想マシンを表示する](../samples/samples-by-category.md#show-all-virtual-machines-ordered-by-name-in-descending-order)
@@ -291,6 +297,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Confluent/organizations (Confluent 組織)
 - Microsoft.ConnectedCache/cacheNodes (接続キャッシュ リソース)
 - Microsoft.ConnectedVehicle/platformAccounts (接続された車両プラットフォーム)
+- microsoft.connectedvmwarevsphere/clusters
+- microsoft.connectedvmwarevsphere/datastores
 - microsoft.connectedvmwarevsphere/resourcepools
 - Microsoft.connectedVMwareVSphere/vCenters (VMware vCenters)
 - Microsoft.ConnectedVMwarevSphere/VirtualMachines (VMware + AVS 仮想マシン)
@@ -335,6 +343,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.DataProtection/BackupVaults (バックアップ コンテナー)
 - Microsoft.DataProtection/resourceGuards (リソース ガード (プレビュー))
 - microsoft.dataprotection/resourceoperationgatekeepers
+- microsoft.datareplication/replicationfabrics
+- microsoft.datareplication/replicationvaults
 - Microsoft.DataShare/accounts (データ共有)
 - Microsoft.DBforMariaDB/servers (Azure Database for MariaDB サーバー)
 - Microsoft.DBforMySQL/flexibleServers (Azure Database for MySQL フレキシブル サーバー)
@@ -398,9 +408,10 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.falcon/namespaces
 - Microsoft.Fidalgo/devcenters (Fidalgo DevCenters)
 - microsoft.fidalgo/machinedefinitions
+- microsoft.fidalgo/networksettings
 - Microsoft.Fidalgo/projects (Fidalgo プロジェクト)
 - Microsoft.Fidalgo/projects/environments (Fidalgo 環境)
-- Microsoft.FluidRelay/fluidRelayServers (FluidRelay サーバー)
+- Microsoft.FluidRelay/fluidRelayServers (Fluid Relay)
 - microsoft.footprintmonitoring/profiles
 - microsoft.gaming/titles
 - Microsoft.Genomics/accounts (Genomics アカウント)
@@ -410,6 +421,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.hardwaresecuritymodules/dedicatedhsms
 - Microsoft.HDInsight/clusterpools (HDInsight クラスター プール)
 - Microsoft.HDInsight/clusterpools/clusters (HDInsight gen2 クラスター)
+- microsoft.hdinsight/clusterpools/clusters/sessionclusters
 - Microsoft.HDInsight/clusters (HDInsight クラスター)
 - Microsoft.HealthBot/healthBots (Azure Health Bot)
 - Microsoft.HealthcareApis/services (Azure API for FHIR)
@@ -421,7 +433,9 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.HpcWorkbench/instances (HPC Workbenches (プレビュー))
 - Microsoft.HybridCompute/machines (サーバー - Azure Arc)
   - サンプルクエリ: [ドメイン別の Arc 対応サーバーの数と割合を取得する](../samples/samples-by-category.md#get-count-and-percentage-of-arc-enabled-servers-by-domain)
+  - サンプルクエリ: [Azure Arc 対応サーバーにインストールされているすべての拡張機能を一覧表示する](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - microsoft.hybridcompute/machines/extensions
+  - サンプルクエリ: [Azure Arc 対応サーバーにインストールされているすべての拡張機能を一覧表示する](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - Microsoft.HybridCompute/privateLinkScopes (Azure Arc プライベート リンク スコープ)
 - Microsoft.HybridData/dataManagers (StorSimple Data Managers)
 - Microsoft.HybridNetwork/devices (Azure ネットワーク機能マネージャー – デバイス (プレビュー))
@@ -440,7 +454,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.insights/alertrules
 - microsoft.insights/autoscalesettings
 - microsoft.insights/components (Application Insights)
-- microsoft.insights/datacollectionendpoints
+- microsoft.insights/datacollectionendpoints (データ収集エンドポイント)
 - microsoft.insights/datacollectionrules (データ収集ルール)
 - microsoft.insights/guestdiagnosticsettings
 - microsoft.insights/metricalerts
@@ -535,7 +549,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.MobileNetwork/packetCoreControlPlanes (ネットワーク関数用 Arc – パケット コア)
 - microsoft.mobilenetwork/packetcorecontrolplanes/packetcoredataplanes
 - microsoft.mobilenetwork/packetcorecontrolplanes/packetcoredataplanes/attacheddatanetworks
-- microsoft.mobilenetwork/sims
+- Microsoft.MobileNetwork/sims (Sims)
 - microsoft.mobilenetwork/sims/simprofiles
 - Microsoft.NetApp/netAppAccounts (NetApp アカウント)
 - microsoft.netapp/netappaccounts/backuppolicies
@@ -612,6 +626,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.network/vpngateways
 - microsoft.network/vpnserverconfigurations
 - microsoft.network/vpnsites
+- microsoft.networkfunction/azuretrafficcollectors
 - Microsoft.NotificationHubs/namespaces (通知ハブの名前空間)
 - Microsoft.NotificationHubs/namespaces/notificationHubs (通知ハブ)
 - microsoft.nutanix/interfaces
@@ -675,6 +690,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Search/searchServices (Search Service)
 - microsoft.security/automations
 - microsoft.security/iotsecuritysolutions
+- microsoft.security/securityconnectors
 - Microsoft.SecurityDetonation/chambers (セキュリティ デトネーション チャンバー)
 - Microsoft.ServiceBus/namespaces (Service Bus 名前空間)
 - Microsoft.ServiceFabric/clusters (Service Fabric クラスター)
@@ -729,7 +745,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Synapse/workspaces (Azure Synapse Analytics)
 - Microsoft.Synapse/workspaces/bigDataPools (Apache Spark プール)
 - microsoft.synapse/workspaces/eventstreams
-- Microsoft.Synapse/workspaces/kustopools (Kusto プール (プレビュー))
+- Microsoft.Synapse/workspaces/kustopools (データ エクスプローラー プール (プレビュー))
 - microsoft.synapse/workspaces/sqldatabases
 - Microsoft.Synapse/workspaces/sqlPools (専用 SQL プール)
 - microsoft.terraformoss/providerregistrations
@@ -772,7 +788,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.web/sites/premieraddons
 - Microsoft.Web/sites/slots (App Service (スロット))
 - Microsoft.Web/StaticSites (Static Web Apps)
-- microsoft.web/workerapps
+- Microsoft.Web/WorkerApps (コンテナー アプリ)
 - Microsoft.WindowsESU/multipleActivationKeys (Windows マルチ ライセンス認証キー)
 - Microsoft.WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
 - microsoft.workloadbuilder/migrationagents
@@ -781,7 +797,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - NGINX.NGINXPLUS/nginxDeployments (NGINX デプロイ)
 - Paraleap.CloudMonix/services (CloudMonix)
 - Pokitdok.Platform/services (PokitDok プラットフォーム)
-- Providers.Test/statefulIbizaEngines (サービス リンカー)
+- Providers.Test/statefulIbizaEngines (アプリケーション評価)
 - RavenHq.Db/databases (RavenHQ)
 - Raygun.CrashReporting/apps (Raygun)
 - Sendgrid.Email/accounts (SendGrid アカウント)

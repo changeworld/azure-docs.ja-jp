@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: b881b7b87ef704102df7c5d8a9d24542b3d89bb2
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 741f20a19c4bfe842ed2c14cee51c1ae19c1d9da
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112118602"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258473"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -180,6 +180,33 @@ NTFS ボリュームのみがサポートされます。ReFS、FAT、FAT32 お�
 | \\System Volume Information | ボリュームに固有のフォルダー |
 | $RECYCLE.BIN| Folder |
 | \\SyncShareState | 同期用のフォルダー |
+
+### <a name="consider-how-much-free-space-you-need-on-your-local-disk"></a>ローカルディスクで必要な空き領域を検討する
+Azure File Sync の使用を計画するときは、サーバー エンドポイントを作成する予定のローカル ディスクで必要な空き領域を考慮してください。
+
+Azure File Sync では、以下のものがローカル ディスク上のスペースを使用することを考慮する必要があります。
+- クラウドを使った階層化が有効な場合:
+    - 階層化されたファイルの再解析ポイント
+    - Azure File Sync メタデータ データベース
+    - Azure File Sync heatstore
+    - ホットキャッシュに完全にダウンロードされたファイル (存在する場合)
+    - ボリュームの空き領域ポリシーの要件
+
+- クラウドを使った階層化が無効な場合:  
+    - 完全にダウンロードされたファイル
+    - Azure File Sync heatstore
+    - Azure File Sync メタデータ データベース
+
+ここでは、ローカル ディスクで必要な空き容量を見積もる方法を、例を使って説明します。 たとえば、Azure Windows VM に Azure File Sync エージェントをインストールし、ディスク F にサーバー エンドポイントを作成する予定だとします。ファイル数は 100 万で、そのすべてを階層化します。ディレクトリ数が 10 万、ディスク クラスター サイズは 4 KiB になります。 ディスク サイズは 1000 GiB です クラウドを使った階層化を有効にし、ボリュームの空き領域ポリシーを 20% に設定する必要があります。 
+
+1. NTFS は、階層化されたファイルごとにクラスター サイズを割り当てます。 100 万ファイル * 4 KiB クラスター サイズ = 4,000,000 KiB (4 GiB)
+> [!Note]  
+> 階層化されたファイルによって占有される領域は、NTFS によって割り当てられます。 したがって、UI には表示されません。
+3. 同期メタデータは、項目ごとにクラスター サイズを占有します。 (100 万ファイル + 100,000 ディレクトリ) * 4 KiB クラスター サイズ = 4,400,000 KiB (4.4 GiB)
+4. Azure File Sync heatstore は、ファイルあたり 1.1 KiB を占有します。 100 万ファイル * 1.1 KiB = 1,100,000 KiB (1.1 GiB)
+5. ボリュームの空き領域ポリシーは 20% です。 1000 GiB * 0.2 = 200 GiB
+
+この場合、Azure File Sync には約 209,500,000 KiB (209.5 GiB) の領域が必要になります。 このディスクに必要な空き領域を計算するために望ましい追加の空き領域に、この量を追加します。
 
 ### <a name="failover-clustering"></a>フェールオーバー クラスタリング
 Windows Server フェールオーバー クラスタリングは、Azure ファイル同期の "汎用ファイル サーバー" デプロイ オプションでサポートされています。 フェールオーバー クラスタリングは、"アプリケーション データ用のスケールアウト ファイル サーバー" (SOFS) またはクラスター共有ボリューム (CSV) ではサポートされていません。

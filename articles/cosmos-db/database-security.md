@@ -4,14 +4,14 @@ description: Azure Cosmos DB がデータベースの保護とデータのセキ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/21/2020
+ms.date: 08/30/2021
 ms.author: mjbrown
-ms.openlocfilehash: 19b4c8466e88159839ce1f43a5ba282b1bb3ec9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53e6ef24ba7f9df42ce15d62d11cf4f455825caa
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94636930"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439454"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のセキュリティ - 概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,22 +84,194 @@ ms.locfileid: "94636930"
 
 <a id="primary-keys"></a>
 
-## <a name="primary-keys"></a>主キー
+## <a name="primarysecondary-keys"></a>主/セカンダリ キー
 
-主キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 主キー:
+主/セカンダリ キーにより、データベース アカウントのすべての管理リソースへのアクセスが提供されます。 主/セカンダリ キー:
 
 - アカウント、データベース、ユーザー、およびアクセス許可へのアクセスを提供します。 
 - コンテナーとドキュメントへのきめ細かいアクセスを提供するために使用することはできません。
 - アカウントの作成時に作成されます。
 - いつでも再生成することができます。
 
-各アカウントは、主キーとセカンダリ キーという 2 つの主キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。
+各アカウントは、主キーとセカンダリ キーという 2 つのキーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。
 
-Cosmos DB アカウント用の 2 つの主キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
+主/セカンダリ キーには、読み取り/書き込みと読み取り専用の 2 つのバージョンがあります。 読み取り専用キーでは、アカウントに対する読み取り操作のみが許可されますが、読み取りアクセス許可のリソースへのアクセスは提供されません。
 
-主、セカンダリ、読み取り専用、および読み取り書き込みの主キーは、Azure portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#regenerate-account-key)」を参照してください。
+### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> キーのローテーションと再生成
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティのデモ":::
+キーのローテーションと再生成のプロセスは単純です。 まず、Azure Cosmos DB アカウントにアクセスするために、**アプリケーションで主キーまたはセカンダリ キーのいずれかを一貫して使用している** ことを確認します。 次に、以下に概要を示した手順に従います。
+
+# <a name="sql-api"></a>[SQL API](#tab/sql-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択したら、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択したら、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+# <a name="azure-cosmos-db-api-for-mongodb"></a>[MongoDB 用 Azure Cosmos DB API](#tab/mongo-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、セカンダリ パスワードの右側にある省略記号から **[パスワードの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、プライマリ パスワードの右側にある省略記号から **[パスワードの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+# <a name="cassandra-api"></a>[Cassandra API](#tab/cassandra-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、セカンダリ パスワードの右側にある省略記号から **[読み取り/書き込みのセカンダリ パスワードの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、プライマリ パスワードの右側にある省略記号から **[読み取り/書き込みのプライマリ パスワードの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+# <a name="gremlin-api"></a>[Gremlin API](#tab/gremlin-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択したら、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[キー]** を選択したら、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+# <a name="table-api"></a>[テーブル API](#tab/table-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
+
+1. Azure portal に戻り、主キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>アプリケーションで現在セカンダリ キーを使用中の場合
+
+1. Azure portal で Azure Cosmos DB アカウントに移動します。
+
+1. 左側のメニューから **[接続文字列]** を選択したら、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+
+1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
+
+1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,16 +1,16 @@
 ---
-title: Application Insights の Azure AD 認証 (プレビュー)
+title: Application Insights に対する Azure AD Authentication (プレビュー)
 description: Azure Active Directory (Azure AD) 認証を有効にして、認証されたテレメトリのみが Application Insights リソースに取り込まれるようにする方法について説明します。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 3b50948d5dcc408595ccc8434d7fb29c07c68ab0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d93da1a8567a7c50dac43c29e3a962652ceee33
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747687"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111470"
 ---
-# <a name="azure-ad-authentication-for-application-insights-preview"></a>Application Insights の Azure AD 認証 (プレビュー)
+# <a name="azure-ad-authentication-for-application-insights-preview"></a>Application Insights に対する Azure AD Authentication (プレビュー)
 Application Insights では、新たに Azure Active Directory (Azure AD) 認証がサポートされています。 認証されたテレメトリのみが Application Insights リソースに取り込まれるよう、Azure AD を使用して設定できるようになりました。 
 
 一般的には、さまざまな認証システムを使用すると、資格情報の大規模な管理が困難なため、煩雑であり、リスクも高まります。 [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) と [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) を使用して排他的に認証されたテレメトリのみが Application Insights リソースに取り込まれるよう、ローカル認証の無効化を選択することが可能になりました。 この機能は、(アラートやオートスケールなどの) 運用上の重要な決定と、ビジネスの意思決定の両方を行うために使用されるテレメトリのセキュリティと信頼性を強化するためのステップです。
@@ -138,7 +138,7 @@ appInsights.defaultClient.aadTokenCredential = credential;
 1. [Java エージェントを使用してアプリケーションを構成します。](java-in-process-agent.md#quickstart)
 
     > [!IMPORTANT]
-    > Java エージェントを使用してアプリを構成するときは、"IngestionEndpoint" を含む完全な接続文字列を使用してください。 たとえば、`InstrumentationKey=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX;IngestionEndpoint=https://XXXX.applicationinsights.azure.com/` のようなものです。
+    > Java エージェントを使用してアプリを構成するときは、"IngestionEndpoint" を含む完全な接続文字列を使用してください。 たとえば、「 `InstrumentationKey=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX;IngestionEndpoint=https://XXXX.applicationinsights.azure.com/` 」のように指定します。
 
     > [!NOTE]
     >  2\.X SDK から 3.X Java エージェントへの移行の詳細については、「[Application Insights Java 2.x SDK からのアップグレード](java-standalone-upgrade-from-2x.md)」を参照してください。
@@ -274,7 +274,7 @@ tracer = Tracer(
 
 Azure AD 認証が有効になったら、ローカル認証を無効にすることを選択できます。 これによって、Azure AD によって排他的に認証されたテレメトリを取り込むことができ、これは (たとえば、API キーを通じて) データ アクセスに影響を及ぼします。 
 
-ローカル認証は、Azure portal、Azure ポリシー、またはプログラムを使用して無効化できます。
+ローカル認証は、Azure portal、Azure Policy、またはプログラムを使用して無効化できます。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -290,11 +290,11 @@ Azure AD 認証が有効になったら、ローカル認証を無効にする�
 
     :::image type="content" source="./media/azure-ad-authentication/overview.png" alt-text="[概要] タブで [Disabled (click to change)]\(無効 (クリックして変更)\) が強調表示されたスクリーンショット。":::
 
-### <a name="azure-policy"></a>Azure ポリシー 
+### <a name="azure-policy"></a>Azure Policy 
 
 "DisableLocalAuth" の Azure ポリシーは、このプロパティが "true" に設定されていない場合に、ユーザーが新しい Application Insights リソースを作成することを拒否します。 ポリシー名は "Application Insights components should block non-AAD auth ingestion" (Application Insights コンポーネントは AAD 認証以外のインジェストをブロックする必要がある) です。
 
-このポリシーをサブスクリプションに適用するには、[新しいポリシー割り当てを作成してポリシーを割り当てます](../..//governance/policy/assign-policy-portal.md)。
+このポリシー定義をサブスクリプションに適用するには、[新しいポリシー割り当てを作成してポリシーを割り当てます](../../governance/policy/assign-policy-portal.md)。
 
 ポリシー テンプレートの定義を次に示します。
 ```JSON

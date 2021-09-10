@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1207f4856882d8aa0e6d1e41712071536bfecf29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7841a8520e3bd3a01a993054444b8aa4d04d542d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728558"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260877"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>リソース クラスからワークロード グループへの変換
 
@@ -27,7 +27,7 @@ ms.locfileid: "98728558"
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>既存のリソース クラスの構成について
 
-ワークロード グループには、要求ごとに割り当てられるシステム リソース全体の割合を指定する `REQUEST_MIN_RESOURCE_GRANT_PERCENT` という名前のパラメーターが必要です。  リソース割り当ては、コンカレンシー スロットを割り当てることによって[リソース クラス](resource-classes-for-workload-management.md#what-are-resource-classes)に対して行われます。  `REQUEST_MIN_RESOURCE_GRANT_PERCENT` に指定する値を決定するには、sys.dm_workload_management_workload_groups_stats <link tbd> DMV を使用します。  たとえば、次のクエリは、staticrc40 のようなワークロード グループを作成するために `REQUEST_MIN_RESOURCE_GRANT_PERCENT` パラメーターに使用できる値を返します。
+ワークロード グループには、要求ごとに割り当てられるシステム リソース全体の割合を指定する `REQUEST_MIN_RESOURCE_GRANT_PERCENT` という名前のパラメーターが必要です。  リソース割り当ては、コンカレンシー スロットを割り当てることによって[リソース クラス](resource-classes-for-workload-management.md#what-are-resource-classes)に対して行われます。  `REQUEST_MIN_RESOURCE_GRANT_PERCENT` に指定する値を決定するには、[sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) DMV を使用します。  たとえば、次のクエリは、staticrc40 のようなワークロード グループを作成するために `REQUEST_MIN_RESOURCE_GRANT_PERCENT` パラメーターに使用できる値を返します。
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
@@ -42,7 +42,7 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 
 ## <a name="create-workload-group"></a>ワークロード グループを作成する
 
-`REQUEST_MIN_RESOURCE_GRANT_PERCENT` が既知であれば、CREATE WORKLOAD GROUP <link> 構文を使用して、ワークロード グループを作成できます。  必要に応じて、0 より大きい `MIN_PERCENTAGE_RESOURCE` を指定して、ワークロード グループのリソースを分離することもできます。  また必要に応じて、ワークロード グループが使用できるリソースの量を制限するために、`CAP_PERCENTAGE_RESOURCE` を 100 未満に指定することもできます。  
+`REQUEST_MIN_RESOURCE_GRANT_PERCENT` が既知であれば、[CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true) 構文を使用して、ワークロード グループを作成できます。  必要に応じて、0 より大きい `MIN_PERCENTAGE_RESOURCE` を指定して、ワークロード グループのリソースを分離することもできます。  また必要に応じて、ワークロード グループが使用できるリソースの量を制限するために、`CAP_PERCENTAGE_RESOURCE` を 100 未満に指定することもできます。  
 
 次のコードでは、例の基礎として mediumrc を使用して `MIN_PERCENTAGE_RESOURCE` を設定して、システム リソースの 10% を `wgDataLoads` 専用にし、1 つのクエリが常に実行できるようにすることを保証します。  さらに、`CAP_PERCENTAGE_RESOURCE` は 40% に設定され、このワークロード グループは 4 個の同時要求に制限されます。  `QUERY_EXECUTION_TIMEOUT_SEC` パラメーターを 3600 に設定すると、1 時間以上実行されるすべてのクエリが自動的に取り消されます。
 

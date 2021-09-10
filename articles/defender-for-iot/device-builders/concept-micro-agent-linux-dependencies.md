@@ -2,13 +2,13 @@
 title: マイクロ エージェントでの Linux との依存関係 (プレビュー)
 description: この記事では、Defender for IoT マイクロ エージェントでのさまざまな Linux OS との依存関係について説明します。
 ms.topic: conceptual
-ms.date: 07/19/2021
-ms.openlocfilehash: e878052e534ce7740fff1fdd462d2c95fcb11609
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 08/26/2021
+ms.openlocfilehash: 102cf31dbe19c068de344f1f7f294a6f3f0a722b
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481768"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967560"
 ---
 # <a name="micro-agent-linux-dependencies-preview"></a>マイクロ エージェントでの Linux との依存関係 (プレビュー)
 
@@ -26,8 +26,8 @@ ms.locfileid: "114481768"
 |  | uuid | ライブラリ | ✔ |  |
 |  | pthread | ulibc コンパイル フラグ | ✔ |  |
 |  | libuv1 | ライブラリ |  |  |
-|  | sudo | Package |  |  |
-|  | uuid-runtime | Package |  |  |
+|  | sudo | パッケージ |  |  |
+|  | uuid-runtime | パッケージ |  |  |
 | **システム情報コレクター** |  |  |  |  |
 |  | uname | システム コール |  |  |
 | **ベースライン コレクター** |  |  |  |  |
@@ -40,7 +40,9 @@ ms.locfileid: "114481768"
 |  | libpcap | ライブラリ |  |  |
 |  | CONFIG_PACKET=y | カーネル構成 |  |  |
 |  | CONFIG_NETFILTER =y | カーネル構成 |  | 省略可能 – パフォーマンスの向上 |
+| **ログイン コレクター** |  |  |  |  |
+|  | Wtmp、btmp | ログ ファイル |  | [utmp](https://en.wikipedia.org/wiki/Utmp) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Defender for IoT マイクロ エージェントをインストールする (プレビュー)](quickstart-standalone-agent-binary-installation.md)。

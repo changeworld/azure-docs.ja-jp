@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C の構成要素を使用して Web アプリケーションで認証を有効にする
-description: ASP.NET Web アプリケーションでユーザーをサインインおよびサインアップする Azure Active Directory B2C の構成要素。
+title: Azure Active Directory B2C の構成要素を使用して Web アプリで認証を有効にする
+description: この記事では、Azure Active Directory B2C の構成要素を使用して ASP.NET Web アプリでユーザーをサインインおよびサインアップする方法について説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,37 +11,39 @@ ms.date: 06/11/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 2a89f2c5179e9280e09741d8fc524406698c31e0
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 44f3c777279d6f6b8d2df2600141e7fd66e44214
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071535"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186301"
 ---
-# <a name="enable-authentication-in-your-own-web-application-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して独自の Web アプリケーションで認証を有効にする
+# <a name="enable-authentication-in-your-own-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の Web アプリで認証を有効にする
 
-この記事では、独自の ASP.NET Web アプリケーションに Azure Active Directory B2C (Azure AD B2C) 認証を追加する方法について説明します。 [OpenID Connect](openid-connect.md) プロトコルを使用する ASP.NET Core ミドルウェアを使用して ASP.NET Core Web アプリケーションを作成する方法について説明します。 この記事は、[サンプル Web アプリケーションで認証を構成](configure-authentication-sample-web-app.md)する方法に関する記事と合わせて使用してください。その際は、サンプルの Web アプリを独自の Web アプリに置き換えてください。
+この記事では、独自の ASP.NET Web アプリケーションに Azure Active Directory B2C (Azure AD B2C) 認証を追加する方法について説明します。 [OpenID Connect](openid-connect.md) プロトコルを使用する ASP.NET Core ミドルウェアを使用して ASP.NET Core Web アプリケーションを作成する方法について説明します。 
+
+この記事は、[サンプル Web アプリで認証を構成](configure-authentication-sample-web-app.md)する方法に関する記事と合わせてご利用ください。その際は、サンプルの Web アプリを独自の Web アプリに置き換えてください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[サンプル Web アプリケーションで認証を構成する](configure-authentication-sample-web-app.md)方法に関する記事の前提条件と統合の手順を確認します。
+前提条件と統合の手順を確認するには、[サンプル Web アプリケーションでの認証の構成](configure-authentication-sample-web-app.md)に関する記事を参照してください。
 
-## <a name="create-a-web-app-project"></a>Web アプリ プロジェクトの作成
+## <a name="step-1-create-a-web-app-project"></a>手順 1: Web アプリ プロジェクトを作成する
 
-既存の ASP.NET MVC Web アプリ プロジェクトを使用するか、新しいプロジェクトを作成することもできます。 新しいプロジェクトを作成するには、コマンド シェルを開き、次のコマンドを入力します。
+既存の ASP.NET Model-View-Controller (MVC) Web アプリ プロジェクトを使用することも、新しいプロジェクトを作成することもできます。 新しいプロジェクトを作成するには、コマンド シェルを開いてから、次のコマンドを入力します。
 
 ```dotnetcli
 dotnet new mvc -o mywebapp
 ```
 
-上記のコマンドでは次のことが行われます。
+前述のコマンドでは、次のことを行います。
 
 * 新しい MVC Web アプリを作成します。  
 * `-o mywebapp` パラメーターを指定して、アプリのソース ファイルが保存される *mywebapp* という名前のディレクトリを作成します。
 
-## <a name="add-the-authentication-libraries"></a>認証ライブラリを追加する
+## <a name="step-2-add-the-authentication-libraries"></a>手順 2: 認証ライブラリを追加する
 
-まず、Microsoft Identity Web ライブラリを追加します。 これは、Web アプリへの Azure AD B2C 認証と承認のサポートの追加を簡単にする ASP.NET Core ライブラリのセットです。 Microsoft Identity Web ライブラリを使って、Cookie ベースの認証を使用する認証パイプラインを設定します。 これが、HTTP 認証メッセージの送受信、トークンの検証、要求の抽出などの処理を担います。
+Web アプリへの Azure AD B2C 認証と認可のサポートの追加を簡単にする ASP.NET Core ライブラリのセットである、Microsoft Identity Web ライブラリを追加します。 Microsoft Identity Web ライブラリを使って、Cookie ベースの認証を使用する認証パイプラインを設定します。 これが、HTTP 認証メッセージの送受信、トークンの検証、要求の抽出などの処理を担います。
 
 Microsoft Identity Web ライブラリを追加するには、次のコマンドを実行してパッケージをインストールします。 
 
@@ -62,11 +64,11 @@ Install-Package Microsoft.Identity.Web.UI
 ---
 
 
-## <a name="initiate-the-authentication-libraries"></a>認証ライブラリを開始する
+## <a name="step-3-initiate-the-authentication-libraries"></a>手順 3: 認証ライブラリを開始する
 
 Microsoft Identity Web ミドルウェアによって、ホスティング プロセスの開始時に実行されるスタートアップ クラスが使用されます。 この手順では、認証ライブラリを開始するために必要なコードを追加します。
 
-`Startup.cs` を開き、クラスの先頭に次の `using` 宣言を追加します。
+*Startup.cs* を開いてから、クラスの先頭に以下の `using` 宣言を追加します。
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -75,7 +77,7 @@ using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 ```
 
-Microsoft Identity Web で Cookie ベースの認証を使用して Web アプリを保護するため、次のコードで、*SameSite* Cookie 設定を設定します。 `AzureAdB2C` アプリケーション設定が読み取られ、そのビューでミドルウェア コントローラーが開始されます。 
+Microsoft Identity Web で Cookie ベースの認証を使用して Web アプリを保護するため、次のコードで、*SameSite* Cookie 設定を設定します。 次に、`AzureAdB2C` アプリケーション設定が読み取られ、そのビューでミドルウェア コントローラーが開始されます。 
 
 `ConfigureServices(IServiceCollection services)` 関数を次のコード スニペットに置き換えます。 
 
@@ -105,7 +107,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-次のコードで、Cookie ポリシーを追加し、認証モデルを使用します。 `Configure` 関数を次のコード スニペットに置き換えます。 
+次のコードでは、Cookie ポリシーが追加され、認証モデルが使用されます。 `Configure` 関数を次のコード スニペットに置き換えます。 
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -143,11 +145,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 };
 ```
 
-## <a name="add-the-ui-elements"></a>UI 要素を追加する
+## <a name="step-4-add-the-ui-elements"></a>手順 4: UI 要素を追加する
 
-ユーザー インターフェイスの要素を追加するには、ユーザーがサインインしているかどうかを確認するロジックを含む部分ビューを使用します。 ユーザーがサインインしていない場合は、部分ビューにサインイン ボタンが表示されます。 ユーザーがサインインしている場合は、ユーザーの表示名とサインアウト ボタンが表示されます。
+ユーザー インターフェイスの要素を追加するには、ユーザーがサインインしているかどうかを確認するためのロジックを含む部分ビューを使用します。 ユーザーがサインインしていない場合は、部分ビューにサインイン ボタンが表示されます。 ユーザーがサインインしている場合は、ユーザーの表示名とサインアウト ボタンが表示されます。
   
-次のコード スニペットを使用して、`Views/Shared` フォルダー内に新しいファイル `_LoginPartial.cshtml` を作成します。
+次のコード スニペットを使用して、新しいファイル *\_LoginPartial.cshtml* を */Views/Shared* フォルダー内に作成します。
 
 ```razor
 @using System.Security.Principal
@@ -181,12 +183,12 @@ else
 }
 ```
 
-追加した *_LoginPartial.cshtml* ファイルを含むように `Views\Shared\_Layout.cshtml` を変更します。 *_Layout.cshtml* ファイルは、ユーザーがページ間を移動するときに一貫したエクスペリエンスを提供する共通のレイアウトです。 アプリのヘッダーやフッターなど、共通のユーザー インターフェイス要素をこのレイアウトに含めます。
+追加した *_LoginPartial.cshtml* ファイルを含むように */Views/Shared_Layout.cshtml* ファイルを変更します。 *_Layout.cshtml* ファイルは、ユーザーがページ間を移動するときに一貫したエクスペリエンスを提供する共通のレイアウトです。 このレイアウトには、アプリのヘッダーやフッターなど、共通のユーザー インターフェイス要素が含まれます。
 
 > [!NOTE]
-> .NET Core のバージョンと、既存のアプリへのサインインを追加するかどうかによって、UI 要素の表示を変える必要があります。 その場合は、ページ レイアウト内の適切な場所に *_LoginPartial* を含めるようにします。
+> 実行中の .NET Core のバージョンと、既存のアプリへのサインインを追加するかどうかによって、UI 要素の外観が異なる場合があります。 その場合は、ページ レイアウト内の適切な場所に *_LoginPartial* を含めるようにします。
 
-*/Views/Shared/_Layout.cshtml* を開き、次の `div` 要素を追加します。
+*/Views/Shared/_Layout.cshtml* ファイルを開いてから、次の `div` 要素を追加します。
 
 ```razor
 <div class="navbar-collapse collapse">
@@ -208,9 +210,9 @@ else
 
 上記の Razor コードには、次の手順で作成する `Claims` のアクションへのリンクが含まれています。
 
-## <a name="add-the-claims-view"></a>要求ビューを追加する
+## <a name="step-5-add-the-claims-view"></a>手順 5: 要求ビューを追加する
 
-`Views/Home` フォルダーの下にある ID トークン要求を表示するには、`Claims.cshtml` ビューを追加します。
+*/Views/Home* フォルダーの下にある ID トークン要求を表示するには、*Claims.cshtml* ビューを追加します。
 
 ```razor
 @using System.Security.Claims
@@ -236,9 +238,9 @@ else
 </table>
 ```
 
-この手順では、*Claims.cshtml* ビューを *Home* コントローラーにリンクする `Claims` アクションを追加します。 `[Authorize]` 属性を使用して、認証されたユーザーのみが Claims アクションにアクセスできるように制限します。  
+この手順では、*Claims.cshtml* ビューを *Home* コントローラーにリンクする `Claims` アクションを追加します。 `Claims` アクションでは `Authorize` 属性を使用します。これにより、認証されたユーザーのみがそのアクションにアクセスできるように制限されます。  
 
-`/Controllers/HomeController.cs` コントローラーに次のアクションを追加します。
+コントローラーである */Controllers/HomeController.cs* に、次のアクションを追加します。
 
 ```csharp
 [Authorize]
@@ -248,15 +250,15 @@ public IActionResult Claims()
 }
 ```
 
-クラスの先頭に次の `using` 宣言を追加します。
+クラスの先頭に、次の `using` 宣言を追加します。
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;
 ```
 
-## <a name="add-the-app-settings"></a>アプリ設定を追加する
+## <a name="step-6-add-the-app-settings"></a>手順 6: アプリ設定を追加する
 
-Azure AD B2C ID プロバイダーの設定は、`appsettings.json` ファイルに格納されています。 appsettings.json を開き、以下の設定を追加します。
+Azure AD B2C ID プロバイダーの設定は、*appsettings.json* ファイルに格納されています。 *appsettings.json* を開いてから、以下の設定を追加します。
 
 ```JSon
 "AzureAdB2C": {
@@ -268,22 +270,22 @@ Azure AD B2C ID プロバイダーの設定は、`appsettings.json` ファイル
 }
 ```
 
-必要な情報については、[サンプル Web アプリケーションで認証を構成する](configure-authentication-sample-web-app.md)方法に関する記事を参照してください。 次の設定を使用します。
+必要な情報については、[サンプル Web アプリで認証を構成する](configure-authentication-sample-web-app.md)方法に関する記事を参照してください。 次の設定を使用します。
 
-* **インスタンス** -  `<your-tenant-name>` を Azure AD B2C [テナント名](tenant-management.md#get-your-tenant-name)の最初の部分に置き換えます。 たとえば、「 `https://contoso.b2clogin.com` 」のように入力します。
-* **ドメイン** - `<your-b2c-domain>` を実際の Azure AD B2C の完全な[テナント名](tenant-management.md#get-your-tenant-name)に置き換えます。 たとえば、「 `contoso.onmicrosoft.com` 」のように入力します。
-* **クライアント ID** - `<web-app-application-id>` を[手順 2](configure-authentication-sample-web-app.md#step-2-register-a-web-application) のアプリケーション ID に置き換えます。
-* **ポリシー名** - `<your-sign-up-in-policy>` を[手順 1](configure-authentication-sample-web-app.md#step-1-configure-your-user-flow) で作成したユーザー フローに置き換えます。
+* **インスタンス**: `<your-tenant-name>` を Azure AD B2C [テナント名](tenant-management.md#get-your-tenant-name)の最初の部分に置き換えます (例: `https://contoso.b2clogin.com`)。
+* **ドメイン**: `<your-b2c-domain>` を Azure AD B2C の完全な[テナント名](tenant-management.md#get-your-tenant-name)に置き換えます (例: `contoso.onmicrosoft.com`)。
+* **クライアント ID**: `<web-app-application-id>` を[手順 2](configure-authentication-sample-web-app.md#step-2-register-a-web-application) のアプリケーション ID に置き換えます。
+* **ポリシー名**: `<your-sign-up-in-policy>` を[手順 1](configure-authentication-sample-web-app.md#step-1-configure-your-user-flow) で作成したユーザー フローに置き換えます。
 
-## <a name="run-your-application"></a>アプリケーションを実行する
+## <a name="step-7-run-your-application"></a>手順 7: アプリケーションを実行する
 
 1. プロジェクトをビルドして実行します。
-1. [http://.azurewebsites.net/admin](https://localhost:5001) を参照します。 
-1. **[SignIn/Up]\(サインイン/サインアップ\)** を選択します。
+1. [https://localhost:5001](https://localhost:5001) に移動します。 
+1. **[サインアップ/イン]** を選択します。
 1. サインインアップまたはサインイン プロセスを完了します。
 
-認証に成功すると、ナビゲーション バーに表示名が表示されます。 Azure AD B2C トークンによってアプリに返される要求を表示するには、 **[Claims]\(要求\)** を選択します。
+正しく認証されると、ナビゲーション バーに自分の表示名が表示されます。 Azure AD B2C トークンによってアプリに返される要求を表示するには、 **[要求]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Web アプリの Azure AD B2C 認証エクスペリエンスをカスタマイズおよび強化する](enable-authentication-web-application-options.md)方法を学ぶ
+* [Web アプリの Azure AD B2C 認証エクスペリエンスをカスタマイズおよび強化する](enable-authentication-web-application-options.md)方法を学ぶ。

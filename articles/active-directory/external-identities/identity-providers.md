@@ -5,23 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/26/2021
+ms.date: 08/30/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f867e0091d792ef88b79f1c1bb7f4272a35e928
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: ca0592741018f054640b1d695f643695e4782518
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721370"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222134"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部 ID に対する ID プロバイダー
 
 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 アプリとリソースを外部ユーザーと共有する場合は、Azure AD が共有のための既定の ID プロバイダーです。 つまり、Azure AD アカウントまたは Microsoft アカウントを既に持っている外部ユーザーを招待すると、そのユーザーは自分でそれ以上構成を行わなくても自動的にサインインできます。
 
-Azure AD アカウントに加えて、外部 ID にはさまざまな ID プロバイダーが用意されています。
+外部 ID にはさまざまな ID プロバイダーが用意されています。
+
+- **Azure Active Directory アカウント**: ゲスト ユーザーは、Azure AD の職場または学校アカウントを使用して、B2B コラボレーションの招待を利用したり、サインアップ ユーザー フローを完了したりできます。 [Azure Active Directory](azure-ad-account.md) は、既定で許可されている ID プロバイダーの 1 つです。 この ID プロバイダーをユーザー フローで使用できるようにするために必要な追加の構成はありません。
 
 - **Microsoft アカウント**: ゲスト ユーザーは、自分自身の個人用 Microsoft アカウント (MSA) を使用して、B2B コラボレーションの招待を引き換えることができます。 セルフサービス サインアップのユーザー フローを設定するときには、許可される ID プロバイダーの 1 つとして [Microsoft アカウント](microsoft-account.md) を追加できます。 この ID プロバイダーをユーザー フローで使用できるようにするために必要な追加の構成はありません。
 
@@ -31,7 +33,7 @@ Azure AD アカウントに加えて、外部 ID にはさまざまな ID プロ
    > [!IMPORTANT]
    >
    > - **2021 年 7 月 12 日以降**、Azure AD の B2B のお客様が、カスタムまたは基幹業務アプリケーションのセルフサービス サインアップで使用するために新しい Google の統合をセットアップした場合、認証がシステム Web ビューに移動されるまで、Google ID を使用した認証が機能しなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
-   > - **2021 年 9 月 30 日より**、Google は[埋め込みの Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 自分のアプリで埋め込みの Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、またはセルフサービス サインアップで使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - **2021 年の 9 月 30 日より**、Google は [埋め込みの Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 自分のアプリで埋め込みの Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、またはセルフサービス サインアップで使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
 
 
 - **Facebook**: アプリを構築するときに、セルフサービス サインアップを構成し、Facebook フェデレーションを有効にすることで、ユーザーが自分の Facebook アカウントを使用してアプリにサインアップできるようにすることが可能です。 Facebook は、セルフサービス サインアップ ユーザー フローにのみ使用でき、ユーザーがあなたからの招待を利用するときにサインイン オプションとして使用することはできません。 [ID プロバイダーとして Facebook を追加する](facebook-federation.md)方法に関するページを参照してください。

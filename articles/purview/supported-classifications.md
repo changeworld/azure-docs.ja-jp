@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
 ms.date: 4/1/2021
-ms.openlocfilehash: f6282d66a6c499e5a8e14cd90e90dc9b6f6ee633
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 9eed079b7beda59f4835bb1263a226e2aa7f74c2
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768382"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272622"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure Purview でサポートされている分類
 
 この記事では、Azure Purview (プレビュー) でサポートおよび定義されているシステム分類の一覧を示します。
 
 
-- **[Distinct match threshold]\(個別の一致のしきい値\)** : スキャナーがデータ パターンを実行する前に、列に含まれている必要がある個別のデータ値の合計数です。 個別の一致のしきい値は、パターン マッチングとは関係ありませんが、パターン マッチングの前提条件です。 Microsoft のシステム分類ルールでは、分類の対象とする各列に、少なくとも 8 つの個別の値が必要です。 システムでは、この値を使用して、スキャナーが正確に分類するのに十分なデータが列に含まれていることを確認する必要があります。 たとえば、すべて値 1 が含まれている複数の行を含む列は分類されません。 1 つの行に値が含まれ、残りの行に null 値が含まれている列の場合も分類されません。 複数のパターンを指定すると、この値がそれぞれに適用されます。
+- **[Distinct match threshold] (個別の一致のしきい値)** : スキャナーがデータ パターンを実行する前に、列に含まれている必要がある個別のデータ値の合計数です。 個別のデータのしきい値は、パターン マッチングとは関係ありませんが、パターン マッチングの前提条件です。 Microsoft のシステム分類ルールでは、分類の対象とする各列に、少なくとも 8 つの個別の値が必要です。 システムでは、この値を使用して、スキャナーが正確に分類するのに十分なデータが列に含まれていることを確認する必要があります。 たとえば、すべて値 1 が含まれている複数の行を含む列は分類されません。 1 つの行に値が含まれ、残りの行に null 値が含まれている列の場合も分類されません。 複数のパターンを指定すると、この値がそれぞれに適用されます。
 
 - **[Minimum match threshold]\(最小の一致のしきい値\)** : これは、分類を適用するためにスキャナーによって検出される必要がある列の、データ値の最小一致率です。 システム分類の値は 60% に設定されています。
 

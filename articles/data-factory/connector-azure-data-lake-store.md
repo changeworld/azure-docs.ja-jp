@@ -1,20 +1,22 @@
 ---
 title: Azure Data Lake Storage Gen1 との間でデータをコピーする
-description: Data Factory を使用して、サポートされるソース データ ストアのデータを Azure Data Lake Store にコピーしたり、Data Lake Store のデータをサポートされるシンク ストアにコピーしたりできます。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインを使用して、サポートされるソース データ ストアのデータを Azure Data Lake Store にコピーしたり、Data Lake Store のデータをサポートされるシンク ストアにコピーしたりする方法を学習します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 1a73fc3a48576ca39435d65449fc557fd5c93c43
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: e1ec23300f5bccfea161ec967702e65152bc658f
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480439"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123314620"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
+# <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Azure Data Lake Storage Gen1 との間でデータをコピーします
 
 > [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください:"]
 >
@@ -23,7 +25,7 @@ ms.locfileid: "109480439"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Lake Storage Gen1 をコピー先またはコピー元としてデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Data Lake Storage Gen1 をコピー先またはコピー元としてデータをコピーする方法について説明します。 詳細については、[Azure Data Factory](introduction.md) または [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -51,7 +53,31 @@ ms.locfileid: "109480439"
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、Azure Data Lake Store に固有の Data Factory エンティティを定義するために使用されるプロパティについて説明します。
+## <a name="create-a-linked-service-to-azure-data-lake-storage-gen1-using-ui"></a>UI を使用して Azure Data Lake Storage Gen1 へのリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Data Lake Storage Gen1 へのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Azure Data Lake Storage Gen1 コネクタを検索して選択します。
+
+    :::image type="content" source="media/connector-azure-data-lake-store/azure-data-lake-store-connector.png" alt-text="Azure Data Lake Storage Gen1 コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-data-lake-store/configure-azure-data-lake-store-linked-service.png" alt-text="Azure Data Lake Storage Gen1 へのリンク サービス構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、Azure Data Lake Store Gen1 に固有のエンティティを定義するために使用されるプロパティについて説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -85,9 +111,9 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを `SecureString` としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを `SecureString` とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名やテナント ID など) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい |
-| azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、サービスのクラウド環境が使用されます。 | いいえ |
 
 **例:**
 
@@ -115,20 +141,20 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 }
 ```
 
-### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースの認証にマネージド ID を使用する
+### <a name="use-system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> システム割り当てマネージド ID 認証を使用する
 
-データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、Data Lake Store 認証にこのマネージド ID を直接使用できます。 これにより、この指定されたファクトリは、Data Lake Store にアクセスしてデータをコピーできます。
+データ ファクトリまたは Synapse ワークスペースは、[システム割り当てマネージド ID](data-factory-service-identity.md) に関連付けることができます。これは、認証のサービスです。 独自のサービス プリンシパルを使用する場合と同様に、Data Lake Storage の認証にこのシステム割り当てマネージド ID を直接使用できます。 これにより、この指定されたリソースは、Data Lake Store にアクセスしてデータをコピーできます。
 
-Azure リソースのマネージド ID 認証を使用するには、次のようにします。
+システム割り当てマネージド ID 認証を使用するには、次の手順に従います。
 
-1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
+1. ファクトリまたは Synapse ワークスペースと共に生成された サービス ID アプリケーション ID の値をコピーして、[システム割り当てマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
 
-2. Data Lake Store へのアクセス権をマネージド ID に付与します。 Data Lake Storage Gen1 におけるアクセス許可の動作例については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)」を参照してください。
+2. Data Lake Store へのアクセス権をシステム割り当てのマネージド ID に付与します。 Data Lake Storage Gen1 におけるアクセス許可の動作例については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)」を参照してください。
 
     - **ソースとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) について、少なくとも **実行** アクセス許可を与えると共に、コピーするファイルの **読み取り** アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
     - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも **実行** アクセス許可を与えると共に、シンク フォルダーに **書き込み** アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。
 
-Azure Data Factory では、リンクされたサービスの Data Lake Store の一般的な情報以外にプロパティを指定する必要はありません。
+リンクされたサービスの Data Lake Store の一般的な情報以外にプロパティを指定する必要はありません。
 
 **例:**
 
@@ -142,6 +168,48 @@ Azure Data Factory では、リンクされたサービスの Data Lake Store �
             "subscriptionId": "<subscription of ADLS>",
             "resourceGroupName": "<resource group of ADLS>"
         },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-user-assigned-managed-identity-authentication"></a>ユーザー割り当てマネージド ID 認証を使用する
+
+データ ファクトリは、1 つ以上の[ユーザー割り当てマネージド ID](data-factory-service-identity.md) に割り当てることができます。 このユーザー割り当てマネージド ID を BLOB ストレージ認証に使用できます。これにより、Data Lake にアクセスしてデータをコピーできます。 Azure リソース用マネージド ID の詳細については、[Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください
+
+ユーザー割り当てマネージド ID 認証を使用するには、次の手順に従います。
+
+1. [1 つ以上のユーザー割り当てマネージド ID を作成](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)して、Azure Data Lake に対するアクセスを許可します。 Data Lake Storage Gen1 におけるアクセス許可の動作例については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions)」を参照してください。
+
+    - **ソースとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) について、少なくとも **実行** アクセス許可を与えると共に、コピーするファイルの **読み取り** アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
+    - **シンクとして**: **[データ エクスプローラー]**  >  **[アクセス]** で、すべての上位フォルダー (ルートを含む) に少なくとも **実行** アクセス許可を与えると共に、シンク フォルダーに **書き込み** アクセス許可を与えます。 **[このフォルダーとすべての子]** を選択して再帰的に追加したり、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加したりすることができます。
+    
+2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリに割り当てて、ユーザー割り当てマネージド ID ごとに[資格情報を作成](data-factory-service-identity.md#credentials)します。 
+
+次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| 資格情報 | ユーザー割り当てマネージド ID を資格情報オブジェクトとして指定します。 | はい |
+
+**例:**
+
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
@@ -205,8 +273,8 @@ Azure Data Lake Store Gen1 では、形式ベースのコピー ソースの `st
 | type                     | `storeSettings` の type プロパティは **AzureDataLakeStoreReadSettings** に設定する必要があります。 | はい                                          |
 | ***コピーするファイルを特定する:*** |  |  |
 | オプション 1: 静的パス<br> | データセットに指定されている所定のフォルダーまたはファイル パスからコピーします。 フォルダーからすべてのファイルをコピーする場合は、さらに `*` として `wildcardFileName` を指定します。 |  |
-| オプション 2: 名前範囲<br>- listAfter | アルファベット順で名前がこの値の後にある (この値は含まない) フォルダーまたはファイルを取得します。 ワイルドカード フィルターより優れたパフォーマンスを提供する、ADLS Gen1 用のサービス側フィルターを利用します。 <br/>データ ファクトリでは、データセットに定義されているパスにこのフィルターが適用され、唯一のエンティティ レベルがサポートされています。 他の例については、「[名前範囲フィルターの例](#name-range-filter-examples)」を参照してください。 | いいえ |
-| オプション 2: 名前範囲<br/>- listBefore | アルファベット順で名前がこの値の前にある (この値は含める) フォルダーまたはファイルを取得します。 ワイルドカード フィルターより優れたパフォーマンスを提供する、ADLS Gen1 用のサービス側フィルターを利用します。<br>データ ファクトリでは、データセットに定義されているパスにこのフィルターが適用され、唯一のエンティティ レベルがサポートされています。 他の例については、「[名前範囲フィルターの例](#name-range-filter-examples)」を参照してください。 | いいえ |
+| オプション 2: 名前範囲<br>- listAfter | アルファベット順で名前がこの値の後にある (この値は含まない) フォルダーまたはファイルを取得します。 ワイルドカード フィルターより優れたパフォーマンスを提供する、ADLS Gen1 用のサービス側フィルターを利用します。 <br/>このサービスでは、データセットに定義されているパスにこのフィルターが適用され、唯一のエンティティ レベルがサポートされています。 他の例については、「[名前範囲フィルターの例](#name-range-filter-examples)」を参照してください。 | いいえ |
+| オプション 2: 名前範囲<br/>- listBefore | アルファベット順で名前がこの値の前にある (この値は含める) フォルダーまたはファイルを取得します。 ワイルドカード フィルターより優れたパフォーマンスを提供する、ADLS Gen1 用のサービス側フィルターを利用します。<br>このサービスでは、データセットに定義されているパスにこのフィルターが適用され、唯一のエンティティ レベルがサポートされています。 他の例については、「[名前範囲フィルターの例](#name-range-filter-examples)」を参照してください。 | いいえ |
 | オプション 3: ワイルドカード<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するための、ワイルドカード文字を含むフォルダー パス。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
 | オプション 3: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定の folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。  「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
 | オプション 4: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスであるファイルを 1 行につき 1 つずつ指定します。<br/>このオプションを使用する場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
@@ -311,7 +379,7 @@ Azure Data Lake Store Gen1 では、形式ベースのコピー シンクの `st
 
 このセクションでは、名前範囲フィルターの結果動作について説明します。
 
-| サンプルのソース構造 | ADF の構成 | 結果 |
+| サンプルのソース構造 | 構成 | 結果 |
 |:--- |:--- |:--- |
 |root<br/>&nbsp;&nbsp;&nbsp;&nbsp;a<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;b<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;bx.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;c<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;cx.csv| **データセット内:**<br>- フォルダー パス: `root`<br><br>**コピー アクティビティ ソース内:**<br>- List after: `a`<br>- List before: `b`| その後、次のファイルがコピーされます。<br><br>root<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;b<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv |
 
@@ -332,7 +400,7 @@ Azure Data Lake Store Gen1 では、形式ベースのコピー シンクの `st
 
 次のソース フォルダー構造があり、太字のファイルをコピーするとします。
 
-| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | ADF の構成                                            |
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | 構成 |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | root<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- フォルダー パス: `root/FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `root/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
 
@@ -352,7 +420,7 @@ Azure Data Lake Store Gen1 では、形式ベースのコピー シンクの `st
 ## <a name="preserve-acls-to-data-lake-storage-gen2"></a>Data Lake Storage Gen2 に ACL を保持する
 
 >[!TIP]
->Azure Data Lake Storage Gen1 から Gen2 への一般的なデータ コピーを実行する場合、チュートリアルとベスト プラクティスについては、「[Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする](load-azure-data-lake-storage-gen2-from-gen1.md)」をご覧ください。
+>Azure Data Lake Storage Gen1 から Gen2 への一般的なデータ コピーに関するチュートリアルとベスト プラクティスについては、[Azure Data Lake Storage Gen1 から Gen2 へのデータのコピー](load-azure-data-lake-storage-gen2-from-gen1.md)に関する記事を参照してください。
 
 Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードするときに、アクセス制御リスト (ACL) をデータ ファイルと共にレプリケートする必要がある場合は、「[Data Lake Storage Gen1 の ACL を保持する](copy-activity-preserve-metadata.md#preserve-acls)」をご覧ください。
 
@@ -373,7 +441,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 
 ![ソース オプション](media/data-flow/sourceOptions1.png "ソース オプション")
 
-**[Wildcard path]\(ワイルドカード パス\)** : ワイルドカード パターンを使用すると、ADF は、単一のソース変換で一致する各フォルダーとファイルをループ処理するよう指示されます。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンをポイントしたときに表示される + 記号を使って複数のワイルドカード一致パターンを追加します。
+**ワイルドカード パス:** ワイルドカード パターンを使用して、1 回のソース変換で、一致するフォルダーとファイルをそれぞれループ処理するようサービスに指示します。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンをポイントしたときに表示される + 記号を使って複数のワイルドカード一致パターンを追加します。
 
 ソース コンテナーから、パターンに一致する一連のファイルを選択します。 データセット内で指定できるのはコンテナーのみです。 そのため、ワイルドカード パスには、ルート フォルダーからのフォルダー パスも含める必要があります。
 
@@ -395,7 +463,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 
 ![パーティション ソース ファイルの設定](media/data-flow/partfile2.png "パーティション ファイルの設定")
 
-パーティションのルート パス設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューを使用してデータの内容を表示すると、ADF によって、各フォルダー レベルで見つかった解決済みのパーティションが追加されることがわかります。
+パーティションのルート パス設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューでデータの内容を表示すると、各フォルダー レベルで見つかった解決済みのパーティションがサービスによって追加されることがわかります。
 
 ![パーティションのルート パス](media/data-flow/partfile1.png "パーティション ルート パスのプレビュー")
 
@@ -458,7 +526,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 ## <a name="legacy-models"></a>レガシ モデル
 
 >[!NOTE]
->次のモデルは、下位互換性のために引き続きそのままサポートされます。 今後は、上のセクションで説明した新しいモデルを使用することをお勧めします。ADF オーサリング UI は、新しいモデルを生成するように切り替えられています。
+>次のモデルは、下位互換性のために引き続きそのままサポートされます。 今後は、上記のセクションで説明した新しいモデルを使用することをお勧めします。作成 UI は、新しいモデルを生成するように切り替えられています。
 
 ### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
@@ -587,4 +655,4 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

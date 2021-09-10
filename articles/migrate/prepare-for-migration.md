@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: d88c02f261052f0cf3e29ef210d8a8af15733d7f
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 4b7cd5c72beaf96e8ffbeb11960e27a5bd25adae
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720265"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272945"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -149,7 +149,7 @@ Linux サーバーで行われた変更の詳細については、[こちら](./
 
 詳細については、[Azure 上で Linux VM を稼働させる](../virtual-machines/linux/create-upload-generic.md)ための手順のページを参照してください。同ページでは、一部の人気 Linux ディストリビューションを対象とした手順も紹介しています。
 
-Linux VM エージェントをインストールするために[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧を確認します。 エージェントレスの VMware 移行方法を使用する場合、RHEL6、RHEL7、CentOS7 (6 は RHEL と同様にサポート)、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04、Ubuntu 19.04、Ubuntu 19.10、Ubuntu 20.04 の Linux VM エージェントが Azure Migrate によって自動的にインストールされます。
+Linux VM エージェントをインストールするために[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧を確認します。 エージェントレスの VMware 移行方法を使用する場合、Azure Migrate では、RHEL 8/7/6、CentOS 8/7/6、Ubuntu 14.04/16.04/18.04/19.04/19.10/20.04、SUSE 15 SP0/15 SP1/12、Debian 9/8/7、および Oracle 7 に対して Linux VM エージェントを自動的にインストールします。
 
 ## <a name="check-azure-vm-requirements"></a>Azure VM の要件を確認する
 

@@ -3,12 +3,12 @@ title: Bicep 関数
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Bicep ファイルで使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 06/16/2021
-ms.openlocfilehash: 827770c449d144e266022ee1b53c3b10078f605f
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: dcc0e71917431ac2a181ae87374499a89a27482c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292935"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303987"
 ---
 # <a name="bicep-functions"></a>Bicep 関数
 
@@ -89,6 +89,7 @@ Bicep では、データ型の警告に関する問題の解決に役立つ[任�
 * [listSecrets](./bicep-functions-resource.md#list)
 * [list*](./bicep-functions-resource.md#list)
 * [pickZones](./bicep-functions-resource.md#pickzones)
+* [providers (非推奨)](./bicep-functions-resource.md#providers)
 * [reference](./bicep-functions-resource.md#reference)
 * [resourceId](./bicep-functions-resource.md#resourceid) - 任意のスコープで使用できますが、有効なパラメーターはスコープに応じて変わります。
 * [subscriptionResourceId](./bicep-functions-resource.md#subscriptionresourceid)

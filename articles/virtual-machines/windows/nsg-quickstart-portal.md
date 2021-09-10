@@ -6,16 +6,19 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 05/27/2020
+ms.date: 08/27/2021
 ms.author: cynthn
-ms.openlocfilehash: 28b3ee98d44e1567d9e25cf9237015396975ab01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78fce318d07e8603830fe04b41df387e6a25f8d9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550452"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227247"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
+
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
@@ -30,7 +33,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     **[ネットワーク セキュリティ グループの作成]** ウィンドウが開きます。
 
-    ![ネットワーク セキュリティ グループの作成](./media/nsg-quickstart-portal/create-nsg.png)
+    :::image type="content" source="media/nsg-quickstart-portal/create-nsg.png" alt-text="ネットワーク セキュリティ グループを作成します。":::
 
 1. ネットワーク セキュリティ グループの名前を入力します。 
 
@@ -40,14 +43,14 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-an-inbound-security-rule"></a>受信セキュリティ規則の作成
 
-1. 新しいネットワーク セキュリティ グループを選択します。 
+1. 新しいネットワーク セキュリティ グループを選択します。
 
 1. 左側のメニューの **[受信セキュリティ規則]** を選択してから、 **[追加]** を選択します。
 
-    ![[詳細設定] ページを開く](./media/nsg-quickstart-portal/advanced.png)
+    :::image type="content" source="media/nsg-quickstart-portal/advanced.png" alt-text="受信セキュリティ規則を追加します。":::
 
-1. **[受信セキュリティ規則を追加する]** ページで、ページの上部にある **[基本]** から **[詳細設定]** に切り替えます。 
-
+1. 必要に応じて **[ソース]** と **[ソース ポート範囲]** を制限することも、既定の *[すべて]* のままにすることもできます。
+1. 必要に応じて **[宛先]** を制限することも、既定の *[すべて]* のままにすることもできます。
 1. **[サービス]** ボックスの一覧で共通のサービスを選択します (たとえば、 **[HTTP]** )。 使用する特定のポートを指定する場合、 **[カスタム]** を選択することもできます。 
 
 1. 必要に応じて、 **[優先度]** または **[名前]** を変更します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。

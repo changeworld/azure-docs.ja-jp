@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
-ms.date: 03/17/2021
-ms.openlocfilehash: 366feb50ef79fc2061f589c3a227c780df258344
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: d61d2b7799ab715532b703b5c73ad045e8be6226
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638112"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313962"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
 
@@ -43,7 +43,31 @@ Table Storage には、サポートされているソース データ ストア�
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、Table Storage に固有の Data Factory エンティティの定義に使用されるプロパティの詳細を説明します。
+## <a name="create-an-azure-table-storage-linked-service-using-ui"></a>UI を使用して Azure Table Storage のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Table Storage のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Azure Table を検索し、Azure Table Storage コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-table-storage/azure-table-storage-connector.png" alt-text="Azure Table Storage コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-table-storage/configure-azure-table-storage-linked-service.png" alt-text="Azure Table Storage のリンク サービスの構成を示すスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、Azure Table Storage に固有のエンティティの定義に使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 

@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 07/06/2021
-ms.openlocfilehash: 4d819993f2c0fdab6da67e98fc767020e543844f
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: c445b6252f19415e51f46f044497ab80207ee860
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720448"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272189"
 ---
 # <a name="prepare-for-vmware-agentless-migration"></a>VMware のエージェントレス移行の準備をする
 
@@ -271,7 +271,7 @@ Azure Migrate により、一時的な VM をホストするためのネット�
 
     Azure Migrate により、Microsoft Azure Linux エージェント (waagent) のインストールが試みられます。これは、Linux と FreeBSD のプロビジョニングおよび VM と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された軽量のプロセスです。  Linux エージェントにより Linux と FreeBSD IaaS のデプロイで有効になる機能の詳細については、[こちら](../virtual-machines/extensions/agent-linux.md)を参照してください。
 
-    Linux VM エージェントをインストールするために[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧を確認します。 エージェントレスの VMware 移行方法を使用する場合、RHEL6、RHEL7、CentOS7 (6 は RHEL と同様にサポート)、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04、Ubuntu 19.04、Ubuntu 19.10、Ubuntu 20.04 の Linux VM エージェントが Azure Migrate によって自動的にインストールされます。 他の OS バージョンについては、[Linux エージェントの手動インストール手順](../virtual-machines/extensions/agent-linux.md#installation)に従ってください。
+    Linux VM エージェントをインストールするために[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧を確認します。 エージェントレスの VMware 移行方法を使用する場合、Azure Migrate では、RHEL 8/7/6、CentOS 8/7/6、Ubuntu 14.04/16.04/18.04/19.04/19.10/20.04、SUSE 15 SP0/15 SP1/12、Debian 9/8/7、および Oracle 7 に対して Linux VM エージェントを自動的にインストールします。 他の OS バージョンについては、[Linux エージェントの手動インストール手順](../virtual-machines/extensions/agent-linux.md#installation)に従ってください。
 
     Azure Linux エージェントのサービス状態を検証するためのコマンドを使用して、それが実行されていることを確認できます。 サービス名は **walinuxagent** や **waagent** のようになります。
     ハイドレーションの変更が完了すると、スクリプトによって、マウントされているすべてのパーティションのマウントが解除され、ボリューム グループが非アクティブ化された後、デバイスがフラッシュされます。

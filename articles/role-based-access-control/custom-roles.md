@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/15/2021
+ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: 6177de5dfc89dcbc33b9ff4291bf65ea909a3b9b
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 9553e53cda41a4fe4d926923bdd71d7d7c5ebb15
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112235718"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308414"
 ---
 # <a name="azure-custom-roles"></a>Azure カスタム ロール
 
@@ -65,13 +65,13 @@ Azure には、カスタム ロールに含めることができる何千もの�
 
     Azure portal を使用してカスタム ロールを作成する場合は、キーワードを検索してリソース プロバイダーを特定することもできます。 この検索機能については、「[Azure portal を使用して Azure カスタム ロールを作成または更新する](custom-roles-portal.md#step-4-permissions)」で説明しています。
 
-    ![リソース プロバイダーが含まれた [アクセス許可の追加] ペイン](./media/custom-roles-portal/add-permissions-provider.png)
+    ![リソース プロバイダーが含まれた [アクセス許可の追加] ペイン](./media/shared/add-permissions-provider.png)
 
 - [使用可能なアクセス許可](resource-provider-operations.md)を検索して、含めるアクセス許可を見つけます。
 
     Azure portal を使用してカスタム ロールを作成する場合は、キーワードを使用してアクセス許可を検索できます。 たとえば、"*仮想マシン*" や "*請求*" のアクセス許可を検索できます。 すべてのアクセス許可を CSV ファイルとしてダウンロードし、このファイルを検索することもできます。 この検索機能については、「[Azure portal を使用して Azure カスタム ロールを作成または更新する](custom-roles-portal.md#step-4-permissions)」で説明しています。
 
-    ![[アクセス許可の追加] の一覧](./media/custom-roles-portal/add-permissions-list.png)
+    ![[アクセス許可の追加] の一覧](./media/shared/add-permissions-list.png)
 
 ## <a name="custom-role-example"></a>カスタム ロールの例
 
@@ -147,15 +147,11 @@ Azure CLI を使用して表示される同じカスタム ロールを次に示
 ]
 ```
 
-カスタム ロールを作成すると、Azure portal にオレンジ色のリソース アイコンと共に表示されます。
-
-![カスタム ロールのアイコン](./media/custom-roles/roles-custom-role-icon.png)
-
 ## <a name="custom-role-properties"></a>カスタム ロールのプロパティ
 
 次の表で、カスタム ロールのプロパティについて説明します。
 
-| プロパティ | 必須 | 型 | 説明 |
+| プロパティ | 必須 | Type | 説明 |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | はい | String | カスタム ロールの表示名。 ロールの定義は、管理グループまたはサブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
 | `Id`</br>`name` | はい | String | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
@@ -210,7 +206,7 @@ Microsoft.CostManagement/exports/*
 - `DataActions` が含まれるカスタム ロールを管理グループのスコープで割り当てることはできません。
 - ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。
 
-カスタム ロールと管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)」をご覧ください。
+カスタム役割と管理グループの詳細については、「[Azure 管理グループとは](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)」を参照してください。
 
 ## <a name="input-and-output-formats"></a>入力形式と出力形式
 

@@ -8,12 +8,12 @@ ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 023320d29eac767e62e07c58de4f8fa6ac61b61f
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a7841fcafff49dab43d944cfa6fd84e9b7119080
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112117838"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260008"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Azure ファイル共有の誤削除を防ぐ
 Azure Files では、ファイル共有の論理的な削除機能が提供されます。 論理的な削除を使用すると、アプリケーションまたは他のストレージ アカウント ユーザーが誤ってファイル共有を削除した場合に、データを回復できます。
@@ -50,7 +50,7 @@ Azure ファイル共有の論理的な削除が有効になっている場合�
 
 Standard と Premium の両方のファイル共有は、プロビジョニングされた容量ではなく、論理的な削除時の使用済み容量に課金されます。 さらに、Premium ファイル共有には、論理的な削除状態の間、スナップショット レートで課金されます。 Standard ファイル共有は、論理的な削除状態の間、通常のレートで課金されます。 構成されている保有期間の後で完全に削除されたデータについては課金されません。
 
-Azure File Storage の一般的な料金の詳細については、[Azure File Storage の料金ページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
+Azure Files の一般的な料金の詳細については、[Azure Files の料金ページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
 
 論理的な削除を初めて有効にするときは、保有期間を短くして、この機能が請求に及ぼす影響をよく理解することをお勧めします。
 

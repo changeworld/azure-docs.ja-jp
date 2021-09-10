@@ -11,12 +11,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc0eed20ee392b668078425946b39ac6c6440c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ad99f677cde82f461eee6396d945fb3cd030245
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742891"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306110"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド同期を選択して使用する方法に関するガイダンスを示します。
@@ -33,9 +33,9 @@ Azure AD Connect クラウド同期を使用するには、次のものが必要
 グループ管理サービス アカウントは、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、管理を他の管理者に委任する機能を提供し、またこの機能を複数のサーバーに拡張する、マネージド ドメイン アカウントです。  Azure AD Connect Cloud Sync では、エージェントを実行するための gMSA がサポートされ、使用されています。  このアカウントを作成するために、セットアップ中に管理者資格情報の入力を求められます。  このアカウントは、(domain\provAgentgMSA$) として表示されます。  gMSA の詳細については、[グループ管理サービス アカウント](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)に関するページを参照してください。 
 
 ### <a name="prerequisites-for-gmsa"></a>gMSA の前提条件:
-1.  gMSA ドメインのフォレスト内の Active Directory スキーマを Windows Server 2016 に更新する必要があります。
+1.  gMSA ドメインのフォレスト内の Active Directory スキーマを Windows Server 2012 以降に更新する必要があります。
 2.  ドメイン コントローラー上の [PowerShell RSAT モジュール](/windows-server/remote/remote-server-administration-tools)
-3.  ドメイン内の少なくとも 1 つのドメイン コントローラーで Windows Server 2016 が実行されている必要があります。
+3.  ドメイン内の少なくとも 1 つのドメイン コントローラーで Windows Server 2012 以降が実行されている必要があります。
 4.  エージェントをインストールするドメイン参加済みサーバーは、Windows Server 2016 以降である必要があります。
 
 ### <a name="custom-gmsa-account"></a>カスタムの gMSA アカウント
@@ -133,6 +133,9 @@ Azure AD Connect Provisioning Agent を実行している Windows Server では 
 OU スコープ フィルターを使用する場合
 - 特定の構成に対して同期できるのは、最大 59 の個別の OU のみです。 
 - 入れ子になった OU がサポートされています (つまり、130 の入れ子になった OU を持つ OU を同期 **できます** が、同じ構成で 60 の個別の OU を同期することは **できません**)。 
+
+### <a name="password-hash-sync"></a>パスワード ハッシュの同期
+- InetOrgPerson とのパスワード ハッシュ同期の使用はサポートされていません。
 
 
 ## <a name="next-steps"></a>次のステップ 

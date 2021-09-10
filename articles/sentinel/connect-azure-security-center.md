@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 0d348231c28e33b7eaef97a468e7e8a6a8677c32
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 9612b5aaaec10358609abba3878f6f09405ad076
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179391"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260120"
 ---
 # <a name="connect-azure-defender-alerts-from-azure-security-center"></a>Azure Security Center からの Azure Defender アラートの接続
 
@@ -56,7 +56,7 @@ Azure Defender 自体はサブスクリプションごとに有効にされる�
 
 1. Azure Sentinel で、ナビゲーション メニューから **[Data connectors]\(データ コネクタ\)** を選択します。
 
-1. データ コネクタ ギャラリーで、 **[Azure Defender]** を選択し、詳細ウィンドウで **[コネクタ ページを開く]** をクリックします。
+1. データ コネクタ ギャラリーで、 **[Azure Defender]** を選択し、詳細ウィンドウで **[コネクタ ページを開く]** を選択します。
 
 1. **[構成]** に、テナント内のサブスクリプションの一覧と、サブスクリプションと Azure Defender との接続の状態が表示されます。 アラートを Azure Sentinel にストリーミングするサブスクリプションの横にある **[状態]** トグルを選択します。 一度に複数のサブスクリプションを接続する場合は、関連するサブスクリプションの横にあるチェック ボックスをオンにし、一覧の上にあるバーの **[接続]** ボタンを選択します。
 

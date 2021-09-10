@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: デジタル ツインの概念と、そのリレーションシップによってグラフが作成されるしくみについて説明します。
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 8/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1145525fe3d2e7c42204aa675153d4eb099cccce
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 42cce83683df789aeaabe53ca170f17319ec3603
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254242"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224833"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
@@ -25,7 +25,7 @@ Azure Digital Twins ソリューションでは、環境内のエンティティ
 
 Azure Digital Twins インスタンスでデジタル ツインを作成するには、"*モデル*" をサービスにアップロードしておく必要があります。 モデルは、特に、プロパティ、テレメトリ メッセージ、特定のツインが持つことのできるリレーションシップのセットを記述したものです。 モデルで定義される情報の種類については、[カスタム モデル](concepts-models.md)に関するページを参照してください。
 
-モデルを作成してアップロードしたら、クライアント アプリはその型のインスタンスを作成できます。これがデジタル ツインです。 たとえば、モデル Floor を作成したら、この型を使用する 1 つまたは複数のデジタル ツイン (GroundFloor という Floor 型ツイン、Floor2 という別のツインなど) を作成できます。
+モデルを作成してアップロードしたら、クライアント アプリではその型のインスタンスを作成できます。 このインスタンスがデジタル ツインです。 たとえば、モデル Floor を作成したら、この型を使用する 1 つまたは複数のデジタル ツイン (GroundFloor という Floor 型ツイン、Floor2 という別のツインなど) を作成できます。
 
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
@@ -43,7 +43,7 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 ## <a name="create-with-the-apis"></a>API を使用して作成する
 
-このセクションでは、クライアント アプリケーションからデジタル ツインとリレーションシップを作成する方法について説明します。 これらの各概念の内部で何が行われるかについて追加のコンテキストを提供するため、[Digital Twins API](/rest/api/digital-twins/dataplane/twins) を利用する .NET コードの例が含まれています。
+このセクションでは、クライアント アプリケーションからデジタル ツインとリレーションシップを作成する方法について説明します。 これらの各概念の内部で何が行われるかについて追加のコンテキストを提供するため、[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用する .NET コードの例が含まれています。
 
 ### <a name="create-digital-twins"></a>デジタル ツインを作成する
 
@@ -66,7 +66,7 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 ## <a name="json-representations-of-graph-elements"></a>グラフ要素の JSON 表現
 
-デジタル ツイン データとリレーションシップ データは、どちらも JSON 形式で保存されます。 つまり、Azure Digital Twins インスタンスで[ツイン グラフのクエリを実行する](how-to-query-graph.md)と、結果は作成済みのデジタル ツインとリレーションシップの JSON 表現になります。
+デジタル ツイン データとリレーションシップ データは、どちらも JSON 形式で保存されます。つまり、Azure Digital Twins インスタンスで[ツイン グラフのクエリを実行する](how-to-query-graph.md)と、結果は作成済みのデジタル ツインとリレーションシップの JSON 表現になります。
 
 ### <a name="digital-twin-json-format"></a>デジタル ツインの JSON 形式
 

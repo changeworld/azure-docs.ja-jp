@@ -1,24 +1,27 @@
 ---
 title: Azure Data Factory での Excel 形式
-description: このトピックでは、Azure Data Factory で Excel 形式を処理する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: このトピックでは、Azure Data Factory および Azure Synapse Analytics で Excel 形式を処理する方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 73831a22974513cfc8e8a281099fc652fce4176f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7a1a0331276169bb81dcf86c74aab1a16855b25c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090138"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255849"
 ---
-# <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
+# <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での Excel ファイル形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**Excel ファイルを解析する場合** は、この記事に従ってください。 Azure Data Factory は ".xls" と ".xlsx" の両方をサポートしています。
+**Excel ファイルを解析する場合** は、この記事に従ってください。 このサービスは ".xls" と ".xlsx" の両方に対応しています。
 
-Excel 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[File System](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。 これはソースとしてはサポートされますが、シンクとしてはサポートされません。 
+Excel 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。 これはソースとしてはサポートされますが、シンクとしてはサポートされません。 
 
 >[!NOTE]
 >[HTTP](connector-http.md) の使用中は、".xls" 形式はサポートされません。

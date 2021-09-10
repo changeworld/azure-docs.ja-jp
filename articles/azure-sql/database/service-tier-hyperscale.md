@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 7/8/2021
-ms.openlocfilehash: ca9bfaa6155c2d0f4600ed56bf5a3cab3880274c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd5a9d64b237fe8c6591cac841b13f96a9c16f1d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722906"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864454"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -141,6 +141,11 @@ Azure SQL Database の既存のデータベースを Hyperscale に移行する�
 ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
+
+> [!NOTE]
+> [geo レプリケーション](active-geo-replication-overview.md)のリレーションシップの一部であるデータベースを、プライマリまたはセカンダリとして Hyperscale に移動するには、レプリケーションを停止する必要があります。 [フェールオーバー グループ](auto-failover-group-overview.md)内のデータベースは、最初にグループから削除する必要があります。
+>
+> データベースを Hyperscale に移動したら、そのデータベース用の新しい Hyperscale geo レプリカを作成できます。 Hyperscale の geo レプリケーションはプレビュー中で、特定の[制限](active-geo-replication-overview.md)があります。
 
 ## <a name="database-high-availability-in-hyperscale"></a>Hyperscale でのデータベースの高可用性
 

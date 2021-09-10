@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4c84b46fe3265b5ada792cbe47d92768e602fa20
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 68dee7e8d00f3f1b6853a7be5c9328647d96371d
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229038"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272081"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を構成する
 
@@ -22,6 +22,8 @@ ms.locfileid: "108229038"
 * プライベート ピアリング経由のトラフィックは暗号化されます。
 
 * 仮想ネットワーク ゲートウェイに接続するポイント対サイト ユーザーは、(サイト間トンネルを介して) ExpressRoute を使用してオンプレミス リソースにアクセスできます。
+
+* 同じ VPN ゲートウェイ上で、インターネットを介したサイト間 vpn 接続と同時に、ExpressRoute プライベートピアリング経由でサイト間 VPN 接続を展開することができます。
 
 >[!NOTE]
 >この機能は、ゾーン冗長ゲートウェイでのみサポートされています。 たとえは、VpnGw1AZ、VpnGw2AZ などです。

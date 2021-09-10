@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 08/01/2021
 ms.author: wellee
-ms.openlocfilehash: d61e6c3847d9ce64f9c3f17da1300b32a1a8e643
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 5fb694cd1dab2d53495e2e4b513ce6bfe2ebaff9
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122206346"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101831"
 ---
 # <a name="how-to-configure-virtual-wan-hub-routing-intent-and-routing-policies"></a>Virtual WAN ハブのルーティング インテントとルーティング ポリシーの構成方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "122206346"
 > 
 > このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 一部の機能はサポート対象ではないか、機能が制限されることがあります。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 > 
-> このプレビューへのアクセス権を取得するには、Virtual WAN ID、サブスクリプション ID、およびルーティング インテントを構成する Azure リージョンをご用意のうえ、previewinterhub@microsoft.com までご連絡ください。 機能の有効化の確認については、48 営業時間内に応答する予定です。
+> プレビューへのアクセスを取得するには、同じ Azure リージョンにゲートウェイ (サイト間 VPN ゲートウェイ、ポイント対サイトゲートウェイ、ExpressRouteGateways) の両方に 2 つのハブをデプロイし、previewinterhub@microsoft.com ルーティングの目的を構成する仮想 WAN ID、サブスクリプション ID、および Azure リージョンでアクセスしてください。 機能の有効化の確認については、48 営業時間内に応答する予定です。 機能の有効化後に作成されたゲートウェイは、仮想 WAN チームでアップグレードする必要があることに注意してください。
 
 ## <a name="background"></a>バックグラウンド 
 
@@ -53,7 +53,7 @@ Azure Firewall Manager を使用してパブリックおよびプライベート
 ## <a name="prerequisites"></a>前提条件
 1. Virtual WAN を作成します。 少なくとも 2 つの仮想ハブを **同じ** リージョンに作成します。 たとえば、米国東部に 2 つの仮想ハブを持つ Virtual WAN を作成できます。 
 2. 選択したリージョンの仮想ハブに Azure Firewall をデプロイして、Virtual WAN ハブをセキュリティで保護された Virtual WAN ハブに変換します。 Virtual WAN ハブをセキュリティで保護された Virtual WAN ハブに変換する方法の詳細については、[こちらのドキュメント](howto-firewall.md)を参照してください。
-3. **previewinterhub@microsoft.com** に対し、**Virtual WAN リソース ID** と、ルーティング ポリシーを構成する **Azure 仮想ハブ リージョン** を使用して連絡します。 Virtual WAN ID を見つけるには、Azure portal を開いて Virtual WAN リソースにナビゲートして、[設定] > [プロパティ] > [リソース ID] を選択します。 次に例を示します。 
+3. テストに使用するサイト間 VPN、ポイント対サイト VPN、ExpressRoute ゲートウェイをデプロイします。 **previewinterhub@microsoft.com** に対し、**Virtual WAN リソース ID** と、ルーティング ポリシーを構成する **Azure 仮想ハブ リージョン** を使用して連絡します。 Virtual WAN ID を見つけるには、Azure portal を開いて Virtual WAN リソースにナビゲートして、[設定] > [プロパティ] > [リソース ID] を選択します。 次に例を示します。 
 ```
     /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualWans/<virtualWANname>
 ```
@@ -157,6 +157,7 @@ Azure Firewall Manager を使用してパブリックおよびプライベート
 * 現在、Azure Firewall を使用してハブ間トラフィックを検査する方法は、**同じ** Azure リージョンにデプロイされている Virtual WAN ハブでのみ使用できます。 
 * 現在、プライベート トラフィック ルーティング ポリシーは、暗号化された ExpressRoute 接続 (ExpressRoute プライベート接続を介して実行されるサイト間 VPN トンネル) を使用するハブではサポートされません。 
 * DefaultRouteTable の [Effective Routes]\(有効なルート\) を確認することで、ルーティング ポリシーが正しく適用されていることを確認できます。 プライベート ルーティング ポリシーが構成されている場合は、DefaultRouteTable のルートに、ネクスト ホップ Azure Firewall が設定されたプライベート トラフィック プレフィックスが表示されます。 インターネット トラフィック ルーティング ポリシーが構成されている場合は、ネクスト ホップ Azure Firewall が設定された DefaultRouteTable の既定の (0.0.0.0/0) ルートが表示されます。
+* デプロイで機能が有効になっていると確認された **後** で作成されたサイト間 VPN ゲートウェイまたはポイント対サイト VPN ゲートウェイがある場合は、機能を有効にするためにもう一度 previewinterhub@microsoft.com にアクセスする必要があります。 
 
 ### <a name="troubleshooting-azure-firewall"></a>Azure Firewall のトラブルシューティング
 

@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 07/28/2021
+ms.date: 08/26/2021
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 4145cc06148db0f12ff2a2288512069155d09a44
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc30e9a22d2de952974b064cb82e8e7adf0579f8
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014618"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123078325"
 ---
 | リソース | 制限 |
 | --- | --- |
 | データ スループット |30 Gbps|
 |ルールの上限|ネットワーク ルールに含まれる送信元と送信先の一意の組み合わせ 10,000 件|
-|最大 DNAT ルール|250 |
+|最大 DNAT ルール|298 (1 つのパブリック IP アドレスで構成されたファイアウォールの場合)<br><br> DNAT の制限は、基になるプラットフォームによるものです。 DNAT 規則の最大数は 298 です。 ただし、パブリック IP アドレスが追加されると、使用可能な DNAT 規則の数は少なくなります。 たとえば、2 つのパブリック IP アドレスの場合、297 個の DNAT 規則を使用できます。 規則のプロトコルが TCP と UDP の両方に対して構成されている場合は、2 つの規則としてカウントされます。|
 |AzureFirewallSubnet の最小サイズ |/26|
 |ネットワークおよびアプリケーション ルールのポート範囲|1 - 65535|
 |パブリック IP アドレス|最大 250 個。 すべてのパブリック IP アドレスは DNAT ルールで使用できます。これらはすべて、利用可能な SNAT ポートに影響します。|

@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 08/06/2021
-ms.openlocfilehash: 0f4ed167fc1fd77e4b16b1f06a5beaa3ba9aef14
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.date: 08/30/2021
+ms.openlocfilehash: cad2ac9319eb674cb8022ff5ce3d2df2a57df648
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122202069"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224705"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -134,7 +134,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 ## <a name="enable-ssh-access"></a><a name="enable-ssh"></a>SSH アクセスを有効にする
 
-SSH アクセスは既定では無効になっています。  SSH アクセスは、作成後に変更することはできません。 [VS Code Remote](how-to-set-up-vs-code-remote.md) を使用して対話形式でデバッグする場合は、アクセスを有効にする必要があります。  
+SSH アクセスは既定では無効になっています。  作成後に SSH アクセスの設定を変更することはできません。 [VS Code Remote](how-to-set-up-vs-code-remote.md) を使用して対話形式でデバッグする場合は、アクセスを有効にする必要があります。  
 
 [!INCLUDE [amlinclude-info](../../includes/machine-learning-enable-ssh.md)]
 
@@ -188,54 +188,59 @@ SSH アクセスは既定では無効になっています。  SSH アクセス�
 1. 別のスケジュールを作成する場合は、 **[スケジュールの追加]** をもう一度選択します。
 
 コンピューティング インスタンスが作成されたら、コンピューティング インスタンスの詳細セクションからスケジュールを表示、編集、または新しいスケジュールを追加できます。
+タイムゾーン ラベルでは、夏時間については考慮されません。 たとえば、(UTC + 01:00) のアムステルダム、ベルリン、ベルン、ローマ、ストックホルム、ウィーンは、夏時間中は、実際は UTC + 02:00 になります。
 
 ### <a name="create-a-schedule-with-a-resource-manager-template"></a>Resource Manager テンプレートでスケジュールを作成する
 
-Resource Manager テンプレートを使用して、コンピューティング インスタンスの自動開始と自動停止をスケジュール設定できます。  Resource Manager テンプレートでは、cron または LogicApps 式のいずれかを使用して、インスタンスを開始または停止するスケジュールを定義します。  
+Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)を使用して、コンピューティング インスタンスの自動の開始と停止をスケジュール設定できます。
 
+Resource Manager テンプレートに、以下を追加します。
+
+```
+"schedules": "[parameters('schedules')]"
+```
+
+次に、cron または LogicApps 式を使用して、パラメーター ファイル内のインスタンスを開始または停止するスケジュールを定義します。
+ 
 ```json
-"schedules": {
-  "computeStartStop": [
-      {
-      "triggerType": "Cron",
-      "cron": {
-          "startTime": "2021-03-10T21:21:07",
-          "timeZone": "Pacific Standard Time",
-          "expression": "0 18 * * *"
-      },
-      "action": "Stop",
-      "status": "Enabled"
-      },
-      {
-      "triggerType": "Cron",
-      "cron": {
-          "startTime": "2021-03-10T21:21:07",
-          "timeZone": "Pacific Standard Time",
-          "expression": "0 8 * * *"
-      },
-      "action": "Start",
-      "status": "Enabled"
-      },
-      { 
-      "triggerType": "Recurrence", 
-      "recurrence": { 
-          "frequency": "Day", 
-          "interval": 1,
-          "timeZone": "Pacific Standard Time", 
-        "schedule": { 
-          "hours": [18], 
-          "minutes": [0], 
-          "weekDays": [ 
-              "Saturday", 
-              "Sunday"
-          ] 
+        "schedules": {
+        "value": {
+        "computeStartStop": [
+          {
+            "triggerType": "Cron",
+            "cron": {              
+              "timeZone": "UTC",
+              "expression": "0 18 * * *"
+            },
+            "action": "Stop",
+            "status": "Enabled"
+          },
+          {
+            "triggerType": "Cron",
+            "cron": {              
+              "timeZone": "UTC",
+              "expression": "0 8 * * *"
+            },
+            "action": "Start",
+            "status": "Enabled"
+          },
+          { 
+            "triggerType": "Recurrence", 
+            "recurrence": { 
+              "frequency": "Day", 
+              "interval": 1, 
+              "timeZone": "UTC", 
+              "schedule": { 
+                "hours": [17], 
+                "minutes": [0]
+              } 
+            }, 
+            "action": "Stop", 
+            "status": "Enabled" 
           } 
-      }, 
-      "action": "Stop", 
-      "status": "Enabled" 
-      } 
-  ]
-}
+        ]
+      }
+    }
 ```
 
 * アクションには、"Start" または "Stop" の値を指定できます。
@@ -261,7 +266,7 @@ Resource Manager テンプレートを使用して、コンピューティング
     // hyphen (meaning an inclusive range). 
     ```
 
-Azure policy を使用して、サブスクリプション内のすべてのコンピューティング インスタンスに対してシャットダウン スケジュールを適用するか、何も存在しない場合は既定の 1 つのスケジュールを適用します。
+Azure Policy を使用して、サブスクリプション内のすべてのコンピューティング インスタンスに対して存在するシャットダウン スケジュールを適用するか、何も存在しない場合のスケジュールを既定値として設定します。
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> スクリプトを使用したコンピューティング インスタンスのカスタマイズ (プレビュー)
 
@@ -293,23 +298,11 @@ Azure policy を使用して、サブスクリプション内のすべてのコ�
 
 conda 環境や jupyter カーネルのインストールなど、スクリプトで azureuser 固有の処理を行っていた場合は、次のように *sudo -u azureuser* ブロック内に置く必要があります
 
-```shell
-#!/bin/bash
+:::code language="bash" source="~/azureml-examples-main/setup-ci/install-pip-package.sh":::
 
-set -e
-
-# This script installs a pip package in compute instance azureml_py38 environment
-
-sudo -u azureuser -i <<'EOF'
-# PARAMETERS
-PACKAGE=numpy
-ENVIRONMENT=azureml_py38 
-conda activate "$ENVIRONMENT"
-pip install "$PACKAGE"
-conda deactivate
-EOF
-```
 *sudo -u azureuser* コマンドを実行すると、現在の作業ディレクトリが */home/azureuser* に変更されます。 また、このブロック内のスクリプト引数にアクセスすることはできません。
+
+その他のスクリプトの例については、[azureml-examples](https://github.com/Azure/azureml-examples/tree/main/setup-ci)を参照してください。
 
 スクリプトでは、次の環境変数も使用できます。
 
@@ -318,7 +311,8 @@ EOF
 3. CI_NAME
 4. CI_LOCAL_UBUNTU_USER。 これは azureuser を示しています
 
-セットアップ スクリプトを Azure policy と組み合わせて使用すると、すべてのコンピューティング インスタンスの作成に対してセットアップ スクリプトを強制的に適用するか、既定値を適用できます。
+セットアップ スクリプトを **Azure Policy と組み合わせて使用すると、すべてのコンピューティング インスタンスの作成に対してセットアップ スクリプトを強制的に適用するか、既定値として設定できます**。 セットアップ スクリプトのタイムアウトの既定値は 15 分です。 これは、Studio UI または ARM テンプレートで DURATION パラメーターを使用して変更できます。
+DURATION は、省略可能なサフィックスを持つ浮動小数点数です。秒の場合は 's' (既定値)、分の場合は 'm'、時の場合は 'h'、日の場合は 'd' です。
 
 ### <a name="use-the-script-in-the-studio"></a>スタジオでスクリプトを使用する
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/29/2021
+ms.date: 08/30/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9736bee99483a7e4fbb5a5f02a3f415a74c9f76f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c91d4f98928f2d446a15b123a4155b971377159a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727742"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223837"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory で属性マッピングの式を記述するためのリファレンス
 
@@ -38,7 +38,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 ## <a name="list-of-functions"></a>関数の一覧
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -265,11 +265,8 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は�
 
 **間隔** 文字列には次のいずれかの値が必要です。 
  * yyyy: 年 
- * q: 四半期
  * m: 月
- * y: 年間通算日
  * d: 日
- * w: 週日
  * ww: 週
  * h: 時
  * n: 分
@@ -299,6 +296,57 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は�
 `DateAdd("yyyy", 2, CDate([StatusHireDate]))`
 * **入力** (StatusHireDate): 2012-03-16-07:00
 * **出力**: 3/16/2014 7:00:00 AM
+---
+### <a name="datediff"></a>DateDiff
+**関数:**  
+`DateDiff(interval, date1, date2)`
+
+**説明:**  
+この関数は *interval* パラメーターを使用して、入力された 2 つの日付の差を示す数値を返します。  を返します。 
+  * date2 が date1 より大きい場合は正の数 
+  * date2 が date1 より小さい場合は負の数 
+  * date2 と date1 が等しい場合は 0
+
+**パラメーター:** 
+
+| 名前 | 必須/省略可能 | Type | メモ |
+| --- | --- | --- | --- |
+| **interval** |必須 | String | 差の計算に使用する時間の間隔。 |
+| **date1** |必須 | DateTime | 有効な日付を表す DateTime。 |
+| **date2** |必須 | DateTime | 有効な日付を表す DateTime。 |
+
+**間隔** 文字列には次のいずれかの値が必要です。 
+ * yyyy: 年 
+ * m: 月
+ * d: 日
+ * ww: 週
+ * h: 時
+ * n: 分
+ * s: 秒
+
+**例 1: 現在の日付と Workday の採用日を異なる間隔で比較する** <br>
+`DateDiff("d", Now(), CDate([StatusHireDate]))`
+
+| 例 | interval | date1 | date2 | output |
+| --- | --- | --- | --- | --- |
+| 2 つの日付の間における日数の正の差 | d | 2021-08-18+08:00 | 2021-08-31+08:00 | 13 |
+| 2 つの日付の間における日数の負の差 | d | 8/25/2021 5:41:18 PM | 2012-03-16-07:00 | -3449 |
+| 2 つの日付の間の週の差 | ww | 8/25/2021 5:41:18 PM | 2012-03-16-07:00 | -493 | 
+| 2 つの日付の間の月の差 | m | 8/25/2021 5:41:18 PM | 2012-03-16-07:00 | -113 | 
+| 2 つの日付の間の年の差 | yyyy | 8/25/2021 5:41:18 PM | 2012-03-16-07:00 | -9 | 
+| 両方の日付が同じ場合の差 | d | 2021-08-31+08:00 | 2021-08-31+08:00 | 0 | 
+| 2 つの日付の間の時間の差 | h | 2021-08-24 | 2021-08-25 | 24 | 
+| 2 つの日付の間の分の差 | n | 2021-08-24 | 2021-08-25 | 1440 | 
+| 2 つの日付の間の秒の差 | s | 2021-08-24 | 2021-08-25 | 86400 | 
+
+**例 2: DateDiff と IIF 関数を組み合わせて属性値を設定する** <br>
+Workday でアカウントが Active な場合、雇用日が次の 5 日以内の場合にのみ、ユーザーの *accountEnabled* 属性を True に設定します。 
+
+```
+Switch([Active], , 
+  "1", IIF(DateDiff("d", Now(), CDate([StatusHireDate])) > 5, "False", "True"), 
+  "0", "False")
+```
 
 ---
 
@@ -563,6 +611,28 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | **source** |必須 |String | 通常は、名または姓の属性です。 |
 
 
+| 分音記号を含む文字  | 正規化された文字 | 分音記号を含む文字  | 正規化された文字 | 
+| --- | --- | --- | --- | 
+| ä, à, â, ã, å, á, ą, ă | a | Ä, À, Â, Ã, Å, Á, Ą, Ă | A | 
+| æ | ae | Æ | AE | 
+| ç, č, ć | c | Ç, Č, Ć | C | 
+| ď | d | Ď | D | 
+| ë, è, é, ê, ę, ě, ė | e | Ë, È, É, Ê, Ę, Ě, Ė | E | 
+| ğ | G | Ğ | G | 
+| Ï, Î, Ì, Í, İ | I | ï, î, ì, í, ı | i | 
+| ľ, ł | l |  Ł, Ľ | L | 
+| ñ, ń, ň | n |  Ñ, Ń, Ň | N | 
+| ö, ò, ő, õ, ô, ó | o |  Ö, Ò, Ő, Õ, Ô, Ó | O | 
+| ø | oe |  Ø | OE | 
+| ř | r |  Ř | R | 
+| ß | ss | | | 
+| š, ś, ș, ş | s |  Š, Ś, Ș, Ş | S | 
+| ť, ț | t | Ť, Ț | T | 
+| ü, ù, û, ú, ů, ű | u |  Ü, Ù, Û, Ú, Ů, Ű | U | 
+| ÿ, ý | ○ | Ÿ, Ý | Y | 
+| ź, ž, ż | z | Ź, Ž, Ż | Z | 
+
+
 #### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
 例: アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換する必要があります。
 
@@ -611,10 +681,10 @@ Now 関数は、**M/d/yyyy h:mm:ss tt** の形式で現在の UTC DateTime を�
 
 **例:**
 * Workday の例: *2020-12-31-08:00* 形式の Workday の *ContractEndDate* 属性を、AD の *accountExpires* フィールドにマップする場合に、この関数を使用して、ロケールに合わせてタイムゾーン オフセットを変更する方法をここで示します。 
-  `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
+  `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), " 23:59:59-08:00"))`
 
 * SuccessFactors の例: *M/d/yyyy hh:mm:ss tt* 形式の SuccessFactors の *endDate* 属性を、AD の *accountExpires* フィールドにマップする場合に、この関数を使用して、ロケールに合わせてタイムゾーン オフセットを変更する方法をここで示します。
-  `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
+  `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd")," 23:59:59-08:00"))`
 
 
 ---

@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jianleishen
-ms.openlocfilehash: 1883d1192a1908611e3440ea2d39e770b4599bc6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b5bb9cc624f298ae4997b46a5cc7b4cf2a0d21ed
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638619"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250737"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティを使用してメタデータと ACL を保持する
 
@@ -24,7 +24,7 @@ ms.locfileid: "122638619"
 
 ## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Lake 移行用にメタデータを保持する
 
-[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md) などのデータ レイク間でデータを移行する場合は、データと共にファイルのメタデータを保持することもできます。
+[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md) などのデータ レイク間でデータを移行する場合は、データと共にファイルのメタデータを保持することもできます。
 
 コピー アクティビティでは、データのコピー中に次の属性を保持できます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "122638619"
 
 **メタデータの違いに対処する:** Amazon S3 と Azure Storage では、顧客が指定したメタデータのキーにさまざまな文字セットが許可されています。 コピー アクティビティを使用してメタデータを保持することを選択すると、ADF によって無効な文字が自動的に '_' に置き換えられます。
 
-バイナリ形式を使用して Amazon S3/Azure Data Lake Storage Gen2/Azure Blob/Azure File Storage から Azure Data Lake Storage Gen2/Azure Blob/Azure File Storage にファイルをそのままコピーする場合は、アクティビティ作成のための **[コピー アクティビティ]**  >  **[設定]** タブに、または [データのコピー] ツールの **[設定]** ページに、 **[保持]** オプションが表示されます。
+バイナリ形式を使用して Amazon S3/Azure Data Lake Storage Gen2/Azure Blob storage/Azure Files から /Azure Files to Azure Data Lake Storage Gen2/Azure Blob storage/Azure Files にファイルをそのままコピーする場合は、アクティビティ作成のための **[コピー アクティビティ]**  >  **[設定]** タブに、または [データのコピー] ツールの **[設定]** ページに、 **[保持]** オプションが表示されます。
 
 ![コピー アクティビティでのメタデータの保持](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 

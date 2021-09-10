@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 41e78acf37f2f5b9cc0346384fc4964187945386
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: ad9e7979eddac3fc102d9fddae68c230a7418762
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026455"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259557"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -23,7 +23,7 @@ Azure Functions では、Function App インスタンスを作成するときに
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。       |
 
 > [!IMPORTANT]
-> 従量課金/Premium ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
+> 従量課金/Premium ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure Files に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 2f3c672e136152fbd5abec20a81bd04dc5fb2e2a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 84aacb94e2367d8df3311743efaef96ce49d7e55
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637927"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304338"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -50,6 +50,31 @@ Sybase IQ と ASE はサポートされていません。 代わりに、Sybase 
 ## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-sybase-using-ui"></a>UI を使用して Sybase のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Sybase のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI で新しいリンク サービスを作成する。":::
+
+2. Sybase を検索し、Sybase コネクタを選択します。
+
+   :::image type="content" source="media/connector-sybase/sybase-connector.png" alt-text="Sybase コネクタを選択します。":::    
+
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+   :::image type="content" source="media/connector-sybase/configure-sybase-linked-service.png" alt-text="Sybase のリンク サービスを構成します。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
 次のセクションでは、Sybase コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

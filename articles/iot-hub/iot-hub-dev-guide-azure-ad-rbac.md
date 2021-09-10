@@ -7,21 +7,21 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/24/2021
+ms.date: 08/24/2021
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b6ea56942580b3b8785dcf2b694b30ad64e8a258
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: 30be3718215c31566f36d931266e0e5cdf039357
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112894961"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867245"
 ---
 # <a name="control-access-to-iot-hub-using-azure-active-directory"></a>Azure Active Directory を使用して IoT Hub へのアクセスを制御する
 
 Azure IoT Hubでは、Azure Active Directory (AAD) を使用して、デバイス ID の作成やダイレクト メソッドの呼び出しといった、そのサービス API に対する要求を認証できます。 また、IoT Hub では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して同じサービス API を承認することもできます。 これらを併せて、AAD セキュリティ プリンシパル (ユーザー、グループ、アプリケーション サービス プリンシパルなど) に対し、IoT Hub のサービス API にアクセスするためのアクセス許可を付与できます。
 
-Azure AD を使用してアクセスを認証し、Azure RBAC を使用してアクセス許可を制御することで、[セキュリティ トークン](iot-hub-dev-guide-sas.md)よりも優れたセキュリティと使いやすさが実現します。 セキュリティ トークンに固有の潜在的なセキュリティ脆弱性を最小限に抑えるために、Microsoft では、可能な限り、お使いの IoT ハブでは Azure AD を使用することをお勧めします。
+Azure AD を使用してアクセスを認証し、Azure RBAC を使用してアクセス許可を制御することで、[セキュリティ トークン](iot-hub-dev-guide-sas.md)よりも優れたセキュリティと使いやすさが実現します。 セキュリティ トークンに固有の潜在的なセキュリティ脆弱性を最小限に抑えるために、Microsoft では、[可能な限り、お使いの IoT ハブでは Azure AD を使用する](#azure-ad-access-and-shared-access-policies)ことをお勧めします。 
 
 > [!NOTE]
 > Azure AD による認証は、IoT Hub の "*デバイス API*" (デバイスとクラウド間のメッセージや報告されたプロパティの更新など) ではサポートされていません。 IoT ハブに対してデバイスを認証するには、[対称キー](iot-hub-dev-guide-sas.md#use-a-symmetric-key-in-the-identity-registry)または [X.509](iot-hub-x509ca-overview.md) を使用してください。
@@ -98,9 +98,22 @@ IoT Hub には、Azure AD と RBAC を使って IoT Hub サービス API への�
 > [!NOTE]
 > Azure AD を使用して IoT Hub からデータを取得するには、[別のイベント ハブへのルーティングを設定](iot-hub-devguide-messages-d2c.md#event-hubs-as-a-routing-endpoint)します。 [組み込みのイベント ハブ互換エンドポイント](iot-hub-devguide-messages-read-builtin.md)にアクセスするには、以前のように接続文字列 (共有アクセス キー) 方式を使用します。 
 
-## <a name="azure-ad-access-from-azure-portal"></a>Azure portal からの Azure AD のアクセス
+## <a name="azure-ad-access-and-shared-access-policies"></a>Azure AD のアクセスと共有アクセスのポリシー
 
-IoT Hub にアクセスしようとすると、最初に、Azure portal によって、**Microsoft.Devices/iotHubs/listkeys/action** を持つ Azure ロールが割り当てられているかどうかが確認されます。 そうなっている場合、Azure portal では IoT Hub にアクセスするために、共有アクセス ポリシーのキーが使用されます。 そうなっていない場合、Azure portal では、Azure AD アカウントを使用してデータへのアクセスが試みられます。 
+既定で IoT Hub では、Azure AD と、[共有アクセス ポリシーおよびセキュリティ トークン](iot-hub-dev-guide-sas.md)の両方を介したサービス API アクセスをサポートします。 セキュリティ トークンに固有の潜在的なセキュリティ脆弱性を最小限に抑えるために、共有アクセス ポリシーを使用してアクセスを無効にします。 
+
+1. サービスのクライアントとユーザーが、[最小特権の原則](../security/fundamentals/identity-management-best-practices.md)に従って、IoT ハブへの[十分なアクセス権](#manage-access-to-iot-hub-using-azure-rbac-role-assignment)を持っていることを確認してください。
+1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。
+1. 左側で、 **[共有アクセス ポリシー]** を選択します。
+1. **[共有アクセス ポリシーを使用して接続する]** で、 **[拒否]** を選択します。
+    :::image type="content" source="media/iot-hub-dev-guide-azure-ad-rbac/disable-local-auth.png" alt-text="IoT Hub の共有アクセス ポリシーを無効にする方法を示す Azure portal のスクリーンショット":::
+1. 警告を確認し、 **[保存]** を選択します。
+
+これで、IoT ハブ サービス API は、Azure AD と RBAC を使用してのみアクセスできるようになりました。
+
+## <a name="azure-ad-access-from-the-azure-portal"></a>Azure portal からの Azure AD のアクセス
+
+IoT Hub にアクセスしようとすると、最初に、Azure portal によって、**Microsoft.Devices/iotHubs/listkeys/action** を持つ Azure ロールが割り当てられているかどうかが確認されます。 その場合、Azure portal では IoT Hub にアクセスするために、共有アクセス ポリシーのキーが使用されます。 そうなっていない場合、Azure portal では、Azure AD アカウントを使用してデータへのアクセスが試みられます。 
 
 Azure AD アカウントを使用して Azure portal から IoT Hub にアクセスするには、IoT ハブ データ リソース (デバイスやツインなど) にアクセスするためのアクセス許可が必要です。また、Azure portal 内の IoT ハブ リソースに移動するためのアクセス許可も必要です。 IoT Hub によって提供される組み込みロールでは、デバイスやツインなどのリソースへのアクセスは許可されますが、IoT Hub リソースへのアクセスは許可されません。 そのため、ポータルへのアクセスには、[閲覧者](../role-based-access-control/built-in-roles.md#reader)などの Azure Resource Manager (ARM) ロールの割り当ても必要です。 閲覧者のロールは、最も制限されたロールであるため、適切な選択肢です。この場合、ポータルをナビゲートできますが、**Microsoft.Devices/iotHubs/listkeys/action** アクセス許可 (共有アクセス ポリシーを介してすべての IoT Hub データ リソースへのアクセスが許可されます) は含まれません。 
 
@@ -118,7 +131,7 @@ IoT Hub に対するほとんどのコマンドでは、Azure AD 認証がサポ
 
 - 前のように `--auth-type`の値が `key` の場合、CLI により、IoT Hub と対話するときに適切なポリシーが自動的に検出されます。
 
-- `--auth-type` 値が `login` の場合、Azure CLI のログイン済みプリンシパルからのアクセス トークンがこの操作に使用されます。
+- `--auth-type` の値が `login` の場合、Azure CLI のログイン済みプリンシパルからのアクセス トークンがこの操作に使用されます。
 
 詳細については、[Azure CLI 用 Azure IoT 拡張機能のリリース ページ](https://github.com/Azure/azure-iot-cli-extension/releases/tag/v0.10.12)を参照してください
 

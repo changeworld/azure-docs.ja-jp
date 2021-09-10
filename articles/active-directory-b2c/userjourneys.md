@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/27/2021
+ms.date: 08/31/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee0fbab517a34f6986d20ea3271cb4325bf6aabd
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 2a935e88f1127f27e3f779fb88447466c470fd32
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981018"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123271919"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -113,11 +113,6 @@ ms.locfileid: "112981018"
 
 オーケストレーション ステップは、オーケストレーション ステップで定義されている前提条件に基づいて、条件付きで実行できます。 `Preconditions` 要素には、評価する前提条件の一覧が含まれています。 前提条件の評価が満たされると、関連付けられているオーケストレーション ステップが次のオーケストレーション ステップに進みます。 
 
-それぞれの前提条件では 1 つの要求が評価されます。 2 種類の前提条件があります。
- 
-- **Claims exist** - 指定した要求がユーザーの現在の要求バッグに存在する場合に、アクションを実行することが指定されます。
-- **Claim equals** - 指定した要求が存在し、その値が指定した値と等しい場合に、アクションを実行することが指定されます。 このチェックでは、大文字と小文字を区別する順序比較が実行されます。 要求の型がブール値の場合は、`True` または `False` を使用します。
-
 Azure AD B2C では、一覧の順序で前提条件を評価します。 順序に基づく前提条件を使用すると、前提条件を適用する順序を設定できます。 満たされた最初の前提条件によって、後続のすべての前提条件がオーバーライドされます。 オーケストレーション ステップは、すべての前提条件が満たされていない場合にのみ実行されます。 
 
 **Preconditions** 要素には、次の要素が含まれています。
@@ -141,6 +136,31 @@ Azure AD B2C では、一覧の順序で前提条件を評価します。 順序
 | ------- | ----------- | ----------- |
 | 値 | 1:2 | 要求の種類の識別子。 要求は、ポリシー ファイルまたは親ポリシー ファイルの要求スキーマ セクションで、既に定義されています。 前提条件の種類が `ClaimEquals` の場合、2 番目の `Value` 要素には、チェックする値が含まれます。 |
 | アクション | 1:1 | 前提条件の評価が満たされた場合に実行する必要のあるアクション。 指定できる値: `SkipThisOrchestrationStep`。 関連付けられているオーケストレーション ステップが次のオーケストレーション ステップに進みます。 |
+  
+それぞれの前提条件では 1 つの要求が評価されます。 2 種類の前提条件があります。
+ 
+- **ClaimsExist** - 指定した要求がユーザーの現在の要求バッグに存在する場合に、アクションを実行することが指定されます。
+- **ClaimEquals** - 指定した要求が存在し、その値が指定した値と等しい場合に、アクションを実行することが指定されます。 このチェックでは、大文字と小文字を区別する順序比較が実行されます。 要求の型がブール値の場合は、`True` または `False` を使用します。 
+
+    要求が null または未初期化の場合は、`ExecuteActionsIf` が `true` か `false` かにかかわらず、前提条件は無視されます。 ベスト プラクティスとして、要求が存在することと、値が等しいことの両方を確認します。
+
+ユーザーが `MfaPreference` を `Phone` に設定している場合に、ユーザーの MFA にチャレンジするというシナリオ例を考えます。 この条件付きロジックを実行するには、`MfaPreference` の要求が存在するかどうかを確認し、また要求の値が `Phone` に等しいかどうかを確認します。 次の XML は、このロジックを事前条件付きで実装する方法を示しています。 
+  
+```xml
+<Preconditions>
+  <!-- Skip this orchestration step if MfaPreference doesn't exist. -->
+  <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+    <Value>MfaPreference</Value>
+    <Action>SkipThisOrchestrationStep</Action>
+  </Precondition>
+  <!-- Skip this orchestration step if MfaPreference doesn't equal to Phone. -->
+  <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
+    <Value>MfaPreference</Value>
+    <Value>Phone</Value>
+    <Action>SkipThisOrchestrationStep</Action>
+  </Precondition>
+</Preconditions>
+```
 
 #### <a name="preconditions-examples"></a>前提条件の例
 

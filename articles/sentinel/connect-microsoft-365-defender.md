@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 536a9b0fe4cacdc48f4429e1b85b5a47c4dbd449
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c31ed32e13e8b71b5ad6253d5e157b5adc2096bf
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779346"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260021"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Microsoft 365 Defender から Azure Sentinel にデータを接続する
 
@@ -55,7 +55,7 @@ ms.locfileid: "121779346"
 
 1. Azure Sentinel で、 **[データ コネクタ]** を選択し、ギャラリーから **[Microsoft 365 Defender (プレビュー)]** を選択して、 **[コネクタを開く]** ページを選択します。
 
-1. **[Connect incidents & alerts]\(インシデントとアラートの接続\)** セクションの **[構成]** で、 **[Connect incidents & alerts]\(インシデントとアラートの接続\)** ボタンをクリックします。
+1. **[インシデントとアラートの接続]** セクションの **[構成]** で、 **[インシデントとアラートの接続]** ボタンを選択します。
 
 1. インシデントの重複を避けるために、 **[Turn off all Microsoft incident creation rules for these products]\(これらの製品のすべての Microsoft インシデント作成規則を無効にする\)** というラベルの付いたチェック ボックスをオンにすることをお勧めします。
 

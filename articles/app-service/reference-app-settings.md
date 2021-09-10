@@ -3,12 +3,12 @@ title: 環境変数とアプリ設定のリファレンス
 description: 一般的に使用される環境変数と、アプリ設定で変更できるものについて説明します。
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: 39cb9b210cb7cff3e8b1b6a58a3ab32e22628833
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5cba4a7d66f5b2bb705df8c685b6c8be05e04a08
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289991"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272351"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Azure App Service の環境変数とアプリ設定
 
@@ -18,7 +18,7 @@ ms.locfileid: "114289991"
 
 次の環境変数は、一般的なアプリ環境に関連しています。
 
-| 設定の名前| 説明 | 例 |
+| 設定名| 説明 | 例 |
 |-|-|-|
 | `WEBSITE_SITE_NAME` | 読み取り専用です。 [アプリ名]:  ||
 | `WEBSITE_RESOURCE_GROUP` | 読み取り専用です。 アプリ リソースを含む Azure リソース グループの名前。 ||
@@ -38,16 +38,14 @@ ms.locfileid: "114289991"
 | `WEBSITE_PRIVATE_EXTENSIONS` | プライベート サイト拡張機能の使用を無効にするには、`0` に設定します。 ||
 | `WEBSITE_TIME_ZONE` | 既定では、アプリのタイム ゾーンは常に UTC です。 「[TimeZone](/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10))」に記載されている有効な値のいずれかに変更できます。 指定した値が認識されない場合は、UTC が使用されます。 | `Atlantic Standard Time` |
 | `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG` | ストレージ ボリュームのフェールオーバーまたは再構成の場合、アプリはスタンバイ ストレージ ボリュームに切り替えられます。 既定の設定 (`1`) では、ストレージ インフラストラクチャの変更時にワーカー プロセスがリサイクルされません。 Windows Communication Foundation (WCF) アプリを実行している場合は、これを `0` に設定して無効にします。 この設定はスロット固有であるため、すべてのスロットで設定する必要があります。 ||
-| `WEBSITE_PROACTIVE_AUTOHEAL_ENABLED` | 既定では、VM インスタンスは、割り当てられたメモリの 90% を 30 秒以上使用している場合、または過去 2 分間の全要求の 80% で実行時間が 200 秒を超えている場合に、プロアクティブに「自動修復」されます。 VM インスタンスでこれらの規則のいずれかがトリガーされた場合、復旧プロセスでインスタンスが重複して再起動されます。 この回復動作を無効にするには、`false` に設定します。 既定値は、`true` です。 詳細については、[プロアクティブな自動修復](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html)に関する記事をご覧ください。 ||
-| `WEBSITE_PROACTIVE_CRASHMONITORING_ENABLED` | ハンドルされない例外が 24 時間以内に 4 回以上発生したために、アプリの VM インスタンスの w3wp.exe プロセスがクラッシュすると、そのインスタンスのメイン ワーカー プロセスにデバッガー プロセスがアタッチされ、ワーカー プロセスが再びクラッシュしたときにメモリ ダンプが収集されます。 その後、このメモリ ダンプが分析され、クラッシュの原因となったスレッドの呼び出し履歴が App Service のログに記録されます。 この自動監視動作を無効にするには、`false` に設定します。 既定値は、`true` です。 詳細については、[プロアクティブなクラッシュの監視](https://azure.github.io/AppService/2021/03/01/Proactive-Crash-Monitoring-in-Azure-App-Service.html)に関する記事をご覧ください。 ||
+| `WEBSITE_PROACTIVE_AUTOHEAL_ENABLED` | 既定では、VM インスタンスは、割り当てられたメモリの 90% を 30 秒以上使用している場合、または過去 2 分間の全要求の 80% で実行時間が 200 秒を超えている場合に、プロアクティブに「自動修復」されます。 VM インスタンスでこれらの規則のいずれかがトリガーされた場合、復旧プロセスでインスタンスが重複して再起動されます。 この回復動作を無効にするには、`false` に設定します。 既定では、 `true`です。 詳細については、[プロアクティブな自動修復](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html)に関する記事をご覧ください。 ||
+| `WEBSITE_PROACTIVE_CRASHMONITORING_ENABLED` | ハンドルされない例外が 24 時間以内に 4 回以上発生したために、アプリの VM インスタンスの w3wp.exe プロセスがクラッシュすると、そのインスタンスのメイン ワーカー プロセスにデバッガー プロセスがアタッチされ、ワーカー プロセスが再びクラッシュしたときにメモリ ダンプが収集されます。 その後、このメモリ ダンプが分析され、クラッシュの原因となったスレッドの呼び出し履歴が App Service のログに記録されます。 この自動監視動作を無効にするには、`false` に設定します。 既定では、 `true`です。 詳細については、[プロアクティブなクラッシュの監視](https://azure.github.io/AppService/2021/03/01/Proactive-Crash-Monitoring-in-Azure-App-Service.html)に関する記事をご覧ください。 ||
 | `WEBSITE_DAAS_STORAGE_SASURI` | (プロアクティブまたは手動の) クラッシュの監視では、メモリ ダンプは既定で削除されます。 メモリ ダンプをストレージ BLOB コンテナーに保存するには、SAS URI を指定します。  ||
-| `WEBSITE_CRASHMONITORING_ENABLED` | 手動で[クラッシュの監視](https://azure.github.io/AppService/2020/08/11/Crash-Monitoring-Feature-in-Azure-App-Service.html)を有効にするには、`true` に設定します。 `WEBSITE_DAAS_STORAGE_SASURI` と `WEBSITE_CRASHMONITORING_SETTINGS` も設定する必要があります。 既定値は、`false` です。 リモート デバッグが有効になっている場合、この設定は無効です。 また、この設定が `true` に設定されている場合、[プロアクティブなクラッシュの監視](https://azure.github.io/AppService/2020/08/11/Crash-Monitoring-Feature-in-Azure-App-Service.html)は無効になります。 ||
+| `WEBSITE_CRASHMONITORING_ENABLED` | 手動で[クラッシュの監視](https://azure.github.io/AppService/2020/08/11/Crash-Monitoring-Feature-in-Azure-App-Service.html)を有効にするには、`true` に設定します。 `WEBSITE_DAAS_STORAGE_SASURI` と `WEBSITE_CRASHMONITORING_SETTINGS` も設定する必要があります。 既定では、 `false`です。 リモート デバッグが有効になっている場合、この設定は無効です。 また、この設定が `true` に設定されている場合、[プロアクティブなクラッシュの監視](https://azure.github.io/AppService/2020/08/11/Crash-Monitoring-Feature-in-Azure-App-Service.html)は無効になります。 ||
 | `WEBSITE_CRASHMONITORING_SETTINGS` | 次の形式の JSON: `{"StartTimeUtc": "2020-02-10T08:21","MaxHours": "<elapsed-hours-from-StartTimeUtc>","MaxDumpCount": "<max-number-of-crash-dumps>"}`。 `WEBSITE_CRASHMONITORING_ENABLED` が指定されている場合に、[クラッシュの監視](https://azure.github.io/AppService/2020/08/11/Crash-Monitoring-Feature-in-Azure-App-Service.html)を構成するために必要です。 ストレージ アカウントにクラッシュ ダンプを保存せずに呼び出し履歴のみをログに記録するには、JSON に `,"UseStorageAccount":"false"` を追加します。 ||
 | `REMOTEDEBUGGINGVERSION` | リモート デバッグ バージョン。 ||
 | `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` | 既定では、アプリの作成時に App Service によって共有ストレージが作成されます。 代わりにカスタム ストレージ アカウントを使用するには、ストレージ アカウントの接続文字列に設定します。 関数については、[Functions のアプリ設定のリファレンス](../azure-functions/functions-app-settings.md#website_contentazurefileconnectionstring)をご覧ください。 | `DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>` |
 | `WEBSITE_CONTENTSHARE` | `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` でカスタム ストレージ アカウントを指定する場合は、App Service によってアプリのそのストレージ アカウントにファイル共有が作成されます。 カスタム名を使用するには、この変数に使用する名前を設定します。 指定した名前を持つファイル共有が存在しない場合は、App Service によって作成されます。 | `myapp123` |
-| `WEBSITE_AUTH_ENCRYPTION_KEY` | 既定では、自動生成されたキーが暗号化キーとして使用されます。 オーバーライドするには、目的のキーに設定します。 これは、複数のアプリでトークンまたはセッションを共有する場合にお勧めします。 ||
-| `WEBSITE_AUTH_SIGNING_KEY` | 既定では、自動生成されたキーが署名キーとして使用されます。 オーバーライドするには、目的のキーに設定します。 これは、複数のアプリでトークンまたはセッションを共有する場合にお勧めします。 ||
 | `WEBSITE_SCM_ALWAYS_ON_ENABLED` | 読み取り専用です。 Always On が有効 (`1`) か無効 (`0`) かを示します。 ||
 | `WEBSITE_SCM_SEPARATE_STATUS` | 読み取り専用です。 Kudu アプリが別のプロセスで実行されている (`1`) かいない (`0`) かを示します。 ||
 
@@ -66,7 +64,7 @@ WEBSITE_CLASSIC_MODE
 
 次の表に、App Service でさまざまな目的に使用される環境変数のプレフィックスを示します。
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `APPSETTING_` | 変数が顧客によってアプリ構成のアプリ設定として設定されることを示します。 これは、アプリ設定として .NET アプリに挿入されます。 |
 | `MAINSITE_` | 変数がアプリ自体に固有であることを示します。 |
@@ -76,25 +74,25 @@ WEBSITE_CLASSIC_MODE
 | `POSTGRESQLCONNSTR_` | アプリ構成の PostgreSQL 接続文字列を示します。 これは、接続文字列として .NET アプリに挿入されます。 |
 | `CUSTOMCONNSTR_` | アプリ構成のカスタム接続文字列を示します。 これは、接続文字列として .NET アプリに挿入されます。 |
 | `MYSQLCONNSTR_` | アプリ構成の Azure SQL Database 接続文字列を示します。 これは、接続文字列として .NET アプリに挿入されます。 |
-| `AZUREFILESSTORAGE_` | コンテナー アプリのカスタム Azure ファイル ストレージへの接続文字列。 |
+| `AZUREFILESSTORAGE_` | コンテナー アプリのカスタム Azure ファイル共有への接続文字列。 |
 | `AZUREBLOBSTORAGE_` | コンテナー アプリのカスタム Azure BLOB ストレージへの接続文字列。 |
 
 ## <a name="deployment"></a>デプロイ
 
 次の環境変数は、アプリのデプロイに関連しています。 App Service のビルド オートメーションに関連する変数については、「[ビルド オートメーション](#build-automation)」を参照してください。
 
-| 設定の名前| 説明 |
+| 設定名| 説明 |
 |-|-|
 | `DEPLOYMENT_BRANCH`| [ローカル Git](deploy-local-git.md) または[クラウド Git](deploy-continuous-deployment.md) デプロイ (GitHub など) の場合は、Azure 内のデプロイするブランチに設定します。 既定では `master` です。 |
 | `WEBSITE_RUN_FROM_PACKAGE`| ローカル ZIP パッケージからアプリを実行するには、`1` に設定します。リモート ZIP パッケージからアプリを実行するには、外部 URL の URL に設定します。 詳細については、「[ZIP パッケージから Azure App Service のアプリを直接実行する](deploy-run-package.md)」を参照してください。 |
 | `WEBSITE_USE_ZIP` | 非推奨になりました。 `WEBSITE_RUN_FROM_PACKAGE` を使用してください。 |
 | `WEBSITE_RUN_FROM_ZIP` | 非推奨になりました。 `WEBSITE_RUN_FROM_PACKAGE` を使用してください。 | 
-| `WEBSITE_WEBDEPLOY_USE_SCM` | WebDeploy で Kudu デプロイ エンジンの使用を停止するには、`false` に設定します。 既定値は、`true` です。 Visual Studio (WebDeploy/MSDeploy) を使用して Linux アプリにデプロイするには、`false` に設定します。 |
+| `WEBSITE_WEBDEPLOY_USE_SCM` | WebDeploy で Kudu デプロイ エンジンの使用を停止するには、`false` に設定します。 既定では、 `true`です。 Visual Studio (WebDeploy/MSDeploy) を使用して Linux アプリにデプロイするには、`false` に設定します。 |
 | `MSDEPLOY_RENAME_LOCKED_FILES` | WebDeploy デプロイで DLL をコピーできない場合に名前の変更を試行するには、`1` に設定します。 `WEBSITE_WEBDEPLOY_USE_SCM` が `false` に設定されている場合、この設定は適用されません。 |
 | `WEBSITE_DISABLE_SCM_SEPARATION` | 既定では、メイン アプリと Kudu アプリは異なるサンドボックスで実行されます。 アプリを停止すると、Kudu アプリは引き続き実行され、Git デプロイと MSDeploy を使用し続けることができます。 各アプリには固有のローカル ファイルがあります。 この分離をオフにする設定 (`false`) は、完全にはサポートされなくなったレガシ モードです。 |
 | `WEBSITE_ENABLE_SYNC_UPDATE_SITE` | `1` に設定すると、`site` と `siteconfig` を更新する REST API 呼び出しが、すべてのインスタンスに完全に適用されてから戻るようになります。 ARM テンプレートを使用してデプロイする場合、後続の ARM 呼び出しでの競争状態を回避するため、既定値は `1` です。 |
 | `WEBSITE_START_SCM_ON_SITE_CREATION` | ARM テンプレートのデプロイで、アプリの作成の一環として Kudu アプリを事前に開始するには、ARM テンプレートで `1` に設定します。 |
-| `WEBSITE_START_SCM_WITH_PRELOAD` | Linux アプリの場合、Always On を有効にするときに URL に ping を実行して Kudu アプリを強制的にプリロードするには、`true` に設定します。 既定値は、`false` です。 Windows アプリの場合、Kudu アプリは常にプリロードされます。 |
+| `WEBSITE_START_SCM_WITH_PRELOAD` | Linux アプリの場合、Always On を有効にするときに URL に ping を実行して Kudu アプリを強制的にプリロードするには、`true` に設定します。 既定では、 `false`です。 Windows アプリの場合、Kudu アプリは常にプリロードされます。 |
 
 <!-- 
 WEBSITE_RUN_FROM_PACKAGE_BLOB_MI_RESOURCE_ID
@@ -106,17 +104,17 @@ WEBSITE_RUN_FROM_PACKAGE_BLOB_MI_RESOURCE_ID
 
 Kudu ビルド構成は、ネイティブ Windows アプリに適用され、Git ベース (または ZIP ベース) のデプロイの動作を制御するために使用されます。
 
-| 設定の名前| 説明 | 例 |
+| 設定名| 説明 | 例 |
 |-|-|-|
 | `SCM_BUILD_ARGS` | msbuild コマンド ラインの最後に、既定のコマンド ラインの直前の部分をオーバーライドする要素を追加します。 | クリーン ビルドを実行するには: `-t:Clean;Compile`|
 | `SCM_SCRIPT_GENERATOR_ARGS` | Kudu では、[こちら](http://blog.amitapple.com/post/38418009331/azurewebsitecustomdeploymentpart2)で説明されている `azure site deploymentscript` コマンドを使用してデプロイ スクリプトが生成されます。 言語フレームワークの型が自動的に検出され、コマンドに渡すパラメーターが決定されます。 この設定は、自動的に生成されるパラメーターをオーバーライドします。 | リポジトリをプレーン コンテンツ ファイルとして扱うには: `--basic -p <folder-to-deploy>` |
-| `SCM_TRACE_LEVEL` | ビルドのトレース レベル。 既定値は、`1` です。 より多くのトレースを行う場合は、大きい値 (最大 4) に設定します。 | `4` |
+| `SCM_TRACE_LEVEL` | ビルドのトレース レベル。 既定では、 `1`です。 より多くのトレースを行う場合は、大きい値 (最大 4) に設定します。 | `4` |
 | `SCM_COMMAND_IDLE_TIMEOUT` | ビルド プロセスによって起動される各コマンドが出力を生成するまでに待機するタイムアウト (秒)。 その後、コマンドはアイドル状態と見なされ、強制終了されます。 既定値は `60` (1 分) です。 Azure では、230 秒後にクライアントを切断する一般的なアイドル要求タイムアウトも発生します。 ただし、サーバー側ではその後もコマンドの実行が継続されます。 | |
 | `SCM_LOGSTREAM_TIMEOUT` | ログ ストリーミングを停止するまでの非アクティブ状態のタイムアウト (秒)。 既定値は `1800` (30 分) です。| |
-| `SCM_SITEEXTENSIONS_FEED_URL` | サイト拡張機能ギャラリーの URL。 既定値は、`https://www.nuget.org/api/v2/` です。 以前のフィードの URL は `http://www.siteextensions.net/api/v2/` です。 | |
+| `SCM_SITEEXTENSIONS_FEED_URL` | サイト拡張機能ギャラリーの URL。 既定では、 `https://www.nuget.org/api/v2/`です。 以前のフィードの URL は `http://www.siteextensions.net/api/v2/` です。 | |
 | `SCM_USE_LIBGIT2SHARP_REPOSITORY` | Git 操作に libgit2sharp ではなく git.exe を使用するには、`0` に設定します。 | |
 | `WEBSITE_LOAD_USER_PROFILE` | ASP.NET のビルド オートメーション (Git デプロイなど) でエラー `The specified user does not have a valid profile.` が発生した場合は、この変数を `1` に設定して、ビルド環境に完全なユーザー プロファイルを読み込みます。 この設定は `WEBSITE_COMPUTE_MODE` が `Dedicated` の場合にのみ適用されます。 | |
-| `WEBSITE_SCM_IDLE_TIMEOUT_IN_MINUTES` | SCM (Kudu) サイトのタイムアウト (分)。 既定値は、`20` です。 | |
+| `WEBSITE_SCM_IDLE_TIMEOUT_IN_MINUTES` | SCM (Kudu) サイトのタイムアウト (分)。 既定では、 `20`です。 | |
 | `SCM_DO_BUILD_DURING_DEPLOYMENT` | [ZIP デプロイ](deploy-zip.md)のデプロイ エンジンでは、ZIP ファイルがそのまま実行できる状態であり、ビルド オートメーションは実行されないことが想定されています。 [Git デプロイ](deploy-local-git.md)と同じビルド オートメーションを有効にするには、`true` に設定します。 |
 
 <!-- 
@@ -139,18 +137,22 @@ Oryx ビルド構成は、Linux アプリに適用され、Git ベース (また
 <!-- 
 | DOTNET_HOSTING_OPTIMIZATION_CACHE | 
  -->
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `PORT` | 読み取り専用です。 Linux アプリの場合、.NET ランタイムがコンテナー内でリッスンするポート。 |
 | `WEBSITE_ROLE_INSTANCE_ID` | 読み取り専用です。 現在のインスタンスの ID。 |
 | `HOME` | 読み取り専用です。 共有ストレージを参照するディレクトリ (`/home`)。 |
 | `DUMP_DIR` | 読み取り専用です。 クラッシュ ダンプのディレクトリ (`/home/logs/dumps`)。 |
 | `APP_SVC_RUN_FROM_COPY` | Linux アプリのみ。 既定では、アプリはすべてのスケールアウトされたインスタンスの共有ディレクトリである `/home/site/wwwroot` から実行されます。 アプリをコンテナー内のローカル ディレクトリにコピーし、そこから実行するには、この変数を `true` に設定します。 このオプションを使用する場合は、`/home/site/wwwroot` への参照をハードコーディングしないようにしてください。 代わりに、`/home/site/wwwroot` からの相対パスを使用します。 |
+| `MACHINEKEY_Decryption` | Windows ネイティブ アプリまたは Windows コンテナー アプリの場合、ASP.NET の暗号化ルーチンを有効にするためにこの変数がアプリの環境またはコンテナーに挿入されます (「[machineKey 要素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))」を参照してください)。 既定の `decryption` 値をオーバーライドするには、App Service アプリの設定として構成するか、*Web.config* ファイルの `machineKey` 要素に直接設定します。 |
+| `MACHINEKEY_DecryptionKey` | Windows ネイティブ アプリまたは Windows コンテナー アプリの場合、ASP.NET の暗号化ルーチンを有効にするためにこの変数がアプリの環境またはコンテナーに挿入されます (「[machineKey 要素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))」を参照してください)。 自動生成された `decryptionKey` 値をオーバーライドするには、App Service アプリの設定として構成するか、*Web.config* ファイルの `machineKey` 要素に直接設定します。|
+| `MACHINEKEY_Validation` | Windows ネイティブ アプリまたは Windows コンテナー アプリの場合、ASP.NET の暗号化ルーチンを有効にするためにこの変数がアプリの環境またはコンテナーに挿入されます (「[machineKey 要素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))」を参照してください)。 既定の `validation` 値をオーバーライドするには、App Service アプリの設定として構成するか、*Web.config* ファイルの `machineKey` 要素に直接設定します。|
+| `MACHINEKEY_ValidationKey` | Windows ネイティブ アプリまたは Windows コンテナー アプリの場合、ASP.NET の暗号化ルーチンを有効にするためにこの変数がアプリの環境またはコンテナーに挿入されます (「[machineKey 要素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))」を参照してください)。 自動生成された `validationKey` 値をオーバーライドするには、App Service アプリの設定として構成するか、*Web.config* ファイルの `machineKey` 要素に直接設定します。|
 <!-- | `USE_DOTNET_MONITOR` | if =true then /opt/dotnetcore-tools/dotnet-monitor collect --urls "http://0.0.0.0:50051 " --metrics true --metricUrls "http://0.0.0.0:50050" > /dev/null 2>&1 & -->
 
 # <a name="java"></a>[Java](#tab/java)
 
-| 設定の名前 | 説明 | 例 |
+| 設定名 | 説明 | 例 |
 |-|-|-|
 | `JAVA_HOME` | Java インストール ディレクトリのパス ||
 | `JAVA_OPTS` | Java SE アプリの場合、`java` コマンドに渡される環境変数。 システム変数を含めることができます。 Tomcat の場合、`CATALINA_OPTS` を使用します。 | `-Dmysysproperty=%DRIVEPATH%` |
@@ -188,7 +190,7 @@ Oryx ビルド構成は、Linux アプリに適用され、Git ベース (また
 | `AZURE_TOMCAT90_HOME` | 読み取り専用です。 ネイティブ Windows アプリの場合、Tomcat 9 のインストール パス。 | |
 | `AZURE_SITE_HOME` | Java 引数に `-Dsite.home` として追加される値。 既定値は、`HOME` の値です。 | |
 | `HTTP_PLATFORM_PORT` | Java 引数に `-Dport.http` として追加されます。 さまざまな Java Web フレームワークで使用される次の環境変数もこの値に設定されます: `SERVER_PORT`、`MICRONAUT_SERVER_PORT`、`THORNTAIL_HTTP_PORT`、`RATPACK_PORT`、`QUARKUS_HTTP_PORT`、`PAYARAMICRO_PORT`。 ||
-| `AZURE_LOGGING_DIR` | ネイティブ Windows アプリのみ。 Java 引数に `-Dsite.logdir` として追加されます。 既定値は、`%HOME%\LogFiles\` です。 ||
+| `AZURE_LOGGING_DIR` | ネイティブ Windows アプリのみ。 Java 引数に `-Dsite.logdir` として追加されます。 既定では、 `%HOME%\LogFiles\`です。 ||
 
 <!-- 
 WEBSITE_JAVA_COPY_ALL
@@ -197,7 +199,7 @@ AZURE_SITE_APP_BASE
 
 # <a name="nodejs"></a>[Node.js](#tab/node)
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `PORT` | 読み取り専用です。 Linux アプリの場合、Node.js アプリがコンテナー内でリッスンするポート。 |
 | `WEBSITE_ROLE_INSTANCE_ID` | 読み取り専用です。 現在のインスタンスの ID。 |
@@ -210,7 +212,7 @@ APPSVC_TUNNEL_PORT -->
 
 # <a name="python"></a>[Python](#tab/python)
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `APPSVC_VIRTUAL_ENV` | 読み取り専用です。 |
 | `PORT` | 読み取り専用です。 Linux アプリの場合、Python アプリがコンテナー内でリッスンするポート。 |
@@ -221,7 +223,7 @@ APPSVC_REMOTE_DEBUGGING_BREAK | debugArgs+=" -debugWait" -->
 
 # <a name="php"></a>[PHP](#tab/php)
 
-| 設定の名前 | 説明 | 例|
+| 設定名 | 説明 | 例|
 |-|-|-|
 | `PHP_Extensions` | PHP 拡張機能のコンマ区切りリスト。 | `extension1.dll,extension2.dll,Name1=value1` |
 | `PHP_ZENDEXTENSIONS` | Windows ネイティブ アプリの場合、XDebug 拡張機能のパス (`D:\devtools\xdebug\2.6.0\php_7.2\php_xdebug-2.6.0-7.2-vc15-nts.dll` など) に設定します。 Linux アプリの場合、PHP コンテナーの XDebug バージョンを使用するには、`xdebug` に設定します。 ||
@@ -230,8 +232,8 @@ APPSVC_REMOTE_DEBUGGING_BREAK | debugArgs+=" -debugWait" -->
 | `WEBSITE_ROLE_INSTANCE_ID` | 読み取り専用です。 現在のインスタンスの ID。 ||
 | `WEBSITE_PROFILER_ENABLE_TRIGGER` | 既定の `php.ini` に `xdebug.profiler_enable_trigger=1` と `xdebug.profiler_enable=0` を追加するには、`TRUE` に設定します。 ||
 | `WEBSITE_ENABLE_PHP_ACCESS_LOGS` | サーバーに対する要求をログに記録するには、`TRUE` に設定します (`CustomLog \dev\stderr combined` が `/etc/apache2/apache2.conf` に追加されます)。 ||
-| `APACHE_SERVER_LIMIT` | Apache 固有の変数。 既定値は、`1000` です。 ||
-| `APACHE_MAX_REQ_WORKERS` | Apache 固有の変数。 既定値は、`256` です。 ||
+| `APACHE_SERVER_LIMIT` | Apache 固有の変数。 既定では、 `1000`です。 ||
+| `APACHE_MAX_REQ_WORKERS` | Apache 固有の変数。 既定では、 `256`です。 ||
 
 <!-- 
 ZEND_BIN_PATH
@@ -244,23 +246,23 @@ APACHE_RUN_GROUP | RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
-| 設定の名前 | 説明 | 例 |
+| 設定名 | 説明 | 例 |
 |-|-|-|
 | `PORT` | 読み取り専用です。 Rails アプリがコンテナー内でリッスンするポート。 ||
 | `WEBSITE_ROLE_INSTANCE_ID` | 読み取り専用です。 現在のインスタンスの ID。 ||
 | `RAILS_IGNORE_SPLASH` | 既定では、Gemfile が見つからないときに既定のスプラッシュ ページが表示されます。 スプラッシュ ページを無効にするには、この変数を任意の値に設定します。 ||
 | `BUNDLE_WITHOUT` | `bundle install` に `--without` オプションを追加するには、この変数を除外するグループ (スペース区切り) に設定します。 既定では、すべての gem がインストールされます。 | `test development` |
-| `BUNDLE_INSTALL_LOCATION` | gem をインストールするディレクトリ。 既定値は、`/tmp/bundle` です。 ||
-| `RUBY_SITE_CONFIG_DIR` | サイト構成ディレクトリ。 既定値は、`/home/site/config` です。 コンテナーでは、このディレクトリに ZIP 形式の gem があるかどうかを確認します。 ||
+| `BUNDLE_INSTALL_LOCATION` | gem をインストールするディレクトリ。 既定では、 `/tmp/bundle`です。 ||
+| `RUBY_SITE_CONFIG_DIR` | サイト構成ディレクトリ。 既定では、 `/home/site/config`です。 コンテナーでは、このディレクトリに ZIP 形式の gem があるかどうかを確認します。 ||
 | `SECRET_KEY_BASE` | 既定では、ランダムな秘密キー ベースが生成されます。 カスタム秘密キー ベースを使用するには、この変数を目的のキー ベースに設定します。 ||
-| `RAILS_ENV` | Rails 環境。 既定値は、`production` です。 ||
+| `RAILS_ENV` | Rails 環境。 既定では、 `production`です。 ||
 | `GEM_PRISTINE` | `gem pristine --all` を実行するには、この変数を任意の値に設定します。 ||
 
 -----
 
 ## <a name="domain-and-dns"></a>ドメインと DNS
 
-| 設定の名前| 説明 | 例 |
+| 設定名| 説明 | 例 |
 |-|-|-|
 | `WEBSITE_DNS_SERVER` | (バックエンド サービスなどへの) 送信接続用のプライマリ DNS サーバーの IP アドレス。 App Service の既定の DNS サーバーは Azure DNS で、その IP アドレスは `168.63.129.16` です。 アプリで [VNet 統合](web-sites-integrate-with-vnet.md)が使用されているか、アプリが [App Service 環境](environment/intro.md)内にある場合、既定では VNet から DNS サーバー構成が継承されます。 | `10.0.0.1` |
 | `WEBSITE_DNS_ALT_SERVER` | 発信接続の代替 DNS サーバーの IP アドレス。 「`WEBSITE_DNS_SERVER`」を参照してください。 | |
@@ -269,11 +271,11 @@ APACHE_RUN_GROUP | RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc
 DOMAIN_OWNERSHIP_VERIFICATION_IDENTIFIERS
  -->
 
-## <a name="tslssl"></a>TSL/SSL
+## <a name="tlsssl"></a>TLS/SSL
 
 詳細については、「[Azure App Service の自分のコードから TLS/SSL 証明書を使用する](configure-ssl-certificate-in-code.md)」を参照してください。
 
-| 設定の名前| 説明 |
+| 設定名| 説明 |
 |-|-|
 | `WEBSITE_LOAD_CERTIFICATES` | コードに読み込む証明書の拇印のコンマ区切り値。すべての証明書をコードに読み込むことができるようにする場合は、`*`。 [アプリに追加された証明書](configure-ssl-certificate.md)のみを読み込むことができます。 |
 | `WEBSITE_PRIVATE_CERTS_PATH` | 読み取り専用です。 Windows コンテナー内の、読み込まれたプライベート証明書へのパス。 |
@@ -285,16 +287,16 @@ DOMAIN_OWNERSHIP_VERIFICATION_IDENTIFIERS
 
 デプロイ スロットの詳細については、「[Azure App Service でステージング環境を設定する](deploy-staging-slots.md)」を参照してください。
 
-| 設定の名前| 説明 | 例 |
+| 設定名| 説明 | 例 |
 |-|-|-|
 |`WEBSITE_SLOT_NAME`| 読み取り専用です。 現在のデプロイ スロットの名前。 運用スロットの名前は `Production` です。 ||
 |`WEBSITE_OVERRIDE_STICKY_EXTENSION_VERSIONS`| 既定では、サイト拡張機能のバージョンは各スロットに固有です。 これにより、スワップ後に拡張機能のバージョンが変更されるために発生する予期しないアプリケーション動作を防ぐことができます。 拡張機能のバージョンもスワップする場合は、"*すべてのスロット*" で `1` に設定します。 ||
 |`WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS`| 特定の設定を、[既定で固定またはスワップ不可能](deploy-staging-slots.md#which-settings-are-swapped)として指定します。 既定値は `true` です。 代わりに "*すべてのデプロイ スロット*" をスワップ可能にするには、それらに対してこの設定を `false` または `0` に設定します。 特定の設定の種類を細かく制御することはできません。 ||
 |`WEBSITE_SWAP_WARMUP_PING_PATH`| ターゲット スロットをウォームアップするために ping を実行するパス (スラッシュで始まる)。 既定値は `/` で、ルート パスに ping を実行します。 | `/statuscheck` |
 |`WEBSITE_SWAP_WARMUP_PING_STATUSES`| スワップ中のウォームアップ操作の有効な HTTP 応答コード。 返された状態コードが一覧にない場合、ウォームアップとスワップの操作が停止されます。 既定で、すべての応答コードは有効です。 | `200,202` |
-| `WEBSITE_SLOT_NUMBER_OF_TIMEOUTS_BEFORE_RESTART` | スロット スワップ中に特定の VM インスタンス上のサイトを強制的に再起動するまでのタイムアウトの最大回数。 既定値は、`3` です。 ||
-| `WEBSITE_SLOT_MAX_NUMBER_OF_TIMEOUTS` | スロット スワップ中に 1 つの URL に対するタイムアウト要求を中止するまでの最大回数。 既定値は、`5` です。 ||
-| `WEBSITE_SKIP_ALL_BINDINGS_IN_APPHOST_CONFIG` | `applicationHost.config` 内のすべてのバインドをスキップするには、`true` または `1` に設定します。 既定値は、`false` です。 `applicationHost.config` がスロットのスワップされたホスト名で更新されるためにアプリの再起動がトリガーされる場合は、このような再起動を回避するため、この変数を `true` に設定します。 Windows Communication Foundation (WCF) アプリを実行している場合は、この変数を設定しないでください。 ||
+| `WEBSITE_SLOT_NUMBER_OF_TIMEOUTS_BEFORE_RESTART` | スロット スワップ中に特定の VM インスタンス上のサイトを強制的に再起動するまでのタイムアウトの最大回数。 既定では、 `3`です。 ||
+| `WEBSITE_SLOT_MAX_NUMBER_OF_TIMEOUTS` | スロット スワップ中に 1 つの URL に対するタイムアウト要求を中止するまでの最大回数。 既定では、 `5`です。 ||
+| `WEBSITE_SKIP_ALL_BINDINGS_IN_APPHOST_CONFIG` | `applicationHost.config` 内のすべてのバインドをスキップするには、`true` または `1` に設定します。 既定では、 `false`です。 `applicationHost.config` がスロットのスワップされたホスト名で更新されるためにアプリの再起動がトリガーされる場合は、このような再起動を回避するため、この変数を `true` に設定します。 Windows Communication Foundation (WCF) アプリを実行している場合は、この変数を設定しないでください。 ||
 
 <!-- 
 |`WEBSITE_SWAP_SLOTNAME`||| 
@@ -304,7 +306,7 @@ DOMAIN_OWNERSHIP_VERIFICATION_IDENTIFIERS
 
 カスタム コンテナーの詳細については、「[Azure でカスタム コンテナーを実行する](quickstart-custom-container.md)」を参照してください。
 
-| 設定の名前| 説明 | 例 |
+| 設定名| 説明 | 例 |
 |-|-|-|
 | `WEBSITES_ENABLE_APP_SERVICE_STORAGE` | スケーリングされたインスタンス間で `/home` ディレクトリを共有できるようにするには、`true` に設定します。 カスタム コンテナーの場合、既定値は `false` です。 ||
 | `WEBSITES_CONTAINER_START_TIME_LIMIT` | コンテナーを再起動する前に、コンテナーの起動が完了するまで待機する時間 (秒)。 既定値は `230` です。 最大 `1800` まで増やすことができます。 ||
@@ -312,13 +314,9 @@ DOMAIN_OWNERSHIP_VERIFICATION_IDENTIFIERS
 | `DOCKER_REGISTRY_SERVER_USERNAME` | `DOCKER_REGISTRY_SERVER_URL` のレジストリ サーバーで認証するためのユーザー名。 セキュリティのため、この変数はコンテナーに渡されません。 ||
 | `DOCKER_REGISTRY_SERVER_PASSWORD` | `DOCKER_REGISTRY_SERVER_URL` のレジストリ サーバーで認証するためのパスワード。 セキュリティのため、この変数はコンテナーに渡されません。 ||
 | `WEBSITES_WEB_CONTAINER_NAME` | Docker Compose アプリでは、インターネットにアクセスできるコンテナーは 1 つだけです。 既定のコンテナーの選択をオーバーライドするには、構成ファイルで定義されているコンテナーの名前に設定します。 インターネットにアクセスできるコンテナーは、既定ではポート 80 または 8080 を定義する最初のコンテナーです。このコンテナーが見つからない場合は、構成ファイルで定義されている最初のコンテナーです。 |  |
-| `WEBSITES_PORT` | カスタム コンテナーの場合、要求をルーティングするコンテナーのカスタム ポート番号。 既定では、App Service でポート 80 および 8080 の自動ポート検出が試行されます。 ||
+| `WEBSITES_PORT` | カスタム コンテナーの場合、要求のルーティング先の App Service のコンテナーのカスタム ポート番号。 既定では、App Service でポート 80 および 8080 の自動ポート検出が試行されます。 この設定は、環境変数としてコンテナーに挿入 *されません*。 ||
 | `WEBSITE_CPU_CORES_LIMIT` | 既定では、Windows コンテナーは、選択した価格レベルで使用できるすべてのコアで実行されます。 コア数を減らすには、必要なコア数の制限に設定します。 詳細については、「[コンピューティング コアの数をカスタマイズする](configure-custom-container.md?pivots=container-windows#customize-the-number-of-compute-cores)」を参照してください。||
 | `WEBSITE_MEMORY_LIMIT_MB` | 既定では Azure App Service にデプロイされるすべての Windows コンテナーは、1 GB の RAM に制限されます。 目的のメモリ制限 (MB) に設定します。 同じプラン内のアプリ間でこの設定を累計した値が、選択した価格レベルで許可されている量を超えないようにする必要があります。 詳細については、「[コンテナー メモリをカスタマイズする](configure-custom-container.md?pivots=container-windows#customize-container-memory)」を参照してください。 ||
-| `MACHINEKEY_Decryption` | Windows コンテナーの場合、ASP.NET の暗号化ルーチンを有効にするためにこの変数がコンテナーに挿入されます (「[machineKey 要素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))」を参照してください)。 既定の `decryption` 値をオーバーライドするには、それをアプリ設定として設定します。 ||
-| `MACHINEKEY_DecryptionKey` | Windows コンテナーの場合、ASP.NET の暗号化ルーチンを有効にするためにこの変数がコンテナーに挿入されます (「[machineKey 要素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))」を参照してください)。 自動生成される `decryptionKey` 値をオーバーライドするには、それをアプリ設定として設定します。 ||
-| `MACHINEKEY_Validation` | Windows コンテナーの場合、ASP.NET の暗号化ルーチンを有効にするためにこの変数がコンテナーに挿入されます (「[machineKey 要素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))」を参照してください)。 既定の `validation` 値をオーバーライドするには、それをアプリ設定として設定します。 ||
-| `MACHINEKEY_ValidationKey` | Windows コンテナーの場合、ASP.NET の暗号化ルーチンを有効にするためにこの変数がコンテナーに挿入されます (「[machineKey 要素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))」を参照してください)。 自動生成される `validationKey` 値をオーバーライドするには、それをアプリ設定として設定します。 ||
 | `CONTAINER_WINRM_ENABLED` | Windows コンテナー アプリの場合、Windows リモート管理 (WIN-RM) 有効にするには、`1` に設定します。 ||
 
 <!-- 
@@ -333,18 +331,18 @@ DOCKER_ENABLE_CI
 WEBSITE_DISABLE_PRELOAD_HANG_MITIGATION
  -->
 
-## <a name="scaling"></a>スケーリング
+## <a name="scaling"></a>Scaling
 
-| 設定の名前| 説明 |
+| 設定名| 説明 |
 |-|-|
 | `WEBSITE_INSTANCE_ID` | 読み取り専用です。 アプリが複数のインスタンスにスケールアウトされている場合の、現在の VM インスタンスの一意の ID。 |
 | `WEBSITE_IIS_SITE_NAME` | 非推奨になりました。 `WEBSITE_INSTANCE_ID` を使用してください。 |
 | `WEBSITE_DISABLE_OVERLAPPED_RECYCLING` | 重複したリサイクルにより、アプリの現在の VM インスタンスがシャットダウンされる前に、新しい VM インスタンスが開始されます。 場合によっては、ファイル ロックの問題が発生する可能性があります。 `1` に設定して、これを無効にしてみることができます。 |
-| `WEBSITE_DISABLE_CROSS_STAMP_SCALE` | 既定では、アプリで Azure Files または Docker コンテナーを使用する場合、複数のスタンプにまたがってアプリをスケーリングできます。 アプリのリージョン内でスタンプ間スケーリングを無効にするには、`1` または `true` に設定します。 既定値は、`0` です。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を `true` または `1` に設定するカスタム Docker コンテナーでは、コンテンツが Docker コンテナーに完全にカプセル化されていないため、スタンプ間スケーリングができません。 |
+| `WEBSITE_DISABLE_CROSS_STAMP_SCALE` | 既定では、アプリで Azure Files または Docker コンテナーを使用する場合、複数のスタンプにまたがってアプリをスケーリングできます。 アプリのリージョン内でスタンプ間スケーリングを無効にするには、`1` または `true` に設定します。 既定では、 `0`です。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を `true` または `1` に設定するカスタム Docker コンテナーでは、コンテンツが Docker コンテナーに完全にカプセル化されていないため、スタンプ間スケーリングができません。 |
 
 ## <a name="logging"></a>ログ記録
 
-| 設定の名前| 説明 | 例 |
+| 設定名| 説明 | 例 |
 |-|-|-|
 | `WEBSITE_HTTPLOGGING_ENABLED` | 読み取り専用です。 Windows ネイティブ アプリに関する Web サーバー ログが有効 (`1`) か無効 (`0`) かを示します。 ||
 | `WEBSITE_HTTPLOGGING_RETENTION_DAYS` | Web サーバー ログが有効になっている場合、Windows ネイティブ アプリに関する Web サーバー ログの保有期間 (日数)。 | `10` |
@@ -352,12 +350,12 @@ WEBSITE_DISABLE_PRELOAD_HANG_MITIGATION
 | `DIAGNOSTICS_AZUREBLOBRETENTIONINDAYS` | アプリケーション ログが有効になっている場合、Windows ネイティブ アプリに関するアプリケーション ログの保有期間 (日数)。 | `10` |
 | `DIAGNOSTICS_AZUREBLOBCONTAINERSASURL` | アプリケーション ログが有効になっている場合、Windows ネイティブ アプリに関するアプリケーション ログを格納する BLOB ストレージ コンテナーの SAS URL。 | |
 | `APPSERVICEAPPLOGS_TRACE_LEVEL` | [AppServiceAppLogs](troubleshoot-diagnostic-logs.md#supported-log-types) ログの種類について Log Analytics に送信される最小ログ レベル。 | |
-| `DIAGNOSTICS_LASTRESORTFILE` | リスナーのトラブルシューティングに役立つ内部エラーをログに記録するために作成するファイル名、またはログ ディレクトリへの相対パス。 既定値は、`logging-errors.txt` です。 ||
-| `DIAGNOSTICS_LOGGINGSETTINGSFILE` | ログ設定ファイルの、`D:\home` または `/home` との相対パス。 既定値は、`site\diagnostics\settings.json` です。 | |
+| `DIAGNOSTICS_LASTRESORTFILE` | リスナーのトラブルシューティングに役立つ内部エラーをログに記録するために作成するファイル名、またはログ ディレクトリへの相対パス。 既定では、 `logging-errors.txt`です。 ||
+| `DIAGNOSTICS_LOGGINGSETTINGSFILE` | ログ設定ファイルの、`D:\home` または `/home` との相対パス。 既定では、 `site\diagnostics\settings.json`です。 | |
 | `DIAGNOSTICS_TEXTTRACELOGDIRECTORY` | アプリのルート (`D:\home\site\wwwroot` または `/home/site/wwwroot`) を基準にしたログ フォルダー。 | `..\..\LogFiles\Application`|
 | `DIAGNOSTICS_TEXTTRACEMAXLOGFILESIZEBYTES` | ログ ファイルの最大サイズ (バイト)。 既定値は `131072` (128 KB) です。 ||
 | `DIAGNOSTICS_TEXTTRACEMAXLOGFOLDERSIZEBYTES` | ログ フォルダーの最大サイズ (バイト)。 既定値は `1048576` (1 MB) です。 ||
-| `DIAGNOSTICS_TEXTTRACEMAXNUMLOGFILES` | 保持するログ ファイルの最大数。 既定値は、`20` です。 | |
+| `DIAGNOSTICS_TEXTTRACEMAXNUMLOGFILES` | 保持するログ ファイルの最大数。 既定では、 `20`です。 | |
 | `DIAGNOSTICS_TEXTTRACETURNOFFPERIOD` | アプリケーション ログの有効な状態を維持するタイムアウト (ミリ秒)。 既定値は `43200000` (12 時間) です。 ||
 | `WEBSITE_LOG_BUFFERING` | 既定では、ログ バッファーは有効になっています。 無効にするには、`0` に設定します。 ||
 | `WEBSITE_ENABLE_PERF_MODE` | Windows ネイティブ アプリの場合、10 分以内に返された成功した要求の IIS ログ エントリをオフにするには、`TRUE` に設定します。 これは、拡張ログを削除することでパフォーマンス ベンチマークを行う簡単な方法です。 ||
@@ -380,7 +378,7 @@ WEBSITE_ARR_SESSION_AFFINITY_DISABLE
 
 以下は、列挙しても存在しない「偽りの」環境変数ですが、個別に参照するとその値が返されます。 値は動的であり、参照のたびに変わる可能性があります。
 
-| 設定の名前| 説明 |
+| 設定名| 説明 |
 |-|-|
 | `WEBSITE_COUNTERS_ASPNET` | ASP.NET のパフォーマンス カウンターを含む JSON オブジェクト。 |
 | `WEBSITE_COUNTERS_APP` | サンドボックスのカウンターを含む JSON オブジェクト。 |
@@ -389,7 +387,7 @@ WEBSITE_ARR_SESSION_AFFINITY_DISABLE
 
 ## <a name="caching"></a>キャッシュ
 
-| 設定の名前| 説明 |
+| 設定名| 説明 |
 |-|-|
 | `WEBSITE_LOCAL_CACHE_OPTION` | ローカル キャッシュが有効かどうか。 使用できるオプションは次のとおりです。 <br/>- `Default`: スタンプレベルのグローバル設定を継承します。<br/>- `Always`: アプリで有効にします。<br/>- OnStorageUnavailability<br/>- `Disabled`: アプリで無効にします。 |
 | `WEBSITE_LOCAL_CACHE_READWRITE_OPTION` | ローカル キャッシュの読み取り/書き込みオプション。 使用できるオプションは次のとおりです。 <br/>- `ReadOnly`: キャッシュは読み取り専用です。<br/>- `WriteWithCopyBack`: ローカル キャッシュへの書き込みを許可し、共有ストレージに定期的にコピーします。 SCM サイトではローカル キャッシュが参照されるため、単一インスタンス アプリにのみ適用されます。<br/>- `WriteButDiscardChanges`: ローカル キャッシュへの書き込みを許可しますが、ローカルで行われた変更は破棄します。 |
@@ -427,7 +425,7 @@ NEGOTIATE_CLIENT_CERT
 
 次の環境変数は、[ハイブリッド接続](app-service-hybrid-connections.md)および [VNet 統合](web-sites-integrate-with-vnet.md)に関連しています。
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `WEBSITE_RELAYS` | 読み取り専用です。 ハイブリッド接続を構成するために必要なデータ (エンドポイントと Service Bus データを含む)。 |
 | `WEBSITE_REWRITE_TABLE` | 読み取り専用です。 実行時に参照を実行し、接続を適切に書き換えるために使用されます。 | 
@@ -453,7 +451,7 @@ WEBSITE_SOCKET_STATISTICS_ENABLED
 
 次の環境変数は、[Key Vault 参照](app-service-key-vault-references.md)に関連しています。
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `WEBSITE_KEYVAULT_REFERENCES` | 読み取り専用です。 アプリで現在構成されているすべての Key Vault 参照の情報 (状態を含む) が含まれています。 |
 | `WEBSITE_SKIP_CONTENTSHARE_VALIDATION` | (`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` を使用して) アプリの共有ストレージ接続を Key Vault 参照に設定した場合、アプリの作成または更新時に次のいずれかの条件に当てはまる場合は、Key Vault 参照を解決できません。 <br/>- アプリでシステム割り当て ID を使用してキー コンテナーにアクセスする。<br/>- アプリでユーザー割り当て ID を使用してキー コンテナーにアクセスし、キー コンテナーが [VNet でロックされている](../key-vault/general/overview-vnet-service-endpoints.md)。<br/>作成または更新時のエラーを回避するには、この変数を `1` に設定します。 |
@@ -464,7 +462,7 @@ WEBSITE_SOCKET_STATISTICS_ENABLED
 
 次の環境変数は、クロスオリジン リソース共有 (CORS) の構成に関連しています。
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `WEBSITE_CORS_ALLOWED_ORIGINS` | 読み取り専用です。 CORS で許可されているオリジンを示します。 |
 | `WEBSITE_CORS_SUPPORT_CREDENTIALS` | 読み取り専用です。 `Access-Control-Allow-Credentials` ヘッダーを `true` に設定することが有効 (`True`) か無効 (`False`) かを示します。 |
@@ -473,9 +471,9 @@ WEBSITE_SOCKET_STATISTICS_ENABLED
 
 次の環境変数は、[App Service 認証](overview-authentication-authorization.md)に関連しています。
 
-| 設定の名前| 説明|
+| 設定名| 説明|
 |-|-|
-| `WEBSITE_AUTH_DISABLE_IDENTITY_FLOW`  | `true` に設定すると、ASP.NET ベースの Web アプリケーション (V1 関数アプリを含む) のスレッド プリンシパル ID の割り当てが無効になります。 これは、開発者が認証を使用してサイトへのアクセスを保護しながら、アプリ ロジック内で別のログイン メカニズムを使用できるように設計されています。 既定値は、`false` です。 |
+| `WEBSITE_AUTH_DISABLE_IDENTITY_FLOW`  | `true` に設定すると、ASP.NET ベースの Web アプリケーション (V1 関数アプリを含む) のスレッド プリンシパル ID の割り当てが無効になります。 これは、開発者が認証を使用してサイトへのアクセスを保護しながら、アプリ ロジック内で別のログイン メカニズムを使用できるように設計されています。 既定では、 `false`です。 |
 | `WEBSITE_AUTH_HIDE_DEPRECATED_SID` | `true` または `false`。 既定値は `false` です。 これは、Azure App Service のレガシである Azure Mobile Apps 統合用の設定です。 これを `true` に設定すると、認証されたユーザーが自分のプロファイル情報を変更した場合に、そのユーザー用に生成された SID (セキュリティ ID) が変更されるという問題が解決されます。 この値を変更すると、既存の Azure Mobile Apps のユーザー ID が変更される可能性があります。 ほとんどのアプリでは、この設定を使用する必要はありません。 |
 | `WEBSITE_AUTH_NONCE_DURATION`| `_hours_:_minutes_:_seconds_` 形式の _timespan_ 値。 既定値は `00:05:00` (5 分) です。 この設定は、すべてのブラウザー駆動型ログインで生成される[暗号化 nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) の有効期間を制御します。 指定した時間内にログインを完了できない場合、ログイン フローが自動的に再試行されます。 このアプリケーション設定は、V1 (クラシック) 構成エクスペリエンスで使用することを目的としています。 V2 認証構成スキーマを使用する場合は、代わりに `login.nonce.nonceExpirationInterval` 構成値を使用してください。 |
 | `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` | `true` に設定し、ユーザーが URL フラグメントを含むアプリ リンクをクリックすると、ログイン リダイレクト プロセスで URL の URL フラグメント部分が失われなくなります。 詳細については、[Azure App Service 認証でのサインインとサインアウトのカスタマイズ](configure-authentication-customize-sign-in-out.md#preserve-url-fragments)に関する記事をご覧ください。 |
@@ -488,6 +486,8 @@ WEBSITE_SOCKET_STATISTICS_ENABLED
 | `WEBSITE_AUTH_VALIDATE_NONCE`| `true` または `false`。 既定値は `true` です。 対話型ログイン中に発生する[暗号化 nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) の検証エラーを一時的にデバッグする場合を除き、この値を `false` に設定しないでください。 このアプリケーション設定は、V1 (クラシック) 構成エクスペリエンスで使用することを目的としています。 V2 認証構成スキーマを使用する場合は、代わりに `login.nonce.validateNonce` 構成値を使用してください。 |
 | `WEBSITE_AUTH_V2_CONFIG_JSON` | この環境変数は、Azure App Service プラットフォームによって自動的に設定され、統合認証モジュールを構成するために使用されます。 この環境変数の値は、Azure Resource Manager における現在のアプリの V2 (クラシックではない) 認証構成に対応しています。 明示的に構成するためのものではありません。 |
 | `WEBSITE_AUTH_ENABLED` | 読み取り専用です。 App Service 認証が有効かどうかを示すために Windows または Linux アプリに挿入されます。 |
+| `WEBSITE_AUTH_ENCRYPTION_KEY` | 既定では、自動生成されたキーが暗号化キーとして使用されます。 オーバーライドするには、目的のキーに設定します。 これは、複数のアプリでトークンまたはセッションを共有する場合にお勧めします。 指定された場合は、`MACHINEKEY_DecryptionKey` 設定よりも優先されます。 ||
+| `WEBSITE_AUTH_SIGNING_KEY` | 既定では、自動生成されたキーが署名キーとして使用されます。 オーバーライドするには、目的のキーに設定します。 これは、複数のアプリでトークンまたはセッションを共有する場合にお勧めします。 指定された場合は、`MACHINEKEY_ValidationKey` 設定よりも優先されます。 ||
 
 <!-- System settings
 WEBSITE_AUTH_RUNTIME_VERSION
@@ -544,7 +544,7 @@ WEBSITE_AUTH_FILE_PATH
 
 次の環境変数は、[マネージド ID](overview-managed-identity.md) に関連しています。
 
-|設定の名前 | 説明 |
+|設定名 | 説明 |
 |-|-|
 |`IDENTITY_ENDPOINT` | 読み取り専用です。 アプリの[マネージド ID](overview-managed-identity.md) のトークンを取得するための URL。 |
 | `MSI_ENDPOINT` | 非推奨になりました。 `IDENTITY_ENDPOINT` を使用してください。 |
@@ -556,7 +556,7 @@ WEBSITE_AUTH_FILE_PATH
 
 次の環境変数は、[正常性チェック](monitor-instances-health-check.md)に関連しています。
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | インスタンスを削除するまでに失敗する ping の最大数。 `2` から `100` までの値に設定します。 スケールアップまたはスケールアウトする場合は、新しいインスタンスの準備ができていることを確認するため、App Service で正常性チェックのパスに ping が実行されます。 詳細については、「[正常性チェック](monitor-instances-health-check.md)」を参照してください。|
 | `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` | 正常なインスタンスが過負荷にならないように、ご利用のインスタンスの半分以下が除外されます。 たとえば、App Service プランが 4 つのインスタンスにスケーリングされ、3 つに異常が発生した場合、最大 2 つが除外されます。 他の 2 つのインスタンス (1 つは正常、1 つは異常) は、引き続き要求を受信することになります。 すべてのインスタンスが異常であるという最悪のシナリオでは、何も除外されません。 この動作をオーバーライドするには、`0` から `100` までの値に設定します。 値を大きくすると、異常なインスタンスがより多く削除されます。 既定値は `50` (50%) です。 |
@@ -565,7 +565,7 @@ WEBSITE_AUTH_FILE_PATH
 
 次の環境変数は、[プッシュ通知](/previous-versions/azure/app-service-mobile/app-service-mobile-xamarin-forms-get-started-push#configure-hub)機能に関連しています。
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `WEBSITE_PUSH_ENABLED` | 読み取り専用です。 プッシュ通知が有効になったときに追加されます。 |
 | `WEBSITE_PUSH_TAG_WHITELIST` | 読み取り専用です。 通知登録のタグが含まれています。 |
@@ -594,11 +594,11 @@ WEBSITE_VNET_BLOCK_FOR_SETUP_SCM_SITE
 
 次の環境変数は、[Web ジョブ](webjobs-create.md)に関連しています。
 
-| 設定の名前| 説明 |
+| 設定名| 説明 |
 |-|-|
 | `WEBJOBS_RESTART_TIME`|連続ジョブの場合、ジョブのプロセスが何らかの理由で停止してから再起動するまでの遅延時間 (秒)。 |
 | `WEBJOBS_IDLE_TIMEOUT`| トリガーされたジョブの場合、ジョブがアイドル状態で、CPU 時間も出力もない場合に、ジョブが中止されるまでのタイムアウト (秒)。 |
-| `WEBJOBS_HISTORY_SIZE`| トリガーされたジョブの場合、ジョブごとに履歴ディレクトリに保持される実行の最大数。 既定値は、`50` です。 |
+| `WEBJOBS_HISTORY_SIZE`| トリガーされたジョブの場合、ジョブごとに履歴ディレクトリに保持される実行の最大数。 既定では、 `50`です。 |
 | `WEBJOBS_STOPPED`| ジョブの実行を無効にし、現在実行中のすべてのジョブを停止するには、`1` に設定します。 |
 | `WEBJOBS_DISABLE_SCHEDULE`| スケジュールされたすべてのトリガーを無効にするには、`1` に設定します。 その場合でも、手動でジョブを呼び出すことがでできます。 |
 | `WEBJOBS_ROOT_PATH`| Web ジョブ ファイルの絶対または相対パス。 相対パスの場合、この値は既定のルート パス (`D:/home/site/wwwroot/` または `/home/site/wwwroot/`) と結合されます。 |
@@ -612,7 +612,7 @@ WEBSITE_VNET_BLOCK_FOR_SETUP_SCM_SITE
 
 ## <a name="functions"></a>関数
 
-| 設定の名前 | 説明 |
+| 設定名 | 説明 |
 |-|-|
 | `WEBSITE_FUNCTIONS_ARMCACHE_ENABLED` | 関数キャッシュを無効にするには、`0` に設定します。 |
 | `WEBSITE_MAX_DYNAMIC_APPLICATION_SCALE_OUT` | [Azure Functions のアプリケーション設定のリファレンス](../azure-functions/functions-app-settings.md) |

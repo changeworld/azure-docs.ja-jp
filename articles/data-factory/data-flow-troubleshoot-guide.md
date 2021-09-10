@@ -5,14 +5,15 @@ ms.author: makromer
 author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: troubleshooting
-ms.date: 04/22/2021
-ms.openlocfilehash: 82f6d69629f397cb5222a82677bf27ed880aa20f
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 08/18/2021
+ms.openlocfilehash: 9925875f45f5715343ef50fff018b436966bb4c0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988012"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099617"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でマッピング データ フローをトラブルシューティングする
 
@@ -67,7 +68,7 @@ ms.locfileid: "107988012"
 - **推奨事項**: この問題の詳細については、Microsoft の製品チームにお問い合わせください。
 
 ### <a name="error-code-df-executor-partitiondirectoryerror"></a>エラー コード:DF-Executor-PartitionDirectoryError
-- **メッセージ**:指定されたソース パスに、複数のパーティション ディレクトリ (たとえば、<Source Path>/<パーティション ルート ディレクトリ 1>/a=10/b=20、<Source Path>/<パーティション ルート ディレクトリ 2>/c=10/d=30)、他のファイルを含むパーティション ディレクトリ、またはパーティション分割されていないディレクトリ (たとえば、<Source Path>/<パーティション ルート ディレクトリ 1>/a=10/b=20、<Source Path>/Directory 2/file1) のいずれかが含まれています。ソース パスからパーティション ルート ディレクトリを削除して、別個のソース変換を利用して読み取ってください。
+- **メッセージ**: 指定されたソース パスに、複数のパーティション ディレクトリ (たとえば、&lt;ソース パス&gt;/<パーティション ルート ディレクトリ 1>/a=10/b=20、&lt;ソース パス&gt;/&lt;パーティション ルート ディレクトリ 2&gt;/c=10/d=30)、他のファイルを含むパーティション ディレクトリ、またはパーティション分割されていないディレクトリ (たとえば、&lt;ソース パス&gt;/&lt;パーティション ルート ディレクトリ 1&gt;/a=10/b=20、&lt;ソース パス&gt;/Directory 2/file1) のいずれかが含まれています。ソース パスからパーティション ルート ディレクトリを削除して、別個のソース変換を利用して読み取ってください。
 - **原因**: ソース パスに複数のパーティション ディレクトリ、別のファイルを含むパーティション ディレクトリ、またはパーティション分割されていないディレクトリのいずれかが含まれています。
 - **推奨事項**: パーティション ルート ディレクトリをソース パスから削除し、別個のソース変換を使用して読み取ってください。
 
@@ -117,7 +118,7 @@ ms.locfileid: "107988012"
  ### <a name="error-code-df-executor-storeisnotdefined"></a>エラー コード:DF-Executor-StoreIsNotDefined
 - **メッセージ**: ストアの構成が定義されていません。 このエラーは、パイプラインでの無効なパラメーター割り当てが原因である可能性があります。
 - **原因**: 無効なストア構成が指定されています。
-- **推奨事項**: パイプラインでのパラメーター値の割り当てをご確認ください。 パラメーター式に無効な文字が含まれているおそれがあります。
+- **推奨事項**: パイプラインでのパラメーター値の割り当てを確認してください。 パラメーター式に無効な文字が含まれている可能性があります。
 
 
 ### <a name="error-code-4502"></a>エラー コード:4502
@@ -125,6 +126,10 @@ ms.locfileid: "107988012"
 - **原因**: 統合ランタイムで、大量のデータ フロー アクティビティの実行が同時に発生しています。 詳細については、[Azure Data Factory の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)に関する記事を参照してください。
 - **推奨事項**: 多くのデータ フロー アクティビティを並列に実行する場合は、複数の統合ランタイムに分散させてください。
 
+### <a name="error-code-4510"></a>エラー コード: 4510
+- **メッセージ**: 実行中に予期しないエラーが発生しました。 
+- **原因**: デバッグ クラスターはジョブ クラスターとは異なる方法で動作します。そのため、デバッグが過剰に実行された場合、時間の経過に伴いクラスターが消耗し、メモリの問題が発生したり、突然再起動されたりする可能性があります。
+- **推奨事項**: デバッグ クラスターを再起動します。 デバッグ セッション中に複数のデータフローを実行している場合は、代わりにアクティビティの実行を使用します。これは、アクティビティ レベルの実行では、メインのデバッグ クラスターに負担をかけずに個別のセッションが作成されるためです。
 
 ### <a name="error-code-invalidtemplate"></a>エラー コード:InvalidTemplate
 - **メッセージ**: パイプライン式を評価できません。
@@ -397,14 +402,14 @@ ms.locfileid: "107988012"
 
 ### <a name="error-code-df-cosmos-deletedatafailed"></a>エラー コード: DF-Cosmos-DeleteDataFailed
 - **メッセージ**: 3 回再試行した後に cosmos からデータを削除できませんでした。
-- **原因**: Cosmos コレクションのスループットは小さいため、Cosmo に存在しないスロットリングまたは行データを満たすことになります。
+- **原因**: Cosmos コレクションのスループットが小さいためにスロットリングが発生したか、行データが Cosmos に存在しません。
 - **推奨事項**: この問題を解決するには、次の操作を行ってください。
-    1. エラーが404の場合は、関連する行データが Cosmos コレクションに存在することを確認します。 
+    1. エラーが 404 の場合は、関連する行データが Cosmos コレクションに存在することを確認します。 
     1. エラーがスロットリングである場合は、Cosmos collection スループットを増やすか、自動スケールに設定してください。
+    1. エラーが要求のタイムアウトの場合は、Cosmos シンクの "バッチ サイズ" を 1000 などの小さい値に設定してください。
 
 ### <a name="error-code-df-sqldw-errorrowsfound"></a>エラー コード: DF-SQLDW-ErrorRowsFound
-- **メッセージ**: sql シンクへの書き込み中にエラー/無効な行が見つかりました。 エラー/無効な行は、構成されている場合に、拒否されたデータ ストレージの場所に書き込まれます。
-- **原因**: SQL シンクへの書き込み時にエラーまたは無効な行が見つかりました。
+- **原因**: Azure Synapse Analytics シンクへの書き込み時に、エラーまたは無効な行が見つかりました。
 - **推奨事項**: エラー行が構成されている場合は、拒否されたデータの保存場所にあることを確認してください。
 
 ### <a name="error-code-df-sqldw-exporterrorrowfailed"></a>エラー コード: DF-SQLDW-ExportErrorRowFailed
@@ -478,9 +483,93 @@ ms.locfileid: "107988012"
 - **推奨事項**: AdobeIntegration の設定を更新して、パーティションの種類が RoundRobin になるようにしてください。
 
 ### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>エラー コード: DF-AdobeIntegration-InvalidPrivacyRegulation
-- **メッセージ**: 現在サポートされているプライバシー規則は gdpr のみです。
+- **メッセージ**: 現在サポートされているプライバシー規則は "GDPR" のみです。
 - **原因**: 無効なプライバシー構成が指定されています。
 - **推奨事項**: AdobeIntegration 設定を更新してください。プライバシー ' GDPR ' のみがサポートされています。
+
+### <a name="error-code-df-executor-remoterpcclientdisassociated"></a>エラー コード: DF-Executor-RemoteRPCClientDisassociated
+- **メッセージ**: リモート RPC クライアントの関連付けが解除されました。 Likely due to containers exceeding thresholds, or network issues. (リモート RPC クライアントの関連付けが解除されました。コンテナーがしきい値を超えたか、ネットワークの問題が、原因である可能性があります)
+- **原因**: 一時的なネットワークの問題が発生したか、Spark クラスターの 1 つのノードでメモリが不足しているため、データ フロー アクティビティの実行に失敗しました。
+- **推奨事項**: この問題を解決するには、次のオプションを使用してください。
+  - オプション-1: 強力なクラスター (ドライブとエグゼキューターの両方のノードに、ビッグ データを処理するために十分なメモリがある) を使用し、[計算の種類] を [メモリ最適化] に設定してデータ フロー パイプラインを実行します。 次の図にその設定を示します。
+        
+      :::image type="content" source="media/data-flow-troubleshoot-guide/configure-compute-type.png" alt-text="[計算の種類] の構成を示すスクリーンショット。":::   
+
+  - オプション-2: より大きなクラスター サイズ (48 コアなど) を使用して、データ フロー パイプラインを実行します。 クラスターのサイズの詳細については、[クラスターのサイズ](./concepts-integration-runtime-performance.md#cluster-size)に関するページを参照してください。
+  
+  - オプション-3: 入力データのパーティションを再分割します。 データ フローの Spark クラスターで実行されているタスクの場合、1 つのパーティションが 1 つのタスクであり、1 つのノードで実行されます。 1 つのパーティション内のデータが大きすぎる場合、ノードで実行されている関連タスクで、ノード自体よりも多くのメモリを消費することが必要になります。これにより、障害が発生します。 そのため、パーティションの再分割を使用してデータ スキューを回避することで、各パーティションのデータ サイズを平均化して、メモリ消費量が過剰にならないようにすることができます。
+    
+      :::image type="content" source="media/data-flow-troubleshoot-guide/configure-partition.png" alt-text="パーティションの構成を示すスクリーンショット。":::
+
+    > [!NOTE]
+    >  入力データのデータのサイズまたはパーティション数を評価し、[最適化] で適切なパーティション数を設定する必要があります。 たとえば、データ フロー パイプラインの実行で使用するクラスターは 8 コアで、各コアのメモリは 20 GB ですが、入力データは 10 個のパーティションで 1000 GB です。 データ フローを直接実行する場合は、1000 GB/10 > 20 GB であるため、OOM の問題が発生します。そのため、再パーティション数を 100 (1000 GB/100 < 20 GB) に設定することが適切です。
+    
+  - オプション-4: ソース/シンク/変換の設定を調整および最適化します。 たとえば、1 つのコンテナーにすべてのファイルをコピーし、ワイルドカード パターンを使用しないようにします。 詳細については、「[Mapping Data Flow のパフォーマンスとチューニング ガイド](./concepts-data-flow-performance.md)」を参照してください。
+
+### <a name="error-code-df-mssql-errorrowsfound"></a>エラー コード: DF-MSSQL-ErrorRowsFound
+- **原因**: Azure SQL Database シンクへの書き込み中に、エラー/無効な行が見つかりました。
+- **推奨事項**: 拒否されたデータの保存場所 (構成されている場合) でエラー行を見つけてください。
+
+### <a name="error-code-df-mssql-exporterrorrowfailed"></a>エラー コード: DF-MSSQL-ExportErrorRowFailed
+- **メッセージ**: エラー行をストレージに書き込んでいるときに例外が発生しました。
+- **原因**: エラー行をストレージに書き込んでいるときに例外が発生しました。
+- **推奨事項**: 拒否されたデータのリンク サービスの構成を確認してください。
+
+### <a name="error-code-df-synapse-invaliddatabasetype"></a>エラー コード: DF-Synapse-InvalidDatabaseType
+- **メッセージ**: データベースの種類がサポートされていません。
+- **原因**: データベースの種類がサポートされていません。
+- **推奨事項**: データベースの種類を確認し、適切な種類に変更します。
+
+### <a name="error-code-df-synapse-invalidformat"></a>エラー コード: DF-Synapse-InvalidFormat
+- **メッセージ**: 形式がサポートされていません。
+- **原因**: 形式がサポートされていません。 
+- **推奨事項**: 形式を確認して、適切な形式に変更します。
+
+### <a name="error-code-df-synapse-invalidtabledbname"></a>エラー コード: DF-Synapse-InvalidTableDBName
+- **原因**: テーブル/データベース名が無効です。
+- **推奨**: テーブルまたはデータベースを有効な名前に変更します。 有効な名前には、アルファベット文字、数字、`_` のみが含まれています。
+
+### <a name="error-code-df-synapse-invalidoperation"></a>エラー コード: DF-Synapse-InvalidOperation
+- **原因**: この操作はサポートされていません。
+- **推奨**: 無効な操作を変更します。
+
+### <a name="error-code-df-synapse-dbnotexist"></a>エラー コード: DF-Synapse-DBNotExist
+- **原因**: データベースが存在しません。
+- **推奨**: データベースが存在するかどうかを確認します。
+
+### <a name="error-code-df-synapse-storedprocedurenotsupported"></a>エラー コード: DF-Synapse-StoredProcedureNotSupported
+- **メッセージ**: 'ストアド プロシージャ' をソースとして使用することは、サーバーレス (オンデマンド) プールではサポートされていません。
+- **原因**: サーバーレス プールには制限があります。
+- **推奨事項**: 'クエリ' をソースとして使用するか、ストアド プロシージャをビューとして保存してから、'テーブル' をソースとして使用して直接ビューから読み取ります。
+
+### <a name="error-code-df-executor-broadcastfailure"></a>エラー コード: DF-Executor-BroadcastFailure
+- **メッセージ**: ブロードキャスト交換中にデータ フローの実行に失敗しました。 原因としては、ソースでの接続の構成が正しくないか、ブロードキャスト結合のタイムアウト エラーが考えられます。 ソースが正しく構成されていることを確認するには、接続をテストするか、データ フロー デバッグ セッションでソース データのプレビューを実行してください。 ブロードキャスト結合のタイムアウトを回避するには、結合/存在/参照の変換で [オフ] ブロードキャスト オプションを選択できます。 パフォーマンスを向上させるためにブロードキャスト オプションを使用する場合は、ブロードキャスト ストリームで、デバッグ実行では 60 秒以内に、ジョブ実行では 300 秒以内にデータを生成できることを確認します。 問題が解決しない場合は、カスタマー サポートにお問い合わせください。
+
+- **原因**:  
+    1. ソース接続/構成エラーにより、結合/存在/参照の変換でブロードキャスト エラーが発生することがあります。
+    2. ブロードキャストの既定のタイムアウトは、デバッグ実行では 60 秒、ジョブ実行では 300 秒です。 ブロードキャスト結合で、ブロードキャスト用に選択されたストリームが、この制限内にデータを生成するには大きすぎることが考えられます。 ブロードキャスト結合が使用されていない場合、データ フローによって実行される既定のブロードキャストが同じ制限に達することがあります。
+
+- **推奨事項**:
+    1. ソースでデータのプレビューを実行して、ソースが適切に構成されていることを確認します。 
+    1. ブロードキャスト オプションをオフにするか、処理に 60 秒を超える時間を要する可能性がある大規模なデータ ストリームのブロードキャストは避けてください。 代わりに、小さいストリームを選択してブロードキャストしてください。 
+    1. 通常、大規模な SQL/データ ウェアハウスのテーブルとソース ファイルは、適切な候補ではありません。 
+    1. ブロードキャスト結合が存在しない場合、エラーが発生したときはより大きなクラスターを使用します。 
+    1. 問題が解決しない場合は、カスタマー サポートにお問い合わせください。
+
+### <a name="error-code-df-cosmos-shorttypenotsupport"></a>エラー コード: DF-Cosmos-ShortTypeNotSupport
+- **メッセージ**: Short データ型は Cosmos DB ではサポートされていません。
+- **原因**: Short データ型は Azure Cosmos DB ではサポートされていません。
+- **推奨事項**: Cosmos シンクで使用する前に、関連する列を short から integer に変換する派生変換を追加します。
+
+### <a name="error-code-df-blob-functionnotsupport"></a>エラー コード: DF-Blob-FunctionNotSupport
+- **メッセージ**: このエンドポイントでは、BlobStorageEvents、SoftDelete、または AutomaticSnapshot がサポートされていません。 このエンドポイントを使用する場合は、これらのアカウント機能を無効にしてください。
+- **原因**: Azure Blob Storage のリンクされたサービスがサービス プリンシパルまたはマネージド ID 認証で作成されている場合、データ フローで Azure Blob Storage イベント、論理的な削除、または自動スナップショットはサポートされません。
+- **推奨事項**: Azure Blob アカウントで Azure Blob Storage イベント、論理的な削除、または自動スナップショット機能を無効にするか、キー認証を使用してリンクされたサービスを作成します。
+
+### <a name="error-code-df-cosmos-invalidaccountkey"></a>エラー コード: DF-Cosmos-InvalidAccountKey
+- **メッセージ**: この入力認証トークンでは、要求を処理できません。 Please check that the expected payload is built as per the protocol, and check the key being used (必要なペイロードがプロトコルにしたがって作成されていることを確認し、使用されているキーを確認してください)。
+- **原因**: Azure Cosmos DB のデータの読み取り/書き込みを行うための十分なアクセス許可がありません。
+- **推奨事項**: 読み取り/書き込みキーを使用して、Azure Cosmos DB にアクセスしてください。
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>その他のトラブルシューティングのヒント
 - **問題**: 予期しない例外が発生し、実行が失敗しました。
@@ -609,13 +698,34 @@ ms.locfileid: "107988012"
  改善後、解析された列の結果は次のようになります。<br/>
   `A "" (empty string) B "" (empty string)`<br/>
 
+###  <a name="internal-server-errors"></a>内部サーバー エラー
+
+内部サーバー エラーの原因となる可能性がある特定のシナリオを次に示します。
+
+#### <a name="scenario-1-not-choosing-the-appropriate-compute-sizetype-and-other-factors"></a>シナリオ 1: コンピューティングの適切なサイズや種類、その他の要因が選択されていない
+
+  データ フローの正常な実行は、コンピューティングのサイズと種類、処理するソースとシンクの数、パーティションの指定、関連する変換、データセットのサイズ、データの偏りなど、さまざまな要因に依存します。<br/>
+  
+  詳細なガイドについては、[Integration Runtime のパフォーマンス](concepts-integration-runtime-performance.md)に関するページを参照してください。
+
+#### <a name="scenario-2-using-debug-sessions-with-parallel-activities"></a>シナリオ 2: 並列アクティビティでのデバッグ セッションの使用
+
+  パイプラインに ForEach のようなコンストラクトが含まれるデータ フロー デバッグ セッションを使用して実行をトリガーすると、同じクラスターに複数の並列実行が送信される可能性があります。 この状況では、メモリ不足などのリソースの問題のため、クラスターの障害に関する問題が実行中に発生する可能性があります。<br/>
+  
+  変更を発行した後に、パイプライン アクティビティで定義されている適切な統合ランタイム構成を使用して実行を送信するには、 **[今すぐトリガー]** または **[デバッグ]**  >  **[アクティビティ ランタイムを使用]** を選択します。
+
+#### <a name="scenario-3-transient-issues"></a>シナリオ 3: 一時的な問題
+
+  実行に関係するマイクロサービスの一時的な問題により、実行が失敗する可能性があります。<br/>
+  
+  パイプライン アクティビティに再試行を構成すると、一時的な問題による問題が解決されることがあります。 詳細なガイドについては、「[アクティビティ ポリシー](concepts-pipelines-activities.md#activity-json)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングの詳細について、次のリソースを参照してください。
 
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)

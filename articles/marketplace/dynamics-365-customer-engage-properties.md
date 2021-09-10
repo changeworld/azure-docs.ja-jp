@@ -1,18 +1,18 @@
 ---
-title: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & PowerApps オファーのプロパティを構成します。
-description: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & PowerApps オファーのプロパティを構成します。
+title: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & Power Apps オファーのプロパティを構成します。
+description: Microsoft AppSource (Azure Marketplace) で Dynamics 365 for Customer Engagement & Power Apps オファーのプロパティを構成します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: 155b8deb614aa2c2a85ce9b81625e3d6972ff09b
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 4f0b21bd0e3ff8da89606357a2844f8098e6a572
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566230"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864508"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-properties"></a>Dynamics 365 for Customer Engagement & Power Apps オファーのプロパティの構成
 

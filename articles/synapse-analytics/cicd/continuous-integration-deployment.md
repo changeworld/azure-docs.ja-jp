@@ -3,17 +3,17 @@ title: Synapse ワークスペースの継続的インテグレーションと�
 description: 継続的インテグレーションとデリバリーを使用してワークスペース内の変更をある環境 (開発、テスト、運用) から別の環境にデプロイする方法について説明します。
 author: liudan66
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: cicd
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 833478d956560c981bd6cc3ba03b48bb602f563c
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: a590a2a0470710a74a6f1441a1f1859f974c2f97
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739676"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259403"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -21,9 +21,9 @@ ms.locfileid: "107739676"
 
 継続的インテグレーション (CI) は、チーム メンバーが変更をバージョン コントロールにコミットするたびに、コードのビルドとテストを自動化するプロセスです。 継続的配置 (CD) は、複数のテスト環境またはステージング環境から運用環境へのビルド、テスト、構成、およびデプロイを行うプロセスです。
 
-Azure Synapse Analytics ワークスペースでは、継続的インテグレーションとデリバリー (CI/CD) を使用して、すべてのエンティティをある環境 (開発、テスト、運用) から別の環境に移動します。 ワークスペースを別のワークスペースに昇格させるには、2 つの部分があります。 まず、[Azure Resource Manager テンプレート (ARM テンプレート)](../../azure-resource-manager/templates/overview.md) を使用して、ワークスペースのリソース (プールとワークスペース) を作成または更新します。 次に、Azure DevOps の Azure Synapse Analytics CI/CD ツールを使用して、アーティファクト (SQL スクリプト、ノートブック、Spark ジョブの定義、パイプライン、データセット、データ フローなど) を移行します。 
+Azure Synapse Analytics ワークスペースでは、継続的インテグレーションとデリバリー (CI/CD) を使用して、すべてのエンティティをある環境 (開発、テスト、運用) から別の環境に移動します。 ワークスペースを別のワークスペースに昇格させるには、2 つの部分があります。 まず、[Azure Resource Manager テンプレート (ARM テンプレート)](../../azure-resource-manager/templates/overview.md) を使用して、ワークスペースのリソース (プールとワークスペース) を作成または更新します。 次に、Azure DevOps または GitHub の Azure Synapse Analytics CI/CD ツールを使用して、アーティファクト (SQL スクリプト、ノートブック、Spark ジョブの定義、パイプライン、データセット、データ フローなど) を移行します。 
 
-この記事では、Azure DevOps のリリース パイプラインを使用して、複数の環境への Azure Synapse ワークスペースのデプロイを自動化する方法について説明します。
+この記事では、Azure DevOps のリリース パイプラインと GitHub アクションを使用して、複数の環境への Azure Synapse ワークスペースのデプロイを自動化する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,16 +32,22 @@ Azure Synapse Analytics ワークスペースでは、継続的インテグレ�
 ### <a name="azure-devops"></a>Azure DevOps
 
 - リリース パイプラインを実行するための Azure DevOps プロジェクトが準備されている。
-- リポジトリを表示できるようにするため、[コード "Basic" をチェックインするユーザーに組織レベルでのアクセスを付与します](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page)。
+- リポジトリを表示できるようにするため、[コード "Basic" をチェックインするユーザーに組織レベルでのアクセスを付与します](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true)。
 - Azure Synapse リポジトリに対する所有者権限を付与します。
 - セルフホステッド Azure DevOps VM エージェントを作成したこと、または Azure DevOps ホステッド エージェントを使用していることを確認します。
-- [リソース グループの Azure Resource Manager サービス接続を作成する](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)ためのアクセス許可。
+- [リソース グループの Azure Resource Manager サービス接続を作成する](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true)ためのアクセス許可。
 - Azure Active Directory (Azure AD) の管理者は、[Azure DevOps 組織に Azure DevOps Synapse Workspace Deployment Agent 拡張機能をインストールする](/azure/devops/marketplace/install-extension)必要があります。
 - パイプラインを実行するための既存のサービス アカウントを作成または指名します。 サービス アカウントの代わりに個人用アクセス トークンを使用できますが、そのユーザー アカウントが削除されるとパイプラインが機能しなくなります。
 
+### <a name="github"></a>GitHub
+
+- Synapse ワークスペースのアーティファクトとワークスペース テンプレートを含む GitHub リポジトリ 
+- セルフホステッド ランナーを作成しているか、GitHub ホスト ランナーを使用していることを確認します。
+
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-- Azure AD で、デプロイに使用するサービス プリンシパルを作成します。 Synapse ワークスペース デプロイ タスクでは、バージョン 1* 以前のマネージド ID の使用はサポートされていません。
+- サービス プリンシパルを使用している場合は、Azure AD でデプロイに使用するサービス プリンシパルを作成します。 
+- マネージド ID を使用するには、エージェントまたはランナーとして Azure の VM でシステム割り当てマネージド ID を有効にし、Synapse 管理者として Synapse Studio に追加する必要があります。
 - この操作には Azure AD の管理者権限が必要です。
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
@@ -55,27 +61,26 @@ Azure Synapse Analytics ワークスペースでは、継続的インテグレ�
 
   1. 新しい Azure Synapse Analytics ワークスペースを作成します。
   1. 新しいワークスペースがホストされるリソース グループに、VM エージェントとサービス プリンシパルの共同作成者権限を付与します。
-  1. 新しいワークスペースでは、Git リポジトリ接続を構成しないでください。
+  1. ターゲットのワークスペースでは、Git リポジトリ接続を構成しないでください。
   1. Azure portal で、新しい Azure Synapse Analytics ワークスペースを見つけて、自分と Azure DevOps パイプラインを実行するユーザーに Azure Synapse Analytics ワークスペースの所有者権限を付与します。 
   1. Azure DevOps VM エージェントとサービス プリンシパルをワークスペースの共同作成者ロールに追加します (これは継承されているはずですが、そうなっていることを確認します)。
-  1. Azure Synapse Analytics ワークスペースで、 **[Studio]**  >  **[管理]**  >  **[IAM]** に移動します。 Azure DevOps VM エージェントとサービス プリンシパルをワークスペース管理者グループに追加します。
+  1. Azure Synapse Analytics ワークスペースで、 **[Studio]**  >  **[管理]**  >  **[Access Control]** に移動します。 Azure DevOps VM エージェントとサービス プリンシパルをワークスペース管理者グループに追加します。
   1. ワークスペースに使用するストレージ アカウントを開きます。 IAM で、VM エージェントとサービス プリンシパルをストレージ BLOB データ選択共同作成者ロールに追加します。
   1. サポート サブスクリプションでキー コンテナーを作成し、既存のワークスペースと新しいワークスペースの両方にこのコンテナーに対する GET および LIST アクセス許可が少なくとも付与されるようにします。
   1. 自動デプロイを機能させるには、リンク サービスで指定されているすべての接続文字列がキー コンテナーにあることを確認します。
 
 ### <a name="additional-prerequisites"></a>追加の前提条件
  
- - Spark プールとセルフホステッド統合ランタイムは、パイプラインでは作成されません。 セルフホステッド統合ランタイムを使用するリンク サービスがある場合は、新しいワークスペースに手動で作成します。
- - ノートブックを開発していて、それらを Spark プールに接続する場合は、ワークスペースで Spark プールを再作成します。
- - 環境に存在しない Spark プールにリンクされているノートブックは、デプロイされません。
- - Spark プールの名前は、両方のワークスペースで同じである必要があります。
- - 両方のワークスペースで、すべてのデータベース、SQL プール、その他のリソースに同じ名前を付けます。
+ - Spark プールとセルフホステッド統合ランタイムは、ワークスペースのデプロイ タスクでは作成されません。 セルフホステッド統合ランタイムを使用するリンク サービスがある場合は、新しいワークスペースに手動で作成します。
+ - 開発ワークスペースの項目が特定のプールにアタッチされている場合は、パラメーター ファイルでプールを作成またはパラメーター化したターゲットのワークスペースのプールと同じ名前であることを確認してください。  
  - プロビジョニングされた SQL プールをデプロイしようとしたときに一時停止した場合、デプロイは失敗する可能性があります。
 
 詳細については、[Azure Synapse Analytics での CI CD パート 4 - リリース パイプライン](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434)に関するページを参照してください。 
 
 
-## <a name="set-up-a-release-pipeline"></a>リリース パイプラインの設定
+## <a name="set-up-a-release-pipeline-in-azure-devops"></a>Azure DevOps にリリース パイプラインを設定する
+
+このパートでは、Azure DevOps で Synapse をデプロイする方法について説明します。 
 
 1.  [Azure DevOps](https://dev.azure.com/) で、リリース用に作成されたプロジェクトを開きます。
 
@@ -103,7 +108,7 @@ Azure Synapse Analytics ワークスペースでは、継続的インテグレ�
 
     ![アーティファクトの追加](media/release-creation-publish-branch.png)
 
-## <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-resource"></a>リソースを作成および更新するための ARM テンプレートのステージ タスクを設定する 
+### <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-resource"></a>リソースを作成および更新するための ARM テンプレートのステージ タスクを設定する 
 
 Azure Synapse ワークスペース、Spark および SQL プール、キー コンテナーなどのリソースをデプロイするための ARM テンプレートがある場合は、それらのリソースを作成または更新するための Azure Resource Manager デプロイ タスクを追加します。
 
@@ -134,7 +139,7 @@ Azure Synapse ワークスペース、Spark および SQL プール、キー コ
  > [!WARNING]
 > 完全なデプロイ モードでは、リソース グループに存在していても、新しい Resource Manager テンプレート内で指定されていないリソースは、**削除** されます。 詳細については、「[Azure Resource Manager のデプロイ モード](../../azure-resource-manager/templates/deployment-modes.md)」を参照してください。
 
-## <a name="set-up-a-stage-task-for-synapse-artifacts-deployment"></a>Synapse アーティファクトのデプロイのステージ タスクを設定する 
+### <a name="set-up-a-stage-task-for-synapse-artifacts-deployment"></a>Synapse アーティファクトのデプロイのステージ タスクを設定する 
 
 [Synapse ワークスペースのデプロイ](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy)拡張機能を使用して、データセット、SQL スクリプト、ノートブック、Spark ジョブ定義、データフロー、パイプライン、リンクされたサービス、資格情報、IR (Integration Runtime) などの他のアイテムを Synapse ワークスペースにデプロイします。  
 
@@ -158,18 +163,113 @@ Azure Synapse ワークスペース、Spark および SQL プール、キー コ
 
 1. ターゲット ワークスペースの接続、リソース グループ、および名前を選択します。 
 
-1. **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** ボックスの横にあります)。リンク サービスで使用される接続文字列とアカウント キーを含む、ターゲット ワークスペースの目的のパラメーター値を入力します。 [詳細については、こちらをクリックしてください] (https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434)
+1. **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** ボックスの横にあります)。リンク サービスで使用される接続文字列とアカウント キーを含む、ターゲット ワークスペースの目的のパラメーター値を入力します。 詳細については、[Azure Synapse Analytics の CI/CD](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434) に関する記事をご覧ください。
 
     ![Synapse ワークスペースのデプロイ](media/create-release-artifacts-deployment.png)
 
 > [!IMPORTANT]
 > CI/CD のシナリオでは、異なる環境内の統合ランタイム (IR) の種類は同じである必要があります。 たとえば、開発環境にセルフホステッド IR がある場合、テストや運用などの他の環境でも、IR の種類はセルフホステッドである必要があります。 同様に、複数のステージ間で統合ランタイムを共有している場合は、開発、テスト、運用など、すべての環境で、統合ランタイムをリンクされたセルフホステッドとして構成する必要があります。
 
-## <a name="create-release-for-deployment"></a>デプロイのリリースを作成する 
+### <a name="create-release-for-deployment"></a>デプロイのリリースを作成する 
 
 すべての変更を保存したら、 **[リリースの作成]** を選択してリリースを手動で作成できます。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](/azure/devops/pipelines/release/triggers)に関するページを参照してください。
 
    ![[Create release]\(リリースの作成\) の選択](media/release-creation-manually.png)
+
+## <a name="set-up-a-release-with-github-action"></a>GitHub アクションを使用してリリースを設定する 
+
+このパートでは、Synapse ワークスペースのデプロイに GitHub Actions を使用して GitHub ワークフローを作成する方法について説明します。
+[Azure Resource Manager テンプレートのデプロイ アクション](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)を使って、ワークスペースとコンピューティング プールのための Azure Resource Manager テンプレート (ARM テンプレート) の Azure へのデプロイを自動化します。
+
+### <a name="workflow-file-overview"></a>ワークフロー ファイルの概要
+
+GitHub Actions ワークフローは、お使いのリポジトリの /.github/workflows/ パスの YAML (.yml) ファイルで定義されます。 この定義には、ワークフローを構成するさまざまな手順とパラメーターが含まれます。
+
+このファイルには 2 つのセクションがあります。
+
+|Section  |タスク  |
+|---------|---------|
+|**認証** | 1.サービス プリンシパルを定義します。 <br /> 2.GitHub シークレットを作成します。 |
+|**デプロイする** | 1. ワークスペースのアーティファクトをデプロイします。 |
+
+### <a name="configure-the-github-secrets"></a>GitHub シークレットを構成する
+
+シークレットは、暗号化される環境変数です。 このリポジトリに対してコラボレーターのアクセス権を持つすべてのユーザーは、これらのシークレットを Actions に使用できます。
+
+1. リポジトリに移動し、 **[設定]** を選択し、[シークレット] に移動して、[新しいシークレット] をクリックします。
+
+    ![新しいシークレットを作成する](media/create-secret-new.png)
+
+1. デプロイにサービス プリンシパルを使用する場合は、クライアント ID、クライアント シークレットの新しいシークレットを追加します。サブスクリプション ID、テナント ID をシークレットとして保存するように選択することもできます。 
+
+### <a name="add-your-workflow"></a>ワークフローを追加する
+
+GitHub リポジトリの **Actions** にアクセスします。 
+
+1. **[Set up a workflow yourself]\(ワークフローを自分でセットアップする\)** を選択します。 
+1. ワークフロー ファイルの `on:` セクションの後にあるすべてのものを削除します。 たとえば、残りのワークフローは次のようになります。 
+
+    ```yaml
+    name: CI
+
+    on:
+    push:
+        branches: [ master ]
+    pull_request:
+        branches: [ master ]
+    ```
+
+1. ワークフローの名前を変更し、マーケットプレースで Synapse ワークスペースのデプロイ アクションを検索して、アクションを追加します。 
+
+     ![アクションを検索する](media/search-the-action.png)
+
+1. 必要な値とワークスペース テンプレートを指定します。
+
+    ```yaml
+    name: workspace deployment
+
+    on:
+        push:
+            branches: [ publish_branch ]
+    jobs:
+        release:
+            # You can also use the self-hosted runners
+            runs-on: windows-latest
+            steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v2
+            - uses: azure/synapse-workspace-deployment@release-1.0
+            with:
+              TargetWorkspaceName: 'target workspace name'
+              TemplateFile: './path of the TemplateForWorkspace.json'
+              ParametersFile: './path of the TemplateParametersForWorkspace.json'
+              OverrideArmParameters: './path of the parameters.yaml'
+              environment: 'Azure Public'
+              resourceGroup: 'target workspace resource group'
+              clientId: ${{secrets.CLIENTID}}
+              clientSecret:  ${{secrets.CLIENTSECRET}}
+              subscriptionId: 'subscriptionId of the target workspace'
+              tenantId: 'tenantId'
+              DeleteArtifactsNotInTemplate: 'true'
+              managedIdentity: 'False'
+    ``` 
+
+1. これで、変更をコミットする準備ができました。 [コミットの開始] を選択し、タイトルを入力して、説明を追加します (省略可能)。 次に、[新しいファイルのコミット] をクリックします。
+
+    ![ワークフローをコミットする](media/commit-the-workflow.png)    
+
+
+1. このファイルは、リポジトリの `.github/workflows` フォルダー内に表示されます。
+
+> [!NOTE]
+> マネージド ID は、Azure 上のセルフホステッド VM でのみサポートされています。 ランナーをセルフホステッドに設定してください。 VM に対してシステム割り当てマネージド ID を有効にし、Synapse 管理者として Synapse Studio に追加します。
+
+### <a name="review-your-deployment"></a>デプロイを確認する
+
+1. GitHub リポジトリの Actions にアクセスします。
+1. 最初の結果を開くと、ワークフローの実行の詳細なログが表示されます
+
+    ![デプロイを再調査する](media/review-deploy-status.png)    
 
 ## <a name="use-custom-parameters-of-the-workspace-template"></a>ワークスペース テンプレートのカスタム パラメーターを使用する 
 

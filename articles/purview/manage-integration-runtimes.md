@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 2c1f967e596b4ba19d121f3c0332259b92f78d06
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 1b2748664046c97258ee3414b741075627064bbc
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730613"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867482"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの作成および管理
 
@@ -20,6 +20,9 @@ ms.locfileid: "114730613"
 
 > [!NOTE]
 > Purview Integration Runtime は、同じマシン上の Azure Synapse Analytics または Azure Data Factory Integration Runtime と共有することはできません。 別のマシンにインストールする必要があります。
+
+> [!IMPORTANT]
+> 2021 年 8 月 18 日以降に Azure Purview アカウントを作成した場合は必ず、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から最新バージョンのセルフホステッド統合ランタイムをダウンロードしてインストールしてください。
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成する
 
@@ -77,10 +80,18 @@ ms.locfileid: "114730613"
 | `*.frontend.clouddatahub.net` | 443            | グローバル インフラストラクチャ Purview により、スキャンを実行するために使用されます。 専用のリソースがないため、ワイルドカードが必要です。 |
 | `<managed Purview storage account>.core.windows.net`          | 443            | セルフホステッド統合ランタイムにより、マネージド Azure ストレージ アカウントに接続するために使用されます。|
 | `<managed Purview storage account>.queue.core.windows.net` | 443            | スキャン プロセスを実行するために Purview によって使用されるキュー。 |
-| `<your Key Vault Name>.vault.azure.net` | 443           | 資格情報が Azure Key Vault に格納されている場合に必要です。 |
 | `download.microsoft.com` | 443           | SHIR の更新の場合は省略可能。 |
+
+ソースに基づいて、他の Azure または外部ソースのドメインを許可する必要がある場合があります。 Key Vault に保存されている資格情報に接続する場合の Azure Key Vault ドメインとともに、いくつかの例を以下に示します。
+
+| ドメイン名                  | 送信ポート | 説明                              |
+| ----------------------------- | -------------- | ---------------------------------------- |
+| `<storage account>.core.windows.net`          | 443            | オプション。Azure Storage アカウントに接続する場合。 |
+| `*.database.windows.net`      | 1433           | オプション。Azure SQL Database または Azure Synapse Analytics に接続する場合。 |
+| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | オプション。Azure Data Lake Store Gen 1 に接続する場合。 |
+| `<datastoragename>.dfs.core.windows.net`    | 443            | オプション。Azure Data Lake Store Gen 2 に接続する場合。 |
+| `<your Key Vault Name>.vault.azure.net` | 443           | 資格情報が Azure Key Vault に格納されている場合に必要です。 |
 | さまざまなドメイン | ドメインに依存          | SHIR の接続先である他のソースのドメイン。 |
-  
   
 > [!IMPORTANT]
 > ほとんどの環境では、DNS が正しく構成されていることを確認する必要もあります。 確認するには、お使いの SHIR マシンから **nslookup** を使用して、上記の各ドメインへの接続を調べます。 各 nslookup から、リソースの IP が返される必要があります。 [プライベート エンドポイント](catalog-private-link.md)を使用している場合は、パブリック IP ではなく、プライベート IP が返される必要があります。 IP が返されない場合、またはプライベート エンドポイントを使用しているときにパブリック IP が返される場合は、DNS と VNET の関連付け、またはプライベート エンドポイントと VNET のピアリングに、対処する必要があります。
@@ -97,4 +108,6 @@ ms.locfileid: "114730613"
 
 ## <a name="next-steps"></a>次のステップ
 
-[削除されたアセットをスキャンが検出する方法](concept-detect-deleted-assets.md)
+- [削除されたアセットをスキャンが検出する方法](concept-scans-and-ingestion.md#how-scans-detect-deleted-assets)
+
+- [Purview でプライベート エンドポイントを使用する](catalog-private-link.md)

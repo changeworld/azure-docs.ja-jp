@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/10/2021
+ms.date: 08/27/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: ccca7f1deeeef49b734313c30d13290e47b6ab57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a78408759492cdba97bca8b6e4b71411af192f9f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727979"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224119"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -30,15 +30,14 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 | 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.13.0 | 一般公開 |
 | カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.13.0 | 一般公開 |
 | テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.14.1 | 一般公開 |
-| 音声言語識別 | オーディオ ファイルで話されている言語を検出します。 | 1.3.0 | 限定的なプレビュー |
+| 音声言語識別 | オーディオ ファイルで話されている言語を検出します。 | 1.3.0 | preview |
 | Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.8.0 | 一般公開 |
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-> 音声コンテナーを使用するには、オンライン要求を送信し、承認を受けている必要があります。 詳細については、以下の「**コンテナーを実行するための承認を要求する**」セクションを参照してください。
+> * 音声コンテナーを使用するには、オンライン要求を送信し、承認を受けている必要があります。 詳細については、以下の「**コンテナーを実行するための承認を要求する**」セクションを参照してください。 
+> * *一般提供* されているコンテナーは、Microsoft の安定性とサポート要件を満たしています。 *プレビュー* 段階のコンテナーは、まだ開発中です。
 
 音声サービス コンテナーを使用するには、次の前提条件を満たしている必要があります。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 

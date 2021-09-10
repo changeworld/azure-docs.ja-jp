@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 8ada2b5dbf58791da7bfbd11201a683c6a060f94
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 68269b511d101f7c2c346a4bee45aef86bda8fe3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649606"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223112"
 ---
 # <a name="azure-automanage-for-machines-best-practices---windows-server"></a>Azure Automanage for Machines のベスト プラクティス - Windows Server
 
@@ -28,7 +28,6 @@ Automanage でサポートされている Windows Server のバージョンは�
 - Windows Server 2012/R2
 - Windows Server 2016
 - Windows Server 2019
-- Windows Server 2019 Azure Edition
 - Windows Server 2022
 - Windows Server 2022 Azure Edition
 
@@ -42,8 +41,9 @@ Automanage でサポートされている Windows Server のバージョンは�
 |[Microsoft Antimalware](../security/fundamentals/antimalware.md)    |Azure に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護です。 これにより、既知の悪意あるソフトウェアや望ましくないソフトウェアが Azure システム上にソフトウェア自体をインストールまたは実行しようとしたときに、アラートが生成されます。 **注:** Microsoft Antimalware を使用するには、他のマルウェア対策ソフトウェアがインストールされていないことが必要です。そうでないと、動作しない可能性があります。  [詳細情報](../security/fundamentals/antimalware.md)。 |運用、Dev/Test    |Yes    |
 |[更新管理](../automation/update-management/overview.md)    |Azure Automation の Update Management を使用して、マシンのオペレーティング システムの更新プログラムを管理することができます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。 [詳細情報](../automation/update-management/overview.md)。    |運用、Dev/Test    |いいえ    |
 |[変更履歴とインベントリ](../automation/change-tracking/overview.md) |変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。  [詳細情報](../automation/change-tracking/overview.md)。    |運用、Dev/Test    |いいえ    |
-|[Azure ゲスト構成](../governance/policy/concepts/guest-configuration.md) | ゲスト構成ポリシーは、マシンのコンプライアンスに関するレポートを作成し、構成を監視するために使用されます。 ゲスト構成拡張機能を使用して、Automanage サービスによって [Windows セキュリティ ベースライン](/windows/security/threat-protection/windows-security-baselines)がインストールされます。 Windows マシンの場合、準拠していない場合はゲスト構成サービスによってベースライン設定が自動的に再適用されます。 [詳細情報](../governance/policy/concepts/guest-configuration.md)。    |運用、Dev/Test    |いいえ    |
+|[ゲスト構成](../governance/policy/concepts/guest-configuration.md) | ゲスト構成ポリシーは、マシンのコンプライアンスに関するレポートを作成し、構成を監視するために使用されます。 ゲスト構成拡張機能を使用して、Automanage サービスによって [Windows セキュリティ ベースライン](/windows/security/threat-protection/windows-security-baselines)がインストールされます。 Windows マシンの場合、準拠していない場合はゲスト構成サービスによってベースライン設定が自動的に再適用されます。 [詳細情報](../governance/policy/concepts/guest-configuration.md)。    |運用、Dev/Test    |いいえ    |
 |[ブート診断](../virtual-machines/boot-diagnostics.md)    | ブート診断は、VM ブート エラーの診断を可能にする、Azure の仮想マシン (VM) のデバッグ機能です。 ブート診断を使用すると、ユーザーは、シリアル ログ情報とスクリーンショットを収集して、起動中の VM の状態を確認できます。 これは、マネージド ディスクを使用しているマシンに対してのみ有効になります。 |運用、Dev/Test    |いいえ    |
+|[Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-vm)    | Azure portal の Windows Admin Center (プレビュー) を使用して、Azure VM 内の Windows Server オペレーティング システムを管理します。 これは、Windows Server 2016 以上を使用するマシンでのみサポートされます。 Automanage は、プライベート IP アドレスを介して Windows Admin Center を構成します。 パブリック IP アドレス経由で Windows Admin Center に接続する場合は、ポート 6516 の受信ポート ルールを開いてください。 既定では、Automanage は Dev/Test プロファイルの Windows Admin Center をオンボードします。 運用環境と Dev/Test 環境で Windows Admin Center を有効または無効にするには、基本設定を使用します。 |運用、Dev/Test    |Yes    |
 |[Azure Automation アカウント](../automation/automation-create-standalone-account.md)    |Azure Automation は、インフラストラクチャとアプリケーションのライフサイクル全体にわたる管理をサポートします。 [詳細情報](../automation/automation-intro.md)。    |運用、Dev/Test    |いいえ    |
 |[Log Analytics ワークスペース](../azure-monitor/logs/log-analytics-overview.md) |Azure Monitor では、ログ データが Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは Azure リソースであり、データが収集、集計され、管理境界として機能するコンテナーです。 [詳細情報](../azure-monitor/logs/design-logs-deployment.md)。    |運用、Dev/Test    |いいえ    |
 

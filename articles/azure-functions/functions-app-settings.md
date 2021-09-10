@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: 7275d81401444dffbe0917bdb72ba79100880749
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 78e142fd97158fb64387950f9515ac168c216e5d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862686"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108671"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -17,6 +17,7 @@ ms.locfileid: "121862686"
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 [host.json](functions-host-json.md) ファイルと [local.settings.json](functions-develop-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
+例の接続文字列の値は、読みやすくするために省略されています。
 
 > [!NOTE]
 > アプリケーション設定を使用して、host.json ファイル自体を変更することなく、host.json 設定値をオーバーライドできます。 これは、特定の環境の特定の host.json 設定を構成または変更する必要がある場合に便利です。 これにより、プロジェクトを再発行しなくても、host.json 設定を変更できます。 詳細については、[host.json のリファレンスに関する記事](functions-host-json.md#override-hostjson-values)をご覧ください。 関数アプリの設定に変更を加えるためには、関数アプリを再起動する必要があります。
@@ -27,7 +28,7 @@ Application Insights のインストルメンテーション キー。 `APPINSIG
 
 |Key|値の例|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
+|APPINSIGHTS_INSTRUMENTATIONKEY|`55555555-af77-484b-9032-64f83bb83bb`|
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
@@ -40,7 +41,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 |Key|値の例|
 |---|------------|
-|APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey=[key];IngestionEndpoint=[url];LiveEndpoint=[url];ProfilerEndpoint=[url];SnapshotEndpoint=[url];|
+|APPLICATIONINSIGHTS_CONNECTION_STRING|`InstrumentationKey=...`|
 
 ## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 
@@ -48,8 +49,8 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 |Key|値|説明|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接送信されません。 代わりに、要求は、関数アプリの HTTP フロントエンドに戻されます。|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されます。 これが既定値です。 |
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|`true`|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接送信されません。 代わりに、要求は、関数アプリの HTTP フロントエンドに戻されます。|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|`false`|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されます。 これが既定値です。 |
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
@@ -57,8 +58,8 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 |Key|値|説明|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュを含むルート パラメーターがデコードされます。 |
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|すべてのルート パラメーターは変更されずに渡されます。これは既定の動作です。 |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|`true`|エンコードされたスラッシュを含むルート パラメーターがデコードされます。 |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|`false`|すべてのルート パラメーターは変更されずに渡されます。これは既定の動作です。 |
 
 たとえば、`myfunction.com` ドメインの関数アプリ用の proxies.json ファイルを考えてみます。
 
@@ -92,7 +93,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 
 |Key|値の例|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
+|AzureWebJobsDashboard|`DefaultEndpointsProtocol=https;AccountName=...`|
 
 > [!NOTE]
 > より良いパフォーマンスとエクスペリエンスのために、ランタイムのバージョン 2.x 以降では、`AzureWebJobsDashboard` ではなく APPINSIGHTS_INSTRUMENTATIONKEY と App Insights を使用します。
@@ -103,7 +104,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 
 |Key|値の例|
 |---|------------|
-|AzureWebJobsDisableHomepage|true|
+|AzureWebJobsDisableHomepage|`true`|
 
 このアプリ設定を省略するか、`false` に設定した場合、URL `<functionappname>.azurewebsites.net` の応答に対し、次の例のようなものが表示されます。
 
@@ -115,7 +116,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 
 |Key|値の例|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|true|
+|AzureWebJobsDotNetReleaseCompilation|`true`|
 
 ## <a name=&quot;azurewebjobsfeatureflags&quot;></a>AzureWebJobsFeatureFlags
 
@@ -123,7 +124,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 
 |Key|値の例|
 |---|------------|
-|AzureWebJobsFeatureFlags|feature1,feature2|
+|AzureWebJobsFeatureFlags|`feature1,feature2`|
 
 ## <a name=&quot;azurewebjobssecretstoragetype&quot;></a>AzureWebJobsSecretStorageType
 
@@ -139,7 +140,7 @@ Azure Functions ランタイムでは、このストレージ アカウント接
 
 |Key|値の例|
 |---|------------|
-|AzureWebJobsStorage|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|AzureWebJobsStorage|`DefaultEndpointsProtocol=https;AccountName=...`|
 
 ## <a name="azurewebjobs_typescriptpath"></a>AzureWebJobs_TypeScriptPath
 
@@ -147,7 +148,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 
 |Key|値の例|
 |---|------------|
-|AzureWebJobs_TypeScriptPath|%HOME%\typescript|
+|AzureWebJobs_TypeScriptPath|`%HOME%\typescript`|
 
 ## <a name="function_app_edit_mode"></a>FUNCTION\_APP\_EDIT\_MODE
 
@@ -155,7 +156,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 |Key|値の例|
 |---|------------|
-|FUNCTION\_APP\_EDIT\_MODE|readonly|
+|FUNCTION\_APP\_EDIT\_MODE|`readonly`|
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
@@ -163,7 +164,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 |Key|値の例|
 |---|------------|
-|FUNCTIONS\_EXTENSION\_VERSION|~3|
+|FUNCTIONS\_EXTENSION\_VERSION|`~3`|
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 
@@ -176,7 +177,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 |Key|値の例|
 |---|------------|
-|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|true|
+|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|`true`|
 
 ## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
 
@@ -184,7 +185,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 |Key|値の例|
 |---|------------|
-|FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
+|FUNCTIONS\_WORKER\_PROCESS\_COUNT|`2`|
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
@@ -192,7 +193,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 |Key|値の例|
 |---|------------|
-|FUNCTIONS\_WORKER\_RUNTIME|node|
+|FUNCTIONS\_WORKER\_RUNTIME|`node`|
 
 有効な値:
 
@@ -213,7 +214,7 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 |Key|値の例|
 |---|------------|
-|MDMaxBackgroundUpgradePeriod|7.00:00:00|
+|MDMaxBackgroundUpgradePeriod|`7.00:00:00`|
 
 詳細については、「[依存関係の管理](functions-reference-powershell.md#dependency-management)」を参照してください。
 
@@ -227,7 +228,7 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 |Key|値の例|
 |---|------------|
-|MDNewSnapshotCheckPeriod|01:00:00|
+|MDNewSnapshotCheckPeriod|`01:00:00`|
 
 詳細については、「[依存関係の管理](functions-reference-powershell.md#dependency-management)」を参照してください。
 
@@ -240,7 +241,7 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 |Key|値の例|
 |---|------------|
-|MDMinBackgroundUpgradePeriod|1.00:00:00|
+|MDMinBackgroundUpgradePeriod|`1.00:00:00`|
 
 詳細については、「[依存関係の管理](functions-reference-powershell.md#dependency-management)」を参照してください。
 
@@ -250,18 +251,18 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 |Key|値の例|
 |---|------------|
-|PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
+|PIP\_EXTRA\_INDEX\_URL|`http://my.custom.package.repo/simple` |
 
 詳細については、Python 開発者リファレンスの「[カスタムの依存関係](functions-reference-python.md#remote-build-with-extra-index-url)」を参照してください。
 
-## <a name="python_isolate_worker_dependencies"></a>PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES
+## <a name="python_isolate_worker_dependencies-preview"></a>PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES (プレビュー)
 
-この構成は Python 関数アプリに固有です。 モジュール読み込み順序の優先順位を定義します。 Python 関数アプリでモジュール競合に関する問題が生じたとき (protobuf、tensorflow、grpcio をプロジェクトで使用しているときなど)、このアプリ設定を `1` に構成すると問題が解決します。 既定では、この値は `0` に設定されます。
+この構成は Python 関数アプリに固有です。 モジュール読み込み順序の優先順位を定義します。 Python 関数アプリでモジュール競合に関する問題が生じたとき (protobuf、tensorflow、grpcio をプロジェクトで使用しているときなど)、このアプリ設定を `1` に構成すると問題が解決します。 既定では、この値は `0` に設定されます。 このフラグは現在プレビューの段階です。
 
 |キー|値|説明|
 |---|-----|-----------|
-|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|0| Python ライブラリを内部 Python ワーカーの依存関係から読み込むことを優先します。 requirements.txt で定義されているサードパーティ ライブラリはシャドウされる場合があります。 |
-|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|1| Python ライブラリを requirements.txt で定義されているアプリケーションのパッケージから読み込むことを優先します。 これにより、ライブラリが内部 Python ワーカーのライブラリと衝突することがなくなります。 |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|`0`| Python ライブラリを内部 Python ワーカーの依存関係から読み込むことを優先します。 requirements.txt で定義されているサードパーティ ライブラリはシャドウされる場合があります。 |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|`1`| Python ライブラリを requirements.txt で定義されているアプリケーションのパッケージから読み込むことを優先します。 これにより、ライブラリが内部 Python ワーカーのライブラリと衝突することがなくなります。 |
 
 ## <a name="python_enable_worker_extensions"></a>PYTHON\_ENABLE\_WORKER\_EXTENSIONS
 
@@ -269,8 +270,8 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 |キー|値|説明|
 |---|-----|-----------|
-|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|0| Python ワーカー拡張機能を無効にします。 |
-|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|1| Python ワーカーが requirements.txt から拡張機能を読み込めるようにします。 |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|`0`| Python ワーカー拡張機能を無効にします。 |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|`1`| Python ワーカーが requirements.txt から拡張機能を読み込めるようにします。 |
 
 ## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
 
@@ -288,7 +289,7 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 |Key|値の例|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights:Verbose|
+|SCALE_CONTROLLER_LOGGING_ENABLED|`AppInsights:Verbose`|
 
 このキーの値は `<DESTINATION>:<VERBOSITY>` の形式で指定されます。これは次のように定義されます。
 
@@ -300,7 +301,7 @@ PowerShell 関数アプリの管理対象の依存関係のバックグラウン
 
 |Key|値の例|
 |-|-|
-|SCM_LOGSTREAM_TIMEOUT|1800|
+|SCM_LOGSTREAM_TIMEOUT|`1800`|
 
 上記のサンプル値 `1800` では、タイムアウトが 30 分に設定されます。 詳細については、「[ストリーミング ログを有効にする](functions-run-local.md#enable-streaming-logs)」を参照してください。
 
@@ -310,19 +311,19 @@ Windows 上で実行されているイベント ドリブン スケーリング 
 
 |Key|値の例|
 |---|------------|
-|WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|`DefaultEndpointsProtocol=https;AccountName=...`|
 
 Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
-`1` の値を指定すると、ストレージ アカウントを仮想ネットワークに制限している場合に、関数アプリをスケーリングできます。 ストレージ アカウントを仮想ネットワークに制限する場合は、この設定を有効にする必要があります。 詳細については、「[ストレージ アカウントを仮想ネットワークに制限する](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)」を参照してください。
+`1` の値を指定すると、ストレージ アカウントを仮想ネットワークに制限している場合に、関数アプリをスケーリングできます。 ストレージ アカウントを仮想ネットワークに制限する場合は、この設定を有効にする必要があります。 詳細については、「[ストレージ アカウントを仮想ネットワークに制限する](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network)」を参照してください。
 
 |Key|値の例|
 |---|------------|
-|WEBSITE_CONTENTOVERVNET|1|
+|WEBSITE_CONTENTOVERVNET|`1`|
 
-Windows を実行している [Premium プラン](functions-premium-plan.md)と[Dedicated (App Service) プラン](dedicated-plan.md) (Standard 以上) でサポートされています。 Linux を実行している従量課金プランと Premium プランでは現在、サポートされていません。 
+[Premium](functions-premium-plan.md) および [Dedicated (App Service) プラン](dedicated-plan.md) (Standard 以上) でサポートされています。 [従量課金プラン](consumption-plan.md)で実行している場合はサポートされません。 
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
@@ -330,7 +331,7 @@ Windows 上のイベント ドリブン スケーリング プラン内の関数
 
 |Key|値の例|
 |---|------------|
-|WEBSITE_CONTENTSHARE|functionapp091999e2|
+|WEBSITE_CONTENTSHARE|`functionapp091999e2`|
 
 Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
 
@@ -342,7 +343,7 @@ IP アドレスの解決時にアプリによって使用される DNS サーバ
 
 |Key|値の例|
 |---|------------|
-|WEBSITE\_DNS\_SERVER|168.63.129.16|
+|WEBSITE\_DNS\_SERVER|`168.63.129.16`|
 
 ## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING
 
@@ -357,7 +358,7 @@ IP アドレスの解決時にアプリによって使用される DNS サーバ
 
 |Key|値の例|
 |---|------------|
-|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
+|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|`5`|
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
@@ -366,7 +367,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 |Key|値の例|
 |---|------------|
-|WEBSITE\_NODE\_DEFAULT_VERSION|~10|
+|WEBSITE\_NODE\_DEFAULT_VERSION|`~10`|
 
 ## <a name="website_run_from_package"></a>WEBSITE\_RUN\_FROM\_PACKAGE
 
@@ -374,7 +375,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 |Key|値の例|
 |---|------------|
-|WEBSITE\_RUN\_FROM\_PACKAGE|1|
+|WEBSITE\_RUN\_FROM\_PACKAGE|`1`|
 
 有効な値は、展開パッケージ ファイルの場所に解決される URL、または `1` です。 `1` に設定した場合、パッケージは `d:\home\data\SitePackages` フォルダーに存在する必要があります。 この設定で zip デプロイを使用すると、パッケージは自動的にこの場所にアップロードされます。 プレビューでは、この設定は `WEBSITE_RUN_FROM_ZIP` という名前でした。 詳細については、[パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページを参照してください。
 
@@ -384,8 +385,8 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 |Key|OS|値の例|
 |---|--|------------|
-|WEBSITE\_TIME\_ZONE|Windows|東部標準時|
-|WEBSITE\_TIME\_ZONE|Linux|America/New_York|
+|WEBSITE\_TIME\_ZONE|Windows|`Eastern Standard Time`|
+|WEBSITE\_TIME\_ZONE|Linux|`America/New_York`|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
@@ -395,7 +396,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 |Key|値の例|
 |---|------------|
-|WEBSITE\_VNET\_ROUTE\_ALL|1|
+|WEBSITE\_VNET\_ROUTE\_ALL|`1`|
 
 ## <a name="next-steps"></a>次のステップ
 

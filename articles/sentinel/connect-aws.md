@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 6e970d39d927a9e0aa522ad6a498388e2217b5d4
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: b1e514d208f7d5d0a2e290c95aa5508166a3e2f7
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254130"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251467"
 ---
-# <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する
+# <a name="connect-aws-cloudtrail-to-azure-sentinel"></a>AWS CloudTrail を Azure Sentinel に接続する
 
 AWS コネクタを使用して、AWS CloudTrail 管理イベントを Azure Sentinel にストリーミングします。 この接続プロセスにより、Azure Sentinel へのアクセスが AWS リソース ログに委任され、AWS CloudTrail とAzure Sentinel の間の信頼関係が確立されます。 これを行うには、Azure Sentinel にアクセス許可を付与するロールを AWS で作成し、AWS ログにアクセスできるようにします。
 
@@ -39,7 +39,7 @@ Azure Sentinel ワークスペースへの書き込みアクセス許可が必�
 ## <a name="connect-aws"></a>AWS の接続 
 
 
-1. Azure Sentinel で、 **[Data connectors]\(データ コネクタ\)** を選択し、テーブルで **[Amazon Web Services]** 行を選択し、右側の [AWS] ウィンドウで **[Open connector page]\(コネクタ ページを開く\)** をクリックします。
+1. Azure Sentinel で、 **[データ コネクタ]** を選択し、テーブルで **[アマゾン ウェブ サービス]** 行を選択し、右側の [AWS] ウィンドウで **[コネクタ ページを開く]** を選択します。
 
 1. 次の手順を使用して、 **[Configuration]\(構成\)** の下の指示に従います。
  
@@ -75,7 +75,7 @@ Azure Sentinel ワークスペースへの書き込みアクセス許可が必�
 
     ![AWS8](./media/connect-aws/aws-8.png)
 
-1.  **Role ARN** をコピーします。 Azure Sentinel ポータルのアマゾン ウェブ サービス コネクタ画面の **[Role to add]\(追加するロール\)** フィールドにこれを貼り付け、 **[Add]\(追加\)** をクリックします。
+1.  **Role ARN** をコピーします。 Azure Sentinel ポータルのアマゾン ウェブ サービス コネクタ画面の **[追加するロール]** フィールドにこれを貼り付け、 **[追加]** を選択します。
 
     ![AWS9](./media/connect-aws/aws-9.png)
 

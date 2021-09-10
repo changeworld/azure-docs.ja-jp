@@ -1,18 +1,20 @@
 ---
 title: Azure Data Explorer との間でデータをコピーする
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Data Explorer との間で双方向にデータをコピーする方法について説明します。
-ms.author: orspodek
-author: jianleishen
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 606d10694b6806b62871ddf24afd259d7bc224bc
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 4f3718699e7438b3b45c84eebebbbbf75126d793
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482977"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304587"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -48,14 +50,39 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下のセクションでは、Azure Data Explorer コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細を説明します。
+## <a name="create-a-linked-service-to-azure-data-explorer-using-ui"></a>UI を使用して Azure Data Explorer のリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で Azure Data Explorer のリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. Explorer を検索し、Azure Data Explorer (Kusto) コネクタを選択します。
+
+    :::image type="content" source="media/connector-azure-data-explorer/azure-data-explorer-connector.png" alt-text="Azure Data Explorer (Kusto) コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-azure-data-explorer/configure-azure-data-explorer-linked-service.png" alt-text="Azure Data Explorer のリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、Azure Data Explorer コネクタに固有のエンティティを定義するために使用されるプロパティの詳細を説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
 Azure Data Explorer コネクタでは、次の認証の種類がサポートされています。 詳細については、対応するセクションをご覧ください。
 
 - [サービス プリンシパルの認証](#service-principal-authentication)
-- [Azure リソースのマネージド ID 認証](#managed-identity)
+- [システム割り当てマネージド ID 認証](#managed-identity)
+- [ユーザー割り当てマネージド ID 認証](#user-assigned-managed-identity-authentication)
 
 ### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
@@ -108,9 +135,11 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースのマネージド ID 認証
+### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> システム割り当てマネージド ID 認証
 
-Azure リソースの認証にマネージド ID を使用するには、次の手順に従ってアクセス許可を付与します。
+Azure リソース用マネージド ID の詳細については、[Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
+
+システム割り当てマネージド ID 認証を使用するには、次の手順に従ってアクセス許可を付与します。
 
 1. ファクトリと共に生成された **マネージド ID オブジェクト ID** の値をコピーして、[Data Factory のマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
 
@@ -131,7 +160,7 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 | database | データベースの名前。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
-**例: マネージ ID 認証を使用する**
+**例: システム割り当てマネージド ID 認証を使用する**
 
 ```json
 {
@@ -141,6 +170,46 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
         "typeProperties": {
             "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
             "database": "<database name>",
+        }
+    }
+}
+```
+
+### <a name="user-assigned-managed-identity-authentication"></a>ユーザー割り当てマネージド ID 認証
+Azure リソース用マネージド ID の詳細については、[Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください
+
+ユーザー割り当てマネージド ID 認証を使用するには、次の手順に従います。
+
+1. [1 つ以上のユーザー割り当てマネージド ID を作成](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)して、Azure Data Explorer でアクセス許可を付与します。 ロールおよびアクセス許可の詳細について、またアクセス許可の管理方法の詳細については、「[Azure Data Explorer のデータベース アクセス許可を管理する](/azure/data-explorer/manage-database-permissions)」を参照してください。 一般的に、次のことを行う必要があります。
+
+    - **ソースとして**、少なくとも **データベース ビューアー** ロールをデータベースに付与します。
+    - **シンクとして**、少なくとも **データベースのデータ取り込み** ロールをデータベースに付与します。
+     
+2. 1 つ以上のユーザー割り当てマネージド ID をデータ ファクトリに割り当てて、ユーザー割り当てマネージド ID ごとに[資格情報を作成](data-factory-service-identity.md#credentials)します。
+
+Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります。 | はい |
+| endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net` です。 | はい |
+| database | データベースの名前。 | はい |
+| 資格情報 | ユーザー割り当てマネージド ID を資格情報オブジェクトとして指定します。 | はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+**例: ユーザー割り当てマネージド ID 認証を使用する**
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }
         }
     }
 }

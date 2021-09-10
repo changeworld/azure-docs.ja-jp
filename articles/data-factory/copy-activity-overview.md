@@ -1,19 +1,22 @@
 ---
-title: Azure Data Factory のコピー アクティビティ
-description: Azure Data Factory のコピー アクティビティについて説明します。 サポートされているソース データ ストアからサポートされているシンク データ ストアにデータをコピーするために使用できます。
+title: コピー アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics の Copy アクティビティについて説明します。 サポートされているソース データ ストアからサポートされているシンク データ ストアにデータをコピーするために使用できます。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 6/1/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 944e5fb05298c91e4405088c1179e0720173dde0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a5b84673a879c086fe1fc0543da1ab0037d32ac1
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746172"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255977"
 ---
-# <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
+# <a name="copy-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics の Copy アクティビティ
 
 > [!div class="op_single_selector" title1="使用している Data Factory のバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-data-movement-activities.md)
@@ -21,7 +24,7 @@ ms.locfileid: "111746172"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory では、コピー アクティビティを使用して、オンプレミスにあるデータ ストアやクラウド内のデータ ストアの間でデータをコピーできます。 データをコピーした後は、他のアクティビティを使用してさらに変換および分析できます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
+Azure Data Factory と Synapse のパイプラインでは、Copy アクティビティを使用して、オンプレミスやクラウド内のデータ ストアの間でデータをコピーできます。 データをコピーした後は、他のアクティビティを使用してさらに変換および分析できます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
 
 ![コピー アクティビティの役割](media/copy-activity-overview/copy-activity.png)
 
@@ -58,13 +61,13 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-コピー アクティビティが有効なサービスは、「[統合ランタイムの場所](concepts-integration-runtime.md#integration-runtime-location)」に記載されているリージョンと場所でグローバルに使うことができます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンで Data Factory とデータ移動を利用できるかどうかを確認するには、[リージョン別の製品](https://azure.microsoft.com/regions/#services)に関する記事を参照してください。
+コピー アクティビティが有効なサービスは、「[統合ランタイムの場所](concepts-integration-runtime.md#integration-runtime-location)」に記載されているリージョンと場所でグローバルに使うことができます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンで Data Factory、Synapse ワークスペース、データ移動を利用できるかどうかを確認するには、[リージョン別の製品](https://azure.microsoft.com/regions/#services)に関する記事を参照してください。
 
 ## <a name="configuration"></a>構成
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-一般的に、Azure Data Factory でコピー アクティビティを使用するには、次のことを行う必要があります。
+一般的に、Azure Data Factory または Synapse パイプラインで Copy アクティビティを使用するには、次のことを行う必要があります。
 
 1. **ソース データ ストアとシンク データ ストアのリンクされたサービスを作成します。** サポートされるコネクタの一覧については、この記事の「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」セクションを参照してください。 構成情報とサポートされるプロパティについては、コネクタの記事のリンクされたサービスのプロパティに関するセクションを参照してください。 
 2. **ソースとシンクのデータセットを作成します。** 構成情報とサポートされるプロパティについては、ソースとシンク コネクタの記事のデータセットのプロパティに関するセクションを参照してください。
@@ -139,19 +142,19 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 ## <a name="monitoring"></a>監視
 
-Azure Data Factory では、コピー アクティビティの実行を、視覚的に監視することも、プログラムによって監視することも可能です。 詳細については、「[コピー アクティビティを監視する](copy-activity-monitoring.md)」を参照してください。
+Azure Data Factory および Synapse パイプラインでは、Copy アクティビティの実行を、視覚的に監視することも、プログラムによって監視することも可能です。 詳細については、「[コピー アクティビティを監視する](copy-activity-monitoring.md)」を参照してください。
 
 ## <a name="incremental-copy"></a>増分コピー
 
-Data Factory を使用すると、ソース データ ストアからシンク データ ストアに差分データを増分コピーできます。 詳細については、[チュートリアルのデータの増分コピー](tutorial-incremental-copy-overview.md)に関する記事を参照してください。
+Data Factory および Synapse パイプラインを使用すると、ソース データ ストアからシンク データ ストアに差分データを増分コピーできます。 詳細については、[チュートリアルのデータの増分コピー](tutorial-incremental-copy-overview.md)に関する記事を参照してください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 
-[コピー アクティビティの監視](copy-activity-monitoring.md)エクスペリエンスは、コピー パフォーマンスの統計をアクティビティの実行ごとに示します。 「[コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド](copy-activity-performance.md)」には、Azure Data Factory でのコピー アクティビティによるデータ移動のパフォーマンスに影響する主な要因が説明されています。 また、テスト時に観察されるパフォーマンス値の一覧が示され、コピー アクティビティのパフォーマンスを最適化する方法も説明されます。
+[コピー アクティビティの監視](copy-activity-monitoring.md)エクスペリエンスは、コピー パフォーマンスの統計をアクティビティの実行ごとに示します。 「[Copy アクティビティのパフォーマンスとスケーラビリティに関するガイド](copy-activity-performance.md)」では、Copy アクティビティによるデータ移動のパフォーマンスに影響する主な要因が説明されています。 また、テスト時に観察されるパフォーマンス値の一覧が示され、コピー アクティビティのパフォーマンスを最適化する方法も説明されます。
 
 ## <a name="resume-from-last-failed-run"></a>前回失敗した実行から再開する
 
-コピー アクティビティでは、ファイル ベースのストア間でバイナリ形式を使用してサイズの大きいファイルをそのままコピーする場合に、ソースからシンクへのフォルダー/ファイル階層を保持することを選択した場合 (Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する場合など)、前回失敗した実行からの再開をサポートします。 これは、ファイルベースのコネクタ ([Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure BLOB](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md)) に適用されます。
+コピー アクティビティでは、ファイル ベースのストア間でバイナリ形式を使用してサイズの大きいファイルをそのままコピーする場合に、ソースからシンクへのフォルダー/ファイル階層を保持することを選択した場合 (Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する場合など)、前回失敗した実行からの再開をサポートします。 これは、ファイルベースのコネクタ ([Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md)) に適用されます。
 
 コピー アクティビティの再開は、次の 2 つの方法で利用できます。
 
@@ -260,7 +263,7 @@ SQL データベース/Azure Synapse Analytics にデータをコピーすると
 
 ## <a name="data-consistency-verification"></a>データ整合性の検証
 
-ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 詳細については、「[コピー アクティビティでのデータ整合性の検証](copy-activity-data-consistency.md)」を参照してください。
+ソースからコピー先ストアにデータを移動するとき、Copy アクティビティでは、データがソースからコピー先ストアに正常にコピーされただけでなく、ソースとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うこともできます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 詳細については、「[コピー アクティビティでのデータ整合性の検証](copy-activity-data-consistency.md)」を参照してください。
 
 ## <a name="session-log"></a>セッション ログ
 コピーされたファイル名をログに記録できます。これにより、コピー アクティビティのセッション ログを確認することで、データがコピー元からコピー先ストアに正常にコピーされたことだけでなく、コピー元とコピー先ストアの間で一貫していることも確認できます。 詳細については、「[コピー アクティビティのセッション ログ](copy-activity-log.md)」を参照してください。

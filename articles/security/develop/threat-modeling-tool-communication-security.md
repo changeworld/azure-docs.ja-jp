@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 265ae82f3a8d5a10e333057ebb55473c18fd36c3
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 501294688446bdb944d93a0939cde0a5e4fea0df
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109469"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254165"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム:通信のセキュリティ | 軽減策 
 | 製品/サービス | [アーティクル] |
@@ -195,7 +195,7 @@ ms.locfileid: "113109469"
 | **参照**              | [Windows Azure BLOB MD5 の概要](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
 | **手順** | <p>Windows Azure Blob service は、アプリケーション層とトランスポート層の両方のデータ整合性を確保するためのメカニズムを提供します。 何らかの理由で HTTPS ではなく HTTP を使用する必要があり、ブロック BLOB を使用している場合、MD5 チェックを使用して、転送中の BLOB の整合性を検証することができます</p><p>これは、ネットワーク/トランスポート層のエラーからの保護には役立ちますが、中間攻撃には必ずしも役立つとは言えません。 トランスポート レベルのセキュリティを提供する HTTPS を使用できる場合は、MD5 チェックを使用することは冗長となり、不要です。</p>|
 
-## <a name="use-smb-30-compatible-client-to-ensure-in-transit-data-encryption-to-azure-file-shares"></a><a id="smb-shares"></a>SMB 3.0 対応クライアントを使用して Azure ファイル共有に転送中のデータの暗号化を確認する
+## <a name="use-smb-3x-compatible-client-to-ensure-in-transit-data-encryption-to-azure-file-shares"></a><a id="smb-shares"></a>SMB 3.x 対応クライアントを使用して Azure ファイル共有に転送中のデータの暗号化を確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -203,8 +203,8 @@ ms.locfileid: "113109469"
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - ファイル |
-| **参照**              | [Azure File Storage](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows クライアントでの Azure File Storage SMB のサポート](../../storage/files/storage-dotnet-how-to-use-files.md#understanding-the-net-apis) |
-| **手順** | Azure File Storage は、REST API の使用時に HTTPS をサポートしていますが、VM にアタッチされる SMB ファイル共有として使用する方が一般的です。 SMB 2.1 は暗号化をサポートしていないので、Azure の同じリージョン内でのみ接続が許可されます。 一方、SMB 3.0 は暗号化をサポートしており、Windows Server 2012 R2、Windows 8、Windows 8.1、および Windows 10 で使用できるので、リージョンをまたがるアクセスや、デスクトップ上のアクセスも許可されます。 |
+| **参照**              | [Azure Files](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows クライアントでの Azure Files SMB のサポート](../../storage/files/storage-dotnet-how-to-use-files.md#understanding-the-net-apis) |
+| **手順** | Azure Files は、REST API の使用時に HTTPS をサポートしていますが、VM にアタッチされる SMB ファイル共有として使用する方が一般的です。 SMB 2.1 は暗号化をサポートしていないので、Azure の同じリージョン内でのみ接続が許可されます。 一方、SMB 3.x は暗号化をサポートしており、Windows Server 2012 R2、Windows 8、Windows 8.1、および Windows 10 で使用できるので、リージョンをまたがるアクセスや、デスクトップ上のアクセスも許可されます。 |
 
 ## <a name="implement-certificate-pinning"></a><a id="cert-pinning"></a>証明書のピン留めを実装する
 

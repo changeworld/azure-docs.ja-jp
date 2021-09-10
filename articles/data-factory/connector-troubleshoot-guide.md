@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 08/16/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 02bb677438a4139fb67b335b9e6cbbf43f8a2600
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 27e9f92f7ea2be3ebdafbf973c4d1def179d5636
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271442"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864148"
 ---
 # <a name="troubleshoot-azure-data-factory-and-azure-synapse-analytics-connectors"></a>Azure Data Factory と Azure Synapse Analytics のコネクタのトラブルシューティング
 
@@ -639,59 +639,18 @@ ms.locfileid: "122271442"
  
  - **メッセージ**: `Failed to connect to Dynamics: %message;` 
  
- - **原因**: `ERROR REQUESTING ORGS FROM THE DISCOVERY SERVERFCB 'EnableRegionalDisco' is disabled.` が表示されます。あるいはユースケースが次の 3 つの条件の **すべて** に一致する場合は `Unable to Login to Dynamics CRM, message:ERROR REQUESTING Token FROM THE Authentication context - USER intervention required but not permitted by prompt behavior AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access '00000007-0000-0000-c000-000000000000'` が表示されます。
-    - Dynamics 365、Common Data Service、または Dynamics CRM に接続している。
-    - Office365 認証を使用している。
-    - テナントおよびユーザーが Azure Active Directory で[条件付きアクセス](../active-directory/conditional-access/overview.md)に構成されている、あるいは多要素認証が必要である、あるいはその両方 (この Dataverse ドキュメントの[リンク](/powerapps/developer/data-platform/authenticate-office365-deprecation)を参照)。
-    
-    これらの状況下で、接続は 2021 年 6 月 8 日までは成功しました。
-    2021 年 6 月 9 日から、リージョンの Discovery Service の廃止に伴い、接続が失敗し始めます (この[リンク](/power-platform/important-changes-coming#regional-discovery-service-is-deprecated)を参照)。
- 
- -  **推奨事項**:  
-    テナントおよびユーザーが Azure Active Directory で[条件付きアクセス](../active-directory/conditional-access/overview.md)に構成されている場合、または多要素認証が必要な場合、およびその両方の場合は、20221 年 6 月 8 日以降は ‘Azure AD サービス プリンシパル’ を使用して認証する必要があります。 詳細な手順についてこちらの[リンク](./connector-dynamics-crm-office-365.md#prerequisites)を参照してください。
+ - **原因と推奨事項**: このエラーはさまざまな原因により発生する可能性があります。 考えられる原因の分析および関連する推奨事項については、以下の一覧を確認してください。
 
+    | 原因分析                                               | 推奨                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | `ERROR REQUESTING ORGS FROM THE DISCOVERY SERVERFCB 'EnableRegionalDisco' is disabled.` が表示されます。あるいはユースケースが次の 3 つの条件の **すべて** に一致する場合は `Unable to Login to Dynamics CRM, message:ERROR REQUESTING Token FROM THE Authentication context - USER intervention required but not permitted by prompt behavior AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access '00000007-0000-0000-c000-000000000000'` が表示されます。 <br/> 1. Dynamics 365、Common Data Service、または Dynamics CRM に接続している。<br/>  2. Office365 認証を使用している。<br/>  3. テナントおよびユーザーが Azure Active Directory で[条件付きアクセス](../active-directory/conditional-access/overview.md)に構成されている、あるいは多要素認証が必要である、あるいはその両方 (この Dataverse ドキュメントの[リンク](/powerapps/developer/data-platform/authenticate-office365-deprecation)を参照)。<br/>  これらの状況下で、接続は 2021 年 6 月 8 日までは成功しました。 2021 年 6 月 9 日から、リージョンの Discovery Service の廃止に伴い、接続が失敗し始めます (この[リンク](/power-platform/important-changes-coming#regional-discovery-service-is-deprecated)を参照)。| テナントおよびユーザーが Azure Active Directory で[条件付きアクセス](../active-directory/conditional-access/overview.md)に構成されている場合、または多要素認証が必要な場合、およびその両方の場合は、2021 年 6 月 8 日以降は ‘Azure AD サービス プリンシパル’ を使用して認証する必要があります。 詳細な手順についてこちらの[リンク](./connector-dynamics-crm-office-365.md#prerequisites)を参照してください。|
+    |エラー メッセージに `Office 365 auth with OAuth failed` が表示された場合は、OAuth と互換性のない構成がサーバーに存在している可能性があることを意味します。| 1. エラー メッセージの詳細については、Dynamics サポート チームにお問い合わせください。 <br/> 2. サービス プリンシパル認証を使用し、「[例: Azure AD サービス プリンシパルと証明書認証を使用した Dynamics Online](./connector-dynamics-crm-office-365.md#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication)」を参照してください。 
+    |エラー メッセージに `Unable to retrieve authentication parameters from the serviceUri` が表示された場合は、誤った Dynamics サービスの URL またはプロキシ/ファイアウォールを入力してトラフィックを遮断していることを意味します。 |1. リンクされたサービスに正しいサービス URI が指定されていることを確認してください。<br/> 2. 自己ホスト型 IR を使用する場合は、ファイアウォール/プロキシによって Dynamics サーバーへの要求が遮断されていないことを確認してください。 |
+    |エラー メッセージに `An unsecured or incorrectly secured fault was received from the other party` が表示された場合は、サーバー側から予期しない応答を取得したことを意味します。  | 1. Office 365 認証を使用する場合は、ユーザー名とパスワードが正しいことを確認してください。 <br/> 2. 正しいサービス URI が入力されていることを確認してください。 <br/> 3. リージョンの CRM URL ("crm" の後に数字が含まれている URL) を使用する場合は、正しいリージョン識別子を使用していることを確認してください。<br/> 4. Dynamics サポート チームにお問い合わせください。 |
+    |エラー メッセージに `No Organizations Found` が表示された場合は、組織名が間違っているか、サービス URL で誤った CRM リージョン識別子が使用されていることを意味します。|1. 正しいサービス URI が入力されていることを確認してください。<br/>2. リージョンの CRM URL ("crm" の後に数字が含まれている URL) を使用する場合は、正しいリージョン識別子を使用していることを確認してください。 <br/> 3. Dynamics サポート チームにお問い合わせください。 |
+    | `401 Unauthorized` および AAD 関連のエラー メッセージが表示された場合は、サービス プリンシパルに問題があることを意味します。 |エラー メッセージのガイダンスに従って、サービス プリンシパルの問題を修正してください。 |
+   |他のエラーの場合、通常はサーバー側に問題があります。 |[XrmToolBox](https://www.xrmtoolbox.com/) を使用して接続します。 エラーが引き続き発生する場合は、Dynamics サポート チームに問い合わせてください。 |
 
- - **原因**: エラー メッセージに `Office 365 auth with OAuth failed` が表示された場合は、OAuth と互換性のない構成がサーバーに存在している可能性があることを意味します。 
- 
- - **推奨事項**: 
-    1. エラー メッセージの詳細については、Dynamics サポート チームにお問い合わせください。  
-    1. サービス プリンシパル認証を使用し、「[例: Azure AD サービス プリンシパルと証明書認証を使用した Dynamics Online](./connector-dynamics-crm-office-365.md#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication)」を参照してください。 
- 
-
- - **原因**: エラー メッセージに `Unable to retrieve authentication parameters from the serviceUri` が表示された場合は、誤った Dynamics サービスの URL またはプロキシ/ファイアウォールを入力してトラフィックを遮断していることを意味します。 
- 
- - **推奨事項**:
-    1. リンクされたサービスに正しいサービス URI が指定されていることを確認してください。 
-    1. 自己ホスト型 IR を使用する場合は、ファイアウォール/プロキシによって Dynamics サーバーへの要求が遮断されていないことを確認してください。 
-   
- 
- - **原因**: エラー メッセージに `An unsecured or incorrectly secured fault was received from the other party` が表示された場合は、サーバー側から予期しない応答を取得したことを意味します。 
- 
- - **推奨事項**: 
-    1. Office 365 認証を使用する場合は、ユーザー名とパスワードが正しいことを確認してください。 
-    1. 正しいサービス URI が入力されていることを確認してください。 
-    1. リージョンの CRM URL ("crm" の後に数字が含まれている URL) を使用する場合は、正しいリージョン識別子を使用していることを確認してください。
-    1. Dynamics サポート チームにお問い合わせください。 
- 
-
- - **原因**: エラー メッセージに `No Organizations Found` が表示された場合は、組織名が間違っているか、サービス URL で誤った CRM リージョン識別子が使用されていることを意味します。 
- 
- - **推奨事項**: 
-    1. 正しいサービス URI が入力されていることを確認してください。
-    1. リージョンの CRM URL ("crm" の後に数字が含まれている URL) を使用する場合は、正しいリージョン識別子を使用していることを確認してください。 
-    1. Dynamics サポート チームにお問い合わせください。 
-
- 
- - **原因**: `401 Unauthorized` および AAD 関連のエラー メッセージが表示された場合は、サービス プリンシパルに問題があることを意味します。 
-
- - **推奨事項**: エラー メッセージのガイダンスに従って、サービス プリンシパルの問題を修正してください。  
- 
- 
- - **原因**: 他のエラーの場合、通常はサーバー側に問題があります。 
-
- - **推奨事項**: [XrmToolBox](https://www.xrmtoolbox.com/) を使用して接続します。 エラーが引き続き発生する場合は、Dynamics サポート チームに問い合わせてください。 
- 
- 
 ### <a name="error-code-dynamicsoperationfailed"></a>エラー コード: DynamicsOperationFailed 
  
 - **メッセージ**: `Dynamics operation failed with error code: %code;, error message: %message;.` 
@@ -1416,7 +1375,7 @@ ms.locfileid: "122271442"
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
 
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A ページ](/answers/topics/azure-data-factory.html)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)

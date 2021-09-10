@@ -4,12 +4,12 @@ description: この参照記事では、Video Analyzer プレーヤー ウィジ
 ms.service: azure-video-analyzer
 ms.topic: reference
 ms.date: 06/01/2021
-ms.openlocfilehash: 6896ea43b480c973daa87576ddf9fc8ea5d7cda2
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: b70bfc9a10e357c6f1e64c1737fdb4c049b505f5
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272076"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037445"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>Azure Video Analyzer プレーヤー ウィジェットを使用する
 
@@ -77,7 +77,7 @@ ms.locfileid: "122272076"
 
 - `Issuer`, `Audience`, `Key Type`, `Algorithm`, `Key Id`, `RSA Key Modulus`, `RSA Key Exponent`, `Token`
 
-後で使用するためにこれらの値をコピーしておいてください。
+**後で使用するためにこれらの値をコピーして保存しておいてください。**
 
 ## <a name="create-an-access-policy"></a>アクセス ポリシーを作成します。
 
@@ -253,7 +253,7 @@ Video name: <input type="text" id="videoName" /><br><br>
 
 前述のプレーヤーの構成はシンプルですが、構成値に対してより幅広いオプションを使用できます。 サポートされているフィールドを次に示します。
 
-| 名前   | 型             | 説明                         |
+| 名前   | Type             | Description                         |
 | ------ | ---------------- | ----------------------------------- |
 | `token`  | string | ウィジェットの JWT トークン |
 | `videoName` | string | ビデオ リソースの名前  |

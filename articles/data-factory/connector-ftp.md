@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jianleishen
-ms.openlocfilehash: 37818f1335137ef35c5a86b2e8e266502968cc60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c985e3a0e7d41f460bca230c9b0142380a5f113b
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637986"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123312946"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータをコピーする
 
@@ -50,7 +50,31 @@ FTP コネクタは、パッシブ モードで実行されている FTP サー�
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-次のセクションでは、FTP に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
+## <a name="create-a-linked-service-to-an-ftp-server-using-ui"></a>UI を使用して FTP サーバーのリンク サービスを作成する
+
+次の手順を使用して、Azure portal UI で FTP サーバーのリンク サービスを作成します。
+
+1. Azure Data Factory または Synapse ワークスペースの [管理] タブに移動し、[リンク サービス] を選択して、[新規] をクリックします。
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="Azure Synapse の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+
+2. FTP を検索し、FTP コネクタを選択します。
+
+    :::image type="content" source="media/connector-ftp/ftp-connector.png" alt-text="FTP コネクタのスクリーンショット。":::    
+
+1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
+
+    :::image type="content" source="media/connector-ftp/configure-ftp-linked-service.png" alt-text="FTP サーバーのリンク サービスの構成のスクリーンショット。":::
+
+## <a name="connector-configuration-details"></a>コネクタの構成の詳細
+
+以下のセクションでは、FTP に固有のエンティティの定義に使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 

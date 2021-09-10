@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: fb277b2468d0cf4df5d28e412a5fb91f777b46bf
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 02bdb1812556d08b00885a68fb50443e97d6977c
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178966"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214049"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の登録とスキャン
 
@@ -60,7 +60,7 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 
 選択した認証方法が **アカウント キー** の場合は、アクセス キーを取得して、キー コンテナーに格納する必要があります。
 
-1. ADLS Gen2 ストレージ アカウントに移動します
+1. ADLS Gen2 ストレージ アカウントに移動する
 1. **[セキュリティとネットワーク] > [アクセス キー]** を選択します
 1. "*キー*" をコピーし、次の手順のためにどこかに保存します
 1. お使いのキー コンテナーに移動する

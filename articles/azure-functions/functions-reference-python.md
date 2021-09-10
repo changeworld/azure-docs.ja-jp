@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 601982058a333f23cf5895351db7bc6475617256
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aa48731248c9e51d680bc0e1b396115c54edbcd7
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741386"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260861"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -267,7 +267,9 @@ def main(req):
 
 ### <a name="log-custom-telemetry"></a>カスタム テレメトリをログに記録する
 
-既定では、出力は Functions によってトレースとして Application Insights に書き込まれます。 より細かく制御するには、代わりに [OpenCensus Python 拡張機能](https://github.com/census-ecosystem/opencensus-python-extensions-azure)を使用して、Application Insights インスタンスにカスタム テレメトリ データを送信することもできます。 
+ログ テレメトリは、既定で Functions ランタイムを介して Functions アプリに対して収集されます。 このテレメトリは、Application インサイト のトレースとして終了します。 特定の Azure サービスの要求と依存関係のテレメトリは、既定で[関数のバインディング](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?tabs=csharp#supported-bindings)でも収集されます。 カスタム要求/依存性のテレメトリを収集するには、[OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensus-python-extensions-azure) を使用して、カスタム テレメトリ データを Application Insights インスタンスに送信することができます。
+
+サポートされているライブラリの一覧は、[こちら](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib)で確認できます。
 
 >[!NOTE]
 > OpenCensus Python 拡張機能を使用するには、`local.settings.json` およびアプリケーション設定で `PYTHON_ENABLE_WORKER_EXTENSIONS` を `1` に設定して、[Python 拡張機能](#python-worker-extensions)を有効にする必要があります。
@@ -390,9 +392,16 @@ def main(req):
 
 ## <a name="environment-variables"></a>環境変数
 
-Functions では、サービス接続文字列などの[アプリケーション設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 これらの設定にアクセスするには、`import os` を宣言してから `setting = os.environ["setting-name"]` を使用します。
+Functions では、サービス接続文字列などの[アプリケーション設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 コードでこれらの設定にアクセスするには、主に 2 つの方法があります。 
 
-次の設定では、`myAppSetting` という名前のキーの[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)が取得されます。
+| Method | 説明 |
+| --- | --- |
+| **`os.environ["myAppSetting"]`** | アプリケーション設定をキー名で取得しようとして失敗した場合はエラーを発生させます。  |
+| **`os.getenv("myAppSetting")`** | アプリケーション設定をキー名で取得しようとして失敗した場合は null を返します。  |
+
+どちらの方法も、`import os` を宣言する必要があります。
+
+次の設定では、`os.environ["myAppSetting"]` を使用して `myAppSetting` という名前のキーの[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)が取得されます。
 
 ```python
 import logging
@@ -702,7 +711,7 @@ Functions Python worker は、特定のライブラリ セットを必要とし�
 > 関数アプリの requirements.txt に `azure-functions-worker` エントリが含まれている場合は、それを削除します。 Functions worker は Azure Functions プラットフォームによって自動的に管理され、新しい機能とバグの修正のための更新が定期的に行われます。 古いバージョンの worker を requirements.txt に手動で組み込むと、予期しない問題が発生する可能性があります。
 
 > [!NOTE]
->  ワーカーの依存関係と競合する可能性がある特定のライブラリ (protobuf、tensorflow、grpcio など) がパッケージに含まれている場合は、アプリの設定で `PYTHON_ISOLATE_WORKER_DEPENDENCIES` を `1` に設定して、アプリケーションでワーカーの依存関係を参照しないようにしてください。
+>  ワーカーの依存関係と競合する可能性がある特定のライブラリ (protobuf、tensorflow、grpcio など) がパッケージに含まれている場合は、アプリの設定で [`PYTHON_ISOLATE_WORKER_DEPENDENCIES`](functions-app-settings.md#python_isolate_worker_dependencies-preview) を `1` に設定して、アプリケーションでワーカーの依存関係を参照しないようにしてください。 この機能はプレビュー段階にあります。
 
 ### <a name="azure-functions-python-library"></a>Azure Functions Python ライブラリ
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b670c244c502049cc9eb419aa6570ad40e5aafa7
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 0873d6f0bfff73fc0bdc44ce90b322af23d4df28
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689929"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835735"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -167,7 +167,10 @@ JSON Patch コードの例を次に示します。 このドキュメントで�
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-ツインとリレーションシップの Update 呼び出しでは、[JSON Patch](http://jsonpatch.com/) 構造を使用します。 Azure .NET SDK の [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) を使用して、修正プログラムを作成できます。 次に例を示します。
+>[!NOTE]
+> この例では、既存のプロパティの値を置き換える JSON Patch `replace` 操作を示しています。 `add` と `remove` を含めて、使用可能な JSON Patch 操作の詳細なリストは、「[JSON Patch の操作](http://jsonpatch.com/#operations)」を参照してください。 
+
+.NET SDK を使用してコードプロジェクトからツインを更新する場合は、Azure .NET SDK の [Jsonpatchdocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) を使用して JSON 修正プログラムを作成できます。 次に例を示します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 

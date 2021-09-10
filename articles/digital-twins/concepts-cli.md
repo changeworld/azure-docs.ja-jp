@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins CLI コマンド セットについて理解します。
 author: baanders
 ms.author: baanders
-ms.date: 04/30/2021
+ms.date: 8/25/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d3e081d4a60b5e4f26e5163d55f2df682b042bca
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 087a7bc7fda1c54e0a9e2c7f896b06dda78fa11e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066523"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221152"
 ---
 # <a name="azure-digital-twins-cli-command-set"></a>Azure Digital Twins CLI コマンド セット
 
-Azure portal で Azure Digital Twins インスタンスを管理できるだけでなく、Azure Digital Twins には、 [Azure CLI](/cli/azure/what-is-azure-cli) のコマンド セットがあり、このサービスを使用して、次のような主要なアクションのほとんどを実行できます。
+Azure portal で Azure Digital Twins インスタンスを管理できるだけでなく、Azure Digital Twins には、次のようなサービスで主要なアクションのほとんどを実行するために使用できる [Azure CLI](/cli/azure/what-is-azure-cli) のコマンド セットもあります。
 * Azure Digital Twins インスタンスの管理
 * モデルの管理
 * デジタル ツインの管理
@@ -39,7 +39,7 @@ Azure Digital Twins コマンドは、[Azure CLI (azure iot) の Azure IoT 拡�
 
 ### <a name="cli-version-requirements"></a>CLI バージョンの要件
 
-PowerShell で Azure CLI を使用している場合、拡張機能パッケージは、Azure CLI バージョンが **2.3.1** 以上である必要があります。
+PowerShell で Azure CLI を使用している場合、拡張機能パッケージの要件として、Azure CLI バージョンが **2.3.1** 以上である必要があります。
 
 Azure CLI のバージョンを確認するには、次の CLI コマンドを使用します。
 ```azurecli
@@ -52,7 +52,7 @@ Azure CLI をインストールまたは新しいバージョンに更新する�
 
 拡張機能を必要とするコマンドを初めて使用するときに、それをインストールするように求めるプロンプトが Azure CLI により自動的に表示されます。
 
-あるいは、次のコマンドを使用して、いつでも拡張機能を自分でインストールできます (または、以前のバージョンが既にあることがわかった場合はそれを更新します)。 このコマンドは、[Azure Cloud Shell](../cloud-shell/overview.md) または[ローカルの Azure CLI](/cli/azure/install-azure-cli) で実行できます。
+それ以外の場合は、次のコマンドを使用して、いつでも拡張機能を自分でインストールできます (または、以前のバージョンが既にあることがわかった場合はそれを更新します)。 このコマンドは、[Azure Cloud Shell](../cloud-shell/overview.md) または[ローカルの Azure CLI](/cli/azure/install-azure-cli) で実行できます。
 
 ```azurecli-interactive
 az extension add --upgrade --name azure-iot

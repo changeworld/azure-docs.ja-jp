@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ea85c1ae1533ffe231e57ecc95f345b37c77499
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 38b595e4f9b2582f3baefecabf6285ee36436ad6
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748099"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260054"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack Hub 仮想マシンを Azure Sentinel に接続する
 
@@ -35,9 +35,9 @@ Azure Stack Hub で動作している仮想マシンに **Azure Monitor, Update 
 
 1. **[拡張機能]** を選択します。 この仮想マシンにインストールされている仮想マシン拡張機能の一覧が表示されます。
 
-1. **[Add (追加)]** タブをクリックします。 **[新しいリソース]** メニュー ブレードが開かれ、使用可能な仮想マシン拡張機能の一覧が表示されます。 
+1. **[追加]** タブを選択します。 **[新しいリソース]** メニュー ブレードが開かれ、使用可能な仮想マシン拡張機能の一覧が表示されます。 
 
-1. **Azure Monitor, Update, and Configuration Management** 拡張機能を選択し、 **[作成]** をクリックします。 **[拡張機能のインストール]** 構成ウィンドウが開きます。
+1. **Azure Monitor, Update, and Configuration Management** 拡張機能を選択し、 **[作成]** を選択します。 **[拡張機能のインストール]** 構成ウィンドウが開きます。
 
    ![Azure Monitor, Update, and Configuration Management の設定](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
 
@@ -46,7 +46,7 @@ Azure Stack Hub で動作している仮想マシンに **Azure Monitor, Update 
 
 1. Azure Sentinel メニューで、 **[ワークスペースの設定]** 、 **[Advanced]\(詳細\)** の順に選択し、 **[ワークスペース ID]** と **[ワークスペース キー (主キー)]** をコピーします。 
 
-1. Azure Stack Hub の **[拡張機能のインストール]** ウィンドウで、指定されたフィールドにそれらを貼り付け、 **[OK]** をクリックします。
+1. Azure Stack Hub の **[拡張機能のインストール]** ウィンドウで、指定されたフィールドにそれらを貼り付け、 **[OK]** を選択します。
 
 1. 拡張機能のインストールが完了すると、その状態が **[プロビジョニング成功]** と表示されます。 Azure Sentinel ポータルに仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
 
@@ -68,7 +68,7 @@ Azure の Azure Sentinel ポータルの **[Virtual Machines]** に、すべて�
 
 1. **[拡張機能]** を選択し、拡張機能 **Microsoft.EnterpriseCloud.Monitoring** を選択します。
 
-1. **[アンインストール]** をクリックし、選択内容を確認します。
+1. **[アンインストール]** を選択し、選択内容を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

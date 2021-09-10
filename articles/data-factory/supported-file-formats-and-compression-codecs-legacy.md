@@ -9,18 +9,18 @@ ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 12b3b1dddfa7ff37d8d8fa80562699cf9242148e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cf1df8645a6b5c7a33305c87732a9c3b108b523d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638871"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256640"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック (レガシ)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-*この記事は、次のコネクターに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
+*この記事は、次のコネクタに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md)。*
 
 >[!IMPORTANT]
 >Data Factory では新しいフォーマットベースのデータセット モデルが導入されました。詳細については、対応する書式の記事を参照してください。 <br>- [Avro 形式](format-avro.md)<br>- [バイナリ形式](format-binary.md)<br>- [区切りテキスト形式](format-delimited-text.md)<br>- [JSON 形式](format-json.md)<br>- [ORC 形式](format-orc.md)<br>- [Parquet 形式](format-parquet.md)<br>この記事で以下に説明する構成は、下位互換性のために今後も現状のままサポートされます。 今後は新しいモデルを使用することをお勧めします。 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: c9ed45d452f2a6ed89ee71826fbee5e107a395ae
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0854412a83f941e43e79ebcde2f70ae62dabdf15
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761635"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965163"
 ---
 # <a name="what-is-the-auto-registration-feature-in-azure-dns-private-zones"></a>Azure DNS プライベート ゾーンの自動登録機能とは
 
@@ -30,6 +30,7 @@ Azure DNS プライベート ゾーンの自動登録機能では、仮想ネッ
 * DNS レコードは、プライマリ仮想マシンの NIC に対してのみ自動的に作成されます。 仮想マシンに複数の NIC がある場合は、他のネットワーク インターフェイスの DNS レコードを手動で作成できます。
 * DNS レコードは、プライマリ仮想マシンの NIC で DHCP が使用されている場合のみ自動的に作成されます。 [Azure に複数の IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config)がある構成など、静的 IP を使用している場合、自動登録によってその仮想マシンにレコードが作成されることはありません。
 * IPv6 (AAAA レコード) の自動登録はサポートされていません。
+* プライベート DNS ゾーンの自動登録は、1 つの VNET に限定されます。
 
 ## <a name="next-steps"></a>次の手順
 

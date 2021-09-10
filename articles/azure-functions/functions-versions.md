@@ -4,12 +4,12 @@ description: Azure Functions では、複数のバージョンのランタイム
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/19/2021
-ms.openlocfilehash: 18f37bba5996e7d376684e8cee646dd705ab966c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 901297e34f259f9246b79ace2cc914f46b7d3b45
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725650"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251488"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -112,7 +112,7 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 バージョン 2.x では次の点が変更されました。
 
-* HTTP エンドポイントを呼び出すキーは、Azure Blob Storage 内で常に暗号化されて格納されます。 バージョン 1.x では、既定で Azure File Storage にキーが格納されていました。 アプリをバージョン 1.x からバージョン 2.x にアップグレードすると、ファイル ストレージ内の既存のシークレットはリセットされます。
+* HTTP エンドポイントを呼び出すキーは、Azure Blob Storage 内で常に暗号化されて格納されます。 バージョン 1.x では、既定で Azure Files にキーが格納されていました。 アプリをバージョン 1.x からバージョン 2.x にアップグレードすると、Azure Files 内の既存のシークレットはリセットされます。
 
 * バージョン 2.x ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。 この変更はパフォーマンスを向上するために行われました。 Webhook のエンドポイントとして HTTP トリガーを使用することもできます。
 

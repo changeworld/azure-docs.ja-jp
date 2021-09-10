@@ -3,12 +3,12 @@ title: 概念 - ID とアクセス
 description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: 7d6bcfc9426761615d1f9220f36834cc19eb09f8
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: e09a69ae1e3a9e8cba5d1027af1fc3ad57c73446
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069497"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252555"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
@@ -16,13 +16,7 @@ Azure VMware Solution のプライベート クラウドは、vCenter Server と
 
 ## <a name="vcenter-access-and-identity"></a>vCenter のアクセスと ID
 
-Azure VMware Solution では、vCenter に cloudadmin という組み込みのローカル ユーザーがあり、CloudAdmin ロールに割り当てられています。 このローカルの cloudadmin ユーザーを使用して、Active Directory (AD) にユーザーが設定されます。 通常、プライベート クラウドのワークロードは、CloudAdmin ロールによって作成と管理が行われます。 しかし Azure VMware Solution では、CloudAdmin ロールには、他の VMware クラウド ソリューションとは異なる vCenter 特権があります。     
-
-- vCenter と ESXi のオンプレミスのデプロイでは、管理者は vCenter administrator\@vsphere.local アカウントにアクセスできます。 さらに多くの AD ユーザーとグループを割り当てることもできます。 
-
-- Azure VMware Solution のデプロイでは、管理者が管理者ユーザー アカウントにアクセスすることはできません。 ただし、AD ユーザーとグループを vCenter の CloudAdmin ロールに割り当てることができます。  
-
-プライベート クラウド ユーザーは、Microsoft がサポートと管理を行う特定の管理コンポーネントにはアクセスできず、それらを構成することもできません。 (クラスター、ホスト、データストア、分散仮想スイッチなど)。
+[!INCLUDE [vcenter-access-identity-description](includes/vcenter-access-identity-description.md)]
 
 > [!IMPORTANT]
 > Azure VMware Solution により、vCenter のカスタム ロールが提供されていますが、現在、Azure VMware Solution ポータルでは提供されていません。 詳細については、この記事の後半の「[vCenter でカスタム ロールを作成する](#create-custom-roles-on-vcenter)」セクションを参照してください。 
@@ -111,8 +105,12 @@ NSX-T Manager には "*管理者*" アカウントを使用してアクセスし
 
 Azure VMware Solution のアクセスと ID に関する概念を理解したら、次の事項の学習に進むことができます。
 
-- [Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)  
+- [vCenter の外部 ID ソースを構成する方法](configure-identity-source-vcenter.md)
+
+- [Azure VMware Solution リソースを有効にする方法](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)
+
 - [各特権の詳細](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
+
 - [Azure VMware Solution でプライベート クラウドを監視し、修復するしくみ](./concepts-private-clouds-clusters.md#host-monitoring-and-remediation)
 
 

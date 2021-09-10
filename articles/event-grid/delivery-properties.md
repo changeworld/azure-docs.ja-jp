@@ -3,12 +3,12 @@ title: Azure Event Grid - 配信されたイベントにカスタム ヘッダ�
 description: 配信されたイベントにカスタム ヘッダー (または配信プロパティ) を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: de16c3b4981dc02a54a68269d4eef743d9f48c4b
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 3600d74d91ad218f3fcab99002762d605fba3139
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069500"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831352"
 ---
 # <a name="custom-delivery-properties"></a>カスタム配信プロパティ
 イベント サブスクリプションを使用すると、配信されたイベントに含まれる HTTP ヘッダーを設定できます。 この機能を使用すると、宛先に必要なカスタム ヘッダーを設定できます。 イベント サブスクリプションを作成するときに、最大 10 個のヘッダーを設定できます。 各ヘッダーの値は、4,096 (4 K) バイトより大きくすることはできません。
@@ -62,11 +62,8 @@ Webhook ハンドラーで要求を識別するために、Authorization ヘッ�
 送信要求に、イベント サブスクリプションに設定されたヘッダーが含まれるようになりました。
 
 ```console
-GET /home.html HTTP/1.1
-
+POST /home.html HTTP/1.1
 Host: acme.com
-
-User-Agent: <user-agent goes here>
 
 Authorization: BEARER SlAV32hkKG...
 ```
@@ -75,20 +72,31 @@ Authorization: BEARER SlAV32hkKG...
 > Authorization ヘッダーを定義することは、宛先が Webhook の場合、適切なオプションです。 [リソース ID を使用してサブスクライブしている関数](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination)、Service Bus、Event Hubs、および Hybrid Connections には使用しないでください。Event Grid と使用した場合、これらの宛先では独自の認証スキームがサポートされているからです。
 
 ### <a name="service-bus-example"></a>Service Bus の例
-Azure Service Bus では、1 つのメッセージを送信するときに、[BrokerProperties HTTP ヘッダー](/rest/api/servicebus/message-headers-and-properties#message-headers)を使用してメッセージ プロパティを定義することがサポートされています。 `BrokerProperties` ヘッダーの値は、JSON 形式で指定する必要があります。 たとえば、Service Bus に 1 つのメッセージを送信するときにメッセージ プロパティを設定する必要がある場合は、次のようにヘッダーを設定します。
+Azure Service Bus は、単一メッセージを送信する際に、以下のメッセージプロパティの使用をサポートしています。 
 
-| ヘッダー名 | ヘッダーの種類 | ヘッダー値 |
-| :-- | :-- | :-- |
-|`BrokerProperties` | スタティック     | `BrokerProperties:  { "MessageId": "{701332E1-B37B-4D29-AA0A-E367906C206E}", "TimeToLive" : 90}` |
+| ヘッダー名 | ヘッダーの種類 |
+| :-- | :-- |
+| `MessageId` | 動的 |  
+| `PartitionKey` | 静的または動的 |
+| `SessionId` | 静的または動的 |
+| `CorrelationId` | 静的または動的 |
+| `Label` | 静的または動的 |
+| `ReplyTo` | 静的または動的 | 
+| `ReplyToSessionId` | 静的または動的 |
+| `To` |静的または動的 |
+| `ViaPartitionKey` | 静的または動的 |
 
+> [!NOTE]
+> - `MessageId` の既定値は、Event Grid のイベントの内部 ID です。 これはオーバーライドできます。 たとえば、「 `data.field` 」のように入力します。
+> - 設定できるのは `SessionId` か `MessageId` のみです。 
 
 ### <a name="event-hubs-example"></a>Event Hubs の例
 
-イベントをイベント ハブ内の特定のパーティションに発行する必要がある場合は、イベント サブスクリプションに [BrokerProperties HTTP ヘッダー](/rest/api/eventhub/event-hubs-runtime-rest#common-headers)を定義して、対象のイベント ハブ パーティションを識別するパーティション キーを指定します。
+イベントをイベント ハブ内の特定のパーティションに発行する必要がある場合は、イベント サブスクリプションに `ParitionKey` プロパティを設定して、対象のイベント ハブ パーティションを識別するパーティション キーを指定します。
 
-| ヘッダー名 | ヘッダーの種類 | ヘッダー値                                  |
-| :-- | :-- | :-- |
-|`BrokerProperties` | スタティック | `BrokerProperties: {"PartitionKey": "0000000000-0000-0000-0000-000000000000000"}`  |
+| ヘッダー名 | ヘッダーの種類 |
+| :-- | :-- |
+|`PartitionKey` | スタティック |
 
 
 ### <a name="configure-time-to-live-on-outgoing-events-to-azure-storage-queues"></a>Azure Storage キューへの送信イベントの有効期限を構成する

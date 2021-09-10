@@ -4,13 +4,13 @@ description: Azure Resource Manager のデプロイに使用できる Bicep 演�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/29/2021
-ms.openlocfilehash: 143c7881d3f22bf67b3dfabf74ca54825efffc94
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 80fc9e4e1285d86858a476feba30621a7afe1c79
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741211"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221036"
 ---
 # <a name="bicep-operators"></a>Bicep 演算子
 
@@ -46,9 +46,10 @@ ms.locfileid: "121741211"
 
 | 演算子 | 名前 | 説明 |
 | ---- | ---- | ---- |
+| `[]` | [インデックス アクセサー](./operators-access.md#index-accessor) | オブジェクトの配列またはプロパティの要素にアクセスします。 |
+| `.` | [関数アクセサー](./operators-access.md#function-accessor) | リソースで関数を呼び出します。 |
 | `::` | [入れ子になったリソース アクセサー](./operators-access.md#nested-resource-accessor) | 親リソースの外部から入れ子になったリソースにアクセスします。 |
 | `.` | [プロパティ アクセサー](./operators-access.md#property-accessor) | オブジェクトのプロパティにアクセスします。 |
-| `.` | [関数アクセサー](./operators-access.md#function-accessor) | リソースで関数を呼び出します。 |
 
 ## <a name="comparison"></a>比較
 

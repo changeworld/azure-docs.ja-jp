@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/10/2021
-ms.openlocfilehash: 0a5ab1b8e79c3cfacb2944369b5f9234355ba4c8
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.date: 08/25/2021
+ms.openlocfilehash: 31ac845591387ec0c7061945e3324cd5249d7b23
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122229010"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037799"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "122229010"
 
 ## <a name="view-existing-data-factory-connections"></a>既存の Data Factory 接続を表示する
 
-系列情報をプッシュするために、複数の Azure Data Factory を 1 つの Azure Purview Data Catalog に接続できます。 現在の制限では、Purview の管理センターから一度に最大 10 個の Data Factory アカウントを接続できます。 Purview Data Catalog に接続されている Data Factory アカウントの一覧を表示するには、次の操作を行います。
+系列情報をプッシュするために、複数の Azure Data Factory を 1 つの Azure Purview に接続できます。 現在の制限では、Purview の管理センターから一度に最大 10 個の Data Factory アカウントを接続できます。 Purview アカウントに接続されている Data Factory アカウントの一覧を表示するには、次のことを行います。
 
 1. 左側のナビゲーション ウィンドウで **[管理]** を選択します。
 2. **[Lineage connections]\(系列接続\)** で、 **[Data Factory]** を選択します。
@@ -30,26 +30,25 @@ ms.locfileid: "122229010"
 
 4. 次の接続の **[状態]** のさまざまな値に注意してください。
 
-    - **接続済み**: Data Factory はデータ カタログに接続されています。
+    - **接続中**: データ ファクトリは Purview アカウントに接続されています。
     - **切断**: Data Factory はカタログにアクセスできますが、別のカタログに接続されています。 その結果、データ系列がこのカタログに自動的には報告されません。
     - **アクセス不可**: 現在のユーザーは Data Factory にアクセスできないため、接続の状態は不明です。
- >[!Note]
- >Data Factory 接続を表示するには、Purview ロールのいずれかが割り当てられている必要があります。 管理グループからのロールの継承は **サポートされていません**。
- >- Contributor
- >- 所有者
- >- Reader
- >- ユーザー アクセス管理者
+
+>[!Note]
+>Data Factory の接続を表示するには、次のロールが割り当てられている必要があります。 管理グループからのロールの継承はサポートされていません。
+>- **2021 年 8 月 18 日以降** に作成された Purview アカウントの場合: ルート コレクションの **コレクション管理者** ロール。
+>- **2021 年 8 月 18 日より前** に作成された Purview アカウントの場合: Azure 組み込みの **所有者**、**共同作成者**、**閲覧者**、または **ユーザー アクセス管理者** ロール。
 
 ## <a name="create-new-data-factory-connection"></a>新しい Data Factory 接続を作成する
 
 >[!Note]
->Data Factory 接続を追加または削除するには、Purview ロールのいずれかが割り当てられている必要があります。 管理グループからのロールの継承は **サポートされていません**。
->- 所有者
->- User Access Administrator
+>Data Factory の接続を追加または削除するには、次のロールが割り当てられている必要があります。 管理グループからのロールの継承はサポートされていません。
+>- **2021 年 8 月 18 日以降** に作成された Purview アカウントの場合: ルート コレクションの **コレクション管理者** ロール。
+>- **2021 年 8 月 18 日より前** に作成された Purview アカウントの場合: **所有者** または **ユーザー アクセス管理者** ロール。 
 >
 > さらに、ユーザーはデータ ファクトリの "所有者" または "共同作成者" である必要があります。 
 
-既存のデータ ファクトリを Purview Data Catalog に接続するには、次の手順に従います。
+既存のデータ ファクトリを Purview アカウントに接続するには、次の手順に従います。 [Data Factory を ADF から Purview アカウントに接続する](../data-factory/connect-data-factory-to-azure-purview.md)こともできます。
 
 1. 左側のナビゲーション ウィンドウで **[管理]** を選択します。
 2. **[Lineage connections]\(系列接続\)** で、 **[Data Factory]** を選択します。
@@ -66,20 +65,18 @@ ms.locfileid: "122229010"
     :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Azure Data Factory を切断するという警告を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
 
 >[!Note]
->一度に 10 個までの Data Factory の追加がサポートされるようになりました。 一度に 10 個を超える Data Factory を追加する場合は、サポート チケットを提出してください。
+>一度に 10 個までのデータ ファクトリの追加がサポートされるようになりました。 一度に 10 個を超えるデータ ファクトリを追加する場合は、サポート チケットを提出してください。
 
-### <a name="how-does-the-authentication-work"></a>認証のしくみ
+### <a name="how-authentication-works"></a>認証のしくみ
 
-Purview ユーザーがアクセス権を持つデータ ファクトリを登録すると、バックエンドで以下が実行されます。
+データ ファクトリのマネージド ID は、データ ファクトリから Purview への系列のプッシュ操作を認証するために使用されます。 UI 上で Purview にデータ ファクトリを接続すると、ロールの割り当てが自動的に追加されます。 
 
-1. **Data Factory マネージド ID** が次の Purview RBAC ロールに追加されます: **Purview データ キュレーター**。
+- **2021 年 8 月 18 日以降** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Azure Data Factory MSI を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
-     
-2. 系列メタデータを Purview にプッシュバックできるようにするために、Data Factory パイプラインを再実行する必要があります。
-3. 実行後に Data Factory メタデータが Purview にプッシュされます。
+- **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、お使いの Purview アカウントの Azure 組み込みの [**Purview データ キュレーター**](../role-based-access-control/built-in-roles.md#purview-data-curator) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
 
 ### <a name="remove-data-factory-connections"></a>Data Factory 接続を削除する
+
 Data Factory 接続を削除するには、次の操作を行います。
 
 1. **[Data Factory connection] (Data Factory 接続)** ページで、1 つ以上の Data Factory 接続の横にある **[削除]** ボタンを選択します。
@@ -101,22 +98,6 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 以降のセクションで説明されているように、Data Factory と Purview の間の統合では、Data Factory がサポートするデータ システムのサブセットのみがサポートされています。
 
 [!INCLUDE[data-factory-supported-lineage-capabilities](includes/data-factory-common-supported-capabilities.md)]
-
-### <a name="data-flow-support"></a>Data Flow サポート
-
-| データ ストア | サポートされています |
-| ------------------- | ------------------- | 
-| Azure Blob Storage | はい |
-| Azure Cosmos DB (SQL API) \* | はい | 
-| Azure Data Lake Storage Gen1 | はい |
-| Azure Data Lake Storage Gen2 | はい |
-| Azure Database for MySQL \* | はい | 
-| Azure Database for PostgreSQL \* | はい |
-| Azure SQL Database \* | はい |
-| Azure SQL Managed Instance \* | はい | 
-| Azure Synapse Analytics \* | はい |
-
-*\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
 
 ### <a name="execute-ssis-package-support"></a>SSIS パッケージの実行のサポート
 

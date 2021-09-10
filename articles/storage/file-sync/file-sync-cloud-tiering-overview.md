@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5e1bbd56d3fcfd087e294cb55c66edd2f22bd939
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 06b82bf78c7a4d66e2c4da6d053f8ab77c400e00
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765618"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258719"
 ---
 # <a name="cloud-tiering-overview"></a>クラウドの階層化の概要
 Azure File Sync のオプション機能であるクラウドを使った階層化により、オンプレミスのファイル サーバーのパフォーマンスを維持しながら、必要なローカル ストレージの量を減らすことができます。
@@ -29,7 +29,7 @@ Azure File Sync のオプション機能であるクラウドを使った階層�
 #### <a name="volume-free-space-policy"></a>ボリュームの空き領域ポリシー
 **ボリュームの空き領域ポリシー** は、ローカル ディスク上で一定の容量が使用されている場合に、クール ファイルをクラウドに階層化するように Azure File Sync に指示します。 
 
-たとえば、ローカル ディスク容量が 200 GB であり、少なくとも 40 GB のローカル ディスク容量を常に空けておきたい場合は、ボリュームの空き領域ポリシーを 20% に設定する必要があります。 ボリュームの空き領域は、個々のディレクトリまたはサーバー エンドポイントのレベルではなく、ボリューム レベルで適用されます。 
+たとえば、ローカル ディスク容量が 200 GiB であり、少なくとも 40 GiB のローカル ディスク容量を常に空けておきたい場合は、ボリュームの空き領域ポリシーを 20% に設定する必要があります。 ボリュームの空き領域は、個々のディレクトリまたはサーバー エンドポイントのレベルではなく、ボリューム レベルで適用されます。 
 
 #### <a name="date-policy"></a>日付ポリシー
 **日付ポリシー** を使用すると、x 日間アクセスされていない (読み書きされていない) クール ファイルがクラウドに階層化されます。 たとえば、アクセスされずに 15 日以上経過したファイルが通常はアーカイブ ファイルであることがわかった場合は、日付ポリシーを 15 日に設定します。 

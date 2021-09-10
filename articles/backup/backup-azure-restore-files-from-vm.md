@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: dd1a5ff9fbf85fbce4c4ae7a79b745589b3596e1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3fc896daef7e42c1574f8ba92ead76ddb1b7205e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728933"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966063"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -142,6 +142,9 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 - ポート 53 (送信) のパブリック DNS 解決
 
 > [!NOTE]
+> プロキシは iSCSI プロトコルをサポートしていない、またはポート 3260 へのアクセスを許可していない可能性があります。 このため、プロキシにリダイレクトされるコンピューターではなく、上記のように必要に応じて直接アクセスできるコンピューターでこのスクリプトを実行することを強くお勧めします。
+
+> [!NOTE]
 >
 > バックアップされた VM が Windows の場合、生成されたパスワードに geo 名が示されます。<br><br>
 > たとえば、生成されたパスワードが *ContosoVM_wcus_GUID* の場合、geo 名は wcus で、URL は <https://pod01-rec2.wcus.backup.windowsazure.com> になります。<br><br>
@@ -187,10 +190,10 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
     ![レジストリ キーの変更](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
-- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200 secs.
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200 secs.
 - HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200 secs.
 ```
 
 ### <a name="for-linux"></a>Linux の場合

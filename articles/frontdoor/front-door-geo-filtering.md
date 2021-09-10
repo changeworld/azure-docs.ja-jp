@@ -10,15 +10,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 08/31/2021
 ms.author: duau
 ms.reviewer: amsriva
-ms.openlocfilehash: bb7de037f63c8892aa73e357f744b1f25fb0750f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c784232d5c51f4c3a3c81df48ce0c01f7e794fc8
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441031"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309917"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリング
 
@@ -26,8 +26,10 @@ ms.locfileid: "114441031"
 
 WAF ポリシーには一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。 geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR、演算子は GeoMatch、値は対象となる 2 文字の国/地域コードです。 "ZZ" 国番号または "不明" 国は、データセット内の国にまだマップされていない IP アドレスを取り込みます。 擬陽性を回避するために、一致条件に ZZ を追加できます。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
 
-
 Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](front-door-tutorial-geo-filtering.md) を使用するか、または[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering)を使用して構成できます。
+
+> [!IMPORTANT]
+> ジオフィルタリングを使用するときは、常に国番号 **ZZ** を含めてください。 国番号 **ZZ** (または "*不明*" 国) では、データセット内の国にまだマップされていない IP アドレスが取り込まれます。 これにより、誤検知を回避できます。
 
 ## <a name="countryregion-code-reference"></a>国/地域コード リファレンス
 

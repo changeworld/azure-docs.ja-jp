@@ -6,19 +6,25 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
-ms.date: 07/16/2021
-ms.openlocfilehash: 3d75f08ea921e5a29709c697e7677f97891d9b3e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 08/30/2021
+ms.openlocfilehash: c41674763a417f0060206b365a99fcc4bf680b67
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183022"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256135"
 ---
 # <a name="configure-alerts-in-azure-monitor-for-sap-solutions-by-using-the-azure-portal"></a>Azure portal を使用して Azure Monitor for SAP Solutions でアラートを構成する
 
-この記事では、[Azure portal](https://azure.microsoft.com/features/azure-portal) において Azure Monitor for SAP Solutions (AMS) でアラートを構成する手順について説明します。 ポータルのブラウザーベースのインターフェイスを使用して、アラートと通知を構成します。
+この記事では、Azure Monitor for SAP Solutions でアラートを構成する手順について説明します。 [Azure portal](https://azure.microsoft.com/features/azure-portal) のブラウザーベースのインターフェイスを使用して、アラートと通知を構成します。
 
-前提条件: 少なくとも 1 つのプロバイダーを含む AMS リソースをデプロイする必要があります。 SAP アプリケーション (NetWeaver)、SAP HANA、Microsoft SQL サーバー、または高可用性 (pacemaker) クラスターのプロバイダーを構成できます。 
+## <a name="prerequisites"></a>前提条件
+
+少なくとも 1 つのプロバイダーを使用して Azure Monitor for SAP Solutions リソースをデプロイします。 以下のプロバイダーの構成ができます。 
+- SAP Application (NetWeaver)
+- SAP HANA
+- Microsoft SQL Server
+- 高可用性 (pacemaker) クラスター
 
 ## <a name="sign-in-to-the-portal"></a>ポータルにサインインする
 
@@ -26,26 +32,26 @@ ms.locfileid: "122183022"
 
 ## <a name="create-an-alert-rule"></a>アラート ルールを作成する
 
-1.  Azure portal で、Azure Monitor for SAP Solutions (AMS) リソースを参照して選択します。 この AMS リソースに対して少なくとも 1 つのプロバイダーが構成されていることを確認してください。 
-2.  選択したブック (たとえば SAP HANA) に移動し、HANA インスタンスを選択します。
+1.  Azure portal で、Azure Monitor for SAP Solutions リソースを参照して選択します。 このリソースに対して少なくとも 1 つのプロバイダーが構成されていることを確認してください。 
+2.  選択したブックに移動します。 たとえば、SAP HANA に移動し、HANA インスタンスを選択します。
 
     :::image type="content" source="./media/ams-alerts/ams-alert-1.png" alt-text="[アラート] ボタンの配置を示すスクリーンショット。" lightbox="./media/ams-alerts/ams-alert-1.png":::
   
-3.  **[アラート]** ボタンをクリックして、使用可能な **アラート テンプレート** を表示します。
+3.  **[アラート]** ボタンを選択して、使用可能な **アラート テンプレート** を表示します。
 
     :::image type="content" source="./media/ams-alerts/ams-alert-2.png" alt-text="アラート テンプレートの一覧を示すスクリーンショット。" lightbox="./media/ams-alerts/ams-alert-2.png":::
     
-4.  **[ルールの作成]** をクリックして、任意のアラートを構成します。
+4.  **[ルールの作成]** を選択して、任意のアラートを構成します。
 5.  **[アラートのしきい値]** に入力し、 **[プロバイダー インスタンス]** を選択し、 **[アクション グループ]** を選択または作成して、通知設定を構成します。 要件に従って、頻度と重要度の情報を編集できます。
 
     >[!Tip]
     > [アクション グループ](../../../azure-monitor/alerts/action-groups.md)について学習します。 
     
-7.  **[Enable alert rule]\(アラート ルールの有効化\)** をクリックします。
+7.  **[アラート ルールの有効化]** を選択します。
 
     :::image type="content" source="./media/ams-alerts/ams-alert-3.png" alt-text="アラートの構成ページを示すスクリーンショット。" lightbox="./media/ams-alerts/ams-alert-3.png":::
     
-7.  **[Deploy alert rule]\(アラート ルールのデプロイ\)** をクリックして、アラート ルールの構成を完了します。 **[テンプレートの表示]** をクリックすると、アラート テンプレートの表示を選択できます。
+7.  **[アラート ルールのデプロイ]** を選択して、アラート ルールの構成を完了します。 **[テンプレートの表示]** をクリックすると、アラート テンプレートの表示を選択できます。
 
     :::image type="content" source="./media/ams-alerts/ams-alert-4.png" alt-text="アラート構成の最後の手順を示すスクリーンショット。" lightbox="./media/ams-alerts/ams-alert-4.png":::
     
@@ -58,4 +64,4 @@ ms.locfileid: "122183022"
 Azure Monitor for SAP Solutions の詳細について学習します。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor for SAP Solutions](azure-monitor-overview.md)
+> [SAP on Azure の監視](monitor-sap-on-azure.md)

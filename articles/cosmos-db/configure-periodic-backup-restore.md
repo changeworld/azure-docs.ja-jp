@@ -4,15 +4,15 @@ description: この記事では、バックアップ間隔を指定した定期�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/21/2021
+ms.date: 08/30/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7cb5c8fe924a2634627533203ed8f11969f0b432
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 56e9bfe95a78c8bf0771acdc98c761df9994a708
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733190"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221064"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>定期的バックアップを使用して Azure Cosmos DB アカウントを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -32,7 +32,7 @@ Azure Cosmos DB では、データのバックアップが一定の間隔で自�
 * バックアップは、お使いのアプリケーションのパフォーマンスや可用性に影響を与えずに取得されます。 Azure Cosmos DB では、データのバックアップがバックグラウンドで実行され、プロビジョニング済みのスループット (RU) を余計に消費することも、データベースのパフォーマンスや可用性に影響することもありません。
 
 > [!Note]
-> Azure Synapse Link が有効なアカウントの場合、分析ストア データはバックアップと復元に含まれません。 Synapse Link が有効になっている場合、トランザクション ストア内のデータは、Azure Cosmos DB によって、スケジュールされたバックアップ間隔で引き続き自動的にバックアップされます。 現時点では、分析ストア内のデータの自動バックアップと復元はサポートされていません。
+> Azure Synapse Link が有効なアカウントの場合、分析ストア データはバックアップと復元に含まれません。 Synapse Link が有効になっている場合、Azure Cosmos DB がトランザクション ストア内のデータを、スケジュールされたバックアップ間隔で引き続き自動的にバックアップします。 現時点では、分析ストア内のデータの自動バックアップと復元はサポートされていません。
 
 ## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>バックアップ ストレージの冗長性
 
@@ -49,7 +49,7 @@ Azure Cosmos DB のバックアップ データは、プライマリ リージ�
 * **ローカル冗長ストレージ:** このオプションは、プライマリ リージョンの 1 つの物理的な場所内で、データを非同期的に 3 回コピーします。
 
 > [!NOTE]
-> ゾーン冗長ストレージは現在、[特定のリージョン](high-availability.md#availability-zone-support)でのみ利用できます。 選択したリージョンに基づき、このオプションは、新規または既存のアカウントでは使用できません。
+> ゾーン冗長ストレージは現在、[特定のリージョン](high-availability.md#availability-zone-support)でのみ利用できます。 新規アカウント対して選択したリージョンか、既存アカウント用のリージョンかによって異なります。ゾーン冗長オプションは使用できません。
 >
 > バックアップ ストレージの冗長性を更新しても、バックアップ ストレージの価格には影響しません。
 

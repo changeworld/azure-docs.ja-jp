@@ -3,16 +3,17 @@ title: Azure Data Factory UX のトラブルシューティング
 description: Azure Data Factory UX の問題をトラブルシューティングする方法について説明します。
 author: ceespino
 ms.service: data-factory
+ms.subservice: authoring
 ms.topic: troubleshooting
-ms.date: 09/03/2020
+ms.date: 06/01/2021
 ms.author: ceespino
 ms.reviewer: susabat
-ms.openlocfilehash: c6b4ae3f1a55af3340620c7ce8e3988e1437a649
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: a6d2a05e5f461a9ccf2f5e6a3cea0ba92c461b15
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903850"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260445"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Azure Data Factory UX の問題のトラブルシューティング
 
@@ -70,52 +71,60 @@ ADF UX では、ブラウザーの Cookie を使用してユーザー セッシ�
 
 ## <a name="connection-failed-on-adf-ux"></a>ADF UX で接続が失敗した
 
-**[Test Connection]** \(テスト接続\) や **[プレビュー]** などをクリックした後に、次のスクリーンショットのように、ADF UX で "接続に失敗しました" というエラーが表示されることがあります。
+**[接続のテスト]** 、 **[プレビュー]** などをクリックした後、以下のスクリーンショットのような ADF UI で「接続に失敗しました」というエラーが表示されることがあります。これは、マシンから ADF サービスに接続できないため、ADF で操作を実行できなかったことを意味します。
 
 ![接続できなかった](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
-この場合は、最初にお使いのブラウザーで InPrivate ブラウズ モードで同じ操作を試します。
+この問題を解決するには、まずお使いのブラウザーで InPrivate ブラウズ モードで同じ操作を試してみます。
 
-これでも動作しない場合は、ブラウザーで F12 キーを押し、**開発者ツール** を開きます。 **[ネットワーク]** タブに移動し、 **[Disable Cache]\(キャッシュを無効にする\)** をオンにして、失敗した操作を再試行して、(赤の) 失敗した要求を探します。
+それでも動作しない場合は、エラー メッセージから **サーバー名** (この例では **dpnortheurope.svc.datafactory.azure.com**) を見つけて、その **サーバー名** をブラウザーのアドレス バーに直接入力します。 
 
-![失敗した要求](media/data-factory-ux-troubleshoot-guide/failed-request.png)
+- ブラウザーに 404 と表示される場合、通常は、お使いのクライアント側には問題はなく、ADF サービス側に問題があることを意味します。 サポート チケットを、エラー メッセージの **アクティビティ ID** と共に提出してください。
 
-次に、失敗した要求の **[要求 URL]** の **ホスト名** (この場合は **dpnortheurope.svc.datafactory.azure.com**) を探します。
+    ![リソースが見つかりません](media/data-factory-ux-troubleshoot-guide/status-code-404.png)
 
-お使いのブラウザーのアドレス バーに、**ホスト名** を直接入力します。 ブラウザーに 404 と表示される場合、これは通常、お使いのクライアント側には問題はなく、ADF サービス側に問題があることを意味します。 サポート チケットを、ADF UX のエラー メッセージの **アクティビティ ID** と共に提出します。
+- ブラウザーに 404 と表示されない、またはブラウザーに以下のようなエラーが表示される場合、通常は、クライアント側に問題があることを意味します。 さらにトラブルシューティングを続けます。
 
-![リソースが見つかりません](media/data-factory-ux-troubleshoot-guide/status-code-404.png)
+    ![クライアント側のエラー](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
 
-ブラウザーに以下のようなエラーが表示される場合は、これは通常クライアント側に問題があることを意味します。 さらにトラブルシューティングを続けます。
-
-![クライアント側のエラー](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
-
-**[コマンド プロンプト]** を開き、「**nslookup dpnortheurope.svc.datafactory.azure.com**」と入力します。 通常、次のような応答があります。
+さらにトラブルシューティングを行うには、**コマンド プロンプト** を開き、`nslookup dpnortheurope.svc.datafactory.azure.com` と入力します。 通常、次のような応答があります。
 
 ![コマンド応答 1](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
 
-通常の DNS 応答が表示された場合は、このホスト名への HTTPS 接続がブロックされているかどうか、ファイアウォール設定を自分のローカルの IT サポートに問い合わせます。 問題を解決できない場合は、ADF UX のエラー メッセージの **アクティビティ ID** と共にサポート チケットを提出します。
+- 通常の DNS 応答が表示された場合は、このホスト名への HTTPS 接続がブロックされているかどうか、ファイアウォール設定を自分のローカルの IT サポートに問い合わせます。 問題を解決できない場合は、エラー メッセージの **アクティビティ ID** と共にサポート チケットを提出してください。
 
-これ以外のものが表示される場合は、通常、お使いの DNS サーバーでの DNS 名の解決で問題があることを意味します。 通常、ISP (インターネット サービス プロバイダー) または DNS (たとえば、Google DNS 8.8.8.8) を変更してみると解決できます。 これでも問題が解決しない場合は、さらに「**nslookup datafactory.azure.com**」と「**nslookup azure.com**」を試して、自分の DNS 解決がどのレベルで失敗しているかを確認し、トラブルシューティングのためにこの全情報を、自分のローカルの IT サポートまたは自分の ISP に送信できます。 問題が Microsoft 側にあるとされた場合は、ADF UX のエラー メッセージの **アクティビティ ID** と共にサポート チケットを提出します。
+- これ以外のものが表示される場合は、通常、お使いの DNS サーバーでの DNS 名の解決で問題があることを意味します。 通常、ISP (インターネット サービス プロバイダー) または DNS (たとえば、Google DNS 8.8.8.8) を変更してみると解決できることがあります。 これでも問題が解決しない場合は、さらに `nslookup datafactory.azure.com` と `nslookup azure.com` を試して、自分の DNS 解決がどのレベルで失敗しているかを確認し、トラブルシューティングのためにこの全情報を、自分のローカルの IT サポートまたは自分の ISP に送信できます。 問題が Microsoft 側にあるとされた場合は、エラー メッセージの **アクティビティ ID** と共にサポート チケットを提出してください。
 
-![コマンド応答 2](media/data-factory-ux-troubleshoot-guide/command-response-2.png)
+    ![コマンド応答 2](media/data-factory-ux-troubleshoot-guide/command-response-2.png)
 
 ## <a name="change-linked-service-type-in-datasets"></a>データセット内にリンクされたサービスの種類を変更する
 
 ファイル形式のデータセットは、ファイルベースのすべてのコネクタで使用できます。たとえば、Parquet データセットを Azure BLOB または Azure Data Lake Storage Gen2 で構成できます。 各コネクタにより、アクティビティ上で、別のアプリ モデルを使用して、データ ストアのさまざまなセットに関連する設定がサポートされることにご注意ください。 
 
-ADF 作成 UI では、アクティビティ (Copy、Lookup、GetMetadata、Delete アクティビティなど) でファイル形式のデータセットを使用し、データセットで現在とは異なる種類のリンクされたサービスを示す (ファイルシステムから ADLS Gen2 へ切り替えるなど) と、次の警告メッセージが表示されます。 これがクリーンなスイッチであることを確認するために、このデータセットを参照するパイプラインとアクティビティは、ユーザーの合意の下で、新しい種類も使用されるように変更されます。また、新しい種類と互換性のない既存のデータ ストア設定は、適用されなくなると消去されます。
+ADF 作成 UI では、アクティビティ (Copy、Lookup、GetMetadata、Delete アクティビティなど) でファイル形式のデータセットを使用し、データセットで現在とは異なる種類のリンク サービスを示す (ファイル システムから ADLS Gen2 へ切り替えるなど) と、次の警告メッセージが表示されます。 これがクリーンなスイッチであることを確認するために、このデータセットを参照するパイプラインとアクティビティは、ユーザーの合意の下で、新しい種類も使用されるように変更されます。また、新しい種類と互換性のない既存のデータ ストア設定は、適用されなくなると消去されます。
 
-各コネクタに対してサポートされているデータ ストア設定の詳細については、対応するコネクタに関する記事から [コピー アクティビティのプロパティ] に進み、詳細なプロパティ リストを確認してください。 [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[File System](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) を参照してください。
+各コネクタに対してサポートされているデータ ストア設定の詳細については、対応するコネクタに関する記事から [コピー アクティビティのプロパティ] に進み、詳細なプロパティ リストを確認してください。 [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) を参照してください。
 
 ![警告メッセージ](media/data-factory-ux-troubleshoot-guide/warning-message.png)
+
+## <a name="could-not-load-resource-while-opening-pipeline"></a>パイプラインを開いているときに、リソースを読み込めませんでした 
+
+ユーザーが ADF GUI オーサリング ツールを使用してパイプラインにアクセスすると、次のエラー メッセージが表示されます。"リソース 'xxxxxx' を読み込めませんでした。 JSON に誤りがないことと、参照されているリソースが存在することを確認してください。 状態: TypeError: 未定義のプロパティ 'xxxxx' を読み取ることはできません。考えられる原因: TypeError: 未定義のプロパティ 'xxxxxxx' を読み取ることはできません。"
+
+このエラー メッセージのソースは、パイプラインを記述している JSON ファイルです。 これは、お客様が Git 統合を使用しているが、パイプライン JSON ファイルが何らかの理由で破損している場合に発生します。 次に示すように、パイプライン名の左側にエラー (x 付きの赤いドットが付いています) が表示されます。
+
+![パイプライン JSON エラー](media/data-factory-ux-troubleshoot-guide/pipeline-json-error.png)
+
+解決策として、最初に JSON ファイルを修正し、その後でオーサリング ツールを使用してパイプラインを再度開いてください。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
 
 * [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-* [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+* [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 * [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
 * [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/)

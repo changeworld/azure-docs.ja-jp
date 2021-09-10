@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: 91b00387c3b0da6e2cce593cda8869638777705e
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: bca9462ceb9812618247f03e111b74877ac841e2
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326611"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187759"
 ---
 # <a name="customer-spotlight"></a>顧客のご紹介
 
@@ -30,8 +30,10 @@ ms.locfileid: "122326611"
 |<font size=5>Blue Prism</font>| [**Blue Prism**](https://www.blueprism.com/) の Decipher は、AI を搭載した新しいドキュメント処理機能であり、会社の接続済み RPA プラットフォームに直接埋め込まれます。 Decipher は、Microsoft Azure Cognitive Services の 1 つである Form Recognizer と連携し、組織が人手をかけずにあらゆるフォームを迅速に処理できるよう支援します。 Blue Prism のある顧客は、調達プロセスの一環として請求書処理を自動化するソリューションをテストしています。 | [顧客事例](https://customers.microsoft.com/story/737482-blue-prism-partner-professional-services-azure) |
 |<font size=5>山形記号</font>| [**Chevron**](https://www.chevron.com//) のカナダ事業部は、現在、UiPath のロボティック プロセス オートメーション プラットフォームと Form Recognizer (Microsoft Azure Cognitive Services の 1 つ) を併用し、データの抽出を自動化して分析用のバックエンド システムにデータを移動させています。 分野の専門家は、価値の高い活動に専念するためにより多くの時間を確保できるようになります。また、情報の流れが早くなるため、オペレーションの制御が高速化し、より迅速、正確、詳細にビジネスを分析できるようになります。 | [顧客事例](https://customers.microsoft.com/story/chevron-mining-oil-gas-azure-cognitive-services)|
 |<font size=5>Cross Masters</font>|"[**Cross Masters**](https://crossmasters.com/) にとって、最先端の AI テクノロジを利用することは単なる情熱ではなく、継続的なイノベーションが求められる自社の労働文化において欠かせない要素となっています。 当社の最新の成功事例の 1 つは、数千もの請求書を処理しなければならない、手作業による書類業務の自動化です。 Microsoft Form Recognizer の AI エンジンのおかげで、収集した大量の請求書から分析情報を得て顧客に提供できる独自のカスタム ソリューションを開発できました。 私たちが最も便利だと感じているのは、人間を上回る抽出品質と、モデルの構成やテーブルのラベル付けといった新しい機能の継続的導入です。 これにより、お客様に市場の利益を確保することや、当社の製品をクラス最高のソリューションにすることができています" と Cross Masters マーケティング自動化担当リーダーである Jan Hornych 氏は述べています。 | [ブログ](https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428)|
+|<font size=5>EY</font>| [**EY**](https://ey.com/) の組織は、より良い労働環境を構築するために存在し、クライアント、人々、社会のために長期的な価値を創造して、資本市場での信頼を築くことを支援します。 データとテクノロジによって有効になった 150 か国を超えるさまざまな EY のチームは、保証によって信頼を提供し、クライアントの成長、変革、運用を支援します。 EY チームは、保証、コンサルティング、法律、戦略、税務、取引にまたがって作業し、今日の世界が直面している複雑な問題に対する新しい答えを見つけるために、より良い質問を必要としています。 EY テクノロジ チームは Microsoft と協力して、請求書の抽出と契約の比較プロセスを促進するプラットフォームを構築しました。 Azure Form Recognizer (Form Recognizer) と Azure Custom Vision API (Vision) を使用して、EY チームは、コンサルティング、税務、監査、トランザクション サービス クライアントの光学式文字認識 (OCR) とドキュメント処理プロセスを自動化し、改善することができました。 | [顧客事例](https://customers.microsoft.com/en-us/story/1404985164224935715-ey-professional-services-azure-form-recognizer)|
 |<font size=5>Financial Fabric</font>| Microsoft クラウド ソリューション プロバイダーである [**Financial Fabric**](https://www.financialfabric.com//) は、ヘッジ ファンド、ファミリー オフィス、企業財務部門の投資マネージャーに、データ アーキテクチャ、データ サイエンス、データ分析のサービスを提供しています。 その毎日のプロセスには、銀行取引明細書や法的な契約書など、数千もの複雑な財務ドキュメントからデータを抽出して正規化することが含まれています。 さらに同社はカスタム分析を提供し、顧客が投資においてより優れた意思決定を行えるように支援しています。 このデータを抽出するのには、これまで数日または数週間かかっていました。しかし、Microsoft Azure Cognitive Services の 1 つである Form Recognizer を使用することで、Financial Fabric は抽出から分析にかかる時間をわずか数分にまで短縮できました。 | [顧客事例](https://customers.microsoft.com/story/financial-fabric-banking-capital-markets-azure)|
 |<font size=5>GEP</font>| [**GEP**](https://www.gep.com/) は Form Recognizer を使用して、顧客のために請求書処理ソリューションを開発しました。 "GEP では、AI と自動化が調達とサプライ チェーンに大きな影響を及ぼすと考えています。 私たちは当社の AI ソリューションと Microsoft Form Recognizer を組み合わせることで、お客様のために 1 日あたり 4,000 通の請求書の処理を自動化しました。お客様はグローバルなスケールで正確性、制御性、コンプライアンスを高めながら、人の手による作業を数万時間も短縮できています" と、GEP の人工知能担当バイス プレジデントである Sarateudu Sethi 氏は述べます。 | [ブログ](https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428)|
+|<font size=5>HCA Healthcare</font>| [**HCA Healthcare**](https://hcahealthcare.com/) は、米国全土に 180 を超える病院と 2,000 の医療施設を持ち、毎年約 3,500 万人の患者に貢献している米国有数の医療供給者の 1 つです。 現在は Microsoft と提携しており、Azure Form Recognizer を活用して患者のオンボード エクスペリエンスを簡素化および改善するとともに、繰り返しデータをケア センターのシステムに入力するのに費やされる管理時間を削減しています。 | [顧客事例](https://customers.microsoft.com/en-us/story/1404891793134114534-hca-healthcare-healthcare-provider-azure)|
 |<font size=5>Instabase</font>| [**Instabase**](https://instabase.com/) は、組織化されていないデータの複雑な大量を取得、整理、識別、理解し、整理された情報としてビジネス ワークフローに取り込むのに役立つ、クラス最高の機械学習プロセスを提供する水平アプリケーション プラットフォームです。 プラットフォームでは、プラグ可能なアプリケーションのリポジトリにより、その情報と、必要に応じて迅速に拡張し強化する手段を調整して活用できます。 Instabase のアプリケーションは、インフラストラクチャに依存せずに広くデプロイするために完全にコンテナー化されています。 | [顧客事例](https://customers.microsoft.com/en-gb/story/1376278902865681018-instabase-partner-professional-services-azure)|
 |<font size=5>WEX</font>| [**WEX**](https://www.wexinc.com/) は、Form Recognizer を使用して給付金明細書を処理するツールを開発しました。 製品管理および戦略担当シニア バイス プレジデントである Matt Dallahan 氏は次のように述べます。"この技術は本当に素晴らしいものです。 私は当初、このタイプのソリューションは実現できないのではないかと不安でした。しかし Form Recognizer なら、ほとんどどのようなドキュメントでも正確に読み取ることができるとすぐに確信しました。" | [ブログ](https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428)|
 |<font size=5>Wilson Allen</font> | [**Wilson Allen**](https://wilsonallen.com/) は、Microsoft Azure Cognitive Services の AI コンテナー サポートを活用し、高性能な AI ソリューションを開発しました。これは、世界中の企業が、これまでサイロ化されていた非構造化データから、かつてないレベルの分析情報を見つけ出すのに役立ちます。 今では、同社の顧客はそのデータを利用して、ビジネス開発をサポートし、顧客との関係を強化することができています。 | [顧客事例](https://customers.microsoft.com/story/814361-wilson-allen-partner-professional-services-azure)|

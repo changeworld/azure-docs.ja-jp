@@ -1,17 +1,20 @@
 ---
 title: セキュリティとアクセス制御に関するイシューのトラブルシューティング
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティングを行う方法について説明します。
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 05/31/2021
+ms.date: 07/28/2021
 ms.author: lle
-ms.openlocfilehash: ff95f5c3f8d978d58146529825adee94f82eaf07
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a025e46914390d203537d0ddd0c9faf5f22488ab
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782895"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864157"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティング
 
@@ -189,6 +192,37 @@ ADF では引き続きマネージド VNet IR を使用できますが、[マネ
 - マネージド VNet IR を使用する場合は、ソース側と同じようにシンク側でもプライベート エンドポイントを有効にします。
 - パブリック エンドポイントを引き続き使用する場合は、ソースとシンクに対してマネージド VNet IR を使用するのではなく、パブリック IR のみに切り替えることができます。 パブリック IR に切り替えた場合でも、マネージド VNet IR がまだ存在する場合は、ADF でマネージド VNet IR が引き続き使用される可能性があります。
 
+### <a name="internal-error-while-trying-to-delete-adf-with-customer-managed-key-cmk-and-user-assigned-managed-identity-ua-mi"></a>カスタマー マネージド キー (CMK) とユーザー割り当てマネージド ID (UA-MI) を使用して ADF の削除を試みたときに発生する内部エラー
+
+#### <a name="symptoms"></a>現象
+`{\"error\":{\"code\":\"InternalError\",\"message\":\"Internal error has occurred.\"}}`
+
+#### <a name="cause"></a>原因
+
+CMK に関連する操作を実行する場合は、まず ADF に関連するすべての操作を行い、それから外部操作 (マネージド ID またはキー コンテナーの操作) を実行する必要があります。 たとえば、すべてのリソースを削除したい場合は、最初にファクトリを削除し、それからキー コンテナーを削除する必要があります。逆の順序で行った場合、ADF 呼び出しは、関連オブジェクトを読み取れなくなるため失敗し、削除可能かどうかを検証できなくなります。 
+
+#### <a name="solution"></a>解決策
+
+この問題を解決する可能性のある 3 つの方法があります。 制限事項は次のとおりです。
+
+* CMK キーが格納されたキー コンテナーへの ADF のアクセスが取り消されました。 
+次の権限に従ってデータ ファクトリへのアクセスを再割り当てすることができます: **取得、キーのラップ解除、キーのラップ**。 これらのアクセス許可は、Data Factory でカスタマー マネージド キーを有効にするために必要です。 [ADF へのアクセスを許可する](enable-customer-managed-key.md#grant-data-factory-access-to-azure-key-vault)に関するページを参照してください。権限が与えられると ADF を削除することができるはずです。
+ 
+* ADF を削除する前に、顧客によって Key Vault/CMK が削除されました。 ADF の CMK では、「Soft Delete」を有効に、またデフォルトで 90 日のアイテム保持ポリシーを持つ「Purge Protect」を有効にしなければなりません。 削除されたキーを復元することができます。  
+ [削除されたキーの回復](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)と[削除されたキー値](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)に関するページをご覧ください。
+
+* ADF の前に ユーザー割り当てマネージド ID (UA-MI) が削除されました。 REST API 呼び出しを使えばこの状況から回復することができます。これは選択した http クライアントにおいてどのプログラミング言語でも実行できます。 Azure 認証を使用する REST API 呼び出しのためにまだ何も設定していない場合、これを行う最も簡単な方法は POSTMAN/Fiddler を使うことです。 次の手順に従ってください。
+
+   1.  メソッドを使ってファクトリに対する GET 呼び出しを行います: `https://management.azure.com/subscriptions/YourSubscription/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourFactoryName?api-version=2018-06-01` のような GET Url
+
+   2. 別の名前で新しいユーザー マネージド ID を作成する必要があります (同じ名前でも機能する場合がありますが、念のため GET 応答とは異なる名前を使う方が安全です)。
+
+   3. encryption.identity プロパティと identity.userassignedidentities を変更して、新たに作成されたマネージド ID を指し示すようにします。 userAssignedIdentity オブジェクトから clientId と principalId を削除します。 
+
+   4.  同じファクトリ URL に対して PUT 呼び出しを行い新しい本文を渡します。 GET 応答で取得したすべての情報を、ID のみを変更して渡すことが非常に重要です。 これを行わなければ、他の設定に対する意図しないオーバーライドが発生してしまいます。 
+
+   5.  呼び出しが成功すると、エンティティが再び表示され、削除を再試行することができます。 
+
 ## <a name="sharing-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの共有
 
 ### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>異なるテナントからのセルフホステッド IR の共有がサポートされない 
@@ -201,13 +235,14 @@ Azure Data Factory の UI からセルフホステッド IR を共有しよう�
 
 複数のテナントにまたがってセルフホステッド IR を共有することはできません。
 
+
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングの詳細について、次のリソースを参照してください。
 
 *  [Data Factory 用の Azure Private Link](data-factory-private-link.md)
 *  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
+*  [Data Factory の機能のリクエスト](/answers/topics/azure-data-factory.html)
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A ページ](/answers/topics/azure-data-factory.html)
 *  [Data Factory に関する Stack overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)

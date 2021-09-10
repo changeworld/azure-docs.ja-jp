@@ -4,12 +4,12 @@ description: Batch は、Batch サービスからの認証に Azure AD をサポ
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.custom: has-adal-ref, subject-rbac-steps
-ms.openlocfilehash: 52e34bb94ab151afcfcdc14d2de55e608d82a139
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c7f365c7db4a8bc273e67d66a56a826021306f3a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066756"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315090"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -81,10 +81,8 @@ Batch アプリケーションを登録するには、[クイックスタート�
 1. アプリの登録の一覧から、アプリケーションの名前を検索します。
 1. アプリケーションを選択して **[API のアクセス許可]** を選択します。
 1. **[API のアクセス許可]** セクションで、 **[アクセス許可の追加]** を選択します。
-1. **[API の選択]** で、Batch API を検索します。 API が見つかるまで、次の各文字列を検索します。
-    1. **Microsoft Azure Batch**
-    1. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。
-1. Batch API が見つかったら、それを選択して **[選択]** を選びます。
+1. **[API を選択する]** で "Microsoft Azure Batch" と検索すると、Batch API が見つかります。 **ddbf3205-c6bd-46ae-8127-60eb93363864** が、Batch API の アプリケーション ID です。
+1. Batch API を選択して **[選択]** を選択します。
 1. **[アクセス許可の選択]** で、 **[Access Azure Batch Service] (Azure Batch サービスへのアクセス)** の横にあるチェック ボックスをオンにして **[アクセス許可を追加する]** を選択します。
 
 これで、 **[API のアクセス許可]** セクションに、Azure AD アプリケーションに Microsoft Graph と Batch サービス API の両方へのアクセス権があることが示されます。 アプリを Azure AD に最初に登録する際に、Microsoft Graph へのアクセス許可が自動的に付与されます。

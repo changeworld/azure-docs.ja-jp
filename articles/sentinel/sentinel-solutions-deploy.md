@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: yelevin
-ms.openlocfilehash: ce1620982aac833472102dce8a80b0c4195eb61d
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 5cb84ad912e5430948d0dedc71d94e69d1dd1a86
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109811862"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251912"
 ---
 # <a name="discover-and-deploy-azure-sentinel-solutions"></a>Azure Sentinel ソリューションを見つけてデプロイする
 
@@ -46,7 +46,7 @@ Azure Sentinel ソリューションでは、製品内検出機能、ワンス�
 
     :::image type="content" source="./media/sentinel-solutions-deploy/solutions-list.png" alt-text="ソリューションのリスト":::
 
-    - リスト下部までスクロールしても望ましいソリューションが見つからない場合は、一番下の **[さらに読み込む]** リンクをクリックして、リストを展開します。
+    - リスト下部までスクロールしても望ましいソリューションが見つからない場合は、一番下の **[さらに読み込む]** リンクを選択して、リストを展開します。
 
         :::image type="content" source="./media/sentinel-solutions-deploy/load-more.png" alt-text="ソリューションをさらに読み込む":::
 
@@ -68,7 +68,7 @@ Azure Sentinel ソリューションでは、製品内検出機能、ワンス�
 
 1. ソリューションをデプロイするサブスクリプション、リソース グループ、ワークスペースを入力します。 
 
-1. **[次へ]** をクリックして残りのタブ (ソリューションのコンポーネントに対応) を移動します。そこで各コンポーネントについて学び、場合によってはそれらを構成することもできます。
+1. **[次へ]** を選択して残りのタブ (ソリューションのコンポーネントに対応) を移動します。そこで各コンポーネントについて学習し、場合によってはそれらを構成することもできます。
 
     > [!NOTE]
     > 下に挙げるタブは、対応するスクリーンショットに示されたソリューションのコンポーネントに対応しています。 コンポーネントの種類はソリューションによって異なるため、ソリューションにより表示されるタブが異なる場合があり、下に示していないタブが表示される場合もあります。
@@ -80,7 +80,7 @@ Azure Sentinel ソリューションでは、製品内検出機能、ワンス�
     1. **[プレイブック]** タブ - ここでは Proofpoint TAP の有効なサインイン情報を入力する必要があります。そうすると、プレイブックで Proofpoint システムを認証し所定の応答を実行できます。
         :::image type="content" source="./media/sentinel-solutions-deploy/wizard-playbooks.png" alt-text="デプロイ ウィザード の [プレイブック] タブ":::
 
-1. 最後に **[確認 + 作成]** タブで、“確認完了” メッセージが表示されるのを待って **[作成]** をクリックし、ソリューションをデプロイします。 **[自動化テンプレートのダウンロード]** リンクをクリックし、ソリューションをコードとしてデプロイすることもできます。
+1. 最後に、 **[確認と作成] タブ** で、「検証に成功しました」メッセージが表示されるのを待ってから、 **[作成]** を選択してソリューションをデプロイします。 **[自動化テンプレートのダウンロード]** リンクをクリックし、ソリューションをコードとしてデプロイすることもできます。
 
     :::image type="content" source="./media/sentinel-solutions-deploy/wizard-create.png" alt-text="デプロイ ウィザードの [確認 + 作成] タブ":::
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 5fbe518e894cf6b1dad1407edcc241dc141ef546
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6c3e4de61d59841f2856af2194ec22a63b407b5c
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284164"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123185437"
 ---
 # <a name="authenticate-playbooks-to-azure-sentinel"></a>Azure Sentinel に対してプレイブックを認証する
 
@@ -55,7 +55,11 @@ Azure Logic Apps 内の Azure Sentinel コネクタとそのコンポーネン�
 
 この認証方法を使用すると、プレイブック (Azure Logic Apps ワークフロー リソース) にアクセス許可を直接付与できるため、プレイブックによって実行される Azure Sentinel コネクタのアクションは、Azure Sentinel に対する独自のアクセス許可を持つ独立したオブジェクトであるかのように、プレイブックに代わって動作します。 この方法を使用すると、管理する必要がある ID の数が減少します。 
 
+> [!NOTE]
+> マネージド ID に他のリソース (Azure Sentinel ワークスペースなど) へのアクセスを許可するには、サインインしているユーザーに、Azure Sentinel ワークスペースの所有者やユーザー アクセス管理者などのロールの割り当てを書き込むためのアクセス許可を持つロールが必要です。
+
 マネージド ID を使用して認証するには、次の手順を実行します。
+
 
 1. Azure Logic Apps ワークフロー リソースで[マネージド ID を有効](../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)にします。 まとめ
 
@@ -63,10 +67,24 @@ Azure Logic Apps 内の Azure Sentinel コネクタとそのコンポーネン�
 
     - これで、ロジック アプリでシステム割り当て ID を使用できるようになりました。これは Azure AD に登録され、オブジェクト ID で表されます。
 
-1. [Azure Sentinel 共同作業者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)ロールを割り当てることにより、Azure Sentinel ワークスペースへの[アクセス権をその ID に付与](../logic-apps/create-managed-service-identity.md#give-identity-access-to-resources)します。
-
-    [Azure Sentinel で利用可能なロール](./roles.md)の詳細について参照してください。
-
+1. Azure Sentinel ワークスペースへのアクセス許可を、[その ID に付与](../logic-apps/create-managed-service-identity.md#give-identity-access-to-resources)します。 
+    1. Azure Sentinel のメニューで **[設定]** を選択します。
+    1. **[ワークスペースの設定]** タブを選択します。[ワークスペース] メニューで **[アクセス制御 (IAM)]** を選択します。
+   1. 上部のボタン バーから、 **[追加]** を選択し、 **[ロールの割り当ての追加]** を選択します。 **[ロールの割り当ての追加]** オプションが無効な場合は、ロールを割り当てるためのアクセス許可がありません。
+    1. 表示される新しいパネルで、適切なロールを割り当てます。
+    
+        | Role | 状況 |
+        | --- | --- |
+        | [**Azure Sentinel レスポンダー**](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) | プレイブックには、インシデントまたはウォッチリストを更新するための手順が記載されています |
+        | [**Azure Sentinel 閲覧者**](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) | プレイブックはインシデントのみを受け取ります |
+        |
+        
+        [Azure Sentinel で利用可能なロール](./roles.md)の詳細について参照してください。
+    1. **[アクセスの割り当て先]** で **[ロジック アプリ]** を選択します。
+    1. プレイブックが属しているサブスクリプションを選択し、プレイブック名を選択します。
+    1. **[保存]** を選択します。
+    
+    
 1. Azure Sentinel Logic Apps コネクタで、マネージド ID の認証方法を有効にします。
 
     1. Azure Logic Apps デザイナーで、Azure Sentinel Logic Apps コネクタの手順を追加します。 コネクタが既存の接続に対して既に有効になっている場合は、 **[接続の変更]** リンクをクリックします。

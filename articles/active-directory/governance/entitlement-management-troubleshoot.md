@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e165340dc9856916a8c2ccdcd6609663282d63
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: f4dd89dd22345188c05dd607b4a71ea8ef733f73
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714100"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259978"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -29,7 +29,9 @@ ms.locfileid: "109714100"
 
 ## <a name="administration"></a>管理
 
-* エンタイトルメント管理の構成時に、アクセスが拒否されたというメッセージが表示された場合、自分がグローバル管理者であるときは、ディレクトリに [Azure AD Premium P2 (または EMS E5) ライセンス](entitlement-management-overview.md#license-requirements)があることを確認してください。
+* エンタイトルメント管理の構成時に、アクセスが拒否されたというメッセージが表示された場合、自分がグローバル管理者であるときは、ディレクトリに [Azure AD Premium P2 (または EMS E5) ライセンス](entitlement-management-overview.md#license-requirements)があることを確認してください。  期限切れの Azure AD Premium P2 サブスクリプションを最近更新した場合、このライセンスの更新が表示されるまでに 8 時間かかることがあります。
+
+* テナントの Azure AD Premium P2 ライセンスの有効期限が切れている場合、新しいアクセス要求を処理したり、アクセス レビューを実行したりすることはできません。  
 
 * アクセス パッケージの作成中または表示中に、アクセスが拒否されたというメッセージが表示された場合、自分がカタログ作成者グループのメンバーであるときは、最初のアクセス パッケージを作成する前に[カタログを作成](entitlement-management-catalog-create.md)する必要があります。
 
@@ -38,6 +40,8 @@ ms.locfileid: "109714100"
 * アプリケーションのロールはアプリケーション自体によって定義され、Azure AD で管理されます。 アプリケーションにリソース ロールがない場合、エンタイトルメント管理によってユーザーが **[既定のアクセス]** ロールに割り当てられます。
 
     Azure portal には、アプリケーションとして選択できないサービスのサービス プリンシパルも表示される場合があることに注意してください。  特に、**Exchange Online** と **SharePoint Online** はサービスであり、ディレクトリにリソース ロールを持つアプリケーションではないため、アクセス パッケージに含めることができません。  代わりに、グループ ベースのライセンスを使用して、それらのサービスへのアクセスを必要とするユーザーに対して適切なライセンスを確立します。
+
+* 認証に関して個人用の Microsoft アカウント ユーザーをサポートするのみで、ディレクトリ内の組織アカウントをサポートしないアプリケーションは、アプリケーション ロールを持たず、アクセス パッケージ カタログに追加することはできません。
 
 * グループがアクセス パッケージ内のリソースになるためには、そのグループが Azure AD で変更可能である必要があります。  オンプレミスの Active Directory に由来するグループは、その所有者またはメンバー属性を Azure AD で変更できないため、リソースとして割り当てることができません。   Exchange Online で配布グループとして生成されるグループも、Azure AD で変更できません。 
 

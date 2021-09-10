@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2021
+ms.date: 08/30/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e65d6097afb6c2b6da1de332304d3b638d2ac081
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dce411e6359a760f50dd4bbbbeba369e2a67f386
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740176"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254211"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -43,7 +43,7 @@ ms.locfileid: "121740176"
 
 変更フィードと BLOB バージョン管理を有効にすると、追加のコストが発生する場合があります。 詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
 
-オブジェクト レプリケーションは、汎用 v2 ストレージ アカウントでのみサポートされます。 ソース アカウントと宛先のアカウントの両方が汎用 v2 である必要があります。 
+オブジェクト レプリケーションは、汎用 v2 ストレージ アカウントでのみサポートされます。 ソース アカウントと宛先のアカウントの両方が汎用 v2 である必要があります。 オブジェクト レプリケーションは、ブロック BLOB のみをサポートします。追加 BLOB とページ BLOB はサポートされていません。
 
 ## <a name="how-object-replication-works"></a>オブジェクト レプリケーションのしくみ
 
@@ -68,7 +68,11 @@ ms.locfileid: "121740176"
 
 ### <a name="immutable-blobs"></a>不変 BLOB
 
-オブジェクトのレプリケーションでは、不変 BLOB はサポートされていません。 ソース コンテナーまたは宛先コンテナーに時間ベースの保有ポリシーまたは訴訟ホールドが設定されている場合、オブジェクトのレプリケーションは失敗します。 不変 BLOB の詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
+Azure Blob Storage の不変性ポリシーには、時間ベースの保持ポリシーと訴訟ホールドが含まれています。 宛先アカウントで不変性ポリシーが有効な場合、オブジェクト レプリケーションが影響を受ける可能性があります。 不変ポリシーの詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
+
+宛先アカウント内のコンテナーに対してコンテナー レベルの不変性ポリシーが有効で、ソース コンテナー内のオブジェクトが更新または削除された場合、ソース コンテナーに対する操作は成功する可能性がありますが、その操作の宛先コンテナーへのレプリケーションは失敗します。 コンテナーを対象にした不変性ポリシーで禁止されている操作の詳細については、「[コンテナー レベルのスコープを持つシナリオ](immutable-storage-overview.md#scenarios-with-container-level-scope)」を参照してください。
+
+宛先アカウントの BLOB バージョンに対してバージョン レベルの不変性ポリシーが有効で、ソース コンテナー内の BLOB バージョンに対して削除または更新操作が実行された場合、ソース オブジェクトに対する操作は成功する可能性がありますが、コピー先オブジェクトへのその操作のレプリケーションは失敗します。 コンテナーを対象にした不変性ポリシーで禁止されている操作の詳細については、「[バージョン レベルのスコープを使用するシナリオ](immutable-storage-overview.md#scenarios-with-version-level-scope)」を参照してください。
 
 ## <a name="object-replication-policies-and-rules"></a>オブジェクト レプリケーションのポリシーとルール
 
