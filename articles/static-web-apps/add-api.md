@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/06/2021
 ms.locfileid: "106449037"
 ---
-# <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps プレビューに API を追加する
+# <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps に API を追加する
 
 Azure Functions との統合を使用して、Azure Static Web Apps にサーバーレス API を追加できます。 この記事では、Azure Static Web Apps サイトに API を追加してデプロイする方法について説明します。
 
