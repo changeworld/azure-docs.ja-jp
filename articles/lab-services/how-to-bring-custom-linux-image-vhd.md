@@ -3,12 +3,12 @@ title: Azure Lab Services - 物理ラボ環境から Linux カスタム イメ�
 description: 物理ラボ環境から Linux カスタム イメージを取り込む方法を説明します。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: afaaf1d28043a7b88e627f730a619daf46c59e0d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 919505e31526c3d17d42bd29d9cef3b46758c959
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451693"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831397"
 ---
 # <a name="bring-a-linux-custom-image-from-your-physical-lab-environment"></a>物理ラボ環境から Linux カスタム イメージを取り込む
 
@@ -18,7 +18,7 @@ Azure では、さまざまな[ディストリビューションとバージョ�
 
 この記事では、カスタム Ubuntu 16.04\18.04\20.04 イメージを VHD から取り込む手順について説明します。 VHD を使用して他のディストリビューション用のカスタムイメージを作成する方法については、[Linux ディストリビューションの一般的な手順](../virtual-machines/linux/create-upload-generic.md)に関するページを参照してください。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
 この記事の手順を完了するには、学校の Azure サブスクリプションで [Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)を作成するためのアクセス許可が必要です。
 
@@ -36,7 +36,7 @@ Azure では、さまざまな[ディストリビューションとバージョ�
 
 1. ご自分のイメージから作成されたご自分の物理ラボ環境の Hyper-V VM から始めます。 詳細については、[Hyper-V で仮想マシンを作成する方法](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v)に関する記事を参照してください。 次に示すように設定を行います。
     - VM は **第 1 世代** の VM として作成されている必要があります。
-    - ネットワーク 構成の **[既定のスイッチ]** オプションを使用すると、VM がインターネットに接続できます。
+    - ネットワーク構成の **[既定のスイッチ]** オプションを使用すると、VM がインターネットに接続できます。
     - **[仮想ハード ディスクの接続]** 設定では、次の図に示すように、ディスクの **サイズ** を 128 GB より大きくすることは "*できません*"。
        
         :::image type="content" source="./media/upload-custom-image-shared-image-gallery/connect-virtual-hard-disk.png" alt-text="[仮想ハード ディスクの接続] 画面を示すスクリーンショット。":::
@@ -76,7 +76,7 @@ VHD のサイズ変更と VHDX への変換を支援するために、次の Pow
     Azure portal のマネージド ディスクの **[サイズおよびパフォーマンス]** タブを使用して、ディスク サイズを変更します。 前に説明したように、サイズは 128 GB を "*超えない*" ようにしてください。
 
 1. 共有イメージ ギャラリーで、イメージの定義とバージョンを作成します。
-    1. [イメージの定義を作成します](../virtual-machines/image-version.md)。
+    1. [イメージの定義を作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)。
         - **VM の世代** として **[Gen 1]** を選択します。
         - **[オペレーティング システム]** として **[Linux]** を選択します。
         - **[オペレーティング システムの状態]** として **[一般化]** を選択します。
@@ -85,7 +85,7 @@ VHD のサイズ変更と VHDX への変換を支援するために、次の Pow
     
     既存のイメージ定義を使用して、カスタム イメージの新しいバージョンを作成することも選択できます。
     
-1. [イメージ バージョンを作成します](../virtual-machines/image-version.md)。
+1. [イメージ バージョンを作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-version)。
    - **[バージョン番号]** プロパティで使用する形式は *MajorVersion.MinorVersion.Patch* です。 Lab Services を使用してラボを作成してカスタム イメージを選択すると、最新バージョンのイメージが自動的に使用されます。 最新バージョンは、MajorVersion、MinorVersion、Patch の順で最高値に基づいて選択されます。
     - **[ソース]** で、 **[ディスクやスナップショット]** をドロップダウン リストから選択します。
     - **[OS ディスク]** プロパティで、前の手順で作成したディスクを選択します。

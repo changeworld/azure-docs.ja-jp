@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: e071298ce1ed191f79e071f18916d8afba10d625
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 999d8f1f4bf5ad1eef2008678f1e46d1586dd40a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478808"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223682"
 ---
 # <a name="connection-resilience"></a>接続の回復力
 
@@ -38,7 +38,7 @@ ms.locfileid: "123478808"
 
 一般的に、''*接続タイムアウト*'' は 15 秒以上にしておくことをお勧めしています。 短時間で失敗させて結局再試行させるよりも、15 秒または 20 秒後に接続試行を成功させることをお勧めします。 そのような再試行ループでは、最初からシステムに時間をかけさせた場合よりも、停止時間が長く続く可能性があります。
 
-## <a name="avoid-client-connection-spikes"></a>クライアント接続のスパイクを回避する
+## <a name="avoid-client-connection-spikes"></a>クライアントの接続が急増しないようにする
 
 接続が失われた後に再接続するときに、同時に多くの接続を作成することは避けてください。 [接続タイムアウトが短い](#configure-appropriate-timeouts)と停止時間が長くなる可能性があるのと同じように、同時に多くの再接続試行を開始すると、サーバーの負荷が増え、すべてのクライアントが正常に再接続されるまでにかかる時間が長くなる場合もあります。
 
@@ -53,7 +53,7 @@ ms.locfileid: "123478808"
 
 ## <a name="advance-maintenance-notification"></a>メンテナンスの事前通知
 
-通知を使用して、今後のメンテナンスを確認します。 詳細については、「[計画メンテナンスを前もって通知できますか?](cache-failover.md#can-i-be-notified-in-advance-of-planned-maintenance)」を参照してください。
+通知を使用して、今後のメンテナンスを確認します。 詳細については、「[計画メンテナンスを前もって通知できますか?](cache-failover.md#can-i-be-notified-in-advance-of-a-planned-maintenance)」を参照してください。
 
 ## <a name="schedule-maintenance-window"></a>メンテナンス期間のスケジュール
 

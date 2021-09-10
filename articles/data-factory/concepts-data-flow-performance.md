@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.date: 08/24/2021
-ms.openlocfilehash: 1595d2984c4130fa89c52aec615941051fa1bb82
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 877b2adb2dd61bdbba30ce4d5c84e26380be5b2b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099356"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472292"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -123,7 +123,7 @@ Azure SQL ソース システムでの読み取りの分離レベルは、パフ
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics のソース
 
-Azure Synapse Analytics を使用するとき、ソース オプションに **[Enable staging]\(ステージングの有効化\)** という設定があります。 これにより、サービスでは ```Staging``` を使用して Synapse から読み取りを実行できます。これにより、最もパフォーマンスの高い一括読み込み機能に対して [Synapse COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql.md) コマンドを使用することで、読み取りパフォーマンスが大幅に向上します。 ```Staging``` を有効にするには、データ フロー アクティビティの設定で Azure Blob Storage または Azure Data Lake Storage gen2 ステージングの場所を指定する必要があります。
+Azure Synapse Analytics を使用するとき、ソース オプションに **[Enable staging]\(ステージングの有効化\)** という設定があります。 これにより、サービスでは ```Staging``` を使用して Synapse から読み取りを実行できます。これにより、最もパフォーマンスの高い一括読み込み機能に対して [Synapse COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql) コマンドを使用することで、読み取りパフォーマンスが大幅に向上します。 ```Staging``` を有効にするには、データ フロー アクティビティの設定で Azure Blob Storage または Azure Data Lake Storage gen2 ステージングの場所を指定する必要があります。
 
 ![ステージングの有効化](media/data-flow/enable-staging.png "ステージングの有効化")
 

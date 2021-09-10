@@ -3,12 +3,12 @@ title: Azure Blockchain Service の提供終了のお知らせとガイダンス
 description: Azure Blockchain Service を、マネージドまたは自己管理型のブロックチェーン オファリングに移行する
 ms.date: 05/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 6a767a8e4d31cd76012039f40e688f08708fc0c2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: d461698cf27bc425da337de7829e3e8f0b355196
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541551"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309810"
 ---
 # <a name="migrate-azure-blockchain-service"></a>Azure Blockchain Service を移行する
 
@@ -47,7 +47,7 @@ IaaS VM にブロックチェーンをデプロイするために使用できる
 新しいソリューションの開発を開始する場合、または評価フェーズの場合、シナリオの要件に基づいて次の代替手段を検討してください。
 
 - [Azure Marketplace の Quorum テンプレート](https://azuremarketplace.microsoft.com/marketplace/apps/consensys.quorum-dev-quickstart)
-- Azure Marketplace の Besu テンプレート
+- [Azure Marketplace の Besu テンプレート](https://azuremarketplace.microsoft.com/marketplace/apps/consensys.hyperledger-besu-quickstart)
 
 ### <a name="how-to-migrate-to-an-alternative"></a>代替手段に移行する方法
 

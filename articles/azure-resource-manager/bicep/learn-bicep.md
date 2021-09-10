@@ -3,12 +3,12 @@ title: Microsoft Learn で Bicep を検出する
 description: Bicep について Microsoft Learn で使用できるユニットの概要について説明します。
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 81da3d239a49f716a684c7a3c8deb8a74bc0aa7d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 47ac7f6915453502b40b5ad5417a5d060e2ecd3e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099537"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430344"
 ---
 # <a name="bicep-on-microsoft-learn"></a>Microsoft Learn での Bicep
 
@@ -22,7 +22,7 @@ Bicep が Azure へのデプロイを簡略化し、加速するためにどの�
 :::column:::
 <img src="media/learn-bicep/bicep-deploy-manage.svg" width="101" height="120" alt="The trophy for the Deploy and manage resources in Azure by using Bicep learning path." role="presentation"></img>
 
-[パート 1: Bicep を使用して Azure にリソースをデプロイして管理する](/learn/paths/bicep-deploy/)
+[パート 1: Bicep を使用して Azure でリソースをデプロイして管理する](/learn/paths/bicep-deploy/)
 
 :::column-end:::
 :::column:::
@@ -40,7 +40,7 @@ Bicep が Azure へのデプロイを簡略化し、加速するためにどの�
 | Learn モジュール | 説明 |
 | ------------ | ----------- |
 | [Azure Pipelines を使用して最初の Bicep デプロイ パイプラインを作成する](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/) | Bicep コード用の基本的なデプロイ パイプラインを構築します。 サービス接続を使用して、Azure へのパイプラインを安全に識別します。 トリガーを使用してパイプラインを実行するタイミングを構成します。 |
-| [GitHub Actions を使用して最初の Bicep デプロイ ワークフローを作成する](/learn/modules/build-first-bicep-deployment-workflow-using-github-actions/) | Bicep コード用の基本的なデプロイ ワークフローを構築します。 シークレットを使用し、Azure に対する GitHub Actions ワークフローを安全に識別し、トリガーとスケジュールを使用してワークフローを実行するタイミングを設定します。 |
+| [GitHub Actions を使用して最初の Bicep デプロイ ワークフローを作成する](/learn/modules/build-first-bicep-deployment-pipeline-using-github-actions/) | Bicep コード用の基本的なデプロイ ワークフローを構築します。 シークレットを使用し、Azure に対する GitHub Actions ワークフローを安全に識別し、トリガーとスケジュールを使用してワークフローを実行するタイミングを設定します。 |
 | [サービス プリンシパルを使用して Azure デプロイ パイプラインを認証する](/learn/modules/authenticate-azure-deployment-pipeline-service-principals/) | サービス プリンシパルを使用すると、Azure でデプロイ パイプラインを安全に認証できます。 このモジュールでは、サービス プリンシパルの概要、動作方法、作成方法について説明します。 また、それらに Azure リソースへのアクセス許可を付与する方法についても説明します。これにより、パイプラインで Bicep ファイルをデプロイできます。 |
 
 ## <a name="next-steps"></a>次のステップ

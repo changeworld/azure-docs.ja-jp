@@ -4,16 +4,16 @@ description: Azure portal を利用し、新規と既存のマネージド デ�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2021
+ms.date: 09/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: dd7d024b542feb2e15aefb79f2467e7033c180f9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 1320ec212a94245e42c63f583d37b33eaa76224e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123106613"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433298"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Azure portal を利用してパフォーマンス レベルを変更する
 
@@ -66,7 +66,6 @@ ms.locfileid: "123106613"
 
 1. このリンク ([https://aka.ms/diskPerfTiersPreview](https://aka.ms/diskPerfTiersPreview)) から Azure portal にサインインします。
 1. 変更するディスクが含まれる VM に移動します。
-1. VM の割り当てを解除するか、ディスクをデタッチします。
 1. ディスクを選択します
 1. **[Size + Performance]\(サイズおよびパフォーマンス\)** を選択します。
 1. **[パフォーマンス レベル]** ドロップダウンで、ディスクの現在のパフォーマンス レベル以外のレベルを選択します。

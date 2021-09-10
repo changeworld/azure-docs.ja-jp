@@ -5,16 +5,21 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 08/30/2021
 ms.author: duau
-ms.openlocfilehash: b5b40f4e4dfa72eacdcf178dedbc11c969bf7315
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 96e71dbd8a03e66644f0dc754d448a345978d940
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424674"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255671"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Azure Route Server の問題のトラブルシューティング
+
+> [!IMPORTANT]
+> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="connectivity-issues"></a>接続に関する問題
 
