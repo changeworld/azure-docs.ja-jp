@@ -31,7 +31,7 @@ ms.locfileid: "107752392"
 > | --- | --- | --- |
 > | **全般** |  |  |
 > | [Contributor](#contributor) | すべてのリソースを管理するためのフル アクセスが付与されますが、Azure RBAC でロールを割り当てたり、Azure Blueprints で割り当てを管理したり、イメージ ギャラリーを共有したりすることはできません。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
-> | [所有者](#owner) | Azure RBAC でロールを割り当てる権限を含め、すべてのリソースを管理するためのフル アクセスを付与します。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [Owner](#owner) | Azure RBAC でロールを割り当てる権限を含め、すべてのリソースを管理するためのフル アクセスを付与します。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [Reader](#reader) | すべてのリソースを表示しますが、変更を加えることはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [User Access Administrator](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Compute** |  |  |
@@ -321,7 +321,7 @@ ms.locfileid: "107752392"
 }
 ```
 
-### <a name="owner"></a>所有者
+### <a name="owner"></a>Owner
 
 Azure RBAC でロールを割り当てる権限を含め、すべてのリソースを管理するためのフル アクセスを付与します。 [詳細情報](rbac-and-directory-admin-roles.md)
 
