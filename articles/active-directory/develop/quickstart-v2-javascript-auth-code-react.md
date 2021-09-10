@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: f380a2807ad4efa6c2da2df8aabf3b521918d64c
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 1ce5a7e2532fd150b5445e3b243c841d797b4157
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112516815"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226859"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>クイックスタート: 認可コード フローを使用して React SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -187,7 +187,7 @@ npm install @azure/msal-browser @azure/msal-react
 
 ## <a name="next-steps"></a>次のステップ
 
-vanilla JavaScript を使用して認可コード フロー アプリケーションを作成する詳細なステップ バイ ステップ ガイドについては、次のチュートリアルを参照してください。
+次に、ユーザーをサインインさせ、Microsoft Graph API を呼び出してユーザー プロファイル データを取得する React SPA をゼロから作成する方法を学習するステップバイステップ チュートリアルを試してみましょう。
 
 > [!div class="nextstepaction"]
-> [サインインして MS Graph を呼び出すチュートリアル](./tutorial-v2-javascript-auth-code.md)
+> [チュートリアル: ユーザーをサインインさせて Microsoft Graph を呼び出す](tutorial-v2-react.md)

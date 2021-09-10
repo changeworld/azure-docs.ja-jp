@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 63824148e25465034ed7bed49f1931514c10a35a
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.author: rifox
+ms.openlocfilehash: b5ea5a90a6ad39404208bb9c353bb33e86201299
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113404"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967952"
 ---
 ## <a name="sample-code"></a>サンプル コード
 このクイックスタートの最終的なコードは [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/chat-quickstart-java) にあります。
@@ -58,7 +58,7 @@ POM ファイルで、チャット API を使用して `azure-communication-chat
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0</version>
+    <version><!-- Please refer to https://search.maven.org/artifact/com.azure/azure-communication-chat for the latest version --></version>
 </dependency>
 ```
 
@@ -68,7 +68,7 @@ POM ファイルで、チャット API を使用して `azure-communication-chat
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0</version>
+    <version><!-- Please refer to https://search.maven.org/artifact/com.azure/azure-communication-common for the latest version --></version>
 </dependency>
 ```
 
@@ -184,14 +184,20 @@ ChatThreadClient chatThreadClient = chatClient.getChatThreadClient(chatThreadId)
 - チャット メッセージの内容は、`content` を使用して設定します。
 - チャット メッセージのコンテンツの種類、テキスト、または HTML は、`type` を使用して指定します。
 - 送信者の表示名を指定するには、`senderDisplayName` を使用します。
+- メッセージと共に送信する追加データを含めるには、必要に応じて `metadata` を使用します。 このフィールドは、開発者がチャット メッセージ機能を拡張し、ユース ケースに応じたカスタム情報を追加するためのメカニズムを提供します。 たとえば、メッセージ内でファイル リンクを共有する場合、'hasAttachment:true' をメタデータに追加することで、受信者のアプリケーションがそれを解析して適切に表示できます。
 
 応答である `sendChatMessageResult` には、`id` (そのメッセージの一意の ID) が含まれています。
 
 ```Java
+Map<String, String> metadata = new HashMap<String, String>();
+metadata.put("hasAttachment", "true");
+metadata.put("attachmentUrl", "https://contoso.com/files/attachment.docx");
+
 SendChatMessageOptions sendChatMessageOptions = new SendChatMessageOptions()
-    .setContent("Message content")
+    .setContent("Please take a look at the attachment")
     .setType(ChatMessageType.TEXT)
-    .setSenderDisplayName("Sender Display Name");
+    .setSenderDisplayName("Sender Display Name")
+    .setMetadata(metadata);
 
 SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendChatMessageOptions);
 String chatMessageId = sendChatMessageResult.getId();

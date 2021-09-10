@@ -6,18 +6,18 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 08/06/2021
+ms.date: 09/01/2021
 ms.author: victorh
-ms.openlocfilehash: 2f17bb2d89f47f731fde8fb396aa0343716a99d4
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 7e7f05516dd380ec6d0c8f44f887981de77942a3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864468"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439328"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
-![ICSA 認定資格](media/overview/icsa-cert-firewall-small.png)
+<!--- ![ICSA certification](media/overview/icsa-cert-firewall-small.png) --->
 
 Azure Firewall は、Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 組み込みの高可用性とクラウドの無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。
 

@@ -4,12 +4,12 @@ description: Visual Studio を使用して、出力バインドを追加して C
 ms.date: 05/30/2021
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28748b7b9d0622d62baeb0de144adcd89c061a72
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 9b5d6e4919db9fcf41eea8704878d10606833658
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790924"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829552"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio を使用して関数を Azure Storage に接続する
 
@@ -49,9 +49,15 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 1. コンソールで次の [Install-Package](/nuget/tools/ps-ref-install-package) コマンドを実行して、ストレージ拡張機能をインストールします。
 
-    ```Command
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.6
-    ````
+    # <a name="in-process"></a>[インプロセス](#tab/in-process) 
+    ```bash
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage 
+    ```
+    # <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
+    ```bash
+    Install-Package Microsoft.Azure.Functions.Worker.Extensions.Storage.Queues -IncludePrerelease
+    ```
+    ---
 
 これで、Storage の出力バインドをプロジェクトに追加できるようになります。
 

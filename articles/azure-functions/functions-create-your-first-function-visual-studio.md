@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: 9b5d5d85d8df58a8e8c3e2626abaed75377e6025
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5a7df784ec30b958eb6924de674e09cbbe21c91e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "122643303"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830034"
 ---
 # <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>クイック スタート: Visual Studio を使用して Azure で初めての C# 関数を作成する
 
@@ -28,9 +28,14 @@ Azure Functions を使用すると、Azure のサーバーレス環境で C# コ
 > * コードをローカル環境で実行して、関数の動作を確認します。
 > * コード プロジェクトを Azure Functions にデプロイします。 
  
+この記事では、次の 2 種類のコンパイル済み C# 関数の作成をサポートしています。 
+
++ [インプロセス](functions-create-your-first-function-visual-studio.md?tabs=in-process) - Functions ホストプロセスと同じプロセスで実行されます。 詳細については、「[Azure Functions を使用する C# クラス ライブラリ関数を開発する](functions-dotnet-class-library.md)」を参照してください。
++ [分離プロセス](functions-create-your-first-function-visual-studio.md?tabs=isolated-process) - 別の .NET ワーカー プロセスで実行されます。 詳細については、「[Azure において関数を .NET 5.0 で実行するためのガイド](dotnet-isolated-process-guide.md)」を参照してください。
+
 このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
- 
-作成するプロジェクトは、.NET Core 3.1 で実行されます。 代わりに .NET 5.0 で実行されるプロジェクトを作成する場合は、「[Azure Functions を使用した .NET 5 関数の開発と発行](dotnet-isolated-process-developer-howtos.md)」を参照してください。
+
+また、この記事の [Visual Studio Code ベースのバージョン](create-first-function-vs-code-csharp.md)も存在します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,8 +61,16 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 関数の定義は次のコードのようになります。
 
-:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="13-18"::: 
- 
+# <a name="in-process"></a>[インプロセス](#tab/in-process) 
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="15-18"::: 
+
+# <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-isolated/HttpExample.cs" range="11-13"::: 
+
+---
+
 関数の名前の変更が済んだので、この関数をローカル コンピューターでテストできるようになりました。
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する

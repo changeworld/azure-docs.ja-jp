@@ -1,24 +1,24 @@
 ---
-title: クイックスタート - Azure portal で Azure Logic Apps を使用して統合ワークフローを作成する
+title: クイックスタート - Azure portal で Azure Logic Apps を使用して自動化されたワークフローを作成する
 description: Azure portal でマルチテナントの Azure Logic Apps を使用して、初めての自動化された統合ワークフローを作成します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: contperf-fy21q4
-ms.date: 05/25/2021
-ms.openlocfilehash: b7419986137632561cae71b91dd55a2af64912a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/24/2021
+ms.openlocfilehash: a2b3533a1af6740b1d847a2a3e452bbe45aacc05
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373292"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831282"
 ---
 # <a name="quickstart-create-an-integration-workflow-with-multi-tenant-azure-logic-apps-and-the-azure-portal"></a>クイックスタート: マルチテナントの Azure Logic Apps および Azure portal を使用して統合ワークフローを作成する
 
-このクイックスタートでは、"*マルチテナント*" [Azure Logic Apps](logic-apps-overview.md) を使用して、Web サイトの RSS フィードと電子メール アカウントの 2 つのサービスを統合する、自動化されたサンプル ワークフローを作成する方法について説明します。 この例はクラウドベースですが、Azure Logic Apps では、クラウド、オンプレミス、ハイブリッド環境でアプリ、データ、サービス、システムを接続するワークフローがサポートされています。 マルチテナントとシングルテナントのモデルの比較の詳細については、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を参照してください。
+このクイックスタートでは、["*マルチテナント*"Azure Logic Apps](logic-apps-overview.md) を使用して、Web サイトの RSS フィードと電子メール アカウントの 2 つのサービスを統合する、自動化されたサンプル ワークフローを作成する方法について説明します。 この例はクラウドベースですが、Azure Logic Apps では、クラウド、オンプレミス、ハイブリッド環境でアプリ、データ、サービス、システムを接続するワークフローがサポートされています。 マルチテナントとシングルテナントの Azure Logic Apps の比較の詳細については、「[シングルテナントとマルチテナント、および統合サービス環境](single-tenant-overview-compare.md)」を参照してください。
 
-この例では、RSS コネクタと Office 365 Outlook コネクタを使用するワークフローを作成します。 RSS コネクタには、スケジュールに基づいて RSS フィードをチェックするトリガーがあります。 Office 365 Outlook コネクタには、新しい項目ごとに電子メールを送信するアクションがあります。 この例のコネクタは、ワークフローで使用できる[数百個のコネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)の中の 2 つにすぎません。
+この例では、RSS コネクタと Office 365 Outlook コネクタを使用するロジック アプリのリソースとワークフローを作成します。 このリソースはマルチテナント Azure Logic Apps で実行され、[従量課金モデル](logic-apps-pricing.md#consumption-pricing)に基づいています。 RSS コネクタには、スケジュールに基づいて RSS フィードをチェックするトリガーがあります。 Office 365 Outlook コネクタには、新しい項目ごとに電子メールを送信するアクションがあります。 この例のコネクタは、ワークフローで使用できる[数百個のコネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)の中の 2 つにすぎません。
 
 次のスクリーンショットは、大まかなサンプル ワークフローを示しています。
 
@@ -26,13 +26,13 @@ ms.locfileid: "110373292"
 
 このクイックスタートでは、これらの基本的な手順について説明します。
 
-* マルチテナント Logic Apps サービス環境で実行されるロジック アプリ リソースを作成する。
+* マルチテナント Azure Logic Apps 環境で実行されるロジック アプリ リソースを作成する。
 * "空のロジック アプリ" テンプレートを選択する。
 * ワークフローを実行するタイミングを指定するトリガーを追加する。
 * トリガーが起動した後にタスクを実行するアクションを追加する。
 * ワークフローを実行する。
 
-他のツールを使用してロジック アプリを作成および管理するには、Logic Apps のこれらのクイックスタートをご覧ください。
+他のツールを使用してロジック アプリ リソースを作成および管理するには、これらの他の Azure Logic Apps クイックスタートをご覧ください。
 
 * [Visual Studio Code でロジック アプリを作成および管理する](quickstart-create-logic-apps-visual-studio-code.md)
 * [Visual Studio でロジック アプリを作成および管理する](quickstart-create-logic-apps-with-visual-studio.md)
@@ -42,16 +42,16 @@ ms.locfileid: "110373292"
 
 ## <a name="prerequisites"></a>必須コンポーネント
 
-* Azure サブスクリプションがない場合は、始める前に[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-* Office 365 Outlook や Outlook.com など、Azure Logic Apps と連携するサービスの電子メール アカウント。 サポートされている他の電子メール プロバイダーについては、[Logic Apps のコネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)に関する記事をご覧ください。
+* Office 365 Outlook や Outlook.com など、Azure Logic Apps と連携するサービスの電子メール アカウント。 サポートされている他の電子メール プロバイダーについては、[Azure Logic Apps のコネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)に関する記事をご覧ください。
 
   > [!NOTE]
   > [Gmail コネクタ](/connectors/gmail/)を使用する場合、Azure Logic Apps で制限なしにこのコネクタを使用できるのは、G Suite アカウントだけです。 コンシューマー Gmail アカウントを持っている場合は、[Gmail コネクタでの認証に使用する Google クライアント アプリを作成](/connectors/gmail/#authentication-and-bring-your-own-application)しない限り、Google によって承認された特定のサービスでのみこのコネクタを使用できます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
-* 特定の IP アドレスへのトラフィックを制限するファイアウォールがある場合は、ロジック アプリが存在する Azure リージョンの Logic Apps サービスで使用される [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" へのアクセスを許可するようにファイアウォールを設定します。
+* 特定の IP アドレスへのトラフィックを制限するファイアウォールがある場合は、自分のロジック アプリ ワークフローを作成する Azure リージョンの Logic Apps サービスで使用される [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" へのアクセスを許可するようにファイアウォールを設定します。
 
-  この例では、[Microsoft が管理する](../connectors/managed.md) RSS および Office 365 Outlook コネクタも使用します。 これらのコネクタでは、ロジック アプリの Azure リージョン内の "*すべて*" の [マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可するようにファイアウォールを設定する必要があります。
+  この例では、[Microsoft が管理する](../connectors/managed.md) RSS および Office 365 Outlook コネクタを使用します。 これらのコネクタでは、ロジック アプリ リソースの Azure リージョン内の "*すべて*" の[マネージド コネクタ アウトバウンド IP アドレス](/connectors/common/outbound-ip-addresses)へのアクセスを許可するようにファイアウォールを設定する必要があります。
 
 <a name="create-logic-app-resource"></a>
 
@@ -59,43 +59,41 @@ ms.locfileid: "110373292"
 
 1. Azure アカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. Azure の検索ボックスに「`logic apps`」と入力し、 **[Logic Apps]** を選択します。
+1. Azure の検索ボックスに「`logic apps`」と入力し、**ロジック アプリ** を選択します。
 
    ![検索語句として "logic apps"、選択された結果として "Logic Apps" が表示された Azure portal の検索ボックスを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-1. **[Logic Apps]** ページで、 **[追加]**  >  **[従量課金プラン]** の順に選択します。
+1. **[ロジック アプリ]** ページで **[追加]** を選択します。
 
-   この手順では、マルチテナント Logic Apps サービス環境で実行され、[従量課金モデル](logic-apps-pricing.md)を使用するロジック アプリ リソースを作成します。
+   ![Azure portal と、Logic Apps サービス ページで [追加] オプションが選択されていることを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-   ![Azure portal と Logic Apps サービス ページを示すスクリーンショット。ロジック アプリの一覧で [追加] メニューが開かれ、[従量課金プラン] が選択されています。](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
-
-1. **[Logic App]** ペインで、ご自分のロジック アプリの基本的な詳細と設定を入力します。 このサンプル ロジック アプリの新しい[リソース グループ](../azure-resource-manager/management/overview.md#terminology)を作成します。
+1. **[ロジックアプリの作成]** ペインで、使用する Azure サブスクリプションを選択し、ロジック アプリ リソースの新しい[リソース グループ](../azure-resource-manager/management/overview.md#terminology)を作成して、ロジック アプリ リソースに関する基本的な詳細情報を指定します。
 
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプションの名前。 |
    | **リソース グループ** | <*Azure-resource-group-name*> | [Azure リソース グループ](../azure-resource-manager/management/overview.md#terminology)の名前。リージョン全体で一意である必要があります。 この例では、"My-First-LA-RG" を使用します。 |
-   | **ロジック アプリ名** | <*ロジック アプリ名*> | ロジック アプリの名前。リージョン全体で一意である必要があります。 この例では、"My-First-Logic-App" を使用します。 <p><p>**重要**: この名前に含めることができるのは、文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、ピリオド (`.`) だけです。  |
-   | **リージョン** | <*Azure-region*> | アプリの情報を保存する Azure データセンター リージョン。 この例では "米国西部" を使用します。 |
-   | **統合サービス環境に関連付ける** | オフ | このロジック アプリを[統合サービス環境](connect-virtual-network-vnet-isolated-environment-overview.md)にデプロイする場合にのみ、このオプションをオンにします。 この例では、このオプションをオフのままにします。 |
-   | **Log Analytics を有効にする** | オフ | 診断ログを有効にする場合にのみ、このオプションをオンにします。 この例では、このオプションをオフのままにします。 |
+   | **Type** | **従量課金プラン** | リソースに使用するロジック アプリのリソースの種類と課金モデル: <p><p>- **消費量**: このロジック アプリのリソースの種類は、グローバルなマルチテナント Azure Logic Apps で実行され、[従量課金モデル](logic-apps-pricing.md#consumption-pricing)を使用します。 この例では、**消費** モデルを使用します。 <p>- **標準**: このロジック アプリのリソースの種類はシングルテナント Azure Logic Apps で実行され、[標準課金モデル](logic-apps-pricing.md#standard-pricing)を使用します。 |
+   | **ロジック アプリ名** | <*ロジック アプリ名*> | ロジック アプリ リソースの名前。リージョン全体で一意である必要があります。 この例では、"My-First-Logic-App" を使用します。 <p><p>**重要**: この名前に含めることができるのは、文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、ピリオド (`.`) だけです。  |
+   | **リージョン** | <*Azure-region*> | アプリの情報を保存する Azure データセンター リージョン。 この例では "米国西部" を使用します。 <p>**注**: お使いのサブスクリプションが[統合サービス環境](connect-virtual-network-vnet-isolated-environment-overview.md)に関連付けられている場合、この一覧にはこれらの環境が含まれます。 |
+   | **Log Analytics を有効にする** | **いいえ** | 診断ログを有効にする場合にのみ、このオプションを変更します。 この例では、このオプションをオフのままにします。 |
    ||||
 
-   ![Azure portal と、新しいロジック アプリの詳細が含まれたロジック アプリ作成ページを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
+   ![Azure portal と、新しいロジック アプリの詳細が含まれたロジック アプリ リソース作成ページを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
 1. 準備ができたら、**[確認および作成]** を選択します。 検証ページで、入力した詳細を確認し、 **[作成]** を選択します。
 
 ## <a name="select-the-blank-template"></a>空のテンプレートを選択する
 
-1. Azure によってアプリが正常にデプロイされたら、**[リソースに移動]** を選択します。 または、Azure の検索ボックスに名前を入力して、自分のロジック アプリを見つけて選択します。
+1. Azure によってアプリが正常にデプロイされたら、**[リソースに移動]** を選択します。 または、Azure の検索ボックスに名前を入力して、自分のロジック アプリ リソースを見つけて選択します。
 
    ![リソースのデプロイ ページと選択された [リソースに移動] ボタンを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
-   ロジック アプリ デザイナーが開き、紹介ビデオとよく使用されるトリガーが含まれたページが表示されます。
+   ワークフロー デザイナーが開き、紹介ビデオとよく使用されるトリガーが含まれたページが表示されます。
 
 1. **[テンプレート]** で **[空のロジック アプリ]** を選択します。
 
-   ![Logic Apps デザイナーのテンプレート ギャラリーと、選択された [空のロジック アプリ] テンプレートを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+   ![ワークフロー デザイナー、テンプレート ギャラリーと、選択された [空のロジック アプリ] テンプレートを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
    テンプレートを選択すると、デザイナーに空のワークフロー サーフェイスが表示されます。
 
@@ -103,15 +101,15 @@ ms.locfileid: "110373292"
 
 ## <a name="add-the-trigger"></a>トリガーを追加する
 
-ワークフローは、常に 1 つの[トリガー](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work)で開始されます。それにより、ワークフローでアクションを実行する前に満たすべき条件が指定されます。 トリガーが起動するたびに、Logic Apps サービスによって、ワークフロー インスタンスが作成され、実行されます。 トリガーが起動しない場合、インスタンスは作成されず、実行もされません。 さまざまなトリガーから選択してワークフローを開始できます。
+ワークフローは、常に 1 つの[トリガー](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work)で開始されます。それにより、ワークフローでアクションを実行する前に満たすべき条件が指定されます。 トリガーが起動するたびに、Azure Logic Apps によりワークフロー インスタンスが作成され、実行されます。 トリガーが起動しない場合、インスタンスは作成されず、実行もされません。 さまざまなトリガーから選択してワークフローを開始できます。
 
 この例では、スケジュールに基づいて RSS フィードをチェックする RSS トリガーを使用します。 フィードに新しい項目が存在すると、トリガーが起動し、新しいワークフロー インスタンスの実行が開始されます。 チェック間に複数の新しい項目が存在する場合は、項目ごとにトリガーが起動し、項目ごとに個別の新しいワークフロー インスタンスが実行されます。
 
-1. **Logic Apps デザイナー** で、検索ボックスの下の **[すべて]** を選択します。
+1. ワークフロー デザイナーの検索ボックスの下で、 **[すべて]** を選択します。
 
 1. RSS トリガーを見つけるために、検索ボックスに「`rss`」と入力します。 **[トリガー]** の一覧から、RSS トリガー **[フィード項目が発行される場合]** を選択します。
 
-   ![検索ボックスに「rss」と入力され、[フィード項目が発行される場合] RSS トリガーが選択されている Logic Apps デザイナーを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
+   ![検索ボックスに「rss」と入力され、[フィード項目が発行される場合] RSS トリガーが選択されているワークフロー デザイナーを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
 1. トリガーの詳細で次の情報を入力します。
 
@@ -218,7 +216,7 @@ ms.locfileid: "110373292"
       | `Link:` | **プライマリ フィード リンク** | 項目の URL |
       ||||
 
-      ![Logic Apps デザイナー、[電子メールの送信] アクション、[本文] ボックス内で選択されたプロパティを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
+      ![ワークフロー デザイナー、[電子メールの送信] アクション、[本文] ボックス内で選択されたプロパティを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
 
 1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -226,11 +224,11 @@ ms.locfileid: "110373292"
 
 ## <a name="run-your-workflow"></a>ワークフローを実行する
 
-ワークフローが正しく実行されていることを確認するには、トリガーによって、設定されたスケジュールに基づいて RSS フィードがチェックされるまで待ちます。 または、次のスクリーンショットに示すように、Logic Apps デザイナーのツール バーの **[実行]** を選択して、ワークフローを手動で実行することもできます。 
+ワークフローが正しく実行されていることを確認するには、トリガーによって、設定されたスケジュールに基づいて RSS フィードがチェックされるまで待ちます。 または、次のスクリーンショットに示すように、ワークフロー デザイナーのツール バーの **[実行]** を選択して、ワークフローを手動で実行することもできます。
 
-![Logic Apps デザイナーと、デザイナーのツール バーで選択された [実行] ボタンを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
+![ワークフロー デザイナーと、デザイナーのツール バーで選択された [実行] ボタンを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
 
-RSS フィードに新しい項目がある場合、ワークフローによって、新しい項目ごとに電子メールが送信されます。 それ以外の場合は、次の間隔まで待ってから RSS フィードがもう一度チェックされます。 
+RSS フィードに新しい項目がある場合、ワークフローによって、新しい項目ごとに電子メールが送信されます。 それ以外の場合は、次の間隔まで待ってから RSS フィードがもう一度チェックされます。
 
 次のスクリーンショットは、サンプル ワークフローによって送信されたサンプル電子メールを示しています。 この電子メールには、選択した各トリガー出力の詳細と、項目ごとに含めた説明テキストが含まれています。
 
@@ -241,11 +239,12 @@ RSS フィードに新しい項目がある場合、ワークフローによっ�
 想定どおりにワークフローからメールが届かない場合:
 
 * 該当の電子メール アカウントの迷惑メールまたはスパム フォルダーを確認してください。メッセージが誤ってフィルター処理されている可能性があります。
+
 * 使用している RSS フィードに、前回のスケジュールされたチェックまたは手動チェック以降に発行された項目があることを確認してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイックスタートを完了したら、この例のために作成したリソース グループを削除して、サンプル ロジック アプリと関連リソースをクリーンアップします。
+このクイックスタートを完了したら、この例のために作成したリソース グループを削除して、サンプル ロジック アプリ リソースと関連リソースを削除します。
 
 1. Azure の検索ボックスに「`resource groups`」と入力し、**[リソース グループ]** を選択します。
 

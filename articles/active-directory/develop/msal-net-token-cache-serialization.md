@@ -13,12 +13,12 @@ ms.date: 08/28/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: f92df3818a6da63a57d4e0d26f4e145ae4d5c46f
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 67dbc1ba66f18bb6d779d1185d863541272acd56
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185707"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451711"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 
@@ -273,7 +273,7 @@ var app = ConfidentialClientApplicationBuilder
 
 ### <a name="monitor-cache-hit-ratios-and-cache-performance"></a>キャッシュ ヒット率とキャッシュ パフォーマンスの監視
 
-MSAL は、[AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata.md) オブジェクトの一部として、重要なメトリックを公開します。 
+MSAL は、[AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata) オブジェクトの一部として、重要なメトリックを公開します。 
 
 | メトリック       | 意味     | アラームをトリガーするタイミング    |
 | :-------------: | :----------: | :-----------: |

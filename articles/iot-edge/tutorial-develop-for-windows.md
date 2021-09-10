@@ -9,12 +9,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 07cb9d302613c94b72663f7a4b4a46c94dd0209a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e3e4add97b63dc7ed6e375f90eb3d5d48a81ffef
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726485"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038994"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>チュートリアル: Windows コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -155,6 +155,20 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
 * **IotEdgeModule1** という IoT Edge モジュール プロジェクト。
   * **program.cs** ファイルには、プロジェクト テンプレートに付属する既定の C# モジュール コードが含まれています。 既定のモジュールは、ソースから入力を受け取り、それを IoT Hub に渡します。
   * **module.json** ファイルには、完全なイメージ リポジトリ、イメージ バージョン、サポートされているプラットフォームごとに使用する Dockerfile など、モジュールに関する詳細情報が含まれています。
+
+### <a name="set-iot-edge-runtime-version"></a>IoT Edge ランタイム バージョンを設定する
+
+IoT Edge 拡張機能は、デプロイ アセットを作成するときに、IoT Edge ランタイムの最新の安定バージョンを既定として使用します。 現在、最新の安定バージョンはバージョン 1.2 です。 
+
+Windows コンテナーは、1.1 の長期サポート バージョンまたはそれより前の 1.0 バージョンでのみサポートされています。 Windows コンテナーを使用してデバイス用のモジュールを開発するには、これらのデバイスの IoT Edge バージョンと一致するように Visual Studio の IoT Edge ランタイム バージョンを更新します。
+
+1. ソリューション エクスプローラーで、プロジェクト名を右クリックし、 **[Set IoT Edge Runtime version]\(IoT Edge ランタイム バージョンの設定\)** を選択します。
+
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/set-iot-edge-runtime-version.png" alt-text="プロジェクト名を右クリックし、[Set IoT Edge Runtime version]\(IoT Edge ランタイム バージョンの設定\) を選択します。":::
+
+1. ドロップダウン メニューを使用して、IoT Edge デバイスが実行されているランタイム バージョンを選択し、 **[OK]** を選択して変更を保存します。
+
+1. 新しいランタイム バージョンで配置マニフェストを再生成します。 プロジェクト名を右クリックし、 **[Generate Deployment for IoT Edge]\(IoT Edge の配置の生成\)** を選択します。
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
 

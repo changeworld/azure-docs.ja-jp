@@ -1,5 +1,5 @@
 ---
-title: ドキュメント変換を使ってみる
+title: ドキュメント翻訳を使ってみる
 description: C#、Go、Java、Node.js、または Python のプログラミング言語とプラットフォームを使用してドキュメント翻訳サービスを作成する方法
 ms.topic: how-to
 manager: nitinme
@@ -13,7 +13,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/13/2021
 ms.locfileid: "121745578"
 ---
-# <a name="get-started-with-document-translation"></a>ドキュメント変換を使ってみる
+# <a name="get-started-with-document-translation"></a>ドキュメント翻訳を使ってみる
 
  この記事では、HTTP REST API メソッドでドキュメント翻訳を使用する方法について説明します。 ドキュメント翻訳は、[Azure Translator](../translator-overview.md) サービスのクラウドベースの機能です。  ドキュメント翻訳 API は、ソース ドキュメントの構造とテキストの書式設定を保持しながら、ドキュメント全体を翻訳できるようにします。
 

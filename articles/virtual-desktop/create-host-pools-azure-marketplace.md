@@ -4,17 +4,17 @@ description: Azure portal を使用して Azure Virtual Desktop ホスト プー
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 07/20/2021
+ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 34faa055eb14841d1b35d81e62c74fef92c80bac
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 49c453f4ffcb2fac04b42f4956768e06ab8fce8f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707076"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100825"
 ---
-# <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
+# <a name="tutorial-create-a-host-pool"></a>チュートリアル: ホスト プールを作成する
 
 >[!IMPORTANT]
 >この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)を参照してください。 Azure Virtual Desktop (クラシック) を使用して作成したオブジェクトは、Azure portal では管理できません。
@@ -50,7 +50,7 @@ ms.locfileid: "114707076"
 
 - 組織のアプリをエンドユーザーに提供する予定の場合は、実際にそのアプリの準備ができていることを確認してください。 詳細については、「[Azure Virtual Desktop を使用してカスタム アプリをホストする方法](./remote-app-streaming/custom-apps.md)」を参照してください。
 - 既存の Azure ギャラリー イメージ オプションがご自分のニーズに合わない場合は、セッション ホスト VM 用に独自のカスタム イメージを作成する必要もあります。 VM イメージの作成方法については、「[Azure にアップロードする Windows VHD または VHDX を準備する](../virtual-machines/windows/prepare-for-upload-vhd-image.md)」、および「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」をご覧ください。
-- ドメイン参加資格情報。 Azure Virtual Desktop と互換性のある ID 管理システムをまだお持ちでない場合は、ホスト プールの ID 管理を設定する必要があります。
+- ドメイン参加資格情報。 Azure Virtual Desktop と互換性のある ID 管理システムをまだお持ちでない場合は、ホスト プールの ID 管理を設定する必要があります。 詳細については、「[マネージド ID を設定する](./remote-app-streaming/identities.md)」を参照してください。
 
 ### <a name="final-requirements"></a>最終的な要件
 
@@ -61,6 +61,8 @@ ms.locfileid: "114707076"
 最後になりましたが、Azure サブスクリプションをまだお持ちでない場合は、これらの手順に従い始める前に、必ず[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
 ## <a name="begin-the-host-pool-setup-process"></a>ホスト プールのセットアップ プロセスの開始
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 新しいホスト プールの作成を開始するには:
 
@@ -110,13 +112,42 @@ ms.locfileid: "114707076"
 
 11. 仮想マシンを既に作成していて、それらを新しいホスト プールで使用する場合は、 **[いいえ]** を選択し、 **[次へ:ワークスペース >]** を選択して、 [[ワークスペース情報]](#workspace-information) セクションに移動します。 新しい仮想マシンを作成して新しいホスト プールに登録したい場合は、 **[はい]** を選択します。
 
-最初のパートを完了したところで、セットアップ プロセスの次のパートに移って VM を作成しましょう。
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+まず、Azure CLI の環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+サインインした後、[az desktopvirtualization hostpool create](/cli/azure/desktopvirtualization#az_desktopvirtualization_hostpool_create) コマンドを使用して新しいホスト プールを作成し、必要に応じて、セッション ホストをホスト プールに参加させるための登録トークンを作成します。
+
+```azurecli
+az desktopvirtualization hostpool create --name "MyHostPool" \
+    --resource-group "MyResourceGroup" \ 
+    --location "MyLocation" \
+    --host-pool-type "Pooled" \
+    --load-balancer-type "BreadthFirst" \
+    --max-session-limit 999 \
+    --personal-desktop-assignment-type "Automatic"  \
+    --registration-info expiration-time="2022-03-22T14:01:54.9571247Z" registration-token-operation="Update" \
+    --sso-context "KeyVaultPath" \
+    --description "Description of this host pool" \
+    --friendly-name "Friendly name of this host pool" \
+    --tags tag1="value1" tag2="value2" 
+```
+
+新しい仮想マシンを作成し、それらを新しいホスト プールに登録する場合、次のセクションに進みます。 仮想マシンを既に作成していて、それらを新しいホスト プールで使用する場合は、「[ワークスペース情報](#workspace-information)」セクションに進んでください。 
+
+---
+
+ホスト プールを作成したので、セットアップ プロセスの次のパートに移って VM を作成しましょう。
 
 ## <a name="virtual-machine-details"></a>仮想マシンの詳細
 
 最初のパートを完了したら、次は VM を設定する必要があります。
 
-ホスト プールのセットアップ プロセス中に仮想マシンを設定するには:
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+Azure portal のホスト プール セットアップ プロセス中に仮想マシンを設定するには:
 
 1. **[リソース グループ]** で、仮想マシンを作成するリソース グループを選択します。 これは、ホスト プールに使用したリソース グループとは別のものにできます。
 
@@ -190,6 +221,26 @@ ms.locfileid: "114707076"
 
 13. **[Next:ワークスペース >]** を選択します。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用して、新しい Azure 仮想マシンを作成します。
+
+```azurecli
+az vm create --name "MyVMName" \
+    --resource-group "MyResourceGroup" \
+    --image "MyImage" \
+    --generate-ssh-keys
+```
+
+Azure CLI を使用した Azure 仮想マシンの作成について詳しくは、以下を参照してください。
+- Windows
+    - [Azure CLI を使用して Windows VM を作成する]( /azure/virtual-machines/windows/quick-create-cli)
+    - [チュートリアル: Azure CLI を使用した Windows VM の作成と管理](/cli/azure/azure-cli-vm-tutorial)
+- Linux
+    - [Azure CLI を使用して新しく Linux VM を作成する]( /virtual-machines/linux/quick-create-cli)
+    - [チュートリアル:Azure CLI を使用した Linux VM の作成と管理]( /azure/virtual-machines/linux/tutorial-manage-vm) 
+---
+
 これで、ホスト プール設定の次の段階を開始し、アプリ グループをワークスペースに登録する準備が整いました。
 
 ## <a name="workspace-information"></a>ワークスペース情報
@@ -198,6 +249,8 @@ ms.locfileid: "114707076"
 
 >[!NOTE]
 >あなたが組織のアプリを発行しようとしているアプリ開発者である場合は、MSIX アプリをユーザー セッションに動的にアタッチしたり、アプリ パッケージをカスタム VM イメージに追加したりできます。 詳細については、Azure Virtual Desktop でカスタム アプリを提供する方法を参照してください。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 デスクトップ アプリ グループをワークスペースに登録するには:
 
@@ -216,14 +269,30 @@ ms.locfileid: "114707076"
      >[!NOTE]
      >[確認および作成] の検証プロセスでは、パスワードがセキュリティ標準を満たしているかどうか、またアーキテクチャが正常かどうかはチェックされません。そのため、これらのいずれの点についても問題がないかご自身でチェックする必要があります。
 
-5. ご自分のデプロイの情報を確認し、すべての内容が適切であることを確かめます。 完了したら **[作成]** を選択します。 これにより、デプロイ プロセスが開始され、次のオブジェクトが作成されます。
+5. ご自分のデプロイの情報を確認し、すべての内容が適切であることを確かめます。 完了したら **[作成]** を選択します。 
 
-     - 新しいホスト プール。
-     - デスクトップ アプリ グループ。
-     - ワークスペース (作成を選択した場合)。
-     - デスクトップ アプリ グループの登録を選択した場合は、登録が完了します。
-     - 仮想マシン (作成することを選択した場合)。これらはドメインに参加させられ、新しいホスト プールに登録されます。
-     - ご自分の構成に基づいた Azure Resource Manager テンプレートのダウンロード リンク。
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[az desktopvirtualization workspace create](/cli/azure/desktopvirtualization#az_desktopvirtualization_workspace_create) コマンドを使用して、新しいワークスペースを作成します。
+
+```azurecli
+az desktopvirtualization workspace create --name "MyWorkspace" \
+    --resource-group "MyResourceGroup" \
+    --location "MyLocation" \
+    --tags tag1="value1" tag2="value2" \
+    --friendly-name "Friendly name of this workspace" \
+    --description "Description of this workspace" 
+```
+---
+
+これにより、デプロイ プロセスが開始され、次のオブジェクトが作成されます。
+
+- 新しいホスト プール。
+- デスクトップ アプリ グループ。
+- ワークスペース (作成を選択した場合)。
+- デスクトップ アプリ グループの登録を選択した場合は、登録が完了します。
+- 仮想マシン (作成することを選択した場合)。これらはドメインに参加させられ、新しいホスト プールに登録されます。
+- ご自分の構成に基づいた Azure リソース管理テンプレートのダウンロード リンク。
 
 これですべて完了しました。
 

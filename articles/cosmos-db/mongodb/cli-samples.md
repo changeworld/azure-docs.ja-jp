@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 10/13/2020
+ms.date: 08/26/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 06ca17329a5c6888e1f0ce847d2a2f9ae2bd8d35
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04ac3178b439e755bbcbd33855ff0bab9a566784
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785773"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029202"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API の Azure CLI サンプル
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -44,3 +44,9 @@ ms.locfileid: "121785773"
 | [スループット操作](../scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | データベースとコレクションに対する読み取り、更新、および自動スケーリングと標準スループット間の移行を行います。|
 | [リソースが削除されないようにロックする](../scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。|
 |||
+
+## <a name="next-steps"></a>次のステップ
+
+Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+* 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください

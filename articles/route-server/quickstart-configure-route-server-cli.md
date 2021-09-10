@@ -5,20 +5,25 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 09/01/2021
+ms.date: 08/17/2021
 ms.author: duau
-ms.openlocfilehash: 1682a1b80f3b2d85e0d263b9ea2648da2b57a561
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 91ad4ce80a8e61b06b3597fe8088a0eb7f002d5e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430902"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968234"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>クイック スタート: Azure CLI を使用してルート サーバーを作成および構成する 
 
 この記事は、Azure PowerShell を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシン上にそれらをプログラムします。 また、Azure Route Server は NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure CLI を使用した Route Server デプロイ環境の図。" border="false":::
+
+> [!IMPORTANT]
+> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ##  <a name="prerequisites"></a>前提条件 
 
@@ -229,7 +234,7 @@ Azure Route Server が不要になった場合は、最初のコマンドを使�
         --resource-group myRouteServerRG
     ``` 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Route Server を作成した後、Azure Route Server と ExpressRoute および VPN Gateway との連携方法について引き続き学習するには、次を参照してください。 
 

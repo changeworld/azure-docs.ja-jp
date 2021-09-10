@@ -3,14 +3,14 @@ title: Azure Automation アカウントのユーザー割り当てマネージ�
 description: この記事では、Azure Automation アカウントのユーザー割り当てマネージド ID を設定する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/09/2021
+ms.date: 08/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: f1e66f63da69a4c8e30db1b7d4bb4f71a4db79d5
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: ce409853cddfd0278692e2c6e233331530296d6b
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665632"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214263"
 ---
 # <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Azure Automation アカウントのユーザー割り当てマネージド ID を使用する (プレビュー)
 
@@ -68,7 +68,7 @@ $userAssignedTwo = "userAssignedIdentityTwo"
 
 ### <a name="add-using-the-azure-portal"></a>Azure portal を使用して追加する
 
-次の手順を実行します。
+次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -303,7 +303,9 @@ Azure AD によって保護されている Azure Key Vault など他のリソー
 
 ユーザー割り当てマネージド ID を認証に使用するには、その ID を使用する予定の Azure リソースに対する ID のアクセスを先に設定します。 このタスクを完了するには、ターゲットの Azure リソース上でその ID に適切な役割を割り当てます。
 
-この例では、Azure PowerShell を使用して、サブスクリプションの共同作成者ロールをターゲットの Azure リソースに割り当てる方法を示します。 共同作成者ロールは例として使用されており、実際には必要な場合も必要ない場合もあります。 代わりに、ポータルを使用して、対象の Azure リソースにロールを割り当てることもできます。
+最小特権の原則に従って、Runbook を実行するのに必要なアクセス許可のみを慎重に割り当てます。 たとえば、Automation アカウントが Azure VM の開始または停止を行うためにのみ必要な場合は、その実行アカウントまたはマネージド ID に割り当てられるアクセス許可は、VM の開始または停止のためのみのものである必要があります。 同様に、Runbook が BLOB ストレージから読み取りを行う場合は、読み取り専用アクセス許可を割り当てます。
+
+この例では、Azure PowerShell を使用して、サブスクリプションの共同作成者ロールをターゲットの Azure リソースに割り当てる方法を示します。 共同作成者ロールは例として使用されており、実際には必要な場合も必要ない場合もあります。 代わりに、[Azure portal](../role-based-access-control/role-assignments-portal.md) で、対象の Azure リソースにロールを割り当てることもできます。
 
 ```powershell
 New-AzRoleAssignment `

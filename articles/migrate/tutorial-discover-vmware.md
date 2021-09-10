@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 324e30df7f63f5ca0abf7abd50ab890495e4e7cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 973d6f9450d0cb58df5b1e8dcd208990806abc54
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721969"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967331"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>チュートリアル: Azure Migrate を使用して VMware 環境で実行されているサーバーを検出する
 
@@ -137,7 +137,8 @@ VMware vSphere Web Client で、vCenter Server に使用する読み取り専用
 Azure Migrate の検出および評価ツールでは、軽量の Azure Migrate アプライアンスを使用します。 このアプライアンスによってサーバー検出が実行され、サーバーの構成とパフォーマンス メタデータが Azure Migrate に送信されます。 アプライアンスは、プロジェクトからダウンロードできる OVA テンプレートをデプロイすることで設定します。
 
 > [!NOTE]
-> OVA テンプレートを使用してアプライアンスを設定できない場合は、Windows Server 2016 を実行している既存のサーバーで PowerShell スクリプトを実行して設定できます。 [PowerShell を使用して Azure Migrate アプライアンスを設定する](deploy-appliance-script.md#set-up-the-appliance-for-vmware)方法をご確認ください。
+> OVA テンプレートを使用してアプライアンスを設定できない場合は、Windows Server 2016 を実行している既存のサーバーで PowerShell スクリプトを実行して設定できます。 [PowerShell を使用して Azure Migrate アプライアンスを設定する](deploy-appliance-script.md#set-up-the-appliance-for-vmware)方法をご確認ください。 <br/>
+> OVA テンプレートを使用してアプライアンスをデプロイする方法は、Azure Government クラウドではサポートされません。 Azure Government クラウド用のアプライアンスをデプロイする方法について[詳細をご覧ください](/azure/migrate/deploy-appliance-script-government)。
 
 ### <a name="deploy-by-using-an-ova-template"></a>OVA テンプレートを使用してデプロイする
 

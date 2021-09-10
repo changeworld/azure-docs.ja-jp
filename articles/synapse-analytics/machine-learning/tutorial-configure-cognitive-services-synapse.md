@@ -1,30 +1,31 @@
 ---
-title: チュートリアル:Azure Synapse Analytics における Cognitive Services の前提条件
+title: 'クイック スタート: Azure Synapse Analytics における Cognitive Services の前提条件'
 description: Azure Synapse で Cognitive Services を使用するための前提条件を構成する方法について説明します。
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
-ms.topic: tutorial
+ms.topic: quickstart
 ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: da1760def8f2c036854839787b1051e8f52358d0
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: e10a31b2156cce03dcef40a88f5cb380f12dd03c
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809654"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835527"
 ---
-# <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>チュートリアル:Azure Synapse Analytics で Cognitive Services を使用するための前提条件
+# <a name="quickstart-configure-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>クイック スタート: Azure Synapse Analytics で Cognitive Services を使用するための前提条件を構成する
 
-このチュートリアルでは、Azure Synapse Analytics で Cognitive Services を安全に使用するための前提条件を設定する方法について説明します。
+このクイックスタートでは、Azure Synapse Analytics で Azure Cognitive Services を安全に使用するための前提条件を設定する方法について説明します。 これらの Azure Cognitive Services をリンクすることで、Synapse のさまざまなエクスペリエンスから Azure Cognitive Services を活用できます。
 
-このチュートリアルの内容:
+このクイックスタートは次のような内容です。
 > [!div class="checklist"]
 > - Cognitive Services リソース (Text Analytics や Anomaly Detector など) を作成する。
 > - Cognitive Services リソースの認証キーをシークレットとして Azure Key Vault に格納し、Azure Synapse Analytics ワークスペースのアクセスを構成する。
 > - Azure Synapse Analytics ワークスペースで Azure Key Vault リンク サービスを作成する。
+> - Azure Synapse Analytics ワークスペースで Azure Cognitive Services リンク サービスを作成する。
 
 Azure サブスクリプションをお持ちでない場合は、[開始する前に無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -65,7 +66,7 @@ Azure portal で [Anomaly Detector](https://ms.portal.azure.com/#create/Microsof
    ![シークレットを作成するための選択を示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
 
    > [!IMPORTANT]
-   > このシークレット名を覚えておくか、書き留めておいてください。 後で Synapse Studio から Cognitive Services に接続するときに使用します。
+   > このシークレット名を覚えておくか、書き留めておいてください。 これは、後で Azure Cognitive Services リンク サービスを作成するときに使用します。
 
 ## <a name="create-an-azure-key-vault-linked-service-in-azure-synapse"></a>Azure Synapse で Azure Key Vault リンク サービスを作成する
 
@@ -74,6 +75,15 @@ Azure portal で [Anomaly Detector](https://ms.portal.azure.com/#create/Microsof
 3. **[テスト接続]** ボタンを選択して、接続を確認します。 接続が緑色の場合は、 **[作成]** を選択し、 **[すべて公開]** を選択して変更を保存します。
 
 ![新しいリンク サービスとしての Azure Key Vault を示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
+
+
+## <a name="create-an-azure-cognitive-service-linked-service-in-azure-synapse"></a>Azure Synapse で Azure Cognitive Service リンク サービスを作成する
+
+1. Synapse Studio でワークスペースを開きます。
+2. **[管理]**  >  **[リンクされたサービス]** に移動します。 先ほど作成した Cognitive Service をポイントして **Azure Cognitive Services** リンク サービスを作成します。 
+3. **[テスト接続]** ボタンを選択して、接続を確認します。 接続が緑色の場合は、 **[作成]** を選択し、 **[すべて公開]** を選択して変更を保存します。
+
+![新しいリンク サービスとしての Azure Cognitive Service を示すスクリーンショット。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-linked-service.png)
 
 これで、Synapse Studio で Azure Cognitive Services エクスペリエンスを使用するチュートリアルのいずれかに進む準備ができました。
 
