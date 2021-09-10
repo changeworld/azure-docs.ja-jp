@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: dde83e48fe25e1f7e4d23462574e80c75323dde3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cff113ffd6a37406a88eb5ad5a4e3d5e85e10c5
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740583"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039424"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>チュートリアル: Linux コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -80,6 +80,7 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
 >Linux ARM64 デバイスのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)でご利用いただけます。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
 
 このチュートリアルでは、Visual Studio Code の開発手順を説明します。 Visual Studio を使用する場合は、「[Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする](how-to-visual-studio-develop-module.md)」に記載されている手順を参照してください。
+
 ## <a name="install-container-engine"></a>コンテナー エンジンをインストールする
 
 IoT Edge モジュールはコンテナーとしてパッケージ化されるので、それらをビルドおよび管理するためには、開発マシン上にコンテナー エンジンが必要です。 機能のサポートと人気があるため、開発には Docker Desktop をお勧めします。 Windows で Docker Desktop を使用すると、Linux コンテナーと Windows コンテナーを切り替えて、さまざまな種類の IoT Edge デバイス用のモジュールを容易に開発することができます。
@@ -150,6 +151,18 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
 
   * レジストリ資格情報セクションで、アドレスは、ソリューションを作成したときに指定した情報から自動的に入力されています。 ただし、ユーザー名とパスワードは、.env ファイルに格納されている変数を参照します。 この構成はセキュリティのためです.env ファイルは git では無視されますが、デプロイ テンプレートはそうではないからです。
   * ソリューションを作成したときにイメージ リポジトリを指定しましたが、SampleModule セクションでコンテナー イメージは入力されていません。 このプレースホルダーは、SampleModule フォルダー内の **module.json** ファイルを指しています。 そのファイルに移動すると、イメージ フィールドにはリポジトリが含まれているだけでなく、バージョンとコンテナーのプラットフォームで構成されるタグ値も含まれていることが分かります。 バージョンは、開発サイクルの一部として手動で反復することができ、コンテナー プラットフォームは、このセクションの後半で紹介するスイッチャーを使用して選択します。
+
+### <a name="set-iot-edge-runtime-version"></a>IoT Edge ランタイム バージョンを設定する
+
+IoT Edge 拡張機能は、デプロイ アセットを作成するときに、IoT Edge ランタイムの最新の安定バージョンを既定として使用します。 現在、最新の安定バージョンはバージョン 1.2 です。 1\.1 の長期サポート バージョンまたはそれより前の 1.0 バージョンを実行しているデバイスのモジュールを開発している場合は、Visual Studio Code の IoT Edge ランタイム バージョンを更新して一致させます。
+
+1. **[ビュー]**  >  **[コマンド パレット]** を選択します。
+
+1. コマンド パレットで、**Azure IoT Edge: Set default IoT Edge runtime version** コマンドを入力して実行します。
+
+1. 一覧から IoT Edge デバイスが実行されているランタイム バージョンを選択します。
+
+新しいランタイム バージョンを選択すると、ランタイム モジュール イメージへの変更を反映するように配置マニフェストが動的に更新されます。
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
 

@@ -1,7 +1,7 @@
 ---
 title: 'クイックスタート: Custom Vision クライアント ライブラリを使用した物体検出'
 titleSuffix: Azure Cognitive Services
-description: 'クイックスタート: Custom Vision クライアント ライブラリを使用して、物体検出プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。'
+description: 'クイックスタート: Custom Vision クライアント ライブラリを使用して、物体検出プロジェクトの作成、カスタム タグの追加、画像のアップロード、モデルのトレーニング、画像内の物体の検出を行います。'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
@@ -11,12 +11,12 @@ ms.date: 04/19/2021
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: カスタム ビジョン
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 45ac9fb96a6b8c0d5e20b616cf99b27e599f99fe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7aa148919cd4c30fb14c81db3a0f7e37ee7860a3
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725134"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309934"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>クイックスタート: Custom Vision クライアント ライブラリを使用して物体検出プロジェクトを作成する
 

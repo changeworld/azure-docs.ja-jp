@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 01/14/2021
+  ms.date: 08/24/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: 51af880897564851750dccd756601d86a1dab889
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: bfdbb966783e4f95945933c074265d8c45ee1f61
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113094973"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122867613"
 title: 'Azure Import/Export サービス: よく寄せられる質問'
 summary: >
   以下では、Azure Import/Export サービスを使用してデータを Azure Storage に転送するときによくある質問と、それに対する回答を示します。
@@ -123,6 +123,10 @@ sections:
       ドライブを発送するときに、運送業者からデータ センターの連絡先の住所と電話番号を求められました。 何を提供すればよいですか?
     answer: >
       電話番号と DC の住所は、ジョブの作成の一環として提供されます。
+  - question: >
+      デバイスが既に配送されているのに、注文の状態がまだ「発送」であるのはなぜですか?
+    answer: >
+      運送業者が物理的なデバイスを配送した後、Azure Import/Export で配送が処理されるまでに 1 営業日から 3 営業日かかります。 処理が完了すると、注文の状態は「受取済み」に変わります。
 - name: その他
   questions:
   - question: >

@@ -11,22 +11,22 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: baf181c90b4bc899f682cbfea28d1998f7b2117a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8f9fa57a160871ba88b080ac7599e1781202fb84
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722884"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306248"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
 このクイックスタートでは、Azure portal、PowerShell スクリプト、または Azure CLI スクリプトを使用して、Azure SQL Database に[単一データベース](single-database-overview.md)を作成します。 次に、Azure portal で **クエリ エディター** を使用して、データベースに対してクエリを実行します。
 
 
-## <a name="prerequisite"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 - 有効な Azure サブスクリプション アカウントがない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-- 選択した作成方法に基づき、[Azure PowerShell](/powershell/azure/install-az-ps) か [Azure CLI](/cli/azure/install-azure-cli-windows) の最新版が必要になることがあります。 
+- 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli-windows)。
 
 ## <a name="create-a-single-database"></a>単一データベースを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "121722884"
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Azure portal で単一データベースを作成するため、このクイックスタートは、Azure SQL のページから開始します。
+Azure portal で単一データベースを作成するために、このクイックスタートは、Azure SQL のページから開始します。
 
 1. [[Select SQL Deployment option]\(SQL デプロイ オプションの選択\)](https://portal.azure.com/#create/Microsoft.AzureSQL) ページを参照します。
 1. **[SQL データベース]** で、 **[リソースの種類]** を **[単一データベース]** に設定し、 **[作成]** を選択します。
@@ -160,6 +160,47 @@ az sql db create \
     --capacity 2
 ```
 
+# <a name="azure-cli-sql-up"></a>[Azure CLI (sql up)](#tab/azure-cli-sql-up)
+
+## <a name="use-azure-cloud-shell"></a>Azure Cloud Shell を使用する
+
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
+
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com](https://shell.azure.com) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けます。その後、**Enter** キーを押してそれを実行します。
+
+## <a name="create-a-database-and-resources"></a>データベースとリソースを作成する
+
+[az sql up](/cli/azure/sql#az_sql_up) コマンドによって、データベースの作成プロセスが簡略化されます。 これを使用すると、データベースと、それに関連付けられているすべてのリソースを 1 つのコマンドで作成できます。 これには、リソース グループ、サーバー名、サーバーの場所、データベース名、ログイン情報が含まれます。 データベースは、既定の価格レベル (General Purpose、プロビジョニング済み、Gen5、2 個の仮想コア) で作成されます。 
+
+このコマンドは、Azure SQL Database の[論理サーバー](logical-servers.md)を作成して構成し、すぐに使用できるようにします。 データベースの作成時にリソースをより細かく制御するには、この記事の標準 Azure CLI コマンドを使用します。
+
+> [!NOTE]
+> `az sql up` コマンドの初回実行時、Azure CLI により、`db-up` 拡張機能のインストールするよう求められます。 この拡張機能は、現在プレビューの段階にあります。 インストールを受け入れて続行します。 拡張機能の詳細については、[Azure CLI で拡張機能を使用する方法](/cli/azure/azure-cli-extensions-overview)に関するページを参照してください。
+
+1. `az sql up` コマンドを実行します。 `--server-name` など、必要なパラメーターが使用されていない場合、そのリソースはランダムな名前とそれに割り当てられたログイン情報で作成されます。
+
+    ```azurecli-interactive
+    az sql up \
+        --resource-group $resourceGroupName \
+        --location $location \
+        --server-name $serverName \
+        --database-name mySampleDatabase \
+        --admin-user $adminlogin \
+        --admin-password $password
+    ```
+
+2.  サーバー ファイアウォール規則が自動的に作成されます。 サーバーで IP アドレスが拒否された場合は、`az sql server firewall-rule create` コマンドを使用して新しいファイアウォール規則を作成します。
+
+    ```azurecli-interactive
+    az sql server firewall-rule create \
+        --resource-group $resourceGroupName \
+        --server $serverName \
+        -n AllowYourIp \
+        --start-ip-address $startip \
+        --end-ip-address $endip
+    ```
+
+3. 必要なすべてのリソースが作成され、データベースはすぐにクエリの実行ができます。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -294,6 +335,14 @@ Azure portal を使用して **myResourceGroup** とそのすべてのリソー�
 1. **[リソース グループ名を入力してください]** に「*myResourceGroup*」を入力し、 **[削除]** を選択します。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+リソース グループとそのすべてのリソースを削除するには、自分のリソース グループの名前を使用して次の Azure CLI コマンドを実行します。
+
+```azurecli-interactive
+az group delete --name $resourceGroupName
+```
+
+### <a name="azure-cli-sql-up"></a>[Azure CLI (sql up)](#tab/azure-cli-sql-up)
 
 リソース グループとそのすべてのリソースを削除するには、自分のリソース グループの名前を使用して次の Azure CLI コマンドを実行します。
 

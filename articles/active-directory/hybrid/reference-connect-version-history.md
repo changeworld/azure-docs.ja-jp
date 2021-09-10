@@ -8,23 +8,22 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 03/16/2021
+ms.date: 08/26/2021
 ms.subservice: hybrid
 ms.author: billmath
+ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a37ceb9c25fbd9483d14962ed30b871938af9274
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 3336ead4259c12b2eb6f7f87d5e21fe39765e817
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324651"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968796"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
 
 この記事は、リリースされたバージョンを追跡し、最新バージョンで変更された点を確認するためのものです。
-
-
 
 次の表に関連トピックの一覧を示します。
 
@@ -32,30 +31,59 @@ Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的�
 --------- | --------- |
 Azure AD Connect からのアップグレード手順 | Azure AD Connect の [以前のバージョンから最新バージョンにアップグレード](how-to-upgrade-previous-version.md) するさまざまな方法を説明しています。
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](reference-connect-accounts-permissions.md#upgrade)に関するページを参照してください。
-ダウンロード| [Azure AD Connect のダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)。
+
+
+>[!IMPORTANT]
+> **2022 年 8 月 31 日に、Azure Active Directory (Azure AD) Connect の 1.x バージョンはすべて廃止されます。これは、サポートされなくなる SQL Server 2012 コンポーネントが含まれているためです。** その日付までに最新バージョンの Azure AD Connect (2.x バージョン) にアップグレードするか、[Azure AD クラウド同期を評価して切り替えてください](https://docs.microsoft.com/azure/active-directory/cloud-sync/what-is-cloud-sync)。
+> 
+> 最適なサポートエクスペリエンスを得るには、必ず最新バージョンの Azure AD Connect を実行していることを確認します。 
+> 
+> 廃止されたバージョンの Azure AD Connect を実行すると、予期せず動作しなくなる可能性があり、最新のセキュリティ修正、パフォーマンスの向上、トラブルシューティングと診断ツール、およびサービスの機能強化が受けられない場合があります。 さらに、サポートが必要な場合も、組織が必要とするレベルのサービスを受けられないおそれがあります。
+> 
+> 詳細について、V2.0 の変更点について、およびこの変化による影響について詳しくは、[Azure Active Directory Connect V2.0](whatis-azure-ad-connect-v2.md) に関する記事を参照してください。
+>
+> Azure AD Connect を最新バージョンにアップグレードする方法の詳細については、[この記事](./how-to-upgrade-previous-version.md)を参照してください。
+>
+> 廃止されたバージョンのバージョン履歴情報については、[Azure AD Connect バージョンのリリース履歴アーカイブ](reference-connect-version-history-archive.md)に関する記事を参照してください。
 
 >[!NOTE]
 >Azure AD Connect の新バージョンのリリースは、サービスの操作の機能性を確保するためのいくつかの品質管理手順が必要なプロセスであり、このプロセスを進めている間、新しいリリースのバージョン番号とリリースの状態が、最新の状況を反映するように更新されます。
-このプロセスを進めている間、リリースのバージョン番号では、"1.3.X.0" のようにマイナー リリース番号の位置に "X" が表示されます。これは、このドキュメントのリリース ノートは、"1.3." で始まるすべてのバージョンで有効であることを示しています。 リリース プロセスが終了すると、すぐにリリース バージョン番号が最近リリースされたバージョンに更新され、リリースの状態が "ダウンロードと自動アップグレード用にリリース済み" に更新されます。
 Azure AD Connect のすべてのリリースが自動アップグレードに対応しているわけではありません。 リリースの状態により、リリースが自動アップグレードに対応しているか、ダウンロードにのみ対応しているかが分かります。 Azure AD Connect サーバーに対して自動アップグレードが有効になっている場合、そのサーバーは、自動アップグレードのためにリリースされた Azure AD Connect の最新バージョンに自動的にアップグレードされます。 Azure AD Connect のすべての構成が自動アップグレードの対象となっているわけではないので注意してください。 
 
-自動アップグレードの用途を明確にすると、これは、すべての重要な更新プログラムとクリティカルな修正プログラムをユーザーにプッシュすることを意図しています。 必ずしも最新バージョンとは限りません。その理由は、すべてのバージョンにおいて、重大なセキュリティ問題 (多くの例の 1 つ) に対する修正プログラムが必要になったり、含まれたりするわけではないからです。 そのような問題は、自動アップグレードを通じて提供される新しいバージョンによって対処されます。 そのような問題がない場合は、自動アップグレードを使用して更新プログラムがプッシュアウトされることはありません。一般には、最新の自動アップグレードのバージョンを使用していれば問題ありません。
+>自動アップグレードの用途を明確にすると、これは、すべての重要な更新プログラムとクリティカルな修正プログラムをユーザーにプッシュすることを意図しています。 必ずしも最新バージョンとは限りません。その理由は、すべてのバージョンにおいて、重大なセキュリティ問題 (多くの例の 1 つ) に対する修正プログラムが必要になったり、含まれたりするわけではないからです。 重大な問題は、一般的には自動アップグレードを通じて提供される新しいバージョンによって対処されます。 そのような問題がない場合は、自動アップグレードを使用して更新プログラムがプッシュアウトされることはありません。一般には、最新の自動アップグレードのバージョンを使用していれば問題ありません。
 ただし、すべての最新機能と更新プログラムを希望する場合、それがあるかどうかを確認するための最良の方法は、このページを確認し、必要に応じてそれらをインストールすることです。 
 
-詳細については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)に関するこのリンクを参照してください。
+>詳細については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)に関するこのリンクを参照してください。
 
->[!IMPORTANT]
-> 2024 年 4 月 1 日以降、2018 年 5 月 1 日より前にリリースされたバージョン 1.1.751.0 以前の Azure AD Connect を廃止します。 
->
-> 最適なサポートエクスペリエンスを得るには、必ず最新バージョンの Azure AD Connect を実行していることを確認します。 
->
->廃止されたバージョンの Azure AD Connect を実行すると、最新のセキュリティ修正、パフォーマンスの向上、トラブルシューティングと診断ツール、およびサービスの機能強化が受けられないおそれがあり、またサポートが必要な場合も、組織が必要とするレベルのサービスを受けられないおそれがあります。
->
 
->
->Azure AD Connect を最新バージョンにアップグレードする方法の詳細については、[この記事](./how-to-upgrade-previous-version.md)を参照してください。
->
->廃止されたバージョンのバージョン履歴情報については、[Azure AD Connect バージョンのリリース履歴アーカイブ](reference-connect-version-history-archive.md)に関する記事を参照してください。
+## <a name="download-links"></a>ダウンロード リンク
+Windows Server 2016 以降を使用している場合は、Azure AD Connect V2.0 を使用する必要があります。 Azure AD Connect 2.0 の最新バージョンは、[こちらのリンク](https://www.microsoft.com/en-us/download/details.aspx?id=47594)からダウンロードできます。
+以前のバージョンの Windows Server を使用している場合は、Azure AD Connect V1.6 を使用する必要があります。 Azure AD Connect 1.6 の最新バージョンは、[こちらのリンク](https://www.microsoft.com/download/details.aspx?id=103336)からダウンロードできます。
+
+## <a name="20100"></a>2.0.10.0
+
+>[!NOTE] 
+>これは Azure AD Connect の修正プログラムのリリースです。 このリリースには Windows Server 2016 以降が必要です。 この修正プログラムは、バージョン 2.0 と、Azure AD Connect バージョン 1.6 の問題を修正します。 以前の Windows Server を使用して Azure AD Connect を実行している場合は、代わりに [1.6.13.0](#16130) ビルドをインストールする必要があります。
+
+### <a name="release-status"></a>リリースの状態
+2021 年 8 月 19 日: ダウンロード専用にリリース。自動アップグレードには使用できません。
+
+### <a name="bug-fixes"></a>バグの修正
+
+ - ドメインの名前が変更された場合、イベント ログに「指定されたキャストが無効です」というエラーが表示され、パスワード ハッシュ同期が失敗するバグを修正しました。 これは、以前のビルドからの回帰です。
+
+## <a name="16130"></a>1.6.13.0
+>[!NOTE] 
+>これは Azure AD Connect の修正プログラムのリリースです。 このリリースは、Windows Server 2012 または 2012 R2 を搭載したサーバーで Azure AD Connect を実行しているお客様を対象としています。
+
+2021 年 8 月 19 日: ダウンロード専用にリリース。自動アップグレードには使用できません。
+
+### <a name="bug-fixes"></a>バグの修正
+
+ - ドメインの名前が変更された場合、イベント ログに「指定されたキャストが無効です」というエラーが表示され、パスワード ハッシュ同期が失敗するバグを修正しました。 これは、以前のビルドからの回帰です。
+
+### <a name="functional-changes"></a>機能の変更点
+このリリースでは、機能上の変更はありません
 
 ## <a name="2090"></a>2.0.9.0
 
@@ -72,7 +100,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 >[!NOTE] 
 >これは Azure AD Connect のセキュリティ更新プログラム リリースです。 このリリースには Windows Server 2016 以降が必要です。 以前のバージョンの Windows Server を使用している場合は、[バージョン 1.6.11.3](#16113) を使用してください。
 >このリリースで[こちらの CVE](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) に記載されている脆弱性に対処します。 この脆弱性に関する詳細については、CVE を参照してください。
->このリリースは[こちらのリンク](https://www.microsoft.com/en-us/download/details.aspx?id=47594)からダウンロードできます。
+>Azure AD Connect 2.0 の最新バージョンは、[こちらのリンク](https://www.microsoft.com/en-us/download/details.aspx?id=47594)からダウンロードできます。
 
 ### <a name="release-status"></a>リリースの状態
 2021 年 8 月 10 日: ダウンロード専用にリリース。自動アップグレードには使用できません。 
@@ -84,7 +112,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 >[!NOTE] 
 >これは Azure AD Connect のセキュリティ更新プログラム リリースです。 このバージョンは、Windows Server の古いバージョンを実行していて、この時点でサーバーを Windows Server 2016 以降にアップグレードできないお客様が使用することを目的としています。 このバージョンを使用して Azure AD Connect V2.0 サーバーを更新することはできません。
 >このリリースで[こちらの CVE](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) に記載されている脆弱性に対処します。 この脆弱性に関する詳細については、CVE を参照してください。
->このリリースは[こちらのリンク](https://www.microsoft.com/download/details.aspx?id=103336)からダウンロードできます
+>Azure AD Connect 1.6 の最新バージョンは、[こちらのリンク](https://www.microsoft.com/download/details.aspx?id=103336)からダウンロードできます。
 
 ### <a name="release-status"></a>リリースの状態
 2021 年 8 月 10 日: ダウンロード専用にリリース。自動アップグレードには使用できません。

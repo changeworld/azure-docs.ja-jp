@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: fdeaf2f16dc2b1b6d6beb75544160ac03ce025e9
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 2aa4fe3e7e2f7637060996b53748391da03879ec
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588365"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032284"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>Anomaly Detector の新機能
 
@@ -20,9 +20,15 @@ ms.locfileid: "113588365"
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="august-2021"></a>2021 年 8 月
+
+* 多変量異常検出 API が、さらに次の 5 つのリージョンにデプロイされました: 米国西部 3、東日本、ブラジル南部、米国中部、ノルウェー東部。 現在、合計 15 リージョンがサポートされています。
+
 ### <a name="july-2021"></a>2021 年 7 月
 
 * 多変量異常検出 API が、さらに次の 4 つのリージョンにデプロイされました: オーストラリア東部、カナダ中部、北ヨーロッパ、東南アジア。 現在、合計 10 リージョンがサポートされています。
+* Anomaly Detector (一変量) が、米国西部 3 とノルウェー東部で利用できるようになりました。
+
 
 ### <a name="june-2021"></a>2021 年 6 月
 

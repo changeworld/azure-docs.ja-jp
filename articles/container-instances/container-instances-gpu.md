@@ -3,12 +3,12 @@ title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: cff887f434230fbc24dfbe27b1f14a463d00cf5d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd9441f0ba92f4753271df4daba88ed690c9ee30
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728910"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108380"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -73,6 +73,9 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 ## <a name="yaml-example"></a>YAML の例
 
 GPU リソースを追加するには、[YAML ファイル](container-instances-multi-container-yaml.md)を使用してコンテナー グループをデプロイする方法があります。 次の YAML を *gpu-deploy-aci.yaml* という名前の新しいファイルにコピーしてから、ファイルを保存します。 この YAML により、K80 GPU を持つコンテナー インスタンスを指定する *gpucontainergroup* という名前のコンテナー グループが作成されます。 このインスタンスでは、CUDA ベクトル加法アプリケーションのサンプルが実行されます。 ワークロードを実行するには、リソース要求だけで十分です。
+
+ > [!NOTE]
+  > 次の例では、パブリック コンテナー イメージを使用します。 信頼性を向上させるために、プライベート Azure Container Registry 内のイメージをインポートして管理し、プライベートのマネージド基本イメージを使用するように YAML を更新します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
 
 ```YAML
 additional_properties: {}

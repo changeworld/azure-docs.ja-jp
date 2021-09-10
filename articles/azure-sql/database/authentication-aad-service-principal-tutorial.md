@@ -9,12 +9,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 05/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c1c0754175283dd9087429586e61739c8c779e49
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8980380fb16aadd2a5f3c8e64190bb7580d40425
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662438"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252585"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する
 
@@ -92,7 +92,7 @@ Azure AD によって割り当てられた ID が Azure SQL で適切に機能�
 > [!NOTE] 
 > このスクリプトは、Azure AD の `Global Administrator` または `Privileged Roles Administrator` が実行する必要があります。
 >
-> **パブリック プレビュー** では、Azure AD 内のグループに `Directory Readers` ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、`Global Administrator` または `Privileged Roles Administrator` が `Directory Readers` ロールを付与する必要がなくなります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
+> Azure AD 内のグループに `Directory Readers` ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、`Global Administrator` または `Privileged Roles Administrator` が `Directory Readers` ロールを付与する必要がなくなります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
 - `<TenantId>` は、先ほど確認した `TenantId` に置き換えます。
 - `<server name>` は、実際の SQL 論理サーバーの名前に置き換えます。 実際のサーバー名が `myserver.database.windows.net` の場合、`<server name>` を `myserver` に置き換えます。

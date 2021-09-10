@@ -3,17 +3,17 @@ title: Azure Virtual Desktop の最新情報 - Azure
 description: Azure Virtual Desktop の新機能と製品の更新情報。
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/07/2021
+ms.date: 07/30/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: d597e4c33652cb5a7106943ebd9f4e8b23b496ef
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 88c94a3f1b6329c80cddcec49c7ebb445a21d8e0
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730228"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318143"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Azure Virtual Desktop の最新情報
 
@@ -42,11 +42,12 @@ Azure Virtual Desktop エージェントは、少なくとも 1 か月に 1 回�
 
 Azure Virtual Desktop エージェントの変更内容は次のとおりです。
 
-- バージョン 1.0.3130.1200: この更新プログラムは検証プールで 2021 年 5 月にリリースされ、次の変更が加えられました。
+- バージョン 1.0.3130.2900: この更新プログラムは 2021 年 7 月にリリースされ、次の変更が加えられました。
     - 一般的な機能強化とバグの修正。
     - Intune 登録のホスト プール パスを取得する際の問題を修正します。
     - エージェントの問題をより適切に診断するためにログ記録を追加しました。
-- バージョン 1.0.3050.1200: この更新プログラムは検証プールで 2021 年 5 月にリリースされ、次の変更が加えられました。
+    - オーケストレーションのタイムアウトに関する問題を修正します。
+- バージョン 1.0.3050.2500: この更新プログラムは 2021 年 7 月にリリースされ、次の変更が加えられました。
     - エージェントの正常性の内部モニターを更新しました。
     - スタックの正常性の再試行ロジックが更新されました。
 - バージョン 1.0.2990.1500: この更新プログラムは 2021 年 4 月にリリースされ、次の変更が加えられました。
@@ -65,6 +66,77 @@ Azure Virtual Desktop エージェントの変更内容は次のとおりです�
 ## <a name="fslogix-updates"></a>FSLogix の更新
 
 FSLogix に対して行われた最新の更新については、 [FSLogix の最新情報](/fslogix/whats-new)に関するページを参照してください。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+2021 年 8 月における変更点は次のとおりです。
+
+### <a name="windows-11-preview-on-avd"></a>AVD での Windows 11 (プレビュー)
+
+Windows 11 (プレビュー) イメージを Azure Marketplace で入手できるようになりました。お客様は、これを Azure Virtual Desktop でテストおよび検証することができます。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/windows-11-preview-is-now-available-on-azure-virtual-desktop/ba-p/2666468)をご覧ください。
+
+### <a name="multimedia-redirection-mmr-is-now-in-public-preview"></a>マルチメディア リダイレクト (MMR) がパブリック プレビューになりました
+
+マルチメディア リダイレクト (MMR) を使用すると、Azure Virtual Desktop の Web ブラウザーでビデオを視聴する際のビデオ再生がスムーズになります。これは、Microsoft Edge と Google Chrome で動作します。 詳細については、[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/public-preview-announcing-public-preview-of-multimedia/m-p/2663244#M7692)をご覧ください。
+
+### <a name="ip-virtualization-support-for-windows-server-2019"></a>Windows Server 2019 の IP 仮想化のサポート
+
+IP 仮想化は Windows Server 2008 R2 以降でサポートされています。 Windows Server 2019 で IP 仮想化を使用するには、追加の手順が必要です。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/ip-virtualization-support-for-windows-server-2019/m-p/2658650)をご覧ください。
+
+### <a name="windows-defender-application-control-and-azure-disk-encryption-is-now-supported"></a>Windows Defender Application Control Azure Disk Encryption がサポートされるようになりました
+
+Azure Virtual Desktop で、Windows VM で実行できるドライバーとアプリケーションを制御するための Windows Defender Application Control と、VM の OS とデータ ディスクのボリューム暗号化を提供するために Windows BitLocker を使用する Azure Disk Encryption がサポートされるようになりました。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/support-for-windows-defender-application-control-and-azure-disk/m-p/2658633#M7685)をご覧ください。
+ 
+### <a name="signing-into-azure-ad-using-smart-cards-are-now-supported-in-azure-virtual-desktop"></a>スマート カードを使用した Azure AD へのサインインが Azure Virtual Desktop でサポートされるようになりました。
+
+これは Azure AD の新機能ではありませんが、スマート カードを使用してサインインするように Active Directory フェデレーションサービス (AD FS) を構成することが、Azure Virtual Desktop でサポートされるようになりました。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/signing-in-to-azure-ad-using-smart-cards-now-supported-in-azure/m-p/2654209#M7671)をご覧ください。
+
+### <a name="screen-capture-protection-is-now-generally-available"></a>画面キャプチャ保護の一般提供が開始されました
+
+AVD の画面キャプチャ保護を使用して、クライアント エンドポイントで実行されているソフトウェアによって、機密情報の画面がキャプチャされないようにします。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-screen-capture-protection-for/m-p/2699684)を参照してください。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+2021 年 7 月における変更点は次のとおりです。
+
+### <a name="azure-virtual-desktop-images-now-include-optimized-teams"></a>Azure Virtual Desktop のイメージに最適化された Teams が含まれるようになりました
+
+Microsoft 365 Apps for Enterprise を含む、Azure Virtual Desktop イメージ ギャラリーで使用可能なすべてのイメージに、メディア最適化バージョンの Teams for Azure Virtual Desktop が事前にインストールされるようになりました。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/media-optimization-for-microsoft-teams-now-part-of-win10/m-p/2550054#M7442)をご覧ください。
+
+### <a name="azure-active-directory-domain-join-for-session-hosts-is-in-public-preview"></a>セッション ホスト 用の Azure Active Directory ドメイン参加がパブリック プレビューになりました
+
+Azure Virtual Desktop 仮想マシン (VM) を Azure Active Directory (Azure AD) に直接参加させることができるようになりました。 この機能を使用すると、任意のデバイスから基本的な資格情報を使用して VM に接続できます。 また、Microsoft エンドポイント マネージャーを使用して VM を自動的に登録することもできます。 特定のシナリオでは、これによりドメインコントローラーの必要性をなくし、コストを削減し、展開を効率化することができます。 詳細については、「[Azure Virtual Desktop で Azure AD 参加済み仮想マシンをデプロイする](deploy-azure-ad-joined-vm.md)」をご覧ください。
+
+### <a name="fslogix-version-2105-is-now-available"></a>FSLogix バージョン 2105 が利用可能になりました
+
+FSLogix バージョン 2105 が一般公開されました。 このバージョンには、パブリック プレビュー バージョン (バージョン 2105) では利用できなかった、改善されたサインイン時間とバグ修正が含まれています。 詳細については、[FSLogix のリリース ノート](/fslogix/whats-new)と[こちらのブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-fslogix-2105-2-9-7838-44263/m-p/2539491#M7412)を参照してください。
+
+### <a name="azure-virtual-desktop-in-china-has-entered-public-preview"></a>中国の Azure Virtual Desktop がパブリック プレビューに移行されました
+
+中国で Azure Virtual Desktop が利用可能になったため、グローバルのカバレッジがさらに広がりました。これにより、組織はこのリージョンの顧客のパフォーマンスと待機時間を改善できます。 詳細については、[こちらのお知らせページ](https://azure.microsoft.com/updates/azure-virtual-desktop-is-now-available-in-the-azure-china-cloud-in-preview/)を参照してください。
+ 
+### <a name="the-getting-started-feature-for-azure-virtual-desktop"></a>Azure Virtual Desktop で作業を開始するための機能
+
+この機能により、Azure Virtual Desktop を設定するための Azure portal でのオンボード エクスペリエンスが合理化されます。 この機能を使用すると、自動化された Azure Active Directory Domain Services のシステム要件を満たすデプロイをシンプルかつ簡単な方法で作成できます。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/getting-started-wizard-in-azure-virtual-desktop/m-p/2451385)を参照してください。
+
+### <a name="start-vm-on-connect-is-now-generally-available"></a>接続時の VM の起動が一般公開されました
+
+接続時に VM を起動する機能が一般公開されました。 この機能は、割り当てを解除または停止した VM をオフにして、ユーザーの要求に合わせてデプロイを柔軟にすることで、コストを最適化するのに役立ちます。 詳しくは、「[接続時に仮想マシンを起動](start-virtual-machine-connect.md)」をご覧ください。
+
+### <a name="remote-app-streaming-documentation"></a>リモート アプリ ストリーミングのドキュメント
+
+Microsoft では、Azure Virtual Desktop を使用して、顧客およびビジネス パートナーにアプリをサービスとして配信するためのリモート アプリ ストリーミング用の新しい価格オプションを発表しました。 たとえば、ソフトウェア ベンダーは、リモート アプリ ストリーミングを使用して、顧客がアクセスできるサービスとしてのソフトウェア (SaaS) ソリューションとしてアプリを配信できます。 リモート アプリ ストリーミングについて詳しくは、[Microsoft のドキュメント](./remote-app-streaming/overview.md)をご覧ください。
+
+2021 年 7 月 14 日から 2021 年 12 月 31 日まで、リモート アプリ ストリーミングを使用するお客様は、ビジネス パートナーや顧客が Azure Virtual Desktop に無料でアクセスできるようにするキャンペーン プランをご利用いただけます。 このプランは、外部ユーザーのアクセス権にのみ適用されます。 通常の課金は、2022 年 1 月 1 日に再開されます。 それまでの間は、Microsoft 365 E3 または Windows E3 などのライセンスに含まれている既存の Windows ライセンス エンタイトルメントを引き続き使用することができます。 このプランの詳細については、[Azure Virtual Desktop の価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-desktop/)を参照してください。
+
+### <a name="new-azure-virtual-desktop-handbooks"></a>新しい Azure Virtual Desktop ハンドブック
+
+さまざまなシナリオで Azure Virtual Desktop を設計およびデプロイする際に役立つ 4 つの新しいハンドブックを発表しました。 
+
+- [アプリケーションの管理](https://azure.microsoft.com/resources/azure-virtual-desktop-handbook-application-management/)では、アプリケーションの配布を最新化し、IT 管理を簡素化する方法について説明します。  
+- [ディザスター リカバリー](https://azure.microsoft.com/resources/azure-virtual-desktop-handbook-disaster-recovery/)では、ディザスター リカバリー戦略を策定してビジネスの復元力を高める方法について説明します。  
+- [Azure Virtual Desktop を使用する Citrix Cloud](https://azure.microsoft.com/resources/migration-guide-citrix-cloud-with-azure-virtual-desktop/) への移行ガイドを使用すると、Citrix への投資からより多くの価値を得ることができます。
+- [Azure Virtual Desktop を使用する VMware Horizon](https://azure.microsoft.com/resources/migration-guide-vmware-horizon-cloud-and-azure-virtual-desktop/) への移行ガイドを使用すると、VMware への既存の投資からより多くの価値を得ることができます。
 
 ## <a name="june-2021"></a>2021 年 6 月
 

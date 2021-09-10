@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 7985879b54fe840ec47d72595d95547aa062938b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: adbb2979fc9e097fa0abf2675759ba1f7aad8a0c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724304"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310563"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>チュートリアル: OpenSSL を使用してテスト証明書を作成する
 
@@ -238,20 +238,27 @@ CSR をルート CA に提出し、ルート CA を使って下位 CA の証明�
 
 1. Azure portal で自分の IoT ハブに移動し、 **[設定] > [証明書]** の順に選択します。
 
-1. **[追加]** を選択して、新しい下位 CA 証明書を追加します。
+2. **[追加]** を選択して、新しい下位 CA 証明書を追加します。
 
-1. **[証明書名]** フィールドに表示名を入力し、前に作成した PEM 証明書ファイルを選択します。
+3. **[証明書名]** フィールドに表示名を入力し、前に作成した PEM 証明書ファイルを選択します。
 
-1. **[保存]** を選択します。 証明書が、証明書の一覧に **[未確認]** の状態で表示されます。 証明書の所有者であることは、確認プロセスで証明します。
+> [!NOTE]
+> 上記で作成された .crt 証明書は、.pem 証明書と同じです。 証明書をアップロードするときに拡張子を変更して所有権を証明することも、次の OpenSSL コマンドを使用することもできます。
+
+```bash
+openssl x509 -in mycert.crt -out mycert.pem -outform PEM
+```
+
+4. **[保存]** を選択します。 証明書が、証明書の一覧に **[未確認]** の状態で表示されます。 証明書の所有者であることは、確認プロセスで証明します。
 
    
-1. 証明書を選択して、 **[証明書の詳細]** ダイアログを表示します。
+5. 証明書を選択して、 **[証明書の詳細]** ダイアログを表示します。
 
-1. **[確認コードを生成します]** を選択します。 詳細については、[CA 証明書の所有証明](tutorial-x509-prove-possession.md)に関するページを参照してください。
+6. **[確認コードを生成します]** を選択します。 詳細については、[CA 証明書の所有証明](tutorial-x509-prove-possession.md)に関するページを参照してください。
 
-1. 確認コードをクリップボードにコピーします。 証明書のサブジェクトとして確認コードを設定する必要があります。 たとえば、確認コードが BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A であれば、手順 9 に示すように、それを証明書のサブジェクトとして追加します。
+7. 確認コードをクリップボードにコピーします。 証明書のサブジェクトとして確認コードを設定する必要があります。 たとえば、確認コードが BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A であれば、手順 9 に示すように、それを証明書のサブジェクトとして追加します。
 
-1. 秘密キーを作成します。
+8. 秘密キーを作成します。
 
   ```bash
     $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048

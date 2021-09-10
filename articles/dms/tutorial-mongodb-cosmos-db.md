@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
-ms.date: 05/19/2021
-ms.openlocfilehash: 937fcc60e8be144fce10748345b71cc05703c04f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 87f211976f74fef5ed2c0cef992d82099e141a29
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638518"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038173"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-api-for-mongodb-offline"></a>チュートリアル: MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -232,6 +232,12 @@ Azure Cosmos DB のサーバー側の再試行機能を使用すると、サー�
 ## <a name="post-migration-optimization"></a>移行後の最適化
 
 MongoDB データベースの格納データを Azure Cosmos DB の MongoDB 用 API に移行したら、Azure Cosmos DB に接続してデータを管理できます。 また、移行後のその他の最適化手順を実行することもできます。 これには、インデックス作成ポリシーの最適化、既定の整合性レベルの更新、Azure Cosmos DB アカウントのグローバル分散の構成などが含まれます。 詳細については、[移行後の最適化](../cosmos-db/mongodb-post-migration.md)に関するページをご覧ください。
+
+## <a name="additional-resources"></a>その他のリソース
+
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
+    * 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](../cosmos-db/convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](../cosmos-db/mongodb/estimate-ru-capacity-planner.md)に関するページを参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

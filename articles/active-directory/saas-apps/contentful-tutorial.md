@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 300bde794afbd3c2db4e9049e28979933b19ac79
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a5d3e8aa303527e7baaa465e911d3b869a975cf5
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099966"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224248"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Contentful の統合
 
@@ -39,6 +39,7 @@ ms.locfileid: "110099966"
 
 * Contentful では、**SP および IDP** Initiated SSO がサポートされます。
 * Contentful では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* Contentful では、[自動化されたユーザー プロビジョニング](contentful-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -146,6 +147,8 @@ Contentful に対して Azure AD SSO を構成してテストするには、次�
 ### <a name="create-contentful-test-user"></a>Contentful テスト ユーザーの作成
 
 このセクションでは、B. Simon というユーザーを Contentful に作成します。 Contentful では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Contentful にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+
+Contentful では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./contentful-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト
 

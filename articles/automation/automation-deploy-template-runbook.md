@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
 keywords: powershell, runbook, json, azure automation
-ms.openlocfilehash: 7ea0e8209d244ad2b95e201ec7eb1e84f2038887
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: cb075d0ad59af211d80443a5e208509ea60c08ed
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587771"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251817"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
 
@@ -87,9 +87,9 @@ ms.locfileid: "113587771"
 
 ファイルを **TemplateTest.json** という名前でローカル環境に保存します。
 
-## <a name="save-the-resource-manager-template-in-azure-storage"></a>Resource Manager テンプレートを Azure Storage に保存する
+## <a name="save-the-resource-manager-template-in-azure-files"></a>Resource Manager テンプレートを Azure Files に保存する
 
-PowerShell を使用して Azure Storage ファイル共有を作成し、**TemplateTest.json** ファイルをアップロードします。 Azure Portal でファイル共有を作成し、ファイルをアップロードする方法については、[Windows での Azure File Storage の概要](../storage/files/storage-dotnet-how-to-use-files.md)に関する記事をご覧ください。
+PowerShell を使用して Azure ファイル共有を作成し、**TemplateTest.json** ファイルをアップロードします。 Azure portal でファイル共有を作成し、ファイルをアップロードする方法については、[Windows での Azure Files の概要](../storage/files/storage-files-quick-create-use-windows.md)に関する記事をご覧ください。
 
 ローカル コンピューターで PowerShell を起動し、次のコマンドを実行して、ファイル共有を作成し、そのファイル共有に Resource Manager テンプレートをアップロードします。
 

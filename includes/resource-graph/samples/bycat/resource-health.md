@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c45613c1d140f5adfdfaa6e3c6dcb6cf47c5ea28
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: bf6960556dec2c9ddd081b9cd4a66274710350ba
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305542"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535524"
 ---
 ### <a name="count-of-virtual-machines-by-availability-state-and-subscription-id"></a>可用性の状態とサブスクリプション ID 別の仮想マシンの数
 

@@ -6,21 +6,19 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/19/2021
-ms.topic: overview
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: bb9765c2620f45d67bf888f8bfe8a4dee450cfd6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2281dac86281d01ec6f033062b87236a780d3bc7
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645823"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259757"
 ---
 # <a name="azure-communication-services-messaging-policy"></a>Azure Communication Services のメッセージング ポリシー
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-Azure Communication Services では、Microsoft Teams と Skype を支えるのと同じエンタープライズレベルのサービスを活用する豊富なカスタム通信エクスペリエンスを構築することで、お客様とその顧客のかかわり方を変えつつあります。 SMS メッセージング機能をお客様の通信ソリューションに統合すると、顧客がサポートを必要とする時間や場所を問わず、顧客に連絡を取ることができます。 最初に、いくつかのメッセージング要件を念頭に置く必要があります。
+Azure Communication Services では、Microsoft Teams と Skype を支えるのと同じエンタープライズレベルのサービスを活用する豊富なカスタム通信エクスペリエンスを構築することで、お客様とその顧客のかかわり方を変えつつあります。 SMS メッセージング機能をお客様の通信ソリューションに統合すると、顧客がサポートを必要とする時間や場所を問わず、顧客に連絡を取ることができます。 最初に、いくつかのメッセージング要件と業界標準を念頭に置く必要があります。
 
 メッセージング要件は覚えにくいと思われるかもしれませんが、"COMS" を覚えるのと同じくらい簡単であることがわかっています。
 
@@ -131,9 +129,11 @@ Azure Communication Services では、すべてのメッセージング キャ�
 
 このようなコンテンツが違法でない場合でも、オプトイン時に年齢確認メカニズムを組み込み、対象のメッセージ受信者に対して成人向けコンテンツの年齢制限を設ける必要があります。 米国では、13 歳未満の子供を対象としたマーケティング コミュニケーションに追加の法的要件が適用されます。 
 
-### <a name="prohibited-content"></a>禁止されているコンテンツ:
+### <a name="prohibited-practices"></a>禁止されている行為:
 
-Azure Communication Services では、同意に関係なく、特定のメッセージ コンテンツが禁止されています。 禁止されるコンテンツは次のとおりです。
+お客様とお客様の顧客の両方が、妥当なオプトアウト要求を回避するために Azure Communication Services を使用することを禁止されています。 さらに、お客様とお客様の顧客は、メッセージング要件と業界標準への準拠を確保するために Azure Communication Services または通信サービス プロバイダーによって実装された対策を回避できない場合があります。
+
+また、Azure Communication Services では、同意に関係なく、特定のメッセージ コンテンツが禁止されています。 禁止されるコンテンツは次のとおりです。
 - 違法行為 (例: 米国における脱税や動物虐待) を助長するコンテンツ
 - ヘイトスピーチ、中傷的なスピーチ、ハラスメント、または明らかに不快と判断されるその他のスピーチ
 - 性的なコンテンツ
@@ -156,7 +156,7 @@ Microsoft は、禁止されているメッセージ コンテンツのリスト
 
 このメッセージング ポリシーは、法律に関する助言に相当するものではありません。そのため、Microsoft はいつでもこのポリシーを変更する権利を有しています。 Azure Communication Services には、お客様のメッセージの内容、タイミング、または受信者が適用されるすべての法的要件を満たすことを保証する責任はありません。 
 
-お客様には、すべてのメッセージ要件に対する責任があります。 メッセージングの目的で Azure Communication Services を使用するプラットフォームまたはソフトウェア プロバイダーの場合は、お客様の顧客もこのメッセージング ポリシーで説明されている要件すべてに従うよう要求する必要があります。 さらなる指針については、CTIA から有用な[メッセージングの原則とベスト プラクティス](https://api.ctia.org/wp-content/uploads/2019/07/190719-CTIA-Messaging-Principles-and-Best-Practices-FINAL.pdf)が提供されています。
+お客様には、すべてのメッセージ要件に対する責任があります。 メッセージングの目的で Azure Communication Services を使用するプラットフォームまたはソフトウェア プロバイダーの場合は、お客様の顧客もこのメッセージング ポリシーで説明されている要件すべてに従うよう要求する必要があります。 詳細なガイダンスについては、CTIA の「[メッセージングの原則とベスト プラクティス](https://api.ctia.org/wp-content/uploads/2019/07/190719-CTIA-Messaging-Principles-and-Best-Practices-FINAL.pdf)」に、関連する業界標準の役立つ概要が記載されています。
 
 ### <a name="penalties"></a>ペナルティ:
 

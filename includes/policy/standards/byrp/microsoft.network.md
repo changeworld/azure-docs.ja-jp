@@ -2,24 +2,24 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7997641a2f929779a17e84c66cadc7dd3a48c463
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 77f6725a0b9ae7ad1d7d43d5e17f91fdc045735f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111849"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468991"
 ---
 ## <a name="australian-government-ism-protected"></a>Australian Government ISM PROTECTED
 
-すべての Azure サービスに対して使用可能な Azure Policy 組み込みを、このコンプライアンス基準に対応させる方法については、[Azure Policy の規制コンプライアンス - Australian Government ISM PROTECTED](../../../../articles/governance/policy/samples/australia-ism.md) に関するページを参照してください。
-このコンプライアンス基準の詳細については、[Australian Government ISM PROTECTED](https://www.cyber.gov.au/acsc/view-all-content/ism) を参照してください。
+To review how the available Azure Policy built-ins for all Azure services map to this compliance standard, see <bpt id="p1">[</bpt>Azure Policy Regulatory Compliance - Australian Government ISM PROTECTED<ept id="p1">](../../../../articles/governance/policy/samples/australia-ism.md)</ept>.
+For more information about this compliance standard, see <bpt id="p1">[</bpt>Australian Government ISM PROTECTED<ept id="p1">](https://www.cyber.gov.au/acsc/view-all-content/ism)</ept>.
 
 |Domain |コントロール ID |コントロールのタイトル |ポリシー<br /><sub>(Azure portal)</sub> |ポリシーのバージョン<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
-|ネットワークのガイドライン - オンライン サービスのサービス継続性 |1431 |サービス拒否戦略 - 1431 |[Azure DDoS Protection Standard を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
+|Guidelines for Networking - Service continuity for online services |1431 |Denial of service strategies - 1431 |[Azure DDoS Protection Standard を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
 
 ## <a name="azure-security-benchmark"></a>Azure セキュリティ ベンチマーク
 

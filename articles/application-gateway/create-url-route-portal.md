@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: victorh
-ms.openlocfilehash: b0ab3cbd2891ef1677c0d4ba7a00821d67714b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d42a62c6251456d11dff7b2276936db7df5259af
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708953"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222696"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -176,6 +176,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!NOTE]
 > 既定のケースを処理するために、カスタム */* * パス規則を追加する必要はありません。 これは、既定のバックエンド プールによって自動的に処理されます。
+
+> [!NOTE]
+> ワイルドカード区切り記号 **\*** は、規則の末尾にのみ使用できます。 詳細およびサポートされているパス ベース規則の例については、「[URL パス ペースのルーティングの概要](url-route-overview.md#pathpattern)」を参照してください。
 
 ### <a name="review--create-tab"></a>[確認と作成] タブ
 

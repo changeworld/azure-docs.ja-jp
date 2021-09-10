@@ -7,19 +7,19 @@ manager: chpalm
 services: azure-communication-services
 ms.author: chpalm
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e884079bc159dbbc76d6443dc0e095c4d8f596ab
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 1bcb97892965cbe978899df4208888a4adb07253
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668098"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251348"
 ---
 # <a name="teams-interoperability"></a>Teams の相互運用性
 
 > [!IMPORTANT]
-> BYOI 相互運用性はパブリック プレビュー段階であり、リクエストに応じて広範囲で利用できます。 [チームのテナント相互運用性](../concepts/teams-interop.md)を有効または無効にするには、[このフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)を完成させてください。
+> BYOI の相互運用性はパブリック プレビュー中であり、すべての Communication Services アプリケーションと Teams 組織で使用できます。
 >
 > Microsoft 365 によって認証される相互運用性はプライベート プレビュー段階であり、サービス コントロールの使用は Azure Communication Services 早期導入者に制限されています。 早期アクセス プログラムに参加するには、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8MfnD7fOYZEompFbYDoD4JUMkdYT0xKUUJLR001ODdQRk1ITTdOMlRZNSQlQCN0PWcu)に記入してください。
 >
@@ -42,10 +42,24 @@ Azure Communication Services では、エンド ユーザーの ID に応じて�
 
 アプリケーションでは、両方の認証方式を実装し、認証の選択をエンド ユーザーに任せることができます。
 
-## <a name="bring-your-own-identity"></a>独自の ID を使用する
-独自の ID の使用 (BYOI) は、Azure Communication Services と Teams 相互運用性を使用するための一般的なモデルです。 これは、あらゆる ID プロバイダーと認証方式をサポートしています。 アプリは Microsoft Teams 会議に参加でき、Teams はこれらのユーザーを匿名の外部アカウントとして扱います。 Teams に表示される Communication Services ユーザーの名前は、Communication Services Calling SDK を使用して構成できます。
+## <a name="overview"></a>概要
 
-この機能は、従業員 (Teams に精通) と外部ユーザー (カスタム アプリケーション エクスペリエンスを使用) を 1 つの会議エクスペリエンスにまとめる企業-消費者間アプリケーションに最適です。 アプリケーションの外部ユーザーと共有する必要がある会議の詳細を取得するには、Graph API または Microsoft Teams のカレンダーを使用します。
+ユーザーが Teams の通話エクスペリエンスにアクセスする方法は 2 つあります。
+
+- Teams クライアントを介して **Teams ユーザー** として。 これには、デスクトップ、モバイル、および Web Teams クライアントが含まれます。 
+- アプリケーションの Web エクスペリエンスを介して **Teams 匿名ユーザー** として。 
+
+Teams 匿名ユーザーは、Teams ユーザーである必要はありません。 Azure Communication Services を使用すると、Teams ユーザーと Teams 匿名ユーザーの両方向けに、Teams 通話用の新しいエンドポイントを作成してカスタマイズできます。 Communication Services Calling SDK と ユーザー インターフェイス ライブラリを使用して、カスタマイズや既存のアプリケーションまたは製品への統合が可能です。 次の図は、複数のエンドポイントから Teams 会議に参加する方法を示しています。![Azure Communication Services 内の複数の相互運用性シナリオの概要](./media/teams-identities/teams_interop_overview.png)
+
+エンドポイントが Azure Communication Services クライアント ライブラリを介して Teams ID を使用して Teams 会議に接続すると、そのエンドポイントは Teams クライアントを持つ Teams ユーザーと同様に扱われます。 Teams ユーザーは、Teams 匿名ユーザーよりも多くの機能にアクセスできます。 Teams ユーザーは、Teams 会議への参加、他の Teams ユーザーへの通話の発信、電話番号からの通話の受信、進行中の通話の Teams 通話キューへの転送ができます。 次の図に、Communication Services エンドポイントと Teams ID の接続性を示します。
+
+![Azure Communication Services 内の相互運用性シナリオの概要](./media/teams-identities/teams_interop_m365_identity_interop_overview.png)
+
+## <a name="bring-your-own-identity"></a>独自の ID を使用する
+
+独自の ID の使用 (BYOI) は、Azure Communication Services と Teams 相互運用性を使用するための一般的なモデルです。 これは、あらゆる ID プロバイダーと認証方式をサポートしています。 使用可能な最初のシナリオでは、アプリケーションが Microsoft Teams 会議に参加できます。Teams はこれらのユーザーを匿名外部アカウントとして扱います。Teams 匿名 Web アプリケーションを使用して参加するユーザーと同様です。 これは、(Teams を使い慣れている) 従業員と (カスタム アプリケーション エクスペリエンスを使用している) 外部ユーザーを 1 つの会議エクスペリエンスにまとめる B2C アプリケーションに最適です。 今後は、直接通話やチャットなどの追加のシナリオを使用できるようにして、アプリケーションが Teams 会議のコンテキスト外で Teams ユーザーとの通話やチャットを開始できるようにする予定です。
+
+Communication Services ユーザーが Teams 会議に匿名ユーザーとして参加する機能は、既存の "匿名での会議への参加を許可する" 構成によって制御されます。これは、既存の Teams の匿名での会議への参加も制御します。  この設定は、(https://admin.teams.microsoft.com/meetings/settings) または Teams の PowerShell コマンドレット Set-CsTeamsMeetingConfiguration (https://docs.microsoft.com/powershell/module/skype/set-csteamsmeetingconfiguration) を使用して、Teams の管理センターで更新できます。 Teams の匿名での会議への参加と同様に、アプリケーションには参加用の会議リンクが必要です。これは、Graph API または Microsoft Teams のカレンダーから取得できます。  Teams に表示される Communication Services ユーザーの名前は、Communication Services Calling SDK を使用して構成できます。
 
 外部ユーザーは、Azure Communication Services SDK を使用して、基本的なオーディオ、ビデオ、画面共有、チャット機能を使用できます。 挙手、集合モード、ブレイクアウト ルームなどの機能は、Teams ユーザーのみが使用できます。 Communication Services ユーザーは、Teams 会議に出席中で、かつ会議がチャネルに対してスケジュールされていない場合にのみメッセージを送受信できます。
 

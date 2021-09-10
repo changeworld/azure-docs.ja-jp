@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e3eb77d15c288c93298da6dd79a76565e5d67f96
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 4119794663a35c6f29edf42443e57d411376cce5
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749944"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830466"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault のキー、シークレット、証明書の概要
 
@@ -47,7 +47,7 @@ HSM で保護されたキー|/keys|サポートされています|サポート�
 |||
 - **暗号化キー**: 複数のキーの種類とアルゴリズムをサポートし、ソフトウェアによって保護されるキーと HSM によって保護されるキーを使用できるようにします。 詳細については、[キーについて](../keys/about-keys.md)のページを参照してください。
 - **シークレット**: パスワードやデータベース接続文字列などのシークレットのセキュリティで保護されたストレージを提供します。 詳細については、[シークレットについて](../secrets/about-secrets.md)のページを参照してください。
-- **[Certificates]\(証明書\)** : キーとシークレットを基に構築され、自動更新機能を追加します。 詳細については、[証明書について](../certificates/about-certificates.md)のページを参照してください。
+- **[Certificates]\(証明書\)** : キーとシークレットを基に構築され、自動更新機能を追加します。 証明書が作成されると、アドレス指定可能なキーとシークレットも同じ名前で作成されることに留意してください。 詳細については、[証明書について](../certificates/about-certificates.md)のページを参照してください。
 - **Azure ストレージ アカウント キー**: Azure Storage アカウントのキーを自動的に管理できます。 内部的には、Key Vault は Azure ストレージ アカウントのキーを一覧表示し (同期)、定期的にキーを再生成 (ローテーション) できます。 詳細については、[Key Vault を使用してストレージ アカウント キーを管理する方法](../secrets/overview-storage-keys.md)に関するページを参照してください。
 
 Key Vault の一般的な情報については、「[Azure Key Vault について](overview.md)」を参照してください。 Managed HSM プールの詳細については、「[Azure Key Vault Managed HSM とは](../managed-hsm/overview.md)」を参照してください

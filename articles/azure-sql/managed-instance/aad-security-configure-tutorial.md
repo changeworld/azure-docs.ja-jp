@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d763931e7baec0fb17cfc127834cbfccec51d7d6
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639844"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256102"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Managed Instance のセキュリティ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -213,8 +213,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
       GO
       ```
 
-> [!NOTE]
-> Azure AD のゲスト ユーザーは、Azure AD グループの一員として追加されている場合のみ、SQL Managed Instance のログインがサポートされます。 Azure AD のゲスト ユーザーは、マネージド インスタンスが属している Azure AD インスタンスに別の Azure AD インスタンスから招待されるアカウントです。 たとえば、joe@contoso.com (Azure AD アカウント) または steve@outlook.com (Microsoft アカウント) は、Azure AD aadsqlmi インスタンス内のグループに追加できます。 ユーザーがグループに追加されると、**CREATE LOGIN** 構文を使用して、そのグループの SQL Managed Instance **master** データベースにログインを作成できます。 このグループのメンバーであるゲスト ユーザーは、現在のログイン (joe@contoso.com や steve@outlook.com など) を使用してマネージド インスタンスに接続できます。
+ゲスト ユーザーは (AAD グループに所属することは可能ですが、そうせずに) 個々のユーザーとしてサポートされ、現在のログイン構文を使用して、マスターに直接ログインを作成できます (例: joe@contoso.con)。
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login"></a>Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成する
 

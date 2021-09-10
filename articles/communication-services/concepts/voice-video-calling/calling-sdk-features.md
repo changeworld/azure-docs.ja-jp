@@ -2,19 +2,19 @@
 title: Azure Communication Services Calling SDK の概要
 titleSuffix: An Azure Communication Services concept document
 description: Calling SDK の概要について説明します。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 320ef1b523615894910d277fcc155104b4b297bc
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7069d5089142f4fc5a6fff6492726b6f949c8f18
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766540"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259018"
 ---
 # <a name="calling-sdk-overview"></a>Calling SDK の概要
 
@@ -90,6 +90,8 @@ Communication Services Calling SDK では、次のストリーミング構成が
 | **同時に送信できる発信ストリームの数**     | 1 つのビデオまたは 1 つの画面の共有 | 1 つのビデオと 1 つの画面の共有 |
 | **同時に表示できる着信ストリームの数** | 1 つのビデオまたは 1 つの画面の共有 | 6 つのビデオと 1 つの画面の共有 |
 
+Calling SDK ではこれらの制限は適用されませんが、これらを超えた場合、パフォーマンスの低下が生じる場合があります。
+
 ## <a name="calling-sdk-timeouts"></a>Calling SDK のタイムアウト
 
 Communication Services Calling SDK では、次のタイムアウトが適用されます。
@@ -106,18 +108,19 @@ Communication Services Calling SDK では、次のタイムアウトが適用さ
 
 ## <a name="javascript-calling-sdk-support-by-os-and-browser"></a>OS とブラウザーによる JavaScript Calling SDK のサポート
 
-次の表は、現在使用可能な、サポートされているブラウザーのセットを示しています。 特に明記されていない限り、ブラウザーの最新の 3 つのバージョンがサポートされます。
+次の表は、現在使用可能な、サポートされているブラウザーのセットを示しています。 特に明記されていない限り、**ブラウザーの最新の 3 つのバージョンがサポートされます**。
 
-| プラットフォーム     | Chrome | Safari | Edge (Chromium) | メモ                                                                                                                                                                                                       |
-| ------------ | ------ | ------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Android      | ✔️      | ❌      | ❌               | 送信画面の共有はサポートされません。                                                                                                                                                                   |
-| iOS          | ❌      | ✔️      | ❌               | [Safari 上の iOS アプリでは、マイクおよびスピーカー デバイス (Bluetooth など) を列挙または選択できません](https://docs.microsoft.com/azure/communication-services/concepts/known-issues#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados)。これはこの OS の制限であり、デバイスは常に 1 つのみで、選択された既定のデバイスは OS によって制御されています。 送信画面の共有はサポートされません。 |
-| macOS        | ✔️      | ✔️      | ❌               | 送信ビデオのサポートには Safari 14 以降または macOS 11 以降が必要です。                                                                                                                                                     |
-| Windows      | ✔️      | ❌      | ✔️               |                                                                                                                                                                                                             |
-| Ubuntu、Linux | ✔️      | ❌      | ❌               |                                                                                                                                                                                                             |
+| プラットフォーム     | Chrome | Safari | Edge (Chromium)  |
+| ------------ | ------ | ------ | --------------   |
+| Android      | ✔️      | ❌      | ❌           | 
+| iOS          | ❌      | ✔️      | ❌           |
+| macOS        | ✔️      | ✔️      | ❌           | 
+| Windows      | ✔️      | ❌      | ✔️           |
+| Ubuntu、Linux | ✔️      | ❌      | ❌           |    
 
-* Safari バージョン 13.1 以降がサポートされていますが、Safari では一対一の通話はサポートされていません。
-* 特に断りのない限り、各ブラウザーの過去 3 つのバージョンがサポートされています。
+* Safari では、1:1 通話はサポートされていません。
+* iOS および Android では、画面共有の発信側になることはサポートされていません。
+* [Safari 上の iOS アプリでは、マイクおよびスピーカー デバイス (Bluetooth など) を列挙または選択できません](../known-issues.md#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados)。これはこの OS の制限であり、デバイスは常に 1 つのみで、選択された既定のデバイスは OS によって制御されています。
 
 ## <a name="android-calling-sdk-support"></a>Android Calling SDK のサポート
 

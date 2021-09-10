@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/02/2021
+ms.date: 08/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 858e63272faea2aaf2572a5e97e24ba5858d5bda
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 69649cf16ecfeca81d730ecfc19c8124fdc25579
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568449"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224172"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Druva の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "111568449"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Druva では、**IDP** Initiated SSO がサポートされます。
+* Druva では、[自動化されたユーザー プロビジョニング](druva-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -155,6 +156,8 @@ Druva に対して Azure AD SSO を構成してテストするには、次の手
 ### <a name="create-druva-test-user"></a>Druva のテスト ユーザーの作成
 
 このセクションでは、B.Simon というユーザーを Druva に作成します。 Druva では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Druva にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+
+Druva では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./druva-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト
 

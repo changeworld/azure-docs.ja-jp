@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 05d617b39160a55a15eb3e74b6b515ce053baf6c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 2a8f8c4a1cda62c4267f7a0f38f4dc9f9654404f
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113769072"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272459"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -356,13 +356,11 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
     - AWS VM のレプリケーションが停止されます。
     - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントから AWS VM を削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
     - VM のレプリケーション状態情報をクリーンアップします。
-2. 移行されたマシンに [Linux](../virtual-machines/extensions/agent-linux.md) エージェントをインストールします。 Azure VM の Windows エージェントは、移行プロセス中に事前にインストールされています。
-3. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
-4. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
-5. 移行された Azure VM インスタンスにトラフィックを切り替えます。
-6. Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。
-
-
+1. [Azure VM での Windows のライセンス認証に関する問題を確認し、トラブルシューティングします。](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
+1. ホスト名、データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
+1. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
+1. 移行された Azure VM インスタンスにトラフィックを切り替えます。
+1. Azure VM の新しい場所と IP アドレスを示すように内部ドキュメントを更新します。
 
 
 ## <a name="post-migration-best-practices"></a>移行後のベスト プラクティス

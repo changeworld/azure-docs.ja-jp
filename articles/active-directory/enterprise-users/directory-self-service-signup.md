@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: overview
 ms.workload: identity
-ms.date: 05/19/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1869c48e38bdaf56fe4bd428a7bcbd6d316b85
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 58f02ff10ab2eaee7460942e1ba98df1f9771bfc
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535703"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426006"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 
@@ -64,7 +64,7 @@ AllowEmailVerifiedUsers と AllowAdHocSubscriptions は、マネージド テナ
 Flow および Power Apps の試用版サインアップの詳細については、次の記事を参照してください。
 
 * [既存のユーザーが Power BI の使用を開始できないようにするにはどうすればよいですか。](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
-* [組織における Flow の Q&A](/flow/organization-q-and-a)
+* [組織における Flow の Q&A](/power-automate/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>これらの管理機能の連携について
 これら 2 つのパラメーターを組み合わせて使用すると、セルフサービス サインアップをさらに細かく管理できるようになります。 たとえば、次のコマンドによりユーザーはセルフサービス サインアップを実行できますが、 Azure AD のアカウントを既に持っている場合に限定されます (つまり、まずメール検証済みのアカウントを作成する必要があるユーザーは、セルフサービス サインアップを実行できません)。

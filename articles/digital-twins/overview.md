@@ -4,21 +4,21 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins を使用して実行できる操作の概要を説明します。
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 8/23/2021
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 519a64ac9e921624f4e8c03fc91f842eacd2672c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6dfb4faac6fd5bb11dfc1fbb928d9ba377ec1fe3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472957"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224391"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
 **Azure Digital Twins** は、環境全体のデジタル モデルに基づいたツイン グラフの作成を可能にする、サービスとしてのプラットフォーム (PaaS) オファリングです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
 
-Azure Digital Twins に加えて、ご自分の分野の専門知識を活用して、次のようなカスタマイズされた接続済みソリューションを構築します。
+Azure Digital Twins に加えて特定分野の専門知識を活用し、次のようなカスタマイズされた接続済みのソリューションを構築します。
 * あらゆる環境をモデル化し、デジタル ツインをスケーラブルで安全な方法で実現する
 * IoT デバイスや既存のビジネス システムなどの資産を接続する
 * 堅牢なイベント システムを使用して動的なビジネス ロジックとデータ処理を構築する
@@ -36,11 +36,11 @@ Azure Digital Twins では、[モデル](concepts-models.md)と呼ばれるカ�
 
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
-モデルは [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) と呼ばれる JSON に似た形式の言語で定義され、その状態プロパティ、テレメトリ イベント、コマンド、コンポーネント、およびリレーションシップの観点からツインを記述します。
+モデルは、[Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) と呼ばれる JSON に似た形式の言語で定義されており、状態プロパティ、テレメトリ イベント、コマンド、コンポーネント、およびリレーションシップによってツインを記述します。
 * モデルは、エンティティ間のセマンティック **リレーションシップ** を定義して、それらのやり取りを反映するグラフにツインを接続できるようにします。 モデルは自分の環境を説明する名詞で、リレーションシップは動詞として考えることができます。
 * モデルの継承を使用してツインを特殊化することもできます。 一方のモデルがもう一方のモデルから継承できます。
 
-DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-develop/overview-iot-plug-and-play.md) および [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) などの他の Azure IoT サービス全体でデータ モデルに使用されます。 これにより、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持することができます。
+DTDL は、[IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)および [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) などの他の Azure IoT サービス全体でデータ モデルに使用されています。 この種類の共通性により、Azure Digital Twins ソリューションの接続と、Azure エコシステムの他の部分との互換性を維持できます。
 
 ### <a name="live-execution-environment"></a>ライブ実行環境
 
@@ -64,7 +64,7 @@ Azure Digital Twins を使用してこの目的のための新しい IoT Hub を
 
 ### <a name="output-to-adx-tsi-storage-and-analytics"></a>ADX、TSI、ストレージ、分析への出力
 
-Azure Digital Twins モデルのデータは、追加の分析またはストレージのために下流の Azure サービスにルーティングできます。 これは、[イベント ハブ](../event-hubs/event-hubs-about.md)、[Event Grid](../event-grid/overview.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) を使用して、目的のデータ フローを駆動する、**イベント ルート** を通じて提供されます。
+Azure Digital Twins モデルのデータは、追加の分析またはストレージのために下流の Azure サービスにルーティングできます。 この機能は、[イベント ハブ](../event-hubs/event-hubs-about.md)、[Event Grid](../event-grid/overview.md)、または [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) を使用してデータ フローを動作させる **イベント ルート** を通じて提供されます。
 
 イベント ルートでは、次のようなことが可能です。
 * デジタル ツイン データを ADX に送信し、[Azure Data Explorer (ADX) 用の Azure Digital Twins クエリ プラグイン](concepts-data-explorer-plugin.md)を使用してクエリを実行する
@@ -74,14 +74,14 @@ Azure Digital Twins モデルのデータは、追加の分析またはストレ
 * [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) またはその他の Microsoft Data Analytics ツールを使用して Azure Digital Twins データを分析する
 * より大きなワークフローと Logic Apps を統合する
 
-これは、Azure Digital Twins が大規模なソリューションに接続し、これらの分析情報を継続的に使用するためのカスタム ニーズをサポートするもう 1 つの方法です。
+このオプションは、Azure Digital Twins が大規模なソリューションに接続し、これらの分析情報を継続的に使用するためのカスタム ニーズをサポートするもう 1 つの方法です。
 
 ## <a name="azure-digital-twins-in-a-solution-context"></a>ソリューション コンテキストでの Azure Digital Twins
 
 Azure Digital Twins は、大規模な IoT ソリューションの一部として、他の Azure サービスと組み合わせてよく使用されます。 
 
 Azure Digital Twins を使用した完全なソリューションには、次の部分が含まれる場合があります。
-* Azure Digital Twins サービス インスタンス。 これは、ツイン モデルとツイン グラフをその状態で格納し、イベント処理を調整します。
+* Azure Digital Twins サービス インスタンス。 このサービスは、ツイン モデルとツイン グラフをその状態で格納し、イベント処理を調整します。
 * モデルの構成、トポロジの作成、ツイン グラフからの分析情報の抽出によって Azure Digital Twins インスタンスを駆動する 1 つ以上のクライアント アプリ。
 * Azure Digital Twins によって生成されるイベントや、デバイスなどの接続されたデータ ソースを処理するための 1 つ以上の外部コンピューティング リソース。 コンピューティング リソースを提供する一般的な方法の 1 つは、[Azure Functions](../azure-functions/functions-overview.md) を使用することです。
 * デバイス管理と IoT データ ストリーム機能を提供する IoT ハブ。
@@ -93,7 +93,7 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 
 ## <a name="service-limits"></a>サービスの制限
 
-Azure Digital Twins の **サービスの制限** については、「[Azure Digital Twins サービスの制限](reference-service-limits.md)」を参照してください。 これは、サービスを操作する際、サービスの機能とレート制限、および必要に応じて調整できる制限を理解するうえで役立つことがあります。
+Azure Digital Twins の **サービスの制限** については、「[Azure Digital Twins サービスの制限](reference-service-limits.md)」を参照してください。 このリソースは、サービスを操作する際、サービスの機能とレート制限、および必要に応じて調整できる制限を理解するうえで役立つことがあります。
 
 ## <a name="terminology"></a>用語
 
@@ -103,4 +103,4 @@ Azure Digital Twins の **サービスの制限** については、「[Azure Di
 
 * 「[Azure Digital Twins Explorer を開始する](quickstart-azure-digital-twins-explorer.md)」に関するページで、Azure Digital Twins の使用方法について学習します。
 
-* または、[カスタム モデル](concepts-models.md)によって Azure Digital Twins の概念について学びます。
+* または、[DTDL モデル](concepts-models.md)に関するページで Azure Digital Twins の概念について学びます。
