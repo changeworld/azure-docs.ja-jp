@@ -126,7 +126,7 @@ CreateUIDefinition では、組み込みの[マネージド ID コントロー�
 
 ![マネージド ID CreateUIDefinition](./media/publish-managed-identity/msi-cuid.png)
 
-### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを作成する
 
 > [!NOTE]
 > Marketplace マネージド アプリケーション テンプレートは、Azure Portal の作成エクスペリエンスを実行する顧客のために自動的に生成されます。
