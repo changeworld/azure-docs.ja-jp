@@ -36,19 +36,6 @@ items:
         href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
       - name: 顔データを移行する
         href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-      - name: Face コンテナーを使用する
-        items:
-          - name: コンテナーの概要
-            href: ../cognitive-services-container-support.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
-          - name: コンテナーのインストールと実行
-            href: face-how-to-install-containers.md
-          - name: コンテナーを構成する
-            href: face-resource-container-config.md
-          - name: Container Instances の使用
-            href: ../containers/azure-container-instance-recipe.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
-          - name: すべての Cognitive Services コンテナーのドキュメント
-            href: ../containers/index.yml
-            maintainContext: true
       - name: エンタープライズ対応
         items:
           - name: 仮想ネットワークの設定

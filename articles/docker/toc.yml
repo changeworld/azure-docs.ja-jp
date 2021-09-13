@@ -24,6 +24,6 @@
     - name: Docker の Azure ドライバー
       href: 'https://docs.docker.com/machine/drivers/azure/'
     - name: Docker for Azure サイト
-      href: 'https://www.docker.com/docker-azure'
+      href: 'https://docs.docker.com/cloud/aci-integration/'
     - name: Docker サイト
       href: 'https://docker.com'

@@ -1208,10 +1208,8 @@
               href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
         - name: マネージド ディスクのバックアップとディザスター リカバリー
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: ディスクのスナップショットの作成 - CLI
-          href: ./linux/snapshot-copy-managed-disk.md
-        - name: ディスクのスナップショットの作成 - PowerShell
-          href: ./windows/snapshot-copy-managed-disk.md
+        - name: ディスクのスナップショットの作成
+          href: snapshot-copy-managed-disk.md
         - name: アンマネージド ディスクをバックアップする
           href: ./linux/incremental-snapshots.md
         - name: アンマネージド ディスクのバックアップとディザスター リカバリー

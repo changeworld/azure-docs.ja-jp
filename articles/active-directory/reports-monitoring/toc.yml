@@ -106,6 +106,6 @@
     - name: レポート待機時間
       href: reference-reports-latencies.md
     - name: よく寄せられる質問
-      href: reports-faq.md
+      href: reports-faq.yml
     - name: サインイン ログのスキーマ
       href: reference-azure-monitor-sign-ins-log-schema.md
