@@ -191,7 +191,7 @@ ms.locfileid: "89393821"
 | UA         | ウクライナ              | UAH               |
 | AE         | アラブ首長国連邦 | EUR               |
 | GB         | イギリス       | GBP               |
-| US         | United States        | USD               |
+| US         | 米国        | USD               |
 | UY         | ウルグアイ              | UYU               |
 | VE         | ベネズエラ            | USD               |
 |  |  |  |
