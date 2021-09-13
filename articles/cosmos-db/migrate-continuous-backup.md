@@ -8,12 +8,12 @@ ms.date: 08/26/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: f9708a9287ee8ff40de6044249e35ad26b938316
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 270c0fd585c2232b86011673e460737173106b09
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039308"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479078"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>Azure Cosmos DB アカウントを定期バックアップ モードから継続的バックアップ モードに移行する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -175,7 +175,7 @@ t1 に移行を開始して t5 に終了すると仮定した場合、t1 から 
 t1 より前の時点に復元する場合は、定期バックアップ アカウントで通常行うように、サポート チケットを開くことができます。 移行後、最大 30 日間は定期的な復元を実行できます。  この 30 日の間は、移行前のアカウントのバックアップ保持/間隔に基づいて復元を実行できます。  たとえば、1 時間の間隔で 24 個のコピーを保持するバックアップ構成であった場合、t1 の 24 時間前から t1 までの任意の時点に復元できます。
 
 #### <a name="which-account-level-control-plane-operations-are-blocked-during-migration"></a>移行中にブロックされるアカウント レベルのコントロール プレーン操作はどれですか?
-リージョンの追加または削除、フェールオーバー、レプリケーション、バックアップ ポリシーの変更、スループットの変更など、結果としてデータが移動される操作は、移行中、ブロックされます。
+リージョンの追加または削除、フェールオーバー、バックアップ ポリシーの変更、スループットの変更など、結果としてデータが移動される操作は、移行中、ブロックされます。
 
 #### <a name="if-the-migration-fails-for-some-underlying-issue-would-it-still-block-the-control-plane-operation-until-it-is-retried-and-completed-successfully"></a>なんらかの根本的な問題により移行が失敗した場合、再試行して正常に完了するまで、コントロール プレーン操作はブロックされますか?
 移行に失敗しても、コントロール プレーン操作がブロックされることはありません。 移行に失敗した場合は、成功するまで再試行してから、他のコントロール プレーン操作を実行することをお勧めします。

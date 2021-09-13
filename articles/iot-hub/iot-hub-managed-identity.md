@@ -5,14 +5,14 @@ author: miag
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2021
+ms.date: 09/02/2021
 ms.author: miag
-ms.openlocfilehash: 34b83376a555b5fd06947049f959badc9a1aed67
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: e230f06c91e775de87b42fcc2112fc699f9ecafc
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731080"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449238"
 ---
 # <a name="iot-hub-support-for-managed-identities"></a>IoT Hub でのマネージド ID のサポート 
 
@@ -123,7 +123,7 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 このセクションでは、Azure portal を使用して、IoT ハブとの間でユーザー割り当てマネージド ID を追加および削除する方法について説明します。
 1.  最初に、スタンドアロン リソースとしてユーザー割り当てマネージド ID を作成する必要があります。 それを行うには、「[ユーザー割り当てマネージド ID を作成する](./../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#create-a-user-assigned-managed-identity)」の手順に従います。
 2.  IoT ハブにアクセスし、IoT Hub ポータルで **[ID]** に移動します。
-3.  **[ユーザー割り当て]** タブで、 **[ユーザー割り当てマネージド ID の追加]** をクリックします。 ハブに追加するユーザー割り当てマネージド ID を選択し、 **[選択]** をクリックします。 
+3.  **[ユーザー割り当て]** タブで、 **[ユーザー割り当てマネージド ID の関連付け]** をクリックします。 ハブに追加するユーザー割り当てマネージド ID を選択し、 **[選択]** をクリックします。 
 4.  IoT ハブからユーザー割り当て ID を削除できます。 削除するユーザー割り当て ID を選択し、 **[削除]** ボタンをクリックします。 この削除では、ユーザー割り当て ID は IoT ハブから削除されるだけで、リソースとしては削除されないことに注意してください。 リソースとしてのユーザー割り当て ID を削除するには、「[ユーザー割り当てマネージド ID を削除する](./../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#delete-a-user-assigned-managed-identity)」の手順に従います。
 
     :::image type="content" source="./media/iot-hub-managed-identity/user-assigned.png" alt-text="IoT ハブのユーザー割り当てマネージド ID を追加する方法を示すスクリーンショット":::        
@@ -222,22 +222,23 @@ az deployment group create --name <deployment-name> --resource-group <resource-g
 az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
 ```
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>IoT Hub から他の Azure リソースへのエグレス接続
-IoT Hub では、[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)、[ファイルのアップロード](iot-hub-devguide-file-upload.md)、[デバイスの一括インポートおよびエクスポート](iot-hub-bulk-identity-mgmt.md)のために、IoT Hub ハブから他の Azure サービスへのエグレス接続にマネージド ID を使用できます。 顧客所有のエンドポイント (ストレージ アカウント、イベント ハブ、サービス バス エンドポイントなど) への IoT Hub エグレス接続ごとに、使用するマネージド ID を選択できます。 
+[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)、[ファイルのアップロード](iot-hub-devguide-file-upload.md)、[デバイスの一括インポートおよびエクスポート](iot-hub-bulk-identity-mgmt.md)のために、IoT Hub ハブから他の Azure サービスへのエグレス接続にマネージド ID を使用できます。 顧客所有のエンドポイント (ストレージ アカウント、イベント ハブ、サービス バス エンドポイントなど) への IoT Hub エグレス接続ごとに、使用するマネージド ID を選択できます。 
 
 ## <a name="configure-message-routing-with-managed-identities"></a>マネージド ID を使用してメッセージ ルーティングを構成する
-このセクションでは、例として、イベント ハブ カスタム エンドポイントへの[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用します。 同じことが他のルーティング カスタム エンドポイントにも当てはまります。 
+このセクションでは、例として、イベント ハブ カスタム エンドポイントへの[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用します。 この例は、他のルーティング カスタム エンドポイントにも当てはまります。 
 
-1.  まず、Azure portal でご使用のイベント ハブに移動し、マネージド ID に適切なアクセス権を割り当てる必要があります。 イベント ハブで、 **[アクセスの制御 (IAM)]** タブに移動し、 **[追加]** 、 **[ロールの割り当ての追加]** の順にクリックします。
-3.  **[ロール] として [Event Hubs Data Sender]\(Event Hubs のデータ送信者\)** を選択します。
+1.  まず、Azure portal でご使用のイベント ハブに移動し、マネージド ID に適切なアクセス権を割り当てる必要があります。 イベント ハブで、 **[アクセスの制御 (IAM)]** タブに移動し、 **[追加]** 、 **[ロールの割り当ての追加]** の順にクリックします。 ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
+
+2.  **[ロール] として [Event Hubs Data Sender]\(Event Hubs のデータ送信者\)** を選択します。
 
     > [!NOTE] 
     > ストレージ アカウントの場合は、 **[ロール]** として **[ストレージ BLOB データ共同作成者]** を選択します ([ [共同作成者] または [ストレージ アカウント共同作成者] では "*ありません*"](../storage/blobs/assign-azure-role-data-access.md))。 サービス バスの場合は、 **[ロール]** として **[Azure Service Bus のデータ送信者]** を選択します。
 
-4.  ユーザー割り当ての場合、 **[アクセスの割り当て先]** で **[ユーザー割り当てマネージド ID]** を選択します。 ドロップダウン リストで、ご使用のサブスクリプションとユーザー割り当てマネージド ID を選択します。 **[保存]** ボタンをクリックします。
+3.  ユーザー割り当ての場合、 **[アクセスの割り当て先]** で **[ユーザー割り当てマネージド ID]** を選択します。 ドロップダウン リストで、ご使用のサブスクリプションとユーザー割り当てマネージド ID を選択します。 **[保存]** ボタンをクリックします。
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-user-assigned.png" alt-text="ユーザー割り当てを使用した IoT Hub メッセージ ルーティング":::
 
-5.  システム割り当ての場合、 **[アクセスの割り当て先]** で **[ユーザー、グループ、またはサービス プリンシパル]** を選択し、ドロップダウン リストで、ご使用の IoT Hub のリソース名を選択します。 **[保存]** をクリックします。
+4.  システム割り当ての場合、 **[アクセスの割り当て先]** で **[ユーザー、グループ、またはサービス プリンシパル]** を選択し、ドロップダウン リストで、ご使用の IoT Hub のリソース名を選択します。 **[保存]** をクリックします。
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-system-assigned.png" alt-text="システム割り当てを使用した IoT Hub メッセージ ルーティング":::
 
@@ -246,17 +247,17 @@ IoT Hub では、[メッセージ ルーティング](iot-hub-devguide-messages-
     > [!NOTE]
     > イベント ハブを IoT Hub のカスタム エンドポイントとして追加する前に、上記の手順を完了して、マネージ ID に適切なアクセスを割り当てる必要があります。 ロールの割り当てが反映されるまで数分お待ちください。 
 
-6. 次に、IoT ハブに移動します。 ご使用のハブで、 **[メッセージ ルーティング]** に移動し、 **[カスタム エンドポイント]** をクリックします。 **[追加]** をクリックして、使用するエンドポイントの種類を選択します。 このセクションでは、例としてイベント ハブを使用します。
-7.  ページの下部で、希望する **[認証の種類]** を選択します。 このセクションでは、例として、 **[ユーザー割り当て]** を使用します。 ドロップダウンで、優先するユーザー割り当てマネージド ID を選択し、 **[作成]** をクリックします。
+5. 次に、IoT ハブに移動します。 ご使用のハブで、 **[メッセージ ルーティング]** に移動し、 **[カスタム エンドポイント]** をクリックします。 **[追加]** をクリックして、使用するエンドポイントの種類を選択します。 このセクションでは、例としてイベント ハブを使用します。
+6.  ページの下部で、希望する **[認証の種類]** を選択します。 このセクションでは、例として、 **[ユーザー割り当て]** を使用します。 ドロップダウンで、優先するユーザー割り当てマネージド ID を選択し、 **[作成]** をクリックします。
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-routing-endpoint.png" alt-text="ユーザー割り当てを使用する IoT Hub イベント ハブ":::
 
-8. カスタム エンドポイントが正常に作成されました。 
-9. 認証の種類は、作成した後でも変更できます。 認証の種類を変更するカスタム エンドポイントを選択し、 **[認証の種類の変更]** をクリックします。
+7. カスタム エンドポイントが正常に作成されました。 
+8. 認証の種類は、作成した後でも変更できます。 認証の種類を変更するカスタム エンドポイントを選択し、 **[認証の種類の変更]** をクリックします。
 
     :::image type="content" source="./media/iot-hub-managed-identity/change-authentication-type.png" alt-text="IoT Hub の認証の種類":::
 
-10. このエンドポイントに対して更新する新しい認証の種類を選択し、 **[保存]** をクリックします。
+9. このエンドポイントに対して更新する新しい認証の種類を選択し、 **[保存]** をクリックします。
 
 ## <a name="configure-file-upload-with-managed-identities"></a>マネージド ID を使用してファイルのアップロードを構成する
 IoT Hub の[ファイルのアップロード](iot-hub-devguide-file-upload.md)機能を使用すると、デバイスで顧客所有のストレージ アカウントにファイルをアップロードできます。 ファイルのアップロードを機能させるには、IoT Hub でストレージ アカウントに接続する必要があります。 メッセージ ルーティングと同様に、Azure Storage アカウントへの IoT Hub エグレス接続のための優先する認証の種類とマネージド ID を選択できます。 
@@ -273,7 +274,7 @@ IoT Hub の[ファイルのアップロード](iot-hub-devguide-file-upload.md)�
     > マネージド ID を使用するファイルのアップロードのためにストレージ アカウントを IoT Hub に保存する前に、上記の手順を完了して、マネージド ID に適切なアクセスを割り当てる必要があります。 ロールの割り当てが反映されるまで数分お待ちください。 
  
 5. ご使用の IoT Hub のリソース ページで、 **[ファイルのアップロード]** タブに移動します。
-6. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、必要に応じて **[ファイル通知の設定]、[SAS TTL]、[既定の TTL]、[最大配信回数]** を構成します。 優先する認証の種類を選択し、 **[保存]** をクリックします。
+6. 表示されたページで、BLOB ストレージで使用する予定のコンテナーを選択し、必要に応じて **[ファイル通知の設定]、[SAS TTL]、[既定の TTL]、[最大配信回数]** を構成します。 優先する認証の種類を選択し、 **[保存]** をクリックします。 この手順でエラーが発生した場合は、一時的にストレージ アカウントを設定して、**すべてのネットワーク** からのアクセスを許可してから、再試行してください。 ファイルのアップロードの構成が完了したら、ストレージ アカウントでファイアウォールを構成できます。
 
     :::image type="content" source="./media/iot-hub-managed-identity/file-upload.png" alt-text="msi を使用する IoT Hub のファイルのアップロード":::
 

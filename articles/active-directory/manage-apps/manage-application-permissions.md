@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/10/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7585ad6816a8d9fd0a331ae9fcb1e1cea81ddbac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 35afe080bdbb98a871fa039ad533c31ac0e8c111
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742883"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439706"
 ---
-# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する
+# <a name="take-action-on-over-privileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する
 
 アプリケーションのアクセス許可を確認および管理する方法について説明します。 この記事では、シナリオに従って、アプリケーションをセキュリティで保護するために実行できるさまざまなアクションについて説明します。 これらのアクションは、ユーザーまたは管理者の同意によって Azure Active Directory (Azure AD) テナントに追加されたすべてのアプリケーションに適用されます。
 
@@ -28,6 +28,8 @@ ms.locfileid: "121742883"
 ## <a name="prerequisites"></a>前提条件
 
 次のアクションを実行するには、グローバル管理者、アプリケーション管理者、またはクラウド アプリケーション管理者としてサインインする必要があります。
+
+- Azure AD PowerShell を設定します。 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/) に関するページを参照してください。
 
 アプリケーションへのアクセスを制限するには、ユーザーの割り当てが必要で、その後、アプリケーションにユーザーまたはグループを割り当てる必要があります。  詳細については、[ユーザーとグループの割り当て方法](./assign-user-or-group-access-portal.md)に関するページを参照してください。
 
@@ -98,12 +100,8 @@ PowerShell スクリプトを使用すると、このアプリケーションに
 
 サービス プリンシパル オブジェクト ID を取得します。
 
-1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
-3. アクセスを制限するアプリケーションを選択します。
-4. **[プロパティ]** を選択し、オブジェクト ID をコピーします。
-
    ```powershell
+   $app_name = "<Your App's display name>"
    $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
    $sp.ObjectId
    ```

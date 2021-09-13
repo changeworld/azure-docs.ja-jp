@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f23194d46ab8305fa033efe9b9dea8f7a2a69877
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5111092a804845c829cb44f4be9e123b8c9dcca6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477136"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536763"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのデータ読み込み戦略
 
@@ -171,4 +171,4 @@ ETL プロセスを設計する際は、小規模のテスト サンプルでプ
 
 ## <a name="next-steps"></a>次のステップ
 
-読み込みのガイダンスについては、[データの読み込みのガイダンス](guidance-for-loading-data.md)に関するページを参照してください。
+読み込みのガイダンスについては、[データを読み込むためのベスト プラクティス](../sql/data-loading-best-practices.md)に関するページを参照してください。

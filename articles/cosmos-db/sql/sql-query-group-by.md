@@ -5,19 +5,22 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/30/2021
+ms.date: 09/01/2021
 ms.author: tisande
-ms.openlocfilehash: 2aa08f0d2cf0ccb78d231e30e7c60cde47ba4c86
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 50d30ac0636f74715b3472c35b2801ac6452b624
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206476"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428814"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での GROUP BY 句
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 GROUP BY 句では、指定した 1 つ以上のプロパティの値に従ってクエリの結果を分割します。
+
+> [!NOTE]
+> Azure Cosmos DB Python SDK では GROUP BY 句はサポートされません。
 
 ## <a name="syntax"></a>構文
 
@@ -44,7 +47,7 @@ GROUP BY 句では、指定した 1 つ以上のプロパティの値に従っ�
   クエリで GROUP BY 句を使用する場合、SELECT 句には、GROUP BY 句に含まれるプロパティとシステム関数のサブセットのみを含めることができます。 1 つの例外として、GROUP BY 句の中に含めずに SELECT 句に指定できる[集計関数](sql-query-aggregate-functions.md)があります。 SELECT 句には、常にリテラル値も含めることができます。
 
   GROUP BY 句は、SELECT、FROM、および WHERE 句の後、OFFSET LIMIT 句の前に指定する必要があります。 現在は GROUP BY を ORDER BY 句と共に使用することはできませんが、これは計画されています。
-
+  
   GROUP BY 句では、次のいずれも許可されていません。
   
 - プロパティのエイリアス化またはシステム関数のエイリアス化 (なお、SELECT 句ではエイリアス化を使用できます)

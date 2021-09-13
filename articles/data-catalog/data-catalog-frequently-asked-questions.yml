@@ -7,12 +7,12 @@ metadata:
   ms.service: data-catalog
   ms.topic: conceptual
   ms.date: 08/01/2019
-  ms.openlocfilehash: fae90eb2a1a05200a67a6e246710e4adfc5c564c
-  ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+  ms.openlocfilehash: fc39c9a8cdc447a9a38b75aa30de3990aaa8516d
+  ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/06/2021
-  ms.locfileid: "111907808"
+  ms.lasthandoff: 09/04/2021
+  ms.locfileid: "123479064"
 title: Azure Data Catalog のよく寄せられる質問
 summary: >
   [!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
@@ -90,7 +90,7 @@ sections:
     answer: "Data Catalog でデータを登録するには、次の手順を実行します。\n1. Azure Data Catalog ポータルの **[発行]** 領域で、Azure Data Catalog 登録ツールを起動します。 \n2. Data Catalog データ ソース登録ツールで、Data Catalog ポータルへのアクセスに使うのと同じ資格情報でサインインします。\n3. データ ソースと登録する特定の資産を選択します。\n"
   - question: >
       登録されているデータ資産に対し、どのようなプロパティが抽出されますか?
-    answer: "具体的なプロパティはデータ ソースごとに異なりますが、一般に、Data Catalog 発行サービスでは次の情報が抽出されます。\n\n* 資産名\n* 資産の種類\n* 資産の説明\n* 属性/列名\n* 属性/列データ型\n* 属性/列の説明\n\n> [!IMPORTANT]\n> データ資産を Data Catalog に登録しても、クラウドへのデータの移動もコピーも行われません。 データ ソースから資産を登録すると、資産のメタデータが Azure にコピーされますが、データは、既存のデータ ソースの場所に残ります。 このルールの例外は、資産の登録時に、プレビュー レコードまたはデータ プロファイルをアップロードするように選択した場合です。 プレビューを含めると、最大 20 のレコードが各資産からコピーされ、Data Catalog にスナップショットとして格納されます。 データ プロファイルを含めると、集計情報が計算され、カタログに格納されているメタデータに含まれます。 集計情報には、テーブルのサイズ、列あたりの null 値の割合、または列の最小、最大、および平均値を含めることができます。 \n>\n>\n\n> [!NOTE]\n> ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、Data Catalog データ ソース登録ツールはそのプロパティ値を抽出します。 ファーストクラス **Description** プロパティがない \"*オンプレミス*\" SQL Server リレーショナル データベースに対しては、Data Catalog データ ソース登録ツールはオブジェクトと列の **ms_description** 拡張プロパティから値を抽出します。 このプロパティは、SQL Azure ではサポートされていません。 詳細については、「[データベース オブジェクトでの拡張プロパティの使用](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))」を参照してください。\n>\n>\n"
+    answer: "具体的なプロパティはデータ ソースごとに異なりますが、一般に、Data Catalog 発行サービスでは次の情報が抽出されます。\n\n* 資産名\n* 資産の種類\n* 資産の説明\n* 属性/列名\n* 属性/列データ型\n* 属性/列の説明\n\n> [!IMPORTANT]\n> データ資産を Data Catalog に登録しても、クラウドへのデータの移動もコピーも行われません。 データ ソースから資産を登録すると、資産のメタデータが Azure にコピーされますが、データは、既存のデータ ソースの場所に残ります。 このルールの例外は、資産の登録時に、プレビュー レコードまたはデータ プロファイルをアップロードするように選択した場合です。 プレビューを含めると、最大 20 のレコードが各資産からコピーされ、Data Catalog にスナップショットとして格納されます。 データ プロファイルを含めると、集計情報が計算され、カタログに格納されているメタデータに含まれます。 集計情報には、テーブルのサイズ、列あたりの null 値の割合、または列の最小、最大、および平均値を含めることができます。 \n>\n>\n\n> [!NOTE]\n> ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、Data Catalog データ ソース登録ツールはそのプロパティ値を抽出します。 ファーストクラス **Description** プロパティがない \"*オンプレミス*\" SQL Server リレーショナル データベースに対しては、Data Catalog データ ソース登録ツールはオブジェクトと列の **MS_Description** 拡張プロパティから値を抽出します。 このプロパティは、SQL Azure ではサポートされていません。 詳細については、「[データベース オブジェクトでの拡張プロパティの使用](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))」を参照してください。\n>\n>\n"
   - question: >
       新しく登録された資産がカタログに表示されるまでにどのくらいの時間がかかりますか?
     answer: >

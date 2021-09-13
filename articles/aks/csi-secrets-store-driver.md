@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: fd6ebf1534869fa96fe6249d302406583fe55e59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6b971849501eb4229dd4db8a58f7fc59843aef4b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733595"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429048"
 ---
 # <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (AKS) クラスターで Kubernetes にシークレット ストア CSI ドライバーを使用する (プレビュー)
 
@@ -23,6 +23,10 @@ Kubernetes 用のシークレット ストア CSI ドライバーを使用する
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 - 開始する前に、最新バージョンの [Azure CLI](/cli/azure/install-azure-cli-windows) と *aks-preview* 拡張機能をインストールしてください。
+
+### <a name="supported-kubernetes-versions"></a>サポートされている Kubernetes のバージョン
+
+この機能に推奨される Kubernetes の最小バージョンは 1.18 です。 
 
 ## <a name="features"></a>フィーチャー
 

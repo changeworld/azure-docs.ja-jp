@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 8c40af42248e41346d10ec0028c1f13ff7ef22d6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6f3cd38985b6bbf1f0095ef124d2690cce00181f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457949"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473732"
 ---
 # <a name="cognitive-services-development-options"></a>Cognitive Services の開発オプション
 
@@ -39,7 +39,6 @@ Cognitive Services は、次の 4 つのカテゴリに分類されます: 決�
 
 * Computer Vision サービスに画像を送信して、単語や語句を検出したり、フレーム内の人の数を数えたりすることができます
 * Speech サービスにオーディオ ファイルを送信して、文字起こしを行い、同時に音声をテキストに変換することができます
-* PDF を Form Recognizer サービスに送信し、テーブル、セル、セル内のテキストを検出して、座標と詳細を含む JSON 出力を取得することができます
 
 Azure にはさまざまな種類のユーザー向けに設計された幅広いツールが用意されており、その多くは Cognitive Services で使用できます。 デザイナー駆動型ツールは最も使いやすく、簡単に設定して自動化できますが、カスタマイズに関しては制限がある場合があります。 REST API とクライアント ライブラリを使用すると、ユーザーが制御できる範囲や柔軟性は向上しますが、ソリューションを構築するにはより多くの労力、時間、専門知識が必要になります。 REST API とクライアント ライブラリを使用する場合は、C#、Java、Python、JavaScript、その他の一般的なプログラミング言語など、最新のプログラミング言語を使用すると作業が快適になると思われます。 
 
@@ -96,7 +95,7 @@ Power Automate は、コードを記述せずにアプリとサービスの間�
 
 ### <a name="ai-builder"></a>AI Builder 
 
-Microsoft Power Platform の機能である [AI Builder](/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder は、ポイント アンド クリック エクスペリエンスを通して、ソリューションに AI の機能を組み込みます。 Form Recognizer、Text Analytics、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自のコグニティブ サービスを作成する必要はありません。 
+Microsoft Power Platform の機能である [AI Builder](/ai-builder/overview) を使用すると、プロセスを自動化して結果を予測することにより、ビジネスのパフォーマンスを向上させることができます。 AI Builder は、ポイント アンド クリック エクスペリエンスを通して、ソリューションに AI の機能を組み込みます。 Text Analytics、Computer Vision などの多くの Cognitive Services がここに直接統合されており、独自のコグニティブ サービスを作成する必要はありません。 
 
 * **対象ユーザー**: ビジネス ユーザー (アナリスト)、SharePoint 管理者
 * **利点**:ポイント アンド クリック エクスペリエンスにより AI の機能を組み込むターンキー ソリューション。 コーディングやデータ サイエンスのスキルは必要ありません。
@@ -125,7 +124,6 @@ Cognitive Services を使用してアプリケーションまたはワークフ�
 | 重要な要素 | サービス | カスタマイズ UI | クイック スタート |
 |--------|---------|------------------|------------|
 | 視覚 | Custom Vision | https://www.customvision.ai/ | [クイックスタート](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| 視覚 | Form Recognizer | [サンプル ラベル付けツール](https://aka.ms/fott-2.1-ga) | [操作方法に関する記事](./form-recognizer/label-tool.md?tabs=v2-0) |
 | 決定 | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [クイックスタート](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | 決定 | Personalizer | UI は、Azure portal の Personalizer リソースで使用できます。 | [クイックスタート](./personalizer/quickstart-personalizer-sdk.md) |
 | Language | Language Understanding (LUIS) | https://www.luis.ai/ | |

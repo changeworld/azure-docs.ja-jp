@@ -3,12 +3,12 @@ title: Azure Video Analyzer のトラブルシューティング - Azure
 description: この記事では、Azure Video Analyzer のトラブルシューティング手順について説明します。
 ms.topic: troubleshooting
 ms.date: 07/15/2021
-ms.openlocfilehash: c3b95936eabfcaefa12b9271b152d196790841c4
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 0d3a089fee6d374dd8109f2430cfdb9fec19bc30
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362648"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429354"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Azure Video Analyzer のトラブルシューティング
 
@@ -39,7 +39,7 @@ ARM テンプレート ([Azure へのデプロイ] ボタン) を使用してい
 az iot edge set-modules --hub-name <iot-hub-name> --device-id avasample-iot-edge-device --content <path-to-deployment_manifest.json>
 ```
 
-JSON コードが整形式ではない場合、次のエラーが表示されます: &nbsp;&nbsp;&nbsp; **Failed to parse JSON from file: '<deployment manifest.json>' for argument 'content' with exception: "Extra data: line 101 column 1 (char 5325)"**
+JSON コードが整形式ではない場合、次のエラーが表示されます: &nbsp;&nbsp;&nbsp; **Failed to parse JSON from file: '\<deployment manifest.json\>' for argument 'content' with exception: "Extra data: line 101 column 1 (char 5325)"**
 
 このエラーが発生した場合は、かっこの不足やファイルの構造に関するその他の問題がないか、JSON を確認することをお勧めします。 ファイル構造を検証するには、[JSON Viewer プラグイン搭載の Notepad++](https://riptutorial.com/notepadplusplus/example/18201/json-viewer) などのクライアントや、[JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/) などのオンライン ツールを使用できます。
 
@@ -293,7 +293,7 @@ Video Analyzer による監視が行われていないか、またはハード�
 - ネットワーク接続をテストするには、エッジ デバイスから次のコマンドを実行できます。
 
   ```
-  sudo docker exec avaedge /bin/bash -c “apt update; apt install -y telnet; telnet <inference-host> <inference-port>”
+  sudo docker exec avaedge /bin/bash -c "apt update; apt install -y telnet; telnet <inference-host> <inference-port>"
   ```
 
   コマンドによって短い文字列の乱雑なテキストが出力された場合、Telnet は正常に推論サーバーへの接続を開き、バイナリ gRPC チャネルを開くことができました。 これが表示されない場合、Telnet はネットワーク エラーを報告します。

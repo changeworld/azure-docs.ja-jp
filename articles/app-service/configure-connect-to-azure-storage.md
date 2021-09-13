@@ -3,15 +3,15 @@ title: Azure Storage をローカル共有 (コンテナー) としてマウン�
 description: Azure App Service 内のコンテナー化されたアプリにカスタム ネットワーク共有をアタッチする方法について説明します。 アプリ間でのファイルの共有、静的コンテンツのリモート管理、ローカルでのアクセスなどを行います。
 author: msangapu-msft
 ms.topic: article
-ms.date: 6/21/2021
+ms.date: 09/02/2021
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 445a834e32b11ca0f2a30120d2942c1057d83d50
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 77dc45d71a4a9706dd645289dd5839ee97c17314
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113006034"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472022"
 ---
 # <a name="mount-azure-storage-as-a-local-share-in-a-container-app-in-app-service"></a>App Service のコンテナー アプリでローカル共有として Azure Storage をマウントする
 
@@ -39,8 +39,10 @@ ms.locfileid: "113006034"
 
 Windows コンテナーでは、次の機能がサポートされています。
 
+- [プライベート リンク](../storage/common/storage-private-endpoints.md)を使用したストレージ アカウントへの安全なアクセス ([VNET 統合](web-sites-integrate-with-vnet.md)が使用される場合)。 [サービス エンドポイント](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)のサポートは現在提供されていません。
 - Azure Files (読み取り/書き込み)。
 - アプリあたり最大 5 つのマウント ポイント。
+- ドライブ文字の割り当て (`C:` から `Z:`)。
 
 ::: zone-end
 
@@ -82,11 +84,10 @@ Linux コンテナーでは、次の機能がサポートされています。
 ::: zone pivot="container-windows"
 
 - ストレージのマウントは、ネイティブの Windows アプリ (コンテナー化されていない) ではサポートされていません。
-- [ストレージのファイアウォール](../storage/common/storage-network-security.md)、[サービス エンドポイント](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)、および[プライベート エンドポイント](../storage/common/storage-private-endpoints.md)はサポートされていません。
+- Azure Blob はサポートされていません。
+- [ストレージのファイアウォール](../storage/common/storage-network-security.md)は、[プライベート エンドポイント](../storage/common/storage-private-endpoints.md)を介してのみサポートされます ([VNET 統合](web-sites-integrate-with-vnet.md)が使用されている場合)。 現在、マウントされた Azure Storage アカウントがプライベート エンドポイントを使用している場合には、カスタム DNS サポートは使用できません。
 - マウントされたストレージへの FTP/FTPS アクセスはサポートされていません ([Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用してください)。
-- Azure CLI、Azure PowerShell、Azure SDK のサポートはプレビュー段階です。
-- カスタム マウント ストレージへの `D:\` または `D:\home` のマッピングはサポートされていません。
-- ドライブ文字の割り当て (`C:` から `Z:`) はサポートされていません。
+- カスタム マウント ストレージへの `[C-Z]:\`、`[C-Z]:\home`、`/`、`/home` のマッピングはサポートされていません。
 - [デプロイ スロット](deploy-staging-slots.md)の作成中に、ストレージのマウントを複製設定オプションと共に使用することはできません。
 - ストレージのマウントは、[アプリをバックアップ](manage-backup.md)するときにバックアップされません。 必ずベスト プラクティスに従って Azure Storage アカウントをバックアップしてください。 
 
@@ -104,29 +105,11 @@ Linux コンテナーでは、次の機能がサポートされています。
 ::: zone-end
 
 ::: zone pivot="container-windows"
-
 ## <a name="mount-storage-to-windows-container"></a>ストレージを Windows コンテナーにマウントする
-
-コマンド [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) を使用します。 次に例を示します。
-
-```azurecli
-az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory>
-```
-
-- Windows コンテナーでは `--storage-type` は `AzureFiles` にする必要があります。 
-- `mount-path-directory` の形式は、ドライブ文字なしで `/path/to/dir` または `\path\to\dir` にする必要があります。 常に `C:\` ドライブにマウントされます。 `/` または `\` (ルート ディレクトリ) は使用しないでください。
-
-次のコマンドを実行して、ストレージがマウントされていることを確認します。
-
-```azurecli
-az webapp config storage-account list --resource-group <resource-group> --name <app-name>
-```
-
 ::: zone-end
-
 ::: zone pivot="container-linux"
-
 ## <a name="mount-storage-to-linux-container"></a>ストレージを Linux コンテナーにマウントする
+::: zone-end
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
@@ -134,6 +117,17 @@ az webapp config storage-account list --resource-group <resource-group> --name <
 1. 左側のナビゲーションで、 **[構成]**  >  **[Path Mappings]\(パス マッピング\)**  >  **[新しい Azure Storage マウント]** をクリックします。 
 1. 次の表に従って、ストレージのマウントを構成します。 完了したら、 **[OK]** をクリックします。
 
+    ::: zone pivot="container-windows"
+    | 設定 | 説明 |
+    |-|-|
+    | **名前** | マウント構成の名前。 スペースは使用できません。 |
+    | **[構成オプション]** | [プライベート エンドポイント](../storage/common/storage-private-endpoints.md)を使用していない場合は、 **[基本]** を選択します。 それ以外の場合は、 **[詳細]** を選択します。 |
+    | **ストレージ アカウント** | Azure ストレージ アカウント。 Azure Files 共有が含まれている必要があります。 |
+    | **共有名** | マウントするファイル共有。 |
+    | **[アクセス キー]** ([詳細] のみ) | ストレージ アカウントの[アクセス キー](../storage/common/storage-account-keys-manage.md)。 |
+    | **[マウント パス]** | Azure Storage にマウントする、Windows コンテナー内のディレクトリ。 ルート ディレクトリ (`[C-Z]:\` や `/`) と `home` ディレクトリ (`[C-Z]:\home` や `/home`) は使用しないでください。|
+    ::: zone-end
+    ::: zone pivot="container-linux"
     | 設定 | 説明 |
     |-|-|
     | **名前** | マウント構成の名前。 スペースは使用できません。 |
@@ -142,25 +136,38 @@ az webapp config storage-account list --resource-group <resource-group> --name <
     | **ストレージの種類** | マウントするストレージに基づいて種類を選択します。 Azure BLOB では、読み取り専用アクセスのみがサポートされています。 |
     | **[ストレージ コンテナー]** または **[共有名]** | マウントするファイル共有または BLOB コンテナー。 |
     | **[アクセス キー]** ([詳細] のみ) | ストレージ アカウントの[アクセス キー](../storage/common/storage-account-keys-manage.md)。 |
-    | **[マウント パス]** | Azure Storage にマウントする、Linux コンテナー内のディレクトリ。 `/` (ルート ディレクトリ) は使用しないでください。 |
+    | **[マウント パス]** | Azure Storage にマウントする、Linux コンテナー内のディレクトリ。 `/` または `/home` を使用しないでください。|
+    ::: zone-end
 
     > [!CAUTION]
-    > **[マウント パス]** に指定される Linux コンテナー内のディレクトリは、空であることが必要です。 このディレクトリに格納されている内容は、Azure Storage がマウントされると削除されます (たとえば、`/home` の下のディレクトリを指定した場合)。 既存アプリのファイルを移行する場合は、始める前に、アプリとその内容をバックアップしてください。
+    > **[マウント パス]** に指定されるコンテナー内のディレクトリは、空であることが必要です。 このディレクトリに格納されている内容は、Azure Storage がマウントされると削除されます (たとえば、`/home` の下のディレクトリを指定した場合)。 既存アプリのファイルを移行する場合は、始める前に、アプリとその内容をバックアップしてください。
     >
     
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-コマンド [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) を使用します。 
+コマンド [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) を使用します。 次に例を示します。
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory>
 ```
 
+::: zone pivot="container-windows"
+- Windows コンテナーでは `--storage-type` は `AzureFiles` にする必要があります。 
+- `mount-path-directory` の形式は、ドライブ文字なしで `/path/to/dir` または `[C-Z]:\path\to\dir` にする必要があります。 ルート ディレクトリ (`[C-Z]:\` や `/`) と `home` ディレクトリ (`[C-Z]:\home` や `/home`) は使用しないでください。
+::: zone-end
+::: zone pivot="container-linux"
 - `--storage-type` には、`AzureBlob` または `AzureFiles` を指定できます。 `AzureBlob` は読み取り専用です。
 - `--mount-path`は、Azure Storage にマウントする、Linux コンテナー内のディレクトリです。 `/` (ルート ディレクトリ) は使用しないでください。
+::: zone-end
+
+次のコマンドを実行して、ストレージがマウントされていることを確認します。
+
+```azurecli
+az webapp config storage-account list --resource-group <resource-group> --name <app-name>
+```
 
 > [!CAUTION]
-> `--mount-path` に指定される Linux コンテナー内のディレクトリは、空であることが必要です。 このディレクトリに格納されている内容は、Azure Storage がマウントされると削除されます (たとえば、`/home` の下のディレクトリを指定した場合)。 既存アプリのファイルを移行する場合は、始める前に、アプリとその内容をバックアップしてください。
+> `--mount-path` に指定されるコンテナー内のディレクトリは、空であることが必要です。 このディレクトリに格納されている内容は、Azure Storage がマウントされると削除されます (たとえば、`/home` の下のディレクトリを指定した場合)。 既存アプリのファイルを移行する場合は、始める前に、アプリとその内容をバックアップしてください。
 >
 
 次のコマンドを実行して、構成を確認します。
@@ -170,8 +177,6 @@ az webapp config storage-account list --resource-group <resource-group> --name <
 ```
 
 ---
-
-::: zone-end
 
 > [!NOTE]
 > ストレージのマウントを追加、編集、または削除すると、アプリが再起動されます。 
@@ -195,27 +200,42 @@ Azure Storage がアプリに対して正常にマウントされたことを検
     tcpping Storageaccount.file.core.windows.net 
     ```
 
+::: zone-end
+
 ## <a name="best-practices"></a>ベスト プラクティス
 
 - 待機時間に関連する潜在的な問題を回避するには、アプリと Azure Storage アカウントを同じ Azure リージョンに配置します。 ただし、アプリと Azure Storage アカウントが同じ Azure リージョンにある場合、App Service IP アドレスからのアクセスを [Azure Storage ファイアウォール構成](../storage/common/storage-network-security.md)で許可しても、それらの IP 制限が適用されないことに注意してください。
-- コンテナー アプリのマウント パスは空である必要があります。 このパスに格納されている内容は、Azure Storage がマウントされると削除されます (たとえば、`/home` の下のディレクトリを指定した場合)。 既存アプリのファイルを移行する場合は、始める前に、アプリとその内容をバックアップしてください。
+::: zone pivot="container-windows"
+- コンテナー アプリのマウント ディレクトリは空である必要があります。 このパスに格納されている内容は、Azure Storage がマウントされると削除されます。 既存アプリのファイルを移行する場合は、始める前に、アプリとその内容をバックアップしてください。
+::: zone-end
+::: zone pivot="container-linux"
+- コンテナー アプリのマウント ディレクトリは空である必要があります。 このパスに格納されている内容は、Azure Storage がマウントされると削除されます (たとえば、`/home` の下のディレクトリを指定した場合)。 既存アプリのファイルを移行する場合は、始める前に、アプリとその内容をバックアップしてください。
+
 - アプリのパフォーマンス ボトルネックが発生する可能性があるため、ストレージの `/home` へのマウントは推奨されません。 
+::: zone-end
 - Azure Storage アカウントでは、アプリでストレージのマウントに使用される[アクセス キーの再生成](../storage/common/storage-account-keys-manage.md)を行わないようにしてください。 ストレージ アカウントには、2 つの異なるキーが含まれています。 キーの再生成中にストレージのマウントをアプリで引き続き使用できるようにするには、段階的なアプローチを使用します。 たとえば、**key1** を使用して、アプリでストレージのマウントを構成したとします。
+
     1. **key2** を再生成します。 
     1. ストレージのマウント構成で、再生成された **key2** を使用するアクセス キーを更新します。
     1. **key1** を再生成します。
+
 - Azure Storage のアカウント、コンテナー、または共有を削除する場合は、可能性があるエラー シナリオを回避するために、対応するストレージのマウント構成をアプリから削除します。 
+
 - マウントされた Azure Storage アカウントは、Standard または Premium パフォーマンス レベルのいずれかになります。 アプリの容量とスループットの要件に基づいて、ストレージ アカウントに適したパフォーマンス レベルを選択します。 ストレージの種類に対応するスケーラビリティとパフォーマンスの目標を確認します。
-    - [ファイルの場合](../storage/files/storage-files-scale-targets.md)
-    - [BLOB の場合](../storage/blobs/scalability-targets.md)  
+
+    - [ファイルの場合](../storage/files/storage-files-scale-targets.md) (Windows コンテナーおよび Linux コンテナー)
+    - [BLOB の場合](../storage/blobs/scalability-targets.md) (Linux コンテナーのみ)
+
 - アプリが[複数のインスタンスにスケーリング](../azure-monitor/autoscale/autoscale-get-started.md)される場合、マウントされている同じ Azure Storage アカウントにすべてのインスタンスが接続します。 パフォーマンス ボトルネックとスループットの問題を回避するには、ストレージ アカウントに対して適切なパフォーマンス レベルを選択します。  
+
 - ローカル データベース (SQLite など) や、ファイル ハンドルやロックに依存するその他のアプリケーションやコンポーネントに対しては、ストレージのマウントの使用をお勧めしません。 
+
 - アプリで Azure Storage [プライベート エンドポイント](../storage/common/storage-private-endpoints.md)を使用しているときは、次の 2 つのアプリ設定を設定する必要があります。
+
     - `WEBSITE_DNS_SERVER` = `168.63.129.16`
     - `WEBSITE_VNET_ROUTE_ALL` = `1`
-- [ストレージのフェールオーバーを開始](../storage/common/storage-initiate-account-failover.md)する場合にストレージ アカウントがアプリにマウントされていると、アプリを再起動するか Azure Storage マウントを削除して追加するまでは、マウントが接続に失敗します。 
 
-::: zone-end
+- [ストレージのフェールオーバーを開始](../storage/common/storage-initiate-account-failover.md)する場合にストレージ アカウントがアプリにマウントされていると、アプリを再起動するか Azure Storage マウントを削除して追加するまでは、マウントが接続に失敗します。 
 
 ## <a name="next-steps"></a>次の手順
 

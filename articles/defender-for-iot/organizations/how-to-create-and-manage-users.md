@@ -3,12 +3,12 @@ title: ユーザーの作成と管理
 description: センサーとオンプレミス管理コンソールのユーザーを作成および管理します。 ユーザーには、管理者、セキュリティ アナリスト、または読み取り専用ユーザーのロールを割り当てることができます。
 ms.date: 05/20/2021
 ms.topic: article
-ms.openlocfilehash: 256b97f08f687b444375135d0b809423b8a73796
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: fa10961218d536faf09a1f7062c8a8c77dc99ce4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020757"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434036"
 ---
 # <a name="about-defender-for-iot-console-users"></a>About Defender for IoT コンソール ユーザーについて
 
@@ -135,20 +135,24 @@ ms.locfileid: "113020757"
 
 サインアウト カウント期間を更新するには、`= <number>` 値を必要な時間に調整します。
 
-## <a name="track-user-activity"></a>ユーザー アクティビティを追跡する 
+## <a name="track-user-activity"></a>ユーザー アクティビティを追跡する
 
 各センサーのイベント タイムラインでユーザー アクティビティを追跡できます。 タイムラインには、イベントまたは影響を受けたデバイス、およびユーザーがアクティビティを実行した日時が表示されます。
 
 **ユーザー アクティビティを表示するには**:
 
 1. センサーにサインインします。
-1. イベント タイムラインで、 **[User Operations]\(ユーザー操作\)** オプションを有効にします。 
+
+1. イベント タイムラインで、 **[User Operations]\(ユーザー操作\)** オプションを有効にします。
 
     :::image type="content" source="media/how-to-create-azure-for-defender-users-and-roles/User-login-attempts.png" alt-text="ユーザーのアクティビティの表示。":::
 
-## <a name="integrate-with-active-directory-servers"></a>Active Directory サーバーと統合する 
+## <a name="integrate-with-active-directory-servers"></a>Active Directory サーバーと統合する
 
 Active Directory と統合するようにセンサーまたはオンプレミス管理コンソールを構成します。 これにより、Active Directory ユーザーが Active Directory の資格情報を使用して、Defender for IoT コンソールにアクセスできるようになります。
+
+> [!Note]
+> LDAP v3 がサポートされています。
 
 2 種類の LDAP ベースの認証がサポートされています。
 
@@ -166,20 +170,20 @@ Active Directory と統合するようにセンサーまたはオンプレミス
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Active Directory のシステム設定を表示します。":::
 
-2. **[システム設定]** ペインで、 **[Active Directory]** を選択します。
+1. **[システム設定]** ペインで、 **[Active Directory]** を選択します。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Active Directory 構成を編集します。":::
 
-3. **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスで、 **[Active Directory Integration Enabled]\(Active Directory 統合の有効化\)**  >  **[保存]** を選択します。 **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスが展開され、Active Directory を構成するためのパラメーターを入力できるようになります。
+1. **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスで、 **[Active Directory Integration Enabled]\(Active Directory 統合の有効化\)**  >  **[保存]** を選択します。 **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスが展開され、Active Directory を構成するためのパラメーターを入力できるようになります。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Active Directory を構成するためのパラメーターを入力します。":::
 
-    > [!NOTE]
-    > - ここでは、Active Directory に表示されるとおりに LDAP パラメーターを定義する必要があります。
-    > - すべての Active Directory パラメーターには、小文字のみを使用します。 Active Directory の構成で大文字が使用されている場合でも、小文字を使用します。
-    > - 同じドメインに対して、LDAP と LDAPS の両方を構成することはできません。 ただし、別のドメインに対しては、これらの両方を同時に使用できます。
+> [!NOTE]
+> - ここでは、Active Directory に表示されるとおりに LDAP パラメーターを定義する必要があります。
+> - すべての Active Directory パラメーターには、小文字のみを使用します。 Active Directory の構成で大文字が使用されている場合でも、小文字を使用します。
+> - 同じドメインに対して、LDAP と LDAPS の両方を構成することはできません。 ただし、別のドメインに対しては、これらの両方を同時に使用できます。
 
-4. 次の Active Directory サーバーのパラメーターを設定します。
+1. 次の Active Directory サーバーのパラメーターを設定します。
 
    | サーバー パラメーター | [説明] |
    |--|--|
@@ -195,7 +199,7 @@ Active Directory と統合するようにセンサーまたはオンプレミス
 
 1. **[保存]** を選択します。
 
-2. 信頼されたサーバーを追加するには、 **[サーバーの追加]** を選択し、別のサーバーを構成します。
+1. 信頼されたサーバーを追加するには、 **[サーバーの追加]** を選択し、別のサーバーを構成します。
 
 ## <a name="change-a-users-password"></a>ユーザーのパスワードを変更します
 

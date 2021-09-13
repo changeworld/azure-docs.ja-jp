@@ -5,15 +5,15 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 04/04/2020
+ms.date: 09/03/2021
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: b31c351159ccba0718293dad5b81247d973ea275
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a3ac64590c2978ccd052a9dd294cf3ce49bb847e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779076"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479449"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API でのセカンダリ インデックス作成
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -30,6 +30,9 @@ Azure Cosmos DB の Cassandra API は、基になるインデックス作成イ�
 > - frozen コレクション型、decimal 型、variant 型などのデータ型。
 > - 静的列
 > - クラスタリング キー
+
+> [!WARNING]
+> テーブルに [複合プライマリ キー](cassandra-partitioning.md#compound-primary-key)が存在し、なおかつ複合プライマリ キーのパーティション キー値要素 "*のみ*" を条件としてフィルター処理を行いたい場合は、"*そのパーティション キーに対するセカンダリ インデックスを明示的に追加*" してください。 既定では、Azure Cosmos DB Cassandra API によってパーティション キーにインデックスが適用されません。また、このシナリオでは、クエリ パフォーマンスがインデックスによって大幅に向上する可能性があります。 詳細については、[パーティション分割](cassandra-partitioning.md)に関する記事を参照してください。
 
 ## <a name="indexing-example"></a>インデックス作成の例
 
@@ -72,6 +75,8 @@ CREATE INDEX ON sampleks.t1 (lastname);
 ```shell
 drop index sampleks.t1_lastname_idx;
 ```
+
+
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB での[自動インデックス作成](../index-overview.md)のしくみを確認する

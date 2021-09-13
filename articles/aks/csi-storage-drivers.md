@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) で Container Storage Interface (CSI) ド�
 description: Azure Kubernetes Service (AKS) クラスターで Azure ディスクと Azure Files 用の Container Storage Interface (CSI) ドライバーを有効にする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 08/31/2021
 author: palma21
-ms.openlocfilehash: 7aad80816a7bf8f6a1c55c8a4f1de1d4761fc523
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7fe0aa073cf1ecb959bc7999ba59a2486c65b7e1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733598"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429012"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクと Azure Files 用の Container Storage Interface (CSI) ドライバーを有効にする
 
@@ -22,7 +22,9 @@ AKS での CSI ストレージ ドライバーのサポートにより、次を�
 
 > [!IMPORTANT]
 > Kubernetes バージョン 1.21 以降では、既定で CSI ドライバーのみが使用されます。 これらのドライバーは、Kubernetes でのストレージ サポートの未来です。
->
+> 
+> Azure Disk と Azure File の手動でインストールしたオープンソース CSI ドライバーは、AKS 1.21 へのアップグレード前に削除してください。
+> 
 > "*ツリー内ドライバー*" とは、プラグインの新しい CSI ドライバーに対し、コア Kubernetes コードの一部である現在のストレージ ドライバーを指します。
 
 ## <a name="limitations"></a>制限事項

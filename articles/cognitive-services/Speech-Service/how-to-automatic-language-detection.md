@@ -1,28 +1,30 @@
 ---
 title: 言語識別の使用方法
 titleSuffix: Azure Cognitive Services
-description: 言語識別は、提供された言語一覧と照合する際に、Speech SDK に渡されたオーディオで話されている言語を判断するために使用されます。
+description: 言語識別を音声認識と組み合わせることで、認識中の会話音声で話されている言語を特定できます。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/21/2021
-ms.author: lajanuar
+ms.author: pafarley
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: e24a24b54d31a98497bfba453b6677ebf0f560a9
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 04c5c178a37f83203c0b5ee0597cba0b832933d7
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322881"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538545"
 ---
 # <a name="how-to-use-language-identification"></a>言語識別の使用方法
 
 言語識別は、提供された言語一覧と照合する際に、Speech SDK に渡されたオーディオで話されている言語を判断するために使用されます。 言語識別によって返される値を使用して、音声テキスト変換の言語モデルが選択されます。これにより、文字起こしの精度が上がります。 
 
-言語識別は、[音声翻訳](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification)の実行中、または[スタンドアロン識別](#standalone-language-identification)を実行する際に使用できます。 利用できる言語については、[言語サポート](language-support.md)に関するページを参照してください。
+言語識別は、[音声翻訳](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification)の実行中、または[スタンドアロン識別](/azure/cognitive-services/speech-service/language-identification)を実行する際に使用できます。 
+
+利用できる言語については、[言語サポート](language-support.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -339,87 +341,6 @@ speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) 
 
 ::: zone-end
 
-## <a name="standalone-language-identification"></a>スタンドアロン言語識別
-
-::: zone pivot="programming-language-csharp"
-
-話されているソース言語の検出のみが必要な場合、次のコード サンプルに示すように、スタンドアロン言語識別を使用できます。 `SourceLanguageRecognizer` は、継続認識のシナリオでも使用できます。
-
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
-
-var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
-// can switch "Latency" to "Accuracy" depending on priority
-speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
-
-var autoDetectSourceLanguageConfig =
-    AutoDetectSourceLanguageConfig.FromLanguages(
-        new string[] { "en-US", "de-DE" });
-
-using (var recognizer = new SourceLanguageRecognizer(speechConfig, autoDetectSourceLanguageConfig))
-{
-    var result = await recognizer.RecognizeOnceAsync();
-    if (result.Reason == ResultReason.RecognizedSpeech)
-    {
-        var lang = AutoDetectSourceLanguageResult.FromResult(result).Language;
-        Console.WriteLine($"DETECTED: Language={lang}");
-    }
-}
-```
-
-スタンドアロン言語識別の例 (継続識別の例を含む) については、[GitHub のサンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/standalone_language_detection_samples.cs)を参照してください。
-
-::: zone-end
-
-::: zone pivot="programming-language-cpp"
-
-話されているソース言語の検出のみが必要な場合、次のコード サンプルに示すように、スタンドアロン言語識別を使用できます。 `SourceLanguageRecognizer` は、継続認識のシナリオでも使用できます。
-
-```cpp
-using namespace std;
-using namespace Microsoft::CognitiveServices::Speech;
-using namespace Microsoft::CognitiveServices::Speech::Audio;
-
-auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
-config->SetProperty(PropertyId::SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
-
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
-
-auto recognizer = SourceLanguageRecognizer::FromConfig(config, autoDetectSourceLanguageConfig);
-cout << "Say something...\n";
-
-auto result = recognizer->RecognizeOnceAsync().get();
-if (result->Reason == ResultReason::RecognizedSpeech)
-{
-    auto lidResult = AutoDetectSourceLanguageResult::FromResult(result);
-    cout << "DETECTED: Language="<< lidResult->Language << std::endl;
-}
-```
-
-スタンドアロン言語識別の例 (継続識別の例を含む) については、[GitHub のサンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/standalone_language_detection_samples.cpp)を参照してください。
-
-::: zone-end
-
-::: zone pivot="programming-language-java"
-> [!IMPORTANT]
-> この機能は現在、C#、C++、Python でのみサポートされています。
-::: zone-end
-
-::: zone pivot="programming-language-python"
-> [!IMPORTANT]
-> この機能は現在、C#、C++、Python でのみサポートされています。
-::: zone-end
-
-::: zone pivot="programming-language-objectivec"
-> [!IMPORTANT]
-> この機能は現在、C#、C++、Python でのみサポートされています。
-::: zone-end
-
-::: zone pivot="programming-language-javascript"
-> [!IMPORTANT]
-> この機能は現在、C#、C++、Python でのみサポートされています。
-::: zone-end
 
 ## <a name="use-a-custom-model-for-language-identification"></a>言語識別にカスタム モデルを使用する
 
@@ -509,6 +430,7 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 
 ::: zone-end
 
+
 ## <a name="next-steps"></a>次のステップ
 
 ::: zone pivot="programming-language-csharp"
@@ -530,5 +452,3 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 ::: zone pivot="programming-language-objectivec"
 * 言語識別については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L525)を参照してください
 ::: zone-end
-
-* [Speech SDK のリファレンス ドキュメント](speech-sdk.md)

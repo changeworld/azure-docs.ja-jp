@@ -6,13 +6,13 @@ ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: f3b6c41006c18e1b5e211b36756250dba28ae1d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/03/2021
+ms.openlocfilehash: 192d18349b783cccb8548dc0983c6d3e386f39e9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779453"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468332"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API でのパーティション分割
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -86,9 +86,20 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 :::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="クラスター化キーによって並べ替えられた、返されたデータを示すスクリーンショット。":::
 
+> [!WARNING]
+> データを照会するとき、(前述のケースと同様) 複合プライマリ キーのパーティション キー値要素 "*のみ*" を条件としてフィルター処理を行いたい場合は、"*そのパーティション キーに対するセカンダリ インデックスを明示的に追加*" してください。
+>
+>    ```shell
+>    CREATE INDEX ON uprofile.user (user);
+>    ```
+>
+> 既定では、Azure Cosmos DB Cassandra API によってパーティション キーにインデックスが適用されません。また、このシナリオでは、クエリ パフォーマンスがインデックスによって大幅に向上する可能性があります。 詳細については、[セカンダリ インデックス作成](secondary-indexing.md)に関する記事を参照してください。
+
 この方法でモデル化されたデータを使用して、各パーティションに複数のレコードを割り当て、ユーザー別にグループ化することができます。 そのため、`partition key` (この場合は `user`) によって効率的にルーティングされるクエリを発行して、特定のユーザーのすべてのメッセージを取得できます。 
 
 :::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="各パーティションに複数のレコードを割り当てて、ユーザー別にグループ化する方法を示す図。" border="false":::
+
+
 
 
 ## <a name="composite-partition-key"></a>複合パーティション キー

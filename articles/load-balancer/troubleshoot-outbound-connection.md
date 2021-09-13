@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: anavin
-ms.openlocfilehash: 71472a89b2aa3138c83dac1f5c2dfc5649c9b9ce
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: e51a74ef4f01bda57e7cdef026aed9aa85111ca3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583169"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437402"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a>アウトバウンド接続エラーのトラブルシューティング
 

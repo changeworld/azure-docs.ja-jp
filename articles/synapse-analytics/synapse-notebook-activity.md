@@ -10,12 +10,12 @@ ms.date: 05/19/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 9c021b8b0aec025458179ffb4859c351572762ee
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: c8c2246822cdf9faa06833020cd1951bde9e86a3
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186985"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449299"
 ---
 # <a name="transform-data-by-running-a-synapse-notebook"></a>Synapse Notebook を実行してデータを変換する
 
@@ -32,6 +32,10 @@ Synapse ノートブック アクティビティは、Synapse パイプライン
 **[アクティビティ]** の下にある **Synapse ノートブック** を Synapse パイプライン キャンバスにドラッグ アンド ドロップします。 Synapse ノートブック アクティビティ ボックス上を選択し、 **[設定]** で現在のアクティビティのノートブック コンテンツを構成します。 現在のワークスペースから既存のノートブックを選択することも、新しいものを追加することもできます。 
 
 ![ノートブック アクティビティの作成を示すスクリーンショット](./media/synapse-notebook-activity/create-synapse-notebook-activity.png)
+
+> [!NOTE]
+> Azure Synapse パイプラインにおける並列 Spark Notebooks の実行はキューに格納されて FIFO 方式で実行されます。キューにおけるジョブの順序は時系列に基づきます。また、キューに格納されるジョブの有効期限は 3 日です。ノートブックのキューは Synapse パイプラインでしか機能しないことに注意してください。
+
 
 ### <a name="add-a-notebook-to-synapse-pipeline"></a>Synapse パイプラインにノートブックを追加する
 

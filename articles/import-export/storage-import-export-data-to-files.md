@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 09/02/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 9c13ffc597349cdd2b304889d142ca7c2f89c713
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e06c5adc37e4c7ea73e3b86db61160c51d060f71
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861537"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449191"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -108,7 +108,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 6. コマンド行を実行するたびに、`/j:` パラメーターで指定した名前のジャーナル ファイルが作成されます。 準備した各ドライブには、インポート ジョブを作成するときにアップロードする必要があるジャーナル ファイルがあります。 ジャーナル ファイルのないドライブは処理されません。
 
     > [!IMPORTANT]
-    > - ディスクの準備が完了したら、ディスク ドライブ上のデータやジャーナル ファイルを変更しないでください。
+    > ディスクの準備が完了した後に、ディスク ドライブ上のデータやジャーナル ファイルに変更を加えたり、ディスクを再フォーマットしたりすることは避けてください。
 
 その他のサンプルについては、「[ジャーナル ファイルのサンプル](#samples-for-journal-files)」を参照してください。
 
@@ -154,7 +154,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
    **[次へ: 出荷 >]** を選択して続行します。
 
-4. **[出荷]** で、次の手順に従います。
+6. **[出荷]** で、次の手順に従います。
 
     1. ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 Azure Data Box Operations チーム (`adbops@microsoft.com`) に、使用する予定の運送業者に関する情報をご連絡ください。
     1. その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。
@@ -167,7 +167,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
    **[確認と作成]** を選択して続行します。
 
-5. 注文の概要で、次の手順に従います。
+7. 注文の概要で、次の手順に従います。
 
    1. **[使用条件]** を確認し、[指定したすべての情報が正しいことを確認しました。上記の利用規約に同意します] を選択します。 その後、検証が実行されます。
    1. 概要に表示されているジョブ情報を確認します。 ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。 この情報は、後で配送先住所ラベルに使用します。

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 95262d66be9300cc1c88ec80e3da4a5367705c76
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: a03cf3039d996c79b3a6ada3394acae5e6459fa1
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969417"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470528"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する
 
@@ -306,18 +306,18 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 
 ストレージ アカウント内のインデックス タグの月単位の平均数に対して課金されます。 インデックス作成エンジンには料金はかかりません。 BLOB タグの設定、BLOB タグの取得、および BLOB タグの検索の要求は、現在のそれぞれのトランザクション レートで課金されます。 タグによる BLOB の検索トランザクションを実行するときに試用されるリスト トランザクションの数は、要求に含まれる句の数と同じであることに注意してください。 たとえば、クエリ (StoreID = 100) は 1 つのリスト トランザクションです。  クエリ (StoreID = 100 AND SKU = 10010) は 2 つのリスト トランザクションです。 詳しくは、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
-## <a name="regional-availability-and-storage-account-support"></a>リージョンの可用性とストレージ アカウントのサポート
+<a id="regional-availability-and-storage-account-support"></a>
 
-BLOB インデックス タグを使用できるのは、階層型名前空間 (HNS) が無効になっている汎用 v2 アカウントだけです。 汎用 v1 アカウントはサポートされていませんが、任意の汎用 v1 アカウントを汎用 v2 アカウントにアップグレードすることができます。
+## <a name="feature-support"></a>機能サポート
 
-インデックス タグは、Premium ストレージ アカウントでサポートされていません。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
 
-BLOB インデックス タグは現在すべてのパブリック リージョンで利用できます。
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
-使い始めるには、[BLOB インデックス タグを使用したデータの管理と検索](storage-blob-index-how-to.md)に関する記事を参照してください。
-
-> [!IMPORTANT]
-> この記事の「[条件と既知の問題](#conditions-and-known-issues)」セクションを参照してください。
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="conditions-and-known-issues"></a>条件と既知の問題
 

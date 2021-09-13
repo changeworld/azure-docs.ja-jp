@@ -3,12 +3,12 @@ title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレート (ARM テンプレート) で、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: a51e11a34e9c5dd51b07bfa1f2d64e1b306f5b31
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27b800510da7bed15d6853683a026704e2b45698
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959692"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449074"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数
 
@@ -183,6 +183,8 @@ Azure サブスクリプション、管理グループ、またはテナント�
 }
 ```
 
+サブスクリプションのデプロイでは、この[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)からデプロイ オブジェクトが返されます。
+
 ## <a name="environment"></a>環境
 
 `environment()`
@@ -291,7 +293,7 @@ Bicep では、シンボリック名を使用してパラメーターを直接�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |はい |string |返されるパラメーターの名前。 |
 
@@ -380,7 +382,7 @@ Bicep では、シンボリック名を使用してパラメーターを直接�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
 | intOutput | int | 1 |
@@ -400,7 +402,7 @@ Bicep では、シンボリック名を使用して変数を直接参照しま�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | variableName |はい |String |返す変数の名前。 |
 
@@ -475,7 +477,7 @@ Bicep では、シンボリック名を使用して変数を直接参照しま�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |

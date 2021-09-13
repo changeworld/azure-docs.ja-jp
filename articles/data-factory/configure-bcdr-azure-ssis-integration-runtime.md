@@ -13,12 +13,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: 453f1db3e0f80a63c058c7e0ea21ab9282295de6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 71e85c44c951e7ce556e920a1316fe9a029c892c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735419"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428801"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>事業継続とディザスター リカバリー (BCDR) のために Azure-SSIS 統合ランタイムを構成する 
 
@@ -68,19 +68,7 @@ Azure SQL Managed Instance フェールオーバー グループと同期して�
 
    **[Integration runtime setup]\(統合ランタイムの設定\)** ペインの **[デプロイの設定]** ページで [SSISDB の使用を選択する](./create-azure-ssis-integration-runtime.md#creating-ssisdb)場合は、 **[Use dual standby Azure-SSIS Integration Runtime pair with SSISDB failover]\(SSISDB フェールオーバーと共にデュアル スタンバイ Azure-SSIS 統合ランタイム ペアを使用する\)** チェック ボックスもオンにします。 **[Dual standby pair name]\(デュアル スタンバイ ペア名\)** に、プライマリとセカンダリの Azure SSIS IR のペアを識別する同じ名前を入力します。 セカンダリ Azure-SSIS IR の作成が完了すると、起動され、セカンダリ SSISDB にアタッチされます。
 
-1. Azure SQL Managed Instance を使用して、データベース マスター キー (DMK) を使用して暗号化することにより、SSISDB などのデータベース内の機密データを保護できます。 DMK 自体は、既定でサービス マスター キー (SMK) を使用して暗号化されます。 このドキュメントの作成時点で、Azure SQL Managed Instance フェールオーバー グループによってプライマリ Azure SQL マネージド インスタンスから SMK がレプリケートされないため、フェールオーバーが発生した後、セカンダリ Azure SQL マネージド インスタンスで DMK と SSISDB を復号化できません。 この問題を回避するには、セカンダリ Azure SQL マネージド インスタンスで復号化する DMK のパスワード暗号化を追加します。 SSMS を使用して、次の手順を実行します。
-
-   1. プライマリ Azure SQL マネージド インスタンスの SSISDB に対して次のコマンドを実行して、DMK を暗号化するためのパスワードを追加します。
-
-      ```sql
-      ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'YourPassword'
-      ```
-   
-   1. プライマリとセカンダリの両方の Azure SQL マネージド インスタンスで SSISDB に対して次のコマンドを実行し、DMK を復号化するための新しいパスワードを追加します。
-
-      ```sql
-      EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'YourPassword', @action = N'add'
-      ```
+1. Azure SQL Managed Instance を使用して、データベース マスター キー (DMK) を使用して暗号化することにより、SSISDB などのデータベース内の機密データを保護できます。 DMK 自体は、既定でサービス マスター キー (SMK) を使用して暗号化されます。 2021 年 9 月以降、フェールオーバーグループの作成時に、Azure SQL Managed Instance のプライマリからセカンダリに SMK がレプリケートされます。 その前にフェールオーバー グループが作成された場合は、SSISDB を含むすべてのユーザー データベースをセカンダリ Azure SQL Managed Instance から削除して、フェールオーバー グループを再作成してください。
 
 1. SSISDB のフェールオーバーが発生したときにダウンタイムをほぼゼロにしたい場合は、両方の Azure-SSIS IR を実行したままにします。 プライマリ SSISDB にアクセスしてパッケージをフェッチおよび実行し、パッケージ実行ログを書き込むことができるのはプライマリ Azure-SSIS IR のみです。一方、セカンダリ Azure-SSIS IR では、別の場所 (たとえば Azure Files) にデプロイされたパッケージに対してのみ同じ処理を実行できます。
 

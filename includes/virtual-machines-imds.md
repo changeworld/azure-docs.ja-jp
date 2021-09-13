@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 29f5e96c18220f0bbdec5f91107c9220fc2fba0b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 2900eb3ddf1411b80920869932724f76a22c9802
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123355315"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123453624"
 ---
 Azure Instance Metadata Service (IMDS) によって、現在実行中の仮想マシン インスタンスに関する情報が提供されます。 これを使用して、仮想マシンの管理と構成を行うことができます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、[エンドポイント カテゴリの概要](#endpoint-categories)に関するページを参照してください。
@@ -1007,7 +1007,7 @@ Azure Resource Manager を使用して作成された VM の場合、ドキュ�
 | `timestamp.expiresOn` | 署名されたドキュメントの有効期限が切れるときの UTC タイムスタンプ | 2018-10-01
 | `vmId` | VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2018-10-01
 | `subscriptionId` | 仮想マシンの Azure サブスクリプション | 2019-04-30
-| `sku` | VM イメージの特定の SKU | 2019-11-01
+| `sku` | VM イメージの特定の SKU (Instance Metadata エンドポイント \[`/metadata/instance`\] の `compute/sku` プロパティに対応) | 2019-11-01
 
 > [!NOTE]
 > 従来の (Azure Resource Manager 以外の) VM の場合は、vmId の設定のみが保証されます。

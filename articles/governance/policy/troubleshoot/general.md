@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義の作成、さまざまな SDK、および Kubernetes のアドオンに関する問題をトラブルシューティングする方法について説明します。
-ms.date: 06/29/2021
+ms.date: 09/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 45c5b420ddd4eab70e381f31e7c46eeeb380b2b5
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0ab4319a7a0d515b51c8bbe259ad0ea49ed2b940
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113087092"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433604"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Policy の使用に関するエラーをトラブルシューティングする
 
@@ -79,6 +79,7 @@ Resource Manager プロパティのエイリアスが存在しない場合は、
 1. 準拠していると予期されていた非準拠のリソースについては、[非準拠である理由の特定](../how-to/determine-non-compliance.md)に関するページを参照してください。 定義と、評価されたプロパティ値を比較することで、リソースが非準拠であった理由がわかります。
    - **対象の値** が間違っている場合は、ポリシー定義を修正します。
    - **現在の値** が間違っている場合は、`resources.azure.com` を介してリソース ペイロードを検証します。
+1. RegEx 文字列パラメーターをサポートする[リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes)定義 (`Microsoft.Kubernetes.Data` や組み込み定義の "コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある" など) の場合、[RegEx 文字列](/dotnet/standard/base-types/regular-expression-language-quick-reference)パラメーターが正しいことを確認します。
 1. その他の一般的な問題と解決策については、[トラブルシューティング: 適用が想定どおりでない](#scenario-enforcement-not-as-expected)に関する記事を参照してください。
 
 複製してカスタマイズした組み込みのポリシー定義またはカスタム定義で引き続き問題が発生する場合は、問題が適切に転送されるように、"**ポリシーの作成**" についてサポート チケットを作成してください。
@@ -327,6 +328,26 @@ spec:
 #### <a name="resolution"></a>解決方法
 
 この問題を調査して解決するには、[機能チームにお問い合わせください](mailto:azuredg@microsoft.com)。
+
+### <a name="scenario-definitions-in-category-guest-configuration-cannot-be-duplicated-from-azure-portal"></a>シナリオ: "ゲスト構成" カテゴリの定義を Azure portal から複製できない
+
+#### <a name="issue"></a>問題
+
+Azure portal のポリシー定義ページからカスタム ポリシー定義を作成しようと、[定義を複製する] ボタンを選択します。 そのポリシーを割り当てた後、ゲスト構成の割り当てリソースが存在しないために、マシンが "_非準拠_" になっていることに気付きます。
+
+#### <a name="cause"></a>原因
+
+ゲスト構成割り当てリソースを作成する際、ポリシー定義に追加されたカスタム メタデータが使用されます。 Azure portal の "定義を複製する" アクティビティでは、カスタム メタデータがコピーされません。
+
+#### <a name="resolution"></a>解像度
+
+ポータルではなく Policy Insights API を使用してポリシー定義を複製してください。 次の PowerShell サンプルにその方法を示します。
+
+```powershell
+# duplicates the built-in policy which audits Windows machines for pending reboots
+$def = Get-AzPolicyDefinition -id '/providers/Microsoft.Authorization/policyDefinitions/4221adbc-5c0f-474f-88b7-037a99e6114c' | % Properties
+New-AzPolicyDefinition -name (new-guid).guid -DisplayName "$($def.DisplayName) (Copy)" -Description $def.Description -Metadata ($def.Metadata | convertto-json) -Parameter ($def.Parameters | convertto-json) -Policy ($def.PolicyRule | convertto-json -depth 15)
+```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 22838cd661e64d4a85debfb4c5ce556a142dc2c2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: aa1dc5554924efa36d7f1ab8b9d7398a7a076852
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324854"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437042"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -107,14 +107,39 @@ Audit は、リソースの作成中または更新中に Azure Policy によっ
 
 リソース マネージャー モードの場合、Audit 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
 
-`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Audit 効果の **details** には次のサブプロパティが追加されます。
+`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Audit 効果の **details** には次のサブプロパティが追加されます。 新しいポリシー定義や更新されたポリシー定義では、`templateInfo` を使用する必要があります。`constraintTemplate` は非推奨となっています。
 
-- **constraintTemplate** (必須)
-  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
-- **constraint** (必須)
+- **templateInfo** (必須)
+  - `constraintTemplate` とは使用できません。
+  - **sourceType** (必須)
+    - 制約テンプレートのソースの種類を定義します。 指定できる値は _PublicURL_ または _Base64Encoded_ です。
+    - _PublicURL_ を指定する場合は、`url` プロパティと組み合わせて制約テンプレートの場所を指定します。 この場所はパブリックにアクセスできる必要があります。
+
+      > [!WARNING]
+      > `url` には、SAS URI やトークンなど、シークレットが公開されてしまう可能性がある情報は一切使用しないでください。
+
+    - _Base64Encoded_ を指定する場合は、`content` プロパティと組み合わせて Base 64 でエンコードされた制約テンプレートを指定します。 既存の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [制約テンプレート](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)からカスタム定義を作成するには、「[制約テンプレートからポリシー定義を作成する](../how-to/extension-for-vscode.md)」を参照してください。
+- **constraint** (省略可能)
+  - `templateInfo` とは使用できません。
   - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例 2 では、これらの値は `{{ .Values.excludedNamespaces }}` および `{{ .Values.allowedContainerImagesRegex }}` です。
+- **namespaces** (省略可能)
+  - ポリシーの評価対象とする [Kubernetes 名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)の _配列_。
+  - 空にした場合、つまり値を指定しなかった場合、_excludedNamespaces_ に定義された名前空間を除くすべての名前空間がポリシーの評価対象になります。
+- **excludedNamespaces** (必須)
+  - ポリシーの評価から除外する [Kubernetes 名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)の _配列_。
+- **labelSelector** (必須)
+  - _matchLabels_ (オブジェクト) プロパティと _matchExpression_ (配列) プロパティを含んだ "_オブジェクト_"。ポリシーの評価対象とする Kubernetes リソースを指定できます。[ラベルおよびセレクター](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)の指定と一致した Kubernetes リソースが評価対象となります。
+  - 空にした場合、つまり値を指定しなかった場合、_excludedNamespaces_ に定義された名前空間を除くすべてのラベルおよびセレクターがポリシーの評価対象になります。
+- **apiGroups** (_templateInfo_ を使用する場合は必須)
+  - マッチさせる [API グループ](https://kubernetes.io/docs/reference/using-api/#api-groups)を含んだ _配列_。 空の配列 (`[""]`) はコア API グループに、`["*"]` はすべての API グループに一致します。
+- **kinds** (_templateInfo_ を使用する場合は必須)
+  - 評価対象とする Kubernetes オブジェクトの [kind](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields) を含んだ _配列_。
 - **values** (省略可能)
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
+- **constraintTemplate** (非推奨)
+  - `templateInfo` とは使用できません。
+  - ポリシーの定義を作成または更新するときは、`templateInfo` に置き換えてください。
+  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
 
 ### <a name="audit-example"></a>Audit の例
 
@@ -126,18 +151,21 @@ Audit は、リソースの作成中または更新中に Azure Policy によっ
 }
 ```
 
-例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Audit 効果を使用する。 **details** の追加情報では、許可されるコンテナー イメージを制限するために Kubernetes で使用する制約テンプレートと CRD を定義します。
+例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Audit 効果を使用する。 **details.templateInfo** の追加情報では、許可されるコンテナー イメージを制限するために、_PublicURL_ の使用を宣言し、Kubernetes で使用する制約テンプレートの場所を `url` に設定します。
 
 ```json
 "then": {
     "effect": "audit",
     "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v1/template.yaml",
+        },
         "values": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
-            "excludedNamespaces": "[parameters('excludedNamespaces')]"
-        }
+            "imageRegex": "[parameters('allowedContainerImagesRegex')]"
+        },
+        "apiGroups": [""],
+        "kinds": ["Pod"]
     }
 }
 ```
@@ -229,14 +257,39 @@ Deny は、ポリシーを通して定義された基準に一致していない
 
 リソース マネージャー モードの場合、Deny 効果には、ポリシー定義の **then** 条件で使用するためのその他のプロパティはありません。
 
-`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Deny 効果の **details** には次のサブプロパティが追加されます。
+`Microsoft.Kubernetes.Data` のリソース プロバイダー モードの場合、Deny 効果の **details** には次のサブプロパティが追加されます。 新しいポリシー定義や更新されたポリシー定義では、`templateInfo` を使用する必要があります。`constraintTemplate` は非推奨となっています。
 
-- **constraintTemplate** (必須)
-  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。
-- **constraint** (必須)
+- **templateInfo** (必須)
+  - `constraintTemplate` とは使用できません。
+  - **sourceType** (必須)
+    - 制約テンプレートのソースの種類を定義します。 指定できる値は _PublicURL_ または _Base64Encoded_ です。
+    - _PublicURL_ を指定する場合は、`url` プロパティと組み合わせて制約テンプレートの場所を指定します。 この場所はパブリックにアクセスできる必要があります。
+
+      > [!WARNING]
+      > `url` には、SAS URI やトークンなど、シークレットが公開されてしまう可能性がある情報は一切使用しないでください。
+
+    - _Base64Encoded_ を指定する場合は、`content` プロパティと組み合わせて Base 64 でエンコードされた制約テンプレートを指定します。 既存の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [制約テンプレート](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)からカスタム定義を作成するには、「[制約テンプレートからポリシー定義を作成する](../how-to/extension-for-vscode.md)」を参照してください。
+- **constraint** (省略可能)
+  - `templateInfo` とは使用できません。
   - 制約テンプレートの CRD 実装です。 `{{ .Values.<valuename> }}` のように **values** で渡されるパラメーターを使用します。 次の例 2 では、これらの値は `{{ .Values.excludedNamespaces }}` および `{{ .Values.allowedContainerImagesRegex }}` です。
+- **namespaces** (省略可能)
+  - ポリシーの評価対象とする [Kubernetes 名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)の _配列_。
+  - 空にした場合、つまり値を指定しなかった場合、_excludedNamespaces_ に定義された名前空間を除くすべての名前空間がポリシーの評価対象になります。
+- **excludedNamespaces** (必須)
+  - ポリシーの評価から除外する [Kubernetes 名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)の _配列_。
+- **labelSelector** (必須)
+  - _matchLabels_ (オブジェクト) プロパティと _matchExpression_ (配列) プロパティを含んだ "_オブジェクト_"。ポリシーの評価対象とする Kubernetes リソースを指定できます。[ラベルおよびセレクター](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)の指定と一致した Kubernetes リソースが評価対象となります。
+  - 空にした場合、つまり値を指定しなかった場合、_excludedNamespaces_ に定義された名前空間を除くすべてのラベルおよびセレクターがポリシーの評価対象になります。
+- **apiGroups** (_templateInfo_ を使用する場合は必須)
+  - マッチさせる [API グループ](https://kubernetes.io/docs/reference/using-api/#api-groups)を含んだ _配列_。 空の配列 (`[""]`) はコア API グループに、`["*"]` はすべての API グループに一致します。
+- **kinds** (_templateInfo_ を使用する場合は必須)
+  - 評価対象とする Kubernetes オブジェクトの [kind](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields) を含んだ _配列_。
 - **values** (省略可能)
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
+- **constraintTemplate** (非推奨)
+  - `templateInfo` とは使用できません。
+  - ポリシーの定義を作成または更新するときは、`templateInfo` に置き換えてください。
+  - 新しい制約を定義する、制約テンプレート CustomResourceDefinition (CRD) です。 このテンプレートは、Rego ロジック、制約スキーマに加えて、Azure Policy からの **values** で渡される制約パラメーターを定義します。 `constraintTemplate` は、より新しい `templateInfo` に置き換えることをお勧めします。
 
 ### <a name="deny-example"></a>Deny の例
 
@@ -248,18 +301,21 @@ Deny は、ポリシーを通して定義された基準に一致していない
 }
 ```
 
-例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Deny 効果を使用する。 **details** の追加情報では、許可されるコンテナー イメージを制限するために Kubernetes で使用する制約テンプレートと CRD を定義します。
+例 2:`Microsoft.Kubernetes.Data` のリソース プロバイダー モードで Deny 効果を使用する。 **details.templateInfo** の追加情報では、許可されるコンテナー イメージを制限するために、_PublicURL_ の使用を宣言し、Kubernetes で使用する制約テンプレートの場所を `url` に設定します。
 
 ```json
 "then": {
     "effect": "deny",
     "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v1/template.yaml",
+        },
         "values": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
-            "excludedNamespaces": "[parameters('excludedNamespaces')]"
-        }
+            "imageRegex": "[parameters('allowedContainerImagesRegex')]"
+        },
+        "apiGroups": [""],
+        "kinds": ["Pod"]
     }
 }
 ```

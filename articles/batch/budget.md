@@ -2,13 +2,13 @@
 title: Azure Batch のコスト分析の取得と予算の設定
 description: Batch ワークロードの実行に使用される、基になるコンピューティング リソースとソフトウェア ライセンスについて、コスト分析を取得して予算を設定し、コストを削減する方法について説明します。
 ms.topic: how-to
-ms.date: 01/29/2021
-ms.openlocfilehash: d1fc2d15a7037e56a8056efa67d2017badb77ffd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/03/2021
+ms.openlocfilehash: a590d8687c51b1693494c11d95de720f7f2c7eb0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99091329"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538851"
 ---
 # <a name="get-cost-analysis-and-set-budgets-for-azure-batch"></a>Azure Batch のコスト分析の取得と予算の設定
 
@@ -78,11 +78,9 @@ Azure portal で、Batch プールまたは Batch アカウントの予算と支
 
 [優先順位の低い VM](batch-low-pri-vms.md) を使用すると、Azure の余剰コンピューティング容量が利用されるので、Batch ワークロードのコストが削減されます。 プールで優先順位の低い VM を指定すると、Batch ではこの余剰を使用してワークロードが実行されます。 専用 VM の代わりに優先順位の低い VM を使用すると、コストを大幅に節約できます。
 
-### <a name="select-a-standard-virtual-machine-os-disk-type"></a>Standard の仮想マシン OS ディスクの種類を選択する
+### <a name="use-ephemeral-os-disks"></a>エフェメラル OS ディスクを使用する
 
-Azure には、[VM OS ディスクの種類](../virtual-machines/disks-types.md)が複数用意されています。 ほとんどの VM シリーズには、Premium ストレージと Standard ストレージの両方をサポートするサイズがあります。 プールに VM サイズとして 's' が選択されている場合、Batch では Premium SSD OS ディスクが構成されます。 's 以外' の VM サイズを選択すると、より低コストの Standard HDD ディスクの種類が使用されます。 たとえば、Premium SSD OS ディスクは `Standard_D2s_v3` に使用され、Standard HDD OS ディスクは `Standard_D2_v3` に使用されます。
-
-Premium SSD OS ディスクはより高価ですが、高いパフォーマンスが得られます。 Premium ディスクを使用する VM は、Standard HDD OS ディスクを使用する VM よりも多少速く起動できます。 アプリケーションとタスク ファイルは VM の一時 SSD ディスク上にあるため、Batch では、多くの場合、OS ディスクはそれほど頻繁に使用されません。 このため、多くの場合、's 以外' の VM サイズを選択して、's' の VM サイズを指定したときにプロビジョニングされる Premium SSD の増加コストの支払を回避することができます。
+仮想マシンの構成プールでは、[エフェメラル OS ディスク](create-pool-ephemeral-os-disk.md)を使用して、VM のキャッシュまたは一時的な SSD に OS ディスクを作成することで、マネージド ディスクに関する余分なコストを避けることができます。
 
 ### <a name="purchase-reservations-for-virtual-machine-instances"></a>仮想マシン インスタンスの予約を購入する
 

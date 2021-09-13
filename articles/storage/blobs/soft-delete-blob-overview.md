@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 39dd221210b558a3b6ce59200aebaa4aa2278fb5
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: cbc2f30384dc410df56995afd83f7d8c0f964176
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688147"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469610"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
@@ -147,6 +147,19 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 |[パス - 削除](/rest/api/storageservices/datalakestoragegen2/path/delete) |論理的に削除された BLOB またはディレクトリが作成されます。 論理的に削除されたオブジェクトは、保有期間が経過すると削除されます。|
 |[Delete Blob](/rest/api/storageservices/delete-blob)|論理的に削除されたオブジェクトが作成されます。 論理的に削除されたオブジェクトは、保有期間が経過すると削除されます。 論理的な削除は、スナップショットを含む BLOB とスナップショットに対してはサポートされません。|
 |[パス - 作成](/rest/api/storageservices/datalakestoragegen2/path/create) (BLOB またはディレクトリの名前が変更される) | 既存の操作先の BLOB または空のディレクトリは、論理的に削除され、ソースによって置き換えられます。 論理的に削除されたオブジェクトは、保有期間が経過すると削除されます。|
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+<sup>2</sup>    機能はプレビュー レベルでサポートされています。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 

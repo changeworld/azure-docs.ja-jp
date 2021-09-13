@@ -3,14 +3,14 @@ title: Bicep デプロイの What-if
 description: Bicep ファイルをデプロイする前に、リソースに対してどのような変更が行われるかを確認します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 09/02/2021
 ms.author: tomfitz
-ms.openlocfilehash: 42e4198f2597ca3708e58bbc7a25545eab96b8c6
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 70151d70c884432c92f49e0f4b3e5e3f873b57ac
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634588"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429336"
 ---
 # <a name="bicep-deployment-what-if-operation"></a>Bicep デプロイの What-If 操作
 
@@ -127,7 +127,7 @@ REST API については、以下を使用します。
 what-if 操作では、6 種類の異なる変更が一覧表示されます。
 
 * **作成**: リソースは現在存在しませんが、Bicep ファイル内で定義されています。 リソースが作成されます。
-* **削除**: この変更の種類は、JSON テンプレートのデプロイに[完全モード](../templates/deployment-modes.md)を使用する場合にのみ適用されます。 リソースは存在しますが、Bicep ファイル内では定義されていません。 完全モードでは、リソースが削除されます。 この変更の種類には、[完全モードの削除をサポートしている](../templates/deployment-complete-mode-deletion.md)リソースのみが含まれます。
+* **削除**: この変更の種類は、JSON テンプレートのデプロイに [完全モード](../templates/deployment-modes.md)を使用する場合にのみ適用されます。 リソースは存在しますが、Bicep ファイル内では定義されていません。 完全モードでは、リソースが削除されます。 この変更の種類には、[完全モードの削除をサポートしている](../templates/deployment-complete-mode-deletion.md)リソースのみが含まれます。
 * **無視**: リソースは存在しますが、Bicep ファイル内では定義されていません。 リソースはデプロイまたは変更されません。
 * **変更なし**: リソースは存在し、Bicep ファイル内で定義されています。 リソースは再デプロイされますが、リソースのプロパティは変更されません。 この変更の種類は、[ResultFormat](#result-format) が `FullResourcePayloads` に設定されている場合に返されます。これは既定値です。
 * **変更**: リソースは存在し、Bicep ファイル内で定義されています。 リソースは再デプロイされ、リソースのプロパティが変更されます。 この変更の種類は、[ResultFormat](#result-format) が `FullResourcePayloads` に設定されている場合に返されます。これは既定値です。
@@ -196,7 +196,11 @@ Azure CLI の場合は、`--result-format` パラメーターを使用します�
 
 ### <a name="set-up-environment"></a>環境を設定する
 
-what-if がどのように動作するか見るため、いくつかのテストを実行してみましょう。 まず、[仮想ネットワークを作成する Bicep ファイル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-before.bicep)をデプロイします。 この仮想ネットワークを使用して、what-if により変更がどのように報告されるかをテストします。 Bicep ファイルのコピーをダウンロードします。
+what-if がどのように動作するか見るため、いくつかのテストを実行してみましょう。 まず、仮想ネットワークを作成する Bicep ファイルをデプロイします。 この仮想ネットワークを使用して、what-if により変更がどのように報告されるかをテストします。 Bicep ファイルのコピーをダウンロードします。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/samples/deploy-what-if/what-if-before.bicep":::
+
+Bicep ファイルをデプロイするには、次のコマンドを使用します。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -224,7 +228,11 @@ az deployment group create \
 
 ### <a name="test-modification"></a>変更をテストする
 
-デプロイが完了すると、what-if 操作をテストできる状態になります。 ここでは、[仮想ネットワークを変更する Bicep ファイル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-after.bicep)をデプロイします。 元のタグのうち 1 つが存在せず、サブネットが削除され、アドレス プレフィックスが変更されています。 Bicep ファイルのコピーをダウンロードします。
+デプロイが完了すると、what-if 操作をテストできる状態になります。 ここでは、仮想ネットワークを変更する Bicep ファイルをデプロイします。 元のタグのうち 1 つが存在せず、サブネットが削除され、アドレス プレフィックスが変更されています。 Bicep ファイルのコピーをダウンロードします。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/samples/deploy-what-if/what-if-after.bicep":::
+
+変更を確認するには、次のコマンドを使用します。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -374,6 +382,24 @@ Are you sure you want to execute the deployment?
 ```
 
 期待通りの変更が表示され、デプロイを実行することを確認できます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+サンプル リソースが不要になったら、Azure CLI または Azure PowerShell を使用してリソース グループを削除します。
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+az group delete --name ExampleGroup
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name ExampleGroup
+```
+
+---
 
 ## <a name="sdks"></a>SDK
 

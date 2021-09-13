@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: b11fff95543abb4fc74b2087deffe56786998e28
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 7b32e75645c2c930e296bdb4c5448bcb16045d6d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179655"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470564"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ
 
@@ -45,8 +45,6 @@ Azure Storage にはさまざまなアクセス層が用意されており、最
 - Java クライアント ライブラリ
 - Python クライアント ライブラリ
 - Node.js クライアント ライブラリ
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="storage-accounts-that-support-tiering"></a>階層制御をサポートするストレージ アカウント
 
@@ -179,6 +177,19 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 ## <a name="availability"></a>可用性
 
 さまざまなアクセス層を、BLOB レベルの階層制御と共に、任意のリージョンでご利用いただけます。 詳細なリストについては、[Azure のリージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)に関するページを参照してください。
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+
 
 ## <a name="next-steps"></a>次の手順
 

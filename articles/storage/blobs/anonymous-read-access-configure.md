@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f8149be4e7e22366cf5d2ce130d3b6ec596ac782
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 79248c8d389fa004bab0dfc55c3f6fce193c6feb
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272005"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473948"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 
@@ -296,6 +296,17 @@ $ctx = $storageAccount.Context
 
 Get-AzStorageContainer -Context $ctx | Select Name, PublicAccess
 ```
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png)| ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

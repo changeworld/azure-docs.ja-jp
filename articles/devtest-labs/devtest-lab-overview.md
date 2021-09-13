@@ -3,12 +3,12 @@ title: About Azure DevTest Labs | Microsoft Docs
 description: Azure Virtual Machines を簡単に作成、管理、監視するために DevTest ラボを使用する方法について説明します
 ms.topic: article
 ms.date: 08/20/2021
-ms.openlocfilehash: 2d15bfd34e37036e95e06529e6c14588da15b34d
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5ef1aabb861b90679fbb36e46b837d6567f122d4
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969864"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468044"
 ---
 # <a name="about-azure-devtest-labs"></a>Azure DevTest Labs とは
 Azure DevTest Labs を使用すれば、チームの開発者は、承認を待つことなく、仮想マシン (VM) と PaaS リソースを効率的に自己管理できるようになります。
@@ -42,11 +42,11 @@ DevTest Labs では、PaaS 環境を使用する開発者に次の機能を提�
 
 DevTest Labs では、次のタスクを実行することによって、中央 IT が無駄を制御し、リソースのコストを最適化し、予算内に収めることもできます。  
 
-- VM の自動シャットダウンと自動開始のスケジュールの設定。
-- ユーザーが作成できる VM の数に関するポリシーの設定。
-- VM のサイズとユーザーが選択可能なギャラリー イメージに関するポリシーの設定。
-- ラボのコストの追跡とターゲットの設定。
-- 必要なアクションを実行できるように、ラボの予測される高額のコストに関する通知の取得。
+- VM の自動シャットダウンと自動開始のスケジュールを設定します。
+- ユーザーが作成できる VM の数に関するポリシーを設定します。
+- VM のサイズとユーザーが選択可能なギャラリー イメージに関するポリシーを設定します。
+- ラボのコストを追跡し、ターゲットを設定します。
+- 必要なアクションを実行できるように、ラボの予測される高額のコストに関する通知を提供します。
 
 DevTest Labs を使用することで、クラウド内の環境の作成、構成、管理において次の利点が提供されます。
 

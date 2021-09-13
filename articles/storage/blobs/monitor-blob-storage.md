@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f38149e2259dbb6724a81e8139f46bd65a0edff0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2fd0e2807697ee417a14d7afa7c07864456a6976
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749318"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471230"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Azure Blob Storage の監視
 
@@ -271,7 +271,7 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 ### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
-診断設定を作成するには、ポリシー定義を使用します。 これにより、作成または更新されたすべてのアカウントに対して、確実に診断設定が作成されるようになります。 「[Azure Storage 用の Azure Policy 組み込み定義](../common/policy-reference.md)」を参照してください。
+診断設定を作成するには、ポリシー定義を使用します。 これにより、作成または更新されたすべてのアカウントに対して、確実に診断設定が作成されるようになります。 「[Azure Storage 用の Azure Policy 組み込み定義](../common/policy-reference.md)」をご覧ください。
 
 ---
 
@@ -607,6 +607,29 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
     | sort by count_ desc 
     | render piechart
     ```
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+### <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
+
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png)  <sup>2</sup>|![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+### <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
+
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+<sup>2</sup>    機能はプレビュー レベルでサポートされています。
+
 ## <a name="faq"></a>よく寄せられる質問
 
 **Azure Storage はマネージド ディスクまたはアンマネージド ディスクのメトリックをサポートしますか。**

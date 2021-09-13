@@ -3,12 +3,12 @@ title: ネットワークをセットアップする
 description: ネットワークが Azure Defender for IoT アプライアンスと連携するように正しく設定するために必要なソリューションのアーキテクチャ、ネットワークの準備、前提条件、およびその他の情報について説明します。
 ms.date: 07/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 196474c368ee5683a5fb7a25343faba17da0fa18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7dc9e41b3bfdcbeab86aaabbdf0c97b0339b3df3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745419"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434090"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender for IoT のネットワーク設定について
 
@@ -32,7 +32,11 @@ Azure Defender for IoT では、継続的な ICS 脅威の監視とデバイス�
 
 - [構成ワークステーションを準備する](#prepare-a-configuration-workstation)
 
-- [ラックの取り付け計画](#planning-rack-installation)
+- [証明書を設定する](#set-up-certificates)
+
+- [構成ワークステーションを準備する](#prepare-a-configuration-workstation)
+
+- [ラックの取り付けを計画する](#plan-rack-installation)
 
 ### <a name="collect-site-information"></a>サイト情報を収集する
 
@@ -90,6 +94,10 @@ Azure Defender for IoT では、継続的な ICS 脅威の監視とデバイス�
 
 サポートされているブラウザーの詳細については、「[推奨されるブラウザー](../../azure-portal/azure-portal-supported-browsers-devices.md#recommended-browsers)」を参照してください。
 
+### <a name="set-up-certificates"></a>証明書を設定する
+
+センサーとオンプレミス管理コンソールのインストール後に、ローカルの自己署名証明書が生成され、センサーの Web アプリケーションにアクセスするために使用されます。 管理者ユーザーは、Defender for IoT に初めてサインインするときに、SSL/TLS 証明書を指定するように求められます。 さらに、この証明書を検証するオプションとその他のシステム証明書を検証するオプションも自動的に有効になります。 詳細については、「[証明書について](how-to-deploy-certificates.md)」を参照してください。
+
 ### <a name="network-access-requirements"></a>ネットワーク アクセスの要件
 
 組織のセキュリティ ポリシーによって、以下へのアクセスが許可されていることを確認します。
@@ -111,7 +119,7 @@ Azure Defender for IoT では、継続的な ICS 脅威の監視とデバイス�
 | トンネリング | TCP | IN | 9000 <br /><br />- ポート 443 に加えて <br /><br />エンド ユーザーからオンプレミスの管理コンソールへ。 <br /><br />- ポート 22 (センサーからオンプレミス管理コンソールへ)  | monitoring | トンネリング | Sensor | オンプレミスの管理コンソール |
 | HTTP| TCP | OUT | 80 | 証明書の検証  | CRL ファイルのダウンロード | Sensor | CRL サーバー |
 
-### <a name="planning-rack-installation"></a>ラックの取り付け計画
+### <a name="plan-rack-installation"></a>ラックの取り付けを計画する
 
 ラックの取り付けを計画するには、次の操作を行います。
 
@@ -121,7 +129,7 @@ Azure Defender for IoT では、継続的な ICS 脅威の監視とデバイス�
 
 1. アプライアンスで AC 電源を使用できるようにします。
 1. ネットワーク スイッチに管理を接続するための LAN ケーブルを準備します。
-1. スイッチ SPAN (ミラー) ポートを接続するための LAN ケーブルと、Defender for IoT アプライアンスへのネットワーク タップを準備します。 
+1. スイッチ SPAN (ミラー) ポートを接続するための LAN ケーブルと、Defender for IoT アプライアンスへのネットワーク タップを準備します。
 1. アーキテクチャ レビュー セッションで説明されているように、ミラー化されたスイッチで SPAN ポートを構成、接続、および検証します。
 1. Wireshark を実行しているコンピューターに構成済みの SPAN ポートを接続し、ポートが正しく構成されていることを確認します。
 1. 関連するすべてのファイアウォール ポートを開きます。
@@ -138,7 +146,7 @@ Azure Defender for IoT では、継続的な ICS 脅威の監視とデバイス�
 
 :::image type="content" source="media/how-to-set-up-your-network/purdue-model.png" alt-text="Purdue モデルの図。":::
 
-####  <a name="level-0-cell-and-area"></a>Level 0:セルと領域  
+#### <a name="level-0-cell-and-area"></a>Level 0:セルと領域  
 
 レベル 0 は、基本的な製造プロセスに関係するさまざまなセンサー、アクチュエータ、およびデバイスで構成されています。 これらのデバイスは、次のような、産業オートメーションおよび制御システムの基本的な機能を実行します。
 
@@ -234,7 +242,7 @@ Defender for IoT アプライアンスは、レイヤー 1 と 2 (場合によ�
 
 #### <a name="traffic-mirroring"></a>トラフィックのミラーリング  
 
-トラフィック分析に関連する情報のみを表示するには、Defender for IoT プラットフォームを、産業用 ICS と SCADA のトラフィックのみを含むスイッチまたは TAP のミラーリングポートに接続する必要があります。 
+トラフィック分析に関連する情報のみを表示するには、Defender for IoT プラットフォームを、産業用 ICS と SCADA のトラフィックのみを含むスイッチまたは TAP のミラーリングポートに接続する必要があります。
 
 :::image type="content" source="media/how-to-set-up-your-network/switch.jpg" alt-text="セットアップには、このスイッチを使用します。":::
 

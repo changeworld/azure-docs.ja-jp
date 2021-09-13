@@ -2,13 +2,13 @@
 title: Bicep の出力
 description: Bicep の出力値を定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 1468f1a8a42f51dec1d195d39fe9096746c8193f
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: 4cdf21eddcf14f5563c0c638f962585ad021e8ed
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635141"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428760"
 ---
 # <a name="outputs-in-bicep"></a>Bicep の出力
 
@@ -18,9 +18,7 @@ ms.locfileid: "122635141"
 
 ## <a name="define-output-values"></a>出力値の定義
 
-次の例は、`output` キーワードを使用して、デプロイされたリソースからプロパティを返す方法を示しています。
-
-次の例では、`publicIP` は Bicep ファイルにデプロイされているパブリック IP アドレスの識別子 (シンボリック名) です。 出力値には、パブリック IP アドレスの完全修飾ドメイン名が取得されます。
+次の例は、`output` キーワードを使用して、デプロイされたリソースからプロパティを返す方法を示しています。 この例では、`publicIP` は Bicep ファイルにデプロイされているパブリック IP アドレスの識別子 (シンボリック名) です。 出力値には、パブリック IP アドレスの完全修飾ドメイン名が取得されます。
 
 ```bicep
 output hostname string = publicIP.properties.dnsSettings.fqdn
@@ -35,6 +33,11 @@ var user = {
 
 output stringOutput string = user['user-name']
 ```
+
+次の例は、さまざまな型の出力を返す方法を示しています。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
+
 
 ## <a name="conditional-output"></a>条件付き出力
 
@@ -105,14 +108,6 @@ publicIPAddress: {
   id: publicIP.outputs.resourceID
 }
 ```
-
-## <a name="example-template"></a>テンプレートの例
-
-次のテンプレートでは、リソースはデプロイされません。 さまざまな型の出力を返すいくつかの方法を示します。
-
-Bicep では現在、ループはサポートされていません。
-
-:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/output.bicep":::
 
 ## <a name="get-output-values"></a>出力値の取得
 

@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: ae6e4f523eb67d6ff92a3d94107a8e8fa154770a
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 062b46350412f3aec2eb10deddaf9b4cab37a4a4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598645"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123454216"
 ---
 別のデプロイ スロットから構成を複製する場合、複製された構成を編集することができます。 構成要素には、スワップを経ても内容が反映される (スロット固有でない) ものもあれば、スワップ後に同じスロットに残されている (スロット固有の) ものもあります。 次の一覧では、スロットのスワップ時に変更される設定を示します。
 
@@ -44,7 +44,7 @@ ms.locfileid: "122598645"
 * サフィックス _EXTENSION_VERSION で終わる設定
 
 > [!NOTE]
-> これらの設定をスワップ可能にするには、アプリのすべてのスロットでアプリ設定 `WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS` を追加し、その値を `0` または `false` に設定します。 これらの設定は、すべてがスワップ可能か、まったくスワップ可能でないかのどちらかです。 一部の設定だけをスワップ可能にして、他を不可にすることはできません。 マネージド ID はスワップされないため、このオーバーライド アプリ設定による影響を受けません。
+> 前述の設定をスワップ可能にするには、アプリのすべてのスロットでアプリ設定 `WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS` を追加し、その値を `0` または `false` に設定します。 これらの設定は、すべてがスワップ可能か、まったくスワップ可能でないかのどちらかです。 一部の設定だけをスワップ可能にして、他を不可にすることはできません。 マネージド ID はスワップされないため、このオーバーライド アプリ設定による影響を受けません。
 
 > スワップされていない設定に適用されている特定のアプリ設定もスワップされません。 たとえば、診断の設定はスワップされないため、`WEBSITE_HTTPLOGGING_RETENTION_DAYS` や `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` などの関連するアプリ設定もスワップされません。これは、スロット設定として表示されない場合でも同様です。
 >

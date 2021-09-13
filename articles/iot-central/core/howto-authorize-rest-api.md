@@ -3,16 +3,16 @@ title: Azure IoT Central で REST API を承認する
 description: IoT Central REST API 呼び出しを認証および承認する方法
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 08/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 540137495e06bb05fbf5e96e3b930e0c8cda4b10
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9ba337203aedbc2b9f27c2147f68c1d810f57d23
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461232"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479852"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>IoT Central REST API 呼び出しを認証および承認する方法
 
@@ -68,7 +68,7 @@ API トークンを取得するには、IoT Central UI または REST API 呼び
 IoT Central UI を使用する場合:
 
 1. **[認証] > [API トークン]** に移動します。
-1. **[+ トークンの生成]** を選択します。
+1. **[+ トークンの作成]** を選択します。
 1. トークンの名前を入力し、ロールを選択します。
 1. **[Generate] \(生成)** を選択します。
 1. IoT Central に、次の例のようなトークンが表示されます。

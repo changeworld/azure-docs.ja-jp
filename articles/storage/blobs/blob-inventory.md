@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 771a2f6ba2206394162f767e9ad8d139fdb9cdd4
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: bc827d0a4221e582054b297f7287fcb55f4142a8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122270975"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470690"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure Storage BLOB インベントリ
 
@@ -234,7 +234,7 @@ BLOB インベントリの実行は、毎日自動的にスケジュールされ
 
 次の表で、`BlobInventoryPolicyCompleted` イベントのスキーマについて説明します。
 
-|フィールド|型|説明|
+|フィールド|Type|説明|
 |---|---|
 |scheduleDateTime|string|インベントリ ポリシーがスケジュールされた時刻。|
 |accountName|string|ストレージ アカウント名。|
@@ -325,6 +325,19 @@ BLOB インベントリの課金は、2021 年 10 月 1 日から開始されま
 `includeSnapshots` と `includeVersions` のフィルターを `false` に設定していても、BLOB のスナップショットやバージョンも課金対象となります。 これらのフィルター値は課金に影響しません。 レポートに表示される内容をフィルター処理するためにのみ使用できます。
 
 Azure Storage BLOB インベントリの価格の詳細については、[Azure Blob Storage の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)に関するページを参照してください。
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png)|![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+<sup>2</sup>    機能はプレビュー レベルでサポートされています。
 
 ## <a name="known-issues"></a>既知の問題
 

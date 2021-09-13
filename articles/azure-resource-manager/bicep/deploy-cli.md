@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/15/2021
-ms.openlocfilehash: 1feb5f2e858113086b9349c79dacb024570fb5a4
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 38d1762faf0d9cbab70b57a79cf9d7811c9fab6b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635159"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427068"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-cli"></a>Bicep と Azure CLI を使用してリソースをデプロイする
 
@@ -147,7 +147,7 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 
 オブジェクトに渡す JSON を二重引用符で囲みます。
 
-変数を使用して、パラメーター値を格納することができます。 Bash で、変数をすべてのパラメーター値に設定し、それをデプロイ コマンドに追加します。
+変数を使用してパラメーター値を格納できます。 Bash では、変数をすべてのパラメーター値に設定し、それをデプロイ コマンドに追加します。
 
 ```azurecli-interactive
 params="prefix=start suffix=end"
@@ -158,7 +158,7 @@ az deployment group create \
   --parameters $params
 ```
 
-ただし、Windows コマンド プロンプト (CMD) または PowerShell で Azure CLI を使用する場合は、変数を JSON 文字列に設定します。 引用符をエスケープします: `$params = '{ \"prefix\": {\"value\":\"start\"}, \"suffix\": {\"value\":\"end\"} }'`。
+しかし、Windows コマンド プロンプト (CMD) または PowerShell で Azure CLI を使用する場合は、変数を JSON 文字列に設定します。 引用符をエスケープします (`$params = '{ \"prefix\": {\"value\":\"start\"}, \"suffix\": {\"value\":\"end\"} }'`)。
 
 ### <a name="parameter-files"></a>パラメーター ファイル
 
@@ -182,7 +182,7 @@ Bicep ファイルをデプロイする前に、Bicep ファイルが環境に�
 
 ## <a name="deploy-template-specs"></a>テンプレート スペックをデプロイする
 
-現在、Azure CLI では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。これがその[例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep)です。 また、Bicep CLI を使用して Bicep ファイルを ARM テンプレート JSON に組み込み、JSON テンプレートを使用してテンプレート スペックを作成することもできます。
+現在、Azure CLI では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。Bicep ファイルでテンプレート スペックを作成する方法については、[テンプレート スペックの作成サンプル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep)を参照してください。 また、Bicep CLI を使用して Bicep ファイルを ARM テンプレート JSON に組み込み、JSON テンプレートを使用してテンプレート スペックを作成することもできます。
 
 ## <a name="deployment-name"></a>デプロイ名
 

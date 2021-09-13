@@ -6,12 +6,12 @@ author: rboucher
 ms.author: robb
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 447836fa8a7468b9bf2a76fdfd81c899f7105ed0
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: ffef89736038d2dc9977b908959207d8dafd8acc
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187777"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540237"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -30,18 +30,16 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 
 ## <a name="management"></a>管理 
 
-専用クラスターは、Azure Monitor ログ クラスターを表す Azure リソースで管理されます。 すべての操作は、PowerShell または REST API を使用して、このリソースに対して行われます。
+専用クラスターは、Azure Monitor ログ クラスターを表す Azure リソースで管理されます。 [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/cluster?view=azure-cli-latest)、[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights) [REST](https://docs.microsoft.com/rest/api/loganalytics/clusters) のいずれかを使用してプログラムから操作が実行されます。
 
-クラスターを作成したら、そのクラスターを構成し、ワークスペースにリンクすることができます。 ワークスペースがクラスターにリンクされている場合、ワークスペースに送信された新しいデータはクラスターに存在します。 クラスターにリンクできるのは、クラスターと同じリージョンにあるワークスペースだけです。 クラスターからワークスペースのリンクを解除できますが、いくつかの制限があります。 これらの制限事項の詳細についてもこの記事に記載されています。 
-
-専用クラスターに取り込まれたデータは、2 回暗号化されます。Microsoft マネージド キーまたは[カスタマー マネージド キー](../logs/customer-managed-keys.md)を使用してサービス レベルで一度暗号化され、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用してインフラストラクチャ レベルで一度暗号化されます。 [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 この場合は、追加の暗号化レイヤーによって引き続きデータが保護されます。 専用クラスターを使用すると、[ロックボックス](../logs/customer-managed-keys.md#customer-lockbox-preview) コントロールを使用してデータを保護することもできます。
+クラスターの作成後、そこにワークスペースをリンクさせると、新しく取り込まれたデータがクラスターに格納されます。 ワークスペースとクラスターのリンクはいつでも解除できます。リンクの解除後は、新しいデータが共有 Log Analytics クラスターに格納されます。 リンクとリンク解除の操作はクエリに影響せず、ワークスペースに保有されている限り、操作の前後でデータへのアクセスにも影響しません。 クラスターとワークスペースとの間にリンクを設定するには、両者が同じリージョンに存在する必要があります。
 
 クラスター レベルでのすべての操作には、クラスターに対する `Microsoft.OperationalInsights/clusters/write` アクション権限が必要です。 このアクセス許可を付与するには、`*/write` アクションを含む所有者または共同作成者、または `Microsoft.OperationalInsights/*` アクションを含む Log Analytics 共同作成者ロールを使用します。 Log Analytics のアクセス許可の詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](./manage-access.md)」を参照してください。 
 
 
 ## <a name="cluster-pricing-model"></a>クラスターの価格モデル
 
-Log Analytics 専用クラスターには、500 GB/日以上のコミットメント レベル価格モデルが使用されます。 そのレベルを超える使用量は、有効な 1 GB あたりのコミットメント レベル料金で課金されます。  コミットメント レベル価格情報については、[Azure Monitor の価格ページ]( https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。  
+Log Analytics 専用クラスターには、500 GB/日以上のコミットメント レベル (旧称: 容量予約) 価格モデルが使用されます。 そのレベルを超える使用量は、有効な 1 GB あたりのコミットメント レベル料金で課金されます。 コミットメント レベル価格情報については、[Azure Monitor の価格ページ]( https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。  
 
 クラスターのコミットメント レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成されます。 `Capacity` は GB 単位で指定され、1 日あたり 500 GB、1,000 GB、2,000 GB、5,000 GB の値を設定できます。
 
@@ -74,23 +72,21 @@ Authorization: Bearer <token>
 
 新しい専用クラスターを作成するときに、次のプロパティを指定する必要があります。
 
-- **ClusterName**:管理目的で使用されます。 この名前はユーザーには公開されません。
-- **ResourceGroupName**: 専用クラスターのリソース グループ。 通常、クラスターは組織内の多くのチームによって共有されるため、中央の IT リソース グループを使用する必要があります。 設計に関するその他の考慮事項については、「[Azure Monitor ログのデプロイの設計](../logs/design-logs-deployment.md)」を参照してください。
-- **[場所]** :クラスターは特定の Azure リージョンにあります。 このクラスターにリンクできるのは、このリージョンにあるワークスペースだけです。
-- **SkuCapacity**: クラスター リソースを作成するとき、コミットメント レベル (SKU) を指定する必要があります。 コミットメント レベルは、1 日あたり 500 GB、1,000 GB、2,000 GB、5,000 GB のいずれかに設定できます。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページをご覧ください。 
- 
+- **ClusterName**
+- **ResourceGroupName**: 通常、クラスターは組織内の多くのチームによって共有されるため、中央の IT リソース グループを使用する必要があります。 設計に関するその他の考慮事項については、「[Azure Monitor ログのデプロイの設計](../logs/design-logs-deployment.md)」を参照してください。
+- **場所**
+- **SkuCapacity**: コミットメント レベル (旧称: 容量予約) は 500、1000、2000、または 5000 GB/日に設定できます。 クラスターのコストの詳細については、[Log Analytics クラスターのコストの管理](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページをご覧ください。 
 
-> [!NOTE]
-> コミットメント レベルは、以前は容量予約と呼ばれていました。 
+クラスターを作成するユーザー アカウントには、Azure リソースの作成に関する標準的なアクセス許可 `Microsoft.Resources/deployments/*` およびクラスターの書き込みアクセス許可 `Microsoft.OperationalInsights/clusters/write` が必要です。このために、ロールの割り当てで、この特定のアクション、`Microsoft.OperationalInsights/*` または `*/write` を使用します。
 
 "クラスター" リソースを作成した後、*sku*、*keyVaultProperties、*billingType* などの追加のプロパティを編集できます。 詳細については、以下を参照してください。
 
 リージョンごと、サブスクリプションごとに最大 2 つのアクティブ クラスターを使用できます。 クラスターは、削除されても、14 日間は予約されています。 リージョンごと、サブスクリプションごとに最大 4 つの (アクティブな、または最近削除された) 予約済みクラスターを使用できます。
 
-> [!WARNING]
-> クラスターの作成によって、リソース割り当てとプロビジョニングがトリガーされます。 この操作が完了するまで数時間かかることがあります。 非同期的に実行することをお勧めします。
-
-クラスターを作成するユーザー アカウントには、Azure リソースの作成に関する標準的なアクセス許可 `Microsoft.Resources/deployments/*` およびクラスターの書き込みアクセス許可 `Microsoft.OperationalInsights/clusters/write` が必要です。このために、ロールの割り当てで、この特定のアクション、`Microsoft.OperationalInsights/*` または `*/write` を使用します。
+> [!INFORMATION] クラスターの作成によって、リソース割り当てとプロビジョニングがトリガーされます。 この操作が完了するまで数時間かかることがあります。
+> 専用クラスターは、データ インジェストに関係なくプロビジョニング後に課金されます。プロビジョニングおよびクラスターへのワークスペースのリンクを効率よく行えるようデプロイを準備することをお勧めします。 次の点を確認します。
+> - クラスターにリンクさせる初期ワークスペースのリストが明らかになっていること
+> - リンクさせるワークスペースとクラスターに使用するサブスクリプションへのアクセス許可があること
 
 **CLI**
 ```azurecli

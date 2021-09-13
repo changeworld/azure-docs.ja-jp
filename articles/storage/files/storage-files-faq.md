@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 34a8d0d732863f5fe40056f25460269f131fbf7c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 3a19493657e368bf65921f4be7bdd5c9154b77a4
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866501"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536781"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -105,6 +105,23 @@ ms.locfileid: "122866501"
   **Azure File Sync で 1TiB のデータをアップロードするには、どのくらいの時間がかかりますか?**
   
     パフォーマンスは、環境設定、構成、また、これが初期の同期か継続的な同期かに応じて異なります。詳細については、「[Azure File Sync のパフォーマンス メトリック](storage-files-scale-targets.md#azure-file-sync-performance-metrics)」を参照してください
+
+* <a id="afs-initial-upload"></a>
+  **Azure File Sync で最初にアップロードされるデータは何ですか?**
+  
+    **Windows Server から Azure ファイル共有への初回データ同期**: データはすべて Windows Server 上にあるため、Azure File Sync デプロイの多くは空の Azure ファイル共有から始まります。 そのような場合、初回クラウド変更の列挙が速く、Windows Server から Azure ファイル共有への変更同期に時間の多くが費やされます。
+
+同期によって Azure ファイル共有にデータがアップロードされますが、ローカルのファイル サーバー上ではダウンタイムがありません。管理者はネットワーク上限を設定し、バックグラウンドのデータ アップロードに使用される帯域幅の量を制限できます。
+
+初回同期は通常、同期グループあたり毎秒 20 ファイルという初回アップロード率に制限されます。 顧客は以下の数式で時間 (日数) を割り出し、すべてのデータを Azure にアップロードする時間を見積もりできます。
+
+**同期グループにファイルをアップロードするための時間 (日数) = (サーバー エンドポイントに含まれるオブジェクト数)/(20 * 60 * 60 * 24)**
+
+* <a id="afs-initial-upload-server-restart"></a>
+  **初回アップロード時にサーバーが停止して再起動された場合、どのような影響がありますか** 影響はありません。 サーバーが再起動された後、中断位置から Azure File Sync が同期を再開します
+
+* <a id="afs-initial-upload-server-changes"></a>
+  **初期アップロード中、サーバー エンドポイントでデータに変更が加えられた場合、どのような影響がありますか** 影響はありません。 クラウド エンドポイントとサーバー エンドポイントとが同期状態となるよう、サーバー エンドポイントで行われた変更は、Azure File Sync によって調整されます
 
 * <a id="afs-conflict-resolution"></a>**2 つのサーバーで同じファイルがほぼ同時に変更された場合、どうなりますか。**  
     Azure File Sync では、シンプルな競合解決方法が採用されています。ファイルに対して 2 つのエンドポイントで同時に変更を加えた場合、その両方の変更が保持されます。 最後に書き込まれた変更では、元のファイル名が維持されます。 (LastWriteTime によって決定される) 古いファイルには、エンドポイント名と競合番号がファイル名に追加されます。 サーバー エンドポイントの場合、エンドポイント名はサーバーの名前です。 クラウド エンドポイントの場合、エンドポイント名は **Cloud** です。 名前は、次の命名規則に従います。 
@@ -226,6 +243,9 @@ ms.locfileid: "122866501"
 **Azure Files ではどのようなデータ コンプライアンス ポリシーがサポートされていますか。**  
 
    Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](../common/storage-compliance-offerings.md)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/trustcenter/default.aspx)にアクセスできます。
+
+* <a id="afs-power-outage"></a>
+  **停電が起きてサーバー エンドポイントがシャットダウンされた場合、Azure File Sync にはどのような影響がありますか** 影響はありません。 サーバー エンドポイントがオンライン状態に戻った後、クラウド エンドポイントとサーバー エンドポイントとが同期状態となるよう、サーバー エンドポイントで行われた変更が Azure File Sync によって調整されます
 
 * <a id="file-auditing"></a>
 **Azure Files のファイル アクセスと変更を監査するにはどうすればよいですか?**

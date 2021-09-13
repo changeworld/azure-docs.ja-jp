@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 67a28bccf3353ed7e33826b0ef5b82fc1cc5f981
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8f661ea1462ad00cdf0ddc5caa802b53d5d8fc20
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376884"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480446"
 ---
 # <a name="http-features"></a>HTTP 機能
 
@@ -277,7 +277,8 @@ main = df.Orchestrator.create(orchestrator_function)
 "call HTTP" API では、ポーリング コンシューマー パターンのクライアント側を自動的に実装できます。 呼び出された API から Location ヘッダーを含む HTTP 202 応答が返される場合、202 以外の応答が返されるまで、オーケストレーター関数では Location リソースが自動的にポーリングされます。 この応答は、オーケストレーター関数コードに返される応答です。
 
 > [!NOTE]
-> オーケストレーター関数は、「[非同期操作の追跡](#async-operation-tracking)」で説明されているように、サーバー側のポーリング コンシューマー パターンもネイティブでサポートします。 このサポートにより、1 つの関数アプリ内のオーケストレーションで、他の関数アプリのオーケストレーター関数を簡単に調整できます。 これは、[サブオーケストレーション](durable-functions-sub-orchestrations.md)の概念と似ていますが、アプリ間通信がサポートされています。 このサポートは、マイクロサービススタイルのアプリ開発に特に役立ちます。
+> 1. オーケストレーター関数は、「[非同期操作の追跡](#async-operation-tracking)」で説明されているように、サーバー側のポーリング コンシューマー パターンもネイティブでサポートします。 このサポートにより、1 つの関数アプリ内のオーケストレーションで、他の関数アプリのオーケストレーター関数を簡単に調整できます。 これは、[サブオーケストレーション](durable-functions-sub-orchestrations.md)の概念と似ていますが、アプリ間通信がサポートされています。 このサポートは、マイクロサービススタイルのアプリ開発に特に役立ちます。
+> 2. JavaScript (TypeScript) および Python では、一時的な制限により、組み込みの HTTP ポーリング パターンは現在利用できません。
 
 ### <a name="managed-identities"></a>マネージド ID
 
