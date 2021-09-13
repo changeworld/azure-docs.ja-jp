@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   ms.date: 09/02/2021
   ms.custom: contperf-fy21q3
-  ms.openlocfilehash: 76c00322bd14c20b85ecd6d248fb5d35b226aace
-  ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+  ms.openlocfilehash: 3324750f4e79f2a7a151a9146ac35ce5189251f2
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/09/2021
-  ms.locfileid: "113587997"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124819667"
 landingContent:
 - title: Azure IoT Central について
   linkLists:
@@ -110,8 +110,8 @@ landingContent:
       url: core/howto-administer.md
     - text: ユーザーとロールを管理する
       url: core/howto-manage-users-roles.md
-    - text: アプリケーション UI のカスタマイズ
-      url: core/howto-customize-ui.md
+    - text: 組織の管理
+      url: core/howto-create-organizations.md
   - linkListType: sample
     links:
     - text: ARM SDK のサンプル
