@@ -229,6 +229,8 @@
           href: core/howto-administer.md
         - name: ユーザーとロールを管理する
           href: core/howto-manage-users-roles.md
+        - name: 組織の管理
+          href: core/howto-create-organizations.md
         - name: アプリケーション UI のカスタマイズ
           href: core/howto-customize-ui.md
         - name: V2 アプリケーションを V3 へ移行する

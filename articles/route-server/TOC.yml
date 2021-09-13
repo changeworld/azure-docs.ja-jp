@@ -50,7 +50,7 @@
     - name: ネットワークのブログ
       href: 'https://azure.microsoft.com/blog/topics/networking/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/route-server'
+      href: 'https://azure.microsoft.com/services/route-server/#pricing'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報

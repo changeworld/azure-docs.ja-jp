@@ -28,18 +28,6 @@ items:
             href: tutorial-data-sources-readiness.md
           - name: 大規模な Azure Purview MSI 構成
             href: tutorial-msi-configuration.md
-      - name: スタート キット
-        items:
-          - name: データのスキャン
-            href: tutorial-scan-data.md
-          - name: ホーム ページのナビゲーションと検索
-            href: tutorial-asset-search.md
-          - name: アセットの参照とデータ系列の表示
-            href: tutorial-browse-and-view-lineage.md
-          - name: リソース セット、アセット、スキーマ、分類を調べる
-            href: tutorial-schemas-and-classifications.md
-          - name: 用語集の用語を作成する
-            href: tutorial-import-create-glossary-terms.md
       - name: オンプレミスの SQL サーバーの登録とスキャン
         href: register-scan-on-premises-sql-server.md
       - name: カタログの REST API を呼び出す

@@ -10,12 +10,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 01/02/2020
-  ms.openlocfilehash: dba09c46a26b8daf50df546bd38d1aa58868ece3
-  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+  ms.openlocfilehash: 61731369cabc387cb9d11efaf50901b791d30546
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/19/2021
-  ms.locfileid: "107726558"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124760557"
 landingContent:
 - title: Azure Resource Manager について
   linkLists:
@@ -79,8 +79,6 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: アクティビティ ログの表示
-      url: view-activity-logs.md
     - text: 要求の制限と調整
       url: request-limits-and-throttling.md
     - text: 非同期操作

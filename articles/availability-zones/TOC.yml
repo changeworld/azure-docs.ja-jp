@@ -51,7 +51,7 @@
                 - name: ゾーン冗長パブリック Standard Load Balancer を作成する (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: 可用性ゾーン間で VM の負荷分散を行う
-              href: ../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: Azure を使用して可用性ゾーン全体で VM の負荷分散を行う (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md

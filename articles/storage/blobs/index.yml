@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 2a5f8d51f70f7950d0e2d7d4c52cb59e81feb00e
-  ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+  ms.openlocfilehash: f2d5ce352b8763f55f1e542b583f8d22773aa06f
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/14/2021
-  ms.locfileid: "113729688"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124776958"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
     - text: BLOB のアップロード、ダウンロード、一覧表示 - ポータル
       url: storage-quickstart-blobs-portal.md
     - text: Storage Explorer を使用した BLOB の管理
-      url: storage-quickstart-blobs-storage-explorer.md
+      url: quickstart-storage-explorer.md
   - linkListType: concept
     links:
     - text: ストレージ アカウントの概要
