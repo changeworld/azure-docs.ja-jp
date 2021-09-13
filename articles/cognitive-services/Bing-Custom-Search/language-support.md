@@ -71,7 +71,7 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 |台湾|TW|
 |トルコ|TR|
 |イギリス|GB|
-|United States|US|
+|米国|US|
 
 
 ## <a name="markets"></a>市場
