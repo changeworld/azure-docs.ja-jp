@@ -163,8 +163,6 @@
       href: lock-resources.md
     - name: テナントをまたいだ認証
       href: authenticate-multi-tenant.md
-    - name: アクティビティ ログを表示する
-      href: view-activity-logs.md
     - name: スロットル リクエスト
       href: request-limits-and-throttling.md
     - name: 非同期操作の追跡

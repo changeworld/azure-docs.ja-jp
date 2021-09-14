@@ -119,6 +119,8 @@
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: 登録情報を一括でエクスポートおよびインポートする
       href: export-modify-registrations-bulk.md
+    - name: リージョン間でリソースを移動する
+      href: move-registrations.md
     - name: SDK を使用した Notification Hub の作成
       items:
         - name: Notification Hub の作成 - .NET
