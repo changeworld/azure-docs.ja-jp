@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 5ac431f489f279ea09407e1a34c234911d71f12f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 82b40680d5f9aa46514273d8a147971b19cae9c8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259734"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438554"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 

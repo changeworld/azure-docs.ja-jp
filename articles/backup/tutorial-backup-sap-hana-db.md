@@ -2,13 +2,13 @@
 title: チュートリアル - Azure VM での SAP HANA データベースのバックアップ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
-ms.date: 02/24/2020
-ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 09/01/2021
+ms.openlocfilehash: 3cfbd89e9df6cf2d0d30d744ee8e437e3c364094
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587646"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434252"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -37,7 +37,8 @@ ms.locfileid: "104587646"
   * MDC の場合、キーが **NAMESERVER** の SQL ポートを指すこと。 SDC の場合は、**INDEXSERVER** の SQL ポートを指す必要があります
   * ユーザーを追加したり削除したりするための資格情報があること。
   * このキーは、事前登録スクリプトを正常に実行した後に削除できることに注意してください
-* HANA がインストールされている仮想マシンで、SAP HANA バックアップ構成スクリプト (事前登録スクリプト) をルート ユーザーとして実行します。 [このスクリプト](https://aka.ms/scriptforpermsonhana)で、バックアップに備えた HANA システムの準備を行うことができます。 事前登録スクリプトの詳細については、「[事前登録スクリプトで実行される処理](#what-the-pre-registration-script-does)」セクションを参照してください。
+* また、上記の手順に従ってカスタム キーを作成する代わりに、**hdbuserstore** の既存の HANA SYSTEM ユーザーのキーを作成することも選択できます。
+* HANA がインストールされている仮想マシンで、SAP HANA バックアップ構成スクリプト (事前登録スクリプト) をルート ユーザーとして実行します。 [このスクリプト](https://aka.ms/scriptforpermsonhana)で、バックアップに備えて HANA システムの準備を行い、上記の手順で作成したキーを入力として渡すように求めます。 この入力をパラメーターとしてスクリプトに渡す方法については、「[事前登録スクリプトで実行される処理](#what-the-pre-registration-script-does)」セクションを参照してください。 ここでは、事前登録スクリプトで実行される処理の詳細についても説明されています。
 * HANA セットアップでプライベート エンドポイントが使用されている場合は、 [事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を *-sn* または *--skip-network-checks* パラメーターを指定して実行します。
 
 >[!NOTE]
@@ -103,7 +104,7 @@ Azure VM で実行されている SAP HANA データベースをバックアッ�
 
 SAP HANA Azure VM では、Backint によってバックアップ (ログとそれ以外) が実現されますが、このバックアップは Azure Recovery Services コンテナーへのストリームであるため、このストリーミング手法について理解することが重要となります。
 
-HANA の Backint コンポーネントは、ディスクに接続された "パイプ" (情報を読み取るためのパイプと書き込むためのパイプ) の役割を果たします。基になるディスクには、データベース ファイルが存在します。それらが Azure Backup サービスによって読み取られて、Azure Recovery Services コンテナーに転送されます。 Azure Backup サービスは、backint のネイティブ検証チェックとは別に、チェックサムによってストリームを検証します。 これらの検証によって、Azure Recovery Services コンテナーにあるデータが確かに信頼できるものであり、回復可能であることが確認されます。
+HANA の Backint コンポーネントは、ディスクに接続された "パイプ" (情報を読み取るためのパイプと書き込むためのパイプ) の役割を果たします。基になるディスクには、データベース ファイルが存在します。それらが Azure Backup サービスによって読み取られて、Azure Recovery Services コンテナーに転送されます。 Azure Backup サービスでは、Backint のネイティブ検証チェックとは別に、チェックサムによってストリームが検証されます。 これらの検証によって、Azure Recovery Services コンテナーにあるデータが確かに信頼できるものであり、回復可能であることが確認されます。
 
 ストリームの処理対象になるのは主にディスクであるため、バックアップと復元のパフォーマンスを正確に測定するためには、ディスクのパフォーマンスを把握する必要があります。 Azure VM におけるディスクのスループットとパフォーマンスを深く理解するために、[こちらの記事](../virtual-machines/disks-performance.md)を参照してください。 これらはバックアップと復元のパフォーマンスにも当てはまります。
 
@@ -145,17 +146,22 @@ HANA の Backint コンポーネントは、ディスクに接続された "パ�
 
 * ご利用の Linux ディストリビューションに基づいて、スクリプトにより、Azure Backup エージェントに必要なすべてのパッケージがインストールまたは更新されます。
 * Azure Backup サーバーと依存サービス (Azure Active Directory、Azure Storage など) に対するアウトバウンド ネットワーク接続チェックを実行します。
-* [前提条件](#prerequisites)の 1 つでもあるユーザー キーを使用して HANA システムにログインします。 このユーザー キーは、バックアップ ユーザー (AZUREWLBACKUPHANAUSER) を HANA システムに作成するために使用されます。また、**このユーザー キーは、事前登録スクリプトが正常に実行された後に削除できます**。
+* [前提条件](#prerequisites)の 1 つとして指定されているカスタム ユーザー キーまたは SYSTEM ユーザー キーを使用して、HANA システムにログインします。 これは、バックアップ ユーザー (AZUREWLBACKUPHANAUSER) を HANA システムに作成するために使用されます。また、ユーザー キーは、事前登録スクリプトが正常に実行された後で削除できます。 _SYSTEM ユーザー キーは削除できないことに注意してください。_
 * AZUREWLBACKUPHANAUSER には、次の必要なロールとアクセス許可が割り当てられます。
   * MDC の場合: DATABASE ADMIN および BACKUP ADMIN (HANA 2.0 SPS05 以降): 復元中に新しいデータベースを作成します。
   * SDC の場合: BACKUP ADMIN: 復元中に新しいデータベースを作成します。
   * CATALOG READ: バックアップ カタログを読み取ります。
   * SAP_INTERNAL_HANA_SUPPORT いくつかのプライベート テーブルにアクセスします。 HANA 2.0 SPS04 Rev 46 未満の SDC および MDC バージョンでのみ必要となります。 HANA 2.0 SPS04 Rev 46 以上では必要ありません。必要な情報は、HANA チームからの修正プログラムと共に、パブリック テーブルから入手することになります。
 * このスクリプトにより、HANA バックアップ プラグインですべての操作 (データベース クエリ、復元操作、バックアップの構成と実行) を処理するために AZUREWLBACKUPHANAUSER の **hdbuserstore** にキーが追加されます。
+* または、独自のカスタム Backup ユーザーを作成することを選択できます。 このユーザーに、次の必要なロールとアクセス許可が割り当てられていることを確認してください。
+  * MDC の場合: DATABASE ADMIN および BACKUP ADMIN (HANA 2.0 SPS05 以降): 復元中に新しいデータベースを作成します。
+  * SDC の場合: BACKUP ADMIN: 復元中に新しいデータベースを作成します。
+  * CATALOG READ: バックアップ カタログを読み取ります。
+  * SAP_INTERNAL_HANA_SUPPORT いくつかのプライベート テーブルにアクセスします。 HANA 2.0 SPS04 Rev 46 未満の SDC および MDC バージョンでのみ必要となります。 これは、HANA 2.0 SPS04 Rev 46 以上では必要ありません。必要な情報は、HANA チームからの修正プログラムと共に、パブリック テーブルから入手することになります。
+* 次に、HANA バックアップ プラグインですべての操作 (データベース クエリ、復元操作、構成、バックアップの実行) を処理するために、カスタム Backup ユーザーの hdbuserstore にキーを追加します。 このカスタム Backup ユーザー キーを、パラメーター `-bk CUSTOM_BACKUP_KEY_NAME` または `-backup-key CUSTOM_BACKUP_KEY_NAME` としてスクリプトに渡します。  _このカスタム バックアップ キーのパスワードの期限切れが、バックアップと復元の失敗につながる可能性があることに注意してください。_
 
 >[!NOTE]
-> [前提条件](#prerequisites)の一環として記載されているユーザー キーは、事前登録スクリプトのパラメーターとして明示的に渡すことができます: `-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
->このスクリプトで受け取るその他のパラメーターを確認するには、`bash msawb-plugin-config-com-sap-hana.sh --help` コマンドを使用してください。
+> このスクリプトで受け取るその他のパラメーターを確認するには、`bash msawb-plugin-config-com-sap-hana.sh --help` コマンドを使用してください。
 
 キーの作成を確認するには、SIDADM 資格情報を使用して HANA コンピューター上で HDBSQL コマンドを実行します。
 
@@ -168,7 +174,7 @@ hdbuserstore list
 >[!NOTE]
 > `/usr/sap/{SID}/home/.hdb/` の下に固有の一連の SSFS ファイルがあることを確認してください。 このパスにはフォルダーが 1 つしか存在しません。
 
-事前登録スクリプトの実行を完了するために必要な手順の概要を次に示します。
+事前登録スクリプトの実行を完了するために必要な手順の概要を次に示します。 このフローでは、事前登録スクリプトへの入力パラメーターとして SYSTEM ユーザー キーを提供していることに注意してください。
 
 |担当者  |ソース  |実行対象  |説明  |
 |---------|---------|---------|---------|

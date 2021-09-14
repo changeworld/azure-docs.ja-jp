@@ -423,6 +423,8 @@
       href: insights-dashboard.md
     - name: '[ライセンス] ダッシュボード'
       href: license-dashboard.md
+    - name: '[サービスの品質] ダッシュボード'
+      href: quality-of-service-dashboard.md
     - name: '[ダウンロード] ダッシュボード'
       href: downloads-dashboard.md
     - name: '[評価とレビュー] ダッシュボード'

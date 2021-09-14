@@ -16,7 +16,7 @@
       href: tutorial-expressroute-global-reach-private-cloud.md
     - name: 4 - VMware HCX コネクタをインストールする
       href: install-vmware-hcx.md
-    - name: 5 - オンプレミスの VMware HCX コネクタを構成する
+    - name: 5 - オンプレミスの HCX コネクタを構成する
       href: configure-vmware-hcx.md
 - name: チュートリアル
   items:
@@ -108,12 +108,16 @@
           href: configure-l2-stretched-vmware-hcx-networks.md
         - name: DNS フォワーダーを構成する
           href: configure-dns-azure-vmware-solution.md
+        - name: HCX ネットワーク拡張機能を構成する
+          href: configure-hcx-network-extension.md
         - name: ポート ミラーリングの構成
           href: configure-port-mirroring-azure-vmware-solution.md
-        - name: パブリック インターネット アクセスを有効にする
-          href: enable-public-internet-access.md
         - name: vWAN でサイト間 VPN を構成する
           href: configure-site-to-site-vpn-gateway.md
+        - name: パブリック インターネット アクセスを有効にする
+          href: enable-public-internet-access.md
+        - name: HCX Mobility Optimized Networking (MON) のガイダンス
+          href: vmware-hcx-mon-guidance.md
     - name: ストレージ ポリシーを構成する
       href: configure-storage-policy.md
     - name: Windows Server フェールオーバー クラスターの構成
@@ -122,10 +126,6 @@
       href: connect-multiple-private-clouds-same-region.md
     - name: ディザスター リカバリーをデプロイする
       items:
-        - name: JetStream DR をデプロイする
-          href: deploy-disaster-recovery-using-jetstream.md
-        - name: Zerto DR をデプロイする
-          href: deploy-zerto-disaster-recovery.md
         - name: ディザスター リカバリー用に VMware HCX をデプロイする
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: ディザスター リカバリー用に VMware SRM をデプロイする
@@ -150,6 +150,8 @@
           href: ecosystem-migration-vms.md
     - name: VMware ソリューション
       items:
+        - name: HCX ネットワーク拡張機能を構成する
+          href: configure-hcx-network-extension.md
         - name: vRealize Operations を構成する
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: VMware Horizon をデプロイする
@@ -194,7 +196,7 @@
           href: /azure/azure-vmware/faq#compute
         - name: ネットワークと相互接続
           href: /azure/azure-vmware/faq#networking-and-interconnectivity
-        - name: Storage
+        - name: ストレージ
           href: /azure/azure-vmware/faq#storage
         - name: ホスト、クラスター、およびプライベート クラウド
           href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'

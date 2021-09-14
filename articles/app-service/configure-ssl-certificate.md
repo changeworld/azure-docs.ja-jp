@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 011461b1ecba9c5ce8cf636980a97d26f2228a98
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 27e17c5adeb7ab5a55b4783bac86301ba4237f45
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128842"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538203"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -46,7 +46,7 @@ ms.locfileid: "113128842"
 
 * Triple DES を使用して暗号化され、[パスワードで保護された PFX ファイル](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)としてエクスポートされている
 * 少なくとも 2048 ビット長の秘密キーが含まれている
-* 証明書チェーン内のすべての中間証明書が含まれている
+* 証明書チェーン内のすべての中間証明書およびルート証明書が含まれている。
 
 TLS バインドでカスタム ドメインをセキュリティで保護する場合、証明書には次の追加の要件があります。
 
@@ -101,7 +101,7 @@ Azure から App Service 証明書を購入する場合は、Azure で次のタ�
 - GoDaddy から購入プロセスを実行する。
 - 証明書のドメイン検証を実行する。
 - 証明書を [Azure Key Vault](../key-vault/general/overview.md) に保持する。
-- 証明書の更新を管理する (「[証明書の更新](#renew-certificate)」を参照)。
+- 証明書の更新を管理する (「[証明書の更新](#renew-an-app-service-certificate)」を参照)。
 - App Service アプリでインポートしたコピーと証明書を自動的に同期する。
 
 App Service 証明書を購入するには、「[証明書の注文を開始する](#start-certificate-order)」を参照してください。
@@ -297,7 +297,6 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 > [!IMPORTANT] 
 > この証明書を使用してカスタム ドメインをセキュリティで保護するには、証明書バインドを作成する必要があります。 「[バインドの作成](configure-ssl-bindings.md#create-binding)」の手順に従います。
->
 
 ## <a name="upload-a-public-certificate"></a>パブリック証明書のアップロード
 
@@ -315,14 +314,59 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 証明書がアップロードされたら、証明書の拇印をコピーし、「[証明書をアクセス可能にする](configure-ssl-certificate-in-code.md#make-the-certificate-accessible)」を参照してください。
 
+## <a name="renew-an-expiring-certificate"></a>有効期限が近づいている証明書を更新する
+
+証明書の期限が切れる前に、更新された証明書を App Service に追加し、[TLS/SSL バインド](configure-ssl-certificate.md)を更新する必要があります。 このプロセスは、証明書の種類によって異なります。 たとえば、[Key Vault からインポートされた証明書](#import-a-certificate-from-key-vault) ([App Service 証明書](#import-an-app-service-certificate)など) は、自動的に 24 時間ごとに App Service に同期され、証明書を更新すると TLS/SSL バインドが更新されます。 [アップロードされた証明書](#upload-a-private-certificate)の場合は、バインドは自動更新されません。 ご自身のシナリオに応じて、次のいずれかのセクションを参照してください。
+
+- [アップロードされた証明書を更新する](#renew-an-uploaded-certificate)
+- [App Service 証明書を更新する](#renew-an-app-service-certificate)
+- [Key Vault からインポートされた証明書を更新する](#renew-a-certificate-imported-from-key-vault)
+
+### <a name="renew-an-uploaded-certificate"></a>アップロードされた証明書を更新する
+
+期限切れの証明書を更新する場合、新しい証明書で証明書のバインディングを更新する方法によっては、ユーザー エクスペリエンスに悪影響を及ぼす可能性があります。 たとえば、バインディングを削除すると、そのバインディングが IP ベースであっても、インバウンド IP アドレスが変化する場合があります。 IP ベースのバインディングに既に存在する証明書を更新するときには、このことが特に重要となります。 アプリの IP アドレスに変更が生じないようにし、HTTPS エラーによるアプリのダウンタイムを回避するために、次の手順に従います。
+
+1. [新しい証明書をアップロードします](#upload-a-private-certificate)。
+2. 既存の (有効期限が近づいている) 証明書を削除せずに、[新しい証明書を同じカスタム ドメインにバインド](configure-ssl-bindings.md)します。 この操作により、既存の証明書のバインドが削除されることなく、バインドが置き換えられます。
+3. 既存の証明書を削除します。
+
+### <a name="renew-an-app-service-certificate"></a>App Service 証明書を更新する
+
+> [!NOTE]
+> 更新プロセスでは、[App Service の既知のサービスプリンシパルが key vault に対して必要なアクセス許可を持っている](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault)必要があります。 このアクセス許可はポータルから App Service 証明書をインポートするときに構成されます。キー コンテナーから削除することはできません。
+
+任意の時点で App Service 証明書の自動更新設定を切り替えるには、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションで **[自動更新の設定]** をクリックします。 既定では、App Service 証明書の有効期間は 1 年です。
+
+**[オン]** または **[オフ]** を選択して、 **[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 31 日前に自動更新を開始できます。
+
+![App Service 証明書を更新する](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
+
+証明書を手動で更新するには、 **[手動更新]** をクリックします。 有効期限の 60 日前に、証明書の手動更新を要求できます。
+
+更新操作が完了したら、 **[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
+
+> [!NOTE]
+> **[同期]** をクリックしなくても、証明書は 24 時間以内に App Service によって自動的に同期されます。
+
+### <a name="renew-a-certificate-imported-from-key-vault"></a>Key Vault からインポートされた証明書を更新する
+
+Key Vault から App Service にインポートした証明書を更新するには、「[Azure Key Vault 証明書を更新する](../key-vault/certificates/overview-renew-certificate.md)」を参照してください。
+
+キー コンテナーで証明書が更新されると、App Service では新しい証明書が自動的に同期され、24 時間以内に該当する TLS/SSL バインドが更新されます。 手動で同期するには、次のようにします。
+
+1. アプリの **[TLS/SSL の設定]** ページに移動します。
+1. **[秘密キー証明書]** でインポートした証明書を選択します。
+1. **[同期]** をクリックします。 
+
 ## <a name="manage-app-service-certificates"></a>App Service 証明書を管理する
 
-このセクションでは、「[App Service 証明書をインポートする](#import-an-app-service-certificate)」で購入した App Service 証明書を管理する方法について説明します。
+このセクションでは、[購入した App Service 証明書](#import-an-app-service-certificate)を管理する方法について説明します。
 
 - [証明書のキー更新](#rekey-certificate)
-- [証明書の更新](#renew-certificate)
 - [証明書のエクスポート](#export-certificate)
 - [証明書の削除](#delete-certificate)
+
+「[App Service 証明書を更新する](#renew-an-app-service-certificate)」も参照してください。
 
 ### <a name="rekey-certificate"></a>証明書のキー更新
 
@@ -335,24 +379,6 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 証明書のキーを更新すると、証明機関から発行された新しい証明書が展開されます。
 
 キー更新操作が完了したら、 **[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
-
-> [!NOTE]
-> **[同期]** をクリックしなくても、証明書は 24 時間以内に App Service によって自動的に同期されます。
-
-### <a name="renew-certificate"></a>証明書の更新
-
-> [!NOTE]
-> 更新プロセスでは、[App Service の既知のサービスプリンシパルが key vault に対して必要なアクセス許可を持っている](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault)必要があります。 このアクセス許可はポータルから App Service 証明書をインポートするときに構成されます。キー コンテナーから削除することはできません。
-
-任意の時点で証明書の自動更新をオンにするには、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションで **[自動更新の設定]** をクリックします。 既定では、App Service 証明書の有効期間は 1 年です。
-
-**[オン]** を選択して、 **[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 30 日前に自動更新を開始できます。
-
-![App Service 証明書を更新する](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
-
-証明書を手動で更新するには、 **[手動更新]** をクリックします。 有効期限の 60 日前に、証明書の手動更新を要求できます。
-
-更新操作が完了したら、 **[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
 
 > [!NOTE]
 > **[同期]** をクリックしなくても、証明書は 24 時間以内に App Service によって自動的に同期されます。

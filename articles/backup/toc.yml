@@ -186,9 +186,9 @@
           items:
             - name: コンテナーから複数の SQL Server VM をバックアップする
               href: backup-sql-server-database-azure-vms.md
-            - name: SQL 可用性グループのバックアップ
+            - name: SQL Server 可用性グループをバックアップする
               href: backup-sql-server-on-availability-groups.md
-            - name: VM ペインから SQL Server VM をバックアップする
+            - name: VM ウィンドウから SQL Server VM をバックアップする
               href: backup-sql-server-vm-from-vm-pane.md
         - name: 復元
           href: restore-sql-database-azure-vm.md
@@ -198,6 +198,8 @@
       items:
         - name: バックアップ
           href: backup-azure-database-postgresql.md
+        - name: 管理する
+          href: manage-azure-database-postgresql.md
     - name: MARS エージェントを使用した Windows バックアップ
       items:
         - name: 概要
@@ -236,6 +238,8 @@
               href: backup-managed-disks.md
             - name: 復元
               href: restore-managed-disks.md
+            - name: 管理する
+              href: manage-azure-managed-disks.md
         - name: PowerShell の場合
           items:
             - name: バックアップ
@@ -549,15 +553,15 @@
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
       href: /cli/azure/backup
-    - name: Azure Dataprotection - CLI
+    - name: Azure データ保護 - CLI
       href: /cli/azure/dataprotection?view=azure-cli-latest&preserve-view=true
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
-    - name: Azure Dataprotection - PowerShell
+    - name: Azure データ保護 - PowerShell
       href: /powershell/module/az.dataprotection/?view=azps-6.1.0&preserve-view=true
     - name: PowerShell – Azure Backup エージェント
       href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
-    - name: REST - Azure Dataprotection
+    - name: REST - Azure データ保護
       href: /rest/api/dataprotection/
     - name: REST - Backup
       href: /rest/api/backup/

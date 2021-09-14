@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de49c820100140f0822149bba84f7a38f034323b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98951245"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473282"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>チュートリアル:REST API を使用する
 
@@ -79,20 +79,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 自分の Purview アカウントに移動します
 
-1. **[Purview アカウント]** ページの **[アクセス制御 (IAM)]** タブを選択します。
+1. **[Purview アカウント]** ページで、**Purview Studio** を開きます。
 
-1. **[+ 追加]** をクリックします。
+1. 左側のメニューで **[Data Map]\(データ マップ\)** を選択します。
 
-1. **[ロールの割り当ての追加]** を選択します
+1. **[Collections]\(コレクション\)** を選択します。
 
-1. [ロール] に「**Purview データ キュレーター**」と入力します
+1. コレクション メニューでルート コレクションを選択します。 これはリストの一番上のコレクションで、Purview アカウントと同じ名前になります。
+
+1. **[ロールの割り当て]** タブを選択します。
+
+1. **[データ キュレーター]** まで下にスクロールし、 **+** ユーザー ボタンを選択します。
 
     > [!Note]
-    > Azure Purview Data Catalog のアクセス許可について詳しくは、[カタログのアクセス許可](catalog-permissions.md)に関するページを参照してください。 たとえば、スキャンをトリガーするためのアクセス許可が必要な場合、ロールの種類は **[Purview データ ソース管理者]** にする必要があります。
+    > コレクションに対する権限を編集できるのは、コレクション管理者のみです。 コレクション管理者ではない場合は、ルート コレクションに一覧表示されているいずれかの管理者に問い合わせください。 詳細については、[Purview のアクセス許可に関するページ](catalog-permissions.md)を参照してください。
 
-1. **[アクセスの割り当て先]** は、既定値の **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** のままにします
-
-1. **[選択]** で、以前に作成した割り当てたいサービス プリンシパルの名前を入力し、その名前を結果ペインでクリックします。
+1. 以前に作成した、割り当てたいサービス プリンシパルの名前を検索し、その名前を結果ペインでクリックします。
 
 1. [設定] メニューの **[保存]**
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93b5d7059c1d19b3e5130a8e6d360655fa210aba
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: a25f2a83fe03b8510e6ec56eb6bdcfedbb0098d8
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555954"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538077"
 ---
 # <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル: .NET と AI を使用して Azure BLOB から検索可能なコンテンツを生成する
 
@@ -309,7 +309,7 @@ SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerC
 
 ### <a name="ocr-skill"></a>OCR スキル
 
-**OCR** スキルはイメージからテキストを抽出します。 このスキルは、normalized-images フィールドが存在していることを前提としています。 このフィールドを生成するために、このチュートリアルの後半で、```"generateNormalizedImages"``` に対するインデクサー定義で ```"imageAction"``` 構成を設定します。
+[`OcrSkill`](/dotnet/api/azure.search.documents.indexes.models.ocrskill) は画像からテキストを抽出します。 このスキルは、normalized-images フィールドが存在していることを前提としています。 このフィールドを生成するために、このチュートリアルの後半で、```"generateNormalizedImages"``` に対するインデクサー定義で ```"imageAction"``` 構成を設定します。
 
 ```csharp
 private static OcrSkill CreateOcrSkill()
@@ -340,7 +340,7 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>マージ スキル
 
-このセクションでは、ドキュメント コンテンツ フィールドを、OCR スキルで生成されたテキストとマージする **マージ** スキルを作成します。
+このセクションでは、ドキュメント コンテンツ フィールドを、OCR スキルで生成されたテキストとマージする [`MergeSkill`](/dotnet/api/azure.search.documents.indexes.models.mergeskill) を作成します。
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
@@ -379,7 +379,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>言語検出スキル
 
-**言語検出** スキルは、入力テキストの言語を検出し、要求で送信されたすべてのドキュメントごとに 1 つの言語コードを報告します。 **言語検出** スキルの出力を、**テキスト分割** スキルに対する入力の一部として使用します。
+[`LanguageDetectionSkill`](/dotnet/api/azure.search.documents.indexes.models.languagedetectionskill) は、入力テキストの言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 **言語検出** スキルの出力を、**テキスト分割** スキルに対する入力の一部として使用します。
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -408,7 +408,7 @@ private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 
 ### <a name="text-split-skill"></a>テキスト分割スキル
 
-以下の **分割** スキルは、ページごとにテキストを分割し、`String.Length` で測定してページ サイズを 4,000 文字に制限します。 このアルゴリズムは、テキストを最大でサイズが `maximumPageLength` のチャンクに分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは `maximumPageLength` よりも少し小さくなることがあります。
+下記の [`SplitSkill`](/dotnet/api/azure.search.documents.indexes.models.splitskill) は、ページごとにテキストを分割し、`String.Length` で測定してページ サイズを 4,000 文字に制限します。 このアルゴリズムは、テキストを最大でサイズが `maximumPageLength` のチャンクに分割しようとします。 この場合、アルゴリズムはできる限り文の境界で文を区切ろうとするため、チャンクのサイズは `maximumPageLength` よりも少し小さくなることがあります。
 
 ```csharp
 private static SplitSkill CreateSplitSkill()
@@ -444,7 +444,7 @@ private static SplitSkill CreateSplitSkill()
 
 ### <a name="entity-recognition-skill"></a>エンティティ認識スキル
 
-この `EntityRecognitionSkill` インスタンスは、カテゴリの種類 `organization` を認識するように設定されています。 **エンティティ認識** スキルでは、カテゴリの種類 `person` および `location` も認識できます。
+この `EntityRecognitionSkill` インスタンスは、カテゴリの種類 `organization` を認識するように設定されています。 [`EntityRecognitionSkill`](/dotnet/api/azure.search.documents.indexes.models.entityrecognitionskill) は、カテゴリの種類 `person` と `location` も認識できます。
 
 "context" フィールドが、アスタリスク付きで ```"/document/pages/*"``` に設定されていることに注目してください。これは、エンリッチメント ステップが ```"/document/pages"``` の下にある各ページごとに呼び出されることを意味します。
 
@@ -477,7 +477,7 @@ private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 
 ### <a name="key-phrase-extraction-skill"></a>キー フレーズ抽出スキル
 
-先ほど作成した `EntityRecognitionSkill` インスタンスと同様に、**キー フレーズ抽出** スキルもドキュメントのページごとに呼び出されます。
+先ほど作成した `EntityRecognitionSkill` インスタンスと同様に、[`KeyPhraseExtractionSkill`](/dotnet/api/azure.search.documents.indexes.models.keyphraseextractionskill) もドキュメントのページごとに呼び出されます。
 
 ```csharp
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
@@ -511,7 +511,7 @@ private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
 
 ### <a name="build-and-create-the-skillset"></a>スキルセットを構築および作成する
 
-作成したスキルを使用して `Skillset` を構築します。
+作成したスキルを使用して [`SearchIndexerSkillset`](/dotnet/api/azure.search.documents.indexes.models.searchindexerskillset) を構築します。
 
 ```csharp
 private static SearchIndexerSkillset CreateOrUpdateDemoSkillSet(SearchIndexerClient indexerClient, IList<SearchIndexerSkill> skills,string cognitiveServicesKey)

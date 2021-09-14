@@ -4,14 +4,14 @@ description: Apache Spark とデュアル書き込みプロキシを使用して
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
-ms.topic: overview
-ms.date: 06/02/2021
-ms.openlocfilehash: c2529f355e7d39c22bf5f3d703cb33c59101a5f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.topic: tutorial
+ms.date: 08/17/2021
+ms.openlocfilehash: 03862b42fb181adcf1a6c4edbed66ce61ee49e73
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749462"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426132"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>デュアル書き込みプロキシを使用した Azure Managed Instance for Apache Cassandra へのライブ マイグレーション
 
@@ -22,7 +22,7 @@ ms.locfileid: "121749462"
 
 可能な限り、Apache Cassandra のネイティブ機能を使用し、[ハイブリッド クラスター](configure-hybrid-cluster.md)を構成することで、既存のクラスターから Azure Managed Instance for Apache Cassandra にデータを移行することをお勧めします。 この機能では、Apache Cassandra のゴシップ プロトコルが使用され、ソース データセンターから新しいマネージド インスタンス データセンターにデータがシームレスにレプリケートされます。 ただし、ソース データベースのバージョンに互換性がない場合や、ハイブリッド クラスターのセットアップが実行できない場合があります。 
 
-この記事では、[デュアル書き込みプロキシ](https://github.com/Azure-Samples/cassandra-proxy)と Apache Spark を使用して、Azure Managed Instance for Apache Cassandra にデータのライブ マイグレーションを行う方法について説明します。 このアプローチには次のような利点があります。
+このチュートリアルでは、[デュアル書き込みプロキシ](https://github.com/Azure-Samples/cassandra-proxy)と Apache Spark を使用して、Azure Managed Instance for Apache Cassandra にデータのライブ マイグレーションを行う方法について説明します。 このアプローチには次のような利点があります。
 
 - **アプリケーションの変更が最小限**。 構成をほとんど、またはまったく変更することなく、プロキシでアプリケーション コードからの接続を受け入れることができます。 すべての要求がソース データベースにルーティングされ、書き込みがセカンダリ ターゲットに非同期にルーティングされます。 
 - **クライアントでのワイヤー プロトコルの依存関係**。 このアプローチはバックエンド リソースや内部プロトコルに依存しないため、Apache Cassandra ワイヤー プロトコルが実装されている任意のソースまたはターゲット Cassandra システムで使用できます。

@@ -126,6 +126,8 @@
   items:
     - name: フルテキスト検索
       href: search-lucene-query-architecture.md
+    - name: アナライザー
+      href: search-analyzers.md
     - name: セマンティック検索
       href: semantic-search-overview.md
     - name: 関連性のスコアリング
@@ -182,8 +184,6 @@
           href: search-manage-azure-cli.md
         - name: リージョン間でのサービスの移動
           href: search-howto-move-across-regions.md
-        - name: 共有プライベート リンク リソースの作成に関する問題のトラブルシューティング
-          href: troubleshoot-shared-private-link-resources.md
     - name: Security
       items:
         - name: データの暗号化
@@ -202,6 +202,8 @@
               href: service-configure-firewall.md
             - name: プライベート エンドポイントの作成
               href: service-create-private-endpoint.md
+            - name: プライベート接続のトラブルシューティング
+              href: troubleshoot-shared-private-link-resources.md
         - name: アウトバウンド セキュリティ (インデクサー)
           items:
             - name: IP 範囲でのデータ アクセス
@@ -266,8 +268,6 @@
           href: index-sql-relational-data.md
     - name: アナライザー
       items:
-        - name: アナライザーの追加
-          href: search-analyzers.md
         - name: 言語アナライザーの追加
           href: index-add-language-analyzers.md
         - name: カスタム アナライザーの追加

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0187a1c15315835c1606913acfd52dc930e92443
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91626967"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538653"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>チュートリアル:最初の API のインポートと発行
 
@@ -51,9 +51,9 @@ ms.locfileid: "91626967"
    :::image type="content" source="media/import-and-publish/create-api.png" alt-text="API の作成":::
 
 
-   |設定|[値]|説明|
+   |設定|値|説明|
    |-------|-----|-----------|
-   |**OpenAPI の仕様**|*https:\//conferenceapi.azurewebsites.net?format=json*|API を実装するサービス。 要求は、API Management によってこのアドレスに転送されます。|
+   |**OpenAPI の仕様**|*https:\//conferenceapi.azurewebsites.net?format=json*|API を実装するサービス。 要求は、API Management によってこのアドレスに転送されます。 サービスは、パブリックにアクセス可能なインターネット アドレスでホストされている必要があります。 |
    |**表示名**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|[開発者ポータル](api-management-howto-developer-portal.md)に表示される名前。|
    |**名前**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|API の一意の名前。|
    |**説明**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|API の説明 (省略可)。|

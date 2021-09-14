@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 18d97473e128326d6e3eb4c77ecab7fc3ba14c7d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 530078dc7a720b39a2b276230fd7e04fb9ab01d4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121787192"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425664"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -192,6 +192,9 @@ Azure Cosmos DB は、Cassandra API アカウントで以下のデータベー�
 | UPDATE IF EXISTS | はい |
 | UPDATE IF NOT EXISTS | はい |
 | UPDATE <条件> | いいえ |
+
+> [!NOTE]
+> 現在、軽量トランザクションは、マルチリージョン書き込みを有効にしているアカウントではサポートされていません。
 
 ## <a name="cql-shell-commands"></a>CQL シェル コマンド
 

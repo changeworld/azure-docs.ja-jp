@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4f56571fb96f6d9baf28a119a978f2658de5616c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 834feed476c307bc1a16bf95719b630389e58511
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860536"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430794"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -297,6 +297,7 @@ CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table
         LOCATION = 'folder_or_filepath',  
         DATA_SOURCE = external_data_source_name,  
         FILE_FORMAT = external_file_format_name
+        [, TABLE_OPTIONS = N'{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
     )  
 [;]  
 
@@ -320,6 +321,8 @@ CREATE EXTERNAL TABLE では、列名、データ型、照合順序を構成で�
 
 Parquet ファイルからの読み取りの場合は、読み取りたい列だけを指定して、残りをスキップすることができます。
 
+#### <a name="location"></a>LOCATION
+
 LOCATION = '*folder_or_filepath*'
 
 Azure Blob Storage にある実際のデータのフォルダーまたはファイル パスとファイル名を指定します。 ルート フォルダーから、場所を開始します。 ルート フォルダーは、外部データ ソースで指定されたデータの場所です。
@@ -330,9 +333,15 @@ Hadoop 外部テーブルとは異なり、ネイティブ外部テーブルで�
  
 Hadoop 外部テーブルとネイティブ外部テーブルではどちらも、名前が下線 (_) またはピリオド (.) で始まるファイルはスキップされます。
 
+#### <a name="data_source"></a>DATA_SOURCE
+
 DATA_SOURCE = *external_data_source_name*: 外部データの場所が含まれている外部データ ソースの名前を指定します。 外部データ ソースを作成するには、[CREATE EXTERNAL DATA SOURCE](#create-external-data-source) を使用します。
 
 FILE_FORMAT = *external_file_format_name*: 外部データのファイルの種類と圧縮方法を格納する外部ファイル形式のオブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT](#create-external-file-format) を使用します。
+
+#### <a name="table_options"></a>TABLE_OPTIONS
+
+TABLE_OPTIONS = *json options*: 基になるファイルを読み取る方法を示す一連のオプションを指定します。 現時点で使用できる唯一のオプションは、`"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]` です。これは、不整合な読み取り操作が発生する可能性がある場合でも、基になるファイルに対して行われた更新を無視するように外部テーブルに指示します。 このオプションは、ファイルが頻繁に追加される特殊な場合にのみ使用してください。 このオプションは、CSV 形式のサーバーレス SQL プールで使用できます。
 
 ### <a name="permissions-create-external-table"></a>CREATE EXTERNAL TABLE のアクセス許可
 

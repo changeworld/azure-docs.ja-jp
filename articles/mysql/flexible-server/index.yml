@@ -5,15 +5,15 @@ metadata:
   description: Azure Database for MySQL - フレキシブル サーバーは、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
   author: mksuni
   ms.author: sumuth
-  ms.date: 09/21/2020
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 0d209c2b875b8ff1b22a4fe65098fc3fd076bde3
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: 992574a32c657584ef28ad031059d0528a2383bc
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122777538"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124784691"
 landingContent:
 - title: フレキシブル サーバー (プレビュー) について
   linkLists:
@@ -111,6 +111,8 @@ landingContent:
     links:
     - text: オンラインで移行する
       url: ../howto-migrate-online.md
+    - text: データイン レプリケーションを使用して RDS for MySQL を移行する
+      url: ../how-to-migrate-rds-mysql-data-in-replication.md
 - title: 関連項目
   linkLists:
   - linkListType: reference

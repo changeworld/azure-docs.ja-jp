@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 96a60c88997226516d451124280053d87065e5b6
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c2720fb5fd52eaf5f4f6d854bba622c0fecb5aeb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381945"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438248"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -37,13 +37,15 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    > [!NOTE]
    >Application Insights リソースを初めて作成する場合は、「[Application Insights リソースの作成](../app/create-new-resource.md)」のドキュメントにアクセスして詳細を確認できます。
 
-   構成ページが表示されたら、次の表を使用して入力フィールドに入力します。 
+   構成ページが表示されます。 次の表を使用して、入力フィールドに入力します。 
 
     | 設定        | 値           | 説明  |
    | ------------- |:-------------|:-----|
    | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
-   | **リソース グループ**     | myResourceGroup      | AppInsights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
-   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前。 新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 |
+   | **場所** | 米国東部 | お近くの場所か、アプリがホストされている場所の近くを選択します。 |
+   | **リソース モード** | ワークスペース ベース | リソース モードを選択するオプションが表示される場合は、 **[ワークスペース ベース]** を選択します。  |
+   | **Log Analytics ワークスペース** | | 既定値を受け入れてください。 |
 
 3. **［作成］** を選択します
 

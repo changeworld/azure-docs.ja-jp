@@ -158,6 +158,8 @@
       items:
         - name: Azure AD を使用した安全なハイブリッド アクセス
           href: secure-hybrid-access.md
+        - name: パートナー統合を使用した安全なハイブリッド アクセス
+          href: secure-hybrid-access-integrations.md
         - name: Datawiza
           href: datawiza-with-azure-ad.md
         - name: F5

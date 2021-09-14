@@ -5,15 +5,15 @@ metadata:
   description: Azure Database for MySQL - シングル サーバーは、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
   author: mksuni
   ms.author: sumuth
-  ms.date: 09/20/2020
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 9fd917d6d95b0c688a1271e903f89d4fd3f218b0
-  ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+  ms.openlocfilehash: 3986e2b63db40b2222bcb37fc69a8913ebe2ef63
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/19/2021
-  ms.locfileid: "112379422"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124796877"
 landingContent:
 - title: シングル サーバーについて
   linkLists:
@@ -103,6 +103,8 @@ landingContent:
       url: ../concepts-migrate-import-export.md
     - text: MySQL Workbench を使用して RDS MySQL を移行する
       url: ../how-to-migrate-rds-mysql-workbench.md
+    - text: データイン レプリケーションを使用して RDS for MySQL を移行する
+      url: ../how-to-migrate-rds-mysql-data-in-replication.md
 - title: ビジネス継続性
   linkLists:
   - linkListType: concept

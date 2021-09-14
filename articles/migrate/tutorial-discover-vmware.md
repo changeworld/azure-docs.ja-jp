@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 973d6f9450d0cb58df5b1e8dcd208990806abc54
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 520b75e38d7ccf33c3f900c0b30bfd68e6184720
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967331"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542406"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>チュートリアル: Azure Migrate を使用して VMware 環境で実行されているサーバーを検出する
 
@@ -103,12 +103,15 @@ VMware vSphere Web Client で、vCenter Server に使用する読み取り専用
 > [!NOTE]
 > vCenter Server アカウントのスコープを設定して、検出を特定の vCenter Server データセンター、クラスター、ホスト、クラスターまたはホストのフォルダー、個々のサーバーに制限できます。 [vCenter Server ユーザー アカウントのスコープを設定](set-discovery-scope.md)する方法をご確認ください。
 
+> [!NOTE]
+> 検出用に指定された vCenter サーバーにリンク モードを使用して接続されている vCenter 資産は、Azure Migrate によって検出されません。 検出する各 vCenter 環境に、Azure Migrate アプライアンスをデプロイする必要があります。
+
 ### <a name="create-an-account-to-access-servers"></a>サーバーにアクセスするためのアカウントを作成する
 
 サーバー上の自分のユーザー アカウントには、インストールされているアプリケーションの検出、エージェントレスの依存関係分析、Web アプリと SQL Server インスタンスおよびデータベースの検出を開始するために必要なアクセス許可が付与されていなければなりません。 このユーザー アカウント情報は、アプライアンス構成マネージャーで指定できます。 アプライアンスは、サーバーにエージェントをインストールしません。
 
 * Windows サーバーおよび Web アプリの検出の場合は、サーバーに対する管理者アクセス許可が付与されたアカウント (ローカルまたはドメイン) を作成します。 SQL Server インスタンスおよびデータベースを検出するには、Windows または SQL Server アカウントが sysadmin サーバー ロールのメンバーである必要があります。 [必要なロールをユーザー アカウントに割り当てる](/sql/relational-databases/security/authentication-access/server-level-roles)方法をご確認ください。
-* Linux サーバーの場合は、ルート権限が付与されたアカウントを作成します。 または、/bin/netstat および /bin/ls ファイルに CAP_DAC_READ_SEARCH および CAP_SYS_PTRACE アクセス許可があるアカウントを作成できます。
+* Linux サーバーの場合は、ルート ユーザー アカウントの詳細を指定するか、/bin/netstat および /bin/ls ファイルに CAP_DAC_READ_SEARCH および CAP_SYS_PTRACE アクセス許可があるアカウントを作成します。
 
 > [!NOTE]
 > Azure Migrate アプライアンス構成マネージャーに複数のサーバー資格情報を追加して、インストールされているアプリケーションの検出、エージェントレスの依存関係分析、Web アプリと SQL Server インスタンスおよびデータベースの検出を実行できます。 複数のドメイン、Windows (ドメイン以外)、Linux (ドメイン以外)、または SQL Server の認証資格情報を追加できます。 [サーバーの資格情報を追加する](add-server-credentials.md)方法をご確認ください。
@@ -270,7 +273,7 @@ OVA ファイルをデプロイする前に、ファイルが安全であるこ�
 
 ### <a name="provide-server-credentials"></a>サーバーの資格情報を指定する
 
-**[Step 3: Provide server credentials to perform software inventory, agentless dependency analysis, discovery of SQL Server instances and databases and discovery of ASP.NET web apps in your VMware environment.]\(手順 3: サーバーの資格情報を指定して、ソフトウェア インベントリ、エージェントレスの依存関係分析、SQL Server インスタンスおよびデータベースの検出、VMware 環境での ASP.NET Web アプリの検出を実行する\)** で、複数のサーバー資格情報を指定できます。 これらのアプライアンス機能を使用しない場合は、この手順をスキップして、vCenter Server の検出に進むことができます。 このオプションはいつでも変更できます。
+「**手順 3: ソフトウェア インベントリ、エージェントレスの依存関係の分析、SQL Server インスタンスとデータベースの検出、VMware 環境での ASP.NET Web アプリの検出を実行するためのサーバー資格情報を指定する**」で、複数のサーバー資格情報を指定できます。 これらのアプライアンス機能を使用しない場合は、この手順をスキップして、vCenter Server の検出に進むことができます。 このオプションはいつでも変更できます。
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="ソフトウェア インベントリ、依存関係分析、S Q L サーバー検出を行うための資格情報を指定する方法を示すスクリーンショット。":::
 

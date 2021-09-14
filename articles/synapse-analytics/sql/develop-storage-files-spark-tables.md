@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c7c2123b84aa6e3da362df9ce47d1e7780e8a856
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 642024d9554b51bc60df90cf3d5a7bdd799440b5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441762"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432092"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>サーバーレス SQL プールで Apache Spark for Azure Synapse の外部テーブル定義を同期する
 
@@ -34,34 +34,28 @@ Spark 外部テーブルのクエリの場合は、外部 [spark_table] を対�
 SELECT * FROM [db].dbo.[spark_table]
 ```
 
-> [!NOTE]
-> Spark 外部テーブルの列の追加、削除、または変更コマンドは、サーバーレス SQL プールの外部テーブルには反映されません。
-
 ## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Apache Spark データ型から SQL データ型へのマッピング
 
-| Spark データ型 | SQL データ型               |
-| --------------- | --------------------------- |
-| ByteType        | smallint                    |
-| ShortType      | smallint                    |
-| IntegerType     | INT                         |
-| LongType        | bigint                      |
-| FloatType       | real                        |
-| DoubleType      | float                       |
-| DecimalType     | decimal                     |
-| TimestampType   | datetime2                   |
-| DateType        | date                        |
-| StringType      | varchar(max)\*               |
-| BinaryType      | varbinary                   |
-| BooleanType     | bit                         |
-| ArrayType       | varchar(max)\* (JSON として)\** |
-| MapType         | varchar(max)\* (JSON として)\** |
-| StructType      | varchar(max)\* (JSON として)\** |
+| Spark データ型 | SQL データ型 | 説明 |
+|---|---|---|
+| `LongType`, `long`, `bigint`                | `bigint`              | **Spark**: *LongType* は 8 バイト符号付き整数値を表します。 [リファレンス](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql) |
+| `BooleanType`, `boolean`                    | `bit` (Parquet)、`varchar(6)` (CSV)  | |
+| `DecimalType`, `decimal`, `dec`, `numeric`  | `decimal`             | **Spark**: *DecimalType* は、任意の有効桁数の符号付き 10 進数を表します。 java.math.BigDecimal で内部的にサポートされています。 BigDecimal は、任意の有効桁数の小数点以下なしの整数値と、小数点以下保持の 32 ビットの整数値で構成されます。 <br> **SQL**: 固定長の有効桁数と小数点以下保持の数値です。 最大有効桁数を使用した場合、有効値は - 10^38 +1 から 10^38 - 1 です。 decimal の ISO のシノニムは、dec および dec(p, s) です。 numeric は機能的には decimal と同じです。 [参照](/sql/t-sql/data-types/decimal-and-numeric-transact-sql]) |
+| `IntegerType`, `Integer`, `int`             | `int`                 | **Spark** *IntegerType* は 4 バイト符号付き整数値を表します。 [リファレンス](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)|
+| `ByteType`, `Byte`, `tinyint`               | `smallint`            | **Spark**: *ByteType* は 1 バイト符号付き整数値 [-128 から 127] を表し、ShortType は 2 バイト符号付き整数値 [-32768 から 32767] を表します。 <br> **SQL**: tinyint は 1 バイト符号付き整数値 [0, 255] を表し、smallint は 2 バイト符号付き整数値 [-32768, 32767] を表します。 [参照](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)|
+| `ShortType`, `Short`, `smallint`            | `smallint`            | 上記と同じです。 |
+| `DoubleType`, `Double`                      | `float`               | **Spark**: *DoubleType* は 8 バイト倍精度浮動小数点数を表します。 **SQL** については、[このページにアクセス](/sql/t-sql/data-types/float-and-real-transact-sql)してください。|
+| `FloatType`, `float`, `real`                | `real`                | **Spark**: *FloatType* は 4 バイト倍精度浮動小数点数を表します。 **SQL** については、[このページにアクセス](/sql/t-sql/data-types/float-and-real-transact-sql)してください。|
+| `DateType`, `date`                          | `date`                | **Spark**: *DateType* は、タイムゾーンを指定せずに、フィールドの値 (年、月、日) を構成する値を表します。|
+| `TimestampType`, `timestamp`                | `datetime2`           | **Spark**: *TimestampType* は、セッションのローカル タイムゾーンを指定して、フィールドの値 (年、月、日、時、分、秒) を構成する値を表します。 タイムスタンプ値は、絶対的な特定の時点を表します。
+| `char`                                      | `char`                |
+| `StringType`, `String`, `varchar`           | `Varchar(n)`          | **Spark**: *StringType* は文字列値を表します。 *VarcharType(n)* は、長さの制限がある StringType のバリアントです。 入力文字列が長さの制限を超えた場合、データの書き込みは失敗します。 この型は、関数または演算子ではなく、テーブル スキーマでのみ使用できます。<br> *CharType(n)* は、固定長の *VarcharType(n)* のバリアントです。 *CharType(n)* 型の列を読み取ると、常に長さ n の文字列値が返されます。 Char 型の列の比較では、短い方が長い方の長さまで埋め込まれます。 <br> **SQL**: *Varchar(n)* では、n を最大 8000 に、またパーティション分割された列では n を最大 2048 に設定できます。 <br> 照合順序 `Latin1_General_100_BIN2_UTF8` と共に使用します。 |
+| `BinaryType`, `binary`                      | `varbinary(n)`        | **SQL**: *Varbinary(n)* では、n を最大 8000 に、またパーティション分割された列では n を最大 2048 に設定できます。 |
+| `array`, `map`, `struct`                    | `varchar(max)`        | **SQL**: 照合順序 `Latin1_General_100_BIN2_UTF8` を使用して JSON にシリアル化します |
 
-\* 使用される照合順序は Latin1_General_100_BIN2_UTF8 です。
+\* データベース レベルの照合順序は Latin1_General_100_CI_AS_SC_UTF8 \*、文字列レベルの照合順序は Latin1_General_100_BIN2_UTF8
 
 \** ArrayType、MapType、StructType は JSON として表されます。
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

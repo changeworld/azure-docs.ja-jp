@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 716ac7b7d1c3b6577b9eb7290e249b306a617254
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 263f2be5c13a9086a529271ef8bd03464e20975e
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304105"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536321"
 ---
 ### <a name="count-of-os-update-installation-done"></a>OS 更新プログラムのインストールが完了した回数
 
@@ -213,7 +213,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ### <a name="list-all-extensions-installed-on-a-virtual-machine"></a>仮想マシンにインストールされているすべての拡張機能を一覧表示する
 
-まず、このクエリでは、仮想マシンのリソースの種類で `extend` を使用して大文字 (`toupper()`) で ID を取得し、オペレーティング システムの名前と種類を取得し、仮想マシンのサイズを取得します。 他のプロパティとの結合を準備するには、大文字のリソース ID を取得することをお勧めします。 次に、このクエリでは、**kind** に _leftouter_ を指定した `join` を使用して、拡張機能 ID の大文字の `substring` と一致させることによって、仮想マシン拡張機能を取得します。 "/extensions/\<ExtensionName\>" の前の ID の部分は仮想マシン ID と同じ形式であるため、`join` にはこのプロパティを使用します。 次に、仮想マシン拡張機能の名前に対して `summarize` を `make_list` と共に使用して、同じ _id_、_OSName_、_OSType_、および _VMSize_ を持つ各拡張機能の名前を 1 つの配列プロパティに結合します。 最後に、**asc** を指定して、小文字の _OSName_ に対して `order by` を使用します。 既定では、`order by` は降順です。
+まず、このクエリでは、仮想マシンのリソースの種類で `extend` を使用して大文字 (`toupper()`) で ID を取得し、オペレーティング システムの名前と種類を取得し、仮想マシンのサイズを取得します。 大文字のリソース ID を取得することは、他のプロパティとの結合を行うために準備する最適な方法です。 次に、このクエリでは、**kind** に _leftouter_ を指定した `join` を使用して、拡張機能 ID の大文字の `substring` と一致させることによって、仮想マシン拡張機能を取得します。 "/extensions/\<ExtensionName\>" の前の ID の部分は仮想マシン ID と同じ形式であるため、`join` にはこのプロパティを使用します。 次に、仮想マシン拡張機能の名前に対して `summarize` を `make_list` と共に使用して、同じ _id_、_OSName_、_OSType_、および _VMSize_ を持つ各拡張機能の名前を 1 つの配列プロパティに結合します。 最後に、小文字の _OSName_ に対して **asc** で `order by` を実行します。 既定では、`order by` は降順です。
 
 ```kusto
 Resources

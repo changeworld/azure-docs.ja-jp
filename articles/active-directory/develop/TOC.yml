@@ -176,8 +176,8 @@
           href: v2-supported-account-types.md
         - name: アプリのサインイン フロー
           href: app-sign-in-flow.md
-        - name: シングルページ アプリ
-          displayName: SPA
+        - name: シングルページ アプリ (SPA)
+          displayName: 'SPA, angular, react'
           items:
             - name: 概要
               href: scenario-spa-overview.md
@@ -256,7 +256,19 @@
             - name: コード構成
               href: scenario-desktop-app-configuration.md
             - name: トークンを取得する
-              href: scenario-desktop-acquire-token.md
+              items:
+                - name: 概要
+                  href: scenario-desktop-acquire-token.md
+                - name: 対話型
+                  href: scenario-desktop-acquire-token-interactive.md
+                - name: WAM との対話形式
+                  href: scenario-desktop-acquire-token-wam.md
+                - name: 統合 Windows 認証
+                  href: scenario-desktop-acquire-token-integrated-windows-authentication.md
+                - name: ユーザー名とパスワード
+                  href: scenario-desktop-acquire-token-username-password.md
+                - name: デバイス コード フロー
+                  href: scenario-desktop-acquire-token-device-code-flow.md
             - name: Web API を呼び出す
               href: scenario-desktop-call-api.md
             - name: 運用環境に移行する
@@ -353,6 +365,8 @@
                   href: msal-net-migration.md
                 - name: 機密クライアント アプリを MSAL.NET に移行する
                   href: msal-net-migration-confidential-client.md
+                - name: パブリック クライアント アプリを MSAL.NET に移行する
+                  href: msal-net-migration-public-client.md
                 - name: ブローカーを使用する Xamarin Android アプリの MSAL.NET への移行
                   href: msal-net-migration-android-broker.md
                 - name: ブローカーを使用する Xamarin iOS アプリの MSAL.NET への移行

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: b2ddc56614187d1f2dc6a4a1864d68276eaf54fd
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: ef3072d5c30a8e07f9073539e877ca37837a68a4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609097"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428328"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用して最初の静的サイトを構築する
 
@@ -117,7 +117,7 @@ cd my-first-static-web-app
 
     - `<LOCATION>`:この値を最も近い場所に置き換えます。 次のオプションがあります。_CentralUS_、_EastAsia_、_EastUS2_、_WestEurope_、および _WestUS2_。
 
-    - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`:この値を、以前に生成した [GitHub 個人用アクセス トークン](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)に置き換えます。
+    - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`:この値を、以前に生成した [GitHub 個人用アクセス トークン](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)に置き換えます。 最小限のアクセス許可は、パブリック リポジトリの場合は `workflow` スコープで、プライベート リポジトリの場合は `repo` スコープです。
 
     これで、作成したアプリを Azure で表示できるようになりました。
 

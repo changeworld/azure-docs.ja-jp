@@ -5,15 +5,15 @@ metadata:
   description: Azure Database for MySQL は、MySQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。 シングル サーバーまたはフレキシブル サーバー (プレビュー) を選んで Azure に MySQL データベースをデプロイすることができます。
   author: savjani
   ms.author: pariks
-  ms.date: 09/03/2019
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 20839bff8c6ab4e9c25431941955e289ff1bf6d2
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: 36338fdaad38bb84b4b4a796289c07e0cfee01d7
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122779518"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124804888"
 landingContent:
 - title: Azure Database for MySQL について
   linkLists:
@@ -117,6 +117,8 @@ landingContent:
       url: concepts-migrate-import-export.md
     - text: MySQL Workbench を使用して Amazon RDS for MySQL を移行する
       url: how-to-migrate-rds-mysql-workbench.md
+    - text: データイン レプリケーションを使用して Amazon RDS for MySQL を移行する
+      url: how-to-migrate-rds-mysql-data-in-replication.md
     - text: 最小限のダウンタイムでの移行
       url: howto-migrate-online.md
     - text: 移行中または移行後の一般的なエラー

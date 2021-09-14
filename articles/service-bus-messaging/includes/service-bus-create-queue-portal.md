@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 02/20/2019
+ms.date: 09/01/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d1cf75d8e678bc5bd3e3036930eea42526194df1
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: bdfe962368cd2a4a32031e7c912a8b3185bd6baf
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416114"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123453778"
 ---
 ## <a name="create-a-queue-in-the-azure-portal"></a>Azure portal でキューを作成する
 1. **[Service Bus 名前空間]** ページで、左側のナビゲーション メニューの **[キュー]** を選択します。
@@ -21,5 +21,5 @@ ms.locfileid: "112416114"
 1. キューの **名前** を入力し、他の値は既定値のままにします。
 1. ここで、 **[作成]** を選択します。
  
-    ![[キュー] -> [+ キュー] -> 名前の入力 -> [作成]](./media/service-bus-create-queue-portal/create-queue3.png)
+    :::image type="content" source="./media/service-bus-create-queue-portal/create-queue3.png" alt-text="ポータルでのキューの作成を示す画像":::
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Prometheus と Grafana を使用して Apache Spark アプリケーション レベルのメトリックを監視する
+title: チュートリアル - Prometheus と Grafana を使用して Apache Spark アプリケーションのメトリックを監視する
 description: チュートリアル - Apache Spark アプリケーション メトリック ソリューションを Azure Kubernetes Service (AKS) クラスターにデプロイする方法と、Grafana ダッシュボードを統合する方法について説明します。
 services: synapse-analytics
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: b32ddb38395d95e1c262c05aef878a1beeddc38c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eb49c65d3d61e17a8e527016d32d80bcc85894d8
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734709"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541227"
 ---
-# <a name="tutorial-monitor-apache-spark-application-level-metrics-with-prometheus-and-grafana"></a>チュートリアル: Prometheus と Grafana を使用して Apache Spark アプリケーション レベルのメトリックを監視する
+# <a name="monitor-apache-spark-applications-metrics-with-prometheus-and-grafana"></a>Prometheus と Grafana を使用して Apache Spark アプリケーションのメトリックを監視する
 
 ## <a name="overview"></a>概要
 
@@ -129,7 +129,7 @@ kubectl -n spo get svc spo-grafana
 
 Grafana ページの左上隅にある Synapse ダッシュボードを探し (ホーム -> Synapse Workspace / Synapse Application)、Synapse Studio でサンプル コードを実行して、メトリックが取得されるまで数秒待ってみます。
 
-また、"Synapse Workspace / Workspace" および "Synapse Workspace / Spark pools" ダッシュボードを使用して、ワークスペースと Apache Spark プールの概要を取得することもできます。
+また、"Synapse Workspace / Workspace" および "Synapse Workspace / Apache Spark pools" ダッシュボードを使用して、ワークスペースと Apache Spark プールの概要を取得することもできます。
 
 ## <a name="uninstall"></a>アンインストール
 
@@ -157,7 +157,7 @@ Synapse Prometheus コネクタは、Azure Synapse Apache Spark プールと Pro
 2.  Apache Spark アプリケーション検出: ターゲット ワークスペースにアプリケーションを送信すると、Synapse Prometheus コネクタがこれらのアプリケーションを自動的に検出できます。
 3.  Apache Spark アプリケーション メタデータ: 基本的なアプリケーション情報を収集し、データを Prometheus にエクスポートします。
 
-Synapse Prometheus コネクタは、[Microsoft Container Registry](https://github.com/microsoft/containerregistry) でホストされる Docker イメージとしてリリースされます。 オープンソースであり、[Azure Synapse Spark アプリケーション メトリック](https://github.com/microsoft/azure-synapse-spark-metrics)にあります。
+Synapse Prometheus コネクタは、[Microsoft Container Registry](https://github.com/microsoft/containerregistry) でホストされる Docker イメージとしてリリースされます。 オープンソースであり、[Azure Synapse Apache Spark アプリケーション メトリック](https://github.com/microsoft/azure-synapse-spark-metrics)にあります。
 
 ### <a name="prometheus-server"></a>Prometheus サーバー
 
@@ -171,12 +171,12 @@ Grafana はオープンソースの視覚化および分析ソフトウェアで
 
 [![ワークスペース ダッシュボードのスクリーンショット](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-workspace.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-workspace.png#lightbox)
 
-"Synapse Workspace / Spark pools" ダッシュボードには、選択した Apache Spark プールで期間中に実行される Apache Spark アプリケーションのメトリックが含まれます。
+"Synapse Workspace / Apache Spark pools" ダッシュボードには、選択した Apache Spark プールで期間中に実行される Apache Spark アプリケーションのメトリックが含まれます。
 
 [![Spark プール ダッシュボードのスクリーンショット](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-sparkpool.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-sparkpool.png#lightbox)
 
-"Synapse Workspace / Spark Application" ダッシュボードには、選択した Apache Spark アプリケーションが含まれます。
+"Synapse Workspace / Apache Spark Application" ダッシュボードには、選択した Apache Spark アプリケーションが含まれます。
 
 [![アプリケーション ダッシュボードのスクリーンショット](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-application.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-application.png#lightbox)
 
-上記のダッシュボード テンプレートは、[Azure Synapse Spark アプリケーション メトリック](https://github.com/microsoft/azure-synapse-spark-metrics/tree/main/helm/synapse-prometheus-operator/grafana_dashboards)でオープンソース化されています。
+上記のダッシュボード テンプレートは、[Azure Synapse Apache Spark アプリケーション メトリック](https://github.com/microsoft/azure-synapse-spark-metrics/tree/main/helm/synapse-prometheus-operator/grafana_dashboards)でオープンソース化されています。

@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 05/15/2020
+ms.date: 8/31/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3ade548ae31f7f62014d8f41141374aaa73217a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 906f6a7a8e64c255c8b87219ef0549a553821783
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252298"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536483"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -81,7 +81,9 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 
 "This query can't be executed due to current resource constraints (現在のリソース制約のため、このクエリを実行できません)" というエラー メッセージでクエリが失敗する場合、リソースの制約により、サーバーレス SQL プールが現時点でクエリを実行できないことを意味します。 
 
-- 適切なサイズのデータ型が使用されていることを確認してください。 また、文字列型の列の場合は既定で VARCHAR (8000) になるため、Parquet ファイルのスキーマを指定します。 
+- 適切なサイズのデータ型が使用されていることを確認してください。  
+
+- クエリで Parquet ファイルを対象にする場合は、既定で VARCHAR(8000) になるため、文字列型の列に対して明示的な型を定義することを検討してください。 [推論されたデータ型を確認します](./best-practices-serverless-sql-pool.md#check-inferred-data-types)。
 
 - 対象のクエリが CSV ファイルをターゲットとしている場合は、[統計を作成する](develop-tables-statistics.md#statistics-in-serverless-sql-pool)ことを検討してください。 
 
@@ -503,7 +505,7 @@ Delta Lake のサポートは、現在、サーバーレス SQL プールでの�
 - [OPENROWSET](./develop-openrowset.md) 関数または外部テーブルの場所で、ルート Delta Lake フォルダーを参照していることを確認します。
   - ルート フォルダーには、`_delta_log` という名前のサブフォルダーが必要です。 `_delta_log` フォルダーがない場合、クエリは失敗します。 そのフォルダーがない場合は、Apache Spark プールを使用して [Delta Lake に変換する](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta)必要があるプレーンな Parquet ファイルを参照しています。
   - パーティション スキーマを記述するためにワイルドカードを指定しないでください。 Delta Lake パーティションは、Delta Lake クエリによって自動的に識別されます。 
-- Apache Spark プールで作成された Delta Lake テーブルは、サーバーレス SQL プールでは同期されません。 T-SQL 言語を使用して、Apache Spark プールの Delta Lake テーブルのクエリを実行することはできません。
+- Apache Spark プールで作成された Delta Lake テーブルは、サーバーレス SQL プールで自動的に使用できるようになりません。 このような Delta Lake テーブルに対して、T-SQL 言語を使用してクエリを実行するには、[CREATE EXTERNAL TABLE](https://docs.microsoft.com/azure/synapse-analytics/sql/create-use-external-tables#delta-lake-external-table) ステートメントを実行し、形式として Delta を指定します。
 - 外部テーブルでは、パーティション分割はサポートされていません。 パーティションの除去を利用するには、Delta Lake フォルダーの[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)を使用します。 以下の既知の問題と回避策を参照してください。
 - サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)でこの機能に投票することができます。 [履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
 - サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)には、Azure Synapse Analytics で Apache Spark プールを使用します。

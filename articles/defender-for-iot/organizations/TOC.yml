@@ -18,13 +18,15 @@
       displayName: 'firewall, proxy, open ports'
       href: quickstart-system-prerequisites.md
     - name: Azure Defender for IoT を使用した作業の開始
-      displayName: 'getting started, registration, onboarding, activation, threat intelligence'
+      displayName: 'getting started, registration, onboarding, activation, threat intelligence, trial, free, subscription'
       href: getting-started.md
 - name: チュートリアル
   expanded: false
   items:
     - name: Azure Defender for IoT の試用版のセットアップ
       href: tutorial-onboarding.md
+    - name: Qradar を統合する
+      href: tutorial-qradar.md
     - name: Splunk を統合する
       href: tutorial-splunk.md
     - name: ServiceNow を統合する
@@ -33,6 +35,9 @@
   items:
     - name: 主要な概念
       href: concept-key-concepts.md
+    - name: サポートされるプロトコル
+      displayName: 'protocol, Horizon, horizon, SCADA, OT, Industrial IoT, proprietary'
+      href: concept-supported-protocols.md
 - name: 操作方法ガイド
   items:
     - name: ネットワークを準備する
@@ -186,8 +191,6 @@
           href: integration-fortinet.md
         - name: Palo Alto の統合
           href: integration-palo-alto.md
-        - name: Qradar の統合
-          href: integration-qradar.md
 - name: 関連項目
   items:
     - name: Defender for IoT の API を操作する

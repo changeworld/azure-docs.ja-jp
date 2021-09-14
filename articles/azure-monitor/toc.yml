@@ -87,6 +87,8 @@
           href: essentials/resource-manager-diagnostic-settings.md
         - name: Log Analytics ワークスペース
           href: logs/resource-manager-workspace.md
+        - name: Log Analytics クラスター
+          href: logs/resource-manager-cluster.md
         - name: ログ クエリ
           href: logs/resource-manager-log-queries.md
         - name: SQL Insights
@@ -233,10 +235,10 @@
               items:
                 - name: Azure portal
                   href: logs/quick-create-workspace.md
-                - name: Azure CLI
-                  href: logs/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: logs/powershell-workspace-configuration.md
+                - name: Resource Manager テンプレート
+                  href: logs/resource-manager-workspace.md
             - name: ワークスペース デプロイの設計
               href: logs/design-logs-deployment.md
             - name: ワークスペースの監視
@@ -741,8 +743,17 @@
             - name: Azure VM と仮想マシン スケール セット
               href: app/azure-vm-vmss-apps.md
             - name: Azure App Service
-              displayname: 'App Service, web app, PaaS, Azure web app'
-              href: app/azure-web-apps.md
+              items:
+                - name: 概要
+                  href: app/azure-web-apps.md
+                - name: ASP.NET Core
+                  href: app/azure-web-apps-net-core.md
+                - name: ASP.NET
+                  href: app/azure-web-apps-net.md
+                - name: Java
+                  href: app/azure-web-apps-java.md
+                - name: Node.js
+                  href: app/azure-web-apps-nodejs.md
             - name: Azure クラウド サービス
               displayname: 'cloud, cloud services, PaaS'
               href: app/cloudservices.md
@@ -1124,7 +1135,7 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
-        - name: モニター
+        - name: Monitor
           items:
             - name: パフォーマンスの監視
               href: containers/container-insights-analyze.md

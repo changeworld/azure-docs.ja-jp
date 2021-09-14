@@ -9,12 +9,12 @@ metadata:
   ms.reviewer: mimckitt
   ms.date: 10/13/2020
   ms.custom: references_regions
-  ms.openlocfilehash: 4b8cd236bad28c93949610dd26f45042bc0debc7
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: bb2ee07d3d5c603df11d5b17b6afea496f4b31c8
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114481778"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123424098"
 title: Azure Cloud Services (延長サポート) に関してよく寄せられる質問
 summary: この記事では、Azure Cloud Services (延長サポート) に関してよく寄せられる質問について説明します。
 sections:
@@ -29,7 +29,7 @@ sections:
   - question: >
       Cloud Services (延長サポート) をデプロイできる場所はどこですか?
     answer: >
-      Cloud Services (延長サポート) は、すべてのパブリック クラウド リージョンで使用できます。
+      Cloud Services (延長サポート) は、すべてのパブリックおよびソブリン クラウド リージョンで使用できます。
   - question: "クォータはどのように変更しますか? \n"
     answer: >
       お客様は、他の Azure Resource Manager 製品と同じプロセスを使用してクォータをリクエストする必要があります。Azure Resource Manager のクォータはリージョン別であり、リージョンごとに個別のクォータ リクエストが必要になります。

@@ -688,9 +688,21 @@ items:
           - name: 視覚的な監視
             href: monitor-visually.md
           - name: Azure Monitor による監視
-            href: monitor-using-azure-monitor.md
-          - name: Azure Monitor による SSIS の監視
-            href: monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor
+            items:
+              - name: 概要
+                href: monitor-using-azure-monitor.md
+              - name: Azure Data Factory メトリックとアラート
+                href: monitor-metrics-alerts.md
+              - name: 診断設定とワークスペースを構成する
+                href: monitor-configure-diagnostics.md
+              - name: Azure Monitor REST API を使用して診断ログを設定する
+                href: monitor-logs-rest.md
+              - name: Azure Monitor による SSIS 操作の監視
+                href: monitor-ssis.md
+              - name: ログとイベントのスキーマ
+                href: monitor-schema-logs-events.md
+              - name: Azure Marketplace から Azure Data Factory Analytics ソリューションをインストールする
+                href: monitor-install-analytics.md
           - name: SDK を使用した監視
             href: monitor-programmatically.md
           - name: 統合ランタイムの監視

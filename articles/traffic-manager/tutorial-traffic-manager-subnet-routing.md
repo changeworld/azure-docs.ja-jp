@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2021
 ms.author: duau
-ms.openlocfilehash: 1e95d3b72af14b151bdd1cbeede4d65deef0f817
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 5d97ebebe19235a54084ec551f3bbcb9e55e3022
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081517"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425628"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
@@ -175,9 +175,9 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | 名前           | myInternalWebSiteEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択** して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
-    |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM の IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myInternalWebSiteEndpoint* に転送されます。    |
+    |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM で使用される再帰 DNS リゾルバーの IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myInternalWebSiteEndpoint* に転送されます。    |
 
-4. 手順 2. と 3. を繰り返して、*myIISVMWestEurope* という名前の IIS サーバー VM に関連付けられたパブリック IP アドレス *myIISVMWestEurope-ip* 用の *myProdWebsiteEndpoint* という名前の別のエンドポイントを追加します。 **[Subnet routing settings]\(サブネット ルーティングの設定\)** で、テスト VM *myVMWestEurope* の IP アドレスを追加します。 このテスト VM からのすべてのユーザー クエリは、エンドポイント *myProdWebsiteEndpoint* にルーティングされます。
+4. 手順 2. と 3. を繰り返して、*myIISVMWestEurope* という名前の IIS サーバー VM に関連付けられたパブリック IP アドレス *myIISVMWestEurope-ip* 用の *myProdWebsiteEndpoint* という名前の別のエンドポイントを追加します。 **[Subnet routing settings]\(サブネット ルーティングの設定\)** で、テスト VM *myVMWestEurope* が使用する再帰 DNS リゾルバーの IP アドレスを追加します。 このテスト VM からの DNS リゾルバーを経由するすべてのユーザー クエリは、エンドポイント *myProdWebsiteEndpoint* にルーティングされます。
 5. 両方のエンドポイントが追加されると、 **[Traffic Manager プロファイル]** に表示され、監視ステータスが **[オンライン]** になります。
 
 ## <a name="test-traffic-manager-profile"></a>Traffic Manager プロファイルのテスト

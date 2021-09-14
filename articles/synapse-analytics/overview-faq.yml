@@ -7,15 +7,15 @@ metadata:
   ms.service: synapse-analytics
   ms.topic: overview
   ms.subservice: overview
-  ms.date: 10/25/2020
+  ms.date: 09/02/2021
   ms.author: saveenr
-  ms.reviewer: jrasnick
-  ms.openlocfilehash: b1fb4a033e0b501c25e2588e2dce6b7c1bce3d26
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.reviewer: jrasnick, wiassaf
+  ms.openlocfilehash: b076139e94c102ddd850d28bf0288dbd635e7dc1
+  ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112467797"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123451063"
 title: Azure Synapse Analytics についてよく寄せられる質問
 summary: このガイドでは、Azure Synapse Analytics についてよく寄せられる質問を紹介します。
 sections:
@@ -125,4 +125,10 @@ sections:
     answer: "\"移動\" や \"移行\" は不要です。 既存のプールで新しいワークスペース機能を有効にすることができます。 そうした場合、破壊的変更は発生せず、Synapse Studio、Spark、サーバーレス SQL プールなどの新機能を使用できるようになります。\n"
   - question: "現在、専用 SQL プールの既定のデプロイはどのようになりますか。 \n"
     answer: "既定では、すべての新しい専用 SQL プールがワークスペースにデプロイされます。ただし、必要に応じて、スタンドアロンのフォーム ファクターで専用 SQL プール (以前の SQL DW) を作成することもできます。 \n"
+- name: ネットワークのセキュリティ
+  questions:
+  - question: >
+      Azure Synapse ワークスペースへのアクセスをセキュリティで保護するにはどうすればよいですか。
+    answer: >
+      [マネージド仮想ネットワーク](./security/synapse-workspace-managed-vnet.md)を使用しても、使用しなくても、公衆ネットワークからワークスペースに接続できます。 詳細については、[接続設定](./security/connectivity-settings.md)に関するページを参照してください。 公衆ネットワークからのアクセスは、[公衆ネットワーク アクセス機能](./security/connectivity-settings.md#public-network-access)または[ワークスペース ファイアウォール](./security/synapse-workspace-ip-firewall.md)を有効にすることで制御できます。 または、[マネージド プライベート エンドポイント](./security/synapse-workspace-managed-private-endpoints.md)および [Private Link](../azure-sql/database/private-endpoint-overview.md) を使用してワークスペースに接続できます。 [Azure Synapse Analytics のマネージド仮想ネットワーク](./security/synapse-workspace-managed-vnet.md)を使用しない Synapse ワークスペースは、マネージド プライベート エンドポイントを介して接続することはできません。
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n   * [Azure Synapse Analytics の使用を開始する](get-started.md)\n   * [ワークスペースを作成する](quickstart-create-workspace.md)\n   * [サーバーレス SQL プールを使用する](quickstart-sql-on-demand.md)"

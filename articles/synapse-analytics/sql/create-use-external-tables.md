@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: cfce86e74a5e32f266dd0bbad84a179d8158a687
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 35a56131c55549cc5d33989579514fec3a0184c8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303690"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428238"
 ---
 # <a name="create-and-use-native-external-tables-using-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL プールを使用してネイティブの外部テーブルを作成および使用する
 
@@ -127,6 +127,35 @@ CREATE EXTERNAL TABLE Taxi (
 
 > [!NOTE]
 > テーブルはパーティション分割されたフォルダー構造で作成されますが、一部のパーティションの削除を利用することはできません。 なんらかの条件 (この場合は特定の年や月など) を満たしていないファイルをスキップしてパフォーマンスを向上させる場合は、[外部データに関するビュー](create-use-views.md#partitioned-views)を使用します。
+
+## <a name="external-table-on-appendable-files"></a>追加可能なファイル上の外部テーブル
+
+外部テーブルで参照されるファイルは、クエリの実行中に変更しないでください。 長時間実行されているクエリでは、SQL プールが読み取りを再試行したり、ファイルの一部を読み取ったり、ファイルを複数回読み取ったりしている場合があります。 ファイル コンテンツを変更すると、正しくない結果になる可能性があります。 したがって、クエリの実行中にファイルの変更時刻を検出すると、SQL プールはクエリに失敗します。
+場合によっては、継続的に追加されるファイルへのテーブルの作成が必要になることがあります。 継続的に追加されるファイルが原因でクエリが失敗しないようにするには、`TABLE_OPTIONS` の設定を使用して、不整合な可能性のある読み取りが外部テーブルで無視されるように指定できます。
+
+
+```sql
+CREATE EXTERNAL TABLE populationExternalTable
+(
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+    [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+    [year] smallint,
+    [population] bigint
+)
+WITH (
+    LOCATION = 'csv/population/population.csv',
+    DATA_SOURCE = sqlondemanddemo,
+    FILE_FORMAT = QuotedCSVWithHeaderFormat,
+    TABLE_OPTIONS = N'{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
+);
+```
+
+`ALLOW_INCONSISTENT_READS` 読み取りオプションを指定すると、クエリ ライフサイクルでのファイルの変更時刻のチェックが無効になり、外部テーブルによって参照されるファイルで使用可能なものをすべて読み取ります。 追加可能なファイルでは、既存のコンテンツは更新されず、新しい行だけが追加されます。 そのため、更新可能なファイルと比較して、正しくない結果になる可能性が最小限に抑えられます。 このオプションを使用すると、エラーを処理する必要なく、頻繁に追加されるファイルを読み取ることができるようになります。
+
+このオプションは、CSV ファイル形式で作成された外部テーブルでのみ使用できます。
+
+> [!NOTE]
+> オプション名が示すように、テーブルの作成者は、結果が不整合になる可能性があるリスクを受け入れることになります。 追加可能なファイルでは、テーブルを自己結合して、基になるファイルを強制的に複数回読み取った場合に、正しくない結果になる可能性があります。 ほとんどの "クラシック" クエリでは、クエリの実行中に追加された一部の行は外部テーブルで無視されます。
 
 ## <a name="delta-lake-external-table"></a>Delta Lake 外部テーブル
 

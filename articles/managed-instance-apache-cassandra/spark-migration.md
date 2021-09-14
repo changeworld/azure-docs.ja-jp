@@ -4,14 +4,14 @@ description: Apache Spark を使用して Azure Managed Instance for Apache Cass
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
-ms.topic: overview
-ms.date: 06/02/2021
-ms.openlocfilehash: e85d95dcd455ea2c9f4d9a14d9b68bebf06d3df6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.topic: tutorial
+ms.date: 08/17/2021
+ms.openlocfilehash: 5d78161f73dfa1927483d7c6f8bad3ce925b3631
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731223"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426870"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>Apache Spark を使用して Azure Managed Instance for Apache Cassandra に移行する
 
@@ -22,7 +22,7 @@ ms.locfileid: "121731223"
 
 可能な限り、Apache Cassandra のネイティブ レプリケーションを使用し、[ハイブリッド クラスター](configure-hybrid-cluster.md)を構成することで、既存のクラスターから Azure Managed Instance for Apache Cassandra にデータを移行することをお勧めします。 このアプローチでは、Apache Cassandra のゴシップ プロトコルを使用して、ソース データセンターから新しいマネージド インスタンス データセンターにデータをレプリケートします。 ただし、ソース データベースのバージョンに互換性がない場合や、ハイブリッド クラスターのセットアップが実行できない場合があります。 
 
-この記事では、Cassandra Spark コネクタと Apache Spark 向けの Azure Databricks を使用して、オフラインで Azure Managed Instance for Apache Cassandra に移行するためにデータを移行する方法について説明します。
+このチュートリアルでは、Cassandra Spark コネクタと Apache Spark 向けの Azure Databricks を使用して、オフラインで Azure Managed Instance for Apache Cassandra に移行するためにデータを移行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

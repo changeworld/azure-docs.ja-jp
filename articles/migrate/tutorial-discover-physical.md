@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 0878911bdd3caa2202ef993142aa89e4eabfe33c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f925eb888c1955212a762eb46c63300afd17d77d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464844"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427731"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate: Discovery and Assessment を使用して物理サーバーを検出する
 
@@ -40,9 +40,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **要件** | **詳細**
 --- | ---
-**アプライアンス** | Azure Migrate アプライアンスを実行するサーバーが必要です。 サーバーには次が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。<br/> _(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_<br/><br/> - 16-GB RAM、8 個の vCPU、約 80 GB のディスク記憶域<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。
+**アプライアンス** | Azure Migrate アプライアンスを実行するサーバーが必要です。 サーバーには次が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。<br/> _(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_<br/><br/> - 16-GB RAM、8 個の vCPU、約 80 GB のディスク記憶域<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。<br/><br/> - アプライアンスから必要な [URL](migrate-appliance.md#url-access) への送信インターネット接続。
 **Windows サーバー** | WinRM ポート 5985 (HTTP) で受信接続を許可して、アプライアンスが構成とパフォーマンスのメタデータをプルできるようにします。
 **Linux サーバー** | ポート22 (TCP) で受信接続を許可します。
+
+> [!NOTE]
+> [レプリケーション アプライアンス](migrate-replication-appliance.md)またはモビリティ サービス エージェントがインストールされているサーバーに、Azure Migrate アプライアンスをインストールすることはサポートされていません。  アプライアンス サーバーが以前にレプリケーション アプライアンスの設定に使用されていないこと、またはモビリティ サービス エージェントがサーバーにインストールされていることを確認します。
 
 ## <a name="prepare-an-azure-user-account"></a>Azure ユーザー アカウントを準備する
 

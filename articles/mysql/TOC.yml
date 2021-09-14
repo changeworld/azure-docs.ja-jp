@@ -5,7 +5,7 @@
   items:
     - name: Azure DB for MySQL とは
       href: overview.md
-    - name: 適切な MySQL オプションの選択
+    - name: 適切な MySQL デプロイの種類を選択する
       href: select-right-deployment-type.md
     - name: シングル サーバーの新機能
       href: single-server-whats-new.md
@@ -608,7 +608,10 @@
       displayName: 'import , migrate, export'
     - name: MySQL Workbench を使用して RDS MySQL データを移行する
       href: how-to-migrate-rds-mysql-workbench.md
-      displayName: 'import , migrate, export'
+      displayName: 'migrate, rds, workbench'
+    - name: データイン レプリケーションを使用して RDS MySQL データを移行する
+      href: how-to-migrate-rds-mysql-data-in-replication.md
+      displayName: 'migrate, rds, data-in replication'
     - name: Azure DB for MySQL – シングル サーバーを Azure DB for MySQL – フレキシブル サーバーに移行する
       href: howto-migrate-single-flexible-minimum-downtime.md
       displayName: 'migrate, Single to Flexible'

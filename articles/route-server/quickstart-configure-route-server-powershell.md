@@ -4,27 +4,22 @@ description: このクイック スタートでは、Azure PowerShell を使用�
 services: route-server
 author: duongau
 ms.author: duau
-ms.date: 8/23/2021
+ms.date: 09/01/2021
 ms.topic: quickstart
 ms.service: route-server
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: a4b4d739f4a45dbce74dfb9eafaacb6c10ff8187
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 65f5957d52dcf510601f4a4773cde4c8a477dc97
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215383"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475622"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用してルート サーバーを作成および構成する
 
 この記事は、Azure PowerShell を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシン上にそれらをプログラムします。 また、Azure Route Server は NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure PowerShell を使用した Route Server デプロイ環境の図。" border="false":::
-
-> [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -107,7 +102,7 @@ $virtualnetwork | Set-AzVirtualNetwork
 
 ## <a name="create-bgp-peering-with-an-nva"></a>NVA との BGP ピアリングを作成する
 
-Route Server から NVA への BGP ピアリングを確立するには、[New-AzRouteServerPeer](/powershell/module/az.network/new-azrouteserverpeer) を使用します。
+Route Server から NVA への BGP ピアリングを確立するには、[Add-AzRouteServerPeer](/powershell/module/az.network/add-azrouteserverpeer) を使用します。
 
 "your_nva_ip" は、NVA に割り当てられた仮想ネットワーク IP です。 "your_nva_asn" は、NVA に構成された自律システム番号 (ASN) です。 ASN は、65515 から 65520 の範囲に含まれているもの以外の 16 ビットの任意の数値にすることができます。 この ASN の範囲は Microsoft によって予約されています。
 

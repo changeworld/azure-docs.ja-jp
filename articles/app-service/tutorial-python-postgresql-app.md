@@ -12,12 +12,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 zone_pivot_groups: postgres-server-options
-ms.openlocfilehash: a5e57cf8ac41c6452116d4a88a5892d1779e6519
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7daa8e8e1fa8ba268211afb9b3cdddde218f3310
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114439108"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426546"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -467,9 +467,9 @@ Web アプリが完全に読み込まれると、Django 開発サーバーによ
 
 1. ブラウザーで `http://localhost:8000` にアクセスすると、"No polls are available" (投票は利用できません) というメッセージが表示されます。 
 
-1. `http:///localhost:8000/admin` に移動し、先ほど作成した管理者ユーザーを使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** をもう一度選択し、いくつかの選択肢がある投票の質問を作成します。 
+1. `http://localhost:8000/admin` に移動し、先ほど作成した管理者ユーザーを使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** をもう一度選択し、いくつかの選択肢がある投票の質問を作成します。 
 
-1. *http:\//localhost:8000* に再び移動し、アプリをテストするために質問に回答します。 
+1. `http://localhost:8000` に再び移動し、アプリをテストするために質問に回答します。 
 
 1. **Ctrl**+**C** キーを押して Django サーバーを停止します。
 

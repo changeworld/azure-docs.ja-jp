@@ -3,19 +3,17 @@ title: チュートリアル:Gen2 の環境を設定する - Azure Time Series I
 description: チュートリアル:Azure Time Series Insights Gen2 で環境を設定する方法について説明します。
 author: riserrad
 ms.author: riserrad
-manager: edett
 ms.workload: big-data
 ms.service: time-series-insights
-services: time-series-insights
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: f3994802e82b126f426a75a26d399f6f86e21797
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7a6562592bb7c0ae37784429d6a36eaf4ade4957
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952012"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449317"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>チュートリアル:Azure Time Series Insights Gen2 環境を設定する
 
@@ -228,7 +226,7 @@ Azure Time Series Insights Gen2 環境をデプロイできたので、分析の
         | **名前** | 「**Floor**」と入力します。 |
         | **種類** | **[カテゴリ別]** を選択します |
         | **Value** | プリセットから選択します。 **[Floor (Double)]\(フロア (Double)\)** を選択します。 <br /> 注:Azure Time Series Insights Gen2 でイベントの受信が開始されてから **[値]** が自動的に入力されるまで、数分かかる場合があります。|
-        | **Categories (カテゴリ)** | <span style="text-decoration: underline">ラベル</span>  - <span style="text-decoration: underline">値</span> <br /> Lower:1,2,3,4 <br /> Middle:5,6,7,8,9 <br /> Upper:10,11,12,13,14,15 |
+        | **Categories (カテゴリ)** | **ラベル**: **値** <br /> Lower:1,2,3,4 <br /> Middle:5,6,7,8,9 <br /> Upper:10,11,12,13,14,15 |
         | **既定のカテゴリ** | 「**Unknown**」と入力します |
 
         [![型の変数を追加します。](media/tutorial-set-up-environment/add-type-variables.png)](media/tutorial-set-up-environment/add-type-variables.png#lightbox)

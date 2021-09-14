@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 601970978dc69aea2a6f0947a26cc0bebc1d999d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 4e37be9e121d634e0d4a83fdd5f786805dedf132
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223015"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427212"
 ---
 # <a name="set-up-the-azure-percept-dk-device"></a>Azure Percept DK デバイスを設定する
 
@@ -150,7 +150,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
     - 既存のリソース グループを選択します。 存在しない場合は、 **[新規作成]** を選択し、画面の指示に従います。
     - 物理的に最も近い Azure リージョンを選択します。
     - 新しい IoT ハブに名前を付けます。
-    - S1 (Standard) 価格レベルを選択します。
+    - **S1 (Standard) 価格レベル** を選択します。
 
     > [!NOTE]
     > IoT Hub のデプロイが完了するまで数分かかる場合があります。 エッジ AI アプリケーションの[メッセージ スループット](../iot-hub/iot-hub-scaling.md#message-throughput)を引き上げる必要が生じた場合は、Azure portal でいつでも [IoT Hub を上位の Standard レベルにアップグレード](../iot-hub/iot-hub-upgrade.md)できます。 B および F レベルでは、Azure Percept はサポートされません。
@@ -183,7 +183,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 前述の手順を視覚的に確認するには、次の動画をご覧ください。
 > [!VIDEO https://www.youtube.com/embed/-dmcE2aQkDE]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 開発キットが設定されたので、次はビジョン AI の動作を確認します。
 - [開発キットのビデオ ストリームを表示する](./how-to-view-video-stream.md)

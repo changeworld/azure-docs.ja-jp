@@ -11,7 +11,7 @@ metadata:
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 07/06/2021
+  ms.date: 09/08/2021
 highlightedContent:
   items:
     - title: Azure ネットワークとは
@@ -78,7 +78,7 @@ additionalContent:
               url: ../dns/index.yml
         - title: NVA と仮想ネットワーク間でルーティングする
           links:
-            - text: Azure Route Server (プレビュー) とは
+            - text: Azure Route Server とは
               url: ../route-server/overview.md
             - text: Route Server の作成と構成
               url: ../route-server/quickstart-configure-route-server-portal.md

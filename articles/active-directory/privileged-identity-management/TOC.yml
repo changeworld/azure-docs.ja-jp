@@ -69,7 +69,7 @@
           href: pim-resource-roles-renew-extend.md
         - name: 特権アクセス グループ
           href: groups-renew-extend.md
-    - name: ロールの既定値を設定する
+    - name: ロールの設定を行う
       items:
         - name: Azure AD ロール
           href: pim-how-to-change-default-settings.md

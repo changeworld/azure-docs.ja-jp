@@ -7,13 +7,13 @@ metadata:
   ms.service: azure-education
   ms.subservice: education-hub
   ms.topic: overview
-  ms.date: 06/30/2020
-  ms.openlocfilehash: 7f6d555b1ea72a145c3826ffc1ae9ff7cc8c499a
-  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+  ms.date: 08/31/2021
+  ms.openlocfilehash: 28972b6c29e14ca453d713e25867b8079e05c3ca
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111907880"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123431028"
 title: Education Hub に関してよく寄せられる質問
 summary: この記事では、Microsoft Azure for Students、Microsoft Azure for Students Starter、Azure Dev Tools for Teaching についてよく寄せられる質問にお答えします。
 sections:
@@ -22,15 +22,21 @@ sections:
   - question: >
       $100 のクレジットを使い切った後や、12 か月が経過した後はどうなりますか?
     answer: >
-      利用可能なクレジットを使い切るか 12 か月が経過すると、Azure サブスクリプションが無効になります。 引き続き Azure を使用する場合は、Azure portal で従量課金制サブスクリプションにアップグレードできます。 Microsoft Azure for Students の利用規約の詳細については、[契約条件](https://azure.microsoft.com/offers/ms-azr-0170p/)を参照してください。
+      利用可能なクレジットを 12 か月が経過する前に使い切り、引き続き Azure を使用したい場合には、Azure portal で従量課金制サブスクリプションにアップグレードできます。  アップグレードしない場合、Azure サブスクリプションは無効になります。 12 か月が経過した場合は、プランに再度サインアップしてサブスクリプションを更新できます。 Microsoft Azure for Students の利用規約の詳細については、[契約条件](https://azure.microsoft.com/offers/ms-azr-0170p/)を参照してください。
+  - question: >
+      だれが Microsoft Azure for Students を利用できますか?
+    answer: "Microsoft Azure for Students は、以下の要件を満たしている学生のみが利用できます。\n\n- 自分が 18 歳以上で、認可を受けている 2 年または 4 年制の学位授与教育機関に正規の学生として在学していることを確認する必要があります。 \n- 所属する組織のメール アドレスを通じて、教育機関への所属を証明する必要があります。\n- 詳しい使用条件については、[Microsoft Azure for Students プラン](https://azure.microsoft.com/offers/ms-azr-0170p/)に関するページを参照してください。\n\nこのプランは、大規模公開オンライン講座 (MOOC) や営利組織のその他の専門トレーニングでは利用できません。\n\nこのプランでは、Microsoft Azure for Students サブスクリプションが対象のお客様につき 1 つに限られます。 このプランは譲渡できず、Microsoft が許可しない限り、他のプランと組み合わせることはできません。\n    \n"
   - question: >
       Microsoft Azure for Students を来年もう一度入手することはできますか?
     answer: >
-      Microsoft Azure for Students に関心をお寄せくださり、ありがとうございます。 ご満足いただけたようで嬉しく思います。 現在、更新は発表されておりません。 更新については後ほどこちらでご確認ください。
+      はい、ご利用いただけます。  1 年後に Microsoft Azure for Students サブスクリプションを更新できます。  その直前に、忘れずに更新するようメールを送信します。  Microsoft Azure for Students の [Web サイト](https://aka.ms/azure4students)からプランに再度サインアップするだけ更新できます。
+  - question: >
+      Microsoft から請求書が届いたのはなぜですか?
+    answer: "前月の Microsoft Azure for Students の利用時に発生した使用状況を詳細に記載した請求書を送信する場合があります。  ご安心ください。その使用に対する支払いは不要です。Microsoft Azure for Students で提供されるクレジットで全額が処理されます。  請求書とそのしくみの詳細については、docs.microsoft.com の[記事](https://docs.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview)を確認してください。 \n"
   - question: >
       サブスクリプションとは何ですか? Microsoft Azure for Students とどのような関係があるのですか?
     answer: >
-      サブスクリプションは、Azure サービスへのアクセスを提供します。 Microsoft Azure for Students では、12 か月間有効な $100 のクレジットが付与されます。 これには、コンピューティング、ネットワーク、ストレージ、データベースなど、25 を超える無料サービスへのアクセスが含まれます。 この期間中に発生した料金はすべて、クレジットから差し引かれます。 12 か月が経過した時点または $100 のクレジットを使い切った時点 (そのどちらか早い方) で引き続き Azure サービスを使用するには、従量課金制サブスクリプションにアップグレードする必要があります。
+      サブスクリプションは、Azure サービスへのアクセスを提供します。 Microsoft Azure for Students では 12 か月間有効な $100 のクレジットが付与されます。これには、コンピューティング、ネットワーク、ストレージ、データベースなど、25 を超える無料サービスへのアクセスが含まれます。 この期間中に発生した料金はすべて、クレジットから差し引かれます。 $100 のクレジットを使い切った後に Azure サービスを引き続き使用するには、(12 か月の期間内の場合は) 更新するか、従量課金制サブスクリプションにアップグレードする必要があります。
   - question: >
       アップグレードしない場合、Azure サービスはどうなりますか?
     answer: >

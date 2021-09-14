@@ -7,12 +7,12 @@ metadata:
   ms.service: cosmos-db
   ms.topic: conceptual
   ms.date: 05/18/2021
-  ms.openlocfilehash: 20fe5aabf2e7cc8f38272e86a0df2fc91443eee2
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 960a4e93cfc8f6d2041fceb84b92dd6a4ab8b9e8
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "111907701"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123426996"
 title: Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
 summary: >
   [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -96,7 +96,7 @@ sections:
       たとえば、50,000 RU/秒 (5,000 から 50,000 RU/秒の間でのスケーリング) の最大 RU/秒から始めた場合、最大で 500 GB のデータを格納できます。 500 GB を超えると (現在、ストレージが 600 GB になっているなど)、新しい最大 RU/秒は 60,000 RU/秒 (6,000 から 60,000 RU/秒の間でのスケーリング) になります。
   - question: "データベースまたはコンテナーの最大 RU/秒を変更することはできますか? \n"
     answer: >
-      はい。 最大 RU/秒を変更する方法については、こちらの[記事](how-to-provision-autoscale-throughput.md)を参照してください。 最大 RU/秒を変更する場合、要求された値によっては、非同期操作となり、完了するまでに時間がかかる場合があります (選択した RU/秒によっては、最大 4 から 6 時間かかる場合があります)
+      はい。 最大 RU/秒を変更する方法については、こちらの[記事](how-to-provision-autoscale-throughput.md)を参照してください。 最大 RU/秒を変更する場合、要求された値によっては、非同期操作となり、完了するまでに時間がかかる場合があります (選択した RU/秒によっては、最大 4 から 6 時間かかる場合があります)。 [詳細については、こちらを参照してください](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)。
   - question: >
       最大 RU/秒を引き上げる
     answer: >

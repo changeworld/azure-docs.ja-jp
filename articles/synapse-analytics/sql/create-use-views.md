@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01a48da50391c6d3e826b81c4174936c95f64462
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 94fee0aa5582f76e6d97568a5535d3626d94515b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597218"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535223"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してビューを作成および使用する
 
@@ -123,6 +123,51 @@ FROM
 >![Yellow Taxi Delta Lake フォルダー](./media/shared/yellow-taxi-delta-lake.png)
 
 Delta Lake はパブリック プレビュー段階にあり、いくつかの既知の問題と制限事項があります。 既知の問題については、[Synapse サーバーレス SQL プールのセルフヘルプ ページ](resources-self-help-sql-on-demand.md#delta-lake)で確認してください。
+
+## <a name="json-views"></a>JSON ビュー
+
+ファイルからフェッチされた結果セット上で追加の処理を行う必要がある場合は、このビューが最適です。 1 つの例として、JSON ドキュメントから値を抽出するために JSON 関数を適用する必要がある、JSON ファイルの解析があります。
+
+```sql
+CREATE OR ALTER VIEW CovidCases
+AS 
+select
+    *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+    cross apply openjson (doc)
+        with (  date_rep datetime2,
+                cases int,
+                fatal int '$.deaths',
+                country varchar(100) '$.countries_and_territories')
+```
+
+`OPENJSON` 関数により、テキスト形式で 1 行に 1 つの JSON ドキュメントを含む JSONL ファイルから各行が解析されます。
+
+## <a name="cosmosdb-view"></a>CosmosDB ビュー
+
+CosmosDB 分析ストレージがコンテナーで有効になっている場合は、Azure CosmosDB コンテナー上にこのビューを作成できます。 CosmosDB アカウント名、データベース名、コンテナー名を、ビューの一部として追加する必要があります。また、読み取り専用アクセス キーを、ビューが参照するデータベース スコープ資格情報に配置する必要があります。
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+GO
+CREATE OR ALTER VIEW Ecdc
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
+      CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+[Synapse Link を使用した CosmosDB コンテナーのクエリの詳細については、こちら](query-cosmos-db-analytical-store.md)を参照してください。
 
 ## <a name="use-a-view"></a>ビューの使用
 

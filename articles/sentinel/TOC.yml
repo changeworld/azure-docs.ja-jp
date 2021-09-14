@@ -167,7 +167,7 @@
         - name: 収集されたデータを視覚化する
           href: get-visibility.md
         - name: Azure Monitor ブックを使用する
-          href: /azure/sentinel/monitor-your-data
+          href: ./monitor-your-data.md
     - name: 脅威の検出とデータの分析
       items:
         - name: 組み込み規則を使用する
@@ -283,11 +283,13 @@
             - name: ファイル イベント正規化スキーマ
               href: file-event-normalization-schema.md
             - name: ネットワーク正規化スキーマ
-              href: normalization-schema.md
+              href: network-normalization-schema.md
             - name: プロセス イベント正規化スキーマ
               href: process-events-normalization-schema.md
             - name: レジストリ イベント正規化スキーマ
               href: registry-event-normalization-schema.md
+            - name: レガシ ネットワーク正規化スキーマ
+              href: normalization-schema-v1.md
     - name: 検出と分析リファレンス
       items:
         - name: 上位の Azure Sentinel ブック
