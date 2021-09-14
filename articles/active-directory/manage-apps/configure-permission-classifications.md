@@ -8,20 +8,28 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6d0432c93a0ab3f47b68e071026301c49e8c670c
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: f42f258383e1ca76be7fa45c79b11b3c18e900a7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567975"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425830"
 ---
 # <a name="configure-permission-classifications"></a>アクセス許可の分類を構成する
 
 アクセス許可の分類を使用すると、組織のポリシーとリスク評価に応じて、さまざまなアクセス許可の影響を特定できます。 たとえば、同意ポリシーでアクセス許可の分類を使用して、ユーザーが同意を許可された一連のアクセス許可を識別できます。
+
+## <a name="prerequisites"></a>前提条件
+
+このガイドのタスクを完了するには、次のものが必要です。
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 全体管理者ロール。
+- Azure AD PowerShell の設定。 詳しくは、[Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/) に関するページを参照してください
 
 ## <a name="manage-permission-classifications"></a>アクセス許可の分類を管理する
 

@@ -4,16 +4,16 @@ description: この記事では、azcopy remove コマンドに関する参照�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 09/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: bd221215d6be3c14ce1200e8bd374a97cb7608a0
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 8556dc719aa8abcfa1506b4d1147c29959b32746
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503016"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427626"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -88,11 +88,15 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--delete-snapshots** string   既定では、BLOB にスナップショットがある場合、削除操作は失敗します。 ルート BLOB とそのすべてのスナップショットを削除する場合は `include` を指定します。一方、スナップショットだけを削除し、ルート BLOB は保持する場合は `only` を指定します。
 
+**--dry-run**                   コマンドによって削除されるはずのパス ファイルを出力します。 このフラグでは、ファイルの削除はトリガーされません。
+
 **--exclude-path** string   削除時にこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: `myFolder;myFolder/subDirName/file.pdf`
 
 **--exclude-pattern** string   名前がパターンの一覧と一致するファイルを除外します。 例: `*.jpg`、`*.pdf`、`exactName`
 
 **--force-if-read-only**   Azure Files のファイルまたはフォルダーを削除するときに、既存のオブジェクトに読み取り専用属性が設定されている場合でも削除を強制的に実行します。
+
+**--from-to** string            必要に応じて、コピー元とコピー先の組み合わせを指定します。 例: BlobTrash、FileTrash、BlobFSTrash
 
 **--help**   remove のヘルプ。
 

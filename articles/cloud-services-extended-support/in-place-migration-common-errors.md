@@ -9,12 +9,12 @@ ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: cdfb7dd5d09d6925de23be70df18037165776a18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ce0c3bb4386e2fcc48ca57a1cd53978fc684d98c
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751118"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540957"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) に移行するときの一般的なエラーと既知の問題
 
@@ -69,6 +69,8 @@ ms.locfileid: "121751118"
 | XrpVirtualNetworkMigrationError: Virtual network migration failure. (XrpVirtualNetworkMigrationError: 仮想ネットワークの移行失敗。) | [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
 | HostedService {1} 内の展開 {0} は仮想ネットワーク {2} に属しています。 仮想ネットワーク {2} をこの HostedService {1} に移行してください。 | 「[仮想ネットワークの移行](in-place-migration-technical-details.md#virtual-network-migration)」を参照してください。 | 
 | Azure Resource Manager にあるリソース名のための現在のクォータは、移行を完了するには不十分です。 現在のクォータは {0}、必要な追加分は {1} です。 クォータを増やすサポート リクエストを提出し、クォータが増えてから移行をもう一度お試しください。    | 適切なチャネルに従ってクォータの引き上げを要求します。 <br>[ネットワーク リソースのクォータの引き上げ](../azure-portal/supportability/networking-quota-requests.md) <br>[コンピューティング リソースのクォータの引き上げ](../azure-portal/supportability/per-vm-quota-requests.md) | 
+|XrpPaaSMigrationCscfgCsdefValidationMismatch: デプロイのメタデータが古くなっているため、ホステッド サービス service-name のデプロイ deployment-name で移行を完了できませんでした。 移行を中止し、移行を再試行する前にデプロイをアップグレードしてください。 検証メッセージ: サービス定義ファイルにあるサービス名 'service-name' が、サービス構成ファイルにある名前 'service-name-in-config-file' と一致しません|.csdef ファイルと .cscfg ファイルの両方に含まれるサービス名を一致させます|
+|クラウド サービス (延長サポート) リソースをデプロイするときの NetworkingInternalOperationError| この問題は、サービス名がロール名と同じである場合に発生することがあります。 推奨される修復方法は、サービスとロールに異なる名前を使用することです|
 
 ## <a name="next-steps"></a>次の手順
 移行の要件の詳細については、「[Azure Cloud Services への移行に関する技術的な詳細 (延長サポート)](in-place-migration-technical-details.md)」を参照してください

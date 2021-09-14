@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 0d7cb5c8747707b950075c7201d90c5e208298db
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a02b7d6fa5ef8369578f89a452df95a50ca34204
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112123455"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425178"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>VM 分析情報のゲストの正常性のトラブルシューティング (プレビュー)
 この記事では、VM 分析情報の正常性に関する問題があるときに実行できるトラブルシューティング手順について説明します。
@@ -74,7 +74,7 @@ Exiting with the following error: "Failed to install VM Guest Health Agent: exit
   - Linux の場合: デーモンは *vmGuestHealthAgent* です。 状態フォルダーは */var/opt/vmGuestHealthAgent/* * です。
   - Windows の場合: サービスは *VM ゲスト正常性エージェント* です。 状態フォルダーは _%ProgramData%\Microsoft\VMGuestHealthAgent\\*_ です。
 - Azure Monitor エージェントがネットワークに接続されていることを確認します。 
-  - 仮想マシンから、 _<region>.handler.control.monitor.azure.com_ に ping を試行します。 たとえば、westeurope の仮想マシンの場合は、_westeurope.handler.control.monitor.azure.com:443_ に ping を試行します。
+  - 仮想マシンから、 _\<region\>.handler.control.monitor.azure.com_ に ping を試行します。 たとえば、westeurope の仮想マシンの場合は、_westeurope.handler.control.monitor.azure.com:443_ に ping を試行します。
 - Log Analytics ワークスペースと同じリージョン内のデータ収集ルールとの関連付けが仮想マシンにあることを確認します。
   -  DCR の構造が正しいことを確認するには、[VM insights のゲストの正常性で監視を有効にする (プレビュー)](vminsights-health-enable.md) に関するページの **データ収集ルール (DCR) の作成** に関する項目を参照してください。 サンプルの 3 つのカウンターに設定された *performanceCounters* データ ソース セクションが存在し、カウンターを拡張機能に送信するための正常性の拡張機能の構成に *inputDataSources* セクションが存在していることに特に注意してください。
 -  仮想マシンをチェックし、ゲストの正常性の拡張機能のエラーがないかを確認してください。
@@ -113,7 +113,7 @@ Azure Monitor エージェント拡張機能とゲスト VM 正常性エージ�
 データ ソースとして正常性拡張機能を指定するデータ収集ルールが、仮想マシンに関連付けられていることを確認します。
 
 ### <a name="error-message-for-bad-request-due-to-insufficient-permissions"></a>アクセス許可が十分でないため無効な要求であることを示すエラー メッセージ
-このエラーは、**Microsoft.WorkloadMonitor** リソース プロバイダーがサブスクリプションに登録されなかったことを示しています。 このリソース プロバイダーの登録の詳細については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)」を参照してください。 
+このエラーは、**Microsoft.WorkloadMonitor** リソース プロバイダーがサブスクリプションに登録されていないことを示しています。 このリソース プロバイダーの登録の詳細については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)」を参照してください。 
 
 ![正しくない要求](media/vminsights-health-troubleshoot/bad-request.png)
 

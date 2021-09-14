@@ -1,20 +1,20 @@
 ---
-title: Azure Route Server (プレビュー) を使用したデュアルホーム ネットワークについて
-description: Azure Route Server (プレビュー) がデュアルホーム ネットワークでどのように機能するかについて説明します。
+title: 'Azure Route Server を使用したデュアルホーム ネットワークについて '
+description: Azure Route Server がデュアルホーム ネットワークでどのように機能するかについて説明します。
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: b786c58efd193eebbd43a4bd40f29201347c1309
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 76c1a1e424e4f8ae372f53ceab5da43ca9d40629
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108777058"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434576"
 ---
-# <a name="about-dual-homed-network-with-azure-route-server-preview"></a>Azure Route Server (プレビュー) を使用したデュアルホーム ネットワークについて
+# <a name="about-dual-homed-network-with-azure-route-server"></a>Azure Route Server を使用したデュアルホーム ネットワークについて
 
 Azure Route Server によって、一般的なハブとスポークのネットワーク トポロジがサポートされています。 この構成は、ルート サーバーとネットワーク仮想アプライアンス (NVA) の両方がハブ仮想ネットワーク内にある場合のものです。 Router Server を使用すると、デュアルホーム ネットワークと呼ばれる別のトポロジを構成することもできます。 この構成は、2 つ以上のハブ仮想ネットワークとピアリングされたスポーク仮想ネットワークがある場合のものです。 スポーク仮想ネットワーク内の仮想マシンは、オンプレミスまたはインターネットへのハブ仮想ネットワークを経由して通信できます。
 

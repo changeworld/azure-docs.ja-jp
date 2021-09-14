@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/06/2021
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 30a91858b03c89d38a58ba02efb75d4368d9e8d5
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 134cda08901917664605d91dac8f86aab12f5175
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302484"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123467594"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -140,6 +140,17 @@ cd ~/mycontainer
 mkdir test
 echo "hello world" > test/blob.txt
 ```
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png)|![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

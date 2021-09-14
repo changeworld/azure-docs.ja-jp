@@ -5,29 +5,20 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 8deecdc043a7a39f77e96e8be5eb8bb8ef4f6191
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e17d49654b3c658ed133686e11d70c72b7f7f3b8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322930"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426024"
 ---
-# <a name="azure-route-server-preview-faq"></a>Azure Route Server (プレビュー) に関する FAQ
-
-> [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="azure-route-server-faq"></a>Azure Route Server に関する FAQ
 
 ## <a name="what-is-azure-route-server"></a>Azure Route Server とは何ですか。
 
 Azure Route Server は、ネットワーク仮想アプライアンス (NVA) と仮想ネットワークの間のルーティングを簡単に管理できる、フル マネージド サービスです。
-
-## <a name="why-does-azure-route-server-require-a-public-ip-address"></a>Azure Route Server にパブリック IP アドレスが必要なのはなぜですか。
-
-Azure Router Server では、Route Server の構成を管理するバックエンド サービスへの接続を確保する必要があるため、パブリック IP アドレスが必要になります。 
 
 ### <a name="is-azure-route-server-just-a-vm"></a>Azure Route Server は単なる VM ですか。
 
@@ -52,6 +43,10 @@ Azure Route Server では、Border Gateway Protocol (BGP) のみがサポート�
 
 ### <a name="does-azure-route-server-store-customer-data"></a>Azure Route Server では、顧客データは保存されますか。
 いいえ。 Azure Route Server が行うのは、BGP ルートを NVA と交換し、それらを仮想ネットワークに伝達することのみです。
+
+### <a name="why-does-azure-route-server-require-a-public-ip-address"></a>Azure Route Server にパブリック IP アドレスが必要なのはなぜですか。
+
+Azure Router Server では、Route Server の構成を管理するバックエンド サービスへの接続を確保する必要があるため、パブリック IP アドレスが必要になります。 
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>Azure Route Server が複数の NVA から同じルートを受け取る場合、どのように処理されますか。
 
@@ -93,11 +88,14 @@ Azure Route Server には、(デプロイごとに) 次の制限があります�
 | リソース | 制限 |
 |----------|-------|
 | サポートされている BGP ピアの数 | 8 |
-| 各 BGP ピアで Azure Route Server にアドバタイズできるルートの数 | 200 |
+| 各 BGP ピアで Azure Route Server にアドバタイズできるルートの数 | 1000 |
 | Azure Route Server で ExpressRoute または VPN ゲートウェイにアドバタイズできるルートの数 | 200 |
-| Azure Route Server で対応できる、仮想ネットワークの最大 VM 数 (ピアリングされた仮想ネットワークの数を含む) | 6000 |
+| Azure Route Server で対応できる、仮想ネットワークの最大 VM 数 (ピアリングされた仮想ネットワークの数を含む) | 2000 |
+
+Azure Route Server でサポートできる VM の数は、ハード リミットではありません。 これは、Azure リージョン内で Route Server インフラストラクチャがどのようにデプロイされているかによって異なります。
 
 NVA によって制限より多くのルートが公開された場合、BGP セッションは削除されます。 ゲートウェイと Azure Route Server の間で BGP セッションが削除された場合、オンプレミス ネットワークから Azure への接続は失われます。 詳しくは、「[Azure 仮想マシンのルーティングに関する問題を診断する](../virtual-network/diagnose-network-routing-problem.md)」をご覧ください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

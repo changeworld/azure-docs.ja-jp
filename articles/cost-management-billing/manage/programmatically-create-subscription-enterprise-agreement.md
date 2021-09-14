@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 06/22/2021
+ms.date: 09/01/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b30856b5fe84f8c66e4029714e4bf39fca0470a9
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 45bc6066152fbb83f5124b5ee157e6b16efa9bf9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112541304"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475172"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>最新の API を使用してプログラムで Azure Enterprise Agreement サブスクリプションを作成する
 
@@ -168,6 +168,13 @@ API 応答で、自分がアクセスできるすべての登録アカウント�
 
 次の例では、前のステップで選択した登録アカウントに *Dev Team Subscription* という名前のサブスクリプションを作成します。 
 
+次のいずれかの方法を使用して、サブスクリプションのエイリアス名を作成します。 エイリアス名を作成するときは、以下を考慮することをお勧めします。
+
+- 英数字、およびハイフンを使用する
+- 先頭は文字、末尾は英数字にする
+- ピリオドを使用しない
+
+
 ### <a name="rest"></a>[REST](#tab/rest)
 
 PUT API を呼び出して、サブスクリプション作成の要求と別名を作成します。
@@ -278,11 +285,11 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 
 ---
 
-## <a name="use-arm-template"></a>Resource Manager テンプレートの使用
+## <a name="use-arm-template-or-bicep"></a>ARM テンプレートまたは Bicep を使用する
 
-前のセクションでは、PowerShell、CLI、または REST API を使用してサブスクリプションを作成する方法を説明しました。 サブスクリプションの作成を自動化する必要がある場合は、Azure Resource Manager テンプレート (ARM テンプレート) の使用を検討してください。
+前のセクションでは、PowerShell、CLI、または REST API を使用してサブスクリプションを作成する方法を説明しました。 サブスクリプションの作成を自動化する必要がある場合は、Azure Resource Manager テンプレート (ARM テンプレート) か [Bicep ファイル](../../azure-resource-manager/bicep/overview.md)の使用をご検討ください。
 
-次のテンプレートを使用すると、サブスクリプションを作成できます。 `billingScope` には、登録アカウント ID を指定します。 サブスクリプションはルート管理グループに作成されます。 サブスクリプションを作成した後、それを別の管理グループに移動できます。
+次の ARM テンプレートを使用すると、サブスクリプションを作成できます。 `billingScope` には、登録アカウント ID を指定します。 サブスクリプションはルート管理グループに作成されます。 サブスクリプションを作成した後、それを別の管理グループに移動できます。
 
 ```json
 {
@@ -319,7 +326,29 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 }
 ```
 
-テンプレートを[管理グループ レベル](../../azure-resource-manager/templates/deploy-to-management-group.md)でデプロイします。
+または、Bicep ファイルを使用してサブスクリプションを作成します。
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide a name for the alias. This name will also be the display name of the subscription.')
+param subscriptionAliasName string
+
+@description('Provide the full resource ID of billing scope to use for subscription creation.')
+param billingScope string
+
+resource subscriptionAlias 'Microsoft.Subscription/aliases@2020-09-01' = {
+  scope: tenant()
+  name: subscriptionAliasName
+  properties: {
+    workload: 'Production'
+    displayName: subscriptionAliasName
+    billingScope: billingScope
+  }
+}
+```
+
+テンプレートを[管理グループ レベル](../../azure-resource-manager/templates/deploy-to-management-group.md)でデプロイします。 次の例では、JSON ARM テンプレートのデプロイを示しますが、代わりに Bicep ファイルをデプロイすることもできます。
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -374,7 +403,7 @@ az deployment mg create \
 
 ---
 
-サブスクリプションを新しい管理グループに移動するには、次のテンプレートを使用します。
+サブスクリプションを新しい管理グループに移動するには、次の ARM テンプレートを使用します。
 
 ```json
 {
@@ -405,6 +434,23 @@ az deployment mg create \
         }
     ],
     "outputs": {}
+}
+```
+
+または、次の Bicep ファイルを使用します。
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide the ID of the management group that you want to move the subscription to.')
+param targetMgId string
+
+@description('Provide the ID of the existing subscription to move.')
+param subscriptionId string
+
+resource subToMG 'Microsoft.Management/managementGroups/subscriptions@2020-05-01' = {
+  scope: tenant()
+  name: '${targetMgId}/${subscriptionId}'
 }
 ```
 

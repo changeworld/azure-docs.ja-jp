@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47815bcca9c6630392cb86284d8e8c3cf4d08e67
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 39855746d6cfc52ada19850d6bc9650b3e95a54a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733198"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437366"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Microsoft 365 など) にユーザーが サインインするときに表示されます。
@@ -88,6 +88,9 @@ Azure AD のサインイン ページをカスタマイズできます。この�
             この画像のサイズは 240 x 240 ピクセルを超えることはできず、ファイル サイズは 10 KB 未満である必要があります。 背景とロゴの背景が調和しない可能性があるため、透過画像を使用することをお勧めします。 さらに、画像の周囲にパディングを追加しないことをお勧めします。これを行うとロゴが小さくなる可能性があります。
     
         - **正方形のロゴ、濃色のテーマ**。 上記の正方形のロゴ イメージと同じです。 このロゴ イメージは、OOBE (out-of-box experience) 中に Windows 10 の Azure AD 参加画面などの暗い背景で正方形のロゴ イメージが使用されるときに使用されます。  ロゴが白、濃い青、および黒の背景で見やすく表示される場合は、このイメージを追加する必要はありません。 
+        
+            >[!IMPORTANT]
+            > 透明なロゴは、正方形のロゴ イメージでサポートされています。 ただし、透明なロゴに使用されるカラー パレットは、正方形のロゴ イメージを使用する Microsoft 365 のアプリやサービス内で使用される背景 (白、薄いグレー、濃いグレー、黒の背景など) と競合するおそれがあります。 正方形のイメージ ロゴをすべての状況で正しくレンダリングするには、単色の背景を使用する必要があります。
         
         - **サインインしたままにする表示オプション**。 ユーザーが明示的にサインアウトするまで Azure AD にサインインしたままにすることを選択できます。 **[いいえ]** を選択した場合、このオプションは非表示になり、ユーザーはブラウザーを閉じて再度開くたびにサインインする必要があります。
 

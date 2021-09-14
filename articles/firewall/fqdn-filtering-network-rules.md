@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/11/2021
+ms.date: 09/01/2021
 ms.author: victorh
-ms.openlocfilehash: f28092c050e58c6ef90a3faf07034be21198008a
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 1aaea272e83bf39f2f4aa7e373b26ae28aadbda0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017201"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430326"
 ---
 # <a name="use-fqdn-filtering-in-network-rules"></a>ネットワーク ルールでの FQDN フィルタリング
 
 完全修飾ドメイン名 (FQDN) は、ホストまたは IP アドレスのドメイン名を表します。 Azure Firewall とファイアウォール ポリシーの DNS 解決に基づいて、ネットワーク ルールで FQDN を使用できます。 この機能を使用すると、任意の TCP/UDP プロトコル (NTP、SSH、RDP など) を使用して送信トラフィックをフィルター処理できます。 ネットワーク ルールで FQDN を使用するには、DNS プロキシを有効にする必要があります。 詳細については、「[Azure Firewall の DNS 設定](dns-settings.md)」を参照してください。
 
 > [!NOTE]
-> 仕様上、FQDN フィルターではワイルドカードはサポートされていません。
+> 仕様上、ネットワーク規則の FQDN フィルターではワイルドカードはサポートされていません
 
 ## <a name="how-it-works"></a>しくみ
 

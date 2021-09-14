@@ -4,17 +4,17 @@ description: BLOB はアーカイブ アクセス層に含まれていますが�
 services: storage
 author: tamram
 ms.author: tamram
-ms.date: 08/24/2021
+ms.date: 08/31/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 33f29c44e32f1deed0c21e3695e61457a31c7f65
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: be4c00596e0d058dad50ae5f535ac56334b305ea
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829678"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436520"
 ---
 # <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>アーカイブ層からの BLOB のリハイドレートの概要
 
@@ -24,7 +24,7 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 
 - [blob のアクセス層をオンライン層に変更](#change-a-blobs-access-tier-to-an-online-tier): [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を使用して階層を変更することで、アーカイブされた blob をホットまたはクール層にリハイドレートできます。
 
-アーカイブ層からの BLOB のリハイドレートには、数時間かかる場合があります。 Microsoft では、最適なパフォーマンスを得るために、大きな BLOB をリハイドレートするよう推奨しています。 複数の小さな BLOB を同時にリハイドレートすると、余分に時間がかかる場合があります。
+Archive レベルからの BLOB のリハイドレートには、完了まで数時間かかる場合があります。 Microsoft では、最適なパフォーマンスを得るために、大きな BLOB をリハイドレートするよう推奨しています。 複数の小さな BLOB を同時にリハイドレートすると、余分に時間がかかる場合があります。
 
 BLOB をアーカイブ層からオンライン層にリハイドレートしたときにイベントを発生させ、そのイベントをイベント ハンドラーに送信するように [Azure Event Grid](../../event-grid/overview.md) を構成できます。 詳細については、「[BLOB のリハイドレート イベントの処理](#handle-an-event-on-blob-rehydration)」を参照してください。
 

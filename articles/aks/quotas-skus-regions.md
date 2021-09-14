@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) の既定のクォータ、制限さ
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: ea32c0e58894fe57a51cd22fccce8b2fb2fb0489
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 6e965bd958b23598f7b11dcf9a12dafb33f26680
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762303"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437899"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、およびリージョンの可用性
 
@@ -30,6 +30,10 @@ ms.locfileid: "113762303"
 > AKS クラスターをアップグレードすると、追加のリソースが一時的に消費されます。 これらのリソースには、仮想ネットワークのサブネットまたは仮想マシンの vCPU クォータで使用できる IP アドレスが含まれます。 
 >
 > Windows Server コンテナーの場合、アップグレードの操作を実行すると最新のノード更新プログラムを適用できます。 これらの一時リソースの処理に使用できる IP アドレス空間または vCPU クォータがない場合、クラスターのアップグレード プロセスは失敗します。 Windows Server ノードのアップグレード プロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
+
+## <a name="supported-vm-sizes"></a>サポートされる VM のサイズ
+
+AKS でサポートされている VM サイズの一覧は、Azure で新しい VM SKU がリリースされることに伴い進化しています。 サポートされている新しい SKU については、[AKS のリリース ノート](https://github.com/Azure/AKS/releases)を参照してください。
 
 ## <a name="restricted-vm-sizes"></a>制限されている VM サイズ
 

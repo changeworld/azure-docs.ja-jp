@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: 598c578c445cbd7dc7086f22e3c8d4885d67b112
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: c4949000cee07e2280d9edc018ff07f20f37a352
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537333"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427662"
 ---
 # <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>推論用の事前構築済み Docker イメージに関するトラブルシューティング (プレビュー)
 

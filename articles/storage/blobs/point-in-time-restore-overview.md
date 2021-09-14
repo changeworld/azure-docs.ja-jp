@@ -10,12 +10,12 @@ ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d98c239da9c415da0a87f0eecad20af147802aca
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 06f5c1192d5216f753d77fb842359835c4552197
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228727"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471050"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>ブロック BLOB のポイントインタイム リストア
 
@@ -89,6 +89,17 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 
 > [!IMPORTANT]
 > ブロック BLOB を 2020 年 9 月 22 日より前の時点に復元すると、ポイントインタイム リストアのプレビュー制限が有効になります。 一般公開されているポイントインタイム リストア機能を利用するには、2020 年 9 月 22 日以降の復元ポイントを選択することをお勧めします。
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 

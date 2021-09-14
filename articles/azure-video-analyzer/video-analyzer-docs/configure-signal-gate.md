@@ -3,12 +3,12 @@ title: イベントベースのビデオ記録用にシグナル ゲートを構
 description: この記事では、パイプラインでシグナル ゲートを構成する方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: c0b38005010d2718235700f0ed13575e15119103
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 2da85aa31facbec922eac9ee895cd68d66326a42
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604063"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427968"
 ---
 # <a name="configuring-a-signal-gate-for-event-based-video-recording"></a>イベントベースのビデオ記録用にシグナル ゲートを構成する
 
@@ -159,7 +159,7 @@ ms.locfileid: "114604063"
 
 パイプラインを使用すると、ビデオをクラウドに記録したり、エッジ デバイス上の MP4 ファイルとして記録したりすることができます。 これらは、[継続的なビデオ記録](use-continuous-video-recording.md)、または[イベントベースのビデオ記録](record-event-based-live-video.md)を行うことで生成できます。
 
-クラウドに記録する場合、ビデオ リソースに付ける名前の構造は "<anytext>-${System.TopologyName}-${System.PipelineName}" のようにすることをお勧めします。 特定のライブ パイプラインは 1 つの RTSP 対応 IP カメラにのみ接続できます。また、そのカメラからの入力は 1 つのビデオ リソースに記録する必要があります。 たとえば、次のように `VideoName` を Video Sink 上に設定できます。
+クラウドに記録する場合、ビデオ リソースに付ける名前の構造は、`<anytext>-${System.TopologyName}-${System.PipelineName}` のようにすることをお勧めします。 特定のライブ パイプラインは 1 つの RTSP 対応 IP カメラにのみ接続できます。また、そのカメラからの入力は 1 つのビデオ リソースに記録する必要があります。 たとえば、次のように `VideoName` を Video Sink 上に設定できます。
 
 ```
 "VideoName": "sampleVideo-${System.TopologyName}-${System.PipelineName}"

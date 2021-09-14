@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83e6cfa8589e7ba2df4d6d8452496cf7680cf5c6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 391541569f237b98c46f001b511c86c17f00e058
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676286"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468134"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
@@ -413,6 +413,19 @@ az storage account update \
    * [Azure CDN での HTTP から HTTPS へのリダイレクト](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
    * [Azure CDN で Blob Storage を使用する場合の価格と課金](../../cdn/cdn-storage-custom-domain-https.md#pricing-and-billing)。
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+<sup>2</sup>    機能はプレビュー レベルでサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 

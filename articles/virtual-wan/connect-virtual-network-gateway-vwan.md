@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 09/01/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6d8420f0138dc26e2f265ac7c4f48e646a6bfe69
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 51b254c42f06c3ae6a0609a05e6f36056106139b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165121"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432038"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (仮想ネットワーク ゲートウェイ) を Virtual WAN に接続する
 
@@ -45,7 +45,7 @@ Azure Virtual Network
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP の設定
 
-仮想ネットワーク ゲートウェイの **[構成]** ページで  **[BGP ASN]** を構成できます。 BGP ASN に変更を加えます。 BGP の ASN を 65515 にすることはできません。 65515 は、Azure Virtual WAN が使用します。
+仮想ネットワーク ゲートウェイの **[構成]** ページで、(必要に応じて) **[BGP ASN の構成]** を選択できます。 BGP を構成する場合は、ASN を、ポータルに表示されている既定値から変更します。 この構成では、BGP ASN を 65515 にすることはできません。 65515 は、Azure Virtual WAN が使用します。
 
 ![スクリーンショットには、[BGP ASN の構成] が選択された仮想ネットワーク ゲートウェイの [構成] ページが示されています。](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
@@ -95,6 +95,7 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 
    * **[IP アドレス]** - 構成ファイルの *gatewayconfiguration* にある Instance0 の IP アドレスを使用します。
    * **[BGP]** - 接続に BGP を使用する場合は、 **[BGP 設定の構成]** をオンにして ASN "65515" を入力します。 IP アドレスは BGP ピアのものを入力します。 構成ファイルの *gatewayconfiguration* にある "Instance0 BgpPeeringAddresses" を使用してください。
+   * **アドレス空間** 接続を BGP 経由で行わない場合は、 **[BGP 設定の構成]** がオフのままになっていることを確認します。  仮想ネットワークゲートウェイ側から公開するアドレス空間を入力します。 複数のアドレス領域の範囲を追加することができます。 ここで指定した範囲が、接続先となる他のネットワークの範囲と重複しないようにしてください。 
    * **[サブスクリプション]、[リソース グループ]、[場所]** については、Virtual WAN ハブと同じです。
 2. 見直しを終えたら、ローカル ネットワーク ゲートウェイを作成します。 作成したローカル ネットワーク ゲートウェイは、次の例のようになります。
 

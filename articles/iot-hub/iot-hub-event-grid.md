@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: d8ddd49202faac6a9fc5ba34ac5b5e8e92d5b704
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f8d1d3cf8553c768bb2bee015be2f5995214fe62
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739227"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478718"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -197,7 +197,7 @@ Event Grid 経由でテレメトリ イベントをサブスクライブする�
 
 device-to-cloud リンクは、デバイスがテレメトリを送信する限り、開いたままになります。
 
-デバイス接続が不安定である場合、つまり、デバイスの接続と切断が頻繁に発生する場合、IoT Hub は各接続状態は送信しませんが、不安定な状態が終了するまで、60 秒間の定期的なスナップショットで取得された現在の接続状態を発行します。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
+デバイスの接続と切断が頻繁に発生する場合、IoT Hub から 1 つ 1 つの接続状態が送信されることはありませんが、60 秒間隔の定期的なスナップショットで取得された現在の接続状態が発行されます。 異なるシーケンス番号で同じ接続状態イベントを受信する場合も、異なる接続状態イベントを受信する場合も、デバイスの接続状態に変化が生じたことを意味します。
 
 ## <a name="tips-for-consuming-events"></a>イベントの使用に関するヒント
 

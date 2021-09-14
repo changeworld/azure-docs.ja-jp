@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.openlocfilehash: 8af0b4a5c26d70f9fdedc30d07c8953bfee76fb4
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 9d54072c49fd0ce1571ebbcfced76d74ce18ea7a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727132"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471104"
 ---
 # <a name="known-issues-with-network-file-system-nfs-30-protocol-support-in-azure-blob-storage"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポートにおける既知の問題
 
@@ -49,26 +49,9 @@ NFS 用の Windows クライアントはまだサポートされていません
 
 ## <a name="blob-storage-features"></a>Blob Storage の機能
 
-次の Blob Storage 機能はまだサポートされていません。
+NFS 3.0 プロトコルのサポートを有効にすると、一部の Blob Storage 機能は完全にサポートされますが、機能によっては、プレビュー レベルでのみサポートされる機能や、現時点ではまだまったくサポートされていないものもあります。  
 
-- [Azure Active Directory (AD) セキュリティ](../common/authorize-data-access.md?toc=/azure/storage/blobs/toc.json)
-- [Azure Backup 統合](../../backup/blob-backup-overview.md)
-- [Azure Storage Analytics のログ](../common/storage-analytics-logging.md?toc=/azure/storage/blobs/toc.json)
-- [BLOB インデックス タグ](storage-blob-index-how-to.md)
-- [Blob ストレージのイベント](storage-blob-event-overview.md)
-- [BLOB のバージョン管理](versioning-enable.md)
-- [変更フィード](storage-blob-change-feed.md)
-- [カスタマー マネージド アカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=/azure/storage/blobs/toc.json)
-- [Azure Storage の暗号化のためのカスタマー指定のキー](encryption-customer-provided-keys.md) 
-- [暗号化スコープ](encryption-scope-overview.md)
-- [ライフサイクル管理のための最終アクセス時刻の追跡](storage-lifecycle-management-concepts.md#move-data-based-on-last-accessed-date-preview)
-- [ブロック BLOB のオブジェクト レプリケーション](object-replication-overview.md)
-- [ページ BLOB](storage-blobs-introduction.md#blobs)
-- [ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)
-- [BLOB の論理的な削除](soft-delete-blob-overview.md)
-- [コンテナーの論理的な削除](soft-delete-container-overview.md)
-- [BLOB のスナップショット](snapshots-overview.md)
-- [静的な Web サイトのホスティング](storage-blob-static-website.md)
+NFS 3.0 のサポートが有効になっているアカウントでの各 Blob Storage 機能のサポート状況を確認するには、「[Azure ストレージ アカウントにおける Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)」を参照してください。
 
 ## <a name="blob-storage-apis"></a>BLOB ストレージ API
 

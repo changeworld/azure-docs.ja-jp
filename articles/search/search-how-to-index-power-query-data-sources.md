@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: e943452a285f943c05982a558c92315428e9829c
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: fb7a16824ccb74ad2cab7c0175532d297ebaf88c
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729535"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451207"
 ---
 # <a name="index-data-using-power-query-connectors-preview"></a>Power Query コネクタを使用してデータのインデックスを付ける (プレビュー)
 
@@ -63,7 +63,7 @@ Azure portal は、Power Query コネクタのサポートを提供していま�
 ### <a name="step-2--start-import-data-wizard"></a>手順 2 - [データのインポート] ウィザードを開始する
 お客様がプレビューに関して承認された後、Azure Cognitive Search チームは、機能フラグを使用する Azure portal リンクをお客様に提供します。これにより、Power Query コネクタにアクセスできます。 このページを開き、Azure Cognitive Search サービス ページのコマンド バーから **[データのインポート]** を選択して、ウィザードを開始します。
 
-![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを開始する")
+:::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="[データのインポート] コマンドのスクリーンショット" border="true":::
 
 ### <a name="step-3--select-your-data-source"></a>手順 3 – データ ソースを選択する
 このプレビューを使用してデータをプルできるデータ ソースがいくつかあります。 Power Query を使用するすべてのデータ ソースには、そのタイルに "Powered By Power Query" と記載されています。 データ ソースを選択します。 

@@ -1,14 +1,14 @@
 ---
 title: Visual Studio Code 用の Azure Policy 拡張機能
 description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Azure Resource Manager エイリアスを検索する方法について説明します。
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 870559a2f3d36257cb1246e340163f25ef016eb2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 93b59114c6a89e9219389341d541d7850a90ccc7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323173"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433694"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
@@ -195,6 +195,20 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 > この VS Code 拡張機能では、Resource Manager モードのプロパティの評価のみがサポートされています。 これらのモードの詳細については、[モードの定義](../concepts/definition-structure.md#mode)を参照してください。
 >
 > 評価機能は、拡張機能の macOS および Linux のインストールでは機能しません。
+
+### <a name="create-policy-definition-from-constraint-template"></a>制約テンプレートからポリシー定義を作成する
+
+VS Code 拡張機能を使用すると、既存の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [制約テンプレート](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)からポリシー定義を作成できます。 コマンド パレットをオプションにするには、VS Code で YAML ファイルを開いておく必要があります。
+
+1. 有効な OPA GateKeeper v3 制約テンプレート YAML ファイルを開きます。
+
+1. メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Azure Policy for Kubernetes: Create Policy Definition from Constraint Template**」と入力します。
+
+1. 適切な _sourceType_ 値を選択します。
+
+1. ポリシー定義 JSON の `/* EDIT HERE */` の部分を入力します。
+
+この拡張機能では、ポリシー定義の JSON は生成されますが、Azure での定義は作成されません。 適切な "edit here" フィールドを入力し終えたら、完成したポリシー定義 JSON および Azure portal またはサポートされている SDK を使用して、お客様の Azure 環境内にポリシー定義を作成してください。
 
 ### <a name="sign-out"></a>サインアウトする
 

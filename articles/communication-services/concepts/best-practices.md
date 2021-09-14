@@ -8,12 +8,12 @@ ms.author: srahaman
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: a5181a5a95c3e6eb33eb084d41674746096dd8c2
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 7b0ac0fdb6ee5b734d642612c1fea16665e07684
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259125"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435512"
 ---
 # <a name="best-practices-azure-communication-services-calling-sdks"></a>ベスト プラクティス: Azure Communication Services の通話 SDK
 この記事では、Azure Communication Services (ACS) の通話 SDK に関連するベスト プラクティスについて説明します。
@@ -44,6 +44,16 @@ Communication Services アプリケーションは、`VideoStreamRendererView` �
 
 ### <a name="hang-up-the-call-on-onbeforeunload-event"></a>onbeforeunload イベントで通話を切る
 アプリケーションは、`onbeforeunload` イベントが生成されたら `call.hangup` を呼び出す必要があります。
+
+### <a name="handling-multiple-calls-on-multiple-tabs-on-mobile"></a>モバイルにおける複数タブでの複数の呼び出しへの対処
+アプリケーションは、複数のブラウザー タブからの呼び出しに同時に接続することはできません。これが行われると、デバイス上のマイクとカメラのリソース割り当てに起因する未定義の動作が発生する可能性があるためです。 バックグラウンドで通話が完了した場合は、必ず通話を切ってから新しい通話を開始するよう設計してください。
+```JavaScript 
+document.addEventListener("visibilitychange", function() {
+    if (document.visibilityState != 'visible') {
+            // call.hangUp
+    }
+});
+ ```
 
 ### <a name="hang-up-the-call-on-microphonemuteunexpectedly-ufd"></a>microphoneMuteUnexpectedly UFD で通話を切る
 iOS または Safari ユーザーが PSTN 通話を受信すると、Azure Communication Services はマイクにアクセスできなくなります。 Azure Communication Services は、`microphoneMuteUnexpectedly` 通話診断イベントが発生させます。この時点で、Communication Services がマイクへのアクセスを再取得することはできなくなります。

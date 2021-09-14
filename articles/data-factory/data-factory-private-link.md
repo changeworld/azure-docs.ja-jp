@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/16/2021
-ms.openlocfilehash: f4ae3d0653ce99be2017b1ef08ca0645c599ee10
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd0fb07ad96d9897859281ef368452c96798d542
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740990"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428652"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 用の Azure Private Link
 
@@ -73,20 +73,20 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
 
 上の図の例のように、プライベート エンドポイントをホストしている VNet の外部から解決されると、Data Factory の 'DataFactoryA' の DNS リソース レコードは次のようになります。
 
-| 名前 | 型 | 値 |
+| 名前 | Type | 値 |
 | ---------- | -------- | --------------- |
-| DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
-| DataFactoryA.{region}.privatelink.datafactory.azure.net | CNAME   | <データ ファクトリ サービスのパブリック エンドポイント> |
+| DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.datafactory.azure.net |
+| DataFactoryA.{region}.datafactory.azure.net | CNAME   | <データ ファクトリ サービスのパブリック エンドポイント> |
 | <データ ファクトリ サービスのパブリック エンドポイント>  | A | <データ ファクトリ サービスのパブリック IP アドレス> |
 
 DataFactoryA の DNS リソース レコードは、プライベート エンドポイントをホストしている VNet 内で解決されると、次のようになります。
 
-| 名前 | 型 | 値 |
+| 名前 | Type | 値 |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net   | A | <プライベート エンドポイントの IP アドレス> |
 
-ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントが Data Factory エンドポイントの FQDN をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成するか、プライベート エンドポイントの IP アドレスを使用して "DataFactoryA.{region}.privatelink.datafactory.azure.net" の A レコードを構成する必要があります。
+ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントが Data Factory エンドポイントの FQDN をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成するか、プライベート エンドポイントの IP アドレスを使用して "DataFactoryA.{region}.datafactory.azure.net" の A レコードを構成する必要があります。
 
 プライベート エンドポイントをサポートするように独自の DNS サーバーを構成する方法の詳細については、次の記事を参照してください。
 - [Azure 仮想ネットワーク内のリソースの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)

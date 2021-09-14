@@ -4,13 +4,13 @@ metadata:
   description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
   ms.topic: article
   ms.service: backup
-  ms.date: 06/23/2021
-  ms.openlocfilehash: 5983508897520ad6fe5b91df3bd6abf26244d09f
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 09/01/2021
+  ms.openlocfilehash: f216b4b9015f90a388ecbea04e514cbaf1f196d6
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253653"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123426316"
 title: よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 summary: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 sections:
@@ -144,6 +144,11 @@ sections:
 
 
       その後、ノード 1 で完全バックアップが再度トリガーされ、その完了後にログ バックアップが開始されます。
+
+
+      >[!Note]
+
+      >カスタム バックアップ ユーザーを入力として[事前登録スクリプトを実行する](/azure/backup/tutorial-backup-sap-hana-db#prerequisites)と、HSR のバックアップをより適切に管理することができます。 これは、HSR セットアップの両方のノードに同じバックアップ キーが確実に設定され、バックアップの同期と失敗の問題が軽減されるためです。
 - name: 復元
   questions:
   - question: >

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: dfc0601dddddd89559d2a7bb28d6f3d86dcdf40c
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 936a8393f21d71cfb2fd1dd4cd2c249f0d13689c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272369"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432578"
 ---
 # <a name="configure-your-private-link"></a>プライベート リンクを構成する
 プライベート リンクを構成するには、いくつかの手順を実行する必要があります。 
@@ -95,11 +95,11 @@ Azure Monitor リソース (Log Analytics ワークスペースと Application I
 ## <a name="configure-access-to-your-resources"></a>リソースへのアクセスを構成する
 ここまでは、ネットワークの構成について説明しましたが、監視対象リソース (Log Analytics ワークスペースと Application Insights コンポーネント) へのネットワーク アクセスを構成する方法についても検討する必要があります。
 
-Azure Portal にアクセスします。 リソースのメニューの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このページで、プライベート リンクを介してリソースに接続できるネットワークと、他のネットワークがそれに接続できるかどうかの両方を制御します。
+Azure portal に移動します。 リソースのメニューの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このページで、プライベート リンクを介してリソースに接続できるネットワークと、他のネットワークがそれに接続できるかどうかの両方を制御します。
 
 
 > [!NOTE]
-> 2021 年 8 月 16 日より、ネットワーク分離が厳密に適用されるようになります。 パブリック ネットワークからのクエリをブロックするように設定されていて、(AMPLS を介して) どのプライベート ネットワークにも接続されていないリソースは、すべてのネットワークからのクエリを受け付けなくなります。
+> 2021 年 9 月より、ネットワークの分離が厳密に適用されるようになります。 パブリック ネットワークからのクエリをブロックするように設定されていて、(AMPLS を介して) どのプライベート ネットワークにも接続されていないリソースは、すべてのネットワークからのクエリを受け付けなくなります。
 
 ![LA ネットワークの分離](./media/private-link-security/ampls-network-isolation.png)
 
@@ -214,8 +214,10 @@ $scope = New-AzResource -Location "Global" -Properties $scopeProperties -Resourc
 }
 ```
 
-### <a name="set-ampls-access-flags---powershell-example"></a>AMPLS のアクセス フラグの設定 - PowerShell の例
+### <a name="set-ampls-access-modes---powershell-example"></a>AMPLS のアクセス モードの設定 - PowerShell の例
 AMPLS でアクセス モード フラグを設定するには、次の PowerShell スクリプトを使用できます。 次のスクリプトを実行すると、フラグが Open に設定されます。 プライベート専用モードを使用するには、値 "PrivateOnly" を使用します。
+
+AMPLS アクセス モードの更新が有効になるまでに、最大 10 分かかります。
 
 ```
 # scope details

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: f07c249e3b7cb54283959df410d51ca18998f2cf
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 0194fcc344acfe6bc0d6c8731c2095d3938bd6e6
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181518"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471032"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -39,7 +39,7 @@ Azure 関数を使用した BLOB ストレージ イベントへの対応の詳�
 - [チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../../event-grid/resize-images-on-storage-blob-upload-event.md?tabs=dotnet)
 
 >[!NOTE]
-> イベントの統合をサポートしているのは、**StorageV2 (汎用 v2)** 、**BlockBlobStorage**、および **BlobStorage** の種類のストレージ アカウントだけです。 **Storage (汎用 v1)** では、Event Grid との統合はサポート "*されていません*"。
+> **Storage (汎用 v1)** では、Event Grid との統合はサポート "*されていません*"。
 
 ## <a name="the-event-model"></a>イベント モデル
 
@@ -104,6 +104,16 @@ Blob Storage イベントを処理するアプリケーションは、いくつ�
 > * わからないフィールドは無視します。 この手法に従うと、将来追加されるかもしれない新しい機能に弾力的に対応できます。
 > * ブロック BLOB が完全にコミットされた場合に限り **Microsoft.Storage.BlobCreated** イベントがトリガーされるようにするには、`CopyBlob`、`PutBlob`、`PutBlockList`、または `FlushWithClose` REST API 呼び出しのイベントをフィルター処理します。 データがブロック BLOB に完全にコミットされた後でのみ、これらの API 呼び出しによって **Microsoft.Storage.BlobCreated** イベントがトリガーされます。 フィルターの作成方法の詳細については、「[Event Grid のイベントのフィルター処理](../../event-grid/how-to-filter-events.md)」をご覧ください。
 
+## <a name="feature-support"></a>機能サポート
+
+次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

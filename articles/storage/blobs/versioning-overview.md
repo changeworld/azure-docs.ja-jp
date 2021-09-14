@@ -10,18 +10,16 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1742679fbca38b878325bd56fa01fc2efebf4f82
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 0641a7357a334847bc52c3089eb4cf36cc3e3175
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733702"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123467612"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 
 Blob Storage のバージョン管理を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。 BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>推奨されるデータ保護の構成
 
@@ -297,6 +295,17 @@ BLOB の論理的な削除が有効になっている場合に、層が明示的
 |-|-|
 | BLOB の論理的な削除とバージョン管理の両方が有効になっている場合 | 層に関係なく、すべての既存バージョンがコンテンツ全体の長さで。 |
 | BLOB の論理的な削除は有効になっているが、バージョン管理は無効になっている場合 | 層に関係なく、すべての既存の論理的な削除のスナップショットがコンテンツ全体の長さで。 |
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="see-also"></a>関連項目
 

@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a2f1e40b85eea5f02aec93a0cac97acc5dfeaf9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a340096875669acc63cef5f797fff8b5919b8bd
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732410"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478862"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>Azure AD B2C カスタム ポリシーのトラブルシューティング
 

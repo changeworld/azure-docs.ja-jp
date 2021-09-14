@@ -9,13 +9,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 11/27/2019
-ms.openlocfilehash: 13b1e22f1e1e5f51d524e80d0bf102b744fbec3d
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.date: 08/20/2021
+ms.openlocfilehash: b4d169a46f499e83d0abf5d3145d67a3f6fdf03b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684597"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439219"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag センサーを Azure IoT Central アプリケーションに接続する
 
@@ -46,8 +46,8 @@ RuuviTag センサーをお使いの Azure IoT Central アプリケーション 
 
 RuuviTag デバイス テンプレートを追加するには:
 
-1. 左ウィンドウの **[デバイス テンプレート]** タブに移動し、 _[+ New] を選択します。![新しいデバイス テンプレートを作成する](./media/howto-connect-ruuvi/devicetemplate-new.png) このページでは、"***カスタム テンプレートを作成**_" するためのオプション、または "_ *_構成済みデバイス テンプレートを使用_**" するためのオプションについて説明しています
-1. 次に示すように、構成済みデバイス テンプレートの一覧から RuuviTag デバイス テンプレートを選択します。![RuuviTag デバイス テンプレートを選択する](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. 左ウィンドウの **[デバイス テンプレート]** タブに移動し、 _[+ New] を選択します。![新しいデバイス テンプレートを作成する](./media/howto-connect-ruuvi/device-template-new.png) このページでは、"***カスタム テンプレートを作成**_" するためのオプション、または "_ *_構成済みデバイス テンプレートを使用_**" するためのオプションについて説明しています
+1. 次に示すように、構成済みデバイス テンプレートの一覧から RuuviTag Multisensor デバイス テンプレートを選択します。![RuuviTag デバイス テンプレートを選択する](./media/howto-connect-ruuvi/device-template-pre-configured.png)
 1. ***カスタマイズ*** を選択して、次の手順に進みます。
 1. 次の画面で、***[作成]*** を選択して、C500 デバイス テンプレートをお使いの IoT Central アプリケーションにオンボードします。
 
@@ -59,7 +59,7 @@ RuuviTag デバイス テンプレートを追加するには:
 1. RuuviTag のカバーを外し、プラスチックのタブを引いて、バッテリーとの接続を保護します。
 1. ご自身の IoT Central アプリケーションで事前構成された Rigado Cascade 500 ゲートウェイのすぐ近くに RuuviTag を配置します。
 1. わずか数秒で、ご自身の RuuviTag が、IoT Central 内のデバイスの一覧に表示されます。  
-    ![RuuviTag デバイスの一覧](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
+    ![RuuviTag デバイスの一覧](./media/howto-connect-ruuvi/ruuvi-device-list.png)
 
 これで、この RuuviTag が、ご自身の IoT Central アプリケーション内で使用できるようになりました。  
 

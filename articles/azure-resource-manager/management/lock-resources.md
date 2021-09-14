@@ -4,12 +4,12 @@ description: Azure リソースの更新または削除をユーザーに禁止�
 ms.topic: conceptual
 ms.date: 07/01/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 27ab9d607f3b8fad669682e980bc0178e8dfad42
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: fe644c740f5c96f9a7864850fe4760151e1c6f87
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122202066"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449893"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -236,7 +236,7 @@ resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
 
 リソース グループ内の **リソース** にロックを適用する場合は、スコープ プロパティを追加します。 スコープを、ロックするリソースの名前に設定します。
 
-次の例では、App Service プラン、Web サイト、および Web サイトに対するロックを作成するテンプレートを示します。 ロックのスコープは、Web サイトに設定されています。
+次の[例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/lock.json)では、App Service プラン、Web サイト、および Web サイトに対するロックを作成するテンプレートを示します。 ロックのスコープは、Web サイトに設定されています。
 
 # <a name="json"></a>[JSON](#tab/json)
 

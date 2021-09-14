@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 07/29/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: d1e6349dd2c809c2a18551037c3bd3a8970f6d68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 401a6bd003e592d1b53aa91ac24f062688da7a3b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729449"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435746"
 ---
 # <a name="web-application-firewall-drs-rule-groups-and-rules"></a>Web Application Firewall の DRS 規則グループと規則
 
@@ -138,19 +138,19 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 
 ## <a name="20-rule-sets"></a><a name="drs20"></a> 2.0 の規則セット
 
-### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-20"></a> <p x-ms-format-detection="none">全般</p>
+### <a name="general"></a><a name="general-20"></a> 全般
 |RuleId|説明|
 |---|---|
 |200002|要求本文を解析できませんでした。|
 |200003|マルチパートの要求本文が厳密な検証に失敗しました。|
 
 
-### <a name="p-x-ms-format-detectionnonemethod-enforcementp"></a><a name="drs911-20"></a> <p x-ms-format-detection="none">METHOD ENFORCEMENT</p>
+### <a name="method-enforcement"></a><a name="drs911-20"></a> METHOD ENFORCEMENT
 |RuleId|説明|
 |---|---|
 |911100|メソッドがポリシーによって許可されていません|
 
-### <a name="p-x-ms-format-detectionnoneprotocol-enforcementp"></a><a name="drs920-20"></a> <p x-ms-format-detection="none">PROTOCOL-ENFORCEMENT</p>
+### <a name="protocol-enforcement"></a><a name="drs920-20"></a> PROTOCOL-ENFORCEMENT
 |RuleId|説明|
 |---|---|
 |920100|無効な HTTP 要求行|
@@ -187,7 +187,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |920470|無効な Content-Type ヘッダー|
 |920480|要求のコンテンツの種類の文字セットが、ポリシーによって許可されません|
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-20"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-20"></a> PROTOCOL-ATTACK
 
 |RuleId|説明|
 |---|---|
@@ -199,7 +199,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |921151|ペイロードによる HTTP ヘッダー インジェクション攻撃 (CR/LF 検出)|
 |921160|ペイロードによる HTTP ヘッダー インジェクション攻撃 (CR/LF および header-name 検出)|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-20"></a> <p x-ms-format-detection="none">LFI - ローカル ファイル インクルージョン</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-20"></a> LFI - ローカル ファイル インクルージョン
 |RuleId|説明|
 |---|---|
 |930100|パス トラバーサル攻撃 (/../)|
@@ -207,15 +207,15 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |930120|OS ファイル アクセスの試行|
 |930130|制限付きファイル アクセスの試行|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-20"></a> <p x-ms-format-detection="none">RFI - リモート ファイル インクルージョン</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-20"></a> RFI - リモート ファイル インクルージョン
 |RuleId|説明|
 |---|---|
 |931100|リモート ファイル インクルード (RFI) 攻撃の可能性あり: IP アドレスを使用している URL パラメーター|
 |931110|リモート ファイル インクルード (RFI) 攻撃の可能性あり: URL ペイロードと共に使用される一般的な RFI 脆弱性パラメーター名|
 |931120|リモート ファイル インクルード (RFI) 攻撃の可能性あり: 末尾の疑問符 (?) と共に使用される URL ペイロード|
-|931130|リモート ファイル インクルード (RFI) 攻撃の可能性あり: ドメイン外参照およびリンク|
+|931130|可能性のあるリモート ファイル インクルード (RFI) 攻撃: ドメイン外参照/リンク|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-20"></a> <p x-ms-format-detection="none">RCE - リモート コマンド実行</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-20"></a> RCE - リモート コマンド実行
 |RuleId|説明|
 |---|---|
 |932100|リモート コマンド実行: UNIX コマンド インジェクション|
@@ -231,7 +231,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |932171|リモート コマンド実行: Shellshock (CVE-2014-6271)|
 |932180|制限付きファイル アップロードの試行|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-20"></a> <p x-ms-format-detection="none">PHP 攻撃</p>
+### <a name="php-attacks"></a><a name="drs933-20"></a> PHP 攻撃
 |RuleId|説明|
 |---|---|
 |933100|PHP インジェクション攻撃: 開始または終了タグが見つかりました|
@@ -247,14 +247,14 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |933170|PHP インジェクション攻撃: シリアル化されたオブジェクトの挿入|
 |933180|PHP インジェクション攻撃: 可変関数呼び出しが見つかりました|
 |933200|PHP インジェクション攻撃: ラッパー スキームが検出されました|
-|933210|PHP インジェクション攻撃: 可変関数呼び出しが見つかりました|
+|933210|PHP インジェクション攻撃: 関数呼び出しが見つかりました|
 
-### <a name="p-x-ms-format-detectionnonenode-js-attacksp"></a><a name="drs934-20"></a> <p x-ms-format-detection="none">Node JS 攻撃</p>
+### <a name="node-js-attacks"></a><a name="drs934-20"></a> Node JS 攻撃
 |RuleId|説明|
 |---|---|
 |934100|Node.js インジェクション攻撃|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-20"></a> <p x-ms-format-detection="none">XSS - クロスサイト スクリプティング</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-20"></a> XSS - クロスサイト スクリプティング
 |RuleId|説明|
 |---|---|
 |941100|libinjection を通じて XSS 攻撃が検出されました|
@@ -289,7 +289,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |941380|AngularJS クライアント側テンプレート インジェクションが検出されました|
 
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-20"></a> <p x-ms-format-detection="none">SQLI - SQL インジェクション</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-20"></a> SQLI - SQL インジェクション
 |RuleId|説明|
 |---|---|
 |942100|libinjection を通じて SQL インジェクション攻撃が検出されました|
@@ -335,14 +335,14 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |942510|ティックまたはバックティックによる SQLi バイパス試行が検出されました。|
 
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-20"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-20"></a> SESSION-FIXATION
 |RuleId|説明|
 |---|---|
 |943100|可能性のあるセッション固定攻撃: HTML への Cookie 値の設定|
 |943110|可能性のあるセッション固定攻撃: SessionID パラメーター名とドメイン外参照元|
 |943120|可能性のあるセッション固定攻撃: 参照元のない SessionID パラメーター名|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-20"></a> <p x-ms-format-detection="none">JAVA 攻撃</p>
+### <a name="java-attacks"></a><a name="drs944-20"></a> JAVA 攻撃
 |RuleId|説明|
 |---|---|
 |944100|リモート コマンド実行: Apache Struts、Oracle WebLogic|
@@ -354,26 +354,26 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |944240|リモート コマンド実行: Java シリアル化|
 |944250|リモート コマンド実行: 疑わしい Java メソッドが検出されました|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-webshellsp"></a><a name="drs9905-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-WebShells</p>
+### <a name="ms-threatintel-webshells"></a><a name="drs9905-20"></a> MS-ThreatIntel-WebShells
 |RuleId|説明|
 |---|---|
 |99005002|Web シェル相互作用の試行 (POST)|
 |99005003|Web シェル アップロードの試行 (POST) - CHOPPER PHP|
 |99005004|Web シェル アップロードの試行 (POST) - CHOPPER ASPX|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-appsecp"></a><a name="drs9903-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-AppSec</p>
+### <a name="ms-threatintel-appsec"></a><a name="drs9903-20"></a> MS-ThreatIntel-AppSec
 |RuleId|説明|
 |---|---|
 |99030001|ヘッダーでのパス トラバーサル回避 (/.././../)|
 |99030002|要求本文でのパス トラバーサル回避 (/.././../)|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-sqlip"></a><a name="drs99031-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-SQLI</p>
+### <a name="ms-threatintel-sqli"></a><a name="drs99031-20"></a> MS-ThreatIntel-SQLI
 |RuleId|説明|
 |---|---|
 |99031001|SQL インジェクション攻撃:一般的なインジェクション テストが検出されました|
 |99031002|SQL コメント シーケンスが検出されました。|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-cvesp"></a><a name="drs99001-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-CVEs</p>
+### <a name="ms-threatintel-cves"></a><a name="drs99001-20"></a> MS-ThreatIntel-CVEs
 |RuleId|説明|
 |---|---|
 |99001001|既知の資格情報で F5 tmui (CVE-2020-5902) REST API の悪用が試みられました|
@@ -382,7 +382,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 
 ## <a name="11-rule-sets"></a><a name="drs11"></a> 1.1 の規則セット
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-11"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-11"></a> PROTOCOL-ATTACK
 |RuleId|説明|
 |---|---|
 |921110|HTTP 要求スマグリング攻撃|
@@ -393,7 +393,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |921151|ペイロードによる HTTP ヘッダー インジェクション攻撃 (CR/LF 検出)|
 |921160|ペイロードによる HTTP ヘッダー インジェクション攻撃 (CR/LF および header-name 検出)|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-11"></a> <p x-ms-format-detection="none">LFI - ローカル ファイル インクルージョン</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-11"></a> LFI - ローカル ファイル インクルージョン
 |RuleId|説明|
 |---|---|
 |930100|パス トラバーサル攻撃 (/../)|
@@ -401,15 +401,15 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |930120|OS ファイル アクセスの試行|
 |930130|制限付きファイル アクセスの試行|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-11"></a> <p x-ms-format-detection="none">RFI - リモート ファイル インクルージョン</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-11"></a> RFI - リモート ファイル インクルージョン
 |RuleId|説明|
 |---|---|
 |931100|リモート ファイル インクルード (RFI) 攻撃の可能性あり: IP アドレスを使用している URL パラメーター|
 |931110|リモート ファイル インクルード (RFI) 攻撃の可能性あり: URL ペイロードと共に使用される一般的な RFI 脆弱性パラメーター名|
 |931120|リモート ファイル インクルード (RFI) 攻撃の可能性あり: 末尾の疑問符 (?) と共に使用される URL ペイロード|
-|931130|リモート ファイル インクルード (RFI) 攻撃の可能性あり: ドメイン外参照およびリンク|
+|931130|可能性のあるリモート ファイル インクルード (RFI) 攻撃: ドメイン外参照/リンク|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-11"></a> <p x-ms-format-detection="none">RCE - リモート コマンド実行</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-11"></a> RCE - リモート コマンド実行
 |RuleId|説明|
 |---|---|
 |932100|リモート コマンド実行: UNIX コマンド インジェクション|
@@ -425,7 +425,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |932171|リモート コマンド実行: Shellshock (CVE-2014-6271)|
 |932180|制限付きファイル アップロードの試行|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-11"></a> <p x-ms-format-detection="none">PHP 攻撃</p>
+### <a name="php-attacks"></a><a name="drs933-11"></a> PHP 攻撃
 |RuleId|説明|
 |---|---|
 |933100|PHP インジェクション攻撃: PHP の開始タグが見つかりました|
@@ -437,9 +437,9 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |933151|PHP インジェクション攻撃: 危険度が中程度の PHP 関数名が見つかりました|
 |933160|PHP インジェクション攻撃: 危険度の高い PHP 関数呼び出しが見つかりました|
 |933170|PHP インジェクション攻撃: シリアル化されたオブジェクトの挿入|
-|933180|PHP インジェクション攻撃: 可変関数呼び出しが見つかりました|
+|933180|PHP インジェクション攻撃: 関数呼び出しが見つかりました|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-11"></a> <p x-ms-format-detection="none">XSS - クロスサイト スクリプティング</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-11"></a> XSS - クロスサイト スクリプティング
 |RuleId|説明|
 |---|---|
 |941100|libinjection を通じて XSS 攻撃が検出されました|
@@ -470,7 +470,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |941340|IE XSS フィルター - 攻撃が検出されました。|
 |941350|UTF-7 エンコード IE XSS - 攻撃が検出されました。|
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-11"></a> <p x-ms-format-detection="none">SQLI - SQL インジェクション</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-11"></a> SQLI - SQL インジェクション
 |RuleId|説明|
 |---|---|
 |942100|libinjection を通じて SQL インジェクション攻撃が検出されました|
@@ -511,14 +511,14 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |942470|SQL インジェクション攻撃|
 |942480|SQL インジェクション攻撃|
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-11"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-11"></a> SESSION-FIXATION
 |RuleId|説明|
 |---|---|
 |943100|可能性のあるセッション固定攻撃: HTML への Cookie 値の設定|
 |943110|可能性のあるセッション固定攻撃: SessionID パラメーター名とドメイン外参照元|
 |943120|可能性のあるセッション固定攻撃: 参照元のない SessionID パラメーター名|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-11"></a> <p x-ms-format-detection="none">JAVA 攻撃</p>
+### <a name="java-attacks"></a><a name="drs944-11"></a> JAVA 攻撃
 |RuleId|説明|
 |---|---|
 |944100|リモート コマンド実行: 疑わしい Java クラスが検出されました|
@@ -530,26 +530,26 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |944240|リモート コマンド実行: Java シリアル化 (CVE-2015-5842)|
 |944250|リモート コマンド実行: 疑わしい Java メソッドが検出されました|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-webshellsp"></a><a name="drs9905-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-WebShells</p>
+### <a name="ms-threatintel-webshells"></a><a name="drs9905-11"></a> MS-ThreatIntel-WebShells
 |RuleId|説明|
 |---|---|
 |99005002|Web シェル相互作用の試行 (POST)|
 |99005003|Web シェル アップロードの試行 (POST) - CHOPPER PHP|
 |99005004|Web シェル アップロードの試行 (POST) - CHOPPER ASPX|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-appsecp"></a><a name="drs9903-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-AppSec</p>
+### <a name="ms-threatintel-appsec"></a><a name="drs9903-11"></a> MS-ThreatIntel-AppSec
 |RuleId|説明|
 |---|---|
 |99030001|ヘッダーでのパス トラバーサル回避 (/.././../)|
 |99030002|要求本文でのパス トラバーサル回避 (/.././../)|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-sqlip"></a><a name="drs99031-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-SQLI</p>
+### <a name="ms-threatintel-sqli"></a><a name="drs99031-11"></a> MS-ThreatIntel-SQLI
 |RuleId|説明|
 |---|---|
 |99031001|SQL インジェクション攻撃:一般的なインジェクション テストが検出されました|
 |99031002|SQL コメント シーケンスが検出されました。|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-cvesp"></a><a name="drs99001-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-CVEs</p>
+### <a name="ms-threatintel-cves"></a><a name="drs99001-11"></a> MS-ThreatIntel-CVEs
 |RuleId|説明|
 |---|---|
 |99001001|既知の資格情報で F5 tmui (CVE-2020-5902) REST API の悪用が試みられました|
@@ -558,7 +558,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 
 ## <a name="10-rule-sets"></a><a name="drs10"></a> 1.0 の規則セット
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-10"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-10"></a> PROTOCOL-ATTACK
 |RuleId|説明|
 |---|---|
 |921110|HTTP 要求スマグリング攻撃|
@@ -569,7 +569,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |921151|ペイロードによる HTTP ヘッダー インジェクション攻撃 (CR/LF 検出)|
 |921160|ペイロードによる HTTP ヘッダー インジェクション攻撃 (CR/LF および header-name 検出)|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-10"></a> <p x-ms-format-detection="none">LFI - ローカル ファイル インクルージョン</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-10"></a> LFI - ローカル ファイル インクルージョン
 |RuleId|説明|
 |---|---|
 |930100|パス トラバーサル攻撃 (/../)|
@@ -577,15 +577,15 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |930120|OS ファイル アクセスの試行|
 |930130|制限付きファイル アクセスの試行|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-10"></a> <p x-ms-format-detection="none">RFI - リモート ファイル インクルージョン</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-10"></a> RFI - リモート ファイル インクルージョン
 |RuleId|説明|
 |---|---|
 |931100|リモート ファイル インクルード (RFI) 攻撃の可能性あり: IP アドレスを使用している URL パラメーター|
 |931110|リモート ファイル インクルード (RFI) 攻撃の可能性あり: URL ペイロードと共に使用される一般的な RFI 脆弱性パラメーター名|
 |931120|リモート ファイル インクルード (RFI) 攻撃の可能性あり: 末尾の疑問符 (?) と共に使用される URL ペイロード|
-|931130|リモート ファイル インクルード (RFI) 攻撃の可能性あり: ドメイン外参照およびリンク|
+|931130|可能性のあるリモート ファイル インクルード (RFI) 攻撃: ドメイン外参照/リンク|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-10"></a> <p x-ms-format-detection="none">RCE - リモート コマンド実行</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-10"></a> RCE - リモート コマンド実行
 |RuleId|説明|
 |---|---|
 |932100|リモート コマンド実行: UNIX コマンド インジェクション|
@@ -601,7 +601,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |932171|リモート コマンド実行: Shellshock (CVE-2014-6271)|
 |932180|制限付きファイル アップロードの試行|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-10"></a> <p x-ms-format-detection="none">PHP 攻撃</p>
+### <a name="php-attacks"></a><a name="drs933-10"></a> PHP 攻撃
 |RuleId|説明|
 |---|---|
 |933100|PHP インジェクション攻撃: 開始または終了タグが見つかりました|
@@ -615,9 +615,9 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |933160|PHP インジェクション攻撃: 危険度の高い PHP 関数呼び出しが見つかりました|
 |933161|PHP インジェクション攻撃: 低い値の PHP 関数呼び出しが見つかりました|
 |933170|PHP インジェクション攻撃: シリアル化されたオブジェクトの挿入|
-|933180|PHP インジェクション攻撃: 可変関数呼び出しが見つかりました|
+|933180|PHP インジェクション攻撃: 関数呼び出しが見つかりました|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-10"></a> <p x-ms-format-detection="none">XSS - クロスサイト スクリプティング</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-10"></a> XSS - クロスサイト スクリプティング
 |RuleId|説明|
 |---|---|
 |941100|libinjection を通じて XSS 攻撃が検出されました|
@@ -648,7 +648,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |941340|IE XSS フィルター - 攻撃が検出されました。|
 |941350|UTF-7 エンコード IE XSS - 攻撃が検出されました。|
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-10"></a> <p x-ms-format-detection="none">SQLI - SQL インジェクション</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-10"></a> SQLI - SQL インジェクション
 |RuleId|説明|
 |---|---|
 |942100|libinjection を通じて SQL インジェクション攻撃が検出されました|
@@ -689,14 +689,14 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |942470|SQL インジェクション攻撃|
 |942480|SQL インジェクション攻撃|
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-10"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-10"></a> SESSION-FIXATION
 |RuleId|説明|
 |---|---|
 |943100|可能性のあるセッション固定攻撃: HTML への Cookie 値の設定|
 |943110|可能性のあるセッション固定攻撃: SessionID パラメーター名とドメイン外参照元|
 |943120|可能性のあるセッション固定攻撃: 参照元のない SessionID パラメーター名|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-10"></a> <p x-ms-format-detection="none">JAVA 攻撃</p>
+### <a name="java-attacks"></a><a name="drs944-10"></a> JAVA 攻撃
 |RuleId|説明|
 |---|---|
 |944100|リモート コマンド実行: Apache Struts、Oracle WebLogic|
@@ -712,19 +712,19 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 
 ## <a name="bot-manager-rule-sets"></a><a name="bot"></a> ボット マネージャーの規則セット
 
-### <a name="p-x-ms-format-detectionnonebad-botsp"></a><a name="bot100"></a> <p x-ms-format-detection="none">問題のあるボット</p>
+### <a name="bad-bots"></a><a name="bot100"></a> 問題のあるボット
 |RuleId|説明|
 |---|---|
 |Bot100100|脅威インテリジェンスによって検出された悪意のあるボット|
 |Bot100200|ID を偽った悪意のあるボット|
 
-### <a name="p-x-ms-format-detectionnonegood-botsp"></a><a name="bot200"></a> <p x-ms-format-detection="none">問題のないボット</p>
+### <a name="good-bots"></a><a name="bot200"></a> 問題のないボット
 |RuleId|説明|
 |---|---|
 |Bot200100|検索エンジン クローラー|
 |Bot200200|未確認の検索エンジン クローラー|
 
-### <a name="p-x-ms-format-detectionnoneunknown-botsp"></a><a name="bot300"></a> <p x-ms-format-detection="none">不明なボット</p>
+### <a name="unknown-bots"></a><a name="bot300"></a> 不明なボット
 |RuleId|説明|
 |---|---|
 |Bot300100|未指定の ID|

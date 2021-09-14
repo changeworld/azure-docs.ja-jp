@@ -2,14 +2,14 @@
 title: レジストリのロールとアクセス許可
 description: Azure のロールベースのアクセス制御 (Azure RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6923e356f60916e34325b9b6815dbae8aeaf5c51
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 494373a299eb0f4d2bb100e71a1e1000336d1613
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854794"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451639"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 
@@ -89,7 +89,7 @@ Azure コンテナー レジストリを作成および削除する権限です�
 
 どのアクセス許可をカスタムロールに適用するか決めるには、Microsoft.containerregistry [アクション](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry) の一覧を参照し、[組み込みの ACR ロール](../role-based-access-control/built-in-roles.md) で許可されているアクションを確認するか、次のコマンドを実行します：
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az provider operation show --namespace Microsoft.ContainerRegistry
@@ -97,16 +97,19 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 カスタムロールを定義するには、 [カスタムロールを作成する手順](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) を参照してください。
 
-> [!IMPORTANT]
-> カスタムロールでは、Azure Container Registry は、現在、一致するすべてのアクションへのアクセスを許可する `Microsoft.ContainerRegistry/*` や `Microsoft.ContainerRegistry/registries/*` などのワイルドカードを、サポートしていません。 ロールに、必要なアクションを個別に指定します。
+> [!NOTE]
+> [Azure Resource Manager プライベート リンク](../azure-resource-manager/management/create-private-link-access-portal.md)を使用して構成されたテナント内の Azure Container Registry では、カスタム ロールで `Microsoft.ContainerRegistry/*/read` や `Microsoft.ContainerRegistry/registries/*/write` などのワイルドカード アクションを使用することがサポートされており、一致するすべてのアクションへのアクセスが許可されます。 ARM プライベート リンクのないテナントで、必要なすべてのレジストリ アクションをカスタム ロールで個別に指定します。
 
-### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Get-AzProviderOperation -OperationSearchString Microsoft.ContainerRegistry/*
 ```
 
 カスタムロールを定義するには、 [カスタムロールを作成する手順](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) を参照してください。
+
+> [!NOTE]
+> [Azure Resource Manager プライベート リンク](../azure-resource-manager/management/create-private-link-access-portal.md)を使用して構成されたテナント内の Azure Container Registry では、カスタム ロールで `Microsoft.ContainerRegistry/*/read` や `Microsoft.ContainerRegistry/registries/*/write` などのワイルドカード アクションを使用することがサポートされており、一致するすべてのアクションへのアクセスが許可されます。 ARM プライベート リンクのないテナントで、必要なすべてのレジストリ アクションをカスタム ロールで個別に指定します。
 
 ---
 

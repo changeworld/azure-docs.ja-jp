@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.service: backup
-ms.openlocfilehash: 57a0002d353ebb75570dc3b70c55d2f17f70db35
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 72e2ce2c32a1be1e6f116ef5513c1c24a42284bc
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472476"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438197"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -45,7 +45,7 @@ ms.locfileid: "110472476"
 - すべての[拡張機能の問題](../virtual-machines/extensions/overview.md#troubleshoot-extensions)が解決されていることを確認して、バックアップ操作をやり直してください。
 - **COM+ System Application** が動作していることを確認します。 また、**分散トランザクション コーディネーター サービス** も **ネットワーク サービス アカウント** として実行されている必要があります。 [COM+ と MSDTC の問題のトラブルシューティング](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)に関する記事の手順に従います。
 
-### <a name="step-4-check-azure-backup-vm-extension-health"></a>手順 4:Azure Backup VM 拡張機能の正常性を確認する
+### <a name="step-4-check-azure-backup-extension-health"></a>手順 4:Azure Backup 拡張機能の正常性を確認する
 
 Azure Backup では、VM スナップショット拡張機能を使用して Azure 仮想マシンのアプリケーション整合性バックアップを作成します。 Azure Backup によって、バックアップの有効化の後にトリガーされる最初のスケジュールされたバックアップの一部として、拡張機能がインストールされます。
 

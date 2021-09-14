@@ -3,12 +3,12 @@ title: 変数の複数のインスタンスを定義する
 description: 変数を作成するときに、Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作を使用して、複数回、反復処理を行います。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 5f6459335fa3f059a76128edde4ee7096790fe13
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bf04a93d8ec6626bfbb2083789dbd6db08e2af51
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957955"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452179"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM テンプレートでの変数の反復処理
 
@@ -318,6 +318,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 |---------|---------|
 |[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |変数を反復処理する各種の方法を示します。 |
 |[Multiple security rules](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |ネットワーク セキュリティ グループに複数のセキュリティ規則をデプロイします。 セキュリティ規則はパラメーターから構築されます。 パラメーターについては、[複数の NSG パラメーター ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)に関するページを参照してください。 |
+|[Copy storage with variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewithvariables.json) | 変数を反復処理し、複数のストレージ アカウントを作成する方法の例。 |
 
 ## <a name="next-steps"></a>次のステップ
 

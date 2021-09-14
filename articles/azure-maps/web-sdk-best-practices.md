@@ -1,19 +1,17 @@
 ---
 title: Azure Maps Web SDK のベスト プラクティス | Microsoft Azure Maps
 description: Azure Maps Web SDK の使用を最適化するためのヒントとコツを紹介します。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 3/22/2021
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: cpendle
-ms.openlocfilehash: 630b354768e3ad0882911f11a99cca06fc87154e
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 3bcf3125e09ee2023e36b3eefc5d34d4a1215c4e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234431"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439364"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Azure Maps Web SDK のベスト プラクティス
 
@@ -37,7 +35,7 @@ Azure Maps Web SDK を使用すると、大規模な空間データセットを�
 
 ### <a name="secure-your-private-data"></a>プライベート データのセキュリティ保護
 
-データが Azure Maps の対話型マップ SDK に追加されると、エンド ユーザーのデバイス上でローカルにレンダリングされ、どのような理由であれインターネットに送り返されることはありません。
+Azure Maps の対話型マップ SDK にデータが追加されると、エンド ユーザーのデバイス上でローカルにレンダリングされ、どのような理由であれインターネットに送り返されることはありません。
 
 パブリックにアクセスできないデータをアプリケーションに読み込む場合は、データが安全な場所に格納され、安全な方法でアクセスされること、およびアプリケーション自体がロックダウンされていて、目的のユーザーだけが使用できるようになっている必要があります。 これらの手順のどれかが省略された場合、権限のないユーザーがこのデータにアクセスする可能性があります。 Azure Active Directory を使用すると、これをロックダウンしやすくなります。
 
@@ -57,7 +55,7 @@ NPM モジュールを使用して Azure Maps Web SDK を自己ホストする�
 
 ## <a name="optimize-initial-map-load"></a>初期マップ読み込みを最適化する
 
-Web ページ読み込み中に最初に行う必要があることの 1 つは、ユーザーに最初に表示される画面が空にならないように、できるだけ早くレンダリングを開始することです。
+Web ページの読み込み中に最初に行うべきことの 1 つは、ユーザーが空のページを見続けることにならないように、できるだけ早くレンダリングを開始することです。
 
 ### <a name="watch-the-maps-ready-event"></a>マップの準備完了イベントを確認する
 
@@ -70,7 +68,7 @@ Web ページ読み込み中に最初に行う必要があることの 1 つは�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="マップの遅延読み込み" src="https://codepen.io/azuremaps/embed/vYEeyOv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="マップの遅延読み込み" src="https://codepen.io/azuremaps/embed/vYEeyOv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/vYEeyOv'>マップ遅延読み込み</a> Pen を表示します。
 </iframe>
 
@@ -180,7 +178,7 @@ Azure Maps Web SDK は、データドリブンを採用しています。 デー
 
 <br/>
 
-<iframe height='500' scrolling='no' title='複数のピンでポップアップを再利用する' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/rQbjvK/'>Reusing Popup with Multiple Pins</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='複数のピンでポップアップを再利用する' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/rQbjvK/'>Reusing Popup with Multiple Pins</a>」Pen を表示します。
 </iframe>
 
 そうは言っても、マップ上にレンダリングするポイントが少数の場合は、HTML マーカーの簡便さが好まれることがあります。 また、必要な場合は簡単に HTML マーカーをドラッグ可能にすることができます。
@@ -225,7 +223,7 @@ var layer = new atlas.layer.BubbleLayer(source, null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="シンボル レイヤーのアニメーション" src="https://codepen.io/azuremaps/embed/oNgGzRd?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="シンボル レイヤーのアニメーション" src="https://codepen.io/azuremaps/embed/oNgGzRd?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/oNgGzRd'>シンボル レイヤーのアニメーション</a> Pen を表示します。
 </iframe>
 
@@ -375,8 +373,8 @@ Azure Maps SDK においては、座標 (位置とも呼ばれる) は `[longitu
 
 **シンボル レイヤーのアイコンまたはテキストが間違った場所に表示されるのはなぜですか?**
 `anchor` および `offset` オプションが、マップ上の座標に合わせる画像またはテキストの部分と揃うように正しく構成されていることを確認してください。
-マップを回転したときにのみシンボルの配置が正しくない場合は、`rotationAlignment` オプションを確認します。 既定では、シンボルはマップのビューポートと共に回転し、ユーザーに対して正立するように表示されます。 ただし、シナリオによっては、マップの向きに合わせてシンボルをロックすることが望ましい場合があります。 これを行うには、`rotationAlignment` オプションを `’map’` に設定します。
-マップをピッチ調整または傾けた場合にのみシンボルの配置が正しくない場合は、`pitchAlignment` オプションを確認します。 既定では、マップをピッチ調整または傾けたときに、シンボルはマップのビューポートで正立した状態を維持します。 ただし、シナリオによっては、マップのピッチにシンボルを固定することが望ましい場合があります。 これを行うには、`pitchAlignment` オプションを `’map’` に設定します。
+マップを回転したときにのみシンボルの配置が正しくない場合は、`rotationAlignment` オプションを確認します。 既定では、シンボルはマップのビューポートと共に回転し、ユーザーに対して正立するように表示されます。 ただし、シナリオによっては、マップの向きに合わせてシンボルをロックすることが望ましい場合があります。 これを行うには、`rotationAlignment` オプションを `'map'` に設定します。
+マップをピッチ調整または傾けた場合にのみシンボルの配置が正しくない場合は、`pitchAlignment` オプションを確認します。 既定では、マップをピッチ調整または傾けたときに、シンボルはマップのビューポートで正立した状態を維持します。 ただし、シナリオによっては、マップのピッチにシンボルを固定することが望ましい場合があります。 これを行うには、`pitchAlignment` オプションを `'map'` に設定します。
 
 **マップにデータがまったく表示されないのはなぜですか?**
 

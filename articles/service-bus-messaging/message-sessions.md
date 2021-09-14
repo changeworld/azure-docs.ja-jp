@@ -2,31 +2,31 @@
 title: Azure Service Bus のメッセージ セッション | Microsoft Docs
 description: この記事では、セッションを使用して、関連メッセージのバインドなしシーケンスの結合および順序指定処理を有効にする方法を説明します。
 ms.topic: article
-ms.date: 04/19/2021
-ms.openlocfilehash: f3b6eae7b7f4d609df5067187595230aa6b86dba
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 09/01/2021
+ms.openlocfilehash: 98430d7b9db857de6dc3dfb37e61908b236591f2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987166"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433442"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
-Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および **要求 - 応答** のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
+Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および **要求 - 応答** のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
 
 > [!NOTE]
 > Service Bus の Basic レベルはセッションをサポートしていません。 Standard レベルと Premium レベルはセッションをサポートしています。 これらのレベルの違いについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
 ## <a name="first-in-first-out-fifo-pattern"></a>先入れ先出し (FIFO) パターン
-Service Bus で FIFO 処理を保証するには、セッションを使用します。 Service Bus では、メッセージ間の関係の性質に関する規範はなく、またメッセージのシーケンスの開始または終了位置を決定する特定のモデルは定義されていません。
+Service Bus で FIFO 処理を保証するには、セッションを使用します。 Service Bus では、メッセージ間の関係の性質に関する規範はなく、またメッセージのシーケンスの開始位置や終了位置を決定する特定のモデルは定義されていません。
 
-セッションに固有のアプリケーション定義の識別子に **セッション ID** のプロパティを設定することで、センダーはメッセージをトピックまたはキューに送信するときにセッションを作成できます。 AMQP 1.0 プロトコル レベルでは、この値は *group-id* プロパティに相当します。
+セッションに固有のアプリケーション定義の識別子に **セッション ID** のプロパティを設定することで、どのセンダーでも、メッセージをトピックまたはキューに送信するときにセッションを作成できます。 **AMQP 1.0** プロトコル レベルでは、この値は **group-id** プロパティに相当します。
 
 セッション対応のキューまたはサブスクリプションでは、セッション ID を持つメッセージが 1 つ以上ある場合にセッションが生成されます。 1 度生成されたセッションの有効期限や存続期間、および API は定義されていません。 理論上は、メッセージを今日のセッションで受信して、次のメッセージを 1 年後に受信したとしても、セッション ID が一致する限り、Service Bus の観点からすると同じセッションになります。
 
 通常、アプリケーションでは関連するメッセージの開始および終了は明確に認識されます。 Service Bus では、特定の規則は設定されていません。 たとえば、アプリケーションでは、最初のメッセージの **Label** プロパティを **start** に、中間メッセージの場合であれば **content** に、最後のメッセージであれば **end** に設定できます。 コンテンツ メッセージの相対位置は、現在のメッセージの *SequenceNumber* と **start** メッセージの *SequenceNumber* との差分として計算できます。
 
 > [!IMPORTANT]
-> キューまたはサブスクリプションでセッションが有効になっている場合、クライアント アプリケーションでは通常のメッセージを送受信 ***できなくなります***。 すべてのメッセージは、(セッション ID を設定して) セッションの一部として送信し、セッションを受信することで受信する必要があります。
+> キューまたはサブスクリプションでセッションが有効になっている場合、クライアント アプリケーションでは通常のメッセージを送受信でき ***なくなります***。 すべてのメッセージは、(セッション ID を設定して) セッションの一部として送信し、セッションを受信することで受信する必要があります。
 
 セッションに対応する API は、キューまたはサブスクリプション クライアントに存在します。 セッションやメッセージの受信タイミングを制御する命令モデルと、受信ループ管理の複雑さを隠すハンドラー ベースのモデルがあります。 
 
@@ -40,7 +40,7 @@ Service Bus で FIFO 処理を保証するには、セッションを使用し�
 
 セッション受信プロセスは、セッションを受け入れるクライアントによって作成されます。 セッションがクライアントによって受け入れられて保持されると、クライアントではキューまたはサブスクリプションでそのセッションの **セッション ID** を持つすべてのメッセージに対する排他ロックが保持されます。 また、後で到着する **セッション ID** を持つすべてのメッセージに対しても排他ロックが保持されます。
 
-このロックは、受信側で close 関連のメソッドを呼び出した場合、またはロックの有効期限が切れた場合に解放されます。 受信側には、ロックを更新するためのメソッドもあります。 その代わりに、ロックの更新を続ける期間を指定できる、ロックの自動更新機能を使用できます。 セッション ロックは、ファイルの排他的ロックと同様に処理する必要があります。つまり、アプリケーションは、セッションが不要になったり、それ以上のメッセージが想定されなくなったりしたらただちにセッションを閉じる必要があります。
+このロックは、受信側で close メソッドが呼び出されるか、ロックの有効期限が切れた場合に解放されます。 受信側には、ロックを更新するためのメソッドもあります。 その代わりに、ロックの更新を続ける期間を指定できる、ロックの自動更新機能を使用できます。 セッション ロックは、ファイルの排他的ロックと同様に処理する必要があります。つまり、アプリケーションは、セッションが不要になったり、それ以上のメッセージが想定されなくなったりしたらただちにセッションを閉じる必要があります。
 
 複数の同時受信プロセスがキューからプルする場合、特定のセッションに属するメッセージは、そのセッションに対するロックを現在保持している特定の受信プロセスに送信されます。 この操作により、1 つのキューまたはサブスクリプション内のインターリーブされたメッセージ ストリームはさまざまな受信プロセスに対してクリーンに逆多重化されます。また、ロック管理が Service Bus 内のサーバー側で行われるため、それらの受信プロセスはさまざまなクライアント マシン上に存続できます。
 
@@ -85,15 +85,15 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 
 Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [.NET (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
-- [Java (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Java (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
 
 [1]: ./media/message-sessions/sessions.png
 

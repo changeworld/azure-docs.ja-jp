@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0d8f1a7e0312ea350a5a34c13d8389b240c14476
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9c73d8865b2cd019e940a753425d13b67567b39b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472471"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471205"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>BLOB ストレージの暗号化スコープ
 
 暗号化スコープを使用すると、コンテナーまたは個々の BLOB にスコープ設定されたキーで暗号化を管理できます。 暗号化スコープを使用すると、異なる顧客が所有する、同じストレージ アカウントに存在するデータの間にセキュリティで保護された境界を作成できます。
 
 暗号化スコープの操作の詳細については、「[暗号化スコープの作成と管理](encryption-scope-manage.md)」を参照してください。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-encryption-scopes-work"></a>暗号化スコープのしくみ
 
@@ -82,7 +80,16 @@ Azure Storage のインフラストラクチャ暗号化により、データの
 > [!IMPORTANT]
 > 暗号化スコープを削除することはできません。
 
+## <a name="feature-support"></a>機能サポート
 
+次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

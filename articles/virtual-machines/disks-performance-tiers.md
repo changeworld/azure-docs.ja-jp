@@ -8,14 +8,14 @@ ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 783299359b1b7b9cbe75fd36f534ac18563c0fee
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: b72066dbeda75ae651b26c76b99697d978986a50
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102929"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435296"
 ---
-# <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Azure PowerShell モジュールまたは Azure CLI を使用してパフォーマンス レベルを変更します
+# <a name="change-your-performance-tier-without-downtime-using-the-azure-powershell-module-or-the-azure-cli"></a>Azure PowerShell モジュールまたは Azure CLI を使用してダウンタイムなしでパフォーマンス レベルを変更する
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
@@ -85,55 +85,55 @@ New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGro
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>前提条件
+1. ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションの機能を有効にしてください。
 
-ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションの機能を有効にしてください。
+    1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
 
-1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
+        ```azurecli
+        az feature register --namespace Microsoft.Compute --name LiveTierChange
+        ```
+
+    1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
+
+        ```azurecli
+        az feature show --namespace Microsoft.Compute --name LiveTierChange
+        ```
+2. 実行中の VM に接続されている場合でも、ディスクのレベルを更新します
 
     ```azurecli
-    az feature register --namespace Microsoft.Compute --name LiveTierChange
+    resourceGroupName=<yourResourceGroupNameHere>
+    diskName=<yourDiskNameHere>
+    performanceTier=<yourDesiredPerformanceTier>
+
+    az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
     ```
- 
-1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
-
-    ```azurecli
-    az feature show --namespace Microsoft.Compute --name LiveTierChange
-    ```
-
-```azurecli
-resourceGroupName=<yourResourceGroupNameHere>
-diskName=<yourDiskNameHere>
-performanceTier=<yourDesiredPerformanceTier>
-
-az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
-```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションの機能を有効にしてください。
+1. ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションの機能を有効にしてください。
 
-1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
+    1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
+
+        ```azurepowershell
+         Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+        ```
+
+    1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
+
+        ```azurepowershell
+        Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+        ```
+2. 実行中の VM に接続されている場合でも、ディスクのレベルを更新します
 
     ```azurepowershell
-     Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+    $resourceGroupName='yourResourceGroupName'
+    $diskName='yourDiskName'
+    $performanceTier='P1'
+
+    $diskUpdateConfig = New-AzDiskUpdateConfig -Tier $performanceTier
+
+    Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
     ```
- 
-1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
-
-    ```azurepowershell
-    Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
-    ```
-
-```azurepowershell
-$resourceGroupName='yourResourceGroupName'
-$diskName='yourDiskName'
-$performanceTier='P1'
-
-$diskUpdateConfig = New-AzDiskUpdateConfig -Tier $performanceTier
-
-Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
-```
 ---
 
 ## <a name="show-the-tier-of-a-disk"></a>ディスクのレベルを表示する

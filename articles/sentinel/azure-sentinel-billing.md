@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.custom: subject-cost-optimization
 ms.topic: how-to
-ms.date: 07/27/2021
-ms.openlocfilehash: 6561bee9348edcc23bc6668748d0d6576155179d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/02/2021
+ms.openlocfilehash: 3e814541ecf43d8f9d12c028e8bebc8ac31fe411
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748102"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433478"
 ---
 # <a name="plan-and-manage-costs-for-azure-sentinel"></a>Azure Sentinel のコストを計画および管理する
 
@@ -111,7 +111,7 @@ Log Analytics ワークスペースで Azure Sentinel を有効にすると、�
 
 個々のデータの種類に異なる保持設定を指定できます。 詳細については、「[データの種類別のリテンション期間](../azure-monitor/logs/manage-cost-storage.md#retention-by-data-type)」を参照してください。
 
-### <a name="additional-cef-ingestion-costs"></a>追加の CEF インジェスト コスト
+### <a name="other-cef-ingestion-costs"></a>他の CEF インジェスト コスト
 
 CEF は、Azure Sentinel でサポートされている Syslog イベント形式です。 CEF を使用して、さまざまなソースから Azure Sentinel ワークスペースに重要なセキュリティ情報を取り込むことができます。 CEF ログは Azure Sentinel の CommonSecurityLog テーブルに格納され、これにはすべての標準的な最新の CEF フィールドが含まれます。
 
@@ -182,17 +182,7 @@ Azure Sentinel をまだ使用していない場合は、[Azure Sentinel 料金�
 - Azure Sentinel のデータ分析
 - Log Analytics のデータ保持
 
-## <a name="manage-azure-sentinel-costs"></a>Azure Sentinel のコストを管理する
-
-Azure Sentinel の使用量とコストを把握して管理するには、複数の方法があります。
-
-データ インジェストと保持を管理します。
-
-### <a name="using-azure-prepayment-with-azure-sentinel"></a>Azure Sentinel での Azure 前払いの使用
-
-Azure Sentinel の料金は、Azure 前払いのクレジットで支払うことができます。 ただし、Azure 前払いクレジットを使用して、サードパーティ組織の製品やサービス、または Azure Marketplace の製品に対する請求を支払うすることはできません。
-
-## <a name="monitor-costs"></a>コストを監視する
+## <a name="manage-and-monitor-azure-sentinel-costs"></a>Azure Sentinel のコストを管理および監視する
 
 Azure Sentinel で Azure リソースを使用する場合、コストが発生します。 Azure リソース使用のユニット コストは、期間 (秒、分、時間、日数など) やユニット使用量 (バイト、メガバイトなど) によって異なります。 App Sentinel の使用が開始されるとすぐにコストが発生し、[コスト分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)でコストを確認できます。
 
@@ -212,74 +202,11 @@ Azure Sentinel で Azure リソースを使用する場合、コストが発生�
 
 Azure Sentinel の価格レベルには、Log Analytics の料金は含まれません。 Log Analytics の価格レベルのコミットメントを変更するには、「[価格レベルの変更](../azure-monitor/logs/manage-cost-storage.md#changing-pricing-tier)」を参照してください。
 
-#### <a name="define-a-data-volume-cap-in-log-analytics"></a>Log Analytics でデータ量の上限を定義する
+詳細については、「[予算を作成する](#create-budgets)」および「[Azure Sentinel のコストを管理して削減するその他の方法](#other-ways-to-manage-and-reduce-azure-sentinel-costs)」を参照してください。
 
-Log Analytics では、ワークスペースの 1 日のインジェストを制限する 1 日の量の上限を有効にできます。 1 日の上限は、データ量の予期しない増加を管理し、制限内に留め、計画外の料金を制限するのに役立ちます。
+### <a name="using-azure-prepayment-with-azure-sentinel"></a>Azure Sentinel での Azure 前払いの使用
 
-1 日の量の上限を定義するには、Log Analytics ワークスペースの左側のナビゲーションで **[使用とコストの見積もり]** を選択し、 **[日次上限]** を選択します。 **[オン]** を選択し、1 日の量の上限を入力して、 **[OK]** を選択します。
-
-
-![[使用とコストの見積もり] 画面と [日次上限] ウィンドウを示すスクリーンショット。](media/billing/daily-cap.png)
-
-**[使用とコストの見積もり]** 画面には、過去 31 日間に取り込まれたデータ量の傾向と、保持されている合計データ量も示されます。
-
-> [!IMPORTANT]
-> 1 日あたりの上限では、すべてのデータの種類の収集が制限されることはありません。 Log Analytics での 1 日の上限の管理に関する詳細については、「[ご自分のデータの 1 日の最大ボリュームを管理する](../azure-monitor/logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)」を参照してください。
-
-#### <a name="optimize-log-analytics-costs-with-dedicated-clusters"></a>専用クラスターを使用して Log Analytics のコストを最適化する
-
-少なくとも 1 TB/日を Azure Sentinel ワークスペースまたは同じリージョン内のワークスペースに取り込む場合は、コストを削減するために Log Analytics 専用クラスターへの移行を検討してください。 Log Analytics 専用クラスターのコミットメント レベルにより、まとめると合計 1 TB/日以上を取り込むすべてのワークスペースのデータ量が集約されます。
-
-Log Analytics 専用クラスターは、Azure Sentinel のコミットメント レベルには適用されません。 Azure Sentinel のコストは、専用クラスター内のワークスペースごとに引き続き適用されます。
-
-複数の Azure Sentinel ワークスペースを Log Analytics 専用クラスターに追加できます。 Azure Sentinel に Log Analytics 専用クラスターを使用すると、次のような利点があります。
-
-- クエリに含まれるすべてのワークスペースが専用クラスター内にある場合、クロスワークスペース クエリの実行速度が向上します。 それでも、環境内のワークスペースは可能な限り少なくするのが最善であり、専用クラスターで 1 つのクロスワークスペース クエリに含めることができる[ワークスペースには 100 の制限](../azure-monitor/logs/cross-workspace-query.md)がやはりあります。
-
-- 専用クラスター内のすべてのワークスペースで、クラスターに設定されている Log Analytics コミットメント レベルを共有できます。 ワークスペースごとに個別の Log Analytics コミットメント レベルにコミットする必要がないと、コストを削減して効率化できます。 専用クラスターを有効にすると、1 日あたり 1 TB のインジェストの最小 Log Analytics コミットメント レベルにコミットすることになります。
-
-コストの最適化のために専用クラスターに移行する場合の、その他の考慮事項を次に示します。
-
-- リージョンおよびサブスクリプションごとのクラスターの最大数は 2 です。
-- クラスターにリンクされているすべてのワークスペースは、同じリージョンに存在する必要があります。
-- クラスターにリンクされるワークスペースの最大数は 1000 です。
-- クラスターからリンクされたワークスペースのリンクを解除することができます。 特定のワークスペースでのリンク操作の回数は、30 日間に 2 回に制限されます。
-- 既存のワークスペースをカスタマー マネージド キー (CMK) クラスターに移動することはできません。 クラスター内にワークスペースを作成する必要があります。
-- 別のリソース グループまたはサブスクリプションへのクラスターの移動は、現時点ではサポートされていません。
-- ワークスペースが別のクラスターにリンクされている場合、クラスターへのワークスペースのリンクは失敗します。
-
-専用クラスターの詳細については、「[Log Analytics 専用クラスター](../azure-monitor/logs/manage-cost-storage.md#log-analytics-dedicated-clusters)」を参照してください。
-
-#### <a name="separate-non-security-data-in-a-different-workspace"></a>セキュリティ以外のデータを別のワークスペースに分離する
-
-Azure Sentinel により、Azure Sentinel が有効な Log Analytics ワークスペースに取り込まれたすべてのデータが分析されます。 セキュリティ以外の運用データ用に別のワークスペースを用意し、Azure Sentinel のコストが発生しないようにするのが最善です。
-
-Azure Sentinel で脅威をハンティングまたは調査するときは、これらのスタンドアロン Azure Log Analytics ワークスペースに格納されている運用データにアクセスすることが必要な場合があります。 このデータには、ログ探索エクスペリエンスとブックでクロスワークスペース クエリを使用してアクセスできます。 ただし、すべてのワークスペースで Azure Sentinel が有効になっていない限り、クロスワークスペース間分析ルールとハンティング クエリは使用できません。
-
-#### <a name="reduce-long-term-data-retention-costs-with-adx"></a>ADX を使用して長期のデータ保持コストを削減する
-
-Azure Sentinel のデータ保持は、最初の 90 日間は無料です。 Log Analytics でデータ保持期間を調整するには、左側のナビゲーションで **[使用とコストの見積もり]** を選択してから、 **[データ保持]** を選択し、スライダーを調整します。
-
-Azure Sentinel のセキュリティ データは、数か月後にその一部の値が失われる可能性があります。 セキュリティ オペレーション センター (SOC) のユーザーは、古いデータには新しいデータほど頻繁にアクセスする必要がない場合がありますが、それでも散発的な調査や監査のためにデータにアクセスすることが必要になる場合があります。 Azure Sentinel データの保持コストを削減するには、低コストでの長期データ保持に Azure Data Explorer を使用できます。 Azure Sentinel のセキュリティ インテリジェンスを必要としない古いデータに対しては、ADX によってコストと使いやすさの適切なバランスが提供されます。
-
-ADX を使用すると、より低い価格でデータを格納できますが、引き続き Azure Sentinel と同じ Kusto クエリ言語 (KQL) のクエリを使用してデータを探索できます。 また、ADX のプロキシ機能を使用して、クロスプラットフォーム クエリを実行できます。 これらのクエリでは、ADX、Application Insights、Azure Sentinel、Log Analytics に分散されたデータが集計されて関連付けられます。
-
-詳細については、「[長期的なログ保持のために Azure Data Explorer を統合する](store-logs-in-azure-data-explorer.md)」を参照してください。
-
-#### <a name="use-data-collection-rules-for-your-windows-security-events"></a>Windows セキュリティ イベントにデータ収集ルールを使用する
-
-[Windows セキュリティ イベント コネクタ](connect-windows-security-events.md?tabs=LAA)を使用すると、Windows Server が実行されていて、Azure Sentinel ワークスペースに接続されている任意のコンピューター (物理サーバー、仮想サーバー、オンプレミス サーバー、任意のクラウド内など) から、セキュリティ イベントをストリーミングできます。 このコネクタによってサポートされている Azure Monitor エージェントでは、データ収集ルールを使用して、各エージェントから収集するデータが定義されています。 
-
-データ収集ルールにより、大規模な収集設定の管理が可能になる一方、コンピューターのサブセットの一意の範囲指定された構成も可能になります。 詳細については、「[Azure Monitor エージェント用のデータ収集の構成](../azure-monitor/agents/data-collection-rule-azure-monitor-agent.md)」を参照してください。
-
-すべてのイベント、最小、共通など、あらかじめ定義されているイベントのセットを選択して取り込むこともできますが、データ収集ルールを使用すると、カスタム フィルターを作成して、取り込む特定のイベントを選択することができます。 Azure Monitor エージェントにより、これらのルールを使用してソースのデータがフィルター処理されてから、選択したイベントだけが取り込まれ、その他はすべて残されます。 特定のイベントを選択して取り込むと、コストを最適化し、いっそう節約するのに役立ちます。
-
-> [!NOTE]
-> この画像で示されているコストは、例示だけを目的としたものです。 実際のコストを反映したものではありません。
-
-![Cost Management + Billing のコスト分析画面を示すスクリーンショット。](media/billing/cost-management.png)
-
-さらに、制御を適用することもできます。 たとえば、Azure Sentinel に関連するコストのみを表示するには、 **[フィルターの追加]** を選択し、 **[サービス名]** を選択して、サービス名として **sentinel**、**log analytics**、**azure monitor** を選択します。
+Azure Sentinel の料金は、Azure 前払いのクレジットで支払うことができます。 ただし、Azure 前払いクレジットを使用して、サードパーティ組織の製品やサービス、または Azure Marketplace の製品に対する請求を支払うすることはできません。
 
 ### <a name="run-queries-to-understand-your-data-ingestion"></a>クエリを実行して、データ インジェストを把握する
 
@@ -433,6 +360,13 @@ ADX を使用すると、より低い価格でデータを格納できますが�
 データ収集ルールにより、大規模な収集設定の管理が可能になる一方、コンピューターのサブセットの一意の範囲指定された構成も可能になります。 詳細については、「[Azure Monitor エージェント用のデータ収集の構成](../azure-monitor/agents/data-collection-rule-azure-monitor-agent.md)」を参照してください。
 
 すべてのイベント、最小、共通など、あらかじめ定義されているイベントのセットを選択して取り込むこともできますが、データ収集ルールを使用すると、カスタム フィルターを作成して、取り込む特定のイベントを選択することができます。 Azure Monitor エージェントにより、これらのルールを使用してソースのデータがフィルター処理されてから、選択したイベントだけが取り込まれ、その他はすべて残されます。 特定のイベントを選択して取り込むと、コストを最適化し、いっそう節約するのに役立ちます。
+
+> [!NOTE]
+> この画像で示されているコストは、例示だけを目的としたものです。 実際のコストを反映したものではありません。
+
+![Cost Management + Billing のコスト分析画面を示すスクリーンショット。](media/billing/cost-management.png)
+
+さらに、制御を適用することもできます。 たとえば、Azure Sentinel に関連するコストのみを表示するには、 **[フィルターの追加]** を選択し、 **[サービス名]** を選択して、サービス名として **sentinel**、**log analytics**、**azure monitor** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Cost Management を使用してクラウドへの投資を最適化する](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)方法について説明します。

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: fd7601ca87400314b9f282a0fe31035755def056
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 3c2e900090b3f3908318bfbc3f1ea1e6f2588dee
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033150"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431280"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -122,6 +122,8 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 **プロビジョニング済みのスループットを低くする** 場合は、[最低値](#current-provisioned-throughput)までそれを行うことができます。
 
 **プロビジョニング済みのスループットを高くする** 場合、多くは、その操作は瞬時に行われます。 ただし、必要なリソースをプロビジョニングするシステム タスクが原因で、操作により長い時間がかかる場合があります。 この場合、その操作の実行中にプロビジョニング済みのスループットを変更しようとすると、別のスケーリング操作が進行中であることを示すエラーメッセージを含む HTTP 423 応答が返されます。
+
+詳細については、[プロビジョニングされたスループット (RU/秒) のスケーリングに関するベスト プラクティス](scaling-provisioned-throughput-best-practices.md)に関する記事を参照してください。
 
 > [!NOTE]
 > プロビジョニング済みスループットの大幅な増大を必要とする非常に大きなインジェスト ワークロードを計画している場合、スケーリング操作には SLA がなく、前の段落で説明したように、増大度が大きいと長い時間がかかる可能性があることに注意してください。 事前に計画を立て、ワークロードが開始される前にスケーリングを開始し、以下の方法を使用して進行状況を確認することをお勧めします。

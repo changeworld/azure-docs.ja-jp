@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: f51f4b9a838a7a08259b280c4d9cd185b42e588b
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: dbf422beeea23cee975b5721c7becae95bf24b6c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112116980"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434623"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -585,9 +585,11 @@ DFS-N のデプロイがある場合、DFN 名前空間を新しいサーバー 
 
 移行が完了しました。
 
+---
+
 > [!NOTE]
 > まだ質問があるか、問題が発生していますか。</br>
-> その場合は、AzureFilesMigration@microsoft.com にご連絡ください。
+> その場合は、:::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-migration-email.png" alt-text="スペースなしの電子メールアドレス: Azure Files migration at microsoft dot com"::: にご連絡ください
 
 ## <a name="next-steps"></a>次の手順
 

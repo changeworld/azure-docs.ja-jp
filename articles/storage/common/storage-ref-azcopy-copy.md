@@ -4,16 +4,16 @@ description: この記事では、azcopy copy コマンドに関する参照情�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: faa9dab677c410e877601297ec72f451219da47c
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 09994e329072ab0ed67a9cb29c09ff245b288923
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968298"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432074"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -249,13 +249,13 @@ azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destacc
 azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
 ```
 
-サービス アカウント キーと SAS トークンを使用して、Google Cloud Storage から Blob Storage にすべてのバケットをコピーします。 最初に、GCS ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS と GOOGLE_CLOUD_PROJECT =<プロジェクト ID> を設定します。
+サービス アカウント キーと SAS トークンを使用して、Google Cloud Storage から Blob Storage にすべてのバケットをコピーします。 最初に、GCS ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS と GOOGLE_CLOUD_PROJECT=<`project-id`> を設定します
 
 ```azcopy
   - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
 ```
 
-Google Cloud Storage のバケット名にワイルドカード記号 (*) を指定し、サービス アカウント キーと宛先の SAS トークンを使用して、バケットのサブセットをコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS と GOOGLE_CLOUD_PROJECT =<プロジェクト ID> を設定します。
+Google Cloud Storage のバケット名にワイルドカード記号 (*) を指定し、サービス アカウント キーと宛先の SAS トークンを使用して、バケットのサブセットをコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS と GOOGLE_CLOUD_PROJECT=<`project-id`> を設定します。
  
 ```azcopy
 azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
@@ -287,7 +287,13 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--content-type** string ファイルのコンテンツの種類を指定します。 no-guess-mime-type を暗黙的に示します。 ダウンロード時に返されます。
 
+**--cpk-by-name** string                   この名前によるクライアント指定キーを含めると、Azure Blob Storage に対して要求を行うクライアントは、要求ごとに暗号化キーを指定できます。 指定されたキー名は Azure Key Vault からフェッチされ、データの暗号化に使用されます。
+
+**--cpk-by-value**                          この名前によるクライアント指定キーを含めると、Azure Blob Storage に対して要求を行うクライアントは、要求ごとに暗号化キーを指定できます。 指定されたキーとそのハッシュは環境変数からフェッチされます。
+
 **--decompress** content-encoding が、ファイルが圧縮されていることを示している場合、ダウンロードするときに自動的に圧縮解除します。 サポートされている content-encoding の値は `gzip` と `deflate` です。 ファイル拡張子 `.gz` / `.gzip`、または `.zz` は不要です。ある場合は削除されます。
+
+**--dry-run**                              このコマンドによってコピーされるファイルのパスを出力します。 このフラグによって、実際のファイルがコピーされることはありません。
 
 **--disable-auto-decoding**    既定では false で、Windows 上での無効な文字の自動デコードが有効になります。 `true` に設定すると自動デコードを無効にすることができます。
 
@@ -299,6 +305,8 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--exclude-pattern** string コピーするときにこれらのファイルを除外します。 このオプションでは、ワイルドカード文字 (*) がサポートされます。
 
+**--exclude-regex** string                 正規表現と一致するファイルのすべての相対パスを除外します。 正規表現が複数ある場合は ';' で区切ります。
+
 **--follow-symlinks** ローカル ファイル システムからアップロードするときにシンボリック リンクに従います。
 
 **--force-if-read-only** Windows または Azure Files 上の既存のファイルを上書きするときに、既存のファイルに読み取り専用属性が設定されている場合でも、上書きを強制的に実行します。
@@ -307,15 +315,19 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--help** copy のヘルプを表示します。
 
-**--include-after** string 指定した日付/時刻以降に変更されたファイルのみが含まれます。 値は、ISO8601 形式で指定する必要があります。 タイムゾーンが指定されていない場合、値は AzCopy を実行しているマシンのローカル タイムゾーンにあると見なされます。 たとえば、UTC 時刻の場合は `2020-08-19T15:04:00Z`、ローカル タイムゾーンが深夜 (00:00) の場合は `2020-08-19` になります。 AzCopy 10.5 と同様に、このフラグはフォルダーにではなくファイルにのみ適用されるため、このフラグを `--preserve-smb-info` または `--preserve-smb-permissions` と共に使用した場合、フォルダー プロパティはコピーされません。
+**--include-after** string 指定した日付/時刻以降に変更されたファイルのみが含まれます。 値は、ISO8601 形式で指定する必要があります。 タイムゾーンが指定されていない場合、値は AzCopy を実行しているマシンのローカル タイムゾーンにあると見なされます。 たとえば、UTC 時刻の場合は `2020-08-19T15:04:00Z`、ローカル タイムゾーンが深夜 (00:00) の場合は `2020-08-19` になります。 AzCopy 10.5 と同様に、このフラグはフォルダーにではなくファイルにのみ適用されるため、このフラグを `--preserve-smb-info` または `--preserve-permissions` と共に使用した場合、フォルダー プロパティはコピーされません。
 
- **--include-before** string  指定した日付/時刻以前に変更されたファイルのみが含まれます。 値は、ISO8601 形式で指定する必要があります。 タイムゾーンが指定されていない場合、値は AzCopy を実行しているマシンのローカル タイムゾーンにあると見なされます。 例: UTC 時刻の場合は `2020-08-19T15:04:00Z`、ローカル タイムゾーンが深夜 (00:00) の場合は `2020-08-19` になります。 AzCopy 10.7 以降、このフラグはフォルダーにではなくファイルにのみ適用されるため、このフラグを `--preserve-smb-info` または `--preserve-smb-permissions` と共に使用した場合、フォルダー プロパティはコピーされません。
+ **--include-before** string  指定した日付/時刻以前に変更されたファイルのみが含まれます。 値は、ISO8601 形式で指定する必要があります。 タイムゾーンが指定されていない場合、値は AzCopy を実行しているマシンのローカル タイムゾーンにあると見なされます。 例: UTC 時刻の場合は `2020-08-19T15:04:00Z`、ローカル タイムゾーンが深夜 (00:00) の場合は `2020-08-19` になります。 AzCopy 10.7 以降、このフラグはフォルダーにではなくファイルにのみ適用されるため、このフラグを `--preserve-smb-info` または `--preserve-permissions` と共に使用した場合、フォルダー プロパティはコピーされません。
 
 **--include-attributes** string (Windows のみ) 属性が属性一覧と一致するファイルを含めます。 次に例を示します。A;S;R
 
 **--include-path** string コピーするときにこれらのパスのみを含めます。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します (例: `myFolder;myFolder/subDirName/file.pdf`)。
 
+**--include-directory-stub**               既定では false で、ディレクトリ スタブを無視します。 ディレクトリ スタブは、メタデータ 'hdi_isfolder:true' を持つ BLOB です。 値を true に設定すると、転送中にディレクトリ スタブが保持されます。
+
 **--include-pattern** string コピーするときにこれらのファイルのみを含めます。 このオプションでは、ワイルドカード文字 (*) がサポートされます。 `;` を使用してファイルを区切ります。
+
+**--include-regex** string                 正規表現と一致するファイルの相対パスのみを含めます。 正規表現が複数ある場合は ';' で区切ります。
 
 **--list-of-versions** string  各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB を指している必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属している必要があるため、これを徹底します。 AzCopy は、指定されたバージョンをコピー先フォルダーにダウンロードします。 詳細については、「[前のバージョンの BLOB をダウンロードする](./storage-use-azcopy-v10.md#transfer-data)」を参照してください。
 
@@ -331,11 +343,12 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--preserve-last-modified-time** コピー先がファイル システムの場合にのみ使用できます。
 
-**--preserve-owner**  ダウンロードする際、および `--preserve-smb-permissions` を使用している場合にのみ影響があります。 true の場合 (既定)、「Owner and Group」ファイルはダウンロードで保持されます。 false に設定されている場合、`--preserve-smb-permissions` は引き続き ACL を保持しますが、「Owner and Group」は AzCopy を実行しているユーザーに基づいて作成されます (既定値は true)。
+**--preserve-owner**  ダウンロードする際、および `--preserve-permissions` を使用している場合にのみ影響があります。 true の場合 (既定)、「Owner and Group」ファイルはダウンロードで保持されます。 false に設定されている場合、`--preserve-permissions` は引き続き ACL を保持しますが、「Owner and Group」は AzCopy を実行しているユーザーに基づいて作成されます (既定値は true)。
 
-**--preserve-smb-info** string 既定で false になっています。 SMB 対応リソース (Windows と Azure Files) 間の SMB プロパティ情報 (最終書き込み時刻、作成時刻、属性ビット) を保持します。 Azure Files によってサポートされる属性ビットのみが転送され、それ以外は無視されます。 ファイルのみのフィルターが指定されている場合を除き、このフラグはファイルとフォルダーの両方に適用されます (例: include-pattern)。 フォルダーの場合は保持されない最終書き込み時刻を除き、フォルダーについて転送される情報はファイルの情報と同じです。
+**--preserve-smb-info**   既定では true です。 SMB 対応リソース (Windows と Azure Files) 間の SMB プロパティ情報 (最終書き込み時刻、作成時刻、属性ビット) を保持します。 Azure Files によってサポートされる属性ビットのみが転送され、それ以外は無視されます。 ファイルのみのフィルターが指定されている場合を除き、このフラグはファイルとフォルダーの両方に適用されます (例: include-pattern)。 フォルダーの場合は保持されない最終書き込み時刻を除き、フォルダーについて転送される情報はファイルの情報と同じです。
 
-**--preserve-smb-permissions** string 既定では false になっています。 認識されるリソース (Windows と Azure Files) 間で SMB ACL を保持します。 ダウンロードする場合は、`--backup` フラグを使用して、新しい所有者が AzCopy を実行しているユーザーにならないアクセス許可を復元する必要もあります。 ファイルのみのフィルターが指定されている場合を除き、このフラグはファイルとフォルダーの両方に適用されます (例: `include-pattern`)。
+**--preserve-permissions**                既定では false です。 対応リソース (Windows と Azure Files、または Data Lake Storage Gen 2 から Data Lake Storage Gen 2). 間の ALC を保持します。 階層型名前空間のあるアカウントの場合は、所有権変更およびアクセス許可変更のアクセス許可とともにコンテナーの SAS トークンまたは OAuth トークンが必要です。 ダウンロードする場合は、--backup フラグを使用して、新しい所有者が AzCopy を実行しているユーザーにならないアクセス許可を復元する必要もあります。 ファイルのみのフィルターが指定されているのでない限り、このフラグは両方のファイルとフォルダーに適用されます (例: include-pattern)。
+
 
 **--put-md5** 各ファイルの MD5 ハッシュを作成し、ハッシュを宛先 BLOB またはファイルの Content-MD5 プロパティとして保存します。 (既定では、ハッシュは作成されません)。アップロード時にのみ使用できます。
 
@@ -346,6 +359,8 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 **--s2s-handle-invalid-metadata** string   無効なメタデータ キーの処理方法を指定します。 使用できるオプションは ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid です。 既定値は `ExcludeIfInvalid` です。
 
 **--s2s-preserve-access-tier** サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](../blobs/storage-blob-storage-tiers.md)」を参照して、コピー先ストレージ アカウントでアクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier=false を使用してアクセス層のコピーをバイパスしてください。 既定値は `true` です。
+
+**--s2s-preserve-blob-tags**               Blob Storage 間でのサービス間の転送中にインデックス タグを保持します。
 
 **--s2s-preserve-properties** サービス間のコピー中にすべてのプロパティを保持します。 AWS S3 と Azure File の非単一ファイル ソースの場合、リスト操作はオブジェクトとファイルの完全なプロパティを返しません。 完全なプロパティを保持するために、AzCopy では、オブジェクトまたはファイルごとに 1 つの追加の要求を送信する必要があります。 (既定値は true)
 

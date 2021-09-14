@@ -3,14 +3,14 @@ title: アプリのバックアップ
 description: Azure App Service でアプリのバックアップを作成する方法を説明します。 手動またはスケジュールされたバックアップを実行します。 接続済データベースを含めることにより、バックアップをカスタマイズします。
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 09/02/2021
 ms.custom: seodec18
-ms.openlocfilehash: aed7e341cf190e6daac237b87f17254c5c65bbab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1bd37c1b3557a8106981377f9ed75c50a28c773
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723043"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433055"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 
@@ -45,12 +45,12 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 * バックアップと復元の機能を使用するには、**Standard**、**Premium**、**Isolated** のいずれかのレベルの App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md)に関するページを参照してください。 **Premium** レベルと **Isolated** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
 * バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
-* 最大 10 GB のアプリとデータベースのコンテンツをバックアップできます。 バックアップのサイズがこの制限を超えた場合、エラーが発生します。
-* TLS が有効になっている Azure Database for MySQL のバックアップはサポートされていません。 バックアップが構成されている場合、バックアップ エラーが発生します。
-* TLS が有効になっている Azure Database for PostgreSQL のバックアップはサポートされていません。 バックアップが構成されている場合、バックアップ エラーが発生します。
+* 最大 10 GB のアプリとデータベースのコンテンツをバックアップでき、そのうち最大 4 GB までをデータベースのバックアップとすることが可能です。 バックアップのサイズがこの制限を超えた場合、エラーが発生します。
+* [TLS が有効になっている Azure Database for MySQL](../mysql/concepts-ssl-connection-security.md) のバックアップはサポートされていません。 バックアップが構成されている場合、バックアップ エラーが発生します。
+* [TLS が有効になっている Azure Database for PostgreSQL](../postgresql/concepts-ssl-connection-security.md) のバックアップはサポートされていません。 バックアップが構成されている場合、バックアップ エラーが発生します。
 * アプリ内 MySQL データベースは、構成しなくても自動的にバックアップされます。 接続文字列を追加するなど、アプリ内 MySQL データベースを手動で設定すると、バックアップが正しく動作しない場合があります。
-* バックアップの保存先として、ファイアウォールが有効なストレージ アカウントを使用することは、サポートされていません。 バックアップが構成されている場合、バックアップ エラーが発生します。
-* 現在、プライベート エンドポイントを使用するように構成された Azure ストレージ アカウントで、バックアップおよびリストア機能を使用することはできません。
+* バックアップの保存先として、[ファイアウォールが有効なストレージ アカウント](../storage/common/storage-network-security.md)を使用することは、サポートされていません。 バックアップが構成されている場合、バックアップ エラーが発生します。
+* [プライベート エンドポイントが有効なストレージ アカウント](../storage/common/storage-private-endpoints.md)をバックアップと復元に使用することはサポートされていません。
 
 <a name="manualbackup"></a>
 

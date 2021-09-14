@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 07/25/2021
+ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 1dfca36c845e6491de250cd803de0f853fbd8011
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 0c2db657979bd2f464200bedfbb434c826c37da2
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675200"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536882"
 ---
 このカテゴリには **14 個** の推奨事項があります。
 
@@ -29,5 +29,5 @@ ms.locfileid: "114675200"
 |[インターネットに接続されていない仮想マシンをネットワーク セキュリティ グループで保護する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/a9341235-9389-42f0-a0bf-9bfb57960d44) |ネットワーク セキュリティ グループ (NSG) を使用してアクセスを制限することで、インターネットに接続されていない仮想マシンを潜在的な脅威から保護します。 NSG には、同じサブネット上にあるかどうかに関係なく、他のインスタンスから VM へのネットワーク トラフィックを許可または拒否するアクセス制御リスト (ACL) ルールの一覧が含まれています。<br>マシンのセキュリティを可能な限り維持するには、インターネットへの VM のアクセスを必ず制限し、サブネットで NSG を有効にする必要があります。<br />(関連ポリシー:[インターネットに接続されていない仮想マシンをネットワーク セキュリティ グループで保護する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fbb91dfba-c30d-4263-9add-9c2384e659a6)) |低 |
 |[ストレージ アカウントへの安全な転送を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1c5de8e1-f68d-6a17-e0d2-ec259c42768c) |安全な転送は、ストレージ アカウントに、セキュリティで保護された接続 (HTTPS) からの要求のみを受け入れるように強制するオプションです。 HTTPS を使用することにより、サーバーとサービス間の認証が確実に行われ、転送中のデータをネットワーク層の攻撃 (man-in-the-middle、傍受、セッション ハイジャックなど) から保護します。<br />(関連ポリシー:[ストレージ アカウントへの安全な転送を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f404c3081-a854-4457-ae30-26a93ef643f9)) |高 |
 |[サブネットはネットワーク セキュリティ グループに関連付けられている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/eade5b56-eefd-444f-95c8-23f29e5d93cb) |ネットワーク セキュリティ グループ (NSG) を使用してアクセスを制限することで、潜在的な脅威からサブネットを保護します。 NSG には、お使いのサブネットに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) ルールが含まれています。 NSG がサブネットに関連付けられている場合、ACL ルールはそのサブネット内のすべての VM インスタンスと統合サービスに適用されますが、サブネット内の内部トラフィックには適用されません。 同じサブネット内のリソースを相互にセキュリティで保護するには、リソースでも直接 NSG を有効にします。<br />(関連ポリシー:[サブネットはネットワーク セキュリティ グループに関連付けられている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe71308d3-144b-4262-b144-efdc3cc90517)) |低 |
-|[仮想ネットワークは、Azure Firewall によって保護する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/f67fb4ed-d481-44d7-91e5-efadf504f74a) |一部の仮想ネットワークがファイアウォールで保護されていません。 Azure Firewall を使用して、仮想ネットワークへのアクセスを制限し、潜在的な脅威を防ぎます。 Azure Firewall の詳細については、 <br> <a href="https://azure.microsoft.com/pricing/details/azure-firewall">ここ</a>をクリックしてください。<br />(関連ポリシー:[すべてのインターネット トラフィックはデプロイされた Azure Firewall を介してルーティングする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ffc5e4038-4584-4632-8c85-c0448d374b2c)) |低 |
+|[仮想ネットワークは、Azure Firewall によって保護する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/f67fb4ed-d481-44d7-91e5-efadf504f74a) |一部の仮想ネットワークがファイアウォールで保護されていません。 Azure Firewall を使用して、仮想ネットワークへのアクセスを制限し、潜在的な脅威を防ぎます。 Azure Firewall の詳細については、 <br> 「[Azure Firewall の価格](https://azure.microsoft.com/pricing/details/azure-firewall)」を参照してください<br />(関連ポリシー:[すべてのインターネット トラフィックはデプロイされた Azure Firewall を介してルーティングする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ffc5e4038-4584-4632-8c85-c0448d374b2c)) |低 |
 |||
