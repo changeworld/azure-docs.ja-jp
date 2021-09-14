@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0b76f98da4823341d5ec0f32c1d8f65a1c37fade
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1144cd0ccfe6857b88a29ea0f577d760f3addc6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739884"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431678"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスのスケーリング
 
@@ -42,13 +42,13 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
 
 ## <a name="scale-a-cache"></a>キャッシュのスケーリング
 
-キャッシュをスケーリングするには、[Azure portal](https://portal.azure.com) で [キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース]** メニューの **[スケール]** をクリックします。
+キャッシュをスケーリングするには、[Azure portal](https://portal.azure.com) で [キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、左側にある **[スケール]** を選択します。
 
-![スケール](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+:::image type="content" source="media/cache-how-to-scale/scale-a-cache.png" alt-text="リソース メニューの [スケール]":::
 
-左側の **[価格レベルを選択する]** から目的の価格レベルを選択し、 **[選択]** を選択します。
+右側にある価格レベルを選択し、 **[選択]** を選択します。
 
-:::image type="content" source="media/cache-how-to-scale/redis-cache-pricing-tier-blade.png" alt-text="Redis Cache 価格レベルのスクリーンショット":::
+:::image type="content" source="media/cache-how-to-scale/select-a-tier.png" alt-text="Azure Cache for Redis 階層":::
 
 別の価格レベルにスケーリングできますが、次のような制約があります。
 
@@ -59,9 +59,9 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
 - **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 まず、1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、次の操作で **Standard** から **Premium** にスケーリングします。
 - **C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。 ただし、同じ価格帯の他のサイズにスケールダウンすることはできます。 たとえば、C5 Standard から C1 Standard にスケールダウンできます。
 
-キャッシュを新しい価格レベルにスケーリングするときに、 **[Azure Cache for Redis]** で状態が左側に **[拡大中]** と表示されます。
+キャッシュを新しいレベルにスケーリングしている間、 **[Redis Cache のスケールを設定しています]** という通知が表示されます。
 
-:::image type="content" source="media/cache-how-to-scale/redis-cache-scaling.png" alt-text="Redis キャッシュのスケーリング":::
+:::image type="content" source="media/cache-how-to-scale/scaling-notification.png" alt-text="スケーリングの通知":::
 
 スケーリングが完了すると、状態が **[拡大中]** から **[実行中]** に変わります。
 
@@ -204,9 +204,3 @@ geo レプリケーションが構成されている場合は、キャッシュ�
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>スケーリングが完了したことをどのようにして確認できますか
 
 スケール処理の進捗は Azure Portal で確認できます。 スケーリングが完了すると、キャッシュの状態が **[実行中]** に変わります。
-
-<!-- IMAGES -->
-
-[redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
-
-[redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png

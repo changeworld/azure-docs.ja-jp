@@ -4,16 +4,15 @@ description: Data Factory を Azure Purview に接続する方法について説
 ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
-ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
-ms.date: 08/24/2021
-ms.openlocfilehash: e38c990622806e5e769626acb84377fc468a25a2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 09/02/2021
+ms.openlocfilehash: a3f88b7263f264f2ae69892839524207e08e768d
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966525"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452215"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory を Azure Purview に接続する (プレビュー)
 
@@ -41,6 +40,8 @@ Data Factory 作成 UI で接続を確立するには
 2. **[Azure サブスクリプションから]** または **[手動で入力]** を選択します。 **Azure サブスクリプションから**、自分がアクセスできるアカウントを選択できます。
 
 3. 接続すると、 **[Purview アカウント]** タブで Purview アカウントの名前を確認できます。
+
+Purview アカウントがファイアウォールによって保護されている場合は、Purview 用のマネージド プライベート エンドポイントを作成します。 Data Factory から[セキュリティで保護された Purview アカウントにアクセス](how-to-access-secured-purview-account.md)できるようにする方法の詳細を確認してください。 初期接続時にそれを行うことも、既存の接続を後で編集することもできます。
 
 Purview の接続情報は、次のようなデータ ファクトリ リソースに格納されます。 プログラムを使用して接続を確立するには、データ ファクトリを更新し、`purviewConfiguration` 設定を追加します。
 
@@ -70,7 +71,7 @@ Azure Purview に Data Factory を登録する方法については、「[Azure 
 
 - **2021 年 8 月 18 日以降** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
 
-    作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview ルート コレクションに対する **コレクション管理者** ロールがある場合、この操作は成功します。
+    作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview ルート コレクションに対する **コレクション管理者** ロールがあり、ネットワークから Purview アカウントにアクセスできる場合、この操作は成功します。
 
 - **2021 年 8 月 18 日より前** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview アカウントの Azure 組み込みの [**Purview データ キュレーター**](../role-based-access-control/built-in-roles.md#purview-data-curator) ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御 - 従来のアクセス許可](../purview/catalog-permissions.md#legacy-permission-guide)に関するページを参照してください。
 
@@ -94,4 +95,4 @@ Purview ロールの割り当て情報を読み取る権限があり、必要な
 
 [Purview を使用した ADF でのデータの検出と探索](how-to-discover-explore-purview-data.md)
 
-[Azure Purview Data Catalog の系列のユーザー ガイド](../purview/catalog-lineage-user-guide.md)
+[セキュリティで保護された Azure Purview アカウントにアクセスする](how-to-access-secured-purview-account.md)

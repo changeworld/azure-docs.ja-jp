@@ -1,25 +1,25 @@
 ---
-title: ZRS (プレビュー) マネージド ディスクをデプロイする
+title: ZRS マネージド ディスクをデプロイする
 description: ゾーン冗長ストレージ (ZRS) を使用するマネージド ディスクをデプロイする方法について説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 07/12/2021
+ms.date: 09/01/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 7afa1a5416651dc7e93ff354e63fefb259ea81b4
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 23629a5a15603697eb1feb6e964e63754fbed14c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113667295"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426736"
 ---
-# <a name="deploy-a-managed-disk-that-uses-zone-redundant-storage-preview"></a>ゾーン冗長ストレージ (プレビュー) を使用するマネージド ディスクをデプロイする
+# <a name="deploy-a-managed-disk-that-uses-zone-redundant-storage"></a>ゾーン冗長ストレージを使用するマネージド ディスクをデプロイする
 
-この記事では、冗長オプションとしてゾーン冗長ストレージ (ZRS) (プレビュー) を使用するディスクをデプロイする方法について説明します。 ZRS では、選択されたリージョンにある 3 つの Azure 可用性ゾーン間で Azure マネージド ディスクを同期的にレプリケートします。 各可用性ゾーンは、独立した電源、冷却装置、ネットワークを備えた独立した物理的な場所です。
+この記事では、冗長オプションとしてゾーン冗長ストレージ (ZRS) を使用するディスクをデプロイする方法について説明します。 ZRS では、選択されたリージョンにある 3 つの Azure 可用性ゾーン間で Azure マネージド ディスクを同期的にレプリケートします。 各可用性ゾーンは、独立した電源、冷却装置、ネットワークを備えた独立した物理的な場所です。
 
-ZRS の概念的な情報については、「[マネージド ディスクのゾーン冗長ストレージ (プレビュー)](disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview)」を参照してください。
+ZRS の概念的な情報については、「[マネージド ディスクのゾーン冗長ストレージ](disks-redundancy.md#zone-redundant-storage-for-managed-disks)」を参照してください
 
 ## <a name="limitations"></a>制限事項
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/5/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f60c2e03b666c51769473120097034830f599b4
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: fb7132e0a7b9dc59ac6b047d431acf0e740aba0a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "114462288"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430830"
 ---
 # <a name="use-data-box-to-migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-by-using-azure-file-sync"></a>Data Box を使用して Azure File Sync によってネットワーク接続ストレージ (NAS) からハイブリッド クラウド デプロイに移行する
 
@@ -218,6 +218,20 @@ Windows Server フォルダーに共有を作成し、必要に応じて、そ�
 これで、共通のルートまたはボリューム (フェーズ 1 からのマッピングによって異なります) への共有または共有のグループの移行は完了しました。
 
 これらの複数のコピーを並行して実行することができます。 一度に 1 つの Azure ファイル共有のスコープを処理することをお勧めします。
+
+## <a name="deprecated-option-offline-data-transfer"></a>非推奨のオプション: "オフライン データ転送"
+
+Azure File Sync エージェント バージョン 13 がリリースされる前、Data Box 統合は "オフライン データ転送" と呼ばれるプロセスを通して実現されました。 このプロセスは非推奨です。 これは、エージェント バージョン 13 で、この記事で説明されているはるかに簡単かつ高速な手順に置き換えられました。 非推奨の "オフライン データ転送" 機能を使用する必要があるとわかっている場合は、引き続きそうすることができます。 これは、具体的には、[以前の AFS PowerShell モジュール](https://www.powershellgallery.com/packages/Az.StorageSync/1.4.0)を使用することによって引き続き可能です。
+
+```powershell
+Install-Module Az.StorageSync -RequiredVersion 1.4.0
+Import-module Az.StorageSync -RequiredVersion 1.4.0
+# Verify the specific version is loaded:
+Get-module Az.StorageSync
+```
+その後、引き続き、同じ PowerShell モジュールを使用してサーバー エンドポイントを作成し、そのプロセスでステージング共有を指定できます。
+オフライン データ転送プロセスで進行中の移行がある場合、その移行は計画どおりに続行されるため、移行が完了したら、引き続きこの設定を無効にする必要があります。
+この非推奨のプロセスで新しい移行を開始する機能は、今後予定されているエージェント リリースで削除される予定です。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

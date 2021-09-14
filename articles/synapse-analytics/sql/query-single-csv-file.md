@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6744970ec7aadfc4a9cb967c479307b441f4fb1b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 71f7bde0dcae54916c9657b724290778bb01652b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453053"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430074"
 ---
 # <a name="query-csv-files"></a>CSV ファイルに対してクエリを実行する
 
@@ -336,6 +336,24 @@ WITH (
     --[population] bigint
 ) AS [r]
 ```
+
+## <a name="querying-appendable-files"></a>追加可能なファイルに対するクエリの実行
+
+クエリで使用されている CSV ファイルは、クエリの実行中に変更しないでください。 長時間実行されるクエリでは、SQL プールによって読み取りが再試行されたり、ファイルの一部が読み取られたり、ファイルが複数回読み取られたりする場合もあります。 ファイル コンテンツを変更すると、結果が不正確になる可能性があります。 したがって、クエリの実行中にファイルの変更時刻の変更が検出された場合、SQL プールのクエリは失敗します。
+
+場合によっては、継続的な追加が行われているファイルを読み取ることが必要になることがあります。 継続的な追加が行われているファイルが原因でクエリが失敗しないようにするために、`OPENROWSET` 関数で、`ROWSET_OPTIONS` の設定を使用して、不整合な可能性のある読み取りを無視することができます。
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2,
+    ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}') as rows
+```
+
+`ALLOW_INCONSISTENT_READS` 読み取りオプションを指定すると、クエリ ライフサイクルでのファイルの変更時刻のチェックが無効になり、ファイルから読み取り可能なものをすべて読み取ります。 追加可能なファイルでは、既存のコンテンツは更新されず、新しい行の追加のみが行われます。 そのため、更新可能なファイルと比較して、結果が不正確になる可能性が最小限に抑えられます。 このオプションを使用すると、頻繁に追加されるファイルを、エラーを処理せずに読み取ることができる可能性があります。 ほとんどのシナリオにおいて、SQL プールでは、クエリの実行中にファイルに追加される一部の行が単に無視されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 09/03/2021
 ms.author: duau
-ms.openlocfilehash: 977a0d3eb0081818c0afe4f544dd33169cea0e95
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: d21066563f3b3e2e27b5e1a2b2b96b520bd62311
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112370475"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542073"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure Front Door でのキャッシュ
 次のドキュメントは、キャッシュを有効にしたルーティング規則を使用して Front Door の動作を指定します。 Front Door は最新の Content Delivery Network (CDN) であり、動的サイト アクセラレーションおよび負荷分散に加えて、他の CDN と同様にキャッシュの動作もサポートされています。
@@ -121,11 +121,18 @@ Front Door でのキャッシュの消去では、大文字と小文字が区別
 - Content-Length
 - Transfer-Encoding
 
-## <a name="cache-duration"></a>Cache duration (キャッシュ期間)
+## <a name="cache-behavior-and-duration"></a>キャッシュの動作と期間
 
-キャッシュ期間は、Front Door デザイナーとルール エンジンの両方で構成できます。 Front Door デザイナーで設定されるキャッシュ期間は、最小キャッシュ期間です。 転送元のキャッシュ制御ヘッダーの TTL がオーバーライド値よりも大きい場合、このオーバーライドは機能しません。 
+キャッシュの動作と期間は、Front Door デザイナー ルーティング規則とルール エンジンの両方で構成できます。 ルール エンジンのキャッシュ構成は、常に Front Door デザイナー ルーティング規則の構成をオーバーライドします。
 
-ルール エンジンで設定されるキャッシュ期間が真のキャッシュ オーバーライドです。つまり、転送元の応答ヘッダーに関係なく、そのオーバーライド値が使用されます。
+* "*キャッシュ*" が **無効** になっている場合は、配信元の応答ディレクティブには関係なく、Front Door では応答のコンテンツをキャッシュしません。
+
+* "*キャッシュ*" が **有効** になっている場合、キャッシュの動作は、 *[キャッシュの既定の期間を使用する]* の値によって異なります。
+    * *[キャッシュの既定の期間を使用する]* が **[はい]** に設定されている場合、Front Door では常に、配信元の応答ヘッダー ディレクティブに従います。 配信元のディレクティブがない場合、Front Door では、1 日から 3 日までの任意の期間コンテンツをキャッシュします。
+    * *[キャッシュの既定の期間を使用する]* が **[いいえ]** に設定されている場合、Front Door では常に、"*キャッシュ期間*" (必須フィールド) でオーバーライドします。つまり、配信元の応答ディレクティブの値を無視して、そのキャッシュ期間コンテンツをキャッシュします。 
+
+> [!NOTE]
+> Front Door デザイナー ルーティング規則で設定される "*キャッシュ期間*" は **最小キャッシュ期間** です。 配信元のキャッシュ制御ヘッダーの TTL がオーバーライド値より大きい場合、このオーバーライドは機能しません。
 
 ## <a name="next-steps"></a>次のステップ
 

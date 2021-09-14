@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 63796f3e569849227dd4fa9c2396f3b052540586
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d266f059869bb0f25df10dcc4fad317d3d3da7c3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122177826"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426708"
 ---
 # <a name="comparison-matrix"></a>比較表
 
@@ -60,12 +60,12 @@ ms.locfileid: "122177826"
 | **証拠保全の一貫性のレポート**            | いいえ  | はい                        | いいえ  | はい                            |
 | **代替データ ストリームのサポート**    | いいえ  | はい                        | はい | いいえ                             |
 | **移行のスケジュール設定**              | いいえ  | はい                        | はい | はい                            |
-| **ACL の保持**                        | いいえ  | はい                        | はい | はい                            |
+| **ACL の保持**                        | はい  | はい                        | はい | はい                            |
 | **DACL のサポート**                          | はい | はい                        | はい | はい                            |
 | **SACL のサポート**                          | はい | はい                        | はい | いいえ                             |
 | **アクセス時刻の保持**                | はい | はい                        | はい | はい                            |
 | **変更時刻の保持**              | はい | はい                        | はい | はい                            |
-| **作成時刻の保持**              | いいえ  | はい                        | はい | はい                            |
+| **作成時刻の保持**              | はい  | はい                        | はい | はい                            |
 | **Azure Data Box のサポート**       | はい | はい                        | いいえ  | いいえ                             |
 | **スナップショットの移行**                | いいえ  | マニュアル                     | はい | いいえ                             |
 | **シンボリック リンクのサポート**                 | いいえ  | はい                        | いいえ  | はい                            |
@@ -101,6 +101,9 @@ ms.locfileid: "122177826"
 ### <a name="azure-file-sync"></a>Azure File Sync
 
 - 内部ハッシュ検証
+
+> [!TIP]
+> Azure File Sync は、いくつかの Azure ファイル共有のオンプレミス キャッシュおよび同期のための永続的なハイブリッド ソリューションであることが意図されています。 この機能では、ダウンタイムなしのクラウド移行が提供されます。 オンプレミスで Azure ファイル共有をキャッシュすることを予定していない場合、Azure File Sync は推奨される移行ツールではありません。 [Azure ファイル共有の移行の概要](../../../files/storage-files-migration-overview.md)またはこの記事に記載されているその他のパートナー ツールを参照してください。
 
 ### <a name="datadobi-dobimigrate"></a>Datadobi の DobiMigrate
 

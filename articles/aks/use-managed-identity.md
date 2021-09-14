@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でマネージド ID を使用す�
 services: container-service
 ms.topic: article
 ms.date: 05/12/2021
-ms.openlocfilehash: dbc02f8b65235a47fc523665ea6337774a6eb557
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d3d479730b88c80c627c3e6dad2ab8f80eb3aee6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122321983"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431732"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -83,6 +83,9 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 > [!NOTE]
 > 更新後、クラスターのコントロール プレーンとアドオン ポッドはマネージド ID を使用するように切り替わりますが、kubelet は agentpool がアップグレードされるまでサービス プリンシパルを使用し続けます。 ノードで `az aks nodepool upgrade --node-image-only` を実行して、マネージド ID への更新を完了します。 
+
+
+> クラスターが --attach-acr を使用して ACR からイメージをプルしていた場合は、そのクラスターをマネージド ID に更新した後、'az aks update --attach-acr <ACR Resource ID>' を再実行して、マネージド ID に使用される新しく作成された kubelet で ACR からプルするためのアクセス許可を取得できるようにする必要があります。 そうしないと、アップグレードの後に ACR からプルできなくなります。
 
 
 ## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>AKS クラスターに対してシステムで割り当てられたマネージド ID を取得して使用する

@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/01/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: a78408759492cdba97bca8b6e4b71411af192f9f
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 75f0f8bb61c14f826addca3df41a0c568c92b510
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224119"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429372"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
-コンテナーを使用すると、独自の環境で一部の Speech サービス API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Speech コンテナーをダウンロード、インストール、実行する方法について説明します。
+コンテナーを使用すると、独自の環境で "_一部の_" Speech サービス API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Speech コンテナーをダウンロード、インストール、実行する方法について説明します。
 
 Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方のために最適化された音声アプリケーション アーキテクチャを構築できます。 利用できるコンテナーはいくつかあり、クラウド ベースの Azure Speech Services と同じ[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)が使用されます。
+
+> [!IMPORTANT]
+> 2021 年 8 月 31 日に、標準の音声合成の音声とテキスト読み上げコンテナーを廃止しました。 代わりに、ニューラル テキスト読み上げコンテナーを使用するようにアプリケーションを移行することを検討してください。 アプリケーションの更新の詳細については、[次の手順](https://aka.ms/sttsretirement)に従ってください。
 
 | コンテナー | 特徴 | 最新 | リリースの状態 |
 |--|--|--|--|

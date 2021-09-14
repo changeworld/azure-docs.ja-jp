@@ -1,5 +1,5 @@
 ---
-title: USB ケーブルを使用して更新するための Azure Percept DK ソフトウェア リリース
+title: Azure Percept DK USB ケーブル更新プログラムのソフトウェア リリース
 description: Azure Percept DK の USB ケーブル更新パッケージの情報とダウンロード リンク
 author: EthanChangAED
 ms.author: amiyouss
@@ -7,14 +7,14 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 9b58aa438fa0cd05604967c2c1bcb728d9a560c6
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 49274ba0c43b2cc473470df61e22f16b8a83c022
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222751"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427104"
 ---
-# <a name="azure-percept-dk-software-releases-for-updating-over-usb"></a>USB を使用して更新するための Azure Percept DK ソフトウェア リリース
+# <a name="software-releases-for-usb-cable-updates"></a>USB ケーブル更新プログラムのソフトウェア リリース
 
 このページでは、すべての開発キットの OS およびファームウェアのイメージ リリースに関する情報とダウンロード リンクを提供します。 各バージョンの変更および修正の詳細については、リリース ノートを参照してください。
 
@@ -34,7 +34,7 @@ ms.locfileid: "123222751"
 
 ## <a name="full-list-of-releases"></a>リリースの完全なリスト
 
-|Release|ダウンロード リンク|メモ|
+|Release|ダウンロード リンク|Note|
 |---|---|:---:|
 |7 月のサービス リリース (2107)|[Azure-Percept-DK-1.0.20210729.0957-public_preview_1.0.zip](https://go.microsoft.com/fwlink/?linkid=2169086)||
 |6 月のサービス リリース (2106)|[Azure-Percept-DK-1.0.20210511.1825.zip](https://download.microsoft.com/download/e/0/1/e01b6f7e-04f7-45ee-8933-8514c2fdbe6a/Azure-Percept-DK-1.0.20210511.1825.zip)||

@@ -10,12 +10,12 @@ ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: d3684d3fcb79fca31f403294a640887fa8e33d92
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: be23b73558006fd9523953393a2bdfef5faef460
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504479"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476630"
 ---
 # <a name="soft-delete-for-containers"></a>コンテナーの論理的な削除
 
@@ -62,6 +62,17 @@ BLOB の論理的な削除は、BLOB データの包括的なデータ保護戦�
 
 > [!IMPORTANT]
 > コンテナーの論理的な削除では、ストレージ アカウントの削除からは保護されませんが、そのアカウント内のコンテナーの削除からは保護されます。 ストレージ アカウントを削除から保護するには、ストレージ アカウント リソースに対してロックを構成します。 Azure Resource Manager リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
+
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポート方法と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 

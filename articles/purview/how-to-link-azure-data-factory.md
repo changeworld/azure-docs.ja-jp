@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 08/25/2021
-ms.openlocfilehash: 31ac845591387ec0c7061945e3324cd5249d7b23
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 40b1652bec99844675e030cfd12ef8ff28a0f01f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037799"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435458"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -102,6 +102,10 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 ### <a name="execute-ssis-package-support"></a>SSIS パッケージの実行のサポート
 
 [サポートされるデータ ストア](how-to-lineage-sql-server-integration-services.md#supported-data-stores)を参照してください。
+
+## <a name="access-secured-azure-purview-account"></a>セキュリティで保護された Azure Purview アカウントにアクセスする
+      
+Purview アカウントがファイアウォールで保護されている場合、Purview プライベート エンドポイントを利用して、[セキュリティで保護されている Purview アカウントに Data Factory でアクセスする](../data-factory/how-to-access-secured-purview-account.md)方法について説明します。
 
 ## <a name="bring-data-factory-lineage-into-purview"></a>Data Factory の系列を Purview に取り込む
 

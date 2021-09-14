@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: ad79bbd166e12c24339e13f38b4e10ca9ea2b549
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: db6ee292a088d530ea858d75e6649684e03d92b6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966621"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540480"
 ---
 # <a name="build-a-react-app-to-add-users-to-a-face-service"></a>ユーザーを Face サービスに追加するための React アプリを作成する
 
@@ -65,14 +65,15 @@ ms.locfileid: "111966621"
 > [!div class="mx-imgBorder"]
 > ![アプリの同意ページ](./media/enrollment-app/1-consent-1.jpg)
 
-このサービスには、画像が顧客を追加したり顔認識を試みたりするのに十分な品質かどうかを判断するのに役立つ画像品質チェックが用意されています。 このアプリでは、デバイスのカメラからフレームにアクセスし、最高品質のフレームを選択して、検出された顔を Face API サービスに追加する方法を示します。 
-
 顔認識の問題の多くは、低品質の参照画像が原因で発生します。 モデルのパフォーマンスを低下させる要因として、次のようなものがあります。
 * 顔のサイズ (カメラから離れている顔)
 * 顔の向き (カメラに対して横を向いたり斜めになったりしている顔)
 * 露光が少ない画像やノイズが多すぎる画像など、よくない照明状態 (光量不足や逆光)
 * 帽子や縁の太い眼鏡のようなアクセサリなどのオクルージョン (部分的に隠れた顔や妨げられている顔)
 * ぼかし (写真撮影時に顔を急に動かした場合など)。 
+
+このサービスには、その画像が上記の要因に基づいて、顧客を追加したり、顔認識を試みたりするのに十分な品質であるかどうかの選択を行うために役立つ画像品質チェックが用意されています。 このアプリは、デバイスのカメラからフレームにアクセスして品質を検出し、ユーザーがより高品質の画像をキャプチャするために役立つユーザー インターフェイス メッセージを表示し、最高品質のフレームを選択して、検出された顔を Face API サービスに追加する方法を示します。 
+
 
 > [!div class="mx-imgBorder"]
 > ![アプリの画像キャプチャの指示ページ](./media/enrollment-app/4-instruction.jpg)

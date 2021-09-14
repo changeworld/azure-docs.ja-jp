@@ -1,15 +1,15 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 330c406ef1d45a3cd72ac7316ca3985d2a6cd647
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 9dfdd77d400dfa91ec26df23d323f8290dc97da0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309767"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536069"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -22,6 +22,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
   - サンプル クエリ: [Azure Advisor からコスト削減の概要を取得する](../samples/samples-by-category.md#get-cost-savings-summary-from-azure-advisor)
+  - サンプル クエリ: [最新リリース バージョンのエージェントを実行していない Arc 対応サーバーを一覧表示する](../samples/samples-by-category.md#list-arc-enabled-servers-not-running-latest-released-agent-version)
 - microsoft.advisor/recommendations/suppressions
 - microsoft.advisor/suppressions
 
@@ -59,6 +60,15 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
   - サンプル クエリ: [リソース ID 別の仮想マシンおよび関連する可用性状態の一覧](../samples/samples-by-category.md#list-of-virtual-machines-and-associated-availability-states-by-resource-ids)
   - サンプル クエリ: [可用性状態と電源状態別の仮想マシンの一覧と、そのリソース ID およびリソース グループ](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
   - サンプル クエリ: [リソース ID で使用できない仮想マシンの一覧](../samples/samples-by-category.md#list-of-virtual-machines-that-are-not-available-by-resource-ids)
+
+## <a name="iotsecurityresources"></a>iotsecurityresources
+
+- microsoft.iotsecurity/locations/devicegroups/alerts
+- microsoft.iotsecurity/locations/devicegroups/devices
+- microsoft.iotsecurity/locations/devicegroups/recommendations
+- microsoft.iotsecurity/onpremisesensors
+- microsoft.iotsecurity/sensors
+- microsoft.iotsecurity/sites
 
 ## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
 
@@ -315,6 +325,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.ContainerRegistry/registries/webhooks (コンテナー レジストリ Webhook)
 - microsoft.containerservice/containerservices
 - Microsoft.ContainerService/managedClusters (Kubernetes サービス)
+  - サンプル クエリ: [Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft.contoso/clusters
 - microsoft.contoso/employees
@@ -335,6 +346,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.DataFactory/factories (データ ファクトリ (V2))
 - Microsoft.DataLakeAnalytics/accounts (Data Lake Analytics)
 - Microsoft.DataLakeStore/accounts (Data Lake Storage Gen1)
+  - サンプル クエリ: [Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.datamigration/controllers
 - Microsoft.DataMigration/services (Azure Database Migration Service)
 - Microsoft.DataMigration/services/projects (Azure Database Migration プロジェクト)
@@ -434,6 +446,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.HybridCompute/machines (サーバー - Azure Arc)
   - サンプルクエリ: [ドメイン別の Arc 対応サーバーの数と割合を取得する](../samples/samples-by-category.md#get-count-and-percentage-of-arc-enabled-servers-by-domain)
   - サンプルクエリ: [Azure Arc 対応サーバーにインストールされているすべての拡張機能を一覧表示する](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
+  - サンプル クエリ: [最新リリース バージョンのエージェントを実行していない Arc 対応サーバーを一覧表示する](../samples/samples-by-category.md#list-arc-enabled-servers-not-running-latest-released-agent-version)
 - microsoft.hybridcompute/machines/extensions
   - サンプルクエリ: [Azure Arc 対応サーバーにインストールされているすべての拡張機能を一覧表示する](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - Microsoft.HybridCompute/privateLinkScopes (Azure Arc プライベート リンク スコープ)
@@ -478,6 +491,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.KeyVault/vaults (キー コンテナー)
   - サンプル クエリ: [Key Vault リソース数をカウントする](../samples/samples-by-category.md#count-key-vault-resources)
   - サンプル クエリ: [サブスクリプション名を含むキー コンテナー](../samples/samples-by-category.md#key-vaults-with-subscription-name)
+  - サンプル クエリ: [Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - Microsoft.Kubernetes/connectedClusters (Kubernetes - Azure Arc)
   - サンプル クエリ: [Azure Monitor 拡張機能がないすべての Azure Arc 対応 Kubernetes クラスターを一覧表示する](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension)
   - サンプル クエリ: [Azure Arc 対応 Kubernetes リソースをすべて一覧表示する](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-resources)
@@ -513,6 +527,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
 - Microsoft.ManagedIdentity/userAssignedIdentities (マネージド ID)
+  - サンプル クエリ: [Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.managednetwork/managednetworkgroups
 - microsoft.managednetwork/managednetworkpeeringpolicies
 - microsoft.managednetwork/managednetworks
@@ -717,6 +732,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Sql/managedInstances/databases (マネージド データベース)
 - Microsoft.Sql/servers (SQL サーバー)
 - Microsoft.Sql/servers/databases (SQL データベース)
+  - サンプル クエリ: [Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
   - サンプル クエリ: [SQL データベースとそのエラスティック プールを一覧表示する](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
 - Microsoft.Sql/servers/elasticpools (SQL エラスティック プール)
   - サンプル クエリ: [SQL データベースとそのエラスティック プールを一覧表示する](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
@@ -730,6 +746,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
   - サンプル クエリ: [リソース グループ上の特定の大文字と小文字が区別されないタグを含んだストレージ アカウントを検索する](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group)
   - サンプル クエリ: [リソース グループ上の特定の大文字と小文字が区別されたタグを含んだストレージ アカウントを検索する](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-sensitive-tag-on-the-resource-group)
   - サンプル クエリ: [特定のタグ値を持つすべてのストレージ アカウントを一覧表示する](../samples/samples-by-category.md#list-all-storage-accounts-with-specific-tag-value)
+  - サンプル クエリ: [Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.storagecache/amlfilesystems
 - Microsoft.StorageCache/caches (HPC キャッシュ)
 - Microsoft.StoragePool/diskPools (Disk プール)

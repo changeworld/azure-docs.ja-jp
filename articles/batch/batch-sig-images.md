@@ -4,12 +4,12 @@ description: カスタム イメージ プールは、Batch ワークロード�
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a9ff30f52ae19e3d6a7bc58ca81eabeb91d21146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab3affbfff9039689354763080abfb1dc5b15af2
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024066"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450235"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 
@@ -89,7 +89,7 @@ VM を作成するときは、次のガイドラインに従ってください�
 
 ### <a name="create-a-shared-image-gallery"></a>Shared Image Gallery を作成する
 
-マネージド イメージを正常に作成したら、Shared Image Gallery を作成して、カスタム イメージを使用できるようにする必要があります。 イメージ用に Shared Image Gallery を作成する方法については、「[Azure CLI を使用して共有イメージ ギャラリーを作成する](../virtual-machines/shared-images-cli.md)」または「[Azure portal を使用して共有イメージ ギャラリーを作成する](../virtual-machines/linux/shared-images-portal.md)」を参照してください。
+マネージド イメージを正常に作成したら、Shared Image Gallery を作成して、カスタム イメージを使用できるようにする必要があります。 イメージ用に Shared Image Gallery を作成する方法については、[共有イメージ ギャラリーの作成](../virtual-machines/create-gallery.md)に関するページを参照してください。
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Azure CLI を使用して共有イメージからプールを作成する
 

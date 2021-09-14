@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/16/2021
 ms.author: phanir
 ms.reviewer: jrasnick
-ms.openlocfilehash: 015128d986ab0e32a1377da8b91c319895264aa9
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: a13231ea890476e5fc52cf563c250ef0124f940b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310312"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539697"
 ---
 # <a name="move-an-azure-synapse-analytics-workspace-from-one-region-to-another"></a>一方のリージョンから他方に Azure Synapse Analytics ワークスペースを移動する
 
@@ -54,7 +54,7 @@ ms.locfileid: "123310312"
 1. ターゲット リージョンで新しいワークスペースをテストし、ソース リージョンのワークスペースを指している DNS エントリをすべて更新します。
 1. ソース ワークスペースにプライベート エンドポイント接続が作成されている場合は、ターゲット リージョン ワークスペースにも作成します。
 1. ソース リージョン内のワークスペースは、十分にテストし、すべての接続をターゲット リージョン ワークスペースにルーティングした後で削除できます。
-
+## <a name="prepare"></a>準備
 ## <a name="step-1-create-an-azure-synapse-workspace-in-a-target-region"></a>手順 1: ターゲット リージョンに Azure Synapse ワークスペースを作成する
 
 ここでは、Azure PowerShell、Azure CLI、Azure portal を使用して、Azure Synapse ワークスペースを作成します。 リソース グループを Azure Data Lake Storage Gen2 アカウントと共に作成します。このアカウントは、PowerShell スクリプトや CLI スクリプトの一部として、ワークスペースの既定のストレージに使用されます。 デプロイ プロセスを自動化する場合は、DevOps リリース パイプラインからこれらの PowerShell または CLI スクリプトを呼び出します。
@@ -289,7 +289,7 @@ New-AzSynapseSparkPool `
 az synapse spark pool create --name $sparkPoolName --workspace-name $workspaceName --resource-group $resourceGroupName `
 --spark-version $sparkVersion --node-count 3 --node-size small
 ```
-
+## <a name="move"></a>詳細ビュー
 ## <a name="step-4-restore-a-dedicated-sql-pool"></a>手順 4: 専用 SQL プールを復元する 
 
 ### <a name="restore-from-geo-redundant-backups"></a>geo 冗長バックアップからの復元
@@ -352,7 +352,7 @@ Select-Object Id,Command,JobStateInfo,PSBeginTime,PSEndTime,PSJobTypeName,Error 
 ```
 専用 SQL プールが復元されたら、Azure Synapse のすべての SQL ログインを作成します。 すべてのログインを作成する場合は、[ログインの作成](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true)に関するページの手順に従います。
 
-## <a name="step-5-create-a-serverless-sql-pool-spark-pool-and-objects"></a>手順 5: サーバーレス SQL プール、Spark プール、オブジェクトを作成する
+## <a name="step-5-create-a-serverless-sql-pool-spark-pool-database-and-objects"></a>手順 5: サーバーレス SQL プール、Spark プールのデータベース、オブジェクトを作成する
 
 サーバーレス SQL プールのデータベースおよび Spark プールをバックアップして復元することはできません。 考えられる対処法として、以下を実行できます。
 
@@ -484,8 +484,13 @@ az synapse role assignment create `
 
 ターゲット リージョンのワークスペースでソース リージョンのワークスペースからマネージド プライベート エンドポイントを再作成する場合は、「[データ ソースへのマネージド プライベート エンドポイントを作成する](security/how-to-create-managed-private-endpoints.md)」を参照してください。 
 
+## <a name="discard"></a>破棄
+ターゲット リージョンのワークスペースを破棄する場合は、ターゲット リージョンのワークスペースを削除します。 これを行うには、ポータルのダッシュボードでリソース グループを選択し、ワークスペースを選択して、リソース グループ ページの上部にある [削除] を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="clean-up"></a>クリーンアップ
+変更をコミットし、ワークスペースの移動を完了するには、ターゲット リージョンのワークスペースをテストした後、ソース リージョンのワークスペースを削除します。 これを行うには、ポータルのダッシュボードで、ソース リージョンのワークスペースがあるリソース グループを選択し、ワークスペースを選択して、リソース グループ ページの上部にある [削除] を選択します。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Synapse マネージド仮想ネットワーク](security/synapse-workspace-managed-vnet.md)の詳細を確認します。
 - [Azure Synapse マネージド プライベート エンドポイント](security/synapse-workspace-managed-private-endpoints.md)の詳細を確認します。

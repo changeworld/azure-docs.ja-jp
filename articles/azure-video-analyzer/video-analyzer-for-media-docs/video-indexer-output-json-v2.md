@@ -1,5 +1,5 @@
 ---
-title: v2 API によって生成された Azure Video Analyzer for Media (旧称 Video Indexer) 出力を調べる - Azure
+title: Azure Video Analyzer for Media (旧称 Video Indexer) からの v2 API 出力を調べる
 titleSuffix: Azure Video Analyzer for Media
 description: このトピックでは、v2 API によって生成された Azure Video Analyzer for Media (旧称 Video Indexer) 出力を調べます。
 services: azure-video-analyzer
@@ -9,12 +9,12 @@ ms.topic: article
 ms.subservice: azure-video-analyzer-media
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 11fcc36ec8ad6d5feb030d00be4fbf470237634f
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: b60eb67b734bfc6d180153e88144282a431f0f6f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115265"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431352"
 ---
 # <a name="examine-the-video-analyzer-for-media-output"></a>Video Analyzer for Media の出力を調べる
 
@@ -60,8 +60,8 @@ ms.locfileid: "112115265"
 |description|プレイリストの説明|
 |userName|プレイリストを作成したユーザーの名前|
 |created|プレイリストの作成時刻|
-|privacyMode|プレイリストのプライバシー モード (秘密/公開)|
-|state|プレイリストの状態 (アップロード完了、処理中、失敗、検疫済み)|
+|privacyMode|プレイリストのプライバシー モード (秘密/公開)。|
+|state|プレイリストの状態 (アップロード完了、処理中、処理済み、失敗、検疫済み)。|
 |isOwned|プレイリストが現在のユーザーによって作成されたかどうかを示します。|
 |isEditable|現在のユーザーにプレイリストを編集する権限があるかどうかを示します。|
 |isBase|プレイリストがベースのプレイリスト (ビデオ) か、他のビデオによって構成されたプレイリスト (派生) かどうかを示します。|
@@ -117,7 +117,7 @@ ms.locfileid: "112115265"
 |accountId|ビデオの VI アカウント ID|
 |id|ビデオの ID|
 |name|ビデオの名前
-|state|ビデオの状態 (アップロード完了、処理中、処理済み、失敗、検疫済み)|
+|state|ビデオの状態 (アップロード完了、処理中、処理済み、失敗、検疫済み)。|
 |processingProgress|処理中の進行状況 (20% など)|
 |failureCode|処理に失敗した場合の失敗コード ('UnsupportedFileType' など)|
 |failureMessage|処理に失敗した場合のエラー メッセージ|
@@ -166,7 +166,7 @@ ms.locfileid: "112115265"
 
 各分析情報 (たとえば、トランスクリプト行、顔、ブランドなど) には、一意の要素 (たとえば、face1、face2、face3 など) の一覧が含まれ、各要素には、独自のメタデータと、そのインスタンス (追加のオプション メタデータがある時間範囲) の一覧が含まれます。
 
-顔は ID、名前、サムネイル、その他のメタデータ、およびそのテンポラル インスタンスの一覧を持ちます (例:00:00:05 - 00:00:10、00:01:00 - 00:02:30、00:41:21 - 00:41:49)。各テンポラル インスタンスは、追加のメタデータを持つことができます。 顔の四角形の座標などです (20,230,60,60)。
+顔は ID、名前、サムネイル、その他のメタデータ、およびそのテンポラル インスタンスの一覧を持ちます (例:00:00:05 - 00:00:10、00:01:00 - 00:02:30、00:41:21 - 00:41:49)。各テンポラル インスタンスは、追加のメタデータを持つことができます。 たとえば、顔の四角形の座標 (20,230,60,60)。
 
 |Version|コードのバージョン|
 |---|---|
@@ -527,7 +527,7 @@ instances|このブロックの時間範囲の一覧|
 |id|ブランド ID|
 |name|ブランド名|
 |referenceId | ブランド Wikipedia の URL のサフィックス たとえば、"Target_Corporation" は [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) のサフィックスです。
-|referenceUrl | ブランドの Wikipedia の URL (ある場合) たとえば、[https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) です。
+|referenceUrl | そのブランドの Wikipedia の URL (存在する場合)。 たとえば、[https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) です。
 |description|ブランドの説明|
 |tags|このブランドに関連付けられていた定義済みタグの一覧|
 |confidence|Video Analyzer for Media ブランド検出機能の信頼度の値 (0 から 1)。|
@@ -855,7 +855,7 @@ Video Analyzer for Media は、トランスクリプトから主なトピック�
 |名前|説明|
 |---|---|
 |id|話者の ID。|
-|name|"Speaker # *<number>* " の形式の話者の名前。例えば、"Speaker #1" です。|
+|name|"Speaker # *\<number\>* " の形式の話者の名前。例えば、"Speaker #1" です。|
 |instances |この話者が出現した時間範囲の一覧。|
 
 ```json

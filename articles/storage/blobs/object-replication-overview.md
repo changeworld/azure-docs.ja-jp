@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dce411e6359a760f50dd4bbbbeba369e2a67f386
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 5a0ca85ff28e56e7e9a47df1e56861d5c6552b97
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254211"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468098"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -32,8 +32,6 @@ ms.locfileid: "123254211"
 
 オブジェクト レプリケーションを構成する方法については、「[オブジェクト レプリケーションの構成](object-replication-configure.md)」をご覧ください。
 
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
 ## <a name="prerequisites-for-object-replication"></a>オブジェクト レプリケーションの前提条件
 
 オブジェクト レプリケーションを使用するには、次の Azure Storage 機能が有効になっている必要もあります。
@@ -43,7 +41,10 @@ ms.locfileid: "123254211"
 
 変更フィードと BLOB バージョン管理を有効にすると、追加のコストが発生する場合があります。 詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
 
-オブジェクト レプリケーションは、汎用 v2 ストレージ アカウントでのみサポートされます。 ソース アカウントと宛先のアカウントの両方が汎用 v2 である必要があります。 オブジェクト レプリケーションは、ブロック BLOB のみをサポートします。追加 BLOB とページ BLOB はサポートされていません。
+オブジェクト レプリケーションは、汎用 v2 ストレージ アカウントおよび Premium ブロック BLOB アカウント (プレビュー) でサポートされています。 ソース アカウントと宛先アカウントは両方とも、汎用 v2 アカウントまたは Premium ブロック BLOB アカウントのいずれかでなければなりません。 オブジェクト レプリケーションは、ブロック BLOB のみをサポートします。追加 BLOB とページ BLOB はサポートされていません。
+
+> [!IMPORTANT]
+> Premium ブロック BLOB アカウントのオブジェクト レプリケーションは、現在 **プレビュー** の段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="how-object-replication-works"></a>オブジェクト レプリケーションのしくみ
 
@@ -54,9 +55,9 @@ ms.locfileid: "123254211"
 
 ### <a name="blob-versioning"></a>BLOB バージョン管理
 
-オブジェクトのレプリケーションでは、ソース アカウントと宛先アカウントの両方で BLOB のバージョン管理が有効になっている必要があります。 ソース アカウントのレプリケート対象 BLOB が変更されると、変更前の BLOB の状態を反映する新しいバージョンの BLOB がソース アカウントに作成されます。 ソース アカウントの現在のバージョン (つまりベース BLOB) には、最新の更新が反映されています。 更新された現在のバージョンと新しい以前のバージョンの両方が、宛先アカウントにレプリケートされます。 書き込み操作が BLOB のバージョンに与える影響の詳細については、「[書き込み操作でのバージョン管理](versioning-overview.md#versioning-on-write-operations)」を参照してください。
+オブジェクトのレプリケーションでは、ソース アカウントと宛先アカウントの両方で BLOB のバージョン管理が有効になっている必要があります。 ソース アカウントのレプリケート対象 BLOB が変更されると、変更前の BLOB の状態を反映する新しいバージョンの BLOB がソース アカウントに作成されます。 ソース アカウントの現在のバージョンには、最新の更新が反映されています。 現在のバージョンといずれかの以前のバージョンの両方が、宛先アカウントにレプリケートされます。 書き込み操作が BLOB のバージョンに与える影響の詳細については、「[書き込み操作でのバージョン管理](versioning-overview.md#versioning-on-write-operations)」を参照してください。
 
-ソース アカウントの BLOB が削除される場合、現在のバージョンの BLOB が以前のバージョンにキャプチャされ、その後削除されます。 以前のバージョンの BLOB はすべて、現在のバージョンが削除された後も保持されます。 この状態は、宛先アカウントにレプリケートされます。 削除操作が BLOB のバージョンに与える影響の詳細については、「[削除操作でのバージョン管理](versioning-overview.md#versioning-on-delete-operations)」を参照してください。
+ソース アカウントの BLOB が削除されると、現在のバージョンの BLOB が以前のバージョンになり、以前のバージョンはなくなります。 既存の以前のバージョンの BLOB はすべて保持されます。 この状態は、宛先アカウントにレプリケートされます。 削除操作が BLOB のバージョンに与える影響の詳細については、「[削除操作でのバージョン管理](versioning-overview.md#versioning-on-delete-operations)」を参照してください。
 
 ### <a name="snapshots"></a>スナップショット
 
@@ -82,11 +83,11 @@ Azure Blob Storage の不変性ポリシーには、時間ベースの保持ポ�
 
 ### <a name="replication-policies"></a>レプリケーション ポリシー
 
-オブジェクト レプリケーションを構成すると、Azure Storage リソース プロバイダー経由でソース アカウントと宛先アカウントの両方にレプリケーション ポリシーが作成されます。 レプリケーション ポリシーは、ポリシー ID で識別されます。 レプリケーションを実行するには、ソースと宛先のアカウントのポリシーに、同じポリシー ID が設定されている必要があります。
+オブジェクト レプリケーションを構成する際に、Azure Storage リソース プロバイダー経由で宛先アカウントにレプリケーション ポリシーを作成します。 レプリケーション ポリシーが作成されると、Azure Storage でポリシー ID が割り当てられます。 その後、このポリシー ID を使用して、そのレプリケーション ポリシーをソース アカウントに関連付ける必要があります。 レプリケーションを実行するには、ソース アカウントと宛先アカウントのポリシー ID が同じである必要があります。
 
 ソース アカウントは、宛先アカウントごとに 1 つのポリシーを使用して、2 つまでの宛先アカウントにレプリケートできます。 同様に、1 つのアカウントを 2 つまでのレプリケーション ポリシーの宛先アカウントにすることができます。
 
-ソース アカウントと宛先アカウントが同じリージョンに存在していても、異なるリージョンに存在していてもかまいません。 また、異なるサブスクリプションや異なる Azure Active Directory (Azure AD) テナントに存在していてもかまいません。 ソース アカウントと宛先アカウントのペアごとに作成できるレプリケーション ポリシーは、1 つのみです。
+ソース アカウントと宛先アカウントが同じリージョンに存在していても、異なるリージョンに存在していてもかまいません。 また、これらは同じサブスクリプションに存在していても、異なるサブスクリプションに存在していてもかまいません。 必要に応じて、ソース アカウントと宛先アカウントは異なる Azure Active Directory (Azure AD) テナントに存在することができます。 ソース アカウントと宛先アカウントのペアごとに作成できるレプリケーション ポリシーは、1 つのみです。
 
 ### <a name="replication-rules"></a>レプリケーション ルール
 
@@ -100,6 +101,81 @@ Azure Blob Storage の不変性ポリシーには、時間ベースの保持ポ�
 
 宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動できます。 アーカイブ層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
 
+## <a name="policy-definition-file"></a>ポリシー定義ファイル
+
+オブジェクト レプリケーション ポリシーは、JSON ファイルによって定義されます。 ポリシー定義ファイルは、既存のオブジェクト レプリケーション ポリシーから取得できます。 また、ポリシー定義ファイルをアップロードして、オブジェクト レプリケーション ポリシーを作成できます。
+
+### <a name="sample-policy-definition-file"></a>ポリシー定義ファイルの例
+
+次の例では、プレフィックス *b* が一致する 1 つのルールを使用して宛先アカウントにレプリケーション ポリシーを定義し、レプリケート対象の BLOB に最小作成時間を設定しています。 山かっこ内の値は、実際の値に置き換えてください。
+
+```json
+{
+  "properties": {
+    "policyId": "default",
+    "sourceAccount": "/subscriptions/<subscriptionId>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>",
+    "destinationAccount": "/subscriptions/<subscriptionId>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>",
+    "rules": [
+      {
+        "ruleId": "",
+        "sourceContainer": "<source-container>",
+        "destinationContainer": "<destination-container>",
+        "filters": {
+          "prefixMatch": [
+            "b"
+          ],
+          "minCreationTime": "2021-08-028T00:00:00Z"
+        }
+      }
+    ]
+  }
+}
+```
+
+### <a name="specify-full-resource-ids-for-the-source-and-destination-accounts"></a>ソース アカウントと宛先アカウントの完全なリソース ID を指定する
+
+ポリシー定義ファイルを作成するときは、前のセクションの例に示されているように、**sourceAccount** と **destinationAccount** のエントリに完全な Azure Resource Manager リソース ID を指定します。 ストレージ アカウントのリソース ID を見つける方法については、「[ストレージ アカウントのリソース ID を取得する](../common/storage-account-get-info.md#get-the-resource-id-for-a-storage-account)」を参照してください。
+
+完全なリソース ID は、次の形式になります。
+
+```http
+/subscriptions/<subscriptionId>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
+```
+
+ポリシー定義ファイルでは、以前はストレージ アカウントの完全なリソース ID ではなく、アカウント名のみが必要でした。 Azure Storage リソース プロバイダー REST API のバージョン 2021-02-01 での **AllowCrossTenantReplication** セキュリティ プロパティの導入により、レプリケーション ポリシーに参加しているストレージ アカウントのテナント間レプリケーションが禁止される場合に作成されるすべてのオブジェクト レプリケーション ポリシーに、完全なリソース ID を指定することが必要になりました。 Azure Storage は、ソース アカウントと宛先アカウントが同じテナント内に存在するかどうかを確認するために、完全なリソース ID を使用します。 テナント間レプリケーション ポリシーを禁止する方法の詳細については、「[Azure AD テナント間でのレプリケーションを防止する](#prevent-replication-across-azure-ad-tenants)」を参照してください。
+
+ストレージ アカウントのテナント間レプリケーションが許可されている場合は、アカウント名のみを指定することが依然としてサポートされていますが、ベストプラクティスとして、常に完全なリソース ID を指定することをお勧めします。 Azure Storage リソース プロバイダー REST API の以前のすべてのバージョンでは、オブジェクト レプリケーション ポリシーで完全なリソース ID のパスを使用することがサポートされています。
+
+次の表では、ストレージ アカウントのテナント間レプリケーションが許可または禁止されたシナリオで、レプリケーション ポリシーを作成するときに完全なリソース ID を指定した場合とアカウント名を指定した場合の動作が対比的に説明されています。
+
+| ポリシー定義のストレージ アカウント識別子 | テナント間レプリケーションが許可されている場合 | テナント間レプリケーションが禁止されている場合 |
+|--|--|--|
+| 完全なリソース ID | 同一テナントポリシーを作成できます。<br /><br /> テナント間ポリシーを作成できます。 | 同一テナントポリシーを作成できます。<br /><br /> テナント間ポリシーを作成できません。 |
+| アカウント名のみ | 同一テナントポリシーを作成できます。<br /><br /> テナント間ポリシーを作成できます。 | 同一テナント ポリシーもテナント間ポリシーも作成できません。 ソース アカウントと宛先アカウントが同じテナント内にあることが Azure Storage で確認できないため、エラーが発生します。 このエラーは、ポリシー定義ファイルの **sourceAccount** および **destinationAccount** のエントリに完全なリソース ID を指定する必要があることを示しています。 |
+
+### <a name="specify-the-policy-and-rule-ids"></a>ポリシーとルールの ID を指定する
+
+次の表は、各シナリオでポリシー定義ファイル内の **policyId** と **ruleId** のエントリに使用される値をまとめたものです。
+
+| ポリシー定義ファイルを作成する対象のアカウント | ポリシー ID をこの値に設定します | ルール ID をこの値に設定します |
+|-|-|-|
+| 宛先アカウント | 文字列の *既定値*。 Azure Storage によって自動的にポリシー ID 値が作成されます。 | 空の文字列。 Azure Storage によって自動的にルール ID 値が作成されます。 |
+| ソース アカウント | 宛先アカウントのポリシー定義ファイルをダウンロードしたときに返されるポリシー ID の値。 | 宛先アカウントのポリシー定義ファイルをダウンロードしたときに返されるルール ID の値。 |
+
+## <a name="prevent-replication-across-azure-ad-tenants"></a>Azure AD テナント間でのレプリケーションを防止する
+
+Azure Active Directory (Azure AD) テナントは、ID およびアクセス管理のための組織を表す Azure AD の専用インスタンスです。 すべての Azure サブスクリプションには、単一の Azure AD テナントとの信頼関係があります。 ストレージ アカウントなどのサブスクリプション内のすべてのリソースは、同じ Azure AD テナントに関連付けられています。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
+
+既定では、適切なアクセス許可を持つユーザーは、1 つの Azure AD テナントにあるソース ストレージ アカウントと、別のテナントにある宛先アカウントを使用して、オブジェクト レプリケーションを構成できます。 セキュリティ ポリシーで、オブジェクト レプリケーションを同じテナント内に存在するストレージ アカウントのみに制限する必要がある場合は、セキュリティ プロパティの **AllowCrossTenantReplication** プロパティ (プレビュー) を設定して、テナント間のレプリケーションを禁止することができます。 ストレージ アカウントのテナント間オブジェクト レプリケーションを禁止する場合は、ソースまたは宛先アカウントとしてそのストレージ アカウントで構成されている任意のオブジェクト レプリケーション ポリシーに対して、Azure Storage では、ソースと宛先の両方のアカウントが同じ Azure AD テナント内に存在する必要があります。  テナント間オブジェクト レプリケーションを禁止する方法の詳細については、「[Azure Active Directory テナント間でのオブジェクト レプリケーションを禁止する](object-replication-prevent-cross-tenant-policies.md)」を参照してください。
+
+ストレージ アカウントのテナント間オブジェクト レプリケーションを禁止するには、**AllowCrossTenantReplication** プロパティを *false* に設定します。 現在、ストレージ アカウントがテナント間オブジェクト レプリケーション ポリシーに含まれていない場合、**AllowCrossTenantReplication** プロパティを *false* に設定すると、今後、テナント間オブジェクト レプリケーション ポリシーでこのストレージ アカウントをソースまたは宛先として使用するよう構成することができなくなります。
+
+ストレージ アカウントが現在 1 つ以上のテナント間オブジェクト レプリケーション ポリシーに含まれている場合、**AllowCrossTenantReplication** プロパティを *false* に設定することはできません。 テナント間レプリケーションを禁止する前に、既存のテナント間ポリシーを削除する必要があります。
+
+既定では、**AllowCrossTenantReplication** プロパティはストレージ アカウントに対して設定されておらず、その値は *null* で、これは *true* に相当します。 ストレージ アカウントの **AllowCrossTenantReplication** プロパティの値が *null* または *true* の場合、許可されているユーザーは、このアカウントをソースまたは宛先としてテナント間オブジェクト レプリケーション ポリシーを構成できます。 テナント間ポリシーを構成する方法の詳細については、「[ブロック BLOB のオブジェクト レプリケーションを構成する](object-replication-configure.md)」を参照してください。
+
+Azure Policy を使用して、テナント間オブジェクト レプリケーションを防ぐように **AllowCrossTenantReplication** プロパティが設定されていることを確認するために一連のストレージ アカウントを監査することができます。 また、Azure Policy を使用して、一連のストレージ アカウントにガバナンスを適用することもできます。 たとえば、Deny 効果を持つポリシーを作成して、 **AllowCrossTenantReplication** プロパティが *true* に設定されている場合にユーザーがストレージ アカウントを作成することを防いだり、既存のストレージ アカウントを変更してプロパティ値を *true* に変更することを防いだりすることができます。
+
 ## <a name="replication-status"></a>レプリケーションの状態
 
 ソース アカウントの BLOB のレプリケーション状態を確認できます。 詳細については、「[BLOB のレプリケーションの状態を確認する](object-replication-configure.md#check-the-replication-status-of-a-blob)」を参照してください。
@@ -110,6 +186,17 @@ Azure Blob Storage の不変性ポリシーには、時間ベースの保持ポ�
 - 宛先コンテナーがまだ存在することを確認します。
 - 書き込み操作の一部としてカスタマー指定のキーでソース BLOB が暗号化されている場合、オブジェクトのレプリケーションは失敗します。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)」を参照してください。
 
+## <a name="feature-support"></a>機能サポート
+
+次の表は、アカウントでのこの機能のサポート方法と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
 ## <a name="billing"></a>課金
 
 オブジェクト レプリケーションでは、ソース アカウントと宛先アカウントに対する読み取りと書き込みトランザクションに追加コストが発生します。また、ソース アカウントから宛先アカウントへのデータのレプリケーションを行うためのエグレス料金と、変更フィードを処理するための読み取り料金も発生します。
@@ -117,5 +204,6 @@ Azure Blob Storage の不変性ポリシーには、時間ベースの保持ポ�
 ## <a name="next-steps"></a>次の手順
 
 - [オブジェクト レプリケーションの構成](object-replication-configure.md)
+- [Azure Active Directory テナント間でのオブジェクト レプリケーションを禁止する](object-replication-prevent-cross-tenant-policies.md)
+- [BLOB バージョン管理](versioning-overview.md)
 - [Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)
-- [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)

@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/02/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 39eb6c164751ebdfa293798850a8d663fe988b82
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 51e70fb16988c0f72cb9b1a35444f55e164839c9
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875685"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451801"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -73,7 +73,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
-
+    
     ジャーナル ファイルは、ツールを実行したフォルダーと同じフォルダーに作成されます。 *.xml* ファイル (ツールを実行するフォルダー) と *drive-manifest.xml* ファイル (データが保存されているフォルダー) の 2 つのファイルも作成されます。
 
     使用されるパラメーターについては、次の表で説明します。
@@ -89,11 +89,16 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     |/blobtype:     |このオプションは、データをインポートする BLOB の種類を指定します。 ブロック BLOB の場合、BLOB の種類は `BlockBlob` で、ページ BLOB の場合は `PageBlob` です。         |
     |/skipwrite:     | コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定します。          |
     |/enablecontentmd5:     |有効にすると、このオプションにより、MD5 が計算されて、各 BLOB で `Content-md5` プロパティとして設定されます。 このオプションは、データが Azure にアップロードされた後に、`Content-md5` フィールドを使用する場合にのみ使用してください。 <br> このオプションはデータ整合性チェック (既定で実行) には影響しません。 この設定により、クラウドにデータをアップロードするためにかかる時間が長くなります。          |
-8. 送付する必要があるディスクごとに前の手順を繰り返します。 コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。
 
-    > [!IMPORTANT]
-    > * ツールが存在するフォルダーと同じフォルダーに、ジャーナル ファイルと共に `<Journal file name>_DriveInfo_<Drive serial ID>.xml` ファイルも作成されます。 ジャーナル ファイルが大きすぎる場合、ジョブの作成時にジャーナル ファイルではなく .xml ファイルが使用されます。
-   > * ポータルで許可されるジャーナル ファイルの最大サイズは 2 MB です。 ジャーナル ファイルがこの制限を超えると、エラーが返されます。
+8. 送付する必要があるディスクごとに前の手順を繰り返します。 
+
+   コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。 
+
+   ツールが存在するフォルダーと同じフォルダーに、ジャーナル ファイルと共に `<Journal file name>_DriveInfo_<Drive serial ID>.xml` ファイルも作成されます。 ジャーナル ファイルが大きすぎる場合、ジョブの作成時にジャーナル ファイルではなく .xml ファイルが使用されます。
+
+> [!IMPORTANT]
+> * ディスクの準備が完了した後に、ディスク ドライブ上のデータやジャーナル ファイルに変更を加えたり、ディスクを再フォーマットしたりすることは避けてください。
+> * ポータルで許可されるジャーナル ファイルの最大サイズは 2 MB です。 ジャーナル ファイルがこの制限を超えると、エラーが返されます。
 
 ## <a name="step-2-create-an-import-job"></a>手順 2:インポート ジョブの作成
 

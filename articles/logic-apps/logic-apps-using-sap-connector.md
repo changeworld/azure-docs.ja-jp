@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
 ms.date: 08/31/2021
 tags: connectors
-ms.openlocfilehash: 0266e1fd000640aa4931dcc86f3c91a7ab7cc898
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 32f51d110f1ebb8d7b0a39a3183665c65d2b1367
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104789"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469556"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -66,7 +66,7 @@ ms.locfileid: "123104789"
 
   * このSAP トリガーの **IDOC Format** パラメーターを **FlatFile** に設定して [Flat File Decode action](logic-apps-enterprise-integration-flatfile.md) と一緒に使用する場合、フラット ファイル スキーマの `early_terminate_optional_fields` プロパティを `true` に設定する必要があります。
 
-    この要件が必要なのは、tRFC 呼び出し `IDOC_INBOUND_ASYNCHRONOUS` では、SAP によって送信されるフラット ファイル IDoc データ レコードが、SDATA フィールドの長さ全体にパディングされないためです。 Azure Logic Apps では、SAP から受信したままの、パディングされていないフラット ファイル IDOC の元のデータが提供されます。 また、この SAP トリガーをフラット ファイル デコード アクションと組み合わせる場合、アクションで提供されるスキーマと一致する必要があります。
+    この要件が必要なのは、tRFC 呼び出し `IDOC_INBOUND_ASYNCHRONOUS` では、SAP によって送信されるフラット ファイル IDoc データ レコードが、SDATA フィールドの長さ全体にパディングされないためです。 Azure Logic Apps では、SAP から受信したままの、パディングされていないフラット ファイル IDoc の元のデータが提供されます。 また、この SAP トリガーをフラット ファイル デコード アクションと組み合わせる場合、アクションで提供されるスキーマと一致する必要があります。
 
   > [!NOTE]
   > この SAP トリガーでは、Webhook サブスクリプションの更新と登録解除の両方に同じ URI の場所を使用します。 更新操作では HTTP `PATCH` メソッドを使用し、登録解除操作では HTTP `DELETE` メソッドを使用します。 この動作により、トリガーの履歴に更新操作が登録解除操作として表示される場合がありますが、トリガーでは HTTP メソッドとして `DELETE` ではなく `PATCH` を使用しているため、その操作は更新になります。
@@ -1649,7 +1649,7 @@ SAP テレメトリを Application insights に送信できるようにするに
 
    [![クエリを作成するための [ログ] ペインが開いている Application Insights が表示された Azure portal を示しているスクリーンショット。](./media/logic-apps-using-sap-connector/application-insights-query-panel.png)](./media/logic-apps-using-sap-connector/application-insights-query-panel.png#lightbox)
 
-1. **[ログ]** ペインでは、[Kusto クエリ言語 (KQL)](/data-explorer/kusto/concepts) を使用して、特定の要件に基づく[クエリ](/data-explorer/kusto/query)を作成できます。
+1. **[ログ]** ペインでは、[Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/concepts/) を使用して、特定の要件に基づく[クエリ](/azure/data-explorer/kusto/query/)を作成できます。
 
    次のクエリ例のようなクエリ パターンを使用できます。
 

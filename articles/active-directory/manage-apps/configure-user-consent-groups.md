@@ -8,20 +8,28 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1ce7254f92c4cc3d2a7dcf77885be88eda37099b
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: babc9da622fdca1365d5b963191775881ad992e8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567992"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431930"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 
 グループ所有者とチーム所有者は、アプリケーション (たとえば、サードパーティ ベンダーによって発行されたアプリケーション) が、グループに関連付けられている組織のデータにアクセスすることを承認できます。 たとえば、Microsoft Teams のチーム所有者は、アプリがチーム内のすべての Teams メッセージを読み取ること、またはグループのメンバーの基本プロファイルを一覧表示することを許可できます。 詳細については、「[Microsoft Teams でのリソース固有の同意](/microsoftteams/resource-specific-consent)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+このガイドのタスクを完了するには、次のものが必要です。
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- グローバル管理者ロール。
+- Azure AD PowerShell を設定します。 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/) に関するページを参照してください。
 
 ## <a name="manage-group-owner-consent-to-apps"></a>アプリに対するグループ所有者の同意を管理する
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 9686cce60520895fe4a3ae7fb47e1eb0eca03599
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 252f872dc14a1850f9b73e7769d4a439952b7da6
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112975302"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123485134"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -216,10 +216,10 @@ ms.locfileid: "112975302"
  
 1. 要求元に質問する内容 (表示文字列とも呼ばれます) を **[質問]** ボックスに質問として入力します。
 
-    ![アクセス パッケージ - ポリシー - 要求元情報設定を有効にする](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+    ![アクセス パッケージ - ポリシー - 要求元情報の有効化の設定](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
 
-1. 質問と回答のオプションをローカライズしたい場合は、 **[add localization]\(ローカリゼーションの追加\)** をクリックします。
-    1. **[質問のローカリゼーションの追加]** ペインで、質問をローカライズする言語の **[言語コード]** を選択します。
+1. 独自のローカライズ オプションを追加する場合は、 **[add localization]\(ローカリゼーションの追加\)** をクリックします。
+    1. **[Add localizations for question]\(質問のローカリゼーションの追加\)** ペインで、質問をローカライズする言語の **言語コード** を選択します。
     1. 構成した言語で、**Localized Text\(ローカライズされたテキスト)** ボックスに質問を入力します。
     1. 必要なすべてのローカライズを追加したら、 **[保存]** をクリックします。
 
@@ -230,15 +230,18 @@ ms.locfileid: "112975302"
     ![アクセス パッケージ - ポリシー - 複数選択の回答形式の表示と編集の選択](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  
 1. 複数選択を選択した場合は、 **[edit and localize]\(編集とローカライズ\)** ボタンをクリックして回答のオプションを構成します。
-    1. [edit and localize]\(編集とローカライズ\) を選択すると、 **[Edit/localize question]\(質問の編集とローカライズ\)** ペインが開きます。
+    1. [編集とローカライズ] を選択すると、 **[質問の表示/編集]** ペインが開きます。
     1. 質問の回答時に要求元に指定する回答のオプションを、 **[Answer values]\(回答の値\)** ボックスに入力します。
-    1. 必要な数の回答を入力します。
-    1. 複数選択オプション用に独自のローカリゼーションを追加したい場合は、特定のオプションに使用するローカライズ言語の **[Optional language code]\(オプションの言語コード\)** を選択します。
-    1. 構成した言語で、[ローカライズされたテキスト] ボックスにオプションを入力します。
-    1. 複数選択の各オプションに必要なローカリゼーションをすべて追加したら、 **[保存]** をクリックします。
+    1. 応答オプションのための言語を選択します。 追加の言語を選択した場合は、応答オプションをローカライズできます。
+    1. 必要な数の回答を入力し、 **[保存]** をクリックします。
     
     ![アクセス パッケージ - ポリシー - 複数選択オプションの入力](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
   
-1. アクセス パッケージへのアクセスの要求時に要求元にこの質問への回答を要求するには、 **[Required]\(必須\)** の下にあるチェック ボックスをオンにします。
+1. アクセス パッケージへのアクセスの要求時に要求元にこの質問への回答を要求するには、 **[必須]** の下にあるチェック ボックスをオンにします。
 
-1. [Next]\(次へ\) をクリックします
+1. **[属性 (プレビュー)]** サブタブをクリックして、アクセス パッケージに追加されたリソースに関連付けられている属性を表示します。
+
+    > [!NOTE]
+    > アクセス パッケージのリソースの属性を追加または更新するには、 **[カタログ]** に移動し、そのアクセス パッケージに関連付けられているカタログを見つけます。 特定のカタログ リソースの属性の一覧や前提条件となるロールを編集する方法の詳細については、「[カタログにリソース属性 (プレビュー) を追加する](../articles/active-directory/governance/entitlement-management-catalog-create.md#add-resource-attributes-preview-in-the-catalog)」を参照してください。 
+
+1. **[次へ]** をクリックします。

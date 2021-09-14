@@ -4,16 +4,16 @@ description: この記事では、azcopy list コマンドに関する参照情�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 09/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ca436ee440ad7c1dd2caee3a65790f8b630fd949
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 31bbabd194b2b2ef06266feb39b4d9618bbc0794
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503288"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435818"
 ---
 # <a name="azcopy-list"></a>azcopy list
 
@@ -46,6 +46,7 @@ azcopy list [containerURL]
 |-h, --help|list コマンドのヘルプ コンテンツを表示します。|
 |--machine-readable|ファイル サイズをバイト単位で一覧表示します。|
 |--mega-units|単位を 1000 の桁で表示します (1024 ではない)。|
+| --properties |   一覧の出力で必要なプロパティの区切り記号 (;) で区切られた値。 |
 |--running-tally|ファイルの合計数とそのサイズをカウントします。|
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション

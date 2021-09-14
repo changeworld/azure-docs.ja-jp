@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: a5032ce26fcce2dbee2a95385292c5b455904586
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: 8044df075fc5c5666bd30af3b7a01ee7e28c958d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749899"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537547"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 
@@ -125,6 +125,16 @@ ms.locfileid: "121749899"
   - データ移動アクティビティ = $0.166 (日割りの実行時間の 10 分間です。 $0.25/時間、 Azure 統合ランタイム)
   - パイプラインアクティビティ = $0.00003 （日割りの実行時間の1分間です。 $0.002/時間、 Azure 統合ランタイム)
   - 外部パイプラインアクティビティ = $0.000041 （日割の実行時間の10分間です。 $0.00025/時間、 Azure 統合ランタイム)
+
+## <a name="run-ssis-packages-on-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムで SSIS パッケージを実行する
+
+Azure-SSIS 統合ランタイム (IR) は、Azure Data Factory (ADF) で SSIS パッケージを実行するための Azure 仮想マシン (VM) の特殊なクラスターです。 これは、プロビジョニングされると、そのユーザー専用になります。そのため、これを使用して SSIS パッケージを実行するかどうかにかかわらず、実行し続ける限り、他のすべての専用の Azure VM と同様に課金されます。 その実行コストについては、ADF ポータルのセットアップ ペインに時間単位の見積もりが表示されます。たとえば、次のようになります。  
+
+![SSIS の価格の例](media/pricing-concepts/ssis-pricing-example.png)
+
+上の例では、Azure-SSIS IR を 2 時間実行し続けると、**2 (時間) x 1.158 米ドル/時 = 2.316 米ドル** が課金されます。
+
+Azure-SSIS IR の実行コストを管理するには、VM サイズをスケールダウンしたり、クラスター サイズをスケールインしたり、大幅な節約をもたらす Azure ハイブリッド特典 (AHB) オプションを使用して独自の SQL Server ライセンスを取得したりする ([Azure-SSIS IR の価格](https://azure.microsoft.com/pricing/details/data-factory/ssis/)に関するページを参照) か、または SSIS ワークロードを処理するために必要に応じていつでも、オンデマンドで、またはジャストインタイムに Azure-SSIS IR を起動および停止する ([Azure-SSIS IR の再構成](manage-azure-ssis-integration-runtime.md#to-reconfigure-an-azure-ssis-ir)および [Azure-SSIS IR のスケジュール設定](how-to-schedule-azure-ssis-integration-runtime.md)に関するページを参照) ことができます。
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>通常の平日にマッピング データ フロー デバッグを使用する
 

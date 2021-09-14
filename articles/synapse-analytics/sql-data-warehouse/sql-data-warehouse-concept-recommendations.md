@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b418b46199c524ca92d60dece6031073938e159b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e747c6ab94f76411cf727bc46637798e903772b6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568422"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537690"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールの Azure Advisor レコメンデーション
 
@@ -73,4 +73,4 @@ Tempdb の競合が高い場合、クエリのパフォーマンスが低下す�
 
 ## <a name="data-loading-misconfiguration"></a>データ読み込みの構成の誤り
 
-待機時間を最小限に抑えるには、専用 SQL プールと同じリージョン内にあるストレージ アカウントから常にデータを読み込む必要があります。 [高スループットのデータ インジェストに関する COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用し、ストレージ アカウント内にあるステージング済みファイルを分割してスループットを最大化します。 COPY ステートメントを使用できない場合は、スループットを向上させるために、バッチ サイズが大きい SqlBulkCopy API または bcp を使用できます。 データ読み込みに関するその他のガイダンスについては、次の[ドキュメント](./guidance-for-loading-data.md)を参照してください。
+待機時間を最小限に抑えるには、専用 SQL プールと同じリージョン内にあるストレージ アカウントから常にデータを読み込む必要があります。 [高スループットのデータ インジェストに関する COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用し、ストレージ アカウント内にあるステージング済みファイルを分割してスループットを最大化します。 COPY ステートメントを使用できない場合は、スループットを向上させるために、バッチ サイズが大きい SqlBulkCopy API または bcp を使用できます。 その他のデータ読み込みのガイダンスについては、[データ読み込みのベスト プラクティス](../sql/data-loading-best-practices.md)に関するページを参照してください。

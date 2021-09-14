@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor ログのデータ セキュリティ | Microsoft Docs
-description: Azure Monitor ログでプライバシーを保護し、お使いのデータをセキュリティで保護する方法について説明します。
+description: Azure Monitor ログでプライバシーを保護し、データをセキュリティで保護する方法について説明します。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: c6b4f6b9ce5486efcba4a7cb291a1720e25adf62
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 00f083dd5b8ed056f31d268017e56a571fb3b913
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178012"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434270"
 ---
 # <a name="azure-monitor-logs-data-security"></a>Azure Monitor ログのデータ セキュリティ
 このドキュメントは、[Azure トラスト センター](https://www.microsoft.com/en-us/trust-center?rtc=1)に関する情報を補完する [Azure Monitor ログ](../logs/data-platform-logs.md)固有の情報を提供することを目的としています。  

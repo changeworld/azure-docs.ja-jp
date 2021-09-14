@@ -11,14 +11,14 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 08139501886f580033aae46bdabd55ed300c5059
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: bf579687f728739eb3f597bd3d02a8190d8c88b4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114710018"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435944"
 ---
-# <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>事前構築済み Docker イメージの Python パッケージ拡張 (プレビュー)
+# <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>事前構築済みの Docker イメージ用の Python パッケージの機能拡張 (プレビュー)
 
 [モデル推論用に事前構築済みの Docker イメージ](concept-prebuilt-docker-images-inference.md)には、一般的な機械学習フレームワーク向けのパッケージが含まれています。 Python パッケージは、次の 2 とおりの方法で、"__Docker イメージを再構築することなく__" 追加できます。
 

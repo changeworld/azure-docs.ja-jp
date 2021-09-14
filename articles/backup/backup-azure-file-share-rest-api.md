@@ -3,12 +3,12 @@ title: REST API を使用して Azure ファイル共有をバックアップす
 description: REST API を使用して、Azure ファイル共有を Recovery Services コンテナーでバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 6a305200feac635c03caa2477a08267c150219b9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 152613031eb6c3ba7a0c1078d3d53bcf170ce646
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471407"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424170"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API で Azure Backup を使用して Azure ファイル共有をバックアップする
 
@@ -89,7 +89,7 @@ cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01’
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/operationResults/cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01
 ```
 
-すべての Azure ストレージ アカウントが検出されると、GET コマンドでは 200 (No Content) 応答が返されます。 コンテナーは、サブスクリプション内でバックアップできるファイル共有を持つ任意のストレージ アカウントを検出できる状態になりました。
+すべての Azure ストレージ アカウントが検出されると、GET コマンドでは 204 (No Content) 応答が返されます。 コンテナーは、サブスクリプション内でバックアップできるファイル共有を持つ任意のストレージ アカウントを検出できる状態になりました。
 
 ```http
 HTTP/1.1 200 NoContent
@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-| 名前       | 型                       | 説明                       |
+| 名前       | 種類                       | 説明                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Properties | AzurefilesharebackupReques | BackupRequestResource プロパティ |
 

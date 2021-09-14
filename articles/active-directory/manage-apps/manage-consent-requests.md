@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/27/2019
+ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 7893a73650e90411aa45f35d014b394eab0ad67d
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: a6bf1ec1616d45edd08b943b55f2859d7942c908
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568516"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425851"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
 
-Microsoft では、[ユーザーの同意を制限](../../active-directory/manage-apps/configure-user-consent.md)して、検証された発行元からのアプリに対してのみユーザーに同意を許可すること、および選択したアクセス許可のみを許可することをお勧めします。 このポリシーを満たしていないアプリの場合、組織のセキュリティ チームと ID 管理者チームに意思決定プロセスが一元化されます。
+Microsoft では、ユーザーが検証された発行元からのアプリと選択したアクセス許可に対してのみ同意できるように、[ユーザーの同意を制限する](../../active-directory/manage-apps/configure-user-consent.md)ことをお勧めします。 このポリシーを満たしていないアプリの場合、組織のセキュリティ チームと ID 管理者チームに意思決定プロセスが一元化されます。
 
 エンドユーザーの同意が無効または制限された後でも、ビジネス クリティカルなアプリケーションの使用を許可しながら、組織のセキュリティを確保するための重要な考慮事項がいくつかあります。 これらの手順は、サードパーティ製のアプリケーションにおける管理されていないアカウントの使用を制限しながら、組織のサポート チームと IT 管理者への影響を最小限に抑えるために不可欠です。
 
@@ -109,16 +109,16 @@ Microsoft では、[ユーザーの同意を制限](../../active-directory/manag
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>すべてのアプリケーションに対して今後のユーザーの同意操作をすべて無効にする
 
-ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、同意する理由または同意しない理由の詳細については、「[ユーザーおよび管理者の同意について](../develop/howto-convert-app-to-be-multi-tenant.md)」をご覧ください。
+ディレクトリ全体に対するユーザーの同意を無効にすると、エンド ユーザーは、どのアプリケーションにも同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、同意する理由または同意しない理由の詳細については、「[ユーザーおよび管理者の同意について](../develop/howto-convert-app-to-be-multi-tenant.md)」をご覧ください。
 
 ディレクトリ全体で今後のユーザーの同意動作をすべて無効にするには、次の手順に従います。
 
 1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者** としてサインインします。
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
-4. ナビゲーション メニューで **[ユーザーとグループ]** を選択します。
-5. **[ユーザー設定]** を選択します。
-6. **[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** トグルを **[いいえ]** に設定し、 **[保存]** をクリックして、今後のすべてのユーザーの同意操作を無効にします。
+4. **[エンタープライズ アプリケーション]** を選択し、 **[管理]** セクションの **[ユーザー設定]** を選択します。
+:::image type="content" source="media/manage-consent-requests/disable-user-consent-operations.png" alt-text="すべてのアプリに対するユーザーの同意操作の無効化。":::
+5. **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** トグルを **[いいえ]** に設定することによって将来のすべてのユーザーの同意操作を無効にし、 **[保存]** ボタンをクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,16 +4,16 @@ description: オファーの [Microsoft と共同販売する] タブで指定�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: palanis-MSFT
-ms.author: palanis
+author: sharath-satish-msft
+ms.author: shsatish
 ms.reviewer: stmummer
-ms.date: 07/13/2021
-ms.openlocfilehash: d010d079aaeded441fa7b846435cdaef0dfedd74
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.date: 09/03/2021
+ms.openlocfilehash: 39212b2e9ef5456ecc4f1343cc51fd83064a8840
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389120"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535655"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーの共同販売を構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "114389120"
 - Azure Container
 - Azure Virtual Machine
 - コンサルティング サービス
-- Dynamics 365 for Customer Engagement および PowerApps
+- Dynamics 365 for Customer Engagement & Power Apps
 - Dynamics 365 for Operations
 - Dynamics 365 Business Central
 - IoT Edge モジュール
@@ -79,11 +79,11 @@ ms.locfileid: "114389120"
 
 ### <a name="select-solution-areas"></a>ソリューション分野を選択する
 
-ソリューション分野は、ソリューションを詳しく定義するのに役立ちます。 これは、Microsoft のセールス チームがソリューションの価値提案を見つけて理解するために役立ちます。 オファーのソリューション分野を少なくとも 1 つ、最大 3 つ選択する必要があります。 ソリューション分野ごとに、最大 2 つのソリューションのサブ分野をさらに選択できます。
+ソリューション分野は、ソリューションを詳しく定義するのに役立ちます。 これは、Microsoft のセールス チームがソリューションの価値提案を見つけて理解するために役立ちます。 オファーのソリューション分野を少なくとも 1 つ、かつ最大 5 つまで選択する必要があります。 ソリューション分野ごとに、さらに最大 5 つのソリューション サブ分野を選択できます。
 
-1. **[+ Add solution area (3 Max)]\(+ ソリューション分野を追加 (最大 3 つ)\)** リンクを選択します。
+1. **[+ ソリューション分野を追加 (最大 5 つ)]** リンクを選択します。
 1. 表示されたドロップダウン リストからソリューション分野を選択します。
-1. ソリューションのサブ分野を少なくとも 1 つ、最大 2 つ選択します。 複数のサブ分野を選択するには、`Ctrl` キー (Windows の場合) または `Command` キー (macOS の場合) を使用します。
+1. ソリューション サブ分野を少なくとも 1 つ、かつ最大 5 つ選択します。 複数のサブ分野を選択するには、`Ctrl` キー (Windows の場合) または `Command` キー (macOS の場合) を使用します。
 1. 別のソリューション分野を追加するには、手順 1 ～ 3 を繰り返します。
 
 ## <a name="upload-documents"></a>ドキュメントのアップロード

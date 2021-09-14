@@ -11,12 +11,12 @@ ms.date: 05/11/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: ドキュメントの処理
-ms.openlocfilehash: decd5b23f0b88e078cee47a833cc913d5cb095b4
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d463a45064a9f6b342a7cb735372a3c5098539c4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326359"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431750"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -201,12 +201,16 @@ v2.1 では、トレーニング ドキュメントに値が入力されてい�
 
 * `number`
   * 既定値、`currency`
+  * 浮動小数点値として書式設定されます。 
+  * 例: ドキュメント上の 1234.98 は、出力では 1234.98 に書式設定されます。
 
 * `date`
   * 既定値、`dmy`、`mdy`、`ymd`
 
 * `time`
 * `integer`
+  * 整数値として書式設定されます。 
+  * 例: ドキュメント上の 1234.98 は、出力では 123498 に書式設定されます。
 * `selectionMark`
 
 > [!NOTE]

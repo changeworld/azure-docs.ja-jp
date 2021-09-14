@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 80cec6ad233a6f6dc4771e82a98601f5db774b0f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2983304c7cb1515c783037a48bb78aecfc364e53
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180576"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535583"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Azure Monitor での Log Analytics VM 拡張機能のトラブルシューティング
 この記事では、Microsoft Azure で実行されている Windows および Linux 仮想マシンの Log Analytics VM 拡張機能で発生する可能性のあるエラーのトラブルシューティングを支援し、それらの問題について考えられる解決策を提案します。
@@ -41,7 +41,7 @@ ms.locfileid: "122180576"
 3. 仮想マシンで PowerShell スクリプトを実行できることを確認します。
 4. C:\Windows\temp に対するアクセス許可が変更されていないことを確認します。
 5. 仮想マシン上の管理者特権の PowerShell ウィンドウで「`(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`」と入力し、Microsoft Monitoring Agent の状態を確認します。
-6. `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs` にある Microsoft Monitoring Agent のセットアップ ログ ファイルを確認します。
+6. `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.18053.0\` にある Microsoft Monitoring Agent のセットアップ ログ ファイルを確認します。 このパスは、エージェントのバージョン番号に基づいて変更されることに注意してください。
 
 詳細については、[Windows 拡張機能のトラブルシューティング](../../virtual-machines/extensions/oms-windows.md)に関するページをご覧ください。
 

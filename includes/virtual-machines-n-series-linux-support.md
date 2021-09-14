@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 52082c22053a5a54a4462fb01012bdceff848a96
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 37e718eae531a3794400c97a5ed842f2c06dd673
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113364868"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646502"
 ---
 ## <a name="supported-distributions-and-drivers"></a>サポートされているディストリビューションとドライバー
 
@@ -33,7 +33,7 @@ Azure によって再頒布された GRID ドライバーは、NV シリーズ�
 
 |Distribution|Driver|
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.7 から 7.9、8.0、8.1<br/><br/>SUSE Linux Enterprise Server 12 SP2 <br/><br/>SUSE Linux Enterprise Server 15 SP2 | NVIDIA GRID 12.2、ドライバー ブランチ [R460](https://go.microsoft.com/fwlink/?linkid=874272)(.exe)|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.7 から 7.9、8.0、8.1<br/><br/>SUSE Linux Enterprise Server 12 SP2 <br/><br/>SUSE Linux Enterprise Server 15 SP2 | NVIDIA GRID 13、ドライバー ブランチ [R470](https://go.microsoft.com/fwlink/?linkid=874272)(.exe)|
 
 以前のすべての Nvidia GRID ドライバー リンクの完全な一覧については、[GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) を参照してください。
 

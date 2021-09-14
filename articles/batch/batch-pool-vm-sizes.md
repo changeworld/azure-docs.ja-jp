@@ -2,14 +2,14 @@
 title: プールの VM サイズとイメージを選択する
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズと OS バージョンを選択する方法
 ms.topic: conceptual
-ms.date: 08/10/2021
+ms.date: 09/02/2021
 ms.custom: seodec18
-ms.openlocfilehash: 8a923c2982a632209e659ad663147bff5ff5c20a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 64dc4f11d5b80f0b493ca393f9a04521090c02cb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735568"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437060"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズとイメージを選択する
 
@@ -19,7 +19,16 @@ Azure Batch プールのノード サイズを選択するときは、Azure で�
 
 ### <a name="pools-in-virtual-machine-configuration"></a>仮想マシン構成のプール
 
-仮想マシン構成の Batch プールでは、ほぼすべての [VM サイズ](../virtual-machines/sizes.md)がサポートされています。 サポートされているサイズと制限の詳細については、次の表を参照してください。
+仮想マシン構成の Batch プールでは、ほぼすべての [VM サイズ](../virtual-machines/sizes.md)がサポートされています。 リージョンでサポートされる VM サイズは、[Batch Management API](batch-apis-tools.md#batch-management-apis) や[コマンド ライン ツール](batch-apis-tools.md#batch-command-line-tools) (PowerShell コマンドレットおよび Azure CLI) を使用して取得できます。  たとえば、リージョンでサポートされる VM サイズを一覧表示する [Azure Batch CLI コマンド](/cli/azure/batch/location#az_batch_location_list_skus)は、次のようになります。
+
+```azurecli-interactive
+az batch location list-skus --location
+                            [--filter]
+                            [--maxresults]
+                            [--subscription] 
+```
+
+次の表では、それぞれの VM シリーズについて、VM シリーズと VM サイズが Batch でサポートされているかどうかを示します。
 
 | VM シリーズ  | サポートされるサイズ |
 |------------|---------|

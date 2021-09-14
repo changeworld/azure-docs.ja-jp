@@ -1,14 +1,14 @@
 ---
 title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 04/29/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: db67f91257db1ddb44f7dfb103ac02e49febe562
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 5227b738ab5d7af19ed2877a1c3d6b37ea08c556
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126466"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535817"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -48,6 +48,8 @@ ms.locfileid: "113126466"
 - **プールの再作成:** 同様に、プールを毎日削除して再作成することは避けてください。 代わりに、新しいプールを作成し、その新規プールを参照するように既存のジョブを更新します。 すべてのタスクを新しいプールに移動したら、古いプールを削除します。
 
 - **プールの効率と課金:** Batch 自体に追加料金は発生しませんが、使用されるコンピューティング リソースに対して料金が発生します。 プール内のすべての計算ノードに対して、その状態に関係なく課金されます。 これには、ストレージやネットワーク コストなど、ノードを実行するために必要な料金がすべて含まれます。 詳細については、「[Azure Batch のコスト分析と予算](budget.md)」を参照してください。
+
+- **エフェメラル OS ディスク:** 仮想マシン構成プールでは、VM キャッシュまたは一時 SSD 上に OS ディスクを作成する[エフェメラル OS ディスク](create-pool-ephemeral-os-disk.md)を使用して、マネージド ディスクに関連した追加コストを回避できます。
 
 ### <a name="pool-allocation-failures"></a>プール割り当ての失敗
 

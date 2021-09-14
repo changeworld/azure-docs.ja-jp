@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 633925c8e7a990bcdfa822f77996072f87ae7e90
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: aa802843f76f2707d2df1d9018b60a1e8090cfb5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753307"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438806"
 ---
 # <a name="migrate-manually-from-azure-virtual-desktop-classic"></a>Azure Virtual Desktop (クラシック) から手動で移行する
 
@@ -79,6 +79,8 @@ Azure Virtual Desktop (クラシック) から Azure Virtual Desktop に手動�
 ダウンタイムを回避するために、最初に、既存のセッション ホストを小さいグループで Azure Resource Manager 統合ホスト プールに一度に登録する必要があります。 その後、新しい Azure Resource Manager 統合アプリ グループにユーザーを徐々に移動できます。
 
 ## <a name="next-steps"></a>次の手順
+
+代わりに自動的にデプロイを移行する方法を知りたい場合は、「[Azure Virtual Desktop (クラシック) から自動的に移行する](automatic-migration.md)」に移動します。
 
 移行が完了した後、[チュートリアル](create-host-pools-azure-marketplace.md)を確認して、Azure Virtual Desktop がどのように動作するかを理解します。 「[既存のホスト プールを展開する](expand-existing-host-pool.md)」と[RDP のプロパティのカスタマイズ](customize-rdp-properties.md)に関する記事で、高度な管理機能について学習します。
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 96cc983cba992452882a8f3307974e83683c39a9
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 1208beab46a9ceb29abd75eec587dc7628e07801
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "114462194"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435386"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行
 
@@ -28,9 +28,6 @@ StorSimple 1200 シリーズは 2022 年 12 月に[サポート終了](https://s
 | Premium ファイル共有 (FileStorage)、LRS/ZRS | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 ## <a name="azure-file-sync&quot;></a>Azure File Sync
-
-> [!IMPORTANT]
-> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、または移行中のサポートについては、AzureFilesMigration@microsoft .com にメールをお送りください。
 
 Azure File Sync は、次の 2 つの主要なコンポーネントに基づく Microsoft のクラウド サービスです。
 
@@ -173,6 +170,12 @@ Windows Server に十分な空き容量がある場合は、コマンドを再�
 可能性は低いですが発生した場合は、**Azure File Sync のトラブルシューティング ガイド** を参照してください。
 
 [!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
+
+---
+
+> [!NOTE]
+> まだ質問があるか、問題が発生していますか。</br>
+> その場合は、:::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-migration-email.png" alt-text="スペースなしの電子メールアドレス: Azure Files migration at microsoft dot com"::: にご連絡ください。
 
 ## <a name="relevant-links"></a>関連するリンク
 

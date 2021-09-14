@@ -3,12 +3,12 @@ title: Azure Lab Services で共有イメージ ギャラリーを使用する |
 description: 共有イメージ ギャラリーを使用するようにラボ アカウントを構成して、ユーザーが他のユーザーとイメージを共有したり、他のユーザーがイメージを使用してラボでテンプレート VM を作成したりできるようにする方法について説明します。
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: caba089d5f3f0f9ec50f575a06ce9fad1bf8ef8f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8a0cd273d2444281fd2c43823aaa822b5e476ed0
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743248"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450550"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーを使用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "121743248"
     イメージを共有イメージ ギャラリーに保存すると、Azure Lab Services によって、同じ[地域](https://azure.microsoft.com/global-infrastructure/geographies/)内で使用可能な他のリージョンに、保存したイメージがレプリケートされます。 これにより、同じ地域内の他のリージョンで作成されたラボでイメージを使用できるようになります。 共有イメージ ギャラリーにイメージを保存すると、追加コストが発生します。これには、レプリケートされたすべてのイメージのコストが含まれます。 このコストは、Azure Lab Services の使用コストとは別のものです。 共有イメージ ギャラリーの価格について詳しくは、[共有イメージ ギャラリーの課金](../virtual-machines/shared-image-galleries.md#billing)に関するページを参照してください。
     
 ## <a name="prerequisites"></a>前提条件
-- [Azure PowerShell](../virtual-machines/shared-images-powershell.md) または [Azure CLI](../virtual-machines/shared-images-cli.md) のいずれかを使用して、共有イメージ ギャラリーを作成します。
+- [共有イメージ ギャラリー](../virtual-machines/create-gallery.md)を作成します。
 - あらかじめ共有イメージ ギャラリーをラボ アカウントにアタッチしておきます。 詳細な手順については、[共有イメージ ギャラリーをアタッチまたはデタッチする方法](how-to-attach-detach-shared-image-gallery.md)に関するページを参照してください。
 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>共有イメージ ギャラリーに既存のイメージを保存する
@@ -52,8 +52,10 @@ ms.locfileid: "121743248"
 
     共有イメージ ギャラリーにイメージを保存すると、別のラボを作成するときにギャラリーからそのイメージを使用できるようになります。 ラボのコンテキスト外で共有イメージ ギャラリーにイメージをアップロードすることもできます。 詳細については、次を参照してください。
 
-    - [共有イメージ ギャラリーの概要](../virtual-machines/shared-images-powershell.md)
+
+    - [共有イメージ ギャラリーの概要](../virtual-machines/shared-image-galleries.md)
     - [カスタム イメージを作成するための推奨される方法](approaches-for-custom-image-creation.md)
+
 
     > [!IMPORTANT]
     > 共有イメージ ギャラリーに、Azure Lab Services 内の [ラボのテンプレート イメージを保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)すると、そのイメージは **特殊化されたイメージ** としてギャラリーにアップロードされます。 [特殊化されたイメージ](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)には、マシン固有の情報とユーザー プロファイルが保持されます。 一般化されたイメージは、引き続き Azure Lab Services の外部のギャラリーに直接アップロードできます。    

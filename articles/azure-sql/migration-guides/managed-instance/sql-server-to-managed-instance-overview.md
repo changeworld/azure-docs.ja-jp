@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
-ms.date: 02/18/2020
-ms.openlocfilehash: 345ef497ecb14279c117932bd2c9a1cf7b42ba1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: 8c44d6e92f2943f3c565e80d42d9d0c474fddd4f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743660"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542253"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>移行の概要: SQL Server から Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -86,6 +86,7 @@ Azure SQL Managed Instance でターゲットのサービス レベル (General 
 
 |テクノロジ | 説明|
 |---------|---------|
+|[Azure Data Studio 用の Azure SQL Migration 拡張機能](../../../dms/migration-using-azure-data-studio.md)  | Azure Data Studio 用の Azure SQL Migration 拡張機能によって、Azure Data Studio での SQL Server の評価機能と移行機能の両方が提供されます。 これにより、オンライン (最小限のダウンタイムを必要とする移行向け) またはオフライン (移行の期間を通してダウンタイムが持続される移行向け) モードのいずれかでの移行がサポートされます。 |
 | [Azure Migrate](../../../migrate/how-to-create-azure-sql-assessment.md) | この Azure サービスは、VMware 上で大規模に SQL データ資産を検出して評価するのに役立ちます。 Azure SQL デプロイに関する推奨事項、ターゲットのサイズ設定、月単位の見積もりが提供されます。 | 
 |[Azure Database Migration Service](../../../dms/tutorial-sql-server-to-managed-instance.md)  | この Azure サービスでは、移行プロセス時のダウンタイムを許容できるアプリケーションに対してオフライン モードでの移行がサポートされます。 オンライン モードでの継続的な移行とは異なり、オフライン モードの移行では、ソースからターゲットへのデータベースの完全バックアップの 1 回限りの復元が実行されます。 | 
 |[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | SQL Managed Instance では、ネイティブ SQL Server データベースのバックアップ (.bak ファイル) の復元がサポートされています。 これは、Azure Storage にデータベースの完全バックアップを提供できるお客様にとって、最も簡単な移行オプションです。 完全と差分バックアップもサポートされており、この記事の後半の[移行資産に関するセクション](#migration-assets)で説明しています。| 
@@ -109,6 +110,7 @@ Azure SQL Managed Instance でターゲットのサービス レベル (General 
 
 |移行オプション  |使用する場合  |考慮事項  |
 |---------|---------|---------|
+|[Azure Data Studio 用の Azure SQL Migration 拡張機能](../../../dms/migration-using-azure-data-studio.md) | - 単一のデータベースまたは複数のデータベースを大規模に移行する。 </br> - オンライン (最小限のダウンタイム) とオフライン (許容されるダウンタイム) の両方のモードで実行できる。 </br> </br> サポートされるソース: </br> - オンプレミスまたは Azure VM の SQL Server (2005 - 2019) </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM |  - 簡単にセットアップして開始できます。 </br> - オンプレミスの SQL Server やバックアップにアクセスするには、セルフホステッド統合ランタイムのセットアップが必要です。 </br> - 評価機能と移行機能の両方が含まれています。 |
 |[Azure Database Migration Service](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 単一のデータベースまたは複数のデータベースを大規模に移行する。 </br> - 移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされるソース: </br> - オンプレミスまたは Azure VM の SQL Server (2005 - 2019) </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM |  - 大規模な移行は、[PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md) を使用して自動化できます。 </br> - 移行が完了するまでの時間は、データベースのサイズによって異なり、バックアップと復元の時間に左右されます。 </br> - 十分なダウンタイムが必要になる可能性があります。 |
 |[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | - 個々の基幹業務アプリケーション データベースを移行する。  </br> - 個別の移行サービスまたはツールを使用せずに素早く簡単に移行する。  </br> </br> サポートされるソース: </br> - オンプレミスまたは Azure VM の SQL Server (2005 - 2019) </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM | - データベース バックアップでは、Azure Blob Storage へのデータ転送を最適化するために複数のスレッドが使用されますが、パートナー帯域幅とデータベース サイズが転送速度に影響する可能性があります。 </br> - ダウンタイムには、完全バックアップと復元を実行するために必要な時間 (データ操作のサイズ) を考慮する必要があります。| 
 |[ログ再生サービス](../../managed-instance/log-replay-service-migrate.md) | - 個々の基幹業務アプリケーション データベースを移行する。  </br> - データベース移行には、さらに多くのコントロールが必要になります。  </br> </br> サポートされるソース: </br> - オンプレミスまたは Azure VM の SQL Server (2008 - 2019) </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM | - 移行すると、SQL Server で完全なデータベース バックアップが行われ、Azure Blob Storage にバックアップ ファイルがコピーされます。 ログ再生サービスは、バックアップ ファイルを Azure Blob Storage から SQL Managed Instance に復元するために使用されます。 </br> - 移行プロセス中に復元されるデータベースは復元中モードに入り、プロセスが完了するまで読み取りや書き込みに使用できません。| 

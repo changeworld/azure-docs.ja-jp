@@ -7,12 +7,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2021
-ms.openlocfilehash: 29a6041206496d7970e3ea58deed1754c062b663
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 389ecc550fd2b9e0fa41b7437b47aa5b40af3712
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746286"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450919"
 ---
 # <a name="index-data-from-azure-cosmos-db-using-sql-or-mongodb-apis"></a>SQL または MongoDB API を使用して Azure Cosmos DB のデータにインデックスを作成する
 
@@ -29,10 +29,6 @@ Azure Cognitive Search の Cosmos DB インデクサーでは、次のプロト�
 + [SQL API](../cosmos-db/sql-query-getting-started.md) (一般提供開始済み) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)、[REST API](/rest/api/searchservice/indexer-operations)、[.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)、または別の Azure SDK を利用できます。
 
 + [MongoDB API (プレビュー)](../cosmos-db/mongodb-introduction.md) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)または [REST API バージョン 2020-06-30-Preview](search-api-preview.md) を作成できます。
-
-> [!Note]
-> Azure Cognitive Search で Table API をサポートしてほしいという方は、[こちら](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab)のユーザーの意見に賛成の票を投じてください。
->
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +55,7 @@ Cosmos DB データベースにデータが含まれることを確認してく�
 
 Azure Cognitive Search サービス ページのコマンド バーから [ウィザードを開始](search-import-data-portal.md)できます。このほか、Cosmos DB SQL API に接続する場合には、Cosmos DB アカウントの左側のナビゲーション ペインにある **[設定]** セクションで **[Add Azure Cognitive Search]\(Azure Cognitive Search の追加\)** をクリックする方法も利用できます。
 
-   ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを開始する")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="[データのインポート] コマンドのスクリーンショット" border="true":::
 
 ### <a name="step-3---set-the-data-source"></a>ステップ 3 - データ ソースを設定する
 
@@ -185,7 +181,7 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 SQL クエリを指定すると、ネストされたプロパティや配列のフラット化、JSON プロパティのプロジェクション、インデックスを作成するデータのフィルター処理を行うことができます。 
 
 > [!WARNING]
-> **MongoDB API** については、カスタム クエリがサポートされていません。`container.query` パラメーターは null を設定するか、省略する必要があります。 カスタム クエリを使用する必要がある場合は、[ユーザーの声](https://feedback.azure.com/forums/263029-azure-search) Web サイトでお知らせください。
+> **MongoDB API** については、カスタム クエリがサポートされていません。`container.query` パラメーターは null を設定するか、省略する必要があります。 
 
 ドキュメントのサンプル:
 

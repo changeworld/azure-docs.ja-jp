@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 08/23/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 4a5f1dba6e0e1411a4268b07f6d66788f3aa8c0f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: a3908710febab64b8f4bb41692397f87eaee5613
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772719"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434504"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
@@ -130,17 +130,17 @@ WAF は、次の Web の脆弱性から保護します。
 
 ## <a name="32-rule-sets"></a><a name="owasp32"></a> 3.2 ルール セット
 
-### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-32"></a> <p x-ms-format-detection="none">全般</p>
+### <a name="general"></a><a name="general-32"></a> 全般
 |RuleId|説明|
 |---|---|
 |200004|可能性のあるマルチパートによる不一致の境界。|
 
-### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-32"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
+### <a name="request-911-method-enforcement"></a><a name="crs911-32"></a> REQUEST-911-METHOD-ENFORCEMENT
 |RuleId|説明|
 |---|---|
 |911100|メソッドがポリシーによって許可されていません|
 
-### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-32"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+### <a name="request-913-scanner-detection"></a><a name="crs913-32"></a> REQUEST-913-SCANNER-DETECTION
 |RuleId|説明|
 |---|---|
 |913100|セキュリティ スキャナーに関連付けられている User-Agent が検出されました|
@@ -149,7 +149,7 @@ WAF は、次の Web の脆弱性から保護します。
 |913110|セキュリティ スキャナーに関連付けられている要求ヘッダーが検出されました|
 |913120|セキュリティ スキャナーに関連付けられている要求ファイル名/引数が検出されました|
 
-### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-32"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
+### <a name="request-920-protocol-enforcement"></a><a name="crs920-32"></a> REQUEST-920-PROTOCOL-ENFORCEMENT
 |RuleId|説明|
 |---|---|
 |920100|無効な HTTP 要求行|
@@ -191,7 +191,7 @@ WAF は、次の Web の脆弱性から保護します。
 |920470|無効な Content-Type ヘッダー|
 |920480|Content-Type ヘッダー内の文字セット パラメーターを制限します|
 
-### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-32"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
+### <a name="request-921-protocol-attack"></a><a name="crs921-32"></a> REQUEST-921-PROTOCOL-ATTACK
 
 |RuleId|説明|
 |---|---|
@@ -205,7 +205,7 @@ WAF は、次の Web の脆弱性から保護します。
 |921170|HTTP パラメーター汚染|
 |921180|HTTP パラメーター汚染 (%{TX.1})|
 
-### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-32"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
+### <a name="request-930-application-attack-lfi"></a><a name="crs930-32"></a> REQUEST-930-APPLICATION-ATTACK-LFI
 |RuleId|説明|
 |---|---|
 |930100|パス トラバーサル攻撃 (/../)|
@@ -213,7 +213,7 @@ WAF は、次の Web の脆弱性から保護します。
 |930120|OS ファイル アクセスの試行|
 |930130|制限付きファイル アクセスの試行|
 
-### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-32"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+### <a name="request-931-application-attack-rfi"></a><a name="crs931-32"></a> REQUEST-931-APPLICATION-ATTACK-RFI
 |RuleId|説明|
 |---|---|
 |931100|リモート ファイル インクルード (RFI) 攻撃の可能性あり: IP アドレスを使用している URL パラメーター|
@@ -221,7 +221,7 @@ WAF は、次の Web の脆弱性から保護します。
 |931120|リモート ファイル インクルード (RFI) 攻撃の可能性あり: 末尾の疑問符 (?) と共に使用される URL ペイロード|
 |931130|可能性のあるリモート ファイル インクルード (RFI) 攻撃: ドメイン外参照/リンク|
 
-### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-32"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+### <a name="request-932-application-attack-rce"></a><a name="crs932-32"></a> REQUEST-932-APPLICATION-ATTACK-RCE
 |RuleId|説明|
 |---|---|
 |932100|リモート コマンド実行: UNIX コマンド インジェクション|
@@ -239,7 +239,7 @@ WAF は、次の Web の脆弱性から保護します。
 |932180|制限付きファイル アップロードの試行|
 |932190|リモート コマンド実行: ワイルドカードのバイパス方法の試行|
 
-### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-32"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+### <a name="request-933-application-attack-php"></a><a name="crs933-32"></a> REQUEST-933-APPLICATION-ATTACK-PHP
 |RuleId|説明|
 |---|---|
 |933100|PHP インジェクション攻撃: 開始または終了タグが見つかりました|
@@ -259,7 +259,7 @@ WAF は、次の Web の脆弱性から保護します。
 |933200|PHP インジェクション攻撃: ラッパー スキームが検出されました|
 |933210|PHP インジェクション攻撃: 関数呼び出しが見つかりました|
 
-### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-32"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
+### <a name="request-941-application-attack-xss"></a><a name="crs941-32"></a> REQUEST-941-APPLICATION-ATTACK-XSS
 |RuleId|説明|
 |---|---|
 |941100|libinjection を通じて XSS 攻撃が検出されました|
@@ -291,7 +291,7 @@ WAF は、次の Web の脆弱性から保護します。
 |941350|UTF-7 エンコード IE XSS - 攻撃が検出されました。|
 |941360|JavaScript の難読化が検出されました。|
 
-### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-32"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
+### <a name="request-942-application-attack-sqli"></a><a name="crs942-32"></a> REQUEST-942-APPLICATION-ATTACK-SQLI
 |RuleId|説明|
 |---|---|
 |942100|libinjection を通じて SQL インジェクション攻撃が検出されました|
@@ -341,14 +341,14 @@ WAF は、次の Web の脆弱性から保護します。
 |942490|従来の SQL インジェクション プローブ 3/3 を検出します|
 |942500|MySQL のインライン コメントが検出されました。|
 
-### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-32"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
+### <a name="request-943-application-attack-session-fixation"></a><a name="crs943-32"></a> REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION
 |RuleId|説明|
 |---|---|
 |943100|可能性のあるセッション固定攻撃: HTML への Cookie 値の設定|
 |943110|可能性のあるセッション固定攻撃: SessionID パラメーター名とドメイン外参照元|
 |943120|可能性のあるセッション固定攻撃: 参照元のない SessionID パラメーター名|
 
-### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-javap"></a><a name="crs944-32"></a> <p x-ms-format-detection="none">REQUEST-944-APPLICATION-ATTACK-JAVA</p>
+### <a name="request-944-application-attack-java"></a><a name="crs944-32"></a> REQUEST-944-APPLICATION-ATTACK-JAVA
 |RuleId|説明|
 |---|---|
 |944100|リモート コマンド実行: Apache Struts、Oracle WebLogic|
@@ -365,20 +365,20 @@ WAF は、次の Web の脆弱性から保護します。
 
 ## <a name="31-rule-sets"></a><a name="owasp31"></a> 3.1 ルール セット
 
-### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">全般</p>
+### <a name="general"></a><a name="general-31"></a> 全般
 
 |RuleId|説明|
 |---|---|
 |200004|可能性のあるマルチパートによる不一致の境界。|
 
-### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-31"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
+### <a name="request-911-method-enforcement"></a><a name="crs911-31"></a> REQUEST-911-METHOD-ENFORCEMENT
 
 |RuleId|説明|
 |---|---|
 |911100|メソッドがポリシーによって許可されていません|
 
 
-### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-31"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+### <a name="request-913-scanner-detection"></a><a name="crs913-31"></a> REQUEST-913-SCANNER-DETECTION
 
 |RuleId|説明|
 |---|---|
@@ -389,7 +389,7 @@ WAF は、次の Web の脆弱性から保護します。
 |913120|セキュリティ スキャナーに関連付けられている要求ファイル名/引数が検出されました|
 
 
-### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-31"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
+### <a name="request-920-protocol-enforcement"></a><a name="crs920-31"></a> REQUEST-920-PROTOCOL-ENFORCEMENT
 
 |RuleId|説明|
 |---|---|
@@ -435,7 +435,7 @@ WAF は、次の Web の脆弱性から保護します。
 |920470|無効な Content-Type ヘッダー|
 |920480|Content-Type ヘッダー内の文字セット パラメーターを制限します|
 
-### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-31"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
+### <a name="request-921-protocol-attack"></a><a name="crs921-31"></a> REQUEST-921-PROTOCOL-ATTACK
 
 |RuleId|説明|
 |---|---|
@@ -449,7 +449,7 @@ WAF は、次の Web の脆弱性から保護します。
 |921170|HTTP パラメーター汚染|
 |921180|HTTP パラメーター汚染 (%{TX.1})|
 
-### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-31"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
+### <a name="request-930-application-attack-lfi"></a><a name="crs930-31"></a> REQUEST-930-APPLICATION-ATTACK-LFI
 
 |RuleId|説明|
 |---|---|
@@ -458,7 +458,7 @@ WAF は、次の Web の脆弱性から保護します。
 |930120|OS ファイル アクセスの試行|
 |930130|制限付きファイル アクセスの試行|
 
-### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-31"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+### <a name="request-931-application-attack-rfi"></a><a name="crs931-31"></a> REQUEST-931-APPLICATION-ATTACK-RFI
 
 |RuleId|説明|
 |---|---|
@@ -467,7 +467,7 @@ WAF は、次の Web の脆弱性から保護します。
 |931120|可能性のあるリモート ファイル インクルード (RFI) 攻撃 = 末尾の疑問符 (?) と共に使用される URL ペイロード|
 |931130|可能性のあるリモート ファイル インクルード (RFI) 攻撃 = ドメイン外参照/リンク|
 
-### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-31"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+### <a name="request-932-application-attack-rce"></a><a name="crs932-31"></a> REQUEST-932-APPLICATION-ATTACK-RCE
 
 |RuleId|説明|
 |---|---|
@@ -486,7 +486,7 @@ WAF は、次の Web の脆弱性から保護します。
 |932180|制限付きファイル アップロードの試行|
 |932190|リモート コマンド実行: ワイルドカードのバイパス方法の試行|
 
-### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-31"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+### <a name="request-933-application-attack-php"></a><a name="crs933-31"></a> REQUEST-933-APPLICATION-ATTACK-PHP
 
 |RuleId|説明|
 |---|---|
@@ -505,7 +505,7 @@ WAF は、次の Web の脆弱性から保護します。
 |933180|PHP インジェクション攻撃 = 可変関数呼び出しが見つかりました|
 |933190|PHP インジェクション攻撃: PHP の終了タグが見つかりました|
 
-### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
+### <a name="request-941-application-attack-xss"></a><a name="crs941-31"></a> REQUEST-941-APPLICATION-ATTACK-XSS
 
 |RuleId|説明|
 |---|---|
@@ -537,7 +537,7 @@ WAF は、次の Web の脆弱性から保護します。
 |941350|UTF-7 エンコード IE XSS - 攻撃が検出されました。|
 
 
-### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
+### <a name="request-942-application-attack-sqli"></a><a name="crs942-31"></a> REQUEST-942-APPLICATION-ATTACK-SQLI
 
 |RuleId|説明|
 |---|---|
@@ -587,7 +587,7 @@ WAF は、次の Web の脆弱性から保護します。
 |942480|SQL インジェクション攻撃|
 |942490|従来の SQL インジェクション プローブ 3/3 を検出します|
 
-### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-31"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
+### <a name="request-943-application-attack-session-fixation"></a><a name="crs943-31"></a> REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION
 
 |RuleId|説明|
 |---|---|
@@ -595,7 +595,7 @@ WAF は、次の Web の脆弱性から保護します。
 |943110|可能性のあるセッション固定攻撃 = SessionID パラメーター名とドメイン外参照元|
 |943120|可能性のあるセッション固定攻撃 = 参照元のない SessionID パラメーター名|
 
-### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-session-javap"></a><a name="crs944-31"></a> <p x-ms-format-detection="none">REQUEST-944-APPLICATION-ATTACK-SESSION-JAVA</p>
+### <a name="request-944-application-attack-session-java"></a><a name="crs944-31"></a> REQUEST-944-APPLICATION-ATTACK-SESSION-JAVA
 
 |RuleId|説明|
 |---|---|
@@ -607,20 +607,20 @@ WAF は、次の Web の脆弱性から保護します。
 
 ## <a name="30-rule-sets"></a><a name="owasp30"></a> 3.0 ルール セット
 
-### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">全般</p>
+### <a name="general"></a><a name="general-30"></a> 全般
 
 |RuleId|説明|
 |---|---|
 |200004|可能性のあるマルチパートによる不一致の境界。|
 
-### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-30"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
+### <a name="request-911-method-enforcement"></a><a name="crs911-30"></a> REQUEST-911-METHOD-ENFORCEMENT
 
 |RuleId|説明|
 |---|---|
 |911100|メソッドがポリシーによって許可されていません|
 
 
-### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-30"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+### <a name="request-913-scanner-detection"></a><a name="crs913-30"></a> REQUEST-913-SCANNER-DETECTION
 
 |RuleId|説明|
 |---|---|
@@ -630,7 +630,7 @@ WAF は、次の Web の脆弱性から保護します。
 |913101|スクリプティング/汎用 HTTP クライアントに関連付けられている User-Agent が検出されました|
 |913102|Web クローラー/ボットに関連付けられている User-Agent が検出されました|
 
-### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
+### <a name="request-920-protocol-enforcement"></a><a name="crs920-30"></a> REQUEST-920-PROTOCOL-ENFORCEMENT
 
 |RuleId|説明|
 |---|---|
@@ -676,7 +676,7 @@ WAF は、次の Web の脆弱性から保護します。
 |920274|要求ヘッダーに無効な文字が含まれています (非常に厳格なセット以外)|
 |920460|異常なエスケープ文字|
 
-### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
+### <a name="request-921-protocol-attack"></a><a name="crs921-30"></a> REQUEST-921-PROTOCOL-ATTACK
 
 |RuleId|説明|
 |---|---|
@@ -691,7 +691,7 @@ WAF は、次の Web の脆弱性から保護します。
 |921170|HTTP パラメーター汚染|
 |921180|HTTP パラメーター汚染 (% @{TX.1})|
 
-### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-30"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
+### <a name="request-930-application-attack-lfi"></a><a name="crs930-30"></a> REQUEST-930-APPLICATION-ATTACK-LFI
 
 |RuleId|説明|
 |---|---|
@@ -700,7 +700,7 @@ WAF は、次の Web の脆弱性から保護します。
 |930120|OS ファイル アクセスの試行|
 |930130|制限付きファイル アクセスの試行|
 
-### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-30"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+### <a name="request-931-application-attack-rfi"></a><a name="crs931-30"></a> REQUEST-931-APPLICATION-ATTACK-RFI
 
 |RuleId|説明|
 |---|---|
@@ -709,7 +709,7 @@ WAF は、次の Web の脆弱性から保護します。
 |931120|可能性のあるリモート ファイル インクルード (RFI) 攻撃 = 末尾の疑問符 (?) と共に使用される URL ペイロード|
 |931130|可能性のあるリモート ファイル インクルード (RFI) 攻撃 = ドメイン外参照/リンク|
 
-### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-30"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+### <a name="request-932-application-attack-rce"></a><a name="crs932-30"></a> REQUEST-932-APPLICATION-ATTACK-RCE
 
 |RuleId|説明|
 |---|---|
@@ -720,7 +720,7 @@ WAF は、次の Web の脆弱性から保護します。
 |932170|リモート コマンド実行 = Shellshock (CVE-2014-6271)|
 |932171|リモート コマンド実行 = Shellshock (CVE-2014-6271)|
 
-### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-30"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+### <a name="request-933-application-attack-php"></a><a name="crs933-30"></a> REQUEST-933-APPLICATION-ATTACK-PHP
 
 |RuleId|説明|
 |---|---|
@@ -736,7 +736,7 @@ WAF は、次の Web の脆弱性から保護します。
 |933161|PHP インジェクション攻撃 = 低い値の PHP 関数呼び出しが見つかりました|
 |933111|PHP インジェクション攻撃 = PHP スクリプト ファイルのアップロードが見つかりました|
 
-### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
+### <a name="request-941-application-attack-xss"></a><a name="crs941-30"></a> REQUEST-941-APPLICATION-ATTACK-XSS
 
 |RuleId|説明|
 |---|---|
@@ -763,7 +763,7 @@ WAF は、次の Web の脆弱性から保護します。
 |941350|UTF-7 エンコード IE XSS - 攻撃が検出されました。|
 |941320|可能性のある XSS 攻撃が検出されました - HTML タグ ハンドラー|
 
-### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
+### <a name="request-942-application-attack-sqli"></a><a name="crs942-30"></a> REQUEST-942-APPLICATION-ATTACK-SQLI
 
 |RuleId|説明|
 |---|---|
@@ -795,7 +795,7 @@ WAF は、次の Web の脆弱性から保護します。
 |942251|HAVING インジェクションを検出します|
 |942460|メタ文字の異常検出アラート - 反復する非単語文字|
 
-### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
+### <a name="request-943-application-attack-session-fixation"></a><a name="crs943-30"></a> REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION
 
 |RuleId|説明|
 |---|---|

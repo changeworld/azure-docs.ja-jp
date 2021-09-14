@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 83f0ce27172879a37de9488499e46de30b8e112c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba77d7f580a2a5fe69d575d2727e42ed12c68019
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98147418"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646372"
 ---
 カスタム IPsec ポリシーを操作する場合は、次の要件に注意してください。
 
@@ -34,4 +34,4 @@ ms.locfileid: "98147418"
 | IPsec 暗号化 | GCMAES256、GCMAES128、AES256、AES128、なし |
 | IPsec 整合性 | GCMAES256、GCMAES128、SHA256 |
 | PFS グループ | ECP384、ECP256、PFS24、PFS14、なし |
-| SA の有効期間 |整数、最小値 300 秒/既定値 27,000 秒 |
+| SA の有効期間 |整数、最小値 300 秒/既定値 3600 秒 |

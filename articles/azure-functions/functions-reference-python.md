@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aa48731248c9e51d680bc0e1b396115c54edbcd7
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: d44de94ef30976a35bbfeddf68b60068b952fbde
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260861"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450883"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -19,7 +19,7 @@ Python 開発者は、次のいずれかの記事にも興味があるかもし�
 
 | 作業の開始 | 概念| シナリオとサンプル |
 |--|--|--|
-| <ul><li>[Visual Studio Code を使用した Python 関数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[ターミナルとコマンド プロンプトを使用した Python 関数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch を使用した画像の分類](machine-learning-pytorch.md)</li><li>[Azure Automation サンプル](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow を使用した機械学習](functions-machine-learning-tensorflow.md)</li><li>[Python サンプルの参照](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[Visual Studio Code を使用した Python 関数](./create-first-function-vs-code-python.md)</li><li>[ターミナルとコマンド プロンプトを使用した Python 関数](./create-first-function-cli-python.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch を使用した画像の分類](machine-learning-pytorch.md)</li><li>[Azure Automation サンプル](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow を使用した機械学習](functions-machine-learning-tensorflow.md)</li><li>[Python サンプルの参照](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
 > [Python ベースの Azure 関数を Windows 上のローカルで開発](create-first-function-vs-code-python.md#run-the-function-locally)できますが、Python は、Azure で実行されている場合、Linux ベースのホスティング プランでのみサポートされます。 サポートされている[オペレーティング システムとランタイム](functions-scale.md#operating-systemruntime)の組み合わせの一覧を参照してください。
@@ -267,13 +267,11 @@ def main(req):
 
 ### <a name="log-custom-telemetry"></a>カスタム テレメトリをログに記録する
 
-ログ テレメトリは、既定で Functions ランタイムを介して Functions アプリに対して収集されます。 このテレメトリは、Application インサイト のトレースとして終了します。 特定の Azure サービスの要求と依存関係のテレメトリは、既定で[関数のバインディング](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?tabs=csharp#supported-bindings)でも収集されます。 カスタム要求/依存性のテレメトリを収集するには、[OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensus-python-extensions-azure) を使用して、カスタム テレメトリ データを Application Insights インスタンスに送信することができます。
-
-サポートされているライブラリの一覧は、[こちら](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib)で確認できます。
+既定では、Functions ランタイムには、関数によって生成されたログとその他のテレメトリ データが収集されます。 このテレメトリは、Application インサイト のトレースとして終了します。 特定の Azure サービスの要求と依存関係のテレメトリは、既定で[トリガーおよびバインディング](functions-triggers-bindings.md#supported-bindings)でも収集されます。 バインディングによらずにカスタム要求およびカスタムの依存関係テレメトリを収集する目的で、[OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensus-python-extensions-azure) を使用して、カスタム テレメトリ データを Application Insights インスタンスに送信することができます。 サポートされている拡張機能の一覧は、[OpenCensus リポジトリ](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib)で確認できます。
 
 >[!NOTE]
-> OpenCensus Python 拡張機能を使用するには、`local.settings.json` およびアプリケーション設定で `PYTHON_ENABLE_WORKER_EXTENSIONS` を `1` に設定して、[Python 拡張機能](#python-worker-extensions)を有効にする必要があります。
->
+>OpenCensus Python 拡張機能を使用するには、[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)で `PYTHON_ENABLE_WORKER_EXTENSIONS` を `1` に設定して、関数アプリの [Python 拡張機能](#python-worker-extensions)を有効にする必要があります。
+
 
 ```
 // requirements.txt

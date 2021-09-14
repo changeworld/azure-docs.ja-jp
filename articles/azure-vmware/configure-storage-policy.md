@@ -3,12 +3,12 @@ title: ストレージ ポリシーの構成
 description: Azure VMware ソリューションの仮想マシンのストレージ ポリシーを構成する方法について説明します。
 ms.topic: how-to
 ms.date: 08/31/2021
-ms.openlocfilehash: b9535c5765b2ff024537ff44e2e24a76c992dd35
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: df8f6931dbae377833d3f380e3fd5fcad8bd73ba
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304058"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431334"
 ---
 # <a name="configure-storage-policy"></a>ストレージ ポリシーの構成
 
@@ -32,7 +32,7 @@ VM ストレージ ポリシーは、VM の初期デプロイで割り当てる�
 
 
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
 [ホストの最小レベルが満たされている](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vsphere.vmc-aws-manage-data-center-vms.doc/GUID-EDBB551B-51B0-421B-9C44-6ECB66ED660B.html)ことを確認します。
 
@@ -97,6 +97,9 @@ VM に設定可能な vSAN ベースのストレージ ポリシーを一覧表�
 ## <a name="specify-storage-policy-for-a-cluster"></a>クラスターのストレージ ポリシーを指定する
 
 `Set-ClusterDefaultStoragePolicy` コマンドレットを実行して、クラスターの既定のストレージ ポリシーを指定します。
+
+>[!NOTE]
+>既定の管理クラスターのストレージ ポリシーを変更することは許可されていません。
 
 1. **[実行コマンド]**  >  **[パッケージ]**  >  **[Set-ClusterDefaultStoragePolicy]** を選択します。
 

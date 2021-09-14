@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.topic: conceptual
 ms.date: 08/31/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a728d51025a2bb23e7da681fc6ed5daf162b1315
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 889ff813a72c3ebdc1cca9fa83e7c1dfde367eb6
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309282"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450271"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
@@ -796,6 +796,8 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
   }
 }
 ```
+
+この[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceGroupName.json)では、特定のリソース グループのプロパティが出力されます。
 
 ## <a name="resourceid"></a>resourceId
 

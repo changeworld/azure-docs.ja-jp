@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: 39090732df8543fc28d1324882f3817402ad587a
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 69366f82c746d1d436d437e2892b010331ecf967
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214318"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429030"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -70,16 +70,11 @@ az aks create \
 
 次のパラメーターを使用してプライベート DNS ゾーンを構成できます。
 
-- "System"。既定値でもあります。 --private-dns-zone 引数を省略すると、AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。
-- "None"。既定でパブリック DNS に設定されます。これは、AKS によってプライベート DNS ゾーン (プレビュー) が作成されないことを意味します。  
+- "system"。既定値でもあります。 --private-dns-zone 引数を省略すると、AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。
+- "none"。既定でパブリック DNS に設定されます。これは、AKS によってプライベート DNS ゾーンが作成されないことを意味します。  
 - "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID"。Azure グローバル クラウド用に `privatelink.<region>.azmk8s.io` の形式でプライベート DNS ゾーンを作成する必要があります。 そのプライベート DNS ゾーンのリソース ID は、後で必要になります。  さらに、少なくとも `private dns zone contributor` および `vnet contributor` ロールを持つユーザー割り当て ID またはサービス プリンシパルも必要になります。
   - プライベート DNS ゾーンが AKS クラスターとは異なるサブスクリプションにある場合は、両方のサブスクリプションで Microsoft.ContainerServices を登録する必要があります。
   - "fqdn-subdomain" は、サブドメインの機能を `privatelink.<region>.azmk8s.io` に提供するためにのみ、"CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" と共に使用できます。
-
-### <a name="prerequisites"></a>前提条件
-
-* AKS プレビュー バージョン 0.5.19 以降
-* API バージョン 2021-05-01 以降
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
 
@@ -94,6 +89,11 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 ```
 
 ## <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>パブリック DNS アドレスがあるプライベート AKS クラスターを作成する
+
+前提条件:
+
+* aks-preview 拡張機能バージョン 0.5.29 以降を備えた Azure CLI。
+* ARM または REST API を使用する場合、AKS API バージョンは 2021-05-01 以降である必要があります。
 
 パブリック DNS オプションを利用すると、プライベート クラスターのルーティング オプションを簡略化できます。  
 
