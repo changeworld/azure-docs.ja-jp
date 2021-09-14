@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/03/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6d7d9389e00b3b0f23d590563a242ae0c12e2463
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 78721aa407977262747c43be90001da2343322aa
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740101"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123484981"
 ---
-現状では、Ultra ディスクと Premium SSD のみで共有ディスクを有効にできます。 ディスクのサイズによって `maxShares` 制限が異なる場合があります。これは、`maxShares` 値を設定するときに超えることはできません。 Premium SSD の場合、ディスク共有をサポートするディスク サイズは P15 以上です。
+現在のところ、Ultra ディスク、Premium SSD、Standard SSD のみで共有ディスクを有効にできます。 ディスクのサイズによって `maxShares` 制限が異なる場合があります。これは、`maxShares` 値を設定するときに超えることはできません。 Premium SSD の場合、ディスク共有をサポートするディスク サイズは P15 以上です。
 
 ディスクごとに、ディスクを同時に共有できるノードの最大数を表す `maxShares` 値を定義できます。 たとえば、2 ノードのフェールオーバークラスターをセットアップする場合は、`maxShares=2`を設定します。 最大値は上限です。 ノード数が指定された `maxShares` 値よりも少ない場合は、ノードがクラスターに参加したり、クラスターから離脱したり (ディスクのマウントまたはマウント解除) できます。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e3997fc215637175165402a926bffc6ac8d02771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f13c6c48ed8f6f0eaa6fcfed3a43fa5f4064e6e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77914860"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481130"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage のマルチプロトコル アクセス
 
@@ -28,7 +28,7 @@ Data Lake Storage のマルチプロトコル アクセスでは、ツール、�
 > [!NOTE]
 > Data Lake Storage のマルチプロトコル アクセスは一般提供されており、すべてのリージョンで利用できます。 マルチプロトコル アクセスによって有効にされている一部の Azure サービスまたは BLOB ストレージ機能は、引き続きプレビュー段階です。  これらのアーティクルでは、BLOB ストレージの機能と Azure サービスの統合の現在のサポートについてまとめています。 
 >
-> [Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)
+> [Azure Storage アカウントでの Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)
 >
 >[Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)
 
@@ -42,7 +42,7 @@ BLOB API を使用している既存のツールとアプリケーションで�
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)
+- [Azure Storage アカウントでの Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)
 - [Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)
 - [Azure Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォーム](data-lake-storage-supported-open-source-platforms.md)
 - [Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)

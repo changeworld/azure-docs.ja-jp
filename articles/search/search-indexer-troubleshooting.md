@@ -7,13 +7,13 @@ author: mgottein
 ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/27/2021
-ms.openlocfilehash: 49aad9132d57c07022fd5515cbc07c32d94a5132
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 09/07/2021
+ms.openlocfilehash: 650f5f40bf8b8fc0909b4fec85ef6b5724a2e3c7
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982891"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539826"
 ---
 # <a name="indexer-troubleshooting-guidance-for-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -61,6 +61,12 @@ SQL Managed Instance のデータにアクセスする場合、または Azure V
 `AzureCognitiveSearch` サービス タグは、IP アドレス範囲を検索しなくても、受信 [NSG 規則](../virtual-network/manage-network-security-group.md#work-with-security-rules)で直接使用できます。
 
 SQL Managed Instance 内のデータへのアクセス方法の詳細については、[こちら](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)で説明しています
+
+## <a name="azure-sql-database-serverless-indexing-error-code-40613"></a>Azure SQL Database のサーバーレス インデックス作成 (エラー コード 40613)
+
+SQL データベースが[サーバーレスのコンピューティング層](../azure-sql/database/serverless-tier-overview.md)にある場合は、インデクサーが接続しているときに、データベースが実行中であり、一時停止されていないことを確認します。
+
+データベースが一時停止されている場合、検索サービスからの最初のログインによってデータベースが自動的に再開されますが、エラー コード 40613 でデータベースを使用できないことを示すエラーが返されます。 データベースが実行されたら、ログインを再試行して接続を確立します。
 
 ## <a name="sharepoint-online-conditional-access-policies"></a>SharePoint Online の条件付きアクセス ポリシー
 

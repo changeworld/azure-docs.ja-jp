@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 4/05/2021
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 52e1accfb5f5bb762cc2833a19e1caa3daa4a03d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8b425646e9b416129d951cc78db3d05c26b0e6e8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462207"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123484913"
 ---
 ```console
-robocopy /MT:128 /R:1 /W:1 /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
+robocopy /MT:128 /R:1 /W:1 /B /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
 ```
 
 | Switch                | 説明 |
@@ -37,3 +37,6 @@ robocopy /MT:128 /R:1 /W:1 /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG
 | `/LFSM`               | **階層型ストレージを持つターゲット専用** </br>RoboCopy を "低空き領域モード" で動作するよう指定します。 このスイッチは、Robocopy が完了する前にローカル容量が不足する可能性がある、階層型ストレージを持つターゲットにのみ有効です。 これは、Azure File Sync のクラウドの階層化が有効なターゲットで使用するために特別に追加されました。 これは、Azure File Sync とは別に使用できます。このモードでは、ファイルのコピーによって宛先ボリュームの空き領域が "床" 値よりも小さくなるたびに、Robocopy が一時停止します。 この値は `/LFSM:n` のフラグ形式で指定できます。 パラメーター `n` は、ベース 2: `nKB`、`nMB`、または`nGB` で指定します。 明示的な床値を示さずに `/LFSM` を指定した場合、床は宛先ボリュームのサイズの 10% に設定されます。 低空き領域モードは、`/MT`、`/EFSRAW`、`/B` または `/ZB` では利用できません。 |
 | `/Z`                  | **慎重に使用すること** </br>再起動モードでファイルをコピーします。 このスイッチは、ネットワーク環境が不安定な場合にのみ、使用することをお勧めします。 追加のログ記録が原因で、コピーのパフォーマンスが大幅に低下します。 |
 | `/ZB`                 | **慎重に使用すること** </br>再起動モードが使用されます。 アクセスが拒否された場合、このオプションではバックアップ モードが使用されます。 このオプションでは、チェックポイント処理が原因で、コピーのパフォーマンスが大幅に低下します。 |
+
+> [!IMPORTANT]
+> 少なくとも 2021 年 8 月 26 日の [OS 更新プログラム KB5005103](https://support.microsoft.com/topic/august-26-2021-kb5005103-os-build-18363-1766-preview-4e23362c-5e43-4d8f-95e5-9fdade60605f) を備えた Windows Server 2019 を使用します。 特定の RoboCopy シナリオに対する重要な修正プログラムが含まれています。

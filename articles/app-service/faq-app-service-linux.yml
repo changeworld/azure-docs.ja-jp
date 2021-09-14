@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: 組み込みコンテナーの実行に関する FAQ
+  title: App Service on Linux の FAQ
   description: Azure App Service の組み込み Linux コンテナーに関してよく寄せられる質問への回答をご紹介します。
   keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
   author: msangapu-msft
@@ -9,12 +9,12 @@ metadata:
   ms.date: 10/30/2018
   ms.author: msangapu
   ms.custom: seodec18
-  ms.openlocfilehash: b908a804041d2278be5e9f88b23c7fe160511fe6
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 7d061a32032fd1edcbe0e2b8dc38290db2664f9d
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253235"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123542581"
 title: Azure App Service on Linux の FAQ
 summary: >
   App Service on Linux のリリースでは、機能の追加とプラットフォームの品質向上に取り組んでいます。 この記事では、最近お客様からお問い合わせのあったご質問に回答しています。
@@ -111,9 +111,7 @@ sections:
       ```nodejs
 
       const io = require('socket.io')(server,{
-
-        perMessageDeflate :false
-
+        perMessageDeflate :false
       });
 
       ```
@@ -134,7 +132,7 @@ sections:
   - question: >
       自分が所有するカスタム コンテナーを使用しています。 プラットフォームを SMB 共有の `/home/` ディレクトリにマウントさせたいと考えています。
     answer: >
-      `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が **指定されていない** 場合や *false* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で **共有されず**、書き込まれたファイルは再起動後は **保持されません**。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を明示的に *true* に設定すると、マウントが有効になります。
+      `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が **指定されていない** 場合や *false* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で **共有されず**、書き込まれたファイルは再起動後は **保持されません**。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を明示的に *true* に設定すると、マウントが有効になります。 これが true に設定された後、マウントを無効にする場合は、明示的に`WEBSITES_ENABLE_APP_SERVICE_STORAGE` を *false* に設定する必要があります。
   - question: >
       カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。
     answer: >
@@ -160,19 +158,9 @@ sections:
     answer: >
       SCM サイトは別のコンテナーで実行されています。 アプリ コンテナーのファイル システムや実行中のプロセスをチェックすることはできません。
   - question: >
-      カスタム コンテナーがポート 80 以外のポートをリッスンしています。 そのポートに要求をルーティングするようにアプリを構成するにはどうすればよいですか。
-    answer: >
-      ポートの自動検出機能があります。 また、*WEBSITES_PORT* というアプリ設定を指定して、必要なポート番号の値を設定することもできます。 以前、プラットフォームでは *PORT* アプリ設定を使用していました。 このアプリ設定を廃止し、*WEBSITES_PORT* のみを使用する予定です。
-  - question: >
       カスタム コンテナーに HTTPS を実装する必要がありますか。
     answer: >
       いいえ、共有フロントエンドでの HTTPS の終了はプラットフォームが処理します。
-  - question: >
-      組み込みコンテナーのコードで、PORT 変数を使用する必要がありますか。
-    answer: >
-      いいえ、自動ポート検出があるため、PORT 変数は必要ありません。 ポートが検出されない場合、既定で 80 に設定されます。
-
-      カスタム ポートを手動で構成するには、Dockerfile の EXPOSE 命令とアプリの設定 WEBSITES_PORT を使用して、コンテナーにバインドするポート値を指定します。
   - question: >
       カスタム コンテナーに WEBSITES_PORT を使用する必要がありますか。
     answer: >
@@ -225,13 +213,54 @@ sections:
       - ポート 80 または 8080 を定義する最初のコンテナー
 
       - 上記のいずれにも当てはまらない場合、ファイルで定義されている最初のコンテナーがアクセス可能 (公開) になります
+  - question: >
+      depends_on の操作方法を教えてください。
+    answer: >
+      この `depends_on` オプションは、App Service では "*サポートされていない*" ため、無視されます。 [Docker からのスタートアップとシャットダウンの制御の推奨事項](https://docs.docker.com/compose/startup-order/)のとおり、Azure App Service マルチコンテナー アプリでは、スタートアップ時と切断時の両方で、アプリケーション コードを使用して依存関係を確認する必要があります。
 
+
+      次のコード例は、Redis コンテナーが実行されているかどうかを確認する Python アプリを示しています。
+
+
+      ```python
+
+      import time
+
+
+      import redis
+
+      from flask import Flask
+
+
+      app = Flask(__name__)
+
+      cache = redis.Redis(host='redis', port=6379)
+
+
+      def get_hit_count():
+          retries = 5
+          while True:
+              try:
+                  return cache.incr('hits')
+              except redis.exceptions.ConnectionError as exc:
+                  if retries == 0:
+                      raise exc
+                  retries -= 1
+                  time.sleep(0.5)
+
+      @app.route('/')
+
+      def hello():
+          count = get_hit_count()
+          return 'Hello from Azure App Service team! I have been seen {} times.\n'.format(count)
+
+      if __name__ == "__main__":
+          app.run(host="0.0.0.0", port=80, debug=True)
+      ```
 
       ## <a name="web-sockets"></a>Web ソケット
 
-
       Web Sockets は Linux アプリでサポートされています。
-
 
       > [!IMPORTANT]
 
@@ -245,9 +274,19 @@ sections:
 - name: その他の質問
   questions:
   - question: >
-      ファイルベースのデータベース (SQLight など) を Linux Webapp で使用できますか。
+      Linux コンテナー内でポートを指定するための操作方法を教えてください。
     answer: >
-      アプリケーションのファイル システムは、マウントされたネットワーク共有です。 これにより、コードを複数のホストにわたって実行する必要があるスケール アウト シナリオが可能になります。 残念ながら、これでは、データベース ファイルに対する排他ロックを取得できないため、SQLite のようなファイル ベースのデータベース プロバイダーの使用がブロックされます。 azure の完全管理型データベースサービス ([Azure SQL](https://azure.microsoft.com/products/azure-sql/)、[Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) または [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/)) のいずれかを使用することをお勧めします。
+      | コンテナーの種類 | 説明 | ポートを設定または使用する方法 |
+
+      |----------------|-------------|---------------------|
+
+      | 組み込みコンテナー | Linux アプリの言語またはフレームワーク バージョンを選択した場合は、事前定義済みのコンテナーが選択されます。 | アプリ コードを適切なポートにポイントするには、PORT 環境変数を使用します。 |
+
+      | カスタム コンテナー | コンテナーは完全に制御できます。 | App Service は、コンテナーがリッスンするポートを制御しません。 これに必要な情報は、要求の転送先ポートだけです。 コンテナーがポート 80 または 8080 をリッスンする場合、App Service は自動的に検出できます。 他のポートをリッスンする場合は、WEBSITES_PORT アプリ設定をそのポート番号に設定する必要があり、そうすると、App Service はコンテナー内のそのポートに要求を転送します。 WEBSITES_PORT アプリ設定がコンテナー内に影響を与えることはなく、コンテナー内の環境変数としてこの設定にアクセスすることはできません。 |
+  - question: >
+      ファイル ベースのデータベース (SQLite など) を Linux Webapp と一緒に使用できますか。
+    answer: >
+      アプリケーションのファイル システムは、マウントされたネットワーク共有です。 これにより、コードを複数のホストにわたって実行する必要があるスケール アウト シナリオが可能になります。 残念ながら、これでは、データベース ファイルに対する排他ロックを取得できないため、SQLite のようなファイル ベースのデータベース プロバイダーの使用がブロックされます。 マネージド データベース サービス [Azure SQL](https://azure.microsoft.com/products/azure-sql/)、[Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)、[Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/) をお勧めします
   - question: >
       アプリケーションの設定名でサポートされる文字は何ですか。
     answer: >
@@ -256,4 +295,16 @@ sections:
       新機能はどこでリクエストできますか。
     answer: >
       [Web Apps フィードバック フォーラム](https://aka.ms/webapps-uservoice)でご自分のアイデアを送信できます。 アイデアのタイトルに "[Linux]" を追加してください。
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n- [Azure App Service on Linux とは](overview.md#app-service-on-linux)\n- [Azure App Service でステージング環境を設定する](deploy-staging-slots.md)\n- [Web App for Containers での継続的デプロイ](./deploy-ci-cd-custom-container.md)\n- [知っておくべきこと: Web Apps と Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)\n- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)"
+additionalContent: >-
+  ## <a name="next-steps"></a>次のステップ
+
+
+  - [Azure App Service on Linux とは](overview.md#app-service-on-linux)
+
+  - [Azure App Service でステージング環境を設定する](deploy-staging-slots.md)
+
+  - [Web App for Containers での継続的デプロイ](./deploy-ci-cd-custom-container.md)
+
+  - [知っておくべきこと: Web Apps と Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)
+
+  - [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

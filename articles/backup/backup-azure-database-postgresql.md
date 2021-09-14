@@ -2,14 +2,14 @@
 title: Azure Database for PostgreSQL のバックアップ
 description: 長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー) について説明します。
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 09/01/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 8c3540ee686eb69304f95e31126a1a29a48aeea8
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: ac7790cd823bbca4ca7580bc5b3c5edee6f45f96
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213905"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432686"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -306,6 +306,9 @@ OSS サーバーに Active Directory 管理者を追加します。
 ### <a name="usererrormissingnetworksecuritypermissions"></a>UserErrorMissingNetworkSecurityPermissions
 
 サーバー ビューで **[Azure サービスへのアクセス許可]** フラグを有効にすることで、ネットワーク接続を確立ます。 サーバー ビューの **[接続のセキュリティ]** ペインで、 **[Azure サービスへのアクセス許可]** フラグを **[はい]** に設定します。
+
+>[!Note]
+>このフラグを有効にする前に、 **[パブリック ネットワーク アクセスの拒否]** フラグを **[いいえ]** に設定したことを確認してください。
 
 ![Azure サービスへのアクセス許可](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
 

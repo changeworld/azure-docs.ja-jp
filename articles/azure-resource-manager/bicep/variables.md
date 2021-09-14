@@ -4,13 +4,13 @@ description: Bicep で変数を定義する方法について説明します
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: b2f696adbad88cd424f2292b333069a7b80a13b2
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: a652d2efb3f97791d075f078637801e4d20aad47
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634957"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425059"
 ---
 # <a name="variables-in-bicep"></a>Bicep の変数
 
@@ -32,6 +32,7 @@ var stringVar = 'example value'
 param inputValue string = 'deployment Parameter'
 
 var stringVar = 'myVariable'
+
 var concatToVar =  '${stringVar}AddToVar'
 var concatToParam = '${inputValue}AddToParam'
 ```
@@ -43,6 +44,10 @@ var concatToParam = '${inputValue}AddToParam'
 ```bicep
 var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
 ```
+
+次の例では、リソースはデプロイされません。 さまざまな型の変数を宣言する方法を示します。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variables.bicep":::
 
 ## <a name="use-variable"></a>変数を使用する
 
@@ -69,17 +74,11 @@ output stgOutput string = storageName
 
 ストレージ アカウント名では小文字を使用する必要があるため、`storageName` 変数は `toLower` 関数を使用して `storageNamePrefix` 値を小文字にします。 `uniqueString` 関数は、リソース グループ ID から一意の値を作成します。 値は文字列に連結されます。
 
-## <a name="example-template"></a>テンプレートの例
-
-次のテンプレートでは、リソースはデプロイされません。 さまざまな型の変数を宣言するいくつかの方法を示します。
-
-:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/variables.bicep":::
-
 ## <a name="configuration-variables"></a>構成変数
 
 環境を構成するための関連する値を保持する変数を定義できます。 変数は、値を持つオブジェクトとして定義します。 次の例は、**test** と **prod** という 2 つの環境の値を保持するオブジェクトを示しています。デプロイ中に、これらの値のいずれかを渡します。
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/variablesconfigurations.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variablesconfigurations.bicep":::
 
 ## <a name="next-steps"></a>次の手順
 

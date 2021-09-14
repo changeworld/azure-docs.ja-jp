@@ -2,13 +2,13 @@
 title: Azure VM 上の SAP HANA データベースの復元
 description: この記事では、Azure Virtual Machines 上で実行されている SAP HANA データベースを復元する方法について説明します。 [リージョンをまたがる復元] を使用して、データベースをセカンダリ リージョンに復元することもできます。
 ms.topic: conceptual
-ms.date: 08/06/2021
-ms.openlocfilehash: c6ad108cc0377411c144fade97b3fec2c5a8b633
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/01/2021
+ms.openlocfilehash: 7bf9734cafa003132fdef97026c76c8bdf8b329d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727089"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426492"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースの復元
 
@@ -127,6 +127,9 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 1. **[復元ポイントの選択]** で、[特定の時点に復元する](#restore-to-a-specific-point-in-time) **[ログ (特定の時点)]** を選択します。 または、 **[完全および差分]** を選択して、[特定の復旧ポイントに復元](#restore-to-a-specific-recovery-point)します。
 
 ### <a name="restore-as-files"></a>ファイルとして復元
+
+>[!Note]
+>ファイルとしての復元は CIFS 共有では機能しませんが、NFS では機能します。
 
 バックアップ データをデータベースとしてではなくファイルとして復元するには、 **[ファイルとして復元]** を選択します。 指定されたパスにファイルがダンプされると、それらのファイルをデータベースとして復元したい任意の SAP HANA マシンにそれらを移すことができます。 これらのファイルを任意のマシンに移動できるので、サブスクリプションやリージョンをまたいでデータを復元できるようになりました。
 

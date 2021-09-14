@@ -87,13 +87,7 @@
     - name: アクセスを承認する
       items:
         - name: アクセス ポリシーの割り当て
-          items:
-            - name: CLI
-              href: assign-access-policy-cli.md
-            - name: PowerShell
-              href: assign-access-policy-powershell.md
-            - name: ポータル
-              href: assign-access-policy-portal.md
+          href: assign-access-policy.md
         - name: Azure RBAC アクセス許可モデル
           items:
             - name: キー、シークレット、証明書へのアクセスを管理するための Azure RBAC の使用

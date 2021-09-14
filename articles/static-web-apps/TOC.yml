@@ -30,11 +30,13 @@
           href: functions-bring-your-own.md
     - name: 構成
       items:
-        - name: アプリケーション構成
+        - name: 構成の概要
+          href: configuration-overview.md
+        - name: アプリケーションの構成
           href: configuration.md
           displayName: 'routing, routes'
         - name: '[ビルド構成]'
-          href: github-actions-workflow.md
+          href: build-configuration.md
         - name: アプリの設定
           href: application-settings.md
           displayName: environment variables

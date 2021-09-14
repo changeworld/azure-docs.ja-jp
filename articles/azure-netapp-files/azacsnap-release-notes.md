@@ -14,16 +14,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/27/2021
 ms.author: phjensen
-ms.openlocfilehash: fd8d4e1bfed60aa8f3eae4d4d3c033247ab1268d
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 0a2a110b483d7f5f5618e5679e4479ebf1d313b8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579908"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438122"
 ---
 # <a name="release-notes-for-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールのリリース ノート
 
 このページでは、新しい機能を提供したり欠陥を解決したりするために、AzAcSnap に加えられた主な変更を示します。
+
+## <a name="aug-2021"></a>2021 年 8 月
+
+### <a name="azacsnap-v502-build_2021082719086---patch-update-to-v501"></a>AzAcSnap v5.0.2 (Build_20210827.19086) - v5.0.1 に更新プログラムを適用
+
+AzAcSnap v5.0.2 (Build_20210827.19086) は、次の修正と機能強化により、v5.0 ブランチに修正プログラムとして提供されています。
+
+- `ssh` 255 終了コードを無視します。  場合によって、Azure Large Instances 上のストレージとの通信に使用される `ssh` コマンドによって、エラーまたは実行エラーが発生しなかったときに、255 という終了コードが生成されることがあります (`man ssh` "EXIT STATUS" を参照)。その後、AzAcSnap はこれを失敗としてトラップし、中止します。  この更新により、正しい実行を検証するための追加の検証が行われます。これには、従来の終了コードのチェックに加えて、エラーに対する `ssh` STDOUT と STDERR の解析が含まれます。
+- インストーラーの hdbuserstore ソース パス チェックを修正します。  インストーラーは、インストールを実行しているユーザーの hdbuserstore に対し、誤ったソース ディレクトリが存在するかどうかを確認します。これは、`~/.hdb` のチェック対象として修正されています。  これは、`azacsnap` のインストール前に `root` ユーザーに対して hdbuserstore が事前に構成されているシステム (Azure Large Instances など) に適用されます。
+- インストーラーによってインストールまたは抽出されるバージョンが、表示されるようになりました (インストーラーが引数なしで実行されている場合)。
+
+インストーラーの[最新リリース](https://aka.ms/azacsnapinstaller)をダウンロードし、[作業の開始](azacsnap-get-started.md)方法を確認してください。
 
 ## <a name="may-2021"></a>2021年5月
 
@@ -32,8 +44,6 @@ ms.locfileid: "110579908"
 AzAcSnap v 5.0.1 (ビルド: 20210524.14837) は、次の修正と機能強化により、v5.0 ブランチに修正プログラムとして提供されています。
 
 - 終了コードの処理が改善されました。  場合によっては、0 以外の実行エラーが発生した場合でも、終了コード 0 (ゼロ) が出力されます。  終了コードは、`azacsnap` が正常に実行された場合は 0 になり、エラーが発生した場合は 0 以外になる必要があります。  また、AzAcSnap の内部エラー処理は、AzAcSnap によって実行される外部コマンド (hdbsql、ssh など) の終了コードをキャプチャして出力するように拡張されています (エラーの原因である場合)。
-
-インストーラーの[最新リリース](https://aka.ms/azacsnapdownload)をダウンロードし、[作業の開始](azacsnap-get-started.md)方法を確認してください。
 
 ## <a name="april-2021"></a>2021 年 4 月
 

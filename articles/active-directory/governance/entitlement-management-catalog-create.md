@@ -4,7 +4,7 @@ description: Azure Active Directory エンタイトルメント管理でリソ�
 services: active-directory
 documentationCenter: ''
 author: ajburnle
-manager: daveba
+manager: ''
 editor: HANKI
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/23/2020
+ms.date: 8/31/2021
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32b848f6a34fbd25322c53cd35dc0db600743c88
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: f9178daf615b0d3f02188e30e1bdd7c37c628b4c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730211"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427429"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
@@ -89,7 +89,7 @@ $catalog = New-MgEntitlementManagementAccessPackageCatalog -DisplayName "Marketi
 
 1. リソースの種類として、 **[Groups and Teams]\(Groups と Teams\)** 、 **[アプリケーション]** 、または **[SharePoint サイト]** のいずれかをクリックします。
 
-    追加するリソースが表示されない、またはリソースを追加できない場合は、必要な Azure AD ディレクトリ ロールおよびエンタイトルメント管理ロールを持っていることを確認してください。 必要なロールを持つ人物に、カタログへのリソース追加を依頼することが必要な場合があります。 詳細については、[リソースをカタログに追加するために必要なロール](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)に関するページを参照してください。
+    追加するリソースが表示されない、またはリソースを追加できない場合は、必要な Azure Active Directory ディレクトリ ロールおよびエンタイトルメント管理ロールを持っていることを確認してください。 必要なロールを持つ人物に、カタログへのリソース追加を依頼することが必要な場合があります。 詳細については、[リソースをカタログに追加するために必要なロール](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)に関するページを参照してください。
 
 1. カタログに追加する種類のリソースを 1 つ以上選択します。
 
@@ -98,6 +98,57 @@ $catalog = New-MgEntitlementManagementAccessPackageCatalog -DisplayName "Marketi
 1. 作業が終了したら、 **[追加]** をクリックします。
 
     これらのリソースをカタログ内のアクセス パッケージに含めることができるようになりました。
+
+### <a name="add-resource-attributes-preview-in-the-catalog"></a>カタログにリソース属性 (プレビュー) を追加する
+
+属性とは、要求元がアクセス要求を送信する前に、要求元に応答を要求する必須フィールドです。 これらの属性への応答は、承認者に対して表示され、Azure Active Directory のユーザー オブジェクトにもスタンプされます。 
+
+> [!NOTE]
+>リソースに設定されているすべての属性は、そのリソースを含むアクセス パッケージの要求が送信できるようになる前に、応答を要求します。 要求元が応答を提供しない場合、要求は処理されません。
+
+アクセス要求のための属性を要求するには、次の手順に従います。
+
+1. 左側のメニューで **[リソース]** をクリックすると、カタログ内のリソースの一覧が表示されます。 
+
+1. 属性を追加するリソースの横にある省略記号をクリックし、 **[属性が必要 (プレビュー)]** を選択します。 
+
+    ![リソースの追加 - [属性が必要] を選択](./media/entitlement-management-catalog-create/resources-require-attributes.png)
+ 
+1.  属性の種類を選択します。
+
+    1. **ビルトイン**: Azure Active Directory ユーザー プロファイル属性を含みます。
+    1. **ディレクトリ スキーマ拡張機能**: ユーザー オブジェクトや他のディレクトリ オブジェクトの Azure Active Directory に追加データを格納する方法を提供します。 これには、グループ、テナントの詳細、およびサービス プリンシパルが含まれます。 アプリケーションに対する要求の送信に使用できるのは、ユーザー オブジェクトの拡張機能属性だけです。
+    1. **[ビルトイン]** を選択した場合は、ドロップダウン リストから属性を選択できます。 **[ディレクトリ スキーマ拡張機能]** を選択した場合は、テキストボックスに属性名を入力できます。
+
+    > [!NOTE]
+    > User.mobilePhone 属性は、管理者以外のユーザーに対してのみ更新できます。 [こちら](/graph/permissions-reference#remarks-5)をご覧ください。 
+
+1.  要求元が回答する回答形式を選択します。 回答形式には、"**短いテキスト**"、"**複数選択**"、および "**長いテキスト**" があります。
+
+1.  複数選択を選択した場合は、 **[編集とローカライズ]** ボタンをクリックして回答のオプションを構成します。
+    1. [編集とローカライズ] を選択すると、 **[質問の表示/編集]** ペインが開きます。
+    1. 質問の回答時に要求元に指定する回答のオプションを、 **[Answer values]\(回答の値\)** ボックスに入力します。
+    1. 応答オプションのための言語を選択します。 追加の言語を選択した場合は、応答オプションをローカライズできます。
+    1. 必要な数の回答を入力し、 **[保存]** をクリックします。
+
+1. 直接割り当てとセルフサービス要求で属性値を編集可能にする場合は、 **[はい]** を選択します。
+
+    > [!NOTE]
+    > ![リソースの追加 - 属性の追加 - 属性を編集可能にする](./media/entitlement-management-catalog-create/attributes-are-editable.png)
+    > - [属性値が編集可能である] フィールドで **[いいえ]** を選択し、属性値 **[が空]** を選択した場合、ユーザーはその属性の値を入力できます。 保存後は、値を編集できなくなります。 
+    > - [属性値が編集可能である] フィールドで **[いいえ]** を選択し、属性値 **[が空ではない]** を選択した場合、ユーザーは、直接割り当て時とセルフサービス要求時のどちらも既存の値を編集できません。
+ 
+    ![リソースの追加 - 属性の追加 - 質問](./media/entitlement-management-catalog-create/add-attributes-questions.png)
+
+1.  ローカライズを追加する場合は、 **[Add localization]\(ローカライズの追加\)** をクリックします。
+
+    1. **[質問のローカリゼーションの追加]** ペインで、選択した属性に関連する質問をローカライズする言語の言語コードを選択します。
+    1. 構成した言語で、**Localized Text\(ローカライズされたテキスト)** ボックスに質問を入力します。
+    1. 必要なすべてのローカライズを追加したら、 **[保存]** をクリックします。
+
+    ![リソースの追加 - 属性の追加 - ローカライズ](./media/entitlement-management-catalog-create/attributes-add-localization.png)
+
+1.  **[属性が必要 (プレビュー)]** ページですべての属性情報が完了したら、 **[保存]** をクリックします。
 
 ### <a name="add-a-multi-geo-sharepoint-site"></a>複数の地理的な SharePoint サイトを追加する
 

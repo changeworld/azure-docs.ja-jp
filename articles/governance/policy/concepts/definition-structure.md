@@ -1,14 +1,14 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: b09d11e6f1c5ea8f4882021530dc4d06d2d2f350
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e285ca8c47d73f8b9a23c005be8c8b88d38db879
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324882"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436106"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -105,7 +105,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 次のリソース プロバイダーのモードが完全にサポートされています。
 
-- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用する定義では、効果 _audit_、_deny_、および _disabled_ を使用します。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果の使用は "_非推奨_" です。
+- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用する定義では、効果 _audit_、_deny_、および _disabled_ を使用します。 このモードでは、_パブリック プレビュー_ としてカスタム定義がサポートされます。 既存の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [制約テンプレート](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)からカスタム定義を作成するには、「[制約テンプレートからポリシー定義を作成する](../how-to/extension-for-vscode.md)」を参照してください。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果の使用は "_非推奨_" です。
 
 現在、**プレビュー** として次のリソース プロバイダー モードがサポートされています。
 
@@ -113,7 +113,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - [Azure Key Vault](../../../key-vault/general/overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。 これらのポリシー定義の詳細については、「[Azure Key Vault と Azure Policy を統合する](../../../key-vault/general/azure-policy.md)」を参照してください。
 
 > [!NOTE]
-> リソース プロバイダーのモードでは、組み込みのポリシー定義のみがサポートされており、[適用除外](./exemption-structure.md)はサポートされていません。
+> リソース プロバイダーのモードでは、組み込みのポリシー定義のみがサポートされており、明示的に宣言されない限り、[適用除外](./exemption-structure.md)はサポートされていません。
 
 ## <a name="metadata"></a>Metadata
 

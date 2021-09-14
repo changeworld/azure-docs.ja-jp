@@ -3,21 +3,21 @@ title: Oracle 用 BareMetal インフラストラクチャの概要
 description: BareMetal インフラストラクチャによって Oracle ワークロード向けに提供される機能について説明します。
 ms.topic: conceptual
 ms.subservice: baremetal-oracle
-ms.date: 04/14/2021
-ms.openlocfilehash: f3ecb1fbcad04455515408e4aadadfb2cef3cf9a
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 09/03/2021
+ms.openlocfilehash: e74d1a3e3b6cb1b2cd0b99927a57a88117715e7b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578587"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542442"
 ---
 # <a name="what-is-baremetal-infrastructure-for-oracle"></a>Oracle 用 BareMetal インフラストラクチャの概要
 
 この記事では、BareMetal インフラストラクチャによって Oracle ワークロード向けに提供される機能の概要を示します。
 
-Oracle 用 BareMetal インフラストラクチャは、Oracle 認定の Unified Computing System (UCS) と FLexPod に基づいています。 FlexPod プラットフォームでは、事前検証済みのストレージ、ネットワーク、サーバー テクノロジが提供されます。 NFS ストレージが用意されており、DirectNFS プロトコルを使用した統合が提供されます。 BareMetal サーバーは、個々のユーザー専用であり、BareMetal インスタンスにハイパーバイザーはありません。 
+Oracle 用 BareMetal インフラストラクチャは、Oracle 認定の Unified Computing System (UCS) と FLexPod に基づいています。 FlexPod プラットフォームでは、事前検証済みのストレージ、ネットワーク、サーバー テクノロジが提供されます。 これにより、DirectNFS プロトコルを使用した統合を提供する、NetApp Network File System (NFS) ストレージが提供されます。 BareMetal サーバーは、個々のユーザー専用であり、BareMetal インスタンスにハイパーバイザーはありません。 
 
-これらのインスタンスは、Oracle ワークロードを必要とするミッション クリティカルなアプリケーションを実行するためのものです。 BareMetal インスタンスにより、Azure 仮想マシン (VM) で実行されるアプリケーションに低待機時間 (0.35 ミリ秒) が提供されます。 BareMetal により共有ストレージ ディスクが提供され、専用のプライベート相互接続ネットワークを使用したノード間通信に必要なマルチキャストがサポートされます。 
+これらのインスタンスは、Oracle ワークロードを必要とするミッション クリティカルなアプリケーションを実行するためのものです。 BareMetal インスタンスにより、Azure 仮想マシン (VM) で実行されるアプリケーションに低待機時間 (0.35 ミリ秒) が提供されます。 BareMetal は共有ストレージを提供します。 また、専用のプライベート相互接続ネットワークを使用したノード間通信に必要なマルチキャストがサポートされます。 
 
 Oracle 用 BareMetal インフラストラクチャのその他の機能は次のとおりです。
 

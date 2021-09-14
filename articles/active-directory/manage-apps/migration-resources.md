@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 7d409aaa2d9c8a0ca6e950459202c5990783b198
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05c7b2f668565fe4ab37ed01ad65bef7cb6d95d6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742801"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437924"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>アプリケーションを Azure Active Directory に移行するためのリソース
 
@@ -34,3 +34,8 @@ ms.locfileid: "121742801"
 | [Deployment plan: Extending apps to Azure AD with Application Proxy](https://aka.ms/AppProxyDPDownload) (デプロイ計画: アプリケーション プロキシによる Azure AD へのアプリの拡張)| 従業員のノート PC やその他のデバイスからオンプレミスのアプリケーションにアクセスするには、従来は仮想プライベート ネットワーク (VPN) または非武装地帯 (DMZ) が必要でした。 これらのソリューションは、複雑でセキュリティ保護が困難であるだけでなく、設定と管理にコストがかかります。 Azure AD アプリケーション プロキシは、オンプレミス アプリケーションに簡単にアクセスできるようにします。 |
 | [デプロイ計画](../fundamentals/active-directory-deployment-plans.md) | 多要素認証、条件付きアクセス、ユーザーのプロビジョニング、シームレス SSO、セルフサービス パスワード リセットなどの機能をデプロイするためのデプロイ計画を見つけてください。 |
 | [Symantec SiteMinder から Azure AD へのアプリの移行](https://azure.microsoft.com/mediahandler/files/resourcefiles/migrating-applications-from-symantec-siteminder-to-azure-active-directory/Migrating-applications-from-Symantec-SiteMinder-to-Azure-Active-Directory.pdf) | Symantec SiteMinder から Azure AD へのアプリケーションの移行の手順を説明する例と共に、アプリケーションの移行および統合オプションに関するステップ バイ ステップ ガイダンスを提供します。 |
+| [Okta から Azure Active Directory にアプリを移行する](migrate-applications-from-okta-to-azure-active-directory.md) | Okta から Azure Active Directory へのアプリケーションの移行に関するステップ バイ ステップ ガイダンスをご覧ください。 |
+| [Okta フェデレーションを Azure AD マネージド認証に移行する](migrate-okta-federation-to-azure-active-directory.md) | 既存の Office 365 テナントを Okta for Single sign-on 機能とフェデレーションする方法について説明します。 |
+| [Okta 同期プロビジョニングを Azure AD Connect ベースの同期に移行する](migrate-okta-sync-provisioning-to-azure-active-directory.md) | ユーザー同期またはユニバーサル同期を Azure AD Connect に移行する、現在 Okta から Azure Active Directory のユーザー プロビジョニングを使用している組織のためのステップ バイ ステップ ガイダンス。 |
+| [Okta サインオン ポリシーを Azure AD の条件付きアクセスに移行する](migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md) | Okta のグローバルまたはアプリケーションレベルのサインオン ポリシーから Azure Active Directory 条件付きアクセス ポリシーに移行し、Azure Active Directory および接続されたアプリケーションでユーザー アクセスをセキュリティで保護するためのステップ バイ ステップ ガイダンスを取得します。 |
+

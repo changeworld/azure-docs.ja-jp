@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2021
 ms.author: yelevin
-ms.openlocfilehash: 66b9f5a2e4a0c62ab6847b9e851f8d04b1dbd0f8
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: d9f6ce8b85aae451fbab318b85f50fb0da7919a6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252883"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541299"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "122252883"
 
 ## <a name="prerequisites"></a>前提条件
 
-- CMK 機能には、少なくとも 1 TB/日のコミットメント レベルを持つ Log Analytics 専用クラスターが必要です。 複数のワークスペースを同じ専用クラスターにリンクすることができ、それらが同じカスタマー マネージド キーを共有します。
+- CMK 機能には、少なくとも 500 GB/日のコミットメント レベルを持つ Log Analytics 専用クラスターが必要です。 複数のワークスペースを同じ専用クラスターにリンクすることができ、それらが同じカスタマー マネージド キーを共有します。
 
 - このガイドの手順を完了した後、ワークスペースを使用する前に、オンボードの確認について [Azure Sentinel 製品グループ](mailto:azuresentinelCMK@microsoft.com)にお問い合わせください。
 

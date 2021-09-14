@@ -1,14 +1,14 @@
 ---
 title: Azure VM を使用して Azure Arc 対応サーバーを評価する方法
 description: Azure 仮想マシンを使用して Azure Arc 対応サーバーを評価する方法について説明します。
-ms.date: 07/16/2021
+ms.date: 09/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c981bad00d286860c3759e8266011c6685ff994
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 81c82ad05b715e7d0243585d3bce0abd44f00670
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392818"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424386"
 ---
 # <a name="evaluate-arc-enabled-servers-on-an-azure-virtual-machine"></a>Azure 仮想マシンで Arc 対応サーバーを評価する
 
@@ -79,10 +79,7 @@ Arc 対応サーバーが VM 上に構成されると、Azure にその 2 つの
    sudo ufw --force enable
    sudo ufw deny out from any to 169.254.169.254
    sudo ufw default allow incoming
-   sudo apt-get update
    ```
-
-
    汎用 iptables 構成を設定するには、次のコマンドを実行します。
 
    ```bash
@@ -91,6 +88,13 @@ Arc 対応サーバーが VM 上に構成されると、Azure にその 2 つの
 
    > [!NOTE]
    > この構成は、永続的な iptables ソリューションが使用されていない限り、再起動後に毎回設定する必要があります。
+
+   Azure VM が CentOS、Red Hat、または SUSE Linux Enterprise Server (SLES) を実行している場合は、次の手順を実行して firewalld を構成します。
+
+   ```bash
+   firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 1 -p tcp -d 169.254.169.254 -j DROP
+   firewall-cmd --reload
+   ```
 
 4. Azure Arc 対応サーバー エージェントをインストールして構成します。
 

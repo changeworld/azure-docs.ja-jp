@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, wiassaf, danil
-ms.date: 07/20/2021
-ms.openlocfilehash: 4b7b17ab75f2614a99d791118dc908cd1f7c3b97
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 08/28/2021
+ms.openlocfilehash: 2a6213a0359daf58d0ef34986d1bf3edbd4e1c9a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862660"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424419"
 ---
 # <a name="automated-backups---azure-sql-database--azure-sql-managed-instance"></a>自動バックアップ - Azure SQL Database および Azure SQL Managed Instance
 
@@ -97,7 +97,7 @@ SQL Database の場合、バックアップ ストレージの冗長性は、デ
 
 | 操作 | Azure portal | Azure PowerShell |
 |---|---|---|
-| **バックアップ保有期間を変更する** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL Managed Instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL Managed Instance](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **バックアップ保有期間を変更する** | [SQL Database](#change-the-short-term-retention-policy-using-the-azure-portal) <br/> [SQL Managed Instance](#change-the-short-term-retention-policy-using-the-azure-portal) | [SQL Database](#change-the-short-term-retention-policy-using-powershell) <br/>[SQL Managed Instance](#change-the-short-term-retention-policy-using-powershell) |
 | **長期的なバックアップ保有期間を変更する** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/> [SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-the-azure-portal) | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md#using-powershell)  |
 | **特定の時点からデータベースを復元する** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md) | [SQL Database](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL Managed Instance](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | **削除されたデータベースの復元** | [SQL Database](recovery-using-backups.md)<br>[SQL Managed Instance](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL Managed Instance](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
@@ -138,7 +138,7 @@ SQL Database と SQL Managed Instance では、使用されたバックアップ
 
 データベースの最大データ サイズまでのバックアップ ストレージの使用量については、課金されません。 超過のバックアップ ストレージ消費量は、個々のデータベースのワークロードと最大サイズに依存します。 バックアップ ストレージ消費量を減らすには、次の調整手法のいくつかを検討してください。
 
-- 必要最小限まで[バックアップの保持期間](#change-the-pitr-backup-retention-period-by-using-the-azure-portal)を短縮します。
+- 必要最小限まで[バックアップの保持期間](#change-the-short-term-retention-policy-using-the-azure-portal)を短縮します。
 - インデックスの再構築などの大規模な書き込み操作を、必要以上に頻繁に行わないようにします。
 - 大規模なデータ読み込み操作の場合、[クラスター化された列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview)を使用して、関連する[ベスト プラクティス](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)に従うことを検討し、クラスター化されていないインデックスの数を減らします。
 - 汎用サービス レベルでは、プロビジョニングされたデータ ストレージの方が、バックアップ ストレージの価格よりも安価です。 超過のバックアップ ストレージのコストが継続的に増加している場合は、データ ストレージを増やしてバックアップ ストレージを節約することを検討してください。
@@ -147,7 +147,16 @@ SQL Database と SQL Managed Instance では、使用されたバックアップ
 
 ## <a name="backup-retention"></a>バックアップ保持期間
 
-新しいデータベース、復元されたデータベース、コピーされたデータベースのすべてについて、Azure SQL Database と Azure SQL Managed Instance では、既定で、過去 7 日間の PITR が可能な十分なバックアップが保持されます。 Hyperscale データベースと Basic レベルのデータベースを除き、1 から 35 日の範囲で、アクティブな各データベースごとに[バックアップの保持期間を変更](#change-the-pitr-backup-retention-period)できます。 「[バックアップ ストレージ消費量](#backup-storage-consumption)」で説明されているように、PITR を有効にするために保存されているバックアップは、保有期間より古い場合があります。 Azure SQL Managed Instance のみの場合、データベースを削除した後で、PITR バックアップ保持率を 0 から 35 日の範囲で設定できます。 
+Azure SQL Database および Azure SQL Managed Instance は、バックアップの短期保有と長期保有の両方を提供します。 短期保有バックアップでは、データベースの保有期間で特定の時点に復旧する (PITR) ことが可能ですが、長期保有では、さまざまなコンプライアンス要件用のバックアップが提供されます。  
+
+### <a name="short-term-retention"></a>短期保有
+
+新しいデータベース、復元されたデータベース、コピーされたデータベースのすべてについて、Azure SQL Database と Azure SQL Managed Instance では、既定で、過去 7 日間の PITR が可能な十分なバックアップが保持されます。 データベースまたはマネージド インスタンスに対して定義された保有期間内の任意の時点にデータベースを復元可能にするために、定期的な完全バックアップ、差分バックアップ、およびログ バックアップが作成されます。 さらに、Microsoft Azure SQL Database の場合、差分バックアップは 12 時間の頻度 (既定値) または 24 時間の頻度に構成できます。 
+
+> [!NOTE]
+> 24 時間の差分バックアップ頻度では、データベースの復元に必要な時間が増加する可能性があります。 
+
+Hyperscale データベースと Basic レベルのデータベースを除き、1 から 35 日の範囲で、アクティブな各データベースごとに[バックアップの保持期間を変更](#change-the-short-term-retention-policy)できます。 「[バックアップ ストレージ消費量](#backup-storage-consumption)」で説明されているように、PITR を有効にするために保存されているバックアップは、保有期間より古い場合があります。 Azure SQL Managed Instance のみの場合、データベースを削除した後で、PITR バックアップ保持率を 0 から 35 日の範囲で設定できます。 
 
 データベースを削除した場合、システムでは、オンライン データベースと同じ方法で、特定の保有期間のバックアップが保持されます。 削除されたデータベースのバックアップ保有期間を変更することはできません。
 
@@ -247,13 +256,13 @@ Azure SQL のエンジニアリング チームは、自動データベース �
 
 ## <a name="compliance"></a>コンプライアンス
 
-DTU ベースのサービス レベルから仮想コア ベースのサービス レベルにデータベースを移行した場合、アプリケーションのデータ回復ポリシーに違反しないように、PITR 保有期間が維持されます。 既定の保有期間がコンプライアンス要件を満たしていない場合は、PITR 保有期間を変更できます。 詳細については、「[PITR バックアップ保有期間を変更する](#change-the-pitr-backup-retention-period)」を参照してください。
+DTU ベースのサービス レベルから仮想コア ベースのサービス レベルにデータベースを移行した場合、アプリケーションのデータ回復ポリシーに違反しないように、PITR 保有期間が維持されます。 既定の保有期間がコンプライアンス要件を満たしていない場合は、PITR 保有期間を変更できます。 詳細については、「[PITR バックアップ保有期間を変更する](#change-the-short-term-retention-policy)」を参照してください。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="change-the-pitr-backup-retention-period"></a>PITR バックアップ保有期間を変更する
+## <a name="change-the-short-term-retention-policy"></a>短期保有ポリシーを変更する
 
-既定の PITR バックアップ保有期間は、Azure portal、PowerShell、または REST API を使用して変更できます。 次の例では、PITR 保有期間を 28 日間に変更する方法を示します。
+既定の PITR バックアップ保有期間と差分バックアップ頻度は、Azure portal、PowerShell、または REST API を使用して変更できます。 次の例は、PITR 保有期間を 28 日に変更し、差分バックアップを 24 時間間隔に変更する方法を示しています。
 
 > [!WARNING]
 > 現在の保有期間を短くすると、新しい保有期間より古い特定の時点に復元することができなくなります。 新しい保有期間内で PITR を提供するために必要がなくなったバックアップは削除されます。 現在の保有期間を長くした場合、新しい保有期間内の古い特定の時点に復元する機能はすぐには利用できません。 システムにより長いバックアップの保有が開始されたら、やがて使用できるようになります。
@@ -261,9 +270,9 @@ DTU ベースのサービス レベルから仮想コア ベースのサービ�
 > [!NOTE]
 > これらの API は PITR 保有期間にのみ影響します。 データベースに LTR が構成されている場合、それには影響しません。 LTR の保有期間を変更する方法については、[長期保有](long-term-retention-overview.md)に関するページを参照してください。
 
-### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>Azure portal を使用して PITR バックアップ保有期間を変更する
+### <a name="change-the-short-term-retention-policy-using-the-azure-portal"></a>Azure portal を使用して短期保有ポリシーを変更する
 
-Azure portal を使用してアクティブなデータベースの PITR バックアップ保持期間を変更するには、保持期間を変更するデータベースのサーバーまたはマネージド インスタンスに移動します。 左側のペインで **[バックアップ]** を選択してから、 **[保持ポリシー]** を選択します。PITR 保有期間を変更するデータベースを選択します。 次に、アクション バーから **[保有期間の構成]** を選択します。
+Azure portal を使用してアクティブなデータベースの PITR バックアップ保持期間または差分バックアップ頻度を変更するには、保持期間を変更するデータベースのサーバーまたはマネージド インスタンスに移動します。 左側のペインで **[バックアップ]** を選択してから、 **[保持ポリシー]** を選択します。PITR 保有期間を変更するデータベースを選択します。 次に、アクション バーから **[保有期間の構成]** を選択します。
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
@@ -275,7 +284,7 @@ Azure portal を使用してアクティブなデータベースの PITR バッ�
 
 ---
 
-### <a name="change-the-pitr-backup-retention-period-by-using-powershell"></a>PowerShell を使用して PITR バックアップ保有期間を変更する
+### <a name="change-the-short-term-retention-policy-using-powershell"></a>PowerShell を使用して短期保有ポリシーを変更する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -283,12 +292,18 @@ Azure portal を使用してアクティブなデータベースの PITR バッ�
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
-アクティブな Azure SQL Database の PITR バックアップ保持期間を変更するには、次の PowerShell の例を使用します。
+アクティブな Microsoft Azure SQL Database の PITR バックアップ保持期間および差分バックアップ頻度を変更するには、次の PowerShell の例を使用します。
 
 ```powershell
 # SET new PITR backup retention period on an active individual database
 # Valid backup retention must be between 1 and 35 days
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
+```
+
+```powershell
+# SET new PITR differental backup frequency on an active individual database
+# Valid differential backup frequency must be ether 12 or 24. 
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28 -DiffBackupIntervalInHours 24
 ```
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
@@ -330,7 +345,48 @@ Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -Instanc
 
 ---
 
-### <a name="change-the-pitr-backup-retention-period-by-using-the-rest-api"></a>REST API を使用して PITR バックアップ保有期間を変更する方法
+### <a name="change-the-short-term-retention-policy-using-the-rest-api"></a>REST API を使用して短期保有ポリシーを変更する
+
+次の要求では、保有期間が 28 日に更新され、差分バックアップの頻度も 24 時間に設定されています。
+
+
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+#### <a name="sample-request"></a>要求のサンプル
+
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2021-02-01-preview
+```
+
+#### <a name="request-body"></a>要求本文
+
+```json
+{ 
+    "properties":{
+        "retentionDays":28
+        "diffBackupIntervalInHours":24
+  }
+}
+```
+
+#### <a name="sample-response"></a>応答例: 
+
+```json
+{ 
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+    "diffBackupIntervalInHours":24
+  }
+}
+```
+
+
+詳細については、[バックアップの保有期間の REST API](/rest/api/sql/backupshorttermretentionpolicies)に関するページを参照してください。
+
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 #### <a name="sample-request"></a>要求のサンプル
 
@@ -365,38 +421,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 詳細については、[バックアップの保有期間の REST API](/rest/api/sql/backupshorttermretentionpolicies)に関するページを参照してください。
 
-#### <a name="sample-request"></a>要求のサンプル
-
-```http
-PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
-```
-
-#### <a name="request-body"></a>要求本文
-
-```json
-{
-  "properties":{
-    "retentionDays":28
-  }
-}
-```
-
-#### <a name="sample-response"></a>応答のサンプル
-
-状態コード:200
-
-```json
-{
-  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
-  "name": "default",
-  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
-  "properties": {
-    "retentionDays": 28
-  }
-}
-```
-
-詳細については、[バックアップの保有期間の REST API](/rest/api/sql/backupshorttermretentionpolicies)に関するページを参照してください。
+---
 
 ## <a name="configure-backup-storage-redundancy"></a>バックアップ ストレージの冗長性を構成する
 

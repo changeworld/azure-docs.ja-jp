@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 84cb22956b682a9acb23f4f391faf046eccc47a7
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 1602207c83f8ff4a632428c0308b514c6d552058
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378144"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428256"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>シナリオ:カスタム設定を使用して NVA 経由でトラフィックをルーティングする
 
 Azure Virtual WAN 仮想ハブのルーティングを使用している場合は、複数のオプションを使用できます。 この記事では、仮想ネットワークとブランチの間の通信に対してネットワーク仮想アプライアンス (NVA) 経由でトラフィックをルーティングし、インターネットへのトラフィックに対して別の NVA を使用することに焦点を当てます。 詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+
+>[!Note]
+> 以下のルーティング シナリオでは、NVA を含む仮想 WAN ハブとスポーク仮想ネットワークが同じ Azure リージョン内に存在する必要があることに注意してください。
 
 ## <a name="design"></a>デザイン
 
