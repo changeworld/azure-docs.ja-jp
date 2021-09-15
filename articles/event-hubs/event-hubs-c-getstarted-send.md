@@ -4,10 +4,10 @@ description: 'クイックスタート: この記事では、Azure Event Hubs �
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85315667"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>クイックスタート: C を使用して Azure Event Hubs にイベントを送信する
